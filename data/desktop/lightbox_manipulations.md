@@ -1,0 +1,131 @@
+Working with the Lightbox Elements
+====================================
+
+Getting/setting the control value
+-----------------------------------------------------------
+To get/set the value of a lightbox control, use the api/gantt_getlightboxsection.md method as in:
+
+~~~js
+//to get the value
+var value = gantt.getLightboxSection('description').getValue();
+
+//to set the value
+gantt.getLightboxSection('description').setValue('abc');
+~~~
+
+
+##Checking whether the lighbox is open
+To check whether the lightbox is currently open or closed, use the **lightbox** property of the state object returned by the api/gantt_getstate.md method.<br> If the lightbox is open - the method will return the id 
+of the opened task, otherwise 'null' or 'undefined'
+
+~~~js
+if (gantt.getState().lightbox){
+	//the code for the opened lighbox
+} else {
+	//the code for the closed lighbox
+}
+~~~
+
+##Mapping data properties to the lightbox sections
+
+To map a data property to a lightbox section, use the "map_to" attribute of the section object:
+
+~~~js
+//assigns the "holders" section to a data property with the name "holder" 
+gantt.config.lightbox.sections = [
+	{name:"description",height:38, type:"textarea", map_to:"text", focus:true},
+    {name:"holders", 	height:22, type:"textarea", map_to:"holder"},      /*!*/                                                                
+    {name:"time", 		height:72, type:"duration", map_to:"auto"}
+];
+~~~
+
+
+##Setting the default value for a lightbox's control
+To set the default value for a lightbox's section, use the **default_value** property of the section's object.
+
+For example, you have added a custom section to the lightbox  - "Priority" -  that displays the task priority. 
+When the user creates a new event, the field will be just empty. To correct such behaviour and set by default, say, the low priority,
+specify the lightbox as in:
+
+~~~js
+var opts = [
+    { key:1, label: "High" },                                            
+    { key:2, label: "Normal" },                                         
+    { key:3, label: "Low" }                                            
+];
+
+gantt.config.lightbox.sections = [
+	{name:"description", height:38, type:"textarea", map_to:"text",	focus:true},
+    {name:"priority", 	 height:22, type:"select", 	 map_to:"priority",  /*!*/  
+    options:opts, default_value:"Low"},      /*!*/                                                                
+    {name:"time", 		 height:72, type:"duration", map_to:"auto"}
+];
+~~~
+{{note
+The **default_value** property sets the default value for the lightbox's section, not for a new event, i.e. a new event  gets the specified value only after the user opens the lightbox and saves the event.
+}}
+
+To set the default value directly for new events, use the api/gantt_ontaskcreated_event.md event:
+
+~~~js
+gantt.attachEvent("onTaskCreated", function(id, task){
+    task.priority = "Low";
+    return true;
+});
+~~~
+
+## Making a section hidden for some events 
+To make a section hidden for specific events, redefine its **set_value** method as in:<br>
+
+
+~~~js
+gantt.form_blocks.textarea.set_value=function(node,value,ev){
+	node.firstChild.value=value||"";
+    var style = ev.some_property?"":"none";
+    node.style.display=style; // editor area
+    node.previousSibling.style.display=style; //section header
+    gantt.resizeLightbox(); //correct size of lightbox
+}
+~~~
+
+
+
+### Button in the section header 
+It's possible to have a custom button in the section header. 
+To add a button to the header of a section, do the following steps:
+
+<ol>
+	<li> Specify the **button** property to the section object:
+~~~js
+{name:"description", height:130, map_to:"text", type:"textarea", button:"help"}
+~~~
+	</li>
+    <li> Set the label for the button:
+~~~js
+//'help' is the value of the 'button' property
+gantt.locale.labels.button_help="Help label";
+~~~
+	</li> 
+    <li>Specify the handler of button clicks:
+~~~
+gantt.form_blocks.textarea.button_click=function(index,button,shead,sbody){
+	...
+}
+~~~
+where:
+	<ul>
+    	<li>index - (number) the section index. Zero-based numbering</li>
+		<li>button - (Dom element) the HTML element of the button</li>
+		<li>shead - (Dom element) the HTML element of the section header</li>
+		<li>sbody - (Dom element) the HTML element of the section body</li>
+
+	</ul>
+    </li>
+</ol>
+You can define the image used for the button through the next css class:
+
+~~~js
+.dhx_custom_button_help{
+	background-image:url(imgs/but_help.gif);
+}
+~~~

@@ -1,0 +1,127 @@
+Migrating From Older Versions
+=================================================
+
+2.0 -> 3.0
+----------------------
+1) In order to prevent CSS conflicts with dhtmlxScheduler, the class names that have been used by both components were renamed in dhtmlxGantt (all classes were related to the ligthbox).
+If you have customized styling for  the lightbox, the migration will consist in renaming to appropriate CSS classes.
+
+There is 2 renamed patterns:
+
+- Replace <b>'.dhx_gantt_'</b> to <b>'.gantt_'</b> (.dhx_gantt_duration -> .gantt_duration)
+- Replace <b>'.dhx_'</b> prefix with <b>'.gantt_'</b> (.dhx_custom_button -> .gantt_custom_button)
+
+*If you encounter difficulties with migrating CSS classes,please, see the full  list of renamed classes [here](desktop/migrating_renamedcss.md)*.
+
+<br>
+
+
+2) The default values of the api/gantt_buttons_right_config.md and api/gantt_buttons_left_config.md configs were changed in the following way:
+
+~~~js
+gantt.config.buttons_left = [
+        "dhx_save_btn",
+        "dhx_cancel_btn"
+];
+gantt.config.buttons_right = [
+        "dhx_delete_btn"
+],
+
+-->
+
+gantt.config.buttons_left = [
+        "gantt_save_btn",
+        "gantt_cancel_btn"
+];
+gantt.config.buttons_right = [
+        "gantt_delete_btn"
+];
+~~~
+
+Old configurations ( "dhx_save_btn", "dhx_cancel_btn", "gantt_delete_btn") will still work. Changes does not break any existing behavior.
+
+3) Following features are now available only in the Commercial or Enterprise version of the component (not available in the GPL version of dhtmlxGantt):
+
+- Ability to hide days in week, month, timeline view
+- Projects, milestones and other custom types
+
+1.0 -> 2.0
+----------------------
+1) A varierty of objects (**GanttProjectInfo**, **GanttTaskInfo**, **GanttChart**, **GanttProject**, **GanttTask**) are replaced with 1 static object -  **gantt**. <br> 
+The **gantt** object contains a set of methods and 2 main properties: [config](api/refs/gantt_props.md) and [templates](api/refs/gantt_templates.md).
+
+- <a href="api/refs/gantt.md#properties">gantt.config</a> - configuration options for dates, scale, controls etc.
+- <a href="api/refs/gantt.md#templates">gantt.templates</a> - formatting templates for dates and labels used in the Gantt chart.
+
+<br>
+
+2) dhtmlxGantt is initialized through the api/gantt_init.md method <br>  <code> var gantt = new GanttChart()</code> -> <code>gantt.init("gantt_div")</code>.
+
+<br>
+
+3) Instead of GanttProject and GanttTask, data is stored as [an array of plain objects with a number of mandatory properties and any custom properties](desktop/loading.md#specifyingdataproperties): 
+~~~js
+{
+    data:[
+        {id:1, text:"Project #2", start_date:"01-04-2013", duration:18,
+    progress:0.4, open: true},
+        {id:2, text:"Task #1",    start_date:"02-04-2013", duration:8,
+    progress:0.6, parent:1},
+        {id:3, text:"Task #2",    start_date:"11-04-2013", duration:8,
+    progress:0.6, parent:1}
+    ],
+    links:[
+        { id:1, source:1, target:2, type:"1"},
+        { id:2, source:2, target:3, type:"0"},
+        { id:3, source:3, target:4, type:"0"},
+        { id:4, source:2, target:5, type:"2"},
+  ]
+}
+~~~
+
+<br>
+[
+4) The [XML format](desktop/supported_data_formats.md#xmldhtmlxgantt20) was changed but the [old XML format](desktop/supported_data_formats.md#xmldhtmlxganttlt20) is still can be [loaded](api/gantt_load.md).
+
+~~~js
+gantt.load("tasks.xml","oldxml");
+~~~
+{{sample
+	01_initialization/09_backward_compatibility.html
+}}
+
+<br>
+
+
+5) **Design-time Objects**:
+
+- Methods of the **<i>GanttProjectInfo</i>** object are replaced with:
+  - addTask  -> [gantt.addTask()](api/gantt_addtask.md)
+  - deleteTask  ->  [gantt.deleteTask()](api/gantt_deletetask.md)
+  - getTaskById  -> [gantt.getTask()](api/gantt_gettask.md)
+- Methods of the **<i>GanttTaskInfo</i>** object are replaced with:
+  - addChildTask -> [gantt.addTask()](api/gantt_addtask.md) (property "parent" of the task object sets the parent for the task)
+
+<br>
+
+6) **Run-time Objects**:
+
+dhtmlxGantt 2.0 doesn't use different types for project and task obejcts. Instead of this, any task object can have 1 parent object and any number of child tasks.
+
+- **<i>GanttProject</i>** 
+  - Instead of getDuration(), getId(), getName(), getPercentCompleted(), getStartDate(), project properties are accessed through **gantt.getTask(projectTaskId).{name_of_property}**
+- **<i>GanttTask</i>** 
+  - Instead of getDuration(), getId(), getName(), getParentTaskId(), getPercentCompleted(), getPredecessorTaskId(), setDuration(, ) task properties are accessed through **gantt.getTask(taskId).{name_of_property}**
+  
+A list of methods to get parent/child objects:
+
+- api/gantt_gettask.md
+- api/gantt_haschild.md
+- api/gantt_getchildren.md
+
+{{note
+The id of the parent task can be accessed as **gantt.getTask(task_id).parent**. The root element doesn't have the 'parent' property.
+}}
+
+@index:
+- desktop/migrating_renamedcss.md

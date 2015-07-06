@@ -1,0 +1,75 @@
+Reodering Tasks
+===================================
+dhtmlxGantt  provides 2 ways to reorder tasks in the grid:
+
+1. Drag-and-drop.
+2. Sorting (see [details](desktop/sorting.md)).
+
+The ways are alternative. <br>
+By default, both modes are disabled. 
+
+To enable drag-n-drop reordering, use the api/gantt_order_branch_config.md option: 
+
+~~~js
+gantt.config.order_branch = true;
+gantt.init("gantt_here");
+~~~
+
+{{sample
+	07_grid/02_branch_ordering.html
+ }}
+ 
+
+Denying dropping to specific positions
+------------------------------------------------
+To deny dropping tasks to specific positions, use the api/gantt_onbeforetaskmove_event.md or api/gantt_onbeforerowdragend_event.md event:
+
+~~~js
+//prevent moving to another sub-branch:
+gantt.attachEvent("onBeforeTaskMove", function(id, parent, tindex){
+    var task = gantt.getTask(id);
+    if(task.parent != parent)
+        return false;
+    return true;
+});
+
+//or
+gantt.attachEvent("onBeforeRowDragEnd", function(id, target) {
+	var task = gantt.getTask(id);
+    if(task.parent != target.parent)
+        return false;
+    return true;
+});
+
+~~~
+
+
+Highlighting available drop places while drag-&-drop
+------------------------------------------------------------
+To highlight available target places during dragging (for example, it's not possible to drag the root node under another root and you want visually inform the user about this), 
+use the api/gantt_onrowdragstart_event.md and api/gantt_onrowdragend_event.md events: 
+
+~~~js
+gantt.config.order_branch = true;// order tasks only inside a branch
+gantt.init("gantt_here");
+gantt.parse(demo_tasks);
+
+var drag_id = null;
+gantt.attachEvent("onRowDragStart", function(id, target, e) {
+	drag_id = id;
+    return true;
+});
+gantt.attachEvent("onRowDragEnd", function(id, target) {
+	drag_id = null;
+    gantt.render();
+});
+
+gantt.templates.grid_row_class = function(start, end, task){
+	if(drag_id && task.id != drag_id){
+    	if(task.$level != gantt.getTask(drag_id).$level)
+        	return "cant-drop";
+		}
+	return "";
+};
+~~~
+

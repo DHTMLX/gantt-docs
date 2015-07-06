@@ -1,0 +1,50 @@
+Adding Tooltips to the Tasks
+===========================
+Tooltips allow you to add extra information for users without  overflowing the screen with the text.
+
+<img src="desktop/task_tooltip.png"/>
+
+
+Activating tooltips
+----------------------------
+To activate tooltips for tasks, include the **tooltip** extension file on the page:
+~~~js
+<script src="codebase/ext/tooltip.js"></script>
+
+<script>
+	gantt.init("gantt_here");
+</script>
+~~~
+{{sample
+	02_extensions/02_tooltip.html
+}}
+
+Once the extension is activated, tooltips will be automatically displayed with the default settings.
+
+
+
+Setting  a custom text for tooltips
+----------------------------
+By default, tooltips displays 3 properties of a task:
+
+1. The start date of a task.
+2. The end date of a task.
+3. The task name.
+
+To set a custom text for tooltips, use the api/gantt_tooltip_text_template.md template:
+
+~~~js
+gantt.templates.tooltip_text = function(start,end,task){
+    return "<b>Task:</b> "+task.text+"<br/><b>Duration:</b> " + task.duration;
+};
+~~~
+
+Setting the tooltip's timeout
+-----------------------------------
+You can specify how long a tooltip will be shown after the user moves the cursor to another position. To set such a period, use the api/gantt_tooltip_hide_timeout_config.md property:
+
+~~~js
+gantt.config.tooltip_hide_timeout = 5000;
+gantt.init("gantt_here");
+~~~
+

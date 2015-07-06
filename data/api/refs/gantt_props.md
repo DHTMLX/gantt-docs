@@ -1,0 +1,195 @@
+
+Properties
+==========
+
+{{api
+- api/gantt_api_date_config.md - sets the date format for addTask() method to
+- api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
+- api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
+- api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
+- api/gantt_branch_loading_config.md - enables the dynamic loading in the Gantt chart
+- api/gantt_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
+- api/gantt_buttons_right_config.md - stores a collection of buttons resided in the right bottom corner of the lightbox
+- api/gantt_columns_config.md - configures the columns of the table
+- api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
+- api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
+- api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
+- api/gantt_details_on_create_config.md - 'says' to open the lightbox while creating new events by clicking on the '+' button
+- api/gantt_details_on_dblclick_config.md - 'says' to open the lightbox after double clicking on a task
+- api/gantt_drag_lightbox_config.md - enables the possibility to drag the lightbox by the header
+- api/gantt_drag_links_config.md - enables creating dependency links by drag-and-drop
+- api/gantt_drag_mode_config.md - stores the types of available drag-and-drop modes
+- api/gantt_drag_move_config.md - enables the possibility to move tasks by drag-and-drop
+- api/gantt_drag_progress_config.md - enables the possibility to change the task progress by dragging the progress knob
+- api/gantt_drag_resize_config.md - enables the possibility to resize tasks by drag-and-drop
+- api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
+- api/gantt_duration_unit_config.md - sets the duration unit
+- api/gantt_editable_property_config.md - changes the name of a property that affects the editing ability  of tasks/links in the read-only Gantt chart
+- api/gantt_end_date_config.md - sets the  end value of the time scale
+- api/gantt_fit_tasks_config.md - 'says' the Gantt chart to re-render the scale each time a task doesn't fit into the existing scale interval
+- api/gantt_grid_resize_config.md - makes the grid resizable by dragging the right grid's border
+- api/gantt_grid_resizer_attribute_config.md - sets the name of the attribute  of the grid resizer's  DOM element
+- api/gantt_grid_resizer_column_attribute_config.md - sets the name of the attribute  of the column resizer's  DOM element. The attribute presents the column's index
+- api/gantt_grid_width_config.md - sets the maximum width of the grid
+- api/gantt_highlight_critical_path_config.md - shows the critical path in the chart
+- api/gantt_inherit_scale_class_config.md - specifies whether sub-scales shall use the scale_cell_class template by default
+- api/gantt_initial_scroll_config.md - sets whether the timeline area will be initially scrolled to display the earliest task
+- api/gantt_keep_grid_width_config.md - 'says' to preserve the initial grid's width during resizing the columns within
+- api/gantt_layer_attribute_config.md - sets the name of the attribute of the task layer's DOM element
+- api/gantt_lightbox_config.md - specifies the lightbox object
+- api/gantt_lightbox_additional_height_config.md - increases the height of the lightbox
+- api/gantt_link_arrow_size_config.md - sets the size of the link arrow
+- api/gantt_link_attribute_config.md - sets the name of the attribute that will specify the id of the link's HTML element
+- api/gantt_link_line_width_config.md - sets the width of dependency links in the timeline area
+- api/gantt_link_wrapper_width_config.md - sets the width of the area (over the link) sensitive to clicks
+- api/gantt_links_config.md - stores the types of links dependencies
+- api/gantt_min_column_width_config.md - sets the minimum width for a column in the timeline area
+- api/gantt_min_duration_config.md - sets the minimum step (in milliseconds) for task's time values
+- api/gantt_min_grid_column_width_config.md - sets the minumum width for the grid (in pixels) while being resized
+- api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
+- api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
+- api/gantt_open_tree_initially_config.md - openes all branches initially
+- api/gantt_order_branch_config.md - activates the 'branch' mode that allows dragging tasks only within the parent branch
+- api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
+- api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
+- api/gantt_quick_info_detached_config.md - defines whether the task form will appear from the left/right side of the screen or near the selected task
+- api/gantt_quickinfo_buttons_config.md - stores a collection of buttons resided in the pop-up task's details form
+- api/gantt_readonly_config.md - activates the read-only mode for the Gantt chart
+- api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
+- api/gantt_root_id_config.md - sets the id of the virtual root element
+- api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
+- api/gantt_row_height_config.md - sets the default height for rows of the table
+- api/gantt_scale_height_config.md - sets the height of the time scale and the header of the grid
+- api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of leading/closing empty space
+- api/gantt_scale_unit_config.md - sets the unit of the time scale (X-Axis)
+- api/gantt_scroll_on_click_config.md - specifies whether the timeline area shall be scrolled while selecting to display the selected task
+- api/gantt_select_task_config.md - enables selection of tasks in the Gantt chart
+- api/gantt_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
+- api/gantt_show_chart_config.md - shows the chart (timeline) area of the Gantt chart
+- api/gantt_show_grid_config.md - shows the grid area of the Gantt chart
+- api/gantt_show_links_config.md - enables/disables displaying links in the Gantt chart
+- api/gantt_show_markers_config.md - shows/hides markers on the page
+- api/gantt_show_progress_config.md - enables showing a progress/spinner while data is loading
+- api/gantt_show_quick_info_config.md - activates/disables the 'quick_info' extension (pop-up task's details form)
+- api/gantt_show_task_cells_config.md - enables/disables displaying column borders in the chart area
+- api/gantt_skip_off_time_config.md - hides non-working time from the time scale
+- api/gantt_sort_config.md - enables sorting in the table
+- api/gantt_start_date_config.md - sets the start value of the time scale
+- api/gantt_start_on_monday_config.md - sets the start day of weeks
+- api/gantt_static_background_config.md - generates a background image for the timeline area instead of rendering actual columns' and rows' lines
+- api/gantt_step_config.md - sets the step of the time scale (X-Axis)
+- api/gantt_subscales_config.md - specifies the second time scale(s)
+- api/gantt_task_attribute_config.md - sets the name of the attribute that will specify the id of the task's HTML element
+- api/gantt_task_date_config.md - sets the format of the date label in the 'Time period' section of the lightbox
+- api/gantt_task_height_config.md - sets the height of task bars in the timeline area
+- api/gantt_task_scroll_offset_config.md - sets the offset (in pixels) of the nearest task from the left border in the timeline
+- api/gantt_time_picker_config.md - sets the format of the time drop-down selector in the lightbox
+- api/gantt_time_step_config.md - sets the minimum step (in minutes) for the task's time values
+- api/gantt_tooltip_hide_timeout_config.md - sets the length of time, in milliseconds, before the tooltip hides
+- api/gantt_tooltip_offset_x_config.md - sets the  the right (if positive) offset of the tooltip's position
+- api/gantt_tooltip_offset_y_config.md - sets the  the top (if positive) offset of the tooltip's position
+- api/gantt_tooltip_timeout_config.md - sets the timeout in milliseconds before the tooltip is displayed for a task
+- api/gantt_touch_config.md - enables/disables the touch support for the Gantt chart
+- api/gantt_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
+- api/gantt_touch_feedback_config.md - enables/disables vibration while moving tasks on touch devices
+- api/gantt_type_renderers_config.md - redefines functions responsible for displaying different types of tasks
+- api/gantt_types_config.md - stores the names of lighbox's structures (used for different types of tasks)
+- api/gantt_work_time_config.md - enables calculating the duration of tasks in working time instead of calendar time
+- api/gantt_xml_date_config.md - sets the date format that is used to parse data from the data set
+}}
+
+@index:
+- api/gantt_api_date_config.md
+- api/gantt_autofit_config.md
+- api/gantt_autosize_config.md
+- api/gantt_autosize_min_width_config.md
+- api/gantt_branch_loading_config.md
+- api/gantt_buttons_left_config.md
+- api/gantt_buttons_right_config.md
+- api/gantt_columns_config.md
+- api/gantt_correct_work_time_config.md
+- api/gantt_date_grid_config.md
+- api/gantt_date_scale_config.md
+- api/gantt_details_on_create_config.md
+- api/gantt_details_on_dblclick_config.md
+- api/gantt_drag_lightbox_config.md
+- api/gantt_drag_links_config.md
+- api/gantt_drag_mode_config.md
+- api/gantt_drag_move_config.md
+- api/gantt_drag_progress_config.md
+- api/gantt_drag_resize_config.md
+- api/gantt_duration_step_config.md
+- api/gantt_duration_unit_config.md
+- api/gantt_editable_property_config.md
+- api/gantt_end_date_config.md
+- api/gantt_fit_tasks_config.md
+- api/gantt_grid_resize_config.md
+- api/gantt_grid_resizer_attribute_config.md
+- api/gantt_grid_resizer_column_attribute_config.md
+- api/gantt_grid_width_config.md
+- api/gantt_highlight_critical_path_config.md
+- api/gantt_inherit_scale_class_config.md
+- api/gantt_initial_scroll_config.md
+- api/gantt_keep_grid_width_config.md
+- api/gantt_layer_attribute_config.md
+- api/gantt_lightbox_config.md
+- api/gantt_lightbox_additional_height_config.md
+- api/gantt_link_arrow_size_config.md
+- api/gantt_link_attribute_config.md
+- api/gantt_link_line_width_config.md
+- api/gantt_link_wrapper_width_config.md
+- api/gantt_links_config.md
+- api/gantt_min_column_width_config.md
+- api/gantt_min_duration_config.md
+- api/gantt_min_grid_column_width_config.md
+- api/gantt_multiselect_config.md
+- api/gantt_multiselect_one_level_config.md
+- api/gantt_open_tree_initially_config.md
+- api/gantt_order_branch_config.md
+- api/gantt_preserve_scroll_config.md
+- api/gantt_prevent_default_scroll_config.md
+- api/gantt_quick_info_detached_config.md
+- api/gantt_quickinfo_buttons_config.md
+- api/gantt_readonly_config.md
+- api/gantt_readonly_property_config.md
+- api/gantt_root_id_config.md
+- api/gantt_round_dnd_dates_config.md
+- api/gantt_row_height_config.md
+- api/gantt_scale_height_config.md
+- api/gantt_scale_offset_minimal_config.md
+- api/gantt_scale_unit_config.md
+- api/gantt_scroll_on_click_config.md
+- api/gantt_select_task_config.md
+- api/gantt_server_utc_config.md
+- api/gantt_show_chart_config.md
+- api/gantt_show_grid_config.md
+- api/gantt_show_links_config.md
+- api/gantt_show_markers_config.md
+- api/gantt_show_progress_config.md
+- api/gantt_show_quick_info_config.md
+- api/gantt_show_task_cells_config.md
+- api/gantt_skip_off_time_config.md
+- api/gantt_sort_config.md
+- api/gantt_start_date_config.md
+- api/gantt_start_on_monday_config.md
+- api/gantt_static_background_config.md
+- api/gantt_step_config.md
+- api/gantt_subscales_config.md
+- api/gantt_task_attribute_config.md
+- api/gantt_task_date_config.md
+- api/gantt_task_height_config.md
+- api/gantt_task_scroll_offset_config.md
+- api/gantt_time_picker_config.md
+- api/gantt_time_step_config.md
+- api/gantt_tooltip_hide_timeout_config.md
+- api/gantt_tooltip_offset_x_config.md
+- api/gantt_tooltip_offset_y_config.md
+- api/gantt_tooltip_timeout_config.md
+- api/gantt_touch_config.md
+- api/gantt_touch_drag_config.md
+- api/gantt_touch_feedback_config.md
+- api/gantt_type_renderers_config.md
+- api/gantt_types_config.md
+- api/gantt_work_time_config.md
+- api/gantt_xml_date_config.md
+

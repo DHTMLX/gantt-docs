@@ -1,0 +1,152 @@
+
+Events
+=======
+
+{{api
+- api/gantt_onafterlightbox_event.md - fires after the user has closed the lightbox (edit form)
+- api/gantt_onafterlinkadd_event.md - fires after a new link is added to the Gantt chart
+- api/gantt_onafterlinkdelete_event.md - fires after the user deletes a link
+- api/gantt_onafterlinkupdate_event.md - fires after the user updates a link
+- api/gantt_onaftertaskadd_event.md - fires after the user adds a task to the Gantt chart
+- api/gantt_onaftertaskdelete_event.md - fires after the user deletes a task
+- api/gantt_onaftertaskdrag_event.md - fires after the user has finished to drag and released the mouse button
+- api/gantt_onaftertaskmove_event.md - fires after a task was moved to a new position
+- api/gantt_onaftertaskupdate_event.md - fires after the user updates a task
+- api/gantt_onbeforedatarender_event.md - fires before data is rendered on the page
+- api/gantt_onbeforeganttready_event.md - fires before the dhtmlxGantt initialization is started
+- api/gantt_onbeforeganttrender_event.md - fires before the Gantt chart is rendered on the page
+- api/gantt_onbeforelightbox_event.md - fires immediately before the user opens the lightbox (edit form)
+- api/gantt_onbeforelinkadd_event.md - fires before a new link is added to the Gantt chart
+- api/gantt_onbeforelinkdelete_event.md - fires before the user deletes a link
+- api/gantt_onbeforelinkdisplay_event.md - fires after the links have been loaded to the Gantt chart but before they are displayed
+- api/gantt_onbeforelinkupdate_event.md - fires before a link is updated
+- api/gantt_onbeforeparse_event.md - fires before data started to be parsed
+- api/gantt_onbeforerowdragend_event.md - fires before the user drops a row in  the grid
+- api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
+- api/gantt_onbeforetaskchanged_event.md - fires after the user has finished dragging and released the mouse button but before the changes are applied
+- api/gantt_onbeforetaskdelete_event.md - fires before the user deletes a task
+- api/gantt_onbeforetaskdisplay_event.md - fires after the tasks have been loaded to the Gantt chart but before they are displayed
+- api/gantt_onbeforetaskdrag_event.md - fires after the user has pressed the mouse button and started dragging, but before dhtmlxGantt starts the drag-and-drop operation
+- api/gantt_onbeforetaskmove_event.md - fires before a task is moved to a new position
+- api/gantt_onbeforetaskselected_event.md - fires before the user selects a task
+- api/gantt_onbeforetaskupdate_event.md - fires before the user updates a task
+- api/gantt_onclear_event.md - fires after all tasks were removed from the Gantt chart
+- api/gantt_oncolumnresize_event.md - fires when the user is dragging the column's border to resize the column
+- api/gantt_oncolumnresizeend_event.md - fires after the user finished dragging the column's border to resize the column
+- api/gantt_oncolumnresizestart_event.md - fires before the user starts to drag the column's border to resize the column
+- api/gantt_oncontextmenu_event.md - occurs when the user clicks the right mouse button inside the Gantt chart
+- api/gantt_ondatarender_event.md - fires after data was rendered on the page
+- api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
+- api/gantt_onganttready_event.md - fires after the dhtmlxGantt initialization is complete but the Gantt chart is not rendered on the page yet.
+- api/gantt_onganttrender_event.md - fires after the Gantt chart was rendered on the page
+- api/gantt_ongridheaderclick_event.md - fires when the user clicks on the grid's header
+- api/gantt_ongridresize_event.md - fires when the user is dragging the grid's border to resize the grid
+- api/gantt_ongridresizeend_event.md - fires after the user finished dragging the grid's border to resize the grid
+- api/gantt_ongridresizestart_event.md - fires before the user starts to drag the grid's border to resize the grid
+- api/gantt_onlightbox_event.md - fires after the user has opened the lightbox (edit form)
+- api/gantt_onlightboxbutton_event.md - fires when the user clicks on a custom button in the lightbox
+- api/gantt_onlightboxcancel_event.md - fires when the user clicks on the 'Cancel' button in the lightbox
+- api/gantt_onlightboxchange_event.md - fires when the structure of the lightbox is changed
+- api/gantt_onlightboxdelete_event.md - fires when the user clicks on the 'Delete' button in the lightbox
+- api/gantt_onlightboxsave_event.md - fires when the user clicks on the 'Save' button in the lightbox
+- api/gantt_onlinkclick_event.md - fires when the user clicks on a link
+- api/gantt_onlinkdblclick_event.md - fires when the user double clicks on a link
+- api/gantt_onlinkidchange_event.md - fires when the id of a link is changed
+- api/gantt_onlinkvalidation_event.md - fires when the user adds a new link and dhtmlxGantt checks whether the link is valid
+- api/gantt_onloadend_event.md - fires after loading data from the data source has been complete
+- api/gantt_onloadstart_event.md - fires immediately before loading data from the data source has been started
+- api/gantt_onmousemove_event.md - fires when the mouse is moved over a task bar
+- api/gantt_onoptionsload_event.md - fires after a collection of options has been loaded from the server, but isn't parsed yet
+- api/gantt_onparse_event.md - fires after data was parsed (became available for API) but before it was rendered in the Gantt chart
+- api/gantt_onrowdragend_event.md - fires after the user drops a row in the grid
+- api/gantt_onrowdragstart_event.md - fires before the user drags a row of the grid
+- api/gantt_onscaleadjusted_event.md - fires when the scale is re-rendered in order to display all tasks completely
+- api/gantt_onscaleclick_event.md - fires when the user clicks on the cell in the time scale
+- api/gantt_ontaskclick_event.md - fires when the user clicks on a task row in the  grid area (including the 'expand/collapse' and 'add task' buttons) or on a task bar in the timeline area
+- api/gantt_ontaskclosed_event.md - fires when a branch has been closed
+- api/gantt_ontaskcreated_event.md - fires when user creates a new task by pressing '+' button in a grid, and also when the api/gantt_createtask.md method is called
+- api/gantt_ontaskdblclick_event.md - fires when the user double clicks on a task
+- api/gantt_ontaskdrag_event.md - fires when the user drags a task
+- api/gantt_ontaskidchange_event.md - fires when the id of a task is changed
+- api/gantt_ontaskloading_event.md - fires when a task is being loaded from the data source
+- api/gantt_ontaskopened_event.md - fires when a branch has been opened
+- api/gantt_ontaskrowclick_event.md - fires when the user clicks on a row in the table
+- api/gantt_ontaskselected_event.md - fires when the user selects a task
+- api/gantt_ontaskunselected_event.md - fires when the user unselects a task by selecting some other task
+- api/gantt_ontemplatesready_event.md - fires when the dhtmlxGantt templates are initialized
+}}
+
+@index:
+- api/gantt_onafterlightbox_event.md
+- api/gantt_onafterlinkadd_event.md
+- api/gantt_onafterlinkdelete_event.md
+- api/gantt_onafterlinkupdate_event.md
+- api/gantt_onaftertaskadd_event.md
+- api/gantt_onaftertaskdelete_event.md
+- api/gantt_onaftertaskdrag_event.md
+- api/gantt_onaftertaskmove_event.md
+- api/gantt_onaftertaskupdate_event.md
+- api/gantt_onbeforedatarender_event.md
+- api/gantt_onbeforeganttready_event.md
+- api/gantt_onbeforeganttrender_event.md
+- api/gantt_onbeforelightbox_event.md
+- api/gantt_onbeforelinkadd_event.md
+- api/gantt_onbeforelinkdelete_event.md
+- api/gantt_onbeforelinkdisplay_event.md
+- api/gantt_onbeforelinkupdate_event.md
+- api/gantt_onbeforeparse_event.md
+- api/gantt_onbeforerowdragend_event.md
+- api/gantt_onbeforetaskadd_event.md
+- api/gantt_onbeforetaskchanged_event.md
+- api/gantt_onbeforetaskdelete_event.md
+- api/gantt_onbeforetaskdisplay_event.md
+- api/gantt_onbeforetaskdrag_event.md
+- api/gantt_onbeforetaskmove_event.md
+- api/gantt_onbeforetaskselected_event.md
+- api/gantt_onbeforetaskupdate_event.md
+- api/gantt_onclear_event.md
+- api/gantt_oncolumnresize_event.md
+- api/gantt_oncolumnresizeend_event.md
+- api/gantt_oncolumnresizestart_event.md
+- api/gantt_oncontextmenu_event.md
+- api/gantt_ondatarender_event.md
+- api/gantt_onemptyclick_event.md
+- api/gantt_onganttready_event.md
+- api/gantt_onganttrender_event.md
+- api/gantt_ongridheaderclick_event.md
+- api/gantt_ongridresize_event.md
+- api/gantt_ongridresizeend_event.md
+- api/gantt_ongridresizestart_event.md
+- api/gantt_onlightbox_event.md
+- api/gantt_onlightboxbutton_event.md
+- api/gantt_onlightboxcancel_event.md
+- api/gantt_onlightboxchange_event.md
+- api/gantt_onlightboxdelete_event.md
+- api/gantt_onlightboxsave_event.md
+- api/gantt_onlinkclick_event.md
+- api/gantt_onlinkdblclick_event.md
+- api/gantt_onlinkidchange_event.md
+- api/gantt_onlinkvalidation_event.md
+- api/gantt_onloadend_event.md
+- api/gantt_onloadstart_event.md
+- api/gantt_onmousemove_event.md
+- api/gantt_onoptionsload_event.md
+- api/gantt_onparse_event.md
+- api/gantt_onrowdragend_event.md
+- api/gantt_onrowdragstart_event.md
+- api/gantt_onscaleadjusted_event.md
+- api/gantt_onscaleclick_event.md
+- api/gantt_ontaskclick_event.md
+- api/gantt_ontaskclosed_event.md
+- api/gantt_ontaskcreated_event.md
+- api/gantt_ontaskdblclick_event.md
+- api/gantt_ontaskdrag_event.md
+- api/gantt_ontaskidchange_event.md
+- api/gantt_ontaskloading_event.md
+- api/gantt_ontaskopened_event.md
+- api/gantt_ontaskrowclick_event.md
+- api/gantt_ontaskselected_event.md
+- api/gantt_ontaskunselected_event.md
+- api/gantt_ontemplatesready_event.md
+
+
