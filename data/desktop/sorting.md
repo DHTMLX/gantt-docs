@@ -84,3 +84,29 @@ Using a custom function to sort a Gantt chart
 </script>
 ~~~
 {{sample 07_grid/04_custom_sorting.html }}
+
+Per column Grid sorting
+-----------------------
+
+It's possible to specify a custom sorting rule for each particular column. There are three most common per column sorting scenarios:
+
+- disabling sorting for a column by setting *sort* to false
+
+~~~js
+gantt.config.columns[1].sort = false;
+~~~
+
+- sorting a column according to the provided sorting functions by setting *sort* to a function
+
+~~~js
+gantt.config.columns[1].sort = function(a,b){
+	return weird_computation(a,b);
+};
+~~~
+
+- sorting a column according to the values of a different field of the task by
+setting *sort* to that field 
+
+~~~js
+gantt.config.columns[1].sort = 'other_field';
+~~~

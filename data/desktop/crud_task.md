@@ -42,6 +42,22 @@ and hide the 'Add' button for such rows:
 	08_api/11_project_structure.html
 }}
 
+Adding unscheduled tasks
+-------------------------
+
+There's a possibility to add tasks without dates into the Gantt chart. It can be implemented by setting the *unscheduled* parameter with the value *true* in the task's description:
+
+~~~js
+{"id":11, "text":"Project #1", type:gantt.config.types.project, "progress": 0.6, 
+	"open": true},
+   {"id":14, "text":"Task #1", unscheduled:false, "start_date":"02-04-2013", 
+   		"duration":"6", "parent":"11"},
+   {"id":17, "text":"Task #2", unscheduled:true,  "start_date":"", 			 
+   		"duration":"", "parent":"11"}
+~~~
+
+Thus, the task with the id "17" will be shown in the grid as an empty row, while the text "Task #2" will be displayed in the tree.
+
 
 Updating a task's property
 ------------------------------

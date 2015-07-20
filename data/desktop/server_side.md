@@ -156,6 +156,90 @@ scheduler.getTask(1).text = "Task 111"; //changes event's data
 scheduler.updateTask(1); // renders the updated task
 ~~~
 
+Saving data from REST server 
+--------------------------------------
+To make dataProcessor work with the REST backend, you need to do 2 things: 
+
+1. Specify the path to your REST server in the dataProcessor's constructor.
+2. Call the setTransactionMode method with the "REST" value.
+
+~~~js
+var dp = new dataProcessor("http://example.com/data");
+dp.init(gantt);
+dp.setTransactionMode("REST");
+~~~
+<br>
+
+{{note
+Note, the response can be any valid JSON object. 
+}}
+
+To change the id of the event while updating - use the **tid** property. 
+
+
+~~~js
+{
+	tid: "some"
+}
+~~~
+
+###Dataprocessor with the use of POST, PUT, GET, DELETE HTTP methods for CRUD requests
+
+The url is formed by the following rule:
+
+api/link/id,<br>
+api/task/id
+
+where "api" is the url you've specified in the dataProcessor configuration.
+
+Initalizing dataprocessor:
+
+~~~js
+var dp = new dataProcessor("apiUrl");
+dp.init(gantt);
+dp.setTransactionMode("REST");
+~~~
+
+Possible requests:
+
+- load data
+
+GET 
+/apiUrl
+
+- add a new task
+
+PUT
+/apiUrl/task/taskId
+
+- update a task
+
+POST
+/apiUrl/task/taskId
+
+- delete a task
+
+DELETE
+/apiUrl/task/taskId
+
+
+- add a new link
+
+PUT
+/apiUrl/link/linkId
+
+- update a link
+
+POST
+/apiUrl/link/linkId
+
+- delete a link
+
+DELETE
+/apiUrl/link/linkId
+
+
+
 Storing the order of tasks
 -------------------------------------------------
 To store the order of tasks in the tree (among sublings) on the server:

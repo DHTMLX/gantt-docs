@@ -30,3 +30,14 @@ For example,  HTML5 DOCTYPE is:
 ~~~html
 <!DOCTYPE html>
 ~~~
+
+An error alert appears during data loading
+-----------------------------------------
+
+An error alerts signals that there were some problems while loading data. 
+
+<img src="desktop/error_alert.png">
+
+So firstly, try to find out what causes this error.
+If you want to make sure that such an alert won't be displayed in any case, use the *show_errors:false* in the gantt configuration. 
+

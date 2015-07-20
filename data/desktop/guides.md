@@ -121,6 +121,7 @@ The articles come around key procedures and problem-solving activities.
             <ul id="internet_sublist">
                     <li>desktop/link_object_operations.md</li>
 					<li>desktop/crud_dependency.md</li>
+                    <li>desktop/auto_scheduling.md</li>
             </ul>
         </td>
         <td class='topic_description'>Covers the basics of performing general operations under dependency objects, such as adding, deleting, getting the dependency object  etc.</td>
@@ -147,6 +148,8 @@ The articles come around key procedures and problem-solving activities.
             <ul id="internet_sublist">
                     <li>desktop/date_format.md</li>
                     <li>desktop/date_operations.md</li>
+                    <li>desktop/fullscreen_mode.md</li>
+                    <li>desktop/content_security_policy.md</li>
             </ul>
         </td>
         <td class='topic_description'>Guides you through common information you may need while creating a Gantt chart: converting dates to string and backward, allowable characters in the date format, etc.</td>

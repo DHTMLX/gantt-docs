@@ -19,6 +19,26 @@ gantt.init("gantt_here");
 	07_grid/02_branch_ordering.html
  }}
  
+ 
+Drag-n-drop within the whole Gantt structure
+--------------------------------------------
+
+The api/gantt_order_branch_config.md option allows dragging tasks within the same Tree level.
+
+It's also possible to enable the mode in which tasks can be reordered within the whole Gantt. It means that a task can replace another task of any Tree level.
+To use this type of tasks reordering, use the api/gantt_order_branch_free_config.md option:
+
+~~~js
+// reordering tasks within the whole gantt
+gantt.config.order_branch = true;
+gantt.config.order_branch_free = true;
+ 
+gantt.init("gantt_here");
+~~~
+ 
+{{sample
+07_grid/08_drag_between_levels.html
+}} 
 
 Denying dropping to specific positions
 ------------------------------------------------

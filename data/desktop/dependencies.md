@@ -5,4 +5,5 @@ Configuring Dependency Links
 {{index
 - desktop/link_object_operations.md
 - desktop/crud_dependency.md
+- desktop/auto_scheduling.md
 }}

@@ -24,6 +24,10 @@ The state object reflects the inner UI configuration of the Gantt chart and has 
 			<td class="webixdoc_links0"><b>drag_mode</b></td>
 			<td>(<i>'move','resize','progress', 'ignore'</i>) the drag mode. 'Undefined' or 'null', if no tasks are currently being dragged in the Gantt chart.</td>
 		</tr>
+         <tr>
+			<td class="webixdoc_links0"><b>fullscreen</b></td>
+			<td>(<i>boolean</i>) the flag for the fullscreen mode. 'True', if the Gantt chart is in the fullscreen mode, 'false' otherwise.</td>
+		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>lightbox</b></td>
 			<td>(<i>string</i>)  the id of a task that is currently opened in the lightbox. 'Undefined' or 'null', if no tasks are opened in the lightbox.</td>
