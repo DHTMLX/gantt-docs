@@ -11,7 +11,7 @@ addTask
 
 
 @returns:
-- id	string, number	the task's id
+- id	string/number	the task's id
 
 @example:
 var taskId = gantt.addTask({

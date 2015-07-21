@@ -16,9 +16,9 @@ Events
 - api/gantt_onaftertaskupdate_event.md - fires after the user updates a task
 - api/gantt_onajaxerror_event.md - fires if the server returns an error
 - api/gantt_onbeforeautoschedule_event.md - fires before auto scheduling
-- api/gantt_onbeforecollapse_event.md - 
+- api/gantt_onbeforecollapse_event.md - before gantt exits the fullscreen mode and goes back to normal mode
 - api/gantt_onbeforedatarender_event.md - fires before data is rendered on the page
-- api/gantt_onbeforeexpand_event.md - 
+- api/gantt_onbeforeexpand_event.md - fires before gantt is expanded to full screen
 - api/gantt_onbeforeganttready_event.md - fires before the dhtmlxGantt initialization is started
 - api/gantt_onbeforeganttrender_event.md - fires before the Gantt chart is rendered on the page
 - api/gantt_onbeforelightbox_event.md - fires immediately before the user opens the lightbox (edit form)
@@ -39,17 +39,17 @@ Events
 - api/gantt_onbeforetaskupdate_event.md - fires before the user updates a task
 - api/gantt_oncircularlinkerror_event.md - fires when the circular reference has been detected and auto scheduling is not possible
 - api/gantt_onclear_event.md - fires after all tasks were removed from the Gantt chart
-- api/gantt_oncollapse_event.md - 
+- api/gantt_oncollapse_event.md - fires when gantt went back to normal mode from the full screen mode
 - api/gantt_oncolumnresize_event.md - fires when the user is dragging the column's border to resize the column
 - api/gantt_oncolumnresizeend_event.md - fires after the user finished dragging the column's border to resize the column
 - api/gantt_oncolumnresizestart_event.md - fires before the user starts to drag the column's border to resize the column
 - api/gantt_oncontextmenu_event.md - occurs when the user clicks the right mouse button inside the Gantt chart
 - api/gantt_ondatarender_event.md - fires after data was rendered on the page
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
-- api/gantt_onexpand_event.md - 
+- api/gantt_onexpand_event.md - fires when gantt is expended to full screen
 - api/gantt_onganttready_event.md - fires after the dhtmlxGantt initialization is complete but the Gantt chart is not rendered on the page yet.
 - api/gantt_onganttrender_event.md - fires after the Gantt chart was rendered on the page
-- api/gantt_onganttscroll_event.md - 
+- api/gantt_onganttscroll_event.md - fires when the Gantt chart is scrolled to a particular point
 - api/gantt_ongridheaderclick_event.md - fires when the user clicks on the grid's header
 - api/gantt_ongridresize_event.md - fires when the user is dragging the grid's border to resize the grid
 - api/gantt_ongridresizeend_event.md - fires after the user finished dragging the grid's border to resize the grid

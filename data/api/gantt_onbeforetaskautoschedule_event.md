@@ -17,8 +17,28 @@ onBeforeTaskAutoSchedule
 @example:
 gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, startDate, link, predecessor){
     // any custom logic here
+    return true;
 });
 
 @template:	api_event
 @descr:
 the event is blockable - returning false will cancel further processing
+
+
+@related:
+desktop/auto_scheduling.md
+
+@relatedsample:
+
+02_extensions/12_auto_scheduling.html
+
+
+@relatedapi:
+
+- api/gantt_auto_scheduling_config.md
+- api/gantt_auto_scheduling_initial_config.md
+- api/gantt_auto_scheduling_strict_config.md
+- api/gantt_onafterautoschedule_event.md
+- api/gantt_onaftertaskautoschedule_event.md
+- api/gantt_onbeforeautoschedule_event.md
+- api/gantt_oncircularlinkerror_event.md

@@ -51,7 +51,7 @@ Custom sorting functions
 -------------------------------------------------
 To apply a custom sorting function to the grid, call the api/gantt_sort.md method with the name of your custom function as the first ( and only) parameter.
 
-A custom sorting function is called for each pair of adjacent values and return 1,-1 or 0:
+A custom sorting function is called for each pair of adjacent values and returns 1,-1 or 0:
 
 - **1** - an object with the first value in pair must go before the second one;
 - **-1** - the second object goes before the first one;
@@ -100,9 +100,17 @@ gantt.config.columns[1].sort = false;
 
 ~~~js
 gantt.config.columns[1].sort = function(a,b){
-	return weird_computation(a,b);
+	return custom_function(a,b);
 };
 ~~~
+
+A custom sorting function is called for a pair of task objects (a and b) and returns 1,-1 or 0:
+
+<ul>
+<li><b>1</b> - an object with the first value in pair must go before the second one;</li>
+<li><b>-1</b> - the second object goes before the first one;</li>
+<li><b>0</b> - the order of both objects doesn't change.</li>
+</ul>
 
 - sorting a column according to the values of a different field of the task by
 setting *sort* to that field 

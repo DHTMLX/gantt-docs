@@ -13,6 +13,8 @@ setParent
 
 
 @example:
+gantt.setParent(task, pid);
+
 
 @template:	api_method
 @descr:

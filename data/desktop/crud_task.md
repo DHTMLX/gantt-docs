@@ -56,8 +56,17 @@ There's a possibility to add tasks without dates into the Gantt chart. It can be
    		"duration":"", "parent":"11"}
 ~~~
 
-Thus, the task with the id "17" will be shown in the grid as an empty row, while the text "Task #2" will be displayed in the tree.
+Thus, the task with the id "17" will be added to the gantt without the start date and displayed as an empty row.
 
+In order to display unscheduled tasks, use the config parameter api/gantt_show_unscheduled_config.md set to *true*:
+
+~~~js
+gantt.config.show_unscheduled = true;
+~~~
+
+{{sample
+01_initialization/19_tasks_without_dates.html
+}}
 
 Updating a task's property
 ------------------------------

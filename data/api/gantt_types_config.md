@@ -1,6 +1,6 @@
 types
 =============
-@short:stores the names of lighbox's structures (used for different types of tasks) 
+@short:stores the names of lightbox's structures (used for different types of tasks) 
 	
 @edition: pro
 @type: object

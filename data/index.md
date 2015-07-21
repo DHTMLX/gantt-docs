@@ -1,16 +1,16 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 3.2</h2>
+    <h2>Meet Gantt 3.3</h2>
     
     <p>
     New version brings you new functionality and extended API
     </p>
     <ul>
-		<li><a href="desktop/grouping.md">Grouping tasks by any attribute</a></li>
-        <li><a href="desktop/multiselection.md">Multi-task selection</a></li>
-        <li><a href="desktop/excel.md">Data export to iCal and Excel formats</a></li>
-        <li><a href="desktop/performance.md">Major performance improvement</a></li>
+		<li><a href="desktop/auto_scheduling.md">Auto scheduling</a></li>
+        <li><a href="desktop/fullscreen_mode.md">Full screen mode</a></li>
+        <li><a href="desktop/crud_task.md#addingunscheduledtasks">Unscheduled tasks</a></li>
+        <li><a href="desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure">Drag-and-drop between levels</a></li>
 	</ul>
 
     <p class='action_buttons'>

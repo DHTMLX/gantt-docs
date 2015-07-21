@@ -9,7 +9,7 @@ Methods
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displayes an additional layer with custom elements for a task in the timeline area
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt
-- api/gantt_autoschedule.md - recalculates the schedule starting from a particular task
+- api/gantt_autoschedule.md - recalculates the schedule of the project
 - api/gantt_batchupdate.md - updates multiple tasks/links at once
 - api/gantt_calculateduration.md - calculates the duration of a task
 - api/gantt_calculateenddate.md - calculates the end date of a task
@@ -21,7 +21,7 @@ Methods
 - api/gantt_checkevent.md - checks whether an event has some handler(s) specified
 - api/gantt_clearall.md - removes all tasks from the Gantt chart
 - api/gantt_close.md - closes the branch with the specified id
-- api/gantt_collapse.md - 
+- api/gantt_collapse.md - collapses gantt from the full screen mode to the normal mode
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
 - api/gantt_datefrompos.md - gets the date of the specified horizontal  position in the chart area
@@ -32,7 +32,7 @@ Methods
 - api/gantt_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent() method)
 - api/gantt_eachselectedtask.md - iterates over all selected tasks in the Gantt chart
 - api/gantt_eachtask.md - iterates over specified tasks in the Gantt chart
-- api/gantt_expand.md - 
+- api/gantt_expand.md - expands gantt to the full screen mode
 - api/gantt_getchildren.md - returns the 1st-level child tasks of the specified parent branch
 - api/gantt_getclosestworktime.md - returns the closest working time
 - api/gantt_getglobaltaskindex.md - get the index of a task in the tree
@@ -84,7 +84,7 @@ Methods
 - api/gantt_isselectedtask.md - checks whether the specified task is currently selected
 - api/gantt_istaskexists.md - checks whether the specified task exists
 - api/gantt_istaskvisible.md - checks whether the specifies task is currently rendered in the Gantt chart
-- api/gantt_isunscheduled.md - 
+- api/gantt_isunscheduledtask.md - checks if the task is unscheduled
 - api/gantt_isworktime.md - checks whether the specified date is working or not
 - api/gantt_load.md - loads data to the gantt from an external data source
 - api/gantt_locate.md - gets the id of a task from the specified HTML event
@@ -208,7 +208,7 @@ Methods
 - api/gantt_isselectedtask.md
 - api/gantt_istaskexists.md
 - api/gantt_istaskvisible.md
-- api/gantt_isunscheduled.md
+- api/gantt_isunscheduledtask.md
 - api/gantt_isworktime.md
 - api/gantt_load.md
 - api/gantt_locate.md

@@ -31,13 +31,19 @@ For example,  HTML5 DOCTYPE is:
 <!DOCTYPE html>
 ~~~
 
-An error alert appears during data loading
+An error alert appears in the right top corner
 -----------------------------------------
-
-An error alerts signals that there were some problems while loading data. 
 
 <img src="desktop/error_alert.png">
 
-So firstly, try to find out what causes this error.
-If you want to make sure that such an alert won't be displayed in any case, use the *show_errors:false* in the gantt configuration. 
+Firstly, you need to find out what causes the error. 
+
+The messages appear when the component can not perform properly. 
+They usually indicate a real issue with the data or with the application logic. So simply hiding them will only camouflage the issue while it can appear in other parts of the app.
+
+However, you may want to disable these messages before shipping your application to end users. In this case you can use the api/gantt_show_errors_config.md config:
+
+~~~js
+gantt.config.show_errors = false;
+~~~
 

@@ -98,28 +98,16 @@ Extra data properties will be parsed as strings and loaded to the client side wh
 
 See examples of data with custom properties <a href="desktop/supported_data_formats.md#addingcustompropertiestothedata">here</a>.
 
-Backward planning
+Loading task dates
 ---------------------
 
-By default, it's possible to set a task's terms (start date, duration and end date) for a task in two ways:
+There are three ways to define task schedule in the data feed:
 
 - start_date + duration
 - start date + end_date
+- duration + end_date
 
-The missing parameters (*end_date* for the first case and *duration* for the second case) are automatically calculated.
-
-Since version 3.3 there's a possibility to plan a task backward - by means of calculating *duration* and *end_date* properties inside of the
- *else if* statement:
- 
-~~~js
-if(task.start_date){
-   if(!task.end_date && task.duration){
-      task.end_date = this.calculateEndDate(task.start_date, task.duration);
-   }
-}else if(task.end_date){
-   task.start_date = this.calculateEndDate(task.end_date, - task.duration);
-}
-~~~
+The property that is not specified will be calculated based on the ones that are defined in the data object.
 
 {{sample
 	01_initialization/18_backward_planning.html

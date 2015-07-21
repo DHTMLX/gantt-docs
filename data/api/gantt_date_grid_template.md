@@ -1,15 +1,21 @@
 date_grid
 =============
-@short:specifies the format of dates in the "Start time" column 
+@short:
+	specifies the content of start date or end date columns in grid
 	
 
 @params:
-- date	Date	the date which needs formatting
+- date			Date object		the date which needs formatting
+- task			object 			the task object
 
 @example:
-gantt.templates.date_grid = function(date){
-    return gantt.date.date_to_str(gantt.config.date_grid)(date);
-};
+gantt.templates.date_grid = function(date, task){
+   if(item && gantt.isUnscheduled(item) && gantt.config.show_unscheduled){
+    	return gantt.templates.task_unscheduled_time(item);
+   	}else{
+    	return gantt.templates.grid_date_format(date);
+   }
+}
 
 @template:	api_template
 @returns:

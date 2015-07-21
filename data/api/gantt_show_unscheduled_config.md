@@ -15,3 +15,12 @@ gantt.init("gantt_here");
 @descr:
 
 
+@related:
+desktop/crud_task.md#addingunscheduledtasks
+
+@relatedsample:
+01_initialization/19_tasks_without_dates.html
+
+@relatedapi:
+
+api/gantt_task_unscheduled_time_template.md

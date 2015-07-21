@@ -3,6 +3,21 @@ What's new
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+3.3
+----------
+
+- Dependency [Auto Scheduling](desktop/auto_scheduling.md) feature *
+- Support for [Fullscreen mode](desktop/fullscreen_mode.md)
+- Support for [unscheduled tasks](desktop/crud_task.md#addingunscheduledtasks)
+- Initial support for [Content Security Policy](desktop/content_security_policy.md)
+- A possibility of specifying [per column grid sorting](desktop/sorting.md#percolumngridsorting) settings
+- Improved branch ordering feature - [D'n'D between levels](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure) is added
+- Support of [REST mode for ajax loading/saving](desktop/server_side.md#savingdatafromrestserver)
+- Support of [backward planning](desktop/loading.md#loadingtaskdates)
+
+&#42; The marked functionality requires Commercial or Enterprise license, and not provided under GPL
+
+
 3.2
 ----------------
 

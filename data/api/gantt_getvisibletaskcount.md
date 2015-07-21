@@ -20,3 +20,6 @@ gantt.getVisibleTaskCount();
 @template:	api_method
 @descr:
 
+@relatedapi:
+
+api/gantt_gettaskcount.md

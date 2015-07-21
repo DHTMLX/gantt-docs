@@ -5,11 +5,15 @@ Templates of the Grid
 	<tbody>
     	<tr>
 			<td class="webixdoc_links0">api/gantt_date_grid_template.md</td>
-			<td>specifies the format of dates in the "Start time" column </td>
+			<td>specifies the content of start date or end date columns in grid</td>
 		</tr>
 		<tr>
 			<td class="webixdoc_links0">api/gantt_grid_blank_template.md</td>
 			<td>specifies the custom content inserted before the labels of child items in the tree column</td>
+		</tr>
+        <tr>
+			<td class="webixdoc_links0">api/gantt_grid_date_format_template.md</td>
+			<td>specifies the format of dates in the "Start time" column</td>
 		</tr>
 		<tr>
 			<td class="webixdoc_links0">api/gantt_grid_file_template.md</td>

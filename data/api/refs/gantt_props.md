@@ -70,14 +70,14 @@ Properties
 - api/gantt_select_task_config.md - enables selection of tasks in the Gantt chart
 - api/gantt_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
 - api/gantt_show_chart_config.md - shows the chart (timeline) area of the Gantt chart
-- api/gantt_show_errors_config.md - enables showing errors
+- api/gantt_show_errors_config.md - enables showing error alerts in case of unexpected behavior
 - api/gantt_show_grid_config.md - shows the grid area of the Gantt chart
 - api/gantt_show_links_config.md - enables/disables displaying links in the Gantt chart
 - api/gantt_show_markers_config.md - shows/hides markers on the page
 - api/gantt_show_progress_config.md - enables showing a progress/spinner while data is loading
 - api/gantt_show_quick_info_config.md - activates/disables the 'quick_info' extension (pop-up task's details form)
 - api/gantt_show_task_cells_config.md - enables/disables displaying column borders in the chart area
-- api/gantt_show_unscheduled_config.md - 
+- api/gantt_show_unscheduled_config.md - enables showing unscheduled tasks
 - api/gantt_skip_off_time_config.md - hides non-working time from the time scale
 - api/gantt_sort_config.md - enables sorting in the table
 - api/gantt_start_date_config.md - sets the start value of the time scale
@@ -99,7 +99,7 @@ Properties
 - api/gantt_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
 - api/gantt_touch_feedback_config.md - enables/disables vibration while moving tasks on touch devices
 - api/gantt_type_renderers_config.md - redefines functions responsible for displaying different types of tasks
-- api/gantt_types_config.md - stores the names of lighbox's structures (used for different types of tasks)
+- api/gantt_types_config.md - stores the names of lightbox's structures (used for different types of tasks)
 - api/gantt_work_time_config.md - enables calculating the duration of tasks in working time instead of calendar time
 - api/gantt_xml_date_config.md - sets the date format that is used to parse data from the data set
 }}

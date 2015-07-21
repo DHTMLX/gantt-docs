@@ -2,22 +2,20 @@ autoSchedule
 =============
 
 @short:
-	recalculates the schedule starting from a particular task
+	recalculates the schedule of the project
 
 @params:
-
-- taskId			number/string			the task's id
-
 
 
 @example:
 
-grid.autoSchedule(taskId);
-
-// recalculate the schedule of the whole project
 grid.autoSchedule();
 
 
 @template:	api_method
 @descr:
+to recalculate the schedule starting from a particular task, pass the id of the task as an argument to the autoSchedule() method:
 
+~~~js
+grid.autoSchedule(taskId);
+~~~

@@ -2,13 +2,14 @@ onBeforeCollapse
 =============
 
 @short:
-	fires before the Gantt chart is collapsed
+	 before gantt exits the fullscreen mode and goes back to normal mode
 
 @params:
 
 @example:
 gantt.attachEvent("onBeforeCollapse",function(){
-    // any custom logic here
+    // any custom logic here    
+    return true;
 });
 
 @returns:  
@@ -17,3 +18,19 @@ gantt.attachEvent("onBeforeCollapse",function(){
 @template:	api_event
 @descr:
 the event is blockable - returning false will cancel further processing
+
+@related:
+
+desktop/fullscreen_mode.md
+
+@relatedsample:
+
+02_extensions/11_full_screen.html
+
+@relatedapi:
+
+- api/gantt_onbeforeexpand_event.md
+- api/gantt_oncollapse_event.md
+- api/gantt_onexpand_event.md
+- api/gantt_collapse.md
+- api/gantt_expand.md
