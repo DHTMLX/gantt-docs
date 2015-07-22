@@ -98,7 +98,20 @@ Extra data properties will be parsed as strings and loaded to the client side wh
 
 See examples of data with custom properties <a href="desktop/supported_data_formats.md#addingcustompropertiestothedata">here</a>.
 
+Loading task dates
+---------------------
 
+There are three ways to define task schedule in the data feed:
+
+- start_date + duration
+- start date + end_date
+- duration + end_date
+
+The property that is not specified will be calculated based on the ones that are defined in the data object.
+
+{{sample
+	01_initialization/18_backward_planning.html
+}}
 
 Loading from an inline data source
 -----------------------------------------

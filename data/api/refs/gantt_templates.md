@@ -5,11 +5,12 @@ Templates
 
 {{api
 - api/gantt_api_date_template.md - specifies the format of dates that are set by means of API methods. Used to parse incoming dates
-- api/gantt_date_grid_template.md - specifies the format of dates in the "Start time" column
+- api/gantt_date_grid_template.md - specifies the template of start date or end date columns in grid
 - api/gantt_date_scale_template.md - specifies the date format of the time scale (X-Axis)
 - api/gantt_drag_link_template.md - specifies the text of tooltips that are displayed when the user creates a new dependency link
 - api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the link receiver (pop-up circle near the task bar)
 - api/gantt_grid_blank_template.md - specifies the custom content inserted before the labels of child items in the tree column
+- api/gantt_grid_date_format_template.md - specifies the format of dates in the "Start time" column
 - api/gantt_grid_file_template.md - specifies the icon of child items in the tree column
 - api/gantt_grid_folder_template.md - specifies the icon of parent items in the tree column
 - api/gantt_grid_header_class_template.md - specifies the CSS class that will be applied to the headers of the table's columns
@@ -31,6 +32,7 @@ Templates
 - api/gantt_task_row_class_template.md - specifies the CSS class that will be applied to the row of the timeline area
 - api/gantt_task_text_template.md - specifies the text in the task bars and the header of the lightbox
 - api/gantt_task_time_template.md - specifies the date period in the header of the lightbox
+- api/gantt_task_unscheduled_time_template.md - specifies the dates of unscheduled tasks
 - api/gantt_time_picker_template.md - specifies the format of the drop-down time selector in the lightbox
 - api/gantt_tooltip_date_format_template.md - specifies the format of start and end dates displayed in the tooltip
 - api/gantt_tooltip_text_template.md - specifies the text of tooltips
@@ -48,6 +50,7 @@ Templates
 - api/gantt_drag_link_template.md
 - api/gantt_drag_link_class_template.md
 - api/gantt_grid_blank_template.md
+- api/gantt_grid_date_format_template.md
 - api/gantt_grid_file_template.md
 - api/gantt_grid_folder_template.md
 - api/gantt_grid_header_class_template.md
@@ -69,6 +72,7 @@ Templates
 - api/gantt_task_row_class_template.md
 - api/gantt_task_text_template.md
 - api/gantt_task_time_template.md
+- api/gantt_task_unscheduled_time_template.md
 - api/gantt_time_picker_template.md
 - api/gantt_tooltip_date_format_template.md
 - api/gantt_tooltip_text_template.md

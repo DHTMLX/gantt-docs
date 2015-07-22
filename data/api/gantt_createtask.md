@@ -3,12 +3,13 @@ createTask
 @short:adds a new task and opens the lightbox to confirm
 	
 @params:
-- task	object		the task object
-- parent	string	the parent's id
+- task			object			the task object
+- parent		string			the parent's id
+* index			number			optional, the position the task will be added into (0 or greater)
 
 
 @returns:
-- id	string, number	the task's id	
+- id	string/number	the task's id	
 
 
 @example:
@@ -17,11 +18,14 @@ var taskId = gantt.createTask({
     text:"Task #5",
     start_date:"02-09-2013",
     duration:28
-}, "project_2");
+}, "project_2", 2);
 
 @template:	api_method
 
 @descr:
+If you set the *index* parameter with the value from 0 and greater, a task will be added to the specified position in the branch. 
+Otherwise, the task will be added to the end of the tasks' branch.
+
 The method invokes the api/gantt_ontaskcreated_event.md event. Note, the event fires before the new task is added to the dataset that allows you 
 to cancel saving of this task at all,for example, if the user clicks 'Cancel' button in the lightbox.
 

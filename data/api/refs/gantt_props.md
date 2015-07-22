@@ -4,6 +4,9 @@ Properties
 
 {{api
 - api/gantt_api_date_config.md - sets the date format for addTask() method to
+- api/gantt_auto_scheduling_config.md - enables auto scheduling
+- api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
+- api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
@@ -50,6 +53,7 @@ Properties
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
 - api/gantt_open_tree_initially_config.md - openes all branches initially
 - api/gantt_order_branch_config.md - activates the 'branch' mode that allows dragging tasks only within the parent branch
+- api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows dragging tasks within the whole gantt
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
 - api/gantt_quick_info_detached_config.md - defines whether the task form will appear from the left/right side of the screen or near the selected task
@@ -66,12 +70,14 @@ Properties
 - api/gantt_select_task_config.md - enables selection of tasks in the Gantt chart
 - api/gantt_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
 - api/gantt_show_chart_config.md - shows the chart (timeline) area of the Gantt chart
+- api/gantt_show_errors_config.md - enables showing error alerts in case of unexpected behavior
 - api/gantt_show_grid_config.md - shows the grid area of the Gantt chart
 - api/gantt_show_links_config.md - enables/disables displaying links in the Gantt chart
 - api/gantt_show_markers_config.md - shows/hides markers on the page
 - api/gantt_show_progress_config.md - enables showing a progress/spinner while data is loading
 - api/gantt_show_quick_info_config.md - activates/disables the 'quick_info' extension (pop-up task's details form)
 - api/gantt_show_task_cells_config.md - enables/disables displaying column borders in the chart area
+- api/gantt_show_unscheduled_config.md - enables showing unscheduled tasks
 - api/gantt_skip_off_time_config.md - hides non-working time from the time scale
 - api/gantt_sort_config.md - enables sorting in the table
 - api/gantt_start_date_config.md - sets the start value of the time scale
@@ -93,13 +99,16 @@ Properties
 - api/gantt_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
 - api/gantt_touch_feedback_config.md - enables/disables vibration while moving tasks on touch devices
 - api/gantt_type_renderers_config.md - redefines functions responsible for displaying different types of tasks
-- api/gantt_types_config.md - stores the names of lighbox's structures (used for different types of tasks)
+- api/gantt_types_config.md - stores the names of lightbox's structures (used for different types of tasks)
 - api/gantt_work_time_config.md - enables calculating the duration of tasks in working time instead of calendar time
 - api/gantt_xml_date_config.md - sets the date format that is used to parse data from the data set
 }}
 
 @index:
 - api/gantt_api_date_config.md
+- api/gantt_auto_scheduling_config.md
+- api/gantt_auto_scheduling_initial_config.md
+- api/gantt_auto_scheduling_strict_config.md
 - api/gantt_autofit_config.md
 - api/gantt_autosize_config.md
 - api/gantt_autosize_min_width_config.md
@@ -146,6 +155,7 @@ Properties
 - api/gantt_multiselect_one_level_config.md
 - api/gantt_open_tree_initially_config.md
 - api/gantt_order_branch_config.md
+- api/gantt_order_branch_free_config.md
 - api/gantt_preserve_scroll_config.md
 - api/gantt_prevent_default_scroll_config.md
 - api/gantt_quick_info_detached_config.md
@@ -162,12 +172,14 @@ Properties
 - api/gantt_select_task_config.md
 - api/gantt_server_utc_config.md
 - api/gantt_show_chart_config.md
+- api/gantt_show_errors_config.md
 - api/gantt_show_grid_config.md
 - api/gantt_show_links_config.md
 - api/gantt_show_markers_config.md
 - api/gantt_show_progress_config.md
 - api/gantt_show_quick_info_config.md
 - api/gantt_show_task_cells_config.md
+- api/gantt_show_unscheduled_config.md
 - api/gantt_skip_off_time_config.md
 - api/gantt_sort_config.md
 - api/gantt_start_date_config.md

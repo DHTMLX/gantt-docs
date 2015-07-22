@@ -16,6 +16,8 @@
 	<script src="../../gantt/codebase/ext/pdf.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../gantt/codebase/ext/multiselect.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../gantt/codebase/ext/grouping.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/auto_scheduling.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/fullscreen.js" type="text/javascript" charset="utf-8"></script>
 
 	<script type="text/javascript">
 		(function(){
