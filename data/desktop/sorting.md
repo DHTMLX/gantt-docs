@@ -90,13 +90,13 @@ Per column Grid sorting
 
 It's possible to specify a custom sorting rule for each particular column. There are three most common per column sorting scenarios:
 
-- disabling sorting for a column by setting *sort* to false
+1) disabling sorting for a column by setting *sort* to false
 
 ~~~js
 gantt.config.columns[1].sort = false;
 ~~~
 
-- sorting a column according to the provided sorting functions by setting *sort* to a function
+2) sorting a column according to the provided sorting functions by setting *sort* to a function
 
 ~~~js
 gantt.config.columns[1].sort = function(a,b){
@@ -112,7 +112,7 @@ A custom sorting function is called for a pair of task objects (a and b) and ret
 <li><b>0</b> - the order of both objects doesn't change.</li>
 </ul>
 
-- sorting a column according to the values of a different field of the task by
+3) sorting a column according to the values of a different field of the task by
 setting *sort* to that field 
 
 ~~~js

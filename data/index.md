@@ -7,10 +7,9 @@ Start
     New version brings you new functionality and extended API
     </p>
     <ul>
-		<li><a href="desktop/auto_scheduling.md">Auto scheduling</a></li>
+		<li><a href="desktop/auto_scheduling.md">Auto scheduling of tasks</a></li>
         <li><a href="desktop/fullscreen_mode.md">Full screen mode</a></li>
         <li><a href="desktop/crud_task.md#addingunscheduledtasks">Unscheduled tasks</a></li>
-        <li><a href="desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure">Drag-and-drop between levels</a></li>
 	</ul>
 
     <p class='action_buttons'>
