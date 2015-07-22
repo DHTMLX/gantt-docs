@@ -5,13 +5,13 @@ onGanttScroll
 	fires when the Gantt chart is scrolled to a particular point
 
 @params:
-- left		number		the left position of gantt
-- top		number		the right position of gantt
+- left		number		the position of horizontal scroll
+- top		number		the position of vertical scroll
 
 
 @example:
 
-gantt.attachEvent("onGanttScroll", function (x,y){
+gantt.attachEvent("onGanttScroll", function (left, top){
     // any custom logic here
 });
 
