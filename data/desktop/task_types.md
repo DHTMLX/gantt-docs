@@ -185,7 +185,7 @@ To define a new type with the name **meeting** and specify an individual lightbo
 gantt.config.types.meeting = "type_id";
 ~~~
 <i>
-where "release" is a programmatic name of the type. It doesn't affect anything. The only purpose of the programmatic type name is to make work with types more readable.<br>
+where "meeting" is a programmatic name of the type. It doesn't affect anything. The only purpose of the programmatic type name is to make work with types more readable.<br>
 "type_id" is the type identifier, that will be stored in the database. The type identifier must be unique within the <a href="api/gantt_types_config.md ">types</a> object.</i>
 <br><br>
 	</li>
