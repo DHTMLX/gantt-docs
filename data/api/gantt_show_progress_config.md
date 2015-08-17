@@ -1,6 +1,7 @@
 show_progress
 =============
-@short:enables showing a progress/spinner while data is loading 
+@short:
+	enables displaying of the progress inside the task bars
 	
 
 @type: boolean

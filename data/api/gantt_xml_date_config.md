@@ -4,7 +4,7 @@ xml_date
 	
 
 @type: string
-@default:"%d-%m-%Y"
+@default:"%d-%m-%Y %H:%i"
 @example:
 gantt.config.xml_date="%Y-%m-%d %H:%i";
 ...
