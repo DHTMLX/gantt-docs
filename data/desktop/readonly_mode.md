@@ -21,7 +21,7 @@ Note, when the entire Gantt chart is non-editable, users can't open the lightbox
 
 <br>
 
-To make specific tasks/links editable in the read-only Gantt chart, add the 'editable' property to their data object and set  to *true*:
+To make specific tasks/links editable in the read-only Gantt chart, add the 'editable' property to their data object and set to *true*:
 
 <img src="desktop/task_editable_property.png"/>
 
@@ -29,11 +29,12 @@ To make specific tasks/links editable in the read-only Gantt chart, add the 'edi
 gantt.config.readonly = true;
 var task = gantt.getTask(id).editable = true;
 ~~~
-By default, the mentioned behavior is binded to 'editable' property of a task/link. You can change the target property using the api/gantt_editable_property_config.md configuration option:
+By default, the mentioned behavior is binded to the 'editable' property of a task/link. You can change the target property using the api/gantt_editable_property_config.md configuration option:
 
 ~~~js
 gantt.config.editable_property = "property_name";
 ~~~
+
 
 Read-only mode for specific tasks/links
 ------------------------------------------------
@@ -50,7 +51,7 @@ scheduler.getLink(id).readonly = true;
 By default, the gantt checks whether a task/link has this property with a no-negative value then makes the task/link read-only. Otherwise - keeps it editable.
 }}
 
-When the task/link is read-only,  it won't react on clicks, double clicks,not draggable and editable in any way.
+When the task/link is read-only,  it won't react on clicks, double clicks, isn't draggable or editable in any way.
 
 <br>
 By default, the read-only behavior is binded to the 'readonly' property of a task/link. But you can change the target property using the  api/gantt_readonly_property_config.md configuration option:
@@ -59,4 +60,48 @@ By default, the read-only behavior is binded to the 'readonly' property of a tas
 gantt.config.readonly_property = "property_name";
 ~~~
 
+
+Details of the "editable_property" config option
+---------------------------
+
+The 'editable_property' refers to the property of the task data object, not to the lightbox section or the column of the left-hand grid:
+
+~~~js
+{
+	data:[
+		{id:1, text:"Project #2", start_date:"01-04-2013", duration:18,order:10, 
+        	progress:0.4, parent:0, editable:false},
+		{id:2, text:"Task #1", start_date:"02-04-2013", duration:8, order:10, 
+        	progress:0.6, parent:1, editable:true},
+		{id:3, text:"Task #2", start_date:"11-04-2013", duration:8, order:20, 
+        	progress:0.6, parent:1, editable:true}
+	],
+	links:[...]
+}
+~~~
+
+If you want to make it settable from the lightbox, you need to set the 'editable_property' to the same property the control is mapped to:
+
+~~~js
+gantt.config.lightbox.sections = [ 
+	{name:"description", height:38, map_to:"some_property", type:"textarea", focus:true},
+	....
+]
+scheduler.config.editable_property = "some_property";
+~~~
+
+Setting event readonly based on multiple properties
+-----------------------
+
+If you want to make events conditionally editable based on a set of properties, you can:
+
+- manage their editability manually, e.g. by blocking the api/gantt_onbeforelightbox_event.md and api/gantt_onbeforetaskdrag_event.md events 
+- dynamically update the 'editable_property' each time the task is loaded, added or updated (api/gantt_ontaskloading_event.md, api/gantt_ontaskcreated_event.md, api/gantt_onaftertaskupdate_event.md):
+
+~~~js
+gantt.attachEvent("onTaskLoading", function(task){
+    task.editable = task.has_owner && task.editable && task.text;
+    return true;
+});
+~~~
 
