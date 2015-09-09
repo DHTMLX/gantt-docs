@@ -18,6 +18,12 @@ To use the auto scheduling functionality, you should include the **dhtmlxgantt_a
 <script src="../codebase/ext/dhtmlxgantt_auto_scheduling.js"></script>
 ~~~
 
+And set the **auto_scheduling** property to true:
+
+~~~js
+gantt.config.auto_scheduling = true;
+~~~
+
 What is more, when auto scheduling is enabled, individual tasks still can be scheduled manually. They are independent of relations between tasks.
 To disable auto scheduling for a particular task and make it manually scheduled, set the **auto_scheduling** property of the task object to *false*:
 

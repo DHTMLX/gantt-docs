@@ -64,10 +64,11 @@ Calling the export method with optional properties
 }}
 ~~~js
 gantt.exportToExcel({
-	{ name:"My document", columns:[
+	name:"document.xlsx", 
+    columns:[
 		{ id:"text",  header:"Title", width:150 },
         { id:"start_date",  header:"Start date", width:250 }
-    ]}
+    ]
 });
 ~~~
 
