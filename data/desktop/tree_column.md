@@ -2,9 +2,9 @@ Configuring the Tree Column
 ============================================
 To know about available tree-related methods, please, refer to the desktop/task_tree_operations.md article.
 
-Expanding/collapsing branches
+Expanding/collapsing a task branch
 --------------------------------------
-- To open a branch task, use the api/gantt_open.md method:
+- To open a task branch, use the api/gantt_open.md method:
 
 ~~~js
 var tasks = {
@@ -16,7 +16,7 @@ var tasks = {
 gantt.open("p_1"); /*!*/
 ~~~
 
-- To close a branch task, use the api/gantt_close.md method:
+- To close a task branch, use the api/gantt_close.md method:
 
 ~~~js
 var tasks = {
@@ -27,6 +27,31 @@ var tasks = {
 ]};
 gantt.close("p_1"); /*!*/
 ~~~ 
+
+Expanding/collapsing several branches
+--------------------------------
+If you need to open/close several task branches, the fastest way is to programatically set the corresponding boolean value (true - to open, false - to close)
+to the *.$open* property of the needed tasks and then redraw the gantt.
+
+- expanding all tasks:
+
+~~~js
+gantt.eachTask(function(task){
+	task.$open = true;
+});
+gantt.render();
+~~~
+
+- collapsing all tasks:
+
+~~~js
+gantt.eachTask(function(task){
+	task.$open = false;
+});
+gantt.render();
+~~~
+
+
 
 Getting the children of a task
 -------------------------------------------

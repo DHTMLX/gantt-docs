@@ -1,5 +1,9 @@
 Performance: Ways to Increase
 ==================================
+
+Common techniques
+--------------------
+
 Starting from 200 tasks, there may be delays in rendering the Gantt chart on the page.
 
  
@@ -16,5 +20,34 @@ There are the following ways to solve this problem:
 {{sample
 08_api/10_performance_tweaks.html
 }}
+
+Smart Rendering
+----------------
+
+The Smart Rendering technique allows considerably enhancing the speed of data rendering, while working with big amounts of data. 
+In this mode only the tasks and links visible on the screen at the moment are being rendered.
+
+To enable Smart Rendering, you need to include the **ext/dhtmlxgantt_smart_rendering.js** extension on the page:
+
+~~~html
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="codebase/dhtmlxgantt.js"></script>   
+   <link href="codebase/dhtmlxgantt.css" rel="stylesheet">   
+   <script src="codebase/ext/dhtmlxgantt_smart_rendering.js"></script>  
+</head>
+<body>
+    // your code here
+</body>
+</html>
+~~~
+
+Including the extension on the page is enough to activate the mode. If you need to disable the mode, you can set the corresponding configuration parameter to false:
+
+~~~js
+gantt.config.smart_rendering = false;
+~~~
+
 
 @edition: pro
