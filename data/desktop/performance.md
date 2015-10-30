@@ -35,7 +35,7 @@ To enable Smart Rendering, you need to include the **ext/dhtmlxgantt_smart_rende
 <head>
    <script src="codebase/dhtmlxgantt.js"></script>   
    <link href="codebase/dhtmlxgantt.css" rel="stylesheet">   
-   <script src="codebase/ext/dhtmlxgantt_smart_rendering.js"></script>  
+   <script src="codebase/ext/dhtmlxgantt_smart_rendering.js"></script>  /*!*/
 </head>
 <body>
     // your code here

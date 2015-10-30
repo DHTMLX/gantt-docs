@@ -12,4 +12,5 @@ Creating a Gantt Chart on the Page
 - desktop/multiple_gantts.md
 - desktop/export.md
 - desktop/excel.md
+- desktop/undo_redo.md
 }}

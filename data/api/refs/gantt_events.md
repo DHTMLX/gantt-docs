@@ -4,18 +4,22 @@ Events
 
 {{api
 - api/gantt_onafterautoschedule_event.md - fires when autoscheduling is done
+- api/gantt_onafterbatchupdate_event.md - fires after the api/gantt_batchupdate.md method was called
 - api/gantt_onafterlightbox_event.md - fires after the user has closed the lightbox (edit form)
 - api/gantt_onafterlinkadd_event.md - fires after a new link is added to the Gantt chart
 - api/gantt_onafterlinkdelete_event.md - fires after the user deletes a link
 - api/gantt_onafterlinkupdate_event.md - fires after the user updates a link
+- api/gantt_onafterredo_event.md - fires after the api/gantt_redo.md method was called
 - api/gantt_onaftertaskadd_event.md - fires after the user adds a task to the Gantt chart
 - api/gantt_onaftertaskautoschedule_event.md - fires for each task which has been autoscheduled
 - api/gantt_onaftertaskdelete_event.md - fires after the user deletes a task
 - api/gantt_onaftertaskdrag_event.md - fires after the user has finished to drag and released the mouse button
 - api/gantt_onaftertaskmove_event.md - fires after a task was moved to a new position
 - api/gantt_onaftertaskupdate_event.md - fires after the user updates a task
+- api/gantt_onafterundo_event.md - fires after the api/gantt_undo.md method was called
 - api/gantt_onajaxerror_event.md - fires if the server returns an error
 - api/gantt_onbeforeautoschedule_event.md - fires before auto scheduling
+- api/gantt_onbeforebatchupdate_event.md - fires before the api/gantt_batchupdate.md method is called
 - api/gantt_onbeforecollapse_event.md - before gantt exits the fullscreen mode and goes back to normal mode
 - api/gantt_onbeforedatarender_event.md - fires before data is rendered on the page
 - api/gantt_onbeforeexpand_event.md - fires before gantt is expanded to full screen
@@ -27,6 +31,7 @@ Events
 - api/gantt_onbeforelinkdisplay_event.md - fires after the links have been loaded to the Gantt chart but before they are displayed
 - api/gantt_onbeforelinkupdate_event.md - fires before a link is updated
 - api/gantt_onbeforeparse_event.md - fires before data started to be parsed
+- api/gantt_onbeforeredo_event.md - fires before the api/gantt_redo.md method is called
 - api/gantt_onbeforerowdragend_event.md - fires before the user drops a row in  the grid
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
@@ -37,6 +42,7 @@ Events
 - api/gantt_onbeforetaskmove_event.md - fires before a task is moved to a new position
 - api/gantt_onbeforetaskselected_event.md - fires before the user selects a task
 - api/gantt_onbeforetaskupdate_event.md - fires before the user updates a task
+- api/gantt_onbeforeundo_event.md - fires before the api/gantt_undo.md method is called
 - api/gantt_oncircularlinkerror_event.md - fires when the circular reference has been detected and auto scheduling is not possible
 - api/gantt_onclear_event.md - fires after all tasks were removed from the Gantt chart
 - api/gantt_oncollapse_event.md - fires when gantt went back to normal mode from the full screen mode
@@ -46,6 +52,7 @@ Events
 - api/gantt_oncontextmenu_event.md - occurs when the user clicks the right mouse button inside the Gantt chart
 - api/gantt_ondatarender_event.md - fires after data was rendered on the page
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
+- api/gantt_onerror_event.md - 
 - api/gantt_onexpand_event.md - fires when gantt is expended to full screen
 - api/gantt_onganttready_event.md - fires after the dhtmlxGantt initialization is complete but the Gantt chart is not rendered on the page yet.
 - api/gantt_onganttrender_event.md - fires after the Gantt chart was rendered on the page
@@ -89,18 +96,22 @@ Events
 
 @index:
 - api/gantt_onafterautoschedule_event.md
+- api/gantt_onafterbatchupdate_event.md
 - api/gantt_onafterlightbox_event.md
 - api/gantt_onafterlinkadd_event.md
 - api/gantt_onafterlinkdelete_event.md
 - api/gantt_onafterlinkupdate_event.md
+- api/gantt_onafterredo_event.md
 - api/gantt_onaftertaskadd_event.md
 - api/gantt_onaftertaskautoschedule_event.md
 - api/gantt_onaftertaskdelete_event.md
 - api/gantt_onaftertaskdrag_event.md
 - api/gantt_onaftertaskmove_event.md
 - api/gantt_onaftertaskupdate_event.md
+- api/gantt_onafterundo_event.md
 - api/gantt_onajaxerror_event.md
 - api/gantt_onbeforeautoschedule_event.md
+- api/gantt_onbeforebatchupdate_event.md
 - api/gantt_onbeforecollapse_event.md
 - api/gantt_onbeforedatarender_event.md
 - api/gantt_onbeforeexpand_event.md
@@ -112,6 +123,7 @@ Events
 - api/gantt_onbeforelinkdisplay_event.md
 - api/gantt_onbeforelinkupdate_event.md
 - api/gantt_onbeforeparse_event.md
+- api/gantt_onbeforeredo_event.md
 - api/gantt_onbeforerowdragend_event.md
 - api/gantt_onbeforetaskadd_event.md
 - api/gantt_onbeforetaskautoschedule_event.md
@@ -122,6 +134,7 @@ Events
 - api/gantt_onbeforetaskmove_event.md
 - api/gantt_onbeforetaskselected_event.md
 - api/gantt_onbeforetaskupdate_event.md
+- api/gantt_onbeforeundo_event.md
 - api/gantt_oncircularlinkerror_event.md
 - api/gantt_onclear_event.md
 - api/gantt_oncollapse_event.md
@@ -131,6 +144,7 @@ Events
 - api/gantt_oncontextmenu_event.md
 - api/gantt_ondatarender_event.md
 - api/gantt_onemptyclick_event.md
+- api/gantt_onerror_event.md
 - api/gantt_onexpand_event.md
 - api/gantt_onganttready_event.md
 - api/gantt_onganttrender_event.md

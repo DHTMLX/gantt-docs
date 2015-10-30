@@ -22,6 +22,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/multiple_gantts.md</li>
                     <li>desktop/export.md</li>
                     <li>desktop/excel.md</li>
+                    <li>desktop/undo_redo.md</li>
             </ul>
         </td>
 		<td class='topic_description'>Says how to build a standard Gantt chart on a page and bring it to life: configure with specific settings, customize the default templates, attach events, etc.</td>

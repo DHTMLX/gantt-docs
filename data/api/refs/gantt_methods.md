@@ -8,9 +8,12 @@ Methods
 - api/gantt_addmarker.md - adds a marker to the timeline area
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displayes an additional layer with custom elements for a task in the timeline area
+- api/gantt_alert.md - calls an alert message box
+- api/gantt_assert.md - 
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt
 - api/gantt_autoschedule.md - recalculates the schedule of the project
 - api/gantt_batchupdate.md - updates multiple tasks/links at once
+- api/gantt_bind.md - creates a new function that, when called, has its *this* keyword set to the provided value
 - api/gantt_calculateduration.md - calculates the duration of a task
 - api/gantt_calculateenddate.md - calculates the end date of a task
 - api/gantt_calculatetasklevel.md - calculates the level of a task
@@ -22,9 +25,13 @@ Methods
 - api/gantt_clearall.md - removes all tasks from the Gantt chart
 - api/gantt_close.md - closes the branch with the specified id
 - api/gantt_collapse.md - collapses gantt from the full screen mode to the normal mode
+- api/gantt_confirm.md - calls a confirm message box
+- api/gantt_copy.md - 
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
+- api/gantt_dataprocessor.md - 
 - api/gantt_datefrompos.md - gets the date of the specified horizontal  position in the chart area
+- api/gantt_defined.md - 
 - api/gantt_deletelink.md - deletes the specified dependency link
 - api/gantt_deletemarker.md - deletes the specified marker
 - api/gantt_deletetask.md - deletes the specified  task
@@ -32,6 +39,8 @@ Methods
 - api/gantt_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent() method)
 - api/gantt_eachselectedtask.md - iterates over all selected tasks in the Gantt chart
 - api/gantt_eachtask.md - iterates over specified tasks in the Gantt chart
+- api/gantt_event.md - attaches an event handler to an HTML element
+- api/gantt_eventremove.md - removes an event handler from an HTML element
 - api/gantt_expand.md - expands gantt to the full screen mode
 - api/gantt_getchildren.md - returns the 1st-level child tasks of the specified parent branch
 - api/gantt_getclosestworktime.md - returns the closest working time
@@ -45,6 +54,7 @@ Methods
 - api/gantt_getlightboxtype.md - returns the name of the active lighbox's structure
 - api/gantt_getlightboxvalues.md - returns values of the lightbox's sections
 - api/gantt_getlink.md - returns the dependency link object by the specified id
+- api/gantt_getlinkcount.md - returns the number of all dependency links presented in the Gantt chart
 - api/gantt_getlinknode.md - returns the HTML element of the specified dependency link
 - api/gantt_getlinks.md - returns all links presented in the Gantt chart
 - api/gantt_getmarker.md - gets the marker's object
@@ -53,6 +63,7 @@ Methods
 - api/gantt_getparent.md - returns the id of the parent task
 - api/gantt_getprev.md - returns the id of the previous item (no matter what the level of nesting is: the same or different)
 - api/gantt_getprevsibling.md - returns the id of the previous task of the same level
+- api/gantt_getredostack.md - returns the stack of stored redo commands
 - api/gantt_getscrollstate.md - returns the scroll position
 - api/gantt_getselectedid.md - returns the id of the selected task
 - api/gantt_getselectedtasks.md - returns an array of the currently selected tasks
@@ -68,6 +79,7 @@ Methods
 - api/gantt_gettaskposition.md - calculates the position and size of the task's DOM element in the timeline area
 - api/gantt_gettaskrownode.md - returns the HTML element of the task row in the table
 - api/gantt_gettasktop.md - gets the top position of the task's DOM element in the timeline area
+- api/gantt_getundostack.md - returns the stack of stored undo commands
 - api/gantt_getvisibletaskcount.md - gets the number of tasks visible on the screen (those that are not collapsed)
 - api/gantt_getworkhours.md - returns the working hours of the specified date
 - api/gantt_groupby.md - groups tasks by the specified task's attribute
@@ -88,10 +100,14 @@ Methods
 - api/gantt_isworktime.md - checks whether the specified date is working or not
 - api/gantt_load.md - loads data to the gantt from an external data source
 - api/gantt_locate.md - gets the id of a task from the specified HTML event
+- api/gantt_message.md - calls a message box of the specified type
+- api/gantt_mixin.md - 
+- api/gantt_modalbox.md - calls a modalbox
 - api/gantt_movetask.md - moves a task to a new position
 - api/gantt_open.md - opens the branch with the specified id
 - api/gantt_parse.md - loads data from a client-side resource
 - api/gantt_posfromdate.md - gets the relative horizontal position of the specified date in the chart area
+- api/gantt_redo.md - applies the reverted changes to the gantt once again
 - api/gantt_refreshdata.md - refreshes data in the Gantt chart
 - api/gantt_refreshlink.md - refreshes the specifies link
 - api/gantt_refreshtask.md - refreshes the task and its related links
@@ -119,6 +135,8 @@ Methods
 - api/gantt_showtask.md - makes the specified task visible on the screen
 - api/gantt_sort.md - sorts the tasks in the grid
 - api/gantt_toggletaskselection.md - selects the specified task if it was unselected and vice versa
+- api/gantt_uid.md - 
+- api/gantt_undo.md - reverts the changes made in the gantt
 - api/gantt_unselecttask.md - removes selection from the selected task
 - api/gantt_updatecollection.md - updates the specified collection with new options
 - api/gantt_updatelink.md - updates the specified dependency link
@@ -132,9 +150,12 @@ Methods
 - api/gantt_addmarker.md
 - api/gantt_addtask.md
 - api/gantt_addtasklayer.md
+- api/gantt_alert.md
+- api/gantt_assert.md
 - api/gantt_attachevent.md
 - api/gantt_autoschedule.md
 - api/gantt_batchupdate.md
+- api/gantt_bind.md
 - api/gantt_calculateduration.md
 - api/gantt_calculateenddate.md
 - api/gantt_calculatetasklevel.md
@@ -146,9 +167,13 @@ Methods
 - api/gantt_clearall.md
 - api/gantt_close.md
 - api/gantt_collapse.md
+- api/gantt_confirm.md
+- api/gantt_copy.md
 - api/gantt_correcttaskworktime.md
 - api/gantt_createtask.md
+- api/gantt_dataprocessor.md
 - api/gantt_datefrompos.md
+- api/gantt_defined.md
 - api/gantt_deletelink.md
 - api/gantt_deletemarker.md
 - api/gantt_deletetask.md
@@ -156,6 +181,8 @@ Methods
 - api/gantt_detachevent.md
 - api/gantt_eachselectedtask.md
 - api/gantt_eachtask.md
+- api/gantt_event.md
+- api/gantt_eventremove.md
 - api/gantt_expand.md
 - api/gantt_getchildren.md
 - api/gantt_getclosestworktime.md
@@ -169,6 +196,7 @@ Methods
 - api/gantt_getlightboxtype.md
 - api/gantt_getlightboxvalues.md
 - api/gantt_getlink.md
+- api/gantt_getlinkcount.md
 - api/gantt_getlinknode.md
 - api/gantt_getlinks.md
 - api/gantt_getmarker.md
@@ -177,6 +205,7 @@ Methods
 - api/gantt_getparent.md
 - api/gantt_getprev.md
 - api/gantt_getprevsibling.md
+- api/gantt_getredostack.md
 - api/gantt_getscrollstate.md
 - api/gantt_getselectedid.md
 - api/gantt_getselectedtasks.md
@@ -192,6 +221,7 @@ Methods
 - api/gantt_gettaskposition.md
 - api/gantt_gettaskrownode.md
 - api/gantt_gettasktop.md
+- api/gantt_getundostack.md
 - api/gantt_getvisibletaskcount.md
 - api/gantt_getworkhours.md
 - api/gantt_groupby.md
@@ -212,10 +242,14 @@ Methods
 - api/gantt_isworktime.md
 - api/gantt_load.md
 - api/gantt_locate.md
+- api/gantt_message.md
+- api/gantt_mixin.md
+- api/gantt_modalbox.md
 - api/gantt_movetask.md
 - api/gantt_open.md
 - api/gantt_parse.md
 - api/gantt_posfromdate.md
+- api/gantt_redo.md
 - api/gantt_refreshdata.md
 - api/gantt_refreshlink.md
 - api/gantt_refreshtask.md
@@ -243,6 +277,8 @@ Methods
 - api/gantt_showtask.md
 - api/gantt_sort.md
 - api/gantt_toggletaskselection.md
+- api/gantt_uid.md
+- api/gantt_undo.md
 - api/gantt_unselecttask.md
 - api/gantt_updatecollection.md
 - api/gantt_updatelink.md

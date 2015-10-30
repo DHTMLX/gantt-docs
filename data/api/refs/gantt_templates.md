@@ -5,7 +5,7 @@ Templates
 
 {{api
 - api/gantt_api_date_template.md - specifies the format of dates that are set by means of API methods. Used to parse incoming dates
-- api/gantt_date_grid_template.md - specifies the template of start date or end date columns in grid
+- api/gantt_date_grid_template.md - specifies the content of start date or end date columns in grid
 - api/gantt_date_scale_template.md - specifies the date format of the time scale (X-Axis)
 - api/gantt_drag_link_template.md - specifies the text of tooltips that are displayed when the user creates a new dependency link
 - api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the link receiver (pop-up circle near the task bar)
