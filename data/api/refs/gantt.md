@@ -13,7 +13,6 @@ Gantt API
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displayes an additional layer with custom elements for a task in the timeline area
 - api/gantt_alert.md - calls an alert message box
-- api/gantt_assert.md - 
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt
 - api/gantt_autoschedule.md - recalculates the schedule of the project
 - api/gantt_batchupdate.md - updates multiple tasks/links at once
@@ -30,12 +29,12 @@ Gantt API
 - api/gantt_close.md - closes the branch with the specified id
 - api/gantt_collapse.md - collapses gantt from the full screen mode to the normal mode
 - api/gantt_confirm.md - calls a confirm message box
-- api/gantt_copy.md - 
+- api/gantt_copy.md - creates a deep copy of provided object
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
-- api/gantt_dataprocessor.md - 
+- api/gantt_dataprocessor.md - dataProcessor constructor
 - api/gantt_datefrompos.md - gets the date of the specified horizontal  position in the chart area
-- api/gantt_defined.md - 
+- api/gantt_defined.md - returns false if the provided argument is undefined, otherwise true
 - api/gantt_deletelink.md - deletes the specified dependency link
 - api/gantt_deletemarker.md - deletes the specified marker
 - api/gantt_deletetask.md - deletes the specified  task
@@ -105,7 +104,7 @@ Gantt API
 - api/gantt_load.md - loads data to the gantt from an external data source
 - api/gantt_locate.md - gets the id of a task from the specified HTML event
 - api/gantt_message.md - calls a message box of the specified type
-- api/gantt_mixin.md - 
+- api/gantt_mixin.md - adds properties of the 'source' object into the 'target' object
 - api/gantt_modalbox.md - calls a modalbox
 - api/gantt_movetask.md - moves a task to a new position
 - api/gantt_open.md - opens the branch with the specified id
@@ -139,7 +138,7 @@ Gantt API
 - api/gantt_showtask.md - makes the specified task visible on the screen
 - api/gantt_sort.md - sorts the tasks in the grid
 - api/gantt_toggletaskselection.md - selects the specified task if it was unselected and vice versa
-- api/gantt_uid.md - 
+- api/gantt_uid.md - returns a unique id
 - api/gantt_undo.md - reverts the changes made in the gantt
 - api/gantt_unselecttask.md - removes selection from the selected task
 - api/gantt_updatecollection.md - updates the specified collection with new options

@@ -21,3 +21,5 @@ gantt.eventRemove(eventId);
 
 @template:	api_method
 @descr:
+@changelog:
+added in version 4.0

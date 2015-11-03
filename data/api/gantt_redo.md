@@ -24,3 +24,6 @@ gantt.redo();
 
 @related:
 desktop/undo_redo.md
+
+@changelog:
+added in version 4.0

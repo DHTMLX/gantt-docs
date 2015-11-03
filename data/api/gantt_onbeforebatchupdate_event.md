@@ -18,3 +18,6 @@ gantt.attachEvent("onBeforeBatchUpdate", function(){
 @relatedapi:
 - api/gantt_batchupdate.md
 - api/gantt_onafterbatchupdate_event.md
+
+@changelog:
+added in version 4.0

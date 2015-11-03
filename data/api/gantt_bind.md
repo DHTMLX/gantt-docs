@@ -3,7 +3,7 @@ bind
 
 
 @short:
-	creates a new function that, when called, has its *this* keyword set to the provided value
+	creates a new function that, when called, has its <i>this</i> keyword set to the provided value
 
 @params:
 
@@ -21,3 +21,6 @@ gantt.bind(method, thisArg);
 @template:	api_method
 @descr:
 The method is used as the IE8 compatible replacement of the [Function.prototype.bind()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind) function.
+
+@changelog:
+added in version 4.0

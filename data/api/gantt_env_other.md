@@ -4,14 +4,19 @@ env
 @short:
 	a set of flags which describes current environment
 
-@type:
+@type:object
 
 
 @example:
-gantt.env.isIE;
+
+if (gantt.env.isEdge) {
+    // your code
+}
 
 @template:	api_config
 @descr:
+
+The possible flags are:
 
 - isChrome	- set to true if browser is Chrome
 - isEdge	- set to true if browser is Edge
@@ -23,5 +28,9 @@ gantt.env.isIE;
 - isIE7		- set to true if browser is Internet Explorer 7
 - isIE8		- set to true if browser is Internet Explorer 8
 - isIE9		- set to true if browser is Internet Explorer 9
-- isIPad		- set to true if browser is Safari on IPad
+- isIPad	- set to true if browser is Safari on IPad
 - isKHTML	- set to true if browser is Konqueror
+
+@changelog:
+added in version 4.0
+

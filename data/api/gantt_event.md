@@ -27,3 +27,6 @@ desktop/handling_events.md
 
 @relatedapi:
 api/gantt_eventremove.md
+
+@changelog:
+added in version 4.0

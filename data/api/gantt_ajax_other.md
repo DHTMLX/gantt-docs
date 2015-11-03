@@ -2,7 +2,10 @@ ajax
 =============
 
 @short:
-dhtmlx ajax module, please see [dhtmlxAjax](http://docs.dhtmlx.com/ajax__index.html)	
+dhtmlx ajax module	
+
+@type:
+object
 
 @example:
 
@@ -18,3 +21,7 @@ dhtmlxAjax.get("url", function(){
 
 @template:	api_config
 @descr:
+Please, see [dhtmlxAjax](http://docs.dhtmlx.com/ajax__index.html).
+
+@changelog:
+added in version 4.0

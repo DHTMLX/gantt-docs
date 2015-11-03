@@ -23,6 +23,7 @@ var stack = gantt.getRedoStack();
 @relatedsample:
 02_extensions/14_undo.html
 
-
+@changelog:
+added in version 4.0
 
 

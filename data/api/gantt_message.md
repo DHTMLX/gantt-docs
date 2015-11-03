@@ -22,3 +22,6 @@ gantt.message({
 @relatedapi:
 - api/gantt_alert.md
 - api/gantt_confirm.md
+
+@changelog:
+added in version 4.0
