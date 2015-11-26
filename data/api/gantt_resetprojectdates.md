@@ -11,7 +11,7 @@ resetProjectDates
 	api/gantt_getsubtaskdates.md
 
 @example:
-gantt.calculateProjectDuration(gantt.getTask(3));
+gantt.resetProjectDates(gantt.getTask(3));
 
 @template:	api_method
 @descr:
