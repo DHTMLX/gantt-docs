@@ -19,4 +19,10 @@ gantt.modalbox({
 
 @template:	api_method
 @descr:
-
+@related:desktop/message_boxes.md
+@relatedapi:
+- api/gantt_alert.md
+- api/gantt_confirm.md
+- api/gantt_message.md
+@changelog:
+added in version 4.0

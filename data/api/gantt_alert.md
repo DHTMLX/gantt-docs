@@ -23,6 +23,7 @@ gantt.alert({
 @relatedapi:
 - api/gantt_confirm.md
 - api/gantt_message.md
-
+- api/gantt_modalbox.md
+@related:desktop/message_boxes.md
 @changelog:
 added in version 4.0
