@@ -52,7 +52,7 @@ Events
 - api/gantt_oncontextmenu_event.md - occurs when the user clicks the right mouse button inside the Gantt chart
 - api/gantt_ondatarender_event.md - fires after data was rendered on the page
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
-- api/gantt_onerror_event.md - 
+- api/gantt_onerror_event.md - fires when gantt.assert() receives 'false' value, i.e. when assertion fails
 - api/gantt_onexpand_event.md - fires when gantt is expended to full screen
 - api/gantt_onganttready_event.md - fires after the dhtmlxGantt initialization is complete but the Gantt chart is not rendered on the page yet.
 - api/gantt_onganttrender_event.md - fires after the Gantt chart was rendered on the page

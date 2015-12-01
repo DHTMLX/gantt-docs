@@ -49,5 +49,18 @@ Including the extension on the page is enough to activate the mode. If you need 
 gantt.config.smart_rendering = false;
 ~~~
 
+{{sample
+02_extensions/13_smart_rendering.html
+}}
+
+If you use a big date range in your project, you may also want to enable the api/gantt_static_background_config.md parameter in addition to smart rendering:
+
+~~~js
+gantt.config.static_background = true;
+~~~
+
+{{sample
+08_api/10_performance_tweaks.html
+}}
 
 @edition: pro

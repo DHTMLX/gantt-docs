@@ -13,10 +13,11 @@ Gantt API
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displayes an additional layer with custom elements for a task in the timeline area
 - api/gantt_alert.md - calls an alert message box
+- api/gantt_assert.md - 
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt
 - api/gantt_autoschedule.md - recalculates the schedule of the project
 - api/gantt_batchupdate.md - updates multiple tasks/links at once
-- api/gantt_bind.md - creates a new function that, when called, has its *this* keyword set to the provided value
+- api/gantt_bind.md - creates a new function that, when called, has its <i>this</i> keyword set to the provided value
 - api/gantt_calculateduration.md - calculates the duration of a task
 - api/gantt_calculateenddate.md - calculates the end date of a task
 - api/gantt_calculatetasklevel.md - calculates the level of a task
@@ -201,7 +202,7 @@ Gantt API
 - api/gantt_oncontextmenu_event.md - occurs when the user clicks the right mouse button inside the Gantt chart
 - api/gantt_ondatarender_event.md - fires after data was rendered on the page
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
-- api/gantt_onerror_event.md - 
+- api/gantt_onerror_event.md - fires when gantt.assert() receives 'false' value, i.e. when assertion fails
 - api/gantt_onexpand_event.md - fires when gantt is expended to full screen
 - api/gantt_onganttready_event.md - fires after the dhtmlxGantt initialization is complete but the Gantt chart is not rendered on the page yet.
 - api/gantt_onganttrender_event.md - fires after the Gantt chart was rendered on the page
@@ -249,6 +250,7 @@ Gantt API
 {{api
 - api/gantt_api_date_config.md - sets the date format for addTask() method to
 - api/gantt_auto_scheduling_config.md - enables auto scheduling
+- api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creation of links from parent tasks (projects) to their children
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
@@ -298,7 +300,6 @@ Gantt API
 - api/gantt_open_tree_initially_config.md - openes all branches initially
 - api/gantt_order_branch_config.md - activates the 'branch' mode that allows dragging tasks only within the parent branch
 - api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows dragging tasks within the whole gantt
-- api/gantt_parent_child_links_config.md - 
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
 - api/gantt_quick_info_detached_config.md - defines whether the task form will appear from the left/right side of the screen or near the selected task
@@ -407,10 +408,10 @@ Gantt API
 
 {{api
 - api/gantt_$click_other.md - redefines the default click behavior for buttons of the Gantt chart
-- api/gantt_ajax_other.md - dhtmlx ajax module, please see [dhtmlxAjax](http://docs.dhtmlx.com/ajax__index.html)
+- api/gantt_ajax_other.md - dhtmlx ajax module
 - api/gantt_config_other.md - defines configuration options for dates, scale, controls
 - api/gantt_date_other.md - a set of date formatting methods
-- api/gantt_env_other.md - a set of flags which describes current environment
+- api/gantt_env_other.md - a set of flags which describe current environment
 - api/gantt_json_other.md - specifies JSON serialization and parsing
 - api/gantt_keys_other.md - defines the hot keys for the Gantt chart
 - api/gantt_locale_other.md - a locale object (region-specific labels) of the Gantt chart

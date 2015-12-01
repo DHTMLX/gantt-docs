@@ -9,10 +9,11 @@ Methods
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displayes an additional layer with custom elements for a task in the timeline area
 - api/gantt_alert.md - calls an alert message box
+- api/gantt_assert.md - 
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt
 - api/gantt_autoschedule.md - recalculates the schedule of the project
 - api/gantt_batchupdate.md - updates multiple tasks/links at once
-- api/gantt_bind.md - creates a new function that, when called, has its *this* keyword set to the provided value
+- api/gantt_bind.md - creates a new function that, when called, has its <i>this</i> keyword set to the provided value
 - api/gantt_calculateduration.md - calculates the duration of a task
 - api/gantt_calculateenddate.md - calculates the end date of a task
 - api/gantt_calculatetasklevel.md - calculates the level of a task
@@ -150,6 +151,7 @@ Methods
 - api/gantt_addtask.md
 - api/gantt_addtasklayer.md
 - api/gantt_alert.md
+- api/gantt_assert.md
 - api/gantt_attachevent.md
 - api/gantt_autoschedule.md
 - api/gantt_batchupdate.md

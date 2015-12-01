@@ -55,7 +55,7 @@ The dhtmlxGantt code files are:
 {{snippet
 	myGantt.html 
 }}
-~~~js
+~~~html
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,7 +95,7 @@ To refer to the dhtmlxGantt's instance you can use <b>dhtmlxGantt</b> or simply 
 {{snippet
 	myGantt.html
 }}
-~~~js
+~~~html
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,7 +121,7 @@ To refer to the dhtmlxGantt's instance you can use <b>dhtmlxGantt</b> or simply 
 
 
 Note, if you use the full-screen mode, specify the current style to guarantee the correct work:
-~~~js
+~~~html
 <style type="text/css" media="screen">
     html, body{
         margin:0px;
@@ -234,7 +234,7 @@ Then, we need to create a database with 2 tables to store tasks and dependencies
 <ul style= "list-style-image:url('media/desktop/arrow-right.png');">
 	<li>Create a new database with the name - <i>gantt</i>. </li>
     <li> Execute the following code to create 2 tables in it: <i>gantt_tasks</i> and <i>gantt_links</i>.
-~~~html
+~~~js
 CREATE TABLE `gantt_links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `source` int(11) NOT NULL,
@@ -339,7 +339,8 @@ Step 7. Provide the ability to update data in the database
 <p>
 
 Then, we need to provide the ability to save the changes made in the Gantt chart to the database.  For this purpose, we'll use the 
-<a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">dhtmlxDataProcessor</a> helper library. All we need to do is to initialize dhtmlxDataProcessor and attach it to the dhtmlxGantt object.
+api/gantt_dataprocessor.md helper library. All we need to do is to initialize DataProcessor and
+attach it to the dhtmlxGantt object.
 
 <div style="padding-top:15px; color:#4f80c2; font-weight:bold;"><img src="desktop/finger.png"/> <span style="vertical-align:top;line-height:26px;">Do the following:</span></div>
 
@@ -355,8 +356,8 @@ Then, we need to provide the ability to save the changes made in the Gantt chart
 gantt.init("gantt_here");
 gantt.load('data.php');
         
-var dp=new dataProcessor("data.php"); /*!*/  
-dp.init(gantt); /*!*/  
+var dp=new gantt.dataProcessor("data.php"); /*!*/ 
+dp.init(gantt); /*!*/ 
 ~~~
 </ul>
 </p>

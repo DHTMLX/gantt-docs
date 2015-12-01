@@ -61,7 +61,7 @@ gantt.isCriticalLink(gantt.getLink("link1"));
 02_extensions/03_critical_path.html
 }}
 
-Checking if a slank between tasks
+Checking if a slaсk between tasks
 ---------------------------------------
 
 To check how much time (in the current [duration unit](api/gantt_duration_unit_config.md)) a task has before it starts to affect other tasks , use the api/gantt_getslack.md method:
@@ -122,5 +122,12 @@ gantt.init("gantt_here");
 
 gantt.parse(tasks);
 ~~~
+
+
+
+Setting lag and lead times between tasks
+---------------------------------
+
+It's possible to set lag and lead times between tasks of the critical path. You find the details [here](desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks).
 
 @edition: pro

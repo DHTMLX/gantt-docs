@@ -9,7 +9,7 @@ autoSchedule
 
 @example:
 
-grid.autoSchedule();
+gantt.autoSchedule();
 
 
 @template:	api_method
@@ -17,5 +17,5 @@ grid.autoSchedule();
 to recalculate the schedule starting from a particular task, pass the id of the task as an argument to the autoSchedule() method:
 
 ~~~js
-grid.autoSchedule(taskId);
+gantt.autoSchedule(taskId);
 ~~~

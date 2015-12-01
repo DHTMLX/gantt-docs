@@ -29,7 +29,7 @@ Generally, to load data from the server side you need to:
 gantt.init("gantt_here");
 gantt.load("data.php");
 
-var dp = new dataProcessor("data.php");
+var dp = new gantt.dataProcessor("data.php");
 dp.init(gantt);
 ~~~
 	</li>
@@ -171,7 +171,7 @@ To make dataProcessor work with the REST backend, you need to do 2 things:
 2. Call the setTransactionMode method with the "REST" value.
 
 ~~~js
-var dp = new dataProcessor("http://example.com/data");
+var dp = new gantt.dataProcessor("http://example.com/data");
 dp.init(gantt);
 dp.setTransactionMode("REST");
 ~~~
@@ -202,7 +202,7 @@ where "api" is the url you've specified in the dataProcessor configuration.
 Initalizing dataprocessor:
 
 ~~~js
-var dp = new dataProcessor("apiUrl");
+var dp = new gantt.dataProcessor("apiUrl");
 dp.init(gantt);
 dp.setTransactionMode("REST");
 ~~~

@@ -2,13 +2,13 @@ onError
 =============
 
 @short:
-	fires if an error has been caught
+	fires when api/gantt_assert.md receives 'false' value, i.e. when assertion fails
 
 @params:
-
+- errorMessage		string			a string with an error from the api/gantt_assert.md method
 
 @example:
-gantt.attachEvent("onError", function(){
+gantt.attachEvent("onError", function(errorMessage){
 	gantt.message({
     	text:"Error"
     });

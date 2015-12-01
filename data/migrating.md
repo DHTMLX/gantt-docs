@@ -21,91 +21,36 @@ Migrating From Older Versions
 </style>
 
 
-3.0 -> 4.0
+3.x -> 4.0
 ------------
 
-###Changes in the Gantt API
+Version 4.0 introduces some changes in public API, namely:
 
+- legacy modules as well as the modules that intersect with dhtmlxSuite modules are no longer defined by the dhtmlxGantt library
+- commonly used modules, such as dhtmlxMessage, dataProcessor, ajax are moved to the **window.gantt** namespace and became a part of dhtmlxGantt public API
 
-1) You should use the local **gantt** object instead of the global **window** object.
-The API related to the window object is deprecated since the version 4.0. If you need to use **window**, you should include the file *dhtmlxgantt_deprecated.js* into your code. 
+A fallback to the old API is included in v4.x, so the code writen for v3.3 and earlier will continue working. However in some cases changes are required.
+Generally, all global declarations, except for **window.gantt** and **window.Gantt** (enterprise version only) are deprecated and will be removed in version 5.0.
 
-<table class="my_table">
+###Deprecated API
 
-<tr><td class="version_info">Up to version 3.0</td><td class="version_info">From version 4.0</td></tr>
-<tr><td colspan="2" class="type_info">Functionality moved from window to gantt object</td></tr>
-
-<tr><td>window.dhtmlxDnD</td><td>gantt._DnD</td></tr>
-<tr><td>window.dhtmlxEventable</td><td>gantt._eventable</td></tr>
-<tr><td>window.dhtmlxEvent</td><td>gantt.event</td></tr>
-<tr><td>window.dhtmlxDetachEvent</td><td>gantt.eventRemove</td></tr>
-</table>
-
-
-2) The **gantt.env** object is used instead of the **window.dhx4** object. Thus, the API that referred to **window.dhx4** is deprecated now.
-
-If you need to use **window.dhx4**, you should include the file *dhtmlxgantt_deprecated.js* into your code. 
-
-<table class="my_table">
-
-<tr><td class="version_info">Up to version 3.0</td><td class="version_info">From version 4.0</td></tr>
-<tr><td colspan="2" class="type_info">Functionality of properties moved from window.dhx4 to gantt.env object</td></tr>
-
-<tr><td>window.dhx4.isIE</td><td>gantt.env.isIE</td></tr>
-<tr><td>window.dhx4.isIE6</td><td>gantt.env.isIE6</td></tr>
-<tr><td>window.dhx4.isIE7</td><td>gantt.env.isIE7</td></tr>
-<tr><td>window.dhx4.isIE8</td><td>gantt.env.isIE8</td></tr>
-<tr><td>window.dhx4.isOpera</td><td>gantt.env.isOpera</td></tr>
-<tr><td>window.dhx4.isChrome</td><td>gantt.env.isChrome</td></tr>
-<tr><td>window.dhx4.isKHTML</td><td>gantt.env.isKHTML</td></tr>
-<tr><td>window.dhx4.isFF</td><td>gantt.env.isFF</td></tr>
-<tr><td>window.dhx4.isIPad</td><td>gantt.env.isIPad</td></tr>
-</table>
-
-
-####Events:
-~~~js
-gantt.attachEvent("onLoadXMLError", function () {
-	dhx4.callEvent("onLoadXMLError", Array.prototype.slice.call(arguments));
-});
-gantt.attachEvent("onAjaxError", function () {
-	dhx4.callEvent("onAjaxError", Array.prototype.slice.call(arguments));
-});
-~~~
-
-####window.dhx4.ajax => gantt.ajax
-
-You should use **gantt.ajax** instead of dhx4.ajax for ajax operations.
-
-####Global flags:
-
-~~~js
-window._isFF = false;
-window._isIE = false;
-window._isOpera = false;
-window._isKHTML = false;
-window._isMacOS = false;
-window._isChrome = false;
-window._FFrv = false;
-window._KHTMLrv = false;
-window._OperaRv = false;
-~~~
-
-
-2) Some methods that were called through the global **dhtmlx** object are deprecated and will eventually stop working in version 5.0. They should be called via the **gantt** object instead. 
-
-
-
-If you try to call one of these methods as usual, a warning will appear:
+There are methods that have been deprecated. They will continue working in v4.x, but will trigger a console warning (not visible to the end users) each time they are called. 
 
 <img src="desktop/gantt_deprecated_warning.png">
 
-In order to get such warnings in the case of a wrong call of a method, you need to include the *deprecated_warnings.js* file.
+Overview:
+
+- dhtmlxMessage module has been moved from the **window.dhtmlx** object to the **window.gantt** object. Read more about Message Boxes [here](desktop/message_boxes.md)
+- dhtmlxDataProcessor constructor has been moved from **window.dataProcessor** to **window.gantt.dataProcessor**
+- utility methods such as **dhtmlx.copy**, **dhtmlx.uid** and **dhtmlx.mixin** have been moved to **window.gantt** object
+
+If you use these methods, your application will continue working after updating to v4.0 without requiring any immediate changes. In future we recommend updating them to a newer version of the API.
+
+The complete list of deprecated methods includes:
 
 <table class="my_table">
 
-<tr><td class="version_info">Up to version 3.0</td><td class="version_info">From version 4.0</td></tr>
-<tr><td colspan="2" class="type_info">Functionality moved from dhtmlx to gantt object</td></tr>
+<tr><td class="version_info">Up to version 3.3</td><td class="version_info">From version 4.0</td></tr>
 
 <tr><td>dhtmlx.alert</td><td>gantt.alert</td></tr>
 <tr><td>dhtmlx.confirm</td><td>gantt.confirm</td></tr>
@@ -116,14 +61,37 @@ In order to get such warnings in the case of a wrong call of a method, you need 
 <tr><td>dhtmlx.defined</td><td>gantt.defined</td></tr>
 <tr><td>dhtmlx.bind</td><td>gantt.bind</td></tr>
 <tr><td>dhtmlx.assert</td><td>gantt.assert</td></tr>
+<tr><td>window.dataProcessor</td><td>gantt.dataProcessor</td></tr>
 </table>
 
-4) The global **dataProcessor constructor** was replaced with the local one:
+###Obsolete API
+
+Some methods have become obsolete and will no longer be used in v4.x.
+If you still use these methods or objects, you'll need either to modify the code of an application or to include the **dhtmlxgantt_deprecated.js** file to the page.
+
+Overview:
+
+- **window.dhx4** is no longer defined by **dhtmlxgantt.js**
+- Environment variables that were defined in **window.dhx4** are now available in the **gantt.env** object
+- Ajax module has been moved from **dhx4.ajax** to **gantt.ajax**
+- **gantt.event**, **gantt.eventRemove** should be used instead of **dhtmlxEvent/dhtmlxDetachEvent**
+
+The whole list of the obsolete API is given below:
 
 <table class="my_table">
-<tr><td class="version_info">Up to version 3.0</td><td class="version_info">From version 4.0</td></tr>
 
-<tr><td>new dataProcessor(url)</td><td>new gantt.dataProcessor(url)</td></tr>
+<tr><td class="version_info">Up to version 3.3</td><td class="version_info">From version 4.0</td></tr>
+<tr><td>window.dhtmlxEvent</td><td>gantt.event</td></tr>
+<tr><td>window.dhtmlxDetachEvent</td><td>gantt.eventRemove</td></tr>
+<tr><td>window.dhx4.isIE</td><td>gantt.env.isIE</td></tr>
+<tr><td>window.dhx4.isIE6</td><td>gantt.env.isIE6</td></tr>
+<tr><td>window.dhx4.isIE7</td><td>gantt.env.isIE7</td></tr>
+<tr><td>window.dhx4.isIE8</td><td>gantt.env.isIE8</td></tr>
+<tr><td>window.dhx4.isOpera</td><td>gantt.env.isOpera</td></tr>
+<tr><td>window.dhx4.isChrome</td><td>gantt.env.isChrome</td></tr>
+<tr><td>window.dhx4.isKHTML</td><td>gantt.env.isKHTML</td></tr>
+<tr><td>window.dhx4.isFF</td><td>gantt.env.isFF</td></tr>
+<tr><td>window.dhx4.isIPad</td><td>gantt.env.isIPad</td></tr>
 </table>
 
 

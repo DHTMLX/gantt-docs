@@ -7,7 +7,7 @@ undo_steps
 @default:10
 @type: number
 @example:
-gantt.config.steps = 10;
+gantt.config.undo_steps = 10;
 
 gantt.init("gantt_here");
 
@@ -20,6 +20,6 @@ gantt.init("gantt_here");
 
 @relatedsample:
 02_extensions/14_undo.html
-
+@related:desktop/undo_redo.md
 @changelog:
 added in version 4.0

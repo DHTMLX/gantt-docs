@@ -16,7 +16,7 @@ gantt.config.branch_loading = true;
 		
 gantt.load("../common/connector_dynamic_loading.php");
 
-var dp = new dataProcessor("../common/connector_dynamic_loading.php");
+var dp = new gantt.dataProcessor("../common/connector_dynamic_loading.php");
 dp.init(gantt);
 ~~~
 	</li>

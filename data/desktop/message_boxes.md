@@ -1,40 +1,42 @@
-Creating Message Boxes
+Messages in a Gantt Chart
 ======================
 
-A Gantt Chart application can interact with the user via messages. They are used to notify about an error, confirm or deny an action, choose one of the options,
-log events, display variable values, etc.
+Messages are used in a Gantt Chart to notify a user about an error, confirm or deny an action, choose one of the options and so on.
+Gantt Chart messages use [the fork of the dhtmlxMessage repository](https://github.com/DHTMLX/message) as their basis. 
+So, all the functionality of dhtmlxMessage is actual for dhtmlxGantt messages.
 
-##Info Message Box
+There are two main types of messages: a simple popup message box and a modal message box with buttons that blocks the work of an application.
 
-A basic message is created with the **gantt.message()** method that takes at least a message text as a parameter. 
+A modal message box can belong to one of three possible types:
+
+- Alert message box
+- Confirm message box
+- Modalbox
+
+
+##Basic Popup Message 
+
+To create a basic modal message box, use the [gantt.message](api/gantt_message.md) method. The obligatory parameter of the method is the text of the message:
 
 ~~~js
 gantt.message("The task is updated");
 ~~~
 
-This message is displayed in the right top corner of the window and doesn't prevent the work of the parent app while [modal message boxes](desktop/message_boxes.md#modalmessageboxes)
-overlay the parent app and block its work.
+A popup message box appears in the right top corner of the window. It doesn't prevent the work of the parent application, unlike [modal message boxes](desktop/message_boxes.md#modalmessageboxes)
+that overlay the parent application and block its work.
 
-**Message boxes:**
+There are two types of message boxes:
 	
-- Default 
+- a default message box
 
 <img src="desktop/default_message.png"/>
 	
-- Error (type:'error')
+- an error message box
 
 <img src="desktop/error_message.png"/>
 
-{{sample 13_form/04_validation/02_complex_rule.html }}
 
-###Message Types
-
-As you can see in the above image, message boxes can be of two types:
-
-- **default** (white background);
-- **error** (red background).
-
-The error message box has the **type** argument in addition to the **text** one and features an **extended form** of initialization: 
+To create an error message box, you need to define the *type* property with the "error" value: 
 
 ~~~js
 gantt.message({type:"error", text:"Invalid data format"});
@@ -42,159 +44,179 @@ gantt.message({type:"error", text:"Invalid data format"});
 
 ###Expire Interval
 
-By default a message disappears either on mouse clicking somewhere outside it, or in 4000 milliseconds after appearing.
+It's possible to customize the expire interval for a message box with the help of the *expire* parameter. It is the time period after the end of which the message box disappears (in milliseconds).
+By default, the expire interval is equal to 4000 milliseconds. 
 
-To change the expire interval or cancel it - use the **expire** parameter:
+You can either change this value or to cancel the expire period at all, by setting the expire parameter to "-1". In this case 
+a message box will disappear only on a mouse click.
 
 ~~~js
 gantt.message({
 	type:"error", 
     text:"Invalid data format",
     expire:10000
-    //expire:-1   for cancelling the expire period
 });
 ~~~
 
-If you cancel the expire period, such a message will disappear only on a mouse click.
+To hide the specified message box manually and not to wait while it hides automatically, you can use the dhtmlx.message.hide(boxId) method.
 
-Message boxes can be hidden **programmatically** as well:
+{{note
+The method can't be used with dhtmlx.alert and dhtmlx.confirm
+}}
+
+
+- boxId - the box id specified in the box's constructor
 
 ~~~js
-var message = gantt.message("Hi!");
-gantt.message.hide(message);
+dhtmlx.message({
+    id:"myBox",
+    text:"Page is loaded"
+});
+..
+gantt.message.hide("myBox");
 ~~~
 
 ##Modal Message Boxes
 
-**Message boxes** prevent the workflow on the parent app until you perform actions required by them (button clicking, as a rule). 
-Message boxes close on a button click and a callback function, if any is executed.
+Modal message boxes prevent the work of the parent app, until a necessary action is performed (usually, button clicking). 
+They close on a button click and a callback function, if any is executed.
 
-Message boxes contain some text and an "OK" button. There exist three types of modal message boxes:
+There exist three types of modal message boxes:
 
-- [gantt.alert()](#alert) - an alert box with a button
-- [gantt.confirm()](#confirm) - a confirmation box with two buttons to confirm or cancel. 
-- [gantt.modalbox()](#modal) - a modal message box with as many buttons as you wish. 
+- [Alert Message Box](#alert) - an alert box with a button;
+- [Confirm Message Box](#confirm) - a confirmation box with two buttons (to confirm or to cancel); 
+- [Modalbox](#modal) - a modal message box with an unlimited number of buttons. 
 
-The boxes share common properties. They are:
+Common properties of the boxes are:
 
-- **title** - text of the header;
-- **ok** - text of the "OK" button;
-- **cancel** - text of the "Cancel" button (only for the confirmation box);
-- **text** - text of the window body; 
-- **callback** - function that is executed on a button click. A callback function may include another message box, the content of which depends on your choice in the previous step;
-- **type** - type of the button (warning or error).
+- **id** - the message box's id;
+- **title** - the text of the header;
+- **type** - the type of the message box (a warning or an error);
+- **text** - the text of the message box's body; 
+- **ok** - the text of the "OK" button;
+- **cancel** - the text of the "Cancel" button (for the confirm box);
+- **callback** - the function called on button click. Takes *true* or *false* as the parameter (subject to the clicked button);
+- **position** - for now supports only one value - "top", any other value will result in center-align;
+- **width**	- the width of the modal box (set as CSS [&#60;length&#62;](https://developer.mozilla.org/en/docs/Web/CSS/length) or
+	[&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) values, e.g. "100px", "50%");
+- **height** - the height of the modal box (set as CSS [&#60;length&#62;](https://developer.mozilla.org/en/docs/Web/CSS/length) or
+	[&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) values, e.g. "100px", "50%").
 
-The callback function takes the **result** of user communication with a message box as a parameter. It can be:
-
-- **boolean true** - each time you press its **"OK"**, *true* is passed to the box callback. It's the only possible value for the alert box as it features the "OK" button only;
-- **boolean false** - each time you press **"Cancel"**, *false* is passed to the callback. Works for the confirm box;
-- **Button index** - true for the modal box. It stores the index of the clicked button (zero-based numbering).
-
-The result is used in the callback function that defines further actions according to its value (*true* or *false*). 
-
-At the same time, callback can be set regardless of the result, as a function will be executed on button click.
 
 ##Initialization
 
-###gantt.alert {#alert}
+###Alert Message Box {#alert}
 
-<img src="desktop/alert_box.png"/>
+<img src="desktop/alert.png"/>
 
-The text of its only button is defined as the value of the **ok** parameter. Passing of the result into the callback is optional. 
+An alert message box contains the "OK" button. To set the text of the "OK" button, use the *ok* parameter with the text as a value:
+
+- a short form (contains just the text of a message - implicit usage of the parameter 'text'. The other parameters take default values):
 
 ~~~js
-//the shortest form
 gantt.alert("Text");
+~~~
 
-//short form with callback
-gantt.alert("Test alert", function(result){....});
+- a full form (contains several available parameters. Non-specified parameters take default values)
 
-// long form
+~~~js
 gantt.alert({
-	title:"Custom title",
-	ok:"Custom text",
-    type:"alert-warning",
-	text:"Warning",
+    text:"some text",
+    title:"Error!",
+    ok:"Yes",
 	callback:function(){...}
 });
 ~~~
 
-{{sample 10_window/03_alert.html }}
 
-###gantt.confirm {#confirm}
+###Confirm Message Box {#confirm}
 
-<img src="desktop/confirm_box.png"/>
+<img src="desktop/confirm.png"/>
 
-Confirm message boxes contain two buttons - "ok" and "cancel", the text of which is defined in the same-name properties. 
+A confirm message box has two buttons - the "OK" button and the "Cancel" one. The text of the buttons is defined in the properties with the corresponding names. 
+
+
+- a short form
+
+~~~js
+gantt.confirm("ConfirmText");
+~~~
+
+- a full form
 
 ~~~js
 gantt.confirm({
-	title:"Custom title",
-	ok:"Yes", 
+    text: "Continue?",
+    ok:"Yes", 
     cancel:"No",
-    type:"confirm-error",
-	text:"Test confirm",
-    callback:function(result){ //setting callback
-    	gantt.alert({
-        	title:"Your Choice",
-            text:"Result" +result //using callback
-        });
-   }
+    callback: function(result){
+        gantt.message("Result: "+result);
+    }
 });
 ~~~
 
-{{sample 10_window/04_confirm.html }}
 
 ##Modal Box {#modal}
 
 <img src="desktop/modalbox.png"/>
 
-A modalbox resembles alert and confirm in its modality, yet features several peculiarities: 
+A modalbox posesses some peculiar features: 
 
-- its **text** can include any **HTML** content;
-- it may contain as many buttons as you wish defined in the **buttons** array that contains text values for each one;
-- the **callback** takes the **index** of the chosen button as a parameter;
-- it can be **sized** with width and height parameters.
+- its *text* can include any *HTML* content;
+- it may have many buttons specified in the *buttons* array that contains text values for of the buttons;
+- the *callback* function takes the *index* of the chosen button as a parameter.
 
 ~~~js
 gantt.modalbox({
-	title:"Custom title",
-	buttons:["Yes", "No", "Maybe"],
-	text:"Any html content here",
-    width: "500px",
+	title:"Settings"
+    text: " ... html code here... ",
+    buttons:["Save", "Defaults", "Cancel"],
     callback: function(result){
-    	switch(result){
-		case 0: 
-        	//statement
-            break;
-        case 1:
-        	//statement
-            break;
-        ...
-        }
+        gantt.alert(result);
     }
 });
 ~~~
 
-{{sample }}
+##Styling
+
+For any type of the message box you can define a custom style to achieve the desired look.
+Generally, the appropriate css class is specified through the parameter *type*: you define a css class and set the parameter to its name.
+
+While creating a css class, please, use the 'important' keyword to ensure correct processing.
+
+There are some rules related to setting the 'type' parameter you should keep in mind:
+
+- To set a css class for the alert and confirm boxes, you must initialize such a box using the 'window-related' way.
+- To set a css class for the message boxes, you must initialize such a box using the 'common' way.
+- The name of a css class should go with the 'gantt-' prefix.
+
+~~~js
+<style type="text/css">
+.gantt-myCss{
+    font-weight:bold !important;
+    color:white !important;
+    background-color:red !important;
+}
+</style>
+...
+gantt.message({ type:"myCss", text:"some text" });
+~~~
 
 ##Modal Windows and Keyboard Interaction
 
-The keyboard functionality for modal boxes is controlled by the **gantt.message.keyboard** property that is initially true. 
+The keyboard functionality for modal boxes is controlled by the **gantt.message.keyboard** property. Initially, it's set to *true*. 
 
-By default, modal boxes block keyboard events of the page. Users can use only the following keys that set the modal box's value and close it: 
+By default, modal boxes block keyboard events of the page. The only keys that can be used are: 
 
-- **"space"** and **"enter"** for setting **true** value as a modal box result;
-- **"escape"** for setting **false** value as a modal box result.
+- "space" and "enter" - sets the *true* value as a modal box result;
+- "escape" - sets the *false* value as a modal box result.
 
-To enable keyboard events (and disable the above mentioned keys), you should set the **keyboard** property to false:
+By setting the **keyboard** property to *false*, you'll enable keyboard events (and disable the above mentioned keys):
 
 ~~~js
-gantt.keyboard.message = false; 
-gantt.modalbox({...})
+gantt.message.keyboard = false; 
+gantt.modalbox({...});
 ~~~
 
-From now on, the user gets a possibility to use the full keyboard, for instance, for typing values into inputs inside modal boxes. 
+It allows using the full keyboard, e.g. for typing values into inputs inside modal boxes. 
 
-
-@complexity:2

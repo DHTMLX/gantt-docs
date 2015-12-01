@@ -20,6 +20,7 @@ gantt.config.redo = true;
 - api/gantt_undo_types_config.md
 @relatedsample:
 02_extensions/14_undo.html
-
+@related: 
+desktop/undo_redo.md
 @changelog:
 added in version 4.0

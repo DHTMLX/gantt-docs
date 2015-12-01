@@ -22,6 +22,11 @@ To enable the Redo functionality, specify the api/gantt_redo_config.md config pr
 gantt.config.redo = true;
 ~~~
 
+<br>
+{{sample
+02_extensions/14_undo.html
+}}
+
 Calling the Undo/Redo functions
 ----------------------------
 
@@ -78,7 +83,7 @@ gantt.config.undo_actions = {
 To define how many steps can be reverted, apply the api/gantt_undo_steps_config.md parameter:
 
 ~~~js
-gantt.config.steps = 10;
+gantt.config.undo_steps = 10;
 ~~~
 
 By default, it's possible to undo 10 actions.

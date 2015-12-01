@@ -5,6 +5,7 @@ Properties
 {{api
 - api/gantt_api_date_config.md - sets the date format for addTask() method to
 - api/gantt_auto_scheduling_config.md - enables auto scheduling
+- api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creation of links from parent tasks (projects) to their children
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
@@ -54,7 +55,6 @@ Properties
 - api/gantt_open_tree_initially_config.md - openes all branches initially
 - api/gantt_order_branch_config.md - activates the 'branch' mode that allows dragging tasks only within the parent branch
 - api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows dragging tasks within the whole gantt
-- api/gantt_parent_child_links_config.md - 
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
 - api/gantt_quick_info_detached_config.md - defines whether the task form will appear from the left/right side of the screen or near the selected task
@@ -114,6 +114,7 @@ Properties
 @index:
 - api/gantt_api_date_config.md
 - api/gantt_auto_scheduling_config.md
+- api/gantt_auto_scheduling_descendant_links_config.md
 - api/gantt_auto_scheduling_initial_config.md
 - api/gantt_auto_scheduling_strict_config.md
 - api/gantt_autofit_config.md
@@ -163,7 +164,6 @@ Properties
 - api/gantt_open_tree_initially_config.md
 - api/gantt_order_branch_config.md
 - api/gantt_order_branch_free_config.md
-- api/gantt_parent_child_links_config.md
 - api/gantt_preserve_scroll_config.md
 - api/gantt_prevent_default_scroll_config.md
 - api/gantt_quick_info_detached_config.md

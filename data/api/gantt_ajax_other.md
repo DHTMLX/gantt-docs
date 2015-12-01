@@ -9,19 +9,31 @@ object
 
 @example:
 
-gantt.ajax.get("url", function(){
-    // callback
-});
- 
+// assuming that the response is the following
+{status: "ok", data: "value", data2: "value2"}
 
-// the same
-dhtmlxAjax.get("url", function(){
-	// callback
+
+var xhr = gantt.ajax;
+
+// HTTP GET
+xhr.get("server.php", function(r){
+    var t = JSON.parse(r.xmlDoc.responseText); // convert response to json object
+    if (t && t.status == "ok") {
+        // response is ok
+    }
+});
+
+// HTTP POST
+xhr.post("server.php", "paramName=paramValue", function(r){
+    var t = JSON.parse(r.xmlDoc.responseText); 
+    if (t && t.status == "ok") {
+        // response is ok
+    }
 });
 
 @template:	api_config
 @descr:
-Please, see [dhtmlxAjax](http://docs.dhtmlx.com/ajax__index.html).
+API reference of ajax module can be found [here](http://docs.dhtmlx.com/api__refs__dhtmlxajax.html).
 
 @changelog:
 added in version 4.0
