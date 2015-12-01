@@ -5,6 +5,7 @@ Properties
 {{api
 - api/gantt_api_date_config.md - sets the date format for addTask() method to
 - api/gantt_auto_scheduling_config.md - enables auto scheduling
+- api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creation of links from parent tasks (projects) to their children
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
@@ -60,6 +61,7 @@ Properties
 - api/gantt_quickinfo_buttons_config.md - stores a collection of buttons resided in the pop-up task's details form
 - api/gantt_readonly_config.md - activates the read-only mode for the Gantt chart
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
+- api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table
@@ -74,11 +76,12 @@ Properties
 - api/gantt_show_grid_config.md - shows the grid area of the Gantt chart
 - api/gantt_show_links_config.md - enables/disables displaying links in the Gantt chart
 - api/gantt_show_markers_config.md - shows/hides markers on the page
-- api/gantt_show_progress_config.md - enables showing a progress/spinner while data is loading
+- api/gantt_show_progress_config.md - enables displaying of the progress inside the task bars
 - api/gantt_show_quick_info_config.md - activates/disables the 'quick_info' extension (pop-up task's details form)
 - api/gantt_show_task_cells_config.md - enables/disables displaying column borders in the chart area
 - api/gantt_show_unscheduled_config.md - enables showing unscheduled tasks
 - api/gantt_skip_off_time_config.md - hides non-working time from the time scale
+- api/gantt_smart_rendering_config.md - enables the smart rendering mode for gantt's tasks and links rendering
 - api/gantt_sort_config.md - enables sorting in the table
 - api/gantt_start_date_config.md - sets the start value of the time scale
 - api/gantt_start_on_monday_config.md - sets the start day of weeks
@@ -100,6 +103,10 @@ Properties
 - api/gantt_touch_feedback_config.md - enables/disables vibration while moving tasks on touch devices
 - api/gantt_type_renderers_config.md - redefines functions responsible for displaying different types of tasks
 - api/gantt_types_config.md - stores the names of lightbox's structures (used for different types of tasks)
+- api/gantt_undo_config.md - enables the Undo functionality for the gantt
+- api/gantt_undo_actions_config.md - sets the actions that the Undo operation will revert
+- api/gantt_undo_steps_config.md - sets the number of steps that should be reverted by the undo method
+- api/gantt_undo_types_config.md - sets the types of entities for which the Undo operation will be applied
 - api/gantt_work_time_config.md - enables calculating the duration of tasks in working time instead of calendar time
 - api/gantt_xml_date_config.md - sets the date format that is used to parse data from the data set
 }}
@@ -107,6 +114,7 @@ Properties
 @index:
 - api/gantt_api_date_config.md
 - api/gantt_auto_scheduling_config.md
+- api/gantt_auto_scheduling_descendant_links_config.md
 - api/gantt_auto_scheduling_initial_config.md
 - api/gantt_auto_scheduling_strict_config.md
 - api/gantt_autofit_config.md
@@ -162,6 +170,7 @@ Properties
 - api/gantt_quickinfo_buttons_config.md
 - api/gantt_readonly_config.md
 - api/gantt_readonly_property_config.md
+- api/gantt_redo_config.md
 - api/gantt_root_id_config.md
 - api/gantt_round_dnd_dates_config.md
 - api/gantt_row_height_config.md
@@ -181,6 +190,7 @@ Properties
 - api/gantt_show_task_cells_config.md
 - api/gantt_show_unscheduled_config.md
 - api/gantt_skip_off_time_config.md
+- api/gantt_smart_rendering_config.md
 - api/gantt_sort_config.md
 - api/gantt_start_date_config.md
 - api/gantt_start_on_monday_config.md
@@ -202,6 +212,10 @@ Properties
 - api/gantt_touch_feedback_config.md
 - api/gantt_type_renderers_config.md
 - api/gantt_types_config.md
+- api/gantt_undo_config.md
+- api/gantt_undo_actions_config.md
+- api/gantt_undo_steps_config.md
+- api/gantt_undo_types_config.md
 - api/gantt_work_time_config.md
 - api/gantt_xml_date_config.md
 

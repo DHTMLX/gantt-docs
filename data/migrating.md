@@ -1,6 +1,101 @@
 Migrating From Older Versions
 =================================================
 
+<style>
+	table.my_table {
+    	width: 100%;
+    }
+	table.my_table td {
+		text-align: left;
+		vertical-align: middle;
+        width: 50%;
+	}
+	table.my_table td.type_info {
+		text-align: center;
+        background-color: #E3F6FF;
+	}
+	table.my_table td.version_info {
+		text-align: center;
+        background-color: #FFDAFF;
+	}
+</style>
+
+
+3.x -> 4.0
+------------
+
+Version 4.0 introduces some changes in public API, namely:
+
+- legacy modules as well as the modules that intersect with dhtmlxSuite modules are no longer defined by the dhtmlxGantt library
+- commonly used modules, such as dhtmlxMessage, dataProcessor, ajax are moved to the **window.gantt** namespace and became a part of dhtmlxGantt public API
+
+A fallback to the old API is included in v4.x, so the code writen for v3.3 and earlier will continue working. However in some cases changes are required.
+Generally, all global declarations, except for **window.gantt** and **window.Gantt** (enterprise version only) are deprecated and will be removed in version 5.0.
+
+###Deprecated API
+
+There are methods that have been deprecated. They will continue working in v4.x, but will trigger a console warning (not visible to the end users) each time they are called. 
+
+<img src="desktop/gantt_deprecated_warning.png">
+
+Overview:
+
+- dhtmlxMessage module has been moved from the **window.dhtmlx** object to the **window.gantt** object. Read more about Message Boxes [here](desktop/message_boxes.md)
+- dhtmlxDataProcessor constructor has been moved from **window.dataProcessor** to **window.gantt.dataProcessor**
+- utility methods such as **dhtmlx.copy**, **dhtmlx.uid** and **dhtmlx.mixin** have been moved to **window.gantt** object
+
+If you use these methods, your application will continue working after updating to v4.0 without requiring any immediate changes. In future we recommend updating them to a newer version of the API.
+
+The complete list of deprecated methods includes:
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.3</td><td class="version_info">From version 4.0</td></tr>
+
+<tr><td>dhtmlx.alert</td><td>gantt.alert</td></tr>
+<tr><td>dhtmlx.confirm</td><td>gantt.confirm</td></tr>
+<tr><td>dhtmlx.modalbox</td><td>gantt.modalbox</td></tr>
+<tr><td>dhtmlx.uid</td><td>gantt.uid</td></tr>
+<tr><td>dhtmlx.copy</td><td>gantt.copy</td></tr>
+<tr><td>dhtmlx.mixin</td><td>gantt.mixin</td></tr>
+<tr><td>dhtmlx.defined</td><td>gantt.defined</td></tr>
+<tr><td>dhtmlx.bind</td><td>gantt.bind</td></tr>
+<tr><td>dhtmlx.assert</td><td>gantt.assert</td></tr>
+<tr><td>window.dataProcessor</td><td>gantt.dataProcessor</td></tr>
+</table>
+
+###Obsolete API
+
+Some methods have become obsolete and will no longer be used in v4.x.
+If you still use these methods or objects, you'll need either to modify the code of an application or to include the **dhtmlxgantt_deprecated.js** file to the page.
+
+Overview:
+
+- **window.dhx4** is no longer defined by **dhtmlxgantt.js**
+- Environment variables that were defined in **window.dhx4** are now available in the **gantt.env** object
+- Ajax module has been moved from **dhx4.ajax** to **gantt.ajax**
+- **gantt.event**, **gantt.eventRemove** should be used instead of **dhtmlxEvent/dhtmlxDetachEvent**
+
+The whole list of the obsolete API is given below:
+
+<table class="my_table">
+
+<tr><td class="version_info">Up to version 3.3</td><td class="version_info">From version 4.0</td></tr>
+<tr><td>window.dhtmlxEvent</td><td>gantt.event</td></tr>
+<tr><td>window.dhtmlxDetachEvent</td><td>gantt.eventRemove</td></tr>
+<tr><td>window.dhx4.isIE</td><td>gantt.env.isIE</td></tr>
+<tr><td>window.dhx4.isIE6</td><td>gantt.env.isIE6</td></tr>
+<tr><td>window.dhx4.isIE7</td><td>gantt.env.isIE7</td></tr>
+<tr><td>window.dhx4.isIE8</td><td>gantt.env.isIE8</td></tr>
+<tr><td>window.dhx4.isOpera</td><td>gantt.env.isOpera</td></tr>
+<tr><td>window.dhx4.isChrome</td><td>gantt.env.isChrome</td></tr>
+<tr><td>window.dhx4.isKHTML</td><td>gantt.env.isKHTML</td></tr>
+<tr><td>window.dhx4.isFF</td><td>gantt.env.isFF</td></tr>
+<tr><td>window.dhx4.isIPad</td><td>gantt.env.isIPad</td></tr>
+</table>
+
+
+
 2.0 -> 3.0
 ----------------------
 1) In order to prevent CSS conflicts with dhtmlxScheduler, the class names that have been used by both components were renamed in dhtmlxGantt (all classes were related to the ligthbox).
@@ -80,7 +175,7 @@ The **gantt** object contains a set of methods and 2 main properties: [config](a
 ~~~
 
 <br>
-[
+
 4) The [XML format](desktop/supported_data_formats.md#xmldhtmlxgantt20) was changed but the [old XML format](desktop/supported_data_formats.md#xmldhtmlxganttlt20) is still can be [loaded](api/gantt_load.md).
 
 ~~~js

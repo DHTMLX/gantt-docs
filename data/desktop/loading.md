@@ -241,4 +241,3 @@ Loading-related methods has the following events flow:
 - event api/gantt_onganttrender_event.md 
 
 
-

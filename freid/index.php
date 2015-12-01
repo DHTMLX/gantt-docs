@@ -18,6 +18,8 @@
 	<script src="../../gantt/codebase/ext/grouping.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../gantt/codebase/ext/auto_scheduling.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../gantt/codebase/ext/fullscreen.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/undo.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/smart_rendering.js" type="text/javascript" charset="utf-8"></script>
 
 	<script type="text/javascript">
 		(function(){

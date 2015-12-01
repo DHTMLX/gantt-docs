@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 3.3</h2>
+    <h2>Meet Gantt 4.0!</h2>
     
     <p>
     New version brings you new functionality and extended API
     </p>
     <ul>
-		<li><a href="desktop/auto_scheduling.md">Auto scheduling of tasks</a></li>
-        <li><a href="desktop/fullscreen_mode.md">Full screen mode</a></li>
-        <li><a href="desktop/crud_task.md#addingunscheduledtasks">Unscheduled tasks</a></li>
+		<li><a href="desktop/performance.md#smartrendering">Smart Rendering for Big Datasets</a></li>
+        <li><a href="desktop/undo_redo.md">Undo/Redo Extensions</a></li>
+        <li><a href="migrating.md#3x40">Public API Improvements</a></li>
 	</ul>
 
     <p class='action_buttons'>

@@ -29,7 +29,7 @@ Generally, to load data from the server side you need to:
 gantt.init("gantt_here");
 gantt.load("data.php");
 
-var dp = new dataProcessor("data.php");
+var dp = new gantt.dataProcessor("data.php");
 dp.init(gantt);
 ~~~
 	</li>
@@ -113,7 +113,14 @@ The structure of a standard database to load tasks and links to the Gantt chart 
     	<li><b>id</b>-(<i>string, number</i>) the event id.</li>
         <li><b>source</b>-(<i>number</i>) the id of the source task. </li>
         <li><b>target</b>-(<i>number</i>) the id of the target task. </li>
-        <li><b>type</b>-(<i>string</i>) the type of the dependency: 0 - 'finish to start', 1 - 'start to start', 2 - 'finish to finish'. </li>
+        <li><b>type</b>-(<i>string</i>) the type of the dependency:
+        	<ul>
+            	<li>0 - 'finish to start'</li>
+            	<li>1 - 'start to start'</li> 
+            	<li>2 - 'finish to finish'</li>
+            	<li>3 - 'start to finish'</li>
+            </ul> 
+        </li> 
     </ul>
 </ul> 
 
@@ -164,7 +171,7 @@ To make dataProcessor work with the REST backend, you need to do 2 things:
 2. Call the setTransactionMode method with the "REST" value.
 
 ~~~js
-var dp = new dataProcessor("http://example.com/data");
+var dp = new gantt.dataProcessor("http://example.com/data");
 dp.init(gantt);
 dp.setTransactionMode("REST");
 ~~~
@@ -195,50 +202,53 @@ where "api" is the url you've specified in the dataProcessor configuration.
 Initalizing dataprocessor:
 
 ~~~js
-var dp = new dataProcessor("apiUrl");
+var dp = new gantt.dataProcessor("apiUrl");
 dp.init(gantt);
 dp.setTransactionMode("REST");
 ~~~
 
 Possible requests:
 
-- load data
-
-GET 
-/apiUrl
-
-- add a new task
-
-PUT
-/apiUrl/task/taskId
-
-- update a task
-
-POST
-/apiUrl/task/taskId
-
-- delete a task
-
-DELETE
-/apiUrl/task/taskId
-
-
-- add a new link
-
-PUT
-/apiUrl/link/linkId
-
-- update a link
-
-POST
-/apiUrl/link/linkId
-
-- delete a link
-
-DELETE
-/apiUrl/link/linkId
-
-
+<table>
+	<tr>
+    	<td><b>Action</b></td><td><b>HTTP Method</b></td><td><b>URL</b></td>
+    </tr>
+	<tr>
+    	<td>load data</td>
+		<td>GET</td>
+        <td>/apiUrl</td>
+	</tr>
+    <tr>
+		<td>add a new task</td>
+		<td>POST</td>
+        <td>/apiUrl/task/taskId</td>
+    </tr>
+	<tr>
+    	<td>update a task</td>
+		<td>PUT</td>
+        <td>/apiUrl/task/taskId</td>
+	</tr>
+	<tr>
+    	<td>delete a task</td>
+		<td>DELETE</td>
+        <td>/apiUrl/task/taskId</td>
+	</tr>
+	<tr>
+    	<td>add a new link</td>
+		<td>POST</td>
+        <td>/apiUrl/link/linkId</td>
+	</tr>
+    <tr>
+		<td>update a link</td>
+		<td>PUT</td>
+        <td>/apiUrl/link/linkId</td>
+    </tr>
+    <tr>
+		<td>delete a link</td>
+		<td>DELETE</td>
+        <td>/apiUrl/link/linkId</td>
+	</tr>
+</table>
 
 Storing the order of tasks
 -------------------------------------------------

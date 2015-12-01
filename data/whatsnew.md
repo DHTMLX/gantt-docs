@@ -3,6 +3,26 @@ What's new
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+4.0
+---------
+#### Functionality
+- [Smart rendering](desktop/performance.md#smartrendering) for big datasets
+- [Undo/redo](desktop/undo_redo.md) extensions
+
+####Configuration
+- [Critical path calculation](desktop/critical_path.md) - support for [lag/lead of links](desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks) added
+- Spanish and Chinese [locales](desktop/localization.md#predefinedlocales) updated
+
+####API
+- Public API improvements - public helpers for [ajax](http://docs.dhtmlx.com/api__refs__dhtmlxajax.html), [environment variables](api/gantt_env_other.md)  
+- [Public API cleanup](migrating.md#3x40) - redundant global objects removed, conflicts with dhtmlxSuite resolved
+- Public helpers for [popup messages](desktop/message_boxes.md) added
+
+#### Bug fixes
+
+- Minor bug fixes
+
+
 3.3
 ----------
 #### Functionality
@@ -83,8 +103,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 -------------
 
 #### Global
-- Updated locales.
-- Many bugs has been fixed
+- Updated locales
+- Many bugs have been fixed
 
 #### Configuration
 - [Custom configuration of the lightbox for different task types](desktop/task_types.md#individuallightboxforeachtype)

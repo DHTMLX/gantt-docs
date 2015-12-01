@@ -52,7 +52,7 @@ The event fires before sending data to the server and after any change, made in 
 gantt.init("gantt_here");
 gantt.load("data.php");
  
-var dp = new dataProcessor("data.php");
+var dp = new gantt.dataProcessor("data.php");
 dp.init(gantt);
 
 dp.attachEvent("onBeforeUpdate", function (id, status, data) {
