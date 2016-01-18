@@ -5,7 +5,7 @@ types
 @edition: pro
 @type: object
 @example:
-var type1 = gantt.config.tasks.task;
+var type1 = gantt.config.types.task;
 
 @default: types : {'task':'task','project':'project','milestone':'milestone'}
 
