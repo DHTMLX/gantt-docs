@@ -1,10 +1,28 @@
-Assigning Text Blocks to the Tasks
+Displaying Contents of Tasks
 ====================================
 A text near a task bar allows you to show additional information related to the task. 
 In most cases, it's some assigned resource -  persons, materials etc.  
 
 <img src="desktop/assigned_text.png"/>
 
+Customizing format of task bars
+-------------------------------------------------
+To change the default format of task bars, you can use the api/gantt_task_text_template.md template:
+
+~~~js
+gantt.templates.task_text=function(start,end,task){
+	return "<b>Text:</b> "+task.text+",<b> Holders:</b> "+task.users;
+};
+~~~
+
+It can contain any HTML content that should be displayed inside of the task bar.
+
+{{sample
+	04_customization/08_templates.html
+}}
+
+
+<img src="desktop/task_text.png"/>
 
 Assigning a text to the left side of a bar
 -------------------------------------------------
@@ -33,19 +51,3 @@ gantt.templates.rightside_text = function(start, end, task){
 	04_customization/01_outer_content.html
 }}
 
-Changing the default template of the bar's text
--------------------------------------------------
-To change the default template of task bars, use the api/gantt_task_text_template.md template:
-
-~~~js
-gantt.templates.task_text=function(start,end,task){
-	return "<b>Text:</b> "+task.text+",<b> Holders:</b> "+task.users;
-};
-~~~
-
-{{sample
-	04_customization/08_templates.html
-}}
-
-
-<img src="desktop/task_text.png"/>

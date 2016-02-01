@@ -4,6 +4,8 @@ Configuring Elements of the Lightbox
 
 <img src="desktop/lightbox.png"/>
 
+Lightboxes may differ depending on the type and peculiarities of tasks they are used for. You can learn more from the section desktop/task_types.md#individuallightboxforeachtype.
+
 Exploring the lightbox's structure
 --------------------------------------
 

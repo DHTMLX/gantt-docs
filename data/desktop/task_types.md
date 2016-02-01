@@ -146,7 +146,7 @@ To provide a possibility of adding milestones, read article desktop/milestones.m
 
 Individual lightbox for each type
 ----------------------------------------------
-Each type of a task may have its own set of characteristics - because of this, an individual configuration of the details form (lighbox) can be defined for each type.
+Each type of a task may have its own set of characteristics - because of this, an individual configuration of the details form (lightbox) can be defined for each type.
 All configurations are stored in the api/gantt_lightbox_config.md object. 
 
 For example, 
@@ -157,6 +157,7 @@ For example,
 
 You can [add a custom type](desktop/task_types.md#creatingacustomtype) and specify for it an appropriate structure of the lightbox as well.
 
+To go into details on a lightbox configuration, you can read the desktop/edit_form.md chapter.
 
 Creating a custom type
 -----------------------------------------------
