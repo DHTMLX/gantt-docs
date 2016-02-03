@@ -81,7 +81,7 @@ gantt.getTask(1).color = "red"
 
 <br>
 
-If, at least one of the properties is assigned, the task recieves additional class - **"gantt_task_inline_color"**. <br>
+If, at least one of the properties is assigned, the task receives additional class - **"gantt_task_inline_color"**. <br>
 You can use this class to override some other style for the task (use the "*.gantt_task_line.gantt_task_inline_color*" selector for the class):
 
 ~~~js

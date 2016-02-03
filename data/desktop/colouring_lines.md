@@ -85,7 +85,7 @@ gantt.getLink(4).color = "green"
 
 <br>
 
-If, at least one of the properties is assigned, the link recieves additional class - **"gantt_link_inline_color"**. <br>
+If, at least one of the properties is assigned, the link receives additional class - **"gantt_link_inline_color"**. <br>
 You can use this class to override some other style for the link:
 
 ~~~js

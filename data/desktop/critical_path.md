@@ -89,7 +89,7 @@ function updateCriticalPath(){
 It can be useful when you have a big number of tasks and re-calculating the critical path may affect the performance.
 
 
-To manually re-calculate the critical path and apply the related styling, use the foolowing approach:
+To manually re-calculate the critical path and apply the related styling, use the following approach:
 
 ~~~js
 gantt.templates.task_class = function(start, end, task){

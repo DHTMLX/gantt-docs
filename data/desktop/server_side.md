@@ -83,7 +83,7 @@ $gantt->render_table("gantt_tasks","id",
             </ul>
         </li>
         <li> the <b>mix</b> method sets the "open" property to <i>true</i> for all data items. Simply saying, this method makes all branches in the tree open initially</li>
-        <li> the <b>enable_order</b> method 'says' to load the task's order in the tree from the server. The tasks's order in the tree (among sublings) is stored in a field with the hardcoded name - "sortorder". Note, the property used only while loading data from a database.</li>
+        <li> the <b>enable_order</b> method 'says' to load the task's order in the tree from the server. The tasks's order in the tree (among siblings) is stored in a field with the hardcoded name - "sortorder". Note, the property used only while loading data from a database.</li>
     </ul>
 	</li>
 </ol>
@@ -199,7 +199,7 @@ api/task/id
 
 where "api" is the url you've specified in the dataProcessor configuration.
 
-Initalizing dataprocessor:
+Initializing dataprocessor:
 
 ~~~js
 var dp = new gantt.dataProcessor("apiUrl");
@@ -252,7 +252,7 @@ Possible requests:
 
 Storing the order of tasks
 -------------------------------------------------
-To store the order of tasks in the tree (among sublings) on the server:
+To store the order of tasks in the tree (among siblings) on the server:
 
 <ol>
 	<li>Add an integer field with the name "sortorder" to your table with tasks.<br> <i>Note, the name of the field is hardcoded. </i><br>
