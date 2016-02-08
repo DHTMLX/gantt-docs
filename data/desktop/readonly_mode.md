@@ -41,8 +41,8 @@ Read-only mode for specific tasks/links
 To make specific tasks or links read-only, add the 'readonly' property to data objects and set it to true:
 
 ~~~js
-scheduler.getTask(id).readonly = true;
-scheduler.getLink(id).readonly = true;
+gantt.getTask(id).readonly = true;
+gantt.getLink(id).readonly = true;
 ~~~
 
 <img src="desktop/task_readonly_property.png"/>
@@ -87,7 +87,7 @@ gantt.config.lightbox.sections = [
 	{name:"description", height:38, map_to:"some_property", type:"textarea", focus:true},
 	....
 ]
-scheduler.config.editable_property = "some_property";
+gantt.config.editable_property = "some_property";
 ~~~
 
 Setting event readonly based on multiple properties

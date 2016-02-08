@@ -10,7 +10,7 @@ lightbox_header
 - task	object	the task's object
 
 @returns:
-- text    string     an HTML text for rendering in the scheduler
+- text    string     an HTML text for rendering in the gantt
 
 
 @example:

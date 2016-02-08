@@ -10,9 +10,9 @@ gantt.init('gantt_here');
 
 @template:	api_config
 @descr:
-The option is useful in cases when the scheduler is inserted in the middle of the page and there is some content outside.
+The option is useful in cases when the gantt is inserted in the middle of the page and there is some content outside.
 
-If the option is disabled, the scroll once appeared in the scheduler would remain there and to scroll other part of the page a user would  need  to make a click outside the scheduler.
+If the option is disabled, the scroll once appeared in the gantt would remain there and to scroll other part of the page a user would  need  to make a click outside the gantt.
 
 
 

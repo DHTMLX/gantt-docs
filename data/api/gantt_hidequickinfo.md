@@ -4,9 +4,9 @@ hideQuickInfo
 	
 @example:
 
-scheduler.showQuickInfo(5);
+gantt.showQuickInfo(5);
 ...
-scheduler.hideQuickInfo();
+gantt.hideQuickInfo();
 
 @template:	api_method
 @descr:

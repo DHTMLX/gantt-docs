@@ -10,10 +10,17 @@ confirm
 
 
 @example:
-
 gantt.confirm({
-    title:"Confirm",
-    text:"Continue?"
+    text: "Continue?",
+    ok:"Yes", 
+    cancel:"No",
+    callback: function(result){
+        if(result){
+            gantt.message("Yes!");
+        }else{
+            gantt.message("No...");
+        }
+    }
 });
 
 @template:	api_method

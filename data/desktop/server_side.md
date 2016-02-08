@@ -4,7 +4,7 @@ dhtmlxGantt supports special helper libraries that simplify your work with the s
 
 - **dhtmlxConnector** - a server-side library. Provides necessary data exchange conditions so that you do not have to deal with the technical details of data stores,
 systems or services (<a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">read more</a>).
-- **dataProcessor** - a client-side library (**included in dhtmlxScheduler.js**).  Monitors data changes and gets the server requests on the client side (<a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">read more</a>).
+- **dataProcessor** - a client-side library (**included into dhtmlxGantt.js**).  Monitors data changes and gets the server requests on the client side (<a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">read more</a>).
 
 Joint usage of the libraries allows you to achieve any client-server manipulation and to not write the server-client communication logic manually.
 
@@ -154,13 +154,13 @@ If you have dataProcessor initialized, any change made by the user or programmat
 Generally, to update a specific task or dependency programmatically, use the api/gantt_updatelink.md and api/gantt_updatelink.md methods, respectively:
 
 ~~~js
-scheduler.parse([
+gantt.parse([
    {id:1, start_date:"2013-05-13 6:00", end_date:"2009-05-13 8:00", text:"Event 1"},
    {id:2, start_date:"2013-06-09 6:00", end_date:"2009-06-09 8:00", text:"Event 2"}
 ],"json");
  
-scheduler.getTask(1).text = "Task 111"; //changes event's data
-scheduler.updateTask(1); // renders the updated task
+gantt.getTask(1).text = "Task 111"; //changes event's data
+gantt.updateTask(1); // renders the updated task
 ~~~
 
 Saving data from REST server 

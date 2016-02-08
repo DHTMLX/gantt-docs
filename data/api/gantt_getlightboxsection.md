@@ -35,7 +35,7 @@ The section object contains the following members:
 - **section** - (*object*) the configuration object of the section
   - **id** -  (*string*) the section id
   - **name** - (*string*) the section name. According to the name, the gantt takes the label for the section from the **locale.labels** collection. For example, for the 'description' section , 
-  the label will be taken as **scheduler.locale.labels.section_description**
+  the label will be taken as **gantt.locale.labels.section_description**
   - **height** - (*number*) the section height
   - **map_to** - (*string*) the name of a property mapped to the editor
   - **type** - (*string*) the editor type

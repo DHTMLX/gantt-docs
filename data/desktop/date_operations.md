@@ -11,7 +11,7 @@ Converting a Date object to a string
 To convert a Date object to a string, use the [date_to_str](api/gantt_date_other.md) method: <br> 
 *The method returns a function that converts a Date object to a string of the specified format:*
 ~~~js
-var formatFunc = scheduler.date.date_to_str("%d/%m/%Y");
+var formatFunc = gantt.date.date_to_str("%d/%m/%Y");
 var date = formatFunc(new Date(2013, 05, 29)); // -> "29/06/2013"
 ~~~
 
@@ -25,7 +25,7 @@ To convert a string to a Date object, use the [str_to_date](api/gantt_date_other
 You can generate a date convert function as follows:
 
 ~~~js
-var formatFunc = scheduler.date.str_to_date("%d/%m/%Y");
+var formatFunc = gantt.date.str_to_date("%d/%m/%Y");
 var date = formatFunc("29/06/2013"); // -> 29 June, 2013 00:00:00
 ~~~
 
@@ -37,7 +37,7 @@ To convert local time to UTC, use the [convert_to_utc](api/gantt_date_other.md) 
 
 ~~~js
 //29 June, 2013 14:00 (local time) -> 29 June, 2013 12:00 (utc)
-var time = scheduler.date.convert_to_utc(new Date(2013, 05, 29, 14, 00));
+var time = gantt.date.convert_to_utc(new Date(2013, 05, 29, 14, 00));
 ~~~
 
 Adding(subtracting) a time interval to(from) a date
@@ -46,7 +46,7 @@ To add(subtract) a time interval to(from) the specified date, use the [add](api/
 
 ~~~js
 //adds 1 year to the specified date: 29 June, 2013 -> 29 June, 2014
-var newDate = scheduler.date.add(new Date(2013, 05, 29), 1, 'year');
+var newDate = gantt.date.add(new Date(2013, 05, 29), 1, 'year');
 ~~~
 
 

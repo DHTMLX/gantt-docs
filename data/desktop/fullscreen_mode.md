@@ -16,7 +16,7 @@ To enable fullscreen support, include the *dhtmlxgantt_fullscreen.js* extension 
 <script src="../codebase/ext/dhtmlxgantt_fullscreen.js"></script>
 ~~~
 
-The component itself doesn’t have a UI control that toggles this mode, you need to add it somewhere to your page or copy the one from example:
+The component itself doesn't have a UI control that toggles this mode, you need to add it somewhere to your page or copy the one from example:
 
 ~~~js
 <input id="fullscreen_button" type="button" value="Toggle Fullscreen"/>

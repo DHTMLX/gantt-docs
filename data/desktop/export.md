@@ -197,7 +197,7 @@ gantt.exportToPDF({
 ~~~
 
 {{note
-Note, you cannot specify some URL as the value of the **data** paremeter, just a data object.
+Note, you cannot specify some URL as the value of the **data** parameter, just a data object.
 }}
 
 ##Skin of the output Gantt chart
@@ -230,12 +230,12 @@ gantt.exportToPDF({
 
 
 ##Custom style for the output file
-To apply a custom style for the scheduler, provide the stylesheet with your custom CSS classes:
+To apply a custom style for the gantt, provide the stylesheet with your custom CSS classes:
 
 <ul>
 	<li>through a link:
 ~~~js
-scheduler.exportToPDF({
+gantt.exportToPDF({
     name:"calendar.pdf",
     header:'<link rel="stylesheet" href="http://mysite.com/custom.css">' /*!*/
 });
@@ -243,7 +243,7 @@ scheduler.exportToPDF({
 	</li>
 	<li>or through the 'style' tag:
 ~~~js
-scheduler.exportToPDF({
+gantt.exportToPDF({
     name:"calendar.pdf",
     header:'<style>... custom css classes here ...</style>' /*!*/
 });
@@ -255,7 +255,7 @@ scheduler.exportToPDF({
 Note, the aforementioned solution works for the global HTTP reference. If you have CSS classes specified in an Intranet/local environment, you can embed all styles as in:
 
 ~~~js
-scheduler.exportToPDF({
+gantt.exportToPDF({
 	header:"<style>.tier1{   background: red;   color:white;}</style>"
 });
 ~~~

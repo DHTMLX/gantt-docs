@@ -1,6 +1,6 @@
 Loading Data
 =======================================
-dhtmlxScheduler can take data of 2 formats:
+dhtmlxGantt can take data of 2 formats:
 
 
 - [XML](desktop/supported_data_formats.md#xml);
