@@ -1,13 +1,14 @@
 onBeforeRowDragEnd
 =============
 
-@short:fires before the user drops a row in  the grid
+@short:
+ fires when a user drops a row in the grid
 	
 
 @params:
-- sid		string, number		the id of the task to move
-- parent	string, number	the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
-- tindex	number		the index of the position that the task will be moved to <br> (the index in the whole tree)
+- sid			string/number			the id of the task to move
+- parent		string/number			the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
+- tindex		number					the index of the position that the task will be moved from <br> (the index in the whole tree)
 
 @example:
 gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
@@ -21,7 +22,10 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 
 @template:	api_event
 @descr:
-The event is blockable. Return *false* to cancel adding of the task.
+- When event is fired the task is already moved to a new position, but the changes still can be reverted.
+- The event is blockable. Return *false* operation and move task to it's original location
+- Original position (parent and index) are available from handler arguments
+- Target position can be retrieved from a task object as [task.parent](desktop/task_tree_operations.md#parentofatask) and [gantt.getGlobalTaskIndex(taskId)](api/gantt_getglobaltaskindex.md)
 
 @relatedapi:
 	api/gantt_onrowdragend_event.md
