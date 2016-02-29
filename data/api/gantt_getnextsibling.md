@@ -27,8 +27,8 @@ var tasks = {
 gantt.init("gantt_here");
 gantt.parse(tasks);
  
-gantt.getSiblings("t_1"); ->  "t_2"  /*!*/
-gantt.getSiblings("t_2"); ->  null (if no next sibling) /*!*/
+gantt.getNextSibling("t_1"); ->  "t_2"  /*!*/
+gantt.getNextSibling("t_2"); ->  null (if no next sibling) /*!*/
 
 @template:	api_method
 @descr:

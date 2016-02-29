@@ -24,9 +24,9 @@ var tasks = {
 gantt.init("gantt_here");
 gantt.parse(tasks);
 
-gantt.getNext("p_1"); ->  null /*!*/
-gantt.getNext("t_1"); -> "p_1" /*!*/
-gantt.getNext("t_2"); -> "t_1"  /*!*/
+gantt.getPrev("p_1"); ->  null /*!*/
+gantt.getPrev("t_1"); -> "p_1" /*!*/
+gantt.getPrev("t_2"); -> "t_1"  /*!*/
 
 @template:	api_method
 @descr:

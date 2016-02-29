@@ -29,8 +29,8 @@ var tasks = {
 gantt.init("gantt_here");
 gantt.parse(tasks);
  
-gantt.getSiblings("t_2"); ->  "t_1" /*!*/
-gantt.getSiblings("t_1"); ->  null (if no previous sibling) /*!*/
+gantt.getPrevSibling("t_2"); ->  "t_1" /*!*/
+gantt.getPrevSibling("t_1"); ->  null (if no previous sibling) /*!*/
 
 
 @related:

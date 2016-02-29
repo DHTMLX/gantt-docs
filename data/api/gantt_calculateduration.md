@@ -15,7 +15,7 @@ calculateDuration
 gantt.config.work_time = true;
 gantt.init("gantt_here");
 
-gantt.calculateDuration(new Date(2013,02,15), new Date(2013,02,25)); /*!*/ //->48
+gantt.calculateDuration(new Date(2013,02,15), new Date(2013,02,25)); /*!*/ //->6
 
 @template:	api_method
 @descr:
