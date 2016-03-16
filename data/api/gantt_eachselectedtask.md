@@ -5,7 +5,7 @@ eachSelectedTask
 	
 
 @params:
-- code 	function	a function that will iterate over tasks. Takes a task object as a parameter
+- code 	function	a function that will iterate over tasks. Takes a task id as a parameter
 
 
 
