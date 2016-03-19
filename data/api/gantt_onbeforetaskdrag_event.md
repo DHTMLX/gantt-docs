@@ -6,9 +6,9 @@ onBeforeTaskDrag
 
 @params:
 
-- id	string, number	the task id
-- mode	string 	the drag-and-drop mode ("resize", "progress", "move", "ignore")
-- e		Event	a native event object
+- id			string/number		the task id
+- mode			string 				the drag-and-drop mode ("resize", "progress", "move", "ignore")
+- e				Event				a native event object
 
 @returns:  
   - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 

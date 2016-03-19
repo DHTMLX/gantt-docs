@@ -23,3 +23,4 @@ gantt.attachEvent("onBeforeLinkUpdate", function(id,new_item){
 
 @template:	api_event
 @descr:
+The event is blockable. Return false to cancel updating of the link.

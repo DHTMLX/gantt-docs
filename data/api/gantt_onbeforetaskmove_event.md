@@ -5,9 +5,9 @@ onBeforeTaskMove
 
 
 @params: 
-- sid		string, number		the id of the task to move
-- parent	string, number	the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
-- tindex	number		the index of the position that the task will be moved to <br> (the index in the whole tree)
+- sid		string/number			the id of the task to move
+- parent	string/number			the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
+- tindex	number				the index of the position that the task will be moved to <br> (the index in the whole tree)
 
 @example:
 //prevent moving to another sub-branch:
@@ -27,7 +27,7 @@ gantt.attachEvent("onBeforeTaskMove", function(sid, parent, tindex){
 	api/gantt_onaftertaskmove_event.md
 @template:	api_event
 @descr:
-The event is blockable. Return *false* to cancel adding of the task.
+The event is blockable. Return *false* to cancel moving of the task.
 
 Note, the event fires in 2 cases:
 

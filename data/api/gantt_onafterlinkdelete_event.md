@@ -3,8 +3,8 @@ onAfterLinkDelete
 @short: fires after the user deletes a link
 
 @params:
-- id	string, number	the link id
-- item	object	the link object 
+- id		string/number			the link id
+- item		object					the link object 
 
 @example:
 gantt.attachEvent("onAfterLinkDelete", function(id,item){

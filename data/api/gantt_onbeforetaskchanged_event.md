@@ -6,7 +6,7 @@ onBeforeTaskChanged
 
 @params:
 
-- id	string, number	the task id
+- id	string/number	the task id
 - mode	string 	the drag-and-drop mode ("resize", "progress", "move", "ignore")
 - task  object	the task object
 

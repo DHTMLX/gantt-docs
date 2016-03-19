@@ -11,6 +11,7 @@ onTaskCreated
 @example:
 gantt.attachEvent("onTaskCreated", function(task){
     //any custom logic here
+    return true;
 });
 
 @template:	api_event

@@ -13,6 +13,7 @@ onBeforeRedo
 @example:
 gantt.attachEvent("onBeforeRedo",function(){
 	// your code here
+    return true;
 });
 
 @template:	api_event

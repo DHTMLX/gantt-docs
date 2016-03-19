@@ -4,7 +4,7 @@ onTaskUnselected
 	
 
 @params:
-- id	string, number	the task id (of the unselected task)
+- id	string/number	the task id (of the unselected task)
 
 
 @example:

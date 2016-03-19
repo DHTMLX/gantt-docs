@@ -9,6 +9,7 @@ onLinkDblClick
 @example:
 gantt.attachEvent("onLinkDblClick", function(id,e){
     //any custom logic here
+    return true;
 });
 
 @returns:  
@@ -16,6 +17,7 @@ gantt.attachEvent("onLinkDblClick", function(id,e){
 
 @template:	api_event
 @descr:
+the event is blockable - returning false will cancel further processing
 
 @relatedapi:
 	api/gantt_onlinkclick_event.md

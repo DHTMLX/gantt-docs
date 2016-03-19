@@ -13,6 +13,7 @@ onBeforeUndo
 @example:
 gantt.attachEvent("onBeforeUndo",function(){
 	// your code here
+    return true;
 });
 
 @template:	api_event

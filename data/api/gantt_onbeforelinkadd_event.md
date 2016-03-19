@@ -3,7 +3,7 @@ onBeforeLinkAdd
 @short: fires before a new link is added to the Gantt chart
 
 @params:
-- id	string, number	the link id
+- id	string,number	the link id
 - link	object	the link object 
 
 @returns:  

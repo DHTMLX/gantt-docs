@@ -6,9 +6,9 @@ onAfterTaskDrag
 
 @params:
 
-- id	string, number	the task id
-- mode	string 	the drag-and-drop mode ("resize", "progress", "move", "ignore")
-- e		Event	a native event object
+- id			string/number			the task id
+- mode			string 					the drag-and-drop mode ("resize", "progress", "move", "ignore")
+- e				Event					a native event object
 
 @example:
 gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){

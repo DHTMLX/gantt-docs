@@ -4,7 +4,7 @@ onBeforeLinkDisplay
 	
 
 @params:
-- id	string, number	the link id
+- id	string/number	the link id
 - link	object	the link object
 
 @returns:  
@@ -20,6 +20,7 @@ gantt.attachEvent("onBeforeLinkDisplay", function(id, link){
 
 @template:	api_event
 @descr:
+The event is blockable. Return false to cancel further processing
 
 @relatedapi:
 	api/gantt_onbeforetaskdisplay_event.md

@@ -4,8 +4,8 @@ onAfterTaskAdd
 	
 
 @params:
-- id	string, number	the task id
-- item	object	the task object 
+- id		string/number			the task id
+- item		object					the task object 
 
 @example:
 gantt.attachEvent("onAfterTaskAdd", function(id,item){

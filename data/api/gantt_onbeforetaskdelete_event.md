@@ -5,7 +5,7 @@ onBeforeTaskDelete
 	
 
 @params:
-- id	string, number	the task id
+- id	string/number	the task id
 - item	object	the task object 
 
 @returns:  
@@ -21,3 +21,4 @@ gantt.attachEvent("onBeforeTaskDelete", function(id,item){
 @relatedapi:
 	api/gantt_deletetask.md
 @descr:
+The event is blockable. Return false to cancel deleting of the task.
