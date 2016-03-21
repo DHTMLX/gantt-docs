@@ -20,7 +20,7 @@ gantt.attachEvent("onTaskClick", function(id,e){
 
 @template:	api_event
 @descr:
-the event is blockable - returning false will cancel further processing
+The event is blockable. Returning false will cancel the default handler (selecting a task)
 
 @relatedapi:
 	api/gantt_ontaskdblclick_event.md

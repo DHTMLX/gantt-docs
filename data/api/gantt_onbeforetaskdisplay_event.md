@@ -20,7 +20,7 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 
 @template:	api_event
 @descr:
-the event is blockable - returning false will cancel further processing
+The event is blockable. Returning false will prevent the task from being displayed
 
 @related:
 	desktop/filtering.md

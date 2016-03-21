@@ -17,7 +17,8 @@ gantt.attachEvent("onLinkDblClick", function(id,e){
 
 @template:	api_event
 @descr:
-the event is blockable - returning false will cancel further processing
+The event is blockable. Returning false will cancel the default handler (deleting a link)
+
 
 @relatedapi:
 	api/gantt_onlinkclick_event.md

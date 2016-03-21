@@ -20,4 +20,4 @@ gantt.attachEvent("onAjaxError", function(request){
 
 @template:	api_event
 @descr:
-The event is blockable. Return false to cancel further processing.
+The event is blockable. Returning false will stop further processing of the AJAX request

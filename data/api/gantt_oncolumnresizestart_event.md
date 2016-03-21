@@ -20,7 +20,7 @@ gantt.attachEvent("onColumnResizeStart", function(index, column){
 
 @template:	api_event
 @descr:
-The event is blockable. Return false to cancel dragging.
+The event is blockable. Returning false won't allow column resizing
 
 @related:
 	desktop/specifying_columns.md#resizingcolumns

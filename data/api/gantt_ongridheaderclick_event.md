@@ -17,7 +17,7 @@ gantt.attachEvent("onGridHeaderClick", function(name, e){
 });
 
 @descr:
-the event is blockable - returning false will cancel further processing
+Returning false will cancel the default handler (adding a new task on the "plus" button click or sorting a column)
 
 @template:	api_event
 @descr:

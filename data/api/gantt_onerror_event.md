@@ -20,7 +20,7 @@ gantt.attachEvent("onError", function(errorMessage){
 
 @template:	api_event
 @descr:
-the event is blockable. Returning false will cancel error message showing
+the event is blockable. Returning false will prevent the default behavior (showing error message in a red box in the top right)
 
 @changelog:
 

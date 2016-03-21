@@ -20,7 +20,7 @@ gantt.attachEvent("onBeforeLinkDisplay", function(id, link){
 
 @template:	api_event
 @descr:
-The event is blockable. Return false to cancel further processing
+The event is blockable. Returning false will prevent the link from being displayed
 
 @relatedapi:
 	api/gantt_onbeforetaskdisplay_event.md
