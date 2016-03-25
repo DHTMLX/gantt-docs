@@ -181,13 +181,31 @@ dp.setTransactionMode("REST");
 Note, the response can be any valid JSON object. 
 }}
 
-To change the id of the event while updating - use the **tid** property. 
+The full server response should contain the following properties:
 
+- action - the type of the operation;
+- sid - the original event ID;
+- tid - the ID of the event after the operation.
+
+There are 5 predefined types of response:
+
+- updated;
+- inserted;
+- deleted;
+- invalid;
+- error.
+
+
+So, an example of response can be as follows:
 
 ~~~js
-{
-	tid: "some"
-}
+{"action":"updated","sid":"2","tid":"2"}
+~~~
+
+To change the id of the event while updating, use the **tid** property. 
+
+~~~js
+{"tid":"some"}
 ~~~
 
 ###Dataprocessor with the use of POST, PUT, GET, DELETE HTTP methods for CRUD requests
@@ -221,7 +239,7 @@ Possible requests:
     <tr>
 		<td>add a new task</td>
 		<td>POST</td>
-        <td>/apiUrl/task/taskId</td>
+        <td>/apiUrl/task</td>
     </tr>
 	<tr>
     	<td>update a task</td>
@@ -236,7 +254,7 @@ Possible requests:
 	<tr>
     	<td>add a new link</td>
 		<td>POST</td>
-        <td>/apiUrl/link/linkId</td>
+        <td>/apiUrl/link</td>
 	</tr>
     <tr>
 		<td>update a link</td>

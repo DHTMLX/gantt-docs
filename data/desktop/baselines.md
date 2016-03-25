@@ -40,20 +40,58 @@ Note,
 
 Example of usage
 --------------------------
-To understand how to apply this functionality, let's consider an example: you have planned and actual time for tasks and need to display both of times.
+
+To understand how to apply this functionality, let's consider an example: you have a planned and an actual time for tasks and need to display both of times.
 
 <img style="" src="desktop/baselines.png"/>
 
-###Step 1. Add additional data properties
-First of all, you need to add additional data properties to the task object, let's name them: 'planned_start' and 'planned_end'. 
+###Step 1. Reduce the task height and move task lines upper
+
+In the initial state tasks look like this:
+
+<img src="desktop/baselines_start.png">
+
+First of all, you need to free some space for baselines under the tasks. 
+For this purpose, it's necessary to reduce the task height to make it equal to approximately a half of the row height:
+
+~~~js
+gantt.config.task_height = 16;
+gantt.config.row_height = 40;
+~~~
+
+And move the task line to the top of the row by applying the following CSS code:
+
+~~~css
+.gantt_task_line, .gantt_line_wrapper {
+	margin-top: -9px;
+}
+.gantt_side_content {
+	margin-bottom: 7px;
+}
+.gantt_task_link .gantt_link_arrow {
+	margin-top: -12px
+}
+.gantt_side_content.gantt_right {
+	bottom: 0;
+}
+~~~
+
+The result will be the following:
+
+<img src="desktop/baselines_task_height.png">
+
+###Step 2. Add additional data properties
+
+After that, you need to add additional data properties to the task object. Let's name them: 'planned_start' and 'planned_end'. 
 
 <img style="" src="desktop/baseline_task_object.png"/>
 
-###Step 2. Convert added data properties to Date objects
-dhtmlxGantt is aware  just of the 'start_date' and 'end_date' data properties and automatically parse them to Date objects.
-Any other date properties requires additional processing. <br>
-To make the added 'planned_start', 'planned_end' properties recognizable by dhtmlxGantt - parse them to Date objects with the help of the parseDate() method in the api/gantt_ontaskloading_event.md 
-event handler. 
+###Step 3. Convert added data properties to Date objects
+
+dhtmlxGantt is aware just of the 'start_date' and 'end_date' data properties and automatically parse them to Date objects.
+Any other date properties require additional processing. <br>
+To make the added 'planned_start', 'planned_end' properties recognizable by dhtmlxGantt, 
+parse them to Date objects with the help of the parseDate() method in the api/gantt_ontaskloading_event.md event handler. 
 
 ~~~js
 gantt.attachEvent("onTaskLoading", function(task){
@@ -63,7 +101,8 @@ gantt.attachEvent("onTaskLoading", function(task){
 });
 ~~~
 
-###Step 3. Display custom elements for the planned time
+###Step 4. Display custom elements for the planned time
+
 Then, call the api/gantt_addtasklayer.md method to display planned time for task (defined by the 'planned_start' and 'planned_end' properties).
 ~~~js
 gantt.addTaskLayer(function draw_planned(task) {
@@ -80,21 +119,28 @@ gantt.addTaskLayer(function draw_planned(task) {
 });
 ~~~
 
-###Step 4. Specify the CSS rules for the added elements
-Then, add a style for your new elements: 
-~~~html
+###Step 5. Specify the CSS rules for the added elements
+
+Next, add a style for your new elements: 
+
+~~~css
 .baseline {
-			position: absolute;
-			border-radius: 2px;
-			opacity: 0.6;
-			margin-top: -7px;
-			height: 12px;
-			background: #ffd180;
-			border: 1px solid rgb(255,153,0);
+	position: absolute;
+	border-radius: 2px;
+	opacity: 0.6;
+	margin-top: -7px;
+	height: 12px;
+	background: #ffd180;
+	border: 1px solid rgb(255,153,0);
 }
 ~~~
-###Step 5. Add a possibility to edit added data properties in the lightbox
-then, redefine the lightbox structure if you want to provide a possibility to edit the newly added properties from UI.
+
+
+
+
+###Step 6. Add the possibility to edit added data properties in the lightbox
+
+Finally, redefine the lightbox structure if you want to provide a possibility to edit the newly added properties from UI.
 
 ~~~js
 gantt.config.lightbox.sections = [

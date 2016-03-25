@@ -125,4 +125,11 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 });
 ~~~
 
+Dragging tasks together with their dependent tasks
+-------------------------------------------
 
+There are several ways of implementing tasks moving with their dependent tasks.
+You can read about all of them in the desktop/dragging_dependent_tasks.md chapter.
+
+@index:
+- desktop/dragging_dependent_tasks.md
