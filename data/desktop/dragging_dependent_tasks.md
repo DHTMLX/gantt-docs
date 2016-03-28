@@ -1,7 +1,7 @@
-The Ways of Dragging Dependent Tasks
+Dragging Tasks Together with Their Dependent Tasks
 ===========================
 
-There are several ways of implementing tasks moving with their dependent tasks:
+There are several ways of implementing tasks moving with their dependent tasks.
 
 Using Auto Scheduling Extension
 ------------------------
@@ -24,6 +24,14 @@ gantt.config.auto_scheduling = true;
 Moving Tasks Manually
 -----------------------
 
+###Chapter Contents
+
+- [Getting all linked tasks](#linked_tasks)
+- [Moving Descendants synchronously with the main task](#sync)
+- [Moving Descendants after movement of the main task is finished](#after)
+
+
+###The Main Idea
 The common approach with dragging dependent tasks is the following:
 
 - you detect when the task is being moved
@@ -90,10 +98,15 @@ gantt.eachSuccessor = function(callback, root){
 Descendant tasks can be moved synchronously with the moving of the main tasks, i.e. when the user starts moving tasks, all dependent branches will be moved together. 
 It will look good, but the downside is that there may be a performance drop, if you are moving many tasks at the same time.
 
-1) First, you'll need to get all linked tasks, as it is described [above](#linked_tasks).
+
+####Step 1
+
+Firstly, we will declare the iterator, as it's shown [above](#linked_tasks).
 
 
-2) Then, the handler of the api/gantt_ontaskdrag_event.md event is applied:
+####Step 2
+
+Then, you need to attach a handler to the api/gantt_ontaskdrag_event.md event. It will be called on each frame of drag and drop, and from here we'll move all linked tasks.
 
 ~~~js
 gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
@@ -110,7 +123,9 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 });
 ~~~
 
-3) Finally, to round positions of the child items to scale, the api/gantt_onaftertaskdrag_event.md event should be used:
+####Step 3
+
+Finally, when the user releases the mouse and drag-and-drop is finished, we need to round positions of the child items to scale. We can do it using api/gantt_onaftertaskdrag_event.md event:
 
 ~~~js
 gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
@@ -132,37 +147,45 @@ This approach works fine if you don't have too many linked tasks.
 
 Descendant tasks can be updated after the user finishes moving the main task. The result will look simpler, but have a better performance.
 
-1) Firstly, we will declare the iterator, as it's shown [above](#linked_tasks).
+The approach is the following: when the drag and drop is finished, we check what amount the task has been moved for, and move all linked tasks to the same value.
 
-2) Then, we define a "diff" variable that will keep the state of tasks shifting and set its initial value to 0. 
-This variable should be cleared each time before task dragging:
+####Step 1
+
+Firstly, we will declare the iterator, as it's shown [above](#linked_tasks).
+
+####Step 2
+
+When the user releases the mouse and drag and drop is finished, we can capture the api/gantt_onbeforetaskchanged_event.md event,
+where both the modified and the original instances of the moved task are available and calculate date difference between them.
+
+{{note
+Note, that at this stage drag-and-drop can be canceled (since onBeforeTaskChanged allows canceling it, and your app may have handlers that can do it),
+so we don't modify dependent tasks here.
+}}
+
+Instead, we'll put the calculated diff value in a variable in the same closure, so that it could be accessed later.
 
 ~~~js
 var diff = 0;
-~~~
 
-3) Each time when a task is dragged, the value of the "diff" variable will be recalculated as a difference between the initial start date and 
-the new start date (after dragging). All the manipulations will be handled inside of the api/gantt_onbeforetaskchanged_event.md event handler.
-
-We won't modify dependent tasks here, since api/gantt_onbeforetaskchanged_event.md is a blockable event. So, drag-n-drop of the primary task can still be canceled.
-
-~~~js
 gantt.attachEvent("onBeforeTaskChanged", function(id, mode, originalTask){
   var modes = gantt.config.drag_mode;
   if(mode == modes.move ){
-  	var modifiedTask = gantt.getTask(id);
+    var modifiedTask = gantt.getTask(id);
     diff = modifiedTask.start_date - originalTask.start_date;
   }
   return true;
 });
 ~~~
 
-4) As the last step, we'll apply the "diff" variable to all dependent tasks. 
-It will be done from the onAfterTaskDrag handler which indicates that drag-n-drop of the primary task has been finished.
+####Step 3
+
+Finally, we capture the api/gantt_onaftertaskdrag_event.md event, which tells that drag-and-drop has been performed. 
+At this point we can update all dependent tasks using *diff* we've calculated at the previous step:
 
 ~~~js
 //rounds positions of the child items to scale
-  gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
+gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
     var modes = gantt.config.drag_mode;
     if(mode == modes.move ){
       gantt.eachSuccessor(function(child){
@@ -171,11 +194,10 @@ It will be done from the onAfterTaskDrag handler which indicates that drag-n-dro
         gantt.updateTask(child.id);
       },id );
     }
-  });
+});
 ~~~
 
-In order to pass the "diff" value from the onBeforeTaskChanged to the onAfterTaskDrag event handler, 
-we'll define both handlers and the "diff" variable in the same closure:
+The full code will be as follows:
 
 ~~~js
 (function(){
@@ -204,3 +226,5 @@ we'll define both handlers and the "diff" variable in the same closure:
   });
 })();
 ~~~
+
+@linkclass:hidden
