@@ -6,7 +6,7 @@ task_date
 - date	Date	the date which needs formatting
 
 @example:
-gantt.templates.date_grid = function(date){
+gantt.templates.task_date= function(date){
     return gantt.date.date_to_str(gantt.config.task_date)(date);
 };
 
