@@ -179,7 +179,7 @@ There are two ways to load data from a database. In both cases, you need to deal
 1) The first way includes the usage of REST API for communication with server.
 
  - The server-side implementation depends on the framework you want to use. 
-For example, in case of Node.js we should add a server route for the URL to which Gantt will send a AJAX request for data.
+For example, in case of Node.js we should add a server route for the URL to which Gantt will send an AJAX request for data.
 
 It will generate the corresponding response in JSON format. 
 
@@ -214,8 +214,8 @@ You can find URL details in the article desktop/server_side.md#requestresponsede
 
 2) The second way implies the usage of the [PHP Connector](http://docs.dhtmlx.com/connector__php__index.html) for loading data into Gantt.
 
--  On the server-side, realize the server script that returns data in the XML or JSON format
-    (more on the server-side integration, see in the desktop/storing_with_connectors.md article):
+-  On the server-side, realize the server script that returns data in the XML or JSON format:
+    
 
 {{snippet
 Loading from a database. Server-side code (data.php)
@@ -241,9 +241,12 @@ gantt.init("gantt_here");
 gantt.load("data.php"); /*!*/  
 ~~~
 	
+Read more on the server-side integration with connectors  in the desktop/storing_with_connectors.md article.    
+    
 {{sample
 	01_initialization/04_connector_json.html
 }}
+
 
 
 Events flow
