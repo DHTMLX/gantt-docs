@@ -1,96 +1,146 @@
-Storing Data on the Server Side
+Server-Side Integration
 ==============================
-dhtmlxGantt supports special helper libraries that simplify your work with the server side:
 
-- **dhtmlxConnector** - a server-side library. Provides necessary data exchange conditions so that you do not have to deal with the technical details of data stores,
-systems or services (<a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">read more</a>).
-- **dataProcessor** - a client-side library (**included into dhtmlxGantt.js**).  Monitors data changes and gets the server requests on the client side (<a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">read more</a>).
+<style>
+.dp_table td{
+	min-width:140px;
 
-Joint usage of the libraries allows you to achieve any client-server manipulation and to not write the server-client communication logic manually.
+}
+</style>
 
-{{note
-You can find dhtmlxConnector in the <a href="http://dhtmlx.com/x/download/regular/dhtmlxGantt.zip">dhtmlxGantt package</a>.}}
+To organize communication of dhtmlxGantt with the server side, the dataProcessor helper library and the REST backend are used.
 
-
-
+[dataProcessor](http://docs.dhtmlx.com/dataprocessor__index.html) is a client-side library included into dhtmlxGantt.js. It monitors data changes and gets the server requests on the client side.
+ 
+[REST](http://rest.elkstein.org/) stands for Representational State Transfer. It relies on a stateless, client-server, cacheable communications protocol.
+RESTful APIs use HTTP as a transport layer in most cases. Due to its simplicity, REST works well with frameworks that use various languages.
+ 
 
 Technique
 ----------------------------------------------
-Generally, to load data from the server side you need to:
+Generally, to load data from the server side using REST API, you need to:
 
-<ol>
-	<li>
-  		<b>Client side:</b>
-            <ul>
-            	<li>call the api/gantt_load.md method where as a parameter, specify the path to a server-side script which outputs data in the JSON format</li>
-                <li>initialize dataProcessor and attach it to the dhtmlxGantt object.The dataProcessor constructor accepts the path to the same server-side script</li>
-            </ul>
+###Client side
+
+           
+1) Call the api/gantt_load.md method where as a parameter specify the url that returns Gantt data in [JSON](desktop/supported_data_formats.md#json) format
+
+2) Initialize dataProcessor and attach it to the dhtmlxGantt object</li>
+           
 ~~~js
 gantt.init("gantt_here");
-gantt.load("data.php");
+gantt.load("apiUrl");
 
-var dp = new gantt.dataProcessor("data.php");
+var dp = new gantt.dataProcessor("apiUrl");
 dp.init(gantt);
 ~~~
-	</li>
-    <li>
-    	<b>Server-side:</b> 
-            <ul>
-            	<li>a standard server script that uses dhtmlxConnector looks like:</li>
-            </ul>
+
+3) In order to set the REST mode of dataProcessor, call the setTransactionMode() function with the REST parameter:
+    		
 ~~~js
-//events.php
-<?php
-
-include ('codebase/connector/db_sqlite3.php');
-include ('codebase/connector/gantt_connector.php');
-
-// SQLite
-$dbtype = "SQLite3";
-$res = new SQLite3(dirname(__FILE__)."/samples.sqlite");
-
-// Mysql
-// $dbtype = "MySQL";
-// $res=mysql_connect("192.168.1.251", "gantt", "gantt");
-// mysql_select_db("gantttest");
-
-$gantt = new JSONGanttConnector($res, $dbtype);
-
-$gantt->mix("open", 1);
-//$gantt->enable_order("sortorder");
-
-$gantt->render_links("gantt_links", "id", "source,target,type");
-$gantt->render_table("gantt_tasks","id",
-	"start_date,duration,text,progress,sortorder,parent","");
-
-?>
+dp.setTransactionMode("REST");
 ~~~
-	<ul>
-    	<li>dhtmlxConnector consists of individual component-specific connectors. For dhtmlxGantt you need to include -  <b>gantt_connector.php</b>.</li>
-        <li>the <b>render_table</b> method allows you to load tasks from a single table.<br> Parameters:
-        	<ul>
-            	<li><i>the database's table name</i></li>
-                <li><i>the name of the identity field (optional)</i></li>
-                <li><a href="desktop/server_side.md#thedatabasesstructure">a list of fields</a> which will be used as data properties of a task</li>
-            </ul>
-            If you want to load data from several tables, read the related chapter of the dhtmlxConnector's documentation - <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:basis#work_with_several_tables">'Basic concepts: work with several tables'</a>.
-        </li>
-        <li>the <b>render_links</b> method allows you to load links from a single table. Unlike tasks, you can't load links from several tables.
-        <ul>
-            	<li><i>the database's table name</i></li>
-                <li><i>the name of the identity field (optional)</i></li>
-                <li><a href="desktop/server_side.md#thedatabasesstructure">a list of fields</a> which will be used as data properties of a link</li>
-            </ul>
-        </li>
-        <li> the <b>mix</b> method sets the "open" property to <i>true</i> for all data items. Simply saying, this method makes all branches in the tree open initially</li>
-        <li> the <b>enable_order</b> method 'says' to load the task's order in the tree from the server. The tasks's order in the tree (among siblings) is stored in a field with the hardcoded name - "sortorder". Note, the property used only while loading data from a database.</li>
-    </ul>
-	</li>
+	
+<h3 id="requestresponsedetails">Request and Response details</h3>
+
+
+The list of possible requests and responses is:
+
+<table class="dp_table">
+	<tr>
+    	<th><b>Action</b></th><th><b>HTTP Method</b></th><th><b>URL</b></th><th><b>Response</b></th>
+    </tr>
+	<tr>
+    	<td>load data</td>
+		<td>GET</td>
+        <td>/apiUrl</td>
+        <td><a href="desktop/supported_data_formats.md#json">JSON format</a></td>
+	</tr>
+    <tr>
+		<td>add a new task</td>
+		<td>POST</td>
+        <td>/apiUrl/task</td>
+        <td>{"action":"inserted","tid":"taskId"}</td>
+    </tr>
+	<tr>
+    	<td>update a task</td>
+		<td>PUT</td>
+        <td>/apiUrl/task/taskId</td>
+        <td>{"action":"updated"}</td>
+	</tr>
+	<tr>
+    	<td>delete a task</td>
+		<td>DELETE</td>
+        <td>/apiUrl/task/taskId</td>
+        <td>{"action":"deleted"}</td>
+	</tr>
+	<tr>
+    	<td>add a new link</td>
+		<td>POST</td>
+        <td>/apiUrl/link</td>
+        <td>{"action":"inserted","tid":"linkId"}</td>
+	</tr>
+    <tr>
+		<td>update a link</td>
+		<td>PUT</td>
+        <td>/apiUrl/link/linkId</td>
+        <td>{"action":"updated"}</td>
+    </tr>
+    <tr>
+		<td>delete a link</td>
+		<td>DELETE</td>
+        <td>/apiUrl/link/linkId</td>
+        <td>{"action":"deleted"}</td>
+	</tr>
+</table>
+
+###Server side
+           
+On each action performed in Gantt (adding, updating or deleting tasks or links),
+dataProcessor reacts by sending an AJAX request to the server.
+
+Each request contains all the data needed to save changes in the database.
+As we initialized dataProcessor in the REST mode, it will use different HTTP verbs for each type of operation.
+
+Since we use REST API, it's possible to implement the server side using different frameworks and programming languages.
+Here's a list of available server side implementations that you can use for Gantt backend integration:
+
+- [Node.js](desktop/server_nodejs.md)
+- PHP
+- .Net
+- Ruby
+
+<br>
+If by some reason you don't want to use REST API, the best solution is [to use dhtmlxConnector library](desktop/storing_with_connectors.md).
+
+Triggering data saving from script
+------------------------------------
+If you have dataProcessor initialized, any change made by the user or programmatically will be automatically saved in the data source.
+
+Generally, to update a specific task or dependency programmatically, use the api/gantt_updatetask.md and api/gantt_updatelink.md methods, respectively:
+
+~~~js
+gantt.parse([
+   {id:1, start_date:"2013-05-13 6:00", end_date:"2009-05-13 8:00", text:"Event 1"},
+   {id:2, start_date:"2013-06-09 6:00", end_date:"2009-06-09 8:00", text:"Event 2"}
+],"json");
+ 
+gantt.getTask(1).text = "Task 111"; //changes event's data
+gantt.updateTask(1); // renders the updated task
+~~~
+
+
+Storing the order of tasks
+-------------------------------------------------
+To store the order of tasks in the tree (among siblings) on the server:
+
+<ol>
+	<li>Add an integer field with the name "sortorder" to your table with tasks.<br> <i>Note, the name of the field is hardcoded. </i><br>
+<img style="padding-top:15px; padding-bottom:15px;" src="desktop/tasks_order.png"/>    
+    </li>
+	<li> Add info here</li>
 </ol>
 
-{{sample
-	01_initialization/04_connector_json.html
-}}
 
 The database's structure
 ------------------------------------------
@@ -147,142 +197,7 @@ CREATE TABLE `gantt_tasks` (
 ~~~
 
 
-Updating data on the server
-------------------------------------
-If you have dataProcessor initialized, any change made by the user or programmatically will be automatically saved in the data source.
 
-Generally, to update a specific task or dependency programmatically, use the api/gantt_updatelink.md and api/gantt_updatelink.md methods, respectively:
-
-~~~js
-gantt.parse([
-   {id:1, start_date:"2013-05-13 6:00", end_date:"2009-05-13 8:00", text:"Event 1"},
-   {id:2, start_date:"2013-06-09 6:00", end_date:"2009-06-09 8:00", text:"Event 2"}
-],"json");
- 
-gantt.getTask(1).text = "Task 111"; //changes event's data
-gantt.updateTask(1); // renders the updated task
-~~~
-
-Saving data from REST server 
---------------------------------------
-To make dataProcessor work with the REST backend, you need to do 2 things: 
-
-1. Specify the path to your REST server in the dataProcessor's constructor.
-2. Call the setTransactionMode method with the "REST" value.
-
-~~~js
-var dp = new gantt.dataProcessor("http://example.com/data");
-dp.init(gantt);
-dp.setTransactionMode("REST");
-~~~
-<br>
-
-{{note
-Note, the response can be any valid JSON object. 
-}}
-
-The full server response should contain the following properties:
-
-- action - the type of the operation;
-- sid - the original event ID;
-- tid - the ID of the event after the operation.
-
-There are 5 predefined types of response:
-
-- updated;
-- inserted;
-- deleted;
-- invalid;
-- error.
-
-
-So, an example of response can be as follows:
-
-~~~js
-{"action":"updated","sid":"2","tid":"2"}
-~~~
-
-To change the id of the event while updating, use the **tid** property. 
-
-~~~js
-{"tid":"some"}
-~~~
-
-###Dataprocessor with the use of POST, PUT, GET, DELETE HTTP methods for CRUD requests
-
-The url is formed by the following rule:
-
-api/link/id,<br>
-api/task/id
-
-where "api" is the url you've specified in the dataProcessor configuration.
-
-Initializing dataprocessor:
-
-~~~js
-var dp = new gantt.dataProcessor("apiUrl");
-dp.init(gantt);
-dp.setTransactionMode("REST");
-~~~
-
-Possible requests:
-
-<table>
-	<tr>
-    	<td><b>Action</b></td><td><b>HTTP Method</b></td><td><b>URL</b></td>
-    </tr>
-	<tr>
-    	<td>load data</td>
-		<td>GET</td>
-        <td>/apiUrl</td>
-	</tr>
-    <tr>
-		<td>add a new task</td>
-		<td>POST</td>
-        <td>/apiUrl/task</td>
-    </tr>
-	<tr>
-    	<td>update a task</td>
-		<td>PUT</td>
-        <td>/apiUrl/task/taskId</td>
-	</tr>
-	<tr>
-    	<td>delete a task</td>
-		<td>DELETE</td>
-        <td>/apiUrl/task/taskId</td>
-	</tr>
-	<tr>
-    	<td>add a new link</td>
-		<td>POST</td>
-        <td>/apiUrl/link</td>
-	</tr>
-    <tr>
-		<td>update a link</td>
-		<td>PUT</td>
-        <td>/apiUrl/link/linkId</td>
-    </tr>
-    <tr>
-		<td>delete a link</td>
-		<td>DELETE</td>
-        <td>/apiUrl/link/linkId</td>
-	</tr>
-</table>
-
-Storing the order of tasks
--------------------------------------------------
-To store the order of tasks in the tree (among siblings) on the server:
-
-<ol>
-	<li>Add an integer field with the name "sortorder" to your table with tasks.<br> <i>Note, the name of the field is hardcoded. </i><br>
-<img style="padding-top:15px; padding-bottom:15px;" src="desktop/tasks_order.png"/>    
-    </li>
-	<li>Call the <b>enable_order</b> method on the server-side:<br> <br>
-~~~php
-$gantt = new JSONGanttConnector($res, $dbtype);
-$gantt->enable_order("sortorder");  /*!*/
-$gantt->render_links("gantt_links", "id", "source,target,type");
-$gantt->render_table("gantt_tasks","id",
-	"start_date,duration,text,progress,sortorder,parent","");
-~~~
-	</li>
-</ol>
+@index: 
+- desktop/storing_with_connectors.md
+- desktop/server_nodejs.md

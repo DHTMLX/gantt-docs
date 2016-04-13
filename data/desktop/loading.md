@@ -174,11 +174,48 @@ gantt.load("tasks.xml", "xml");
 
 Loading from a database
 -------------------------
-To load data from a database, you need to deal with both the client and the server side.
+There are two ways to load data from a database. In both cases, you need to deal with both the client and the server side.
 
-<ul>
-	<li> On the server-side, realize the server script that returns data in the XML or JSON format
-    (more on the server-side integration, see in the desktop/server_side.md article):<br><br>
+1) The first way includes the usage of REST API for communication with server.
+
+ - The server-side implementation depends on the framework you want to use. 
+For example, in case of Node.js we should add a server route for the URL to which Gantt will send a AJAX request for data.
+
+It will generate the corresponding response in JSON format. 
+
+~~~js
+app.get("/data", function(req, res){
+    db.query("SELECT * FROM gantt_tasks", function(err, rows){
+        if (err) console.log(err);
+        db.query("SELECT * FROM gantt_links", function(err, links){
+            if (err) console.log(err);
+            for (var i = 0; i < rows.length; i++){
+                rows[i].start_date = rows[i].start_date.format("YYYY-MM-DD");
+                rows[i].open = true;
+            }
+ 
+            res.send({ data:rows, collections: { links : links } });
+        });
+    });
+});
+~~~
+
+- On the client side we will use the api/gantt_load.md method and specify the necessary URL where an AJAX request for Gantt data will be sent:
+
+{{snippet
+Loading from a database. Client-side code
+}}
+~~~js
+gantt.init("gantt_here");
+gantt.load("apiUrl"); /*!*/  
+~~~
+
+You can find URL details in the article desktop/server_side.md#requestresponsedetails.
+
+2) The second way implies the usage of the [PHP Connector](http://docs.dhtmlx.com/connector__php__index.html) for loading data into Gantt.
+
+-  On the server-side, realize the server script that returns data in the XML or JSON format
+    (more on the server-side integration, see in the desktop/storing_with_connectors.md article):
 
 {{snippet
 Loading from a database. Server-side code (data.php)
@@ -193,8 +230,8 @@ $gantt->render_table("gantt_tasks","id","start_date,duration,text,progress,
 					sortorder,parent");
 ?>
 ~~~
-	</li>
-    <li> On the client side, use the api/gantt_load.md method where specify the path to the server-side script:<br><br>
+
+- On the client side, use the api/gantt_load.md method where specify the path to the server-side script:
 
 {{snippet
 Loading from a database. Client-side code
@@ -203,8 +240,7 @@ Loading from a database. Client-side code
 gantt.init("gantt_here");
 gantt.load("data.php"); /*!*/  
 ~~~
-	</li>
-</ul>
+	
 {{sample
 	01_initialization/04_connector_json.html
 }}
