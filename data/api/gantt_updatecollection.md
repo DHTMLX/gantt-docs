@@ -11,7 +11,7 @@ updateCollection
 gantt.config.lightbox.sections = [
     {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
     {name:"priority", height:22, map_to:"priority", type:"select", /*!*/     
-    	options:serverList("priorities", values_array)},            /*!*/                                                                
+    	options:gantt.serverList("priorities", values_array)},     /*!*/                                                                
     {name:"time", height:72, type:"duration", map_to:"auto"}
 ];
 
@@ -19,7 +19,7 @@ gantt.updateCollection("priorities", new_values_array); /*!*/
 
 
 @returns: 
-- collection	boolean		**true**, if the update was successful. **false**, if the collection wasn't found.
+- collection	boolean		true, if the update was successful; false, if the collection wasn't found
 @template:	api_method
 @relatedapi:
 	api/gantt_serverlist.md
@@ -39,7 +39,7 @@ Let's assume that you have the lightbox as in:
 gantt.config.lightbox.sections = [
     {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
     {name:"priority", map_to:"priority", type:"select", 
-    	options:serverList("priorities")},  /*!*/                                                                  
+    	options:gantt.serverList("priorities")},  /*!*/                                                                  
     {name:"time", height:72, type:"duration", map_to:"auto"}
 ];
 ~~~
