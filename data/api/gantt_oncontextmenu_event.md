@@ -17,3 +17,6 @@ gantt.attachEvent("onContextMenu", function (taskId, linkId, e){
 @descr:
 
 Right clicks in the Gantt chart open the default browser context menu.
+
+@relatedsample:
+    04_customization/10_context_menu.html
