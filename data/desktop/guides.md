@@ -22,6 +22,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/multiple_gantts.md</li>
                     <li>desktop/export.md</li>
                     <li>desktop/excel.md</li>
+                    <li>desktop/export_msproject.md</li>
                     <li>desktop/undo_redo.md</li>
                     <li>desktop/message_boxes.md</li>
             </ul>

@@ -43,88 +43,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-- **project** - (object) a property (properties) of this object represents one of the tags:
-
-<style>
-.myblock{
-	display:inline-block;
-    width:235px;
-    vertical-align:top;
-}
-</style>
-
-
-<div class="myblock">
-	<li>ActualsInSync</li>
-	<li>AdminProject</li>
-	<li>Author</li>
-	<li>AutoAddNewResourcesAndTasks</li>
-	<li>Autolink</li>
-	<li>BaselineForEarnedValue</li>
-	<li>CalendarUID</li>
-	<li>Category</li>
-	<li>Company</li>
-	<li>CreationDate</li>
-	<li>CriticalSlackLimit</li>
-	<li>CurrencyCode</li>
-	<li>CurrencyDigits</li>
-	<li>CurrencySymbol</li>
-	<li>CurrencySymbolPosition</li>
-	<li>CurrentDate</li>
-	<li>DaysPerMonth</li>
-	<li>DefaultFinishTime</li>
-	<li>DefaultFixedCostAccrual</li>
-	<li>DefaultOvertimeRate</li>
-	<li>DefaultStandardRate</li>
-	<li>DefaultStartTime</li>	
-</div>
-
-<div class="myblock">
-	<li>DefaultTaskEVMethod</li>
-	<li>DefaultTaskType</li>
-	<li>DurationFormat</li>
-	<li>EarnedValueMethod</li>
-	<li>EditableActualCosts</li>
-	<li>ExtendedCreationDate</li>
-	<li>FinishDate</li>
-	<li>FiscalYearStart</li>
-	<li>FYStartDate</li>
-	<li>HonorConstraints</li>
-	<li>InsertedProjectsLikeSummary</li>
-	<li>LastSaved</li>
-	<li>Manager</li>
-	<li>MicrosoftProjectServerURL</li>
-	<li>MinutesPerDay</li>
-	<li>MinutesPerWeek</li>
-	<li>MoveCompletedEndsBack</li>
-	<li>MoveCompletedEndsForward</li>
-	<li>MoveRemainingStartsBack</li>
-	<li>MoveRemainingStartsForward</li>
-	<li>MultipleCriticalPaths</li>
-	<li>Name</li>
-</div>
-
-<div class="myblock">
-	<li>NewTasksEffortDriven</li>
-	<li>NewTasksEstimated</li>
-	<li>NewTaskStartDate</li>
-	<li>ProjectExternallyEdited</li>
-	<li>RemoveFileProperties</li>
-	<li>Revision</li>
-	<li>ScheduleFromStart</li>
-	<li>SplitsInProgressTasks</li>
-	<li>SpreadActualCost</li>
-	<li>SpreadPercentComplete</li>
-	<li>StartDate</li>
-	<li>StatusDate</li>
-	<li>Subject</li>
-	<li>TaskUpdatesResource</li>
-	<li>Title</li>
-	<li>UID</li>
-	<li>WeekStartDay</li>
-	<li>WorkFormat</li>
-</div>
-
+- **project** - (object) a property (properties) of this object represents one of the [tags from the list](desktop/tags.md#tagsthatcanberepresentedintheprojectobject).
 
 
 [See official documentation on the XML Schema for the MS Project](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx)
@@ -146,105 +65,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-- **tasks** - (object) a property (properties) of this object represents one of the tags:
-
-<div class="myblock">
-	<li>ActualCost</li>
-    <li>ActualDuration</li>
-    <li>ActualFinish</li>
-    <li>ActualOvertimeCost</li>
-    <li>ActualOvertimeWork</li>
-    <li>ActualOvertimeWorkProtected</li>
-    <li>ActualStart</li>
-    <li>ActualWork</li>
-    <li>ActualWorkProtected</li>
-    <li>ACWP</li>
-    <li>Baseline</li>
-    <li>BCWP</li>
-    <li>BCWS</li>
-    <li>CalendarUID</li>
-    <li>ConstraintDate</li>
-    <li>ConstraintType</li>
-    <li>Contact</li>
-    <li>Cost</li>
-    <li>CreateDate</li>
-    <li>Critical</li>
-    <li>CV</li>
-    <li>Deadline</li>
-    <li>Duration</li>
-    <li>DurationFormat</li>
-    <li>EarlyFinish</li>
-    <li>EarlyStart</li>
-    <li>EarnedValueMethod</li>
-    <li>EffortDriven</li>
-    <li>Estimated</li>
-</div>
-
-
-<div class="myblock">
-	<li>ExternalTask</li>
-    <li>ExternalTaskProject</li>
-    <li>Finish</li>
-    <li>FinishVariance</li>
-    <li>FixedCost</li>
-    <li>FixedCostAccrual</li>
-    <li>FreeSlack</li>
-    <li>HideBar</li>
-    <li>Hyperlink</li>
-    <li>HyperlinkAddress</li>
-    <li>HyperlinkSubAddress</li>
-    <li>ID</li>
-    <li>IgnoreResourceCalendar</li>
-    <li>IsNull</li>
-    <li>IsSubproject</li>
-    <li>IsSubprojectReadOnly</li>
-    <li>LateFinish</li>
-    <li>LateStart</li>
-    <li>LevelAssignments</li>
-    <li>LevelingCanSplit</li>
-    <li>LevelingDelay</li>
-    <li>LevelingDelayFormat</li>
-    <li>Milestone</li>
-    <li>Name</li>
-    <li>Notes</li>
-    <li>OutlineLevel</li>
-    <li>OutlineNumber</li>
-    <li>OverAllocated</li>
-    <li>OvertimeCost</li>
-</div>
-
-
-<div class="myblock">
-	<li>OvertimeWork</li>
-    <li>PercentComplete</li>
-    <li>PercentWorkComplete</li>
-    <li>PhysicalPercentComplete</li>
-    <li>PreLeveledFinish</li>
-    <li>PreLeveledStart</li>
-    <li>Priority</li>
-    <li>Recurring</li>
-    <li>RegularWork</li>
-    <li>RemainingCost</li>
-    <li>RemainingDuration</li>
-    <li>RemainingOvertimeCost</li>
-    <li>RemainingOvertimeWork</li>
-    <li>RemainingWork</li>
-    <li>Resume</li>
-    <li>ResumeValid</li>
-    <li>Rollup</li>
-    <li>Start</li>
-    <li>StartVariance</li>
-    <li>Stop</li>
-    <li>SubprojectName</li>
-    <li>Summary</li>
-    <li>TotalSlack</li>
-    <li>Type</li>
-    <li>WBS</li>
-    <li>WBSLevel</li>
-    <li>Work</li>
-    <li>WorkVariance</li>
-    <li>UID</li>
-</div>
+- **tasks** - (object) a property (properties) of this object represents one of the [tags from the list](desktop/tags.md#tagsthatcanberepresentedinthetasksobject).
 
 [See official documentation on the XML Schema for the MS Project](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx)
 (or any custom tag) and nested in the 'Task' tag. Maximum custom tags length is 30.
@@ -350,12 +171,12 @@ gantt.exportToMSProject();
 ##Import from MS Project
 
 In order to get a JSON object from an XML or MPP file, you should "POST" form with input type="file" name="file" either to
-**http://gantt.scheduler-net.com/export/xmlToJson** or to 
-**http://gantt.scheduler-net.com/export/mppToJson**.
+**https://export.dhtmlx.com/gantt**.
 
 ~~~html
-<form action="http://gantt.scheduler-net.com/export/mppToJson" method="POST" enctype="multipart/form-data">
+<form action="https://export.dhtmlx.com/gantt" method="POST" enctype="multipart/form-data">
     <input type="file" name="file" />
+    <input type="hidden" name="type" value="msproject">
     <button type="submit">Get</button>
 </form>
 ~~~
@@ -374,6 +195,7 @@ form.onsubmit = function(event) {
     formData.append("file", file);
     // get task custom fields values
     formData.append("task_fields", JSON.stringify(["priority"]));
+    formData.append("type", "msproject");
 
     var xhr = new XMLHttpRequest();
 
@@ -401,6 +223,8 @@ form.onsubmit = function(event) {
 };
 ~~~
 
+###Setting the duration unit
+
 To set an expected duration unit, the "duration_unit" (minute, hour, day, week, month, year) string can also be sent to the server.
 
 ~~~html
@@ -410,6 +234,8 @@ To set an expected duration unit, the "duration_unit" (minute, hour, day, week, 
     <button type="submit">Get</button>
 </form>
 ~~~
+
+###Getting project fields
 
 To get project fields, the "project_fields" input with an array of necessary fields can be sent to the server.
 
@@ -424,6 +250,7 @@ form.onsubmit = function(event) {
     formData.append("file", file);
     //Get project fields values
     formData.append("project_fields", JSON.stringify(["Author", "Title"]));
+    formData.append("type", "msproject");
 
     var xhr = new XMLHttpRequest();
 
@@ -440,7 +267,7 @@ form.onsubmit = function(event) {
          // setting tasks and links
          gantt.parse(data.data);
 		 alert(data.config.$custom_data.Title + " by " + 
-         	+ data.config.$custom_data.Author + " loaded!");
+         	data.config.$custom_data.Author + " loaded!");
 
        	 } else {
             alert('An error occurred!');
@@ -451,6 +278,8 @@ form.onsubmit = function(event) {
 	xhr.send(formData);
 };
 ~~~
+
+###Getting tasks fields
 
 To get tasks fields, the "task_fields" input with an array of necessary fields can be sent to the server.
 
@@ -475,6 +304,7 @@ form.onsubmit = function(event) {
     formData.append("file", file);
     // get task custom fields values
     formData.append("task_fields", JSON.stringify(["Contact", "priority"]));
+    formData.append("type", "msproject");
 
     var xhr = new XMLHttpRequest();
 
@@ -501,3 +331,7 @@ form.onsubmit = function(event) {
     xhr.send(formData);
 };
 ~~~
+
+@index:
+
+- desktop/tags.md
