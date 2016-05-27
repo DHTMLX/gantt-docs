@@ -85,6 +85,7 @@ The articles come around key procedures and problem-solving activities.
 		    <ul id="styling_sublist">
             	   <li>desktop/default_edit_form.md</li>
                    <li>desktop/lightbox_manipulations.md</li>
+                   <li>desktop/custom_edit_form.md</li>
                    <li>desktop/custom_editor.md</li>
                    <li>desktop/custom_button.md</li>
             </ul>
