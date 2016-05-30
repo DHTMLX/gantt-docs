@@ -6,6 +6,9 @@ Loading and Storing Tasks
 - desktop/loading.md
 - desktop/supported_data_formats.md
 - desktop/server_side.md
+- desktop/server_nodejs.md
+- desktop/server_dotnet.md
+- desktop/server_ruby.md
 - desktop/serialization.md
 - desktop/dynamic_loading.md
 - desktop/performance.md
