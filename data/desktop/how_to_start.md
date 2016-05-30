@@ -241,17 +241,18 @@ CREATE TABLE `gantt_links` (
   `target` int(11) NOT NULL,
   `type` varchar(1) NOT NULL,
   PRIMARY KEY (`id`)
-)
+);
+
 CREATE TABLE `gantt_tasks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` varchar(255) NOT NULL,
   `start_date` datetime NOT NULL,
-  `duration` int(11) NOT NULL,
-  `progress` float NOT NULL,
-  `sortorder` int(11) NOT NULL,
+  `duration` int(11) NOT NULL DEFAULT 0,
+  `progress` float NOT NULL DEFAULT 0,
+  `sortorder` int(11) NOT NULL DEFAULT 0,
   `parent` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-)
+);
 ~~~
 	</li>
 </ul> 
