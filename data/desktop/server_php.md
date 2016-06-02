@@ -1,13 +1,14 @@
-How to Start with Gantt for PHP
-=====================================
+Integrating Gantt with PHP using REST
+====================================
+
 This tutorial will teach you how to create a basic Gantt chart on a page that will be able to save and update tasks in the database (i.e. on the server).<br>
 The final code of the tutorial can be used as the start point for creating applications with a Gantt chart.
 
 The current tutorial is intended for creating Gantt with PHP. If you use some other technology, check the list of available integration variants below:
 
-- desktop/howtostart_nodejs.md
-- desktop/howtostart_dotnet.md
-- desktop/howtostart_ruby.md
+- desktop/server_nodejs.md
+- desktop/server_dotnet.md
+- desktop/server_ruby.md
 
 <img src="desktop/gantt_basic.png"/>
 
@@ -374,14 +375,4 @@ dp.init(gantt); /*!*/
 	01_initialization/04_connector_json.html
 }}
 
-What's next?
------------------------------------------------------------
-That's all. A basic but functional Gantt chart that can load data from the database and save it back is ready.
-Now you may configure and customize it to meet all your needs.
-
-We recommend  you to read these articles as your next step:
-
-- desktop/common_configuration.md
-- desktop/handling_events.md
-- desktop/loading.md
 

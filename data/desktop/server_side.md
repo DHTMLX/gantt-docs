@@ -200,4 +200,8 @@ CREATE TABLE `gantt_tasks` (
 
 @index: 
 - desktop/storing_with_connectors.md
+- desktop/server_php.md
+- desktop/server_nodejs.md
+- desktop/server_dotnet.md
+- desktop/server_ruby.md
 

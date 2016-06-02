@@ -1,14 +1,14 @@
-Integrating Gantt with Ruby using REST
-=========================================
+How to Start with Gantt for Ruby
+================================
+
 
 In this article we'll show you a step-by-step guide of Gantt creation based on [Ruby on Rails](http://rubyonrails.org/) framework and REST API.
 
 If you use some other technology, check the list of available integration variants below:
 
-- desktop/server_php.md
-- desktop/server_nodejs.md
-- desktop/server_dotnet.md
-
+- desktop/how_to_start.md
+- desktop/howtostart_nodejs.md
+- desktop/howtostart_dotnet.md
 
 
 If you have Ruby on Rails installed, you can begin to implement the integration at once. 

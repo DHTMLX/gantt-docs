@@ -7,6 +7,20 @@ The articles come around key procedures and problem-solving activities.
 
 <table  style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		         How to Start with dhtmlxGantt
+		    </h4>
+		    <ul id="data_sublist" >
+                    <li>desktop/how_to_start.md</li>
+                    <li>desktop/howtostart_nodejs.md</li>
+                    <li>desktop/howtostart_dotnet.md</li>
+                    <li>desktop/howtostart_ruby.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Says how to build a standard Gantt chart on a page and bring it to life: configure with specific settings, customize the default templates, attach events, etc.</td>
+	</tr>
 	<tr>
 		<td id="data" class='topics'>
 		    <h4>
@@ -160,6 +174,8 @@ The articles come around key procedures and problem-solving activities.
 </table>
 
 @index:
+
+- desktop/howtostart_guides.md
 - desktop/general_gantt_chart.md
 - desktop/loading_storing_data.md
 - desktop/table.md

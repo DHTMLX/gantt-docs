@@ -1,6 +1,13 @@
 Integrating Gantt with Node.js using REST
 ==============================
 
+The current tutorial is intended for creating Gantt with PHP. If you use some other technology, check the list of available integration variants below:
+
+- desktop/server_php.md
+- desktop/server_dotnet.md
+- desktop/server_ruby.md
+
+
 In order to implement integration of Gantt with Node.js, we need to begin with adding some dependencies on the server side.
 The necessary dependencies are:
 
