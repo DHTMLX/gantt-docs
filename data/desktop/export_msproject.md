@@ -141,6 +141,10 @@ gantt.importFromMSProject({
 ~~~
 
 Where *file* is an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain either MPP or XML Project file.
+{{note
+    gantt.importFromMSProject requires HTML5 File API support.
+}}
+
 
 ###Response
 
