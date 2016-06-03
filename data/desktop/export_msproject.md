@@ -18,7 +18,7 @@ To export data from the Gantt chart to an MS Project, do the following:
 gantt.exportToMSProject();
 ~~~
 
-The method will send a request to remote service, which will either output an **XML Project** file which can be either downloaded right away. Alternatively, it can return a download url of generated file.
+The method will send a request to the remote service, which will either output an XML Project file or return an url to download a generated file.
 
 ##Export settings
 
@@ -30,7 +30,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-- **auto_scheduling** - (boolean) indicates scheduling mode for tasks in the exported project. **true** will mark tasks marked as auto scheduled, **false** for manually scheduled  (manually scheduled by default).
+- **auto_scheduling** - (boolean) indicates scheduling mode for tasks in the exported project. **true** will mark tasks as auto scheduled, **false** will mark tasks as manually scheduled (the default state).
 
 ~~~js
 gantt.exportToMSProject({
@@ -38,7 +38,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-- **skip_circular_links** - (boolean) indicates whether the circular links will be removed or not (true - will be removed(by default), false - will not be removed).
+- **skip_circular_links** - (boolean) indicates whether the circular links will be removed or not (true - will be removed (the default mode), false - will not be removed).
 
 ~~~js
 gantt.exportToMSProject({
@@ -46,7 +46,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-- **project** - (object) allows settings custom properties to the exported project entity.
+- **project** - (object) allows setting custom properties to the exported project entity
 ~~~js
 gantt.exportToMSProject({
     project: {
@@ -57,10 +57,12 @@ gantt.exportToMSProject({
     }
 });
 ~~~
-Properties of this object goes to appropriate properties of the [Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). The list of supported properties can be found [here](desktop/tags.md).
-Properties may contain either a fixed values or a functions that will be executed when the export is called.
+The properties of this object correspond to the appropriate properties of the [Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). 
+The list of supported properties can be found [here](desktop/tags.md).
+The properties may contain either fixed values or functions that will be executed when export is called.
 
-- **tasks** - (object) allows settings custom properties to the exported task items.
+- **tasks** - (object) allows setting custom properties to the exported task items
+
 ~~~js
 gantt.exportToMSProject({
    tasks: {
@@ -81,12 +83,11 @@ gantt.exportToMSProject({
 });
 ~~~
 
- Properties of this object goes to appropriate properties of [the Task entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx), here is a list of supported [properties](desktop/tags.md#tagsthatcanberepresentedinthetasksobject).
- Properties may contain either a fixed values or a functions that will be called for each task in the dataset when the export is called.
+The properties of this object correspond to the appropriate properties of the [Task entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx), here is a list of supported [properties](desktop/tags.md#tagsthatcanberepresentedinthetasksobject).
+The properties may contain either fixed values or functions that will be called for each task in the dataset when export is called.
 
 
-- **callback** - (function) If you want to receive an url to download generated XML, the callback property can be used. It receives
-a JSON object with the "url" property
+- **callback** - (function) If you want to receive an url to download a generated XML, the *callback* property can be used. It receives a JSON object with the *url* property:
 
 ~~~js
 gantt.exportToMSProject({
@@ -99,28 +100,30 @@ gantt.exportToMSProject({
 
 ##Import from MS Project
 
-In order to convert XML or MPP MS Project file, you need to send following request to the export service
+In order to convert XML or MPP MS Project file, you need to send the following request to the export service:
 
  - Request URL - **https://export.dhtmlx.com/gantt**
  - Request Method - **POST**
  - Content-Type - **multipart/form-data**
 
-Request parameters:
+The request parameters:
 
  - **file** - MPP or XML MSProject file
  - **type** - "msproject-parse"
  - data - (optional) JSON string with settings
 
-Example:
+For example:
+
 ~~~html
-<form action="https://export.dhtmlx.com/gantt" method="POST" enctype="multipart/form-data">
+<form action="https://export.dhtmlx.com/gantt" method="POST" 
+	enctype="multipart/form-data">
     <input type="file" name="file" />
     <input type="hidden" name="type" value="msproject-parse">
     <button type="submit">Get</button>
 </form>
 ~~~
 
-Alternatively, you can use client-side API:
+Alternatively, you can use the client-side API:
 
 ~~~js
 gantt.importFromMSProject({
@@ -141,14 +144,16 @@ gantt.importFromMSProject({
 ~~~
 
 Where *file* is an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain either MPP or XML Project file.
+
 {{note
-    gantt.importFromMSProject requires HTML5 File API support.
+gantt.importFromMSProject requires HTML5 File API support.
 }}
 
 
 ###Response
 
-The response will contain a JSON of following structure:
+The response will contain a JSON of the following structure:
+
 ~~~js
 {
    data: {},
@@ -157,10 +162,11 @@ The response will contain a JSON of following structure:
    worktime: {}
 }
 ~~~
- - data - gantt data object desktop/supported_data_formats.md#json. Each task have following properties - id, open, parent, progress, start_date, text, resource. Dates are stringified in "%Y-%m-%d %H:%i" format.
+
+ - data - gantt data object desktop/supported_data_formats.md#json. Each task has the following properties: id, open, parent, progress, start_date, text, resource. Dates are stringified in the "%Y-%m-%d %H:%i" format.
  - config - gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
  - resources - array of objects {id:string, name:string} that represent list of resources from the project file.
- - worktime - object containing working time settings from a project calendar.
+ - worktime - object containing the working time settings from the project calendar.
 
 
 ##Import settings
@@ -169,10 +175,12 @@ The response will contain a JSON of following structure:
 To set an expected duration unit, the "durationUnit" (minute, hour, day, week, month, year) string can also be sent to the server.
 
 ~~~html
-<form action="https://export.dhtmlx.com/gantt" method="POST" enctype="multipart/form-data">
+<form action="https://export.dhtmlx.com/gantt" method="POST" 
+	enctype="multipart/form-data">
     <input type="file" name="file" />
     <input type="hidden" name="type" value="msproject-parse">
-    <input type="hidden" name="data" value="{ \"durationUnit\": \"hour\" }" />
+    <input type="hidden" name="data" 
+    	value="{ \"durationUnit\": \"hour\" }" />
     <button type="submit">Get</button>
 </form>
 ~~~
@@ -187,15 +195,18 @@ gantt.importFromMSProject({
 
 ###Getting properties of the Project
 
-Extract arbitrary properties of [the Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx) into **config** property of the output, here is a list of supported [properties](desktop/tags.md#projectproperties)
+Extract arbitrary properties of [the Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx) into the **config** property of the output, here is the list of supported 
+[properties](desktop/tags.md#projectproperties).
 
- - **projectProperties** - Specify an array of project properties that should be put into the response.
+ - **projectProperties** - specify an array of project properties that should be put into the response.
 
 ~~~html
-<form action="https://export.dhtmlx.com/gantt" method="POST" enctype="multipart/form-data">
+<form action="https://export.dhtmlx.com/gantt" method="POST" 
+	enctype="multipart/form-data">
     <input type="file" name="file" />
     <input type="hidden" name="type" value="msproject-parse">
-    <input type="hidden" name="data" value="{ \"projectProperties\": [\"Author\", \"Title\"] }" />
+    <input type="hidden" name="data" 
+    	value="{ \"projectProperties\": [\"Author\", \"Title\"] }" />
     <button type="submit">Get</button>
 </form>
 ~~~
@@ -214,17 +225,19 @@ gantt.importFromMSProject({
 
 ###Getting tasks properties
 
-Extract arbitrary properties of [Task entities](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx), here is a list of supported [properties](desktop/tags.md#taskproperties).
+Extract arbitrary properties of the [Task entities](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx), here is the list of supported [properties](desktop/tags.md#taskproperties).
 To get project fields, the "projectProperties" input with an array of necessary fields can be sent to the server.
 
  - **taskProperties** - specify an array of additional task properties to be imported.
 
 
 ~~~html
-<form action="https://export.dhtmlx.com/gantt" method="POST" enctype="multipart/form-data">
+<form action="https://export.dhtmlx.com/gantt" method="POST" 
+	enctype="multipart/form-data">
     <input type="file" name="file" />
     <input type="hidden" name="type" value="msproject-parse">
-    <input type="hidden" name="data" value="{ \"taskProperties\": [\"Contact\", \"Priority\"] }" />
+    <input type="hidden" name="data" 
+    	value="{ \"taskProperties\": [\"Contact\", \"Priority\"] }" />
     <button type="submit">Get</button>
 </form>
 ~~~
