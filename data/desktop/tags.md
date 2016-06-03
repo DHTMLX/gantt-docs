@@ -1,7 +1,7 @@
-Tags Used in Export to MS Project
+Properties for importing from MS Project
 ================================
 
-Tags that can be represented in the "project" object
+Project properties
 ---------------------------------
 
 <style>
@@ -84,7 +84,7 @@ Tags that can be represented in the "project" object
 	<li>WorkFormat</li>
 </div>
 
-Tags that can be represented in the "tasks" object
+Tasks properties
 ---------------------------------
 
 <div class="myblock">
