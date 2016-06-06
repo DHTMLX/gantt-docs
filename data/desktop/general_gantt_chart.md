@@ -10,9 +10,6 @@ Creating a Gantt Chart on the Page
 - desktop/localization.md
 - desktop/jquery_integration.md
 - desktop/multiple_gantts.md
-- desktop/export.md
-- desktop/excel.md
-- desktop/export_msproject.md
 - desktop/undo_redo.md
 - desktop/message_boxes.md
 }}

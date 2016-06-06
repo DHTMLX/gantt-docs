@@ -1,4 +1,4 @@
-Exporting to MS Project
+Export from/Import to MS Project
 ============================
 
 ##Export to MS Project

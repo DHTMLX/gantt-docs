@@ -1,4 +1,4 @@
-Exporting Data to Excel, iCal
+Export to Excel and iCal
 ===========================================
 Starting from version 3.2, the library allows you to export data from the Gantt chart in  the Excel and iCal formats. 
 

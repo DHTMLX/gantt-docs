@@ -1,6 +1,6 @@
 Guides
 ======
-The guidance information makes up the major part of the  documentation and helps you in actual use of dhtmlxGantt.
+The guidance information makes up the major part of the documentation and helps you in actual use of dhtmlxGantt.
 The chapter is divided into task-oriented manuals that assist you in performing both simple and difficult, often and seldom used tasks. 
 The articles come around key procedures and problem-solving activities. 
 
@@ -20,9 +20,6 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/localization.md</li>
                     <li>desktop/jquery_integration.md</li>
                     <li>desktop/multiple_gantts.md</li>
-                    <li>desktop/export.md</li>
-                    <li>desktop/excel.md</li>
-                    <li>desktop/export_msproject.md</li>
                     <li>desktop/undo_redo.md</li>
                     <li>desktop/message_boxes.md</li>
             </ul>
@@ -45,7 +42,20 @@ The articles come around key procedures and problem-solving activities.
         </td>
 		<td class='topic_description'>Discusses the ways of loading data into the Gantt chart: different data sources, formats, techniques.</td>
 	</tr>
-   <tr>
+    <tr>
+		<td id="manipulations" class='topics'>
+		    <h4>
+		         Exporting and Importing Data
+		    </h4>
+		    <ul id="manipulations_sublist">
+                   	<li>desktop/export.md</li>
+                    <li>desktop/excel.md</li>
+                    <li>desktop/export_msproject.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Discusses the ways of loading data into the Gantt chart: different data sources, formats, techniques.</td>
+	</tr> 
+    <tr>
         <td id="events" class='topics'>
             <h4>
                 Configuring the Grid Area
@@ -163,6 +173,7 @@ The articles come around key procedures and problem-solving activities.
 @index:
 - desktop/general_gantt_chart.md
 - desktop/loading_storing_data.md
+- desktop/export_common.md
 - desktop/table.md
 - desktop/time_scale.md
 - desktop/edit_form.md
