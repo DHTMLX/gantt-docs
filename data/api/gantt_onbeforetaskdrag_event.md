@@ -6,7 +6,7 @@ onBeforeTaskDrag
 
 @params:
 
-- id			string/number		the task id
+- id			string, number		the task id
 - mode			string 				the drag-and-drop mode ("resize", "progress", "move", "ignore")
 - e				Event				a native event object
 

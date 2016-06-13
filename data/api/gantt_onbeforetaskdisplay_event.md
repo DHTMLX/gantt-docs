@@ -4,7 +4,7 @@ onBeforeTaskDisplay
 	
 
 @params:
-- id	string/number	the task id
+- id	string, number	the task id
 - task	object	the task object
 
 @returns:  

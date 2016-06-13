@@ -10,7 +10,7 @@ locate
 
 
 @returns:
--id		id	the task id
+-id		string,number	the task id
 
 @example:
 gantt.locate(e);

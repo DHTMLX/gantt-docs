@@ -4,7 +4,7 @@ onLightboxCancel
 	
 
 @params:
-- id	string/number	the task id ( the task opened in the lightbox)
+- id	string, number	the task id ( the task opened in the lightbox)
 
 @example:
 gantt.attachEvent("onLightboxCancel", function(id){

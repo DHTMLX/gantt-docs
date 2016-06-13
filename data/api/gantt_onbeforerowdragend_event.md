@@ -6,8 +6,8 @@ onBeforeRowDragEnd
 	
 
 @params:
-- sid			string/number			the id of the task to move
-- parent		string/number			the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
+- sid			string, number			the id of the task to move
+- parent		string, number			the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
 - tindex		number					the index of the position that the task will be moved from <br> (the index in the whole tree)
 
 @example:

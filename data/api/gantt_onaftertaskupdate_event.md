@@ -5,7 +5,7 @@ onAfterTaskUpdate
 	
 
 @params:
-- id			string/number			the task id
+- id			string, number			the task id
 - item			object					the task object 
 
 @example:
