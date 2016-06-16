@@ -1,11 +1,11 @@
-Export from/Import to MS Project
+Export and Import from MS Project
 ============================
 
 ##Export to MS Project
 
 To export data from the Gantt chart to an MS Project, do the following:
 
-- Include the <b>"http://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
+- Include the <b>"https://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
 
 ~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
