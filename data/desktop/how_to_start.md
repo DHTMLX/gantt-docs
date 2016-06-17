@@ -1,4 +1,4 @@
-How to Start with Gantt for PHP
+Gantt with PHP Tutorial
 =====================================
 This tutorial will teach you how to create a basic Gantt chart on a page that will be able to save and update tasks in the database (i.e. on the server).<br>
 The final code of the tutorial can be used as the start point for creating applications with a Gantt chart.

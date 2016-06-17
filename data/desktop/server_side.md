@@ -23,7 +23,7 @@ Generally, to load data from the server side using REST API, you need to:
 ###Client side
 
            
-1) Call the api/gantt_load.md method where as a parameter specify the url that returns Gantt data in [JSON](desktop/supported_data_formats.md#json) format
+1) Call the api/gantt_load.md method where as a parameter specify the URL that returns Gantt data in [JSON](desktop/supported_data_formats.md#json) format
 
 2) Initialize dataProcessor and attach it to the dhtmlxGantt object</li>
            
@@ -103,12 +103,12 @@ Each request contains all the data needed to save changes in the database.
 As we initialized dataProcessor in the REST mode, it will use different HTTP verbs for each type of operation.
 
 Since we use REST API, it's possible to implement the server side using different frameworks and programming languages.
-Here's a list of available server side implementations that you can use for Gantt backend integration:
+Here's a list of available server-side implementations that you can use for Gantt backend integration:
 
-- [Node.js](desktop/server_nodejs.md)
-- PHP
-- .Net
-- Ruby
+- [Using Gantt with PHP](desktop/server_php.md#step5createadatabase)
+- desktop/server_nodejs.md
+- desktop/server_dotnet.md
+- desktop/server_ruby.md
 
 <br>
 If by some reason you don't want to use REST API, the best solution is [to use dhtmlxConnector library](desktop/storing_with_connectors.md).

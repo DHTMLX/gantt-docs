@@ -1,10 +1,10 @@
-Integrating Gantt with PHP using REST
-====================================
+Using Gantt with PHP 
+======================
 
-This tutorial will teach you how to create a basic Gantt chart on a page that will be able to save and update tasks in the database (i.e. on the server).<br>
-The final code of the tutorial can be used as the start point for creating applications with a Gantt chart.
+In this article you will find the necessary guidelines for using
+a Gantt chart with PHP-based languages.<br>
 
-The current tutorial is intended for creating Gantt with PHP. If you use some other technology, check the list of available integration variants below:
+If you use some other technology, check the list of available server-side platforms to integrate with:
 
 - desktop/server_nodejs.md
 - desktop/server_dotnet.md
@@ -27,12 +27,11 @@ Let's start the tutorial with getting the library package on your computer.
 
 
 <ul style= "list-style-image:url('media/desktop/arrow-right.png');">
-	<li>Download the dhtmlxGantt package , if you haven't already done it. </li>
+	<li>Download the dhtmlxGantt package, if you haven't done it yet. </li>
     <li>Extract the package to the root directory of your local web server. The extracted files will be stored in a folder with the same name as the package file - dhtmlxGantt. </li>
 </ul>
 </p>
 </div>
-
 
 
 
@@ -232,6 +231,8 @@ Read this and further steps if you want to load data from a database instead of 
 Then, we need to create a database with 2 tables to store tasks and dependencies. 
 
 <img style="padding-top:15px;" src='desktop/tutorial_db_tables.png'/>
+
+<br><br>
 
 <i><b>sortorder</b> is a property used only while loading data from a database. The property sets the index of a task among siblings.</i>
 

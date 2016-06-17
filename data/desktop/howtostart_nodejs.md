@@ -1,4 +1,4 @@
-How to Start with Gantt for Node.js
+Gantt with Node.js Tutorial
 ===================================
 
 The current tutorial is intended for creating Gantt with Node.js. If you use some other technology, check the list of available integration variants below:

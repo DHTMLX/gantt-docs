@@ -19,7 +19,9 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/howtostart_ruby.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Says how to build a standard Gantt chart on a page and bring it to life: configure with specific settings, customize the default templates, attach events, etc.</td>
+        <td class='topic_description'>Says how to build a standard Gantt chart on different server-side platforms and 
+        bring it to life: configure with specific settings, customize the default templates, 
+        attach events, etc.</td>
 	</tr>
 	<tr>
 		<td id="data" class='topics'>

@@ -1,15 +1,15 @@
-How to Start with Gantt for .Net
+Gantt with .Net Tutorial
 ===============================
 
-This tutorial will give you step-by-step instructions on creating Gantt with ASP.Net and REST on the server side. 
+This tutorial will give you step-by-step instructions on creating Gantt with ASP.NET and REST on the server side. 
 
-You can also explore other Gantt server-side integration possibilities by choosing one of the following tutorials:
+You can also explore other server-side integration possibilities of Gantt by choosing one of the following tutorials:
 
 - desktop/how_to_start.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_ruby.md
 
-We will make use of ASP.NET MVC 5 web platform and Web Api 2 controller for REST API to create a Gantt application.
+We will make use of ASP.NET MVC 5 web platform and Web API 2 controller for REST API to create a Gantt application.
 To organize communication with database the [Entity Framework](http://www.asp.net/entity-framework) will be used.
 We will build our application with the help of the Visual Studio IDE. 
 
@@ -18,12 +18,12 @@ Step 1. Making Preparations
 
 ###Creating a new VS project
 
-Let's start by running Visual Studio and creating a new project. For this, follow the steps:
-File -> New -> Project. Then select ASP.NET Web Application and name it *gantt-rest-net*. 
+Let's start by running Visual Studio and creating a new project. For this, open the File menu tab and choose:<br>
+New -> Project. Then select ASP.NET Web Application and name it *gantt-rest-net*. 
 
 <img src="desktop/vs_project.png">
 
-Set an Empty project as a template and check MVC and Web API checkboxes.
+Select an Empty project among available templates and check MVC and Web API checkboxes.
 
 <img src="desktop/select_template.png">
 
@@ -38,14 +38,28 @@ Install-Package DHTMLX.Gantt
 Step 2. Adding Models, Views and Controllers
 --------------------------------
 
-###Creating Controller
+###Creating Main Controller
 
-For our web page we will also need the Home controller. To create it, call the context menu in the Controllers folder and choose Add->Controller.
-Then select MVC 5 Controller -> Empty and give it the name “HomeController”.
+For our web page we will also need the main controller (we will call it "HomeController").
+It will process incoming requests from the user and run the needed logic.
+
+The HomeController will call a particular view to generate a necessary HTML for the request.
+
+To create it, call the context menu for the Controllers folder and choose Add->Controller.
+
+<img src="desktop/creating_controller.png">
+
+In the opened window select MVC 5 Controller -> Empty and name a newly added controller “HomeController”.
+
+We don't add any logic into the "HomeController", as it the action() method by default. We will just add a view inside of it. 
 
 ###Сreating View
 
-In the View folder find the Home directory. Right click to call the context menu and select Add -> View. Name it "index".
+In the Views folder find the Home directory. Right click to call the context menu and select Add -> View. 
+
+<img src="desktop/creating_view.png">
+
+Name the new view "Index".
 Open the newly created view and put the following code into it:
 
 ~~~html
@@ -96,7 +110,11 @@ We will add two models: one for a task and another one for a link.
 
 ####Task Model
 
-Right click on the Model folder to call the context menu and select Add->Class. Name the created class "Task".
+Right click on the Models folder to call the context menu and select Add->Class. 
+
+<img src="desktop/creating_model.png">
+
+Name the created class "Task".
 Open the newly "Task" class and add following code into it:
 
 ~~~js
@@ -121,9 +139,7 @@ namespace gantt_rest_net.Models
 
 ####Link Model 
 
-For the Link model repeat the same steps as for the Task one. The only difference will be in the name of the class.
-
-The code below will create the Link model:
+To create the Link model, add the Link class into the Models folder and add the code below into it:
 
 ~~~js
 using System;
@@ -266,7 +282,7 @@ Step 4. Creating API for Loading/Editing Data
 
 ###Adding object with Gantt data
 
-Activate context menu in the Controllers folder and select  Add -> Controller.
+Activate context menu in the Controllers folder and select  Add -> Controller.<br>
 Choose the Web API 2 Controller -> Empty. The new controller will be called "DataController". 
 
 Then we will fill it with the following code:
@@ -479,29 +495,12 @@ It has pretty the same logic as TaskController but works with Links instead of T
 
 ###Configuring Routes for API
 
-Open App_Start -> WebApiConfig and add the following routes before the default one:
+We should add сustom routes to our controllers. These routes will map incoming requests to specific handlers.
 
-~~~js
-config.Routes.MapHttpRoute(
-name: "Task",
-routeTemplate: "api/data/task/{id}",
-defaults: new { controller = "Task", id = RouteParameter.Optional }
-);
+Open App_Start -> WebApiConfig and add routes for Task, Link and Data into it. 
+Pay attention that these routes should be placed before the default route.
 
-config.Routes.MapHttpRoute(
-name: "Link",
-routeTemplate: "api/data/link/{id}",
-defaults: new { controller = "Link", id = RouteParameter.Optional }
-);
-
-config.Routes.MapHttpRoute(
-name: "Data",
-routeTemplate: "api/data",
-defaults: new { controller = "Data" }
-);
-~~~
-
-The resulting code will look similar to this one:
+The resulting code should look similar to this:
 
 ~~~js
 

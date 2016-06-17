@@ -1,4 +1,4 @@
-How to Start with Gantt for Ruby
+Gantt with Ruby on Rails Tutorial
 ================================
 
 

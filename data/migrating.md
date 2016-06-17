@@ -98,7 +98,7 @@ The whole list of the obsolete API is given below:
 
 2.0 -> 3.0
 ----------------------
-1) In order to prevent CSS conflicts with dhtmlxScheduler, the class names that have been used by both components were renamed in dhtmlxGantt (all classes were related to the ligthbox).
+1) In order to prevent CSS conflicts with dhtmlxScheduler, the class names that have been used by both components were renamed in dhtmlxGantt (all classes were related to the lightbox).
 If you have customized styling for  the lightbox, the migration will consist in renaming to appropriate CSS classes.
 
 There is 2 renamed patterns:
@@ -142,7 +142,7 @@ Old configurations ( "dhx_save_btn", "dhx_cancel_btn", "gantt_delete_btn") will 
 
 1.0 -> 2.0
 ----------------------
-1) A varierty of objects (**GanttProjectInfo**, **GanttTaskInfo**, **GanttChart**, **GanttProject**, **GanttTask**) are replaced with 1 static object -  **gantt**. <br> 
+1) A variety of objects (**GanttProjectInfo**, **GanttTaskInfo**, **GanttChart**, **GanttProject**, **GanttTask**) are replaced with 1 static object -  **gantt**. <br> 
 The **gantt** object contains a set of methods and 2 main properties: [config](api/refs/gantt_props.md) and [templates](api/refs/gantt_templates.md).
 
 - <a href="api/refs/gantt.md#properties">gantt.config</a> - configuration options for dates, scale, controls etc.
@@ -201,7 +201,7 @@ gantt.load("tasks.xml","oldxml");
 
 6) **Run-time Objects**:
 
-dhtmlxGantt 2.0 doesn't use different types for project and task obejcts. Instead of this, any task object can have 1 parent object and any number of child tasks.
+dhtmlxGantt 2.0 doesn't use different types for project and task objects. Instead of this, any task object can have 1 parent object and any number of child tasks.
 
 - **<i>GanttProject</i>** 
   - Instead of getDuration(), getId(), getName(), getPercentCompleted(), getStartDate(), project properties are accessed through **gantt.getTask(projectTaskId).{name_of_property}**
