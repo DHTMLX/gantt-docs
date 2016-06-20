@@ -20,6 +20,10 @@ gantt.exportToMSProject();
 
 The method will send a request to the remote service, which will either output an XML Project file or return an url to download a generated file.
 
+{{sample
+	08_api/08_export_other.html
+}}
+
 ##Export settings
 
 - **name** - (string) the name of the obtained file ('gantt.xml' by default).
@@ -142,6 +146,10 @@ gantt.importFromMSProject({
     }
 });
 ~~~
+
+{{sample
+	08_api/18_load_from_mpp.html
+}}
 
 Where *file* is an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain either MPP or XML Project file.
 
