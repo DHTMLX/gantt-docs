@@ -5,7 +5,7 @@ onAfterAutoSchedule
 	fires when autoscheduling is done 
 
 @params:
-- taskId			string/number			the root task id
+- taskId			string, number			the root task id
 - updatedTasks		array					an array with the ids of rescheduled tasks
 
 

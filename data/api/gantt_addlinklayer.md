@@ -5,7 +5,7 @@ addLinkLayer
 @edition: pro
 
 @params:
-- func		function/object		a render function  or a config object 
+- func		function, object		a render function  or a config object 
 
 @returns:
 -layerId	string		a DOM element that will be displayed in the layer

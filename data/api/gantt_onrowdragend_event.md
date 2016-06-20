@@ -5,8 +5,8 @@ onRowDragEnd
 	
 
 @params:
-- id			string/number		the id of the task that the user has dragged in the grid
-- target		string/number		the id of the task which place the dragged row has occupied
+- id			string, number		the id of the task that the user has dragged in the grid
+- target		string, number		the id of the task which place the dragged row has occupied
 
 @example:
 gantt.attachEvent("onRowDragEnd", function(id, target) {

@@ -4,7 +4,7 @@ attachEvent
 	
 
 @params: 
-- name		string		the event's name, case-insensitive
+- name		GanttEventName		the event's name, case-insensitive
 - handler	function	the handler function 
 
 @example: 
@@ -13,7 +13,7 @@ gantt.attachEvent("onTaskClick", function(id, e) {
 });
 
 @returns:
-event id	string, number	the id of the attached event handler
+event_id	string	the id of the attached event handler
 
 
 

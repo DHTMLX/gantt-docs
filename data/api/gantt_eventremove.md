@@ -6,7 +6,7 @@ eventRemove
 	
 
 @params:
-- id		id		the id of an event handler
+- id		string		the id of an event handler
 
 @example:
 var eventId = gantt.event("divId", "click", function(e){

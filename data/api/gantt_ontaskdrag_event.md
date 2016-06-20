@@ -4,7 +4,7 @@ onTaskDrag
 	
 
 @params:
-- id			string/number		the task id
+- id			string, number		the task id
 - mode			string				the drag mode ("resize", "progress", "move", "ignore")
 - task			object				the current (dragged) task object
 - original 		object				the original(initial) task object

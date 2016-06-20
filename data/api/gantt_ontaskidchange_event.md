@@ -5,8 +5,8 @@ onTaskIdChange
 	
 
 @params:
-- id		string/number		the current task's id
-- new_id	string/number		the new task's id
+- id		string, number		the current task's id
+- new_id	string, number		the new task's id
 
 @example:
 gantt.attachEvent("onTaskIdChange", function(id,new_id){
