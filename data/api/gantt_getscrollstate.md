@@ -18,3 +18,10 @@ var posY = sPos.y;
 @template:	api_method
 @descr:
 
+@relatedapi:
+api/gantt_scrollto.md
+api/gantt_onganttscroll_event.md
+
+api/gantt_showdate.md
+api/gantt_showtask.md
+
