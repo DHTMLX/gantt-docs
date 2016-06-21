@@ -10,7 +10,7 @@ You can also explore other server-side integration possibilities of Gantt by cho
 - desktop/howtostart_ruby.md
 
 We will make use of ASP.NET MVC 5 web platform and Web API 2 controller for REST API to create a Gantt application.
-To organize communication with database the [Entity Framework](http://www.asp.net/entity-framework) will be used.
+To organize communication with database we will use the [Entity Framework](http://www.asp.net/entity-framework).
 We will build our application with the help of the Visual Studio IDE. 
 
 Step 1. Making Preparations
@@ -115,7 +115,7 @@ Right click on the Models folder to call the context menu and select Add->Class.
 <img src="desktop/creating_model.png">
 
 Name the created class "Task".
-Open the newly "Task" class and add following code into it:
+Open the newly created "Task" class and add following code into it:
 
 ~~~js
 using System;
@@ -496,6 +496,7 @@ It has pretty the same logic as TaskController but works with Links instead of T
 ###Configuring Routes for API
 
 We should add сustom routes to our controllers. These routes will map incoming requests to specific handlers.
+You can find the full route scheme [here](desktop/server_side.md#requestresponsedetails).
 
 Open App_Start -> WebApiConfig and add routes for Task, Link and Data into it. 
 Pay attention that these routes should be placed before the default route.
