@@ -7,6 +7,7 @@ Configuring Tasks
 - desktop/task_object_operations.md
 - desktop/task_tree_operations.md
 - desktop/crud_task.md
+- desktop/unscheduled_tasks.md
 - desktop/multiselection.md
 - desktop/working_time.md
 - desktop/critical_path.md
