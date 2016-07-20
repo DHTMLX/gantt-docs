@@ -7,7 +7,7 @@ batchUpdate
 
 @example:
 gantt.batchUpdate(function () {
-    var tasks = gantt.getTasksByTime();
+    var tasks = gantt.getTaskByTime();
     for(var i = 0; i < tasks.length; i++){
         var task = tasks(i);
         task.start_date = gantt.date.add(task.start_date, 1, "day");

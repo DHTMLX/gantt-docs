@@ -45,9 +45,9 @@ To update multiple tasks/links at once, use the api/gantt_batchupdate.md method:
 
 ~~~js
 gantt.batchUpdate(function () {
-    var tasks = gantt.getTasksByTime();
+    var tasks = gantt.getTaskByTime();
     for(var i = 0; i < tasks.length; i++){
-        var task = tasks(i);
+        var task = tasks[i];
         task.start_date = gantt.date.add(task.start_date, 1, "day");
         task.end_date = gantt.calculateEndDate(task.start_date, task.duration);
         gantt.updateTask(task.id);
@@ -91,7 +91,9 @@ Checking if a task is selected
 To check if a task is currenly selected, use the api/gantt_isselectedtask.md method:
 
 ~~~js
-gantt.templates.task_class = gantt.templates.grid_row_class = gantt.templates.task_row_class = function (start, end, task) {
+gantt.templates.task_class = 
+gantt.templates.grid_row_class = 
+gantt.templates.task_row_class = function (start, end, task) {
     if (gantt.isSelectedTask(task.id))
         return "gantt_selected";
 };
