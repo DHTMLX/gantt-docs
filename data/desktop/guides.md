@@ -165,6 +165,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/date_operations.md</li>
                     <li>desktop/fullscreen_mode.md</li>
                     <li>desktop/content_security_policy.md</li>
+                    <li>desktop/accessibility.md</li>
             </ul>
         </td>
         <td class='topic_description'>Guides you through common information you may need while creating a Gantt chart: converting dates to string and backward, allowable characters in the date format, etc.</td>
