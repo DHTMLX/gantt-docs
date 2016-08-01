@@ -106,7 +106,10 @@ The server side itself will be implemented a bit later. For now, you can run the
 
 ###Creating Models
 
-We will add two models: one for a task and another one for a link.
+Models are objects that will represent data in the Gantt chart. Gantt can load data either in [JSON or XML formats](desktop/supported_data_formats.md#json).
+
+There are two types of data representation in Gantt: Task and Links.
+So we should create two simple models: one for tasks and another one for links.
 
 ####Task Model
 
@@ -115,7 +118,7 @@ Right click on the Models folder to call the context menu and select Add->Class.
 <img src="desktop/creating_model.png">
 
 Name the created class "Task".
-Open the newly created "Task" class and add following code into it:
+Open the newly created "Task" class and add the necessary properties into it:
 
 ~~~js
 using System;
@@ -137,9 +140,12 @@ namespace gantt_rest_net.Models
 }
 ~~~
 
+You can find the full list of properties, both mandatory and optional, available for the Task object in the 
+[corresponding article](desktop/loading.md#task_properties) of documentation.
+
 ####Link Model 
 
-To create the Link model, add the Link class into the Models folder and add the code below into it:
+To create the Link model, add the Link class into the Models folder and add the [obligatory properties](desktop/loading.md#link_properties) of the Link object into it:
 
 ~~~js
 using System;

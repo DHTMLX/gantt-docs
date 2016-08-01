@@ -27,7 +27,7 @@ A data source for the Gantt chart is an object that stores 2 types of informatio
 
 If you use a database, we recommend to have 2 separate tables to store data: one for tasks and one for links.  
 
-###Properties of a task object 
+<h3 id="task_properties">Properties of a task object</h3>
 
 
 <ul>
@@ -69,7 +69,7 @@ gantt.config.xml_date="%Y-%m-%d";
 gantt.init("gantt_here");
 ~~~
 
-###Properties of a link object 
+<h3 id="link_properties">Properties of a link object</h3>
 
 <ul>
 	<li><b><i>Mandatory properties</i></b></li>
