@@ -13,13 +13,17 @@ isSelectedTask
 
 
 @example:
-gantt.templates.task_class = gantt.templates.grid_row_class = gantt.templates.task_row_class = function (start, end, task) {
+gantt.templates.task_class = 
+gantt.templates.grid_row_class = 
+gantt.templates.task_row_class = function (start, end, task) {
 	if (gantt.isSelectedTask(task.id))
 		return "gantt_selected";
 };
 
 @template:	api_method
 @descr:
+
+This method is defined in the **ext/dhtmlxgantt_multiselect.js** extension, so you need to include it on the page. Read the details in the desktop/multiselection.md article.
 
 @relatedsample:
 	02_extensions/09_multiselection.html
