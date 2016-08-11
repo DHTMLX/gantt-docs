@@ -1,10 +1,13 @@
-Gantt with PHP Tutorial
-=====================================
+dhtmlxGantt with dhtmlxConnector 
+================================
+
 This tutorial will teach you how to create a basic Gantt chart on a page that will be able to save and update tasks in the database (i.e. on the server).<br>
 The final code of the tutorial can be used as the start point for creating applications with a Gantt chart.
 
-The current tutorial is intended for creating Gantt with PHP. If you use some other technology, check the list of available integration variants below:
+The current tutorial is intended for creating Gantt with [dhtmlxConnector](http://docs.dhtmlx.com/connector__php__index.html).
+If you want to use some server-side technology instead, check the list of tutorials describing available integration variants below:
 
+- desktop/howtostart_php.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_ruby.md

@@ -1,12 +1,12 @@
-Gantt with Ruby on Rails Tutorial
-================================
+dhtmlxGantt with Ruby on Rails 
+=========================
 
 
 In this article we'll show you a step-by-step guide of Gantt creation based on [Ruby on Rails](http://rubyonrails.org/) framework and REST API.
 
 If you use some other technology, check the list of available integration variants below:
 
-- desktop/how_to_start.md
+- desktop/howtostart_php.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 

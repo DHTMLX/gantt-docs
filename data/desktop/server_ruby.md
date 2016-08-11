@@ -10,7 +10,6 @@ If you use some other technology, check the list of available integration varian
 - desktop/server_dotnet.md
 
 
-
 If you have Ruby on Rails installed, you can begin to implement the integration at once. 
 Otherwise, you should install the framework by following the steps described in the [installation guide](http://guides.rubyonrails.org/getting_started.html#installing-rails).
 

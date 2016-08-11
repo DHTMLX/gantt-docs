@@ -13,10 +13,11 @@ The articles come around key procedures and problem-solving activities.
 		         How to Start with dhtmlxGantt
 		    </h4>
 		    <ul id="data_sublist" >
-                    <li>desktop/how_to_start.md</li>
+                    <li>desktop/howtostart_php.md</li>
                     <li>desktop/howtostart_nodejs.md</li>
                     <li>desktop/howtostart_dotnet.md</li>
                     <li>desktop/howtostart_ruby.md</li>
+                    <li>desktop/howtostart_connector.md</li>
             </ul>
         </td>
         <td class='topic_description'>Says how to build a standard Gantt chart on different server-side platforms and 

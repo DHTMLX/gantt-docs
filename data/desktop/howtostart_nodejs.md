@@ -1,13 +1,14 @@
-Gantt with Node.js Tutorial
+dhtmlxGantt with Node.js 
 ===================================
 
-The current tutorial is intended for creating Gantt with Node.js. If you use some other technology, check the list of available integration variants below:
+The current tutorial is intended for creating Gantt with Node.js and REST API on the server side. 
+If you use some other technology, check the list of available integration variants below:
 
-- desktop/how_to_start.md
+- desktop/howtostart_php.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_ruby.md
 
-Our Gantt implementation in Node.js will be based on REST API that will be used for communication with server. 
+Our implementation of Gantt with Node.js will be based on REST API that will be used for communication with server. 
 Node.js has a set of ready-made solutions, so we won’t have to code everything from the very beginning.
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.
@@ -119,7 +120,7 @@ Step 3. Preparing a database
 
 The next step is to create a database. We'll make a simple database with two tables. 
 
-Check a detailed example [here](desktop/how_to_start.md#step5createadatabase).
+Check a detailed example [here](desktop/howtostart_connector.md#step5createadatabase).
 
 
 Step 4. Making connection to database
