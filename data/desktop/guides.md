@@ -15,6 +15,7 @@ The articles come around key procedures and problem-solving activities.
 		    <ul id="data_sublist" >
                     <li>desktop/initializing_gantt_chart.md</li>
                     <li>desktop/install_with_bower.md</li>
+                    <li>desktop/extensions_list.md</li>
                     <li>desktop/common_configuration.md</li>
                     <li>desktop/handling_events.md</li>
                     <li>desktop/localization.md</li>
