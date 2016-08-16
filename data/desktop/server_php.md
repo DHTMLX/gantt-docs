@@ -1,379 +1,227 @@
 Using Gantt with PHP 
 ======================
 
-In this article you will find the necessary guidelines for using
-a Gantt chart with PHP-based languages.<br>
+This article is devoted to integration of a Gantt Chart with server side implemented in PHP and REST API.
 
-If you use some other technology, check the list of available server-side platforms to integrate with:
+If you use some other technology, check if it is enumerated in the list of related articles below:
 
 - desktop/server_nodejs.md
 - desktop/server_dotnet.md
 - desktop/server_ruby.md
 
-<img src="desktop/gantt_basic.png"/>
 
-{{sample
-	01_initialization/01_basic_init.html
-}}
+We will use the [Slim](http://www.slimframework.com/) framework together with REST API on the server side and MySQL as a data storage to create a Gantt Chart.
 
-Step 1. Download and extract the dhtmlxGantt package
---------------------------------------------------------------
-<div style="padding-left:55px;">
-<p>
-Let's start the tutorial with getting the library package on your computer.
+Making Preparations
+-----------------------
 
+We will make use of a [skeleton application](https://github.com/slimphp/Slim-Skeleton) for the Slim framework.
 
-<div style="padding-top:15px; color:#4f80c2; font-weight:bold;"><img src="desktop/finger.png"/> <span style="vertical-align:top;line-height:26px;">Do the following:</span></div>
+Firstly, we need to import the project and install it. You can easily do it with the help of composer:
 
-
-<ul style= "list-style-image:url('media/desktop/arrow-right.png');">
-	<li>Download the dhtmlxGantt package, if you haven't done it yet. </li>
-    <li>Extract the package to the root directory of your local web server. The extracted files will be stored in a folder with the same name as the package file - dhtmlxGantt. </li>
-</ul>
-</p>
-</div>
-
-
-
-Step 2. Include dhtmlxGantt code files in your HTML file
------------------------------------------------------------
-
-<div style="padding-left:55px;">
-<p>
-Then, we need to include dhtmlxGantt code files in your HTML file (to be able to use the functionality of the library).
-
-The dhtmlxGantt code files are:
-
-<ul>
-	<li>dhtmlxgantt.js</li>
-    <li>dhtmlxgantt.css</li>
-</ul> 
-
-
-<div style="padding-top:15px; color:#4f80c2; font-weight:bold;"><img src="desktop/finger.png"/> <span style="vertical-align:top;line-height:26px;">Do the following:</span></div>
-
-
-<ul style= "list-style-image:url('media/desktop/arrow-right.png');">
-
-	<li>Create an HTML file in the 'dhtmlxGantt' folder (the folder with the dhtmlxGantt files). Name it, for example, 'myGantt.html'.</li>
-	<li>Include dhtmlxGantt code  files to <b>myGantt.html</b>  (both files reside in the 'codebase' folder).
-
-{{snippet
-	myGantt.html 
-}}
-~~~html
-<!DOCTYPE html>
-<html>
-<head>
-   <title>How to Start with dhtmlxGantt</title>
-   <script src="codebase/dhtmlxgantt.js"></script> /*!*/  
-   <link href="codebase/dhtmlxgantt.css" rel="stylesheet"> /*!*/  
-</head>
-<body>
-   	//your code will be here
-</body>
-</html>
-~~~
-</li>
-</ul> 
-
-
-</p>
-</div>
-
-Step 3. Initialize dhtmlxGantt
------------------------------------------------------------
-
-<div style="padding-left:55px;">
-<p>
-
-Then, we need to create a DIV container and initialize dhtmlxGantt in it.<br> Beware, dhtmlxGantt is a static object and can be instantiated on the page once. 
-To refer to the dhtmlxGantt's instance you can use <b>dhtmlxGantt</b> or simply <b>gantt</b>.
-
-<div style="padding-top:15px; color:#4f80c2; font-weight:bold;"><img src="desktop/finger.png"/> <span style="vertical-align:top;line-height:26px;">Do the following:</span></div>
-
-
-<ul style= "list-style-image:url('media/desktop/arrow-right.png');">
-
-	<li>Define a DIV container in the <b>myGantt.html</b> file.</li>
-    <li>Initialize dhtmlxGantt with the <code>gantt.init("gantt_here")</code> command.   As a parameter, the method takes an HTML container where a Gantt chart will be placed in.
-    <br>
-{{snippet
-	myGantt.html
-}}
-~~~html
-<!DOCTYPE html>
-<html>
-<head>
-   <title>How to Start with dhtmlxGantt</title>
-   <script src="codebase/dhtmlxgantt.js"></script>
-   <link href="codebase/dhtmlxgantt.css" rel="stylesheet">
-</head>
-<body>
-	<div id="gantt_here" style='width:1000px; height:400px;'></div>
-    <script type="text/javascript">
-		gantt.init("gantt_here"); /*!*/  
-	</script>
-</body>
-</html>
-~~~    
-    </li>
-</ul> 
-
-
-
-</p>
-</div>
-
-
-Note, if you use the full-screen mode, specify the current style to guarantee the correct work:
-~~~html
-<style type="text/css" media="screen">
-    html, body{
-        margin:0px;
-        padding:0px;
-        height:100%;
-        overflow:hidden;
-    }   
-</style>
-~~~
-
-Step 4. Load data to the Gantt chart
-------------------------------------------------------------------------
-<div style="padding-left:55px;">
-
-<p>
-Then, we need to populate the Gantt chart with the data from a sample data source. We will use the easiest of the ways and specify the data source as an inline object. <br>To load data, we will use  
-the <a href="api/gantt_parse.md">parse</a> method that takes the name of the data source as a parameter. 
-<br><br>
-The properties of the object are:
-
-<ul>
-	<li><b>data</b> - specifies the gantt tasks</li>
-    <ul>
-    	<li><b>id</b> - (<i>string, number</i>) the event id.</li>
-        <li><b>start_date</b> - (<i>Date</i>) the date when an event is scheduled to begin.  </li>
-        <li><b>text</b> - (<i>string</i>) the task description.</li>
-        <li><b>progress</b> - (<i>number</i>) a number from 0 to 1 that shows what percent of the task is complete. </li>
-        <li><b>duration</b> - (<i>number</i>) the task duration in the units of the current time scale. </li>
-        <li><b>parent</b> - (<i>number</i>) the id of the parent task. </li>
-    </ul>
-	<li><b>links</b> - specifies the gantt dependency links</li>
-    <ul>
-    	<li><b>id</b>-(<i>string, number</i>) the event id.</li>
-        <li><b>source</b>-(<i>number</i>) the id of the source task. </li>
-        <li><b>target</b>-(<i>number</i>) the id of the target task. </li>
-        <li><b>type</b>-(<i>string</i>) the type of the dependency: 0 - 'finish to start', 1 - 'start to start', 2 - 'finish to finish'. </li>
-    </ul>
-</ul> 
-
-
-<div style="padding-top:15px; color:#4f80c2; font-weight:bold;"><img src="desktop/finger.png"/> <span style="vertical-align:top;line-height:26px;">Do the following:</span></div>
-
-<ul style= "list-style-image:url('media/desktop/arrow-right.png');">
-
-	<li>Declare the 'tasks' variable in the <b>myGantt.html</b> file: <br>
-
-{{snippet
-	myGantt.html
-}}
-~~~js
-var tasks = {
-	data:[
-		{id:1, text:"Project #1",start_date:"01-04-2013", duration:11,
-        progress: 0.6, open: true},
-		{id:2, text:"Task #1",	 start_date:"03-04-2013", duration:5, 
-        progress: 1,   open: true, parent:1},
-		{id:3, text:"Task #2",   start_date:"02-04-2013", duration:7, 
-        progress: 0.5, open: true, parent:1},
-		{id:4, text:"Task #2.1", start_date:"03-04-2013", duration:2, 
-        progress: 1,   open: true, parent:3},
-		{id:5, text:"Task #2.2", start_date:"04-04-2013", duration:3, 
-        progress: 0.8, open: true, parent:3},
-		{id:6, text:"Task #2.3", start_date:"05-04-2013", duration:4, 
-        progress: 0.2, open: true, parent:3}
-	],
-	links:[
-		{id:1, source:1, target:2, type:"1"},
-		{id:2, source:1, target:3, type:"1"},
-		{id:3, source:3, target:4, type:"1"},
-		{id:4, source:4, target:5, type:"0"},
-		{id:5, source:5, target:6, type:"0"}
-	]
-};
-~~~
-	</li>
-    <li>Call the <code>gantt.parse(tasks)</code> command after the <code>gantt.init("gantt_here")</code> line:<br>
-{{snippet
-	myGantt.html
-}}
-~~~js
-gantt.init("gantt_here"); 
-gantt.parse (tasks);/*!*/  
-~~~
-	</li>
-</ul>
-
-</p>
-</div>
-{{sample
-	01_initialization/01_basic_init.html
-}}
-
-Step 5. Create a database
------------------------------------------------------------
-{{note
-Read this and further steps if you want to load data from a database instead of from an inline object.
-}}
-<div style="padding-left:55px;">
-
-<p>
-Then, we need to create a database with 2 tables to store tasks and dependencies. 
-
-<img style="padding-top:15px;" src='desktop/tutorial_db_tables.png'/>
-
-<br><br>
-
-<i><b>sortorder</b> is a property used only while loading data from a database. The property sets the index of a task among siblings.</i>
-
-<div style="padding-top:15px; color:#4f80c2; font-weight:bold;"><img src="desktop/finger.png"/> <span style="vertical-align:top;line-height:26px;">Do the following:</span></div>
-
-
-<ul style= "list-style-image:url('media/desktop/arrow-right.png');">
-	<li>Create a new database with the name - <i>gantt</i>. </li>
-    <li> Execute the following code to create 2 tables in it: <i>gantt_tasks</i> and <i>gantt_links</i>.
-~~~js
-CREATE TABLE `gantt_links` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `source` int(11) NOT NULL,
-  `target` int(11) NOT NULL,
-  `type` varchar(1) NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `gantt_tasks` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `text` varchar(255) NOT NULL,
-  `start_date` datetime NOT NULL,
-  `duration` int(11) NOT NULL DEFAULT 0,
-  `progress` float NOT NULL DEFAULT 0,
-  `sortorder` int(11) NOT NULL DEFAULT 0,
-  `parent` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-);
-~~~
-	</li>
-</ul> 
-
-
-</p>
-</div>
-
-Step 6. Provide the ability to load data from the database
------------------------------------------------------------
-{{note
-In the next 2 steps we will use the PHP platform to implement the server-client integration.<br> If you use another platform, please, read the article desktop/loading.md to know how to 
-implement the server script yourself.
-}}
-
-<div style="padding-left:55px;">
-
-<p>
-Then,  we need to provide the ability to display data from the database in the chart. We'll do it  with the <a href="api/gantt_load.md">load</a> method, that takes the URL to the data source as a parameter. 
-In case of a database, it's a PHP file which realizes connection to the server side. <br> 
-<br>
-We will use the PHP platform and the <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a> library, 
-as this is the easiest way to implement the server-side logic for dhtmlxGantt.
-
-
-<div style="padding-top:15px; color:#4f80c2; font-weight:bold;"><img src="desktop/finger.png"/> <span style="vertical-align:top;line-height:26px;">Do the following:</span></div>
-
-
-<ul style= "list-style-image:url('media/desktop/arrow-right.png');">
-
-	<li>Create a PHP file in the 'dhtmlxGantt' folder and name it, for example, <b>data.php</b>.</li>
-   	<li>Open the <b>data.php</b> file and add the following server-side code to it:<br>
-
-{{snippet
-	data.php
-}}
 ~~~php
-<?php
-
-include ('codebase/connector/gantt_connector.php');
-
-$res=mysql_connect("localhost","root","");
-mysql_select_db("gantt");
-
-$gantt = new JSONGanttConnector($res);
-$gantt->render_links("gantt_links","id","source,target,type");
-$gantt->render_table(
-	"gantt_tasks",
-    "id",
-    "start_date,duration,text,progress,sortorder,parent"
-);
-?>
+php composer.phar create-project slim/slim-skeleton gantt-rest-php
 ~~~
-	</li>
-    <li>Switch to the <b>myGantt.html</b> file  and set the <code>gantt.config.xml_date</code> property to <i> "%Y-%m-%d %H:%i"</i>, to make the format of output data compatible with the format of dhtmlxGantt.
-<br>
-{{snippet
-	myGantt.html
-}}
+
+If you have composer installed globally, you can apply the following command:
+
+~~~php
+composer create-project slim/slim-skeleton gantt-rest-php`
+~~~
+
+Then you should check if everything works fine. For this, go to the application folder and run webserver:
+
+~~~php
+cd gantt-rest-php
+php -S 0.0.0.0:8080 -t public public/index.php
+~~~
+
+Loading Data 
+-------------
+
+While initializing Gantt [on the client side](desktop/server_side.md#technique), we added the line below into the code:
+
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i";/*!*/ 
-gantt.init("gantt_here");
+gantt.load("/data");
 ~~~
-    </li>
-        <li>Call the <code>gantt.load('data.php')</code> command to load data from the database to the Gantt chart.
-<br>
-{{snippet
-	myGantt.html
-}}
+
+This command will send an AJAX request to the specified URL and
+take Gantt data in [JSON format](desktop/supported_data_formats.md#json) as a response. 
+Thus, we should add the necessary route for "/data". You can find the complete route scheme in the article desktop/server_side.md#technique.
+
+Open the *index.php* file. After the *$app* declaration add the code below:
+
+{{snippet index.php}}
+~~~php
+function getConnection()
+{
+    $pdoSettings = array(
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    );
+
+    return new PDO("mysql:host=localhost;dbname=gantt", "root", "root", $pdoSettings);
+}
+
+$app->get('/data', function($request, $response) {
+    $conn = getConnection();
+    $result = array();
+
+    $result["data"] = array();
+    foreach($conn->query("SELECT * FROM gantt_tasks") as $row){
+        $row["open"] = true;
+        array_push($result["data"], $row);
+    }
+
+    $result["links"] = array();
+    foreach ($conn->query("SELECT * FROM gantt_links") as $link){
+        array_push($result["links"], $link);
+    }
+
+    $response->withJson($result);
+    return $response;
+});
+~~~
+
+Let's consider this code in detail:
+
+- we read all tasks and links from the database and set them to the *$result* object
+- we set the *open* property. It will specify that the tasks tree will be open by default
+- we send the *$result* object to the client side as JSON
+
+
+Saving Data
+-------------
+
+The following [client-side](desktop/server_side.md#technique) code is responsible for sending updates that happen on the client side back to the server:
+
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i";
-gantt.init("gantt_here");
-gantt.load('data.php');//loads data to Gantt from the database  /*!*/  
+var dp = new gantt.dataProcessor("/data");
+dp.init(gantt);
+dp.setTransactionMode("REST");
 ~~~
-    </li>
-</ul> 
 
-</p>
-</div>
+DataProcessor will react to each action on the client (i.e adding data into chart, modifying or removing it) by sending an AJAX request to the server.
 
-Step 7. Provide the ability to update data in the database
------------------------------------------------------------
-<div style="padding-left:55px;">
+Such a request will include all the data necessary to save changes. We set the dataProcessor to the REST mode in order to make it send
+corresponding HTTP verbs for different operations. All CRUD requests are described in details in the desktop/server_side.md#requestresponsedetails article.
 
-<p>
+Well, now we will complete the *index.php* file with all the URLs and handlers that we need:
 
-Then, we need to provide the ability to save the changes made in the Gantt chart to the database.  For this purpose, we'll use the 
-api/gantt_dataprocessor.md helper library. All we need to do is to initialize DataProcessor and
-attach it to the dhtmlxGantt object.
+{{snippet index.php}}
+~~~php
+//getting a response for a CRUD action
+function prepareResponse($res, $action, $tid = NULL){
+    $result = array(
+        'action' => $action
+    );
+    if(isset($tid) && !is_null($tid)){
+        $result['tid'] = $tid;
+    }
+    $res->withJson($result);
+    return $result;
+}
+//getting an event from the request data
+function getEvent($data)
+{
+    return array(
+        ':text' => $data["text"],
+        ':start_date' => $data["start_date"],
+        ':duration' => $data["duration"],
+        ':progress' => isset($data["progress"]) ? $data["progress"] : 0,
+        ':parent' => $data["parent"]
+    );
+}
+//getting a link from the request data
+function getLink($data){
+    return array(
+        ":source" => $data["source"],
+        ":target" => $data["target"],
+        ":type" => $data["type"]
+    );
+}
+//Insert task action
+$app->post('/data/task', function($request, $response){
+    $event = getEvent($request->getParsedBody());
+    $conn = getConnection();
+    $query = "INSERT INTO gantt_tasks(text, start_date, duration, progress, parent) ".
+  "VALUES (:text,:start_date,:duration,:progress,:parent)";
+    $conn->prepare($query)->execute($event);
+    return prepareResponse($response, "inserted", $conn->lastInsertId());
+});
+//Update task action
+$app->put('/data/task/{id}', function($request, $response){
+    $sid = $request->getAttribute("id");
+    $event = getEvent($request->getParsedBody());
+    $conn = getConnection();
+    $query = "UPDATE gantt_tasks ".
+    "SET text = :text, start_date = :start_date, duration = :duration, progress = :progress, parent = :parent ".
+    "WHERE id = :sid";
 
-<div style="padding-top:15px; color:#4f80c2; font-weight:bold;"><img src="desktop/finger.png"/> <span style="vertical-align:top;line-height:26px;">Do the following:</span></div>
+    $conn->prepare($query)->execute(array_merge($event, array(":sid"=>$sid)));
+    return prepareResponse($response, "updated");
+});
+//Remove task action
+$app->delete('/data/task/{id}', function($request, $response){
+    $sid = $request->getAttribute("id");
+    $conn = getConnection();
+    $query = "DELETE FROM gantt_tasks WHERE id = :sid";
 
-<ul style= "list-style-image:url('media/desktop/arrow-right.png');">
+    $conn->prepare($query)->execute(array(":sid"=>$sid));
+    return prepareResponse($response, "deleted");
+});
+//Insert link action
+$app->post('/data/link', function($request, $response){
+    $link = getLink($request->getParsedBody());
+    $conn = getConnection();
+    $query = "INSERT INTO gantt_links(source, target, type) VALUES (:source,:target,:type)";
+    $conn->prepare($query)->execute($link);
+    return prepareResponse($response, "inserted", $conn->lastInsertId());
+});
+//Update link action
+$app->put('/data/link/{id}', function($request, $response){
+    $sid = $request->getAttribute("id");
+    $link = getLink($request->getParsedBody());
+    $conn = getConnection();
+    $query = "UPDATE gantt_links SET ".
+    "source = :source, target = :target, type = :type ".
+    "WHERE id = :sid";
 
-    <li>Open the <b>myGantt.html</b> file and initialize dhtmlxDataProcessor with the <code>dataProcessor("data.php")</code> command. </li>
-    <li>Attach the dhtmlxDataProcessor object to the dhtmlxGantt object with the <code>dp.init(gantt)</code> command.
-<br>
-{{snippet
-	myGantt.html
-}}
-~~~js
-gantt.init("gantt_here");
-gantt.load('data.php');
-        
-var dp=new gantt.dataProcessor("data.php"); /*!*/ 
-dp.init(gantt); /*!*/ 
+    $conn->prepare($query)->execute(array_merge($link, array(":sid"=>$sid)));
+    return prepareResponse($response, "updated");
+});
+//Remove link action
+$app->delete('/data/link/{id}', function($request, $response){
+    $sid = $request->getAttribute("id");
+    $conn = getConnection();
+    $query = "DELETE FROM gantt_links WHERE id = :sid";
+
+    $conn->prepare($query)->execute(array(":sid"=>$sid));
+    return prepareResponse($response, "deleted");
+});
 ~~~
-</ul>
-</p>
-</div>
 
-{{sample
-	01_initialization/04_connector_json.html
-}}
+Now let's see what we have inside of this code.
 
+We make use of two types of routes:  
+
+- “/data/task” - for those requests which relate to operations with tasks
+- “/data/link” - for requests which relate to operations with links
+
+###Requests
+
+As for requests, we define three types of them:
+
+- POST – for adding new items into the database
+- PUT – for updating existing records 
+- DELETE – for deleting records
+
+###Responses
+
+A response come will come after each action. Each response will contain a JSON object containing the type of the performed operation.
+
+The response for the *insert* action will also include the id of the new record in 
+the database that will be applied on the client side.
+
+If the operation fails, the “error” type should be returned.
 

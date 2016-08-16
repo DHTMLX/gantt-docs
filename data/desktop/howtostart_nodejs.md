@@ -61,7 +61,7 @@ When the file is ready, open it and put the above listed dependencies into it. T
 }
 ~~~
 
-Finally, we need to install the added dependencies using the comman below:
+Finally, we need to install the added dependencies using the command below:
 
 ~~~js
 npm install
@@ -111,7 +111,7 @@ Now, open the *index.html* file and fill it with the following content:
 The above code initializes a gantt chart together with dataProcessor and sets the necessary configuration settings. 
 It also enables data loading for the gantt.
 
-The “/data” url will serve as a datasource and the entry point for dataProcessor requests, we’ll consider it a bit later.
+The “/data” URL will serve as a datasource and the entry point for dataProcessor requests, we’ll consider it a bit later.
 The important point is that dataProcessor should be initialized in the REST mode. To get more information, read the desktop/server_side.md#savingdatafromrestserver
 article.
 
@@ -157,7 +157,7 @@ What we have done in this code:
 
 - opened MySql connection to our database (we’ll need it later, for now just make sure you’ve specified actual connection parameters)
 - specified the “public” folder as the root directory of an application
-- attached the application to 1337 port of the localhost
+- attached the application to 1337 port of the local host
 
 Let's check what we have got at the moment. Go to the project folder and run the following command from the command line:
 
@@ -374,6 +374,6 @@ It will be applied on the client side, so it will be possible to map a new item 
 
 That's all. Open http://127.0.0.1:1337 and you will see a fully operational gantt chart.
 
-<img src="desktop/ready_gantt_node.png">
+<img src="desktop/ready_gantt.png">
 
 You can check [a ready demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.

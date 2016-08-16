@@ -2,7 +2,7 @@ dhtmlxGantt with Ruby on Rails
 =========================
 
 
-In this article we'll show you a step-by-step guide of Gantt creation based on [Ruby on Rails](http://rubyonrails.org/) framework and REST API.
+In this article we'll show you how to create a Gantt and implement server-side integration based on [Ruby on Rails](http://rubyonrails.org/) framework and REST API.
 
 If you use some other technology, check the list of available integration variants below:
 
@@ -16,7 +16,7 @@ Otherwise, you should install the framework by following the steps described in 
 
 Once everything is ready, we can start completing the integration step by step.
 
-Step 1. Creating a project
+Step 1. Creating a Project
 ------------------------
 
 To add a new project just run the following command in the terminal:
@@ -25,7 +25,7 @@ To add a new project just run the following command in the terminal:
 rails new path/to/your/project
 ~~~
 
-Step 2. Creating a controller and specifying routing
+Step 2. Creating a Controller and Specifying Routing
 -----------------------------------------
 
 Now we need to add a controller that will process users' request to the server through the application.
@@ -67,7 +67,7 @@ Open *http://localhost:3000/* in your browser. The result should be like this:
 
 So the server is ready and we can proceed with views adding.
 
-Step 3. Including source files and creating views
+Step 3. Including Source Files and Creating Views
 -----------------------
  
 Views will visualize the information gathered by actions. 
@@ -78,10 +78,10 @@ To begin with, we should [download the dhtmlxGantt package](http://dhtmlx.com/do
 
 Complete the next steps:
 
-1. Unpack the file codebase/dhtmlxgantt.js and the directory codebase/ext from the package to the directory vendor/assets/javascripts/ of your project
-2. Unpack the file codebase/dhtmlxgantt.css and the directory codebase/skins from the package to the directory vendor/assets/stylesheets/ of your project
+1. Unpack the file *codebase/dhtmlxgantt.js* and the directory *codebase/ext* from the package to the directory *vendor/assets/javascripts/* of your project
+2. Unpack the file *codebase/dhtmlxgantt.css* and the directory *codebase/skins* from the package to the directory *vendor/assets/stylesheets/* of your project
 
-We need to add the *dhtmlxgantt.js* and *dhtmlxgantt.css* files to the precompile array. For this, open the **config/initializers/assets.rb** file and add the following code:
+We need to add the *dhtmlxgantt.js* and *dhtmlxgantt.css* files to the precompiled array. For this, open the **config/initializers/assets.rb** file and add the following code:
 
 ~~~js
 Rails.application.config.assets.precompile += %w( dhtmlxgantt.css )
@@ -156,7 +156,7 @@ After that we can create a new database:
 rake db:migrate
 ~~~
 
-Now you can try to add test tasks and links into it. The algorythm is the following:
+Now you can try to add test tasks and links into it. The algorithm is the following:
 
 1 . Open the Rails console by running:
 
@@ -179,8 +179,23 @@ Next we need implement data loading and saving in the chart with the help of con
 Step 5. Creating Controllers
 --------------------
 
-In order to enable data loading in the chart, we should create a new data action. To do it, open the file *app/controllers/home_controller.rb*
-and add the code below:
+###General technique of loading data using REST API
+
+There's a [common technique](desktop/server_side.md#technique) for loading data into Gantt from the server side.
+
+You will find the requirements to the client side,
+as well as the [description of possible requests and responses](desktop/server_side.md#requestresponsedetails)
+in the desktop/server_side.md article.
+
+Below we will consider how to load data into Gantt using Ruby on Rails server side.
+
+###Creating a new data action
+
+Gantt gets both tasks and links in one object, not separately.
+In order to enable data loading in the chart, we should create a new data action that will be responsible for 
+loading tasks and links data into Gantt.
+
+Open the file *app/controllers/home_controller.rb* and add the code below into it:
 
 ~~~js
 def data
@@ -207,7 +222,9 @@ def data
   end
 ~~~
 
-Now our chart is able to load data. 
+The code will create a data action that will make an object with data for a Gantt chart. It will contain a list of events and a list of links.
+The dates of events should be converted into appropriate strings.
+
 
 ###Task Controller
 
@@ -217,7 +234,7 @@ Next we need to create a new controller task by running:
 rails generate controller task
 ~~~
 
-Into the file of this task - *app/controllers/task_controller.rb* we will add the code that will enable data adding, changing and deleting:
+We will add the code that will enable data adding, changing and deleting into the file of this task - *app/controllers/task_controller.rb*:
 
 ~~~js
 protect_from_forgery
@@ -253,6 +270,17 @@ def update
   end
 ~~~
 
+The code of Task Controller includes the following types of requests:
+
+- POST request means that a new item needs to be inserted into the database
+- PUT request updates an existing record 
+- DELETE request goes for deleting
+
+All actions return a JSON response containing the type of the performed operation or “error” if something went wrong.
+
+Note that a response for the insert action also contains a database id of the new record. 
+It will be applied on the client side, so the new item could be mapped to the database entity. 
+
 
 ###Link Controller
 
@@ -262,7 +290,8 @@ Now we will surely proceed with adding a link controller. The next line will hel
 rails generate controller link
 ~~~
 
-Into the app/controllers/link_controller.rb file we will add a familiar code to organize adding/changing/deleting actions for links:
+We will add a familiar code to organize adding/changing/deleting actions for links
+into the *app/controllers/link_controller.rb* file:
 
 ~~~js
 protect_from_forgery
@@ -292,8 +321,21 @@ protect_from_forgery
  end
 ~~~
 
+The same as for Task Controller, we describe the following types of requests in the code of Link Controller:
+
+- POST request means that a new item should be inserted into the database
+- PUT request updates an existing record 
+- DELETE request goes for deleting
+
+Actions return a JSON response with the type of operation or "error".
+
+###Configuring Routes for API
+
 After that we need to specify the routes to the newly created controllers and actions.
-We will make it in the *config/routes.rb* file with the following code:
+These routes will map incoming requests to specific handlers.
+You can find the full route scheme [in the corresponding article](desktop/server_side.md#requestresponsedetails).
+
+We will specify the routes in the *config/routes.rb* file with the following code:
 
 ~~~js
 match "home/data", :to => "home#data", :as => "data", :via => "get"
@@ -306,6 +348,8 @@ post "home/data/link", :to => "link#add"
 put "home/data/link/:id", :to => "link#update"
 delete "home/data/link/:id", :to => "link#delete"
 ~~~
+
+Thus, we have set API routes for data and all the necessary actions: adding, updating and deleting tasks and links.
 
 Step 6. Initializing Gantt
 --------------------------
@@ -327,5 +371,5 @@ It initializes Gantt and enables it to load and save data. That's all. Now we ca
 
 <img src="desktop/result.png">
 
-As you can see, there are two tasks that we have added at the step 4 connected by a link.  Now you can add more tasks and modify them and all the changes will be
-saved in the datatabase.
+As you can see, there are two tasks connected by a link. We have added them at the [step 4](desktop/howtostart_ruby.md#step4creatingmodels).  
+Now you can add more tasks and modify them and all the changes will be saved in the database.

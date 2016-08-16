@@ -2,7 +2,7 @@ Using Gantt with Node.js
 ==============================
 
 The current article describes the steps that should be completed on the server side implemented with Node.js and REST API
-for loading and storing data in Gantt. 
+for loading data into Gantt and storing changes on the server. 
 
 If you use some other technology, check the list of available integration variants below:
 
@@ -10,6 +10,8 @@ If you use some other technology, check the list of available integration varian
 - desktop/server_dotnet.md
 - desktop/server_ruby.md
 
+Making preparations
+---------------------
 
 We need to begin with adding some dependencies on the server side.
 The necessary dependencies are:
@@ -177,11 +179,13 @@ In the above code we've specified two sets of routes: one for the "tasks" entity
 
 The “/data/task” url will be used for requests that contain operations performed with tasks. Requests related to links will be sent to the “/data/link” url.
 
-Types of requests:
+###Types of requests
 
 - POST request implies that a new item should be inserted into database
 - PUT updates an existing record
 - DELETE performs deleting
+
+###Responses
 
 All the actions return a JSON response containing the type of the performed operation or “error” if something went wrong.
 

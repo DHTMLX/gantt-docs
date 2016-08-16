@@ -18,6 +18,7 @@ RESTful APIs use HTTP as a transport layer in most cases. Due to its simplicity,
 
 Technique
 ----------------------------------------------
+
 Generally, to load data from the server side using REST API, you need to:
 
 ###Client side

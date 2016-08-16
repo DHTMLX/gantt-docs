@@ -348,10 +348,11 @@ Step 4. Creating API for Loading/Editing Data
 
 ###General technique of loading data using REST API
 
-There's a [common technique](desktop/server_side.md#technique) of loading data into Gantt from the server side.
+There's a [common technique](desktop/server_side.md#technique) for loading data into Gantt from the server side.
 
-In the desktop/server_side.md article you will find the requirements to the client side,
-as well as the [description of possible requests and responses](desktop/server_side.md#requestresponsedetails).
+You will find the requirements to the client side,
+as well as the [description of possible requests and responses](desktop/server_side.md#requestresponsedetails)
+in the desktop/server_side.md article.
 
 Below we will consider how to load data into Gantt using .Net server side.
 
