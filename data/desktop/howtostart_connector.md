@@ -18,7 +18,7 @@ If you want to use some server-side technology instead, check the list of tutori
 	01_initialization/01_basic_init.html
 }}
 
-Step 1. Download and extract the dhtmlxGantt package
+Step 1. Downloading dhtmlxGantt Package
 --------------------------------------------------------------
 <div style="padding-left:55px;">
 <p>
@@ -37,8 +37,7 @@ Let's start the tutorial with getting the library package on your computer.
 
 
 
-
-Step 2. Include dhtmlxGantt code files in your HTML file
+Step 2. Including dhtmlxGantt Code Files 
 -----------------------------------------------------------
 
 <div style="padding-left:55px;">
@@ -84,7 +83,7 @@ The dhtmlxGantt code files are:
 </p>
 </div>
 
-Step 3. Initialize dhtmlxGantt
+Step 3. Initializing dhtmlxGantt
 -----------------------------------------------------------
 
 <div style="padding-left:55px;">
@@ -141,7 +140,7 @@ Note, if you use the full-screen mode, specify the current style to guarantee th
 </style>
 ~~~
 
-Step 4. Load data to the Gantt chart
+Step 4. Loading Data to the Gantt Chart
 ------------------------------------------------------------------------
 <div style="padding-left:55px;">
 
@@ -223,7 +222,7 @@ gantt.parse (tasks);/*!*/
 	01_initialization/01_basic_init.html
 }}
 
-Step 5. Create a database
+Step 5. Creating a Database
 -----------------------------------------------------------
 {{note
 Read this and further steps if you want to load data from a database instead of from an inline object.
@@ -270,7 +269,7 @@ CREATE TABLE `gantt_tasks` (
 </p>
 </div>
 
-Step 6. Provide the ability to load data from the database
+Step 6. Loading Data from the Database
 -----------------------------------------------------------
 {{note
 In the next 2 steps we will use the PHP platform to implement the server-client integration.<br> If you use another platform, please, read the article desktop/loading.md to know how to 
@@ -342,7 +341,7 @@ gantt.load('data.php');//loads data to Gantt from the database  /*!*/
 </p>
 </div>
 
-Step 7. Provide the ability to update data in the database
+Step 7. Updating Data in the Database
 -----------------------------------------------------------
 <div style="padding-left:55px;">
 
@@ -377,7 +376,7 @@ dp.init(gantt); /*!*/
 	01_initialization/04_connector_json.html
 }}
 
-What's next?
+What's Next?
 -----------------------------------------------------------
 That's all. A basic but functional Gantt chart that can load data from the database and save it back is ready.
 Now you may configure and customize it to meet all your needs.

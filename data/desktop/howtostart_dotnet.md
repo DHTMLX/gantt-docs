@@ -164,7 +164,7 @@ You can find the full list of properties, both mandatory and optional, available
 
 ####Link Model 
 
-To create the Link model, add the Link class into the Models folder and add the [obligatory properties](desktop/loading.md#link_properties) of the Link object into it:
+To create the Link model, create the Link class in the Models folder and add the [obligatory properties](desktop/loading.md#link_properties) of the Link object into it:
 
 ~~~js
 using System;

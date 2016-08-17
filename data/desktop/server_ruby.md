@@ -1,7 +1,9 @@
-Using Gantt with Ruby on Rails
+Ruby on Rails Code Samples
 =========================================
 
 In this article we'll show you how to integrate Gantt with the server side based on [Ruby on Rails](http://rubyonrails.org/) framework and REST API.
+
+You can read the [complete tutorial](desktop/howtostart_ruby.md) on using Gantt with Ruby on Rails.
 
 If you use some other technology, check the list of below to find the appropriate variant:
 
@@ -9,15 +11,48 @@ If you use some other technology, check the list of below to find the appropriat
 - desktop/server_nodejs.md
 - desktop/server_dotnet.md
 
+Creating Models
+----------------------
 
-Making preparations
-------------------------
+Since Gantt operates tasks and links entities, we need to add two models: one for each of them.
 
-To add a new project just run the following command in the terminal:
+To create a model for tasks, we need to run the long command that contains the task properties:
 
 ~~~js
-rails new path/to/your/project
+rails generate model Task text:string start_date:datetime duration:integer progress:float sortorder:integer parent:integer
 ~~~
+
+A similar but shorter command is used to create a model for links:
+
+~~~js
+rails generate model Link source:integer target:integer link_type:string:limit1
+~~~
+
+After that we can create a new database:
+
+~~~js
+rake db:migrate
+~~~
+
+Now you can try to add test tasks and links into it. The algorithm is the following:
+
+1 . Open the Rails console by running:
+
+~~~js
+rails c
+~~~
+
+2 . Add the desired tasks and links like this:
+
+~~~js
+Task.create :text=>"Task 1", :start_date=>"2015-10-25",  :duration=>2;
+Task.create :text=>"Task 2", :start_date=>"2015-10-27",  :duration=>3;
+Link.create :source=>1, :target=>2, :link_type=>"0";
+~~~
+
+3 . Enter "exit" to close the console.
+
+Next we need implement data loading and saving in the chart with the help of controllers.
 
 Loading Data
 --------------------

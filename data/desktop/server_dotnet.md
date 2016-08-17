@@ -1,7 +1,9 @@
-Using Gantt with ASP.NET MVC 
+ASP.NET MVC Code Samples
 ======================================
 
-This article will give you step-by-step instructions on configuring server side built with ASP.NET and REST API to load data into Gantt and save changes on the server. 
+This article will give you instructions on how to configure server side built with ASP.NET and REST API to load data into Gantt and save changes on the server. 
+
+There's a [detailed tutorial](desktop/howtostart_dotnet.md) on using Gantt with ASP.NET MVC.
 
 You can also explore peculiarities of implementing integration of Gantt with server side using other technologies:
 
@@ -9,21 +11,133 @@ You can also explore peculiarities of implementing integration of Gantt with ser
 - desktop/server_nodejs.md
 - desktop/server_ruby.md
 
-We will make use of ASP.NET MVC 5 web platform and Web API 2 controller for REST API to create a Gantt application.
 
+Creating Models
+-----------------------
 
-Making Preparations
---------------------
+Models are objects that will represent data in the Gantt chart. Gantt can load data either in [JSON or XML formats](desktop/supported_data_formats.md#json).
 
-Let's start by running Visual Studio and creating a new project. For this, open the File menu tab and choose:<br>
-New -> Project. Then select ASP.NET Web Application and name it *gantt-rest-net*. 
+There are two types of data representation in Gantt: Task and Links.
+So we should create two simple models: one for tasks and another one for links.
 
-<img src="desktop/vs_project.png">
+####Task Model
 
-Select an Empty project among available templates and check MVC and Web API checkboxes below the list of templates.
+Create the "Task" class in the Models folder and add the necessary properties into it:
 
-<img src="desktop/select_template.png">
+~~~js
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
+namespace gantt_rest_net.Models
+{
+    public class Task
+    {
+        public int id { get; set; }
+        public string text { get; set; }
+        public DateTime start_date { get; set; }
+        public int duration { get; set; }
+        public double progress { get; set; }
+        public int parent { get; set; }
+    }
+}
+~~~
+
+You can find the full list of properties, both mandatory and optional, available for the Task object in the 
+[corresponding article](desktop/loading.md#task_properties) of documentation.
+
+####Link Model 
+
+To create the Link model, create the Link class in the Models folder and add the [obligatory properties](desktop/loading.md#link_properties) of the Link object into it:
+
+~~~js
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace gantt_rest_net.Models
+{
+    public class Link
+    {
+        public int id { get; set; }
+        public int source { get; set; }
+        public int target { get; set; }
+        public string type { get; set; }
+    }
+}
+~~~
+
+Configuring DataBase Connection
+----------------------------------
+
+###Installing Entity Framework
+
+We are going to organize work with database with the help of the [Entity Framework](http://www.asp.net/entity-framework).
+
+So, first of all we need to install the framework. To do it, you need to run the following command in the Package Manager Console:
+
+~~~js
+Install-Package EntityFramework
+~~~
+
+###Creating Context
+
+The next step is to create Context. Context represents a session with the DataBase. It allows working with Tasks and Links.
+
+Call the context menu for the Model folder and select Add->Class. The new class will be called "GanttContext" and will have the following content:
+
+~~~js
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+
+namespace gantt_rest_net.Models
+{
+    public class GanttContext: DbContext
+    {
+        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Link> Links { get; set; }
+    }
+}
+~~~
+
+###Adding Response Helpers
+
+The next step is to add helpers that will form answers on CRUD requests.
+
+Let's create the Helpers folder and add a class named *GanttResponseHelper* there. Place the following code into the newly created class:
+
+~~~js
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http.Results;
+
+namespace gantt_rest_net.Helpers
+{
+    public class GanttResponseHelper
+    {
+        public static Dictionary<string, string> GetResult(string action, int? tid)
+        {
+            var res = new Dictionary<string, string>();
+            res.Add("action", action);
+            if (tid != null)
+                res.Add("tid", tid.ToString());
+            return res;
+        }
+    }
+}
+~~~
+
+The *GetResult()* method is going to generate an appropriate response for Data Processor according to its parameters.
+Each response will contain the name of an action.
+
+There is also an optional parameter *tid*. It will be used for "insert" actions when database specifies a new id for the newly inserted entity.
 
 Loading Data
 ------------------------------------------------

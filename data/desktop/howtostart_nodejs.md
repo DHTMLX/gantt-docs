@@ -13,7 +13,7 @@ Node.js has a set of ready-made solutions, so we won’t have to code everything
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.
 
-Step 1. Making preparations
+Step 1. Making Preparations
 -------------------------------
 
 To begin with, we'll create a project folder and then add the required dependencies. We'll make use of the following modules:
@@ -115,7 +115,7 @@ The “/data” URL will serve as a datasource and the entry point for dataProce
 The important point is that dataProcessor should be initialized in the REST mode. To get more information, read the desktop/server_side.md#savingdatafromrestserver
 article.
 
-Step 3. Preparing a database
+Step 3. Preparing a Database
 ----------------------------
 
 The next step is to create a database. We'll make a simple database with two tables. 
@@ -123,7 +123,7 @@ The next step is to create a database. We'll make a simple database with two tab
 Check a detailed example [here](desktop/howtostart_connector.md#step5createadatabase).
 
 
-Step 4. Making connection to database
+Step 4. Making Connection to Database
 --------------------------
 
 Now we need to connect to the database. Open the *server.js* file that we have added at the [Step 1](desktop/howtostart_nodejs.md#step1makingpreparations) and add
@@ -170,7 +170,7 @@ Then open http://127.0.0.1:1337 in a browser. You should see a page with an empt
 
 <img src="desktop/gantt_init.png">
 
-Step 5. Loading tasks into chart
+Step 5. Loading Tasks into Chart
 ------------------------
 
 From now on we are ready to implement data loading. To begin with, add test data into the *gantt_tasks* table.
@@ -236,7 +236,7 @@ Let's run the application now by opening http://127.0.0.1:1337. The gantt will b
 
 <img src="desktop/load_data.png">
 
-Step 6. Saving data
+Step 6. Saving Data
 ---------------------
 
 The last thing that we should implement is data saving. 

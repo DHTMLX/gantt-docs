@@ -1,4 +1,4 @@
-Using Connectors for Database Mapping
+Connector Сode Samples
 ==============================
 
 dhtmlxGantt supports a special server-side library helper **dhtmlxConnector** that simplifies your work with the server side.
@@ -12,6 +12,7 @@ to achieve any client-server manipulation and to not write the server-client com
 {{note
 You can find dhtmlxConnector in the <a href="http://dhtmlx.com/x/download/regular/dhtmlxGantt.zip">dhtmlxGantt package</a>.}}
 
+You can also read the [complete tutorial](desktop/howtostart_connector.md) on using Gantt with Connector on the server side.
 
 Technique
 ----------------------------------------------

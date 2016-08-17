@@ -1,8 +1,10 @@
-Using Gantt with Node.js 
+Node.js Code Samples
 ==============================
 
 The current article describes the steps that should be completed on the server side implemented with Node.js and REST API
 for loading data into Gantt and storing changes on the server. 
+
+You can find more information in the [full tutorial](desktop/howtostart_nodejs.md) on using Gantt with Node.js.
 
 If you use some other technology, check the list of available integration variants below:
 
