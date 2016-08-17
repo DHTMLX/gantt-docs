@@ -157,7 +157,7 @@ What we have done in this code:
 
 - opened MySql connection to our database (we’ll need it later, for now just make sure you’ve specified actual connection parameters)
 - specified the “public” folder as the root directory of an application
-- attached the application to 1337 port of the local host
+- attached the application to 1337 port of the localhost
 
 Let's check what we have got at the moment. Go to the project folder and run the following command from the command line:
 
