@@ -9,7 +9,7 @@ Methods
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displayes an additional layer with custom elements for a task in the timeline area
 - api/gantt_alert.md - calls an alert message box
-- api/gantt_assert.md - 
+- api/gantt_assert.md - if the specified expression is false, an errorMessage is shown in the red popup at the top right corner of the screen
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt
 - api/gantt_autoschedule.md - recalculates the schedule of the project
 - api/gantt_batchupdate.md - updates multiple tasks/links at once
@@ -42,6 +42,7 @@ Methods
 - api/gantt_event.md - attaches an event handler to an HTML element
 - api/gantt_eventremove.md - removes an event handler from an HTML element
 - api/gantt_expand.md - expands gantt to the full screen mode
+- api/gantt_findcycles.md - 
 - api/gantt_getchildren.md - returns the 1st-level child tasks of the specified parent branch
 - api/gantt_getclosestworktime.md - returns the closest working time
 - api/gantt_getglobaltaskindex.md - get the index of a task in the tree
@@ -89,6 +90,7 @@ Methods
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
 - api/gantt_init.md - constructor. Initializes a dhtmlxGantt object
 - api/gantt_ischildof.md - checks whether a task is a child of other task
+- api/gantt_iscircularlink.md - 
 - api/gantt_iscriticallink.md - checks whether the specified link is critical
 - api/gantt_iscriticaltask.md - checks whether the specified task is critical
 - api/gantt_islinkallowed.md - checks whether the specified link is correct
@@ -138,6 +140,7 @@ Methods
 - api/gantt_uid.md - returns a unique id
 - api/gantt_undo.md - reverts the changes made in the gantt
 - api/gantt_unselecttask.md - removes selection from the selected task
+- api/gantt_unsetworktime.md - 
 - api/gantt_updatecollection.md - updates the specified collection with new options
 - api/gantt_updatelink.md - updates the specified dependency link
 - api/gantt_updatemarker.md - updates the specified marker
@@ -184,6 +187,7 @@ Methods
 - api/gantt_event.md
 - api/gantt_eventremove.md
 - api/gantt_expand.md
+- api/gantt_findcycles.md
 - api/gantt_getchildren.md
 - api/gantt_getclosestworktime.md
 - api/gantt_getglobaltaskindex.md
@@ -231,6 +235,7 @@ Methods
 - api/gantt_hidequickinfo.md
 - api/gantt_init.md
 - api/gantt_ischildof.md
+- api/gantt_iscircularlink.md
 - api/gantt_iscriticallink.md
 - api/gantt_iscriticaltask.md
 - api/gantt_islinkallowed.md
@@ -280,6 +285,7 @@ Methods
 - api/gantt_uid.md
 - api/gantt_undo.md
 - api/gantt_unselecttask.md
+- api/gantt_unsetworktime.md
 - api/gantt_updatecollection.md
 - api/gantt_updatelink.md
 - api/gantt_updatemarker.md

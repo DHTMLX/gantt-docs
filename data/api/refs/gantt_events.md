@@ -18,6 +18,7 @@ Events
 - api/gantt_onaftertaskupdate_event.md - fires after the user updates a task
 - api/gantt_onafterundo_event.md - fires after the api/gantt_undo.md method was called
 - api/gantt_onajaxerror_event.md - fires if the server returns an error
+- api/gantt_onautoschedulecircularlink_event.md - 
 - api/gantt_onbeforeautoschedule_event.md - fires before auto scheduling
 - api/gantt_onbeforebatchupdate_event.md - fires before the api/gantt_batchupdate.md method is called
 - api/gantt_onbeforecollapse_event.md - before gantt exits the fullscreen mode and goes back to normal mode
@@ -32,7 +33,7 @@ Events
 - api/gantt_onbeforelinkupdate_event.md - fires before a link is updated
 - api/gantt_onbeforeparse_event.md - fires before data started to be parsed
 - api/gantt_onbeforeredo_event.md - fires before the api/gantt_redo.md method is called
-- api/gantt_onbeforerowdragend_event.md - fires before the user drops a row in  the grid
+- api/gantt_onbeforerowdragend_event.md - fires when a user drops a row in the grid
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
 - api/gantt_onbeforetaskchanged_event.md - fires after the user has finished dragging and released the mouse button but before the changes are applied
@@ -52,7 +53,7 @@ Events
 - api/gantt_oncontextmenu_event.md - occurs when the user clicks the right mouse button inside the Gantt chart
 - api/gantt_ondatarender_event.md - fires after data was rendered on the page
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
-- api/gantt_onerror_event.md - fires when gantt.assert() receives 'false' value, i.e. when assertion fails
+- api/gantt_onerror_event.md - fires when api/gantt_assert.md receives 'false' value, i.e. when assertion fails
 - api/gantt_onexpand_event.md - fires when gantt is expended to full screen
 - api/gantt_onganttready_event.md - fires after the dhtmlxGantt initialization is complete but the Gantt chart is not rendered on the page yet.
 - api/gantt_onganttrender_event.md - fires after the Gantt chart was rendered on the page
@@ -80,7 +81,7 @@ Events
 - api/gantt_onrowdragstart_event.md - fires before the user drags a row of the grid
 - api/gantt_onscaleadjusted_event.md - fires when the scale is re-rendered in order to display all tasks completely
 - api/gantt_onscaleclick_event.md - fires when the user clicks on the cell in the time scale
-- api/gantt_ontaskclick_event.md - fires when the user clicks on a task row in the  grid area (including the 'expand/collapse' and 'add task' buttons) or on a task bar in the timeline area
+- api/gantt_ontaskclick_event.md - fires when the user clicks on a task row in the grid area (including the 'expand/collapse' and 'add task' buttons) or on a task bar in the timeline area
 - api/gantt_ontaskclosed_event.md - fires when a branch has been closed
 - api/gantt_ontaskcreated_event.md - fires when user creates a new task by pressing '+' button in a grid, and also when the api/gantt_createtask.md method is called
 - api/gantt_ontaskdblclick_event.md - fires when the user double clicks on a task
@@ -110,6 +111,7 @@ Events
 - api/gantt_onaftertaskupdate_event.md
 - api/gantt_onafterundo_event.md
 - api/gantt_onajaxerror_event.md
+- api/gantt_onautoschedulecircularlink_event.md
 - api/gantt_onbeforeautoschedule_event.md
 - api/gantt_onbeforebatchupdate_event.md
 - api/gantt_onbeforecollapse_event.md

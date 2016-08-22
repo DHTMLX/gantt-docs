@@ -1,7 +1,7 @@
 Calculating Tasks' Duration in Work Time
 ===================================================
 By default, dhtmlxGantt calculates the duration of tasks in calendar time. That assumes 
-that that the final duration of the tasks can include weekends and holidays.
+that the final duration of the tasks can include weekends and holidays.
 
 To provide calculating tasks' duration in work time, use the api/gantt_work_time_config.md option:
 
@@ -47,7 +47,7 @@ Setting a custom working time
 //changes the working time of working days
 gantt.setWorkTime({ hours:[9,18] });
 
-//makes all Fridays day-offs
+//makes all Fridays days-off
 gantt.setWorkTime({ day:5, hours:false });
 
 //changes the working time for Fridays and Saturdays
@@ -72,6 +72,18 @@ gantt.setWorkTime({hours:[8,12]});
 gantt.setWorkTime({hours:[13,17]});
 //the result of following commands will be the working time 13:00-17:00
 //and not a mixin of both commands
+~~~
+
+Unsetting the working time
+------------------------------
+
+You can unset a working time by using the api/gantt_unsetworktime.md method:
+
+~~~js
+//changes the working time of working days from [8,17] to [8,12]
+gantt.setWorkTime({hours:[8,12]});
+//unsets the working time
+gantt.unsetWorkTime({hours:[8,12]});
 ~~~
 
 
@@ -102,7 +114,7 @@ gantt.getWorkHours(new Date(2013,3,30))// -> [8, 17]
 ~~~
 
 
-To get the cloasest working day from the specified date, use the api/gantt_getclosestworktime.md method:
+To get the closest working day to the specified date, use the api/gantt_getclosestworktime.md method:
 
 ~~~js
 gantt.getClosestWorkTime(new Date(2013,3,30)); 
@@ -111,7 +123,7 @@ gantt.getClosestWorkTime(new Date(2013,3,30));
 
 Coloring the day-off times
 ------------------------------------
-To color the day-off times in the chart area,  use the api/gantt_task_cell_class_template.md template:
+To color the day-off times in the chart area, use the api/gantt_task_cell_class_template.md template:
 
 ~~~js
 gantt.templates.task_cell_class = function(task, date){
@@ -126,7 +138,7 @@ gantt.templates.task_cell_class = function(task, date){
 
 <br>
 
-Know more in desktop/highlighting_time_slots.md.
+Learn more in the desktop/highlighting_time_slots.md article.
 
 {{note
 To hide the day-off time, use the technique described in the article - desktop/custom_scale.md

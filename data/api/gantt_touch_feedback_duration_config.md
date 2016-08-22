@@ -1,17 +1,24 @@
-touch_feedback
+touch_feedback_duration
 =============
 
-@short:enables/disables vibration while moving tasks on touch devices
-	
-@default: true
-@type: boolean
+@todo:
+	check 
+
+
+@short:
+	defines how long the vibration lasts during tasks moving on touch devices (in milliseconds)
+
+@type: number
 @example:
-gantt.config.touch_feedback = false;
+gantt.config.touch_feedback_duration = 1;
 ...
 gantt.init("gantt_here");
 
+
 @template:	api_config
 @descr:
+added in version 4.1 
+
 Note, the method will have no effect if: 
 
 1. The touch support is disabled by the configuration option [touch](api/gantt_touch_config.md).
@@ -20,4 +27,4 @@ Note, the method will have no effect if:
 @relatedapi:
 	api/gantt_touch_config.md
     api/gantt_touch_drag_config.md
-    api/gantt_touch_feedback_duration_config.md
+    api/gantt_touch_feedback_config.md

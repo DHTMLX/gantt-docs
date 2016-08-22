@@ -33,13 +33,16 @@ gantt.setWorkTime({hours : [8, 12, 13, 17]})
 @related:
 	desktop/working_time.md
 @relatedapi:
+	api/gantt_work_time_config.md
+	api/gantt_unsetworktime.md
 	api/gantt_isworktime.md
+ 
 @relatedsample:
 	09_worktime/01_working_hours_per_day.html
 
 @descr:
 {{note
-The method has sense only if  api/gantt_work_time_config.md is set to 'true'. Otherwise, the method will be ignored.
+The method makes sense only if  api/gantt_work_time_config.md is set to 'true'. Otherwise, the method will be ignored.
 }}
 
 The default working time is the following:

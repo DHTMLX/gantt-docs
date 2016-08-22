@@ -18,8 +18,11 @@ These are additional attributes which make the component recognizable for screen
 
 You can find more information in the [official specification](https://www.w3.org/WAI/intro/aria) of WAI-ARIA.
 
-To enable WAI-ARIA attributes in Gantt, you should use the *wai_aria_attributes* property with the *true* value.
+To enable WAI-ARIA attributes in Gantt, you should use the *wai_aria_attributes* property with the *true* value:
 
+~~~js
+gantt.config.wai_aria_attributes = true;
+~~~
 
 Keyboard Navigation
 -------------------

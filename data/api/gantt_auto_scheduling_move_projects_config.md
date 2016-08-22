@@ -1,25 +1,24 @@
-onAfterTaskAutoSchedule
+auto_scheduling_move_projects
 =============
 
+@todo:
+	check 
+
 @short:
-	fires for each task which has been autoscheduled
+	defines whether moving projects is allowed
 
-@params:
-- task					object					the task object
-- startDate				Date					new start date
-- link					object					the link object that creates the constraint 
-- predecessor			object					the predecessor task object
-
-
+@type: boolean
 @example:
 
-gantt.attachEvent("onAfterTaskAutoSchedule",function(task,startDate,link,predecessor){
-    // any custom logic here
-});
+gantt.config.auto_scheduling_move_projects = true;
 
-@template:	api_event
+gantt.init("gantt_here");
+
+@default:false
+
+@template:	api_config
 @descr:
-
+added in version 4.1
 
 @related:
 desktop/auto_scheduling.md
@@ -33,15 +32,16 @@ desktop/auto_scheduling.md
 - api/gantt_auto_scheduling_config.md
 - api/gantt_auto_scheduling_descendant_links_config.md
 - api/gantt_auto_scheduling_initial_config.md
-- api/gantt_auto_scheduling_move_projects_config.md
 - api/gantt_auto_scheduling_strict_config.md
 - api/gantt_findcycles.md
 - api/gantt_iscircularlink.md
 - api/gantt_onafterautoschedule_event.md
+- api/gantt_onaftertaskautoschedule_event.md
 - api/gantt_onbeforeautoschedule_event.md
 - api/gantt_onbeforetaskautoschedule_event.md
 - api/gantt_oncircularlinkerror_event.md
 - api/gantt_onautoschedulecircularlink_event.md
+
 
 @edition:
 pro
