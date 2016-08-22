@@ -106,7 +106,7 @@ As we initialized dataProcessor in the REST mode, it will use different HTTP ver
 Since we use REST API, it's possible to implement the server side using different frameworks and programming languages.
 Here's a list of available server-side implementations that you can use for Gantt backend integration:
 
-- [Using Gantt with PHP](desktop/server_php.md#step5createadatabase)
+- desktop/server_php.md
 - desktop/server_nodejs.md
 - desktop/server_dotnet.md
 - desktop/server_ruby.md

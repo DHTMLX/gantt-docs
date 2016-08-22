@@ -189,7 +189,7 @@ Step 3. Configuring DataBase Connection
 
 ###Installing Entity Framework
 
-As you remember, we are going to organize work with database with the help of the [Entity Framework](http://www.asp.net/entity-framework).
+As you remember, we are going to organize work with a database with the help of the [Entity Framework](http://www.asp.net/entity-framework).
 
 So, first of all we need to install the framework. To do it, you need to run the following command in the Package Manager Console:
 
@@ -197,11 +197,17 @@ So, first of all we need to install the framework. To do it, you need to run the
 Install-Package EntityFramework
 ~~~
 
+To use the Entity Framework functionality, we need to apply the following namespace:
+
+~~~js
+using System.Data.Entity;
+~~~
+
 ###Creating Context
 
 The next step is to create Context. Context represents a session with the DataBase. It allows working with Tasks and Links.
 
-Call the context menu for the Model folder and select Add->Class. The new class will be called "GanttContext" and will have the following content:
+Call the context menu for the Models folder and select Add->Class. The new class will be called "GanttContext" and will have the following content:
 
 ~~~js
 using System;
@@ -279,7 +285,7 @@ Open the *Global.asax* file. It contains code that runs on the application start
 <img src="desktop/global_asax.png">
 
 
-Add the code line that will set Initializer for our context into the *Application_Start()* method:
+Add the necessary namespace and the code line that will set Initializer for our context into the *Application_Start()* method:
 
 ~~~js
 using System;
@@ -291,8 +297,8 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
-using System.Data.Entity;
-using gantt_rest_net.App_Start;
+using System.Data.Entity;           
+using gantt_rest_net.App_Start;     /*!*/
 
 namespace gantt_rest_net
 {

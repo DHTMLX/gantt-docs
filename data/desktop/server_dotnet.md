@@ -82,11 +82,17 @@ So, first of all we need to install the framework. To do it, you need to run the
 Install-Package EntityFramework
 ~~~
 
+To use the Entity Framework functionality, we need to apply the following namespace:
+
+~~~js
+using System.Data.Entity;
+~~~
+
 ###Creating Context
 
 The next step is to create Context. Context represents a session with the DataBase. It allows working with Tasks and Links.
 
-Call the context menu for the Model folder and select Add->Class. The new class will be called "GanttContext" and will have the following content:
+Call the context menu for the Models folder and select Add->Class. The new class will be called "GanttContext" and will have the following content:
 
 ~~~js
 using System;
