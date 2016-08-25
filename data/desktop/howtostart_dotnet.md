@@ -16,7 +16,7 @@ We will build our application with the help of the Visual Studio IDE.
 Step 1. Making Preparations
 -----------------------------
 
-###Creating a new VS project
+###Creating a new Visual Studio Project project
 
 Let's start by running Visual Studio and creating a new project. For this, open the File menu tab and choose:<br>
 New -> Project. Then select ASP.NET Web Application and name it *gantt-rest-net*. 
@@ -40,7 +40,7 @@ Step 2. Adding Models, Views and Controllers
 
 ###Creating a Controller
 
-For our web page we will also need to add a controller. It will process incoming requests from the user and run the needed logic.
+We also need to add a controller for our web page . It will process incoming requests from the user and run the needed logic.
 
 The controller will call a particular view to generate a necessary HTML for the request.
 
@@ -111,13 +111,13 @@ Open the newly created view and put the following code into it:
 </script>
 ~~~
 
-In the above code we do the following:
+In the above code we have done the following:
 
 - set a container for the gantt 
-- specify the dates format to load data from the server side
-- initialize gantt
-- enable data loading 
-- initialize dataProcessor in the REST mode to work with the server side
+- specified the dates format to load data from the server side
+- initialized gantt
+- enabled data loading 
+- initialized dataProcessor in the REST mode to work with the server side
 
 The server side itself will be implemented a bit later. For now, you can run the application and see that a gantt is rendered on the page.
 
@@ -205,7 +205,7 @@ using System.Data.Entity;
 
 ###Creating Context
 
-The next step is to create Context. Context represents a session with the DataBase. It allows working with Tasks and Links.
+The next step is to create Context. Context represents a session with the DataBase. It allows getting and saving data.
 
 Call the context menu for the Models folder and select Add->Class. The new class will be called "GanttContext" and will have the following content:
 

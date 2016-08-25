@@ -44,6 +44,12 @@ dp.setTransactionMode("REST");
 	
 <h3 id="requestresponsedetails">Request and Response details</h3>
 
+The URL is formed by the following rule:
+
+- api/link/id
+- api/task/id
+
+where "api" is the url you've specified in the dataProcessor configuration.
 
 The list of possible requests and responses is:
 

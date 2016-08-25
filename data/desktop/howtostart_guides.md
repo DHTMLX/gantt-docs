@@ -8,8 +8,8 @@ platforms to suit all tastes and preferences.
 <table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
     <tr>
-		<td style="font-size:15px;">
-		    desktop/howtostart_php.md<br>
+		<td>
+		    <span style="font-size:15px;">desktop/howtostart_php.md</span><br>
            
             A step-by-step tutorial that discusses how to implement a PHP-based Gantt chart. 
         </td>
@@ -18,8 +18,8 @@ platforms to suit all tastes and preferences.
         </td>
     </tr>
     <tr>
-        <td style="font-size:15px;">
-		    desktop/howtostart_nodejs.md  
+        <td>
+		    <span style="font-size:15px;">desktop/howtostart_nodejs.md</span>  
             <br>
             A detailed tutorial which dwells on how Gantt chart implementation on a Nodejs platform. 
         </td>
@@ -28,8 +28,8 @@ platforms to suit all tastes and preferences.
         </td>
     </tr>
     <tr>
-        <td style="font-size:15px;">
-		    desktop/howtostart_dotnet.md
+        <td>
+		    <span style="font-size:15px;">desktop/howtostart_dotnet.md</span>
             <br>
             An elaborated tutorial that explores the specificity of implementing a Gantt chart with .Net frameworks. 
         </td>
@@ -38,8 +38,8 @@ platforms to suit all tastes and preferences.
         </td>
     </tr>
     <tr>
-        <td style="font-size:15px;">
-		    desktop/howtostart_ruby.md
+        <td>
+		    <span style="font-size:15px;">desktop/howtostart_ruby.md</span>
             <br>
          	An easy to reproduce tutorial that will walk you through the stages of implementing a Gantt chart on the base of Ruby on Rails. 
         </td> 
@@ -48,8 +48,8 @@ platforms to suit all tastes and preferences.
         </td>
     </tr>	
      <tr>
-        <td style="font-size:15px;">
-		    desktop/howtostart_connector.md
+        <td>
+		    <span style="font-size:15px;">desktop/howtostart_connector.md</span>
             <br>
          	This tutorial will teach you how to create a simple Gantt chart and implement server-side communication with the help of dhtmlxConnector. 
         </td> 
