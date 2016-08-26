@@ -9,6 +9,7 @@ Others
 - api/gantt_date_other.md - a set of date formatting methods
 - api/gantt_env_other.md - a set of flags which describe current environment
 - api/gantt_json_other.md - specifies JSON serialization and parsing
+- api/gantt_keyboardnavigation_other.md - 
 - api/gantt_keys_other.md - defines the hot keys for the Gantt chart
 - api/gantt_locale_other.md - a locale object (region-specific labels) of the Gantt chart
 - api/gantt_oldxml_other.md - specifies serialization and parsing in the XML format of dhtmlxGantt 1.0
@@ -26,6 +27,7 @@ Others
 - api/gantt_date_other.md
 - api/gantt_env_other.md
 - api/gantt_json_other.md
+- api/gantt_keyboardnavigation_other.md
 - api/gantt_keys_other.md
 - api/gantt_locale_other.md
 - api/gantt_oldxml_other.md

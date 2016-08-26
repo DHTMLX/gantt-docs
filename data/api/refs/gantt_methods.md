@@ -6,6 +6,7 @@ Methods
 - api/gantt_addlink.md - adds a new dependency link
 - api/gantt_addlinklayer.md - displayes an additional layer with custom elements for a link in the timeline area
 - api/gantt_addmarker.md - adds a marker to the timeline area
+- api/gantt_addshortcut.md - 
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displayes an additional layer with custom elements for a task in the timeline area
 - api/gantt_alert.md - calls an alert message box
@@ -42,7 +43,8 @@ Methods
 - api/gantt_event.md - attaches an event handler to an HTML element
 - api/gantt_eventremove.md - removes an event handler from an HTML element
 - api/gantt_expand.md - expands gantt to the full screen mode
-- api/gantt_findcycles.md - 
+- api/gantt_findcycles.md - returns all dependency loops in the chart
+- api/gantt_focus.md - 
 - api/gantt_getchildren.md - returns the 1st-level child tasks of the specified parent branch
 - api/gantt_getclosestworktime.md - returns the closest working time
 - api/gantt_getglobaltaskindex.md - get the index of a task in the tree
@@ -90,7 +92,7 @@ Methods
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
 - api/gantt_init.md - constructor. Initializes a dhtmlxGantt object
 - api/gantt_ischildof.md - checks whether a task is a child of other task
-- api/gantt_iscircularlink.md - 
+- api/gantt_iscircularlink.md - checks whether the link is circular
 - api/gantt_iscriticallink.md - checks whether the specified link is critical
 - api/gantt_iscriticaltask.md - checks whether the specified task is critical
 - api/gantt_islinkallowed.md - checks whether the specified link is correct
@@ -114,6 +116,7 @@ Methods
 - api/gantt_refreshlink.md - refreshes the specifies link
 - api/gantt_refreshtask.md - refreshes the task and its related links
 - api/gantt_removelinklayer.md - removes the specified layer related to a link
+- api/gantt_removeshortcut.md - 
 - api/gantt_removetasklayer.md - removes the specified layer related to a task
 - api/gantt_render.md - renders the whole Gantt chart
 - api/gantt_rendermarkers.md - updates all markers on the page
@@ -140,7 +143,7 @@ Methods
 - api/gantt_uid.md - returns a unique id
 - api/gantt_undo.md - reverts the changes made in the gantt
 - api/gantt_unselecttask.md - removes selection from the selected task
-- api/gantt_unsetworktime.md - 
+- api/gantt_unsetworktime.md - unsets a working time in the Gantt Chart
 - api/gantt_updatecollection.md - updates the specified collection with new options
 - api/gantt_updatelink.md - updates the specified dependency link
 - api/gantt_updatemarker.md - updates the specified marker
@@ -151,6 +154,7 @@ Methods
 - api/gantt_addlink.md
 - api/gantt_addlinklayer.md
 - api/gantt_addmarker.md
+- api/gantt_addshortcut.md
 - api/gantt_addtask.md
 - api/gantt_addtasklayer.md
 - api/gantt_alert.md
@@ -188,6 +192,7 @@ Methods
 - api/gantt_eventremove.md
 - api/gantt_expand.md
 - api/gantt_findcycles.md
+- api/gantt_focus.md
 - api/gantt_getchildren.md
 - api/gantt_getclosestworktime.md
 - api/gantt_getglobaltaskindex.md
@@ -259,6 +264,7 @@ Methods
 - api/gantt_refreshlink.md
 - api/gantt_refreshtask.md
 - api/gantt_removelinklayer.md
+- api/gantt_removeshortcut.md
 - api/gantt_removetasklayer.md
 - api/gantt_render.md
 - api/gantt_rendermarkers.md

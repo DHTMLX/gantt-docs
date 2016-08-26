@@ -9,6 +9,7 @@ Events
 - api/gantt_onafterlinkadd_event.md - fires after a new link is added to the Gantt chart
 - api/gantt_onafterlinkdelete_event.md - fires after the user deletes a link
 - api/gantt_onafterlinkupdate_event.md - fires after the user updates a link
+- api/gantt_onafterquickinfo_event.md - 
 - api/gantt_onafterredo_event.md - fires after the api/gantt_redo.md method was called
 - api/gantt_onaftertaskadd_event.md - fires after the user adds a task to the Gantt chart
 - api/gantt_onaftertaskautoschedule_event.md - fires for each task which has been autoscheduled
@@ -18,7 +19,7 @@ Events
 - api/gantt_onaftertaskupdate_event.md - fires after the user updates a task
 - api/gantt_onafterundo_event.md - fires after the api/gantt_undo.md method was called
 - api/gantt_onajaxerror_event.md - fires if the server returns an error
-- api/gantt_onautoschedulecircularlink_event.md - 
+- api/gantt_onautoschedulecircularlink_event.md - fires if some dependency loops were found during auto scheduling
 - api/gantt_onbeforeautoschedule_event.md - fires before auto scheduling
 - api/gantt_onbeforebatchupdate_event.md - fires before the api/gantt_batchupdate.md method is called
 - api/gantt_onbeforecollapse_event.md - before gantt exits the fullscreen mode and goes back to normal mode
@@ -77,6 +78,7 @@ Events
 - api/gantt_onmousemove_event.md - fires when the mouse is moved over a task bar
 - api/gantt_onoptionsload_event.md - fires after a collection of options has been loaded from the server, but isn't parsed yet
 - api/gantt_onparse_event.md - fires after data was parsed (became available for API) but before it was rendered in the Gantt chart
+- api/gantt_onquickinfo_event.md - 
 - api/gantt_onrowdragend_event.md - fires after the user drops a row in the grid
 - api/gantt_onrowdragstart_event.md - fires before the user drags a row of the grid
 - api/gantt_onscaleadjusted_event.md - fires when the scale is re-rendered in order to display all tasks completely
@@ -102,6 +104,7 @@ Events
 - api/gantt_onafterlinkadd_event.md
 - api/gantt_onafterlinkdelete_event.md
 - api/gantt_onafterlinkupdate_event.md
+- api/gantt_onafterquickinfo_event.md
 - api/gantt_onafterredo_event.md
 - api/gantt_onaftertaskadd_event.md
 - api/gantt_onaftertaskautoschedule_event.md
@@ -170,6 +173,7 @@ Events
 - api/gantt_onmousemove_event.md
 - api/gantt_onoptionsload_event.md
 - api/gantt_onparse_event.md
+- api/gantt_onquickinfo_event.md
 - api/gantt_onrowdragend_event.md
 - api/gantt_onrowdragstart_event.md
 - api/gantt_onscaleadjusted_event.md
