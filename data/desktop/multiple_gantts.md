@@ -81,3 +81,4 @@ function init() {
 
 ~~~
 
+@edition: pro

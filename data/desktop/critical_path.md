@@ -1,9 +1,11 @@
 Displaying the Critical Path
 ===================================
-A critical path is a sequence of tasks that cannot be delayed or else the whole project would be delayed. Also it determines the shortest time that the project can be completed.<br>
-A task is considered critical if it has no days of slack and any delay of it would directly affect on the project completion date.<br>
-Slack time is the time that a task can slip without affecting another tasks or the project's completion date.
 
+A critical path is a sequence of tasks that can't be delayed. Otherwise, the whole project would be delayed.<br>
+The critical path also determines the shortest time the project can take.<br>
+
+A task is considered critical if it has no days of slack and any delay would directly affect the project completion date.<br>
+Slack time is the time that a task can slip without affecting other tasks or the project's completion date.
 
 
 <div style="text-align:center;"><img src="desktop/critical_path.png"/></div>
