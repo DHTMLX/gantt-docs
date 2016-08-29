@@ -7,4 +7,5 @@ Auxiliary Resources
 - desktop/fullscreen_mode.md
 - desktop/content_security_policy.md
 - desktop/accessibility.md
+- desktop/keyboard_navigation.md
 }}

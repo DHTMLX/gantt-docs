@@ -30,7 +30,7 @@ Keyboard Navigation
 This technique implies providing access to all functionality of an application via the corresponding keys and key combinations
 instead of navigating through an application with a mouse pointer.  
 
-Keyboard navigation for DHTMLXGantt includes the following possibilities:  
+You will find the detailed information in the desktop/keyboard_navigation.md article.
 
 High-Сontrast Theme
 --------------------
@@ -38,4 +38,22 @@ High-Сontrast Theme
 DHTMLXGantt supports a theme that uses contrasting colors which make the app's interface more distinct and easier to see.
 The high-contrast theme will be helpful for people with special or particular visual needs.
 
+There are two variants of contrast theme available: 
 
+- contrast black skin
+
+<img src="desktop/contrast_black_skin.png">
+
+~~~html
+<link rel="stylesheet" href="../../codebase/dhtmlxgantt_contrast_black.css" 
+	type="text/css" media="screen" title="no title" charset="utf-8">
+~~~
+
+- contrast white skin
+
+<img src="desktop/contrast_white_skin.png">
+
+~~~html
+<link rel="stylesheet" href="../../codebase/dhtmlxgantt_contrast_white.css" 
+    type="text/css" media="screen" title="no title" charset="utf-8">
+~~~
