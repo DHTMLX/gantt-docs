@@ -6,7 +6,7 @@ Methods
 - api/gantt_addlink.md - adds a new dependency link
 - api/gantt_addlinklayer.md - displayes an additional layer with custom elements for a link in the timeline area
 - api/gantt_addmarker.md - adds a marker to the timeline area
-- api/gantt_addshortcut.md - 
+- api/gantt_addshortcut.md - adds a new keyboard shortcut
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displayes an additional layer with custom elements for a task in the timeline area
 - api/gantt_alert.md - calls an alert message box
@@ -44,7 +44,7 @@ Methods
 - api/gantt_eventremove.md - removes an event handler from an HTML element
 - api/gantt_expand.md - expands gantt to the full screen mode
 - api/gantt_findcycles.md - returns all dependency loops in the chart
-- api/gantt_focus.md - 
+- api/gantt_focus.md - sets focus on the gantt
 - api/gantt_getchildren.md - returns the 1st-level child tasks of the specified parent branch
 - api/gantt_getclosestworktime.md - returns the closest working time
 - api/gantt_getglobaltaskindex.md - get the index of a task in the tree
@@ -116,7 +116,7 @@ Methods
 - api/gantt_refreshlink.md - refreshes the specifies link
 - api/gantt_refreshtask.md - refreshes the task and its related links
 - api/gantt_removelinklayer.md - removes the specified layer related to a link
-- api/gantt_removeshortcut.md - 
+- api/gantt_removeshortcut.md - removes a keyboard shortcut
 - api/gantt_removetasklayer.md - removes the specified layer related to a task
 - api/gantt_render.md - renders the whole Gantt chart
 - api/gantt_rendermarkers.md - updates all markers on the page

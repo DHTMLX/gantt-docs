@@ -32,7 +32,7 @@ instead of navigating through an application with a mouse pointer.
 
 You will find the detailed information in the desktop/keyboard_navigation.md article.
 
-High-Сontrast Theme
+High-Сontrast Themes
 --------------------
 
 DHTMLXGantt supports a theme that uses contrasting colors which make the app's interface more distinct and easier to see.

@@ -1,48 +1,37 @@
 addShortcut
 =============
 
-
-@todo:
-	check 
-
 @short:
 	adds a new keyboard shortcut 
 
 @params:
-- shortcut		string			the key name or the name of keys combination for shortcut 
+- shortcut		string			the key name or the name of keys combination for a shortcut (<a href="desktop/keyboard_navigation.md#shortcutsyntax">shortcut syntax</a>)
 - handler		function		the handler of the shortcut call
-- scope			object			the element to which the shortcut will be attached
-
-
+- scope 		string			the name of the context element to attach the handler function to (<a href="desktop/keyboard_navigation.md#scopes">list of scopes</a>)
 
 
 @example:
-var keyScope = gantt.config.keyboard_navigation_scopes;
-
 gantt.addShortcut("shift+w", function(e){ 
     var task = gantt.locate(e); 
     if(task) 
         gantt.showQuickInfo(task)
-},keyScope.taskCell);
+},"taskRow");
 
 @template:	api_method
 @descr:
 added in version 4.1
 
-The shortcut syntax is described in the [Accessibility](desktop/accessibility.md#shortcut_syntax) article. 
-
-In case the third parameter is not set, the handler will be attached to the gantt object.
+In case the third parameter is not set, the handler will be attached to the gantt scope.
 
 @relatedapi:
 api/gantt_keyboard_navigation_config.md
 api/gantt_keyboard_navigation_cells_config.md
-api/gantt_keyboard_navigation_scopes_config.md
 api/gantt_focus.md
 api/gantt_removeshortcut.md
 
 
 @related:
-desktop/accessibility.md#keyboardnavigation
+desktop/keyboard_navigation.md
 
 @relatedsample:
 02_extensions/16_keyboard_navigation.html

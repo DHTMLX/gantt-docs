@@ -5,7 +5,7 @@ auto_scheduling_move_projects
 	check 
 
 @short:
-	defines whether moving projects is allowed
+	defines whether the whole project will be moved (see the details below)
 
 @type: boolean
 @example:
@@ -14,11 +14,21 @@ gantt.config.auto_scheduling_move_projects = true;
 
 gantt.init("gantt_here");
 
-@default:false
+@default:true
 
 @template:	api_config
 @descr:
 added in version 4.1
+
+By default (when the property is set to *true*), the whole project is moved during auto scheduling. It means that all tasks in the project remain on their places
+relative to each other and the beginning of the project.
+
+<img src="api/moving_project_true.png">
+
+If the *auto_scheduling_move_projects* is set to *false*, auto scheduling will move separate tasks inside of the project. Thus, some tasks will be moved, others will
+remain on their places.
+
+<img src="api/moving_project_false.png">
 
 @related:
 desktop/auto_scheduling.md

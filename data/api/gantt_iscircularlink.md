@@ -2,9 +2,6 @@ isCircularLink
 =============
 
 
-@todo:
-	check 
-
 @short:
 	checks whether the link is circular
 

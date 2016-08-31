@@ -20,7 +20,7 @@ var cycles = gantt.findCycles();
 @descr:
 added in version 4.1
 
-Each element of the *cycles* array is a group of tasks and links which makes a loop.
+Each element of the *cycles* array is a group of tasks and links which make a loop.
 
 ~~~js
 [ 
@@ -41,12 +41,12 @@ Have a look at the example below:
 <img src="api/on_autoschedule_circular_link.png">
 
 
-- Task #3 -> id = 10
-- Task #4.1 -> id = 12
-- Link from the end of Task #3 to the start of Task #4 -> id = 1
-- Link from the end of Task #4.1 to the start of Task #3 -> id = 2
+- The Task #3 has the id = 10
+- The Task #4.1 has the id = 12
+- The Link from the end of Task #3 to the start of Task #4 has the id = 1
+- The Link from the end of Task #4.1 to the start of Task #3 has the id = 2
 
-The *cycles* array will contain the following object:
+The *gantt.findCycles* method will return the following value:
 
 ~~~js
 [ 

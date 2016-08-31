@@ -13,4 +13,6 @@ Creating a Gantt Chart on the Page
 - desktop/multiple_gantts.md
 - desktop/undo_redo.md
 - desktop/message_boxes.md
+- desktop/accessibility.md
+- desktop/keyboard_navigation.md
 }}

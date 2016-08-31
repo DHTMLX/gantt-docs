@@ -1,12 +1,8 @@
 smart_scales
 =============
 
-@todo:
-	check 
-
-
 @short:
-	specifies that only visible part of the scale is rendered 
+	specifies that only visible part of the time scale is rendered on the screen
 
 @type: boolean
 @example:
@@ -19,7 +15,7 @@ gantt.config.smart_scales = true;
 @descr:
 added in version 4.1
 
-Usage of this config significantly speeds up chart rendering if you have a very long scale.  
+Usage of this config significantly speeds up chart rendering if you have a very long time scale.  
 
 @related:
 desktop/performance.md#commontechniques

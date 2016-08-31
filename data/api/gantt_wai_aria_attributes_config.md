@@ -1,10 +1,6 @@
 wai_aria_attributes
 =============
 
-@todo:
-	check 
-
-
 @short:
 	enables WAI-ARIA support to make the component recognizable for screen readers
 
@@ -14,7 +10,7 @@ gantt.config.wai_aria_attributes = true;
 ...
 gantt.init("gantt_here");
 
-@default:
+@default:true
 
 @template:	api_config
 @descr:

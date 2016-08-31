@@ -6,6 +6,4 @@ Auxiliary Resources
 - desktop/date_operations.md
 - desktop/fullscreen_mode.md
 - desktop/content_security_policy.md
-- desktop/accessibility.md
-- desktop/keyboard_navigation.md
 }}

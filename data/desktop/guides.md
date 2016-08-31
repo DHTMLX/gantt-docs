@@ -23,6 +23,8 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/multiple_gantts.md</li>
                     <li>desktop/undo_redo.md</li>
                     <li>desktop/message_boxes.md</li>
+                    <li>desktop/accessibility.md</li>
+                    <li>desktop/keyboard_navigation.md</li>
             </ul>
         </td>
 		<td class='topic_description'>Says how to build a standard Gantt chart on a page and bring it to life: configure with specific settings, customize the default templates, attach events, etc.</td>
@@ -166,7 +168,6 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/date_operations.md</li>
                     <li>desktop/fullscreen_mode.md</li>
                     <li>desktop/content_security_policy.md</li>
-                    <li>desktop/accessibility.md</li>
             </ul>
         </td>
         <td class='topic_description'>Guides you through common information you may need while creating a Gantt chart: converting dates to string and backward, allowable characters in the date format, etc.</td>

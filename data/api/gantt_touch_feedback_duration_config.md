@@ -1,12 +1,8 @@
 touch_feedback_duration
 =============
 
-@todo:
-	check 
-
-
 @short:
-	defines how long the vibration lasts during tasks moving on touch devices (in milliseconds)
+	defines the duration of vibration feedback before/after drag and drop on touch devices (in milliseconds)
 
 @type: number
 @example:
@@ -19,7 +15,7 @@ gantt.init("gantt_here");
 @descr:
 added in version 4.1 
 
-Note, the method will have no effect if: 
+Note, the config will have no effect if: 
 
 1. The touch support is disabled by the configuration option [touch](api/gantt_touch_config.md).
 2. The browser doesn't support the [Vibration API](http://caniuse.com/#feat=vibration).

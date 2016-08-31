@@ -1,50 +1,41 @@
 removeShortcut
 =============
 
-
-@todo:
-	check 
-
 @short:
 	removes a keyboard shortcut
 
 @params:
 
-- shortcut		string			the key name or the name of keys combination for shortcut
-- scope			object			the element to which the shortcut is attached
+- shortcut		string			the key name or the name of keys combination for a shortcut (<a href="desktop/keyboard_navigation.md#shortcutsyntax">shortcut syntax</a>)
+- scope			object			the element to which the shortcut is attached (<a href="desktop/keyboard_navigation.md#scopes">list of scopes</a>)
 
 
 
 @example:
+// adding a shortcut
 gantt.addShortcut("shift+w", function(e){ 
     var task = gantt.locate(e); 
     if(task) 
         gantt.showQuickInfo(task)
-},keyScope.taskCell);
+}, "taskRow");
 
-gantt.removeShortcut("shift+w",keyScope.taskCell);
+// removing a shortcut
+gantt.removeShortcut("shift+w", "taskRow");
+
 
 @template:	api_method
 @descr:
 added in version 4.1
 
-The shortcut syntax is described in the [Accessibility](desktop/accessibility.md#shortcut_syntax) article. 
-
-To remove shortcut from the gantt object, pass the gantt scope as the second parameter:
-
-~~~js
-gantt.removeShortcut("shift+w",keyScope.gantt);
-~~~
 
 @relatedapi:
 api/gantt_keyboard_navigation_config.md
 api/gantt_keyboard_navigation_cells_config.md
-api/gantt_keyboard_navigation_scopes_config.md
 api/gantt_addshortcut.md
 api/gantt_focus.md
 
 @related:
-desktop/accessibility.md#keyboardnavigation
+desktop/keyboard_navigation.md
 
 @relatedsample:
 02_extensions/16_keyboard_navigation.html
