@@ -9,7 +9,7 @@ Gantt the ability to schedule tasks automatically depending on relations between
 For example, imagine that you have two tasks connected by a dependency link and the second task starts when the first one ends, and
 you need to change the schedule of the first task by moving it to a new date.
 
-Auto scheduling makes the start date of the second task update according to the end date of the first task each when it changes.
+Auto scheduling makes the start date of the second task update according to the end date of the first task each time when it changes.
 This feature allows you to generate and maintain project schedule by specifying relations between tasks with no need to set dates of each task manually.
 
 To use the auto scheduling functionality, you should include the **dhtmlxgantt_auto_scheduling.js** extension on the page:
@@ -53,7 +53,8 @@ To enable auto scheduling in the Gantt chart, set the api/gantt_auto_scheduling_
 gantt.config.auto_scheduling = true;
 ~~~
 
-By default, tasks are rescheduled only when a new date violates the constraint. In order to always reschedule tasks to the earliest possible date, use the property api/gantt_auto_scheduling_strict_config.md:
+By default, tasks are rescheduled only when a new date violates the constraint. 
+In order to always reschedule tasks to the earliest possible date, use the property api/gantt_auto_scheduling_strict_config.md:
 
 ~~~js
 gantt.config.auto_scheduling_strict = true;
@@ -77,11 +78,24 @@ If you need to recalculate the schedule starting from a particular task, pass th
 gantt.autoSchedule(taskId);
 ~~~
 
-In case you need to check if the task is unscheduled, use the api/gantt_isunscheduledtask.md method with the task object as an argument:
+In case you need to check whether the task is unscheduled, use the api/gantt_isunscheduledtask.md method with the task object as an argument:
 
 ~~~js
-gantt.isUnscheduledTask(task);
+var isUnscheduled = gantt.isUnscheduledTask(task);
 ~~~
+
+To find all circular references in the chart, make use of the api/gantt_findcycles.md method:
+
+~~~js
+gantt.findCycles();
+~~~
+
+If you need to check whether the link is circular, you can apply the api/gantt_iscircularlink.md method:
+
+~~~js
+var isCircular = gantt.isCircularLink(link);
+~~~
+
 
 ##The list of events
 
@@ -92,6 +106,7 @@ The list of available events is given below:
 - api/gantt_onbeforetaskautoschedule_event.md
 - api/gantt_onaftertaskautoschedule_event.md
 - api/gantt_oncircularlinkerror_event.md
+- api/gantt_onautoschedulecircularlink_event.md
 
 ~~~js
 // before auto scheduling starts
@@ -117,7 +132,12 @@ gantt.attachEvent("onAfterTaskAutoSchedule",function(task, startDate, link, pred
 });
 
 // if the circular reference has been detected and auto scheduling is not possible
-gantt.attachEvent("onCircularLinkError",function(link){
+gantt.attachEvent("onCircularLinkError",function(link, group){
+    // any custom logic here
+});
+
+// if circular links were found during auto scheduling
+gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
     // any custom logic here
 });
 ~~~

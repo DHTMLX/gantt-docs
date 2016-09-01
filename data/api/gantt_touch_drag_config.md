@@ -13,6 +13,8 @@ gantt.init("gantt_here");
 @template:	api_config
 @relatedapi:
 	api/gantt_touch_config.md
+    api/gantt_touch_feedback_config.md
+    api/gantt_touch_feedback_duration_config.md
     
 @descr:
 Note, if you set the parameter to *false*, the user won't be able to drag tasks.

@@ -3,6 +3,30 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+4.1
+---------
+
+#### Functionality
+- [Keyboard navigation](desktop/keyboard_navigation.md)
+- [WAI-ARIA support](desktop/accessibility.md#waiariaattributes)
+- [High-contrast themes](desktop/accessibility.md#highontrastthemes)
+- Updated [Auto Scheduling](desktop/auto_scheduling.md) and [Critical Path](desktop/critical_path.md) calculations (PRO version)
+
+####Configuration
+- Performance improvements for [worktime calculation](desktop/working_time.md) and [timescale rendering](desktop/performance.md)
+- [Public method for unsetting worktimes](api/gantt_unsetworktime.md) added
+- [API events for QuickInfo popup](api/refs/gantt_events.md) added
+- [Croatian locale](desktop/localization.md#predefinedlocales) added
+- [Turkish locale](desktop/localization.md#predefinedlocales) updated
+
+####Bug Fixes
+
+- The bug with exporting custom work times using PDF/PNG export service 
+- Redrawing vertical markers using gantt.updateMarker
+- The bug with gantt.showTask bug in smart rendering mode
+- The bugs with skip_off_time config and multi-tier scales configurations
+- dataProcessor JSON format and REST mode support
+
 4.0
 ---------
 #### Functionality
@@ -18,7 +42,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Public API cleanup](migrating.md#3x40) - redundant global objects removed, conflicts with dhtmlxSuite resolved
 - Public helpers for [popup messages](desktop/message_boxes.md) added
 
-#### Bug fixes
+#### Bug Fixes
 
 - Minor bug fixes
 
@@ -71,7 +95,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 #### Configuration
 - [Changed the default offset between the first and the last tasks on a scale](api/gantt_scale_offset_minimal_config.md)
 
-#### Bug fixes
+#### Bug Fixes
 - Incorrect behavior of the tooltip on expanding/collapsing of task tree
 - Order of API events during gantt initialization
 - Incorrect behavior of vertical markers when gantt is cleared or reinitialized

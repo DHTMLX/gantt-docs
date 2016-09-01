@@ -7,6 +7,7 @@ Properties
 - api/gantt_auto_scheduling_config.md - enables auto scheduling
 - api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creation of links from parent tasks (projects) to their children
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
+- api/gantt_auto_scheduling_move_projects_config.md - defines whether the whole project will be moved (see the details below)
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
@@ -39,6 +40,8 @@ Properties
 - api/gantt_inherit_scale_class_config.md - specifies whether sub-scales shall use the scale_cell_class template by default
 - api/gantt_initial_scroll_config.md - sets whether the timeline area will be initially scrolled to display the earliest task
 - api/gantt_keep_grid_width_config.md - 'says' to preserve the initial grid's width during resizing the columns within
+- api/gantt_keyboard_navigation_config.md - enables keyboard navigation in gantt
+- api/gantt_keyboard_navigation_cells_config.md - enables keyboard navigation by cells
 - api/gantt_layer_attribute_config.md - sets the name of the attribute of the task layer's DOM element
 - api/gantt_lightbox_config.md - specifies the lightbox object
 - api/gantt_lightbox_additional_height_config.md - increases the height of the lightbox
@@ -82,6 +85,7 @@ Properties
 - api/gantt_show_unscheduled_config.md - enables showing unscheduled tasks
 - api/gantt_skip_off_time_config.md - hides non-working time from the time scale
 - api/gantt_smart_rendering_config.md - enables the smart rendering mode for gantt's tasks and links rendering
+- api/gantt_smart_scales_config.md - specifies that only visible part of the scale is rendered on the screen
 - api/gantt_sort_config.md - enables sorting in the table
 - api/gantt_start_date_config.md - sets the start value of the time scale
 - api/gantt_start_on_monday_config.md - sets the start day of weeks
@@ -100,13 +104,15 @@ Properties
 - api/gantt_tooltip_timeout_config.md - sets the timeout in milliseconds before the tooltip is displayed for a task
 - api/gantt_touch_config.md - enables/disables the touch support for the Gantt chart
 - api/gantt_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
-- api/gantt_touch_feedback_config.md - enables/disables vibration while moving tasks on touch devices
+- api/gantt_touch_feedback_config.md - returns vibration feedback before/after drag and drop on touch devices
+- api/gantt_touch_feedback_duration_config.md - defines the duration of vibration feedback before/after drag and drop on touch devices (in milliseconds)
 - api/gantt_type_renderers_config.md - redefines functions responsible for displaying different types of tasks
 - api/gantt_types_config.md - stores the names of lightbox's structures (used for different types of tasks)
 - api/gantt_undo_config.md - enables the Undo functionality for the gantt
 - api/gantt_undo_actions_config.md - sets the actions that the Undo operation will revert
 - api/gantt_undo_steps_config.md - sets the number of steps that should be reverted by the undo method
 - api/gantt_undo_types_config.md - sets the types of entities for which the Undo operation will be applied
+- api/gantt_wai_aria_attributes_config.md - enables WAI-ARIA support to make the component recognizable for screen readers
 - api/gantt_work_time_config.md - enables calculating the duration of tasks in working time instead of calendar time
 - api/gantt_xml_date_config.md - sets the date format that is used to parse data from the data set
 }}
@@ -116,6 +122,7 @@ Properties
 - api/gantt_auto_scheduling_config.md
 - api/gantt_auto_scheduling_descendant_links_config.md
 - api/gantt_auto_scheduling_initial_config.md
+- api/gantt_auto_scheduling_move_projects_config.md
 - api/gantt_auto_scheduling_strict_config.md
 - api/gantt_autofit_config.md
 - api/gantt_autosize_config.md
@@ -148,6 +155,8 @@ Properties
 - api/gantt_inherit_scale_class_config.md
 - api/gantt_initial_scroll_config.md
 - api/gantt_keep_grid_width_config.md
+- api/gantt_keyboard_navigation_config.md
+- api/gantt_keyboard_navigation_cells_config.md
 - api/gantt_layer_attribute_config.md
 - api/gantt_lightbox_config.md
 - api/gantt_lightbox_additional_height_config.md
@@ -191,6 +200,7 @@ Properties
 - api/gantt_show_unscheduled_config.md
 - api/gantt_skip_off_time_config.md
 - api/gantt_smart_rendering_config.md
+- api/gantt_smart_scales_config.md
 - api/gantt_sort_config.md
 - api/gantt_start_date_config.md
 - api/gantt_start_on_monday_config.md
@@ -210,12 +220,14 @@ Properties
 - api/gantt_touch_config.md
 - api/gantt_touch_drag_config.md
 - api/gantt_touch_feedback_config.md
+- api/gantt_touch_feedback_duration_config.md
 - api/gantt_type_renderers_config.md
 - api/gantt_types_config.md
 - api/gantt_undo_config.md
 - api/gantt_undo_actions_config.md
 - api/gantt_undo_steps_config.md
 - api/gantt_undo_types_config.md
+- api/gantt_wai_aria_attributes_config.md
 - api/gantt_work_time_config.md
 - api/gantt_xml_date_config.md
 

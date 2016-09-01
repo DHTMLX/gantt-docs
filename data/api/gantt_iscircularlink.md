@@ -1,25 +1,26 @@
-onAfterTaskAutoSchedule
+isCircularLink
 =============
 
+
 @short:
-	fires for each task which has been autoscheduled
+	checks whether the link is circular
 
 @params:
-- task					object					the task object
-- startDate				Date					new start date
-- link					object					the link object that creates the constraint 
-- predecessor			object					the predecessor task object
+
+- link			object		the link object
+
+@returns:
+
+- state			boolean		true, if the link is circular, otherwise false
 
 
 @example:
 
-gantt.attachEvent("onAfterTaskAutoSchedule",function(task,startDate,link,predecessor){
-    // any custom logic here
-});
+var isCircular = gantt.isCircularLink(link);
 
-@template:	api_event
+@template:	api_method
 @descr:
-
+added in version 4.1
 
 @related:
 desktop/auto_scheduling.md
@@ -36,12 +37,12 @@ desktop/auto_scheduling.md
 - api/gantt_auto_scheduling_move_projects_config.md
 - api/gantt_auto_scheduling_strict_config.md
 - api/gantt_findcycles.md
-- api/gantt_iscircularlink.md
 - api/gantt_onafterautoschedule_event.md
+- api/gantt_onaftertaskautoschedule_event.md
 - api/gantt_onbeforeautoschedule_event.md
 - api/gantt_onbeforetaskautoschedule_event.md
-- api/gantt_oncircularlinkerror_event.md
 - api/gantt_onautoschedulecircularlink_event.md
+- api/gantt_oncircularlinkerror_event.md
 
-@edition:
-pro
+@edition:pro
+

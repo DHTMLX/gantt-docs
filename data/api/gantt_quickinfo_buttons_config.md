@@ -18,3 +18,17 @@ gantt.$click.buttons.advanced_details_button=function(e, id, trg){
 @template:	api_config
 @descr:
 
+
+@related:
+desktop/extensions_list.md#quickinfo
+
+@relatedsample:
+02_extensions/01_quickinfo.html
+
+@relatedapi:
+api/gantt_showquickinfo.md
+api/gantt_hidequickinfo.md
+api/gantt_quick_info_detached_config.md
+api/gantt_onquickinfo_event.md
+api/gantt_onafterquickinfo_event.md
+

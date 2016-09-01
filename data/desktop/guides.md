@@ -23,6 +23,8 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/multiple_gantts.md</li>
                     <li>desktop/undo_redo.md</li>
                     <li>desktop/message_boxes.md</li>
+                    <li>desktop/accessibility.md</li>
+                    <li>desktop/keyboard_navigation.md</li>
             </ul>
         </td>
 		<td class='topic_description'>Says how to build a standard Gantt chart on a page and bring it to life: configure with specific settings, customize the default templates, attach events, etc.</td>

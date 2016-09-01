@@ -92,6 +92,19 @@ API: api/gantt_groupby.md<br>
 
 {{sample  02_extensions/08_tasks_grouping.html}}
 
+Keyboard Navigation
+------------------
+Allows navigating the gantt chart with the help of the keyboard.
+
+~~~html
+<script src="../codebase/ext/dhtmlxgantt_keyboard_navigation.js"></script>
+~~~
+
+####Related resources
+
+Article: desktop/accessibility.md#keyboardnavigation<br>
+API: api/gantt_keyboard_navigation_config.md,api/gantt_keyboard_navigation_cells_config.md<br>
+
 
 Vertical Marker
 ---------

@@ -47,7 +47,7 @@ Predefined locales
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
- Belarus 
+ Belarusian 
 </td><td style='border:1px solid #AAA;'>
  locale_be.js 
 </td><td style='border:1px solid #AAA;'>
@@ -73,6 +73,13 @@ Predefined locales
  locale_cn.js 
 </td><td style='border:1px solid #AAA;'>
  partial
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+ Croatian 
+</td><td style='border:1px solid #AAA;'>
+ locale_hr.js 
+</td><td style='border:1px solid #AAA;'>
+ full
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Czech 
@@ -138,7 +145,7 @@ Predefined locales
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
- Indonesia 
+ Indonesian 
 </td><td style='border:1px solid #AAA;'>
  locale_id.js 
 </td><td style='border:1px solid #AAA;'>
@@ -155,6 +162,13 @@ Predefined locales
  Japanese 
 </td><td style='border:1px solid #AAA;'>
  locale_jp.js 
+</td><td style='border:1px solid #AAA;'>
+ partial
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+ Korean 
+</td><td style='border:1px solid #AAA;'>
+ locale_kr.js 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
@@ -192,6 +206,13 @@ Predefined locales
  locale_ru.js 
 </td><td style='border:1px solid #AAA;'>
  full
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
+ Slovakian 
+</td><td style='border:1px solid #AAA;'>
+ locale_sk.js 
+</td><td style='border:1px solid #AAA;'>
+ partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Slovenian 
@@ -254,9 +275,12 @@ Creating a French (France) locale. The "locale_fr.js" file
 ~~~js
 gantt.locale = {
 	date: {
-		month_full: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
-		month_short: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Aôu", "Sep", "Oct", "Nov", "Déc"],
-		day_full: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+		month_full: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
+        	"Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+		month_short: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", 
+        	"Juil", "Aôu", "Sep", "Oct", "Nov", "Déc"],
+		day_full: ["Dimanche", "Lundi", "Mardi", "Mercredi", 
+        	"Jeudi", "Vendredi", "Samedi"],
 		day_short: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"]
 	},
 	labels:{
