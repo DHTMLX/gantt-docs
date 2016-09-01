@@ -46,10 +46,10 @@ To use this type of navigation, set the api/gantt_keyboard_navigation_cells_conf
 An action called on a key click depends on the context. It means that different actions can be attached to different elements (scopes). 
 There are the following context elements (scopes) in the Gantt chart:
 
-- "gantt" - The whole gantt
-- "taskRow" - A row with a task
-- "taskCell" - A cell of the row with a task
-- "headerCell" - A cell of the header
+- **"gantt"** - The whole gantt
+- **"taskRow"** - A row with a task
+- **"taskCell"** - A cell of the row with a task
+- **"headerCell"** - A cell of the header
 
 If one and the same shortcut is attached to several scopes, the more specific shortcut will trigger. It means that if the same shortcut is attached 
 to gantt and to its element, the shortcut attached to an element will be called rather than the shortcut attached to the whole gantt. 
@@ -94,9 +94,9 @@ There can be several key combinations for one action. In this case, all the comb
 
 ###The list of supported keys to use in shortcuts
 
-- modifier keys: "shift", "alt", "ctrl", "meta";
-- non-character keys: "backspace", "tab", "enter", "esc", "space", "up", "down", "left", "right", "home", "end", "pageup", "pagedown", "delete",
-"insert", "plus", "f1"-"f12".
+- modifier keys: **shift**, **alt**, **ctrl**, **meta**;
+- non-character keys: **backspace**, **tab**, **enter**, **esc**, **space**, **up**, **down**, **left**, **right**, **home**, **end**, **pageup**, **pagedown**, **delete**,
+**insert**, **plus**, **f1-f12**.
 
 ##Existing shortcuts 
 
@@ -104,43 +104,43 @@ There is a set of ready shortcuts that you can use to navigate the gantt chart:
 
 ###General keyboard shortcuts:
 
-- Tab - set focus on the gantt
-- Alt+Up/Down - scroll gantt vertically
-- Alt+Left/Right - scroll gantt horizontally
-- Ctrl+Enter - create a new task
-- Ctrl+Z - undo the action
-- Ctrl+R - redo the action
+- **Tab** - set focus on the gantt
+- **Alt+Up/Down** - scroll gantt vertically
+- **Alt+Left/Right** - scroll gantt horizontally
+- **Ctrl+Enter** - create a new task
+- **Ctrl+Z** - undo the action
+- **Ctrl+R** - redo the action
 
 ###Shortcuts for Header Cells
 
-- Left/Right arrows - navigate over header cells
-- Home/End - navigate to the first/last column
-- Down - move to the rows with tasks
-- Space/Enter - click on the header (for example, for sorting)
+- **Left/Right Arrow Keys** - navigate over header cells
+- **Home/End** - navigate to the first/last column
+- **Down** - move to the rows with tasks
+- **Space/Enter** - click on the header (for example, for sorting)
 
 
 ###Shortcuts for Task Rows
 
-- Up/Down - navigate through rows
-- PageDown/PageUp - navigate to the first/last task
-- Space - select a task
-- Ctrl+Enter - create a new task
-- Delete - remove the selected task
-- Enter - open the lightbox
-- Ctrl+Left/Right - expand/collapse the tree 
+- **Up/Down** - navigate through rows
+- **PageDown/PageUp** - navigate to the first/last task
+- **Space** - select a task
+- **Ctrl+Enter** - create a new task
+- **Delete** - remove the selected task
+- **Enter** - open the lightbox
+- **Ctrl+Left/Right** - expand/collapse the tree 
 
 {{sample 02_extensions/16_keyboard_navigation.html}}
 
 ###Shortcuts for Task Cells
 
-- Up/Down/Left/Right arrows - navigate over Task cells
-- PageDown/PageUp - navigate to the first/last cell in a column
-- Home/End - navigate to the first/last cell in a column
-- Space - select a task
-- Ctrl+Enter - create a new task
-- Delete - remove the selected task
-- Enter - open the lightbox
-- Ctrl+Left/Right - expand/collapse the tree
+- **Up/Down/Left/Right Arrow Keys** - navigate over Task cells
+- **PageDown/PageUp** - navigate to the first/last cell in a column
+- **Home/End** - navigate to the first/last cell in a column
+- **Space** - select a task
+- **Ctrl+Enter** - create a new task
+- **Delete** - remove the selected task
+- **Enter** - open the lightbox
+- **Ctrl+Left/Right** - expand/collapse the tree
 
 {{sample 02_extensions/17_keyboard_navigation_cell.html}}
 

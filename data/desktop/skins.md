@@ -69,7 +69,7 @@ To apply the 'Contrast Black' skin, include the related CSS file:
 
 - **dhtmlxgantt_contrast_black.css**
 
-<img src="desktop/gantt-contrast-black-skin.png"/>
+<img src="desktop/gantt_contrast_black_skin.png"/>
 {{sample
 06_skins/07_high_contrast_black.html
 }}
@@ -81,7 +81,7 @@ To apply the 'Contrast White' skin, include the related CSS file:
 
 - **dhtmlxgantt_contrast_white.css**
 
-<img src="desktop/gantt-contrast-white-skin.png"/>
+<img src="desktop/gantt_contrast_white_skin.png"/>
 {{sample
 06_skins/08_high_contrast_white.html
 }}

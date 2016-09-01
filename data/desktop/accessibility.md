@@ -49,6 +49,8 @@ There are two variants of contrast theme available:
 	type="text/css" media="screen" title="no title" charset="utf-8">
 ~~~
 
+{{sample 06_skins/07_high_contrast_black.html}}
+
 - contrast white skin
 
 <img src="desktop/contrast_white_skin.png">
@@ -57,3 +59,5 @@ There are two variants of contrast theme available:
 <link rel="stylesheet" href="../../codebase/dhtmlxgantt_contrast_white.css" 
     type="text/css" media="screen" title="no title" charset="utf-8">
 ~~~
+
+{{sample 06_skins/08_high_contrast_white.html}}
