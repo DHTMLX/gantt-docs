@@ -5,7 +5,7 @@ touch_drag
 @type:number, boolean
 @default:50
 @example:
-gantt.touch_drag = 75;
+gantt.config.touch_drag = 75;
 ...
 gantt.init("gantt_here");
 
