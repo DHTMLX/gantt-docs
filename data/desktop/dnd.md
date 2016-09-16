@@ -116,12 +116,19 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 //rounds positions of the child items to scale
 gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 	var modes = gantt.config.drag_mode;
- 	if(mode == modes.move ){
-  		gantt.eachTask(function(child){
-   			gantt.roundTaskDates(child);
-   			gantt.refreshTask(child.id, true);
-  		},id );
- 	}
+    if(mode == modes.move ){
+    	var state = gantt.getState();
+        gantt.eachTask(function(child){          
+        	child.start_date = gantt.roundDate({
+            	date:child.start_date, 
+            	unit:state.scale_unit, 
+            	step:state.scale_step
+          	});			
+          	child.end_date = gantt.calculateEndDate(child.start_date, 
+            	child.duration, gantt.config.duration_unit);
+          	gantt.updateTask(child.id);
+        },id );
+    }
 });
 ~~~
 
