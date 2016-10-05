@@ -112,12 +112,14 @@ var tasks = {
 		{ "id": 2, "text": "Office facing", "start_date": "21-07-2014", "duration": "20",
         "parent": "1" },
 		{ "id": 3, "text": "Furniture installation", "start_date": "21-07-2014", 
-        "duration": "5", "parent": "1" }
+        "duration": "5", "parent": "1" },
+        { "id": 4, "text": "The employee relocation", "start_date": "28-07-2014", "duration": "15", "parent": "1" },
+        { "id": 5, "text": "Interior office", "start_date": "28-07-2014", "duration": "15", "parent": "1" }
 	],
 	links: [
-		{ id: "1", source: "3", target: "4", type: "0" },
-		{ id: "2", source: "3", target: "5", type: "0" },
-		{ id: "3", source: "2", target: "6", type: "0" }
+		{ id: "1", source: "2", target: "3", type: "0" },
+		{ id: "2", source: "3", target: "4", type: "0" },
+		{ id: "3", source: "4", target: "5", type: "0" }
 	]
 };
 gantt.init("gantt_here");
