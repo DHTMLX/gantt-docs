@@ -1,4 +1,4 @@
-Displaying the Critical Path
+Critical Path
 ===================================
 
 A critical path is a sequence of tasks that can't be delayed. Otherwise, the whole project would be delayed.<br>

@@ -1,4 +1,4 @@
-Adding Tooltips to the Tasks
+Tooltips for the Tasks
 ===========================
 Tooltips allow you to add extra information for users without  overflowing the screen with the text.
 
