@@ -13,6 +13,12 @@ We will make use of ASP.NET MVC 5 web platform and Web API 2 controller for REST
 To organize communication with database we will use the [Entity Framework](http://www.asp.net/entity-framework).
 We will build our application with the help of the Visual Studio IDE. 
 
+Known Issues
+-------------
+
+Pay attention that if you use the WebDav extension of HTTP, it may block HTTPS Put, so the REST methods can be blocked.
+
+
 Step 1. Making Preparations
 -----------------------------
 
