@@ -14,7 +14,7 @@ isUnscheduledTask
 
 @example:
 
-gantt.isUnscheduledTask(task);
+var isUnscheduled = gantt.isUnscheduledTask(task);
 
 @template:	api_method
 @descr:

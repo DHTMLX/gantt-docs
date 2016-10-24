@@ -149,5 +149,3 @@ setInterval(function(){
 02_extensions/05_today_line.html
 }}
 
-
-@edition: pro

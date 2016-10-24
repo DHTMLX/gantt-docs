@@ -7,7 +7,7 @@ addLink
 - link	object 	the link object
 
 @returns:
-- id	string/number	the link's id
+- id	string, number	the link's id
 @example:
 var linkId = gantt.addLink({
 	id:1,

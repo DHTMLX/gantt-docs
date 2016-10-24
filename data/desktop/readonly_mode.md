@@ -1,4 +1,4 @@
-Setting the Read-only Mode
+Read-Only Mode
 ===================================
 
 In this part we want to consider read-only mode in the context of 2 situations:

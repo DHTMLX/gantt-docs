@@ -1,9 +1,11 @@
-Displaying the Critical Path
+Critical Path
 ===================================
-A critical path is a sequence of tasks that cannot be delayed or else the whole project would be delayed. Also it determines the shortest time that the project can be completed.<br>
-A task is considered critical if it has no days of slack and any delay of it would directly affect on the project completion date.<br>
-Slack time is the time that a task can slip without affecting another tasks or the project's completion date.
 
+A critical path is a sequence of tasks that can't be delayed. Otherwise, the whole project would be delayed.<br>
+The critical path also determines the shortest time the project can take.<br>
+
+A task is considered critical if it has no days of slack and any delay would directly affect the project completion date.<br>
+Slack time is the time that a task can slip without affecting other tasks or the project's completion date.
 
 
 <div style="text-align:center;"><img src="desktop/critical_path.png"/></div>
@@ -110,12 +112,14 @@ var tasks = {
 		{ "id": 2, "text": "Office facing", "start_date": "21-07-2014", "duration": "20",
         "parent": "1" },
 		{ "id": 3, "text": "Furniture installation", "start_date": "21-07-2014", 
-        "duration": "5", "parent": "1" }
+        "duration": "5", "parent": "1" },
+        { "id": 4, "text": "The employee relocation", "start_date": "28-07-2014", "duration": "15", "parent": "1" },
+        { "id": 5, "text": "Interior office", "start_date": "28-07-2014", "duration": "15", "parent": "1" }
 	],
 	links: [
-		{ id: "1", source: "3", target: "4", type: "0" },
-		{ id: "2", source: "3", target: "5", type: "0" },
-		{ id: "3", source: "2", target: "6", type: "0" }
+		{ id: "1", source: "2", target: "3", type: "0" },
+		{ id: "2", source: "3", target: "4", type: "0" },
+		{ id: "3", source: "4", target: "5", type: "0" }
 	]
 };
 gantt.init("gantt_here");

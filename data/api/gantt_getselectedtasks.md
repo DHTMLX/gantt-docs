@@ -16,6 +16,8 @@ gantt.getSelectedTasks();
 
 @template:	api_method
 @descr:
+This method is defined in the **ext/dhtmlxgantt_multiselect.js** extension, so you need to include it on the page. Read the details in the desktop/multiselection.md article.
+
 
 @relatedapi:
 	api/gantt_batchupdate.md

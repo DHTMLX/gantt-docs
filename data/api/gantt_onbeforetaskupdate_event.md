@@ -3,7 +3,7 @@ onBeforeTaskUpdate
 @short:fires before the user updates a task
 	
 @params:
-- id			string/number		the task id
+- id			string, number		the task id
 - new_item		object				the new (updated)  object of the task 
 
 @returns:  

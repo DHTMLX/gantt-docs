@@ -23,6 +23,8 @@ So, there are 3 possible values that the parameter can take:
 
 @relatedapi:
 	api/gantt_touch_drag_config.md
+    api/gantt_touch_feedback_config.md
+    api/gantt_touch_feedback_duration_config.md
 
     
     

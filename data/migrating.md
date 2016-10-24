@@ -220,3 +220,5 @@ The id of the parent task can be accessed as **gantt.getTask(task_id).parent**. 
 
 @index:
 - desktop/migrating_renamedcss.md
+
+@spellcheck: btn

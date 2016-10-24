@@ -3,7 +3,7 @@ onBeforeLinkDelete
 @short: fires before the user deletes a link
 
 @params:
-- id		string/number		the link id
+- id		string, number		the link id
 - item		object				the link object 
 
 @returns:  

@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 4.0!</h2>
+    <h2>Meet Gantt 4.1!</h2>
     
     <p>
     New version brings you new functionality and extended API
     </p>
     <ul>
-		<li><a href="desktop/performance.md#smartrendering">Smart Rendering for Big Datasets</a></li>
-        <li><a href="desktop/undo_redo.md">Undo/Redo Extensions</a></li>
-        <li><a href="migrating.md#3x40">Public API Improvements</a></li>
+		<li><a href="desktop/keyboard_navigation.md">Keyboard navigation</a></li>
+        <li><a href="desktop/accessibility.md#waiariaattributes">WAI-ARIA support</a></li>
+        <li><a href="desktop/accessibility.md#highontrastthemes">High-contrast themes</a></li>
 	</ul>
 
     <p class='action_buttons'>

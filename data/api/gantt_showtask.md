@@ -20,3 +20,9 @@ gantt.showTask(10);
 @template:	api_method
 @descr:
 
+@relatedapi:
+api/gantt_showdate.md
+api/gantt_scrollto.md
+
+api/gantt_getscrollstate.md
+api/gantt_onganttscroll_event.md

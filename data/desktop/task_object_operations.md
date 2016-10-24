@@ -69,17 +69,13 @@ var tasks = gantt.getTaskByTime(new Date(2013,03,05),new Date(2013,03,15));
 
 Getting all tasks from the Gantt chart
 -------------------------------------
-To get all tasks presented in the Gantt chart, use the api/gantt_serialize.md method as in:
-
-~~~js
-var tasks = gantt.serialize().tasks;   //where "tasks" is an array of tasks' objects
-~~~
-
-Also, you can call the api/gantt_gettaskbytime.md method with no parameters as in:
+To get all tasks presented in the Gantt chart, use the api/gantt_gettaskbytime.md method as in:
 
 ~~~js
 var tasks = gantt.getTaskByTime();        //returns all tasks as an array of objects
 ~~~
+
+You can also call the api/gantt_serialize.md method.
 
 
 Getting the links related to a certain task

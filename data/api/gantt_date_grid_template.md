@@ -5,7 +5,7 @@ date_grid
 	
 
 @params:
-- date			Date object		the date which needs formatting
+- date			Date		the date which needs formatting
 - task			object 			the task object
 
 @example:

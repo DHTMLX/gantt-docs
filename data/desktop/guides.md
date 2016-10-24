@@ -1,6 +1,6 @@
 Guides
 ======
-The guidance information makes up the major part of the  documentation and helps you in actual use of dhtmlxGantt.
+The guidance information makes up the major part of the documentation and helps you in actual use of dhtmlxGantt.
 The chapter is divided into task-oriented manuals that assist you in performing both simple and difficult, often and seldom used tasks. 
 The articles come around key procedures and problem-solving activities. 
 
@@ -32,15 +32,16 @@ The articles come around key procedures and problem-solving activities.
 		    <ul id="data_sublist" >
                     <li>desktop/initializing_gantt_chart.md</li>
                     <li>desktop/install_with_bower.md</li>
+                    <li>desktop/extensions_list.md</li>
                     <li>desktop/common_configuration.md</li>
                     <li>desktop/handling_events.md</li>
                     <li>desktop/localization.md</li>
                     <li>desktop/jquery_integration.md</li>
                     <li>desktop/multiple_gantts.md</li>
-                    <li>desktop/export.md</li>
-                    <li>desktop/excel.md</li>
                     <li>desktop/undo_redo.md</li>
                     <li>desktop/message_boxes.md</li>
+                    <li>desktop/accessibility.md</li>
+                    <li>desktop/keyboard_navigation.md</li>
             </ul>
         </td>
 		<td class='topic_description'>Says how to build a standard Gantt chart on a page and bring it to life: configure with specific settings, customize the default templates, attach events, etc.</td>
@@ -61,7 +62,20 @@ The articles come around key procedures and problem-solving activities.
         </td>
 		<td class='topic_description'>Discusses the ways of loading data into the Gantt chart: different data sources, formats, techniques.</td>
 	</tr>
-   <tr>
+    <tr>
+		<td id="manipulations" class='topics'>
+		    <h4>
+		         Exporting and Importing Data
+		    </h4>
+		    <ul id="manipulations_sublist">
+                   	<li>desktop/export.md</li>
+                    <li>desktop/excel.md</li>
+                    <li>desktop/export_msproject.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Discusses the ways of loading data into the Gantt chart: different data sources, formats, techniques.</td>
+	</tr> 
+    <tr>
         <td id="events" class='topics'>
             <h4>
                 Configuring the Grid Area
@@ -102,6 +116,7 @@ The articles come around key procedures and problem-solving activities.
 		    <ul id="styling_sublist">
             	   <li>desktop/default_edit_form.md</li>
                    <li>desktop/lightbox_manipulations.md</li>
+                   <li>desktop/custom_edit_form.md</li>
                    <li>desktop/custom_editor.md</li>
                    <li>desktop/custom_button.md</li>
             </ul>
@@ -118,6 +133,7 @@ The articles come around key procedures and problem-solving activities.
             		<li>desktop/task_object_operations.md</li>
                     <li>desktop/task_tree_operations.md</li>
                     <li>desktop/crud_task.md</li>
+                    <li>desktop/unscheduled_tasks.md</li>
                     <li>desktop/multiselection.md</li>
                     <li>desktop/working_time.md</li>
                     <li>desktop/critical_path.md</li>
@@ -181,6 +197,7 @@ The articles come around key procedures and problem-solving activities.
 - desktop/howtostart_guides.md
 - desktop/general_gantt_chart.md
 - desktop/loading_storing_data.md
+- desktop/export_common.md
 - desktop/table.md
 - desktop/time_scale.md
 - desktop/edit_form.md

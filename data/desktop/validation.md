@@ -1,9 +1,9 @@
-Validating Tasks
-==============================================
+Validation
+====================
+
 Validation allows you to control the data entered by the user in order to exclude the possibility of saving incorrect values. 
 For example, with validation you can deny assigning 2 simultaneous tasks to a person.
 
-<br>
 
 Generally, to validate the data entered by the user, use the events provided by the dhtmlxGantt API and catch the input data to process them in accordance with their correctness:
 

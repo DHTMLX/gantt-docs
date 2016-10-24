@@ -15,11 +15,13 @@ gantt.getLink("link1");                //-> {id:"link1", source:1, target:2, typ
 
 Getting all links from the Gantt chart 
 ------------------------------------------------
-To get all links presented in the chart, use the api/gantt_serialize.md method as in:
+To get all links presented in the chart, use the api/gantt_getlinks.md method as in:
 
 ~~~js
-var links = gantt.serialize().links;   //where "links" is an array of links' objects
+var links = gantt.getLinks(); 
 ~~~
+
+It will return an array of links' objects.
 
 Getting the links related to a certain task
 ------------------------------------------
@@ -59,8 +61,8 @@ If you want to get the id of link(s) with a specific  "*target*", "*source*" or 
 //searching for a link that goes from the task with id=1 to the task with id=2
 var links = gantt.serialize().links;                             //returns all links
 for(var i=0;i<links.length; i++){                              //goes over all links
-    if ( (links[i].source == 1)&(links[i].target == 2) )
-        var linkId = links[i].id;
+   if ( (links[i].source == 1) && (links[i].target == 2) )
+       var linkId = links[i].id;
 };
 ~~~
 

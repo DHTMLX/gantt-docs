@@ -1,16 +1,40 @@
-What's new
+What's New
 ==========
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+4.1
+---------
+
+#### Functionality
+- [Keyboard navigation](desktop/keyboard_navigation.md)
+- [WAI-ARIA support](desktop/accessibility.md#waiariaattributes)
+- [High-contrast themes](desktop/accessibility.md#highontrastthemes)
+- Updated [Auto Scheduling](desktop/auto_scheduling.md) and [Critical Path](desktop/critical_path.md) calculations (PRO version)
+
+####Configuration
+- Performance improvements for [worktime calculation](desktop/working_time.md) and [timescale rendering](desktop/performance.md)
+- [Public method for unsetting worktimes](api/gantt_unsetworktime.md) added
+- [API events for QuickInfo popup](api/refs/gantt_events.md) added
+- [Croatian locale](desktop/localization.md#predefinedlocales) added
+- [Turkish locale](desktop/localization.md#predefinedlocales) updated
+
+####Bug Fixes
+
+- The bug with exporting custom work times using PDF/PNG export service 
+- Redrawing vertical markers using gantt.updateMarker
+- The bug with gantt.showTask bug in smart rendering mode
+- The bugs with skip_off_time config and multi-tier scales configurations
+- dataProcessor JSON format and REST mode support
+
 4.0
 ---------
 #### Functionality
-- [Smart rendering](desktop/performance.md#smartrendering) for big datasets
+- [Smart rendering](desktop/performance.md#smartrendering) for big datasets 
 - [Undo/redo](desktop/undo_redo.md) extensions
 
 ####Configuration
-- [Critical path calculation](desktop/critical_path.md) - support for [lag/lead of links](desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks) added
+- [Critical path calculation](desktop/critical_path.md) - support for [lag/lead of links](desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks) added (PRO version)
 - Spanish and Chinese [locales](desktop/localization.md#predefinedlocales) updated
 
 ####API
@@ -18,7 +42,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Public API cleanup](migrating.md#3x40) - redundant global objects removed, conflicts with dhtmlxSuite resolved
 - Public helpers for [popup messages](desktop/message_boxes.md) added
 
-#### Bug fixes
+#### Bug Fixes
 
 - Minor bug fixes
 
@@ -26,7 +50,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 3.3
 ----------
 #### Functionality
-- Dependency [Auto Scheduling](desktop/auto_scheduling.md) feature *
+- Dependency [Auto Scheduling](desktop/auto_scheduling.md) feature (PRO version)
 - [Fullscreen mode](desktop/fullscreen_mode.md)
 - Support for [unscheduled tasks](desktop/crud_task.md#addingunscheduledtasks)
 - [Backward planning](desktop/loading.md#loadingtaskdates)
@@ -39,17 +63,17 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 #### API
 - [REST mode for ajax loading/saving](desktop/server_side.md#savingdatafromrestserver)
 
-&#42; The marked functionality requires Commercial or Enterprise license, and not provided under GPL
 
 
 3.2
 ----------------
 
 #### Functionality
-- [Grouping tasks](desktop/grouping.md)
+- [Grouping tasks](desktop/grouping.md) (PRO version)
 - [Multi-task selection](desktop/multiselection.md)
 - [Data export to iCal and Excel formats](desktop/excel.md)
 - [Major performance improvement of work time and critical path calculations](desktop/performance.md)
+
 
 #### Configuration
 - [A possibility to set the range for the year selector in the lightbox](desktop/time.md#alistofproperties)
@@ -72,7 +96,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 #### Configuration
 - [Changed the default offset between the first and the last tasks on a scale](api/gantt_scale_offset_minimal_config.md)
 
-#### Bug fixes
+#### Bug Fixes
 - Incorrect behavior of the tooltip on expanding/collapsing of task tree
 - Order of API events during Gantt initialization
 - Incorrect behavior of vertical markers when Gantt is cleared or reinitialized
@@ -84,14 +108,15 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 #### Configuration
 - [Ability to map the 'Time' and 'Duration' controls to custom date properties](desktop/time.md#assigningcustomstartandenddatetimeproperties)
 #### Functionality
-- [Dynamic loading](desktop/performance.md)
+- [Dynamic loading](desktop/dynamic_loading.md) (PRO version)
 - [A possibility to resize columns and the whole grid by drag-&-dropping](desktop/specifying_columns.md)
-- [A possibility to hide/show columns dynamically](desktop/specifying_columns.md#hidingshowingcolumns)
-- [A possibility to display additional elements in the timeline area](desktop/baselines.md)
-- [Support for the critical path](desktop/critical_path.md)
+- [A possibility to hide/show columns dynamically](desktop/specifying_columns.md#hidingshowingcolumns) (PRO version)
+- [A possibility to display additional elements in the timeline area](desktop/baselines.md) (PRO version)
+- [Support for the critical path](desktop/critical_path.md) (PRO version)
 - [New possibilities for the read-only mode](desktop/readonly_mode.md)
 - [Today's and other vertical markers](desktop/markers.md)
 - [A possibility to completely redefine rendering of different task types (projects, milestones, etc.)](desktop/baselines.md#definingacustomdisplayfordifferenttasktypes)
+(PRO version)
 - [Styling tasks through special data properties](desktop/colouring_tasks.md#specifyingstyleinthepropertiesofthetaskobject) 
 - [Styling links through special data properties](desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject) 
 
@@ -108,12 +133,12 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 #### Configuration
 - [Custom configuration of the lightbox for different task types](desktop/task_types.md#individuallightboxforeachtype)
-- [Non-linear scales, ability to skip time from the scale](desktop/custom_scale.md)
+- [Non-linear scales, ability to skip time from the scale](desktop/custom_scale.md) (PRO version)
 
 #### Functionality
-- [Milestones](desktop/milestones.md) and [Projects](desktop/task_types.md#projecttasks) support
+- [Milestones](desktop/milestones.md) and [Projects](desktop/task_types.md#projecttasks) support  (PRO version)
 - [A possibility  to calculate the tasks' duration in work days/hours instead of calendar time](desktop/working_time.md)
-- [Support for multiple Gantt charts on the page (requires PRO version)](desktop/multiple_gantts.md)
+- [Support for multiple Gantt charts on the page](desktop/multiple_gantts.md) (PRO version)
 
 #### API
 - Added more configurations, methods, events
@@ -151,6 +176,6 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 #### API
 
-- [A LOT of events added](api/refs/gantt.md#events)
+- [A lot of events added](api/refs/gantt.md#events)
 - [Templates](api/refs/gantt.md#templates) and [configuration options](api/refs/gantt.md#properties) added
 - [API simplified, it uses a single Gantt object instead of a bunch of different objects](migrating.md)

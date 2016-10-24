@@ -1,4 +1,4 @@
-Exploring Ways to Configure the Gantt Chart
+Configuring the Gantt Chart
 ================================================
 To gain the desired look for the Gantt chart, dhtmlxGantt provides 2 objects: 
 

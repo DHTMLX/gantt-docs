@@ -19,3 +19,11 @@ gantt.attachEvent("onGanttScroll", function (left, top){
 @template:	api_event
 @descr:
 
+@relatedapi:
+api/gantt_scrollto.md
+api/gantt_getscrollstate.md
+
+api/gantt_showtask.md
+api/gantt_showdate.md
+
+

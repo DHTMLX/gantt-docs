@@ -52,5 +52,5 @@ The **keys** object has the following properties:
 
 
 {{note
-Note, all the **keys'** properties have the data type 'number'.
+Note, all the **keys'** properties have the 'number' data type.
 }}

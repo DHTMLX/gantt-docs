@@ -1,5 +1,5 @@
-Adding Milestones
-================================
+Milestones
+============
 Milestones are tasks with zero duration that are used to mark out important dates of the project, some key events or goals.
 You may use milestones, for example, to highlight dates of review meetings or dates of expected completion for project's phases. <br>
 
