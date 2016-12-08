@@ -13,16 +13,11 @@ We will make use of ASP.NET MVC 5 web platform and Web API 2 controller for REST
 To organize communication with database we will use the [Entity Framework](http://www.asp.net/entity-framework).
 We will build our application with the help of the Visual Studio IDE. 
 
-Known Issues
--------------
-
-Pay attention that if you use the WebDav extension of HTTP, it may block HTTPS Put, so the REST methods can be blocked.
-
 
 Step 1. Making Preparations
 -----------------------------
 
-###Creating a new Visual Studio Project project
+###Creating a new Visual Studio Project 
 
 Let's start by running Visual Studio and creating a new project. For this, open the File menu tab and choose:<br>
 New -> Project. Then select ASP.NET Web Application and name it *gantt-rest-net*. 
@@ -505,7 +500,7 @@ A common GET request is described within the [DataController](desktop/howtostart
 
 All actions return a JSON response containing the type of the performed operation or “error” if something went wrong.
 
-Note that a response for the insert action also contains a database id of the new record. 
+Note that a response for the "insert" action also contains a database id of the new record. 
 It will be applied on the client side, so the new item could be mapped to the database entity. 
 
 ###Link Controller
@@ -651,3 +646,12 @@ So, we just added the necessary routes into it.
 Now everything is ready. Run the application and the fully-fledged Gantt should appear on the page:
 
 <img src="desktop/ready_gantt_dotnet.png">
+
+
+Known Issues
+-----------
+
+HTTP PUT and DELETE requests return 405 or 401 error when an app is running on IIS.
+The issue may be caused by the **WebDAV** module which can conflict with RESTful handlers. 
+
+As a common solution, the module can be disabled from the **web.config** file. More details are given [here](https://forums.iis.net/t/1166025.aspx).
