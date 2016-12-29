@@ -41,7 +41,7 @@ Step 2. Adding Models, Views and Controllers
 
 ###Creating a Controller
 
-We also need to add a controller for our web page . It will process incoming requests from the user and run the needed logic.
+We also need to add a controller for our web page. It will process incoming requests from the user and run the needed logic.
 
 The controller will call a particular view to generate a necessary HTML for the request.
 
@@ -73,7 +73,7 @@ namespace gantt_rest_net.Controllers
 }
 ~~~
 
-###Сreating a View
+###Creating a View
 
 In the Views folder find the Home directory. Right click to call the context menu and select Add -> View. 
 
@@ -100,7 +100,7 @@ Open the newly created view and put the following code into it:
         // initializing gantt
         gantt.init("gantt_here");
 		
-        // enabling data loading
+        // initiating data loading
         gantt.load("/api/data");
         // initializing dataProcessor
         var dp = new gantt.dataProcessor("/api/data/");
@@ -117,7 +117,7 @@ In the above code we have done the following:
 - set a container for the gantt 
 - specified the dates format to load data from the server side
 - initialized gantt
-- enabled data loading 
+- initiated data loading 
 - initialized dataProcessor in the REST mode to work with the server side
 
 The server side itself will be implemented a bit later. For now, you can run the application and see that a gantt is rendered on the page.
@@ -586,7 +586,7 @@ Actions return a JSON response with the type of operation or "error".
 
 <h3 id="api_routes">Configuring Routes for API</h3>
 
-Now we should add сustom routes to our controllers. These routes will map incoming requests to specific handlers.
+Now we should add custom routes to our controllers. These routes will map incoming requests to specific handlers.
 You can find the full route scheme [in the corresponding article](desktop/server_side.md#requestresponsedetails).
 
 Open App_Start -> WebApiConfig and add routes for Task, Link and Data into it. 

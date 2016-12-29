@@ -33,7 +33,7 @@ If you have composer installed globally, you can apply the following command:
 composer create-project slim/slim-skeleton gantt-rest-php`
 ~~~
 
-Then you should check if everything works fine. For this, go to the application folder and run webserver:
+Then you should check if everything works fine. For this, go to the application folder and run web server:
 
 ~~~php
 cd gantt-rest-php
@@ -67,7 +67,7 @@ npm install dhtmlx-gantt
 
 The next step is to initialize a gantt and connect it to a dataProcessor instance.
 
-Find the *index.html* file in the *gantt-rest-php/templates* directory and complete several simple steps:
+Find the *index.phtml* file in the *gantt-rest-php/templates* directory and complete several simple steps:
 
 - include *dhtmlxgantt.js* and *dhtmlxgantt.css* files on the page
 - initialize gantt and enable loading data into it
@@ -78,7 +78,7 @@ Find the *index.html* file in the *gantt-rest-php/templates* directory and compl
 
 The full code looks as follows:
 
-{{snippet index.html}}
+{{snippet index.phtml}}
 ~~~html
 <!DOCTYPE html>
 <html>
@@ -107,7 +107,7 @@ The full code looks as follows:
 </html>
 ~~~
 
-Run http://127.0.0.1:8080/ in a browser and you will see that a grid is rendered on the page.
+Run http://127.0.0.1:8080/ in a browser and you will see that a gantt is rendered on the page.
 
 ###Configuring a database
 
@@ -195,7 +195,7 @@ Let's consider this code in detail:
 - we send the *$result* object to the client side as JSON
 
 Thus, we have implemented data loading into Gantt.
-Open [http://127.0.0.1:8080/ ](http://127.0.0.1:8080/) and you will see that the grid is now populated with the test data we added on the previous step.
+Open [http://127.0.0.1:8080/ ](http://127.0.0.1:8080/) and you will see that the gantt is now populated with the test data we added on the previous step.
 
 <img src="desktop/load_data.png">
 
@@ -203,7 +203,7 @@ Step 3. Updating Data on the Server
 -----------------------------------
 
 Our next step is to provide data updating on the server, i.e. to implement sending changes made on the client side to the server.
-In the index.html file we already have the following lines of code:
+In the *index.phtml* file we already have the following lines of code:
 
 ~~~js
 var dp = new gantt.dataProcessor("/data");

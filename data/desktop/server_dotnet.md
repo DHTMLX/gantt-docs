@@ -11,10 +11,6 @@ You can also explore peculiarities of implementing integration of Gantt with ser
 - desktop/server_nodejs.md
 - desktop/server_ruby.md
 
-Known Issues
--------------
-
-Pay attention that if you use the WebDav extension of HTTP, it may block HTTPS Put, so the REST methods can be blocked.
 
 Creating Models
 -----------------------

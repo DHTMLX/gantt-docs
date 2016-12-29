@@ -23,7 +23,7 @@ To begin with, we'll create a project folder and then add the required dependenc
 - [date-format-lite](https://github.com/litejs/date-format-lite) - a small library that will help us to convert dates of Gantt entries into the proper format
 - [node-mysql](https://github.com/felixge/node-mysql) - a Node.js client for working with MySQL
 
-So, let's create a project folder and name it “gantt-node-mysql”:
+So, let's create a project folder and name it "gantt-node-mysql":
 
 ~~~js
 mkdir gantt-node-mysql
@@ -111,7 +111,7 @@ Now, open the *index.html* file and fill it with the following content:
 The above code initializes a gantt chart together with dataProcessor and sets the necessary configuration settings. 
 It also enables data loading for the gantt.
 
-The “/data” URL will serve as a datasource and the entry point for dataProcessor requests, we’ll consider it a bit later.
+The “/data” URL will serve as a data source and the entry point for dataProcessor requests, we’ll consider it a bit later.
 The important point is that dataProcessor should be initialized in the REST mode. To get more information, read the desktop/server_side.md#savingdatafromrestserver
 article.
 
@@ -120,7 +120,7 @@ Step 3. Preparing a Database
 
 The next step is to create a database. We'll make a simple database with two tables. 
 
-Check a detailed example [here](desktop/howtostart_connector.md#step5createadatabase).
+Check a detailed example [here](desktop/howtostart_connector.md#step5creatingadatabase).
 
 
 Step 4. Making Connection to Database
