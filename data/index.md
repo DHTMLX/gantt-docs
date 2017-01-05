@@ -50,3 +50,7 @@ Start
 - desktop/guides.md
 - api/refs/gantt.md
 - faq.md
+
+@metadescr:
+
+Full dhtmlxGantt documentation is at your disposal: start from the beginner step-by-step, explore detailed guides, look up in the API and check out live demos.

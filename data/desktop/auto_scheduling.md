@@ -152,13 +152,13 @@ Lag is a delay between tasks which are linked by a dependency. Lead is an overla
 
 There can be two types of successor tasks: 
 
-- a task that can start before its predecessor task's end (task A starts before task B is finished)
+- a task that can start before its predecessor task's end (task B starts before task A is finished)
 
-E.g.: If we set a lag equal to 1 day for the dependency link, task A will start one day before task B ends;
+E.g.: If we set a lead equal to 1 day for the dependency link, task B will start one day before task A ends;
 
-- a task that can't start until after some delay that follows the finish of its predecessor task (task A starts in some time after task B is finished)
+-  a task that can't start until after some delay that follows the finish of its predecessor task (task B starts in some time after task A is finished)
 
-E.g.: If we set a lead equal to 1 day for the dependency link, task A will start in one day after task B ends.
+E.g.: If we set a lag equal to 1 day for the dependency link, task B will start in one day after task A ends.
 
 Lag and lead values are set in the additional property of the link object - **link.lag**:
 
