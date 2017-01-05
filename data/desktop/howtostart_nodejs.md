@@ -254,10 +254,10 @@ Let's go deeper and see what role it plays.
 
 ###Requests and responses
 
-On each user action: adding, changing or removing a new task or link dataprocessor will react by sending an AJAX request to
-the corresponding URL.The request will contain all the parameters necessary for saving changes in the database.
+On each user action: adding, changing or removing a new task or link DataProcessor will react by sending an AJAX request to
+the corresponding URL. The request will contain all the parameters necessary for saving changes in the database.
 
-Since dataprocessor is initialized in the REST mode, it will use different HTTP verbs for each type of operation. 
+Since DataProcessor is initialized in the REST mode, it will use different HTTP verbs for each type of operation. 
 The list of HTTP verbs together with request and response details is given in the desktop/server_side.md#technique article.
 
 Well, what we need to do now is to add the required routes and handlers that will put the changes into the database into the *server.js* file.

@@ -40,12 +40,12 @@ cd gantt-rest-php
 php -S 0.0.0.0:8080 -t public public/index.php
 ~~~
 
-After that you can open http://127.0.0.1:8080 in a browser and you will see the default Slim page.
+After that you can open [http://127.0.0.1:8080]() in a browser and you will see the default Slim page.
 
 ###Downloading DHTMLX Gantt
 
 Now you need to [download dhtmlxGantt](http://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml). 
-Then extract the content of the archive into the public folder of the created project. You will have the following structure of folders:
+Then extract the content of the archive into the *"public"* folder of the created project. You will have the following structure of folders:
 
 <img src="desktop/folder_structure_php.png">
 
@@ -107,13 +107,13 @@ The full code looks as follows:
 </html>
 ~~~
 
-Run http://127.0.0.1:8080/ in a browser and you will see that a gantt is rendered on the page.
+Run [http://127.0.0.1:8080/]() in a browser and you will see that a gantt is rendered on the page.
 
 ###Configuring a database
 
 
 It's high time to prepare tables for our database. You can find a simple instruction on how to create a database
-in [this tutorial](desktop/howtostart_connector.md#step5createadatabase).
+in [this tutorial](desktop/howtostart_connector.md#step5creatingadatabase).
 
 ###Adding test data into tables
 
@@ -144,7 +144,7 @@ So, we've finished preparing our project. Now we can proceed with data loading.
 Step 2. Loading Data into Gantt
 -------------------------------
 
-While initializing Gantt (see <a href="gantt_init">step 3</a>), we added the line below into the code:
+While [initializing Gantt](#gantt_init), we added the line below into the code:
 
 ~~~js
 gantt.load("/data");
@@ -211,7 +211,7 @@ dp.init(gantt);
 dp.setTransactionMode("REST");
 ~~~
 
-DataProcessor will react to each action on the client (i.e adding data into chart, modifying or removing it) by sending an AJAX request to the server.
+DataProcessor will react to each action on the client (i.e. adding data into chart, modifying or removing it) by sending an AJAX request to the server.
 
 Such a request will include all the data necessary to save changes. We set the dataProcessor to the REST mode in order to make it send
 corresponding HTTP verbs for different operations. All CRUD requests are described in details in the desktop/server_side.md#requestresponsedetails article.
@@ -220,7 +220,7 @@ Well, now we will complete the *index.php* file with all the URLs and handlers t
 
 {{snippet index.php}}
 ~~~php
-//getting a response for a CRUD action
+// getting a response for a CRUD action
 function prepareResponse($res, $action, $tid = NULL){
     $result = array(
         'action' => $action
@@ -231,7 +231,7 @@ function prepareResponse($res, $action, $tid = NULL){
     $res->withJson($result);
     return $result;
 }
-//getting an event from the request data
+// getting an event from the request data
 function getEvent($data)
 {
     return array(
@@ -242,7 +242,7 @@ function getEvent($data)
         ':parent' => $data["parent"]
     );
 }
-//getting a link from the request data
+// getting a link from the request data
 function getLink($data){
     return array(
         ":source" => $data["source"],
@@ -250,7 +250,7 @@ function getLink($data){
         ":type" => $data["type"]
     );
 }
-//Insert task action
+// Insert task action
 $app->post('/data/task', function($request, $response){
     $event = getEvent($request->getParsedBody());
     $conn = getConnection();
@@ -259,7 +259,7 @@ $app->post('/data/task', function($request, $response){
     $conn->prepare($query)->execute($event);
     return prepareResponse($response, "inserted", $conn->lastInsertId());
 });
-//Update task action
+// Update task action
 $app->put('/data/task/{id}', function($request, $response){
     $sid = $request->getAttribute("id");
     $event = getEvent($request->getParsedBody());
@@ -271,7 +271,7 @@ $app->put('/data/task/{id}', function($request, $response){
     $conn->prepare($query)->execute(array_merge($event, array(":sid"=>$sid)));
     return prepareResponse($response, "updated");
 });
-//Remove task action
+// Remove task action
 $app->delete('/data/task/{id}', function($request, $response){
     $sid = $request->getAttribute("id");
     $conn = getConnection();
@@ -280,7 +280,7 @@ $app->delete('/data/task/{id}', function($request, $response){
     $conn->prepare($query)->execute(array(":sid"=>$sid));
     return prepareResponse($response, "deleted");
 });
-//Insert link action
+// Insert link action
 $app->post('/data/link', function($request, $response){
     $link = getLink($request->getParsedBody());
     $conn = getConnection();
@@ -288,7 +288,7 @@ $app->post('/data/link', function($request, $response){
     $conn->prepare($query)->execute($link);
     return prepareResponse($response, "inserted", $conn->lastInsertId());
 });
-//Update link action
+// Update link action
 $app->put('/data/link/{id}', function($request, $response){
     $sid = $request->getAttribute("id");
     $link = getLink($request->getParsedBody());
@@ -300,7 +300,7 @@ $app->put('/data/link/{id}', function($request, $response){
     $conn->prepare($query)->execute(array_merge($link, array(":sid"=>$sid)));
     return prepareResponse($response, "updated");
 });
-//Remove link action
+// Remove link action
 $app->delete('/data/link/{id}', function($request, $response){
     $sid = $request->getAttribute("id");
     $conn = getConnection();
@@ -312,8 +312,6 @@ $app->delete('/data/link/{id}', function($request, $response){
 ~~~
 
 Now let's see what we have inside of this code.
-
-
 
 We make use of two types of routes:  
 
@@ -330,12 +328,12 @@ As for requests, we define three types of them:
 
 ###Responses
 
-A response come will come after each action. Each response will contain a JSON object containing the type of the performed operation.
+A response will come after each action. Each response will contain a JSON object containing the type of the performed operation.
 
 The response for the *insert* action will also include the id of the new record in 
 the database that will be applied on the client side.
 
-If the operation fails, the “error” type should be returned.
+If the operation fails, the "error" type should be returned.
 
 Now everything is ready. Let’s run our application, open 
 http://127.0.0.1:8080 and enjoy a nice Gantt chart we’ve just created.

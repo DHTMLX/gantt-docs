@@ -1,11 +1,11 @@
 PHP Code Samples
 ======================
 
-This article is devoted to integration of a Gantt Chart with server side implemented in PHP and REST API.
+This article is devoted to integration of the Gantt Chart with server side implemented in PHP and REST API.
 
 To get more information on how to use Gantt with PHP, read the [extended tutorial](desktop/howtostart_php.md).
 
-If you use some other technology, check if it is enumerated in the list of related articles below:
+If you use some other technology, check the list of related articles below:
 
 - desktop/server_nodejs.md
 - desktop/server_dotnet.md

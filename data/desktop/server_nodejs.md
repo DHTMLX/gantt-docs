@@ -20,7 +20,8 @@ The necessary dependencies are:
 
 - [Express](http://expressjs.com/) module
 - [body-parser](https://www.npmjs.com/package/body-parser) module
-- [date-format-lite](https://www.npmjs.com/package/date-format-lite) - a small module that will be used to convert dates of gantt entries into the format compatible with the client-side Gantt api
+- [date-format-lite](https://www.npmjs.com/package/date-format-lite) - a small module that will be used to convert dates of Gantt entries into the format 
+compatible with the client-side Gantt API
 
 ~~~js
 var express = require('express');
