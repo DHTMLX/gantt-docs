@@ -1,11 +1,10 @@
 Content Security Policy Compliance
 =========================
 
+Content Security Policy Compliance (CSP) is a web standard used to prevent unauthorized JavaScript execution. 
 
-Starting from version 3.3, the library provides the **ext/dhtmlxgantt_csp.js** extension that allows working with dhtmlxGantt 
+The dhtmlxGantt library provides the **ext/dhtmlxgantt_csp.js** extension that allows working with dhtmlxGantt 
 in case Content Security Policy (CSP) is enabled in the app. It enhances the security of created apps. 
-CSP is a web standard used to prevent unauthorized JavaScript execution. 
-
 
 In order to enable CSP support in your app built with Gantt, you need to include the *dhtmlxgantt_csp.js* after *dhtmlxgantt.js*:
 
