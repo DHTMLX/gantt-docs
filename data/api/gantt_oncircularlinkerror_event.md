@@ -1,9 +1,6 @@
 onCircularLinkError
 =============
 
-@todo:
-  check
-
 @short:
 	fires when the circular reference has been detected and auto scheduling is not possible
 
