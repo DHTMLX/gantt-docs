@@ -10,7 +10,7 @@ event
 * master	object		an object that the <i>this</i> keyword refers to
 
 @returns:
-- id	string		the event handler id (can be used by the **eventRemove()** method) 
+- id	string		the event handler id (can be used by the <b>eventRemove()</b> method) 
 
 @example:
 // adds a handler for the 'onclick' event

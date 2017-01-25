@@ -31,6 +31,12 @@ If the focus is set on some button of the form, pressing *Space* or *Enter* will
 ##Enabling the functionality
 
 In order to use keyboard navigation in the Gantt chart, you need to include the **ext/dhtmlxgantt_keyboard_navigation.js** extension on the page. 
+
+~~~html
+<script src="../../codebase/ext/dhtmlxgantt_keyboard_navigation.js" 
+	type="text/javascript" charset="UTF-8"></script>
+~~~
+
 There are two variants of keyboard navigation available:
 
 - navigation by task rows
