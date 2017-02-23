@@ -1,18 +1,20 @@
 Exploring Available Skins
 ===================================
-dhtmlxGantt provides 4 skins that you can use to change the overall look of the Gantt chart:
 
-- Terrace (default)
-- Skyblue 
-- Meadow
-- Broadway
-- Contrast Black 
-- Contrast White
+dhtmlxGantt provides several predefined skins that you can use to change the overall look of the Gantt chart:
+
+1. [Terrace (default)](desktop/skins.md#terraceskin)
+2. [Skyblue](desktop/skins.md#skyblueskin) 
+3. [Meadow](desktop/skins.md#meadowskin)
+4. [Broadway](desktop/skins.md#broadwayskin)
+5. [Contrast Black](desktop/skins.md#contrastblackskin) 
+6. [Contrast White](desktop/skins.md#contrastwhiteskin)
 
 Each skin requires including its specific files.
 
-'Teracce' (default) skin 
+'Teracce' skin 
 -----------------------------
+
 To apply the default skin, include the default CSS file:
 
 

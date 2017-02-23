@@ -1,5 +1,5 @@
-Displaying Additional Elements in the Timeline Area
-======================================================
+Additional Elements in the Timeline Area
+==========================================
 
 Common description
 ------------------------------------------

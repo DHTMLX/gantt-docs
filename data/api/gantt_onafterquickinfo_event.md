@@ -1,9 +1,6 @@
 onAfterQuickInfo
 =============
 
-@todo:
-	check 
-
 @short:
 	fires after the pop-up edit form is closed
 

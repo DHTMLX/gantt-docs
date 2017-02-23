@@ -10,7 +10,7 @@ eventRemove
 
 @example:
 var eventId = gantt.event("divId", "click", function(e){
-		do_something();
+	do_something();
 });
 
 gantt.eventRemove(eventId);

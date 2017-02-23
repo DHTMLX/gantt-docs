@@ -1,9 +1,12 @@
 onDataRender
 =============
-@short:fires after data was rendered on the page
+
+@short:fires after data has been rendered on the page
 	
 @example:
-gantt.attachEvent("onDataRender", function(){alert("Data was rendered on the page")});
+gantt.attachEvent("onDataRender", function(){
+	alert("Data was rendered on the page")
+});
 
 gantt.init("gantt_here");
 gantt.parse(demo_tasks);

@@ -1,9 +1,6 @@
 auto_scheduling_move_projects
 =============
 
-@todo:
-	check 
-
 @short:
 	defines whether the whole project will be moved (see the details below)
 
