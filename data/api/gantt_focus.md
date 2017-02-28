@@ -1,10 +1,6 @@
 focus
 =============
 
-
-@todo:
-	check 
-
 @short:
 	sets focus on the gantt 
 

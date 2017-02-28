@@ -1,9 +1,6 @@
 onAutoScheduleCircularLink
 =============
 
-@todo:
-	check
-
 @short:
 	fires if some dependency loops were found during auto scheduling
 

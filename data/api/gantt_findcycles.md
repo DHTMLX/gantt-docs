@@ -1,9 +1,6 @@
 findCycles
 =============
 
-@todo:
-	check 
-
 @short:
 	returns all dependency loops in the chart
 

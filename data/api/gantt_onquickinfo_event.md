@@ -1,8 +1,5 @@
 onQuickInfo
 =============
-
-@todo:
-	check 
     
 @short:
 	fires when the pop-up edit form appears
