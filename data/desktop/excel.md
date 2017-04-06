@@ -1,11 +1,13 @@
 Export to Excel and iCal
 ===========================================
+
 Starting from version 3.2, the library allows you to export data from the Gantt chart in  the Excel and iCal formats. 
 
 
 Export to Excel
 -------------------
-To export data from the Gantt chart  to an Excel document, do the following:
+
+To export data from the Gantt chart to an Excel document, do the following:
 
 <ol>
 	<li>Include the <b>"http://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
@@ -50,9 +52,10 @@ The **exportToExcel()** method takes as a parameter the object with 2 possible p
 			<td class="webixdoc_links0"><b>columns</b></td>
 			<td>(<i>array</i>) allows to configure columns of the output Excel sheet
             	<ul>
-                	<li>'id' - (string/number) a property of the event that will be mapped to the column </li>
-                    <li>'header' - (string) the column header</li>
-                    <li>'width' - (number) the column width in pixels</li>
+                	<li><b>'id'</b> - (string|number) a property of the event that will be mapped to the column </li>
+                    <li><b>'header'</b> - (string) the column header</li>
+                    <li><b>'width'</b> - (number) the column width in pixels</li>
+                    <li><b>'type'</b> - (string) the column type</li>
                 </ul>
             </td>
 		</tr>
@@ -67,7 +70,7 @@ gantt.exportToExcel({
 	name:"document.xlsx", 
     columns:[
 		{ id:"text",  header:"Title", width:150 },
-        { id:"start_date",  header:"Start date", width:250 }
+        { id:"start_date",  header:"Start date", width:250, type:"date" }
     ]
 });
 ~~~
@@ -76,6 +79,7 @@ gantt.exportToExcel({
 
 Export to iCal
 -------------------
+
 To export data from the Gantt chart  to an iCal string, do the following:
 
 <ol>
