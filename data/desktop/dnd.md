@@ -19,6 +19,7 @@ Let's consider typical cases when the default drag behaviour needs customization
 1. [Denying dragging specific tasks](desktop/dnd.md#denyingdraggingofspecifictasks).
 2. [Denying dragging tasks out of specific dates](desktop/dnd.md#denyingdraggingtasksoutofspecificdates).
 3. [Dragging childs together with the parent](desktop__dnd.html#draggingchildstogetherwiththeparent).
+4. [Setting minimal task duration](desktop__dnd.html#settingminimaltaskduration).
 
 Denying dragging of specific tasks
 ---------------------------------------
@@ -137,6 +138,25 @@ Dragging dependent tasks together with independent tasks
 
 There are several ways of implementing tasks moving with their dependent tasks.
 You can read about all of them in a separate article desktop/dragging_dependent_tasks.md.
+
+Setting minimal task duration
+-------------------------------------------
+
+Minimal task duration can be specified via the api/gantt_min_duration_config.md setting.
+
+The option defines the minimum size of the task that can be set during resizing and can be used for preventing users from setting a zero duration.
+
+The value is set in milliseconds:
+~~~js
+// 1 day
+gantt.config.min_duration = 24*60*60*1000;
+
+//OR
+
+// 1 hour
+gantt.config.min_duration = 60*60*1000;
+~~~
+
 
 @index:
 - desktop/dragging_dependent_tasks.md

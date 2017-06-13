@@ -98,8 +98,8 @@ gantt.isWorkTime(new Date(2013,0,1)) // -> false  /*!*/
 
 // makes 15 March, 2013 a working day from 9:00 till 18:00 
 gantt.setWorkTime({date : new Date(2013, 2, 15), hours:[9,18]});
-gantt.isWorkTime(new Date(2013, 2, 31,10,0), "hour"); // -> true  /*!*/
-gantt.isWorkTime(new Date(2013, 2, 31,8,0), "hour"); // ->false  /*!*/
+gantt.isWorkTime(new Date(2013, 2, 15,10,0), "hour"); // -> true  /*!*/
+gantt.isWorkTime(new Date(2013, 2, 15,8,0), "hour"); // ->false  /*!*/
 ~~~
 {{sample
 09_worktime/05_adjust_to_worktime.html
