@@ -1,5 +1,6 @@
 Dragging Tasks within the Timeline
 =============================================
+
 Dragging allows users to quickly change the start (end) dates of the tasks, their duration. <br>
 By default, the drag-and-drop is enabled and the user can drag a task along its row in the timeline.
 
@@ -18,8 +19,8 @@ Let's consider typical cases when the default drag behaviour needs customization
 
 1. [Denying dragging specific tasks](desktop/dnd.md#denyingdraggingofspecifictasks).
 2. [Denying dragging tasks out of specific dates](desktop/dnd.md#denyingdraggingtasksoutofspecificdates).
-3. [Dragging childs together with the parent](desktop__dnd.html#draggingchildstogetherwiththeparent).
-4. [Setting minimal task duration](desktop__dnd.html#settingminimaltaskduration).
+3. [Dragging childs together with the parent](desktop/dnd.md#draggingchildstogetherwiththeparent).
+4. [Setting minimal task duration](desktop/dnd.md#settingminimaltaskduration).
 
 Denying dragging of specific tasks
 ---------------------------------------
