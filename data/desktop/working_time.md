@@ -9,8 +9,8 @@ To provide calculating tasks' duration in work time, use the api/gantt_work_time
 Enabling the mode when tasks' duration is calculated in working time
 }}
 ~~~js
-gantt.config.work_time = true; //removes non-working time from calculations /*!*/
-gantt.skip_off_time = true; /*!*/   //hides non-working time in the chart
+gantt.config.work_time = true; 	// removes non-working time from calculations /*!*/
+gantt.config.skip_off_time = true; /*!*/   // hides non-working time in the chart
  
 gantt.init("gantt_here");
 ~~~
