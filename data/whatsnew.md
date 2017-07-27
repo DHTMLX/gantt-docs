@@ -3,6 +3,16 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+4.2
+------------
+
+####Functionality
+
+####Configuration
+
+####Bug Fixes
+
+
 4.1
 ---------
 

@@ -41,6 +41,7 @@ Events
 - api/gantt_onbeforetaskdelete_event.md - fires before the user deletes a task
 - api/gantt_onbeforetaskdisplay_event.md - fires after the tasks have been loaded to the Gantt chart but before they are displayed
 - api/gantt_onbeforetaskdrag_event.md - fires after the user has pressed the mouse button and started dragging, but before dhtmlxGantt starts the drag-and-drop operation
+- api/gantt_onbeforetaskloading_event.md - 
 - api/gantt_onbeforetaskmove_event.md - fires before a task is moved to a new position
 - api/gantt_onbeforetaskselected_event.md - fires before the user selects a task
 - api/gantt_onbeforetaskupdate_event.md - fires before the user updates a task
@@ -52,7 +53,7 @@ Events
 - api/gantt_oncolumnresizeend_event.md - fires after the user finished dragging the column's border to resize the column
 - api/gantt_oncolumnresizestart_event.md - fires before the user starts to drag the column's border to resize the column
 - api/gantt_oncontextmenu_event.md - occurs when the user clicks the right mouse button inside the Gantt chart
-- api/gantt_ondatarender_event.md - fires after data was rendered on the page
+- api/gantt_ondatarender_event.md - fires after data has been rendered on the page
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
 - api/gantt_onerror_event.md - fires when api/gantt_assert.md receives 'false' value, i.e. when assertion fails
 - api/gantt_onexpand_event.md - fires when gantt is expended to full screen
@@ -136,6 +137,7 @@ Events
 - api/gantt_onbeforetaskdelete_event.md
 - api/gantt_onbeforetaskdisplay_event.md
 - api/gantt_onbeforetaskdrag_event.md
+- api/gantt_onbeforetaskloading_event.md
 - api/gantt_onbeforetaskmove_event.md
 - api/gantt_onbeforetaskselected_event.md
 - api/gantt_onbeforetaskupdate_event.md
