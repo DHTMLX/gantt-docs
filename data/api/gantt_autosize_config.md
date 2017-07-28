@@ -4,6 +4,7 @@ autosize
 	
 
 @type: boolean, string
+@default:false
 @values:"y" ( or true),"x", "xy"
 @example:
 gantt.config.autosize = "xy";

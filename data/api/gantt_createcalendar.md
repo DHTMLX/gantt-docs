@@ -10,21 +10,28 @@ createCalendar
 
 @params:
 
-- parentCalendar			object			(optional) an existing calendar that is used for creating a new one on the base of it		
+* parentCalendar			object			(optional) an existing calendar that is used for creating a new one on the base of it		
 
 
 
 @example:
 // creating a full-time calendar (7 working days per week, 24 hours per day)
-var newCalendar = gantt.createCalendar();
+var calendar1 = gantt.createCalendar();
 
 // creating a new calendar on the base of an existing one (copying it)
-var newCalendar = gantt.createCalendar(parentCalendar);
+var calendar2 = gantt.createCalendar(parentCalendar);
 
 
 
 @template:	api_method
 @descr:
+After you've created a calendar, you need to add it into Gantt via the api/gantt_addcalendar.md method:
+
+~~~js
+gantt.addCalendar(calendar1);
+~~~
+
 
 @relatedapi:
+api/gantt_addcalendar.md
 api/gantt_deletecalendar.md

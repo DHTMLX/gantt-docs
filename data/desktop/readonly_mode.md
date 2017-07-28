@@ -19,9 +19,9 @@ gantt.init("gantt_here");
 ~~~
 Note, when the entire Gantt chart is non-editable, users can't open the lightbox.
 
-<br>
 
-To make specific tasks/links editable in the read-only Gantt chart, add the 'editable' property to their data object and set to *true*:
+
+To make specific tasks/links editable in the read-only Gantt chart, add the 'editable' property to their data object and set it to *true*:
 
 <img src="desktop/task_editable_property.png"/>
 
@@ -53,7 +53,7 @@ By default, the gantt checks whether a task/link has this property with a no-neg
 
 When the task/link is read-only,  it won't react on clicks, double clicks, isn't draggable or editable in any way.
 
-<br>
+
 By default, the read-only behavior is binded to the 'readonly' property of a task/link. But you can change the target property using the  api/gantt_readonly_property_config.md configuration option:
 
 ~~~js
@@ -84,7 +84,13 @@ If you want to make it settable from the lightbox, you need to set the 'editable
 
 ~~~js
 gantt.config.lightbox.sections = [ 
-	{name:"description", height:38, map_to:"some_property", type:"textarea", focus:true},
+	{
+    	name:"description", 
+        height:38, 
+        map_to:"some_property", 
+        type:"textarea", 
+        focus:true
+    },
 	....
 ]
 gantt.config.editable_property = "some_property";

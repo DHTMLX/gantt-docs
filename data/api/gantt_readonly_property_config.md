@@ -1,9 +1,11 @@
 readonly_property
 =============
-@short:changes the name of a property that affects the read-only behaviour of tasks/links
+
+@short:
+	changes the name of a property that affects the read-only behaviour of tasks/links
 	
 
-@type: string
+@type:string
 @example:
 gantt.config.readonly_property = "property_name";
 

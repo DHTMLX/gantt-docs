@@ -51,3 +51,7 @@ The calendar configuration can contain the following attributes:
 
 09_worktime/06_task_calendars.html
 09_worktime/07_resource_calendars.html
+
+@relatedapi:
+api/gantt_createcalendar.md
+api/gantt_deletecalendar.md

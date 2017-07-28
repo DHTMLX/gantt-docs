@@ -8,7 +8,18 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ####Functionality
 
+- worktime calendar at task and resource level
+- WBS code (outline numbers) calculation
+- autoscroll for drag and drop operations
+- [Persian (Farsi) locale is added](desktop/localization.md#predefinedlocales)
+
 ####Configuration
+
+- GIF images in the Gantt skins are replaced with PNG
+- a [getter function for key navigation shortcuts](api/gantt_getshortcuthandler.md) is added
+- add horizontal for timeline scroll on shift+mousewheel
+- add config for cascade deleting of nested tasks and links
+- updates in German, Italian locales
 
 ####Bug Fixes
 

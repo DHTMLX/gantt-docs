@@ -10,18 +10,26 @@ deleteCalendar
 
 @params:
 
-- calendar		id		the id of the calendar
+- id		id		the id of the calendar
 
 
 
 @example:
+// adding a calendar
+gantt.addCalendar({
+    id:"custom",
+    worktime: {
+        hours: [8, 17],
+        days: [ 1, 1, 1, 1, 1, 1 ,1]
+    }
+});
 
-
-
-gantt.deleteCalendar(calendar);
+// deleting a calendar
+gantt.deleteCalendar("custom");
 
 @template:	api_method
 @descr:
 
 @relatedapi:
+api/gantt_addcalendar.md
 api/gantt_createcalendar.md
