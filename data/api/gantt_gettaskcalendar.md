@@ -29,6 +29,8 @@ var task_calendar = gantt.getTaskCalendar({
 
 @template:	api_method
 @descr:
+added in version 4.2
+
 The returned object of the task calendar for the above example is:
 
 ~~~js

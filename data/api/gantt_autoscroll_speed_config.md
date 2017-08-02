@@ -18,6 +18,8 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
+added in version 4.2
+
 The "autoscroll" functionality is enabled by the api/gantt_autoscroll_config.md option.
 
 @relatedapi:

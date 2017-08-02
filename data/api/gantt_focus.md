@@ -7,8 +7,6 @@ focus
 @params:
 
 
-
-
 @example:
 gantt.focus();
 
@@ -27,4 +25,5 @@ desktop/keyboard_navigation.md
 api/gantt_keyboard_navigation_config.md
 api/gantt_keyboard_navigation_cells_config.md
 api/gantt_addshortcut.md
+api/gantt_getshortcuthandler.md
 api/gantt_removeshortcut.md

@@ -17,6 +17,8 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
+added in version 4.2
+
 
 @relatedapi:
 api/gantt_autoscroll_speed_config.md

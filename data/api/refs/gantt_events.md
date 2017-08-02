@@ -41,7 +41,6 @@ Events
 - api/gantt_onbeforetaskdelete_event.md - fires before the user deletes a task
 - api/gantt_onbeforetaskdisplay_event.md - fires after the tasks have been loaded to the Gantt chart but before they are displayed
 - api/gantt_onbeforetaskdrag_event.md - fires after the user has pressed the mouse button and started dragging, but before dhtmlxGantt starts the drag-and-drop operation
-- api/gantt_onbeforetaskloading_event.md - 
 - api/gantt_onbeforetaskmove_event.md - fires before a task is moved to a new position
 - api/gantt_onbeforetaskselected_event.md - fires before the user selects a task
 - api/gantt_onbeforetaskupdate_event.md - fires before the user updates a task
@@ -137,7 +136,6 @@ Events
 - api/gantt_onbeforetaskdelete_event.md
 - api/gantt_onbeforetaskdisplay_event.md
 - api/gantt_onbeforetaskdrag_event.md
-- api/gantt_onbeforetaskloading_event.md
 - api/gantt_onbeforetaskmove_event.md
 - api/gantt_onbeforetaskselected_event.md
 - api/gantt_onbeforetaskupdate_event.md

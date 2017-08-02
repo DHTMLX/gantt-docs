@@ -24,10 +24,12 @@ added in version 4.1
 In case the third parameter is not set, the handler will be attached to the gantt scope.
 
 @relatedapi:
+api/gantt_getshortcuthandler.md
+api/gantt_removeshortcut.md
 api/gantt_keyboard_navigation_config.md
 api/gantt_keyboard_navigation_cells_config.md
 api/gantt_focus.md
-api/gantt_removeshortcut.md
+
 
 
 @related:

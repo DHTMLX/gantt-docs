@@ -13,7 +13,6 @@ deleteCalendar
 - id		id		the id of the calendar
 
 
-
 @example:
 // adding a calendar
 gantt.addCalendar({
@@ -29,7 +28,11 @@ gantt.deleteCalendar("custom");
 
 @template:	api_method
 @descr:
+added in version 4.2
 
 @relatedapi:
 api/gantt_addcalendar.md
 api/gantt_createcalendar.md
+
+@related:
+desktop/working_calendars.md

@@ -21,6 +21,7 @@ var wbs_code = gantt.getWBSCode({"id":2, "text":"Task #1", "start_date":"02-04-2
 
 @template:	api_method
 @descr:
+added in version 4.2
 
 @relatedsample:
 07_grid/09_wbs_column.html

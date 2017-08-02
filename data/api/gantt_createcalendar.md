@@ -25,6 +25,8 @@ var calendar2 = gantt.createCalendar(parentCalendar);
 
 @template:	api_method
 @descr:
+added in version 4.2
+
 After you've created a calendar, you need to add it into Gantt via the api/gantt_addcalendar.md method:
 
 ~~~js
@@ -35,3 +37,6 @@ gantt.addCalendar(calendar1);
 @relatedapi:
 api/gantt_addcalendar.md
 api/gantt_deletecalendar.md
+
+@related:
+desktop/working_calendars.md

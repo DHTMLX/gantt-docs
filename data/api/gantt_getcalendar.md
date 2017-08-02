@@ -21,6 +21,8 @@ var calendar = gantt.getCalendar(id);
 
 @template:	api_method
 @descr:
+added in version 4.2
+
 The config of a global task calendar is as follows:
 
 ~~~js

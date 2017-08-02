@@ -5,7 +5,6 @@ Others
 {{api
 - api/gantt_$click_other.md - redefines the default click behavior for buttons of the Gantt chart
 - api/gantt_$keyboardnavigation_other.md - 
-- api/gantt_$wbs_other.md - 
 - api/gantt_ajax_other.md - dhtmlx ajax module
 - api/gantt_config_other.md - defines configuration options for dates, scale, controls
 - api/gantt_date_other.md - a set of date formatting methods
@@ -25,7 +24,6 @@ Others
 @index:
 - api/gantt_$click_other.md
 - api/gantt_$keyboardnavigation_other.md
-- api/gantt_$wbs_other.md
 - api/gantt_ajax_other.md
 - api/gantt_config_other.md
 - api/gantt_date_other.md

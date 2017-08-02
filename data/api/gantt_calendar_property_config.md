@@ -14,6 +14,8 @@ gantt.config.calendar_property = "property_name";
 
 @template:	api_config
 @descr:
+added in version 4.2
+
 The default value of the option is "calendar_id".
 
 ~~~js

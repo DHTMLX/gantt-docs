@@ -10,15 +10,15 @@ Properties
 - api/gantt_auto_scheduling_move_projects_config.md - defines whether the whole project will be moved (see the details below)
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
-- api/gantt_autoscroll_config.md - 
-- api/gantt_autoscroll_speed_config.md - 
+- api/gantt_autoscroll_config.md - enables autoscrolling while dragging a task or link out of the current browser screen
+- api/gantt_autoscroll_speed_config.md - defines the speed of autoscrolling (in ms) while dragging a task or link out of the current browser screen
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
 - api/gantt_branch_loading_config.md - enables the dynamic loading in the Gantt chart
 - api/gantt_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
 - api/gantt_buttons_right_config.md - stores a collection of buttons resided in the right bottom corner of the lightbox
-- api/gantt_calendar_property_config.md - 
-- api/gantt_cascade_delete_config.md - 
+- api/gantt_calendar_property_config.md - changes the name of the property that affects the id of a calendar assigned to a task/a group of tasks
+- api/gantt_cascade_delete_config.md - enables cascade deleting of nested tasks and links
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table

@@ -20,6 +20,8 @@ var calendars = gantt.getCalendars();
 
 @template:	api_method
 @descr:
+added in version 4.2
+
 
 @relatedapi:
 api/gantt_getcalendar.md
