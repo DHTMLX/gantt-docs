@@ -18,6 +18,7 @@ gantt.config.columns = [
 
 Overviewing the default columns
 ---------------------------------------------
+
 By default, the grid contains 4 columns:
 
 1. Task name
@@ -29,6 +30,30 @@ By default, the grid contains 4 columns:
 Note, you needn't to specify the api/gantt_columns_config.md parameter to present the default columns in the grid.
 }}
 
+Showing the WBS code of a task
+------------------------
+
+You can add a column that will display the outline numbers of tasks (their WBS code). For this, you need to use the api/gantt_getwbscode.md method in the column 
+template.
+
+~~~js
+gantt.config.columns = [
+	{name:"wbs", label:"WBS", width:40, template:gantt.getWBSCode }, /*!*/
+	{name:"text", label:"Task name", tree:true, width:170 },
+	{name:"start_date", align: "center", width: 90},
+	{name:"duration", align: "center" , width: 60},
+	{name:"add", width:40}
+];
+~~~
+
+{{sample 07_grid/09_wbs_column.html}}
+
+The method takes the object of a task as a parameter and returns a string with the WBS code of the task:
+
+~~~js
+var wbs_code = gantt.getWBSCode({"id":2, "text":"Task #1", "start_date":"02-04-2013", 
+    "duration":"8", "parent":"1", "progress":0.5, "open": true}) // -> returns "2.1"
+~~~
 
 Setting mapping between columns and data properties
 ---------------------------------------

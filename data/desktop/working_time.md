@@ -1,6 +1,7 @@
 Calculating Tasks' Duration in Work Time
 ===================================================
-By default, dhtmlxGantt calculates the duration of tasks in calendar time. That assumes 
+
+By default, dhtmlxGantt calculates the duration of tasks in calendar time. It assumes 
 that the final duration of the tasks can include weekends and holidays.
 
 To provide calculating tasks' duration in work time, use the api/gantt_work_time_config.md option:
@@ -29,6 +30,7 @@ duration_unit = "hour", the duration is calculated in the working hours).
 
 Setting the working time
 ------------------------------
+
 The default working time is the following:
 
 - Working days:  Monday - Friday.

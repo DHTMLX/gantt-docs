@@ -11,22 +11,21 @@ The final code of the tutorial can be used as the start point for creating appli
 
 Step 1. Download and extract the dhtmlxGantt package
 --------------------------------------------------------------
+
 <div style="padding-left:55px;">
 <p>
 Let's start the tutorial with getting the library package on your computer.
 
 
-<div style="padding-top:15px; color:#4f80c2; font-weight:bold;"><img src="desktop/finger.png"/> <span style="vertical-align:top;line-height:26px;">Do the following:</span></div>
+<div style="padding-top:15px; color:#4f80c2; font-weight:bold;"><img src="desktop/finger.png"/><span style="vertical-align:top;line-height:26px;">Do the following:</span></div>
 
 
 <ul style= "list-style-image:url('media/desktop/arrow-right.png');">
-	<li>Download the dhtmlxGantt package , if you haven't already done it. </li>
-    <li>Extract the package to the root directory of your local web server. The extracted files will be stored in a folder with the same name as the package file - dhtmlxGantt. </li>
+	<li>Download the dhtmlxGantt package, if you haven't done it yet. </li>
+    <li>Extract the package to the root directory of your local web server. The extracted files will be stored in a folder with the same name as the package file - dhtmlxGantt. 	</li>
 </ul>
 </p>
 </div>
-
-
 
 
 Step 2. Include dhtmlxGantt code files in your HTML file
@@ -294,8 +293,7 @@ as this is the easiest way to implement the server-side logic for dhtmlxGantt.
 
 include ('codebase/connector/gantt_connector.php');
 
-$res=mysql_connect("localhost","root","");
-mysql_select_db("gantt");
+$res = new PDO("mysql:host=localhost;dbname=gantt", "root", "");
 
 $gantt = new JSONGanttConnector($res);
 $gantt->render_links("gantt_links","id","source,target,type");

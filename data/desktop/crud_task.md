@@ -6,6 +6,7 @@ to dynamically update a task's property.
 
 Adding a new task
 ----------------------------
+
 To add a new task to the Gantt chart, use the api/gantt_addtask.md method:
 
 ~~~js
@@ -18,6 +19,7 @@ var taskId = gantt.addTask({
 ~~~
 
 ###Preventing from adding tasks to certain levels
+
 A quite easy way to prevent users from adding sub-tasks to a task of a certain level (or based on some other condition) is to hide the 'Add'  button through CSS.
 
 You can assign a CSS class for each task row using the api/gantt_grid_row_class_template.md template:
@@ -45,6 +47,7 @@ and hide the 'Add' button for such rows:
 
 Updating a task's property
 ------------------------------
+
 To dynamically update a property of a task object, use the api/gantt_updatetask.md method:
 
 ~~~js
@@ -57,29 +60,47 @@ gantt.refreshData(); /*!*/
 
 Redrawing tasks
 ----------------------
+
 To re-draw all tasks in the Gantt chart, use the  the api/gantt_refreshdata.md method:
 
 ~~~js
-var task  =gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2013",...}
-var task2 =gantt.getTask(11);//->{id:11,text:"Task #11",start_date:"05-09-2013",...}
+var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2013",...}
+var task2 = gantt.getTask(11);//->{id:11,text:"Task #11",start_date:"05-09-2013",...}
  
 task.text = "Task #10_1"; /*!*/ 
-task2.text= "Task #11_1";/*!*/ 
+task2.text = "Task #11_1";/*!*/ 
 gantt.refreshData(); /*!*/ 
 ~~~
 
-Deleting a task
+Deleting tasks
 -------------------------------
+
 To delete a task, use the api/gantt_deletetask.md method:
 
 ~~~js
 gantt.deleteTask(taskId);
 ~~~
 
+Cascade deleting of nested tasks
+---------------------------
+
+There is a api/gantt_cascade_delete_config.md config that regulates the process of deleting tasks from Gantt. By default, it is set to *true*,
+which means that when you delete a task, Gantt sends a request to a server for each nested task and link of the deleted task.
+
+If you don't need to send multiple requests to the server, you can simply disable the api/gantt_cascade_delete_config.md config:
+
+
+
+~~~js
+gantt.config.cascade_delete = false;
+~~~
+
+In that case Gantt will send only one request to the server - for deleting just the parent task, while its nested tasks and links will be deleted by the server. 
+
 Removing all tasks from the Gantt chart
 -------------------------------------------
-To clear the Gantt chart from tasks, call the api/gantt_clearall.md method:
 
+To clear the Gantt chart from tasks, call the api/gantt_clearall.md method:
 
 ~~~js
 gantt.clearAll();
