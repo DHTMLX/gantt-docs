@@ -60,7 +60,7 @@ gantt.addCalendar({
 The calendar configuration object can contain the following attributes:
 
 - **id** - (id) optional, the calendar id
-- **worktime** - (object) an object that sets the worktime in days and hours. It can include:
+- **worktime** - (object) an object that sets the work time in days and hours. It can include:
 	- **hours** - (array) an array with global working hours, sets the start and end hours of the task
     - **days** - (array) an array of 7 days of the week (from 0 - Sunday,to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day.    
 Instead of the week day you can also set custom working hours for this day.<br>
@@ -70,7 +70,7 @@ For example: **days: [0, 1, 1, 1, [12, 17], 1, 0]**, where [12,17] - time from 1
 Assigning Calendar to Tasks
 ----------------
 
-Now that your calendar is initialized and added into Gantt, you should assign it to the necessary task or a group of tasks.
+Now that your calendar is initialized and added into Gantt, you should assign it to the necessary task or a group of tasks by their common property.
 
 ###Assigning a calendar to a task
 
@@ -131,7 +131,8 @@ var annaCalendarId = gantt.addCalendar({
 });
 ~~~
 
-- use the **resource_calendars** configuration option to specify the object that will contain the config of the new task property. 
+- use the api/gantt_resource_calendars_config.md configuration option to bind calendars to a task property.
+In the example below we create a "user" property and assign calendars to different users:
 
 ~~~js
 gantt.config.resource_calendars = {
@@ -143,11 +144,11 @@ gantt.config.resource_calendars = {
 };
 ~~~
 
-The "user" object in the above example includes a set of *key:value* pairs, where key is the number of the user and value corresponds to the 
+The "user" object includes a set of *key:value* pairs, where key is the number of the user and value corresponds to the 
 id of the calendars we have specified at the previous step.
 
-- to bind calendars with users, specify the **user** attribute in each task config object. 
-As a value of this attribute use the key of the calendar from the "user" object defined in the **resource_calendars** configu option:
+- specify the **user** attribute in each task config object. 
+As a value of this attribute, use the key of the calendar from the "user" object defined in the **resource_calendars** configuration option:
 
 ~~~js
 {"id":3, user:"2", "text":"Task #2", "start_date":"11-04-2013", 

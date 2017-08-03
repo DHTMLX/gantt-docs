@@ -69,6 +69,7 @@ Properties
 - api/gantt_readonly_config.md - activates the read-only mode for the Gantt chart
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
+- api/gantt_resource_calendars_config.md - 
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table
@@ -188,6 +189,7 @@ Properties
 - api/gantt_readonly_config.md
 - api/gantt_readonly_property_config.md
 - api/gantt_redo_config.md
+- api/gantt_resource_calendars_config.md
 - api/gantt_root_id_config.md
 - api/gantt_round_dnd_dates_config.md
 - api/gantt_row_height_config.md
