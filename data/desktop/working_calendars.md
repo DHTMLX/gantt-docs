@@ -4,7 +4,7 @@ Working Calendars at Task and Resource Levels
 This feature allows you to set particular working schedules for separate tasks or groups of tasks with the help of individual calendars.
 Thus you will be able to define and manage date and time for performing a particular task or a group of tasks united by some resource.
 
-Despite these calendars don't have visual interface, they are taken into account while calculating schedules for particular tasks.
+Despite these calendars don't have visual interface, they are taken into account while calculating schedules for separate tasks.
 
 To add a calendar into Gantt, you should complete three simple steps:
 
@@ -16,7 +16,9 @@ To add a calendar into Gantt, you should complete three simple steps:
 Creating Working Calendar
 --------------------
 
-There are two ways to initialize a working calendar. The first one is to use the api/gantt_createcalendar.md method.
+There are two ways to initialize a working calendar. 
+
+###Using the api/gantt_createcalendar.md method
 
 This method presupposes two possible options:
 
@@ -32,6 +34,10 @@ to the api/gantt_createcalendar.md method
 ~~~js
 var newCalendar = gantt.createCalendar(calendar);
 ~~~
+
+###Using the api/gantt_addcalendar.md method
+
+This way is fully described in the next step.
 
 
 Adding Calendar into Gantt
@@ -57,6 +63,10 @@ gantt.addCalendar({
 });
 ~~~
 
+{{note
+You can also use this option for creating a calendar.
+}}
+
 The calendar configuration object can contain the following attributes:
 
 - **id** - (id) optional, the calendar id
@@ -74,7 +84,7 @@ Now that your calendar is initialized and added into Gantt, you should assign it
 
 ###Assigning a calendar to a task
 
-To assign a working calendar to a task, you need to set an id for the calendar in its configuration object 
+To assign a working calendar to a task, you need to set the calendar id and its configuration object called **worktime**:
 
 ~~~js
 gantt.addCalendar({
@@ -86,7 +96,7 @@ gantt.addCalendar({
 });
 ~~~
 
-and then set it as a value of the **"calendar_id"** attribute in the task object:
+and then set the id of the calendar as a value of the **"calendar_id"** attribute in the task object:
 
 ~~~js
 { 

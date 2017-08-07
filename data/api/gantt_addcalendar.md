@@ -15,7 +15,7 @@ addCalendar
 
 @example:
 
-// adding a previosuly created calendar
+// adding a previously created calendar
 gantt.addCalendar(calendar);
 
 // adding a calendar with a new config
