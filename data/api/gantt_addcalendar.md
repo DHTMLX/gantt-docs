@@ -6,7 +6,7 @@ addCalendar
 	check 
 
 @short:
-	adds a calendar for a task or for a group of tasks
+	adds a calendar into Gantt
 
 @params:
 - calendar		object		an object with configuration of the calendar
@@ -38,9 +38,25 @@ The calendar configuration object can contain the following attributes:
 - **id** - (id) optional, the calendar id
 - **worktime** - (object) an object that sets the worktime in days and hours. It can include:
 	- **hours** - (array) an array with global working hours, sets the start and end hours of the task
-    - **days** - (array) an array of 7 days of the week (from 0 - Sunday,to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day.    
-    Instead of the week day you can also set custom working hours for this day.<br> 
-    For example: **days: [0, 1, 1, 1, [12, 17], 1, 0]**, where [12,17] - time from 12 pm to 17 pm.
+    - **days** - (array) an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day.    
+
+###Setting individual working hours for a day
+
+Instead of the number of a week day, you can also set custom working hours for this day.<br>
+For example:  
+
+~~~js
+var calendar = {
+    id:"calendar1", // optional
+    worktime: {
+        hours: [8, 17],
+        days: [ 0, 1, 1, 1, [12, 17], 1, 0]
+    }
+}
+~~~
+
+where [12,17] - working hours from 12 pm to 17 pm for Thursday.
+
     
 @relatedsample:
 

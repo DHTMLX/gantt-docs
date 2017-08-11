@@ -6,7 +6,7 @@ calendar_property
 
 
 @short:
-	changes the name of the property that affects the id of a calendar assigned to a task/a group of tasks
+	changes the name of the property that affects binding of a calendar to a task/group of tasks
 
 @type: string
 @example:

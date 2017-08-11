@@ -6,7 +6,7 @@ createCalendar
 	check 
 
 @short:
-	creates a working calendar at the task or resource level
+	creates a working calendar
 
 @params:
 

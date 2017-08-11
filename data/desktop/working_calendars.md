@@ -13,6 +13,45 @@ To add a calendar into Gantt, you should complete three simple steps:
 3. [Assign the calendar to a task/group of tasks](desktop/working_calendars.md#assigningcalendartotasks)
 
 
+Calendar Configuration Object
+--------------------
+
+The calendar configuration object looks as follows:
+
+~~~js
+var calendar = {
+    id:"calendar1", // optional
+    worktime: {
+        hours: [8, 17],
+        days: [ 0, 1, 1, 1, 1, 1, 0]
+    }
+}
+~~~
+
+It contains the following attributes:
+
+- **id** - (id) optional, the calendar id
+- **worktime** - (object) an object that sets the work time in days and hours. It can include:
+	- **hours** - (array) an array with global working hours, sets the start and end hours of the task
+    - **days** - (array) an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day.    
+
+###Setting individual working hours for a day
+
+Instead of the number of a week day, you can also set custom working hours for this day.<br>
+For example:  
+
+~~~js
+var calendar = {
+    id:"calendar1", // optional
+    worktime: {
+        hours: [8, 17],
+        days: [ 0, 1, 1, 1, [12, 17], 1, 0]
+    }
+}
+~~~
+
+where [12,17] - working hours from 12 pm to 17 pm for Thursday.
+
 Creating Working Calendar
 --------------------
 
@@ -37,7 +76,7 @@ var newCalendar = gantt.createCalendar(calendar);
 
 ###Using the api/gantt_addcalendar.md method
 
-This way is fully described in the next step.
+This way is fully described in the next section.
 
 
 Adding Calendar into Gantt
@@ -51,7 +90,7 @@ After you've created a calendar, you have to add it into Gantt with the help of 
 gantt.addCalendar(calendar);
 ~~~
 
-- set a new calendar config during the call of the **addCalendar()** method
+- set a new [calendar config](desktop/working_calendars.md#calendarconfigurationobject) 
 
 ~~~js
 gantt.addCalendar({
@@ -67,15 +106,6 @@ gantt.addCalendar({
 You can also use this option for creating a calendar.
 }}
 
-The calendar configuration object can contain the following attributes:
-
-- **id** - (id) optional, the calendar id
-- **worktime** - (object) an object that sets the work time in days and hours. It can include:
-	- **hours** - (array) an array with global working hours, sets the start and end hours of the task
-    - **days** - (array) an array of 7 days of the week (from 0 - Sunday,to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day.    
-Instead of the week day you can also set custom working hours for this day.<br>
-For example: **days: [0, 1, 1, 1, [12, 17], 1, 0]**, where [12,17] - time from 12 pm to 17 pm.
-    
 
 Assigning Calendar to Tasks
 ----------------
@@ -84,7 +114,7 @@ Now that your calendar is initialized and added into Gantt, you should assign it
 
 ###Assigning a calendar to a task
 
-To assign a working calendar to a task, you need to set the calendar id and its configuration object called **worktime**:
+To assign a working calendar to a task, you need to set the calendar id and the **worktime** object with working days and hours:
 
 ~~~js
 gantt.addCalendar({
@@ -105,7 +135,7 @@ and then set the id of the calendar as a value of the **"calendar_id"** attribut
 }
 ~~~
 
-You can modify the name of the task property responsible for binding a calendar via the api/gantt_calendar_property_config.md configuration option:
+You can modify the name of the task property responsible for binding a calendar to a task via the api/gantt_calendar_property_config.md configuration option:
 
 ~~~js
 gantt.config.calendar_property = "property_name";
@@ -113,13 +143,13 @@ gantt.config.calendar_property = "property_name";
 
 {{sample 09_worktime/06_task_calendars.html}}
 
-###Assigning a calendar to a task property
+###Assigning a unique calendar to a specific resource
 
-It is also possible to assign a working calendar to a certain attribute of a task. 
+It is also possible to assign a particular working calendar to tasks that require specific resources (people, appliances, etc.). 
 
-For example, you can set different calendars for tasks, depending on the user a task is assigned to. The order of your actions is as follows:
+For example, you can set individual calendars for tasks, depending on a user a task is assigned to. The order of your actions will be as follows:
 
-- add the desired calendars for each user 
+- add the desired calendar for each user 
 
 ~~~js
 var johnCalendarId = gantt.addCalendar({
@@ -141,8 +171,8 @@ var annaCalendarId = gantt.addCalendar({
 });
 ~~~
 
-- use the api/gantt_resource_calendars_config.md configuration option to bind calendars to a task property.
-In the example below we create a "user" property and assign calendars to different users:
+- use the api/gantt_resource_calendars_config.md configuration option to group calendars into one object.
+In the example below we add a "user" object and bind calendars to different users inside it:
 
 ~~~js
 gantt.config.resource_calendars = {
@@ -157,18 +187,16 @@ gantt.config.resource_calendars = {
 The "user" object includes a set of *key:value* pairs, where key is the number of the user and value corresponds to the 
 id of the calendars we have specified at the previous step.
 
-- specify the **user** attribute in each task config object. 
-As a value of this attribute, use the key of the calendar from the "user" object defined in the **resource_calendars** configuration option:
+- specify the **user** attribute in task config objects. 
+As a value of this attribute, use the key of the necessary calendar from the "user" object defined in the **resource_calendars** configuration option:
 
 ~~~js
-{"id":3, user:"2", "text":"Task #2", "start_date":"11-04-2013", 
-	"duration":"4", "parent":"1", "progress": 0.6, "open": true},
-{"id":4, user:"3", "text":"Task #3", "start_date":"13-04-2013", 
-	"duration":"3", "parent":"1", "progress": 0.5, "open": true},
-{"id":5, user:"0", "text":"Task #1.1", "start_date":"02-04-2013", 
-	"duration":"7", "parent":"2", "progress": 0.6, "open": true},
-{"id":6, user:"1", "text":"Task #1.2", "start_date":"03-04-2013", 
-	"duration":"7", "parent":"2", "progress": 0.6, "open": true},
+{ "id":1, user:"1", "text":"Project #2", "start_date":"01-04-2013", "duration":"5" },
+{ "id":2, user:"0", "text":"Task #1", "start_date":"02-04-2013", "duration":"2" },
+{ "id":3, user:"2", "text":"Task #2", "start_date":"11-04-2013", "duration":"4" },
+{ "id":4, user:"3", "text":"Task #3", "start_date":"13-04-2013", "duration":"3" },
+{ "id":5, user:"0", "text":"Task #1.1", "start_date":"02-04-2013", "duration":"7" },
+{ "id":6, user:"1", "text":"Task #1.2", "start_date":"03-04-2013", "duration":"7" }
 ~~~
 
 {{sample 09_worktime/07_resource_calendars.html}}
@@ -201,7 +229,9 @@ The method takes the id of the global calendar as a parameter, which is "global"
 
 The default working time is the following:
 
-Working days are from Monday to Friday. Working hours are from 08:00 to 17:00.
+- working hours are from 08:00 to 17:00.
+- working days are from Monday to Friday. 
+
 
 
 ###Getting the calendar of a task
