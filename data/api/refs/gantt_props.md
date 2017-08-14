@@ -17,7 +17,7 @@ Properties
 - api/gantt_branch_loading_config.md - enables the dynamic loading in the Gantt chart
 - api/gantt_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
 - api/gantt_buttons_right_config.md - stores a collection of buttons resided in the right bottom corner of the lightbox
-- api/gantt_calendar_property_config.md - changes the name of the property that affects the id of a calendar assigned to a task/a group of tasks
+- api/gantt_calendar_property_config.md - changes the name of the property that affects binding of a calendar to a task/group of tasks
 - api/gantt_cascade_delete_config.md - enables cascade deleting of nested tasks and links
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
@@ -69,7 +69,7 @@ Properties
 - api/gantt_readonly_config.md - activates the read-only mode for the Gantt chart
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
-- api/gantt_resource_calendars_config.md - 
+- api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table

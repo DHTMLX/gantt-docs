@@ -3,7 +3,7 @@ Methods
 =======
 
 {{api
-- api/gantt_addcalendar.md - adds a calendar for a task or for a group of tasks
+- api/gantt_addcalendar.md - adds a calendar into Gantt
 - api/gantt_addlink.md - adds a new dependency link
 - api/gantt_addlinklayer.md - displayes an additional layer with custom elements for a link in the timeline area
 - api/gantt_addmarker.md - adds a marker to the timeline area
@@ -30,7 +30,7 @@ Methods
 - api/gantt_confirm.md - calls a confirm message box
 - api/gantt_copy.md - creates a deep copy of provided object
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
-- api/gantt_createcalendar.md - creates a working calendar at the task or resource level
+- api/gantt_createcalendar.md - creates a working calendar
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
 - api/gantt_dataprocessor.md - dataProcessor constructor
 - api/gantt_datefrompos.md - gets the date of the specified horizontal  position in the chart area

@@ -37,6 +37,7 @@ gantt.addCalendar(calendar1);
 @relatedapi:
 api/gantt_addcalendar.md
 api/gantt_deletecalendar.md
+api/gantt_calendar_other.md
 
 @related:
 desktop/working_calendars.md

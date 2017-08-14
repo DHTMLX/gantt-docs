@@ -7,7 +7,7 @@ Gantt API
 <div class='h2'>Methods</div>
 
 {{api
-- api/gantt_addcalendar.md - adds a calendar for a task or for a group of tasks
+- api/gantt_addcalendar.md - adds a calendar into Gantt
 - api/gantt_addlink.md - adds a new dependency link
 - api/gantt_addlinklayer.md - displayes an additional layer with custom elements for a link in the timeline area
 - api/gantt_addmarker.md - adds a marker to the timeline area
@@ -34,7 +34,7 @@ Gantt API
 - api/gantt_confirm.md - calls a confirm message box
 - api/gantt_copy.md - creates a deep copy of provided object
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
-- api/gantt_createcalendar.md - creates a working calendar at the task or resource level
+- api/gantt_createcalendar.md - creates a working calendar
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
 - api/gantt_dataprocessor.md - dataProcessor constructor
 - api/gantt_datefrompos.md - gets the date of the specified horizontal  position in the chart area
@@ -279,7 +279,7 @@ Gantt API
 - api/gantt_branch_loading_config.md - enables the dynamic loading in the Gantt chart
 - api/gantt_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
 - api/gantt_buttons_right_config.md - stores a collection of buttons resided in the right bottom corner of the lightbox
-- api/gantt_calendar_property_config.md - changes the name of the property that affects the id of a calendar assigned to a task/a group of tasks
+- api/gantt_calendar_property_config.md - changes the name of the property that affects binding of a calendar to a task/group of tasks
 - api/gantt_cascade_delete_config.md - enables cascade deleting of nested tasks and links
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
@@ -331,7 +331,7 @@ Gantt API
 - api/gantt_readonly_config.md - activates the read-only mode for the Gantt chart
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
-- api/gantt_resource_calendars_config.md - 
+- api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table
@@ -436,8 +436,8 @@ Gantt API
 
 {{api
 - api/gantt_$click_other.md - redefines the default click behavior for buttons of the Gantt chart
-- api/gantt_$keyboardnavigation_other.md - 
 - api/gantt_ajax_other.md - dhtmlx ajax module
+- api/gantt_calendar_other.md - 
 - api/gantt_config_other.md - defines configuration options for dates, scale, controls
 - api/gantt_date_other.md - a set of date formatting methods
 - api/gantt_env_other.md - a set of flags which describe current environment
@@ -448,7 +448,6 @@ Gantt API
 - api/gantt_skin_other.md - returns the current skin of the Gantt chart
 - api/gantt_skins_other.md - returns objects of the available skins
 - api/gantt_templates_other.md - defines formatting templates for dates, titles, tooltips in the Gantt chart
-- api/gantt_timecalculator_other.md - 
 - api/gantt_version_other.md - returns the version of dhtmlxGantt
 - api/gantt_xml_other.md - specifies XML serialization and parsing
 }}

@@ -66,6 +66,7 @@ where [12,17] - working hours from 12 pm to 17 pm for Thursday.
 @relatedapi:
 api/gantt_createcalendar.md
 api/gantt_deletecalendar.md
+api/gantt_calendar_other.md
 
 @related:
 desktop/working_calendars.md
