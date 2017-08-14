@@ -5,9 +5,10 @@ getClosestWorkTime
 
 @params:
 - config	object		the configuration object 
+* task		object		optional, the object of the task the duration of which should be calculated
 
 @returns: 
-- date	Date	a Date object of the closest working time 
+- date		Date	a Date object of the closest working time 
 
 
 @example:

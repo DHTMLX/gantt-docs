@@ -1,14 +1,19 @@
 isWorkTime
 =============
+
+@todo:check details
+
 @short:checks whether the specified date is working or not
 	
 
 @params:
-- date	Date	a date to check 
-- timeunit	string	a time unit: 'hour' or 'day'.<br> If not specified, the value of 'gantt.config.duration_unit'  is used 
+- date			Date		a date to check 
+* time_unit		string		optional, a time unit: "minute", "hour", "day", "week", "month", "year"
+* task			object		optional, the object of the task the duration of which should be calculated
 
 @returns:
 - isWorkTime	boolean		<i>true</i>, if the specified date is working time. Otherwise, <i>false</i>
+
 @example:
 //checks wether the specified day (5 April, Friday) is working
 gantt.isWorkTime(new Date(2013,3,5));
@@ -38,4 +43,12 @@ gantt.isWorkTime(new Date(2013,3,1,17,00), "hour");
 
 gantt.isWorkTime(new Date(2013,3,1,17,00), "day"); 
 //-> true, cause Monday is a working day
+~~~
+
+The method can also take as a parameter the configuration object of a time span:
+
+~~~js
+if (gantt.isWorkTime({date: date, task: task})){
+    alert("worktime of task" + task.text);
+}
 ~~~
