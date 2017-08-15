@@ -18,6 +18,7 @@ gantt.config.columns = [
 
 Overviewing the default columns
 ---------------------------------------------
+
 By default, the grid contains 4 columns:
 
 1. Task name
@@ -29,6 +30,44 @@ By default, the grid contains 4 columns:
 Note, you needn't to specify the api/gantt_columns_config.md parameter to present the default columns in the grid.
 }}
 
+Showing the WBS code of a task
+------------------------
+
+You can add a column that will display the outline numbers of tasks (their WBS code). For this, you need to use the api/gantt_getwbscode.md method in the column 
+template.
+
+~~~js
+gantt.config.columns = [
+	{name:"wbs", label:"WBS", width:40, template:gantt.getWBSCode }, /*!*/
+	{name:"text", label:"Task name", tree:true, width:170 },
+	{name:"start_date", align: "center", width: 90},
+	{name:"duration", align: "center" , width: 60},
+	{name:"add", width:40}
+];
+~~~
+
+{{sample 07_grid/09_wbs_column.html}}
+
+It is also possible to get the WBS code of the necessary task. For example, we load the following tasks in the gantt:
+
+~~~js
+gantt.parse({
+ "data":[
+  {"id":1, "text":"Project #1", "start_date":"28-03-2013", 
+  	"duration":"11", "parent":"0", "open": true},
+  {"id":2, "text":"Task #1", "start_date":"01-04-2013", "duration":"18", "parent":"1"},
+  {"id":3, "text":"Task #2", "start_date":"02-04-2013", "duration":"8", "parent":"1"}
+ ],
+ "links":[]
+});
+~~~
+
+and we want to get the WBS code of the task with id=3. For this, we pass the object of a task as a parameter to the api/gantt_getwbscode.md method.
+It will return a string with the WBS code of the task:
+
+~~~js
+var wbs_code = gantt.getWBSCode(gantt.getTask(3)) // -> returns "1.2"
+~~~
 
 Setting mapping between columns and data properties
 ---------------------------------------

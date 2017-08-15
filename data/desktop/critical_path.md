@@ -10,18 +10,33 @@ Slack time is the time that a task can slip without affecting other tasks or the
 
 <div style="text-align:center;"><img src="desktop/critical_path.png"/></div>
 
+{{note
+To start using the extension, include the ext/dhtmlxgantt_critical_path.js file on the page.
+}}
+
 To show the critical path in the Gantt chart, set the api/gantt_highlight_critical_path_config.md property to 'true':
 
 {{snippet
 Making the Gantt chart to display the critical path
 }}
 ~~~js
-gantt.config.highlight_critical_path = true;
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="codebase/dhtmlxgantt.js"></script>   
+   <link href="codebase/dhtmlxgantt.css" rel="stylesheet">   
+   <script src="codebase/ext/dhtmlxgantt_critical_path.js"></script>  /*!*/
+</head>
+<body>
+    gantt.config.highlight_critical_path = true;
+    //your code will be here
+</body>
+</html>
 ~~~
+
 {{sample
 02_extensions/03_critical_path.html
 }}
-
 
 
 <br>

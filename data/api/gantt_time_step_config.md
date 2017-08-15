@@ -4,7 +4,7 @@ time_step
 	
 
 @type: number
-@default:30
+@default:60
 @example:
 gantt.config.time_step = 15;
 ...

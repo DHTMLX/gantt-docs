@@ -1,19 +1,42 @@
 getClosestWorkTime
 =============
+
 @short:returns the closest working time
 	
 
 @params:
 - config	object		the configuration object 
 
-@returns: 
-- date	Date	a Date object of the closest working time 
 
+@returns: 
+- date		Date	a Date object of the closest working time 
+
+@related:
+	desktop/working_time.md
+@relatedapi:
+	api/gantt_work_time_config.md
+	api/gantt_setworktime.md
+    api/gantt_getworkhours.md
 
 @example:
+//checks whether the specified date is a working day in global settings
+gantt.getClosetsWorkTime({ date: new Date(2017,3,5) });
+// or
+gantt.getClosetsWorkTime(new Date(2017,3,5));
+
+//checks whether the specified date is working day for a specific task
+gantt.getClosetsWorkTime({ date: new Date(2017,3,5), task:task });
 
 @template:	api_method
 @descr:
+
+{{note
+If the api/gantt_work_time_config.md option is disabled, the method return the date unchanged. 
+}}
+
+- The method will use the [global work time calendar](desktop/working_time.md#getcalendars) if no task is specified. <br>
+- Besides, the method can be called directly from a [calendar object](api/gantt_calendar_other.md).
+
 
 Configuration object properties
 ---------------------------------------
@@ -70,6 +93,20 @@ gantt.getClosestWorkTime({
     dir:"future", 
     unit:"hour"
 });// ->Wed Jan 02 2013 08:00:00
+~~~
+		</td>
+	</tr>
+    <tr>
+		<td rowspan=2><b id="unit">task</b></td>
+        <td> optional, the object of the task the duration of which should be calculated</td>
+    </tr>
+    <tr>
+		<td colspan=2 style="text-align:left !important; ">
+~~~js
+var closestTime = gantt.getClosestWorkTime({
+	date:date, 
+    task:task
+});
 ~~~
 		</td>
 	</tr>

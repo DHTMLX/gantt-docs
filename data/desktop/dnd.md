@@ -1,5 +1,6 @@
 Dragging Tasks within the Timeline
 =============================================
+
 Dragging allows users to quickly change the start (end) dates of the tasks, their duration. <br>
 By default, the drag-and-drop is enabled and the user can drag a task along its row in the timeline.
 
@@ -12,13 +13,13 @@ To customize the drag-and-drop behaviour, use the following events:
 
 <br>
 
-
 Let's consider typical cases when the default drag behaviour needs customization:
 
 
 1. [Denying dragging specific tasks](desktop/dnd.md#denyingdraggingofspecifictasks).
 2. [Denying dragging tasks out of specific dates](desktop/dnd.md#denyingdraggingtasksoutofspecificdates).
-3. [Dragging childs together with the parent](desktop__dnd.html#draggingchildstogetherwiththeparent).
+3. [Dragging childs together with the parent](desktop/dnd.md#draggingchildstogetherwiththeparent).
+4. [Setting minimal task duration](desktop/dnd.md#settingminimaltaskduration).
 
 Denying dragging of specific tasks
 ---------------------------------------
@@ -137,6 +138,47 @@ Dragging dependent tasks together with independent tasks
 
 There are several ways of implementing tasks moving with their dependent tasks.
 You can read about all of them in a separate article desktop/dragging_dependent_tasks.md.
+
+Setting minimal task duration
+-------------------------------------------
+
+Minimal task duration can be specified via the api/gantt_min_duration_config.md setting.
+
+The option defines the minimum size of the task that can be set during resizing and can be used for preventing users from setting a zero duration.
+
+The value is set in milliseconds:
+~~~js
+// 1 day
+gantt.config.min_duration = 24*60*60*1000;
+
+//OR
+
+// 1 hour
+gantt.config.min_duration = 60*60*1000;
+~~~
+
+Autoscroll during tasks' dragging
+---------------------------------
+
+If you have a large dataset in the Gantt chart, you often need to drag a task to a new distant position or set links between tasks located at a significant distance.
+
+In this case the **autoscroll** functionality is of great help. It is enabled by default, but you can manage this behavior via 
+the api/gantt_autoscroll_config.md configuration option.
+
+~~~js
+gantt.config.autoscroll = false;
+gantt.init("gantt_here");
+~~~
+
+Besides, you can adjust the speed of autoscrolling in milliseconds with the help of the corresponding property - api/gantt_autoscroll_speed_config.md:
+
+~~~js
+gantt.config.autoscroll = true;
+gantt.config.autoscroll_speed = 50;
+ 
+gantt.init("gantt_here");
+~~~
+
 
 @index:
 - desktop/dragging_dependent_tasks.md

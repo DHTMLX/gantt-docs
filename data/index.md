@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 4.1!</h2>
+    <h2>Meet Gantt 4.2!</h2>
     
     <p>
     New version brings you new functionality and extended API
     </p>
     <ul>
-		<li><a href="desktop/keyboard_navigation.md">Keyboard navigation</a></li>
-        <li><a href="desktop/accessibility.md#waiariaattributes">WAI-ARIA support</a></li>
-        <li><a href="desktop/accessibility.md#highontrastthemes">High-contrast themes</a></li>
+		<li><a href="desktop/working_time.md#multipleworktimecalendars">Work Time Calendars at Task/Resource Levels</a></li>
+        <li><a href="desktop/specifying_columns.md#showingthewbscodeofatask">WBS code (outline numbers) Calculation</a></li>
+        <li><a href="desktop/dnd.md#autoscrollduringtasksdragging">Autoscroll for Drag and Drop Operations</a></li>
 	</ul>
 
     <p class='action_buttons'>
@@ -30,7 +30,7 @@ Start
     
     <div class='hot-right'>
     	Check also
-    	<a class='first' href='http://docs.dhtmlx.com/scheduler'>Scheduler</a>
+    	<a class='first' href='https://docs.dhtmlx.com/scheduler'>Scheduler</a>
     	<a class='second' href='http://scheduler-net.com/'>Scheduler.Net</a>
 	</div>
     
@@ -44,11 +44,12 @@ Start
 </div>
 
 @index:
+
+- api/refs/gantt.md
 - whatsnew.md
 - migrating.md
 - overview.md
 - desktop/guides.md
-- api/refs/gantt.md
 - faq.md
 
 @metadescr:

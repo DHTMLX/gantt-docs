@@ -1,14 +1,14 @@
 addTaskLayer
 =============
 
-@short:displayes an additional layer with custom elements for a task in the timeline area
+@short:displays an additional layer with custom elements for a task in the timeline area
 @edition: pro
 
 @params:
 - func	function, object	a render function  or a config object 
 
 @returns:
--layerId	string		a DOM element that will be displayed in the layer
+- layerId	string		a DOM element that will be displayed in the layer
 
 
 @example:
