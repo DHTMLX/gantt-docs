@@ -232,6 +232,9 @@ The structure of a standard database to load tasks and links to the Gantt chart 
         <li><b>progress</b> - (<i>number</i>) a number from 0 to 1 that shows what percent of the task is complete. </li>
         <li><b>duration</b> - (<i>number</i>) the task duration in the units of the current time scale. </li>
         <li><b>parent</b> - (<i>number</i>) the id of the parent task. </li>
+        <li><b>type</b> - (<i>string</i>) optional, the <a href="desktop__task_types.html">type</a> of the task. </li>
+        <li><b>readonly</b>-(<i>boolean</i>) optional, can mark task as <a href="desktop__readonly_mode.html#readonlymodeforspecifictaskslinks">readonly</a>. </li>
+        <li><b>editable</b>-(<i>boolean</i>) optional, can mark task as <a href="desktop__readonly_mode.html#readonlymodeforspecifictaskslinks">editable</a>. </li>
     </ul>
 	<li><b>gantt_links</b> table - specifies the gantt dependency links</li>
     <ul>
@@ -246,6 +249,9 @@ The structure of a standard database to load tasks and links to the Gantt chart 
             	<li>3 - 'start to finish'</li>
             </ul> 
         </li> 
+        <li><b>lag</b>-(<i>number</i>) optional, <a href="desktop__auto_scheduling.html#settinglagandleadtimesbetweentasks">task lag</a>. </li>
+        <li><b>readonly</b>-(<i>boolean</i>) optional, can mark link as <a href="desktop__readonly_mode.html#readonlymodeforspecifictaskslinks">readonly</a>. </li>
+        <li><b>editable</b>-(<i>boolean</i>) optional, can mark link as <a href="desktop__readonly_mode.html#readonlymodeforspecifictaskslinks">editable</a>. </li>
     </ul>
 </ul> 
 
