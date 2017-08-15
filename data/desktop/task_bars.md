@@ -18,5 +18,4 @@ Configuring Tasks
 - desktop/readonly_mode.md
 - desktop/validation.md
 - desktop/dnd.md
-- desktop/working_calendars.md
 }}

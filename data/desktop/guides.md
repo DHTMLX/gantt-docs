@@ -127,7 +127,6 @@ The articles come around key procedures and problem-solving activities.
  		    		<li>desktop/readonly_mode.md</li>
                     <li>desktop/validation.md</li>
                     <li>desktop/dnd.md</li>
-                    <li>desktop/working_calendars.md</li>
             </ul>
         </td>
         <td class='topic_description'>Covers the basics of performing general operations over task objects, such as adding, deleting, setting the date format, filtering, etc.</td>

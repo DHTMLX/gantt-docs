@@ -4,7 +4,7 @@ Calculating Tasks' Duration in Work Time
 By default, dhtmlxGantt calculates the duration of tasks in calendar time. It assumes 
 that the final duration of the tasks can include weekends and holidays.
 
-##Enabling Worktime Calculation
+##Enabling Work Time Calculation
 
 To provide calculating tasks' duration in work time, use the api/gantt_work_time_config.md option:
 
@@ -149,14 +149,14 @@ To hide the day-off time, use the technique described in the article - desktop/c
 }}
 
 
-##Multiple Worktime Calendars
+##Multiple Work Time Calendars
 
-In addition to global working time settings, Gantt allows creating multiple worktime calendars. You can assign them to individual tasks or groups of tasks.
+In addition to global working time settings, Gantt allows creating multiple work time calendars. You can assign them to individual tasks or groups of tasks.
 
 
 <h3 id="createcalendar">Creating a working calendar</h3>
 
-A new calendar instance can be created using the api/gantt_createcalendar.md method
+A new calendar instance can be created using the api/gantt_createcalendar.md method.
 
 This method presupposes two possible options:
 
@@ -187,7 +187,7 @@ After you've created a calendar, you have to add it into Gantt with the help of 
 var calendarId = gantt.addCalendar(calendar);
 ~~~
 
-- set a new [calendar config](desktop/working_calendars.md#calendarconfigurationobject) 
+- set a new calendar config, which includes the calendar id and the **worktime** object with working days and hours:
 
 ~~~js
 var calendarId = gantt.addCalendar({
@@ -225,7 +225,7 @@ The default calendar instance (global settings) can be accessed by the predefine
 var globalSettings = gantt.getCalendar("global");
 ~~~
 
-This calendar is used by the [worktime methods](desktop/working_time.md#globalsettings), when there is no other calendar specified. It is assigned to tasks by default.
+This calendar is used by the [work time methods](desktop/working_time.md#globalsettings), when there is no other calendar specified. It is assigned to tasks by default.
 
 
 <h4 id="gettaskcalendar">Getting the current calendar of a task</h4>
@@ -244,12 +244,12 @@ if(calendar.isWorkTime(date)){
 
 {{sample 09_worktime/06_task_calendars.html}}
 
-If worktime is disabled in the gantt config, the method will return a 24/7 worktime calendar.
+If work time is disabled in the gantt config, the method will return a 24/7 work time calendar.
 
 
 <h3 id="globalmethodsforcalendars">Using global methods to access calendars</h3>
 
-The [worktime methods](desktop/working_time.md#globalsettings) of the Gantt object can be used to calculate the time duration of a specific task, 
+The [work time methods](desktop/working_time.md#globalsettings) of the Gantt object can be used to calculate the time duration of a specific task, 
 without accessing its calendar manually. 
 
 In that case methods take an object argument where the related "task" object is passed as one of the properties.
@@ -259,7 +259,7 @@ In that case methods take an object argument where the related "task" object is 
 
 ~~~js
 if (gantt.isWorkTime({date: date, task: task})){
-    alert("worktime of a task" + task.text);
+    alert("work time of a task" + task.text);
 }
 ~~~
 
@@ -268,7 +268,7 @@ Which is equal to:
 ~~~js
 var calendar = gantt.getTaskCalendar(task);
 if (calendar.isWorkTime({date: date})){
-    alert("worktime of a task" + task.text);
+    alert("work time of a task" + task.text);
 }
 ~~~
 

@@ -7,7 +7,7 @@ Start
     New version brings you new functionality and extended API
     </p>
     <ul>
-		<li><a href="desktop/working_calendars.md">Worktime Calendar at Task/Resource Levels</a></li>
+		<li><a href="desktop/working_time.md#multipleworktimecalendars">Work Time Calendars at Task/Resource Levels</a></li>
         <li><a href="desktop/specifying_columns.md#showingthewbscodeofatask">WBS code (outline numbers) Calculation</a></li>
         <li><a href="desktop/dnd.md#autoscrollduringtasksdragging">Autoscroll for Drag and Drop Operations</a></li>
 	</ul>

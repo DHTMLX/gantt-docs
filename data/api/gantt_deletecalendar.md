@@ -1,12 +1,8 @@
 deleteCalendar
 =============
 
-
-@todo:
-	check 
-
 @short:
-	deletes an existing calendar by its id
+	deletes a task calendar by its id
 
 @params:
 
@@ -35,4 +31,4 @@ api/gantt_addcalendar.md
 api/gantt_createcalendar.md
 
 @related:
-desktop/working_calendars.md
+desktop/working_time.md#multipleworktimecalendars

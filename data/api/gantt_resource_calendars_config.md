@@ -33,7 +33,7 @@ gantt.config.resource_calendars = {
 added in version 4.2
 
 @related:
-desktop/working_calendars.md
+desktop/working_time.md#assigningcalendartoresource
 
 @relatedapi:
 api/gantt_addcalendar.md

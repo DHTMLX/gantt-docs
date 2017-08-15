@@ -1,10 +1,6 @@
 addCalendar
 =============
 
-
-@todo:
-	check 
-
 @short:
 	adds a calendar into Gantt
 
@@ -50,12 +46,12 @@ var calendar = {
     id:"calendar1", // optional
     worktime: {
         hours: [8, 17],
-        days: [ 0, 1, 1, 1, [12, 17], 1, 0]
+        days: [ 0, 1, 1, 1, {hours: [12, 17]}, 1, 0]
     }
 }
 ~~~
 
-where [12,17] - working hours from 12 pm to 17 pm for Thursday.
+where {hours: [12, 17]} - working hours from 12 pm to 17 pm for Thursday.
 
     
 @relatedsample:
@@ -69,4 +65,4 @@ api/gantt_deletecalendar.md
 api/gantt_calendar_other.md
 
 @related:
-desktop/working_calendars.md
+desktop/working_time.md#multipleworktimecalendars

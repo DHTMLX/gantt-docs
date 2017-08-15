@@ -1,11 +1,8 @@
 getShortcutHandler
 =============
 
-@todo:
-	check
-
 @short:
-	gets a key navigation shortcut
+	gets a key navigation shortcut handler
 
 @params:
 - shortcut		string			the key name or the name of keys combination for a shortcut (<a href="desktop/keyboard_navigation.md#shortcutsyntax">shortcut syntax</a>)

@@ -8,7 +8,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ####Functionality
 
-- [Worktime calendars at the task and resource levels](desktop/working_calendars.md)
+- [Work Time calendars at the task and resource levels](desktop/working_time.md#multipleworktimecalendars)
 - [WBS code (outline numbers) calculation](desktop/specifying_columns.md#showingthewbscodeofatask)
 - [Autoscroll for drag and drop operations](desktop/dnd.md#autoscrollduringtasksdragging)
 - [Persian (Farsi) locale is added](desktop/localization.md#predefinedlocales)

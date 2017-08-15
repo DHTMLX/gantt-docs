@@ -40,4 +40,4 @@ api/gantt_deletecalendar.md
 api/gantt_calendar_other.md
 
 @related:
-desktop/working_calendars.md
+desktop/working_time.md#multipleworktimecalendars

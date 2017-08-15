@@ -1,11 +1,14 @@
 getClosestWorkTime
 =============
+
+@todo: check details
+
 @short:returns the closest working time
 	
 
 @params:
 - config	object		the configuration object 
-* task		object		optional, the object of the task the duration of which should be calculated
+
 
 @returns: 
 - date		Date	a Date object of the closest working time 
@@ -71,6 +74,20 @@ gantt.getClosestWorkTime({
     dir:"future", 
     unit:"hour"
 });// ->Wed Jan 02 2013 08:00:00
+~~~
+		</td>
+	</tr>
+    <tr>
+		<td rowspan=2><b id="unit">task</b></td>
+        <td> optional, the object of the task the duration of which should be calculated</td>
+    </tr>
+    <tr>
+		<td colspan=2 style="text-align:left !important; ">
+~~~js
+var closestTime = gantt.getClosestWorkTime({
+	date:date, 
+    task:task
+});
 ~~~
 		</td>
 	</tr>
