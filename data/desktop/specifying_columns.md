@@ -48,11 +48,25 @@ gantt.config.columns = [
 
 {{sample 07_grid/09_wbs_column.html}}
 
-The method takes the object of a task as a parameter and returns a string with the WBS code of the task:
+It is also possible to get the WBS code of the necessary task. For example, we load the following tasks in the gantt:
 
 ~~~js
-var wbs_code = gantt.getWBSCode({"id":2, "text":"Task #1", "start_date":"02-04-2013", 
-    "duration":"8", "parent":"1", "progress":0.5, "open": true}) // -> returns "2.1"
+gantt.parse({
+ "data":[
+  {"id":1, "text":"Project #1", "start_date":"28-03-2013", 
+  	"duration":"11", "parent":"0", "open": true},
+  {"id":2, "text":"Task #1", "start_date":"01-04-2013", "duration":"18", "parent":"1"},
+  {"id":3, "text":"Task #2", "start_date":"02-04-2013", "duration":"8", "parent":"1"}
+ ],
+ "links":[]
+});
+~~~
+
+and we want to get the WBS code of the task with id=3. For this, we pass the object of a task as a parameter to the api/gantt_getwbscode.md method.
+It will return a string with the WBS code of the task:
+
+~~~js
+var wbs_code = gantt.getWBSCode(gantt.getTask(3)) // -> returns "1.2"
 ~~~
 
 Setting mapping between columns and data properties

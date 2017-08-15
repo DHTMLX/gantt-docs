@@ -5,7 +5,7 @@ calculateDuration
     calculates the duration of a task 
 
 @params:
-- config	object		the <a href="api/gantt_calculateduration.md#configurationobjectproperties">configuration object</a> of a time span
+- config	object		the <a href="#configurationobjectproperties">configuration object</a> of a time span
 
 @returns:
 - duration		number		the duration of a task in units specified by the <a href="api/gantt_duration_unit_config.md">duration_unit</a> option
@@ -17,7 +17,11 @@ gantt.init("gantt_here");
 
 // calculate worktime duration between specified dates 
 // (for specific task, if multiple working calendars used)
-gantt.calculateDuration({start_date: start, end_date: end/*,task: task*/});
+gantt.calculateDuration({
+	start_date: new Date(2013,02,15), 
+    end_date: new Date(2013,02,25)
+    /*,task: task*/
+});
 
 // or 
 gantt.calculateDuration(task);
@@ -33,7 +37,7 @@ If the api/gantt_work_time_config.md option is enabled, the method calculates th
 
 
 - The method will use the [global work time calendar](desktop/working_time.md#getcalendars) if no task is specified. <br>
-- Besides, the method can be called directly for a [calendar object](api/gantt_calendar_other.md) of a separate task.
+- Besides, the method can be called directly for a [calendar object](api/gantt_calendar_other.md).
 
 ##Configuration object properties
 
