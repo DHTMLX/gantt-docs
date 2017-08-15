@@ -1,12 +1,8 @@
 calendar
 =============
 
-@todo:
-	check 
-
-
 @short:
-	the interface of the working calendar object
+	the interface of the [working calendar](desktop/working_time.md#getcalendars) object
 
 @type:object
 
