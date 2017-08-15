@@ -1,10 +1,6 @@
 getCalendars
 =============
 
-
-@todo:
-	check 
-
 @short:
 	gets all the calendars added into Gantt
 
@@ -22,7 +18,8 @@ var calendars = gantt.getCalendars();
 @descr:
 added in version 4.2
 
-
+@related:
+desktop/working_time.md#multipleworktimecalendars
 @relatedapi:
 api/gantt_getcalendar.md
 api/gantt_gettaskcalendar.md

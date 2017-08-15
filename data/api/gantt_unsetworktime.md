@@ -25,6 +25,10 @@ gantt.unsetWorkTime({ hours:[9,18] });
 @descr:
 added in version 4.1
 
+- The method will use the [global work time calendar](desktop/working_time.md#getcalendars) if no task is specified. <br>
+- Besides, the method can be called directly from a [calendar object](api/gantt_calendar_other.md).
+
+
 Configuration object properties
 ---------------------------------------
 

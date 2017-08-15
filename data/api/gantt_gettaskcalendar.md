@@ -1,10 +1,6 @@
 getTaskCalendar
 =============
 
-
-@todo:
-	check 
-
 @short:
 	gets a calendar assigned to the specified task (a task level calendar)
 
@@ -31,21 +27,14 @@ var task_calendar = gantt.getTaskCalendar({
 @descr:
 added in version 4.2
 
-The returned object of the task calendar for the above example is:
+The returned object for the above example is a [calendar object](api/gantt_calendar_other.md). If the api/gantt_work_time_config.md option is disabled, method returns calendar with 24/7 working time enabled.
 
-~~~js
-{
-	id:"custom",
-	worktime: {
-		hours: [8, 17],
-		days: [ 1, 1, 1, 1, 1, 1, 1]
-	}
-}
-~~~
 
 @relatedsample:
 09_worktime/06_task_calendars.html
 
+@related:
+desktop/working_time.md#multipleworktimecalendars
 @relatedapi:
 api/gantt_getcalendar.md
 api/gantt_getcalendars.md

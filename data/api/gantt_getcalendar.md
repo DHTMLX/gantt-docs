@@ -2,9 +2,6 @@ getCalendar
 =============
 
 
-@todo:
-	check 
-
 @short:
 	gets the global calendar of tasks
 
@@ -40,6 +37,9 @@ The default working time is the following:
 - Working days are from Monday to Friday.
 - Working hours are from 08:00 to 17:00.
 
+
+@related:
+desktop/working_time.md#multipleworktimecalendars
 @relatedapi:
 api/gantt_getcalendars.md
 api/gantt_gettaskcalendar.md

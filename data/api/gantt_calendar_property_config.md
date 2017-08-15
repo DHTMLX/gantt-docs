@@ -1,10 +1,6 @@
 calendar_property
 =============
 
-@todo:
-	check 
-
-
 @short:
 	changes the name of the property that affects binding of a calendar to a task/group of tasks
 
@@ -30,3 +26,11 @@ The default value of the option is "calendar_id".
     "open": true
 }
 ~~~
+
+@related:
+desktop/working_time.md#unsettingtheworkingtime
+
+@relatedapi:
+	api/gantt_work_time_config.md
+	api/gantt_setworktime.md
+	api/gantt_isworktime.md
