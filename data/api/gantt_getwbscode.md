@@ -1,9 +1,6 @@
 getWBSCode
 =============
 
-@todo:
-	check 
-
 @short:
 	returns the WBS code (the outline number) of a task
 

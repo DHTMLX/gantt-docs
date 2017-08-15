@@ -1,9 +1,6 @@
 cascade_delete
 =============
 
-@todo:
-	check api and changes in the related article
-
 
 @short:
 enables cascade deleting of nested tasks and links
