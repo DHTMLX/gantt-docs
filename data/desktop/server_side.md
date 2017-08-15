@@ -49,10 +49,9 @@ include ('codebase/connector/gantt_connector.php');
 $dbtype = "SQLite3";
 $res = new SQLite3(dirname(__FILE__)."/samples.sqlite");
 
-// Mysql
-// $dbtype = "MySQL";
-// $res=mysql_connect("192.168.1.251", "gantt", "gantt");
-// mysql_select_db("gantttest");
+// MySql
+// $dbtype = "PDO";
+// $res = new PDO("mysql:host=localhost;dbname=gantt", "root", "");
 
 $gantt = new JSONGanttConnector($res, $dbtype);
 

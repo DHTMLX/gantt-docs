@@ -3,12 +3,13 @@ Methods
 =======
 
 {{api
+- api/gantt_addcalendar.md - adds a calendar into Gantt
 - api/gantt_addlink.md - adds a new dependency link
 - api/gantt_addlinklayer.md - displayes an additional layer with custom elements for a link in the timeline area
 - api/gantt_addmarker.md - adds a marker to the timeline area
 - api/gantt_addshortcut.md - adds a new keyboard shortcut
 - api/gantt_addtask.md - adds a new task
-- api/gantt_addtasklayer.md - displayes an additional layer with custom elements for a task in the timeline area
+- api/gantt_addtasklayer.md - displays an additional layer with custom elements for a task in the timeline area
 - api/gantt_alert.md - calls an alert message box
 - api/gantt_assert.md - if the specified expression is false, an errorMessage is shown in the red popup at the top right corner of the screen
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt
@@ -29,10 +30,12 @@ Methods
 - api/gantt_confirm.md - calls a confirm message box
 - api/gantt_copy.md - creates a deep copy of provided object
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
+- api/gantt_createcalendar.md - creates a working calendar
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
 - api/gantt_dataprocessor.md - dataProcessor constructor
 - api/gantt_datefrompos.md - gets the date of the specified horizontal  position in the chart area
 - api/gantt_defined.md - returns false if the provided argument is undefined, otherwise true
+- api/gantt_deletecalendar.md - deletes a task calendar by its id
 - api/gantt_deletelink.md - deletes the specified dependency link
 - api/gantt_deletemarker.md - deletes the specified marker
 - api/gantt_deletetask.md - deletes the specified  task
@@ -45,6 +48,8 @@ Methods
 - api/gantt_expand.md - expands gantt to the full screen mode
 - api/gantt_findcycles.md - returns all dependency loops in the chart
 - api/gantt_focus.md - sets focus on the gantt
+- api/gantt_getcalendar.md - gets the global calendar of tasks
+- api/gantt_getcalendars.md - gets all the calendars added into Gantt
 - api/gantt_getchildren.md - returns the 1st-level child tasks of the specified parent branch
 - api/gantt_getclosestworktime.md - returns the closest working time
 - api/gantt_getglobaltaskindex.md - get the index of a task in the tree
@@ -70,12 +75,14 @@ Methods
 - api/gantt_getscrollstate.md - returns the scroll position
 - api/gantt_getselectedid.md - returns the id of the selected task
 - api/gantt_getselectedtasks.md - returns an array of the currently selected tasks
+- api/gantt_getshortcuthandler.md - gets a key navigation shortcut handler
 - api/gantt_getsiblings.md - returns siblings of the specified  task (including itself)
 - api/gantt_getslack.md - checks how much time (in the current duration unit) a task has before it starts to affect other tasks
 - api/gantt_getstate.md - gets the current state of the Gantt chart
 - api/gantt_getsubtaskdates.md - calculates the combined start/end dates of tasks nested in a project or another task
 - api/gantt_gettask.md - returns the task object
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period
+- api/gantt_gettaskcalendar.md - gets a calendar assigned to the specified task (a task level calendar)
 - api/gantt_gettaskcount.md - gets the number of tasks that are currently loaded in the gantt
 - api/gantt_gettaskindex.md - get the index of a task in the branch
 - api/gantt_gettasknode.md - returns the HTML element of the task bar
@@ -84,6 +91,7 @@ Methods
 - api/gantt_gettasktop.md - gets the top position of the task's DOM element in the timeline area
 - api/gantt_getundostack.md - returns the stack of stored undo commands
 - api/gantt_getvisibletaskcount.md - gets the number of tasks visible on the screen (those that are not collapsed)
+- api/gantt_getwbscode.md - returns the WBS code (the outline number) of a task
 - api/gantt_getworkhours.md - returns the working hours of the specified date
 - api/gantt_groupby.md - groups tasks by the specified task's attribute
 - api/gantt_haschild.md - checks whether the specified item has child tasks
@@ -151,6 +159,7 @@ Methods
 }}
 
 @index:
+- api/gantt_addcalendar.md
 - api/gantt_addlink.md
 - api/gantt_addlinklayer.md
 - api/gantt_addmarker.md
@@ -177,10 +186,12 @@ Methods
 - api/gantt_confirm.md
 - api/gantt_copy.md
 - api/gantt_correcttaskworktime.md
+- api/gantt_createcalendar.md
 - api/gantt_createtask.md
 - api/gantt_dataprocessor.md
 - api/gantt_datefrompos.md
 - api/gantt_defined.md
+- api/gantt_deletecalendar.md
 - api/gantt_deletelink.md
 - api/gantt_deletemarker.md
 - api/gantt_deletetask.md
@@ -193,6 +204,8 @@ Methods
 - api/gantt_expand.md
 - api/gantt_findcycles.md
 - api/gantt_focus.md
+- api/gantt_getcalendar.md
+- api/gantt_getcalendars.md
 - api/gantt_getchildren.md
 - api/gantt_getclosestworktime.md
 - api/gantt_getglobaltaskindex.md
@@ -218,12 +231,14 @@ Methods
 - api/gantt_getscrollstate.md
 - api/gantt_getselectedid.md
 - api/gantt_getselectedtasks.md
+- api/gantt_getshortcuthandler.md
 - api/gantt_getsiblings.md
 - api/gantt_getslack.md
 - api/gantt_getstate.md
 - api/gantt_getsubtaskdates.md
 - api/gantt_gettask.md
 - api/gantt_gettaskbytime.md
+- api/gantt_gettaskcalendar.md
 - api/gantt_gettaskcount.md
 - api/gantt_gettaskindex.md
 - api/gantt_gettasknode.md
@@ -232,6 +247,7 @@ Methods
 - api/gantt_gettasktop.md
 - api/gantt_getundostack.md
 - api/gantt_getvisibletaskcount.md
+- api/gantt_getwbscode.md
 - api/gantt_getworkhours.md
 - api/gantt_groupby.md
 - api/gantt_haschild.md

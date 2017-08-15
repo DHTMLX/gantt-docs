@@ -6,7 +6,7 @@ body{
 
 .page_start .body{
     min-height: 370px;
-    background-color: #7c70aa;
+    background-color: #7182CA;
     background-image: url(index/start.png);
     background-repeat: repeat-x;
     background-position: 0px 50px;
@@ -500,5 +500,5 @@ body{
     text-align:left;
 }
 html, body, .header, .footer{
-    background: #4F80C2;
+    background: #5C6BAD;
 }

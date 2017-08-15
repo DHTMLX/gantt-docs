@@ -180,6 +180,13 @@ Predefined locales
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
+ Persian 
+</td><td style='border:1px solid #AAA;'>
+ locale_fa.js 
+</td><td style='border:1px solid #AAA;'>
+ full
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
  Polish 
 </td><td style='border:1px solid #AAA;'>
  locale_pl.js 

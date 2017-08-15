@@ -29,9 +29,10 @@ added in version 4.1
 
 
 @relatedapi:
+api/gantt_addshortcut.md
+api/gantt_getshortcuthandler.md
 api/gantt_keyboard_navigation_config.md
 api/gantt_keyboard_navigation_cells_config.md
-api/gantt_addshortcut.md
 api/gantt_focus.md
 
 @related:

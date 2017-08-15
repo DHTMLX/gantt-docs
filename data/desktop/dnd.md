@@ -13,7 +13,6 @@ To customize the drag-and-drop behaviour, use the following events:
 
 <br>
 
-
 Let's consider typical cases when the default drag behaviour needs customization:
 
 
@@ -156,6 +155,28 @@ gantt.config.min_duration = 24*60*60*1000;
 
 // 1 hour
 gantt.config.min_duration = 60*60*1000;
+~~~
+
+Autoscroll during tasks' dragging
+---------------------------------
+
+If you have a large dataset in the Gantt chart, you often need to drag a task to a new distant position or set links between tasks located at a significant distance.
+
+In this case the **autoscroll** functionality is of great help. It is enabled by default, but you can manage this behavior via 
+the api/gantt_autoscroll_config.md configuration option.
+
+~~~js
+gantt.config.autoscroll = false;
+gantt.init("gantt_here");
+~~~
+
+Besides, you can adjust the speed of autoscrolling in milliseconds with the help of the corresponding property - api/gantt_autoscroll_speed_config.md:
+
+~~~js
+gantt.config.autoscroll = true;
+gantt.config.autoscroll_speed = 50;
+ 
+gantt.init("gantt_here");
 ~~~
 
 

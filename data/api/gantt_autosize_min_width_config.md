@@ -10,7 +10,7 @@ gantt.config.autosize_min_width = 800;
 
 gantt.init("gantt_here");
 
-@default: 0
+@default:0
 @template:	api_config
 @descr:
 Horizontal 'autosize' mode is enabled by the api/gantt_autosize_config.md option.

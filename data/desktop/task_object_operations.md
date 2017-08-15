@@ -33,7 +33,7 @@ Calculating the task's duration
 To get the duration of a task, use the api/gantt_calculateduration.md method:
 
 ~~~js
-gantt.calculateDuration(new Date(2013,03,30),new Date (2013, 04, 02)); // ->16
+gantt.calculateDuration(new Date(2013,03,30),new Date (2013,04,02)); // ->16
 ~~~
 
 Note, if the api/gantt_work_time_config.md option is enabled, the api/gantt_calculateduration.md method calculates the task's duration in working time. 
