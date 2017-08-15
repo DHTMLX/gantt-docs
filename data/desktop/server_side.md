@@ -139,14 +139,82 @@ gantt.updateTask(1); // renders the updated task
 
 Storing the order of tasks
 -------------------------------------------------
-To store the order of tasks in the tree (among siblings) on the server:
 
-<ol>
-	<li>Add an integer field with the name "sortorder" to your table with tasks.<br> <i>Note, the name of the field is hardcoded. </i><br>
-<img style="padding-top:15px; padding-bottom:15px;" src="desktop/tasks_order.png"/>    
-    </li>
-	<li> Add info here</li>
-</ol>
+Gantt displays tasks in the same order they come from datasource. If you allow users to [reorder tasks manually](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure) 
+you'll also need to store this order in database and make sure that your dataset returns data sorted appropriately.
+
+The common approach is following:
+
+- You add a numeric column to your tasks table, let's call it 'sortorder'.
+- When serving GET action you sort tasks by this column ascending.
+- When new task is added it should receive `MAX(sortorder) + 1` value.
+- When order is changed on the client side, gantt will send PUT (POST if you don't use REST mode) all properties of task and also values that describe position of the task within project tree.
+The request may contain other values of the task. If so - these changes should be processed as regular update request before or after saving task order.
+
+<table class="dp_table">
+	<tr>
+		<th><b>HTTP Method</b></th><th><b>URL</b></th><th><b>Parameters</b></th><th><b>Response</b></th>
+	</tr>
+	<tr>
+		<td>PUT</td>
+		<td>/apiUrl/task/taskId</td>
+		<td>
+			<ul>
+			<li><b>target=</b> adjacentTaskId</li>
+			</ul>
+		</td>
+		<td>{"action":"updated"}</td>
+	</tr>
+</table>
+
+<b>target</b> parameter will contain id if nearest task that goes right before or right after current task.
+
+Value may come in one of two formats:
+
+ - *target=targetId*  - current task should go right <b>before</b> targetId task
+ - *target=next:targetId* - current task should go right <b>after</b> targetId task
+
+Saving order can be implemented in several ways, we'll show one of them.
+
+pseudo code:
+~~~js
+const target = request["target"];
+const currentTaskId = request["id"];
+let nextTask;
+let targetTaskId;
+
+// get id of adjacent task and check whether updated task should go before or after it
+if(target.startsWidth("next:")){
+	targetTaskId = target.substr("next:".length);
+	nextTask = true;
+}else{
+	targetTaskId = target;
+	nextTask = false;
+}
+
+const currentTask = tasks.find(currentTaskId);
+const targetTask = tasks.find(targetTaskId);
+
+if(!targetTaskId)
+	return;
+
+// updated task will receive sortorder value of adjacent task
+const targetOrder = targetTask.sortorder;
+
+// if it should go after the adjacent task - it should receive a bigger sortorder
+if(nextTask)
+	targetOrder++;
+
+// increase sort orders of tasks that should go after the updated task
+tasks.where(task => task.sortorder >= targetOrder).
+   update(task => task.sortorder++);
+
+// and update task with its new sortorder
+currentTask.sortorder = targetOrder;
+
+tasks.save(currentTask);
+
+~~~
 
 
 The database's structure
