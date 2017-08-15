@@ -1,10 +1,6 @@
 resource_calendars
 =============
 
-@todo:
-	check 
-
-
 @short:
 defines a set of working calendars that can be assigned to a specific resource, e.g. a user
 

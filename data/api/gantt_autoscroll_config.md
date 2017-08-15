@@ -1,9 +1,6 @@
 autoscroll
 =============
 
-@todo:
-	check 
-
 
 @short:
 	enables autoscrolling while dragging a task or link out of the current browser screen

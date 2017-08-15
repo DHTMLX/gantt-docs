@@ -1,8 +1,6 @@
 unsetWorkTime
 =============
 
-@todo: check details
-
 @short:
 	unsets a working time in the Gantt Chart
 

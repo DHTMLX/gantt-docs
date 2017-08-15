@@ -1,8 +1,6 @@
 autoscroll_speed
 =============
 
-@todo:
-	check 
 
 
 @short:

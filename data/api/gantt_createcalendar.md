@@ -2,9 +2,6 @@ createCalendar
 =============
 
 
-@todo:
-	check 
-
 @short:
 	creates a working calendar
 

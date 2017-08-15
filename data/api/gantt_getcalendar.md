@@ -3,13 +3,13 @@ getCalendar
 
 
 @short:
-	gets the global calendar of tasks
+	gets worktime calendar by id
 
 @params:
 - id		id		the id of the global calendar or "global"
 
 @returns:
-- config		object		the config of the global calendar
+- config		object		calendar object
 
 
 @example:
@@ -20,17 +20,7 @@ var calendar = gantt.getCalendar(id);
 @descr:
 added in version 4.2
 
-The config of a global task calendar is as follows:
-
-~~~js
-{
-    id:"global",
-    worktime: {
-        hours: [8, 17],
-        days: [ 0, 1, 1, 1, 1, 1, 0]
-    }
-}
-~~~
+The returned object for the above example is a [calendar object](api/gantt_calendar_other.md).
 
 The default working time is the following:
 
