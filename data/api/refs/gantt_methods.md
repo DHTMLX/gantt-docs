@@ -35,7 +35,7 @@ Methods
 - api/gantt_dataprocessor.md - dataProcessor constructor
 - api/gantt_datefrompos.md - gets the date of the specified horizontal  position in the chart area
 - api/gantt_defined.md - returns false if the provided argument is undefined, otherwise true
-- api/gantt_deletecalendar.md - deletes an existing calendar by its id
+- api/gantt_deletecalendar.md - deletes a task calendar by its id
 - api/gantt_deletelink.md - deletes the specified dependency link
 - api/gantt_deletemarker.md - deletes the specified marker
 - api/gantt_deletetask.md - deletes the specified  task
@@ -75,7 +75,7 @@ Methods
 - api/gantt_getscrollstate.md - returns the scroll position
 - api/gantt_getselectedid.md - returns the id of the selected task
 - api/gantt_getselectedtasks.md - returns an array of the currently selected tasks
-- api/gantt_getshortcuthandler.md - gets a key navigation shortcut
+- api/gantt_getshortcuthandler.md - gets a key navigation shortcut handler
 - api/gantt_getsiblings.md - returns siblings of the specified  task (including itself)
 - api/gantt_getslack.md - checks how much time (in the current duration unit) a task has before it starts to affect other tasks
 - api/gantt_getstate.md - gets the current state of the Gantt chart
