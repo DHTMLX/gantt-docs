@@ -184,7 +184,7 @@ let nextTask;
 let targetTaskId;
 
 // get id of adjacent task and check whether updated task should go before or after it
-if(target.startsWidth("next:")){
+if(target.startsWith("next:")){
 	targetTaskId = target.substr("next:".length);
 	nextTask = true;
 }else{

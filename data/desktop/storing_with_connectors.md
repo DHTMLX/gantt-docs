@@ -43,17 +43,9 @@ dp.init(gantt);
 //events.php
 <?php
 
-include ('codebase/connector/db_sqlite3.php');
-include ('codebase/connector/gantt_connector.php');
+require_once ('codebase/connector/gantt_connector.php');
 
-// SQLite
-$dbtype = "SQLite3";
-$res = new SQLite3(dirname(__FILE__)."/samples.sqlite");
-
-// Mysql
-// $dbtype = "MySQL";
-// $res=mysql_connect("192.168.1.251", "gantt", "gantt");
-// mysql_select_db("gantttest");
+$res = new PDO("mysql:host=localhost;dbname=gantt", "ganttuser", "ganttpwd");
 
 $gantt = new JSONGanttConnector($res, $dbtype);
 
@@ -69,6 +61,7 @@ $gantt->render_table("gantt_tasks","id",
   </li>
 	
     	<li>dhtmlxConnector consists of individual component-specific connectors. For dhtmlxGantt you need to include -  <b>gantt_connector.php</b>.</li>
+    	<li>dhtmlxConnector can work with different database and drivers, you can find out more <a href="https://docs.dhtmlx.com/connector__php__server_side_sample.html">here</a>. </li>
         <li>the <b>render_table</b> method allows you to load tasks from a single table.<br> Parameters:
         	<ul>
             	<li><i>the database's table name</i></li>
