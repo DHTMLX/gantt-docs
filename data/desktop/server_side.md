@@ -140,16 +140,17 @@ gantt.updateTask(1); // renders the updated task
 Storing the order of tasks
 -------------------------------------------------
 
-Gantt displays tasks in the same order they come from datasource. If you allow users to [reorder tasks manually](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure) 
-you'll also need to store this order in database and make sure that your dataset returns data sorted appropriately.
+Gantt displays tasks in the same order they come from a data source. If you allow users to 
+[reorder tasks manually](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure), 
+you'll also need to store this order in the database and make sure that your data feed returns data sorted appropriately.
 
-The common approach is following:
+The saving order can be implemented in several ways, we'll show one of them.
 
 - You add a numeric column to your tasks table, let's call it 'sortorder'.
-- When serving GET action you sort tasks by this column ascending.
-- When new task is added it should receive `MAX(sortorder) + 1` value.
-- When order is changed on the client side, gantt will send PUT (POST if you don't use REST mode) all properties of task and also values that describe position of the task within project tree.
-The request may contain other values of the task. If so - these changes should be processed as regular update request before or after saving task order.
+- When serving the GET action, you sort tasks by this column in the ascending order.
+- When a new task is added, it should receive `MAX(sortorder) + 1` sortorder.
+- When the order is changed on the client side, gantt will send PUT (POST if you don't use the REST mode) with
+all the properties of a task and also the values that describe the position of the task within the project tree.
 
 <table class="dp_table">
 	<tr>
@@ -167,16 +168,15 @@ The request may contain other values of the task. If so - these changes should b
 	</tr>
 </table>
 
-<b>target</b> parameter will contain id if nearest task that goes right before or right after current task.
+The <b>target</b> parameter will contain the id of the nearest task that goes right before or right after the current task.
 
-Value may come in one of two formats:
+Its value may come in one of two formats:
 
- - *target=targetId*  - current task should go right <b>before</b> targetId task
- - *target=next:targetId* - current task should go right <b>after</b> targetId task
+ - *target=targetId*  - the current task should go right <b>before</b> the targetId task
+ - *target=next:targetId* - the current task should go right <b>after</b> the targetId task
 
-Saving order can be implemented in several ways, we'll show one of them.
+Applying the order changes usually involves updating of multiple tasks, here is a pseudo code example of how it can be implemented:
 
-pseudo code:
 ~~~js
 const target = request["target"];
 const currentTaskId = request["id"];
@@ -192,16 +192,16 @@ if(target.startsWidth("next:")){
 	nextTask = false;
 }
 
-const currentTask = tasks.find(currentTaskId);
-const targetTask = tasks.find(targetTaskId);
+const currentTask = tasks.getById(currentTaskId);
+const targetTask = tasks.getById(targetTaskId);
 
 if(!targetTaskId)
 	return;
 
-// updated task will receive sortorder value of adjacent task
+// updated task will receive the sortorder value of the adjacent task
 const targetOrder = targetTask.sortorder;
 
-// if it should go after the adjacent task - it should receive a bigger sortorder
+// if it should go after the adjacent task, it should receive a bigger sortorder
 if(nextTask)
 	targetOrder++;
 
@@ -209,7 +209,7 @@ if(nextTask)
 tasks.where(task => task.sortorder >= targetOrder).
    update(task => task.sortorder++);
 
-// and update task with its new sortorder
+// and update the task with its new sortorder
 currentTask.sortorder = targetOrder;
 
 tasks.save(currentTask);
@@ -250,8 +250,8 @@ The structure of a standard database to load tasks and links to the Gantt chart 
             </ul> 
         </li> 
         <li><b>lag</b>-(<i>number</i>) optional, <a href="desktop__auto_scheduling.html#settinglagandleadtimesbetweentasks">task lag</a>. </li>
-        <li><b>readonly</b>-(<i>boolean</i>) optional, can mark link as <a href="desktop__readonly_mode.html#readonlymodeforspecifictaskslinks">readonly</a>. </li>
-        <li><b>editable</b>-(<i>boolean</i>) optional, can mark link as <a href="desktop__readonly_mode.html#readonlymodeforspecifictaskslinks">editable</a>. </li>
+        <li><b>readonly</b>-(<i>boolean</i>) optional, can mark link as <a href="desktop__readonly_mode.html">readonly</a>. </li>
+        <li><b>editable</b>-(<i>boolean</i>) optional, can mark link as <a href="desktop__readonly_mode.html">editable</a>. </li>
     </ul>
 </ul> 
 
