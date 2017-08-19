@@ -219,13 +219,14 @@ tasks.save(currentTask);
 Error handling
 ------------------------------------------
 
-Server can inform Gantt that action has failed by returning "action":"error" response:
+Server can inform Gantt that an action has failed by returning the "action":"error" response:
 
 ~~~js
 {"action":"error"}
 ~~~
 
-Such response can be captured on the client using gantt.dataProcessor:
+Such a response can be captured on the client with the help of gantt.dataProcessor:
+
 ~~~js
 var dp = new gantt.dataProcessor("apiUrl");
 dp.init(gantt);
@@ -236,7 +237,7 @@ dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
 });
 ~~~
 
-The response object may contain any number of additional properties, they can be access via `response` argument of onAfterUpdate handler.
+The response object may contain any number of additional properties, they can be accessed via the `response` argument of the onAfterUpdate handler.
 
 The database's structure
 ------------------------------------------

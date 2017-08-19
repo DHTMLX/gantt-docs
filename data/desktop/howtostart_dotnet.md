@@ -33,12 +33,13 @@ Step 2. Adding Models, Views and Controllers
 
 ###Creating a Controller
 
-Now we have an empty project everything is ready for implementing our gantt.
+Now we have an empty project and everything is ready for implementing our gantt.
 
-Firstly, we'll add an MVC controller which will show the page with gantt chart.
+Firstly, we'll add an MVC controller which will show a page with a gantt chart.
 
 To create it, call the context menu for the Controllers folder and choose Add->Controller.
-In the opened window select MVC 5 Controller -> Empty and name a newly added controller “HomeController”.
+In the opened window select MVC 5 Controller -> Empty and name a newly added controller "HomeController".
+
 <img src="//content.screencast.com/users/Alexander_/folders/Jing/media/e8e855c3-fbde-4fcf-995a-06f26d82111f/2017-08-18_1343.png">
 
 The HomeController has the Index() method of the ActionResult class by default, so it doesn't require any additional logic. We will just add a view for it. 
@@ -65,7 +66,8 @@ namespace DHX.Gantt.Controllers
 
 ###Creating a View
 
-Now it's time to create our index page. Go to Views/Home and and empty view named Index
+Now it's time to create our index page. Go to Views/Home and add an empty view named Index:
+
 <img src="//content.screencast.com/users/Alexander_/folders/Jing/media/a88eefb2-5c07-4b38-acb1-914e0f58a7b9/2017-08-18_1348.png">
 
 Open the newly created view and put the following code into it:
@@ -81,7 +83,8 @@ Open the newly created view and put the following code into it:
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" 
+    	rel="stylesheet" type="text/css" />
     <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
@@ -107,26 +110,30 @@ Open the newly created view and put the following code into it:
 </html>
 ~~~
 
-What we did here:
+What we have done here:
 
-- we defined a simple page markup for our gantt application
+- defined a simple page markup for our gantt application
 - added dhtmlx gantt js/css sources using [CDN links](desktop/cdn_links_list.md)
 - and created gantt on the page
 
-Note the configuration - we specified [format of dates](api/gantt_xml_date_config.md) that come from the data source, it's needed so our client would be able to parse dates that come from the server.
+Pay attention to the configuration: we've specified the [format of dates](api/gantt_xml_date_config.md) that come from the data source. 
+
 ~~~js
-    gantt.config.xml_date = "%Y-%m-%d %H:%i";
+gantt.config.xml_date = "%Y-%m-%d %H:%i";
 ~~~
 
-And also we told gantt it's going to work with RESTful api on a backend and use ["/api/data/"](desktop/server_side.md#technique) as a default route:
+It's needed for our client to be able to parse dates that come from the server.
+
+And also we told the gantt that it's going to work with RESTful API on a backend and use ["/api/data/"](desktop/server_side.md#technique) as a default route:
+
 ~~~js
-    gantt.load("/api/data");
-    // initializing dataProcessor
-    var dp = new gantt.dataProcessor("/api/");
-    // and attaching it to gantt
-    dp.init(gantt);
-    // setting the REST mode for dataProcessor
-    dp.setTransactionMode("REST");
+gantt.load("/api/data");
+// initializing dataProcessor
+var dp = new gantt.dataProcessor("/api/");
+// and attaching it to gantt
+dp.init(gantt);
+// setting the REST mode for dataProcessor
+dp.setTransactionMode("REST");
 ~~~
 
 
@@ -136,17 +143,18 @@ The server side itself will be implemented a bit later. For now, you can run the
 
 ###Creating Models
 
-Now we define model classes for gantt chart. Gantt data model consist of [Links and Tasks](desktop/server_side.md#thedtabasesstructure). 
-As you can see, dhtmlxGantt uses a certain naming convention for data model that is different from one traditionally used in C#. 
-Client-side model can also contain some properties that shouldn't be stored in database, but will be used either on the client or in backend logic.
+Now we define model classes for the gantt chart. A Gantt data model consists of [Links and Tasks](desktop/server_side.md#thedatabasesstructure). 
+As you can see, dhtmlxGantt uses a certain naming convention for data model that is different from the one traditionally used in C#. 
+The client-side model can also contain some properties that shouldn't be stored in a database, but will be used either on the client or in the backend logic.
 
-Because of this, we'll go with ViewModel approach here - we'll define a domain model classes that will be used with EF and inside the app, and will define view model classes that will be used to communicate with web api. Then we'll implement some kind of mapping between two models.
+Because of this, we'll go with the ViewModel approach here: we'll define domain model classes that will be used with EF and inside the app, 
+and view model classes that will be used to communicate with Web API. Then we'll implement some kind of mapping between the two models.
 
-Let's start
+Let's start!
 
 ####Task Model
 
-Create following class for Task:
+Create the following class for Task:
 
 ~~~js
 //DHX.Gantt.Web\Models\Task.cs:
@@ -174,7 +182,7 @@ You can find the full list of properties, both mandatory and optional, available
 
 ####Link Model 
 
-And a following link class:
+And the following Link class:
 
 ~~~js
 //DHX.Gantt.Web\Models\Link.cs
@@ -335,8 +343,9 @@ namespace DHX.Gantt.Web
 ### Defining View Models and Mapping
 
 Now we'll declare view model classes that will be used for Web API.
-As for mapping between Model and ViewModel - we'll go the simplest way and just define an explicit conversion operator for these classes.
+As for mapping between Model and ViewModel, we'll go the simplest way and just define an explicit conversion operator for these classes.
 
+The TaskViewModel class will look as follows: 
 
 ~~~js
 //DHX.Gantt.Web\Models\TaskViewModel.cs
@@ -390,9 +399,7 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-
-
-And LinkViewModel
+And the LinkViewModel class is given below:
 
 ~~~js
 //DHX.Gantt.Web\Models\LinkViewModel.cs
@@ -431,10 +438,10 @@ namespace DHX.Gantt.Web.Models
 ~~~
 
 
-Lastly, add the model for a [data source](desktop/supported_data_formats.md#json) :
+Lastly, let's add a model for a [data source](desktop/supported_data_formats.md#json):
 
 ~~~js
-//DHX.Gantt.Web\Models\GanttViewModel.cs
+// DHX.Gantt.Web\Models\GanttViewModel.cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -457,17 +464,15 @@ Step 4. Implementing Web API
 
 Finally it's time to implement the API. 
 
-
-As we can see from the [api details](desktop/server_side.md#requestresponsedetails) 
-we'll need two controllers - one for tasks and one for links, 
-and one more controller for 'load data' action, since gantt expects a [mixed result](desktop/supported_data_formats.md#json) there.
+As you can see from the [API details](desktop/server_side.md#requestresponsedetails) we'll need two controllers: one for tasks and one for links. 
+We will also need one more controller for the 'load data' action, since gantt expects a [mixed result](desktop/supported_data_formats.md#json) there.
 
 ###Task Controller
 
-Activate a context menu for the Controllers folder and select  Add -> Controller.<br>
+Activate the context menu for the Controllers folder and select Add -> Controller.<br>
 Choose the Web API 2 Controller -> Empty. The new controller will be called "TaskController". 
 
-Now implement basic CRUD actions for task entry:
+Now we need to implement basic CRUD actions for the task entry:
 
 ~~~js
 using System.Collections.Generic;
@@ -562,14 +567,13 @@ namespace DHX.Gantt.Web.Controllers
 
 ~~~
 
-Everything is pretty straightforward here, in GET actions we load tasks from database and output them as ViewTaskModel. 
-In PUT/POST actions we're getting ViewTaskModel as an input, converting them to Task model and save changes to the DB Context.
+Everything is pretty straightforward here, in the GET actions we load tasks from database and output them as ViewTaskModel. 
+In the PUT/POST actions we're getting ViewTaskModel as an input, converting it to a Task model and saving changes to the DB Context.
 Now let's do the same for the links.
 
 ###Link Controller
 
-Create an empty Web API Controller for links:
-
+After that we'll create an empty Web API Controller for links:
 
 ~~~js
 //DHX.Gantt.Web\Controllers\LinkController.cs
@@ -667,7 +671,7 @@ namespace DHX.Gantt.Web.Controllers
 
 ###Data Controller
 
-And finally, add a controller for the data action
+Finally, we will add a controller for the data action:
 
 ~~~js
 //DHX.Gantt.Web\Controllers\DataController.cs
@@ -701,16 +705,17 @@ Now everything is ready. Run the application and the fully-fledged Gantt should 
 
 <img src="desktop/ready_gantt_dotnet.png">
 
+[You can find a ready demo at github]().
 
-You can find ready demo at github
 
-
-Error handling 
+Error Handling 
 -----------
 
-[Exception filters](https://msdn.microsoft.com/en-us/library/gg416513(v=vs.98).aspx) can be used for capturing exceptions in CRUD handlers and returning client response that can be [recognized](desktop/server_side.md#errorhandling) by the client-side gantt.
+[Exception filters](https://msdn.microsoft.com/en-us/library/gg416513(v=vs.98).aspx) can be used for capturing exceptions in CRUD handlers and returning client response 
+that can be [recognized](desktop/server_side.md#errorhandling) by the client-side gantt.
 
-Go to App_Start and add new class called GanttAPIExceptionFilterAttribute:
+To provide error handling for the gantt, follow the steps below.
+Go to App_Start and add a new class called GanttAPIExceptionFilterAttribute:
 
 ~~~js
 using System;
@@ -735,9 +740,10 @@ namespace DHX.Gantt.Web
 }
 ~~~
 
-Now, add this class to our WebAPI controllers:
+Then we will add this class to our WebAPI controllers:
 
-Data controller:
+- Data controller:
+
 ~~~js
 //DHX.Gantt.Web\Controllers\DataController.cs
 
@@ -746,7 +752,9 @@ namespace DHX.Gantt.Web.Controllers
     [GanttAPIExceptionFilter]
     public class DataController : ApiController
 ~~~
-Link controller:
+
+- Link controller:
+
 ~~~js
 //DHX.Gantt.Web\Controllers\LinkController.cs
 namespace DHX.Gantt.Web.Controllers
@@ -754,7 +762,9 @@ namespace DHX.Gantt.Web.Controllers
     [GanttAPIExceptionFilter]
     public class LinkController : ApiController
 ~~~
-and Task controller:
+
+- and Task controller:
+
 ~~~js
 //DHX.Gantt.Web\Controllers\TaskController.cs
 namespace DHX.Gantt.Web.Controllers
@@ -763,21 +773,24 @@ namespace DHX.Gantt.Web.Controllers
     public class TaskController : ApiController
 ~~~
 
-Now if any Web Api controllers fire and exception while processing the request, 
-client side will receive an error status and the error message that can be either processed somehow or shown to the user.
+Now if any Web API controller fires an exception while processing the request, 
+the client side will receive an error status and an error message that can be either somehow processed or shown to the user.
 
-Note, that returning the exception message to the client might not be the best idea for a production environment.
+Note that returning an exception message to the client might not be the best idea for a production environment.
 
-Storing the order of tasks
+Storing the Order of Tasks
 -----------
-Client-side gantt allows reordering tasks using drag and drop, thus, if you use this feature you'll have to store this order in db.
-You can check the common description [here](desktop/server_side.md#storingtheorderoftasks).
-And now let's add this feature to our app.
 
-###Allow reordering on the client
+The client-side gantt allows reordering tasks using drag and drop. So if you use this feature, you'll have to store this order in the database.
+You can check the common description [here](desktop/server_side.md#storingtheorderoftasks).
+
+Let's now add this feature to our app.
+
+###Enable tasks reordering on the client
 
 Firstly, we need to allow users to [change task order in the UI](desktop/reodering_tasks.md).
 Open Index view and update configuration of gantt:
+
 ~~~js
 //DHX.Gantt.Web\Views\Home\Index.cshtml
 gantt.config.order_branch = true;
@@ -789,10 +802,11 @@ gantt.config.xml_date = "%Y-%m-%d %H:%i";
 gantt.init("gantt_here");
 ~~~
 
-###Adding order to the model
+###Adding tasks order to the model
 
-Now, let's reflect these changes on a backend.
-We'll going to store the order in property named SortOrder, let's update the Task class accordingly:
+Now, let's reflect these changes on the backend.
+We are going to store the order in the property named SortOrder, let's update the Task class accordingly:
+
 ~~~js
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -814,10 +828,11 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Now, update the TaskController.
-Firstly, client-side should receive tasks ordered by SortOrder value:
+Now we need to update the TaskController.
+Firstly, the client side should receive tasks ordered by the SortOrder value:
+
 ~~~js
-//DHX.Gantt.Web\Controllers\TaskController.cs
+// DHX.Gantt.Web\Controllers\TaskController.cs
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]
@@ -835,11 +850,12 @@ namespace DHX.Gantt.Web.Controllers
         }
 ~~~
 
-Now we need to update SortOrder when task order is modified on the client. 
+SortOrder should be updated when the task order is modified on the client. 
 
-When user changes order of tasks, gantt will call PUT action, providing an info of new task position in the ['target'](desktop/server_side.md#storingtheorderoftasks) property of the request, together with the rest of properties of task. 
+When a user changes the order of tasks, gantt will call a PUT action providing an info about a new task position in the 
+['target'](desktop/server_side.md#storingtheorderoftasks) property of the request, together with the rest of task properties. 
 
-Thus, add extra property to the view model:
+Thus, we should add an extra property to the view model:
 
 ~~~js
 //DHX.Gantt.Web\Models\TaskViewModel.cs
@@ -855,7 +871,7 @@ namespace DHX.Gantt.Web.Models
     public string target { get; set; }
 ~~~
 
-And now we implement ordering in our PUT (EditTask) action:
+And now we will implement reordering in our PUT (EditTask) action:
 
 ~~~js
 //DHX.Gantt.Web\Controllers\TaskController.cs
@@ -896,7 +912,7 @@ namespace DHX.Gantt.Web.Controllers
       var nextSibling = false;
 
       // adjacent task id is sent either as '{id}' or as 'next:{id}' depending 
-      // on whether it's next or previous sibling
+      // on whether it's the next or the previous sibling
       if (!int.TryParse(orderTarget, out adjacentTaskId))
       {
         nextSibling = true;
