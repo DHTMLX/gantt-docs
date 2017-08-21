@@ -20,13 +20,13 @@ Step 1. Making Preparations
 ###Creating a new Visual Studio Project 
 
 Let's start by running Visual Studio and creating a new project. For this, open the File menu tab and choose:<br>
-New -> Project. Then select ASP.NET Web Application and name it *DHX.Gantt*. 
+New -> Project. Then select ASP.NET Web Application and name it *DHX.Gantt.Web*. 
 
-<img src="//content.screencast.com/users/Alexander_/folders/Jing/media/7327fcbe-0eb6-42ce-91cb-962fe1d06843/2017-08-18_1335.png">
+<img src="desktop/how_to_start_net_create_project.png">
 
 Select an Empty project among available templates and check MVC and Web API checkboxes below the list of templates.
 
-<img src="/content.screencast.com/users/Alexander_/folders/Jing/media/d27cb5d9-4091-405e-a652-228f6551f5f8/2017-08-18_1336.png">
+<img src="desktop/how_to_start_net_project_template.png">
 
 Step 2. Adding Models, Views and Controllers
 --------------------------------
@@ -40,7 +40,7 @@ Firstly, we'll add an MVC controller which will show a page with a gantt chart.
 To create it, call the context menu for the Controllers folder and choose Add->Controller.
 In the opened window select MVC 5 Controller -> Empty and name a newly added controller "HomeController".
 
-<img src="//content.screencast.com/users/Alexander_/folders/Jing/media/e8e855c3-fbde-4fcf-995a-06f26d82111f/2017-08-18_1343.png">
+<img src="desktop/how_to_start_net_controller.png">
 
 The HomeController has the Index() method of the ActionResult class by default, so it doesn't require any additional logic. We will just add a view for it. 
 
@@ -51,7 +51,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace DHX.Gantt.Controllers
+namespace DHX.Gantt.Web.Controllers
 {
     public class HomeController : Controller
     {
@@ -68,7 +68,7 @@ namespace DHX.Gantt.Controllers
 
 Now it's time to create our index page. Go to Views/Home and add an empty view named Index:
 
-<img src="//content.screencast.com/users/Alexander_/folders/Jing/media/a88eefb2-5c07-4b38-acb1-914e0f58a7b9/2017-08-18_1348.png">
+<img src="desktop/how_to_start_net_view.png">
 
 Open the newly created view and put the following code into it:
 
@@ -147,8 +147,8 @@ Now we define model classes for the gantt chart. A Gantt data model consists of 
 As you can see, dhtmlxGantt uses a certain naming convention for data model that is different from the one traditionally used in C#. 
 The client-side model can also contain some properties that shouldn't be stored in a database, but will be used either on the client or in the backend logic.
 
-Because of this, we'll go with the ViewModel approach here: we'll define domain model classes that will be used with EF and inside the app, 
-and view model classes that will be used to communicate with Web API. Then we'll implement some kind of mapping between the two models.
+Because of this, we'll go with the [Data Transfer Object](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) pattern here: we'll define domain model classes that will be used with EF and inside the app, 
+and DTO classes that will be used to communicate with Web API. Then we'll implement some kind of mapping between the two models.
 
 Let's start!
 
@@ -159,14 +159,12 @@ Create the following class for Task:
 ~~~js
 //DHX.Gantt.Web\Models\Task.cs:
 using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace DHX.Gantt.Web.Models
 {
     public class Task
     {
         public int Id { get; set; }
-        [MaxLength(255)]
         public string Text { get; set; }
         public DateTime StartDate { get; set; }
         public int Duration { get; set; }
@@ -186,14 +184,12 @@ And the following Link class:
 
 ~~~js
 //DHX.Gantt.Web\Models\Link.cs
-using System.ComponentModel.DataAnnotations;
 
 namespace DHX.Gantt.Web.Models
 {
     public class Link
     {
         public int Id { get; set; }
-        [MaxLength(1)]
         public string Type { get; set; }
         public int SourceTaskId { get; set; }
         public int TargetTaskId { get; set; }
@@ -334,26 +330,26 @@ namespace DHX.Gantt.Web
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            Database.SetInitializer(new GanttInitializer());
+            Database.SetInitializer(new GanttInitializer());/*!*/
         }
     }
 }
 ~~~
 
-### Defining View Models and Mapping
+### Defining DTOs and Mapping
 
-Now we'll declare view model classes that will be used for Web API.
-As for mapping between Model and ViewModel, we'll go the simplest way and just define an explicit conversion operator for these classes.
+Now we'll declare DTO classes that will be used for Web API.
+As for mapping between Model and DTO, we'll go the simplest way and just define an explicit conversion operator for these classes.
 
-The TaskViewModel class will look as follows: 
+The TaskDto class will look as follows: 
 
 ~~~js
-//DHX.Gantt.Web\Models\TaskViewModel.cs
+//DHX.Gantt.Web\Models\TaskDto.cs
 using System;
 
 namespace DHX.Gantt.Web.Models
 {
-    public class TaskViewModel
+    public class TaskDto
     {
         public int id { get; set; }
         public string text { get; set; }
@@ -368,9 +364,9 @@ namespace DHX.Gantt.Web.Models
             set { }
         }
 
-        public static explicit operator TaskViewModel(Task task)
+        public static explicit operator TaskDto(Task task)
         {
-            return new TaskViewModel
+            return new TaskDto
             {
                 id = task.Id,
                 text = task.Text,
@@ -382,7 +378,7 @@ namespace DHX.Gantt.Web.Models
             };
         }
 
-        public static explicit operator Task(TaskViewModel task)
+        public static explicit operator Task(TaskDto task)
         {
             return new Task
             {
@@ -399,22 +395,22 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-And the LinkViewModel class is given below:
+And the LinkDto class is given below:
 
 ~~~js
-//DHX.Gantt.Web\Models\LinkViewModel.cs
+//DHX.Gantt.Web\Models\LinkDto.cs
 namespace DHX.Gantt.Web.Models
 {
-    public class LinkViewModel
+    public class LinkDto
     {
         public int id { get; set; }
         public string type { get; set; }
         public int source { get; set; }
         public int target { get; set; }
 
-        public static explicit operator LinkViewModel(Link link)
+        public static explicit operator LinkDto(Link link)
         {
-            return new LinkViewModel
+            return new LinkDto
             {
                 id = link.Id,
                 type = link.Type,
@@ -423,7 +419,7 @@ namespace DHX.Gantt.Web.Models
             };
         }
 
-        public static explicit operator Link(LinkViewModel link)
+        public static explicit operator Link(LinkDto link)
         {
             return new Link
             {
@@ -441,7 +437,7 @@ namespace DHX.Gantt.Web.Models
 Lastly, let's add a model for a [data source](desktop/supported_data_formats.md#json):
 
 ~~~js
-// DHX.Gantt.Web\Models\GanttViewModel.cs
+// DHX.Gantt.Web\Models\GanttDto.cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -449,10 +445,10 @@ using System.Web;
 
 namespace DHX.Gantt.Web.Models
 {
-    public class GanttViewModel
+    public class GanttDto
     {
-        public IEnumerable<TaskViewModel> data { get; set; }
-        public IEnumerable<LinkViewModel> links { get; set; }
+        public IEnumerable<TaskDto> data { get; set; }
+        public IEnumerable<LinkDto> links { get; set; }
     }
 }
 ~~~
@@ -490,27 +486,27 @@ namespace DHX.Gantt.Web.Controllers
         private GanttContext db = new GanttContext();
 
         // GET api/Task
-        public IEnumerable<TaskViewModel> Get()
+        public IEnumerable<TaskDto> Get()
         {
             return db.Tasks
                 .ToList()
-                .Select(t => (TaskViewModel)t);
+                .Select(t => (TaskDto)t);
         }
 
         // GET api/Task/5
         [System.Web.Http.HttpGet]
-        public TaskViewModel Get(int id)
+        public TaskDto Get(int id)
         {
-            return (TaskViewModel)db
+            return (TaskDto)db
                 .Tasks
                 .Find(id);
         }
 
         // PUT api/Task/5
         [System.Web.Http.HttpPut]
-        public IHttpActionResult EditTask(int id, TaskViewModel viewTask)
+        public IHttpActionResult EditTask(int id, TaskDto taskDto)
         {
-            var updatedTask = (Task)viewTask;
+            var updatedTask = (Task)taskDto;
             updatedTask.Id = id;
             db.Entry(updatedTask).State = EntityState.Modified;
             db.SaveChanges();
@@ -523,9 +519,9 @@ namespace DHX.Gantt.Web.Controllers
 
         // POST api/Task
         [System.Web.Http.HttpPost]
-        public IHttpActionResult CreateTask(TaskViewModel viewTask)
+        public IHttpActionResult CreateTask(TaskDto taskDto)
         {
-            var newTask = (Task)viewTask;
+            var newTask = (Task)taskDto;
 
             db.Tasks.Add(newTask);
             db.SaveChanges();
@@ -567,8 +563,8 @@ namespace DHX.Gantt.Web.Controllers
 
 ~~~
 
-Everything is pretty straightforward here, in the GET actions we load tasks from database and output them as ViewTaskModel. 
-In the PUT/POST actions we're getting ViewTaskModel as an input, converting it to a Task model and saving changes to the DB Context.
+Everything is pretty straightforward here, in the GET actions we load tasks from database and output their data transfer objects. 
+In the PUT/POST actions we're getting DTOs as an input, converting it to a Task model and saving changes to the DB Context.
 Now let's do the same for the links.
 
 ###Link Controller
@@ -592,28 +588,28 @@ namespace DHX.Gantt.Web.Controllers
 
         // GET api/Link
         [System.Web.Http.HttpGet]
-        public IEnumerable<LinkViewModel> Get()
+        public IEnumerable<LinkDto> Get()
         {
             return db
                 .Links
                 .ToList()
-                .Select(l => (LinkViewModel)l);
+                .Select(l => (LinkDto)l);
         }
 
         // GET api/Link/5
         [System.Web.Http.HttpGet]
-        public LinkViewModel Get(int id)
+        public LinkDto Get(int id)
         {
-            return (LinkViewModel)db
+            return (LinkDto)db
                 .Links
                 .Find(id);
         }
 
         // POST api/Link
         [System.Web.Http.HttpPost]
-        public IHttpActionResult CreateLink(LinkViewModel viewLink)
+        public IHttpActionResult CreateLink(LinkDto linkDto)
         {
-            var newLink = (Link)viewLink;
+            var newLink = (Link)linkDto;
             db.Links.Add(newLink);
             db.SaveChanges();
 
@@ -626,9 +622,9 @@ namespace DHX.Gantt.Web.Controllers
 
         // PUT api/Link/5
         [System.Web.Http.HttpPut]
-        public IHttpActionResult EditLink(int id, LinkViewModel viewLink)
+        public IHttpActionResult EditLink(int id, LinkDto linkDto)
         {
-            var clientLink = (Link)viewLink;
+            var clientLink = (Link)linkDto;
             clientLink.Id = id;
 
             db.Entry(clientLink).State = EntityState.Modified;
@@ -687,9 +683,9 @@ namespace DHX.Gantt.Web.Controllers
     {
         // GET api/
         [System.Web.Http.HttpGet]
-        public GanttViewModel Get()
+        public GanttDto Get()
         {
-            return new GanttViewModel
+            return new GanttDto
             {
                 data = new TaskController().Get(),
                 links = new LinkController().Get()
@@ -749,7 +745,7 @@ Then we will add this class to our WebAPI controllers:
 
 namespace DHX.Gantt.Web.Controllers
 {
-    [GanttAPIExceptionFilter]
+    [GanttAPIExceptionFilter]/*!*/
     public class DataController : ApiController
 ~~~
 
@@ -759,7 +755,7 @@ namespace DHX.Gantt.Web.Controllers
 //DHX.Gantt.Web\Controllers\LinkController.cs
 namespace DHX.Gantt.Web.Controllers
 {
-    [GanttAPIExceptionFilter]
+    [GanttAPIExceptionFilter]/*!*/
     public class LinkController : ApiController
 ~~~
 
@@ -769,7 +765,7 @@ namespace DHX.Gantt.Web.Controllers
 //DHX.Gantt.Web\Controllers\TaskController.cs
 namespace DHX.Gantt.Web.Controllers
 {
-    [GanttAPIExceptionFilter]
+    [GanttAPIExceptionFilter]/*!*/
     public class TaskController : ApiController
 ~~~
 
@@ -793,8 +789,8 @@ Open Index view and update configuration of gantt:
 
 ~~~js
 //DHX.Gantt.Web\Views\Home\Index.cshtml
-gantt.config.order_branch = true;
-gantt.config.order_branch_free = true;
+gantt.config.order_branch = true;/*!*/
+gantt.config.order_branch_free = true;/*!*/
 
 // specifying the date format
 gantt.config.xml_date = "%Y-%m-%d %H:%i";
@@ -823,7 +819,7 @@ namespace DHX.Gantt.Web.Models
         public decimal Progress { get; set; }
         public int? ParentId { get; set; }
         public string Type { get; set; }
-        public int SortOrder { get; set; }
+        public int SortOrder { get; set; }/*!*/
     }
 }
 ~~~
@@ -841,12 +837,12 @@ namespace DHX.Gantt.Web.Controllers
         private GanttContext db = new GanttContext();
 
         // GET api/Task
-        public IEnumerable<TaskViewModel> Get()
+        public IEnumerable<TaskDto> Get()
         {
             return db.Tasks
-                .OrderBy(t => t.SortOrder) 
+                .OrderBy(t => t.SortOrder) /*!*/
                 .ToList()
-                .Select(t => (TaskViewModel)t);
+                .Select(t => (TaskDto)t);
         }
 ~~~
 
@@ -855,46 +851,45 @@ SortOrder should be updated when the task order is modified on the client.
 When a user changes the order of tasks, gantt will call a PUT action providing an info about a new task position in the 
 ['target'](desktop/server_side.md#storingtheorderoftasks) property of the request, together with the rest of task properties. 
 
-Thus, we should add an extra property to the view model:
+Thus, we should add an extra property to the task DTO class:
 
 ~~~js
-//DHX.Gantt.Web\Models\TaskViewModel.cs
+//DHX.Gantt.Web\Models\TaskDto.cs
 namespace DHX.Gantt.Web.Models
 {
-  public class TaskViewModel
+  public class TaskDto
   {
+    public int id { get; set; }
+    public string text { get; set; }
+    public string start_date { get; set; }
+    public int duration { get; set; }
+    public decimal progress { get; set; }
+    public int? parent { get; set; }
+    public string type { get; set; }
+    public bool open{ get { return true; } set { } }
+    public string target { get; set; }/*!*/
+    
     ...
-
-    /// <summary>
-    /// Reference to a sibling task after vertical drag and drop (reordering)
-    /// </summary>
-    public string target { get; set; }
+  }
+}
 ~~~
 
 And now we will implement reordering in our PUT (EditTask) action:
 
 ~~~js
 //DHX.Gantt.Web\Controllers\TaskController.cs
-namespace DHX.Gantt.Web.Controllers
-{
-  [GanttAPIExceptionFilter]
-  public class TaskController : ApiController
-  {
-    private GanttContext db = new GanttContext();
-    
-    ...
-    
-     // PUT api/Task/5
+
+    // PUT api/Task/5
     [System.Web.Http.HttpPut]
-    public IHttpActionResult EditTask(int id, TaskViewModel viewTask)
+    public IHttpActionResult EditTask(int id, TaskDto taskDto)
     {
-      var updatedTask = (Task)viewTask;
+      var updatedTask = (Task)taskDto;
       updatedTask.Id = id;
 
-      if (!string.IsNullOrEmpty(viewTask.target))
+      if (!string.IsNullOrEmpty(taskDto.target))
       {
         // reordering occurred
-        this._UpdateOrders(updatedTask, viewTask.target);
+        this._UpdateOrders(updatedTask, taskDto.target);/*!*/
       }
 
       db.Entry(updatedTask).State = EntityState.Modified;
@@ -906,22 +901,24 @@ namespace DHX.Gantt.Web.Controllers
       });
     }
       
-    private void _UpdateOrders(Task updatedTask, string orderTarget)
+    private void _UpdateOrders(Task updatedTask, string orderTarget)/*!*/
     {
       int adjacentTaskId;
       var nextSibling = false;
 
+      var targetId = orderTarget;
+
       // adjacent task id is sent either as '{id}' or as 'next:{id}' depending 
       // on whether it's the next or the previous sibling
-      if (!int.TryParse(orderTarget, out adjacentTaskId))
+      if (targetId.StartsWith("next:"))
       {
+        targetId = targetId.Replace("next:", "");
         nextSibling = true;
-        var targetId = orderTarget.Replace("next:", "");
-        
-        if (!int.TryParse(targetId, out adjacentTaskId))
-        {
-          return;
-        }
+      }
+
+      if (!int.TryParse(targetId, out adjacentTaskId))
+      {
+        return;
       }
 
       var adjacentTask = db.Tasks.Find(adjacentTaskId);
@@ -954,4 +951,4 @@ As a common solution, the module can be disabled from the **web.config** file. M
 
 
 @todo:
-	check, add github link, add images.
+	check, add github link, check images.
