@@ -21,7 +21,7 @@ To begin with, we'll create a project folder and then add the required dependenc
 - [Express](http://expressjs.com/) - a tiny framework for Node.js
 - [body-parser](https://www.npmjs.com/package/body-parser) - a Node.js parsing tool
 - [date-format-lite](https://github.com/litejs/date-format-lite) - a small library that will help us to convert dates of Gantt entries into the proper format
-- [node-mysql](https://github.com/felixge/node-mysql) - a Node.js client for working with MySQL
+- [promise-mysql](https://www.npmjs.com/package/promise-mysql) - a Node.js package for working with MySQL using promises
 
 So, let's create a project folder and name it "gantt-node-mysql":
 
@@ -48,7 +48,7 @@ When the file is ready, open it and put the above listed dependencies into it. T
     "body-parser": "^1.15.0",
     "date-format-lite": "^0.7.4",
     "express": "^4.13.4",
-    "mysql": "^2.10.2"
+    "promise-mysql": "^3.0.2"
   },
   "devDependencies": {},
   "scripts": {
@@ -76,20 +76,19 @@ Firstly, create a folder with the name "public". This folder will contain the dh
 
 Let's add the *index.html* file into the *public* folder. Thus, the folder structure will be as follows:
 
-<img src="desktop/folder_structure.png">
+<img src="desktop/folder_structure.png"> 
 
 Now, open the *index.html* file and fill it with the following content:
 
 {{snippet "index.html" file}}
 ~~~html
+
 <!DOCTYPE html>
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 </head>
-	<script src="./codebase/sources/dhtmlxgantt.js" type="text/javascript" 
-    	charset="utf-8"></script>
-    <link rel="stylesheet" href="./codebase/dhtmlxgantt.css" type="text/css" 
-    	charset="utf-8">
+  <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
+    <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet">
     <style type="text/css">
         html, body{ height:100%; padding:0px; margin:0px; overflow: hidden;}
     </style>
@@ -120,7 +119,7 @@ Step 3. Preparing a Database
 
 The next step is to create a database. We'll make a simple database with two tables. 
 
-Check a detailed example [here](desktop/howtostart_connector.md#step5creatingadatabase).
+Check a detailed example [here](desktop/server_side.md#thedatabasesstructure).
 
 
 Step 4. Making Connection to Database
@@ -137,12 +136,12 @@ require("date-format-lite");
 
 var port = 1337;
 var app = express();
-var mysql = require('mysql');
-var db = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'sampleUser',
-  password : 'samplePassword',
-  database : 'sampleGanttBase'
+var mysql = require('promise-mysql');
+var db = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'gantt'
 });
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -178,21 +177,21 @@ You can make use of the following SQL sample:
 
 ~~~js
 INSERT INTO `gantt_tasks` VALUES ('1', 'Project #1', '2013-04-01 00:00:00', 
-	'5', '0.8', '20', '0');
+  '5', '0.8', '20', '0');
 INSERT INTO `gantt_tasks` VALUES ('2', 'Task #1', '2013-04-06 00:00:00', 
-	'4', '0.5', '10', '1');
+  '4', '0.5', '10', '1');
 INSERT INTO `gantt_tasks` VALUES ('3', 'Task #2', '2013-04-05 00:00:00', 
-	'6', '0.7', '20', '1');
+  '6', '0.7', '20', '1');
 INSERT INTO `gantt_tasks` VALUES ('4', 'Task #3', '2013-04-07 00:00:00', 
-	'2', '0', '30', '1');
+  '2', '0', '30', '1');
 INSERT INTO `gantt_tasks` VALUES ('5', 'Task #1.1', '2013-04-05 00:00:00', 
-	'5', '0.34', '10', '2');
+  '5', '0.34', '10', '2');
 INSERT INTO `gantt_tasks` VALUES ('6', 'Task #1.2', '2013-04-11 13:22:17', 
-	'4', '0.491477', '20', '2');
+  '4', '0.491477', '20', '2');
 INSERT INTO `gantt_tasks` VALUES ('7', 'Task #2.1', '2013-04-07 00:00:00',
-	'5', '0.2', '10', '3');
+  '5', '0.2', '10', '3');
 INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2013-04-06 00:00:00', 
-	'4', '0.9', '20', '3');
+  '4', '0.9', '20', '3');
 ~~~
 
 After that we need to enable data loading. Technically, we have done it at the [Step 2](desktop/howtostart_nodejs.md#step2initializinggantt) during gantt initialization
@@ -208,21 +207,25 @@ and will expect to get a [JSON](desktop/supported_data_formats.md#json) object w
 So, we need to add a server route for the URL which will generate an appropriate response. Open the *server.js* file and add the code below into it:
 
 ~~~js
-app.get("/data", function(req, res){
-    db.query("SELECT * FROM gantt_tasks", function(err, rows){
-        if (err) console.log(err);
-        db.query("SELECT * FROM gantt_links", function(err, links){
-            if (err) console.log(err);
+app.get("/data", function (req, res) {
+  var rows;
+  db.query("SELECT * FROM gantt_tasks")
+  .then (function (result) {
+    rows = result;
+    return db.query("SELECT * FROM gantt_links");
+  })
+  .then (function (links) {
 
-            for (var i = 0; i < rows.length; i++){
-                rows[i].start_date = rows[i].start_date.format("YYYY-MM-DD");
-                rows[i].open = true;
-            }
+    for (var i = 0; i < rows.length; i++) {
+      rows[i].start_date = rows[i].start_date.format("YYYY-MM-DD");
+      rows[i].open = true;
+    }
 
-
-            res.send({ data:rows, collections: { links : links } });
-        });
-    });
+    res.send({ data: rows, collections: { links: links } });
+  })
+  .catch(function(error) {
+    sendResponse(res, "error", null, error); 
+  });
 });
 ~~~
 
@@ -264,99 +267,124 @@ Well, what we need to do now is to add the required routes and handlers that wil
 The resulting code will be rather spacious:
 
 ~~~js
-app.post("/data/task", function(req, res){
-    var task = getTask(req.body);
-    
-    db.query("INSERT INTO gantt_tasks(text, start_date, duration, progress, parent) VALUES (?,?,?,?,?)",
-    [task.text, task.start_date, task.duration, task.progress, task.parent],
-    function(err, result){
-    	sendResponse(res, "inserted", result ?result.insertId:null, err);
-    });
+
+// add new task
+app.post("/data/task", function (req, res) { 
+  var task = getTask(req.body);  
+
+  db.query("INSERT INTO gantt_tasks(text, start_date, duration, progress, parent, sortorder) VALUES (?,?,?,?,?)", 
+    [task.text, task.start_date, task.duration, task.progress, task.parent])
+  .then (function (result) {
+    sendResponse(res, "inserted", result.insertId);
+  })
+  .catch(function(error) {
+    sendResponse(res, "error", null, error); 
+  });
 });
 
-app.put("/data/task/:id", function(req, res){
-    var sid = req.params.id,
-        task = getTask(req.body);
-        
-    
-    db.query("UPDATE gantt_tasks SET text = ?, start_date = ?, duration = ?, progress = ?, parent = ? WHERE id = ?",
-    [task.text, task.start_date, task.duration, task.progress, task.parent, sid],
-    function(err, result){
-    	sendResponse(res, "updated", null, err);
-    });
+// update task
+app.put("/data/task/:id", function (req, res) {
+  var sid = req.params.id,
+    task = getTask(req.body);
+
+  db.query("UPDATE gantt_tasks SET text = ?, start_date = ?, duration = ?, progress = ?, parent = ? WHERE id = ?",
+    [task.text, task.start_date, task.duration, task.progress, task.parent, sid])
+  .then (function(result) {
+    sendResponse(res, "updated");
+  })
+  .catch(function(error) {
+    sendResponse(res, "error", null, error); 
+  });
+
 });
 
-app.delete("/data/task/:id", function(req, res){
-    var sid = req.params.id;
-    db.query("DELETE FROM gantt_tasks WHERE id = ?", [sid], 
-    function(err, result){
-    	sendResponse(res, "deleted", null, err);
-    });
+// delete task
+app.delete("/data/task/:id", function (req, res) {
+  var sid = req.params.id;
+  db.query("DELETE FROM gantt_tasks WHERE id = ?", [sid])
+  .then (function (result) {
+    sendResponse(res, "deleted");
+  })
+  .catch(function(error) {
+    sendResponse(res, "error", null, error); 
+  });
 });
 
-app.post("/data/link", function(req, res){
-    var link = getLink(req.body);
-        
-    db.query("INSERT INTO gantt_links(source, target, type) VALUES (?,?,?)",
-    [link.source, link.target, link.type],
-    function(err, result){
-    	sendResponse(res, "inserted", result ?result.insertId:null, err);
-    });
+// add link
+app.post("/data/link", function (req, res) {
+  var link = getLink(req.body);
+
+  db.query("INSERT INTO gantt_links(source, target, type) VALUES (?,?,?)", 
+    [link.source, link.target, link.type])
+  .then (function (result) {
+    sendResponse(res, "inserted", result.insertId);
+  })
+  .catch(function(error) {
+    sendResponse(res, "error", null, error); 
+  });
 });
 
-app.put("/data/link/:id", function(req, res){
-    var sid = req.params.id,
-        link = getLink(req.body);
-        
-    db.query("UPDATE gantt_links SET source = ?, target = ?, type = ? WHERE id = ?",
-    [link.source, link.target, link.type, sid],
-    function(err, result){
-    	sendResponse(res, "updated", null, err);
-    });
+// update link
+app.put("/data/link/:id", function (req, res) {
+  var sid = req.params.id,
+    link = getLink(req.body);
+
+  db.query("UPDATE gantt_links SET source = ?, target = ?, type = ? WHERE id = ?", 
+    [link.source, link.target, link.type, sid])
+  .then (function (result) {
+    sendResponse(res, "updated");
+  })
+  .catch(function(error) {
+    sendResponse(res, "error", null, error); 
+  });
 });
 
-app.delete("/data/link/:id", function(req,res){
-    var sid = req.params.id;
-    db.query("DELETE FROM gantt_links WHERE id = ?", [sid], 
-    function(err, result){
-    	sendResponse(res, "deleted", null, err);
-    });
+// delete link
+app.delete("/data/link/:id", function (req, res) {
+  var sid = req.params.id;
+  db.query("DELETE FROM gantt_links WHERE id = ?", 
+    [sid])
+  .then (function (result) {
+    sendResponse(res, "deleted");
+  })
+  .catch(function(error) {
+      sendResponse(res, "error", null, error); 
+  });
 });
 
-function getTask(data){
-    return {
-        text: data.text,
-        start_date: data.start_date.date("YYYY-MM-DD"),
-        duration: data.duration,
-        progress: data.progress || 0,
-        parent: data.parent
-    };
+
+function getTask(data) {
+  return {
+    text: data.text,
+    start_date: data.start_date.date("YYYY-MM-DD"),
+    duration: data.duration,
+    progress: data.progress || 0,
+    parent: data.parent
+  };
 }
 
-function getLink(data){
-    return {
-        source: data.source,
-        target: data.target,
-        type: data.type
-    };
+function getLink(data) {
+  return {
+    source: data.source,
+    target: data.target,
+    type: data.type
+  };
 }
 
-function sendResponse(res, action, tid, error){
-    if(error) {
-        console.log(error);
-        action = "error";
-    }
-    
-    var result = {
-        action: action
-    };
-    if(tid !== undefined && tid !== null)
-        result.tid = tid;
-    
-    res.send(result);
+function sendResponse(res, action, tid, error) {
+
+  if (action == "error")
+    console.log(error);
+
+  var result = {
+    action: action
+  };
+  if (tid !== undefined && tid !== null)
+    result.tid = tid;
+
+  res.send(result);
 }
 ~~~
-
 
 We have created two sets of routes: one for the *tasks* entity and one for the *links* one. Correspondingly, the *“/data/task”* URL will serve for requests related 
 to the operations with tasks and the *“/data/link”* URL will be used to handle requests containing data for operations with links.
@@ -376,4 +404,143 @@ That's all. Open http://127.0.0.1:1337 and you will see a fully operational gant
 
 <img src="desktop/ready_gantt.png">
 
+
+###Storing the Order of Tasks
+
+The client-side gantt allows reordering tasks using drag and drop. So if you use this feature, you'll have to store this order in the database. You can check the common description here.
+
+Let's now add this feature to our app.
+
+###Enable tasks reordering on the client
+
+Firstly, we need to allow users to change task order in the UI. Open Index view and update configuration of gantt:
+
+~~~js
+//index.html
+gantt.config.order_branch = true;/*!*/
+gantt.config.order_branch_free = true;/*!*/
+
+gantt.init("gantt_here");
+~~~
+
+Now, let's reflect these changes on the backend. We are going to store the order in the column named sortorder, the updated *gantt_tasks* table declaration may look following:
+~~~js
+CREATE TABLE IF NOT EXISTS `gantt_tasks` (
+  `id` int(11) NOT NULL  AUTO_INCREMENT PRIMARY KEY,
+  `text` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `start_date` datetime NOT NULL,
+  `duration` int(11) NOT NULL,
+  `progress` float NOT NULL DEFAULT 0,
+  `parent` int(11) NOT NULL,
+  `sortorder` int(11) NOT NULL /*!*/
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+~~~
+
+After then, need to update server.js 
+
+1. <b>GET /data</b> must return tasks ordered by sort order: 
+
+~~~js
+
+app.get("/data", function (req, res) {
+  var rows;
+  db.query("SELECT * FROM gantt_tasks ORDER BY sortorder ASC")/*!*/
+  .then (function (result) {
+    rows = result;
+    return db.query("SELECT * FROM gantt_links");
+  })
+  .then (function (links) {
+
+    for (var i = 0; i < rows.length; i++) {
+      rows[i].start_date = rows[i].start_date.format("YYYY-MM-DD");
+      rows[i].open = true;
+    }
+
+    res.send({ data: rows, collections: { links: links } });
+  })
+  .catch(function(error) {
+    sendResponse(res, "error", null, error); 
+  });
+});
+
+~~~
+
+
+2. Newly added tasks must receive the initial sortorder value: 
+
+~~~js
+app.post("/data/task", function (req, res) { // adds new task to database
+  var task = getTask(req.body);  
+
+  db.query("SELECT MAX(sortorder) AS maxOrder FROM gantt_tasks")
+  .then (function(result) { /*!*/ // assign max sort order to new task
+    var orderIndex = (result[0].maxOrder || 0) + 1;
+    return db.query("INSERT INTO gantt_tasks(text, start_date, duration, progress, parent, sortorder) VALUES (?,?,?,?,?,?)",
+      [task.text, task.start_date, task.duration, task.progress, task.parent, orderIndex]);
+  })
+  .then (function (result) {
+    sendResponse(res, "inserted", result.insertId);
+  })
+  .catch(function(error) {
+    sendResponse(res, "error", null, error); 
+  });
+});
+~~~
+
+3. Finally, when user reorders tasks, task orders must be [updated](desktop/server_side.md#storingtheorderoftasks):
+
+~~~js
+
+app.put("/data/task/:id", function (req, res) {
+  var sid = req.params.id,
+    target = req.body.target,
+    task = getTask(req.body);
+
+  var query = db.query("UPDATE gantt_tasks SET text = ?, start_date = ?, duration = ?, progress = ?, parent = ? WHERE id = ?",
+       [task.text, task.start_date, task.duration, task.progress, task.parent, sid]);
+
+  if (target) {
+    query = updateOrder(query, sid, target);
+  } 
+  
+  query.then (function(result) {
+    sendResponse(res, "updated");
+  })
+  .catch(function(error) {
+    sendResponse(res, "error", null, error); 
+  });
+});
+
+function updateOrder(query, taskId, target){
+  var nextTask = false;
+  var targetOrder;
+  
+  if(target.startsWith("next:")) {
+    target = target.substr("next:".length);
+    nextTask = true;
+  }
+
+  return query
+    .then(function (result) {
+      return db.query("SELECT * FROM gantt_tasks WHERE id = ?", 
+        [target]);
+    })
+    .then (function(result) { 
+      targetOrder = result[0].sortorder;
+      if(nextTask)
+        targetOrder++;
+      return db.query("UPDATE gantt_tasks SET sortorder = sortorder + 1 WHERE sortorder >= ?", 
+        [targetOrder]);
+    })
+    .then (function(result) {        
+      return db.query("UPDATE gantt_tasks SET sortorder = ? WHERE id = ?",
+        [targetOrder, taskId]);
+    });
+}
+
+~~~
+
 You can check [a ready demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.
+
+@todo 
+  check, update images
