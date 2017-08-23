@@ -44,6 +44,7 @@ In the opened window select MVC 5 Controller -> Empty and name a newly added con
 
 The HomeController has the Index() method of the ActionResult class by default, so it doesn't require any additional logic. We will just add a view for it. 
 
+{{snippet Controllers/HomeController.cs}}
 ~~~js
 using System;
 using System.Collections.Generic;
@@ -71,7 +72,7 @@ Now it's time to create our index page. Go to Views/Home and add an empty view n
 <img src="desktop/how_to_start_net_view.png">
 
 Open the newly created view and put the following code into it:
-
+{{snippet Views/Home/Index.cshtml}}
 ~~~html
 @{
     Layout = null;
@@ -117,7 +118,7 @@ What we have done here:
 - and created gantt on the page
 
 Pay attention to the configuration: we've specified the [format of dates](api/gantt_xml_date_config.md) that come from the data source. 
-
+{{snippet Views/Home/Index.cshtml}}
 ~~~js
 gantt.config.xml_date = "%Y-%m-%d %H:%i";
 ~~~
@@ -125,7 +126,7 @@ gantt.config.xml_date = "%Y-%m-%d %H:%i";
 It's needed for our client to be able to parse dates that come from the server.
 
 And also we told the gantt that it's going to work with RESTful API on a backend and use ["/api/data/"](desktop/server_side.md#technique) as a default route:
-
+{{snippet Views/Home/Index.cshtml}}
 ~~~js
 gantt.load("/api/data");
 // initializing dataProcessor
@@ -155,9 +156,8 @@ Let's start!
 ####Task Model
 
 Create the following class for Task:
-
+{{snippet Models/Task.cs}}
 ~~~js
-//DHX.Gantt.Web\Models\Task.cs:
 using System;
 
 namespace DHX.Gantt.Web.Models
@@ -181,10 +181,8 @@ You can find the full list of properties, both mandatory and optional, available
 ####Link Model 
 
 And the following Link class:
-
+{{snippet Models/Link.cs}}
 ~~~js
-//DHX.Gantt.Web\Models\Link.cs
-
 namespace DHX.Gantt.Web.Models
 {
     public class Link
@@ -215,7 +213,7 @@ Install-Package EntityFramework
 The next step is to create Context. Context represents a session with the DataBase. It allows getting and saving data.
 
 Call the context menu for the Models folder and select Add->Class. The new class will be called "GanttContext" and will have the following content:
-
+{{snippet Models/GanttContext.cs}}
 ~~~js
 using System.Data.Entity;
 
@@ -243,7 +241,7 @@ In this class we are going to redefine the Seed() method to populate it with tes
 Then we will add an entities collection into the context with the AddRange() method.
 
 The full code of the *GanttInitializer* class is given below:
-
+{{snippet Models/GanttInitializer.cs}}
 ~~~js
 using System;
 using System.Collections.Generic;
@@ -308,7 +306,7 @@ namespace DHX.Gantt.Web.Models
 
 Open the *Global.asax* file. It contains code that runs on the application start.
 Add the necessary namespace and the code line that will set Initializer for our context into the *Application_Start()* method:
-
+{{snippet Global.asax}}
 ~~~js
 using System;
 using System.Web;
@@ -342,9 +340,8 @@ Now we'll declare DTO classes that will be used for Web API.
 As for mapping between Model and DTO, we'll go the simplest way and just define an explicit conversion operator for these classes.
 
 The TaskDto class will look as follows: 
-
+{{snippet Models/TaskDto.cs}}
 ~~~js
-//DHX.Gantt.Web\Models\TaskDto.cs
 using System;
 
 namespace DHX.Gantt.Web.Models
@@ -396,9 +393,8 @@ namespace DHX.Gantt.Web.Models
 ~~~
 
 And the LinkDto class is given below:
-
+{{snippet Models/LinkDto.cs}}
 ~~~js
-//DHX.Gantt.Web\Models\LinkDto.cs
 namespace DHX.Gantt.Web.Models
 {
     public class LinkDto
@@ -435,9 +431,8 @@ namespace DHX.Gantt.Web.Models
 
 
 Lastly, let's add a model for a [data source](desktop/supported_data_formats.md#json):
-
+{{snippet Models/GanttDto.cs}}
 ~~~js
-// DHX.Gantt.Web\Models\GanttDto.cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -469,7 +464,7 @@ Activate the context menu for the Controllers folder and select Add -> Controlle
 Choose the Web API 2 Controller -> Empty. The new controller will be called "TaskController". 
 
 Now we need to implement basic CRUD actions for the task entry:
-
+{{snippet Controllers/TaskController.cs}}
 ~~~js
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -570,9 +565,8 @@ Now let's do the same for the links.
 ###Link Controller
 
 After that we'll create an empty Web API Controller for links:
-
+{{snippet Controllers/LinkController.cs}}
 ~~~js
-//DHX.Gantt.Web\Controllers\LinkController.cs
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -668,9 +662,8 @@ namespace DHX.Gantt.Web.Controllers
 ###Data Controller
 
 Finally, we will add a controller for the data action:
-
+{{snippet Controllers/DataController.cs}}
 ~~~js
-//DHX.Gantt.Web\Controllers\DataController.cs
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -695,8 +688,6 @@ namespace DHX.Gantt.Web.Controllers
 }
 ~~~
 
-
-
 Now everything is ready. Run the application and the fully-fledged Gantt should appear on the page:
 
 <img src="desktop/ready_gantt_dotnet.png">
@@ -712,7 +703,7 @@ that can be [recognized](desktop/server_side.md#errorhandling) by the client-sid
 
 To provide error handling for the gantt, follow the steps below.
 Go to App_Start and add a new class called GanttAPIExceptionFilterAttribute:
-
+{{snippet App_Start/GanttAPIExceptionFilterAttribute.cs}}
 ~~~js
 using System;
 using System.Net;
@@ -739,10 +730,8 @@ namespace DHX.Gantt.Web
 Then we will add this class to our WebAPI controllers:
 
 - Data controller:
-
+{{snippet Controllers/DataController.cs}}
 ~~~js
-//DHX.Gantt.Web\Controllers\DataController.cs
-
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]/*!*/
@@ -750,9 +739,8 @@ namespace DHX.Gantt.Web.Controllers
 ~~~
 
 - Link controller:
-
+{{snippet Controllers/LinkController.cs}}
 ~~~js
-//DHX.Gantt.Web\Controllers\LinkController.cs
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]/*!*/
@@ -760,9 +748,8 @@ namespace DHX.Gantt.Web.Controllers
 ~~~
 
 - and Task controller:
-
+{{snippet Controllers/TaskController.cs}}
 ~~~js
-//DHX.Gantt.Web\Controllers\TaskController.cs
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]/*!*/
@@ -786,9 +773,8 @@ Let's now add this feature to our app.
 
 Firstly, we need to allow users to [change task order in the UI](desktop/reodering_tasks.md).
 Open Index view and update configuration of gantt:
-
+{{snippet Views/Home/Index.cshtml}}
 ~~~js
-//DHX.Gantt.Web\Views\Home\Index.cshtml
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
@@ -802,7 +788,7 @@ gantt.init("gantt_here");
 
 Now, let's reflect these changes on the backend.
 We are going to store the order in the property named SortOrder, let's update the Task class accordingly:
-
+{{snippet Models/Task.cs}}
 ~~~js
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -827,8 +813,8 @@ namespace DHX.Gantt.Web.Models
 Now we need to update the TaskController.
 Firstly, the client side should receive tasks ordered by the SortOrder value:
 
+{{snippet Controllers/TaskController.cs}}
 ~~~js
-// DHX.Gantt.Web\Controllers\TaskController.cs
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]
@@ -852,9 +838,8 @@ When a user changes the order of tasks, gantt will call a PUT action providing a
 ['target'](desktop/server_side.md#storingtheorderoftasks) property of the request, together with the rest of task properties. 
 
 Thus, we should add an extra property to the task DTO class:
-
+{{snippet Models/TaskDto.cs}}
 ~~~js
-//DHX.Gantt.Web\Models\TaskDto.cs
 namespace DHX.Gantt.Web.Models
 {
   public class TaskDto
@@ -875,10 +860,8 @@ namespace DHX.Gantt.Web.Models
 ~~~
 
 And now we will implement reordering in our PUT (EditTask) action:
-
+{{snippet Controllers/TaskController.cs}}
 ~~~js
-//DHX.Gantt.Web\Controllers\TaskController.cs
-
     // PUT api/Task/5
     [System.Web.Http.HttpPut]
     public IHttpActionResult EditTask(int id, TaskDto taskDto)
