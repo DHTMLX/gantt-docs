@@ -86,7 +86,7 @@ dhx-gantt-app
 
 Now, open the *index.html* file and fill it with the following content:
 
-{{snippet "index.html" file}}
+{{snippet index.html}}
 ~~~html
 <!DOCTYPE html>
 <head>
@@ -131,6 +131,7 @@ Step 3. Implementing a backend
 Now we need to create a backend for our page. 
 Create a new file named <b>server.js</b> and add the following code into it:
 
+{{snippet server.js}}
 ~~~js
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -220,9 +221,8 @@ On the client side we've already added <b>gantt.load("/data")</b> call, which wi
 and will expect to get a [JSON](desktop/supported_data_formats.md#json) object with gantt data in response.
 
 So, we need to add a server route for the URL which will generate an appropriate response. Open the *server.js* file and add the code below into it:
-
+{{snippet server.js}}
 ~~~js
-
 var mysql = require('promise-mysql');
 var db = mysql.createPool({
   host: 'localhost',
@@ -273,7 +273,7 @@ The last thing that we should implement is data saving.
 For this we need a code that will send updates happening on the client side back to the server.
 
 The good news is that we already have such a code in the *index.html* file. Right here:
-
+{{snippet public/index.html}}
 ~~~js
 var dp = new gantt.dataProcessor("/data");
 dp.init(gantt);
@@ -292,9 +292,8 @@ The list of HTTP verbs together with request and response details is given in th
 
 Well, what we need to do now is to add the required routes and handlers that will put the changes into the database into the *server.js* file.
 The resulting code will be rather spacious:
-
+{{snippet server.js}}
 ~~~js
-
 // add new task
 app.post("/data/task", function (req, res) { 
   var task = getTask(req.body);  
@@ -443,9 +442,8 @@ Let's now add this feature to our app.
 ###Enable tasks reordering on the client
 
 Firstly, we need to allow users to change task order in the UI. Open Index view and update configuration of gantt:
-
+{{snippet public/index.html}}
 ~~~js
-//index.html
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
@@ -473,7 +471,7 @@ ALTER TABLE `gantt_tasks` ADD COLUMN `sortorder` int(11) NOT NULL;
 After then, need to update server.js 
 
 1. <b>GET /data</b> must return tasks ordered by the `sortorder` column: 
-
+{{snippet server.js}}
 ~~~js
 app.get("/data", function (req, res) {
   Promise.all([
@@ -502,7 +500,7 @@ app.get("/data", function (req, res) {
 
 
 2. Newly added tasks must receive the initial `sortorder` value: 
-
+{{snippet server.js}}
 ~~~js
 app.post("/data/task", function (req, res) { // adds new task to database
   var task = getTask(req.body);  
@@ -527,7 +525,7 @@ app.post("/data/task", function (req, res) { // adds new task to database
 ~~~
 
 3. Finally, when user reorders tasks, task orders must be [updated](desktop/server_side.md#storingtheorderoftasks):
-
+{{snippet server.js}}
 ~~~js
 // update task
 app.put("/data/task/:id", function (req, res) {
