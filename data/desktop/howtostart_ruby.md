@@ -1,8 +1,9 @@
 dhtmlxGantt with Ruby on Rails 
 =========================
 
-
-In this article we'll show you how to create a Gantt and implement server-side integration based on [Ruby on Rails](http://rubyonrails.org/) framework and REST API.
+In this article we'll show you how to create a Gantt chart with [Ruby on Rails](http://rubyonrails.org/) backend.
+For implementing this app we'll be using Ruby 2.4.1, Rails 5.1.3 and MySQL. This tutorial assumes that you have all prerequisites already installed. 
+Otherwise please visit [the official tutorials](http://guides.rubyonrails.org/index.html) first. 
 
 If you use some other technology, check the list of available integration variants below:
 
@@ -10,22 +11,17 @@ If you use some other technology, check the list of available integration varian
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 
-
-If you have Ruby on Rails installed, you can begin to implement the integration at once. 
-Otherwise, you should install the framework by following the steps described in the [installation guide](http://guides.rubyonrails.org/getting_started.html#installing-rails).
-
-Once everything is ready, we can start completing the integration step by step.
-
 Step 1. Creating a Project
 ------------------------
 
 To add a new project just run the following command in the terminal:
 
 ~~~js
-rails new path/to/your/project
+rails new gantt-app -d mysql
 ~~~
 
-Step 2. Creating a Controller 
+
+Step 2. Creating a Gantt
 -----------------------------------------
 
 Now we need to add a controller that will process users' request to the server through the application.
@@ -37,26 +33,20 @@ The actions collect information which will be passed to the view.
 Let’s create a new controller with the name "home" and a new action called "index".
 
 ~~~js
-cd path/to/your/project
+cd gantt-app
 rails generate controller home index
 ~~~
 
 The output should confirm that new files were created.
 
+###Setting a default route
 
-Step 3. Specifying Routing
--------------------------
-
-To configure the routing, open the file *config/routes.rb*. Find the following line at the very beginning of this file
-
+To configure the routing, open the file *config/routes.rb*. Change the default route to the "index" action of our new controller:
+{{snippet config/routes.rb}}
 ~~~js
-get 'home/index'
-~~~
-
-and replace it with the following one:
-
-~~~js
-root :to => 'home#index'
+Rails.application.routes.draw do
+  root :to => "home#index"
+end
 ~~~
 
 After that we can test our server by running in the command line: 
@@ -71,42 +61,20 @@ Open *http://localhost:3000/* in your browser. The result should be like this:
 
 So the server is ready and we can proceed with views adding.
 
-Step 4. Including Source Files 
------------------------
- 
-To begin with, we should [download the dhtmlxGantt package](http://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml). 
+### Adding gantt to the View
 
-Complete the next steps:
+Now we are ready to add a gantt chart to our page. 
 
-1. Unpack the file *codebase/dhtmlxgantt.js* and the directory *codebase/ext* from the package to the directory *vendor/assets/javascripts/* of your project
-2. Unpack the file *codebase/dhtmlxgantt.css* and the directory *codebase/skins* from the package to the directory *vendor/assets/stylesheets/* of your project
-
-We need to add the *dhtmlxgantt.js* and *dhtmlxgantt.css* files to the precompile array. 
-For this, open the **config/initializers/assets.rb** file and add the following code:
-
-~~~js
-Rails.application.config.assets.precompile += %w( dhtmlxgantt.css )
-Rails.application.config.assets.precompile += %w( dhtmlxgantt.js )
-~~~
-
-
-Step 5. Creating Views
-------------------------
-
-Now we are ready to create a view. Views will visualize the information gathered by actions. 
-
-If there's no controller-specific layout, Rails will use the *app/views/layouts/application.html.erb* file
-as a template for all pages that have common elements. Open this file and replace the existing code with the following:
-
+Open the layout page and add a yield into the *head* tag, well use it to add dhtmlxgantt files to the page:
+{{snippet app/views/layouts/application.html.erb}}
 ~~~html
 <!DOCTYPE html>
 <html>
 <head>
   <title>Gantt</title>
   <%= stylesheet_link_tag 'application', media:'all','data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag 'dhtmlxgantt', media:'all','data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
-  <%= javascript_include_tag 'dhtmlxgantt', 'data-turbolinks-track' => true %>
+  <%= yield(:head) %> /*!*/
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -117,16 +85,23 @@ as a template for all pages that have common elements. Open this file and replac
 </html>
 ~~~
 
-At this point we can specify a view for the "home" controller that we've created at the previous [Step 2](desktop/howtostart_ruby.md#step2creatingacontroller). 
-For this, open the file *app/views/home/index.html.erb*. We need to add a container for the future Gantt chart and initialize the chart, like this:
-
+After that, go to home/index view and add gantt chart there:
+{{snippet app/views/home/index.html.erb}}
 ~~~js
+<% content_for :head do %>
+	<%= stylesheet_link_tag 'https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css' %>
+	<%= javascript_include_tag 'https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js' %>
+<% end %>
+
 <div id="gantt_here" style='width:100%; height:800px;'></div>
 
 <script>
     gantt.init("gantt_here");
 </script>
 ~~~
+
+Note that we added dhtmlx gantt files from [CDN](cdn_links_list.md) rather than locally. 
+For the development you'll want to use a readable version of source codes that comes with the download package.
 
 After that we can have a look at the current result. Open *http://localhost:3000/* (the rails server) in a browser.
 You should get the following result:
@@ -137,14 +112,25 @@ Thus you've got a Gantt chart where you can add tasks and modify them. But it la
 To provide it, we need to proceed with creating models.
 
 Step 6. Creating Models
-----------------------
+--------------
 
-Since Gantt operates tasks and links entities, we need to add two models: one for each of them.
+Since we're using mysql, make sure that connection settings in *config/database.yml* are correct:
+{{snippet config/database.yml}}
+~~~js
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: gantt-app
+  username: root
+  password: 
+~~~
+
+Now we need to create models for [tasks and links](desktop/server_side.md#databasesstructure).
 
 To create a model for tasks, we need to run a command that contains the task properties:
 
 ~~~js
-rails generate model Task text:string start_date:datetime duration:integer 
+rails generate model Task text:string start_date:datetime duration:integer progress:decimal
 ~~~
 
 A similar but shorter command is used to create a model for links:
@@ -156,13 +142,13 @@ rails generate model Link source:integer target:integer link_type:string:limit1
 You can have a look at the full list of properties, both mandatory and optional, available for the [Task object](desktop/loading.md#task_properties) and 
 [Link object](desktop/loading.md#link_properties).
 
-After that we can create a new database:
+After that we need to run a migration in order to update our database:
 
 ~~~js
 rake db:migrate
 ~~~
 
-Now you can try to add test tasks and links into it. The algorithm is the following:
+Let's add some test data while we're here:
 
 1 . Open the Rails console by running:
 
@@ -170,15 +156,13 @@ Now you can try to add test tasks and links into it. The algorithm is the follow
 rails c
 ~~~
 
-2 . Add the desired tasks and links like this:
+2 . Add a couple of tasks and links like this:
 
 ~~~js
-Task.create :text=>"Task 1", :start_date=>"2015-10-25",  :duration=>2;
-Task.create :text=>"Task 2", :start_date=>"2015-10-27",  :duration=>3;
+Task.create :text=>"Task 1", :start_date=>"2015-10-25",  :duration=>2, :progress=>0;
+Task.create :text=>"Task 2", :start_date=>"2015-10-27",  :duration=>3, :progress=>0.5;
 Link.create :source=>1, :target=>2, :link_type=>"0";
 ~~~
-
-
 3 . Enter "exit" to close the console.
 
 Next we need implement data loading and saving in the chart with the help of controllers.
@@ -203,7 +187,7 @@ In order to enable data loading in the chart, we should create a new data action
 loading tasks and links data into Gantt.
 
 Open the file *app/controllers/home_controller.rb* and add the code below into it:
-
+{{snippet app/controllers/home_controller.rb}}
 ~~~js
 def data
     tasks = Task.all
@@ -216,7 +200,6 @@ def data
                           :start_date => task.start_date.to_formatted_s(:db),
                           :duration => task.duration,
                           :progress => task.progress,
-                          :sortorder => task.sortorder,
                           :parent => task.parent
                       }},
               :links => links.map{|link|{
@@ -242,7 +225,7 @@ rails generate controller task
 ~~~
 
 We will add the code that will enable data adding, changing and deleting into the file of this task - *app/controllers/task_controller.rb*:
-
+{{snippet app/controllers/task_controller.rb}}
 ~~~js
 protect_from_forgery
 
@@ -252,11 +235,10 @@ def update
     task.start_date = params["start_date"]
     task.duration = params["duration"]
     task.progress = params["progress"]
-    task.sortorder = params["sortorder"]
     task.parent = params["parent"]
     task.save
 
-    render :json => {:status => "ok"}
+    render :json => {:action => "updated"}
   end
 
   def add
@@ -265,15 +247,14 @@ def update
         :start_date=> params["start_date"], 
         :duration => params["duration"],
         :progress => params["progress"], 
-        :sortorder => params["sortorder"], 
         :parent => params["parent"]
 
-    render :json => {:tid => task.id}
+    render :json => {:action => "inserted", :tid => task.id}
   end
 
   def delete
     Task.find(params["id"]).destroy
-    render :json => {:status => "ok"}
+    render :json => {:action => "deleted"}
   end
 ~~~
 
@@ -283,11 +264,8 @@ The code of Task Controller includes the following types of requests:
 - PUT request updates an existing record 
 - DELETE request goes for deleting
 
-All actions return a JSON response containing the type of the performed operation or "error" if something went wrong.
-
 Note that a response for the insert action also contains a database id of the new record. 
 It will be applied on the client side, so the new item could be mapped to the database entity. 
-
 
 ###Link Controller
 
@@ -299,7 +277,7 @@ rails generate controller link
 
 We will add a familiar code to organize adding/changing/deleting actions for links
 into the *app/controllers/link_controller.rb* file:
-
+{{snippet app/controllers/link_controller.rb}}
 ~~~js
 protect_from_forgery
 
@@ -310,7 +288,7 @@ protect_from_forgery
    link.link_type = params["type"]
    link.save
 
-   render :json => {:status => "ok"}
+   render :json => {:action => "updated"}
  end
 
  def add
@@ -319,12 +297,12 @@ protect_from_forgery
         :target => params["target"], 
         :link_type => params["type"]
         
-   render :json => {:tid => link.id}
+   render :json => {:action => "inserted", :tid => link.id}
  end
 
  def delete
    Link.find(params["id"]).destroy
-   render :json => {:status => "ok"}
+   render :json => {:action => "deleted"}
  end
 ~~~
 
@@ -334,8 +312,6 @@ The same as for Task Controller, we describe the following types of requests in 
 - PUT request updates an existing record 
 - DELETE request goes for deleting
 
-Actions return a JSON response with the type of operation or "error".
-
 ###Configuring Routes for API
 
 After that we need to specify the routes to the newly created controllers and actions.
@@ -343,7 +319,7 @@ These routes will map incoming requests to specific handlers.
 You can find the full route scheme [in the corresponding article](desktop/server_side.md#requestresponsedetails).
 
 We will specify the routes in the *config/routes.rb* file with the following code:
-
+{{snippet config/routes.rb}}
 ~~~js
 match "home/data", :to => "home#data", :as => "data", :via => "get"
 
@@ -362,7 +338,7 @@ Step 8. Initializing Gantt
 --------------------------
 
 The last thing we have to do is to put the following code into the &#60;script&#62;&#60;/script&#62; part of the *app/views/home/index.html.erb* file.
-
+{{views/home/index.html.erb}}
 ~~~js
 gantt.config.xml_date="%Y-%m-%d %H:%i";
 
