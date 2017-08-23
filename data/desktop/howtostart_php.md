@@ -592,5 +592,12 @@ function updateOrder($taskId, $target, $db){
 
 You can check [a ready demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.
 
+Using dhtmlxConnector
+---------------
+Alternatively, PHP backend can be also implemented using [dhtmlxConnector library](https://docs.dhtmlx.com/connector__php__index.html). 
+You can find a detailed tutorial [here](desktop/howtostart_connector.md) 
+
+
+
 @todo:
   check text
