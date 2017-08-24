@@ -21,17 +21,11 @@ rails new gantt-app -d mysql
 ~~~
 
 
-Step 2. Creating a Gantt
+Step 2. Adding Gantt to the page
 -----------------------------------------
 
-Now we need to add a controller that will process users' request to the server through the application.
-Since requests differ in their type, we need separate controllers for certain requests.
-
-To define the connection between a controller and the type of request, we will use routing. Different routes can be served by different actions.
-The actions collect information which will be passed to the view.
-
-Let’s create a new controller with the name "home" and a new action called "index".
-
+Let's start with creating a controller and a default page for our application.
+Move to the application folder and generate a new controller with *index* action:
 ~~~js
 cd gantt-app
 rails generate controller home index
@@ -59,9 +53,9 @@ Open *http://localhost:3000/* in your browser. The result should be like this:
 
 <img src="desktop/server_test.png">
 
-So the server is ready and we can proceed with views adding.
+So the app is working and we've got our default page, now we can proceed to adding a gantt chart.
 
-### Adding gantt to the View
+### Adding Gantt to the View
 
 Now we are ready to add a gantt chart to our page. 
 
@@ -71,7 +65,7 @@ Open the layout page and add a yield into the *head* tag, well use it to add dht
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gantt</title>
+  <title>dhtmlxGantt</title>
   <%= stylesheet_link_tag 'application', media:'all','data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
   <%= yield(:head) %> /*!*/
@@ -100,7 +94,7 @@ After that, go to home/index view and add gantt chart there:
 </script>
 ~~~
 
-Note that we added dhtmlx gantt files from [CDN](cdn_links_list.md) rather than locally. 
+Note that we added dhtmlx gantt files from [CDN](desktop/cdn_links_list.md) rather than locally. 
 For the development you'll want to use a readable version of source codes that comes with the download package.
 
 After that we can have a look at the current result. Open *http://localhost:3000/* (the rails server) in a browser.
@@ -111,15 +105,16 @@ You should get the following result:
 Thus you've got a Gantt chart where you can add tasks and modify them. But it lacks the saving ability.
 To provide it, we need to proceed with creating models.
 
-Step 6. Creating Models
+Step 2. Creating Models
 --------------
 
-Since we're using mysql, make sure that connection settings in *config/database.yml* are correct:
+Since we're using mysql, make sure that you have a correct connection settings in *config/database.yml*, for example:
 {{snippet config/database.yml}}
 ~~~js
 development:
   adapter: mysql2
   encoding: utf8
+  host: localhost
   database: gantt-app
   username: root
   password: 
@@ -130,14 +125,26 @@ Now we need to create models for [tasks and links](desktop/server_side.md#databa
 To create a model for tasks, we need to run a command that contains the task properties:
 
 ~~~js
-rails generate model Task text:string start_date:datetime duration:integer progress:decimal
+rails generate model Task \
+    text:string \
+    start_date:datetime \
+    duration:integer \
+    parent:integer \
+    progress:decimal
 ~~~
 
 A similar but shorter command is used to create a model for links:
 
 ~~~js
-rails generate model Link source:integer target:integer link_type:string:limit1
+rails generate model Link \
+    source:integer \
+    target:integer \
+    link_type:string:limit1
 ~~~
+
+Note, that dhtmlxgantt link object must have a property named <b>[type](desktop/server_side.md#databasesstructure)</b> 
+which stores a type of the relation (start-to-start, finish-to-finish, etc.).
+We can't add such property to our model since the "<b>type</b>" name is already reserved by ActiveRecord. As a workaround, we'll name this property <b>link_type</b> and will do the required mapping in the controller. 
 
 You can have a look at the full list of properties, both mandatory and optional, available for the [Task object](desktop/loading.md#task_properties) and 
 [Link object](desktop/loading.md#link_properties).
@@ -167,192 +174,209 @@ Link.create :source=>1, :target=>2, :link_type=>"0";
 
 Next we need implement data loading and saving in the chart with the help of controllers.
 
-Step 7. Creating Task and Link Controllers
---------------------
+Step 3. Loading Data
+-------------------
 
-###General technique of loading data using REST API
+After we created model classes and did the migration we can load the database data into our gantt. 
 
-There's a [common technique](desktop/server_side.md#technique) for loading data into Gantt from the server side.
+dhtmlxGantt expects data in [JSON format](desktop/supported_data_formats.md), so firstly we'll add a new action to our *HomeController* where we'll read, format and output gantt data:
 
-You will find the requirements to the client side,
-as well as the [description of possible requests and responses](desktop/server_side.md#requestresponsedetails)
-in the desktop/server_side.md article.
-
-Below we will consider how to load data into Gantt using Ruby on Rails server side.
-
-###Creating a new data action
-
-Gantt gets both tasks and links in one object, not separately.
-In order to enable data loading in the chart, we should create a new data action that will be responsible for 
-loading tasks and links data into Gantt.
-
-Open the file *app/controllers/home_controller.rb* and add the code below into it:
 {{snippet app/controllers/home_controller.rb}}
 ~~~js
-def data
+class HomeController < ApplicationController
+  def index
+  end
+ 
+  def data 
     tasks = Task.all
     links = Link.all
-
+ 
     render :json=>{
-              :data => tasks.map{|task|{
-                          :id => task.id,
-                          :text => task.text,
-                          :start_date => task.start_date.to_formatted_s(:db),
-                          :duration => task.duration,
-                          :progress => task.progress,
-                          :parent => task.parent
-                      }},
-              :links => links.map{|link|{
-                  :id => link.id,
-                  :source => link.source,
-                  :target => link.target,
-                  :type => link.link_type
-              }}
-           }
+      :data => tasks.map{|task|{
+        :id => task.id,
+        :text => task.text,
+        :start_date => task.start_date.to_formatted_s(:db),
+        :duration => task.duration,
+        :progress => task.progress,
+        :parent => task.parent,
+        :open => true
+      }},
+      :links => links.map{|link|{
+        :id => link.id,
+        :source => link.source,
+        :target => link.target,
+        :type => link.link_type
+      }}
+    }
   end
+end
 ~~~
 
-The code will create a data action that will make an object with data for a Gantt chart. It will contain a list of tasks and a list of links.
-The dates of tasks should be converted into appropriate strings.
-
-
-###Task Controller
-
-Next we need to create a new controller task by running:
-
-~~~js
-rails generate controller task
-~~~
-
-We will add the code that will enable data adding, changing and deleting into the file of this task - *app/controllers/task_controller.rb*:
-{{snippet app/controllers/task_controller.rb}}
-~~~js
-protect_from_forgery
-
-def update
-    task = Task.find(params["id"])
-    task.text = params["text"]
-    task.start_date = params["start_date"]
-    task.duration = params["duration"]
-    task.progress = params["progress"]
-    task.parent = params["parent"]
-    task.save
-
-    render :json => {:action => "updated"}
-  end
-
-  def add
-    task = Task.create 
-    	:text => params["text"], 
-        :start_date=> params["start_date"], 
-        :duration => params["duration"],
-        :progress => params["progress"], 
-        :parent => params["parent"]
-
-    render :json => {:action => "inserted", :tid => task.id}
-  end
-
-  def delete
-    Task.find(params["id"]).destroy
-    render :json => {:action => "deleted"}
-  end
-~~~
-
-The code of Task Controller includes the following types of requests:
-
-- POST request means that a new item needs to be inserted into the database
-- PUT request updates an existing record 
-- DELETE request goes for deleting
-
-Note that a response for the insert action also contains a database id of the new record. 
-It will be applied on the client side, so the new item could be mapped to the database entity. 
-
-###Link Controller
-
-Now we will surely proceed with adding a link controller. The next line will help us with it:
-
-~~~js
-rails generate controller link
-~~~
-
-We will add a familiar code to organize adding/changing/deleting actions for links
-into the *app/controllers/link_controller.rb* file:
-{{snippet app/controllers/link_controller.rb}}
-~~~js
-protect_from_forgery
-
- def update
-   link = Link.find(params["id"])
-   link.source = params["source"]
-   link.target = params["target"]
-   link.link_type = params["type"]
-   link.save
-
-   render :json => {:action => "updated"}
- end
-
- def add
-   link = Link.create 
-   		:source => params["source"], 
-        :target => params["target"], 
-        :link_type => params["type"]
-        
-   render :json => {:action => "inserted", :tid => link.id}
- end
-
- def delete
-   Link.find(params["id"]).destroy
-   render :json => {:action => "deleted"}
- end
-~~~
-
-The same as for Task Controller, we describe the following types of requests in the code of Link Controller:
-
-- POST request means that a new item should be inserted into the database
-- PUT request updates an existing record 
-- DELETE request goes for deleting
-
-###Configuring Routes for API
-
-After that we need to specify the routes to the newly created controllers and actions.
-These routes will map incoming requests to specific handlers.
-You can find the full route scheme [in the corresponding article](desktop/server_side.md#requestresponsedetails).
-
-We will specify the routes in the *config/routes.rb* file with the following code:
+Add a route for this action into *routes.rb*:
 {{snippet config/routes.rb}}
 ~~~js
-match "home/data", :to => "home#data", :as => "data", :via => "get"
-
-post "home/data/task", :to => "task#add"
-put "home/data/task/:id", :to => "task#update"
-delete "home/data/task/:id", :to => "task#delete"
-
-post "home/data/link", :to => "link#add"
-put "home/data/link/:id", :to => "link#update"
-delete "home/data/link/:id", :to => "link#delete"
+Rails.application.routes.draw do
+  root :to => "home#index"
+  match "home/data", :to => "home#data", :as => "data", :via => "get"
+end
 ~~~
 
-Thus, we have set API routes for data and all the necessary actions: adding, updating and deleting tasks and links.
-
-Step 8. Initializing Gantt
---------------------------
-
-The last thing we have to do is to put the following code into the &#60;script&#62;&#60;/script&#62; part of the *app/views/home/index.html.erb* file.
-{{views/home/index.html.erb}}
+And call this action from the client-side using [gantt.load](api/gantt_load.md) method:
+{{snippet app/views/hove/index.html.erb}}
 ~~~js
-gantt.config.xml_date="%Y-%m-%d %H:%i";
+gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
+
+gantt.init("gantt_here");
+gantt.load("<%= data_path %>");/*!*/
+~~~
+Note that [xml_date](api/gantt_xml_date_config.md) config specifies the [format of dates](http://api.rubyonrails.org/v5.1/classes/DateTime.html#method-i-to_formatted_s) (<b>start_date</b> of Task) that comes from the server.
+
+If you run the server now and open *http://localhost:3000/* in your browser, you should be able to see gantt chart populated with tasks and links from the database.
+No changes would be posted back to the database, however. We're going to fix it in the next step.
+
+Step 4. Saving changes
+--------------------
+
+dhtmlxGantt can transmit all changes made by the user to the RESTful API on a backend, where everything can be saved to the database. You can check the protocol details [here](desktop/server_side.md#technique). 
+That's the way we're going to implement data saving now.
+
+Firstly, we want enable posting changes on the client:
+{{snippet app/views/hove/index.html.erb}}
+~~~js
+gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
 
 gantt.init("gantt_here");
 gantt.load("<%= data_path %>");
 
-var dp = new dataProcessor("<%= data_path %>");
-dp.init(gantt);
-dp.setTransactionMode("REST");
+var dp = new gantt.dataProcessor("<%= data_path %>");/*!*/
+dp.init(gantt);/*!*/
+dp.setTransactionMode("REST");/*!*/
 ~~~
 
-It initializes Gantt and enables it to load and save data. That's all. Now we can run our application in a browser and see the result.
+Then, we need to add two controllers, one for Tasks and one for Links and implement all required actions.
+Let's start with a controller for Tasks:
+~~~js
+rails generate controller task --no-helper --no-assets --no-view-specs
+~~~
+Since this controller is not going to have any views we've used *--no-* flags in order not to generate files we won't need. 
 
+And implement actions for creating/updating and deleting tasks:
+{{snippet app/controllers/task_controller.rb}}
+~~~js
+class TaskController < ApplicationController
+    protect_from_forgery
+ 
+    def update
+        task = Task.find(params["id"])
+        task.text = params["text"]
+        task.start_date = params["start_date"]
+        task.duration = params["duration"]
+        task.progress = params["progress"] || 0
+        task.parent = params["parent"]
+        task.save
+ 
+        render :json => {:action => "updated"}
+    end
+ 
+    def add
+        task = Task.create( 
+            :text => params["text"], 
+            :start_date=> params["start_date"], 
+            :duration => params["duration"],
+            :progress => params["progress"] || 0, 
+            :parent => params["parent"]
+        )
+ 
+        render :json => {:action => "inserted", :tid => task.id}
+    end
+ 
+    def delete
+        Task.find(params["id"]).destroy
+        render :json => {:action => "deleted"}
+    end
+end
+~~~
+
+A couple of notes regarding this code
+
+ - we don't need a get action since all data is already loaded from *home#data*
+ - *"progress"* property may not have a default value on the client-side, we need to provide a default value just in case
+ - an action that creates new item should return database id of newly inserted record back to the client
+
+After that we need to add a new routes to the config, and users will be able to view/create/update and delete tasks in our gantt chart:
+{{snippet config/routes.rb}}
+~~~js
+Rails.application.routes.draw do
+  root :to => "home#index"
+  match "home/data", :to => "home#data", :as => "data", :via => "get"
+
+  post "home/data/task", :to => "task#add" /*!*/
+  put "home/data/task/:id", :to => "task#update" /*!*/
+  delete "home/data/task/:id", :to => "task#delete" /*!*/
+end
+~~~
+
+Now, let's do the same for links.
+
+Generate Link controller:
+~~~js
+rails generate controller link --no-helper --no-assets --no-view-specs
+~~~
+
+The implementation may look like the following:
+{{snippet app/controllers/link_controller.rb}}
+~~~js
+class LinkController < ApplicationController
+    protect_from_forgery
+ 
+    def update
+        link = Link.find(params["id"])
+        link.source = params["source"]
+        link.target = params["target"]
+        link.link_type = params["type"]
+        link.save
+ 
+        render :json => {:action => "updated"}
+    end
+ 
+    def add
+        link = Link.create( 
+            :source => params["source"], 
+            :target => params["target"], 
+            :link_type => params["type"]
+        )
+ 
+        render :json => {:action => "inserted", :tid => link.id}
+    end
+ 
+    def delete
+        Link.find(params["id"]).destroy
+        render :json => {:action => "deleted"}
+    end
+end
+~~~
+
+And add routes for new actions: 
+{{snippet config/routes.rb}}
+~~~js
+Rails.application.routes.draw do
+  root :to => "home#index"
+  match "home/data", :to => "home#data", :as => "data", :via => "get"
+
+  post "home/data/task", :to => "task#add"
+  put "home/data/task/:id", :to => "task#update"
+  delete "home/data/task/:id", :to => "task#delete"
+
+  post "home/data/link", :to => "link#add"/*!*/
+  put "home/data/link/:id", :to => "link#update"/*!*/
+  delete "home/data/link/:id", :to => "link#delete"/*!*/
+end
+~~~
+
+And that's it. If you run application now you'll have an interactive gantt chart with Rails and MySql backend:
 <img src="desktop/result.png">
 
-As you can see, there are two tasks connected by a link. We have added them at the [Step 6](desktop/howtostart_ruby.md#step6creatingmodels).  
-Now you can add more tasks and modify them and all the changes will be saved in the database.
+Please check more of [our guides](desktop/guides.md) for more features of dhtmlxGantt.
+
+@todo:
+  proofread, recheck app code, add branch ordering
