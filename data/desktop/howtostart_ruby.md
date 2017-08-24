@@ -28,7 +28,7 @@ Let's start with creating a controller and a default page for our application.
 Move to the application folder and generate a new controller with *index* action:
 ~~~js
 cd gantt-app
-rails generate controller home index
+rails generate controller gantt index
 ~~~
 
 The output should confirm that new files were created.
@@ -39,7 +39,7 @@ To configure the routing, open the file *config/routes.rb*. Change the default r
 {{snippet config/routes.rb}}
 ~~~js
 Rails.application.routes.draw do
-  root :to => "home#index"
+  root :to => "gantt#index"
 end
 ~~~
 
@@ -79,8 +79,8 @@ Open the layout page and add a yield into the *head* tag, well use it to add dht
 </html>
 ~~~
 
-After that, go to home/index view and add gantt chart there:
-{{snippet app/views/home/index.html.erb}}
+After that, go to gantt/index view and add gantt chart there:
+{{snippet app/views/gantt/index.html.erb}}
 ~~~js
 <% content_for :head do %>
 	<%= stylesheet_link_tag 'https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css' %>
@@ -179,11 +179,11 @@ Step 3. Loading Data
 
 After we created model classes and did the migration we can load the database data into our gantt. 
 
-dhtmlxGantt expects data in [JSON format](desktop/supported_data_formats.md), so firstly we'll add a new action to our *HomeController* where we'll read, format and output gantt data:
+dhtmlxGantt expects data in [JSON format](desktop/supported_data_formats.md), so firstly we'll add a new action to our *GanttController* where we'll read, format and output gantt data:
 
-{{snippet app/controllers/home_controller.rb}}
+{{snippet app/controllers/gantt_controller.rb}}
 ~~~js
-class HomeController < ApplicationController
+class GanttController < ApplicationController
   def index
   end
  
@@ -216,18 +216,21 @@ Add a route for this action into *routes.rb*:
 {{snippet config/routes.rb}}
 ~~~js
 Rails.application.routes.draw do
-  root :to => "home#index"
-  match "home/data", :to => "home#data", :as => "data", :via => "get"
+  root :to => "gantt#index"
+
+  scope '/api' do/*!*/
+    get "/data", :to => "gantt#data"/*!*/
+  end/*!*/
 end
 ~~~
 
 And call this action from the client-side using [gantt.load](api/gantt_load.md) method:
-{{snippet app/views/hove/index.html.erb}}
+{{snippet app/views/gantt/index.html.erb}}
 ~~~js
 gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
 
 gantt.init("gantt_here");
-gantt.load("<%= data_path %>");/*!*/
+gantt.load("/api/data");/*!*/
 ~~~
 Note that [xml_date](api/gantt_xml_date_config.md) config specifies the [format of dates](http://api.rubyonrails.org/v5.1/classes/DateTime.html#method-i-to_formatted_s) (<b>start_date</b> of Task) that comes from the server.
 
@@ -241,14 +244,14 @@ dhtmlxGantt can transmit all changes made by the user to the RESTful API on a ba
 That's the way we're going to implement data saving now.
 
 Firstly, we want enable posting changes on the client:
-{{snippet app/views/hove/index.html.erb}}
+{{snippet app/views/gantt/index.html.erb}}
 ~~~js
 gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
 
 gantt.init("gantt_here");
-gantt.load("<%= data_path %>");
+gantt.load("/api/data");
 
-var dp = new gantt.dataProcessor("<%= data_path %>");/*!*/
+var dp = new gantt.dataProcessor("/api");/*!*/
 dp.init(gantt);/*!*/
 dp.setTransactionMode("REST");/*!*/
 ~~~
@@ -299,7 +302,7 @@ end
 
 A couple of notes regarding this code
 
- - we don't need a get action since all data is already loaded from *home#data*
+ - we don't need a get action since all data is already loaded from *gantt#data*
  - *"progress"* property may not have a default value on the client-side, we need to provide a default value just in case
  - an action that creates new item should return database id of newly inserted record back to the client
 
@@ -307,12 +310,15 @@ After that we need to add a new routes to the config, and users will be able to 
 {{snippet config/routes.rb}}
 ~~~js
 Rails.application.routes.draw do
-  root :to => "home#index"
-  match "home/data", :to => "home#data", :as => "data", :via => "get"
+  root :to => "gantt#index"
 
-  post "home/data/task", :to => "task#add" /*!*/
-  put "home/data/task/:id", :to => "task#update" /*!*/
-  delete "home/data/task/:id", :to => "task#delete" /*!*/
+  scope '/api' do
+    get "/data", :to => "gantt#data"
+  
+    post "/task", :to => "task#add"/*!*/
+    put "/task/:id", :to => "task#update"/*!*/
+    delete "/task/:id", :to => "task#delete"/*!*/
+  end
 end
 ~~~
 
@@ -360,16 +366,19 @@ And add routes for new actions:
 {{snippet config/routes.rb}}
 ~~~js
 Rails.application.routes.draw do
-  root :to => "home#index"
-  match "home/data", :to => "home#data", :as => "data", :via => "get"
+  root :to => "gantt#index"
 
-  post "home/data/task", :to => "task#add"
-  put "home/data/task/:id", :to => "task#update"
-  delete "home/data/task/:id", :to => "task#delete"
-
-  post "home/data/link", :to => "link#add"/*!*/
-  put "home/data/link/:id", :to => "link#update"/*!*/
-  delete "home/data/link/:id", :to => "link#delete"/*!*/
+  scope '/api' do
+    get "/data", :to => "gantt#data"
+  
+    post "/task", :to => "task#add"
+    put "/task/:id", :to => "task#update"
+    delete "/task/:id", :to => "task#delete"
+  
+    post "/link", :to => "link#add"/*!*/
+    put "/link/:id", :to => "link#update"/*!*/
+    delete "/link/:id", :to => "link#delete"/*!*/
+  end
 end
 ~~~
 
@@ -389,7 +398,7 @@ Let's now add this feature to our app.
 
 Firstly, we need to allow users to change task order in the UI. Open Index view and update configuration of gantt:
 
-{{snippet app/views/hove/index.html.erb}}
+{{snippet app/views/gantt/index.html.erb}}
 ~~~js
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
@@ -434,9 +443,9 @@ After that we need to update CRUD in controllers.
 
  - *data* action must return tasks ordered by the `sortorder` column: 
 
-{{snippet app/controllers/home_controller.rb}}
+{{snippet app/controllers/gantt_controller.rb}}
 ~~~js
-class HomeController < ApplicationController
+class GanttController < ApplicationController
   def index
   end
  
