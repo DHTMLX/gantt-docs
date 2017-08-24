@@ -378,5 +378,181 @@ And that's it. If you run application now you'll have an interactive gantt chart
 
 Please check more of [our guides](desktop/guides.md) for more features of dhtmlxGantt.
 
+Storing the Order of Tasks
+------------------
+
+The client-side gantt allows reordering tasks using drag and drop. So if you use this feature, you'll have to store this order in the database. You can check the common description here.
+
+Let's now add this feature to our app.
+
+###Enable tasks reordering on the client
+
+Firstly, we need to allow users to change task order in the UI. Open Index view and update configuration of gantt:
+
+{{snippet app/views/hove/index.html.erb}}
+~~~js
+gantt.config.order_branch = true;/*!*/
+gantt.config.order_branch_free = true;/*!*/
+
+gantt.init("gantt_here");
+~~~
+
+Now, let's reflect these changes on the backend. Firstly, we need to add the order info to our model. We'll name the new property *sortorder*. The updated model declaration may look like this:
+
+~~~js
+rails generate model Task \
+    text:string \
+    start_date:datetime \
+    duration:integer \
+    parent:integer \
+    progress:decimal \ 
+    sortorder:integer  /*!*/
+~~~
+
+Or add a new property to the existing model:
+
+1. create a migration:
+~~~js
+rails generate migration add_sortorder_to_tasks sortorder:integer
+~~~
+
+2. Open the generated migration and add a default value to the sortorder column:
+~~~js
+class AddSortorderToTasks < ActiveRecord::Migration[5.1]
+  def change
+    add_column :tasks, :sortorder, :integer, :default=>0
+  end
+end
+~~~
+
+And migrate:
+~~~js
+rake db:migrate
+~~~
+
+After that we need to update CRUD in controllers.
+
+ - *data* action must return tasks ordered by the `sortorder` column: 
+
+{{snippet app/controllers/home_controller.rb}}
+~~~js
+class HomeController < ApplicationController
+  def index
+  end
+ 
+  def data 
+    tasks = Task.all
+    links = Link.all
+ 
+    render :json=>{
+      :data => tasks.order(:sortorder).map{|task|{ /*!*/
+        :id => task.id,
+        :text => task.text,
+        :start_date => task.start_date.to_formatted_s(:db),
+        :duration => task.duration,
+        :progress => task.progress,
+        :parent => task.parent,
+        :open => true
+      }},
+      :links => links.map{|link|{
+        :id => link.id,
+        :source => link.source,
+        :target => link.target,
+        :type => link.link_type
+      }}
+    }
+  end
+end
+~~~
+
+ - Newly added tasks must receive the initial `sortorder` value: 
+
+{{snippet app/controllers/task_controller.rb}}
+~~~js
+class TaskController < ApplicationController
+    ...
+    def add
+    
+        maxOrder = Task.maximum("sortorder") || 0
+        
+        task = Task.create( 
+            :text => params["text"], 
+            :start_date=> params["start_date"], 
+            :duration => params["duration"],
+            :progress => params["progress"] || 0, 
+            :parent => params["parent"],
+            :sortorder => maxOrder + 1
+        )
+ 
+        render :json => {:action => "inserted", :tid => task.id}
+    end
+
+end
+~~~
+
+ - Finally, when user reorders tasks, task orders must be [updated](desktop/server_side.md#storingtheorderoftasks):
+{{snippet app/controllers/task_controller.rb}}
+~~~js
+class TaskController < ApplicationController
+    protect_from_forgery
+ 
+    def update
+        task = Task.find(params["id"])
+        task.text = params["text"]
+        task.start_date = params["start_date"]
+        task.duration = params["duration"]
+        task.progress = params["progress"] || 0
+        task.parent = params["parent"]
+        task.save
+ 
+        if(params['target'])/*!*/
+            Task.updateOrder(task.id, params['target'])/*!*/
+        end/*!*/
+
+        render :json => {:action => "updated"}
+    end
+ 
+    ...
+end
+~~~
+
+Task.updateOrder implementation:
+
+{{snippet app/models/task.rb}}
+~~~js
+class Task < ApplicationRecord
+    def self.updateOrder(taskId, target)
+        nextTask = false
+        targetId = target
+
+        if(target.start_with?('next:'))
+            targetId = target['next:'.length, target.length]
+            nextTask = true;
+        end
+
+        if(targetId == 'null')
+            return
+        end
+
+        targetTask = self.find(targetId)
+        
+        targetOrder = targetTask.sortorder
+
+        if(nextTask)
+            targetOrder += 1
+        end
+        
+        self.where("sortorder >= ?", targetOrder).
+            update_all('sortorder = sortorder + 1')
+        
+        task = self.find(taskId)
+        task.sortorder = targetOrder
+        task.save
+    end
+end
+
+~~~
+
+
 @todo:
-  proofread, recheck app code, add branch ordering
+  proofread, recheck app code, add github link
