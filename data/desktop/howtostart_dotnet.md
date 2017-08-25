@@ -20,39 +20,31 @@ Step 1. Making Preparations
 ###Creating a new Visual Studio Project 
 
 Let's start by running Visual Studio and creating a new project. For this, open the File menu tab and choose:<br>
-New -> Project. Then select ASP.NET Web Application and name it *gantt-rest-net*. 
+New -> Project. Then select ASP.NET Web Application and name it *DHX.Gantt.Web*. 
 
-<img src="desktop/vs_project.png">
+<img src="desktop/how_to_start_net_create_project.png">
 
 Select an Empty project among available templates and check MVC and Web API checkboxes below the list of templates.
 
-<img src="desktop/select_template.png">
-
-###Installing dhtmlxGantt package
-
-Now we need to install dhtmlxGantt from NuGet. For this, run the following command in the Package Manager Console:
-
-~~~js
-Install-Package DHTMLX.Gantt
-~~~
+<img src="desktop/how_to_start_net_project_template.png">
 
 Step 2. Adding Models, Views and Controllers
 --------------------------------
 
 ###Creating a Controller
 
-We also need to add a controller for our web page. It will process incoming requests from the user and run the needed logic.
+Now we have an empty project and everything is ready for implementing our gantt.
 
-The controller will call a particular view to generate a necessary HTML for the request.
+Firstly, we'll add an MVC controller which will show a page with a gantt chart.
 
 To create it, call the context menu for the Controllers folder and choose Add->Controller.
+In the opened window select MVC 5 Controller -> Empty and name a newly added controller "HomeController".
 
-<img src="desktop/creating_controller.png">
-
-In the opened window select MVC 5 Controller -> Empty and name a newly added controller “HomeController”.
+<img src="desktop/how_to_start_net_controller.png">
 
 The HomeController has the Index() method of the ActionResult class by default, so it doesn't require any additional logic. We will just add a view for it. 
 
+{{snippet Controllers/HomeController.cs}}
 ~~~js
 using System;
 using System.Collections.Generic;
@@ -60,7 +52,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace gantt_rest_net.Controllers
+namespace DHX.Gantt.Web.Controllers
 {
     public class HomeController : Controller
     {
@@ -75,50 +67,76 @@ namespace gantt_rest_net.Controllers
 
 ###Creating a View
 
-In the Views folder find the Home directory. Right click to call the context menu and select Add -> View. 
+Now it's time to create our index page. Go to Views/Home and add an empty view named Index:
 
-<img src="desktop/creating_view.png">
+<img src="desktop/how_to_start_net_view.png">
 
-Name the new view "Index".
 Open the newly created view and put the following code into it:
-
+{{snippet Views/Home/Index.cshtml}}
 ~~~html
 @{
-    ViewBag.Title = "Index";
+    Layout = null;
 }
-<script src="@Url.Content("~/scripts/dhtmlxgantt.js")" 
-	type="text/javascript"></script>
-<link rel="stylesheet" 
-	href="@Url.Content("~/content/dhtmlxgantt/dhtmlxgantt_terrace.css")" />
 
-<div id="gantt_here" style="width: 100%; height: 500px;"></div>
+<!DOCTYPE html>
 
-<script>
-    (function () {
-        // specifying the date format 
-        gantt.config.xml_date = "%Y-%m-%d %H:%i";
-        // initializing gantt
-        gantt.init("gantt_here");
-		
-        // initiating data loading
-        gantt.load("/api/data");
-        // initializing dataProcessor
-        var dp = new gantt.dataProcessor("/api/data/");
-        // and attaching it to gantt
-        dp.init(gantt);
-        // setting the REST mode for dataProcessor
-        dp.setTransactionMode("REST");
-    })();
-</script>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" 
+    	rel="stylesheet" type="text/css" />
+    <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            // specifying the date format
+            gantt.config.xml_date = "%Y-%m-%d %H:%i";
+            // initializing gantt
+            gantt.init("gantt_here");
+    
+            // initiating data loading
+            gantt.load("/api/data");
+            // initializing dataProcessor
+            var dp = new gantt.dataProcessor("/api/");
+            // and attaching it to gantt
+            dp.init(gantt);
+            // setting the REST mode for dataProcessor
+            dp.setTransactionMode("REST");
+        });
+    </script>
+</head>
+<body>
+    <div id="gantt_here" style="width: 100%; height: 100vh;"></div>
+</body>
+</html>
 ~~~
 
-In the above code we have done the following:
+What we have done here:
 
-- set a container for the gantt 
-- specified the dates format to load data from the server side
-- initialized gantt
-- initiated data loading 
-- initialized dataProcessor in the REST mode to work with the server side
+- defined a simple page markup for our gantt application
+- added dhtmlx gantt js/css sources using [CDN links](desktop/cdn_links_list.md)
+- and created gantt on the page
+
+Pay attention to the configuration: we've specified the [format of dates](api/gantt_xml_date_config.md) that come from the data source. 
+{{snippet Views/Home/Index.cshtml}}
+~~~js
+gantt.config.xml_date = "%Y-%m-%d %H:%i";
+~~~
+
+It's needed for our client to be able to parse dates that come from the server.
+
+And also we told the gantt that it's going to work with RESTful API on a backend and use ["/api/data/"](desktop/server_side.md#technique) as a default route:
+{{snippet Views/Home/Index.cshtml}}
+~~~js
+gantt.load("/api/data");
+// initializing dataProcessor
+var dp = new gantt.dataProcessor("/api/");
+// and attaching it to gantt
+dp.init(gantt);
+// setting the REST mode for dataProcessor
+dp.setTransactionMode("REST");
+~~~
+
 
 The server side itself will be implemented a bit later. For now, you can run the application and see that a gantt is rendered on the page.
 
@@ -126,36 +144,33 @@ The server side itself will be implemented a bit later. For now, you can run the
 
 ###Creating Models
 
-Models are objects that will represent data in the Gantt chart. Gantt can load data either in [JSON or XML formats](desktop/supported_data_formats.md#json).
+Now we define model classes for the gantt chart. A Gantt data model consists of [Links and Tasks](desktop/server_side.md#thedatabasesstructure). 
+As you can see, dhtmlxGantt uses a certain naming convention for data model that is different from the one traditionally used in C#. 
+The client-side model can also contain some properties that shouldn't be stored in a database, but will be used either on the client or in the backend logic.
 
-There are two types of data representation in Gantt: Task and Links.
-So we should create two simple models: one for tasks and another one for links.
+Because of this, we'll go with the [Data Transfer Object](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) pattern here: we'll define domain model classes that will be used with EF and inside the app, 
+and DTO classes that will be used to communicate with Web API. Then we'll implement some kind of mapping between the two models.
+
+Let's start!
 
 ####Task Model
 
-Right click on the Models folder to call the context menu and select Add->Class. 
-
-<img src="desktop/creating_model.png">
-
-Name the created class "Task".
-Open the newly created "Task" class and add the necessary properties into it:
-
+Create the following class for Task:
+{{snippet Models/Task.cs}}
 ~~~js
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace gantt_rest_net.Models
+namespace DHX.Gantt.Web.Models
 {
     public class Task
     {
-        public int id { get; set; }
-        public string text { get; set; }
-        public DateTime start_date { get; set; }
-        public int duration { get; set; }
-        public double progress { get; set; }
-        public int parent { get; set; }
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public DateTime StartDate { get; set; }
+        public int Duration { get; set; }
+        public decimal Progress { get; set; }
+        public int? ParentId { get; set; }
+        public string Type { get; set; }
     }
 }
 ~~~
@@ -165,22 +180,17 @@ You can find the full list of properties, both mandatory and optional, available
 
 ####Link Model 
 
-To create the Link model, create the Link class in the Models folder and add the [obligatory properties](desktop/loading.md#link_properties) of the Link object into it:
-
+And the following Link class:
+{{snippet Models/Link.cs}}
 ~~~js
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace gantt_rest_net.Models
+namespace DHX.Gantt.Web.Models
 {
     public class Link
     {
-        public int id { get; set; }
-        public int source { get; set; }
-        public int target { get; set; }
-        public string type { get; set; }
+        public int Id { get; set; }
+        public string Type { get; set; }
+        public int SourceTaskId { get; set; }
+        public int TargetTaskId { get; set; }
     }
 }
 ~~~
@@ -198,28 +208,18 @@ So, first of all we need to install the framework. To do it, you need to run the
 Install-Package EntityFramework
 ~~~
 
-To use the Entity Framework functionality, we need to apply the following namespace:
-
-~~~js
-using System.Data.Entity;
-~~~
-
-###Creating Context
+###Creating Database Context
 
 The next step is to create Context. Context represents a session with the DataBase. It allows getting and saving data.
 
 Call the context menu for the Models folder and select Add->Class. The new class will be called "GanttContext" and will have the following content:
-
+{{snippet Models/GanttContext.cs}}
 ~~~js
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
-namespace gantt_rest_net.Models
+namespace DHX.Gantt.Web.Models
 {
-    public class GanttContext: DbContext
+    public class GanttContext : DbContext
     {
         public DbSet<Task> Tasks { get; set; }
         public DbSet<Link> Links { get; set; }
@@ -235,46 +235,69 @@ The Entity Framework can automatically create a database when application runs.
 We should specify that a database should be dropped and re-created whenever the model changes.
 
 First, we should create a database initializer. For this purpose, we need to add a new class in the *App_Start* folder
-that will be inherited from the DropCreateDatabaseIfModelChanges class. Let's call it "GanttContextInitializer".
+that will be inherited from the DropCreateDatabaseIfModelChanges class. Let's call it "GanttInitializer".
 
 In this class we are going to redefine the Seed() method to populate it with test data.
 Then we will add an entities collection into the context with the AddRange() method.
 
-The full code of the *GanttContextInitializer* class is given below:
-
+The full code of the *GanttInitializer* class is given below:
+{{snippet Models/GanttInitializer.cs}}
 ~~~js
-using gantt_rest_net.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace gantt_rest_net.App_Start
+
+namespace DHX.Gantt.Web.Models
 {
-  public class GanttContextInitializer: DropCreateDatabaseIfModelChanges<GanttContext>
+    public class GanttInitializer : DropCreateDatabaseIfModelChanges<GanttContext>
     {
         protected override void Seed(GanttContext context)
         {
-            context.Tasks.AddRange(new List<Task>
+            List<Task> tasks = new List<Task>()
             {
-                new Task { id = 1, text = "Test Event 1", 
-                	start_date = new DateTime(2016, 5, 26), duration = 4 },
-                new Task { id = 2, text = "Test Event 2", 
-                	start_date = new DateTime(2016, 5, 25), duration = 6 },
-                new Task { id = 3, text = "Test Event 3", 
-                	start_date = new DateTime(2016, 5, 27), duration = 8 },
-                new Task { id = 4, text = "Test Event 4", 
-                	start_date = new DateTime(2016, 5, 31), duration = 2 },
-                new Task { id = 5, text = "Test Event 5", 
-                	start_date = new DateTime(2016, 5, 26), duration = 7 },
-            });
+                new Task()
+                {
+                    Id = 1,
+                    Text = "Project #2",
+                    StartDate = DateTime.Today.AddDays(-3),
+                    Duration = 18,
+                    Progress = 0.4m,
+                    ParentId = null
+                },
+                new Task()
+                {
+                    Id = 2,
+                    Text = "Task #1",
+                    StartDate = DateTime.Today.AddDays(-2),
+                    Duration = 8,
+                    Progress = 0.6m,
+                    ParentId = 1
+                },
+                new Task()
+                {
+                    Id = 3,
+                    Text = "Task #2",
+                    StartDate = DateTime.Today.AddDays(-1),
+                    Duration = 8,
+                    Progress = 0.6m,
+                    ParentId = 1
+                }
+            };
 
-            context.Links.AddRange(new List<Link>
+            tasks.ForEach(s => context.Tasks.Add(s));
+            context.SaveChanges();
+
+            List<Link> links = new List<Link>()
             {
-                new Link { id = 1, source = 1, target = 4, type = "0" },
-                new Link { id = 2, source = 3, target = 4, type = "1" },
-            });
+                new Link() {Id = 1, SourceTaskId = 1, TargetTaskId = 2, Type = "1"},
+                new Link() {Id = 2, SourceTaskId = 2, TargetTaskId = 3, Type = "0"}
+            };
+
+            links.ForEach(s => context.Links.Add(s));
+            context.SaveChanges();
         }
     }
 }
@@ -282,371 +305,624 @@ namespace gantt_rest_net.App_Start
 
 
 Open the *Global.asax* file. It contains code that runs on the application start.
-
-<img src="desktop/global_asax.png">
-
-
 Add the necessary namespace and the code line that will set Initializer for our context into the *Application_Start()* method:
-
+{{snippet Global.asax}}
 ~~~js
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
 using System.Web.Http;
-using System.Data.Entity;           
-using gantt_rest_net.App_Start;     /*!*/
 
-namespace gantt_rest_net
+using System.Data.Entity;
+using DHX.Gantt.Web.Models;
+
+namespace DHX.Gantt.Web
 {
-	public class Global : HttpApplication
-	{
-		void Application_Start(object sender, EventArgs e)
-		{
-			Database.SetInitializer(new GanttContextInitializer());  /*!*/
-			AreaRegistration.RegisterAllAreas();
-			GlobalConfiguration.Configure(WebApiConfig.Register);
-			RouteConfig.RegisterRoutes(RouteTable.Routes); 
-		}
-	}
-}
-~~~
-
-###Adding Response Helpers
-
-The next step is to add helpers that will form answers on CRUD requests.
-
-Let's create the Helpers folder and add a class named *GanttResponseHelper* there. Place the following code into the newly created class:
-
-~~~js
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http.Results;
-
-namespace gantt_rest_net.Helpers
-{
-    public class GanttResponseHelper
+    public class Global : HttpApplication
     {
-        public static Dictionary<string, string> GetResult(string action, int? tid)
+        void Application_Start(object sender, EventArgs e)
         {
-            var res = new Dictionary<string, string>();
-            res.Add("action", action);
-            if (tid != null)
-                res.Add("tid", tid.ToString());
-            return res;
+            // Code that runs on application startup
+            AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            Database.SetInitializer(new GanttInitializer());/*!*/
         }
     }
 }
 ~~~
 
-The *GetResult()* method is going to generate an appropriate response for Data Processor according to its parameters.
-Each response will contain the name of an action.
+### Defining DTOs and Mapping
 
-There is also an optional parameter *tid*. It will be used for "insert" actions when database specifies a new id for the newly inserted entity.
+Now we'll declare DTO classes that will be used for Web API.
+As for mapping between Model and DTO, we'll go the simplest way and just define an explicit conversion operator for these classes.
 
-Step 4. Creating API for Loading/Editing Data
+The TaskDto class will look as follows: 
+{{snippet Models/TaskDto.cs}}
+~~~js
+using System;
+
+namespace DHX.Gantt.Web.Models
+{
+    public class TaskDto
+    {
+        public int id { get; set; }
+        public string text { get; set; }
+        public string start_date { get; set; }
+        public int duration { get; set; }
+        public decimal progress { get; set; }
+        public int? parent { get; set; }
+        public string type { get; set; }
+        public bool open
+        {
+            get { return true; }
+            set { }
+        }
+
+        public static explicit operator TaskDto(Task task)
+        {
+            return new TaskDto
+            {
+                id = task.Id,
+                text = task.Text,
+                start_date = task.StartDate.ToString("yyyy-MM-dd HH:mm"),
+                duration = task.Duration,
+                parent = task.ParentId,
+                type = task.Type,
+                progress = task.Progress
+            };
+        }
+
+        public static explicit operator Task(TaskDto task)
+        {
+            return new Task
+            {
+                Id = task.id,
+                Text = task.text,
+                StartDate = DateTime.Parse(task.start_date, System.Globalization.CultureInfo.InvariantCulture),
+                Duration = task.duration,
+                ParentId = task.parent,
+                Type = task.type,
+                Progress = task.progress
+            };
+        }
+    }
+}
+~~~
+
+And the LinkDto class is given below:
+{{snippet Models/LinkDto.cs}}
+~~~js
+namespace DHX.Gantt.Web.Models
+{
+    public class LinkDto
+    {
+        public int id { get; set; }
+        public string type { get; set; }
+        public int source { get; set; }
+        public int target { get; set; }
+
+        public static explicit operator LinkDto(Link link)
+        {
+            return new LinkDto
+            {
+                id = link.Id,
+                type = link.Type,
+                source = link.SourceTaskId,
+                target = link.TargetTaskId
+            };
+        }
+
+        public static explicit operator Link(LinkDto link)
+        {
+            return new Link
+            {
+                Id = link.id,
+                Type = link.type,
+                SourceTaskId = link.source,
+                TargetTaskId = link.target
+            };
+        }
+    }
+}
+~~~
+
+
+Lastly, let's add a model for a [data source](desktop/supported_data_formats.md#json):
+{{snippet Models/GanttDto.cs}}
+~~~js
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace DHX.Gantt.Web.Models
+{
+    public class GanttDto
+    {
+        public IEnumerable<TaskDto> data { get; set; }
+        public IEnumerable<LinkDto> links { get; set; }
+    }
+}
+~~~
+
+Step 4. Implementing Web API
 ------------------------------------------------
 
 ###General technique of loading data using REST API
 
-There's a [common technique](desktop/server_side.md#technique) for loading data into Gantt from the server side.
+Finally it's time to implement the API. 
 
-You will find the requirements to the client side,
-as well as the [description of possible requests and responses](desktop/server_side.md#requestresponsedetails)
-in the desktop/server_side.md article.
-
-Below we will consider how to load data into Gantt using .Net server side.
-
-<h3 id="gantt_data">Adding object with Gantt data</h3>
-
-Gantt gets both tasks and links in one object, not separately. Let's create a controller that will be responsible for 
-loading tasks and links data into Gantt.
-
-Activate a context menu for the Controllers folder and select  Add -> Controller.<br>
-Choose the Web API 2 Controller -> Empty. The new controller will be called "DataController". 
-
-Then we will fill it with the following code:
-
-~~~js
-using gantt_rest_net.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-
-namespace gantt_rest_net.Controllers
-{
-    public class DataController : ApiController
-    {
-        private string _dateFormat = "yyyy-MM-dd HH:mm";
-        private GanttContext db = new GanttContext();
-
-        [HttpGet]
-        public IHttpActionResult Get()
-        {
-            var events = new List<object>();
-            foreach (var item in db.Tasks)
-            {
-                events.Add(new
-                {
-                    id = item.id,
-                    text = item.text,
-                    start_date = item.start_date.ToString(_dateFormat),
-                    duration = item.duration,
-                    progress = item.progress,
-                    parent = item.parent
-                });
-            }
-
-            return Json(new { data = events, links = db.Links });
-        }
-    }
-}
-~~~
-
-The code will create an object with data for a Gantt chart. It will contain a list of events and a list of links.
-The dates of events should be converted into appropriate strings.
+As you can see from the [API details](desktop/server_side.md#requestresponsedetails) we'll need two controllers: one for tasks and one for links. 
+We will also need one more controller for the 'load data' action, since gantt expects a [mixed result](desktop/supported_data_formats.md#json) there.
 
 ###Task Controller
 
-Let's add one more controller - TaskController. It will provide CRUD API for Task.
+Activate the context menu for the Controllers folder and select Add -> Controller.<br>
+Choose the Web API 2 Controller -> Empty. The new controller will be called "TaskController". 
 
-We will describe the logic of each request inside of try-catch blocks to handle any errors that might occur when the database is modified.
-
+Now we need to implement basic CRUD actions for the task entry:
+{{snippet Controllers/TaskController.cs}}
 ~~~js
-using gantt_rest_net.Helpers;
-using gantt_rest_net.Models;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using System.Web.UI.WebControls;
 
-namespace gantt_rest_net.Controllers
+using DHX.Gantt.Web.Models;
+
+namespace DHX.Gantt.Web.Controllers
 {
     public class TaskController : ApiController
     {
         private GanttContext db = new GanttContext();
 
-        [HttpPost]
-        public IHttpActionResult Post(Task task)
+        // GET api/Task
+        public IEnumerable<TaskDto> Get()
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Tasks.Add(task);
-                    db.SaveChanges();
-                    return Json(GanttResponseHelper.GetResult("inserted", task.id));
-                }
-            }
-            catch (Exception) { }
-            return Json(GanttResponseHelper.GetResult("error", null));
+            return db.Tasks
+                .ToList()
+                .Select(t => (TaskDto)t);
         }
 
-        [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        // GET api/Task/5
+        [System.Web.Http.HttpGet]
+        public TaskDto Get(int id)
         {
-            try
+            return (TaskDto)db
+                .Tasks
+                .Find(id);
+        }
+
+        // PUT api/Task/5
+        [System.Web.Http.HttpPut]
+        public IHttpActionResult EditTask(int id, TaskDto taskDto)
+        {
+            var updatedTask = (Task)taskDto;
+            updatedTask.Id = id;
+            db.Entry(updatedTask).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return Ok(new
             {
-                var task = db.Tasks.Find(id);
+                action = "updated"
+            });
+        }
+
+        // POST api/Task
+        [System.Web.Http.HttpPost]
+        public IHttpActionResult CreateTask(TaskDto taskDto)
+        {
+            var newTask = (Task)taskDto;
+
+            db.Tasks.Add(newTask);
+            db.SaveChanges();
+
+            return Ok(new
+            {
+                tid = newTask.Id,
+                action = "inserted"
+            });
+        }
+
+        // DELETE api/Task/5
+        [System.Web.Http.HttpDelete]
+        public IHttpActionResult DeleteTask(int id)
+        {
+            var task = db.Tasks.Find(id);
+            if (task != null)
+            {
                 db.Tasks.Remove(task);
                 db.SaveChanges();
-                return Json(GanttResponseHelper.GetResult("deleted", null));
             }
-            catch (Exception) { }
-            return Json(GanttResponseHelper.GetResult("error", null));
+
+            return Ok(new
+            {
+                action = "deleted"
+            });
         }
 
-        [HttpPut]
-        public IHttpActionResult Put(int id, Task task)
+        protected override void Dispose(bool disposing)
         {
-            try
+            if (disposing)
             {
-                if (ModelState.IsValid)
-                {
-                    task.id = id;
-                    db.Entry(task).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return Json(GanttResponseHelper.GetResult("updated", null));
-                }
+                db.Dispose();
             }
-            catch (Exception) { }
-            return Json(GanttResponseHelper.GetResult("error", null));
+            base.Dispose(disposing);
         }
     }
 }
+
 ~~~
 
-The code of TaskController includes the following types of requests:
-
-- POST request means that a new item needs to be inserted into the database
-- PUT request updates an existing record 
-- DELETE request goes for deleting
-
-The GET request isn't used here, since Gantt loads tasks and links together. 
-A common GET request is described within the [DataController](desktop/howtostart_dotnet.md#gantt_data) code.
-
-All actions return a JSON response containing the type of the performed operation or “error” if something went wrong.
-
-Note that a response for the "insert" action also contains a database id of the new record. 
-It will be applied on the client side, so the new item could be mapped to the database entity. 
+Everything is pretty straightforward here, in the GET actions we load tasks from database and output their data transfer objects. 
+In the PUT/POST actions we're getting DTOs as an input, converting it to a Task model and saving changes to the DB Context.
+Now let's do the same for the links.
 
 ###Link Controller
 
-The Link controller is created in the same way as the Task one. 
-It will provide CRUD API for Link and include the code as in:
-
+After that we'll create an empty Web API Controller for links:
+{{snippet Controllers/LinkController.cs}}
 ~~~js
-using gantt_rest_net.Helpers;
-using gantt_rest_net.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using DHX.Gantt.Web.Models;
 
-namespace gantt_rest_net.Controllers
+namespace DHX.Gantt.Web.Controllers
 {
     public class LinkController : ApiController
     {
         private GanttContext db = new GanttContext();
 
-        [HttpPost]
-        public IHttpActionResult Post(Link link)
+        // GET api/Link
+        [System.Web.Http.HttpGet]
+        public IEnumerable<LinkDto> Get()
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Links.Add(link);
-                    db.SaveChanges();
-                    return Json(GanttResponseHelper.GetResult("inserted", link.id));
-                }
-            }
-            catch (Exception) { }
-            return Json(GanttResponseHelper.GetResult("error", null));
+            return db
+                .Links
+                .ToList()
+                .Select(l => (LinkDto)l);
         }
 
-        [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        // GET api/Link/5
+        [System.Web.Http.HttpGet]
+        public LinkDto Get(int id)
         {
-            try
+            return (LinkDto)db
+                .Links
+                .Find(id);
+        }
+
+        // POST api/Link
+        [System.Web.Http.HttpPost]
+        public IHttpActionResult CreateLink(LinkDto linkDto)
+        {
+            var newLink = (Link)linkDto;
+            db.Links.Add(newLink);
+            db.SaveChanges();
+
+            return Ok(new
             {
-                var link = db.Links.Find(id);
+                tid = newLink.Id,
+                action = "inserted"
+            });
+        }
+
+        // PUT api/Link/5
+        [System.Web.Http.HttpPut]
+        public IHttpActionResult EditLink(int id, LinkDto linkDto)
+        {
+            var clientLink = (Link)linkDto;
+            clientLink.Id = id;
+
+            db.Entry(clientLink).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return Ok(new
+            {
+                action = "updated"
+            });
+        }
+
+        // DELETE api/Link/5
+        [System.Web.Http.HttpDelete]
+        public IHttpActionResult DeleteLink(int id)
+        {
+            var link = db.Links.Find(id);
+            if (link != null)
+            {
                 db.Links.Remove(link);
                 db.SaveChanges();
-                return Json(GanttResponseHelper.GetResult("deleted", null));
             }
-            catch (Exception) { }
-            return Json(GanttResponseHelper.GetResult("error", null));
+            return Ok(new
+            {
+                action = "deleted" 
+            });
         }
 
-        [HttpPut]
-        public IHttpActionResult Put(int id, Link link)
+        protected override void Dispose(bool disposing)
         {
-            try
+            if (disposing)
             {
-                if (ModelState.IsValid)
-                {
-                    link.id = id;
-                    db.Entry(link).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return Json(GanttResponseHelper.GetResult("updated", null));
-                }
+                db.Dispose();
             }
-            catch (Exception) { }
-            return Json(GanttResponseHelper.GetResult("error", null));
+            base.Dispose(disposing);
         }
+
     }
 }
 ~~~
 
-The same as for TaskController, we describe the following types of requests in the code of LinkController:
+###Data Controller
 
-- POST request means that a new item should be inserted into the database
-- PUT request updates an existing record 
-- DELETE request goes for deleting
-
-Actions return a JSON response with the type of operation or "error".
-
-<h3 id="api_routes">Configuring Routes for API</h3>
-
-Now we should add custom routes to our controllers. These routes will map incoming requests to specific handlers.
-You can find the full route scheme [in the corresponding article](desktop/server_side.md#requestresponsedetails).
-
-Open App_Start -> WebApiConfig and add routes for Task, Link and Data into it. 
-
-<img src="desktop/webapiconfig.png">
-
-Pay attention that these routes should be placed before the default route.
-
-The resulting code should look similar to this:
-
+Finally, we will add a controller for the data action:
+{{snippet Controllers/DataController.cs}}
 ~~~js
-
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
+using DHX.Gantt.Web;
+using DHX.Gantt.Web.Models;
 
-namespace gantt_rest_net
+namespace DHX.Gantt.Web.Controllers
 {
-    public static class WebApiConfig
+    public class DataController : ApiController
     {
-        public static void Register(HttpConfiguration config)
+        // GET api/
+        [System.Web.Http.HttpGet]
+        public GanttDto Get()
         {
-            config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
-                name: "Task",
-                routeTemplate: "api/data/task/{id}",
-                defaults: new { controller = "Task", id = RouteParameter.Optional }
-            );
-
-            config.Routes.MapHttpRoute(
-                name: "Link",
-                routeTemplate: "api/data/link/{id}",
-                defaults: new { controller = "Link", id = RouteParameter.Optional }
-            );
-
-            config.Routes.MapHttpRoute(
-                name: "Data",
-                routeTemplate: "api/data",
-                defaults: new { controller = "Data" }
-            );
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            return new GanttDto
+            {
+                data = new TaskController().Get(),
+                links = new LinkController().Get()
+            };
         }
     }
 }
 ~~~
-
-The *Register()* method is set in the WebApiConfig class by default, it configures HttpConfiguration and sets API routes.
-So, we just added the necessary routes into it.
 
 Now everything is ready. Run the application and the fully-fledged Gantt should appear on the page:
 
 <img src="desktop/ready_gantt_dotnet.png">
 
+[You can find a ready demo at github]().
+
+
+Error Handling 
+-----------
+
+[Exception filters](https://msdn.microsoft.com/en-us/library/gg416513(v=vs.98).aspx) can be used for capturing exceptions in CRUD handlers and returning client response 
+that can be [recognized](desktop/server_side.md#errorhandling) by the client-side gantt.
+
+To provide error handling for the gantt, follow the steps below.
+Go to App_Start and add a new class called GanttAPIExceptionFilterAttribute:
+{{snippet App_Start/GanttAPIExceptionFilterAttribute.cs}}
+~~~js
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http.Filters;
+
+namespace DHX.Gantt.Web
+{
+    public class GanttAPIExceptionFilterAttribute : ExceptionFilterAttribute
+    {
+        public override void OnException(HttpActionExecutedContext context)
+        {
+            
+            context.Response = context.Request.CreateResponse(HttpStatusCode.InternalServerError, new
+            {
+                action = "error",
+                message = context.Exception.Message
+            });
+        }
+    }
+}
+~~~
+
+Then we will add this class to our WebAPI controllers:
+
+- Data controller:
+{{snippet Controllers/DataController.cs}}
+~~~js
+namespace DHX.Gantt.Web.Controllers
+{
+    [GanttAPIExceptionFilter]/*!*/
+    public class DataController : ApiController
+~~~
+
+- Link controller:
+{{snippet Controllers/LinkController.cs}}
+~~~js
+namespace DHX.Gantt.Web.Controllers
+{
+    [GanttAPIExceptionFilter]/*!*/
+    public class LinkController : ApiController
+~~~
+
+- and Task controller:
+{{snippet Controllers/TaskController.cs}}
+~~~js
+namespace DHX.Gantt.Web.Controllers
+{
+    [GanttAPIExceptionFilter]/*!*/
+    public class TaskController : ApiController
+~~~
+
+Now if any Web API controller fires an exception while processing the request, 
+the client side will receive an error status and an error message that can be either somehow processed or shown to the user.
+
+Note that returning an exception message to the client might not be the best idea for a production environment.
+
+Storing the Order of Tasks
+-----------
+
+The client-side gantt allows reordering tasks using drag and drop. So if you use this feature, you'll have to store this order in the database.
+You can check the common description [here](desktop/server_side.md#storingtheorderoftasks).
+
+Let's now add this feature to our app.
+
+###Enable tasks reordering on the client
+
+Firstly, we need to allow users to [change task order in the UI](desktop/reodering_tasks.md).
+Open Index view and update configuration of gantt:
+{{snippet Views/Home/Index.cshtml}}
+~~~js
+gantt.config.order_branch = true;/*!*/
+gantt.config.order_branch_free = true;/*!*/
+
+// specifying the date format
+gantt.config.xml_date = "%Y-%m-%d %H:%i";
+// initializing gantt
+gantt.init("gantt_here");
+~~~
+
+###Adding tasks order to the model
+
+Now, let's reflect these changes on the backend.
+We are going to store the order in the property named SortOrder, let's update the Task class accordingly:
+{{snippet Models/Task.cs}}
+~~~js
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace DHX.Gantt.Web.Models
+{
+    public class Task
+    {
+        public int Id { get; set; }
+        [MaxLength(255)]
+        public string Text { get; set; }
+        public DateTime StartDate { get; set; }
+        public int Duration { get; set; }
+        public decimal Progress { get; set; }
+        public int? ParentId { get; set; }
+        public string Type { get; set; }
+        public int SortOrder { get; set; }/*!*/
+    }
+}
+~~~
+
+Now we need to update the TaskController.
+Firstly, the client side should receive tasks ordered by the SortOrder value:
+
+{{snippet Controllers/TaskController.cs}}
+~~~js
+namespace DHX.Gantt.Web.Controllers
+{
+    [GanttAPIExceptionFilter]
+    public class TaskController : ApiController
+    {
+        private GanttContext db = new GanttContext();
+
+        // GET api/Task
+        public IEnumerable<TaskDto> Get()
+        {
+            return db.Tasks
+                .OrderBy(t => t.SortOrder) /*!*/
+                .ToList()
+                .Select(t => (TaskDto)t);
+        }
+~~~
+
+SortOrder should be updated when the task order is modified on the client. 
+
+When a user changes the order of tasks, gantt will call a PUT action providing an info about a new task position in the 
+['target'](desktop/server_side.md#storingtheorderoftasks) property of the request, together with the rest of task properties. 
+
+Thus, we should add an extra property to the task DTO class:
+{{snippet Models/TaskDto.cs}}
+~~~js
+namespace DHX.Gantt.Web.Models
+{
+  public class TaskDto
+  {
+    public int id { get; set; }
+    public string text { get; set; }
+    public string start_date { get; set; }
+    public int duration { get; set; }
+    public decimal progress { get; set; }
+    public int? parent { get; set; }
+    public string type { get; set; }
+    public bool open{ get { return true; } set { } }
+    public string target { get; set; }/*!*/
+    
+    ...
+  }
+}
+~~~
+
+And now we will implement reordering in our PUT (EditTask) action:
+{{snippet Controllers/TaskController.cs}}
+~~~js
+    // PUT api/Task/5
+    [System.Web.Http.HttpPut]
+    public IHttpActionResult EditTask(int id, TaskDto taskDto)
+    {
+      var updatedTask = (Task)taskDto;
+      updatedTask.Id = id;
+
+      if (!string.IsNullOrEmpty(taskDto.target))
+      {
+        // reordering occurred
+        this._UpdateOrders(updatedTask, taskDto.target);/*!*/
+      }
+
+      db.Entry(updatedTask).State = EntityState.Modified;
+      db.SaveChanges();
+
+      return Ok(new
+      {
+        action = "updated"
+      });
+    }
+      
+    private void _UpdateOrders(Task updatedTask, string orderTarget)/*!*/
+    {
+      int adjacentTaskId;
+      var nextSibling = false;
+
+      var targetId = orderTarget;
+
+      // adjacent task id is sent either as '{id}' or as 'next:{id}' depending 
+      // on whether it's the next or the previous sibling
+      if (targetId.StartsWith("next:"))
+      {
+        targetId = targetId.Replace("next:", "");
+        nextSibling = true;
+      }
+
+      if (!int.TryParse(targetId, out adjacentTaskId))
+      {
+        return;
+      }
+
+      var adjacentTask = db.Tasks.Find(adjacentTaskId);
+      var startOrder = adjacentTask.SortOrder;
+
+      if (nextSibling)
+        startOrder++;
+
+      updatedTask.SortOrder = startOrder;
+
+      var updateOrders = db.Tasks
+       .Where(t => t.Id != updatedTask.Id)
+       .Where(t => t.SortOrder >= startOrder)
+       .OrderBy(t => t.SortOrder);
+                
+       var taskList = updateOrders.ToList();
+
+       taskList.ForEach(t => t.SortOrder++);
+    }
+
+~~~
 
 Known Issues
 -----------
@@ -655,3 +931,7 @@ HTTP PUT and DELETE requests return 405 or 401 error when an app is running on I
 The issue may be caused by the **WebDAV** module which can conflict with RESTful handlers. 
 
 As a common solution, the module can be disabled from the **web.config** file. More details are given [here](https://forums.iis.net/t/1166025.aspx).
+
+
+@todo:
+	check, add github link, check images.

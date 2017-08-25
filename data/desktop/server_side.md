@@ -199,7 +199,7 @@ if(!targetTaskId)
 	return;
 
 // updated task will receive the sortorder value of the adjacent task
-const targetOrder = targetTask.sortorder;
+let targetOrder = targetTask.sortorder;
 
 // if it should go after the adjacent task, it should receive a bigger sortorder
 if(nextTask)
@@ -216,6 +216,28 @@ tasks.save(currentTask);
 
 ~~~
 
+Error handling
+------------------------------------------
+
+Server can inform Gantt that an action has failed by returning the "action":"error" response:
+
+~~~js
+{"action":"error"}
+~~~
+
+Such a response can be captured on the client with the help of gantt.dataProcessor:
+
+~~~js
+var dp = new gantt.dataProcessor("apiUrl");
+dp.init(gantt);
+dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
+    if(action == "error"){
+        // do something here
+    }
+});
+~~~
+
+The response object may contain any number of additional properties, they can be accessed via the `response` argument of the onAfterUpdate handler.
 
 The database's structure
 ------------------------------------------
@@ -276,6 +298,7 @@ CREATE TABLE `gantt_tasks` (
   PRIMARY KEY (`id`)
 )
 ~~~
+
 
 
 
