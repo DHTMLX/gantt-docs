@@ -8,12 +8,9 @@ Server-Side Integration
 }
 </style>
 
-To organize communication of dhtmlxGantt with the server side, the dataProcessor helper library and the REST backend are used.
+The recommended approach to connect dhtmlxGantt to the backend is to implement RESTful API on a backend and use dhtmlx dataProcessor on the client.
 
 [dataProcessor](http://docs.dhtmlx.com/dataprocessor__index.html) is a client-side library included into dhtmlxGantt.js. It monitors data changes and gets the server requests on the client side.
- 
-[REST](http://rest.elkstein.org/) stands for Representational State Transfer. It relies on a stateless, client-server, cacheable communications protocol.
-RESTful APIs use HTTP as a transport layer in most cases. Due to its simplicity, REST works well with frameworks that use various languages.
  
 
 Technique
@@ -34,11 +31,6 @@ gantt.load("apiUrl");
 
 var dp = new gantt.dataProcessor("apiUrl");
 dp.init(gantt);
-~~~
-
-3) In order to set the REST mode of dataProcessor, call the setTransactionMode() function with the REST parameter:
-    		
-~~~js
 dp.setTransactionMode("REST");
 ~~~
 	
@@ -101,6 +93,34 @@ The list of possible requests and responses is:
 	</tr>
 </table>
 
+### Request parameters
+
+Create/Update/Delete requests will contain all public properties of the client-side task or link object:
+
+Task:
+
+- **start_date**:2017-04-08 00:00:00
+- **duration**:4
+- **text**:Task #2.2
+- **parent**:3
+- **end_date**:2017-04-12 00:00:00
+
+Link:
+
+- **source**:1
+- **target**:2
+- **type**:0
+
+Note:
+
+ - The format of **start_date** and **end_date** parameters is defined by api/gantt_xml_date_config.md config.
+ - The client-side sends all public properties of a task or link object, thus, the request may contain any number of additional parameters. 
+ - If you extend data model by adding new columns/properties to it - no additional actions needed to make gantt sending them to the backend.
+
+{{note By public properties here we mean properties which names don't start with an underscore (**_**) or a dollar sign (**$**) characters. 
+E.g. properties named **task._owner** or **link.$state** won't be sent to the backend}}
+
+
 ###Server side
            
 On each action performed in Gantt (adding, updating or deleting tasks or links),
@@ -112,13 +132,11 @@ As we initialized dataProcessor in the REST mode, it will use different HTTP ver
 Since we use REST API, it's possible to implement the server side using different frameworks and programming languages.
 Here's a list of available server-side implementations that you can use for Gantt backend integration:
 
-- desktop/server_php.md
-- desktop/server_nodejs.md
-- desktop/server_dotnet.md
-- desktop/server_ruby.md
+- [PHP Code Samples](desktop/howtostart_php.md)
+- [Node.js Code Samples](desktop/howtostart_nodejs.md)
+- [ASP.NET Web API Code Samples](desktop/howtostart_dotnet.md)
+- [Ruby on Rails Code Samples](desktop/howtostart_ruby.md)
 
-<br>
-If by some reason you don't want to use REST API, the best solution is [to use dhtmlxConnector library](desktop/storing_with_connectors.md).
 
 Triggering data saving from script
 ------------------------------------
@@ -136,6 +154,14 @@ gantt.getTask(1).text = "Task 111"; //changes event's data
 gantt.updateTask(1); // renders the updated task
 ~~~
 
+Other methods that invoke sending an update to the backend:
+
+- api/gantt_addtask.md
+- api/gantt_updatetask.md
+- api/gantt_deletetask.md
+- api/gantt_addlink.md
+- api/gantt_updatelink.md
+- api/gantt_deletelink.md
 
 Storing the order of tasks
 -------------------------------------------------
@@ -300,12 +326,15 @@ CREATE TABLE `gantt_tasks` (
 ~~~
 
 
+Cascade deletion
+----------------
+
+By default, deletion of a task will invoke a chain deletion of its nested task and related links. Gantt will send a *delete* request for each removed task and link.  Thus, you don't have to maintain data integrity on a backend, it can be handled by the Gantt reasonably good.
+
+On the other hand, this strategy can generate a large number ajax calls to the backend api since dhtmlxGantt has no batch-request support for the ajax and number of tasks and links is not limited.
+
+In that case, cascade deletion can be disabled using this config api/gantt_cascade_delete_config.md. In that case, when project branch is deleted, the client will send a delete request only for the top item and will expect the backend to delete related links and subtasks.
 
 
-@index: 
-- desktop/storing_with_connectors.md
-- desktop/server_php.md
-- desktop/server_nodejs.md
-- desktop/server_dotnet.md
-- desktop/server_ruby.md
-
+@todo: 
+  review changes

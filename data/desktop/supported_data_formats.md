@@ -115,6 +115,40 @@ Let's consider an example above with 2 custom  properties:
 
 ~~~
 
+
+JSON with Collections
+------------------
+
+JSON data can contain any number of additional arrays in a "collection" property of the data object.
+
+~~~js
+{
+	data:[
+		{id:1, text:"Project #2", start_date:"01-04-2013", duration:18, 
+			progress:0.4, open: true},
+		{id:2, text:"Task #1", 	  start_date:"02-04-2013", duration:8, 
+			progress:0.6, parent:1},
+		{id:3, text:"Task #2",    start_date:"11-04-2013", duration:8, 
+			progress:0.6, parent:1}
+		],
+	links:[
+		{ id:1, source:1, target:2, type:"1"},
+		{ id:2, source:2, target:3, type:"0"},
+		{ id:3, source:3, target:4, type:"0"},
+		{ id:4, source:2, target:5, type:"2"}
+	],
+	"collections": { /*!*/
+		"sections":[
+			{"value":"1","label":"Simple"},
+			{"value":"2","label":"Complex"},
+			{"value":"3","label":"Unknown"}
+		]
+	}
+}
+~~~
+
+This collections can be accessed by their name using [gantt.serverList method](api/gantt_serverlist.md)
+
 ##  XML ( dhtmlxGantt < 2.0)
 ~~~js
 <?xml version="1.0" encoding="UTF-8"?>
@@ -167,3 +201,7 @@ Let's consider an example above with 2 custom  properties:
   </project>
 </projects>
 ~~~
+
+
+@todo:
+	check

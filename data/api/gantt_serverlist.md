@@ -24,6 +24,7 @@ var list = gantt.serverList("options", [
 @descr: 
 - If the method is called only with the first parameter, the method will return a list with that name (if exists).
 - If the method is called with 2 parameters, dhtmlxGantt  will create a list with the specified name. If the list with such a name already exists, dhtmlxGantt will update data in it.
+- [Lightbox select controls](desktop/select.md) can be automatically populated using gantt.serverListIf the method is called with 2 parameters, dhtmlxGantt  will create a list with the specified name. If the list with such a name already exists, dhtmlxGantt will update data in it.
 
 That's why if there is a need to update collections, e.g. select options, it's a good idea to create them as a named list of options.
 
@@ -34,6 +35,12 @@ That's why if there is a need to update collections, e.g. select options, it's a
 gantt.config.lightbox.sections=[   
 	{name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
 	{name:"persons", height:23, type:"select", 
-    options:serverList("persons", persons_array), map_to:"section_id" }, 
+    options:serverList("persons", persons_array), map_to:"section_id" }
 ]; 
 ~~~
+
+@relatedapi
+	api/gantt_updatecollection.md
+	
+@todo:
+	check

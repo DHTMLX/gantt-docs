@@ -118,33 +118,60 @@ to the value returned by the api/gantt_serverlist.md method:
 
 ~~~js
 gantt.config.lightbox.sections = [
-    { name:"priority",map_to:"priority",type:"select",
-    options:gantt.serverList("priority")}                                      
-];
-
-gantt.config.lightbox.sections = [
 	{name:"description", ...},
-	{name:"type", map_to:"type", type:"select", options:gantt.serverList("type")},
+	{ name:"priority",map_to:"priority",type:"select",
+		options:gantt.serverList("priority")},/*!*/
+	{name:"category", map_to:"category", type:"select", 
+		options:gantt.serverList("category")},/*!*/
 	{name:"time", ...}
 ];
 gantt.init("gantt_here");
-gantt.load("data.php");
+gantt.load("/data");
 ~~~
 
-where the **data.php** is a server-side script that retrieves a set of tasks and the 'priority' options collection:
+Output of the **/data** url:
+
+~~~js
+{
+	data:[
+		{id:1, text:"Project #2", start_date:"01-04-2013", duration:18, parent:0},
+		{id:2, text:"Task #1", 	  start_date:"02-04-2013", duration:8, parent:1},
+		{id:3, text:"Task #2",    start_date:"11-04-2013", duration:8,  parent:1}
+		],
+	links:[
+		{ id:1, source:1, target:2, type:"1"},
+		{ id:2, source:2, target:3, type:"0"}
+	],
+	"collections": { /*!*/
+		"priority":[
+			{"value":"1","label":"Low"},
+			{"value":"2","label":"Medium"},
+			{"value":"3","label":"High"}
+		],
+		"category":[
+			{"value":"1","label":"Simple"},
+			{"value":"2","label":"Complex"},
+			{"value":"3","label":"Unknown"}
+		]
+	}
+}
+~~~
+
+### Loading options using dhtmlxConnector
+
+Here is a sample [dhtmlx connector](desktop/howtostart_connector.md) initialization:
 
 ~~~php
 //data.php
 <?php
 	include('connector-php/codebase/gantt_connector.php');
  
-	$res=mysql_connect("localhost","root","");
-	mysql_select_db("sampleDB");
+	$res = new PDO("mysql:host=localhost;dbname=gantt", "root", "");
 
-	$list = new OptionsConnector($res, $dbtype);
+	$list = new OptionsConnector($res);
 	$list->render_table("priorities","id","id(value),name(label)");
     
-	$gantt = new JSONGanttConnector($res, $dbtype);
+	$gantt = new JSONGanttConnector($res);
     $gantt->set_options("priority", $list);
 	$gantt->render_links("gantt_links","id","source_task(source),
                     target_task(target),type");    
@@ -153,3 +180,6 @@ where the **data.php** is a server-side script that retrieves a set of tasks and
 ?>
 ~~~
 
+
+@todo:
+	check

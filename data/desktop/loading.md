@@ -241,7 +241,7 @@ gantt.init("gantt_here");
 gantt.load("data.php"); /*!*/  
 ~~~
 	
-Read more on the server-side integration with connectors  in the desktop/storing_with_connectors.md article.    
+Read more on the server-side integration with connectors  in the desktop/howtostart_connector.md article.    
     
 {{sample
 	01_initialization/04_connector_json.html
@@ -280,3 +280,6 @@ Loading-related methods has the following events flow:
 - event api/gantt_onganttrender_event.md 
 
 
+@todo:
+   decide what to do with dhtmlxConnector sample (replace Loading from database with a link to 'how to start'?)
+   

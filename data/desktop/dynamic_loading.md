@@ -123,20 +123,28 @@ the item will be displayed without toggle, as a task which has no child items.
 
 If the request has the *parent_id* parameter, the response must contain children of the task with the specified id. If *parent_id* is not specified, the request must contain root level tasks:
 
-- loading children of the 'id' task:
+<table class="dp_table">
+	<tr>
+    	<th><b>Action</b></th><th><b>HTTP Method</b></th><th><b>URL</b></th><th><b>Response</b></th>
+    </tr>
+	<tr>
+    	<td>load root level</td>
+		<td>GET</td>
+        <td>/loadUrl</td>
+        <td><a href="#dynamicloadingformatofdata">Dynamic loading format</a></td>
+	</tr>
+    <tr>
+		<td>load children on the task</td>
+		<td>GET</td>
+        <td>/loadUrl?parent_id=id</td>
+        <td><a href="#dynamicloadingformatofdata">Dynamic loading format</a></td>
+    </tr>
 
-**HTTP Method**: GET<br>
-**URL**: /loadUrl?parent_id=id
-
-- loading root level tasks:
-
-**HTTP Method**: GET<br>
-**URL**: /loadUrl
-
-
-
-
-
+</table>
 
 
 @edition:pro
+
+
+@todo:
+   replace backend instruction with format details

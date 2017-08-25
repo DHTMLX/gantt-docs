@@ -597,7 +597,8 @@ Using dhtmlxConnector
 Alternatively, PHP backend can be also implemented using [dhtmlxConnector library](https://docs.dhtmlx.com/connector__php__index.html). 
 You can find a detailed tutorial [here](desktop/howtostart_connector.md) 
 
-
+@index: 
+- desktop/howtostart_connector.md
 
 @todo:
-  check text
+  check text, update github link

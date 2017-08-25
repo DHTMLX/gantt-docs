@@ -582,4 +582,4 @@ function updateOrder(taskId, target){
 You can check [a ready demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.
 
 @todo:
-  check, update images
+  check, update images, update github link

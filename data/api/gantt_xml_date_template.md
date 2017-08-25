@@ -12,6 +12,58 @@ gantt.templates.xml_date = function(date){
 @returns:
 - text		string		html text which will be rendered in the gantt
 @descr:
+This template is automatically generated from api/gantt_xml_date_config.md config and can be redefined after [initialization of gantt](api/gantt_init.md).
 
+A custom template function can be used if the format of server dates is not supported by [gantt date helper](api/gantt_date_other.md).
+
+For example, using UNIX time for **start_date**: 
+{{snippet /data}}
+~~~js
+{
+	"data":[
+	{
+		"id":1,
+		"start_date":1503608400,
+		"duration":10,
+		"text":"Task #1",
+		"parent":0,
+	},
+	{
+		"id":2,
+		"start_date":1503694800,
+		"duration":4,
+		"text":"Task #2",
+		"parent":0,
+	}],
+
+	"links":[
+	]
+}
+~~~
+
+gantt configuration:
+
+~~~js
+
+gantt.attachEvent("onTemplatesReady", function(){
+	gantt.templates.xml_date = function(dateString){
+		return new Date(dateString * 1000);
+	}
+});
+
+gantt.init("gantt_here");
+gantt.load("/data");
+
+~~~
+
+
+
+@relatedapi:
+	api/gantt_xml_date_config.md
+	api/gantt_xml_format_template.md
+	api/gantt_date_other.md
 @related:
 	desktop/conversion_templates.md
+	
+@todo:
+	check

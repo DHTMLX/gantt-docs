@@ -18,3 +18,6 @@ gantt.load("../data/tasks.json");
 
 @related:
 	desktop/date_format.md
+@relatedapi:
+	api/gantt_xml_date_template.md
+	api/gantt_xml_format_template.md
