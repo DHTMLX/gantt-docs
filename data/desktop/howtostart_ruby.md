@@ -51,7 +51,7 @@ rails server
 
 Open *http://localhost:3000/* in your browser. The result should be like this:
 
-<img src="desktop/server_test.png">
+<img src="desktop/how_to_start_rails_blank_page.png">
 
 So the app is working and we've got our default page, now we can proceed to adding a gantt chart.
 
@@ -100,7 +100,7 @@ For the development you'll want to use a readable version of source codes that c
 After that we can have a look at the current result. Open *http://localhost:3000/* (the rails server) in a browser.
 You should get the following result:
 
-<img src="desktop/create_view.png">
+<img src="desktop/how_to_start_rails_empty_gantt.png">
 
 Thus you've got a Gantt chart where you can add tasks and modify them. But it lacks the saving ability.
 To provide it, we need to proceed with creating models.
@@ -383,14 +383,14 @@ end
 ~~~
 
 And that's it. If you run application now you'll have an interactive gantt chart with Rails and MySql backend:
-<img src="desktop/result.png">
+<img src="desktop/how_to_start_rails_complete.png">
 
 Please check more of [our guides](desktop/guides.md) for more features of dhtmlxGantt.
 
 Storing the Order of Tasks
 ------------------
 
-The client-side gantt allows reordering tasks using drag and drop. So if you use this feature, you'll have to store this order in the database. You can check the common description here.
+The client-side gantt allows reordering tasks using drag and drop. So if you use this feature, you'll have to store this order in the database. You can check the common [description here](desktop/server_side.md#storingtheorderoftasks).
 
 Let's now add this feature to our app.
 
@@ -406,7 +406,7 @@ gantt.config.order_branch_free = true;/*!*/
 gantt.init("gantt_here");
 ~~~
 
-Now, let's reflect these changes on the backend. Firstly, we need to add the order info to our model. We'll name the new property *sortorder*. The updated model declaration may look like this:
+Now, let's reflect these changes on the backend. We need to add the order info to our model, we'll name it *sortorder*. The updated model declaration may look like this:
 
 ~~~js
 rails generate model Task \
@@ -482,7 +482,7 @@ class TaskController < ApplicationController
     ...
     def add
     
-        maxOrder = Task.maximum("sortorder") || 0
+        maxOrder = Task.maximum("sortorder") || 0/*!*/
         
         task = Task.create( 
             :text => params["text"], 
@@ -490,7 +490,7 @@ class TaskController < ApplicationController
             :duration => params["duration"],
             :progress => params["progress"] || 0, 
             :parent => params["parent"],
-            :sortorder => maxOrder + 1
+            :sortorder => maxOrder + 1/*!*/
         )
  
         render :json => {:action => "inserted", :tid => task.id}
