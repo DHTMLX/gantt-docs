@@ -14,7 +14,7 @@ To organize communication with database we will use the [Entity Framework](http:
 We will build our application with the help of the Visual Studio IDE. 
 
 
-Step 1. Making Preparations
+Step 1. Creating a Project
 -----------------------------
 
 ###Creating a new Visual Studio Project 
@@ -28,7 +28,7 @@ Select an Empty project among available templates and check MVC and Web API chec
 
 <img src="desktop/how_to_start_net_project_template.png">
 
-Step 2. Adding Models, Views and Controllers
+Step 2. Adding Gantt to the page
 --------------------------------
 
 ###Creating a Controller
@@ -142,6 +142,10 @@ The server side itself will be implemented a bit later. For now, you can run the
 
 <img src="desktop/adding_gantt.png">
 
+
+Step 2. Creating Models and a Database
+--------------------------------
+
 ###Creating Models
 
 Now we define model classes for the gantt chart. A Gantt data model consists of [Links and Tasks](desktop/server_side.md#thedatabasesstructure). 
@@ -195,10 +199,10 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Step 3. Configuring DataBase Connection
-----------------------------------
+### Configuring DataBase Connection
 
-###Installing Entity Framework
+
+####Installing Entity Framework
 
 As you remember, we are going to organize work with a database with the help of the [Entity Framework](http://www.asp.net/entity-framework).
 
@@ -208,7 +212,7 @@ So, first of all we need to install the framework. To do it, you need to run the
 Install-Package EntityFramework
 ~~~
 
-###Creating Database Context
+####Creating Database Context
 
 The next step is to create Context. Context represents a session with the DataBase. It allows getting and saving data.
 
@@ -227,7 +231,7 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-###Adding initial records to database
+####Adding initial records to database
 
 Now we can add some records into the database.
 
@@ -787,7 +791,7 @@ gantt.init("gantt_here");
 ###Adding tasks order to the model
 
 Now, let's reflect these changes on the backend.
-We are going to store the order in the property named SortOrder, let's update the Task class accordingly:
+ - We are going to store the order in the property named SortOrder, let's update the Task class accordingly:
 {{snippet Models/Task.cs}}
 ~~~js
 using System;
@@ -810,8 +814,9 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Now we need to update the TaskController.
-Firstly, the client side should receive tasks ordered by the SortOrder value:
+Now we need to update the TaskController, namely:
+
+ - The client side should receive tasks ordered by the SortOrder value:
 
 {{snippet Controllers/TaskController.cs}}
 ~~~js
@@ -832,7 +837,33 @@ namespace DHX.Gantt.Web.Controllers
         }
 ~~~
 
-SortOrder should be updated when the task order is modified on the client. 
+
+ - new tasks should receive a default SortOrder value:
+ 
+{{snippet Controllers/TaskController.cs}}
+~~~js
+namespace DHX.Gantt.Web.Controllers
+{
+    [System.Web.Http.HttpPost]
+    public IHttpActionResult CreateTask(TaskDto taskDto)
+    {
+        var newTask = (Task)taskDto;
+
+        newTask.SortOrder = db.Tasks.Max(t => t.SortOrder) + 1;/*!*/
+
+        db.Tasks.Add(newTask);
+        db.SaveChanges();
+
+        return Ok(new
+        {
+            tid = newTask.Id,
+            action = "inserted"
+        });
+    }
+~~~
+
+
+ - SortOrder should be updated when the task order is modified on the client. 
 
 When a user changes the order of tasks, gantt will call a PUT action providing an info about a new task position in the 
 ['target'](desktop/server_side.md#storingtheorderoftasks) property of the request, together with the rest of task properties. 
