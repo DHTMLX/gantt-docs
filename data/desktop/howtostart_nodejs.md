@@ -13,7 +13,7 @@ Node.js has a set of ready-made solutions, so we won’t have to code everything
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.
 
-Step 1. Making Preparations
+Step 1. Creating a Project
 -------------------------------
 
 To begin with, we'll create a project folder and then add the required dependencies. We'll make use of the following modules:
@@ -69,16 +69,48 @@ Finally, we need to install the added dependencies using the command below:
 npm install
 ~~~
 
-Step 2. Initializing Gantt 
+Step 2. Adding Gantt to the page
 -----------------------
 
+### Implementing a backend
+
+Now we need to create a backend for our page. 
+Create a new file named <b>server.js</b> and add the following code into it:
+
+{{snippet server.js}}
+~~~js
+var express = require('express');
+var bodyParser = require('body-parser');
+var path = require('path');
+var Promise = require('bluebird');
+require("date-format-lite");
+
+var port = 1337;
+var app = express();
+
+app.use(express.static(path.join(__dirname, "public")));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.listen(port, function(){
+    console.log("Server is running on port "+port+"...");
+});
+~~~
+
+What we have done in this code:
+
+- specified the “public” folder as the root directory of an application
+- attached the application to 1337 port of the localhost
+
 Firstly, create a folder with the name "public". This folder will contain the dhtmlxGantt codebase and the main page of the application - *index.html*.
+
+### Creating a page
 
 Let's add the *index.html* file into the *public* folder. Thus, the folder structure will be as follows:
 
 ~~~js
 dhx-gantt-app
 ├── node_modules
+├── server.js
 ├── package.json
 └── public
     └── index.html
@@ -107,53 +139,10 @@ Now, open the *index.html* file and fill it with the following content:
 <body>
   <div id="gantt_here" style='width:100%; height:100%;'></div>
   <script type="text/javascript">
-    gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
-  
     gantt.init("gantt_here");
-    gantt.load("/data");
-  
-    var dp = new gantt.dataProcessor("/data");
-    dp.init(gantt);
-    dp.setTransactionMode("REST");
   </script>
 </body>
 ~~~
-
-The above code initializes a gantt chart together with dataProcessor and sets the necessary configuration settings. 
-It also enables data loading for the gantt.
-
-The “/data” URL will serve as a data source and the entry point for dataProcessor requests, we’ll consider it a bit later.
-The important point is that dataProcessor should be initialized in the REST mode. To get more information, read the desktop/server_side.md#savingdatafromrestserver
-article.
-
-Step 3. Implementing a backend
---------------------------
-Now we need to create a backend for our page. 
-Create a new file named <b>server.js</b> and add the following code into it:
-
-{{snippet server.js}}
-~~~js
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
-var Promise = require('bluebird');
-require("date-format-lite");
-
-var port = 1337;
-var app = express();
-
-app.use(express.static(path.join(__dirname, "public")));
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.listen(port, function(){
-    console.log("Server is running on port "+port+"...");
-});
-~~~
-
-What we have done in this code:
-
-- specified the “public” folder as the root directory of an application
-- attached the application to 1337 port of the localhost
 
 Let's check what we have got at the moment. Go to the project folder and run the following command from the command line:
 
@@ -165,7 +154,7 @@ Then open http://127.0.0.1:1337 in a browser. You should see a page with an empt
 
 <img src="desktop/gantt_init.png">
 
-Step 4. Preparing a Database
+Step 3. Preparing a Database
 ----------------------------
 
 The next step is to create a database. We'll make a simple database with two tables. 
@@ -212,15 +201,14 @@ INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00',
 Check a detailed example [here](desktop/server_side.md#thedatabasesstructure).
 
 
-Step 5. Loading data into the gantt
+Step 4. Loading data
 --------------------------
 
 Now we need to implement data loading. 
 
-On the client side we've already added <b>gantt.load("/data")</b> call, which will send ajax GET to the */data* url 
-and will expect to get a [JSON](desktop/supported_data_formats.md#json) object with gantt data in response.
+The client-side expects data in [JSON format](desktop/supported_data_formats.md#json). So, we'll create a route which will return such data.
 
-So, we need to add a server route for the URL which will generate an appropriate response. Open the *server.js* file and add the code below into it:
+Open the *server.js* file and add the code below into it:
 {{snippet server.js}}
 ~~~js
 var mysql = require('promise-mysql');
@@ -231,7 +219,7 @@ var db = mysql.createPool({
   database: 'gantt'
 });
 
-app.get("/data", function (req, res) {
+app.get("/data", function (req, res) { 
   Promise.all([
     db.query("SELECT * FROM gantt_tasks"),
     db.query("SELECT * FROM gantt_links")
@@ -260,24 +248,40 @@ What we have done in this code:
 - opened MySql connection to our database 
 - on <b>GET /data</b> request we'll read data from tasks and links tables and format them so they could be parsed on the client. 
 Note that we also add the *open* property to ensure that the tasks tree will be initially expanded.
-After that we'll send the collected data to the HTTP response.
+
+Now, we can call this route from the client:
+{{snippet public/index.html}}
+~~~js
+    gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
+  
+    gantt.init("gantt_here");
+
+    gantt.load("/data");/*!*/
+~~~
+
+Note that [xml_date](api/gantt_xml_date_config.md) config specifies the format of dates (<b>start_date</b> of the task) that comes from the server.
 
 Let's run the application now by opening http://127.0.0.1:1337. The gantt will be loaded with the test data that we have previously added into the database.
 
 <img src="desktop/load_data.png">
 
-Step 6. Saving Data
+Step 5. Saving changes
 ---------------------
 
 The last thing that we should implement is data saving. 
 For this we need a code that will send updates happening on the client side back to the server.
-
-The good news is that we already have such a code in the *index.html* file. Right here:
+Go to *public/index.html* and add [gantt.dataProcessor](desktop/server_side.md#technique) to the page:
 {{snippet public/index.html}}
 ~~~js
-var dp = new gantt.dataProcessor("/data");
-dp.init(gantt);
-dp.setTransactionMode("REST");
+    gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
+  
+    gantt.init("gantt_here");
+
+    gantt.load("/data");
+  
+    var dp = new gantt.dataProcessor("/data");/*!*/
+    dp.init(gantt);/*!*/
+    dp.setTransactionMode("REST");/*!*/
 ~~~
 
 Let's go deeper and see what role it plays. 
