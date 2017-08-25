@@ -17,7 +17,6 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/howtostart_nodejs.md</li>
                     <li>desktop/howtostart_dotnet.md</li>
                     <li>desktop/howtostart_ruby.md</li>
-                    <li>desktop/howtostart_connector.md</li>
             </ul>
         </td>
         <td class='topic_description'>Says how to build a standard Gantt chart on different server-side platforms and 

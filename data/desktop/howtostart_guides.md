@@ -47,16 +47,6 @@ platforms to suit all tastes and preferences.
         	<a href="desktop/howtostart_ruby.md"><img src="desktop/ruby_tutorial.png"></a>
         </td>
     </tr>	
-     <tr>
-        <td>
-		    <span style="font-size:15px;">desktop/howtostart_connector.md</span>
-            <br>
-         	This tutorial will teach you how to create a simple Gantt chart and implement server-side communication with the help of dhtmlxConnector. 
-        </td> 
-         <td>
-        	<a href="desktop/howtostart_connector.md"><img src="desktop/connector_tutorial.png"></a>
-        </td>
-    </tr>
     </tbody>
 </table>
 
@@ -67,5 +57,4 @@ platforms to suit all tastes and preferences.
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_ruby.md
-- desktop/howtostart_connector.md
 
