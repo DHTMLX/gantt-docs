@@ -1,10 +1,11 @@
-dhtmlxGantt with PHP 
+dhtmlxGantt with Laravel 
 =====================
 
 In this tutorial we'll show you how to add dhtmlxGantt into [Laravel](https://laravel.com/).
 
 There are tutorials intended for building server-side integration with the help of other platforms:
 
+- desktop/howtostart_php.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_ruby.md
@@ -38,7 +39,8 @@ Step 2. Adding Gantt to the page
 
 Firstly we'll add a new page with dhtmlxGantt to our app.
 Go to the *resources/views* folder and create a new view named *gantt.blade.php*:
-{{ snippet resources/views/gantt.blade.php }}
+
+{{snippet resources/views/gantt.blade.php }}
 ~~~html
 <!DOCTYPE html>
 <head>
@@ -69,7 +71,8 @@ Go to the *resources/views* folder and create a new view named *gantt.blade.php*
 After we added a new page we have to make it accessible from the browser. For this tutorial, we'll make our gantt a default page of an app.
 
 Go to *routes/web.php* and change the default route:
-{{ snippet routes/web.php}}
+
+{{snippet routes/web.php}}
 ~~~php
 <?php
 
@@ -92,6 +95,7 @@ Now let's connect it to the database and populate it with data.
 ### Creating a database
 
 Be sure to update database configuration in *.env*, for example:
+
 {{snippet .env}}
 ~~~php
 DB_CONNECTION=mysql
@@ -157,6 +161,7 @@ In order to manage data from our app we'll need to define [Eloquent model](https
 Create a model class for each of the tables:
 
 Task model:
+
 {{snippet /app/Task.php }}
 ~~~php
 <?php
@@ -179,6 +184,7 @@ class Task extends Model
 ~~~
 
 Link model:
+
 {{snippet /app/Link.php }}
 ~~~php
 <?php
@@ -229,6 +235,7 @@ class GanttController extends Controller
 ~~~
 
 Register a web api route for a data action:
+
 {{snippet routes/api.php}}
 ~~~php
 <?php
@@ -243,7 +250,8 @@ Route::get('/data', 'GanttController@get');/*!*/
 ~~~
 
 And finally, call this action from the view:
-{{ snippet resources/views/gantt.blade.php }}
+
+{{snippet resources/views/gantt.blade.php }}
 ~~~js
     gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
 
@@ -273,6 +281,7 @@ We'll define controllers that handle actions on both models, create routes for t
 Let's start with controllers, we need one controller for each model with methods for adding/deleting and updating the model. We won't implement reading model there since we already have *GanttController.php* which reads both models.
 
 Controller for tasks:
+
 {{snippet app/Http/Controllers/TaskControllers}}
 ~~~php
 <?php
@@ -329,6 +338,7 @@ class TaskController extends Controller
 ~~~
 
 Routes for TaskController:
+
 {{snippet routes/api.php}}
 ~~~php
 Route::post('/task', 'TaskController@create');
@@ -337,6 +347,7 @@ Route::delete('/task/{id}', 'TaskController@delete');
 ~~~
 
 Now let's implement a LinkController
+
 {{snippet app/Http/Controllers/LinkControllers}}
 ~~~php
 <?php
@@ -416,7 +427,7 @@ Route::delete('/link/{id}', 'LinkController@delete');/*!*/
 ~~~
 
 And finally, configure client side to utilise the api we've just implemented:
-{{ snippet resources/views/gantt.blade.php }}
+{{snippet resources/views/gantt.blade.php }}
 ~~~js
     gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
     
@@ -441,7 +452,7 @@ Let's now add this feature to our app.
 
 Firstly, we need to allow users to change task order in the UI. Open Index view and update configuration of gantt:
 
-{{ snippet resources/views/gantt.blade.php }}
+{{snippet resources/views/gantt.blade.php }}
 ~~~js
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
@@ -499,6 +510,7 @@ class GanttController extends Controller
 }
 ~~~
 2. Newly added tasks must receive the initial `sortorder` value: 
+
 {{snippet app/Http/Controllers/TaskController.php}}
 ~~~php
 public function create(Request $request){
@@ -521,6 +533,7 @@ public function create(Request $request){
 ~~~
 
 3. Finally, when user reorders tasks, task orders must be [updated](desktop/server_side.md#storingtheorderoftasks):
+
 {{snippet app/Http/Controllers/TaskController.php}}
 ~~~php
 public function update($id, Request $request){
