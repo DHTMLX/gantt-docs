@@ -5,6 +5,7 @@ The current tutorial is intended for creating Gantt with Node.js and REST API on
 If you use some other technology, check the list of available integration variants below:
 
 - desktop/howtostart_php.md
+- desktop/howtostart_php_laravel.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_ruby.md
 

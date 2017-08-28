@@ -1,16 +1,16 @@
 dhtmlxGantt with PHP 
 =====================
 
-In this tutorial you will find necessary information on how to create a Gantt Chart using PHP and REST API on the server side.
+In this tutorial you will find necessary information on how to create a Gantt Chart using PHP 5.6x-7.x and RESTful API on the server.
 
-There are tutorials intended for building server-side integration with the help of other platforms:
+There are tutorials intended for building server-side integration with the help of other platforms and frameworks:
 
+- desktop/howtostart_php_laravel.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_ruby.md
 
-It seems obvious that while developing an application with PHP one will use a ready framework instead of creating everything from scratch.<br>
-We will use the [Slim](http://www.slimframework.com/) framework together with REST API on the server side and MySQL as a data storage to create a Gantt Chart.
+We will use the [Slim](http://www.slimframework.com/) framework for routing and MySQL as a data storage. CRUD logic will rely on PDO and will be generic enough to be usable with any other framework.
 
 You can have a look at the [ready demo on GitHub](https://github.com/DHTMLX/gantt-slim-mysql). Follow the step-by-step guide to create such an application.
 

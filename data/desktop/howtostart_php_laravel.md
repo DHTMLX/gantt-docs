@@ -1,4 +1,4 @@
-dhtmlxGantt with Laravel 
+dhtmlxGantt with PHP: Laravel 
 =====================
 
 In this tutorial we'll show you how to add dhtmlxGantt into [Laravel](https://laravel.com/).
