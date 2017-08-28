@@ -170,6 +170,20 @@ Gantt displays tasks in the same order they come from a data source. If you allo
 [reorder tasks manually](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure), 
 you'll also need to store this order in the database and make sure that your data feed returns data sorted appropriately.
 
+Client-side configuration:
+~~~js
+// reordering tasks within the whole gantt
+gantt.config.order_branch = true;
+gantt.config.order_branch_free = true;
+ 
+gantt.init("gantt_here");
+gantt.load("/api");
+ 
+var dp = new gantt.dataProcessor("/api");
+dp.init(gantt);
+dp.setTransactionMode("REST");
+~~~
+
 The saving order can be implemented in several ways, we'll show one of them.
 
 - You add a numeric column to your tasks table, let's call it 'sortorder'.
@@ -335,6 +349,122 @@ On the other hand, this strategy can generate a large number ajax calls to the b
 
 In that case, cascade deletion can be disabled using this config api/gantt_cascade_delete_config.md. In that case, when project branch is deleted, the client will send a delete request only for the top item and will expect the backend to delete related links and subtasks.
 
+Custom request headers and parameters 
+----------------
+
+### Adding custom request headers
+
+When you need gantt to send an additional headers to your backend, you can specify them using [dataProcessor.setTransactionMode](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) method.
+For example, suppose you need to add an authorization token to your requests:
+
+~~~js
+gantt.init("gantt_here");
+gantt.load("/api");
+ 
+var dp = new gantt.dataProcessor("/api");
+dp.init(gantt);
+dp.setTransactionMode({
+    mode:"REST",
+    headers: {
+       "Authorization": "Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
+    }
+});
+~~~
+
+Currently, api/gantt_load.md does not support header/payload parameters, so if you need them for GET request, 
+you'll have to send xhr manually and load data into gantt using api/gantt_parse.md, for example:
+~~~js
+$.ajax({
+    url: "/api",
+    headers: {
+        "Authorization": "Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
+    },
+    success: function (result) {
+        scheduler.parse(result, "json");
+    }
+});
+~~~
+
+### Adding custom parameters to the request
+
+There are a couple of ways to send additional parameters to requests.
+
+As you know, gantt sends all properties of the data object back to the backend. 
+Thus, you can add an additional property to the data object directly and it will be sent to the backen:
+~~~js
+gantt.attachEvent("onTaskCreated", function(task){
+    task.userId = currentUser;
+    return true;
+});
+~~~
+
+Alternatively, you can add custom parameters to all requests sent by data processor using **payload** property of [setTransactionMode](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) parameter:
+~~~js
+gantt.init("gantt_here");
+gantt.load("/api");
+ 
+var dp = new gantt.dataProcessor("/api");
+dp.init(gantt);
+dp.setTransactionMode({
+    mode:"REST",
+    payload: {
+       token: "9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
+    }
+});
+~~~
+
+Without dataProcessor
+----------------
+
+dhtmlxGantt can be used without gantt.dataProcessor, in that case you'll have to monitor all changes made in gantt manually and then send them to your backend.
+Here is the list of events you'll need to listen:
+
+- api/gantt_onaftertaskadd_event.md
+- api/gantt_onaftertaskupdate_event.md
+- api/gantt_onaftertaskdelete_event.md
+- api/gantt_onafterlinkadd_event.md
+- api/gantt_onafterlinkupdate_event.md
+- api/gantt_onafterlinkdelete_event.md
+
+When task or link is created on the client side, it obtains a temporary id which is used until the item gets a permanent database id.
+Once you insert new item into the database, 
+you'll need to pass it back to the client-side and apply it to the related task or link using api/gantt_changetaskid.md or api/gantt_changelinkid.md:
+
+~~~js
+// assume taskService/linkService are some kind of CRUD service implementation
+
+// tasks:
+gantt.attachEvent('onAfterTaskAdd', function(id, task) {
+  taskService.create(task)
+    .then(function(result){
+      gantt.changeTaskId(id, result.databaseId);
+    });
+});
+
+gantt.attachEvent('onAfterTaskUpdate', function(id, task) {
+  taskService.update(task);
+});
+
+gantt.attachEvent('onAfterTaskDelete', function(id) {
+  taskService.delete(id);
+});
+
+// links
+gantt.attachEvent('onAfterLinkAdd', function(id, link) {
+  linkService.create(link)
+    .then(function(result){
+      gantt.changeLinkId(id, result.databaseId);
+    });
+});
+
+gantt.attachEvent('onAfterLinkUpdate', function(id, link) {
+  linkService.update(task);
+});
+
+gantt.attachEvent('onAfterLinkDelete', function(id, link) {
+  linkService.delete(id);
+});
+~~~
 
 @todo: 
-  review changes
+  review changes, maybe change the order of sections
