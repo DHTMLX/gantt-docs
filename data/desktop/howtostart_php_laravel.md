@@ -1,7 +1,7 @@
 dhtmlxGantt with PHP: Laravel 
 =====================
 
-In this tutorial we'll show you how to add dhtmlxGantt into [Laravel](https://laravel.com/).
+In this tutorial we'll show you how to add dhtmlxGantt into [Laravel](https://laravel.com/) app.
 
 There are tutorials intended for building server-side integration with the help of other platforms:
 
@@ -30,7 +30,7 @@ php artisan serve
 ~~~
 
 At this step you should get a default laravel page:
-https://www.screencast.com/t/lQUMLGyu7e6
+<img src="desktop/how_to_start_laravel_blank_page.png"/>
 
 Step 2. Adding Gantt to the page
 -----------------------
@@ -66,6 +66,10 @@ Go to the *resources/views* folder and create a new view named *gantt.blade.php*
 </body>
 ~~~
 
+Here we've defined a simple html layout, added sources of dhtmlxGantt from [CDN](desktop/cdn_links_list.md) and initialized gantt using api/gantt_init.md method.
+
+Note that we've also specified **100% height** for the document body and for the gantt container. Gantt will use the size of its container, thus some initial sizes are required.
+
 ### Changing a default route
 
 After we added a new page we have to make it accessible from the browser. For this tutorial, we'll make our gantt a default page of an app.
@@ -82,15 +86,14 @@ Route::get('/', function () {
 ~~~
 
 Run the app again to make sure it did the trick:
-https://www.screencast.com/t/EqUsBK4gnk
+<img src="desktop/how_to_start_laravel_empty_gantt.png"/>
 
 Step 3. Configuring a database and Models
 ---------------------
 
-And we've got ourself an empty gantt chart, so far so good.
+So, we've got ourselves an empty gantt chart.
 
-Now let's connect it to the database and populate it with data.
-
+Let's connect it to the database and populate it with data.
 
 ### Creating a database
 
@@ -106,7 +109,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ~~~
 
-The next step is to create a database. We'll make a simple database with two tables.
+The next step is to create a database. We'll make a simple database with two tables, you can find more details on database structure [here](desktop/server_side.md#thedatabasesstructure).
 
 ~~~js
 CREATE TABLE `gantt_tasks` (
@@ -132,7 +135,7 @@ CREATE TABLE `gantt_links` (
 );
 ~~~
 Note that we're defined our tables **created_at** and **updated_add** columns. 
-They won't be used by gantt, these columns will be used as timestamps of [Eloquent model](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions) we're about to declare
+They won't be used by gantt but [Eloquent model](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions) we're about to declare can use them for storing timestamps.
 
 While you're at it, add some test data to the database:
 ~~~js
@@ -153,7 +156,6 @@ INSERT INTO `gantt_tasks` VALUES ('7', 'Task #2.1', '2017-04-07 00:00:00',
 INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00', 
   '4', '0.9', '3');
 ~~~
-Check a detailed example [here](desktop/server_side.md#thedatabasesstructure).
 
 ### Defining model classes
 
@@ -173,7 +175,6 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
 	protected $table = "gantt_tasks";
-	public $timestamps = false;
 
 	protected $appends = ["open"];
 
@@ -183,7 +184,14 @@ class Task extends Model
 }
 ~~~
 
-Link model:
+Couple of notes about this model
+
+- Gantt uses the **open** [property of the task object](desktop/loading.html#specifyingdataproperties) to determine whether the nested branch of the task should be collapsed or expanded initially. 
+Thus we add an **'open':true** to tasks [JSON response](https://laravel.com/docs/5.4/eloquent-serialization#appending-values-to-json) in order to expand whole gantt by default.
+- We've defined **$table** property since our tables does not follow a [naming convention](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions) used in Eloquent.
+Alternatively, we could have named our tables *tasks* and *links* and remove the **$table** property from class definitions.
+
+And a Link model:
 
 {{snippet /app/Link.php }}
 ~~~php
@@ -199,19 +207,11 @@ class Link extends Model
 }
 ~~~
 
-Couple of notes about our models
-
-- Gantt uses the **open** property of the task object for the initial state of nested branches (collapsed/expanded ) children. 
-Thus we add an **'open':true** to tasks [JSON response](https://laravel.com/docs/5.4/eloquent-serialization#appending-values-to-json) in order to expand whole gantt by default
-- We've defined **$table** property in both classes since our tables does not follow a [naming convention](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions) used in Eloquent.
-Alternatively, we could have named our tables *tasks* and *links* and remove the **$table** property from class definitions.
-
 Step 4. Loading Data
 -------------------
 
-Once the database is created and models are defined we can load data into our gantt.
-
-Create a controller that will do data loading on backend:
+Once the database is created and models are defined we can load data into our gantt. 
+Client-side requires date of the following format desktop/supported_data_formats.md#json, so let's create a controller with an action that produces such JSON:
 
 {{snippet app/Http/Controllers/GanttController.php}}
 ~~~php
@@ -234,7 +234,7 @@ class GanttController extends Controller
 }
 ~~~
 
-Register a web api route for a data action:
+And register a route so the client could call this action. Note that we'll add route to [api.php routes file](https://laravel.com/docs/5.4/routing#basic-routing):
 
 {{snippet routes/api.php}}
 ~~~php
@@ -260,25 +260,26 @@ And finally, call this action from the view:
     gantt.load("/api/data");/*!*/
 ~~~
 
-[gantt.load](api/gantt_load.md) sends an AJAX request to the specified URL, 
-the response is expected to contain Gantt data in [JSON format](desktop/supported_data_formats.md#json).
+[gantt.load](api/gantt_load.md) sends an AJAX request to the specified URL and will expect a [JSON response](desktop/supported_data_formats.md#json) as we defined before.
 
 Also, note that we've specified [xml_date](api/gantt_xml_date_config.md) value. 
 This is how we tell gantt the format of dates data source will use, so the client-side could parse them. 
 
 If you check the app now, you should see that there are now tasks in our gantt chart
-https://www.screencast.com/t/01u8cjDDdY
+
+<img src="desktop/how_to_start_laravel_complete.png"/>
 
 Step 5. Saving changes
 -----------------------------------
 
 Our gantt can read data from a backend, now let's make it write changes back to the database.
 
-The client-side will work in REST mode, meaning it will send POST/PUT/DELETE requests for tasks and links. 
+The client-side will work in REST mode, meaning it will send POST/PUT/DELETE requests for tasks and links actions. 
+You can find a format of requests and all routes gantt will use [here](desktop/server_side.md#requestresponsedetails). 
 
-We'll define controllers that handle actions on both models, create routes for them and enable data saving on the client.
+What we need now is to define controllers that handle actions on both models, create routes for them and enable data saving on the client-side.
 
-Let's start with controllers, we need one controller for each model with methods for adding/deleting and updating the model. We won't implement reading model there since we already have *GanttController.php* which reads both models.
+Let's start with controllers, we'll create one controller for each model with methods for adding/deleting and updating the model. 
 
 Controller for tasks:
 
@@ -346,7 +347,14 @@ Route::put('/task/{id}', 'TaskController@update');
 Route::delete('/task/{id}', 'TaskController@delete');
 ~~~
 
-Now let's implement a LinkController
+Couple of notes regarding this code:
+
+- When a new task is inserted we return it's id back to the client in **tid** property of the response object
+- We assign a default value to the **progress** parameter. 
+Many request parameters are optional, which means if the client-side task doesn't have them assigned they won't be sent to the server action.
+- The response json can have any number of additional properties, they all can be accessed from the [client-side handler](desktop/server_side.md#errorhandling)
+
+Now let's implement the same for a LinkController
 
 {{snippet app/Http/Controllers/LinkControllers}}
 ~~~php
@@ -354,38 +362,33 @@ Now let's implement a LinkController
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Task;
+use App\Link;
 
-class TaskController extends Controller
+class LinkController extends Controller
 {
 	public function create(Request $request){
+		$link = new Link();
 
-		$task = new Task();
+		$link->type = $request->type;
+		$link->source = $request->source;
+		$link->target = $request->target;
 
-		$task->text = $request->text;
-		$task->start_date = $request->start_date;
-		$task->duration = $request->duration;
-		$task->progress = $request->progress || 0;
-		$task->parent = $request->parent;
-
-		$task->save();
+		$link->save();
 
 		return response()->json([
 			"action"=> "inserted",
-			"tid" => $task->id
+			"tid" => $link->id
 		]);
 	}
 
 	public function update($id, Request $request){
-		$task = Task::find($id);
+		$link = Link::find($id);
 
-		$task->text = $request->text;
-		$task->start_date = $request->start_date;
-		$task->duration = $request->duration;
-		$task->progress = $request->progress || 0;
-		$task->parent = $request->parent;
+		$link->type = $request->type;
+		$link->source = $request->source;
+		$link->target = $request->target;
 
-		$task->save();
+		$link->save();
 
 		return response()->json([
 			"action"=> "updated"
@@ -393,8 +396,8 @@ class TaskController extends Controller
 	}
 
 	public function delete($id){
-		$task = Task::find($id);
-		$task->delete();
+		$link = Link::find($id);
+		$link->delete();
 
 		return response()->json([
 			"action"=> "deleted"
@@ -426,7 +429,8 @@ Route::put('/link/{id}', 'LinkController@update');/*!*/
 Route::delete('/link/{id}', 'LinkController@delete');/*!*/
 ~~~
 
-And finally, configure client side to utilise the api we've just implemented:
+And finally, [configure client side](desktop/server_side.md#technique) to utilise the api we've just implemented:
+
 {{snippet resources/views/gantt.blade.php }}
 ~~~js
     gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
@@ -439,7 +443,11 @@ And finally, configure client side to utilise the api we've just implemented:
     dp.init(gantt);/*!*/
     dp.setTransactionMode("REST");/*!*/
 ~~~
-https://www.screencast.com/t/P0Dn46hOYE
+
+Now you have a fully interactive Gantt chart with the ability to view, add, update and delete tasks and links.
+<img src="desktop/how_to_start_laravel_crud.png"/>
+
+Please check more of [our guides](desktop/guides.md) for more features of dhtmlxGantt.
 
 Storing the Order of Tasks
 ------------------
@@ -509,7 +517,7 @@ class GanttController extends Controller
 	}
 }
 ~~~
-2. Newly added tasks must receive the initial `sortorder` value: 
+2. Newly added tasks must receive an initial `sortorder` value: 
 
 {{snippet app/Http/Controllers/TaskController.php}}
 ~~~php
@@ -582,5 +590,5 @@ private function updateOrder($taskId, $target){
 ~~~
 
 
-@todo
-	add descriptions, embed images, add to the index, add link to repo, recheck.
+@todo:
+	add descriptions, add link to repo, recheck.

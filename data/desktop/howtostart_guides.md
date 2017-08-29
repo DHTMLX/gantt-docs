@@ -13,7 +13,7 @@ platforms to suit all tastes and preferences.
                 A step-by-step tutorial that discusses how to add Gantt into Laravel app. 
             </td>
             <td>
-            	<a href="desktop/howtostart_php_laravel.md"><img src="desktop/php_tutorial.png"></a>
+            	<a href="desktop/howtostart_php_laravel.md"><img src="desktop/how_to_start_laravel.png"></a>
             </td>
         </tr>
     <tr>

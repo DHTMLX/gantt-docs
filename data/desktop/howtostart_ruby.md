@@ -8,6 +8,7 @@ Otherwise please visit [the official tutorials](http://guides.rubyonrails.org/in
 If you use some other technology, check the list of available integration variants below:
 
 - desktop/howtostart_php.md
+- desktop/howtostart_php_laravel.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 
