@@ -6,6 +6,7 @@ This tutorial will give you step-by-step instructions on creating Gantt with ASP
 You can also explore other server-side integration possibilities of Gantt by choosing one of the following tutorials:
 
 - desktop/howtostart_php.md
+- desktop/howtostart_php_laravel.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_ruby.md
 
