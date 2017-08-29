@@ -119,8 +119,6 @@ CREATE TABLE `gantt_tasks` (
   `duration` int(11) NOT NULL,
   `progress` float NOT NULL,
   `parent` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
 
@@ -129,13 +127,9 @@ CREATE TABLE `gantt_links` (
   `source` int(11) NOT NULL,
   `target` int(11) NOT NULL,
   `type` varchar(1) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
 ~~~
-Note that we're defined our tables **created_at** and **updated_add** columns. 
-They won't be used by gantt but [Eloquent model](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions) we're about to declare can use them for storing timestamps.
 
 While you're at it, add some test data to the database:
 ~~~js
@@ -175,7 +169,7 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
 	protected $table = "gantt_tasks";
-
+	public $timestamps = false;
 	protected $appends = ["open"];
 
 	public function getOpenAttribute(){
@@ -190,6 +184,7 @@ Couple of notes about this model
 Thus we add an **'open':true** to tasks [JSON response](https://laravel.com/docs/5.4/eloquent-serialization#appending-values-to-json) in order to expand whole gantt by default.
 - We've defined **$table** property since our tables does not follow a [naming convention](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions) used in Eloquent.
 Alternatively, we could have named our tables *tasks* and *links* and remove the **$table** property from class definitions.
+- We didn't add **created_at**/**updated_add** columns [Eloquent model](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions) expects by default, thus we define **$timestamp = false** property.
 
 And a Link model:
 
@@ -204,6 +199,7 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
 	protected $table = "gantt_links";
+	public $timestamps = false;
 }
 ~~~
 
@@ -480,8 +476,6 @@ CREATE TABLE `gantt_tasks` (
   `duration` int(11) NOT NULL,
   `progress` float NOT NULL,
   `parent` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `sortorder` int(11) NOT NULL, /*!*/
   PRIMARY KEY (`id`)
 );
