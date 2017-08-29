@@ -146,6 +146,8 @@ gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
 
 ##Setting lag and lead times between tasks
 
+{{todo check the info of the section}}
+
 Lag and lead times are special values that are used to create complex relations between tasks.
 
 Lag is a delay between tasks which are linked by a dependency. Lead is an overlap between tasks which are linked by a dependency.
