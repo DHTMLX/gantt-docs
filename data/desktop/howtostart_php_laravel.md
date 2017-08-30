@@ -184,7 +184,7 @@ Couple of notes about this model
 Thus we add an **'open':true** to tasks [JSON response](https://laravel.com/docs/5.4/eloquent-serialization#appending-values-to-json) in order to expand whole gantt by default.
 - We've defined **$table** property since our tables does not follow a [naming convention](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions) used in Eloquent.
 Alternatively, we could have named our tables *tasks* and *links* and remove the **$table** property from class definitions.
-- We didn't add **created_at**/**updated_add** columns [Eloquent model](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions) expects by default, thus we define **$timestamp = false** property.
+- We didn't add **created_at**/**updated_at** columns [Eloquent model](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions) expects by default, thus we define **$timestamp = false** property.
 
 And a Link model:
 
