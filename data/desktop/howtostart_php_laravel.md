@@ -20,12 +20,13 @@ Step 1. Initializing the Project
 Create a new application using [composer](https://getcomposer.org/):
 
 ~~~php
-composer create-project larave/laravel gantt-laravel-app
+composer create-project laravel/laravel gantt-laravel-app
 ~~~
 
 It should take a minute to download and create all necessary files. 
-Once everything is done, you can go to the application folder and check that everything is correct so far:
+Once everything is done, you can check that everything is correct so far:
 ~~~php
+cd gantt-laravel-app
 php artisan serve
 ~~~
 
@@ -238,10 +239,6 @@ And register a route so the client could call this action. Note that we'll add r
 
 use Illuminate\Http\Request;
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get('/data', 'GanttController@get');/*!*/
 ~~~
 
@@ -275,7 +272,7 @@ You can find a format of requests and all routes gantt will use [here](desktop/s
 
 What we need now is to define controllers that handle actions on both models, create routes for them and enable data saving on the client-side.
 
-Let's start with controllers, we'll create one controller for each model with methods for adding/deleting and updating the model. 
+Let's start with controllers, we'll create one [RESTful resource controller](http://laravel.com/docs/4.2/controllers#restful-resource-controllers) for each model with methods for adding/deleting and updating the model. 
 
 Controller for tasks:
 
@@ -289,7 +286,7 @@ use App\Task;
 
 class TaskController extends Controller
 {
-	public function create(Request $request){
+	public function store(Request $request){
 
 		$task = new Task();
 
@@ -323,7 +320,7 @@ class TaskController extends Controller
 		]);
 	}
 
-	public function delete($id){
+	public function destroy($id){
 		$task = Task::find($id);
 		$task->delete();
 
@@ -334,13 +331,11 @@ class TaskController extends Controller
 }
 ~~~
 
-Routes for TaskController:
+And a [route](http://laravel.com/docs/4.2/controllers#restful-resource-controllers) 
 
 {{snippet routes/api.php}}
 ~~~php
-Route::post('/task', 'TaskController@create');
-Route::put('/task/{id}', 'TaskController@update');
-Route::delete('/task/{id}', 'TaskController@delete');
+Route::resource('task', 'TaskController');
 ~~~
 
 Couple of notes regarding this code:
@@ -362,7 +357,7 @@ use App\Link;
 
 class LinkController extends Controller
 {
-	public function create(Request $request){
+	public function store(Request $request){
 		$link = new Link();
 
 		$link->type = $request->type;
@@ -391,7 +386,7 @@ class LinkController extends Controller
 		]);
 	}
 
-	public function delete($id){
+	public function destroy($id){
 		$link = Link::find($id);
 		$link->delete();
 
@@ -410,19 +405,11 @@ And routes:
 
 use Illuminate\Http\Request;
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get('/data', 'GanttController@get');
 
-Route::post('/task', 'TaskController@create');
-Route::put('/task/{id}', 'TaskController@update');
-Route::delete('/task/{id}', 'TaskController@delete');
+Route::resource('task', 'TaskController');
 
-Route::post('/link', 'LinkController@create'); /*!*/
-Route::put('/link/{id}', 'LinkController@update');/*!*/
-Route::delete('/link/{id}', 'LinkController@delete');/*!*/
+Route::resource('link', 'LinkController'); /*!*/
 ~~~
 
 And finally, [configure client side](desktop/server_side.md#technique) to utilise the api we've just implemented:
@@ -515,7 +502,7 @@ class GanttController extends Controller
 
 {{snippet app/Http/Controllers/TaskController.php}}
 ~~~php
-public function create(Request $request){
+public function store(Request $request){
 	$task = new Task();
 
 	$task->text = $request->text;
@@ -585,4 +572,4 @@ private function updateOrder($taskId, $target){
 
 
 @todo:
-	add descriptions, add link to repo, recheck.
+	add descriptions, add link to repo, recheck. redo db with seeders/migrations https://laravel.com/docs/5.0/schema https://laravel.com/docs/5.0/migrations
