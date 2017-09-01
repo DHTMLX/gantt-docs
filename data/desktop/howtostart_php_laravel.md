@@ -89,7 +89,7 @@ Route::get('/', function () {
 Run the app again to make sure it did the trick:
 <img src="desktop/how_to_start_laravel_empty_gantt.png"/>
 
-Step 3. Configuring a database and Models
+Step 3. Creating Models and Migrations
 ---------------------
 
 So, we've got ourselves an empty gantt chart.
@@ -110,52 +110,163 @@ DB_USERNAME=root
 DB_PASSWORD=
 ~~~
 
-The next step is to create a database. We'll make a simple database with two tables, you can find more details on database structure [here](desktop/server_side.md#thedatabasesstructure).
+
+The next step is to create [model classes](https://laravel.com/docs/5.4/eloquent#defining-models) and [migrations](https://laravel.com/docs/5.5/migrations#generating-migrations).
+You can generate classes and migration files using Artisan command:
 
 ~~~js
-CREATE TABLE `gantt_tasks` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `text` varchar(255) NOT NULL,
-  `start_date` datetime NOT NULL,
-  `duration` int(11) NOT NULL,
-  `progress` float NOT NULL,
-  `parent` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `gantt_links` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `source` int(11) NOT NULL,
-  `target` int(11) NOT NULL,
-  `type` varchar(1) NOT NULL,
-  PRIMARY KEY (`id`)
-);
+php artisan make:model Task --migration
 ~~~
 
-While you're at it, add some test data to the database:
+and 
+
 ~~~js
-INSERT INTO `gantt_tasks` VALUES ('1', 'Project #1', '2017-04-01 00:00:00', 
-  '5', '0.8', '0');
-INSERT INTO `gantt_tasks` VALUES ('2', 'Task #1', '2017-04-06 00:00:00', 
-  '4', '0.5', '1');
-INSERT INTO `gantt_tasks` VALUES ('3', 'Task #2', '2017-04-05 00:00:00', 
-  '6', '0.7', '1');
-INSERT INTO `gantt_tasks` VALUES ('4', 'Task #3', '2017-04-07 00:00:00', 
-  '2', '0', '1');
-INSERT INTO `gantt_tasks` VALUES ('5', 'Task #1.1', '2017-04-05 00:00:00', 
-  '5', '0.34', '2');
-INSERT INTO `gantt_tasks` VALUES ('6', 'Task #1.2', '2017-04-11 13:22:17', 
-  '4', '0.5', '2');
-INSERT INTO `gantt_tasks` VALUES ('7', 'Task #2.1', '2017-04-07 00:00:00',
-  '5', '0.2', '3');
-INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00', 
-  '4', '0.9', '3');
+php artisan make:model Link --migration
+~~~
+
+After that find the migrations in `database/migrations` folder and define a [database schema](https://laravel.com/docs/5.5/migrations#migration-structure). 
+You can find database schema expected by gantt [here](desktop/server_side.md#thedatabasesstructure).
+
+Tasks table:
+
+{{snippet database/migrations/_create_tasks_table.php}}
+~~~php
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateTasksTable extends Migration
+{
+	public function up()
+	{
+		Schema::create('tasks', function (Blueprint $table){
+			$table->increments('id');
+			$table->string('text');
+			$table->integer('duration');
+			$table->float('progress');
+			$table->dateTime('start_date');
+			$table->integer('parent');
+			$table->timestamps();
+		});
+	}
+
+	public function down()
+	{
+		Schema::dropIfExists('tasks');
+	}
+}
+~~~
+
+Links table:
+
+{{snippet database/migrations/_create_links_table.php}}
+~~~php
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateLinksTable extends Migration
+{
+	public function up()
+	{
+		Schema::create('links', function (Blueprint $table) {
+			$table->increments('id');
+			$table->string('type');
+			$table->integer('source');
+			$table->integer('target');
+			$table->timestamps();
+		});
+	}
+
+	public function down()
+	{
+		Schema::dropIfExists('links');
+	}
+}
+~~~
+
+And run the migration:
+
+~~~php
+php artisan migrate
+~~~
+
+While we're at it, we can generate some test data for our app. 
+Generate a [seeder](https://laravel.com/docs/5.5/seeding) class using artisan command:
+
+~~~php
+php artisan make:seeder TasksTableSeeder
+php artisan make:seeder LinksTableSeeder
+~~~
+
+Add some data to **TasksTableSeeder**:
+
+{{snippet database/seeds/TasksTableSeeder.php}}
+~~~php
+<?php
+
+use Illuminate\Database\Seeder;
+
+class TasksTableSeeder extends Seeder
+{
+	public function run()
+	{
+		DB::table('tasks')->insert([
+			['id'=>1, 'text'=>'Project #1', 'start_date'=>'2017-04-01 00:00:00', 
+				'duration'=>5, 'progress'=>0.8, 'parent'=>0],
+			['id'=>2, 'text'=>'Task #1', 'start_date'=>'2017-04-06 00:00:00', 
+				'duration'=>4, 'progress'=>0.5, 'parent'=>1],
+			['id'=>3, 'text'=>'Task #2', 'start_date'=>'2017-04-05 00:00:00', 
+				'duration'=>6, 'progress'=>0.7, 'parent'=>1],
+			['id'=>4, 'text'=>'Task #3', 'start_date'=>'2017-04-07 00:00:00', 
+				'duration'=>2, 'progress'=>0, 'parent'=>1],
+			['id'=>5, 'text'=>'Task #1.1', 'start_date'=>'2017-04-05 00:00:00', 
+				'duration'=>5, 'progress'=>0.34, 'parent'=>2],
+			['id'=>6, 'text'=>'Task #1.2', 'start_date'=>'2017-04-11 00:00:00', 
+				'duration'=>4, 'progress'=>0.5, 'parent'=>2],
+			['id'=>7, 'text'=>'Task #2.1', 'start_date'=>'2017-04-07 00:00:00', 
+				'duration'=>5, 'progress'=>0.2, 'parent'=>3],
+			['id'=>8, 'text'=>'Task #2.2', 'start_date'=>'2017-04-06 00:00:00', 
+				'duration'=>4, 'progress'=>0.9, 'parent'=>3]
+		]);
+	}
+}
+~~~
+
+And call table seeders from **DatabaseSeeder.php**
+{{snippet database/seeds/TasksTableSeeder.php}}
+~~~php
+<?php
+
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+	public function run()
+	{
+		$this->call(TasksTableSeeder::class);
+		$this->call(LinksTableSeeder::class);
+	}
+}
+~~~
+
+After that we can seed our database from a command line:
+
+~~~php
+php artisan db:seed
 ~~~
 
 ### Defining model classes
 
-In order to manage data from our app we'll need to define [Eloquent model](https://laravel.com/docs/5.4/eloquent) classes.
-Create a model class for each of the tables:
+The data is managed via [Eloquent model](https://laravel.com/docs/5.4/eloquent) classes. We've already generated classes for tasks and links in the previous step.
+
+They are ready to use and does not require changes to work with gantt. What we can do, however, 
+is to add an **open** [attribute of the Task class](desktop/loading.html#specifyingdataproperties) to [JSON response](https://laravel.com/docs/5.4/eloquent-serialization#appending-values-to-json) -  it will make the project tree expanded when tasks are loaded to the client-side. 
+Otherwise, all branches would be closed initially: 
 
 Task model:
 
@@ -169,25 +280,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-	protected $table = "gantt_tasks";
-	public $timestamps = false;
-	protected $appends = ["open"];
+	protected $appends = ["open"];/*!*/
 
-	public function getOpenAttribute(){
-		return true;
-	}
+	public function getOpenAttribute(){/*!*/
+		return true;/*!*/
+	}/*!*/
 }
 ~~~
 
-Couple of notes about this model
-
-- Gantt uses the **open** [property of the task object](desktop/loading.html#specifyingdataproperties) to determine whether the nested branch of the task should be collapsed or expanded initially. 
-Thus we add an **'open':true** to tasks [JSON response](https://laravel.com/docs/5.4/eloquent-serialization#appending-values-to-json) in order to expand whole gantt by default.
-- We've defined **$table** property since our tables does not follow a [naming convention](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions) used in Eloquent.
-Alternatively, we could have named our tables *tasks* and *links* and remove the **$table** property from class definitions.
-- We didn't add **created_at**/**updated_at** columns [Eloquent model](https://laravel.com/docs/5.4/eloquent#eloquent-model-conventions) expects by default, thus we define **$timestamp = false** property.
-
-And a Link model:
+And a Link model doesn't need any changes:
 
 {{snippet /app/Link.php }}
 ~~~php
@@ -199,8 +300,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Link extends Model
 {
-	protected $table = "gantt_links";
-	public $timestamps = false;
 }
 ~~~
 
@@ -406,9 +505,7 @@ And routes:
 use Illuminate\Http\Request;
 
 Route::get('/data', 'GanttController@get');
-
 Route::resource('task', 'TaskController');
-
 Route::resource('link', 'LinkController'); /*!*/
 ~~~
 
@@ -435,7 +532,8 @@ Please check more of [our guides](desktop/guides.md) for more features of dhtmlx
 Storing the Order of Tasks
 ------------------
 
-The client-side gantt allows reordering tasks using drag and drop. So if you use this feature, you'll have to store this order in the database. You can check the common description here.
+The client-side gantt allows reordering tasks using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+You can check the common [description here](desktop/server_side.md#storingtheorderoftasks).
 
 Let's now add this feature to our app.
 
@@ -453,27 +551,60 @@ gantt.init("gantt_here");
 
 ###Enable tasks reordering on the server
 
-Now, let's reflect these changes on the backend. We are going to store the order in the column named sortorder, the updated gantt_tasks table declaration may look following:
+Now, let's reflect these changes on the backend. We are going to store the order in the column named sortorder. A complete tasks schema may look following:
 
-~~~js
-CREATE TABLE `gantt_tasks` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `text` varchar(255) NOT NULL,
-  `start_date` datetime NOT NULL,
-  `duration` int(11) NOT NULL,
-  `progress` float NOT NULL,
-  `parent` int(11) NOT NULL,
-  `sortorder` int(11) NOT NULL, /*!*/
-  PRIMARY KEY (`id`)
-);
+~~~php
+Schema::create('tasks', function (Blueprint $table){
+	$table->increments('id');
+	$table->string('text');
+	$table->integer('duration');
+	$table->float('progress');
+	$table->dateTime('start_date');
+	$table->integer('parent');
+	$table->integer('sortorder')->default(0);
+	$table->timestamps();
+});
 ~~~
 
-Or add the column to the table you already have:
+Or you can add a migration to the schema we generated earlier:
 
 ~~~js
-ALTER TABLE `gantt_tasks` ADD COLUMN `sortorder` int(11) NOT NULL;
+php artisan make:migration add_sortorder_to_tasks_table --table=tasks
 ~~~
 
+Migration file:
+
+{{snippet database/migrations/_add_sortorder_to_tasks_table.php}}
+~~~php
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class AddSortorderToTasksTable extends Migration
+{
+	public function up()
+	{
+		Schema::table('tasks', function (Blueprint $table) {
+			$table->integer('sortorder')->default(0);
+		});
+	}
+
+	public function down()
+	{
+		Schema::table('tasks', function (Blueprint $table) {
+			$table->dropColumn('sortorder');
+		});
+	}
+}
+~~~
+
+And apply the migration:
+
+~~~
+php artisan migrate
+~~~
 After that we need to update CRUD defined in our controllers.
 
 1. <b>GET /data</b> must return tasks ordered by the `sortorder` column: 
