@@ -265,7 +265,7 @@ php artisan db:seed
 The data is managed via [Eloquent model](https://laravel.com/docs/5.4/eloquent) classes. We've already generated classes for tasks and links in the previous step.
 
 They are ready to use and does not require changes to work with gantt. What we can do, however, 
-is to add an **open** [attribute of the Task class](desktop/loading.html#specifyingdataproperties) to [JSON response](https://laravel.com/docs/5.4/eloquent-serialization#appending-values-to-json) -  it will make the project tree expanded when tasks are loaded to the client-side. 
+is to add an **open** [attribute of the Task class](desktop/loading.md#specifyingdataproperties) to [JSON response](https://laravel.com/docs/5.4/eloquent-serialization#appending-values-to-json) -  it will make the project tree expanded when tasks are loaded to the client-side. 
 Otherwise, all branches would be closed initially: 
 
 Task model:
