@@ -238,7 +238,7 @@ class TasksTableSeeder extends Seeder
 ~~~
 
 And call table seeders from **DatabaseSeeder.php**
-{{snippet database/seeds/TasksTableSeeder.php}}
+{{snippet database/seeds/DatabaseSeeder.php}}
 ~~~php
 <?php
 
