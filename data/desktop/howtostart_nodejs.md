@@ -9,8 +9,8 @@ If you use some other technology, check the list of available integration varian
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_ruby.md
 
-Our implementation of Gantt with Node.js will be based on REST API that will be used for communication with server. 
-Node.js has a set of ready-made solutions, so we won’t have to code everything from the very beginning.
+Our implementation of Gantt with Node.js will be based on REST API that will be used for communication with a server. 
+Node.js has a set of ready-made solutions, so we won't have to code everything from the very beginning.
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.
 
@@ -21,18 +21,19 @@ To begin with, we'll create a project folder and then add the required dependenc
 
 - [Express](http://expressjs.com/) - a tiny framework for Node.js
 - [body-parser](https://www.npmjs.com/package/body-parser) - a Node.js parsing tool
-- [date-format-lite](https://github.com/litejs/date-format-lite) - a small library that will help us to convert dates of Gantt entries into the proper format
-- [promise-mysql](https://www.npmjs.com/package/promise-mysql) - a Node.js package for working with MySQL using promises
-- [bluebird](https://www.npmjs.com/package/bluebird) - and a promise library itself.
 
-So, let's create a project folder and name it "dhx-gantt-node-mysql":
+
+So, let's create a project folder and name it "dhx-gantt-app":
 
 ~~~js
 mkdir dhx-gantt-app
 cd dhx-gantt-app
 ~~~
 
-After that create a file *package.json*. We'll specify the dependencies in it with the following command:
+
+###Adding the dependencies
+
+Now we will create the *package.json* file. We'll specify the dependencies in it with the following command:
 
 ~~~js
 npm init -y
@@ -48,10 +49,7 @@ When the file is ready, open it and put the above listed dependencies into it. T
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "date-format-lite": "^0.7.4",
-    "express": "^4.13.4",
-    "bluebird": "^3.5.0",
-    "promise-mysql": "^3.0.2"
+    "express": "^4.13.4"   
   },
   "devDependencies": {},
   "scripts": {
@@ -70,12 +68,23 @@ Finally, we need to install the added dependencies using the command below:
 npm install
 ~~~
 
-Step 2. Adding Gantt to the page
------------------------
+### Preparing the backend
 
-### Implementing a backend
+We'll follow a basic [express](https://expressjs.com/) setup: we'll have a single js file for our app backend (let's call it "server.js"),
+a folder for static files (named "public") and a single html page. 
 
-Now we need to create a backend for our page. 
+The whole project structure will be as follows:
+
+~~~html
+dhx-gantt-app
+├── node_modules
+├── server.js 
+├── package.json 
+└── public 
+    └── index.html 
+~~~
+
+
 Create a new file named <b>server.js</b> and add the following code into it:
 
 {{snippet server.js}}
@@ -83,8 +92,6 @@ Create a new file named <b>server.js</b> and add the following code into it:
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
-var Promise = require('bluebird');
-require("date-format-lite");
 
 var port = 1337;
 var app = express();
@@ -99,25 +106,20 @@ app.listen(port, function(){
 
 What we have done in this code:
 
-- specified the “public” folder as the root directory of an application
+- defined that static files will be served from the 'public' folder 
 - attached the application to 1337 port of the localhost
 
-Firstly, create a folder with the name "public". This folder will contain the dhtmlxGantt codebase and the main page of the application - *index.html*.
 
-### Creating a page
+On the next step we will create the "public" folder. This folder will contain the main page of our application - *index.html*.
 
-Let's add the *index.html* file into the *public* folder. Thus, the folder structure will be as follows:
+{{note
+This folder is also the right place to put js/css files of dhtmlxGantt. However, in this tutorial we're going to load gantt from CDN, so we'll only have an html page there.
+}}
 
-~~~js
-dhx-gantt-app
-├── node_modules
-├── server.js
-├── package.json
-└── public
-    └── index.html
-~~~
+Step 2. Adding Gantt to the Page
+-----------------------
 
-Now, open the *index.html* file and fill it with the following content:
+Let's create the *public* folder and add an *index.html* file into it. Then open the *index.html* file and fill it with the following content:
 
 {{snippet index.html}}
 ~~~html
@@ -158,7 +160,7 @@ Then open http://127.0.0.1:1337 in a browser. You should see a page with an empt
 Step 3. Preparing a Database
 ----------------------------
 
-The next step is to create a database. We'll make a simple database with two tables. 
+The next step is to create a database. We'll make a simple database with two tables for tasks and links:
 
 ~~~js
 CREATE TABLE `gantt_links` (
@@ -202,16 +204,40 @@ INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00',
 Check a detailed example [here](desktop/server_side.md#thedatabasesstructure).
 
 
-Step 4. Loading data
+Step 4. Loading Data
 --------------------------
 
 Now we need to implement data loading. 
 
-The client-side expects data in [JSON format](desktop/supported_data_formats.md#json). So, we'll create a route which will return such data.
+Since we use MySQL, we need to install necessary modules that we could use to access it. In this tutorial CRUD operations will be implented based on the promises approach.
+So, we will use [promise-mysql](https://www.npmjs.com/package/promise-mysql) - a Node.js package for working with MySQL using promises and 
+the [bluebird](https://www.npmjs.com/package/bluebird) promise library.
 
-Open the *server.js* file and add the code below into it:
+You can install them from the console:
+
+~~~js
+npm install bluebird --save
+npm install promise-mysql --save
+~~~
+
+You can choose any other appropriate modules. The code is fairly simple and you can implement the same logic using a different set of tools.
+
+The client side expects data in the [JSON format](desktop/supported_data_formats.md#json). So, we'll create a route which will return this kind of data.
+
+As you've probably mentioned, there is the "start_date" property in the data, which is kept as a date object. Therefore, it should be passed to the client in the 
+proper format. For this purpose, we will use another module - [date-format-lite](https://github.com/litejs/date-format-lite). 
+
+~~~js
+npm install date-format-lite --save
+~~~
+
+Now you should open the *server.js* file and add a code similar to this one:
+
 {{snippet server.js}}
 ~~~js
+var Promise = require('bluebird');
+require("date-format-lite");
+
 var mysql = require('promise-mysql');
 var db = mysql.createPool({
   host: 'localhost',
@@ -247,17 +273,19 @@ app.get("/data", function (req, res) {
 What we have done in this code:
 
 - opened MySql connection to our database 
-- on <b>GET /data</b> request we'll read data from tasks and links tables and format them so they could be parsed on the client. 
-Note that we also add the *open* property to ensure that the tasks tree will be initially expanded.
+- defined that on the <b>GET /data</b> request we'll read data from tasks and links tables and format them so they could be parsed on the client
+
+Note that we've also added the *open* property to ensure that the tasks tree will be initially expanded.
 
 Now, we can call this route from the client:
+
 {{snippet public/index.html}}
 ~~~js
-    gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
+gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
   
-    gantt.init("gantt_here");
+gantt.init("gantt_here");
 
-    gantt.load("/data");/*!*/
+gantt.load("/data");/*!*/
 ~~~
 
 Note that [xml_date](api/gantt_xml_date_config.md) config specifies the format of dates (<b>start_date</b> of the task) that comes from the server.
@@ -266,40 +294,42 @@ Let's run the application now by opening http://127.0.0.1:1337. The gantt will b
 
 <img src="desktop/load_data.png">
 
-Step 5. Saving changes
+Step 5. Saving Changes
 ---------------------
 
 The last thing that we should implement is data saving. 
 For this we need a code that will send updates happening on the client side back to the server.
 Go to *public/index.html* and add [gantt.dataProcessor](desktop/server_side.md#technique) to the page:
+
 {{snippet public/index.html}}
 ~~~js
-    gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
+gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
   
-    gantt.init("gantt_here");
+gantt.init("gantt_here");
 
-    gantt.load("/data");
+gantt.load("/data");
   
-    var dp = new gantt.dataProcessor("/data");/*!*/
-    dp.init(gantt);/*!*/
-    dp.setTransactionMode("REST");/*!*/
+var dp = new gantt.dataProcessor("/data");/*!*/
+dp.init(gantt);/*!*/
+dp.setTransactionMode("REST");/*!*/
 ~~~
 
 Let's go deeper and see what role it plays. 
 
 ###Requests and responses
 
-On each user action: adding, changing or removing a new task or link DataProcessor will react by sending an AJAX request to
+On each user action: adding, changing or removing a new task or link, DataProcessor will react by sending an AJAX request to
 the corresponding URL. The request will contain all the parameters necessary for saving changes in the database.
 
 Since DataProcessor is initialized in the REST mode, it will use different HTTP verbs for each type of operation. 
 The list of HTTP verbs together with request and response details is given in the desktop/server_side.md#technique article.
 
-Well, what we need to do now is to add the required routes and handlers that will put the changes into the database into the *server.js* file.
+Well, what we need to do now is to add the required routes and handlers, that will put changes made on the client to the database, into the *server.js* file.
 The resulting code will be rather spacious:
+
 {{snippet server.js}}
 ~~~js
-// add new task
+// add a new task
 app.post("/data/task", function (req, res) { 
   var task = getTask(req.body);  
 
@@ -314,7 +344,7 @@ app.post("/data/task", function (req, res) {
   });
 });
 
-// update task
+// update a task
 app.put("/data/task/:id", function (req, res) {
   var sid = req.params.id,
     task = getTask(req.body);
@@ -330,7 +360,7 @@ app.put("/data/task/:id", function (req, res) {
   });
 });
 
-// delete task
+// delete a task
 app.delete("/data/task/:id", function (req, res) {
   var sid = req.params.id;
   db.query("DELETE FROM gantt_tasks WHERE id = ?", [sid])
@@ -342,7 +372,7 @@ app.delete("/data/task/:id", function (req, res) {
   });
 });
 
-// add link
+// add a link
 app.post("/data/link", function (req, res) {
   var link = getLink(req.body);
 
@@ -356,7 +386,7 @@ app.post("/data/link", function (req, res) {
   });
 });
 
-// update link
+// update a link
 app.put("/data/link/:id", function (req, res) {
   var sid = req.params.id,
     link = getLink(req.body);
@@ -371,7 +401,7 @@ app.put("/data/link/:id", function (req, res) {
   });
 });
 
-// delete link
+// delete a link
 app.delete("/data/link/:id", function (req, res) {
   var sid = req.params.id;
   db.query("DELETE FROM gantt_links WHERE id = ?", 
@@ -418,8 +448,9 @@ function sendResponse(res, action, tid, error) {
 }
 ~~~
 
-We have created two sets of routes: one for the *tasks* entity and one for the *links* one. Correspondingly, the *“/data/task”* URL will serve for requests related 
-to the operations with tasks and the *“/data/link”* URL will be used to handle requests containing data for operations with links.
+We have created two sets of routes: one for the *tasks* entity and another one for the *links* one. 
+Correspondingly, the *"/data/task"* URL will serve for requests related 
+to the operations with tasks and the *"/data/link"* URL will be used to handle requests containing data for operations with links.
 
 The requests types are pretty simple:
 
@@ -440,13 +471,14 @@ That's all. Open http://127.0.0.1:1337 and you will see a fully operational gant
 Storing the Order of Tasks
 ---------------------
 
-The client-side gantt allows [reordering tasks](desktop/reodering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. You can check the common description here.
+The client-side gantt allows [reordering tasks](desktop/reodering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. You can [check the common description here](desktop/server_side.md#storingtheorderoftasks).
 
 Let's now add this feature to our app.
 
 ###Enable tasks reordering on the client
 
-Firstly, we need to allow users to change task order in the UI. Open Index view and update configuration of gantt:
+Firstly, we need to allow users to change the tasks order in the UI. Open the "Index" view and update the configuration of gantt:
+
 {{snippet public/index.html}}
 ~~~js
 gantt.config.order_branch = true;/*!*/
@@ -455,7 +487,9 @@ gantt.config.order_branch_free = true;/*!*/
 gantt.init("gantt_here");
 ~~~
 
-Now, let's reflect these changes on the backend. We are going to store the order in the column named sortorder, the updated *gantt_tasks* table declaration may look following:
+Now, let's reflect these changes on the backend. We are going to store the order in the column named "sortorder", 
+the updated *gantt_tasks* table declaration may look as follows:
+
 ~~~js
 CREATE TABLE `gantt_tasks` (
   `id` int(11) NOT NULL  AUTO_INCREMENT PRIMARY KEY,
@@ -469,13 +503,15 @@ CREATE TABLE `gantt_tasks` (
 ~~~
 
 Or add the column to the table you already have:
+
 ~~~js
 ALTER TABLE `gantt_tasks` ADD COLUMN `sortorder` int(11) NOT NULL;
 ~~~
 
-After then, need to update server.js 
+After that we need to update the *server.js* file: 
 
-1. <b>GET /data</b> must return tasks ordered by the `sortorder` column: 
+1 . <b>GET /data</b> must return tasks ordered by the `sortorder` column: 
+
 {{snippet server.js}}
 ~~~js
 app.get("/data", function (req, res) {
@@ -504,7 +540,8 @@ app.get("/data", function (req, res) {
 ~~~
 
 
-2. Newly added tasks must receive the initial `sortorder` value: 
+2 . Newly added tasks must receive the initial value `sortorder`: 
+
 {{snippet server.js}}
 ~~~js
 app.post("/data/task", function (req, res) { // adds new task to database
@@ -529,7 +566,8 @@ app.post("/data/task", function (req, res) { // adds new task to database
 });
 ~~~
 
-3. Finally, when user reorders tasks, task orders must be [updated](desktop/server_side.md#storingtheorderoftasks):
+3 . Finally, when a user reorders tasks, task orders must be [updated](desktop/server_side.md#storingtheorderoftasks):
+
 {{snippet server.js}}
 ~~~js
 // update task
@@ -583,4 +621,4 @@ function updateOrder(taskId, target){
 You can check [a ready demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.
 
 @todo:
-  check, update images, update github link
+  checked and updated, update images, update github link

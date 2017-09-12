@@ -12,11 +12,9 @@ gantt.attachEvent("onOptionsLoad", function (){
 
 @template:	api_event
 @descr: 
-The event when api/gantt_updatecollection.md is called or when [JSON with additional info is parsed](desktop/supported_data_formats.md#jsonwithcollections).
+The event fires when api/gantt_updatecollection.md is called or when [JSON with additional info](desktop/supported_data_formats.md#jsonwithcollections) is parsed.
 
 @relatedapi
 	api/gantt_serverlist.md
 	api/gantt_updatecollection.md
 
-@todo:
-	check

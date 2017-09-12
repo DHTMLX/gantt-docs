@@ -12,11 +12,11 @@ gantt.templates.xml_format = function(date){
 @returns:
 - text		string		html text which will be rendered in the gantt
 @descr:
-This template is automatically generated from api/gantt_xml_date_config.md config and can be redefined after [initialization of gantt](api/gantt_init.md).
+This template is automatically generated from the api/gantt_xml_date_config.md config and can be redefined after the [initialization of gantt](api/gantt_init.md).
 
-A custom template function can be used if the server-side expects format that is not supported by [gantt date helper](api/gantt_date_other.md).
+A custom template function can be used, if the server side expects a format that is not supported by the [gantt date helper](api/gantt_date_other.md).
 
-For example, let's say server side expects **start_date** as a UNIX timestamp and the request parameters should look like this:
+For example, let's say the server side expects **start_date** as a UNIX timestamp and the request parameters should look like this:
 
 - **start_date**:1503608400
 - **duration**:4
@@ -25,10 +25,9 @@ For example, let's say server side expects **start_date** as a UNIX timestamp an
 - **end_date**:1503694800
 
 
-gantt configuration:
+You should set the Gantt configuration as follows:
 
 ~~~js
-
 gantt.attachEvent("onTemplatesReady", function(){
 	gantt.templates.xml_format = function(date){
 		return (date.valueOf() / 1000) + "";
@@ -54,4 +53,4 @@ dp.setTransactionMode("REST");
 	
 	
 @todo:
-	check
+	checked and updated

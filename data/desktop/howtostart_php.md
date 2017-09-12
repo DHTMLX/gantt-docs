@@ -21,19 +21,19 @@ Step 1. Initializing the Project
 
 We will make use of a [skeleton application](https://github.com/slimphp/Slim-Skeleton) for the Slim framework.
 
-Firstly, we need to import the project and install it. You can easily do it with the help of composer:
+Firstly, we need to import the project and install it. You can easily do it with the help of Composer:
 
 ~~~php
 php composer.phar create-project slim/slim-skeleton gantt-rest-php
 ~~~
 
-If you have composer installed globally, you can apply the following command:
+If you have Composer installed globally, you can apply the following command:
 
 ~~~php
 composer create-project slim/slim-skeleton gantt-rest-php`
 ~~~
 
-Then you should check if everything works fine. For this, go to the application folder and run web server:
+Then you should check if everything works fine. For this, go to the application folder and run a web server:
 
 ~~~php
 cd gantt-rest-php
@@ -42,11 +42,11 @@ php -S 0.0.0.0:8080 -t public public/index.php
 
 After that you can open [http://127.0.0.1:8080]() in a browser and you will see the default Slim page.
 
-Step 2. Adding Gantt to the page
+Step 2. Adding Gantt to the Page
 -----------------------
 
 Now we need to create a page with our gantt chart.
-Find a default page in <b>templates/index.phtml</b> - we want to place the gantt chart there and set up prerequisites for implementing data loading.
+Find a default page in <b>templates/index.phtml</b>. We want to place the gantt chart there and set up prerequisites to implement data loading.
 
 The full code looks as follows:
 
@@ -76,16 +76,18 @@ The full code looks as follows:
 </body>
 ~~~
 
-This code will add an empty gantt chart to the page. User will be able to create and modify tasks and links, but no changes will be stored after page reload.
+This code will add an empty gantt chart to the page. A user will be able to create and modify tasks and links, but no changes will be stored after the page reload.
 
-We can check it by launching the app again
+We can check it by launching the app again:
+
 {{snippet command line}}
 ~~~js
 php -S 0.0.0.0:8080 -t public public/index.php
 ~~~
-And open [http://127.0.0.1:8080/](http://127.0.0.1:8080/) in a browser and you will see that a gantt is rendered on the page.
 
-Step 3. Configuring a database
+Now open [http://127.0.0.1:8080/](http://127.0.0.1:8080/) in a browser and you will see that a gantt is rendered on the page.
+
+Step 3. Configuring a Database
 ---------------------
 
 The next step is to create a database. We'll make a simple database with two tables.
@@ -136,7 +138,7 @@ Step 4. Loading Data
 -------------------------------
 
 Now it's time to implement loading from the database. 
-On the client-side we'll request data using [gantt.load](api/gantt_load.md) method:
+On the client side we'll request data using the [gantt.load](api/gantt_load.md) method:
 
 {{snippet /templates/index.phtml}}
 ~~~js
@@ -147,12 +149,12 @@ gantt.load("/data");/*!*/
 ~~~
 
 This command will send an AJAX request to the specified URL, 
-the response is expected to contain Gantt data in [JSON format](desktop/supported_data_formats.md#json). 
+the response is expected to contain Gantt data in the [JSON format](desktop/supported_data_formats.md#json). 
 
-Also, note that we've specified [xml_date](api/gantt_xml_date_config.md) value. 
-This is how we tell gantt the format of dates data source will use, so the client-side could parse them.
+Also, note that we've specified the [xml_date](api/gantt_xml_date_config.md) value. 
+This is how we tell gantt what format of dates the data source will use, so the client side could parse them.
 
-Thus, we should add the necessary handler on a backend for such request.
+Thus, we should add a necessary handler for such a request on the backend.
 Open the *src/routes.php* file and add a new [route](https://www.slimframework.com/docs/objects/router.html#how-to-create-routes):
 
 {{snippet src/routes.php}}
@@ -168,9 +170,10 @@ $app->get('/', function ($request, $response, $args) {
 $app->get('/data',  'getGanttData');/*!*/
 ~~~
 
-After that, we need to implement *getGanttData*. In order not to pollute index.php we'll declare all gantt-related stuff in a separate file.
+After that, we need to implement the *getGanttData* logic. In order not to pollute *index.php*, we'll declare all gantt-related stuff in a separate file.
 
-Create a new file *src/gantt.php* and add the required code:
+Let's create a new file *src/gantt.php* and add the required code:
+
 {{snippet src/gantt.php}}
 ~~~php
 function getConnection()
@@ -202,11 +205,12 @@ function getGanttData($request, $response, $args) {
 ~~~
 
 And include *src/gantt.php* into *public/index.php*:
+
 {{snippet public/index.php}}
 ~~~php
 <?php
 if (PHP_SAPI == 'cli-server') {
-    // To help the built-in PHP dev server, check if the request was actually for
+    // To help the built-in PHP dev server check if the request was actually for
     // something which should probably be served as a static file
     $url  = parse_url($_SERVER['REQUEST_URI']);
     $file = __DIR__ . $url['path'];
@@ -239,21 +243,21 @@ require __DIR__ . '/../src/gantt.php'; /*!*/
 $app->run();
 ~~~
 
-Let's consider this code in detail:
+Let's consider the above described code in detail:
 
-- we defined a [route](https://www.slimframework.com/docs/objects/router.html) for our data action in *src/routes.php*
+- we have defined a [route](https://www.slimframework.com/docs/objects/router.html) for our data action in *src/routes.php*
 - in the handler for that route we read all tasks and links from the database and send them to the client as [JSON](desktop/supported_data_formats.md#json)
-- we also add the *open* property to the task objects. It will specify that the tasks tree will be open by default
+- we have also added the *open* property to the task objects. It will specify that the tasks tree will be open by default
 
 Thus, we have implemented data loading into Gantt.
 Open [http://127.0.0.1:8080/ ](http://127.0.0.1:8080/) and you will see that the gantt is now populated with the test data we added on the previous step.
 
 <img src="desktop/load_data.png">
 
-Step 5. Saving changes
+Step 5. Saving Changes
 -----------------------------------
 
-Our next step is to implement saving changes made on the client side to the server.
+Our next step is to implement saving of the changes made on the client side to the server.
 It is usually done using the [dataProcessor](desktop/server_side.md#technique) library, which is embedded into the gantt.
 Open *index.phtml* and add the following lines of code:
 {{snippet templates/index.phtml}}
@@ -269,9 +273,11 @@ dp.setTransactionMode("REST");/*!*/
 ~~~
 
 DataProcessor will react to each action on the client (i.e. adding data into the chart, modifying or removing it) by sending an AJAX request to the server.
-The dataProcessor will work in REST mode, which means it will use different HTTP methods for different actions, here is [a complete list of routes](desktop/server_side.md#requestresponsedetails)
+The dataProcessor will work in the REST mode, which means it will use different HTTP methods for different actions, here is 
+[a complete list of routes](desktop/server_side.md#requestresponsedetails).
 
-So now we need to add these routes to our app and implement a required logic. Firstly, go to *src/routes.php*:
+So now we need to add these routes to our app and implement the required logic. Firstly, go to *src/routes.php*:
+
 {{snippet src/routes.php}}
 ~~~php
 <?php
@@ -293,7 +299,7 @@ $app->put("/data/link/{id}", 'updateLink');
 $app->delete("/data/link/{id}", 'deleteLink');
 ~~~
 
-Routes are added, now we implement methods we've linked to them:
+Routes are added, now we will implement methods we've linked to them:
 
 {{snippet src/gantt.php}}
 ~~~php
@@ -345,7 +351,7 @@ function getLink($data){
   ];
 }
 
-// create new task
+// create a new task
 function addTask($request, $response, $args) {
   $task = getTask($request->getParsedBody());
   $db = getConnection();
@@ -359,7 +365,7 @@ function addTask($request, $response, $args) {
   ]);
 }
 
-// update task
+// update a task
 function updateTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $task = getTask($request->getParsedBody());
@@ -375,7 +381,7 @@ function updateTask($request, $response, $args) {
   ]);
 }
 
-// delete task
+// delete a task
 function deleteTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $db = getConnection();
@@ -387,7 +393,7 @@ function deleteTask($request, $response, $args) {
   ]);
 }
 
-// create new link
+// create a new link
 function addLlink($request, $response, $args) {
   $link = getLink($request->getParsedBody());
   $db = getConnection();
@@ -400,7 +406,7 @@ function addLlink($request, $response, $args) {
   ]);
 }
 
-// update link
+// update a link
 function updateLink($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $link = getLink($request->getParsedBody());
@@ -415,7 +421,7 @@ function updateLink($request, $response, $args) {
   ]);
 }
 
-// delete link
+// delete a link
 function deleteLink($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $db = getConnection();
@@ -428,27 +434,29 @@ function deleteLink($request, $response, $args) {
 }
 ~~~
 
-As you can see, while there is relatively a lot of code each method is plain simple - we create/update/delete tasks and links. The insert action should return a database id of a new item back to the client.
+As you can see, while there is relatively a lot of code, each method is plain simple: we create/update/delete tasks and links. 
+The insert action should return the database id of a new item back to the client.
 
-Note that we don't handle database relations here, i.e. we don't delete nested tasks or related links when tasks are deleted. It is handled by the client-side by default - gantt will send a separate request for each child task and link to be deleted.
+Note that we don't handle database relations here, i.e. we don't delete nested tasks or related links when tasks are deleted. 
+It is handled by the client side by default. Gantt will send a separate request for each child task and link to be deleted.
 
-If you want to handle it on a backend, you'll need to switch [cascade_delete config](api/gantt_cascade_delete_config.md).
+If you want to handle it on a backend, you'll need to switch the [cascade_delete](api/gantt_cascade_delete_config.md) config on.
 
-Now everything is ready. Let’s run our application, open 
-http://127.0.0.1:8080 and enjoy a nice Gantt chart we’ve just created.
+Now everything is ready. Let's run our application. Open http://127.0.0.1:8080 and enjoy a nice Gantt chart we've just created.
 
 <img src="desktop/ready_gantt.png">
 
 Storing the Order of Tasks
 ------------------
 
-The client-side gantt allows reordering tasks using drag and drop. So if you use this feature, you'll have to store this order in the database. You can check the common description here.
+The client-side gantt allows [reordering tasks](desktop/reodering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+You can [check the common description here](desktop/server_side.md#storingtheorderoftasks).
 
 Let's now add this feature to our app.
 
 ###Enable tasks reordering on the client
 
-Firstly, we need to allow users to change task order in the UI. Open Index view and update configuration of gantt:
+Firstly, we need to allow users to change task order in the UI. Open the *Index* view and update the configuration of gantt:
 
 {{snippet /templates/index.phtml}}
 ~~~js
@@ -458,7 +466,8 @@ gantt.config.order_branch_free = true;/*!*/
 gantt.init("gantt_here");
 ~~~
 
-Now, let's reflect these changes on the backend. We are going to store the order in the column named sortorder, the updated gantt_tasks table declaration may look following:
+Now, let's reflect these changes on the backend. We are going to store the order in the column named "sortorder". The updated *gantt_tasks* table declaration may look 
+as follows:
 
 ~~~js
 CREATE TABLE `gantt_tasks` (
@@ -472,7 +481,7 @@ CREATE TABLE `gantt_tasks` (
 );
 ~~~
 
-Or add the column to the table you already have:
+Or you can add the mentioned column to the table you already have:
 
 ~~~js
 ALTER TABLE `gantt_tasks` ADD COLUMN `sortorder` int(11) NOT NULL;
@@ -480,7 +489,7 @@ ALTER TABLE `gantt_tasks` ADD COLUMN `sortorder` int(11) NOT NULL;
 
 After that we need to update CRUD in *src/gantt.php*.
 
-1. <b>GET /data</b> must return tasks ordered by the `sortorder` column: 
+1 . <b>GET /data</b> must return tasks ordered by the `sortorder` column: 
    
 {{snippet src/gantt.php}}
 ~~~php
@@ -504,10 +513,12 @@ function getGanttData($request, $response, $args) {
 }
 
 ~~~
-2. Newly added tasks must receive the initial `sortorder` value: 
+
+2 . Newly added tasks must receive the initial value `sortorder`: 
+
 {{snippet src/gantt.php}}
 ~~~php
-// create new task
+// create a new task
 function addTask($request, $response, $args) {
   $task = getTask($request->getParsedBody());
   $db = getConnection();
@@ -533,10 +544,11 @@ function addTask($request, $response, $args) {
 }
 ~~~
 
-3. Finally, when user reorders tasks, task orders must be [updated](desktop/server_side.md#storingtheorderoftasks):
+3 . Finally, when a user reorders tasks, task orders must be [updated](desktop/server_side.md#storingtheorderoftasks):
+
 {{snippet src/gantt.php}}
 ~~~php
-// update task
+// update a task
 function updateTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $params = $request->getParsedBody();/*!*/
@@ -594,11 +606,11 @@ You can check [a ready demo](https://github.com/DHTMLX/gantt-node-mysql) on GitH
 
 Using dhtmlxConnector
 ---------------
-Alternatively, PHP backend can be also implemented using [dhtmlxConnector library](https://docs.dhtmlx.com/connector__php__index.html). 
+Alternatively, a PHP backend can also be implemented using the [dhtmlxConnector library](https://docs.dhtmlx.com/connector__php__index.html). 
 You can find a detailed tutorial [here](desktop/howtostart_connector.md) 
 
 @index: 
 - desktop/howtostart_connector.md
 
 @todo:
-  check text, update github link
+  checked and updated, code samples don't fit the page, update github link

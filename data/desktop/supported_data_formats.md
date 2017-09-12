@@ -1,11 +1,14 @@
-Exploring the Supported Data Formats
+Exploring Supported Data Formats
 =======================================
-dhtmlxGantt can load data of 2 formats which are:
 
-1. JSON;
-2. XML ( dhtmlxGantt 2.0+).
-3. XML ( dhtmlxGantt < 2.0)
+dhtmlxGantt can load data in the following formats:
 
+1. [JSON](desktop/supported_data_formats.md#json);
+2. [XML (dhtmlxGantt 2.0+)](desktop/supported_data_formats.md#xmldhtmlxgantt20).
+3. [JSON with Collections](desktop/supported_data_formats.md#jsonwithcollections)
+4. [XML (dhtmlxGantt < 2.0)](desktop/supported_data_formats.md#xmldhtmlxganttlt20)
+
+You can also [add any custom properties to the Gantt data](desktop/supported_data_formats.md#custompropertiesindata).
 
 
 JSON
@@ -29,7 +32,8 @@ JSON
   ]
 }
 ~~~
-XML ( dhtmlxGantt 2.0+)
+
+XML (dhtmlxGantt 2.0+)
 ---------------------------------
 
 ~~~xml
@@ -55,15 +59,16 @@ XML ( dhtmlxGantt 2.0+)
 </data>
 ~~~
 
-Adding custom properties to the data
+Custom Properties in Data
 -------------------------------
-Let's consider an example above with 2 custom  properties: 
+
+Let's consider the above examples with 2 custom properties: 
 
 - **priority** - the priority of the task.
 - **holder**  - the name of the person assigned to the task.
 
-
 ####JSON
+
 ~~~js
 {
 	data:[
@@ -83,7 +88,7 @@ Let's consider an example above with 2 custom  properties:
 }
 ~~~
 
-####XML ( dhtmlxGantt 2.0+)
+####XML (dhtmlxGantt 2.0+)
 
 ~~~xml
 <data>
@@ -119,7 +124,7 @@ Let's consider an example above with 2 custom  properties:
 JSON with Collections
 ------------------
 
-JSON data can contain any number of additional arrays in a "collection" property of the data object.
+JSON data can contain any number of additional arrays in the "collections" property of the *data* object.
 
 ~~~js
 {
@@ -147,9 +152,11 @@ JSON data can contain any number of additional arrays in a "collection" property
 }
 ~~~
 
-This collections can be accessed by their name using [gantt.serverList method](api/gantt_serverlist.md)
+The applied collections can be accessed by their names with the help of the [gantt.serverList](api/gantt_serverlist.md) method.
 
-##  XML ( dhtmlxGantt < 2.0)
+XML (dhtmlxGantt < 2.0)
+--------------------
+
 ~~~js
 <?xml version="1.0" encoding="UTF-8"?>
 <projects>

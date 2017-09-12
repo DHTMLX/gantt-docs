@@ -1,5 +1,6 @@
 Loading Data
 =======================================
+
 dhtmlxGantt can take data of 2 formats:
 
 
@@ -18,17 +19,17 @@ gantt.load("tasks.json");
 }}
 
 
-Specifying data properties
+Specifying Data Properties
 -------------------------
+
 A data source for the Gantt chart is an object that stores 2 types of information:
 
 - **tasks** - the items of tasks.
 - **links** - the items of dependency links.
 
-If you use a database, we recommend to have 2 separate tables to store data: one for tasks and one for links.  
+If you use a [database](desktop/loading.md#standarddatabasestructure), we recommend to have 2 separate tables to store data: one for tasks and one for links.  
 
 <h3 id="task_properties">Properties of a task object</h3>
-
 
 <ul>
 	<li><b><i>Mandatory properties</i></b></li>
@@ -40,7 +41,7 @@ If you use a database, we recommend to have 2 separate tables to store data: one
 	</ul>
 	<li><b><i>Optional properties</i></b></li>
 	<ul>
-    		<li><b>type</b> - (<i>string</i>) the task type. The available values are stored in the api/gantt_types_config.md object: </i></li>
+    		<li><b>type</b> - (<i>string</i>) the task type. The available values are stored in the api/gantt_types_config.md object:</li>
             <ul>
 				<li><a href="desktop/task_types.md#regulartasks">"task"</a> -  a regular task (<i>default value</i>).</li>
 				<li><a href="desktop/task_types.md#projecttasks">"project"</a> -  a task that starts, when its earliest child task starts, and ends, when its latest child ends. 
@@ -49,16 +50,21 @@ If you use a database, we recommend to have 2 separate tables to store data: one
 				<li><a href="desktop/task_types.md#milestones">"milestone"</a> -  a zero-duration task that is used to mark out important dates of the project.
                  <i>The <b>duration</b>, <b>progress</b>, <b>end_date</b> properties are ignored for such tasks. </i></li>
 			</ul>
-			<li><b>parent</b> - (<i> string, number </i>) the id of the parent task. The id of the root task is specified by the api/gantt_root_id_config.md config.</li>
-            <li><b>source</b> - (<i> array </i>) ids of links that comes out from the task.</li>
-			<li><b>target</b> -  (<i> array </i>) ids of links that comes into task.</li>
-            <li><b>level</b> - (<i> number </i>) the task's level in the tasks hierarchy (zero-based numbering).</li>
+			<li><b>parent</b> - (<i> string, number </i>) the id of the parent task. The id of the root task is specified by the api/gantt_root_id_config.md config.</li>            
 			<li><b>progress</b> -  (<i> number from 0 to 1 </i>) the task progress.</li>
 			<li><b>open</b> - (<i> boolean </i>) specifies whether the task branch will be opened initially (to show child tasks).</li>
-            <li><b>end_date</b> - (<i> string </i>) the date when a task is scheduled to be completed. Used as an alternative to the <b>duration</b> property for setting the duration of a task.</li>
-
+            <li><b>end_date</b> - (<i> string </i>) the date when a task is scheduled to be completed. Used as an alternative to the <b>duration</b> property for setting the duration of a task.</li>           
 	</ul>
+    <li><b><i>Dynamic properties</i></b></li>
+    <ul>
+    		<li><b>$source</b> - (<i> array </i>) ids of links that come out from the task.</li>
+			<li><b>$target</b> -  (<i> array </i>) ids of links that come into task.</li>
+            <li><b>$level</b> - (<i> number </i>) the task's level in the tasks hierarchy (zero-based numbering).</li>
+            <li><b>$open</b> - (<i> boolean </i>) specifies whether the task is currently opened.</li>
+            <li><b>$index</b> - (<i> number </i>) the order of the task in the tree.</li>
+    </ul>
 </ul>
+	
 
 
 The default date format for JSON and XML data is **"%d-%m-%Y"** (see the <a href="desktop/date_format.md"> date format specification</a>).<br>
@@ -93,10 +99,73 @@ Note, these values affect only how the dependency type is stored, not the behavi
 </ul>
 
 ###Custom properties
+
 You are not limited to the mandatory properties listed above and can add any custom ones to data items. 
 Extra data properties will be parsed as strings and loaded to the client side where you can use them according to your needs.
 
-See examples of data with custom properties <a href="desktop/supported_data_formats.md#addingcustompropertiestothedata">here</a>.
+See examples of data with custom properties <a href="desktop/supported_data_formats.md##custompropertiesindata">here</a>.
+
+
+Standard Database Structure
+------------------------------------------
+
+<img src="desktop/tutorial_db_tables.png"/>
+
+The structure of a standard database to load tasks and links to the Gantt chart is:
+
+<ul>
+	<li><b>gantt_tasks</b> table - specifies the gantt tasks</li>
+    <ul>
+    	<li><b>id</b> - (<i>string, number</i>) the event id.</li>
+        <li><b>start_date</b> - (<i>Date</i>) the date when a task is scheduled to begin.  </li>
+        <li><b>text</b> - (<i>string</i>) the task's description.</li>
+        <li><b>progress</b> - (<i>number</i>) a number from 0 to 1 that shows what percent of the task is complete. </li>
+        <li><b>duration</b> - (<i>number</i>) the task duration in the units of the current time scale. </li>
+        <li><b>parent</b> - (<i>number</i>) the id of the parent task. </li>
+        <li><b>type</b> - (<i>string</i>) optional, the <a href="desktop__task_types.html">type</a> of the task. </li>
+        <li><b>readonly</b>-(<i>boolean</i>) optional, can mark task as <a href="desktop__readonly_mode.html#readonlymodeforspecifictaskslinks">readonly</a>. </li>
+        <li><b>editable</b>-(<i>boolean</i>) optional, can mark task as <a href="desktop__readonly_mode.html#readonlymodeforspecifictaskslinks">editable</a>. </li>
+    </ul>
+	<li><b>gantt_links</b> table - specifies the gantt dependency links</li>
+    <ul>
+    	<li><b>id</b>-(<i>string, number</i>) the event id.</li>
+        <li><b>source</b>-(<i>number</i>) the id of the source task. </li>
+        <li><b>target</b>-(<i>number</i>) the id of the target task. </li>
+        <li><b>type</b>-(<i>string</i>) the type of the dependency:
+        	<ul>
+            	<li>0 - 'finish to start'</li>
+            	<li>1 - 'start to start'</li> 
+            	<li>2 - 'finish to finish'</li>
+            	<li>3 - 'start to finish'</li>
+            </ul> 
+        </li> 
+        <li><b>lag</b>-(<i>number</i>) optional, <a href="desktop__auto_scheduling.html#settinglagandleadtimesbetweentasks">task lag</a>. </li>
+        <li><b>readonly</b>-(<i>boolean</i>) optional, can mark link as <a href="desktop__readonly_mode.html">readonly</a>. </li>
+        <li><b>editable</b>-(<i>boolean</i>) optional, can mark link as <a href="desktop__readonly_mode.html">editable</a>. </li>
+    </ul>
+</ul> 
+
+Use the following SQL statement to create a database with 2 mentioned tables:
+
+~~~js
+CREATE TABLE `gantt_links` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `source` int(11) NOT NULL,
+  `target` int(11) NOT NULL,
+  `type` varchar(1) NOT NULL,
+  PRIMARY KEY (`id`)
+)
+CREATE TABLE `gantt_tasks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` varchar(255) NOT NULL,
+  `start_date` datetime NOT NULL,
+  `duration` int(11) NOT NULL,
+  `progress` float NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `parent` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+)
+~~~
 
 Loading task dates
 ---------------------

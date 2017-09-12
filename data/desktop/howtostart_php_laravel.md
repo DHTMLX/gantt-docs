@@ -1,7 +1,7 @@
 dhtmlxGantt with PHP: Laravel 
 =====================
 
-In this tutorial we'll show you how to add dhtmlxGantt into [Laravel](https://laravel.com/) app.
+In this tutorial we'll show you how to add dhtmlxGantt into a [Laravel](https://laravel.com/) app.
 
 There are tutorials intended for building server-side integration with the help of other platforms:
 
@@ -17,7 +17,7 @@ Step 1. Initializing the Project
 
 ###Creating a project
 
-Create a new application using [composer](https://getcomposer.org/):
+Create a new application using [Composer](https://getcomposer.org/):
 
 ~~~php
 composer create-project laravel/laravel gantt-laravel-app
@@ -25,20 +25,22 @@ composer create-project laravel/laravel gantt-laravel-app
 
 It should take a minute to download and create all necessary files. 
 Once everything is done, you can check that everything is correct so far:
+
 ~~~php
 cd gantt-laravel-app
 php artisan serve
 ~~~
 
-At this step you should get a default laravel page:
+At this step you should get a default Laravel page:
+
 <img src="desktop/how_to_start_laravel_blank_page.png"/>
 
-Step 2. Adding Gantt to the page
+Step 2. Adding Gantt to the Page
 -----------------------
 
 ### Adding a View
 
-Firstly we'll add a new page with dhtmlxGantt to our app.
+Firstly, we'll add a new page with dhtmlxGantt to our app.
 Go to the *resources/views* folder and create a new view named *gantt.blade.php*:
 
 {{snippet resources/views/gantt.blade.php }}
@@ -67,13 +69,13 @@ Go to the *resources/views* folder and create a new view named *gantt.blade.php*
 </body>
 ~~~
 
-Here we've defined a simple html layout, added sources of dhtmlxGantt from [CDN](desktop/cdn_links_list.md) and initialized gantt using api/gantt_init.md method.
+Here we've defined a simple HTML layout, added sources of dhtmlxGantt from [CDN](desktop/cdn_links_list.md) and initialized gantt using api/gantt_init.md method.
 
-Note that we've also specified **100% height** for the document body and for the gantt container. Gantt will use the size of its container, thus some initial sizes are required.
+Note that we've also specified **100% height** for the document body and for the gantt container. Gantt will use the size of its container, so some initial sizes are required.
 
-### Changing a default route
+### Changing the default route
 
-After we added a new page we have to make it accessible from the browser. For this tutorial, we'll make our gantt a default page of an app.
+After we've added a new page, we need to make it accessible from a browser. For this tutorial, we'll make our gantt the default page of an app.
 
 Go to *routes/web.php* and change the default route:
 
@@ -87,14 +89,13 @@ Route::get('/', function () {
 ~~~
 
 Run the app again to make sure it did the trick:
+
 <img src="desktop/how_to_start_laravel_empty_gantt.png"/>
 
 Step 3. Creating Models and Migrations
 ---------------------
 
-So, we've got ourselves an empty gantt chart.
-
-Let's connect it to the database and populate it with data.
+So, we've got an empty gantt chart. Let's connect it to the database and populate it with data.
 
 ### Creating a database
 
@@ -111,8 +112,8 @@ DB_PASSWORD=
 ~~~
 
 
-The next step is to create [model classes](https://laravel.com/docs/5.4/eloquent#defining-models) and [migrations](https://laravel.com/docs/5.5/migrations#generating-migrations).
-You can generate classes and migration files using Artisan command:
+The next step is to create [model classes](https://laravel.com/docs/5.4/eloquent#defining-models) and
+[migrations](https://laravel.com/docs/5.5/migrations#generating-migrations). You can generate classes and migration files using the Artisan command:
 
 ~~~js
 php artisan make:model Task --migration
@@ -124,10 +125,10 @@ and
 php artisan make:model Link --migration
 ~~~
 
-After that find the migrations in `database/migrations` folder and define a [database schema](https://laravel.com/docs/5.5/migrations#migration-structure). 
-You can find database schema expected by gantt [here](desktop/server_side.md#thedatabasesstructure).
+After that find the migrations in the `database/migrations` folder and define a [database schema](https://laravel.com/docs/5.5/migrations#migration-structure). 
+You can find the database schema expected by the gantt [here](desktop/server_side.md#thedatabasesstructure).
 
-Tasks table:
+The code for the Tasks table looks like this:
 
 {{snippet database/migrations/_create_tasks_table.php}}
 ~~~php
@@ -159,7 +160,7 @@ class CreateTasksTable extends Migration
 }
 ~~~
 
-Links table:
+Below you will find the code for the Links table:
 
 {{snippet database/migrations/_create_links_table.php}}
 ~~~php
@@ -196,7 +197,7 @@ php artisan migrate
 ~~~
 
 While we're at it, we can generate some test data for our app. 
-Generate a [seeder](https://laravel.com/docs/5.5/seeding) class using artisan command:
+Generate a [seeder](https://laravel.com/docs/5.5/seeding) class using the artisan command:
 
 ~~~php
 php artisan make:seeder TasksTableSeeder
@@ -237,7 +238,8 @@ class TasksTableSeeder extends Seeder
 }
 ~~~
 
-And call table seeders from **DatabaseSeeder.php**
+And call table seeders from **DatabaseSeeder.php**:
+
 {{snippet database/seeds/DatabaseSeeder.php}}
 ~~~php
 <?php
@@ -254,7 +256,7 @@ class DatabaseSeeder extends Seeder
 }
 ~~~
 
-After that we can seed our database from a command line:
+After that we can seed our database from the command line:
 
 ~~~php
 php artisan db:seed
@@ -262,13 +264,14 @@ php artisan db:seed
 
 ### Defining model classes
 
-The data is managed via [Eloquent model](https://laravel.com/docs/5.4/eloquent) classes. We've already generated classes for tasks and links in the previous step.
+The data is managed via the [Eloquent model](https://laravel.com/docs/5.4/eloquent) classes. We've already generated classes for tasks and links in the previous step.
+They are ready to use and don't require any changes to work with gantt. 
 
-They are ready to use and does not require changes to work with gantt. What we can do, however, 
-is to add an **open** [attribute of the Task class](desktop/loading.md#specifyingdataproperties) to [JSON response](https://laravel.com/docs/5.4/eloquent-serialization#appending-values-to-json) -  it will make the project tree expanded when tasks are loaded to the client-side. 
+What we can do, however, is to add an **open** [attribute of the Task class](desktop/loading.md#specifyingdataproperties) to 
+[JSON response](https://laravel.com/docs/5.4/eloquent-serialization#appending-values-to-json). It will make the project tree expanded when tasks are loaded to the client side. 
 Otherwise, all branches would be closed initially: 
 
-Task model:
+The Task model will look as in:
 
 {{snippet /app/Task.php }}
 ~~~php
@@ -288,7 +291,7 @@ class Task extends Model
 }
 ~~~
 
-And a Link model doesn't need any changes:
+And the Link model doesn't need any changes:
 
 {{snippet /app/Link.php }}
 ~~~php
@@ -306,8 +309,8 @@ class Link extends Model
 Step 4. Loading Data
 -------------------
 
-Once the database is created and models are defined we can load data into our gantt. 
-Client-side requires date of the following format desktop/supported_data_formats.md#json, so let's create a controller with an action that produces such JSON:
+Once the database is created and the models are defined, we can load data into our gantt. 
+The client side requires dates of [the following format](desktop/supported_data_formats.md#json), so let's create a controller with an action that produces such JSON:
 
 {{snippet app/Http/Controllers/GanttController.php}}
 ~~~php
@@ -330,7 +333,7 @@ class GanttController extends Controller
 }
 ~~~
 
-And register a route so the client could call this action. Note that we'll add route to [api.php routes file](https://laravel.com/docs/5.4/routing#basic-routing):
+And register a route, so the client could call this action. Note that we'll add the route to the [api.php routes file](https://laravel.com/docs/5.4/routing#basic-routing):
 
 {{snippet routes/api.php}}
 ~~~php
@@ -345,35 +348,38 @@ And finally, call this action from the view:
 
 {{snippet resources/views/gantt.blade.php }}
 ~~~js
-    gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
+gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
 
-    gantt.init("gantt_here");
+gantt.init("gantt_here");
 
-    gantt.load("/api/data");/*!*/
+gantt.load("/api/data");/*!*/
 ~~~
 
-[gantt.load](api/gantt_load.md) sends an AJAX request to the specified URL and will expect a [JSON response](desktop/supported_data_formats.md#json) as we defined before.
+[gantt.load](api/gantt_load.md) sends an AJAX request to the specified URL and will expect a [JSON response](desktop/supported_data_formats.md#json) as we've defined before.
 
-Also, note that we've specified [xml_date](api/gantt_xml_date_config.md) value. 
-This is how we tell gantt the format of dates data source will use, so the client-side could parse them. 
+Also, note that we've specified the [xml_date](api/gantt_xml_date_config.md) value. 
+This is how we tell the gantt which format of dates the data source will use, so the client side could parse them. 
 
-If you check the app now, you should see that there are now tasks in our gantt chart
+If you check the app now, you should see that there are now tasks in our gantt chart:
 
 <img src="desktop/how_to_start_laravel_complete.png"/>
 
-Step 5. Saving changes
+Step 5. Saving Changes
 -----------------------------------
 
-Our gantt can read data from a backend, now let's make it write changes back to the database.
+For now, our gantt can read data from the backend. Let's make it write changes back to the database.
 
-The client-side will work in REST mode, meaning it will send POST/PUT/DELETE requests for tasks and links actions. 
-You can find a format of requests and all routes gantt will use [here](desktop/server_side.md#requestresponsedetails). 
+The client side will work in the REST mode, meaning it will send POST/PUT/DELETE requests for tasks and links actions. 
+You can find the format of requests and all the routes the gantt will use [here](desktop/server_side.md#requestresponsedetails). 
 
-What we need now is to define controllers that handle actions on both models, create routes for them and enable data saving on the client-side.
+What we need now is to define controllers that handle actions on both models, create routes for them and enable data saving on the client side.
 
-Let's start with controllers, we'll create one [RESTful resource controller](http://laravel.com/docs/4.2/controllers#restful-resource-controllers) for each model with methods for adding/deleting and updating the model. 
+###Adding controllers
 
-Controller for tasks:
+Let's start with controllers. We'll create one [RESTful resource controller](http://laravel.com/docs/4.2/controllers#restful-resource-controllers) 
+for each model. It will contain methods for adding/deleting and updating the model. 
+
+####Controller for tasks
 
 {{snippet app/Http/Controllers/TaskControllers}}
 ~~~php
@@ -430,21 +436,23 @@ class TaskController extends Controller
 }
 ~~~
 
-And a [route](http://laravel.com/docs/4.2/controllers#restful-resource-controllers) 
+And a [route](http://laravel.com/docs/4.2/controllers#restful-resource-controllers) for it:
 
 {{snippet routes/api.php}}
 ~~~php
 Route::resource('task', 'TaskController');
 ~~~
 
-Couple of notes regarding this code:
+A couple of notes regarding this code:
 
-- When a new task is inserted we return it's id back to the client in **tid** property of the response object
+- When a new task is inserted, we return it's id back to the client in the **tid** property of the response object
 - We assign a default value to the **progress** parameter. 
-Many request parameters are optional, which means if the client-side task doesn't have them assigned they won't be sent to the server action.
-- The response json can have any number of additional properties, they all can be accessed from the [client-side handler](desktop/server_side.md#errorhandling)
+Many request parameters are optional, which means that if a client-side task doesn't have them assigned, they won't be sent to the server action.
+- The response JSON can have any number of additional properties, they all can be accessed from the [client-side handler](desktop/server_side.md#errorhandling)
 
-Now let's implement the same for a LinkController
+Now let's implement the same for a LinkController.
+
+####Controller for links
 
 {{snippet app/Http/Controllers/LinkControllers}}
 ~~~php
@@ -496,7 +504,7 @@ class LinkController extends Controller
 }
 ~~~
 
-And routes:
+And its routes:
 
 {{snippet routes/api.php}}
 ~~~php
@@ -509,22 +517,25 @@ Route::resource('task', 'TaskController');
 Route::resource('link', 'LinkController'); /*!*/
 ~~~
 
-And finally, [configure client side](desktop/server_side.md#technique) to utilise the api we've just implemented:
+###Enabling data saving on the client side
+
+Finally, we will [configure the client side](desktop/server_side.md#technique) to utilize the API we've just implemented:
 
 {{snippet resources/views/gantt.blade.php }}
 ~~~js
-    gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
+gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
     
-    gantt.init("gantt_here");
+gantt.init("gantt_here");
     
-    gantt.load("/api/data");
+gantt.load("/api/data");
     
-    var dp = new gantt.dataProcessor("/api");/*!*/
-    dp.init(gantt);/*!*/
-    dp.setTransactionMode("REST");/*!*/
+var dp = new gantt.dataProcessor("/api");/*!*/
+dp.init(gantt);/*!*/
+dp.setTransactionMode("REST");/*!*/
 ~~~
 
 Now you have a fully interactive Gantt chart with the ability to view, add, update and delete tasks and links.
+
 <img src="desktop/how_to_start_laravel_crud.png"/>
 
 Please check more of [our guides](desktop/guides.md) for more features of dhtmlxGantt.
@@ -532,14 +543,14 @@ Please check more of [our guides](desktop/guides.md) for more features of dhtmlx
 Storing the Order of Tasks
 ------------------
 
-The client-side gantt allows reordering tasks using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+The client-side gantt allows [reordering tasks](desktop/reodering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
 You can check the common [description here](desktop/server_side.md#storingtheorderoftasks).
 
 Let's now add this feature to our app.
 
 ###Enable tasks reordering on the client
 
-Firstly, we need to allow users to change task order in the UI. Open Index view and update configuration of gantt:
+Firstly, we need to allow users to change task order in the UI. Open the *Index* view and update the configuration of gantt:
 
 {{snippet resources/views/gantt.blade.php }}
 ~~~js
@@ -551,7 +562,7 @@ gantt.init("gantt_here");
 
 ###Enable tasks reordering on the server
 
-Now, let's reflect these changes on the backend. We are going to store the order in the column named sortorder. A complete tasks schema may look following:
+Now, let's reflect these changes on the backend. We are going to store the order in the column named "sortorder"." A complete tasks' schema may look as follows:
 
 ~~~php
 Schema::create('tasks', function (Blueprint $table){
@@ -566,13 +577,13 @@ Schema::create('tasks', function (Blueprint $table){
 });
 ~~~
 
-Or you can add a migration to the schema we generated earlier:
+Or you can add a migration to the schema we've generated earlier:
 
 ~~~js
 php artisan make:migration add_sortorder_to_tasks_table --table=tasks
 ~~~
 
-Migration file:
+The code of the Migration file is:
 
 {{snippet database/migrations/_add_sortorder_to_tasks_table.php}}
 ~~~php
@@ -605,9 +616,10 @@ And apply the migration:
 ~~~
 php artisan migrate
 ~~~
+
 After that we need to update CRUD defined in our controllers.
 
-1. <b>GET /data</b> must return tasks ordered by the `sortorder` column: 
+1 . <b>GET /data</b> must return tasks ordered by the `sortorder` column: 
    
 {{snippet app/Http/Controllers/GanttController.php}}
 ~~~php
@@ -629,7 +641,7 @@ class GanttController extends Controller
 	}
 }
 ~~~
-2. Newly added tasks must receive an initial `sortorder` value: 
+2 . Newly added tasks must receive the initial value `sortorder`: 
 
 {{snippet app/Http/Controllers/TaskController.php}}
 ~~~php
@@ -652,7 +664,7 @@ public function store(Request $request){
 }
 ~~~
 
-3. Finally, when user reorders tasks, task orders must be [updated](desktop/server_side.md#storingtheorderoftasks):
+3 . Finally, when a user reorders tasks, task orders must be [updated](desktop/server_side.md#storingtheorderoftasks):
 
 {{snippet app/Http/Controllers/TaskController.php}}
 ~~~php
@@ -703,4 +715,5 @@ private function updateOrder($taskId, $target){
 
 
 @todo:
-	add descriptions, add link to repo, recheck. redo db with seeders/migrations https://laravel.com/docs/5.0/schema https://laravel.com/docs/5.0/migrations
+	current texts checked. add descriptions, add link to repo, recheck. <br>
+    redo db with seeders/migrations https://laravel.com/docs/5.0/schema https://laravel.com/docs/5.0/migrations

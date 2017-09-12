@@ -1,8 +1,8 @@
 dhtmlxGantt with Ruby on Rails 
 =========================
 
-In this article we'll show you how to create a Gantt chart with [Ruby on Rails](http://rubyonrails.org/) backend.
-For implementing this app we'll be using Ruby 2.4.1, Rails 5.1.3 and MySQL. This tutorial assumes that you have all prerequisites already installed. 
+In this article we'll show you how to create a Gantt chart with a [Ruby on Rails](http://rubyonrails.org/) backend.
+For implementing this app we'll use Ruby 2.4.1, Rails 5.1.3 and MySQL. This tutorial assumes that you have all prerequisites already installed. 
 Otherwise please visit [the official tutorials](http://guides.rubyonrails.org/index.html) first. 
 
 If you use some other technology, check the list of available integration variants below:
@@ -22,11 +22,12 @@ rails new gantt-app -d mysql
 ~~~
 
 
-Step 2. Adding Gantt to the page
+Step 2. Adding Gantt to the Page
 -----------------------------------------
 
 Let's start with creating a controller and a default page for our application.
-Move to the application folder and generate a new controller with *index* action:
+Move to the application folder and generate a new controller with the *index* action:
+
 ~~~js
 cd gantt-app
 rails generate controller gantt index
@@ -37,6 +38,7 @@ The output should confirm that new files were created.
 ###Setting a default route
 
 To configure the routing, open the file *config/routes.rb*. Change the default route to the "index" action of our new controller:
+
 {{snippet config/routes.rb}}
 ~~~js
 Rails.application.routes.draw do
@@ -60,7 +62,8 @@ So the app is working and we've got our default page, now we can proceed to addi
 
 Now we are ready to add a gantt chart to our page. 
 
-Open the layout page and add a yield into the *head* tag, well use it to add dhtmlxgantt files to the page:
+Open the layout page and add a yield into the *head* tag. We'll use it to add dhtmlxgantt files to the page:
+
 {{snippet app/views/layouts/application.html.erb}}
 ~~~html
 <!DOCTYPE html>
@@ -80,7 +83,8 @@ Open the layout page and add a yield into the *head* tag, well use it to add dht
 </html>
 ~~~
 
-After that, go to gantt/index view and add gantt chart there:
+After that, go to the *gantt/index* view and add a gantt chart there:
+
 {{snippet app/views/gantt/index.html.erb}}
 ~~~js
 <% content_for :head do %>
@@ -95,7 +99,7 @@ After that, go to gantt/index view and add gantt chart there:
 </script>
 ~~~
 
-Note that we added dhtmlx gantt files from [CDN](desktop/cdn_links_list.md) rather than locally. 
+Note that we've added dhtmlx gantt files from [CDN](desktop/cdn_links_list.md) rather than locally. 
 For the development you'll want to use a readable version of source codes that comes with the download package.
 
 After that we can have a look at the current result. Open *http://localhost:3000/* (the rails server) in a browser.
@@ -109,7 +113,8 @@ To provide it, we need to proceed with creating models.
 Step 2. Creating Models
 --------------
 
-Since we're using mysql, make sure that you have a correct connection settings in *config/database.yml*, for example:
+Since we're using MySQL, make sure that you have correct connection settings in *config/database.yml*, for example:
+
 {{snippet config/database.yml}}
 ~~~js
 development:
@@ -143,9 +148,11 @@ rails generate model Link \
     link_type:string:limit1
 ~~~
 
-Note, that dhtmlxgantt link object must have a property named <b>[type](desktop/server_side.md#databasesstructure)</b> 
-which stores a type of the relation (start-to-start, finish-to-finish, etc.).
-We can't add such property to our model since the "<b>type</b>" name is already reserved by ActiveRecord. As a workaround, we'll name this property <b>link_type</b> and will do the required mapping in the controller. 
+Note that dhtmlxgantt link object must have a property named <b>[type](desktop/server_side.md#databasesstructure)</b>, 
+which stores the type of the relation (start-to-start, finish-to-finish, etc.).
+
+We can't add such a property to our model, since the "<b>type</b>" name is already reserved by ActiveRecord. 
+As a workaround, we'll name this property <b>link_type</b> and will do the required mapping in the controller. 
 
 You can have a look at the full list of properties, both mandatory and optional, available for the [Task object](desktop/loading.md#task_properties) and 
 [Link object](desktop/loading.md#link_properties).
@@ -171,16 +178,19 @@ Task.create :text=>"Task 1", :start_date=>"2015-10-25",  :duration=>2, :progress
 Task.create :text=>"Task 2", :start_date=>"2015-10-27",  :duration=>3, :progress=>0.5;
 Link.create :source=>1, :target=>2, :link_type=>"0";
 ~~~
+
 3 . Enter "exit" to close the console.
 
-Next we need implement data loading and saving in the chart with the help of controllers.
+Next we need to implement data loading and saving in the chart with the help of controllers.
 
 Step 3. Loading Data
 -------------------
 
-After we created model classes and did the migration we can load the database data into our gantt. 
+After we've created model classes and run the migration, we can load the database data into our gantt. 
 
-dhtmlxGantt expects data in [JSON format](desktop/supported_data_formats.md), so firstly we'll add a new action to our *GanttController* where we'll read, format and output gantt data:
+dhtmlxGantt expects data in the [JSON format](desktop/supported_data_formats.md), so firstly we'll add a new action to our *GanttController* where we'll read, 
+format and output gantt data:
+
 
 {{snippet app/controllers/gantt_controller.rb}}
 ~~~js
@@ -214,6 +224,7 @@ end
 ~~~
 
 Add a route for this action into *routes.rb*:
+
 {{snippet config/routes.rb}}
 ~~~js
 Rails.application.routes.draw do
@@ -225,7 +236,8 @@ Rails.application.routes.draw do
 end
 ~~~
 
-And call this action from the client-side using [gantt.load](api/gantt_load.md) method:
+And call this action from the client side using the [gantt.load](api/gantt_load.md) method:
+
 {{snippet app/views/gantt/index.html.erb}}
 ~~~js
 gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
@@ -233,18 +245,23 @@ gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
 gantt.init("gantt_here");
 gantt.load("/api/data");/*!*/
 ~~~
-Note that [xml_date](api/gantt_xml_date_config.md) config specifies the [format of dates](http://api.rubyonrails.org/v5.1/classes/DateTime.html#method-i-to_formatted_s) (<b>start_date</b> of Task) that comes from the server.
 
-If you run the server now and open *http://localhost:3000/* in your browser, you should be able to see gantt chart populated with tasks and links from the database.
+Note that [xml_date](api/gantt_xml_date_config.md) config specifies the [format of dates](http://api.rubyonrails.org/v5.1/classes/DateTime.html#method-i-to_formatted_s) 
+(<b>start_date</b> of Task) that comes from the server.
+
+If you run the server now and open *http://localhost:3000/* in your browser, you should be able to see a gantt chart populated with tasks and links from the database.
 No changes would be posted back to the database, however. We're going to fix it in the next step.
 
-Step 4. Saving changes
+Step 4. Saving Changes
 --------------------
 
-dhtmlxGantt can transmit all changes made by the user to the RESTful API on a backend, where everything can be saved to the database. You can check the protocol details [here](desktop/server_side.md#technique). 
-That's the way we're going to implement data saving now.
+dhtmlxGantt can transmit all changes made by the user to the RESTful API on a backend, where everything can be saved to the database. 
+You can check the protocol details [here](desktop/server_side.md#technique). 
 
-Firstly, we want enable posting changes on the client:
+That's the way we're going to implement data saving now:
+
+Firstly, we will enable posting changes on the client:
+
 {{snippet app/views/gantt/index.html.erb}}
 ~~~js
 gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
@@ -257,14 +274,20 @@ dp.init(gantt);/*!*/
 dp.setTransactionMode("REST");/*!*/
 ~~~
 
-Then, we need to add two controllers, one for Tasks and one for Links and implement all required actions.
+Then, we need to add two controllers: one for Tasks and another one for Links and implement all the required actions.
+
+###Creating Task controller
+
 Let's start with a controller for Tasks:
+
 ~~~js
 rails generate controller task --no-helper --no-assets --no-view-specs
 ~~~
-Since this controller is not going to have any views we've used *--no-* flags in order not to generate files we won't need. 
 
-And implement actions for creating/updating and deleting tasks:
+Since this controller is not going to have any views, we've used *--no-* flags in order not to generate files we won't need. 
+
+Next we will implement actions for creating, updating and deleting tasks:
+
 {{snippet app/controllers/task_controller.rb}}
 ~~~js
 class TaskController < ApplicationController
@@ -301,13 +324,16 @@ class TaskController < ApplicationController
 end
 ~~~
 
-A couple of notes regarding this code
+A couple of notes regarding this code:
 
- - we don't need a get action since all data is already loaded from *gantt#data*
- - *"progress"* property may not have a default value on the client-side, we need to provide a default value just in case
- - an action that creates new item should return database id of newly inserted record back to the client
+- we don't need the get action since all data is already loaded from *gantt#data*
+- the *progress* property may be not initialized on the client by default, so we need to provide the default value here. 
+Alternatively, we could have defined the default value in the model class,
+(which can be done, for example, using [migration](http://api.rubyonrails.org/classes/ActiveRecord/Migration.html)) 
+- an action that creates a new item should return the database id of a newly inserted record back to the client
 
-After that we need to add a new routes to the config, and users will be able to view/create/update and delete tasks in our gantt chart:
+After that we need to add the new routes to the config, and users will be able to view/create/update and delete tasks in our gantt chart:
+
 {{snippet config/routes.rb}}
 ~~~js
 Rails.application.routes.draw do
@@ -325,12 +351,16 @@ end
 
 Now, let's do the same for links.
 
-Generate Link controller:
+###Creating Link controller
+
+Generate a Link controller:
+
 ~~~js
 rails generate controller link --no-helper --no-assets --no-view-specs
 ~~~
 
-The implementation may look like the following:
+The implementation may look like this:
+
 {{snippet app/controllers/link_controller.rb}}
 ~~~js
 class LinkController < ApplicationController
@@ -363,7 +393,8 @@ class LinkController < ApplicationController
 end
 ~~~
 
-And add routes for new actions: 
+Then add routes for new actions: 
+
 {{snippet config/routes.rb}}
 ~~~js
 Rails.application.routes.draw do
@@ -384,6 +415,7 @@ end
 ~~~
 
 And that's it. If you run application now you'll have an interactive gantt chart with Rails and MySql backend:
+
 <img src="desktop/how_to_start_rails_complete.png">
 
 Please check more of [our guides](desktop/guides.md) for more features of dhtmlxGantt.
@@ -391,13 +423,15 @@ Please check more of [our guides](desktop/guides.md) for more features of dhtmlx
 Storing the Order of Tasks
 ------------------
 
-The client-side gantt allows reordering tasks using drag and drop. So if you use this feature, you'll have to store this order in the database. You can check the common [description here](desktop/server_side.md#storingtheorderoftasks).
+The client-side gantt allows [reordering tasks](desktop/reodering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+You can [check the common description here](desktop/server_side.md#storingtheorderoftasks). 
+
 
 Let's now add this feature to our app.
 
 ###Enable tasks reordering on the client
 
-Firstly, we need to allow users to change task order in the UI. Open Index view and update configuration of gantt:
+Firstly, we need to allow users to change tasks order in the UI. Open the *Index* view and update the configuration of gantt:
 
 {{snippet app/views/gantt/index.html.erb}}
 ~~~js
@@ -422,11 +456,13 @@ rails generate model Task \
 Or add a new property to the existing model:
 
 1. create a migration:
+
 ~~~js
 rails generate migration add_sortorder_to_tasks sortorder:integer
 ~~~
 
-2. Open the generated migration and add a default value to the sortorder column:
+2. Open the generated migration and add a default value to the "sortorder" column:
+
 ~~~js
 class AddSortorderToTasks < ActiveRecord::Migration[5.1]
   def change
@@ -436,13 +472,14 @@ end
 ~~~
 
 And migrate:
+
 ~~~js
 rake db:migrate
 ~~~
 
-After that we need to update CRUD in controllers.
+After that we need to update CRUD in the controllers:
 
- - *data* action must return tasks ordered by the `sortorder` column: 
+- the *data* action must return tasks ordered by the `sortorder` column: 
 
 {{snippet app/controllers/gantt_controller.rb}}
 ~~~js
@@ -475,7 +512,7 @@ class GanttController < ApplicationController
 end
 ~~~
 
- - Newly added tasks must receive the initial `sortorder` value: 
+- newly added tasks must receive the initial value `sortorder`: 
 
 {{snippet app/controllers/task_controller.rb}}
 ~~~js
@@ -500,7 +537,8 @@ class TaskController < ApplicationController
 end
 ~~~
 
- - Finally, when user reorders tasks, task orders must be [updated](desktop/server_side.md#storingtheorderoftasks):
+- finally, when a user reorders tasks, task orders must be [updated](desktop/server_side.md#storingtheorderoftasks):
+
 {{snippet app/controllers/task_controller.rb}}
 ~~~js
 class TaskController < ApplicationController
@@ -565,4 +603,4 @@ end
 
 
 @todo:
-  proofread, recheck app code, add github link
+  checked and updated, recheck app code, add github link

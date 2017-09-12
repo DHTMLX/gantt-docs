@@ -12,9 +12,9 @@ gantt.templates.xml_date = function(date){
 @returns:
 - text		string		html text which will be rendered in the gantt
 @descr:
-This template is automatically generated from api/gantt_xml_date_config.md config and can be redefined after [initialization of gantt](api/gantt_init.md).
+This template is automatically generated from the api/gantt_xml_date_config.md config and can be redefined after the [initialization of gantt](api/gantt_init.md).
 
-A custom template function can be used if the format of server dates is not supported by [gantt date helper](api/gantt_date_other.md).
+A custom template function can be used, if the format of server dates is not supported by the [gantt date helper](api/gantt_date_other.md).
 
 For example, using UNIX time for **start_date**: 
 {{snippet /data}}
@@ -41,10 +41,9 @@ For example, using UNIX time for **start_date**:
 }
 ~~~
 
-gantt configuration:
+You should set the Gantt configuration as follows:
 
 ~~~js
-
 gantt.attachEvent("onTemplatesReady", function(){
 	gantt.templates.xml_date = function(dateString){
 		return new Date(dateString * 1000);
@@ -53,7 +52,6 @@ gantt.attachEvent("onTemplatesReady", function(){
 
 gantt.init("gantt_here");
 gantt.load("/data");
-
 ~~~
 
 
@@ -66,4 +64,4 @@ gantt.load("/data");
 	desktop/conversion_templates.md
 	
 @todo:
-	check
+	checked and updated

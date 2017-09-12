@@ -7,20 +7,21 @@ platforms to suit all tastes and preferences.
 
 <table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
-	    <tr>
-    		<td>
-    		    <span style="font-size:15px;">desktop/howtostart_php_laravel.md</span><br>
-                A step-by-step tutorial that discusses how to add Gantt into Laravel app. 
-            </td>
-            <td>
-            	<a href="desktop/howtostart_php_laravel.md"><img src="desktop/how_to_start_laravel.png"></a>
-            </td>
+	<tr>
+    	<td>
+    		<span style="font-size:15px;">desktop/howtostart_php_laravel.md</span><br>
+            
+            A comprehensive tutorial that discusses how to add Gantt into a Laravel app. 
+        </td>
+        <td>
+            <a href="desktop/howtostart_php_laravel.md"><img src="desktop/how_to_start_laravel.png"></a>
+        </td>
         </tr>
     <tr>
 		<td>
 		    <span style="font-size:15px;">desktop/howtostart_php.md</span><br>
            
-            A step-by-step tutorial that shows how to implement php backend using PDO and MySQL. 
+            A step-by-step tutorial that shows how to implement a PHP backend using PDO and MySQL. 
         </td>
         <td>
         	<a href="desktop/howtostart_php.md"><img src="desktop/php_tutorial.png"></a>
@@ -30,7 +31,7 @@ platforms to suit all tastes and preferences.
         <td>
 		    <span style="font-size:15px;">desktop/howtostart_nodejs.md</span>  
             <br>
-            A detailed tutorial which dwells on how Gantt chart implementation on a Nodejs platform. 
+            A detailed tutorial which dwells on Gantt chart implementation on a Nodejs platform. 
         </td>
         <td>
         	<a href="desktop/howtostart_nodejs.md"><img src="desktop/node_tutorial.png"></a>

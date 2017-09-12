@@ -25,11 +25,11 @@ New -> Project. Then select ASP.NET Web Application and name it *DHX.Gantt.Web*.
 
 <img src="desktop/how_to_start_net_create_project.png">
 
-Select an Empty project among available templates and check MVC and Web API checkboxes below the list of templates.
+Select an *Empty* project among available templates and check MVC and Web API checkboxes below the list of templates.
 
 <img src="desktop/how_to_start_net_project_template.png">
 
-Step 2. Adding Gantt to the page
+Step 2. Adding Gantt to the Page
 --------------------------------
 
 ###Creating a Controller
@@ -43,7 +43,7 @@ In the opened window select MVC 5 Controller -> Empty and name a newly added con
 
 <img src="desktop/how_to_start_net_controller.png">
 
-The HomeController has the Index() method of the ActionResult class by default, so it doesn't require any additional logic. We will just add a view for it. 
+HomeController has the *Index()* method of the *ActionResult* class by default, so it doesn't require any additional logic. We will just add a view for it. 
 
 {{snippet Controllers/HomeController.cs}}
 ~~~js
@@ -160,7 +160,7 @@ Let's start!
 
 ####Task Model
 
-Create the following class for Task:
+First, we will create a class for Task. Its content can be similar to this one: 
 {{snippet Models/Task.cs}}
 ~~~js
 using System;
@@ -185,7 +185,8 @@ You can find the full list of properties, both mandatory and optional, available
 
 ####Link Model 
 
-And the following Link class:
+Now it's time for the Link class, which may look as follows:
+
 {{snippet Models/Link.cs}}
 ~~~js
 namespace DHX.Gantt.Web.Models
@@ -205,7 +206,7 @@ namespace DHX.Gantt.Web.Models
 
 ####Installing Entity Framework
 
-As you remember, we are going to organize work with a database with the help of the [Entity Framework](http://www.asp.net/entity-framework).
+As you remember, we are going to organize the work with a database with the help of the [Entity Framework](http://www.asp.net/entity-framework).
 
 So, first of all we need to install the framework. To do it, you need to run the following command in the Package Manager Console:
 
@@ -217,7 +218,8 @@ Install-Package EntityFramework
 
 The next step is to create Context. Context represents a session with the DataBase. It allows getting and saving data.
 
-Call the context menu for the Models folder and select Add->Class. The new class will be called "GanttContext" and will have the following content:
+Call the context menu for the *Models* folder and select Add->Class. The new class will be called "GanttContext" and will have the following content:
+
 {{snippet Models/GanttContext.cs}}
 ~~~js
 using System.Data.Entity;
@@ -236,16 +238,17 @@ namespace DHX.Gantt.Web.Models
 
 Now we can add some records into the database.
 
-The Entity Framework can automatically create a database when application runs. 
+The Entity Framework can automatically create a database when an application runs. 
 We should specify that a database should be dropped and re-created whenever the model changes.
 
 First, we should create a database initializer. For this purpose, we need to add a new class in the *App_Start* folder
-that will be inherited from the DropCreateDatabaseIfModelChanges class. Let's call it "GanttInitializer".
+that will be inherited from the *DropCreateDatabaseIfModelChanges* class. Let's call it "GanttInitializer".
 
-In this class we are going to redefine the Seed() method to populate it with test data.
-Then we will add an entities collection into the context with the AddRange() method.
+In this class we are going to redefine the *Seed()* method to populate it with test data.
+Then we will add the entities collection into the context with the *AddRange()* method.
 
 The full code of the *GanttInitializer* class is given below:
+
 {{snippet Models/GanttInitializer.cs}}
 ~~~js
 using System;
@@ -308,9 +311,9 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-
-Open the *Global.asax* file. It contains code that runs on the application start.
+Open the *Global.asax* file. It contains the code that runs on the application start.
 Add the necessary namespace and the code line that will set Initializer for our context into the *Application_Start()* method:
+
 {{snippet Global.asax}}
 ~~~js
 using System;
@@ -345,6 +348,7 @@ Now we'll declare DTO classes that will be used for Web API.
 As for mapping between Model and DTO, we'll go the simplest way and just define an explicit conversion operator for these classes.
 
 The TaskDto class will look as follows: 
+
 {{snippet Models/TaskDto.cs}}
 ~~~js
 using System;
@@ -397,7 +401,8 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-And the LinkDto class is given below:
+And the code of the LinkDto class is given below:
+
 {{snippet Models/LinkDto.cs}}
 ~~~js
 namespace DHX.Gantt.Web.Models
@@ -435,7 +440,8 @@ namespace DHX.Gantt.Web.Models
 ~~~
 
 
-Lastly, let's add a model for a [data source](desktop/supported_data_formats.md#json):
+Lastly, let's add a model for the [data source](desktop/supported_data_formats.md#json):
+
 {{snippet Models/GanttDto.cs}}
 ~~~js
 using System;
@@ -469,6 +475,7 @@ Activate the context menu for the Controllers folder and select Add -> Controlle
 Choose the Web API 2 Controller -> Empty. The new controller will be called "TaskController". 
 
 Now we need to implement basic CRUD actions for the task entry:
+
 {{snippet Controllers/TaskController.cs}}
 ~~~js
 using System.Collections.Generic;
@@ -563,13 +570,17 @@ namespace DHX.Gantt.Web.Controllers
 
 ~~~
 
-Everything is pretty straightforward here, in the GET actions we load tasks from database and output their data transfer objects. 
-In the PUT/POST actions we're getting DTOs as an input, converting it to a Task model and saving changes to the DB Context.
+Everything is pretty straightforward here:
+
+- in the GET actions we load tasks from database and output their data transfer objects 
+- in the PUT/POST actions we're getting DTOs as an input, converting it to a Task model and saving changes to the DB Context
+
 Now let's do the same for the links.
 
 ###Link Controller
 
-After that we'll create an empty Web API Controller for links:
+We'll create an empty Web API Controller for links like this:
+
 {{snippet Controllers/LinkController.cs}}
 ~~~js
 using System;
@@ -667,6 +678,7 @@ namespace DHX.Gantt.Web.Controllers
 ###Data Controller
 
 Finally, we will add a controller for the data action:
+
 {{snippet Controllers/DataController.cs}}
 ~~~js
 using System;
@@ -693,7 +705,7 @@ namespace DHX.Gantt.Web.Controllers
 }
 ~~~
 
-Now everything is ready. Run the application and the fully-fledged Gantt should appear on the page:
+Now everything is ready. Run the application and a fully-fledged Gantt should appear on the page:
 
 <img src="desktop/ready_gantt_dotnet.png">
 
@@ -703,11 +715,13 @@ Now everything is ready. Run the application and the fully-fledged Gantt should 
 Error Handling 
 -----------
 
-[Exception filters](https://msdn.microsoft.com/en-us/library/gg416513(v=vs.98).aspx) can be used for capturing exceptions in CRUD handlers and returning client response 
+[Exception filters](https://msdn.microsoft.com/en-us/library/gg416513(v=vs.98).aspx) can be used for capturing exceptions in CRUD handlers and returning a client response 
 that can be [recognized](desktop/server_side.md#errorhandling) by the client-side gantt.
 
-To provide error handling for the gantt, follow the steps below.
+To provide error handling for the gantt, follow the steps below:
+
 Go to App_Start and add a new class called GanttAPIExceptionFilterAttribute:
+
 {{snippet App_Start/GanttAPIExceptionFilterAttribute.cs}}
 ~~~js
 using System;
@@ -769,15 +783,17 @@ Note that returning an exception message to the client might not be the best ide
 Storing the Order of Tasks
 -----------
 
-The client-side gantt allows reordering tasks using drag and drop. So if you use this feature, you'll have to store this order in the database.
-You can check the common description [here](desktop/server_side.md#storingtheorderoftasks).
+The client-side gantt allows [reordering tasks](desktop/reodering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database.
+You can [check the common description here](desktop/server_side.md#storingtheorderoftasks).
 
 Let's now add this feature to our app.
 
 ###Enable tasks reordering on the client
 
-Firstly, we need to allow users to [change task order in the UI](desktop/reodering_tasks.md).
-Open Index view and update configuration of gantt:
+Firstly, we need to allow users to change the tasks order in the UI.
+
+Open the *Index* view and update the configuration of gantt:
+
 {{snippet Views/Home/Index.cshtml}}
 ~~~js
 gantt.config.order_branch = true;/*!*/
@@ -792,7 +808,9 @@ gantt.init("gantt_here");
 ###Adding tasks order to the model
 
 Now, let's reflect these changes on the backend.
- - We are going to store the order in the property named SortOrder, let's update the Task class accordingly:
+
+We are going to store the order in the property named SortOrder, so let's update the *Task* class accordingly:
+
 {{snippet Models/Task.cs}}
 ~~~js
 using System;
@@ -815,9 +833,9 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Now we need to update the TaskController, namely:
+Now we need to update TaskController, namely:
 
- - The client side should receive tasks ordered by the SortOrder value:
+- the client side should receive tasks ordered by the SortOrder value:
 
 {{snippet Controllers/TaskController.cs}}
 ~~~js
@@ -838,8 +856,7 @@ namespace DHX.Gantt.Web.Controllers
         }
 ~~~
 
-
- - new tasks should receive a default SortOrder value:
+- new tasks should receive the default value SortOrder: 
  
 {{snippet Controllers/TaskController.cs}}
 ~~~js
@@ -863,13 +880,13 @@ namespace DHX.Gantt.Web.Controllers
     }
 ~~~
 
-
- - SortOrder should be updated when the task order is modified on the client. 
+- SortOrder should be updated when the task order is modified on the client. 
 
 When a user changes the order of tasks, gantt will call a PUT action providing an info about a new task position in the 
 ['target'](desktop/server_side.md#storingtheorderoftasks) property of the request, together with the rest of task properties. 
 
 Thus, we should add an extra property to the task DTO class:
+
 {{snippet Models/TaskDto.cs}}
 ~~~js
 namespace DHX.Gantt.Web.Models
@@ -892,6 +909,7 @@ namespace DHX.Gantt.Web.Models
 ~~~
 
 And now we will implement reordering in our PUT (EditTask) action:
+
 {{snippet Controllers/TaskController.cs}}
 ~~~js
     // PUT api/Task/5
@@ -966,4 +984,4 @@ As a common solution, the module can be disabled from the **web.config** file. M
 
 
 @todo:
-	check, add github link, check images.
+	checked and updated, add github link, check images.

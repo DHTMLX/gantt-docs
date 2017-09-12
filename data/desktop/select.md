@@ -30,9 +30,9 @@ To add the **select** control to the lightbox, follow these steps:
     <li><b>Add the section to the lightbox configuration:</b>
 ~~~js
 var opts = [
-    	{key:1, label: "High"},                                            
-    	{key:2, label: "Normal"},                                         
-        {key:3, label: "Low"}                                            
+	{key:1, label: "High"},                                            
+    {key:2, label: "Normal"},                                         
+    {key:3, label: "Low"}                                            
 ];
 
 gantt.config.lightbox.sections = [
@@ -98,14 +98,14 @@ Generally, to set values for the **select** control, use the [options](api/gantt
 gantt.config.lightbox.sections = [
     { name:"priority",height:22, map_to:"priority",type:"select",
       options: [ 
-    		{key:1, label: "High"},                                               
-    		{key:2, label: "Normal"},                                             
-        	{key:3, label: "Low"}                                                
+		{key:1, label: "High"},                                               
+    	{key:2, label: "Normal"},                                             
+        {key:3, label: "Low"}                                                
     ]}                                                                    
 ];
 ~~~
 
-Items in the  [options](api/gantt_lightbox_config.md) parameter have 2 mandatory properties:
+Items in the [options](api/gantt_lightbox_config.md) parameter have 2 mandatory properties:
 
 - **key** - the option id
 - **label** - the option label
@@ -159,7 +159,7 @@ Output of the **/data** url:
 
 ### Loading options using dhtmlxConnector
 
-Here is a sample [dhtmlx connector](desktop/howtostart_connector.md) initialization:
+Here is a sample of [dhtmlxConnector](desktop/howtostart_connector.md) initialization:
 
 ~~~php
 //data.php
@@ -181,5 +181,3 @@ Here is a sample [dhtmlx connector](desktop/howtostart_connector.md) initializat
 ~~~
 
 
-@todo:
-	check
