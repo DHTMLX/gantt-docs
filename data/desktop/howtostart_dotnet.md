@@ -440,7 +440,7 @@ namespace DHX.Gantt.Web.Models
 ~~~
 
 
-Lastly, let's add a model for the [data source](desktop/supported_data_formats.md#json):
+Lastly, let's add a model for the [data source](desktop/loading.md#jsonformat):
 
 {{snippet Models/GanttDto.cs}}
 ~~~js
@@ -467,7 +467,7 @@ Step 4. Implementing Web API
 Finally it's time to implement the API. 
 
 As you can see from the [API details](desktop/server_side.md#requestresponsedetails) we'll need two controllers: one for tasks and one for links. 
-We will also need one more controller for the 'load data' action, since gantt expects a [mixed result](desktop/supported_data_formats.md#json) there.
+We will also need one more controller for the 'load data' action, since gantt expects a [mixed result](desktop/loading.md#jsonformat) there.
 
 ###Task Controller
 

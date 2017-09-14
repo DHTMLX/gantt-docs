@@ -176,7 +176,8 @@ The **gantt** object contains a set of methods and 2 main properties: [config](a
 
 <br>
 
-4) The [XML format](desktop/supported_data_formats.md#xmldhtmlxgantt20) was changed but the [old XML format](desktop/supported_data_formats.md#xmldhtmlxganttlt20) is still can be [loaded](api/gantt_load.md).
+4) The [XML format](desktop/loading.md#xmlgantt20plus) was changed but the 
+[old XML format](desktop/loading.md#xmlganttlessthan20) is still can be [loaded](api/gantt_load.md).
 
 ~~~js
 gantt.load("tasks.xml","oldxml");

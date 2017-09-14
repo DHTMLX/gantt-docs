@@ -222,7 +222,7 @@ npm install promise-mysql --save
 
 You can choose any other appropriate modules. The code is fairly simple and you can implement the same logic using a different set of tools.
 
-The client side expects data in the [JSON format](desktop/supported_data_formats.md#json). So, we'll create a route which will return this kind of data.
+The client side expects data in the [JSON format](desktop/loading.md#jsonformat). So, we'll create a route which will return this kind of data.
 
 As you've probably mentioned, there is the "start_date" property in the data, which is kept as a date object. Therefore, it should be passed to the client in the 
 proper format. For this purpose, we will use another module - [date-format-lite](https://github.com/litejs/date-format-lite). 

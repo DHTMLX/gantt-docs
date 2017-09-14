@@ -22,7 +22,7 @@ Generally, to load data from the server side using REST API, you need to:
 ###Client side
 
            
-1) Call the api/gantt_load.md method, where as a parameter specify the URL that returns Gantt data in the [JSON](desktop/supported_data_formats.md#json) format
+1) Call the api/gantt_load.md method, where as a parameter specify the URL that returns Gantt data in the [JSON](desktop/loading.md#jsonformat) format
 
 2) Initialize dataProcessor and attach it to the dhtmlxGantt object:
            
@@ -54,7 +54,7 @@ The list of possible requests and responses is:
     	<td>load data</td>
 		<td>GET</td>
         <td>/apiUrl</td>
-        <td><a href="desktop/supported_data_formats.md#json">JSON format</a></td>
+        <td><a href="desktop/loading.md#jsonformat">JSON format</a></td>
 	</tr>
     <tr>
 		<td>add a new task</td>
@@ -122,7 +122,7 @@ Note:
 E.g. properties named **task._owner** or **link.$state** won't be sent to the backend}}
 
 
-###Server side
+<h3 id="loadserverside">Server side</h3>
            
 On each action performed in the Gantt (adding, updating or deleting tasks or links), dataProcessor reacts by sending an AJAX request to the server.
 

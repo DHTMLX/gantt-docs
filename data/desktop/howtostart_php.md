@@ -149,7 +149,7 @@ gantt.load("/data");/*!*/
 ~~~
 
 This command will send an AJAX request to the specified URL, 
-the response is expected to contain Gantt data in the [JSON format](desktop/supported_data_formats.md#json). 
+the response is expected to contain Gantt data in the [JSON format](desktop/loading.md#jsonformat). 
 
 Also, note that we've specified the [xml_date](api/gantt_xml_date_config.md) value. 
 This is how we tell gantt what format of dates the data source will use, so the client side could parse them.
@@ -246,7 +246,7 @@ $app->run();
 Let's consider the above described code in detail:
 
 - we have defined a [route](https://www.slimframework.com/docs/objects/router.html) for our data action in *src/routes.php*
-- in the handler for that route we read all tasks and links from the database and send them to the client as [JSON](desktop/supported_data_formats.md#json)
+- in the handler for that route we read all tasks and links from the database and send them to the client as [JSON](desktop/loading.md#jsonformat)
 - we have also added the *open* property to the task objects. It will specify that the tasks tree will be open by default
 
 Thus, we have implemented data loading into Gantt.
