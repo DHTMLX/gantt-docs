@@ -381,7 +381,7 @@ for each model. It will contain methods for adding/deleting and updating the mod
 
 ####Controller for tasks
 
-{{snippet app/Http/Controllers/TaskControllers}}
+{{snippet app/Http/Controllers/TaskController.php}}
 ~~~php
 <?php
 namespace App\Http\Controllers;
@@ -454,7 +454,7 @@ Now let's implement the same for a LinkController.
 
 ####Controller for links
 
-{{snippet app/Http/Controllers/LinkControllers}}
+{{snippet app/Http/Controllers/LinkController.php}}
 ~~~php
 <?php
 namespace App\Http\Controllers;
