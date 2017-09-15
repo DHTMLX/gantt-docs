@@ -440,7 +440,12 @@ And a [route](http://laravel.com/docs/4.2/controllers#restful-resource-controlle
 
 {{snippet routes/api.php}}
 ~~~php
-Route::resource('task', 'TaskController');
+<?php
+ 
+use Illuminate\Http\Request;
+ 
+Route::get('/data', 'GanttController@get');
+Route::resource('task', 'TaskController');/*!*/
 ~~~
 
 A couple of notes regarding this code:
