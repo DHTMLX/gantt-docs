@@ -3,6 +3,20 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+5.0
+---------
+
+####Functionality
+
+- Public interfaces for Grid and Timeline
+- Server-side integration with REST API
+
+####Styling
+
+- New Material skin
+
+####Bug Fixes
+
 4.2
 ------------
 
