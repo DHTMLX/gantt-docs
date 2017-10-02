@@ -173,7 +173,7 @@ The response will contain a JSON of the following structure:
 ~~~
 
  
-- data - gantt data object desktop/loading.md#jsonformat. Each task has the following properties: id, open, parent, progress, start_date, text, resource. 
+- data - gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: id, open, parent, progress, start_date, text, resource. 
 Dates are stringified in the "%Y-%m-%d %H:%i" format. 
 - config - gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
 - resources - array of objects {id:string, name:string} that represent list of resources from the project file.

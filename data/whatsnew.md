@@ -145,7 +145,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 #### Configuration
 - [Ability to map the 'Time' and 'Duration' controls to custom date properties](desktop/time.md#assigningcustomstartandenddatetimeproperties)
 #### Functionality
-- [Dynamic loading](desktop/loading.md#dynamicloadingondemand) (PRO version)
+- [Dynamic loading](desktop/dynamic_loading.md) (PRO version)
 - [A possibility to resize columns and the whole grid by drag-&-dropping](desktop/specifying_columns.md)
 - [A possibility to hide/show columns dynamically](desktop/specifying_columns.md#hidingshowingcolumns) (PRO version)
 - [A possibility to display additional elements in the timeline area](desktop/baselines.md) (PRO version)
@@ -205,8 +205,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Vertical and horizontal lines can be colored based on custom rules](desktop/highlighting_time_slots.md)
 
 #### Functionality
-- [Loading and serialization from JSON](desktop/loading.md#jsonformat)
-- [Loading and serialization with the simplified XML format](desktop/loading.md#xmlgantt20plus)
+- [Loading and serialization from JSON](desktop/supported_data_formats.md#json)
+- [Loading and serialization with the simplified XML format](desktop/supported_data_formats.md#xmldhtmlxgantt20)
 - [3 types of task linking](api/gantt_links_config.md)
 - Gantt charts work on touch devices
 

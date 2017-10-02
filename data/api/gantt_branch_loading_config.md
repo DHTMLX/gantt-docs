@@ -18,7 +18,7 @@ gantt.load("/data"); /*!*/
 
 @related:
 	desktop/performance.md
-	desktop/loading.md
+	desktop/dynamic_loading.md
 @relatedsample:
 	02_extensions/06_dynamic_loading.html
 	08_api/10_performance_tweaks.html	

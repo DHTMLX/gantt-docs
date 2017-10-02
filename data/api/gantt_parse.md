@@ -30,5 +30,6 @@ gantt.parse({
 	01_initialization/01_basic_init.html
 @related:
     desktop/loading.md
+    desktop/supported_data_formats.md
 @descr:
 

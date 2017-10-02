@@ -188,7 +188,7 @@ Step 3. Loading Data
 
 After we've created model classes and run the migration, we can load the database data into our gantt. 
 
-dhtmlxGantt expects data in the [JSON format](desktop/loading.md#jsonformat), so firstly we'll add a new action to our *GanttController* where we'll read, 
+dhtmlxGantt expects data in the [JSON format](desktop/supported_data_formats.md), so firstly we'll add a new action to our *GanttController* where we'll read, 
 format and output gantt data:
 
 

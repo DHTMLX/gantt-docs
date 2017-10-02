@@ -310,7 +310,7 @@ Step 4. Loading Data
 -------------------
 
 Once the database is created and the models are defined, we can load data into our gantt. 
-The client side requires dates of [the following format](desktop/loading.md#jsonformat), so let's create a controller with an action that produces such JSON:
+The client side requires dates of [the following format](desktop/supported_data_formats.md#json), so let's create a controller with an action that produces such JSON:
 
 {{snippet app/Http/Controllers/GanttController.php}}
 ~~~php
@@ -355,7 +355,7 @@ gantt.init("gantt_here");
 gantt.load("/api/data");/*!*/
 ~~~
 
-[gantt.load](api/gantt_load.md) sends an AJAX request to the specified URL and will expect a [JSON response](desktop/loading.md#jsonformat) as we've defined before.
+[gantt.load](api/gantt_load.md) sends an AJAX request to the specified URL and will expect a [JSON response](desktop/supported_data_formats.md#json) as we've defined before.
 
 Also, note that we've specified the [xml_date](api/gantt_xml_date_config.md) value. 
 This is how we tell the gantt which format of dates the data source will use, so the client side could parse them. 

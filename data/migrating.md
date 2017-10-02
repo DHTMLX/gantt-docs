@@ -154,7 +154,8 @@ The **gantt** object contains a set of methods and 2 main properties: [config](a
 
 <br>
 
-3) Instead of GanttProject and GanttTask, data is stored as [an array of plain objects with a number of mandatory properties and any custom properties](desktop/loading.md#specifyingdataproperties): 
+3) Instead of GanttProject and GanttTask, data is stored as 
+[an array of plain objects with a number of mandatory properties and any custom properties](desktop/loading.md#specifyingdataproperties): 
 ~~~js
 {
     data:[
@@ -176,8 +177,8 @@ The **gantt** object contains a set of methods and 2 main properties: [config](a
 
 <br>
 
-4) The [XML format](desktop/loading.md#xmlgantt20plus) was changed but the 
-[old XML format](desktop/loading.md#xmlganttlessthan20) is still can be [loaded](api/gantt_load.md).
+4) The [XML format](desktop/supported_data_formats.md#xmldhtmlxgantt20) was changed but the 
+[old XML format](desktop/supported_data_formats.md#xmldhtmlxganttlt20) is still can be [loaded](api/gantt_load.md).
 
 ~~~js
 gantt.load("tasks.xml","oldxml");

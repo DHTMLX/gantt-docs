@@ -4,6 +4,8 @@ Loading and Storing Tasks
 
 {{index
 - desktop/loading.md
+- desktop/dynamic_loading.md
+- desktop/supported_data_formats.md
 - desktop/server_side.md
 - desktop/performance.md
 }}
