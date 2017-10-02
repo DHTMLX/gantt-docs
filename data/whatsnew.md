@@ -9,11 +9,15 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ####Functionality
 
 - Public interfaces for Grid and Timeline
-- Server-side integration with REST API
+- [Server-side integration with REST API](desktop/server_side.md). Check also [tutorials for various server-side platforms](desktop/howtostart_guides.md)
+
+####Documentation
+
+- Content and structure of the [Loading and Storing Tasks](desktop/loading_storing_data.md) section are updated.
 
 ####Styling
 
-- New Material skin
+- New ["Material" skin](desktop/skins.md#materialskin)
 
 ####Bug Fixes
 

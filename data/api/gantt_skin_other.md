@@ -11,3 +11,6 @@ var currentSkin = gantt.skin;// -> "terrace"
 @descr:
 @relatedapi:
 	api/gantt_skins_other.md
+
+@related:
+desktop/skins.md
