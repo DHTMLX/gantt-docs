@@ -24,7 +24,7 @@ gantt.load("data.xml","xml", function(){ //specifying the callback function
 });
 
 @template:	api_method
-@related:
+@related:	
 	desktop/supported_data_formats.md
     desktop/loading.md
     desktop/server_side.md

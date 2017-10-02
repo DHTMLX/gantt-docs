@@ -1,7 +1,5 @@
-Serializing data into XML, JSON formats
+Serializing Data into XML and JSON 
 ===============================================
-
-
 
 
 JSON format

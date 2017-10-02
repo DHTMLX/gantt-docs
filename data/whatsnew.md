@@ -108,8 +108,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 #### Configuration
 - Initial support for [Content Security Policy](desktop/content_security_policy.md)
-- A possibility of specifying [per column grid sorting](desktop/sorting.md#percolumngridsorting) settings
-- Improved branch ordering feature - [D'n'D between levels](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure) 
+- A possibility of specifying [per column Grid sorting](desktop/sorting.md#percolumngridsorting) settings
+- Improved branch ordering feature - [drag-n-drop between levels](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure) 
 
 #### API
 - [REST mode for ajax loading/saving](desktop/server_side.md#savingdatafromrestserver)
@@ -123,7 +123,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Grouping tasks](desktop/grouping.md) (PRO version)
 - [Multi-task selection](desktop/multiselection.md)
 - [Data export to iCal and Excel formats](desktop/excel.md)
-- [Major performance improvement of worktime and critical path calculations](desktop/performance.md) 
+- [Major performance improvement of work time and critical path calculations](desktop/performance.md)
+
 
 #### Configuration
 - [A possibility to set the range for the year selector in the lightbox](desktop/time.md#alistofproperties)
@@ -148,8 +149,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 #### Bug Fixes
 - Incorrect behavior of the tooltip on expanding/collapsing of task tree
-- Order of API events during gantt initialization
-- Incorrect behavior of vertical markers when gantt is cleared or reinitialized
+- Order of API events during Gantt initialization
+- Incorrect behavior of vertical markers when Gantt is cleared or reinitialized
 
 
 3.0
@@ -228,4 +229,4 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - [A lot of events added](api/refs/gantt.md#events)
 - [Templates](api/refs/gantt.md#templates) and [configuration options](api/refs/gantt.md#properties) added
-- [API simplified, it uses a single gantt object instead of a bunch of different objects](migrating.md)
+- [API simplified, it uses a single Gantt object instead of a bunch of different objects](migrating.md)

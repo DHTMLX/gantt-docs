@@ -7,6 +7,23 @@ The articles come around key procedures and problem-solving activities.
 
 <table  style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		         How to Start with dhtmlxGantt
+		    </h4>
+		    <ul id="data_sublist" >
+                    <li>desktop/howtostart_php.md</li>
+                    <li>desktop/howtostart_php_laravel.md</li>
+                    <li>desktop/howtostart_nodejs.md</li>
+                    <li>desktop/howtostart_dotnet.md</li>
+                    <li>desktop/howtostart_ruby.md</li>
+            </ul>
+        </td>
+        <td class='topic_description'>Says how to build a standard Gantt chart on different server-side platforms and 
+        bring it to life: configure with specific settings, customize the default templates, 
+        attach events, etc.</td>
+	</tr>
 	<tr>
 		<td id="data" class='topics'>
 		    <h4>
@@ -18,13 +35,8 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/extensions_list.md</li>
                     <li>desktop/common_configuration.md</li>
                     <li>desktop/handling_events.md</li>
-                    <li>desktop/localization.md</li>
-                    <li>desktop/jquery_integration.md</li>
-                    <li>desktop/multiple_gantts.md</li>
-                    <li>desktop/undo_redo.md</li>
-                    <li>desktop/message_boxes.md</li>
-                    <li>desktop/accessibility.md</li>
-                    <li>desktop/keyboard_navigation.md</li>
+                    <li>desktop/localization.md</li>                  
+                    <li>desktop/multiple_gantts.md</li>                   
             </ul>
         </td>
 		<td class='topic_description'>Says how to build a standard Gantt chart on a page and bring it to life: configure with specific settings, customize the default templates, attach events, etc.</td>
@@ -34,12 +46,9 @@ The articles come around key procedures and problem-solving activities.
 		    <h4>
 		         Loading and Storing Data
 		    </h4>
-		    <ul id="manipulations_sublist">
-                    <li>desktop/supported_data_formats.md</li>
+		    <ul id="manipulations_sublist">                
 					<li>desktop/loading.md</li>
-                    <li>desktop/server_side.md</li>
-                    <li>desktop/serialization.md</li>
-                    <li>desktop/dynamic_loading.md</li>
+                    <li>desktop/server_side.md</li>                                     
                     <li>desktop/performance.md</li>
             </ul>
         </td>
@@ -54,6 +63,7 @@ The articles come around key procedures and problem-solving activities.
                    	<li>desktop/export.md</li>
                     <li>desktop/excel.md</li>
                     <li>desktop/export_msproject.md</li>
+                    <li>desktop/serialization.md</li>
             </ul>
         </td>
 		<td class='topic_description'>Discusses the ways of loading data into the Gantt chart: different data sources, formats, techniques.</td>
@@ -163,11 +173,16 @@ The articles come around key procedures and problem-solving activities.
             <h4>
                 Auxiliary Resources
             </h4>
-            <ul id="internet_sublist">
+            <ul id="internet_sublist">            		                                       
                     <li>desktop/date_format.md</li>
                     <li>desktop/date_operations.md</li>
                     <li>desktop/fullscreen_mode.md</li>
+                    <li>desktop/undo_redo.md</li>
+                    <li>desktop/message_boxes.md</li>
+                    <li>desktop/accessibility.md</li>
+                    <li>desktop/keyboard_navigation.md</li>
                     <li>desktop/content_security_policy.md</li>
+                    <li>desktop/jquery_integration.md</li>
             </ul>
         </td>
         <td class='topic_description'>Guides you through common information you may need while creating a Gantt chart: converting dates to string and backward, allowable characters in the date format, etc.</td>
@@ -176,6 +191,8 @@ The articles come around key procedures and problem-solving activities.
 </table>
 
 @index:
+
+- desktop/howtostart_guides.md
 - desktop/general_gantt_chart.md
 - desktop/loading_storing_data.md
 - desktop/export_common.md

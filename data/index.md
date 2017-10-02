@@ -49,7 +49,6 @@ Start
 - whatsnew.md
 - migrating.md
 - overview.md
-- desktop/how_to_start.md
 - desktop/guides.md
 - faq.md
 

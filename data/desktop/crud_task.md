@@ -89,13 +89,14 @@ which means that when you delete a task, Gantt sends a request to a server for e
 
 If you don't need to send multiple requests to the server, you can simply disable the api/gantt_cascade_delete_config.md config:
 
-
-
 ~~~js
 gantt.config.cascade_delete = false;
 ~~~
 
 In that case Gantt will send only one request to the server - for deleting just the parent task, while its nested tasks and links will be deleted by the server. 
+
+The api/gantt_cascade_delete_config.md option affects the way of implemeting a backend. Read more in the 
+[related section of the Server-side Integration article](desktop/server_side.md#cascadedeletion).
 
 Removing all tasks from the Gantt chart
 -------------------------------------------

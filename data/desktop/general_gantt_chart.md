@@ -9,10 +9,5 @@ Creating a Gantt Chart on the Page
 - desktop/common_configuration.md
 - desktop/handling_events.md
 - desktop/localization.md
-- desktop/jquery_integration.md
 - desktop/multiple_gantts.md
-- desktop/undo_redo.md
-- desktop/message_boxes.md
-- desktop/accessibility.md
-- desktop/keyboard_navigation.md
 }}
