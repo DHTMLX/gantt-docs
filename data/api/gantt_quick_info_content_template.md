@@ -20,3 +20,6 @@ gantt.templates.quick_info_content = function(start, end, task){
 
 @related:
 	desktop/touch_templates.md
+
+@relatedsample:
+02_extensions/01_quickinfo.html
