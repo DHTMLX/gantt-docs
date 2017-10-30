@@ -1,1 +1,0 @@
-indexer.exe --all  --config sphinx.conf 

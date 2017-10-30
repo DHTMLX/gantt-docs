@@ -1,1 +1,0 @@
-searchd.exe --config sphinx.conf
