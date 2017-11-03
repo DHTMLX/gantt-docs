@@ -27,7 +27,7 @@ The articles come around key procedures and problem-solving activities.
 	<tr>
 		<td id="data" class='topics'>
 		    <h4>
-		         Creating a Gantt Chart on the Page
+		         Creating a Gantt Chart on a Page
 		    </h4>
 		    <ul id="data_sublist" >
                     <li>desktop/initializing_gantt_chart.md</li>
@@ -71,7 +71,7 @@ The articles come around key procedures and problem-solving activities.
     <tr>
         <td id="events" class='topics'>
             <h4>
-                Configuring the Grid Area
+                Configuring Grid Area
             </h4>
             <ul id="events_sublist">
                     <li>desktop/specifying_columns.md</li>
@@ -88,7 +88,7 @@ The articles come around key procedures and problem-solving activities.
 	<tr>
     	<td id="lightbox" class='topics'>
     	    <h4>
-    	        Configuring the Scales
+    	        Configuring Scales
     	    </h4>
     	    <ul id="lightbox_sublist">
                     <li>desktop/configuring_time_scale.md </li>
@@ -104,7 +104,7 @@ The articles come around key procedures and problem-solving activities.
 	<tr>
 		<td id="styling" class='topics'>
 		    <h4>
-		        Configuring the Lightbox (Edit Form)
+		        Configuring Lightbox (Edit Form)
 		    </h4>
 		    <ul id="styling_sublist">
             	   <li>desktop/default_edit_form.md</li>

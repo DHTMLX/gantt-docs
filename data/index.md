@@ -8,8 +8,8 @@ Start
     </p>
     <ul>
 		<li><a href="">Public interfaces for Grid and Timeline</a></li>
-        <li><a href="">Server-side integration with REST API</a></li>
-        <li><a href="">New Material skin</a></li>
+        <li><a href="desktop/server_side.md">Server-side integration with REST API</a></li>
+        <li><a href="desktop/skins.md#materialskin">New Material skin</a></li>
 	</ul>
 
     <p class='action_buttons'>

@@ -8,7 +8,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ####Functionality
 
-- Public interfaces for Grid and Timeline
+- Public interfaces for Grid and Timeline (Flexible Gantt layout)
 - [Server-side integration with REST API](desktop/server_side.md). Check also [tutorials for various server-side platforms](desktop/howtostart_guides.md)
 
 ####Documentation

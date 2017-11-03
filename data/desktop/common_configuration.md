@@ -1,5 +1,6 @@
-Configuring the Gantt Chart
+Configuring Gantt Chart
 ================================================
+
 To gain the desired look for the Gantt chart, dhtmlxGantt provides 2 objects: 
 
 - <a href="api/refs/gantt.md#properties">gantt.config</a> - configuration options for dates, scale, controls etc.
@@ -46,7 +47,7 @@ gantt.init("gantt_here");
 
 <img src="desktop/gantt_templates.png"/>
 
-See the full list of available templates in the ["Gantt API:Templates"](api/refs/gantt.md#templates). 
+See the full list of available templates in the [Gantt API:Templates](api/refs/gantt_templates.md) section. 
 
 {{sample
 	04_customization/08_templates.html
