@@ -371,7 +371,8 @@ function updateTask($request, $response, $args) {
   $task = getTask($request->getParsedBody());
   $db = getConnection();
   $query = "UPDATE gantt_tasks ".
-    "SET text = :text, start_date = :start_date, duration = :duration, progress = :progress, parent = :parent ".
+    "SET text = :text, start_date = :start_date, duration = :duration,". 
+      "progress = :progress, parent = :parent ".
     "WHERE id = :sid";
 
   $db->prepare($query)->execute(array_merge($task, [":sid"=>$sid]));
@@ -397,7 +398,8 @@ function deleteTask($request, $response, $args) {
 function addLlink($request, $response, $args) {
   $link = getLink($request->getParsedBody());
   $db = getConnection();
-  $query = "INSERT INTO gantt_links(source, target, type) VALUES (:source,:target,:type)";
+  $query = "INSERT INTO gantt_links(source, target, type) ".
+    "VALUES (:source,:target,:type)";
   $db->prepare($query)->execute($link);
 
   return $response->withJson([
@@ -520,27 +522,27 @@ function getGanttData($request, $response, $args) {
 ~~~php
 // create a new task
 function addTask($request, $response, $args) {
-  $task = getTask($request->getParsedBody());
-  $db = getConnection();
+ $task = getTask($request->getParsedBody());
+ $db = getConnection();
 
-  $maxOrderQuery = "SELECT MAX(sortorder) AS maxOrder FROM gantt_tasks";
-  $statement = $db->prepare($maxOrderQuery);
-  $statement->execute();
+ $maxOrderQuery = "SELECT MAX(sortorder) AS maxOrder FROM gantt_tasks";
+ $statement = $db->prepare($maxOrderQuery);
+ $statement->execute();
 
-  $maxOrder = $statement->fetchColumn();
-  if(!$maxOrder)
-    $maxOrder = 0;
+ $maxOrder = $statement->fetchColumn();
+ if(!$maxOrder)
+   $maxOrder = 0;
 
-  $task[":sortorder"] = $maxOrder + 1;
+ $task[":sortorder"] = $maxOrder + 1;
 
-  $query = "INSERT INTO gantt_tasks(text, start_date, duration, progress, parent, sortorder) ".
-    "VALUES (:text,:start_date,:duration,:progress,:parent, :sortorder)";
-  $db->prepare($query)->execute($task);
+ $query="INSERT INTO gantt_tasks(text,start_date,duration,progress,parent,sortorder)".
+   "VALUES (:text,:start_date,:duration,:progress,:parent, :sortorder)";
+ $db->prepare($query)->execute($task);
 
-  return $response->withJson([
-    "action"=>"inserted",
-    "tid"=> $db->lastInsertId()
-  ]);
+ return $response->withJson([
+   "action"=>"inserted",
+   "tid"=> $db->lastInsertId()
+ ]);
 }
 ~~~
 
@@ -555,7 +557,8 @@ function updateTask($request, $response, $args) {
   $task = getTask($params);
   $db = getConnection();
   $query = "UPDATE gantt_tasks ".
-    "SET text = :text, start_date = :start_date, duration = :duration, progress = :progress, parent = :parent ".
+    "SET text = :text, start_date = :start_date, duration = :duration, ".
+      "progress = :progress, parent = :parent ".
     "WHERE id = :sid";
 
   $db->prepare($query)->execute(array_merge($task, [":sid"=>$sid]));
@@ -588,7 +591,8 @@ function updateOrder($taskId, $target, $db){
   if($nextTask)
     $targetOrder++;
 
-  $sql = "UPDATE gantt_tasks SET sortorder = sortorder + 1  WHERE sortorder >= :targetOrder";
+  $sql = "UPDATE gantt_tasks SET sortorder = sortorder + 1 ".
+    "WHERE sortorder >= :targetOrder";
   $statement = $db->prepare($sql);
   $statement->execute([":targetOrder"=>$targetOrder]);
 
@@ -607,10 +611,10 @@ You can check [a ready demo](https://github.com/DHTMLX/gantt-node-mysql) on GitH
 Using dhtmlxConnector
 ---------------
 Alternatively, a PHP backend can also be implemented using the [dhtmlxConnector library](https://docs.dhtmlx.com/connector__php__index.html). 
-You can find a detailed tutorial [here](desktop/howtostart_connector.md) 
+You can find a detailed tutorial [here](desktop/howtostart_connector.md). 
 
 @index: 
 - desktop/howtostart_connector.md
 
 @todo:
-  checked and updated, code samples don't fit the page, update github link
+ update github link

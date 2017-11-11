@@ -1,9 +1,11 @@
 xml_date
 =============
+
 @short:a string from an XML file is converted into a date object in conformity with this template
 	
 @params:
 - date	Date	the date which needs formatting
+
 @example:
 gantt.templates.xml_date = function(date){
 	return gantt.date.date_to_str(gantt.config.xml_date)(date);
@@ -54,8 +56,6 @@ gantt.init("gantt_here");
 gantt.load("/data");
 ~~~
 
-
-
 @relatedapi:
 	api/gantt_xml_date_config.md
 	api/gantt_xml_format_template.md
@@ -63,5 +63,3 @@ gantt.load("/data");
 @related:
 	desktop/conversion_templates.md
 	
-@todo:
-	checked and updated

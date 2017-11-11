@@ -423,5 +423,3 @@ and the number of tasks and links is not limited.
 In that case, cascade deletion can be disabled using the api/gantt_cascade_delete_config.md config. 
 Thus, when a project branch is deleted, the client will send a delete request only for the top item and will expect the backend to delete the related links and subtasks.
 
-@todo:
- checked and updated

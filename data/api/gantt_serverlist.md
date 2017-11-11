@@ -1,5 +1,6 @@
 serverList
 =============
+
 @short:	returns a list of options
 	
 @params: 
@@ -48,5 +49,3 @@ gantt.config.lightbox.sections=[
 @relatedapi
 	api/gantt_updatecollection.md
 	
-@todo:
-	checked and updated

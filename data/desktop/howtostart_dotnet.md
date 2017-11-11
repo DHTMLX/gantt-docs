@@ -984,4 +984,4 @@ As a common solution, the module can be disabled from the **web.config** file. M
 
 
 @todo:
-	checked and updated, add github link, check images.
+	add github link.

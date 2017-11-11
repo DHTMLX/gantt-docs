@@ -338,8 +338,3 @@ Loading-related methods have the following events flow:
 - [gantt.refreshData()](api/gantt_refreshdata.md)
 - event api/gantt_onganttrender_event.md 
 
-
-
-     
-@todo:
-replace backend instruction in dyn. loading with format details 

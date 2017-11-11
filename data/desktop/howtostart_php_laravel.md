@@ -720,5 +720,4 @@ private function updateOrder($taskId, $target){
 
 
 @todo:
-	current texts checked. add descriptions, add link to repo, recheck. <br>
-    redo db with seeders/migrations https://laravel.com/docs/5.0/schema https://laravel.com/docs/5.0/migrations
+	add link to repo.
