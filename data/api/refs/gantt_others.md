@@ -4,6 +4,15 @@ Others
 
 {{api
 - api/gantt_$click_other.md - redefines the default click behavior for buttons of the Gantt chart
+- api/gantt_$container_other.md - 
+- api/gantt_$data_other.md - 
+- api/gantt_$grid_other.md - 
+- api/gantt_$layout_other.md - 
+- api/gantt_$mouseevents_other.md - 
+- api/gantt_$root_other.md - 
+- api/gantt_$services_other.md - 
+- api/gantt_$task_other.md - 
+- api/gantt_$ui_other.md - 
 - api/gantt_ajax_other.md - dhtmlx ajax module
 - api/gantt_calendar_other.md - the interface of the [working calendar](desktop/working_time.md#getcalendars) object
 - api/gantt_config_other.md - defines configuration options for dates, scale, controls
@@ -22,6 +31,15 @@ Others
 
 @index:
 - api/gantt_$click_other.md
+- api/gantt_$container_other.md
+- api/gantt_$data_other.md
+- api/gantt_$grid_other.md
+- api/gantt_$layout_other.md
+- api/gantt_$mouseevents_other.md
+- api/gantt_$root_other.md
+- api/gantt_$services_other.md
+- api/gantt_$task_other.md
+- api/gantt_$ui_other.md
 - api/gantt_ajax_other.md
 - api/gantt_calendar_other.md
 - api/gantt_config_other.md

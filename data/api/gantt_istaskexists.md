@@ -7,7 +7,7 @@ isTaskExists
 
 
 @returns:
-- link	boolean		<i>true</i>, if such a task exists. Otherwise, <i>false</i>
+- task	boolean		<i>true</i>, if such a task exists. Otherwise, <i>false</i>
 
 
 

@@ -1,10 +1,10 @@
 Using Gantt Layout
 ==============================
 
-Starting from version 5.0, Gantt provides the possibility to specify a configurable layout and arrange the elements of the component inside the layout as inner views.
+Starting from version 5.0, Gantt provides the possibility to specify a configurable layout and arrange the elements of the component as inner views of a layout.
 It allows you to use additional timelines and grids to make a flexible gantt chart structure and define various schemes of arranging elements.
 
-For example, you can place one more grid to the right side of the timeline or to add another grid and a timeline below the default ones.
+For example, you can place one more grid to the right side of the timeline or add another grid and a timeline below the default ones.
 
 <img src="desktop/gantt_resource_panel.png">
 
@@ -21,8 +21,7 @@ gantt.config.layout = {
     	   cols: [
      		{
               // the default grid view	
-        	  view: "tasksGrid", 
-              width: 320, 
+        	  view: "grid", 
               id: "grid", 
               scrollX:"scrollHor", 
               scrollY:"scrollVer"
@@ -30,7 +29,7 @@ gantt.config.layout = {
      		{ resizer: true, width: 1 },
      		{
               // the default timeline view
-        	  view: "tasksTimeline", 
+        	  view: "timeline", 
               id: "timeline", 
               scrollX:"scrollHor", 
               scrollY:"scrollVer"
@@ -38,15 +37,13 @@ gantt.config.layout = {
      	    {
               view: "scrollbar", 
               scroll: "y", 
-              id:"scrollVer", 
-              width:20
+              id:"scrollVer"
            	}
 	    ]},
    	 	{
         	view: "scrollbar", 
             scroll: "x", 
-            id:"scrollHor", 
-            height:20
+            id:"scrollHor"
         }
   	]
 }
@@ -54,9 +51,9 @@ gantt.config.layout = {
 
 The layout of Gantt consists of cells which are occupied by views. The main and helper gantt elements are presented by **views**, which are: 
 
-- **grid** - defines the grid part of the Gantt chart. *tasksGrid* view is used by default. It is a grid predefined for showing tasks;
-- **timeline** - defines the timeline part of the Gantt chart. *tasksTimeline* view is used by default. It is a timeline predefined for showing tasks;
-- **resizer** - defines the resizer line. To enable a resizer, you need to set the *resizer* property to true;
+- **grid** - defines the grid part of the Gantt chart. The main grid predefined for showing tasks has the *id:"grid"*;
+- **timeline** - defines the timeline part of the Gantt chart. The main timeline predefined for showing tasks has the *id:"timeline"*;
+- **resizer** - defines the resizer line. To enable a resizer, you need to set the **resizer** property to *true*;
 - **scrollbar** - defines scrollbars used in the Gantt chart. Grid and timeline views can be bound to particular scrollbars. Read details below.
 
 The view configuration is specified as an object with the corresponding properties. 
@@ -69,11 +66,11 @@ Binding Views to Scrollbar
 
 Layout scrollbars are specified by the **"scrollbar"** view. You can set both a horizontal and vertical scrollbar. 
 
-To use a scrollbar in the layout, you need to bind it to a corresponding view via the *scrollX* or *scrollY* property. It is possible to bind several views to the same 
-scrollbar. In order to bind a view to a scrollbar:
+To use a scrollbar in the layout, you need to bind it to a corresponding view with the help of the **scrollX** or **scrollY** properties via the id of the necessary scrollbar. 
+It is possible to bind several views to the same scrollbar. In order to bind a view to a scrollbar:
 
 - set a scrollbar with the necessary scrolling direction and assign an ID to it
-- use the id of the scrollbar as a value of the *scrollX/scrollY* property inside the view configuration object
+- use the id of the scrollbar as a value of the **scrollX/scrollY** property inside the view configuration object
 
 Let's bind custom grid and timeline views to the vertical scroll:
 
@@ -97,8 +94,7 @@ gantt.config.layout = {
             {
               view: "scrollbar", 
               scroll: "y", 
-              id:"scrollVer", 
-              width:20
+              id:"scrollVer"
             }
      	]}
     ]
@@ -112,7 +108,7 @@ In the default layout the grid and timeline views are bound to both the horizont
 Configuring Gantt Layout
 -------------------
 
-You can change the default layout configuration and specify a necessary scheme of arranging the elements of Gantt chart on a page, using the default layout views.
+You can change the default layout configuration and specify a necessary scheme of arranging the elements of Gantt chart on a page, using additional layout views.
 
 For example, you can create additional grid and timeline views that will make a bottom resource panel for the main gantt chart. The steps to implement such a 
 custom layout are:
@@ -120,7 +116,7 @@ custom layout are:
 - specify the default gantt configuration in the first row of the layout
 - specify a custom gantt configuration for the resource panel in the second row of the layout
 - place a resizer line between the two rows with the "resizer" view
-- define the settings of scrollbars common for both charts
+- specify individual and common scrollbars for the default and the resource gantt
 
 ~~~js
 gantt.config.layout = {
@@ -129,73 +125,120 @@ gantt.config.layout = {
 		{
           // the default layout
 		  cols: [
-			{view: "tasksGrid", id: "grid", 
+			{view: "tasks", id: "grid", 
                 config: mainGridConfig, scrollY:"scrollVer"},
 			{resizer: true, width: 1},
-			{view: "tasksTimeline", id: "timeline", 
+			{view: "timeline", id: "timeline", 
                 scrollX:"scrollHor", scrollY:"scrollVer"},
-			{view: "scrollbar", scroll: "y", id:"scrollVer", width:20}
+			{view: "scrollbar", scroll: "y", id:"scrollVer"}
 		  ]
 		},
 		{resizer: true, width: 1, mode:"y"},
 		{
           // a custom layout
 		  cols: [
-			{view: "grid", id: "resourceGrid", width:435, bind:"resource", 
+			{view: "grid", id: "resourceGrid", bind:"resource", 
                 config:resourceGridConfig, scrollY:"resourceVScroll"},
 			{resizer: true, width: 1},
 			{view:"timeline", id:"resourceTimeline", scrollX:"scrollHor", 
             	bind:"resource", bindLinks: null, layers: resourceLayers, 
                 scrollY:"resourceVScroll"},
-			{view: "scrollbar", scroll: "y", id:"resourceVScroll", width:20}
+			{view: "scrollbar", scroll: "y", id:"resourceVScroll"}
 		  ]
 		},
-		{view: "scrollbar", scroll: "x", id:"scrollHor", height:20}
+		{view: "scrollbar", scroll: "x", id:"scrollHor"}
 	]
 };
 ~~~
 
-In the above example, we have added an extra grid view that contains the list of resources and their personal and general workload. We've also created an extra
-timeline view which displays the distribution of working hours and indicates standard and overtime hours.
+In the above example, an extra grid view has been added. It contains the list of resources and their workload. There is also an extra
+timeline view which displays the distribution of working hours during the month and indicates standard and overtime hours.
 
 ###Properties of custom grid and timeline
 
-For custom grid and timeline you should specify additional properties:
+Custom grid and timeline have additional properties:
 
-- **bind** - (*string*) sets the id of a data source to take data from. It is set both for the grid and timeline;
-- **bindLinks** - (*string*?) points to the source of links. *null*, if there are no related links
-- **layers** - (*array*) an array the elements of which describe the way of styling data
+####For the grid and timeline views
 
+- **bind** - (*string*) sets the id of a datastore to take data from ("resource" in the example)
+
+####For the timeline view
+
+- **bindLinks** - (*string*) points to the source of links. *null*, if there are no related links;
+- **layers** - (*array*) a configuration option defined as a set of **addLayer()** functions that describe the way of styling data.
+
+###Adding a datastore for custom views
+
+It is also necessary to add a separate datastore to populate custom views with corresponding data. To create a new datastore, use the method 
+api/gantt_createdatastore.md and specify the configuration of the datastore:
+
+~~~js
+var resourcesStore = gantt.createDatastore({
+	name:"resource",
+	initItem: function(item){
+		item.id = item.key || gantt.uid();
+		return item;
+	}
+});
+~~~
+
+In the above example we've added a datastore named "resource".
+
+To load data into custom views, use the api/gantt_parse.md method:
+
+~~~js
+resourcesStore.parse([// resources
+	{key:'0', label: "N/A"},
+	{key:'1', label: "John"},
+	{key:'2', label: "Mike"},
+	{key:'3', label: "Anna"}
+]);
+~~~
+
+To return a configuration object of the necessary datastore, use the api/gantt_getdatastore.md method:
+
+~~~js
+var tasksStore = gantt.getDatastore("task");
+~~~
+
+The method takes the name of the datastore as a parameter.
+
+The "resource" datastore should be refreshed after each update of the main datastore with tasks. For this purpose, we need to get the current tasks datastore and
+define the logic of refreshing the "resource" datastore inside the "onStoreUpdated" event handler:
+
+~~~js
+var tasksStore = gantt.getDatastore("task");
+tasksStore.attachEvent("onStoreUpdated", function(id, item, mode){
+	resourcesStore.refresh();
+});
+~~~
 
 Working with Global Gantt API
 -------------------
 
 There are methods of the global Gantt API that are bound to the default grid, timeline and scrollbar views. In order to adjust these methods to work properly with 
-inner views of the layout (including custom views), you need to bind them to the views using their ids. The methods that depend on the grid or on the timeline will look for
-the views with the specified id.
+inner views of the layout, these methods are bound to default views via their ids. The methods that depend on the grid or on the timeline will look for
+the views with the "grid" and "timeline" ids correspondingly.
 
-For example, to get the position of a task, you should use the api/gantt_gettaskposition.md and the id of the corresponding timeline view:
+For example, to get the position of a task, you should use the api/gantt_gettaskposition.md. Since the method depends on the default timeline, it will look for 
+the view with the id "timeline":
 
 ~~~js
 // the default timeline configuration
-{view: "tasksTimeline", id: "timeline", 
-	scrollX:"scrollHor", scrollY:"scrollVer"}
-
-// getting the position of a task from the default timeline
-gantt.getTaskPosition(task,from,to);
+{view: "timeline", id: "timeline", scrollX:"scrollHor", scrollY:"scrollVer"}
 ~~~
 
+The same logic is true for scrollbars. The API that depend on scrollbars is bound to the default scrollbar view.
 
-The same logic is true for scrollbars. The methods that depend on scrollbars will search for the "scrollbar" views with a certain id.
-
-Thus, to get the current position of a custom scroll, you need to pass the id of the necessary scrollbar to the api/gantt_getscrollstate.md method:
+Thus, to get the current position of the scroll, you need to use the api/gantt_getscrollstate.md method. It will look for the views with the ids "scrollVer" and "scrollHor" 
+for the vertical and horizontal scrollbars:
 
 ~~~js
-// a custom scrollbar configuration
-{view: "scrollbar", scroll: "y", id:"resourceVScroll", width:20}
+// the default vertical scrollbar configuration
+{view: "scrollbar", scroll: "y", id:"scrollVer"}
 
-// getting the state of a custom scroll
-var customScrollPos = gantt.getScrollState("resourceVScroll");
+// the default horizontal scrollbar configuration
+{view: "scrollbar", scroll: "x", id:"scrollHor"}
 ~~~
 
 

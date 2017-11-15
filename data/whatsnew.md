@@ -8,18 +8,14 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ####Functionality
 
-- Public interfaces for Grid and Timeline (Flexible Gantt layout)
+- [Flexible Gantt layout](desktop/layout_config.md)
 - [Server-side integration with REST API](desktop/server_side.md). Check also [tutorials for various server-side platforms](desktop/howtostart_guides.md)
 
-####Documentation
-
-- Content and structure of the [Loading and Storing Tasks](desktop/loading_storing_data.md) section are updated.
 
 ####Styling
 
 - New ["Material" skin](desktop/skins.md#materialskin)
 
-####Bug Fixes
 
 4.2
 ------------
@@ -39,51 +35,29 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - German and Italian locales are updated
 - GIF images in the Gantt skins are replaced with PNG
 
-####Bug Fixes
-
-- Smart rendering – misalignments between timeline chart and lefthand grid after vertical scroll
-- Smart rendering – background misalignments on large timelines in IE
-- Smart rendering – regression with show_chart=false config
-- Time scales – issues with month scale columns sizes
-- drag and drop in IE11 on touch enabled devices
-- Keyboard navigation – various issues
-- Auto scheduling – bugs with unscheduled tasks
-- regression with lightbox toggle controls 
-- dataProcessor – issues with custom headers/payload
-- Chrome – double click handles as drag and drop in some cases
-- minor fixes in locales
-- the bug in the Undo extension preventing blocking of the onBeforeTaskDelete event
-- the error firing from the Fullscreen extension when the fullscreen mode is called before a gantt is initialized
-- the bug with incorrect time rounding during autoScheduling in the *auto_scheduling_initial* mode
-- auto scheduling should place tasks to the closest work time
-- auto scheduling should call full repaint only when multiple tasks need updating
 
 4.1
 ---------
 
 #### Functionality
+
 - [Keyboard navigation](desktop/keyboard_navigation.md)
 - [WAI-ARIA support](desktop/accessibility.md#waiariaattributes)
 - [High-contrast themes](desktop/accessibility.md#highontrastthemes)
 - Updated [Auto Scheduling](desktop/auto_scheduling.md) and [Critical Path](desktop/critical_path.md) calculations (PRO version)
 
 ####Configuration
+
 - Performance improvements for [worktime calculation](desktop/working_time.md) and [timescale rendering](desktop/performance.md)
 - [Public method for unsetting worktimes](api/gantt_unsetworktime.md) added
 - [API events for QuickInfo popup](api/refs/gantt_events.md) added
 - [Croatian locale](desktop/localization.md#predefinedlocales) added
 - [Turkish locale](desktop/localization.md#predefinedlocales) updated
 
-####Bug Fixes
-
-- The bug with exporting custom work times using PDF/PNG export service 
-- Redrawing vertical markers using gantt.updateMarker
-- The bug with gantt.showTask bug in smart rendering mode
-- The bugs with skip_off_time config and multi-tier scales configurations
-- dataProcessor JSON format and REST mode support
 
 4.0
 ---------
+
 #### Functionality
 - [Smart rendering](desktop/performance.md#smartrendering) for big datasets 
 - [Undo/redo](desktop/undo_redo.md) extensions
@@ -97,9 +71,6 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Public API cleanup](migrating.md#3x40) - redundant global objects removed, conflicts with dhtmlxSuite resolved
 - Public helpers for [popup messages](desktop/message_boxes.md) added
 
-#### Bug Fixes
-
-- Minor bug fixes
 
 
 3.3

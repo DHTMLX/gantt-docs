@@ -47,6 +47,7 @@ Properties
 - api/gantt_keyboard_navigation_config.md - enables keyboard navigation in gantt
 - api/gantt_keyboard_navigation_cells_config.md - enables keyboard navigation by cells
 - api/gantt_layer_attribute_config.md - sets the name of the attribute of the task layer's DOM element
+- api/gantt_layout_config.md - 
 - api/gantt_lightbox_config.md - specifies the lightbox object
 - api/gantt_lightbox_additional_height_config.md - increases the height of the lightbox
 - api/gantt_link_arrow_size_config.md - sets the size of the link arrow
@@ -77,6 +78,7 @@ Properties
 - api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of leading/closing empty space
 - api/gantt_scale_unit_config.md - sets the unit of the time scale (X-Axis)
 - api/gantt_scroll_on_click_config.md - specifies whether the timeline area shall be scrolled while selecting to display the selected task
+- api/gantt_scroll_size_config.md - 
 - api/gantt_select_task_config.md - enables selection of tasks in the Gantt chart
 - api/gantt_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
 - api/gantt_show_chart_config.md - shows the chart (timeline) area of the Gantt chart
@@ -119,7 +121,7 @@ Properties
 - api/gantt_undo_types_config.md - sets the types of entities for which the Undo operation will be applied
 - api/gantt_wai_aria_attributes_config.md - enables WAI-ARIA support to make the component recognizable for screen readers
 - api/gantt_work_time_config.md - enables calculating the duration of tasks in working time instead of calendar time
-- api/gantt_xml_date_config.md - sets the date format that is used to parse data from the data set
+- api/gantt_xml_date_config.md - defines date formats that are used to parse data from a data set and to send data to a server
 }}
 
 @index:
@@ -167,6 +169,7 @@ Properties
 - api/gantt_keyboard_navigation_config.md
 - api/gantt_keyboard_navigation_cells_config.md
 - api/gantt_layer_attribute_config.md
+- api/gantt_layout_config.md
 - api/gantt_lightbox_config.md
 - api/gantt_lightbox_additional_height_config.md
 - api/gantt_link_arrow_size_config.md
@@ -197,6 +200,7 @@ Properties
 - api/gantt_scale_offset_minimal_config.md
 - api/gantt_scale_unit_config.md
 - api/gantt_scroll_on_click_config.md
+- api/gantt_scroll_size_config.md
 - api/gantt_select_task_config.md
 - api/gantt_server_utc_config.md
 - api/gantt_show_chart_config.md

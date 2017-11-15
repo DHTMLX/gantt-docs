@@ -7,7 +7,7 @@ Start
     New version brings you new functionality and extended API
     </p>
     <ul>
-		<li><a href="">Public interfaces for Grid and Timeline</a></li>
+		<li><a href="desktop/layout_config.md">Flexible Gantt layout</a></li>
         <li><a href="desktop/server_side.md">Server-side integration with REST API</a></li>
         <li><a href="desktop/skins.md#materialskin">New Material skin</a></li>
 	</ul>
