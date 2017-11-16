@@ -9,6 +9,7 @@ dhtmlxGantt provides several predefined skins that you can use to change the ove
 4. [Broadway](desktop/skins.md#broadwayskin)
 5. [Contrast Black](desktop/skins.md#contrastblackskin) 
 6. [Contrast White](desktop/skins.md#contrastwhiteskin)
+7. [Material](desktop/skins.md#materialskin)
 
 Each skin requires including its specific files.
 
@@ -88,6 +89,15 @@ To apply the 'Contrast White' skin, include the related CSS file:
 06_skins/08_high_contrast_white.html
 }}
 
+'Material' skin
+--------------------
 
+To apply the 'Material' skin, include the related CSS file:
 
+- **dhtmlxgantt_material.css**
 
+<img src="desktop/gantt_material_skin.png"/>
+
+{{sample
+06_skins/09_material.html
+}}

@@ -87,7 +87,8 @@ gantt.exportToMSProject({
 });
 ~~~
 
-The properties of this object correspond to the appropriate properties of the [Task entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx), here is a list of supported [properties](desktop/tags.md#tagsthatcanberepresentedinthetasksobject).
+The properties of this object correspond to the appropriate properties of the [Task entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx), 
+here is a list of supported [properties](desktop/tags.md#tagsthatcanberepresentedinthetasksobject).
 The properties may contain either fixed values or functions that will be called for each task in the dataset when export is called.
 
 
@@ -171,10 +172,12 @@ The response will contain a JSON of the following structure:
 }
 ~~~
 
- - data - gantt data object desktop/supported_data_formats.md#json. Each task has the following properties: id, open, parent, progress, start_date, text, resource. Dates are stringified in the "%Y-%m-%d %H:%i" format.
- - config - gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
- - resources - array of objects {id:string, name:string} that represent list of resources from the project file.
- - worktime - object containing the working time settings from the project calendar.
+ 
+- data - gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: id, open, parent, progress, start_date, text, resource. 
+Dates are stringified in the "%Y-%m-%d %H:%i" format. 
+- config - gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
+- resources - array of objects {id:string, name:string} that represent list of resources from the project file.
+- worktime - object containing the working time settings from the project calendar.
 
 
 ##Import settings
@@ -203,8 +206,8 @@ gantt.importFromMSProject({
 
 ###Getting properties of the Project
 
-Extract arbitrary properties of [the Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx) into the **config** property of the output, here is the list of supported 
-[properties](desktop/tags.md#projectproperties).
+Extract arbitrary properties of [the Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx) 
+into the **config** property of the output, here is the list of supported [properties](desktop/tags.md#projectproperties).
 
  - **projectProperties** - specify an array of project properties that should be put into the response.
 
@@ -233,7 +236,8 @@ gantt.importFromMSProject({
 
 ###Getting tasks properties
 
-Extract arbitrary properties of the [Task entities](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx), here is the list of supported [properties](desktop/tags.md#taskproperties).
+Extract arbitrary properties of the [Task entities](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx), 
+here is the list of supported [properties](desktop/tags.md#taskproperties).
 To get project fields, the "projectProperties" input with an array of necessary fields can be sent to the server.
 
  - **taskProperties** - specify an array of additional task properties to be imported.

@@ -5,7 +5,7 @@ Starting from version 4.0 Gantt Chart allows you to undo/redo the made changes. 
 
 ~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
-<script src="codebase/ext/undo.js"></script>  /*!*/
+<script src="codebase/ext/dhtmlxgantt_undo.js"></script>  /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxgantt.css" type="text/css">
 ~~~
 

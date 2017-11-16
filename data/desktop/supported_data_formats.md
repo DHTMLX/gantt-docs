@@ -1,11 +1,14 @@
-Exploring the Supported Data Formats
+Exploring Supported Data Formats
 =======================================
-dhtmlxGantt can load data of 2 formats which are:
 
-1. JSON;
-2. XML ( dhtmlxGantt 2.0+).
-3. XML ( dhtmlxGantt < 2.0)
+dhtmlxGantt can load data in the following formats:
 
+1. [JSON](desktop/supported_data_formats.md#json);
+2. [XML (dhtmlxGantt 2.0+)](desktop/supported_data_formats.md#xmldhtmlxgantt20).
+3. [JSON with Collections](desktop/supported_data_formats.md#jsonwithcollections)
+4. [XML (dhtmlxGantt < 2.0)](desktop/supported_data_formats.md#xmldhtmlxganttlt20)
+
+You can also [add any custom properties to the Gantt data](desktop/supported_data_formats.md#custompropertiesindata).
 
 
 JSON
@@ -29,7 +32,8 @@ JSON
   ]
 }
 ~~~
-XML ( dhtmlxGantt 2.0+)
+
+XML (dhtmlxGantt 2.0+)
 ---------------------------------
 
 ~~~xml
@@ -55,15 +59,16 @@ XML ( dhtmlxGantt 2.0+)
 </data>
 ~~~
 
-Adding custom properties to the data
+Custom Properties in Data
 -------------------------------
-Let's consider an example above with 2 custom  properties: 
+
+Let's consider the above examples with 2 custom properties: 
 
 - **priority** - the priority of the task.
 - **holder**  - the name of the person assigned to the task.
 
-
 ####JSON
+
 ~~~js
 {
 	data:[
@@ -83,7 +88,7 @@ Let's consider an example above with 2 custom  properties:
 }
 ~~~
 
-####XML ( dhtmlxGantt 2.0+)
+####XML (dhtmlxGantt 2.0+)
 
 ~~~xml
 <data>
@@ -115,7 +120,43 @@ Let's consider an example above with 2 custom  properties:
 
 ~~~
 
-##  XML ( dhtmlxGantt < 2.0)
+
+JSON with Collections
+------------------
+
+JSON data can contain any number of additional arrays in the "collections" property of the *data* object.
+
+~~~js
+{
+	data:[
+		{id:1, text:"Project #2", start_date:"01-04-2013", duration:18, 
+			progress:0.4, open: true},
+		{id:2, text:"Task #1", 	  start_date:"02-04-2013", duration:8, 
+			progress:0.6, parent:1},
+		{id:3, text:"Task #2",    start_date:"11-04-2013", duration:8, 
+			progress:0.6, parent:1}
+		],
+	links:[
+		{ id:1, source:1, target:2, type:"1"},
+		{ id:2, source:2, target:3, type:"0"},
+		{ id:3, source:3, target:4, type:"0"},
+		{ id:4, source:2, target:5, type:"2"}
+	],
+	"collections": { /*!*/
+		"sections":[
+			{"value":"1","label":"Simple"},
+			{"value":"2","label":"Complex"},
+			{"value":"3","label":"Unknown"}
+		]
+	}
+}
+~~~
+
+The applied collections can be accessed by their names with the help of the [gantt.serverList](api/gantt_serverlist.md) method.
+
+XML (dhtmlxGantt < 2.0)
+--------------------
+
 ~~~js
 <?xml version="1.0" encoding="UTF-8"?>
 <projects>
@@ -167,3 +208,5 @@ Let's consider an example above with 2 custom  properties:
   </project>
 </projects>
 ~~~
+
+

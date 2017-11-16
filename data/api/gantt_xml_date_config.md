@@ -1,6 +1,7 @@
 xml_date
 =============
-@short:sets the date format that is used to parse data from the data set
+
+@short: defines date formats that are used to parse data from a data set and to send data to a server
 	
 
 @type: string
@@ -18,3 +19,6 @@ gantt.load("../data/tasks.json");
 
 @related:
 	desktop/date_format.md
+@relatedapi:
+	api/gantt_xml_date_template.md
+	api/gantt_xml_format_template.md

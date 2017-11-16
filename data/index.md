@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 4.2!</h2>
+    <h2>Meet Gantt 5.0!</h2>
     
     <p>
     New version brings you new functionality and extended API
     </p>
     <ul>
-		<li><a href="desktop/working_time.md#multipleworktimecalendars">Work Time Calendars at Task/Resource Levels</a></li>
-        <li><a href="desktop/specifying_columns.md#showingthewbscodeofatask">WBS code (outline numbers) Calculation</a></li>
-        <li><a href="desktop/dnd.md#autoscrollduringtasksdragging">Autoscroll for Drag and Drop Operations</a></li>
+		<li><a href="desktop/layout_config.md">Flexible Gantt layout</a></li>
+        <li><a href="desktop/server_side.md">Server-side integration with REST API</a></li>
+        <li><a href="desktop/skins.md#materialskin">New Material skin</a></li>
 	</ul>
 
     <p class='action_buttons'>
@@ -31,7 +31,7 @@ Start
     <div class='hot-right'>
     	Check also
     	<a class='first' href='https://docs.dhtmlx.com/scheduler'>Scheduler</a>
-    	<a class='second' href='http://scheduler-net.com/'>Scheduler.Net</a>
+    	<a class='second' href='https://docs.dhtmlx.com/pivot/index.html'>Pivot</a>
 	</div>
     
     <form method="get" action="search.php">
@@ -49,7 +49,6 @@ Start
 - whatsnew.md
 - migrating.md
 - overview.md
-- desktop/how_to_start.md
 - desktop/guides.md
 - faq.md
 

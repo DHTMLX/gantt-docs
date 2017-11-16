@@ -1,5 +1,6 @@
-Initializing a Gantt Chart on a Page
+Initializing Gantt Chart on a Page
 ================================================
+
 When you develop an application with dhtmlxGantt, the first thing you need is to initialize or, simply speaking, to display the Gantt chart on the page.
 
 To display a basic Gantt on the page, follow 3 steps: 

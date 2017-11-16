@@ -9,18 +9,18 @@
 	
 	<script src="../../gantt/codebase/dhtmlxgantt.js" type="text/javascript" charset="utf-8"></script>
 
-	<script src="../../gantt/codebase/ext/tooltip.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/quick_info.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/critical_path.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/marker.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/pdf.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/multiselect.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/grouping.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/auto_scheduling.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/fullscreen.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/undo.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/smart_rendering.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/keyboard_navigation.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/dhtmlxgantt_tooltip.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/dhtmlxgantt_quick_info.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/dhtmlxgantt_critical_path.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/dhtmlxgantt_marker.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/dhtmlxgantt_pdf.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/dhtmlxgantt_multiselect.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/dhtmlxgantt_grouping.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/dhtmlxgantt_auto_scheduling.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/dhtmlxgantt_fullscreen.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/dhtmlxgantt_undo.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/dhtmlxgantt_smart_rendering.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../gantt/codebase/ext/dhtmlxgantt_keyboard_navigation.js" type="text/javascript" charset="utf-8"></script>
 
 	<script type="text/javascript">
 		(function(){
@@ -44,10 +44,7 @@
 
 			//fill templates
 			gantt.skin = "terrace";
-			gantt.ev_ontemplatesready = null;
-			gantt._init_skin();
-			gantt._init_templates();
-
+			gantt.init("gantt_temp");
 			Freid.analize();
 		};
 	</script>
@@ -66,5 +63,6 @@
 		<td align="left" valign="top" id="views_here_id"></td>
 		<td align="left" valign="top" id="methods_here_id"></td>
 	</table>
+	<div id="gantt_temp" style="position:absolute; width:50px;height:50px;top:-9999px; left:-9999px;"></div>
 	</body>
 </html> 

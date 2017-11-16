@@ -6,7 +6,7 @@ skins
 @type:object
 
 @example:
-gantt.skins;//->{skyblue: Object, meadow: Object, terrace: Object, broadway: Object}
+gantt.skins; //->{skyblue: Object, meadow: Object, terrace: Object, broadway: Object}
 
 @template:	api_config
 @descr:
@@ -14,3 +14,6 @@ gantt.skins;//->{skyblue: Object, meadow: Object, terrace: Object, broadway: Obj
 
 @relatedapi:
 	api/gantt_skin_other.md
+    
+@related:
+desktop/skins.md

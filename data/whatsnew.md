@@ -3,6 +3,20 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+5.0
+---------
+
+####Functionality
+
+- [Flexible Gantt layout](desktop/layout_config.md)
+- [Server-side integration with REST API](desktop/server_side.md). Check also [tutorials for various server-side platforms](desktop/howtostart_guides.md)
+
+
+####Styling
+
+- New ["Material" skin](desktop/skins.md#materialskin)
+
+
 4.2
 ------------
 
@@ -21,51 +35,29 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - German and Italian locales are updated
 - GIF images in the Gantt skins are replaced with PNG
 
-####Bug Fixes
-
-- Smart rendering – misalignments between timeline chart and lefthand grid after vertical scroll
-- Smart rendering – background misalignments on large timelines in IE
-- Smart rendering – regression with show_chart=false config
-- Time scales – issues with month scale columns sizes
-- drag and drop in IE11 on touch enabled devices
-- Keyboard navigation – various issues
-- Auto scheduling – bugs with unscheduled tasks
-- regression with lightbox toggle controls 
-- dataProcessor – issues with custom headers/payload
-- Chrome – double click handles as drag and drop in some cases
-- minor fixes in locales
-- the bug in the Undo extension preventing blocking of the onBeforeTaskDelete event
-- the error firing from the Fullscreen extension when the fullscreen mode is called before a gantt is initialized
-- the bug with incorrect time rounding during autoScheduling in the *auto_scheduling_initial* mode
-- auto scheduling should place tasks to the closest work time
-- auto scheduling should call full repaint only when multiple tasks need updating
 
 4.1
 ---------
 
 #### Functionality
+
 - [Keyboard navigation](desktop/keyboard_navigation.md)
 - [WAI-ARIA support](desktop/accessibility.md#waiariaattributes)
 - [High-contrast themes](desktop/accessibility.md#highontrastthemes)
 - Updated [Auto Scheduling](desktop/auto_scheduling.md) and [Critical Path](desktop/critical_path.md) calculations (PRO version)
 
 ####Configuration
+
 - Performance improvements for [worktime calculation](desktop/working_time.md) and [timescale rendering](desktop/performance.md)
 - [Public method for unsetting worktimes](api/gantt_unsetworktime.md) added
 - [API events for QuickInfo popup](api/refs/gantt_events.md) added
 - [Croatian locale](desktop/localization.md#predefinedlocales) added
 - [Turkish locale](desktop/localization.md#predefinedlocales) updated
 
-####Bug Fixes
-
-- The bug with exporting custom work times using PDF/PNG export service 
-- Redrawing vertical markers using gantt.updateMarker
-- The bug with gantt.showTask bug in smart rendering mode
-- The bugs with skip_off_time config and multi-tier scales configurations
-- dataProcessor JSON format and REST mode support
 
 4.0
 ---------
+
 #### Functionality
 - [Smart rendering](desktop/performance.md#smartrendering) for big datasets 
 - [Undo/redo](desktop/undo_redo.md) extensions
@@ -79,9 +71,6 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Public API cleanup](migrating.md#3x40) - redundant global objects removed, conflicts with dhtmlxSuite resolved
 - Public helpers for [popup messages](desktop/message_boxes.md) added
 
-#### Bug Fixes
-
-- Minor bug fixes
 
 
 3.3
@@ -94,8 +83,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 #### Configuration
 - Initial support for [Content Security Policy](desktop/content_security_policy.md)
-- A possibility of specifying [per column grid sorting](desktop/sorting.md#percolumngridsorting) settings
-- Improved branch ordering feature - [D'n'D between levels](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure) 
+- A possibility of specifying [per column Grid sorting](desktop/sorting.md#percolumngridsorting) settings
+- Improved branch ordering feature - [drag-n-drop between levels](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure) 
 
 #### API
 - [REST mode for ajax loading/saving](desktop/server_side.md#savingdatafromrestserver)
@@ -109,7 +98,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Grouping tasks](desktop/grouping.md) (PRO version)
 - [Multi-task selection](desktop/multiselection.md)
 - [Data export to iCal and Excel formats](desktop/excel.md)
-- [Major performance improvement of worktime and critical path calculations](desktop/performance.md) 
+- [Major performance improvement of work time and critical path calculations](desktop/performance.md)
+
 
 #### Configuration
 - [A possibility to set the range for the year selector in the lightbox](desktop/time.md#alistofproperties)
@@ -134,8 +124,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 #### Bug Fixes
 - Incorrect behavior of the tooltip on expanding/collapsing of task tree
-- Order of API events during gantt initialization
-- Incorrect behavior of vertical markers when gantt is cleared or reinitialized
+- Order of API events during Gantt initialization
+- Incorrect behavior of vertical markers when Gantt is cleared or reinitialized
 
 
 3.0
@@ -214,4 +204,4 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - [A lot of events added](api/refs/gantt.md#events)
 - [Templates](api/refs/gantt.md#templates) and [configuration options](api/refs/gantt.md#properties) added
-- [API simplified, it uses a single gantt object instead of a bunch of different objects](migrating.md)
+- [API simplified, it uses a single Gantt object instead of a bunch of different objects](migrating.md)

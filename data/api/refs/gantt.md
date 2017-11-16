@@ -31,10 +31,12 @@ Gantt API
 - api/gantt_clearall.md - removes all tasks from the Gantt chart
 - api/gantt_close.md - closes the branch with the specified id
 - api/gantt_collapse.md - collapses gantt from the full screen mode to the normal mode
+- api/gantt_columnindexbydate.md - returns the index of the column by the date
 - api/gantt_confirm.md - calls a confirm message box
 - api/gantt_copy.md - creates a deep copy of provided object
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
 - api/gantt_createcalendar.md - creates a working calendar
+- api/gantt_createdatastore.md - creates a datastore according to the provided configuration
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
 - api/gantt_dataprocessor.md - dataProcessor constructor
 - api/gantt_datefrompos.md - gets the date of the specified horizontal  position in the chart area
@@ -45,17 +47,19 @@ Gantt API
 - api/gantt_deletetask.md - deletes the specified  task
 - api/gantt_detachallevents.md - detaches all events from dhtmlxGantt (both custom and inner)
 - api/gantt_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent() method)
+- api/gantt_eachparent.md - iterates over all parent tasks of the specified task in the Gantt chart
 - api/gantt_eachselectedtask.md - iterates over all selected tasks in the Gantt chart
-- api/gantt_eachtask.md - iterates over specified tasks in the Gantt chart
+- api/gantt_eachtask.md - iterates over all child tasks in the Gantt chart
 - api/gantt_event.md - attaches an event handler to an HTML element
 - api/gantt_eventremove.md - removes an event handler from an HTML element
 - api/gantt_expand.md - expands gantt to the full screen mode
 - api/gantt_findcycles.md - returns all dependency loops in the chart
 - api/gantt_focus.md - sets focus on the gantt
-- api/gantt_getcalendar.md - gets the global calendar of tasks
+- api/gantt_getcalendar.md - gets worktime calendar by id
 - api/gantt_getcalendars.md - gets all the calendars added into Gantt
 - api/gantt_getchildren.md - returns the 1st-level child tasks of the specified parent branch
 - api/gantt_getclosestworktime.md - returns the closest working time
+- api/gantt_getdatastore.md - returns the configuration object of a datastore
 - api/gantt_getglobaltaskindex.md - get the index of a task in the tree
 - api/gantt_getgridcolumn.md - gets the configuration object of a column
 - api/gantt_getgridcolumns.md - gets columns of the Gantt chart
@@ -76,6 +80,7 @@ Gantt API
 - api/gantt_getprev.md - returns the id of the previous item (no matter what the level of nesting is: the same or different)
 - api/gantt_getprevsibling.md - returns the id of the previous task of the same level
 - api/gantt_getredostack.md - returns the stack of stored redo commands
+- api/gantt_getscale.md - returns the configuration of the time scale
 - api/gantt_getscrollstate.md - returns the scroll position
 - api/gantt_getselectedid.md - returns the id of the selected task
 - api/gantt_getselectedtasks.md - returns an array of the currently selected tasks
@@ -85,14 +90,17 @@ Gantt API
 - api/gantt_getstate.md - gets the current state of the Gantt chart
 - api/gantt_getsubtaskdates.md - calculates the combined start/end dates of tasks nested in a project or another task
 - api/gantt_gettask.md - returns the task object
+- api/gantt_gettaskbyindex.md - returns a task configuration object by its index
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period
 - api/gantt_gettaskcalendar.md - gets a calendar assigned to the specified task (a task level calendar)
 - api/gantt_gettaskcount.md - gets the number of tasks that are currently loaded in the gantt
+- api/gantt_gettaskheight.md - returns the visible height of a task
 - api/gantt_gettaskindex.md - get the index of a task in the branch
 - api/gantt_gettasknode.md - returns the HTML element of the task bar
 - api/gantt_gettaskposition.md - calculates the position and size of the task's DOM element in the timeline area
 - api/gantt_gettaskrownode.md - returns the HTML element of the task row in the table
 - api/gantt_gettasktop.md - gets the top position of the task's DOM element in the timeline area
+- api/gantt_gettasktype.md - returns the type of a task
 - api/gantt_getundostack.md - returns the stack of stored undo commands
 - api/gantt_getvisibletaskcount.md - gets the number of tasks visible on the screen (those that are not collapsed)
 - api/gantt_getwbscode.md - returns the WBS code (the outline number) of a task
@@ -109,7 +117,9 @@ Gantt API
 - api/gantt_iscriticaltask.md - checks whether the specified task is critical
 - api/gantt_islinkallowed.md - checks whether the specified link is correct
 - api/gantt_islinkexists.md - checks whether the specified link exists
+- api/gantt_isreadonly.md - checks whether the specified task or link is read-only
 - api/gantt_isselectedtask.md - checks whether the specified task is currently selected
+- api/gantt_issummarytask.md - checks whether the specified task is summary
 - api/gantt_istaskexists.md - checks whether the specified task exists
 - api/gantt_istaskvisible.md - checks whether the specifies task is currently rendered in the Gantt chart
 - api/gantt_isunscheduledtask.md - checks if the task is unscheduled
@@ -220,7 +230,8 @@ Gantt API
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
 - api/gantt_onerror_event.md - fires when api/gantt_assert.md receives 'false' value, i.e. when assertion fails
 - api/gantt_onexpand_event.md - fires when gantt is expended to full screen
-- api/gantt_onganttready_event.md - fires after the dhtmlxGantt initialization is complete but the Gantt chart is not rendered on the page yet.
+- api/gantt_onganttlayoutready_event.md - fires after the Gantt layout is ready, but before it is rendered
+- api/gantt_onganttready_event.md - fires after the dhtmlxGantt initialization is complete but the Gantt chart is not rendered on the page yet
 - api/gantt_onganttrender_event.md - fires after the Gantt chart was rendered on the page
 - api/gantt_onganttscroll_event.md - fires when the Gantt chart is scrolled to a particular point
 - api/gantt_ongridheaderclick_event.md - fires when the user clicks on the grid's header
@@ -309,6 +320,7 @@ Gantt API
 - api/gantt_keyboard_navigation_config.md - enables keyboard navigation in gantt
 - api/gantt_keyboard_navigation_cells_config.md - enables keyboard navigation by cells
 - api/gantt_layer_attribute_config.md - sets the name of the attribute of the task layer's DOM element
+- api/gantt_layout_config.md - specifies the layout object
 - api/gantt_lightbox_config.md - specifies the lightbox object
 - api/gantt_lightbox_additional_height_config.md - increases the height of the lightbox
 - api/gantt_link_arrow_size_config.md - sets the size of the link arrow
@@ -339,6 +351,7 @@ Gantt API
 - api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of leading/closing empty space
 - api/gantt_scale_unit_config.md - sets the unit of the time scale (X-Axis)
 - api/gantt_scroll_on_click_config.md - specifies whether the timeline area shall be scrolled while selecting to display the selected task
+- api/gantt_scroll_size_config.md - set the sizes of the vertical (width) and horizontal (height) scrolls
 - api/gantt_select_task_config.md - enables selection of tasks in the Gantt chart
 - api/gantt_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
 - api/gantt_show_chart_config.md - shows the chart (timeline) area of the Gantt chart
@@ -381,7 +394,7 @@ Gantt API
 - api/gantt_undo_types_config.md - sets the types of entities for which the Undo operation will be applied
 - api/gantt_wai_aria_attributes_config.md - enables WAI-ARIA support to make the component recognizable for screen readers
 - api/gantt_work_time_config.md - enables calculating the duration of tasks in working time instead of calendar time
-- api/gantt_xml_date_config.md - sets the date format that is used to parse data from the data set
+- api/gantt_xml_date_config.md - defines date formats that are used to parse data from a data set and to send data to a server
 }}
 
 
