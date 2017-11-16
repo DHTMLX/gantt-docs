@@ -1,10 +1,6 @@
 getTaskByIndex
 =============
 
-
-@todo:
-	check 
-
 @short:
 	returns a task configuration object by its index
 

@@ -1,10 +1,6 @@
 isSummaryTask
 =============
 
-
-@todo:
-	check 
-
 @short:
 	checks whether the specified task is summary
 

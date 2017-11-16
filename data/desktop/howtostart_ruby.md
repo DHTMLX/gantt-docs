@@ -12,6 +12,8 @@ If you use some other technology, check the list of available integration varian
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 
+Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-rails) on GitHub.
+
 Step 1. Creating a Project
 ------------------------
 
@@ -602,5 +604,4 @@ end
 ~~~
 
 
-@todo:
-  add github link
+

@@ -14,6 +14,8 @@ We will make use of ASP.NET MVC 5 web platform and Web API 2 controller for REST
 To organize communication with database we will use the [Entity Framework](http://www.asp.net/entity-framework).
 We will build our application with the help of the Visual Studio IDE. 
 
+Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-dotnet) on GitHub.
+
 
 Step 1. Creating a Project
 -----------------------------
@@ -981,7 +983,3 @@ HTTP PUT and DELETE requests return 405 or 401 error when an app is running on I
 The issue may be caused by the **WebDAV** module which can conflict with RESTful handlers. 
 
 As a common solution, the module can be disabled from the **web.config** file. More details are given [here](https://forums.iis.net/t/1166025.aspx).
-
-
-@todo:
-	add github link.

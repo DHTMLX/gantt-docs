@@ -1,10 +1,6 @@
 columnIndexByDate
 =============
 
-
-@todo:
-	check 
-
 @short:
 	returns the index of the column by the date 
 

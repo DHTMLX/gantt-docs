@@ -4,9 +4,17 @@ Using Gantt Layout
 Starting from version 5.0, Gantt provides the possibility to specify a configurable layout and arrange the elements of the component as inner views of a layout.
 It allows you to use additional timelines and grids to make a flexible gantt chart structure and define various schemes of arranging elements.
 
-For example, you can place one more grid to the right side of the timeline or add another grid and a timeline below the default ones.
+For example, you can place one more grid to the right side of the timeline:
+
+<img src="desktop/gantt_two_grids.png">
+
+{{sample 10_layout/01_rightside_columns.html}}
+
+or add another grid and a timeline below the default ones.
 
 <img src="desktop/gantt_resource_panel.png">
+
+{{sample 10_layout/02_resource_panel.html}}
 
 Applying Default Layout
 ------------------
@@ -80,24 +88,24 @@ gantt.config.layout = {
   	rows:[
    		{
     	   cols: [
-     		{
+     		{             
         	  view: "grid", 
-              id: "newGrid", 
+              id: "grid", 
               scrollY:"scrollVer"
          	},
      		{ resizer: true, width: 1 },
      		{
         	  view: "timeline", 
-              id: "newTimeline", 
+              id: "timeline", 
               scrollY:"scrollVer"
         	},
-            {
+     	    {
               view: "scrollbar", 
               scroll: "y", 
               id:"scrollVer"
-            }
-     	]}
-    ]
+           	}
+	    ]}
+  	]
 }
 ~~~
 
@@ -125,7 +133,7 @@ gantt.config.layout = {
 		{
           // the default layout
 		  cols: [
-			{view: "tasks", id: "grid", 
+			{view: "grid", id: "grid", 
                 config: mainGridConfig, scrollY:"scrollVer"},
 			{resizer: true, width: 1},
 			{view: "timeline", id: "timeline", 
@@ -169,7 +177,7 @@ Custom grid and timeline have additional properties:
 
 ###Adding a datastore for custom views
 
-It is also necessary to add a separate datastore to populate custom views with corresponding data. To create a new datastore, use the method 
+To populate custom views with corresponding data, you need to add a separate datastore. To create a new datastore, use the method 
 api/gantt_createdatastore.md and specify the configuration of the datastore:
 
 ~~~js
@@ -182,9 +190,9 @@ var resourcesStore = gantt.createDatastore({
 });
 ~~~
 
-In the above example we've added a datastore named "resource".
+In the above example a datastore named "resource" is added.
 
-To load data into custom views, use the api/gantt_parse.md method:
+To load data into custom views from the datastore, use the api/gantt_parse.md method:
 
 ~~~js
 resourcesStore.parse([// resources
@@ -203,42 +211,59 @@ var tasksStore = gantt.getDatastore("task");
 
 The method takes the name of the datastore as a parameter.
 
-The "resource" datastore should be refreshed after each update of the main datastore with tasks. For this purpose, we need to get the current tasks datastore and
-define the logic of refreshing the "resource" datastore inside the "onStoreUpdated" event handler:
+Using HTML as Inner View
+------------------------
+
+You can also use some custom HTML as inner views of the Gantt layout. For example:
 
 ~~~js
-var tasksStore = gantt.getDatastore("task");
-tasksStore.attachEvent("onStoreUpdated", function(id, item, mode){
-	resourcesStore.refresh();
-});
+gantt.config.layout = {
+ css: "gantt_container",
+  rows: [
+  	{
+   	  cols: [
+    	{view: "grid", id: "grid", scrollX: "scrollHor", scrollY: "scrollVer"},
+    	{ html:"<div class='custom-content'>custom content</div>", 
+    		css:"custom-content", width:50},
+    	{view: "timeline", id: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
+    	{ html:"<div class='custom-content'>custom content</div>", 
+    		css:"custom-content", width:50},
+    	{view: "scrollbar", scroll: "y", id: "scrollVer"}
+   	  ]
+    },
+    {view: "scrollbar", scroll: "x", id: "scrollHor"}
+ ]
+}
 ~~~
+
 
 Working with Global Gantt API
 -------------------
 
-There are methods of the global Gantt API that are bound to the default grid, timeline and scrollbar views. In order to adjust these methods to work properly with 
-inner views of the layout, these methods are bound to default views via their ids. The methods that depend on the grid or on the timeline will look for
-the views with the "grid" and "timeline" ids correspondingly.
-
-For example, to get the position of a task, you should use the api/gantt_gettaskposition.md. Since the method depends on the default timeline, it will look for 
-the view with the id "timeline":
+The public API of the gantt object contains methods that rely on a certain layout configuration. 
+Currently, in order for layout to work as expected, it must contain a grid and timeline with fixed ids and a pair of scrollbars:
 
 ~~~js
-// the default timeline configuration
-{view: "timeline", id: "timeline", scrollX:"scrollHor", scrollY:"scrollVer"}
+gantt.config.layout = {
+ css: "gantt_container",
+  rows: [
+  {
+   cols: [
+    {view: "grid", id: "grid", scrollX: "scrollHor", scrollY: "scrollVer"},
+    {view: "timeline", id: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
+    {view: "scrollbar", scroll: "y", id: "scrollVer"}
+   ]
+  },
+  {view: "scrollbar", scroll: "x", id: "scrollHor"}
+ ]
+};
 ~~~
 
-The same logic is true for scrollbars. The API that depend on scrollbars is bound to the default scrollbar view.
+The layout can contain any additional number of views.
 
-Thus, to get the current position of the scroll, you need to use the api/gantt_getscrollstate.md method. It will look for the views with the ids "scrollVer" and "scrollHor" 
-for the vertical and horizontal scrollbars:
 
-~~~js
-// the default vertical scrollbar configuration
-{view: "scrollbar", scroll: "y", id:"scrollVer"}
 
-// the default horizontal scrollbar configuration
-{view: "scrollbar", scroll: "x", id:"scrollHor"}
-~~~
+
+
 
 

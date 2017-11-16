@@ -1,10 +1,6 @@
 getTaskHeight
 =============
 
-
-@todo:
-	check 
-
 @short:
 	returns the visible height of a task
 
@@ -15,7 +11,7 @@ getTaskHeight
 
 
 @example:
-var height = gantt.getTaskHeight();
+var height = gantt.getTaskHeight(); // -> 30
 
 @template:	api_method
 @descr:

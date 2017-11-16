@@ -12,7 +12,7 @@ There are tutorials intended for building server-side integration with the help 
 
 We will use the [Slim](http://www.slimframework.com/) framework for routing and MySQL as a data storage. CRUD logic will rely on PDO and will be generic enough to be usable with any other framework.
 
-You can have a look at the [ready demo on GitHub](https://github.com/DHTMLX/gantt-slim-mysql). Follow the step-by-step guide to create such an application.
+You can have a look at the [ready demo on GitHub](https://github.com/DHTMLX/gantt-howto-php). Follow the step-by-step guide to create such an application.
 
 Step 1. Initializing the Project
 -----------------------
@@ -610,11 +610,9 @@ You can check [a ready demo](https://github.com/DHTMLX/gantt-node-mysql) on GitH
 
 Using dhtmlxConnector
 ---------------
+
 Alternatively, a PHP backend can also be implemented using the [dhtmlxConnector library](https://docs.dhtmlx.com/connector__php__index.html). 
 You can find a detailed tutorial [here](desktop/howtostart_connector.md). 
 
 @index: 
 - desktop/howtostart_connector.md
-
-@todo:
- update github link

@@ -12,7 +12,7 @@ If you use some other technology, check the list of available integration varian
 Our implementation of Gantt with Node.js will be based on REST API that will be used for communication with a server. 
 Node.js has a set of ready-made solutions, so we won't have to code everything from the very beginning.
 
-Have a look at the [demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.
+Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-node) on GitHub.
 
 Step 1. Creating a Project
 -------------------------------
@@ -619,6 +619,3 @@ function updateOrder(taskId, target){
 ~~~
 
 You can check [a ready demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.
-
-@todo:
- update github link

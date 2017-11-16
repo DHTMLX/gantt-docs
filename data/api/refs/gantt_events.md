@@ -56,8 +56,8 @@ Events
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
 - api/gantt_onerror_event.md - fires when api/gantt_assert.md receives 'false' value, i.e. when assertion fails
 - api/gantt_onexpand_event.md - fires when gantt is expended to full screen
-- api/gantt_onganttlayoutready_event.md - 
-- api/gantt_onganttready_event.md - fires after the dhtmlxGantt initialization is complete but the Gantt chart is not rendered on the page yet.
+- api/gantt_onganttlayoutready_event.md - fires after the Gantt layout is ready, but before it is rendered
+- api/gantt_onganttready_event.md - fires after the dhtmlxGantt initialization is complete but the Gantt chart is not rendered on the page yet
 - api/gantt_onganttrender_event.md - fires after the Gantt chart was rendered on the page
 - api/gantt_onganttscroll_event.md - fires when the Gantt chart is scrolled to a particular point
 - api/gantt_ongridheaderclick_event.md - fires when the user clicks on the grid's header

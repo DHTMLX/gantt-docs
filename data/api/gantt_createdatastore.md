@@ -1,10 +1,6 @@
 createDatastore
 =============
 
-
-@todo:
-	check 
-
 @short:
 	creates a datastore according to the provided configuration
 

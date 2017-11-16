@@ -1,9 +1,6 @@
 onGanttLayoutReady
 =============
 
-@todo:
-	check
-
 @short:
 	fires after the Gantt layout is ready, but before it is rendered  
 

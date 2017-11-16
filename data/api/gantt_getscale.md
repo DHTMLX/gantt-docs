@@ -1,16 +1,12 @@
 getScale
 =============
 
-
-@todo:
-	check 
-
 @short:
 	returns the configuration of the time scale
 
 @params:
 
-@return:
+@returns:
 
 - scale		object 			the configuration of the time scale
 

@@ -1,10 +1,6 @@
 layout
 =============
 
-@todo:
-	check 
-
-
 @short:
 	specifies the layout object
 

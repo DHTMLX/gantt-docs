@@ -1,10 +1,6 @@
 isReadonly
 =============
 
-
-@todo:
-	check 
-
 @short:
 checks whether the specified task or link is read-only
 
