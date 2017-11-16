@@ -89,10 +89,9 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 				task.end_date = new Date(+task.start_date + diff);
 		}
 	}
-	return true;
 });
-
 ~~~
+
 {{sample
 	08_api/05_limit_drag_dates.html
 }}
@@ -100,7 +99,10 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 
 Dragging childs together with the parent
 -----------------------------------------------------
-To provide  dragging childs when the user is dragging their parent's task,  use the api/gantt_ontaskdrag_event.md event (see more on the event [above](desktop/dnd.md#denyingdraggingtasksoutofspecificdates)):
+
+To provide  dragging childs when the user is dragging their parent's task,  use the api/gantt_ontaskdrag_event.md event (see more on the event 
+[above](desktop/dnd.md#denyingdraggingtasksoutofspecificdates)):
+
 ~~~js
 gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 	var modes = gantt.config.drag_mode;
@@ -112,7 +114,6 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 			gantt.refreshTask(child.id, true);
 		},id );
 	}
-    return true;
 });
 //rounds positions of the child items to scale
 gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){

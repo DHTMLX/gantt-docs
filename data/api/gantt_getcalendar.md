@@ -6,7 +6,7 @@ getCalendar
 	gets worktime calendar by id
 
 @params:
-- id		id		the id of the global calendar or "global"
+- id		string,number		the id of the global calendar or "global"
 
 @returns:
 - config		object		calendar object

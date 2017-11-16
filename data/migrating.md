@@ -1,4 +1,4 @@
-Migrating From Older Versions
+Migrating from Older Versions
 =================================================
 
 <style>
@@ -27,9 +27,9 @@ Migrating From Older Versions
 Version 4.0 introduces some changes in public API, namely:
 
 - legacy modules as well as the modules that intersect with dhtmlxSuite modules are no longer defined by the dhtmlxGantt library
-- commonly used modules, such as dhtmlxMessage, dataProcessor, ajax are moved to the **window.gantt** namespace and became a part of dhtmlxGantt public API
+- commonly used modules, such as dhtmlxMessage, dataProcessor, Ajax are moved to the **window.gantt** namespace and became a part of dhtmlxGantt public API
 
-A fallback to the old API is included in v4.x, so the code writen for v3.3 and earlier will continue working. However in some cases changes are required.
+A fallback to the old API is included in v4.x, so the code written for v3.3 and earlier will continue working. However in some cases changes are required.
 Generally, all global declarations, except for **window.gantt** and **window.Gantt** (enterprise version only) are deprecated and will be removed in version 5.0.
 
 ###Deprecated API
@@ -135,13 +135,14 @@ gantt.config.buttons_right = [
 
 Old configurations ( "dhx_save_btn", "dhx_cancel_btn", "gantt_delete_btn") will still work. Changes does not break any existing behavior.
 
-3) Following features are now available only in the Commercial or Enterprise version of the component (not available in the GPL version of dhtmlxGantt):
+3) The following features are now available only in the Commercial or Enterprise version of the component (not available in the GPL version of dhtmlxGantt):
 
 - Ability to hide days in week, month, timeline view
 - Projects, milestones and other custom types
 
 1.0 -> 2.0
 ----------------------
+
 1) A variety of objects (**GanttProjectInfo**, **GanttTaskInfo**, **GanttChart**, **GanttProject**, **GanttTask**) are replaced with 1 static object -  **gantt**. <br> 
 The **gantt** object contains a set of methods and 2 main properties: [config](api/refs/gantt_props.md) and [templates](api/refs/gantt_templates.md).
 
@@ -154,8 +155,8 @@ The **gantt** object contains a set of methods and 2 main properties: [config](a
 
 <br>
 
-3) Instead of GanttProject and GanttTask, data is stored as 
-[an array of plain objects with a number of mandatory properties and any custom properties](desktop/loading.md#specifyingdataproperties): 
+3) Instead of GanttProject and GanttTask, data is stored as [an array of plain objects with a number of mandatory properties and any custom properties](desktop/loading.md#specifyingdataproperties): 
+
 ~~~js
 {
     data:[
@@ -177,8 +178,7 @@ The **gantt** object contains a set of methods and 2 main properties: [config](a
 
 <br>
 
-4) The [XML format](desktop/supported_data_formats.md#xmldhtmlxgantt20) was changed but the 
-[old XML format](desktop/supported_data_formats.md#xmldhtmlxganttlt20) is still can be [loaded](api/gantt_load.md).
+4) The [XML format](desktop/supported_data_formats.md#xmldhtmlxgantt20) was changed but the [old XML format](desktop/supported_data_formats.md#xmldhtmlxganttlt20) is still can be [loaded](api/gantt_load.md).
 
 ~~~js
 gantt.load("tasks.xml","oldxml");

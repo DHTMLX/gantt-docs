@@ -6,15 +6,15 @@
 	"export"			: "./export/",
 	"samples"			: "../gantt/samples/",
 	"samples_http"		: "../gantt/samples/",
-	"forum_http"		: "http://forum.dhtmlx.com/viewforum.php?f=15",
-	"support_http"		: "http://support.dhtmlx.com",
-	"logo_http"			: "http://dhtmlx.com",
-	"docs_http"			: "http://docs.dhtmlx.com/gantt/",
+	"forum_http"		: "https://forum.dhtmlx.com/viewforum.php?f=15",
+	"support_http"		: "https://support.dhtmlx.com",
+	"logo_http"			: "https://dhtmlx.com",
+	"docs_http"			: "https://docs.dhtmlx.com/gantt/",
 
 	"minMadokaVersion"	: 1.1,
 	"singleItemToc"		: false,
 
-	"search_port"		: 9404,
+	"search_port"		: 9405,
 	"search_root"		: "./export/",
 	"search_host"		: "127.0.0.1",
 	"search_results"	: 10,
@@ -28,7 +28,7 @@
 		"discuss":"<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>"
 	},
 	"chm_config" :{
-		"samples_http": "http://docs.dhtmlx.com/gantt/samples/",
+		"samples_http": "https://docs.dhtmlx.com/gantt/samples/",
 		"chmname" : "gantt",
         "chmstartpage" : "index.html",
         "chmtitle" : "DHX Gantt"

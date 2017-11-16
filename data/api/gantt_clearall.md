@@ -1,12 +1,12 @@
 clearAll
 =============
-@short:removes all tasks from the Gantt chart
+@short:removes all tasks and additional elements (including markers) from the Gantt chart
 	
 
 
 @example:
-//reloads data in the Gantt chart
-gantt.load("url1")
+// reloads data in the Gantt chart
+gantt.load("url1");
 
 gantt.clearAll(); /*!*/
 gantt.load("url2");/*!*/
