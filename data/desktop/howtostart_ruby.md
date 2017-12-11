@@ -128,7 +128,7 @@ development:
   password: 
 ~~~
 
-Now we need to create models for [tasks and links](desktop/server_side.md#databasesstructure).
+Now we need to create models for [tasks and links](desktop/loading.md#standarddatabasestructure).
 
 To create a model for tasks, we need to run a command that contains the task properties:
 
@@ -150,7 +150,7 @@ rails generate model Link \
     link_type:string:limit1
 ~~~
 
-Note that dhtmlxgantt link object must have a property named <b>[type](desktop/server_side.md#databasesstructure)</b>, 
+Note that dhtmlxgantt link object must have a property named <b>[type](desktop/loading.md#standarddatabasestructure)</b>, 
 which stores the type of the relation (start-to-start, finish-to-finish, etc.).
 
 We can't add such a property to our model, since the "<b>type</b>" name is already reserved by ActiveRecord. 
