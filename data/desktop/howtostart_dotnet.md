@@ -151,7 +151,7 @@ Step 3. Creating Models and a Database
 
 ###Creating Models
 
-Now we define model classes for the gantt chart. A Gantt data model consists of [Links and Tasks](desktop/server_side.md#thedatabasesstructure). 
+Now we define model classes for the gantt chart. A Gantt data model consists of [Links and Tasks](desktop/loading.md#standarddatabasestructure). 
 As you can see, dhtmlxGantt uses a certain naming convention for data model that is different from the one traditionally used in C#. 
 The client-side model can also contain some properties that shouldn't be stored in a database, but will be used either on the client or in the backend logic.
 

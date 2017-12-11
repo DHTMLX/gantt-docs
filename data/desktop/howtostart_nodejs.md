@@ -201,7 +201,7 @@ INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00',
   '4', '0.9', '3');
 ~~~
 
-Check a detailed example [here](desktop/server_side.md#thedatabasesstructure).
+Check a detailed example [here](desktop/loading.md#standarddatabasestructure).
 
 
 Step 4. Loading Data
