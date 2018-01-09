@@ -10,23 +10,22 @@ Here we highlight the most common types of attack and show possible ways to avoi
 
 ##XSS Attacks
 
-Possible vectors for XSS attacks are [Gantt template functions](api/refs/gantt_templates.md), [user input via UI](desktop/default_edit_form.md) 
-and unsafe CRUD implementation on the backend:
+Possible vectors for XSS attacks are unsafe CRUD implementation on the backend, [Gantt template functions](api/refs/gantt_templates.md) and
+[user input via UI](desktop/default_edit_form.md):
+
+- the backend API that is used to save/load data into Gantt (which lies within the responsibility of the developer) is expected to escape the input/output and provide Gantt with safe data. If you use [dhtmlxConnector](desktop/howtostart_connector.md), it will [escape and sanitize the client input automatically](https://docs.dhtmlx.com/connector__php__app_security.html#protectionfromcrosssitescriptingxss). If you implement the backend on your own, you should consider escaping data you save to the database and load into Gantt by yourself.
+
+As for template functions and the lightbox listed below, they can only pose a threat, if you don't clean your data on the server. Note that securing the backend is usually enough to prevent possible XSS attacks, and vice versa, no client-side measures will be effective if the backend is not secure.
 
 - a [template](api/refs/gantt_templates.md) output is injected into the inner HTML of Gantt as is, without any escaping or pre-processing. 
-Templates allow inserting a custom markup (formatted text, icons, buttons, etc.) into Gantt elements by design. However, it creates a possibility for injecting a remote code into the page. 
+Templates allow inserting a custom markup (formatted text, icons, buttons, etc.) into Gantt elements by design. However, it creates a possibility for injecting a remote code into the page. Any template can be redefined with the implementation you find suitable.
 
 {{editor		http://snippet.dhtmlx.com/01da6922e			Template XSS}}
 
-Any template can be redefined with the implementation you find suitable.
 
-- the lightbox doesn't have any default validation of a client input, which, if not handled, also creates a gateway for XSS attacks.
+- the lightbox doesn't have any default validation of a client input, which, if not handled, also creates a gateway for XSS attacks. Please [check the article on the client-side validation](desktop/validation.md#clientsidevalidation).
 
 {{editor		http://snippet.dhtmlx.com/c20f8733f			Lightbox XSS}}
-
-Please [check the article on the client-side validation](desktop/validation.md#clientsidevalidation).
-
-- the backend API that is used to save/load data into Gantt (which lies within the responsibility of the developer) is expected to escape the input/output and provide Gantt with safe data. If you use [dhtmlxConnector](desktop/howtostart_connector.md), it will [escape and sanitize the client input automatically](https://docs.dhtmlx.com/connector__php__app_security.html#protectionfromcrosssitescriptingxss). If you implement the backend on your own, you should consider escaping data you save to the database and load into Gantt by yourself.
 
 
 ##SQL Injections
