@@ -3,6 +3,8 @@ Export and Import from MS Project
 
 ##Export to MS Project
 
+The Gantt component allows exporting links, tasks abd resources into MS Project.
+
 To export data from the Gantt chart to an MS Project, do the following:
 
 - Include the <b>"https://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
@@ -23,6 +25,26 @@ The method will send a request to the remote service, which will either output a
 {{sample
 	08_api/08_export_other.html
 }}
+
+### Response
+
+The response will contain a JSON of the following structure:
+
+~~~js
+{
+   data: {},
+   config: {},
+   resources: [],
+   worktime: {}
+}
+~~~
+
+- **data** - a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
+Dates are stringified in the "%Y-%m-%d %H:%i" format.
+- **config** - a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
+- **resources** - an array of objects (each having the following properties: *{id: string, name:string, type:string}*) that represent the list of resources from the project file.
+- **worktime** - an object containing the working time settings from the project calendar.
+
 
 ##Export settings
 
@@ -100,6 +122,61 @@ gantt.exportToMSProject({
 		alert(res.url);
 	}
 });
+~~~
+ 
+- **resources** - (array) allows exporting the list of resources into an MS Project file
+
+~~~js
+gantt.exportToMSProject({
+  resources: [
+    {"id":"1","name":"John","type":"work"},
+    {"id":"2","name":"Mike","type":"work"},
+    {"id":"3","name":"Anna","type":"work"}
+  ]
+});
+~~~
+
+Possible resource types are "work", "cost", "material".
+Resource assignments are specified using the **ResourceAssignments** property of the tasks configuration:
+
+~~~js
+var users = [// resources
+  {key:'0', label: "N/A"},
+  {key:'1', label: "John"},
+  {key:'2', label: "Mike"},
+  {key:'3', label: "Anna"}
+];
+
+gantt.exportToMSProject({
+  resources: users
+     .filter(function(u){
+        if(u.key === '0')//skip the default option 
+           return false;
+        return true;
+     })
+     .map(function(u){
+        return {
+           id: u.key,
+           name: u.label,
+           type: "work"
+       	};
+  	 }),
+  tasks: {
+     ResourceAssignments: function(task){
+        return task.user;
+     }
+  }
+});
+~~~
+
+The **ResourceAssignments** property is set as a function that takes the task object as a parameter and returns either a string/number value or an array of string/number values:
+
+~~~js
+tasks: {
+	ResourceAssignments: function(task){
+		return [task.user, task.office];
+	}
+}
 ~~~
 
 
@@ -274,6 +351,52 @@ gantt.attachEvent("onTaskLoading", function(task) {
     return true;
 });
 ~~~
+
+##Limits on request size and import of large files
+
+There are two API endpoints for the MSProject export/import services:
+
+- [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) - the default endpoint which serves all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 4MB**.
+- [https://export.dhtmlx.com/gantt/project](https://export.dhtmlx.com/gantt/project) - the endpoint dedicated to MS Project services (*exportToMSProject*/*importFromMSProject* only). **Max request size: 40MB**.
+
+The endpoint can be specified by the **server** property of the export configuration object:
+
+~~~js
+gantt.importFromMSProject({
+    server:"https://export.dhtmlx.com/gantt",
+    data: file,
+    callback: function(project){
+       // some logic
+    }
+}); 
+~~~
+
+If no endpoint is specified, [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) is used by default. The following call is equivalent to the one above:
+
+~~~js
+gantt.importFromMSProject({
+    data: file,
+    callback: function(project){
+       // some logic
+    }
+});
+~~~
+
+In order to export or import large projects that exceed the 4MB limit, the second endpoint can be used:
+
+~~~js
+gantt.importFromMSProject({
+    server:"https://export.dhtmlx.com/gantt/project",
+    data: file,
+    callback: function(project){
+       // some logic
+    }
+}); 
+~~~
+
+It allows sending requests up to 40MB in size and supports MS Project exports and imports. It can be used for MS Project exports only. 
+
+Any other methods, for example, *gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})* should return a server error.
 
 @index:
 
