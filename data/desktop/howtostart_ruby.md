@@ -604,4 +604,8 @@ end
 ~~~
 
 
+Application Security
+-------------------------
 
+Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and 
+CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](desktop/app_security.md).
