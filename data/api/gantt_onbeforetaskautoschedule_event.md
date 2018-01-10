@@ -6,7 +6,7 @@ onBeforeTaskAutoSchedule
 
 @params:
 - task				object			the task object
-- startDate			Date object		new start date
+- start				Date 			a new start date
 - link				object			the link object that creates the constraint
 - predecessor		object			the predecessor task object
 
@@ -15,7 +15,7 @@ onBeforeTaskAutoSchedule
 - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
 
 @example:
-gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, startDate, link, predecessor){
+gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predecessor){
     // any custom logic here
     return true;
 });

@@ -64,3 +64,92 @@ To clear the Gantt chart from all tasks and links, call the api/gantt_clearall.m
 ~~~js
 gantt.clearAll();
 ~~~
+
+Editing link values from UI
+------------------------------
+
+There is no built-in UI for the user to edit lag or any other properties of the link. So if you need some UI, you have to implement it manually.
+
+A common approach presupposes following the steps below:
+
+- capture the api/gantt_onlinkdblclick_event.md event; 
+- cancel the default handler; 
+- display a popup from the event handler.
+
+On the last step you can either use [built-in popups ](desktop/message_boxes.md) or implement some custom solution.
+
+Here is a sample code of the edit-lag popup implementation:
+
+~~~js
+(function(){
+	var modal;
+	var editLinkId;
+
+	function endPopup(){
+		modal = null;
+		editLinkId = null;
+	}
+	function cancelEditLink(){
+		endPopup();
+	}
+
+	function deleteLink(){
+		gantt.deleteLink(editLinkId);
+		endPopup();
+	}
+
+	function saveLink(){
+		var link = gantt.getLink(editLinkId);
+
+		var lagValue = modal.querySelector(".lag-input").value;
+		if(!isNaN(parseInt(lagValue, 10))){
+			link.lag = parseInt(lagValue, 10);
+		}
+
+		gantt.updateLink(link.id);
+		if(gantt.autoSchedule){
+			gantt.autoSchedule(link.source);
+		}
+		endPopup();
+	}
+	gantt.attachEvent("onLinkDblClick", function(id,e){
+		editLinkId = id;
+		var link = gantt.getLink(id);
+		var linkTitle = gantt.getTask(link.source).text + " -> " + 
+        	gantt.getTask(link.target).text;
+
+		modal = gantt.modalbox({
+			title: linkTitle,
+			text: "<div>" +
+					"<label>Lag <input type='number' class='lag-input' /></label>" +
+				"</div>",
+			buttons: [
+				{label:"Save", value:"save"},
+				{label:"Cancel", value:"cancel"},
+				{label:"Delete", value:"delete"}
+			],
+			width: "500px",
+			callback: function(result){
+				switch(result){
+					case "save":
+						saveLink();
+						break;
+					case "cancel":
+						cancelEditLink();
+						break;
+
+					case "delete":
+						deleteLink();
+						break;
+				}
+			}
+		});
+
+		modal.querySelector(".lag-input").value = link.lag || 0;
+
+		return false;
+	});
+})();
+~~~
+
+{{editor	http://snippet.dhtmlx.com/7c812e5bd		 Edit-lag Popup}}

@@ -5,10 +5,10 @@ onBeforeAutoSchedule
 	fires before auto scheduling 
 
 @params:
-- taskId		string, number		the root task id
+- taskId		string,number		the root task id
 
 @returns:  
-- result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
+- result     	boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
 
 @example:
 gantt.attachEvent("onBeforeAutoSchedule",function(taskId){

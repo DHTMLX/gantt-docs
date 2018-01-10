@@ -423,3 +423,16 @@ and the number of tasks and links is not limited.
 In that case, cascade deletion can be disabled using the api/gantt_cascade_delete_config.md config. 
 Thus, when a project branch is deleted, the client will send a delete request only for the top item and will expect the backend to delete the related links and subtasks.
 
+
+XSS, CSRF and SQL Injection Attacks
+----------------------------
+
+Pay attention that Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. 
+It is important that responsibility for keeping an application safe is on the developers implementing the backend. 
+
+Check the desktop/app_security.md article to learn the most vulnerable points of the component and the measures you can take to improve the safety of your application. 
+
+
+@index:
+desktop/app_security.md
+

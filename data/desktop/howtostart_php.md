@@ -614,5 +614,11 @@ Using dhtmlxConnector
 Alternatively, a PHP backend can also be implemented using the [dhtmlxConnector library](https://docs.dhtmlx.com/connector__php__index.html). 
 You can find a detailed tutorial [here](desktop/howtostart_connector.md). 
 
+
+Application Security
+-------------------------
+
+Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](desktop/app_security.md).
+
 @index: 
 - desktop/howtostart_connector.md

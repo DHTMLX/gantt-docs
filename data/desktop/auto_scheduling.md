@@ -121,13 +121,13 @@ gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
 });
 
 // before a particular task is rescheduled
-gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, startDate, link, predecessor){
+gantt.attachEvent("onBeforeTaskAutoSchedule",function(task,start,link,predecessor){
     // any custom logic here
     return true;
 });
 
 // after a particular task is rescheduled
-gantt.attachEvent("onAfterTaskAutoSchedule",function(task, startDate, link, predecessor){
+gantt.attachEvent("onAfterTaskAutoSchedule",function(task,start,link,predecessor){
     // any custom logic here
 });
 
@@ -142,11 +142,7 @@ gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
 });
 ~~~
 
-
-
 ##Setting lag and lead times between tasks
-
-{{todo check the info of the section}}
 
 Lag and lead times are special values that are used to create complex relations between tasks.
 
@@ -169,7 +165,12 @@ Lag and lead values are set in the additional property of the link object - **li
 
 By default, it's implied that the lag value of each dependency link is set as 0.
 
+###Editing link values from UI
 
+Gantt doesn't provide a built-in UI for editing lag or any other properties of the link. However, you can implement it manually by following the recommendations given in the 
+[related chapter](desktop/crud_dependency.md#editinglinkvaluesfromui).
+
+{{editor	http://snippet.dhtmlx.com/7c812e5bd		 Edit-lag Popup}}
 
 @relatedapi:
 	api/gantt_auto_scheduling_config.md

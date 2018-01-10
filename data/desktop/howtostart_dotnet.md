@@ -983,3 +983,9 @@ HTTP PUT and DELETE requests return 405 or 401 error when an app is running on I
 The issue may be caused by the **WebDAV** module which can conflict with RESTful handlers. 
 
 As a common solution, the module can be disabled from the **web.config** file. More details are given [here](https://forums.iis.net/t/1166025.aspx).
+
+Application Security
+-------------------------
+
+Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](desktop/app_security.md).
+

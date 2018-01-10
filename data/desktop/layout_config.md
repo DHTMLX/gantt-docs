@@ -241,7 +241,7 @@ Working with Global Gantt API
 -------------------
 
 The public API of the gantt object contains methods that rely on a certain layout configuration. 
-Currently, in order for layout to work as expected, it must contain a grid and timeline with fixed ids and a pair of scrollbars:
+Currently, in order for layout to work as expected, it must contain a grid and a timeline with fixed ids and a pair of scrollbars:
 
 ~~~js
 gantt.config.layout = {
@@ -261,8 +261,10 @@ gantt.config.layout = {
 
 The layout can contain any additional number of views.
 
+###Adjusting the height of rows
 
-
+You can set the height of rows in the gantt layout with the help of the api/gantt_row_height_config.md configuration option.
+Note that the height of the timeline area will be modified together with the height of the Gantt rows.
 
 
 

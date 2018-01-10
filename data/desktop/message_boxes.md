@@ -1,4 +1,4 @@
-Messages in a Gantt Chart
+Popup Messages and Modal Boxes
 ======================
 
 Messages are used in a Gantt Chart to notify a user about an error, confirm or deny an action, choose one of the options and so on.
@@ -175,6 +175,100 @@ gantt.modalbox({
         gantt.alert(result);
     }
 });
+~~~
+
+###Configuring modalbox buttons
+
+There are two main ways to define the configuration of modalbox buttons:
+
+- a short form:
+
+~~~js
+gantt.modalbox({
+	// other settings
+	buttons:["Save", "Delete", "Cancel"],
+	callback: function(result){
+   		switch(result){
+			case "0":
+				//Save
+				break;
+			case "1":
+				//Delete
+				break;
+			case "2":
+				//Cancel
+				break;
+		}	
+	}
+});
+~~~
+
+The result of the callback function will be equal to the stringified index of a pressed button from the array ("0", "1", "2",...).
+Each button will receive a CSS class from its label converted to the lower case, e.g. *gantt_**save**_button*, *gantt_**delete**_button*, *gantt_**cancel**_button*. 
+
+These classes can be used to style buttons:
+
+~~~js
+.gantt_delete_button div{
+	background:red;
+}
+~~~
+
+In case the same button name is used by several popups that should be styled differently, the **type** config can be used:
+
+~~~js
+gantt.modalbox({
+	// other settings
+	type:"special_popup",
+	buttons:["Save", "Delete", "Cancel"]
+});
+~~~
+
+The **type** will be prefixed with the "gantt_" string and added as a class name to the popup element:
+
+~~~js
+.gantt_special_popup .gantt_delete_button div{
+  	background:red;
+}
+~~~
+
+- a full form:
+
+The CSS classes of buttons and callback values can be defined explicitly using a longer form of configuration:
+
+~~~js
+gantt.modalbox({
+	// other settings
+    buttons: [
+		{ label:"Save",   css:"link_save_btn",   value:"save" },
+		{ label:"Cancel", css:"link_cancel_btn", value:"cancel" },
+		{ label:"Delete", css:"link_delete_btn", value:"delete" }
+    ],
+    callback: function(result){
+		switch(result){
+    		case "save":
+    			//Save
+    			break;
+            case "cancel":
+                //Cancel
+                break;
+            case "delete":
+                //Delete
+                break;
+		}
+    }
+});
+~~~
+
+The **label** parameter is mandatory, while **css** and **value** options can be omitted. Missing parameters will be calculated as in the short form of buttons configuration: CSS will be inherited from a lower-cased button label and the button index will be used as a value.
+
+
+The **css** will be prefixed with the "gantt_" string and added to the button element as a class name:
+
+~~~js
+.gantt_link_delete_btn div{
+  	background:red;
+}
 ~~~
 
 ##Styling
