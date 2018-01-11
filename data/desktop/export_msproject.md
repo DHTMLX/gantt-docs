@@ -3,9 +3,9 @@ Export and Import from MS Project
 
 ##Export to MS Project
 
-The Gantt component allows exporting links, tasks abd resources into MS Project.
+The Gantt component allows exporting links, tasks and resources into MS Project.
 
-To export data from the Gantt chart to an MS Project, do the following:
+To export data from the Gantt chart to MS Project, do the following:
 
 - Include the <b>"https://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
 
@@ -16,6 +16,7 @@ To export data from the Gantt chart to an MS Project, do the following:
 ~~~
 
 - Call the **exportToMSProject()** method to export data from the Gantt chart.
+
 ~~~js
 gantt.exportToMSProject();
 ~~~
@@ -42,7 +43,7 @@ The response will contain a JSON of the following structure:
 - **data** - a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
 Dates are stringified in the "%Y-%m-%d %H:%i" format.
 - **config** - a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
-- **resources** - an array of objects (each having the following properties: *{id: string, name:string, type:string}*) that represent the list of resources from the project file.
+- **resources** - an array of objects (each having the following properties: {*id: string, name:string, type:string*}) that represent the list of resources from the project file.
 - **worktime** - an object containing the working time settings from the project calendar.
 
 
@@ -190,9 +191,9 @@ In order to convert XML or MPP MS Project file, you need to send the following r
 
 The request parameters:
 
- - **file** - MPP or XML MSProject file
+ - **file** - MPP or XML MS Project file
  - **type** - "msproject-parse"
- - data - (optional) JSON string with settings
+ - **data** - (optional) JSON string with settings
 
 For example:
 
@@ -250,11 +251,11 @@ The response will contain a JSON of the following structure:
 ~~~
 
  
-- data - gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: id, open, parent, progress, start_date, text, resource. 
+- **data** - a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
 Dates are stringified in the "%Y-%m-%d %H:%i" format. 
-- config - gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
-- resources - array of objects {id:string, name:string} that represent list of resources from the project file.
-- worktime - object containing the working time settings from the project calendar.
+- **config** - a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
+- **resources** - an array of objects (each having the following properties: {*id:string, name:string, type:string*} that represent the list of resources from the project file.
+- **worktime** - an object containing the working time settings from the project calendar.
 
 
 ##Import settings
