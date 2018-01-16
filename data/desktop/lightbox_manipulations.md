@@ -1,8 +1,8 @@
 Working with the Lightbox Elements
 ====================================
 
-Getting/setting the control value
------------------------------------------------------------
+##Getting/setting the control value
+
 To get/set the value of a lightbox control, use the api/gantt_getlightboxsection.md method as in:
 
 ~~~js
@@ -15,6 +15,7 @@ gantt.getLightboxSection('description').setValue('abc');
 
 
 ##Checking whether the lighbox is open
+
 To check whether the lightbox is currently open or closed, use the **lightbox** property of the state object returned by the api/gantt_getstate.md method.<br> If the lightbox is open - the method will return the id 
 of the opened task, otherwise 'null' or 'undefined'
 
@@ -28,7 +29,7 @@ if (gantt.getState().lightbox){
 
 ##Mapping data properties to the lightbox sections
 
-To map a data property to a lightbox section, use the "map_to" attribute of the section object:
+To map a data property to a lightbox section, use the **map_to** attribute of the section object:
 
 ~~~js
 //assigns the "holders" section to a data property with the name "holder" 
@@ -41,6 +42,7 @@ gantt.config.lightbox.sections = [
 
 
 ##Setting the default value for a lightbox's control
+
 To set the default value for a lightbox's section, use the **default_value** property of the section's object.
 
 For example, you have added a custom section to the lightbox  - "Priority" -  that displays the task priority. 
@@ -61,6 +63,7 @@ gantt.config.lightbox.sections = [
     {name:"time", 		 height:72, type:"duration", map_to:"auto"}
 ];
 ~~~
+
 {{note
 The **default_value** property sets the default value for the lightbox's section, not for a new event, i.e. a new event  gets the specified value only after the user opens the lightbox and saves the event.
 }}
@@ -75,8 +78,8 @@ gantt.attachEvent("onTaskCreated", function(id, task){
 ~~~
 
 ## Making a section hidden for some events 
-To make a section hidden for specific events, redefine its **set_value** method as in:<br>
 
+To make a section hidden for specific events, redefine its **set_value** method as in:<br>
 
 ~~~js
 gantt.form_blocks.textarea.set_value=function(node,value,ev){
@@ -89,40 +92,37 @@ gantt.form_blocks.textarea.set_value=function(node,value,ev){
 ~~~
 
 
+## Button in the section header 
 
-### Button in the section header 
-It's possible to have a custom button in the section header. 
-To add a button to the header of a section, do the following steps:
+It's possible to have a custom button in the section header. To add a button to the header of a section, make the following steps:
 
-<ol>
-	<li> Specify the **button** property to the section object:
+- Specify the **button** property in the section object:
+
 ~~~js
 {name:"description", height:130, map_to:"text", type:"textarea", button:"help"}
 ~~~
-	</li>
-    <li> Set the label for the button:
+- Set the label for the button:
+
 ~~~js
 //'help' is the value of the 'button' property
 gantt.locale.labels.button_help="Help label";
 ~~~
-	</li> 
-    <li>Specify the handler of button clicks:
+
+- Specify the handler of button clicks:
+
 ~~~
-gantt.form_blocks.textarea.button_click=function(index,button,shead,sbody){
-	...
+gantt.form_blocks.textarea.button_click = function(index,button,shead,sbody){
+	// any custom logic
 }
 ~~~
 where:
-	<ul>
-    	<li>index - (number) the section index. Zero-based numbering</li>
-		<li>button - (Dom element) the HTML element of the button</li>
-		<li>shead - (Dom element) the HTML element of the section header</li>
-		<li>sbody - (Dom element) the HTML element of the section body</li>
 
-	</ul>
-    </li>
-</ol>
-You can define the image used for the button through the next css class:
+- **index** - (*number*) the section index. Zero-based numbering
+- **button** - (*HTMLElement*) the HTML element of a button
+- **shead** - (*HTMLElement*) the HTML element of the section header
+- **sbody** - (*HTMLElement*) the HTML element of the section body
+
+You can define the image used for the button through the following CSS class:
 
 ~~~js
 .dhx_custom_button_help{

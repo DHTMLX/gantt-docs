@@ -1,18 +1,20 @@
-Coloring Dependency Lines
+Coloring Dependency Links
 ================================
-Coloring dependency links in several colors allows you to visually differentiate them for users.
+
+Coloring dependency links in various colors allows you to visually differentiate them for users.
 
 <img style="padding-top:15px; padding-bottom:15px;" src="desktop/coloring_links.png"/>
 
 To set a custom style for links, you can use one of the following approaches:
 
 1. [To redefine the default link's template](desktop/colouring_lines.md#redefiningthelinkstemplate)
-2. [To set style values in properties of the link object](desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject)
+2. [To set style values in the properties of the link object](desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject)
 
 
 Redefining the link's template
 -----------------------------------------
-To style dependency links, use the api/gantt_task_class_template.md template. For example, to color tasks depending on their priority, use the code like in:
+
+To style dependency links, use the api/gantt_link_class_template.md template. For example, to color links depending on the tasks priority, use the code as in:
 
 {{snippet
 Coloring links depending on the dependency type
@@ -42,21 +44,23 @@ gantt.templates.link_class = function(link){
 }}
 
 {{note
-To style other elements of dependency  links, use the templates listed in the desktop/dependency_templates.md article.
+To style other elements of dependency links, use the templates listed in the desktop/dependency_templates.md article.
 }}
 
-The similar approach can be applied to tasks. Read more about this [here](desktop/colouring_tasks.md#redefiningthetaskstemplate)
+A similar approach can be applied to tasks. Read more about it [here](desktop/colouring_tasks.md#redefiningthetaskstemplate).
 
 Specifying color in the properties of the link object
 -----------------------------------------------------
+
 To specify a custom color for a dependency link, you can add extra property to the data object:
 
-- **color** - the color of the link <br> <br>
+- **color** - the color of the link 
+
 <img src="desktop/link_color_property.png"/>
 
 {{note
-Note, these is a special property. 
-By default, the gantt checks whether a link has it and if it does, applies the related value to the link. Otherwise - uses the predefined color.
+Note, this is a special property. 
+By default, Gantt checks whether a link has it and if it does, applies the related value to the link. Otherwise, the predefined color is applied.
 }}
 
 {{snippet
@@ -66,8 +70,8 @@ Setting the link's color in the data object
 var tasks = {
   data:[
      {id:1, text:"Project #1", start_date:"01-04-2013", duration:18},
-     {id:2, text:"Task #1", start_date:"02-04-2013",duration:8, parent:1},
-     {id:3, text:"Task #2", start_date:"11-04-2013",duration:8, parent:1}
+     {id:2, text:"Task #1",    start_date:"02-04-2013", duration:8, parent:1},
+     {id:3, text:"Task #2",    start_date:"11-04-2013", duration:8, parent:1}
   ],
   links:[
      {id:1, source:1, target:2, type:"1", color:"red"}, /*!*/
@@ -80,12 +84,12 @@ var tasks = {
 gantt.init("gantt_here");
 gantt.parse(tasks);
 
-gantt.getLink(4).color = "green"
+gantt.getLink(4).color = "green";
 ~~~
 
-<br>
 
-If, at least one of the properties is assigned, the link receives additional class - **"gantt_link_inline_color"**. <br>
+If, at least one of the properties is assigned, the link receives additional class - **"gantt_link_inline_color"**. 
+
 You can use this class to override some other style for the link:
 
 ~~~js
@@ -94,11 +98,8 @@ You can use this class to override some other style for the link:
 }
 ~~~
 
-<br>
 
-
-
-The properties can have any valid css color value, e.g. all of the following notations are valid:
+The properties can have any valid CSS color value, e.g. all of the following notations are valid:
 
 ~~~js
 link.color = "#FF0000";
@@ -107,4 +108,4 @@ link.color = "rgb(255,0,0)";
 ~~~
 
 
-The similar approach can be applied to tasks. Read more about this [here](desktop/colouring_tasks.md#specifyingstyleinthepropertiesofthetaskobject)
+A similar approach can be applied to tasks. Read more about it [here](desktop/colouring_tasks.md#specifyingstyleinthepropertiesofthetaskobject).

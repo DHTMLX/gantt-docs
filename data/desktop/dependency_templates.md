@@ -1,4 +1,3 @@
-
 Templates of Dependency Links
 ========================================
 
@@ -6,11 +5,11 @@ Templates of Dependency Links
 	<tbody>
     	<tr>
 			<td class="webixdoc_links0">api/gantt_drag_link_template.md</td>
-			<td>specifies the text of tooltips that are displayed when the user creates a new dependency link</td>
+			<td>specifies the text of tooltips that are displayed when a user creates a new dependency link</td>
 		</tr>
 		<tr>
 			<td class="webixdoc_links0">api/gantt_drag_link_class_template.md</td>
-			<td>specifies the CSS class that will be applied to the link receiver (pop-up circle near the task bar)</td>
+			<td>specifies the CSS class that will be applied to the pop-up that appears when a user drags a link</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0">api/gantt_link_class_template.md</td>

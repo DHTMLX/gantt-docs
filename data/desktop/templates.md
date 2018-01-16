@@ -1,6 +1,7 @@
 Exploring Templates of the Gantt Chart
 =======================================
-Templates allows you to change the format of displayable dates and labels. They also let you apply CSS classes to style elements of the Gantt chart.
+
+Templates allow you to change the format of displayed dates and labels. They also let you apply CSS classes to style elements of the Gantt chart.
 
 
 {{index

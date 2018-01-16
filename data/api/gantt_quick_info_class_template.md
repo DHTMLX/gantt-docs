@@ -11,7 +11,7 @@ quick_info_class
 
 @example:
 gantt.templates.quick_info_class = function(start, end, task){ 
-       return task.type == gantt.config.types.milestone ? "milestone_popup" : "";
+	return task.type == gantt.config.types.milestone ? "milestone_popup" : "";
 };
 
 @template:	api_template

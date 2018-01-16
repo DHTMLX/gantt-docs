@@ -1,5 +1,6 @@
 Adding the Second Scale(s)
 =================================
+
 To present tasks in different time units, simultaneously, you can add any number of additional scales underneath the default one.
 
 The second scales are defined with the api/gantt_subscales_config.md property:
@@ -102,20 +103,21 @@ To style the second scale, use the **css** attribute of the  api/gantt_subscales
 </style>
 ~~~
 ~~~js
-gantt.config.subscales = [
-	{unit:"day", date:"%D", css:daysStyle }
-];
-
 var daysStyle = function(date){
 	var dateToStr = gantt.date.date_to_str("%D");
     if (dateToStr(date) == "Sun"||dateToStr(date) == "Sat")  return "weekend";
 
 	return "";
 };
+
+gantt.config.subscales = [
+	{unit:"day", date:"%D", css:daysStyle }
+];
 ~~~
-
-
 
 {{note
 Use the <b> !important</b> keyword with CSS properties to guarantee that they will be correctly applied.
 }}
+
+{{sample	03_scales/01_multiple_scales.html}}
+

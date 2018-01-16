@@ -21,7 +21,7 @@ Templates of the Timeline Area
 		</tr>
         <tr>
 			<td class="webixdoc_links0">api/gantt_scale_cell_class_template.md</td>
-			<td>specifies the CSS class that will be applied to all cells of the time scale</td>
+			<td>specifies the CSS class that will be applied to the cells of the time scale</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0">api/gantt_scale_row_class_template.md</td>
