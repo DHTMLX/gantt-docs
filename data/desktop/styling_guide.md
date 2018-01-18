@@ -1,9 +1,11 @@
 Working with Styles in Gantt
 =========================
 
-dhtmlxGantt provides a wide set of options for adjusting the styles of its elements. You can follow the directions given in this guide to modify the styling of
-tasks, links, scale and subscales, grid and other parts of the Gantt chart. There is detailed information on working with the styles of this or that Gantt element is provided
-in the related docs. Here you will find general guidelines collected together to facilitate your wandering through the documentation. 
+dhtmlxGantt provides you with a wide set of options for modifying its appearance. You can both [change the general look of the Gantt chart by using one of the 
+predefined skins](desktop/skins.md) and adjust the styles of separate elements (tasks, links, scale and subscales, grid, etc.) of the component.  
+
+In this guide general instructions on working with styles of Gantt parts are collected together to facilitate your wandering through the documentation. 
+Detailed information for each particular element is provided in the related articles.
 
 Styling Tasks
 ----------------
@@ -51,6 +53,26 @@ gantt.templates.task_text = function(start, end, task){
 {{editor		https://docs.dhtmlx.com/gantt/snippet/c31afbec		Inline Styling of the Task Text}}
 
 
+###Setting the style via the properties of a task object
+
+You can set additional properties in the task object configuration to define a custom color for a task. They are: **color**, **textColor** and **progressColor**.
+
+~~~js
+var tasks = {
+  data:[
+     {id:1, text:"Project #1", start_date:"01-04-2013", duration:18, color:"red"},
+     {id:2, text:"Task #1", start_date:"02-04-2013", 
+        duration:8, color:"blue", parent:1}
+   ]
+};
+gantt.init("gantt_here");
+gantt.parse(tasks);
+ 
+gantt.getTask(1).color = "red"
+~~~
+
+Read the related section of the desktop/colouring_tasks.md#specifyingstyleinthepropertiesofataskobject article to get the details.
+
 ###Setting the color and text of a task bar via the lightbox
 
 You can define a set of predefined colors and specify them as options in the lightbox configuration.
@@ -77,7 +99,7 @@ gantt.config.lightbox.sections = [
 
 ###Styling rows of the timeline area
 
-The **task_row_class** template allows you to change the color of the rows of the timeline area (those lying behind the Gantt tasks).
+The api/gantt_task_row_class_template.md template allows you to change the color of the rows of the timeline area (those lying behind the Gantt tasks).
 
 ~~~js
 gantt.templates.task_row_class = function(start, end, task){
@@ -206,10 +228,34 @@ gantt.templates.link_class = function(link){
 {{sample  04_customization/03_link_styles.html}}
 
 
+There is more information in the related article desktop/colouring_lines.md.
+
+###Setting color via the property of the link object
+
+You can also set a custom color for a dependency link by specifying the **color** property in the link object:
+
+~~~js
+var tasks = {
+  data:[
+     // tasks configuration
+  ],
+  links:[
+     {id:1, source:1, target:2, type:"1", color:"red"}, 
+     {id:2, source:2, target:3, type:"0", color:"blue"}
+  ]
+};
+ 
+gantt.init("gantt_here");
+gantt.parse(tasks);
+ 
+gantt.getLink(2).color = "blue";
+~~~
+
+Read the related section of the desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject article to get the details.
+
 ###Styling the popups of dependency links
 
-The api/gantt_drag_link_class_template.md template allows styling the popup that appears when a user starts dragging a dependency line between tasks. For example, you can color the background of
-the popup and change the color of the popup text:
+The api/gantt_drag_link_class_template.md template allows styling the popup that appears when a user starts dragging a dependency line between tasks. For example, you can color the background of the popup and change the color of the popup text:
 
 ~~~html
 <style>
@@ -227,5 +273,109 @@ gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
 {{editor	http://docs.dhtmlx.com/gantt/snippet/9b4d4246		Styling the Popup of Dependency Link}}
 
 
+Check the desktop/dependency_templates.md article to get more details on the topic.
+
 Styling Grid
 ------------------
+
+You can change the style of the grid part of the Gantt chart via the related desktop/table_templates.md.
+
+###Styling the headers of grid columns
+
+There is a api/gantt_grid_header_class_template.md template that allows you to apply a custom style to the headers of the grid columns. For example, you can change the 
+background color of certain headers of the grid columns in the following way:
+
+~~~html
+<style>
+  .updColor{
+  	background-color:#ffeb8a!important;
+   color:red!important
+  }
+</style>
+~~~
+
+~~~js
+gantt.templates.grid_header_class = function(columnName, column){
+  if(columnName == 'duration' ||columnName == 'text')
+    return "updColor";
+};
+~~~
+
+{{editor		http://docs.dhtmlx.com/gantt/snippet/356f900e		Styling Headers of Grid Columns}}
+
+###Setting the background color of a grid row 
+
+You can apply a custom color for all or separate grid rows with tasks via the api/gantt_grid_row_class_template.md template. For example, you can change the background color
+of a particular row like this:
+
+~~~html
+<style>
+  .updColor{
+  	background-color:#ffeb8a!important;  
+  }
+</style>
+~~~
+
+~~~js
+gantt.templates.grid_row_class = function(start, end, task){
+ if(task.id == 12)
+    return "updColor";
+};
+~~~
+
+{{editor	https://docs.dhtmlx.com/gantt/snippet/3328e356			Coloring Grid Rows}}
+
+###Changing the color of text in grid columns
+
+It is also possible to change the default color of the text in grid columns. You can do it by setting a template for a necessary column via the api/gantt_columns_config.md configuration option. For example, you can define a special color for the text of tasks depending on their priority:
+
+~~~js
+gantt.config.columns=[
+	{name:"text",       label:"Task name",  tree:true, width:230, template:myFunc },
+	{name:"start_date", label:"Start time", align: "center" },
+	{name:"duration",   label:"Duration",   align: "center" }
+];
+
+function myFunc(task){
+	if(task.priority ==1)
+		return "<div class='important'>"+task.text+" ("+task.users+") </div>";
+	return task.text+" ("+task.users+")";
+};
+~~~
+
+{{sample	04_customization/05_tree_template.html}}
+
+
+Styling Quick Info Popup
+-------------------
+
+The styling of the Quick Info popup is defined via the desktop/touch_templates.md templates.
+
+You can apply the necessary style to the pop-up edit form by the api/gantt_quick_info_class_template.md template. For example, you can style quick info popups for
+particular tasks as follows:
+
+~~~html
+<style>
+  .updColor{
+  	background-color:#ffeb8a!important;
+  }
+  .updColor .gantt_cal_qi_title{
+  	background-color:#ffeb8a!important;
+  }
+  
+</style>
+~~~
+
+
+~~~js
+gantt.templates.quick_info_class = function(start, end, task){ 
+  if(task.id == "12")
+    return "updColor";
+  
+  	return ""
+};
+~~~
+
+{{editor			https://docs.dhtmlx.com/gantt/snippet/0e519fb2			Styling Quick Info Popup}}
+
+
