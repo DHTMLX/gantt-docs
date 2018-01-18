@@ -7,6 +7,161 @@ predefined skins](desktop/skins.md) and adjust the styles of separate elements (
 In this guide general instructions on working with styles of Gantt parts are collected together to facilitate your wandering through the documentation. 
 Detailed information for each particular element is provided in the related articles.
 
+
+Styling Grid
+------------------
+
+You can change the style of the grid area via the related desktop/table_templates.md.
+
+###Styling the headers of grid columns
+
+There is a api/gantt_grid_header_class_template.md template that allows you to apply a custom style to the headers of the grid columns. For example, you can change the background color of certain headers of the grid columns in the following way:
+
+~~~html
+<style>
+  .updColor{
+  	background-color:#ffeb8a!important;
+  }
+</style>
+~~~
+
+~~~js
+gantt.templates.grid_header_class = function(columnName, column){
+  if(columnName == 'duration' ||columnName == 'text')
+    return "updColor";
+};
+~~~
+
+<img src="desktop/styling_columns_headers.png">
+
+{{editor		http://docs.dhtmlx.com/gantt/snippet/356f900e		Styling Headers of Grid Columns}}
+
+###Setting the background color of a grid row 
+
+You can apply a custom color for all or separate grid rows with tasks via the api/gantt_grid_row_class_template.md template. For example, you can change the background color of a particular row like this:
+
+~~~html
+<style>
+  .updColor{
+  	background-color:#ffeb8a!important;  
+  }
+</style>
+~~~
+
+~~~js
+gantt.templates.grid_row_class = function(start, end, task){
+ if(task.id == 12)
+    return "updColor";
+};
+~~~
+
+<img src="desktop/grid_row_bg.png">
+
+{{editor	https://docs.dhtmlx.com/gantt/snippet/3328e356			Coloring Grid Rows}}
+
+###Changing the color of text in grid columns
+
+It is also possible to change the default color of the text in grid columns. You can do it by setting a template for a necessary column via the api/gantt_columns_config.md configuration option. For example, you can define a special color for the text of tasks depending on their priority:
+
+~~~js
+gantt.config.columns=[
+	{name:"text",       label:"Task name",  tree:true, width:230, template:myFunc },
+	{name:"start_date", label:"Start time", align: "center" },
+	{name:"duration",   label:"Duration",   align: "center" }
+];
+
+function myFunc(task){
+	if(task.priority ==1)
+		return "<div class='important'>"+task.text+" ("+task.users+") </div>";
+	return task.text+" ("+task.users+")";
+};
+~~~
+
+<img src="desktop/columns_text_color.png">
+
+{{sample	04_customization/05_tree_template.html}}
+
+
+Styling Scale
+------------
+
+The scale styling is defined by the related [templates of the timeline area](desktop/timeline_templates.md).
+
+###Styling the row of the timeline area
+
+You can style the row of the scale with the help of the **scale_row_class** template. For example, define the background color:
+
+~~~html
+<style>
+  .updColor{
+  	background-color:#ffeb8a!important  	
+  }
+</style>
+~~~
+
+~~~js
+gantt.templates.scale_row_class = function(scale){           
+	return "updColor";
+}
+~~~
+
+<img src="desktop/color_scale_row.png">
+ 
+{{editor	http://docs.dhtmlx.com/gantt/snippet/70bae8cb		Styling Row of the Scale}}
+
+###Styling the cells of the timeline area
+
+It is also possible to style the cells of the scale via the **scale_cell_class** template. For example, you can color particular days of the timeline area:
+
+~~~js
+gantt.templates.scale_cell_class = function(date){
+    if(date.getDay()==0||date.getDay()==6){
+        return "updColor";
+    }
+};
+~~~
+
+<img src="desktop/styling_scale_cells.png">
+
+{{editor	http://docs.dhtmlx.com/gantt/snippet/953ad9f3		Styling Separate Cells on the Scale}}
+
+Read more in the related articles: desktop/configuring_time_scale.md#settingthescalesstyle and desktop/highlighting_time_slots.md.
+
+###Styling the subscale
+
+You can specify a new style for the subscale via the **css** attribute of the api/gantt_subscales_config.md property. For example, you can set a specific color for the weekends as follows:
+
+~~~html
+<style type="text/css">
+.weekend{
+    background: #F0DFE5 !important;
+}
+</style>
+~~~
+
+~~~js
+var daysStyle = function(date){
+	var dateToStr = gantt.date.date_to_str("%D");
+    if (dateToStr(date) == "Sun"||dateToStr(date) == "Sat")  return "weekend";
+
+	return "";
+};
+
+gantt.config.subscales = [
+	{unit:"day", date:"%D", css:daysStyle }
+];
+~~~
+
+Check the related article desktop/second_scale.md#settingthescalesstyle for more details.
+
+<img src="desktop/styling_subscale.png">
+
+{{editor		https://docs.dhtmlx.com/gantt/snippet/53c5406c		Styling the Second Scale}}
+
+{{sample	03_scales/01_multiple_scales.html}}
+
+
+
 Styling Tasks
 ----------------
 
@@ -20,6 +175,8 @@ You can find the details in the article desktop/colouring_tasks.md#redefiningthe
 ~~~js
 gantt.templates.task_class = function(start, end, task){return "";};
 ~~~
+
+<img src="desktop/coloring_tasks.png">
 
 {{sample 04_customization/04_task_styles.html}}
 
@@ -35,7 +192,10 @@ gantt.templates.task_class = function(start,end,task){
 };
 ~~~
 
+<img src="desktop/dynamic_styling.png">
+
 {{sample 04_customization/08_templates.html}}
+
 
 ###Styling text in the task bar
 
@@ -49,6 +209,8 @@ gantt.templates.task_text = function(start, end, task){
   return task.text;
 };
 ~~~
+
+<img src="desktop/inline_styling_task_text.png">
 
 {{editor		https://docs.dhtmlx.com/gantt/snippet/c31afbec		Inline Styling of the Task Text}}
 
@@ -94,6 +256,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
+<img src="desktop/task_style_property.png">
 
 {{sample 04_customization/16_inline_task_colors.html}}
 
@@ -108,9 +271,12 @@ gantt.templates.task_row_class = function(start, end, task){
 };
 ~~~
 
+<img src="desktop/styling_timeline_row.png">
+
 {{editor	http://docs.dhtmlx.com/gantt/snippet/25715bf1		Styling Rows of the Timeline Area}}
 
 {{sample	04_customization/02_custom_tree.html}}
+
 
 ###Highlighting timeline cells
 
@@ -133,81 +299,11 @@ gantt.templates.task_cell_class = function(item,date){
 };
 ~~~
 
+<img src="desktop/styling_timeline_cells.png">
+
 {{sample	04_customization/06_highlight_weekend.html}}
 
 Read more on this topic in the article desktop/highlighting_time_slots.md.
-
-Styling Scale
-------------
-
-The scale styling is defined by the related [templates of the timeline area](desktop/timeline_templates.md).
-
-###Styling the row of the timeline area
-
-You can style the row of the scale with the help of the **scale_row_class** template. For example, define the background color:
-
-~~~html
-<style>
-  .updColor{
-  	background-color:#ffeb8a!important  	
-  }
-</style>
-~~~
-
-~~~js
-gantt.templates.scale_row_class = function(scale){           
-	return "updColor";
-}
-~~~
- 
-{{editor	http://docs.dhtmlx.com/gantt/snippet/70bae8cb		Styling Row of the Scale}}
-
-###Styling the cells of the timeline area
-
-It is also possible to style the cells of the scale via the **scale_cell_class** template. For example, you can color particular days of the timeline area:
-
-~~~js
-gantt.templates.scale_cell_class = function(date){
-    if(date.getDay()==0||date.getDay()==6){
-        return "updColor";
-    }
-};
-~~~
-
-{{editor	http://docs.dhtmlx.com/gantt/snippet/953ad9f3		Styling Separate Cells on the Scale}}
-
-Read more in the related articles: desktop/configuring_time_scale.md#settingthescalesstyle and desktop/highlighting_time_slots.md.
-
-###Styling the subscale
-
-You can specify a new style for the subscale via the **css** attribute of the api/gantt_subscales_config.md property. For example, you can set a specific color for the weekends as follows:
-
-~~~html
-<style type="text/css">
-.weekend{
-    background: #F0DFE5 !important;
-}
-</style>
-~~~
-
-~~~js
-var daysStyle = function(date){
-	var dateToStr = gantt.date.date_to_str("%D");
-    if (dateToStr(date) == "Sun"||dateToStr(date) == "Sat")  return "weekend";
-
-	return "";
-};
-
-gantt.config.subscales = [
-	{unit:"day", date:"%D", css:daysStyle }
-];
-~~~
-
-Check the related article desktop/second_scale.md#settingthescalesstyle for more details.
-
-{{editor		https://docs.dhtmlx.com/gantt/snippet/53c5406c		Styling the Second Scale}}
-
-{{sample	03_scales/01_multiple_scales.html}}
 
 
 Styling Links
@@ -224,6 +320,8 @@ gantt.templates.link_class = function(link){
     return "";
 };
 ~~~
+
+<img src="desktop/coloring_links.png">
 
 {{sample  04_customization/03_link_styles.html}}
 
@@ -270,80 +368,12 @@ gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
 };
 ~~~
 
-{{editor	http://docs.dhtmlx.com/gantt/snippet/9b4d4246		Styling the Popup of Dependency Link}}
+<img src="desktop/styling_link_popup.png">
 
+{{editor	http://docs.dhtmlx.com/gantt/snippet/9b4d4246		Styling the Popup of Dependency Link}}
 
 Check the desktop/dependency_templates.md article to get more details on the topic.
 
-Styling Grid
-------------------
-
-You can change the style of the grid part of the Gantt chart via the related desktop/table_templates.md.
-
-###Styling the headers of grid columns
-
-There is a api/gantt_grid_header_class_template.md template that allows you to apply a custom style to the headers of the grid columns. For example, you can change the 
-background color of certain headers of the grid columns in the following way:
-
-~~~html
-<style>
-  .updColor{
-  	background-color:#ffeb8a!important;
-   color:red!important
-  }
-</style>
-~~~
-
-~~~js
-gantt.templates.grid_header_class = function(columnName, column){
-  if(columnName == 'duration' ||columnName == 'text')
-    return "updColor";
-};
-~~~
-
-{{editor		http://docs.dhtmlx.com/gantt/snippet/356f900e		Styling Headers of Grid Columns}}
-
-###Setting the background color of a grid row 
-
-You can apply a custom color for all or separate grid rows with tasks via the api/gantt_grid_row_class_template.md template. For example, you can change the background color
-of a particular row like this:
-
-~~~html
-<style>
-  .updColor{
-  	background-color:#ffeb8a!important;  
-  }
-</style>
-~~~
-
-~~~js
-gantt.templates.grid_row_class = function(start, end, task){
- if(task.id == 12)
-    return "updColor";
-};
-~~~
-
-{{editor	https://docs.dhtmlx.com/gantt/snippet/3328e356			Coloring Grid Rows}}
-
-###Changing the color of text in grid columns
-
-It is also possible to change the default color of the text in grid columns. You can do it by setting a template for a necessary column via the api/gantt_columns_config.md configuration option. For example, you can define a special color for the text of tasks depending on their priority:
-
-~~~js
-gantt.config.columns=[
-	{name:"text",       label:"Task name",  tree:true, width:230, template:myFunc },
-	{name:"start_date", label:"Start time", align: "center" },
-	{name:"duration",   label:"Duration",   align: "center" }
-];
-
-function myFunc(task){
-	if(task.priority ==1)
-		return "<div class='important'>"+task.text+" ("+task.users+") </div>";
-	return task.text+" ("+task.users+")";
-};
-~~~
-
-{{sample	04_customization/05_tree_template.html}}
 
 
 Styling Quick Info Popup
@@ -366,7 +396,6 @@ particular tasks as follows:
 </style>
 ~~~
 
-
 ~~~js
 gantt.templates.quick_info_class = function(start, end, task){ 
   if(task.id == "12")
@@ -375,6 +404,8 @@ gantt.templates.quick_info_class = function(start, end, task){
   	return ""
 };
 ~~~
+
+<img src="desktop/styling_quick_info.png">
 
 {{editor			https://docs.dhtmlx.com/gantt/snippet/0e519fb2			Styling Quick Info Popup}}
 
