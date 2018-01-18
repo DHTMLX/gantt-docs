@@ -1,23 +1,20 @@
-Creating Multiple Charts on the Page
+Creating Multiple Charts on a Page
 ===================================================
 
 {{note
-This functionality included only in Gantt PRO ( Enterprise license ) 
+This functionality is available in the Gantt PRO edition (Enterprise license) only. 
 }}
 
-Basically, dhtmlxGantt is a static object and the default instance of it continually exists on the page -  at any time  you may access the global **gantt** object. But you can also create new gantt object if needed.
-
+Basically, dhtmlxGantt is a static object and the default instance of it continually exists on the page - you may access it via the global **gantt** object at any time. But you can also create new gantt object if needed.
 
 To create a new instance of dhtmlxGantt, use the following command:
 
 ~~~js
 //Beware, "Gantt" in the command goes with the capital letter
 [instanceName] = Gantt.getGanttInstance();
-
 ~~~
 
-
-And then configure, initialize and populate with data your new instance, as usual.
+And then configure  your new instance, initialize it and populate with data, as usual.
 
 Let's take a simple example: 2 Gantt charts, one under another: 
 
@@ -32,10 +29,7 @@ function init() {
 	gantt2.init("gantt_here_2");
 	gantt2.parse(tasksB);	
 }
-
 ~~~
-
-
 
 ~~~js
 <body onload="init();">
@@ -47,20 +41,16 @@ function init() {
 		...
 	</div>	
 </body>
-
 ~~~
 
 
 ##Integration with dhtmlxLayout
-A good way to place multiple Gantt charts on the page is using [dhtmlxLayout](http://docs.dhtmlx.com/doku.php?id=dhtmlxlayout:toc). It not only provides a beautiful frame, but also ensures correct interacting with other elements on the page and 
-acting according to the page size changes. 
 
-**To attach a dhtmlxGantt instance to a layout cell**, use method **attachGantt()**.
-  
+A good way to place multiple Gantt charts on the page is using [dhtmlxLayout](http://docs.dhtmlx.com/doku.php?id=dhtmlxlayout:toc). It not only provides a beautiful frame, but also ensures correct interacting with other elements on the page and acting according to the page size changes. 
+
+**To attach a dhtmlxGantt instance to a layout cell**, use the **attachGantt()**  method.
   
 **Note**, attaching dhtmlxGantt to a cell automatically initializes it. So, configure dhtmlxGantt instance before placing it into the layout.
-
-
 
 ~~~js
 function init() {
@@ -78,7 +68,6 @@ function init() {
 	dhxLayout.cells("b").attachGantt(null, null, gantt2);/*!*/
 	gantt2.parse(tasksB);
 }
-
 ~~~
 
 @edition: pro
