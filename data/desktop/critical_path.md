@@ -1,6 +1,8 @@
 Critical Path
 ===================================
 
+{{pronote This functionality is available only in the PRO edition}}
+
 A critical path is a sequence of tasks that can't be delayed. Otherwise, the whole project would be delayed.<br>
 The critical path also determines the shortest time the project can take.<br>
 
@@ -11,7 +13,7 @@ Slack time is the time that a task can slip without affecting other tasks or the
 <div style="text-align:center;"><img src="desktop/critical_path.png"/></div>
 
 {{note
-To start using the extension, include the ext/dhtmlxgantt_critical_path.js file on the page.
+To start using the extension, include the **ext/dhtmlxgantt_critical_path.js** file on the page.
 }}
 
 To show the critical path in the Gantt chart, set the api/gantt_highlight_critical_path_config.md property to 'true':
@@ -39,15 +41,11 @@ Making the Gantt chart to display the critical path
 }}
 
 
-<br>
-
-Note, when the property is enabled, dhtmlxGantt will automatically check the status of tasks and update the critical path. 
-Critical tasks and links will have an additional 'critical_task' and 'critical_link' CSS classes respectively.  
-Each time a task is modified, dhtmlxGantt will completely re-draw data in order to re-calculate a critical path. 
+Note that when the property is enabled, dhtmlxGantt will automatically check the status of tasks and update the critical path. 
+Critical tasks and links will have additional 'critical_task' and 'critical_link' CSS classes, respectively.  
+Each time a task is modified, dhtmlxGantt will completely re-draw data in order to re-calculate the critical path. 
 Sometimes it may create performance issues. For that case, the component provides public methods that allow you to check
-a certain task or link and implement more performance-friendly strategy for displaying a critical path.
-
-
+a certain task or link and implement a performance-friendlier strategy for displaying a critical path.
 
 
 Checking if a task is critical 

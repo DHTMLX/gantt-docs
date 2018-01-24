@@ -146,7 +146,7 @@ Hiding/showing columns
 To manipulate the visibility of a column, use the [hide](api/gantt_columns_config.md) attribute in the related column's object.<br> 
 Visibility can be toggled dynamically, by changing the value of the 'hide' property and refreshing the Gantt chart:
 
-{{pronote This functionality available only in PRO edition }}
+{{pronote This functionality is available only in the PRO edition }}
 
 {{snippet
 Switching between basic and detailed view}}
@@ -183,7 +183,7 @@ gantt.init("gantt_here");
 Resizing columns
 -------------------------------------------------
 
-{{pronote This functionality available only in PRO edition }}
+{{pronote This functionality is available only in the PRO edition }}
 
 To provide users a possibility to resize a column by dragging the right column's border, use the [resize](api/gantt_columns_config.md) attribute in the related column's object:
 ~~~js
@@ -237,14 +237,11 @@ gantt.init("gantt_here");
 
 
 ###Events
-dhtmlxGantt provides 6 events for handling the resizing behaviour: 
+dhtmlxGantt provides 6 events for handling the resizing behavior: 
 
 - api/gantt_oncolumnresizestart_event.md - fires before the user starts to drag the column's border to resize the column
 - api/gantt_oncolumnresize_event.md - fires when the user is dragging the column's border to resize the column
-- api/gantt_oncolumnresizeend_event.md - fires after the user finished dragging the column's border to resize the column
-
-<br>
-
+- api/gantt_oncolumnresizeend_event.md - fires after the user finished dragging the column's border to resize the column<br><br>
 - api/gantt_ongridresizestart_event.md - fires before the user starts to drag the grid's border to resize the grid
 - api/gantt_ongridresize_event.md - fires when the user is dragging the grid's border to resize the grid
 - api/gantt_ongridresizeend_event.md - fires after the user finished dragging the grid's border to resize the grid

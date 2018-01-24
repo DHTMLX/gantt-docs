@@ -1,6 +1,8 @@
 Exploring the Task Types
 =================================
+
 {{pronote This functionality is available only in PRO edition }}
+
 There are 3 predefined types of tasks that you can present in a Gantt chart ([you can also add a custom type](desktop/task_types.md#creatingacustomtype)):
 
 1. [A regular task (default)](desktop/task_types.md#regulartasks).
@@ -258,7 +260,7 @@ To customize the look of existing task types, use the api/gantt_type_renderers_c
 <img src="desktop/custom_look.png"/>
 
 ~~~js
-gantt.config.type_renderers[gantt.config.types.project] = function(task, defaultRender){
+gantt.config.type_renderers[gantt.config.types.project]=function(task, defaultRender){
 	var main_el = document.createElement("div");
 	main_el.setAttribute(gantt.config.task_attribute, task.id);
 	var size = gantt.getTaskPosition(task);

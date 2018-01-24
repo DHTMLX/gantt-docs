@@ -1,7 +1,7 @@
 Creating Multiple Charts on a Page
 ===================================================
 
-{{note
+{{pronote
 This functionality is available in the Gantt PRO edition (Enterprise license) only. 
 }}
 

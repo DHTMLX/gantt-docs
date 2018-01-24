@@ -181,6 +181,13 @@ Predefined locales
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
+ Norwegian Bokmål
+</td><td style='border:1px solid #AAA;'>
+ locale_nb.js 
+</td><td style='border:1px solid #AAA;'>
+ partial
+</td></tr>
+<tr><td style='border:1px solid #AAA;'>
  Persian 
 </td><td style='border:1px solid #AAA;'>
  locale_fa.js 

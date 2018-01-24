@@ -4,8 +4,7 @@ Dragging Tasks within the Timeline
 Dragging allows users to quickly change the start (end) dates of the tasks, their duration. <br>
 By default, the drag-and-drop is enabled and the user can drag a task along its row in the timeline.
 
-To customize the drag-and-drop behaviour, use the following events:
-
+To customize the drag-and-drop behavior, use the following events:
 
 - api/gantt_onbeforetaskdrag_event.md - to deny dragging of specific tasks
 - api/gantt_ontaskdrag_event.md - to limit the area for dragging or to provide some other logic when the user drags a task 
@@ -13,7 +12,7 @@ To customize the drag-and-drop behaviour, use the following events:
 
 <br>
 
-Let's consider typical cases when the default drag behaviour needs customization:
+Let's consider typical cases when the default drag behavior needs customization:
 
 
 1. [Denying dragging specific tasks](desktop/dnd.md#denyingdraggingofspecifictasks).
@@ -21,8 +20,10 @@ Let's consider typical cases when the default drag behaviour needs customization
 3. [Dragging childs together with the parent](desktop/dnd.md#draggingchildstogetherwiththeparent).
 4. [Setting minimal task duration](desktop/dnd.md#settingminimaltaskduration).
 
+
 Denying dragging of specific tasks
 ---------------------------------------
+
 To deny dragging of specific tasks, use the api/gantt_onbeforetaskdrag_event.md event:
 
 ~~~js

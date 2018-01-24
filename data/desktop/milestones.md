@@ -1,9 +1,12 @@
 Milestones
 ============
-Milestones are tasks with zero duration that are used to mark out important dates of the project, some key events or goals.
-You may use milestones, for example, to highlight dates of review meetings or dates of expected completion for project's phases. <br>
 
-Programmatically, a milestone is one of [predefined types of tasks](desktop/task_types.md). But it's handled as [a regular task](desktop/task_types.md), i.e. it trigger the same events and templates. 
+{{pronote This functionality is available only in the PRO edition }}
+
+Milestones are tasks with zero duration that are used to mark out important dates of the project, some key events or goals.
+You may use milestones, for example, to highlight dates of review meetings or dates of expected completion of project's phases. <br>
+
+Programmatically, a milestone is one of [predefined types of tasks](desktop/task_types.md). But it's handled as [a regular task](desktop/task_types.md), i.e. it triggers the same events and templates. 
 
 <img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="desktop/type_milestone.png">
 {{sample
@@ -12,7 +15,7 @@ Programmatically, a milestone is one of [predefined types of tasks](desktop/task
 
 <br>
 
-**Generally, to provide a possibility to  add milestones to a chart:**
+**Generally, to provide a possibility to add milestones to a chart:**
 
 <ol>
 	<li>Add an extra section to the lightbox - desktop/typeselect.md -  that will let your users to change the type of tasks and select milestones. <br> <br>

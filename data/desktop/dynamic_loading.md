@@ -1,5 +1,8 @@
 Dynamic Loading (on demand)
 =========================================
+
+{{pronote This functionality is available only in the PRO edition}}
+
 By default, dhtmlxGantt loads all data at once. It may become problematic when you have a big number of tasks.
 
 In such situation you may use the dynamic loading mode and load data by branches (sub-projects), level by level as the user opens them. 

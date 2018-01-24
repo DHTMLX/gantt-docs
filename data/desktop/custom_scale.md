@@ -1,5 +1,8 @@
 Hiding Time Units in the Scale
 ================================================
+
+{{pronote This functionality is available only in PRO edition }}
+
 The library provides the possibility to hide unnecessary time units in the time scale of the chart. You can use this possibility, for example, to display only working days and hide weekends. 
 
 

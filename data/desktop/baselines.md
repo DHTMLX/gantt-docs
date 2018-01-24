@@ -1,8 +1,11 @@
 Additional Elements in the Timeline Area
 ==========================================
 
+{{pronote This functionality is available only in the PRO edition}}
+
 Common description
 ------------------------------------------
+
 By default, dhtmlxGantt renders elements of the timeline area as layers and does it in the following order:
 
 1. Timeline's grid
@@ -19,18 +22,17 @@ Displaying additional elements, such as a baseline or deadline marker, is usuall
 
 ~~~js
 gantt.addTaskLayer(function myNewElement(task) {
-		var el = document.createElement('div');
-        //your code
-		return el;
+	var el = document.createElement('div');
+    // your code
+    return el;
 });
 ~~~
 {{sample
 	04_customization/14_deadline.html
 }}
 
-<br>
 
-Note, 
+Note:
 
 1. After you call the method, dhtmlxGantt adds a container to the timeline area. 
 2. When dhtmlxGantt renders data, the api/gantt_addtasklayer.md method will be called for each task and the returned DOM element will be appended to the container.
@@ -104,6 +106,7 @@ gantt.attachEvent("onTaskLoading", function(task){
 ###Step 4. Display custom elements for the planned time
 
 Then, call the api/gantt_addtasklayer.md method to display planned time for task (defined by the 'planned_start' and 'planned_end' properties).
+
 ~~~js
 gantt.addTaskLayer(function draw_planned(task) {
 	if (task.planned_start && task.planned_end) {
@@ -136,8 +139,6 @@ Next, add a style for your new elements:
 ~~~
 
 
-
-
 ###Step 6. Add the possibility to edit added data properties in the lightbox
 
 Finally, redefine the lightbox structure if you want to provide a possibility to edit the newly added properties from UI.
@@ -152,7 +153,6 @@ gantt.config.lightbox.sections = [
 gantt.locale.labels.section_baseline = "Planned";
 ~~~
 
-<br>
 
 The full code of the considered example you can see in the related sample.
 

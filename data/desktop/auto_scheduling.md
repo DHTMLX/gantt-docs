@@ -1,6 +1,8 @@
 Auto Scheduling
 ===================
 
+{{pronote This functionality is available only in the PRO edition}}
+
 Starting from version 3.3, the library provides the **ext/dhtmlxgantt_auto_scheduling.js** extension that gives
 Gantt the ability to schedule tasks automatically depending on relations between them.
 
