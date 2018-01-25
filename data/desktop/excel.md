@@ -40,7 +40,7 @@ To export data from the Gantt chart to an Excel document, do the following:
 
 ####Parameters of the export method
 
-The **exportToExcel()** method takes as a parameter the object with 2 possible properties (all of the properties are optional):
+The **exportToExcel()** method takes as a parameter an object with several properties (all the properties are optional):
 
 <table class="webixdoc_links">
 	<tbody>
@@ -50,18 +50,26 @@ The **exportToExcel()** method takes as a parameter the object with 2 possible p
 		</tr>
        <tr>
 			<td class="webixdoc_links0"><b>columns</b></td>
-			<td>(<i>array</i>) allows to configure columns of the output Excel sheet
+			<td>(<i>array</i>) allows configuring columns of the output Excel sheet. The properties of column objects are:
             	<ul>
-                	<li><b>'id'</b> - (string|number) a property of the event that will be mapped to the column </li>
+                	<li><b>'id'</b> - (string,number) a property of the event that will be mapped to the column </li>
                     <li><b>'header'</b> - (string) the column header</li>
                     <li><b>'width'</b> - (number) the column width in pixels</li>
                     <li><b>'type'</b> - (string) the column type</li>
                 </ul>
             </td>
 		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>server</b></td>
+			<td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/gantt</strong></td>
+		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>visual</b></td>
+			<td>(<i>boolean</i>) adds the timeline chart to an exported Excel document. <em>false</em> by default</td>
+		</tr>
     </tbody>
 </table>
-
+<br>
 {{snippet
 Calling the export method with optional properties
 }}
@@ -71,7 +79,9 @@ gantt.exportToExcel({
     columns:[
 		{ id:"text",  header:"Title", width:150 },
         { id:"start_date",  header:"Start date", width:250, type:"date" }
-    ]
+    ],
+    server:"https://myapp.com/myexport/gantt",
+    visual:true
 });
 ~~~
 
@@ -80,7 +90,7 @@ gantt.exportToExcel({
 Export to iCal
 -------------------
 
-To export data from the Gantt chart  to an iCal string, do the following:
+To export data from the Gantt chart to an iCal string, do the following:
 
 <ol>
 	<li>Include the <b>"http://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
@@ -109,3 +119,26 @@ To export data from the Gantt chart  to an iCal string, do the following:
 {{sample
 	08_api/09_export_store.html
 }}
+
+
+####Parameters of the export method
+
+The **exportToICal()** method takes as a parameter an object with the following property (optional):
+
+<table class="webixdoc_links">
+	<tbody>
+        <tr>
+			<td class="webixdoc_links0"><b>server</b></td>
+			<td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/gantt</strong></td>
+		</tr>
+    </tbody>
+</table>
+<br>
+{{snippet
+Calling the export method with optional properties
+}}
+~~~js
+gantt.exportToICal({
+    server:"https://myapp.com/myexport/gantt"
+});
+~~~
