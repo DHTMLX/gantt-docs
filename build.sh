@@ -8,8 +8,8 @@ mkdir samples
 
 aws --quiet s3 cp s3://dhtmlx-packages/${COMPONENT}/latest.txt ./
 LATEST=`cat ./latest.txt`
-aws --quiet s3 cp s3://dhtmlx-packages/${COMPONENT}/${COMPONENT}-${LATEST}_site.zip ./
-unzip -q ./${COMPONENT}-${LATEST}_site.zip 'samples/*'
+aws --quiet s3 cp s3://dhtmlx-packages/${COMPONENT}/${COMPONENT}_${LATEST}_site.zip ./
+unzip -q ./${COMPONENT}_${LATEST}_site.zip 'samples/*'
 
 
 echo '{"samples":"./samples/"}' > madoka.local.json
