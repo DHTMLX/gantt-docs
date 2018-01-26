@@ -16,24 +16,34 @@ to print the task description.
 By default, the lightbox contains 3 buttons ('Save', 'Cancel', 'Delete') that are specified by the api/gantt_buttons_left_config.md and api/gantt_buttons_right_config.md configuration options.
 
 ~~~js
-gantt.config.buttons_left = ["dhx_save_btn", "dhx_cancel_btn"];
-gantt.config.buttons_right = ["dhx_delete_btn"];
+gantt.config.buttons_left = ["gantt_save_btn", "gantt_cancel_btn"];
+gantt.config.buttons_right = ["gantt_delete_btn"];
 ~~~
 
-To change the default sets of buttons, follow the steps below:
+To change the default set of buttons, follow the steps below:
 
-<ol>
-	<li>Specify new members of the <b>buttons_left</b> or  <b>buttons_right</b> array:
+- Specify new members of the <b>buttons_left</b> or <b>buttons_right</b> array. 
+
+{{note
+Please note that if you use the [Material skin](desktop/skins.md#materialskin), it will redefine the buttons configuration. 
+To prevent this, you need to specify the configuration of buttons inside the api/gantt_onganttready_event.md event handler:
+}}
+
 ~~~js
-gantt.config.buttons_left=["dhx_save_btn","dhx_cancel_btn","complete_button"];
+gantt.attachEvent("onGanttReady", function(){
+   gantt.config.buttons_left = ["gantt_save_btn","gantt_cancel_btn","complete_button"];   
+   gantt.config.buttons_right = ["gantt_delete_btn"];               
+});
 ~~~
-</li>
-	<li>Set the button's label:
+
+- Set the button's label:
+
 ~~~js
 gantt.locale.labels["complete_button"] = "Complete";
 ~~~
-</li>
-	<li>To set the icon for the button (and/or apply some other styling), specify the CSS class as in:
+
+- To set the icon for the button (and/or apply some other styling), specify the CSS class as in:
+
 ~~~js
 .complete_button{
 	margin-top: 1px;
@@ -41,8 +51,9 @@ gantt.locale.labels["complete_button"] = "Complete";
     width: 20px;
 }
 ~~~
-</li>
-	<li>Specify the  api/gantt_onlightboxbutton_event.md handler that will treat clicks on the button:
+
+- Specify the  api/gantt_onlightboxbutton_event.md handler that will treat clicks on the button:
+
 ~~~js
 gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 	if(button_id == "complete_button"){
@@ -53,8 +64,7 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
     }
 });
 ~~~
-</li>
-</ol>
+
 
 {{sample
 	05_lightbox/06_custom_button.html
