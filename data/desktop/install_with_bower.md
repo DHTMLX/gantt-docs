@@ -68,14 +68,16 @@ There are step-by-step instructions for both variants:
 ###npm install
 
 1. Copy the Gantt codebase into some local directory.
-2. [Initialize the npm package there](https://docs.npmjs.com/cli/init). Name the package *dhtmlx-gantt* or whatever you like.
+2. [Initialize the npm package there](https://docs.npmjs.com/cli/init). Name the package *dhtmlx-gantt* or whatever you like.<br> 
+Make sure to set *dhtmlxgantt.js* as a main file in package.json as `"main": "codebase/dhtmlxgantt.js"`.
 3. Go to your project directory. 
 4. Call `npm install ../gantt-local-package-path`.
 
 ###npm link
 
 1. Copy the Gantt codebase into some local directory.
-2. [Initialize the npm package there](https://docs.npmjs.com/cli/init). Name the package *dhtmlx-gantt* or whatever you like.
+2. [Initialize the npm package there](https://docs.npmjs.com/cli/init). Name the package *dhtmlx-gantt* or whatever you like.<br> 
+Make sure to set *dhtmlxgantt.js* as a main file in package.json as `"main": "codebase/dhtmlxgantt.js"`.
 3. Call `npm link` in the package folder.
 4. Go to your project directory.
 5. Call `npm link dhtmlx-gantt`.

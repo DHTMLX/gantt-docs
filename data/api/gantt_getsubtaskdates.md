@@ -1,12 +1,13 @@
 getSubtaskDates
 =============
+
 @short:calculates the combined start/end dates of tasks nested in a project or another task
 
 @params:
-* task_id	string, number		the task's id, api/gantt_root_id_config.md will be used if not specified
+* task_id		string,number		the task's id, api/gantt_root_id_config.md will be used if not specified
 
 @returns:
-- dates	object		object containing <b>start_date</b> and <b>end_date</b> properties
+- dates			object		object containing <b>start_date</b> and <b>end_date</b> properties
 
 
 @example:
