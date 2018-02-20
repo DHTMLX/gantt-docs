@@ -174,7 +174,8 @@ The articles come around key procedures and problem-solving activities.
             <h4>
                 Auxiliary Resources
             </h4>
-            <ul id="internet_sublist">            		                                       
+            <ul id="internet_sublist">    
+            		<li>desktop/editions_comparison.md</li>
                     <li>desktop/date_format.md</li>
                     <li>desktop/date_operations.md</li>
                     <li>desktop/fullscreen_mode.md</li>

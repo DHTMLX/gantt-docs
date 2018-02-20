@@ -2,6 +2,7 @@ Auxiliary Resources
 =============================
 
 {{index
+- desktop/editions_comparison.md
 - desktop/date_format.md
 - desktop/date_operations.md
 - desktop/fullscreen_mode.md
