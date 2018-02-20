@@ -235,7 +235,7 @@ gantt.getTask(1).color = "red"
 
 Read the related section of the desktop/colouring_tasks.md#specifyingstyleinthepropertiesofataskobject article to get the details.
 
-###Setting the color and text of a task bar via the lightbox
+###Setting the background color and text color of task bars via the lightbox
 
 You can define a set of predefined colors and specify them as options in the lightbox configuration.
 
