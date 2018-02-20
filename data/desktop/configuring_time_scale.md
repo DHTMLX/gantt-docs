@@ -17,7 +17,7 @@ You can configure the following aspects of the time scale (X-Axis):
 You can also add a [custom scale](desktop/configuring_time_scale.md#customscale).
 
 
-Time unit of the scale
+Time units
 ----------------------------------------
 
 <img src="desktop/week_scale_unit.png"/>
@@ -39,7 +39,7 @@ gantt.init("gantt_here");
 
 
 
-Date range of the scale
+Range
 --------------------------------------
 
 <img src="desktop/day_scale_unit.png"/>
@@ -119,8 +119,7 @@ gantt.init("gantt_here");
 ~~~
 
 
-
-Step of the scale
+Time step
 --------------------------------------
 
 <img src="desktop/scale_step.png"/>
@@ -142,7 +141,7 @@ gantt.init("gantt_here");
 }}
 
 
-Height of the scale
+Height
 --------------------------------------
 
 <img src="desktop/scale_height.png"/>
@@ -164,7 +163,7 @@ If you have several scales, they will share the specified height equally. For ex
 
 
 
-Format of the scale
+Date format
 ----------------------------------------------
 
 {{note
@@ -213,7 +212,7 @@ gantt.init("gantt_here");
 </li>
 </ul>
 
-Style of the scale
+Styling
 ------------------------------------
 
 <img src="desktop/scale_style.png"/>
@@ -242,7 +241,7 @@ Setting a custom style for the scale
 
 Read more on applying a custom style to the timeline area in the desktop/highlighting_time_slots.md article.
 
-Second scale(s)
+Multiple scales
 ----------------------------------------------
 
 <img src="desktop/secondscale.png"/>

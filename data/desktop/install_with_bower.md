@@ -82,6 +82,8 @@ Make sure to set *dhtmlxgantt.js* as a main file in package.json as `"main": "co
 4. Go to your project directory.
 5. Call `npm link dhtmlx-gantt`.
 
+To see the difference between the Standard and PRO versions of the dhtmlxGantt library, check the related article desktop/editions_comparison.md.
+
 
 @index:
 - desktop/cdn_links_list.md
