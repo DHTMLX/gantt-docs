@@ -18,6 +18,7 @@ Let's consider typical cases when the default drag behavior needs customization:
 1. [Denying dragging specific tasks](desktop/dnd.md#denyingdraggingofspecifictasks).
 2. [Denying dragging tasks out of specific dates](desktop/dnd.md#denyingdraggingtasksoutofspecificdates).
 3. [Dragging childs together with the parent](desktop/dnd.md#draggingchildstogetherwiththeparent).
+3. [Dragging projects with subtasks](desktop/dnd.md#draggingprojectswithsubtasks).
 4. [Setting minimal task duration](desktop/dnd.md#settingminimaltaskduration).
 
 
@@ -133,6 +134,15 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
         },id );
     }
 });
+~~~
+
+Dragging projects with subtasks
+-------------------------------------------
+
+Tasks of [project type](api/gantt_types_config.md) are not draggable by default.
+You can enable drag and drop using api/gantt_drag_project_config.md config:
+~~~js
+gantt.config.drag_project = true;
 ~~~
 
 Dragging dependent tasks together with independent tasks
