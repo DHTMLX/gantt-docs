@@ -7,10 +7,10 @@ resource_cell_class
 @edition: pro
 
 @descr:
-- Defines the css class names of cells in the resource timeline cells.
-- Resource timeline binds tasks to resource by api/gantt_resource_property_config.md property of the task object.
+- Defines the css class names of cells in the resource timeline view.
+- Resource timeline links tasks to a resource by api/gantt_resource_property_config.md property of the task object.
 - The template is not called for cells where no tasks are located.
-- Tasks of the [project type](api/gantt_types_config.md) are ignored, the total value of their subtasks should be used instead.
+- Tasks of the [project type](api/gantt_types_config.md) are not counted and won't be passed to the `tasks` argument.
 
 @short:defines the css class names of cells in the resource timeline cells.
 	
