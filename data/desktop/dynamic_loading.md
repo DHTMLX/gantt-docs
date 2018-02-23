@@ -55,7 +55,7 @@ $gantt->render_table(
 
 Generally, the client-side has no information about children of the displayed data items (as such children were not loaded from the server-side). 
 
-To pass this information, you can use a special data property '$has_children' (the name is mandatory) that indicates the number of the child elements for the task.
+To pass this information, you can use a special data property '$has_child' (can be changed using api/gantt_branch_loading_property_config.md) that indicates the number of the child elements for the task.
 
 ~~~php
 function check_children($row){
@@ -148,6 +148,9 @@ If the request has the *parent_id* parameter, the response must contain children
 
 @edition:pro
 
+@relatedapi:
+	api/gantt_branch_loading_config.md
+	api/gantt_branch_loading_property_config.md
 
 @todo:
    replace backend instruction with format details

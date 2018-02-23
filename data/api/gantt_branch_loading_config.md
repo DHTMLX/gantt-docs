@@ -15,7 +15,8 @@ gantt.load("/data"); /*!*/
 @template:	api_config
 @descr:
 
-
+@relatedapi:
+	api/gantt_branch_loading_property_config.md
 @related:
 	desktop/performance.md
 	desktop/dynamic_loading.md

@@ -8,7 +8,7 @@ Templates
 - api/gantt_date_grid_template.md - specifies the content of start date or end date columns in grid
 - api/gantt_date_scale_template.md - specifies the date format of the time scale (X-Axis)
 - api/gantt_drag_link_template.md - specifies the text of tooltips that are displayed when the user creates a new dependency link
-- api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the link receiver (pop-up circle near the task bar)
+- api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the pop-up that appears when a user drags a link
 - api/gantt_grid_blank_template.md - specifies the custom content inserted before the labels of child items in the tree column
 - api/gantt_grid_date_format_template.md - specifies the format of dates in the "Start time" column
 - api/gantt_grid_file_template.md - specifies the icon of child items in the tree column
@@ -24,6 +24,8 @@ Templates
 - api/gantt_quick_info_content_template.md - specifies the content of the pop-up edit form
 - api/gantt_quick_info_date_template.md - specifies the date of the pop-up edit form
 - api/gantt_quick_info_title_template.md - specifies the title of the pop-up edit form
+- api/gantt_resource_cell_class_template.md - defines the css class names of cells in the resource timeline cells.
+- api/gantt_resource_cell_value_template.md - defines the html content of resource timeline cells
 - api/gantt_scale_cell_class_template.md - specifies the CSS class that will be applied to cells of the time scale of the timeline area
 - api/gantt_scale_row_class_template.md - specifies the CSS class that will be applied to the time scale
 - api/gantt_task_cell_class_template.md - specifies the CSS class that will be applied to the cells of the timeline area
@@ -64,6 +66,8 @@ Templates
 - api/gantt_quick_info_content_template.md
 - api/gantt_quick_info_date_template.md
 - api/gantt_quick_info_title_template.md
+- api/gantt_resource_cell_class_template.md
+- api/gantt_resource_cell_value_template.md
 - api/gantt_scale_cell_class_template.md
 - api/gantt_scale_row_class_template.md
 - api/gantt_task_cell_class_template.md

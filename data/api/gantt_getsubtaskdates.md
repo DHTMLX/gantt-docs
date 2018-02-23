@@ -28,3 +28,7 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 
 @descr:
 The method returns object containing the start date of the earliest subtask and end date of the latest subtask.
+
+@relatedapi:
+api/gantt_getsubtaskduration.md
+api/gantt_gettaskby.md
