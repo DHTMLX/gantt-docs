@@ -9,4 +9,5 @@ Configuring the Scales
 - desktop/dynamic_scale.md
 - desktop/custom_scale.md
 - desktop/markers.md
+- desktop/rtl_mode.md
 }}

@@ -10,7 +10,7 @@ To set a custom style for tasks, you can use one of the following approaches:
 
 1. [To redefine the default tasks' template](desktop/colouring_tasks.md#redefiningthetaskstemplate)
 2. [To set style values in the properties of the task object](desktop/colouring_tasks.md#specifyingstyleinthepropertiesofthetaskobject)
-
+3. [To generate styles from data](desktop/colouring_tasks.md#loadingcolorswithdata)
 
 Redefining the task's template
 -----------------------------------------
@@ -107,3 +107,82 @@ task.color = "rgb(255,0,0)";
 
 
 A similar approach can be applied to links. Read more about it [here](desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject).
+
+Loading colors with the data
+-----------------------------------------------------
+
+If colors are a part of your data which comes from the backend, e.g. when task color is associated with a stage or a resource assigned to a task which can't be hardcoded on the page, it may be a good solution to generate styles from your data manually.
+
+Let's suppose that you have the following collection of users that can be assigned to tasks. Task styles should be defined by the properties of user records:
+
+~~~js
+[
+	{key: 1, label: "John", backgroundColor:"#03A9F4", textColor:"#FFF"},
+	{key: 2, label: "Mike", backgroundColor:"#f57730", textColor:"#FFF"},
+	{key: 3, label: "Anna", backgroundColor:"#e157de", textColor:"#FFF"},
+	{key: 4, label: "Bill", backgroundColor:"#78909C", textColor:"#FFF"},
+	{key: 7, label: "Floe", backgroundColor:"#8D6E63", textColor:"#FFF"}
+]
+~~~
+
+In this use case, users and their colors are created and managed by different parts of the app and gantt generally doesn't know user ids and their colors in advance.
+
+This is what you can do in this case:
+
+- Define a named serverList for this collection
+
+~~~js
+gantt.serverList("people");
+~~~
+
+- Load options to the page, either by [using the gantt data format](desktop/supported_data_formats.md#jsonwithcollections) or manually via a custom xhr 
+
+- Once options are loaded, you can generate CSS styles from the data:
+
+~~~js
+gantt.attachEvent("onLoadEnd", function(){
+    // use an arbitrary id for the style element
+	var styleId = "dynamicGanttStyles";
+    
+    // in case you'll be reloading options with colors - reuse previously
+    // created style element
+    
+	var element = document.getElementById(styleId);
+	if(!element){
+		element = document.createElement("style");
+		element.id = styleId;
+		document.querySelector("head").appendChild(element);
+	}
+	var html = [];
+	var resources = gantt.serverList("people");
+
+	// generate css styles for each option and write css into the style element,
+    
+	resources.forEach(function(r){
+		html.push(".gantt_task_line.gantt_resource_" + r.key + "{" +
+			"background-color:"+r.backgroundColor+"; " +
+			"color:"+r.textColor+";" +
+		"}");
+	});
+	element.innerHTML = html.join("");
+});
+~~~
+
+- After that you'll be able to assign related classes you generated from the task templates:
+
+~~~js
+gantt.templates.task_class = function (start, end, task) {
+	var css = [];
+
+	if(task.owner_id){
+		css.push("gantt_resource_" + task.owner_id);
+	}
+
+	return css.join(" ");
+};
+~~~
+
+{{sample
+11_resources/01_assigning_resources.html
+}}
+

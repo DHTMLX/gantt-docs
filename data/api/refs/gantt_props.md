@@ -78,7 +78,7 @@ Properties
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table
-- api/gantt_rtl_config.md - switches gantt to right-to-left mode
+- api/gantt_rtl_config.md - switches gantt to the right-to-left mode
 - api/gantt_scale_height_config.md - sets the height of the time scale and the header of the grid
 - api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of leading/closing empty space
 - api/gantt_scale_unit_config.md - sets the unit of the time scale (X-Axis)

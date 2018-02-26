@@ -1,18 +1,19 @@
 onBeforeTaskSelected
 =============
 
+
 @short:fires before the user selects a task 
 	
 
 @params:
-- id	string, number	the task id
+- id	string,number	the task id
 
 
 @returns:  
-  - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
+ - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
  
 @example:
-gantt.attachEvent("onBeforeTaskSelected", function(id,item){
+gantt.attachEvent("onBeforeTaskSelected", function(id){
     //any custom logic here
 	return true;
 });

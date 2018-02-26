@@ -5,13 +5,13 @@ Dynamic Loading (on demand)
 
 By default, dhtmlxGantt loads all data at once. It may become problematic when you have a big number of tasks.
 
-In such situation you may use the dynamic loading mode and load data by branches (sub-projects), level by level as the user opens them. 
+In such a situation you may use the dynamic loading mode and load data by branches (sub-projects), level by level as the user opens them. 
 
 
-To enable the dynamic loading in the Gantt chart you need to deal with both the client- and the server-side.
+To enable the dynamic loading in the Gantt chart, you need to deal with both the client- and the server side.
 
-<ul>
-	<li>Client-side (use the api/gantt_branch_loading_config.md option):
+- Client side (use the api/gantt_branch_loading_config.md option):
+
 ~~~js
 gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
 gantt.init("gantt_here");
@@ -22,8 +22,9 @@ gantt.load("../common/connector_dynamic_loading.php");
 var dp = new gantt.dataProcessor("../common/connector_dynamic_loading.php");
 dp.init(gantt);
 ~~~
-	</li>
-    <li>Server-side:
+
+- Server side:
+
 ~~~php
 <?php
 
@@ -45,29 +46,28 @@ $gantt->render_table(
     "parent"
 );
 ~~~
-	</li>
-</ul>
+	
 {{sample
 02_extensions/06_dynamic_loading.html
 }}
 
 <br>
 
-Generally, the client-side has no information about children of the displayed data items (as such children were not loaded from the server-side). 
+Generally, the client side has no information about children of the displayed data items (as such children were not loaded from the server side). 
 
 To pass this information, you can use a special data property '$has_child' (can be changed using api/gantt_branch_loading_property_config.md) that indicates the number of the child elements for the task.
 
 ~~~php
 function check_children($row){
-    global $gantt;
-    $task_id = $row->get_value('id');
-    $sql = "SELECT COUNT(id) AS has_children FROM gantt_tasks WHERE parent='{$task_id}'";
-    $children = $gantt->sql->query($sql);
+ global $gantt;
+ $task_id = $row->get_value('id');
+ $sql = "SELECT COUNT(id) AS has_children FROM gantt_tasks WHERE parent='{$task_id}'";
+ $children = $gantt->sql->query($sql);
     
-    $child = $gantt->sql->get_next($children);
-    $children_qty = $child['has_children'];
+ $child = $gantt->sql->get_next($children);
+ $children_qty = $child['has_children'];
 
-    $row->set_userdata('$has_child',$children_qty);
+ $row->set_userdata('$has_child',$children_qty);
 }
 $gantt->event->attach("beforeRender","check_children");
 ~~~
@@ -117,10 +117,10 @@ The format of data for dynamic loading is the following:
 
 As you can see, it's the same JSON as the one used for regular data loading. To compare, check the desktop/supported_data_formats.md article.
 
-The only difference is the *$has_child* property which indicates whether a task will be displayed as a 'leaf' item (without the 'expand' toggle) or as an expandable node:
+The only difference is the **$has_child** property which indicates whether a task will be displayed as a 'leaf' item (without the 'expand' toggle) or as an expandable node:
 
 - if the *$has_child* property is specified and contains a ['truthy'](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) value (a non-zero number, true, a non-empty string, etc.),
-the item will be displayed with the expand/collapse toggle. On expanding the toggle, an ajax request will be sent to the server;
+the item will be displayed with the expand/collapse toggle. On expanding the toggle, an Ajax request will be sent to the server;
 - if *$has_child* is not specified or contains a ['falsy'](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) value (zero, false, NaN, undefined, empty string, null),
 the item will be displayed without toggle, as a task which has no child items.
 

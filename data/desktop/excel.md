@@ -13,7 +13,7 @@ To export data from the Gantt chart to an Excel document, do the following:
 	<li>Include the <b>"http://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
 ~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
-<script src="http://export.dhtmlx.com/gantt/api.js"></script>  /*!*/
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>  /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxgantt.css" type="text/css">
 ~~~
 </li>
@@ -42,34 +42,18 @@ To export data from the Gantt chart to an Excel document, do the following:
 
 The **exportToExcel()** method takes as a parameter an object with several properties (all the properties are optional):
 
-<table class="webixdoc_links">
-	<tbody>
-    	<tr>
-			<td class="webixdoc_links0"><b>name</b></td>
-			<td>(<i>string</i>) sets the name of the output file with the extension '.xlsx' </td>
-		</tr>
-       <tr>
-			<td class="webixdoc_links0"><b>columns</b></td>
-			<td>(<i>array</i>) allows configuring columns of the output Excel sheet. The properties of column objects are:
-            	<ul>
-                	<li><b>'id'</b> - (string,number) a property of the event that will be mapped to the column </li>
-                    <li><b>'header'</b> - (string) the column header</li>
-                    <li><b>'width'</b> - (number) the column width in pixels</li>
-                    <li><b>'type'</b> - (string) the column type</li>
-                </ul>
-            </td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>server</b></td>
-			<td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/gantt</strong></td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>visual</b></td>
-			<td>(<i>boolean</i>) adds the timeline chart to an exported Excel document. <em>false</em> by default</td>
-		</tr>
-    </tbody>
-</table>
-<br>
+- **name** - (*string*) sets the name of the output file with the extension '.xlsx' 
+- **columns** - (*array*) allows configuring columns of the output Excel sheet. The properties of the column objects are:
+	- **'id'** - (*string,number*) a property of the event that will be mapped to the column
+    - **'header'** - (*string*) the column header
+    - **'width'** - (*number*) the column width in pixels
+    - **'type'** - (*string*) the column type</li>
+- **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**
+- **visual** - (*boolean*) adds the timeline chart to an exported Excel document. *false* by default
+- **cellColors** - (*boolean*) if set to *true*, the cells of the exported document will have the colors defined by the api/gantt_task_cell_class_template.md template, the *color* and *background-color* 
+properties are exported
+		
+
 {{snippet
 Calling the export method with optional properties
 }}
@@ -81,7 +65,8 @@ gantt.exportToExcel({
         { id:"start_date",  header:"Start date", width:250, type:"date" }
     ],
     server:"https://myapp.com/myexport/gantt",
-    visual:true
+    visual:true,
+    cellColors:true
 });
 ~~~
 
@@ -96,7 +81,7 @@ To export data from the Gantt chart to an iCal string, do the following:
 	<li>Include the <b>"http://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
 ~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
-<script src="http://export.dhtmlx.com/gantt/api.js"></script>  /*!*/
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>  /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxgantt.css" type="text/css">
 ~~~
 </li>

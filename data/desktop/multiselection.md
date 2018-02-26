@@ -1,5 +1,6 @@
 Multi-Task Selection 
 ===========================================
+
 Starting from version 3.2, the library provides the **ext/dhtmlxgantt_multiselect.js** extension that allows you to select multiple tasks at once.
 
 <div style="text-align:center;"><img src="desktop/multiselection.png"/></div>
@@ -131,3 +132,22 @@ To deny selecting tasks from different levels, use the api/gantt_multiselect_one
 gantt.config.multiselect_one_level = true; 
 gantt.init('gantt_here');
 ~~~
+
+API events
+--------------
+
+When multi-task selection is enabled, selecting a task or a range of tasks will trigger both the general api/gantt_ontaskselected_event.md / api/gantt_ontaskunselected_event.md events, 
+and events specific to the multiselect extension.
+
+Multi-task selection has the following events flow:
+
+- api/gantt_onbeforemultiselect_event.md - fires before selecting task or a range of tasks, blockable
+- api/gantt_onbeforetaskmultiselect_event.md - fires before task selection state is being changed (the task is being selected or unselected), blockable
+- api/gantt_ontaskmultiselect_event.md - fires after the task selection state has changed (the task has been selected/unselected)
+- api/gantt_ontaskunselected_event.md - is called for each task of the multiselection range
+- api/gantt_ontaskselected_event.md - is called for each task of the multiselection range
+- api/gantt_onmultiselect_event.md - fires after selection of a task or a range of tasks has been completed
+
+
+
+

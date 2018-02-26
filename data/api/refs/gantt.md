@@ -45,7 +45,7 @@ Gantt API
 - api/gantt_deletelink.md - deletes the specified dependency link
 - api/gantt_deletemarker.md - deletes the specified marker
 - api/gantt_deletetask.md - deletes the specified  task
-- api/gantt_destructor.md - destroys a gantt instance
+- api/gantt_destructor.md - destroys the gantt instance
 - api/gantt_detachallevents.md - detaches all events from dhtmlxGantt (both custom and inner)
 - api/gantt_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent() method)
 - api/gantt_eachparent.md - iterates over all parent tasks of the specified task in the Gantt chart
@@ -90,7 +90,7 @@ Gantt API
 - api/gantt_getslack.md - checks how much time (in the current duration unit) a task has before it starts to affect other tasks
 - api/gantt_getstate.md - gets the current state of the Gantt chart
 - api/gantt_getsubtaskdates.md - calculates the combined start/end dates of tasks nested in a project or another task
-- api/gantt_getsubtaskduration.md - calculates the combined duration of tasks nested in a project or another task. Tasks of the [project type](api/gantt_types_config.md) are excluded from the calculation.
+- api/gantt_getsubtaskduration.md - calculates the combined duration of tasks nested in a project or another task.
 - api/gantt_gettask.md - returns the task object
 - api/gantt_gettaskby.md - finds task by specified criteria
 - api/gantt_gettaskbyindex.md - returns a task configuration object by its index
@@ -209,6 +209,7 @@ Gantt API
 - api/gantt_onbeforelinkdelete_event.md - fires before the user deletes a link
 - api/gantt_onbeforelinkdisplay_event.md - fires after the links have been loaded to the Gantt chart but before they are displayed
 - api/gantt_onbeforelinkupdate_event.md - fires before a link is updated
+- api/gantt_onbeforemultiselect_event.md - 
 - api/gantt_onbeforeparse_event.md - fires before data started to be parsed
 - api/gantt_onbeforeredo_event.md - fires before the api/gantt_redo.md method is called
 - api/gantt_onbeforerowdragend_event.md - fires when a user drops a row in the grid
@@ -219,6 +220,7 @@ Gantt API
 - api/gantt_onbeforetaskdisplay_event.md - fires after the tasks have been loaded to the Gantt chart but before they are displayed
 - api/gantt_onbeforetaskdrag_event.md - fires after the user has pressed the mouse button and started dragging, but before dhtmlxGantt starts the drag-and-drop operation
 - api/gantt_onbeforetaskmove_event.md - fires before a task is moved to a new position
+- api/gantt_onbeforetaskmultiselect_event.md - 
 - api/gantt_onbeforetaskselected_event.md - fires before the user selects a task
 - api/gantt_onbeforetaskupdate_event.md - fires before the user updates a task
 - api/gantt_onbeforeundo_event.md - fires before the api/gantt_undo.md method is called
@@ -230,7 +232,7 @@ Gantt API
 - api/gantt_oncolumnresizestart_event.md - fires before the user starts to drag the column's border to resize the column
 - api/gantt_oncontextmenu_event.md - occurs when the user clicks the right mouse button inside the Gantt chart
 - api/gantt_ondatarender_event.md - fires after data has been rendered on the page
-- api/gantt_ondestroy_event.md - called after gantt has been cleared by api/gantt_destructor_method.md method
+- api/gantt_ondestroy_event.md - called after gantt has been cleared by the api/gantt_destructor.md method
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
 - api/gantt_onerror_event.md - fires when api/gantt_assert.md receives 'false' value, i.e. when assertion fails
 - api/gantt_onexpand_event.md - fires when gantt is expended to full screen
@@ -255,6 +257,7 @@ Gantt API
 - api/gantt_onloadend_event.md - fires after loading data from the data source has been complete
 - api/gantt_onloadstart_event.md - fires immediately before loading data from the data source has been started
 - api/gantt_onmousemove_event.md - fires when the mouse is moved over a task bar
+- api/gantt_onmultiselect_event.md - 
 - api/gantt_onoptionsload_event.md - fires after a collection of options has been loaded from the server, but isn't parsed yet
 - api/gantt_onparse_event.md - fires after data was parsed (became available for API) but before it was rendered in the Gantt chart
 - api/gantt_onquickinfo_event.md - fires when the pop-up edit form appears
@@ -269,6 +272,7 @@ Gantt API
 - api/gantt_ontaskdrag_event.md - fires when the user drags a task
 - api/gantt_ontaskidchange_event.md - fires when the id of a task is changed
 - api/gantt_ontaskloading_event.md - fires when a task is being loaded from the data source
+- api/gantt_ontaskmultiselect_event.md - 
 - api/gantt_ontaskopened_event.md - fires when a branch has been opened
 - api/gantt_ontaskrowclick_event.md - fires when the user clicks on a row in the table
 - api/gantt_ontaskselected_event.md - fires when the user selects a task
@@ -355,7 +359,7 @@ Gantt API
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table
-- api/gantt_rtl_config.md - switches gantt to right-to-left mode
+- api/gantt_rtl_config.md - switches gantt to the right-to-left mode
 - api/gantt_scale_height_config.md - sets the height of the time scale and the header of the grid
 - api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of leading/closing empty space
 - api/gantt_scale_unit_config.md - sets the unit of the time scale (X-Axis)

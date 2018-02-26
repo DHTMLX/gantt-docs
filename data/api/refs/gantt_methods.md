@@ -41,7 +41,7 @@ Methods
 - api/gantt_deletelink.md - deletes the specified dependency link
 - api/gantt_deletemarker.md - deletes the specified marker
 - api/gantt_deletetask.md - deletes the specified  task
-- api/gantt_destructor.md - destroys a gantt instance
+- api/gantt_destructor.md - destroys the gantt instance
 - api/gantt_detachallevents.md - detaches all events from dhtmlxGantt (both custom and inner)
 - api/gantt_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent() method)
 - api/gantt_eachparent.md - iterates over all parent tasks of the specified task in the Gantt chart
@@ -86,7 +86,7 @@ Methods
 - api/gantt_getslack.md - checks how much time (in the current duration unit) a task has before it starts to affect other tasks
 - api/gantt_getstate.md - gets the current state of the Gantt chart
 - api/gantt_getsubtaskdates.md - calculates the combined start/end dates of tasks nested in a project or another task
-- api/gantt_getsubtaskduration.md - calculates the combined duration of tasks nested in a project or another task. Tasks of the [project type](api/gantt_types_config.md) are excluded from the calculation.
+- api/gantt_getsubtaskduration.md - calculates the combined duration of tasks nested in a project or another task.
 - api/gantt_gettask.md - returns the task object
 - api/gantt_gettaskby.md - finds task by specified criteria
 - api/gantt_gettaskbyindex.md - returns a task configuration object by its index
@@ -181,7 +181,6 @@ Methods
 - api/gantt_addtasklayer.md
 - api/gantt_alert.md
 - api/gantt_assert.md
-- api/gantt_attachall.md
 - api/gantt_attachevent.md
 - api/gantt_autoschedule.md
 - api/gantt_batchupdate.md

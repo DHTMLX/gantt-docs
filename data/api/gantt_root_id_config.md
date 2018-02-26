@@ -1,10 +1,13 @@
 root_id
 =============
+
+@todo:fix the default value
+
 @short:sets the id of the virtual root element
 	
 
-@type: string, number
-@default:0
+@type: string,number
+@default: 0
 @example:
 gantt.config.root_id = "root"; /*!*/
 
