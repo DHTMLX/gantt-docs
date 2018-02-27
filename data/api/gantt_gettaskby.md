@@ -2,11 +2,11 @@ getTaskBy
 =============
 
 @short:
-	finds task by specified criteria
+	finds a task by the specified criteria
 
 @params:
-- propertyName			string,function		name of the property to match, or a filter function
-- propertyValue			object		property value
+- propertyName			string,function			the name of the property to match, or a filter function
+- propertyValue			object					the property value
 
 @returns:
 - tasks			array		array of task objects
@@ -16,7 +16,7 @@ getTaskBy
 // simple search
 var userTasks = gantt.getTaskBy("user_id", 5);
 
-//  (task: object) => boolean
+// (task: object) => boolean
 var userTasks = gantt.getTaskBy(function(task){
    return task.user_id == 5 || !task.user_id;
 });
@@ -26,9 +26,9 @@ var userTasks = gantt.getTaskBy(task => task.user_id == 5);
 
 @descr:
 
-- The method can be used for selecting tasks by a property value, e.g. find tasks of specific user, find completed tasks, etc.
+- The method can be used for selecting tasks by the property value, e.g. find tasks of a specific user, find completed tasks, etc.
 - Tasks of the [project type](api/gantt_types_config.md) are not iterated.
-- `gantt.getTaskBy(propertyName, propertyValue)` uses loose equality check("double equals", ==)
+- `gantt.getTaskBy(propertyName, propertyValue)` uses loose equality check ("double equals", ==)
 - The result of `gantt.getTaskBy(propertyName, propertyValue)` can be cached by gantt, thus this overload can work faster than `gantt.getTaskBy((task: object) => boolean)`
 
 

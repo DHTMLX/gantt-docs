@@ -59,7 +59,9 @@ The PRO edition includes all the functionality of the Standard version and also 
     	{"name":"Optional tree view\n","url":"desktop__tree_column.html","standard":true,"pro":true},
     	{"name":"Full control with JavaScript API\n","standard":true,"pro":true},
     	{"name":"Support for touch devices: iOS, Android\n","standard":true,"pro":true},
-    	{"name":"Cross-browser: IE, FF, Chrome, Safari, Opera\n","standard":true,"pro":true}	
+    	{"name":"Cross-browser: IE, FF, Chrome, Safari, Opera\n","standard":true,"pro":true},
+        {"name":"Resource management\n", "url":"desktop__resource_management.html", "standard":false,"pro":true},
+        {"name":"RTL (Right-to-left) mode", "url":"desktop__rtl_mode.html", "standard":true,"pro":true}
 	]
   
     var col = ["Feature","Standard","PRO"];

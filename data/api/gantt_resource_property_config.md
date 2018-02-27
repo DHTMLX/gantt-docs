@@ -4,13 +4,13 @@ resource_property
 @edition: pro
 
 @short:
-	specifies a property of the task object which stores a resource id assiciated with resourceGrid/resourceTimeline
+	specifies a property of the task object which stores a resource id associated with resourceGrid/resourceTimeline
 
 @type: string
 @default: "owner_id"
 
 @descr:
-Specifies a property of the task object which stores a resource id assiciated with resourceGrid/resourceTimeline. Can be changed a the runtime.
+Specifies a property of the task object which stores the resource id associated with resourceGrid/resourceTimeline. Can be changed on the runtime.
 
 
 @example:
@@ -18,30 +18,30 @@ gantt.config.resource_store = "users";
 gantt.config.resource_property = "user_id";
 
 gantt.config.layout = {
-	css: "gantt_container",
-	rows: [
-		{
-			cols: [
-				{view: "grid", group:"grids", scrollY: "scrollVer"},
-				{resizer: true, width: 1},
-				{view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-				{view: "scrollbar", id: "scrollVer", group:"vertical"}
-			],
-			gravity:2
-		},
+  css: "gantt_container",
+  rows: [
+	{
+	  cols: [
+		{view: "grid", group:"grids", scrollY: "scrollVer"},
 		{resizer: true, width: 1},
-		{
-			config: resourceConfig,
-			cols: [
-				{view: "resourceGrid", group:"grids", scrollY: "resourceVScroll" },
-				{resizer: true, width: 1},
-				{view: "resourceTimeline", scrollX: "scrollHor", scrollY: "resourceVScroll"},
-				{view: "scrollbar", id: "resourceVScroll", group:"vertical"}
-			],
-			gravity:1
-		},
-		{view: "scrollbar", id: "scrollHor"}
-	]
+		{view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
+		{view: "scrollbar", id: "scrollVer", group:"vertical"}
+	  ],
+	  gravity:2
+    },
+	{resizer: true, width: 1},
+	{
+	  config: resourceConfig,
+	  cols: [
+		{view: "resourceGrid", group:"grids", scrollY: "resourceVScroll" },
+		{resizer: true, width: 1},
+		{view: "resourceTimeline", scrollX: "scrollHor", scrollY: "resourceVScroll"},
+		{view: "scrollbar", id: "resourceVScroll", group:"vertical"}
+	  ],
+	  gravity:1
+	},
+	{view: "scrollbar", id: "scrollHor"}
+  ]
 };
 
 var resourcesStore = gantt.createDatastore({
@@ -50,14 +50,14 @@ var resourcesStore = gantt.createDatastore({
 
 gantt.init("gantt_here");
 gantt.parse({data: [
-    {id: 1, text: "Project #2", start_date: "01-04-2018", duration: 18, progress: 0.4, open: true},
-    {id: 2, text: "Task #1", start_date: "02-04-2018", user_id:1, duration: 8, progress: 0.6, parent: 1},
-    {id: 3, text: "Task #2", start_date: "11-04-2018", user_id:2, duration: 8, progress: 0.6, parent: 1}
-  ],
-  links: [
-      {id: 1, source: 1, target: 2, type: "1"},
-      {id: 2, source: 2, target: 3, type: "0"}
-  ]
+  {id: 1, text: "Project #2", start_date: "01-04-2018", duration: 18, open: true},
+  {id: 2, text: "Task #1", start_date: "02-04-2018", duration:8, user_id:1, parent: 1},
+  {id: 3, text: "Task #2", start_date: "11-04-2018", duration:8, user_id:2, parent: 1}
+ ],
+ links: [
+  {id: 1, source: 1, target: 2, type: "1"},
+  {id: 2, source: 2, target: 3, type: "0"}
+ ]
 });
 
 resourcesStore.parse([

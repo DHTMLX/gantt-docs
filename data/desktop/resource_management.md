@@ -7,7 +7,8 @@ This functionality is available in the Gantt PRO edition only.
 }}
 
 As of dhtmlxGantt v5.1, resources can be connected to tasks via the properties of the task object by the "many-to-one" relation **task.resourceId <-> resource.id**.
-There are no predefined resource properties and built-in logic regarding resources in the Gantt data model, so most of the resource work is done via custom coding and public API. 
+Gantt provides predefined resource views for highlighting resource load, methods for breaking project down by a resource for load balancing, 
+task and resource-specific work-time calendars, as well as the public API for implementing any custom behavior.
 
 
 <img src="desktop/resource_panel.png">
@@ -106,7 +107,7 @@ Custom styling of resources
 
 For coloring you'll usually need the following templates:
 
-- [gantt.templates.grid_row_class](api/gantt_grid_row_class_template.md) - the CSS of a row in the lefthand grid
+- [gantt.templates.grid_row_class](api/gantt_grid_row_class_template.md) - the CSS of a row in the left hand grid
 - [gantt.templates.task_row_class](api/gantt_task_row_class_template.md) - the background row in the timeline (won't be called if api/gantt_smart_rendering_config.md is enabled)
 - [gantt.templates.task_class](api/gantt_task_class_template.md) - the CSS class of a task bar element
 
@@ -122,7 +123,7 @@ Depending on your context, you can
 Resource calendars
 ------------------
 
-Gantt supports the custom workime calendars feature. Worktime calendars can be associated with specific resources.
+Gantt supports the custom work-time calendars feature. Work-time calendars can be associated with specific resources.
 
 <img src="desktop/resource_calendars.png">
 
@@ -181,6 +182,8 @@ Resource load diagram
 
 Starting from v5.1 dhtmlxGantt has a predefined layout view for displaying resource load of gantt. It includes corresponding views for the grid and timeline: "resourceGrid" and "resourceTimeline".
 
+<img src="desktop/resource_panel.png">
+
 ~~~js
 gantt.config.layout = {
 	css: "gantt_container",
@@ -210,9 +213,9 @@ gantt.config.layout = {
 };
 ~~~
 
-By default both views will be bound to the datastore named as specified in the [gantt.config.resource_store](api/gantt_resource_store_config.md) configuration option.
+By default both views will be bound to the data store named as specified in the [gantt.config.resource_store](api/gantt_resource_store_config.md) configuration option.
 
-This datastore has to be initialized manually:
+This data store has to be initialized manually:
 
 ~~~js
 var resourcesStore = gantt.createDatastore({
@@ -229,7 +232,7 @@ var resourcesStore = gantt.createDatastore({
 });
 ~~~
 
-In order to populate the datastore use the **datastore.parse** method:
+In order to populate the data store use the **datastore.parse** method:
 
 ~~~js
 resourcesStore.parse([
@@ -247,7 +250,7 @@ resourcesStore.parse([
 ~~~
 
 
-If you want to use resources in the lightbox, it might be a good idea to do it via the api/gantt_serverlist.md method from the onParse event of the datastore:
+If you want to use resources in the lightbox, it might be a good idea to do it via the api/gantt_serverlist.md method from the onParse event of the data store:
 
 ~~~js
 resourcesStore.attachEvent("onParse", function(){

@@ -139,6 +139,10 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 Dragging projects with subtasks
 -------------------------------------------
 
+{{pronote
+This functionality is available in the Gantt PRO edition only. 
+}}
+
 Tasks of the [project type](api/gantt_types_config.md) are not draggable by default.
 You can enable drag and drop of projects using the api/gantt_drag_project_config.md config:
 
@@ -146,12 +150,13 @@ You can enable drag and drop of projects using the api/gantt_drag_project_config
 gantt.config.drag_project = true;
 ~~~
 
+{{sample 08_api/19_draggable_projects.html}}
+
 Dragging dependent tasks together with independent tasks
 -------------------------------------------
 
 There are several ways of implementing tasks moving with their dependent tasks.
 You can read about all of them in a separate article desktop/dragging_dependent_tasks.md.
-
 
 
 Setting minimal task duration

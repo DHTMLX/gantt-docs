@@ -10,37 +10,37 @@ resource_store
 @default: "resource"
 
 @descr:
-Specifies a datastore to be bind to "resourceGrid" and "resourceTimeline" views. Alternatively, "bind" property of the view can be specified.
+Specifies a datastore to be bound to the "resourceGrid" and "resourceTimeline" views. Alternatively, the "bind" property of the view can be specified.
 
 @example:
 gantt.config.resource_store = "users";
 gantt.config.resource_property = "user_id";
 
 gantt.config.layout = {
-	css: "gantt_container",
-	rows: [
-		{
-			cols: [
-				{view: "grid", group:"grids", scrollY: "scrollVer"},
-				{resizer: true, width: 1},
-				{view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-				{view: "scrollbar", id: "scrollVer", group:"vertical"}
-			],
-			gravity:2
-		},
+  css: "gantt_container",
+  rows: [
+	{
+	  cols: [
+		{view: "grid", group:"grids", scrollY: "scrollVer"},
 		{resizer: true, width: 1},
-		{
-			config: resourceConfig,
-			cols: [
-				{view: "resourceGrid", group:"grids", scrollY: "resourceVScroll" },
-				{resizer: true, width: 1},
-				{view: "resourceTimeline", scrollX: "scrollHor", scrollY: "resourceVScroll"},
-				{view: "scrollbar", id: "resourceVScroll", group:"vertical"}
-			],
-			gravity:1
-		},
-		{view: "scrollbar", id: "scrollHor"}
-	]
+		{view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
+		{view: "scrollbar", id: "scrollVer", group:"vertical"}
+	  ],
+	  gravity:2
+	},
+	{resizer: true, width: 1},
+	{
+	  config: resourceConfig,
+	  cols: [
+		{view: "resourceGrid", group:"grids", scrollY: "resourceVScroll" },
+		{resizer: true, width: 1},
+		{view: "resourceTimeline", scrollX: "scrollHor", scrollY: "resourceVScroll"},
+		{view: "scrollbar", id: "resourceVScroll", group:"vertical"}
+	  ],
+	  gravity:1
+	},
+	{view: "scrollbar", id: "scrollHor"}
+  ]
 };
 
 var resourcesStore = gantt.createDatastore({
@@ -49,14 +49,14 @@ var resourcesStore = gantt.createDatastore({
 
 gantt.init("gantt_here");
 gantt.parse({data: [
-    {id: 1, text: "Project #2", start_date: "01-04-2018", duration: 18, progress: 0.4, open: true},
-    {id: 2, text: "Task #1", start_date: "02-04-2018", user_id:1, duration: 8, progress: 0.6, parent: 1},
-    {id: 3, text: "Task #2", start_date: "11-04-2018", user_id:2, duration: 8, progress: 0.6, parent: 1}
-  ],
-  links: [
-      {id: 1, source: 1, target: 2, type: "1"},
-      {id: 2, source: 2, target: 3, type: "0"}
-  ]
+  {id: 1, text: "Project #2", start_date: "01-04-2018", duration:18, open: true},
+  {id: 2, text: "Task #1", start_date: "02-04-2018", user_id:1, duration:8, parent: 1},
+  {id: 3, text: "Task #2", start_date: "11-04-2018", user_id:2, duration:8, parent: 1}
+ ],
+ links: [
+   {id: 1, source: 1, target: 2, type: "1"},
+   {id: 2, source: 2, target: 3, type: "0"}
+ ]
 });
 
 resourcesStore.parse([
