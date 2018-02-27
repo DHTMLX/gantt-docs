@@ -1,9 +1,6 @@
 resource_property
 =============
 
-@todo:
-	check, update after a complete article about resources is written, maybe cut the code sample
-
 @edition: pro
 
 @short:
@@ -71,6 +68,8 @@ resourcesStore.parse([
 ]);
 
 @template:	api_config
+
+@related: desktop/resource_management.md
 
 @relatedapi:
 api/gantt_resource_store_config.md

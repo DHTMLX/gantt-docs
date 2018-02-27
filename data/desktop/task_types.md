@@ -101,7 +101,7 @@ var tasks = {
 Tasks with **type="project"** can be characterized as follows:
 
 - Can have 1 parent and any number of child tasks.
-- Cannot be dragged and resized. 
+- Cannot be dragged and resized, unless drag and drop is explicitly enabled via api/gantt_drag_project_config.md config. 
 - Depend on child tasks, i.e. if the user dragges a child of a project task, the task changes its duration and progress respectively.
 - Ignore the **start_date**, **end_date**, **duration** properties.
 
