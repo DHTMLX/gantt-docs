@@ -1,9 +1,6 @@
 resource_store
 =============
 
-@todo:
-	check, update after a complete article about resources is written, maybe cut the code sample
-
 @edition: pro
 
 @short:
@@ -73,6 +70,8 @@ resourcesStore.parse([
 
 @relatedapi:
 api/gantt_resource_property_config.md
+
+@related: desktop/resource_management.md
 
 @relatedsample:
 11_resources\04_resource_usage_diagram.html
