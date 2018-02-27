@@ -5,7 +5,7 @@ columns
 
 @type: array
 @example:
-//default columns definition
+// default columns definition
 gantt.config.columns=[
 	{name:"text", 		label:"Task name", 	tree:true, width:'*' },
 	{name:"start_date", label:"Start time", align: "center" },

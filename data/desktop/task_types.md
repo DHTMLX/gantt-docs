@@ -1,6 +1,8 @@
 Exploring the Task Types
 =================================
+
 {{pronote This functionality is available only in PRO edition }}
+
 There are 3 predefined types of tasks that you can present in a Gantt chart ([you can also add a custom type](desktop/task_types.md#creatingacustomtype)):
 
 1. [A regular task (default)](desktop/task_types.md#regulartasks).
@@ -68,6 +70,7 @@ Tasks with **type="task"** can be characterized as follows:
 
 Project tasks
 -----------------------------------------------------
+
 Project task is a task that starts, when its earliest child task starts, and ends, when its latest child ends. 
 
 {{note
@@ -99,8 +102,8 @@ var tasks = {
 Tasks with **type="project"** can be characterized as follows:
 
 - Can have 1 parent and any number of child tasks.
-- Cannot be dragged and resized. 
-- Depend on child tasks, i.e. if the user dragges a child of a project task, the task changes its duration and progress respectively.
+- Cannot be dragged and resized, unless drag and drop is explicitly enabled via the api/gantt_drag_project_config.md config. 
+- Depend on child tasks, i.e. if the user drags a child of a project task, the task changes its duration and progress respectively.
 - Ignore the **start_date**, **end_date**, **duration** properties.
 
 {{note
@@ -109,6 +112,7 @@ To provide a possibility of adding project tasks, read article desktop/milestone
 
 Milestones
 --------------------------------------------------------
+
 [Milestone](desktop/milestones.md) is a zero-duration task that is used to mark out important dates of the project ([more details](desktop/milestones.md)).
 
 <img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="desktop/type_milestone.png">
@@ -146,6 +150,7 @@ To provide a possibility of adding milestones, read article desktop/milestones.m
 
 Individual lightbox for each type
 ----------------------------------------------
+
 Each type of a task may have its own set of characteristics - because of this, an individual configuration of the details form (lightbox) can be defined for each type.
 All configurations are stored in the api/gantt_lightbox_config.md object. 
 
@@ -159,15 +164,16 @@ You can [add a custom type](desktop/task_types.md#creatingacustomtype) and speci
 
 To go into details on a lightbox configuration, you can read the desktop/edit_form.md chapter.
 
+
 Creating a custom type
 -----------------------------------------------
+
 All tasks' types are defined in the api/gantt_types_config.md object. <br>Generally, to add a custom tasks' type you need to:
 
 1. Add a new value to the api/gantt_types_config.md object.
 2. Define individual settings for the new type.
 
 <br>
-
 
 Let's assume, you want to add a new type of tasks - **meeting**. 
 **Meeting**  will be an ordinary task but colored in different color and with different inputs in the lightbox.              
@@ -176,8 +182,6 @@ Let's assume, you want to add a new type of tasks - **meeting**.
 
 
 To define a new type with the name **meeting** and specify an individual lightbox for it, use the following technique:
-
-
 
 <ol>
 	<li>Add a new type to the api/gantt_types_config.md object:<br><br>
@@ -253,12 +257,13 @@ gantt.templates.task_text = function(start, end, task){
 
 Custom display for task types
 -----------------------------------------------------------------
+
 To customize the look of existing task types, use the api/gantt_type_renderers_config.md option. The options allows you to redefine functions responsible for displaying different tasks types on the page.
 
 <img src="desktop/custom_look.png"/>
 
 ~~~js
-gantt.config.type_renderers[gantt.config.types.project] = function(task, defaultRender){
+gantt.config.type_renderers[gantt.config.types.project]=function(task, defaultRender){
 	var main_el = document.createElement("div");
 	main_el.setAttribute(gantt.config.task_attribute, task.id);
 	var size = gantt.getTaskPosition(task);

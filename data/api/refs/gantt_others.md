@@ -5,7 +5,7 @@ Others
 {{api
 - api/gantt_$click_other.md - redefines the default click behavior for buttons of the Gantt chart
 - api/gantt_ajax_other.md - dhtmlx ajax module
-- api/gantt_calendar_other.md - the interface of the [working calendar](desktop/working_time.md#getcalendars) object
+- api/gantt_calendar_other.md - the interface of the working calendar object
 - api/gantt_config_other.md - defines configuration options for dates, scale, controls
 - api/gantt_date_other.md - a set of date formatting methods
 - api/gantt_env_other.md - a set of flags which describe current environment

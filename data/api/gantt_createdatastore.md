@@ -25,5 +25,13 @@ var resourcesStore = gantt.createDatastore({
 @template:	api_method
 @descr:
 
+Configuration object properties:
+
+- **name** - (*string*) an arbitrary string name of the datastore. The datastore can be accessed by its name using api/gantt_getdatastore.md.
+- **initItem** - (*function*) optional, preprocesses items loaded into datastore. It is a good place to set the default values of the datastore items.
+- **type** - (*string*) optional, accepts only one fixed value **"treeDatastore"**. If the type:"treeDatastore" is specified, the datastore will support hierarchical data, with the **id** property as a primary key, 
+and **parent** as a link to the parent id. Any other value will produce a flat list datastore.
+
+
 @relatedsample:
 10_layout/02_resource_panel.html

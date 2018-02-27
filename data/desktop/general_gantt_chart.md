@@ -8,6 +8,7 @@ Creating a Gantt Chart on the Page
 - desktop/install_with_bower.md
 - desktop/common_configuration.md
 - desktop/layout_config.md
+- desktop/resource_management.md
 - desktop/handling_events.md
 - desktop/localization.md
 - desktop/multiple_gantts.md

@@ -1,5 +1,9 @@
 Grouping Tasks
 =========================
+
+{{pronote This functionality is available only in the PRO edition}}
+
+
 Starting from version 3.2, the library provides the **ext/dhtmlxgantt_grouping.js** extension that allows you to group tasks by any of task's attributes.
 
 <div style="text-align:center;"><img src="desktop/grouping_tasks.png"/></div>

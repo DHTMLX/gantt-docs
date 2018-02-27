@@ -73,7 +73,8 @@ To export Gantt chart as a PNG image, do the following steps:
 
 Parameters of the export methods
 ----------------------------------------------------------
-The **exportToPDF()** and **exportToPNG()** methods take as a parameter the same object with 6 possible properties (all of the properties are optional):
+
+The **exportToPDF()** and **exportToPNG()** methods take as a parameter the same object with a number of properties (all of the properties are optional):
 
 <table class="webixdoc_links">
 	<tbody>
@@ -101,8 +102,25 @@ The **exportToPDF()** and **exportToPNG()** methods take as a parameter the same
 			<td class="webixdoc_links0"><b>data</b></td>
 			<td>(<i>object</i>) sets a custom data source that will be presented in the output Gantt chart </td>
 		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>header</b></td>
+			<td>(<i>string</i>) specifies the header that will be added to the output PDF image. Note, you can use any HTML here</td>
+		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>footer</b></td>
+			<td>(<i>string</i>) specifies the footer that will be added to the output PDF image. Note, you can use any HTML here</td>
+		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>server</b></td>
+			<td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/gantt</strong></td>
+		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>raw</b></td>
+			<td>(<i>boolean</i>) defines that all Gantt markup will be exported as it is, with all custom elements. <em>false</em> by default. <a href="desktop/export.md#exportingcustommarkupandstyles">Read the details below</a> </td>
+		</tr>
     </tbody>
 </table>
+<br>
 {{snippet
 Calling export methods with optional properties
 }}
@@ -115,7 +133,9 @@ gantt.exportToPDF({
 	start:"01-04-2013",
 	end:"11-04-2013",
 	skin:'terrace',
-	data:{ }
+	data:{ },
+    server:"https://myapp.com/myexport/gantt",
+    raw:true
 });
 gantt.exportToPNG({
 	name:"mygantt.png",
@@ -125,14 +145,16 @@ gantt.exportToPNG({
 	start:"01-04-2013",
 	end:"11-04-2013",
 	skin:'terrace',
-	data:{ }
+	data:{ },
+    server:"https://myapp.com/myexport/gantt",
+    raw:true
 });
 ~~~
 
 
 ##Name of the output file
 
-To set a custom name for the output file, use the **name** property in the <a href="desktop/export.md#parametersoftheexportmethods">exportToPDF</a>/<a href="desktop/export.md#parametersoftheexportmethods">exportToPNG</a> method:
+To set a custom name for the output file, use the **name** property in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
 
 ~~~js
 gantt.exportToPDF({
@@ -141,11 +163,10 @@ gantt.exportToPDF({
 ~~~
 
 ##Language of the output file
-By default, the Gantt chart will be exported with the same language as it is shown on the page.
 
+By default, the Gantt chart will be exported in the same language as it is shown on the page.
 
-To set a custom language for the output file, use the **locale** property in the <a href="desktop/export.md#parametersoftheexportmethods">exportToPDF</a>/<a href="desktop/export.md#parametersoftheexportmethods">exportToPNG</a> method:
-
+To set a custom language for the output file, use the **locale** property in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
 
 ~~~js
 gantt.exportToPDF({
@@ -156,17 +177,17 @@ gantt.exportToPDF({
 
 
 ##Data to export
+
 To set the tasks that should be presented in the output PDF or PNG file, use one of the following ways:
 
 1. <a href="#daterange">Specify the date range of the output data.</a>
 2. <a href="#customdata">Specify a custom data source for output.</a>
 
 <a id="daterange"></a>
+
 ###Specifying the date range of the output tasks
 
-To set the range of tasks that will be presented in the output document, use the **start**, **end** properties in the <a href="desktop/export.md#parametersoftheexportmethods">exportToPDF</a>/<a href="desktop/export.md#parametersoftheexportmethods">exportToPNG</a> method:
-
-
+To set the range of tasks that will be presented in the output document, use the **start**, **end** properties in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
 
 ~~~js
 gantt.exportToPDF({
@@ -181,11 +202,11 @@ Note, the date format is defined by the api/gantt_api_date_config.md config
 }}
 
 <a id="customdata"></a>
+
 ###Setting a custom data source to export
 
-
-To export the Gantt chart with a custom data set (i.e. not with the data presented in the initial Gantt chart),
-use the **data** property in the <a href="desktop/export.md#parametersoftheexportmethods">exportToPDF</a>/<a href="desktop/export.md#parametersoftheexportmethods">exportToPNG</a> method:
+To export the Gantt chart with a custom data set (i.e. not with the data presented in the initial Gantt chart), use the **data** property in the parameter of the 
+[exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
 
 ~~~js
 gantt.exportToPDF({
@@ -210,9 +231,10 @@ Note, you cannot specify some URL as the value of the **data** parameter, just a
 }}
 
 ##Skin of the output Gantt chart
+
 By default, the Gantt chart will be exported with the same skin as it is shown on the page.
 
-To set a custom skin for the output PNG or PDF file, use the **skin** property in the <a href="desktop/export.md#parametersoftheexportmethods">exportToPDF</a>/<a href="desktop/export.md#parametersoftheexportmethods">exportToPNG</a> method:
+To set a custom skin for the output PNG or PDF file, use the **skin** property in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
 
 ~~~js
 gantt.exportToPDF({
@@ -222,7 +244,8 @@ gantt.exportToPDF({
 ~~~
 
 ##Header/footer of the output file
-To add the header/footer to the output PNG or PDF file, use the **header**/**footer** properties in the <a href="desktop/export.md#parametersoftheexportmethods">exportToPDF</a>/<a href="desktop/export.md#parametersoftheexportmethods">exportToPNG</a> method:
+
+To add a header/footer to the output PNG or PDF file, use the **header**/**footer** properties in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
 
 {{note
 Note, you can use any HTML while specifying the parameters. While specifying images, remember that you need to set global paths as values of the "src" attribute
@@ -237,35 +260,53 @@ gantt.exportToPDF({
 ~~~
 
 
-
 ##Custom style for the output file
+
 To apply a custom style for the gantt, provide the stylesheet with your custom CSS classes:
 
-<ul>
-	<li>through a link:
+- through a link:
+
 ~~~js
 gantt.exportToPDF({
     name:"calendar.pdf",
     header:'<link rel="stylesheet" href="http://mysite.com/custom.css">' /*!*/
 });
 ~~~
-	</li>
-	<li>or through the 'style' tag:
+
+- or through the 'style' tag:
+
 ~~~js
 gantt.exportToPDF({
     name:"calendar.pdf",
     header:'<style>... custom css classes here ...</style>' /*!*/
 });
 ~~~
-	</li>
-</ul>
-<br>
+
 
 Note, the aforementioned solution works for the global HTTP reference. If you have CSS classes specified in an Intranet/local environment, you can embed all styles as in:
 
 ~~~js
 gantt.exportToPDF({
-	header:"<style>.tier1{   background: red;   color:white;}</style>"
+	header:"<style>.tier1{background: red; color:white;}</style>"
 });
 ~~~
+
+
+##Exporting custom markup and styles
+
+By default the Gantt chart is exported based on the specified configuration and loaded data, while [custom elements](desktop/baselines.md) and some templates are not exported.
+To export the whole gantt markup as it is, with all custom elements, you can set the **raw:true** property in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods.
+
+~~~js
+gantt.exportToPDF({
+	raw:true
+});
+~~~
+
+Note that custom elements will require providing [custom styles](desktop/export.md#customstylefortheoutputfile) in order to be displayed correctly.
+
+Pay attention that the use of this mode increases the size of the API request. Large charts can exceed limit of the online export of 4MB and may not be exported that way.
+In such a case you need to have an export service installed locally and increase the request size.
+
+
 

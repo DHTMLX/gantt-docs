@@ -1,9 +1,12 @@
-
 Templates of the 'Quick Info' Extension (Touch Support)
 ===========================================================
 
 <table class="webixdoc_links">
 	<tbody>
+    	<tr>
+			<td class="webixdoc_links0">api/gantt_quick_info_class_template.md</td>
+			<td>specifies the CSS class that will be applied to the pop-up edit form</td>
+		</tr>
     	<tr>
 			<td class="webixdoc_links0">api/gantt_quick_info_content_template.md</td>
 			<td>specifies the content of the pop-up edit form</td>

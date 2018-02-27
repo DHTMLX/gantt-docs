@@ -49,6 +49,8 @@ Dates are stringified in the "%Y-%m-%d %H:%i" format.
 
 ##Export settings
 
+The **exportToMSProject()** method takes as a parameter an object with a number of properties (all of the properties are optional):
+
 - **name** - (string) the name of the obtained file ('gantt.xml' by default).
 
 ~~~js
@@ -178,6 +180,14 @@ tasks: {
 		return [task.user, task.office];
 	}
 }
+~~~
+
+- **server** - (string) the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**.
+
+~~~js
+gantt.exportToMSProject({
+   server:"https://myapp.com/myexport/gantt"
+});
 ~~~
 
 

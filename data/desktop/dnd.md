@@ -4,8 +4,7 @@ Dragging Tasks within the Timeline
 Dragging allows users to quickly change the start (end) dates of the tasks, their duration. <br>
 By default, the drag-and-drop is enabled and the user can drag a task along its row in the timeline.
 
-To customize the drag-and-drop behaviour, use the following events:
-
+To customize the drag-and-drop behavior, use the following events:
 
 - api/gantt_onbeforetaskdrag_event.md - to deny dragging of specific tasks
 - api/gantt_ontaskdrag_event.md - to limit the area for dragging or to provide some other logic when the user drags a task 
@@ -13,16 +12,19 @@ To customize the drag-and-drop behaviour, use the following events:
 
 <br>
 
-Let's consider typical cases when the default drag behaviour needs customization:
+Let's consider typical cases when the default drag behavior needs customization:
 
 
 1. [Denying dragging specific tasks](desktop/dnd.md#denyingdraggingofspecifictasks).
 2. [Denying dragging tasks out of specific dates](desktop/dnd.md#denyingdraggingtasksoutofspecificdates).
 3. [Dragging childs together with the parent](desktop/dnd.md#draggingchildstogetherwiththeparent).
+3. [Dragging projects with subtasks](desktop/dnd.md#draggingprojectswithsubtasks).
 4. [Setting minimal task duration](desktop/dnd.md#settingminimaltaskduration).
+
 
 Denying dragging of specific tasks
 ---------------------------------------
+
 To deny dragging of specific tasks, use the api/gantt_onbeforetaskdrag_event.md event:
 
 ~~~js
@@ -134,11 +136,28 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 });
 ~~~
 
+Dragging projects with subtasks
+-------------------------------------------
+
+{{pronote
+This functionality is available in the Gantt PRO edition only. 
+}}
+
+Tasks of the [project type](api/gantt_types_config.md) are not draggable by default.
+You can enable drag and drop of projects using the api/gantt_drag_project_config.md config:
+
+~~~js
+gantt.config.drag_project = true;
+~~~
+
+{{sample 08_api/19_draggable_projects.html}}
+
 Dragging dependent tasks together with independent tasks
 -------------------------------------------
 
 There are several ways of implementing tasks moving with their dependent tasks.
 You can read about all of them in a separate article desktop/dragging_dependent_tasks.md.
+
 
 Setting minimal task duration
 -------------------------------------------

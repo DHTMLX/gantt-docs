@@ -1,8 +1,9 @@
 buttons_left
 =============
+
 @short: stores a collection of buttons resided in the left bottom corner of the lightbox
 
-@default:["dhx_save_btn", "dhx_cancel_btn"]
+@default:["gantt_save_btn", "gantt_cancel_btn"]
 
 @type: array
 @example:
@@ -14,18 +15,21 @@ buttons_left
     }
 </style>
 <script>
-	gantt.config.buttons_left=["dhx_save_btn","dhx_cancel_btn","complete_button"]; /*!*/
 	gantt.locale.labels["complete_button"] = "Complete";
+	gantt.attachEvent("onGanttReady", function(){							   /*!*/ 
+  		gantt.config.buttons_left = ["gantt_save_btn","gantt_cancel_btn", 	   /*!*/ 	 
+            "complete_button"]; 							                   /*!*/ 
+	});																		   /*!*/ 
 	gantt.init("gantt_here");
-
-	gantt.attachEvent("onLightboxButton", function(button_id, node, e){
-		if(button_id == "complete_button"){
-			var id = gantt.getState().lightbox;
-        	gantt.getTask(id).progress = 1;
-        	gantt.updateTask(id);
-        	gantt.hideLightbox();
-		}
-	});
+    
+    gantt.attachEvent("onLightboxButton", function(button_id, node, e){
+        if(button_id == "complete_button"){
+            var id = gantt.getState().lightbox;
+            gantt.getTask(id).progress = 1;
+            gantt.updateTask(id);
+            gantt.hideLightbox();
+        }
+    });
 </script>
 
 @related:
@@ -37,4 +41,10 @@ buttons_left
 @template:	api_config
 @descr:
 
+{{note
+Please note that if you use the [Material skin](desktop/skins.md#materialskin), it will redefine the buttons configuration. 
+To prevent this, you need to specify the configuration of buttons inside the api/gantt_onganttready_event.md event handler.
+}}
+
+<br>
 <img src="api/property_buttons_left.png"/>

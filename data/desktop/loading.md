@@ -215,7 +215,7 @@ Date formats that are not supported by the api/gantt_xml_date_config.md config c
 			<li><b>target</b> -  (<i> number </i>) the id of a task that the dependency will end with.</li>
 			<li><b>type</b> - (<i>string</i>) the dependency type. The available values are stored in the api/gantt_links_config.md object. By default, they are:</li>
             <ul>
-				<li><b>"0"</b> -  'finish to start'.</li>
+				<li><b>"0"</b> -  'finish_to_start'.</li>
 				<li><b>"1"</b> -  'start_to_start'.</li>
 				<li><b>"2"</b> -  'finish_to_finish'.</li>
                 <li><b>"3"</b> -  'start_to_finish'.</li>
@@ -254,7 +254,7 @@ The structure of a standard database to load tasks and links to the Gantt chart 
 <ul>
 	<li><b>gantt_tasks</b> table - specifies the gantt tasks</li>
     <ul>
-    	<li><b>id</b> - (<i>string|number</i>) the event id.</li>
+    	<li><b>id</b> - (<i>string,number</i>) the event id.</li>
         <li><b>start_date</b> - (<i>Date</i>) the date when a task is scheduled to begin.  </li>
         <li><b>text</b> - (<i>string</i>) the task's description.</li>
         <li><b>progress</b> - (<i>number</i>) a number from 0 to 1 that shows what percent of the task is complete. </li>
@@ -266,15 +266,15 @@ The structure of a standard database to load tasks and links to the Gantt chart 
     </ul>
 	<li><b>gantt_links</b> table - specifies the gantt dependency links</li>
     <ul>
-    	<li><b>id</b>-(<i>string|number</i>) the event id.</li>
+    	<li><b>id</b>-(<i>string,number</i>) the event id.</li>
         <li><b>source</b>-(<i>number</i>) the id of the source task. </li>
         <li><b>target</b>-(<i>number</i>) the id of the target task. </li>
         <li><b>type</b>-(<i>string</i>) the type of the dependency:
         	<ul>
-            	<li>0 - 'finish to start'</li>
-            	<li>1 - 'start to start'</li> 
-            	<li>2 - 'finish to finish'</li>
-            	<li>3 - 'start to finish'</li>
+            	<li>0 - 'finish_to_start'</li>
+            	<li>1 - 'start_to_start'</li> 
+            	<li>2 - 'finish_to_finish'</li>
+            	<li>3 - 'start_to_finish'</li>
             </ul> 
         </li> 
         <li><b>lag</b>-(<i>number</i>) optional, <a href="desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks">task lag</a>. </li>

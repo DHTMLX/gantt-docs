@@ -34,6 +34,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/install_with_bower.md</li>
                     <li>desktop/common_configuration.md</li>
                     <li>desktop/layout_config.md</li>
+                    <li>desktop/resource_management.md</li>
                     <li>desktop/handling_events.md</li>
                     <li>desktop/localization.md</li>                  
                     <li>desktop/multiple_gantts.md</li> 
@@ -98,6 +99,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/dynamic_scale.md</li>
                     <li>desktop/custom_scale.md</li>
                     <li>desktop/markers.md</li>
+                    <li>desktop/rtl_mode.md</li>
             </ul>
         </td>
         <td class='topic_description'>Focuses on how to work with the timeline: set the format, unit, step of the main time scale, add second scales and configure them, highlight specific dates etc.</td>
@@ -174,7 +176,8 @@ The articles come around key procedures and problem-solving activities.
             <h4>
                 Auxiliary Resources
             </h4>
-            <ul id="internet_sublist">            		                                       
+            <ul id="internet_sublist">    
+            		<li>desktop/editions_comparison.md</li>
                     <li>desktop/date_format.md</li>
                     <li>desktop/date_operations.md</li>
                     <li>desktop/fullscreen_mode.md</li>

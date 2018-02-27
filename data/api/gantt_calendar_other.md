@@ -2,7 +2,7 @@ calendar
 =============
 
 @short:
-	the interface of the [working calendar](desktop/working_time.md#getcalendars) object
+	the interface of the working calendar object
 
 @type:object
 
@@ -11,6 +11,8 @@ calendar
 
 @template:	api_config
 @descr:
+
+Read the desktop/working_time.md#getcalendars article for detailed info on working calendars.
 
 The **calendar** object possesses the following methods and properties:
 

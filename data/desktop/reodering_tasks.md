@@ -1,5 +1,6 @@
-Reodering Tasks
+Reordering Tasks
 ===================================
+
 dhtmlxGantt  provides 2 ways to reorder tasks in the grid:
 
 1. Drag-and-drop.

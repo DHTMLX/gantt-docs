@@ -63,8 +63,8 @@ gantt.getMarker(markerId); //->{css:"today", text:"Now", id:...}
 }}
 
 ## Removing a marker
-To remove once added marker, use the api/gantt_deletemarker.md method: 
 
+To remove once added marker, use the api/gantt_deletemarker.md method: 
 
 ~~~js
 var markerId = gantt.addMarker({  /*!*/
@@ -89,6 +89,7 @@ gantt.config.show_markers = false;// hides all 3 markers
 ~~~
 
 ##Updating a marker
+
 To update a marker, use the  api/gantt_updatemarker.md method:
 
 ~~~js
@@ -103,8 +104,6 @@ gantt.getMarker(markerId).css = "today_new";
 gantt.updateMarker(markerId); /*!*/
 ~~~
 
-
-
 To update all added markers, use the 	api/gantt_rendermarkers.md method: 
 
 ~~~js
@@ -113,11 +112,11 @@ var marker2 = gantt.addMarker({ ...});
 var marker3 = gantt.addMarker({ ...}); 
 
 gantt.renderMarkers(); /*!*/
-
 ~~~
 
 Styling markers
 ----------------------------
+
 To style markers, use the **gantt.templates.marker_class** template:
 
 ~~~js
@@ -131,13 +130,17 @@ gantt.templates.marker_class = function(marker){
 
 Today's marker
 -------------------------------------
-Let's assume that you want to have the today's marker in your Gantt chart. In this case you need both: to add a marker on the page and to provide a function that will move the marker as the time changes. 
-You can do this with the following code:
+
+Let's assume that you want to have the today's marker in your Gantt chart. In this case you need both: to add a marker on the page and to provide a function that will move the marker as the time changes. You can do this with the following code:
 
 ~~~js
 var date_to_str = gantt.date.date_to_str(gantt.config.task_date);
 
-var id = gantt.addMarker({ start_date: new Date(), css: "today", title:date_to_str( new Date())});
+var id = gantt.addMarker({ 
+	start_date: new Date(), 
+    css: "today", 
+    title:date_to_str( new Date())
+});
 setInterval(function(){
 	var today = gantt.getMarker(id);
 	today.start_date = new Date();

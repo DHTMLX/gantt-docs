@@ -3,6 +3,34 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+5.1
+----------
+
+####Functionality
+
+- [Resource management](desktop/resource_management.md) (PRO version)
+- [RTL mode](desktop/rtl_mode.md)
+- [Horizontal scroll for Grid](desktop/specifying_columns.md#horizontalscrollbar) and [other layout improvements](desktop/layout_config.md)
+- [Destructors for Gantt and DataProcessor instances](desktop/multiple_gantts.md#destructorofganttanddataprocessorinstances)
+
+
+####Configuration
+
+- [Ability to set min/max widths for Grid columns](desktop/specifying_columns.md#width)
+- [Ability to drag and drop projects with their subtasks](desktop/dnd.md#draggingprojectswithsubtasks) (PRO version) 
+- [Extended parameters for the export methods](desktop/export_common.md)
+
+
+#### API
+
+- [Updated API events](desktop/multiselection.md#apievents) for the [Multi-Task Selection](desktop/multiselection.md) extension
+
+
+#### Fixes
+
+- Fixed issues with the keyboard navigation in the smart rendering mode
+
+
 5.0
 ---------
 

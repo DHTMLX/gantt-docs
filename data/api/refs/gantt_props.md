@@ -3,7 +3,7 @@ Properties
 ==========
 
 {{api
-- api/gantt_api_date_config.md - sets the date format for addTask() method to
+- api/gantt_api_date_config.md - defines the date format for the <strong>api_date</strong> template
 - api/gantt_auto_scheduling_config.md - enables auto scheduling
 - api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creation of links from parent tasks (projects) to their children
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
@@ -15,6 +15,7 @@ Properties
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
 - api/gantt_branch_loading_config.md - enables the dynamic loading in the Gantt chart
+- api/gantt_branch_loading_property_config.md - specifies that the task has children that are not yet loaded from the backend
 - api/gantt_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
 - api/gantt_buttons_right_config.md - stores a collection of buttons resided in the right bottom corner of the lightbox
 - api/gantt_calendar_property_config.md - changes the name of the property that affects binding of a calendar to a task/group of tasks
@@ -30,6 +31,7 @@ Properties
 - api/gantt_drag_mode_config.md - stores the types of available drag-and-drop modes
 - api/gantt_drag_move_config.md - enables the possibility to move tasks by drag-and-drop
 - api/gantt_drag_progress_config.md - enables the possibility to change the task progress by dragging the progress knob
+- api/gantt_drag_project_config.md - enables drag and drop of items of project type
 - api/gantt_drag_resize_config.md - enables the possibility to resize tasks by drag-and-drop
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
@@ -71,9 +73,12 @@ Properties
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
+- api/gantt_resource_property_config.md - specifies a property of the task object which stores a resource id assiciated with resourceGrid/resourceTimeline
+- api/gantt_resource_store_config.md - specifies a name of the dataStore connected to the resourceGrid/resourceTimeline
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table
+- api/gantt_rtl_config.md - switches gantt to the right-to-left mode
 - api/gantt_scale_height_config.md - sets the height of the time scale and the header of the grid
 - api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of leading/closing empty space
 - api/gantt_scale_unit_config.md - sets the unit of the time scale (X-Axis)
@@ -137,6 +142,7 @@ Properties
 - api/gantt_autosize_config.md
 - api/gantt_autosize_min_width_config.md
 - api/gantt_branch_loading_config.md
+- api/gantt_branch_loading_property_config.md
 - api/gantt_buttons_left_config.md
 - api/gantt_buttons_right_config.md
 - api/gantt_calendar_property_config.md
@@ -152,6 +158,7 @@ Properties
 - api/gantt_drag_mode_config.md
 - api/gantt_drag_move_config.md
 - api/gantt_drag_progress_config.md
+- api/gantt_drag_project_config.md
 - api/gantt_drag_resize_config.md
 - api/gantt_duration_step_config.md
 - api/gantt_duration_unit_config.md
@@ -193,9 +200,12 @@ Properties
 - api/gantt_readonly_property_config.md
 - api/gantt_redo_config.md
 - api/gantt_resource_calendars_config.md
+- api/gantt_resource_property_config.md
+- api/gantt_resource_store_config.md
 - api/gantt_root_id_config.md
 - api/gantt_round_dnd_dates_config.md
 - api/gantt_row_height_config.md
+- api/gantt_rtl_config.md
 - api/gantt_scale_height_config.md
 - api/gantt_scale_offset_minimal_config.md
 - api/gantt_scale_unit_config.md
