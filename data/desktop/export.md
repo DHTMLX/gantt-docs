@@ -1,10 +1,12 @@
 Export to PDF and PNG
 ==================================
+
 dhtmlxGantt provides an online export service that will allow you to export the Gantt chart into the [PDF](desktop/export.md#exporttopdf) or 
 [PNG](desktop/export.md#exporttopng) format.
 
 {{note
-The service is free but if you don't have the commercial license with the valid support period the output PDF/PNG file will contain the library's watermark.
+The service is free, but the output PDF/PNG file will contain the library's watermark under the GPL license. In case you buy a license, the result of export will be available without a watermark
+during the valid support period (1 month for Commercial license and 12 months for the Enterprise one).
 }}
 
 Using Export Services
