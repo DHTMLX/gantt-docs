@@ -24,6 +24,9 @@ To display a basic Gantt on the page, follow 3 steps:
 </body>
 </html>
 ~~~
+
+![desktop/init_gantt_front.png](desktop/init_gantt_front.png)
+
 {{sample
 	01_initialization/01_basic_init.html
 }}

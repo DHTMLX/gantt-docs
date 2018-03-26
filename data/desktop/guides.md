@@ -4,6 +4,7 @@ The guidance information makes up the major part of the documentation and helps 
 The chapter is divided into task-oriented manuals that assist you in performing both simple and difficult, often and seldom used tasks. 
 The articles come around key procedures and problem-solving activities. 
 
+Сheck the [features available in the Standard and PRO versions](desktop/editions_comparison.md) of the dhtmlxGantt library.
 
 <table  style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
@@ -20,14 +21,13 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/howtostart_ruby.md</li>
             </ul>
         </td>
-        <td class='topic_description'>Says how to build a standard Gantt chart on different server-side platforms and 
-        bring it to life: configure with specific settings, customize the default templates, 
-        attach events, etc.</td>
+        <td class='topic_description'>Says how to build a standard Gantt chart on different server-side platforms and perform common tasks:
+        create database connection, load with data, save changes, store the order of tasks, provide app security, etc.</td>
 	</tr>
 	<tr>
 		<td id="data" class='topics'>
 		    <h4>
-		         Creating a Gantt Chart on a Page
+		         Creating Gantt Chart on a Page
 		    </h4>
 		    <ul id="data_sublist" >
                     <li>desktop/initializing_gantt_chart.md</li>
@@ -36,7 +36,6 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/layout_config.md</li>
                     <li>desktop/resource_management.md</li>
                     <li>desktop/handling_events.md</li>
-                    <li>desktop/localization.md</li>                  
                     <li>desktop/multiple_gantts.md</li> 
                     <li>desktop/extensions_list.md</li>
             </ul>
@@ -68,7 +67,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/serialization.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Discusses the ways of loading data into the Gantt chart: different data sources, formats, techniques.</td>
+		<td class='topic_description'>Discusses the ways of exporting and importing Gantt data in various formats, and serializing data into XML and JSON.</td>
 	</tr> 
     <tr>
         <td id="events" class='topics'>
@@ -155,7 +154,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/auto_scheduling.md</li>
             </ul>
         </td>
-        <td class='topic_description'>Covers the basics of performing general operations under dependency objects, such as adding, deleting, getting the dependency object  etc.</td>
+        <td class='topic_description'>Covers the basics of performing general operations over dependency objects, such as adding, deleting, getting the dependency object etc.</td>
     </tr>
    <tr>
         <td id="import" class='topics'>
@@ -174,22 +173,32 @@ The articles come around key procedures and problem-solving activities.
     <tr>
         <td id="internet" class='topics'>
             <h4>
-                Auxiliary Resources
+                Working with Dates
             </h4>
-            <ul id="internet_sublist">    
-            		<li>desktop/editions_comparison.md</li>
+            <ul id="internet_sublist">
                     <li>desktop/date_format.md</li>
                     <li>desktop/date_operations.md</li>
+            </ul>
+        </td>
+        <td class='topic_description'>Discusses the topics you may need while working with dates in the Gantt chart: converting dates to string and backward, allowable characters in the date format, etc.</td>
+    </tr>
+    <tr>
+        <td id="internet" class='topics'>
+            <h4>
+                Common Features
+            </h4>
+            <ul id="internet_sublist">    
+            		<li>desktop/editions_comparison.md</li>  
+                    <li>desktop/localization.md</li>  
+                    <li>desktop/accessibility.md</li>
                     <li>desktop/fullscreen_mode.md</li>
                     <li>desktop/undo_redo.md</li>
                     <li>desktop/message_boxes.md</li>
-                    <li>desktop/accessibility.md</li>
-                    <li>desktop/keyboard_navigation.md</li>
-                    <li>desktop/content_security_policy.md</li>
+                  	<li>desktop/content_security_policy.md</li>
                     <li>desktop/jquery_integration.md</li>
             </ul>
         </td>
-        <td class='topic_description'>Guides you through common information you may need while creating a Gantt chart: converting dates to string and backward, allowable characters in the date format, etc.</td>
+        <td class='topic_description'>Guides you through common information you may need while creating a Gantt chart.</td>
     </tr>
    	</tbody>
 </table>
@@ -206,4 +215,5 @@ The articles come around key procedures and problem-solving activities.
 - desktop/task_bars.md
 - desktop/dependencies.md
 - desktop/styling.md
+- desktop/work_with_dates.md
 - desktop/extra_resources.md

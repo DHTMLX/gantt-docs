@@ -1,4 +1,4 @@
-Implementing Undo/Redo Functionality
+Undo/Redo Functionality
 ======================================
 
 Starting from version 4.0 Gantt Chart allows you to undo/redo the made changes. To enable this functionality, you need to include the **ext/undo.js** extension on the page.

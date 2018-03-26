@@ -1,5 +1,5 @@
-Localizing Gantt Chart
-======================================
+Localization
+================
 
 Localization allows you to present the interface of the Gantt chart in the language you'd like: English, Spanish, French, etc.
 By default, dhtmlxGantt provides support for the [English locale](api/gantt_locale_other.md).
