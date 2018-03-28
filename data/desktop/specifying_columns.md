@@ -44,7 +44,7 @@ gantt.config.columns =  [
 gantt.init("gantt_here");
 ~~~
 
-where 'text', 'holder', 'start_date', 'end_date', 'progress' are [the names of the data properties](desktop/specifying_columns.md#settingmappingbetweencolumnsanddataproperties).
+where 'text', 'holder', 'start_date', 'end_date', 'progress' are [the names of the data properties](desktop/specifying_columns.md#datamappingandtemplates).
 
 
 Width
@@ -82,11 +82,13 @@ gantt.init("gantt_here");
 Data mapping and templates
 ---------------------------------------
 
-By default, dhtmlxGantt populates the grid with data properties that correspond to the IDs of the columns.
-For example, if you set for a column  **<code>id ="holder"</code>**, dhtmlxGantt will look for a such data property in the incoming JSON data. And
-if such a property exists, load it to the column.
+By default, dhtmlxGantt populates the grid with data properties that correspond to the names of the columns.
+For example, if you set **name:"holder"** for a column, dhtmlxGantt will look for a such data property in the incoming JSON data, and if such a property exists, load it to the column.
 
-If you want to present in a column a mix of several data properties, use whatever id you want but set the data template with the **template** attribute of the api/gantt_columns_config.md parameter.
+####Using templates for column data
+
+If you want to present a mix of several data properties in a column, you can use any name for the column, but set the data template via the **template** attribute of the api/gantt_columns_config.md parameter.
+For instance, you can specify **name:"staff"** for a column and define a template function that will return the *holder* and *progress* data properties to be loaded into the column. 
 
 ~~~js
 gantt.config.columns =  [
@@ -137,10 +139,12 @@ It is also possible to get the WBS code of the necessary task. For example, we l
 ~~~js
 gantt.parse({
  "data":[
-  {"id":1, "text":"Project #1", "start_date":"28-03-2013", 
-  	"duration":"11", "parent":"0", "open":true},
-  {"id":2, "text":"Task #1", "start_date":"01-04-2013", "duration":"18", "parent":"1"},
-  {"id":3, "text":"Task #2", "start_date":"02-04-2013", "duration":"8", "parent":"1"}
+  	{"id":1, "text":"Project #1", "start_date":"28-03-2013", 
+  		"duration":"11", "parent":"0", "open":true},
+  	{"id":2, "text":"Task #1", "start_date":"01-04-2013", 
+    	"duration":"18", "parent":"1"},
+  	{"id":3, "text":"Task #2", "start_date":"02-04-2013", 
+    	"duration":"8", "parent":"1"}
  ],
  "links":[]
 });
@@ -162,10 +166,10 @@ Resizing
 To provide users a possibility to resize a column by dragging the right column's border, use the [resize](api/gantt_columns_config.md) attribute in the related column's object:
 ~~~js
 gantt.config.columns = [
-	{name:"text", tree:true, width:"*",resize:true },//-> 'resize' active
-	{name:"start_date", resize:true, min_width:100 },//-> 'resize' limited with 'min_width'
-	{name:"duration", align:"center" },             //-> no resize
-	{name:"add", width:"44" }
+  {name:"text", tree:true, width:"*",resize:true },//-> 'resize' active
+  {name:"start_date", resize:true, min_width:100 },//-> 'resize' limited by 'min_width'
+  {name:"duration", align:"center" },              //-> no resize
+  {name:"add", width:"44" }
 ];
 ~~~
 {{sample
@@ -184,7 +188,7 @@ gantt.config.columns = [
 ];
 
 gantt.config.grid_resize = true; /*!*/
-gantt.config.min_grid_column_width = 100; // the minimum width of the grid while resizing
+gantt.config.min_grid_column_width = 100; //the minimum width of grid during resizing
 gantt.init("gantt_here");
 ~~~
 {{sample

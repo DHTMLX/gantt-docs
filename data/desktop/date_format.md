@@ -14,6 +14,7 @@ While specifying the format for dates you can use any character from the followi
 <br>
 <br>
 - **%W** - the ISO-8601 week number of the year. Weeks start on Monday; 
+- **%w** - the week number, weeks start either on Monday or on Sunday depending on the value of the api/gantt_start_on_monday_config.md config property 
 <br>
 <br>
 - **%d** - the day as a number with a leading zero ( _01 to 31_ );

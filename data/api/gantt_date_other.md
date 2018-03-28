@@ -77,7 +77,7 @@ var date = gantt.date.day_start(new Date(2013, 05, 29, 14, 30, 10));
         </ul>
     </li>
     <li>
-    	<b>getISOWeek ( date) </b> - returns the week number of the date
+    	<b>getISOWeek ( date) </b> - returns the ISO-8601 week number of the date, weeks starts on Monday
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object to format </li>
 ~~~js
@@ -95,6 +95,19 @@ var week = gantt.date.getUTCISOWeek(new Date(2013, 05, 29));// ->26
         </ul>
     </li>
     <li>
+    	<b>getWeek ( date) </b> - returns the week number of the date. Weeks start either on Monday or Sunday, depending on the value of the api/gantt_start_on_monday_config.md property.
+        <ul>
+          	<li><b><i>date</i></b> - (<i>Date</i>) the date object to format </li>
+~~~js
+// weeks start on Sunday
+gantt.config.start_on_monday = false;
+
+var isoWeek = gantt.date.getISOWeek(new Date(2018, 2, 25)); // ->12
+var week = gantt.date.getWeek(new Date(2018, 2, 25)); // ->13
+~~~
+        </ul>
+    </li>
+    <li>
     	<b>month_start ( date) </b> - returns a Date object of the first day of the month for the specified date and clears the time part to zero
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object to format </li>
@@ -107,7 +120,7 @@ var firstDay = gantt.date.month_start(new Date(2013, 05, 29, 14, 30));
     <li>
     	<b>parseDate ( date, format) </b> - converts a string of the specified format to a Date object 
         <ul>
-        	<li>b><i>date</i></b> - (<i>string</i>) a date as a string </li>
+        	<li><b><i>date</i></b> - (<i>string</i>) a date as a string </li>
             <li><b><i>format</i></b> - (<i>string</i>) the date format ( see desktop/date_format.md)  </li>
 ~~~js
 var date = gantt.date.parseDate("29/06/2013","%d/%m/%Y");//-> 29 June, 2013 00:00:00

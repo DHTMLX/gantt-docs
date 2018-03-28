@@ -1,11 +1,12 @@
 start_on_monday
 =============
 
-@short:sets the start day of weeks
+@short:sets the starting day of the week
 	
 @default:true
 @type: boolean
 @example:
+// weeks start from Sunday
 gantt.config.start_on_monday = false;
 gantt.init("gantt_here");
 
