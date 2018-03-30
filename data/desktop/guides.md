@@ -187,8 +187,7 @@ The articles come around key procedures and problem-solving activities.
             <h4>
                 Common Features
             </h4>
-            <ul id="internet_sublist">    
-            		<li>desktop/editions_comparison.md</li>  
+            <ul id="internet_sublist">                		
                     <li>desktop/localization.md</li>  
                     <li>desktop/accessibility.md</li>
                     <li>desktop/fullscreen_mode.md</li>
@@ -200,11 +199,23 @@ The articles come around key procedures and problem-solving activities.
         </td>
         <td class='topic_description'>Guides you through common information you may need while creating a Gantt chart.</td>
     </tr>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		        User Interface Guide
+		    </h4>
+		    <ul id="data_sublist" >
+                    <li>overview.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Describes the elements of the Gantt Chart interface from the point of view of the end-user.</td>
+	</tr>
    	</tbody>
 </table>
 
 @index:
 
+- desktop/editions_comparison.md
 - desktop/howtostart_guides.md
 - desktop/general_gantt_chart.md
 - desktop/loading_storing_data.md
@@ -217,3 +228,4 @@ The articles come around key procedures and problem-solving activities.
 - desktop/styling.md
 - desktop/work_with_dates.md
 - desktop/extra_resources.md
+- overview.md

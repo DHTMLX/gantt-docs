@@ -1,8 +1,8 @@
 Working with Styles in Gantt
 =========================
 
-dhtmlxGantt provides you with a wide set of options for modifying its appearance. You can both [change the general look of the Gantt chart by using one of the 
-predefined skins](desktop/skins.md) and adjust the styles of separate elements (tasks, links, scale and subscales, grid, etc.) of the component.  
+dhtmlxGantt provides you with a wide set of options for modifying its appearance. You can both [change the general look of the Gantt chart by using one of the predefined skins](desktop/skins.md)
+and adjust the styles of separate elements (tasks, links, scale and subscales, grid, etc.) of the component.  
 
 In this guide general instructions on working with styles of Gantt parts are collected together to facilitate your wandering through the documentation. 
 Detailed information for each particular element is provided in the related articles.
@@ -13,7 +13,7 @@ Styling Grid
 
 You can change the style of the grid area via the related desktop/table_templates.md.
 
-###Styling the headers of grid columns
+###Headers of grid columns
 
 There is a api/gantt_grid_header_class_template.md template that allows you to apply a custom style to the headers of the grid columns. For example, you can change the background color of certain headers of the grid columns in the following way:
 
@@ -36,7 +36,7 @@ gantt.templates.grid_header_class = function(columnName, column){
 
 {{editor		http://docs.dhtmlx.com/gantt/snippet/356f900e		Styling Headers of Grid Columns}}
 
-###Setting the background color of a grid row 
+###Background color of grid rows 
 
 You can apply a custom color for all or separate grid rows with tasks via the api/gantt_grid_row_class_template.md template. For example, you can change the background color of a particular row like this:
 
@@ -59,9 +59,9 @@ gantt.templates.grid_row_class = function(start, end, task){
 
 {{editor	https://docs.dhtmlx.com/gantt/snippet/3328e356			Coloring Grid Rows}}
 
-###Changing the color of text in grid columns
+###Text color in grid rows
 
-It is also possible to change the default color of the text in grid columns. You can do it by setting a template for a necessary column via the api/gantt_columns_config.md configuration option. For example, you can define a special color for the text of tasks depending on their priority:
+It is also possible to change the default color of the text in grid rows. You can do it by setting a template for a necessary column via the api/gantt_columns_config.md configuration option. For example, you can define a special color for the text of tasks depending on their priority:
 
 ~~~js
 gantt.config.columns=[
@@ -87,7 +87,7 @@ Styling Scale
 
 The scale styling is defined by the related [templates of the timeline area](desktop/timeline_templates.md).
 
-###Styling the row of the timeline area
+###Scale row
 
 You can style the row of the scale with the help of the **scale_row_class** template. For example, define the background color:
 
@@ -109,7 +109,7 @@ gantt.templates.scale_row_class = function(scale){
  
 {{editor	http://docs.dhtmlx.com/gantt/snippet/70bae8cb		Styling Row of the Scale}}
 
-###Styling the cells of the timeline area
+###Scale cells 
 
 It is also possible to style the cells of the scale via the **scale_cell_class** template. For example, you can color particular days of the timeline area:
 
@@ -127,7 +127,7 @@ gantt.templates.scale_cell_class = function(date){
 
 Read more in the related articles: desktop/configuring_time_scale.md#settingthescalesstyle and desktop/highlighting_time_slots.md.
 
-###Styling the subscale
+###Subscale
 
 You can specify a new style for the subscale via the **css** attribute of the api/gantt_subscales_config.md property. For example, you can set a specific color for the weekends as follows:
 
@@ -165,11 +165,11 @@ Check the related article desktop/second_scale.md#settingthescalesstyle for more
 Styling Tasks
 ----------------
 
-You can change the style of a task and a task bar via the corresponding [templates of the timeline area](desktop/timeline_templates.md).
+You can change the styling of tasks via the corresponding [templates of the timeline area](desktop/timeline_templates.md).
 
-###Styling the task bar
+###Task bar
 
-You can redefine the api/gantt_task_class_template.md template to refresh the styles of a task or of a task bar. 
+You can redefine the api/gantt_task_class_template.md template to refresh the styles of a task. 
 You can find the details in the article desktop/colouring_tasks.md#redefiningthetaskstemplate.
 
 ~~~js
@@ -197,7 +197,7 @@ gantt.templates.task_class = function(start,end,task){
 {{sample 04_customization/08_templates.html}}
 
 
-###Styling text in the task bar
+###Task bar text
 
 The api/gantt_task_text_template.md template allows using inline styles to change the style of the task bar text:
 
@@ -215,7 +215,7 @@ gantt.templates.task_text = function(start, end, task){
 {{editor		https://docs.dhtmlx.com/gantt/snippet/c31afbec		Inline Styling of the Task Text}}
 
 
-###Setting the style via the properties of a task object
+###Using task object properties
 
 You can set additional properties in the task object configuration to define a custom color for a task. They are: **color**, **textColor** and **progressColor**.
 
@@ -235,9 +235,9 @@ gantt.getTask(1).color = "red"
 
 Read the related section of the desktop/colouring_tasks.md#specifyingstyleinthepropertiesofataskobject article to get the details.
 
-###Setting the background color and text color of task bars via the lightbox
+###Styling task bars via the lightbox
 
-You can define a set of predefined colors and specify them as options in the lightbox configuration.
+You can define a set of predefined colors and specify them as options in the lightbox configuration to set the text or background color of a task:
 
 ~~~js
 var colors = [
@@ -260,7 +260,7 @@ gantt.config.lightbox.sections = [
 
 {{sample 04_customization/16_inline_task_colors.html}}
 
-###Styling rows of the timeline area
+###Rows of the timeline area
 
 The api/gantt_task_row_class_template.md template allows you to change the color of the rows of the timeline area (those lying behind the Gantt tasks).
 
@@ -311,7 +311,7 @@ Styling Links
 
 You can change the style of the dependency links via the related desktop/dependency_templates.md.
 
-###Styling the lines of dependency links
+###Lines of dependency links
 
 You can change the color of the dependency line via the api/gantt_link_class_template.md template.
 
@@ -328,7 +328,7 @@ gantt.templates.link_class = function(link){
 
 There is more information in the related article desktop/colouring_lines.md.
 
-###Setting color via the property of the link object
+###Using link object property
 
 You can also set a custom color for a dependency link by specifying the **color** property in the link object:
 
@@ -351,7 +351,7 @@ gantt.getLink(2).color = "blue";
 
 Read the related section of the desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject article to get the details.
 
-###Styling the popups of dependency links
+###Popups of dependency links
 
 The api/gantt_drag_link_class_template.md template allows styling the popup that appears when a user starts dragging a dependency line between tasks. For example, you can color the background of the popup and change the color of the popup text:
 

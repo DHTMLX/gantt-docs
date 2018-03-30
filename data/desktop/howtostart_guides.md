@@ -9,8 +9,8 @@ platforms to suit all tastes and preferences.
 	<tbody>
 	<tr>
     	<td>
-    		<span style="font-size:15px;">desktop/howtostart_php_laravel.md</span><br>
-            
+    		<span style="font-size:15px;">desktop/howtostart_php_laravel.md</span>
+            <br>            
             A comprehensive tutorial that discusses how to add Gantt into a Laravel app. 
         </td>
         <td>
@@ -19,8 +19,8 @@ platforms to suit all tastes and preferences.
         </tr>
     <tr>
 		<td>
-		    <span style="font-size:15px;">desktop/howtostart_php.md</span><br>
-           
+		    <span style="font-size:15px;">desktop/howtostart_php.md</span>
+            <br>          
             A step-by-step tutorial that shows how to implement a PHP backend using PDO and MySQL. 
         </td>
         <td>

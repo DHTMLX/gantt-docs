@@ -48,7 +48,6 @@ Start
 - api/refs/gantt.md
 - whatsnew.md
 - migrating.md
-- overview.md
 - desktop/guides.md
 - faq.md
 

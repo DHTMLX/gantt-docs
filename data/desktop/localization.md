@@ -223,7 +223,7 @@ Predefined locales
  full
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
- Slovakian 
+ Slovak
 </td><td style='border:1px solid #AAA;'>
  locale_sk.js 
 </td><td style='border:1px solid #AAA;'>
