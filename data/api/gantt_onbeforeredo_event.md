@@ -28,3 +28,6 @@ the event is blockable, returning *false* will cancel further processing
 
 @changelog:
 added in version 4.0
+
+@related:
+desktop/undo_redo.md
