@@ -17,11 +17,11 @@ You can change the style of the grid area via the related desktop/table_template
 
 There is a api/gantt_grid_header_class_template.md template that allows you to apply a custom style to the headers of the grid columns. For example, you can change the background color of certain headers of the grid columns in the following way:
 
-~~~html
+~~~js
 <style>
-  .updColor{
-  	background-color:#ffeb8a!important;
-  }
+  	.updColor{
+		background-color:#ffeb8a!important;
+  	}
 </style>
 ~~~
 
@@ -40,7 +40,7 @@ gantt.templates.grid_header_class = function(columnName, column){
 
 You can apply a custom color for all or separate grid rows with tasks via the api/gantt_grid_row_class_template.md template. For example, you can change the background color of a particular row like this:
 
-~~~html
+~~~js
 <style>
   .updColor{
   	background-color:#ffeb8a!important;  
@@ -91,7 +91,7 @@ The scale styling is defined by the related [templates of the timeline area](des
 
 You can style the row of the scale with the help of the **scale_row_class** template. For example, define the background color:
 
-~~~html
+~~~js
 <style>
   .updColor{
   	background-color:#ffeb8a!important  	
@@ -111,7 +111,7 @@ gantt.templates.scale_row_class = function(scale){
 
 ###Scale cells 
 
-It is also possible to style the cells of the scale via the **scale_cell_class** template. For example, you can color particular days of the timeline area:
+It is also possible to style certain cells of the scale via the **scale_cell_class** template. For example, you can color particular days of the timeline area:
 
 ~~~js
 gantt.templates.scale_cell_class = function(date){
@@ -131,11 +131,11 @@ Read more in the related articles: desktop/configuring_time_scale.md#settingthes
 
 You can specify a new style for the subscale via the **css** attribute of the api/gantt_subscales_config.md property. For example, you can set a specific color for the weekends as follows:
 
-~~~html
+~~~js
 <style type="text/css">
-.weekend{
-    background: #F0DFE5 !important;
-}
+	.weekend{
+    	background: #F0DFE5 !important;
+	}
 </style>
 ~~~
 
@@ -157,8 +157,6 @@ Check the related article desktop/second_scale.md#settingthescalesstyle for more
 <img src="desktop/styling_subscale.png">
 
 {{editor		https://docs.dhtmlx.com/gantt/snippet/53c5406c		Styling the Second Scale}}
-
-{{sample	03_scales/01_multiple_scales.html}}
 
 
 
@@ -283,7 +281,7 @@ gantt.templates.task_row_class = function(start, end, task){
 You can highlight the necessary timeline cells, depending on the day of the week with the **task_cell_class** template. The template function will iterate over the cells and apply the desired CSS
 class to the specified cells. For example, you can highlight weekends as in:
 
-~~~html
+~~~js
 <style>
 	.weekend{
 		background: #f4f7f4;
@@ -355,7 +353,7 @@ Read the related section of the desktop/colouring_lines.md#specifyingcolorinthep
 
 The api/gantt_drag_link_class_template.md template allows styling the popup that appears when a user starts dragging a dependency line between tasks. For example, you can color the background of the popup and change the color of the popup text:
 
-~~~html
+~~~js
 <style>
   .gantt_link_tooltip{color:red; background-color:yellow} 
 </style> 
@@ -384,7 +382,7 @@ The styling of the Quick Info popup is defined via the desktop/touch_templates.m
 You can apply the necessary style to the pop-up edit form by the api/gantt_quick_info_class_template.md template. For example, you can style quick info popups for
 particular tasks as follows:
 
-~~~html
+~~~js
 <style>
   .updColor{
   	background-color:#ffeb8a!important;
@@ -392,7 +390,6 @@ particular tasks as follows:
   .updColor .gantt_cal_qi_title{
   	background-color:#ffeb8a!important;
   }
-  
 </style>
 ~~~
 
