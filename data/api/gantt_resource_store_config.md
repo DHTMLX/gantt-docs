@@ -74,7 +74,7 @@ api/gantt_resource_property_config.md
 @related: desktop/resource_management.md
 
 @relatedsample:
-11_resources\04_resource_usage_diagram.html
-11_resources\05_resource_usage_templates.html
+11_resources/04_resource_usage_diagram.html
+11_resources/05_resource_usage_templates.html
 
 

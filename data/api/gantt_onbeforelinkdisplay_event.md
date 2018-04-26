@@ -12,7 +12,7 @@ onBeforeLinkDisplay
  
 @example:
 gantt.attachEvent("onBeforeLinkDisplay", function(id, link){
-    if (task.type == "1"){
+    if (link.type == gantt.config.links.finish_to_start){
         return true;
     }
     return false;
