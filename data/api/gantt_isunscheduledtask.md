@@ -18,3 +18,8 @@ var isUnscheduled = gantt.isUnscheduledTask(task);
 
 @template:	api_method
 @descr:
+
+@related:
+desktop/auto_scheduling.md
+
+@edition:pro

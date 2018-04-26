@@ -15,9 +15,10 @@ groupBy
 //one-level grouping
 gantt.groupBy({
 	relation_property: "priority",
-	groups: [{key:0, label: "High"},
-			 {key:4, label: "Normal"},
-			 {key:5, label: "Low"},
+	groups: [
+    	{key:0, label: "High"},
+		{key:4, label: "Normal"},
+	    {key:5, label: "Low"},
     ],
     group_id: "key",
 	group_text: "label"
@@ -26,13 +27,14 @@ gantt.groupBy({
 //multi-level grouping
 gantt.groupBy({
 	relation_property: "priority",
-	groups: [{key:0, label: "High"},
-			 {key:4, label: "Normal"},
-			 {key:5, label: "Low"},
-			 //multi level groups
-			 {key:1, label: "Give High Attention", "priority":0},
-			 {key:2, label: "Resolve Immediately", "priority":0},
-			 {key:3, label: "Keep For Next Release", "priority":5}
+	groups: [
+    	{key:0, label: "High"},
+		{key:4, label: "Normal"},
+		{key:5, label: "Low"},
+		// multi level groups
+		{key:1, label: "Give High Attention", "priority":0},
+		{key:2, label: "Resolve Immediately", "priority":0},
+		{key:3, label: "Keep For Next Release", "priority":5}
     ],
     group_id: "key",
 	group_text: "label"
@@ -53,7 +55,7 @@ gantt.groupBy({
 
 @template:	api_method
 @descr:
-The grouping configuration object  has the following properties:
+The grouping configuration object has the following properties:
 
 <table class="webixdoc_links">
 	<tbody>
@@ -78,9 +80,10 @@ The grouping configuration object  has the following properties:
 
 Please, note:
 
-- Each 'group' object must contain at least 2 properties (but any number of additional ones): the id and text description (specified by the 'group_id', 'group_text' parameters respectively)<)
+- Each 'group' object must contain at least 2 properties (but any number of additional ones): the id and text description (specified by the 'group_id', 'group_text' parameters respectively))
 - The 'project' tasks from the original dataset won't be displayed in the grouping mode, however they will be available via api.
 - Group items are added into the data set as items with the type 'project' and the 'readonly' property enabled. They can be detected by the '$virtual' property, and handled as a regular data items:
+
 ~~~js
 gantt.templates.task_class=function(start, end, task){
 	if(task.$virtual)

@@ -19,3 +19,8 @@ to recalculate the schedule starting from a particular task, pass the id of the 
 ~~~js
 gantt.autoSchedule(taskId);
 ~~~
+
+@related:
+desktop/auto_scheduling.md
+
+@edition:pro

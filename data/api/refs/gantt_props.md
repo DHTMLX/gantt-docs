@@ -3,7 +3,6 @@ Properties
 ==========
 
 {{api
-- api/gantt_api_date_config.md - defines the date format for the <strong>api_date</strong> template
 - api/gantt_auto_scheduling_config.md - enables auto scheduling
 - api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creation of links from parent tasks (projects) to their children
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
@@ -31,7 +30,7 @@ Properties
 - api/gantt_drag_mode_config.md - stores the types of available drag-and-drop modes
 - api/gantt_drag_move_config.md - enables the possibility to move tasks by drag-and-drop
 - api/gantt_drag_progress_config.md - enables the possibility to change the task progress by dragging the progress knob
-- api/gantt_drag_project_config.md - enables drag and drop of items of project type
+- api/gantt_drag_project_config.md - enables drag and drop of items of the project type
 - api/gantt_drag_resize_config.md - enables the possibility to resize tasks by drag-and-drop
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
@@ -73,8 +72,8 @@ Properties
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
-- api/gantt_resource_property_config.md - specifies a property of the task object which stores a resource id assiciated with resourceGrid/resourceTimeline
-- api/gantt_resource_store_config.md - specifies a name of the dataStore connected to the resourceGrid/resourceTimeline
+- api/gantt_resource_property_config.md - specifies a property of the task object which stores a resource id associated with resourceGrid/resourceTimeline
+- api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table
@@ -100,7 +99,7 @@ Properties
 - api/gantt_smart_scales_config.md - specifies that only visible part of the time scale is rendered on the screen
 - api/gantt_sort_config.md - enables sorting in the table
 - api/gantt_start_date_config.md - sets the start value of the time scale
-- api/gantt_start_on_monday_config.md - sets the start day of weeks
+- api/gantt_start_on_monday_config.md - sets the starting day of the week
 - api/gantt_static_background_config.md - generates a background image for the timeline area instead of rendering actual columns' and rows' lines
 - api/gantt_step_config.md - sets the step of the time scale (X-Axis)
 - api/gantt_subscales_config.md - specifies the second time scale(s)
@@ -130,7 +129,6 @@ Properties
 }}
 
 @index:
-- api/gantt_api_date_config.md
 - api/gantt_auto_scheduling_config.md
 - api/gantt_auto_scheduling_descendant_links_config.md
 - api/gantt_auto_scheduling_initial_config.md

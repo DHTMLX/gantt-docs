@@ -1,7 +1,7 @@
 Exploring the Task Types
 =================================
 
-{{pronote This functionality is available only in PRO edition }}
+{{pronote This functionality is available only in the PRO edition. }}
 
 There are 3 predefined types of tasks that you can present in a Gantt chart ([you can also add a custom type](desktop/task_types.md#creatingacustomtype)):
 

@@ -50,6 +50,12 @@ Methods
 - api/gantt_event.md - attaches an event handler to an HTML element
 - api/gantt_eventremove.md - removes an event handler from an HTML element
 - api/gantt_expand.md - expands gantt to the full screen mode
+- api/gantt_exporttoexcel.md - exports data from the Gantt chart to an Excel document
+- api/gantt_exporttoical.md - exports data from the Gantt chart to an iCal string
+- api/gantt_exporttojson.md - exports the structure and data of a Gantt chart into a JSON object
+- api/gantt_exporttomsproject.md - exports data from the Gantt chart to MS Project
+- api/gantt_exporttopdf.md - exports a Gantt chart into the PDF format
+- api/gantt_exporttopng.md - exports a Gantt chart into the PNG format
 - api/gantt_findcycles.md - returns all dependency loops in the chart
 - api/gantt_focus.md - sets focus on the gantt
 - api/gantt_getcalendar.md - gets worktime calendar by id
@@ -88,7 +94,7 @@ Methods
 - api/gantt_getsubtaskdates.md - calculates the combined start/end dates of tasks nested in a project or another task
 - api/gantt_getsubtaskduration.md - calculates the combined duration of tasks nested in a project or another task.
 - api/gantt_gettask.md - returns the task object
-- api/gantt_gettaskby.md - finds task by specified criteria
+- api/gantt_gettaskby.md - finds a task by the specified criteria
 - api/gantt_gettaskbyindex.md - returns a task configuration object by its index
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period
 - api/gantt_gettaskcalendar.md - gets a calendar assigned to the specified task (a task level calendar)
@@ -109,6 +115,7 @@ Methods
 - api/gantt_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
 - api/gantt_hidelightbox.md - closes the lightbox if it's currently active
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
+- api/gantt_importfrommsproject.md - imports an XML or MPP MS Project file to Gantt
 - api/gantt_init.md - constructor. Initializes a dhtmlxGantt object
 - api/gantt_ischildof.md - checks whether a task is a child of other task
 - api/gantt_iscircularlink.md - checks whether the link is circular
@@ -219,6 +226,12 @@ Methods
 - api/gantt_event.md
 - api/gantt_eventremove.md
 - api/gantt_expand.md
+- api/gantt_exporttoexcel.md
+- api/gantt_exporttoical.md
+- api/gantt_exporttojson.md
+- api/gantt_exporttomsproject.md
+- api/gantt_exporttopdf.md
+- api/gantt_exporttopng.md
 - api/gantt_findcycles.md
 - api/gantt_focus.md
 - api/gantt_getcalendar.md
@@ -278,6 +291,7 @@ Methods
 - api/gantt_hidecover.md
 - api/gantt_hidelightbox.md
 - api/gantt_hidequickinfo.md
+- api/gantt_importfrommsproject.md
 - api/gantt_init.md
 - api/gantt_ischildof.md
 - api/gantt_iscircularlink.md

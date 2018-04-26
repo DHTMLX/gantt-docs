@@ -27,8 +27,8 @@ Each object in the array specifies a single column. An object can take the follo
 			<td>(<i>'left', 'center', 'right'</i>) sets the horizontal title alignment </td>
 		</tr>
     	<tr>
-			<td class="webixdoc_links0"><b>hide</b></td>
-			<td>(<i>boolean</i>) hides/shows a column</td>
+			<td class="webixdoc_links0"><b>hide </b></td>
+			<td>(<i>boolean</i>) hides/shows a column (PRO)</td>
 		</tr>
 		<tr>
 			<td class="webixdoc_links0"><b>label</b></td>
@@ -47,8 +47,8 @@ Each object in the array specifies a single column. An object can take the follo
 			<td>(<i>string</i>) defines the column's id. The name 'add' allows you to add a column with the '+' sign</td>
 		</tr>
     	<tr>
-			<td class="webixdoc_links0"><b>resize</b></td>
-			<td>(<i>boolean</i>) enables the possibility to resize a column by dragging the column's border</td>
+			<td class="webixdoc_links0"><b>resize </b></td>
+			<td>(<i>boolean</i>) enables the possibility to resize a column by dragging the column's border (PRO)</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>template</b></td>

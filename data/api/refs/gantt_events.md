@@ -32,7 +32,7 @@ Events
 - api/gantt_onbeforelinkdelete_event.md - fires before the user deletes a link
 - api/gantt_onbeforelinkdisplay_event.md - fires after the links have been loaded to the Gantt chart but before they are displayed
 - api/gantt_onbeforelinkupdate_event.md - fires before a link is updated
-- api/gantt_onbeforemultiselect_event.md - 
+- api/gantt_onbeforemultiselect_event.md - fires before selecting a task or a range of tasks
 - api/gantt_onbeforeparse_event.md - fires before data started to be parsed
 - api/gantt_onbeforeredo_event.md - fires before the api/gantt_redo.md method is called
 - api/gantt_onbeforerowdragend_event.md - fires when a user drops a row in the grid
@@ -43,7 +43,7 @@ Events
 - api/gantt_onbeforetaskdisplay_event.md - fires after the tasks have been loaded to the Gantt chart but before they are displayed
 - api/gantt_onbeforetaskdrag_event.md - fires after the user has pressed the mouse button and started dragging, but before dhtmlxGantt starts the drag-and-drop operation
 - api/gantt_onbeforetaskmove_event.md - fires before a task is moved to a new position
-- api/gantt_onbeforetaskmultiselect_event.md - 
+- api/gantt_onbeforetaskmultiselect_event.md - fires before the task selection state is being changed (the task is being selected or unselected)
 - api/gantt_onbeforetaskselected_event.md - fires before the user selects a task
 - api/gantt_onbeforetaskupdate_event.md - fires before the user updates a task
 - api/gantt_onbeforeundo_event.md - fires before the api/gantt_undo.md method is called
@@ -53,7 +53,7 @@ Events
 - api/gantt_oncolumnresize_event.md - fires when the user is dragging the column's border to resize the column
 - api/gantt_oncolumnresizeend_event.md - fires after the user finished dragging the column's border to resize the column
 - api/gantt_oncolumnresizestart_event.md - fires before the user starts to drag the column's border to resize the column
-- api/gantt_oncontextmenu_event.md - occurs when the user clicks the right mouse button inside the Gantt chart
+- api/gantt_oncontextmenu_event.md - fires when a user clicks the right mouse button inside the Gantt chart (see the details)
 - api/gantt_ondatarender_event.md - fires after data has been rendered on the page
 - api/gantt_ondestroy_event.md - called after gantt has been cleared by the api/gantt_destructor.md method
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
@@ -80,7 +80,7 @@ Events
 - api/gantt_onloadend_event.md - fires after loading data from the data source has been complete
 - api/gantt_onloadstart_event.md - fires immediately before loading data from the data source has been started
 - api/gantt_onmousemove_event.md - fires when the mouse is moved over a task bar
-- api/gantt_onmultiselect_event.md - 
+- api/gantt_onmultiselect_event.md - fires after selection of a task or a range of tasks has been completed
 - api/gantt_onoptionsload_event.md - fires after a collection of options has been loaded from the server, but isn't parsed yet
 - api/gantt_onparse_event.md - fires after data was parsed (became available for API) but before it was rendered in the Gantt chart
 - api/gantt_onquickinfo_event.md - fires when the pop-up edit form appears
@@ -95,7 +95,7 @@ Events
 - api/gantt_ontaskdrag_event.md - fires when the user drags a task
 - api/gantt_ontaskidchange_event.md - fires when the id of a task is changed
 - api/gantt_ontaskloading_event.md - fires when a task is being loaded from the data source
-- api/gantt_ontaskmultiselect_event.md - 
+- api/gantt_ontaskmultiselect_event.md - fires after the task selection state has changed (the task has been selected/unselected)
 - api/gantt_ontaskopened_event.md - fires when a branch has been opened
 - api/gantt_ontaskrowclick_event.md - fires when the user clicks on a row in the table
 - api/gantt_ontaskselected_event.md - fires when the user selects a task

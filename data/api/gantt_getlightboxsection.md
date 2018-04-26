@@ -25,8 +25,7 @@ time.setValue(null,{
 	start_date:new Date(2020,03,10), 
     end_date:new Date(2022,03,10), 
     duration:5
-}); 
-//for multi-control sections: the 1st parameter is 'null', 2nd - a data object
+}); //for multi-control sections: the 1st parameter is 'null', 2nd - a data object
 
 
 @template:	api_method

@@ -45,7 +45,7 @@ To export Gantt chart as a PDF document, do the following steps:
 08_api/06_export.html
 }}
 
-Export to  PNG
+Export to PNG
 -----------------------------
 To export Gantt chart as a PNG image, do the following steps:
 
@@ -76,7 +76,7 @@ To export Gantt chart as a PNG image, do the following steps:
 Parameters of the export methods
 ----------------------------------------------------------
 
-The **exportToPDF()** and **exportToPNG()** methods take as a parameter the same object with a number of properties (all of the properties are optional):
+The api/gantt_exporttopdf.md and api/gantt_exporttopng.md methods take as a parameter the same object with a number of properties (all of the properties are optional):
 
 <table class="webixdoc_links">
 	<tbody>
@@ -94,11 +94,11 @@ The **exportToPDF()** and **exportToPNG()** methods take as a parameter the same
 		</tr>        
         <tr>
 			<td class="webixdoc_links0"><b>start</b></td>
-			<td>(<i>string</i>) sets the start date of the data range that will be presented in the output Gantt chart. The date format is defined by the api/gantt_api_date_config.md config</td>
+			<td>(<i>string</i>) sets the start date of the data range that will be presented in the output Gantt chart. The date format is defined by the api/gantt_xml_date_config.md config</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>end</b></td>
-			<td>(<i>string</i>) sets the end date of the data range that will be presented in the output Gantt chart. The date format is defined by the api/gantt_api_date_config.md config</td>
+			<td>(<i>string</i>) sets the end date of the data range that will be presented in the output Gantt chart. The date format is defined by the api/gantt_xml_date_config.md config</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>data</b></td>
@@ -139,6 +139,7 @@ gantt.exportToPDF({
     server:"https://myapp.com/myexport/gantt",
     raw:true
 });
+
 gantt.exportToPNG({
 	name:"mygantt.png",
 	header:"<h1>My company</h1>",
@@ -200,7 +201,7 @@ gantt.exportToPDF({
 ~~~
 
 {{note
-Note, the date format is defined by the api/gantt_api_date_config.md config
+Note, the date format is defined by the api/gantt_xml_date_config.md config
 }}
 
 <a id="customdata"></a>

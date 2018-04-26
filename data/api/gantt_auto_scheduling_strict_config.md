@@ -37,5 +37,4 @@ desktop/auto_scheduling.md
 - api/gantt_oncircularlinkerror_event.md
 - api/gantt_onautoschedulecircularlink_event.md
 
-@edition:
-pro
+@edition:pro
