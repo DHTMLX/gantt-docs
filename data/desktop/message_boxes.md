@@ -64,23 +64,21 @@ gantt.message({
 });
 ~~~
 
-To hide the specified message box manually and not to wait while it hides automatically, you can use the **dhtmlx.message.hide(boxId)** method.
+###Hiding a Message Box with API
 
-{{note
-The method can't be used with *dhtmlx.alert* and *dhtmlx.confirm*
-}}
-
+To hide the specified message box manually and not to wait while it hides automatically, you can use the **gantt.message.hide(boxId)** method. It takes one parameter:
 
 - **boxId** - the box id specified in the box's constructor
 
 ~~~js
-dhtmlx.message({
+gantt.message({
     id:"myBox",
     text:"Page is loaded"
 });
 
 gantt.message.hide("myBox");
 ~~~
+
 
 ##Modal Message Boxes
 
@@ -108,9 +106,8 @@ Common properties of the boxes are:
 	[&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) values, e.g. "100px", "50%").
 
 
-##Initialization
 
-###Alert Message Box {#alert}
+##Alert Message Box {#alert}
 
 <img src="desktop/alert.png"/>
 
@@ -134,7 +131,7 @@ gantt.alert({
 ~~~
 
 
-###Confirm Message Box {#confirm}
+##Confirm Message Box {#confirm}
 
 <img src="desktop/confirm.png"/>
 
@@ -173,7 +170,7 @@ A modalbox possesses some peculiar features:
 
 ~~~js
 gantt.modalbox({
-	title:"Settings"
+	title:"Settings",
     text: " ... html code here... ",
     buttons:["Save", "Defaults", "Cancel"],
     callback: function(result){
@@ -181,6 +178,7 @@ gantt.modalbox({
     }
 });
 ~~~
+
 
 ###Configuring modalbox buttons
 
@@ -275,6 +273,39 @@ The **css** will be prefixed with the "gantt_" string and added to the button el
   	background:red;
 }
 ~~~
+
+##Hiding Modal Message Boxes
+
+To hide a modal message box manually, you can use the **gantt.modalbox.hide()** method. As a parameter it takes the div container of the modalbox:
+
+~~~js
+var box = gantt.modalbox({	
+	title:"Settings",
+    text: " ... html code here... ",
+    buttons:["Save", "Defaults", "Cancel"],
+    callback: function(result){
+        gantt.alert(result);
+    }
+});
+
+gantt.modalbox.hide(box);
+~~~
+
+For the **alert** and **confirm** modal boxes, you also need to use the **gantt.modalbox.hide()** method:
+
+~~~js
+var box = gantt.confirm({
+    text: "Continue?",
+    ok:"Yes", 
+    cancel:"No",
+    callback: function(result){
+        gantt.message("Result: "+result);
+    }
+});
+
+gantt.modalbox.hide(box);
+~~~
+
 
 ##Styling
 

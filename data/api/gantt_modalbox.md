@@ -6,13 +6,15 @@ modalbox
 
 @params:
 
-- config		object			the modal box' configuration
+- config		object			the modal box's configuration
 
+@returns:
 
+- div			HTMLElement		the div container of the modalbox
 
 @example:
 
-gantt.modalbox({
+var box = gantt.modalbox({
 	title: "Close",
  	type: "alert-warning"
 });

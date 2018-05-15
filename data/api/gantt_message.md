@@ -9,10 +9,13 @@ message
 
 - config		object			the message box's configuration
 
+@returns:
+
+- div			HTMLElement		the div container of the message box
+
 
 @example:
-
-gantt.message({ 
+var box = gantt.message({ 
     type:"confirm-warning", 
     text:"Are you sure you want to do it?"
 });
