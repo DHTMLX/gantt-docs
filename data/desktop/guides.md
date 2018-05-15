@@ -56,20 +56,6 @@ The articles come around key procedures and problem-solving activities.
 		<td class='topic_description'>Discusses the ways of loading data into the Gantt chart: different data sources, formats, techniques.</td>
 	</tr>
     <tr>
-		<td id="manipulations" class='topics'>
-		    <h4>
-		         Exporting and Importing Data
-		    </h4>
-		    <ul id="manipulations_sublist">
-                   	<li>desktop/export.md</li>
-                    <li>desktop/excel.md</li>
-                    <li>desktop/export_msproject.md</li>
-                    <li>desktop/serialization.md</li>
-            </ul>
-        </td>
-		<td class='topic_description'>Discusses the ways of exporting and importing Gantt data in various formats, and serializing data into XML and JSON.</td>
-	</tr> 
-    <tr>
         <td id="events" class='topics'>
             <h4>
                 Configuring Grid Area
@@ -156,6 +142,20 @@ The articles come around key procedures and problem-solving activities.
         </td>
         <td class='topic_description'>Covers the basics of performing general operations over dependency objects, such as adding, deleting, getting the dependency object etc.</td>
     </tr>
+    <tr>
+		<td id="manipulations" class='topics'>
+		    <h4>
+		         Exporting and Importing Data
+		    </h4>
+		    <ul id="manipulations_sublist">
+                   	<li>desktop/export.md</li>
+                    <li>desktop/excel.md</li>
+                    <li>desktop/export_msproject.md</li>
+                    <li>desktop/serialization.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Discusses the ways of exporting and importing Gantt data in various formats, and serializing data into XML and JSON.</td>
+	</tr> 
    <tr>
         <td id="import" class='topics'>
             <h4>

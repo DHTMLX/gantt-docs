@@ -16,20 +16,20 @@ JSON
 
 ~~~js
 {
-	data:[
-		{id:1, text:"Project #2", start_date:"01-04-2013", duration:18, 
-    progress:0.4, open: true},
-		{id:2, text:"Task #1", 	  start_date:"02-04-2013", duration:8, 
-    progress:0.6, parent:1},
-		{id:3, text:"Task #2",    start_date:"11-04-2013", duration:8, 
-    progress:0.6, parent:1}
+	"data":[
+		{"id":"1", "text":"Project #2", "start_date":"01-04-2013", "duration":18, 
+    		"progress":0.4, "open": true},
+		{"id":"2", "text":"Task #1", "start_date":"02-04-2013", "duration":8, 
+    		"progress":0.6, "parent":"1"},
+		{"id":"3", "text":"Task #2", "start_date":"11-04-2013", "duration":8, 
+    		"progress":0.6, "parent":"1"}
   	],
-  	links:[
-  		{ id:1, source:1, target:2, type:"1"},
-    	{ id:2, source:2, target:3, type:"0"},
-		{ id:3, source:3, target:4, type:"0"},
-		{ id:4, source:2, target:5, type:"2"},
-  ]
+  	"links":[
+		{"id":"1", "source":"1", "target":"2", "type":"1"},
+		{"id":"2", "source":"2", "target":"3", "type":"0"},
+		{"id":"3", "source":"3", "target":"4", "type":"0"},
+		{"id":"4", "source":"2", "target":"5", "type":"2"}
+  	]
 }
 ~~~
 
@@ -71,20 +71,20 @@ Let's consider the above examples with 2 custom properties:
 
 ~~~js
 {
-	data:[
-		{id:1, text:"Project #2", start_date:"01-04-2013", duration:18,
-    progress:0.4, open: true, holder:"Mike", priority:"High"},
-		{id:2, text:"Task #1", 	  start_date:"02-04-2013", duration:8,  
-    progress:0.6, parent:1, holder:"John", priority:"Medium"},
-		{id:3, text:"Task #2",    start_date:"11-04-2013", duration:8, 
-    progress:0.6, parent:1, holder:"Alex", priority:"Low"}
+	"data":[
+		{"id":"1", "text":"Project #2", "start_date":"01-04-2013", "duration":18,
+    		"progress":0.4, "open": true, "holder":"Mike", "priority":"High"},
+		{"id":"2", "text":"Task #1", "start_date":"02-04-2013", "duration":8,  
+    		"progress":0.6, "parent":1, "holder":"John", "priority":"Medium"},
+		{"id":"3", "text":"Task #2", "start_date":"11-04-2013", "duration":8, 
+    		"progress":0.6, "parent":1, "holder":"Alex", "priority":"Low"}
   	],
-  	links:[
-  		{ id:1, source:1, target:2, type:"1"},
-    	{ id:2, source:2, target:3, type:"0"},
-		{ id:3, source:3, target:4, type:"0"},
-		{ id:4, source:2, target:5, type:"2"},
-  ]
+  	"links":[
+		{"id":"1", "source":"1", "target":"2", "type":"1"},
+		{"id":"2", "source":"2", "target":"3", "type":"0"},
+		{"id":"3", "source":"3", "target":"4", "type":"0"},
+		{"id":"4", "source":"2", "target":"5", "type":"2"}
+	]
 }
 ~~~
 
@@ -128,27 +128,27 @@ JSON data can contain any number of additional arrays in the "collections" prope
 
 ~~~js
 {
-	data:[
-		{id:1, text:"Project #2", start_date:"01-04-2013", duration:18, 
-			progress:0.4, open: true},
-		{id:2, text:"Task #1", 	  start_date:"02-04-2013", duration:8, 
-			progress:0.6, parent:1},
-		{id:3, text:"Task #2",    start_date:"11-04-2013", duration:8, 
-			progress:0.6, parent:1}
-		],
-	links:[
-		{ id:1, source:1, target:2, type:"1"},
-		{ id:2, source:2, target:3, type:"0"},
-		{ id:3, source:3, target:4, type:"0"},
-		{ id:4, source:2, target:5, type:"2"}
+	"data":[
+		{"id":"1", "text":"Project #2", "start_date":"01-04-2013", "duration":18, 
+			"progress":0.4, "open": true},
+		{"id":"2", "text":"Task #1", "start_date":"02-04-2013", "duration":8, 
+			"progress":0.6, "parent":"1"},
+		{"id":"3", "text":"Task #2", "start_date":"11-04-2013", "duration":8, 
+			"progress":0.6, "parent":"1"}
+	],
+	"links":[
+		{"id":"1", "source":"1", "target":"2", "type":"1"},
+		{"id":"2", "source":"2", "target":"3", "type":"0"},
+		{"id":"3", "source":"3", "target":"4", "type":"0"},
+		{"id":"4", "source":"2", "target":"5", "type":"2"}
 	],
 	"collections": { /*!*/
-		"sections":[
-			{"value":"1","label":"Simple"},
-			{"value":"2","label":"Complex"},
-			{"value":"3","label":"Unknown"}
-		]
-	}
+		"sections":[							/*!*/
+			{"value":"1","label":"Simple"},		/*!*/
+			{"value":"2","label":"Complex"},	/*!*/
+			{"value":"3","label":"Unknown"}		/*!*/
+		]										/*!*/
+	}											/*!*/
 }
 ~~~
 

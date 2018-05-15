@@ -8,9 +8,9 @@ Server-Side Integration
 }
 </style>
 
-The recommended approach to connect dhtmlxGantt to a backend is to implement RESTful API on the server and use dhtmlx dataProcessor on the client.
+The recommended approach to connect dhtmlxGantt to a backend is to implement RESTful API on the server and use dhtmlxDataProcessor on the client.
 
-[dataProcessor](http://docs.dhtmlx.com/dataprocessor__index.html) is a client-side library included into dhtmlxGantt.js. 
+[DataProcessor](http://docs.dhtmlx.com/dataprocessor__index.html) is a client-side library included into dhtmlxGantt.js. 
 It monitors data changes and gets the server requests on the client side.
  
 
@@ -35,7 +35,7 @@ dp.init(gantt);
 dp.setTransactionMode("REST");
 ~~~
 	
-<h3 id="requestresponsedetails">Request and Response details</h3>
+<h3 id="requestresponsedetails">Request and response details</h3>
 
 The URL is formed by the following rule:
 
@@ -96,7 +96,7 @@ The list of possible requests and responses is:
 
 ### Request parameters
 
-Create/Update/Delete requests will contain all public properties of the client-side task or link object:
+Create/Update/Delete requests will contain all public properties of a client-side task or link object:
 
 Task:
 
@@ -243,7 +243,7 @@ Custom Request Headers and Parameters
 
 ### Adding custom request headers
 
-When you need gantt to send additional headers to your backend, you can specify them using the 
+When you need Gantt to send additional headers to your backend, you can specify them using the 
 [dataProcessor.setTransactionMode](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) method.
 
 For example, let's suppose that you need to add an authorization token to your requests:
@@ -271,7 +271,7 @@ $.ajax({
         "Authorization": "Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
     },
     success: function (result) {
-        scheduler.parse(result, "json");
+        gantt.parse(result, "json");
     }
 });
 ~~~
@@ -379,7 +379,7 @@ gantt.attachEvent('onAfterLinkAdd', function(id, link) {
 });
 
 gantt.attachEvent('onAfterLinkUpdate', function(id, link) {
-  linkService.update(task);
+  linkService.update(link);
 });
 
 gantt.attachEvent('onAfterLinkDelete', function(id, link) {

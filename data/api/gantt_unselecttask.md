@@ -14,10 +14,11 @@ var tasks = {
    {id:"t_2",  text:"Task #2",    start_date:"11-04-2013", duration:8,  parent:"p_1"}
  ]
 };
+
 gantt.init("gantt_here");
 gantt.parse(tasks);
 
-gantt.select("t_1"); 
+gantt.selectTask("t_1"); 
 gantt.unselectTask(); /*!*/
 
 @template:	api_method
