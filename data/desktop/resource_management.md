@@ -174,7 +174,7 @@ This feature can be used for balancing resource load in the calendar.
 
 {{sample  11_resources/03_break_down_by_resource.html}}
 
-Read more about task grouping in [the related article](desktop/grouping.html).  
+Read more about task grouping in [the related article](desktop/grouping.md).  
 
 
 Resource load diagram
