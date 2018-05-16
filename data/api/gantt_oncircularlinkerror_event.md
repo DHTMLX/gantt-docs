@@ -16,7 +16,9 @@ gantt.attachEvent("onCircularLinkError",function(link, group){
 
 @template:	api_event
 @descr:
-The *group* parameter is added in version 4.1.
+{{pronote This functionality is available in the PRO edition only.}}
+
+The **group** parameter is added in version 4.1.
 It presents an object which includes a group of tasks and links connected in a loop.
 
 ~~~js

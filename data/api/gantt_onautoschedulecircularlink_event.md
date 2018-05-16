@@ -15,6 +15,8 @@ gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
 
 @template:	api_event
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 added in version 4.1
 
 Tasks aren't modified when this event fires. 

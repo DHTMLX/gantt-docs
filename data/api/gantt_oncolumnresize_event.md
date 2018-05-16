@@ -4,9 +4,9 @@ onColumnResize
 	
 @edition: pro
 @params:
-- index	number	the column index
-- column	object	the column object
-- new_width		number	the new column's width
+- index			number		the column index
+- column		object		the column object
+- new_width		number		the new column's width
 
 
 @example:
@@ -21,6 +21,7 @@ gantt.attachEvent("onColumnResize", function(index, column, new_width){
 
 @template:	api_event
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
 
 @related:
 	desktop/specifying_columns.md#resizingcolumns

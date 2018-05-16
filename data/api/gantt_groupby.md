@@ -1,7 +1,7 @@
 groupBy
 =============
+
 @short:groups tasks by the specified task's attribute
-	
 
 @params:
 - config	object	the grouping configuration object 
@@ -55,6 +55,8 @@ gantt.groupBy({
 
 @template:	api_method
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 The grouping configuration object has the following properties:
 
 <table class="webixdoc_links">

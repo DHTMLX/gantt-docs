@@ -21,7 +21,9 @@ gantt.attachEvent("onGridResizeEnd", function(old_width, new_width){
 });
 @template:	api_event
 @descr:
-The event is blockable. Returning false will cancel grid resizing
+{{pronote This functionality is available in the PRO edition only.}}
+
+The event is blockable. Returning *false* will cancel grid resizing.
 
 @related:
 	desktop/specifying_columns.md#resizingcolumns

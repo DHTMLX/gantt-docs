@@ -16,6 +16,8 @@ gantt.config.branch_loading_property = "hasChild";
 
 @template:	api_config
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 Can only be used together with the api/gantt_branch_loading_config.md config.
 
 

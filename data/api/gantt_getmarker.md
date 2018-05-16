@@ -24,6 +24,7 @@ gantt.getMarker(todayMarker); //->{css:"today", text:"Now", id:...}
     
 @template:	api_method
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
 
 @related:
 	desktop/markers.md

@@ -5,10 +5,10 @@ addTaskLayer
 @edition: pro
 
 @params:
-- func	function, object	a render function  or a config object 
+- func		function,object		a render function or a config object 
 
 @returns:
-- layerId	string		a DOM element that will be displayed in the layer
+- layerId		string		a DOM element that will be displayed in the layer
 
 
 @example:
@@ -39,10 +39,12 @@ gantt.addTaskLayer(function draw_deadline(task) {
 	
 @template:	api_method
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 - The argument function takes a task's object as a parameter and must return a DOM element that will be displayed in the layer.
 - The argument can also be an object. In this case, it can have the following properties:
-	- render - (*function*)  a function that answers for rendering the layer's elements (mandatory)
-	- container - (*DOM element*) a layer's container (optional)
-    - topmost - (*boolean*) if true, the element will display over the task (optional)
-    - filter - (*function*) a function that takes a task object as a parameter. If returns 'false'  - the 'render' function won't be called for a task (optional)
+	- **render** - (*function*)  a function that answers for rendering the layer's elements (mandatory)
+	- **container** - (*HTMLElement*) a layer's container (optional)
+    - **topmost** - (*boolean*) if true, the element will be displayed over the task (optional)
+    - **filter** - (*function*) a function that takes a task object as a parameter. If returns 'false', the 'render' function won't be called for a task (optional)
 - Beware, custom layers will be reset after the next call of <a href="api/gantt_init.md">gantt.init</a>

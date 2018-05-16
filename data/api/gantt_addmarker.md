@@ -1,5 +1,6 @@
 addMarker
 =============
+
 @short:adds a marker to the timeline area
 	
 @edition: pro
@@ -25,6 +26,8 @@ setInterval(function(){
     
 @template:	api_method
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 The configuration object has the following properties:
 
 - **id** - the marker id

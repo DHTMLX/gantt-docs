@@ -19,5 +19,5 @@ gantt.init("gantt_here");
 	api/gantt_iscriticaltask.md
 	api/gantt_iscriticallink.md
 @descr:
-
+{{pronote This functionality is available in the PRO edition only.}}
 

@@ -17,6 +17,8 @@ var cycles = gantt.findCycles();
 @descr:
 added in version 4.1
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 Each element of the *cycles* array is a group of tasks and links which make a loop.
 
 ~~~js

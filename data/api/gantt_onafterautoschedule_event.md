@@ -5,7 +5,7 @@ onAfterAutoSchedule
 	fires when autoscheduling is done 
 
 @params:
-- taskId			string, number			the root task id
+- taskId			string,number			the root task id
 - updatedTasks		array					an array with the ids of rescheduled tasks
 
 
@@ -17,17 +17,15 @@ gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
 
 @template:	api_event
 @descr:
-
+{{pronote This functionality is available in the PRO edition only.}}
 
 @related:
 desktop/auto_scheduling.md
 
 @relatedsample:
-
 02_extensions/12_auto_scheduling.html
 
 @relatedapi:
-
 - api/gantt_auto_scheduling_config.md
 - api/gantt_auto_scheduling_descendant_links_config.md
 - api/gantt_auto_scheduling_initial_config.md

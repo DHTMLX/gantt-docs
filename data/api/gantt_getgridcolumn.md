@@ -9,8 +9,6 @@ getGridColumn
 @returns:
 - column	object	the column's object
 
-
-
 @example:
 gantt.config.columns = [
 	{ name:"text", tree:true, width:150},
@@ -21,6 +19,8 @@ gantt.config.columns = [
 gantt.getGridColumn("text");//->{ name:"text", tree:true, width:150}
 @template:	api_method
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 
 @related:
 	api/gantt_getgridcolumns.md

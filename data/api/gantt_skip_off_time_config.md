@@ -1,9 +1,6 @@
 skip_off_time
 =============
 
-
-
-
 @short:hides non-working time from the time scale
 	
 @edition: pro
@@ -19,6 +16,7 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
 
 @related:
 	 desktop/working_time.md

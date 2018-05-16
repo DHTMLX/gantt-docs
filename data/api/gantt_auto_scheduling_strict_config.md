@@ -13,7 +13,9 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
-By default, tasks are rescheduled only when a new date violates the constraint 
+{{pronote This functionality is available in the PRO edition only.}}
+
+By default, tasks are rescheduled only when a new date violates the constraint. 
 
 
 @related:

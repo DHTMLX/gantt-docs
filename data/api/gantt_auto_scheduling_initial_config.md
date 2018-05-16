@@ -13,7 +13,7 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
-
+{{pronote This functionality is available in the PRO edition only.}}
 
 @related:
 desktop/auto_scheduling.md

@@ -4,7 +4,7 @@ deleteTask
 	
 
 @params:
-- id	string	the task's id
+- id	string,number	the task's id
 
 @example:
 gantt.addTask({

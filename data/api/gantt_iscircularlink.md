@@ -22,6 +22,8 @@ var isCircular = gantt.isCircularLink(link);
 @descr:
 added in version 4.1
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 @related:
 desktop/auto_scheduling.md
 

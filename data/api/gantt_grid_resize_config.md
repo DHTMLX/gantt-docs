@@ -26,3 +26,4 @@ gantt.init("gantt_here");
 	api/gantt_keep_grid_width_config.md
     api/gantt_min_grid_column_width_config.md
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}

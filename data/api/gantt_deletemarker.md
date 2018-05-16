@@ -3,6 +3,7 @@ deleteMarker
 
 @short:deletes the specified marker 
 @edition: pro
+
 @params:
 - markerId	string	the marker's id
 
@@ -18,7 +19,7 @@ gantt.deleteMarker(todayMarker);/*!*/
     
 @template:	api_method
 @descr:
-
+{{pronote This functionality is available in the PRO edition only.}}
     
 
 @related:
