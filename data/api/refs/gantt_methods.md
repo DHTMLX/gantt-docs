@@ -5,7 +5,7 @@ Methods
 {{api
 - api/gantt_addcalendar.md - adds a calendar into Gantt
 - api/gantt_addlink.md - adds a new dependency link
-- api/gantt_addlinklayer.md - displayes an additional layer with custom elements for a link in the timeline area
+- api/gantt_addlinklayer.md - displays an additional layer with custom elements for a link in the timeline area
 - api/gantt_addmarker.md - adds a marker to the timeline area
 - api/gantt_addshortcut.md - adds a new keyboard shortcut
 - api/gantt_addtask.md - adds a new task
@@ -25,6 +25,8 @@ Methods
 - api/gantt_changetaskid.md - changes the task's id
 - api/gantt_checkevent.md - checks whether an event has some handler(s) specified
 - api/gantt_clearall.md - removes all tasks and additional elements (including markers) from the Gantt chart
+- api/gantt_clearredostack.md - 
+- api/gantt_clearundostack.md - 
 - api/gantt_close.md - closes the branch with the specified id
 - api/gantt_collapse.md - collapses gantt from the full screen mode to the normal mode
 - api/gantt_columnindexbydate.md - returns the index of the column by the date
@@ -149,7 +151,7 @@ Methods
 - api/gantt_render.md - renders the whole Gantt chart
 - api/gantt_rendermarkers.md - updates all markers on the page
 - api/gantt_resetlightbox.md - removes the current lightbox's HTML object element
-- api/gantt_resetprojectdates.md - re-calculates the duration of a project task depending on dates its childs
+- api/gantt_resetprojectdates.md - re-calculates the duration of a project task depending on the dates of its children
 - api/gantt_resetskin.md - re-calculates the skin's settings from the related attached skin CSS file
 - api/gantt_resizelightbox.md - forces the lightbox to resize
 - api/gantt_rounddate.md - rounds the specified date to the nearest date in the time scale
@@ -201,6 +203,8 @@ Methods
 - api/gantt_changetaskid.md
 - api/gantt_checkevent.md
 - api/gantt_clearall.md
+- api/gantt_clearredostack.md
+- api/gantt_clearundostack.md
 - api/gantt_close.md
 - api/gantt_collapse.md
 - api/gantt_columnindexbydate.md

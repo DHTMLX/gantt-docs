@@ -1,7 +1,7 @@
 Undo/Redo Functionality
 ======================================
 
-Starting from version 4.0 Gantt Chart allows you to undo/redo the made changes. To enable this functionality, you need to include the **ext/undo.js** extension on the page.
+Starting from version 4.0 Gantt Chart allows you to undo/redo the made changes. To enable this functionality, you need to include the **ext/dhtmlxgantt_undo.js** extension on the page.
 
 ~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -27,7 +27,7 @@ gantt.config.redo = true;
 02_extensions/14_undo.html
 }}
 
-Calling the Undo/Redo functions
+Undo/Redo API
 ----------------------------
 
 To revert the changes made in the Gantt Chart, use the api/gantt_undo.md method:
@@ -42,28 +42,56 @@ In order to redo the previously undone changes, make use of the api/gantt_redo.m
 gantt.redo();
 ~~~
 
-Getting the stack of stored Undo/Redo commands
+Getting the stack of stored Undo/Redo actions
 --------------------------------------------
 
-All actions in the Gantt Chart are implemented as command objects. Gantt stores a stack of the most recently executed commands.
-The undo.js extension can make reverse operations out of them and execute them in Gantt. 
+All user actions in the Gantt Chart are implemented as arrays that contain sets of command objects. Gantt stores a stack of the most recently executed commands.
+The **dhtmlxgantt_undo.js** extension can make reverse operations out of them and execute them in Gantt. 
 
 When you need to undo or redo a command, the extension takes the most recent command object and executes the corresponding method.
 
-To get the stack of the stored undo commands, use the api/gantt_getundostack.md method:
+To get the stack of the stored undo actions, use the api/gantt_getundostack.md method:
 
 ~~~js
 var stack = gantt.getUndoStack();
 ~~~
 
-To return the stack of the stored redo commands, apply the api/gantt_getredostack.md method:
+To return the stack of the stored redo actions, apply the api/gantt_getredostack.md method:
 
 ~~~js
 var stack = gantt.getRedoStack();
 ~~~
 
-Both methods return the stack of commands as an array of command objects.
+The returned stack is an array of the undo user actions. Each user action contains a set of commands. A command is an object with the following attributes:
+ 
+- **type** - (*string*) the type of a command: "add/remove/update"
+- **entity** - (*string*) the type of the object which was changed: "task" or "link"
+- **value** - (*object*) the changed task/link object 
+- **oldValue** - (*object*) the task/link object before changes
 
+Have a look at the example below:
+
+<img src="api/get_undo_stack.png">
+
+The **getUndoStack()** method returns a stack with 2 undo user actions. The first action contains 3 commands, while the second one has 1 command.
+
+
+Clearing the stack of stored Undo/Redo commands
+------------------------------
+
+There is a possibility to clear the stack of Undo/Redo commands via the related Gantt API. 
+
+To clear the the stack of the stored undo commands, use the api/gantt_clearundostack.md method:
+
+~~~js
+gantt.clearUndoStack();
+~~~
+
+To clear the the stack of the stored redo commands, use the api/gantt_clearredostack.md method:
+
+~~~js
+gantt.clearRedoStack();
+~~~
 
 Configuring the Undo functionality
 ----------------------------
@@ -75,7 +103,7 @@ To specify the actions for which Undo will be applied, use the api/gantt_undo_ac
 ~~~js
 gantt.config.undo_actions = {
     update:"update",
-    remove:"remove", // remove an item from datastore
+    remove:"remove", // remove an item from the datastore
     add:"add"
 };
 ~~~

@@ -4,7 +4,7 @@ Properties
 
 {{api
 - api/gantt_auto_scheduling_config.md - enables auto scheduling
-- api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creation of links from parent tasks (projects) to their children
+- api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creating links from parent tasks (projects) to their children
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
 - api/gantt_auto_scheduling_move_projects_config.md - defines whether the whole project will be moved (see the details below)
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
@@ -13,7 +13,7 @@ Properties
 - api/gantt_autoscroll_speed_config.md - defines the speed of autoscrolling (in ms) while dragging a task or link out of the current browser screen
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
-- api/gantt_branch_loading_config.md - enables the dynamic loading in the Gantt chart
+- api/gantt_branch_loading_config.md - enables dynamic loading in the Gantt chart
 - api/gantt_branch_loading_property_config.md - specifies that the task has children that are not yet loaded from the backend
 - api/gantt_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
 - api/gantt_buttons_right_config.md - stores a collection of buttons resided in the right bottom corner of the lightbox
@@ -44,7 +44,7 @@ Properties
 - api/gantt_highlight_critical_path_config.md - shows the critical path in the chart
 - api/gantt_inherit_scale_class_config.md - specifies whether sub-scales shall use the scale_cell_class template by default
 - api/gantt_initial_scroll_config.md - sets whether the timeline area will be initially scrolled to display the earliest task
-- api/gantt_keep_grid_width_config.md - 'says' to preserve the initial grid's width during resizing the columns within
+- api/gantt_keep_grid_width_config.md - 'says' to preserve the initial grid's width while resizing columns within
 - api/gantt_keyboard_navigation_config.md - enables keyboard navigation in gantt
 - api/gantt_keyboard_navigation_cells_config.md - enables keyboard navigation by cells
 - api/gantt_layer_attribute_config.md - sets the name of the attribute of the task layer's DOM element
@@ -72,8 +72,9 @@ Properties
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
-- api/gantt_resource_property_config.md - specifies a property of the task object which stores a resource id associated with resourceGrid/resourceTimeline
-- api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline
+- api/gantt_resource_property_config.md - specifies the property of a task object that stores a resource id associated with resourceGrid/resourceTimeline
+- api/gantt_resource_render_empty_cells_config.md - 
+- api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline views
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table
@@ -199,6 +200,7 @@ Properties
 - api/gantt_redo_config.md
 - api/gantt_resource_calendars_config.md
 - api/gantt_resource_property_config.md
+- api/gantt_resource_render_empty_cells_config.md
 - api/gantt_resource_store_config.md
 - api/gantt_root_id_config.md
 - api/gantt_round_dnd_dates_config.md

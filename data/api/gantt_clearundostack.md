@@ -1,24 +1,22 @@
-redo
+clearUndoStack
 =============
 
 @short:
-	applies the reverted changes to the gantt once again
+	clears the stack of stored undo commands
 
 @params:
 
 
-
 @example:
-gantt.redo();
+gantt.clearUndoStack();
 
 @template:	api_method
 @descr:
+
 @relatedapi:
-- api/gantt_undo.md
-- api/gantt_getredostack.md
 - api/gantt_clearredostack.md
-- api/gantt_onbeforeredo_event.md
-- api/gantt_onafterredo_event.md
+- api/gantt_undo.md
+- api/gantt_getundostack.md
 
 
 @relatedsample:
@@ -28,4 +26,4 @@ gantt.redo();
 desktop/undo_redo.md
 
 @changelog:
-added in version 4.0
+added in version 5.2
