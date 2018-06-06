@@ -397,7 +397,7 @@ function deleteTask($request, $response, $args) {
 }
 
 // create a new link
-function addLlink($request, $response, $args) {
+function addLink($request, $response, $args) {
   $link = getLink($request->getParsedBody());
   $db = getConnection();
   $query = "INSERT INTO gantt_links(source, target, type) ".
