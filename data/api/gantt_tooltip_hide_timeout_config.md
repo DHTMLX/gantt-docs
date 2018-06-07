@@ -15,3 +15,5 @@ gantt.init("gantt_here");
 
 @related:
    desktop/tooltips.md
+@relatedapi:
+   api/gantt_tooltip_timeout_config.md

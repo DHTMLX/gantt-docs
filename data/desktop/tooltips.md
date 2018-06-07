@@ -46,10 +46,34 @@ gantt.templates.tooltip_text = function(start,end,task){
 Timeout
 ------------------
 
-You can specify how long a tooltip will be shown after the user moves the cursor to another position. To set such a period, use the api/gantt_tooltip_hide_timeout_config.md property:
+You can configure the time of tooltips showing and hiding via the related settings.
+
+To specify the time period in milliseconds before a tooltip for a task will appear, use the api/gantt_tooltip_timeout_config.md:
+
+~~~js
+gantt.config.tooltip_timeout = 50;
+gantt.init("gantt_here");
+~~~
+
+
+To define how long (in milliseconds) a tooltip will be shown after the user moves the cursor to another position, use the api/gantt_tooltip_hide_timeout_config.md property:
 
 ~~~js
 gantt.config.tooltip_hide_timeout = 5000;
 gantt.init("gantt_here");
 ~~~
 
+Position
+----------
+
+The position of a tooltip can be configured by changing offsets of its default position via the two configuration properties:
+
+- api/gantt_tooltip_offset_x_config.md - sets the horizontal offset of the tooltip position
+- api/gantt_tooltip_offset_y_config.md - sets the vertical offset of the tooltip position
+
+~~~js
+gantt.config.tooltip_offset_x = 30;
+gantt.config.tooltip_offset_y = 40;
+ 
+gantt.init("gantt_here");
+~~~

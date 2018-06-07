@@ -1,5 +1,6 @@
 tooltip_timeout
 =============
+
 @short:sets the timeout in milliseconds before the tooltip is displayed for a task
 	
 @default:30
@@ -12,4 +13,8 @@ gantt.init("gantt_here");
 @template:	api_config
 @descr:
 
+@relatedapi:
+api/gantt_tooltip_hide_timeout_config.md
 
+@related:
+   desktop/tooltips.md

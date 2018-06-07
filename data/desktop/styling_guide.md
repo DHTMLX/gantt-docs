@@ -36,6 +36,55 @@ gantt.templates.grid_header_class = function(columnName, column){
 
 {{editor		http://docs.dhtmlx.com/gantt/snippet/356f900e		Styling Headers of Grid Columns}}
 
+###Custom elements in grid header
+
+It is possible to add custom elements (such as buttons, inputs, etc.) into the header of the grid. To add an element, you need to set its HTML as the value of the **label** property inside the 
+[**gantt.config.columns**](api/gantt_columns_config.md) configuration option:
+
+~~~js
+gantt.config.columns = [
+  {name:"add", label:"", width:50, align:"left" },
+  {name:"text", label:"<div class='searchEl'>Task name <input id='search' type='text'"+   /*!*/
+  	"placeholder='Search tasks...'></div>", width:250, tree:true},						  /*!*/
+	// other columns
+];
+~~~
+
+The implementation of the search functionality looks like this:
+
+~~~js 
+var inputEl = document.getElementById('search');
+
+inputEl.oninput = function(){
+  gantt.refreshData();
+}
+
+function hasSubstr(parentId){
+  var task = gantt.getTask(parentId);
+  if(task.text.toLowerCase().indexOf(inputEl.value.toLowerCase() ) !== -1)
+    return true;
+
+  var child = gantt.getChildren(parentId);
+  for (var i = 0; i < child.length; i++) {
+    if (hasSubstr(child[i]))
+      return true;
+  }
+  return false;
+}
+
+gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
+  if (hasSubstr(id))
+	return true;
+  
+  	return false;
+});
+~~~
+
+<img src="desktop/custom_elements_grid_header.png">
+
+{{editor 		https://docs.dhtmlx.com/gantt/snippet/66521f81			Custom Elements in Grid Header}}
+
+
 ###Background color of grid rows 
 
 You can apply a custom color for all or separate grid rows with tasks via the api/gantt_grid_row_class_template.md template. For example, you can change the background color of a particular row like this:
@@ -59,13 +108,20 @@ gantt.templates.grid_row_class = function(start, end, task){
 
 {{editor	https://docs.dhtmlx.com/gantt/snippet/3328e356			Coloring Grid Rows}}
 
-###Text color in grid rows
+###Customization of grid columns
 
-It is also possible to change the default color of the text in grid rows. You can do it by setting a template for a necessary column via the api/gantt_columns_config.md configuration option. For example, you can define a special color for the text of tasks depending on their priority:
+dhtmlxGantt provides the possibility to modify the default appearance of the grid columns via the **template** attribute of the [**gantt.config.columns**](api/gantt_columns_config.md) configuration option.
+
+The **template** attribute is a function that takes a data item object as a parameter and returns the final data template. The function definition allows you to present almost any content. For example, you can
+change the default color of the text in grid rows, or use custom elements in grid columns.
+
+####Text color in grid rows
+
+You can define a special color for the text of tasks depending on their priority as in:
 
 ~~~js
 gantt.config.columns=[
-	{name:"text",       label:"Task name",  tree:true, width:230, template:myFunc },
+	{name:"text",       label:"Task name",  tree:true, width:230, template:myFunc },   /*!*/
 	{name:"start_date", label:"Start time", align: "center" },
 	{name:"duration",   label:"Duration",   align: "center" }
 ];
@@ -81,6 +137,32 @@ function myFunc(task){
 
 {{sample	04_customization/05_tree_template.html}}
 
+
+####Custom elements in grid columns
+
+To add a custom element, such as a button, an input, etc. into the grid columns, you should set the HTML of the element as the value of the **template** attribute of the column:
+
+~~~js
+var colContent = function (task) {
+	return ('<i class="fa gantt_button_grid gantt_grid_edit fa-pencil"'+
+    			'onclick="clickGridButton(' + task.id + ', \'edit\')"></i>' +
+			'<i class="fa gantt_button_grid gantt_grid_add fa-plus"'+
+        		'onclick="clickGridButton(' + task.id + ', \'add\')"></i>' +
+			'<i class="fa gantt_button_grid gantt_grid_delete fa-times"'+
+        		'onclick="clickGridButton(' + task.id + ', \'delete\')"></i>');
+};
+
+gantt.config.columns = [
+	{name: "text", tree: true, width: '*', resize: true},
+	{name: "start_date", align: "center", resize: true},
+	{name: "duration", align: "center"},
+	{name: "buttons", label: colHeader, width: 75, template: colContent}  /*!*/
+];
+~~~
+
+<img src="desktop/custom_elements_grid_columns.png">
+
+{{sample  07_grid/07_custom_buttons.html}}
 
 Styling Scale
 ------------
@@ -159,6 +241,14 @@ Check the related article desktop/second_scale.md#settingthescalesstyle for more
 {{editor		https://docs.dhtmlx.com/gantt/snippet/53c5406c		Styling the Second Scale}}
 
 
+###Zooming
+
+Although dhtmlxGantt doesn't provide inbuilt zooming functionality, you can adjust the configuration settings of the time scale to implement the zooming feature. 
+[Read more about zooming in Gantt](desktop/dynamic_scale.md#zooming). 
+
+{{sample 03_scales/05_dynamic_scales.html}}
+
+{{sample 03_scales/13_zoom_to_fit.html}}
 
 Styling Tasks
 ----------------
@@ -213,7 +303,21 @@ gantt.templates.task_text = function(start, end, task){
 {{editor		https://docs.dhtmlx.com/gantt/snippet/c31afbec		Inline Styling of the Task Text}}
 
 
-###Using task object properties
+###Custom elements in task bars
+
+You can insert custom elements into task bars via the api/gantt_task_text_template.md template as well. For example, you can add buttons into task bars in the following way:
+
+~~~js
+gantt.templates.task_text = function(start, end, task){  
+  return task.text+" <button>Text</button>";    
+};
+~~~
+
+<img src="desktop/custom_elements_task_bars.png">
+
+{{editor	https://docs.dhtmlx.com/gantt/snippet/97b6dddc  	Custom Elements in Task Bars}}
+
+###Setting style via properties of a task object
 
 You can set additional properties in the task object configuration to define a custom color for a task. They are: **color**, **textColor** and **progressColor**.
 
@@ -303,6 +407,54 @@ gantt.templates.task_cell_class = function(item,date){
 
 Read more on this topic in the article desktop/highlighting_time_slots.md.
 
+###Showing external elements (baselines, deadlines, etc.)
+
+You can display additional elements, such as baseline or deadline markers in the Gantt. For this you need to create a new displayable layer via the api/gantt_addtasklayer.md method and place custom elements there.
+As a parameter, the method takes a function that takes a task object and returns either a DOM element that will be displayed, or *false* (the element for a task should be hidden):
+
+~~~js
+gantt.addTaskLayer(function myNewElement(task) {
+    var el = document.createElement('div');
+    // your code
+    return el;
+});
+~~~
+
+Examples of external elements are:
+
+- baselines
+
+<img src="desktop/show_baselines.png">
+
+{{sample 04_customization/15_baselines.html}}
+
+- deadlines
+
+<img src="desktop/show_deadlines.png">
+
+{{sample 04_customization/14_deadline.html}}
+
+Read more about displaying external elements in Gantt in the article desktop/baselines.md.
+
+###Tooltips for Tasks
+
+You can provide tooltips for tasks to show their details in a compact way.
+
+<img src="desktop/default_task_tooltip.png">
+
+Default tooltips are automatically displayed for tasks, once you include the **ext/dhtmlxgantt_tooltip.js** extension file on the page. 
+
+####Custom text for tooltips
+
+To set a custom text for tooltips, use the api/gantt_tooltip_text_template.md template:
+
+~~~js
+gantt.templates.tooltip_text = function(start,end,task){
+    return "<b>Task:</b> "+task.text+"<br/><b>Duration:</b> " + task.duration;
+};
+~~~
+
+More information about tooltips in Gantt is given in the article desktop/tooltips.md.
 
 Styling Links
 --------------
@@ -326,7 +478,7 @@ gantt.templates.link_class = function(link){
 
 There is more information in the related article desktop/colouring_lines.md.
 
-###Using link object property
+###Coloring links via the property of a link object
 
 You can also set a custom color for a dependency link by specifying the **color** property in the link object:
 
@@ -372,7 +524,14 @@ gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
 
 Check the desktop/dependency_templates.md article to get more details on the topic.
 
+###Editing link values from UI
 
+While there are lightboxes for editing and styling tasks bars, there is no built-in UI for editing links provided. Nevertheless, you can create such a UI yourself by implementing the technique described in the 
+[dedicated article](desktop/crud_dependency.md#editinglinkvaluesfromui).
+
+<img src="desktop/link_edit_ui.png">
+
+{{editor	http://snippet.dhtmlx.com/7c812e5bd		Custom UI for Editing Link Values}}
 
 Styling Quick Info Popup
 -------------------

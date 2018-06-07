@@ -1,6 +1,7 @@
 tooltip_offset_y
 =============
-@short:sets the  the top (if positive) offset of the tooltip's position
+
+@short:sets the top (if positive) offset of the tooltip's position
 	
 
 @type: number
