@@ -166,6 +166,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/templates.md</li>
                     <li>desktop/colouring_tasks.md</li>
                     <li>desktop/colouring_lines.md</li>
+                    <li>desktop/styling_guide.md</li>
             </ul>
         </td>
         <td class='topic_description'>Describes the formats and techniques you can use to style the Gantt chart.</td>

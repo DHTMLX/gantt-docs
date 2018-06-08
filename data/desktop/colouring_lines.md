@@ -26,15 +26,19 @@ The DOM looks as follows:
 
 ~~~html
 <div class="gantt_task_link" link_id="3">
-  	<div class="gantt_line_wrapper">
+	<div class="gantt_line_wrapper">
     	<div class="gantt_link_line_left"></div>
-  	</div><div class="gantt_line_wrapper">
+  	</div>
+    <div class="gantt_line_wrapper">
     	<div class="gantt_link_line_left"></div>
-  	</div><div class="gantt_line_wrapper">
+  	</div>
+    <div class="gantt_line_wrapper">
     	<div class="gantt_link_line_down"></div>
-  	</div><div class="gantt_line_wrapper">
+  	</div>
+    <div class="gantt_line_wrapper">
     	<div class="gantt_link_line_right"></div>
-  	</div><div class="gantt_link_arrow gantt_link_arrow_right"></div>
+  	</div>
+    <div class="gantt_link_arrow gantt_link_arrow_right"></div>
 </div>
 ~~~
 
