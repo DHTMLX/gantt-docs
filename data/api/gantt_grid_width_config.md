@@ -1,6 +1,7 @@
 grid_width
 =============
-@short:sets the maximum width of the grid
+
+@short:sets the width of the grid
 	
 
 @type: number
