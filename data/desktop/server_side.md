@@ -271,7 +271,7 @@ $.ajax({
         "Authorization": "Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
     },
     success: function (result) {
-        gantt.parse(result, "json");
+        gantt.parse(result);
     }
 });
 ~~~
