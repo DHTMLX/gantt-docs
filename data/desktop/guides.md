@@ -1,5 +1,6 @@
 Guides
 ======
+
 The guidance information makes up the major part of the documentation and helps you in actual use of dhtmlxGantt.
 The chapter is divided into task-oriented manuals that assist you in performing both simple and difficult, often and seldom used tasks. 
 The articles come around key procedures and problem-solving activities. 
@@ -68,6 +69,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/sorting.md</li>
 					<li>desktop/grouping.md</li>
                     <li>desktop/filtering.md</li>
+                    <li>desktop/inline_editing.md</li>
 		</ul>
         </td>
         <td class='topic_description'>Focuses on how to work with the grid: specify the required columns and configure them, customize the tree column, enable selection etc.</td>
@@ -115,6 +117,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/task_tree_operations.md</li>
                     <li>desktop/crud_task.md</li>
                     <li>desktop/unscheduled_tasks.md</li>
+                    <li>desktop/splitted_tasks.md</li>
                     <li>desktop/multiselection.md</li>
                     <li>desktop/working_time.md</li>
                     <li>desktop/critical_path.md</li>

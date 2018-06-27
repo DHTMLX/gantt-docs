@@ -5,7 +5,7 @@ There's a possibility to add tasks without dates into the Gantt chart.
 
 <img src="desktop/unscheduled_tasks.png" style="display:block; margin:0 auto;">
 
-It can be implemented by setting the *unscheduled* parameter with the value *true* in the task's description:
+It can be implemented by setting the **unscheduled** property with the value *true* in the task's description:
 
 ~~~js
 {"id":11, "text":"Project #1", type:gantt.config.types.project, "progress": 0.6, 

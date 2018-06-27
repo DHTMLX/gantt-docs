@@ -25,8 +25,8 @@ Methods
 - api/gantt_changetaskid.md - changes the task's id
 - api/gantt_checkevent.md - checks whether an event has some handler(s) specified
 - api/gantt_clearall.md - removes all tasks and additional elements (including markers) from the Gantt chart
-- api/gantt_clearredostack.md - 
-- api/gantt_clearundostack.md - 
+- api/gantt_clearredostack.md - clears the stack of stored redo commands
+- api/gantt_clearundostack.md - clears the stack of stored undo commands
 - api/gantt_close.md - closes the branch with the specified id
 - api/gantt_collapse.md - collapses gantt from the full screen mode to the normal mode
 - api/gantt_columnindexbydate.md - returns the index of the column by the date
@@ -64,8 +64,10 @@ Methods
 - api/gantt_getcalendars.md - gets all the calendars added into Gantt
 - api/gantt_getchildren.md - returns the 1st-level child tasks of the specified parent branch
 - api/gantt_getclosestworktime.md - returns the closest working time
+- api/gantt_getcolumnindex.md - 
+- api/gantt_getconnectedgroup.md - 
 - api/gantt_getdatastore.md - returns the configuration object of a datastore
-- api/gantt_getglobaltaskindex.md - get the index of a task in the tree
+- api/gantt_getglobaltaskindex.md - gets the index of a task in the tree
 - api/gantt_getgridcolumn.md - gets the configuration object of a column
 - api/gantt_getgridcolumns.md - gets columns of the Gantt chart
 - api/gantt_getlabel.md - gets the label of a select control in the lightbox
@@ -84,7 +86,7 @@ Methods
 - api/gantt_getparent.md - returns the id of the parent task
 - api/gantt_getprev.md - returns the id of the previous item (no matter what the level of nesting is: the same or different)
 - api/gantt_getprevsibling.md - returns the id of the previous task of the same level
-- api/gantt_getredostack.md - returns the stack of stored redo commands
+- api/gantt_getredostack.md - returns the stack of stored redo user actions
 - api/gantt_getscale.md - returns the configuration of the time scale
 - api/gantt_getscrollstate.md - returns the scroll position
 - api/gantt_getselectedid.md - returns the id of the selected task
@@ -97,18 +99,19 @@ Methods
 - api/gantt_getsubtaskduration.md - calculates the combined duration of tasks nested in a project or another task.
 - api/gantt_gettask.md - returns the task object
 - api/gantt_gettaskby.md - finds a task by the specified criteria
-- api/gantt_gettaskbyindex.md - returns a task configuration object by its index
+- api/gantt_gettaskbyindex.md - returns a task by its index
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period
+- api/gantt_gettaskbywbscode.md - 
 - api/gantt_gettaskcalendar.md - gets a calendar assigned to the specified task (a task level calendar)
 - api/gantt_gettaskcount.md - gets the number of tasks that are currently loaded in the gantt
 - api/gantt_gettaskheight.md - returns the visible height of a task
-- api/gantt_gettaskindex.md - get the index of a task in the branch
+- api/gantt_gettaskindex.md - gets the index of a task in the branch
 - api/gantt_gettasknode.md - returns the HTML element of the task bar
 - api/gantt_gettaskposition.md - calculates the position and size of the task's DOM element in the timeline area
 - api/gantt_gettaskrownode.md - returns the HTML element of the task row in the table
 - api/gantt_gettasktop.md - gets the top position of the task's DOM element in the timeline area
 - api/gantt_gettasktype.md - returns the type of a task
-- api/gantt_getundostack.md - returns the stack of stored undo commands
+- api/gantt_getundostack.md - returns the stack of stored undo user actions
 - api/gantt_getvisibletaskcount.md - gets the number of tasks visible on the screen (those that are not collapsed)
 - api/gantt_getwbscode.md - returns the WBS code (the outline number) of a task
 - api/gantt_getworkhours.md - returns the working hours of the specified date
@@ -127,6 +130,7 @@ Methods
 - api/gantt_islinkexists.md - checks whether the specified link exists
 - api/gantt_isreadonly.md - checks whether the specified task or link is read-only
 - api/gantt_isselectedtask.md - checks whether the specified task is currently selected
+- api/gantt_issplittask.md - 
 - api/gantt_issummarytask.md - checks whether the specified task is summary
 - api/gantt_istaskexists.md - checks whether the specified task exists
 - api/gantt_istaskvisible.md - checks whether the specifies task is currently rendered in the Gantt chart
@@ -242,6 +246,8 @@ Methods
 - api/gantt_getcalendars.md
 - api/gantt_getchildren.md
 - api/gantt_getclosestworktime.md
+- api/gantt_getcolumnindex.md
+- api/gantt_getconnectedgroup.md
 - api/gantt_getdatastore.md
 - api/gantt_getglobaltaskindex.md
 - api/gantt_getgridcolumn.md
@@ -277,6 +283,7 @@ Methods
 - api/gantt_gettaskby.md
 - api/gantt_gettaskbyindex.md
 - api/gantt_gettaskbytime.md
+- api/gantt_gettaskbywbscode.md
 - api/gantt_gettaskcalendar.md
 - api/gantt_gettaskcount.md
 - api/gantt_gettaskheight.md
@@ -305,6 +312,7 @@ Methods
 - api/gantt_islinkexists.md
 - api/gantt_isreadonly.md
 - api/gantt_isselectedtask.md
+- api/gantt_issplittask.md
 - api/gantt_issummarytask.md
 - api/gantt_istaskexists.md
 - api/gantt_istaskvisible.md

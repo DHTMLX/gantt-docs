@@ -170,3 +170,6 @@ Built-in Shortcut for Horizontal Timeline Scrolling
 Starting from the version 4.2, the Gantt chart provides a possibility to scroll the timeline horizontally by using the following combination:<br>
 
 -> **Shift** key + **mouse wheel movement**. 
+
+@todo:
+add shortcuts for inline editing

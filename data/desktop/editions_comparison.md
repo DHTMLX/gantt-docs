@@ -61,7 +61,9 @@ The PRO edition includes all the functionality of the Standard version and also 
     	{"name":"Support for touch devices: iOS, Android\n","standard":true,"pro":true},
     	{"name":"Cross-browser: IE, FF, Chrome, Safari, Opera\n","standard":true,"pro":true},
         {"name":"Resource management\n", "url":"desktop__resource_management.html", "standard":false,"pro":true},
-        {"name":"RTL (Right-to-left) mode", "url":"desktop__rtl_mode.html", "standard":true,"pro":true}
+        {"name":"RTL (Right-to-left) mode", "url":"desktop__rtl_mode.html", "standard":true,"pro":true},
+        {"name":"Inline editing in Grid", "url":"desktop__inline_editing.html", "standard":true,"pro":true},
+        {"name":"Splitting tasks into subtasks", "url":"desktop__splitted_tasks.html", "standard":true,"pro":true}
 	]
   
     var col = ["Feature","Standard","PRO"];

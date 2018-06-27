@@ -1,5 +1,5 @@
-Calculating Tasks' Duration in Work Time
-===================================================
+Work Time Calculation
+========================
 
 By default, dhtmlxGantt calculates the duration of tasks in calendar time. It assumes 
 that the final duration of the tasks can include weekends and holidays.

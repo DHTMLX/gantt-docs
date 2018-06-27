@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 5.1!</h2>
+    <h2>Meet Gantt 5.2!</h2>
     
     <p>
-    New version brings you new functionality and extended API
+    New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="desktop/resource_management.md">Resource management</a></li>
-        <li><a href="desktop/rtl_mode.md">RTL mode</a></li>
-        <li><a href="desktop/specifying_columns.md#horizontalscrollbar">Horizontal Grid scrollbar</a> and <a href="desktop/layout_config.md">layout upgrades</a></li>
+		<li><a href="">Inline editing in grid</a></li>
+        <li><a href="">Splitting tasks into subtasks</a></li>
+        <li><a href=""></a></li>
 	</ul>
 
     <p class='action_buttons'>

@@ -8,6 +8,7 @@ Properties
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
 - api/gantt_auto_scheduling_move_projects_config.md - defines whether the whole project will be moved (see the details below)
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
+- api/gantt_auto_types_config.md - 
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
 - api/gantt_autoscroll_config.md - enables autoscrolling while dragging a task or link out of the current browser screen
 - api/gantt_autoscroll_speed_config.md - defines the speed of autoscrolling (in ms) while dragging a task or link out of the current browser screen
@@ -35,12 +36,13 @@ Properties
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
 - api/gantt_editable_property_config.md - changes the name of a property that affects the editing ability  of tasks/links in the read-only Gantt chart
+- api/gantt_editor_types_config.md - 
 - api/gantt_end_date_config.md - sets the  end value of the time scale
 - api/gantt_fit_tasks_config.md - 'says' the Gantt chart to re-render the scale each time a task doesn't fit into the existing scale interval
 - api/gantt_grid_resize_config.md - makes the grid resizable by dragging the right grid's border
 - api/gantt_grid_resizer_attribute_config.md - sets the name of the attribute  of the grid resizer's  DOM element
 - api/gantt_grid_resizer_column_attribute_config.md - sets the name of the attribute  of the column resizer's  DOM element. The attribute presents the column's index
-- api/gantt_grid_width_config.md - sets the maximum width of the grid
+- api/gantt_grid_width_config.md - sets the width of the grid
 - api/gantt_highlight_critical_path_config.md - shows the critical path in the chart
 - api/gantt_inherit_scale_class_config.md - specifies whether sub-scales shall use the scale_cell_class template by default
 - api/gantt_initial_scroll_config.md - sets whether the timeline area will be initially scrolled to display the earliest task
@@ -64,6 +66,7 @@ Properties
 - api/gantt_open_tree_initially_config.md - openes all branches initially
 - api/gantt_order_branch_config.md - activates the 'branch' mode that allows dragging tasks only within the parent branch
 - api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows dragging tasks within the whole gantt
+- api/gantt_placeholder_task_config.md - 
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
 - api/gantt_quick_info_detached_config.md - defines whether the task form will appear from the left/right side of the screen or near the selected task
@@ -111,8 +114,8 @@ Properties
 - api/gantt_time_picker_config.md - sets the format of the time drop-down selector in the lightbox
 - api/gantt_time_step_config.md - sets the minimum step (in minutes) for the task's time values
 - api/gantt_tooltip_hide_timeout_config.md - sets the length of time, in milliseconds, before the tooltip hides
-- api/gantt_tooltip_offset_x_config.md - sets the  the right (if positive) offset of the tooltip's position
-- api/gantt_tooltip_offset_y_config.md - sets the  the top (if positive) offset of the tooltip's position
+- api/gantt_tooltip_offset_x_config.md - sets the right (if positive) offset of the tooltip's position
+- api/gantt_tooltip_offset_y_config.md - sets the top (if positive) offset of the tooltip's position
 - api/gantt_tooltip_timeout_config.md - sets the timeout in milliseconds before the tooltip is displayed for a task
 - api/gantt_touch_config.md - enables/disables the touch support for the Gantt chart
 - api/gantt_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
@@ -135,6 +138,7 @@ Properties
 - api/gantt_auto_scheduling_initial_config.md
 - api/gantt_auto_scheduling_move_projects_config.md
 - api/gantt_auto_scheduling_strict_config.md
+- api/gantt_auto_types_config.md
 - api/gantt_autofit_config.md
 - api/gantt_autoscroll_config.md
 - api/gantt_autoscroll_speed_config.md
@@ -162,6 +166,7 @@ Properties
 - api/gantt_duration_step_config.md
 - api/gantt_duration_unit_config.md
 - api/gantt_editable_property_config.md
+- api/gantt_editor_types_config.md
 - api/gantt_end_date_config.md
 - api/gantt_fit_tasks_config.md
 - api/gantt_grid_resize_config.md
@@ -191,6 +196,7 @@ Properties
 - api/gantt_open_tree_initially_config.md
 - api/gantt_order_branch_config.md
 - api/gantt_order_branch_free_config.md
+- api/gantt_placeholder_task_config.md
 - api/gantt_preserve_scroll_config.md
 - api/gantt_prevent_default_scroll_config.md
 - api/gantt_quick_info_detached_config.md

@@ -1,8 +1,9 @@
 order_branch
 =============
+
 @short:activates the 'branch' mode that allows dragging tasks only within the parent branch
 	
-
+@default:false
 @type:boolean 
 @example:
 gantt.config.order_branch = true;
