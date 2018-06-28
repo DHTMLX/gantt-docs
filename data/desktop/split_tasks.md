@@ -1,6 +1,8 @@
 Splitting Tasks 
 =================
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 In case you have a large task which is not continuous and can be interrupted, you can divide it into several parts. There can be as many parts, as it's required.
 
 At the data level, such tasks can be represented as a summary task (project) with subtasks, where each subtask defines an isolated part of the main task.
@@ -79,4 +81,4 @@ if(gantt.isSplitTask(task)){
 }
 ~~~
 
-
+@edition:pro

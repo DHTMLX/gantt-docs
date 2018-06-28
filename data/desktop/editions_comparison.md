@@ -63,7 +63,9 @@ The PRO edition includes all the functionality of the Standard version and also 
         {"name":"Resource management\n", "url":"desktop__resource_management.html", "standard":false,"pro":true},
         {"name":"RTL (Right-to-left) mode", "url":"desktop__rtl_mode.html", "standard":true,"pro":true},
         {"name":"Inline editing in Grid", "url":"desktop__inline_editing.html", "standard":true,"pro":true},
-        {"name":"Splitting tasks into subtasks", "url":"desktop__splitted_tasks.html", "standard":true,"pro":true}
+        {"name":"Splitting tasks into subtasks", "url":"desktop__splitted_tasks.html", "standard":false,"pro":true},
+        {"name":"Automatic detection of tasks types", "url":"api__gantt_auto_types_config.html", "standard":false,"pro":true},
+        {"name":"Placeholder row for creating new tasks", "url":"api__gantt_placeholder_task_config.html", "standard":true,"pro":true}
 	]
   
     var col = ["Feature","Standard","PRO"];

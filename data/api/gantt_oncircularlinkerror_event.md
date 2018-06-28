@@ -16,10 +16,8 @@ gantt.attachEvent("onCircularLinkError",function(link, group){
 
 @template:	api_event
 @descr:
-{{pronote This functionality is available in the PRO edition only.}}
 
-The **group** parameter is added in version 4.1.
-It presents an object which includes a group of tasks and links connected in a loop.
+The **group** parameter presents an object which includes a group of tasks and links connected in a loop.
 
 ~~~js
 { 
@@ -27,6 +25,10 @@ It presents an object which includes a group of tasks and links connected in a l
     links: [//ids of links connected in a loop]
 }
 ~~~
+
+{{pronote This functionality is available in the PRO edition only.}}
+
+{{note The method requires the **ext/dhtmlxgantt_auto_scheduling.js** to be included on the page.}}
 
 @related:
 desktop/auto_scheduling.md
@@ -50,5 +52,7 @@ desktop/auto_scheduling.md
 - api/gantt_onbeforetaskautoschedule_event.md
 - api/gantt_onautoschedulecircularlink_event.md
 
-@edition:
-pro
+@edition:pro
+
+@changelog:
+The **group** parameter is added in version 4.1.

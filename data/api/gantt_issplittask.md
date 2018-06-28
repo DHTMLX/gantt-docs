@@ -23,6 +23,10 @@ if(gantt.isSplitTask(task)){
 
 @template:	api_method
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 
 @related:
 desktop/split_tasks.md
+
+@edition:pro

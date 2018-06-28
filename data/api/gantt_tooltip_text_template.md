@@ -1,5 +1,6 @@
 tooltip_text
 =============
+
 @short:specifies the text of tooltips
 
 @require:tooltip
@@ -15,9 +16,12 @@ gantt.templates.tooltip_text = function(start,end,task){
     gantt.templates.tooltip_date_format(start)+ 
     "<br/><b>End date:</b> "+gantt.templates.tooltip_date_format(end);
 };
+
 @template:	api_template
+
 @returns:
 - text		string		html text which will be rendered in the gantt
+
 @descr:
 
 

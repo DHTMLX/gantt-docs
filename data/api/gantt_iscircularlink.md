@@ -20,15 +20,15 @@ var isCircular = gantt.isCircularLink(link);
 
 @template:	api_method
 @descr:
-added in version 4.1
 
 {{pronote This functionality is available in the PRO edition only.}}
+
+{{note The method requires the **ext/dhtmlxgantt_auto_scheduling.js** to be included on the page.}}
 
 @related:
 desktop/auto_scheduling.md
 
 @relatedsample:
-
 02_extensions/12_auto_scheduling.html
 
 @relatedapi:
@@ -48,3 +48,5 @@ desktop/auto_scheduling.md
 
 @edition:pro
 
+@changelog:
+added in version 4.1
