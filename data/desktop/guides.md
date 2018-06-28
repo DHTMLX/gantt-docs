@@ -117,7 +117,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/task_tree_operations.md</li>
                     <li>desktop/crud_task.md</li>
                     <li>desktop/unscheduled_tasks.md</li>
-                    <li>desktop/splitted_tasks.md</li>
+                    <li>desktop/split_tasks.md</li>
                     <li>desktop/multiselection.md</li>
                     <li>desktop/working_time.md</li>
                     <li>desktop/critical_path.md</li>

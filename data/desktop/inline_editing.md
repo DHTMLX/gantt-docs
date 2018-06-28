@@ -121,10 +121,10 @@ This mode presupposes the use of a mouse pointer for setting focus on cells and 
 In this mode keyboard is used both for navigating and editing grid cells with the help of the predefined keys or keys combinations.
 
 - Enter - to open/close the editor
-- Spacebar - to open the editor
+- Space bar - to open the editor
 - Arrow keys - to navigate grid cells
 - Shift+Right Arrow Key - to move a task right, i.e. to make a nested task, while the above task becomes a project
-- Shift+Left Arrow Key - to make a project become a simple task
+- Shift+Left Arrow Key - to turn a project into a simple task
 - Shift+Up Arrow Key - to collapse a branch with tasks
 - Shift+Down Arrow Key - to expand a branch with tasks
  
@@ -133,8 +133,7 @@ To enable keyboard navigation for editing, you need to:
 - include the **ext/dhtmlxgantt_keyboard_navigation.js** extension on the page.
 
 ~~~js
-<script src="../../codebase/ext/dhtmlxgantt_keyboard_navigation.js" 
-    type="text/javascript" charset="UTF-8"></script>
+<script src="./codebase/ext/dhtmlxgantt_keyboard_navigation.js"></script>
 ~~~
 
 - enable [keyboard navigation](desktop/keyboard_navigation.md) and navigation by cells:
@@ -165,9 +164,25 @@ You can also provide custom keyboard mapping, i.e. describe the logic of editors
 in a separate object and then pass this object to the special method that will apply your mapping scheme:
 
 ~~~js
-var mapping = {// your custom mapping logic};
+var mapping = {
+ init: function(inlineEditors){
+  // inlineEditor module is initialized
+  // add global listeners for starting/ending editing
+ },
+
+ onShow: function(inlineEditors, node){
+  // the editor is displayed
+ },
+
+ onHide: function(inlineEditors, node){
+  // the editor is hidden
+  // clean the onShow changes if needed
+ }
+};
 
 gantt.ext.inlineEditors.setMapping(mapping);
 ~~~
 
 {{sample 07_grid/13_custom_mapping.html}}
+
+

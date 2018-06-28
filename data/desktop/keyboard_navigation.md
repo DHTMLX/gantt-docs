@@ -173,5 +173,3 @@ Starting from the version 4.2, the Gantt chart provides a possibility to scroll 
 
 -> **Shift** key + **mouse wheel movement**. 
 
-@todo:
-add shortcuts for inline editing

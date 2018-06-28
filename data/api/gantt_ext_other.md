@@ -1,10 +1,6 @@
 ext
 =============
 
-@todo:
-	needs improving and completing
-
-
 @short:
 	an object that stores various extensions
 
@@ -41,7 +37,7 @@ The *inlineEditors* object possesses the following API:
 
 ####Events:
 
-- **attachEvent(name,handler)** - attaches a handler to an inner event of the editor
+- **attachEvent(name,handler)** - attaches an event handler to inlineEditors object
 - **detachEvent(id)** - detaches a handler from an event (which was attached before by the attachEvent() method) 
 
 ####Navigation:

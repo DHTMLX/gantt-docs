@@ -9,17 +9,19 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ####Functionality
 
 - [Inline editing in Grid](desktop/inline_editing.md)
-- [Splitting tasks into subtasks](desktop/splitted_tasks.md)
-- Updated keyboard navigation
-- Auto Scheduling performance improvements
+- [Splitting tasks](desktop/split_tasks.md)
+- Updated [keyboard navigation](desktop/keyboard_navigation.md#existingshortcuts)
+- [Auto Scheduling](desktop/auto_scheduling.md) performance improvements
 
 ####Configuration
 
-- Ability to set task types automatically
-- Ability to use a placeholder row for creating new tasks
-- Updated Content Security Policy extension
+- Ability to [set task types automatically](api/gantt_auto_types_config.md)
+- Ability to [use a placeholder row](api/gantt_placeholder_task_config.md) for creating new tasks
+- Updated [Content Security Policy](desktop/content_security_policy.md) extension
 
+####API
 
+New methods and events for [undo](desktop/undo_redo.md) and [autoscheduling](desktop/auto_scheduling.md) extensions.
 
 5.1
 ----------

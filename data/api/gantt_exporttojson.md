@@ -1,10 +1,6 @@
 exportToJSON
 =============
 
-
-@todo:
-	check and improve
-
 @short:
 	exports the structure and data of a Gantt chart into a JSON object
 
@@ -15,39 +11,16 @@ exportToJSON
 
 @example:
 gantt.exportToJSON({
-	name:"gantt.json",
-    data: {
-		"data": [
-			{ "id": 11, "text": "Project #1", ... },
-			{ "id": 12, "text": "Task #1", ... }
-         ],
-         "links": [
-			{ "id": "1", "source": "1", ... },
-			{ "id": "2", "source": "2", ... }
-         ]
-    },
-    config: {},
-    columns: [{},{}],
-	worktime: {
-		"hours": [],
-		"dates": {}
-	},
-	version: "5.1.2",
-	upload: null 
+	name:"gantt.json"
 });
 
 
 @template:	api_method
 @descr:
-The **config** object contains a set of configuraion options:
+The **config** object can contain following options:
 
 - name - the name of the exported json file
-- data - the gantt data object
-- config - the [gantt config object](api/refs/gantt_props.md)
-- columns - the [gantt columns](api/gantt_columns_config.md) array
-- worktime - the [worktime](desktop/working_time.md) object 
-- version - the version of gantt
-- upload - ?
+- data - (array) list of tasks to be exported. The whole gantt will be exported if not specified
 
 
 @relatedapi:

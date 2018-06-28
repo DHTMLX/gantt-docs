@@ -64,8 +64,8 @@ Methods
 - api/gantt_getcalendars.md - gets all the calendars added into Gantt
 - api/gantt_getchildren.md - returns the 1st-level child tasks of the specified parent branch
 - api/gantt_getclosestworktime.md - returns the closest working time
-- api/gantt_getcolumnindex.md - 
-- api/gantt_getconnectedgroup.md - 
+- api/gantt_getcolumnindex.md - returns the index of the column by its name
+- api/gantt_getconnectedgroup.md - returns all tasks and links that a task is connected with
 - api/gantt_getdatastore.md - returns the configuration object of a datastore
 - api/gantt_getglobaltaskindex.md - gets the index of a task in the tree
 - api/gantt_getgridcolumn.md - gets the configuration object of a column
@@ -101,7 +101,7 @@ Methods
 - api/gantt_gettaskby.md - finds a task by the specified criteria
 - api/gantt_gettaskbyindex.md - returns a task by its index
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period
-- api/gantt_gettaskbywbscode.md - 
+- api/gantt_gettaskbywbscode.md - returns a task by its WBS code
 - api/gantt_gettaskcalendar.md - gets a calendar assigned to the specified task (a task level calendar)
 - api/gantt_gettaskcount.md - gets the number of tasks that are currently loaded in the gantt
 - api/gantt_gettaskheight.md - returns the visible height of a task
@@ -120,7 +120,7 @@ Methods
 - api/gantt_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
 - api/gantt_hidelightbox.md - closes the lightbox if it's currently active
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
-- api/gantt_importfrommsproject.md - imports an XML or MPP MS Project file to Gantt
+- api/gantt_importfrommsproject.md - converts an XML or MPP MS Project file to JSON
 - api/gantt_init.md - constructor. Initializes a dhtmlxGantt object
 - api/gantt_ischildof.md - checks whether a task is a child of other task
 - api/gantt_iscircularlink.md - checks whether the link is circular
@@ -130,7 +130,7 @@ Methods
 - api/gantt_islinkexists.md - checks whether the specified link exists
 - api/gantt_isreadonly.md - checks whether the specified task or link is read-only
 - api/gantt_isselectedtask.md - checks whether the specified task is currently selected
-- api/gantt_issplittask.md - 
+- api/gantt_issplittask.md - checks whether the specified task is split
 - api/gantt_issummarytask.md - checks whether the specified task is summary
 - api/gantt_istaskexists.md - checks whether the specified task exists
 - api/gantt_istaskvisible.md - checks whether the specifies task is currently rendered in the Gantt chart

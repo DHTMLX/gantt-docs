@@ -1,10 +1,8 @@
 importFromMSProject
 =============
 
-@todo: check description and improve
-
 @short:
-	imports an XML or MPP MS Project file to Gantt
+	converts an XML or MPP MS Project file to JSON
 
 @params:
 
@@ -27,11 +25,11 @@ gantt.importFromMSProject({
     }
 });
 
+
 @template:	api_method
 @descr:
 
 {{note The method requires HTML5 File API support.}}
-
 
 The method takes as a parameter an object with configuration properties of an imported file:
 
@@ -70,5 +68,8 @@ api/gantt_exporttoical.md
 api/gantt_exporttopdf.md
 api/gantt_exporttopng.md
 api/gantt_exporttojson.md
+
+@relatedsample:
+	08_api/18_load_from_mpp.html
 
 

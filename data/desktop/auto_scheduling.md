@@ -48,12 +48,19 @@ The list of available methods and properties:
 - api/gantt_auto_scheduling_initial_config.md
 - api/gantt_autoschedule.md
 - api/gantt_isunscheduledtask.md
+- api/gantt_findcycles.md
+- api/gantt_iscircularlink.md
+- api/gantt_getconnectedgroup.md
+
+###Activation
 
 To enable auto scheduling in the Gantt chart, set the api/gantt_auto_scheduling_config.md property to true:
 
 ~~~js
 gantt.config.auto_scheduling = true;
 ~~~
+
+###Strict mode
 
 By default, tasks are rescheduled only when a new date violates the constraint. 
 In order to always reschedule tasks to the earliest possible date, use the property api/gantt_auto_scheduling_strict_config.md:
@@ -62,11 +69,15 @@ In order to always reschedule tasks to the earliest possible date, use the prope
 gantt.config.auto_scheduling_strict = true;
 ~~~
 
-The api/gantt_auto_scheduling_initial_config.md property specifies whether gantt will do autoscheduling on data loading. It's set to true by default:
+###Initial auto-scheduling
+
+The api/gantt_auto_scheduling_initial_config.md property specifies whether gantt will do auto scheduling on data loading. It's set to true by default:
 
 ~~~js
 gantt.config.auto_scheduling_initial = true;
 ~~~
+
+###Recalculating the project
 
 To recalculate the schedule of the whole project, use the api/gantt_autoschedule.md method:
 
@@ -80,11 +91,15 @@ If you need to recalculate the schedule starting from a particular task, pass th
 gantt.autoSchedule(taskId);
 ~~~
 
+###Checking whether a task is unscheduled 
+
 In case you need to check whether the task is unscheduled, use the api/gantt_isunscheduledtask.md method with the task object as an argument:
 
 ~~~js
 var isUnscheduled = gantt.isUnscheduledTask(task);
 ~~~
+
+###Search for circular references
 
 To find all circular references in the chart, make use of the api/gantt_findcycles.md method:
 
@@ -92,10 +107,21 @@ To find all circular references in the chart, make use of the api/gantt_findcycl
 gantt.findCycles();
 ~~~
 
+###Checking whether a link is circular
+
 If you need to check whether the link is circular, you can apply the api/gantt_iscircularlink.md method:
 
 ~~~js
 var isCircular = gantt.isCircularLink(link);
+~~~
+
+###Getting connected tasks and links
+
+To get the list of tasks and links a task is connected with, use the api/gantt_getconnectedgroup.md method:
+
+~~~js
+gantt.getConnectedGroup(18);
+// => {links:["16", "17", "18"], tasks:[18, 17, 19, 20]}
 ~~~
 
 

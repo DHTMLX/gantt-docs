@@ -26,7 +26,7 @@ gantt.templates.resource_cell_class = function(start_date, end_date, resource, t
 
 - Defines the css class names of cells in the resource timeline view.
 - Resource timeline links tasks to a resource by api/gantt_resource_property_config.md property of the task object.
-- The template is not called for cells where no tasks are located.
+- The template is not called for cells where no tasks are located, unless api/gantt_resource_render_empty_cells_config.md is enabled.
 - Tasks of the [project type](api/gantt_types_config.md) are not counted and won't be passed to the `tasks` argument.
 
 
@@ -36,6 +36,8 @@ gantt.templates.resource_cell_class = function(start_date, end_date, resource, t
 
 @relatedapi:
 api/gantt_resource_property_config.md
+api/gantt_resource_render_empty_cells_config.md
+api/gantt_resource_cell_class_template.md
 
 @related: desktop/resource_management.md
 

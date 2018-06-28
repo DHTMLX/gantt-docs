@@ -1,9 +1,6 @@
 getColumnIndex
 =============
 
-@todo:
-	check 
-
 @short:
 	returns the index of the column by its name
 
@@ -15,7 +12,7 @@ getColumnIndex
 
 @example:
 
-var index = gantt.getColumnIndex("start_date"); => 1
+var index = gantt.getColumnIndex("start_date"); // => 1
 
 @template:	api_method
 @descr:

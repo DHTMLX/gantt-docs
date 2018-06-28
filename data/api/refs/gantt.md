@@ -68,8 +68,8 @@ Gantt API
 - api/gantt_getcalendars.md - gets all the calendars added into Gantt
 - api/gantt_getchildren.md - returns the 1st-level child tasks of the specified parent branch
 - api/gantt_getclosestworktime.md - returns the closest working time
-- api/gantt_getcolumnindex.md - 
-- api/gantt_getconnectedgroup.md - 
+- api/gantt_getcolumnindex.md - returns the index of the column by its name
+- api/gantt_getconnectedgroup.md - returns all tasks and links that a task is connected with
 - api/gantt_getdatastore.md - returns the configuration object of a datastore
 - api/gantt_getglobaltaskindex.md - gets the index of a task in the tree
 - api/gantt_getgridcolumn.md - gets the configuration object of a column
@@ -105,7 +105,7 @@ Gantt API
 - api/gantt_gettaskby.md - finds a task by the specified criteria
 - api/gantt_gettaskbyindex.md - returns a task by its index
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period
-- api/gantt_gettaskbywbscode.md - 
+- api/gantt_gettaskbywbscode.md - returns a task by its WBS code
 - api/gantt_gettaskcalendar.md - gets a calendar assigned to the specified task (a task level calendar)
 - api/gantt_gettaskcount.md - gets the number of tasks that are currently loaded in the gantt
 - api/gantt_gettaskheight.md - returns the visible height of a task
@@ -124,7 +124,7 @@ Gantt API
 - api/gantt_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
 - api/gantt_hidelightbox.md - closes the lightbox if it's currently active
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
-- api/gantt_importfrommsproject.md - imports an XML or MPP MS Project file to Gantt
+- api/gantt_importfrommsproject.md - converts an XML or MPP MS Project file to JSON
 - api/gantt_init.md - constructor. Initializes a dhtmlxGantt object
 - api/gantt_ischildof.md - checks whether a task is a child of other task
 - api/gantt_iscircularlink.md - checks whether the link is circular
@@ -134,7 +134,7 @@ Gantt API
 - api/gantt_islinkexists.md - checks whether the specified link exists
 - api/gantt_isreadonly.md - checks whether the specified task or link is read-only
 - api/gantt_isselectedtask.md - checks whether the specified task is currently selected
-- api/gantt_issplittask.md - 
+- api/gantt_issplittask.md - checks whether the specified task is split
 - api/gantt_issummarytask.md - checks whether the specified task is summary
 - api/gantt_istaskexists.md - checks whether the specified task exists
 - api/gantt_istaskvisible.md - checks whether the specifies task is currently rendered in the Gantt chart
@@ -225,6 +225,7 @@ Gantt API
 - api/gantt_onbeforemultiselect_event.md - fires before selecting a task or a range of tasks
 - api/gantt_onbeforeparse_event.md - fires before data started to be parsed
 - api/gantt_onbeforeredo_event.md - fires before the redo() method is called
+- api/gantt_onbeforeredostack_event.md - fires before an action is added into the redo stack
 - api/gantt_onbeforerowdragend_event.md - fires when a user drops a row in the grid
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
@@ -237,6 +238,7 @@ Gantt API
 - api/gantt_onbeforetaskselected_event.md - fires before the user selects a task
 - api/gantt_onbeforetaskupdate_event.md - fires before the user updates a task
 - api/gantt_onbeforeundo_event.md - fires before the undo() method is called
+- api/gantt_onbeforeundostack_event.md - fires before an action is added into the undo stack
 - api/gantt_oncircularlinkerror_event.md - fires when the circular reference has been detected and auto scheduling is not possible
 - api/gantt_onclear_event.md - fires after all tasks were removed from the Gantt chart
 - api/gantt_oncollapse_event.md - fires when gantt went back to normal mode from the full screen mode
@@ -302,7 +304,7 @@ Gantt API
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
 - api/gantt_auto_scheduling_move_projects_config.md - defines whether the whole project will be moved (see the details below)
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
-- api/gantt_auto_types_config.md - 
+- api/gantt_auto_types_config.md - automatically converts tasks with subtasks to projects and projects without subtasks back to tasks
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
 - api/gantt_autoscroll_config.md - enables autoscrolling while dragging a task or link out of the current browser screen
 - api/gantt_autoscroll_speed_config.md - defines the speed of autoscrolling (in ms) while dragging a task or link out of the current browser screen
@@ -330,7 +332,7 @@ Gantt API
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
 - api/gantt_editable_property_config.md - changes the name of a property that affects the editing ability  of tasks/links in the read-only Gantt chart
-- api/gantt_editor_types_config.md - 
+- api/gantt_editor_types_config.md - an object that contains definitions of inline editors
 - api/gantt_end_date_config.md - sets the  end value of the time scale
 - api/gantt_fit_tasks_config.md - 'says' the Gantt chart to re-render the scale each time a task doesn't fit into the existing scale interval
 - api/gantt_grid_resize_config.md - makes the grid resizable by dragging the right grid's border
@@ -360,7 +362,7 @@ Gantt API
 - api/gantt_open_tree_initially_config.md - openes all branches initially
 - api/gantt_order_branch_config.md - activates the 'branch' mode that allows dragging tasks only within the parent branch
 - api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows dragging tasks within the whole gantt
-- api/gantt_placeholder_task_config.md - 
+- api/gantt_placeholder_task_config.md - adds an empty row into the end of the list of tasks to simplify tasks editing via keyboard
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
 - api/gantt_quick_info_detached_config.md - defines whether the task form will appear from the left/right side of the screen or near the selected task
@@ -370,7 +372,7 @@ Gantt API
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
 - api/gantt_resource_property_config.md - specifies the property of a task object that stores a resource id associated with resourceGrid/resourceTimeline
-- api/gantt_resource_render_empty_cells_config.md - 
+- api/gantt_resource_render_empty_cells_config.md - tells the resource timeline to render elements and call templates for non-allocated cells
 - api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline views
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
@@ -482,10 +484,10 @@ Gantt API
 - api/gantt_ajax_other.md - dhtmlx ajax module
 - api/gantt_calendar_other.md - the interface of the working calendar object
 - api/gantt_config_other.md - defines configuration options for dates, scale, controls
-- api/gantt_constants_other.md - 
+- api/gantt_constants_other.md - stores various constants to reduce the use of magic numbers in the code
 - api/gantt_date_other.md - a set of date formatting methods
 - api/gantt_env_other.md - a set of flags which describe current environment
-- api/gantt_ext_other.md - 
+- api/gantt_ext_other.md - an object that stores various extensions
 - api/gantt_json_other.md - specifies JSON serialization and parsing
 - api/gantt_keys_other.md - defines the hot keys for the Gantt chart
 - api/gantt_locale_other.md - a locale object (region-specific labels) of the Gantt chart

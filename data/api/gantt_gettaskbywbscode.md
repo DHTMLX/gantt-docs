@@ -1,10 +1,6 @@
 getTaskByWBSCode
 =============
 
-
-@todo:
-	check, add to the article 
-
 @short:
 	returns a task by its WBS code
 
@@ -17,7 +13,7 @@ getTaskByWBSCode
 - task 		object		a task object
 
 @example:
-var task = gantt.getTaskByWBSCode("1");
+var task = gantt.getTaskByWBSCode("1.2");
 // => {id:"t1", text:"Task #1, unscheduled: true, duration: 1, …}
 
 @template:	api_method
@@ -25,3 +21,6 @@ var task = gantt.getTaskByWBSCode("1");
 
 @related:
 desktop/specifying_columns.md#wbscode
+
+@relatedapi:
+api/gantt_getwbscode.md

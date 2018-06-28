@@ -1,12 +1,8 @@
 auto_types
 =============
 
-@todo:
-	check 
-
-
 @short:
-	enables automatic detection of the types of the tasks
+automatically converts tasks with subtasks to projects and projects without subtasks back to tasks
 
 @default:false
 @type: boolean
@@ -17,6 +13,7 @@ gantt.config.auto_types = true;
 @descr:
 @related:
 desktop/inline_editing.md#inlineeditingmodes
+desktop/task_types.md
 
 @relatedsample:
 04_customization/19_task_type.html

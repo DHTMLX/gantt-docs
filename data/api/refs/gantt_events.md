@@ -35,6 +35,7 @@ Events
 - api/gantt_onbeforemultiselect_event.md - fires before selecting a task or a range of tasks
 - api/gantt_onbeforeparse_event.md - fires before data started to be parsed
 - api/gantt_onbeforeredo_event.md - fires before the redo() method is called
+- api/gantt_onbeforeredostack_event.md - fires before an action is added into the redo stack
 - api/gantt_onbeforerowdragend_event.md - fires when a user drops a row in the grid
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
@@ -47,6 +48,7 @@ Events
 - api/gantt_onbeforetaskselected_event.md - fires before the user selects a task
 - api/gantt_onbeforetaskupdate_event.md - fires before the user updates a task
 - api/gantt_onbeforeundo_event.md - fires before the undo() method is called
+- api/gantt_onbeforeundostack_event.md - fires before an action is added into the undo stack
 - api/gantt_oncircularlinkerror_event.md - fires when the circular reference has been detected and auto scheduling is not possible
 - api/gantt_onclear_event.md - fires after all tasks were removed from the Gantt chart
 - api/gantt_oncollapse_event.md - fires when gantt went back to normal mode from the full screen mode
@@ -136,6 +138,7 @@ Events
 - api/gantt_onbeforemultiselect_event.md
 - api/gantt_onbeforeparse_event.md
 - api/gantt_onbeforeredo_event.md
+- api/gantt_onbeforeredostack_event.md
 - api/gantt_onbeforerowdragend_event.md
 - api/gantt_onbeforetaskadd_event.md
 - api/gantt_onbeforetaskautoschedule_event.md
@@ -148,6 +151,7 @@ Events
 - api/gantt_onbeforetaskselected_event.md
 - api/gantt_onbeforetaskupdate_event.md
 - api/gantt_onbeforeundo_event.md
+- api/gantt_onbeforeundostack_event.md
 - api/gantt_oncircularlinkerror_event.md
 - api/gantt_onclear_event.md
 - api/gantt_oncollapse_event.md

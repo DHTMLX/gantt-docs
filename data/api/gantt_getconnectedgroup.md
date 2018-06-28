@@ -2,9 +2,6 @@ getConnectedGroup
 =============
 
 
-@todo:
-	check
-
 @short:
 	returns all tasks and links that a task is connected with
 
@@ -17,9 +14,12 @@ getConnectedGroup
 
 @example:
 gantt.getConnectedGroup(18);
-=> {links:["16", "17", "18"], tasks:[18, 17, 19, 20]}
+// => {links:["16", "17", "18"], tasks:[18, 17, 19, 20]}
 
 
 @template:	api_method
 @descr:
 Without parameters, the method returns all groups of tasks and links that make connections.
+
+@related:
+desktop/auto_scheduling.md

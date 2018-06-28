@@ -32,6 +32,7 @@ The **action** parameter presents an array of command objects, each of which inc
 @relatedapi:
 - api/gantt_undo.md
 - api/gantt_onafterundo_event.md
+- api/gantt_onbeforeundostack_event.md
 
 @relatedsample:
 02_extensions/14_undo.html

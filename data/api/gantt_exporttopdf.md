@@ -10,6 +10,14 @@ exportToPDF
 
 
 @example:
+
+gantt.exportToPDF();
+ 
+//or
+gantt.exportToPDF({
+  name: "mygantt.pdf"
+});
+
 gantt.exportToPDF({
 	name:"mygantt.pdf",
 	header:"<h1>My company</h1>",

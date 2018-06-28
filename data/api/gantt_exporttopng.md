@@ -10,6 +10,14 @@ exportToPNG
 
 
 @example:
+gantt.exportToPNG();
+
+//or
+gantt.exportToPNG({
+  name: "mygantt.png"
+});
+
+//or
 gantt.exportToPNG({
     name:"mygantt.png",
     header:"<h1>My company</h1>",

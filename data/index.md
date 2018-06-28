@@ -7,9 +7,9 @@ Start
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="">Inline editing in grid</a></li>
-        <li><a href="">Splitting tasks into subtasks</a></li>
-        <li><a href=""></a></li>
+		<li><a href="desktop/inline_editing.md">Inline editing in grid</a></li>
+        <li><a href="desktop/split_tasks.md">Splitting tasks</a></li>
+        <li><a href="whatsnew.html#52">Placeholder rows and auto task types</a></li>
 	</ul>
 
     <p class='action_buttons'>

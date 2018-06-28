@@ -1,10 +1,6 @@
 isSplitTask
 =============
 
-
-@todo:
-	check 
-
 @short:
 	checks whether the specified task is split
 
@@ -16,21 +12,17 @@ isSplitTask
 - isSplit		boolean			true, if the task is split, false otherwise
 
 @example:
-var isSplit = gantt.isSplitTask({
-	"id": 13, 
-    "text": "Task #2", 
-    "start_date": "03-04-2018 00:00", 
-    "type": "project", 
-    "render":"split", 
-    "parent": "11", "progress": 0.5, 
-    "open": false, 
-    "duration": 11
-});
-// => true
+
+var task = gantt.getTask(13);
+// --> { id: 13, render:"split", text: "Task #2", ...}
+
+if(gantt.isSplitTask(task)){
+  // do something
+}
 
 
 @template:	api_method
 @descr:
 
 @related:
-desktop/splitted_tasks.md
+desktop/split_tasks.md

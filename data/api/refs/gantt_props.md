@@ -8,7 +8,7 @@ Properties
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
 - api/gantt_auto_scheduling_move_projects_config.md - defines whether the whole project will be moved (see the details below)
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
-- api/gantt_auto_types_config.md - 
+- api/gantt_auto_types_config.md - automatically converts tasks with subtasks to projects and projects without subtasks back to tasks
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
 - api/gantt_autoscroll_config.md - enables autoscrolling while dragging a task or link out of the current browser screen
 - api/gantt_autoscroll_speed_config.md - defines the speed of autoscrolling (in ms) while dragging a task or link out of the current browser screen
@@ -36,7 +36,7 @@ Properties
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
 - api/gantt_editable_property_config.md - changes the name of a property that affects the editing ability  of tasks/links in the read-only Gantt chart
-- api/gantt_editor_types_config.md - 
+- api/gantt_editor_types_config.md - an object that contains definitions of inline editors
 - api/gantt_end_date_config.md - sets the  end value of the time scale
 - api/gantt_fit_tasks_config.md - 'says' the Gantt chart to re-render the scale each time a task doesn't fit into the existing scale interval
 - api/gantt_grid_resize_config.md - makes the grid resizable by dragging the right grid's border
@@ -66,7 +66,7 @@ Properties
 - api/gantt_open_tree_initially_config.md - openes all branches initially
 - api/gantt_order_branch_config.md - activates the 'branch' mode that allows dragging tasks only within the parent branch
 - api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows dragging tasks within the whole gantt
-- api/gantt_placeholder_task_config.md - 
+- api/gantt_placeholder_task_config.md - adds an empty row into the end of the list of tasks to simplify tasks editing via keyboard
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
 - api/gantt_quick_info_detached_config.md - defines whether the task form will appear from the left/right side of the screen or near the selected task
@@ -76,7 +76,7 @@ Properties
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
 - api/gantt_resource_property_config.md - specifies the property of a task object that stores a resource id associated with resourceGrid/resourceTimeline
-- api/gantt_resource_render_empty_cells_config.md - 
+- api/gantt_resource_render_empty_cells_config.md - tells the resource timeline to render elements and call templates for non-allocated cells
 - api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline views
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks

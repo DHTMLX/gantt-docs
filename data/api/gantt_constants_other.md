@@ -1,17 +1,23 @@
 constants
 =============
 
-@todo:
-	needs description
-
-
 @short:
-	
+	stores various constants to reduce the use of magic numbers in the code 
 
-@type:
+@descr:
+    stores various constants to reduce the use of magic numbers in the code. Currently stores only **KEY_CODES** object
+
+
+@type: object
 
 @example:
-var keyboard = gantt.constants.KEY_CODES;
+document.addEventListener("keypress", function(e){
+   var keys = gantt.constants.KEY_CODES;
+   if(e.keyCode === keys.ENTER){
+    // do on enter
+   }
+});
+
 
 @template:	api_config
 @descr:

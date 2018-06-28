@@ -135,3 +135,6 @@ There is a set of helpful Undo/Redo-related events:
 - api/gantt_onafterundo_event.md - fires after the api/gantt_undo.md method was called
 - api/gantt_onbeforeredo_event.md - fires before the api/gantt_redo.md method is called
 - api/gantt_onafterredo_event.md - fires after the api/gantt_redo.md method was called
+- api/gantt_onbeforeredostack_event.md - fires before an action is added into the redo stack
+- api/gantt_onbeforeundostack_event.md - fires before an action is added into the undo stack
+
