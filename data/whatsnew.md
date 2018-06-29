@@ -17,6 +17,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - Ability to [set task types automatically](api/gantt_auto_types_config.md) (PRO version)
 - Ability to [use a placeholder row](api/gantt_placeholder_task_config.md) for creating new tasks
+- [Checkbox](desktop/checkbox.md) and radio controls for lightbox
 - Updated [Content Security Policy](desktop/content_security_policy.md) extension
 
 ####API

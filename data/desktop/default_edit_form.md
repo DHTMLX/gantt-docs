@@ -1,15 +1,17 @@
 Configuring Elements of the Lightbox
 =============================================
- Lightbox is an edit form used to change the task's details.<br> The default lightbox is presented in the image below.
+
+Lightbox is an edit form used to change the task's details.<br> The default lightbox is presented in the image below.
 
 <img src="desktop/lightbox.png"/>
 
 Lightboxes may differ depending on the type and peculiarities of tasks they are used for. You can learn more from the section desktop/task_types.md#individuallightboxforeachtype.
 
-Exploring the lightbox's structure
---------------------------------------
+Lightbox structure
+------------------------
 
 ###Sections
+
 The structure of the lightbox is specified by the **sections** property of the lightbox object:
 
 ~~~js
@@ -19,11 +21,12 @@ gantt.config.lightbox.sections=[
     {name:"time", 		 height:72, map_to:"auto", type:"duration"}
 ];
 ~~~
-Each item in the sections's array is an object that specifies an individual section in the lightbox (available section properties).
+
+Each item in the **sections** array is an object that specifies an individual section in the lightbox (available section properties).
 
 
+<h3 id="lightboxcontrols">Sections controls</h3>
 
-###Sections controls
 Each section of the lightbox is based on some control. The following types of controls are available for use in the lightbox:
 
 - [Textarea](desktop/textarea.md) - a multiline text field
@@ -33,7 +36,7 @@ Each section of the lightbox is based on some control. The following types of co
 - [Typeselect](desktop/typeselect.md) - a select box for changing the type of a task
 - [Parent](desktop/parent.md) - a select box for changing the parent of a task
 - [Template](desktop/template.md) - a container with some HTML content inside
-
+- [Checkbox](desktop/checkbox.md) - a checkbox for switching an option or several values on/off 
 
 
 ~~~js
@@ -60,3 +63,4 @@ gantt.config.lightbox.sections = [
 - desktop/typeselect.md
 - desktop/parent.md
 - desktop/template.md
+- desktop/checkbox.md

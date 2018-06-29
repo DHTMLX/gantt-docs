@@ -1,5 +1,6 @@
 Select Control
 =========================
+
 A drop-down list box.
 
 <img src="desktop/select_control.png"/>
@@ -17,6 +18,7 @@ gantt.config.lightbox.sections = [
 
 gantt.locale.labels.section_priority = "Priority";
 ~~~
+
 {{sample
 	05_lightbox/02_select.html
 }}
@@ -24,10 +26,10 @@ gantt.locale.labels.section_priority = "Priority";
 Initializing the control
 ------------------------------------------
 
-To add the **select** control to the lightbox, follow these steps:
+To add a **select** control to the lightbox, follow these steps:
 
-<ol>
-    <li><b>Add the section to the lightbox configuration:</b>
+- Add the section to the lightbox configuration:
+
 ~~~js
 var opts = [
 	{key:1, label: "High"},                                            
@@ -37,56 +39,37 @@ var opts = [
 
 gantt.config.lightbox.sections = [
 	{name:"description", height:38, map_to:"text", type:"textarea",focus:true},
-    {name:"priority", height:22, map_to:"priority",type:"select",options:opts},      /*!*/                                                                  /*!*/
+    {name:"priority", height:22, map_to:"priority",type:"select",options:opts},      /*!*/                                                                 
     {name:"time", height:72, type:"duration", map_to:"auto"}
 ];
 ~~~
-	</li>
-    <li><b>Set the label for the section:</b>
+
+- Set the label for the section:
+
 ~~~js
 gantt.locale.labels.section_priority = "Priority";
 ~~~
-	</li>
-</ol>
-
+	
         
 {{sample
 	05_lightbox/02_select.html
 }}
 
+
 A list of properties
 ---------------------------------------------
-The following properties are mostly important and commonly set for the **select** control (see the full list <a href="api/gantt_lightbox_config.md">here</a>):
 
-<table class="webixdoc_links">
-	<tbody>
-    	<tr>
-			<td class="webixdoc_links0"><b>name</b></td>
-			<td>(<i>string</i>) the section name </td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>height</b></td>
-			<td>(<i>number</i>) the section height</td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>map_to</b></td>
-			<td>(<i>string</i>) the name of a data property that will be mapped to the section</td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>type</b></td>
-			<td>(<i>duration,parent,select,template,textarea,time,typeselect</i>) the type of the section's control</td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"  style="vertical-align: top;"><b>options</b></td>
-			<td>(<i>array of objects</i>) defines select options of the control (<b>for the 'select' control only</b>).<br> Each object in the array specifies a single option and takes these properties:
-            	<ul>
-					<li><b>key</b> -   (<i>string</i>) the option id. This attribute is compared with the task data property to assign options to tasks</li>
-					<li><b>label</b> -   (<i>string</i>) the option label</li>
-			</ul>
-             </td>
-		</tr>
-    </tbody>
-</table>
+The following properties are mostly important and commonly set for the **select** control (see the full list [here](api/gantt_lightbox_config.md)):
+
+- **name** - (*string*) the section name 
+- **height** - (*number*) the section height
+- **map_to** - (*string*) the name of a data property that will be mapped to the section
+- **type** - (*string*) the type of the [section control](desktop/default_edit_form.md#lightboxcontrols)
+- **options** - (*array*) an array of objects. Defines select options of the control (*used for the **select** and **checkbox** controls*). Each object in the array specifies a single option and takes
+the following properties:
+	- **key** - (*string*) the option id. This attribute is compared with the task data property to assign options to tasks
+	- **label** - (*string*) the option label
+			
 
 
 Populating the control with data
@@ -113,23 +96,23 @@ Items in the [options](api/gantt_lightbox_config.md) parameter have 2 mandatory 
 
 Populating the control with data from the server
 ------------------------------------------------------
-To populate the control from the server, set the [options](api/gantt_lightbox_config.md) option
-to the value returned by the api/gantt_serverlist.md method:
+
+To populate the control from the server, set the [options](api/gantt_lightbox_config.md) option to the value returned by the api/gantt_serverlist.md method:
 
 ~~~js
 gantt.config.lightbox.sections = [
 	{name:"description", ...},
 	{ name:"priority",map_to:"priority",type:"select",
-		options:gantt.serverList("priority")},/*!*/
+		options:gantt.serverList("priority")}, /*!*/
 	{name:"category", map_to:"category", type:"select", 
-		options:gantt.serverList("category")},/*!*/
+		options:gantt.serverList("category")}, /*!*/
 	{name:"time", ...}
 ];
 gantt.init("gantt_here");
 gantt.load("/data");
 ~~~
 
-Output of the **/data** url:
+The output of the **/data** url is the following:
 
 ~~~js
 {
