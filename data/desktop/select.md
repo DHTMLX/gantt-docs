@@ -65,7 +65,7 @@ The following properties are mostly important and commonly set for the **select*
 - **height** - (*number*) the section height
 - **map_to** - (*string*) the name of a data property that will be mapped to the section
 - **type** - (*string*) the type of the [section control](desktop/default_edit_form.md#lightboxcontrols)
-- **options** - (*array*) an array of objects. Defines select options of the control (*used for the **select** and **checkbox** controls*). Each object in the array specifies a single option and takes
+- **options** - (*array*) an array of objects. Defines select options of the control (*used for the **select**, **checkbox**  and **radio**  controls*). Each object in the array specifies a single option and takes
 the following properties:
 	- **key** - (*string*) the option id. This attribute is compared with the task data property to assign options to tasks
 	- **label** - (*string*) the option label

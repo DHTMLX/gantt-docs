@@ -1,4 +1,4 @@
-Creating a Gantt Chart on the Page
+Creating Gantt Chart on the Page
 ==============================================================
 
 <img src="desktop/gantt_basic.png"/>

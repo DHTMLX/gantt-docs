@@ -1,5 +1,5 @@
-Exploring the Task Types
-=================================
+Task Types
+==============
 
 {{pronote This functionality is available only in the PRO edition. }}
 
@@ -34,7 +34,8 @@ var tasks = {
 }}
 
 Regular tasks
---------------------------------------
+-----------------
+
 By default, dhtmlxGantt provides creating of regular tasks (tasks with **type="task"**).
 
 <img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="desktop/type_task.png">
@@ -69,7 +70,7 @@ Tasks with **type="task"** can be characterized as follows:
 
 
 Project tasks
------------------------------------------------------
+-----------------
 
 Project task is a task that starts, when its earliest child task starts, and ends, when its latest child ends. 
 
@@ -148,19 +149,38 @@ Tasks with **type="milestone"** can be characterized as follows:
 To provide a possibility of adding milestones, read article desktop/milestones.md.
 }}
 
-Individual lightbox for each type
+Specific lightbox per task type
 ----------------------------------------------
 
 Each type of a task may have its own set of characteristics - because of this, an individual configuration of the details form (lightbox) can be defined for each type.
 All configurations are stored in the api/gantt_lightbox_config.md object. 
 
-For example, 
+They are:
 
 - **gantt.config.lightbox.sections** - for regular tasks.
 - **gantt.config.lightbox.project_sections** - for project tasks.
 - **gantt.config.lightbox.milestone_sections** - for milestones. 
 
-You can [add a custom type](desktop/task_types.md#creatingacustomtype) and specify for it an appropriate structure of the lightbox as well.
+The default configuration settings are the following:
+
+~~~js
+gantt.config.lightbox.sections = [
+	{name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
+	{name: "time", type: "duration", map_to: "auto"}
+];
+gantt.config.lightbox.project_sections= [
+	{name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
+	{name: "type", type: "typeselect", map_to: "type"},
+	{name: "time", type: "duration", readonly: true, map_to: "auto"}
+];
+gantt.config.lightbox.milestone_sections= [
+	{name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
+	{name: "type", type: "typeselect", map_to: "type"},
+	{name: "time", type: "duration", single_date: true, map_to: "auto"}
+];
+~~~
+
+You can [add a custom type](desktop/task_types.md#creatingacustomtype) and specify an appropriate structure of the lightbox for it as well.
 
 To go into details on a lightbox configuration, you can read the desktop/edit_form.md chapter.
 
@@ -173,7 +193,6 @@ All tasks' types are defined in the api/gantt_types_config.md object. <br>Genera
 1. Add a new value to the api/gantt_types_config.md object.
 2. Define individual settings for the new type.
 
-<br>
 
 Let's assume, you want to add a new type of tasks - **meeting**. 
 **Meeting**  will be an ordinary task but colored in different color and with different inputs in the lightbox.              
@@ -255,7 +274,7 @@ gantt.templates.task_text = function(start, end, task){
 04_customization/12_custom_task_type.html
 }}
 
-Custom display for task types
+Custom display of task types
 -----------------------------------------------------------------
 
 To customize the look of existing task types, use the api/gantt_type_renderers_config.md option. The options allows you to redefine functions responsible for displaying different tasks types on the page.

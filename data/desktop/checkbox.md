@@ -1,8 +1,6 @@
 Checkbox Control
 ==================
 
-{{pronote This functionality is available in the PRO Edition only.}}
-
 A two-state checkbox. The control is used for switching an option or several values on/off.
 
 For example, it is helpful for:
@@ -33,9 +31,9 @@ gantt.config.lightbox.project_sections = [
 Initializing the control
 --------------------------
 
-To add a **select** control to the lightbox, follow these steps:
+To add a **checkbox** control to the lightbox, follow these steps:
 
-- Add the section to the lightbox configuration:
+- Add a section to the lightbox configuration:
 
 ~~~js
 var opts = [
@@ -49,7 +47,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-- Set the label for the section:
+- Set a label for the section:
 
 ~~~js
 gantt.locale.labels.section_split = "Display";
@@ -66,7 +64,7 @@ The following properties are mostly important and commonly set for the **checkbo
 - **name** - (*string*) the section name 
 - **map_to** - (*string*) the name of a data property that will be mapped to the section
 - **type** - (*string*) the [type of the section control](desktop/default_edit_form.md#lightboxcontrols)
-- **options** - (*array*) an array of objects. Defines select options of the control (*used for the **select** and **checkbox** controls*). Each object in the array specifies a single option and takes
+- **options** - (*array*) an array of objects. Defines select options of the control (*used for the **select**, **checkbox**  and **radio** controls*). Each object in the array specifies a single option and takes
 the following properties:
 	- **key** - (*string*) the option id. This attribute is compared with the task data property to assign options to tasks
 	- **label** - (*string*) the option label
@@ -92,5 +90,3 @@ Items in the [options](api/gantt_lightbox_config.md) parameter have 2 mandatory 
 - **label** - the option label
 
 
-
-@edition:pro

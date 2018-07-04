@@ -1,4 +1,4 @@
-Splitting Tasks 
+Split Tasks 
 =================
 
 {{pronote This functionality is available in the PRO edition only.}}
@@ -47,8 +47,8 @@ For instance, it is possible to add a control mapped to the **task.render** prop
 
 ###Switching split mode dynamically
 
-You can configure the lightbox so that it allows switching the split mode for the task on and off. For this you can add a new section with a checkbox into the lightbox via the **gantt.config.lightbox.project_sections** and
-add a label for the new section:
+You can configure the lightbox so that it allows switching the split mode for the task on and off. For this you can add a new section with a checkbox into the lightbox by changing configuration settings 
+for project types of tasks - [**gantt.config.lightbox.project_sections**](desktop/task_types.md#specificlightboxpertasktype) and add a label for the new section:
 
 ~~~js
 gantt.locale.labels.section_split = "Display";

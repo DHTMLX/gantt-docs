@@ -1,6 +1,9 @@
-Getting the Task Parent/Child
-============================================
-In this article you will find methods related to the tree nature of the Gantt chart tasks.<br> *To know about basic operations of getting the task object/id, please, refer to the desktop/task_object_operations.md article.*
+Task Parent/Child
+=============================
+
+In this article you will find methods related to the tree nature of the Gantt chart tasks.
+
+*To learn about basic operations of getting the task object/id, refer to the desktop/task_object_operations.md article.*
 
 Parent of a task
 ---------------------------------------

@@ -1,5 +1,6 @@
-Configuring the Scales
-============================================
+Configuring Scales
+=======================
+
 <img src="desktop/gantt_right.png"/>
 
 {{index

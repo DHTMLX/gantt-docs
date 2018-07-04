@@ -1,5 +1,5 @@
-Configuring the Grid Area
-===============================================
+Configuring Grid Area
+============================
 
 <img src="desktop/gantt_left.png"/>
 

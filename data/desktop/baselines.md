@@ -1,4 +1,4 @@
-Additional Elements in the Timeline Area
+Extra Elements in Timeline Area
 ==========================================
 
 {{pronote This functionality is available only in the PRO edition}}

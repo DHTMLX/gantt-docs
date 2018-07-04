@@ -8,14 +8,16 @@ addCalendar
 - calendar		object		an object with configuration of the calendar
 
 
+@returns:
+- calendarId		number		the id of the calendar
 
 @example:
 
 // adding a previously created calendar
-gantt.addCalendar(calendar);
+var calendarId = gantt.addCalendar(calendar);
 
 // adding a calendar with a new config
-gantt.addCalendar({
+var calendarId = gantt.addCalendar({
 	id:"custom", // optional
 	worktime: {
 		hours: [8, 17],
@@ -23,12 +25,10 @@ gantt.addCalendar({
 	}
 });
 
+var calendar = gantt.getCalendar(calendarId);
 
 @template:	api_method
 @descr:
-added in version 4.2
-
-
 The calendar configuration object can contain the following attributes:
 
 - **id** - (id) optional, the calendar id
@@ -60,9 +60,13 @@ where {hours: [12, 17]} - working hours from 12 pm to 17 pm for Thursday.
 09_worktime/07_resource_calendars.html
 
 @relatedapi:
+api/gantt_getcalendar.md
 api/gantt_createcalendar.md
 api/gantt_deletecalendar.md
 api/gantt_calendar_other.md
 
 @related:
 desktop/working_time.md#multipleworktimecalendars
+
+@changelog:
+added in version 4.2

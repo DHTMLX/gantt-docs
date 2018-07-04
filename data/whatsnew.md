@@ -17,12 +17,12 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - Ability to [set task types automatically](api/gantt_auto_types_config.md) (PRO version)
 - Ability to [use a placeholder row](api/gantt_placeholder_task_config.md) for creating new tasks
-- [Checkbox](desktop/checkbox.md) and radio controls for lightbox
+- [Checkbox](desktop/checkbox.md) and [radio button](desktop/radio.md) controls for lightbox  
 - Updated [Content Security Policy](desktop/content_security_policy.md) extension
 
 ####API
 
-New methods and events for [undo](desktop/undo_redo.md) and [autoscheduling](desktop/auto_scheduling.md) extensions.
+- New methods and events for [undo](desktop/undo_redo.md) and [autoscheduling](desktop/auto_scheduling.md) extensions.
 
 5.1
 ----------

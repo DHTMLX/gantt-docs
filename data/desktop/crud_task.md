@@ -1,7 +1,7 @@
-Adding/Updating/Deleting Tasks
+Basic Operations with Tasks
 ========================================
-In this chapter you'll learn how to do basic operations with tasks: to create or delete a task, 
-to dynamically update a task's property. 
+
+In this chapter you'll learn how to do basic operations with tasks: to create or delete a task, to dynamically update a task's property. 
 
 
 Adding a new task
