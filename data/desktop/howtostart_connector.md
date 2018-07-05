@@ -414,9 +414,6 @@ dp.init(gantt); /*!*/
 </p>
 </div>
 
-{{sample
-	01_initialization/04_connector_json.html
-}}
 
 What's Next?
 -----------------------------------------------------------
