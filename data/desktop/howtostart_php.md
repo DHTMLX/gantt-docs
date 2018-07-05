@@ -110,8 +110,10 @@ CREATE TABLE `gantt_tasks` (
   PRIMARY KEY (`id`)
 );
 ~~~
+
 When a database is ready, we can go further and populate the *gantt_tasks* table with some test data.
 You can use the following SQL sample for this:
+
 ~~~js
 INSERT INTO `gantt_tasks` VALUES ('1', 'Project #1', '2017-04-01 00:00:00', 
   '5', '0.8', '0');
@@ -395,7 +397,7 @@ function deleteTask($request, $response, $args) {
 }
 
 // create a new link
-function addLlink($request, $response, $args) {
+function addLink($request, $response, $args) {
   $link = getLink($request->getParsedBody());
   $db = getConnection();
   $query = "INSERT INTO gantt_links(source, target, type) ".

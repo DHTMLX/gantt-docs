@@ -17,8 +17,11 @@ gantt.attachEvent("onBeforeAutoSchedule",function(taskId){
 });
 
 @template:	api_event
+
 @descr:
-the event is blockable - returning false will cancel further processing
+{{pronote This functionality is available in the PRO edition only.}}
+
+The event is blockable. Returning *false* will cancel further processing.
 
 
 @related:

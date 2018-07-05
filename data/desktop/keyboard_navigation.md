@@ -147,6 +147,8 @@ There is a set of ready shortcuts that you can use to navigate the Gantt chart:
 - **Delete** - remove the selected task
 - **Enter** - open the lightbox
 - **Ctrl+Left/Right** - expand/collapse the tree 
+- **Shift+Left/Right** - indent/outdent task 
+- **Shift+Down/Up** - expand/collapse branch 
 
 {{sample 02_extensions/16_keyboard_navigation.html}}
 
@@ -170,3 +172,4 @@ Built-in Shortcut for Horizontal Timeline Scrolling
 Starting from the version 4.2, the Gantt chart provides a possibility to scroll the timeline horizontally by using the following combination:<br>
 
 -> **Shift** key + **mouse wheel movement**. 
+

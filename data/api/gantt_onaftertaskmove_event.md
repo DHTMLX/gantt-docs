@@ -3,17 +3,17 @@ onAfterTaskMove
 @short:fires after a task was moved to a new position
 	
 
-
 @params: 
-- sid			string, number				the id of the task to move
-- tindex		number						the index of the position that the task will be moved to <br> (the index in the whole tree)
-* parent		string, number				the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
+- id			string,number				the id of the task to move
+- parent		string,number				the parent id
+- tindex		number						the index of the position in the parent branch that the task will be moved to
+
 
 
 @example:
-//prevent moving to another sub-branch
+// prevent moving to another sub-branch
 gantt.attachEvent("onAfterTaskMove", function(id, parent, tindex){
-	//any custom logic here
+	// any custom logic here
 });
 
 

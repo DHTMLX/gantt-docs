@@ -14,6 +14,7 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
 
 @related:
 desktop/auto_scheduling.md
@@ -36,5 +37,4 @@ desktop/auto_scheduling.md
 - api/gantt_oncircularlinkerror_event.md
 - api/gantt_onautoschedulecircularlink_event.md
 
-@edition:
-pro
+@edition:pro

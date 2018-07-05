@@ -19,6 +19,7 @@ gantt.attachEvent("onGridResize", function(old_width, new_width){
 
 @template:	api_event
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
 
 @related:
 	desktop/specifying_columns.md#resizingcolumns

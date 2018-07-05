@@ -1,8 +1,9 @@
 grid_resize
 =============
+
 @short:makes the grid resizable by dragging the right grid's border
 	
-@edition: pro
+@edition:pro
 @type: boolean
 @default: false
 @example:
@@ -26,3 +27,10 @@ gantt.init("gantt_here");
 	api/gantt_keep_grid_width_config.md
     api/gantt_min_grid_column_width_config.md
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
+@deprecated:
+Use the [gantt.config.layout](desktop/layout_config.md#defaultlayout) instead and specify grid and resizer objects with the necessary configuration inside.
+
+@changelog:
+deprecated since version 5.0

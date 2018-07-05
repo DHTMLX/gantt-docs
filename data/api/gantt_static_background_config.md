@@ -12,7 +12,10 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 Note that the usage of the *static_background* parameter will disable highlighting of separate days and rows.
+
 @relatedsample:
 	08_api/10_performance_tweaks.html
 @related:

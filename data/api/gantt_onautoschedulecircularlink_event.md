@@ -15,7 +15,9 @@ gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
 
 @template:	api_event
 @descr:
-added in version 4.1
+{{pronote This functionality is available in the PRO edition only.}}
+
+{{note The method requires the **ext/dhtmlxgantt_auto_scheduling.js** to be included on the page.}}
 
 Tasks aren't modified when this event fires. 
 
@@ -80,5 +82,7 @@ desktop/auto_scheduling.md
 - api/gantt_oncircularlinkerror_event.md
 
 
-@edition:
-pro
+@edition:pro
+
+@changelog:
+added in version 4.1

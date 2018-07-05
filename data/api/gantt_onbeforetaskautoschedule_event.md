@@ -22,7 +22,9 @@ gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predece
 
 @template:	api_event
 @descr:
-the event is blockable - returning false will cancel further processing
+{{pronote This functionality is available in the PRO edition only.}}
+
+The event is blockable. Returning *false* will cancel further processing.
 
 
 @related:
@@ -48,5 +50,4 @@ desktop/auto_scheduling.md
 - api/gantt_oncircularlinkerror_event.md
 - api/gantt_onautoschedulecircularlink_event.md
 
-@edition:
-pro
+@edition:pro

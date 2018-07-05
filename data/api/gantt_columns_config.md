@@ -24,35 +24,43 @@ Each object in the array specifies a single column. An object can take the follo
 	<tbody>
     	<tr>
 			<td class="webixdoc_links0"><b>align</b></td>
-			<td>(<i>'left', 'center', 'right'</i>) the horizontal title alignment </td>
+			<td>(<i>'left', 'center', 'right'</i>) sets the horizontal title alignment </td>
 		</tr>
     	<tr>
-			<td class="webixdoc_links0"><b>hide</b></td>
-			<td>(<i>boolean</i>) hides/shows a column</td>
+			<td class="webixdoc_links0"><b>hide </b></td>
+			<td>(<i>boolean</i>) hides/shows a column (PRO)</td>
 		</tr>
 		<tr>
 			<td class="webixdoc_links0"><b>label</b></td>
-			<td>(<i>string</i>) the title of the column</td>
+			<td>(<i>string</i>) specifies the title of the column</td>
+		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>max_width</b></td>
+			<td>(<i>number</i>) sets the maximum column width in case of resize operations</td>
+		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>min_width</b></td>
+			<td>(<i>number</i>) sets the minimum column width in case of resize operations</td>
 		</tr>
 		<tr>
 			<td class="webixdoc_links0"><b>name</b></td>
-			<td>(<i>function</i>) the column's id. The name 'add' allows you to add a column with the '+' sign</td>
+			<td>(<i>string</i>) defines the column's id. The name 'add' allows you to add a column with the '+' sign</td>
 		</tr>
     	<tr>
-			<td class="webixdoc_links0"><b>resize</b></td>
-			<td>(<i>boolean</i>) enables a possibility to resize a column by dragging the column's border</td>
+			<td class="webixdoc_links0"><b>resize </b></td>
+			<td>(<i>boolean</i>) enables the possibility to resize a column by dragging the column's border (PRO)</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>template</b></td>
-			<td>(<i>function</i>) the data template  </td>
+			<td>(<i>function</i>) sets a data template  </td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>tree</b></td>
-			<td>(<i>boolean</i>) indicates that the related column should display the tree</td>
+			<td>(<i>boolean</i>) indicates that the related column should display a tree</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>width</b></td>
-			<td>(<i>number</i>)  the width of the column</td>
+			<td>(<i>number</i>) defines the width of the column</td>
 		</tr>
 </tbody>
 </table>

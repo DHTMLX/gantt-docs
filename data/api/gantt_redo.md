@@ -15,6 +15,8 @@ gantt.redo();
 @descr:
 @relatedapi:
 - api/gantt_undo.md
+- api/gantt_getredostack.md
+- api/gantt_clearredostack.md
 - api/gantt_onbeforeredo_event.md
 - api/gantt_onafterredo_event.md
 

@@ -5,14 +5,15 @@ Validation allows you to control the data entered by the user in order to exclud
 For example, with validation you can deny assigning 2 simultaneous tasks to a person.
 
 
-Generally, to validate the data entered by the user, use the events provided by the dhtmlxGantt API and catch the input data to process them in accordance with their correctness:
+Generally, to validate the data entered by the user, use the events provided by the [dhtmlxGantt API](api/refs/gantt_events.md) and catch the input data to process them in accordance with their correctness:
 
 Client-side validation
 --------------------------
-The following events  are mostly important and commonly used for data validation:
+
+The following events are mostly important and commonly used for data validation:
 
 - api/gantt_onlightboxsave_event.md - fires when the user clicks on the 'Save' button in the lightbox
--  api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
+- api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskchanged_event.md - fires  before a task is updated
 - api/gantt_onbeforelinkadd_event.md - fires before a new link is added to the Gantt chart
 - api/gantt_onbeforelinkupdate_event.md - fires before a link is updated
@@ -45,8 +46,8 @@ Server-side validation
 
 The solution above has a shortcoming - the event won't fire if the data in the lightbox has been changed through an inline editor  or by dragging over the Gantt chart.
 
-To prove this and catch all changes made in the Gantt chart (editing, creating, deleting etc.),  use the [dataProcessor](desktop/server_side.md) object or, to be precise, one of its events - **onBeforeUpdate**.
-The event fires before sending data to the server and after any change, made in the Gantt chart (not only in the lightbox).
+To prove this and catch all changes made in the Gantt chart (editing, creating, deleting etc.),  use the [dataProcessor](desktop/server_side.md) object or, to be precise, one of its events - 
+[onBeforeUpdate](https://docs.dhtmlx.com/api__dataprocessor_onbeforeupdate_event.html). The event fires before sending data to the server and after any change, made in the Gantt chart (not only in the lightbox).
 
 ~~~js
 gantt.init("gantt_here");
@@ -64,7 +65,7 @@ dp.attachEvent("onBeforeUpdate", function (id, status, data) {
 });
 ~~~
  
- where 
+where:
 
 - **id** - (*string*) the task's id.
 - **status** - (*'updated', 'inserted', deleted'*) the task's operation status.

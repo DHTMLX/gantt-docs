@@ -14,7 +14,7 @@ To start using the extension, include the ext/dhtmlxgantt_grouping.js file on th
 }}
 
 
-~~~js
+~~~html
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,13 +68,14 @@ The property can be also used to organize groups in a multi-level structure:
 ~~~js
 gantt.groupBy({
 	relation_property: "priority",
-	groups: [{key:0, label: "High"},
-			 {key:4, label: "Normal"},
-			 {key:5, label: "Low"},
-			 //multi level groups
-			 {key:1, label: "Give High Attention", "priority":0},
-			 {key:2, label: "Resolve Immediately", "priority":0},
-			 {key:3, label: "Keep For Next Release", "priority":5}
+	groups: [
+    	{key:0, label: "High"},
+		{key:4, label: "Normal"},
+		{key:5, label: "Low"},
+		//multi level groups
+		{key:1, label: "Give High Attention", "priority":0},
+		{key:2, label: "Resolve Immediately", "priority":0},
+		{key:3, label: "Keep For Next Release", "priority":5}
     ],
     group_id: "key",
 	group_text: "label"
@@ -86,7 +87,11 @@ gantt.groupBy({
     <li><b>groups</b> - (<i>mandatory</i>) an array of the groups (summary) items. 
 ~~~js
 gantt.groupBy({
-	groups: [{key:1, label: "High"}, {key:2, label: "Normal"},{key:3, label: "Low"}],
+	groups: [
+    	{key:1, label: "High"}, 
+        {key:2, label: "Normal"},
+        {key:3, label: "Low"}
+    ],
 	group_id: "key",
 	group_text: "label",
     ...
@@ -115,7 +120,8 @@ gantt.templates.task_class=function(start, end, task){
 
 Ungrouping tasks
 ------------------------------
-To reset grouping - call the api/gantt_groupby.md method without parameters:
+
+To reset grouping, call the api/gantt_groupby.md method without parameters:
 
 {{snippet
 Resetting the current grouping
@@ -127,7 +133,8 @@ gantt.groupBy();
 
 Using collections for specifying groups
 ------------------------------------------
-Usually, groups are used by multiple elements on the page and to avoid repetitions you can present groups as a named collection.
+
+Usually, groups are used by multiple elements on the page and to avoid repetitions, you can present groups as a named collection.
 
 ~~~js
 gantt.serverList("priority", [

@@ -1,11 +1,12 @@
 removeTaskLayer
 =============
+
 @short:removes the specified layer related to a task
 @edition: pro
 
 
 @params:
--layerId	string		a DOM element that will be displayed in the layer
+- layerId		string		a DOM element that will be displayed in the layer
 
 
 @example:
@@ -34,3 +35,4 @@ gantt.render();
 	
 @template:	api_method
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}

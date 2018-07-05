@@ -2,7 +2,7 @@ auto_scheduling_descendant_links
 =============
 
 
-@short: allows or forbids creation of links from parent tasks (projects) to their children
+@short: allows or forbids creating links from parent tasks (projects) to their children
 	
 
 @type: boolean
@@ -15,6 +15,8 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 By default, links from parent tasks (projects) to their children can't be created.
 
 @changelog:
@@ -24,7 +26,6 @@ added in version 4.0
 desktop/auto_scheduling.md
 
 @relatedsample:
-
 02_extensions/12_auto_scheduling.html
 
 @relatedapi:

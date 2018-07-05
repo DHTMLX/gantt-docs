@@ -76,6 +76,7 @@ gantt.exportToMSProject({
 ~~~
 
 - **project** - (object) allows setting custom properties to the exported project entity
+
 ~~~js
 gantt.exportToMSProject({
     project: {
@@ -86,6 +87,7 @@ gantt.exportToMSProject({
     }
 });
 ~~~
+
 The properties of this object correspond to the appropriate properties of the [Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). 
 The list of supported properties can be found [here](desktop/tags.md).
 The properties may contain either fixed values or functions that will be executed when export is called.
@@ -271,7 +273,7 @@ Dates are stringified in the "%Y-%m-%d %H:%i" format.
 ##Import settings
 ###Setting the duration unit
 
-To set an expected duration unit, the "durationUnit" (minute, hour, day, week, month, year) string can also be sent to the server.
+To set an expected duration unit, the **durationUnit** ("minute", "hour", "day", "week", "month", "year") string can also be sent to the server.
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -283,7 +285,9 @@ To set an expected duration unit, the "durationUnit" (minute, hour, day, week, m
     <button type="submit">Get</button>
 </form>
 ~~~
+
 or
+
 ~~~js
 gantt.importFromMSProject({
     data: file,
@@ -294,10 +298,11 @@ gantt.importFromMSProject({
 
 ###Getting properties of the Project
 
-Extract arbitrary properties of [the Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx) 
-into the **config** property of the output, here is the list of supported [properties](desktop/tags.md#projectproperties).
+To get project fields, the **projectProperties** input with an array of necessary fields can be sent to the server.
+It extracts arbitrary properties of [the Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx) 
+into the **config** property of the output. Here is the list of supported [properties](desktop/tags.md#projectproperties).
 
- - **projectProperties** - specify an array of project properties that should be put into the response.
+ - **projectProperties** - specifies an array of project properties that should be put into the response.
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -324,9 +329,10 @@ gantt.importFromMSProject({
 
 ###Getting tasks properties
 
-Extract arbitrary properties of the [Task entities](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx), 
-here is the list of supported [properties](desktop/tags.md#taskproperties).
-To get project fields, the "projectProperties" input with an array of necessary fields can be sent to the server.
+To get task fields, the **taskProperties** input with an array of necessary fields can be sent to the server.
+It extracts arbitrary properties of the [Task entities](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). 
+Here is the list of supported [properties](desktop/tags.md#tasksproperties).
+
 
  - **taskProperties** - specify an array of additional task properties to be imported.
 

@@ -5,8 +5,8 @@ task_cell_class
 	
 
 @params:
-- item	Date	the task object assigned to the row 
-- date	Date	the date of a cell
+- item	object		the task object assigned to the row 
+- date	Date		the date of a cell
 
 
 
@@ -14,8 +14,7 @@ task_cell_class
 <style>
 .weekend{ background: #f4f7f4 !important;}
 </style>
-~~~
-~~~js
+
 gantt.templates.task_cell_class = function(item,date){
 	if(date.getDay()==0||date.getDay()==6){
 		return "weekend";

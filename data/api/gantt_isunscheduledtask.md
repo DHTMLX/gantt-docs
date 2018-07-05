@@ -10,7 +10,7 @@ isUnscheduledTask
 - task			object			the task's object
 
 @returns:
-- value	boolean	'true' if the specified task is unscheduled, otherwise - 'false'
+- value	boolean	'true' if the specified task is unscheduled, 'false' otherwise 
 
 @example:
 
@@ -18,3 +18,10 @@ var isUnscheduled = gantt.isUnscheduledTask(task);
 
 @template:	api_method
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
+
+@related:
+desktop/auto_scheduling.md
+
+@edition:pro

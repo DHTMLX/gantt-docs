@@ -2,7 +2,6 @@ dhtmlxGantt with dhtmlxConnector
 ================================
 
 This tutorial will teach you how to create a basic Gantt chart on a page that will be able to save and update tasks in the database (i.e. on the server).<br>
-The final code of the tutorial can be used as the start point for creating applications with a Gantt chart.
 
 The current tutorial is intended for creating Gantt with [dhtmlxConnector](http://docs.dhtmlx.com/connector__php__index.html).
 If you want to use some server-side technology instead, check the list of tutorials describing available integration variants below:
@@ -24,10 +23,10 @@ Step 1. Downloading dhtmlxGantt Package
 
 <div style="padding-left:55px;">
 <p>
+
 Let's start the tutorial with getting the library package on your computer.
 
-
-<div style="padding-top:15px; color:#4f80c2; font-weight:bold;"><img src="desktop/finger.png"/><span style="vertical-align:top;line-height:26px;">Do the following:</span></div>
+<div style="padding-top:15px; color:#4f80c2; font-weight:bold;"><img src="desktop/finger.png"/> <span style="vertical-align:top;line-height:26px;">Do the following:</span></div>
 
 
 <ul style= "list-style-image:url('media/desktop/arrow-right.png');">
@@ -36,8 +35,6 @@ Let's start the tutorial with getting the library package on your computer.
 </ul>
 </p>
 </div>
-
-
 
 Step 2. Including dhtmlxGantt Code Files 
 -----------------------------------------------------------
@@ -234,7 +231,7 @@ Read this and further steps if you want to load data from a database instead of 
 <p>
 Then, we need to create a database with 2 tables to store tasks and dependencies. 
 
-<img style="padding-top:15px;" src='desktop/tutorial_db_tables.png'/>
+<img style="padding-top:15px;" src='desktop/tutorial_db_tables.png'/><br>
 
 <i><b>sortorder</b> is a property used only while loading data from a database. The property sets the index of a task among siblings.</i>
 
@@ -281,7 +278,7 @@ implement the server script yourself.
 <div style="padding-left:55px;">
 
 <p>
-Then,  we need to provide the ability to display data from the database in the chart. We'll do it  with the <a href="api/gantt_load.md">load</a> method, that takes the URL to the data source as a parameter. 
+Then, we need to provide the ability to display data from the database in the chart. We'll do it with the <a href="api/gantt_load.md">load</a> method, that takes the URL to the data source as a parameter. 
 In case of a database, it's a PHP file which realizes connection to the server side. <br> 
 <br>
 We will use the PHP platform and the <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a> library, 
@@ -316,7 +313,7 @@ $gantt->render_table(
 ?>
 ~~~
 	</li>
-    <li>Switch to the <b>myGantt.html</b> file  and set the <code>gantt.config.xml_date</code> property to <i> "%Y-%m-%d %H:%i"</i>, to make the format of output data compatible with the format of dhtmlxGantt.
+    <li>Switch to the <b>myGantt.html</b> file and set the <code>gantt.config.xml_date</code> property to <i> "%Y-%m-%d %H:%i"</i>, to make the format of output data compatible with the format of dhtmlxGantt.
 <br>
 {{snippet
 	myGantt.html
@@ -342,8 +339,52 @@ gantt.load('data.php');//loads data to Gantt from the database  /*!*/
 </p>
 </div>
 
+###Mapping database columns
+
+Please note that the order of columns in **$connector->render_table** is important. The first three columns in the columns list are mapped to *start_date/duration/text* or *start_date/end_date/text* properties of the
+client-side task object respectively, no matter what column names you specify. The logic of mapping columns is described below. 
+ 
+The second column is mapped to *task.duration*, if you specify 'duration' in the configuration:
+
+~~~js
+$gantt->render_table("gantt_tasks","id","Start,duration,Name,progress,parent","");
+~~~
+
+or, using alias:
+
+~~~js
+$gantt->render_table("gantt_tasks","id","Start,Length(duration),Name,progress,parent","");
+// JS: task.start_date, task.duration, task.text, task.progress, task.parent
+~~~
+
+If any other column name is set, the second column will be mapped to the *end_date* property:
+
+~~~js
+$gantt->render_table("gantt_tasks","id","Start,End,Name,progress,parent","");
+// JS: task.start_date, task.end_date, task.text, task.progress, task.parent
+~~~
+
+####Mapping other columns
+
+All other columns will be mapped by their names without changes:
+
+~~~js
+$gantt->render_table("gantt_tasks","id","start_date,duration,text,custom,parent","");
+// JS: task.start_date, task.duration, task.text, task.custom, task.parent
+~~~
+
+Aliases can be used for other columns as well:
+
+~~~js
+$gantt->render_table("gantt_tasks","id",
+	"start_date,duration,text,custom_column(customProperty),parent","");
+// JS: task.start_date, task.duration, task.text, task.customProperty, task.parent
+~~~
+
+
 Step 7. Updating Data in the Database
 -----------------------------------------------------------
+
 <div style="padding-left:55px;">
 
 <p>

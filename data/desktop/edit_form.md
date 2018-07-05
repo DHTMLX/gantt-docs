@@ -1,5 +1,5 @@
-Configuring the Edit Form
-=====================================
+Configuring Edit Form
+======================
 
 <img src="desktop/lightbox.png"/>
 

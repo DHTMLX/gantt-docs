@@ -15,6 +15,8 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 added in version 4.1
 
 By default (when the property is set to *true*), the whole project is moved during auto scheduling. It means that all tasks in the project remain on their places

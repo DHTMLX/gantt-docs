@@ -1,6 +1,7 @@
-Coloring Dependency Links
+Coloring and Styling Links
 ================================
 
+You can change the styling of links сonnecting tasks to get the desired look and feel of your gantt chart.
 Coloring dependency links in various colors allows you to visually differentiate them for users.
 
 <img style="padding-top:15px; padding-bottom:15px;" src="desktop/coloring_links.png"/>
@@ -8,7 +9,105 @@ Coloring dependency links in various colors allows you to visually differentiate
 To set a custom style for links, you can use one of the following approaches:
 
 1. [To redefine the default link's template](desktop/colouring_lines.md#redefiningthelinkstemplate)
-2. [To set style values in the properties of the link object](desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject)
+2. [To set style values in the properties of the link object](desktop/colouring_lines.md#specifyingcolorinthepropertyofthelinkobject)
+
+First, let's have a look at the elements of the link structure, to get the logic of their positioning, sizing, functionality and default styling.
+
+Structure of the link DOM element
+----------------------
+
+The DOM element of the link has the following structure:
+
+- **.gantt_task_link**  - static positioning, zero-sized
+	- **.gantt_line_wrapper/gantt_link_arrow** - absolute positioning
+		- **.gantt_link_line_down(/up/right/left)** - static positioning inside the wrapper element
+        
+The DOM looks as follows:
+
+~~~html
+<div class="gantt_task_link" link_id="3">
+	<div class="gantt_line_wrapper">
+    	<div class="gantt_link_line_left"></div>
+  	</div>
+    <div class="gantt_line_wrapper">
+    	<div class="gantt_link_line_left"></div>
+  	</div>
+    <div class="gantt_line_wrapper">
+    	<div class="gantt_link_line_down"></div>
+  	</div>
+    <div class="gantt_line_wrapper">
+    	<div class="gantt_link_line_right"></div>
+  	</div>
+    <div class="gantt_link_arrow gantt_link_arrow_right"></div>
+</div>
+~~~
+
+where: 
+
+- **gantt_task_link** - the element with zero sizing and static positioning. It is used just as a common parent for all parts of the link, for example, to apply styles:
+
+~~~css
+.gantt_task_link:hover .gantt_line_wrapper div{
+   background-color:red;
+} 
+~~~
+
+You can apply classes from the api/gantt_link_class_template.md template to this element. 
+
+####Critical links
+
+The styling of critical links is defined by adding the **gantt_critical_link** class to the **gantt_task_link** element.
+
+- **gantt_line_wrapper** is responsible for the position and size of a link. It is transparent, absolutely positioned and a little bit larger than the link line, which makes link selection with the mouse pointer 
+more convenient. 
+
+The width of this element is defined by the api/gantt_link_wrapper_width_config.md configuration property.
+
+~~~js
+gantt.config.link_wrapper_width = 30;
+~~~
+
+- **gantt_link_arrow** - the link arrow. It is absolutely positioned. Depending on the direction the arrow points to, the element can have a corresponding additional class: 
+	- **gantt_link_arrow_right**,
+    - **gantt_link_arrow_left**,
+    - **gantt_link_arrow_up**, or
+    - **gantt_link_arrow_down**.
+
+Now only the **gantt_link_arrow_right** and **gantt_link_arrow_down** are used.
+
+The size of the **gantt_link_arrow** element is defined by the api/gantt_link_arrow_size_config.md configuration property.
+
+~~~js
+gantt.config.link_arrow_size = 8;
+~~~
+
+The color of the link arrow is modified via CSS as the color of a border:
+
+~~~css
+.gantt_link_arrow_right {
+    border-left-color: blue;
+}
+
+.gantt_link_arrow_left {
+    border-right-color: blue;
+}
+~~~
+
+- **gantt_link_line_<%dir%>** -  the visible element of a link. Use **left/right/up/down** instead of the **dir** part of the element name.
+
+The width of this element can be changed via the api/gantt_link_line_width_config.md configuration property:
+
+~~~js
+gantt.config.link_line_width = 3;
+~~~
+
+The color of the element is set via CSS like this:
+
+~~~css
+.gantt_line_wrapper div{
+	background-color: #e63030;
+}
+~~~
 
 
 Redefining the link's template
@@ -49,7 +148,8 @@ To style other elements of dependency links, use the templates listed in the des
 
 A similar approach can be applied to tasks. Read more about it [here](desktop/colouring_tasks.md#redefiningthetaskstemplate).
 
-Specifying color in the properties of the link object
+
+Specifying color in the property of the link object
 -----------------------------------------------------
 
 To specify a custom color for a dependency link, you can add extra property to the data object:
@@ -109,3 +209,5 @@ link.color = "rgb(255,0,0)";
 
 
 A similar approach can be applied to tasks. Read more about it [here](desktop/colouring_tasks.md#specifyingstyleinthepropertiesofthetaskobject).
+
+

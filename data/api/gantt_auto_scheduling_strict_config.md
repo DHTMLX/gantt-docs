@@ -13,7 +13,9 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
-By default, tasks are rescheduled only when a new date violates the constraint 
+{{pronote This functionality is available in the PRO edition only.}}
+
+By default, tasks are rescheduled only when a new date violates the constraint. 
 
 
 @related:
@@ -37,5 +39,4 @@ desktop/auto_scheduling.md
 - api/gantt_oncircularlinkerror_event.md
 - api/gantt_onautoschedulecircularlink_event.md
 
-@edition:
-pro
+@edition:pro

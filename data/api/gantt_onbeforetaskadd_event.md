@@ -5,8 +5,8 @@ onBeforeTaskAdd
 	
 
 @params:
-- id	string, number	the task id
-- item	object	the task object 
+- id		string,number		the task id
+- item		object				the task object 
 
 @returns:  
   - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 

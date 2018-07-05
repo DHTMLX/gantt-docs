@@ -1,5 +1,8 @@
 Typeselect Control
-==================================================
+======================
+
+{{pronote This functionality is available in the PRO Edition only.}}
+
 A select box for changing the [type of a task](desktop/task_types.md). <br> The control loads options from the 
 api/gantt_types_config.md object and has the default onchange handler. Everything else is identical to desktop/select.md.
  
@@ -13,6 +16,7 @@ gantt.config.lightbox.sections = [
 	{name: "time", height: 72, type: "duration", map_to: "auto"}
 ];
 ~~~
+
 {{sample
 01_initialization/16_projects_and_milestones.html
 }}
@@ -20,7 +24,9 @@ gantt.config.lightbox.sections = [
 
 Initializing the control
 ------------------------------------------
-To add the **typeselect** control to the lightbox,  just add the section to the lightbox configuration as in:
+
+To add the **typeselect** control to the lightbox, just add a section to the lightbox configuration as in:
+
 ~~~js
 gantt.config.lightbox.sections = [
 	{name:"description", height:38, map_to:"text", type:"textarea",focus:true},
@@ -29,51 +35,30 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-
 {{sample
 01_initialization/16_projects_and_milestones.html
 }}
 
-<ul>
-	<li><a href="desktop/task_types.md#individuallightboxforeachtype">Each type of a task has its lightbox</a>. You can create a new type of tasks and define a specific structure of the lightbox for this type.</li>
-	<li>Once the user changes <a href="desktop/task_types.md">the type of a task</a> through the control, the control refreshes the lightbox's structure according to the selected value. </li>
-	<li>The control loads options from the api/gantt_types_config.md object and has the default onchange handler.</li>
-	<li>The  section with <b>name="type"</b> already has a label specified - "Type". <br> If you want to set some other label for the section, use the following code: <br> <br>
-~~~js
-gantt.locale.labels.section_type = "Some other label for the section";
-~~~
-	</li>
-</ul>        
+- [Each type of a task has its lightbox](desktop/task_types.md#individuallightboxforeachtype). You can create a new type of tasks and define a specific structure of the lightbox for this type.
+- Once the user changes [the type of a task](desktop/task_types.md) through the control, the control refreshes the lightbox structure according to the selected value. 
+- The control loads options from the api/gantt_types_config.md object and has the default onchange handler.
+- The section with **name="type"** already has a label specified as "Type". If you want to set a different label for the section, use the following code: 
 
+~~~js
+gantt.locale.labels.section_type = "New label for the section";
+~~~
+	
 
 Properties
----------------------------------------------
-The following properties are mostly important and commonly set for the 'typeselect' control (see the full list <a href="api/gantt_lightbox_config.md">here</a>):
+----------------
 
-<table class="webixdoc_links">
-	<tbody>
-    	 <tr>
-			<td class="webixdoc_links0"><b>filter</b></td>
-			<td>(<i>function</i>) filters the types in the control. Takes the type's name as a parameter</td>
-		</tr>
-    	<tr>
-			<td class="webixdoc_links0"><b>name</b></td>
-			<td>(<i>string</i>) the section name </td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>height</b></td>
-			<td>(<i>number</i>) the section height</td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>map_to</b></td>
-			<td>(<i>string</i>) the name of a data property that will be mapped to the section</td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>type</b></td>
-			<td>(<i>duration,parent,select,template,textarea,time,typeselect</i>) the type of the section's control</td>
-		</tr>
-    </tbody>
-</table>
+The following properties are mostly important and commonly set for the **typeselect** control (see the full list [here](api/gantt_lightbox_config.md)):
+
+- **filter** - (*function*) filters the types in the control. Takes the type name as a parameter
+- **name** - (*string*) the section name 
+- **height** - (*number*) the section height
+- **map_to** - (*string*) the name of a data property that will be mapped to the section
+- **type** - (*string*) the [type of the section control](desktop/default_edit_form.md#lightboxcontrols)
 
 
 @edition: pro

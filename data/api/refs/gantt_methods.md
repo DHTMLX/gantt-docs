@@ -5,7 +5,7 @@ Methods
 {{api
 - api/gantt_addcalendar.md - adds a calendar into Gantt
 - api/gantt_addlink.md - adds a new dependency link
-- api/gantt_addlinklayer.md - displayes an additional layer with custom elements for a link in the timeline area
+- api/gantt_addlinklayer.md - displays an additional layer with custom elements for a link in the timeline area
 - api/gantt_addmarker.md - adds a marker to the timeline area
 - api/gantt_addshortcut.md - adds a new keyboard shortcut
 - api/gantt_addtask.md - adds a new task
@@ -25,6 +25,8 @@ Methods
 - api/gantt_changetaskid.md - changes the task's id
 - api/gantt_checkevent.md - checks whether an event has some handler(s) specified
 - api/gantt_clearall.md - removes all tasks and additional elements (including markers) from the Gantt chart
+- api/gantt_clearredostack.md - clears the stack of stored redo commands
+- api/gantt_clearundostack.md - clears the stack of stored undo commands
 - api/gantt_close.md - closes the branch with the specified id
 - api/gantt_collapse.md - collapses gantt from the full screen mode to the normal mode
 - api/gantt_columnindexbydate.md - returns the index of the column by the date
@@ -50,14 +52,22 @@ Methods
 - api/gantt_event.md - attaches an event handler to an HTML element
 - api/gantt_eventremove.md - removes an event handler from an HTML element
 - api/gantt_expand.md - expands gantt to the full screen mode
+- api/gantt_exporttoexcel.md - exports data from the Gantt chart to an Excel document
+- api/gantt_exporttoical.md - exports data from the Gantt chart to an iCal string
+- api/gantt_exporttojson.md - exports the structure and data of a Gantt chart into a JSON object
+- api/gantt_exporttomsproject.md - exports data from the Gantt chart to MS Project
+- api/gantt_exporttopdf.md - exports a Gantt chart into the PDF format
+- api/gantt_exporttopng.md - exports a Gantt chart into the PNG format
 - api/gantt_findcycles.md - returns all dependency loops in the chart
 - api/gantt_focus.md - sets focus on the gantt
 - api/gantt_getcalendar.md - gets worktime calendar by id
 - api/gantt_getcalendars.md - gets all the calendars added into Gantt
 - api/gantt_getchildren.md - returns the 1st-level child tasks of the specified parent branch
 - api/gantt_getclosestworktime.md - returns the closest working time
+- api/gantt_getcolumnindex.md - returns the index of the column by its name
+- api/gantt_getconnectedgroup.md - returns all tasks and links that a task is connected with
 - api/gantt_getdatastore.md - returns the configuration object of a datastore
-- api/gantt_getglobaltaskindex.md - get the index of a task in the tree
+- api/gantt_getglobaltaskindex.md - gets the index of a task in the tree
 - api/gantt_getgridcolumn.md - gets the configuration object of a column
 - api/gantt_getgridcolumns.md - gets columns of the Gantt chart
 - api/gantt_getlabel.md - gets the label of a select control in the lightbox
@@ -76,7 +86,7 @@ Methods
 - api/gantt_getparent.md - returns the id of the parent task
 - api/gantt_getprev.md - returns the id of the previous item (no matter what the level of nesting is: the same or different)
 - api/gantt_getprevsibling.md - returns the id of the previous task of the same level
-- api/gantt_getredostack.md - returns the stack of stored redo commands
+- api/gantt_getredostack.md - returns the stack of stored redo user actions
 - api/gantt_getscale.md - returns the configuration of the time scale
 - api/gantt_getscrollstate.md - returns the scroll position
 - api/gantt_getselectedid.md - returns the id of the selected task
@@ -88,19 +98,20 @@ Methods
 - api/gantt_getsubtaskdates.md - calculates the combined start/end dates of tasks nested in a project or another task
 - api/gantt_getsubtaskduration.md - calculates the combined duration of tasks nested in a project or another task.
 - api/gantt_gettask.md - returns the task object
-- api/gantt_gettaskby.md - finds task by specified criteria
-- api/gantt_gettaskbyindex.md - returns a task configuration object by its index
+- api/gantt_gettaskby.md - finds a task by the specified criteria
+- api/gantt_gettaskbyindex.md - returns a task by its index
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period
+- api/gantt_gettaskbywbscode.md - returns a task by its WBS code
 - api/gantt_gettaskcalendar.md - gets a calendar assigned to the specified task (a task level calendar)
 - api/gantt_gettaskcount.md - gets the number of tasks that are currently loaded in the gantt
 - api/gantt_gettaskheight.md - returns the visible height of a task
-- api/gantt_gettaskindex.md - get the index of a task in the branch
+- api/gantt_gettaskindex.md - gets the index of a task in the branch
 - api/gantt_gettasknode.md - returns the HTML element of the task bar
 - api/gantt_gettaskposition.md - calculates the position and size of the task's DOM element in the timeline area
 - api/gantt_gettaskrownode.md - returns the HTML element of the task row in the table
 - api/gantt_gettasktop.md - gets the top position of the task's DOM element in the timeline area
 - api/gantt_gettasktype.md - returns the type of a task
-- api/gantt_getundostack.md - returns the stack of stored undo commands
+- api/gantt_getundostack.md - returns the stack of stored undo user actions
 - api/gantt_getvisibletaskcount.md - gets the number of tasks visible on the screen (those that are not collapsed)
 - api/gantt_getwbscode.md - returns the WBS code (the outline number) of a task
 - api/gantt_getworkhours.md - returns the working hours of the specified date
@@ -109,6 +120,7 @@ Methods
 - api/gantt_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
 - api/gantt_hidelightbox.md - closes the lightbox if it's currently active
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
+- api/gantt_importfrommsproject.md - converts an XML or MPP MS Project file to JSON
 - api/gantt_init.md - constructor. Initializes a dhtmlxGantt object
 - api/gantt_ischildof.md - checks whether a task is a child of other task
 - api/gantt_iscircularlink.md - checks whether the link is circular
@@ -118,6 +130,7 @@ Methods
 - api/gantt_islinkexists.md - checks whether the specified link exists
 - api/gantt_isreadonly.md - checks whether the specified task or link is read-only
 - api/gantt_isselectedtask.md - checks whether the specified task is currently selected
+- api/gantt_issplittask.md - checks whether the specified task is split
 - api/gantt_issummarytask.md - checks whether the specified task is summary
 - api/gantt_istaskexists.md - checks whether the specified task exists
 - api/gantt_istaskvisible.md - checks whether the specifies task is currently rendered in the Gantt chart
@@ -142,7 +155,7 @@ Methods
 - api/gantt_render.md - renders the whole Gantt chart
 - api/gantt_rendermarkers.md - updates all markers on the page
 - api/gantt_resetlightbox.md - removes the current lightbox's HTML object element
-- api/gantt_resetprojectdates.md - re-calculates the duration of a project task depending on dates its childs
+- api/gantt_resetprojectdates.md - re-calculates the duration of a project task depending on the dates of its children
 - api/gantt_resetskin.md - re-calculates the skin's settings from the related attached skin CSS file
 - api/gantt_resizelightbox.md - forces the lightbox to resize
 - api/gantt_rounddate.md - rounds the specified date to the nearest date in the time scale
@@ -194,6 +207,8 @@ Methods
 - api/gantt_changetaskid.md
 - api/gantt_checkevent.md
 - api/gantt_clearall.md
+- api/gantt_clearredostack.md
+- api/gantt_clearundostack.md
 - api/gantt_close.md
 - api/gantt_collapse.md
 - api/gantt_columnindexbydate.md
@@ -219,12 +234,20 @@ Methods
 - api/gantt_event.md
 - api/gantt_eventremove.md
 - api/gantt_expand.md
+- api/gantt_exporttoexcel.md
+- api/gantt_exporttoical.md
+- api/gantt_exporttojson.md
+- api/gantt_exporttomsproject.md
+- api/gantt_exporttopdf.md
+- api/gantt_exporttopng.md
 - api/gantt_findcycles.md
 - api/gantt_focus.md
 - api/gantt_getcalendar.md
 - api/gantt_getcalendars.md
 - api/gantt_getchildren.md
 - api/gantt_getclosestworktime.md
+- api/gantt_getcolumnindex.md
+- api/gantt_getconnectedgroup.md
 - api/gantt_getdatastore.md
 - api/gantt_getglobaltaskindex.md
 - api/gantt_getgridcolumn.md
@@ -260,6 +283,7 @@ Methods
 - api/gantt_gettaskby.md
 - api/gantt_gettaskbyindex.md
 - api/gantt_gettaskbytime.md
+- api/gantt_gettaskbywbscode.md
 - api/gantt_gettaskcalendar.md
 - api/gantt_gettaskcount.md
 - api/gantt_gettaskheight.md
@@ -278,6 +302,7 @@ Methods
 - api/gantt_hidecover.md
 - api/gantt_hidelightbox.md
 - api/gantt_hidequickinfo.md
+- api/gantt_importfrommsproject.md
 - api/gantt_init.md
 - api/gantt_ischildof.md
 - api/gantt_iscircularlink.md
@@ -287,6 +312,7 @@ Methods
 - api/gantt_islinkexists.md
 - api/gantt_isreadonly.md
 - api/gantt_isselectedtask.md
+- api/gantt_issplittask.md
 - api/gantt_issummarytask.md
 - api/gantt_istaskexists.md
 - api/gantt_istaskvisible.md

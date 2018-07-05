@@ -110,15 +110,8 @@ To export data from the Gantt chart to an iCal string, do the following:
 
 The **exportToICal()** method takes as a parameter an object with the following property (optional):
 
-<table class="webixdoc_links">
-	<tbody>
-        <tr>
-			<td class="webixdoc_links0"><b>server</b></td>
-			<td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/gantt</strong></td>
-		</tr>
-    </tbody>
-</table>
-<br>
+- **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**.
+		
 {{snippet
 Calling the export method with optional properties
 }}

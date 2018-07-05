@@ -3,8 +3,7 @@ Full List of Extensions
 
 dhtmlxGantt includes a set of extensions which add extra functionality to the standard behavior.
 
-To use an extension, you should include the extension code file on the page. Extensions code files reside in the **ext**
-folder of the gantt's codebase.
+To use an extension, you should include the extension code file on the page. Code files of extensions reside in the **ext** folder of the gantt codebase.
 
 Auto Scheduling
 ----------------
@@ -196,6 +195,7 @@ Allows you to undo/redo the made changes.
 ~~~
 
 ####Related resources
+
 Article: desktop/undo_redo.md<br>
 API: api/gantt_undo_config.md, api/gantt_redo_config.md<br>
 

@@ -4,13 +4,15 @@ resource_property
 @edition: pro
 
 @short:
-	specifies a property of the task object which stores a resource id associated with resourceGrid/resourceTimeline
+	specifies the property of a task object that stores a resource id associated with resourceGrid/resourceTimeline
 
 @type: string
 @default: "owner_id"
 
 @descr:
-Specifies a property of the task object which stores the resource id associated with resourceGrid/resourceTimeline. Can be changed on the runtime.
+{{pronote This functionality is available in the PRO edition only.}}
+
+Specifies the property of the task object which stores the resource id associated with resourceGrid/resourceTimeline. Can be changed on the runtime.
 
 
 @example:
@@ -75,6 +77,6 @@ resourcesStore.parse([
 api/gantt_resource_store_config.md
 
 @relatedsample:
-11_resources\04_resource_usage_diagram.html
-11_resources\05_resource_usage_templates.html
+11_resources/04_resource_usage_diagram.html
+11_resources/05_resource_usage_templates.html
 

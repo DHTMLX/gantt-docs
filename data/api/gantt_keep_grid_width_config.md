@@ -1,6 +1,7 @@
 keep_grid_width
 =============
-@short:'says' to preserve the initial grid's width during resizing the columns within
+
+@short:'says' to preserve the initial grid's width while resizing columns within
 	
 @edition: pro
 @type: boolean
@@ -24,5 +25,5 @@ gantt.init("gantt_here");
 @relatedapi:
 	api/gantt_grid_resize_config.md
 @descr:
-
+{{pronote This functionality is available in the PRO edition only.}}
 

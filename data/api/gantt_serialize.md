@@ -15,3 +15,5 @@ gantt.serialize('xml');
 @template:	api_method
 @descr:
 
+@related:
+desktop/serialization.md

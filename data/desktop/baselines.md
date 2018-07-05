@@ -1,4 +1,4 @@
-Additional Elements in the Timeline Area
+Extra Elements in Timeline Area
 ==========================================
 
 {{pronote This functionality is available only in the PRO edition}}
@@ -13,12 +13,12 @@ By default, dhtmlxGantt renders elements of the timeline area as layers and does
 3. Tasks
 
 Displaying additional elements, such as a baseline or deadline marker, is usually done by creating a displayable layer and placing custom elements there
- (using the absolute positioning to put custom elements next to the related task).
+(using the absolute positioning to put custom elements next to the related task).
 
 **To add one more layer to the timeline area**, use the api/gantt_addtasklayer.md method. As a parameter, the method takes a function that: 
 
-- Takes a task's object;
-- Returns a DOM element that will be displayed or *false* (the element for a task should be hidden).
+- Takes a task object;
+- Returns either a DOM element that will be displayed, or *false* (the element for a task should be hidden).
 
 ~~~js
 gantt.addTaskLayer(function myNewElement(task) {

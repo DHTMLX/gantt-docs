@@ -4,12 +4,12 @@ onColumnResizeEnd
 	
 @edition: pro
 @params:
-- index	number	the column index
-- column	object	the column object
-- new_width		number	the new column's width
+- index			number		the column index
+- column		object		the column object
+- new_width		number		the new column's width
 
 @returns:  
-  - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
+- result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
 
 @example:
 // return false to discard the resize action
@@ -23,7 +23,9 @@ gantt.attachEvent("onColumnResizeEnd", function(index, column, new_width){
 
 @template:	api_event
 @descr:
-The event is blockable. Returning false will cancel column resizing
+{{pronote This functionality is available in the PRO edition only.}}
+
+The event is blockable. Returning *false* will cancel column resizing.
 
 @related:
 	desktop/specifying_columns.md#resizingcolumns

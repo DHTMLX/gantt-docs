@@ -1,5 +1,5 @@
-Calculating Tasks' Duration in Work Time
-===================================================
+Work Time Calculation
+========================
 
 By default, dhtmlxGantt calculates the duration of tasks in calendar time. It assumes 
 that the final duration of the tasks can include weekends and holidays.
@@ -445,13 +445,15 @@ Or, you can define recalculation of all tasks on demand:
 
 ~~~js
 gantt.batchUpdate(function(){
-task.start_date = gantt.getClosestWorkTime({
-  dir: "future",
-  date: task.start_date,
-  unit: gantt.config.duration_unit,
-  task: task
-});
-task.end_date = gantt.calculateEndDate(task);
-	gantt.updateTask(task.id);
+  gantt.eachTask(function(task){
+    task.start_date = gantt.getClosestWorkTime({
+      dir: "future",
+      date: task.start_date,
+      unit: gantt.config.duration_unit,
+      task: task
+    });
+    task.end_date = gantt.calculateEndDate(task);
+    gantt.updateTask(task.id);
+  });
 });
 ~~~

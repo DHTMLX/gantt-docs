@@ -1,8 +1,9 @@
 Time Control
-==============================================
-A pair of selectors for setting the task duration by specifying the task's start and end dates.
+=================
 
-<img src="desktop/time2_control.png"/>
+A pair of selectors for setting task duration by specifying the start and end dates of a task.
+
+<img src="desktop/time_control.png"/>
 
 ~~~js
 gantt.config.lightbox.sections=[
@@ -17,17 +18,20 @@ gantt.config.lightbox.sections=[
 
 Initializing the control
 ---------------------------
-To add the **time** control to the lightbox, follow these steps:
-<ol>
-    <li><b>Add the section to the lightbox configuration:</b>
+
+To add the **time** control to the lightbox, follow the steps below:
+
+1) Add a section to the lightbox configuration:
+
 ~~~js
 gantt.config.lightbox.sections=[
     {name:"description", height:70, map_to:"text", type:"textarea",focus:true},
     {name:"period",      height:72, map_to:"auto", type:"time"}, /*!*/
 ];
 ~~~
-	</li>
-    <li><b>Set the label for the section:</b>
+
+2) Set a label for the section:
+
 ~~~js
 gantt.locale.labels.section_period = "Time period";
 ~~~

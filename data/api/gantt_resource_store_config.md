@@ -4,12 +4,14 @@ resource_store
 @edition: pro
 
 @short:
-	specifies the name of the dataStore connected to the resourceGrid/resourceTimeline
+	specifies the name of the dataStore connected to the resourceGrid/resourceTimeline views
 
 @type: string
 @default: "resource"
 
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 Specifies a datastore to be bound to the "resourceGrid" and "resourceTimeline" views. Alternatively, the "bind" property of the view can be specified.
 
 @example:

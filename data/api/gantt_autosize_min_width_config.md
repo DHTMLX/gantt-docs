@@ -1,5 +1,6 @@
 autosize_min_width
 =============
+
 @short:sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
 	
 
@@ -10,7 +11,7 @@ gantt.config.autosize_min_width = 800;
 
 gantt.init("gantt_here");
 
-@default:0
+@default: zero (0)
 @template:	api_config
 @descr:
 Horizontal 'autosize' mode is enabled by the api/gantt_autosize_config.md option.

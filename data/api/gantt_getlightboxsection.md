@@ -11,17 +11,21 @@ getLightboxSection
 
 
 
-
-
 @example:
+var time = gantt.getLightboxSection('time');
 var descr = gantt.getLightboxSection('description');
-
+ 
 //gets the value
-var value = descr.getValue();
-
+var value = time.getValue();
+var value1 = descr.getValue();
+ 
 //sets the value
 descr.setValue('New Task'); //for sections that contain the only control
-
+time.setValue(null,{
+	start_date:new Date(2020,03,10), 
+    end_date:new Date(2022,03,10), 
+    duration:5
+}); //for multi-control sections: the 1st parameter is 'null', 2nd - a data object
 
 
 @template:	api_method

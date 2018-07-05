@@ -114,7 +114,7 @@ Here is an example of using the destructor to dispose a gantt instance while usi
 @Component({selector: 'app-gantt', template: `...`})
 class MyGanttComponent implements OnDestroy {
   ngOnInit() {
-     this.$gantt = Gantt.getInstance();
+     this.$gantt = Gantt.getGanttInstance();
 
      // configure and init
   }

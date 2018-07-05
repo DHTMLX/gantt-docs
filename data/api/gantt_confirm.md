@@ -9,8 +9,12 @@ confirm
 - config		object			the confirm box's configuration
 
 
+@returns:
+
+- div			HTMLElement		the div container of the confirm box
+
 @example:
-gantt.confirm({
+var box = gantt.confirm({
     text: "Continue?",
     ok:"Yes", 
     cancel:"No",
@@ -29,6 +33,7 @@ gantt.confirm({
 - api/gantt_alert.md
 - api/gantt_message.md
 - api/gantt_modalbox.md
+
 @related:desktop/message_boxes.md
 @changelog:
 added in version 4.0

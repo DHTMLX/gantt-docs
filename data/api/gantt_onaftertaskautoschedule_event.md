@@ -19,13 +19,12 @@ gantt.attachEvent("onAfterTaskAutoSchedule",function(task, start, link, predeces
 
 @template:	api_event
 @descr:
-
+{{pronote This functionality is available in the PRO edition only.}}
 
 @related:
 desktop/auto_scheduling.md
 
 @relatedsample:
-
 02_extensions/12_auto_scheduling.html
 
 @relatedapi:

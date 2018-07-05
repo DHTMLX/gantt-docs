@@ -1,4 +1,4 @@
-Migrating from Older Versions
+Migration from Older Versions
 =================================================
 
 <style>

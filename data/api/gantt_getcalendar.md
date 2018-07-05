@@ -6,7 +6,7 @@ getCalendar
 	gets worktime calendar by id
 
 @params:
-- id		string,number		the id of the global calendar or "global"
+- calendarId		string,number		the id of the global calendar or "global"
 
 @returns:
 - config		object		calendar object
@@ -14,11 +14,10 @@ getCalendar
 
 @example:
 
-var calendar = gantt.getCalendar(id);
+var calendar = gantt.getCalendar(calendarId);
 
 @template:	api_method
 @descr:
-added in version 4.2
 
 The returned object for the above example is a [calendar object](api/gantt_calendar_other.md).
 
@@ -34,3 +33,5 @@ desktop/working_time.md#multipleworktimecalendars
 api/gantt_getcalendars.md
 api/gantt_gettaskcalendar.md
 
+@changelog:
+added in version 4.2

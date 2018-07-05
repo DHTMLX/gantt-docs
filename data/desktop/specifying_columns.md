@@ -1,5 +1,5 @@
 Specifying Columns
-==============================================
+====================
 
 Grid's columns are configured with the api/gantt_columns_config.md parameter. 
 
@@ -29,8 +29,8 @@ By default, the grid contains 4 columns:
 Note, you needn't to specify the api/gantt_columns_config.md parameter to present the default columns in the grid.
 }}
 
-The  api/gantt_columns_config.md parameter is an array, each object of which presents a single column. 
-So, for example,  to define 5 columns in the grid: 'Task', 'Start Date', 'End Date', 'Holder', 'Progress', specify the api/gantt_columns_config.md parameter as in:
+The api/gantt_columns_config.md parameter is an array, each object of which presents a single column. 
+So, for example, to define 5 columns in the grid: 'Task', 'Start Date', 'End Date', 'Holder', 'Progress', specify the api/gantt_columns_config.md parameter as in:
 
 ~~~js
 gantt.config.columns =  [
@@ -44,7 +44,7 @@ gantt.config.columns =  [
 gantt.init("gantt_here");
 ~~~
 
-where 'text', 'holder', 'start_date', 'end_date', 'progress' are [the names of the data properties](desktop/specifying_columns.md#settingmappingbetweencolumnsanddataproperties).
+where 'text', 'holder', 'start_date', 'end_date', 'progress' are [the names of the data properties](desktop/specifying_columns.md#datamappingandtemplates).
 
 
 Width
@@ -60,6 +60,7 @@ gantt.config.columns =  [
 ];
 gantt.init("gantt_here");
 ~~~
+
 {{note
 Use the '*' value, to make the column occupy all the remaining space.
 }}
@@ -82,11 +83,13 @@ gantt.init("gantt_here");
 Data mapping and templates
 ---------------------------------------
 
-By default, dhtmlxGantt populates the grid with data properties that correspond to the IDs of the columns.
-For example, if you set for a column  **<code>id ="holder"</code>**, dhtmlxGantt will look for a such data property in the incoming JSON data. And
-if such a property exists, load it to the column.
+By default, dhtmlxGantt populates the grid with data properties that correspond to the names of the columns.
+For example, if you set **name:"holder"** for a column, dhtmlxGantt will look for a such data property in the incoming JSON data, and if such a property exists, load it to the column.
 
-If you want to present in a column a mix of several data properties, use whatever id you want but set the data template with the **template** attribute of the api/gantt_columns_config.md parameter.
+####Using templates for column data
+
+If you want to present a mix of several data properties in a column, you can use any name for the column, but set the data template via the **template** attribute of the api/gantt_columns_config.md parameter.
+For instance, you can specify **name:"staff"** for a column and define a template function that will return the *holder* and *progress* data properties to be loaded into the column. 
 
 ~~~js
 gantt.config.columns =  [
@@ -95,6 +98,7 @@ gantt.config.columns =  [
 	{name:"staff",		label:"Holder(s)", template:function(obj){
     							return obj.holder+"("+obj.progress+")"} }
 ];
+
 gantt.init("gantt_here");
 ~~~
 
@@ -110,6 +114,7 @@ gantt.config.columns =  [
 	{name:"start_date", label:"Start time", align: "center" },
 	{name:"duration",	label:"Duration", 	align: "center" }
 ];
+
 gantt.init("gantt_here");
 ~~~
 
@@ -117,8 +122,7 @@ gantt.init("gantt_here");
 WBS code 
 -----------
 
-You can add a column that will display the outline numbers of tasks (their WBS code). For this, you need to use the api/gantt_getwbscode.md method in the column 
-template.
+You can add a column that will display the outline numbers of tasks (their WBS code). For this, you need to use the api/gantt_getwbscode.md method in the column template.
 
 ~~~js
 gantt.config.columns = [
@@ -132,25 +136,37 @@ gantt.config.columns = [
 
 {{sample 07_grid/09_wbs_column.html}}
 
-It is also possible to get the WBS code of the necessary task. For example, we load the following tasks in the gantt:
+###Getting WBS code of the task
+
+The api/gantt_getwbscode.md method returns the WBS code of the necessary task. For example, we load the following tasks into gantt:
 
 ~~~js
 gantt.parse({
  "data":[
-  {"id":1, "text":"Project #1", "start_date":"28-03-2013", 
-  	"duration":"11", "parent":"0", "open":true},
-  {"id":2, "text":"Task #1", "start_date":"01-04-2013", "duration":"18", "parent":"1"},
-  {"id":3, "text":"Task #2", "start_date":"02-04-2013", "duration":"8", "parent":"1"}
+  	{"id":1, "text":"Project #1", "start_date":"28-03-2013", 
+  		"duration":"11", "parent":"0", "open":true},
+  	{"id":2, "text":"Task #1", "start_date":"01-04-2013", 
+    	"duration":"18", "parent":"1"},
+  	{"id":3, "text":"Task #2", "start_date":"02-04-2013", 
+    	"duration":"8", "parent":"1"}
  ],
  "links":[]
 });
 ~~~
 
-and we want to get the WBS code of the task with id=3. For this, we pass the object of a task as a parameter to the api/gantt_getwbscode.md method.
-It will return a string with the WBS code of the task:
+and we want to get the WBS code of the task with id=3. For this, we pass the object of a task as a parameter to the api/gantt_getwbscode.md method. It will return a string with the WBS code of the task:
 
 ~~~js
-var wbs_code = gantt.getWBSCode(gantt.getTask(3)) // -> returns "1.2"
+var wbs_code = gantt.getWBSCode(gantt.getTask(3)); // -> returns "1.2"
+~~~
+
+###Getting task by WBS code
+
+You can also get the object of a task by passing its WBS code to the api/gantt_gettaskbywbscode.md method:
+
+~~~js
+var task = gantt.getTaskByWBSCode("1.2");
+// => {id:"t1", text:"Task #1, unscheduled: true, duration: 1, …}
 ~~~
 
 
@@ -160,14 +176,16 @@ Resizing
 {{pronote This functionality is available only in the PRO edition }}
 
 To provide users a possibility to resize a column by dragging the right column's border, use the [resize](api/gantt_columns_config.md) attribute in the related column's object:
+
 ~~~js
 gantt.config.columns = [
-	{name:"text", tree:true, width:"*",resize:true },//-> 'resize' active
-	{name:"start_date", resize:true, min_width:100 },//-> 'resize' limited with 'min_width'
-	{name:"duration", align:"center" },             //-> no resize
-	{name:"add", width:"44" }
+  {name:"text", tree:true, width:"*",resize:true },//-> 'resize' active
+  {name:"start_date", resize:true, min_width:100 },//-> 'resize' limited by 'min_width'
+  {name:"duration", align:"center" },              //-> no resize
+  {name:"add", width:"44" }
 ];
 ~~~
+
 {{sample
 02_extensions/04_grid_resize.html
 }}
@@ -184,9 +202,10 @@ gantt.config.columns = [
 ];
 
 gantt.config.grid_resize = true; /*!*/
-gantt.config.min_grid_column_width = 100; // the minimum width of the grid while resizing
+gantt.config.min_grid_column_width = 100; //the minimum width of grid during resizing
 gantt.init("gantt_here");
 ~~~
+
 {{sample
 02_extensions/04_grid_resize.html
 }}
@@ -205,6 +224,7 @@ gantt.config.columns = [
 gantt.config.keep_grid_width = true; /*!*/
 gantt.init("gantt_here");
 ~~~
+
 {{sample
 02_extensions/04_grid_resize.html
 }}
@@ -221,9 +241,8 @@ dhtmlxGantt provides 6 events for handling the resizing behavior:
 - api/gantt_ongridresizeend_event.md - fires after the user finished dragging the grid's border to resize the grid
 
 
-
 Visibility
-----------------------------------------------------
+--------------
 
 To manipulate the visibility of a column, use the [hide](api/gantt_columns_config.md) attribute in the related column's object.<br> 
 Visibility can be toggled dynamically, by changing the value of the 'hide' property and refreshing the Gantt chart:
@@ -258,6 +277,7 @@ function toggleView(){
 };
 gantt.init("gantt_here");
 ~~~
+
 {{sample
 02_extensions/07_managing_grid_columns.html
 }}

@@ -30,14 +30,14 @@ Templates allow inserting a custom markup (formatted text, icons, buttons, etc.)
 
 ##SQL Injections
 
-dhtmlxGantt is 100% client-side component, thus SQL injections have to be prevented on the backend by the developer.
+dhtmlxGantt is a 100% client-side component, thus SQL injections have to be prevented on the backend by the developer.
 
 There are two points to consider:
 
 - The lightbox doesn't have any default validation, which, if not handled, allows the user to enter any values into editable inputs.
 - your backend API can be called by a PUT/POST request containing dangerous values manually, bypassing the client-side UI.
 
-Thus you'll need to have some kind of SQL injections escaping on your backend. If you use [dhtmlxConnector](desktop/howtostart_connector.md) and specify a table configuration as shown in our [documentation](https://docs.dhtmlx.com/connector__php__basis.html#loadingfromdatabase), all values will be escaped automatically. Otherwise, you'll have to use a safe CRUD implementation, according to the good practices of the platform you use. Implementations shown in the [how to start guides](desktop/howtostart_guides.md) should be safe in terms of SQL injections.
+Thus you'll need to have some kind of SQL injections escaping on your backend. If you use [dhtmlxConnector](desktop/howtostart_connector.md) and specify a table configuration as shown in the related [documentation](https://docs.dhtmlx.com/connector__php__basis.html#loadingfromdatabase), all values will be escaped automatically. Otherwise, you'll have to use a safe CRUD implementation, according to the good practices of the platform you use. Implementations shown in the [how to start guides](desktop/howtostart_guides.md) should be safe in terms of SQL injections.
 
 
 ##CSRF Attacks
@@ -49,8 +49,9 @@ Otherwise, you'll have to handle it manually. Please check [this article](deskto
 
 ##Content Security Policy
 
-The library provides a special extension that allows you to adjust the code of your application created with dhtmlxGantt to comply with the CSP (Content Security Policy) 
-standard. It helps preventing various code injection attacks and improve the safety of application. 
+The library provides a special extension that allows you to adjust the code of your application created with dhtmlxGantt to comply with the CSP (Content Security Policy) standard. 
+It helps preventing various code injection attacks and improve the safety of application. 
+
 [Read more about applying the CSP standard to a dhtmlxGantt application](desktop/content_security_policy.md).
 
 

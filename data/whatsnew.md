@@ -3,6 +3,27 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+5.2
+--------------
+
+####Functionality
+
+- [Inline editing in Grid](desktop/inline_editing.md)
+- [Splitting tasks](desktop/split_tasks.md) (PRO version)
+- Updated [keyboard navigation](desktop/keyboard_navigation.md#existingshortcuts)
+- [Auto Scheduling](desktop/auto_scheduling.md) performance improvements
+
+####Configuration
+
+- Ability to [set task types automatically](api/gantt_auto_types_config.md) (PRO version)
+- Ability to [use a placeholder row](api/gantt_placeholder_task_config.md) for creating new tasks
+- [Checkbox](desktop/checkbox.md) and [radio button](desktop/radio.md) controls for lightbox  
+- Updated [Content Security Policy](desktop/content_security_policy.md) extension
+
+####API
+
+- New methods and events for [undo](desktop/undo_redo.md) and [autoscheduling](desktop/auto_scheduling.md) extensions.
+
 5.1
 ----------
 
@@ -51,7 +72,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ####Functionality
 
 - [Work Time calendars at the task and resource levels](desktop/working_time.md#multipleworktimecalendars)
-- [WBS code (outline numbers) calculation](desktop/specifying_columns.md#showingthewbscodeofatask)
+- [WBS code (outline numbers) calculation](desktop/specifying_columns.md#wbscode)
 - [Autoscroll for drag and drop operations](desktop/dnd.md#autoscrollduringtasksdragging)
 - [Persian (Farsi) locale is added](desktop/localization.md#predefinedlocales)
 
@@ -87,14 +108,17 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ---------
 
 #### Functionality
+
 - [Smart rendering](desktop/performance.md#smartrendering) for big datasets 
 - [Undo/redo](desktop/undo_redo.md) extensions
 
 ####Configuration
+
 - [Critical path calculation](desktop/critical_path.md) - support for [lag/lead of links](desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks) added (PRO version)
 - Spanish and Chinese [locales](desktop/localization.md#predefinedlocales) updated
 
 ####API
+
 - Public API improvements - public helpers for [ajax](http://docs.dhtmlx.com/api__refs__dhtmlxajax.html), [environment variables](api/gantt_env_other.md)  
 - [Public API cleanup](migrating.md#3x40) - redundant global objects removed, conflicts with dhtmlxSuite resolved
 - Public helpers for [popup messages](desktop/message_boxes.md) added
@@ -103,18 +127,22 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 3.3
 ----------
+
 #### Functionality
+
 - Dependency [Auto Scheduling](desktop/auto_scheduling.md) feature (PRO version)
 - [Fullscreen mode](desktop/fullscreen_mode.md)
 - Support for [unscheduled tasks](desktop/crud_task.md#addingunscheduledtasks)
 - [Backward planning](desktop/loading.md#loadingtaskdates)
 
 #### Configuration
+
 - Initial support for [Content Security Policy](desktop/content_security_policy.md)
 - A possibility of specifying [per column Grid sorting](desktop/sorting.md#percolumngridsorting) settings
 - Improved branch ordering feature - [drag-n-drop between levels](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure) 
 
 #### API
+
 - [REST mode for ajax loading/saving](desktop/server_side.md#savingdatafromrestserver)
 
 
@@ -123,6 +151,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ----------------
 
 #### Functionality
+
 - [Grouping tasks](desktop/grouping.md) (PRO version)
 - [Multi-task selection](desktop/multiselection.md)
 - [Data export to iCal and Excel formats](desktop/excel.md)
@@ -130,10 +159,12 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 
 #### Configuration
+
 - [A possibility to set the range for the year selector in the lightbox](desktop/time.md#alistofproperties)
 
 
 #### API
+
 - [Events for managing available target places while re-ordering tasks](desktop/reodering_tasks.md#denyingdroppingtospecificpositions)
 - [Events for managing loading process](desktop/loading.md#eventsflow)
 - New samples, methods, events
@@ -145,12 +176,15 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ----------------
 
 #### Functionality
+
 - Ability to drag tasks on touch devices
 
 #### Configuration
+
 - [Changed the default offset between the first and the last tasks on a scale](api/gantt_scale_offset_minimal_config.md)
 
 #### Bug Fixes
+
 - Incorrect behavior of the tooltip on expanding/collapsing of task tree
 - Order of API events during Gantt initialization
 - Incorrect behavior of vertical markers when Gantt is cleared or reinitialized
@@ -160,8 +194,11 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ----------------
 
 #### Configuration
+
 - [Ability to map the 'Time' and 'Duration' controls to custom date properties](desktop/time.md#assigningcustomstartandenddatetimeproperties)
+
 #### Functionality
+
 - [Dynamic loading](desktop/dynamic_loading.md) (PRO version)
 - [A possibility to resize columns and the whole grid by drag-&-dropping](desktop/specifying_columns.md)
 - [A possibility to hide/show columns dynamically](desktop/specifying_columns.md#hidingshowingcolumns) (PRO version)
@@ -169,32 +206,36 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Support for the critical path](desktop/critical_path.md) (PRO version)
 - [New possibilities for the read-only mode](desktop/readonly_mode.md)
 - [Today's and other vertical markers](desktop/markers.md)
-- [A possibility to completely redefine rendering of different task types (projects, milestones, etc.)](desktop/baselines.md#definingacustomdisplayfordifferenttasktypes)
-(PRO version)
+- [A possibility to completely redefine rendering of different task types (projects, milestones, etc.)](desktop/baselines.md#definingacustomdisplayfordifferenttasktypes)(PRO version)
 - [Styling tasks through special data properties](desktop/colouring_tasks.md#specifyingstyleinthepropertiesofthetaskobject) 
 - [Styling links through special data properties](desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject) 
 
 
 #### API
+
 - [New tree-related methods](desktop/task_tree_operations.md)
 
 2.1
 -------------
 
 #### Global
+
 - Updated locales
 - Many bugs have been fixed
 
 #### Configuration
+
 - [Custom configuration of the lightbox for different task types](desktop/task_types.md#individuallightboxforeachtype)
 - [Non-linear scales, ability to skip time from the scale](desktop/custom_scale.md) (PRO version)
 
 #### Functionality
+
 - [Milestones](desktop/milestones.md) and [Projects](desktop/task_types.md#projecttasks) support  (PRO version)
 - [A possibility  to calculate the tasks' duration in work days/hours instead of calendar time](desktop/working_time.md)
 - [Support for multiple Gantt charts on the page](desktop/multiple_gantts.md) (PRO version)
 
 #### API
+
 - Added more configurations, methods, events
 
 
@@ -202,11 +243,13 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 -------------------------------------
 
 #### Global
+
 - [jQuery integration](desktop/jquery_integration.md)
 - Major performance improvements
 - [Ready-to-use PHP integration](desktop/server_side.md)
 
 #### Configuration
+
 - [Configurable multi-line scales](desktop/configuring_time_scale.md)
 - [Configurable multi-column grid with optional sorting and Drag-n-Drop](desktop/reodering_tasks.md) 
 - [Configurable popup form for editing tasks](desktop/edit_form.md)
@@ -215,6 +258,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [All text labels can be localized](desktop/localization.md)
 
 #### Styling
+
 - [Default skin changed to "terrace"](desktop/skins.md#teraccedefaultskin)
 - [3 new skins](desktop/skins.md)
 - [Bars can have an optional inner resizer](api/gantt_drag_resize_config.md)
@@ -222,6 +266,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Vertical and horizontal lines can be colored based on custom rules](desktop/highlighting_time_slots.md)
 
 #### Functionality
+
 - [Loading and serialization from JSON](desktop/supported_data_formats.md#json)
 - [Loading and serialization with the simplified XML format](desktop/supported_data_formats.md#xmldhtmlxgantt20)
 - [3 types of task linking](api/gantt_links_config.md)

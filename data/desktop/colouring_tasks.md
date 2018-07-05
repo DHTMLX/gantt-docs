@@ -108,7 +108,7 @@ task.color = "rgb(255,0,0)";
 
 A similar approach can be applied to links. Read more about it [here](desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject).
 
-Loading colors with the data
+Loading colors with data
 -----------------------------------------------------
 
 If colors are a part of your data which comes from the backend, e.g. when task color is associated with a stage or a resource assigned to a task which can't be hardcoded on the page, it may be a good solution to generate styles from your data manually.
@@ -117,11 +117,11 @@ Let's suppose that you have the following collection of users that can be assign
 
 ~~~js
 [
-	{key: 1, label: "John", backgroundColor:"#03A9F4", textColor:"#FFF"},
-	{key: 2, label: "Mike", backgroundColor:"#f57730", textColor:"#FFF"},
-	{key: 3, label: "Anna", backgroundColor:"#e157de", textColor:"#FFF"},
-	{key: 4, label: "Bill", backgroundColor:"#78909C", textColor:"#FFF"},
-	{key: 7, label: "Floe", backgroundColor:"#8D6E63", textColor:"#FFF"}
+	{"key":1, "label":"John", "backgroundColor":"#03A9F4", "textColor":"#FFF"},
+	{"key":2, "label":"Mike", "backgroundColor":"#f57730", "textColor":"#FFF"},
+	{"key":3, "label":"Anna", "backgroundColor":"#e157de", "textColor":"#FFF"},
+	{"key":4, "label":"Bill", "backgroundColor":"#78909C", "textColor":"#FFF"},
+	{"key":7, "label":"Floe", "backgroundColor":"#8D6E63", "textColor":"#FFF"}
 ]
 ~~~
 

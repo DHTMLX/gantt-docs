@@ -1,5 +1,6 @@
 layer_attribute
 =============
+
 @short:sets the name of the attribute of the task layer's DOM element
 	
 
@@ -11,7 +12,7 @@ gantt.config.layer_attribute = "tasklayer";
 
 @template:	api_config
 @descr:
-
+{{pronote This functionality is available in the PRO edition only.}}
 
 
 @relatedapi: api/gantt_addtasklayer.md

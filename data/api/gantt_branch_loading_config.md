@@ -1,6 +1,7 @@
 branch_loading
 =============
-@short:enables the dynamic loading in the Gantt chart
+
+@short:enables dynamic loading in the Gantt chart
 	
 @edition: pro
 @type: boolean
@@ -14,6 +15,7 @@ gantt.load("/data"); /*!*/
 
 @template:	api_config
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
 
 @relatedapi:
 	api/gantt_branch_loading_property_config.md

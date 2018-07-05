@@ -13,10 +13,11 @@ drag_project
 @example:
 gantt.config.drag_project = true;
 
-
 @template:	api_config
 
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 Allows a user to drag and drop projects together with their subtasks.
 
 @related:

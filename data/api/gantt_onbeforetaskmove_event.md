@@ -5,13 +5,13 @@ onBeforeTaskMove
 
 
 @params: 
-- sid		string, number			the id of the task to move
-- parent	string, number			the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
-- tindex	number				the index of the position that the task will be moved to <br> (the index in the whole tree)
+- id			string,number			the id of the task to move
+- parent		string,number			the parent id
+- tindex		number					the index of the position in the parent branch that the task will be moved to 
 
 @example:
 //prevent moving to another sub-branch:
-gantt.attachEvent("onBeforeTaskMove", function(sid, parent, tindex){
+gantt.attachEvent("onBeforeTaskMove", function(id, parent, tindex){
 	var task = gantt.getTask(id);
 	if(task.parent != parent)
 		return false;

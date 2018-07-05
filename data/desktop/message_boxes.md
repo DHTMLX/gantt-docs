@@ -1,17 +1,18 @@
 Popup Messages and Modal Boxes
 ======================
 
-Messages are used in a Gantt Chart to notify a user about an error, confirm or deny an action, choose one of the options and so on.
+Messages are used in the Gantt Chart to notify a user about an error, confirm or deny an action, choose one of the options and so on.
 Gantt Chart messages use [the fork of the dhtmlxMessage repository](https://github.com/DHTMLX/message) as their basis. 
 So, all the functionality of dhtmlxMessage is actual for dhtmlxGantt messages.
 
-There are two main types of messages: a simple popup message box and a modal message box with buttons that blocks the work of an application.
+There are two main types of messages: a [simple popup message box](desktop/message_boxes.md#basicpopupmessage) and a [modal message box](desktop/message_boxes.md#modalmessageboxes) with buttons 
+that blocks the work of an application.
 
 A modal message box can belong to one of three possible types:
 
-- Alert message box
-- Confirm message box
-- Modalbox
+- [Alert message box](#alert)
+- [Confirm message box](#confirm)
+- [Modalbox](#modal)
 
 
 ##Basic Popup Message 
@@ -25,30 +26,35 @@ gantt.message("The task is updated");
 A popup message box appears in the right top corner of the window. It doesn't prevent the work of the parent application, unlike [modal message boxes](desktop/message_boxes.md#modalmessageboxes)
 that overlay the parent application and block its work.
 
-There are two types of message boxes:
+There are three types of message boxes:
 	
-- a default message box
+- a default message box (**type:"info"**)
 
 <img src="desktop/default_message.png"/>
 	
-- an error message box
+- an error message box (**type:"error"**)
 
 <img src="desktop/error_message.png"/>
 
+- a warning message box (**type:"warning"**)
 
-To create an error message box, you need to define the *type* property with the "error" value: 
+<img src="desktop/warning_message.png">
+
+To create a necessary message box, you need to define the *type* property with the corresponding value: 
 
 ~~~js
+// creating an error message box
 gantt.message({type:"error", text:"Invalid data format"});
 ~~~
+
+{{sample 04_customization/20_message_types.html}}
 
 ###Expire Interval
 
 It's possible to customize the expire interval for a message box with the help of the *expire* parameter. It is the time period after the end of which the message box disappears (in milliseconds).
 By default, the expire interval is equal to 4000 milliseconds. 
 
-You can either change this value or to cancel the expire period at all, by setting the expire parameter to "-1". In this case 
-a message box will disappear only on a mouse click.
+You can either change this value or to cancel the expire period at all, by setting the expire parameter to "-1". In this case a message box will disappear only on a mouse click.
 
 ~~~js
 gantt.message({
@@ -58,28 +64,25 @@ gantt.message({
 });
 ~~~
 
-To hide the specified message box manually and not to wait while it hides automatically, you can use the dhtmlx.message.hide(boxId) method.
+###Hiding a Message Box with API
 
-{{note
-The method can't be used with dhtmlx.alert and dhtmlx.confirm
-}}
+To hide the specified message box manually and not to wait while it hides automatically, you can use the **gantt.message.hide(boxId)** method. It takes one parameter:
 
-
-- boxId - the box id specified in the box's constructor
+- **boxId** - the box id specified in the box's constructor
 
 ~~~js
-dhtmlx.message({
+gantt.message({
     id:"myBox",
     text:"Page is loaded"
 });
-..
+
 gantt.message.hide("myBox");
 ~~~
 
+
 ##Modal Message Boxes
 
-Modal message boxes prevent the work of the parent app, until a necessary action is performed (usually, button clicking). 
-They close on a button click and a callback function, if any is executed.
+Modal message boxes prevent the work of the parent app, until a necessary action is performed (usually, button clicking). They close on a button click and a callback function, if any is executed.
 
 There exist three types of modal message boxes:
 
@@ -103,9 +106,8 @@ Common properties of the boxes are:
 	[&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) values, e.g. "100px", "50%").
 
 
-##Initialization
 
-###Alert Message Box {#alert}
+##Alert Message Box {#alert}
 
 <img src="desktop/alert.png"/>
 
@@ -129,11 +131,11 @@ gantt.alert({
 ~~~
 
 
-###Confirm Message Box {#confirm}
+##Confirm Message Box {#confirm}
 
 <img src="desktop/confirm.png"/>
 
-A confirm message box has two buttons - the "OK" button and the "Cancel" one. The text of the buttons is defined in the properties with the corresponding names. 
+A confirm message box has two buttons: the "OK" button and the "Cancel" one. The text of the buttons is defined in the properties with the corresponding names. 
 
 
 - a short form
@@ -160,15 +162,15 @@ gantt.confirm({
 
 <img src="desktop/modalbox.png"/>
 
-A modalbox posesses some peculiar features: 
+A modalbox possesses some peculiar features: 
 
 - its *text* can include any *HTML* content;
-- it may have many buttons specified in the *buttons* array that contains text values for of the buttons;
+- it may have many buttons specified in the *buttons* array that contains the text values of the buttons;
 - the *callback* function takes the *index* of the chosen button as a parameter.
 
 ~~~js
 gantt.modalbox({
-	title:"Settings"
+	title:"Settings",
     text: " ... html code here... ",
     buttons:["Save", "Defaults", "Cancel"],
     callback: function(result){
@@ -176,6 +178,7 @@ gantt.modalbox({
     }
 });
 ~~~
+
 
 ###Configuring modalbox buttons
 
@@ -271,18 +274,51 @@ The **css** will be prefixed with the "gantt_" string and added to the button el
 }
 ~~~
 
+##Hiding Modal Message Boxes
+
+To hide a modal message box manually, you can use the **gantt.modalbox.hide()** method. As a parameter it takes the div container of the modalbox:
+
+~~~js
+var box = gantt.modalbox({	
+	title:"Settings",
+    text: " ... html code here... ",
+    buttons:["Save", "Defaults", "Cancel"],
+    callback: function(result){
+        gantt.alert(result);
+    }
+});
+
+gantt.modalbox.hide(box);
+~~~
+
+For the **alert** and **confirm** modal boxes, you also need to use the **gantt.modalbox.hide()** method:
+
+~~~js
+var box = gantt.confirm({
+    text: "Continue?",
+    ok:"Yes", 
+    cancel:"No",
+    callback: function(result){
+        gantt.message("Result: "+result);
+    }
+});
+
+gantt.modalbox.hide(box);
+~~~
+
+
 ##Styling
 
 For any type of the message box you can define a custom style to achieve the desired look.
-Generally, the appropriate css class is specified through the parameter *type*: you define a css class and set the parameter to its name.
+Generally, the appropriate CSS class is specified through the *type* parameter: you define a CSS class and set the parameter to its name.
 
-While creating a css class, please, use the 'important' keyword to ensure correct processing.
+While creating a CSS class, please, use the 'important' keyword to ensure correct processing.
 
 There are some rules related to setting the 'type' parameter you should keep in mind:
 
-- To set a css class for the alert and confirm boxes, you must initialize such a box using the 'window-related' way.
-- To set a css class for the message boxes, you must initialize such a box using the 'common' way.
-- The name of a css class should go with the 'gantt-' prefix.
+- To set a CSS class for the alert and confirm boxes, you must initialize such a box using the 'window-related' way.
+- To set a CSS class for the message boxes, you must initialize such a box using the 'common' way.
+- The name of a CSS class should go with the 'gantt-' prefix.
 
 ~~~js
 <style type="text/css">
@@ -292,7 +328,8 @@ There are some rules related to setting the 'type' parameter you should keep in 
     background-color:red !important;
 }
 </style>
-...
+
+
 gantt.message({ type:"myCss", text:"some text" });
 ~~~
 

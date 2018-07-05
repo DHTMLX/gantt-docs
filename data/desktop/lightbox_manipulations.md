@@ -1,4 +1,4 @@
-Working with the Lightbox Elements
+Working with Lightbox Elements
 ====================================
 
 ##Getting/setting the control value
