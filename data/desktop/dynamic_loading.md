@@ -7,8 +7,25 @@ By default, dhtmlxGantt loads all data at once. It may become problematic when y
 
 In such a situation you may use the dynamic loading mode and load data by branches (sub-projects), level by level as the user opens them. 
 
+How it works
+----------------
 
-To enable the dynamic loading in the Gantt chart, you need to deal with both the client- and the server side.
+When dynamic loading is [enabled](#enabledynload), the [gantt.load("url")](api/gantt_load.md) call will send a GET request to the specified URL, 
+expecting the response to contain only the top-level tasks, and all the nested branches displayed as closed.
+
+When the user clicks on the Expand icon, gantt automatically calls the api/gantt_load.md method sending the id of a clicked task to the server:
+
+~~~js
+gantt.load("url?parent_id=123");
+~~~
+
+And expects the response to contain subtasks of the expanded item.
+
+
+Enabling dynamic loading
+----------------------
+
+<span id="enabledynload">To enable the dynamic loading in the Gantt chart</span>, you need to deal with both the client- and the server side.
 
 - Client side (use the api/gantt_branch_loading_config.md option):
 
@@ -77,7 +94,7 @@ $gantt->event->attach("beforeRender","check_children");
 }}
 
 
-Dynamic loading format of data
+Data format for dynamic loading 
 -----------------------
 
 The format of data for dynamic loading is the following:

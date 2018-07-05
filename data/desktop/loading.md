@@ -122,7 +122,9 @@ app.get("/data", function(req, res){
 Loading Task Dates
 ---------------------
 
-There are three ways to define task schedule in the data feed:
+###Setting task schedule
+
+There are three ways to define a schedule for a task in the data feed:
 
 - start_date + duration
 - start date + end_date
@@ -133,6 +135,43 @@ The property that is not specified will be calculated based on the ones that are
 {{sample
 	01_initialization/18_backward_planning.html
 }}
+
+<h3 id="enddateformat">Formatting end dates of tasks</h3>
+
+The end dates of tasks are not inclusive. It means that Gantt inteprets the midnight of the latest date in the range as the end of the task, while the latest date itself isn't included into the task duration, and is not
+shown, as a result. For example, for Gantt a 1-day task scheduled for the 20th of May, 2018 (20-05-2018 00:00:00) will be ended on 21-05-2018 00:00:00, although the 21st of May, 2018 won't be covered by this task. 
+
+It's impossible to influence the Gantt format of storing data. However, you can redefine templates for a gantt grid in order to make it show inclusive dates only.
+Thus, Gantt will display the end date of a task as *end_date - 1* rather than take the exact "end_date" value from the code.
+ 
+In the example below displaying of the end task in the tooltip is redefined via the api/gantt_tooltip_text_template.md template:
+
+~~~js
+function formatEndDate(date, template){ 
+	// get 23:59:59 instead of 00:00:00 for the end date
+  	return template(new Date(date.valueOf() - 1));  
+}
+
+gantt.config.columns = [
+	{name: "text", label: "Task name", tree: true, width: 160, resize:true},
+	{name: "start_date", label:"Start", align: "center", width: 100, resize:true},
+	{name: "end_date", label:"End", align: "center", width: 100, 
+    	template: function(task){
+			return formatEndDate(task.end_date, gantt.templates.date_grid);
+		}, resize:true},
+	// more columns
+];
+
+gantt.init("gantt_here");
+var formatFunc = gantt.date.date_to_str("%Y-%m-%d %H:%i");
+gantt.templates.tooltip_text = function (start, end, task) {
+     return "<b>Task:</b> " + task.text + "<br/><b>Start date:</b> " + 
+       formatFunc(task.start_date) + "<br/><b>End date:</b> " + 
+       formatEndDate(task.end_date, formatFunc);
+};
+~~~
+
+<img src="desktop/format_end_dates.png">
 
 Specifying Data Properties
 -------------------------
