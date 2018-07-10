@@ -6,16 +6,25 @@ locate
     
 
 @params:
-- e		Event		a native event
+- e		 Event		a native event
 
 
 @returns:
--id		string,number	the task id
+- id		string,number	the task id
 
 @example:
-gantt.locate(e);
+gantt.$container.addEventListener("mouseover", function(event){
+    var taskId = gantt.locate(event);
+    if(gantt.isTaskExists(taskId)){
+       gantt.message({
+         id:1,
+         text:"Mouse over " + gantt.getTask(taskId).text});
+    }
+});
 
 @template:	api_method
 @defined:	RenderStack	
 @descr:
 
+@relatedapi:
+api/gantt_task_attribute_config.md

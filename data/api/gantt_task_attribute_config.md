@@ -13,3 +13,6 @@ gantt.config.task_attribute = "t_id"
 HTML elements of tasks with the default **task_attribute** (*task_id* ) look like this:
 
 <img src="api/property_task_attribute.png"/>
+
+@relatedapi:
+api/gantt_locate.md
