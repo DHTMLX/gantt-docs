@@ -8,10 +8,6 @@ changeLightboxType
 - type	string	the task type	
 
 
-@returns:
-- result	void|boolean	void if the type is changed, `true` if there is no need to change the type
-
-
 @example:
 gantt.changeLightboxType(gantt.config.types.project);
 
@@ -19,7 +15,7 @@ gantt.changeLightboxType(gantt.config.types.project);
 @descr:
 The method repaints the lightbox and if possible saves all the input. For rebuilding the structure, the method uses the [configuration for the specified type](desktop/default_edit_form.md).
 
-If the old type is the same as the type in the parameter, the method returns `true` and does nothing.
+If the type of the lightbox is the same as the type in the parameter, the method does not repaint the lightbox.
 
 @relatedapi:
 api/gantt_onlightboxchange_event.md

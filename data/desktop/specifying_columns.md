@@ -357,5 +357,10 @@ If at least one of the scrollbars assigned to the same group is visible, all scr
 {{sample 07_grid/10_scrollable_grid.html}}
 
 
+Styling
+--------
+
+For information on styling cells of the grid, read desktop/styling_guide.md#stylinggrid.
+
 
 

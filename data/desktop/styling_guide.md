@@ -38,7 +38,7 @@ gantt.templates.grid_header_class = function(columnName, column){
 
 ###Custom elements in grid header
 
-It is possible to add custom elements (such as buttons, inputs, etc.) into the header of the grid. To add an element, you need to set its HTML as the value of the **label** property inside the 
+It is possible to add custom elements (such as buttons, icons, inputs, etc.) into the header of the grid. To add an element, you need to set its HTML as the value of the **label** property inside the 
 [**gantt.config.columns**](api/gantt_columns_config.md) configuration option:
 
 ~~~js
@@ -84,6 +84,40 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 
 {{editor 		https://docs.dhtmlx.com/gantt/snippet/66521f81			Custom Elements in Grid Header}}
 
+#### Icons and Images in grid header
+
+To add an image or an icon into the header, you can also put it into the inner HTML of the cell using the **label** property:
+
+~~~js
+var textLabel = [
+    "<div class='gantt-text-label'>"+
+	"<img src='http://docs.dhtmlx.com/scheduler/assets/index/icon1.png'>"+
+	"<span>Text</span>" +
+	"</div>"
+].join("");
+
+gantt.config.columns = [
+	{name: "text", label:textLabel,tree: true, width: '*', resize: true},
+	{name: "start_date", align: "center", resize: true},
+	{name: "duration", align: "center"},
+	{name: "add", width: 44}
+];
+~~~
+
+{{editor	http://snippet.dhtmlx.com/55086fc42	Images in Grid Header: Columns Config}}
+
+Alternatively, you can set a header cell in CSS using the **.gantt_grid_head_<columnName>** selector:
+
+~~~css
+.gantt_grid_head_text  {
+    background-image:url('http://docs.dhtmlx.com/scheduler/assets/index/icon1.png');
+    background-repeat:no-repeat;  
+}
+~~~
+
+<img src="desktop/custom_elements_grid_header_image.png">
+
+{{editor	http://snippet.dhtmlx.com/e13d18a10	Images in Grid Header:CSS}}
 
 ###Background color of grid rows 
 
