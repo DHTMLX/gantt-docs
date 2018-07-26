@@ -257,7 +257,8 @@ dp.init(gantt);
 dp.setTransactionMode({
     mode:"REST",
     headers: {
-       "Authorization": "Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
+    	"Content-Type": "application/x-www-form-urlencoded",
+       	"Authorization": "Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
     }
 });
 ~~~
