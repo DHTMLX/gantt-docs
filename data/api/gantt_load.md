@@ -30,7 +30,7 @@ gantt.load("data.xml","xml", function(){ //specifying the callback function
     desktop/server_side.md
     desktop/dynamic_loading.md
 @relatedsample:
-	01_initialization/04_connector_json.html
+	01_initialization/04_save_rest.html
     02_extensions/06_dynamic_loading.html
 @relatedapi:
 	api/gantt_parse.md

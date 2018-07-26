@@ -82,10 +82,6 @@ $gantt->render_table("gantt_tasks","id",
     </ul>
 	
 
-{{sample
-	01_initialization/04_connector_json.html
-}}
-
 ###Request parameters format
 
 An example of Gantt request values for a separate request for each task is given below:

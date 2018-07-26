@@ -9,7 +9,7 @@ Start
     <ul>
 		<li><a href="desktop/inline_editing.md">Inline editing in grid</a></li>
         <li><a href="desktop/split_tasks.md">Splitting tasks</a></li>
-        <li><a href="whatsnew.html#52">Auto task types and new lightbox controls</a></li>
+        <li><a href="whatsnew.md#52">Auto task types and new lightbox controls</a></li>
 	</ul>
 
     <p class='action_buttons'>
