@@ -1,4 +1,4 @@
-Radio Button
+Radio Button Control
 =============
 
 A block of options that allows selecting only one of them at a time.
@@ -7,12 +7,12 @@ A block of options that allows selecting only one of them at a time.
 
 {{sample 05_lightbox/02_radio.html}}
 
-Initializing the control
---------------------------
+Initialization
+----------------
 
 To add a **radio button** control to the lightbox, follow these steps:
 
-- Add a section to the lightbox configuration:
+1) Add a section to the lightbox configuration:
 
 ~~~js
 var opts = [
@@ -28,7 +28,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-- Set a label for the section:
+2) Set a label for the section:
 
 ~~~js
 gantt.locale.labels.section_priority = "Priority";
@@ -37,8 +37,8 @@ gantt.locale.labels.section_priority = "Priority";
 {{sample 05_lightbox/02_radio.html}}
 
 
-A list of properties
----------------------------------------------
+Properties
+-------------
 
 The following properties are mostly important and commonly set for the **radio button** control (see the full list [here](api/gantt_lightbox_config.md)):
 
@@ -49,11 +49,12 @@ The following properties are mostly important and commonly set for the **radio b
 the following properties:
 	- **key** - (*string*) the option id. This attribute is compared with the task data property to assign options to tasks
 	- **label** - (*string*) the option label
-			
+- **focus** - (*boolean*) if set to *true*, the section will take focus on opening the lightbox
+- **default_value** - (*any*) the default value of the section's control. Applied only if the input value is underfined			
 
 
-Populating the control with data
--------------------------------------------
+Populating control with data
+-------------------------------
 
 Generally, to set values for the **radio button** control, use the [options](api/gantt_lightbox_config.md) parameter:
 

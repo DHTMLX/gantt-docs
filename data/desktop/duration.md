@@ -16,7 +16,7 @@ gantt.config.lightbox.sections=[
 	01_initialization/01_basic_init.html
 }}
 
-Initializing the control
+Initialization
 ---------------------------
 
 One **duration** control is added to the lightbox by default. To add another one, follow the steps below:
@@ -38,24 +38,27 @@ gantt.locale.labels.section_time2 = "Actual duration";
 ~~~
 
 
-A list of properties
+Properties
 ------------------------
 
 The following properties are mostly important and commonly set for the **time** control (see the full list [here](api/gantt_lightbox_config.md)):
 
 - **name** - (*string*) the section name 
 - **height** - (*number*) the section height
-- **map_to** - (*string,object*) defines the data property(-ies) that will be mapped to the section
+- **map_to** - (*string,object*) "auto" or object, defines the data property(-ies) that will be mapped to the section
+- **type** - (*string*) the type of the [section control](desktop/default_edit_form.md#lightboxcontrols)
+- **focus** - (*boolean*) if set to *true*, the section will take focus on opening the lightbox
 - **readonly** - (*boolean*) if you set the "true" value, the section will be read-only
 - **year_range** - (*array,number*) sets a range for the year selector. The range can be set in 2 ways: 
 	- *year_range: [2005, 2025]* - a period from 2005 till 2025 year
     - *year_range: 10*  - a period [current year - 10 years; current year + 10 years]
 - **single_date** - (*boolean*) if you set the "true" value, just the *start Date* selector will be presented in the section. 
 Edited tasks will be specified only by the start date and have a zero duration. Makes sense only for [milestones](desktop/task_types.md#milestones)
-- **type** - (*string*) the type of the [section control](desktop/default_edit_form.md#lightboxcontrols)
+- **time_format** - (*string*) sets the order of date-time selectors
+
 		
 
-Configuring  the date-time selectors 
+Configuring date-time selectors 
 ---------------------------------------
 
 To configure the selectors in the "Time period" section, use the [time_format](api/gantt_lightbox_config.md) property (see desktop/date_format.md):
@@ -80,13 +83,13 @@ Note, the allowable members of the [time_format](api/gantt_lightbox_config.md) a
 You can change just the order and the number of these members in the array but not the data presentation format.<br> For example, you can change the format as in:
 
 ~~~js
-//time goes first
+// time goes first
 time_format:["%H:%i", "%m", "%d", "%Y"] 
-//month goes first
+// month goes first
 time_format:["%m","%d", "%Y", "%H:%i"]
-//the year selector is removed
+// the year selector is removed
 time_format:["%H:%i", "%m", "%d"]
-//incorrect
+// incorrect
 time_format:["%H:%i", "%M", "%d", "%Y"] //"%m" was changed to "%M"
 ~~~
 
@@ -120,6 +123,6 @@ As an object, **map_to** has 3 properties:
 2. **end_date** - optional, the name of a data property that will store the end date set in the input 
 3. **duration** - optional, the name of a data property that will store the duration defined by the input 
 
-{{note If some of the properties is not specified, the control takes the value of the related mandatory date property.}}
+{{note If some property is not specified, the control takes the value of the related mandatory date property.}}
 
 

@@ -5,7 +5,7 @@ A multiline text field.
 
 <img src="desktop/textarea_control.png"/>
 
-Initializing the control
+Initialization
 ---------------------------------
 
 One **textarea** control is added to the lightbox by default. To add another one, follow the steps below:
@@ -37,3 +37,5 @@ The following properties are mostly important and commonly set for the **textare
 - **height** - (*number*) the section height
 - **map_to** - (*string*) the name of a data property that will be mapped to the section
 - **type** - (*string*) the type of the [section control](desktop/default_edit_form.md#lightboxcontrols)
+- **focus** - (*boolean*) if set to *true*, the section will take focus on opening the lightbox
+- **default_value** - (*any*) the default value of the section's control. Applied only if the input value is underfined. Won't work with *map_to:"text"*

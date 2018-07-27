@@ -22,8 +22,8 @@ gantt.config.lightbox.sections = [
 }}
 
 
-Initializing the control
-------------------------------------------
+Initialization
+---------------------
 
 To add the **typeselect** control to the lightbox, just add a section to the lightbox configuration as in:
 
@@ -54,11 +54,12 @@ Properties
 
 The following properties are mostly important and commonly set for the **typeselect** control (see the full list [here](api/gantt_lightbox_config.md)):
 
-- **filter** - (*function*) filters the types in the control. Takes the type name as a parameter
 - **name** - (*string*) the section name 
 - **height** - (*number*) the section height
 - **map_to** - (*string*) the name of a data property that will be mapped to the section
 - **type** - (*string*) the [type of the section control](desktop/default_edit_form.md#lightboxcontrols)
+- **focus** - (*boolean*) if set to *true*, the section will take focus on opening the lightbox
+- **filter** - (*function*) sets a filtering function for the types of tasks. Takes the type name as a parameter
 
 
 @edition: pro

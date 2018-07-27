@@ -23,12 +23,12 @@ gantt.locale.labels.section_priority = "Priority";
 	05_lightbox/02_select.html
 }}
 
-Initializing the control
-------------------------------------------
+Initialization
+-------------------
 
 To add a **select** control to the lightbox, follow these steps:
 
-- Add the section to the lightbox configuration:
+1) Add a section to the lightbox configuration:
 
 ~~~js
 var opts = [
@@ -44,7 +44,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-- Set the label for the section:
+2) Set a label for the section:
 
 ~~~js
 gantt.locale.labels.section_priority = "Priority";
@@ -56,8 +56,8 @@ gantt.locale.labels.section_priority = "Priority";
 }}
 
 
-A list of properties
----------------------------------------------
+Properties
+-------------
 
 The following properties are mostly important and commonly set for the **select** control (see the full list [here](api/gantt_lightbox_config.md)):
 
@@ -65,15 +65,17 @@ The following properties are mostly important and commonly set for the **select*
 - **height** - (*number*) the section height
 - **map_to** - (*string*) the name of a data property that will be mapped to the section
 - **type** - (*string*) the type of the [section control](desktop/default_edit_form.md#lightboxcontrols)
+- **focus** - (*boolean*) if set to *true*, the section will take focus on opening the lightbox
 - **options** - (*array*) an array of objects. Defines select options of the control (*used for the **select**, **checkbox**  and **radio**  controls*). Each object in the array specifies a single option and takes
 the following properties:
 	- **key** - (*string*) the option id. This attribute is compared with the task data property to assign options to tasks
 	- **label** - (*string*) the option label
-			
+- **default_value** - (*any*) the default value of the section's control. Applied only if the input value is underfined	
+- **onchange** - (*function*) specifies the 'onChange' event handler function for the section's control 
 
 
-Populating the control with data
--------------------------------------------
+Populating control with data
+-------------------------------
 
 Generally, to set values for the **select** control, use the [options](api/gantt_lightbox_config.md) parameter:
 
@@ -94,8 +96,8 @@ Items in the [options](api/gantt_lightbox_config.md) parameter have 2 mandatory 
 - **label** - the option label
 
 
-Populating the control with data from the server
-------------------------------------------------------
+Populating control with data from the server
+---------------------------------------------
 
 To populate the control from the server, set the [options](api/gantt_lightbox_config.md) option to the value returned by the api/gantt_serverlist.md method:
 
@@ -140,7 +142,7 @@ The output of the **/data** url is the following:
 }
 ~~~
 
-### Loading options using dhtmlxConnector
+### Loading options via dhtmlxConnector
 
 Here is a sample of [dhtmlxConnector](desktop/howtostart_connector.md) initialization:
 
