@@ -19,7 +19,7 @@ gantt.addTask({
     duration:28
 }, "project_2");
 
-gantt.isSummary(10); // ->false
+gantt.isSummaryTask(10); // ->false
 
 
 @template:	api_method
