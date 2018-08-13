@@ -57,8 +57,7 @@ gantt.init("gantt_here");
 gantt.load("tasks.json"); /*!*/   
 ~~~
 
-The *load* method will send an AJAX request to the specified url and will expect a response with data in 
-[one of the supported formats](desktop/loading.md#supporteddataformats).
+The *load* method will send an AJAX request to the specified url and will expect a response with data in [one of the supported formats](desktop/supported_data_formats.md).
 For example:
 
 {{snippet
@@ -116,7 +115,7 @@ app.get("/data", function(req, res){
 });
 ~~~
 
-{{note See all supported data formats in the article desktop/loading.md#supporteddataformats.}} 
+{{note See all supported data formats in the article desktop/supported_data_formats.md.}} 
 
 
 Loading Task Dates
