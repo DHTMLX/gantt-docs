@@ -71,10 +71,11 @@ This section is dedicated to the very beginning of work with Gantt chart. Each c
 
 
 @index:
+- desktop/howtostart_dotnet_core.md
 - desktop/howtostart_php.md
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_ruby.md
-- desktop/howtostart_dotnet_core.md
+
 

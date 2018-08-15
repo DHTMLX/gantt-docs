@@ -28,10 +28,11 @@ Select an Empty template.
 
 ![dhtmlxGantt with ASP.NET Core 2 creating a project](desktop/create_project_step2.png)
 
+Thus you've created a project and can proceed to add markup and script for Gantt.
 
 ## Step 2. Adding Gantt Markup and JS
 
-Go to **wwwroot** and create **index.html**
+Go to **wwwroot** and create an **index.html** file.
 
 ![dhtmlxGantt with ASP.NET Core 2 creating a project](desktop/create_project_step3.png)
 
@@ -39,9 +40,9 @@ Go to **wwwroot** and create **index.html**
 ![dhtmlxGantt with ASP.NET Core 2 creating a project](desktop/create_project_step4.png)
 
 
-In the newly created file create a simple page for a gantt chart.
+In the newly created file make a simple page for a gantt chart.
 
-Note, that gantt files are added from the [CDN](desktop/install_with_bower.md#cdn) in this demo. If you have a Professional version of the component, 
+Note, that gantt files are added from [CDN](desktop/install_with_bower.md#cdn) in this demo. If you have a Professional version of the component, 
 you'll need to [add gantt files to your project manually](desktop/install_with_bower.md#addingprofessionaleditionintoproject). 
 
 {{snippet index.html}}
@@ -81,12 +82,13 @@ you'll need to [add gantt files to your project manually](desktop/install_with_b
 When the page is loaded, in addition to [initializing gantt chart](desktop/initializing_gantt_chart.md) [data loading](desktop/loading.md) is immediately called and the 
 [`dataProcessor`](desktop/server_side.md#technique) is set up, so all changes made to gantt chart by the user will be saved to the backend. The backend isn't implemented yet, so it will make more sense later.
 
-Next go to **Startup.cs** and tell the application to use this **index.html** page. In order to do so, you need to configure the app to serve static files from the `wwwroot` folder. 
+Next go to **Startup.cs** and tell the application to use the **index.html** page. In order to do so, you need to configure the app to serve static files from the `wwwroot` folder. 
 It's done in the `Configure` method by calling the `app.UseStaticFiles()` method.
 You can find [more details here](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-2.1&tabs=aspnetcore2x).
 
-So, in **Startup.cs** replace the "Hello world" stub with these two lines of code:
+We also need to add the required middleware to **Startup.cs**, by replacing the "Hello world" stub in the `Configure()` method with two highlighted lines of code:
 
+{{snippet Startup.cs}}
 ~~~js
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -114,15 +116,27 @@ namespace DHX.Gantt
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseDefaultFiles(); //!
-            app.UseStaticFiles(); //!
+            app.UseDefaultFiles(); /*!*/
+            app.UseStaticFiles();  /*!*/
         }
     }
 }
 ~~~
 
-Once you do it, you should be able to run the app and see an empty gantt on the page. Note that the "Invalid data" label at the top right corner shows up because `gantt.load()` is called,
-while there is still no proper backend to serve the data. Once the controller will be implemented, gantt will be able to display tasks and links.
+The 2 added middleware are:
+
+- `app.UseDefaultFiles()` – allows serving default files. It will search the **wwwroot** folder for the following files:
+	- index.html
+	- index.htm
+	- default.html
+	- default.htm
+Thus, you can choose any of them, while in this tutorial "index.html" is used.
+`UseDefaultFiles()` is just an URL-rewriter that doesn't actually serve the file. For this purpose you need to also add the `UseStaticFiles()` file.
+
+- `app.UseStaticFiles()` – is responsible for serving all static files present in the **wwwroot** folder.
+
+Once you are done with it, an empty gantt should appear on the page when you run the application. Note that the "Invalid data" label at the top right corner shows up because `gantt.load()` is called,
+as there is still no proper backend to serve the data. When the controller will be implemented, gantt will be able to display tasks and links.
 
 ![dhtmlxGantt with ASP.NET Core 2 adding Gantt](desktop/adding_gantt_dotnet_core.png)
 
@@ -132,7 +146,7 @@ Now the basic part is done and it's time to implement the backend. Let's start w
 ## Step 3. Creating Models and Database
 
 Let's begin with data models. A data model for Gantt includes [links and tasks](desktop/loading.md#standarddatabasestructure). 
-dhtmlxGantt uses non-conventional names for model properties desktop/supported_data_formats.md#json (from .NET world perspective). 
+dhtmlxGantt uses [non-conventional names for model properties](desktop/supported_data_formats.md#json) from the .NET world perspective. 
 Sometimes the client-side model also contains some properties for the client side or the backend logic, but these properties shouldn't be stored in a database.
 
 To deal with this, the [Data Transfer Object (DTO)](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) pattern will be used. Two kinds of models will be defined:
@@ -148,7 +162,7 @@ Create a new folder called **Models** in the project folder. This is where model
 
 #### Task Model
 
-First, create a class for Tasks. Create a file in the Models folder and name it **Task.cs**. This can be done by calling the context menu for the **Models** folder and selecting *Add->Class*.
+First, create a class for Tasks. Create a file in the Models folder and name it **Task.cs**. This can be done by calling the context menu for the Models folder and selecting *Add->Class*.
 
 This is how the model must look like:
 
@@ -175,7 +189,7 @@ You can look up [the list of all properties of the Task object](desktop/loading.
 
 #### Link Model
 
-Add one more file and create the Link class:
+Add one more file and create a class for Links:
 
 {{snippet	DHX.Gantt/Models/Link.cs}}
 ~~~js
@@ -191,7 +205,7 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-The models are ready, and you can proceed to configuring the database connection.
+The models are ready, and you can start configuring the database connection.
 
 ### Configuring DataBase Connection
 
@@ -202,14 +216,17 @@ To configure database connection, you need to take the steps listed below:
 The [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) will be used to manage communication of the app with a database. Let's install the framework: 
 
 - find Dependencies of DHTMLX.Gantt in the project tree
-- call the context menu and select Manage NuGet packages 
-- open the Browse tab and install Microsoft.EntityFrameworkCore.SqlServer
+- call the context menu and select *Manage NuGet packages* 
+- open the *Browse* tab and install **Microsoft.EntityFrameworkCore.SqlServer**
 
 ![dhtmlxGantt with ASP.NET Core 2 EF core installation](desktop/install_ef_dotnet_core.png)
 
 #### Create Entity Context
 
-Next you need to define a session with the database and enable loading and saving data. For this, create Context. In the Models folder create **GanttContext.cs** and define the **GanttContext** class:
+Next you need to define a session with the database and enable loading and saving data. For this, create Context:
+
+- add the **GanttContext.cs** file in the *Models* folder 
+- define the **GanttContext** class in the created file
 
 {{snippet	DHX.Gantt/Models/GanttContext.cs}}
 ~~~js
@@ -232,7 +249,8 @@ namespace DHX.Gantt.Models
 
 #### Add First Records to Database
 
-Now you can add records to the database. Let's create the database initializer that will populate the database with tasks. Define a class for it in **Models** and call it GanttSeeder. The class will have the **Seed()** method that will add tasks and links to the database.
+Now you can add records to the database. Let's create the database initializer that will populate the database with tasks. 
+In the **Models** folder define a class and call it **GanttSeeder**. The class will have the **Seed()** method that will add tasks and links to the database.
 
 {{snippet	DHX.Gantt/Models/GanttSeeder.cs}}
 ~~~js
@@ -310,8 +328,8 @@ namespace DHX.Gantt.Models
 
 #### Register Database
 
-Now you should register the database in **Startup.cs**. But first you need a connection string for it. It will be stored in the 
-[application settings in a json file](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment).
+Now you should register the database in **Startup.cs**. But first you need a connection string for it. It will be stored  
+[in a JSON file in the application settings ](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment).
 Create the **appsettings.json** file (or open it if you have it already) and add a connection string to the database:
 
 {{snippet	appsettings.json}}
@@ -324,7 +342,8 @@ Create the **appsettings.json** file (or open it if you have it already) and add
 }
 ~~~
 
-The database context will be registered via a [dependency injection](https://docs.microsoft.com/en-us/ef/core/get-started/aspnetcore/new-db?view=aspnetcore-2.1#register-your-context-with-dependency-injection). 
+The database context will be registered via 
+[dependency injection](https://docs.microsoft.com/en-us/ef/core/get-started/aspnetcore/new-db?view=aspnetcore-2.1#register-your-context-with-dependency-injection). 
 
 Add the following namespaces to **Startup.cs**:
 
@@ -398,9 +417,9 @@ namespace DHX.Gantt
 }
 ~~~
 
-Finally, you need to initialize and seed the database on the app startup. Normally, you'd want to use migrations for that, but for simplicity they won't be used here.
+Finally, you need to initialize and seed the database on the app startup. Normally, you'd want to use migrations for that, but for simplicity they aren't used here.
 
-Let's begin with creating a class where the initialization will be done. In the Models folder create the **GanttInitializerExtension.cs** file:
+Let's begin with creating a class where initialization will be done. Сreate the **GanttInitializerExtension.cs** file in the **Models** folder:
 
 {{snippet	Models/GanttInitializerExtension.cs}}
 ~~~js
@@ -430,7 +449,7 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-Next call InitializeDatabase() in the Program.Main pipeline:
+Next call **InitializeDatabase()** in the *Program.Main* pipeline:
 
 {{snippet	Program.cs}}
 ~~~js
@@ -446,7 +465,7 @@ namespace DHX.Gantt
         public static void Main(string[] args)
         {
             BuildWebHost(args)
-                .InitializeDatabase() //!
+                .InitializeDatabase() /*!*/
                 .Run();
         }
 
@@ -458,13 +477,13 @@ namespace DHX.Gantt
 }
 ~~~
 
-For simplicity migrations aren't used in this tutorial. Instead simple ‘EnsureCreated’ and seed are used.
+As it was mentioned above, migrations aren't used in this tutorial. Instead simple *EnsureCreated* and *seed* are used.
 
 The current part is finished, let's return to Gantt.
 
 ### Define DTOs and Mapping
 
-It is high time to define DTO classes that will be used for Web API. Let's begin with the DTO class for Task. In the Models folder create a file and define the class:
+It is high time to define DTO classes that will be used for Web API. Let's begin with the DTO class for Task. In the **Models** folder create a file and define the **WebApiTask.cs** class:
 
 {{snippet	Models/WebApiTask.cs}}
 ~~~js
@@ -519,7 +538,7 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-And this is the DTO class for Link that should also be in a file in the Models folder:
+And this is the DTO class for Link defined in the file called **WebApiLink.cs** in the **Models** folder:
 
 {{snippet	Models/WebApiLink.cs}}
 ~~~js
@@ -557,11 +576,11 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-When you finish this step, you should get the folder structure like the following:
+When you finish this step, you should get the following folder structure:
 
 ![Gantt ASP.NET Core 2 All models](desktop/dotnet_core_all_models.png)
 
-Now you can run the app in order to check that all is in place. If you don't see a runtime error then everything is fine.
+Now you can run the app in order to check that everything is in place. If you don't see a runtime error, then everything is fine.
 
 ## Step 4. Implementing Web API
 
@@ -571,7 +590,7 @@ Now it's time for the actual REST API implementation. Go to **Startup.cs** and e
 ~~~js
 public void ConfigureServices(IServiceCollection services)
 {
-	services.AddMvc();//!
+	services.AddMvc(); /*!*/
 	services.AddDbContext<GanttContext>(options => 
 		options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 }
@@ -586,13 +605,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
           
 	app.UseDefaultFiles();
 	app.UseStaticFiles();
-	app.UseMvc(); //!
+	app.UseMvc(); /*!*/
 }
 ~~~
 
 ### Adding Controllers
 
-Create the "Controllers" folder and create three empty API Controllers: for Tasks, Links and the whole dataset:
+Create the **Controllers** folder and create three empty API Controllers: one for Tasks, another for Links and one more for the whole dataset:
 
 ![Gantt ASP.NET Core 2 adding controllers](desktop/adding_controllers.png)
 
@@ -603,8 +622,9 @@ Let's create a controller for Tasks. It will define basic CRUD operations for Ga
 
 How it works:
 
-- in GET requests, tasks are loaded from the database and the output is the data transfer objects of the tasks;
-- in PUT/POST requests DTOs are received as the input that is converted to a Task model and the changed are saved to the Database Context.
+- in GET requests tasks are loaded from the database and the output is the data transfer objects of the tasks;
+- in PUT/POST requests tasks come from the client as WebAPITask classes. They are represented in this way in dhtmlxGantt. 
+So, you should convert them into the format of our data model for EntityFramework (Task class). After that it will be possible to save changes in DatabaseContext.
 
 
 {{snippet	Controllers/TaskController.cs}}
@@ -704,7 +724,7 @@ namespace DHX.Gantt.Controllers
 
 #### Link Controller
 
-Next create a controller for Links:
+Next you should create a controller for Links:
 
 {{snippet	Controllers/LinkController.cs}}
 ~~~js
@@ -799,7 +819,7 @@ namespace DHX.Gantt.Controllers
 
 #### Data Controller
 
-And finally, create a controller for a data action:
+Finally, you need to create a controller for a data action:
 
 {{snippet	Controllers/DataController.cs}}
 ~~~js
@@ -889,7 +909,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 			app.UseDeveloperExceptionPage();
 		}	
 
-	app.UseGanttErrorMiddleware();//!
+	app.UseGanttErrorMiddleware(); /*!*/
  	app.UseDefaultFiles();
     app.UseStaticFiles();
     app.UseMvc(); 
@@ -899,7 +919,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ## Storing the order of tasks
 
 Users can rearrange tasks with drag and drop in the client-side gantt. If you use this feature, you should store the order of tasks in the database. 
-For details, read [this section](desktop/server_side.md#storingtheorderoftasks).
+For details read [this section](desktop/server_side.md#storingtheorderoftasks).
 
 Read on to find out how to enable storing the order of tasks for gantt.
 
@@ -937,7 +957,7 @@ namespace DHX.Gantt.Models
         public decimal Progress { get; set; }
         public int? ParentId { get; set; }
         public string Type { get; set; }
-        public int SortOrder { get; set; }
+        public int SortOrder { get; set; } /*!*/
     }
 }
 ~~~
@@ -946,7 +966,7 @@ namespace DHX.Gantt.Models
 
 You will also need to update controllers.
  
-1\. The client side should receive tasks ordered by the **SortOrder** value. Add this line to DataController:
+1\. The client side should receive tasks ordered by the **SortOrder** value. Add the highlighted line to DataController:
 
 {{snippet	Controllers/DataController.cs}}
 ~~~js
@@ -956,7 +976,7 @@ public object Get()
 	return new
 		{
 			data = _context.Tasks
-           .OrderBy(t => t.SortOrder) //!
+           .OrderBy(t => t.SortOrder) /*!*/
            .ToList()
            .Select(t => (WebApiTask)t),
            	links = _context.Links
@@ -976,7 +996,7 @@ public IActionResult Post(WebApiTask apiTask)
 {
 	var newTask = (Task)apiTask;
 
-	newTask.SortOrder = _context.Tasks.Max(t => t.SortOrder) + 1; //!
+	newTask.SortOrder = _context.Tasks.Max(t => t.SortOrder) + 1; /*!*/
 	_context.Tasks.Add(newTask);
 	_context.SaveChanges();
 
@@ -991,7 +1011,7 @@ public IActionResult Post(WebApiTask apiTask)
 3\. **sortOrder** should be updated when the task order is modified on the client. When a user rearranges tasks, gantt will call a PUT action and provide the info about the positions of the new task in the 
 ['target'](desktop/server_side.md#storingtheorderoftasks) property of the request, together with the rest of task properties.
  
-Add `target` to the DTO Task class:
+Add `target` to the **WebApiTask.cs** class:
  
 {{snippet	Models/WebApiTask.cs}}
 ~~~js
@@ -1004,7 +1024,7 @@ public class WebApiTask
     public decimal progress { get; set; }
     public int? parent { get; set; }
     public string type { get; set; }
-    public string target { get; set; } //!
+    public string target { get; set; } /*!*/
     public bool open
     {
         get { return true; }
@@ -1032,11 +1052,11 @@ public IActionResult Put(int id, WebApiTask apiTask)
     dbTask.Progress = updatedTask.Progress;
     dbTask.Type = updatedTask.Type;
  
-    if (!string.IsNullOrEmpty(apiTask.target))
-    {
-         // reordering occurred
-         this._UpdateOrders(dbTask, apiTask.target);
-    }
+    if (!string.IsNullOrEmpty(apiTask.target))			/*!*/			
+    {													/*!*/
+         // reordering occurred							/*!*/
+         this._UpdateOrders(dbTask, apiTask.target);	/*!*/
+    }													/*!*/
  
     _context.SaveChanges();
  
@@ -1110,7 +1130,7 @@ public static explicit operator WebApiTask(Task task)
 	return new WebApiTask
 	{
 		id = task.Id,
-		text = HtmlEncoder.Default.Encode(task.Text),
+		text = HtmlEncoder.Default.Encode(task.Text), /*!*/
 		start_date = task.StartDate.ToString("yyyy-MM-dd HH:mm"),
 		duration = task.Duration,
 		parent = task.ParentId,
@@ -1120,10 +1140,10 @@ public static explicit operator WebApiTask(Task task)
 }
 ~~~
 
-Another approach would be to use a specialized library, e.g. [HtmlAgilityPack](https://www.nuget.org/packages/HtmlAgilityPack/) and completely strip any html task when you save/load the data.
+Another approach would be to use a specialized library, e.g. [HtmlAgilityPack](https://www.nuget.org/packages/HtmlAgilityPack/) and completely strip any HTML task when you save/load the data.
 
 ## What's Next
 
 Now you have a fully-functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core), clone or download it and use it for your projects.
 
-You can also find [tutorials on the numerous features of gantt](desktop/guides.md) or tutorials on [integrating gantt with other backend frameworks](desktop/howtostart_guides.md).
+You can also find [tutorials on the numerous features of gantt](desktop/guides.md) or tutorials on [integrating Gantt with other backend frameworks](desktop/howtostart_guides.md).
