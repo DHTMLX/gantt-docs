@@ -23,7 +23,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/howtostart_ruby.md</li>
             </ul>
         </td>
-        <td class='topic_description'>Says how to build a standard Gantt chart on different server-side platforms and perform common tasks:
+        <td class='topic_description'>Says how to build a standard dhtmlxGantt chart on different server-side platforms and perform common tasks:
         create database connection, load with data, save changes, store the order of tasks, provide app security, etc.</td>
 	</tr>
 	<tr>

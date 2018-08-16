@@ -9,7 +9,7 @@ body{
     background-color: #7182CA;
     background-image: url(index/start.png);
     background-repeat: repeat-x;
-    background-position: 0px 50px;
+    background-position: 50% 50%;
 }
 
 .page_start .search-field-text{
@@ -386,7 +386,7 @@ body{
     color: white;
     font-size:17px;
     padding: 0px;
-    margin-top:32px;
+    margin-top:34px;
     width:440px;
     z-index:5;
     position:relative;
