@@ -279,16 +279,22 @@ gantt.init("gantt_here");
 
 
 </li>
-<li>the api/gantt_date_scale_template.md template,  to set a complex format as a function that takes a date object as a parameter:<br><br>
+<li>the api/gantt_date_scale_template.md template, to set a complex format as a function that takes a date object as a parameter:<br><br>
 
 ~~~js
-var scale_day = 0;
-gantt.templates.date_scale = function(date) {/*!*/
-	var d = gantt.date.date_to_str("%F %d");/*!*/
-    return "<strong>Day " + (scale_day++) + "</strong><br/>" + d(date);/*!*/
-};/*!*/
 gantt.config.scale_height = 44;
-gantt.init("gantt_here");
+
+gantt.attachEvent("onGanttReady", function(){
+	var dateFormat = gantt.date.date_to_str("%F %d");
+
+	var dayNumber = function(date){
+		return gantt.columnIndexByDate(date) + 1;
+	} 
+
+	gantt.templates.date_scale = function(date){		/*!*/
+	  return "<strong>Day "+dayNumber(date)+"</strong><br/>"+dateFormat(date); /*!*/
+	} /*!*/
+});
 ~~~
 
 
