@@ -20,7 +20,7 @@ Methods
 - api/gantt_calculateenddate.md - calculates the end date of a task
 - api/gantt_calculatetasklevel.md - calculates the level of a task
 - api/gantt_callevent.md - calls an inner event
-- api/gantt_changelightboxtype.md - changes the name of the lighbox's structure defined for  of the task
+- api/gantt_changelightboxtype.md - repaints the lighbox for the task according to its type
 - api/gantt_changelinkid.md - changes the link's id
 - api/gantt_changetaskid.md - changes the task's id
 - api/gantt_checkevent.md - checks whether an event has some handler(s) specified

@@ -24,7 +24,7 @@ Gantt API
 - api/gantt_calculateenddate.md - calculates the end date of a task
 - api/gantt_calculatetasklevel.md - calculates the level of a task
 - api/gantt_callevent.md - calls an inner event
-- api/gantt_changelightboxtype.md - changes the name of the lighbox's structure defined for  of the task
+- api/gantt_changelightboxtype.md - repaints the lighbox for the task according to its type
 - api/gantt_changelinkid.md - changes the link's id
 - api/gantt_changetaskid.md - changes the task's id
 - api/gantt_checkevent.md - checks whether an event has some handler(s) specified
@@ -201,6 +201,7 @@ Gantt API
 - api/gantt_onafterlinkupdate_event.md - fires after the user updates a link
 - api/gantt_onafterquickinfo_event.md - fires after the pop-up edit form is closed
 - api/gantt_onafterredo_event.md - fires after the redo() method was called
+- api/gantt_onaftersort_event.md - 
 - api/gantt_onaftertaskadd_event.md - fires after the user adds a task to the Gantt chart
 - api/gantt_onaftertaskautoschedule_event.md - fires for each task which has been autoscheduled
 - api/gantt_onaftertaskdelete_event.md - fires after the user deletes a task

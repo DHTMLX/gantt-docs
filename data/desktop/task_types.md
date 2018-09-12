@@ -152,7 +152,7 @@ To provide a possibility of adding milestones, read article desktop/milestones.m
 Specific lightbox per task type
 ----------------------------------------------
 
-Each type of a task may have its own set of characteristics - because of this, an individual configuration of the details form (lightbox) can be defined for each type.
+Each type of a task has its own set of characteristics. That's why an individual configuration of the details form (lightbox) can be defined for each type.
 All configurations are stored in the api/gantt_lightbox_config.md object. 
 
 They are:
@@ -179,6 +179,8 @@ gantt.config.lightbox.milestone_sections= [
 	{name: "time", type: "duration", single_date: true, map_to: "auto"}
 ];
 ~~~
+
+When a user changes the type of a task in the related select, the corresponding configuration is applied to the the lightbox popup and it is updated dynamically.
 
 You can [add a custom type](desktop/task_types.md#creatingacustomtype) and specify an appropriate structure of the lightbox for it as well.
 

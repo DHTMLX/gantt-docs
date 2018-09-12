@@ -11,6 +11,7 @@ Events
 - api/gantt_onafterlinkupdate_event.md - fires after the user updates a link
 - api/gantt_onafterquickinfo_event.md - fires after the pop-up edit form is closed
 - api/gantt_onafterredo_event.md - fires after the redo() method was called
+- api/gantt_onaftersort_event.md - 
 - api/gantt_onaftertaskadd_event.md - fires after the user adds a task to the Gantt chart
 - api/gantt_onaftertaskautoschedule_event.md - fires for each task which has been autoscheduled
 - api/gantt_onaftertaskdelete_event.md - fires after the user deletes a task
@@ -114,6 +115,7 @@ Events
 - api/gantt_onafterlinkupdate_event.md
 - api/gantt_onafterquickinfo_event.md
 - api/gantt_onafterredo_event.md
+- api/gantt_onaftersort_event.md
 - api/gantt_onaftertaskadd_event.md
 - api/gantt_onaftertaskautoschedule_event.md
 - api/gantt_onaftertaskdelete_event.md

@@ -20,7 +20,7 @@ or add another grid and a timeline below the default ones.
 Default Layout
 ------------------
 
-The layout is set through the **layout** configuration option of the **gantt.config** object. The default configuration of the layout is the following:
+The layout is set through the api/gantt_layout_config.md configuration option of the **gantt.config** object. The default configuration of the layout is the following:
 
 ~~~js
 gantt.config.layout = {
@@ -67,6 +67,7 @@ The view configuration is specified as an object with the corresponding properti
 You can [set custom configuration options](desktop/layout_config.md#configuringganttlayout) for the **grid** and **timeline** views. 
 The default options are taken from the global **gantt.config** object.
 
+{{note Note that you should specify the configuration of layout before Gantt initialization. If you make changes in the layout, you need to reinitialize Gantt.}}
 
 Scrollbar
 -----------
