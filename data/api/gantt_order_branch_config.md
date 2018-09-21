@@ -1,7 +1,7 @@
 order_branch
 =============
 
-@short:activates the 'branch' mode that allows dragging tasks only within the parent branch
+@short:activates the 'branch' mode that allows reordering tasks within the same nesting level
 	
 @default:false
 @type:boolean 
@@ -18,4 +18,5 @@ gantt.init("gantt_here");
 	07_grid/02_branch_ordering.html
 @related:
 	desktop/reodering_tasks.md
-	
+@relatedapi:
+api/gantt_order_branch_free_config.md

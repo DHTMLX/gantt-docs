@@ -21,6 +21,8 @@ gantt.getConnectedGroup(18);
 @descr:
 Without parameters, the method returns all groups of tasks and links that make connections.
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 {{note The method requires the **ext/dhtmlxgantt_auto_scheduling.js** to be included on the page.}}
 
 @related:

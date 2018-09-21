@@ -287,7 +287,7 @@ Horizontal scrollbar
 ---------------------
 
 You can make Grid scrollable using the **scrollable** property of the [layout](desktop/layout_config.md) configuration option. 
-[Read about binding layout views to a scrollbar](desktop/layout_config.md#bindingviewstoscrollbar).
+[Read about binding layout views to a scrollbar](desktop/layout_config.md#scrollbar).
 
 In addition to the **scrollable** attribute, you need to add a *horizontal scrollbar element* into the layout and connect it to the grid as follows:
 

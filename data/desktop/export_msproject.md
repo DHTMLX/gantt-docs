@@ -373,8 +373,8 @@ gantt.attachEvent("onTaskLoading", function(task) {
 
 There are two API endpoints for the MSProject export/import services:
 
-- [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) - the default endpoint which serves all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 4MB**.
-- [https://export.dhtmlx.com/gantt/project](https://export.dhtmlx.com/gantt/project) - the endpoint dedicated to MS Project services (*exportToMSProject*/*importFromMSProject* only). **Max request size: 40MB**.
+- [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) - the default endpoint which serves all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 10 MB**.
+- [https://export.dhtmlx.com/gantt/project](https://export.dhtmlx.com/gantt/project) - the endpoint dedicated to MS Project services (*exportToMSProject*/*importFromMSProject* only). **Max request size: 40 MB**.
 
 The endpoint can be specified by the **server** property of the export configuration object:
 
