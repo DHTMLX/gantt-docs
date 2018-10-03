@@ -4,6 +4,27 @@ Keyboard Navigation
 You can get access to Gantt and its elements via keys or keys' combinations. This article will give you all the necessary information 
 on the peculiarities of keyboard navigation with Gantt, including focus behavior, usage of ready shortcuts and creation of custom ones.
 
+
+##Enabling the functionality
+
+In order to use keyboard navigation in the Gantt chart, you need to include the **ext/dhtmlxgantt_keyboard_navigation.js** extension on the page. 
+
+~~~html
+<script src="../../codebase/ext/dhtmlxgantt_keyboard_navigation.js" 
+	type="text/javascript" charset="UTF-8"></script>
+~~~
+
+There are two variants of keyboard navigation available:
+
+- navigation by task rows
+
+To enable it, set the api/gantt_keyboard_navigation_config.md property to *true*.
+
+- navigation by task cells  
+
+To use this type of navigation, set the api/gantt_keyboard_navigation_cells_config.md property to *true*.
+
+
 ##Focus behavior during keyboard navigation
 
 ###Focus on Gantt
@@ -28,24 +49,7 @@ The default navigation actions in a modal window are as follows:
 
 If the focus is set on some button of the form, pressing *Space* or *Enter* will call pressing the button under focus and not the action.
 
-##Enabling the functionality
 
-In order to use keyboard navigation in the Gantt chart, you need to include the **ext/dhtmlxgantt_keyboard_navigation.js** extension on the page. 
-
-~~~html
-<script src="../../codebase/ext/dhtmlxgantt_keyboard_navigation.js" 
-	type="text/javascript" charset="UTF-8"></script>
-~~~
-
-There are two variants of keyboard navigation available:
-
-- navigation by task rows
-
-To enable it, set the api/gantt_keyboard_navigation_config.md property to true.
-
-- navigation by task cells  
-
-To use this type of navigation, set the api/gantt_keyboard_navigation_cells_config.md property to true.
 
 ##Scopes
 
