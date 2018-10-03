@@ -31,7 +31,7 @@ gantt.config.lightbox.project_sections = [
 Initialization
 --------------------------
 
-To add a **checkbox** control to the lightbox, follow these steps:
+To add the **checkbox** control to the lightbox, follow these steps:
 
 1) Add a section to the lightbox configuration:
 

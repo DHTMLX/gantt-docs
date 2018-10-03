@@ -93,4 +93,5 @@ Edited tasks will be specified only by the start date and have a zero duration. 
 - desktop/custom_edit_form.md
 - desktop/custom_button.md
 
-
+@todo:
+add resources control-specific properties

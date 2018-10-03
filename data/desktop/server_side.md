@@ -9,10 +9,11 @@ Server-Side Integration
 </style>
 
 The recommended approach to connect dhtmlxGantt to a backend is to implement RESTful API on the server and use dhtmlxDataProcessor on the client.
-
-[DataProcessor](http://docs.dhtmlx.com/dataprocessor__index.html) is a client-side library included into dhtmlxGantt.js. 
-It monitors data changes and gets the server requests on the client side.
+[DataProcessor](http://docs.dhtmlx.com/dataprocessor__index.html) is a client-side library included into dhtmlxGantt.js. It monitors data changes and gets the server requests on the client side.
  
+Gantt uses its own instance of DataProcessor which has some specificity in comparison to the main version of the library. The current article describes the way of using Gantt DataProcessor to provide
+[integration with server-side platforms](desktop/howtostart_guides.md).
+
 
 Technique
 ----------------------------------------------
@@ -22,9 +23,9 @@ Generally, to load data from the server side using REST API, you need to:
 ###Client side
 
            
-1) Call the api/gantt_load.md method, where as a parameter specify the URL that returns Gantt data in the [JSON](desktop/supported_data_formats.md#json) format
+1) Call the api/gantt_load.md method, where as a parameter specify the URL that returns Gantt data in the [JSON](desktop/supported_data_formats.md#json) format.
 
-2) Initialize dataProcessor and attach it to the dhtmlxGantt object:
+2) Initialize DataProcessor and attach it to the dhtmlxGantt object:
            
 ~~~js
 gantt.init("gantt_here");
@@ -94,7 +95,7 @@ The list of possible requests and responses is:
 	</tr>
 </table>
 
-### Request parameters
+<h3 id="requestparams">Request parameters</h3>
 
 Create/Update/Delete requests will contain all public properties of a client-side task or link object:
 
@@ -118,9 +119,44 @@ Note:
 - The client side sends all the public properties of a task or link object. Thus, a request may contain any number of additional parameters. 
 - If you extend the data model by adding new columns/properties to it, no additional actions are needed to make gantt sending them to the backend.
 
-{{note By public properties here we mean the properties the names of which don't start with an underscore (**_**) or a dollar sign (**$**) characters. 
-E.g. properties named **task._owner** or **link.$state** won't be sent to the backend}}
+{{note By public properties here we mean the properties the names of which don't start with an underscore (**_**) or a dollar sign (**$**) characters, 
+e.g. properties named **task._owner** or **link.$state** won't be sent to the backend.}}
 
+###REST-JSON mode
+
+Besides the "POST","GET","REST" and "JSON" [transaction modes](https://docs.dhtmlx.com/dataprocessor__configuration.html#sendingmodes), Gantt DataProcessor can also be used in the "REST-JSON" mode.
+It uses the same [URLs for requests](#requestresponsedetails) and [request parameters](#requestparams) for tasks and links, but the form of sending parameters to the server differs.
+
+In the REST mode data is sent to the server as a form:
+
+~~~
+Content-Type: application/x-www-form-urlencoded
+~~~
+
+while in the REST-JSON mode data is sent in the JSON format:
+
+{{snippet Headers}}
+~~~
+Content-type: application/json
+~~~
+
+So parameters are sent as a JSON object:
+
+{{snippet Request Payload}}
+~~~
+{
+  	start_date:"20-09-2018 00:00", 
+	text:"New task", duration:1, 
+	end_date:"21-09-2018 00:00",
+	parent:0, priority:"1", 
+	usage:[{
+		{id:"1", value:"30"},
+		{id:"2", value:"20"}
+	}]
+}
+~~~
+
+This format makes processing of complex records handier on any server-side platform. 
 
 <h3 id="loadserverside">Server side</h3>
            
@@ -143,11 +179,11 @@ Here's a list of available server-side implementations that you can use for Gant
 Storing the Order of Tasks
 -------------------------------------------------
 
-Gantt displays tasks in the same order they come from a data source. If you allow users to 
-[reorder tasks manually](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure), 
+Gantt displays tasks in the same order they come from a data source. If you allow users to [reorder tasks manually](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure), 
 you'll also need to store this order in the database and make sure that your data feed returns data sorted appropriately.
 
 Client-side configuration:
+
 ~~~js
 // reordering tasks within the whole gantt
 gantt.config.order_branch = true;
@@ -230,7 +266,6 @@ tasks.where(task => task.sortorder >= targetOrder).
 currentTask.sortorder = targetOrder;
 
 tasks.save(currentTask);
-
 ~~~
 
 You can have a look at the detailed examples on how to implement storing the tasks' order for particular server-side platforms: 
@@ -244,8 +279,7 @@ Custom Request Headers and Parameters
 
 ### Adding custom request headers
 
-When you need Gantt to send additional headers to your backend, you can specify them using the 
-[dataProcessor.setTransactionMode](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) method.
+When you need Gantt to send additional headers to your backend, you can specify them using the [dataProcessor.setTransactionMode](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) method.
 
 For example, let's suppose that you need to add an authorization token to your requests:
 
@@ -264,8 +298,8 @@ dp.setTransactionMode({
 });
 ~~~
 
-Currently, api/gantt_load.md does not support header/payload parameters, so if you need them for GET request, 
-you'll have to send xhr manually and load data into gantt using api/gantt_parse.md, for example:
+Currently, api/gantt_load.md does not support header/payload parameters, so if you need them for GET request, you'll have to send xhr manually and load data into gantt using api/gantt_parse.md, for example:
+
 ~~~js
 $.ajax({
     url: "/api",
@@ -282,8 +316,7 @@ $.ajax({
 
 There are a couple of ways to send additional parameters to requests.
 
-As you know, gantt sends all properties of the data object back to the backend. 
-Thus, you can add an additional property directly to the data object and it will be sent to the backend:
+As you know, gantt sends all properties of the data object back to the backend. Thus, you can add an additional property directly to the data object and it will be sent to the backend:
 
 ~~~js
 gantt.attachEvent("onTaskCreated", function(task){
@@ -292,8 +325,7 @@ gantt.attachEvent("onTaskCreated", function(task){
 });
 ~~~
 
-Alternatively, you can add custom parameters to all requests sent by data processor, using the **payload** property of
-the [setTransactionMode](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) parameter:
+Alternatively, you can add custom parameters to all requests sent by data processor, using the **payload** property of the [setTransactionMode](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) parameter:
 
 ~~~js
 gantt.init("gantt_here");
@@ -390,7 +422,7 @@ gantt.attachEvent('onAfterLinkDelete', function(id, link) {
 ~~~
 
 Error Handling
-------------------------------------------
+----------------------
 
 A server can inform Gantt that an action has failed by returning the "action":"error" response:
 
@@ -435,6 +467,9 @@ It is important that responsibility for keeping an application safe is on the de
 Check the desktop/app_security.md article to learn the most vulnerable points of the component and the measures you can take to improve the safety of your application. 
 
 
+{{todo check info about JSON-REST mode}}
+
 @index:
 desktop/app_security.md
+
 

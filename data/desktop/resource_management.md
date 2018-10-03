@@ -293,5 +293,10 @@ gantt.config.resource_property = "userId";
 
 {{sample 11_resources/05_resource_usage_templates.html}}
 
+{{todo 
+- add info about resources grouping into the last section<br>
+- add info about assigning several tasks into the first section
+}}
+
 
 @edition:pro

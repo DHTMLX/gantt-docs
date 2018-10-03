@@ -1,4 +1,4 @@
-Export to Excel and iCal
+Export/Import to Excel and Export to iCal 
 ===========================================
 
 The dhtmlxGantt library allows you to export data from the Gantt chart in the Excel and iCal formats. 

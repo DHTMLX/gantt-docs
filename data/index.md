@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 5.2!</h2>
+    <h2>Meet Gantt 6.0!</h2>
     
     <p>
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="desktop/inline_editing.md">Inline editing in grid</a></li>
-        <li><a href="desktop/split_tasks.md">Splitting tasks</a></li>
-        <li><a href="whatsnew.md#52">Auto task types and new lightbox controls</a></li>
+		<li><a href="">Assignment of several resources to a task</a></li>
+        <li><a href="">Free slack and total slack</a></li>
+        <li><a href="">Import from Excel</a></li>
 	</ul>
 
     <p class='action_buttons'>

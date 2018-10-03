@@ -10,7 +10,7 @@ A block of options that allows selecting only one of them at a time.
 Initialization
 ----------------
 
-To add a **radio button** control to the lightbox, follow these steps:
+To add the **radio button** control to the lightbox, follow these steps:
 
 1) Add a section to the lightbox configuration:
 

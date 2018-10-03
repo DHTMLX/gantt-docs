@@ -3,6 +3,32 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.0 
+----------
+
+####Global
+
+- Improved performance during [tasks reordering](desktop/reodering_tasks.md)
+- Updated TypeScript definitions
+
+####Functionality
+
+- [Assignment of several resources to a task](desktop/resource_management.md#assigningresources) (PRO version)
+- [Grouping resources in the Resource views](desktop/resource_management.md#resourceloaddiagram) (PRO version)
+- Ability to get free/total slack while [calculating the critical path](desktop/critical_path.md) (PRO version)
+- [Import of projects from Excel](desktop/excel.md)
+
+#### Configuration
+
+- [**Resources** multiselect control](desktop/resources.md) in the Lightbox for assigning resources to a task (PRO version)
+
+
+####API
+
+- New options for the [groupBy](api/gantt_groupby.md) method
+- API for work with slack (free, total)
+- importFromExcel()
+
 5.2
 --------------
 

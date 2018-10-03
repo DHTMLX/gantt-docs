@@ -20,13 +20,13 @@ gantt.locale.labels.section_priority = "Priority";
 ~~~
 
 {{sample
-	05_lightbox/02_select.html
+	05_lightbox/12_select.html
 }}
 
 Initialization
 -------------------
 
-To add a **select** control to the lightbox, follow these steps:
+To add the **select** control to the lightbox, follow these steps:
 
 1) Add a section to the lightbox configuration:
 
@@ -52,7 +52,7 @@ gantt.locale.labels.section_priority = "Priority";
 	
         
 {{sample
-	05_lightbox/02_select.html
+	05_lightbox/12_select.html
 }}
 
 
@@ -118,27 +118,27 @@ The output of the **/data** url is the following:
 
 ~~~js
 {
-	data:[
-		{id:1, text:"Project #2", start_date:"01-04-2013", duration:18, parent:0},
-		{id:2, text:"Task #1", 	  start_date:"02-04-2013", duration:8, parent:1},
-		{id:3, text:"Task #2",    start_date:"11-04-2013", duration:8,  parent:1}
-		],
-	links:[
-		{ id:1, source:1, target:2, type:"1"},
-		{ id:2, source:2, target:3, type:"0"}
+  "data":[
+	{"id":1,"text":"Project #2","start_date":"01-04-2013","duration":18,"parent":0},
+	{"id":2,"text":"Task #1","start_date":"02-04-2013","duration":8,"parent":1},
+	{"id":3,"text":"Task #2","start_date":"11-04-2013","duration":8,"parent":1}
+  ],
+  "links":[
+	{"id":1,"source":1,"target":2,"type":"1"},
+	{"id":2,"source":2,"target":3,"type":"0"}
+  ],
+  "collections": { /*!*/
+	"priority":[
+		{"value":"1","label":"Low"},
+		{"value":"2","label":"Medium"},
+		{"value":"3","label":"High"}
 	],
-	"collections": { /*!*/
-		"priority":[
-			{"value":"1","label":"Low"},
-			{"value":"2","label":"Medium"},
-			{"value":"3","label":"High"}
-		],
-		"category":[
-			{"value":"1","label":"Simple"},
-			{"value":"2","label":"Complex"},
-			{"value":"3","label":"Unknown"}
-		]
-	}
+	"category":[
+		{"value":"1","label":"Simple"},
+		{"value":"2","label":"Complex"},
+		{"value":"3","label":"Unknown"}
+	]
+  }
 }
 ~~~
 
