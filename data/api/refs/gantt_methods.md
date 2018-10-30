@@ -172,7 +172,7 @@ Methods
 - api/gantt_showlightbox.md - opens the lightbox for the specified task
 - api/gantt_showquickinfo.md - displays the pop-up task form for the specified task
 - api/gantt_showtask.md - makes the specified task visible on the screen
-- api/gantt_sort.md - sorts the tasks in the grid
+- api/gantt_sort.md - sorts tasks in the grid
 - api/gantt_toggletaskselection.md - selects the specified task if it was unselected and vice versa
 - api/gantt_uid.md - returns a unique id
 - api/gantt_undo.md - reverts the changes made in the gantt

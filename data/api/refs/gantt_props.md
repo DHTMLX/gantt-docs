@@ -64,8 +64,8 @@ Properties
 - api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
 - api/gantt_open_tree_initially_config.md - openes all branches initially
-- api/gantt_order_branch_config.md - activates the 'branch' mode that allows dragging tasks only within the parent branch
-- api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows dragging tasks within the whole gantt
+- api/gantt_order_branch_config.md - activates the 'branch' mode that allows reordering tasks within the same nesting level
+- api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows reordering tasks within the whole gantt
 - api/gantt_placeholder_task_config.md - adds an empty row into the end of the list of tasks to simplify tasks editing via keyboard
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element

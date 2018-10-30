@@ -122,10 +122,19 @@ Note:
 {{note By public properties here we mean the properties the names of which don't start with an underscore (**_**) or a dollar sign (**$**) characters, 
 e.g. properties named **task._owner** or **link.$state** won't be sent to the backend.}}
 
-###REST-JSON mode
+<h3 id="restjson">REST-JSON mode</h3>
 
 Besides the "POST","GET","REST" and "JSON" [transaction modes](https://docs.dhtmlx.com/dataprocessor__configuration.html#sendingmodes), Gantt DataProcessor can also be used in the "REST-JSON" mode.
-It uses the same [URLs for requests](#requestresponsedetails) and [request parameters](#requestparams) for tasks and links, but the form of sending parameters to the server differs.
+
+~~~js
+gantt.load("apiUrl");
+
+var dp = new gantt.dataProcessor("apiUrl");
+dp.init(gantt);
+dp.setTransactionMode("REST-JSON");
+~~~
+
+It uses the same [URLs for requests](#requestresponsedetails), but the [request parameters](#requestparams) for tasks and links and the form of sending them to the server differs.
 
 In the REST mode data is sent to the server as a form:
 

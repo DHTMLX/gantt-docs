@@ -2,8 +2,6 @@ Gantt API
 =============
 
 
-
-
 <div class='h2'>Methods</div>
 
 {{api
@@ -176,7 +174,7 @@ Gantt API
 - api/gantt_showlightbox.md - opens the lightbox for the specified task
 - api/gantt_showquickinfo.md - displays the pop-up task form for the specified task
 - api/gantt_showtask.md - makes the specified task visible on the screen
-- api/gantt_sort.md - sorts the tasks in the grid
+- api/gantt_sort.md - sorts tasks in the grid
 - api/gantt_toggletaskselection.md - selects the specified task if it was unselected and vice versa
 - api/gantt_uid.md - returns a unique id
 - api/gantt_undo.md - reverts the changes made in the gantt
@@ -201,7 +199,7 @@ Gantt API
 - api/gantt_onafterlinkupdate_event.md - fires after the user updates a link
 - api/gantt_onafterquickinfo_event.md - fires after the pop-up edit form is closed
 - api/gantt_onafterredo_event.md - fires after the redo() method was called
-- api/gantt_onaftersort_event.md - 
+- api/gantt_onaftersort_event.md - fires after tasks are sorted in the grid
 - api/gantt_onaftertaskadd_event.md - fires after the user adds a task to the Gantt chart
 - api/gantt_onaftertaskautoschedule_event.md - fires for each task which has been autoscheduled
 - api/gantt_onaftertaskdelete_event.md - fires after the user deletes a task
@@ -361,8 +359,8 @@ Gantt API
 - api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
 - api/gantt_open_tree_initially_config.md - openes all branches initially
-- api/gantt_order_branch_config.md - activates the 'branch' mode that allows dragging tasks only within the parent branch
-- api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows dragging tasks within the whole gantt
+- api/gantt_order_branch_config.md - activates the 'branch' mode that allows reordering tasks within the same nesting level
+- api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows reordering tasks within the whole gantt
 - api/gantt_placeholder_task_config.md - adds an empty row into the end of the list of tasks to simplify tasks editing via keyboard
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
