@@ -25,5 +25,5 @@ gantt.attachEvent("onAfterTaskMove", function(id, parent, tindex){
 Note, the event fires in 2 cases:
 
 1. While calling the method api/gantt_movetask.md 
-2. While the option api/gantt_order_branch_config.md is enabled and a user drags tasks 
+2. While the option api/gantt_order_branch_config.md is enabled in the default mode (*gantt.config.order_branch = true;*) and a user drags tasks 
 

@@ -23,9 +23,9 @@ gantt.config.lightbox.sections = [
   { name:"description",height:38,map_to:"text",type:"textarea",focus:true },
   { name:"time",type:"duration",map_to:"auto" },
   { name:"rooms",type:"resources",map_to:"rooms", options:[  /*!*/
-  	  { key: 1, label: "room 1", sku: "hours" },    /*!*/
-	  { key: 2, label: "room 2", sku: "hours" },   /*!*/
-	  { key: 3, label: "room 3", sku: "hours" }   /*!*/
+  	  { key: 1, label: "room 1", unit: "hours" },    /*!*/
+	  { key: 2, label: "room 2", unit: "hours" },   /*!*/
+	  { key: 3, label: "room 3", unit: "hours" }   /*!*/
     ]  /*!*/
   }	   /*!*/
 ];
@@ -44,9 +44,9 @@ To add the **resources** control to the lightbox, follow the steps below:
 
 ~~~js
 var roomsMap =  [
-	{ key: 1, label: "room 1", sku: "hours" },
-	{ key: 2, label: "room 2", sku: "hours" },
-	{ key: 3, label: "room 3", sku: "hours" }
+	{ key: 1, label: "room 1", unit: "hours" },
+	{ key: 2, label: "room 2", unit: "hours" },
+	{ key: 3, label: "room 3", unit: "hours" }
 ];
 
 gantt.config.lightbox.sections = [
@@ -77,9 +77,9 @@ The following properties are mostly important and commonly set for the **resourc
 the following properties:
 	- **key** - (*string*) the option id. This attribute is compared with the task data property to assign options to tasks
 	- **label** - (*string*) the option label
-    - **sku** - (*number*) the unit of measurement for the option
+    - **unit** - (*number*) the unit of measurement of the resource
 - **focus** - (*boolean*) if set to *true*, the section will take focus on opening the lightbox
-- **default_value** - (*any*) the default value of the section's control. Applied only if the input value is underfined. 
+- **default_value** - (*any*) the default value of the section's control. Applied if the value of the resource is underfined
 
 
 Populating control with data
@@ -91,9 +91,9 @@ Generally, to set values for the **resources** control, use the [options](api/ga
 gantt.config.lightbox.sections = [
   { name:"rooms",type:"resources",map_to:"rooms",
   	options:[
-  	  { key: 1, label: "room 1", sku: "hours" },   
-	  { key: 2, label: "room 2", sku: "hours" },   
-	  { key: 3, label: "room 3", sku: "hours" }  
+  	  { key: 1, label: "room 1", unit: "hours" },   
+	  { key: 2, label: "room 2", unit: "hours" },   
+	  { key: 3, label: "room 3", unit: "hours" }  
     ]  
   }	   
 ];
@@ -103,7 +103,7 @@ Items in the [options](api/gantt_lightbox_config.md) parameter have 3 mandatory 
 
 - **key** - the option id
 - **label** - the option label
-- **sku** - the unit of measurement for the option
+- **unit** - (*number*) the unit of measurement of the resource
 
 Populating control with data from the server
 ---------------------------------------------
@@ -218,5 +218,8 @@ gantt.config.lightbox.sections = [
 	{name: "time", type: "duration", map_to: "auto"}
 ];
 ~~~
+
+The *unassigned_value* property in the control object is used to hide resources that shouldn't be available for selection in the control. You need to set the id of the corresponding resource as a value of this property.
+In the example above the resource with the id=5 is not shown as an option in the control.
 
 @todo: check intro and the image, custom control

@@ -10,16 +10,16 @@ To customize the drag-and-drop behavior, use the following events:
 - api/gantt_ontaskdrag_event.md - to limit the area for dragging or to provide some other logic when the user drags a task 
 - api/gantt_onaftertaskdrag_event.md - to postprocess tasks after they have been dragged to a new place
 
-<br>
-
 Let's consider typical cases when the default drag behavior needs customization:
 
 
-1. [Denying dragging specific tasks](desktop/dnd.md#denyingdraggingofspecifictasks).
-2. [Denying dragging tasks out of specific dates](desktop/dnd.md#denyingdraggingtasksoutofspecificdates).
-3. [Dragging childs together with the parent](desktop/dnd.md#draggingchildstogetherwiththeparent).
-3. [Dragging projects with subtasks](desktop/dnd.md#draggingprojectswithsubtasks).
-4. [Setting minimal task duration](desktop/dnd.md#settingminimaltaskduration).
+1. [Denying dragging specific tasks](#denyingdraggingofspecifictasks).
+2. [Denying dragging tasks out of specific dates](#denyingdraggingtasksoutofspecificdates).
+3. [Dragging children together with the parent](#draggingchildrentogetherwiththeparent).
+4. [Dragging projects with subtasks](#draggingprojectswithsubtasks).
+5. [Setting minimal task duration](#settingminimaltaskduration).
+6. [Autoscroll during tasks' dragging](#autoscrollduringtasksdragging).
+
 
 
 Denying dragging of specific tasks
@@ -99,11 +99,10 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 }}
 
 
-Dragging childs together with the parent
+Dragging children together with the parent
 -----------------------------------------------------
 
-To provide  dragging childs when the user is dragging their parent's task,  use the api/gantt_ontaskdrag_event.md event (see more on the event 
-[above](desktop/dnd.md#denyingdraggingtasksoutofspecificdates)):
+To allow dragging children when the user is dragging their parent's task, use the api/gantt_ontaskdrag_event.md event (see more on the event [above](desktop/dnd.md#denyingdraggingtasksoutofspecificdates)):
 
 ~~~js
 gantt.attachEvent("onTaskDrag", function(id, mode, task, original){

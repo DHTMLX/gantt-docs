@@ -32,6 +32,7 @@ To start using the extension, include the **ext/dhtmlxgantt_grouping.js** file o
 
 Grouping tasks
 -----------------------------------------------------
+
 To group tasks by some criterion, use the api/gantt_groupby.md method: 
 
 ~~~js
@@ -47,11 +48,10 @@ gantt.groupBy({
 });
 ~~~
 
-where 
+where: 
 
+- **relation_property** - (*mandatory*) a property of a task object that will be used to group items. For example:
 
-<ul>
-	<li> <b>relation_property</b> - (<i>mandatory</i>) a property of a task object that will be used to group items. For example, 
 ~~~js
 var tasks =  {
 	data:[{id:1, priority:1, start_date:"02-04-2013 00:00", ...}, ...] /*!*/
@@ -61,7 +61,7 @@ gantt.groupBy({
 	...
 });
 ~~~
-<br>
+
 The property can be also used to organize groups in a multi-level structure:
 
 ~~~js
@@ -79,11 +79,10 @@ gantt.groupBy({
     group_id: "key",
 	group_text: "label"
 });
-~~~        
-<br>
-<br>
-</li>
-    <li><b>groups</b> - (<i>mandatory</i>) an array of the groups (summary) items. 
+~~~  
+
+- **groups** - (*mandatory*) an array of the groups (summary) items. 
+
 ~~~js
 gantt.groupBy({
 	groups: [
@@ -92,29 +91,29 @@ gantt.groupBy({
         {key:3, label: "Low"}
     ],
 	group_id: "key",
-	group_text: "label",
-    ...
+	group_text: "label"
 });
-~~~    
+~~~   
+
 Please, note:
-<ol>
-	<li>Each 'group' object must contain at least 2 properties (but any number of additional ones): the id and text description (specified by the 'group_id', 'group_text' parameters respectively)</li>
-    <li>Group items are added into the data set as items with the type 'project' and the 'readonly' property enabled. They can be detected by the '$virtual' property, and handled as regular data items:
+
+1\. Each 'group' object must contain at least 2 properties (but any number of additional ones): the id and text description (specified by the 'group_id', 'group_text' parameters respectively).
+
+2\. Group items are added into the data set as items with the type 'project' and the 'readonly' property enabled. They can be detected by the '$virtual' property, and handled as regular data items:
+
 ~~~js
 gantt.templates.task_class=function(start, end, task){
 	if(task.$virtual)
 	return "summary-bar";
 };
 ~~~
-    </li>
-    <li>The 'project' tasks from the original dataset won't be displayed in the grouping mode, however they will be available via API.</li>
-</ol>
-    </li>
-    <br>
-	<br>
-    <li><b>group_id</b> - (<i>optional</i>) the group's id. The default value - 'key'.  </li>
-     <li><b>group_text</b> - (<i>optional</i>) the group's label. The default value - 'label'.  </li>
-</ul>
+
+3\. The 'project' tasks from the original dataset won't be displayed in the grouping mode, however they will be available via API.
+
+
+- **group_id** - (*optional*) the group's id. The default value - 'key'. 
+- **group_text** - (*optional*) the group's label. The default value - 'label'.  
+- **delimiter** - (*optional*) the delimiter for items in the group. "," by default.
 
 
 Ungrouping tasks
@@ -152,6 +151,7 @@ gantt.groupBy({
 
 @edition: pro
 
-
+@todo:
+check delimiter property of the groupBy method
 
 

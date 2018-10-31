@@ -377,7 +377,7 @@ Thus, if the templates *resource_column_allocated* or *resource_column_capacity*
 By default both views (either "resourceGrid" and "resourceTimeline" or "resourceGrid" and "resourceHistogram") will be bound to the data store named as specified in the 
 [gantt.config.resource_store](api/gantt_resource_store_config.md) configuration option.
 
-This data store has to be initialized manually:
+This data store has to be initialized manually with the help of the api/gantt_createdatastore.md method:
 
 ~~~js
 var resourcesStore = gantt.createDatastore({
@@ -432,7 +432,8 @@ resourcesStore.attachEvent("onParse", function(){
 
 ###Expanding resources panel
 
-It is possible to expand the resources panel to show all the subtasks of a particular resource and their time distribution, by enabling the **fetchTasks** property during initialization of the datastore:
+It is possible to expand the resources panel to show all the subtasks of a particular resource and their time distribution, by enabling the **fetchTasks** property during initialization of the datastore via the
+api/gantt_createdatastore.md method:
 
 ![Expanded resource panel](desktop/expanded_resource_panel.png)
 

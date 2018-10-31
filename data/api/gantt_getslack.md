@@ -46,3 +46,12 @@ gantt.getSlack(gantt.getTask(2), gantt.getTask(3)); // -> 1  /*!*/
 {{pronote This functionality is available in the PRO edition only.}}
 <img src="api/iscritical_path.png"/>
 
+@deprecated:
+
+Use the following methods to get free/total slack of a task:
+
+~~~js
+gantt.getFreeSlack(task);
+
+gantt.getTotalSlack(task);
+~~~

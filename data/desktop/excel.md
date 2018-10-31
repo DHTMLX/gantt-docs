@@ -1,5 +1,5 @@
-Export/Import to Excel and Export to iCal 
-===========================================
+Export/Import for Excel and iCal
+==============================
 
 The dhtmlxGantt library allows you to export data from the Gantt chart in the Excel and iCal formats. 
 
@@ -16,15 +16,16 @@ Export to Excel
 
 To export data from the Gantt chart to an Excel document, do the following:
 
-<ol>
-	<li>Include the <b>"http://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
+- Include the **"http://export.dhtmlx.com/gantt/api.js"** file on the page to enable the online export service:
+
 ~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>  /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxgantt.css" type="text/css">
 ~~~
-</li>
-	<li>Call the <b>exportToExcel</b> method to export data from the Gantt chart: 
+
+- Call the api/gantt_exporttoexcel.md method to export data from the Gantt chart: 
+
 ~~~html
 <input value="Export to Excel" type="button" onclick='gantt.exportToExcel()'>/*!*/
 
@@ -34,8 +35,7 @@ To export data from the Gantt chart to an Excel document, do the following:
 </script>
 ~~~
 
-</li>
-</ol>
+
 {{sample
 	08_api/08_export_other.html
 }}
@@ -54,7 +54,7 @@ The **exportToExcel()** method takes as a parameter an object with several prope
 	- **'id'** - (*string,number*) a property of the event that will be mapped to the column
     - **'header'** - (*string*) the column header
     - **'width'** - (*number*) the column width in pixels
-    - **'type'** - (*string*) the column type</li>
+    - **'type'** - (*string*) the column type
 - **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**
 - **visual** - (*boolean*) adds the timeline chart to an exported Excel document. *false* by default
 - **cellColors** - (*boolean*) if set to *true*, the cells of the exported document will have the colors defined by the api/gantt_task_cell_class_template.md template, the *color* and *background-color* 
@@ -77,22 +77,91 @@ gantt.exportToExcel({
 });
 ~~~
 
+Import from Excel
+-------------------
 
+In order to convert an XML or Excel file, you need to send the following request to the export service:
+
+ - Request URL - **https://export.dhtmlx.com/gantt**
+ - Request Method - **POST**
+ - Content-Type - **multipart/form-data**
+
+The request parameters:
+
+ - **file** - an XML or Excel file
+ - **type** - "msproject-parse"
+ - **data** - (optional) JSON string with settings
+
+For example:
+
+~~~html
+<form action="https://export.dhtmlx.com/gantt" method="POST" 
+	enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="hidden" name="type" value="msproject-parse">
+    <button type="submit">Get</button>
+</form>
+~~~
+
+Alternatively, you can use the client-side API:
+
+~~~js
+gantt.importFromExcel({
+    // add code here
+});
+~~~
+
+{{sample
+	08_api/18_load_from_mpp.html
+}}
+
+Where *file* is an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain either an XML or Excel file.
+
+{{note	
+**gantt.importFromMSProject** requires HTML5 File API support.??
+}}
+
+
+###Response
+
+The response will contain a JSON of the following structure:
+
+~~~js
+{
+   data: {},
+   config: {},
+   resources: [],
+   worktime: {}
+}
+~~~
+
+ 
+- **data** - a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
+Dates are stringified in the "%Y-%m-%d %H:%i" format. 
+- **config** - a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
+- **resources** - an array of objects (each having the following properties: {*id:string, name:string, type:string*} that represent the list of resources from the project file.
+- **worktime** - an object containing the working time settings from the project calendar.
+
+
+##Import settings
+
+{{sample 08_api/21_load_from_excel.html}}
 
 Export to iCal
 -------------------
 
 To export data from the Gantt chart to an iCal string, do the following:
 
-<ol>
-	<li>Include the <b>"http://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
+- Include the **"http://export.dhtmlx.com/gantt/api.js"** file on the page to enable the online export service:
+
 ~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>  /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxgantt.css" type="text/css">
 ~~~
-</li>
-	<li>Call the <b>exportToIcal</b> method to export data from the Gantt chart: 
+
+- Call the **exportToIcal** method to export data from the Gantt chart: 
+
 ~~~html
 <input value="Export to iCal" type="button" onclick='gantt.exportToICal()'>/*!*/
 
@@ -102,8 +171,7 @@ To export data from the Gantt chart to an iCal string, do the following:
 </script>
 ~~~
 
-</li>
-</ol>
+
 {{sample
 	08_api/08_export_other.html
 }}
@@ -127,3 +195,6 @@ gantt.exportToICal({
     server:"https://myapp.com/myexport/gantt"
 });
 ~~~
+
+
+@todo: add info on import from excel

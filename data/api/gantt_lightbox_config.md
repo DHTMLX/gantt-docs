@@ -61,8 +61,8 @@ Edited tasks will be specified only by the start date and have a zero duration. 
 - **options** - (*array of objects*) defines select options of the control.Each object in the array specifies a single option and takes the following properties:
 	- **key** - (*string*) the option's id. This attribute is compared with the task's data property to assign select options to tasks
 	- **label** - (*string*) the option's label
-    - **sku** - (*number*) the unit of measurement for the option
-- **default_value** - (*any*) the default value of the section's control. Applied only if the input value is underfined
+    - **unit** - (*number*) the unit of measurement of the resource (for the Resources control)
+- **default_value** - (*any*) the default value of the section's control. Applied only if the input value is underfined. For the resources control is applied if the value of the resource is underfined.
 
 
 ####Parent control
@@ -95,5 +95,3 @@ Edited tasks will be specified only by the start date and have a zero duration. 
 - desktop/custom_edit_form.md
 - desktop/custom_button.md
 
-@todo:
-check resources control-specific properties

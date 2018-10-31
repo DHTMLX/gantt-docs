@@ -42,7 +42,8 @@ Making the Gantt chart to display the critical path
 
 
 Note that when the property is enabled, dhtmlxGantt will automatically check the status of tasks and update the critical path. 
-Critical tasks and links will have additional 'critical_task' and 'critical_link' CSS classes, respectively.  
+Critical tasks and links will have additional *'critical_task'* and *'critical_link'* CSS classes, respectively.  
+
 Each time a task is modified, dhtmlxGantt will completely re-draw data in order to re-calculate the critical path. 
 Sometimes it may create performance issues. For that case, the component provides public methods that allow you to check
 a certain task or link and implement a performance-friendlier strategy for displaying a critical path.
@@ -66,6 +67,7 @@ gantt.isCriticalTask(gantt.getTask("task3"));// ->'true' /*!*/
 
 Checking if a link is critical 
 ---------------------------------------
+
 To check if a link is critical (connects 2 critical tasks), use the api/gantt_iscriticallink.md method:
 
 ~~~js
@@ -76,17 +78,31 @@ gantt.isCriticalLink(gantt.getLink("link1"));
 02_extensions/03_critical_path.html
 }}
 
-Checking if a slaсk between tasks
----------------------------------------
 
-To check how much time (in the current [duration unit](api/gantt_duration_unit_config.md)) a task has before it starts to affect other tasks, 
-use the api/gantt_getslack.md method:
+Getting free and total slack
+--------------------------
+
+**Free slack** - a period of time that can be used to increase a task or move it on the timeline without affecting the next task it is connected with.
+
+To get the free slack of a task, make use of the **getFreeSlack()** method. It takes the object of a task as a parameter:
 
 ~~~js
-gantt.getSlack(gantt.getTask("task1"), gantt.getTask("task2")); // -> 1  /*!*/
+gantt.getFreeSlack(task);
 ~~~
 
-Note, if tasks are not linked, the method returns 'Infinity'.
+{{sample 08_api/17_show_task_slack.html}}
+
+**Total slack** - a period of time that can be used to increase a task or move it on the timeline without affecting the time of ending of the whole project.
+
+To get the free slack of a task, make use of the **getTotalSlack()** method. It takes the object of a task as a parameter as well:
+
+~~~js
+gantt.getTotalSlack(task);
+~~~
+
+{{sample 08_api/17_show_task_slack.html}}
+
+![Slack](desktop/show_slack.png)
 
 Customizing the critical path behaviour
 ---------------------------------------------
@@ -154,3 +170,6 @@ Setting lag and lead times between tasks
 It's possible to set lag and lead times between tasks of the critical path. You find the details [here](desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks).
 
 @edition: pro
+
+@todo:
+check free/total slacks, add links to api

@@ -8,26 +8,27 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ####Global
 
-- Improved performance during [tasks reordering](desktop/reodering_tasks.md)
 - Updated TypeScript definitions
+- [New DataProcessor mode "REST-JSON"](desktop/server_side.md) for processing complex records on any platform 
 
 ####Functionality
 
 - [Assignment of several resources to a task](desktop/resource_management.md#assigningresources) (PRO version)
 - [Grouping resources in the Resource views](desktop/resource_management.md#resourceloaddiagram) (PRO version)
-- Ability to get free/total slack while [calculating the critical path](desktop/critical_path.md) (PRO version)
+- Ability to [get free/total slack of a task](desktop/critical_path.md#gettingfreeandtotalslack) while [calculating the critical path](desktop/critical_path.md) (PRO version)
 - [Import of projects from Excel](desktop/excel.md)
 
 #### Configuration
 
-- [**Resources** multiselect control](desktop/resources.md) in the Lightbox for assigning resources to a task (PRO version)
-
+- [**Resources** control](desktop/resources.md) in the Lightbox for assigning resources to a task (PRO version)
+- Improved performance during [tasks reordering](desktop/reodering_tasks.md) in the "branch" mode
 
 ####API
 
-- New options for the [groupBy](api/gantt_groupby.md) method
-- API for work with slack (free, total)
-- importFromExcel()
+- The *delimiter* option for the [groupBy](api/gantt_groupby.md) method
+- API for work with slack - getFreeSlack()/getTotalSlack(). The getSlack() method is deprecated
+- The importFromExcel() method
+- onBeforeRowDragMove
 
 5.2
 --------------
