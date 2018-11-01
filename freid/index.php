@@ -13,7 +13,6 @@
 	<script src="../../gantt/codebase/ext/dhtmlxgantt_quick_info.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../gantt/codebase/ext/dhtmlxgantt_critical_path.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../gantt/codebase/ext/dhtmlxgantt_marker.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/dhtmlxgantt_pdf.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../gantt/codebase/ext/dhtmlxgantt_multiselect.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../gantt/codebase/ext/dhtmlxgantt_grouping.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../gantt/codebase/ext/dhtmlxgantt_auto_scheduling.js" type="text/javascript" charset="utf-8"></script>
@@ -21,7 +20,7 @@
 	<script src="../../gantt/codebase/ext/dhtmlxgantt_undo.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../gantt/codebase/ext/dhtmlxgantt_smart_rendering.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../gantt/codebase/ext/dhtmlxgantt_keyboard_navigation.js" type="text/javascript" charset="utf-8"></script>
-	<script src="http://export.dhtmlx.com/gantt/api.js"></script>  
+	<script src="https://export.dhtmlx.com/gantt/api.js"></script>
 
 	<script type="text/javascript">
 		(function(){
