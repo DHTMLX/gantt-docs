@@ -48,7 +48,7 @@ Dates are stringified in the "%Y-%m-%d %H:%i" format.
 - **worktime** - an object containing the working time settings from the project calendar.
 
 
-##Export settings
+###Export settings
 
 The **exportToMSProject()** method takes as a parameter an object with a number of properties (all of the properties are optional):
 
@@ -270,8 +270,9 @@ Dates are stringified in the "%Y-%m-%d %H:%i" format.
 - **worktime** - an object containing the working time settings from the project calendar.
 
 
-##Import settings
-###Setting the duration unit
+###Import settings
+
+#### Setting the duration unit
 
 To set an expected duration unit, the **durationUnit** ("minute", "hour", "day", "week", "month", "year") string can also be sent to the server.
 
@@ -296,7 +297,7 @@ gantt.importFromMSProject({
 });
 ~~~
 
-###Getting properties of the Project
+#### Getting properties of the Project
 
 To get project fields, the **projectProperties** input with an array of necessary fields can be sent to the server.
 It extracts arbitrary properties of [the Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx) 
@@ -329,7 +330,7 @@ gantt.importFromMSProject({
 });
 ~~~
 
-###Getting tasks properties
+#### Getting tasks properties
 
 To get task fields, the **taskProperties** input with an array of necessary fields can be sent to the server.
 It extracts arbitrary properties of the [Task entities](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). Here is the list of supported [properties](desktop/tags.md#tasksproperties):

@@ -7,9 +7,9 @@ Start
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="">Assignment of several resources to a task</a></li>
-        <li><a href="">Free slack and total slack</a></li>
-        <li><a href="">Import from Excel</a></li>
+		<li><a href="desktop/resource_management.md">Advanced resource management</a></li>
+        <li><a href="desktop/critical_path.md#gettingfreeandtotalslack">Ability to get free and total slack of a task</a></li>
+        <li><a href="desktop/excel.md">Import from Excel</a></li>
 	</ul>
 
     <p class='action_buttons'>

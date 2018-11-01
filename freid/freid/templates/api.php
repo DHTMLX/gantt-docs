@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(~E_ALL);
 
 $methods = json_decode($_POST['methods'], true);
 $configs = json_decode($_POST['configs'], true);

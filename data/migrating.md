@@ -21,6 +21,15 @@ Migration from Older Versions
 </style>
 
 
+5.2 -> 6.0
+------------------
+
+In the version 6.0 the **getSlack()** method is deprecated. Two methods have been added instead:
+
+- api/gantt_getfreeslack.md - to return the free slack of a task
+- api/gantt_gettotalslack.md - to return the total slack of a task
+
+
 3.x -> 4.0
 ------------
 
@@ -224,3 +233,6 @@ The id of the parent task can be accessed as **gantt.getTask(task_id).parent**. 
 - desktop/migrating_renamedcss.md
 
 @spellcheck: btn
+
+@todo:
+check

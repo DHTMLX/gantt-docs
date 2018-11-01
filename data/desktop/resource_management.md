@@ -42,11 +42,11 @@ You can set this format with the [custom resources control](desktop/resources.md
 ~~~js
 {
 	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
-	users: [{id:2, value:8}, {id:3, value:4}] 	 
+	users: [{resource_id:2, value:8}, {resource_id:3, value:4}]  
 }
 ~~~
 
-The resources are assigned as follows: the resource with id=2 - in the quantity of 8 units, while the resource with the id=3 - in the quantity of 4 units.
+The resources are assigned as follows: the resource with id=2 in the quantity of 8 units, while the resource with the id=3 in the quantity of 4 units.
 This format is supported by the desktop/resources.md of the lightbox.
 
 When sending data to the server, DataProcessor serializes the values of the described properies into JSON. To process such records on the server with ease, make use of the ["REST_JSON"](desktop/server_side.md#restjson)
@@ -219,7 +219,7 @@ This feature can be used for balancing resource load in the calendar.
 
 Read more about task grouping in [the related article](desktop/grouping.md).  
 
-###Grouping resources 
+###Grouping tasks by multiple resources 
 
 In case you assign several resources to a task, tasks will be grouped by assigned resources. It means that a task assigned to two persons won't be duplicated for each of them. Instead it will be rendered once with 
 both persons assigned to it.
@@ -328,14 +328,16 @@ gantt.config.layout = {
 };
 ~~~
 
-{{sample  11_resources/09_resource_histogram.html}}
+{{sample  11_resources/09_resource_histogram_workload.html}}
 
 The same as in the resource load diagram, *resourceGrid* will work in the same way as the default grid view, but readonly. *resourceHistogram* has the following additional templates:
 
 - *resource_column_class* - the CSS class which is applied to a cell of the resource panel
 
 ~~~js
-gantt.templates.resource_column_class=function(start_date,end_date,resource,tasks){};
+gantt.templates.resource_column_class=function(start_date,end_date,resource,tasks){
+	return "";
+};
 ~~~
 
 - *resource_column_label* - the label inside a cell
@@ -455,7 +457,7 @@ gantt.$resourcesStore = gantt.createDatastore({
 });
 ~~~
 
-{{sample 11_resources/10_resource_histogram_expand.html}}
+{{sample 11_resources/11_resource_histogram_display_tasks.html}}
 
 {{todo 
 needs checking and improving

@@ -38,6 +38,7 @@ Events
 - api/gantt_onbeforeredo_event.md - fires before the redo() method is called
 - api/gantt_onbeforeredostack_event.md - fires before an action is added into the redo stack
 - api/gantt_onbeforerowdragend_event.md - fires when a user drops a row in the grid
+- api/gantt_onbeforerowdragmove_event.md - fires before a task is dragged to a different position
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
 - api/gantt_onbeforetaskchanged_event.md - fires after the user has finished dragging and released the mouse button but before the changes are applied
@@ -57,6 +58,7 @@ Events
 - api/gantt_oncolumnresizeend_event.md - fires after the user finished dragging the column's border to resize the column
 - api/gantt_oncolumnresizestart_event.md - fires before the user starts to drag the column's border to resize the column
 - api/gantt_oncontextmenu_event.md - fires when a user clicks the right mouse button inside the Gantt chart (see the details)
+- api/gantt_ondataprocessorready_event.md - fires on the `dp.init(gantt)` call
 - api/gantt_ondatarender_event.md - fires after data has been rendered on the page
 - api/gantt_ondestroy_event.md - called after gantt has been cleared by the api/gantt_destructor.md method
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
@@ -142,6 +144,7 @@ Events
 - api/gantt_onbeforeredo_event.md
 - api/gantt_onbeforeredostack_event.md
 - api/gantt_onbeforerowdragend_event.md
+- api/gantt_onbeforerowdragmove_event.md
 - api/gantt_onbeforetaskadd_event.md
 - api/gantt_onbeforetaskautoschedule_event.md
 - api/gantt_onbeforetaskchanged_event.md
@@ -161,6 +164,7 @@ Events
 - api/gantt_oncolumnresizeend_event.md
 - api/gantt_oncolumnresizestart_event.md
 - api/gantt_oncontextmenu_event.md
+- api/gantt_ondataprocessorready_event.md
 - api/gantt_ondatarender_event.md
 - api/gantt_ondestroy_event.md
 - api/gantt_onemptyclick_event.md

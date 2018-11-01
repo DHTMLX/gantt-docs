@@ -75,9 +75,9 @@ Properties
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
-- api/gantt_resource_property_config.md - specifies the property of a task object that stores a resource id associated with resourceGrid/resourceTimeline
+- api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram
 - api/gantt_resource_render_empty_cells_config.md - tells the resource timeline to render elements and call templates for non-allocated cells
-- api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline views
+- api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline/resourceHistogram views
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table

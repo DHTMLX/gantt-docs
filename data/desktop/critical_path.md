@@ -82,21 +82,23 @@ gantt.isCriticalLink(gantt.getLink("link1"));
 Getting free and total slack
 --------------------------
 
-**Free slack** - a period of time that can be used to increase a task or move it on the timeline without affecting the next task it is connected with.
+**Free slack** - a period of time that can be used to increase the duration of a task or move it on the timeline without affecting the next task it is connected with.
 
-To get the free slack of a task, make use of the **getFreeSlack()** method. It takes the object of a task as a parameter:
+To get the free slack of a task, make use of the api/gantt_getfreeslack.md method. It takes the object of a task as a parameter:
 
 ~~~js
+var task = gantt.getTask(7);
 gantt.getFreeSlack(task);
 ~~~
 
 {{sample 08_api/17_show_task_slack.html}}
 
-**Total slack** - a period of time that can be used to increase a task or move it on the timeline without affecting the time of ending of the whole project.
+**Total slack** - a period of time that can be used to increase the duration of a task or move it on the timeline without affecting the time of ending of the whole project.
 
-To get the free slack of a task, make use of the **getTotalSlack()** method. It takes the object of a task as a parameter as well:
+To get the total slack of a task, make use of the api/gantt_gettotalslack.md method. It takes the object of a task as a parameter as well:
 
 ~~~js
+var task = gantt.getTask(7);
 gantt.getTotalSlack(task);
 ~~~
 
@@ -171,5 +173,4 @@ It's possible to set lag and lead times between tasks of the critical path. You 
 
 @edition: pro
 
-@todo:
-check free/total slacks, add links to api
+@todo: check slacks section 

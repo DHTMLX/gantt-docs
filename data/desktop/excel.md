@@ -89,7 +89,7 @@ In order to convert an XML or Excel file, you need to send the following request
 The request parameters:
 
  - **file** - an XML or Excel file
- - **type** - "msproject-parse"
+ - **type** - "excel-parse"
  - **data** - (optional) JSON string with settings
 
 For example:
@@ -98,7 +98,7 @@ For example:
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
 	enctype="multipart/form-data">
     <input type="file" name="file" />
-    <input type="hidden" name="type" value="msproject-parse">
+    <input type="hidden" name="type" value="excel-parse">
     <button type="submit">Get</button>
 </form>
 ~~~
@@ -107,18 +107,20 @@ Alternatively, you can use the client-side API:
 
 ~~~js
 gantt.importFromExcel({
-    // add code here
+    server:"https://export.dhtmlx.com/gantt",
+    data: file,
+    callback: function (project) {}
 });
 ~~~
 
 {{sample
-	08_api/18_load_from_mpp.html
+	08_api/21_load_from_excel.html
 }}
 
 Where *file* is an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain either an XML or Excel file.
 
 {{note	
-**gantt.importFromMSProject** requires HTML5 File API support.??
+**gantt.importFromExcel** requires HTML5 File API support.??
 }}
 
 
@@ -143,9 +145,9 @@ Dates are stringified in the "%Y-%m-%d %H:%i" format.
 - **worktime** - an object containing the working time settings from the project calendar.
 
 
-##Import settings
+###Import settings
 
-{{sample 08_api/21_load_from_excel.html}}
+
 
 Export to iCal
 -------------------
@@ -197,4 +199,4 @@ gantt.exportToICal({
 ~~~
 
 
-@todo: add info on import from excel
+@todo: check info on import from excel: request,response, setting, limits

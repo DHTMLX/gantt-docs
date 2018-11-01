@@ -23,8 +23,12 @@ Templates
 - api/gantt_quick_info_content_template.md - specifies the content of the pop-up edit form
 - api/gantt_quick_info_date_template.md - specifies the date of the pop-up edit form
 - api/gantt_quick_info_title_template.md - specifies the title of the pop-up edit form
-- api/gantt_resource_cell_class_template.md - defines the css class names of cells in the resource timeline cells.
-- api/gantt_resource_cell_value_template.md - defines the html content of resource timeline cells
+- api/gantt_resource_cell_class_template.md - defines the CSS class names of cells in the resource timeline cells
+- api/gantt_resource_cell_value_template.md - defines the HTML content of resource timeline cells
+- api/gantt_resource_column_allocated_template.md - defines the height of the filled area in the resourceHistogram
+- api/gantt_resource_column_capacity_template.md - specifies the height of the line that defines the available capacity of the resource
+- api/gantt_resource_column_class_template.md - defines the CSS class which is applied to a cell of the resource panel
+- api/gantt_resource_column_label_template.md - defines the label inside a cell
 - api/gantt_scale_cell_class_template.md - specifies the CSS class that will be applied to cells of the time scale of the timeline area
 - api/gantt_scale_row_class_template.md - specifies the CSS class that will be applied to the time scale
 - api/gantt_task_cell_class_template.md - specifies the CSS class that will be applied to the cells of the timeline area
@@ -66,6 +70,10 @@ Templates
 - api/gantt_quick_info_title_template.md
 - api/gantt_resource_cell_class_template.md
 - api/gantt_resource_cell_value_template.md
+- api/gantt_resource_column_allocated_template.md
+- api/gantt_resource_column_capacity_template.md
+- api/gantt_resource_column_class_template.md
+- api/gantt_resource_column_label_template.md
 - api/gantt_scale_cell_class_template.md
 - api/gantt_scale_row_class_template.md
 - api/gantt_task_cell_class_template.md

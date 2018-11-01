@@ -42,6 +42,7 @@ properties are exported
 desktop/excel.md
 
 @relatedapi:
+api/gantt_importfromexcel.md
 api/gantt_exporttoical.md
 api/gantt_exporttopdf.md
 api/gantt_exporttopng.md

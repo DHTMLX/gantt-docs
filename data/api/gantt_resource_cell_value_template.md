@@ -4,12 +4,12 @@ resource_cell_value
 @edition: pro
 
 
-@short:defines the html content of resource timeline cells 
+@short:defines the HTML content of resource timeline cells 
 	
 @params:
-- start			Date			start date of the scale cell  
-- end			Date			end date of the scale cell
-- resource		object	 		resource object
+- start_date	Date			start date of the scale cell  
+- end_date		Date			end date of the scale cell
+- resource		object	 		the resource object
 - tasks			array			tasks that are assigned to specified resource and overlap start/end dates of the cell
 
 @example:

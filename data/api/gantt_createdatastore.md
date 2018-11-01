@@ -34,7 +34,7 @@ and **parent** as a link to the parent id. Any other value will produce a flat l
 @relatedsample:
 10_layout/02_resource_panel.html
 11_resources/04_resource_usage_diagram.html
-11_resources/09_resource_histogram.html
+11_resources/09_resource_histogram_workload.html
 
 @related:
 desktop/layout_config.md
