@@ -21,7 +21,7 @@ gantt.init("gantt_here");
 @relatedsample:
 	07_grid/08_drag_between_levels.html
 @related:
-	desktop/reodering_tasks.md
+	desktop/reordering_tasks.md
 	
 @relatedapi:
 api/gantt_order_branch_config.md

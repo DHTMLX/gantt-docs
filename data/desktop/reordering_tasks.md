@@ -112,4 +112,4 @@ gantt.templates.grid_row_class = function(start, end, task){
 ~~~
 
 @todo:
-check
+check order_branch="marker"

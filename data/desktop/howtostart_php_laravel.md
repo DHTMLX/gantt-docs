@@ -549,7 +549,7 @@ Please check more of [our guides](desktop/guides.md) for more features of dhtmlx
 Storing the Order of Tasks
 ------------------
 
-The client-side gantt allows [reordering tasks](desktop/reodering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+The client-side gantt allows [reordering tasks](desktop/reordering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
 You can check the common [description here](desktop/server_side.md#storingtheorderoftasks).
 
 Let's now add this feature to our app.

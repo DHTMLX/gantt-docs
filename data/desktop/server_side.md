@@ -188,7 +188,7 @@ Here's a list of available server-side implementations that you can use for Gant
 Storing the Order of Tasks
 -------------------------------------------------
 
-Gantt displays tasks in the same order they come from a data source. If you allow users to [reorder tasks manually](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure), 
+Gantt displays tasks in the same order they come from a data source. If you allow users to [reorder tasks manually](desktop/reordering_tasks.md#dragndropwithinthewholeganttstructure), 
 you'll also need to store this order in the database and make sure that your data feed returns data sorted appropriately.
 
 Client-side configuration:
@@ -476,7 +476,7 @@ It is important that responsibility for keeping an application safe is on the de
 Check the desktop/app_security.md article to learn the most vulnerable points of the component and the measures you can take to improve the safety of your application. 
 
 
-{{todo check info about JSON-REST mode}}
+{{todo check info about JSON-REST mode, update params}}
 
 @index:
 desktop/app_security.md

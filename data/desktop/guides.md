@@ -65,7 +65,7 @@ The articles come around key procedures and problem-solving activities.
             <ul id="events_sublist">
                     <li>desktop/specifying_columns.md</li>
                     <li>desktop/tree_column.md</li>
-                    <li>desktop/reodering_tasks.md</li>
+                    <li>desktop/reordering_tasks.md</li>
                     <li>desktop/multiselection.md</li>
                     <li>desktop/sorting.md</li>
 					<li>desktop/grouping.md</li>

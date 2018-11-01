@@ -9,26 +9,30 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ####Global
 
 - Updated TypeScript definitions
-- [New DataProcessor mode "REST-JSON"](desktop/server_side.md) for processing complex records on any platform 
+- [The "REST-JSON" DataProcessor mode](desktop/server_side.md) for processing complex records on any server-side platform 
+- Auto resize when container size changes
 
 ####Functionality
 
 - [Assignment of several resources to a task](desktop/resource_management.md#assigningresources) (PRO version)
-- [Grouping resources in the Resource views](desktop/resource_management.md#resourceloaddiagram) (PRO version)
+- [Grouping tasks by multiple resources](desktop/resource_management.md#balancingresourceload) (PRO version)
+- [Resource histogram](desktop/resource_management.md#resourceviewpanel) in addition to the resource load diagram (PRO version)
 - Ability to [get free/total slack of a task](desktop/critical_path.md#gettingfreeandtotalslack) while [calculating the critical path](desktop/critical_path.md) (PRO version)
 - [Import of projects from Excel](desktop/excel.md)
 
 #### Configuration
 
-- [**Resources** control](desktop/resources.md) in the Lightbox for assigning resources to a task (PRO version)
-- Improved performance during [tasks reordering](desktop/reodering_tasks.md) in the "branch" mode
+- The [**Resources** control](desktop/resources.md) in the lightbox for assigning resources to a task (PRO version)
+- Improved performance for [tasks reordering](desktop/reordering_tasks.md) in the "branch" mode
+- Performance update for the api/gantt_auto_types_config.md configuration (PRO version)
 
 ####API
 
-- The *delimiter* option for the [groupBy](api/gantt_groupby.md) method
-- API for work with slack - getFreeSlack()/getTotalSlack(). The getSlack() method is deprecated
-- The importFromExcel() method
-- onBeforeRowDragMove
+- The "marker" mode for the api/gantt_order_branch_config.md config to speed up tasks reordering within branch
+- The [onBeforeRowDragMove](api/gantt_onbeforerowdragmove_event.md) event to work in tandem with the api/gantt_order_branch_config.md config in the "marker" mode
+- The api/gantt_gettotalslack.md / api/gantt_getfreeslack.md methods for work with slack instead of the getSlack() method (PRO) 
+- The api/gantt_importfromexcel.md method
+- The *delimiter* option in the [groupBy](api/gantt_groupby.md) method for grouping resources
 
 5.2
 --------------
@@ -166,7 +170,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - Initial support for [Content Security Policy](desktop/content_security_policy.md)
 - A possibility of specifying [per column Grid sorting](desktop/sorting.md#percolumngridsorting) settings
-- Improved branch ordering feature - [drag-n-drop between levels](desktop/reodering_tasks.md#dragndropwithinthewholeganttstructure) 
+- Improved branch ordering feature - [drag-n-drop between levels](desktop/reordering_tasks.md#dragndropwithinthewholeganttstructure) 
 
 #### API
 
@@ -192,7 +196,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 #### API
 
-- [Events for managing available target places while re-ordering tasks](desktop/reodering_tasks.md#denyingdroppingtospecificpositions)
+- [Events for managing available target places while re-ordering tasks](desktop/reordering_tasks.md#denyingdroppingtospecificpositions)
 - [Events for managing loading process](desktop/loading.md#eventsflow)
 - New samples, methods, events
 
@@ -278,7 +282,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 #### Configuration
 
 - [Configurable multi-line scales](desktop/configuring_time_scale.md)
-- [Configurable multi-column grid with optional sorting and Drag-n-Drop](desktop/reodering_tasks.md) 
+- [Configurable multi-column grid with optional sorting and Drag-n-Drop](desktop/reordering_tasks.md) 
 - [Configurable popup form for editing tasks](desktop/edit_form.md)
 - [All text elements can be defined through templates](desktop/common_configuration.md#gantttemplatesobject)
 - [All date strings can be configured](desktop/common_configuration.md#ganttconfigobject)
@@ -305,3 +309,6 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [A lot of events added](api/refs/gantt.md#events)
 - [Templates](api/refs/gantt.md#templates) and [configuration options](api/refs/gantt.md#properties) added
 - [API simplified, it uses a single Gantt object instead of a bunch of different objects](migrating.md)
+
+
+@todo: check and improve
