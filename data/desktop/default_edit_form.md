@@ -45,8 +45,7 @@ Each section of the lightbox is based on some control. The following types of co
 - [Template](desktop/template.md) - a container with some HTML content inside
 - [Checkbox](desktop/checkbox.md) - a checkbox for switching an option or several values on/off 
 - [Radio button](desktop/radio.md) - a radio button for selecting only one option from a given set of options 
-- [Resources](desktop/resources.md) - a multiselect box for assigning several resources to a task
-
+- [Resources](desktop/resources.md) - a complex control for assigning several resources to a task
 
 ~~~js
 var opts = [
@@ -62,7 +61,6 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-@todo: resources control added
 
 @index:
 - desktop/textarea.md

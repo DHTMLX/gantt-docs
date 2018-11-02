@@ -199,4 +199,4 @@ gantt.exportToICal({
 ~~~
 
 
-@todo: check info on import from excel: request,response, setting, limits
+@todo: check info on import from excel: request,response, add settings and limits

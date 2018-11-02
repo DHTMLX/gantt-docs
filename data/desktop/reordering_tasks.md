@@ -33,7 +33,7 @@ gantt.config.order_branch = "marker";
 In this mode only the name of the task is reordered (on holding the left mouse key) and Gantt is re-rendered only when a task is dropped in the target position (on releasing the key).
 Unlike the default mode, changing of the task position doesn't involve firing of the onBeforeTaskMove/onAfterTaskMove events.
 
-To prevent dropping of a task in a particular position, use the onBeforeRowDragMove event instead (works only in the "marker" mode).
+To prevent dropping of a task in a particular position, use the api/gantt_onbeforerowdragmove_event.md event instead (works only in the "marker" mode).
  
  
 Drag-n-drop within the whole Gantt structure
@@ -112,4 +112,4 @@ gantt.templates.grid_row_class = function(start, end, task){
 ~~~
 
 @todo:
-check order_branch="marker"
+check order_branch="marker", maybe is shoud go last

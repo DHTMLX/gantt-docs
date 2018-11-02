@@ -16,6 +16,10 @@ Templates
 - api/gantt_grid_indent_template.md - specifies the indent  of the child items in a branch (in the tree column)
 - api/gantt_grid_open_template.md - specifies the icon of the open/close sign in the tree column
 - api/gantt_grid_row_class_template.md - specifies the CSS class that will be applied to a grid row
+- api/gantt_histogram_cell_allocated_template.md - 
+- api/gantt_histogram_cell_capacity_template.md - 
+- api/gantt_histogram_cell_class_template.md - 
+- api/gantt_histogram_cell_label_template.md - 
 - api/gantt_link_class_template.md - specifies the CSS class that will be applied to a link
 - api/gantt_link_description_template.md - specifies the text in the header of the link's "delete" confirm window
 - api/gantt_progress_text_template.md - specifies the text in the completed part of the task bar
@@ -25,10 +29,6 @@ Templates
 - api/gantt_quick_info_title_template.md - specifies the title of the pop-up edit form
 - api/gantt_resource_cell_class_template.md - defines the CSS class names of cells in the resource timeline cells
 - api/gantt_resource_cell_value_template.md - defines the HTML content of resource timeline cells
-- api/gantt_resource_column_allocated_template.md - defines the height of the filled area in the resourceHistogram
-- api/gantt_resource_column_capacity_template.md - specifies the height of the line that defines the available capacity of the resource
-- api/gantt_resource_column_class_template.md - defines the CSS class which is applied to a cell of the resource panel
-- api/gantt_resource_column_label_template.md - defines the label inside a cell
 - api/gantt_scale_cell_class_template.md - specifies the CSS class that will be applied to cells of the time scale of the timeline area
 - api/gantt_scale_row_class_template.md - specifies the CSS class that will be applied to the time scale
 - api/gantt_task_cell_class_template.md - specifies the CSS class that will be applied to the cells of the timeline area
@@ -61,6 +61,10 @@ Templates
 - api/gantt_grid_indent_template.md
 - api/gantt_grid_open_template.md
 - api/gantt_grid_row_class_template.md
+- api/gantt_histogram_cell_allocated_template.md
+- api/gantt_histogram_cell_capacity_template.md
+- api/gantt_histogram_cell_class_template.md
+- api/gantt_histogram_cell_label_template.md
 - api/gantt_link_class_template.md
 - api/gantt_link_description_template.md
 - api/gantt_progress_text_template.md
@@ -70,10 +74,6 @@ Templates
 - api/gantt_quick_info_title_template.md
 - api/gantt_resource_cell_class_template.md
 - api/gantt_resource_cell_value_template.md
-- api/gantt_resource_column_allocated_template.md
-- api/gantt_resource_column_capacity_template.md
-- api/gantt_resource_column_class_template.md
-- api/gantt_resource_column_label_template.md
 - api/gantt_scale_cell_class_template.md
 - api/gantt_scale_row_class_template.md
 - api/gantt_task_cell_class_template.md

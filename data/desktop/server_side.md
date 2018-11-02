@@ -476,7 +476,7 @@ It is important that responsibility for keeping an application safe is on the de
 Check the desktop/app_security.md article to learn the most vulnerable points of the component and the measures you can take to improve the safety of your application. 
 
 
-{{todo check info about JSON-REST mode, update params}}
+{{todo check info about JSON-REST mode}}
 
 @index:
 desktop/app_security.md

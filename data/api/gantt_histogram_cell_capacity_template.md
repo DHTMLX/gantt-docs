@@ -1,4 +1,4 @@
-resource_column_capacity
+histogram_cell_capacity
 =============
 
 @todo:
@@ -14,7 +14,7 @@ resource_column_capacity
 - tasks			array		tasks that are assigned to the specified resource and overlap start/end dates of the cell
 
 @example:
-gantt.templates.resource_column_capacity=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,tasks){
     return 24;
 };
 
@@ -34,6 +34,6 @@ If each row of the histogram is considered as a bar chart, maxCapacity is the he
 @related: desktop/resource_management.md#resourceviewpanel
 
 @relatedapi:
-api/gantt_resource_column_class_template.md
-api/gantt_resource_column_label_template.md
-api/gantt_resource_column_allocated_template.md
+api/gantt_histogram_cell_class_template.md
+api/gantt_histogram_cell_label_template.md
+api/gantt_histogram_cell_allocated_template.md

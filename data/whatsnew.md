@@ -22,7 +22,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 #### Configuration
 
-- The [**Resources** control](desktop/resources.md) in the lightbox for assigning resources to a task (PRO version)
+- The [Resources control](desktop/resources.md) in the lightbox for assigning resources to a task (PRO version)
 - Improved performance for [tasks reordering](desktop/reordering_tasks.md) in the "branch" mode
 - Performance update for the api/gantt_auto_types_config.md configuration (PRO version)
 

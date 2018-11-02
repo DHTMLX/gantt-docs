@@ -8,6 +8,11 @@ task and resource-specific work-time calendars, as well as public API for implem
 
 <img src="desktop/resource_panel.png">
 
+Assigning resources 
+-------------------
+
+###Connecting resources to tasks 
+
 The resource relation is defined by the api/gantt_resource_property_config.md configuration option:
 
 ~~~js
@@ -22,11 +27,11 @@ Resources can be connected to tasks via the properties of the task object in one
 ~~~js
 {
 	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6, 
-	user_id: 5 // 5 is the id of the resource from the related dataset
+	user_id: 5 // 5 is the id of the resource 
 }
 ~~~
 
-- assigning several resources to one task
+- assigning multiple resources to one task
 
 ~~~js
 {
@@ -35,9 +40,9 @@ Resources can be connected to tasks via the properties of the task object in one
 }
 ~~~
 
-You can set this format with the [custom resources control](desktop/resources.md#customresourcescontrol). 
+You can use this format with the [custom multiselect control](desktop/custom_editor.md#customthirdpartyeditor). 
 
-- assigning resources and specifiying their quantity
+- assigning multiple resources and specifiying their quantity
 
 ~~~js
 {
@@ -53,9 +58,8 @@ When sending data to the server, DataProcessor serializes the values of the desc
 dataprocessor mode.
 
 
+###Setting connection via lightbox
 
-Assigning resources
--------------------
 
 Resources can be assigned to any property of the task object using the built-in lightbox.
 
@@ -222,13 +226,17 @@ Read more about task grouping in [the related article](desktop/grouping.md).
 ###Grouping tasks by multiple resources 
 
 In case you assign several resources to a task, tasks will be grouped by assigned resources. It means that a task assigned to two persons won't be duplicated for each of them. Instead it will be rendered once with 
-both persons assigned to it.
+both persons assigned to it. Note that grouped tasks will be sorted by the start date.
 
 ![Group resources](desktop/grouping_resources.png)
 
 {{sample 11_resources/08_resource_usage_groups.html}}
 
-If tasks in the loaded data set have several resources assigned to them, Gantt will create groups for them automatically.
+- If tasks in the loaded data set have several resources assigned to them, Gantt will create groups for them automatically. 
+- For tasks without asssigned resources Gantt will create the default group Not assigned. In case there is such a group in the data set that is passed into the **groupBy()** method, 
+it should have the *default:true* config specified to prevent automatic creation of a such a group.
+
+
 
 Resource view panel
 ------------------------
@@ -328,7 +336,7 @@ gantt.config.layout = {
 };
 ~~~
 
-{{sample  11_resources/09_resource_histogram_workload.html}}
+{{sample  11_resources/09_resource_histogram.html}}
 
 The same as in the resource load diagram, *resourceGrid* will work in the same way as the default grid view, but readonly. *resourceHistogram* has the following additional templates:
 
@@ -434,7 +442,7 @@ resourcesStore.attachEvent("onParse", function(){
 
 ###Expanding resources panel
 
-It is possible to expand the resources panel to show all the subtasks of a particular resource and their time distribution, by enabling the **fetchTasks** property during initialization of the datastore via the
+It is possible to expand the resources panel to show all the tasks assigned to a particular resource by enabling the **fetchTasks** property during initialization of the datastore via the
 api/gantt_createdatastore.md method:
 
 ![Expanded resource panel](desktop/expanded_resource_panel.png)
@@ -458,6 +466,10 @@ gantt.$resourcesStore = gantt.createDatastore({
 ~~~
 
 {{sample 11_resources/11_resource_histogram_display_tasks.html}}
+
+With the **fetchTasks** property set to *true*, Gantt renders all tasks assigned to a certain resource in the resource view panel. This functionality works both for the resource diagram and resource histogram types
+of layout.
+
 
 {{todo 
 needs checking and improving
