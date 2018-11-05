@@ -1,9 +1,6 @@
 histogram_cell_allocated
 =============
 
-@todo:
-	check 
-
 
 @short:
 	 defines the height of the filled area in the resourceHistogram
@@ -15,7 +12,7 @@ histogram_cell_allocated
 - tasks			array		tasks that are assigned to the specified resource and overlap start/end dates of the cell
 
 @example:
-gantt.templates.histogram_column_allocated=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,tasks){
  	return tasks.length * 8;
 };
 

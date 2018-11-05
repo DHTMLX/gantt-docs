@@ -1,9 +1,6 @@
 histogram_cell_class
 =============
 
-@todo:
-	check 
-
 @short:
 	defines the CSS class which is applied to a cell of the resource panel
 
@@ -14,7 +11,7 @@ histogram_cell_class
 - tasks			array		tasks that are assigned to the specified resource and overlap start/end dates of the cell
 
 @example:
-gantt.templates.resource_column_class = function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_class = function(start_date,end_date,resource,tasks){
     return "";
 };
 

@@ -63,11 +63,11 @@ The grouping configuration object has the following properties:
 - **groups** - (<i>array</i>) an array of the groups (summary) items. Mandatory.
 - **group_id** - (<i>string</i>) the group's id. Optional. The default value is 'key'.
 - **group_text** - (<i>string</i>) the group's label. Optional. The default value is 'label'.
-- **delimiter** - (*string*) the delimiter for items in the group. Optional. The default value is ",".
+- **delimiter** - (*string*) the delimiter is used for automatic creation of groups for tasks with multiple resources. Optional. The default value is ",".
 
 Please, note:
 
-- Each 'group' object must contain at least 2 properties (but any number of additional ones): the id and text description (specified by the 'group_id', 'group_text' parameters respectively))
+- Each 'group' object must contain at least 2 properties (but any number of additional ones): the id and text description (specified by the 'group_id', 'group_text' parameters respectively).
 - The 'project' tasks from the original dataset won't be displayed in the grouping mode, however they will be available via api.
 - Group items are added into the data set as items with the type 'project' and the 'readonly' property enabled. They can be detected by the '$virtual' property, and handled as a regular data items:
 
@@ -78,4 +78,4 @@ gantt.templates.task_class=function(start, end, task){
 };
 ~~~
 
-@todo: check the delimiter option
+

@@ -18,24 +18,6 @@ gantt.init("gantt_here");
 {{sample	07_grid/02_branch_ordering.html}}
  
  
-Improving performance for large datasets
-------------------
- 
-If your Gantt contains lots of tasks, the default mode of branch reordering may slow down the performance.
-To speed it up, you can make use of the "marker" mode. 
-
-~~~js
-gantt.config.order_branch = "marker";
-~~~
-
-{{sample 07_grid/14_branch_ordering_highlight.html}}
-
-In this mode only the name of the task is reordered (on holding the left mouse key) and Gantt is re-rendered only when a task is dropped in the target position (on releasing the key).
-Unlike the default mode, changing of the task position doesn't involve firing of the onBeforeTaskMove/onAfterTaskMove events.
-
-To prevent dropping of a task in a particular position, use the api/gantt_onbeforerowdragmove_event.md event instead (works only in the "marker" mode).
- 
- 
 Drag-n-drop within the whole Gantt structure
 --------------------------------------------
 
@@ -55,6 +37,7 @@ gantt.init("gantt_here");
 {{sample
 07_grid/08_drag_between_levels.html
 }} 
+
 
 Denying dropping to specific positions
 ------------------------------------------------
@@ -77,8 +60,24 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, target) {
         return false;
     return true;
 });
-
 ~~~
+
+Improving performance for large datasets
+------------------
+ 
+If your Gantt contains lots of tasks, the default mode of branch reordering may slow down the performance.
+To speed it up, you can make use of the "marker" mode. 
+
+~~~js
+gantt.config.order_branch = "marker";
+~~~
+
+{{sample 07_grid/14_branch_ordering_highlight.html}}
+
+In this mode only the name of the task is reordered (on holding the left mouse key) and Gantt is re-rendered only when a task is dropped in the target position (on releasing the key).
+Unlike the default mode, changing of the task position doesn't involve firing of the onBeforeTaskMove/onAfterTaskMove events.
+
+To prevent dropping of a task in a particular position, use the api/gantt_onbeforerowdragmove_event.md event instead (works only in the "marker" mode).
 
 
 Highlighting available drop places while drag-&-drop
@@ -111,5 +110,3 @@ gantt.templates.grid_row_class = function(start, end, task){
 };
 ~~~
 
-@todo:
-check order_branch="marker", maybe is shoud go last

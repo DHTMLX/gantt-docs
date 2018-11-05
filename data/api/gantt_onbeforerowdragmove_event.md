@@ -1,9 +1,6 @@
 onBeforeRowDragMove
 =============
 
-@todo:
-	check 
-
 @short:
 	fires before a task is dragged to a different position
 

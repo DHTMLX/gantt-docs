@@ -39,5 +39,3 @@ api/gantt_onaftertaskmove_event.md
 api/gantt_onbeforetaskmove_event.md
 api/gantt_onbeforerowdragmove_event.md
 
-@todo:
-check

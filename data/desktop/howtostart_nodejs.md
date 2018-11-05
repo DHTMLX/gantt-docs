@@ -617,10 +617,9 @@ function updateOrder(taskId, target){
       });
     });
 }
-
 ~~~
 
-You can check [a ready demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.
+You can check [a ready demo](https://github.com/DHTMLX/gantt-howto-node) on GitHub.
 
 
 Application Security

@@ -201,11 +201,11 @@ In order to convert an XML or MPP MS Project file, you need to send the followin
  - Request Method - **POST**
  - Content-Type - **multipart/form-data**
 
-The request parameters:
+The request parameters are:
 
- - **file** - MPP or XML MS Project file
+ - **file** - an MPP or XML MS Project file
  - **type** - "msproject-parse"
- - **data** - (optional) JSON string with settings
+ - **data** - (*optional*) a JSON string with settings
 
 For example:
 
@@ -218,7 +218,7 @@ For example:
 </form>
 ~~~
 
-Alternatively, you can use the client-side API:
+Alternatively, you can use the [client-side API](api/gantt_importfrommsproject.md):
 
 ~~~js
 gantt.importFromMSProject({

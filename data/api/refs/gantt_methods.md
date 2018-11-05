@@ -123,7 +123,7 @@ Methods
 - api/gantt_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
 - api/gantt_hidelightbox.md - closes the lightbox if it's currently active
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
-- api/gantt_importfromexcel.md - converts an XML or Excel file to JSON
+- api/gantt_importfromexcel.md - converts an Excel file to JSON
 - api/gantt_importfrommsproject.md - converts an XML or MPP MS Project file to JSON
 - api/gantt_init.md - constructor. Initializes a dhtmlxGantt object
 - api/gantt_ischildof.md - checks whether a task is a child of other task

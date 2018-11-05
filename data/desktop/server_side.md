@@ -134,7 +134,7 @@ dp.init(gantt);
 dp.setTransactionMode("REST-JSON");
 ~~~
 
-It uses the same [URLs for requests](#requestresponsedetails), but the [request parameters](#requestparams) for tasks and links and the form of sending them to the server differs.
+It uses the same [URLs for requests](#requestresponsedetails), but the [request parameters](#requestparams) for tasks and links and the form of sending them to the server differ.
 
 In the REST mode data is sent to the server as a form:
 
@@ -151,17 +151,31 @@ Content-type: application/json
 
 So parameters are sent as a JSON object:
 
-{{snippet Request Payload}}
+**Request Payload**
+
+- Task
+
 ~~~
 {
-  	start_date:"20-09-2018 00:00", 
-	text:"New task", duration:1, 
-	end_date:"21-09-2018 00:00",
-	parent:0, priority:"1", 
-	usage:[{
-		{id:"1", value:"30"},
-		{id:"2", value:"20"}
-	}]
+    "start_date": "20-09-2018 00:00",
+    "text": "New task",
+    "duration":1,
+    "end_date": "21-09-2018 00:00",
+    "parent": 0,
+    "usage":[{
+        {"id":"1", "value":"30"},
+        {"id":"2", "value":"20"}
+    }]
+}
+~~~
+
+- Link
+
+~~~js
+{
+    "source": 1,
+    "target": 2,
+    "type": "0"
 }
 ~~~
 
@@ -475,8 +489,6 @@ It is important that responsibility for keeping an application safe is on the de
 
 Check the desktop/app_security.md article to learn the most vulnerable points of the component and the measures you can take to improve the safety of your application. 
 
-
-{{todo check info about JSON-REST mode}}
 
 @index:
 desktop/app_security.md

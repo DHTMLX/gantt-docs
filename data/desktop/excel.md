@@ -1,12 +1,13 @@
-Export/Import for Excel and iCal
+Export/Import for Excel, Export to iCal
 ==============================
 
-The dhtmlxGantt library allows you to export data from the Gantt chart in the Excel and iCal formats. 
+The dhtmlxGantt library allows you to export data from the Gantt chart in the Excel and iCal formats. You can also import data into Gantt from an Excel file.
 
 Limits on request size
 --------------------
 
-There is a common API endpoint [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) which serves for all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 10 MB**.
+There is a common API endpoint [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) which serves for all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.) and for the *importFromExcel*
+method. **Max request size is 10 MB**.
 
 There is also a separate API endpoint [https://export.dhtmlx.com/gantt/project](https://export.dhtmlx.com/gantt/project) specific for the [MSProject export/import services](desktop/export_msproject.md) 
 (*exportToMSProject*/*importFromMSProject* only). **Max request size: 40 MB**.
@@ -80,17 +81,20 @@ gantt.exportToExcel({
 Import from Excel
 -------------------
 
-In order to convert an XML or Excel file, you need to send the following request to the export service:
+Since there is no way to automatically map arbitrary columns of the Excel document to Gantt data model, the export service converts a document to an array of rows which is returned in JSON. 
+Conversion of the resulting document to the Gantt data is the responsibility of end developers.
 
- - Request URL - **https://export.dhtmlx.com/gantt**
- - Request Method - **POST**
- - Content-Type - **multipart/form-data**
+In order to convert an Excel file, you need to send the following request to the export service:
 
-The request parameters:
+- Request URL - **https://export.dhtmlx.com/gantt**
+- Request Method - **POST**
+- Content-Type - **multipart/form-data**
 
- - **file** - an XML or Excel file
- - **type** - "excel-parse"
- - **data** - (optional) JSON string with settings
+The request parameters are:
+
+- **file** - an Excel file
+- **type** - "excel-parse"
+- **data** - (*optional*) JSON string with settings
 
 For example:
 
@@ -103,13 +107,15 @@ For example:
 </form>
 ~~~
 
-Alternatively, you can use the client-side API:
+Alternatively, you can use the [client-side API](api/gantt_importfromexcel.md):
 
 ~~~js
 gantt.importFromExcel({
     server:"https://export.dhtmlx.com/gantt",
     data: file,
-    callback: function (project) {}
+    callback: function(project){
+    	console.log(project)
+    }
 });
 ~~~
 
@@ -117,36 +123,44 @@ gantt.importFromExcel({
 	08_api/21_load_from_excel.html
 }}
 
-Where *file* is an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain either an XML or Excel file.
+Where *file* is an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain an Excel (xlsx) file.
 
 {{note	
-**gantt.importFromExcel** requires HTML5 File API support.??
+**gantt.importFromExcel** requires HTML5 File API support.
 }}
 
 
 ###Response
 
-The response will contain a JSON of the following structure:
+The response will contain a JSON with an array of objects:
 
 ~~~js
-{
-   data: {},
-   config: {},
-   resources: [],
-   worktime: {}
-}
+[
+   { "Name": "Task Name", "Start": "2018-08-11 10:00", "Duration": 8 },
+   ...
+]
 ~~~
 
- 
-- **data** - a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
-Dates are stringified in the "%Y-%m-%d %H:%i" format. 
-- **config** - a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
-- **resources** - an array of objects (each having the following properties: {*id:string, name:string, type:string*} that represent the list of resources from the project file.
-- **worktime** - an object containing the working time settings from the project calendar.
+where:
+
+- Values of the first row are used as property names of imported objects.
+- Each row is serialized as an individual object.
+- Date values are serialized in the "%Y-%m-%d %H:%i" format. 
 
 
 ###Import settings
 
+- The import service expects the first row of the imported sheet to be a header row containing column names.
+- By default, the service returns the first sheet of the document. In order to return a different sheet, use the **sheet** parameter (zero-based)
+
+~~~js
+gantt.importFromExcel({
+    server:"https://export.dhtmlx.com/gantt",
+    data: file,
+    sheet:2, // print third sheet
+    callback: function (rows) {}
+});
+~~~
 
 
 Export to iCal
@@ -162,7 +176,7 @@ To export data from the Gantt chart to an iCal string, do the following:
 <link rel="stylesheet" href="codebase/dhtmlxgantt.css" type="text/css">
 ~~~
 
-- Call the **exportToIcal** method to export data from the Gantt chart: 
+- Call the api/gantt_exporttoical.md method to export data from the Gantt chart: 
 
 ~~~html
 <input value="Export to iCal" type="button" onclick='gantt.exportToICal()'>/*!*/
@@ -199,4 +213,3 @@ gantt.exportToICal({
 ~~~
 
 
-@todo: check info on import from excel: request,response, add settings and limits

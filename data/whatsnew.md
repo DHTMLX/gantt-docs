@@ -6,24 +6,21 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 6.0 
 ----------
 
-####Global
-
-- Updated TypeScript definitions
-- [The "REST-JSON" DataProcessor mode](desktop/server_side.md) for processing complex records on any server-side platform 
-- Auto resize when container size changes
-
 ####Functionality
 
 - [Assignment of several resources to a task](desktop/resource_management.md#assigningresources) (PRO version)
 - [Grouping tasks by multiple resources](desktop/resource_management.md#balancingresourceload) (PRO version)
 - [Resource histogram](desktop/resource_management.md#resourceviewpanel) in addition to the resource load diagram (PRO version)
 - Ability to [get free/total slack of a task](desktop/critical_path.md#gettingfreeandtotalslack) while [calculating the critical path](desktop/critical_path.md) (PRO version)
-- [Import of projects from Excel](desktop/excel.md)
+- [Import of projects from Excel](desktop/excel.md#importfromexcel)
+- [The "REST-JSON" DataProcessor mode](desktop/server_side.md#restjson) for processing complex records on any server-side platform 
+- Auto resize when container size changes
+
 
 #### Configuration
 
 - The [Resources control](desktop/resources.md) in the lightbox for assigning resources to a task (PRO version)
-- Improved performance for [tasks reordering](desktop/reordering_tasks.md) in the "branch" mode
+- [Improved performance of tasks reordering](desktop/reordering_tasks.md#improvingperformanceforlargedatasets) in the "branch" mode
 - Performance update for the api/gantt_auto_types_config.md configuration (PRO version)
 
 ####API
@@ -311,4 +308,3 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [API simplified, it uses a single Gantt object instead of a bunch of different objects](migrating.md)
 
 
-@todo: check and improve

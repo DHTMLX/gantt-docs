@@ -2,7 +2,7 @@ importFromExcel
 =============
 
 @short:
-	converts an XML or Excel file to JSON
+	converts an Excel file to JSON
 
 @params:
 
@@ -12,7 +12,9 @@ importFromExcel
 gantt.importFromExcel({
 	server:"https://export.dhtmlx.com/gantt",
 	data: file,
-	callback: function (project) {}
+	callback: function(project){
+    	console.log(project)
+    }
 });
 
 
@@ -23,33 +25,31 @@ gantt.importFromExcel({
 
 The method takes as a parameter an object with configuration properties of an imported file:
 
-- **data** - an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain either MPP or XML Project file.
+- **server** - sets the API endpoint for the request. Can be used with the local install of the import service. The default value is **https://export.dhtmlx.com/gantt**.
+- **data** - an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain an Excel (xlsx) file. 
 - **callback** - a callback function.
-- **durationUnit** - sets an expected duration unit ("minute", "hour", "day", "week", "month", "year").
-- **projectProperties** - specifies an array of project properties that should be put into the response.
-- **taskProperties** - specifies an array of additional task properties to be imported.
+- **sheet** - the number of the sheet of the document that should be returned by the import service.
 
 ###Response
 
-The response will contain a JSON of the following structure:
+The response will contain a JSON with an array of objects:
 
 ~~~js
-{
-   data: {},
-   config: {},
-   resources: [],
-   worktime: {}
-}
+[
+   { "Name": "Task Name", "Start": "2018-08-11 10:00", "Duration": 8 },
+   ...
+]
 ~~~
 
-- **data** - a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
-Dates are stringified in the "%Y-%m-%d %H:%i" format. 
-- **config** - a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
-- **resources** - an array of objects (each having the following properties: {*id:string, name:string, type:string*} that represent the list of resources from the project file.
-- **worktime** - an object containing the working time settings from the project calendar.
+where:
+
+- Values of the first row are used as property names of imported objects.
+- Each row is serialized as an individual object.
+- Date values are serialized in the "%Y-%m-%d %H:%i" format. 
+
 
 @related:
-desktop/excel.md
+desktop/excel.md#importfromexcel
 
 @relatedapi:
 api/gantt_exporttoexcel.md
@@ -63,6 +63,6 @@ api/gantt_importfrommsproject.md
 @relatedsample:
 	08_api/21_load_from_excel.html
     
-@todo: check and improve
+
 
 

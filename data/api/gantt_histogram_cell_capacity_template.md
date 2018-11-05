@@ -1,8 +1,6 @@
 histogram_cell_capacity
 =============
 
-@todo:
-	check 
 
 @short:
 	 specifies the height of the line that defines the available capacity of the resource

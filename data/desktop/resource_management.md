@@ -51,11 +51,37 @@ You can use this format with the [custom multiselect control](desktop/custom_edi
 }
 ~~~
 
-The resources are assigned as follows: the resource with id=2 in the quantity of 8 units, while the resource with the id=3 in the quantity of 4 units.
+The resources are assigned to the Task1 as follows: the resource with id=2 - in the quantity of 8 units, while the resource with the id=3 - in the quantity of 4 units.
 This format is supported by the desktop/resources.md of the lightbox.
 
 When sending data to the server, DataProcessor serializes the values of the described properies into JSON. To process such records on the server with ease, make use of the ["REST_JSON"](desktop/server_side.md#restjson)
 dataprocessor mode.
+
+
+###Getting tasks a resource is assigned to 
+
+There is a shorthand for getting all tasks assigned to a resource - api/gantt_getresourceassignments.md.
+
+~~~js
+gantt.getResourceAssignments("6"); 
+~~~
+
+The method takes as a parameter the id of the resource and returns an array of objects with tasks assigned to the resource:
+
+~~~js
+[ 
+    {task_id: 5, resource_id: "6", value: 5},
+    {task_id: 18, resource_id: "6", value: 2},
+    {task_id: 19, resource_id: "6", value: 3},
+    {task_id: 21, resource_id: "6", value: 5}
+]
+~~~
+
+Each object contains the following properties:
+
+- *task_id* - the id of the task
+- *resource_id* - the id of the resource
+- *value* - the quantity of the resource assigned to a task
 
 
 ###Setting connection via lightbox
@@ -236,7 +262,7 @@ both persons assigned to it. Note that grouped tasks will be sorted by the start
 - For tasks without asssigned resources Gantt will create the default group Not assigned. In case there is such a group in the data set that is passed into the **groupBy()** method, 
 it should have the *default:true* config specified to prevent automatic creation of a such a group.
 
-
+{{note Please note that dragging of tasks grouped by multiple resources is impossible.}}
 
 Resource view panel
 ------------------------
@@ -340,34 +366,34 @@ gantt.config.layout = {
 
 The same as in the resource load diagram, *resourceGrid* will work in the same way as the default grid view, but readonly. *resourceHistogram* has the following additional templates:
 
-- *resource_column_class* - the CSS class which is applied to a cell of the resource panel
+- *histogram_cell_class* - the CSS class which is applied to a cell of the resource panel
 
 ~~~js
-gantt.templates.resource_column_class=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_class=function(start_date,end_date,resource,tasks){
 	return "";
 };
 ~~~
 
-- *resource_column_label* - the label inside a cell
+- *histogram_cell_label* - the label inside a cell
 
 ~~~js
-gantt.templates.resource_column_label=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_label=function(start_date,end_date,resource,tasks){
  	return tasks.length * 8;
 };
 ~~~
 
-- *resource_column_allocated* - the height of the filled area in the histogram. Its value can be set from 0 to *maxCapacity* *.
+- *histogram_cell_allocated* - the height of the filled area in the histogram. Its value can be set from 0 to *maxCapacity* *.
 
 ~~~js
-gantt.templates.resource_column_allocated=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,tasks){
  	return tasks.length * 8;
 };
 ~~~
 
-- *resource_column_capacity* - the height of the line that defines the available capacity of the resource. Its value can be set from -1 to *maxCapacity* *. Values less than 0 won't render the line.
+- *histogram_cell_capacity* - the height of the line that defines the available capacity of the resource. Its value can be set from -1 to *maxCapacity* *. Values less than 0 won't render the line.
 
 ~~~js
-gantt.templates.resource_column_capacity=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,tasks){
  	return 24;
 };
 ~~~
@@ -379,10 +405,30 @@ If each row of the histogram is considered as a bar chart, maxCapacity is the he
 
 ![maxCapacity](desktop/maxcapacity.png)
 
-Thus, if the templates *resource_column_allocated* or *resource_column_capacity* are set to value 24, it implies the highest point of the row.
+Thus, if the templates *histogram_cell_allocated* or *histogram_cell_capacity* are set to value 24, it implies the highest point of the row.
 
+**maxCapacity** can be defined either at the histogram level:
 
-###Working with resource view panels
+~~~js
+{ view: "resourceHistogram", capacity:24, scrollX: "scrollHor", 
+	scrollY: "resourceVScroll"}
+~~~
+
+or individually for each resource:
+
+~~~js
+resourcesStore.parse([
+    {id: 1, text: "John", capacity:8},
+    {id: 2, text: "Mike", capacity:4},
+    {id: 3, text: "Anna", capacity:8},
+    {id: 4, text: "Bill", capacity:8},
+    {id: 5, text: "Floe", capacity:8}
+]);
+~~~
+
+{{note Capacity defined at the resource level overrides the global capacity of histogram for a given resource.}}
+
+###Working with the resource view panel
 
 By default both views (either "resourceGrid" and "resourceTimeline" or "resourceGrid" and "resourceHistogram") will be bound to the data store named as specified in the 
 [gantt.config.resource_store](api/gantt_resource_store_config.md) configuration option.
@@ -470,10 +516,10 @@ gantt.$resourcesStore = gantt.createDatastore({
 With the **fetchTasks** property set to *true*, Gantt renders all tasks assigned to a certain resource in the resource view panel. This functionality works both for the resource diagram and resource histogram types
 of layout.
 
+There is a shorthand for getting all tasks assigned to a resource - api/gantt_getresourceassignments.md.
 
-{{todo 
-needs checking and improving
-}}
-
+~~~js
+gantt.getResourceAssignments("6");
+~~~
 
 @edition:pro

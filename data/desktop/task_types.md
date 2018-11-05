@@ -75,7 +75,7 @@ Project tasks
 Project task is a task that starts, when its earliest child task starts, and ends, when its latest child ends. 
 
 {{note
-The difference between project and regular tasks is that the duration of a project task depends on its childs and is changed respectively.
+The difference between project and regular tasks is that the duration of a project task depends on its children and is changed respectively.
 }}
 
 <img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="desktop/type_project.png">
@@ -94,6 +94,7 @@ var tasks = {
     links:[]
 };
 ~~~
+
 {{sample
 01_initialization/16_projects_and_milestones.html
 }}
@@ -104,8 +105,9 @@ Tasks with **type="project"** can be characterized as follows:
 
 - Can have 1 parent and any number of child tasks.
 - Cannot be dragged and resized, unless drag and drop is explicitly enabled via the api/gantt_drag_project_config.md config. 
-- Depend on child tasks, i.e. if the user drags a child of a project task, the task changes its duration and progress respectively.
+- Depend on children tasks, i.e. if the user drags a child of a project task, the task changes its duration and progress respectively.
 - Ignore the **start_date**, **end_date**, **duration** properties.
+- Can't be dragged if have no children tasks. 
 
 {{note
 To provide a possibility of adding project tasks, read article desktop/milestones.md. A possibility to add milestones guarantees that your end users can add project tasks as well. 

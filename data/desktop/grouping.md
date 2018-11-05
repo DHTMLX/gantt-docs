@@ -113,7 +113,7 @@ gantt.templates.task_class=function(start, end, task){
 
 - **group_id** - (*optional*) the group's id. The default value - 'key'. 
 - **group_text** - (*optional*) the group's label. The default value - 'label'.  
-- **delimiter** - (*optional*) the delimiter for items in the group. "," by default.
+- **delimiter** - (*optional*) the delimiter is used for automatic creation of groups for tasks with multiple resources. "," by default.
 
 
 Ungrouping tasks
@@ -151,7 +151,6 @@ gantt.groupBy({
 
 @edition: pro
 
-@todo:
-check delimiter property of the groupBy method
+
 
 

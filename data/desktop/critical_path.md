@@ -173,4 +173,3 @@ It's possible to set lag and lead times between tasks of the critical path. You 
 
 @edition: pro
 
-@todo: check slacks section 

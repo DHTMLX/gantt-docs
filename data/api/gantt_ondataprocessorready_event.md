@@ -1,9 +1,6 @@
 onDataProcessorReady
 =============
 
-@todo:
-	check 
-
 @short:
 	fires on the `dp.init(gantt)` call
 

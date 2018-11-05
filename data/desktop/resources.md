@@ -128,4 +128,4 @@ gantt.load("/data");
 
 {{sample 11_resources/07_assign_multiple_resources.html}}
 
-
+@edition:pro

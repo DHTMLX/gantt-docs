@@ -1,9 +1,6 @@
 histogram_cell_label
 =============
 
-@todo:
-	check 
-
 @short:
 	defines the label inside a cell
 

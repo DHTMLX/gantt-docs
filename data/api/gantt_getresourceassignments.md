@@ -1,9 +1,6 @@
 getResourceAssignments
 =============
 
-@todo:
-	check, should it be added to docs? 
-
 @short:
 	returns all tasks assigned to the resource
 
@@ -38,3 +35,11 @@ Each object contains the following properties:
 - *task_id* - the id of the task
 - *resource_id* - the id of the resource
 - *value* - the quantity of the resource assigned to a task
+
+@related:
+desktop/resource_management.md
+
+@relatedsample:
+11_resources/09_resource_histogram.html
+11_resources/10_resource_histogram_workload_percents.html
+11_resources/12_work_and_material_resources.html

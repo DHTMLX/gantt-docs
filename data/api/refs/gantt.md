@@ -127,7 +127,7 @@ Gantt API
 - api/gantt_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
 - api/gantt_hidelightbox.md - closes the lightbox if it's currently active
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
-- api/gantt_importfromexcel.md - converts an XML or Excel file to JSON
+- api/gantt_importfromexcel.md - converts an Excel file to JSON
 - api/gantt_importfrommsproject.md - converts an XML or MPP MS Project file to JSON
 - api/gantt_init.md - constructor. Initializes a dhtmlxGantt object
 - api/gantt_ischildof.md - checks whether a task is a child of other task
@@ -452,10 +452,10 @@ Gantt API
 - api/gantt_grid_indent_template.md - specifies the indent  of the child items in a branch (in the tree column)
 - api/gantt_grid_open_template.md - specifies the icon of the open/close sign in the tree column
 - api/gantt_grid_row_class_template.md - specifies the CSS class that will be applied to a grid row
-- api/gantt_histogram_cell_allocated_template.md - 
-- api/gantt_histogram_cell_capacity_template.md - 
-- api/gantt_histogram_cell_class_template.md - 
-- api/gantt_histogram_cell_label_template.md - 
+- api/gantt_histogram_cell_allocated_template.md - defines the height of the filled area in the resourceHistogram
+- api/gantt_histogram_cell_capacity_template.md - specifies the height of the line that defines the available capacity of the resource
+- api/gantt_histogram_cell_class_template.md - defines the CSS class which is applied to a cell of the resource panel
+- api/gantt_histogram_cell_label_template.md - defines the label inside a cell
 - api/gantt_link_class_template.md - specifies the CSS class that will be applied to a link
 - api/gantt_link_description_template.md - specifies the text in the header of the link's "delete" confirm window
 - api/gantt_progress_text_template.md - specifies the text in the completed part of the task bar
