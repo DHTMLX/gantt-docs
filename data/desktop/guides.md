@@ -15,6 +15,7 @@ The articles come around key procedures and problem-solving activities.
 		         How to Start with dhtmlxGantt
 		    </h4>
 		    <ul id="data_sublist" >
+            		<li>desktop/howtostart_dotnet_core.md</li>
                     <li>desktop/howtostart_php.md</li>
                     <li>desktop/howtostart_php_laravel.md</li>
                     <li>desktop/howtostart_nodejs.md</li>
@@ -22,7 +23,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/howtostart_ruby.md</li>
             </ul>
         </td>
-        <td class='topic_description'>Says how to build a standard Gantt chart on different server-side platforms and perform common tasks:
+        <td class='topic_description'>Says how to build a standard dhtmlxGantt chart on different server-side platforms and perform common tasks:
         create database connection, load with data, save changes, store the order of tasks, provide app security, etc.</td>
 	</tr>
 	<tr>
@@ -64,7 +65,7 @@ The articles come around key procedures and problem-solving activities.
             <ul id="events_sublist">
                     <li>desktop/specifying_columns.md</li>
                     <li>desktop/tree_column.md</li>
-                    <li>desktop/reodering_tasks.md</li>
+                    <li>desktop/reordering_tasks.md</li>
                     <li>desktop/multiselection.md</li>
                     <li>desktop/sorting.md</li>
 					<li>desktop/grouping.md</li>

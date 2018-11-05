@@ -7,7 +7,7 @@ Configuring Grid Area
 {{index
 - desktop/specifying_columns.md
 - desktop/tree_column.md
-- desktop/reodering_tasks.md
+- desktop/reordering_tasks.md
 - desktop/sorting.md
 - desktop/grouping.md
 - desktop/filtering.md

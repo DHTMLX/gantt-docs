@@ -1,7 +1,7 @@
 dhtmlxGantt with Ruby on Rails 
 =========================
 
-In this article we'll show you how to create a Gantt chart with a [Ruby on Rails](http://rubyonrails.org/) backend.
+In this article you'll learn how to create a Gantt chart with a [Ruby on Rails](http://rubyonrails.org/) backend.
 For implementing this app we'll use Ruby 2.4.1, Rails 5.1.3 and MySQL. This tutorial assumes that you have all prerequisites already installed. 
 Otherwise please visit [the official tutorials](http://guides.rubyonrails.org/index.html) first. 
 
@@ -11,6 +11,7 @@ If you use some other technology, check the list of available integration varian
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
+- desktop/howtostart_dotnet_core.md
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-rails) on GitHub.
 
@@ -425,7 +426,7 @@ Please check more of [our guides](desktop/guides.md) for more features of dhtmlx
 Storing the Order of Tasks
 ------------------
 
-The client-side gantt allows [reordering tasks](desktop/reodering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+The client-side gantt allows [reordering tasks](desktop/reordering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
 You can [check the common description here](desktop/server_side.md#storingtheorderoftasks). 
 
 

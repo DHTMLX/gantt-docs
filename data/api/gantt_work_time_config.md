@@ -10,7 +10,6 @@ work_time
 //calculates duration in working hours and hides non-working time from the chart
 gantt.config.duration_unit = "hour";
 gantt.config.work_time = true;
-gantt.config.skip_off_time = true;
 
 gantt.init("gantt_here");
 
@@ -25,4 +24,4 @@ gantt.init("gantt_here");
 	 desktop/working_time.md
 @relatedapi:
 	api/gantt_correct_work_time_config.md
-     api/gantt_skip_off_time_config.md
+    api/gantt_skip_off_time_config.md

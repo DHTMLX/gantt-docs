@@ -8,6 +8,7 @@ There are tutorials intended for building server-side integration with the help 
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
+- desktop/howtostart_dotnet_core.md
 - desktop/howtostart_ruby.md
 
 We will use the [Slim](http://www.slimframework.com/) framework for routing and MySQL as a data storage. CRUD logic will rely on PDO and will be generic enough to be usable with any other framework.
@@ -453,7 +454,7 @@ Now everything is ready. Let's run our application. Open http://127.0.0.1:8080 a
 Storing the Order of Tasks
 ------------------
 
-The client-side gantt allows [reordering tasks](desktop/reodering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+The client-side gantt allows [reordering tasks](desktop/reordering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
 You can [check the common description here](desktop/server_side.md#storingtheorderoftasks).
 
 Let's now add this feature to our app.

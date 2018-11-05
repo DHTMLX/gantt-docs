@@ -4,7 +4,7 @@ resource_store
 @edition: pro
 
 @short:
-	specifies the name of the dataStore connected to the resourceGrid/resourceTimeline views
+	specifies the name of the dataStore connected to the resourceGrid/resourceTimeline/resourceHistogram views
 
 @type: string
 @default: "resource"

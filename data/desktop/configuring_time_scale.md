@@ -6,15 +6,15 @@ Setting up the Scale
 
 You can configure the following aspects of the time scale (X-Axis):
 
-1. [Unit](desktop/configuring_time_scale.md#timeunitofthescale)
-2. [Range](desktop/configuring_time_scale.md#daterangeofthescale)
-3. [Step](desktop/configuring_time_scale.md#stepofthescale)
-4. [Height](desktop/configuring_time_scale.md#heightofthescale)
-5. [Format](desktop/configuring_time_scale.md#formatofthescale)
-6. [Style](desktop/configuring_time_scale.md#styleofthescale)
-7. [Second scale](desktop/configuring_time_scale.md#secondscales)
+1. [Unit](#timeunits)
+2. [Range](#range)
+3. [Step](#timestep)
+4. [Height](#height)
+5. [Format](#dateformat)
+6. [Style](#styling)
+7. [Second scale](#multiplescales)
 
-You can also add a [custom scale](desktop/configuring_time_scale.md#customscale).
+You can also add a [custom scale](#customtimeunits).
 
 
 Time units
@@ -99,9 +99,57 @@ The tasks that don't fit into the specified interval won't be displayed in the G
 
 {{sample 01_initialization/19_tasks_without_dates.html}}
 
-###Changing the displayed range dynamically
+<h4 id="note">Note</h4>
 
-As a third approach, you can control the time range with the help of the **start_date / end_date** configs, but dynamically adjust them to display loaded tasks.
+If both the **start_date** and **end_date** options are specified and you create a task that is outside the range, the task will disappear from the chart.
+
+In this case we can extend the range:
+
+~~~js
+gantt.attachEvent("onLightboxSave", function(id, task, is_new){
+ var taskStart = task.start_date;
+ var taskEnd = task.end_date;
+ var scaleStart = gantt.config.start_date;
+ var scaleEnd = gantt.config.end_date;
+
+ // if the task is out of the range
+ if(scaleStart > taskEnd || scaleEnd < taskStart ){
+  // update timescale range
+  gantt.config.end_date=new Date(Math.max(taskEnd.valueOf(), scaleEnd.valueOf()));
+  gantt.config.start_date=new Date(Math.min(taskStart.valueOf(),scaleStart.valueOf()));
+  gantt.render();
+ }    
+ return true;
+});
+~~~
+
+Or add validation to the lightbox control:
+
+~~~js
+gantt.attachEvent("onLightboxSave", function(id, task, is_new){
+ 	var taskStart = task.start_date;
+ 	var taskEnd = task.end_date;
+ 	var scaleStart = gantt.config.start_date;
+ 	var scaleEnd = gantt.config.end_date;
+
+    // check if the task is out of the range
+    if(scaleStart > taskEnd || scaleEnd < taskStart ){
+        gantt.message({
+            type:"warning", 
+            text:"Warning! The task is outside the date range!",
+            expire:5000
+        });
+          return false;
+    } 
+    return true;
+});
+~~~
+
+<h3 id="dynamic_scale">Changing the displayed range dynamically</h3>
+
+There are several ways of how you can change the displayed range on the fly:
+
+- you can control the time range with the help of the **start_date / end_date** configs, but dynamically adjust them to display loaded tasks.
 
 You can do it by [recalculating the scale range](api/gantt_getsubtaskdates.md) via updating the **start_date / end_date** configs each time gantt is repainted:
 
@@ -118,6 +166,46 @@ gantt.attachEvent("onBeforeGanttRender", function(){
 gantt.init("gantt_here");
 ~~~
 
+- to 'force' the scale re-render each time a task doesn't fit into the existing scale interval, set the api/gantt_fit_tasks_config.md property to *true*:
+
+~~~js
+gantt.config.fit_tasks = true; 
+gantt.init("gantt_here");
+~~~
+
+In case both the **start_date** and **end_date** options are specified, you need to [make use of one of the options described above](#note) for the **fit_tasks** property to work correctly.
+
+- it is also possible to automatically change the scale while dragging a task by specifying the necessary logic inside the handler of the api/gantt_ontaskdrag_event.md event:
+
+~~~js
+gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
+ var state = gantt.getState();
+ var minDate = state.min_date,
+  	 maxDate = state.max_date;
+  
+ var scaleStep=gantt.date.add(new Date(),state.scale_step,state.scale_unit)-new Date();
+  
+ var showDate,
+  repaint = false;
+  if(mode == "resize" || mode == "move"){
+    if(Math.abs(task.start_date - minDate) < scaleStep){
+      showDate = task.start_date;
+      repaint = true;
+      
+    }else if(Math.abs(task.end_date - maxDate) < scaleStep){
+      showDate = task.end_date;
+      repaint = true;
+    }
+    
+    if(repaint){
+      gantt.render();
+      gantt.showDate(showDate);
+    }
+  }
+});
+~~~
+
+{{editor		https://docs.dhtmlx.com/gantt/snippet/d3c07958			Re-rendering Scale during Task Dragging}}
 
 Time step
 --------------------------------------
@@ -191,16 +279,22 @@ gantt.init("gantt_here");
 
 
 </li>
-<li>the api/gantt_date_scale_template.md template,  to set a complex format as a function that takes a date object as a parameter:<br><br>
+<li>the api/gantt_date_scale_template.md template, to set a complex format as a function that takes a date object as a parameter:<br><br>
 
 ~~~js
-var scale_day = 0;
-gantt.templates.date_scale = function(date) {/*!*/
-	var d = gantt.date.date_to_str("%F %d");/*!*/
-    return "<strong>Day " + (scale_day++) + "</strong><br/>" + d(date);/*!*/
-};/*!*/
 gantt.config.scale_height = 44;
-gantt.init("gantt_here");
+
+gantt.attachEvent("onGanttReady", function(){
+	var dateFormat = gantt.date.date_to_str("%F %d");
+
+	var dayNumber = function(date){
+		return gantt.columnIndexByDate(date) + 1;
+	} 
+
+	gantt.templates.date_scale = function(date){		/*!*/
+	  return "<strong>Day "+dayNumber(date)+"</strong><br/>"+dateFormat(date); /*!*/
+	} /*!*/
+});
 ~~~
 
 
@@ -258,6 +352,7 @@ gantt.config.subscales = [/*!*/
 gantt.config.scale_height = 54;
 gantt.init("gantt_here");
 ~~~
+
 {{sample
 	03_scales/01_multiple_scales.html
 }}

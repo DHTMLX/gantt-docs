@@ -9,7 +9,7 @@ The service is free, but the output PDF/PNG file will contain the library's wate
 during the valid support period (1 month for Commercial license and 12 months for the Enterprise one).
 }}
 
-Using Export Services
+Using export services
 -----------------------
 
 There are several export services available. You can install them on your computer and export Gantt chart to PDF or PNG locally.
@@ -17,8 +17,18 @@ There are several export services available. You can install them on your comput
 Note that export services are not included into the Gantt package, 
 read the [corresponding article](http://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
+Limits on request size
+--------------------
+
+There is a common API endpoint [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) which serves for all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 10 MB**.
+
+There is also a separate API endpoint [https://export.dhtmlx.com/gantt/project](https://export.dhtmlx.com/gantt/project) specific for the [MSProject export/import services](desktop/export_msproject.md) 
+(*exportToMSProject*/*importFromMSProject* only). **Max request size: 40 MB**.
+
+
 Export to PDF
 -----------------------------
+
 To export Gantt chart as a PDF document, do the following steps:
 
 <ol>
@@ -308,8 +318,8 @@ gantt.exportToPDF({
 
 Note that custom elements will require providing [custom styles](desktop/export.md#customstylefortheoutputfile) in order to be displayed correctly.
 
-Pay attention that the use of this mode increases the size of the API request. Large charts can exceed limit of the online export of 4MB and may not be exported that way.
-In such a case you need to have an export service installed locally and increase the request size.
+Pay attention that the use of this mode increases the size of the API request. Large charts can exceed limit of the online export of 10MB and may not be exported that way.
+In such a case you need to have an [export service](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) installed locally and increase the request size.
 
 
 

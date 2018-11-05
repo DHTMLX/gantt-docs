@@ -1,5 +1,6 @@
 sort
 =============
+
 @short: enables sorting in the table 
 	
 
@@ -20,4 +21,6 @@ gantt.parse("tasks.json");
 @template:	api_config
 @descr:
 
-
+@relatedapi:
+api/gantt_sort.md
+api/gantt_onaftersort_event.md

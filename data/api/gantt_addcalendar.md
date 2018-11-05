@@ -46,12 +46,12 @@ var calendar = {
     id:"calendar1", // optional
     worktime: {
         hours: [8, 17],
-        days: [ 0, 1, 1, 1, {hours: [12, 17]}, 1, 0]
+        days: [ 0, 1, 1, 1, [12, 17], 1, 0]
     }
 }
 ~~~
 
-where {hours: [12, 17]} - working hours from 12 pm to 17 pm for Thursday.
+where [12, 17] are working hours from 12 pm to 17 pm for Thursday.
 
     
 @relatedsample:

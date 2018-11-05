@@ -21,6 +21,35 @@ Migration from Older Versions
 </style>
 
 
+5.2 -> 6.0
+------------------
+
+In the version 6.0 the **getSlack()** method is deprecated. Two methods added instead:
+
+- api/gantt_getfreeslack.md - to return the free slack of a task
+- api/gantt_gettotalslack.md - to return the total slack of a task
+
+Methods marked as deprecated in v[4.0](#3x40) stopped working in v6.0. The **dhtmlx** object definition was removed from *dhtmlxgantt.js*.
+
+If you use any of the obsolete methods, you'll need to replace them with supported implementations according to the table below. No changes in the arguments or behavior of the methods were made.
+
+<table class="my_table">
+
+<tr><td class="version_info">Obsolete methods</td><td class="version_info">Working methods</td></tr>
+
+<tr><td>dhtmlx.alert</td><td>gantt.alert</td></tr>
+<tr><td>dhtmlx.confirm</td><td>gantt.confirm</td></tr>
+<tr><td>dhtmlx.modalbox</td><td>gantt.modalbox</td></tr>
+<tr><td>dhtmlx.uid</td><td>gantt.uid</td></tr>
+<tr><td>dhtmlx.copy</td><td>gantt.copy</td></tr>
+<tr><td>dhtmlx.mixin</td><td>gantt.mixin</td></tr>
+<tr><td>dhtmlx.defined</td><td>gantt.defined</td></tr>
+<tr><td>dhtmlx.bind</td><td>gantt.bind</td></tr>
+<tr><td>dhtmlx.assert</td><td>gantt.assert</td></tr>
+<tr><td>window.dataProcessor</td><td>gantt.dataProcessor</td></tr>
+</table>
+
+
 3.x -> 4.0
 ------------
 

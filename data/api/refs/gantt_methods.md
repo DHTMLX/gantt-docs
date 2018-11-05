@@ -20,7 +20,7 @@ Methods
 - api/gantt_calculateenddate.md - calculates the end date of a task
 - api/gantt_calculatetasklevel.md - calculates the level of a task
 - api/gantt_callevent.md - calls an inner event
-- api/gantt_changelightboxtype.md - changes the name of the lighbox's structure defined for  of the task
+- api/gantt_changelightboxtype.md - repaints the lighbox for the task according to its type
 - api/gantt_changelinkid.md - changes the link's id
 - api/gantt_changetaskid.md - changes the task's id
 - api/gantt_checkevent.md - checks whether an event has some handler(s) specified
@@ -67,6 +67,7 @@ Methods
 - api/gantt_getcolumnindex.md - returns the index of the column by its name
 - api/gantt_getconnectedgroup.md - returns all tasks and links that a task is connected with
 - api/gantt_getdatastore.md - returns the configuration object of a datastore
+- api/gantt_getfreeslack.md - returns the free slack of a task
 - api/gantt_getglobaltaskindex.md - gets the index of a task in the tree
 - api/gantt_getgridcolumn.md - gets the configuration object of a column
 - api/gantt_getgridcolumns.md - gets columns of the Gantt chart
@@ -87,6 +88,7 @@ Methods
 - api/gantt_getprev.md - returns the id of the previous item (no matter what the level of nesting is: the same or different)
 - api/gantt_getprevsibling.md - returns the id of the previous task of the same level
 - api/gantt_getredostack.md - returns the stack of stored redo user actions
+- api/gantt_getresourceassignments.md - returns all tasks assigned to the resource
 - api/gantt_getscale.md - returns the configuration of the time scale
 - api/gantt_getscrollstate.md - returns the scroll position
 - api/gantt_getselectedid.md - returns the id of the selected task
@@ -111,6 +113,7 @@ Methods
 - api/gantt_gettaskrownode.md - returns the HTML element of the task row in the table
 - api/gantt_gettasktop.md - gets the top position of the task's DOM element in the timeline area
 - api/gantt_gettasktype.md - returns the type of a task
+- api/gantt_gettotalslack.md - returns the total slack of a task
 - api/gantt_getundostack.md - returns the stack of stored undo user actions
 - api/gantt_getvisibletaskcount.md - gets the number of tasks visible on the screen (those that are not collapsed)
 - api/gantt_getwbscode.md - returns the WBS code (the outline number) of a task
@@ -120,6 +123,7 @@ Methods
 - api/gantt_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
 - api/gantt_hidelightbox.md - closes the lightbox if it's currently active
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
+- api/gantt_importfromexcel.md - converts an Excel file to JSON
 - api/gantt_importfrommsproject.md - converts an XML or MPP MS Project file to JSON
 - api/gantt_init.md - constructor. Initializes a dhtmlxGantt object
 - api/gantt_ischildof.md - checks whether a task is a child of other task
@@ -172,7 +176,7 @@ Methods
 - api/gantt_showlightbox.md - opens the lightbox for the specified task
 - api/gantt_showquickinfo.md - displays the pop-up task form for the specified task
 - api/gantt_showtask.md - makes the specified task visible on the screen
-- api/gantt_sort.md - sorts the tasks in the grid
+- api/gantt_sort.md - sorts tasks in the grid
 - api/gantt_toggletaskselection.md - selects the specified task if it was unselected and vice versa
 - api/gantt_uid.md - returns a unique id
 - api/gantt_undo.md - reverts the changes made in the gantt
@@ -249,6 +253,7 @@ Methods
 - api/gantt_getcolumnindex.md
 - api/gantt_getconnectedgroup.md
 - api/gantt_getdatastore.md
+- api/gantt_getfreeslack.md
 - api/gantt_getglobaltaskindex.md
 - api/gantt_getgridcolumn.md
 - api/gantt_getgridcolumns.md
@@ -269,6 +274,7 @@ Methods
 - api/gantt_getprev.md
 - api/gantt_getprevsibling.md
 - api/gantt_getredostack.md
+- api/gantt_getresourceassignments.md
 - api/gantt_getscale.md
 - api/gantt_getscrollstate.md
 - api/gantt_getselectedid.md
@@ -293,6 +299,7 @@ Methods
 - api/gantt_gettaskrownode.md
 - api/gantt_gettasktop.md
 - api/gantt_gettasktype.md
+- api/gantt_gettotalslack.md
 - api/gantt_getundostack.md
 - api/gantt_getvisibletaskcount.md
 - api/gantt_getwbscode.md
@@ -302,6 +309,7 @@ Methods
 - api/gantt_hidecover.md
 - api/gantt_hidelightbox.md
 - api/gantt_hidequickinfo.md
+- api/gantt_importfromexcel.md
 - api/gantt_importfrommsproject.md
 - api/gantt_init.md
 - api/gantt_ischildof.md

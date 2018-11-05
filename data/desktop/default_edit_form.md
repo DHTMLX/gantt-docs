@@ -1,7 +1,7 @@
 Configuring Lightbox Elements 
 ================================
 
-Lightbox is an edit form used to change the task's details.<br> The default lightbox is presented in the image below.
+Lightbox is an edit form used to change the task's details. <br> The default lightbox is presented in the image below.
 
 <img src="desktop/lightbox.png"/>
 
@@ -45,7 +45,7 @@ Each section of the lightbox is based on some control. The following types of co
 - [Template](desktop/template.md) - a container with some HTML content inside
 - [Checkbox](desktop/checkbox.md) - a checkbox for switching an option or several values on/off 
 - [Radio button](desktop/radio.md) - a radio button for selecting only one option from a given set of options 
-
+- [Resources](desktop/resources.md) - a complex control for assigning several resources to a task
 
 ~~~js
 var opts = [
@@ -62,7 +62,6 @@ gantt.config.lightbox.sections = [
 ~~~
 
 
-
 @index:
 - desktop/textarea.md
 - desktop/duration.md
@@ -73,3 +72,4 @@ gantt.config.lightbox.sections = [
 - desktop/template.md
 - desktop/checkbox.md
 - desktop/radio.md
+- desktop/resources.md

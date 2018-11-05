@@ -4,7 +4,7 @@ resource_property
 @edition: pro
 
 @short:
-	specifies the property of a task object that stores a resource id associated with resourceGrid/resourceTimeline
+	defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram
 
 @type: string
 @default: "owner_id"
@@ -12,7 +12,7 @@ resource_property
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-Specifies the property of the task object which stores the resource id associated with resourceGrid/resourceTimeline. Can be changed on the runtime.
+Specifies the property of the task object which stores the resource id associated with resourceGrid/Timeline/Histogram. Can be changed on the runtime.
 
 
 @example:

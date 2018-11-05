@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(~E_ALL);
 
 if (file_exists("../../../data/api/".$_POST["file"]))
 	die();

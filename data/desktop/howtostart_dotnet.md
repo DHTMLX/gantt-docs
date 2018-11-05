@@ -1,10 +1,11 @@
 dhtmlxGantt with ASP.NET MVC  
 ===============================
 
-This tutorial will give you step-by-step instructions on creating Gantt with ASP.NET and REST API on the server side. 
+This tutorial will give you step-by-step instructions on creating Gantt with [ASP.NET](https://www.asp.net/) and REST API on the server side. 
 
 You can also explore other server-side integration possibilities of Gantt by choosing one of the following tutorials:
 
+- desktop/howtostart_dotnet_core.md
 - desktop/howtostart_php.md
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_nodejs.md
@@ -785,7 +786,7 @@ Note that returning an exception message to the client might not be the best ide
 Storing the Order of Tasks
 -----------
 
-The client-side gantt allows [reordering tasks](desktop/reodering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database.
+The client-side gantt allows [reordering tasks](desktop/reordering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database.
 You can [check the common description here](desktop/server_side.md#storingtheorderoftasks).
 
 Let's now add this feature to our app.

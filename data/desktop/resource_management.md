@@ -1,23 +1,93 @@
 Resource Management
 ======================
 
+{{pronote  This functionality is available in the Gantt PRO edition only. }}
 
-{{pronote
-This functionality is available in the Gantt PRO edition only. 
-}}
-
-As of dhtmlxGantt v5.1, resources can be connected to tasks via the properties of the task object by the "many-to-one" relation **task.resourceId <-> resource.id**.
 Gantt provides predefined resource views for highlighting resource load, methods for breaking project down by a resource for load balancing, 
-task and resource-specific work-time calendars, as well as the public API for implementing any custom behavior.
-
+task and resource-specific work-time calendars, as well as public API for implementing any custom behavior.
 
 <img src="desktop/resource_panel.png">
 
-
-Assigning resources
+Assigning resources 
 -------------------
 
-A resource can be assigned to any property of the task object using the built-in lightbox:
+###Connecting resources to tasks 
+
+The resource relation is defined by the api/gantt_resource_property_config.md configuration option:
+
+~~~js
+gantt.config.resource_property = "user_id";
+// task.user_id <-> resource.id
+~~~
+
+Resources can be connected to tasks via the properties of the task object in one of the following ways:
+
+- assigning one resource to one task
+
+~~~js
+{
+	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6, 
+	user_id: 5 // 5 is the id of the resource 
+}
+~~~
+
+- assigning multiple resources to one task
+
+~~~js
+{
+	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6, 
+	users: [2, 3] // 2 and 3 are the ids of resources
+}
+~~~
+
+You can use this format with the [custom multiselect control](desktop/custom_editor.md#customthirdpartyeditor). 
+
+- assigning multiple resources and specifiying their quantity
+
+~~~js
+{
+	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	users: [{resource_id:2, value:8}, {resource_id:3, value:4}]  
+}
+~~~
+
+The resources are assigned to the Task1 as follows: the resource with id=2 - in the quantity of 8 units, while the resource with the id=3 - in the quantity of 4 units.
+This format is supported by the desktop/resources.md of the lightbox.
+
+When sending data to the server, DataProcessor serializes the values of the described properies into JSON. To process such records on the server with ease, make use of the ["REST_JSON"](desktop/server_side.md#restjson)
+dataprocessor mode.
+
+
+###Getting tasks a resource is assigned to 
+
+There is a shorthand for getting all tasks assigned to a resource - api/gantt_getresourceassignments.md.
+
+~~~js
+gantt.getResourceAssignments("6"); 
+~~~
+
+The method takes as a parameter the id of the resource and returns an array of objects with tasks assigned to the resource:
+
+~~~js
+[ 
+    {task_id: 5, resource_id: "6", value: 5},
+    {task_id: 18, resource_id: "6", value: 2},
+    {task_id: 19, resource_id: "6", value: 3},
+    {task_id: 21, resource_id: "6", value: 5}
+]
+~~~
+
+Each object contains the following properties:
+
+- *task_id* - the id of the task
+- *resource_id* - the id of the resource
+- *value* - the quantity of the resource assigned to a task
+
+
+###Setting connection via lightbox
+
+
+Resources can be assigned to any property of the task object using the built-in lightbox.
 
 ~~~js
 gantt.serverList("people", [
@@ -36,6 +106,9 @@ gantt.config.lightbox.sections = [
   {name:"time", type:"duration", map_to: "auto"}
 ];
 ~~~
+
+
+###Loading collections
 
 Collections specified as server lists can be loaded and updated dynamically, after gantt is initialized:
 
@@ -115,7 +188,7 @@ For coloring you'll usually need the following templates:
 Depending on your context, you can 
 
 - either have [predefined classes for each resource](desktop/colouring_tasks.md#redefiningthetaskstemplate)
-- or you load styling, e.g. background and text color settings together with the resources. In that case you'll need to [generate a CSS dynamically on the page](desktop/colouring_tasks.md#loadingcolorswiththedata)
+- or load styling, e.g. background and text color settings together with the resources. In that case you'll need to [generate a CSS dynamically on the page](desktop/colouring_tasks.md#loadingcolorswiththedata)
 
 {{sample  11_resources/01_assigning_resources.html}}
 
@@ -176,11 +249,29 @@ This feature can be used for balancing resource load in the calendar.
 
 Read more about task grouping in [the related article](desktop/grouping.md).  
 
+###Grouping tasks by multiple resources 
 
-Resource load diagram
+In case you assign several resources to a task, tasks will be grouped by assigned resources. It means that a task assigned to two persons won't be duplicated for each of them. Instead it will be rendered once with 
+both persons assigned to it. Note that grouped tasks will be sorted by the start date.
+
+![Group resources](desktop/grouping_resources.png)
+
+{{sample 11_resources/08_resource_usage_groups.html}}
+
+- If tasks in the loaded data set have several resources assigned to them, Gantt will create groups for them automatically. 
+- For tasks without asssigned resources Gantt will create the default group Not assigned. In case there is such a group in the data set that is passed into the **groupBy()** method, 
+it should have the *default:true* config specified to prevent automatic creation of a such a group.
+
+{{note Please note that dragging of tasks grouped by multiple resources is impossible.}}
+
+Resource view panel
 ------------------------
 
-Starting from v5.1 dhtmlxGantt has a predefined layout view for displaying resource load of gantt. It includes corresponding views for the grid and timeline: "resourceGrid" and "resourceTimeline".
+dhtmlxGantt has two types of predefined layout view for displaying resource load of gantt: resource load diagram and resource histogram.
+
+###Resource load diagram
+
+It includes corresponding views for the grid and timeline: "resourceGrid" and "resourceTimeline".
 
 <img src="desktop/resource_panel.png">
 
@@ -213,9 +304,136 @@ gantt.config.layout = {
 };
 ~~~
 
-By default both views will be bound to the data store named as specified in the [gantt.config.resource_store](api/gantt_resource_store_config.md) configuration option.
+{{sample  11_resources/04_resource_usage_diagram.html}}
 
-This data store has to be initialized manually:
+
+Once initialized, *resourceGrid* will work in the same way as the default grid view, but readonly. *resourceTimeline* will inherit the scale configuration from the default timeline and will have two layers:
+
+- background rows, which inherit api/gantt_task_row_class_template.md and api/gantt_task_cell_class_template.md. The templates of *resourceTimeline* can be redefined at the layout level.
+- resource layer - a layer specific for *resourceTimeline*. It will display blocks in cells where the resource has tasks assigned. The block style and content can be templated with 
+the api/gantt_resource_cell_class_template.md and api/gantt_resource_cell_value_template.md templates:
+
+~~~js
+gantt.templates.resource_cell_value = function(start_date, end_date, resource, tasks){
+	var html = "<div>" +  tasks.length * 8 + "h</div>";
+		return html;
+};
+~~~
+
+
+{{sample 11_resources/05_resource_usage_templates.html}}
+
+
+###Resource histogram
+
+This type of the layout view for displaying resource load of gantt includes the "resourceGrid" and "resourceHistogram" views for the grid and timeline correspondingly.
+
+![Resource histogram](desktop/resource_histogram.png)
+
+~~~js
+gantt.config.layout = {
+	css: "gantt_container",
+	rows: [
+		{
+			gravity: 2,
+			cols: [
+				{view: "grid", group:"grids", scrollY: "scrollVer"},
+				{resizer: true, width: 1},
+				{view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
+				{view: "scrollbar", id: "scrollVer", group:"vertical"}
+			]
+		},
+		{ resizer: true, width: 1, next: "resources"},
+		{
+			gravity:1,
+			id: "resources",
+			config: resourceConfig,
+			templates: resourceTemplates,
+			cols: [
+				{ view: "resourceGrid", group:"grids", scrollY: "resourceVScroll" },
+				{ resizer: true, width: 1},
+				{ view: "resourceHistogram", capacity:24, scrollX: "scrollHor", 
+                	scrollY: "resourceVScroll"},
+				{ view: "scrollbar", id: "resourceVScroll", group:"vertical"}
+			]
+		},
+		{view: "scrollbar", id: "scrollHor"}
+	]
+};
+~~~
+
+{{sample  11_resources/09_resource_histogram.html}}
+
+The same as in the resource load diagram, *resourceGrid* will work in the same way as the default grid view, but readonly. *resourceHistogram* has the following additional templates:
+
+- *histogram_cell_class* - the CSS class which is applied to a cell of the resource panel
+
+~~~js
+gantt.templates.histogram_cell_class=function(start_date,end_date,resource,tasks){
+	return "";
+};
+~~~
+
+- *histogram_cell_label* - the label inside a cell
+
+~~~js
+gantt.templates.histogram_cell_label=function(start_date,end_date,resource,tasks){
+ 	return tasks.length * 8;
+};
+~~~
+
+- *histogram_cell_allocated* - the height of the filled area in the histogram. Its value can be set from 0 to *maxCapacity* *.
+
+~~~js
+gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,tasks){
+ 	return tasks.length * 8;
+};
+~~~
+
+- *histogram_cell_capacity* - the height of the line that defines the available capacity of the resource. Its value can be set from -1 to *maxCapacity* *. Values less than 0 won't render the line.
+
+~~~js
+gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,tasks){
+ 	return 24;
+};
+~~~
+
+**What maxCapacity is**
+
+If each row of the histogram is considered as a bar chart, maxCapacity is the height of the Y-scale of this chart. In the image below maxCapacity = 24:
+
+
+![maxCapacity](desktop/maxcapacity.png)
+
+Thus, if the templates *histogram_cell_allocated* or *histogram_cell_capacity* are set to value 24, it implies the highest point of the row.
+
+**maxCapacity** can be defined either at the histogram level:
+
+~~~js
+{ view: "resourceHistogram", capacity:24, scrollX: "scrollHor", 
+	scrollY: "resourceVScroll"}
+~~~
+
+or individually for each resource:
+
+~~~js
+resourcesStore.parse([
+    {id: 1, text: "John", capacity:8},
+    {id: 2, text: "Mike", capacity:4},
+    {id: 3, text: "Anna", capacity:8},
+    {id: 4, text: "Bill", capacity:8},
+    {id: 5, text: "Floe", capacity:8}
+]);
+~~~
+
+{{note Capacity defined at the resource level overrides the global capacity of histogram for a given resource.}}
+
+###Working with the resource view panel
+
+By default both views (either "resourceGrid" and "resourceTimeline" or "resourceGrid" and "resourceHistogram") will be bound to the data store named as specified in the 
+[gantt.config.resource_store](api/gantt_resource_store_config.md) configuration option.
+
+This data store has to be initialized manually with the help of the api/gantt_createdatastore.md method:
 
 ~~~js
 var resourcesStore = gantt.createDatastore({
@@ -232,7 +450,7 @@ var resourcesStore = gantt.createDatastore({
 });
 ~~~
 
-In order to populate the data store use the **datastore.parse** method:
+In order to populate the data store, use the **datastore.parse** method:
 
 ~~~js
 resourcesStore.parse([
@@ -268,30 +486,40 @@ resourcesStore.attachEvent("onParse", function(){
 ~~~
 
 
-Once initialized, the *resourceGrid* will work in the same way as the default grid view, but readonly.
-The *resourceTimeline* will inherit the scale configuration from the default timeline and will have two layers:
+###Expanding resources panel
 
-- background rows, which inherit api/gantt_task_row_class_template.md and api/gantt_task_cell_class_template.md. The templates of *resourceTimeline* can be redefined at the layout level.
-- resource layer - a layer specific for the *resourceTimeline*. It will display blocks in cells where the resource has tasks assigned. The block style and content can be templated with 
-the api/gantt_resource_cell_class_template.md and api/gantt_resource_cell_value_template.md templates:
+It is possible to expand the resources panel to show all the tasks assigned to a particular resource by enabling the **fetchTasks** property during initialization of the datastore via the
+api/gantt_createdatastore.md method:
 
-~~~js
-gantt.templates.resource_cell_value = function(start_date, end_date, resource, tasks){
-	var html = "<div>" +  tasks.length * 8 + "h</div>";
-		return html;
-};
-~~~
-
-The resource relation is defined by the api/gantt_resource_property_config.md configuration option:
+![Expanded resource panel](desktop/expanded_resource_panel.png)
 
 ~~~js
-gantt.config.resource_property = "userId";
-// task.userId <-> resource.id
+gantt.$resourcesStore = gantt.createDatastore({
+ 	name: gantt.config.resource_store,
+    type: "treeDatastore",
+ 	fetchTasks: true, /*!*/
+ 	initItem: function (item) {
+ 		item.parent = item.parent || gantt.config.root_id;
+ 		item[gantt.config.resource_property] = item.parent;
+ 		if(!item.parent){
+ 			item.open = true;
+ 		}else{
+ 			item.open = false;
+ 		}
+ 		return item;
+ 	}
+});
 ~~~
 
-{{sample  11_resources/04_resource_usage_diagram.html}}
+{{sample 11_resources/11_resource_histogram_display_tasks.html}}
 
-{{sample 11_resources/05_resource_usage_templates.html}}
+With the **fetchTasks** property set to *true*, Gantt renders all tasks assigned to a certain resource in the resource view panel. This functionality works both for the resource diagram and resource histogram types
+of layout.
 
+There is a shorthand for getting all tasks assigned to a resource - api/gantt_getresourceassignments.md.
+
+~~~js
+gantt.getResourceAssignments("6");
+~~~
 
 @edition:pro

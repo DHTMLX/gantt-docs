@@ -4,8 +4,8 @@ onRowDragStart
 	
 
 @params:
-- id			string, number			the id of the task that the user drags in the grid
-- target		string, number			the id of the task which place the dragged row will occupy
+- id			string,number			the id of the task that the user drags in the grid
+- target		string,number			the id of the task which place the dragged row will occupy
 - e	 			event					a native event object
 
 @returns:  
@@ -27,4 +27,4 @@ The event is blockable. Return *false* to cancel dragging.
 @relatedsample:
 	07_grid/02_branch_ordering.html
 @related:
-	desktop/reodering_tasks.md
+	desktop/reordering_tasks.md

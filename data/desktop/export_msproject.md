@@ -1,13 +1,14 @@
 Export and Import from MS Project
 ============================
 
-##Export to MS Project
+Export to MS Project
+-----------------------
 
 The Gantt component allows exporting links, tasks and resources into MS Project.
 
 To export data from the Gantt chart to MS Project, do the following:
 
-- Include the <b>"https://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
+- Include the **"https://export.dhtmlx.com/gantt/api.js"** file on the page to enable the online export service:
 
 ~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -15,7 +16,7 @@ To export data from the Gantt chart to MS Project, do the following:
 <link rel="stylesheet" href="codebase/dhtmlxgantt.css" type="text/css">
 ~~~
 
-- Call the **exportToMSProject()** method to export data from the Gantt chart.
+- Call the api/gantt_exporttomsproject.md method to export data from the Gantt chart.
 
 ~~~js
 gantt.exportToMSProject();
@@ -47,7 +48,7 @@ Dates are stringified in the "%Y-%m-%d %H:%i" format.
 - **worktime** - an object containing the working time settings from the project calendar.
 
 
-##Export settings
+###Export settings
 
 The **exportToMSProject()** method takes as a parameter an object with a number of properties (all of the properties are optional):
 
@@ -89,8 +90,7 @@ gantt.exportToMSProject({
 ~~~
 
 The properties of this object correspond to the appropriate properties of the [Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). 
-The list of supported properties can be found [here](desktop/tags.md).
-The properties may contain either fixed values or functions that will be executed when export is called.
+The list of supported properties can be found [here](desktop/tags.md). The properties may contain either fixed values or functions that will be executed when export is called.
 
 - **tasks** - (object) allows setting custom properties to the exported task items
 
@@ -141,8 +141,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-Possible resource types are "work", "cost", "material".
-Resource assignments are specified using the **ResourceAssignments** property of the tasks configuration:
+Possible resource types are "work", "cost", "material". Resource assignments are specified using the **ResourceAssignments** property of the tasks configuration:
 
 ~~~js
 var users = [// resources
@@ -167,9 +166,9 @@ gantt.exportToMSProject({
        	};
   	 }),
   tasks: {
-     ResourceAssignments: function(task){
-        return task.user;
-     }
+     ResourceAssignments: function(task){  /*!*/
+        return task.user;				   /*!*/
+     }									   /*!*/
   }
 });
 ~~~
@@ -193,19 +192,20 @@ gantt.exportToMSProject({
 ~~~
 
 
-##Import from MS Project
+Import from MS Project
+----------------------
 
-In order to convert XML or MPP MS Project file, you need to send the following request to the export service:
+In order to convert an XML or MPP MS Project file, you need to send the following request to the export service:
 
  - Request URL - **https://export.dhtmlx.com/gantt**
  - Request Method - **POST**
  - Content-Type - **multipart/form-data**
 
-The request parameters:
+The request parameters are:
 
- - **file** - MPP or XML MS Project file
+ - **file** - an MPP or XML MS Project file
  - **type** - "msproject-parse"
- - **data** - (optional) JSON string with settings
+ - **data** - (*optional*) a JSON string with settings
 
 For example:
 
@@ -218,7 +218,7 @@ For example:
 </form>
 ~~~
 
-Alternatively, you can use the client-side API:
+Alternatively, you can use the [client-side API](api/gantt_importfrommsproject.md):
 
 ~~~js
 gantt.importFromMSProject({
@@ -242,10 +242,10 @@ gantt.importFromMSProject({
 	08_api/18_load_from_mpp.html
 }}
 
-Where *file* is an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain either MPP or XML Project file.
+Where *file* is an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain either an XML or MPP Project file.
 
-{{note
-gantt.importFromMSProject requires HTML5 File API support.
+{{note	
+**gantt.importFromMSProject** requires HTML5 File API support.
 }}
 
 
@@ -270,8 +270,9 @@ Dates are stringified in the "%Y-%m-%d %H:%i" format.
 - **worktime** - an object containing the working time settings from the project calendar.
 
 
-##Import settings
-###Setting the duration unit
+###Import settings
+
+#### Setting the duration unit
 
 To set an expected duration unit, the **durationUnit** ("minute", "hour", "day", "week", "month", "year") string can also be sent to the server.
 
@@ -296,7 +297,7 @@ gantt.importFromMSProject({
 });
 ~~~
 
-###Getting properties of the Project
+#### Getting properties of the Project
 
 To get project fields, the **projectProperties** input with an array of necessary fields can be sent to the server.
 It extracts arbitrary properties of [the Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx) 
@@ -314,7 +315,9 @@ into the **config** property of the output. Here is the list of supported [prope
     <button type="submit">Get</button>
 </form>
 ~~~
+
 or
+
 ~~~js
 gantt.importFromMSProject({
     data: file,
@@ -327,12 +330,10 @@ gantt.importFromMSProject({
 });
 ~~~
 
-###Getting tasks properties
+#### Getting tasks properties
 
 To get task fields, the **taskProperties** input with an array of necessary fields can be sent to the server.
-It extracts arbitrary properties of the [Task entities](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). 
-Here is the list of supported [properties](desktop/tags.md#tasksproperties).
-
+It extracts arbitrary properties of the [Task entities](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). Here is the list of supported [properties](desktop/tags.md#tasksproperties):
 
  - **taskProperties** - specify an array of additional task properties to be imported.
 
@@ -373,8 +374,8 @@ gantt.attachEvent("onTaskLoading", function(task) {
 
 There are two API endpoints for the MSProject export/import services:
 
-- [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) - the default endpoint which serves all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 4MB**.
-- [https://export.dhtmlx.com/gantt/project](https://export.dhtmlx.com/gantt/project) - the endpoint dedicated to MS Project services (*exportToMSProject*/*importFromMSProject* only). **Max request size: 40MB**.
+- [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) - the default endpoint which serves all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 10 MB**.
+- [https://export.dhtmlx.com/gantt/project](https://export.dhtmlx.com/gantt/project) - the endpoint dedicated to MS Project services (*exportToMSProject*/*importFromMSProject* only). **Max request size: 40 MB**.
 
 The endpoint can be specified by the **server** property of the export configuration object:
 
@@ -416,5 +417,4 @@ It allows sending requests up to 40MB in size and supports MS Project exports an
 Any other methods, for example, *gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})* should return a server error.
 
 @index:
-
 - desktop/tags.md

@@ -7,6 +7,7 @@ If you use some other technology, check the list of available integration varian
 - desktop/howtostart_php.md
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_dotnet.md
+- desktop/howtostart_dotnet_core.md
 - desktop/howtostart_ruby.md
 
 Our implementation of Gantt with Node.js will be based on REST API that will be used for communication with a server. 
@@ -471,7 +472,8 @@ That's all. Open http://127.0.0.1:1337 and you will see a fully operational gant
 Storing the Order of Tasks
 ---------------------
 
-The client-side gantt allows [reordering tasks](desktop/reodering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. You can [check the common description here](desktop/server_side.md#storingtheorderoftasks).
+The client-side gantt allows [reordering tasks](desktop/reordering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+You can [check the common description here](desktop/server_side.md#storingtheorderoftasks).
 
 Let's now add this feature to our app.
 
@@ -615,10 +617,9 @@ function updateOrder(taskId, target){
       });
     });
 }
-
 ~~~
 
-You can check [a ready demo](https://github.com/DHTMLX/gantt-node-mysql) on GitHub.
+You can check [a ready demo](https://github.com/DHTMLX/gantt-howto-node) on GitHub.
 
 
 Application Security

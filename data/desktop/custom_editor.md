@@ -3,7 +3,6 @@ Creating Custom Element
 
 To create  a custom control for the lightbox, define a new object in the following way:
 
-
 ~~~js
 gantt.form_blocks["my_editor"]={
 	render:function(sns){ //sns - the section's configuration object
@@ -48,7 +47,7 @@ render:function(){
 	05_lightbox/04_custom_editor.html
 }}
 
-##Example
+##Custom editor with two inputs
 
 Let's consider how to create the following custom editor:
 
@@ -84,3 +83,101 @@ gantt.config.lightbox.sections = [
 {{sample
 	05_lightbox/04_custom_editor.html
 }}
+
+##Custom third-party editor
+
+You can create a custom multiselect control for selecting multiple values. 
+
+For example, you can make a control based on the [jQuery Chosen plugin](https://harvesthq.github.io/chosen/) to assign multiple resources to a task.
+Unlike the default Gantt [resource control](desktop/resources.md), it allows just assigning resources to a task without setting their quantity. However, it can be useful, if you want a pretty simple control.
+
+![Custom resources control](desktop/custom_resources_control.png)
+
+{{sample 05_lightbox/14_jquery_multiselect.html}}
+
+
+To use a jQuery Chosen-based control in the Gantt Chart:
+
+- include its source files on the page
+
+~~~html
+<script
+	src="https://code.jquery.com/jquery-3.3.1.min.js?v=5.2.4"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.js?v=5.2.4"></script>
+<link rel="stylesheet" type="text/css" 
+	href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css?v=5.2.4">
+~~~
+
+- describe the control logic
+
+~~~js
+gantt.form_blocks["multiselect"] = {
+ render: function (sns) {
+  var height = (sns.height || "23") + "px";
+  var html = "<div class='gantt_cal_ltext gantt_cal_chosen gantt_cal_multiselect'"+
+	 "style='height:"+ height + ";'><select data-placeholder='...'"+
+    	"class='chosen-select' multiple>";
+  if (sns.options) {
+   for (var i = 0; i < sns.options.length; i++) {
+    if(sns.unassigned_value !== undefined && sns.options[i].key==sns.unassigned_value){
+		continue;
+	}
+    html+="<option value='" +sns.options[i].key+ "'>"+sns.options[i].label+"</option>";
+  }
+}
+  html += "</select></div>";
+  return html;
+},
+
+set_value: function (node, value, ev, sns) {
+	node.style.overflow = "visible";
+	node.parentNode.style.overflow = "visible";
+	node.style.display = "inline-block";
+	var select = $(node.firstChild);
+
+	if (value) {
+		value = (value + "").split(",");
+		select.val(value);
+	}
+	else {
+		select.val([]);
+	}
+
+	select.chosen();
+	if(sns.onchange){
+		select.change(function(){
+			sns.onchange.call(this);
+		})
+	}
+	select.trigger('chosen:updated');
+	select.trigger("change");
+},
+
+get_value: function (node, ev) {
+	var value = $(node.firstChild).val();
+	//value = value ? value.join(",") : null
+	return value;
+},
+
+focus: function (node) {
+	$(node.firstChild).focus();
+ }
+};
+~~~
+
+- use the control as a lightbox section with the *type:"multiselect"*
+
+~~~js
+gantt.config.lightbox.sections = [
+	{name:"description",height:38,map_to:"text",type:"textarea",focus: true},
+	{name:"owner",height:60, type:"multiselect", options:gantt.serverList("people"), 
+    	map_to:"owner_id", unassigned_value:5 },
+	{name: "time", type: "duration", map_to: "auto"}
+];
+~~~
+
+The *unassigned_value* property in the control object is used to hide resources that shouldn't be available for selection in the control. You need to set the id of the corresponding resource as a value of this property.
+In the example above the resource with the id=5 is not shown as an option in the control.

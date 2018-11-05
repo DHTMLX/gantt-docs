@@ -1,13 +1,14 @@
 dhtmlxGantt with PHP: Laravel 
 =====================
 
-In this tutorial we'll show you how to add dhtmlxGantt into a [Laravel](https://laravel.com/) app.
+This tutorial describes how to add dhtmlxGantt into a [Laravel](https://laravel.com/) app.
 
 There are tutorials intended for building server-side integration with the help of other platforms:
 
 - desktop/howtostart_php.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
+- desktop/howtostart_dotnet_core.md
 - desktop/howtostart_ruby.md
 
 You can get the [ready demo on GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel) or follow a step-by-step guide below.
@@ -548,7 +549,7 @@ Please check more of [our guides](desktop/guides.md) for more features of dhtmlx
 Storing the Order of Tasks
 ------------------
 
-The client-side gantt allows [reordering tasks](desktop/reodering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
+The client-side gantt allows [reordering tasks](desktop/reordering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
 You can check the common [description here](desktop/server_side.md#storingtheorderoftasks).
 
 Let's now add this feature to our app.

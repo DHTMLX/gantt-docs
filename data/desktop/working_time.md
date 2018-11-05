@@ -18,6 +18,8 @@ gantt.config.skip_off_time = true; /*!*/   // hides non-working time in the char
 gantt.init("gantt_here");
 ~~~
 
+Please note that the api/gantt_skip_off_time_config.md config option is available in the PRO version only.
+
 {{sample
 09_worktime/02_working_days.html
 }}

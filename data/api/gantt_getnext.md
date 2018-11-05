@@ -4,10 +4,10 @@ getNext
 	
 
 @params:
-- id	string, number	the task id
+- id	string,number	the task id
 
 @returns:
-- id	string, number	the id of the next item
+- id	string,number	the id of the next item
 
 
 @example:

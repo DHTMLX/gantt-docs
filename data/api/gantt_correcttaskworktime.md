@@ -1,5 +1,6 @@
 correctTaskWorkTime
 =============
+
 @short:recalculates the task duration in the work time
 	
 
@@ -7,22 +8,20 @@ correctTaskWorkTime
 - task	object	the task's object
 
 
-
-
-
 @example:
-
-if(gantt.config.work_time && gantt.config.correct_work_time){
-	if(drag.mode == gantt.config.drag_mode.resize){
-		if(drag.left){
-			task.start_date =gantt.getClosestWorkTime({date:task.start_date,dir:'future'});
-		}else{
-			task.end_date = gantt.getClosestWorkTime({date:task.end_date, dir:'past'});
-		}
-	}else if(drag.mode == gantt.config.drag_mode.move){
-		gantt.correctTaskWorkTime(task);
-}       
+gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
+    gantt.correctTaskWorkTime(task);
+});
             
 @template:	api_method
 @descr:
+The method requires the following configuration options to be specified:
+
+~~~js
+gantt.config.work_time = true;
+gantt.config.correct_work_time = true;
+~~~
+
+@related:
+desktop/working_time.md
 

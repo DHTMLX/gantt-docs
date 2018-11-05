@@ -12,7 +12,7 @@ groupBy
 	02_extensions/08_tasks_grouping.html
 
 @example:
-//one-level grouping
+// one-level grouping
 gantt.groupBy({
 	relation_property: "priority",
 	groups: [
@@ -40,7 +40,7 @@ gantt.groupBy({
 	group_text: "label"
 });
 
-//using collections
+// using collections
 gantt.serverList("priority", [
 	{key:1, label: "High"},
 	{key:2, label: "Normal"},
@@ -59,30 +59,15 @@ gantt.groupBy({
 
 The grouping configuration object has the following properties:
 
-<table class="webixdoc_links">
-	<tbody>
-        <tr>
-			<td class="webixdoc_links0"><b>relation_property</b></td>
-			<td>(<i>string</i>) a property of a task object that will be used to group items. Mandatory</td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>groups</b></td>
-			<td>(<i>array</i>) an array of the groups (summary) items. Mandatory</td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>group_id</b></td>
-			<td>(<i>string</i>) the group's id. Optional. The default value - 'key'</td>
-		</tr>
-		<tr>
-			<td class="webixdoc_links0"><b>group_text</b></td>
-			<td>(<i>string</i>) the group's label. Optional. The default value - 'label'. </td>
-		</tr>
-    </tbody>
-</table>
+- **relation_property** - (<i>string</i>) a property of a task object that will be used to group items. Mandatory.
+- **groups** - (<i>array</i>) an array of the groups (summary) items. Mandatory.
+- **group_id** - (<i>string</i>) the group's id. Optional. The default value is 'key'.
+- **group_text** - (<i>string</i>) the group's label. Optional. The default value is 'label'.
+- **delimiter** - (*string*) the delimiter is used for automatic creation of groups for tasks with multiple resources. Optional. The default value is ",".
 
 Please, note:
 
-- Each 'group' object must contain at least 2 properties (but any number of additional ones): the id and text description (specified by the 'group_id', 'group_text' parameters respectively))
+- Each 'group' object must contain at least 2 properties (but any number of additional ones): the id and text description (specified by the 'group_id', 'group_text' parameters respectively).
 - The 'project' tasks from the original dataset won't be displayed in the grouping mode, however they will be available via api.
 - Group items are added into the data set as items with the type 'project' and the 'readonly' property enabled. They can be detected by the '$virtual' property, and handled as a regular data items:
 
@@ -92,3 +77,5 @@ gantt.templates.task_class=function(start, end, task){
 	return "summary-bar";
 };
 ~~~
+
+

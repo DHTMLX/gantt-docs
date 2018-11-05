@@ -1,12 +1,20 @@
 How to Start with dhtmlxGantt
 ===============================
 
-
-This section is dedicated to the very beginning of work with Gantt chart. Each chapter tells about basic Gantt initialization on different server-side
-platforms to suit all tastes and preferences.
+This section is dedicated to the very beginning of work with Gantt chart. Each chapter tells about basic Gantt initialization on different server-side platforms to suit all tastes and preferences.
 
 <table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
+    <tr>
+        <td>
+		    <span style="font-size:15px;">desktop/howtostart_dotnet_core.md</span>
+            <br>
+         	A comprehensive tutorial that describes how to use Gantt together with ASP.Net Core 2. 
+        </td> 
+         <td>
+        	<a href="desktop/howtostart_dotnet_core.md"><img src="desktop/asp_dotnet_core_tutorial.png"></a>
+        </td>
+    </tr>	
 	<tr>
     	<td>
     		<span style="font-size:15px;">desktop/howtostart_php_laravel.md</span>
@@ -63,9 +71,11 @@ platforms to suit all tastes and preferences.
 
 
 @index:
+- desktop/howtostart_dotnet_core.md
 - desktop/howtostart_php.md
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_ruby.md
+
 

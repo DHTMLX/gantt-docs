@@ -1,13 +1,14 @@
 sort
 =============
-@short:sorts the tasks in the grid
+
+@short:sorts tasks in the grid
 	
 
 @params:
-- field	string, function	the name of the column that the  grid will be sorted by or a custom <br> sorting function
-* desc	boolean	 specifies the sorting direction: <i>true</i> - descending sort and <i>false</i> - ascending<br> sort. By default, <i>false</i>
-* parent	string, number	the id of the parent task. Specify the parameter if you want to sort tasks only in <br> the branch of the specified parent.
-* silent	boolean	 specifies whether rendering shall be invoked after reordering items
+- field		string,function		the name of the column that the  grid will be sorted by or a custom sorting function
+* desc		boolean	 			specifies the sorting direction: <i>true</i> - descending sort and <i>false</i> - ascending<br> sort. By default, <i>false</i>
+* parent	string,number		the id of the parent task. Specify the parameter if you want to sort tasks only in the branch of the specified parent.
+* silent	boolean	 			specifies whether rendering should be invoked after reordering items
 
 
 
@@ -30,6 +31,7 @@ sort
 	desktop/sorting.md
 @relatedapi:
 	api/gantt_sort_config.md
+    api/gantt_onaftersort_event.md
 @relatedsample:
 	07_grid/05_sort_api.html
 

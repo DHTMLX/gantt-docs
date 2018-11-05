@@ -24,7 +24,7 @@ Gantt API
 - api/gantt_calculateenddate.md - calculates the end date of a task
 - api/gantt_calculatetasklevel.md - calculates the level of a task
 - api/gantt_callevent.md - calls an inner event
-- api/gantt_changelightboxtype.md - changes the name of the lighbox's structure defined for  of the task
+- api/gantt_changelightboxtype.md - repaints the lighbox for the task according to its type
 - api/gantt_changelinkid.md - changes the link's id
 - api/gantt_changetaskid.md - changes the task's id
 - api/gantt_checkevent.md - checks whether an event has some handler(s) specified
@@ -71,6 +71,7 @@ Gantt API
 - api/gantt_getcolumnindex.md - returns the index of the column by its name
 - api/gantt_getconnectedgroup.md - returns all tasks and links that a task is connected with
 - api/gantt_getdatastore.md - returns the configuration object of a datastore
+- api/gantt_getfreeslack.md - returns the free slack of a task
 - api/gantt_getglobaltaskindex.md - gets the index of a task in the tree
 - api/gantt_getgridcolumn.md - gets the configuration object of a column
 - api/gantt_getgridcolumns.md - gets columns of the Gantt chart
@@ -91,6 +92,7 @@ Gantt API
 - api/gantt_getprev.md - returns the id of the previous item (no matter what the level of nesting is: the same or different)
 - api/gantt_getprevsibling.md - returns the id of the previous task of the same level
 - api/gantt_getredostack.md - returns the stack of stored redo user actions
+- api/gantt_getresourceassignments.md - returns all tasks assigned to the resource
 - api/gantt_getscale.md - returns the configuration of the time scale
 - api/gantt_getscrollstate.md - returns the scroll position
 - api/gantt_getselectedid.md - returns the id of the selected task
@@ -115,6 +117,7 @@ Gantt API
 - api/gantt_gettaskrownode.md - returns the HTML element of the task row in the table
 - api/gantt_gettasktop.md - gets the top position of the task's DOM element in the timeline area
 - api/gantt_gettasktype.md - returns the type of a task
+- api/gantt_gettotalslack.md - returns the total slack of a task
 - api/gantt_getundostack.md - returns the stack of stored undo user actions
 - api/gantt_getvisibletaskcount.md - gets the number of tasks visible on the screen (those that are not collapsed)
 - api/gantt_getwbscode.md - returns the WBS code (the outline number) of a task
@@ -124,6 +127,7 @@ Gantt API
 - api/gantt_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
 - api/gantt_hidelightbox.md - closes the lightbox if it's currently active
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
+- api/gantt_importfromexcel.md - converts an Excel file to JSON
 - api/gantt_importfrommsproject.md - converts an XML or MPP MS Project file to JSON
 - api/gantt_init.md - constructor. Initializes a dhtmlxGantt object
 - api/gantt_ischildof.md - checks whether a task is a child of other task
@@ -176,7 +180,7 @@ Gantt API
 - api/gantt_showlightbox.md - opens the lightbox for the specified task
 - api/gantt_showquickinfo.md - displays the pop-up task form for the specified task
 - api/gantt_showtask.md - makes the specified task visible on the screen
-- api/gantt_sort.md - sorts the tasks in the grid
+- api/gantt_sort.md - sorts tasks in the grid
 - api/gantt_toggletaskselection.md - selects the specified task if it was unselected and vice versa
 - api/gantt_uid.md - returns a unique id
 - api/gantt_undo.md - reverts the changes made in the gantt
@@ -201,6 +205,7 @@ Gantt API
 - api/gantt_onafterlinkupdate_event.md - fires after the user updates a link
 - api/gantt_onafterquickinfo_event.md - fires after the pop-up edit form is closed
 - api/gantt_onafterredo_event.md - fires after the redo() method was called
+- api/gantt_onaftersort_event.md - fires after tasks are sorted in the grid
 - api/gantt_onaftertaskadd_event.md - fires after the user adds a task to the Gantt chart
 - api/gantt_onaftertaskautoschedule_event.md - fires for each task which has been autoscheduled
 - api/gantt_onaftertaskdelete_event.md - fires after the user deletes a task
@@ -227,6 +232,7 @@ Gantt API
 - api/gantt_onbeforeredo_event.md - fires before the redo() method is called
 - api/gantt_onbeforeredostack_event.md - fires before an action is added into the redo stack
 - api/gantt_onbeforerowdragend_event.md - fires when a user drops a row in the grid
+- api/gantt_onbeforerowdragmove_event.md - fires before a task is dragged to a different position
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
 - api/gantt_onbeforetaskchanged_event.md - fires after the user has finished dragging and released the mouse button but before the changes are applied
@@ -246,6 +252,7 @@ Gantt API
 - api/gantt_oncolumnresizeend_event.md - fires after the user finished dragging the column's border to resize the column
 - api/gantt_oncolumnresizestart_event.md - fires before the user starts to drag the column's border to resize the column
 - api/gantt_oncontextmenu_event.md - fires when a user clicks the right mouse button inside the Gantt chart (see the details)
+- api/gantt_ondataprocessorready_event.md - fires on the `dp.init(gantt)` call
 - api/gantt_ondatarender_event.md - fires after data has been rendered on the page
 - api/gantt_ondestroy_event.md - called after gantt has been cleared by the api/gantt_destructor.md method
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
@@ -360,8 +367,8 @@ Gantt API
 - api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
 - api/gantt_open_tree_initially_config.md - openes all branches initially
-- api/gantt_order_branch_config.md - activates the 'branch' mode that allows dragging tasks only within the parent branch
-- api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows dragging tasks within the whole gantt
+- api/gantt_order_branch_config.md - activates the 'branch' mode that allows reordering tasks within the same nesting level
+- api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows reordering tasks within the whole gantt
 - api/gantt_placeholder_task_config.md - adds an empty row into the end of the list of tasks to simplify tasks editing via keyboard
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
@@ -371,9 +378,9 @@ Gantt API
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
-- api/gantt_resource_property_config.md - specifies the property of a task object that stores a resource id associated with resourceGrid/resourceTimeline
+- api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram
 - api/gantt_resource_render_empty_cells_config.md - tells the resource timeline to render elements and call templates for non-allocated cells
-- api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline views
+- api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline/resourceHistogram views
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table
@@ -445,6 +452,10 @@ Gantt API
 - api/gantt_grid_indent_template.md - specifies the indent  of the child items in a branch (in the tree column)
 - api/gantt_grid_open_template.md - specifies the icon of the open/close sign in the tree column
 - api/gantt_grid_row_class_template.md - specifies the CSS class that will be applied to a grid row
+- api/gantt_histogram_cell_allocated_template.md - defines the height of the filled area in the resourceHistogram
+- api/gantt_histogram_cell_capacity_template.md - specifies the height of the line that defines the available capacity of the resource
+- api/gantt_histogram_cell_class_template.md - defines the CSS class which is applied to a cell of the resource panel
+- api/gantt_histogram_cell_label_template.md - defines the label inside a cell
 - api/gantt_link_class_template.md - specifies the CSS class that will be applied to a link
 - api/gantt_link_description_template.md - specifies the text in the header of the link's "delete" confirm window
 - api/gantt_progress_text_template.md - specifies the text in the completed part of the task bar
@@ -452,8 +463,8 @@ Gantt API
 - api/gantt_quick_info_content_template.md - specifies the content of the pop-up edit form
 - api/gantt_quick_info_date_template.md - specifies the date of the pop-up edit form
 - api/gantt_quick_info_title_template.md - specifies the title of the pop-up edit form
-- api/gantt_resource_cell_class_template.md - defines the css class names of cells in the resource timeline cells.
-- api/gantt_resource_cell_value_template.md - defines the html content of resource timeline cells
+- api/gantt_resource_cell_class_template.md - defines the CSS class names of cells in the resource timeline cells
+- api/gantt_resource_cell_value_template.md - defines the HTML content of resource timeline cells
 - api/gantt_scale_cell_class_template.md - specifies the CSS class that will be applied to cells of the time scale of the timeline area
 - api/gantt_scale_row_class_template.md - specifies the CSS class that will be applied to the time scale
 - api/gantt_task_cell_class_template.md - specifies the CSS class that will be applied to the cells of the timeline area
