@@ -9,7 +9,7 @@ Start
     <ul>
 		<li><a href="desktop/resource_management.md">Advanced resource management</a></li>
         <li><a href="desktop/critical_path.md#gettingfreeandtotalslack">Ability to get free and total slack of a task</a></li>
-        <li><a href="desktop/excel.md">Import from Excel</a></li>
+        <li><a href="desktop/reordering_tasks.md#improvingperformanceforlargedatasets">Improved drag and drop in the grid</a></li>
 	</ul>
 
     <p class='action_buttons'>
