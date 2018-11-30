@@ -927,7 +927,7 @@ Read on to find out how to enable storing the order of tasks for gantt.
 
 First enable reordering of tasks on the client side. Add these lines to **index.html**:
 
-{{ snippet	wwwroot/index.html}}
+{{snippet wwwroot/index.html}}
 ~~~js
 gantt.config.order_branch = true;
 gantt.config.order_branch_free = true;
@@ -1110,7 +1110,8 @@ private void _UpdateOrders(Task updatedTask, string orderTarget)
 }
 ~~~
 
-## Application Security
+Application Security
+----------------
 
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections, XSS and CSRF attacks. The responsibility for keeping an application safe is on the developers 
 who implement the backend. Read the details in the [corresponding article](desktop/app_security.md).
@@ -1142,7 +1143,8 @@ public static explicit operator WebApiTask(Task task)
 
 Another approach would be to use a specialized library, e.g. [HtmlAgilityPack](https://www.nuget.org/packages/HtmlAgilityPack/) and completely strip any HTML task when you save/load the data.
 
-## What's Next
+What's Next
+------------
 
 Now you have a fully-functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core), clone or download it and use it for your projects.
 

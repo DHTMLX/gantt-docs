@@ -172,7 +172,7 @@ gantt.templates.tooltip_text = function (start, end, task) {
 
 <img src="desktop/format_end_dates.png">
 
-Specifying Data Properties
+Data Properties
 -------------------------
 
 A data source for the Gantt chart is an object that stores 2 types of information:
@@ -280,7 +280,7 @@ Extra data properties will be parsed as strings and loaded to the client side wh
 See examples of data with custom properties <a href="desktop/supported_data_formats.md##custompropertiesindata">here</a>.
 
 
-Standard Database Structure
+Database Structure
 ------------------------------------------
 
 If you use a database, we recommend to have 2 separate tables to store data: one for tasks and one for links.  
@@ -299,15 +299,15 @@ The structure of a standard database to load tasks and links to the Gantt chart 
         <li><b>duration</b> - (<i>number</i>) the task duration in the units of the current time scale. </li>
         <li><b>parent</b> - (<i>number</i>) the id of the parent task. </li>
         <li><b>type</b> - (<i>string</i>) optional, the <a href="desktop/task_types.md">type</a> of the task. </li>
-        <li><b>readonly</b>-(<i>boolean</i>) optional, can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">readonly</a>. </li>
-        <li><b>editable</b>-(<i>boolean</i>) optional, can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">editable</a>. </li>
+        <li><b>readonly</b> - (<i>boolean</i>) optional, can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">readonly</a>. </li>
+        <li><b>editable</b> - (<i>boolean</i>) optional, can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">editable</a>. </li>
     </ul>
 	<li><b>gantt_links</b> table - specifies the gantt dependency links</li>
     <ul>
-    	<li><b>id</b>-(<i>string,number</i>) the event id.</li>
-        <li><b>source</b>-(<i>number</i>) the id of the source task. </li>
-        <li><b>target</b>-(<i>number</i>) the id of the target task. </li>
-        <li><b>type</b>-(<i>string</i>) the type of the dependency:
+    	<li><b>id</b> - (<i>string,number</i>) the event id.</li>
+        <li><b>source</b> - (<i>number</i>) the id of the source task. </li>
+        <li><b>target</b> - (<i>number</i>) the id of the target task. </li>
+        <li><b>type</b> - (<i>string</i>) the type of the dependency:
         	<ul>
             	<li>0 - 'finish_to_start'</li>
             	<li>1 - 'start_to_start'</li> 
@@ -315,9 +315,9 @@ The structure of a standard database to load tasks and links to the Gantt chart 
             	<li>3 - 'start_to_finish'</li>
             </ul> 
         </li> 
-        <li><b>lag</b>-(<i>number</i>) optional, <a href="desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks">task lag</a>. </li>
-        <li><b>readonly</b>-(<i>boolean</i>) optional, can mark link as <a href="desktop/readonly_mode.md">readonly</a>. </li>
-        <li><b>editable</b>-(<i>boolean</i>) optional, can mark link as <a href="desktop/readonly_mode.md">editable</a>. </li>
+        <li><b>lag</b> - (<i>number</i>) optional, <a href="desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks">task lag</a>. </li>
+        <li><b>readonly</b> - (<i>boolean</i>) optional, can mark link as <a href="desktop/readonly_mode.md">readonly</a>. </li>
+        <li><b>editable</b> - (<i>boolean</i>) optional, can mark link as <a href="desktop/readonly_mode.md">editable</a>. </li>
     </ul>
 </ul> 
 

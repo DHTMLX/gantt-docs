@@ -11,7 +11,7 @@ If you use some other technology, check the list of available integration varian
 - desktop/howtostart_ruby.md
 
 Our implementation of Gantt with Node.js will be based on REST API that will be used for communication with a server. 
-Node.js has a set of ready-made solutions, so we won't have to code everything from the very beginning.
+Node.js has a set of ready-made solutions, so we won't have to code everything from the very beginning. We will also use MySQL as a data storage.
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-node) on GitHub.
 
