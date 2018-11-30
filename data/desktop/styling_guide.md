@@ -82,7 +82,7 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 
 <img src="desktop/custom_elements_grid_header.png">
 
-{{editor 		https://docs.dhtmlx.com/gantt/snippet/66521f81			Custom Elements in Grid Header}}
+{{editor 		https://snippet.dhtmlx.com/43a01395c			Custom Elements in Grid Header}}
 
 #### Icons and Images in grid header
 
