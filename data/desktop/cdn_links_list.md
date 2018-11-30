@@ -8,8 +8,10 @@ Each section corresponds to a particular Gantt version:
 - Skins - links for including all the available [skins](desktop/skins.md)
 - Extensions - links for including [extensions](desktop/extensions_list.md) available in the pointed version
 
-Latest (v4.1)
+Latest Gantt version
 -----------------------
+
+To set path to the sources of the latest version of the library, specify the link as **http://cdn.dhtmlx.com/gantt/edge/...**
 
 Core files: [JS](  http://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js ), [CSS](  http://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css )
 
@@ -30,8 +32,10 @@ Extensions: [CSP](  http://cdn.dhtmlx.com/gantt/edge/ext/dhtmlxgantt_csp.js ),
 
 
 
-Latest (v4.1), Uncompressed
+Latest Gantt version, Uncompressed
 -----------------------------
+
+To set path to the uncompressed sources of the latest version of the library, specify the link as **http://cdn.dhtmlx.com/gantt/edge/sources/...**
 
 Core files: [JS](  http://cdn.dhtmlx.com/gantt/edge/sources/dhtmlxgantt.js ), 
 [CSS](  http://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_terrace.css )
@@ -52,8 +56,10 @@ Extensions: [CSP](  http://cdn.dhtmlx.com/gantt/edge/sources/ext/dhtmlxgantt_csp
 [Undo](  http://cdn.dhtmlx.com/gantt/edge/sources/ext/dhtmlxgantt_undo.js ) 
 
 
-Version 4.0
+Particular Gantt version
 --------------
+
+To set path to the sources of a certain version of the library, specify the link as **http://cdn.dhtmlx.com/gantt/[version_number]/...**. Links below point to the version 4.0.
 
 Core files: [JS](  http://cdn.dhtmlx.com/gantt/4.0/dhtmlxgantt.js ), 
 [CSS](  http://cdn.dhtmlx.com/gantt/4.0/dhtmlxgantt.css )
@@ -73,8 +79,10 @@ Extensions: [CSP](  http://cdn.dhtmlx.com/gantt/4.0/ext/dhtmlxgantt_csp.js ),
 [Tooltip](  http://cdn.dhtmlx.com/gantt/4.0/ext/dhtmlxgantt_tooltip.js ),
 [Undo](  http://cdn.dhtmlx.com/gantt/4.0/ext/dhtmlxgantt_undo.js ) 
 
-Version 4.0, Uncompressed 
+Particular Gantt version, Uncompressed 
 -------------------------------
+
+To set path to the uncompressed sources of a certain version of the library, specify the link as **http://cdn.dhtmlx.com/gantt/[version_number]/sources/...**. Links below point to the version 4.0.
 
 Core files: [JS](  http://cdn.dhtmlx.com/gantt/4.0/sources/dhtmlxgantt.js ), 
 [CSS](  http://cdn.dhtmlx.com/gantt/4.0/sources/skins/dhtmlxgantt_terrace.css  )
