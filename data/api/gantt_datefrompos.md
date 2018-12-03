@@ -6,12 +6,13 @@ dateFromPos
 @params:
 - pos	number	the relative horizontal position you want to know the date of
 
-
+@returns:
+- date	Date	the date of the specified horizontal  position in the chart area
 
 
 
 @example:
-gantt.dateFromPos(200);
+var date = gantt.dateFromPos(200);
 
 @template:	api_method
 @descr:
