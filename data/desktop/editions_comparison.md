@@ -51,7 +51,7 @@ The PRO edition includes all the functionality of the Standard version and also 
     	{"name":"Non-linear time scale (hide days/hours)\n", "url":"desktop__custom_scale.html","standard":false,"pro":true},
     	{"name":"7 different skins\n","url":"desktop__skins.html","standard":true,"pro":true},
     	{"name":"Content Security Policy compliance\n", "url":"desktop__content_security_policy.html", "standard":true,"pro":true},
-    	{"name":"Export to Excel and iCal\n","url":"desktop__excel.html","standard":true,"pro":true},
+    	{"name":"Export to and import from Excel and export to iCal\n","url":"desktop__excel.html","standard":true,"pro":true},
     	{"name":"Export to PDF and PNG\n","url":"desktop__export.html","standard":true,"pro":true},
     	{"name":"Support for custom types of tasks\n","url":"desktop__task_types.html#creatingacustomtype", "standard":false,"pro":true},
     	{"name":"4 types of tasks linking: finish-to-start, start-to-start, finish-to-finish, start-to-finish\n","url":"desktop__loading.html#link_properties","standard":true,"pro":true},
