@@ -595,6 +595,8 @@ function updateOrder(taskId, target){
   var nextTask = false;
   var targetOrder;
 
+  target = target || "";
+
   if(target.startsWith("next:")) {
     target = target.substr("next:".length);
     nextTask = true;
