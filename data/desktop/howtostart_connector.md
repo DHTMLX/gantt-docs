@@ -30,7 +30,7 @@ Let's start the tutorial with getting the library package on your computer.
 
 
 <ul style= "list-style-image:url('media/desktop/arrow-right.png');">
-	<li>Download the dhtmlxGantt package, if you haven't done it yet. </li>
+	<li>Download the dhtmlxGantt package <a href='https://github.com/DHTMLX/connector-php' title='dhtmlxConnector for PHP repository' target='_blank'>here</a>, if you haven't done it yet. </li>
     <li>Extract the package to the root directory of your local web server. The extracted files will be stored in a folder with the same name as the package file - dhtmlxGantt. 	</li>
 </ul>
 </p>
