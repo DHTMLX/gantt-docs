@@ -3,6 +3,19 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+
+6.0.2
+-----
+
+####Fixes
+
+- Fixed `ReferenceError: getResourceAssignments is not defined` when importing Gantt into Vue.js project
+- Fixed script error on deleting task after assigning resource to it via resource form
+- Fixed script error in resource diagram after second `gantt.init` call
+- Fixed script error on toggle timeline visibility when marker extension is used
+- Fixed page freeze on `gantt.parse` if tasks tree contains cyclic references, script error is thrown instead
+
+
 6.0 
 ----------
 
