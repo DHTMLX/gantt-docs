@@ -1,6 +1,6 @@
 fit_tasks
 =============
-@short:'says' the Gantt chart to re-render the scale each time a task doesn't fit into the existing scale interval
+@short:'says' the Gantt chart to automatically extend the time scale in order to fit all tasks displayed in the gantt.
 	
 
 @type: boolean
@@ -12,13 +12,21 @@ gantt.init("gantt_here");
 @template:	api_config
 @relatedapi:
 	api/gantt_onscaleadjusted_event.md
+	api/gantt_end_date_config.md
+	api/gantt_start_date_config.md
+	api/gantt_init.md
 @relatedsample:
 	03_scales/08_scale_autoconfig.html
 @descr:
 
 
-By default, dhtmlxGantt doesn't re-render the scale when the user makes some task longer and the task stops to fit into the existing scale interval.<br>
+By default, dhtmlxGantt doesn't automatically extend the timescale if some task no longer fits into the current interval. This can happen when user sets task date or after auto scheduling. In that case, task bar can be truncated or not visible at all.
+
 To 'force' the scale re-render each time a task doesn't fit into the existing scale interval, set the api/gantt_fit_tasks_config.md property to *true*.
+
+This setting can be canceled by [start_date](api/gantt_start_date_config.md) and [end_date](api/gantt_end_date_config.md) configs, which will limit the time scale to specified boundaries.
+
+If you want the time scale to be dynamically adjusted according to the data range, you can either skip [start_date](api/gantt_start_date_config.md) and [end_date](api/gantt_end_date_config.md) configs or you can [manage the time range dynamically](desktop/configuring_time_scale.md#range).
 
 <br>
 

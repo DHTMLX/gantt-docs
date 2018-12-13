@@ -14,9 +14,13 @@ gantt.init("gantt_here");
 	desktop/configuring_time_scale.md#settingtheminmasvaluesofthescale
 @relatedapi:
 	api/gantt_end_date_config.md
+	api/gantt_fit_tasks_config.md
+	api/gantt_init.md
 @template:	api_config
 @descr:
-If both the **start_date** and **end_date** options are specified and you create a task that is outside the range, the task will disappear from the chart.
+- If both the **start_date** and **end_date** options are specified and you create a task that is outside the range, the task will disappear from the chart.
+- Optional parameters of api/gantt_init.md method can be used as initial values of api/gantt_start_date_config.md and api/gantt_end_date_config.md.
+- api/gantt_start_date_config.md and api/gantt_end_date_config.md overwrites api/gantt_fit_tasks_config.md, if you want use these settings together you'll need to [manage the time scale from code](desktop/configuring_time_scale.md#range).
 
 In this case we can extend the range:
 
