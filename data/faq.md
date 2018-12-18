@@ -18,14 +18,12 @@ html, body{
 ~~~
 
 
-
-
 The Gantt chart isn't rendered in Internet Explorer correctly
 ---------------------------------------------------------
 If the Gantt chart wasn't rendered on the page properly only in the Internet Explorer browser, please, make sure that your page uses a full DOCTYPE declaration.
 dhtmlxGantt can work correctly in the standard modes of IE6, IE7 and IE8 but isn't purposed to be used with the quirks modes of IE.
 
-For example,  HTML5 DOCTYPE is:
+For example, HTML5 DOCTYPE is:
 
 ~~~html
 <!DOCTYPE html>
@@ -47,3 +45,16 @@ However, you may want to disable these messages before shipping your application
 gantt.config.show_errors = false;
 ~~~
 
+
+Gantt doesn't show anything
+--------------------------
+
+There are two most obvious scenarios:
+
+1\. You try to implement the backend API either manually or following our [tutorials](desktop/howtostart_guides.md), but Gantt doesn't show any tasks or links when you open the page.
+
+or
+
+2\. You have troubles with saving changes to the backend.
+
+Read the desktop/troubleshooting.md article that gives instructions on how to identify the reasons of the problems.

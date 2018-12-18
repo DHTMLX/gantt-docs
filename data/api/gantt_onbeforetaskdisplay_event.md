@@ -1,11 +1,12 @@
 onBeforeTaskDisplay
 =============
-@short:fires after the tasks have been loaded to the Gantt chart but before they are displayed
+
+@short: fires after the tasks have been loaded to the Gantt chart, but before they are displayed
 	
 
 @params:
-- id	string, number	the task id
-- task	object	the task object
+- id		string,number		the task id
+- task		object				the task object
 
 @returns:  
 - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 

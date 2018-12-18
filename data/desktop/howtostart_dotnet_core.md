@@ -1143,9 +1143,16 @@ public static explicit operator WebApiTask(Task task)
 
 Another approach would be to use a specialized library, e.g. [HtmlAgilityPack](https://www.nuget.org/packages/HtmlAgilityPack/) and completely strip any HTML task when you save/load the data.
 
+Trouble shooting
+-----------------
+
+In case you've completed the above steps to implement Gantt integration with ASP.NET Core, but Gantt doesn't render tasks and links on a page, have a look at the desktop/troubleshooting.md article. It describes 
+the ways of identifying the roots of the problems.
+
+
 What's Next
 ------------
 
-Now you have a fully-functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core), clone or download it and use it for your projects.
+Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core), clone or download it and use it for your projects.
 
-You can also find [tutorials on the numerous features of gantt](desktop/guides.md) or tutorials on [integrating Gantt with other backend frameworks](desktop/howtostart_guides.md).
+You can also check [guides on the numerous features of gantt](desktop/guides.md) or tutorials on [integrating Gantt with other backend frameworks](desktop/howtostart_guides.md).
