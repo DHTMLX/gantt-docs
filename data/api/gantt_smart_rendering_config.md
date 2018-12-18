@@ -13,6 +13,8 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
+{{note This option is defined in the **ext/dhtmlxgantt_smart_rendering.js** extension, so you need to include it on the page.}}
+
 
 @related:
 desktop/performance.md#smartrendering

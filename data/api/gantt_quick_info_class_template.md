@@ -17,5 +17,9 @@ gantt.templates.quick_info_class = function(start, end, task){
 @template:	api_template
 @descr:
 
+{{note This template is defined in the **ext/dhtmlxgantt_quick_info.js** extension, so you need to include it on the page.}}
+
+
+
 @related:
 desktop/touch_templates.md

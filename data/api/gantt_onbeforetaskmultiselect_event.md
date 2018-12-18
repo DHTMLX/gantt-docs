@@ -19,6 +19,12 @@ gantt.attachEvent("onBeforeTaskMultiSelect", function(id, state, e){
 
 @template:	api_event
 @descr:
+
+{{note This event is defined in the **ext/dhtmlxgantt_multiselect.js** extension, so you need to include it on the page. Read the details in the desktop/multiselection.md article.}}
+
+
+
+
 The event is called for each task of the range.
 
 The event is blockable, returning false will cancel the change of the task selection state.

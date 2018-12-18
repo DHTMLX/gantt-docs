@@ -17,6 +17,15 @@ gantt.exportToJSON({
 
 @template:	api_method
 @descr:
+
+{{note This method is defined in the **export** extension, so you need to include it on the page:
+~~~html
+<script src="http://export.dhtmlx.com/gantt/api.js"></script>  
+~~~
+}}
+
+
+
 The **config** object can contain following options:
 
 - name - the name of the exported json file

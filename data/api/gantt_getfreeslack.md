@@ -18,6 +18,10 @@ gantt.getFreeSlack(task);
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
+{{note This method is defined in the **ext/dhtmlxgantt_critical_path.js** extension, so you need to include it on the page. Read the details in the desktop/critical_path.md article.}}
+
+
+
 Free slack is a period of time that can be used to increase the duration of a task or move it on the timeline without affecting the next task it is connected with.
 
 @related:

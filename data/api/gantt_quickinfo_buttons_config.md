@@ -18,6 +18,11 @@ gantt.$click.buttons.advanced_details_button=function(e, id, trg){
 @template:	api_config
 @descr:
 
+{{note This option is defined in the **ext/dhtmlxgantt_quick_info.js** extension, so you need to include it on the page.}}
+
+
+
+
 
 @related:
 desktop/extensions_list.md#quickinfo

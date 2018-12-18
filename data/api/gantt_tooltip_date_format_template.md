@@ -18,6 +18,10 @@ gantt.templates.tooltip_date_format=function (date){
 - text		string		html text which will be rendered in the gantt
 @descr:
 
+{{note This template is defined in the **ext/dhtmlxgantt_tooltip.js** extension, so you need to include it on the page. Read the details in the desktop/tooltips.md article.}}
+
+
+
 
 @relatedapi:
 	api/gantt_tooltip_text_template.md

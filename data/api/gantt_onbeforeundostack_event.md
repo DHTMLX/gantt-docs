@@ -21,6 +21,10 @@ gantt.attachEvent("onBeforeUndoStack",function(action){
 
 @template:	api_event
 @descr:
+
+{{note This event is defined in the **ext/dhtmlxgantt_undo.js** extension, so you need to include it on the page. Read the details in the desktop/undo_redo.md article.}}
+
+
 - The event is blockable, returning false will cancel further processing.
 - If the event is blocked, the undo won't capture actions from event arguments.
 - Event actions can be modified.

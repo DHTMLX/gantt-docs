@@ -25,6 +25,10 @@ gantt.removeShortcut("shift+w", "taskRow");
 
 @template:	api_method
 @descr:
+
+{{note This method is defined in the **ext/dhtmlxgantt_keyboard_navigation.js** extension, so you need to include it on the page. Read the details in the desktop/keyboard_navigation.md article.}}
+
+
 added in version 4.1
 
 

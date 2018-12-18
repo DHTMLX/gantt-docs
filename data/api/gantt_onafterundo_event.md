@@ -14,6 +14,10 @@ gantt.attachEvent("onAfterUndo",function(action){
 
 @template:	api_event
 @descr:
+
+{{note This event is defined in the **ext/dhtmlxgantt_undo.js** extension, so you need to include it on the page. Read the details in the desktop/undo_redo.md article.}}
+
+
 The **action** parameter presents an array of command objects, each of which includes the following set of attributes:
  
 - **type** - (*string*) the type of a command: "add/remove/update"

@@ -17,6 +17,10 @@ gantt.init("gantt_here");
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
+{{note This config is defined in the **ext/dhtmlxgantt_auto_scheduling.js** extension, so you need to include it on the page. Read the details in the desktop/auto_scheduling.md article.}}
+
+
+
 added in version 4.1
 
 By default (when the property is set to *true*), the whole project is moved during auto scheduling. It means that all tasks in the project remain on their places

@@ -34,6 +34,17 @@ gantt.exportToPDF({
 @template:	api_method
 @descr:
 
+{{note This method is defined in the **export** extension, so you need to include it on the page:
+~~~html
+<script src="http://export.dhtmlx.com/gantt/api.js"></script>  
+~~~
+Read the details in the desktop/export.md article.
+
+}}
+
+
+
+
 The api/gantt_exporttopdf.md method takes as a parameter an object with a number of properties (all of the properties are optional):
 
 <table class="webixdoc_links">

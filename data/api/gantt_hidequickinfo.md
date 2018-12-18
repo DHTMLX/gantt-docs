@@ -11,6 +11,9 @@ gantt.hideQuickInfo();
 @template:	api_method
 @descr:
 
+{{note This method is defined in the **ext/dhtmlxgantt_quick_info.js** extension, so you need to include it on the page.}}
+
+
 @relatedapi:
 	api/gantt_showquickinfo.md
     api/gantt_quick_info_detached_config.md

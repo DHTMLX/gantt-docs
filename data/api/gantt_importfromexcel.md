@@ -20,8 +20,16 @@ gantt.importFromExcel({
 
 @template:	api_method
 @descr:
-
 {{note The method requires HTML5 File API support.}}
+
+{{note This method is defined in the **export** extension, so you need to include it on the page:
+~~~html
+<script src="http://export.dhtmlx.com/gantt/api.js"></script>  
+~~~
+Read the details in the desktop/excel.md#importfromexcel article.
+
+}}
+
 
 The method takes as a parameter an object with configuration properties of an imported file:
 

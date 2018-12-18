@@ -20,6 +20,8 @@ gantt.attachEvent("onAfterTaskAutoSchedule",function(task, start, link, predeces
 @template:	api_event
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
+{{note This event is defined in the **ext/dhtmlxgantt_auto_scheduling.js** extension, so you need to include it on the page. Read the details in the desktop/auto_scheduling.md article.}}
+
 
 @related:
 desktop/auto_scheduling.md
