@@ -33,7 +33,7 @@ Our goal here is to walk you through the common steps of investigating this kind
 
 Are there any errors?
 
-404 response status would mean there is either an incorrect URL passed to the `gantt.init` method or there is a problem in the routing settings of your application.
+404 response status would mean there is either an incorrect URL passed to the `gantt.init` method or a problem in the routing settings of your application.
 
 ##Check what is returned from the server
 
@@ -43,7 +43,7 @@ Select the request and check the response preview or the raw response content.
 
 Does the response look similar to the [expected data format](desktop/loading.md#loadingfromserver)?
 
-###If you see an error message from the web server instead of the gantt data
+###If you see an error message from the web server instead of the Gantt data
 
 You can be sure that something is wrong with the backend code or database connection settings. 
 
@@ -65,11 +65,11 @@ If the `parent` property is not empty and your dataset doesn't contain an approp
 Make sure that the `start_date`/`end_date` formats match the format you specify in the [`xml_date`](api/gantt_xml_date_config.md) config of gantt.
 
 
-##If you find something unusual in the property values
+###If you find something unusual in the property values
 
 Check what is stored in your database, probably the issue is there. If date formats don't match, either change the `xml_date` config, or modify the code that serialized task dates before outputting them to the client.
 
-##Check what is loaded into the gantt
+##Check what is loaded into the Gantt
 
 1. Open the browser console and run `gantt.getTaskByTime()`.
 
@@ -78,6 +78,8 @@ Check what is stored in your database, probably the issue is there. If date form
 ![Check data](desktop/check_data.png)
 
 Again, you can check the `start_date`, `end_date` and `parent` properties of tasks.
+
+###Filters
 
 If you don't see any obvious issues there, try to check your code, probably tasks are [hidden by filter](desktop/filtering.md). 
 
