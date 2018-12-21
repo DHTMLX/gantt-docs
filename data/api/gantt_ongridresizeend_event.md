@@ -14,9 +14,9 @@ onGridResizeEnd
 @example:
 // return false to discard the resize action
 gantt.attachEvent("onGridResizeEnd", function(old_width, new_width){
-	dhtmlx.message.hide(message);
+	gantt.message.hide(message);
 	message = null;
-	dhtmlx.message("Grid is now <b>" + new_width + "</b>px width" );
+	gantt.message("Grid is now <b>" + new_width + "</b>px width" );
 	return true;
 });
 @template:	api_event

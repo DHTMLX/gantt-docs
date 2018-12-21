@@ -11,7 +11,7 @@ onGridResize
 @example:
 gantt.attachEvent("onGridResize", function(old_width, new_width){
 	if(!message){
-		message = dhtmlx.message({expire:-1,
+		message = gantt.message({expire:-1,
 		text:"Grid is now <b id='width_placeholder'></b><b>px</b> width"});
 	}
 	document.getElementById("width_placeholder").innerText = new_width;
