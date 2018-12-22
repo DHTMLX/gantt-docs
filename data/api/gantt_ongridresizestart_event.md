@@ -13,7 +13,7 @@ onGridResizeStart
 @example:
 // return false to discard the resize action
 gantt.attachEvent("onGridResizeStart", function(old_width){
-	dhtmlx.message("Start grid resizing");
+	gantt.message("Start grid resizing");
 	return true;
 });
 
