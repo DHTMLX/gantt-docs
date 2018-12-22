@@ -2,7 +2,7 @@ getTaskByIndex
 =============
 
 @short:
-	returns a task by its index
+	returns a task by its global task index
 
 @params:
 
