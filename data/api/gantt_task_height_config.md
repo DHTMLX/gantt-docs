@@ -4,12 +4,11 @@ task_height
 	
 
 @type: number
-@default:24
+@default:"full"
 @example:
 gantt.config.task_height = 30;
 gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
-
 

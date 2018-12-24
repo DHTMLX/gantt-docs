@@ -5,7 +5,7 @@ show_progress
 	
 
 @type: boolean
-@default:false
+@default:true
 @example:
 gantt.config.show_progress = true;
 ...

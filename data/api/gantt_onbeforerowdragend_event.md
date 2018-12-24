@@ -22,6 +22,12 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 
 @template:	api_event
 @descr:
+
+{{note
+The method makes sense only if  api/gantt_order_branch_config.md is set to 'true'. Otherwise, the method will be ignored.
+}}
+
+
 - When event is fired the task is already moved to a new position, but the changes still can be reverted.
 - The event is blockable. Return *false* operation and move task to it's original location
 - Original position (parent and index) are available from handler arguments

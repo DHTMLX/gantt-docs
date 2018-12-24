@@ -5,6 +5,8 @@ placeholder_task
 	adds an empty row into the end of the list of tasks to simplify tasks editing via keyboard
     
 @type: boolean
+
+@default:false
 @example:
 gantt.config.placeholder_task = true;
 

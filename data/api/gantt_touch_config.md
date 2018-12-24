@@ -4,6 +4,7 @@ touch
 	enables/disables the touch support for the Gantt chart
 
 @type:boolean, string 
+@default: false
 @example:
 gantt.config.touch = "force";
 ...

@@ -16,6 +16,12 @@ gantt.attachEvent("onRowDragEnd", function(id, target) {
 @template:	api_event
 @descr:
 
+
+{{note
+The method makes sense only if  api/gantt_order_branch_config.md is set to 'true'. Otherwise, the method will be ignored.
+}}
+
+
 @relatedapi:
 	api/gantt_onbeforerowdragend_event.md
 	api/gantt_onrowdragstart_event.md

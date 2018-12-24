@@ -20,6 +20,12 @@ gantt.attachEvent("onRowDragStart", function(id, target, e) {
 
 @template:	api_event
 @descr:
+
+{{note
+The method makes sense only if  api/gantt_order_branch_config.md is set to 'true'. Otherwise, the method will be ignored.
+}}
+
+
 The event is blockable. Return *false* to cancel dragging.
 
 @relatedapi:

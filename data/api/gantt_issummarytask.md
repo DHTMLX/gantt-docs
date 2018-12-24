@@ -19,3 +19,7 @@ gantt.isSummaryTask(task); // ->false
 @template:	api_method
 @descr:
 
+{{note
+The method makes sense only in the Pro version. Otherwise, the method will return false.
+Read the details in the desktop/task_types.md#projecttasks article.
+}}

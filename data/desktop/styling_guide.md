@@ -13,7 +13,7 @@ Styling Grid
 
 You can change the style of the grid area via the related desktop/table_templates.md.
 
-###Headers of grid columns
+#### Headers of grid columns
 
 There is a api/gantt_grid_header_class_template.md template that allows you to apply a custom style to the headers of the grid columns. For example, you can change the background color of certain headers of the grid columns in the following way:
 
@@ -36,7 +36,7 @@ gantt.templates.grid_header_class = function(columnName, column){
 
 {{editor		http://docs.dhtmlx.com/gantt/snippet/356f900e		Styling Headers of Grid Columns}}
 
-###Custom elements in grid header
+#### Custom elements in grid header
 
 It is possible to add custom elements (such as buttons, icons, inputs, etc.) into the header of the grid. To add an element, you need to set its HTML as the value of the **label** property inside the 
 [**gantt.config.columns**](api/gantt_columns_config.md) configuration option:
@@ -142,7 +142,7 @@ gantt.templates.grid_row_class = function(start, end, task){
 
 {{editor	https://docs.dhtmlx.com/gantt/snippet/3328e356			Coloring Grid Rows}}
 
-###Customization of grid columns
+#### Customization of grid columns
 
 dhtmlxGantt provides the possibility to modify the default appearance of the grid columns via the **template** attribute of the [**gantt.config.columns**](api/gantt_columns_config.md) configuration option.
 
@@ -203,7 +203,7 @@ Styling Scale
 
 The scale styling is defined by the related [templates of the timeline area](desktop/timeline_templates.md).
 
-###Scale row
+####Scale row
 
 You can style the row of the scale with the help of the **scale_row_class** template. For example, define the background color:
 
@@ -225,7 +225,7 @@ gantt.templates.scale_row_class = function(scale){
  
 {{editor	http://docs.dhtmlx.com/gantt/snippet/70bae8cb		Styling Row of the Scale}}
 
-###Scale cells 
+####Scale cells 
 
 It is also possible to style certain cells of the scale via the **scale_cell_class** template. For example, you can color particular days of the timeline area:
 
@@ -243,7 +243,7 @@ gantt.templates.scale_cell_class = function(date){
 
 Read more in the related articles: desktop/configuring_time_scale.md#settingthescalesstyle and desktop/highlighting_time_slots.md.
 
-###Subscale
+####Subscale
 
 You can specify a new style for the subscale via the **css** attribute of the api/gantt_subscales_config.md property. For example, you can set a specific color for the weekends as follows:
 
@@ -289,7 +289,7 @@ Styling Tasks
 
 You can change the styling of tasks via the corresponding [templates of the timeline area](desktop/timeline_templates.md).
 
-###Task bar
+####Task bar
 
 You can redefine the api/gantt_task_class_template.md template to refresh the styles of a task. 
 You can find the details in the article desktop/colouring_tasks.md#redefiningthetaskstemplate.
@@ -319,7 +319,7 @@ gantt.templates.task_class = function(start,end,task){
 {{sample 04_customization/08_templates.html}}
 
 
-###Task bar text
+####Task bar text
 
 The api/gantt_task_text_template.md template allows using inline styles to change the style of the task bar text:
 
@@ -337,7 +337,7 @@ gantt.templates.task_text = function(start, end, task){
 {{editor		https://docs.dhtmlx.com/gantt/snippet/c31afbec		Inline Styling of the Task Text}}
 
 
-###Custom elements in task bars
+####Custom elements in task bars
 
 You can insert custom elements into task bars via the api/gantt_task_text_template.md template as well. For example, you can add buttons into task bars in the following way:
 
@@ -351,7 +351,7 @@ gantt.templates.task_text = function(start, end, task){
 
 {{editor	https://docs.dhtmlx.com/gantt/snippet/97b6dddc  	Custom Elements in Task Bars}}
 
-###Setting style via properties of a task object
+####Setting style via properties of a task object
 
 You can set additional properties in the task object configuration to define a custom color for a task. They are: **color**, **textColor** and **progressColor**.
 
@@ -371,7 +371,7 @@ gantt.getTask(1).color = "red"
 
 Read the related section of the desktop/colouring_tasks.md#specifyingstyleinthepropertiesofataskobject article to get the details.
 
-###Styling task bars via the lightbox
+####Styling task bars via the lightbox
 
 You can define a set of predefined colors and specify them as options in the lightbox configuration to set the text or background color of a task:
 
@@ -396,7 +396,7 @@ gantt.config.lightbox.sections = [
 
 {{sample 04_customization/16_inline_task_colors.html}}
 
-###Rows of the timeline area
+####Rows of the timeline area
 
 The api/gantt_task_row_class_template.md template allows you to change the color of the rows of the timeline area (those lying behind the Gantt tasks).
 
@@ -414,7 +414,7 @@ gantt.templates.task_row_class = function(start, end, task){
 {{sample	04_customization/02_custom_tree.html}}
 
 
-###Highlighting timeline cells
+####Highlighting timeline cells
 
 You can highlight the necessary timeline cells, depending on the day of the week with the **task_cell_class** template. The template function will iterate over the cells and apply the desired CSS
 class to the specified cells. For example, you can highlight weekends as in:
@@ -441,7 +441,10 @@ gantt.templates.task_cell_class = function(item,date){
 
 Read more on this topic in the article desktop/highlighting_time_slots.md.
 
-###Showing external elements (baselines, deadlines, etc.)
+####Showing external elements (baselines, deadlines, etc.)
+
+{{pronote This functionality is available in the PRO edition only.}}
+
 
 You can display additional elements, such as baseline or deadline markers in the Gantt. For this you need to create a new displayable layer via the api/gantt_addtasklayer.md method and place custom elements there.
 As a parameter, the method takes a function that takes a task object and returns either a DOM element that will be displayed, or *false* (the element for a task should be hidden):
@@ -470,7 +473,7 @@ Examples of external elements are:
 
 Read more about displaying external elements in Gantt in the article desktop/baselines.md.
 
-###Tooltips for Tasks
+####Tooltips for Tasks
 
 You can provide tooltips for tasks to show their details in a compact way.
 
@@ -495,7 +498,7 @@ Styling Links
 
 You can change the style of the dependency links via the related desktop/dependency_templates.md.
 
-###Lines of dependency links
+####Lines of dependency links
 
 You can change the color of the dependency line via the api/gantt_link_class_template.md template.
 
@@ -512,7 +515,7 @@ gantt.templates.link_class = function(link){
 
 There is more information in the related article desktop/colouring_lines.md.
 
-###Coloring links via the property of a link object
+####Coloring links via the property of a link object
 
 You can also set a custom color for a dependency link by specifying the **color** property in the link object:
 
@@ -535,7 +538,7 @@ gantt.getLink(2).color = "blue";
 
 Read the related section of the desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject article to get the details.
 
-###Popups of dependency links
+####Popups of dependency links
 
 The api/gantt_drag_link_class_template.md template allows styling the popup that appears when a user starts dragging a dependency line between tasks. For example, you can color the background of the popup and change the color of the popup text:
 
@@ -558,7 +561,7 @@ gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
 
 Check the desktop/dependency_templates.md article to get more details on the topic.
 
-###Editing link values from UI
+####Editing link values from UI
 
 While there are lightboxes for editing and styling tasks bars, there is no built-in UI for editing links provided. Nevertheless, you can create such a UI yourself by implementing the technique described in the 
 [dedicated article](desktop/crud_dependency.md#editinglinkvaluesfromui).
