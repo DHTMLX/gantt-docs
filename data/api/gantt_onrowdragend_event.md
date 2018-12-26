@@ -27,7 +27,7 @@ The event is fired when the task is moved by mouse in the left-hand grid by when
 @relatedapi:
 	api/gantt_onbeforerowdragend_event.md
 	api/gantt_onrowdragstart_event.md
-    api/gantt_order_branch_config.md
+	api/gantt_order_branch_config.md
 
 @relatedsample:
 	07_grid/02_branch_ordering.html

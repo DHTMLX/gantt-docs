@@ -32,8 +32,7 @@ The event is blockable. Return *false* to cancel dragging.
 
 @relatedapi:
 	api/gantt_onrowdragend_event.md
-    
-    api/gantt_order_branch_config.md
+	api/gantt_order_branch_config.md
 
 @relatedsample:
 	07_grid/02_branch_ordering.html
