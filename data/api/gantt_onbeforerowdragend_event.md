@@ -24,7 +24,9 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 @descr:
 
 {{note
-The method makes sense only if  api/gantt_order_branch_config.md is set to 'true'. Otherwise, the method will be ignored.
+
+The event is fired when the task is moved by mouse in the left-hand grid by when api/gantt_order_branch_config.md setting is enabled. If branch reordering is disabled, the event will never be called.
+
 }}
 
 
@@ -36,6 +38,7 @@ The method makes sense only if  api/gantt_order_branch_config.md is set to 'true
 @relatedapi:
 	api/gantt_onrowdragend_event.md
 	api/gantt_onrowdragstart_event.md
+	api/gantt_order_branch_config.md
 @relatedsample:
 	07_grid/02_branch_ordering.html
 @related:
