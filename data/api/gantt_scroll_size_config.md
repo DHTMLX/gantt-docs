@@ -16,5 +16,5 @@ gantt.init("gantt_here");
 @default: undefined
 
 @descr:
-If not specified, gantt will use the default scrollbar width of the browser since styles of scrollbar element vary between browsers.
+If not specified, Gantt will use the default scrollbar width of the browser since styles of the scrollbar element vary depending on the browser.
 

@@ -18,9 +18,7 @@ gantt.attachEvent("onRowDragEnd", function(id, target) {
 
 
 {{note
-
-The event is fired when the task is moved by mouse in the left-hand grid by when api/gantt_order_branch_config.md setting is enabled. If branch reordering is disabled, the event will never be called.
-
+The event is fired when a task is moved by the mouse pointer in the left-hand grid, while the api/gantt_order_branch_config.md setting is enabled. If branch reordering is disabled, the event will never be called.
 }}
 
 

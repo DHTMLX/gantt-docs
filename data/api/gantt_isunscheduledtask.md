@@ -23,4 +23,3 @@ var isUnscheduled = gantt.isUnscheduledTask(task);
 desktop/unscheduled_tasks.md
 desktop/auto_scheduling.md
 
-@edition:pro
