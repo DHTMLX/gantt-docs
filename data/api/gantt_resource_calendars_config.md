@@ -5,6 +5,8 @@ resource_calendars
 defines a set of working calendars that can be assigned to a specific resource, e.g. a user
 
 @type: object
+
+@default:{}
 @example:
 // adding a working calendar
 var johnCalendarId = gantt.addCalendar({

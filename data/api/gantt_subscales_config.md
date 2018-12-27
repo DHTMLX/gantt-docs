@@ -4,6 +4,7 @@ subscales
 	
 
 @type: array
+@default:[]
 @example:
 gantt.config.scale_unit = "month";
 

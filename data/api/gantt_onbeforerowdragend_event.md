@@ -22,6 +22,12 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 
 @template:	api_event
 @descr:
+
+{{note
+The event is fired when a task is moved by the mouse pointer in the left-hand grid, while the api/gantt_order_branch_config.md setting is enabled. If branch reordering is disabled, the event will never be called.
+}}
+
+
 - When event is fired the task is already moved to a new position, but the changes still can be reverted.
 - The event is blockable. Return *false* operation and move task to it's original location
 - Original position (parent and index) are available from handler arguments
@@ -30,6 +36,7 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 @relatedapi:
 	api/gantt_onrowdragend_event.md
 	api/gantt_onrowdragstart_event.md
+	api/gantt_order_branch_config.md
 @relatedsample:
 	07_grid/02_branch_ordering.html
 @related:

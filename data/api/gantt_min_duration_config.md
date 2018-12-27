@@ -1,11 +1,11 @@
 min_duration
 =============
 @short: Sets the minimum duration (in milliseconds) that can be set for a task during resizing.
-@default:60*60*1000
+@default:60*60*1000, or 3600000 ms, 1 hour
 
 @type:number 
 @example:
-gantt.config.min_duration = 24*60*60*1000;// 1 day
+gantt.config.min_duration = 24*60*60*1000; // (1 day)
 
 @template:	api_config
 @descr:

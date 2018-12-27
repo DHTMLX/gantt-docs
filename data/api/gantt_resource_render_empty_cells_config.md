@@ -12,7 +12,8 @@ If this option is enabled, templates will be called for all cells of the resourc
 
 @type:
     boolean
-    
+
+@default:false    
 @example:
 gantt.config.resource_render_empty_cells = true;
 

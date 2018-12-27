@@ -13,7 +13,7 @@ Styling Grid
 
 You can change the style of the grid area via the related desktop/table_templates.md.
 
-###Headers of grid columns
+#### Headers of the grid columns
 
 There is a api/gantt_grid_header_class_template.md template that allows you to apply a custom style to the headers of the grid columns. For example, you can change the background color of certain headers of the grid columns in the following way:
 
@@ -36,7 +36,7 @@ gantt.templates.grid_header_class = function(columnName, column){
 
 {{editor		http://docs.dhtmlx.com/gantt/snippet/356f900e		Styling Headers of Grid Columns}}
 
-###Custom elements in grid header
+### Custom elements in the grid header
 
 It is possible to add custom elements (such as buttons, icons, inputs, etc.) into the header of the grid. To add an element, you need to set its HTML as the value of the **label** property inside the 
 [**gantt.config.columns**](api/gantt_columns_config.md) configuration option:
@@ -84,7 +84,7 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 
 {{editor 		https://snippet.dhtmlx.com/43a01395c			Custom Elements in Grid Header}}
 
-#### Icons and Images in grid header
+#### Icons and images in the grid header
 
 To add an image or an icon into the header, you can also put it into the inner HTML of the cell using the **label** property:
 
@@ -119,7 +119,7 @@ Alternatively, you can set a header cell in CSS using the **.gantt_grid_head_<co
 
 {{editor	http://snippet.dhtmlx.com/e13d18a10	Images in Grid Header:CSS}}
 
-###Background color of grid rows 
+###Background color of the grid rows 
 
 You can apply a custom color for all or separate grid rows with tasks via the api/gantt_grid_row_class_template.md template. For example, you can change the background color of a particular row like this:
 
@@ -142,14 +142,14 @@ gantt.templates.grid_row_class = function(start, end, task){
 
 {{editor	https://docs.dhtmlx.com/gantt/snippet/3328e356			Coloring Grid Rows}}
 
-###Customization of grid columns
+### Customization of the grid columns
 
 dhtmlxGantt provides the possibility to modify the default appearance of the grid columns via the **template** attribute of the [**gantt.config.columns**](api/gantt_columns_config.md) configuration option.
 
 The **template** attribute is a function that takes a data item object as a parameter and returns the final data template. The function definition allows you to present almost any content. For example, you can
 change the default color of the text in grid rows, or use custom elements in grid columns.
 
-####Text color in grid rows
+####Text color in the grid rows
 
 You can define a special color for the text of tasks depending on their priority as in:
 
@@ -172,7 +172,7 @@ function myFunc(task){
 {{sample	04_customization/05_tree_template.html}}
 
 
-####Custom elements in grid columns
+####Custom elements in the grid columns
 
 To add a custom element, such as a button, an input, etc. into the grid columns, you should set the HTML of the element as the value of the **template** attribute of the column:
 
@@ -443,6 +443,9 @@ Read more on this topic in the article desktop/highlighting_time_slots.md.
 
 ###Showing external elements (baselines, deadlines, etc.)
 
+{{pronote This functionality is available in the PRO edition only.}}
+
+
 You can display additional elements, such as baseline or deadline markers in the Gantt. For this you need to create a new displayable layer via the api/gantt_addtasklayer.md method and place custom elements there.
 As a parameter, the method takes a function that takes a task object and returns either a DOM element that will be displayed, or *false* (the element for a task should be hidden):
 
@@ -470,7 +473,7 @@ Examples of external elements are:
 
 Read more about displaying external elements in Gantt in the article desktop/baselines.md.
 
-###Tooltips for Tasks
+###Tooltips for tasks
 
 You can provide tooltips for tasks to show their details in a compact way.
 

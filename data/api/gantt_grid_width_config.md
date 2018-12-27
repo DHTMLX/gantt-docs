@@ -5,7 +5,7 @@ grid_width
 	
 
 @type: number
-@default: 350
+@default: 360
 @example:
 gantt.config.grid_width = 400;
 
