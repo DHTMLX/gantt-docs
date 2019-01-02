@@ -462,8 +462,33 @@ gantt.config.layout = {
 };
 ~~~
 
+Sizing of Gantt layout parts
+------------------------------
 
+You can regulate relative sizes of the Gantt layout cells via the **gravity** property set in the configuration of each cell. The parameter defines the size of cells in relation to each other. 
 
+~~~js
+gantt.config.layout = {
+  css: "gantt_container",
+  rows: [
+	{
+	  cols: [// columns config],
+	  gravity:2     /*!*/
+	},
+	{resizer: true, width: 1},
+	{
+	  config: resourceConfig,
+	  cols: [// columns config],
+	  gravity:1       /*!*/
+	},
+	},
+	{view: "scrollbar", id: "scrollHor"}
+  ]
+};
+~~~
+
+In the above example the sizes of the Gantt chart and the resource chart make a proportion 2:1. It means that the Gantt chart will take 66%, while the resource chart will take 33%. 
+By using the proportion 1:1, you will have 50% for both charts.
 
 
 

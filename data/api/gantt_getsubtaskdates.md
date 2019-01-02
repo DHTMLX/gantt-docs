@@ -7,17 +7,17 @@ getSubtaskDates
 * task_id		string,number		the task's id, api/gantt_root_id_config.md will be used if not specified
 
 @returns:
-- dates			object		object containing <b>start_date</b> and <b>end_date</b> properties
+- dates			object		 	an object containing the <b>start_date</b> and <b>end_date</b> properties
 
 
 @example:
-//duration of the whole project
+// duration of the whole project
 var dates = gantt.getSubtaskDates(),
 	dateToStr = gantt.templates.task_date;
     
 console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 
-//duration of the subproject
+// duration of the subproject
 var dates = gantt.getSubtaskDates(1),
 	dateToStr = gantt.templates.task_date;
     
@@ -27,7 +27,18 @@ console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
 @template:	api_method
 
 @descr:
-The method returns object containing the start date of the earliest subtask and end date of the latest subtask.
+The method returns an object containing the start date of the earliest subtask and the end date of the latest subtask.
+
+The return object has the following format:
+
+~~~js
+{
+  start_date: Date|null,
+  end_date: Date|null
+}
+~~~
+
+If a Gantt chart has any scheduled tasks, both properties will have date values. If the Gantt chart is empty or contains only unscheduled tasks, both properties will have `null` values.
 
 @relatedapi:
 api/gantt_getsubtaskduration.md
