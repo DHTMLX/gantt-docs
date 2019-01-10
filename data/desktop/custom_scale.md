@@ -31,5 +31,22 @@ Note, hiding time units from the scale doesn't exclude these units from calculat
 use the technique described in the article desktop/working_time.md
 }}
 
+Note, that if you use [work time calculations](desktop/working_time.md) you can use api/gantt_isworktime.md instead of hardcoded values:
+
+~~~js
+gantt.ignore_time = function(date){
+   if(!gantt.isWorkTime(date))
+      return true;
+};
+~~~
+
+{{sample
+	09_worktime/01_working_hours_per_day.html
+}}
+
+@related:
+	desktop/working_time.md
+	desktop/configuring_time_scale.md
+
 
 @edition: pro

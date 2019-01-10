@@ -16,19 +16,41 @@ For example, you can highlight weekends to visually divide the scale into weeks:
 .weekend{ background: #f4f7f4 !important;}
 </style>
 ~~~
+
+
 ~~~js
 gantt.templates.scale_cell_class = function(date){
 	if(date.getDay()==0||date.getDay()==6){
-    	return "weekend";
-    }
+		return "weekend";
+	}
 };
-gantt.templates.task_cell_class = function(item,date){
+gantt.templates.task_cell_class = function(task,date){
 	if(date.getDay()==0||date.getDay()==6){ 
-    	return "weekend" ;
+		return "weekend" ;
 	}
 };
 gantt.init("gantt_here");
 ~~~
+
+Note, that if you use [work time calculations](desktop/working_time.md) you can use api/gantt_isworktime.md instead of hardcoded values:
+
+~~~js
+gantt.config.work_time = true;
+
+gantt.templates.scale_cell_class = function(date){
+	if(!gantt.isWorkTime(date)){
+		return "weekend";
+	}
+};
+gantt.templates.task_cell_class = function(task,date){
+	if(!gantt.isWorkTime({task:task, date:date})){
+		return "weekend" ;
+	}
+};
+gantt.init("gantt_here");
+~~~
+
+
 {{sample
 	04_customization/06_highlight_weekend.html
 }}
