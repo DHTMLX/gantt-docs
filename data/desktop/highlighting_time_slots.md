@@ -32,7 +32,7 @@ gantt.templates.task_cell_class = function(task,date){
 gantt.init("gantt_here");
 ~~~
 
-Note, that if you use [work time calculations](desktop/working_time.md) you can use api/gantt_isworktime.md instead of hardcoded values:
+Note that while using [work time calculations](desktop/working_time.md), you can use api/gantt_isworktime.md instead of hardcoded values:
 
 ~~~js
 gantt.config.work_time = true;
@@ -56,5 +56,5 @@ gantt.init("gantt_here");
 }}
 
 {{note
-Use the 'important' keyword to guarantee that the specified CSS property will be applied to the cell
+Use the 'important' keyword to guarantee that the specified CSS property will be applied to the cell.
 }}

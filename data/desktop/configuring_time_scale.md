@@ -333,7 +333,7 @@ Setting a custom style for the scale
 	04_customization/06_highlight_weekend.html
 }}
 
-Note, that if you use [work time calculations](desktop/working_time.md) you can use api/gantt_isworktime.md instead of hardcoded values:
+Note that while using [work time calculations](desktop/working_time.md), you can use api/gantt_isworktime.md instead of hardcoded values:
 
 ~~~js
 gantt.config.work_time = true;
