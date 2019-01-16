@@ -15,12 +15,12 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 <span class='release_date'>January 16, 2019. Bugfix release</span>
 
-- Reduced the number redundant repaints of the [resource diagram](desktop/resource_management.md#resourceviewpanel)
-- Fixed script error from the [resource diagram](desktop/resource_management.md#resourceviewpanel) after deleting a task
-- Fixed script error from [fullscreen extension](desktop/fullscreen_mode.md) after exiting fullscreen mode on `esc` key
-- Fixed the incorrect state of links drag and drop when dragging link between multiple charts on the page, creating links between gantts is not supported
-- Fixed script error after deleting [multiple selected tasks](desktop/multiselection.md) using [keyboard navigation](desktop/keyboard_navigation.md)
-- Fixed default mapping of [inline editors](desktop/inline_editing.md), inline editors shouldn't block keyboard shortcuts on task cells
+- Reduced the number of redundant repaints of the [resource diagram](desktop/resource_management.md#resourceviewpanel)
+- Fixed the script error from the [resource diagram](desktop/resource_management.md#resourceviewpanel) after deleting a task
+- Fixed the script error from the [fullscreen extension](desktop/fullscreen_mode.md) after exiting fullscreen mode on the `Esc` key
+- Fixed incorrect state of links drag and drop when dragging a link between multiple charts on the page. Creating links between gantts is not supported
+- Fixed the script error after deleting [multiple selected tasks](desktop/multiselection.md) using [keyboard navigation](desktop/keyboard_navigation.md)
+- Fixed default mapping of [inline editors](desktop/inline_editing.md). Inline editors shouldn't block keyboard shortcuts on task cells
 
 6.0.4
 -----
