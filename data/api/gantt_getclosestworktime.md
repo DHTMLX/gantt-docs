@@ -1,7 +1,7 @@
 getClosestWorkTime
 =============
 
-@short:returns the closest working time
+@short: returns the closest working time
 	
 
 @params:
@@ -19,19 +19,19 @@ getClosestWorkTime
     api/gantt_getworkhours.md
 
 @example:
-//checks whether the specified date is a working day in global settings
-gantt.getClosetsWorkTime({ date: new Date(2017,3,5) });
+// checks whether the specified date is a working day in global settings
+gantt.getClosestWorkTime({ date: new Date(2017,3,5) });
 // or
-gantt.getClosetsWorkTime(new Date(2017,3,5));
+gantt.getClosestWorkTime(new Date(2017,3,5));
 
-//checks whether the specified date is working day for a specific task
-gantt.getClosetsWorkTime({ date: new Date(2017,3,5), task:task });
+// checks whether the specified date is a working day for a specific task
+gantt.getClosestWorkTime({ date: new Date(2017,3,5), task:task });
 
 @template:	api_method
 @descr:
 
 {{note
-If the api/gantt_work_time_config.md option is disabled, the method return the date unchanged. 
+If the api/gantt_work_time_config.md option is disabled, the method returns the date unchanged. 
 }}
 
 - The method will use the [global work time calendar](desktop/working_time.md#getcalendars) if no task is specified. <br>
