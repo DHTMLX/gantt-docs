@@ -1,9 +1,10 @@
 onTaskOpened
 =============
+
 @short:fires when a branch has been opened
 	
 @params:
-- id	string, number	the branch id
+- id	string,number	the branch id
 
 @example:
 gantt.attachEvent("onTaskOpened", function(id) {

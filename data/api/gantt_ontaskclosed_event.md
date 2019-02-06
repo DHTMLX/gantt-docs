@@ -5,7 +5,7 @@ onTaskClosed
 	
 
 @params:
-- id	string, number	the branch id
+- id	string,number	the branch id
 
 @example:
 gantt.attachEvent("onTaskClosed", function(id) {
