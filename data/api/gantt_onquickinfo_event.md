@@ -15,6 +15,10 @@ gantt.attachEvent("onQuickInfo",function(taskId){
 @template:	api_event
 @descr:
 
+{{note This event is defined in the **ext/dhtmlxgantt_quick_info.js** extension, so you need to include it on the page.}}
+
+
+
 @descr:
 added in version 4.1
 

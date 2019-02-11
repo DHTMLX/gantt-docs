@@ -1,10 +1,11 @@
 onBeforeLightbox
 =============
+
 @short:fires immediately before the user opens the lightbox (edit form)
 	
 
 @params:
-- id	string, number		the task id
+- id	string,number		the task id
 
 @returns:  
   - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 

@@ -25,6 +25,17 @@ gantt.exportToExcel({
 
 @template:	api_method
 @descr:
+
+{{note This method is defined in the **export** extension, so you need to include it on the page:
+~~~html
+<script src="http://export.dhtmlx.com/gantt/api.js"></script>  
+~~~
+Read the details in the desktop/excel.md article.
+
+}}
+
+
+
 The **exportToExcel()** method takes as a parameter an object with several properties (all the properties are optional):
 
 - **name** - (*string*) sets the name of the output file with the extension '.xlsx' 

@@ -11,5 +11,10 @@ gantt.init("gantt_here");
 @template:	api_config
 @descr:
 
+{{note This option is defined in the **ext/dhtmlxgantt_quick_info.js** extension, so you need to include it on the page.}}
+
+
+
+
 
 @related: desktop/touch_templates.md

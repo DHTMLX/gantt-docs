@@ -6,8 +6,8 @@ onMouseMove
 	
 
 @params:
-- id		string, number		the id of the task that the mouse is moved over
-- e		Event		a native event object
+- id		string,number		the id of the task that the mouse is moved over
+- e			Event				a native event object
 
 
 @example:

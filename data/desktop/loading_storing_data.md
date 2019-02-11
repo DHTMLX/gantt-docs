@@ -8,4 +8,5 @@ Loading and Storing Tasks
 - desktop/supported_data_formats.md
 - desktop/server_side.md
 - desktop/performance.md
+- desktop/troubleshooting.md
 }}

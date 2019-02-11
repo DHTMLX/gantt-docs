@@ -1,10 +1,56 @@
 What's New
 ==========
 
+<style>
+.release_date{
+	font-size: 13px;
+	margin-left: 20px;
+}
+</style>
+
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
-6.0 
+6.0.7
+-----
+
+<span class='release_date'>January 16, 2019. Bugfix release</span>
+
+- Reduced the number of redundant repaints of the [resource diagram](desktop/resource_management.md#resourceviewpanel)
+- Fixed script error from the [resource diagram](desktop/resource_management.md#resourceviewpanel) after deleting a task
+- Fixed script error from the [fullscreen extension](desktop/fullscreen_mode.md) after exiting fullscreen mode on the `Esc` key
+- Fixed incorrect state of links drag and drop when dragging a link between multiple charts on the page. Creating links between gantts is not supported
+- Fixed script error after deleting [multiple selected tasks](desktop/multiselection.md) using [keyboard navigation](desktop/keyboard_navigation.md)
+- Fixed default mapping of [inline editors](desktop/inline_editing.md). Inline editors shouldn't block keyboard shortcuts on task cells
+
+6.0.4
+-----
+
+<span class='release_date'>December 27, 2018. Bugfix release</span>
+
+####Fixes
+
+- Fixed incorrect task position after task vertical dnd in `order_branch='marker'` mode
+- Fixed script error after deleting a sub-tree which contains selected task
+- Fixed script error on Save/Cancel lightbox containing resource filters
+
+6.0.2
+-----
+
+<span class='release_date'>December 6, 2018. Bugfix release</span>
+
+####Fixes
+
+- Fixed `ReferenceError: getResourceAssignments is not defined` when importing Gantt into Vue.js project
+- Fixed script error on deleting task after assigning resource to it via resource form
+- Fixed script error in resource diagram after second `gantt.init` call
+- Fixed script error on toggle timeline visibility when marker extension is used
+- Fixed page freeze on `gantt.parse` if tasks tree contains cyclic references, script error is thrown instead
+
+
+<b>6.0</b> 
 ----------
+
+<span class='release_date'>November 5, 2018. Major update</span>
 
 ####Functionality
 
@@ -34,6 +80,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 5.2
 --------------
 
+<span class='release_date'>July 6, 2018. Minor update</span>
+
 ####Functionality
 
 - [Inline editing in Grid](desktop/inline_editing.md)
@@ -54,6 +102,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 5.1
 ----------
+
+<span class='release_date'>February 27, 2018. Minor update</span>
 
 ####Functionality
 
@@ -80,8 +130,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fixed issues with the keyboard navigation in the smart rendering mode
 
 
-5.0
+<b>5.0</b>
 ---------
+
+<span class='release_date'>December 12, 2017. Major update</span>
 
 ####Functionality
 
@@ -96,6 +148,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 4.2
 ------------
+
+<span class='release_date'>August 17, 2017. Minor update</span>
 
 ####Functionality
 
@@ -116,6 +170,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 4.1
 ---------
 
+<span class='release_date'>September 1, 2016. Minor update</span>
+
 #### Functionality
 
 - [Keyboard navigation](desktop/keyboard_navigation.md)
@@ -132,8 +188,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Turkish locale](desktop/localization.md#predefinedlocales) updated
 
 
-4.0
+<b>4.0</b>
 ---------
+
+<span class='release_date'>December 1, 2015. Major update</span>
 
 #### Functionality
 
@@ -156,6 +214,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 3.3
 ----------
 
+<span class='release_date'>July 21, 2015. Minor update</span>
+
 #### Functionality
 
 - Dependency [Auto Scheduling](desktop/auto_scheduling.md) feature (PRO version)
@@ -177,6 +237,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 3.2
 ----------------
+
+<span class='release_date'>March 18, 2015. Minor update</span>
 
 #### Functionality
 
@@ -203,6 +265,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 3.1
 ----------------
 
+<span class='release_date'>October 25, 2014. Minor update</span>
+
 #### Functionality
 
 - Ability to drag tasks on touch devices
@@ -218,8 +282,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Incorrect behavior of vertical markers when Gantt is cleared or reinitialized
 
 
-3.0
+<b>3.0</b>
 ----------------
+
+<span class='release_date'>September 11, 2014. Major update</span>
 
 #### Configuration
 
@@ -246,6 +312,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 2.1
 -------------
 
+<span class='release_date'>March 28, 2014. Minor update</span>
+
 #### Global
 
 - Updated locales
@@ -267,8 +335,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Added more configurations, methods, events
 
 
-2.0
+<b>2.0</b>
 -------------------------------------
+
+<span class='release_date'>October 18, 2013. Major update</span>
 
 #### Global
 

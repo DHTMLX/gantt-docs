@@ -13,6 +13,12 @@ gantt.redo();
 
 @template:	api_method
 @descr:
+
+{{note This method is defined in the **ext/dhtmlxgantt_undo.js** extension, so you need to include it on the page. Read the details in the desktop/undo_redo.md article.}}
+
+
+
+
 @relatedapi:
 - api/gantt_undo.md
 - api/gantt_getredostack.md

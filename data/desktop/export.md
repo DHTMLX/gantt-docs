@@ -96,7 +96,7 @@ The api/gantt_exporttopdf.md and api/gantt_exporttopng.md methods take as a para
 		</tr>
        <tr>
 			<td class="webixdoc_links0"><b>skin</b></td>
-			<td>(<i>'terrace', 'skyblue', 'meadow', 'broadway'</i>) the skin of the output Gantt chart</td>
+			<td>(<i>string</i>) the <a href="desktop/skins.md">skin</a> of the output Gantt chart</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>locale</b></td>
@@ -247,14 +247,17 @@ Note, you cannot specify some URL as the value of the **data** parameter, just a
 
 By default, the Gantt chart will be exported with the same skin as it is shown on the page.
 
-To set a custom skin for the output PNG or PDF file, use the **skin** property in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
+To set a different skin for the output PNG or PDF file, use the **skin** property in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
 
 ~~~js
 gantt.exportToPDF({
 	name:"mygantt.pdf",
-	skin:"broadway"/*!*/ // or "skyblue", "meadow", "terrace"
+	skin:"material"/*!*/ 
 });
 ~~~
+
+[Check the full list of available Gantt skins](desktop/skins.md).
+
 
 ##Header/footer of the output file
 

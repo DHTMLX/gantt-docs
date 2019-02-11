@@ -3,7 +3,7 @@ prevent_default_scroll
 @short:specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
 
 @type: boolean
-@default:true
+@default:false
 @example:
 gantt.config.prevent_default_scroll = false;
 gantt.init('gantt_here');

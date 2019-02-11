@@ -70,7 +70,7 @@ Go to the *resources/views* folder and create a new view named *gantt.blade.php*
 </body>
 ~~~
 
-Here we've defined a simple HTML layout, added sources of dhtmlxGantt from [CDN](desktop/cdn_links_list.md) and initialized gantt using api/gantt_init.md method.
+Here we've defined a simple HTML layout, added sources of dhtmlxGantt from [CDN](desktop/cdn_links_list.md) and initialized gantt using the api/gantt_init.md method.
 
 Note that we've also specified **100% height** for the document body and for the gantt container. Gantt will use the size of its container, so some initial sizes are required.
 
@@ -113,8 +113,8 @@ DB_PASSWORD=
 ~~~
 
 
-The next step is to create [model classes](https://laravel.com/docs/5.4/eloquent#defining-models) and
-[migrations](https://laravel.com/docs/5.5/migrations#generating-migrations). You can generate classes and migration files using the Artisan command:
+The next step is to create [model classes](https://laravel.com/docs/eloquent#defining-models) and
+[migrations](https://laravel.com/docs/migrations#generating-migrations). You can generate classes and migration files using the Artisan command:
 
 ~~~js
 php artisan make:model Task --migration
@@ -126,8 +126,8 @@ and
 php artisan make:model Link --migration
 ~~~
 
-After that find the migrations in the `database/migrations` folder and define a [database schema](https://laravel.com/docs/5.5/migrations#migration-structure). 
-You can find the database schema expected by the gantt [here](desktop/loading.md#standarddatabasestructure).
+After that find the migrations in the `database/migrations` folder and define a [database schema](https://laravel.com/docs/migrations#migration-structure). 
+You can find the database schema expected by the gantt [here](desktop/loading.md#databasestructure).
 
 The code for the Tasks table looks like this:
 
@@ -198,7 +198,7 @@ php artisan migrate
 ~~~
 
 While we're at it, we can generate some test data for our app. 
-Generate a [seeder](https://laravel.com/docs/5.5/seeding) class using the artisan command:
+Generate a [seeder](https://laravel.com/docs/seeding) class using the artisan command:
 
 ~~~php
 php artisan make:seeder TasksTableSeeder
@@ -265,11 +265,11 @@ php artisan db:seed
 
 ### Defining model classes
 
-The data is managed via the [Eloquent model](https://laravel.com/docs/5.4/eloquent) classes. We've already generated classes for tasks and links in the previous step.
+The data is managed via the [Eloquent model](https://laravel.com/docs/eloquent) classes. We've already generated classes for tasks and links at the previous step.
 They are ready to use and don't require any changes to work with gantt. 
 
-What we can do, however, is to add an **open** [attribute of the Task class](desktop/loading.md#specifyingdataproperties) to 
-[JSON response](https://laravel.com/docs/5.4/eloquent-serialization#appending-values-to-json). It will make the project tree expanded when tasks are loaded to the client side. 
+What we can do, however, is to add an **open** [attribute of the Task class](desktop/loading.md#dataproperties) to 
+[JSON response](https://laravel.com/docs/eloquent-serialization#appending-values-to-json). It will make the project tree expanded when tasks are loaded to the client side. 
 Otherwise, all branches would be closed initially: 
 
 The Task model will look as in:
@@ -334,7 +334,7 @@ class GanttController extends Controller
 }
 ~~~
 
-And register a route, so the client could call this action. Note that we'll add the route to the [api.php routes file](https://laravel.com/docs/5.4/routing#basic-routing):
+And register a route, so the client could call this action. Note that we'll add the route to the [api.php routes file](https://laravel.com/docs/routing#basic-routing):
 
 {{snippet routes/api.php}}
 ~~~php
@@ -370,15 +370,15 @@ Step 5. Saving Changes
 
 For now, our gantt can read data from the backend. Let's make it write changes back to the database.
 
-The client side will work in the REST mode, meaning it will send POST/PUT/DELETE requests for tasks and links actions. 
+The client side will work in the REST mode, meaning that it will send POST/PUT/DELETE requests for tasks and links actions. 
 You can find the format of requests and all the routes the gantt will use [here](desktop/server_side.md#requestresponsedetails). 
 
 What we need now is to define controllers that handle actions on both models, create routes for them and enable data saving on the client side.
 
 ###Adding controllers
 
-Let's start with controllers. We'll create one [RESTful resource controller](http://laravel.com/docs/4.2/controllers#restful-resource-controllers) 
-for each model. It will contain methods for adding/deleting and updating the model. 
+Let's start with controllers. We'll create one RESTful [resource controller](https://laravel.com/docs/controllers#resource-controllers) for each model. 
+It will contain methods for adding/deleting and updating the model. 
 
 ####Controller for tasks
 
@@ -437,7 +437,7 @@ class TaskController extends Controller
 }
 ~~~
 
-And a [route](http://laravel.com/docs/4.2/controllers#restful-resource-controllers) for it:
+And a [route](http://laravel.com/docs/controllers#restful-resource-controllers) for it:
 
 {{snippet routes/api.php}}
 ~~~php
@@ -451,7 +451,7 @@ Route::resource('task', 'TaskController');/*!*/
 
 A couple of notes regarding this code:
 
-- When a new task is inserted, we return it's id back to the client in the **tid** property of the response object
+- When a new task is inserted, we return its id back to the client in the **tid** property of the response object
 - We assign a default value to the **progress** parameter. 
 Many request parameters are optional, which means that if a client-side task doesn't have them assigned, they won't be sent to the server action.
 - The response JSON can have any number of additional properties, they all can be accessed from the [client-side handler](desktop/server_side.md#errorhandling)
@@ -726,3 +726,15 @@ Application Security
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](desktop/app_security.md).
 
 
+Trouble shooting
+-----------------
+
+In case you've completed the above steps to implement Gantt integration with PHP but Gantt doesn't render tasks and links on a page, have a look at the desktop/troubleshooting.md article. It describes 
+the ways of identifying the roots of the problems.
+
+What's Next
+------------
+
+Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel), clone or download it and use it for your projects.
+
+You can also check [guides on the numerous features of gantt](desktop/guides.md) or tutorials on [integrating Gantt with other backend frameworks](desktop/howtostart_guides.md).

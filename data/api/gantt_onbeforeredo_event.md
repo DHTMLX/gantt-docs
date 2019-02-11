@@ -21,6 +21,10 @@ gantt.attachEvent("onBeforeRedo",function(action){
 
 @template:	api_event
 @descr:
+
+{{note This event is defined in the **ext/dhtmlxgantt_undo.js** extension, so you need to include it on the page. Read the details in the desktop/undo_redo.md article.}}
+
+
 The event is blockable. Returning *false* will cancel further processing.
 
 The **action** parameter presents an array of command objects, each of which contains the following set of attributes:

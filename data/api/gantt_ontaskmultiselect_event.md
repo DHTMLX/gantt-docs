@@ -16,6 +16,11 @@ gantt.attachEvent("onTaskMultiSelect", function(id, state, e){
 
 @template:	api_event
 @descr:
+
+{{note This event is defined in the **ext/dhtmlxgantt_multiselect.js** extension, so you need to include it on the page. Read the details in the desktop/multiselection.md article.}}
+
+
+
 The event is called for each task of the range.
 
 @relatedapi:

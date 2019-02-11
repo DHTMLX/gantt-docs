@@ -13,6 +13,10 @@ gantt.config.undo_types = {
 
 @template:	api_config
 @descr:
+
+{{note This option is defined in the **ext/dhtmlxgantt_undo.js** extension, so you need to include it on the page. Read the details in the desktop/undo_redo.md article.}}
+
+
 @relatedapi:
 - api/gantt_undo_config.md
 - api/gantt_undo_actions_config.md

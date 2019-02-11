@@ -4,7 +4,7 @@ onAfterLinkUpdate
 @short: fires after the user updates a link
 
 @params:
-- id		string, number			the link id
+- id		string,number			the link id
 - item		object					the link object 
 
 @example:

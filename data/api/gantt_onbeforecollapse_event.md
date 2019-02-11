@@ -17,7 +17,12 @@ gantt.attachEvent("onBeforeCollapse",function(){
 
 @template:	api_event
 @descr:
-the event is blockable - returning false will cancel further processing
+The event is blockable. Returning *false* will cancel further processing.
+
+{{note This event is defined in the **ext/dhtmlxgantt_fullscreen.js** extension, so you need to include it on the page. Read the details in the desktop/fullscreen_mode.md article.}}
+
+
+
 
 @related:
 

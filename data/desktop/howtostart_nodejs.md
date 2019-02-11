@@ -11,7 +11,7 @@ If you use some other technology, check the list of available integration varian
 - desktop/howtostart_ruby.md
 
 Our implementation of Gantt with Node.js will be based on REST API that will be used for communication with a server. 
-Node.js has a set of ready-made solutions, so we won't have to code everything from the very beginning.
+Node.js has a set of ready-made solutions, so we won't have to code everything from the very beginning. We will also use MySQL as a data storage.
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-node) on GitHub.
 
@@ -595,6 +595,8 @@ function updateOrder(taskId, target){
   var nextTask = false;
   var targetOrder;
 
+  target = target || "";
+
   if(target.startsWith("next:")) {
     target = target.substr("next:".length);
     nextTask = true;
@@ -626,3 +628,17 @@ Application Security
 -------------------------
 
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](desktop/app_security.md).
+
+Trouble shooting
+-----------------
+
+In case you've completed the above steps to implement Gantt integration with Node.js, but Gantt doesn't render tasks and links on a page, have a look at the desktop/troubleshooting.md article. It describes 
+the ways of identifying the roots of the problems.
+
+
+What's Next
+------------
+
+Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-node), clone or download it and use it for your projects.
+
+You can also check [guides on the numerous features of gantt](desktop/guides.md) or tutorials on [integrating Gantt with other backend frameworks](desktop/howtostart_guides.md).

@@ -11,6 +11,10 @@ gantt.config.scroll_size = 20;
 gantt.init("gantt_here");
 
 @template:	api_config
-@descr:
 
+
+@default: undefined
+
+@descr:
+If not specified, Gantt will use the default scrollbar width of the browser since styles of the scrollbar element vary depending on the browser.
 

@@ -14,7 +14,7 @@ onColumnResizeStart
 @example:
 // return false to discard the resize action
 gantt.attachEvent("onColumnResizeStart", function(index, column){
-	dhtmlx.message("Start resizing " + gantt.locale.labels["column_"+column.name]);
+	gantt.message("Start resizing " + gantt.locale.labels["column_"+column.name]);
 	return true;
 });
 

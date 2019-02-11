@@ -61,10 +61,10 @@ gantt.setWorkTime({day : 5, hours : [8,12]});
 gantt.setWorkTime({day : 6, hours : [8,12]});
 
 //makes a specific date a working day 
-gantt.setWorkTime({date : new Date(2013, 2, 31)});
+gantt.setWorkTime({date : new Date(2019, 2, 31)});
 
 //makes a specific date a day-off
-gantt.setWorkTime({date:new Date(2013,0,1), hours:false})
+gantt.setWorkTime({date:new Date(2019,0,1), hours:false})
 ~~~
 
 {{sample
@@ -97,14 +97,14 @@ gantt.unsetWorkTime({hours:[8,12]});
 To check whether the specified date is working time, use the api/gantt_isworktime.md method:
 
 ~~~js
-//makes 1 January, 2013 a day off
-gantt.setWorkTime({date:new Date(2013,0,1), hours:false});
-gantt.isWorkTime(new Date(2013,0,1)) // -> false  /*!*/
+//makes 1 January, 2019 a day off
+gantt.setWorkTime({date:new Date(2019,0,1), hours:false});
+gantt.isWorkTime(new Date(2019,0,1)) // -> false  /*!*/
 
-// makes 15 March, 2013 a working day from 9:00 till 18:00 
-gantt.setWorkTime({date : new Date(2013, 2, 15), hours:[9,18]});
-gantt.isWorkTime(new Date(2013, 2, 15,10,0), "hour"); // -> true  /*!*/
-gantt.isWorkTime(new Date(2013, 2, 15,8,0), "hour"); // ->false  /*!*/
+// makes 15 March, 2019 a working day from 9:00 till 18:00 
+gantt.setWorkTime({date : new Date(2019, 2, 15), hours:[9,18]});
+gantt.isWorkTime(new Date(2019, 2, 15,10,0), "hour"); // -> true  /*!*/
+gantt.isWorkTime(new Date(2019, 2, 15,8,0), "hour"); // ->false  /*!*/
 ~~~
 {{sample
 09_worktime/05_adjust_to_worktime.html
@@ -116,14 +116,14 @@ gantt.isWorkTime(new Date(2013, 2, 15,8,0), "hour"); // ->false  /*!*/
 To get the working hours of the specified date, use the api/gantt_getworkhours.md method:
 
 ~~~js
-gantt.getWorkHours(new Date(2013,3,30))// -> [8, 17]
+gantt.getWorkHours(new Date(2019,3,30))// -> [8, 17]
 ~~~
 
 
 To get the closest working day to the specified date, use the api/gantt_getclosestworktime.md method:
 
 ~~~js
-gantt.getClosestWorkTime(new Date(2013,3,30)); 
+gantt.getClosestWorkTime(new Date(2019,3,30)); 
 ~~~
 
 
@@ -133,7 +133,7 @@ To color the day-off times in the chart area, use the api/gantt_task_cell_class_
 
 ~~~js
 gantt.templates.task_cell_class = function(task, date){
-	if(!gantt.isWorkTime(date))
+	if(!gantt.isWorkTime({task:task, date: date}))
 		return "week_end";
 	return "";
 };
@@ -347,7 +347,7 @@ and then set the id of the calendar as a value of the **"calendar_id"** attribut
 
 ~~~js
 { 
-  "id":2, "calendar_id":"custom", "text":"Task #1", "start_date":"02-04-2013", 
+  "id":2, "calendar_id":"custom", "text":"Task #1", "start_date":"02-04-2019", 
   "duration":"8", "parent":"1", "progress":0.5, "open": true
 }
 ~~~
@@ -409,12 +409,12 @@ id of the calendars we have specified at the previous step.
 As a value of this attribute, use the key of the necessary calendar from the "user" object defined in the **resource_calendars** configuration option:
 
 ~~~js
-{ "id":1, user:"1", "text":"Project #2", "start_date":"01-04-2013", "duration":"5" },
-{ "id":2, user:"0", "text":"Task #1", "start_date":"02-04-2013", "duration":"2" },
-{ "id":3, user:"2", "text":"Task #2", "start_date":"11-04-2013", "duration":"4" },
-{ "id":4, user:"3", "text":"Task #3", "start_date":"13-04-2013", "duration":"3" },
-{ "id":5, user:"0", "text":"Task #1.1", "start_date":"02-04-2013", "duration":"7" },
-{ "id":6, user:"1", "text":"Task #1.2", "start_date":"03-04-2013", "duration":"7" }
+{ "id":1, "user":"1", "text":"Project #2", "start_date":"01-04-2019", "duration":"5" },
+{ "id":2, "user":"0", "text":"Task #1", "start_date":"02-04-2019", "duration":"2" },
+{ "id":3, "user":"2", "text":"Task #2", "start_date":"11-04-2019", "duration":"4" },
+{ "id":4, "user":"3", "text":"Task #3", "start_date":"13-04-2019", "duration":"3" },
+{ "id":5, "user":"0", "text":"Task #1.1", "start_date":"02-04-2019", "duration":"7" },
+{ "id":6, "user":"1", "text":"Task #1.2", "start_date":"03-04-2019", "duration":"7" }
 ~~~
 
 {{sample 09_worktime/07_resource_calendars.html}}

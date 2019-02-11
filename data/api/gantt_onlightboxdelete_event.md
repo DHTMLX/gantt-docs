@@ -1,13 +1,14 @@
 onLightboxDelete
 =============
+
 @short:fires when the user clicks on the 'Delete' button in the lightbox
 	
 
 @params:
-- id		string, number		the task id ( the task opened in the lightbox)
+- id		string,number		the task id (the task opened in the lightbox)
 
 @returns:  
-  - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
+- result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
  
 @example:
 gantt.attachEvent("onLightboxDelete", function(id){

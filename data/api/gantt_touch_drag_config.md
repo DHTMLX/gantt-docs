@@ -3,7 +3,7 @@ touch_drag
 @short:defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
 	
 @type:number, boolean
-@default:50
+@default:500
 @example:
 gantt.config.touch_drag = 75;
 ...

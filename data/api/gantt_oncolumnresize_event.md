@@ -12,7 +12,7 @@ onColumnResize
 @example:
 gantt.attachEvent("onColumnResize", function(index, column, new_width){
 	if(!message){
-		message = dhtmlx.message({expire:-1,
+		message = gantt.message({expire:-1,
 		text:"<b>" + gantt.locale.labels["column_"+column.name] 
         + "</b> is now <b id='width_placeholder'></b><b>px</b> width"});
 	}

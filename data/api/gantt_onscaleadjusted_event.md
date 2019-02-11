@@ -10,7 +10,7 @@ gantt.attachEvent("onScaleAdjusted", function(){
 	max = gantt.getState().max_date,
 	to_str = gantt.templates.task_date;
 
-	return dhtmlx.message("Scale shows days from " + to_str(min) 
+	return gantt.message("Scale shows days from " + to_str(min) 
     + " to " + to_str(max));
 });
 

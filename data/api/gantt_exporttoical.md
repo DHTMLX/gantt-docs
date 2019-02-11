@@ -16,6 +16,17 @@ gantt.exportToICal({
 
 @template:	api_method
 @descr:
+
+{{note This method is defined in the **export** extension, so you need to include it on the page:
+~~~html
+<script src="http://export.dhtmlx.com/gantt/api.js"></script>  
+~~~
+Read the details in the desktop/excel.md article.
+
+}}
+
+
+
 The **exportToICal()** method takes as a parameter an object with the following property (optional):
 
 - **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**.

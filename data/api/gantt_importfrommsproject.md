@@ -31,6 +31,17 @@ gantt.importFromMSProject({
 
 {{note The method requires HTML5 File API support.}}
 
+{{note This method is defined in the **export** extension, so you need to include it on the page:
+~~~html
+<script src="http://export.dhtmlx.com/gantt/api.js"></script>  
+~~~
+Read the details in the desktop/export_msproject.md#importfrommsproject article.
+
+}}
+
+
+
+
 The method takes as a parameter an object with configuration properties of an imported file:
 
 - **data** - an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain either MPP or XML Project file.

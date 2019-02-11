@@ -13,7 +13,12 @@ gantt.renderMarkers(); /*!*/
 @template:	api_method
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
-    
+ 
+
+{{note This method is defined in the **ext/dhtmlxgantt_marker.js** extension, so you need to include it on the page. Read the details in the desktop/markers.md article.}}
+
+
+   
 
 @related:
 	desktop/markers.md

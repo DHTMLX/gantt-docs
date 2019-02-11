@@ -3,6 +3,7 @@ touch_feedback_duration
 
 @short:
 	defines the duration of vibration feedback before/after drag and drop on touch devices (in milliseconds)
+@default:1
 
 @type: number
 @example:

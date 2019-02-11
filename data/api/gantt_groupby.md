@@ -57,6 +57,10 @@ gantt.groupBy({
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
+{{note This method is defined in the **ext/dhtmlxgantt_grouping.js** extension, so you need to include it on the page. Read the details in the desktop/grouping.md article.}}
+
+
+
 The grouping configuration object has the following properties:
 
 - **relation_property** - (<i>string</i>) a property of a task object that will be used to group items. Mandatory.

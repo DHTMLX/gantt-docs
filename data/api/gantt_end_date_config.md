@@ -1,7 +1,7 @@
 end_date
 =============
 
-@short:sets the  end value of the time scale
+@short: sets the end value of the time scale
 	
 
 @type: Date
@@ -14,7 +14,9 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
-If both the **start_date** and **end_date** options are specified and you create a task that is outside the range, the task will disappear in the chart.
+- If both the **start_date** and **end_date** options are specified and you create a task that is outside the range, the task won't be displayed in the chart.
+- Optional parameters of the api/gantt_init.md method can be used as initial values of the api/gantt_start_date_config.md and api/gantt_end_date_config.md configs.
+- api/gantt_start_date_config.md and api/gantt_end_date_config.md overwrite api/gantt_fit_tasks_config.md. If you want to use these settings together, you'll need to [manage the time scale from code](desktop/configuring_time_scale.md#range).
 
 In this case we can extend the range:
 
@@ -27,7 +29,7 @@ gantt.attachEvent("onLightboxSave", function(id, task, is_new){
 
  // if the task is out of the range
  if(scaleStart > taskEnd || scaleEnd < taskStart ){
-  // update timescale range
+  // update the time scale range
   gantt.config.end_date=new Date(Math.max(taskEnd.valueOf(), scaleEnd.valueOf()));
   gantt.config.start_date=new Date(Math.min(taskStart.valueOf(),scaleStart.valueOf()));
   gantt.render();
@@ -58,8 +60,9 @@ gantt.attachEvent("onLightboxSave", function(id, task, is_new){
 });
 ~~~
 
-
 @related:
 	desktop/configuring_time_scale.md#settingtheminmasvaluesofthescale
 @relatedapi:
 	api/gantt_start_date_config.md
+	api/gantt_fit_tasks_config.md
+	api/gantt_init.md

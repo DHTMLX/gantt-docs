@@ -6,9 +6,9 @@ onBeforeTaskChanged
 
 @params:
 
-- id	string, number	the task id
-- mode	string 	the drag-and-drop mode ("resize", "progress", "move", "ignore")
-- task  object	the task object
+- id	string,number	the task id
+- mode	string 			the drag-and-drop mode ("resize", "progress", "move", "ignore")
+- task  object			the task object
 
 @returns:  
   - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 

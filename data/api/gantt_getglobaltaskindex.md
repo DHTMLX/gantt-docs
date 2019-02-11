@@ -30,7 +30,8 @@ var globalTaskIndex = gantt.getGlobalTaskIndex("t_1"); // -> 1 /*!*/
 var taskIndex - gantt.getTaskIndex("t_1"); // -> 0 
 
 @relatedapi:
-	api/gantt_gettaskindex.md
+  api/gantt_gettaskindex.md
+	api/gantt_gettaskbyindex.md
     
 @template:	api_method
 @descr:

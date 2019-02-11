@@ -46,7 +46,11 @@ function init() {
 Integration with dhtmlxLayout
 ------------------------
 
-A good way to place multiple Gantt charts on the page is using [dhtmlxLayout](http://docs.dhtmlx.com/doku.php?id=dhtmlxlayout:toc). It not only provides a beautiful frame, but also ensures correct interacting with other elements on the page and acting according to the page size changes. 
+A good way to place multiple Gantt charts on the page is using [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html). 
+It not only provides a beautiful frame, but also ensures correct interacting with other elements on the page and acting according to the page size changes. 
+
+{{note Note that dhtmlxLayout is a separate product, not a part of the dhtmlxGantt library. If you would like to use dhtmlxLayout in your application, you should purchase the license. 
+Please [check the licensing options](https://dhtmlx.com/docs/products/dhtmlxLayout/#editions-licenses).}}
 
 **To attach a dhtmlxGantt instance to a layout cell**, use the **attachGantt()**  method.
   

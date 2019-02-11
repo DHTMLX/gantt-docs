@@ -322,16 +322,28 @@ Setting a custom style for the scale
 </style>
 <script>
 	gantt.templates.scale_cell_class = function(date){/*!*/
-        if(date.getDay()==0||date.getDay()==6){ return "weekend"; }/*!*/
-    };/*!*/
-    gantt.init("gantt_here");
+		if(date.getDay()==0||date.getDay()==6){
+			return "weekend";/*!*/
+		}/*!*/
+	};/*!*/
+	gantt.init("gantt_here");
 </script>
 ~~~
-
 {{sample
 	04_customization/06_highlight_weekend.html
 }}
 
+Note that while using [work time calculations](desktop/working_time.md), you can use api/gantt_isworktime.md instead of hardcoded values:
+
+~~~js
+gantt.config.work_time = true;
+
+gantt.templates.scale_cell_class = function(date){
+   if(!gantt.isWorkTime(date)){
+      return "weekend";
+   }
+};
+~~~
 
 Read more on applying a custom style to the timeline area in the desktop/highlighting_time_slots.md article.
 

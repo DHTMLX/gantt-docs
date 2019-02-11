@@ -4,7 +4,7 @@ onBeforeLinkDisplay
 	
 
 @params:
-- id	string, number	the link id
+- id	string,number	the link id
 - link	object	the link object
 
 @returns:  

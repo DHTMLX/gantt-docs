@@ -16,6 +16,10 @@ gantt.init("gantt_here");
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
+{{note This config is defined in the **ext/dhtmlxgantt_auto_scheduling.js** extension, so you need to include it on the page. Read the details in the desktop/auto_scheduling.md article.}}
+
+
+
 @related:
 desktop/auto_scheduling.md
 

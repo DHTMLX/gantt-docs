@@ -34,6 +34,7 @@ To display a basic Gantt on the page, follow 3 steps:
  
 Required code files 
 ------------------------------------------------------------
+
 The dhtmlxGantt requires including 2 code files on the page:
 
 - **dhtmlxgantt.js**
