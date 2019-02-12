@@ -10,6 +10,18 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+<b>6.1</b>
+------
+
+<span class='release_date'>February 19, 2019. Major update</span>
+
+- Ability to import dhtmlxGantt as an ES6 module
+- S-curve to show the progress of a project (PRO)
+- Tasks constraints (PRO)
+- Routing options for dataProcessor
+- Working calendar for the whole project (PRO)
+- Ability to create tooltips for all the elements of dhtmlxGantt
+
 6.0.7
 -----
 

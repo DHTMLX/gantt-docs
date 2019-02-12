@@ -1,4 +1,4 @@
-Tooltips for the Tasks
+Tooltips for Gantt Elements
 ===========================
 
 Tooltips allow you to add extra information for users without overflowing the screen with the text.
