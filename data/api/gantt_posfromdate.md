@@ -6,6 +6,8 @@ posFromDate
 @params:
 - date	Date	a date you want to know the position of
 
+@returns:
+- date	Date	the number of the specified Date in the chart area
 
 
 
