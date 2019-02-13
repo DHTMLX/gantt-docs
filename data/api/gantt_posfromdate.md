@@ -7,7 +7,7 @@ posFromDate
 - date	Date	a date you want to know the position of
 
 @returns:
-- Number Number	x-coordinate (in pixels) of the specified date in the timeline
+- Number	Number	x-coordinate (in pixels) of the specified date in the timeline
 
 
 
