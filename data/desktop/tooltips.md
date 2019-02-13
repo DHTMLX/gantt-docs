@@ -1,9 +1,11 @@
 Tooltips for Gantt Elements
 ===========================
 
-Tooltips allow you to add extra information for users without overflowing the screen with the text.
+Tooltips allow you to add extra information for users without overflowing the screen with text. By default, tooltips are added to Gantt tasks.
 
 <img src="desktop/task_tooltip.png"/>
+
+You can [add tooltips to any Gantt element](#tooltipsfordifferentelements) via the corresponding API. 
 
 
 Activation
@@ -43,6 +45,92 @@ gantt.templates.tooltip_text = function(start,end,task){
 };
 ~~~
 
+Tooltips for different elements
+-------------------------
+
+By default, tooltips are added just to the Gantt tasks, but you can also set tooltips for any other Gantt element via the special API - **gantt.ext.tooltips.tooltipFor()**. The method takes as a parameter *an object with
+tooltip details*. This object has the following properties:
+
+- **selector** - (*string*) a CSS-selector of the Gantt element to add a tooltip to
+- **html** - (*function*) a template for the tooltip. The template function takes two parameters in its turn:
+	- **event** - (*Event*) a native mouse event
+    - **node** -  (*HTMLElement*) a div with the tooltip content  
+and returns a string with a template.
+
+For example, this is an example of adding tooltips for cells of the timeline scale:
+
+~~~js
+gantt.ext.tooltips.tooltipFor({
+  selector:".gantt_scale_cell",
+  html:function (event, node) {
+    var relativePosition = gantt.utils.dom.getRelativeEventPosition(event, gantt.$task_scale);
+    return gantt.templates.task_date(gantt.dateFromPos(relativePosition.x));
+  }
+});
+~~~
+
+{{sample 02_extensions/19_tooltip_api.html}}
+
+
+Tooltip API
+-----------
+
+###Tooltip object
+
+You can access the object of tooltip as **gantt.ext.tooltips.tooltip**. This object allows manipulating the position, content and visibility of tooltip via a set of methods:
+
+- **getNode()** - returns the HTML element of the tooltip  
+- **setViewport()** - locks the position of tooltip to the boundaries of the specified HTML element
+	- **node** - (*HTMLElement*) the HTML element under the question
+- **show()** - displays the tooltip at specific coordinates (relative to document.body). Takes two parameters:
+	- **left** - (*number*) the X coordinate
+    - **top** - (*number*) the Y coordinate 
+- **show**() - displays the tooltip at the mouse event coordinates; *tooltip_offset_x/y* and viewport will be taken into account. Takes as a parameter:
+	- **event** - (*Event*) the mouse event object  
+- **hide()** - hides the tooltip element
+- **setContent()**- puts HTML content into the tooltip. Takes as a parameter:
+	- **html** - (*string*) a string with HTML content for the tooltip
+
+###Manual control of tooltip behavior
+
+There is a pair of methods that allow controlling behavior of the toolip while hovering over DOM elements.
+
+- gantt.ext.tooltips.attach()
+
+{
+  // listen to mouse event on elements matching the selector
+  selector:string,
+ 
+  // handler called when the mouse pointer enters the element
+  onmouseenter: (event: MouseEvent, node: HTMLElement) => void;
+ 
+  // called when mouse pointer moves inside the element
+  onmousemove: (event: MouseEvent, node: HTMLElement) => void;
+ 
+  // called when mouse pointer leaves the element
+  onmouseleave: (event: MouseEvent, node: HTMLElement) => void;
+ 
+  // defines whether the module listens for mouse events on the whole page or only inside gantt element (false - default, listen inside gantt)
+  global: boolean;
+}
+
+- gantt.ext.tooltips.detach()
+
+selector: string
+
+Customization of tooltip behavior
+------------------------------
+
+There is a possibility to modify the default behavior of tooltip. It can be achieved by removing the default tooltip handler and adding a custom one.
+To remove the built-in tooltip handler from tasks, use the **gantt.ext.tooltips.detach** method:
+
+~~~js
+// remove the built-in tooltip handler from tasks
+gantt.ext.tooltips.detach("["+gantt.config.task_attribute+"]:not(.gantt_task_row)");
+~~~
+
+
+
 Timeout
 ------------------
 
@@ -77,3 +165,24 @@ gantt.config.tooltip_offset_y = 40;
  
 gantt.init("gantt_here");
 ~~~
+
+Displaying area
+-------------
+
+Before version 6.1 tooltips have been displayed only inside the timeline area. After v6.1 release tooltips displaying isn't limited, and a tooltip follows the movement of the mouse pointer.
+
+If necessary, you can restore the previous behavior by using the code below before initialization of Gantt:
+
+~~~js
+gantt.attachEvent("onGanttReady", function(){
+	var tooltips = gantt.ext.tooltips;
+ 	tooltips.tooltip.setViewport(gantt.$task_data);
+});
+
+gantt.init("gantt_here");
+gantt.parse(demo_tasks);
+~~~
+
+
+@todo:
+- reduce example for the tooltips elements example
