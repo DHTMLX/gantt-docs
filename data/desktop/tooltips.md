@@ -45,19 +45,73 @@ gantt.templates.tooltip_text = function(start,end,task){
 };
 ~~~
 
-Tooltips for different elements
--------------------------
 
-By default, tooltips are added just to the Gantt tasks, but you can also set tooltips for any other Gantt element via the special API - **gantt.ext.tooltips.tooltipFor()**. The method takes as a parameter *an object with
-tooltip details*. This object has the following properties:
+Tooltip API
+-----------
+
+###Tooltip object
+
+You can access the object of tooltip as **gantt.ext.tooltips.tooltip**. This object allows manipulating the position, content and visibility of tooltip via a set of methods:
+
+- **getNode()** - returns the HTML element of the tooltip  
+- **setViewport()** - locks the position of tooltip to the boundaries of the specified HTML element
+	- **node** - (*HTMLElement*) the HTML element under the question
+- **show()** - displays the tooltip at specific coordinates (relative to document.body). The method can take different parameters, depending on the position your want show tooltip at:
+	- To display tooltip at specific coordinates (relative to document.body), pass: 
+    	- **left** - (*number*) the X coordinate
+    	- **top** - (*number*) the Y coordinate 
+	- To display tooltip at the mouse event coordinates (*tooltip_offset_x/y* and viewport will be taken into account), pass:
+		- **event** - (*Event*) the mouse event object  
+- **hide()** - hides the tooltip element
+- **setContent()**- puts HTML content into the tooltip. Takes as a parameter:
+	- **html** - (*string*) a string with HTML content for the tooltip
+
+###Methods
+
+There are several methods that allow controlling behavior of the toolip while hovering over DOM elements.
+
+<h4 id="attach">gantt.ext.tooltips.attach()</h4>
+
+adds tooltip with extended configuration. The method takes an object with tooltip settings as a parameter. The settings that can be adjusted via the method are the following:
+
+- **selector** - (*string*) defines CSS-selector for the elements to listen to mouse events on
+- **onmouseenter** - (*function*) a handler called when the mouse pointer enters the element. The parameters are:
+ 	- **event** - (*Event*) a native mouse event
+    - **node** -  (*HTMLElement*) the HTML node
+- **onmousemove** - (*function*) a handler called when the mouse pointer moves inside the element. The parameters are:
+    - **event** - (*Event*) a native mouse event
+    - **node** -  (*HTMLElement*) the HTML node
+- **onmouseleave** - (*function*) a handler called when the mouse pointer leaves the element. The parameters are:	
+	- **event** - (*Event*) a native mouse event
+    - **node** -  (*HTMLElement*) the HTML node
+- **global** - (*boolean*) defines whether the module listens to mouse events on the whole page (*true*) or only inside a gantt element (*false*). By default the option is set to *false*.
+
+<h4 id="tooltipfor">gantt.ext.tooltips.tooltipFor()</h4>
+
+adds a tooltip for the specified Gantt element. It is a more simplified version of the **attach()** method. The method takes as a parameter *an object with tooltip details*. This object has the following properties:
 
 - **selector** - (*string*) a CSS-selector of the Gantt element to add a tooltip to
 - **html** - (*function*) a template for the tooltip. The template function takes two parameters in its turn:
 	- **event** - (*Event*) a native mouse event
-    - **node** -  (*HTMLElement*) a div with the tooltip content  
-and returns a string with a template.
+    - **node** -  (*HTMLElement*) the HTML node
+	and returns a string with a template.
+- **global** - (*boolean*) optional, defines whether the module listens to mouse events on the whole page (*true*) or only inside a gantt element (*false*). By default the option is set to *false*. 
 
-For example, this is an example of adding tooltips for cells of the timeline scale:
+#### gantt.ext.tooltips.detach() 
+
+removes tooltip. As a parameter the method takes:
+
+- **selector** - (*string*) the CSS selector of a Gantt element
+
+
+Tooltips for different elements
+-------------------------
+
+By default, tooltips are added just to the Gantt tasks, but you can also set tooltips for any other Gantt element. There are two corresponding methods in the tooltip API for this purpose:
+
+- the [**gantt.ext.tooltips.tooltipFor()**](#tooltipfor) method 
+
+For example, this is how you can add tooltips for cells of the timeline scale:
 
 ~~~js
 gantt.ext.tooltips.tooltipFor({
@@ -71,65 +125,45 @@ gantt.ext.tooltips.tooltipFor({
 
 {{sample 02_extensions/19_tooltip_api.html}}
 
+A tooltip added in this way will follow the mouse pointer and use the settings *api/gantt_tooltip_offset_x_config.md*, *api/gantt_tooltip_offset_y_config.md*, *api/gantt_tooltip_timeout_config.md*,
+api/gantt_tooltip_hide_timeout_config.md.
 
-Tooltip API
------------
+- the [**gantt.ext.tooltips.attach()**](#attach) method 
 
-###Tooltip object
-
-You can access the object of tooltip as **gantt.ext.tooltips.tooltip**. This object allows manipulating the position, content and visibility of tooltip via a set of methods:
-
-- **getNode()** - returns the HTML element of the tooltip  
-- **setViewport()** - locks the position of tooltip to the boundaries of the specified HTML element
-	- **node** - (*HTMLElement*) the HTML element under the question
-- **show()** - displays the tooltip at specific coordinates (relative to document.body). Takes two parameters:
-	- **left** - (*number*) the X coordinate
-    - **top** - (*number*) the Y coordinate 
-- **show**() - displays the tooltip at the mouse event coordinates; *tooltip_offset_x/y* and viewport will be taken into account. Takes as a parameter:
-	- **event** - (*Event*) the mouse event object  
-- **hide()** - hides the tooltip element
-- **setContent()**- puts HTML content into the tooltip. Takes as a parameter:
-	- **html** - (*string*) a string with HTML content for the tooltip
-
-###Manual control of tooltip behavior
-
-There is a pair of methods that allow controlling behavior of the toolip while hovering over DOM elements.
-
-- gantt.ext.tooltips.attach()
-
-{
-  // listen to mouse event on elements matching the selector
-  selector:string,
- 
-  // handler called when the mouse pointer enters the element
-  onmouseenter: (event: MouseEvent, node: HTMLElement) => void;
- 
-  // called when mouse pointer moves inside the element
-  onmousemove: (event: MouseEvent, node: HTMLElement) => void;
- 
-  // called when mouse pointer leaves the element
-  onmouseleave: (event: MouseEvent, node: HTMLElement) => void;
- 
-  // defines whether the module listens for mouse events on the whole page or only inside gantt element (false - default, listen inside gantt)
-  global: boolean;
-}
-
-- gantt.ext.tooltips.detach()
-
-selector: string
+This method allows adding a tooltip with an extented configuration to adjust tooltip behavior to the movement of the mouse pointer.
 
 Customization of tooltip behavior
 ------------------------------
 
-There is a possibility to modify the default behavior of tooltip. It can be achieved by removing the default tooltip handler and adding a custom one.
-To remove the built-in tooltip handler from tasks, use the **gantt.ext.tooltips.detach** method:
+There is a possibility to modify the default behavior of tooltip. It can be achieved by removing the default tooltip handler and adding a custom one:
+
+- Remove the built-in tooltip handler from tasks with the **gantt.ext.tooltips.detach** method:
 
 ~~~js
 // remove the built-in tooltip handler from tasks
 gantt.ext.tooltips.detach("["+gantt.config.task_attribute+"]:not(.gantt_task_row)");
 ~~~
 
+- Add the desired tooltip behavior via the **gantt.ext.tooltips.tooltipFor()** method. In the example below tooltip is shown only above the table:
 
+~~~js
+gantt.ext.tooltips.tooltipFor({
+  selector: ".gantt_grid ["+gantt.config.task_attribute+"]",
+  html: (event: MouseEvent) => {
+     if (gantt.config.touch && !gantt.config.touch_tooltip) {
+     return;
+   }
+ 
+   const targetTaskId = gantt.locate(event);
+   if(gantt.isTaskExists(targetTaskId)){
+     const task = gantt.getTask(targetTaskId);
+     return gantt.templates.tooltip_text(task.start_date, task.end_date, task);
+   }
+   return null;
+  },
+  global: false
+});
+~~~
 
 Timeout
 ------------------
@@ -185,4 +219,7 @@ gantt.parse(demo_tasks);
 
 
 @todo:
-- reduce example for the tooltips elements example
+- reduce example for the tooltips elements example<br>
+- decide on the name of double show() method<br>
+- add example with tooltip for a resource panel and for the attach() method?<br>
+- should info from the last section be moved to migration?

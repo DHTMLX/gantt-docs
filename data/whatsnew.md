@@ -17,10 +17,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - Ability to import dhtmlxGantt as an ES6 module
 - S-curve to show the progress of a project (PRO)
-- Tasks constraints (PRO)
-- Routing options for dataProcessor
-- Working calendar for the whole project (PRO)
-- Ability to create tooltips for all the elements of dhtmlxGantt
+- [Tasks constraints](desktop/auto_scheduling.md#tasksconstraints) (PRO)
+- [Routing options for dataProcessor](desktop/server_side.md#routingoptionsfordataprocessor)
+- [Working calendar for the whole project](desktop/working_time.md#assigningcalendartoproject) (PRO)
+- Ability to [create tooltips for all the elements](desktop/tooltips.md) of dhtmlxGantt
 
 6.0.7
 -----

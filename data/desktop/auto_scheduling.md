@@ -200,6 +200,10 @@ Gantt doesn't provide a built-in UI for editing lag or any other properties of t
 
 {{editor	http://snippet.dhtmlx.com/7c812e5bd		 Edit-lag Popup}}
 
+
+## Tasks constraints
+
+
 @relatedapi:
 	api/gantt_auto_scheduling_config.md
 

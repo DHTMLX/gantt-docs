@@ -43,7 +43,7 @@ The URL is formed by the following rule:
 - api/link/id
 - api/task/id
 
-where "api" is the url you've specified in the dataProcessor configuration.
+where "api" is the URL you've specified in the dataProcessor configuration.
 
 The list of possible requests and responses is:
 
@@ -197,6 +197,40 @@ Here's a list of available server-side implementations that you can use for Gant
 - [dhtmlxGantt with Node.js](desktop/howtostart_nodejs.md)
 - [dhtmlxGantt with ASP.NET MVC](desktop/howtostart_dotnet.md)
 - [dhtmlxGantt with Ruby on Rails](desktop/howtostart_ruby.md)
+
+Routing Options for DataProcessor
+-----------------------
+
+You can specify certain routes for each Gantt action in DataProcessor. Use the **dataSaver()** method for this purpose. The method takes several parameters decsribed below:
+
+- **mode** - (*string*) the action performed in Gantt: "create"|"update"|"remove"
+- **entity** - (*string*) the entity to apply the route to:  "task"|"link"
+- **data** - (*any*) any user data?
+
+and returns a promise with routing options for the specified mode(?).
+
+First, you should define the necessary routes for actions, as in:
+
+~~~js
+var routes = {
+	create: (data) => dhx.ajax.post("/api/tasks", data),
+	update: (data) => dhx.ajax.put("/api/tasks", data),
+	remove: (data) => dhx.ajax.delete("/api/tasks", data)
+};
+~~~
+
+Then you can use the **dataSaver()** method to get the desired route:
+
+~~~js
+dp.dataSaver("create", "task", data);
+// -> routesmode
+~~~
+
+When specifying routes for actions is useful:
+
+- when you want go beyond REST by using web sockets, Firebase, GraphQL, etc.;
+- when you need to use headers (for authorization) in requests;
+- if your API expects or returns data in a special form, routing options give possibility of processing them.
 
 
 Storing the Order of Tasks
@@ -492,5 +526,8 @@ Check the desktop/app_security.md article to learn the most vulnerable points of
 
 @index:
 desktop/app_security.md
+
+@todo:
+- check the section for rounting options for DP
 
 

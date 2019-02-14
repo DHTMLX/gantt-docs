@@ -1,8 +1,7 @@
 Work Time Calculation
 ========================
 
-By default, dhtmlxGantt calculates the duration of tasks in calendar time. It assumes 
-that the final duration of the tasks can include weekends and holidays.
+By default, dhtmlxGantt calculates the duration of tasks in calendar time. It assumes that the final duration of the tasks can include weekends and holidays.
 
 ##Enabling Work Time Calculation
 
@@ -147,7 +146,7 @@ gantt.templates.task_cell_class = function(task, date){
 Learn more in the desktop/highlighting_time_slots.md article.
 
 {{note
-To hide the day-off time, use the technique described in the article - desktop/custom_scale.md
+To hide the day-off time, use the technique described in the article - desktop/custom_scale.md.
 }}
 
 
@@ -251,8 +250,7 @@ If work time is disabled in the gantt config, the method will return a 24/7 work
 
 <h3 id="globalmethodsforcalendars">Using global methods to access calendars</h3>
 
-The [work time methods](desktop/working_time.md#globalsettings) of the Gantt object can be used to calculate the time duration of a specific task, 
-without accessing its calendar manually. 
+The [work time methods](desktop/working_time.md#globalsettings) of the Gantt object can be used to calculate the time duration of a specific task, without accessing its calendar manually. 
 
 In that case methods take an object argument where the related "task" object is passed as one of the properties.
 
@@ -363,6 +361,8 @@ gantt.config.calendar_property = "property_name";
 
 ##Assigning Calendar to Resource
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 It is also possible to assign a particular working calendar to tasks that require specific resources (people, appliances, etc.). 
 
 For example, you can set individual calendars for tasks, depending on a user a task is assigned to. The order of your actions will be as follows:
@@ -419,6 +419,33 @@ As a value of this attribute, use the key of the necessary calendar from the "us
 
 {{sample 09_worktime/07_resource_calendars.html}}
 
+## Assigning Calendar to Project
+
+{{pronote This functionality is available in the PRO edition only.}}
+
+There is a possibility to specify a working calendar not only for a particular resource, but for the whole project. 
+
+A task can inherit a calendar from its parent project. The logic of inheriting a calendar by a task is the following:
+
+- If a user assigns a calendar to a subproject with tasks, all its tasks will use this calendar. 
+- If a task has a personal calendar assigned to it, it will use its calendar and not the calendar of its parent project.
+
+To enable this functionality, you need to set the **gantt.config.inherit_calendar** configuration option to *true*. By default this option is disabled.
+
+~~~js
+gantt.config.inherit_calendar = true;
+~~~
+
+- If true, tasks that have no calendar assigned to them, will use the same calendar that their summary parent (which can get a calendar from its parent in its turn).
+- If false, tasks that have no calendar assigned to them, will use the global calendar.
+
+In the example below tasks inherit calendars from their parent projects by default. In case a task has a different calendar assigned, this calendar will be used instead. Thus, tasks #2.2 and #3 use the "Full week" 
+calendars unlike their parent projects:
+
+![Working calendar for project](desktop/working_calendar_project.png)
+
+{{sample 09_worktime/08_project_calendars.html}}
+
 
 ##Changing Calendar Dynamically
 
@@ -459,3 +486,6 @@ gantt.batchUpdate(function(){
   });
 });
 ~~~
+
+@todo:
+check the Assigning Calendar to Project section
