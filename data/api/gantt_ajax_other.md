@@ -2,7 +2,7 @@ ajax
 =============
 
 @short:
-dhtmlx ajax module	
+gantt ajax module	
 
 @type:
 object
@@ -33,7 +33,177 @@ xhr.post("server.php", "paramName=paramValue", function(r){
 
 @template:	api_config
 @descr:
-API reference of ajax module can be found [here](http://docs.dhtmlx.com/api__refs__dhtmlxajax.html).
+
+### API Reference
+
+All methods return [promises](#promises) and can take as parameters either:
+
+1) RequestConfig - an object with request config options, which looks as follows:
+
+~~~js
+{
+  url: string,
+  method: "PUT|GET|POST|DELETE",
+  data: string | object,
+  async: true|false
+  callback: function,
+  headers: object
+}
+~~~
+
+where:
+
+- url - the URL to the server side
+- method - optional, the method used for sending request, "GET" by default
+- data - optional, the data sent to the server side by the POST-request. The POST and PUT methods accept both a string and an object with data
+- async - optional, the mode of sending data to a server, true by default
+- callback - optional, a function to call after the response is loaded
+- headers - optional, a set of headers, defined as "key":"value" pairs that should be sent with a request
+
+or:
+
+2) Three parameters (except for the **query()** method which can take only the *RequestConfig* object): 
+
+- url - the URL to the server side
+- data - optional, the data sent to the server side by the POST-request
+- callback - optional, a function to call after the response is loaded
+
+The list of the ajax module API  is given below:
+
+#### query
+
+the common method of sending requests. Allows sending any type of request (you need just to specify the desired request in the parameters)
+
+~~~js
+gantt.ajax.query({ 
+    url:"some.php",
+    method:"POST"
+});
+~~~
+
+#### get
+
+sends a GET request
+
+~~~js
+gantt.ajax.get("some.php", function(){
+	// your code here
+});
+// or
+gantt.ajax.get({
+	url: "https://…",
+    callback: function() {…},
+    headers: { "Content-Type": "application/json" }
+});
+~~~
+
+#### put
+
+sends a PUT request
+
+~~~js
+gantt.ajax.put("server.php", "keep_alive=1&version=std", function(){
+    // your code here
+});
+// or
+gantt.ajax.put({
+   url: "https://…",
+   callback: function() {…},
+   headers: { "Content-Type": "application/json" }
+   data: {}
+});
+~~~
+
+#### del
+
+sends a DELETE request 
+
+~~~js
+gantt.ajax.del("server.php", function(){
+    // your code here
+});
+// or
+gantt.ajax.del({
+   url: "https://…",
+   callback: function() {…},
+   headers: { "Content-Type": "application/json" }
+});
+~~~
+
+#### post
+
+sends a POST request
+
+~~~js
+gantt.ajax.post("server.php", "keep_alive=1&version=std", function(){
+    // your code here
+});
+// or
+gantt.ajax.post({
+      url: "https://…",
+      callback: function() {…},
+      headers: { "Content-Type": "application/json" }
+      data: {}
+});
+~~~
+
+### Sending data with POST/PUT methods 
+
+You can pass an object with data instead of string into the **post** and **put** methods. In case an object is passes, the ajax module serializes it by itself. 
+A simple object will be serialized as form data (&param=value), nested structures will be serialized with the help of JSON.stringify().
+
+For example, the following object:
+
+~~~js
+{
+      id: 1,
+      text: "My Task",
+      users: [1,2,3]
+}
+~~~
+
+will be converted into a string that looks like `id=1&text=My%20Task&users=%5B1%2C2%2C3%5D`.
+
+<h3 id="promises">Promises</h3>
+
+dhtmlxGantt supports usage of promises in IE8+ versions. For work with promises Gantt uses the [Bluebird](https://github.com/petkaantonov/bluebird) promise library. 
+To create a promise, you need to use the following constructor:
+
+~~~js
+var promise = new gantt.Promise(function(resolve, reject) {...});
+~~~
+
+Promise is declared inside Gantt, not globally for the application.
+
+The AJAX module returns a promise, which allows using the promise interface instead of the callback. Thus instead of using
+
+~~~js
+gantt.ajax.post(url, params, callback);
+~~~
+
+For example, when sending a POST request, you can use the following record:
+
+~~~js
+gantt.ajax.post(url, params).then(function(){…});
+~~~
+
+It is possible to use callbacks and promises at the same time. 
+
+The example below shows how you can send several requests to the server at once, and reload data after that: 
+ 
+~~~js 
+gantt.Promise.all([
+  	gantt.ajax.post({url: "api/task, data: task1}),
+  	gantt.ajax.post({url: "api/task, data: task2}),
+  	gantt.ajax.post({url: "api/task, data: task3})
+]).then(function(){
+   gantt.clearAll();
+   gantt.load("/api");
+});
+~~~
 
 @changelog:
 added in version 4.0
+
+
+@todo: check the content and version in change log

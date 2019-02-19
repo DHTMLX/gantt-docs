@@ -1,4 +1,4 @@
-Handling Events
+Event Handling 
 ===================================
 Events help to interact with users and bring interactivity to the page.<br>
 When the user makes some action in the Gantt chart, dhtmlxGantt invokes an event. You can

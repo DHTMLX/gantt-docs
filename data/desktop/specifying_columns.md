@@ -362,5 +362,6 @@ Styling
 
 For information on styling cells of the grid, read desktop/styling_guide.md#stylinggrid.
 
-
+@todo:
+add info about constraint related columns
 

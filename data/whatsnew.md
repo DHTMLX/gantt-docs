@@ -13,9 +13,9 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 <b>6.1</b>
 ------
 
-<span class='release_date'>February 19, 2019. Major update</span>
+<span class='release_date'>February 21, 2019. Major update</span>
 
-- Ability to import dhtmlxGantt as an ES6 module
+- Ability to [import dhtmlxGantt as an ES6 module](desktop/initializing_gantt_chart.md#moduleimport)
 - S-curve to show the progress of a project (PRO)
 - [Tasks constraints](desktop/auto_scheduling.md#tasksconstraints) (PRO)
 - [Routing options for dataProcessor](desktop/server_side.md#routingoptionsfordataprocessor)

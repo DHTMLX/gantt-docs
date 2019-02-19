@@ -73,3 +73,6 @@ gantt.config.lightbox.sections = [
 - desktop/checkbox.md
 - desktop/radio.md
 - desktop/resources.md
+
+
+@todo: add "constraint" control

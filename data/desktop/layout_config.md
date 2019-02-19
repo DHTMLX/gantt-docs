@@ -1,4 +1,4 @@
-Using Gantt Layout
+Gantt Layout
 ==============================
 
 

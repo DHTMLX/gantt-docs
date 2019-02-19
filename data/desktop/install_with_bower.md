@@ -1,4 +1,4 @@
-Exploring Ways to Install dhtmlxGantt 
+How to Install dhtmlxGantt 
 ====================================
 
 You can use [NuGet](http://www.nuget.org/), [Bower](http://bower.io/) or [npm](https://www.npmjs.com/) package managers to install the dhtmlxGantt package into your project.
@@ -52,7 +52,29 @@ To include JS/CSS files from CDN, you should set direct links to **dhtmlxgantt.j
 
 You can find the full list of links that you can include from CDN, depending on the version of dhtmlxGantt in a [separate article](desktop/cdn_links_list.md).
 
-Adding Professional Edition into Project
+Download the Package
+---------------------
+
+###GPL version
+
+[Download the package of dhtmlxGantt GPL version](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml). 
+
+
+###PRO version
+
+If you have the Commercial or Enterprise license, you need to go to the [Client Area](https://dhtmlx.com/clients/) and download the PRO package from there.
+
+Independent of the version, unpack the downloaded package into a folder of your project. 
+Then include **dhtmlxgantt.js** and **dhtmlxgantt.css** files into a page. Make sure that you set correct relative paths to these files:
+
+~~~html
+<script type="text/javascript" src="codebase/dhtmlxgantt.js"></script>  
+<link rel="stylesheet" href="codebase/dhtmlxgantt.css">
+~~~
+
+
+
+Adding PRO Edition into Project
 ---------------------------------
 
 All public sources (CDN, NuGet, Bower, and npm) contain a Stardard edition of the component, which is distributed under the GPL license.

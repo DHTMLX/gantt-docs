@@ -201,7 +201,9 @@ Here's a list of available server-side implementations that you can use for Gant
 Routing Options for DataProcessor
 -----------------------
 
-You can specify certain routes for each Gantt action in DataProcessor. Use the **dataSaver()** method for this purpose. The method takes several parameters decsribed below:
+{{note The section will be re-written}}
+
+You can specify certain routes for each Gantt action in DataProcessor. Use the **dataSaver()** method for this purpose. The method takes several parameters described below:
 
 - **mode** - (*string*) the action performed in Gantt: "create"|"update"|"remove"
 - **entity** - (*string*) the entity to apply the route to:  "task"|"link"
@@ -528,6 +530,6 @@ Check the desktop/app_security.md article to learn the most vulnerable points of
 desktop/app_security.md
 
 @todo:
-- check the section for rounting options for DP
+- rewrite the section on routing options for DP
 
 

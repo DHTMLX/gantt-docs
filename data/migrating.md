@@ -21,10 +21,21 @@ Migration from Older Versions
 </style>
 
 
+6.0 -> 6.1 
+-------------
+
+- The dhtmlxgantt_auto_scheduling.js extension is upgraded with the [tasks constraints](desktop/auto_scheduling.md#tasksconstraints) functionality. Since this feature modifies the default behavior of auto scheduling, 
+Gantt supports the compatibility mode that allows you to restore the previous behavior and disable ability to define tasks constraints. To enter the compatibility mode, make use of the following configuration option:
+
+~~~js
+gantt.config.auto_scheduling_compatibility = true;
+~~~
+
+
 5.2 -> 6.0
 ------------------
 
-In the version 6.0 the **getSlack()** method is deprecated. Two methods added instead:
+In the version 6.0 the **getSlack()** method is deprecated. Two methods are added instead:
 
 - api/gantt_getfreeslack.md - to return the free slack of a task
 - api/gantt_gettotalslack.md - to return the total slack of a task
