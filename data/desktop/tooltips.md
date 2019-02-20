@@ -219,7 +219,6 @@ gantt.parse(demo_tasks);
 
 
 @todo:
-- reduce example for the tooltips elements example<br>
-- decide on the name of double show() method<br>
+- reduce example of tooltips for different elements<br>
 - add example with tooltip for a resource panel and for the attach() method?<br>
 - should info from the last section be moved to migration?

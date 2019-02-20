@@ -25,17 +25,130 @@ Generally, to load data from the server side using REST API, you need to:
            
 1) Call the api/gantt_load.md method, where as a parameter specify the URL that returns Gantt data in the [JSON](desktop/supported_data_formats.md#json) format.
 
-2) Initialize DataProcessor and attach it to the dhtmlxGantt object:
+2) Create a DataProcessor instance using one of the two ways: 
+
+- Initialize DataProcessor and attach it to the dhtmlxGantt object:
            
 ~~~js
 gantt.init("gantt_here");
 gantt.load("apiUrl");
 
+// keep the order of the lines below
 var dp = new gantt.dataProcessor("apiUrl");
 dp.init(gantt);
 dp.setTransactionMode("REST");
 ~~~
+
+- Call the **createDataProcessor()** method and pass an object with configuration options as its parameter:
+
+~~~js
+var dp = gantt.createDataProcessor({
+      url: "https://...",
+      mode: "REST-JSON",
+      router: router
+});
+~~~
+
+Check the detailed info in the next section.
+
+<h3 id="createdp"> Creating DataProcessor</h3>
+
+While creating a DataProcessor via the API method **createDataProcessor()** you have several possible options for passing parameters. 
 	
+1\. Pass an object with url, mode and router
+
+~~~js
+var dp = gantt.createDataProcessor({
+      url: "https://...",
+      mode: "REST-JSON",
+      router: router
+});
+~~~
+
+where:
+
+- **url** - the URL to the server side
+- **mode** - the mode of sending data to the server:  "CUSTOM"| "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
+- **router** – an entity that can be:
+	- an object with tasks and links properties (you can get the list of available properties with the help of the **gantt.getDataProcessorModes();** method)
+    - a function which takes the following parameters:
+   		- *entity* – "task" | "link"
+		- *action* - "create" | "update" | "delete"
+        - *data* – an object with task data
+       	- *rowId* – the id of a processed object (task or link)
+
+The URL attribute is mandatory for all the modes, except for the "CUSTOM" one.
+
+Thus you can use DataProcessor for saving data in localStorage, or any other storage which is not linked to a certain URL, or in case if there are two different servers (URLs) responsible for creation and deletion of
+objects.
+
+{{sample 08_api/22_data_processor.html}}
+  
+2\. Use one of simplified schemes below:
+
+~~~js
+var dp = gantt.createDataProcessor(router);
+// or
+var dp = gantt.createDataProcessor({router});
+// or
+var dp = gantt.createDataProcessor({tasks: function(){}, links: function(){});
+~~~
+
+In their turn, *router.tasks* and *router.links* can be:
+
+- objects with three methods:
+
+~~~js
+{
+  create: function(data){…},
+  update: function(data, id) {…},
+  delete: function(id) {...}
+}
+~~~
+
+- functions that take parameters listed below:
+	- action - "create" | "update" | "delete"
+	- data – an object with task data
+	- rowId – the id of a processed object (task or link)
+ 
+All the functions of the **router** object must return a promise, for example:
+
+~~~js
+router = function(entity, action, data, id) {
+	return new gantt.Promise(function(resolve, reject) {
+    	// … some logic
+        return resolve();
+ 	});
+}
+~~~
+
+In case of using Gantt AJAX, an example looks as follows:
+
+~~~js
+function(entity, action, data, id) { 
+	switch(action) {
+    	case "create":
+           return gantt.ajax.post(
+            	server + "/" + entity,
+                data
+           );
+        break;
+        case "update":
+           return gantt.ajax.put(
+                 server + "/" + entity + "/" + id,
+                 data
+            );
+        break;
+        case "delete":
+           return gantt.ajax.del(
+                 server + "/" + entity + "/" + id
+           );
+         break;
+   }
+}
+~~~
+
+
 <h3 id="requestresponsedetails">Request and response details</h3>
 
 The URL is formed by the following rule:
@@ -197,42 +310,6 @@ Here's a list of available server-side implementations that you can use for Gant
 - [dhtmlxGantt with Node.js](desktop/howtostart_nodejs.md)
 - [dhtmlxGantt with ASP.NET MVC](desktop/howtostart_dotnet.md)
 - [dhtmlxGantt with Ruby on Rails](desktop/howtostart_ruby.md)
-
-Routing Options for DataProcessor
------------------------
-
-{{note The section will be re-written}}
-
-You can specify certain routes for each Gantt action in DataProcessor. Use the **dataSaver()** method for this purpose. The method takes several parameters described below:
-
-- **mode** - (*string*) the action performed in Gantt: "create"|"update"|"remove"
-- **entity** - (*string*) the entity to apply the route to:  "task"|"link"
-- **data** - (*any*) any user data?
-
-and returns a promise with routing options for the specified mode(?).
-
-First, you should define the necessary routes for actions, as in:
-
-~~~js
-var routes = {
-	create: (data) => dhx.ajax.post("/api/tasks", data),
-	update: (data) => dhx.ajax.put("/api/tasks", data),
-	remove: (data) => dhx.ajax.delete("/api/tasks", data)
-};
-~~~
-
-Then you can use the **dataSaver()** method to get the desired route:
-
-~~~js
-dp.dataSaver("create", "task", data);
-// -> routesmode
-~~~
-
-When specifying routes for actions is useful:
-
-- when you want go beyond REST by using web sockets, Firebase, GraphQL, etc.;
-- when you need to use headers (for authorization) in requests;
-- if your API expects or returns data in a special form, routing options give possibility of processing them.
 
 
 Storing the Order of Tasks
@@ -426,59 +503,59 @@ Other methods that invoke sending an update to the backend:
 - api/gantt_updatelink.md
 - api/gantt_deletelink.md
 
-Saving Changes without DataProcessor
+Custom Routing
 ----------------
 
-dhtmlxGantt can be used without gantt.dataProcessor. In that case you'll have to monitor all changes made in the gantt manually and then send them to your backend.
-Here is the list of events you'll need to listen to:
+In case RESTful AJAX API isn't what you need on the backend, or if you want to manually control what is sent to the server, you can make use of custom routing.
 
-- api/gantt_onaftertaskadd_event.md
-- api/gantt_onaftertaskupdate_event.md
-- api/gantt_onaftertaskdelete_event.md
-- api/gantt_onafterlinkadd_event.md
-- api/gantt_onafterlinkupdate_event.md
-- api/gantt_onafterlinkdelete_event.md
+For example, if you use Angular, React, or any other framework where a component on a page doesn't send changes directly to the server, but passes them to a different component which is responsible for data saving.
 
-When a task or a link is created on the client side, it obtains a temporary id which is used until the item gets a permanent database id.
-
-Once you insert a new item into the database, you'll need to pass it back to the client side and apply it 
-to the related task or link using api/gantt_changetaskid.md or api/gantt_changelinkid.md:
+To provide custom routing options for DataProcessor, you should use the [**createDataProcessor()**](#createdp) method:
 
 ~~~js
-// assume that taskService/linkService are some kind of CRUD service implementation
-
-// tasks
-gantt.attachEvent('onAfterTaskAdd', function(id, task) {
-  taskService.create(task)
-    .then(function(result){
-      gantt.changeTaskId(id, result.databaseId);
-    });
-});
-
-gantt.attachEvent('onAfterTaskUpdate', function(id, task) {
-  taskService.update(task);
-});
-
-gantt.attachEvent('onAfterTaskDelete', function(id) {
-  taskService.delete(id);
-});
-
-// links
-gantt.attachEvent('onAfterLinkAdd', function(id, link) {
-  linkService.create(link)
-    .then(function(result){
-      gantt.changeLinkId(id, result.databaseId);
-    });
-});
-
-gantt.attachEvent('onAfterLinkUpdate', function(id, link) {
-  linkService.update(link);
-});
-
-gantt.attachEvent('onAfterLinkDelete', function(id, link) {
-  linkService.delete(id);
+gantt.createDataProcessor(function(entity, action, data, id){
+    const services = {
+        "task": this.taskService,
+        "link": this.linkService
+    };
+    const service = services[entity];
+ 
+    switch (action) {
+        case "update":
+            return service.update(data);
+        case "create":
+            return service.insert(data);
+        case "delete":
+            return service.remove(id);
+    }
 });
 ~~~
+
+{{sample 08_api/22_data_processor.html}}
+
+### Using AJAX for setting custom routers
+
+[Gantt AJAX module](api/gantt_ajax_other.md) can be useful for setting custom routes. Gantt expects a custom router to return a Promise object as a result of an operation, which allows catching the end of an action. 
+The AJAX module supports promises and is suitable for usage inside of custom routers. Gantt will get Promise and process the content of Promise, when it is resolved.  
+
+In the example below a new task is created. If the server response includes the id of a newly created task, Gantt will be able to apply it.
+
+~~~js
+gantt.createDataProcessor(function(entity, action, data, id){
+...
+ 
+  switch (action) {
+    case "create":
+     return gantt.ajax.post({
+      headers: { "Content-Type": "application/json" }
+      url: server + "/task",
+      data: JSON.stringify(data)
+     });
+  }
+});
+~~~
+
+
 
 Error Handling
 ----------------------
@@ -530,6 +607,6 @@ Check the desktop/app_security.md article to learn the most vulnerable points of
 desktop/app_security.md
 
 @todo:
-- rewrite the section on routing options for DP
+- check and improve the sections on custom routing options for DP and DP initialization
 
 

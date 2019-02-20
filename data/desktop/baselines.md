@@ -160,5 +160,66 @@ The full code of the considered example you can see in the related sample.
 04_customization/15_baselines.html
 }}
 
+Extra Overlay
+----------------
+
+dhtmlxGantt provides the possibility to add an extra layer over the Gantt Chart for placing some content into it. As an overlay you can use a div container, an HTML canvas, etc. To draw the overlay content, any 
+third-party library can be used. 
+
+For example, you can add an S-curve into the extra overlay. Generally, S-curves display the growth of expenses, decrease of supplies of materials, 
+and allow tracking the common progress of implementing tasks of a project. 
+
+To add an overlay into gantt, you need to complete two steps:
+
+- include the **ext/dhtmlxgantt_overlay.js** extension on the page
+
+~~~html
+<script src="codebase/ext/dhtmlxgantt_overlay.js"></script>
+~~~
+
+- use the **addOverlay()** method and pass a function that contains the logic of adding overlay content as a parameter
+
+The example below demonstrates two cases of adding overlays into the Gantt Chart:
+
+1) adding a canvas overlay with S-curves for displaying the target and actual progress of the project (implemented with the help of the [ChartJS](https://www.chartjs.org/) library): 
+
+~~~js
+var lineOverlay = gantt.ext.overlay.addOverlay(function(){});
+	var canvas = document.createElement("canvas");
+	var ctx = canvas.getContext("2d");
+	var myChart = new Chart(ctx, {
+		type: "line",
+		// full chart configuration
+	});
+	return canvas;
+});
+~~~
+
+2) adding a div overlay with a Today line to indicate the current date
+
+~~~js
+var todayOverlay = overlayControl.addOverlay(function() {
+	var layer = document.createElement("div");
+	var legend = document.createElement("div");
+	var today = new Date(2017, 3, 7);
+	var left = gantt.posFromDate(today);
+
+	layer.classList.add("gantt_today_line");
+	legend.classList.add("gantt_today_line_legend");
+	legend.innerText = "Today";
+	layer.appendChild(legend);
+
+	layer.style.position = "absolute";
+	layer.style.left = left + "px";
+
+	return layer;
+});
+~~~
+
+{{sample  02_extensions/19_overlay.html}}
 
 @edition: pro
+
+@todo:
+- check the extra overlay section
+- add images

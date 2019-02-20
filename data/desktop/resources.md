@@ -1,6 +1,8 @@
 Resources Control
 ===================
 
+{{pronote This functionality is available in the PRO Edition only.}}
+
 A complex control used to [assign multiple resources and their quantity to a task](desktop/resource_management.md#assigningresources).
 
 ![Resources control server options](desktop/resources_control.png)

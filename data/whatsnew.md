@@ -15,12 +15,12 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 <span class='release_date'>February 21, 2019. Major update</span>
 
-- Ability to [import dhtmlxGantt as an ES6 module](desktop/initializing_gantt_chart.md#moduleimport)
-- S-curve to show the progress of a project (PRO)
-- [Tasks constraints](desktop/auto_scheduling.md#tasksconstraints) (PRO)
-- [Routing options for dataProcessor](desktop/server_side.md#routingoptionsfordataprocessor)
+- [Ability to add an overlay for the Gantt Chart](desktop/baselines.md#extraoverlay) (PRO)
+- [Time constraints for tasks](desktop/auto_scheduling.md#tasksconstraints) (PRO)
+- [Routing options for dataProcessor](desktop/server_side.md#customrouting)
 - [Working calendar for the whole project](desktop/working_time.md#assigningcalendartoproject) (PRO)
 - Ability to [create tooltips for all the elements](desktop/tooltips.md) of dhtmlxGantt
+- Ability to [import dhtmlxGantt as an ES6 module](desktop/initializing_gantt_chart.md#moduleimport)
 
 6.0.7
 -----

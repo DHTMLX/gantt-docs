@@ -46,6 +46,7 @@ Each section of the lightbox is based on some control. The following types of co
 - [Checkbox](desktop/checkbox.md) - a checkbox for switching an option or several values on/off 
 - [Radio button](desktop/radio.md) - a radio button for selecting only one option from a given set of options 
 - [Resources](desktop/resources.md) - a complex control for assigning several resources to a task
+- [Constraint](desktop/constraint.md) - a complex control for setting constraints for a task
 
 ~~~js
 var opts = [
@@ -73,6 +74,5 @@ gantt.config.lightbox.sections = [
 - desktop/checkbox.md
 - desktop/radio.md
 - desktop/resources.md
+- desktop/constraint.md
 
-
-@todo: add "constraint" control

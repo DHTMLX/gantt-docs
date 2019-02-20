@@ -156,9 +156,9 @@ For example, the following object:
 
 ~~~js
 {
-      id: 1,
-      text: "My Task",
-      users: [1,2,3]
+	id: 1,
+    text: "My Task",
+    users: [1,2,3]
 }
 ~~~
 
@@ -193,9 +193,9 @@ The example below shows how you can send several requests to the server at once,
  
 ~~~js 
 gantt.Promise.all([
-  	gantt.ajax.post({url: "api/task, data: task1}),
-  	gantt.ajax.post({url: "api/task, data: task2}),
-  	gantt.ajax.post({url: "api/task, data: task3})
+  	gantt.ajax.post({url: "api/task", data: task1}),
+  	gantt.ajax.post({url: "api/task", data: task2}),
+  	gantt.ajax.post({url: "api/task", data: task3})
 ]).then(function(){
    gantt.clearAll();
    gantt.load("/api");

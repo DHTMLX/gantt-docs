@@ -200,7 +200,7 @@ Gantt doesn't provide a built-in UI for editing lag or any other properties of t
 {{editor	http://snippet.dhtmlx.com/7c812e5bd		 Edit-lag Popup}}
 
 
-## Tasks constraints
+## Time constraints for tasks
 
 dhtmlxGantt provides the possibility to set additional time constraints for tasks. You can specify contraints for a task via the **contraint** control in the lightbox of a task. 
 
@@ -213,7 +213,6 @@ gantt.config.lightbox.sections = [
 	{ name:"time", type:"duration", map_to:"auto" }
 ];
 ~~~
-
 
 To specify separate columns for the type of constraint and its date, use the **constraint_type** and **constraint_date** names, correspondingly. Inline editors are used for these types of columns, as well.
 
@@ -345,5 +344,5 @@ gantt.config.auto_scheduling_compatibility = true;
 @edition:pro
 
 @todo: 
-- add link to the constraint control section<br>
+- add link to the constraint control section and columns config section<br>
 - update the image for columns types
