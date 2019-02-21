@@ -30,7 +30,7 @@ gantt.config.lightbox.sections=[
 ];
 ~~~
 
-Objects in the **sections** array can have the following properties, depending on the type of sections:
+Objects in the **sections** array can have the following properties, depending on the [type of a section](desktop/default_edit_form.md#lightboxstructure):
 
 ####Common for all sections
 

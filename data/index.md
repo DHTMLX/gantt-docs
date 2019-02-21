@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 6.0!</h2>
+    <h2>Meet Gantt 6.1!</h2>
     
     <p>
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="desktop/resource_management.md">Advanced resource management</a></li>
-        <li><a href="desktop/critical_path.md#gettingfreeandtotalslack">Ability to get free and total slack of a task</a></li>
-        <li><a href="desktop/reordering_tasks.md#improvingperformanceforlargedatasets">Improved drag and drop in the grid</a></li>
+		<li><a href="desktop/tooltips.md#tooltipsfordifferentelements">Tooltips for all the Gantt Chart elements</a></li>
+        <li><a href="desktop/server_side.md#customrouting">Routing options for dataProcessor</a></li>
+        <li><a href="desktop/auto_scheduling.md#timeconstraintsfortasks">Time constraints for tasks</a></li>        
 	</ul>
 
     <p class='action_buttons'>

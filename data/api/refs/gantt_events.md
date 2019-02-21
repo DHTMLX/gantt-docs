@@ -43,7 +43,7 @@ Events
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
 - api/gantt_onbeforetaskchanged_event.md - fires after the user has finished dragging and released the mouse button but before the changes are applied
 - api/gantt_onbeforetaskdelete_event.md - fires before the user deletes a task
-- api/gantt_onbeforetaskdisplay_event.md - fires after the tasks have been loaded to the Gantt chart but before they are displayed
+- api/gantt_onbeforetaskdisplay_event.md - fires after the tasks have been loaded to the Gantt chart, but before they are displayed
 - api/gantt_onbeforetaskdrag_event.md - fires after the user has pressed the mouse button and started dragging, but before dhtmlxGantt starts the drag-and-drop operation
 - api/gantt_onbeforetaskmove_event.md - fires before a task is moved to a new position
 - api/gantt_onbeforetaskmultiselect_event.md - fires before the task selection state is being changed (the task is being selected or unselected)

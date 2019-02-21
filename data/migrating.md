@@ -21,10 +21,40 @@ Migration from Older Versions
 </style>
 
 
+6.0 -> 6.1 
+-------------
+
+### Time constraints and auto scheduling
+
+The **dhtmlxgantt_auto_scheduling.js** extension is upgraded with the [tasks constraints](desktop/auto_scheduling.md#tasksconstraints) functionality. Since this feature modifies the default behavior of auto scheduling, 
+Gantt supports the compatibility mode that allows you to restore the previous behavior and not to take into account tasks constraints during auto scheduling. 
+
+To enter the compatibility mode, make use of the following configuration option:
+
+~~~js
+gantt.config.auto_scheduling_compatibility = true;
+~~~
+
+### Tooltips displaying area
+
+Before version 6.1 [tooltips](desktop/tooltips.md) have been displayed only inside the timeline area. After v6.1 release tooltips displaying isn't limited, and a tooltip follows the movement of the mouse pointer.
+
+If necessary, you can restore the previous behavior by using the code below before initialization of Gantt:
+
+~~~js
+gantt.attachEvent("onGanttReady", function(){
+	var tooltips = gantt.ext.tooltips;
+ 	tooltips.tooltip.setViewport(gantt.$task_data);
+});
+
+gantt.init("gantt_here");
+gantt.parse(demo_tasks);
+~~~
+
 5.2 -> 6.0
 ------------------
 
-In the version 6.0 the **getSlack()** method is deprecated. Two methods added instead:
+In the version 6.0 the **getSlack()** method is deprecated. Two methods are added instead:
 
 - api/gantt_getfreeslack.md - to return the free slack of a task
 - api/gantt_gettotalslack.md - to return the total slack of a task
@@ -253,3 +283,4 @@ The id of the parent task can be accessed as **gantt.getTask(task_id).parent**. 
 - desktop/migrating_renamedcss.md
 
 @spellcheck: btn
+

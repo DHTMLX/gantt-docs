@@ -169,6 +169,56 @@ var task = gantt.getTaskByWBSCode("1.2");
 // => {id:"t1", text:"Task #1, unscheduled: true, duration: 1, …}
 ~~~
 
+Time constraints for tasks
+--------------------
+
+{{pronote This functionality is available only in the PRO edition }}
+
+You can add separate grid columns that will allow setting the type of [time constraint](desktop/auto_scheduling.md#timeconstraintsfortasks) for a task and the date of constraint, if it is required by the chosen type.
+These columns have the "constraint_type" and "constraint_date" names, correspondingly. 
+
+~~~js
+gantt.config.columns = [
+    {
+      name:"constraint_type", align:"center", width:100, 
+      	template:function(task){//template logic}, 
+        resize: true, editor: constraintTypeEditor
+    },
+    {
+      name:"constraint_date", align:"center", width:120, 
+      	template:function(task){//template logic}, 
+        resize: true, editor: constraintDateEditor
+    },
+    { name: "add", width: 44 }
+];
+~~~
+
+The columns are linked to objects of inline editors that allow selecting the necessary type of constraint for a task and edit its date right in the grid.
+
+~~~js
+var constraintTypeEditor = {
+	type: "select", map_to: "constraint_type", options: [
+		{ key: "asap", label: gantt.locale.labels.asap },
+		{ key: "alap", label: gantt.locale.labels.alap },
+		{ key: "snet", label: gantt.locale.labels.snet },
+		{ key: "snlt", label: gantt.locale.labels.snlt },
+		{ key: "fnet", label: gantt.locale.labels.fnet },
+		{ key: "fnlt", label: gantt.locale.labels.fnlt },
+		{ key: "mso", label: gantt.locale.labels.mso },
+		{ key: "mfo", label: gantt.locale.labels.mfo }
+	]
+};
+
+var constraintDateEditor = {
+	type:"date", 
+    map_to:"constraint_date", 
+    min:new Date(2019, 0, 1), 
+    max:new Date(2020, 0, 1)
+};
+~~~
+
+
+{{sample 02_extensions/19_constraints_scheduling.html}}
 
 Resizing 
 ----------
@@ -361,6 +411,5 @@ Styling
 --------
 
 For information on styling cells of the grid, read desktop/styling_guide.md#stylinggrid.
-
 
 

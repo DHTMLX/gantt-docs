@@ -1,10 +1,9 @@
 Auto Scheduling
 ===================
 
-{{pronote This functionality is available only in the PRO edition}}
+{{pronote This functionality is available only in the PRO edition.}}
 
-Starting from version 3.3, the library provides the **ext/dhtmlxgantt_auto_scheduling.js** extension that gives
-Gantt the ability to schedule tasks automatically depending on relations between them.
+The library provides the **ext/dhtmlxgantt_auto_scheduling.js** extension that gives Gantt the ability to schedule tasks automatically depending on relations between them.
 
 <img src="desktop/auto_scheduling.png">
 
@@ -62,7 +61,7 @@ gantt.config.auto_scheduling = true;
 
 ###Strict mode
 
-By default, tasks are rescheduled only when a new date violates the constraint. 
+By default, tasks are rescheduled only when a new date violates the constraint.
 In order to always reschedule tasks to the earliest possible date, use the property api/gantt_auto_scheduling_strict_config.md:
 
 ~~~js
@@ -91,7 +90,7 @@ If you need to recalculate the schedule starting from a particular task, pass th
 gantt.autoSchedule(taskId);
 ~~~
 
-###Checking whether a task is unscheduled 
+###Checking whether a task is unscheduled
 
 In case you need to check whether the task is unscheduled, use the api/gantt_isunscheduledtask.md method with the task object as an argument:
 
@@ -139,7 +138,7 @@ The list of available events is given below:
 ~~~js
 // before auto scheduling starts
 gantt.attachEvent("onBeforeAutoSchedule",function(taskId){
-    // any custom logic here   
+    // any custom logic here
     return true;
 });
 
@@ -176,7 +175,7 @@ Lag and lead times are special values that are used to create complex relations 
 
 Lag is a delay between tasks which are linked by a dependency. Lead is an overlap between tasks which are linked by a dependency.
 
-There can be two types of successor tasks: 
+There can be two types of successor tasks:
 
 - a task that can start before its predecessor task's end (task B starts before task A is finished)
 
@@ -195,10 +194,165 @@ By default, it's implied that the lag value of each dependency link is set as 0.
 
 ###Editing link values from UI
 
-Gantt doesn't provide a built-in UI for editing lag or any other properties of the link. However, you can implement it manually by following the recommendations given in the 
+Gantt doesn't provide a built-in UI for editing lag or any other properties of the link. However, you can implement it manually by following the recommendations given in the
 [related chapter](desktop/crud_dependency.md#editinglinkvaluesfromui).
 
 {{editor	http://snippet.dhtmlx.com/7c812e5bd		 Edit-lag Popup}}
+
+
+## Time constraints for tasks
+
+dhtmlxGantt provides the possibility to set additional time constraints for tasks.
+
+{{note Time constraints are applicable only to tasks and [milestones](desktop/milestones.md). Projects are not affected by them.}}
+
+### Setting constraints via lightbox
+
+You can specify contraints for a task via the [**Contraint** control](desktop/constraint.md) in the lightbox of a task.
+
+![Inbuilt datepicker for constraints](desktop/inbuilt_constraint_datepicker.png)
+
+~~~js
+gantt.config.lightbox.sections = [
+	{ name:"description", height:38, map_to:"text", type:"textarea", focus:true},
+	{ name:"constraint", type:"constraint" }, /*!*/
+	{ name:"time", type:"duration", map_to:"auto" }
+];
+~~~
+
+### Setting constraints via inline editors
+
+It is also possible to [specify separate columns for the type of constraint and its date in the grid](desktop/specifying_columns.md#timeconstraintsfortasks) and use inline editors to define constraints for tasks.
+
+![Constraints columns](desktop/constraints_columns.png)
+
+Use the **constraint_type** and **constraint_date** columns' names, correspondingly.
+
+~~~js
+var constraintTypeEditor = {
+	type: "select", map_to: "constraint_type", options: [
+		{ key: "asap", label: gantt.locale.labels.asap },
+		{ key: "alap", label: gantt.locale.labels.alap },
+		{ key: "snet", label: gantt.locale.labels.snet },
+		// more options
+	]
+};
+
+var constraintDateEditor = {
+    type: "date",
+    map_to: "constraint_date",
+    min: new Date(2019, 0, 1),
+    max: new Date(2020, 0, 1)
+};
+
+gantt.config.columns = [
+	{ // previous column},
+	{
+		name:"constraint_type", align:"center", width:100, template:function (task){
+			return gantt.locale.labels[gantt.getConstraintType(task)];
+		}, resize: true, editor: constraintTypeEditor
+	},
+	{
+		name:"constraint_date", align:"center", width:120, template:function (task) {
+		//template logic
+		},
+		resize: true, editor: constraintDateEditor
+	},
+	{ name: "add", width: 44 }
+];
+~~~
+
+{{sample 02_extensions/19_constraints_scheduling.html}}
+
+
+### Types of constraints
+
+There are several types of time constraints:
+
+1\. **As soon as possible** - If this constraint is set to an independent task, the task starts at the same time that the project does. If this constraint is set to a dependent task, the task starts as soon as its predecessor tasks end.
+
+2\. **As late as possible** - If this constraint is set to an independent task, the task ends at the same time that the project does. If this constraint is set to a dependent task, the end of the task coincides with
+the start of its immediate successor task.
+
+The other types of constraints affect tasks regardless of the their types (dependent or independent):
+
+3\. **Start no earlier than** – the task should start on the specified date or after it.
+
+4\. **Start no later than** – the task should start on the specified date or before it.
+
+5\. **Finish no earlier than** – the task should end on the specified date or after it.
+
+6\. **Finish no later than** – the task should end on the specified date or before it.
+
+7\. **Must start on** – the task should start exactly on the specified date.
+
+8\. **Must finish on** – the task should end exactly on the specified date.
+
+
+## Backward scheduling
+
+### Strategies of projects planning
+
+There are two strategies of planning tasks within a project: forward and backward planning. They are defined by combinations of configuration settings:
+
+- api/gantt_schedule_from_end_config.md - (*boolean*) defines the type of the planning strategy
+- api/gantt_project_start_config.md - (*Date*) the start date of a project; used as a start date of tasks by default, if forward planning is applied, *null* by default
+- api/gantt_project_end_config.md - (*Date*) the end date of a project; used for the default time of tasks, if backward planning is used, *null* by default
+
+
+####Forward planning
+
+The forward planning of tasks is used by default, i.e. **gantt.config.schedule_from_end** is set to *false*.
+
+~~~js
+// forward planning of tasks is used
+gantt.config.schedule_from_end = false;
+~~~
+
+In this case planning of tasks is implemented from the start date or from the date of the earliest task. Tasks are planned *as soon as possible*, if there are no other constraints applied to them.
+
+The start date of the project can be optionally set by the **gantt.config.project_start** config:
+
+~~~js
+gantt.config.project_start = new Date(2019, 2, 1);
+~~~
+
+{{sample 02_extensions/19_constraints_scheduling.html}}
+
+####Backward planning
+
+Is also possible to plan tasks from the end of the project, i.e. to apply backward planning. For this you need to set the **gantt.config.schedule_from_end** property to *true* and specify the end date of the project
+via the **gantt.config.project_end** configuration option:
+
+~~~js
+gantt.config.schedule_from_end = true;
+gantt.config.project_end = new Date(2019, 4, 1);
+~~~
+
+In this case tasks are planned as late as possible. The last task should end on the end date of the project.
+
+{{sample 02_extensions/20_backwards_scheduling.html}}
+
+
+## Version compatibility
+
+When a user changes the date of a task by moving it with the mouse pointer or via the lightbox, the task automatically receives one of the two constraint types: either **start no earlier than+%start date%** or
+**finish no later than+%end date%**, depending on the chosen planning strategy.
+
+Thus a task won't be scheduled to the earliest date if the later date is set from the UI. This may be confusing to a not prepared user especially since constraints are not displayed in the chart by default.
+
+You can enable constraint display using api/gantt_addtasklayer.md method.
+
+{{sample 02_extensions/19_constraints_scheduling.html}}
+
+This behavior differs from the auto scheduling logic of gantt prior to **v6.1** and is considered to be correct, since it's the same way auto planning works in MS Project.
+
+If that is not what you want, you can switch back to pre-6.1 auto scheduling by disabling constraints:
+
+~~~js
+gantt.config.auto_scheduling_compatibility = true;
+~~~
+
 
 @relatedapi:
 	api/gantt_auto_scheduling_config.md
