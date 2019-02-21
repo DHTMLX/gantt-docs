@@ -430,7 +430,7 @@ The logic of inheriting a calendar by a task is the following:
 - If a user assigns a calendar to a subproject with tasks, all its tasks will use this calendar. 
 - If a task has a personal calendar assigned to it, it will use its calendar and not the calendar of its parent project.
 
-To enable this functionality, you need to set the **gantt.config.inherit_calendar** configuration option to *true*. By default this option is disabled.
+To enable this functionality, you need to set the api/gantt_inherit_calendar_config.md configuration option to *true*. By default this option is disabled.
 
 ~~~js
 gantt.config.inherit_calendar = true;

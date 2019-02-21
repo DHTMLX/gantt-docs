@@ -7,9 +7,9 @@ Start
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="desktop/baselines.md#extraoverlay">Ability to add an overlay for the Chart </a></li>
-        <li><a href="desktop/auto_scheduling.md#tasksconstraints">Time constraints for tasks</a></li>
+		<li><a href="desktop/tooltips.md#tooltipsfordifferentelements">Tooltips for all the Gantt Chart elements</a></li>
         <li><a href="desktop/server_side.md#customrouting">Routing options for dataProcessor</a></li>
+        <li><a href="desktop/auto_scheduling.md#timeconstraintsfortasks">Time constraints for tasks</a></li>        
 	</ul>
 
     <p class='action_buttons'>

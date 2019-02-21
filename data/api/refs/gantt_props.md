@@ -21,7 +21,7 @@ Properties
 - api/gantt_calendar_property_config.md - changes the name of the property that affects binding of a calendar to a task/group of tasks
 - api/gantt_cascade_delete_config.md - enables cascade deleting of nested tasks and links
 - api/gantt_columns_config.md - configures the columns of the table
-- api/gantt_constraint_types_config.md - 
+- api/gantt_constraint_types_config.md - contains all available constraint types
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
@@ -45,7 +45,7 @@ Properties
 - api/gantt_grid_resizer_column_attribute_config.md - sets the name of the attribute  of the column resizer's  DOM element. The attribute presents the column's index
 - api/gantt_grid_width_config.md - sets the width of the grid
 - api/gantt_highlight_critical_path_config.md - shows the critical path in the chart
-- api/gantt_inherit_calendar_config.md - 
+- api/gantt_inherit_calendar_config.md - defines whether tasks should inherit work calendars from their summary parents
 - api/gantt_inherit_scale_class_config.md - specifies whether sub-scales shall use the scale_cell_class template by default
 - api/gantt_initial_scroll_config.md - sets whether the timeline area will be initially scrolled to display the earliest task
 - api/gantt_keep_grid_width_config.md - 'says' to preserve the initial grid's width while resizing columns within
@@ -71,8 +71,8 @@ Properties
 - api/gantt_placeholder_task_config.md - adds an empty row into the end of the list of tasks to simplify tasks editing via keyboard
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
-- api/gantt_project_end_config.md - 
-- api/gantt_project_start_config.md - 
+- api/gantt_project_end_config.md - specifies the end date of the project
+- api/gantt_project_start_config.md - specifies the start date of the project
 - api/gantt_quick_info_detached_config.md - defines whether the task form will appear from the left/right side of the screen or near the selected task
 - api/gantt_quickinfo_buttons_config.md - stores a collection of buttons resided in the pop-up task's details form
 - api/gantt_readonly_config.md - activates the read-only mode for the Gantt chart
@@ -89,7 +89,7 @@ Properties
 - api/gantt_scale_height_config.md - sets the height of the time scale and the header of the grid
 - api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of leading/closing empty space
 - api/gantt_scale_unit_config.md - sets the unit of the time scale (X-Axis)
-- api/gantt_schedule_from_end_config.md - 
+- api/gantt_schedule_from_end_config.md - enables backwards scheduling
 - api/gantt_scroll_on_click_config.md - specifies whether the timeline area shall be scrolled while selecting to display the selected task
 - api/gantt_scroll_size_config.md - set the sizes of the vertical (width) and horizontal (height) scrolls
 - api/gantt_select_task_config.md - enables selection of tasks in the Gantt chart

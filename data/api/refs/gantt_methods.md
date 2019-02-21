@@ -3,7 +3,7 @@ Methods
 =======
 
 {{api
-- api/gantt_promise.md - 
+- api/gantt_promise.md - Promise object constructor
 - api/gantt_addcalendar.md - adds a calendar into Gantt
 - api/gantt_addlink.md - adds a new dependency link
 - api/gantt_addlinklayer.md - displays an additional layer with custom elements for a link in the timeline area
@@ -35,7 +35,7 @@ Methods
 - api/gantt_copy.md - creates a deep copy of provided object
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
 - api/gantt_createcalendar.md - creates a working calendar
-- api/gantt_createdataprocessor.md - 
+- api/gantt_createdataprocessor.md - сreates a new dataProcessor instance and attaches it to gantt
 - api/gantt_createdatastore.md - creates a datastore according to the provided configuration
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
 - api/gantt_dataprocessor.md - dataProcessor constructor
@@ -68,8 +68,8 @@ Methods
 - api/gantt_getclosestworktime.md - returns the closest working time
 - api/gantt_getcolumnindex.md - returns the index of the column by its name
 - api/gantt_getconnectedgroup.md - returns all tasks and links that a task is connected with
-- api/gantt_getconstraintlimitations.md - 
-- api/gantt_getconstrainttype.md - 
+- api/gantt_getconstraintlimitations.md - returns the earliest and latest dates allowed by the constraint applied to a task
+- api/gantt_getconstrainttype.md - returns the constraint type applied to the task
 - api/gantt_getdatastore.md - returns the configuration object of a datastore
 - api/gantt_getfreeslack.md - returns the free slack of a task
 - api/gantt_getglobaltaskindex.md - gets the index of a task in the tree

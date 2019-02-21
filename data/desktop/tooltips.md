@@ -112,7 +112,7 @@ By default, tooltips are added just to the Gantt tasks, but you can also set too
 ![Resource marker tooltip](desktop/resource_marker_tooltip.png)
 
 
-There are two corresponding methods in the tooltip API for this purpose:
+There are two corresponding methods in the [tooltip API](#tooltipapi) for this purpose:
 
 - the [**gantt.ext.tooltips.tooltipFor()**](#tooltipfor) method 
 

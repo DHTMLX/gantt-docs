@@ -18,7 +18,7 @@ Others
 - api/gantt_skin_other.md - returns the current skin of the Gantt chart
 - api/gantt_skins_other.md - returns objects of the available skins
 - api/gantt_templates_other.md - defines formatting templates for dates, titles, tooltips in the Gantt chart
-- api/gantt_utils_other.md - 
+- api/gantt_utils_other.md - various helper modules
 - api/gantt_version_other.md - returns the version of dhtmlxGantt
 - api/gantt_xml_other.md - specifies XML serialization and parsing
 }}
