@@ -43,9 +43,8 @@ dp.setTransactionMode("REST");
 
 ~~~js
 var dp = gantt.createDataProcessor({
-      url: "https://...",
-      mode: "REST-JSON",
-      router: router
+      url: "apiUrl",
+      mode: "REST"
 });
 ~~~
 
@@ -55,77 +54,34 @@ Check the detailed info in the next section.
 
 While creating a DataProcessor via the API method **createDataProcessor()** you have several possible options for passing parameters. 
 	
-1\. Pass an object with url, mode and router
+1\. Use one of the predefined request schemas:
 
 ~~~js
 var dp = gantt.createDataProcessor({
-      url: "https://...",
-      mode: "REST-JSON",
-      router: router
+   url: "/api",
+   mode: "REST"
 });
 ~~~
 
 where:
 
 - **url** - the URL to the server side
-- **mode** - the mode of sending data to the server:  "CUSTOM"| "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
-- **router** – an entity that can be:
-	- an object with tasks and links properties (you can get the list of available properties with the help of the **gantt.getDataProcessorModes();** method)
-    - a function which takes the following parameters:
-   		- *entity* – "task" | "link"
-		- *action* - "create" | "update" | "delete"
-        - *data* – an object with task data
-       	- *rowId* – the id of a processed object (task or link)
+- **mode** - the mode of sending data to the server:  "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
 
-The URL attribute is mandatory for all the modes, except for the "CUSTOM" one.
-
-Thus you can use DataProcessor for saving data in localStorage, or any other storage which is not linked to a certain URL, or in case if there are two different servers (URLs) responsible for creation and deletion of
-objects.
-
-{{sample 08_api/22_data_processor.html}}
-  
-2\. Use one of simplified schemes below:
+2\. Provide a custom **router** object:
 
 ~~~js
 var dp = gantt.createDataProcessor(router);
-// or
-var dp = gantt.createDataProcessor({router});
-// or
-var dp = gantt.createDataProcessor({tasks: function(){}, links: function(){});
 ~~~
 
-In their turn, *router.tasks* and *router.links* can be:
-
-- objects with three methods:
+- where **router** is either a function:
 
 ~~~js
-{
-  create: function(data){…},
-  update: function(data, id) {…},
-  delete: function(id) {...}
-}
-~~~
-
-- functions that take parameters listed below:
-	- action - "create" | "update" | "delete"
-	- data – an object with task data
-	- rowId – the id of a processed object (task or link)
- 
-All the functions of the **router** object must return a promise, for example:
-
-~~~js
-router = function(entity, action, data, id) {
-	return new gantt.Promise(function(resolve, reject) {
-    	// … some logic
-        return resolve();
- 	});
-}
-~~~
-
-In case of using Gantt AJAX, an example looks as follows:
-
-~~~js
-function(entity, action, data, id) { 
+// entity - "task"|"link"
+// action - "create"|"update"|"delete"
+// data - an object with task or link data
+// id – the id of a processed object (task or link)
+var dp = gantt.createDataProcessor(function(entity, action, data, id) { 
 	switch(action) {
     	case "create":
            return gantt.ajax.post(
@@ -145,8 +101,42 @@ function(entity, action, data, id) {
            );
          break;
    }
+});
+~~~
+
+- or an object of the following structure:
+
+~~~js
+var dp = gantt.createDataProcessor({ 
+   task: {
+      create: function(data) {},
+      update: function(data, id) {},
+      delete: function(id) {}
+   },
+   link: {
+      create: function(data) {},
+      update: function(data, id) {},
+      delete: function(id) {}
+   }
+});
+~~~
+
+ 
+All the functions of the **router** object should return either a Promise or a data response object. This is needed for the dataProcessor to apply the database id and to hook **onAfterUpdate** event of the data processor.
+
+~~~js
+router = function(entity, action, data, id) {
+	return new gantt.Promise(function(resolve, reject) {
+    	// … some logic
+        return resolve({tid: databaseId});
+ 	});
 }
 ~~~
+
+Thus you can use DataProcessor for saving data in localStorage, or any other storage which is not linked to a certain URL, or in case if there are two different servers (URLs) responsible for creation and deletion of
+objects.
+
+{{sample 08_api/22_data_processor.html}}
 
 
 <h3 id="requestresponsedetails">Request and response details</h3>
@@ -242,9 +232,10 @@ Besides the "POST","GET","REST" and "JSON" [transaction modes](https://docs.dhtm
 ~~~js
 gantt.load("apiUrl");
 
-var dp = new gantt.dataProcessor("apiUrl");
-dp.init(gantt);
-dp.setTransactionMode("REST-JSON");
+var dp = gantt.createDataProcessor({
+      url: "/apiUrl",
+      mode: "REST-JSON"
+});
 ~~~
 
 It uses the same [URLs for requests](#requestresponsedetails), but the [request parameters](#requestparams) for tasks and links and the form of sending them to the server differ.
@@ -328,9 +319,12 @@ gantt.config.order_branch_free = true;
 gantt.init("gantt_here");
 gantt.load("/api");
  
-var dp = new gantt.dataProcessor("/api");
-dp.init(gantt);
-dp.setTransactionMode("REST");
+gantt.load("apiUrl");
+
+var dp = gantt.createDataProcessor({
+      url: "/api",
+      mode: "REST"
+});
 ~~~
 
 The saving order can be implemented in several ways, we'll show one of them.
@@ -423,14 +417,13 @@ For example, let's suppose that you need to add an authorization token to your r
 gantt.init("gantt_here");
 gantt.load("/api");
  
-var dp = new gantt.dataProcessor("/api");
-dp.init(gantt);
-dp.setTransactionMode({
-    mode:"REST",
-    headers: {
-    	"Content-Type": "application/x-www-form-urlencoded",
-       	"Authorization": "Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
-    }
+var dp = gantt.createDataProcessor({
+  url: "/api",
+  mode:"REST",
+  headers: {
+   	"Content-Type": "application/x-www-form-urlencoded",
+    "Authorization": "Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
+  }
 });
 ~~~
 
@@ -467,13 +460,12 @@ Alternatively, you can add custom parameters to all requests sent by data proces
 gantt.init("gantt_here");
 gantt.load("/api");
  
-var dp = new gantt.dataProcessor("/api");
-dp.init(gantt);
-dp.setTransactionMode({
-    mode:"REST",
-    payload: {
-       token: "9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
-    }
+var dp = gantt.createDataProcessor({
+  url: "/api",
+  mode:"REST",
+  payload: {
+    token: "9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
+  }
 });
 ~~~
 
@@ -569,8 +561,10 @@ A server can inform Gantt that an action has failed by returning the "action":"e
 Such a response can be captured on the client with the help of gantt.dataProcessor:
 
 ~~~js
-var dp = new gantt.dataProcessor("apiUrl");
-dp.init(gantt);
+var dp = gantt.createDataProcessor({
+  url: "/api",
+  mode:"REST"
+});
 dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
     if(action == "error"){
         // do something here
@@ -606,7 +600,6 @@ Check the desktop/app_security.md article to learn the most vulnerable points of
 @index:
 desktop/app_security.md
 
-@todo:
-- check and improve the sections on custom routing options for DP and DP initialization
+
 
 
