@@ -184,7 +184,7 @@ The example below demonstrates two cases of adding overlays into the Gantt Chart
 1) adding a canvas overlay with S-curves for displaying the target and actual progress of the project (implemented with the help of the [ChartJS](https://www.chartjs.org/) library): 
 
 ~~~js
-var lineOverlay = gantt.ext.overlay.addOverlay(function(){});
+var lineOverlay = gantt.ext.overlay.addOverlay(function(){
 	var canvas = document.createElement("canvas");
 	var ctx = canvas.getContext("2d");
 	var myChart = new Chart(ctx, {

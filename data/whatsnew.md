@@ -18,7 +18,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Ability to add an overlay for the Gantt Chart](desktop/baselines.md#extraoverlay) (PRO)
 - [Time constraints for tasks](desktop/auto_scheduling.md#tasksconstraints) (PRO)
 - [Routing options for dataProcessor](desktop/server_side.md#customrouting)
-- [Working calendar for the whole project](desktop/working_time.md#assigningcalendartoproject) (PRO)
+- [Project-level working calendars](desktop/working_time.md#assigningcalendartoproject) (PRO)
 - Ability to [create tooltips for all the elements](desktop/tooltips.md) of dhtmlxGantt
 - Ability to [import dhtmlxGantt as an ES6 module](desktop/initializing_gantt_chart.md#moduleimport)
 

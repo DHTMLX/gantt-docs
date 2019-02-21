@@ -202,7 +202,13 @@ Gantt doesn't provide a built-in UI for editing lag or any other properties of t
 
 ## Time constraints for tasks
 
-dhtmlxGantt provides the possibility to set additional time constraints for tasks. You can specify contraints for a task via the **contraint** control in the lightbox of a task. 
+dhtmlxGantt provides the possibility to set additional time constraints for tasks.
+
+{{note Time constraints are applicable only to tasks and [milestones](desktop/milestones.md). Projects are not affected by them.}}
+
+### Setting constraints via lightbox
+
+You can specify contraints for a task via the [**Contraint** control](desktop/constraint.md) in the lightbox of a task. 
 
 ![Inbuilt datepicker for constraints](desktop/inbuilt_constraint_datepicker.png)
 
@@ -214,9 +220,13 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-To specify separate columns for the type of constraint and its date, use the **constraint_type** and **constraint_date** names, correspondingly. Inline editors are used for these types of columns, as well.
+### Setting constraints via inline editors 
 
-They are specified in the following way:
+It is also possible to [specify separate columns for the type of constraint and its date in the grid](desktop/specifying_columns.md#timeconstraintsfortasks) and use inline editors to define constraints for tasks.
+
+![Constraints columns](desktop/constraints_columns.png)
+
+Use the **constraint_type** and **constraint_date** columns' names, correspondingly. 
 
 ~~~js
 var constraintTypeEditor = {
@@ -252,12 +262,8 @@ gantt.config.columns = [
 ];
 ~~~
 
-![Constraints columns](desktop/constraints_columns.png)
-
 {{sample 02_extensions/19_constraints_scheduling.html}}
 
-
-{{note Time constraints are applicable only to tasks and [milestones](desktop/milestones.md). Projects are not affected by them.}}
 
 ### Types of constraints
 
@@ -268,7 +274,7 @@ There are several types of time constraints:
 2\. **As late as possible** - If this constraint is set to an independent task, the task ends at the same time that the project does. If this constraint is set to a dependent task, the end of the task coincides with 
 the start of its immediate successor task.
 
-The other types of constraints affect tasks, regardless of the type of task (dependent or independent):
+The other types of constraints affect tasks regardless of the their types (dependent or independent):
 
 3\. **Start no earlier than** – the task should start on the specified date or after it.
 
@@ -328,7 +334,7 @@ In this case tasks are planned as late as possible. The last task should end on 
 
 ### Backward compatibility
 
-When a user changes the date of a task by the mouse pointer or via the lightbox, the task automatically receives one of the two constraint types: either **start no earlier than+%start date%** or 
+When a user changes the date of a task by moving it with the mouse pointer or via the lightbox, the task automatically receives one of the two constraint types: either **start no earlier than+%start date%** or 
 **finish no later than+%end date%**, depending on the chosen planning strategy. Thus a task won't be moved to the start/end of the project automatically, which reproduces auto planning in MS Project.
 
 When time constraints are set for tasks, auto scheduling functionality works taking them into account. However, you can disable the constraints feature by setting:
@@ -344,5 +350,5 @@ gantt.config.auto_scheduling_compatibility = true;
 @edition:pro
 
 @todo: 
-- add link to the constraint control section and columns config section<br>
-- update the image for columns types
+- update the image for columns types<br>
+- where should Backward compatibility section go? 
