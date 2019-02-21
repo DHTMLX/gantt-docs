@@ -54,7 +54,7 @@ Check the detailed info in the next section.
 
 While creating a DataProcessor via the API method **createDataProcessor()** you have several possible options for passing parameters. 
 	
-1\. Use one of the predefined request schemas:
+1\. Use one of the predefined request modes, as in:
 
 ~~~js
 var dp = gantt.createDataProcessor({

@@ -237,4 +237,3 @@ To correctly display a Gantt chart in the full-screen mode in different browsers
 ~~~
 
 
-@todo: check the section about adding source files into the project

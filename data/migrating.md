@@ -37,7 +37,7 @@ gantt.config.auto_scheduling_compatibility = true;
 
 ### Tooltips displaying area
 
-Before version 6.1 tooltips have been displayed only inside the timeline area. After v6.1 release tooltips displaying isn't limited, and a tooltip follows the movement of the mouse pointer.
+Before version 6.1 [tooltips](desktop/tooltips.md) have been displayed only inside the timeline area. After v6.1 release tooltips displaying isn't limited, and a tooltip follows the movement of the mouse pointer.
 
 If necessary, you can restore the previous behavior by using the code below before initialization of Gantt:
 
@@ -284,4 +284,3 @@ The id of the parent task can be accessed as **gantt.getTask(task_id).parent**. 
 
 @spellcheck: btn
 
-@todo: check 6.1 section

@@ -487,5 +487,3 @@ gantt.batchUpdate(function(){
 });
 ~~~
 
-@todo:
-check the Assigning Calendar to Project section

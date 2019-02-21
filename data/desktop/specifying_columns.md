@@ -412,6 +412,4 @@ Styling
 
 For information on styling cells of the grid, read desktop/styling_guide.md#stylinggrid.
 
-@todo:
-check and complete info about constraint related columns
 

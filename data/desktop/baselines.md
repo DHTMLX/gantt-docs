@@ -265,6 +265,3 @@ var isVisible = gantt.ext.overlay.isOverlayVisible(id);
 ~~~
 
 @edition: pro
-
-@todo:
-- check the extra overlay section

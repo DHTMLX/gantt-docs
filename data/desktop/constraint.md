@@ -50,5 +50,3 @@ The following properties are mostly important and commonly set for the **constra
 
 
 @edition:pro
-
-@todo: check for correction, add missing info

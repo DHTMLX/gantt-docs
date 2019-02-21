@@ -235,8 +235,6 @@ gantt.attachEvent("onLightboxSave", function(id, task, is_new){
 
 You can [get more information in the related article](desktop/working_time.md#assigningcalendartoresource).
 
-Besides assigning calendars to resources, it is possible to [assign a working calendar to the whole project](desktop/working_time.md#assigningcalendartoproject).
-
 
 Balancing resource load
 ------------------------
@@ -526,4 +524,4 @@ gantt.getResourceAssignments("6");
 
 @edition:pro
 
-@todo: check the link to working calendars
+

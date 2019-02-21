@@ -166,7 +166,7 @@ will be converted into a string that looks like `id=1&text=My%20Task&users=%5B1%
 
 <h3 id="promises">Promises</h3>
 
-dhtmlxGantt supports usage of promises in IE8+ versions. For work with promises Gantt uses the [Bluebird](https://github.com/petkaantonov/bluebird) promise library. 
+dhtmlxGantt supports usage of promises (including IE8+). For work with promises Gantt uses the [Bluebird](https://github.com/petkaantonov/bluebird) promise library. 
 To create a promise, you need to use the following constructor:
 
 ~~~js

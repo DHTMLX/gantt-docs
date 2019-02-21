@@ -97,7 +97,7 @@ adds a tooltip for the specified Gantt element. It is a more simplified version 
 	and returns a string with a template.
 - **global** - (*boolean*) optional, defines whether the module listens to mouse events on the whole page (*true*) or only inside a gantt element (*false*). By default the option is set to *false*. 
 
-#### gantt.ext.tooltips.detach() 
+<h4 id="detach">gantt.ext.tooltips.detach()</h4> 
 
 removes tooltip. As a parameter the method takes:
 
@@ -107,23 +107,24 @@ removes tooltip. As a parameter the method takes:
 Tooltips for different elements
 -------------------------
 
-By default, tooltips are added just to the Gantt tasks, but you can also set tooltips for any other Gantt element. There are two corresponding methods in the tooltip API for this purpose:
+By default, tooltips are added just to the Gantt tasks, but you can also set tooltips for any other Gantt element. For example, for a resource marker:
+
+![Resource marker tooltip](desktop/resource_marker_tooltip.png)
+
+
+There are two corresponding methods in the tooltip API for this purpose:
 
 - the [**gantt.ext.tooltips.tooltipFor()**](#tooltipfor) method 
 
 For example, this is how you can add tooltips for cells of the timeline scale:
 
 ~~~js
-gantt.ext.tooltips.tooltipFor({
-  selector:".gantt_scale_cell",
-  html:function (event, node) {
-    var relativePosition = gantt.utils.dom.getRelativeEventPosition(event, gantt.$task_scale);
-    return gantt.templates.task_date(gantt.dateFromPos(relativePosition.x));
-  }
-});
+var domHelper = gantt.utils.dom;
+var pos = domHelper .getRelativeEventPosition(event, gantt.$task_scale);
+return gantt.templates.task_date(gantt.dateFromPos(pos.x));
 ~~~
 
-{{sample 02_extensions/19_tooltip_api.html}}
+{{sample 02_extensions/22_tooltip_api.html}}
 
 A tooltip added in this way will follow the mouse pointer and use the settings *api/gantt_tooltip_offset_x_config.md*, *api/gantt_tooltip_offset_y_config.md*, *api/gantt_tooltip_timeout_config.md*,
 api/gantt_tooltip_hide_timeout_config.md.
@@ -137,14 +138,14 @@ Customization of tooltip behavior
 
 There is a possibility to modify the default behavior of tooltip. It can be achieved by removing the default tooltip handler and adding a custom one:
 
-- Remove the built-in tooltip handler from tasks with the **gantt.ext.tooltips.detach** method:
+- Remove the built-in tooltip handler from tasks with the [**gantt.ext.tooltips.detach**](#detach) method:
 
 ~~~js
 // remove the built-in tooltip handler from tasks
 gantt.ext.tooltips.detach("["+gantt.config.task_attribute+"]:not(.gantt_task_row)");
 ~~~
 
-- Add the desired tooltip behavior via the **gantt.ext.tooltips.tooltipFor()** method. In the example below tooltip is shown only above the table:
+- Add the desired tooltip behavior via the [**gantt.ext.tooltips.attach()**](#attach) method. In the example below tooltip is shown only above the table:
 
 ~~~js
 gantt.ext.tooltips.tooltipFor({
@@ -218,7 +219,3 @@ gantt.parse(demo_tasks);
 ~~~
 
 
-@todo:
-- reduce example of tooltips for different elements<br>
-- add example with tooltip for a resource panel and for the attach() method?<br>
-- should info from the last section be moved to migration?
