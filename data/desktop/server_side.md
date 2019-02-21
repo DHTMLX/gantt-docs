@@ -39,7 +39,7 @@ dp.init(gantt);
 dp.setTransactionMode("REST");
 ~~~
 
-- Call the **createDataProcessor()** method and pass an object with configuration options as its parameter:
+- Call the api/gantt_createdataprocessor.md method and pass an object with configuration options as its parameter:
 
 ~~~js
 var dp = gantt.createDataProcessor({
@@ -52,7 +52,7 @@ Check the detailed info in the next section.
 
 <h3 id="createdp"> Creating DataProcessor</h3>
 
-While creating a DataProcessor via the API method **createDataProcessor()** you have several possible options for passing parameters. 
+While creating a DataProcessor via the API method api/gantt_createdataprocessor.md you have several possible options for passing parameters. 
 	
 1\. Use one of the predefined request modes, as in:
 

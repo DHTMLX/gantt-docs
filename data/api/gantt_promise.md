@@ -1,10 +1,6 @@
 Promise
 =============
 
-
-@todo:
-	check
-
 @short:
 	Promise object constructor
 

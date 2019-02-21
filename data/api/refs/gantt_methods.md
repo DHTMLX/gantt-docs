@@ -3,6 +3,7 @@ Methods
 =======
 
 {{api
+- api/gantt_promise.md - 
 - api/gantt_addcalendar.md - adds a calendar into Gantt
 - api/gantt_addlink.md - adds a new dependency link
 - api/gantt_addlinklayer.md - displays an additional layer with custom elements for a link in the timeline area
@@ -34,6 +35,7 @@ Methods
 - api/gantt_copy.md - creates a deep copy of provided object
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
 - api/gantt_createcalendar.md - creates a working calendar
+- api/gantt_createdataprocessor.md - 
 - api/gantt_createdatastore.md - creates a datastore according to the provided configuration
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
 - api/gantt_dataprocessor.md - dataProcessor constructor
@@ -66,6 +68,8 @@ Methods
 - api/gantt_getclosestworktime.md - returns the closest working time
 - api/gantt_getcolumnindex.md - returns the index of the column by its name
 - api/gantt_getconnectedgroup.md - returns all tasks and links that a task is connected with
+- api/gantt_getconstraintlimitations.md - 
+- api/gantt_getconstrainttype.md - 
 - api/gantt_getdatastore.md - returns the configuration object of a datastore
 - api/gantt_getfreeslack.md - returns the free slack of a task
 - api/gantt_getglobaltaskindex.md - gets the index of a task in the tree
@@ -101,7 +105,7 @@ Methods
 - api/gantt_getsubtaskduration.md - calculates the combined duration of tasks nested in a project or another task.
 - api/gantt_gettask.md - returns the task object
 - api/gantt_gettaskby.md - finds a task by the specified criteria
-- api/gantt_gettaskbyindex.md - returns a task by its index
+- api/gantt_gettaskbyindex.md - returns a task by its global task index
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period
 - api/gantt_gettaskbywbscode.md - returns a task by its WBS code
 - api/gantt_gettaskcalendar.md - gets a calendar assigned to the specified task (a task level calendar)
@@ -125,8 +129,8 @@ Methods
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
 - api/gantt_importfromexcel.md - converts an Excel file to JSON
 - api/gantt_importfrommsproject.md - converts an XML or MPP MS Project file to JSON
-- api/gantt_init.md - constructor. Initializes a dhtmlxGantt object
-- api/gantt_ischildof.md - checks whether a task is a child of other task
+- api/gantt_init.md - initializes a dhtmlxGantt inside a container
+- api/gantt_ischildof.md - checks whether a task is a child of a different task
 - api/gantt_iscircularlink.md - checks whether the link is circular
 - api/gantt_iscriticallink.md - checks whether the specified link is critical
 - api/gantt_iscriticaltask.md - checks whether the specified task is critical
@@ -189,6 +193,7 @@ Methods
 }}
 
 @index:
+- api/gantt_promise.md
 - api/gantt_addcalendar.md
 - api/gantt_addlink.md
 - api/gantt_addlinklayer.md
@@ -220,6 +225,7 @@ Methods
 - api/gantt_copy.md
 - api/gantt_correcttaskworktime.md
 - api/gantt_createcalendar.md
+- api/gantt_createdataprocessor.md
 - api/gantt_createdatastore.md
 - api/gantt_createtask.md
 - api/gantt_dataprocessor.md
@@ -252,6 +258,8 @@ Methods
 - api/gantt_getclosestworktime.md
 - api/gantt_getcolumnindex.md
 - api/gantt_getconnectedgroup.md
+- api/gantt_getconstraintlimitations.md
+- api/gantt_getconstrainttype.md
 - api/gantt_getdatastore.md
 - api/gantt_getfreeslack.md
 - api/gantt_getglobaltaskindex.md

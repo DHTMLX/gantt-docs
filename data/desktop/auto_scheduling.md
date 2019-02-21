@@ -289,16 +289,16 @@ The other types of constraints affect tasks regardless of the their types (depen
 8\. **Must finish on** – the task should end exactly on the specified date.
 
 
+## Backward scheduling
+
 ### Strategies of projects planning
 
 There are two strategies of planning tasks within a project: forward and backward planning. They are defined by combinations of configuration settings:
 
-- **gantt.config.schedule_from_end** - (*boolean*) defines the type of the planning strategy
-- **gantt.config.project_start** - (*Date*) the start date of a project; used as a start date of tasks by default, if forward planning is applied, *null* by default
-- **gantt.config.project_end** - (*Date*) the end date of a project; used for the default time of tasks, if backward planning is used, *null* by default
+- api/gantt_schedule_from_end_config.md - (*boolean*) defines the type of the planning strategy
+- api/gantt_project_start_config.md - (*Date*) the start date of a project; used as a start date of tasks by default, if forward planning is applied, *null* by default
+- api/gantt_project_end_config.md - (*Date*) the end date of a project; used for the default time of tasks, if backward planning is used, *null* by default
 
-
-## Backward scheduling
 
 ####Forward planning
 

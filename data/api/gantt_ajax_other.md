@@ -41,7 +41,7 @@ xhr.post({
 
 ### API Reference
 
-All methods return [promises](#promises) and can take as parameters either:
+All methods can take as parameters either:
 
 1) RequestConfig - an object with request config options, which looks as follows:
 
@@ -77,7 +77,7 @@ The list of the ajax module API  is given below:
 
 #### Callback options
 
-All methods allow both callbacks or Promises for response handling.
+All methods allow both callbacks or [promises](#promises) for response handling.
 
 An ajax promise returns a completed XmlHttpRequest:
 
@@ -90,13 +90,11 @@ gantt.ajax.post({
 }).then(function(response){
     alert(response.responseText);
 });
-
 ~~~
 
 For historical reasons, the callback option receives value in a slightly different format:
 
 ~~~js
-
 gantt.ajax.post({ 
     url:"some.php",
     data: {
@@ -108,7 +106,6 @@ gantt.ajax.post({
        alert(response.responseText);
     }
 });
-
 ~~~
 
 
