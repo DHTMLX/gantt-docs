@@ -4,8 +4,10 @@ posFromDate
 	
 
 @params:
-- date	Date	a date you want to know the position of
+- date		Date	a date you want to know the position of
 
+@returns:
+- position		number		x-coordinate (in pixels) of the specified date in the timeline
 
 
 

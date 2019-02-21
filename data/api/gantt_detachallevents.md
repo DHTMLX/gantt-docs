@@ -48,7 +48,7 @@ events.push(gantt.attachEvent("onTaskDblClick", function(id, e) {
 });
 
 // detach all saved events
-while (events.lenght)
+while (events.length)
    gantt.detachEvent(events.pop()); /*!*/
 
 ~~~
