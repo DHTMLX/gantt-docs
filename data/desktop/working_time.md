@@ -423,9 +423,9 @@ As a value of this attribute, use the key of the necessary calendar from the "us
 
 {{pronote This functionality is available in the PRO edition only.}}
 
-There is a possibility to specify a working calendar not only for a particular resource, but for the whole project. 
+There is a possibility to specify a working calendar not only for a particular task or resource, but for a project, so that tasks could inherit the same calendar that their parent project is assigned to.
 
-A task can inherit a calendar from its parent project. The logic of inheriting a calendar by a task is the following:
+The logic of inheriting a calendar by a task is the following:
 
 - If a user assigns a calendar to a subproject with tasks, all its tasks will use this calendar. 
 - If a task has a personal calendar assigned to it, it will use its calendar and not the calendar of its parent project.
@@ -436,8 +436,8 @@ To enable this functionality, you need to set the **gantt.config.inherit_calenda
 gantt.config.inherit_calendar = true;
 ~~~
 
-- If true, tasks that have no calendar assigned to them, will use the same calendar that their summary parent (which can get a calendar from its parent in its turn).
-- If false, tasks that have no calendar assigned to them, will use the global calendar.
+- If *true*, tasks that have no calendar assigned to them, will use the calendar assigned to their summary parent (which can get a calendar from its parent in its turn).
+- If *false*, tasks that have no calendar assigned to them, will use the global calendar.
 
 In the example below tasks inherit calendars from their parent projects by default. In case a task has a different calendar assigned, this calendar will be used instead. Thus, tasks #2.2 and #3 use the "Full week" 
 calendars unlike their parent projects:

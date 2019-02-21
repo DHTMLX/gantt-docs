@@ -200,9 +200,9 @@ Gantt doesn't provide a built-in UI for editing lag or any other properties of t
 {{editor	http://snippet.dhtmlx.com/7c812e5bd		 Edit-lag Popup}}
 
 
-## Time constraints for tasks
-
-dhtmlxGantt provides the possibility to set additional time constraints for tasks.
+Time constraints for tasks
+------------------------ 
+dhtmlxGantt provides the possibility to set additional time constraints for tasks. When time constraints are set for tasks, auto scheduling functionality works taking them into account. 
 
 {{note Time constraints are applicable only to tasks and [milestones](desktop/milestones.md). Projects are not affected by them.}}
 
@@ -319,25 +319,26 @@ gantt.config.project_start = new Date(2019, 2, 1);
 
 ####Backward planning
 
-Is also possible to plan tasks from the end of the project, i.e. to apply backward planning. For this you need to set the **gantt.config.schedule_from_end** property to *true* and specify the end date of the project 
+It is also possible to plan tasks from the end of the project, i.e. to apply backward planning. For this you need to set the **gantt.config.schedule_from_end** property to *true* and specify the end date of the project 
 via the **gantt.config.project_end** configuration option:
 
 ~~~js
+// backward planning of tasks is used
 gantt.config.schedule_from_end = true;
 gantt.config.project_end = new Date(2019, 4, 1);
 ~~~
 
-In this case tasks are planned as late as possible. The last task should end on the end date of the project.
+In this case tasks are planned *as late as possible*. The last task should end on the end date of the project.
 
 {{sample 02_extensions/20_backwards_scheduling.html}}
+
+When a user changes the date of a task by moving it with the mouse pointer or via the lightbox, the task automatically receives one of the two constraint types: either **start no earlier than+%start date%** or 
+**finish no later than+%end date%**, depending on the chosen planning strategy. So a task won't be moved to the start/end of the project automatically, which reproduces auto planning in MS Project.
 
 
 ### Backward compatibility
 
-When a user changes the date of a task by moving it with the mouse pointer or via the lightbox, the task automatically receives one of the two constraint types: either **start no earlier than+%start date%** or 
-**finish no later than+%end date%**, depending on the chosen planning strategy. Thus a task won't be moved to the start/end of the project automatically, which reproduces auto planning in MS Project.
-
-When time constraints are set for tasks, auto scheduling functionality works taking them into account. However, you can disable the constraints feature by setting:
+You can disable the time constraints feature to use the default auto scheduling functionality, by setting:
 
 ~~~js
 gantt.config.auto_scheduling_compatibility = true;
@@ -351,4 +352,4 @@ gantt.config.auto_scheduling_compatibility = true;
 
 @todo: 
 - update the image for columns types<br>
-- where should Backward compatibility section go? 
+- Backward compatibility is repeated in migration

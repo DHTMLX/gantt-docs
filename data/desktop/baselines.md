@@ -160,13 +160,13 @@ The full code of the considered example you can see in the related sample.
 04_customization/15_baselines.html
 }}
 
-Extra Overlay
+Extra overlay for the chart
 ----------------
 
-dhtmlxGantt provides the possibility to add an extra layer over the Gantt Chart for placing some content into it. As an overlay you can use a div container, an HTML canvas, etc. To draw the overlay content, any 
+dhtmlxGantt provides the possibility to add an extra layer over the Gantt Chart for placing some custom content into it. As an overlay you can use a div container, an HTML canvas, etc. To draw the overlay content, any 
 third-party library can be used. 
 
-For example, you can add an S-curve into the extra overlay. Generally, S-curves display the growth of expenses, decrease of supplies of materials, 
+For example, you can add an S-curve into the extra overlay. Generally, S-curves display the growth of expenses, decrease of supplies of materials, etc.,
 and allow tracking the common progress of implementing tasks of a project. 
 
 To add an overlay into gantt, you need to complete two steps:
@@ -177,15 +177,20 @@ To add an overlay into gantt, you need to complete two steps:
 <script src="codebase/ext/dhtmlxgantt_overlay.js"></script>
 ~~~
 
-- use the **addOverlay()** method and pass a function that contains the logic of adding overlay content as a parameter
+- use the **addOverlay()** method of the **gantt.ext.overlay** object and pass a function that contains the logic of adding overlay content into it. 
+This function takes a container with custom content as a parameter. See examples below.
 
-The example below demonstrates two cases of adding overlays into the Gantt Chart:
+The following example demonstrates how you can add a canvas overlay with S-curves for displaying the target and actual progress of the project (implemented with the help of the [ChartJS](https://www.chartjs.org/) library): 
 
-1) adding a canvas overlay with S-curves for displaying the target and actual progress of the project (implemented with the help of the [ChartJS](https://www.chartjs.org/) library): 
+![Overlay with S-curve](desktop/overlay_scurve.png)
 
 ~~~js
-var lineOverlay = gantt.ext.overlay.addOverlay(function(){
+var overlay = gantt.ext.overlay.addOverlay(function(container){
 	var canvas = document.createElement("canvas");
+	container.appendChild(canvas);
+	canvas.style.height = container.offsetHeight + "px";
+	canvas.style.width = container.offsetWidth + "px";
+
 	var ctx = canvas.getContext("2d");
 	var myChart = new Chart(ctx, {
 		type: "line",
@@ -195,31 +200,71 @@ var lineOverlay = gantt.ext.overlay.addOverlay(function(){
 });
 ~~~
 
-2) adding a div overlay with a Today line to indicate the current date
+The **gantt.ext.overlay.addOverlay()** method returns the id of a new overlay as a number. 
+
+{{sample  02_extensions/21_overlay.html}}
+
+### Overlay extension API
+
+The **dhtmlxgantt_overlay.js** extension contains a set of API methods to simplify work with overlays. These methods are available via the **gantt.ext.overlay** object.
+
+#### addOverlay
+
+adds a new overlay into the Gantt Chart and returns its id. Takes a container with custom content as a parameter.
 
 ~~~js
-var todayOverlay = overlayControl.addOverlay(function() {
-	var layer = document.createElement("div");
-	var legend = document.createElement("div");
-	var today = new Date(2017, 3, 7);
-	var left = gantt.posFromDate(today);
-
-	layer.classList.add("gantt_today_line");
-	legend.classList.add("gantt_today_line_legend");
-	legend.innerText = "Today";
-	layer.appendChild(legend);
-
-	layer.style.position = "absolute";
-	layer.style.left = left + "px";
-
-	return layer;
-});
+var overlay = gantt.ext.overlay.addOverlay(function(container){});
 ~~~
 
-{{sample  02_extensions/19_overlay.html}}
+#### deleteOverlay
+
+removes an overlay by its id
+
+~~~js
+gantt.ext.overlay.deleteOverlay(id);
+~~~
+
+#### getOverlaysIds 
+
+returns an array with ids of overlays added into the chart
+
+~~~js
+var ids = gantt.ext.overlay.getOverlaysIds();
+~~~
+
+#### refreshOverlay
+
+repaints the specified overlay. Takes the id of an overlay as a parameter.
+
+~~~js
+gantt.ext.overlay.refreshOverlay(id);
+~~~
+
+#### showOverlay
+
+shows an overlay by its id. Takes the id of an overlay as a parameter.
+
+~~~js
+gantt.ext.overlay.showOverlay(id);
+~~~
+
+#### hideOverlay
+
+hides an overlay by its id
+
+~~~js
+gantt.ext.overlay.hideOverlay(id);
+~~~
+
+#### isOverlayVisible
+
+checks visibility of the specified overlay. Returns *true* if the overlay is visible.
+
+~~~js
+var isVisible = gantt.ext.overlay.isOverlayVisible(id);
+~~~
 
 @edition: pro
 
 @todo:
 - check the extra overlay section
-- add images
