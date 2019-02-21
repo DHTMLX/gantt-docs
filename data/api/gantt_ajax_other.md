@@ -16,17 +16,22 @@ object
 var xhr = gantt.ajax;
 
 // HTTP GET
-xhr.get("server.php", function(r){
-    var t = JSON.parse(r.xmlDoc.responseText); // convert response to json object
-    if (t && t.status == "ok") {
+xhr.get("server.php").then(function(response) {
+    var res = JSON.parse(response.responseText); 
+    if (res && res.status == "ok") {
         // response is ok
     }
 });
 
 // HTTP POST
-xhr.post("server.php", "paramName=paramValue", function(r){
-    var t = JSON.parse(r.xmlDoc.responseText); 
-    if (t && t.status == "ok") {
+xhr.post({
+    url:"server.php", 
+    data: {
+       paramName: "paramValue"
+    }
+}).then(function(response){
+    var res = JSON.parse(response.responseText); 
+    if (res && res.status == "ok") {
         // response is ok
     }
 });
@@ -70,6 +75,43 @@ or:
 
 The list of the ajax module API  is given below:
 
+#### Callback options
+
+All methods allow both callbacks or Promises for response handling.
+
+An ajax promise returns a completed XmlHttpRequest:
+
+~~~js
+gantt.ajax.post({ 
+    url:"some.php",
+    data: {
+       paramName: "paramValue"
+    }
+}).then(function(response){
+    alert(response.responseText);
+});
+
+~~~
+
+For historical reasons, the callback option receives value in a slightly different format:
+
+~~~js
+
+gantt.ajax.post({ 
+    url:"some.php",
+    data: {
+       paramName: "paramValue"
+    },
+    callback: function(result){
+       var response = result.xmlDoc;
+       
+       alert(response.responseText);
+    }
+});
+
+~~~
+
+
 #### query
 
 the common method of sending requests. Allows sending any type of request (you need just to specify the desired request in the parameters)
@@ -77,8 +119,14 @@ the common method of sending requests. Allows sending any type of request (you n
 ~~~js
 gantt.ajax.query({ 
     url:"some.php",
-    method:"POST"
+    method:"POST",
+    data: {
+       paramName: "paramValue"
+    }
+}).then(function(response){
+    alert(response.responseText);
 });
+
 ~~~
 
 #### get
