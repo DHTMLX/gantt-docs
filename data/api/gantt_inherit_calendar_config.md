@@ -12,6 +12,8 @@ gantt.config.inherit_calendar = true;
 @template:	api_config
 @descr:
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 By default, tasks that don't have work calendar specified will use the global work calendar.
 
 After setting this config to `true`, such tasks will use a calendar of their summary (project) parent task.
@@ -22,3 +24,6 @@ desktop/working_time.md
 
 @relatedsample:
 09_worktime/08_project_calendars.html
+
+@edition: pro
+
