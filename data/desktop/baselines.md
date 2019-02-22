@@ -196,7 +196,6 @@ var overlay = gantt.ext.overlay.addOverlay(function(container){
 		type: "line",
 		// full chart configuration
 	});
-	return canvas;
 });
 ~~~
 

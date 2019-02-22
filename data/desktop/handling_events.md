@@ -1,13 +1,14 @@
 Event Handling 
 ===================================
-Events help to interact with users and bring interactivity to the page.<br>
-When the user makes some action in the Gantt chart, dhtmlxGantt invokes an event. You can
-use this event to detect the action and run the desired code for it. 
 
+Events help to interact with users and bring interactivity to the page.
+
+When the user makes some action in the Gantt chart, dhtmlxGantt invokes an event. You can use this event to detect the action and run the desired code for it. 
 
 
 Attaching events
 --------------------------------------------
+
 To attach an event, use the api/gantt_attachevent.md method.
 
 ~~~js
@@ -26,6 +27,7 @@ gantt.attachEvent("onTaskClick", function(id, e) {
 
 Detaching events
 -------------------------
+
 To detach an event handler, use the api/gantt_detachevent.md method:
 
 {{snippet
@@ -40,21 +42,26 @@ var eventId = gantt.attachEvent("onTaskClick", function(id, e) {
 gantt.detachEvent(eventId);/*!*/
 ~~~
 
-To detach all handlers at once, use the api/gantt_detachallevents.md method:
+To detach all handlers at once, you can use the following logic:
 
 ~~~js
-gantt.attachEvent("onTaskClick", function(id, e) {
+// save handler ids when attaching events
+var events = [];
+events.push(gantt.attachEvent("onTaskClick", function(id, e) {
     alert("You've just clicked an item with id="+id);
 });
-gantt.attachEvent("onTaskDblClick", function(id, e) {
+events.push(gantt.attachEvent("onTaskDblClick", function(id, e) {
     alert("You've just double clicked an item with id="+id);
 });
  
-gantt.detachAllEvents(); /*!*/
+// detach all saved events
+while (events.length)
+   gantt.detachEvent(events.pop()); /*!*/
 ~~~
 
 Сhecking the existence of a handler
 ------------------------------------------
+
 To check, whether a specific event has any handlers attached, use the api/gantt_checkevent.md method:
 
 ~~~js
@@ -67,7 +74,9 @@ gantt.checkEvent("onTaskClick"); //returns 'true' /*!*/
 
 Cancelable Events 
 -----------------------
-All events with the preceding subword 'onbefore' can be cancelled.<br>
+
+All events with the preceding subword 'onbefore' can be cancelled.
+
 To cancel some event, return **false** from the appropriate event handler.
 
 {{snippet

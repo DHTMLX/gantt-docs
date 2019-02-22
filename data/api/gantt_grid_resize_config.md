@@ -30,7 +30,29 @@ gantt.init("gantt_here");
 {{pronote This functionality is available in the PRO edition only.}}
 
 @deprecated:
-Use the [gantt.config.layout](desktop/layout_config.md#defaultlayout) instead and specify grid and resizer objects with the necessary configuration inside.
+Use the [gantt.config.layout](api/gantt_layout_config.md) instead and specify grid and resizer objects with the necessary configuration inside. Check the details [here](desktop/layout_config.md#defaultlayout).
+
+~~~js
+gantt.config.layout = {
+  css: "gantt_container",
+  rows:[
+    {
+      cols: [
+        {view: "grid", id: "grid", scrollX:"scrollHor", scrollY:"scrollVer"},
+        {resizer: true, width: 1},
+        {view: "timeline", id: "timeline", scrollX:"scrollHor", scrollY:"scrollVer"},
+        {view: "scrollbar", scroll: "y", id:"scrollVer"}
+      ]
+     },
+    {view: "scrollbar", scroll: "x", id:"scrollHor", height:20}
+  ]
+};
+ 
+gantt.init("gantt_here");
+~~~
 
 @changelog:
 deprecated since version 5.0
+
+
+

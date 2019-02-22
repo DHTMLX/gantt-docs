@@ -13,8 +13,7 @@ gantt.init("gantt_here");
 @template:	api_config
 @descr:
 
-@relatedapi:
-	api/gantt_grid_resize_config.md
+
 @related:
 	desktop/specifying_columns.md#resizingcolumns
 

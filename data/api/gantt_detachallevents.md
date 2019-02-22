@@ -1,9 +1,8 @@
 detachAllEvents
 =============
 
-@short:detaches all events from dhtmlxGantt (both custom and inner)
+@short:detaches all events from dhtmlxGantt (both custom and inner ones)
 	
-
 @example:
 var event1 = gantt.attachEvent("onTaskClick", function(id, e) {
     alert("You've just clicked an item with id="+id);
@@ -30,13 +29,14 @@ events = [];
 @template:	api_method
 @descr:
 
-Note, using the method can break the funtionality of dhtmlxGantt as it removes ALL event handlers at a time: ones that were defined by a custom logic and ones that were defined by dhtmlxGantt itself (to link different
+Note, using the method can break the functionality of dhtmlxGantt, as it removes ALL event handlers at a time: those defined by a custom logic and those defined by dhtmlxGantt itself (to link different
 parts and functionality). 
 
-A safer approach is to store the result of the api/gantt_attachevent.md method and to use the api/gantt_detachevent.md method  against them when necessary as shown in the example above.
+A safer approach is to store the result of the api/gantt_attachevent.md method and to use the api/gantt_detachevent.md method to detach saved events when necessary, as shown in the example above.
 
 @deprecated:
-instead of it, you can use
+instead of it, you can use:
+
 ~~~
 // save handler ids when attaching events
 var events = [];
@@ -50,5 +50,4 @@ events.push(gantt.attachEvent("onTaskDblClick", function(id, e) {
 // detach all saved events
 while (events.length)
    gantt.detachEvent(events.pop()); /*!*/
-
 ~~~

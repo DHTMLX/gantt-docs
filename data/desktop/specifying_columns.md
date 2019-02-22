@@ -6,7 +6,7 @@ Grid's columns are configured with the api/gantt_columns_config.md parameter.
 <img src="desktop/gantt_left.png"/>
 
 ~~~js
-//default columns definition
+// default columns definition
 gantt.config.columns = [
 	{name:"text", 		label:"Task name", 	width:"*", tree:true },
 	{name:"start_date", label:"Start time", align:"center" },
@@ -223,7 +223,8 @@ var constraintDateEditor = {
 Resizing 
 ----------
 
-{{pronote This functionality is available only in the PRO edition }}
+{{pronote The functionality below is available only in the PRO edition }}
+
 
 To provide users a possibility to resize a column by dragging the right column's border, use the [resize](api/gantt_columns_config.md) attribute in the related column's object:
 
@@ -240,28 +241,28 @@ gantt.config.columns = [
 02_extensions/04_grid_resize.html
 }}
 
-
-To make the whole grid resizable by dragging the grid's border, set the api/gantt_grid_resize_config.md option to true:
+To make the whole grid resizable by dragging the grid's border, use the [gantt.config.layout](api/gantt_layout_config.md) option and specify grid and resizer objects with the necessary configuration inside.
 
 ~~~js
-gantt.config.columns = [
-	{ name:"text", tree:true, width:"*", resize:true },
-	{ name:"start_date", align:"center"},
-	{ name:"duration", align:"center", width:70 },
-	{ name:"add", width:44 }
-];
-
-gantt.config.grid_resize = true; /*!*/
-gantt.config.min_grid_column_width = 100; //the minimum width of grid during resizing
+gantt.config.layout = {
+    css: "gantt_container",
+    rows:[
+      {
+        cols: [
+          {view: "grid", id: "grid", scrollX:"scrollHor", scrollY:"scrollVer"},
+          {resizer: true, width: 1},
+          {view: "timeline", id: "timeline", scrollX:"scrollHor", scrollY:"scrollVer"},
+          {view: "scrollbar", scroll: "y", id:"scrollVer"}
+        ]
+       },
+      {view: "scrollbar", scroll: "x", id:"scrollHor", height:20}
+    ]
+};
+ 
 gantt.init("gantt_here");
 ~~~
 
-{{sample
-02_extensions/04_grid_resize.html
-}}
-
-
-To preserve the grid's size during resizing of columns, set the api/gantt_keep_grid_width_config.md option to true:
+To preserve the grid's size during resizing of columns, set the api/gantt_keep_grid_width_config.md option to *true*:
 
 ~~~js
 gantt.config.columns = [
@@ -278,6 +279,8 @@ gantt.init("gantt_here");
 {{sample
 02_extensions/04_grid_resize.html
 }}
+
+
 
 ###Events
 
