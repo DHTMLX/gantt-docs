@@ -7,7 +7,7 @@
 	"samples"			: "../gantt/samples/",
 	"samples_http"		: "../gantt/samples/",
 	"forum_http"		: "https://forum.dhtmlx.com/viewforum.php?f=15",
-	"support_http"		: "https://support.dhtmlx.com",
+	"support_http"		: "https://dhtmlx.com/docs/technical-support.shtml",
 	"logo_http"			: "https://dhtmlx.com",
 	"docs_http"			: "https://docs.dhtmlx.com/gantt/",
 
