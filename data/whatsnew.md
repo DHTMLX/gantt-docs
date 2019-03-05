@@ -10,6 +10,22 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.1.1
+-----
+
+<span class='release_date'>March 5, 2019. Bugfix release</span>
+
+####Fixes
+
+- Add missing locale options for the [resource lightbox control](desktop/resources.md)
+- Fix script error when using [gantt.destructor](api/gantt_destructor.md) together with the dataProcessor
+- Fix script error when using [gantt.destructor](api/gantt_destructor.md) together with the [resource panel](desktop/resource_management.md#resourceviewpanel)
+- Fix the filesize of the [tooltip extension](desktop/tooltips.md)
+- Fix unexpected call of the api/gantt_ontaskdblclick_event.md event while double clicking on a link element
+- Fix stuck [lightbox](api/gantt_lightbox_config.md) cover if [gantt.init](api/gantt_init.md) is called while lightbox is opened
+- Fix issues with [lightbox](api/gantt_lightbox_config.md) and the [tooltip extension](desktop/tooltips.md) in the [full-screen mode](desktop/fullscreen_mode.md)
+
+
 <b>6.1</b>
 ------
 
