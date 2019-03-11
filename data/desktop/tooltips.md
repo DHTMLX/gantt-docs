@@ -68,7 +68,7 @@ You can access the object of tooltip as **gantt.ext.tooltips.tooltip**. This obj
 
 ###Methods
 
-There are several methods that allow controlling behavior of the toolip while hovering over DOM elements.
+There are several methods that allow controlling behavior of the tooltip while hovering over DOM elements.
 
 <h4 id="attach">gantt.ext.tooltips.attach()</h4>
 
@@ -131,7 +131,7 @@ api/gantt_tooltip_hide_timeout_config.md.
 
 - the [**gantt.ext.tooltips.attach()**](#attach) method 
 
-This method allows adding a tooltip with an extented configuration to adjust tooltip behavior to the movement of the mouse pointer.
+This method allows adding a tooltip with an extended configuration to adjust tooltip behavior to the movement of the mouse pointer.
 
 Customization of tooltip behavior
 ------------------------------

@@ -220,7 +220,7 @@ requirejs(["gantt", "tooltip", "marker"], function (dhx) {
 ~~~
 
 
-Fullscreen mode
+Full screen mode
 ---------------------------------
 
 To correctly display a Gantt chart in the full-screen mode in different browsers, define the following style on the page:
