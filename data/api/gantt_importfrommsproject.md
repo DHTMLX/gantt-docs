@@ -10,19 +10,17 @@ importFromMSProject
 
 @example:
 gantt.importFromMSProject({
-    data: file,
-    callback: function(project){
-        if(project){
-            gantt.clearAll();
- 
-            if(project.config){
-                gantt.mixin(gantt.config, project.config, true);
-            }
+	data: file,
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+    	if (project) {
+        	gantt.clearAll();
+            if (project.config.duration_unit) {
+            	gantt.config.duration_unit = project.config.duration_unit;
+            }                    
             gantt.parse(project.data);
         }
-        if(callback)
-            callback(project);
-    }
+     }
 });
 
 
@@ -32,15 +30,13 @@ gantt.importFromMSProject({
 {{note The method requires HTML5 File API support.}}
 
 {{note This method is defined in the **export** extension, so you need to include it on the page:
+
 ~~~html
 <script src="http://export.dhtmlx.com/gantt/api.js"></script>  
 ~~~
 Read the details in the desktop/export_msproject.md#importfrommsproject article.
 
 }}
-
-
-
 
 The method takes as a parameter an object with configuration properties of an imported file:
 
