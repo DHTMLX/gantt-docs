@@ -10,6 +10,25 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.1.2
+-----
+
+<span class='release_date'>March 26, 2019. Bugfix release</span>
+
+### Updates
+
+- [Keyboard navigation](desktop/keyboard_navigation.md): add a method for getting the active cell
+
+#### Fixes
+
+- Fix incorrect work of the [resource panel](desktop/resource_management.md#resourceviewpanel) after creating a new datastore to overwrite the previous one
+- Fix incorrect values of query parameters in the POST mode of [dataProcessor](desktop/server_side.md)
+- Fix incorrect result of [gantt.getClosestWorkTime](api/gantt_getclosestworktime.md) when called without specifying a direction
+- Fix issue when the English locale couldn't override the previously added locale
+- Fix script error with [gantt.undo](api/gantt_undo_config.md) and indent actions in the grid
+- Fix SalesForce compatibility: new resize listener was broken in SF, fallback is added
+
+
 6.1.1
 -----
 
@@ -26,10 +45,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix issues with [lightbox](api/gantt_lightbox_config.md) and the [tooltip extension](desktop/tooltips.md) in the [full-screen mode](desktop/fullscreen_mode.md)
 
 
-<b>6.1</b>
+6.1
 ------
 
-<span class='release_date'>February 21, 2019. Major update</span>
+<span class='release_date'>February 21, 2019. Minor update</span>
 
 ### New functionality
 
