@@ -10,6 +10,19 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.1.4
+-----
+
+<span class='release_date'>April 18, 2019. Bugfix release</span>
+
+- Fix script error on [reinitialization](api/gantt_init.md) of gantt in the IE browser
+- Fix incorrect behavior of the [Tooltip extension](desktop/tooltips.md) when [gantt.destructor](api/gantt_destructor.md) is called
+- Fix incorrect work of [inline editors](desktop/inline_editing.md) in the [keyboard_navigation_cells](api/gantt_keyboard_navigation_cells_config.md) mode when grid contains 
+[hidden columns](desktop/specifying_columns.md#visibility)
+- Fix bug in the [Undo](desktop/undo_redo.md) extension when Redo action for recreation of new tasks did not restore all properties
+- Fix regression in GPL build which caused a script error on a second [gantt.init](api/gantt_init.md) call
+
+
 
 6.1.3
 -----
