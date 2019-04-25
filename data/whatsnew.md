@@ -10,6 +10,15 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.1.5
+-----
+
+<span class='release_date'>April 25, 2019. Bugfix release</span>
+
+- Fix script error on a second api/gantt_init.md call when api/gantt_show_chart_config.md config is disabled
+- Fix incorrect position of [vertical drag-and-drop](desktop/reordering_tasks.md) placeholder in the [marker mode](desktop/reordering_tasks.md#improvingperformanceforlargedatasets)
+
+
 6.1.4
 -----
 
@@ -17,7 +26,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - Fix script error on [reinitialization](api/gantt_init.md) of gantt in the IE browser
 - Fix incorrect behavior of the [Tooltip extension](desktop/tooltips.md) when [gantt.destructor](api/gantt_destructor.md) is called
-- Fix incorrect work of [inline editors](desktop/inline_editing.md) in the [keyboard_navigation_cells](api/gantt_keyboard_navigation_cells_config.md) mode when grid contains 
+- Fix incorrect work of [inline editors](desktop/inline_editing.md) in the [keyboard_navigation_cells](api/gantt_keyboard_navigation_cells_config.md) mode when grid contains
 [hidden columns](desktop/specifying_columns.md#visibility)
 - Fix bug in the [Undo](desktop/undo_redo.md) extension when Redo action for recreation of new tasks did not restore all properties
 - Fix regression in GPL build which caused a script error on a second [gantt.init](api/gantt_init.md) call
@@ -141,7 +150,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fixed page freeze on `gantt.parse` if tasks tree contains cyclic references, script error is thrown instead
 
 
-<b>6.0</b> 
+<b>6.0</b>
 ----------
 
 <span class='release_date'>November 5, 2018. Major update</span>
@@ -153,7 +162,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Resource histogram](desktop/resource_management.md#resourceviewpanel) in addition to the resource load diagram (PRO version)
 - Ability to [get free/total slack of a task](desktop/critical_path.md#gettingfreeandtotalslack) while [calculating the critical path](desktop/critical_path.md) (PRO version)
 - [Import of projects from Excel](desktop/excel.md#importfromexcel)
-- [The "REST-JSON" DataProcessor mode](desktop/server_side.md#restjson) for processing complex records on any server-side platform 
+- [The "REST-JSON" DataProcessor mode](desktop/server_side.md#restjson) for processing complex records on any server-side platform
 - Auto resize when container size changes
 
 
@@ -167,7 +176,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - The "marker" mode for the api/gantt_order_branch_config.md config to speed up tasks reordering within branch
 - The [onBeforeRowDragMove](api/gantt_onbeforerowdragmove_event.md) event to work in tandem with the api/gantt_order_branch_config.md config in the "marker" mode
-- The api/gantt_gettotalslack.md / api/gantt_getfreeslack.md methods for work with slack instead of the getSlack() method (PRO) 
+- The api/gantt_gettotalslack.md / api/gantt_getfreeslack.md methods for work with slack instead of the getSlack() method (PRO)
 - The api/gantt_importfromexcel.md method
 - The *delimiter* option in the [groupBy](api/gantt_groupby.md) method for grouping resources
 
@@ -187,7 +196,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - Ability to [set task types automatically](api/gantt_auto_types_config.md) (PRO version)
 - Ability to [use a placeholder row](api/gantt_placeholder_task_config.md) for creating new tasks
-- [Checkbox](desktop/checkbox.md) and [radio button](desktop/radio.md) controls for lightbox  
+- [Checkbox](desktop/checkbox.md) and [radio button](desktop/radio.md) controls for lightbox
 - Updated [Content Security Policy](desktop/content_security_policy.md) extension
 
 ####API
@@ -210,7 +219,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ####Configuration
 
 - [Ability to set min/max widths for Grid columns](desktop/specifying_columns.md#width)
-- [Ability to drag and drop projects with their subtasks](desktop/dnd.md#draggingprojectswithsubtasks) (PRO version) 
+- [Ability to drag and drop projects with their subtasks](desktop/dnd.md#draggingprojectswithsubtasks) (PRO version)
 - [Extended parameters for the export methods](desktop/export_common.md)
 
 
@@ -289,7 +298,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 #### Functionality
 
-- [Smart rendering](desktop/performance.md#smartrendering) for big datasets 
+- [Smart rendering](desktop/performance.md#smartrendering) for big datasets
 - [Undo/redo](desktop/undo_redo.md) extensions
 
 ####Configuration
@@ -299,7 +308,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ####API
 
-- Public API improvements - public helpers for [ajax](http://docs.dhtmlx.com/api__refs__dhtmlxajax.html), [environment variables](api/gantt_env_other.md)  
+- Public API improvements - public helpers for [ajax](http://docs.dhtmlx.com/api__refs__dhtmlxajax.html), [environment variables](api/gantt_env_other.md)
 - [Public API cleanup](migrating.md#3x40) - redundant global objects removed, conflicts with dhtmlxSuite resolved
 - Public helpers for [popup messages](desktop/message_boxes.md) added
 
@@ -321,7 +330,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - Initial support for [Content Security Policy](desktop/content_security_policy.md)
 - A possibility of specifying [per column Grid sorting](desktop/sorting.md#percolumngridsorting) settings
-- Improved branch ordering feature - [drag-n-drop between levels](desktop/reordering_tasks.md#dragndropwithinthewholeganttstructure) 
+- Improved branch ordering feature - [drag-n-drop between levels](desktop/reordering_tasks.md#dragndropwithinthewholeganttstructure)
 
 #### API
 
@@ -395,8 +404,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [New possibilities for the read-only mode](desktop/readonly_mode.md)
 - [Today's and other vertical markers](desktop/markers.md)
 - [A possibility to completely redefine rendering of different task types (projects, milestones, etc.)](desktop/baselines.md#definingacustomdisplayfordifferenttasktypes)(PRO version)
-- [Styling tasks through special data properties](desktop/colouring_tasks.md#specifyingstyleinthepropertiesofthetaskobject) 
-- [Styling links through special data properties](desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject) 
+- [Styling tasks through special data properties](desktop/colouring_tasks.md#specifyingstyleinthepropertiesofthetaskobject)
+- [Styling links through special data properties](desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject)
 
 
 #### API
@@ -443,7 +452,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 #### Configuration
 
 - [Configurable multi-line scales](desktop/configuring_time_scale.md)
-- [Configurable multi-column grid with optional sorting and Drag-n-Drop](desktop/reordering_tasks.md) 
+- [Configurable multi-column grid with optional sorting and Drag-n-Drop](desktop/reordering_tasks.md)
 - [Configurable popup form for editing tasks](desktop/edit_form.md)
 - [All text elements can be defined through templates](desktop/common_configuration.md#gantttemplatesobject)
 - [All date strings can be configured](desktop/common_configuration.md#ganttconfigobject)
