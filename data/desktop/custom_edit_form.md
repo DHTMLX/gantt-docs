@@ -10,7 +10,7 @@ You can create a fully custom lightbox for gantt and replace the default one wit
 
 ~~~js
 gantt.showLightbox = function(id){
-    // code of the custom form 
+    // code of the custom form
 }
 ~~~
 
@@ -49,7 +49,7 @@ gantt.showLightbox = function(id) {
 	input.focus();
 	input.value = task.text;
 
-	form.style.display = "block"; 
+	form.style.display = "block";
 
 	form.querySelector("[name='save']").onclick = save;
 	form.querySelector("[name='close']").onclick = cancel;
@@ -57,14 +57,14 @@ gantt.showLightbox = function(id) {
 };
 
 gantt.hideLightbox = function(){
-	getForm().style.display = ""; 
+	getForm().style.display = "";
 	taskId = null;
 }
 
 
-function getForm() { 
-	return document.getElementById("my-form"); 
-}; 
+function getForm() {
+	return document.getElementById("my-form");
+};
 
 function save() {
 	var task = gantt.getTask(taskId);
@@ -72,6 +72,7 @@ function save() {
 	task.text = getForm().querySelector("[name='description']").value;
 
 	if(task.$new){
+		delete task.$new;
 		gantt.addTask(task,task.parent);
 	}else{
 		gantt.updateTask(task.id);
@@ -110,6 +111,7 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 			callback: function(res){
 				if(res){
 					//..apply values
+					delete task.$new;
 					gantt.addTask(task);
 				}else{
 					gantt.deleteTask(task.id);
@@ -128,7 +130,7 @@ Processing actions in the custom form
 
 When user saves the form, you'll need to manually get form values and update the appropriate task using the public API: api/gantt_addtask.md, api/gantt_updatetask.md and api/gantt_deletetask.md.
 
-Note that when a lightbox is triggered by a new task (on clicking the 'plus' button) which should be deleted if the user clicks 'Cancel' to revert the task creation, 
+Note that when a lightbox is triggered by a new task (on clicking the 'plus' button) which should be deleted if the user clicks 'Cancel' to revert the task creation,
 the task object will have the '$new' property set.
 
 You can process lightbox closing, as shown in the example below. The type of an action - 'save', 'cancel' or 'delete' is passed as the "action" parameter:
@@ -138,9 +140,14 @@ switch(action){
    case "save":
       task.text = '';// apply values from form
 
-      // add new task or update already existing one
-      task.$new? gantt.addTask(task,task.parent) : gantt.updateTask(id);
-      
+	  // add new task or update already existing one
+	  if(task.$new){
+		delete task.$new;
+		gantt.addTask(task,task.parent)
+	  }else{
+		gantt.updateTask(id);
+	  }
+
       break;
    case "cancel":
       // if cancel popup for creating a new task - delete it, otherwise do nothing
