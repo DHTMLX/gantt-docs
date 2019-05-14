@@ -10,6 +10,17 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.1.6
+-----
+
+<span class='release_date'>May 14, 2019. Bugfix release</span>
+
+- Fix issue with not working [click handlers](api/gantt_quickinfo_buttons_config.md) of [QuickInfo popup](desktop/extensions_list.md#quickinfo) after a second api/gantt_init.md call
+- Fix issue with [QuickInfo popup](desktop/extensions_list.md#quickinfo) not showing up if api/gantt_show_chart_config.md is set to false
+- Fix incorrect `action` argument for [dataProcessor router](desktop/server_side.md#customrouting) after [vertical drag-and-drop](desktop/reordering_tasks.md)
+- Fix issue when api/gantt_createtask.md ignores the `index` parameter
+
+
 6.1.5
 -----
 
