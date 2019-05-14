@@ -8,7 +8,7 @@ destructor
 
 
 @example:
-var myGantt = Gantt.getInstance();
+var myGantt = Gantt.getGanttInstance();
 
 //destroying a gantt instance
 myGantt.destructor();
@@ -20,7 +20,7 @@ The method destroys a gantt instance and calls the api/gantt_ondestroy_event.md 
 
 Calling a destructor will:
 
-- clear the data loaded into a gantt instance 
+- clear the data loaded into a gantt instance
 - destroy the api/gantt_dataprocessor.md (if it is attached to the gantt)
 - detach the gantt from DOM
 - detach all DOM events attached via the [api/gantt_event.md](gantt.event) method
