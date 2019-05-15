@@ -80,7 +80,7 @@ gantt.eachSuccessor = function(callback, root){
   if(links){
     for(var i=0; i < links.length; i++){
       var link = this.getLink(links[i]);
-      if(this.isTaskExists(link.target)){
+      if(this.isTaskExists(link.target) && !traversedTasks[link.target]){
         callback.call(this, this.getTask(link.target));
         
         // iterate the whole branch, not only first-level dependencies
