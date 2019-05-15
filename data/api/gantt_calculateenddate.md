@@ -43,7 +43,7 @@ The configuration object can contain the following properties:
 
 - **start_date** - (*Date*) the date when a task is scheduled to begin
 - **duration** - (*number*)	the duration of a task
-* **unit** - (*string*)	optional, the time unit of the duration
+* **unit** - (*string*)	optional, the time unit of the duration: "minute", "hour", "day", "week", "month", "year"
 * **task** - (*object*)	optional, the object of the task the duration of which should be calculated
 
 
