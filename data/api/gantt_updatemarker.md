@@ -1,21 +1,21 @@
 updateMarker
 =============
 
-@short:updates the specified marker 
-@edition: pro
+@short:updates the specified marker
+
 @params:
 - markerId	string	the marker's id
 
 
 @example:
-var todayMarker = gantt.addMarker({ 
-	start_date: new Date(), 
-    css: "today", 
+var todayMarker = gantt.addMarker({
+	start_date: new Date(),
+    css: "today",
     title:date_to_str( new Date())
 });
 gantt.getMarker(todayMarker).css = "today_new";
 gantt.updateMarker(todayMarker); /*!*/
-    
+
 @template:	api_method
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
@@ -24,7 +24,7 @@ gantt.updateMarker(todayMarker); /*!*/
 
 
 
-    
+
 
 @related:
 	desktop/markers.md
