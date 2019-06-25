@@ -10,6 +10,18 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.1.7
+-----
+
+<span class='release_date'>June 25, 2019. Bugfix release</span>
+
+- Fix incorrect behavior of api/gantt_getclosestworktime.md
+- Fix issue with the api/gantt_autoscroll_config.md which happened after [toggling visibility](api/gantt_show_chart_config.md) of the timeline
+- Fix bug in the [Multiselect extension](desktop/multiselection.md) which caused selected tasks to lose highlight after chart repaint
+- Fix script error which happened after [vertical drag-and-drop](desktop/reordering_tasks.md) if [smart rendering](desktop/performance.md#smartrendering) and [keyboard navigation](desktop/keyboard_navigation.md) extensions were enabled
+- Fix incorrect behavior which happened when users tried to switch between [inline editors](desktop/inline_editing.md) using the `Tab` key if some columns of the grid were [hidden](desktop/specifying_columns.md#visibility)
+- Fix unexpected behavior which prevented the [lightbox](desktop/edit_form.md) and [inline editors](desktop/inline_editing.md) from overriding [constraint dates](desktop/auto_scheduling.md#timeconstraintsfortasks)
+
 6.1.6
 -----
 
