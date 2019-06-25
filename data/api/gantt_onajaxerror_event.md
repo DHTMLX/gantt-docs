@@ -14,10 +14,14 @@ onAjaxError
 @example:
 
 gantt.attachEvent("onAjaxError", function(request){
-    // your code here
+    gantt.message({type: "error", text:"Http error "+request.status+ "!"})
+    gantt.message(request.response)
     return true;
 });
 
 @template:	api_event
 @descr:
 The event is blockable. Returning false will stop further processing of the AJAX request
+
+@related:
+desktop/server_side.md

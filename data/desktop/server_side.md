@@ -318,8 +318,6 @@ gantt.config.order_branch_free = true;
  
 gantt.init("gantt_here");
 gantt.load("/api");
- 
-gantt.load("apiUrl");
 
 var dp = gantt.createDataProcessor({
       url: "/api",
@@ -430,14 +428,13 @@ var dp = gantt.createDataProcessor({
 Currently, api/gantt_load.md does not support header/payload parameters, so if you need them for GET request, you'll have to send xhr manually and load data into gantt using api/gantt_parse.md, for example:
 
 ~~~js
-$.ajax({
+gantt.ajax.get({
     url: "/api",
     headers: {
         "Authorization": "Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
-    },
-    success: function (result) {
-        gantt.parse(result);
     }
+}).then(function (xhr) {
+    gantt.parse(xhr.responseText)
 });
 ~~~
 
@@ -469,6 +466,20 @@ var dp = gantt.createDataProcessor({
 });
 ~~~
 
+One more way to add custom parameters to a request is to use the onBeforeUpdate event of DataProcessor:
+
+~~~js
+var dp = gantt.createDataProcessor({
+  url: "/api",
+  mode:"REST"
+});
+ 
+dp.attachEvent("onBeforeUpdate", function(id, state, data){
+    data.projectId = "1";
+    return true;
+});
+~~~
+
 Triggering Data Saving from Script
 ------------------------------------
 
@@ -478,11 +489,11 @@ Generally, to update a specific task or dependency programmatically, use the api
 
 ~~~js
 gantt.parse([
-   {id:1, start_date:"2013-05-13 6:00", end_date:"2009-05-13 8:00", text:"Event 1"},
-   {id:2, start_date:"2013-06-09 6:00", end_date:"2009-06-09 8:00", text:"Event 2"}
+   {id:1, start_date:"2019-05-13 6:00", end_date:"2019-05-13 8:00", text:"Event 1"},
+   {id:2, start_date:"2019-06-09 6:00", end_date:"2019-06-09 8:00", text:"Event 2"}
 ],"json");
  
-gantt.getTask(1).text = "Task 111"; //changes event's data
+gantt.getTask(1).text = "Task 111"; //changes task's data
 gantt.updateTask(1); // renders the updated task
 ~~~
 
@@ -538,11 +549,14 @@ gantt.createDataProcessor(function(entity, action, data, id){
  
   switch (action) {
     case "create":
-     return gantt.ajax.post({
-      headers: { "Content-Type": "application/json" }
-      url: server + "/task",
-      data: JSON.stringify(data)
-     });
+      return gantt.ajax.post({
+        headers: { 
+          "Content-Type": "application/json" 
+        },
+        url: server + "/task",
+        data: JSON.stringify(data)
+      });
+    break;
   }
 });
 ~~~
@@ -574,6 +588,10 @@ dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
 
 The response object may contain any number of additional properties, they can be accessed via the `response` argument of the onAfterUpdate handler.
 
+{{note
+This event will be called only for managed errors that return JSON response as shown above.
+If you need to handle HTTP errors, please check api/gantt_onajaxerror_event.md API event.
+}}
 
 Cascade Deletion
 ----------------
