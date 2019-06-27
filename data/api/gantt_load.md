@@ -8,7 +8,7 @@ load
 * callback		function 	the callback function
 
 @returns:
-- resultPromise		Promise	the promise object which resolves when ajax request is completed
+- resultPromise		object		the promise object which resolves when ajax request is completed
 
 @example: 
 gantt.load("/data",function(){

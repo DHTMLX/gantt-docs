@@ -466,7 +466,7 @@ var dp = gantt.createDataProcessor({
 });
 ~~~
 
-One more way to add custom parameters to a request is to use the onBeforeUpdate event of DataProcessor:
+One more way to add custom parameters to a request is to use the [onBeforeUpdate](https://docs.dhtmlx.com/api__dataprocessor_onbeforeupdate_event.html) event of DataProcessor:
 
 ~~~js
 var dp = gantt.createDataProcessor({
