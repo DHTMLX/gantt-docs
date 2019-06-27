@@ -1,6 +1,7 @@
 onLoadEnd
 =============
-@short:fires after loading data from the data source has been complete
+
+@short:fires after loading data from the data source has been completed
 	
 
 @example:
