@@ -13,7 +13,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 6.1.7
 -----
 
-<span class='release_date'>June 25, 2019. Bugfix release</span>
+<span class='release_date'>June 27, 2019. Bugfix release</span>
 
 - Fix incorrect behavior of api/gantt_getclosestworktime.md
 - Fix issue with the api/gantt_autoscroll_config.md which happened after [toggling visibility](api/gantt_show_chart_config.md) of the timeline
