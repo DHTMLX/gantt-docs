@@ -10,6 +10,23 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.2
+-------
+
+<span class='release_date'>July, 2019. Minor update</span>
+
+### New functionality
+
+- Ability to [expand/collapse split tasks](desktop/split_tasks.md#expandingcollapsingsplittasks) (PRO)
+- Creating tasks by drag-n-drop (desktop/crud_task.md#addinganewtask + related articles of desktop/task_bars.md)
+- Smooth zooming by mouse wheel (desktop/dynamic_scale.md#zooming)
+
+### Updates
+
+### Fixes
+
+
+
 6.1.7
 -----
 
