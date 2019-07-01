@@ -2,8 +2,7 @@ addMarker
 =============
 
 @short:adds a marker to the timeline area
-	
-@edition: pro
+
 @params:
 - marker	object	the marker's configuration object
 
@@ -12,9 +11,9 @@ addMarker
 
 
 @example:
-var todayMarker = gantt.addMarker({ 
-	start_date: new Date(), 
-    css: "today", 
+var todayMarker = gantt.addMarker({
+	start_date: new Date(),
+    css: "today",
     title:date_to_str( new Date())
 });
 setInterval(function(){
@@ -23,11 +22,9 @@ setInterval(function(){
 	today.title = date_to_str(today.start_date);
 	gantt.updateMarker(todayMarker);
 }, 1000*60);
-    
+
 @template:	api_method
 @descr:
-{{pronote This functionality is available in the PRO edition only.}}
-
 
 {{note This method is defined in the **ext/dhtmlxgantt_marker.js** extension, so you need to include it on the page. Read the details in the desktop/markers.md article.}}
 
@@ -41,7 +38,7 @@ The configuration object has the following properties:
 - **css** - a CSS class applied to the marker
 - **text** - the marker title
 - **title** - the marker's tooltip
-    
+
 
 @related:
 	desktop/markers.md

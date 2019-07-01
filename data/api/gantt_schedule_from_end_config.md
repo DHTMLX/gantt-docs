@@ -2,7 +2,7 @@ schedule_from_end
 =============
 
 @short:
-	enables backwards scheduling
+	enables backward scheduling
 
 @type: boolean
 
@@ -16,7 +16,9 @@ gantt.config.project_end = new Date(2019, 4, 1);
 
 @descr:
 
-Setting this config to `true` will switch auto scheduling to `as late as possible` mode.
+{{pronote This functionality is available in the PRO edition only.}}
+
+Setting this config to `true` will switch auto scheduling to the `as late as possible` mode.
 
 The value will be only applied if api/gantt_project_end_config.md is specified as well. 
 
@@ -30,3 +32,5 @@ api/gantt_project_end_config.md
 02_extensions/20_backwards_scheduling.html
 
 @edition:pro
+
+

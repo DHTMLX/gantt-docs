@@ -20,7 +20,7 @@ gantt.detachEvent(myEvent);
 
 @relatedapi:
 	 api/gantt_attachevent.md
-	 api/gantt_detachallevents.md
+	
 @related:
 	desktop/handling_events.md
 @template:	api_method

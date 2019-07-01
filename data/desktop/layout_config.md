@@ -1,7 +1,6 @@
 Gantt Layout
 ==============================
 
-
 Starting from version 5.0, Gantt provides the possibility to specify a configurable layout and arrange the elements of the component as inner views of a layout.
 It allows you to use additional timelines and grids to make a flexible gantt chart structure and define various schemes of arranging elements.
 
@@ -20,7 +19,7 @@ or add another grid and a timeline below the default ones.
 Default Layout
 ------------------
 
-The layout is set through the api/gantt_layout_config.md configuration option of the **gantt.config** object. The default configuration of the layout is the following:
+The layout is set through the [gantt.config.layout](api/gantt_layout_config.md) configuration option. The default configuration of the layout is the following:
 
 ~~~js
 gantt.config.layout = {
@@ -58,10 +57,10 @@ The layout of Gantt consists of cells which are occupied by views. The main and 
 
 - **grid** - defines the grid part of the Gantt chart. The main grid predefined for showing tasks has the *id:"grid"*;
 - **timeline** - defines the timeline part of the Gantt chart. The main timeline predefined for showing tasks has the *id:"timeline"*;
-- **resizer** - defines the resizer line. To enable a resizer, you need to set the **resizer** property to *true*;
+- **resizer** - defines the resizer line. To enable a resizer, you need to set the **resizer** property to *true*. **Available in the PRO edition only**;
 - **scrollbar** - defines scrollbars used in the Gantt chart. Grid and timeline views can be bound to particular scrollbars. Read details below.
-- **resourceGrid** - preconfigured grid for a resource panel. Available in the PRO edition only. See more details [here](desktop/resource_management.md).
-- **resourceTimeline** - preconfigured timeline for a resource panel. Available in the PRO edition only. See more details [here](desktop/resource_management.md).
+- **resourceGrid** - preconfigured grid for a resource panel. **Available in the PRO edition only**. See more details [here](desktop/resource_management.md).
+- **resourceTimeline** - preconfigured timeline for a resource panel. **Available in the PRO edition only**. See more details [here](desktop/resource_management.md).
 
 The view configuration is specified as an object with the corresponding properties. 
 You can [set custom configuration options](desktop/layout_config.md#configuringganttlayout) for the **grid** and **timeline** views. 
@@ -125,7 +124,7 @@ It is also possible to specify a separate horizontal scrollbar for the Grid view
 Layout Customization
 -------------------
 
-You can change the default layout configuration and specify a necessary scheme of arranging the elements of Gantt chart on a page, using additional layout views.
+You can change the default layout configuration and specify the necessary scheme of arranging the elements of Gantt chart on a page, using additional layout views.
 
 For example, you can create additional grid and timeline views that will make a bottom resource panel for the main gantt chart. The steps to implement such a 
 custom layout are:

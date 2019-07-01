@@ -218,23 +218,21 @@ For example:
 </form>
 ~~~
 
-Alternatively, you can use the [client-side API](api/gantt_importfrommsproject.md):
+Alternatively, you can use the [client-side API](api/gantt_importfrommsproject.md), like this:
 
 ~~~js
 gantt.importFromMSProject({
-    data: file,
-    callback: function(project){
-        if(project){
-            gantt.clearAll();
-
-            if(project.config){
-                gantt.mixin(gantt.config, project.config, true);
-            }
+	data: file,
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+    	if (project) {
+        	gantt.clearAll();
+            if (project.config.duration_unit) {
+            	gantt.config.duration_unit = project.config.duration_unit;
+            }                    
             gantt.parse(project.data);
         }
-        if(callback)
-            callback(project);
-    }
+     }
 });
 ~~~
 

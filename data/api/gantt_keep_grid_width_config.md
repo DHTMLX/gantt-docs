@@ -22,8 +22,6 @@ gantt.init("gantt_here");
 	02_extensions/04_grid_resize.html
 @related:
 	desktop/specifying_columns.md
-@relatedapi:
-	api/gantt_grid_resize_config.md
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 

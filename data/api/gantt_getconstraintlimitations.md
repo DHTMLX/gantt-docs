@@ -11,7 +11,7 @@ getConstraintLimitations
 - constraintLimitations		object		an object containing constraint dates
 
 @relatedsample:
-	02_extensions\19_constraints_scheduling.html
+	02_extensions/19_constraints_scheduling.html
 
 @example:
 gantt.addTaskLayer(function draw_deadline(task) {

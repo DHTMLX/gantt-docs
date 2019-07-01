@@ -7,21 +7,26 @@ load
 * type	string	<i>('json', 'xml', 'oldxml')</i> the data type. The default value - <i>'json'</i>
 * callback		function 	the callback function
 
+@returns:
+- resultPromise		object		the promise object which resolves when ajax request is completed
 
 @example: 
-gantt.load("data.php",function(){
-	alert("Data has been successfully loaded");
+gantt.load("/data",function(){
+	gantt.message("everything is ready");
+});
+//or
+gantt.load("/data").then(function(xhr){
+	gantt.message("everything is ready");
 });
 //or
 gantt.load("data.json"); //loading data in the JSON format
 //or
 gantt.load("data.xml","xml"); //loading data in the XML format (version 2.0+)
 //or
-gantt.load("data.xml","oldxml"); //loading data in the XML format (version 1.6)
-//or
 gantt.load("data.xml","xml", function(){ //specifying the callback function 
 	alert("Data has been successfully loaded");
 });
+
 
 @template:	api_method
 @related:	
@@ -34,5 +39,8 @@ gantt.load("data.xml","xml", function(){ //specifying the callback function
     02_extensions/06_dynamic_loading.html
 @relatedapi:
 	api/gantt_parse.md
+	api/gantt_onloadstart_event.md
+	api/gantt_onloadend_event.md
+	api/gantt_onajaxerror_event.md
 @descr: 
 The method invokes the api/gantt_onloadstart_event.md and api/gantt_onloadend_event.md events.

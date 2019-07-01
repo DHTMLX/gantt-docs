@@ -48,8 +48,8 @@ var tasks = {
     data:[{id:2, text:"Task #1", start_date:"12-04-2013", duration:3}],  /*!*/
     links:[]
 };
-//or 
-var tasks = { 
+//or
+var tasks = {
  	data:[{id:2, text:"Task #1", start_date:"12-04-2013", duration:3, /*!*/
     		type:gantt.config.types.task}],  /*!*/
     links:[]
@@ -65,14 +65,14 @@ var tasks = {
 Tasks with **type="task"** can be characterized as follows:
 
 - Can have 1 parent and any number of child tasks.
-- Can be dragged and resized. 
+- Can be dragged and resized.
 - Doesn't depend on child tasks, i.e. if the user dragges a child of a regular task, the task doesn't change its duration or progress respectively.
 
 
 Project tasks
 -----------------
 
-Project task is a task that starts, when its earliest child task starts, and ends, when its latest child ends. 
+Project task is a task that starts, when its earliest child task starts, and ends, when its latest child ends.
 
 {{note
 The difference between project and regular tasks is that the duration of a project task depends on its children and is changed respectively.
@@ -87,9 +87,9 @@ Specifying project tasks
 ~~~js
 var tasks = {
     data:[
-    	{id:1, text:"Project #1",    type:gantt.config.types.project,    open:true}, /*!*/  
+    	{id:1, text:"Project #1",    type:gantt.config.types.project,    open:true}, /*!*/
         {id:2, text:"Task #1",       start_date:"12-04-2013", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:gantt.config.types.milestone,   parent:1, 
+        {id:3, text:"Alpha release", type:gantt.config.types.milestone,   parent:1,
             start_date:"14-04-2013"}],
     links:[]
 };
@@ -104,13 +104,18 @@ var tasks = {
 Tasks with **type="project"** can be characterized as follows:
 
 - Can have 1 parent and any number of child tasks.
-- Cannot be dragged and resized, unless drag and drop is explicitly enabled via the api/gantt_drag_project_config.md config. 
-- Depend on children tasks, i.e. if the user drags a child of a project task, the task changes its duration and progress respectively.
+- Cannot be dragged and resized, unless drag and drop is explicitly enabled via the api/gantt_drag_project_config.md config.
+- Depend on children tasks, i.e. if the user drags a child of a project task, the task changes its duration.
 - Ignore the **start_date**, **end_date**, **duration** properties.
-- Can't be dragged if have no children tasks. 
+- Can't be dragged if have no children tasks.
+- Project's **progress** is specified explicitly and doesn't depend on subtasks by default. If you want it to be calculated automatically you'll have to write code for it. Check the sample below for the reference.
+
+{{sample
+08_api/16_dynamic_progress.html
+}}
 
 {{note
-To provide a possibility of adding project tasks, read article desktop/milestones.md. A possibility to add milestones guarantees that your end users can add project tasks as well. 
+To provide a possibility of adding project tasks, read article desktop/milestones.md. A possibility to add milestones guarantees that your end users can add project tasks as well.
 }}
 
 Milestones
@@ -127,7 +132,7 @@ Specifying milestones
 ~~~js
 var tasks = {
     data:[
-    	{id:1, text:"Project #1",    type:gantt.config.types.project,    open:true}, 
+    	{id:1, text:"Project #1",    type:gantt.config.types.project,    open:true},
         {id:2, text:"Task #1",       start_date:"12-04-2013", duration:3, parent:1},
         {id:3, text:"Alpha release", type:gantt.config.types.milestone,   parent:1, /*!*/
             start_date:"14-04-2013"}],/*!*/
@@ -143,7 +148,7 @@ var tasks = {
 Tasks with **type="milestone"** can be characterized as follows:
 
 - Can have 1 parent and any number of child tasks.
-- Cannot be dragged and resized. 
+- Cannot be dragged and resized.
 - Have zero duration and preserve it all the time.
 - Ignore the **end_date**, **duration**, **progress** properties.
 
@@ -155,13 +160,13 @@ Specific lightbox per task type
 ----------------------------------------------
 
 Each type of a task has its own set of characteristics. That's why an individual configuration of the details form (lightbox) can be defined for each type.
-All configurations are stored in the api/gantt_lightbox_config.md object. 
+All configurations are stored in the api/gantt_lightbox_config.md object.
 
 They are:
 
 - **gantt.config.lightbox.sections** - for regular tasks.
 - **gantt.config.lightbox.project_sections** - for project tasks.
-- **gantt.config.lightbox.milestone_sections** - for milestones. 
+- **gantt.config.lightbox.milestone_sections** - for milestones.
 
 The default configuration settings are the following:
 
@@ -198,8 +203,8 @@ All tasks' types are defined in the api/gantt_types_config.md object. <br>Genera
 2. Define individual settings for the new type.
 
 
-Let's assume, you want to add a new type of tasks - **meeting**. 
-**Meeting**  will be an ordinary task but colored in different color and with different inputs in the lightbox.              
+Let's assume, you want to add a new type of tasks - **meeting**.
+**Meeting**  will be an ordinary task but colored in different color and with different inputs in the lightbox.
 
 <img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="desktop/custom_task_type.png">
 
@@ -208,7 +213,7 @@ To define a new type with the name **meeting** and specify an individual lightbo
 
 <ol>
 	<li>Add a new type to the api/gantt_types_config.md object:<br><br>
-    
+
 ~~~js
 gantt.config.types.meeting = "type_id";
 ~~~
@@ -218,7 +223,7 @@ where "meeting" is a programmatic name of the type. It doesn't affect anything. 
 <br><br>
 	</li>
 	<li>Set the label for the new type in the "typeselect" control:<br><br>
-    
+
 ~~~js
 gantt.locale.labels.type_meeting = "Meeting";
 ~~~
@@ -235,7 +240,7 @@ gantt.config.lightbox.meeting_sections = [
 ];
 gantt.locale.labels.section_title = "Subject";
 gantt.locale.labels.section_details = "Details";
-~~~ 
+~~~
 <br>
 	</li>
 <li>Specify a style for the new type and apply it using the api/gantt_task_class_template.md template:<br><br>
@@ -262,7 +267,7 @@ gantt.templates.task_class = function(start, end, task){
 <br>
 </li>
 	<li>Set the template for text of the "meeting" tasks using the api/gantt_task_text_template.md template: <br><br>
-    
+
 ~~~js
 gantt.templates.task_text = function(start, end, task){
 	if(task.type == gantt.config.types.meeting){
