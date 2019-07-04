@@ -419,6 +419,9 @@ As a value of this attribute, use the key of the necessary calendar from the "us
 
 {{sample 09_worktime/07_resource_calendars.html}}
 
+{{note Note that when a task has both a custom and a resource calendars, the custom calendar has a higher priority and overrides the resource calendar settings.}}
+
+
 ## Assigning Calendar to Project
 
 {{pronote This functionality is available in the PRO edition only.}}
