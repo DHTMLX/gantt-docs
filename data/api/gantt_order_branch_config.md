@@ -1,7 +1,7 @@
 order_branch
 =============
 
-@short:activates the 'branch' mode that allows reordering tasks within the same nesting level
+@short:activates the 'branch' mode that allows vertically reordering tasks within the same tree level
 	
 @values:true,false,"marker"    
 @default:false
@@ -13,8 +13,12 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
+This option allows reordering tasks, while saving their tree level position. For example, a subtask will never become the parent task.
+
+###Increasing performance
+
 If your Gantt contains lots of tasks, the default mode of branch reordering may slow down the performance.
-To speed it up, you can make use of the "marker" mode. 
+To speed it up, you can make use of the **"marker"** mode. 
 
 ~~~js
 gantt.config.order_branch = "marker";
