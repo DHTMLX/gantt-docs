@@ -23,7 +23,7 @@ gantt.config.date_scale = "%Y";
 gantt.init("gantt_here");
 ~~~
 
-See the full list of the **gantt.config** properties in  ["Gantt API:Properties"](api/refs/gantt.md#properties).
+See the full list of the **gantt.config** properties in  ["Gantt API:Properties"](api/refs/gantt_props.md).
 
 {{sample
 	03_scales/02_month_days.html

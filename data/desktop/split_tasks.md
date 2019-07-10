@@ -83,8 +83,8 @@ if(gantt.isSplitTask(task)){
 
 ## Expanding/collapsing split tasks
 
-In case you want to expand/collapse a split task right from the grid interface, there is a special configuration option that will help you. It is called **open_split_tasks** and it takes a boolean value to make a split
-task expandable and otherwise.
+In case you want to expand/collapse a split task right from the grid interface, there is a special configuration option that will help you. It is called api/gantt_open_split_tasks_config.md and it takes 
+a boolean value to make a split task expandable and otherwise.
 
 ~~~js
 gantt.config.open_split_tasks = true;

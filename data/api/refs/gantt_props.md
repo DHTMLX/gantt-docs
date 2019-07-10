@@ -23,6 +23,7 @@ Properties
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_constraint_types_config.md - contains all available constraint types
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
+- api/gantt_date_format_config.md - 
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
 - api/gantt_details_on_create_config.md - 'says' to open the lightbox while creating new events by clicking the '+' button
@@ -65,14 +66,15 @@ Properties
 - api/gantt_min_grid_column_width_config.md - sets the minumum width for the grid (in pixels) while being resized
 - api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
+- api/gantt_open_split_tasks_config.md - 
 - api/gantt_open_tree_initially_config.md - openes all branches initially
-- api/gantt_order_branch_config.md - activates the 'branch' mode that allows reordering tasks within the same nesting level
+- api/gantt_order_branch_config.md - activates the 'branch' mode that allows vertically reordering tasks within the same tree level
 - api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows reordering tasks within the whole gantt
 - api/gantt_placeholder_task_config.md - adds an empty row into the end of the list of tasks to simplify tasks editing via keyboard
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
-- api/gantt_project_end_config.md - specifies the end date of the project
-- api/gantt_project_start_config.md - specifies the start date of the project
+- api/gantt_project_end_config.md - specifies the end date of a project
+- api/gantt_project_start_config.md - specifies the start date of a project
 - api/gantt_quick_info_detached_config.md - defines whether the task form will appear from the left/right side of the screen or near the selected task
 - api/gantt_quickinfo_buttons_config.md - stores a collection of buttons resided in the pop-up task's details form
 - api/gantt_readonly_config.md - activates the read-only mode for the Gantt chart
@@ -87,9 +89,10 @@ Properties
 - api/gantt_row_height_config.md - sets the default height for rows of the table
 - api/gantt_rtl_config.md - switches gantt to the right-to-left mode
 - api/gantt_scale_height_config.md - sets the height of the time scale and the header of the grid
-- api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of leading/closing empty space
+- api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of the leading/closing empty space
 - api/gantt_scale_unit_config.md - sets the unit of the time scale (X-Axis)
-- api/gantt_schedule_from_end_config.md - enables backwards scheduling
+- api/gantt_scales_config.md - 
+- api/gantt_schedule_from_end_config.md - enables backward scheduling
 - api/gantt_scroll_on_click_config.md - specifies whether the timeline area shall be scrolled while selecting to display the selected task
 - api/gantt_scroll_size_config.md - set the sizes of the vertical (width) and horizontal (height) scrolls
 - api/gantt_select_task_config.md - enables selection of tasks in the Gantt chart
@@ -158,6 +161,7 @@ Properties
 - api/gantt_columns_config.md
 - api/gantt_constraint_types_config.md
 - api/gantt_correct_work_time_config.md
+- api/gantt_date_format_config.md
 - api/gantt_date_grid_config.md
 - api/gantt_date_scale_config.md
 - api/gantt_details_on_create_config.md
@@ -200,6 +204,7 @@ Properties
 - api/gantt_min_grid_column_width_config.md
 - api/gantt_multiselect_config.md
 - api/gantt_multiselect_one_level_config.md
+- api/gantt_open_split_tasks_config.md
 - api/gantt_open_tree_initially_config.md
 - api/gantt_order_branch_config.md
 - api/gantt_order_branch_free_config.md
@@ -224,6 +229,7 @@ Properties
 - api/gantt_scale_height_config.md
 - api/gantt_scale_offset_minimal_config.md
 - api/gantt_scale_unit_config.md
+- api/gantt_scales_config.md
 - api/gantt_schedule_from_end_config.md
 - api/gantt_scroll_on_click_config.md
 - api/gantt_scroll_size_config.md

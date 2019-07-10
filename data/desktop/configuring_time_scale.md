@@ -4,7 +4,7 @@ Setting up the Scale
 <img src="desktop/gantt_dates.png"/>
 
 
-You can configure the following aspects of the time scale (X-Axis):
+The configuration of scales is specified via the api/gantt_scales_config.md property. You can configure the following aspects of the time scale (X-Axis):
 
 1. [Unit](#timeunits)
 2. [Range](#range)
@@ -22,17 +22,20 @@ Time units
 
 <img src="desktop/week_scale_unit.png"/>
 
+To set the unit of the scale, use the **unit** property in the corresponding scale object: 
 
-To set the unit of the scale, use the api/gantt_scale_unit_config.md property: 
+Possible values are: "minute", "hour", "day", "week", "quarter", "month", "year".
 
-{{snippet
-Setting the "week" unit for the scale
-}}
+
 ~~~js
-gantt.config.scale_unit = "week"; /*!*/
-gantt.config.date_scale = "Week #%W";
+gantt.config.scales = [
+	{unit: "month", step: 1, format: "%F, %Y"},
+	{unit: "day", step: 1, format: "%j, %D"}
+];
+
 gantt.init("gantt_here");
 ~~~
+
 {{sample
 	03_scales/02_month_days.html
 }}
@@ -212,14 +215,15 @@ Time step
 
 <img src="desktop/scale_step.png"/>
 
-To set the step of the time scale, use the api/gantt_step_config.md property:
+To set the step of the time scale, use the **step** property in the corresponding scale object:
 
-{{snippet
-Setting the "day" step for the scale
-}}
 ~~~js
-gantt.config.scale_unit= "day";
-gantt.config.step = 2;  /*!*/
+gantt.config.scales = [
+	{unit: "year", step: 1, format: "%Y"},
+	{unit: "month", step: 3, format: monthScaleTemplate},
+	{unit: "month", step: 1, format: "%M"}
+];
+
 
 gantt.init("gantt_here");
 ~~~
@@ -252,21 +256,21 @@ If you have several scales, they will share the specified height equally. For ex
 
 
 Date format
-----------------------------------------------
+----------------------
 
 {{note
 See the desktop/date_format.md article to know about available format characters 
 }}
 
 
-To set the format of the scale, use:
-
-<ul>
-	<li>the api/gantt_date_scale_config.md property,  to set a simple format as a string:<br><br>
+To set the format of the scale, use the **format** property in the corresponding scale object. The format of date can be set as a string: 
 
 ~~~js
-gantt.config.scale_unit = "day";
-gantt.config.date_scale = "%F, %d"; /*!*/
+gantt.config.scales = [
+	{unit: "month", step: 1, format: "%F, %Y"},
+	{unit: "week", step: 1, format: weekScaleTemplate},
+	{unit: "day", step:1, format: "%D", css:daysStyle }
+];
 
 gantt.init("gantt_here");
 ~~~
@@ -277,24 +281,14 @@ gantt.init("gantt_here");
 
 <img style="margin-top:12px; margin-bottom:20px;" src="desktop/scale_format.png"/>
 
-
-</li>
-<li>the api/gantt_date_scale_template.md template, to set a complex format as a function that takes a date object as a parameter:<br><br>
+Or as a function that takes a date object as a parameter:
 
 ~~~js
-gantt.config.scale_height = 44;
-
-gantt.attachEvent("onGanttReady", function(){
-	var dateFormat = gantt.date.date_to_str("%F %d");
-
-	var dayNumber = function(date){
-		return gantt.columnIndexByDate(date) + 1;
-	} 
-
-	gantt.templates.date_scale = function(date){		/*!*/
-	  return "<strong>Day "+dayNumber(date)+"</strong><br/>"+dateFormat(date); /*!*/
-	} /*!*/
-});
+gantt.config.scales = [
+  { unit: "day", step:1, format: function(date){
+    return "<strong>Day " + dayNumber(date) + "</strong><br/>" + dateFormat(date);
+  }
+]
 ~~~
 
 
@@ -303,8 +297,7 @@ gantt.attachEvent("onGanttReady", function(){
 }}
 
 <img style="margin-top:12px;" src="desktop/scale_template.png"/>
-</li>
-</ul>
+
 
 Styling
 ------------------------------------
@@ -428,3 +421,4 @@ gantt.config.subscales = [
 ];
 ~~~
 
+@todo: refresh images

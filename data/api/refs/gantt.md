@@ -50,7 +50,7 @@ Gantt API
 - api/gantt_deletemarker.md - deletes the specified marker
 - api/gantt_deletetask.md - deletes the specified  task
 - api/gantt_destructor.md - destroys the gantt instance
-- api/gantt_detachallevents.md - detaches all events from dhtmlxGantt (both custom and inner)
+- api/gantt_detachallevents.md - detaches all events from dhtmlxGantt (both custom and inner ones)
 - api/gantt_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent() method)
 - api/gantt_eachparent.md - iterates over all parent tasks of the specified task in the Gantt chart
 - api/gantt_eachselectedtask.md - iterates over all selected tasks in the Gantt chart
@@ -280,7 +280,7 @@ Gantt API
 - api/gantt_onlinkdblclick_event.md - fires when the user double clicks on a link
 - api/gantt_onlinkidchange_event.md - fires when the id of a link is changed
 - api/gantt_onlinkvalidation_event.md - fires when the user adds a new link and dhtmlxGantt checks whether the link is valid
-- api/gantt_onloadend_event.md - fires after loading data from the data source has been complete
+- api/gantt_onloadend_event.md - fires after loading data from the data source has been completed
 - api/gantt_onloadstart_event.md - fires immediately before loading data from the data source has been started
 - api/gantt_onmousemove_event.md - fires when the mouse is moved over a task bar
 - api/gantt_onmultiselect_event.md - fires after selection of a task or a range of tasks has been completed
@@ -330,6 +330,7 @@ Gantt API
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_constraint_types_config.md - contains all available constraint types
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
+- api/gantt_date_format_config.md - 
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
 - api/gantt_details_on_create_config.md - 'says' to open the lightbox while creating new events by clicking the '+' button
@@ -372,14 +373,15 @@ Gantt API
 - api/gantt_min_grid_column_width_config.md - sets the minumum width for the grid (in pixels) while being resized
 - api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
+- api/gantt_open_split_tasks_config.md - 
 - api/gantt_open_tree_initially_config.md - openes all branches initially
-- api/gantt_order_branch_config.md - activates the 'branch' mode that allows reordering tasks within the same nesting level
+- api/gantt_order_branch_config.md - activates the 'branch' mode that allows vertically reordering tasks within the same tree level
 - api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows reordering tasks within the whole gantt
 - api/gantt_placeholder_task_config.md - adds an empty row into the end of the list of tasks to simplify tasks editing via keyboard
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
-- api/gantt_project_end_config.md - specifies the end date of the project
-- api/gantt_project_start_config.md - specifies the start date of the project
+- api/gantt_project_end_config.md - specifies the end date of a project
+- api/gantt_project_start_config.md - specifies the start date of a project
 - api/gantt_quick_info_detached_config.md - defines whether the task form will appear from the left/right side of the screen or near the selected task
 - api/gantt_quickinfo_buttons_config.md - stores a collection of buttons resided in the pop-up task's details form
 - api/gantt_readonly_config.md - activates the read-only mode for the Gantt chart
@@ -394,9 +396,10 @@ Gantt API
 - api/gantt_row_height_config.md - sets the default height for rows of the table
 - api/gantt_rtl_config.md - switches gantt to the right-to-left mode
 - api/gantt_scale_height_config.md - sets the height of the time scale and the header of the grid
-- api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of leading/closing empty space
+- api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of the leading/closing empty space
 - api/gantt_scale_unit_config.md - sets the unit of the time scale (X-Axis)
-- api/gantt_schedule_from_end_config.md - enables backwards scheduling
+- api/gantt_scales_config.md - 
+- api/gantt_schedule_from_end_config.md - enables backward scheduling
 - api/gantt_scroll_on_click_config.md - specifies whether the timeline area shall be scrolled while selecting to display the selected task
 - api/gantt_scroll_size_config.md - set the sizes of the vertical (width) and horizontal (height) scrolls
 - api/gantt_select_task_config.md - enables selection of tasks in the Gantt chart
@@ -450,9 +453,9 @@ Gantt API
 
 {{api
 - api/gantt_date_grid_template.md - specifies the content of start date or end date columns in grid
-- api/gantt_date_scale_template.md - specifies the date format of the time scale (X-Axis)
 - api/gantt_drag_link_template.md - specifies the text of tooltips that are displayed when the user creates a new dependency link
 - api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the pop-up that appears when a user drags a link
+- api/gantt_format_date_template.md - 
 - api/gantt_grid_blank_template.md - specifies the custom content inserted before the labels of child items in the tree column
 - api/gantt_grid_date_format_template.md - specifies the format of dates in the "Start time" column
 - api/gantt_grid_file_template.md - specifies the icon of child items in the tree column
@@ -467,6 +470,7 @@ Gantt API
 - api/gantt_histogram_cell_label_template.md - defines the label inside a cell
 - api/gantt_link_class_template.md - specifies the CSS class that will be applied to a link
 - api/gantt_link_description_template.md - specifies the text in the header of the link's "delete" confirm window
+- api/gantt_parse_date_template.md - 
 - api/gantt_progress_text_template.md - specifies the text in the completed part of the task bar
 - api/gantt_quick_info_class_template.md - specifies the CSS class that will be applied to  the pop-up edit form
 - api/gantt_quick_info_content_template.md - specifies the content of the pop-up edit form
@@ -476,7 +480,6 @@ Gantt API
 - api/gantt_resource_cell_value_template.md - defines the HTML content of resource timeline cells
 - api/gantt_scale_cell_class_template.md - specifies the CSS class that will be applied to cells of the time scale of the timeline area
 - api/gantt_scale_row_class_template.md - specifies the CSS class that will be applied to the time scale
-- api/gantt_task_cell_class_template.md - specifies the CSS class that will be applied to the cells of the timeline area
 - api/gantt_task_class_template.md - specifies the CSS class that will be applied to task bars
 - api/gantt_task_date_template.md - specifies the date format of the label in the 'Time period' section of the lightbox
 - api/gantt_task_row_class_template.md - specifies the CSS class that will be applied to the row of the timeline area
@@ -484,6 +487,7 @@ Gantt API
 - api/gantt_task_time_template.md - specifies the date period in the header of the lightbox
 - api/gantt_task_unscheduled_time_template.md - specifies the dates of unscheduled tasks
 - api/gantt_time_picker_template.md - specifies the format of the drop-down time selector in the lightbox
+- api/gantt_timeline_cell_class_template.md - 
 - api/gantt_tooltip_date_format_template.md - specifies the format of start and end dates displayed in the tooltip
 - api/gantt_tooltip_text_template.md - specifies the text of tooltips
 - api/gantt_xml_date_template.md - a string from an XML file is converted into a date object in conformity with this template

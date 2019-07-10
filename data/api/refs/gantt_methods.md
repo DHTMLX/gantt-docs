@@ -46,7 +46,7 @@ Methods
 - api/gantt_deletemarker.md - deletes the specified marker
 - api/gantt_deletetask.md - deletes the specified  task
 - api/gantt_destructor.md - destroys the gantt instance
-- api/gantt_detachallevents.md - detaches all events from dhtmlxGantt (both custom and inner)
+- api/gantt_detachallevents.md - detaches all events from dhtmlxGantt (both custom and inner ones)
 - api/gantt_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent() method)
 - api/gantt_eachparent.md - iterates over all parent tasks of the specified task in the Gantt chart
 - api/gantt_eachselectedtask.md - iterates over all selected tasks in the Gantt chart

@@ -82,7 +82,7 @@ Events
 - api/gantt_onlinkdblclick_event.md - fires when the user double clicks on a link
 - api/gantt_onlinkidchange_event.md - fires when the id of a link is changed
 - api/gantt_onlinkvalidation_event.md - fires when the user adds a new link and dhtmlxGantt checks whether the link is valid
-- api/gantt_onloadend_event.md - fires after loading data from the data source has been complete
+- api/gantt_onloadend_event.md - fires after loading data from the data source has been completed
 - api/gantt_onloadstart_event.md - fires immediately before loading data from the data source has been started
 - api/gantt_onmousemove_event.md - fires when the mouse is moved over a task bar
 - api/gantt_onmultiselect_event.md - fires after selection of a task or a range of tasks has been completed
