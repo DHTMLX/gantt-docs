@@ -5,6 +5,7 @@ Configuring Scales
 
 {{index
 - desktop/configuring_time_scale.md 
+- desktop/zooming.md
 - desktop/highlighting_time_slots.md
 - desktop/second_scale.md
 - desktop/dynamic_scale.md

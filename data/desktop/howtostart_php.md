@@ -145,7 +145,7 @@ On the client side we'll request data using the [gantt.load](api/gantt_load.md) 
 
 {{snippet /templates/index.phtml}}
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
+gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
 
 gantt.init("gantt_here");
 gantt.load("/data");/*!*/
@@ -154,7 +154,7 @@ gantt.load("/data");/*!*/
 This command will send an AJAX request to the specified URL, 
 the response is expected to contain Gantt data in the [JSON format](desktop/supported_data_formats.md#json). 
 
-Also, note that we've specified the [xml_date](api/gantt_xml_date_config.md) value. 
+Also, note that we've specified the api/gantt_date_format.md value. 
 This is how we tell gantt what format of dates the data source will use, so the client side could parse them.
 
 Thus, we should add a necessary handler for such a request on the backend.
@@ -260,12 +260,12 @@ Open [http://127.0.0.1:8080/ ](http://127.0.0.1:8080/) and you will see that the
 Step 5. Saving Changes
 -----------------------------------
 
-Our next step is to implement saving of the changes made on the client side to the server.
-It is usually done using the [dataProcessor](desktop/server_side.md#technique) library, which is embedded into the gantt.
+Our next step is to implement saving of the changes made on the client side to the server. It is usually done using the [dataProcessor](desktop/server_side.md#technique) library, which is embedded into the gantt.
 Open *index.phtml* and add the following lines of code:
+
 {{snippet templates/index.phtml}}
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
+gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
 
 gantt.init("gantt_here");
 gantt.load("/data");
@@ -276,8 +276,7 @@ dp.setTransactionMode("REST");/*!*/
 ~~~
 
 DataProcessor will react to each action on the client (i.e. adding data into the chart, modifying or removing it) by sending an AJAX request to the server.
-The dataProcessor will work in the REST mode, which means it will use different HTTP methods for different actions, here is 
-[a complete list of routes](desktop/server_side.md#requestresponsedetails).
+The dataProcessor will work in the REST mode, which means it will use different HTTP methods for different actions, here is [a complete list of routes](desktop/server_side.md#requestresponsedetails).
 
 So now we need to add these routes to our app and implement the required logic. Firstly, go to *src/routes.php*:
 

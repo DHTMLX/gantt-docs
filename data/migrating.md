@@ -20,6 +20,34 @@ Migration from Older Versions
 	}
 </style>
 
+6.1 -> 6.2
+---------------
+
+### api_date
+
+### scales api
+
+### gantt.templates.task_cell_class → gantt.templates.timeline_cell_class
+
+### "xml_date" config and template, and "xml_format" templates are renamed
+
+Below there is the scheme of replacing previously used API:
+
+- gantt.config.xml_date →  [gantt.config.date_format](api/gantt_date_format_config.md)
+- gantt.templates.xml_date → [gantt.templates.parse_date](api/gantt_parse_date_template.md)
+- gantt.templates.xml_format → [gantt.templates.format_date](api/gantt_format_date_template.md)
+
+
+Since v6.2 the default values of the **xml_date** config, and **xml_date** and **xml_format** templates are *undefined*. Thus if you haven't assigned any values to them, they won't work. 
+
+However, Gantt will continue to use the old names of the config and templates, so if you've redefined those APIs in your code, they will work as before. For example:
+
+~~~js
+// will work correctly
+gantt.templates.xml_date = function(datestring){
+    return new Date(datestring);
+};
+~~~
 
 6.0 -> 6.1 
 -------------
@@ -284,3 +312,4 @@ The id of the parent task can be accessed as **gantt.getTask(task_id).parent**. 
 
 @spellcheck: btn
 
+@todo: check 6.1->6.2

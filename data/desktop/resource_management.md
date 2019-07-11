@@ -309,7 +309,7 @@ gantt.config.layout = {
 
 Once initialized, *resourceGrid* will work in the same way as the default grid view, but readonly. *resourceTimeline* will inherit the scale configuration from the default timeline and will have two layers:
 
-- background rows, which inherit api/gantt_task_row_class_template.md and api/gantt_task_cell_class_template.md. The templates of *resourceTimeline* can be redefined at the layout level.
+- background rows, which inherit api/gantt_task_row_class_template.md and api/gantt_timeline_cell_class_template.md. The templates of *resourceTimeline* can be redefined at the layout level.
 - resource layer - a layer specific for *resourceTimeline*. It will display blocks in cells where the resource has tasks assigned. The block style and content can be templated with 
 the api/gantt_resource_cell_class_template.md and api/gantt_resource_cell_value_template.md templates:
 

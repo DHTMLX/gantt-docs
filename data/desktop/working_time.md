@@ -128,10 +128,10 @@ gantt.getClosestWorkTime(new Date(2019,3,30));
 
 <h3 id="color_dayoff_times">Coloring the day-off times</h3>
 
-To color the day-off times in the chart area, use the api/gantt_task_cell_class_template.md template:
+To color the day-off times in the chart area, use the api/gantt_timeline_cell_class_template.md template:
 
 ~~~js
-gantt.templates.task_cell_class = function(task, date){
+gantt.templates.timeline_cell_class = function(task, date){
 	if(!gantt.isWorkTime({task:task, date: date}))
 		return "week_end";
 	return "";

@@ -251,4 +251,3 @@ gantt.Promise.all([
 added in version 4.0
 
 
-@todo: check the content and version in change log

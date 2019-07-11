@@ -3,6 +3,16 @@ date_scale
 
 @short:sets the format of the time scale (X-Axis)
 	
+@deprecated:Use the **format** property of the api/gantt_scales_config.md instead:
+
+~~~js
+gantt.config.scales = [
+    {unit: "month", step: 1, format: "%F, %Y"},
+    {unit: "week", step: 1, format: weekScaleTemplate},
+    {unit: "day", step: 1, format: "%D", css:daysStyle }
+];
+~~~    
+
 
 @type: string
 @example:	
@@ -24,4 +34,6 @@ gantt.init("gantt_here");
 @template:	api_config
 @descr:
 
+@changelog: deprecated since v6.2
 
+@todo:check

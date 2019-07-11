@@ -58,7 +58,7 @@ you'll need to [add gantt files to your project manually](desktop/install_with_b
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
             // specifying the date format
-            gantt.config.xml_date = "%Y-%m-%d %H:%i";
+            gantt.config.date_format = "%Y-%m-%d %H:%i";
             // initializing gantt
             gantt.init("gantt_here");
 
@@ -582,7 +582,8 @@ When you finish this step, you should get the following folder structure:
 
 Now you can run the app in order to check that everything is in place. If you don't see a runtime error, then everything is fine.
 
-## Step 4. Implementing Web API
+Step 4. Implementing Web API
+--------------------------
 
 Now it's time for the actual REST API implementation. Go to **Startup.cs** and enable MVC routing, if it's not enabled yet:
 
@@ -933,7 +934,7 @@ gantt.config.order_branch = true;
 gantt.config.order_branch_free = true;
 
 // specifying the date format
-gantt.config.xml_date = "%Y-%m-%d %H:%i";
+gantt.config.date_format = "%Y-%m-%d %H:%i";
 // initializing gantt
 gantt.init("gantt_here");
 ~~~

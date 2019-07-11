@@ -57,6 +57,7 @@ To export Gantt chart as a PDF document, do the following steps:
 
 Export to PNG
 -----------------------------
+
 To export Gantt chart as a PNG image, do the following steps:
 
 <ol>
@@ -104,11 +105,11 @@ The api/gantt_exporttopdf.md and api/gantt_exporttopng.md methods take as a para
 		</tr>        
         <tr>
 			<td class="webixdoc_links0"><b>start</b></td>
-			<td>(<i>string</i>) sets the start date of the data range that will be presented in the output Gantt chart. The date format is defined by the api/gantt_xml_date_config.md config</td>
+			<td>(<i>string</i>) sets the start date of the data range that will be presented in the output Gantt chart. The date format is defined by the api/gantt_date_format_config.md config</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>end</b></td>
-			<td>(<i>string</i>) sets the end date of the data range that will be presented in the output Gantt chart. The date format is defined by the api/gantt_xml_date_config.md config</td>
+			<td>(<i>string</i>) sets the end date of the data range that will be presented in the output Gantt chart. The date format is defined by the api/gantt_date_format_config.md config</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>data</b></td>
@@ -189,7 +190,8 @@ gantt.exportToPDF({
 ~~~
 
 
-##Data to export
+Data to export
+-----------------
 
 To set the tasks that should be presented in the output PDF or PNG file, use one of the following ways:
 
@@ -211,7 +213,7 @@ gantt.exportToPDF({
 ~~~
 
 {{note
-Note, the date format is defined by the api/gantt_xml_date_config.md config
+Note, the date format is defined by the api/gantt_date_format_config.md config.
 }}
 
 <a id="customdata"></a>

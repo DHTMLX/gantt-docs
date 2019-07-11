@@ -1,8 +1,9 @@
 Highlighting  Time Slots
 =======================================
+
 To pay user's attention to specific time slot(s), you may highlight them. 
 
-- To highlight a cell of the timeline area, use the api/gantt_task_cell_class_template.md template.
+- To highlight a cell of the timeline area, use the api/gantt_timeline_cell_class_template.md template.
 - To highlight a cell of the timeline's time scale, use the api/gantt_scale_cell_class_template.md template.
 
 The template is a function that goes over all the dates and applies the specified CSS class to the related cells.
@@ -24,7 +25,7 @@ gantt.templates.scale_cell_class = function(date){
 		return "weekend";
 	}
 };
-gantt.templates.task_cell_class = function(task,date){
+gantt.templates.timeline_cell_class = function(task,date){
 	if(date.getDay()==0||date.getDay()==6){ 
 		return "weekend" ;
 	}
@@ -42,7 +43,7 @@ gantt.templates.scale_cell_class = function(date){
 		return "weekend";
 	}
 };
-gantt.templates.task_cell_class = function(task,date){
+gantt.templates.timeline_cell_class = function(task,date){
 	if(!gantt.isWorkTime({task:task, date:date})){
 		return "weekend" ;
 	}

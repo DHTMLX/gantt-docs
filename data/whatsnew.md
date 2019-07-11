@@ -15,17 +15,27 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 <span class='release_date'>July 11, 2019. Minor update</span>
 
+### Breaking changes 
+
+The update brings multiple changes in the API methods. Check the [Migration](migrating.md#6162) article to keep in step with the latest version. 
+
 ### New functionality
 
 - Ability to [expand/collapse split tasks](desktop/split_tasks.md#expandingcollapsingsplittasks) (PRO)
 - Creating tasks by drag-n-drop (desktop/crud_task.md#addinganewtask + related articles of desktop/task_bars.md)
-- Smooth zooming by mouse wheel (desktop/dynamic_scale.md#zooming)
+- Smooth [zooming](desktop/zooming.md) by mouse wheel 
 
 ### Updates
 
+- Major performance improvement for chart and resource panel
+- Changing the start/end date of a task via [inline editors](desktop/inline_editing.md) modifies the duration of a task accordingly
+- The process of [setting up the timeline scale](desktop/configuring_time_scale.md) is simplified
+- New [zooming](desktop/zoom.md) and [scales](api/gantt_scales_config.md) API
+
 ### Fixes
 
-
+- Multiple tasks highlighting resets after rendering
+- Script error when destroying Gantt from data processor handler
 
 6.1.7
 -----
@@ -521,3 +531,4 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [API simplified, it uses a single Gantt object instead of a bunch of different objects](migrating.md)
 
 
+@todo: check 6.1->6.2, update the date

@@ -9,7 +9,7 @@ Start
     <ul>
 		<li><a href="">Ability to collapse/expand split tasks</a></li>        
         <li><a href="">Creating tasks by drag-n-drop</a></li>   
-        <li><a href="">Smooth zooming by mouse wheel</a></li>
+        <li><a href="">Smooth zooming with mouse wheel</a></li>
 	</ul>
 
     <p class='action_buttons'>

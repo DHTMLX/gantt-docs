@@ -1,10 +1,26 @@
-Setting up the Scale
+Setting up Scale
 ===========================================
 
 <img src="desktop/gantt_dates.png"/>
 
+The configuration of scales is specified via the api/gantt_scales_config.md property. You can specify any number of scales by setting scale objects in the array of the **scales** config:
 
-The configuration of scales is specified via the api/gantt_scales_config.md property. You can configure the following aspects of the time scale (X-Axis):
+~~~js
+// a single day-scale
+gantt.config.scales = [
+	{unit: "day", step: 1, format: "%j, %D"}
+];
+
+// several scales at once
+gantt.config.scales = [
+	{unit: "month", step: 1, format: "%F, %Y"},
+	{unit: "week", step: 1, format: weekScaleTemplate},
+	{unit: "day", step:1, format: "%D", css:daysStyle }
+];
+~~~
+
+
+It is possible to configure the following aspects of the time scale (X-Axis):
 
 1. [Unit](#timeunits)
 2. [Range](#range)
@@ -12,7 +28,7 @@ The configuration of scales is specified via the api/gantt_scales_config.md prop
 4. [Height](#height)
 5. [Format](#dateformat)
 6. [Style](#styling)
-7. [Second scale](#multiplescales)
+
 
 You can also add a [custom scale](#customtimeunits).
 
@@ -20,7 +36,7 @@ You can also add a [custom scale](#customtimeunits).
 Time units
 ----------------------------------------
 
-<img src="desktop/week_scale_unit.png"/>
+<img src="desktop/month_day_scale_units.png"/>
 
 To set the unit of the scale, use the **unit** property in the corresponding scale object: 
 
@@ -279,7 +295,7 @@ gantt.init("gantt_here");
 	03_scales/01_multiple_scales.html
 }}
 
-<img style="margin-top:12px; margin-bottom:20px;" src="desktop/scale_format.png"/>
+<img style="margin-top:12px; margin-bottom:20px;" src="desktop/multiple_scales.png"/>
 
 Or as a function that takes a date object as a parameter:
 
@@ -340,34 +356,9 @@ gantt.templates.scale_cell_class = function(date){
 
 Read more on applying a custom style to the timeline area in the desktop/highlighting_time_slots.md article.
 
-Multiple scales
-----------------------------------------------
-
-<img src="desktop/secondscale.png"/>
-
-To add the second scale(s) underneath the default one, use the the api/gantt_subscales_config.md property:
-
-{{snippet
-Adding the second scale to the Gantt chart
-}}
-~~~js
-gantt.config.subscales = [/*!*/
-	{unit:"week", step:1, date:"Week #%W"}/*!*/
-];/*!*/
-gantt.config.scale_height = 54;
-gantt.init("gantt_here");
-~~~
-
-{{sample
-	03_scales/01_multiple_scales.html
-}}
-
-Read more on second scales in a separate article - desktop/second_scale.md.
-
-
 
 Custom time units
--------------------------------------------------
+-------------------------
 
 dhtmlxGantt allows you to define custom time units and set a template for labels in the scale configuration.
 
@@ -421,4 +412,4 @@ gantt.config.subscales = [
 ];
 ~~~
 
-@todo: refresh images
+@todo: check

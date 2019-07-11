@@ -38,7 +38,7 @@ gantt.templates.scale_cell_class = function(date){
 
 @relatedapi:
     api/gantt_scale_row_class_template.md
-	api/gantt_task_cell_class_template.md
+	api/gantt_timeline_cell_class_template.md
 @related:
  	desktop/timeline_templates.md
  	desktop/custom_scale.md

@@ -17,7 +17,7 @@ gantt.init("gantt_here");
 
 Note that the usage of the *static_background* parameter will disable highlighting of separate days and rows.
 
-Also note that the api/gantt_task_cell_class_template.md template is not called with this config enabled, since cells aren't rendered when the **static_background** config is used (it speeds up loading).
+Also note that the api/gantt_timeline_cell_class_template.md template is not called with this config enabled, since cells aren't rendered when the **static_background** config is used (it speeds up loading).
 
 @relatedsample:
 	08_api/10_performance_tweaks.html

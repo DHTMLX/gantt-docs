@@ -49,6 +49,7 @@ Properties
 - api/gantt_inherit_calendar_config.md - defines whether tasks should inherit work calendars from their summary parents
 - api/gantt_inherit_scale_class_config.md - specifies whether sub-scales shall use the scale_cell_class template by default
 - api/gantt_initial_scroll_config.md - sets whether the timeline area will be initially scrolled to display the earliest task
+- api/gantt_inline_editors_date_processing_config.md - 
 - api/gantt_keep_grid_width_config.md - 'says' to preserve the initial grid's width while resizing columns within
 - api/gantt_keyboard_navigation_config.md - enables keyboard navigation in gantt
 - api/gantt_keyboard_navigation_cells_config.md - enables keyboard navigation by cells
@@ -66,7 +67,7 @@ Properties
 - api/gantt_min_grid_column_width_config.md - sets the minumum width for the grid (in pixels) while being resized
 - api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
-- api/gantt_open_split_tasks_config.md - 
+- api/gantt_open_split_tasks_config.md - enables the possibility to expand/collapse split tasks by clicking the +/- button
 - api/gantt_open_tree_initially_config.md - openes all branches initially
 - api/gantt_order_branch_config.md - activates the 'branch' mode that allows vertically reordering tasks within the same tree level
 - api/gantt_order_branch_free_config.md - activates the 'branch' mode that allows reordering tasks within the whole gantt
@@ -91,7 +92,7 @@ Properties
 - api/gantt_scale_height_config.md - sets the height of the time scale and the header of the grid
 - api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of the leading/closing empty space
 - api/gantt_scale_unit_config.md - sets the unit of the time scale (X-Axis)
-- api/gantt_scales_config.md - 
+- api/gantt_scales_config.md - defines the configuration settings of the time scale
 - api/gantt_schedule_from_end_config.md - enables backward scheduling
 - api/gantt_scroll_on_click_config.md - specifies whether the timeline area shall be scrolled while selecting to display the selected task
 - api/gantt_scroll_size_config.md - set the sizes of the vertical (width) and horizontal (height) scrolls
@@ -187,6 +188,7 @@ Properties
 - api/gantt_inherit_calendar_config.md
 - api/gantt_inherit_scale_class_config.md
 - api/gantt_initial_scroll_config.md
+- api/gantt_inline_editors_date_processing_config.md
 - api/gantt_keep_grid_width_config.md
 - api/gantt_keyboard_navigation_config.md
 - api/gantt_keyboard_navigation_cells_config.md
