@@ -94,7 +94,7 @@ Open the newly created view and put the following code into it:
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
             // specifying the date format
-            gantt.config.xml_date = "%Y-%m-%d %H:%i";
+            gantt.config.date_format = "%Y-%m-%d %H:%i";
             // initializing gantt
             gantt.init("gantt_here");
     
@@ -121,10 +121,10 @@ What we have done here:
 - added dhtmlx gantt js/css sources using [CDN links](desktop/cdn_links_list.md)
 - and created gantt on the page
 
-Pay attention to the configuration: we've specified the [format of dates](api/gantt_xml_date_config.md) that come from the data source. 
+Pay attention to the configuration: we've specified the [format of dates](api/gantt_date_format_config.md) that come from the data source. 
 {{snippet Views/Home/Index.cshtml}}
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i";
+gantt.config.date_format = "%Y-%m-%d %H:%i";
 ~~~
 
 It's needed for our client to be able to parse dates that come from the server.
@@ -803,7 +803,7 @@ gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
 // specifying the date format
-gantt.config.xml_date = "%Y-%m-%d %H:%i";
+gantt.config.date_format = "%Y-%m-%d %H:%i";
 // initializing gantt
 gantt.init("gantt_here");
 ~~~

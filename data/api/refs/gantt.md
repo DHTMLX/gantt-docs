@@ -330,7 +330,7 @@ Gantt API
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_constraint_types_config.md - contains all available constraint types
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
-- api/gantt_date_format_config.md - 
+- api/gantt_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
 - api/gantt_details_on_create_config.md - 'says' to open the lightbox while creating new events by clicking the '+' button
@@ -356,7 +356,7 @@ Gantt API
 - api/gantt_inherit_calendar_config.md - defines whether tasks should inherit work calendars from their summary parents
 - api/gantt_inherit_scale_class_config.md - specifies whether sub-scales shall use the scale_cell_class template by default
 - api/gantt_initial_scroll_config.md - sets whether the timeline area will be initially scrolled to display the earliest task
-- api/gantt_inline_editors_date_processing_config.md - 
+- api/gantt_inline_editors_date_processing_config.md - keeps the duration of a task unchanged during editing of the start/end of a task
 - api/gantt_keep_grid_width_config.md - 'says' to preserve the initial grid's width while resizing columns within
 - api/gantt_keyboard_navigation_config.md - enables keyboard navigation in gantt
 - api/gantt_keyboard_navigation_cells_config.md - enables keyboard navigation by cells
@@ -488,7 +488,7 @@ Gantt API
 - api/gantt_task_time_template.md - specifies the date period in the header of the lightbox
 - api/gantt_task_unscheduled_time_template.md - specifies the dates of unscheduled tasks
 - api/gantt_time_picker_template.md - specifies the format of the drop-down time selector in the lightbox
-- api/gantt_timeline_cell_class_template.md - 
+- api/gantt_timeline_cell_class_template.md - specifies the CSS class that will be applied to the cells of the timeline area
 - api/gantt_tooltip_date_format_template.md - specifies the format of start and end dates displayed in the tooltip
 - api/gantt_tooltip_text_template.md - specifies the text of tooltips
 - api/gantt_xml_date_template.md - a string from an XML file is converted into a date object in conformity with this template

@@ -23,7 +23,7 @@ Properties
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_constraint_types_config.md - contains all available constraint types
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
-- api/gantt_date_format_config.md - 
+- api/gantt_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
 - api/gantt_details_on_create_config.md - 'says' to open the lightbox while creating new events by clicking the '+' button
@@ -49,7 +49,7 @@ Properties
 - api/gantt_inherit_calendar_config.md - defines whether tasks should inherit work calendars from their summary parents
 - api/gantt_inherit_scale_class_config.md - specifies whether sub-scales shall use the scale_cell_class template by default
 - api/gantt_initial_scroll_config.md - sets whether the timeline area will be initially scrolled to display the earliest task
-- api/gantt_inline_editors_date_processing_config.md - 
+- api/gantt_inline_editors_date_processing_config.md - keeps the duration of a task unchanged during editing of the start/end of a task
 - api/gantt_keep_grid_width_config.md - 'says' to preserve the initial grid's width while resizing columns within
 - api/gantt_keyboard_navigation_config.md - enables keyboard navigation in gantt
 - api/gantt_keyboard_navigation_cells_config.md - enables keyboard navigation by cells

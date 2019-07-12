@@ -13,6 +13,16 @@ gantt.templates.xml_format = function(date){
 @returns:
 - text		string		html text which will be rendered in the gantt
 @descr:
+
+{{note The template is deprecated. Use api/gantt_format_date_template.md instead:}}
+
+~~~js
+var dateToStr = gantt.date.date_to_str("%Y-%m-%d %H:%i");
+gantt.templates.format_date = function(date){
+    return dateToStr (date);
+};
+~~~
+
 This template is automatically generated from the api/gantt_xml_date_config.md config and can be redefined after the [initialization of gantt](api/gantt_init.md).
 
 A custom template function can be used, if the server side expects a format that is not supported by the [gantt date helper](api/gantt_date_other.md).
@@ -51,4 +61,16 @@ dp.setTransactionMode("REST");
 @related:
 	desktop/conversion_templates.md
 	desktop/server_side.md
-	
+
+@deprecated:
+Use api/gantt_format_date_template.md instead:
+
+~~~js
+var dateToStr = gantt.date.date_to_str("%Y-%m-%d %H:%i");
+gantt.templates.format_date = function(date){
+    return dateToStr (date);
+};
+~~~
+
+@changelog:
+deprecated since v6.2

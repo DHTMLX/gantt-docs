@@ -5,7 +5,7 @@ The *zoom* object possesses the following API:
 
 ##Methods
 
-- **init(zoomConfig)** - to enable the module. The method takes a **zoomConfig** object with configuration settings that contains the *levels* array of zooming levels and a number of addiotional properties:
+- **init(zoomConfig)** - to enable the module. The method takes a **zoomConfig** object with configuration settings that contains the *levels* array of zooming levels and a number of additional properties:
 	- **levels** - (*array*) obligatory, an array of zooming levels, each of which includes the following properties:
     	- **name** - (*string*) the name of the level
     	- **scale_height** -  (*number*) the height of the scale
@@ -23,7 +23,7 @@ The *zoom* object possesses the following API:
     - **element** - (*HTMLElement|function*) a DOM element over which zooming is triggered or a function that returns a DOM element
 
 
-These are two examples of setting zoom configuration via the **init()** method:
+These are two examples of setting zoom configuration:
 
 
 ~~~js
@@ -168,3 +168,5 @@ gantt.ext.zoom.attachEvent("onAfterZoom", function(level, config){
     document.querySelector(".gantt_radio[value='" +config.name+ "']").checked = true;
 }); 
 ~~~
+
+@todo: check descriptions of the zoomConfig props

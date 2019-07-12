@@ -10,14 +10,14 @@ sets the date format that is used to parse data from a data set and to send date
 gantt.config.date_format = "%Y-%m-%d %H:%i";
 ...
 gantt.init("gantt_here");
-gantt.load("/data/events");
+gantt.load("/data/tasks");
 
 @template:api_config
 @descr:
 This config value is used to generate api/gantt_parse_date_template.md and api/gantt_format_date_template.md template functions. 
 If you want to use a custom format, you can either change this config, or redefine **parse_date** and **format_date** templates directly.
 
-@default:"%Y-%m-%d %H:%i"
+@default:"%d-%m-%Y %H:%i"
 @related:
 	desktop/date_format.md
 
@@ -28,4 +28,3 @@ If you want to use a custom format, you can either change this config, or redefi
 api/gantt_parse_date_template.md
 api/gantt_format_date_template.md
 
-@todo: check (added by analogy with scheduler)

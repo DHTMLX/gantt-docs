@@ -154,7 +154,7 @@ gantt.load("/data");/*!*/
 This command will send an AJAX request to the specified URL, 
 the response is expected to contain Gantt data in the [JSON format](desktop/supported_data_formats.md#json). 
 
-Also, note that we've specified the api/gantt_date_format.md value. 
+Also, note that we've specified the api/gantt_date_format_config.md value. 
 This is how we tell gantt what format of dates the data source will use, so the client side could parse them.
 
 Thus, we should add a necessary handler for such a request on the backend.

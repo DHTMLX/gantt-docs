@@ -34,4 +34,4 @@ While specifying the format for dates you can use any character from the followi
 - **%a** - displays **am** (for times from midnight until noon) and **pm** (for times from noon until midnight);
 - **%A** - displays **AM** (for times from midnight until noon) and **PM** (for times from noon until midnight).
 
-For example, if you want to present 1st June 2013 as 01/06/2013, you should specify "%d/%m/%Y".
+For example, if you want to present 1st June 2019 as 01/06/2019, you should specify "%d/%m/%Y".

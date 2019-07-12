@@ -313,13 +313,13 @@ $gantt->render_table(
 ?>
 ~~~
 	</li>
-    <li>Switch to the <b>myGantt.html</b> file and set the <code>gantt.config.xml_date</code> property to <i> "%Y-%m-%d %H:%i"</i>, to make the format of output data compatible with the format of dhtmlxGantt.
+    <li>Switch to the <b>myGantt.html</b> file and set the <code>gantt.config.date_format</code> property to <i> "%Y-%m-%d %H:%i"</i>, to make the format of output data compatible with the format of dhtmlxGantt.
 <br>
 {{snippet
 	myGantt.html
 }}
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i";/*!*/ 
+gantt.config.date_format = "%Y-%m-%d %H:%i";/*!*/ 
 gantt.init("gantt_here");
 ~~~
     </li>
@@ -329,7 +329,7 @@ gantt.init("gantt_here");
 	myGantt.html
 }}
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i";
+gantt.config.date_format = "%Y-%m-%d %H:%i";
 gantt.init("gantt_here");
 gantt.load('data.php');//loads data to Gantt from the database  /*!*/  
 ~~~

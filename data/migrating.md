@@ -23,11 +23,54 @@ Migration from Older Versions
 6.1 -> 6.2
 ---------------
 
-### api_date
+### Time scale settings
 
-### scales api
+Configuration of time scale has been simplified. Instead of specifying a bunch of scale settings for each scale separately, now you should use just one configuration option api/gantt_scales_config.md that will contain 
+a number of scale objects with settings for them.
 
-### gantt.templates.task_cell_class → gantt.templates.timeline_cell_class
+All in all, the following time scale APIs are deprecated:
+
+- gantt.config.scale_unit
+- gantt.config.step
+- gantt.config.date_scale
+- gantt.templates.date_scale
+- gantt.config.subscales
+
+For example, the code below:
+
+~~~js
+gantt.config.scale_unit = "day"; 
+gantt.config.step = 1; 
+gantt.config.date_scale = "%d %M"; 
+gantt.templates.date_scale = null; 
+gantt.config.subscales = [];
+~~~
+
+Now looks like this:
+
+~~~js
+gantt.config.scales = [ { unit:"day", step: 1, format: "%d %M"} ];
+~~~
+
+#### task_cell_class template renamed
+
+The template used to define the CSS class applied to the cells of the timeline area is renamed as follows:
+
+- gantt.templates.task_cell_class → [gantt.templates.timeline_cell_class](api/gantt_timeline_cell_class_template.md)
+
+An example of using the renamed template is:
+
+~~~js
+<style>
+.weekend{ background: #f4f7f4 !important;}
+</style>
+ 
+gantt.templates.timeline_cell_class = function(task,date){
+    if(date.getDay()==0||date.getDay()==6){
+        return "weekend";
+    }
+};
+~~~
 
 ### "xml_date" config and template, and "xml_format" templates are renamed
 
@@ -47,6 +90,16 @@ However, Gantt will continue to use the old names of the config and templates, s
 gantt.templates.xml_date = function(datestring){
     return new Date(datestring);
 };
+~~~
+
+
+### Unused API removed
+
+The **gantt.config.api_date** config and **gantt.templates.api_date** template are removed from API as they weren't used inside gantt code. If you've used them in your code, you need to declare them once again.
+
+~~~js
+gantt.config.api_date = "%d-%m-%Y %H:%i";
+gantt.templates.api_date = gantt.date.date_to_str(gantt.config.api_date);
 ~~~
 
 6.0 -> 6.1 

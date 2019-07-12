@@ -20,8 +20,8 @@ The **date** object provides the following methods:
             <li><b><i>number</i></b> - (<i>number</i>) the number of units to add. If this number is positive - the time will be added to the date, if negative - the time will be subtracted </li>
             <li><b><i>unit</i></b> - (<i>'minute', 'hour', 'day', 'week', 'month', 'year'</i>)  the time unit </li>
 ~~~js
-//adds 1 year to the specified date: 29 June, 2013 -> 29 June, 2014
-var newDate = gantt.date.add(new Date(2013, 05, 29), 1, 'year');
+//adds 1 year to the specified date: 29 June, 2019 -> 29 June, 2020
+var newDate = gantt.date.add(new Date(2019, 05, 29), 1, 'year');
 ~~~
         </ul>
     </li>
@@ -30,8 +30,8 @@ var newDate = gantt.date.add(new Date(2013, 05, 29), 1, 'year');
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object to convert </li>
 ~~~js
-//29 June, 2013 14:00 (local time) -> 29 June, 2013 12:00 (utc)
-var time = gantt.date.convert_to_utc(new Date(2013, 05, 29, 14, 00));
+//29 June, 2019 14:00 (local time) -> 29 June, 2019 12:00 (utc)
+var time = gantt.date.convert_to_utc(new Date(2019, 05, 29, 14, 00));
 ~~~
         </ul>
     </li>
@@ -40,7 +40,7 @@ var time = gantt.date.convert_to_utc(new Date(2013, 05, 29, 14, 00));
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object to copy </li>
 ~~~js
-var copy = gantt.date.copy(new Date(2013, 05, 29));// -> 29 June, 2013
+var copy = gantt.date.copy(new Date(2019, 05, 29));// -> 29 June, 2019
 ~~~
         </ul>
     </li>
@@ -49,8 +49,8 @@ var copy = gantt.date.copy(new Date(2013, 05, 29));// -> 29 June, 2013
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object to format </li>
 ~~~js
-//29 June, 2013 14:30:10 -> 29 June, 2013 00:00:00
-var date = gantt.date.date_part(new Date(2013, 05, 29, 14, 30, 10));
+//29 June, 2019 14:30:10 -> 29 June, 2019 00:00:00
+var date = gantt.date.date_part(new Date(2019, 05, 29, 14, 30, 10));
 ~~~
         </ul>
     </li>
@@ -61,7 +61,7 @@ var date = gantt.date.date_part(new Date(2013, 05, 29, 14, 30, 10));
           	<li><b><i>utc</i></b> - (<i>boolean</i>) specifies whether local time should be converted to UTC  </li>
 ~~~js
 var formatFunc = gantt.date.date_to_str("%d/%m/%Y");
-var date = formatFunc(new Date(2013, 05, 29)); // -> "29/06/2013"
+var date = formatFunc(new Date(2019, 05, 29)); // -> "29/06/2019"
 
 ~~~
         </ul>
@@ -71,8 +71,8 @@ var date = formatFunc(new Date(2013, 05, 29)); // -> "29/06/2013"
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object to format </li>
 ~~~js
-//29 June, 2013 14:30:10 -> 29 June, 2013 00:00:00
-var date = gantt.date.day_start(new Date(2013, 05, 29, 14, 30, 10));
+//29 June, 2013 14:30:10 -> 29 June, 2019 00:00:00
+var date = gantt.date.day_start(new Date(2019, 05, 29, 14, 30, 10));
 ~~~
         </ul>
     </li>
@@ -81,7 +81,7 @@ var date = gantt.date.day_start(new Date(2013, 05, 29, 14, 30, 10));
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object to format </li>
 ~~~js
-var week = gantt.date.getISOWeek(new Date(2013, 05, 29));// ->26
+var week = gantt.date.getISOWeek(new Date(2019, 05, 29));// ->26
 ~~~
         </ul>
     </li>
@@ -90,7 +90,7 @@ var week = gantt.date.getISOWeek(new Date(2013, 05, 29));// ->26
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object to format </li>
 ~~~js
-var week = gantt.date.getUTCISOWeek(new Date(2013, 05, 29));// ->26
+var week = gantt.date.getUTCISOWeek(new Date(2019, 05, 29));// ->26
 ~~~
         </ul>
     </li>
@@ -102,8 +102,8 @@ var week = gantt.date.getUTCISOWeek(new Date(2013, 05, 29));// ->26
 // weeks start on Sunday
 gantt.config.start_on_monday = false;
 
-var isoWeek = gantt.date.getISOWeek(new Date(2018, 2, 25)); // ->12
-var week = gantt.date.getWeek(new Date(2018, 2, 25)); // ->13
+var isoWeek = gantt.date.getISOWeek(new Date(2019, 2, 25)); // ->12
+var week = gantt.date.getWeek(new Date(2019, 2, 25)); // ->13
 ~~~
         </ul>
     </li>
@@ -112,8 +112,8 @@ var week = gantt.date.getWeek(new Date(2018, 2, 25)); // ->13
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object to format </li>
 ~~~js
-//29 June, 2013 14:30 -> 01 June, 2013 00:00
-var firstDay = gantt.date.month_start(new Date(2013, 05, 29, 14, 30));
+//29 June, 2019 14:30 -> 01 June, 2019 00:00
+var firstDay = gantt.date.month_start(new Date(2019, 05, 29, 14, 30));
 ~~~
         </ul>
     </li>
@@ -123,7 +123,7 @@ var firstDay = gantt.date.month_start(new Date(2013, 05, 29, 14, 30));
         	<li><b><i>date</i></b> - (<i>string</i>) a date as a string </li>
             <li><b><i>format</i></b> - (<i>string</i>) the date format ( see desktop/date_format.md)  </li>
 ~~~js
-var date = gantt.date.parseDate("29/06/2013","%d/%m/%Y");//-> 29 June, 2013 00:00:00
+var date = gantt.date.parseDate("29/06/2019","%d/%m/%Y");//-> 29 June, 2019 00:00:00
 ~~~
 		</ul>
     </li>
@@ -134,7 +134,7 @@ var date = gantt.date.parseDate("29/06/2013","%d/%m/%Y");//-> 29 June, 2013 00:0
           	<li><b><i>utc</i></b> - (<i>boolean</i>) specifies whether local time should be converted to UTC  </li>
 ~~~js
 var formatFunc = gantt.date.str_to_date("%d/%m/%Y");
-var date = formatFunc("29/06/2013"); // -> 29 June, 2013 00:00:00
+var date = formatFunc("29/06/2019"); // -> 29 June, 2019 00:00:00
 ~~~
         </ul>
     </li>
@@ -143,8 +143,7 @@ var date = formatFunc("29/06/2013"); // -> 29 June, 2013 00:00:00
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object to format </li>
 ~~~js
-var time = gantt.date.time_part(new Date(2013, 05, 29, 14, 30, 10));
-//time -> 52210
+var time = gantt.date.time_part(new Date(2019, 05, 29, 14, 30, 10));
 ~~~
         </ul>
     </li>
@@ -163,8 +162,8 @@ var num2 = gantt.date.to_fixed(10);// ->10
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object to format </li>
 ~~~js
-//29 June, 2013 14:30 -> 24 June, 2013 00:00
-var weekStart = gantt.date.week_start(new Date(2013, 05, 29, 14, 30));
+//29 June, 2019 14:30 -> 24 June, 2019 00:00
+var weekStart = gantt.date.week_start(new Date(2019, 05, 29, 14, 30));
 ~~~
         </ul>
     </li>
@@ -173,8 +172,8 @@ var weekStart = gantt.date.week_start(new Date(2013, 05, 29, 14, 30));
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object to format </li>
 ~~~js
-//29 June, 2013 14:30 -> 01 January, 2013 00:00
-var yearStart = gantt.date.year_start(new Date(2013, 05, 29, 14, 30));
+//29 June, 2019 14:30 -> 01 January, 2019 00:00
+var yearStart = gantt.date.year_start(new Date(2019, 05, 29, 14, 30));
 ~~~
         </ul>
     </li>

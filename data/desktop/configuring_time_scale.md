@@ -66,7 +66,8 @@ Range
 ###Default range settings
 
 If you don't specify the date range explicitly, Gantt uses the dates of the loaded tasks and adds offsets before the first and after the last task in the scale. The offset is defined by the settings of the time scale.
-Depending on the [scale_offset_minimal](api/gantt_scale_offset_minimal_config.md) value, it will be either the time unit defined in via the api/gantt_scale_unit_config.md option or the smallest of the time scale units.
+Depending on the [scale_offset_minimal](api/gantt_scale_offset_minimal_config.md) value, it will be either the time unit defined in via 
+the **unit** attribute of the api/gantt_scales_config.md option or by the smallest of the time scale units.
 
 You can get the displayed date range programmatically using the api/gantt_getstate.md method.
 

@@ -282,14 +282,14 @@ Now, we can call this route from the client:
 
 {{snippet public/index.html}}
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
+gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
   
 gantt.init("gantt_here");
 
 gantt.load("/data");/*!*/
 ~~~
 
-Note that [xml_date](api/gantt_xml_date_config.md) config specifies the format of dates (<b>start_date</b> of the task) that comes from the server.
+Note that [date_format](api/gantt_date_format_config.md) config specifies the format of dates (<b>start_date</b> of the task) that comes from the server.
 
 Let's run the application now by opening http://127.0.0.1:1337. The gantt will be loaded with the test data that we have previously added into the database.
 
@@ -304,7 +304,7 @@ Go to *public/index.html* and add [gantt.dataProcessor](desktop/server_side.md#t
 
 {{snippet public/index.html}}
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
+gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
   
 gantt.init("gantt_here");
 

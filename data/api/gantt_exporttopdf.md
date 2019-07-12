@@ -63,11 +63,11 @@ The api/gantt_exporttopdf.md method takes as a parameter an object with a number
 		</tr>        
         <tr>
 			<td class="webixdoc_links0"><b>start</b></td>
-			<td>(<i>string</i>) sets the start date of the data range that will be presented in the output Gantt chart. The date format is defined by the api/gantt_xml_date_config.md config</td>
+			<td>(<i>string</i>) sets the start date of the data range that will be presented in the output Gantt chart. The date format is defined by the api/gantt_date_format_config.md config</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>end</b></td>
-			<td>(<i>string</i>) sets the end date of the data range that will be presented in the output Gantt chart. The date format is defined by the api/gantt_xml_date_config.md config</td>
+			<td>(<i>string</i>) sets the end date of the data range that will be presented in the output Gantt chart. The date format is defined by the api/gantt_date_format_config.md config</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>data</b></td>

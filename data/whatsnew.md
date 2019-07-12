@@ -13,7 +13,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 6.2
 -------
 
-<span class='release_date'>July 11, 2019. Minor update</span>
+<span class='release_date'>July, 2019. Minor update</span>
 
 ### Breaking changes 
 
