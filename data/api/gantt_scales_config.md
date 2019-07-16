@@ -5,15 +5,21 @@ scales
 	check 
 
 
-@short:defines the configuration settings of the time scale
+@short: defines configuration settings of the time scale
 	
 
 @type: array
 @example:
 gantt.config.scales = [
     {unit: "month", step: 1, format: "%F, %Y"},
-    {unit: "week", step: 1, format: weekScaleTemplate},
-    {unit: "day", step: 1, format: "%D", css:daysStyle }
+    {unit: "week", step: 1, format: function (date) {
+        return "Week #" + date.getWeek();
+    }},
+    {unit: "day", step: 1, format: "%D", css: function(date) {
+    if(!gantt.isWorkTime({ date: date, unit: "day"})){
+            return "weekend"
+        }
+    }}
 ];
 
 @template:	api_config
@@ -24,4 +30,4 @@ Each object in the array specifies a single scale. An object can take the follow
 There is also a possiblity to set a custom unit. Read more on the topic [here](desktop/configuring_time_scale.md#customtimeunits).
 - **step** - (*number*) the step of the time scale (X-Axis), 1 by default.
 - **format** - (*string*|*function*) the format of the scale's labels. If set as a function, expects a date object as a parameter.
-- **css** (*function*) a function that returns the name of a CSS class that will be applied to the scale units. Takes a date object as a parameter.
+- **css** - (*function*) a function that returns the name of a CSS class that will be applied to the scale units. Takes a date object as a parameter.

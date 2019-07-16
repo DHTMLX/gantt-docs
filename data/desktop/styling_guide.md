@@ -2,7 +2,7 @@ Working with Styles in Gantt
 =========================
 
 dhtmlxGantt provides you with a wide set of options for modifying its appearance. You can both [change the general look of the Gantt chart by using one of the predefined skins](desktop/skins.md)
-and adjust the styles of separate elements (tasks, links, scale and subscales, grid, etc.) of the component.  
+and adjust the styles of separate elements (tasks, links, scale, grid, etc.) of the component.  
 
 In this guide general instructions on working with styles of Gantt parts are collected together to facilitate your wandering through the documentation. 
 Detailed information for each particular element is provided in the related articles.
@@ -245,7 +245,7 @@ Read more in the related articles: desktop/configuring_time_scale.md#settingthes
 
 ###Subscale
 
-You can specify a new style for the subscale via the **css** attribute of the api/gantt_subscales_config.md property. For example, you can set a specific color for the weekends as follows:
+You can specify a new style for a scale via the **css** attribute of the api/gantt_scales_config.md property. For example, you can set a specific color for the weekends as follows:
 
 ~~~js
 <style type="text/css">
@@ -263,26 +263,14 @@ var daysStyle = function(date){
 	return "";
 };
 
-gantt.config.subscales = [
-	{unit:"day", date:"%D", css:daysStyle }
+gantt.config.scales = [
+	{unit:"day", format:"%D", css:daysStyle }
 ];
 ~~~
 
-Check the related article desktop/second_scale.md#settingthescalesstyle for more details.
-
 <img src="desktop/styling_subscale.png">
 
-{{editor		https://docs.dhtmlx.com/gantt/snippet/53c5406c		Styling the Second Scale}}
-
-
-###Zooming
-
-Although dhtmlxGantt doesn't provide inbuilt zooming functionality, you can adjust the configuration settings of the time scale to implement the zooming feature. 
-[Read more about zooming in Gantt](desktop/dynamic_scale.md#zooming). 
-
-{{sample 03_scales/05_dynamic_scales.html}}
-
-{{sample 03_scales/13_zoom_to_fit.html}}
+{{sample 03_scales/01_multiple_scales.html}}
 
 Styling Tasks
 ----------------

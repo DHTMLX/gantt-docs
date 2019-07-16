@@ -169,4 +169,4 @@ gantt.ext.zoom.attachEvent("onAfterZoom", function(level, config){
 }); 
 ~~~
 
-@todo: check descriptions of the zoomConfig props
+

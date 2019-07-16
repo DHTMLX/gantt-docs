@@ -20,6 +20,7 @@ Properties
 - api/gantt_buttons_right_config.md - stores a collection of buttons resided in the right bottom corner of the lightbox
 - api/gantt_calendar_property_config.md - changes the name of the property that affects binding of a calendar to a task/group of tasks
 - api/gantt_cascade_delete_config.md - enables cascade deleting of nested tasks and links
+- api/gantt_click_drag_config.md - 
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_constraint_types_config.md - contains all available constraint types
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
@@ -92,7 +93,7 @@ Properties
 - api/gantt_scale_height_config.md - sets the height of the time scale and the header of the grid
 - api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of the leading/closing empty space
 - api/gantt_scale_unit_config.md - sets the unit of the time scale (X-Axis)
-- api/gantt_scales_config.md - defines the configuration settings of the time scale
+- api/gantt_scales_config.md - defines configuration settings of the time scale
 - api/gantt_schedule_from_end_config.md - enables backward scheduling
 - api/gantt_scroll_on_click_config.md - specifies whether the timeline area shall be scrolled while selecting to display the selected task
 - api/gantt_scroll_size_config.md - set the sizes of the vertical (width) and horizontal (height) scrolls
@@ -114,6 +115,7 @@ Properties
 - api/gantt_start_date_config.md - sets the start value of the time scale
 - api/gantt_start_on_monday_config.md - sets the starting day of the week
 - api/gantt_static_background_config.md - generates a background image for the timeline area instead of rendering actual columns' and rows' lines
+- api/gantt_static_background_cells_config.md - 
 - api/gantt_step_config.md - sets the step of the time scale (X-Axis)
 - api/gantt_subscales_config.md - specifies the second time scale(s)
 - api/gantt_task_attribute_config.md - sets the name of the attribute that will specify the id of the task's HTML element
@@ -159,6 +161,7 @@ Properties
 - api/gantt_buttons_right_config.md
 - api/gantt_calendar_property_config.md
 - api/gantt_cascade_delete_config.md
+- api/gantt_click_drag_config.md
 - api/gantt_columns_config.md
 - api/gantt_constraint_types_config.md
 - api/gantt_correct_work_time_config.md
@@ -253,6 +256,7 @@ Properties
 - api/gantt_start_date_config.md
 - api/gantt_start_on_monday_config.md
 - api/gantt_static_background_config.md
+- api/gantt_static_background_cells_config.md
 - api/gantt_step_config.md
 - api/gantt_subscales_config.md
 - api/gantt_task_attribute_config.md

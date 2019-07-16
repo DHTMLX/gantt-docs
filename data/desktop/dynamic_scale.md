@@ -40,5 +40,3 @@ gantt.render(); /*!*/
 ~~~
 
 
-@todo:
-check the example

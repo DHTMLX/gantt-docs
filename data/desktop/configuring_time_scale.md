@@ -235,6 +235,13 @@ Time step
 To set the step of the time scale, use the **step** property in the corresponding scale object:
 
 ~~~js
+var monthScaleTemplate = function (date) {
+	var dateToStr = gantt.date.date_to_str("%M");
+    var endDate = gantt.date.add(date, 2, "month");
+    return dateToStr(date) + " - " + dateToStr(endDate);
+};
+
+
 gantt.config.scales = [
 	{unit: "year", step: 1, format: "%Y"},
 	{unit: "month", step: 3, format: monthScaleTemplate},

@@ -23,6 +23,31 @@ Migration from Older Versions
 6.1 -> 6.2
 ---------------
 
+The update to v6.2 is generally compatible with v6.1 and should not require any changes in code.
+However, some behavior of the component has been changed (old behavior can be restored via config), and some APIs has been deprecated.
+
+###Smart rendering and static background
+
+Smart rendering functionality has been updated and is not embedded into the component. It should now work both in the main timeline area and in resource panels. From now on, all timelines should render only rows and cells that are currently visible.
+
+Smart rendering can be disabled via the **smart_rendering** config, which will return gantt to the default behavior of v6.1:
+
+~~~js
+gantt.config.smart_rendering = false;
+~~~
+
+The **dhtmlxgantt_smart_rendering** extension is no longer needed and should be removed from gantt. The extension itself is still available in the package in case of compatibility issues.
+If the extension is added to the page, gantt will revert to the v6.1 smart rendering mode.
+
+The behavior of the **api/gantt_static_background_config.md** config has been updated as well. Starting from v6.2 it will render PNG background AND any cells that have CSS class attached to them via template function.
+
+If you need to revert to v6.1 behavior, use the **static_background_cells** config:
+
+~~~js
+gantt.config.static_background_cells = false;
+~~~
+
+
 ### Time scale settings
 
 Configuration of time scale has been simplified. Instead of specifying a bunch of scale settings for each scale separately, now you should use just one configuration option api/gantt_scales_config.md that will contain 
@@ -364,5 +389,3 @@ The id of the parent task can be accessed as **gantt.getTask(task_id).parent**. 
 - desktop/migrating_renamedcss.md
 
 @spellcheck: btn
-
-@todo: check 6.1->6.2

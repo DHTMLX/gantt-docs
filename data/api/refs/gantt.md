@@ -327,6 +327,7 @@ Gantt API
 - api/gantt_buttons_right_config.md - stores a collection of buttons resided in the right bottom corner of the lightbox
 - api/gantt_calendar_property_config.md - changes the name of the property that affects binding of a calendar to a task/group of tasks
 - api/gantt_cascade_delete_config.md - enables cascade deleting of nested tasks and links
+- api/gantt_click_drag_config.md - 
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_constraint_types_config.md - contains all available constraint types
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
@@ -399,7 +400,7 @@ Gantt API
 - api/gantt_scale_height_config.md - sets the height of the time scale and the header of the grid
 - api/gantt_scale_offset_minimal_config.md - sets the minimal scale unit (in case multiple scales are used) as the interval of the leading/closing empty space
 - api/gantt_scale_unit_config.md - sets the unit of the time scale (X-Axis)
-- api/gantt_scales_config.md - defines the configuration settings of the time scale
+- api/gantt_scales_config.md - defines configuration settings of the time scale
 - api/gantt_schedule_from_end_config.md - enables backward scheduling
 - api/gantt_scroll_on_click_config.md - specifies whether the timeline area shall be scrolled while selecting to display the selected task
 - api/gantt_scroll_size_config.md - set the sizes of the vertical (width) and horizontal (height) scrolls
@@ -421,6 +422,7 @@ Gantt API
 - api/gantt_start_date_config.md - sets the start value of the time scale
 - api/gantt_start_on_monday_config.md - sets the starting day of the week
 - api/gantt_static_background_config.md - generates a background image for the timeline area instead of rendering actual columns' and rows' lines
+- api/gantt_static_background_cells_config.md - 
 - api/gantt_step_config.md - sets the step of the time scale (X-Axis)
 - api/gantt_subscales_config.md - specifies the second time scale(s)
 - api/gantt_task_attribute_config.md - sets the name of the attribute that will specify the id of the task's HTML element
@@ -456,7 +458,7 @@ Gantt API
 - api/gantt_date_grid_template.md - specifies the content of start date or end date columns in grid
 - api/gantt_drag_link_template.md - specifies the text of tooltips that are displayed when the user creates a new dependency link
 - api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the pop-up that appears when a user drags a link
-- api/gantt_format_date_template.md - 
+- api/gantt_format_date_template.md - сonverts a date object to a date string. Used to send data back to the server
 - api/gantt_grid_blank_template.md - specifies the custom content inserted before the labels of child items in the tree column
 - api/gantt_grid_date_format_template.md - specifies the format of dates in the "Start time" column
 - api/gantt_grid_file_template.md - specifies the icon of child items in the tree column
@@ -471,7 +473,7 @@ Gantt API
 - api/gantt_histogram_cell_label_template.md - defines the label inside a cell
 - api/gantt_link_class_template.md - specifies the CSS class that will be applied to a link
 - api/gantt_link_description_template.md - specifies the text in the header of the link's "delete" confirm window
-- api/gantt_parse_date_template.md - 
+- api/gantt_parse_date_template.md - converts date string into a Date object
 - api/gantt_progress_text_template.md - specifies the text in the completed part of the task bar
 - api/gantt_quick_info_class_template.md - specifies the CSS class that will be applied to  the pop-up edit form
 - api/gantt_quick_info_content_template.md - specifies the content of the pop-up edit form

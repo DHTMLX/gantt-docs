@@ -73,8 +73,12 @@ gantt.ext.zoom.init(zoomConfig);
 
 The detailed information about the zooming module and its API is given in the article desktop/zoom.md.
 
+{{sample 03_scales/14_scale_zoom_by_wheelmouse.html}}
+
 Custom zooming settings
 ----------------------
+
+In case you don't want to use the zooming module and prefer controlling scale settings manually, you can do so via corresponding configuration options.
 
 In fact, implementing a zooming feature means defining several presets of the time scale configuration (zoom levels) and providing the user with the ability to switch between them.
 
@@ -161,7 +165,4 @@ for (var i = 0; i < els.length; i++) {
 
 {{sample 03_scales/05_dynamic_scales.html}}
 
-{{sample 03_scales/13_zoom_to_fit.html}}
 
-@todo:
-check

@@ -15,11 +15,17 @@ gantt.init("gantt_here");
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-Note that the usage of the *static_background* parameter will disable highlighting of separate days and rows.
+Since v6.2 this config renders PNG background AND any cells that have CSS class attached to them via the api/gantt_timeline_cell_class_template.md template function.
 
-Also note that the api/gantt_timeline_cell_class_template.md template is not called with this config enabled, since cells aren't rendered when the **static_background** config is used (it speeds up loading).
+If you need to revert to v6.1 behavior (that is to render just the background image), use the api/gantt_static_background_cells_config.md config:
+
+~~~js
+gantt.config.static_background_cells = false;
+~~~
 
 @relatedsample:
 	08_api/10_performance_tweaks.html
 @related:
 	desktop/performance.md
+@relatedapi:
+api/gantt_static_background_cells_config.md

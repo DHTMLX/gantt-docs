@@ -36,4 +36,4 @@ gantt.init("gantt_here");
 
 @changelog: deprecated since v6.2
 
-@todo:check
+

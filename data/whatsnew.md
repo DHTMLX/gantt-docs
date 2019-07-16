@@ -13,7 +13,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 6.2
 -------
 
-<span class='release_date'>July, 2019. Minor update</span>
+<span class='release_date'>July 16, 2019. Minor update</span>
 
 ### Breaking changes 
 
@@ -21,9 +21,9 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 ### New functionality
 
-- Ability to [expand/collapse split tasks](desktop/split_tasks.md#expandingcollapsingsplittasks) (PRO)
-- Creating tasks by drag-n-drop (desktop/crud_task.md#addinganewtask + related articles of desktop/task_bars.md)
+- [Creating and selecting tasks by drag-n-drop](desktop/advanced_dnd.md)
 - Smooth [zooming](desktop/zooming.md) by mouse wheel 
+- Ability to [expand/collapse split tasks](desktop/split_tasks.md#expandingcollapsingsplittasks) (PRO)
 
 ### Updates
 
@@ -529,6 +529,3 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - [A lot of events added](api/refs/gantt.md#events)
 - [Templates](api/refs/gantt.md#templates) and [configuration options](api/refs/gantt.md#properties) added
 - [API simplified, it uses a single Gantt object instead of a bunch of different objects](migrating.md)
-
-
-@todo: check 6.1->6.2, update the date

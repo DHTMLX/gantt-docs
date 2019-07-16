@@ -93,5 +93,4 @@ gantt.config.open_split_tasks = true;
 ![Expanding split task](desktop/expand_split_task.png)
 
 
-
 @edition:pro
