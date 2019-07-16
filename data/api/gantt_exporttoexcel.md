@@ -46,7 +46,7 @@ The **exportToExcel()** method takes as a parameter an object with several prope
     - **'type'** - (*string*) the column type</li>
 - **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**
 - **visual** - (*boolean*) adds the timeline chart to an exported Excel document. *false* by default
-- **cellColors** - (*boolean*) if set to *true*, the cells of the exported document will have the colors defined by the api/gantt_task_cell_class_template.md template, the *color* and *background-color* 
+- **cellColors** - (*boolean*) if set to *true*, the cells of the exported document will have the colors defined by the api/gantt_timeline_cell_class_template.md template, the *color* and *background-color* 
 properties are exported
 
 @related:

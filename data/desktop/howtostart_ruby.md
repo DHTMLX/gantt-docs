@@ -243,13 +243,13 @@ And call this action from the client side using the [gantt.load](api/gantt_load.
 
 {{snippet app/views/gantt/index.html.erb}}
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
+gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
 
 gantt.init("gantt_here");
 gantt.load("/api/data");/*!*/
 ~~~
 
-Note that [xml_date](api/gantt_xml_date_config.md) config specifies the [format of dates](http://api.rubyonrails.org/v5.1/classes/DateTime.html#method-i-to_formatted_s) 
+Note that [date_format](api/gantt_date_format_config.md) config specifies the [format of dates](http://api.rubyonrails.org/v5.1/classes/DateTime.html#method-i-to_formatted_s) 
 (<b>start_date</b> of Task) that comes from the server.
 
 If you run the server now and open *http://localhost:3000/* in your browser, you should be able to see a gantt chart populated with tasks and links from the database.
@@ -267,7 +267,7 @@ Firstly, we will enable posting changes on the client:
 
 {{snippet app/views/gantt/index.html.erb}}
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
+gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
 
 gantt.init("gantt_here");
 gantt.load("/api/data");

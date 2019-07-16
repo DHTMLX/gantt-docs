@@ -5,6 +5,22 @@ dhtmlxGantt includes a set of extensions which add extra functionality to the st
 
 To use an extension, you should include the extension code file on the page. Code files of extensions reside in the **ext** folder of the gantt codebase.
 
+Advanced Drag-n-Drop
+----------------------
+
+Provides the possibility to create and select tasks with drag-n-drop.
+
+~~~html
+<script src="../codebase/ext/dhtmlxgantt_click_drag.js"></script>
+~~~
+
+####Related resources
+
+Article: desktop/advanced_dnd.md<br>
+API: api/gantt_click_drag_config.md<br>
+
+{{sample 02_extensions/24_click_drag.html}}
+
 Auto Scheduling
 ----------------
 
@@ -22,6 +38,20 @@ Article: desktop/auto_scheduling.md<br>
 API: api/gantt_auto_scheduling_config.md<br>
 
 {{sample  02_extensions/12_auto_scheduling.html}}
+
+
+Content Security Policy
+----------------------
+
+Allows working with dhtmlxGantt in case Content Security Policy (CSP) is enabled in the application.
+
+~~~html
+<script src="../codebase/ext/dhtmlxgantt_csp.js"></script>
+~~~
+
+####Related resources
+
+Article: desktop/content_security_policy.md
 
 
 Critical Path
@@ -42,21 +72,6 @@ Article: desktop/critical_path.md<br>
 API: api/gantt_highlight_critical_path_config.md<br>
 
 {{sample  02_extensions/03_critical_path.html}}
-
-
-Content Security Policy
-----------------------
-
-Allows working with dhtmlxGantt in case Content Security Policy (CSP) is enabled in the application.
-
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_csp.js"></script>
-~~~
-
-####Related resources
-
-Article: desktop/content_security_policy.md
-
 
 Full Screen
 -----------
@@ -105,22 +120,6 @@ Article: desktop/accessibility.md#keyboardnavigation<br>
 API: api/gantt_keyboard_navigation_config.md,api/gantt_keyboard_navigation_cells_config.md<br>
 
 
-Vertical Marker
----------
-
-Highlights certain dates or date ranges.
-
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_marker.js"></script>
-~~~
-
-####Related resources
-
-Article: desktop/markers.md<br>
-API: api/gantt_addmarker.md,api/gantt_show_markers_config.md<br>
-
-{{sample  02_extensions/05_today_line.html}}
-
 
 Multitask Selection
 -------------------
@@ -154,22 +153,6 @@ Article: desktop/touch_templates.md<br>
 
 {{sample 02_extensions/01_quickinfo.html}}
 
-Smart Rendering
-------------------
-
-Allows enhancing the speed of data rendering while working with big amounts of data.
-
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_smart_rendering.js"></script>
-~~~
-
-####Related resources
-
-Article: desktop/performance.md#smartrendering<br>
-API: api/gantt_smart_rendering_config.md<br>
-
-{{sample 02_extensions/13_smart_rendering.html}}
-
 
 Tooltip
 ---------
@@ -200,3 +183,20 @@ Article: desktop/undo_redo.md<br>
 API: api/gantt_undo_config.md, api/gantt_redo_config.md<br>
 
 {{sample 02_extensions/14_undo.html}}
+
+Vertical Marker
+---------
+
+Highlights certain dates or date ranges.
+
+~~~html
+<script src="../codebase/ext/dhtmlxgantt_marker.js"></script>
+~~~
+
+####Related resources
+
+Article: desktop/markers.md<br>
+API: api/gantt_addmarker.md,api/gantt_show_markers_config.md<br>
+
+{{sample  02_extensions/05_today_line.html}}
+

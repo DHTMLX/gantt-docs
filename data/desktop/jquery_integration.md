@@ -11,9 +11,9 @@ A Gantt chart initialized with JQuery
 ~~~js
 $(".mygantt").dhx_gantt({
 	data:demo_tasks,
-    scale_unit:"year",
-	step:1,
-	date_scale:"%Y"
+    scales:[
+    	{ unit:"year",step:1,format:"%Y"}
+    ]
 });
 $("#gantt1").dhx_gantt().parse(tasksA);
 ~~~
@@ -31,11 +31,10 @@ where:
 - **".mygantt"** - a jQuery compatible CSS selector of the container, in which the Gantt chart will be created 
 - **dhx_gantt()** method instantiates dhtmlxGantt. As a parameter the method takes a configuration object:
   - **data** - (*object*) a data set that will  be loaded to the Gantt chart
-  - **scale_unit**, **step**, **date_scale** and any other configuration parameters 
-  ( normally set through gantt.config.{option} ) are set in such a way
+  - **[scales](api/gantt_scales_config.md)** - (*array*) an array with configuration settings of the time scale
   
 {{note
-A Gantt chart, initialized through jQuery call, uses the same configuration and API that the standard (initialized through JavaScript) Gantt chart does
+A Gantt chart, initialized through jQuery call, uses the same configuration and API as the standard (initialized through JavaScript) Gantt chart does.
 }}
 
 {{sample

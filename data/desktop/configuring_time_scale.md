@@ -1,10 +1,26 @@
-Setting up the Scale
+Setting up Scale
 ===========================================
 
 <img src="desktop/gantt_dates.png"/>
 
+The configuration of scales is specified via the api/gantt_scales_config.md property. You can specify any number of scales by setting scale objects in the array of the **scales** config:
 
-You can configure the following aspects of the time scale (X-Axis):
+~~~js
+// a single day-scale
+gantt.config.scales = [
+	{unit: "day", step: 1, format: "%j, %D"}
+];
+
+// several scales at once
+gantt.config.scales = [
+	{unit: "month", step: 1, format: "%F, %Y"},
+	{unit: "week", step: 1, format: weekScaleTemplate},
+	{unit: "day", step:1, format: "%D", css:daysStyle }
+];
+~~~
+
+
+It is possible to configure the following aspects of the time scale (X-Axis):
 
 1. [Unit](#timeunits)
 2. [Range](#range)
@@ -12,7 +28,7 @@ You can configure the following aspects of the time scale (X-Axis):
 4. [Height](#height)
 5. [Format](#dateformat)
 6. [Style](#styling)
-7. [Second scale](#multiplescales)
+
 
 You can also add a [custom scale](#customtimeunits).
 
@@ -20,19 +36,22 @@ You can also add a [custom scale](#customtimeunits).
 Time units
 ----------------------------------------
 
-<img src="desktop/week_scale_unit.png"/>
+<img src="desktop/month_day_scale_units.png"/>
+
+To set the unit of the scale, use the **unit** property in the corresponding scale object: 
+
+Possible values are: "minute", "hour", "day", "week", "quarter", "month", "year".
 
 
-To set the unit of the scale, use the api/gantt_scale_unit_config.md property: 
-
-{{snippet
-Setting the "week" unit for the scale
-}}
 ~~~js
-gantt.config.scale_unit = "week"; /*!*/
-gantt.config.date_scale = "Week #%W";
+gantt.config.scales = [
+	{unit: "month", step: 1, format: "%F, %Y"},
+	{unit: "day", step: 1, format: "%j, %D"}
+];
+
 gantt.init("gantt_here");
 ~~~
+
 {{sample
 	03_scales/02_month_days.html
 }}
@@ -47,7 +66,8 @@ Range
 ###Default range settings
 
 If you don't specify the date range explicitly, Gantt uses the dates of the loaded tasks and adds offsets before the first and after the last task in the scale. The offset is defined by the settings of the time scale.
-Depending on the [scale_offset_minimal](api/gantt_scale_offset_minimal_config.md) value, it will be either the time unit defined in via the api/gantt_scale_unit_config.md option or the smallest of the time scale units.
+Depending on the [scale_offset_minimal](api/gantt_scale_offset_minimal_config.md) value, it will be either the time unit defined in via 
+the **unit** attribute of the api/gantt_scales_config.md option or by the smallest of the time scale units.
 
 You can get the displayed date range programmatically using the api/gantt_getstate.md method.
 
@@ -212,14 +232,22 @@ Time step
 
 <img src="desktop/scale_step.png"/>
 
-To set the step of the time scale, use the api/gantt_step_config.md property:
+To set the step of the time scale, use the **step** property in the corresponding scale object:
 
-{{snippet
-Setting the "day" step for the scale
-}}
 ~~~js
-gantt.config.scale_unit= "day";
-gantt.config.step = 2;  /*!*/
+var monthScaleTemplate = function (date) {
+	var dateToStr = gantt.date.date_to_str("%M");
+    var endDate = gantt.date.add(date, 2, "month");
+    return dateToStr(date) + " - " + dateToStr(endDate);
+};
+
+
+gantt.config.scales = [
+	{unit: "year", step: 1, format: "%Y"},
+	{unit: "month", step: 3, format: monthScaleTemplate},
+	{unit: "month", step: 1, format: "%M"}
+];
+
 
 gantt.init("gantt_here");
 ~~~
@@ -252,21 +280,21 @@ If you have several scales, they will share the specified height equally. For ex
 
 
 Date format
-----------------------------------------------
+----------------------
 
 {{note
 See the desktop/date_format.md article to know about available format characters 
 }}
 
 
-To set the format of the scale, use:
-
-<ul>
-	<li>the api/gantt_date_scale_config.md property,  to set a simple format as a string:<br><br>
+To set the format of the scale, use the **format** property in the corresponding scale object. The format of date can be set as a string: 
 
 ~~~js
-gantt.config.scale_unit = "day";
-gantt.config.date_scale = "%F, %d"; /*!*/
+gantt.config.scales = [
+	{unit: "month", step: 1, format: "%F, %Y"},
+	{unit: "week", step: 1, format: weekScaleTemplate},
+	{unit: "day", step:1, format: "%D", css:daysStyle }
+];
 
 gantt.init("gantt_here");
 ~~~
@@ -275,26 +303,16 @@ gantt.init("gantt_here");
 	03_scales/01_multiple_scales.html
 }}
 
-<img style="margin-top:12px; margin-bottom:20px;" src="desktop/scale_format.png"/>
+<img style="margin-top:12px; margin-bottom:20px;" src="desktop/multiple_scales.png"/>
 
-
-</li>
-<li>the api/gantt_date_scale_template.md template, to set a complex format as a function that takes a date object as a parameter:<br><br>
+Or as a function that takes a date object as a parameter:
 
 ~~~js
-gantt.config.scale_height = 44;
-
-gantt.attachEvent("onGanttReady", function(){
-	var dateFormat = gantt.date.date_to_str("%F %d");
-
-	var dayNumber = function(date){
-		return gantt.columnIndexByDate(date) + 1;
-	} 
-
-	gantt.templates.date_scale = function(date){		/*!*/
-	  return "<strong>Day "+dayNumber(date)+"</strong><br/>"+dateFormat(date); /*!*/
-	} /*!*/
-});
+gantt.config.scales = [
+  { unit: "day", step:1, format: function(date){
+    return "<strong>Day " + dayNumber(date) + "</strong><br/>" + dateFormat(date);
+  }
+]
 ~~~
 
 
@@ -303,8 +321,7 @@ gantt.attachEvent("onGanttReady", function(){
 }}
 
 <img style="margin-top:12px;" src="desktop/scale_template.png"/>
-</li>
-</ul>
+
 
 Styling
 ------------------------------------
@@ -347,34 +364,9 @@ gantt.templates.scale_cell_class = function(date){
 
 Read more on applying a custom style to the timeline area in the desktop/highlighting_time_slots.md article.
 
-Multiple scales
-----------------------------------------------
-
-<img src="desktop/secondscale.png"/>
-
-To add the second scale(s) underneath the default one, use the the api/gantt_subscales_config.md property:
-
-{{snippet
-Adding the second scale to the Gantt chart
-}}
-~~~js
-gantt.config.subscales = [/*!*/
-	{unit:"week", step:1, date:"Week #%W"}/*!*/
-];/*!*/
-gantt.config.scale_height = 54;
-gantt.init("gantt_here");
-~~~
-
-{{sample
-	03_scales/01_multiple_scales.html
-}}
-
-Read more on second scales in a separate article - desktop/second_scale.md.
-
-
 
 Custom time units
--------------------------------------------------
+-------------------------
 
 dhtmlxGantt allows you to define custom time units and set a template for labels in the scale configuration.
 
@@ -428,3 +420,4 @@ gantt.config.subscales = [
 ];
 ~~~
 
+@todo: check

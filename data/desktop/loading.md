@@ -190,7 +190,7 @@ A data source for the Gantt chart is an object that stores 2 types of informatio
 	<ul>
 			<li><b>text</b> - (<i> string </i>) the task text.</li>
 			<li><b>start_date</b> -  (<i> Date|string </i>) the date when a task is scheduled to begin. 
-            Must match api/gantt_xml_date_config.md format if provided as a string. </li>
+            Must match api/gantt_date_format_config.md format if provided as a string. </li>
 			<li><b>duration</b> - (<i> number </i>) the task duration.  <a href="desktop/loading.md#loadingtaskdates">Can be replaced with the 'end_date' property</a>.</li>
 			<li><b>id</b> -  (<i> string|number </i>) the task id.</li>
 	</ul>
@@ -212,7 +212,7 @@ A data source for the Gantt chart is an object that stores 2 types of informatio
 			<li><b>open</b> - (<i> boolean </i>) specifies whether the task branch will be opened initially (to show child tasks).</li>
             <li><b>end_date</b> - (<i> Date|string </i>) the date when a task is scheduled to be completed. 
             Used as an alternative to the <i>duration</i> property for setting the duration of a task.
-            Must match api/gantt_xml_date_config.md format if provided as a string. 
+            Must match api/gantt_date_format_config.md format if provided as a string. 
             </li>  
             <li><b>readonly</b>-(<i>boolean</i>) optional, can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">readonly</a>. </li>
         	<li><b>editable</b>-(<i>boolean</i>) optional, can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">editable</a>. </li>
@@ -232,16 +232,16 @@ A data source for the Gantt chart is an object that stores 2 types of informatio
 
 
 The default date format for JSON and XML data is **"%d-%m-%Y %H:%i"** (see the <a href="desktop/date_format.md"> date format specification</a>).<br>
-To change it, use the api/gantt_xml_date_config.md configuration option.
+To change it, use the api/gantt_date_format_config.md configuration option.
 
 ~~~js
-gantt.config.xml_date="%Y-%m-%d";
+gantt.config.date_format="%Y-%m-%d";
 gantt.init("gantt_here");
 ~~~
 
 Once loaded into Gantt, the **start_date** and **end_date** properties will be parsed into the Date type. 
 
-Date formats that are not supported by the api/gantt_xml_date_config.md config can be parsed manually via the api/gantt_xml_date_template.md template.
+Date formats that are not supported by the api/gantt_date_format_config.md config can be parsed manually via the api/gantt_parse_date_template.md template.
 
 <h3 id="link_properties">Properties of a link object</h3>
 

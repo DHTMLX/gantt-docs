@@ -20,6 +20,112 @@ Migration from Older Versions
 	}
 </style>
 
+6.1 -> 6.2
+---------------
+
+The update to v6.2 is generally compatible with v6.1 and should not require any changes in code.
+However, some behavior of the component has been changed (old behavior can be restored via config), and some APIs has been deprecated.
+
+###Smart rendering and static background
+
+Smart rendering functionality has been updated and is not embedded into the component. It should now work both in the main timeline area and in resource panels. From now on, all timelines should render only rows and cells that are currently visible.
+
+Smart rendering can be disabled via the **smart_rendering** config, which will return gantt to the default behavior of v6.1:
+
+~~~js
+gantt.config.smart_rendering = false;
+~~~
+
+The **dhtmlxgantt_smart_rendering** extension is no longer needed and should be removed from gantt. The extension itself is still available in the package in case of compatibility issues.
+If the extension is added to the page, gantt will revert to the v6.1 smart rendering mode.
+
+The behavior of the **api/gantt_static_background_config.md** config has been updated as well. Starting from v6.2 it will render PNG background AND any cells that have CSS class attached to them via template function.
+
+If you need to revert to v6.1 behavior, use the **static_background_cells** config:
+
+~~~js
+gantt.config.static_background_cells = false;
+~~~
+
+
+### Time scale settings
+
+Configuration of time scale has been simplified. Instead of specifying a bunch of scale settings for each scale separately, now you should use just one configuration option api/gantt_scales_config.md that will contain 
+a number of scale objects with settings for them.
+
+All in all, the following time scale APIs are deprecated:
+
+- gantt.config.scale_unit
+- gantt.config.step
+- gantt.config.date_scale
+- gantt.templates.date_scale
+- gantt.config.subscales
+
+For example, the code below:
+
+~~~js
+gantt.config.scale_unit = "day"; 
+gantt.config.step = 1; 
+gantt.config.date_scale = "%d %M"; 
+gantt.templates.date_scale = null; 
+gantt.config.subscales = [];
+~~~
+
+Now looks like this:
+
+~~~js
+gantt.config.scales = [ { unit:"day", step: 1, format: "%d %M"} ];
+~~~
+
+#### task_cell_class template renamed
+
+The template used to define the CSS class applied to the cells of the timeline area is renamed as follows:
+
+- gantt.templates.task_cell_class → [gantt.templates.timeline_cell_class](api/gantt_timeline_cell_class_template.md)
+
+An example of using the renamed template is:
+
+~~~js
+<style>
+.weekend{ background: #f4f7f4 !important;}
+</style>
+ 
+gantt.templates.timeline_cell_class = function(task,date){
+    if(date.getDay()==0||date.getDay()==6){
+        return "weekend";
+    }
+};
+~~~
+
+### "xml_date" config and template, and "xml_format" templates are renamed
+
+Below there is the scheme of replacing previously used API:
+
+- gantt.config.xml_date →  [gantt.config.date_format](api/gantt_date_format_config.md)
+- gantt.templates.xml_date → [gantt.templates.parse_date](api/gantt_parse_date_template.md)
+- gantt.templates.xml_format → [gantt.templates.format_date](api/gantt_format_date_template.md)
+
+
+Since v6.2 the default values of the **xml_date** config, and **xml_date** and **xml_format** templates are *undefined*. Thus if you haven't assigned any values to them, they won't work. 
+
+However, Gantt will continue to use the old names of the config and templates, so if you've redefined those APIs in your code, they will work as before. For example:
+
+~~~js
+// will work correctly
+gantt.templates.xml_date = function(datestring){
+    return new Date(datestring);
+};
+~~~
+
+
+### Unused API removed
+
+The **gantt.config.api_date** config and **gantt.templates.api_date** template are removed from API as they weren't used inside gantt code. If you've used them in your code, you need to declare them once again.
+
+~~~js
+gantt.config.api_date = "%d-%m-%Y %H:%i";
+gantt.templates.api_date = gantt.date.date_to_str(gantt.config.api_date);
+~~~
 
 6.0 -> 6.1 
 -------------
@@ -283,4 +389,3 @@ The id of the parent task can be accessed as **gantt.getTask(task_id).parent**. 
 - desktop/migrating_renamedcss.md
 
 @spellcheck: btn
-

@@ -349,7 +349,7 @@ And finally, call this action from the view:
 
 {{snippet resources/views/gantt.blade.php }}
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";/*!*/
+gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
 
 gantt.init("gantt_here");
 
@@ -358,7 +358,7 @@ gantt.load("/api/data");/*!*/
 
 [gantt.load](api/gantt_load.md) sends an AJAX request to the specified URL and will expect a [JSON response](desktop/supported_data_formats.md#json) as we've defined before.
 
-Also, note that we've specified the [xml_date](api/gantt_xml_date_config.md) value. 
+Also, note that we've specified the [date_format](api/gantt_date_format_config.md) value. 
 This is how we tell the gantt which format of dates the data source will use, so the client side could parse them. 
 
 If you check the app now, you should see that there are now tasks in our gantt chart:
@@ -529,7 +529,7 @@ Finally, we will [configure the client side](desktop/server_side.md#technique) t
 
 {{snippet resources/views/gantt.blade.php }}
 ~~~js
-gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
+gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
     
 gantt.init("gantt_here");
     

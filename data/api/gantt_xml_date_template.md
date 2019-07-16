@@ -10,10 +10,24 @@ xml_date
 gantt.templates.xml_date = function(date){
 	return gantt.date.date_to_str(gantt.config.xml_date)(date);
 };
+
 @template:	api_template
 @returns:
 - text		string		html text which will be rendered in the gantt
+
 @descr:
+{{note The template is deprecated. Use api/gantt_parse_date_template.md instead:}}
+
+~~~js
+var cfg = gantt.config;
+var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
+ 
+gantt.templates.parse_date = function(date){
+    return strToDate (date);
+};
+~~~
+
+
 This template is automatically generated from the api/gantt_xml_date_config.md config and can be redefined after the [initialization of gantt](api/gantt_init.md).
 
 A custom template function can be used, if the format of server dates is not supported by the [gantt date helper](api/gantt_date_other.md).
@@ -62,4 +76,18 @@ gantt.load("/data");
 	api/gantt_date_other.md
 @related:
 	desktop/conversion_templates.md
-	
+
+@deprecated:
+Use api/gantt_parse_date_template.md instead:
+
+~~~js
+var cfg = gantt.config;
+var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
+ 
+gantt.templates.parse_date = function(date){
+    return strToDate (date);
+};
+~~~
+
+@changelog:
+deprecated since v6.2

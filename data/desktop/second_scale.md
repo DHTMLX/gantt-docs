@@ -1,4 +1,4 @@
-Adding the Second Scale(s)
+Adding Second Scale(s)
 =================================
 
 To present tasks in different time units, simultaneously, you can add any number of additional scales underneath the default one.
@@ -120,4 +120,6 @@ Use the <b> !important</b> keyword with CSS properties to guarantee that they wi
 }}
 
 {{sample	03_scales/01_multiple_scales.html}}
+
+@deprecated: The described functionality is deprecated since version 6.2. Use the api/gantt_scales_config.md config to set any number of time scales. [Check the details](desktop/configuring_time_scale.md).
 

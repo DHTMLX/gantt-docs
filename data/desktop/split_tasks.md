@@ -45,7 +45,7 @@ gantt.render();
 For instance, it is possible to add a control mapped to the **task.render** property into the lightbox to dynamically switch between the split and hierarchical views. Check an example in the section below.
 
 
-###Switching split mode dynamically
+### Switching split mode dynamically
 
 You can configure the lightbox so that it allows switching the split mode for the task on and off. For this you can add a new section with a checkbox into the lightbox by changing configuration settings 
 for project types of tasks - [**gantt.config.lightbox.project_sections**](desktop/task_types.md#specificlightboxpertasktype) and add a label for the new section:
@@ -70,7 +70,7 @@ When the checkbox will be unchecked, a split task will be rendered as a project 
 
 {{sample  04_customization/11_split_task.html}}
 
-##Checking if task is split
+## Checking if task is split
 
 You can check whether a task is split with the help of the api/gantt_issplittask.md method. It takes the task object as an argument and returns true, if the task is split.
 
@@ -80,5 +80,17 @@ if(gantt.isSplitTask(task)){
   ...
 }
 ~~~
+
+## Expanding/collapsing split tasks
+
+In case you want to expand/collapse a split task right from the grid interface, there is a special configuration option that will help you. It is called api/gantt_open_split_tasks_config.md and it takes 
+a boolean value to make a split task expandable and otherwise.
+
+~~~js
+gantt.config.open_split_tasks = true;
+~~~
+
+![Expanding split task](desktop/expand_split_task.png)
+
 
 @edition:pro

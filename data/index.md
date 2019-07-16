@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 6.1!</h2>
+    <h2>Meet Gantt 6.2!</h2>
     
     <p>
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="desktop/tooltips.md#tooltipsfordifferentelements">Tooltips for all the Gantt Chart elements</a></li>
-        <li><a href="desktop/server_side.md#customrouting">Routing options for dataProcessor</a></li>
-        <li><a href="desktop/auto_scheduling.md#timeconstraintsfortasks">Time constraints for tasks</a></li>        
+		<li><a href="migrating.md#6162">Major performance improvement</a></li>        
+        <li><a href="desktop/advanced_dnd.md">Creating tasks by drag-n-drop</a></li>   
+        <li><a href="desktop/zooming.md">Smooth zooming with mouse wheel</a></li>
 	</ul>
 
     <p class='action_buttons'>

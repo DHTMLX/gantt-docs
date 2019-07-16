@@ -3,10 +3,6 @@ Templates of the Timeline Area
 
 <table class="webixdoc_links">
 	<tbody>
-    	<tr>
-			<td class="webixdoc_links0">api/gantt_date_scale_template.md</td>
-			<td>specifies the date format of the time scale (X-Axis)</td>
-		</tr>
 		<tr>
 			<td class="webixdoc_links0">api/gantt_leftside_text_template.md</td>
 			<td>specifies the text assigned to tasks bars on the left side</td>
@@ -28,7 +24,7 @@ Templates of the Timeline Area
 			<td>specifies the CSS class that will be applied to the whole time scale</td>
 		</tr>
         <tr>
-			<td class="webixdoc_links0">api/gantt_task_cell_class_template.md</td>
+			<td class="webixdoc_links0">api/gantt_timeline_cell_class_template.md</td>
 			<td>specifies the CSS class that will be applied to the cells of the timeline area</td>
 		</tr>
         <tr>
@@ -48,3 +44,5 @@ Templates of the Timeline Area
 
 
 <img src="desktop/templates_01.png"/>
+
+@todo: update the image: task -> timeline_cell_class, remove date_class

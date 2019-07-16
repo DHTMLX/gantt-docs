@@ -1,5 +1,6 @@
 Configuring Tasks
-===================================================
+================================
+
 <img src="desktop/gantt_tasks.png"/>
 
 {{index
@@ -19,4 +20,5 @@ Configuring Tasks
 - desktop/readonly_mode.md
 - desktop/validation.md
 - desktop/dnd.md
+- desktop/advanced_dnd.md
 }}

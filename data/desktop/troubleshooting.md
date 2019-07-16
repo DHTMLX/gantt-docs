@@ -62,12 +62,12 @@ If the `parent` property is not empty and your dataset doesn't contain an approp
 
 - `start_date`, `end_date`, `duration` - make sure your entries contain at least two of these properties, e.g. `start_date`+`duration`. There is more information in the desktop/loading.md#loadingtaskdates article.
 
-Make sure that the `start_date`/`end_date` formats match the format you specify in the [`xml_date`](api/gantt_xml_date_config.md) config of gantt.
+Make sure that the `start_date`/`end_date` formats match the format you specify in the api/gantt_date_format_config.md config of gantt.
 
 
 ###If you find something unusual in the property values
 
-Check what is stored in your database, probably the issue is there. If date formats don't match, either change the `xml_date` config, or modify the code that serialized task dates before outputting them to the client.
+Check what is stored in your database, probably the issue is there. If date formats don't match, either change the `date_format` config, or modify the code that serialized task dates before outputting them to the client.
 
 ##Check what is loaded into the Gantt
 

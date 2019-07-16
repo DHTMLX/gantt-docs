@@ -218,7 +218,7 @@ Link:
 
 Note:
 
-- The format of the **start_date** and **end_date** parameters is defined by the api/gantt_xml_date_config.md config.
+- The format of the **start_date** and **end_date** parameters is defined by the api/gantt_date_format_config.md config.
 - The client side sends all the public properties of a task or link object. Thus, a request may contain any number of additional parameters. 
 - If you extend the data model by adding new columns/properties to it, no additional actions are needed to make gantt sending them to the backend.
 
