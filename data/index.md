@@ -29,9 +29,9 @@ Start
 	<div class='inside-hot'>
     
     <div class='hot-right'>
-    	Check also:
-    	<a class='first' href='https://docs.dhtmlx.com/scheduler'>Scheduler</a>
-    	<a class='second' href='https://docs.dhtmlx.com/pivot/index.html'>Pivot</a>
+    	Check also:    	
+    	<a class='second' href='https://docs.dhtmlx.com/scheduler/index.html'>Scheduler</a>
+        <a class='second' href='http://docs.dhtmlx.com/scheduler'>Scheduler.Net</a>
 	</div>
     
     <form method="get" action="search.php">
