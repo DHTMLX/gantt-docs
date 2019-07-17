@@ -31,7 +31,7 @@ Which will have the following effect:
 - When a user changes the start date of a task, task duration will remain unchanged and the whole task will be rescheduled to the specified time.
 - When a user changes the end date of a task, task duration will remain unchanged and the whole task will be rescheduled to end at the specified time.
 
-An alternative value is **"keepDates"**
+An alternative value is **"keepDates"**:
 
 ~~~js
 gantt.config.inline_editors_date_processing = "keepDates";

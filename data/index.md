@@ -29,7 +29,7 @@ Start
 	<div class='inside-hot'>
     
     <div class='hot-right'>
-    	Check also
+    	Check also:
     	<a class='first' href='https://docs.dhtmlx.com/scheduler'>Scheduler</a>
     	<a class='second' href='https://docs.dhtmlx.com/pivot/index.html'>Pivot</a>
 	</div>
