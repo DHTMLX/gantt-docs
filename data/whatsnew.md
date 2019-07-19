@@ -21,6 +21,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix script error in [keyboard navigation](desktop/keyboard_navigation.md) extension thrown from Alt+Arrow key shortcut
 - Filtering in the [resource control](desktop/resource_management.md) is changed to ignore text case
 - Task drag and drag and drop should finish on mouseup anywhere over the gantt element
+- Fix script error which happened after saving an [unscheduled task](desktop/unscheduled_tasks.md)
 
 6.2
 -------
