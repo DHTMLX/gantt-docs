@@ -10,6 +10,18 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.2.1
+-----
+
+<span class='release_date'>July 19, 2019. Bugfix release</span>
+
+- Fix IE11 compatibility of the [click-drag feature](desktop/advanced_dnd.md)
+- Fix script error which happened when the user tried to add a new task into the empty chart with the resource view
+- Fix the incorrect behavior of the [group-by](desktop/grouping.md) extension which caused it to assign incorrect group value for new tasks
+- Fix script error in [keyboard navigation](desktop/keyboard_navigation.md) extension thrown from Alt+Arrow key shortcut
+- Filtering in the [resource control](desktop/resource_management.md) is changed to ignore text case
+- Task drag and drag and drop should finish on mouseup anywhere over the gantt element
+
 6.2
 -------
 
