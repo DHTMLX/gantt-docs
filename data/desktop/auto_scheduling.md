@@ -341,7 +341,7 @@ When a user changes the date of a task by moving it with the mouse pointer or vi
 
 Thus a task won't be scheduled to the earliest date if the later date is set from the UI. This may be confusing to a not prepared user especially since constraints are not displayed in the chart by default.
 
-You can enable constraint display using the api/gantt_addtasklayer.md method.
+You can enable displaying of constraints using the api/gantt_addtasklayer.md method.
 
 {{sample 02_extensions/19_constraints_scheduling.html}}
 

@@ -311,6 +311,7 @@ Gantt API
 
 {{api
 - api/gantt_auto_scheduling_config.md - enables auto scheduling
+- api/gantt_auto_scheduling_compatibility_config.md - disables usage of time contraints for tasks
 - api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creating links from parent tasks (projects) to their children
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
 - api/gantt_auto_scheduling_move_projects_config.md - defines whether the whole project will be moved (see the details below)
