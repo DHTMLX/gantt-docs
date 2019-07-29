@@ -5,7 +5,7 @@ dhtmlxGantt includes a set of extensions which add extra functionality to the st
 
 To use an extension, you should include the extension code file on the page. Code files of extensions reside in the **ext** folder of the gantt codebase.
 
-Advanced Drag-n-Drop
+Advanced drag-n-drop
 ----------------------
 
 Provides the possibility to create and select tasks with drag-n-drop.
@@ -21,7 +21,7 @@ API: api/gantt_click_drag_config.md<br>
 
 {{sample 02_extensions/24_click_drag.html}}
 
-Auto Scheduling
+Auto scheduling
 ----------------
 
 {{note This extension is available in PRO version only}}
@@ -40,7 +40,7 @@ API: api/gantt_auto_scheduling_config.md<br>
 {{sample  02_extensions/12_auto_scheduling.html}}
 
 
-Content Security Policy
+Content security policy
 ----------------------
 
 Allows working with dhtmlxGantt in case Content Security Policy (CSP) is enabled in the application.
@@ -54,7 +54,7 @@ Allows working with dhtmlxGantt in case Content Security Policy (CSP) is enabled
 Article: desktop/content_security_policy.md
 
 
-Critical Path
+Critical path
 -------------
 
 {{note This extension is available in PRO version only}}
@@ -73,7 +73,22 @@ API: api/gantt_highlight_critical_path_config.md<br>
 
 {{sample  02_extensions/03_critical_path.html}}
 
-Full Screen
+Extra overlay
+--------------
+
+Provides the possibility to add an extra layer over the Gantt Chart for placing some custom content into it.
+
+~~~html
+<script src="../codebase/ext/dhtmlxgantt_overlay.js"></script>
+~~~
+
+####Related resources
+
+Article: desktop/baselines.md#extraoverlayforthechart
+
+{{sample 02_extensions/21_overlay.html}}
+
+Full screen
 -----------
 
 Displays Gantt in the full screen mode.
@@ -106,7 +121,7 @@ API: api/gantt_groupby.md<br>
 
 {{sample  02_extensions/08_tasks_grouping.html}}
 
-Keyboard Navigation
+Keyboard navigation
 ------------------
 Allows navigating the gantt chart with the help of the keyboard.
 
@@ -121,7 +136,7 @@ API: api/gantt_keyboard_navigation_config.md,api/gantt_keyboard_navigation_cells
 
 
 
-Multitask Selection
+Multitask selection
 -------------------
 
 Allows selecting multiple tasks in Gantt chart at once.
@@ -138,7 +153,7 @@ API: api/gantt_multiselect_config.md<br>
 {{sample  02_extensions/09_multiselection.html}}
 
 
-Quick Info
+Quick info
 -----------
 
 Provides a popup with a task details.
@@ -184,7 +199,7 @@ API: api/gantt_undo_config.md, api/gantt_redo_config.md<br>
 
 {{sample 02_extensions/14_undo.html}}
 
-Vertical Marker
+Vertical marker
 ---------
 
 Highlights certain dates or date ranges.
