@@ -3,7 +3,7 @@ onExpand
 
 
 @short:
-	fires when gantt is expended to full screen
+	fires when gantt is expanded to full screen
 
 @params:
 
