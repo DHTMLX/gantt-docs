@@ -4,7 +4,7 @@ groupBy
 @short:groups tasks by the specified task's attribute
 
 @params:
-- config	object	the grouping configuration object 
+- config		object,boolean		the grouping configuration object, or false to ungroup tasks
 
 @edition: pro
 @related:desktop/grouping.md
@@ -52,6 +52,9 @@ gantt.groupBy({
 	group_id: "key",
 	group_text: "label"
 });
+
+// ungrouping tasks
+gantt.groupBy(false);
 
 @template:	api_method
 @descr:
