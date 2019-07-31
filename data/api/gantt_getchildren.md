@@ -1,13 +1,14 @@
 getChildren
 =============
+
 @short:returns the 1st-level child tasks of the specified parent branch
 	
 
 @params:
-- id	string, number		the parent branch's id
+- id	string,number		the parent branch's id
 
 @returns:
--ids	array	an array of child ids
+- ids	array				an array of children's ids
 
 
 @example:
@@ -37,6 +38,7 @@ gantt.getChildren("p_1");//->["t_1", "t_2"] /*!*/
     api/gantt_getsiblings.md
     api/gantt_getnextsibling.md 
     api/gantt_getprevsibling.md 
+    api/gantt_eachtask.md
 @template:	api_method
 @descr:
-
+Another method to iterate over child tasks of some task is api/gantt_eachtask.md.
