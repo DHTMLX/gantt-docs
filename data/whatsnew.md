@@ -13,7 +13,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 6.2.1
 -----
 
-<span class='release_date'>July 19, 2019. Bugfix release</span>
+<span class='release_date'>August 7, 2019. Bugfix release</span>
 
 - Fix IE11 compatibility of the [click-drag feature](desktop/advanced_dnd.md)
 - Fix script error which happened when the user tried to add a new task into the empty chart with the resource view
