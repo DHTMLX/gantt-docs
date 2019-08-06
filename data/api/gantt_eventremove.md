@@ -13,11 +13,15 @@ eventRemove
 
 
 @example:
-var eventId = gantt.event("divId", "click", function(e){
-	do_something();
-}, options);
 
-gantt.eventRemove(eventId);
+var handler = function(event){
+	console.log("event!");
+};
+var element = document.querySelector(".my-element");
+
+gantt.event(element, "click", handler);
+
+gantt.eventRemove(element, "click", handler);
 
 @relatedapi: api/gantt_event.md
 
@@ -25,7 +29,7 @@ gantt.eventRemove(eventId);
 
 @template:	api_method
 @descr:
-
+All event listeners attached using api/gantt_event.md will be detached automatically when the api/gantt_destructor.md is called.
 
 @changelog:
 added in version 4.0
