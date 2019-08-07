@@ -13,14 +13,14 @@ event
 
 @example:
 // adds a handler for the 'onclick' event
-gantt.event("divId", "click", function(e){
-	// e - a native event object
+gantt.event("divId", "click", function(event){
+	// e - DOM event object
 	do_something();
 }, options);
 
 @template:	api_method
 @descr:
-
+All event listeners attached using api/gantt_event.md will be detached automatically when the api/gantt_destructor.md is called.
 
 @related:
 desktop/handling_events.md
