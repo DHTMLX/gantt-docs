@@ -119,14 +119,13 @@ gantt.templates.task_class=function(start, end, task){
 Ungrouping tasks
 ------------------------------
 
-To reset grouping, call the api/gantt_groupby.md method without parameters:
+To reset grouping, call the api/gantt_groupby.md method and pass *false* as a parameter:
 
 {{snippet
 Resetting the current grouping
 }}
 ~~~js
-//calling  
-gantt.groupBy();
+gantt.groupBy(false);
 ~~~
 
 Using collections for specifying groups

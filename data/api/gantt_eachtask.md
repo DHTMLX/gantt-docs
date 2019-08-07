@@ -1,15 +1,13 @@
 eachTask
 =============
 
-@short: iterates over all child tasks in the Gantt chart
+@short: iterates over all child tasks of a specific task or the of whole Gantt chart 
 	
 
 @params:
 - code 		function				a function that will iterate over tasks. Takes a task object as a parameter
-* parent	string, number			the parent id. If specified, the function will iterate over childs of the <br> specified parent	
+* parent	string,number			the parent id. If specified, the function will iterate over children of the <br> specified parent	
 * master	object					the object, that 'this'  will refer to
-
-
 
 
 

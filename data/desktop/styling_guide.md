@@ -1,4 +1,4 @@
-Working with Styles in Gantt
+Work with Gantt Styles
 =========================
 
 dhtmlxGantt provides you with a wide set of options for modifying its appearance. You can both [change the general look of the Gantt chart by using one of the predefined skins](desktop/skins.md)

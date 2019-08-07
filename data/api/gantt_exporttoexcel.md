@@ -48,6 +48,7 @@ The **exportToExcel()** method takes as a parameter an object with several prope
 - **visual** - (*boolean*) adds the timeline chart to an exported Excel document. *false* by default
 - **cellColors** - (*boolean*) if set to *true*, the cells of the exported document will have the colors defined by the api/gantt_timeline_cell_class_template.md template, the *color* and *background-color* 
 properties are exported
+- **data** - (*object*) sets a custom data source that will be presented in the output Gantt chart
 
 @related:
 desktop/excel.md

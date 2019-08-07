@@ -13,19 +13,30 @@ you need to change the schedule of the first task by moving it to a new date.
 Auto scheduling makes the start date of the second task update according to the end date of the first task each time when it changes.
 This feature allows you to generate and maintain project schedule by specifying relations between tasks with no need to set dates of each task manually.
 
+How to use
+--------------
+
 To use the auto scheduling functionality, you should include the **dhtmlxgantt_auto_scheduling.js** extension on the page:
 
 ~~~html
 <script src="../codebase/ext/dhtmlxgantt_auto_scheduling.js"></script>
 ~~~
 
-And set the **auto_scheduling** property to true:
+And set the **auto_scheduling** property to *true*:
 
 ~~~js
 gantt.config.auto_scheduling = true;
 ~~~
 
-What is more, when auto scheduling is enabled, individual tasks still can be scheduled manually. They are independent of relations between tasks.
+{{sample
+	02_extensions/12_auto_scheduling.html
+}}
+
+When auto scheduling is enabled, individual tasks still can be scheduled manually. 
+
+Disabling auto scheduling for specific tasks
+----------------------
+
 To disable auto scheduling for a particular task and make it manually scheduled, set the **auto_scheduling** property of the task object to *false*:
 
 ~~~js
@@ -33,10 +44,17 @@ var task = gantt.getTask(id);
 task.auto_scheduling = false;
 ~~~
 
+You can also prevent auto scheduling of a specific task using the api/gantt_onbeforetaskautoschedule_event.md handler:
 
-{{sample
-	02_extensions/12_auto_scheduling.html
-}}
+~~~js
+gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predecessor){
+    if(task.completed) {
+        return false;
+    }
+    return true;
+});
+~~~
+
 
 ##API overview
 
