@@ -306,6 +306,7 @@ The other types of constraints affect tasks regardless of the their types (depen
 
 8\. **Must finish on** – the task should end exactly on the specified date.
 
+{{note By independent tasks here we mean tasks that don't have any successors or predecessors. In other words, these are tasks that don't have any links/relations that connect them or any of their parents to other tasks.}}
 
 ## Backward scheduling
 

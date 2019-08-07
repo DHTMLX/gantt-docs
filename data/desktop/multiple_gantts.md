@@ -7,7 +7,7 @@ This functionality is available in the Gantt PRO edition (Enterprise license) on
 
 Basically, dhtmlxGantt is a static object and the default instance of it continually exists on the page. You may access it via the global **gantt** object at any time. But you can also create a new gantt object if needed.
 
-To create a new instance of dhtmlxGantt, use the following command:
+To create a new instance of dhtmlxGantt, use the **Gantt.getGanttInstance()** method:
 
 ~~~js
 // beware, "Gantt" in the command goes with the capital letter
