@@ -63,7 +63,7 @@ Events
 - api/gantt_ondestroy_event.md - called after gantt has been cleared by the api/gantt_destructor.md method
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
 - api/gantt_onerror_event.md - fires when api/gantt_assert.md receives 'false' value, i.e. when assertion fails
-- api/gantt_onexpand_event.md - fires when gantt is expended to full screen
+- api/gantt_onexpand_event.md - fires when gantt is expanded to full screen
 - api/gantt_onganttlayoutready_event.md - fires after the Gantt layout is ready, but before it is rendered
 - api/gantt_onganttready_event.md - fires after the dhtmlxGantt initialization is complete but the Gantt chart is not rendered on the page yet
 - api/gantt_onganttrender_event.md - fires after the Gantt chart was rendered on the page

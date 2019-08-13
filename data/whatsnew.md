@@ -10,6 +10,20 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.2.2
+-----
+
+<span class='release_date'>August 13, 2019. Bugfix release</span>
+
+- Fix the issue which caused a link line to dissapear when the api/gantt_render.md method was called while a user creates [a new link](desktop/dependencies.md)
+- Fix the issue when [markers](desktop/markers.md) were not displayed when their start date was earlier than a minimal date of [the time scale](desktop/configuring_time_scale.md#range)
+- Fix the issue when [markers](desktop/markers.md) were not displayed when gantt was initialized with [gantt.config.show_chart = false](api/gantt_show_chart_config.md) config
+- Fix dissapearing modal overlay of the [lightbox](desktop/default_edit_form.md) when user changed the [type of the task](desktop/typeselect.md)
+- Fix an [issue in keyboard navigation presets](https://docs.dhtmlx.com/gantt/desktop__keyboard_navigation.html#comment-4488512513), when api/gantt_onaftertaskupdate_event.md was fired after **shift+left** hotkey even the action was canceled using api/gantt_onbeforetaskmove_event.md
+- Add [gantt.license](api/gantt_license_other.md) property
+- Add [onLinkCreated] API event for new links, similarly to how api/gantt_ontaskcreated_event.md works for new tasks
+- api/gantt_movetask.md returns `false` when the action is prevented using api/gantt_onbeforetaskmove_event.md
+
 6.2.1
 -----
 
