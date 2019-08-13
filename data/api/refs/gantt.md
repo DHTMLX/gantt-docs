@@ -54,7 +54,7 @@ Gantt API
 - api/gantt_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent() method)
 - api/gantt_eachparent.md - iterates over all parent tasks of the specified task in the Gantt chart
 - api/gantt_eachselectedtask.md - iterates over all selected tasks in the Gantt chart
-- api/gantt_eachtask.md - iterates over all child tasks in the Gantt chart
+- api/gantt_eachtask.md - iterates over all child tasks of a specific task or the of whole Gantt chart
 - api/gantt_event.md - attaches an event handler to an HTML element
 - api/gantt_eventremove.md - removes an event handler from an HTML element
 - api/gantt_expand.md - expands gantt to the full screen mode
@@ -261,7 +261,7 @@ Gantt API
 - api/gantt_ondestroy_event.md - called after gantt has been cleared by the api/gantt_destructor.md method
 - api/gantt_onemptyclick_event.md - fires when the user clicks on an empty space in the Gantt chart (not on tasks)
 - api/gantt_onerror_event.md - fires when api/gantt_assert.md receives 'false' value, i.e. when assertion fails
-- api/gantt_onexpand_event.md - fires when gantt is expended to full screen
+- api/gantt_onexpand_event.md - fires when gantt is expanded to full screen
 - api/gantt_onganttlayoutready_event.md - fires after the Gantt layout is ready, but before it is rendered
 - api/gantt_onganttready_event.md - fires after the dhtmlxGantt initialization is complete but the Gantt chart is not rendered on the page yet
 - api/gantt_onganttrender_event.md - fires after the Gantt chart was rendered on the page
@@ -277,6 +277,7 @@ Gantt API
 - api/gantt_onlightboxdelete_event.md - fires when the user clicks on the 'Delete' button in the lightbox
 - api/gantt_onlightboxsave_event.md - fires when the user clicks on the 'Save' button in the lightbox
 - api/gantt_onlinkclick_event.md - fires when the user clicks on a link
+- api/gantt_onlinkcreated_event.md - fires when a user creates a new link between tasks
 - api/gantt_onlinkdblclick_event.md - fires when the user double clicks on a link
 - api/gantt_onlinkidchange_event.md - fires when the id of a link is changed
 - api/gantt_onlinkvalidation_event.md - fires when the user adds a new link and dhtmlxGantt checks whether the link is valid
@@ -293,7 +294,7 @@ Gantt API
 - api/gantt_onscaleclick_event.md - fires when the user clicks on the cell in the time scale
 - api/gantt_ontaskclick_event.md - fires when the user clicks on a task row in the grid area (including the 'expand/collapse' and 'add task' buttons) or on a task bar in the timeline area
 - api/gantt_ontaskclosed_event.md - fires when a branch has been closed
-- api/gantt_ontaskcreated_event.md - fires when user creates a new task by pressing '+' button in a grid, and also when the api/gantt_createtask.md method is called
+- api/gantt_ontaskcreated_event.md - fires when a user creates a new task by pressing the'+' button in a grid, or when the api/gantt_createtask.md method is called
 - api/gantt_ontaskdblclick_event.md - fires when the user double clicks on a task
 - api/gantt_ontaskdrag_event.md - fires when the user drags a task
 - api/gantt_ontaskidchange_event.md - fires when the id of a task is changed
@@ -518,6 +519,7 @@ Gantt API
 - api/gantt_ext_other.md - an object that stores various extensions
 - api/gantt_json_other.md - specifies JSON serialization and parsing
 - api/gantt_keys_other.md - defines the hot keys for the Gantt chart
+- api/gantt_license_other.md - returns the license name of dhtmlxGantt
 - api/gantt_locale_other.md - a locale object (region-specific labels) of the Gantt chart
 - api/gantt_oldxml_other.md - specifies serialization and parsing in the XML format of dhtmlxGantt 1.0
 - api/gantt_skin_other.md - returns the current skin of the Gantt chart

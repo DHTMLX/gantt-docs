@@ -13,6 +13,7 @@ Others
 - api/gantt_ext_other.md - an object that stores various extensions
 - api/gantt_json_other.md - specifies JSON serialization and parsing
 - api/gantt_keys_other.md - defines the hot keys for the Gantt chart
+- api/gantt_license_other.md - returns the license name of dhtmlxGantt
 - api/gantt_locale_other.md - a locale object (region-specific labels) of the Gantt chart
 - api/gantt_oldxml_other.md - specifies serialization and parsing in the XML format of dhtmlxGantt 1.0
 - api/gantt_skin_other.md - returns the current skin of the Gantt chart
@@ -34,6 +35,7 @@ Others
 - api/gantt_ext_other.md
 - api/gantt_json_other.md
 - api/gantt_keys_other.md
+- api/gantt_license_other.md
 - api/gantt_locale_other.md
 - api/gantt_oldxml_other.md
 - api/gantt_skin_other.md
