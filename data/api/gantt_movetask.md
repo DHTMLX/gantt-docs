@@ -5,11 +5,11 @@ moveTask
 @short:moves a task to a new position
 
 @params: 
-- sid		string, number			the id of the task to move
+- sid		string,number			the id of the task to move
 - tindex	number					the index of the position that the task will be moved to <br> (the index within a branch)
-* parent	string, number			the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
+* parent	string,number			the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
 
-@return
+@returns:
 - result	boolean		returns `false` if the action has been canceled using api/gantt_onbeforetaskmove_event.md, returns `true` otherwise
 
 @example:

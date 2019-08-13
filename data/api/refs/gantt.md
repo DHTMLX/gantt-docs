@@ -277,6 +277,7 @@ Gantt API
 - api/gantt_onlightboxdelete_event.md - fires when the user clicks on the 'Delete' button in the lightbox
 - api/gantt_onlightboxsave_event.md - fires when the user clicks on the 'Save' button in the lightbox
 - api/gantt_onlinkclick_event.md - fires when the user clicks on a link
+- api/gantt_onlinkcreated_event.md - fires when a user creates a new link between tasks
 - api/gantt_onlinkdblclick_event.md - fires when the user double clicks on a link
 - api/gantt_onlinkidchange_event.md - fires when the id of a link is changed
 - api/gantt_onlinkvalidation_event.md - fires when the user adds a new link and dhtmlxGantt checks whether the link is valid
@@ -293,7 +294,7 @@ Gantt API
 - api/gantt_onscaleclick_event.md - fires when the user clicks on the cell in the time scale
 - api/gantt_ontaskclick_event.md - fires when the user clicks on a task row in the grid area (including the 'expand/collapse' and 'add task' buttons) or on a task bar in the timeline area
 - api/gantt_ontaskclosed_event.md - fires when a branch has been closed
-- api/gantt_ontaskcreated_event.md - fires when user creates a new task by pressing '+' button in a grid, and also when the api/gantt_createtask.md method is called
+- api/gantt_ontaskcreated_event.md - fires when a user creates a new task by pressing the'+' button in a grid, or when the api/gantt_createtask.md method is called
 - api/gantt_ontaskdblclick_event.md - fires when the user double clicks on a task
 - api/gantt_ontaskdrag_event.md - fires when the user drags a task
 - api/gantt_ontaskidchange_event.md - fires when the id of a task is changed
@@ -518,7 +519,7 @@ Gantt API
 - api/gantt_ext_other.md - an object that stores various extensions
 - api/gantt_json_other.md - specifies JSON serialization and parsing
 - api/gantt_keys_other.md - defines the hot keys for the Gantt chart
-- api/gantt_license_other.md - 
+- api/gantt_license_other.md - returns the license name of dhtmlxGantt
 - api/gantt_locale_other.md - a locale object (region-specific labels) of the Gantt chart
 - api/gantt_oldxml_other.md - specifies serialization and parsing in the XML format of dhtmlxGantt 1.0
 - api/gantt_skin_other.md - returns the current skin of the Gantt chart
