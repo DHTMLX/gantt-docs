@@ -10,6 +10,24 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.2.3
+-----
+
+<span class='release_date'>August 29, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect work of the [Constraint control](desktop/auto_scheduling.md#timeconstraintsfortasks) in IE11 and MS Edge browsers
+- Fix the size of the Gantt element in [Fullscreen mode](desktop/fullscreen_mode.md)
+- Fix the issue with api/gantt_onexpand_event.md and api/gantt_oncollapse_event.md events not being called from [Fullscreen mode](desktop/fullscreen_mode.md)
+- Correct the [Tooltip](desktop/tooltips.md) position when the mouse pointer is near the left/right edge of the screen
+- The [Tooltip](desktop/tooltips.md) should now be hidden when the [Lightbox](desktop/default_edit_form.md) is opened
+- The [Tooltip](desktop/tooltips.md) should now be hidden when the chart is scrolled
+- Fix the incorrect work of [Tooltip](desktop/tooltips.md) which caused the tooltip not to be updated when mouse pointer moved between two elements matching the same selector
+- Fix the incorrect work of api/gantt_gettaskby.md when `null` or `0` is provided as a second argument
+- Fix the issue with [WBS](api/gantt_getwbscode.md) column not being updated after [sorting](desktop/sorting.md) the gantt
+- Fix the incorrect display of api/gantt_static_background_config.md in [Material skin](desktop/skins.md#materialskin)
+
 6.2.2
 -----
 
@@ -28,7 +46,6 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix the issue when [markers](desktop/markers.md) were not displayed when gantt was initialized with the [gantt.config.show_chart = false](api/gantt_show_chart_config.md) config
 - Fix a disappearing modal overlay of the [lightbox](desktop/default_edit_form.md) when a user changed the [type of a task](desktop/typeselect.md)
 - Fix the [issue in keyboard navigation presets](https://docs.dhtmlx.com/gantt/desktop__keyboard_navigation.html#comment-4488512513), when api/gantt_onaftertaskupdate_event.md was fired after **Shift+left arrow** hotkey even if the action was canceled using api/gantt_onbeforetaskmove_event.md
-
 
 6.2.1
 -----
