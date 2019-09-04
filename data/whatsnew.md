@@ -17,7 +17,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### Fixes
 
-- Fix the issue with task branches being collapsed after updating data using api/gantt_parse.md method
+- Fix the issue with task branches being collapsed after updating data using the api/gantt_parse.md method
 - Fix the incorrect work of [smart rendering](desktop/performance.md#smartrendering) in the [resource view](desktop/resource_management.md#resourceviewpanel)
 - Fix the issue which caused the [Zoom module](desktop/zooming.md) to attach redundant DOM event handlers on each [re-initialization](api/gantt_init.md) of the Gantt 
 
