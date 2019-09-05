@@ -10,6 +10,18 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.2.4
+-----
+
+<span class='release_date'>September 5, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue with task branches being collapsed after updating data using the api/gantt_parse.md method
+- Fix the incorrect work of [smart rendering](desktop/performance.md#smartrendering) in the [resource view](desktop/resource_management.md#resourceviewpanel)
+- Fix the issue which caused the [Zoom module](desktop/zooming.md) to attach redundant DOM event handlers on each [re-initialization](api/gantt_init.md) of the Gantt 
+
+
 6.2.3
 -----
 
