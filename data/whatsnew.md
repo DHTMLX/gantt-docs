@@ -10,6 +10,18 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.2.5
+-----
+
+<span class='release_date'>September 12, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect initial values of subtasks in api/gantt_onbeforetaskchanged_event.md event handler after [dragging a project with subtasks](api/gantt_drag_project_config.md)
+- Fix the incorrect work of the [grouping](desktop/grouping.md) extension when [auto task types](api/gantt_auto_types_config.md) are enabled
+- Fix the script error after returning false value from api/gantt_ontaskloading_event.md event handler
+- Add clearer error messages for the exceptions that can be thrown from [gantt.load](api/gantt_load.md) and [gantt.parse](api/gantt_parse.md)
+
 6.2.4
 -----
 
