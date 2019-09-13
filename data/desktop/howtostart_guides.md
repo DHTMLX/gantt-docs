@@ -15,26 +15,6 @@ This section is dedicated to the very beginning of work with Gantt chart. Each c
         	<a href="desktop/howtostart_dotnet_core.md"><img src="desktop/asp_dotnet_core_tutorial.png"></a>
         </td>
     </tr>	
-	<tr>
-    	<td>
-    		<span style="font-size:15px;">desktop/howtostart_php_laravel.md</span>
-            <br>            
-            A comprehensive tutorial that discusses how to add Gantt into a Laravel app. 
-        </td>
-        <td>
-            <a href="desktop/howtostart_php_laravel.md"><img src="desktop/how_to_start_laravel.png"></a>
-        </td>
-        </tr>
-    <tr>
-		<td>
-		    <span style="font-size:15px;">desktop/howtostart_php.md</span>
-            <br>          
-            A step-by-step tutorial that shows how to implement a PHP backend using PDO and MySQL. 
-        </td>
-        <td>
-        	<a href="desktop/howtostart_php.md"><img src="desktop/php_tutorial.png"></a>
-        </td>
-    </tr>
     <tr>
         <td>
 		    <span style="font-size:15px;">desktop/howtostart_nodejs.md</span>  
@@ -56,6 +36,26 @@ This section is dedicated to the very beginning of work with Gantt chart. Each c
         </td>
     </tr>
     <tr>
+    	<td>
+    		<span style="font-size:15px;">desktop/howtostart_php_laravel.md</span>
+            <br>            
+            A comprehensive tutorial that discusses how to add Gantt into a Laravel app. 
+        </td>
+        <td>
+            <a href="desktop/howtostart_php_laravel.md"><img src="desktop/how_to_start_laravel.png"></a>
+        </td>
+        </tr>
+    <tr>
+		<td>
+		    <span style="font-size:15px;">desktop/howtostart_php.md</span>
+            <br>          
+            A step-by-step tutorial that shows how to implement a PHP backend using PDO and MySQL. 
+        </td>
+        <td>
+        	<a href="desktop/howtostart_php.md"><img src="desktop/php_tutorial.png"></a>
+        </td>
+    </tr>
+    <tr>
         <td>
 		    <span style="font-size:15px;">desktop/howtostart_ruby.md</span>
             <br>
@@ -72,10 +72,10 @@ This section is dedicated to the very beginning of work with Gantt chart. Each c
 
 @index:
 - desktop/howtostart_dotnet_core.md
-- desktop/howtostart_php.md
-- desktop/howtostart_php_laravel.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
+- desktop/howtostart_php_laravel.md
+- desktop/howtostart_php.md
 - desktop/howtostart_ruby.md
 
 

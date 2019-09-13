@@ -2,7 +2,7 @@ Multiple Charts on a Page
 =========================
 
 {{pronote
-This functionality is available in the Gantt PRO edition (Enterprise license) only. 
+This functionality is available in the Gantt PRO edition (Enterprise and Ultimate licenses) only. 
 }}
 
 Basically, dhtmlxGantt is a static object and the default instance of it continually exists on the page. You may access it via the global **gantt** object at any time. But you can also create a new gantt object if needed.

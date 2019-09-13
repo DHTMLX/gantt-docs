@@ -11,8 +11,8 @@ You can also explore other server-side integration possibilities of Gantt by cho
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_ruby.md
 
-We will make use of ASP.NET MVC 5 web platform and Web API 2 controller for REST API to create a Gantt application.
-To organize communication with database we will use the [Entity Framework](http://www.asp.net/entity-framework).
+We will make use of the ASP.NET MVC 5 web platform and the Web API 2 controller for REST API to create a Gantt application.
+To organize communication with a database we will use the [Entity Framework](http://www.asp.net/entity-framework).
 We will build our application with the help of the Visual Studio IDE. 
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-dotnet) on GitHub.
