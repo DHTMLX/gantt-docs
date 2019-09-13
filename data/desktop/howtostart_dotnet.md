@@ -134,7 +134,7 @@ And also we told the gantt that it's going to work with RESTful API on a backend
 ~~~js
 gantt.load("/api/data");
 // initializing dataProcessor
-var dp = new gantt.dataProcessor("/api/");
+var dp = new gantt.dataProcessor("/api/data");
 // and attaching it to gantt
 dp.init(gantt);
 // setting the REST mode for dataProcessor
@@ -252,7 +252,7 @@ Then we will add the entities collection into the context with the *AddRange()* 
 
 The full code of the *GanttInitializer* class is given below:
 
-{{snippet Models/GanttInitializer.cs}}
+{{snippet App_Start/GanttInitializer.cs}}
 ~~~js
 using System;
 using System.Collections.Generic;
@@ -723,7 +723,7 @@ that can be [recognized](desktop/server_side.md#errorhandling) by the client-sid
 
 To provide error handling for the gantt, follow the steps below:
 
-Go to App_Start and add a new class called GanttAPIExceptionFilterAttribute:
+Go to *App_Start* and add a new class called *GanttAPIExceptionFilterAttribute*:
 
 {{snippet App_Start/GanttAPIExceptionFilterAttribute.cs}}
 ~~~js
