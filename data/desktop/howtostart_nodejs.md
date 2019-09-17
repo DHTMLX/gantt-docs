@@ -15,7 +15,7 @@ Node.js has a set of ready-made solutions, so we won't have to code everything f
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-node) on GitHub.
 
-Step 1. Creating a Project
+Step 1. Creating a project
 -------------------------------
 
 To begin with, we'll create a project folder and then add the required dependencies. We'll make use of the following modules:
@@ -117,7 +117,7 @@ On the next step we will create the "public" folder. This folder will contain th
 This folder is also the right place to put js/css files of dhtmlxGantt. However, in this tutorial we're going to load gantt from CDN, so we'll only have an html page there.
 }}
 
-Step 2. Adding Gantt to the Page
+Step 2. Adding Gantt to the page
 -----------------------
 
 Let's create the *public* folder and add an *index.html* file into it. Then open the *index.html* file and fill it with the following content:
@@ -158,7 +158,7 @@ Then open http://127.0.0.1:1337 in a browser. You should see a page with an empt
 
 <img src="desktop/gantt_init.png">
 
-Step 3. Preparing a Database
+Step 3. Preparing a database
 ----------------------------
 
 The next step is to create a database. We'll make a simple database with two tables for tasks and links:
@@ -205,7 +205,7 @@ INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00',
 Check a detailed example [here](desktop/loading.md#standarddatabasestructure).
 
 
-Step 4. Loading Data
+Step 4. Loading data
 --------------------------
 
 Now we need to implement data loading. 
@@ -295,7 +295,7 @@ Let's run the application now by opening http://127.0.0.1:1337. The gantt will b
 
 <img src="desktop/load_data.png">
 
-Step 5. Saving Changes
+Step 5. Saving changes
 ---------------------
 
 The last thing that we should implement is data saving. 
@@ -469,7 +469,7 @@ That's all. Open http://127.0.0.1:1337 and you will see a fully operational gant
 <img src="desktop/ready_gantt.png">
 
 
-Storing the Order of Tasks
+Storing the order of tasks
 ---------------------
 
 The client-side gantt allows [reordering tasks](desktop/reordering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
@@ -624,7 +624,7 @@ function updateOrder(taskId, target){
 You can check [a ready demo](https://github.com/DHTMLX/gantt-howto-node) on GitHub.
 
 
-Application Security
+Application security
 -------------------------
 
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](desktop/app_security.md).
@@ -636,7 +636,7 @@ In case you've completed the above steps to implement Gantt integration with Nod
 the ways of identifying the roots of the problems.
 
 
-What's Next
+What's next
 ------------
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-node), clone or download it and use it for your projects.

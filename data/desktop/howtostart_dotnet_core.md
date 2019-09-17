@@ -16,7 +16,7 @@ To organize communication with database, the [Entity Framework Core](https://doc
 
 [Grab the demo from GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core).
 
-## Step 1. Creating a Project
+## Step 1. Creating a project
 
 Launch Visual Studio 2017 and create a new project. Open the **File** menu and select: *New -> Project*.
 
@@ -30,7 +30,7 @@ Select an Empty template.
 
 Thus you've created a project and can proceed to add markup and script for Gantt.
 
-## Step 2. Adding Gantt Markup and JS
+## Step 2. Adding Gantt markup and JS
 
 Go to **wwwroot** and create an **index.html** file.
 
@@ -143,7 +143,7 @@ as there is still no proper backend to serve the data. When the controller will 
 
 Now the basic part is done and it's time to implement the backend. Let's start with implementing model classes and after that proceed to the WebAPI controller.
 
-## Step 3. Creating Models and Database
+## Step 3. Creating models and database
 
 Let's begin with data models. A data model for Gantt includes [links and tasks](desktop/loading.md#standarddatabasestructure). 
 dhtmlxGantt uses [non-conventional names for model properties](desktop/supported_data_formats.md#json) from the .NET world perspective. 
@@ -865,7 +865,7 @@ Everything is ready. You can run the application and see the fully-fledged Gantt
 
 [You can also view the full source code on GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core/).
 
-## Error Handling
+## Error handling
 
 In order to handle errors, you need to declare a special [middleware class](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/startup?view=aspnetcore-2.1#startup-filters) 
 that will capture runtime exceptions and write responses. Next it will be added to the app request pipeline. Follow the steps below:
@@ -1111,7 +1111,7 @@ private void _UpdateOrders(Task updatedTask, string orderTarget)
 }
 ~~~
 
-Application Security
+Application security
 ----------------
 
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections, XSS and CSRF attacks. The responsibility for keeping an application safe is on the developers 
@@ -1151,7 +1151,7 @@ In case you've completed the above steps to implement Gantt integration with ASP
 the ways of identifying the roots of the problems.
 
 
-What's Next
+What's next
 ------------
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core), clone or download it and use it for your projects.

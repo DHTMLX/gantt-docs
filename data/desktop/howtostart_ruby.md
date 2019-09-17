@@ -15,7 +15,7 @@ If you use some other technology, check the list of available integration varian
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-rails) on GitHub.
 
-Step 1. Creating a Project
+Step 1. Creating a project
 ------------------------
 
 To add a new project just run the following command in the terminal:
@@ -25,7 +25,7 @@ rails new gantt-app -d mysql
 ~~~
 
 
-Step 2. Adding Gantt to the Page
+Step 2. Adding Gantt to the page
 -----------------------------------------
 
 Let's start with creating a controller and a default page for our application.
@@ -113,7 +113,7 @@ You should get the following result:
 Thus you've got a Gantt chart where you can add tasks and modify them. But it lacks the saving ability.
 To provide it, we need to proceed with creating models.
 
-Step 2. Creating Models
+Step 3. Creating models
 --------------
 
 Since we're using MySQL, make sure that you have correct connection settings in *config/database.yml*, for example:
@@ -168,13 +168,13 @@ rake db:migrate
 
 Let's add some test data while we're here:
 
-1 . Open the Rails console by running:
+1\. Open the Rails console by running:
 
 ~~~js
 rails c
 ~~~
 
-2 . Add a couple of tasks and links like this:
+2\. Add a couple of tasks and links like this:
 
 ~~~js
 Task.create :text=>"Task 1", :start_date=>"2015-10-25",  :duration=>2, :progress=>0;
@@ -182,11 +182,11 @@ Task.create :text=>"Task 2", :start_date=>"2015-10-27",  :duration=>3, :progress
 Link.create :source=>1, :target=>2, :link_type=>"0";
 ~~~
 
-3 . Enter "exit" to close the console.
+3\. Enter "exit" to close the console.
 
 Next we need to implement data loading and saving in the chart with the help of controllers.
 
-Step 3. Loading Data
+Step 4. Loading data
 -------------------
 
 After we've created model classes and run the migration, we can load the database data into our gantt. 
@@ -255,7 +255,7 @@ Note that [date_format](api/gantt_date_format_config.md) config specifies the [f
 If you run the server now and open *http://localhost:3000/* in your browser, you should be able to see a gantt chart populated with tasks and links from the database.
 No changes would be posted back to the database, however. We're going to fix it in the next step.
 
-Step 4. Saving Changes
+Step 5. Saving changes
 --------------------
 
 dhtmlxGantt can transmit all changes made by the user to the RESTful API on a backend, where everything can be saved to the database. 
@@ -423,7 +423,7 @@ And that's it. If you run application now you'll have an interactive gantt chart
 
 Please check more of [our guides](desktop/guides.md) for more features of dhtmlxGantt.
 
-Storing the Order of Tasks
+Storing the order of tasks
 ------------------
 
 The client-side gantt allows [reordering tasks](desktop/reordering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
@@ -458,13 +458,13 @@ rails generate model Task \
 
 Or add a new property to the existing model:
 
-1. create a migration:
+1\. create a migration:
 
 ~~~js
 rails generate migration add_sortorder_to_tasks sortorder:integer
 ~~~
 
-2. Open the generated migration and add a default value to the "sortorder" column:
+2\. Open the generated migration and add a default value to the "sortorder" column:
 
 ~~~js
 class AddSortorderToTasks < ActiveRecord::Migration[5.1]
@@ -601,11 +601,9 @@ class Task < ApplicationRecord
         task.save
     end
 end
-
 ~~~
 
-
-Application Security
+Application security
 -------------------------
 
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and 
@@ -618,7 +616,7 @@ In case you've completed the above steps to implement Gantt integration with Rub
 the ways of identifying the roots of the problems.
 
 
-What's Next
+What's next
 ------------
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-rails), clone or download it and use it for your projects.

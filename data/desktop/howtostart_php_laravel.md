@@ -13,7 +13,7 @@ There are tutorials intended for building server-side integration with the help 
 
 You can get the [ready demo on GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel) or follow a step-by-step guide below.
 
-Step 1. Initializing the Project
+Step 1. Initializing a project
 -----------------------
 
 ###Creating a project
@@ -36,7 +36,7 @@ At this step you should get a default Laravel page:
 
 <img src="desktop/how_to_start_laravel_blank_page.png"/>
 
-Step 2. Adding Gantt to the Page
+Step 2. Adding Gantt to the page
 -----------------------
 
 ### Adding a View
@@ -93,7 +93,7 @@ Run the app again to make sure it did the trick:
 
 <img src="desktop/how_to_start_laravel_empty_gantt.png"/>
 
-Step 3. Creating Models and Migrations
+Step 3. Creating models and migrations
 ---------------------
 
 So, we've got an empty gantt chart. Let's connect it to the database and populate it with data.
@@ -307,7 +307,7 @@ class Link extends Model
 }
 ~~~
 
-Step 4. Loading Data
+Step 4. Loading data
 -------------------
 
 Once the database is created and the models are defined, we can load data into our gantt. 
@@ -365,7 +365,7 @@ If you check the app now, you should see that there are now tasks in our gantt c
 
 <img src="desktop/how_to_start_laravel_complete.png"/>
 
-Step 5. Saving Changes
+Step 5. Saving changes
 -----------------------------------
 
 For now, our gantt can read data from the backend. Let's make it write changes back to the database.
@@ -546,7 +546,7 @@ Now you have a fully interactive Gantt chart with the ability to view, add, upda
 
 Please check more of [our guides](desktop/guides.md) for more features of dhtmlxGantt.
 
-Storing the Order of Tasks
+Storing the order of tasks
 ------------------
 
 The client-side gantt allows [reordering tasks](desktop/reordering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
@@ -720,7 +720,7 @@ private function updateOrder($taskId, $target){
 ~~~
 
 
-Application Security
+Application security
 -------------------------
 
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](desktop/app_security.md).
@@ -732,7 +732,7 @@ Trouble shooting
 In case you've completed the above steps to implement Gantt integration with PHP but Gantt doesn't render tasks and links on a page, have a look at the desktop/troubleshooting.md article. It describes 
 the ways of identifying the roots of the problems.
 
-What's Next
+What's next
 ------------
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel), clone or download it and use it for your projects.

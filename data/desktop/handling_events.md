@@ -72,7 +72,7 @@ gantt.attachEvent("onTaskClick", function(id, e) {
 gantt.checkEvent("onTaskClick"); //returns 'true' /*!*/
 ~~~
 
-Cancelable Events 
+Cancelable events 
 -----------------------
 
 All events with the preceding subword 'onbefore' can be cancelled.
