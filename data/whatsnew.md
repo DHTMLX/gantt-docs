@@ -10,6 +10,17 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.2.6
+-----
+
+<span class='release_date'>September 19, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix the regression in [v6.2 Smart Rendering](#62) which in some cases caused incorrect vertical positions of tasks after [re-initialization](api/gantt_init.md) of the Gantt
+- Fix the issue with [QuickInfo popup](desktop/extensions_list.md#quickinfo) not being displayed for [unscheduled tasks](desktop/unscheduled_tasks.md)
+- Fix the incorrect work of extension files with the Ultimate build of the Gantt
+
 6.2.5
 -----
 
