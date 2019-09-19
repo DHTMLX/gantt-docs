@@ -19,7 +19,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - Fix the regression in [v6.2 Smart Rendering](#62) which in some cases caused incorrect vertical positions of tasks after [re-initialization](api/gantt_init.md) of the Gantt
 - Fix the issue with [QuickInfo popup](desktop/extensions_list.md#quickinfo) not being displayed for [unscheduled tasks](desktop/unscheduled_tasks.md)
-- Fix the incorrect work of extension files with the Ultimate build of the Gantt
+- Fix incorrect work of extension files with the Ultimate build of Gantt
 
 6.2.5
 -----
