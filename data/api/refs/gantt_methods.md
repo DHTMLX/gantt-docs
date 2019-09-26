@@ -50,7 +50,7 @@ Methods
 - api/gantt_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent() method)
 - api/gantt_eachparent.md - iterates over all parent tasks of the specified task in the Gantt chart
 - api/gantt_eachselectedtask.md - iterates over all selected tasks in the Gantt chart
-- api/gantt_eachtask.md - iterates over all child tasks in the Gantt chart
+- api/gantt_eachtask.md - iterates over all child tasks of a specific task or the of whole Gantt chart
 - api/gantt_event.md - attaches an event handler to an HTML element
 - api/gantt_eventremove.md - removes an event handler from an HTML element
 - api/gantt_expand.md - expands gantt to the full screen mode

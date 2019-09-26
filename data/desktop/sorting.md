@@ -5,13 +5,14 @@ dhtmlxGantt allows you to sort data in the columns of the grid (on the client si
 There are 2 ways you can provide sorting in the grid:
 
 1. By a single click on the header of a column with the enabled api/gantt_sort_config.md attribute;
-2. By api call ( can be called from some event or action, i.e button click or page load ) of the api/gantt_sort.md method.
+2. By the API call (can be called from some event or action, i.e. a button click or a page load) of the api/gantt_sort.md method.
+
+{{note Please note that Gantt can only sort tasks by values from data and doesn't sort values set by the template attribute of a column.}}
 
 Sorting by a click on the header
 --------------------------------------------
 
-Once the user clicks on the header, the Gantt chart starts to display 
-a special control indicating which column the table is currently sorted by and the direction of this sorting (ascending or descending).
+Once the user clicks on the header, the Gantt chart starts to display a special control indicating which column the table is currently sorted by and the direction of this sorting (ascending or descending).
 Each next click on the same header will reverse the sorting direction.
 
 <img src="desktop/gantt_sorting.png"/>
@@ -51,7 +52,7 @@ To sort the grid  on some action or event (i.e. button click or page load), call
 Custom sorting functions
 -------------------------------------------------
 
-To apply a custom sorting function to the grid, call the api/gantt_sort.md method with the name of your custom function as the first ( and only) parameter.
+To apply a custom sorting function to the grid, call the api/gantt_sort.md method with the name of your custom function as the first (and only) parameter.
 
 A custom sorting function is called for each pair of adjacent values and returns 1,-1 or 0:
 
@@ -91,7 +92,7 @@ Using a custom function to sort a Gantt chart
 Per column Grid sorting
 -----------------------
 
-It's possible to specify a custom sorting rule for each particular column. There are three most common per column sorting scenarios:
+It's possible to specify a custom sorting rule for each particular column. There are three most common sorting scenarios per column:
 
 1) disabling sorting for a column by setting *sort* to false
 

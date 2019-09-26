@@ -4,6 +4,7 @@ Properties
 
 {{api
 - api/gantt_auto_scheduling_config.md - enables auto scheduling
+- api/gantt_auto_scheduling_compatibility_config.md - disables usage of time contraints for tasks
 - api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creating links from parent tasks (projects) to their children
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading
 - api/gantt_auto_scheduling_move_projects_config.md - defines whether the whole project will be moved (see the details below)
@@ -20,7 +21,7 @@ Properties
 - api/gantt_buttons_right_config.md - stores a collection of buttons resided in the right bottom corner of the lightbox
 - api/gantt_calendar_property_config.md - changes the name of the property that affects binding of a calendar to a task/group of tasks
 - api/gantt_cascade_delete_config.md - enables cascade deleting of nested tasks and links
-- api/gantt_click_drag_config.md - 
+- api/gantt_click_drag_config.md - enables advanced drag-n-drop
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_constraint_types_config.md - contains all available constraint types
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
@@ -115,7 +116,7 @@ Properties
 - api/gantt_start_date_config.md - sets the start value of the time scale
 - api/gantt_start_on_monday_config.md - sets the starting day of the week
 - api/gantt_static_background_config.md - generates a background image for the timeline area instead of rendering actual columns' and rows' lines
-- api/gantt_static_background_cells_config.md - 
+- api/gantt_static_background_cells_config.md - enables rendering of highlighted cells in the static_background mode
 - api/gantt_step_config.md - sets the step of the time scale (X-Axis)
 - api/gantt_subscales_config.md - specifies the second time scale(s)
 - api/gantt_task_attribute_config.md - sets the name of the attribute that will specify the id of the task's HTML element
@@ -145,6 +146,7 @@ Properties
 
 @index:
 - api/gantt_auto_scheduling_config.md
+- api/gantt_auto_scheduling_compatibility_config.md
 - api/gantt_auto_scheduling_descendant_links_config.md
 - api/gantt_auto_scheduling_initial_config.md
 - api/gantt_auto_scheduling_move_projects_config.md

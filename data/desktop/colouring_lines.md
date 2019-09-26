@@ -1,4 +1,4 @@
-Coloring and Styling Links
+Links Coloring and Styling 
 ================================
 
 You can change the styling of links сonnecting tasks to get the desired look and feel of your gantt chart.

@@ -14,7 +14,7 @@ body{
 
 .page_start .search-field-text{
     width:50%;
-    background: #FFF7D5;
+    background: #FFFFFF;
 }
 .page_start .search-field-text:focus{
     background: white;
@@ -29,7 +29,7 @@ body{
     overflow: hidden;
 }
 .page_start .hot-news{
-    background: #FFE377;
+    background: #FFFFFF;
     box-shadow: none;
 }
 .page_start .inside-hot {
@@ -37,23 +37,23 @@ body{
 }
 .page_start .inside-search-form{
     border:none;
-    background: #FFE377;
+    background: #FFFFFF;
     padding:2px;
     position: static;
 }
 
 .page_start .hot-right{
-    line-height: 32px;
+    line-height: 36px;
     padding-right:35px;
 }
 
 .page_start .hot-right a{
-    background: url(index/icon1.png) 0px center no-repeat;
-    padding-left: 40px;
+    background: url(index/icon1.svg) 0px center no-repeat;
+    padding-left: 32px;
     color: #424242;
 }
 .page_start .hot-right a:nth-child(2){
-    background-image: url(index/icon2.png);
+    background-image: url(index/icon2.svg);
 }
 
 .page_start .navigation, .page_start .side_links, .page_start .top_link, .page_start h1{
@@ -99,10 +99,11 @@ body{
     width: 86%;
     font-size:15px; 
     padding:6px 8px; 
-    border:none;
+    border:1px solid #CCCCCC;
     margin: 0px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
+    border-radius: 2px;
 }
 
 .search-form-btn{
@@ -126,7 +127,11 @@ body{
     background:#4a96c4;
 } 
 
-.search-field-text:focus,
+.search-field-text:focus{
+    border: 1px solid #5da5b1;
+    outline-style: none;
+}
+
 .search-form-btn:focus{
     outline: none;
 }

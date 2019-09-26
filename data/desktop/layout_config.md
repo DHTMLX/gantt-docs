@@ -16,7 +16,7 @@ or add another grid and a timeline below the default ones.
 
 {{sample 10_layout/02_resource_panel.html}}
 
-Default Layout
+Default layout
 ------------------
 
 The layout is set through the [gantt.config.layout](api/gantt_layout_config.md) configuration option. The default configuration of the layout is the following:
@@ -121,7 +121,7 @@ In the default layout the grid and timeline views are bound to both the horizont
 
 It is also possible to specify a separate horizontal scrollbar for the Grid view. [Read the details](desktop/specifying_columns.md#horizontalscrollbar) in the corresponding section.
 
-Layout Customization
+Layout customization
 -------------------
 
 You can change the default layout configuration and specify the necessary scheme of arranging the elements of Gantt chart on a page, using additional layout views.

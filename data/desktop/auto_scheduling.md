@@ -13,19 +13,30 @@ you need to change the schedule of the first task by moving it to a new date.
 Auto scheduling makes the start date of the second task update according to the end date of the first task each time when it changes.
 This feature allows you to generate and maintain project schedule by specifying relations between tasks with no need to set dates of each task manually.
 
+How to use
+--------------
+
 To use the auto scheduling functionality, you should include the **dhtmlxgantt_auto_scheduling.js** extension on the page:
 
 ~~~html
 <script src="../codebase/ext/dhtmlxgantt_auto_scheduling.js"></script>
 ~~~
 
-And set the **auto_scheduling** property to true:
+And set the **auto_scheduling** property to *true*:
 
 ~~~js
 gantt.config.auto_scheduling = true;
 ~~~
 
-What is more, when auto scheduling is enabled, individual tasks still can be scheduled manually. They are independent of relations between tasks.
+{{sample
+	02_extensions/12_auto_scheduling.html
+}}
+
+When auto scheduling is enabled, individual tasks still can be scheduled manually. 
+
+Disabling auto scheduling for specific tasks
+----------------------
+
 To disable auto scheduling for a particular task and make it manually scheduled, set the **auto_scheduling** property of the task object to *false*:
 
 ~~~js
@@ -33,10 +44,17 @@ var task = gantt.getTask(id);
 task.auto_scheduling = false;
 ~~~
 
+You can also prevent auto scheduling of a specific task using the api/gantt_onbeforetaskautoschedule_event.md handler:
 
-{{sample
-	02_extensions/12_auto_scheduling.html
-}}
+~~~js
+gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predecessor){
+    if(task.completed) {
+        return false;
+    }
+    return true;
+});
+~~~
+
 
 ##API overview
 
@@ -67,6 +85,8 @@ In order to always reschedule tasks to the earliest possible date, use the prope
 ~~~js
 gantt.config.auto_scheduling_strict = true;
 ~~~
+
+{{note Note that starting from v6.1 the config works only when the api/gantt_auto_scheduling_compatibility_config.md option is enabled.}}
 
 ###Initial auto-scheduling
 
@@ -288,6 +308,7 @@ The other types of constraints affect tasks regardless of the their types (depen
 
 8\. **Must finish on** – the task should end exactly on the specified date.
 
+{{note By independent tasks here we mean tasks that don't have any successors or predecessors. In other words, these are tasks that don't have any links/relations that connect them or any of their parents to other tasks.}}
 
 ## Backward scheduling
 
@@ -341,7 +362,7 @@ When a user changes the date of a task by moving it with the mouse pointer or vi
 
 Thus a task won't be scheduled to the earliest date if the later date is set from the UI. This may be confusing to a not prepared user especially since constraints are not displayed in the chart by default.
 
-You can enable constraint display using the api/gantt_addtasklayer.md method.
+You can enable displaying of constraints using the api/gantt_addtasklayer.md method.
 
 {{sample 02_extensions/19_constraints_scheduling.html}}
 

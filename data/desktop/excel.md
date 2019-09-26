@@ -60,7 +60,7 @@ The **exportToExcel()** method takes as a parameter an object with several prope
 - **visual** - (*boolean*) adds the timeline chart to an exported Excel document. *false* by default
 - **cellColors** - (*boolean*) if set to *true*, the cells of the exported document will have the colors defined by the api/gantt_timeline_cell_class_template.md template, the *color* and *background-color* 
 properties are exported
-		
+- **data** - (*object*) sets a custom data source that will be presented in the output Gantt chart		
 
 {{snippet
 Calling the export method with optional properties
@@ -74,9 +74,30 @@ gantt.exportToExcel({
     ],
     server:"https://myapp.com/myexport/gantt",
     visual:true,
-    cellColors:true
+    cellColors:true,
+    data:{}
 });
 ~~~
+
+###Setting a custom data source to export
+
+To export the Gantt chart with a custom data set (i.e. not with the data presented in the initial Gantt chart), use the **data** property in the parameter of the 
+api/gantt_exporttoexcel.md method:
+
+~~~js
+gantt.exportToExcel({	
+	name:"document.xlsx", 
+	data:{[
+		{id:1, text:"Project #1", start_date:"01-04-2013", duration:18},
+		{id:2, text:"Task #1", start_date:"02-04-2013",duration:8, parent:1},
+		{id:3, text:"Task #2", start_date:"11-04-2013",duration:8, parent:1}
+	]}		
+});
+~~~
+
+{{note
+Note, you cannot specify some URL as the value of the **data** parameter, just a data object.
+}}
 
 Import from Excel
 -------------------

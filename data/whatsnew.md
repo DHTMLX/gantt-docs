@@ -10,6 +10,93 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.2.6
+-----
+
+<span class='release_date'>September 19, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix the regression in [v6.2 Smart Rendering](#62) which in some cases caused incorrect vertical positions of tasks after [re-initialization](api/gantt_init.md) of the Gantt
+- Fix the issue with [QuickInfo popup](desktop/extensions_list.md#quickinfo) not being displayed for [unscheduled tasks](desktop/unscheduled_tasks.md)
+- Fix incorrect work of extension files with the Ultimate build of Gantt
+
+6.2.5
+-----
+
+<span class='release_date'>September 12, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix incorrect initial values of subtasks in the api/gantt_onbeforetaskchanged_event.md event handler after [dragging a project with subtasks](api/gantt_drag_project_config.md)
+- Fix incorrect work of the [grouping](desktop/grouping.md) extension when [auto task types](api/gantt_auto_types_config.md) are enabled
+- Fix the script error after returning the *false* value from the api/gantt_ontaskloading_event.md event handler
+- Add clearer error messages for the exceptions that can be thrown from [gantt.load](api/gantt_load.md) and [gantt.parse](api/gantt_parse.md)
+
+6.2.4
+-----
+
+<span class='release_date'>September 5, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue with task branches being collapsed after updating data using the api/gantt_parse.md method
+- Fix the incorrect work of [smart rendering](desktop/performance.md#smartrendering) in the [resource view](desktop/resource_management.md#resourceviewpanel)
+- Fix the issue which caused the [Zoom module](desktop/zooming.md) to attach redundant DOM event handlers on each [re-initialization](api/gantt_init.md) of the Gantt 
+
+
+6.2.3
+-----
+
+<span class='release_date'>August 29, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect work of the [Constraint control](desktop/auto_scheduling.md#timeconstraintsfortasks) in IE11 and MS Edge browsers
+- Fix the size of the Gantt element in [Fullscreen mode](desktop/fullscreen_mode.md)
+- Fix the issue with api/gantt_onexpand_event.md and api/gantt_oncollapse_event.md events not being called from [Fullscreen mode](desktop/fullscreen_mode.md)
+- Correct the [Tooltip](desktop/tooltips.md) position when the mouse pointer is near the left/right edge of the screen
+- The [Tooltip](desktop/tooltips.md) should now be hidden when the [Lightbox](desktop/default_edit_form.md) is opened
+- The [Tooltip](desktop/tooltips.md) should now be hidden when the chart is scrolled
+- Fix the incorrect work of [Tooltip](desktop/tooltips.md) which caused the tooltip not to be updated when mouse pointer moved between two elements matching the same selector
+- Fix the incorrect work of api/gantt_gettaskby.md when `null` or `0` is provided as a second argument
+- Fix the issue with [WBS](api/gantt_getwbscode.md) column not being updated after [sorting](desktop/sorting.md) the gantt
+- Fix the incorrect display of api/gantt_static_background_config.md in [Material skin](desktop/skins.md#materialskin)
+
+6.2.2
+-----
+
+<span class='release_date'>August 13, 2019. Bugfix release</span>
+
+### Updates
+
+- Add the [gantt.license](api/gantt_license_other.md) property
+- Add the api/gantt_onlinkcreated_event.md API event for new links, similarly to the api/gantt_ontaskcreated_event.md functionality for new tasks
+- api/gantt_movetask.md returns `false` when the action is prevented using api/gantt_onbeforetaskmove_event.md
+
+### Fixes
+
+- Fix the issue which caused a link line to disappear when the api/gantt_render.md method is called while a user creates [a new link](desktop/dependencies.md)
+- Fix the issue when [markers](desktop/markers.md) were not displayed when their start date was set earlier than the minimal date of [the time scale](desktop/configuring_time_scale.md#range)
+- Fix the issue when [markers](desktop/markers.md) were not displayed when gantt was initialized with the [gantt.config.show_chart = false](api/gantt_show_chart_config.md) config
+- Fix a disappearing modal overlay of the [lightbox](desktop/default_edit_form.md) when a user changed the [type of a task](desktop/typeselect.md)
+- Fix the [issue in keyboard navigation presets](https://docs.dhtmlx.com/gantt/desktop__keyboard_navigation.html#comment-4488512513), when api/gantt_onaftertaskupdate_event.md was fired after **Shift+left arrow** hotkey even if the action was canceled using api/gantt_onbeforetaskmove_event.md
+
+6.2.1
+-----
+
+<span class='release_date'>August 7, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix IE11 compatibility of the [click-drag feature](desktop/advanced_dnd.md)
+- Fix the script error which happened when the user tried to add a new task into an empty chart with the resource view
+- Fix the incorrect behavior of the [grouping](desktop/grouping.md) extension which caused assigning an incorrect group value to new tasks
+- Fix a script error in the [keyboard navigation](desktop/keyboard_navigation.md) extension thrown from the Alt+Arrow key shortcut
+- Filtering in the [resource control](desktop/resource_management.md) is changed to ignore text case
+- Task dragging and drag-and-drop may finish on mouseup on any gantt element
+- Fix the script error which happened after saving an [unscheduled task](desktop/unscheduled_tasks.md)
+
 6.2
 -------
 
@@ -42,6 +129,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>June 27, 2019. Bugfix release</span>
 
+### Fixes
+
 - Fix incorrect behavior of api/gantt_getclosestworktime.md
 - Fix issue with the api/gantt_autoscroll_config.md which happened after [toggling visibility](api/gantt_show_chart_config.md) of the timeline
 - Fix bug in the [Multiselect extension](desktop/multiselection.md) which caused selected tasks to lose highlight after chart repaint
@@ -54,6 +143,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>May 14, 2019. Bugfix release</span>
 
+### Fixes
+
 - Fix issue with not working [click handlers](api/gantt_quickinfo_buttons_config.md) of [QuickInfo popup](desktop/extensions_list.md#quickinfo) after a second api/gantt_init.md call
 - Fix issue with [QuickInfo popup](desktop/extensions_list.md#quickinfo) not showing up if api/gantt_show_chart_config.md is set to false
 - Fix incorrect `action` argument for [dataProcessor router](desktop/server_side.md#customrouting) after [vertical drag-and-drop](desktop/reordering_tasks.md)
@@ -65,6 +156,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>April 25, 2019. Bugfix release</span>
 
+### Fixes
+
 - Fix script error on a second api/gantt_init.md call when api/gantt_show_chart_config.md config is disabled
 - Fix incorrect position of [vertical drag-and-drop](desktop/reordering_tasks.md) placeholder in the [marker mode](desktop/reordering_tasks.md#improvingperformanceforlargedatasets)
 
@@ -73,6 +166,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 -----
 
 <span class='release_date'>April 18, 2019. Bugfix release</span>
+
+### Fixes
 
 - Fix script error on [reinitialization](api/gantt_init.md) of gantt in the IE browser
 - Fix incorrect behavior of the [Tooltip extension](desktop/tooltips.md) when [gantt.destructor](api/gantt_destructor.md) is called
@@ -87,6 +182,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 -----
 
 <span class='release_date'>April 15, 2019. Bugfix release</span>
+
+### Fixes
 
 - [gantt.createTask](api/gantt_createtask.md)/[gantt.addTask](api/gantt_addtask.md) should use [root_id](api/gantt_root_id_config.md) config value instead of hardcoded 0 id
 - Performance increase for [worktime calculations](desktop/working_time.md) for `minute` and `hour` [duration units](api/gantt_duration_unit_config.md)
@@ -118,7 +215,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 - [Keyboard navigation](desktop/keyboard_navigation.md): add a method for getting the active cell
 
-#### Fixes
+### Fixes
 
 - Fix incorrect work of the [resource panel](desktop/resource_management.md#resourceviewpanel) after creating a new datastore to overwrite the previous one
 - Fix incorrect values of query parameters in the POST mode of [dataProcessor](desktop/server_side.md)
@@ -133,7 +230,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>March 5, 2019. Bugfix release</span>
 
-####Fixes
+### Fixes
 
 - Add missing locale options for the [resource lightbox control](desktop/resources.md)
 - Fix script error when using [gantt.destructor](api/gantt_destructor.md) together with the dataProcessor
@@ -168,6 +265,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>January 16, 2019. Bugfix release</span>
 
+### Fixes
+
 - Reduced the number of redundant repaints of the [resource diagram](desktop/resource_management.md#resourceviewpanel)
 - Fixed script error from the [resource diagram](desktop/resource_management.md#resourceviewpanel) after deleting a task
 - Fixed script error from the [fullscreen extension](desktop/fullscreen_mode.md) after exiting fullscreen mode on the `Esc` key
@@ -180,7 +279,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>December 27, 2018. Bugfix release</span>
 
-####Fixes
+### Fixes
 
 - Fixed incorrect task position after task vertical dnd in `order_branch='marker'` mode
 - Fixed script error after deleting a sub-tree which contains selected task
@@ -191,7 +290,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>December 6, 2018. Bugfix release</span>
 
-####Fixes
+### Fixes
 
 - Fixed `ReferenceError: getResourceAssignments is not defined` when importing Gantt into Vue.js project
 - Fixed script error on deleting task after assigning resource to it via resource form
@@ -205,7 +304,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>November 5, 2018. Major update</span>
 
-####Functionality
+### Functionality
 
 - [Assignment of several resources to a task](desktop/resource_management.md#assigningresources) (PRO version)
 - [Grouping tasks by multiple resources](desktop/resource_management.md#balancingresourceload) (PRO version)
@@ -216,13 +315,13 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Auto resize when container size changes
 
 
-#### Configuration
+### Configuration
 
 - The [Resources control](desktop/resources.md) in the lightbox for assigning resources to a task (PRO version)
 - [Improved performance of tasks reordering](desktop/reordering_tasks.md#improvingperformanceforlargedatasets) in the "branch" mode
 - Performance update for the api/gantt_auto_types_config.md configuration (PRO version)
 
-####API
+### API
 
 - The "marker" mode for the api/gantt_order_branch_config.md config to speed up tasks reordering within branch
 - The [onBeforeRowDragMove](api/gantt_onbeforerowdragmove_event.md) event to work in tandem with the api/gantt_order_branch_config.md config in the "marker" mode
@@ -235,21 +334,21 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>July 6, 2018. Minor update</span>
 
-####Functionality
+### Functionality
 
 - [Inline editing in Grid](desktop/inline_editing.md)
 - [Splitting tasks](desktop/split_tasks.md) (PRO version)
 - Updated [keyboard navigation](desktop/keyboard_navigation.md#existingshortcuts)
 - [Auto Scheduling](desktop/auto_scheduling.md) performance improvements
 
-####Configuration
+### Configuration
 
 - Ability to [set task types automatically](api/gantt_auto_types_config.md) (PRO version)
 - Ability to [use a placeholder row](api/gantt_placeholder_task_config.md) for creating new tasks
 - [Checkbox](desktop/checkbox.md) and [radio button](desktop/radio.md) controls for lightbox
 - Updated [Content Security Policy](desktop/content_security_policy.md) extension
 
-####API
+### API
 
 - New methods and events for [undo](desktop/undo_redo.md) and [autoscheduling](desktop/auto_scheduling.md) extensions.
 
@@ -258,7 +357,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>February 27, 2018. Minor update</span>
 
-####Functionality
+### Functionality
 
 - [Resource management](desktop/resource_management.md) (PRO version)
 - [RTL mode](desktop/rtl_mode.md)
@@ -266,19 +365,19 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - [Destructors for Gantt and DataProcessor instances](desktop/multiple_gantts.md#destructorofganttanddataprocessorinstances)
 
 
-####Configuration
+### Configuration
 
 - [Ability to set min/max widths for Grid columns](desktop/specifying_columns.md#width)
 - [Ability to drag and drop projects with their subtasks](desktop/dnd.md#draggingprojectswithsubtasks) (PRO version)
 - [Extended parameters for the export methods](desktop/export_common.md)
 
 
-#### API
+### API
 
 - [Updated API events](desktop/multiselection.md#apievents) for the [Multi-Task Selection](desktop/multiselection.md) extension
 
 
-#### Fixes
+### Fixes
 
 - Fixed issues with the keyboard navigation in the smart rendering mode
 
@@ -288,13 +387,13 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>December 12, 2017. Major update</span>
 
-####Functionality
+### Functionality
 
 - [Flexible Gantt layout](desktop/layout_config.md)
 - [Server-side integration with REST API](desktop/server_side.md). Check also [tutorials for various server-side platforms](desktop/howtostart_guides.md)
 
 
-####Styling
+### Styling
 
 - New ["Material" skin](desktop/skins.md#materialskin)
 
@@ -304,14 +403,14 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>August 17, 2017. Minor update</span>
 
-####Functionality
+### Functionality
 
 - [Work Time calendars at the task and resource levels](desktop/working_time.md#multipleworktimecalendars)
 - [WBS code (outline numbers) calculation](desktop/specifying_columns.md#wbscode)
 - [Autoscroll for drag and drop operations](desktop/dnd.md#autoscrollduringtasksdragging)
 - [Persian (Farsi) locale is added](desktop/localization.md#predefinedlocales)
 
-####Configuration
+### Configuration
 
 - [The getter function for key navigation shortcuts](api/gantt_getshortcuthandler.md) is added
 - [The config for cascade deleting of nested tasks and links](api/gantt_cascade_delete_config.md) is added
@@ -325,14 +424,14 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>September 1, 2016. Minor update</span>
 
-#### Functionality
+### Functionality
 
 - [Keyboard navigation](desktop/keyboard_navigation.md)
 - [WAI-ARIA support](desktop/accessibility.md#waiariaattributes)
 - [High-contrast themes](desktop/accessibility.md#highontrastthemes)
 - Updated [Auto Scheduling](desktop/auto_scheduling.md) and [Critical Path](desktop/critical_path.md) calculations (PRO version)
 
-####Configuration
+### Configuration
 
 - Performance improvements for [worktime calculation](desktop/working_time.md) and [timescale rendering](desktop/performance.md)
 - [Public method for unsetting worktimes](api/gantt_unsetworktime.md) added
@@ -346,17 +445,17 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>December 1, 2015. Major update</span>
 
-#### Functionality
+### Functionality
 
 - [Smart rendering](desktop/performance.md#smartrendering) for big datasets
 - [Undo/redo](desktop/undo_redo.md) extensions
 
-####Configuration
+### Configuration
 
 - [Critical path calculation](desktop/critical_path.md) - support for [lag/lead of links](desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks) added (PRO version)
 - Spanish and Chinese [locales](desktop/localization.md#predefinedlocales) updated
 
-####API
+### API
 
 - Public API improvements - public helpers for [ajax](http://docs.dhtmlx.com/api__refs__dhtmlxajax.html), [environment variables](api/gantt_env_other.md)
 - [Public API cleanup](migrating.md#3x40) - redundant global objects removed, conflicts with dhtmlxSuite resolved
@@ -369,20 +468,20 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>July 21, 2015. Minor update</span>
 
-#### Functionality
+### Functionality
 
 - Dependency [Auto Scheduling](desktop/auto_scheduling.md) feature (PRO version)
 - [Fullscreen mode](desktop/fullscreen_mode.md)
 - Support for [unscheduled tasks](desktop/crud_task.md#addingunscheduledtasks)
 - [Backward planning](desktop/loading.md#loadingtaskdates)
 
-#### Configuration
+### Configuration
 
 - Initial support for [Content Security Policy](desktop/content_security_policy.md)
 - A possibility of specifying [per column Grid sorting](desktop/sorting.md#percolumngridsorting) settings
 - Improved branch ordering feature - [drag-n-drop between levels](desktop/reordering_tasks.md#dragndropwithinthewholeganttstructure)
 
-#### API
+### API
 
 - [REST mode for ajax loading/saving](desktop/server_side.md#savingdatafromrestserver)
 
@@ -393,7 +492,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>March 18, 2015. Minor update</span>
 
-#### Functionality
+### Functionality
 
 - [Grouping tasks](desktop/grouping.md) (PRO version)
 - [Multi-task selection](desktop/multiselection.md)
@@ -401,12 +500,12 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - [Major performance improvement of work time and critical path calculations](desktop/performance.md)
 
 
-#### Configuration
+### Configuration
 
 - [A possibility to set the range for the year selector in the lightbox](desktop/time.md#alistofproperties)
 
 
-#### API
+### API
 
 - [Events for managing available target places while re-ordering tasks](desktop/reordering_tasks.md#denyingdroppingtospecificpositions)
 - [Events for managing loading process](desktop/loading.md#eventsflow)
@@ -420,15 +519,15 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>October 25, 2014. Minor update</span>
 
-#### Functionality
+### Functionality
 
 - Ability to drag tasks on touch devices
 
-#### Configuration
+### Configuration
 
 - [Changed the default offset between the first and the last tasks on a scale](api/gantt_scale_offset_minimal_config.md)
 
-#### Bug Fixes
+### Bug Fixes
 
 - Incorrect behavior of the tooltip on expanding/collapsing of task tree
 - Order of API events during Gantt initialization
@@ -440,11 +539,11 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>September 11, 2014. Major update</span>
 
-#### Configuration
+### Configuration
 
 - [Ability to map the 'Time' and 'Duration' controls to custom date properties](desktop/time.md#assigningcustomstartandenddatetimeproperties)
 
-#### Functionality
+### Functionality
 
 - [Dynamic loading](desktop/dynamic_loading.md) (PRO version)
 - [A possibility to resize columns and the whole grid by drag-&-dropping](desktop/specifying_columns.md)
@@ -458,7 +557,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - [Styling links through special data properties](desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject)
 
 
-#### API
+### API
 
 - [New tree-related methods](desktop/task_tree_operations.md)
 
@@ -467,23 +566,23 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>March 28, 2014. Minor update</span>
 
-#### Global
+### Global
 
 - Updated locales
 - Many bugs have been fixed
 
-#### Configuration
+### Configuration
 
 - [Custom configuration of the lightbox for different task types](desktop/task_types.md#individuallightboxforeachtype)
 - [Non-linear scales, ability to skip time from the scale](desktop/custom_scale.md) (PRO version)
 
-#### Functionality
+### Functionality
 
 - [Milestones](desktop/milestones.md) and [Projects](desktop/task_types.md#projecttasks) support  (PRO version)
 - [A possibility  to calculate the tasks' duration in work days/hours instead of calendar time](desktop/working_time.md)
 - [Support for multiple Gantt charts on the page](desktop/multiple_gantts.md) (PRO version)
 
-#### API
+### API
 
 - Added more configurations, methods, events
 
@@ -493,13 +592,13 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>October 18, 2013. Major update</span>
 
-#### Global
+### Global
 
 - [jQuery integration](desktop/jquery_integration.md)
 - Major performance improvements
 - [Ready-to-use PHP integration](desktop/server_side.md)
 
-#### Configuration
+### Configuration
 
 - [Configurable multi-line scales](desktop/configuring_time_scale.md)
 - [Configurable multi-column grid with optional sorting and Drag-n-Drop](desktop/reordering_tasks.md)
@@ -508,7 +607,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - [All date strings can be configured](desktop/common_configuration.md#ganttconfigobject)
 - [All text labels can be localized](desktop/localization.md)
 
-#### Styling
+### Styling
 
 - [Default skin changed to "terrace"](desktop/skins.md#teraccedefaultskin)
 - [3 new skins](desktop/skins.md)
@@ -516,7 +615,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - [Optional UI for task creation](overview.md)
 - [Vertical and horizontal lines can be colored based on custom rules](desktop/highlighting_time_slots.md)
 
-#### Functionality
+### Functionality
 
 - [Loading and serialization from JSON](desktop/supported_data_formats.md#json)
 - [Loading and serialization with the simplified XML format](desktop/supported_data_formats.md#xmldhtmlxgantt20)
@@ -524,7 +623,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Gantt charts work on touch devices
 
 
-#### API
+### API
 
 - [A lot of events added](api/refs/gantt.md#events)
 - [Templates](api/refs/gantt.md#templates) and [configuration options](api/refs/gantt.md#properties) added

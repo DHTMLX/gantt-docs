@@ -1,4 +1,4 @@
-Loading Data
+Data Loading 
 =======================================
 
 dhtmlxGantt can take data of 2 formats:

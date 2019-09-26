@@ -20,12 +20,12 @@ getClosestWorkTime
 
 @example:
 // checks whether the specified date is a working day in global settings
-gantt.getClosestWorkTime({ date: new Date(2017,3,5) });
+gantt.getClosestWorkTime({date:new Date(2019,04,26)});
 // or
-gantt.getClosestWorkTime(new Date(2017,3,5));
+gantt.getClosestWorkTime(new Date(2019,04,26));
 
 // checks whether the specified date is a working day for a specific task
-gantt.getClosestWorkTime({ date: new Date(2017,3,5), task:task });
+gantt.getClosestWorkTime({ date: new Date(2019,04,26), task:task });
 
 @template:	api_method
 @descr:
@@ -62,9 +62,12 @@ The configuration object can contain the following properties:
     <tr>
 		<td colspan=2 style="text-align:left !important; ">
 ~~~js
-gantt.getClosestWorkTime({date:new Date(2013,0,1), dir:"future"})
-// -> Wed Jan 02 2013 00:00:00 if duration_unit="day"
-// -> Wed Jan 02 2013 08:00:00 if duration_unit="hour"
+gantt.getClosestWorkTime({
+	date:new Date(2019,04,26),
+    dir:"future"
+});
+// -> Mon May 27 2019 00:00:00 if duration_unit="day"
+// -> Mon May 27 2019 08:00:00 if duration_unit="hour"
 ~~~
 		</td>
 	</tr>
@@ -75,8 +78,11 @@ gantt.getClosestWorkTime({date:new Date(2013,0,1), dir:"future"})
     <tr>
 		<td colspan=2 style="text-align:left !important; ">
 ~~~js
-gantt.getClosestWorkTime({date:new Date(2013,0,1), dir:"past"})
-// -> Mon Dec 31 2012 17:00:00
+gantt.getClosestWorkTime({
+	date:new Date(2019,04,18),
+    dir:"past"
+});
+// -> Sat May 18 2019 00:00:00
 ~~~
 		</td>
 	</tr>
@@ -89,10 +95,11 @@ gantt.getClosestWorkTime({date:new Date(2013,0,1), dir:"past"})
 ~~~js
 //searches for the closest working hour
 gantt.getClosestWorkTime({
-	date:new Date(2013,0,1), 
+    date:new Date(2019,04,18), 
     dir:"future", 
     unit:"hour"
-});// ->Wed Jan 02 2013 08:00:00
+});
+// -> Mon May 20 2019 08:00:00
 ~~~
 		</td>
 	</tr>

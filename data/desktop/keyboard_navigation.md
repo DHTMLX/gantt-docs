@@ -14,6 +14,8 @@ In order to use keyboard navigation in the Gantt chart, you need to include the 
 	type="text/javascript" charset="UTF-8"></script>
 ~~~
 
+The API of the **gantt.ext.keyboardNavigation** object is given in the article desktop/keynav_ext.md.
+
 There are two variants of keyboard navigation available:
 
 - navigation by task rows

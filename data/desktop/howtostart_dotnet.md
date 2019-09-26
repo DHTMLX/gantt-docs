@@ -11,17 +11,17 @@ You can also explore other server-side integration possibilities of Gantt by cho
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_ruby.md
 
-We will make use of ASP.NET MVC 5 web platform and Web API 2 controller for REST API to create a Gantt application.
-To organize communication with database we will use the [Entity Framework](http://www.asp.net/entity-framework).
+We will make use of the ASP.NET MVC 5 web platform and the Web API 2 controller for REST API to create a Gantt application.
+To organize communication with a database we will use the [Entity Framework](http://www.asp.net/entity-framework).
 We will build our application with the help of the Visual Studio IDE. 
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-dotnet) on GitHub.
 
 
-Step 1. Creating a Project
+Step 1. Creating a project
 -----------------------------
 
-###Creating a new Visual Studio Project 
+###Creating a new Visual Studio project 
 
 Let's start by running Visual Studio and creating a new project. For this, open the File menu tab and choose:<br>
 New -> Project. Then select ASP.NET Web Application and name it *DHX.Gantt.Web*. 
@@ -32,7 +32,7 @@ Select an *Empty* project among available templates and check MVC and Web API ch
 
 <img src="desktop/how_to_start_net_project_template.png">
 
-Step 2. Adding Gantt to the Page
+Step 2. Adding Gantt to the page
 --------------------------------
 
 ###Creating a Controller
@@ -134,7 +134,7 @@ And also we told the gantt that it's going to work with RESTful API on a backend
 ~~~js
 gantt.load("/api/data");
 // initializing dataProcessor
-var dp = new gantt.dataProcessor("/api/");
+var dp = new gantt.dataProcessor("/api/data");
 // and attaching it to gantt
 dp.init(gantt);
 // setting the REST mode for dataProcessor
@@ -147,17 +147,17 @@ The server side itself will be implemented a bit later. For now, you can run the
 <img src="desktop/adding_gantt.png">
 
 
-Step 3. Creating Models and a Database
+Step 3. Creating models and database
 --------------------------------
 
 ###Creating Models
 
-Now we define model classes for the gantt chart. A Gantt data model consists of [Links and Tasks](desktop/loading.md#standarddatabasestructure). 
+Now we should define model classes for the gantt chart. A Gantt data model consists of [Links and Tasks](desktop/loading.md#standarddatabasestructure). 
 As you can see, dhtmlxGantt uses a certain naming convention for data model that is different from the one traditionally used in C#. 
-The client-side model can also contain some properties that shouldn't be stored in a database, but will be used either on the client or in the backend logic.
+The client-side model can also contain some properties that you don't need to store in a database, but which will be used either on the client or in the backend logic.
 
-Because of this, we'll go with the [Data Transfer Object](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) pattern here: we'll define domain model classes that will be used with EF and inside the app, 
-and DTO classes that will be used to communicate with Web API. Then we'll implement some kind of mapping between the two models.
+Because of this, we'll go with the [Data Transfer Object](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) 
+pattern here: we'll define domain model classes that will be used with EF and inside the app, and DTO classes that will be used to communicate with Web API. Then we'll implement some kind of mapping between the two models.
 
 Let's start!
 
@@ -247,12 +247,11 @@ We should specify that a database should be dropped and re-created whenever the 
 First, we should create a database initializer. For this purpose, we need to add a new class in the *App_Start* folder
 that will be inherited from the *DropCreateDatabaseIfModelChanges* class. Let's call it "GanttInitializer".
 
-In this class we are going to redefine the *Seed()* method to populate it with test data.
-Then we will add the entities collection into the context with the *AddRange()* method.
+In this class we are going to redefine the *Seed()* method to populate it with test data. Then we will add the entities collection into the context with the *Add()* method.
 
 The full code of the *GanttInitializer* class is given below:
 
-{{snippet Models/GanttInitializer.cs}}
+{{snippet App_Start/GanttInitializer.cs}}
 ~~~js
 using System;
 using System.Collections.Generic;
@@ -347,7 +346,7 @@ namespace DHX.Gantt.Web
 
 ### Defining DTOs and Mapping
 
-Now we'll declare DTO classes that will be used for Web API.
+It's time to declare DTO classes that will be used for Web API.
 As for mapping between Model and DTO, we'll go the simplest way and just define an explicit conversion operator for these classes.
 
 The TaskDto class will look as follows: 
@@ -393,7 +392,9 @@ namespace DHX.Gantt.Web.Models
             {
                 Id = task.id,
                 Text = task.text,
-                StartDate = DateTime.Parse(task.start_date, System.Globalization.CultureInfo.InvariantCulture),
+                StartDate = DateTime.Parse(
+                	task.start_date, 
+                    System.Globalization.CultureInfo.InvariantCulture),
                 Duration = task.duration,
                 ParentId = task.parent,
                 Type = task.type,
@@ -474,8 +475,10 @@ We will also need one more controller for the 'load data' action, since gantt ex
 
 ###Task Controller
 
-Activate the context menu for the Controllers folder and select Add -> Controller.<br>
-Choose the Web API 2 Controller -> Empty. The new controller will be called "TaskController". 
+To create a new controller:
+
+- Activate the context menu for the Controllers folder and select Add -> Controller.
+- Choose the Web API 2 Controller -> Empty. The new controller will be called "TaskController". 
 
 Now we need to implement basic CRUD actions for the task entry:
 
@@ -712,10 +715,10 @@ Now everything is ready. Run the application and a fully-fledged Gantt should ap
 
 <img src="desktop/ready_gantt_dotnet.png">
 
-[You can find a ready demo at github]().
+[You can find a ready demo at github](https://github.com/DHTMLX/gantt-howto-dotnet).
 
 
-Error Handling 
+Error handling 
 -----------
 
 [Exception filters](https://msdn.microsoft.com/en-us/library/gg416513(v=vs.98).aspx) can be used for capturing exceptions in CRUD handlers and returning a client response 
@@ -723,7 +726,7 @@ that can be [recognized](desktop/server_side.md#errorhandling) by the client-sid
 
 To provide error handling for the gantt, follow the steps below:
 
-Go to App_Start and add a new class called GanttAPIExceptionFilterAttribute:
+Go to *App_Start* and add a new class called *GanttAPIExceptionFilterAttribute*:
 
 {{snippet App_Start/GanttAPIExceptionFilterAttribute.cs}}
 ~~~js
@@ -739,11 +742,13 @@ namespace DHX.Gantt.Web
         public override void OnException(HttpActionExecutedContext context)
         {
             
-            context.Response = context.Request.CreateResponse(HttpStatusCode.InternalServerError, new
-            {
-                action = "error",
-                message = context.Exception.Message
-            });
+            context.Response = context.Request.CreateResponse(
+            	HttpStatusCode.InternalServerError, new
+            		{
+                		action = "error",
+                		message = context.Exception.Message
+            		}
+            );
         }
     }
 }
@@ -783,7 +788,7 @@ the client side will receive an error status and an error message that can be ei
 
 Note that returning an exception message to the client might not be the best idea for a production environment.
 
-Storing the Order of Tasks
+Storing the order of tasks
 -----------
 
 The client-side gantt allows [reordering tasks](desktop/reordering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database.
@@ -977,7 +982,7 @@ And now we will implement reordering in our PUT (EditTask) action:
 
 ~~~
 
-Known Issues
+Known issues
 -----------
 
 HTTP PUT and DELETE requests return 405 or 401 error when an app is running on IIS.
@@ -985,7 +990,7 @@ The issue may be caused by the **WebDAV** module which can conflict with RESTful
 
 As a common solution, the module can be disabled from the **web.config** file. More details are given [here](https://forums.iis.net/t/1166025.aspx).
 
-Application Security
+Application security
 -------------------------
 
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](desktop/app_security.md).
@@ -997,7 +1002,7 @@ In case you've completed the above steps to implement Gantt integration with ASP
 the ways of identifying the roots of the problems.
 
 
-What's Next
+What's next
 ------------
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet), clone or download it and use it for your projects.

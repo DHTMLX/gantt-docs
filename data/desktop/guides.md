@@ -82,6 +82,7 @@ The articles come around key procedures and problem-solving activities.
     	    </h4>
     	    <ul id="lightbox_sublist">
                     <li>desktop/configuring_time_scale.md </li>
+                    <li>desktop/zooming.md</li>
                     <li>desktop/highlighting_time_slots.md</li>
                     <li>desktop/second_scale.md</li>
                     <li>desktop/dynamic_scale.md</li>
@@ -194,10 +195,11 @@ The articles come around key procedures and problem-solving activities.
             </h4>
             <ul id="internet_sublist">                		
                     <li>desktop/localization.md</li>  
-                    <li>desktop/accessibility.md</li>
-                    <li>desktop/fullscreen_mode.md</li>
+                    <li>desktop/fullscreen_mode.md</li>                                       
                     <li>desktop/undo_redo.md</li>
                     <li>desktop/message_boxes.md</li>
+                    <li>desktop/accessibility.md</li>
+                    <li>desktop/keyboard_navigation.md</li>
                   	<li>desktop/content_security_policy.md</li>
                     <li>desktop/jquery_integration.md</li>
             </ul>

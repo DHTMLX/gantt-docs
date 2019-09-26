@@ -1,24 +1,29 @@
 onTaskCreated
 =============
-@short:fires when user creates a new task by pressing '+' button in a grid, and also when the api/gantt_createtask.md method is called
+
+@short:fires when a user creates a new task by pressing the'+' button in a grid, or when the api/gantt_createtask.md method is called
 
 @params:
-- task		object		the object of the new task
+- task		object		the object of a new task
 
 @returns:  
-  - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
+  - result     boolean       returning `false` will cancel the creation of a new task, returning `true` will continue the default processing
  
 @example:
 gantt.attachEvent("onTaskCreated", function(task){
-    //any custom logic here
+    task.projectId = 1;
     return true;
 });
 
 @template:	api_event
 @descr:
-Note, the event fires before the new task is added to the dataset that allows you to cancel saving of this task at all,for example, if the user clicks 'Cancel' button in the lightbox.
+The event fires before a new task is displayed, which allows you to **set default values** or **cancel the creation** of a task.
 
-The final order of events that fire when you create a task with the api/gantt_createtask.md method:
+By the time this event is fired, the new task is already available in the datastore via the api/gantt_gettask.md method.
+
+If the event handler returns `false`, the task will be removed from the datastore without firing the api/gantt_onaftertaskdelete_event.md event.
+
+The final order of events that fire when you create a task with the api/gantt_createtask.md method is:
 
 1. api/gantt_ontaskcreated_event.md
 2. api/gantt_onbeforelightbox_event.md

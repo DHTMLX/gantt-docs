@@ -1,7 +1,7 @@
 Inline Editors Extension
 ========================
 
-The *inlineEditors* object possesses the following API:
+Read details about the Inline editors extension in the article desktop/inline_editing.md. <br> The *inlineEditors* object possesses the following API:
 
 ##Methods
 

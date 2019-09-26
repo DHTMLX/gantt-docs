@@ -15,7 +15,7 @@ We will use the [Slim](http://www.slimframework.com/) framework for routing and 
 
 You can have a look at the [ready demo on GitHub](https://github.com/DHTMLX/gantt-howto-php). Follow the step-by-step guide to create such an application.
 
-Step 1. Initializing the Project
+Step 1. Initializing a project
 -----------------------
 
 ###Creating a project
@@ -43,7 +43,7 @@ php -S 0.0.0.0:8080 -t public public/index.php
 
 After that you can open [http://127.0.0.1:8080]() in a browser and you will see the default Slim page.
 
-Step 2. Adding Gantt to the Page
+Step 2. Adding Gantt to the page
 -----------------------
 
 Now we need to create a page with our gantt chart.
@@ -88,7 +88,7 @@ php -S 0.0.0.0:8080 -t public public/index.php
 
 Now open [http://127.0.0.1:8080/](http://127.0.0.1:8080/) in a browser and you will see that a gantt is rendered on the page.
 
-Step 3. Configuring a Database
+Step 3. Configuring a database
 ---------------------
 
 The next step is to create a database. We'll make a simple database with two tables.
@@ -137,7 +137,7 @@ Check a detailed example [here](desktop/loading.md#standarddatabasestructure).
 
 So, we've finished preparing our project. Now we can proceed with data loading.
 
-Step 4. Loading Data
+Step 4. Loading data
 -------------------------------
 
 Now it's time to implement loading from the database. 
@@ -257,7 +257,7 @@ Open [http://127.0.0.1:8080/ ](http://127.0.0.1:8080/) and you will see that the
 
 <img src="desktop/load_data.png">
 
-Step 5. Saving Changes
+Step 5. Saving changes
 -----------------------------------
 
 Our next step is to implement saving of the changes made on the client side to the server. It is usually done using the [dataProcessor](desktop/server_side.md#technique) library, which is embedded into the gantt.
@@ -450,7 +450,7 @@ Now everything is ready. Let's run our application. Open http://127.0.0.1:8080 a
 
 <img src="desktop/ready_gantt.png">
 
-Storing the Order of Tasks
+Storing the order of tasks
 ------------------
 
 The client-side gantt allows [reordering tasks](desktop/reordering_tasks.md) using drag and drop. So if you use this feature, you'll have to store this order in the database. 
@@ -617,7 +617,7 @@ Alternatively, a PHP backend can also be implemented using the [dhtmlxConnector 
 You can find a detailed tutorial [here](desktop/howtostart_connector.md). 
 
 
-Application Security
+Application security
 -------------------------
 
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](desktop/app_security.md).
@@ -628,7 +628,7 @@ Trouble shooting
 In case you've completed the above steps to implement Gantt integration with PHP but Gantt doesn't render tasks and links on a page, have a look at the desktop/troubleshooting.md article. It describes 
 the ways of identifying the roots of the problems.
 
-What's Next
+What's next
 ------------
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-php), clone or download it and use it for your projects.

@@ -1,5 +1,6 @@
-Operating with Dates
+Operations with Dates
 ==============
+
 dhtmlxGantt includes the api/gantt_date_other.md object  that provides a set of date formatting methods. You can use these methods while working with the date objects.
 
 In this article we will consider the particularly important and commonly used methods. A full list of methods you can find at the [date object page](api/gantt_date_other.md).

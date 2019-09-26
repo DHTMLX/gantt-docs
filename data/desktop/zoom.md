@@ -1,7 +1,7 @@
 Zoom Extension
 ==============
 
-The *zoom* object possesses the following API:
+Read details about the Zoom extension in the article desktop/zooming.md. <br> The *zoom* object possesses the following API:
 
 ##Methods
 

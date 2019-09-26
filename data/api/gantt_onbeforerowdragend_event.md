@@ -32,6 +32,9 @@ The event is fired when a task is moved by the mouse pointer in the left-hand gr
 - The event is blockable. Return *false* operation and move task to it's original location
 - Original position (parent and index) are available from handler arguments
 - Target position can be retrieved from a task object as [task.parent](desktop/task_tree_operations.md#parentofatask) and [gantt.getGlobalTaskIndex(taskId)](api/gantt_getglobaltaskindex.md)
+- The **parent** parameter depends on the set api/gantt_order_branch_config.md mode: 
+	- In the regular mode ("true") the **parent** parameter refers to the *original* task's parent (the parent of a task before it was moved to a new position).
+	- In the "marker" mode the **parent** parameter refers to the new task's parent.
 
 @relatedapi:
 	api/gantt_onrowdragend_event.md
