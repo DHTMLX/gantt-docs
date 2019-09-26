@@ -312,20 +312,19 @@ gantt.modalbox.hide(box);
 For any type of the message box you can define a custom style to achieve the desired look.
 Generally, the appropriate CSS class is specified through the *type* parameter: you define a CSS class and set the parameter to its name.
 
-While creating a CSS class, please, use the 'important' keyword to ensure correct processing.
-
 There are some rules related to setting the 'type' parameter you should keep in mind:
 
 - To set a CSS class for the alert and confirm boxes, you must initialize such a box using the 'window-related' way.
 - To set a CSS class for the message boxes, you must initialize such a box using the 'common' way.
 - The name of a CSS class should go with the 'gantt-' prefix.
+- To apply the style correctly, it's necessary to use the name of the class as **.gantt-some div** to specify that it is intended for the element inside a gantt message. 
 
 ~~~js
 <style type="text/css">
-.gantt-myCss{
-    font-weight:bold !important;
-    color:white !important;
-    background-color:red !important;
+.gantt-myCss div{
+    font-weight:bold;
+    color:wheat;
+    background-color:crimson;
 }
 </style>
 
