@@ -23,9 +23,6 @@ To create a basic modal message box, use the [gantt.message](api/gantt_message.m
 gantt.message("The task is updated");
 ~~~
 
-A popup message box appears in the right top corner of the window. It doesn't prevent the work of the parent application, unlike [modal message boxes](desktop/message_boxes.md#modalmessageboxes)
-that overlay the parent application and block its work.
-
 There are three types of message boxes:
 	
 - a default message box (**type:"info"**)
@@ -48,6 +45,29 @@ gantt.message({type:"error", text:"Invalid data format"});
 ~~~
 
 {{sample 04_customization/20_message_types.html}}
+
+To apply different styles to a message box you need to specify a CSS class through the type parameter as described [here](desktop/message_boxes.md#styling).
+
+###Positioning message boxes
+
+By default, a popup message box appears in the right top corner of the window. It doesn't prevent the work of the parent application, unlike [modal message boxes](desktop/message_boxes.md#modalmessageboxes)
+that overlay the parent application and block its work. You can change the position of a message box by using the **gantt.message.position** property:
+
+~~~js
+gantt.message.position = 'bottom';
+~~~
+
+{{editor	https://snippet.dhtmlx.com/13007a8d2		Message position}}
+
+There are four possible values for the message position:
+
+- **top** - displays a message box in the right top corner of the window, set by default
+
+- **bottom** - displays a message box in the right bottom corner of the window
+
+- **left** -  displays a message box on the left side of the window under Gantt
+
+- **right** - displays a message box on the right side of the window under Gantt
 
 ###Expire Interval
 
@@ -78,7 +98,6 @@ gantt.message({
 
 gantt.message.hide("myBox");
 ~~~
-
 
 ##Modal Message Boxes
 
@@ -332,6 +351,7 @@ There are some rules related to setting the 'type' parameter you should keep in 
 gantt.message({ type:"myCss", text:"some text" });
 ~~~
 
+{{editor	https://snippet.dhtmlx.com/f0c608393	Styling message boxes}}
 ##Modal Windows and Keyboard Interaction
 
 The keyboard functionality for modal boxes is controlled by the **gantt.message.keyboard** property. Initially, it's set to *true*. 
