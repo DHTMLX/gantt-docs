@@ -15,6 +15,7 @@ eachTask
 gantt.eachTask(function(task){alert(task.text);})
 @template:	api_method
 @descr:
+The method uses [depth-first tree traversal](https://en.wikipedia.org/wiki/Tree_traversal#Pre-order_(NLR)) from left to right to iterate over all tasks. Each parent node is visited before its child.
 
 @relatedapi:
 	api/gantt_eachselectedtask.md
