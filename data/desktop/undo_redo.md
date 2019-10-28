@@ -77,13 +77,13 @@ Clearing the stack of stored Undo/Redo commands
 
 There is a possibility to clear the stack of Undo/Redo commands via the related Gantt API. 
 
-To clear the the stack of the stored undo commands, use the api/gantt_clearundostack.md method:
+To clear the stack of the stored undo commands, use the api/gantt_clearundostack.md method:
 
 ~~~js
 gantt.clearUndoStack();
 ~~~
 
-To clear the the stack of the stored redo commands, use the api/gantt_clearredostack.md method:
+To clear the stack of the stored redo commands, use the api/gantt_clearredostack.md method:
 
 ~~~js
 gantt.clearRedoStack();
