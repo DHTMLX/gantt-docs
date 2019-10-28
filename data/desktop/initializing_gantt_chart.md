@@ -42,7 +42,8 @@ You can add Gantt code file into your project in several ways, depending on the 
 - [Include files into a RequireJS-based app](#requirejsimport)
 
 
-<h3 id="scripttag">Include files via the &#60;script&#62; tag</h3>
+Include files via the &#60;script&#62; tag
+--------------------------------------------
 
 The dhtmlxGantt requires including 2 code files on the page:
 
@@ -63,7 +64,8 @@ Main folders and files that make up the dhtmlxGantt package are:
 - <b>docs</b> - the full documentation of the component.
 - <b>codebase</b> - the packed code files of the library. These files have much smaller size and intended to be used in production. <b>In your apps you need to use files from this folder.</b>
 
-<h3 id="moduleimport">Import files into ES6/7 and TypeScript apps</h3>
+Import files into ES6/7 and TypeScript apps
+---------------------------------------------
 
 Use the following command to import files:
 
@@ -77,7 +79,8 @@ For the Enterprise version the command look like this:
 import { gantt, Gantt } from 'dhtmlx-gantt';
 ~~~
 
-#### React example
+React example
+------------------
 
 An example of importing dhtmlxGantt files into a React-based app:
 
@@ -106,7 +109,8 @@ export default class Gantt extends Component {
 }
 ~~~
 
-#### Angular example
+Angular example
+-----------------
 
 An example of importing dhtmlxGantt files into an Angular-based app:
 
@@ -143,7 +147,8 @@ export class GanttComponent implements OnInit {
 }
 ~~~
 
-<h3 id="requirejsimport">Include files into a RequireJS-based app</h3> 
+Include files into a RequireJS-based app
+------------------------------------------- 
 
 To include dhtmlxGantt files into a RequireJS-based app, you need to follow the logic shown in the example below:
 
@@ -174,22 +179,23 @@ The dhtmlxGantt library will return an object with fields `gantt` and `Gantt` (i
 
 {{note  When using Gantt with extensions in RequireJS, you should specify the `shim` config for RequireJS and directly set the dependency of extensions from Gantt in it.}}
 
-The example below demonstrates how dependencies for *dhtmlxgantt_tooltip.js* and *dhtmlxgantt_marker.js* extensions are set in the correct way:
+The example below demonstrates how dependencies for *dhtmlxgantt_tooltip.js* and *dhtmlxgantt_critical_path.js* extensions are set in the correct way:
 
 ~~~js
 requirejs.config({
   paths: {
-    "gantt": "../../codebase/dhtmlxgantt",
-    "tooltip": "../../codebase/ext/dhtmlxgantt_tooltip",
-    "marker": "../../codebase/ext/dhtmlxgantt_marker",
+    "dhtmlxgantt": "../../codebase/dhtmlxgantt",
+    "ext/dhtmlxgantt_tooltip": "../../codebase/ext/dhtmlxgantt_tooltip",
+    "ext/dhtmlxgantt_critical_path": "../../codebase/ext/dhtmlxgantt_critical_path",
   },
   shim: {
-    "tooltip": ["gantt"],
-    "marker": ["gantt"],
+    "ext/dhtmlxgantt_tooltip": ["dhtmlxgantt"],
+    "ext/dhtmlxgantt_critical_path": ["dhtmlxgantt"],
   }
 });
  
-requirejs(["gantt", "tooltip", "marker"], function (dhx) {
+requirejs(["dhtmlxgantt", "ext/dhtmlxgantt_tooltip", "ext/dhtmlxgantt_critical_path"], 
+function (dhx) {
   var gantt = dhx.gantt;
  
   var date_to_str = gantt.date.date_to_str(gantt.config.task_date);
@@ -219,6 +225,21 @@ requirejs(["gantt", "tooltip", "marker"], function (dhx) {
 });
 ~~~
 
+Check that the module name for any file inside the package is specified as *a relative path inside the 'codebase' folder of the package* plus *the filename*, for instance:
+
+**core library:**
+
+- "dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"
+
+**extensions:**
+
+- "ext/dhtmlxgantt_critical_path": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_critical_path"
+- "ext/dhtmlxgantt_tooltip": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_tooltip"
+
+**locales:**
+
+- "locale/locale_de": "./vendor/dhtmlxgantt/locale/locale_de"
+- "locale/locale_be": "./vendor/dhtmlxgantt/locale/locale_be"
 
 Full screen mode
 ---------------------------------

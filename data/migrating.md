@@ -20,6 +20,75 @@ Migration from Older Versions
 	}
 </style>
 
+6.2 -> 6.3
+---------------
+
+###Usage with Require.JS
+
+Earlier you could use any arbitrary names for different files of dhtmlxGantt library included into a RequireJS-based app:
+
+~~~js
+requirejs.config({
+  paths: {
+    "gantt": "../../codebase/dhtmlxgantt",
+    "tooltip": "../../codebase/ext/dhtmlxgantt_tooltip",
+    "marker": "../../codebase/ext/dhtmlxgantt_marker",
+    "locale_de": "../../codebase/locale/locale_de",
+  },
+  shim: {
+    "tooltip": ["gantt"],
+    "marker": ["gantt"],
+    "locale_de": ["gantt"],
+  }
+});
+requirejs(["gantt", "tooltip", "marker", "locale_de"],
+function (dhx) {
+  var gantt = dhx.gantt;
+ ...
+});
+~~~
+
+Starting from version 6.3 names of modules must be fixed according to the folder structure of dhtmlxGantt library:
+
+~~~js
+requirejs.config({
+  paths: {
+    "dhtmlxgantt": "../../codebase/dhtmlxgantt",
+    "ext/dhtmlxgantt_tooltip": "../../codebase/ext/dhtmlxgantt_tooltip",
+    "ext/dhtmlxgantt_critical_path": "../../codebase/ext/dhtmlxgantt_critical_path",
+    "locale/locale_de": "../../codebase/locale/locale_de",
+  },
+  shim: {
+    "ext/dhtmlxgantt_tooltip": ["dhtmlxgantt"],
+    "ext/dhtmlxgantt_critical_path": ["dhtmlxgantt"],
+    "locale/locale_de": ["dhtmlxgantt"],
+  }
+});
+ 
+requirejs(["dhtmlxgantt", "ext/dhtmlxgantt_tooltip", "ext/dhtmlxgantt_critical_path", 
+			"locale/locale_de"], 
+function (dhx) {
+  var gantt = dhx.gantt;
+...
+});
+~~~
+
+Check that the module name for any file inside the package is specified as *a relative path inside the 'codebase' folder of the package* plus *the filename*, for instance:
+
+**core library:**
+
+- "dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"
+
+**extensions:**
+
+- "ext/dhtmlxgantt_critical_path": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_critical_path"
+- "ext/dhtmlxgantt_tooltip": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_tooltip"
+
+**locales:**
+
+- "locale/locale_de": "./vendor/dhtmlxgantt/locale/locale_de"
+- "locale/locale_be": "./vendor/dhtmlxgantt/locale/locale_be"
+
 6.1 -> 6.2
 ---------------
 
