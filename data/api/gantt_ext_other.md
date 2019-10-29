@@ -14,6 +14,7 @@ gantt.ext.inlineEditors.init();
 The **ext** object includes the following extensions:
 
 - [gantt.ext.inlineEditors](desktop/inline_editors_ext.md)
+- [gantt.ext.fullscreen](desktop/fullscreen_ext.md)
 - [gantt.ext.zoom](desktop/zoom.md)
 - [gantt.ext.tooltips](desktop/tooltips_ext.md)
 - [gantt.ext.clickDrag](desktop/click_drag_ext.md)
@@ -23,6 +24,7 @@ The **ext** object includes the following extensions:
 
 @index:
 - desktop/inline_editors_ext.md
+- desktop/fullscreen_ext.md
 - desktop/zoom.md
 - desktop/tooltips_ext.md
 - desktop/click_drag_ext.md
