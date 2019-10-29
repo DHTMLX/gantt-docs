@@ -179,3 +179,14 @@ Starting from the version 4.2, the Gantt chart provides a possibility to scroll 
 
 -> **Shift** key + **mouse wheel movement**. 
 
+From version 6.3 you can either set the **Alt** or **Meta** key in the combination with mouse wheel instead of default **Shift** key via the [horizontal_scroll_key](api/gantt_horizontal_scroll_key_config.md) property:
+
+~~~js
+gantt.config.horizontal_scroll_key = "altKey";
+~~~
+
+or disable the horizontal scroll by setting the [horizontal_scroll_key](api/gantt_horizontal_scroll_key_config.md) property to *false*:
+
+~~~js
+gantt.config.horizontal_scroll_key = false;
+~~~
