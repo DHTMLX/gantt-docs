@@ -1,7 +1,7 @@
 Fullscreen Extension
 ========================
 
-Read details about the fullscreen extension in the desktop/fullscreen_mode.md article. <br> The *fullscreen* object possesses the following API:
+Read details about the fullscreen extension in the desktop/fullscreen_mode.md#fullscreenapi article. <br> The *fullscreen* object possesses the following API:
 
 ##Methods
 

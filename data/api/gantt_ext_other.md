@@ -20,6 +20,7 @@ The **ext** object includes the following extensions:
 - [gantt.ext.clickDrag](desktop/click_drag_ext.md)
 - [gantt.ext.keyboardNavigation](desktop/keynav_ext.md)
 - [gantt.ext.overlay](desktop/overlay_ext.md)
+- [gantt.ext.undo](desktop/undo_ext.md)
 
 
 @index:
@@ -30,5 +31,6 @@ The **ext** object includes the following extensions:
 - desktop/click_drag_ext.md
 - desktop/keynav_ext.md
 - desktop/overlay_ext.md
+- desktop/undo_ext.md
 
 @todo: complete the list

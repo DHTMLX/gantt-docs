@@ -19,3 +19,5 @@ gantt.config.horizontal_scroll_key = "altKey";
 @descr:
 
 @related: desktop/keyboard_navigation.md#builtinshortcutforhorizontaltimelinescrolling
+
+@changelog: added in v6.3

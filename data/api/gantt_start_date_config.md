@@ -16,6 +16,7 @@ gantt.init("gantt_here");
 	api/gantt_end_date_config.md
 	api/gantt_fit_tasks_config.md
 	api/gantt_init.md
+    api/gantt_show_tasks_outside_timescale_config.md
 @template:	api_config
 @descr:
 - If both the **start_date** and **end_date** options are specified and you create a task that is outside the range, the task will disappear from the chart.

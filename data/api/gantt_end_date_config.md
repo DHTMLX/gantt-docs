@@ -66,3 +66,4 @@ gantt.attachEvent("onLightboxSave", function(id, task, is_new){
 	api/gantt_start_date_config.md
 	api/gantt_fit_tasks_config.md
 	api/gantt_init.md
+    api/gantt_show_tasks_outside_timescale_config.md

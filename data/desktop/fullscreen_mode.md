@@ -134,7 +134,7 @@ gantt.ext.fullscreen.getFullscreenElement();
 
 {{note By default this method returns an HTML container of the Gantt chart. It means that only Gantt will be expanded to full screen.}}
 
-In case you want to display the gantt with additional element (such as header or toolbar) in the full screen, you need to add a custom container on the page, as in:
+In case you want to display the gantt with additional element (such as a header or toolbar) in the full screen, you need to add a custom container on the page, as in:
 
 ~~~html
 <div id="myCover">
