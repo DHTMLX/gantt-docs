@@ -38,6 +38,8 @@ In order to redo the previously undone changes, make use of the api/gantt_redo.m
 gantt.redo();
 ~~~
 
+Starting from v6.3 the **undo()/redo()** methods are also available via the **gantt.ext.undo** object. See the desktop/undo_ext.md article. 
+
 Getting the stack of stored Undo/Redo actions
 --------------------------------------------
 
@@ -71,6 +73,7 @@ Have a look at the example below:
 
 The **getUndoStack()** method returns a stack with 2 undo user actions. The first action contains 3 commands, while the second one has 1 command.
 
+Starting from v6.3 the **getUndoStack()/getRedoStack()** methods are also available via the **gantt.ext.undo** object. See the desktop/undo_ext.md article. 
 
 Clearing the stack of stored Undo/Redo commands
 ------------------------------
@@ -88,6 +91,41 @@ To clear the stack of the stored redo commands, use the api/gantt_clearredostack
 ~~~js
 gantt.clearRedoStack();
 ~~~
+
+Starting from v6.3 the **clearUndoStack()/clearRedoStack()** methods are also available via the **gantt.ext.undo** object. See the desktop/undo_ext.md article.
+
+Undoing/Redoing changes made from code
+---------------------------------
+
+It is possible to undo/redo changes made to your code. To do this you have to use the **undo()/redo()** methods in combination with the **saveState()** method of the **gantt.ext.undo** object. 
+The *saveState()* method lets to save the initial value of the task before the code changes are made.
+
+For example, this is how you can revert the initial text of the task after it was reassigned in the code to another value:
+
+~~~js
+const undoExtension = gantt.ext.undo;
+const task = gantt.getTask(1);
+
+console.log(task.text);
+// ->  "task 1";
+
+undoExtension.saveState(task.id, "task"); /*!*/
+
+task.text = "modified";
+gantt.updateTask(1);
+
+console.log(task.text);
+// ->  "modified";
+
+undoExtension.undo();
+
+console.log(task.text);
+// ->  "task 1";
+~~~
+
+The **saveState()** method saved the "task 1" text of the task with the id = 1 before it was updated to the "modified" text. Then the **gantt.ext.undo.undo()** method reverted the changes made in the code to the start value. 
+
+For details about the **saveState()** method, see the desktop/undo_ext.md article.
 
 Configuring the Undo functionality
 ----------------------------

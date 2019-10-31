@@ -1,7 +1,7 @@
 Undo Extension
 =================
 
-The *Undo* object have a set of methods that allow to undo/redo the made changes. <br>
+The *Undo* object has a set of methods that allow to undo/redo the made changes. <br>
 Read details about the Undo extension in the desktop/undo_redo.md article.
 
 Methods
@@ -60,8 +60,11 @@ gantt.ext.undo.clearRedoStack();
 
 ###saveState()
 
-- **saveState()** - saves the current state of a task before the changes are made
+- **saveState(taskId|linkId, entityType)** - saves the current state of a task/link before the changes are made
+    - id - (*string|number*) the id of a task/link,
+    - type - (*string*) the type of an entry for which the id is provided as the first argument. <br>Supported values: "task", "link". 
 
 ~~~js
-gantt.ext.undo.saveState();
+gantt.ext.undo.saveState(1, "task");
+gantt.ext.undo.saveState(1, "link");
 ~~~
