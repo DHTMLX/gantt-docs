@@ -23,30 +23,12 @@ There are the following ways to solve this problem:
 
 
 Smart Rendering
-----------------
-
-{{note The extension is deprecated since v6.2, as it is enabled by default. You don't need to include it additionally.}}
+---------------
 
 The Smart Rendering technique allows considerably enhancing the speed of data rendering, while working with big amounts of data. 
 In this mode only the tasks and links visible on the screen at the moment are being rendered.
 
-To enable Smart Rendering, you need to include the **ext/dhtmlxgantt_smart_rendering.js** extension on the page:
-
-~~~html
-<!DOCTYPE html>
-<html>
-<head>
-   <script src="codebase/dhtmlxgantt.js"></script>   
-   <link href="codebase/dhtmlxgantt.css" rel="stylesheet">   
-   <script src="codebase/ext/dhtmlxgantt_smart_rendering.js"></script>  /*!*/
-</head>
-<body>
-    // your code here
-</body>
-</html>
-~~~
-
-Including the extension on the page is enough to activate the mode. If you need to disable the mode, you can set the corresponding configuration parameter to false:
+The "Smart Rendering" mode is enabled by default. If you need to disable it, you can set the corresponding configuration parameter to false:
 
 ~~~js
 gantt.config.smart_rendering = false;
@@ -55,6 +37,12 @@ gantt.config.smart_rendering = false;
 {{sample
 02_extensions/13_smart_rendering.html
 }}
+
+The process of usual smart rendering is to check whether the position of a gantt element falls within the area visible on the screen and define either display it or not.
+
+However, the smart rendering of [custom layers](desktop/baselines.md) enables only the vertical "Smart rendering" by default. It means, that the  exact position of a custom element can't be calculated and a whole row of the task in the timeline is taken as its position.<br> *You may refer to the api/gantt_addtasklayer.md#smartrenderingforcustomlayers article to learn how to enable the horizontal "Smart rendering" for custom layers.*
+
+
 
 ###Working with a large date range
 

@@ -356,7 +356,7 @@ Gantt API
 - api/gantt_grid_resizer_column_attribute_config.md - sets the name of the attribute  of the column resizer's  DOM element. The attribute presents the column's index
 - api/gantt_grid_width_config.md - sets the width of the grid
 - api/gantt_highlight_critical_path_config.md - shows the critical path in the chart
-- api/gantt_horizontal_scroll_key_config.md - 
+- api/gantt_horizontal_scroll_key_config.md - enables/disables horizontal scroll by the Shift|Alt|Meta key + mouse wheel movement
 - api/gantt_inherit_calendar_config.md - defines whether tasks should inherit work calendars from their summary parents
 - api/gantt_inherit_scale_class_config.md - specifies whether sub-scales shall use the scale_cell_class template by default
 - api/gantt_initial_scroll_config.md - sets whether the timeline area will be initially scrolled to display the earliest task
@@ -417,7 +417,7 @@ Gantt API
 - api/gantt_show_progress_config.md - enables displaying of the progress inside the task bars
 - api/gantt_show_quick_info_config.md - activates/disables the 'quick_info' extension (pop-up task's details form)
 - api/gantt_show_task_cells_config.md - enables/disables displaying column borders in the chart area
-- api/gantt_show_tasks_outside_timescale_config.md - 
+- api/gantt_show_tasks_outside_timescale_config.md - enables showing tasks that are outside the specified date range in the Gantt chart
 - api/gantt_show_unscheduled_config.md - enables showing unscheduled tasks
 - api/gantt_skip_off_time_config.md - hides non-working time from the time scale
 - api/gantt_smart_rendering_config.md - enables the smart rendering mode for gantt's tasks and links rendering
@@ -428,7 +428,7 @@ Gantt API
 - api/gantt_static_background_config.md - generates a background image for the timeline area instead of rendering actual columns' and rows' lines
 - api/gantt_static_background_cells_config.md - enables rendering of highlighted cells in the static_background mode
 - api/gantt_step_config.md - sets the step of the time scale (X-Axis)
-- api/gantt_subscales_config.md - specifies the second time scale(s)
+- api/gantt_subscales_config.md - specifies the second time scale(s) (deprecated)
 - api/gantt_task_attribute_config.md - sets the name of the attribute that will specify the id of the task's HTML element
 - api/gantt_task_date_config.md - sets the format of the date label in the 'Time period' section of the lightbox
 - api/gantt_task_height_config.md - sets the height of task bars in the timeline area
