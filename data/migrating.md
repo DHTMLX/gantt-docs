@@ -23,6 +23,15 @@ Migration from Older Versions
 6.2 -> 6.3
 ---------------
 
+###Multi-task selection
+
+Since v6.3 the **ext/dhtmlxgantt_multiselect.js** extension automatically allows to drag horizontally several tasks that are selected  at once.
+If you want to disable this functionality make use of the [drag_multiple](api/gantt_drag_multiple_config.md) property and set it to *false* (by default it is enabled).
+
+~~~js
+gantt.config.drag_multiple = false;
+~~~
+
 ###Usage with Require.JS
 
 Earlier you could use any arbitrary names for different files of dhtmlxGantt library included into a RequireJS-based app:

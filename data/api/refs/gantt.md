@@ -342,6 +342,7 @@ Gantt API
 - api/gantt_drag_links_config.md - enables creating dependency links by drag-and-drop
 - api/gantt_drag_mode_config.md - stores the types of available drag-and-drop modes
 - api/gantt_drag_move_config.md - enables the possibility to move tasks by drag-and-drop
+- api/gantt_drag_multiple_config.md - 
 - api/gantt_drag_progress_config.md - enables the possibility to change the task progress by dragging the progress knob
 - api/gantt_drag_project_config.md - enables drag and drop of items of the project type
 - api/gantt_drag_resize_config.md - enables the possibility to resize tasks by drag-and-drop
