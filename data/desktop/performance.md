@@ -40,7 +40,7 @@ gantt.config.smart_rendering = false;
 
 The process of usual smart rendering is to check whether the position of a gantt element falls within the area visible on the screen and define either display it or not.
 
-However, the smart rendering of [custom layers](desktop/baselines.md) enables only the vertical "Smart rendering" by default. It means, that the  exact position of a custom element can't be calculated and a whole row of the task in the timeline is taken as its position.<br> *You may refer to the api/gantt_addtasklayer.md#smartrenderingforcustomlayers article to learn how to enable the horizontal "Smart rendering" for custom layers.*
+However, the smart rendering of [custom layers](desktop/baselines.md) enables only the vertical "Smart rendering" by default. It means, that the custom layers will be rendered when the row of the specified task is in the view port. But the exact coordinates of a custom element can't be calculated and the whole row of the task in the timeline is taken as its position.<br> *You may refer to the api/gantt_addtasklayer.md#smartrenderingforcustomlayers article to learn how to enable the horizontal "Smart rendering" for custom layers.*
 
 
 
