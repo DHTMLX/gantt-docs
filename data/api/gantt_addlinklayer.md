@@ -12,6 +12,20 @@ addLinkLayer
 
 
 @example:
+gantt.addLinkLayer(function (link) {
+  var node = gantt.getLinkNode(link.id)
+  if (node) {
+    var el = document.createElement('div');
+    el.className = 'link_layer';
+    el.style.left = node.childNodes[2].offsetLeft + 'px'
+    el.style.width = 25 + 'px'
+    el.style.top = node.childNodes[2].offsetTop + 'px'
+    el.style.height = 25 + 'px'
+    return el;
+  }
+  return false;
+});
+
 
 @relatedapi:
   api/gantt_removelinklayer.md
@@ -29,3 +43,5 @@ addLinkLayer
     - **topmost** - (*boolean*) if true, the element will be displayed over the link (optional)
     - **filter** - (*function*) a function that takes a link object as a parameter. If returns 'false', the 'render' function won't be called for a link (optional)
 - Beware, custom layers will be reset after the next call of <a href="api/gantt_init.md">gantt.init</a>
+
+{{editor	https://snippet.dhtmlx.com/8eadb357b	addLinkLayer}}

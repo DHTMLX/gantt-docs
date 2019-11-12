@@ -134,7 +134,7 @@ import { gantt, Gantt } from 'dhtmlx-gantt';
 export class GanttComponent implements OnInit {
     @ViewChild('gantt_here') ganttContainer: ElementRef;
  
-    constructor(private taskService: TaskService, private linkService: LinkService) { }
+    constructor(private taskService:TaskService, private linkService:LinkService){ }
  
     ngOnInit() {
         gantt.config.xml_date = '%Y-%m-%d %H:%i';

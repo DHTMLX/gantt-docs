@@ -10,6 +10,18 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.2.7
+-----
+
+<span class='release_date'>October 11, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue with vertical resizing of [grids with horizontal scroll](desktop/specifying_columns.md#horizontalscrollbar) in [complex layouts](desktop/resource_management.md#resourceviewpanel)
+- Fix the incorrect work of the [resource histogram](desktop/resource_management.md#resourceviewpanel) when the [scale step](desktop/configuring_time_scale.md#timestep) is greater than one
+- Fix the reopened bug with collapsed branches after calling [gantt.parse](api/gantt_parse.md) from [v6.2.4](#624) bugfix
+
+
 6.2.6
 -----
 
