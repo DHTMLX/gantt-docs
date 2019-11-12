@@ -60,6 +60,54 @@ var editors = {
 };
 ~~~
 
+###Formatting values of the Predecessors editor
+
+Starting from v6.3 Gantt allows specifying types of links as well as lag/lead values directly from inline editor. 
+
+In order to do so, you need to use the [Link Formatter](desktop/formatters_ext.md#linkformatter) module and provide an instance of the *LinksFormatter* into the **predecessor** editor:
+
+~~~js
+var formatter = gantt.ext.formatters.durationFormatter({
+    enter: "day", 
+    store: "day", 
+    format: "auto"
+});
+var linksFormatter = gantt.ext.formatters.linkFormatter({durationFormatter: formatter});
+ 
+var editors = {
+    text: {type: "text", map_to: "text"},
+    start_date: {type: "date", map_to: "start_date", 
+                min: new Date(2018, 0, 1), max: new Date(2019, 0, 1)},
+    end_date: {type: "date", map_to: "end_date", 
+                min: new Date(2018, 0, 1), max: new Date(2019, 0, 1)},
+    duration: {type: "duration", map_to: "duration", 
+                min:0, max: 100, formatter: formatter},
+    priority: {type: "select", map_to: "priority", 
+                options:gantt.serverList("priority")},
+    predecessors: {type: "predecessor", map_to: "auto", formatter: linksFormatter} /*!*/
+};
+ 
+gantt.config.columns = [
+    {name: "wbs", label: "#", width: 60, align: "center", template: gantt.getWBSCode},
+    {name: "text", label: "Name", tree: true, width: 200, editor: editors.text, resize: true},
+    {name: "start_date", label: "Start", width:80, align: "center", 
+      editor: editors.start_date, resize: true},
+    {name: "predecessors", label: "Predecessors",width:80, align: "left", 
+      editor: editors.predecessors, resize: true, template: function(task){
+            var links = task.$target;
+            var labels = [];
+            for(var i = 0; i < links.length; i++){
+                var link = gantt.getLink(links[i]);
+                labels.push(linksFormatter.format(link)); /*!*/
+            }
+            return labels.join(", ")
+        }},
+    {name:"add"}
+];
+~~~
+
+{{sample 07_grid/12_inline_edit_key_nav.html}}
+
 ###Custom inline editor
 
 You can also specify a custom inline editor. For this, you need to create a new editor object in the following way:
