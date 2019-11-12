@@ -3,21 +3,35 @@ Formatters Extension
 
 The **gantt.ext.formatters** extension provides two formatting methods:
 
-- [durationFormatter()]()
-- [linkFormatter()]()
+- [durationFormatter()](desktop/formatters_ext.md#durationformatter)
+- [linkFormatter()](desktop/formatters_ext.md#linkformatter)
 
 durationFormatter
 ----------------------
 
-The **durationFormatter** method returns a new instance of the durationFormatter. 
+The **durationFormatter** method returns a new instance of the *durationFormatter*. 
 
 ~~~js
 gantt.ext.formatters.durationFormatter();
 ~~~
 
-The method takes a configuration object with optional properties of the *durationFormatter* as a parameter. This *object* has the following properties:
+###**durationFormatter API**
 
+The *durationFormatter* object provides a set of public methods that can be used via the **formatter** object. An instance of the formatter object can be created using the factory method:
 
+~~~js
+const formatter = gantt.ext.formatters.durationFormatter()
+~~~
+
+The following public methods are available via the **formatter** object:
+
+- **canParse(value: string)** - returns *true* if the provided string can be parsed into the duration value, otherwise - returns *false*
+- **format(value: number) : string**- converts the provided duration value into the duration string
+- **parse(value: string) : number** - parses the provided string into the duration value. If the value can’t be parsed, ‘null’ will be returned
+
+###**durationFormatter object**
+
+The **durationFormatter** method takes a configuration object with optional properties of the *durationFormatter* as a parameter. This *object* has the following properties:
 
 - **enter** - (*string*) specifies the default format for the **parse** method, which is used when an input value is entering without units
 
@@ -133,6 +147,65 @@ Default value: false
             plural: "years",
             short: "y"
         }
+    }
+}
+~~~
+
+Read details about the durationFormatter method in the [] article.
+
+linkFormatter
+----------------------
+
+The **linkFormatter** method returns a new instance of the *linkFormatter*. 
+
+~~~js
+gantt.ext.formatters.linkFormatter();
+~~~
+
+###**linkFormatter API**
+
+The *linkFormatter* object provides a set of public methods that can be used via the **formatter** object. An instance of the formatter object can be created using the factory method:
+
+~~~js
+const formatter = gantt.ext.formatters.linkFormatter();
+~~~
+
+The following public methods are available via the **formatter** object:
+
+- **canParse(value: string)** - returns *true* if the provided string can be parsed into the link object, otherwise - returns *false*
+- **format(object: link) : string** - converts the provided link value into the string
+- **parse(value: string) : object** - parses the provided string into the link object. If the value can’t be parsed, ‘null’ will be returned. **Note** that the *link.target* of the given link will have "null" value
+
+###**linkFormatter object**
+
+The **linkFormatter** method takes a configuration object with optional properties of the *linkFormatter* as a parameter. This *object* has the following properties:
+
+- **durationFormatter** - (*object*) an instance of *DurationFormatter* created by the *gantt.ext.formatters.durationFormatter()*. 
+It affects how lag/lead values of links are parsed:
+
+~~~js
+gantt.ext.formatters.linkFormatter()
+   .format({id:1, type:"1", source: 1, target: 2, lag: 5});
+//"1SS+5 days"
+ 
+var durationFormatter = gantt.ext.formatters.durationFormatter({
+    short: true
+});
+gantt.ext.formatters.linkFormatter({durationFormatter: durationFormatter})
+    .format({id:1, type:"2", source: 1, target: 2, lag: -1});
+//"1FF-1d"
+~~~
+
+- **labels** - (*object*) locale labels for different types of links
+
+~~~js
+{
+    durationFormatter: gantt.ext.formatters.durationFormatter(),
+    labels: {
+        finish_to_finish: "FF",
+        finish_to_start: "FS",
+        start_to_start: "SS",
+        start_to_finish: "SF"
     }
 }
 ~~~

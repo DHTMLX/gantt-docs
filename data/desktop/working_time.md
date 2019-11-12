@@ -30,6 +30,83 @@ duration_unit = "hour", the duration is calculated in the working hours).
 
 <img style="padding-top:25px;" src="desktop/calculating_different_time.png"/>
 
+##Task duration in decimal format
+
+Starting from v6.3 dhtmlxGantt allows to specify the duration of tasks in decimal format ("2.5 days", <br>"0.5 hours", "3.75 hours").
+
+{{note The duration of tasks can be represented as a fraction either of an hour, day or any other supported by the api/gantt_duration_unit_config.md config unit, except for minutes.}}
+
+<img src="desktop/decimal_duration.png"/>
+
+To provide displaying the duration of tasks in decimal format, follow the logic given below:
+
+- set the api/gantt_duration_unit_config.md to minute:
+
+~~~js
+gantt.config.work_time = true;
+gantt.config.duration_unit = "minute"; /*!*/
+gantt.config.time_step = 15;
+gantt.config.round_dnd_dates = false;
+~~~
+*If the unit of the time scale is longer than the duration unit, set the api/gantt_time_step_config.md=15 and api/gantt_round_dnd_dates_config.md to false.*
+
+- create the *formatter* object for formatting the duration of tasks:
+
+~~~js
+// formatting the duration
+var formatter = gantt.ext.formatters.durationFormatter({
+    enter: "day", 
+    store: "minute", // duration_unit
+    format: "day",
+    hoursPerDay: 8,
+    hoursPerWeek: 40,
+    daysPerMonth: 30
+});
+~~~
+
+- add the *formatter* object to the "Duration" column by defining the template function, that will return the *formatted duration of the task*, via the **template** attribute of the columns parameter:
+
+~~~js
+gantt.config.columns = [
+	{name: "text", tree: true, width: 170, resize: true, editor: textEditor},
+	{name: "start_date", align: "center", resize: true, editor: dateEditor},
+	{name: "duration", label:"Duration", resize: true, align: "center", 
+        template: function(task) { /*!*/
+		    return formatter.format(task.duration); /*!*/
+	    }, width: 100},
+	{name: "add", width: 44}
+];
+~~~
+
+- add the *formatter* object to the lightbox section by setting the **formatter** property for the **time** control
+
+~~~js
+gantt.config.lightbox.sections = [
+	{name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
+	{name: "time", type: "duration", map_to: "auto", formatter: formatter}
+];
+~~~
+
+- in case inline editing in Grid is enabled, you also need to add  the *formatter* object to the durationEditor object via the **formatter** attribute:
+
+~~~js
+var durationEditor = {
+    type: "duration", 
+    map_to: "duration", 
+    formatter: formatter, /*!*/
+    min:0, max:1000
+    };
+gantt.config.columns = [
+	{name: "text", tree: true, width: 170, resize: true},
+	{name: "start_date", align: "center", resize: true},
+	{name: "duration", label:"Duration", resize: true, align: "center", 
+        template: function(task) {
+		    return formatter.format(task.duration);
+	}, editor: durationEditor, width: 100},
+	{name: "add", width: 44}
+];
+~~~
+
 ##Global Settings
 
 <h3 id="setworktime">Setting the working time</h3>
