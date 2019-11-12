@@ -10,7 +10,7 @@ task_time
 
 @example:
 gantt.templates.task_time = function(start,end,task){
-	return gantt.templates.task_date(start)+" - "+gantt.templates.task_date(end);
+	return gantt.templates.task_date(start)+" - "+gantt.templates.task_end_date(end);
 };
 
 @template:	api_template
@@ -18,6 +18,10 @@ gantt.templates.task_time = function(start,end,task){
 - text		string		html text which will be rendered in the gantt
 @descr:
 
+
+@relatedapi:
+api/gantt_task_date_template.md
+api/gantt_task_end_date_template.md
 
 @related:
 	desktop/lightbox_templates.md

@@ -34,10 +34,11 @@ Properties
 - api/gantt_drag_links_config.md - enables creating dependency links by drag-and-drop
 - api/gantt_drag_mode_config.md - stores the types of available drag-and-drop modes
 - api/gantt_drag_move_config.md - enables the possibility to move tasks by drag-and-drop
-- api/gantt_drag_multiple_config.md - 
+- api/gantt_drag_multiple_config.md - enables the possibility to drag several selected tasks at once
 - api/gantt_drag_progress_config.md - enables the possibility to change the task progress by dragging the progress knob
 - api/gantt_drag_project_config.md - enables drag and drop of items of the project type
 - api/gantt_drag_resize_config.md - enables the possibility to resize tasks by drag-and-drop
+- api/gantt_drag_timeline_config.md - 
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
 - api/gantt_editable_property_config.md - changes the name of a property that affects the editing ability  of tasks/links in the read-only Gantt chart
@@ -183,6 +184,7 @@ Properties
 - api/gantt_drag_progress_config.md
 - api/gantt_drag_project_config.md
 - api/gantt_drag_resize_config.md
+- api/gantt_drag_timeline_config.md
 - api/gantt_duration_step_config.md
 - api/gantt_duration_unit_config.md
 - api/gantt_editable_property_config.md
