@@ -10,6 +10,54 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.3
+-------
+
+<span class='release_date'>November 13, 2019. Minor update</span>
+
+### Breaking changes 
+
+The update brings multiple changes in the API methods. Check the [Migration](migrating.md#6162) article to keep in step with the latest version.
+
+### New functionality
+
+- [Ability to use fractional/decimal units for task durations](desktop/working_time.md#taskdurationindecimalformat)
+- [Ability to scroll the timeline via mouse click and drag](desktop/extensions_list.md#dragtimeline)
+- [Ability to drag and drop multiple tasks horizontally](desktop/multiselection.md#multitaskselectionanddragndrop)
+
+
+### Updates
+
+- Add the ability to [display tasks](api/gantt_show_tasks_outside_timescale_config.md) outside of the explicit api/gantt_start_date_config.md and api/gantt_end_date_config.md range of the [time scale](desktop/configuring_time_scale.html#range)
+- Add a new api/gantt_task_end_date_template.md template for formatting end dates of tasks
+- Add the ability to add custom actions to the [Undo](desktop/undo_ext.html#methods) stack
+- Add the ability to connect custom layers to [smart rendering](api/gantt_addtasklayer.md#smartrenderingforcustomlayers)
+- [Inline editors](desktop/inline_editing.md) for **predecessors** now support formatted values of links
+- Remove default limits for input values in date [inline editors](desktop/inline_editing.md)
+- Add the ability to specify the root node for the [Fullscreen extension](desktop/fullscreen_mode.md)
+- Add the ability to change or disable [horizontal scroll](api/gantt_horizontal_scroll_key_config.md) on `shiftKey`+`mousewheel`
+- Roboto font was removed from [Material skin](desktop/skins.md#materialskin) and has to be imported manually
+
+### Fixes
+
+- Fix crashes of the [resource histogram](desktop/resource_management.md#resourceviewpanel) when [smart rendering](desktop/performance.md#smartrendering) is switched off
+- Fix compatibility with r.js compressor
+- Fix various conflicts between [keyboard navigation](desktop/keyboard_navigation.md) and [inline editors](desktop/inline_editing.md)
+- Fix the incorrect state of the [DataProcessor](desktop/server_side.md#customrouting) when tasks and links were modified sequentially from a [custom router](desktop/server_side.md#customrouting)
+- A correct data object of Task/Link is now also passed into **delete** call of a [custom router](desktop/server_side.md#customrouting)
+
+6.2.7
+-----
+
+<span class='release_date'>October 11, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue with vertical resizing of [grids with horizontal scroll](desktop/specifying_columns.md#horizontalscrollbar) in [complex layouts](desktop/resource_management.md#resourceviewpanel)
+- Fix the incorrect work of the [resource histogram](desktop/resource_management.md#resourceviewpanel) when the [scale step](desktop/configuring_time_scale.md#timestep) is greater than one
+- Fix the reopened bug with collapsed branches after calling [gantt.parse](api/gantt_parse.md) from [v6.2.4](#624) bugfix
+
+
 6.2.6
 -----
 

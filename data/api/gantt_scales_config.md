@@ -1,10 +1,6 @@
 scales
 =============
 
-@todo:
-	check 
-
-
 @short: defines configuration settings of the time scale
 	
 
@@ -13,7 +9,7 @@ scales
 gantt.config.scales = [
     {unit: "month", step: 1, format: "%F, %Y"},
     {unit: "week", step: 1, format: function (date) {
-        return "Week #" + date.getWeek();
+        return "Week #" + gantt.date.getWeek(date);
     }},
     {unit: "day", step: 1, format: "%D", css: function(date) {
     if(!gantt.isWorkTime({ date: date, unit: "day"})){

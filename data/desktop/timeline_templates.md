@@ -45,4 +45,3 @@ Templates of the Timeline Area
 
 <img src="desktop/templates_01.png"/>
 
-@todo: update the image: task -> timeline_cell_class, remove date_class

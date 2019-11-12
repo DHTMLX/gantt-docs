@@ -404,7 +404,7 @@ gantt.templates.task_row_class = function(start, end, task){
 
 ###Highlighting timeline cells
 
-You can highlight the necessary timeline cells, depending on the day of the week with the **task_cell_class** template. The template function will iterate over the cells and apply the desired CSS
+You can highlight the necessary timeline cells, depending on the day of the week with the **timeline_cell_class** template. The template function will iterate over the cells and apply the desired CSS
 class to the specified cells. For example, you can highlight weekends as in:
 
 ~~~js
@@ -416,7 +416,7 @@ class to the specified cells. For example, you can highlight weekends as in:
 ~~~
 
 ~~~js
-gantt.templates.task_cell_class = function(item,date){
+gantt.templates.timeline_cell_class = function(item,date){
 	if(date.getDay()==0||date.getDay()==6){
 		return "weekend"
 	}

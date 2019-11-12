@@ -32,6 +32,15 @@ If you want to disable this functionality make use of the [drag_multiple](api/ga
 gantt.config.drag_multiple = false;
 ~~~
 
+###Google Roboto font is no longer included into Material skin
+
+Until v6.3, Google [Roboto](https://fonts.google.com/specimen/Roboto) font was included into our [Material skin](desktop/skins.md#materialskin) via `import` statement.
+Starting from v6.3, the import was removed which means you need to add `Roboto` font manually:
+
+~~~html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:regular,medium,thin,bold">
+~~~
+
 ###Usage with Require.JS
 
 Earlier you could use any arbitrary names for different files of dhtmlxGantt library included into a RequireJS-based app:
@@ -125,7 +134,7 @@ However, some behavior of the component has been changed (old behavior can be re
 
 ###Smart rendering and static background
 
-Smart rendering functionality has been updated and is not embedded into the component. It should now work both in the main timeline area and in resource panels. From now on, all timelines should render only rows and cells that are currently visible.
+Smart rendering functionality has been updated and is now embedded into the component. It should now work both in the main timeline area and in resource panels. From now on, all timelines should render only rows and cells that are currently visible.
 
 Smart rendering can be disabled via the **smart_rendering** config, which will return gantt to the default behavior of v6.1:
 
