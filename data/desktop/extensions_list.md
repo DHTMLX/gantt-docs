@@ -73,6 +73,23 @@ API: api/gantt_highlight_critical_path_config.md<br>
 
 {{sample  02_extensions/03_critical_path.html}}
 
+
+Drag Timeline
+-------------
+
+Allows scrolling timeline views by mouse-drag.
+
+~~~html
+<script src="../codebase/ext/dhtmlxgantt_drag_timeline.js"></script>
+~~~
+
+####Related resources
+
+API: api/gantt_drag_timeline_config.md<br>
+
+{{sample  02_extensions/27_drag_timeline.html}}
+
+
 Extra overlay
 --------------
 
