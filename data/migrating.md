@@ -98,6 +98,25 @@ Check that the module name for any file inside the package is specified as *a re
 - "locale/locale_de": "./vendor/dhtmlxgantt/locale/locale_de"
 - "locale/locale_be": "./vendor/dhtmlxgantt/locale/locale_be"
 
+###Inline editors
+
+Up until v6.3, minimal and maximal values of **date** [inline editor](desktop/inline_editing.md#typesofeditors) were limited by the visible dates of the time scale, unless custom **min**/**max** values were provided.
+
+Starting from v6.3 there are no default limits for minimal and maximal values of date editors.
+
+In order to restore the previous behavior you can specify dynamic **min**/**max** values:
+
+~~~js
+const dateEditor = {type: "date", map_to: "start_date", 
+  min: function(taskId){
+    return gantt.getState().min_date
+  },
+  max: function( taskId ){
+    return gantt.getState().max_date
+  }
+};
+~~~
+
 6.1 -> 6.2
 ---------------
 
