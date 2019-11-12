@@ -126,7 +126,7 @@ By default the **getFullscreenElement()** method returns an HTML container of th
 Gantt with the header/toolbar in the Fullscreen
 --------------------------------------------------
 
-DHTMLXGantt API provides a possibility to extend the gantt to the fullscreen mode via the **getFullscreenElement()** method of the *fullscreen* object:
+Gantt API provides a possibility to extend the gantt to the fullscreen mode via the **getFullscreenElement()** method of the *fullscreen* object:
 
 ~~~js
 gantt.ext.fullscreen.getFullscreenElement();
@@ -134,7 +134,7 @@ gantt.ext.fullscreen.getFullscreenElement();
 
 {{note By default this method returns an HTML container of the Gantt chart. It means that only Gantt will be expanded to full screen.}}
 
-In case you want to display the gantt with additional element (such as a header or toolbar) in the full screen, you need to add a custom container on the page, as in:
+In case you want to display the gantt with additional elements (such as a header or toolbar) in the full screen, you need to add a custom container on the page, as in:
 
 ~~~html
 <div id="myCover">

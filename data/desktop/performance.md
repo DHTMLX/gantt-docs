@@ -28,7 +28,7 @@ Smart Rendering
 The Smart Rendering technique allows considerably enhancing the speed of data rendering, while working with big amounts of data. 
 In this mode only the tasks and links visible on the screen at the moment are being rendered.
 
-The "Smart Rendering" mode is enabled by default. If you need to disable it, you can set the corresponding configuration parameter to false:
+The Smart Rendering mode is enabled by default. If you need to disable it, you can set the corresponding configuration parameter to false:
 
 ~~~js
 gantt.config.smart_rendering = false;
@@ -38,9 +38,9 @@ gantt.config.smart_rendering = false;
 02_extensions/13_smart_rendering.html
 }}
 
-The process of usual smart rendering is to check whether the position of a gantt element falls within the area visible on the screen and define either display it or not.
+The process of usual smart rendering is to check whether the position of a gantt element falls within the area visible on the screen and define whether to display it or not.
 
-However, the smart rendering of [custom layers](desktop/baselines.md) enables only the vertical "Smart rendering" by default. It means, that the custom layers will be rendered when the row of the specified task is in the view port. But the exact coordinates of a custom element can't be calculated and the whole row of the task in the timeline is taken as its position.<br> *You may refer to the api/gantt_addtasklayer.md#smartrenderingforcustomlayers article to learn how to enable the horizontal "Smart rendering" for custom layers.*
+However, the smart rendering of [custom layers](desktop/baselines.md) enables only the vertical Smart rendering by default. It means, that the custom layers will be rendered when the row of the specified task is in the view port. But the exact coordinates of a custom element can't be calculated and the whole row of the task in the timeline is taken as its position.<br> *You may refer to the api/gantt_addtasklayer.md#smartrenderingforcustomlayers article to learn how to enable the horizontal Smart rendering for custom layers.*
 
 
 

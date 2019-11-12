@@ -52,9 +52,9 @@ gantt.addTaskLayer(function draw_deadline(task) {
 
 ##Smart rendering for custom layers
 
-**By default**, dhtmlxGantt renders custom elements in the mode of the **vertical "Smart Rendering"**. In this mode the whole row of the specified task are  rendered at the moment it is visible in the viewport.
+By default, dhtmlxGantt renders custom elements in the mode of the *vertical Smart Rendering*. In this mode the whole row of the specified task are  rendered at the moment it is visible in the viewport.
 
-**To increase the overall performance** of the custom elements you can enable the **horizontal "Smart Rendering"** of custom layers. <br> To do that, you need to pass two parameters in the config of the **renderer** object of the *addTaskLayer()* method:
+To increase the overall performance of custom elements you can enable the *horizontal Smart Rendering* of custom layers. <br> To do that, you need to pass two parameters in the config of the **renderer** object of the *addTaskLayer()* method:
 
 - **render** - a rendering function
 - **getRectangle** - a function that returns an object with the coordinates of custom elements
@@ -77,7 +77,7 @@ gantt.addTaskLayer({
 The logic of rendering custom elements is the following:
 
 1\. When the  position of horizontal scroll is changed, the smart render gets new coordinates of the area visible on the screen at the moment. <br>
-2\. The dhtmlxGantt calls the **getRectangle** function for each task/link to get the exact coordinates of a custom element. <br>
+2\. dhtmlxGantt calls the **getRectangle** function for each task/link to get the exact coordinates of a custom element. <br>
 3\. If the **getRectangle** function returns null value, the **render** function won't be called and the custom element won't be displayed.<br>
 4\. If the **getRectangle** function returns an object with the coordinates of a task/link and the received coordinates fall in the current viewport, then the **render** function will be called to display a task/link.<br>
 
@@ -127,6 +127,6 @@ gantt.addTaskLayer({
 });
 ~~~
 
-- **update** - allows to update an inner html of a custom element, i.e. to hide cells that are not visible and display the visible ones
+- **update** - allows updating an inner html of a custom element, i.e. to hide cells that are not visible and display the visible ones
 
 The method calls after the [onGanttScroll](api/gantt_onganttscroll_event.md) event is fired. It provides a task node (created by the render method initially) and a current viewport. 

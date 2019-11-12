@@ -98,7 +98,7 @@ Undoing/Redoing changes made from code
 ---------------------------------
 
 It is possible to undo/redo changes made to your code. To do this you have to use the **undo()/redo()** methods in combination with the **saveState()** method of the **gantt.ext.undo** object. 
-The *saveState()* method lets to save the initial value of the task before the code changes are made.
+The **saveState()** method allows saving the initial value of the task before the code changes are made.
 
 For example, this is how you can revert the initial text of the task after it was reassigned in the code to another value:
 
@@ -132,7 +132,7 @@ Configuring the Undo functionality
 
 There are several settings that help to adjust the Undo operation.
 
-To specify the actions for which Undo will be applied, use the api/gantt_undo_actions_config.md parameter:
+To specify the actions to which Undo will be applied, use the api/gantt_undo_actions_config.md parameter:
 
 ~~~js
 gantt.config.undo_actions = {
@@ -150,7 +150,7 @@ gantt.config.undo_steps = 10;
 
 By default, it's possible to undo 10 actions.
 
-You can also specify the entities that the undo operation will be aplied for in the api/gantt_undo_types_config.md parameter:
+You can also specify the entities that the undo operation will be applied for in the api/gantt_undo_types_config.md parameter:
 
 ~~~js
 gantt.config.undo_types = {
