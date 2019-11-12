@@ -32,15 +32,32 @@ duration_unit = "hour", the duration is calculated in the working hours).
 
 ##Task duration in decimal format
 
-Starting from v6.3 dhtmlxGantt allows to specify the duration of tasks in decimal format ("2.5 days", <br>"0.5 hours", "3.75 hours").
+Starting from v6.3 dhtmlxGantt allows specifying the duration of tasks in decimal format ("2.5 days", <br>"0.5 hours", "3.75 hours") via the [Duration Formatter](desktop/formatters_ext.md) module.
 
-{{note The duration of tasks can be represented as a fraction either of an hour, day or any other supported by the api/gantt_duration_unit_config.md config unit, except for minutes.}}
+The important point to remember is that internally Gantt always stores the duration of tasks in integer values.  
+
+Whereas, the provided module allows parsing the duration of tasks from the format entered by the user into the format stored in Gantt (for example, instead entered "1.5 hours" Gantt will store "90 minutes") as well as the stored values can be converted into the readable format (from "0.5 days" to "12" hours).
 
 <img src="desktop/decimal_duration.png"/>
 
+{{note The duration of tasks can be represented as a fraction of an hour, day or any other supported by the api/gantt_duration_unit_config.md config unit, except for minutes.}}
+
+
+
+
+You need to store task durations in smaller unit than unit fractions of which you want to use. 
+
+To put it simply, if you want the user to specify durations up to parts of hours - e.g. ""0.5 hour"", you need to use "minutes" as duration units.
+If you want parts of day as your maximum precision - you can use "hours" as duration units. In that case, users will be able to have duration as "0.5 day", but "0.5 hour" will be rounded up to 1 hour, since the duration will be stored in integer hours.
+
+###Implementing decimal format
+
 To provide displaying the duration of tasks in decimal format, follow the logic given below:
 
-- set the api/gantt_duration_unit_config.md to minute:
+- set the api/gantt_duration_unit_config.md to minute
+
+**Note** <br>
+Decimal hours format is activated only when api/gantt_duration_unit_config.md is set to minute. For example, if api/gantt_duration_unit_config.md is set to hours, then at least days can be displayed in decimal format.
 
 ~~~js
 gantt.config.work_time = true;
@@ -106,6 +123,8 @@ gantt.config.columns = [
 	{name: "add", width: 44}
 ];
 ~~~
+
+{{note If you already have Gantt with the duration of tasks stored in minutes, hours or any other unit, you also can use the **Duration Formatter** module to present the durations in decimal format. }}
 
 ##Global Settings
 

@@ -38,7 +38,7 @@ Properties
 - api/gantt_drag_progress_config.md - enables the possibility to change the task progress by dragging the progress knob
 - api/gantt_drag_project_config.md - enables drag and drop of items of the project type
 - api/gantt_drag_resize_config.md - enables the possibility to resize tasks by drag-and-drop
-- api/gantt_drag_timeline_config.md - 
+- api/gantt_drag_timeline_config.md - configures the behavior of dhtmlxgantt_drag_timeline extension
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
 - api/gantt_editable_property_config.md - changes the name of a property that affects the editing ability  of tasks/links in the read-only Gantt chart

@@ -346,7 +346,7 @@ Gantt API
 - api/gantt_drag_progress_config.md - enables the possibility to change the task progress by dragging the progress knob
 - api/gantt_drag_project_config.md - enables drag and drop of items of the project type
 - api/gantt_drag_resize_config.md - enables the possibility to resize tasks by drag-and-drop
-- api/gantt_drag_timeline_config.md - 
+- api/gantt_drag_timeline_config.md - configures the behavior of dhtmlxgantt_drag_timeline extension
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
 - api/gantt_editable_property_config.md - changes the name of a property that affects the editing ability  of tasks/links in the read-only Gantt chart
@@ -491,7 +491,7 @@ Gantt API
 - api/gantt_scale_row_class_template.md - specifies the CSS class that will be applied to the time scale
 - api/gantt_task_class_template.md - specifies the CSS class that will be applied to task bars
 - api/gantt_task_date_template.md - specifies the date format of the label in the 'Time period' section of the lightbox
-- api/gantt_task_end_date_template.md - 
+- api/gantt_task_end_date_template.md - specifies the format for the end dates of tasks in the lightbox
 - api/gantt_task_row_class_template.md - specifies the CSS class that will be applied to the row of the timeline area
 - api/gantt_task_text_template.md - specifies the text in the task bars and the header of the lightbox
 - api/gantt_task_time_template.md - specifies the date period in the header of the lightbox
