@@ -21,21 +21,21 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 ### New functionality
 
-- [Ability to use fractional/decimal units for task durations](desktop/working_time.md#taskdurationindecimalformat)
+- [Ability to specify decimal units for the duration of tasks](desktop/working_time.md#taskdurationindecimalformat)
 - [Ability to scroll the timeline via mouse click and drag](desktop/extensions_list.md#dragtimeline)
 - [Ability to drag and drop multiple tasks horizontally](desktop/multiselection.md#multitaskselectionanddragndrop)
 
 
 ### Updates
 
-- Add the ability to [display tasks](api/gantt_show_tasks_outside_timescale_config.md) outside of the explicit api/gantt_start_date_config.md and api/gantt_end_date_config.md range of the [time scale](desktop/configuring_time_scale.html#range)
+- Ability to [display tasks](api/gantt_show_tasks_outside_timescale_config.md) outside the explicit api/gantt_start_date_config.md and api/gantt_end_date_config.md range of the [time scale](desktop/configuring_time_scale.html#range)
 - Add a new api/gantt_task_end_date_template.md template for formatting end dates of tasks
-- Add the ability to add custom actions to the [Undo](desktop/undo_ext.html#methods) stack
-- Add the ability to connect custom layers to [smart rendering](api/gantt_addtasklayer.md#smartrenderingforcustomlayers)
+- Ability to add custom actions to the [Undo](desktop/undo_redo.md#undoingredoingchangesmadefromcode) stack
+- Ability to connect custom layers to [smart rendering](api/gantt_addtasklayer.md#smartrenderingforcustomlayers)
 - [Inline editors](desktop/inline_editing.md) for **predecessors** now support formatted values of links
 - Remove default limits for input values in date [inline editors](desktop/inline_editing.md)
-- Add the ability to specify the root node for the [Fullscreen extension](desktop/fullscreen_mode.md)
-- Add the ability to change or disable [horizontal scroll](api/gantt_horizontal_scroll_key_config.md) on `shiftKey`+`mousewheel`
+- Ability to specify the root node for the [Fullscreen extension](desktop/fullscreen_mode.md)
+- Ability either to change or disable [horizontal scroll](api/gantt_horizontal_scroll_key_config.md) by `shiftKey`+`mousewheel`
 - Roboto font was removed from [Material skin](desktop/skins.md#materialskin) and has to be imported manually
 
 ### Fixes

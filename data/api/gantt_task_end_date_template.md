@@ -19,24 +19,24 @@ gantt.templates.task_end_date = function(date){
 @template:	api_template
 @descr:
 
-The template can be redefined in order to change style of task end dates in gantt (i.e. include end date in task duration).
-This can be better explained by the sample.
-Let's consider a task that starts on April 2nd, 2020 and lasts for one day.
+The template can be redefined in order to change style of the end dates of tasks in the gantt (i.e. to include the end date in the duration of the tasks).
 
-By default the end date of such task will be displayed as April 3rd, 2020 (`03-04-2020 00:00:00`):
+For example, let's consider a task that starts on April 2nd, 2020 and lasts for one day.
 
-- [Live demo: Default format](https://snippet.dhtmlx.com/aa51b6736)
+By default, the end date of this task will be displayed as April 3rd, 2020 (`03-04-2020 00:00:00`):
+
+- [Live demo: Default format](https://snippet.dhtmlx.com/24f73d6ec)
 
 <img  src="api/task_end_date_template_default.png"/>
 
 
-If you want to change the end date format to April 2nd, 2020, you can override this config
+You can change the format of the end date to April 2nd, 2020:
 
-- [Live demo: Changed end date formate](https://snippet.dhtmlx.com/f7fc00930)
+- [Live demo: Changed end date formate](https://snippet.dhtmlx.com/f2c801d3d)
 
 <img  src="api/task_end_date_template.png"/>
 
-Related code:
+To do this you need to override the **columns** config, as in:
 
 ~~~js
 

@@ -1,7 +1,7 @@
 Undo Extension
 =================
 
-The *Undo* object has a set of methods that allow to undo/redo the made changes. <br>
+The *Undo* object has a set of methods that allow you to undo/redo the made changes. <br>
 Read details about the Undo extension in the desktop/undo_redo.md article.
 
 Methods

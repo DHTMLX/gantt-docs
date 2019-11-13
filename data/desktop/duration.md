@@ -46,6 +46,7 @@ The following properties are mostly important and commonly set for the **time** 
 - **name** - (*string*) the section name 
 - **height** - (*number*) the section height
 - **map_to** - (*string,object*) "auto" or object, defines the data property(-ies) that will be mapped to the section
+- **formatter** - (object) an instance of the [durationFormatter](desktop/working_time.md#taskdurationindecimalformat) object
 - **type** - (*string*) the type of the [section control](desktop/default_edit_form.md#lightboxcontrols)
 - **focus** - (*boolean*) if set to *true*, the section will take focus on opening the lightbox
 - **readonly** - (*boolean*) if you set the "true" value, the section will be read-only

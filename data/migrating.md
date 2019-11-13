@@ -34,8 +34,8 @@ gantt.config.drag_multiple = false;
 
 ###Google Roboto font is no longer included into Material skin
 
-Until v6.3, Google [Roboto](https://fonts.google.com/specimen/Roboto) font was included into our [Material skin](desktop/skins.md#materialskin) via `import` statement.
-Starting from v6.3, the import was removed which means you need to add `Roboto` font manually:
+Until v6.3, Google [Roboto](https://fonts.google.com/specimen/Roboto) font was included into the ['Material' skin](desktop/skins.md#materialskin) of dhtmlxGantt via the `import` statement.
+Starting from v6.3, the import was removed, therefore you need to add `Roboto` font manually:
 
 ~~~html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:regular,medium,thin,bold">
@@ -109,7 +109,7 @@ Check that the module name for any file inside the package is specified as *a re
 
 ###Inline editors
 
-Up until v6.3, minimal and maximal values of **date** [inline editor](desktop/inline_editing.md#typesofeditors) were limited by the visible dates of the time scale, unless custom **min**/**max** values were provided.
+Before version 6.3, minimal and maximal values of the **date** [inline editor](desktop/inline_editing.md#typesofeditors) were limited by the dates visible  on the time scale, unless custom min/max values were provided.
 
 Starting from v6.3 there are no default limits for minimal and maximal values of date editors.
 

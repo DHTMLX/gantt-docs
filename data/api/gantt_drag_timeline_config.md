@@ -6,7 +6,7 @@ drag_timeline
 
 
 @short: 
-configures the behavior of dhtmlxgantt_drag_timeline extension
+configures the behavior of the dhtmlxgantt_drag_timeline extension
 	
 
 @type: object
@@ -27,14 +27,14 @@ gantt.config.drag_timeline = {
 
 {{note This option is defined in the **ext/dhtmlxgantt_drag_timeline.js** extension, so you need to include it on the page.}}
 
-The config value can be an object or **null** value, **null** value disables the extension.
+The config value can be either an object or **null** value, **null** value disables the extension.
 ~~~js
-gantt.config.drag_timeline = null;// disable the extension
+gantt.config.drag_timeline = null;// disables the extension
 ~~~
 
-Object values have two supported properties
+The **drag_timeline** object includes two properties:
 
-- **ignore** - (string) - CSS selector. Drag-timeline won't start on elements that the selector. 
+- **ignore** - (string) CSS selector. Scrolling the timeline won't be activated for the elements that match the selector.
 
 ~~~
 gantt.config.drag_timeline = {
@@ -43,7 +43,7 @@ gantt.config.drag_timeline = {
 };
 ~~~
 
-- **useKey** - (string|boolean) - if specified, drag-timeline will be active only when the specified modifier key is pressed. Supported values: "ctrlKey", "shiftKey", "metaKey", "altKey"
+- **useKey** - (string|boolean) if the property is specified, scrolling the timeline will be activated only when the specified modifier key is pressed. Supported values: "ctrlKey", "shiftKey", "metaKey", "altKey".
 
 
 @relatedsample:

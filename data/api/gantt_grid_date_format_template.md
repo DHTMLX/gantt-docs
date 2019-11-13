@@ -6,7 +6,7 @@ grid_date_format
     
 @params:
 - date			Date		the date which needs formatting
-- column			string 			name of the column that called the template
+- column			string 			the name of the column that called the template
 
 @example:
 gantt.templates.grid_date_format = function(date, column){

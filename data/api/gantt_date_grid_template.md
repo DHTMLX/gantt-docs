@@ -7,7 +7,7 @@ date_grid
 @params:
 - date			Date		the date which needs formatting
 - task			object 			the task object
-- column			string 			name of the column that called the template
+- column			string 			the name of the column that called the template
 
 @example:
 gantt.templates.date_grid = function(date, task, column){

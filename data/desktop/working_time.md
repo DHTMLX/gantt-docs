@@ -36,7 +36,7 @@ Starting from v6.3 dhtmlxGantt allows specifying the duration of tasks in decima
 
 The important point to remember is that internally Gantt always stores the duration of tasks in integer values.  
 
-Whereas, the provided module allows parsing the duration of tasks from the format entered by the user into the format stored in Gantt (for example, instead entered "1.5 hours" Gantt will store the number of minutes - `90`) as well as the stored values can be converted into the readable format (from `12` hours to "0.5 days").
+Whereas, the provided module allows parsing the duration of tasks from the format entered by the user into the format stored in Gantt (for example, instead of entered "1.5 hours" Gantt will store the number of minutes - `90`). Besides, the stored values can be converted into the readable format (from `12` hours to "0.5 days").
 
 <img src="desktop/decimal_duration.png"/>
 
@@ -53,11 +53,11 @@ gantt.config.work_time = true;
 gantt.config.duration_unit = "minute"; /*!*/
 ~~~
 
-Pay attention, that you need to store task durations in smaller unit than the units of the displayed in decimal format values. To put it simply:<br>
-    - if you want the user can specify durations as a fraction of an hour (e.g. "0.5 hours"), you need to set api/gantt_duration_unit_config.md to minute <br>
-    - If you want the user can specify durations as a fraction of a day, you need to set api/gantt_duration_unit_config.md to hour. In this case, users will be able to enter the duration of task as "0.5 day", but "0.5 hour" will be rounded up to 1 hour, since the duration will be stored in integer hours.
+Pay attention that you need to store task durations in a smaller unit than the units of the values displayed in decimal format. To put it simply:<br>
+    - if you want a user to be able to specify durations as a fraction of an hour (e.g. "0.5 hours"), you need to set api/gantt_duration_unit_config.md to minute <br>
+    - If you want a user to be able to specify durations as a fraction of a day, you need to set api/gantt_duration_unit_config.md to hour. In this case, users will be able to enter the duration of the task as "0.5 day", but "0.5 hour" will be rounded up to 1 hour, since the duration will be stored in integer hours.
 
-{{note By default, task dates snaps to the time scale. If you have a time scale in days, you may want to disable it in order to be able to drag and drop a task to different hours within a day. <br>To enable this drag and drop, you need to disable api/gantt_round_dnd_dates_config.md and set an appropriate value to api/gantt_time_step_config.md}}
+{{note By default, task dates are snapped to the time scale. If you have a time scale in days, you may want to disable it in order to be able to drag and drop a task to different hours within a day. <br>To enable this drag and drop, you need to disable api/gantt_round_dnd_dates_config.md and set an appropriate value to api/gantt_time_step_config.md.}}
 For example:
 
 ~~~js
@@ -66,7 +66,7 @@ gantt.config.time_step = 15;
 gantt.config.round_dnd_dates = false;
 ~~~
 
-Or 
+or 
 
 ~~~js
 // global time step is one hour, 
@@ -132,7 +132,7 @@ gantt.config.columns = [
 ];
 ~~~
 
-{{note If you already have Gantt with the duration of tasks stored in minutes, hours or any other unit, you also can use the [Duration Formatter](desktop/formatters_ext.md) module to present the durations in decimal format. }}
+{{note If you already have Gantt with the duration of tasks stored in minutes, hours or any other unit, you can also use the [Duration Formatter](desktop/formatters_ext.md) module to present the durations in decimal format. }}
 
 ##Global Settings
 
