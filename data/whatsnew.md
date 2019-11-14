@@ -17,7 +17,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### Breaking changes 
 
-The update brings multiple changes in the API methods. Check the [Migration](migrating.md#6162) article to keep in step with the latest version.
+The update brings multiple changes in the API methods. Check the [Migration](migrating.md#6263) article to keep in step with the latest version.
 
 ### New functionality
 
