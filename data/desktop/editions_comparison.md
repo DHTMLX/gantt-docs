@@ -69,6 +69,7 @@ The PRO edition includes all the functionality of the Standard version and also 
         {"name":"Decimal units for tasks durations", "url":"desktop__working_time.html#taskdurationindecimalformat", "standard":false,"pro":true},
         {"name":"Dragging and dropping multiple tasks horizontally", "url":"desktop__multiselection.html#multitaskselectionanddragndrop", "standard":true,"pro":true},
         {"name":"Scrolling the Timeline by click and drag", "url":"desktop__extensions_list.html#dragtimeline", "standard":true,"pro":true},
+        {"name":"Link formatter for the  Predecessor editor", "url":"desktop__inline_editing.html#linkformatter", "standard":false,"pro":true},
 	]
   
     var col = ["Feature","Standard","PRO"];

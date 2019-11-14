@@ -297,3 +297,5 @@ gantt.ext.formatters.linkFormatter({durationFormatter: durationFormatter})
 ~~~
 
 - **labels** - (*object*) locale labels for different types of links
+
+Read details about the linkFormatter method in the desktop/inline_editing.md#linkformatter article.

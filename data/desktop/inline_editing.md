@@ -60,7 +60,7 @@ var editors = {
 };
 ~~~
 
-###Formatting values of the Predecessors editor
+<h3 id="linkformatter">Formatting values of the Predecessor editor</h3>
 
 Starting from v6.3 Gantt allows specifying types of links as well as lag/lead values directly from inline editor. 
 
