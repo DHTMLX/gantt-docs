@@ -52,9 +52,16 @@ gantt.addTaskLayer(function draw_deadline(task) {
 
 ##Smart rendering for custom layers
 
-By default, dhtmlxGantt renders custom elements in the mode of the *vertical Smart Rendering*. In this mode the whole row of the specified task are  rendered at the moment it is visible in the viewport.
+[Smart rendering](desktop/performance.md#smartrendering) tries to display only those HTML elements that are currently visible to the user and not hidden under horizontal and vertical scroll bars.
 
-To increase the overall performance of custom elements you can enable the *horizontal Smart Rendering* of custom layers. <br> To do that, you need to pass two parameters in the config of the **renderer** object of the *addTaskLayer()* method:
+However, in the case of [custom layers](desktop/baselines.md), Gantt doesn't know where custom elements are located, since it's completely up to the implementation of the custom rendering function.
+
+As a solution, smart rendering assumes that a custom element is located in the same row where its related task is. Custom elements are added to the page markup when rows of their related tasks are rendered on the screen. In this mode Gantt doesn't take the position of horizontal scrollbar into consideration, a custom element will be rendered in the markup but won't be visible on the page because of the horizontal scroll.
+
+Most of the time it's good enough, but if you have many layers, you may want to optimize the rendering a bit further by providing Gantt with information on position of custom elements.
+
+
+To do that, you need to use the *object* parameter of the *addTaskLayer()* method, and provide the **renderer**  object with the following methods:
 
 - **render** - a rendering function
 - **getRectangle** - a function that returns an object with the coordinates of custom elements
@@ -106,7 +113,7 @@ gantt.addTaskLayer({
 
 ###Rendering visible parts of custom elements
 
-The **renderer** object of the *AddTaskLayer()* method provides a possibility to update the node markup of a custom element and display the visible content in the current viewport via the **update** method:
+The **renderer** object of the *addTaskLayer()* method provides a possibility to update the node markup of a custom element and display the visible content in the current viewport via the **update** method:
 
 ~~~js
 gantt.addTaskLayer({
@@ -127,6 +134,6 @@ gantt.addTaskLayer({
 });
 ~~~
 
-- **update** - allows updating an inner html of a custom element, i.e. to hide cells that are not visible and display the visible ones
+- **update** - allows updating an inner html of a custom element, i.e. to hiding cells that are not visible and displaying the visible ones
 
-The method calls after the [onGanttScroll](api/gantt_onganttscroll_event.md) event is fired. It provides a task node (created by the render method initially) and a current viewport. 
+The **update** method is called after the [onGanttScroll](api/gantt_onganttscroll_event.md) event is fired. It provides a task node (created by the **render** method initially) and a current viewport. 

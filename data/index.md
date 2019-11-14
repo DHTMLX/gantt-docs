@@ -9,7 +9,7 @@ Start
     <ul>
 		<li><a href="desktop/working_time.md#taskdurationindecimalformat">Decimal durations of tasks</a></li>        
         <li><a href="desktop/multiselection.md#multitaskselectionanddragndrop">Dragging and Dropping of multiple tasks</a></li>   
-        <li><a href="desktop/extensions_list.md#dragtimeline">Scroll the Timeline by click and drag</a></li>
+        <li><a href="desktop/extensions_list.md#dragtimeline">Scrolling the Timeline by click and drag</a></li>
 	</ul>
 
     <p class='action_buttons'>

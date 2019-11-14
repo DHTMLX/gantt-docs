@@ -156,7 +156,7 @@ gantt.ext.formattersdurationFormatter.durationFormatter({
 }).format(10021); //"4wk 7h 1min"
 ~~~
 
-Default value: false
+Default value: *false*
 
 - **minutesPerHour** - (*number*) - defines how duration values will be converted from minutes to hours and vice-versa. 
 *Default value: 60*
