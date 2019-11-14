@@ -40,6 +40,8 @@ Note:
 4. When a Gantt's task is updated, it will be updated in all layers including the custom ones (the function will be called for the updated task and the related DOM element will be replaced).
 5. dhtmlxGantt provides a method for calculating task's position and size - api/gantt_gettaskposition.md. You can use it to calculate the position and size for your custom elements as well.
 
+*To learn how to increase the perfomance speed of rendering custom elements, read the api/gantt_addtasklayer.md#smartrenderingforcustomlayers article.*
+
 Example of usage
 --------------------------
 

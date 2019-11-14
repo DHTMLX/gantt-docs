@@ -30,6 +30,110 @@ duration_unit = "hour", the duration is calculated in the working hours).
 
 <img style="padding-top:25px;" src="desktop/calculating_different_time.png"/>
 
+##Task duration in decimal format
+
+Starting from v6.3 dhtmlxGantt allows specifying the duration of tasks in decimal format ("2.5 days", <br>"0.5 hours", "3.75 hours") via the [Duration Formatter](desktop/formatters_ext.md) module.
+
+The important point to remember is that internally Gantt always stores the duration of tasks in integer values.  
+
+Whereas, the provided module allows parsing the duration of tasks from the format entered by the user into the format stored in Gantt (for example, instead of entered "1.5 hours" Gantt will store the number of minutes - `90`). Besides, the stored values can be converted into the readable format (from `12` hours to "0.5 days").
+
+<img src="desktop/decimal_duration.png"/>
+
+{{note The duration of tasks can be represented as a fraction of an hour, day or any other supported by the api/gantt_duration_unit_config.md config unit, except for minutes.}}
+
+###Implementing decimal format
+
+To provide displaying the duration of tasks in decimal format, follow the logic given below:
+
+- set api/gantt_duration_unit_config.md to minute
+ 
+~~~js
+gantt.config.work_time = true;
+gantt.config.duration_unit = "minute"; /*!*/
+~~~
+
+Pay attention that you need to store task durations in a smaller unit than the units of the values displayed in decimal format. To put it simply:<br>
+    - if you want a user to be able to specify durations as a fraction of an hour (e.g. "0.5 hours"), you need to set api/gantt_duration_unit_config.md to minute <br>
+    - If you want a user to be able to specify durations as a fraction of a day, you need to set api/gantt_duration_unit_config.md to hour. In this case, users will be able to enter the duration of the task as "0.5 day", but "0.5 hour" will be rounded up to 1 hour, since the duration will be stored in integer hours.
+
+{{note By default, task dates are snapped to the time scale. If you have a time scale in days, you may want to disable it in order to be able to drag and drop a task to different hours within a day. <br>To enable this drag and drop, you need to disable api/gantt_round_dnd_dates_config.md and set an appropriate value to api/gantt_time_step_config.md.}}
+For example:
+
+~~~js
+// global time step is 15 minutes, requires "minute" as duration units
+gantt.config.time_step = 15;
+gantt.config.round_dnd_dates = false;
+~~~
+
+or 
+
+~~~js
+// global time step is one hour, 
+// such value can be used when duration unit is set to "hour"
+gantt.config.time_step = 60;
+gantt.config.round_dnd_dates = false;
+~~~
+
+- create the *formatter* object for formatting the duration of tasks:
+
+~~~js
+// formatting the duration
+var formatter = gantt.ext.formatters.durationFormatter({
+    enter: "day", 
+    store: "minute", // duration_unit
+    format: "day",
+    hoursPerDay: 8,
+    hoursPerWeek: 40,
+    daysPerMonth: 30
+});
+~~~
+
+- add the *formatter* object to the "Duration" column by defining the template function, that will return the *formatted duration of the task*, via the **template** attribute of the columns parameter:
+
+~~~js
+gantt.config.columns = [
+	{name: "text", tree: true, width: 170, resize: true, editor: textEditor},
+	{name: "start_date", align: "center", resize: true, editor: dateEditor},
+	{name: "duration", label:"Duration", resize: true, align: "center", 
+        template: function(task) { /*!*/
+		    return formatter.format(task.duration); /*!*/
+	    }, width: 100},
+	{name: "add", width: 44}
+];
+~~~
+
+- add the *formatter* object to the lightbox section by setting the **formatter** property for the **time** control
+
+~~~js
+gantt.config.lightbox.sections = [
+	{name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
+	{name: "time", type: "duration", map_to: "auto", formatter: formatter}
+];
+~~~
+
+- in case inline editing in Grid is enabled, you also need to add  the *formatter* object to the durationEditor object via the **formatter** attribute:
+
+~~~js
+var durationEditor = {
+    type: "duration", 
+    map_to: "duration", 
+    formatter: formatter, /*!*/
+    min:0, max:1000
+    };
+gantt.config.columns = [
+	{name: "text", tree: true, width: 170, resize: true},
+	{name: "start_date", align: "center", resize: true},
+	{name: "duration", label:"Duration", resize: true, align: "center", 
+        template: function(task) {
+		    return formatter.format(task.duration);
+	}, editor: durationEditor, width: 100}, /*!*/
+	{name: "add", width: 44}
+];
+~~~
+
+{{note If you already have Gantt with the duration of tasks stored in minutes, hours or any other unit, you can also use the [Duration Formatter](desktop/formatters_ext.md) module to present the durations in decimal format. }}
+
 ##Global Settings
 
 <h3 id="setworktime">Setting the working time</h3>

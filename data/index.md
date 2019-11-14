@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 6.2!</h2>
+    <h2>Meet Gantt 6.3!</h2>
     
     <p>
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="migrating.md#6162">Major performance improvement</a></li>        
-        <li><a href="desktop/advanced_dnd.md">Creating tasks by drag-n-drop</a></li>   
-        <li><a href="desktop/zooming.md">Smooth zooming with mouse wheel</a></li>
+		<li><a href="desktop/working_time.md#taskdurationindecimalformat">Decimal durations of tasks</a></li>        
+        <li><a href="desktop/multiselection.md#multitaskselectionanddragndrop">Dragging and Dropping of multiple tasks</a></li>   
+        <li><a href="desktop/extensions_list.md#dragtimeline">Scrolling the Timeline by click and drag</a></li>
 	</ul>
 
     <p class='action_buttons'>

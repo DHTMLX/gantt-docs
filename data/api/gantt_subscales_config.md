@@ -1,17 +1,9 @@
 subscales
 =============
 
-@short: specifies the second time scale(s)
+@short: specifies the second time scale(s) (deprecated)
 
-@deprecated:Use the api/gantt_scales_config.md config instead:
 
-~~~js
-gantt.config.scales = [
-    {unit: "month", step: 1, format: "%F, %Y"},
-    {unit: "week", step: 1, format: weekScaleTemplate},
-    {unit: "day", step: 1, format: "%D", css:daysStyle }
-];
-~~~
 
 @type: array
 @default:[]
@@ -58,6 +50,8 @@ Each object in the array specifies a single scale. An object can take the follow
 		</tr>
 	</tbody>
 </table>
+
+@deprecated: The **subscales** method is deprecated, use the api/gantt_scales_config.md config instead.
 
 @changelog: deprecated since v6.2
 

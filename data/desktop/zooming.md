@@ -71,7 +71,7 @@ var zoomConfig = {
 gantt.ext.zoom.init(zoomConfig);
 ~~~
 
-The detailed information about the zooming module and its API is given in the article desktop/zoom.md.
+{{note The detailed information about the zooming module and its API is given in the article desktop/zoom.md.}}
 
 {{sample 03_scales/14_scale_zoom_by_wheelmouse.html}}
 

@@ -20,6 +20,112 @@ Migration from Older Versions
 	}
 </style>
 
+6.2 -> 6.3
+---------------
+
+###Multi-task selection
+
+Since v6.3 the **ext/dhtmlxgantt_multiselect.js** extension automatically allows to drag horizontally several tasks that are selected  at once.
+If you want to disable this functionality make use of the [drag_multiple](api/gantt_drag_multiple_config.md) property and set it to *false* (by default it is enabled).
+
+~~~js
+gantt.config.drag_multiple = false;
+~~~
+
+###Google Roboto font is no longer included into Material skin
+
+Until v6.3, Google [Roboto](https://fonts.google.com/specimen/Roboto) font was included into the ['Material' skin](desktop/skins.md#materialskin) of dhtmlxGantt via the `import` statement.
+Starting from v6.3, the import was removed, therefore you need to add `Roboto` font manually:
+
+~~~html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:regular,medium,thin,bold">
+~~~
+
+###Usage with Require.JS
+
+Earlier you could use any arbitrary names for different files of dhtmlxGantt library included into a RequireJS-based app:
+
+~~~js
+requirejs.config({
+  paths: {
+    "gantt": "../../codebase/dhtmlxgantt",
+    "tooltip": "../../codebase/ext/dhtmlxgantt_tooltip",
+    "marker": "../../codebase/ext/dhtmlxgantt_marker",
+    "locale_de": "../../codebase/locale/locale_de",
+  },
+  shim: {
+    "tooltip": ["gantt"],
+    "marker": ["gantt"],
+    "locale_de": ["gantt"],
+  }
+});
+requirejs(["gantt", "tooltip", "marker", "locale_de"],
+function (dhx) {
+  var gantt = dhx.gantt;
+ ...
+});
+~~~
+
+Starting from version 6.3 names of modules must be fixed according to the folder structure of dhtmlxGantt library:
+
+~~~js
+requirejs.config({
+  paths: {
+    "dhtmlxgantt": "../../codebase/dhtmlxgantt",
+    "ext/dhtmlxgantt_tooltip": "../../codebase/ext/dhtmlxgantt_tooltip",
+    "ext/dhtmlxgantt_critical_path": "../../codebase/ext/dhtmlxgantt_critical_path",
+    "locale/locale_de": "../../codebase/locale/locale_de",
+  },
+  shim: {
+    "ext/dhtmlxgantt_tooltip": ["dhtmlxgantt"],
+    "ext/dhtmlxgantt_critical_path": ["dhtmlxgantt"],
+    "locale/locale_de": ["dhtmlxgantt"],
+  }
+});
+ 
+requirejs(["dhtmlxgantt", "ext/dhtmlxgantt_tooltip", "ext/dhtmlxgantt_critical_path", 
+			"locale/locale_de"], 
+function (dhx) {
+  var gantt = dhx.gantt;
+...
+});
+~~~
+
+Check that the module name for any file inside the package is specified as *a relative path inside the 'codebase' folder of the package* plus *the filename*, for instance:
+
+**core library:**
+
+- "dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"
+
+**extensions:**
+
+- "ext/dhtmlxgantt_critical_path": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_critical_path"
+- "ext/dhtmlxgantt_tooltip": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_tooltip"
+
+**locales:**
+
+- "locale/locale_de": "./vendor/dhtmlxgantt/locale/locale_de"
+- "locale/locale_be": "./vendor/dhtmlxgantt/locale/locale_be"
+
+###Inline editors
+
+Before version 6.3, minimal and maximal values of the **date** [inline editor](desktop/inline_editing.md#typesofeditors) were limited by the dates visible  on the time scale, unless custom min/max values were provided.
+
+Starting from v6.3 there are no default limits for minimal and maximal values of date editors.
+
+In order to restore the previous behavior you can specify dynamic **min**/**max** values:
+
+~~~js
+const dateEditor = {type: "date", map_to: "start_date", 
+  min: function(taskId){
+    return gantt.getState().min_date
+  },
+  max: function( taskId ){
+    return gantt.getState().max_date
+  }
+};
+~~~
+
 6.1 -> 6.2
 ---------------
 

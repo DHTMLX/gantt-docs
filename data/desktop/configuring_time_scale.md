@@ -93,7 +93,7 @@ gantt.init("gantt_here");
 
 {{sample  03_scales/08_scale_autoconfig.html}}
 
-###Setting date range explicitly
+<h3 id="explicit_date_range">Setting date range explicitly</h3>
 
 Alternatively, you can set the date range explicitly by using the api/gantt_start_date_config.md and api/gantt_end_date_config.md configuration options:
 
@@ -122,8 +122,17 @@ The tasks that don't fit into the specified interval won't be displayed in the G
 <h4 id="note">Note</h4>
 
 If both the **start_date** and **end_date** options are specified and you create a task that is outside the range, the task will disappear from the chart.
+[To display the task](desktop/configuring_time_scale.md#tasksoutsidetimescale) in the chart use the api/gantt_show_tasks_outside_timescale_config.md config.
 
-In this case we can extend the range:
+~~~js
+gantt.config.start_date = new Date(2019, 02, 31);
+gantt.config.end_date = new Date(2019, 03, 09);
+gantt.config.show_tasks_outside_timescale = true;
+
+gantt.init("gantt_here");
+~~~
+
+In case you don't use this config you can extend the range:
 
 ~~~js
 gantt.attachEvent("onLightboxSave", function(id, task, is_new){
@@ -226,6 +235,33 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 ~~~
 
 {{editor		https://docs.dhtmlx.com/gantt/snippet/d3c07958			Re-rendering Scale during Task Dragging}}
+
+<h3 id="tasksoutsidetimescale">Displaying tasks outside the explicit date range</h3>
+
+It is possible to show tasks that don't fit into [the specified date range](desktop/configuring_time_scale.md#explicit_date_range) in the Gantt chart.
+
+<img src="desktop/tasks_outside_timescale.png"/> 
+
+To do this you need to set the [show_tasks_outside_timescale](api/gantt_show_tasks_outside_timescale_config.md) config parameter to *true*:
+
+~~~js
+var data = {
+  "data": [
+    {"id":1, "text":"Project #1", "start_date": "01-09-2018", "end_date": "02-09-2018"},
+    {"id":2, "text":"Project #2", "start_date": "01-09-2021", "end_date": "02-09-2021"},
+    {"id":3, "text":"Task #1", "start_date": "03-02-2020", "end_date": "05-02-2020"},
+	],
+	"links":[]
+};
+
+gantt.config.show_tasks_outside_timescale = true;
+
+gantt.init("gantt_here", new Date(2020, 1, 1), new Date(2020, 2,1));
+~~~
+
+{{sample 01_initialization/20_tasks_outside_timescale.html}}
+
+As a result the tasks with the id "1" and "2" will be displayed on the page as empty rows in the timeline area and with the specified names and start dates in the grid. 
 
 Time step
 --------------------------------------

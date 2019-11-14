@@ -13,7 +13,7 @@ gantt.init("gantt_here");
 @template:	api_config
 @descr:
 
-@related:
+@relatedapi:
     api/gantt_drag_lightbox_config.md
 	api/gantt_drag_links_config.md
     api/gantt_drag_mode_config.md

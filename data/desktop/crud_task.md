@@ -61,7 +61,7 @@ gantt.refreshData(); /*!*/
 Redrawing tasks
 ----------------------
 
-To re-draw all tasks in the Gantt chart, use the  the api/gantt_refreshdata.md method:
+To re-draw all tasks in the Gantt chart, use the api/gantt_refreshdata.md method:
 
 ~~~js
 var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2013",...}

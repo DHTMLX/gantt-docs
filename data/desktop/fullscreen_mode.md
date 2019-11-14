@@ -92,3 +92,70 @@ gantt.attachEvent("onCollapse", function (){
 });
 ~~~
 
+Fullscreen API
+------------------
+
+There are four methods of the [fullscreen](desktop/fullscreen_ext.md) object that are used to manipulate the gantt's display mode together with additional elements:
+
+- **expand()** - expands gantt to the full screen mode
+
+~~~js
+gantt.ext.fullscreen.expand();
+~~~
+
+- **collapse()** - collapses gantt from the fullscreen mode to the normal mode
+
+~~~js
+gantt.ext.fullscreen.collapse();
+~~~
+
+- **toggle()** -  calls the **collapse()** method if gantt is expanded to full screen, and the **expand()** method otherwise
+
+~~~js
+gantt.ext.fullscreen.toggle();
+~~~
+
+- **getFullscreenElement()** - returns a DOM element that will be expanded to full screen by the **expand()** method. 
+
+~~~js
+gantt.ext.fullscreen.getFullscreenElement();
+~~~
+
+By default the **getFullscreenElement()** method returns an HTML container of the Gantt chart. You can redefine this method [to extend the gannt with additional elements to the fullscreen mode](desktop/fullscreen_mode.md#ganttwiththeheadertoolbarinthefullscreen).
+
+Gantt with the header/toolbar in the Fullscreen
+--------------------------------------------------
+
+Gantt API provides a possibility to extend the gantt to the fullscreen mode via the **getFullscreenElement()** method of the *fullscreen* object:
+
+~~~js
+gantt.ext.fullscreen.getFullscreenElement();
+~~~
+
+{{note By default this method returns an HTML container of the Gantt chart. It means that only Gantt will be expanded to full screen.}}
+
+In case you want to display the gantt with additional elements (such as a header or toolbar) in the full screen, you need to add a custom container on the page, as in:
+
+~~~html
+<div id="myCover">
+	<div class="gantt_control">
+		<button id="toggle_fullscreen" 
+				onclick="gantt.ext.fullscreen.toggle();">toggle fullscreen</button>
+	</div>
+		<div id="gantt_here"></div>
+</div>
+~~~
+
+
+After that you have to redefine the **getFullscreenElement()** method to return a custom root node that will be expanded to full screen:
+
+~~~js
+gantt.ext.fullscreen.getFullscreenElement = function() {
+	return document.getElementById("myCover");
+}
+gantt.init("gantt_here");
+~~~
+
+{{sample 02_extensions/26_full_screen_with_additional_elements.html}}
+
+

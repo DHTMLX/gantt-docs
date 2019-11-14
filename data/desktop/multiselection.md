@@ -133,6 +133,19 @@ gantt.config.multiselect_one_level = true;
 gantt.init('gantt_here');
 ~~~
 
+Multi-task selection and drag-n-drop
+------------------------------------------
+
+When the **ext/dhtmlxgantt_multiselect.js**  extension is activated, you can select several tasks by holding either the Ctrl or Shift key and drag the selected tasks horizontally at once.
+
+To disable this functionality, set the [drag_multiple](api/gantt_drag_multiple_config.md) method to *false*:
+
+~~~js
+gantt.config.drag_multiple = true; 
+~~~
+
+{{sample 02_extensions/09_multiselection.html}}
+
 API events
 --------------
 
