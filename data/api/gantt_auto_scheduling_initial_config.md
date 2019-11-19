@@ -2,7 +2,7 @@ auto_scheduling_initial
 =============
 
 @short:
-	defines whether gantt will do autoscheduling on data loading 
+	defines whether gantt will do autoscheduling on data loading/parsing 
 
 @type: boolean
 @default:true
