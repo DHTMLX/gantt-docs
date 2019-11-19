@@ -259,7 +259,7 @@ both persons assigned to it. Note that grouped tasks will be sorted by the start
 {{sample 11_resources/08_resource_usage_groups.html}}
 
 - If tasks in the loaded data set have several resources assigned to them, Gantt will create groups for them automatically. 
-- For tasks without asssigned resources Gantt will create the default group Not assigned. In case there is such a group in the data set that is passed into the **groupBy()** method, 
+- For tasks without assigned resources Gantt will create the default group Not assigned. In case there is such a group in the data set that is passed into the **groupBy()** method, 
 it should have the *default:true* config specified to prevent automatic creation of a such a group.
 
 {{note Please note that dragging of tasks grouped by multiple resources is impossible.}}
