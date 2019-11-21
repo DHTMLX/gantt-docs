@@ -107,7 +107,7 @@ Check that the module name for any file inside the package is specified as *a re
 - "locale/locale_de": "./vendor/dhtmlxgantt/locale/locale_de"
 - "locale/locale_be": "./vendor/dhtmlxgantt/locale/locale_be"
 
-###Inline editors
+<h3 id="inline_editors">Inline Editors</h3>
 
 Before version 6.3, minimal and maximal values of the **date** [inline editor](desktop/inline_editing.md#typesofeditors) were limited by the dates visible  on the time scale, unless custom min/max values were provided.
 

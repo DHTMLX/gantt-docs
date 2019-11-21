@@ -33,7 +33,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Ability to add custom actions to the [Undo](desktop/undo_redo.md#undoingredoingchangesmadefromcode) stack
 - Ability to connect custom layers to [smart rendering](api/gantt_addtasklayer.md#smartrenderingforcustomlayers)
 - [Inline editors](desktop/inline_editing.md) for **predecessors** now support formatted values of links
-- Remove default limits for input values in date [inline editors](desktop/inline_editing.md)
+- Remove default limits for input values in date [inline editors](migrating.md#inline_editors)
 - Ability to specify the root node for the [Fullscreen extension](desktop/fullscreen_mode.md)
 - Ability either to change or disable [horizontal scroll](api/gantt_horizontal_scroll_key_config.md) by `shiftKey`+`mousewheel`
 - Roboto font was removed from [Material skin](desktop/skins.md#materialskin) and has to be imported manually
