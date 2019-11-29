@@ -18,9 +18,9 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ### Fixes
 
 - Fix the regression in the [smart rendering](api/gantt_addtasklayer.md#smartrenderingforcustomlayers) which caused links not to be rendered in some cases.
-- Fix the bug that allowed to modify and to create new tasks with [keyboard navigation](desktop/keyboard_navigation.md) when gantt is in [read-only mode](desktop/readonly_mode.md)
-- Fix the display issue with [Fullscreen extension](desktop/fullscreen_mode.md) which allowed some page elements to be displayed over the gantt in fullcreen mode
-- Fix the bug that caused the [drag-timeline extension](desktop/extensions_list.md#dragtimeline) to reset the value of the [read-only config](desktop/readonly_mode.md)
+- Fix the bug that allowed modifying and creating new tasks with [keyboard navigation](desktop/keyboard_navigation.md) when the [read-only mode](desktop/readonly_mode.md) is activated
+- Fix the display issue with [Fullscreen extension](desktop/fullscreen_mode.md) which allowed some page elements to be displayed over the gantt in the fullscreen mode
+- Fix the bug that caused the [drag-timeline extension](desktop/extensions_list.md#dragtimeline) to reset the value of the [readonly config](desktop/readonly_mode.md)
 
 6.3
 -------
