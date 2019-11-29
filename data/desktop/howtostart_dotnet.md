@@ -15,8 +15,9 @@ We will make use of the ASP.NET MVC 5 web platform and the Web API 2 controller 
 To organize communication with a database we will use the [Entity Framework](http://www.asp.net/entity-framework).
 We will build our application with the help of the Visual Studio IDE. 
 
-Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-dotnet) on GitHub.
-
+{{note
+The complete source code is [available on GitHub](https://github.com/DHTMLX/gantt-howto-dotnet).
+}}
 
 Step 1. Creating a project
 -----------------------------
