@@ -4,12 +4,11 @@ getConstraintType
 @short:
 	returns the constraint type applied to the task
 
+@returns:
+- constraintType	string	constraint type as defined in api/gantt_constraint_types_config.md config
+
 @params:
 - task 	object	a task object
-
-@returns
-- constraintType	string	 constraint type
-
 
 @example:
 var constraintType = gantt.getConstraintType(task);
