@@ -11,7 +11,7 @@ horizontal_scroll_key
 
 @default: "shiftKey"
 
-@type: string|boolean
+@type: string,boolean
 @example:
 gantt.config.horizontal_scroll_key = "altKey";
 

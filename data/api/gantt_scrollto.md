@@ -3,8 +3,8 @@ scrollTo
 @short:scrolls the Gantt container to the specified position
 	
 @params:
-- x		number		value of horizontal scroll or 'null' (if the scroll position shouldn't be changed)
-- y		number		value of vertical scroll or 'null' (if the scroll position shouldn't be changed)
+- x		number,null		value of horizontal scroll or 'null' (if the scroll position shouldn't be changed)
+- y		number,null		value of vertical scroll or 'null' (if the scroll position shouldn't be changed)
 
 
 
