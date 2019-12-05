@@ -134,6 +134,6 @@ gantt.addTaskLayer({
 });
 ~~~
 
-- **update** - allows updating an inner html of a custom element, i.e. to hiding cells that are not visible and displaying the visible ones
+- **update** - allows updating an inner html of a custom element, i.e. hiding cells that are not visible and displaying the visible ones
 
 The **update** method is called after the [onGanttScroll](api/gantt_onganttscroll_event.md) event is fired. It provides a task node (created by the **render** method initially) and a current viewport. 
