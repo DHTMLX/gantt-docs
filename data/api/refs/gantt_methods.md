@@ -60,6 +60,7 @@ Methods
 - api/gantt_exporttomsproject.md - exports data from the Gantt chart to MS Project
 - api/gantt_exporttopdf.md - exports a Gantt chart into the PDF format
 - api/gantt_exporttopng.md - exports a Gantt chart into the PNG format
+- api/gantt_exporttoprimaverap6.md - exports data from the Gantt chart to Primavera P6
 - api/gantt_findcycles.md - returns all dependency loops in the chart
 - api/gantt_focus.md - sets focus on the gantt
 - api/gantt_getcalendar.md - gets worktime calendar by id
@@ -129,6 +130,7 @@ Methods
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
 - api/gantt_importfromexcel.md - converts an Excel file to JSON
 - api/gantt_importfrommsproject.md - converts an XML or MPP MS Project file to JSON
+- api/gantt_importfromprimaverap6.md - converts an XML or XAR Primavera P6 file to JSON
 - api/gantt_init.md - initializes a dhtmlxGantt inside a container
 - api/gantt_ischildof.md - checks whether a task is a child of a different task
 - api/gantt_iscircularlink.md - checks whether the link is circular
@@ -250,6 +252,7 @@ Methods
 - api/gantt_exporttomsproject.md
 - api/gantt_exporttopdf.md
 - api/gantt_exporttopng.md
+- api/gantt_exporttoprimaverap6.md
 - api/gantt_findcycles.md
 - api/gantt_focus.md
 - api/gantt_getcalendar.md
@@ -319,6 +322,7 @@ Methods
 - api/gantt_hidequickinfo.md
 - api/gantt_importfromexcel.md
 - api/gantt_importfrommsproject.md
+- api/gantt_importfromprimaverap6.md
 - api/gantt_init.md
 - api/gantt_ischildof.md
 - api/gantt_iscircularlink.md

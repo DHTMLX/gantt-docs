@@ -96,9 +96,12 @@ The api/gantt_exporttopdf.md method takes as a parameter an object with a number
 desktop/export.md
 
 @relatedapi:
-api/gantt_exporttopng.md
+api/gantt_exporttomsproject.md
+api/gantt_exporttoprimaverap6.md
 api/gantt_exporttoexcel.md
 api/gantt_exporttoical.md
+api/gantt_exporttopng.md
 api/gantt_exporttojson.md
-api/gantt_exporttomsproject.md
+api/gantt_importfromexcel.md
+api/gantt_importfromprimaverap6.md
 api/gantt_importfrommsproject.md
