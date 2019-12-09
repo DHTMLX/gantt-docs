@@ -23,7 +23,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ### Updates
 
 - TypeScript type definitions are updated
-- data/api/gantt_onbeforebranchloading_event.md and api/gantt_onafterbranchloading_event.md public events were added so it would be possible to modify the url or dynamic parameters of [dynamic loading](desktop/dynamic_loading.md) requests
+- api/gantt_onbeforebranchloading_event.md and api/gantt_onafterbranchloading_event.md public events were added so it would be possible to modify the url or dynamic parameters of [dynamic loading](desktop/dynamic_loading.md) requests
 - Added a public method to change the  [DataProcessor](desktop/server_side.md) url after initialization
 
 6.3.1
