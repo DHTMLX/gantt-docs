@@ -18,7 +18,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ### Fixes
 
 - Fix the script error which happened when [gantt.destructor](api/gantt_destructor.md) was called when the [click-drag feature](desktop/advanced_dnd.md) was enabled
-- [gantt.parse](api/gantt_parse.md) no longer modifies data objects passed into arguments, deep copies are made instead.
+- [gantt.parse](api/gantt_parse.md) no longer modifies data objects passed into arguments, deep copies are made instead
 
 ### Updates
 
