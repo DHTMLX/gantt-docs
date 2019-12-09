@@ -10,6 +10,22 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.3.2
+-----
+
+<span class='release_date'>December 13, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix the script error which happened when [gantt.destructor](api/gantt_destructor.md) was called when the [click-drag feature](desktop/advanced_dnd.md) was enabled
+- [gantt.parse](api/gantt_parse.md) no longer modifies data objects passed into arguments, deep copies are made instead.
+
+### Updates
+
+- TypeScript type definitions are updated
+- data/api/gantt_onbeforebranchloading_event.md and api/gantt_onafterbranchloading_event.md public events were added so it would be possible to modify the url or dynamic parameters of [dynamic loading](desktop/dynamic_loading.md) requests
+- Added a public method to change the  [DataProcessor](desktop/server_side.md) url after initialization
+
 6.3.1
 -----
 
