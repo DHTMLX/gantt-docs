@@ -21,6 +21,9 @@ gantt.load("url?parent_id=123");
 
 And expects the response to contain subtasks of the expanded item.
 
+{{note
+You can use the api/gantt_onbeforebranchloading_event.md event in order to modify the request url or to add some extra parameters to it.
+}}
 
 Enabling dynamic loading
 ----------------------
@@ -31,13 +34,11 @@ Enabling dynamic loading
 
 ~~~js
 gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
-gantt.init("gantt_here");
 gantt.config.branch_loading = true;
-		
-gantt.load("../common/connector_dynamic_loading.php");
 
-var dp = new gantt.dataProcessor("../common/connector_dynamic_loading.php");
-dp.init(gantt);
+gantt.init("gantt_here");
+
+gantt.load("/dynamic_loading");
 ~~~
 
 - Server side:
@@ -168,6 +169,8 @@ If the request has the *parent_id* parameter, the response must contain children
 @relatedapi:
 	api/gantt_branch_loading_config.md
 	api/gantt_branch_loading_property_config.md
+	api/gantt_onbeforebranchloading_event.md
+	api/gantt_onafterbranchloading_event.md
 
 @todo:
    replace backend instruction with format details

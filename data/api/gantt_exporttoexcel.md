@@ -54,11 +54,13 @@ properties are exported
 desktop/excel.md
 
 @relatedapi:
-api/gantt_importfromexcel.md
+api/gantt_exporttomsproject.md
+api/gantt_exporttoprimaverap6.md
 api/gantt_exporttoical.md
 api/gantt_exporttopdf.md
 api/gantt_exporttopng.md
 api/gantt_exporttojson.md
-api/gantt_exporttomsproject.md
+api/gantt_importfromexcel.md
+api/gantt_importfromprimaverap6.md
 api/gantt_importfrommsproject.md
 

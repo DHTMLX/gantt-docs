@@ -64,6 +64,7 @@ Gantt API
 - api/gantt_exporttomsproject.md - exports data from the Gantt chart to MS Project
 - api/gantt_exporttopdf.md - exports a Gantt chart into the PDF format
 - api/gantt_exporttopng.md - exports a Gantt chart into the PNG format
+- api/gantt_exporttoprimaverap6.md - exports data from the Gantt chart to Primavera P6
 - api/gantt_findcycles.md - returns all dependency loops in the chart
 - api/gantt_focus.md - sets focus on the gantt
 - api/gantt_getcalendar.md - gets worktime calendar by id
@@ -133,6 +134,7 @@ Gantt API
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
 - api/gantt_importfromexcel.md - converts an Excel file to JSON
 - api/gantt_importfrommsproject.md - converts an XML or MPP MS Project file to JSON
+- api/gantt_importfromprimaverap6.md - converts an XML or XAR Primavera P6 file to JSON
 - api/gantt_init.md - initializes a dhtmlxGantt inside a container
 - api/gantt_ischildof.md - checks whether a task is a child of a different task
 - api/gantt_iscircularlink.md - checks whether the link is circular
@@ -203,6 +205,7 @@ Gantt API
 {{api
 - api/gantt_onafterautoschedule_event.md - fires when autoscheduling is done
 - api/gantt_onafterbatchupdate_event.md - fires after the api/gantt_batchupdate.md method was called
+- api/gantt_onafterbranchloading_event.md - if dynamic loading is enabled, fires after the task branch was loaded to the page
 - api/gantt_onafterlightbox_event.md - fires after the user has closed the lightbox (edit form)
 - api/gantt_onafterlinkadd_event.md - fires after a new link is added to the Gantt chart
 - api/gantt_onafterlinkdelete_event.md - fires after the user deletes a link
@@ -221,6 +224,7 @@ Gantt API
 - api/gantt_onautoschedulecircularlink_event.md - fires if some dependency loops were found during auto scheduling
 - api/gantt_onbeforeautoschedule_event.md - fires before auto scheduling
 - api/gantt_onbeforebatchupdate_event.md - fires before the api/gantt_batchupdate.md method is called
+- api/gantt_onbeforebranchloading_event.md - if dynamic loading is enabled, fires after a user expands the task branch but before loading starts
 - api/gantt_onbeforecollapse_event.md - before gantt exits the fullscreen mode and goes back to normal mode
 - api/gantt_onbeforedatarender_event.md - fires before data is rendered on the page
 - api/gantt_onbeforeexpand_event.md - fires before gantt is expanded to full screen

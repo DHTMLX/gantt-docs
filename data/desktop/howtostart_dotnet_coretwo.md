@@ -15,7 +15,9 @@ You can also read tutorials on other server-side technologies:
 To organize communication with database we will use the [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/).
 We will build our application with the help of the Visual Studio 2017.
 
-[Grab the demo from GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core).
+{{note
+The complete source code is [available on GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core).
+}}
 
 ## Step 1. Creating a Project
 

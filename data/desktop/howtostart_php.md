@@ -13,7 +13,9 @@ There are tutorials intended for building server-side integration with the help 
 
 We will use the [Slim](http://www.slimframework.com/) framework for routing and MySQL as a data storage. CRUD logic will rely on PDO and will be generic enough to be usable with any other framework.
 
-You can have a look at the [ready demo on GitHub](https://github.com/DHTMLX/gantt-howto-php). Follow the step-by-step guide to create such an application.
+{{note
+The complete source code is [available on GitHub](https://github.com/DHTMLX/gantt-howto-php).
+}}
 
 Step 1. Initializing a project
 -----------------------

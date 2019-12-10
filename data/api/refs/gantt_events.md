@@ -5,6 +5,7 @@ Events
 {{api
 - api/gantt_onafterautoschedule_event.md - fires when autoscheduling is done
 - api/gantt_onafterbatchupdate_event.md - fires after the api/gantt_batchupdate.md method was called
+- api/gantt_onafterbranchloading_event.md - if dynamic loading is enabled, fires after the task branch was loaded to the page
 - api/gantt_onafterlightbox_event.md - fires after the user has closed the lightbox (edit form)
 - api/gantt_onafterlinkadd_event.md - fires after a new link is added to the Gantt chart
 - api/gantt_onafterlinkdelete_event.md - fires after the user deletes a link
@@ -23,6 +24,7 @@ Events
 - api/gantt_onautoschedulecircularlink_event.md - fires if some dependency loops were found during auto scheduling
 - api/gantt_onbeforeautoschedule_event.md - fires before auto scheduling
 - api/gantt_onbeforebatchupdate_event.md - fires before the api/gantt_batchupdate.md method is called
+- api/gantt_onbeforebranchloading_event.md - if dynamic loading is enabled, fires after a user expands the task branch but before loading starts
 - api/gantt_onbeforecollapse_event.md - before gantt exits the fullscreen mode and goes back to normal mode
 - api/gantt_onbeforedatarender_event.md - fires before data is rendered on the page
 - api/gantt_onbeforeexpand_event.md - fires before gantt is expanded to full screen
@@ -112,6 +114,7 @@ Events
 @index:
 - api/gantt_onafterautoschedule_event.md
 - api/gantt_onafterbatchupdate_event.md
+- api/gantt_onafterbranchloading_event.md
 - api/gantt_onafterlightbox_event.md
 - api/gantt_onafterlinkadd_event.md
 - api/gantt_onafterlinkdelete_event.md
@@ -130,6 +133,7 @@ Events
 - api/gantt_onautoschedulecircularlink_event.md
 - api/gantt_onbeforeautoschedule_event.md
 - api/gantt_onbeforebatchupdate_event.md
+- api/gantt_onbeforebranchloading_event.md
 - api/gantt_onbeforecollapse_event.md
 - api/gantt_onbeforedatarender_event.md
 - api/gantt_onbeforeexpand_event.md
