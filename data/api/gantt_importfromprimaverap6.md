@@ -34,7 +34,7 @@ gantt.importFromPrimaveraP6({
 @template:	api_method
 @descr:
 
-{{note This functionality is currently in **Beta** stage. Information given here may be substantially changed before the feature enters it's stable stage.}}
+{{note This functionality is currently in **Beta** stage. The information given in this article may be substantially changed before the feature enters its stable stage.}}
 
 {{note The method requires HTML5 File API support.}}
 
@@ -43,7 +43,7 @@ gantt.importFromPrimaveraP6({
 ~~~html
 <script src="http://export.dhtmlx.com/gantt/api.js"></script>  
 ~~~
-Read the details in the desktop/export_msproject.md#importfrommsproject article.
+Read the details in the desktop/export_msproject.md#importfrommsproject article.}}
 
 The method takes as a parameter an object with configuration properties of an imported file:
 

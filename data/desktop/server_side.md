@@ -480,7 +480,7 @@ dp.attachEvent("onBeforeUpdate", function(id, state, data){
 });
 ~~~
 
-In order to change the backend URL dynamically, use **dataProcessor.url** method:
+In order to change the backend URL dynamically, use the **dataProcessor.url** method:
 
 ~~~js
 dp.url("/url");

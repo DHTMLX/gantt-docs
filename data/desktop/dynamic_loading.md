@@ -22,7 +22,7 @@ gantt.load("url?parent_id=123");
 And expects the response to contain subtasks of the expanded item.
 
 {{note
-You can use api/gantt_onbeforebranchloading_event.md event in order to modify the request url or to add some extra parameters to it.
+You can use the api/gantt_onbeforebranchloading_event.md event in order to modify the request url or to add some extra parameters to it.
 }}
 
 Enabling dynamic loading

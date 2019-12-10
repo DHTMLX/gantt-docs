@@ -23,7 +23,7 @@ gantt.exportToPrimaveraP6({
 
 @descr:
 
-{{note This functionality is currently in **Beta** stage. Information given here may be substantially changed before the feature enters it's stable stage.}}
+{{note This functionality is currently in **Beta** stage. The information given in this article may be substantially changed before the feature enters its stable stage.}}
 
 {{note This method is defined in the **export** extension, so you need to include it on the page:
 ~~~html
@@ -34,7 +34,7 @@ Read the details in the desktop/export_msproject.md#exporttomsproject article.
 
 
 
-The **exportToPrimaveraP6()** method takes the same parameters as api/gantt_exporttomsproject.md:
+The **exportToPrimaveraP6()** method takes the same parameters as api/gantt_exporttomsproject.md does:
 
 - **name** - (*string*) the name of the obtained file ('gantt.xml' by default).
 - **auto_scheduling** - (boolean) indicates the scheduling mode for tasks in the exported project. **true** will mark tasks as auto scheduled, **false** will mark tasks as manually scheduled (the default state).
