@@ -54,9 +54,9 @@ gantt.attachEvent("onBeforeTaskMove", function(id, parent, tindex){
 });
 
 //or
-gantt.attachEvent("onBeforeRowDragEnd", function(id, target) {
-	var task = gantt.getTask(id);
-    if(task.parent != target.parent)
+gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
+  	var task = gantt.getTask(id);
+    if(task.parent != parent)
         return false;
     return true;
 });
