@@ -60,6 +60,23 @@ var editors = {
 };
 ~~~
 
+<h3 id="dateslimits">Dates limits in date editor</h3>
+
+Starting from v6.3, there are no default limits to minimal and maximal input values of **date** inline editors.
+
+In case you want the dates visible on the time scale to limit the minimal and maximal values of the **date** inline editor (unless custom min/max values are provided), you can specify dynamic **min/max** values:
+
+~~~js
+const dateEditor = {type: "date", map_to: "start_date", 
+    min: function(taskId){
+      return gantt.getState().min_date
+    },
+    max: function( taskId ){
+      return gantt.getState().max_date
+    }
+};
+~~~
+
 <h3 id="linkformatter">Formatting values of the Predecessor editor</h3>
 
 Starting from v6.3 Gantt allows specifying types of links as well as lag/lead values directly from inline editor. 
