@@ -17,13 +17,14 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### Fixes
 
-- Fix the incorrect behavior of grid [column resize](desktop/specifying_columns.md#resizing) which disabled the Timeline in some cases
+- Fix the incorrect [resizing behavior of grid](desktop/specifying_columns.md#resizing) that disabled the Timeline in some cases
 - [gantt.parse](api/gantt_parse.md) should now correctly update the project tree when a parent task is loaded after its children
-- Fix compatibility with SalesForce Lightning Aura component framework (Evaluation build)
+- Fix compatibility with SalesForce Lightning Aura components framework (Evaluation build)
 - Fix the incorrect position of the [Tooltip](desktop/tooltips.md) in SalesForce environment
-- Fix the incorrect [Tooltip](desktop/tooltips.md) position when the gantt container has a vertical margin.
+- Fix the incorrect [Tooltip](desktop/tooltips.md) position when the gantt container has a vertical margin
 - Add missing [WAI-ARIA](desktop/accessibility.md#waiariaattributes) attributes to elements inside the gantt
-- Fix the incorrect work of api/gantt_min_duration_config.md config
+- Fix the incorrect work of the api/gantt_min_duration_config.md config
+- Fix the incorrect work of [link formatters](desktop/formatters_ext.md#linkformatter) with custom [instances of the gantt](desktop/multiple_gantts.md)
 
 6.3.2
 -----
