@@ -86,6 +86,7 @@ Properties
 - api/gantt_readonly_config.md - activates the read-only mode for the Gantt chart
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
+- api/gantt_resource_attribute_config.md - changes the name of the attribute that Gantt uses to find which resource the task row in the resource grid/timeline is referring to
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
 - api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram
 - api/gantt_resource_render_empty_cells_config.md - tells the resource timeline to render elements and call templates for non-allocated cells
@@ -232,6 +233,7 @@ Properties
 - api/gantt_readonly_config.md
 - api/gantt_readonly_property_config.md
 - api/gantt_redo_config.md
+- api/gantt_resource_attribute_config.md
 - api/gantt_resource_calendars_config.md
 - api/gantt_resource_property_config.md
 - api/gantt_resource_render_empty_cells_config.md
