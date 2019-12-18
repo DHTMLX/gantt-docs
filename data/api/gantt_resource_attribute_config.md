@@ -19,7 +19,7 @@ gantt.config.resource_attribute = "data-resource-id";
 @descr:
 The default value of the attribute is "resource_id".
 
-{{note Each resource element has the resource_id attribute that is used to find which resource the DOM element is attached to.}}
+{{note Each resource element has the resource_id attribute that is used to find which a resource the DOM element is attached to.}}
 
 
 <img src="api/resource_attribute.png" /><br>
