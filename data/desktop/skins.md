@@ -101,3 +101,10 @@ To apply the 'Material' skin, include the related CSS file:
 {{sample
 06_skins/09_material.html
 }}
+
+Starting from v6.3, the import of `Roboto` font was removed from the material skin. If necessary, you can add `Roboto` font manually, as in:
+
+~~~js
+<link rel="stylesheet" href="'https://fonts.googleapis.com/css?'+
+    +'family=Open+Sans|Roboto:regular,medium,thin,bold'">
+~~~
