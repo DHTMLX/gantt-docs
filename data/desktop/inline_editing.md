@@ -34,6 +34,8 @@ gantt.config.columns = [
 
 {{sample  07_grid/11_inline_edit_basic.html}}
 
+{{note Read details about the *inlineEditors* object API in the desktop/inline_editors_ext.md article.}}
+
 Types of editors
 ------------------
 
