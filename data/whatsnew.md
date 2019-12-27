@@ -10,6 +10,20 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.3.4
+-----
+
+<span class='release_date'>December December 27, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix crashes of the [resource load diagram](desktop/resource_management.md#resourceviewpanel) when [smart rendering](desktop/performance.md#smartrendering) is switched off
+- Fix issue with the custom task property named "unit", as Gantt considered it as a duration unit value and multiplied the task duration after its dragging
+- Fix the incorrect [Tooltip](desktop/tooltips.md) position when the [autosize](api/gantt_autosize_config.md) config is enabled
+- Fix the incorrect alignment behavior of grid cells when both the [scrollable](desktop/specifying_columns.md#horizontalscrollbar) property and [autofit](api/gantt_autofit_config.md) config are set to true
+- Creating a link between a task in the timeline and [a placeholder](api/gantt_placeholder_task_config.md) in the grid is now blocked
+- Fix the bug with the [auto scheduling extension](desktop/auto_scheduling.md) that caused Gantt to freeze when a task has [the constraint type (SNET/FNET/SNLT/FNLT)](desktop/auto_scheduling.md#timeconstraintsfortasks) with no date specified, or with an invalid date
+
 6.3.3
 -----
 
