@@ -324,7 +324,8 @@ gantt.exportToPDF({
 Note that custom elements will require providing [custom styles](desktop/export.md#customstylefortheoutputfile) in order to be displayed correctly.
 
 Pay attention that the use of this mode increases the size of the API request. Large charts can exceed limit of the online export of 10MB and may not be exported that way.
-In such a case you need to have an [export service](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) installed locally and increase the request size.
+In such a case you need to have an [export service](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) installed locally and increase the request size. <br>
+Check [system requirements](desktop/export_requirements.md) to install export services locally.
 
 
 
