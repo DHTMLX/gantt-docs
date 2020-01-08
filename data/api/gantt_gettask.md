@@ -72,3 +72,4 @@ gantt.config.show_errors = false;
 @relatedapi:
 	api/gantt_gettaskbytime.md
     api/gantt_gettasknode.md
+    api/gantt_istaskexists.md
