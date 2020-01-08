@@ -37,6 +37,34 @@ var sourceLinks = taskObj.$source;        //-> ["l1","l4"] - ids of coming-out l
 var targetLinks = taskObj.$target;       //-> ["l5","l8"] - ids of coming-into links
 ~~~
 
+
+Error
+-----------
+
+The **getTask** method expects a task with a required "id" is loaded into Gantt. Therefore, if no task with this "id" is found, the method will produce an error message: "Task not found id = ID". 
+
+~~~js
+const task = gantt.getTask("fake-id");
+...
+~~~
+
+<img src="api/gettask_error.png">
+
+We advise you to fix causes of this error before trying to get the task object. To do that, you need to check whether the task exists via the api/gantt_istaskexists.md method:
+
+~~~js
+if(gantt.isTaskExists("fake-id")){
+   const task = gantt.getTask("fake-id");
+   ...
+}
+~~~
+
+But you can also [disable these messages before shipping your application to end users](faq.md#anerroralertappearsintherighttopcorner) via the [show_errors](api/gantt_show_errors_config.md) config:
+
+~~~js
+gantt.config.show_errors = false;
+~~~
+
 @related:
 	desktop/task_object_operations.md
     desktop/link_object_operations.md#gettingthelinksrelatedtoacertaintask
