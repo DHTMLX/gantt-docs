@@ -287,7 +287,7 @@ Gantt API
 - api/gantt_onlinkvalidation_event.md - fires when the user adds a new link and dhtmlxGantt checks whether the link is valid
 - api/gantt_onloadend_event.md - fires after loading data from the data source has been completed
 - api/gantt_onloadstart_event.md - fires immediately before loading data from the data source has been started
-- api/gantt_onmousemove_event.md - fires when the mouse is moved over a task bar
+- api/gantt_onmousemove_event.md - fires when the mouse is moved over the gantt container
 - api/gantt_onmultiselect_event.md - fires after selection of a task or a range of tasks has been completed
 - api/gantt_onoptionsload_event.md - fires after a collection of options has been loaded from the server, but isn't parsed yet
 - api/gantt_onparse_event.md - fires after data was parsed (became available for API) but before it was rendered in the Gantt chart
