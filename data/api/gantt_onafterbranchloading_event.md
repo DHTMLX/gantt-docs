@@ -11,8 +11,8 @@ onAfterBranchLoading
 - settings	object	an object which contains the task id and request URL
 
 @example:
-gantt.attachEvent("onBeforeBranchLoading", function(settings){
-	console.log(settings.url);
+gantt.attachEvent("onAfterBranchLoading", function(settings){
+    console.log(settings.url);
 });
 
 @template:	api_event
