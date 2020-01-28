@@ -10,6 +10,18 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.3.5
+-----
+
+<span class='release_date'>January 28, 2020. Bugfix release</span>
+
+### Fixes
+
+- Fix issue with task [grouping](desktop/grouping.md) which caused vertical scroll position to reset after moving any task with drag and drop
+- Fix the script error which happened when api/gantt_drag_timeline_config.md config is set to `null`
+- Fix the incorrect position of highlighted cells when api/gantt_static_background_config.md and api/gantt_static_background_cells_config.md are enabled and api/gantt_smart_rendering_config.md is disabled
+- Fix the issue with api/gantt_onafterbranchloading_event.md event not being called
+
 6.3.4
 -----
 
