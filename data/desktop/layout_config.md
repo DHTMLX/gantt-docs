@@ -66,7 +66,7 @@ The view configuration is specified as an object with the corresponding properti
 You can [set custom configuration options](desktop/layout_config.md#configuringganttlayout) for the **grid** and **timeline** views. 
 The default options are taken from the global **gantt.config** object.
 
-{{note Note that you should specify the configuration of layout before Gantt initialization. If you make changes in the layout, you need to reinitialize Gantt.}}
+{{note Note that you should specify the configuration of layout before Gantt initialization. If you make changes in the layout, you need to refresh it using api/gantt_resetlayout.md.}}
 
 Scrollbar
 -----------

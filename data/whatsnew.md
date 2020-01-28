@@ -22,6 +22,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix the incorrect position of highlighted cells when api/gantt_static_background_config.md and api/gantt_static_background_cells_config.md are enabled and api/gantt_smart_rendering_config.md is disabled
 - Fix the issue with api/gantt_onafterbranchloading_event.md event not being called
 
+### Updates
+
+- Add a public method for rebuilding gantt layout after changing a config api/gantt_resetlayout.md
+
 6.3.4
 -----
 
