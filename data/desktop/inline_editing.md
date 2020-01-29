@@ -81,6 +81,8 @@ const dateEditor = {type: "date", map_to: "start_date",
 
 <h3 id="linkformatter">Formatting values of the Predecessor editor</h3>
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 Starting from v6.3 Gantt allows specifying types of links as well as lag/lead values directly from inline editor. 
 
 In order to do so, you need to use the [Link Formatter](desktop/formatters_ext.md#linkformatter) module and provide an instance of the *LinksFormatter* into the **predecessor** editor:

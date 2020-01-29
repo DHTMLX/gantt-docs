@@ -32,6 +32,8 @@ duration_unit = "hour", the duration is calculated in the working hours).
 
 ##Task duration in decimal format
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 Starting from v6.3 dhtmlxGantt allows specifying the duration of tasks in decimal format ("2.5 days", <br>"0.5 hours", "3.75 hours") via the [Duration Formatter](desktop/formatters_ext.md) module.
 
 The important point to remember is that internally Gantt always stores the duration of tasks in integer values.  

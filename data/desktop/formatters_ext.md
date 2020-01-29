@@ -1,6 +1,8 @@
 Formatters Extension
 ========================
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 The **gantt.ext.formatters** extension provides two formatting methods:
 
 - [durationFormatter()](desktop/formatters_ext.md#durationformatter)
@@ -299,3 +301,5 @@ gantt.ext.formatters.linkFormatter({durationFormatter: durationFormatter})
 - **labels** - (*object*) locale labels for different types of links
 
 Read details about the linkFormatter method in the desktop/inline_editing.md#linkformatter article.
+
+@edition: pro
