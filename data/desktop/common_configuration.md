@@ -3,8 +3,8 @@ Configuration
 
 To gain the desired look for the Gantt chart, dhtmlxGantt provides 2 objects: 
 
-- <a href="api/refs/gantt.md#properties">gantt.config</a> - configuration options for dates, scale, controls etc.
-- <a href="api/refs/gantt.md#templates">gantt.templates</a> - formatting templates for dates and labels used in the Gantt chart.
+- [gantt.config](api/refs/gantt_props.md) - configuration options for dates, scale, controls etc.
+- [gantt.templates](api/refs/gantt_templates.md) - formatting templates for dates and labels used in the Gantt chart.
 
 'gantt.config' object
 ------------------------
