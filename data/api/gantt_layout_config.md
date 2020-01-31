@@ -25,7 +25,14 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
-{{note Note that you should specify the configuration of layout before Gantt initialization. If you make changes in the layout, you need to reinitialize Gantt.}}
+
+
+
+{{note Note that you should specify the configuration of layout before Gantt initialization. If you make changes in the layout, you need to refresh it using api/gantt_resetlayout.md.}}
 
 @related:
 desktop/layout_config.md
+
+@relatedapi:
+
+api/gantt_resetlayout.md
