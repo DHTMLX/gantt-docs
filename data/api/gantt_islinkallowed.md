@@ -31,7 +31,7 @@ The cases when a link is considered as incorrect:
 
 
 {{note
-The method invokes the api/gantt_onlinkvalidation_event.md event
+The method invokes the api/gantt_onlinkvalidation_event.md event. Therefore, if the api/gantt_onlinkvalidation_event.md event returns `false`, a link will be also considered as incorrect.
 }}
 
 <br>
