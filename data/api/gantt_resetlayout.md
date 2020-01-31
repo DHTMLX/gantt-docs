@@ -1,7 +1,7 @@
 resetLayout
 =============
 
-@short:rebuilds gantt layout using the current value of the layout config
+@short:rebuilds the Gantt layout using the current value of the layout config
 
 @params:
 

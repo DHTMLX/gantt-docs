@@ -21,6 +21,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix the script error which happened when api/gantt_drag_timeline_config.md config was set to `null`
 - Fix the incorrect position of highlighted cells when api/gantt_static_background_config.md and api/gantt_static_background_cells_config.md are enabled and api/gantt_smart_rendering_config.md is disabled
 - Fix the issue with the api/gantt_onafterbranchloading_event.md event not being called
+- Fix the incorrect work of [smart rendering](desktop/performance.md#smartrendering) when the value of api/gantt_task_height_config.md is less than the value of api/gantt_row_height_config.md
 
 ### Updates
 

@@ -164,7 +164,7 @@ Methods
 - api/gantt_removetasklayer.md - removes the specified layer related to a task
 - api/gantt_render.md - renders the whole Gantt chart
 - api/gantt_rendermarkers.md - updates all markers on the page
-- api/gantt_resetlayout.md - 
+- api/gantt_resetlayout.md - rebuilds the Gantt layout using the current value of the layout config
 - api/gantt_resetlightbox.md - removes the current lightbox's HTML object element
 - api/gantt_resetprojectdates.md - re-calculates the duration of a project task depending on the dates of its children
 - api/gantt_resetskin.md - re-calculates the skin's settings from the related attached skin CSS file
