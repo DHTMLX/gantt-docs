@@ -13,7 +13,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 6.3.5
 -----
 
-<span class='release_date'>January 29, 2020. Bugfix release</span>
+<span class='release_date'>January 31, 2020. Bugfix release</span>
 
 ### Fixes
 
