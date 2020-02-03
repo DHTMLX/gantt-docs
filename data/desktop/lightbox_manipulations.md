@@ -59,7 +59,7 @@ var opts = [
 gantt.config.lightbox.sections = [
 	{name:"description", height:38, type:"textarea", map_to:"text",	focus:true},
     {name:"priority", 	 height:22, type:"select", 	 map_to:"priority",  /*!*/  
-    options:opts, default_value:"Low"},      /*!*/                                                                
+    options:opts, default_value:3},      /*!*/                                                                
     {name:"time", 		 height:72, type:"duration", map_to:"auto"}
 ];
 ~~~

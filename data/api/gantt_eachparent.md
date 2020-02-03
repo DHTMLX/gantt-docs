@@ -13,7 +13,11 @@ eachParent
 
 
 @example:
-gantt.eachParent(function(task){alert(task.text);})
+gantt.eachParent(function(task){
+	alert(task.text);
+}, taskId);
+
 @template:	api_method
 @descr:
 
+@relatedapi: api/gantt_calculatetasklevel.md

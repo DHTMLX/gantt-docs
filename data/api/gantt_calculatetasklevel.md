@@ -1,6 +1,6 @@
 calculateTaskLevel
 =============
-@short: calculates the level of a task 
+@short: calculates the level of nesting of a task 
 	
 
 @params:
