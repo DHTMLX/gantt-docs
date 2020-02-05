@@ -31,6 +31,12 @@ var taskParent = taskObj.parent;  //-> "pr_2"
 
 *To see all methods related to the tree nature of the Gantt chart, read the desktop/task_tree_operations.md article.*
 
+Links connected to a task
+-------------------------------
+
+For details about how to get all links connected to a specific task, see the desktop/link_object_operations.md#gettingthelinksrelatedtoacertaintask article.
+
+
 Task duration
 ----------------------------------------
 

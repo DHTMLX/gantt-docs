@@ -221,8 +221,8 @@ A data source for the Gantt chart is an object that stores 2 types of informatio
     They shouldn't be saved to the database, gantt will ignore these properties if they are specified in your JSON/XML.
     </li>
     <ul>
-    		<li><b>$source</b> - (<i> array </i>) ids of links that come out of the task.</li>
-			<li><b>$target</b> -  (<i> array </i>) ids of links that come into task.</li>
+    		<li><b>$source</b> - (<i> array </i>) <a href="desktop/link_object_operations.md#gettingthelinksrelatedtoacertaintask">ids of links that come out of the task.</a></li>
+			<li><b>$target</b> -  (<i> array </i>) <a href="desktop/link_object_operations.md#gettingthelinksrelatedtoacertaintask">ids of links that come into task.</a></li>
             <li><b>$level</b> - (<i> number </i>) the task's level in the tasks hierarchy (zero-based numbering).</li>
             <li><b>$open</b> - (<i> boolean </i>) specifies whether the task is currently opened.</li>
             <li><b>$index</b> - (<i> number </i>) the number of the task row in the gantt.</li>
