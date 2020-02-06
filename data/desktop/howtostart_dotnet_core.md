@@ -6,9 +6,9 @@ This tutorial gives you step-by-step instructions on how to create Gantt with [A
 You can also read tutorials on other server-side technologies:
 
 - desktop/howtostart_dotnet.md
-- desktop/howtostart_php.md
-- desktop/howtostart_php_laravel.md
 - desktop/howtostart_nodejs.md
+- desktop/howtostart_php_laravel.md
+- desktop/howtostart_php_slim4.md
 - desktop/howtostart_ruby.md
 
 

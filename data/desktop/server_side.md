@@ -296,7 +296,7 @@ Since we use REST API, it's possible to implement the server side using differen
 Here's a list of available server-side implementations that you can use for Gantt backend integration:
 
 - [dhtmlxGantt with ASP.NET Core 2](desktop/howtostart_dotnet_core.md)
-- [dhtmlxGantt with PHP](desktop/howtostart_php.md)
+- [dhtmlxGantt with PHP: Slim](desktop/howtostart_php_slim4.md)
 - [dhtmlxGantt with PHP: Laravel](desktop/howtostart_php_laravel.md)
 - [dhtmlxGantt with Node.js](desktop/howtostart_nodejs.md)
 - [dhtmlxGantt with ASP.NET MVC](desktop/howtostart_dotnet.md)

@@ -46,15 +46,15 @@ This section is dedicated to the very beginning of work with Gantt chart. Each c
         </td>
         </tr>
     <tr>
-		<td>
-		    <span style="font-size:15px;">desktop/howtostart_php.md</span>
-            <br>          
-            A step-by-step tutorial that shows how to implement a PHP backend using PDO and MySQL. 
+    	<td>
+    		<span style="font-size:15px;">desktop/howtostart_php_slim4.md</span>
+            <br>            
+            A comprehensive tutorial that discusses how to implement a PHP-based Gantt using Slim 4 Framework.
         </td>
         <td>
-        	<a href="desktop/howtostart_php.md"><img src="desktop/php_tutorial.png"></a>
+            <a href="desktop/howtostart_php_slim4.md"><img src="desktop/php_tutorial.png"></a>
         </td>
-    </tr>
+        </tr>
     <tr>
         <td>
 		    <span style="font-size:15px;">desktop/howtostart_ruby.md</span>
@@ -75,7 +75,7 @@ This section is dedicated to the very beginning of work with Gantt chart. Each c
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_php_laravel.md
-- desktop/howtostart_php.md
+- desktop/howtostart_php_slim4.md
 - desktop/howtostart_ruby.md
-
+- desktop/howtostart_php.md
 

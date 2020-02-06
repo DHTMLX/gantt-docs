@@ -5,10 +5,10 @@ This tutorial describes how to add dhtmlxGantt into a [Laravel](https://laravel.
 
 There are tutorials intended for building server-side integration with the help of other platforms:
 
-- desktop/howtostart_php.md
-- desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_dotnet_core.md
+- desktop/howtostart_nodejs.md
+- desktop/howtostart_php_slim4.md
 - desktop/howtostart_ruby.md
 
 {{note
