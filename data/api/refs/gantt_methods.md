@@ -19,7 +19,7 @@ Methods
 - api/gantt_bind.md - creates a new function that, when called, has its <i>this</i> keyword set to the provided value
 - api/gantt_calculateduration.md - calculates the duration of a task
 - api/gantt_calculateenddate.md - calculates the end date of a task
-- api/gantt_calculatetasklevel.md - calculates the level of a task
+- api/gantt_calculatetasklevel.md - calculates the level of nesting of a task
 - api/gantt_callevent.md - calls an inner event
 - api/gantt_changelightboxtype.md - repaints the lighbox for the task according to its type
 - api/gantt_changelinkid.md - changes the link's id

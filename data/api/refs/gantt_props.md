@@ -25,6 +25,7 @@ Properties
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_constraint_types_config.md - contains all available constraint types
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
+- api/gantt_csp_config.md - 
 - api/gantt_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
@@ -45,6 +46,7 @@ Properties
 - api/gantt_editor_types_config.md - an object that contains definitions of inline editors
 - api/gantt_end_date_config.md - sets the end value of the time scale
 - api/gantt_fit_tasks_config.md - 'says' the Gantt chart to automatically extend the time scale in order to fit all displayed tasks
+- api/gantt_grid_elastic_columns_config.md - 
 - api/gantt_grid_resize_config.md - makes the grid resizable by dragging the right grid's border
 - api/gantt_grid_resizer_attribute_config.md - sets the name of the attribute  of the grid resizer's  DOM element
 - api/gantt_grid_resizer_column_attribute_config.md - sets the name of the attribute  of the column resizer's  DOM element. The attribute presents the column's index
@@ -68,7 +70,7 @@ Properties
 - api/gantt_link_wrapper_width_config.md - sets the width of the area (over the link) sensitive to clicks
 - api/gantt_links_config.md - stores the types of links dependencies
 - api/gantt_min_column_width_config.md - sets the minimum width for a column in the timeline area
-- api/gantt_min_duration_config.md - Sets the minimum duration (in milliseconds) that can be set for a task during resizing.
+- api/gantt_min_duration_config.md - sets the minimum duration (in milliseconds) that can be set for a task during resizing.
 - api/gantt_min_grid_column_width_config.md - sets the minumum width for the grid (in pixels) while being resized
 - api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
@@ -172,6 +174,7 @@ Properties
 - api/gantt_columns_config.md
 - api/gantt_constraint_types_config.md
 - api/gantt_correct_work_time_config.md
+- api/gantt_csp_config.md
 - api/gantt_date_format_config.md
 - api/gantt_date_grid_config.md
 - api/gantt_date_scale_config.md
@@ -192,6 +195,7 @@ Properties
 - api/gantt_editor_types_config.md
 - api/gantt_end_date_config.md
 - api/gantt_fit_tasks_config.md
+- api/gantt_grid_elastic_columns_config.md
 - api/gantt_grid_resize_config.md
 - api/gantt_grid_resizer_attribute_config.md
 - api/gantt_grid_resizer_column_attribute_config.md
