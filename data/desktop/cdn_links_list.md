@@ -25,8 +25,7 @@ Skins: [Terrace](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_terrace.css
 
 
 
-Extensions: [CSP](  https://cdn.dhtmlx.com/gantt/edge/ext/dhtmlxgantt_csp.js ),
-[Fullscreen](  https://cdn.dhtmlx.com/gantt/edge/ext/dhtmlxgantt_fullscreen.js ),
+Extensions: [Fullscreen](  https://cdn.dhtmlx.com/gantt/edge/ext/dhtmlxgantt_fullscreen.js ),
 [Markers](  https://cdn.dhtmlx.com/gantt/edge/ext/dhtmlxgantt_marker.js ),
 [Multiselect](  https://cdn.dhtmlx.com/gantt/edge/ext/dhtmlxgantt_multiselect.js ),
 [Quick Info](  https://cdn.dhtmlx.com/gantt/edge/ext/dhtmlxgantt_quick_info.js ),
@@ -54,8 +53,7 @@ Skins: [Terrace](  https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_t
 [Material](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_material.css).
 
 
-Extensions: [CSP](  https://cdn.dhtmlx.com/gantt/edge/sources/ext/dhtmlxgantt_csp.js ),
-[Fullscreen](  https://cdn.dhtmlx.com/gantt/edge/sources/ext/dhtmlxgantt_fullscreen.js ),
+Extensions: [Fullscreen](  https://cdn.dhtmlx.com/gantt/edge/sources/ext/dhtmlxgantt_fullscreen.js ),
 [Markers](  https://cdn.dhtmlx.com/gantt/edge/sources/ext/dhtmlxgantt_marker.js ),
 [Multiselect](  https://cdn.dhtmlx.com/gantt/edge/sources/ext/dhtmlxgantt_multiselect.js ),
 [Quick Info](  https://cdn.dhtmlx.com/gantt/edge/sources/ext/dhtmlxgantt_quick_info.js ),
@@ -81,8 +79,7 @@ Skins: [Terrace](  https://cdn.dhtmlx.com/gantt/4.0/skins/dhtmlxgantt_terrace.cs
 [Contrast White](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_contrast_white.css),
 [Material](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_material.css).
 
-Extensions: [CSP](  https://cdn.dhtmlx.com/gantt/4.0/ext/dhtmlxgantt_csp.js ),
-[Fullscreen](  https://cdn.dhtmlx.com/gantt/4.0/ext/dhtmlxgantt_fullscreen.js ),
+Extensions: [Fullscreen](  https://cdn.dhtmlx.com/gantt/4.0/ext/dhtmlxgantt_fullscreen.js ),
 [Markers](  https://cdn.dhtmlx.com/gantt/4.0/ext/dhtmlxgantt_marker.js ),
 [Multiselect](  https://cdn.dhtmlx.com/gantt/4.0/ext/dhtmlxgantt_multiselect.js ),
 [Quick Info](  https://cdn.dhtmlx.com/gantt/4.0/ext/dhtmlxgantt_quick_info.js ),
@@ -107,8 +104,7 @@ Skins: [Terrace](  https://cdn.dhtmlx.com/gantt/4.0/sources/skins/dhtmlxgantt_te
 [Contrast White](https://cdn.dhtmlx.com/gantt/5.1/sources/skins/dhtmlxgantt_contrast_white.css),
 [Material](https://cdn.dhtmlx.com/gantt/5.1/sources/skins/dhtmlxgantt_material.css).
 
-Extensions: [CSP](  https://cdn.dhtmlx.com/gantt/4.0/sources/ext/dhtmlxgantt_csp.js ),
-[Fullscreen](  https://cdn.dhtmlx.com/gantt/4.0/sources/ext/dhtmlxgantt_fullscreen.js ),
+Extensions: [Fullscreen](  https://cdn.dhtmlx.com/gantt/4.0/sources/ext/dhtmlxgantt_fullscreen.js ),
 [Markers](  https://cdn.dhtmlx.com/gantt/4.0/sources/ext/dhtmlxgantt_marker.js ),
 [Multiselect](  https://cdn.dhtmlx.com/gantt/4.0/sources/ext/dhtmlxgantt_multiselect.js ),
 [Quick Info](  https://cdn.dhtmlx.com/gantt/4.0/sources/ext/dhtmlxgantt_quick_info.js ),

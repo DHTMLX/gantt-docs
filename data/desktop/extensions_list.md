@@ -40,20 +40,6 @@ API: api/gantt_auto_scheduling_config.md<br>
 {{sample  02_extensions/12_auto_scheduling.html}}
 
 
-Content security policy
-----------------------
-
-Allows working with dhtmlxGantt in case Content Security Policy (CSP) is enabled in the application.
-
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_csp.js"></script>
-~~~
-
-####Related resources
-
-Article: desktop/content_security_policy.md
-
-
 Critical path
 -------------
 

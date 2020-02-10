@@ -49,10 +49,10 @@ Otherwise, you'll have to handle it manually. Please check [this article](deskto
 
 ##Content Security Policy
 
-The library provides a special extension that allows you to adjust the code of your application created with dhtmlxGantt to comply with the CSP (Content Security Policy) standard. 
+The library provides a special config that allows you to adjust the code of your application created with dhtmlxGantt to comply with the CSP (Content Security Policy) standard. 
 It helps preventing various code injection attacks and improve the safety of application. 
 
-[Read more about applying the CSP standard to a dhtmlxGantt application](desktop/content_security_policy.md).
+[Read more about applying the CSP standard to a dhtmlxGantt application](api/gantt_csp_config.md).
 
 
 @linkclass:hidden
