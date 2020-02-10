@@ -43,5 +43,6 @@ gantt.addLinkLayer(function (link) {
     - **topmost** - (*boolean*) if true, the element will be displayed over the link (optional)
     - **filter** - (*function*) a function that takes a link object as a parameter. If returns 'false', the 'render' function won't be called for a link (optional)
 - Beware, custom layers will be reset after the next call of <a href="api/gantt_init.md">gantt.init</a>
+- Calling the [gantt.resetLayout()](api/gantt_resetlayout.md) method will also reset custom layers. In order for custom layers to be displayed on a page, you need to redefine the **gantt.addLinkLayer** method after calling api/gantt_resetlayout.md.
 
 {{editor	https://snippet.dhtmlx.com/8eadb357b	addLinkLayer}}

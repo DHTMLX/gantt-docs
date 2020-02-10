@@ -10,6 +10,22 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.3.6
+-----
+
+<span class='release_date'>February 10, 2020. Bugfix release</span>
+
+### Fixes
+
+
+- Fix the regression in [gantt.resetLayout]( https://docs.dhtmlx.com/gantt/api__gantt_resetlayout.html ) which caused the script error 
+- Fix the issue with the [QuickInfo popup](https://docs.dhtmlx.com/gantt/desktop__extensions_list.html#quickinfo ) which caused it to be positioned behind the [resource panel](https://docs.dhtmlx.com/gantt/desktop__resource_management.html#resourceviewpanel) in some cases  
+- Fix the script error thrown from the [gantt.getShortcutHandler](https://docs.dhtmlx.com/gantt/api__gantt_getshortcuthandler.html) method
+- Fix the script error thrown from the [tooltip.show(x, y)](https://docs.dhtmlx.com/gantt/desktop__tooltips_ext.html) method
+- [gantt.getTaskNode](https://docs.dhtmlx.com/gantt/api__gantt_gettasknode.html) now returns the correct HTML element for [split tasks](https://docs.dhtmlx.com/gantt/desktop__split_tasks.html
+)
+- Fix the issue with [horizontal scrollbars](https://docs.dhtmlx.com/gantt/desktop__specifying_columns.html#horizontalscrollbar) not being displayed when [visibility groups](https://docs.dhtmlx.com/gantt/desktop__layout_config.html#visibilitygroups) are specified in some layout configurations
+
 6.3.5
 -----
 

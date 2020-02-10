@@ -54,3 +54,5 @@ Using the date parameters of the `gantt.init` method, as well as [start_date](ap
 [fit_tasks](api/gantt_fit_tasks_config.md) setting.
 
 If you want the time scale to be dynamically adjusted according to the date range, you can either skip these parameters or [manage the time range dynamically](desktop/configuring_time_scale.md#range).
+
+{{note This method resets custom layers added to the timeline area via the api/gantt_addtasklayer.md and api/gantt_addlinklayer.md methods. Therefore, you need to redefine these ones after calling the **gantt.init** method in order for custom layers to be displayed on a page.}}

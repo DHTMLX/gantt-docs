@@ -1,6 +1,6 @@
 min_duration
 =============
-@short: Sets the minimum duration (in milliseconds) that can be set for a task during resizing.
+@short: sets the minimum duration (in milliseconds) that can be set for a task during resizing.
 @default:60*60*1000, or 3600000 ms, 1 hour
 
 @type:number 

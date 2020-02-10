@@ -48,7 +48,7 @@ gantt.addTaskLayer(function draw_deadline(task) {
     - **topmost** - (*boolean*) if true, the element will be displayed over the task (optional)
     - **filter** - (*function*) a function that takes a task object as a parameter. If returns 'false', the 'renderer' function won't be called for a task (optional)
 - Beware, custom layers will be reset after the next call of <a href="api/gantt_init.md">gantt.init</a>
-
+- Calling the [gantt.resetLayout()](api/gantt_resetlayout.md) method will also reset custom layers. In order for custom layers to be displayed on a page, you need to redefine the **gantt.addTaskLayer**  method after calling api/gantt_resetlayout.md.
 
 ##Smart rendering for custom layers
 
