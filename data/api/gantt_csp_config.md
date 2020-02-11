@@ -50,4 +50,4 @@ gantt.config.csp = false;
 
 Note, that the work of dhtmlxGantt will stop if the code implementation is blocked by the application settings.
 
-
+@changelog: added in v7.0
