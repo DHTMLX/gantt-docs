@@ -18,32 +18,30 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
-The property works only when a [grid has a horizontal scrollbar](desktop/specifying_columns.md#horizontalscrollbar). 
 
-When the value of the config is *false*, the outer width of the grid won't affect the width of the grid's columns.
+{{note The property works only when a [grid has a horizontal scrollbar](desktop/specifying_columns.md#horizontalscrollbar). }}
 
-- When the grid's width is larger than the sum of the widths of all the grid's columns, an empty space will appear on the right side of the grid.
-- When the grid's width is smaller than the sum of the widths of all the grid's columns, the horizontal scroll will appear in the grid.
+By default, dhtmlxGantt doesn't adjust the size of columns during resizing of the whole grid. 
 
-The opposite value of the config is *true*:
+Therefore, when the width of the grid increases, the width of columns will remain the same. As a result, an empty space will appear on the right side of the grid. 
+In case the width of the grid decreases, the horizontal scroll will be displayed in the grid.
+
+To make columns dependent on the grid size, set **grid_elastic_columns** to *true*:
 
 ~~~js
 gantt.config.grid_elastic_columns = true;
 ~~~
 
-Which has the following effect:
+Now, if the width of the grid is changing, the width of columns will be also resized:
 
-- When the grid's width is larger than the sum of the widths of all the grid's columns, the columns will expand to fit the size of the grid.
-- When the grid's width is smaller than the sum of the widths of all the grid's columns, the columns will shrink until they reach their [minimal width](desktop/specifying_columns.md#width).
-When all columns reach minimum widths, the horizontal scroll will appear in the grid.
-
+- if you widen the grid, the columns will expand to fit the size of the grid and occupy all the remaining space
+- if you reduce the width of the grid, the columns will shrink until they reach their [minimal width](desktop/specifying_columns.md#width). When all columns reach minimum, the horizontal scroll will appear in the grid.
 
 <img style="padding-top:25px;" src="api/elastic_false.png"/>
+
 <img style="padding-top:25px;" src="api/elastic_true.png"/>
 
 @changelog: added in v7.0
-
-
 
 
 
