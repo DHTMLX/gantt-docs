@@ -10,6 +10,15 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+6.3.7
+-----
+
+<span class='release_date'>February 12, 2020. Bugfix release</span>
+
+### Fixes
+
+- Significant performance improvement for smart rendering of chart and resource panel 
+
 6.3.6
 -----
 
