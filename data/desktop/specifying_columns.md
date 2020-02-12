@@ -342,7 +342,7 @@ Horizontal scrollbar
 You can make Grid scrollable using the **scrollable** property of the [layout](desktop/layout_config.md) configuration option. 
 [Read about binding layout views to a scrollbar](desktop/layout_config.md#scrollbar).
 
-The presence of a horizontal scrollbar in the grid allows Gantt to automatically adjust the width of the columns during resizing the width of the grid. [Read more about this functionality](api/gantt_grid_elastic_columns_config.md). 
+The presence of a horizontal scrollbar in the grid allows Gantt to automatically adjust the width of the columns during resizing the width of the grid. [Read more about how to enable this functionality](api/gantt_grid_elastic_columns_config.md). 
 
 In addition to the **scrollable** attribute, you need to add a *horizontal scrollbar element* into the layout and connect it to the grid as follows:
 
