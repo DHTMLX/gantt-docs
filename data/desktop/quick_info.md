@@ -47,7 +47,7 @@ QuickInfo object
 
 The default behavior of the **ext/dhtmlxgantt_quick_info.js** extension implies that the popup will appear over a selected task automatically.
 
-Starting from v7.0, the functionality of the Quick Info is extended; the [gantt.ext.quickInfo]() object, that provides methods for control of the popup manually, is added. 
+Starting from v7.0, the functionality of the Quick Info is extended; the [gantt.ext.quickInfo](desktop/quickinfo_ext.md) object, that provides methods for control of the popup manually, is added. 
 
 The methods available via the **gantt.ext.quickInfo** object are:
 
@@ -117,51 +117,32 @@ var task = gantt.getTask(10);
 gantt.ext.quickInfo.show(task.id);
 ~~~
 
-####**Specifying Quick Info content**
+Now, the pop-up will be rendered in **document.body** .
 
-- setContent(config: object) - fills the quick info popup.
-    - config object has the following structure:
+<img src="desktop/quick_container.png">
 
-~~~js
-{
-      	taskId: string|number
-	header: {
-		title: string,
-		date: string
-	},
-	content: string,
-	buttons: string[]
-}
-~~~
+####**Creating a custom QuickInfo**
 
+By default, a quick info popup contain a title, date, content, buttons and looks like this:
 
-http://prntscr.com/qxdtgv
+<img src="desktop/quick_default.png">
 
-All properties are optional. If no header or buttons are specified, the related areas of the quick info popup will be hidden.
-
-If the taskId is specified, the specified task will be connected to the action buttons in the popup http://prntscr.com/qxdsds
-
-Пример
+In case you want to change the appearance of the pop-up edit form or create a custom one, you may define the desired HTML content via the **gantt.ext.quickInfo.setContent()** method:
 
 ~~~js
-const quickInfo = gantt.ext.quickInfo;
-quickInfo.show(100, 100);
-quickInfo.setContent({
-	header: {
-		title: gantt.templates.quick_info_title(task.start_date, task.end_date, task),
-		date: gantt.templates.quick_info_date(task.start_date, task.end_date, task)
-	},
-	content: gantt.templates.quick_info_content(task.start_date, task.end_date, task),
-	buttons: gantt.config.quickinfo_buttons
-});
+gantt.locale.labels.custom_button = "My button"
+gantt.ext.quickInfo.setContent({
+    header:{
+        title: "My custom header",
+        date: "18th of February, 2020"
+    },
+    content: "some content here",
+    buttons: ["custom_button"]
+})
 ~~~
 
-Or
+As a result, the following quick info popup will appear on the page:
 
-~~~js
-const quickInfo = gantt.ext.quickInfo;
-quickInfo.show(100, 100);
-quickInfo.setContent({
-	content: "my custom html"
-});
-~~~
+<img src="desktop/quick_custom.png">
+
+
