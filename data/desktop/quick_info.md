@@ -18,7 +18,8 @@ To start using the extension, include the ["Quick Info"](desktop/extensions_list
 API overview
 ----------------
 
-The Quick Info extension provides a set of API that allows you to manipulate the settings of Quick Info, to control its behavior or modify the appearance of a popup:
+The Quick Info extension provides a set of API that allows you to manipulate the settings of Quick Info, to control its behavior or modify the appearance of a popup. <br>
+You may use either [the API of the gantt.ext.quickInfo object](desktop/quick_info.md#quickinfoobject) or public API of dhtmlxGantt that is listed below:
 
 **Methods**
 
@@ -52,17 +53,17 @@ Starting from v7.0, the functionality of the Quick Info is extended; the [gantt.
 The methods available via the **gantt.ext.quickInfo** object are:
 
 - **show()** - displays the quick info popup for a specified task. It takes one parameter:
-    - **id** - (*string|number*) the if of a task/link/resource
+    - **id** - (*string|number*) the id of a task/link/resource
 - **show()**  - displays the quick info popup at specific coordinates. The parameters are:
     - **top** - (*number*) the X coordinate
     - **left** - (*number*) the Y coordinate
-- **hide([force: boolean])** - hides the quick info popup. When **gantt.config.quick_info_detached** is set to *false*, the quick info will not disappear immediately, but after a short animation.
-Providing *true* will cancel the animation and will remove the popup immediately.
-- **setContainer**() - sets a container where the quick info will be displayed. 
-    - **container** - (*string|HTMLElement*) a QuickInfo container. If no custom container specified, QuickInfo will be placed into the first found node of these ones: **gantt.$task, gantt.$grid, gantt.$layout**
-- **getNode()** - return the HTMLElement of the quick info popup. Returns *null* if the quick info is not initialized
+- **hide()** - hides the quick info popup. The method can take one optional parameter:
+    - **[ force ]** - (*boolean*) defines whether the quick info will disappear immediately when [gantt.config.quick_info_detached](api/gantt_quick_info_detached_config.md) is set to *false*. Providing *true* as a parameter of the **hide** method will remove the popup immediately, otherwise - the popup will disappear after a short animation.
+- **setContainer()** - sets a container where the quick info will be displayed. 
+    - **container** - (*string|HTMLElement*) a QuickInfo container. If no custom container specified, QuickInfo will be placed into the first of the found nodes: **gantt.$task, gantt.$grid, gantt.$layout**
+- **getNode()** - returns the HTMLElement of the quick info popup. Returns *null* if the quick info is not initialized
 - **setContent(config)** - (*object*) puts the content into the quick info. It takes a configuration object of a quick info as a parameter. <br>
-The configuration object has the following structure:
+The *configuration object* has the following structure:
     - **taskId** - (*string|number*) optional, the id of the task to which the action buttons of the quick info will be connected
     - **header** - optional, the header of the pop-up edit form which may include:
         - **title** - (*string*) optional, the title of the pop-up edit form
@@ -91,7 +92,9 @@ gantt.ext.quickInfo.show(link.id);
 gantt.ext.quickInfo.show(100, 200);
 ~~~
 
-To hide a pop-up edit form, make use of the **gantt.ext.quickInfo.hide()** method:
+To hide a pop-up edit form, make use of the **gantt.ext.quickInfo.hide()** method. The method depends on the **gantt.config.quick_info_detached** config and presupposes two possible options:
+
+- when called without parameters, the pop-up edit form will be hidden from the screen after a short animation 
 
 ~~~js
 gantt.config.quick_info_detached = false;
@@ -99,27 +102,19 @@ gantt.init("gantt_here");
 
 // hide the popup after a short animation
 gantt.ext.quickInfo.hide();
+~~~
 
-or
+- if you want to hide the quick info at once, pass *true* as a parameter to the **hide** method:
+
+~~~js
+gantt.config.quick_info_detached = false;
+gantt.init("gantt_here");
 
 // hide the popup immediately
 gantt.ext.quickInfo.hide(true);
 ~~~
 
-####**Setting a container for QuickInfo** 
-
-You can use the **gantt.ext.quickInfo.setContainer()** method to make the quick info popup to be displayed in a custom container:
-
-~~~js
-const quickInfo = gantt.ext.quickInfo;
-quickInfo.setContainer(document.body); /*!*/
-var task = gantt.getTask(10);
-gantt.ext.quickInfo.show(task.id);
-~~~
-
-Now, the pop-up will be rendered in **document.body** .
-
-<img src="desktop/quick_container.png">
+Note, that if the **gantt.config.quick_info_detached** config is set to *true*, the method will always hide the popup immediately.
 
 ####**Creating a custom QuickInfo**
 
@@ -146,3 +141,25 @@ As a result, the following quick info popup will appear on the page:
 <img src="desktop/quick_custom.png">
 
 
+####**Setting a container for QuickInfo** 
+
+You can use the **gantt.ext.quickInfo.setContainer()** method to make the quick info popup to be displayed in a custom container:
+
+~~~js
+const quickInfo = gantt.ext.quickInfo;
+quickInfo.setContainer(document.body); /*!*/
+gantt.ext.quickInfo.show(1300,100);
+gantt.locale.labels.custom_button = "My button"
+gantt.ext.quickInfo.setContent({
+    header:{
+        title: "My custom header",
+        date: "18th of February, 2020"
+    },
+    content: "some content here",
+    buttons: ["custom_button"]
+});
+~~~
+
+Now, the pop-up with custom content will be rendered in **document.body** outside the container of Gantt:
+
+<img src="desktop/quick_container.png">
