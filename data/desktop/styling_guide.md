@@ -198,6 +198,27 @@ gantt.config.columns = [
 
 {{sample  07_grid/07_custom_buttons.html}}
 
+####Truncate long text with ellipsis in grid columns
+
+Gantt clipped long text in grid rows.
+
+Starting from v7.0, it is possible to truncate long content of grid rows with ellipsis. To do that, you should redefine the related css class which is **.gantt_tree_content**:
+
+~~~js
+<style>
+.gantt_tree_content {
+	overflow:hidden;
+	text-overflow: ellipsis;
+}
+</style>
+
+gantt.init("gantt_here");
+~~~
+
+<img src="desktop/truncate_text.png">
+
+{{editor	https://snippet.dhtmlx.com/5/0bfadf7d0		Truncate long text with ellipsis}}
+
 Styling Scale
 ------------
 

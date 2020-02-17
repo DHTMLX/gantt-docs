@@ -20,6 +20,41 @@ Migration from Older Versions
 	}
 </style>
 
+6.3 -> 7.0
+---------------------
+
+###Content Security Policy
+
+The **ext/dhtmlxgantt_csp.js** extension is no longer needed as it is replaced with the [csp config](api/gantt_csp_config.md) which is enabled by default; the extension should be removed from the gantt.
+
+Since the **csp** property is added to the dhtmlxGantt library, valid HTML 5 attributes, that can be used in any browser that supports HTML5 doctypes, will be assigned to all elements of Gantt. <br>
+
+Therefore, we recommend that you update already existing attributes with new ones:
+
+- "task_id" -> ["data-task-id"](api/gantt_task_attribute_config.md)
+- "link_id" -> ["data-link-id"](api/gantt_link_attribute_config.md)
+- "resource_id" -> ["data-resource-id"](api/gantt_resource_attribute_config.md)
+- "column_index" -> ["data-column-index"](api/gantt_grid_resizer_column_attribute_config.md)
+
+However, the old attributes are included in the markup, so if you don't change the attributes' names, your code will continue working. 
+
+###Styling grid cells
+
+Earlier, alignment of grid cells was accomplished via `display:inline-block`. Starting from v7.0, `display:flex` is used instead and cells are positioned inside a flex container.
+
+This change doesn't affect the UI visible to the user (it remains 100% identical) and shouldn't cause any migration issues.
+However, some regressions with styling of the grid cells may be related to this update.
+
+###"xml_date" config and template, and "xml_format" templates removed
+
+Deprecated in v6.2 config and templates are removed in v7.0 and replaced with new ones:
+
+- gantt.config.xml_date →  [gantt.config.date_format](api/gantt_date_format_config.md)
+- gantt.templates.xml_date → [gantt.templates.parse_date](api/gantt_parse_date_template.md)
+- gantt.templates.xml_format → [gantt.templates.format_date](api/gantt_format_date_template.md)
+
+If you have already defined the old names in your code, they will continue work. In other case, use a newer version of the API.
+
 6.2 -> 6.3
 ---------------
 
