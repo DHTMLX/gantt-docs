@@ -73,4 +73,4 @@ gantt.templates.format_date = function(date){
 ~~~
 
 @changelog:
-deprecated since v6.2
+deprecated since v6.2, removed since v7.0

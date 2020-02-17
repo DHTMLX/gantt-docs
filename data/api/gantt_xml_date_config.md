@@ -34,4 +34,4 @@ gantt.load("../data/tasks.json");
 	api/gantt_xml_format_template.md
     
 @changelog:
-deprecated since v6.2
+deprecated since v6.2, removed since v7.0
