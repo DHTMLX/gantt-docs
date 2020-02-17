@@ -9,7 +9,7 @@ xml_format
 gantt.templates.xml_format = function(date){
 	return gantt.date.date_to_str(gantt.config.xml_date)(date);
 };
-@template:	api_template
+@template:	api_config
 @returns:
 - text		string		html text which will be rendered in the gantt
 @descr:
