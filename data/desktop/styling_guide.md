@@ -200,7 +200,7 @@ gantt.config.columns = [
 
 ####Truncate long text with ellipsis in grid columns
 
-Gantt clipped long text in grid rows.
+Gantt shortens long text in grid rows.
 
 Starting from v7.0, it is possible to truncate long content of grid rows with ellipsis. To do that, you should redefine the related css class which is **.gantt_tree_content**:
 
