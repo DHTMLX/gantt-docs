@@ -49,6 +49,7 @@ Start
 - whatsnew.md
 - migrating.md
 - desktop/guides.md
+- desktop/video_guides.md
 - faq.md
 
 @metadescr:
