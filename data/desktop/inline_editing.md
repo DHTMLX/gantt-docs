@@ -36,6 +36,10 @@ gantt.config.columns = [
 
 {{note Read details about the *inlineEditors* object API in the desktop/inline_editors_ext.md article.}}
 
+You can have a look at the video guide that demonstrates how to implement inline editing in the grid.
+
+<iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Types of editors
 ------------------
 
