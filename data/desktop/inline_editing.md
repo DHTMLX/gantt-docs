@@ -133,7 +133,8 @@ gantt.config.columns = [
 
 {{sample 07_grid/12_inline_edit_key_nav.html}}
 
-###Custom inline editor
+Custom inline editor
+-----------------------
 
 You can also specify a custom inline editor. For this, you need to create a new editor object in the following way:
 
