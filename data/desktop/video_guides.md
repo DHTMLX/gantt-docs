@@ -1,7 +1,7 @@
 Video Guides
 ======
 
-The article provides a short review of video guides prepared for you to make Gantt easier to understand. By following these video tutorials, you can master such issues as configuring grid columns, customizing cells and headers of the grid, building a standard Gantt chart on different server-side platforms.
+The article provides a short review of video guides prepared for you to make Gantt easier to understand. <br>By following these video tutorials, you can master such issues as configuring grid columns, customizing cells and headers of the grid, building a standard Gantt chart on different server-side platforms.
 
 <table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>

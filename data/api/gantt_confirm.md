@@ -29,6 +29,8 @@ var box = gantt.confirm({
 
 @template:	api_method
 @descr:
+For details about supported configuration options of a confirm message box, see the desktop/message_boxes.md article.
+
 @relatedapi:
 - api/gantt_alert.md
 - api/gantt_message.md
