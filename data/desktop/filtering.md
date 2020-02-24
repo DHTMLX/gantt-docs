@@ -31,6 +31,6 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 }}
 
 
-You can have a look at the video guide that demonstrates how to implement filtering tasks.
+You can have a look at the video guide that shows how to implement filtering tasks.
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/LyJ3zKSrmH4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

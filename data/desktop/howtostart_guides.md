@@ -3,7 +3,7 @@ How to Start with dhtmlxGantt
 
 This section is dedicated to the very beginning of work with Gantt chart. Each chapter tells about basic Gantt initialization on different server-side platforms to suit all tastes and preferences.
 
-You can have a look at the video guide that demonstrates how to create a Gantt chart on the page and load the data into it on the example of a Node.js platform.
+You can take a look at the video guide that shows how to create a Gantt chart on the page and load the data into it on the example of a Node.js platform.
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

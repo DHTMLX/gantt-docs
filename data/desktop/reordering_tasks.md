@@ -17,7 +17,7 @@ gantt.init("gantt_here");
 
 {{sample	07_grid/02_branch_ordering.html}}
  
-You can have a look at the video guide that shows how to sort and reorder tasks in the grid.
+You can take a look at the video guide that shows how to sort and reorder tasks in the grid.
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/srtb3nYOb-E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
