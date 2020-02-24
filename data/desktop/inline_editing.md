@@ -36,7 +36,7 @@ gantt.config.columns = [
 
 {{note Read details about the *inlineEditors* object API in the desktop/inline_editors_ext.md article.}}
 
-You can have a look at the video guide that demonstrates how to implement inline editing in the grid.
+You can take a look at the video guide that shows how to implement inline editing in the grid.
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -260,3 +260,106 @@ gantt.ext.inlineEditors.setMapping(mapping);
 {{sample 07_grid/13_custom_mapping.html}}
 
 
+Validation of input values
+-------------------------------
+
+You can make mistakes while editing a cell in Grid. 
+
+To avoid saving of incorrect values you need to validate the input values before closing an editor. It can be implemented in one of two ways:
+
+-	via  the **is_valid** method  of the [custom editor object](desktop/inline_editing.md#custominlineeditor)
+-	via the **onBeforeSave** event of  the [inlineEditors object](desktop/inline_editors_ext.md)  
+
+Let’s consider behavior of the editor when validation is enabled.
+
+For example, you have opened the editor in a Grid cell via a mouse pointer. The following approach will be performed on your actions: 
+
+- Pressing Escape after editing a cell will close the editor without saving any changes. 
+- Pressing Enter will confirm and close the editor if the value is valid, otherwise the input value will be discarded.
+- Pressing Tab or using a mouse pointer while editing a cell will save the valid value and move focus to another cell, whereas the invalid value will be reset and the editor will be closed. 
+
+
+{{note For information about how to perform validation on the client side or on the server side, see the desktop/validation.md article.}}
+
+###Preventing editor from closing
+
+When validation of editors is enabled Gantt does not save incorrect input values but resets them and close the editor. So you need to open the cell and to change the values again. 
+
+A good way for preventing the editor from closing is to pop up an alert box that gives a user the opportunity to fix the incorrect value. For this purpose you need to use custom keyboard mapping, as in:
+
+~~~js
+function editAnotherCell(inlineEditors){
+  var value = inlineEditors.getValue();
+  if(confirm(`does '${value}' look ok to you?`)){
+    inlineEditors.save();
+  }
+}
+
+var mapping = {
+  init: function(inlineEditors){
+    gantt.attachEvent("onTaskClick", function (id, e) {
+      var cell = inlineEditors.locateCell(e.target);
+      if (cell && inlineEditors.getEditorConfig(cell.columnName)) {
+        if (inlineEditors.isVisible()) edit_another_cell(inlineEditors)
+        else inlineEditors.startEdit(cell.id, cell.columnName);
+        return false;
+      }
+      return true;
+    });
+    gantt.attachEvent("onEmptyClick", function () {
+      inlineEditors.hide();
+      return true;
+    });
+  },
+
+  onShow: function(inlineEditors, node){
+
+    node.onkeydown = function (e) {
+      e = e || window.event;
+      if(e.defaultPrevented){
+        return;
+      }
+
+      var keyboard = gantt.constants.KEY_CODES;
+
+      var shouldPrevent = true;
+      switch (e.keyCode) {
+        case gantt.keys.edit_save:
+          var value = inlineEditors.getValue();
+          if(confirm(`does '${value}' look ok to you?`)){
+            inlineEditors.save();
+          }
+          
+          break;
+        case gantt.keys.edit_cancel:
+          inlineEditors.hide();
+          break;
+        case keyboard.TAB:
+          if(e.shiftKey){
+            if (inlineEditors.isVisible()) editAnotherCell(inlineEditors)
+            else inlineEditors.editPrevCell(true);
+          }else{
+            if (inlineEditors.isVisible()) editAnotherCell(inlineEditors)
+            else inlineEditors.editNextCell(true);
+          }
+          break;
+        default:
+          shouldPrevent = false;
+          break;
+      }
+
+      if(shouldPrevent){
+        e.preventDefault();
+      }
+    };
+  },
+
+  onHide: function(inlineEditors, node){}
+};
+
+gantt.ext.inlineEditors.setMapping(mapping);
+
+gantt.init("gantt_here");
+~~~
+
+{{editor	https://snippet.dhtmlx.com/5da351260	Custom keyboard mapping}}
