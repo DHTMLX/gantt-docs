@@ -272,7 +272,7 @@ To avoid saving of incorrect values you need to validate the input values before
 
 Let’s consider behavior of the editor when validation is enabled.
 
-For example, you have opened the editor in a Grid cell via a mouse pointer. The following approach will be performed on your actions: 
+For example, you have opened the editor in a Grid cell via a mouse pointer. The following approach will be applied for your further action: 
 
 - Pressing Escape after editing a cell will close the editor without saving any changes. 
 - Pressing Enter will confirm and close the editor if the value is valid, otherwise the input value will be discarded.
@@ -283,7 +283,7 @@ For example, you have opened the editor in a Grid cell via a mouse pointer. The 
 
 ###Preventing editor from closing
 
-When validation of editors is enabled Gantt does not save incorrect input values but resets them and close the editor. So you need to open the cell and to change the values again. 
+When validation of editors is enabled Gantt does not save incorrect input values but resets them and closes the editor. So you need to open the cell and to change the values again. 
 
 A good way for preventing the editor from closing is to pop up an alert box that gives a user the opportunity to fix the incorrect value. For this purpose you need to use custom keyboard mapping, as in:
 
