@@ -50,6 +50,7 @@ Start
 - migrating.md
 - desktop/guides.md
 - desktop/video_guides.md
+- desktop/copyright.md
 - faq.md
 
 @metadescr:
