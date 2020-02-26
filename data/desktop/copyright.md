@@ -7,7 +7,7 @@ A compiled library **Bluebird** comes under the MIT license and is used in the J
 
 **Roboto Google font** used in our Material skin is not included in the library by default. But it is usually added manually as described in our documentation.
 
-Additionally, we use some open source libraries such as **Node.js Express module, body_parser and strip_tags**  in our samples (they can be found in the samples package, backend/package.json). However, they are not part of the Gantt library and are only used for demonstration purposes.
+Additionally, we use some open source libraries such as **Node.js Express module, body_parser and strip_tags**  in our samples (they can be found in the samples' package, backend/package.json). However, they are not part of the Gantt library and are only used for demonstration purposes.
 
 Components used in the core library of Gantt
 --------------
