@@ -10,6 +10,23 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+<b>7.0</b>
+--------------
+
+<span class='release_date'>February &&&&&&&&&, 2020. Minor update</span>
+
+### Breaking changes 
+
+The update brings multiple changes in the API methods. Check the [Migration](migrating.md#6370) article to keep in step with the latest version.
+
+- desktop/video_guides.md
+- The settings parameter is added in the api/gantt_attachevent.md method
+- The ability to [truncate long text with ellipsis in grid columns](desktop/styling_guide.md#stylinggrid)
+- api/gantt_csp_config.md config is added 
+- desktop/quick_info.md, desktop/quickinfo_ext.md object
+- api/gantt_reorder_grid_columns_config.md
+- api/gantt_grid_elastic_columns_config.md
+
 6.3.6
 -----
 
