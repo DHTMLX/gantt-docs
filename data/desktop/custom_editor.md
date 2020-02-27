@@ -56,20 +56,22 @@ Let's consider how to create the following custom editor:
 
 ~~~js
 gantt.form_blocks["my_editor"] = {
-	render:function(sns) {
-		return "<div class='dhx_cal_ltext' style='height:60px;'>Text&nbsp;"
-        +"<input type='text'><br/>Holders&nbsp;<input type='text'></div>";
+	render: function (sns) {
+		return "<div class='dhx_cal_ltext' style='height:60px;'>"+
+			"Text&nbsp;<input class='editor_description' type='text'>"+
+            "<br/>Holders&nbsp;<input class='editor_holders' type='text'>"+
+            "</div>";
 	},
-	set_value:function(node, value, task,section) {
-		node.childNodes[1].value = value || "";
-		node.childNodes[4].value = task.users || "";
+	set_value: function (node, value, task) {
+		node.querySelector(".editor_description").value = value || "";
+		node.querySelector(".editor_holders").value = task.users || "";
 	},
-	get_value:function(node, task,section) {
-		task.users = node.childNodes[4].value;
-		return node.childNodes[1].value;
+	get_value: function (node, task) {
+		task.users = node.querySelector(".editor_holders").value;
+		return node.querySelector(".editor_description").value;
 	},
-	focus:function(node) {
-		var a = node.childNodes[1];
+	focus: function (node) {
+		var a = node.querySelector(".editor_description");
 		a.select();
 		a.focus();
 	}
