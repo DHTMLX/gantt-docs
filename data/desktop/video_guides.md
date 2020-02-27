@@ -21,7 +21,7 @@ The article provides a short review of video guides prepared for you to make Gan
         <td>
 		    <span style="font-size:15px;"><a href = "https://www.youtube.com/watch?v=srtb3nYOb-E&list=PLKS_XdyIGP4PBrtXbCrkuqeP3-w7G6i4y&index=5" target="_blank">Drag-n-drop reordering of Grid columns</a></span>  
             <br>
-            The video guide shows how to enable reordering of tasks within the same Tree level, how to speed up the performance for large dataset etc.
+            The video guide shows how to enable reordering of tasks within the same Tree level, how to speed up the performance for large dataset, etc.
             <br>
             <br> Related article: desktop/reordering_tasks.md
         </td>
