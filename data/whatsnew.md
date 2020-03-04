@@ -13,19 +13,24 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 <b>7.0</b>
 --------------
 
-<span class='release_date'>February &&&&&&&&&, 2020. Minor update</span>
+<span class='release_date'>March &&&&&&&&&, 2020. Minor update</span>
 
 ### Breaking changes 
 
 The update brings multiple changes in the API methods. Check the [Migration](migrating.md#6370) article to keep in step with the latest version.
 
-- desktop/video_guides.md
-- The settings parameter is added in the api/gantt_attachevent.md method
-- The ability to [truncate long text with ellipsis in grid columns](desktop/styling_guide.md#stylinggrid)
-- api/gantt_csp_config.md config is added 
-- desktop/quick_info.md, desktop/quickinfo_ext.md object
-- api/gantt_reorder_grid_columns_config.md
-- api/gantt_grid_elastic_columns_config.md
+### New functionality
+
+- The api/gantt_grid_elastic_columns_config.md config for adjusting the size of columns during resizing of the whole grid is added
+- [Ability to reorder columns of the grid by drag and drop](api/gantt_reorder_grid_columns_config.md)
+- The [QuickInfo](desktop/quick_info.md) extension  now provides the ability to have control over the popup manually via the [methods of the gantt.ext.quickInfo object](desktop/quickinfo_ext.md)
+- Ability to [truncate long text with ellipsis in grid columns](desktop/styling_guide.md#customizationgridcolumns)
+
+### Updates
+
+- The api/gantt_csp_config.md config now provides CSP support instead of the CSP extension
+- The settings object as the third parameter of the api/gantt_attachevent.md method is added
+- desktop/video_guides.md are added in the documentation
 
 6.3.6
 -----

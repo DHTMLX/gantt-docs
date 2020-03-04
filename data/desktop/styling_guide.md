@@ -142,7 +142,7 @@ gantt.templates.grid_row_class = function(start, end, task){
 
 {{editor	https://docs.dhtmlx.com/gantt/snippet/3328e356			Coloring Grid Rows}}
 
-### Customization of the grid columns
+<h3 id="customizationgridcolumns">Customization of the grid columns</h3>
 
 dhtmlxGantt provides the possibility to modify the default appearance of the grid columns via the **template** attribute of the [**gantt.config.columns**](api/gantt_columns_config.md) configuration option.
 
