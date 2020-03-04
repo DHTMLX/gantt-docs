@@ -10,6 +10,7 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+
 <b>7.0</b>
 --------------
 
@@ -31,6 +32,15 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - The api/gantt_csp_config.md config now provides CSP support instead of the CSP extension
 - The settings object as the third parameter of the api/gantt_attachevent.md method is added
 - desktop/video_guides.md are added in the documentation
+
+6.3.7
+-----
+
+<span class='release_date'>February 12, 2020. Bugfix release</span>
+
+### Fixes
+
+- Significant performance improvement for smart rendering of chart and resource panel 
 
 6.3.6
 -----
