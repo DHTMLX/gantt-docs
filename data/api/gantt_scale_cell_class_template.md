@@ -44,6 +44,7 @@ gantt.templates.scale_cell_class = function(date){
  	desktop/custom_scale.md
 	desktop/highlighting_time_slots.md
 	desktop/working_time.md
+    desktop/configuring_time_scale.md#styling
 @relatedsample:
 	04_customization/06_highlight_weekend.html
 
