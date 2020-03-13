@@ -148,7 +148,6 @@ The default working time is the following:
 
 (*hours configuration is taken into account only when api/gantt_duration_unit_config.md is less than a day (hours or minutes)*).
 
-
 To change the default working time, use the api/gantt_setworktime.md method:
 
 {{snippet
@@ -156,14 +155,14 @@ Setting a custom working time
 }}
 ~~~js
 //changes the working time of working days
-gantt.setWorkTime({ hours:[9,18] });
+gantt.setWorkTime({ hours:["9:00-18:00"] });
 
 //makes all Fridays days-off
 gantt.setWorkTime({ day:5, hours:false });
 
 //changes the working time for Fridays and Saturdays
-gantt.setWorkTime({day : 5, hours : [8,12]});
-gantt.setWorkTime({day : 6, hours : [8,12]});
+gantt.setWorkTime({day : 5, hours : ["8:00-12:00"]});
+gantt.setWorkTime({day : 6, hours : ["8:00-12:00"]});
 
 //makes a specific date a working day 
 gantt.setWorkTime({date : new Date(2019, 2, 31)});
@@ -176,11 +175,31 @@ gantt.setWorkTime({date:new Date(2019,0,1), hours:false})
 09_worktime/04_custom_workday_duration.html
 }}
 
+To specify the working time not only from an hour to hour (e.g."8:00-12:00") but also including minutes (e.g. "8:15-12:45"), set the api/gantt_duration_unit_config.md config to *"minute"*.
+
+{{snippet
+Setting a custom working time up to minutes
+}}
+~~~js
+gantt.config.duration_unit = "minute";
+
+// sets the working time up to minutes
+gantt.setWorkTime({hours:["8:15-12:45"]});
+~~~
+
+{{note The format of the working time that was used up to version 7.0
+will continue working as before:
+~~~js
+gantt.setWorkTime({hours:[9, 18]})
+~~~
+}}
+
+
 Note, each next call of the method for the same date will re-write the previous working-time rule. So, if you need to unset some rule, call the api/gantt_setworktime.md method with other configuration: 
 
 ~~~js
-gantt.setWorkTime({hours:[8,12]});
-gantt.setWorkTime({hours:[13,17]});
+gantt.setWorkTime({hours:["8:00-12:00"]});
+gantt.setWorkTime({hours:["13:00-17:00"]});
 //the result of following commands will be the working time 13:00-17:00
 //and not a mixin of both commands
 ~~~
@@ -190,10 +209,10 @@ gantt.setWorkTime({hours:[13,17]});
 You can unset a working time by using the api/gantt_unsetworktime.md method:
 
 ~~~js
-//changes the working time of working days from [8,17] to [8,12]
-gantt.setWorkTime({hours:[8,12]});
+//changes the working time of working days from ["8:00-17:00"] to ["8:00-12:00"]
+gantt.setWorkTime({hours:["8:00-12:00"]});
 //unsets the working time
-gantt.unsetWorkTime({hours:[8,12]});
+gantt.unsetWorkTime({hours:["8:00-12:00"]});
 ~~~
 
 
@@ -207,7 +226,7 @@ gantt.setWorkTime({date:new Date(2019,0,1), hours:false});
 gantt.isWorkTime(new Date(2019,0,1)) // -> false  /*!*/
 
 // makes 15 March, 2019 a working day from 9:00 till 18:00 
-gantt.setWorkTime({date : new Date(2019, 2, 15), hours:[9,18]});
+gantt.setWorkTime({date : new Date(2019, 2, 15), hours:["8:00-17:00"]});
 gantt.isWorkTime(new Date(2019, 2, 15,10,0), "hour"); // -> true  /*!*/
 gantt.isWorkTime(new Date(2019, 2, 15,8,0), "hour"); // ->false  /*!*/
 ~~~
@@ -221,7 +240,7 @@ gantt.isWorkTime(new Date(2019, 2, 15,8,0), "hour"); // ->false  /*!*/
 To get the working hours of the specified date, use the api/gantt_getworkhours.md method:
 
 ~~~js
-gantt.getWorkHours(new Date(2019,3,30))// -> [8, 17]
+gantt.getWorkHours(new Date(2019,3,30))// -> ["8:00-17:00"]
 ~~~
 
 
@@ -300,7 +319,7 @@ var calendarId = gantt.addCalendar(calendar);
 var calendarId = gantt.addCalendar({
     id:"custom", // optional
     worktime: {
-        hours: [8, 17],
+        hours: ["8:00-17:00"],
         days: [ 1, 1, 1, 1, 1, 1 ,1]
     }
 });
@@ -424,7 +443,7 @@ You should pass the calendar id to this method:
 gantt.addCalendar({
     id:"custom",
     worktime: {
-        hours: [8, 17],
+        hours: ["8:00-17:00"],
         days: [ 1, 1, 1, 1, 1, 1 ,1]
     }
 });
@@ -441,7 +460,7 @@ To assign a working calendar to a task, you need to set the calendar id and the 
 gantt.addCalendar({
     id:"custom", // optional
     worktime: {
-        hours: [8, 17],
+        hours: ["8:00-17:00"],
         days: [ 1, 1, 1, 1, 1, 1 ,1]
     }
 });
