@@ -42,6 +42,7 @@ Properties
 - api/gantt_drag_timeline_config.md - configures the behavior of the dhtmlxgantt_drag_timeline extension
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
+- api/gantt_dynamic_resource_calendars_config.md - 
 - api/gantt_editable_property_config.md - changes the name of a property that affects the editing ability  of tasks/links in the read-only Gantt chart
 - api/gantt_editor_types_config.md - an object that contains definitions of inline editors
 - api/gantt_end_date_config.md - sets the end value of the time scale
@@ -192,6 +193,7 @@ Properties
 - api/gantt_drag_timeline_config.md
 - api/gantt_duration_step_config.md
 - api/gantt_duration_unit_config.md
+- api/gantt_dynamic_resource_calendars_config.md
 - api/gantt_editable_property_config.md
 - api/gantt_editor_types_config.md
 - api/gantt_end_date_config.md

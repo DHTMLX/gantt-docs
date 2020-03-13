@@ -152,6 +152,7 @@ Gantt API
 - api/gantt_isworktime.md - checks whether the specified date is working or not
 - api/gantt_load.md - loads data to the gantt from an external data source
 - api/gantt_locate.md - gets the id of a task from the specified HTML event
+- api/gantt_mergecalendars.md - 
 - api/gantt_message.md - calls a message box of the specified type
 - api/gantt_mixin.md - adds properties of the 'source' object into the 'target' object
 - api/gantt_modalbox.md - calls a modalbox
@@ -355,6 +356,7 @@ Gantt API
 - api/gantt_drag_timeline_config.md - configures the behavior of the dhtmlxgantt_drag_timeline extension
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
+- api/gantt_dynamic_resource_calendars_config.md - 
 - api/gantt_editable_property_config.md - changes the name of a property that affects the editing ability  of tasks/links in the read-only Gantt chart
 - api/gantt_editor_types_config.md - an object that contains definitions of inline editors
 - api/gantt_end_date_config.md - sets the end value of the time scale

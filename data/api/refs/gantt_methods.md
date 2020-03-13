@@ -148,6 +148,7 @@ Methods
 - api/gantt_isworktime.md - checks whether the specified date is working or not
 - api/gantt_load.md - loads data to the gantt from an external data source
 - api/gantt_locate.md - gets the id of a task from the specified HTML event
+- api/gantt_mergecalendars.md - 
 - api/gantt_message.md - calls a message box of the specified type
 - api/gantt_mixin.md - adds properties of the 'source' object into the 'target' object
 - api/gantt_modalbox.md - calls a modalbox
@@ -341,6 +342,7 @@ Methods
 - api/gantt_isworktime.md
 - api/gantt_load.md
 - api/gantt_locate.md
+- api/gantt_mergecalendars.md
 - api/gantt_message.md
 - api/gantt_mixin.md
 - api/gantt_modalbox.md
