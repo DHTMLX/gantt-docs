@@ -11,6 +11,7 @@ Others
 - api/gantt_date_other.md - a set of date formatting methods
 - api/gantt_env_other.md - a set of flags which describe current environment
 - api/gantt_ext_other.md - an object that stores various extensions
+- api/gantt_i18n_other.md - 
 - api/gantt_json_other.md - specifies JSON serialization and parsing
 - api/gantt_keys_other.md - defines the hot keys for the Gantt chart
 - api/gantt_license_other.md - returns the license name of dhtmlxGantt
@@ -33,6 +34,7 @@ Others
 - api/gantt_date_other.md
 - api/gantt_env_other.md
 - api/gantt_ext_other.md
+- api/gantt_i18n_other.md
 - api/gantt_json_other.md
 - api/gantt_keys_other.md
 - api/gantt_license_other.md
