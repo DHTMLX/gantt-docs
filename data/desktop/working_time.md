@@ -546,6 +546,38 @@ As a value of this attribute, use the key of the necessary calendar from the "us
 
 {{note Note that when a task has both a custom and a resource calendars, the custom calendar has a higher priority and overrides the resource calendar settings.}}
 
+<h3 id="mergingcalendars">Merging multiple calendars</h3>
+
+Starting from v7.0, it is possible to merge multiple calendars into one. <br>
+For example, you want to set two or more resources with different working calendars for the same task. The working hours of the first one are from 9:00 to 15:00 while the working time of another is from 12:00 to 17:00.  As a result of their merging, you'll get one calendar with working hours from 12:00 to 15:00.
+
+Setting the api/gantt_dynamic_resource_calendars_config.md config to *true* will enable this feature automatically: 
+
+~~~js
+gantt.config.dynamic_resource_calendars = true;
+~~~
+
+But you can also merge two calendars manually with the help of the api/gantt_mergecalendars.md method:
+
+~~~js
+const johnCalendarId = gantt.addCalendar({
+    worktime: {
+        hours: ["0:00-24:00"],
+        days: [0, 1, 1, 1, 1, 1, 0]
+    }
+});
+const mikeCalendarId = gantt.addCalendar({
+    worktime: {
+        hours: ["8:00-12:00", "13:00-17:00"],
+        days: [0, 1, 1, 1, 1, 1, 0]
+    }
+});
+
+const joinedCalendar = gantt.mergeCalendars(
+    gantt.getCalendar(mikeCalendarId),
+    gantt.getCalendar(johnCalendarId)
+);
+~~~
 
 ## Assigning Calendar to Project
 
