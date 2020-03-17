@@ -492,46 +492,39 @@ It is also possible to assign a particular working calendar to tasks that requir
 
 For example, you can set individual calendars for tasks, depending on a user a task is assigned to. The order of your actions will be as follows:
 
-- add the desired calendar for each user 
+- define the property of a task object that will store a resource id. In the example below the property named **user** will store ids of users:
 
 ~~~js
-var johnCalendarId = gantt.addCalendar({
-	worktime: {
-		days: [0, 1, 1, 1, 1, 1, 0]
-	}
-}),
-
-var mikeCalendarId = gantt.addCalendar({
-	worktime: {
-		days: [1, 0, 0, 0, 0, 0, 1]
-	}
-}),
-
-var annaCalendarId = gantt.addCalendar({
-	worktime: {
-		days: [0, 1, 1, 1, 0, 1, 1]
-	}
-});
+gantt.config.resource_property = "user";
 ~~~
 
-- use the api/gantt_resource_calendars_config.md configuration option to group calendars into one object.
-In the example below we add a "user" object and bind calendars to different users inside it:
+- use the api/gantt_resource_calendars_config.md configuration option to add the desired calendar for each user and group calendars into one object.
 
 ~~~js
 gantt.config.resource_calendars = {
-	"user":{
-		1 : johnCalendarId,
-		2 : mikeCalendarId,
-		3 : annaCalendarId
-	}
+    1 : gantt.addCalendar({
+        worktime: {
+            days: [0, 1, 1, 1, 1, 1, 0]
+        }
+    }),
+    2 : gantt.addCalendar({
+        worktime: {
+            days: [1, 0, 0, 0, 0, 0, 1]
+        }   
+    }),
+    3 : gantt.addCalendar({
+        worktime: {
+            days: [0, 1, 1, 1, 0, 1, 1]
+        }
+    })
 };
 ~~~
 
-The "user" object includes a set of *key:value* pairs, where key is the number of the user and value corresponds to the 
-id of the calendars we have specified at the previous step.
+The object includes a set of *key:value* pairs, where key is the id of the resource and value corresponds to the 
+id of the calendars returned by the api/gantt_addcalendar.md method.
 
 - specify the **user** attribute in task config objects. 
-As a value of this attribute, use the key of the necessary calendar from the "user" object defined in the **resource_calendars** configuration option:
+As a value of this attribute, use the key of the necessary calendar from the object defined in the **resource_calendars** configuration option:
 
 ~~~js
 { "id":1, "user":"1", "text":"Project #2", "start_date":"01-04-2019", "duration":"5" },
