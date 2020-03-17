@@ -557,6 +557,8 @@ Setting the api/gantt_dynamic_resource_calendars_config.md config to *true* will
 gantt.config.dynamic_resource_calendars = true;
 ~~~
 
+{{sample 09_worktime/10_merge_calendars.html}}
+
 But you can also merge calendars manually with the help of the api/gantt_mergecalendars.md method:
 
 ~~~js

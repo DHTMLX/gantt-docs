@@ -36,3 +36,4 @@ desktop/working_time.md#assigningcalendartoresource
 @relatedapi:
 api/gantt_addcalendar.md
 api/gantt_dynamic_resource_calendars_config.md
+api/gantt_getresourcecalendar.md
