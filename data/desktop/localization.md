@@ -2,7 +2,7 @@ Localization
 ================
 
 Localization allows you to present the interface of the Gantt chart in the language you'd like: English, Spanish, French, etc.
-By default, dhtmlxGantt provides support for the [English locale](api/gantt_locale_other.md).
+By default, dhtmlxGantt uses [English locale](api/gantt_locale_other.md).
 
 <img style="padding-top:15px; padding-bottom:15px;" src="desktop/gantt_localized.png"/>
 
@@ -10,24 +10,27 @@ By default, dhtmlxGantt provides support for the [English locale](api/gantt_loca
 Activating a locale
 ---------------------------------------------
 
-To implement the Gantt chart in non-English language, you need to include the locale file on the page. Gantt has the predefined locales for main languages.
-All locale files are stored in sources/locale folder as sources/locale/locale_{name}.js
+To implement the Gantt chart in non-English language, you need to activate the necessary locale via the **setLocale** method of the [gantt.i18n](api/gantt_i18n_other.md) object. 
 
-
-~~~html
-<script src="../codebase/dhtmlxgantt.js"></script>
-<link rel="stylesheet" href="../codebase/dhtmlxgantt.css">
-
-<script src="../codebase/locale/locale_fr.js" charset="utf-8"></script>
+~~~js
+gantt.i18n.setLocale("fr");	
 ~~~
 
+You can use and update any of the [predefined locales](#predefinedlocales) that are bundled with the dhtmlxgantt.js file or define a custom locale.
+
 {{note
-Make sure that you use **charset="utf-8"**, because all locales are stored as UTF-8 text.
+  The locale can be switched dynamically but the changes will be applied only after a complete redrawing of the Gantt chart either with the **gantt.render()** or **gantt.init()** call.
 }}
+
+~~~js
+	gantt.i18n.setLocale("fr");
+	gantt.init("gantt_here");
+~~~
 
 {{sample
 	01_initialization/12_localization.html
 }}
+
 
 Predefined locales
 -------------------
@@ -36,231 +39,231 @@ Predefined locales
 <tr><td style='font-weight:bold; border:1px solid #AAA;'>
  Language      
 </td><td style='font-weight:bold; border:1px solid #AAA;'>
- Locale file       
+ Language code       
 </td><td style='font-weight:bold; border:1px solid #AAA;'>
  Translation status
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Arabic 
 </td><td style='border:1px solid #AAA;'>
- locale_ar.js 
+ ar 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Belarusian 
 </td><td style='border:1px solid #AAA;'>
- locale_be.js 
+ be 
 </td><td style='border:1px solid #AAA;'>
  full
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  English 
 </td><td style='border:1px solid #AAA;'>
- locale.js
+ en
 </td><td style='border:1px solid #AAA;'>
  full
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Catalan 
 </td><td style='border:1px solid #AAA;'>
- locale_ca.js 
+ ca 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Chinese 
 </td><td style='border:1px solid #AAA;'>
- locale_cn.js 
+ cn 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Croatian 
 </td><td style='border:1px solid #AAA;'>
- locale_hr.js 
+ hr 
 </td><td style='border:1px solid #AAA;'>
  full
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Czech 
 </td><td style='border:1px solid #AAA;'>
- locale_cs.js 
+ cs 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Danish 
 </td><td style='border:1px solid #AAA;'>
- locale_da.js 
+ da 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Dutch 
 </td><td style='border:1px solid #AAA;'>
- locale_nl.js 
+ nl 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Finnish 
 </td><td style='border:1px solid #AAA;'>
- locale_fi.js 
+ fi 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  French 
 </td><td style='border:1px solid #AAA;'>
- locale_fr.js
+ fr
 </td><td style='border:1px solid #AAA;'>
  full
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  German 
 </td><td style='border:1px solid #AAA;'>
- locale_de.js 
+ de 
 </td><td style='border:1px solid #AAA;'>
  full
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Greek 
 </td><td style='border:1px solid #AAA;'>
- locale_el.js 
+ el 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Hebrew 
 </td><td style='border:1px solid #AAA;'>
- locale_he.js 
+ he 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Hungarian 
 </td><td style='border:1px solid #AAA;'>
- locale_hu.js 
+ hu 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Indonesian 
 </td><td style='border:1px solid #AAA;'>
- locale_id.js 
+ id 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Italian 
 </td><td style='border:1px solid #AAA;'>
- locale_it.js 
+ it 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Japanese 
 </td><td style='border:1px solid #AAA;'>
- locale_jp.js 
+ jp 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Korean 
 </td><td style='border:1px solid #AAA;'>
- locale_kr.js 
+ kr 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Norwegian 
 </td><td style='border:1px solid #AAA;'>
- locale_no.js 
+ no 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Norwegian Bokmål
 </td><td style='border:1px solid #AAA;'>
- locale_nb.js 
+ nb 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Persian 
 </td><td style='border:1px solid #AAA;'>
- locale_fa.js 
+ fa 
 </td><td style='border:1px solid #AAA;'>
  full
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Polish 
 </td><td style='border:1px solid #AAA;'>
- locale_pl.js 
+ pl 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Portuguese 
 </td><td style='border:1px solid #AAA;'>
- locale_pt.js 
+ pt 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Romanian 
 </td><td style='border:1px solid #AAA;'>
- locale_ro.js 
+ ro 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Russian 
 </td><td style='border:1px solid #AAA;'>
- locale_ru.js 
+ ru 
 </td><td style='border:1px solid #AAA;'>
  full
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Slovak
 </td><td style='border:1px solid #AAA;'>
- locale_sk.js 
+ sk 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Slovenian 
 </td><td style='border:1px solid #AAA;'>
- locale_si.js 
+ si 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Spanish 
 </td><td style='border:1px solid #AAA;'>
- locale_es.js 
+ es 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Swedish 
 </td><td style='border:1px solid #AAA;'>
- locale_sv.js 
+ sv 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Turkish 
 </td><td style='border:1px solid #AAA;'>
- locale_tr.js 
+ tr 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
 <tr><td style='border:1px solid #AAA;'>
  Ukrainian 
 </td><td style='border:1px solid #AAA;'>
- locale_ua.js 
+ ua 
 </td><td style='border:1px solid #AAA;'>
  partial
 </td></tr>
@@ -269,79 +272,121 @@ Predefined locales
 Creating a custom locale 
 -------------------------------
 
-**Note**, 
-
-- Locale is created in a separate js file named as **"locale_[xx]"**, where **[xx]** is a two-letter language code.
-- You can send your custom locale file to **support@dhtmlx.com** - so we will include it in the next release.
-
-
-The easiest way to create a custom locale is to make a copy of the default (English) locale  - **<i>gantt/sources/locale/locale.js</i>**, 
+The easiest way to create a custom locale is to make a copy of the default (English) locale from the sample below, 
 and translate all strings from it into the required language.
 
+The custom locale can be applied to the Gantt chart in two ways:
 
+- either override the current locale via passing an object of the locale as a parameter to the **setLocale** method:
+
+~~~js
+gantt.i18n.setLocale(localeObject);	
+~~~
+
+Note, if you provide a partial locale object, gantt will add your labels into the current locale:
+
+~~~js
+gantt.i18n.setLocale({
+	labels: {
+		new_task: "New task"
+	}
+});	
+~~~
+
+- or, if you need to switch between several locales, define the locale with a custom language code and switch the gantt to it later:
+
+~~~js
+gantt.i18n.addLocale("lang", localeObject);	
+gantt.i18n.setLocale("lang");
+~~~
+
+**Note**, 
+
+- You can send your custom locale file to **support@dhtmlx.com** - so we will include it in the next release.
+- The currently active locale is also available in the **gantt.locale** object
 - **monthFull** - the full names of months starting from January;
 - **monthShort** - the short names of months starting from January;
 - **dayFull** - the full names of week days starting from Sunday;
 - **dayShort** - the short names of week days starting from Sunday.
 
 {{snippet
-Creating a French (France) locale. The "locale_fr.js" file
+English locale definition
 }}
 ~~~js
-gantt.locale = {
+gantt.i18n.setLocale({
 	date: {
-		month_full: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
-        	"Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
-		month_short: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", 
-        	"Juil", "Aôu", "Sep", "Oct", "Nov", "Déc"],
-		day_full: ["Dimanche", "Lundi", "Mardi", "Mercredi", 
-        	"Jeudi", "Vendredi", "Samedi"],
-		day_short: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"]
+		month_full: ["January", "February", "March", "April", "May", "June", 
+			"July", "August", "September", "October", "November", "December"],
+		month_short: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", 
+			"Aug", "Sep", "Oct", "Nov", "Dec"],
+		day_full: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+			 "Friday", "Saturday"],
+		day_short: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 	},
-	labels:{
-		new_task:"Tâche neuve",
-		icon_save:"Enregistrer",
-		icon_cancel:"Annuler",
-		icon_details:"Détails",
-		icon_edit:"Modifier",
-		icon_delete:"Effacer",
-		confirm_closing:"",//Vos modifications seront perdus, êtes-vous sûr ?
-		confirm_deleting:"L'événement sera effacé sans appel, êtes-vous sûr ?",
+	labels: {
+		new_task: "New task",
+		icon_save: "Save",
+		icon_cancel: "Cancel",
+		icon_details: "Details",
+		icon_edit: "Edit",
+		icon_delete: "Delete",
+		confirm_closing: "",// Your changes will be lost, are you sure?
+		confirm_deleting: "Task will be deleted permanently, are you sure?",
+		section_description: "Description",
+		section_time: "Time period",
+		section_type: "Type",
 
-		section_description:"Description",
-		section_time:"Période",
-		section_type:"Type",
-
-        /* grid columns */
-
-        column_text :  "Tâche neuve",
-        column_start_date : "Date initiale",
-        column_duration : "Durée",
-        column_add : "",
-
+		/* grid columns */
+		column_wbs: "WBS",
+		column_text: "Task name",
+		column_start_date: "Start time",
+		column_duration: "Duration",
+		column_add: "",
 
 		/* link confirmation */
-
-		confirm_link_deleting:"seront supprimées",
-		link_start: "(début)",
-		link_end: "(fin)",
+		link: "Link",
+		confirm_link_deleting: "will be deleted",
+		link_start: " (start)",
+		link_end: " (end)",
 
 		type_task: "Task",
 		type_project: "Project",
 		type_milestone: "Milestone",
 
+		minutes: "Minutes",
+		hours: "Hours",
+		days: "Days",
+		weeks: "Week",
+		months: "Months",
+		years: "Years",
 
-    	minutes: "Minutes",
-    	hours: "Heures",
-    	days: "Jours",
-    	weeks: "Semaine",
-    	months: "Mois",
-    	years: "Années"
+		/* message popup */
+		message_ok: "OK",
+		message_cancel: "Cancel",
+
+		/* constraints */
+		section_constraint: "Constraint",
+		constraint_type: "Constraint type",
+		constraint_date: "Constraint date",
+		asap: "As Soon As Possible",
+		alap: "As Late As Possible",
+		snet: "Start No Earlier Than",
+		snlt: "Start No Later Than",
+		fnet: "Finish No Earlier Than",
+		fnlt: "Finish No Later Than",
+		mso: "Must Start On",
+		mfo: "Must Finish On",
+
+		/* resource control */
+		resources_filter_placeholder: "type to filter",
+		resources_filter_label: "hide empty"
 	}
-};
+});
 ~~~
 
 - If the **confirm_closing** or **confirm_deleting** label is not defined - the related confirm dialog will not be shown at all (auto-confirm); 
 - The **section_{name}** label refers to the lightbox section of the related name.
 - The **new_task** label defines the default text of a new event.
+
+
 
