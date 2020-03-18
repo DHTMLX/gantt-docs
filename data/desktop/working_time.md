@@ -492,7 +492,7 @@ It is also possible to assign a particular working calendar to tasks that requir
 
 For example, you can set individual calendars for tasks, depending on a user a task is assigned to. The order of your actions will be as follows:
 
-- define the property of a task object that will store a resource id. In the example below the property named **user** will store ids of users:
+- define the property of a task object that will store a resource id via the api/gantt_resource_property_config.md configuration attribute. In the example below the property named **user** will store ids of users:
 
 ~~~js
 gantt.config.resource_property = "user";
@@ -604,8 +604,9 @@ calendars unlike their parent projects:
 
 ##Changing Calendar Dynamically
 
-Gantt won't pick up the change of a task calendar automatically, so the task schedule should be updated manually when its calendar changes:
+Starting from v7.0, Gantt picks up the change of a task calendar  and recalculates  time of tasks automatically.
 
+However, you can update the task schedule manually when its calendar changes.
 For example, a calendar can be changed from lightbox:
 
 ~~~js
