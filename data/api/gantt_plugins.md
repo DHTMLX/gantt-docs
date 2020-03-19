@@ -15,53 +15,15 @@ plugins
 
 @example:
 gantt.plugins({
-	quick_info: true
+	quick_info: true,
+    keyboard_navigation: true,
+	undo: true
 });
 
 @template:	api_method
 @descr:
 
-<table style='border-collapse: collapse; color:#444444' >
-<tr><td style='font-weight:bold; border:1px solid #AAA;'>
- Extensions      
-</td><td style='font-weight:bold; border:1px solid #AAA;'>
- Description       
-</td><td style='font-weight:bold; border:1px solid #AAA;'>
- Related articles
-</td></tr>
-<tr><td style='border:1px solid #AAA;'>
- api/gantt_auto_scheduling_config.md (PRO) 
-</td><td style='border:1px solid #AAA;'>
- Allows you to schedule tasks automatically depending on relations between them 
-</td><td style='border:1px solid #AAA;'>
- desktop/auto_scheduling.md
-</td></tr>
-<tr><td style='border:1px solid #AAA;'>
- api/gantt_click_drag_config.md
-</td><td style='border:1px solid #AAA;'>
- Provides the possibility to create and select tasks with drag-n-drop. 
-</td><td style='border:1px solid #AAA;'>
- desktop/advanced_dnd.md
-</td></tr>
-
-</table>
-
-
-
-
-и так далее
-	
-	critical_path,
-	drag_timeline,
-	fullscreen,
-	keyboard_navigation,
-	quick_info,
-	tooltip,
-	undo,
-	grouping,
-	marker,
-	multiselect,
-	overlay
+@related: desktop/extensions_list.md
 
 
 @changelog: added in v7.0

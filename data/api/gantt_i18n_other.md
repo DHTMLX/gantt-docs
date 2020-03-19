@@ -16,7 +16,7 @@ i18n
 @descr:
 The **i18n** object provides the following methods:
 
-- **addLocale(languageCode, localeObject)** - adds a new custom locale in Gantt. 
+- **addLocale(languageCode, localeObject)** - adds a new custom locale in Gantt 
 	- **languageCode** - (*string*) a two-letter language code 
 	- **localeObject** - (*object*) an object of the locale
 - **setLocale(localeObject: string|object)** - activates a specified locale
