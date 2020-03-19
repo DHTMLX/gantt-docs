@@ -9,17 +9,6 @@
 	
 	<script src="../../gantt/codebase/dhtmlxgantt.js" type="text/javascript" charset="utf-8"></script>
 
-	<script src="../../gantt/codebase/ext/dhtmlxgantt_tooltip.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/dhtmlxgantt_quick_info.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/dhtmlxgantt_critical_path.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/dhtmlxgantt_marker.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/dhtmlxgantt_multiselect.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/dhtmlxgantt_grouping.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/dhtmlxgantt_auto_scheduling.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/dhtmlxgantt_fullscreen.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/dhtmlxgantt_undo.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/dhtmlxgantt_smart_rendering.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../../gantt/codebase/ext/dhtmlxgantt_keyboard_navigation.js" type="text/javascript" charset="utf-8"></script>
 	<script src="https://export.dhtmlx.com/gantt/api.js"></script>
 
 	<script type="text/javascript">
@@ -42,6 +31,21 @@
 			Freid.root = "";
 			Freid.hideView = { };
 
+			gantt.plugins({
+				auto_scheduling: true,
+				click_drag: true,
+				critical_path: true,
+				drag_timeline: true,
+				fullscreen: true,
+				keyboard_navigation: true,
+				quick_info: true,
+				tooltip: true,
+				undo: true,
+				grouping: true,
+				marker: true,
+				multiselect: true,
+				overlay: true
+			});
 			//fill templates
 			gantt.skin = "terrace";
 			gantt.init("gantt_temp");
