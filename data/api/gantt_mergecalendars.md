@@ -34,7 +34,7 @@ gantt.getResourceCalendar(johnCalendarId)
 
 @template:	api_method
 @descr:
-You can also specify a set of [calendars' object](api/gantt_calendar_other.md) as parameters of the **mergeCalendars** method: 
+You can also specify a set of [objects of calendars](api/gantt_calendar_other.md) as parameters of the **mergeCalendars** method: 
 
 ~~~js
 // pass calendars as arguments 
