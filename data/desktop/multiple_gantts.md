@@ -59,6 +59,8 @@ const gantt = Gantt.getGanttInstance({
 });
 ~~~
 
+As a result, you will get an initialized Gantt chart with the specified settings.
+
 The config object can contain the following properties:
 
 - **container** - (*string|HTMLElement*) an HTML container (or its id) that the Gantt chart will be displayed in. If not specified, Gantt will be initialized without a container.
@@ -86,7 +88,7 @@ const gantt = Gantt.getGanttInstance({
 - **plugins** - (*object*) extensions that need to be activated
 
 **Note**, that calling the **Gantt.getGanttInstance()** method without parameters will return the gantt object with default configuration settings.
-Therefore, you need to configure your new instance, initialize it and populate with data, as usual.
+Therefore, you will need to configure your new instance, initialize it and populate with data, as usual.
 
 Let's take a simple example: 2 Gantt charts, one under another: 
 
