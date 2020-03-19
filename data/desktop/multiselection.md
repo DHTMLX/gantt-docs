@@ -1,7 +1,7 @@
 Multi-Task Selection 
 ===========================================
 
-Starting from version 3.2, the library provides the **ext/dhtmlxgantt_multiselect.js** extension that allows you to select multiple tasks at once.
+Starting from version 3.2, the library provides the **multiselect** extension that allows you to select multiple tasks at once.
 
 <div style="text-align:center;"><img src="desktop/multiselection.png"/></div>
 
@@ -9,7 +9,7 @@ Starting from version 3.2, the library provides the **ext/dhtmlxgantt_multiselec
 
 Activating multi-task selection
 --------------------------------------
-To activate multi-task selection for tasks, include the multiselect extension file on the page:
+To activate multi-task selection for tasks, enable it using the [gantt.plugins](api/gantt_plugins.md) method:
 
 ~~~js
 <!DOCTYPE html>
@@ -17,9 +17,11 @@ To activate multi-task selection for tasks, include the multiselect extension fi
 <head>
    <script src="codebase/dhtmlxgantt.js"></script>   
    <link href="codebase/dhtmlxgantt.css" rel="stylesheet">   
-   <script src="codebase/ext/dhtmlxgantt_multiselect.js"></script>  /*!*/
 </head>
 <body>
+    gantt.plugins({ /*!*/
+        multiselect: true /*!*/
+    }); /*!*/
     //your code will be here
 </body>
 </html>

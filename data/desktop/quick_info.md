@@ -9,10 +9,12 @@ The library includes the **ext/dhtmlxgantt_quick_info.js** extension that allows
 <img src="desktop/quick_info.png">
 
 
-To start using the extension, include the ["Quick Info"](desktop/extensions_list.md#quickinfo) file on the page.
+To start using the extension, enable the ["Quick Info"](desktop/extensions_list.md#quickinfo) plugin using the [gantt.plugins](api/gantt_plugins.md) method.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxgantt_quick_info.js"></script>
+gantt.plugins({
+	quick_info: true
+});
 ~~~
 
 API overview

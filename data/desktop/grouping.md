@@ -9,7 +9,7 @@ The library provides the **ext/dhtmlxgantt_grouping.js** extension that allows y
 
 
 {{note
-To start using the extension, include the **ext/dhtmlxgantt_grouping.js** file on the page.
+To start using the extension, enable it using the [gantt.plugins](api/gantt_plugins.md) method.
 }}
 
 
@@ -19,9 +19,11 @@ To start using the extension, include the **ext/dhtmlxgantt_grouping.js** file o
 <head>
    <script src="codebase/dhtmlxgantt.js"></script>   
    <link href="codebase/dhtmlxgantt.css" rel="stylesheet">   
-   <script src="codebase/ext/dhtmlxgantt_grouping.js"></script>  /*!*/
 </head>
 <body>
+    gantt.plugins({
+        grouping: true
+    });
     //your code will be here
 </body>
 </html>

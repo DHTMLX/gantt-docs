@@ -10,10 +10,12 @@ This extension provides an API that expands the component to the fullscreen mode
 
 For older browsers it simply allows extending Gantt to 100% of window size.
 
-To enable fullscreen support, include the *dhtmlxgantt_fullscreen.js* extension on the page:
+To enable fullscreen support, enable it using the [gantt.plugins](api/gantt_plugins.md) method:
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_fullscreen.js"></script>
+~~~js
+gantt.plugins({
+	fullscreen: true
+});
 ~~~
 
 The component itself doesn't have a UI control that toggles this mode, you need to add it somewhere to your page or copy the one from example:

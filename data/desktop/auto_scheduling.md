@@ -16,10 +16,12 @@ This feature allows you to generate and maintain project schedule by specifying 
 How to use
 --------------
 
-To use the auto scheduling functionality, you should include the **dhtmlxgantt_auto_scheduling.js** extension on the page:
+To use the auto scheduling functionality, you should enable it using the [gantt.plugins](api/gantt_plugins.md) method:
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_auto_scheduling.js"></script>
+~~~js
+gantt.plugins({
+	auto_scheduling: true
+});
 ~~~
 
 And set the **auto_scheduling** property to *true*:
