@@ -7,39 +7,103 @@ This functionality is available in the Gantt PRO edition (Enterprise and Ultimat
 
 Basically, dhtmlxGantt is a static object and the default instance of it continually exists on the page. You may access it via the global **gantt** object at any time. But you can also create a new gantt object if needed.
 
+Gantt Instance Configuration
+-----------------------------
 To create a new instance of dhtmlxGantt, use the **Gantt.getGanttInstance()** method:
 
 ~~~js
 // beware, "Gantt" in the command goes with the capital letter
-[instanceName] = Gantt.getGanttInstance();
+const ganttChart = Gantt.getGanttInstance();
 ~~~
 
-And then configure  your new instance, initialize it and populate with data, as usual.
+The method can take a configuration object as a parameter:
+
+~~~js
+const gantt = Gantt.getGanttInstance({
+	plugins:{
+		auto_scheduling: true,
+	},
+	container: "gantt_here",
+	config: {
+		work_time: true,
+		auto_scheduling_compatibility: true,
+		auto_scheduling: true,
+		auto_scheduling_strict: true,
+		auto_scheduling_initial: true,
+		start_date: new Date(2020, 0, 1),
+		end_date: new Date(2021, 0, 1),
+	},
+	data: {
+		tasks: [
+			{ id: 11, text: "Project #1", type: "project", "open": true, "parent": 0 },
+			{ id: 1, start_date: "05-04-2020", text: "1", duration: 1, parent: "11", 
+			type: "task" },
+			{ id: 2, start_date: "05-04-2020", text: "2", duration: 3, parent: "11", 
+			type: "task" },
+			{ id: 3, start_date: "05-04-2020", text: "3", duration: 3, parent: "11", 
+			type: "task" },
+			{ id: 4, start_date: "05-04-2020", text: "4", duration: 3, parent: "11", 
+			type: "task" },
+			{ id: 5, start_date: "05-04-2020", text: "5", duration: 1, parent: "11", 
+			type: "task" }
+		], 
+		links: [
+			{ source: "1", target: "2", type: "0", id: 1 },
+			{ source: "1", target: "3", type: "0", id: 2 },
+			{ source: "1", target: "4", type: "0", id: 3 },
+			{ source: "2", target: "4", type: "0", id: 4 },
+			{ source: "3", target: "4", type: "0", id: 5 },
+			{ source: "4", target: "5", type: "0", id: 6 }
+		]
+	}
+});
+~~~
+
+The config object can contain the following properties:
+
+- **container** - (*string|HTMLElement*) an HTML container (or its id) that the Gantt chart will be displayed in. If not specified, Gantt will be initialized without a container.
+- **config** - (*object*) an object with configuration settings of the Gantt chart 
+- **templates** - (*object*) an object with templates 
+- **events** - (*object*) an object with event handlers. <br>
+You need to use the following format while specifying event handlers for a new instance of Gantt:
+
+~~~js
+const gantt = Gantt.getGanttInstance({
+     events: {
+          onTaskCreated: function(task){
+               task.owner = null;
+               return true;
+          },
+          onTaskClick: function(id){
+               alert(gantt.getTask(id).text);
+               return true;
+          }
+     }
+})
+~~~
+
+- **data** - (*object|string*) an object with data to load or the URL to load data from
+- **plugins** - (*object*) extensions that need to be activated
+
+**Note**, that calling the **Gantt.getGanttInstance()** method without parameters will return the gantt object with default configuration settings.
+Therefore, you need to configure your new instance, initialize it and populate with data, as usual.
 
 Let's take a simple example: 2 Gantt charts, one under another: 
 
-
 ~~~js
-function init() {
-    gantt1 = Gantt.getGanttInstance();
+window.addEventListener("DOMContentLoaded", function(){
+	var gantt1 = Gantt.getGanttInstance();
 	gantt1.init("gantt_here");
 	gantt1.parse(tasksA);
-	
-	gantt2 = Gantt.getGanttInstance();
-	gantt2.init("gantt_here_2");
-	gantt2.parse(tasksB);	
-}
-~~~
 
-~~~js
-<body onload="init();">
-	<div id="gantt_here" class="dhx_cal_container" ...>
-		...
-	</div>
-	<br>
-	<div id="gantt_here_2" class="dhx_cal_container" ...>
-		...
-	</div>	
+	var gantt2 = Gantt.getGanttInstance();
+	gantt2.init("gantt_here_2");
+	gantt2.parse(tasksB);
+});
+
+<body>
+<div id="gantt_here" style="width:100%; height: 50%;"></div>
+<div id="gantt_here_2" style="width:100%; height: 50%;"></div>
 </body>
 ~~~
 
