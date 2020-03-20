@@ -48,7 +48,7 @@ You may use either [the API of the gantt.ext.quickInfo object](desktop/quick_inf
 QuickInfo object
 ----------------------
 
-The default behavior of the **ext/dhtmlxgantt_quick_info.js** extension implies that the popup will appear over a selected task automatically.
+The default behavior of the **quick_info.js** extension implies that the popup will appear over a selected task automatically.
 
 Starting from v7.0, the functionality of the Quick Info is extended; the [gantt.ext.quickInfo](desktop/quickinfo_ext.md) object, that provides methods for control of the popup manually, is added. 
 

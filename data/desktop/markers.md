@@ -1,7 +1,7 @@
 Adding Vertical Markers
 =========================================================
 
-The library provides the **ext/dhtmlxgantt_marker.js** extension that allows you to mark (highlight) certain dates or date ranges.
+The library provides the **marker.js** extension that allows you to mark (highlight) certain dates or date ranges.
 
 <div style="text-align:center;"><img src="desktop/today_marker.png"/></div>
 

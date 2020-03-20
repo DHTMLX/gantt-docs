@@ -22,7 +22,7 @@ gantt.getMarker(todayMarker); //->{css:"today", text:"Now", id:...}
 @template:	api_method
 @descr:
 
-{{note This method is defined in the **ext/dhtmlxgantt_marker.js** extension, so you need to include it on the page. Read the details in the desktop/markers.md article.}}
+{{note This method is defined in the **marker.js** extension, so you need to enable the [marker](desktop/extensions_list.md#verticalmarker) plugin. Read the details in the desktop/markers.md article.}}
 
 
 

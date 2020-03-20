@@ -3,7 +3,7 @@ Full List of Extensions
 
 dhtmlxGantt includes a set of extensions which add extra functionality to the standard behavior.
 
-To use an extension, you should include the extension code file on the page. Code files of extensions reside in the **ext** folder of the gantt codebase.
+To use an extension, you should activate the plugin with the help of the [gantt.plugins](api/gantt_plugins.md) method. 
 
 Advanced drag-n-drop
 ----------------------
@@ -150,7 +150,7 @@ gantt.plugins({
 
 ####Related resources
 
-Article: desktop/accessibility.md#keyboardnavigation<br>
+Article: desktop/accessibility.md#keyboardnavigation, desktop/keyboard_navigation.md<br>
 API: api/gantt_keyboard_navigation_config.md,api/gantt_keyboard_navigation_cells_config.md<br>
 
 
@@ -187,7 +187,8 @@ gantt.plugins({
 
 ####Related resources
 
-Article: desktop/touch_templates.md<br>
+Article: desktop/touch_templates.md, <br>
+desktop/quick_info.md
 
 {{sample 02_extensions/01_quickinfo.html}}
 
