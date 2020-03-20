@@ -6,8 +6,8 @@ serialize
 @params:
 * type	string 	the format that the data will be serialized into. <br> Possible values: 'json' (<i>default</i> ), 'xml'. 
 
-
-
+@returns:
+- data		object	gantt data object
 
 @example:
 gantt.serialize('xml');
@@ -17,3 +17,7 @@ gantt.serialize('xml');
 
 @related:
 desktop/serialization.md
+desktop/supported_data_formats.md
+
+@relatedapi:
+api/gantt_parse.md
