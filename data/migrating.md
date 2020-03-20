@@ -23,9 +23,67 @@ Migration from Older Versions
 6.3 -> 7.0
 ---------------------
 
+###Extensions and locale files
+
+The newest update v7.0 introduces two major changes in the structure of the Gantt package:
+
+1) All files of extensions are now bundled with the dhtmlxgantt.js file. 
+Therefore, in order to activate any of extra extensions provided by dhtmlxGantt you need to use the API call.
+
+- If you have already included any extension files from the built-in package on your page, for example:
+
+~~~js
+<script src="../codebase/dhtmlxgantt.js"></script>
+<script src="../codebase/ext/dhtmlxgantt_auto_scheduling.js"></script>
+~~~
+
+or
+
+~~~js
+import "dhtmlx-gantt";
+import "dhtmlx-gantt/ext/dhtmlxgantt_auto_scheduling";
+~~~
+
+Then you need to remove the extension file and enable the extension using the **gantt.plugins** method:
+
+~~~js
+gantt.plugins({
+   auto_scheduling: true
+});
+~~~
+
+Full list of extensions
+
+- If you use a modified version of extension files or have developed custom extensions, include them as files on a page and they will work. 
+
+- **Note**, that the **dhtmlxgantt_smart_rendering.js** and **dhtmlxgantt_csp.js** extensions are completely removed and don't need to be enabled manually.
+<br>
+
+2) All locales are now embedded into the dhtmlxgantt.js file. To activate them, use the API call.
+
+- If you have included any locale on a page, you need to remove it from the page and enable the required locale using **gantt.i18n.setLocale**:
+
+~~~js
+gantt.i18n.setLocale("de");
+~~~
+
+- If you use a custom locale file, it can be loaded as earlier.
+
+###Working time
+
+Default work time settings have changed
+In all versions up until 7.0, default work hours were 8:00-17:00, 9 hours per day.
+Starting from v7.0, work hours have changed to 8:00-12:00, 13:00-17:00, 8 hours per day.
+
+If you want the old setting, you'll need to set it manually:
+
+~~~js
+gantt.setWorkTime({hours: [8, 17]});
+~~~
+
 ###Content Security Policy
 
-The **ext/dhtmlxgantt_csp.js** extension is no longer needed as it is replaced with the [csp config](api/gantt_csp_config.md) which is enabled by default; the extension should be removed from the gantt.
+The **ext/dhtmlxgantt_csp.js** extension is no longer needed as it is removed and replaced with the [csp config](api/gantt_csp_config.md) which is enabled by default; the extension should be removed from the gantt.
 
 Since the **csp** property is added to the dhtmlxGantt library, valid HTML 5 attributes, that can be used in any browser that supports HTML5 doctypes, will be assigned to all elements of Gantt. <br>
 
