@@ -231,15 +231,6 @@ Check that the module name for any file inside the package is specified as *a re
 
 - "dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"
 
-**extensions:**
-
-- "ext/dhtmlxgantt_critical_path": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_critical_path"
-- "ext/dhtmlxgantt_tooltip": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_tooltip"
-
-**locales:**
-
-- "locale/locale_de": "./vendor/dhtmlxgantt/locale/locale_de"
-- "locale/locale_be": "./vendor/dhtmlxgantt/locale/locale_be"
 
 Full screen mode
 ---------------------------------
