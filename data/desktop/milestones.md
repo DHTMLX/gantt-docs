@@ -59,12 +59,12 @@ Specifying milestones in a data set
 
 To define milestones in the initial data set, set the [type](desktop/loading.md#specifyingdataproperties) property of a data item to the **'milestone'** value (*values are stored in the api/gantt_types_config.md object*):
 ~~~js
-var tasks = {
-    data:[
+var data = {
+    tasks:[
     	{id:1, text:"Project #1",    type:gantt.config.types.project,    open:true}, 
-        {id:2, text:"Task #1",       start_date:"12-04-2013", duration:3, parent:1},
+        {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
         {id:3, text:"Alpha release", type:gantt.config.types.milestone,   parent:1, /*!*/
-            start_date:"14-04-2013"}],                                              /*!*/
+            start_date:"14-04-2020"}],                                              /*!*/
     links:[]
 };
 ~~~

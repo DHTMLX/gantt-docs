@@ -69,7 +69,7 @@ Generally, you can get the id of a link from the *links* object of the data set.
 
 ~~~js
 {
-    data:[...],
+    tasks:[...],
     links:[
         { id:1, source:1, target:2, type:"1"},                       //link's id = 1 /*!*/
         { id:2, source:2, target:3, type:"0"},                       //link's id = 2 /*!*/

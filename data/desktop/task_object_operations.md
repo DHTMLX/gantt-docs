@@ -13,7 +13,7 @@ To get a task object, use the api/gantt_gettask.md method:
 
 ~~~js
 gantt.getTask("t1");
-//->{id:"t1", text:"Task #5", start_date:"02-09-2013", duration:28, 
+//->{id:"t1", text:"Task #5", start_date:"02-09-2020", duration:28, 
 // progress:0.6, parent:"pr_2", $source:[3,5], $target:[2,1], ...}
 ~~~
 
@@ -43,7 +43,7 @@ Task duration
 To get the duration of a task, use the api/gantt_calculateduration.md method:
 
 ~~~js
-gantt.calculateDuration(new Date(2013,03,30),new Date (2013,04,02)); // ->16
+gantt.calculateDuration(new Date(2020,03,30),new Date (2020,04,02)); // ->16
 ~~~
 
 Note, if the api/gantt_work_time_config.md option is enabled, the api/gantt_calculateduration.md method calculates the task's duration in working time. 
@@ -54,7 +54,7 @@ Task end date
 To get the end date of a task, use the api/gantt_calculateenddate.md method:
 
 ~~~js
-gantt.calculateEndDate(new Date(2013,03,30),48,"hour"); //-> Tue May 07 2013 17:00:00
+gantt.calculateEndDate(new Date(2020,03,30),48,"hour"); //-> Thu May 07 2020 17:00:00
 ~~~
 
 Note, if the api/gantt_work_time_config.md option is enabled, the method considers duration as a working time. 
@@ -76,7 +76,7 @@ Tasks from a specific period
 To get a collection of tasks that occur during the specified period, use the api/gantt_gettaskbytime.md method:
 
 ~~~js
-var tasks = gantt.getTaskByTime(new Date(2013,03,05),new Date(2013,03,15)); 
+var tasks = gantt.getTaskByTime(new Date(2020,03,05),new Date(2020,03,15)); 
 // where tasks is an array of tasks' objects
 ~~~
 
@@ -127,9 +127,9 @@ Generally, you can get the id of a task from the "data" object of the data set.
 
 ~~~js
 {
-    data:[
-        {id:1, text:"Task #1", start_date:"01-04-2013", duration:18, progress:0.4}, /*!*/
-        {id:2, text:"Task #2", start_date:"02-04-2013", duration:8,  progress:0.6}  /*!*/
+    tasks:[
+        {id:1, text:"Task #1", start_date:"01-04-2020", duration:18, progress:0.4}, /*!*/
+        {id:2, text:"Task #2", start_date:"02-04-2020", duration:8,  progress:0.6}  /*!*/
     ],
     links:[...]
 }
@@ -148,7 +148,7 @@ for(var i=0;i < tasks.length; i++){  //goes over all tasks to find the one neede
 *If you know an approximate time when the needed task occurs, you'd better limit the returned collection of tasks in order to increase the app speed:*
 
 ~~~js
-var tasks = gantt.getTaskByTime(new Date(2013,05,01),new Date(2013,05,10)); 
+var tasks = gantt.getTaskByTime(new Date(2020,05,01),new Date(2020,05,10)); 
 for(var i=0;i < tasks.length; i++){  
 	if (tasks[i].text == "Task #3") 
     	var taskId = tasks[i].id;

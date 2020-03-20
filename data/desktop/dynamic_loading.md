@@ -102,10 +102,10 @@ The format of data for dynamic loading is the following:
 
 ~~~js
 {
-	"data":[
+	"tasks":[
 	{
 		"id":13,
-		"start_date":"2013-04-02 00:00:00",
+		"start_date":"2020-04-02 00:00:00",
 		"duration":10,
 		"text":"Task #1",
 		"progress":0.2,
@@ -115,7 +115,7 @@ The format of data for dynamic loading is the following:
 	},
 	{
 		"id":14,
-		"start_date":"2013-04-04 00:00:00",
+		"start_date":"2020-04-04 00:00:00",
 		"duration":4,
 		"text":"Task #2",
 		"progress":0.9,

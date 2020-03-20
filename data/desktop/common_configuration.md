@@ -16,10 +16,10 @@ Beware, configuration options should go before the code line with dhtmlxGantt in
 
 
 ~~~js
-gantt.config.scale_unit = "year";
-gantt.config.step = 1;
-gantt.config.date_scale = "%Y";
- 
+gantt.scales = [
+    { unit: "year", step: 1, format: "%Y" }
+];
+
 gantt.init("gantt_here");
 ~~~
 
