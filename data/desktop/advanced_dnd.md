@@ -10,7 +10,7 @@ All in all the **click_drag** extension allows:
 - [selecting tasks with drag-n-drop](#selectingtaskswithdragndrop)
 - [creating parts of split tasks with drag-n-drop](#creatingpartsofsplittasks) (PRO version)
 
-{{note To start using the extension, include the **ext/dhtmlxgantt_click_drag.js** file on the page.}}
+{{note To start using the extension, enable the [click_drag](desktop/extensions_list.md#advanceddragndrop) plugin using the [gantt.plugins](api/gantt_plugins.md) method.}}
 
 To enable advanced drag-n-drop, specify the api/gantt_click_drag_config.md configuration option and set the necessary properties from the list below inside its object: 
 

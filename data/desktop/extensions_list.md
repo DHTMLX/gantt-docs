@@ -3,15 +3,17 @@ Full List of Extensions
 
 dhtmlxGantt includes a set of extensions which add extra functionality to the standard behavior.
 
-To use an extension, you should include the extension code file on the page. Code files of extensions reside in the **ext** folder of the gantt codebase.
+To use an extension, you should activate the plugin with the help of the [gantt.plugins](api/gantt_plugins.md) method. 
 
 Advanced drag-n-drop
 ----------------------
 
 Provides the possibility to create and select tasks with drag-n-drop.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_click_drag.js"></script>
+~~~js
+gantt.plugins({
+	click_drag: true
+});
 ~~~
 
 ####Related resources
@@ -28,8 +30,10 @@ Auto scheduling
 
 Allows you to schedule tasks automatically depending on relations between them.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_auto_scheduling.js"></script>
+~~~js
+gantt.plugins({
+	auto_scheduling: true
+});
 ~~~
 
 ####Related resources
@@ -48,8 +52,10 @@ Critical path
 Presents a sequence of tasks that can't be delayed without affecting the whole project's deadline.
 The critical path also determines the shortest time the project can take.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_critical_path.js"></script>
+~~~js
+gantt.plugins({
+	critical_path: true
+});
 ~~~
 
 ####Related resources
@@ -65,8 +71,10 @@ Drag Timeline
 
 Allows scrolling timeline views by mouse-drag.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_drag_timeline.js"></script>
+~~~js
+gantt.plugins({
+	drag_timeline: true
+});
 ~~~
 
 ####Related resources
@@ -81,8 +89,10 @@ Extra overlay
 
 Provides the possibility to add an extra layer over the Gantt Chart for placing some custom content into it.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_overlay.js"></script>
+~~~js
+gantt.plugins({
+	overlay: true
+});
 ~~~
 
 ####Related resources
@@ -96,8 +106,10 @@ Full screen
 
 Displays Gantt in the full screen mode.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_fullscreen.js"></script>
+~~~js
+gantt.plugins({
+	fullscreen: true
+});
 ~~~
 
 ####Related resources
@@ -113,8 +125,10 @@ Grouping
 
 Allows you to group tasks by any of task attributes.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_grouping.js"></script>
+~~~js
+gantt.plugins({
+	grouping: true
+});
 ~~~
 
 ####Related resources
@@ -128,13 +142,15 @@ Keyboard navigation
 ------------------
 Allows navigating the gantt chart with the help of the keyboard.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_keyboard_navigation.js"></script>
+~~~js
+gantt.plugins({
+	keyboard_navigation: true
+});
 ~~~
 
 ####Related resources
 
-Article: desktop/accessibility.md#keyboardnavigation<br>
+Article: desktop/accessibility.md#keyboardnavigation, desktop/keyboard_navigation.md<br>
 API: api/gantt_keyboard_navigation_config.md,api/gantt_keyboard_navigation_cells_config.md<br>
 
 
@@ -144,8 +160,10 @@ Multitask selection
 
 Allows selecting multiple tasks in Gantt chart at once.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_multiselect.js"></script>
+~~~js
+gantt.plugins({
+	multiselect: true
+});
 ~~~
 
 ####Related resources
@@ -161,13 +179,16 @@ Quick info
 
 Provides a popup with a task details.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_quick_info.js"></script>
+~~~js
+gantt.plugins({
+	quick_info: true
+});
 ~~~
 
 ####Related resources
 
-Article: desktop/touch_templates.md<br>
+Article: desktop/touch_templates.md, <br>
+desktop/quick_info.md
 
 {{sample 02_extensions/01_quickinfo.html}}
 
@@ -176,8 +197,10 @@ Tooltip
 ---------
 Gives the possibility to add extra information for users without overflowing the screen with the text.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_tooltip.js"></script>
+~~~js
+gantt.plugins({
+	tooltip: true
+});
 ~~~
 
 ####Related resources
@@ -191,8 +214,10 @@ Undo
 
 Allows you to undo/redo the made changes.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_undo.js"></script>
+~~~js
+gantt.plugins({
+	undo: true
+});
 ~~~
 
 ####Related resources
@@ -207,8 +232,10 @@ Vertical marker
 
 Highlights certain dates or date ranges.
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_marker.js"></script>
+~~~js
+gantt.plugins({
+	marker: true
+});
 ~~~
 
 ####Related resources

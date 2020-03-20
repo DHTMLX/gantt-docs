@@ -11,12 +11,14 @@ You can [add tooltips to any Gantt element](#tooltipsfordifferentelements) via t
 Activation
 ---------------
 
-To activate tooltips for tasks, include the **ext/dhtmlxgantt_tooltip.js** extension file on the page:
+To activate tooltips for tasks, enable the **tooltip** plugin using the [gantt.plugins](api/gantt_plugins.md) method:
 
 ~~~js
-<script src="codebase/ext/dhtmlxgantt_tooltip.js"></script>  /*!*/
-
 <script>
+	gantt.plugins({ /*!*/
+		tooltip: true /*!*/
+	}); /*!*/
+
 	gantt.init("gantt_here");
 </script>
 ~~~

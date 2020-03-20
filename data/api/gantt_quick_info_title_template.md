@@ -21,7 +21,7 @@ gantt.templates.quick_info_title = function(start, end, task){
 - text		string		html text which will be rendered in the gantt
 @descr:
 
-{{note This template is defined in the **ext/dhtmlxgantt_quick_info.js** extension, so you need to include it on the page.}}
+{{note This template is defined in the **quick_info.js** extension, so you need to activate the [quick_info](desktop/extensions_list.md#quickinfo) plugin.}}
 
 
 

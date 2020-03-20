@@ -18,7 +18,7 @@ var cycles = gantt.findCycles();
 
 {{pronote This functionality is available in the PRO edition only.}}
 
-{{note The method requires the **ext/dhtmlxgantt_auto_scheduling.js** to be included on the page.}}
+{{note The method requires the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin to be activated.}}
 
 Each element of the *cycles* array is a group of tasks and links which make a loop.
 

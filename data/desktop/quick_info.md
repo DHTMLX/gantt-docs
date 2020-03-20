@@ -1,7 +1,7 @@
 Quick Info (Touch Support)
 ==============================
 
-The library includes the **ext/dhtmlxgantt_quick_info.js** extension that allows displaying a popup with details about the task when a user touches the task on the screen. 
+The library includes the **quick_info.js** extension that allows displaying a popup with details about the task when a user touches the task on the screen. 
 
 {{note This functionality requires [Touch Support](api/gantt_touch_config.md) to be enabled.}}
 
@@ -9,10 +9,12 @@ The library includes the **ext/dhtmlxgantt_quick_info.js** extension that allows
 <img src="desktop/quick_info.png">
 
 
-To start using the extension, include the ["Quick Info"](desktop/extensions_list.md#quickinfo) file on the page.
+To start using the extension, enable the ["Quick Info"](desktop/extensions_list.md#quickinfo) plugin using the [gantt.plugins](api/gantt_plugins.md) method.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxgantt_quick_info.js"></script>
+gantt.plugins({
+	quick_info: true
+});
 ~~~
 
 API overview
@@ -46,7 +48,7 @@ You may use either [the API of the gantt.ext.quickInfo object](desktop/quick_inf
 QuickInfo object
 ----------------------
 
-The default behavior of the **ext/dhtmlxgantt_quick_info.js** extension implies that the popup will appear over a selected task automatically.
+The default behavior of the **quick_info.js** extension implies that the popup will appear over a selected task automatically.
 
 Starting from v7.0, the functionality of the Quick Info is extended; the [gantt.ext.quickInfo](desktop/quickinfo_ext.md) object, that provides methods for control of the popup manually, is added. 
 

@@ -204,10 +204,12 @@ In this mode keyboard is used both for navigating and editing grid cells with th
  
 To enable keyboard navigation for editing, you need to:
 
-- include the **ext/dhtmlxgantt_keyboard_navigation.js** extension on the page.
+- enable the **keyboard_navigation** plugin using the [gantt.plugins](api/gantt_plugins.md) method.
 
 ~~~js
-<script src="./codebase/ext/dhtmlxgantt_keyboard_navigation.js"></script>
+gantt.plugins({
+	keyboard_navigation: true
+});
 ~~~
 
 - enable [keyboard navigation](desktop/keyboard_navigation.md) and navigation by cells:
