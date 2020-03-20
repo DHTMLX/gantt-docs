@@ -86,6 +86,7 @@ const gantt = Gantt.getGanttInstance({
 
 - **data** - (*object|string*) an object with data to load or the URL to load data from
 - **plugins** - (*object*) extensions that need to be activated
+- **locale** - (*string|object*) a two-letter language code or an object of the locale that needs to be activated
 
 **Note**, that calling the **Gantt.getGanttInstance()** method without parameters will return the gantt object with default configuration settings.
 Therefore, you will need to configure your new instance, initialize it and populate with data, as usual.

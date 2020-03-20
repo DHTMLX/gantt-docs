@@ -98,7 +98,7 @@ Gantt API
 - api/gantt_getprevsibling.md - returns the id of the previous task of the same level
 - api/gantt_getredostack.md - returns the stack of stored redo user actions
 - api/gantt_getresourceassignments.md - returns all tasks assigned to the resource
-- api/gantt_getresourcecalendar.md - 
+- api/gantt_getresourcecalendar.md - returns a calendar which the resource is assigned to
 - api/gantt_getscale.md - returns the configuration of the time scale
 - api/gantt_getscrollstate.md - returns the scroll position
 - api/gantt_getselectedid.md - returns the id of the selected task
@@ -153,14 +153,14 @@ Gantt API
 - api/gantt_isworktime.md - checks whether the specified date is working or not
 - api/gantt_load.md - loads data to the gantt from an external data source
 - api/gantt_locate.md - gets the id of a task from the specified HTML event
-- api/gantt_mergecalendars.md - 
+- api/gantt_mergecalendars.md - merges several working calendars into one
 - api/gantt_message.md - calls a message box of the specified type
 - api/gantt_mixin.md - adds properties of the 'source' object into the 'target' object
 - api/gantt_modalbox.md - calls a modalbox
 - api/gantt_movetask.md - moves a task to a new position
 - api/gantt_open.md - opens the branch with the specified id
 - api/gantt_parse.md - loads data from a client-side resource
-- api/gantt_plugins.md - 
+- api/gantt_plugins.md - activates specified extensions
 - api/gantt_posfromdate.md - gets the relative horizontal position of the specified date in the chart area
 - api/gantt_redo.md - applies the reverted changes to the gantt once again
 - api/gantt_refreshdata.md - refreshes data in the Gantt chart
@@ -358,7 +358,7 @@ Gantt API
 - api/gantt_drag_timeline_config.md - configures the behavior of the dhtmlxgantt_drag_timeline extension
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
-- api/gantt_dynamic_resource_calendars_config.md - 
+- api/gantt_dynamic_resource_calendars_config.md - enables automatic merging of multiple resource calendars into one
 - api/gantt_editable_property_config.md - changes the name of a property that affects the editing ability  of tasks/links in the read-only Gantt chart
 - api/gantt_editor_types_config.md - an object that contains definitions of inline editors
 - api/gantt_end_date_config.md - sets the end value of the time scale
@@ -408,7 +408,7 @@ Gantt API
 - api/gantt_reorder_grid_columns_config.md - enables the possibility to reorder grid columns by drag and drop
 - api/gantt_resource_attribute_config.md - changes the name of the attribute that Gantt uses to find which resource the task row in the resource grid/timeline is referring to
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
-- api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram
+- api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram/Calendar
 - api/gantt_resource_render_empty_cells_config.md - tells the resource timeline to render elements and call templates for non-allocated cells
 - api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline/resourceHistogram views
 - api/gantt_root_id_config.md - sets the id of the virtual root element
@@ -535,11 +535,11 @@ Gantt API
 - api/gantt_date_other.md - a set of date formatting methods
 - api/gantt_env_other.md - a set of flags which describe current environment
 - api/gantt_ext_other.md - an object that stores various extensions
-- api/gantt_i18n_other.md - 
+- api/gantt_i18n_other.md - a set of methods for Gantt chart localization
 - api/gantt_json_other.md - specifies JSON serialization and parsing
 - api/gantt_keys_other.md - defines the hot keys for the Gantt chart
 - api/gantt_license_other.md - returns the license name of dhtmlxGantt
-- api/gantt_locale_other.md - a locale object (region-specific labels) of the Gantt chart
+- api/gantt_locale_other.md - the current locale object (region-specific labels) of the Gantt chart
 - api/gantt_oldxml_other.md - specifies serialization and parsing in the XML format of dhtmlxGantt 1.0
 - api/gantt_skin_other.md - returns the current skin of the Gantt chart
 - api/gantt_skins_other.md - returns objects of the available skins
