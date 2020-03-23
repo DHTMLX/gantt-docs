@@ -203,7 +203,7 @@ Gantt supports the custom work-time calendars feature. Work-time calendars can b
 They are mapped to tasks via the property value in one-to-one relation:
 
 ~~~js
-// resource value will be taken from `task.resource_id` property
+// a resource value will be taken from the `task.resource_id` property
 gantt.config.resource_property = "resource_id";
 
 gantt.config.resource_calendars = {
@@ -213,12 +213,12 @@ gantt.config.resource_calendars = {
 };
 ~~~
 
-You can use any property to assign calendars to resources. If the resource property is changed dynamically, gantt will automatically recalculate task timing using a new calendar.
+You can use any property to assign calendars to resources. If the resource property is changed dynamically, the gantt will automatically recalculate time of tasks using a new calendar.
 
 {{sample 11_resources/02_resource_calendars.html}}
 
 
-If multiple resources can be assigned to a single task, gantt can [automatically generate a common calendar](api/gantt_dynamic_resource_calendars_config.md) for all assigned resources.
+If multiple resources can be assigned to a single task, the gantt can [automatically generate a common calendar](api/gantt_dynamic_resource_calendars_config.md) for all assigned resources.
 
 You can [get more information in the related article](desktop/working_time.md#assigningcalendartoresource).
 

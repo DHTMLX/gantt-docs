@@ -7,7 +7,7 @@ serialize
 * type	string 	the format that the data will be serialized into. <br> Possible values: 'json' (<i>default</i> ), 'xml'. 
 
 @returns:
-- data		object	gantt data object
+- data		object	a gantt data object 
 
 @example:
 gantt.serialize('xml');

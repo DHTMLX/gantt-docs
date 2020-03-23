@@ -59,7 +59,7 @@ gantt.attachEvent("onTaskClick", function(){
 }, {once: true}); /*!*/
 ~~~
 
-3\. **thisObject** - (*object*) specifies `this` object for the listener. 
+3\. **thisObject** - (*object*) specifies the `this` object for the listener 
 
 ~~~js
 gantt.attachEvent("onTaskClick", function(){
