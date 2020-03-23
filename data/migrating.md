@@ -48,21 +48,11 @@ Then you need to remove the extension file and enable the extension using the **
 
 ~~~js
 gantt.plugins({
-   auto_scheduling: true,
-   click_drag: true,
-   critical_path: true,
-   drag_timeline: true,
-   fullscreen: true,
-   keyboard_navigation: true,
-   quick_info: true,
-   tooltip: true,
-   undo: true,
-   grouping: true,
-   marker: true,
-   multiselect: true,
-   overlay: true
+   auto_scheduling: true
 });
 ~~~
+
+See the full list of extensions [here](desktop/extensions_list.md).
 
 - If you use a modified version of extension files or have developed custom extensions, include them as files on a page and they will work. 
 
