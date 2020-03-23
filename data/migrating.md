@@ -27,7 +27,7 @@ Migration from Older Versions
 
 The newest update v7.0 introduces two major changes in the structure of the Gantt package:
 
-1) All files of extensions are now bundled with the dhtmlxgantt.js file. 
+1) All files of extensions are now bundled with the *dhtmlxgantt.js* file. 
 Therefore, in order to activate any of extra extensions provided by dhtmlxGantt you need to use the API call.
 
 - If you have already included any extension files from the built-in package on your page, for example:
@@ -56,10 +56,10 @@ Full list of extensions
 
 - If you use a modified version of extension files or have developed custom extensions, include them as files on a page and they will work. 
 
-- **Note**, that the **dhtmlxgantt_smart_rendering.js** and **dhtmlxgantt_csp.js** extensions are completely removed and don't need to be enabled manually.
+- **Note**, that the **dhtmlxgantt_smart_rendering.js** and **dhtmlxgantt_csp.js** extensions are completely removed and do not need to be enabled manually.
 <br>
 
-2) All locales are now embedded into the dhtmlxgantt.js file. To activate them, use the API call.
+2) All locales are now embedded into the *dhtmlxgantt.js* file. To activate them, use the API call.
 
 - If you have included any locale on a page, you need to remove it from the page and enable the required locale using **gantt.i18n.setLocale**:
 
@@ -67,15 +67,14 @@ Full list of extensions
 gantt.i18n.setLocale("de");
 ~~~
 
-- If you use a custom locale file, it can be loaded as earlier.
+- If you use a custom locale file, it can be loaded as before.
 
-###Working time
+###Default settings of the working time are changed
 
-Default work time settings have changed
-In all versions up until 7.0, default work hours were 8:00-17:00, 9 hours per day.
-Starting from v7.0, work hours have changed to 8:00-12:00, 13:00-17:00, 8 hours per day.
+In all versions before 7.0, the default working hours were from 8:00 till 17:00 that is 9 hours per day.<br>
+Starting from v7.0, the working hours are 8:00-12:00, 13:00-17:00 that is 8 hours per day.
 
-If you want the old setting, you'll need to set it manually:
+If you want to revert to the previous settings, you'll need to set it manually:
 
 ~~~js
 gantt.setWorkTime({hours: [8, 17]});
@@ -103,7 +102,7 @@ Earlier, alignment of grid cells was accomplished via `display:inline-block`. St
 This change doesn't affect the UI visible to the user (it remains 100% identical) and shouldn't cause any migration issues.
 However, some regressions with styling of the grid cells may be related to this update.
 
-###"xml_date" config and template, and "xml_format" templates removed
+###"xml_date" config and template, and "xml_format" templates are removed
 
 Deprecated in v6.2 config and templates are removed in v7.0 and replaced with new ones:
 
