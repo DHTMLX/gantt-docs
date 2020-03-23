@@ -27,15 +27,15 @@ To load data from an object, use the api/gantt_parse.md method:
 Loading from an inline data source
 }}
 ~~~js
-var tasks = {
-  data:[
-     {id:1, text:"Project #1", start_date:"01-04-2013", duration:18},
-     {id:2, text:"Task #1", start_date:"02-04-2013", duration:8, parent:1},
-     {id:3, text:"Task #2", start_date:"11-04-2013", duration:8, parent:1}
+var data = {
+  tasks:[
+     {id:1, text:"Project #1", start_date:"01-04-2020", duration:18},
+     {id:2, text:"Task #1", start_date:"02-04-2020", duration:8, parent:1},
+     {id:3, text:"Task #2", start_date:"11-04-2020", duration:8, parent:1}
    ]
 };
 gantt.init("gantt_here");
-gantt.parse(tasks); /*!*/   
+gantt.parse(data); /*!*/   
 ~~~
 
 {{sample
@@ -54,21 +54,21 @@ gantt.html
 }}
 ~~~js
 gantt.init("gantt_here");
-gantt.load("tasks.json"); /*!*/   
+gantt.load("data.json"); /*!*/   
 ~~~
 
 The *load* method will send an AJAX request to the specified url and will expect a response with data in [one of the supported formats](desktop/supported_data_formats.md).
 For example:
 
 {{snippet
-	tasks.json
+	data.json
 }}
 ~~~js
 {
-  "data":[
-     {"id":1, "text":"Project #1", "start_date":"01-04-2013", "duration":18},
-     {"id":2, "text":"Task #1", "start_date":"02-04-2013","duration":8, "parent":1},
-     {"id":3, "text":"Task #2", "start_date":"11-04-2013","duration":8, "parent":1}
+  "tasks":[
+     {"id":1, "text":"Project #1", "start_date":"01-04-2020", "duration":18},
+     {"id":2, "text":"Task #1", "start_date":"02-04-2020","duration":8, "parent":1},
+     {"id":3, "text":"Task #2", "start_date":"11-04-2020","duration":8, "parent":1}
   ],
   "links":[
      {"id":1, "source":1, "target":2, "type":"1"},
@@ -80,7 +80,7 @@ For example:
 The format is specified in the second argument of the method: "json", "xml" or "oldxml".
 
 ~~~js
-gantt.load("tasks.xml", "xml");
+gantt.load("data.xml", "xml");
 ~~~
 
 ###Server side
@@ -109,7 +109,7 @@ app.get("/data", function(req, res){
                 rows[i].open = true;
             }
  
-            res.send({ data:rows, collections: { links : links } });
+            res.send({ tasks:rows, links : links });
         });
     });
 });

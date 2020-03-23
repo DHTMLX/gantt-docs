@@ -118,10 +118,10 @@ The output of the **/data** url is the following:
 
 ~~~js
 {
-  "data":[
-	{"id":1,"text":"Project #2","start_date":"01-04-2013","duration":18,"parent":0},
-	{"id":2,"text":"Task #1","start_date":"02-04-2013","duration":8,"parent":1},
-	{"id":3,"text":"Task #2","start_date":"11-04-2013","duration":8,"parent":1}
+  "tasks":[
+	{"id":1,"text":"Project #2","start_date":"01-04-2020","duration":18,"parent":0},
+	{"id":2,"text":"Task #1","start_date":"02-04-2020","duration":8,"parent":1},
+	{"id":3,"text":"Task #2","start_date":"11-04-2020","duration":8,"parent":1}
   ],
   "links":[
 	{"id":1,"source":1,"target":2,"type":"1"},

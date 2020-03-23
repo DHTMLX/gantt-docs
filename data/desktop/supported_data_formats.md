@@ -1,4 +1,4 @@
-Exploring Supported Data Formats
+tasksExploring Supported Data Formats
 =======================================
 
 dhtmlxGantt can load data in the following formats:
@@ -16,12 +16,12 @@ JSON
 
 ~~~js
 {
-	"data":[
-		{"id":"1", "text":"Project #2", "start_date":"01-04-2013", "duration":18,
+	"tasks":[
+		{"id":"1", "text":"Project #2", "start_date":"01-04-2020", "duration":18,
     		"progress":0.4, "open": true},
-		{"id":"2", "text":"Task #1", "start_date":"02-04-2013", "duration":8,
+		{"id":"2", "text":"Task #1", "start_date":"02-04-2020", "duration":8,
     		"progress":0.6, "parent":"1"},
-		{"id":"3", "text":"Task #2", "start_date":"11-04-2013", "duration":8,
+		{"id":"3", "text":"Task #2", "start_date":"11-04-2020", "duration":8,
     		"progress":0.6, "parent":"1"}
   	],
   	"links":[
@@ -38,16 +38,16 @@ XML (dhtmlxGantt 2.0+)
 
 ~~~xml
 <data>
-	<task id='1' parent='' start_date='01-04-2013' duration='18' open='true'
-    		progress='0.4' end_date='19-04-2013'>
+	<task id='1' parent='' start_date='01-04-2020' duration='18' open='true'
+    		progress='0.4' end_date='19-04-2020'>
     	<![CDATA[Project #2]]>
     </task>
-    <task id='2' parent='1' start_date='02-04-2013' duration='8' progress='0.6'
-    		end_date='10-04-2013'>
+    <task id='2' parent='1' start_date='02-04-2020' duration='8' progress='0.6'
+    		end_date='10-04-2020'>
     	<![CDATA[Task #1]]>
     </task>
-    <task id='3' parent='1' start_date='11-04-2013' duration='8' progress='0.6'
-    		end_date='19-04-2013'>
+    <task id='3' parent='1' start_date='11-04-2020' duration='8' progress='0.6'
+    		end_date='19-04-2020'>
     	<![CDATA[Task #2]]>
     </task>
     <coll_options for='links'>
@@ -71,12 +71,12 @@ Let's consider the above examples with 2 custom properties:
 
 ~~~js
 {
-	"data":[
-		{"id":"1", "text":"Project #2", "start_date":"01-04-2013", "duration":18,
+	"tasks":[
+		{"id":"1", "text":"Project #2", "start_date":"01-04-2020", "duration":18,
     		"progress":0.4, "open": true, "holder":"Mike", "priority":"High"},
-		{"id":"2", "text":"Task #1", "start_date":"02-04-2013", "duration":8,
+		{"id":"2", "text":"Task #1", "start_date":"02-04-2020", "duration":8,
     		"progress":0.6, "parent":1, "holder":"John", "priority":"Medium"},
-		{"id":"3", "text":"Task #2", "start_date":"11-04-2013", "duration":8,
+		{"id":"3", "text":"Task #2", "start_date":"11-04-2020", "duration":8,
     		"progress":0.6, "parent":1, "holder":"Alex", "priority":"Low"}
   	],
   	"links":[
@@ -92,20 +92,20 @@ Let's consider the above examples with 2 custom properties:
 
 ~~~xml
 <data>
-	<task id='1' parent='' start_date='01-04-2013' duration='18' open='true'
-    		progress='0.4' end_date='19-04-2013''>
+	<task id='1' parent='' start_date='01-04-2020' duration='18' open='true'
+    		progress='0.4' end_date='19-04-2020''>
     	<holder><![CDATA[Mike]]></holder>
         <priority><![CDATA[High]]></priority>
     	<![CDATA[Project #2]]>
     </task>
-    <task id='2' parent='1' start_date='02-04-2013' duration='8' progress='0.6'
-    	end_date='10-04-2013'>
+    <task id='2' parent='1' start_date='02-04-2020' duration='8' progress='0.6'
+    	end_date='10-04-2020'>
     	<holder><![CDATA[John]]></holder>
         <priority><![CDATA[Medium]]></priority>
         <![CDATA[Task #1]]>
     </task>
-    <task id='3' parent='1' start_date='11-04-2013' duration='8' progress='0.6'
-    	end_date='19-04-2013'>
+    <task id='3' parent='1' start_date='11-04-2020' duration='8' progress='0.6'
+    	end_date='19-04-2020'>
     	<holder><![CDATA[Alex]]></holder>
         <priority><![CDATA[Low]]></priority>
         <![CDATA[Task #2]]>
@@ -128,12 +128,12 @@ JSON data can contain any number of additional arrays in the "collections" prope
 
 ~~~js
 {
-	"data":[
-		{"id":"1", "text":"Project #2", "start_date":"01-04-2013", "duration":18,
+	"tasks":[
+		{"id":"1", "text":"Project #2", "start_date":"01-04-2020", "duration":18,
 			"progress":0.4, "open": true},
-		{"id":"2", "text":"Task #1", "start_date":"02-04-2013", "duration":8,
+		{"id":"2", "text":"Task #1", "start_date":"02-04-2020", "duration":8,
 			"progress":0.6, "parent":"1"},
-		{"id":"3", "text":"Task #2", "start_date":"11-04-2013", "duration":8,
+		{"id":"3", "text":"Task #2", "start_date":"11-04-2020", "duration":8,
 			"progress":0.6, "parent":"1"}
 	],
 	"links":[

@@ -19,13 +19,13 @@ To set the type of a task, use the [type](desktop/loading.md#specifyingdataprope
 Specifying the type of a task in the data set
 }}
 ~~~js
-var tasks = {
-	data:[
+var data = {
+	task:[
     	{id:1, text:"Project #1",    type:gantt.config.types.project,    open:true},   /*!*/
-		{id:2, text:"Task #1", 	     start_date:"12-04-2013", duration:3, parent:1},
+		{id:2, text:"Task #1", 	     start_date:"12-04-2020", duration:3, parent:1},
 		{id:3, text:"Alpha release", type:gantt.config.types.milestone,   parent:1, /*!*/
-        	start_date:"14-04-2013"},                                                /*!*/
-		{id:4, text:"Task #2", 	     start_date:"17-04-2013", duration:3, parent:1}],
+        	start_date:"14-04-2020"},                                                /*!*/
+		{id:4, text:"Task #2", 	     start_date:"17-04-2020", duration:3, parent:1}],
 	links:[]
 };
 ~~~
@@ -44,13 +44,13 @@ By default, dhtmlxGantt provides creating of regular tasks (tasks with **type="t
 Specifying regular tasks
 }}
 ~~~js
-var tasks = {
-    data:[{id:2, text:"Task #1", start_date:"12-04-2013", duration:3}],  /*!*/
+var data = {
+    tasks:[{id:2, text:"Task #1", start_date:"12-04-2020", duration:3}],  /*!*/
     links:[]
 };
 //or
-var tasks = {
- 	data:[{id:2, text:"Task #1", start_date:"12-04-2013", duration:3, /*!*/
+var data = {
+ 	tasks:[{id:2, text:"Task #1", start_date:"12-04-2020", duration:3, /*!*/
     		type:gantt.config.types.task}],  /*!*/
     links:[]
 };
@@ -85,12 +85,12 @@ The difference between project and regular tasks is that the duration of a proje
 Specifying project tasks
 }}
 ~~~js
-var tasks = {
-    data:[
+var data = {
+    tasks:[
     	{id:1, text:"Project #1",    type:gantt.config.types.project,    open:true}, /*!*/
-        {id:2, text:"Task #1",       start_date:"12-04-2013", duration:3, parent:1},
+        {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
         {id:3, text:"Alpha release", type:gantt.config.types.milestone,   parent:1,
-            start_date:"14-04-2013"}],
+            start_date:"14-04-2020"}],
     links:[]
 };
 ~~~
@@ -130,12 +130,12 @@ Milestones
 Specifying milestones
 }}
 ~~~js
-var tasks = {
-    data:[
+var data = {
+    tasks:[
     	{id:1, text:"Project #1",    type:gantt.config.types.project,    open:true},
-        {id:2, text:"Task #1",       start_date:"12-04-2013", duration:3, parent:1},
+        {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
         {id:3, text:"Alpha release", type:gantt.config.types.milestone,   parent:1, /*!*/
-            start_date:"14-04-2013"}],/*!*/
+            start_date:"14-04-2020"}],/*!*/
     links:[]
 };
 ~~~

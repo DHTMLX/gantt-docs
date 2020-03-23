@@ -246,7 +246,7 @@ To do this you need to set the [show_tasks_outside_timescale](api/gantt_show_tas
 
 ~~~js
 var data = {
-  "data": [
+  "tasks": [
     {"id":1, "text":"Project #1", "start_date": "01-09-2018", "end_date": "02-09-2018"},
     {"id":2, "text":"Project #2", "start_date": "01-09-2021", "end_date": "02-09-2021"},
     {"id":3, "text":"Task #1", "start_date": "03-02-2020", "end_date": "05-02-2020"},

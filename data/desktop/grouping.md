@@ -38,8 +38,8 @@ Grouping tasks
 To group tasks by some criterion, use the api/gantt_groupby.md method: 
 
 ~~~js
-var tasks =  {
-	data:[{id:1, priority:1, start_date:"02-04-2013 00:00", ...}, ...] 
+var data =  {
+	tasks:[{id:1, priority:1, start_date:"02-04-2020 00:00", ...}, ...] 
 };
 
 gantt.groupBy({
@@ -55,8 +55,8 @@ where:
 - **relation_property** - (*mandatory*) a property of a task object that will be used to group items. For example:
 
 ~~~js
-var tasks =  {
-	data:[{id:1, priority:1, start_date:"02-04-2013 00:00", ...}, ...] /*!*/
+var data =  {
+	tasks:[{id:1, priority:1, start_date:"02-04-2020 00:00", ...}, ...] /*!*/
 };
 gantt.groupBy({
 	relation_property: "priority", /*!*/
