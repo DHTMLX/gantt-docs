@@ -125,3 +125,4 @@ gantt.setWorkTime({day : 5, hours : ["8:00-12:00"]});
 </table>
 
 
+@changelog: the format of the **hours** property of the config is changed in version 7.0

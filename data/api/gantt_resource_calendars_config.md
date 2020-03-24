@@ -25,7 +25,10 @@ gantt.config.resource_calendars = {
 @descr:
 
 {{pronote This functionality is available in the PRO edition only.}}
-The way of assigning a working calendar to a user described above is easier and more convinient to use but the old configuration of the **resource_calendars** method will also  work:
+
+Before version 7.0, dhtmlxGantt used a slightly different format of **resource_calendars**.
+
+The new way of assigning a working calendar to a user described above is easier and more convenient to use but the old configuration of the **resource_calendars** property will also  work:
 
 ~~~js
 // adding a working calendar
@@ -43,7 +46,9 @@ gantt.config.resource_calendars = {
 };
 ~~~
 
-@changelog: added in version 4.2
+@changelog: 
+- added in version 4.2
+- the format of the config is changed in version 7.0
 
 @related:
 desktop/working_time.md#assigningcalendartoresource
