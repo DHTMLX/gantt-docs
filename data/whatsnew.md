@@ -39,6 +39,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - `Gantt.getGanttInstance` now [can take a configuration object](desktop/multiple_gantts.md#ganttinstanceconfiguration)  while creating a new Gantt instance
 - The CSP extension was removed from the package, the [csp mode is enabled by default](api/gantt_csp_config.md)
 - The settings object as the third parameter of the api/gantt_attachevent.md method is added
+- The format for setting working hours in the [setWorkTime](api/gantt_setworktime.md) method is simplified
+- The format of the [gantt.config.resource_calendars](api/gantt_resource_calendars_config.md) config is simplified
 - desktop/video_guides.md are added in the documentation
 
 

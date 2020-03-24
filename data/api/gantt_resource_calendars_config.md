@@ -23,6 +23,8 @@ gantt.config.resource_calendars = {
     
 @template:	api_config
 @descr:
+
+{{pronote This functionality is available in the PRO edition only.}}
 The way of assigning a working calendar to a user described above is easier and more convinient to use but the old configuration of the **resource_calendars** method will also  work:
 
 ~~~js
@@ -50,3 +52,5 @@ desktop/working_time.md#assigningcalendartoresource
 api/gantt_addcalendar.md
 api/gantt_dynamic_resource_calendars_config.md
 api/gantt_getresourcecalendar.md
+
+@edition:pro
