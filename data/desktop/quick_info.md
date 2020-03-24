@@ -84,15 +84,41 @@ You can show the popup for a specified task, link, resource panel or define anot
 var task = gantt.getTask(10);
 gantt.ext.quickInfo.show(task.id);
 
-// show the popup for the specified link
-var link = gantt.getLink(10);
-gantt.ext.quickInfo.show(link.id);
-
-// show the popup for the resource
-
-
 // show the popup at specific coordinates
 gantt.ext.quickInfo.show(100, 200);
+~~~
+
+An example of how to show the popup for a resource is given below:
+
+~~~js
+const quickInfo = gantt.ext.quickInfo;
+gantt.attachEvent("onGanttReady", function(){
+    quickInfo.setContainer(document.body);
+})
+
+gantt.attachEvent("onEmptyClick", function (e) {
+  const domHelpers = gantt.utils.dom;
+  const resourceElement = domHelpers.closest(e.target, "[data-resource-id]");
+  if(resourceElement){
+    const resourceId = resourceElement.getAttribute("data-resource-id");
+    const resource = gantt.$resourcesStore.getItem(resourceId);
+    const position = resourceElement.getBoundingClientRect();
+    quickInfo.show(position.right, position.top);
+
+    const assignedTasks = gantt.getResourceAssignments(resourceId).map(function(assign){
+        return gantt.getTask(assign.task_id).text;
+    });
+
+    quickInfo.setContent({
+        header: {
+        title: resource.text,
+        date: ""
+    },
+        content: "Assigned tasks: " + assignedTasks.join(", "),
+        buttons: []
+    });
+  }
+});
 ~~~
 
 To hide a pop-up edit form, make use of the **gantt.ext.quickInfo.hide()** method. The method depends on the **gantt.config.quick_info_detached** config and presupposes two possible options:
