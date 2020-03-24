@@ -8,6 +8,7 @@ The library includes the **quick_info.js** extension that allows displaying a po
 
 <img src="desktop/quick_info.png">
 
+{{sample 02_extensions/01_quickinfo.html}}
 
 To start using the extension, enable the ["Quick Info"](desktop/extensions_list.md#quickinfo) plugin using the [gantt.plugins](api/gantt_plugins.md) method.
 

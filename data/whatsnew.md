@@ -14,7 +14,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 <b>7.0</b>
 --------------
 
-<span class='release_date'>March &&&&&&&&&, 2020. Minor update</span>
+<span class='release_date'>March &&&&&&&&&, 2020. Major update</span>
 
 ### Breaking changes 
 
@@ -22,16 +22,25 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 ### New functionality
 
+- Ability to create [a Gantt instance in Node.js](desktop/using_gantt_on_server.md)
 - The api/gantt_grid_elastic_columns_config.md config for adjusting the size of columns during resizing of the whole grid is added
 - [Ability to reorder columns of the grid by drag and drop](api/gantt_reorder_grid_columns_config.md)
 - The [QuickInfo](desktop/quick_info.md) extension  now provides the ability to have control over the popup manually via the [methods of the gantt.ext.quickInfo object](desktop/quickinfo_ext.md)
 - Ability to [truncate long text with ellipsis in grid columns](desktop/styling_guide.md#customizationgridcolumns)
+- The api/gantt_dynamic_resource_calendars_config.md config and api/gantt_mergecalendars.md method are added [for merging multiple calendars automatically and manually](desktop/working_time.md#mergingcalendars) respectively
+- The api/gantt_getresourcecalendar.md method is added
+- Ability to specify [working time in minutes](desktop/working_time.md#globalsettings)
+
 
 ### Updates
 
-- The api/gantt_csp_config.md config now provides CSP support instead of the CSP extension
+- Locale files were removed from the package, [new API](api/gantt_i18n_other.md) for the Gantt chart localization is added 
+- All extensions must be activated now via the api/gantt_plugins.md method
+- `Gantt.getGanttInstance` now [can take a configuration object](desktop/multiple_gantts.md#ganttinstanceconfiguration)  while creating a new Gantt instance
+- The CSP extension was removed from the package, the [csp mode is enabled by default](api/gantt_csp_config.md)
 - The settings object as the third parameter of the api/gantt_attachevent.md method is added
 - desktop/video_guides.md are added in the documentation
+
 
 6.3.7
 -----
