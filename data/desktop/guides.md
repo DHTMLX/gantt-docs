@@ -5,7 +5,7 @@ The guidance information makes up the major part of the documentation and helps 
 The chapter is divided into task-oriented manuals that assist you in performing both simple and difficult, often and seldom used tasks. 
 The articles come around key procedures and problem-solving activities. 
 
-Сheck the [features available in the Standard and PRO versions](desktop/editions_comparison.md) of the dhtmlxGantt library.
+Check the [features available in the Standard and PRO versions](desktop/editions_comparison.md) of the dhtmlxGantt library.
 
 <table  style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>

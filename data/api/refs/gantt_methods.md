@@ -35,7 +35,7 @@ Methods
 - api/gantt_copy.md - creates a deep copy of provided object
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
 - api/gantt_createcalendar.md - creates a working calendar
-- api/gantt_createdataprocessor.md - сreates a new dataProcessor instance and attaches it to gantt
+- api/gantt_createdataprocessor.md - creates a new dataProcessor instance and attaches it to gantt
 - api/gantt_createdatastore.md - creates a datastore according to the provided configuration
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
 - api/gantt_dataprocessor.md - dataProcessor constructor

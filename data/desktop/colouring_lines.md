@@ -1,7 +1,7 @@
 Links Coloring and Styling 
 ================================
 
-You can change the styling of links сonnecting tasks to get the desired look and feel of your gantt chart.
+You can change the styling of links connecting tasks to get the desired look and feel of your gantt chart.
 Coloring dependency links in various colors allows you to visually differentiate them for users.
 
 <img style="padding-top:15px; padding-bottom:15px;" src="desktop/coloring_links.png"/>

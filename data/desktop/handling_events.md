@@ -59,7 +59,7 @@ while (events.length)
    gantt.detachEvent(events.pop()); /*!*/
 ~~~
 
-Сhecking the existence of a handler
+Checking the existence of a handler
 ------------------------------------------
 
 To check, whether a specific event has any handlers attached, use the api/gantt_checkevent.md method:

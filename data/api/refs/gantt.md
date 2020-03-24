@@ -39,7 +39,7 @@ Gantt API
 - api/gantt_copy.md - creates a deep copy of provided object
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
 - api/gantt_createcalendar.md - creates a working calendar
-- api/gantt_createdataprocessor.md - сreates a new dataProcessor instance and attaches it to gantt
+- api/gantt_createdataprocessor.md - creates a new dataProcessor instance and attaches it to gantt
 - api/gantt_createdatastore.md - creates a datastore according to the provided configuration
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
 - api/gantt_dataprocessor.md - dataProcessor constructor
@@ -477,7 +477,7 @@ Gantt API
 - api/gantt_date_grid_template.md - specifies the content of start date or end date columns in grid
 - api/gantt_drag_link_template.md - specifies the text of tooltips that are displayed when the user creates a new dependency link
 - api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the pop-up that appears when a user drags a link
-- api/gantt_format_date_template.md - сonverts a date object to a date string. Used to send data back to the server
+- api/gantt_format_date_template.md - converts a date object to a date string. Used to send data back to the server
 - api/gantt_grid_blank_template.md - specifies the custom content inserted before the labels of child items in the tree column
 - api/gantt_grid_date_format_template.md - specifies the format of dates in the "Start time" column
 - api/gantt_grid_file_template.md - specifies the icon of child items in the tree column

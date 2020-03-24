@@ -1,4 +1,4 @@
-Connector Сode Samples
+Connector Code Samples
 ==============================
 
 dhtmlxGantt supports a special server-side library helper **dhtmlxConnector** that simplifies your work with the server side.
