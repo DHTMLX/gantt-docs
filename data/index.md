@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 6.3!</h2>
+    <h2>Meet Gantt 7.0!</h2>
     
     <p>
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="desktop/working_time.md#taskdurationindecimalformat">Decimal durations of tasks</a></li>        
-        <li><a href="desktop/multiselection.md#multitaskselectionanddragndrop">Dragging and Dropping of multiple tasks</a></li>   
-        <li><a href="desktop/extensions_list.md#dragtimeline">Scrolling the Timeline by click and drag</a></li>
+		<li><a href="desktop/working_time.md#globalsettings">Working time in minutes</a></li>        
+        <li><a href="desktop/using_gantt_on_server.md">Creating Gantt instance in Node.js</a></li>   
+        <li><a href="api/gantt_reorder_grid_columns_config.md">Reordering grid columns by drag and drop</a></li>
 	</ul>
 
     <p class='action_buttons'>
