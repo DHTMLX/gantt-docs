@@ -75,7 +75,7 @@ The *configuration object* has the following structure:
     - **buttons** - (*string[]*) optional, buttons to be placed in the pop-up edit form<br>
 If neither header nor buttons are specified, the related areas of the quick info popup will be hidden.
 
-####**Showing/Hiding Quick Info**
+####**Showing Quick Info**
 
 You can show the popup for a specified task, link, resource panel or define another position on the screen where the popup will be displayed via the **gantt.ext.quickInfo.show()** method:
 
@@ -120,6 +120,48 @@ gantt.attachEvent("onEmptyClick", function (e) {
   }
 });
 ~~~
+
+And here is an example of showing the popup for a specified link:
+
+~~~js
+const quickInfo = gantt.ext.quickInfo;
+gantt.attachEvent("onLinkClick", function(id,e){
+    //any custom logic here
+    const link = gantt.getLink(id);
+    const linksFormatter = gantt.ext.formatters.linkFormatter();
+
+    const domHelpers = gantt.utils.dom;
+    const position = domHelpers.getRelativeEventPosition(e, gantt.$task_data);
+
+    const sourceTask = gantt.getTask(link.source);
+    const targetTask = gantt.getTask(link.target);
+    quickInfo.show(position.x, position.y);
+
+    let linkDescr = "";
+
+    if (link.type === gantt.config.links.start_to_start){
+        linkDescr = "Start to start";
+    } else if (link.type === gantt.config.links.start_to_finish){
+        linkDescr = "Start to finish";
+    } else if (link.type === gantt.config.links.finish_to_finish){
+        linkDescr = "Finish to Finish";
+    } else {
+        linkDescr = "Finish to start";
+    }
+
+    quickInfo.setContent({
+        header: {
+            title: `${linkDescr} link`,
+            date: ""
+        },
+        content: `Source: ${sourceTask.text}<br>
+                    Target: ${targetTask.text}`,
+        buttons: []
+    });
+});
+~~~
+
+####**Hiding Quick Info**
 
 To hide a pop-up edit form, make use of the **gantt.ext.quickInfo.hide()** method. The method depends on the **gantt.config.quick_info_detached** config and presupposes two possible options:
 

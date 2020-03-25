@@ -144,7 +144,7 @@ gantt.config.columns = [
 The default working time is the following:
 
 - Working days:  Monday - Friday.
-- Working hours: 08:00 - 17:00.
+- Working hours: 8:00 - 12:00, 13:00 - 17:00.
 
 (*hours configuration is taken into account only when api/gantt_duration_unit_config.md is less than a day (hours or minutes)*).
 

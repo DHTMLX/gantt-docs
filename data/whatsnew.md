@@ -40,9 +40,16 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - The CSP extension was removed from the package, the [csp mode is enabled by default](api/gantt_csp_config.md)
 - The settings object as the third parameter of the api/gantt_attachevent.md method is added
 - The format for setting working hours in the [setWorkTime](api/gantt_setworktime.md) method is simplified
+- The default working hours are changed from 8:00-17:00 to 8:00-12:00, 13:00-17:00
 - The format of the [gantt.config.resource_calendars](api/gantt_resource_calendars_config.md) config is simplified
 - desktop/video_guides.md are added in the documentation
 
+### Fixes
+
+- Fix the bug which caused a column to change width after hiding and showing the column again
+- Fix the bug which disabled the ability to select any task when the multiselect extension was disabled via the `multiselect` config
+- Fix the incorrect work of `gantt.sort` for tasks with equal start dates
+- Fix drag and drop of a link when Gantt is initialized inside a Web Component 
 
 6.3.7
 -----
