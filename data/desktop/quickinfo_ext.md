@@ -40,13 +40,13 @@ gantt.ext.quickInfo.show(1300,100);
 
 ~~~
 
-- **getNode()** - return the HTMLElement of the quick info popup. Returns *null* if the quick info is not initialized
+- **getNode()** - returns the HTMLElement of the quick info popup. Returns *null* if the quick info is not initialized
 
 ~~~js
 const node = gantt.ext.quickInfo.getNode();
 ~~~
 
-The returned DOM element of the shown quick info is:
+The returned DOM element of the shown quick info looks like:
 
 <img src="desktop/quick_node.png">
 

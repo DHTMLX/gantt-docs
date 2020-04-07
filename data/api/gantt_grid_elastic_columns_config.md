@@ -32,7 +32,7 @@ To make columns dependent on the grid size, set **grid_elastic_columns** to *tru
 gantt.config.grid_elastic_columns = true;
 ~~~
 
-Now, if the width of the grid is changing, the width of columns will be also resized:
+Now, if the width of the grid is changed, the width of columns will be also resized:
 
 - if you widen the grid, the columns will expand to fit the size of the grid and occupy all the remaining space
 - if you reduce the width of the grid, the columns will shrink until they reach their [minimal width](desktop/specifying_columns.md#width). When all columns reach minimum, the horizontal scroll will appear in the grid.

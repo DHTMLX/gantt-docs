@@ -14,7 +14,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 <b>7.0</b>
 --------------
 
-<span class='release_date'>March 25, 2020. Major update</span>
+<span class='release_date'>April 7, 2020. Major update</span>
 
 ### Breaking changes 
 
