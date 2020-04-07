@@ -13,7 +13,7 @@ Slack time is the time that a task can slip without affecting other tasks or the
 <div style="text-align:center;"><img src="desktop/critical_path.png"/></div>
 
 {{note
-To start using the extension, include the **ext/dhtmlxgantt_critical_path.js** file on the page.
+To start using the extension, enable it using the [gantt.plugins](api/gantt_plugins.md) method.
 }}
 
 To show the critical path in the Gantt chart, set the api/gantt_highlight_critical_path_config.md property to 'true':
@@ -27,9 +27,11 @@ Making the Gantt chart to display the critical path
 <head>
    <script src="codebase/dhtmlxgantt.js"></script>   
    <link href="codebase/dhtmlxgantt.css" rel="stylesheet">   
-   <script src="codebase/ext/dhtmlxgantt_critical_path.js"></script>  /*!*/
 </head>
 <body>
+    gantt.plugins({ /*!*/
+        critical_path: true /*!*/
+    }); /*!*/
     gantt.config.highlight_critical_path = true;
     //your code will be here
 </body>
@@ -141,17 +143,17 @@ gantt.templates.link_class = function(link){
       return "";
 };
 
-var tasks = {
-	data: [
-		{ "id": 1, "text": "Office itinerancy", open:true, type:"project" },
-		{ "id": 2, "text": "Office facing", "start_date": "21-07-2014", 
-        	"duration": "20", "parent": "1" },
-		{ "id": 3, "text": "Furniture installation", "start_date": "21-07-2014", 
-        	"duration": "5", "parent": "1" },
-        { "id": 4, "text": "The employee relocation", "start_date": "28-07-2014", 
-        	"duration": "15", "parent": "1" },
-        { "id": 5, "text": "Interior office", "start_date": "28-07-2014", 
-        	"duration": "15", "parent": "1" }
+var data = {
+	tasks: [
+		{ id: 1, text: "Office itinerancy", open:true, type:"project" },
+		{ id: 2, text: "Office facing", start_date: "21-07-2020", 
+        	duration: "20", parent: "1" },
+		{ id: 3, text: "Furniture installation", start_date: "21-07-2020", 
+        	duration: "5", parent: "1" },
+        { id: 4, text: "The employee relocation", start_date: "28-07-2020", 
+        	duration: "15", parent: "1" },
+        { id: 5, text: "Interior office", start_date: "28-07-2020", 
+        	duration: "15", parent: "1" }
 	],
 	links: [
 		{ id: "1", source: "2", target: "3", type: "0" },
@@ -161,7 +163,7 @@ var tasks = {
 };
 gantt.init("gantt_here");
 
-gantt.parse(tasks);
+gantt.parse(data);
 ~~~
 
 

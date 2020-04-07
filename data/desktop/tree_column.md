@@ -7,10 +7,10 @@ Expanding/collapsing a task branch
 - To open a task branch, use the api/gantt_open.md method:
 
 ~~~js
-var tasks = {
-  data:[
-     {id:"p_1", text:"Project #1", start_date:"01-04-2013", duration:18},
-     {id:"t_1", text:"Task #1",    start_date:"02-04-2013", duration:8,
+var data = {
+  tasks:[
+     {id:"p_1", text:"Project #1", start_date:"01-04-2020", duration:18},
+     {id:"t_1", text:"Task #1",    start_date:"02-04-2020", duration:8,
      parent:"p_1"}
 ]};
 gantt.open("p_1"); /*!*/
@@ -19,10 +19,10 @@ gantt.open("p_1"); /*!*/
 - To close a task branch, use the api/gantt_close.md method:
 
 ~~~js
-var tasks = {
-  data:[
-     {id:"p_1", text:"Project #1", start_date:"01-04-2013", duration:18},
-     {id:"t_1", text:"Task #1",    start_date:"02-04-2013", duration:8,
+var data = {
+  tasks:[
+     {id:"p_1", text:"Project #1", start_date:"01-04-2020", duration:18},
+     {id:"t_1", text:"Task #1",    start_date:"02-04-2020", duration:8,
      parent:"p_1"}
 ]};
 gantt.close("p_1"); /*!*/
@@ -58,10 +58,10 @@ Getting the children of a task
 To get the children of a branch task, use the api/gantt_getchildren.md method:
 
 ~~~js
-var tasks = {
-  data:[
-     {id:"p_1", text:"Project #1", start_date:"01-04-2013", duration:18},
-     {id:"t_1", text:"Task #1",    start_date:"02-04-2013", duration:8,
+var data = {
+  tasks:[
+     {id:"p_1", text:"Project #1", start_date:"01-04-2020", duration:18},
+     {id:"t_1", text:"Task #1",    start_date:"02-04-2020", duration:8,
      parent:"p_1"}
 ]};
 gantt.getChildren("p_1");//->["t_1"] /*!*/

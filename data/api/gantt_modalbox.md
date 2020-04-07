@@ -21,6 +21,9 @@ var box = gantt.modalbox({
 
 @template:	api_method
 @descr:
+For details about supported configuration options of a modalbox, see the desktop/message_boxes.md article.
+
+
 @related:desktop/message_boxes.md
 @relatedapi:
 - api/gantt_alert.md

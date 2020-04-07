@@ -17,3 +17,7 @@ The *dhtmlxgantt_csp.js* extension is applied on top of the base gantt and redef
 However, inline styles should be allowed, as they are used in many places across the component. 
 
 In some cases the CSP compatible methods may cause performance regression, thus they are not used by default and the extension has to be enabled explicitly.
+
+@deprecated: The described functionality is deprecated since version 7.0. Instead of it, define the mode of internal implementation of the code of date formatting methods. [Check the details](api/gantt_csp_config.md).
+
+@todo: update me

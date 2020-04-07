@@ -19,7 +19,7 @@ Methods
 - api/gantt_bind.md - creates a new function that, when called, has its <i>this</i> keyword set to the provided value
 - api/gantt_calculateduration.md - calculates the duration of a task
 - api/gantt_calculateenddate.md - calculates the end date of a task
-- api/gantt_calculatetasklevel.md - calculates the level of a task
+- api/gantt_calculatetasklevel.md - calculates the level of nesting of a task
 - api/gantt_callevent.md - calls an inner event
 - api/gantt_changelightboxtype.md - repaints the lighbox for the task according to its type
 - api/gantt_changelinkid.md - changes the link's id
@@ -35,7 +35,7 @@ Methods
 - api/gantt_copy.md - creates a deep copy of provided object
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
 - api/gantt_createcalendar.md - creates a working calendar
-- api/gantt_createdataprocessor.md - сreates a new dataProcessor instance and attaches it to gantt
+- api/gantt_createdataprocessor.md - creates a new dataProcessor instance and attaches it to gantt
 - api/gantt_createdatastore.md - creates a datastore according to the provided configuration
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
 - api/gantt_dataprocessor.md - dataProcessor constructor
@@ -94,6 +94,7 @@ Methods
 - api/gantt_getprevsibling.md - returns the id of the previous task of the same level
 - api/gantt_getredostack.md - returns the stack of stored redo user actions
 - api/gantt_getresourceassignments.md - returns all tasks assigned to the resource
+- api/gantt_getresourcecalendar.md - returns a calendar which the resource is assigned to
 - api/gantt_getscale.md - returns the configuration of the time scale
 - api/gantt_getscrollstate.md - returns the scroll position
 - api/gantt_getselectedid.md - returns the id of the selected task
@@ -148,12 +149,14 @@ Methods
 - api/gantt_isworktime.md - checks whether the specified date is working or not
 - api/gantt_load.md - loads data to the gantt from an external data source
 - api/gantt_locate.md - gets the id of a task from the specified HTML event
+- api/gantt_mergecalendars.md - merges several working calendars into one
 - api/gantt_message.md - calls a message box of the specified type
 - api/gantt_mixin.md - adds properties of the 'source' object into the 'target' object
 - api/gantt_modalbox.md - calls a modalbox
 - api/gantt_movetask.md - moves a task to a new position
 - api/gantt_open.md - opens the branch with the specified id
 - api/gantt_parse.md - loads data from a client-side resource
+- api/gantt_plugins.md - activates specified extensions
 - api/gantt_posfromdate.md - gets the relative horizontal position of the specified date in the chart area
 - api/gantt_redo.md - applies the reverted changes to the gantt once again
 - api/gantt_refreshdata.md - refreshes data in the Gantt chart
@@ -287,6 +290,7 @@ Methods
 - api/gantt_getprevsibling.md
 - api/gantt_getredostack.md
 - api/gantt_getresourceassignments.md
+- api/gantt_getresourcecalendar.md
 - api/gantt_getscale.md
 - api/gantt_getscrollstate.md
 - api/gantt_getselectedid.md
@@ -341,12 +345,14 @@ Methods
 - api/gantt_isworktime.md
 - api/gantt_load.md
 - api/gantt_locate.md
+- api/gantt_mergecalendars.md
 - api/gantt_message.md
 - api/gantt_mixin.md
 - api/gantt_modalbox.md
 - api/gantt_movetask.md
 - api/gantt_open.md
 - api/gantt_parse.md
+- api/gantt_plugins.md
 - api/gantt_posfromdate.md
 - api/gantt_redo.md
 - api/gantt_refreshdata.md

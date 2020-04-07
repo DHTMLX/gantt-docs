@@ -3,13 +3,13 @@ Grouping Tasks
 
 {{pronote This functionality is available only in the PRO edition}}
 
-The library provides the **ext/dhtmlxgantt_grouping.js** extension that allows you to group tasks by any of task's attributes.
+The library provides the **grouping.js** extension that allows you to group tasks by any of task's attributes.
 
 <div style="text-align:center;"><img src="desktop/grouping_tasks.png"/></div>
 
 
 {{note
-To start using the extension, include the **ext/dhtmlxgantt_grouping.js** file on the page.
+To start using the extension, enable it using the [gantt.plugins](api/gantt_plugins.md) method.
 }}
 
 
@@ -19,9 +19,11 @@ To start using the extension, include the **ext/dhtmlxgantt_grouping.js** file o
 <head>
    <script src="codebase/dhtmlxgantt.js"></script>   
    <link href="codebase/dhtmlxgantt.css" rel="stylesheet">   
-   <script src="codebase/ext/dhtmlxgantt_grouping.js"></script>  /*!*/
 </head>
 <body>
+    gantt.plugins({
+        grouping: true
+    });
     //your code will be here
 </body>
 </html>
@@ -36,8 +38,8 @@ Grouping tasks
 To group tasks by some criterion, use the api/gantt_groupby.md method: 
 
 ~~~js
-var tasks =  {
-	data:[{id:1, priority:1, start_date:"02-04-2013 00:00", ...}, ...] 
+var data =  {
+	tasks:[{id:1, priority:1, start_date:"02-04-2020 00:00", ...}, ...] 
 };
 
 gantt.groupBy({
@@ -53,8 +55,8 @@ where:
 - **relation_property** - (*mandatory*) a property of a task object that will be used to group items. For example:
 
 ~~~js
-var tasks =  {
-	data:[{id:1, priority:1, start_date:"02-04-2013 00:00", ...}, ...] /*!*/
+var data =  {
+	tasks:[{id:1, priority:1, start_date:"02-04-2020 00:00", ...}, ...] /*!*/
 };
 gantt.groupBy({
 	relation_property: "priority", /*!*/

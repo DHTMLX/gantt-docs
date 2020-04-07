@@ -20,6 +20,98 @@ Migration from Older Versions
 	}
 </style>
 
+6.3 -> 7.0
+---------------------
+
+###Extensions and locale files
+
+The newest update v7.0 introduces two major changes in the structure of the Gantt package:
+
+1) All files of extensions are now bundled with the *dhtmlxgantt.js* file. 
+Therefore, in order to activate any of extra extensions provided by dhtmlxGantt you need to use the API call.
+
+- If you have already included any extension files from the built-in package on your page, for example:
+
+~~~js
+<script src="../codebase/dhtmlxgantt.js"></script>
+<script src="../codebase/ext/dhtmlxgantt_auto_scheduling.js"></script>
+~~~
+
+or
+
+~~~js
+import "dhtmlx-gantt";
+import "dhtmlx-gantt/ext/dhtmlxgantt_auto_scheduling";
+~~~
+
+Then you need to remove the extension file and enable the extension using the **gantt.plugins** method:
+
+~~~js
+gantt.plugins({
+   auto_scheduling: true
+});
+~~~
+
+See the full list of extensions [here](desktop/extensions_list.md).
+
+- If you use a modified version of extension files or have developed custom extensions, include them as files on a page and they will work. 
+
+- **Note**, that the **dhtmlxgantt_smart_rendering.js** and **dhtmlxgantt_csp.js** extensions are completely removed and do not need to be enabled manually.
+<br>
+
+2) All locales are now embedded into the *dhtmlxgantt.js* file. To activate them, use the API call.
+
+- If you have included any locale on a page, you need to remove it from the page and enable the required locale using **gantt.i18n.setLocale**:
+
+~~~js
+gantt.i18n.setLocale("de");
+~~~
+
+- If you use a custom locale file, it can be loaded as before.
+
+###Default settings of the working time are changed
+
+In all versions before 7.0, the default working hours were from 8:00 till 17:00 that is 9 hours per day.<br>
+Starting from v7.0, the working hours are 8:00-12:00, 13:00-17:00 that is 8 hours per day.
+
+If you want to revert to the previous settings, you'll need to set it manually:
+
+~~~js
+gantt.setWorkTime({hours: [8, 17]});
+~~~
+
+###Content Security Policy
+
+The **ext/dhtmlxgantt_csp.js** extension is no longer needed as it is removed and replaced with the [csp config](api/gantt_csp_config.md) which is enabled by default; the extension should be removed from the gantt.
+
+Since the **csp** property is added to the dhtmlxGantt library, valid HTML 5 attributes, that can be used in any browser that supports HTML5 doctypes, will be assigned to all elements of Gantt. <br>
+
+Therefore, we recommend that you update already existing attributes with new ones:
+
+- "task_id" -> ["data-task-id"](api/gantt_task_attribute_config.md)
+- "link_id" -> ["data-link-id"](api/gantt_link_attribute_config.md)
+- "resource_id" -> ["data-resource-id"](api/gantt_resource_attribute_config.md)
+- "column_index" -> ["data-column-index"](api/gantt_grid_resizer_column_attribute_config.md)
+
+However, the old attributes are included in the markup, so if you don't change the attributes' names, your code will continue working. 
+
+###Styling grid cells
+
+Earlier, alignment of grid cells was accomplished via `display:inline-block`. Starting from v7.0, `display:flex` is used instead and cells are positioned inside a flex container.
+
+This change doesn't affect the UI visible to the user (it remains 100% identical) and shouldn't cause any migration issues.
+However, some regressions with styling of the grid cells may be related to this update.
+
+###"xml_date" config and template, and "xml_format" templates are removed
+
+Deprecated in v6.2 config and templates are removed in v7.0 and replaced with new ones:
+
+- gantt.config.xml_date →  [gantt.config.date_format](api/gantt_date_format_config.md)
+- gantt.templates.xml_date → [gantt.templates.parse_date](api/gantt_parse_date_template.md)
+- gantt.templates.xml_format → [gantt.templates.format_date](api/gantt_format_date_template.md)
+
+If you have already defined the old names in your code, they will continue work. In other case, use a newer version of the API.
+
 6.2 -> 6.3
 ---------------
 

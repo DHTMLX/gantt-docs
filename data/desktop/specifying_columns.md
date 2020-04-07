@@ -15,6 +15,10 @@ gantt.config.columns = [
 ];
 ~~~
 
+You can take a look at the video guide that describes how to specify columns of the grid.
+
+<iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Overview
 ----------
 
@@ -142,12 +146,12 @@ The api/gantt_getwbscode.md method returns the WBS code of the necessary task. F
 
 ~~~js
 gantt.parse({
- "data":[
-  	{"id":1, "text":"Project #1", "start_date":"28-03-2013", 
+ "tasks":[
+  	{"id":1, "text":"Project #1", "start_date":"28-03-2020", 
   		"duration":"11", "parent":"0", "open":true},
-  	{"id":2, "text":"Task #1", "start_date":"01-04-2013", 
+  	{"id":2, "text":"Task #1", "start_date":"01-04-2020", 
     	"duration":"18", "parent":"1"},
-  	{"id":3, "text":"Task #2", "start_date":"02-04-2013", 
+  	{"id":3, "text":"Task #2", "start_date":"02-04-2020", 
     	"duration":"8", "parent":"1"}
  ],
  "links":[]
@@ -335,12 +339,17 @@ gantt.init("gantt_here");
 02_extensions/07_managing_grid_columns.html
 }}
 
+You can take a look at the video guide that demonstrates how to manage the visibility of columns in the grid.
+
+<iframe width="676" height="400" src="https://www.youtube.com/embed/rqYrqqoaI_U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Horizontal scrollbar
 ---------------------
 
 You can make Grid scrollable using the **scrollable** property of the [layout](desktop/layout_config.md) configuration option. 
 [Read about binding layout views to a scrollbar](desktop/layout_config.md#scrollbar).
+
+The presence of a horizontal scrollbar in the grid allows Gantt to automatically adjust the width of the columns during resizing the width of the grid. [Read more about how to enable this functionality](api/gantt_grid_elastic_columns_config.md). 
 
 In addition to the **scrollable** attribute, you need to add a *horizontal scrollbar element* into the layout and connect it to the grid as follows:
 

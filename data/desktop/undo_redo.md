@@ -1,12 +1,12 @@
 Undo/Redo Functionality
 ======================================
 
-dhtmlxGantt Chart allows you to undo/redo the made changes. To enable this functionality, you need to include the **ext/dhtmlxgantt_undo.js** extension on the page.
+dhtmlxGantt Chart allows you to undo/redo the made changes. To enable this functionality, you need to enable the **undo**  plugin using the [gantt.plugins](api/gantt_plugins.md) method.
 
-~~~html
-<script src="codebase/dhtmlxgantt.js"></script>
-<script src="codebase/ext/dhtmlxgantt_undo.js"></script>  /*!*/
-<link rel="stylesheet" href="codebase/dhtmlxgantt.css" type="text/css">
+~~~js
+gantt.plugins({
+	undo: true
+});
 ~~~
 
 By default, both Undo and Redo features are enabled. To control the Undo/Redo functionality, make use of the api/gantt_undo_config.md / api/gantt_redo_config.md configuration options. 
@@ -44,7 +44,7 @@ Getting the stack of stored Undo/Redo actions
 --------------------------------------------
 
 All user actions in the Gantt Chart are implemented as arrays that contain sets of command objects. Gantt stores a stack of the most recently executed commands.
-The **dhtmlxgantt_undo.js** extension can make reverse operations out of them and execute them in Gantt. 
+The **undo.js** extension can make reverse operations out of them and execute them in Gantt. 
 
 When you need to undo or redo a command, the extension takes the most recent command object and executes the corresponding method.
 

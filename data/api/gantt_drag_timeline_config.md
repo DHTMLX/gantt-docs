@@ -6,7 +6,7 @@ drag_timeline
 
 
 @short: 
-configures the behavior of the dhtmlxgantt_drag_timeline extension
+configures the behavior of the drag_timeline extension
 	
 
 @type: object
@@ -25,7 +25,7 @@ gantt.config.drag_timeline = {
 
 @descr:
 
-{{note This option is defined in the **ext/dhtmlxgantt_drag_timeline.js** extension, so you need to include it on the page.}}
+{{note This option is defined in the **drag_timeline.js** extension, so you need to activate the [drag_timeline](desktop/extensions_list.md#dragtimeline) plugin.}}
 
 The config value can be either an object or **null** value, **null** value disables the extension.
 ~~~js

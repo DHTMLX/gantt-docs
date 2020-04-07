@@ -19,6 +19,7 @@ The **ext** object includes the following extensions:
 - [gantt.ext.inlineEditors](desktop/inline_editors_ext.md)
 - [gantt.ext.keyboardNavigation](desktop/keynav_ext.md)
 - [gantt.ext.overlay](desktop/overlay_ext.md)
+- [gantt.ext.quickInfo](desktop/quickinfo_ext.md)
 - [gantt.ext.tooltips](desktop/tooltips_ext.md)
 - [gantt.ext.undo](desktop/undo_ext.md)
 - [gantt.ext.zoom](desktop/zoom.md)
@@ -30,6 +31,7 @@ The **ext** object includes the following extensions:
 - desktop/inline_editors_ext.md
 - desktop/keynav_ext.md
 - desktop/overlay_ext.md
+- desktop/quickinfo_ext.md
 - desktop/tooltips_ext.md
 - desktop/undo_ext.md
 - desktop/zoom.md

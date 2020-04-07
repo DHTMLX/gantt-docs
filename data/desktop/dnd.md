@@ -62,17 +62,17 @@ To deny dragging tasks out of specific dates, use the api/gantt_ontaskdrag_event
 
 
 <br>
-Let's assume that you want to forbid users to drag tasks out of  the **"31 March, 2013 - 11 April, 2013"** interval. 
+Let's assume that you want to forbid users to drag tasks out of  the **"31 March, 2020 - 11 April, 2020"** interval. 
 
 <img style="margin-top:10px; margin-bottom:10px;" src="desktop/custom_dnd.png"/>
 
 Then, you can use the code as in:
 
 {{snippet
-	Denying dragging tasks out of interval - [31.03.2013, 11.04.2013]
+	Denying dragging tasks out of interval - [31.03.2020, 11.04.2020]
 }}
 ~~~js
-var leftLimit = new Date(2013, 2 ,31), rightLimit = new Date(2013, 3 ,12);
+var leftLimit = new Date(2020, 2 ,31), rightLimit = new Date(2020, 3 ,12);
 
 gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 	var modes = gantt.config.drag_mode;

@@ -20,7 +20,7 @@ var calendarId = gantt.addCalendar(calendar);
 var calendarId = gantt.addCalendar({
 	id:"custom", // optional
 	worktime: {
-		hours: [8, 17],
+		hours: ["8:00-17:00"],
 		days: [ 1, 1, 1, 1, 1, 1 ,1]
 	}
 });
@@ -45,13 +45,13 @@ For example:
 var calendar = {
     id:"calendar1", // optional
     worktime: {
-        hours: [8, 17],
-        days: [ 0, 1, 1, 1, [12, 17], 1, 0]
+        hours: ["8:00-17:00"],
+        days: [ 0, 1, 1, 1, ["12:00-17:00"], 1, 0]
     }
 }
 ~~~
 
-where [12, 17] are working hours from 12 pm to 17 pm for Thursday.
+where ["12:00-17:00"] are working hours from 12 pm to 17 pm for Thursday.
 
     
 @relatedsample:

@@ -177,27 +177,25 @@ requirejs(["codebase/dhtmlxgantt"], function(dhx){
 
 The dhtmlxGantt library will return an object with fields `gantt` and `Gantt` (in Enterprise versions) - the *gantt* and *Gantt* objects described [here](desktop/multiple_gantts.md).
 
-{{note  When using Gantt with extensions in RequireJS, you should specify the `shim` config for RequireJS and directly set the dependency of extensions from Gantt in it.}}
+{{note  When using Gantt with custom extensions in RequireJS, you should specify the `shim` config for RequireJS and directly set the dependency of extensions from Gantt in it.}}
 
-The example below demonstrates how dependencies for *dhtmlxgantt_tooltip.js* and *dhtmlxgantt_critical_path.js* extensions are set in the correct way:
+The example below demonstrates how a custom extension file *custom_tooltip_plugin.js* can be set in the correct way:
 
 ~~~js
 requirejs.config({
   paths: {
     "dhtmlxgantt": "../../codebase/dhtmlxgantt",
-    "ext/dhtmlxgantt_tooltip": "../../codebase/ext/dhtmlxgantt_tooltip",
-    "ext/dhtmlxgantt_critical_path": "../../codebase/ext/dhtmlxgantt_critical_path",
+    "ext/dhtmlxgantt_custom_tooltip": "../custom_tooltip_plugin"
   },
   shim: {
-    "ext/dhtmlxgantt_tooltip": ["dhtmlxgantt"],
-    "ext/dhtmlxgantt_critical_path": ["dhtmlxgantt"],
+    "ext/dhtmlxgantt_custom_tooltip": ["dhtmlxgantt"]
   }
 });
  
-requirejs(["dhtmlxgantt", "ext/dhtmlxgantt_tooltip", "ext/dhtmlxgantt_critical_path"], 
+requirejs(["dhtmlxgantt"], 
 function (dhx) {
   var gantt = dhx.gantt;
- 
+
   var date_to_str = gantt.date.date_to_str(gantt.config.task_date);
   var today = new Date(2018, 3, 5);
   gantt.addMarker({
@@ -231,15 +229,6 @@ Check that the module name for any file inside the package is specified as *a re
 
 - "dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"
 
-**extensions:**
-
-- "ext/dhtmlxgantt_critical_path": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_critical_path"
-- "ext/dhtmlxgantt_tooltip": "./vendor/dhtmlxgantt/ext/dhtmlxgantt_tooltip"
-
-**locales:**
-
-- "locale/locale_de": "./vendor/dhtmlxgantt/locale/locale_de"
-- "locale/locale_be": "./vendor/dhtmlxgantt/locale/locale_be"
 
 Full screen mode
 ---------------------------------

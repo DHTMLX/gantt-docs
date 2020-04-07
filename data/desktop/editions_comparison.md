@@ -72,7 +72,7 @@ The PRO edition includes all the functionality of the Standard version and also 
         {"name":"Link formatter for the  Predecessor editor\n", "url":"desktop__inline_editing.html#linkformatter", "standard":false,"pro":true},
         {"name":"Assigning Calendar to Project\n", "url":"desktop__working_time.html#assigningcalendartoproject", "standard":false,"pro":true},
         {"name":"Assigning Calendar to Resource\n", "url":"desktop__working_time.html#assigningcalendartoresource", "standard":false,"pro":true},
-        {"name":"Constraint Control\n", "url":"desktop__constraint.html", "standard":false,"pro":true},
+        {"name":"Constraint Control\n", "url":"desktop__constraint.html", "standard":false,"pro":true}
 	]
   
     var col = ["Feature","Standard","PRO"];

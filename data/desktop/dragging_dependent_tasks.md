@@ -9,10 +9,12 @@ Using Auto Scheduling Extension
 Firstly, you can make use of the desktop/auto_scheduling.md extension.
 It allows scheduling tasks automatically depending on relations between them.
 
-To use the auto scheduling functionality, you should include the **dhtmlxgantt_auto_scheduling.js** extension on the page:
+To use the auto scheduling functionality, you should enable it using the [gantt.plugins](api/gantt_plugins.md) method:
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_auto_scheduling.js"></script>
+~~~js
+gantt.plugins({
+	auto_scheduling: true
+});
 ~~~
 
 And set the **auto_scheduling** property to true:

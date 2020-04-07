@@ -173,10 +173,12 @@ and allow tracking the common progress of implementing tasks of a project.
 
 To add an overlay into gantt, you need to complete two steps:
 
-- include the **ext/dhtmlxgantt_overlay.js** extension on the page
+- enable the **overlay** extension using the [gantt.plugins](api/gantt_plugins.md) method
 
-~~~html
-<script src="codebase/ext/dhtmlxgantt_overlay.js"></script>
+~~~js
+gantt.plugins({
+	overlay: true
+});
 ~~~
 
 - use the **addOverlay()** method of the **gantt.ext.overlay** object and pass a function that contains the logic of adding overlay content into it. 

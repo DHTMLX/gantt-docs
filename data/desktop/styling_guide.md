@@ -142,7 +142,7 @@ gantt.templates.grid_row_class = function(start, end, task){
 
 {{editor	https://docs.dhtmlx.com/gantt/snippet/3328e356			Coloring Grid Rows}}
 
-### Customization of the grid columns
+<h3 id="customizationgridcolumns">Customization of the grid columns</h3>
 
 dhtmlxGantt provides the possibility to modify the default appearance of the grid columns via the **template** attribute of the [**gantt.config.columns**](api/gantt_columns_config.md) configuration option.
 
@@ -197,6 +197,27 @@ gantt.config.columns = [
 <img src="desktop/custom_elements_grid_columns.png">
 
 {{sample  07_grid/07_custom_buttons.html}}
+
+####Truncate long text with ellipsis in grid columns
+
+Gantt shortens long text in grid rows.
+
+Starting from v7.0, it is possible to truncate long content of grid rows with ellipsis. To do that, you should redefine the related css class which is **.gantt_tree_content**:
+
+~~~js
+<style>
+.gantt_tree_content {
+	overflow:hidden;
+	text-overflow: ellipsis;
+}
+</style>
+
+gantt.init("gantt_here");
+~~~
+
+<img src="desktop/truncate_text.png">
+
+{{editor	https://snippet.dhtmlx.com/5/0bfadf7d0		Truncate long text with ellipsis}}
 
 Styling Scale
 ------------

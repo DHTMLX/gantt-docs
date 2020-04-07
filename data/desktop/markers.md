@@ -1,12 +1,12 @@
 Adding Vertical Markers
 =========================================================
 
-The library provides the **ext/dhtmlxgantt_marker.js** extension that allows you to mark (highlight) certain dates or date ranges.
+The library provides the **marker.js** extension that allows you to mark (highlight) certain dates or date ranges.
 
 <div style="text-align:center;"><img src="desktop/today_marker.png"/></div>
 
 {{note
-To start using the extension, include the **ext/dhtmlxgantt_marker.js** file on the page. 
+To start using the extension, enable the **marker** plugin using the [gantt.plugins](api/gantt_plugins.md) method.
 }}
 
 ~~~js
@@ -15,9 +15,11 @@ To start using the extension, include the **ext/dhtmlxgantt_marker.js** file on 
 <head>
    <script src="codebase/dhtmlxgantt.js"></script>   
    <link href="codebase/dhtmlxgantt.css" rel="stylesheet">   
-   <script src="codebase/ext/dhtmlxgantt_marker.js"></script>  /*!*/
 </head>
 <body>
+    gantt.plugins({ /*!*/
+        marker: true /*!*/
+    }); /*!*/
     //your code will be here
 </body>
 </html>
@@ -31,11 +33,12 @@ To start using the extension, include the **ext/dhtmlxgantt_marker.js** file on 
 To add a marker to the timeline area, e.g. the today's marker, call the api/gantt_addmarker.md method:
 
 ~~~js
+var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
 var markerId = gantt.addMarker({
 	start_date: new Date(), //a Date object that sets the marker's date
 	css: "today", //a CSS class applied to the marker
 	text: "Now", //the marker title
-	title:date_to_str( new Date()) // the marker's tooltip
+	title: dateToStr( new Date()) // the marker's tooltip
 });
 ~~~
 {{sample
@@ -50,11 +53,12 @@ Note, as the value of the 'text' property, the method can take any HTML
 To get an object of the added marker, use the api/gantt_getmarker.md method:
 
 ~~~js
+var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
 var markerId = gantt.addMarker({  /*!*/
 	start_date: new Date(), 
 	css: "today", 
 	text: "Now", 
-	title:date_to_str( new Date()) 
+	title: dateToStr(new Date()) 
 });
 gantt.getMarker(markerId); //->{css:"today", text:"Now", id:...}
 ~~~
@@ -67,11 +71,12 @@ gantt.getMarker(markerId); //->{css:"today", text:"Now", id:...}
 To remove once added marker, use the api/gantt_deletemarker.md method: 
 
 ~~~js
+var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
 var markerId = gantt.addMarker({  /*!*/
 	start_date: new Date(), 
 	css: "today", 
 	text: "Now", 
-	title:date_to_str( new Date()) 
+	title: dateToStr(new Date()) 
 });
 
 gantt.deleteMarker(markerId); /*!*/
@@ -93,11 +98,12 @@ gantt.config.show_markers = false;// hides all 3 markers
 To update a marker, use the  api/gantt_updatemarker.md method:
 
 ~~~js
+var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
 var markerId = gantt.addMarker({  /*!*/
 	start_date: new Date(), 
 	css: "today", 
 	text: "Now", 
-	title:date_to_str( new Date()) 
+	title: dateToStr(new Date()) 
 });
 
 gantt.getMarker(markerId).css = "today_new";
@@ -134,12 +140,12 @@ Today's marker
 Let's assume that you want to have the today's marker in your Gantt chart. In this case you need both: to add a marker on the page and to provide a function that will move the marker as the time changes. You can do this with the following code:
 
 ~~~js
-var date_to_str = gantt.date.date_to_str(gantt.config.task_date);
+var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
 
 var id = gantt.addMarker({ 
 	start_date: new Date(), 
     css: "today", 
-    title:date_to_str( new Date())
+    title:dateToStr(new Date())
 });
 setInterval(function(){
 	var today = gantt.getMarker(id);

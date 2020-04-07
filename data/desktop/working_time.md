@@ -144,10 +144,9 @@ gantt.config.columns = [
 The default working time is the following:
 
 - Working days:  Monday - Friday.
-- Working hours: 08:00 - 17:00.
+- Working hours: 8:00 - 12:00, 13:00 - 17:00.
 
 (*hours configuration is taken into account only when api/gantt_duration_unit_config.md is less than a day (hours or minutes)*).
-
 
 To change the default working time, use the api/gantt_setworktime.md method:
 
@@ -156,14 +155,14 @@ Setting a custom working time
 }}
 ~~~js
 //changes the working time of working days
-gantt.setWorkTime({ hours:[9,18] });
+gantt.setWorkTime({ hours:["9:00-18:00"] });
 
 //makes all Fridays days-off
 gantt.setWorkTime({ day:5, hours:false });
 
 //changes the working time for Fridays and Saturdays
-gantt.setWorkTime({day : 5, hours : [8,12]});
-gantt.setWorkTime({day : 6, hours : [8,12]});
+gantt.setWorkTime({day : 5, hours : ["8:00-12:00"]});
+gantt.setWorkTime({day : 6, hours : ["8:00-12:00"]});
 
 //makes a specific date a working day 
 gantt.setWorkTime({date : new Date(2019, 2, 31)});
@@ -176,11 +175,31 @@ gantt.setWorkTime({date:new Date(2019,0,1), hours:false})
 09_worktime/04_custom_workday_duration.html
 }}
 
+To specify the working time not only from an hour to hour (e.g."8:00-12:00") but also including minutes (e.g. "8:15-12:45"), set the api/gantt_duration_unit_config.md config to *"minute"*.
+
+{{snippet
+Setting a custom working time up to minutes
+}}
+~~~js
+gantt.config.duration_unit = "minute";
+
+// sets the working time up to minutes
+gantt.setWorkTime({hours:["8:15-12:45"]});
+~~~
+
+{{note The format of the working time that was used up to version 7.0
+will continue work as before:
+~~~js
+gantt.setWorkTime({hours:[9, 18]})
+~~~
+}}
+
+
 Note, each next call of the method for the same date will re-write the previous working-time rule. So, if you need to unset some rule, call the api/gantt_setworktime.md method with other configuration: 
 
 ~~~js
-gantt.setWorkTime({hours:[8,12]});
-gantt.setWorkTime({hours:[13,17]});
+gantt.setWorkTime({hours:["8:00-12:00"]});
+gantt.setWorkTime({hours:["13:00-17:00"]});
 //the result of following commands will be the working time 13:00-17:00
 //and not a mixin of both commands
 ~~~
@@ -190,10 +209,10 @@ gantt.setWorkTime({hours:[13,17]});
 You can unset a working time by using the api/gantt_unsetworktime.md method:
 
 ~~~js
-//changes the working time of working days from [8,17] to [8,12]
-gantt.setWorkTime({hours:[8,12]});
+//changes the working time of working days from ["8:00-17:00"] to ["8:00-12:00"]
+gantt.setWorkTime({hours:["8:00-12:00"]});
 //unsets the working time
-gantt.unsetWorkTime({hours:[8,12]});
+gantt.unsetWorkTime({hours:["8:00-12:00"]});
 ~~~
 
 
@@ -207,7 +226,7 @@ gantt.setWorkTime({date:new Date(2019,0,1), hours:false});
 gantt.isWorkTime(new Date(2019,0,1)) // -> false  /*!*/
 
 // makes 15 March, 2019 a working day from 9:00 till 18:00 
-gantt.setWorkTime({date : new Date(2019, 2, 15), hours:[9,18]});
+gantt.setWorkTime({date : new Date(2019, 2, 15), hours:["8:00-17:00"]});
 gantt.isWorkTime(new Date(2019, 2, 15,10,0), "hour"); // -> true  /*!*/
 gantt.isWorkTime(new Date(2019, 2, 15,8,0), "hour"); // ->false  /*!*/
 ~~~
@@ -221,7 +240,7 @@ gantt.isWorkTime(new Date(2019, 2, 15,8,0), "hour"); // ->false  /*!*/
 To get the working hours of the specified date, use the api/gantt_getworkhours.md method:
 
 ~~~js
-gantt.getWorkHours(new Date(2019,3,30))// -> [8, 17]
+gantt.getWorkHours(new Date(2019,3,30))// -> ["8:00-17:00"]
 ~~~
 
 
@@ -300,7 +319,7 @@ var calendarId = gantt.addCalendar(calendar);
 var calendarId = gantt.addCalendar({
     id:"custom", // optional
     worktime: {
-        hours: [8, 17],
+        hours: ["8:00-17:00"],
         days: [ 1, 1, 1, 1, 1, 1 ,1]
     }
 });
@@ -424,7 +443,7 @@ You should pass the calendar id to this method:
 gantt.addCalendar({
     id:"custom",
     worktime: {
-        hours: [8, 17],
+        hours: ["8:00-17:00"],
         days: [ 1, 1, 1, 1, 1, 1 ,1]
     }
 });
@@ -441,7 +460,7 @@ To assign a working calendar to a task, you need to set the calendar id and the 
 gantt.addCalendar({
     id:"custom", // optional
     worktime: {
-        hours: [8, 17],
+        hours: ["8:00-17:00"],
         days: [ 1, 1, 1, 1, 1, 1 ,1]
     }
 });
@@ -473,46 +492,39 @@ It is also possible to assign a particular working calendar to tasks that requir
 
 For example, you can set individual calendars for tasks, depending on a user a task is assigned to. The order of your actions will be as follows:
 
-- add the desired calendar for each user 
+- define the property of a task object that will store a resource id via the api/gantt_resource_property_config.md configuration attribute. In the example below the property named **user** will store ids of users:
 
 ~~~js
-var johnCalendarId = gantt.addCalendar({
-	worktime: {
-		days: [0, 1, 1, 1, 1, 1, 0]
-	}
-}),
-
-var mikeCalendarId = gantt.addCalendar({
-	worktime: {
-		days: [1, 0, 0, 0, 0, 0, 1]
-	}
-}),
-
-var annaCalendarId = gantt.addCalendar({
-	worktime: {
-		days: [0, 1, 1, 1, 0, 1, 1]
-	}
-});
+gantt.config.resource_property = "user";
 ~~~
 
-- use the api/gantt_resource_calendars_config.md configuration option to group calendars into one object.
-In the example below we add a "user" object and bind calendars to different users inside it:
+- use the api/gantt_resource_calendars_config.md configuration option to add the desired calendar for each user and group calendars into one object.
 
 ~~~js
 gantt.config.resource_calendars = {
-	"user":{
-		1 : johnCalendarId,
-		2 : mikeCalendarId,
-		3 : annaCalendarId
-	}
+    1 : gantt.addCalendar({
+        worktime: {
+            days: [0, 1, 1, 1, 1, 1, 0]
+        }
+    }),
+    2 : gantt.addCalendar({
+        worktime: {
+            days: [1, 0, 0, 0, 0, 0, 1]
+        }   
+    }),
+    3 : gantt.addCalendar({
+        worktime: {
+            days: [0, 1, 1, 1, 0, 1, 1]
+        }
+    })
 };
 ~~~
 
-The "user" object includes a set of *key:value* pairs, where key is the number of the user and value corresponds to the 
-id of the calendars we have specified at the previous step.
+The object includes a set of *key:value* pairs, where key is the id of the resource and value corresponds to the 
+id of the calendars returned by the api/gantt_addcalendar.md method.
 
 - specify the **user** attribute in task config objects. 
-As a value of this attribute, use the key of the necessary calendar from the "user" object defined in the **resource_calendars** configuration option:
+As a value of this attribute, use the key of the necessary calendar from the object defined in the **resource_calendars** configuration option:
 
 ~~~js
 { "id":1, "user":"1", "text":"Project #2", "start_date":"01-04-2019", "duration":"5" },
@@ -527,6 +539,40 @@ As a value of this attribute, use the key of the necessary calendar from the "us
 
 {{note Note that when a task has both a custom and a resource calendars, the custom calendar has a higher priority and overrides the resource calendar settings.}}
 
+<h3 id="mergingcalendars">Merging multiple calendars</h3>
+
+Starting from v7.0, it is possible to merge multiple calendars into one. <br>
+For example, you want to set two or more resources with different working calendars for the same task. The working hours of the first one are from 9:00 to 15:00 while the working time of another is from 12:00 to 17:00.  As a result of their merging, you'll get one calendar with working hours from 12:00 to 15:00.
+
+Setting the api/gantt_dynamic_resource_calendars_config.md config to *true* will enable this feature automatically: 
+
+~~~js
+gantt.config.dynamic_resource_calendars = true;
+~~~
+
+{{sample 09_worktime/10_merge_calendars.html}}
+
+But you can also merge calendars manually with the help of the api/gantt_mergecalendars.md method:
+
+~~~js
+const johnCalendarId = gantt.addCalendar({
+    worktime: {
+        hours: ["0:00-24:00"],
+        days: [0, 1, 1, 1, 1, 1, 0]
+    }
+});
+const mikeCalendarId = gantt.addCalendar({
+    worktime: {
+        hours: ["8:00-12:00", "13:00-17:00"],
+        days: [0, 1, 1, 1, 1, 1, 0]
+    }
+});
+
+const joinedCalendar = gantt.mergeCalendars(
+    gantt.getCalendar(mikeCalendarId),
+    gantt.getCalendar(johnCalendarId)
+);
+~~~
 
 ## Assigning Calendar to Project
 
@@ -558,8 +604,9 @@ calendars unlike their parent projects:
 
 ##Changing Calendar Dynamically
 
-Gantt won't pick up the change of a task calendar automatically, so the task schedule should be updated manually when its calendar changes:
+Starting from v7.0, Gantt picks up the change of a task calendar  and recalculates  time of tasks automatically.
 
+However, you can update the task schedule manually when its calendar changes.
 For example, a calendar can be changed from lightbox:
 
 ~~~js

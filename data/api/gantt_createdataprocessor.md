@@ -2,7 +2,7 @@ createDataProcessor
 =============
 
 @short:
-	сreates a new dataProcessor instance and attaches it to gantt
+	creates a new dataProcessor instance and attaches it to gantt
 
 @params:
 - config	string,object 		dataProcessor configuration object

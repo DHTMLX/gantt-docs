@@ -23,6 +23,9 @@ var box = gantt.alert({
 
 @template:	api_method
 @descr:
+For details about supported configuration options of an alert message box, see the desktop/message_boxes.md article.
+
+
 @relatedapi:
 - api/gantt_confirm.md
 - api/gantt_message.md

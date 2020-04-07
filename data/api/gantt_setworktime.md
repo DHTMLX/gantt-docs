@@ -10,15 +10,16 @@ setWorkTime
 @example:
 gantt.config.work_time = true;
 
-//changes the working time of working days from [8,17] to [9,18]
-gantt.setWorkTime({ hours:[9,18] });
+//changes the working time of working days from ["8:00-17:00"] to ["9:00-18:00"]
+gantt.setWorkTime({ hours:["9:00-18:00"] });
  
 //makes all Fridays day-offs
 gantt.setWorkTime({ day:5, hours:false });
  
-//changes the working time for Fridays and Saturdays from [8,17] to [8,12]
-gantt.setWorkTime({day : 5, hours : [8,12]});
-gantt.setWorkTime({day : 6, hours : [8,12]});
+//changes the working time for Fridays and Saturdays 
+// from ["8:00-17:00"] to ["8:00-12:00"]
+gantt.setWorkTime({day : 5, hours : ["8:00-12:00"]});
+gantt.setWorkTime({day : 6, hours : ["8:00-12:00"]});
  
 //makes March 31 a working day 
 gantt.setWorkTime({date : new Date(2013, 2, 31)});
@@ -26,8 +27,8 @@ gantt.setWorkTime({date : new Date(2013, 2, 31)});
 //makes January 1 a day-off
 gantt.setWorkTime({date:new Date(2013,0,1), hours:false})
 
-//sets working time as 2 periods: 8:00-12:00, 13:00-17:00 (to keep time for lunch)
-gantt.setWorkTime({hours : [8, 12, 13, 17]})
+//sets working time as 2 periods: 8:30-12:00, 13:00-17:00 (to keep time for lunch)
+gantt.setWorkTime({hours : ["8:30-12:00", "13:00-17:00"]})
 
 @template:	api_method
 @related:
@@ -61,8 +62,8 @@ The method is used to alter the default settings.
 Note, each next call of the method for the same date will re-write the previous working-time rule:
 
 ~~~js
-gantt.setWorkTime({hours:[8,12]});
-gantt.setWorkTime({hours:[13,17]});
+gantt.setWorkTime({hours:["8:00-12:00"]});
+gantt.setWorkTime({hours:["13:00-17:00"]});
 //the result of following commands will be the working time 13:00-17:00
 //and not a mixin of both commands
 ~~~
@@ -110,13 +111,13 @@ gantt.setWorkTime({date:new Date(2013,0,1), hours:false})
 	</tr>
     <tr>
 		<td rowspan=2><b id="hours">hours</b></td>
-        <td> an array of working hours as 'from'-'to' pairs. <br><i>'false'</i> value sets a day-off, <i>'true' (default value)</i> applies the default hours ([8,17])</td>
+        <td> an array of working hours as 'from'-'to' pairs. <br><i>'false'</i> value sets a day-off, <i>'true' (default value)</i> applies the default hours (["8:00-17:00"])</td>
     </tr>
     <tr>
 		<td colspan=2 style="text-align:left !important; ">
 ~~~js
 //sets the working time for Fridays from 8:00 till 12:00
-gantt.setWorkTime({day : 5, hours : [8,12]});
+gantt.setWorkTime({day : 5, hours : ["8:00-12:00"]});
 ~~~
 		</td>
 	</tr>
@@ -124,3 +125,4 @@ gantt.setWorkTime({day : 5, hours : [8,12]});
 </table>
 
 
+@changelog: the format of the **hours** property of the config is changed in version 7.0

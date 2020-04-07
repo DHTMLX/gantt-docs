@@ -5,7 +5,7 @@ The guidance information makes up the major part of the documentation and helps 
 The chapter is divided into task-oriented manuals that assist you in performing both simple and difficult, often and seldom used tasks. 
 The articles come around key procedures and problem-solving activities. 
 
-Сheck the [features available in the Standard and PRO versions](desktop/editions_comparison.md) of the dhtmlxGantt library.
+Check the [features available in the Standard and PRO versions](desktop/editions_comparison.md) of the dhtmlxGantt library.
 
 <table  style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
@@ -40,9 +40,10 @@ The articles come around key procedures and problem-solving activities.
                     <li>desktop/handling_events.md</li>
                     <li>desktop/multiple_gantts.md</li> 
                     <li>desktop/extensions_list.md</li>
+                    <li>desktop/using_gantt_on_server.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Says how to build a standard Gantt chart on a page and bring it to life: configure with specific settings, customize the default templates, attach events, etc.</td>
+		<td class='topic_description'>Says how to create Gantt on the server, build a standard Gantt chart on a page and bring it to life: configure with specific settings, customize the default templates, attach events, etc.</td>
 	</tr>
 	<tr>
 		<td id="manipulations" class='topics'>

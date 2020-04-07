@@ -28,7 +28,7 @@ The **group** parameter presents an object which includes a group of tasks and l
 
 {{pronote This functionality is available in the PRO edition only.}}
 
-{{note The method requires the **ext/dhtmlxgantt_auto_scheduling.js** to be included on the page.}}
+{{note The method requires the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin to be activated.}}
 
 @related:
 desktop/auto_scheduling.md

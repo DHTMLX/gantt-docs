@@ -32,7 +32,7 @@ gantt.config.click_drag = {
 
 @template:	api_config
 @descr:
-{{note This config is defined in the **ext/dhtmlxgantt_click_drag.js** extension, so you need to include it on the page. Read the details in the desktop/advanced_dnd.md article.}}
+{{note This config is defined in the **click_drag.js** extension, so you need to activate the [click_drag](desktop/extensions_list.md#advanceddragndrop) plugin using the [gantt.plugins](api/gantt_plugins.md) method. Read the details in the desktop/advanced_dnd.md article.}}
 
 The **click_drag** extension allows:
 

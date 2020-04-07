@@ -246,7 +246,7 @@ To do this you need to set the [show_tasks_outside_timescale](api/gantt_show_tas
 
 ~~~js
 var data = {
-  "data": [
+  "tasks": [
     {"id":1, "text":"Project #1", "start_date": "01-09-2018", "end_date": "02-09-2018"},
     {"id":2, "text":"Project #2", "start_date": "01-09-2021", "end_date": "02-09-2021"},
     {"id":3, "text":"Task #1", "start_date": "03-02-2020", "end_date": "05-02-2020"},
@@ -362,29 +362,78 @@ gantt.config.scales = [
 Styling
 ------------------------------------
 
-<img src="desktop/scale_style.png"/>
+<img src="desktop/css_styling.png"/>
 
-To style the scale, use the api/gantt_scale_cell_class_template.md template:
+To style the cells of the time scale, use the **css** attribute in the corresponding scale object.
 
-{{snippet
-Setting a custom style for the scale
-}}
 ~~~js
-<style type="text/css">
-   .weekend{ background: #BD7990!important; color:white !important;}
-</style>
-<script>
-	gantt.templates.scale_cell_class = function(date){/*!*/
-		if(date.getDay()==0||date.getDay()==6){
-			return "weekend";/*!*/
-		}/*!*/
-	};/*!*/
-	gantt.init("gantt_here");
-</script>
+function getWeekOfMonthNumber(date){
+    let adjustedDate = date.getDate()+date.getDay();
+    let prefixes = ['0', '1', '2', '3', '4', '5'];
+    return (parseInt(prefixes[0 | adjustedDate / 7])+1);
+} 
+
+gantt.config.scales = [
+    {unit: "month", step: 1, format: "%F, %Y"},
+    {unit: "week", step: 1, format: function(date){
+       return "Week #" + getWeekOfMonthNumber(date);
+    }},
+    {unit: "day", step:1, format: "%j %D", css: function(date) { /*!*/
+         if(!gantt.isWorkTime(date)){ 
+             return "week-end"; 
+         } 
+    }} 
+];
 ~~~
-{{sample
-	04_customization/06_highlight_weekend.html
-}}
+
+{{editor    https://snippet.dhtmlx.com/5/997ef604d	Styling of cells of the time scale}}
+
+In case the **css** property is not specified in the config of the scales, you can define the [scale_cell_class](api/gantt_scale_cell_class_template.md) template to apply the CSS class to the first time scale of the array of the **scales** config.
+
+~~~js
+function getWeekOfMonthNumber(date){
+    let adjustedDate = date.getDate()+date.getDay();
+    let prefixes = ['0', '1', '2', '3', '4', '5'];
+    return (parseInt(prefixes[0 | adjustedDate / 7])+1);
+} 
+
+gantt.config.scales = [
+    {unit: "month", step: 1, format: "%F, %Y"},
+    {unit: "week", step: 1, format: function(date){
+       return "Week #" + getWeekOfMonthNumber(date);
+    }},
+    {unit: "day", step:1, format: "%j %D"}
+];
+
+gantt.templates.scale_cell_class = function(date) {
+         if(!gantt.isWorkTime(date)){
+             return "week-end";
+         }
+};
+~~~
+
+{{editor    https://snippet.dhtmlx.com/5/440576e8d	Styling of the first time scale}}
+
+To apply the [scale_cell_class](api/gantt_scale_cell_class_template.md) template to all scales of the time scale, set the api/gantt_inherit_scale_class_config.md property to *true*.
+
+~~~js
+gantt.config.scales = [
+    {unit: "month", step: 1, format: "%F, %Y"},
+    {unit: "week", step: 1, format: function(date){
+       return "Week #" + getWeekOfMonthNumber(date);
+    }},
+    {unit: "day", step:1, format: "%j %D"}
+];
+
+gantt.templates.scale_cell_class = function(date) {
+         if(!gantt.isWorkTime(date)){
+             return "week-end";
+         }
+};
+gantt.config.inherit_scale_class = true; /*!*/
+~~~
+
+{{editor    https://snippet.dhtmlx.com/5/98d26ef67	Styling of all scales}}
 
 Note that while using [work time calculations](desktop/working_time.md), you can use api/gantt_isworktime.md instead of hardcoded values:
 
@@ -450,9 +499,11 @@ function fiscalYearLabel(date){
     return dateToStr(gantt.date.fiscal_year_start(date));
 };
 
-gantt.config.subscales = [
-  {unit:"year", step:1, date:"Calendar year %Y"},
-  {unit:"fiscal_year", step:1, template:fiscalYearLabel}
+gantt.config.scales = [
+  {unit:"year", step:1, format:"Calendar year %Y"},
+  {unit:"fiscal_year", step:1, format:fiscalYearLabel},
+  {unit:"month", step: 1, format: "%M %Y"},
+  {unit:"day", step: 1, format:"%d %M"}
 ];
 ~~~
 

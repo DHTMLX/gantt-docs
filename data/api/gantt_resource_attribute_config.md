@@ -13,13 +13,12 @@ resource_attribute
 @example:
 gantt.config.resource_attribute = "data-resource-id";
 
-
+@default: data-resource-id
 
 @template:	api_config
 @descr:
-The default value of the attribute is "resource_id".
 
-{{note Each resource element has the resource_id attribute that is used to find which a resource the DOM element is attached to.}}
+{{note Each resource element has the *data-resource-id* attribute that is used to find which a resource the DOM element is attached to.}}
 
 
 <img src="api/resource_attribute.png" /><br>

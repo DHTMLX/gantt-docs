@@ -7,7 +7,7 @@ Templates
 - api/gantt_date_grid_template.md - specifies the content of start date or end date columns in grid
 - api/gantt_drag_link_template.md - specifies the text of tooltips that are displayed when the user creates a new dependency link
 - api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the pop-up that appears when a user drags a link
-- api/gantt_format_date_template.md - сonverts a date object to a date string. Used to send data back to the server
+- api/gantt_format_date_template.md - converts a date object to a date string. Used to send data back to the server
 - api/gantt_grid_blank_template.md - specifies the custom content inserted before the labels of child items in the tree column
 - api/gantt_grid_date_format_template.md - specifies the format of dates in the "Start time" column
 - api/gantt_grid_file_template.md - specifies the icon of child items in the tree column

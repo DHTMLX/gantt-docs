@@ -22,6 +22,9 @@ var box = gantt.message({
 
 @template:	api_method
 @descr:
+For details about supported configuration options of a message box, see the desktop/message_boxes.md article.
+
+
 @relatedapi:
 - api/gantt_alert.md
 - api/gantt_confirm.md

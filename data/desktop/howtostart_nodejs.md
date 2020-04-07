@@ -17,6 +17,11 @@ Node.js has a set of ready-made solutions, so we won't have to code everything f
 The complete source code is [available on GitHub](https://github.com/DHTMLX/gantt-howto-node).
 }}
 
+
+You can have a look at the video guide that shows how to create a Gantt chart using Node.js.
+
+<iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Step 1. Creating a project
 -------------------------------
 

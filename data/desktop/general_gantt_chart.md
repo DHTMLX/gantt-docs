@@ -12,4 +12,5 @@ Creating Gantt Chart on the Page
 - desktop/handling_events.md
 - desktop/multiple_gantts.md
 - desktop/extensions_list.md
+- desktop/using_gantt_on_server.md
 }}

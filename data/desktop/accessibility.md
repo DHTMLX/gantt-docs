@@ -8,7 +8,7 @@ To make an easier access and interaction with DHTMLXGantt for people with disabi
 
 - WAI-ARIA Attributes
 - Keyboard  Navigation
-- High-Сontrast Theme
+- High-Contrast Theme
 
 WAI-ARIA Attributes
 ----------------------
@@ -32,7 +32,7 @@ instead of navigating through an application with a mouse pointer.
 
 You will find the detailed information in the desktop/keyboard_navigation.md article.
 
-High-Сontrast Themes
+High-Contrast Themes
 --------------------
 
 DHTMLXGantt supports a theme that uses contrasting colors which make the app's interface more distinct and easier to see.

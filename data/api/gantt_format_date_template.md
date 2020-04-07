@@ -6,7 +6,7 @@ format_date
 
 
 @short:
-	сonverts a date object to a date string. Used to send data back to the server
+	converts a date object to a date string. Used to send data back to the server
 
 @params:
 - date		Date		the date which needs formatting

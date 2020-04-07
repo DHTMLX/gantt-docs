@@ -7,11 +7,12 @@ on the peculiarities of keyboard navigation with Gantt, including focus behavior
 
 ##Enabling the functionality
 
-In order to use keyboard navigation in the Gantt chart, you need to include the **ext/dhtmlxgantt_keyboard_navigation.js** extension on the page. 
+In order to use keyboard navigation in the Gantt chart, you need to enable the **keyboard_navigation** plugin using the [gantt.plugins](api/gantt_plugins.md) method.
 
-~~~html
-<script src="../../codebase/ext/dhtmlxgantt_keyboard_navigation.js" 
-	type="text/javascript" charset="UTF-8"></script>
+~~~js
+gantt.plugins({
+	keyboard_navigation: true
+});
 ~~~
 
 The API of the **gantt.ext.keyboardNavigation** object is given in the article desktop/keynav_ext.md.

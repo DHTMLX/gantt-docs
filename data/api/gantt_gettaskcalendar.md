@@ -5,7 +5,7 @@ getTaskCalendar
 	gets a calendar assigned to the specified task (a task level calendar)
 
 @params:
-- task		object		the object of a task 
+- task		string,number,object		the id or object of a task 
 
 @returns:
 - task_calendar		object		the object of the task's calendar

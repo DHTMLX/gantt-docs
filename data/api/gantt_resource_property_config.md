@@ -4,7 +4,7 @@ resource_property
 @edition: pro
 
 @short:
-	defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram
+	defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram/Calendar
 
 @type: string
 @default: "owner_id"
@@ -12,7 +12,7 @@ resource_property
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-Specifies the property of the task object which stores the resource id associated with resourceGrid/Timeline/Histogram. Can be changed on the runtime.
+Specifies the property of the task object which stores the resource id associated with resourceGrid/Timeline/Histogram/Calendar. Can be changed on the runtime.
 
 
 @example:
@@ -72,6 +72,7 @@ resourcesStore.parse([
 @template:	api_config
 
 @related: desktop/resource_management.md
+desktop/working_time.md#assigningcalendartoresource
 
 @relatedapi:
 api/gantt_resource_store_config.md

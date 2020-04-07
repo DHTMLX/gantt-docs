@@ -23,7 +23,7 @@ Gantt API
 - api/gantt_bind.md - creates a new function that, when called, has its <i>this</i> keyword set to the provided value
 - api/gantt_calculateduration.md - calculates the duration of a task
 - api/gantt_calculateenddate.md - calculates the end date of a task
-- api/gantt_calculatetasklevel.md - calculates the level of a task
+- api/gantt_calculatetasklevel.md - calculates the level of nesting of a task
 - api/gantt_callevent.md - calls an inner event
 - api/gantt_changelightboxtype.md - repaints the lighbox for the task according to its type
 - api/gantt_changelinkid.md - changes the link's id
@@ -39,7 +39,7 @@ Gantt API
 - api/gantt_copy.md - creates a deep copy of provided object
 - api/gantt_correcttaskworktime.md - recalculates the task duration in the work time
 - api/gantt_createcalendar.md - creates a working calendar
-- api/gantt_createdataprocessor.md - сreates a new dataProcessor instance and attaches it to gantt
+- api/gantt_createdataprocessor.md - creates a new dataProcessor instance and attaches it to gantt
 - api/gantt_createdatastore.md - creates a datastore according to the provided configuration
 - api/gantt_createtask.md - adds a new task and opens the lightbox to confirm
 - api/gantt_dataprocessor.md - dataProcessor constructor
@@ -98,6 +98,7 @@ Gantt API
 - api/gantt_getprevsibling.md - returns the id of the previous task of the same level
 - api/gantt_getredostack.md - returns the stack of stored redo user actions
 - api/gantt_getresourceassignments.md - returns all tasks assigned to the resource
+- api/gantt_getresourcecalendar.md - returns a calendar which the resource is assigned to
 - api/gantt_getscale.md - returns the configuration of the time scale
 - api/gantt_getscrollstate.md - returns the scroll position
 - api/gantt_getselectedid.md - returns the id of the selected task
@@ -152,12 +153,14 @@ Gantt API
 - api/gantt_isworktime.md - checks whether the specified date is working or not
 - api/gantt_load.md - loads data to the gantt from an external data source
 - api/gantt_locate.md - gets the id of a task from the specified HTML event
+- api/gantt_mergecalendars.md - merges several working calendars into one
 - api/gantt_message.md - calls a message box of the specified type
 - api/gantt_mixin.md - adds properties of the 'source' object into the 'target' object
 - api/gantt_modalbox.md - calls a modalbox
 - api/gantt_movetask.md - moves a task to a new position
 - api/gantt_open.md - opens the branch with the specified id
 - api/gantt_parse.md - loads data from a client-side resource
+- api/gantt_plugins.md - activates specified extensions
 - api/gantt_posfromdate.md - gets the relative horizontal position of the specified date in the chart area
 - api/gantt_redo.md - applies the reverted changes to the gantt once again
 - api/gantt_refreshdata.md - refreshes data in the Gantt chart
@@ -338,6 +341,7 @@ Gantt API
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_constraint_types_config.md - contains all available constraint types
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
+- api/gantt_csp_config.md - defines internal implementation of the code of date formatting methods
 - api/gantt_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
@@ -354,10 +358,12 @@ Gantt API
 - api/gantt_drag_timeline_config.md - configures the behavior of the dhtmlxgantt_drag_timeline extension
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
+- api/gantt_dynamic_resource_calendars_config.md - enables automatic merging of multiple resource calendars into one
 - api/gantt_editable_property_config.md - changes the name of a property that affects the editing ability  of tasks/links in the read-only Gantt chart
 - api/gantt_editor_types_config.md - an object that contains definitions of inline editors
 - api/gantt_end_date_config.md - sets the end value of the time scale
 - api/gantt_fit_tasks_config.md - 'says' the Gantt chart to automatically extend the time scale in order to fit all displayed tasks
+- api/gantt_grid_elastic_columns_config.md - adjusts the width of columns inside a scrollable grid
 - api/gantt_grid_resize_config.md - makes the grid resizable by dragging the right grid's border
 - api/gantt_grid_resizer_attribute_config.md - sets the name of the attribute  of the grid resizer's  DOM element
 - api/gantt_grid_resizer_column_attribute_config.md - sets the name of the attribute  of the column resizer's  DOM element. The attribute presents the column's index
@@ -381,7 +387,7 @@ Gantt API
 - api/gantt_link_wrapper_width_config.md - sets the width of the area (over the link) sensitive to clicks
 - api/gantt_links_config.md - stores the types of links dependencies
 - api/gantt_min_column_width_config.md - sets the minimum width for a column in the timeline area
-- api/gantt_min_duration_config.md - Sets the minimum duration (in milliseconds) that can be set for a task during resizing.
+- api/gantt_min_duration_config.md - sets the minimum duration (in milliseconds) that can be set for a task during resizing.
 - api/gantt_min_grid_column_width_config.md - sets the minumum width for the grid (in pixels) while being resized
 - api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
@@ -399,9 +405,10 @@ Gantt API
 - api/gantt_readonly_config.md - activates the read-only mode for the Gantt chart
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
+- api/gantt_reorder_grid_columns_config.md - enables the possibility to reorder grid columns by drag and drop
 - api/gantt_resource_attribute_config.md - changes the name of the attribute that Gantt uses to find which resource the task row in the resource grid/timeline is referring to
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
-- api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram
+- api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram/Calendar
 - api/gantt_resource_render_empty_cells_config.md - tells the resource timeline to render elements and call templates for non-allocated cells
 - api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline/resourceHistogram views
 - api/gantt_root_id_config.md - sets the id of the virtual root element
@@ -470,7 +477,7 @@ Gantt API
 - api/gantt_date_grid_template.md - specifies the content of start date or end date columns in grid
 - api/gantt_drag_link_template.md - specifies the text of tooltips that are displayed when the user creates a new dependency link
 - api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the pop-up that appears when a user drags a link
-- api/gantt_format_date_template.md - сonverts a date object to a date string. Used to send data back to the server
+- api/gantt_format_date_template.md - converts a date object to a date string. Used to send data back to the server
 - api/gantt_grid_blank_template.md - specifies the custom content inserted before the labels of child items in the tree column
 - api/gantt_grid_date_format_template.md - specifies the format of dates in the "Start time" column
 - api/gantt_grid_file_template.md - specifies the icon of child items in the tree column
@@ -528,10 +535,11 @@ Gantt API
 - api/gantt_date_other.md - a set of date formatting methods
 - api/gantt_env_other.md - a set of flags which describe current environment
 - api/gantt_ext_other.md - an object that stores various extensions
+- api/gantt_i18n_other.md - a set of methods for Gantt chart localization
 - api/gantt_json_other.md - specifies JSON serialization and parsing
 - api/gantt_keys_other.md - defines the hot keys for the Gantt chart
 - api/gantt_license_other.md - returns the license name of dhtmlxGantt
-- api/gantt_locale_other.md - a locale object (region-specific labels) of the Gantt chart
+- api/gantt_locale_other.md - the current locale object (region-specific labels) of the Gantt chart
 - api/gantt_oldxml_other.md - specifies serialization and parsing in the XML format of dhtmlxGantt 1.0
 - api/gantt_skin_other.md - returns the current skin of the Gantt chart
 - api/gantt_skins_other.md - returns objects of the available skins

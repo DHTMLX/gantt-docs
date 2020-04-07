@@ -3,7 +3,7 @@ Auto Scheduling
 
 {{pronote This functionality is available only in the PRO edition.}}
 
-The library provides the **ext/dhtmlxgantt_auto_scheduling.js** extension that gives Gantt the ability to schedule tasks automatically depending on relations between them.
+The library provides the **auto_scheduling.js** extension that gives Gantt the ability to schedule tasks automatically depending on relations between them.
 
 <img src="desktop/auto_scheduling.png">
 
@@ -16,10 +16,12 @@ This feature allows you to generate and maintain project schedule by specifying 
 How to use
 --------------
 
-To use the auto scheduling functionality, you should include the **dhtmlxgantt_auto_scheduling.js** extension on the page:
+To use the auto scheduling functionality, you should enable the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin using the [gantt.plugins](api/gantt_plugins.md) method:
 
-~~~html
-<script src="../codebase/ext/dhtmlxgantt_auto_scheduling.js"></script>
+~~~js
+gantt.plugins({
+	auto_scheduling: true
+});
 ~~~
 
 And set the **auto_scheduling** property to *true*:

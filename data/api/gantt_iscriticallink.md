@@ -42,7 +42,7 @@ gantt.isCriticaLink(gantt.getLink(2));// ->'false' /*!*/
 	api/gantt_iscriticaltask.md
 @descr:
 
-{{note This method is defined in the **ext/dhtmlxgantt_critical_path.js** extension, so you need to include it on the page. Read the details in the desktop/critical_path.md article.}}
+{{note This method is defined in the **critical_path.js** extension, so you need to activate the [critical_path](desktop/extensions_list.md#criticalpath) plugin. Read the details in the desktop/critical_path.md article.}}
 
 
 {{pronote This functionality is available in the PRO edition only.}}

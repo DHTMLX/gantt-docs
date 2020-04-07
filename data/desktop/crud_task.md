@@ -13,7 +13,7 @@ To add a new task to the Gantt chart, use the api/gantt_addtask.md method:
 var taskId = gantt.addTask({
     id:10,
     text:"Project #1",
-    start_date:"02-09-2013",
+    start_date:"02-09-2020",
     duration:28
 });
 ~~~
@@ -51,7 +51,7 @@ Updating a task's property
 To dynamically update a property of a task object, use the api/gantt_updatetask.md method:
 
 ~~~js
-var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2013",...}
+var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2020",...}
  
 task.text = "Task #10_1";/*!*/ 
 gantt.updateTask(10); /*!*/
@@ -64,8 +64,8 @@ Redrawing tasks
 To re-draw all tasks in the Gantt chart, use the api/gantt_refreshdata.md method:
 
 ~~~js
-var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2013",...}
-var task2 = gantt.getTask(11);//->{id:11,text:"Task #11",start_date:"05-09-2013",...}
+var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2020",...}
+var task2 = gantt.getTask(11);//->{id:11,text:"Task #11",start_date:"05-09-2020",...}
  
 task.text = "Task #10_1"; /*!*/ 
 task2.text = "Task #11_1";/*!*/ 

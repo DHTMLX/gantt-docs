@@ -68,8 +68,8 @@ Dates are stringified in the "%Y-%m-%d %H:%i" format.
 desktop/export_msproject.md#exporttomsproject
 
 @relatedapi:
+api/gantt_importfromprimaverap6.md
 api/gantt_exporttomsproject.md
-api/gantt_exporttoprimaverap6.md
 api/gantt_exporttoexcel.md
 api/gantt_exporttoical.md
 api/gantt_exporttopdf.md
@@ -77,3 +77,6 @@ api/gantt_exporttopng.md
 api/gantt_exporttojson.md
 api/gantt_importfromexcel.md
 api/gantt_importfrommsproject.md
+
+@relatedsample:
+08_api/08_export_other.html

@@ -421,7 +421,7 @@ namespace DHX.Gantt
 
 Finally, you need to initialize and seed the database on the app startup. Normally, you'd want to use migrations for that, but for simplicity they aren't used here.
 
-Let's begin with creating a class where initialization will be done. Сreate the **GanttInitializerExtension.cs** file in the **Models** folder:
+Let's begin with creating a class where initialization will be done. Create the **GanttInitializerExtension.cs** file in the **Models** folder:
 
 {{snippet	Models/GanttInitializerExtension.cs}}
 ~~~js
