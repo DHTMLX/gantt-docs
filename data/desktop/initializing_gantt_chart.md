@@ -5,7 +5,7 @@ When you develop an application with dhtmlxGantt, the first thing you need is to
 
 To display a basic Gantt on the page, follow 3 steps: 
 
-1. Include the [dhtmlxGantt code files](#howtoaddganttsourcefilesintotheproject) on the page.
+1. Include the [dhtmlxGantt code files](desktop/initializing_gantt_chart.md#howtoaddganttsourcefilesintoaproject) on the page.
 2. Create a DIV container on the page.
 3. Initialize dhtmlxGantt in the newly created container with the api/gantt_init.md method. As a parameter the method takes an HTML container (or its id)  that the Gantt chart will be  displayed in.
 
