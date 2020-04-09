@@ -18,7 +18,7 @@ Versioning
 
 dhtmlxGantt applies to the Node.js package the same scheme of the version numbering as to the browser packages (for example, v7.0.0 is the first version of Gantt for a Node.js package).
 
-{{note We advice you to use the same version of the gantt libraries on the client  on the server side.}}
+{{note We advice you to use the same version of the gantt libraries on the client side as on the server side.}}
 
 Adding the library to the project
 ----------------------------------
@@ -100,6 +100,6 @@ dhtmlxGantt provides the same core API for Node.js as the browser version.
 
 However, some methods that are available in the client-side version of a gantt either won't work or won't be defined in the server library, namely:
 
-- Server-side rendering is not implemented. Calling such methods as [gantt.render](api/gantt_render.md), gantt.renderData, [gantt.refreshTask](api/gantt_refreshtask.md), etc. won't produce any HTML but will trigger related API events, for example, [onBeforeGanttRender](api/gantt_onbeforeganttrender_event.md), [onGanttRender](api/gantt_onganttrender_event.md), etc.
+- Server-side rendering is not implemented. Calling such methods as [gantt.render](api/gantt_render.md), [gantt.refreshData](api/gantt_refreshdata.md), [gantt.refreshTask](api/gantt_refreshtask.md), etc. won't produce any HTML but will trigger related API events, for example, [onBeforeGanttRender](api/gantt_onbeforeganttrender_event.md), [onGanttRender](api/gantt_onganttrender_event.md), etc.
 - [Popup messages API](desktop/message_boxes.md) is not included into the Node package. The gantt.message, gantt.alert, gantt.confirm methods will be undefined.
 - [Built-in ajax helpers](api/gantt_ajax_other.md) are not ported to node, so neither gantt ajax API nor gantt.load nor default dataProcessor routings will work. You need to use gantt.parse and [custom routing of the dataProcessor](desktop/server_side.md#customrouting).
