@@ -51,6 +51,36 @@ gantt.init("gantt_here");
 where 'text', 'holder', 'start_date', 'end_date', 'progress' are [the names of the data properties](desktop/specifying_columns.md#datamappingandtemplates).
 
 
+Hiding the "Add" button for certain tasks
+----------------------------------------------
+
+A quite easy way to prevent users from adding sub-tasks to specific tasks is to hide the 'Add'  button through CSS.
+
+<ol>
+<li>First, assign a CSS class for each task row using the api/gantt_grid_row_class_template.md template:
+~~~js
+gantt.templates.grid_row_class = function( start, end, task ){
+	if ( task.$level > 1 ){
+		return "nested_task"
+	}
+	return "";
+};
+~~~
+</li>
+<li>Then, hide the 'Add' button for such rows:
+
+~~~css
+.nested_task .gantt_add{
+	display: none !important;
+}
+~~~
+</li>
+</ol>
+{{sample
+	08_api/11_project_structure.html
+}}
+
+
 Width
 -------------
 
