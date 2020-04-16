@@ -10,6 +10,25 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.0.1
+-----
+
+<span class='release_date'>April 16, 2020. Bugfix release</span>
+
+
+###Fixes
+
+- Major performance improvement for [calculation tasks' duration in the working minutes](desktop/working_time.md) 
+- Fix regression in the [Tooltip](desktop/tooltips.md) and [Undo](desktop/undo_redo.md) extensions which caused the incorrect work when multiple instances of Gantt were created
+- Fix the issue with the [reordering of grid columns](api/gantt_reorder_grid_columns_config.md) which caused the timeline to scroll when a mouse pointer moved to the edge of the grid during drag and drop 
+- Fix [the incorrect position of the column after its dragging and dropping to the right side of the grid border](api/gantt_reorder_grid_columns_config.md)
+- [dataProcessor custom router](desktop/server_side.md#customrouting) should now work correctly with rejected promises 
+- Fix the regression in [smart rendering](desktop/performance.md#smartrendering) which caused some links not to be visible
+- [Split tasks](desktop/split_tasks.md) now display not only the first level children but also all nested subtasks
+- Fix the issue with [split tasks](desktop/split_tasks.md) and smart rendering which happened when a split task had the 'task' type
+- Fix the issue with [split tasks](desktop/split_tasks.md) which caused the gantt not to calculate the duration of the 'project' tasks nested in a split task
+- Fix the incorrect position of a placeholder after opening an [inline editor](desktop/inline_editing.md) in the [RTL mode](desktop/rtl_mode.md)
+
 
 <b>7.0</b>
 --------------
