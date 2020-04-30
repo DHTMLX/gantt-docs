@@ -10,6 +10,18 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.0.2
+------
+
+<span class='release_date'>April 30, 2020. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect work of [date formatters](api/gantt_date_other.md) when [gantt.config.csp](api/gantt_csp_config.md) is set to true
+- Fix regression in the [click_drag](desktop/extensions_list.md#advanceddragndrop) and [drag_timeline](desktop/extensions_list.md#dragtimeline) extensions which caused the incorrect work when [multiple instances of Gantt](desktop/multiple_gantts.md) were created
+- Fix the incorrect css class of a task row element after returning the error status from the [dataProcessor router function](desktop/server_side.md#customrouting)
+- Fix the incorrect work of [inline editors](desktop/inline_editing.md) inside Shadow DOM
+
 7.0.1
 -----
 
