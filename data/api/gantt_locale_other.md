@@ -23,6 +23,9 @@ gantt.i18n.setLocale({
 		icon_details: "Details",
 		icon_edit: "Edit",
 		icon_delete: "Delete",
+        gantt_save_btn: "New Label",
+      	gantt_cancel_btn: "New Label",
+      	gantt_delete_btn: "New Label",
 		confirm_closing: "",// Your changes will be lost, are you sure?
 		confirm_deleting: "Task will be deleted permanently, are you sure?",
 		section_description: "Description",

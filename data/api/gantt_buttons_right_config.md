@@ -35,6 +35,8 @@ buttons_right
 	 desktop/custom_button.md
 @relatedapi:
 	api/gantt_buttons_left_config.md
+    api/gantt_locale_other.md
+    api/gantt_i18n_other.md
 @relatedsample:
 	05_lightbox/06_custom_button.html
 @template:	api_config
@@ -47,3 +49,29 @@ To prevent this, you need to specify the configuration of buttons inside the api
 
 <br>
 <img src="api/property_buttons_left.png"/>
+
+You can redefine labels of the right button by using the following syntax before initialization of Gantt:
+
+~~~js
+gantt.locale.labels.icon_delete= "New Label";
+
+gantt.init("gantt_here");
+~~~
+
+You can also change the label using another syntax after initialization of Gantt, as follows:
+
+~~~js
+gantt.attachEvent("onGanttReady", function(){
+  gantt.locale.labels.gantt_delete_btn = "New Label";
+});
+~~~
+
+From version 7.0, the labels also can be changed by using the api/gantt_i18n_other.md object:
+
+~~~js
+gantt.i18n.setLocale({
+   labels: {
+      gantt_delete_btn: "New Label"
+   }
+});
+~~~

@@ -69,3 +69,38 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 {{sample
 	05_lightbox/06_custom_button.html
 }}
+
+Changing button labels
+-----------------------
+
+You can redefine labels of buttons by using the following syntax before initialization of Gantt:
+
+~~~js
+gantt.locale.labels.icon_save = "New Label";
+gantt.locale.labels.icon_cancel = "New Label";
+gantt.locale.labels.icon_delete= "New Label";
+
+gantt.init("gantt_here");
+~~~
+
+You can also change the labels using another syntax after initialization of Gantt, as follows:
+
+~~~js
+gantt.attachEvent("onGanttReady", function(){
+  gantt.locale.labels.gantt_save_btn = "New Label";
+  gantt.locale.labels.gantt_cancel_btn = "New Label";
+  gantt.locale.labels.gantt_delete_btn = "New Label";
+});
+~~~
+
+From version 7.0, the labels also can be changed by using the api/gantt_i18n_other.md object:
+
+~~~js
+gantt.i18n.setLocale({
+   labels: {
+      gantt_save_btn: "New Label",
+      gantt_cancel_btn: "New Label",
+      gantt_delete_btn: "New Label"
+   }
+});
+~~~
