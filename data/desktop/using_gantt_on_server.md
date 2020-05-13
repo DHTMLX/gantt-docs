@@ -9,9 +9,14 @@ In some cases, you may need to use a specialized logic of dhtmlxGantt separately
 
 For this reason, we provide a separate build of dhtmlxGantt that can run on the server-side in the Node.js environment.
 
-{{note This version of dhtmlxGantt can be obtained as an add-on for the main library of Gantt.}}
+DHTMLX Gantt for Node.js has the same functionality as Enterprise/Ultimate packages, which means the **Gantt.getGanttInstance** method is available and allows creating a new instance of a gantt.
 
-dhtmlxGantt for Node.js has the same functionality as Enterprise/Ultimate packages, which means the **Gantt.getGanttInstance** method is available and allows creating a new instance of a gantt.
+Terms of using
+--------------
+
+Node.js server module of DHTMLX Gantt is provided as an add-on package to the client-side version of Gantt. Thus, you can acquire the Node.js build while buying Gantt under any commercial license ([Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/commercial/), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/enterprise/), or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/ultimate/)).
+
+In case you have already obtained the main library of dhtmlxGantt, you can [purchase the Node.js module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=58429) and we will send you a link to the server-side version of Gantt.
 
 Versioning
 -------------------
@@ -98,8 +103,11 @@ Limitations
 
 dhtmlxGantt provides the same core API for Node.js as the browser version.
 
-However, some methods that are available in the client-side version of a gantt either won't work or won't be defined in the server library, namely:
+However, some methods that are available in the client-side version of Gantt either won't work or won't be defined in the server library, namely:
 
 - Server-side rendering is not implemented. Calling such methods as [gantt.render](api/gantt_render.md), [gantt.refreshData](api/gantt_refreshdata.md), [gantt.refreshTask](api/gantt_refreshtask.md), etc. won't produce any HTML but will trigger related API events, for example, [onBeforeGanttRender](api/gantt_onbeforeganttrender_event.md), [onGanttRender](api/gantt_onganttrender_event.md), etc.
 - [Popup messages API](desktop/message_boxes.md) is not included into the Node package. The gantt.message, gantt.alert, gantt.confirm methods will be undefined.
-- [Built-in ajax helpers](api/gantt_ajax_other.md) are not ported to node, so neither gantt ajax API nor gantt.load nor default dataProcessor routings will work. You need to use gantt.parse and [custom routing of the dataProcessor](desktop/server_side.md#customrouting).
+- [Built-in ajax helpers](api/gantt_ajax_other.md) are not ported to Node.js, so neither gantt ajax API nor [gantt.load](api/gantt_load.md) nor default dataProcessor routings will work. You need to use [gantt.parse](api/gantt_parse.md) and [custom routing of the dataProcessor](desktop/server_side.md#customrouting).
+
+{{note The evaluation version of dhtmlxGantt for Node.js has limited functionality allows loading up to 75 of Tasks or Links.
+If you try to load a larger data set, only the first 75 items will be loaded.}}
