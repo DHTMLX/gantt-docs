@@ -10,6 +10,17 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+
+7.0.3
+------
+
+<span class='release_date'>May 14, 2020. Bugfix release</span>
+
+### Fixes
+
+- Fix regression in [setWorkTime method](api/gantt_setworktime.md) which caused a script error when setting worktime for a specific day.
+- Fix the incorrect work of [Keyboard Navigation](desktop/keyboard_navigation.md) extension when gantt is used inside a [SalesForce Lightning Web Component](https://github.com/DHTMLX/salesforce-gantt-demo)
+
 7.0.2
 ------
 
@@ -30,11 +41,11 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ###Fixes
 
-- Major performance improvement for [calculation tasks' duration in the working minutes](desktop/working_time.md) 
+- Major performance improvement for [calculation tasks' duration in the working minutes](desktop/working_time.md)
 - Fix regression in the [Tooltip](desktop/tooltips.md) and [Undo](desktop/undo_redo.md) extensions which caused the incorrect work when multiple instances of Gantt were created
-- Fix the issue with the [reordering of grid columns](api/gantt_reorder_grid_columns_config.md) which caused the timeline to scroll when a mouse pointer moved to the edge of the grid during drag and drop 
+- Fix the issue with the [reordering of grid columns](api/gantt_reorder_grid_columns_config.md) which caused the timeline to scroll when a mouse pointer moved to the edge of the grid during drag and drop
 - Fix [the incorrect position of the column after its dragging and dropping to the right side of the grid border](api/gantt_reorder_grid_columns_config.md)
-- [dataProcessor custom router](desktop/server_side.md#customrouting) should now work correctly with rejected promises 
+- [dataProcessor custom router](desktop/server_side.md#customrouting) should now work correctly with rejected promises
 - Fix the regression in [smart rendering](desktop/performance.md#smartrendering) which caused some links not to be visible
 - [Split tasks](desktop/split_tasks.md) now display not only the first level children but also all nested subtasks
 - Fix the issue with [split tasks](desktop/split_tasks.md) and smart rendering which happened when a split task had the 'task' type
@@ -47,7 +58,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 <span class='release_date'>April 7, 2020. Major update</span>
 
-### Breaking changes 
+### Breaking changes
 
 The update brings multiple changes in the API methods. Check the [Migration](migrating.md#6370) article to keep in step with the latest version.
 
@@ -65,7 +76,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 ### Updates
 
-- Locale files were removed from the package, [new API](api/gantt_i18n_other.md) for the Gantt chart localization is added 
+- Locale files were removed from the package, [new API](api/gantt_i18n_other.md) for the Gantt chart localization is added
 - All extensions must be activated now via the api/gantt_plugins.md method
 - `Gantt.getGanttInstance` now [can take a configuration object](desktop/multiple_gantts.md#ganttinstanceconfiguration)  while creating a new Gantt instance
 - The CSP extension was removed from the package, the [csp mode is enabled by default](api/gantt_csp_config.md)
@@ -80,7 +91,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix the bug which caused a column to change width after hiding and showing the column again
 - Fix the bug which disabled the ability to select any task when the multiselect extension was disabled via the `multiselect` config
 - Fix the incorrect work of `gantt.sort` for tasks with equal start dates
-- Fix drag and drop of a link when Gantt is initialized inside a Web Component 
+- Fix drag and drop of a link when Gantt is initialized inside a Web Component
 
 6.3.7
 -----
@@ -89,7 +100,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 ### Fixes
 
-- Significant performance improvement for smart rendering of chart and resource panel 
+- Significant performance improvement for smart rendering of chart and resource panel
 
 6.3.6
 -----
@@ -99,8 +110,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 ### Fixes
 
 
-- Fix the regression in [gantt.resetLayout]( https://docs.dhtmlx.com/gantt/api__gantt_resetlayout.html ) which caused the script error 
-- Fix the issue with the [QuickInfo popup](https://docs.dhtmlx.com/gantt/desktop__extensions_list.html#quickinfo ) which caused it to be positioned behind the [resource panel](https://docs.dhtmlx.com/gantt/desktop__resource_management.html#resourceviewpanel) in some cases  
+- Fix the regression in [gantt.resetLayout]( https://docs.dhtmlx.com/gantt/api__gantt_resetlayout.html ) which caused the script error
+- Fix the issue with the [QuickInfo popup](https://docs.dhtmlx.com/gantt/desktop__extensions_list.html#quickinfo ) which caused it to be positioned behind the [resource panel](https://docs.dhtmlx.com/gantt/desktop__resource_management.html#resourceviewpanel) in some cases
 - Fix the script error thrown from the [gantt.getShortcutHandler](https://docs.dhtmlx.com/gantt/api__gantt_getshortcuthandler.html) method
 - Fix the script error thrown from the [tooltip.show(x, y)](https://docs.dhtmlx.com/gantt/desktop__tooltips_ext.html) method
 - [gantt.getTaskNode](https://docs.dhtmlx.com/gantt/api__gantt_gettasknode.html) now returns the correct HTML element for [split tasks](https://docs.dhtmlx.com/gantt/desktop__split_tasks.html
@@ -187,7 +198,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>November 14, 2019. Minor update</span>
 
-### Breaking changes 
+### Breaking changes
 
 The update brings multiple changes in the API methods. Check the [Migration](migrating.md#6263) article to keep in step with the latest version.
 
@@ -262,7 +273,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 - Fix the issue with task branches being collapsed after updating data using the api/gantt_parse.md method
 - Fix the incorrect work of [smart rendering](desktop/performance.md#smartrendering) in the [resource view](desktop/resource_management.md#resourceviewpanel)
-- Fix the issue which caused the [Zoom module](desktop/zooming.md) to attach redundant DOM event handlers on each [re-initialization](api/gantt_init.md) of the Gantt 
+- Fix the issue which caused the [Zoom module](desktop/zooming.md) to attach redundant DOM event handlers on each [re-initialization](api/gantt_init.md) of the Gantt
 
 
 6.2.3
@@ -322,14 +333,14 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>July 16, 2019. Minor update</span>
 
-### Breaking changes 
+### Breaking changes
 
-The update brings multiple changes in the API methods. Check the [Migration](migrating.md#6162) article to keep in step with the latest version. 
+The update brings multiple changes in the API methods. Check the [Migration](migrating.md#6162) article to keep in step with the latest version.
 
 ### New functionality
 
 - [Creating and selecting tasks by drag-n-drop](desktop/advanced_dnd.md)
-- Smooth [zooming](desktop/zooming.md) by mouse wheel 
+- Smooth [zooming](desktop/zooming.md) by mouse wheel
 - Ability to [expand/collapse split tasks](desktop/split_tasks.md#expandingcollapsingsplittasks) (PRO)
 
 ### Updates
