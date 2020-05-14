@@ -23,7 +23,7 @@ Without parameters, the method returns all groups of tasks and links that make c
 
 {{pronote This functionality is available in the PRO edition only.}}
 
-{{note The method requires the **ext/dhtmlxgantt_auto_scheduling.js** to be included on the page.}}
+{{note The method requires the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin to be included on the page.}}
 
 @related:
 desktop/auto_scheduling.md

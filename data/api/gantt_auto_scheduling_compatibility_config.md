@@ -12,7 +12,7 @@ gantt.config.auto_scheduling_compatibility = true;
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-{{note This config is defined in the **ext/dhtmlxgantt_auto_scheduling.js** extension, so you need to include it on the page. Read the details in the desktop/auto_scheduling.md article.}}
+{{note This config is defined in the **auto_scheduling** extension, so you need to enable the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin. Read the details in the desktop/auto_scheduling.md article.}}
 
 The [time constraints functionality](desktop/auto_scheduling.md#timeconstraintsfortasks) was introduced in v6.1 to improve the auto scheduling logic of Gantt. 
 The **auto_scheduling_compatibility** config was added to [provide backward compatibility with previous versions](desktop/auto_scheduling.md#versioncompatibility).

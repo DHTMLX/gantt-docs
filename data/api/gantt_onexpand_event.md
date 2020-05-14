@@ -15,7 +15,7 @@ gantt.attachEvent("onExpand", function (){
 @template:	api_event
 @descr:
 
-{{note This event is defined in the **ext/dhtmlxgantt_fullscreen.js** extension, so you need to include it on the page. Read the details in the desktop/fullscreen_mode.md article.}}
+{{note This event is defined in the **fullscreen.js** extension, so you need to activate the [fullscreen](desktop/extensions_list.md#fullscreen) plugin using the [gantt.plugins](api/gantt_plugins.md) method. Read the details in the desktop/fullscreen_mode.md article.}}
 
 
 
