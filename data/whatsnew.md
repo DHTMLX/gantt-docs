@@ -18,8 +18,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### Fixes
 
-- Fix regression in [setWorkTime method](api/gantt_setworktime.md) which caused a script error when setting worktime for a specific day.
-- Fix the incorrect work of [Keyboard Navigation](desktop/keyboard_navigation.md) extension when gantt is used inside a [SalesForce Lightning Web Component](https://github.com/DHTMLX/salesforce-gantt-demo)
+- Fix regression in the [setWorkTime method](api/gantt_setworktime.md) which caused a script error when the working time is set for a specific day
+- Fix the incorrect work of the [Keyboard Navigation](desktop/keyboard_navigation.md) extension when Gantt is used inside a [SalesForce Lightning Web Component](https://github.com/DHTMLX/salesforce-gantt-demo)
 
 7.0.2
 ------
