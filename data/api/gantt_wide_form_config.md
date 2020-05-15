@@ -13,9 +13,9 @@ gantt.config.wide_form = true;
 
 <img src="api/wide_form.png">
 
-{{editor https://snippet.dhtmlx.com/5/bf9e4b273		Lightbox in the wide form}}
-
 <img src="api/normal_form.png">
+
+{{editor https://snippet.dhtmlx.com/5/bf9e4b273		Lightbox in the wide form}}
 
 @relatedapi:
 api/gantt_lightbox_config.md
