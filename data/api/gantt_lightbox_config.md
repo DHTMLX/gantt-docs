@@ -95,3 +95,4 @@ Edited tasks will be specified only by the start date and have a zero duration. 
 - desktop/custom_edit_form.md
 - desktop/custom_button.md
 
+@relatedapi: api/gantt_wide_form_config.md

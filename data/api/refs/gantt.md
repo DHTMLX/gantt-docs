@@ -355,7 +355,7 @@ Gantt API
 - api/gantt_drag_progress_config.md - enables the possibility to change the task progress by dragging the progress knob
 - api/gantt_drag_project_config.md - enables drag and drop of items of the project type
 - api/gantt_drag_resize_config.md - enables the possibility to resize tasks by drag-and-drop
-- api/gantt_drag_timeline_config.md - configures the behavior of the dhtmlxgantt_drag_timeline extension
+- api/gantt_drag_timeline_config.md - configures the behavior of the drag_timeline extension
 - api/gantt_duration_step_config.md - sets the number of 'gantt.config.duration_unit' units that will correspond to one  unit of the 'duration' data property.
 - api/gantt_duration_unit_config.md - sets the duration unit
 - api/gantt_dynamic_resource_calendars_config.md - enables automatic merging of multiple resource calendars into one
@@ -465,6 +465,7 @@ Gantt API
 - api/gantt_undo_steps_config.md - sets the number of steps that should be reverted by the undo method
 - api/gantt_undo_types_config.md - sets the types of entities for which the Undo operation will be applied
 - api/gantt_wai_aria_attributes_config.md - enables WAI-ARIA support to make the component recognizable for screen readers
+- api/gantt_wide_form_config.md - sets both the section and its label on the same line
 - api/gantt_work_time_config.md - enables calculating the duration of tasks in working time instead of calendar time
 - api/gantt_xml_date_config.md - defines date formats that are used to parse data from a data set and to send data to a server
 }}
