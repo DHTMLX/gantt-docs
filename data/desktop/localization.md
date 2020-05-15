@@ -272,6 +272,8 @@ Predefined locales
 Creating a custom locale 
 -------------------------------
 
+{{note The [gantt.i18n](api/gantt_i18n_other.md) object is added in v7.0. In previous versions, the [gantt.locale](api/gantt_locale_other.md) object was used. For more information, see the [Migration article](migrating.md#6370).}}
+
 The easiest way to create a custom locale is to make a copy of the default (English) locale from the sample below, 
 and translate all strings from it into the required language.
 

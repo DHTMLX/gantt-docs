@@ -20,4 +20,5 @@ gantt.render();
 	desktop/dynamic_scale.md
 @template:	api_method
 @descr:
+You can use the api/gantt_batchupdate.md method to update multiple tasks/links at once with a single re-rendering instead of making multiple updates with multiple re-renderings.
 

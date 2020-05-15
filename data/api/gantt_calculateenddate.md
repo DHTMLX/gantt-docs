@@ -37,6 +37,16 @@ If the api/gantt_work_time_config.md option is enabled, the method considers dur
 - Besides, the method can be called directly for a [calendar object](api/gantt_calendar_other.md).
 
 
+You can also calculate the start date by using the **calculateEndDate** method:
+
+~~~js
+//calculate the start date:
+task.start_date = gantt.calculateEndDate({
+    start_date: task.end_date,
+    duration: -task.duration
+});
+~~~
+
 ##Configuration object properties
 
 The configuration object can contain the following properties:

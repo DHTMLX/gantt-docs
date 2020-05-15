@@ -14,7 +14,17 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
-added in version 4.2
+You need to use [the reserved views and their ids for scrollbars](desktop/layout_config.md#requiredviewsandsettings) while using the **autoscroll** option. 
+
+~~~js
+//horizontal scrollbar:
+{view: "scrollbar", id: "scrollHor"}
+//vertical scrollbar:
+{view: "scrollbar", id: "scrollVer"}
+~~~
+
+If you use different names, the scrollbars will work but the "autoscroll" functionality won't. 
+
 
 
 @relatedapi:
@@ -23,3 +33,5 @@ api/gantt_autoscroll_speed_config.md
 
 @relatedsample:
 02_extensions/13_smart_rendering.html
+
+@changelog: added in version 4.2

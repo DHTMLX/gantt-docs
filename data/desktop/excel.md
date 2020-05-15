@@ -99,6 +99,19 @@ gantt.exportToExcel({
 Note, you cannot specify some URL as the value of the **data** parameter, just a data object.
 }}
 
+###Adding colors of tasks to export
+
+You can add the colors of tasks to the exported Excel file of the Gantt chart via setting the value of the **visual** property to *"base-colors"*:
+
+~~~js
+gantt.exportToExcel({
+    visual: "base-colors", /*!*/
+    cellColors: true
+})
+~~~
+
+{{editor https://snippet.dhtmlx.com/5/ba21cf5e8		Export colors of tasks}}
+
 Import from Excel
 -------------------
 
