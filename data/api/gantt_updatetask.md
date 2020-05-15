@@ -5,6 +5,7 @@ updateTask
 
 @params:
 - id	string	the task id
+- newState      object      the new values of the task
 
 @example: 
 var taskId = gantt.addTask({
@@ -26,4 +27,19 @@ gantt.updateTask(taskId); //renders the updated task
 @template:	api_method
 @descr:
 
-The method invokes the api/gantt_onaftertaskupdate_event.md method.
+{{note The method invokes the api/gantt_onaftertaskupdate_event.md method.}}
+
+You can also replace the existing task with new values via setting a new task object as the second parameter of the **updateTask** method: 
+
+~~~js
+var task = {
+    id: 2, text: 'New task text', 
+    start_date: new Date(2025,03,02), 
+    end_date: new Date(2025,03,04), 
+    $source:1, 
+    $target:2
+}
+gantt.updateTask(2,task);
+~~~
+
+{{editor https://snippet.dhtmlx.com/5/a88813dbd		Updating task}}
