@@ -98,23 +98,29 @@ You can place sections of lightbox on the same line as their labels via setting 
 ~~~js
 gantt.config.wide_form = true; /*!*/
 
-var opts = [
-  {key: 1, label: "High"},
-  {key: 2, label: "Normal"},
-  {key: 3, label: "Low"}                                      
-];
- 
+gantt.locale.labels.section_priority = "Priority";
+gantt.locale.labels.section_status = "Status";
+
+
 gantt.config.lightbox.sections = [
-  {name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
-  {name:"priority", height:22, map_to:"priority", type:"select", options: opts},                                                                           
-  {name: "priority2", map_to: "priority", type: "radio", options: opts},
-  {name: "time", type: "duration", map_to: "auto"}
+    {name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
+    {name: "status", height:22, map_to: "status", type: "select", options: [         
+        {key:1, label: "New"},                                                       
+  	    {key:2, label: "Open"},                                                     
+  	    {key:3, label: "Done"}                                                      
+    ]},                                                                            
+    {name: "priority", map_to: "priority", type: "radio", options: [
+        {key: 1, label: "High"},
+        {key: 2, label: "Normal"},
+        {key: 3, label: "Low"},
+    ]},
+    {name: "time", type: "duration", map_to: "auto"}
 ];
 
 gantt.init("gantt_here");
 ~~~
 
-{{editor https://snippet.dhtmlx.com/5/37831c64b		Aligning Lightbox}}
+{{editor https://snippet.dhtmlx.com/5/9a68c1292		Aligning Lightbox}}
 
 ## Button in the section header 
 
