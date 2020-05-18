@@ -91,6 +91,30 @@ gantt.form_blocks.textarea.set_value=function(node,value,ev){
 }
 ~~~
 
+## Setting section and its label on the same line
+
+You can place sections of lightbox on the same line as their labels via setting the api/gantt_wide_form_config.md configuration option to *true*:
+
+~~~js
+gantt.config.wide_form = true; /*!*/
+
+var opts = [
+  {key: 1, label: "High"},
+  {key: 2, label: "Normal"},
+  {key: 3, label: "Low"}                                      
+];
+ 
+gantt.config.lightbox.sections = [
+  {name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
+  {name:"priority", height:22, map_to:"priority", type:"select", options: opts},                                                                           
+  {name: "priority2", map_to: "priority", type: "radio", options: opts},
+  {name: "time", type: "duration", map_to: "auto"}
+];
+
+gantt.init("gantt_here");
+~~~
+
+{{editor https://snippet.dhtmlx.com/5/37831c64b		Aligning Lightbox}}
 
 ## Button in the section header 
 

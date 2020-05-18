@@ -23,6 +23,4 @@ api/gantt_resizelightbox.md
 
 
 @related:
-desktop/default_edit_form.md
-desktop/duration.md
-desktop/time.md
+desktop/lightbox_manipulations.md#settingsectionanditslabelonthesameline
