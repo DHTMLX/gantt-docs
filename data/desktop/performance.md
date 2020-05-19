@@ -28,7 +28,7 @@ Smart Rendering
 The Smart Rendering technique allows considerably enhancing the speed of data rendering, while working with big amounts of data. 
 In this mode only the tasks and links visible on the screen at the moment are being rendered.
 
-Starting from v6.2 the smart rendering is enabled by default, as it is included in the core *dhtmlxgantt.js* file. Thus, you don't need to include the *dhtmlxgantt_smart_rendering.js* file on the page to make smart rendering work.
+Starting from v6.2, the smart rendering is enabled by default, as it is included in the core *dhtmlxgantt.js* file. Thus, you don't need to include the *dhtmlxgantt_smart_rendering.js* file on the page to make smart rendering work.
 
 {{note If you connect the *dhtmlxgantt_smart_rendering.js* file, which is from the old version, it will override the improvements of the new built-in **smart_rendering** extension.}}
 
