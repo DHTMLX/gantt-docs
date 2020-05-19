@@ -4,9 +4,11 @@ Resource Management
 {{pronote  This functionality is available in the Gantt PRO edition only. }}
 
 Gantt provides predefined resource views for highlighting resource load, methods for breaking project down by a resource for load balancing, 
-task and resource-specific work-time calendars, as well as public API for implementing any custom behavior.
+task and resource-specific work-time calendars.
 
 <img src="desktop/resource_panel.png">
+
+{{note Although Gantt itself does not calculate the resource load, and does not have any methods that can be used out of the box,  Gantt provides you with public API for implementing any custom behavior.}}
 
 Assigning resources 
 -------------------
