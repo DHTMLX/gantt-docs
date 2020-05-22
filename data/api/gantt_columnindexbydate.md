@@ -2,11 +2,13 @@ columnIndexByDate
 =============
 
 @short:
-	returns the index of the column by the date 
+	returns the index of the column by the date
 
 @params:
 - date		Date		a date object
 
+@returns:
+- index	number	the index of the column
 
 
 @example:
