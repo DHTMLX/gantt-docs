@@ -61,7 +61,7 @@ The **exportToExcel()** method takes as a parameter an object with several prope
 - **cellColors** - (*boolean*) if set to *true*, the cells of the exported document will have the colors defined by the api/gantt_timeline_cell_class_template.md template, the *color* and *background-color* 
 properties are exported
 - **data** - (*object*) sets a custom data source that will be presented in the output Gantt chart
-- **date_format** - (*string*) sets the format the date will be displayed in the exported Excel document. See the full list of the available format code [here](api/gantt_exporttoexcel.md).		
+- **date_format** - (*string*) sets the format the date will be displayed in the exported Excel document. You can see the full list of the available format code [here](api/gantt_exporttoexcel.md).		
 
 {{snippet
 Calling the export method with optional properties

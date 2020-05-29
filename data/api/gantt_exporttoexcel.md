@@ -87,7 +87,6 @@ properties are exported
 <tr><td>ddd, mmm d</td><td>Mon, Jan 9</td></tr>
 <tr><td>mm/dd/yyyy h:mm AM/PM</td><td>01/09/2021 6:20 PM</td></tr>
 <tr><td>dd/mm/yyyy hh:mm:ss</td><td>09/01/2012 16:20:00</td></tr>
-
 </table>
 
 
