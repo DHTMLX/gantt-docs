@@ -19,7 +19,8 @@ gantt.exportToExcel({
     ],
     server:"https://myapp.com/myexport/gantt",
     visual:true,
-    cellColors:true
+    cellColors:true,
+    date_format: "dddd d, mmmm yyyy"
 });
 
 
@@ -49,6 +50,46 @@ The **exportToExcel()** method takes as a parameter an object with several prope
 - **cellColors** - (*boolean*) if set to *true*, the cells of the exported document will have the colors defined by the api/gantt_timeline_cell_class_template.md template, the *color* and *background-color* 
 properties are exported
 - **data** - (*object*) sets a custom data source that will be presented in the output Gantt chart
+- **date_format** - (*string*) sets the format the date will be displayed in the exported Excel document. The following format code can be used:
+
+<style>
+	table.my_table {
+		width: 70%;
+        padding: 0 20px;
+      
+	}
+	table.my_table tr td {
+		text-align: left;
+		vertical-align: middle;
+		width: 35%;
+        border-bottom: 1px solid grey;
+	}
+    table.my_table td.version_info {
+		text-align: left;
+        font-weight: bold;
+	}
+</style>
+<table class="my_table">
+<tr><td class="version_info">Format code</td><td class="version_info">Output</td></tr>
+
+<tr><td>d</td><td>9</td></tr>
+<tr><td>dd</td><td>09</td></tr>
+<tr><td>ddd</td><td>Mon</td></tr>
+<tr><td>dddd</td><td>Monday</td></tr>
+<tr><td>mm</td><td>01</td></tr>
+<tr><td>mmm</td><td>Jan</td></tr>
+<tr><td>mmmm</td><td>January</td></tr>
+<tr><td>mmmmm</td><td>J</td></tr>
+<tr><td>yy</td><td>12</td></tr>
+<tr><td>yyyy</td><td>2021</td></tr>
+<tr><td>mm/dd/yyyy</td><td>01/09/2021</td></tr>
+<tr><td>m/d/y</td><td>1/9/21</td></tr>
+<tr><td>ddd, mmm d</td><td>Mon, Jan 9</td></tr>
+<tr><td>mm/dd/yyyy h:mm AM/PM</td><td>01/09/2021 6:20 PM</td></tr>
+<tr><td>dd/mm/yyyy hh:mm:ss</td><td>09/01/2012 16:20:00</td></tr>
+
+</table>
+
 
 @related:
 desktop/excel.md
