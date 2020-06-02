@@ -143,8 +143,8 @@ gantt.config.editor_types.custom_editor = {
   show: function (id, column, config, placeholder) {
     // called when input is displayed, put html markup of the editor into placeholder 
     // and initialize your editor if needed:
-       	var html = "<div><input type='text' name='" + column.name + "'></div>";
-   		placeholder.innerHTML = html;
+    var html = "<div><input type='text' name='" + column.name + "'></div>";
+   	placeholder.innerHTML = html;
   },
   hide: function () {
     // called when input is hidden 
@@ -176,6 +176,171 @@ gantt.config.editor_types.custom_editor = {
   }
 }
 ~~~
+
+There are some key points to remember in order to implement a reusable editor:
+
+- As a rule, **`get_value`** does not modify the task object. The method only returns the current value of the inline editor. If the value is deemed valid, Gantt will automatically update the related task with this value.
+- Use the **`map_to`** configuration option of the editor to specify which property of the task should be updated by the editor, but don't hardcode it into the editor. This way allows you to reuse the editor for different columns.
+- Unless you use a complex javascript widget, you don't need to specify any logic in the **`hide`** function, so you can leave it empty. Otherwise, use this method to call a destructor or to clean up any of event handlers you've attached when displaying the editor.
+- Make sure to implement the **`is_changed`** and **`is_valid`** functions: 
+  - If **`is_changed`** always returns *true*, the editor will trigger the update (which can be sent to the backend) each time the editor is closed. This method should return *true* only if the input value was actually changed in comparison to the initial state; 
+  - **`is_valid`** is used for preventing input of invalid values.
+- If you're implementing an editor that makes something more complex than writing a value to a property of a task - a good example is the built-in [predecessor editor](desktop/inline_editing.md#typesofeditors) - you need to implement a required logic in the **`save`** function and specify the **`map_to`** option of the input to *"auto"*. In this case, the gantt won't modify the task object, but instead will call the **`save`** function when it's time to apply the changes made to the editor.
+
+Here is an example of the implementation of a simple number input.
+Note, that the **`hide`** method can be an empty function, and the **`save`** method can be skipped completely.
+
+~~~js
+var getInput = function(node){
+	return node.querySelector("input");
+};
+
+gantt.config.editor_types.simpleNumber = {
+    show: function (id, column, config, placeholder) {
+        var min = config.min || 0,
+        max = config.max || 100;
+
+        var html = "<div><input type='number' min='" + min + 
+                      "' max='" + max + "' name='" + column.name + "'></div>";
+        placeholder.innerHTML = html;
+    },
+    hide: function () {
+      // can be empty since we don't have anything to clean up after the editor 
+          // is detached
+    },
+    set_value: function (value, id, column, node) {
+        getInput(node).value = value;
+    },
+    get_value: function (id, column, node) {
+        return getInput(node).value || 0;
+    },
+    is_changed: function (value, id, column, node) {
+        var currentValue = this.get_value(id, column, node);
+        return Number(value) !== Number(currentValue);
+    },
+    is_valid: function (value, id, column, node) {
+        return !isNaN(parseInt(value, 10));
+    },
+    focus: function (node) {
+        var input = getInput(node);
+        if (!input) {
+            return;
+        }
+        if (input.focus) {
+            input.focus();
+        }
+
+        if (input.select) {
+          input.select();
+        }
+    }
+};
+~~~
+
+After that, you can use the editor in the same way as built-in editors:
+
+~~~js
+var numberEditor = {type: "simpleNumber", map_to: "quantity", min:0, max: 50}; 
+
+gantt.config.columns = [
+    ...
+    {name: "quantity", label: "Quantity", width: 80, editor: numberEditor, 
+        resize: true},
+    ...
+];
+~~~
+
+Note, that we don't need to implement the **`hide`** method in this case, since Gantt detaches the DOM element of the editor automatically and there is nothing else that we need to clean up after the editor closes.
+
+### editor.hide
+
+You may need to add a **`hide`** logic if you use a complex widget inside an inline editor.
+
+For example, let's consider the following implementation of the DatePicker input using the jQuery one.
+In this case we need to destroy the date picker widget after it's detached from DOM.
+
+Prerequisites:
+
+~~~js
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+~~~
+
+Editor:
+
+~~~js
+gantt.config.editor_types.custom_datepicker_editor = {
+    show: function (id, column, config, placeholder) {
+        placeholder.innerHTML = "<div><input type='text' id='datepicker' name='" + 
+                                  column.name + "'></div>";
+        $("#datepicker").datepicker({
+            dateFormat: "yy-mm-dd",
+            onSelect: function(dateStr){
+                gantt.ext.inlineEditors.save()
+            }
+        });
+    },
+    hide: function (node) {
+        $("#datepicker").datepicker( "destroy" );
+    },
+
+    set_value: function (value, id, column, node) {
+        $("#datepicker").datepicker("setDate", value);
+    },
+
+    get_value: function (id, column, node) {
+        return $("#datepicker").datepicker( "getDate" );
+    },
+
+    is_changed: function (value, id, column, node) {
+        return (+$("#datepicker").datepicker( "getDate" ) !== +value);
+    },
+    is_valid: function (value, id, column, node) {
+        return !(isNaN(+$("#datepicker").datepicker( "getDate" )))
+    },
+    save: function (id, column, node) {
+    },
+    focus: function (node) {
+    }
+};
+
+let dateEditor = {
+    type: "custom_datepicker_editor",
+    map_to: "start_date"
+};
+
+gantt.config.columns = [
+    {name: "text", tree: true, width: '*', resize: true},
+    {name: "start_date", align: "center", resize: true, editor: dateEditor},
+    {name: "duration", align: "center"},
+    {name: "add", width: 44}
+];
+~~~
+
+{{editor	https://plnkr.co/edit/U3vHJvleRBJ1Js0N?preview	Using jQuery Datepicker in the editor}}
+
+### editor.save
+
+You need to make use of the **`save`** function only when your editor needs to modify multiple properties of the task at once, or if you want it to modify objects different from tasks.
+
+In this case, you can keep a proper implementation of **`get_value`** for the sake of built-in validation, but the gantt itself won't try to apply the value of the editor to the task and will call the **`save`** function instead.
+
+After **`save`** is called, you need to interpret the input values and apply changes to the gantt with a custom code.
+Gantt will call the [onSave](desktop/inline_editors_ext.md#events) event after the **`save`** method is completed, but won't call [gantt.updateTask](api/gantt_updatetask.md) for the modified row.
+
+**Note!** The **`save`** method will be called only if you specify **`map_to:"auto"`** in the configuration of the editor:
+
+~~~js
+var editors = {
+    ...
+    predecessors: {type: "predecessor", map_to: "auto"}
+};
+~~~
+
+A good example of such a control is a built-in predecessor editor. You can find its simplified implementation in the related sample:
+
+{{editor	https://snippet.dhtmlx.com/5/bf98a4228	Built-in predecessor editor}}
 
 
 Inline editing modes
