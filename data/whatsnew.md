@@ -11,6 +11,27 @@ What's New
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
 
+7.0.4
+------
+
+<span class='release_date'>June 4, 2020. Bugfix release</span>
+
+### Fixes
+
+- Removed the 10000px limit on the gantt size in the autosize mode, which should allow [printing](api/gantt_exporttopdf.md) larger charts
+- [Drag and drop](desktop/dnd.md) now finishes when the user releases the mouse button over any part of the document body rather than over the gantt container only
+- [Portuguese locale](desktop/localization.md) was updated
+- The return type of [gantt.columnIndexByDate](api/gantt_columnindexbydate.md) in type definitions is fixed
+- Fix script errors that were fired when the Gantt instance [was destroyed](api/gantt_destructor.md) during [drag and drop](desktop/dnd.md)
+- Fix the incorrect calculation of [end_date](api/gantt_calculateenddate.md)/[duration](api/gantt_calculateduration.md) when [duration_unit](api/gantt_duration_unit_config.md) is set to "minute" and [the last worktime interval](api/gantt_setworktime.md) finishes after 23:00
+- Fix the issue which caused groups of the [grouping extension](desktop/grouping.md) to expand whenever the user modified any task
+- Fix the issue which caused the second parameter of [dataProcessor.setTransactionMode](desktop/server_side.md#technique) to be ignored if an object was passed into the first parameter
+- Fix the issue which caused the active [inline editor](desktop/inline_editing.md) to disappear after [repaint of Gantt](api/gantt_render.md)
+- Fix the issue with the [static_background](api/gantt_static_background_config.md) extension which caused mouse click on empty cells to be interpreted as a click on task elements
+- Gantt now dynamically repaints links between [split tasks](desktop/split_tasks.md) during drag and drop
+- Fix the script error which was thrown from [gantt.addTask](api/gantt_addtask.md) in the [node.js package](desktop/using_gantt_on_server.md)
+- Fix the script error which was thrown from [gantt.destructor](api/gantt_destructor.md) in the [node.js package](desktop/using_gantt_on_server.md)
+
 7.0.3
 ------
 
