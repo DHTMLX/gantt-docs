@@ -89,7 +89,7 @@ const gantt = Gantt.getGanttInstance({
 			console.log("Loaded data:")
 			console.table(this.serialize().data);
 		},
-		onReady: () => {
+		onGanttReady: () => {
 			console.log("Running dhtmlxGantt on the backend");
 		}
 	}
