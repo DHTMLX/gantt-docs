@@ -11,6 +11,18 @@ What's New
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
 
+7.0.5
+--------
+
+<span class='release_date'>June 19, 2020. Bugfix release</span>
+
+### Updates
+
+- Performance improvements for [work time calculation](desktop/working_time.md) when the [duration_unit](api/gantt_duration_unit_config.md) config is set to "hour"
+- Performance improvements for [work time calculation](desktop/working_time.md) when the [duration_unit](api/gantt_duration_unit_config.md) config is set to "minute" 
+- The ability to specify working calendars in the configuration object of [`Gantt.getGanttInstance`](desktop/multiple_gantts.md#ganttinstanceconfiguration) is added
+
+
 7.0.4
 ------
 

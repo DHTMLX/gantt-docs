@@ -4,7 +4,7 @@ Performance: Ways to Increase
 Common techniques
 --------------------
 
-Starting from 200 tasks, there may be delays in rendering the Gantt chart on the page.
+Starting from 1000-2000 tasks, depending on what configuration options and plugins you use, there may be delays in rendering the Gantt chart on the page.
 
  
 There are the following ways to solve this problem:
@@ -16,6 +16,9 @@ There are the following ways to solve this problem:
 5. To decrease the range of displayable dates (use the api/gantt_start_date_config.md and api/gantt_end_date_config.md options)
 6. To remove progress bars from the tasks (set the api/gantt_show_progress_config.md option to 'false')
 7. To enhance the speed of the scale rendering (enable the api/gantt_smart_scales_config.md option in case it's disabled)
+8. If you use [work time calendars](desktop/working_time.md), be sure to set the worktime settings before loading data into the gantt. Otherwise, durations of all tasks will be recalculated twice - firstly, when the tasks are loaded, and then, when the new calendar is applied. In any case, everything should work correctly, but such recalculations may increase the initialization time of your app.
+9. If you specify the [duration_unit](api/gantt_duration_unit_config.md) config to "hour" or "minute", be sure to set the [duration_step](api/gantt_duration_step_config.md) to 1. Such combination activates certain optimizations for calculations of working time, that works only when the step is set to 1. Note, that there are major performance differences between "optimized" and "non-optimized" modes.
+
 
 {{sample
 08_api/10_performance_tweaks.html

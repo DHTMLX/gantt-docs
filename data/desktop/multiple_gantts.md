@@ -33,6 +33,15 @@ const gantt = Gantt.getGanttInstance({
 		start_date: new Date(2020, 0, 1),
 		end_date: new Date(2021, 0, 1),
 	},
+	calendars: [
+        {
+            id:"global",
+            worktime: {
+                hours: [ "8:00-12:00", "13:00-17:00"],
+                days: [ 0, 1, 1, 1, 1, 1, 0 ]
+            }
+        }
+    ],
 	data: {
 		tasks: [
 			{ id: 11, text: "Project #1", type: "project", "open": true, "parent": 0 },
@@ -64,7 +73,8 @@ As a result, you will get an initialized Gantt chart with the specified settings
 The config object can contain the following properties:
 
 - **container** - (*string|HTMLElement*) an HTML container (or its id) that the Gantt chart will be displayed in. If not specified, Gantt will be initialized without a container.
-- **config** - (*object*) an object with configuration settings of the Gantt chart 
+- **config** - (*object*) an object with configuration settings of the Gantt chart
+- **calendars** - (*array*) an array of worktime calendars to be loaded into the gantt. Calendars must be specified in the format supported by the [gantt.addCalendar](api/gantt_addcalendar.md) method. 
 - **templates** - (*object*) an object with templates 
 - **events** - (*object*) an object with event handlers. <br>
 You need to use the following format while specifying event handlers for a new instance of Gantt:
