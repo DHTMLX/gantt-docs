@@ -603,6 +603,26 @@ This event will be called only for managed errors that return JSON response as s
 If you need to handle HTTP errors, please check api/gantt_onajaxerror_event.md API event.
 }}
 
+If the server responded with an error on some of your action but the changes were saved on the client, the best way to synchronize their states is to clear the client's state, and reload the correct data from the server-side:
+
+~~~js
+dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
+    if(action == "error"){
+        gantt.load("url1");
+        gantt.clearAll(); 
+    }
+});
+~~~
+
+If you want to synchronize client-server sides but don't want to make any server calls, you can use the [silent()](api/gantt_silent.md) method which makes all code inside it not to trigger internal events or server calls:
+
+~~~js
+gantt.silent(function(){
+    gantt.deleteTask(item.id);
+    gantt.render();
+});
+~~~
+
 Cascade Deletion
 ----------------
 
