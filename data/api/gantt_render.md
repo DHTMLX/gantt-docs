@@ -8,10 +8,15 @@ render
 
 
 @example:
-gantt.config.scale_unit = "month"; 
+gantt.config.scales = [
+    {unit: "month", step: 1, format: "%F, %Y"},
+    {unit: "day", step: 1, format: "%j, %D"}
+];
 gantt.init("gantt_here");
-
-gantt.config.scale_unit = "day"; 
+ 
+gantt.config.scales = [
+    {unit: "day", step: 1, format: "%j, %D"}
+];
 gantt.render();
 
 @relatedsample:
