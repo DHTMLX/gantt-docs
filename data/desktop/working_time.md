@@ -136,7 +136,7 @@ gantt.config.columns = [
 
 {{note If you already have Gantt with the duration of tasks stored in minutes, hours or any other unit, you can also use the [Duration Formatter](desktop/formatters_ext.md) module to present the durations in decimal format. }}
 
-##Global Settings
+## Global Settings
 
 <h3 id="setworktime">Setting the working time</h3>
 
@@ -250,6 +250,51 @@ To get the closest working day to the specified date, use the api/gantt_getclose
 gantt.getClosestWorkTime(new Date(2019,3,30)); 
 ~~~
 
+<h3 id="repeat_worktime">Repeating the specific working time</h3>
+
+You may often need to specify some working time that will repeat only on certain days (e.g. the last Friday of a month is a short day, December 25 is a holiday) but during the whole span of the project.
+
+The current version of dhtmlxGantt doesn't provide any configs for setting such type of the working time and the library allows you only:  
+
+- to specify the working time for a day of the week (Monday, Tuesday,...)
+- to specify the working time for a specific date (4th June 2020)
+
+So if you have some exceptions to the working time rules you need to manually get the dates that match your rule and apply worktime settings to each of these dates separately.
+
+For example, you have a project that lasts 5 years and you want to set the 1st of January as a day-off, and the last Friday of each month as a short day. 
+
+To specify the 1st of January as a day off you can simply hardcode values as in:
+
+~~~js
+gantt.setWorkTime({hours:false, date: new Date(2021, 0, 1)});
+gantt.setWorkTime({hours:false, date: new Date(2022, 0, 1)});
+gantt.setWorkTime({hours:false, date: new Date(2023, 0, 1)});
+gantt.setWorkTime({hours:false, date: new Date(2024, 0, 1)});
+gantt.setWorkTime({hours:false, date: new Date(2025, 0, 1)});
+~~~
+
+And here is a code sample of how to set the last Friday of a month as a short day during the whole project:
+
+~~~js
+function lastFridayOfMonth(date) { 
+	var lastDay = new Date(date.getFullYear, date.getMonth()+1, 0);
+	if(lastDay.getDay() < 5) {
+		lastDay.setDate(lastDay.getDate() - 7);
+	}
+	lastDay.setDate(lastDay.getDate() - (lastDay.getDay() -5));
+	return lastDay;
+}
+
+var projectStart = new Date(2020, 5, 1);
+var projectEnd = new Date(2025, 5, 1);
+var currentDate = new Date(projectStart);
+
+while (currentDate.valueOf() <= projectEnd.valueOf()){
+   var lastFriday = lastFridayOfMonth(currentDate);
+   gantt.setWorkTime({hours:["8:00-12:00", "13:00-15:00"], date: lastFriday});
+   currentDate = gantt.date.add(currentDate, 1, "month");
+}
+~~~
 
 <h3 id="color_dayoff_times">Coloring the day-off times</h3>
 
