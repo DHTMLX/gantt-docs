@@ -44,13 +44,6 @@ The **click_drag** extension allows:
 The **gantt.config.click_drag** object includes the following properties:
 
 - **className** -  (*string*) sets a custom CSS class for a selected element
-- **render** - (*function*) a function that creates an element rendered during dragging. Takes two parameters: 
-	- **startPoint** - (*object*) - an object of the type:<br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
-	where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort 
-	- **endPoint** - (*object*) an object of the type: <br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
-	where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort
 - **viewPort** - (*HTMLElement*) the element to attach an event to and select
 - **useRequestAnimationFrame** - (*boolean*) defines whether requestAnimationFrame is used during rendering
 - **callback** - (*function*) - a function that will be called when the mouse button is released. Takes 6 parameters:
@@ -65,6 +58,13 @@ The **gantt.config.click_drag** object includes the following properties:
 	- **tasksBetweenDates** - (*array*) an array of tasks between the start and end date points
 	- **tasksInRows** - (*array*) an array of tasks selected between the start and end coordinates vertically
 - **singleRow** - (*boolean*) true to add selection only in one row equal to the height of a task
+- **render** - (*function*) a function that creates an element rendered during dragging. It takes two parameters: 
+	- **startPoint** - (*object*) - an object of the type:<br>
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
+	where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort 
+	- **endPoint** - (*object*) an object of the type: <br>
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
+	where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort
 
 Here is an example of usage of the **render** function:
 

@@ -608,8 +608,8 @@ If the server responded with an error on some of your action but the changes wer
 ~~~js
 dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
     if(action == "error"){
+        gantt.clearAll();
         gantt.load("url1");
-        gantt.clearAll(); 
     }
 });
 ~~~
