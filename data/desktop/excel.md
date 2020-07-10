@@ -87,13 +87,13 @@ To export the Gantt chart with a custom data set (i.e. not with the data present
 api/gantt_exporttoexcel.md method:
 
 ~~~js
-gantt.exportToExcel({	
-	name:"document.xlsx", 
-	data:{[
-		{id:1, text:"Project #1", start_date:"01-04-2013", duration:18},
-		{id:2, text:"Task #1", start_date:"02-04-2013",duration:8, parent:1},
-		{id:3, text:"Task #2", start_date:"11-04-2013",duration:8, parent:1}
-	]}		
+gantt.exportToExcel({   
+    name:"document.xlsx", 
+    data:[
+        {id:1, text:"Project #1", start_date:"01-04-2020", duration:18},
+        {id:2, text:"Task #1", start_date:"02-04-2020",duration:8, parent:1},
+        {id:3, text:"Task #2", start_date:"11-04-2020",duration:8, parent:1}
+    ]      
 });
 ~~~
 
