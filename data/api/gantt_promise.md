@@ -6,15 +6,18 @@ Promise
 
 @params:
 
+- executor	function	a callback used to initialize the promise
 
+@returns:
+- promise	object	the promise object
 
 
 
 @example:
 
 new gantt.Promise(function(resolve, reject) {
-	setTimeout(function(){
-       resolve();
+    setTimeout(function(){
+        resolve();
     }, 5000);
 }).then(function(){
     alert("Resolved")
