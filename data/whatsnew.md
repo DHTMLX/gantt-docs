@@ -10,6 +10,18 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.0.6
+--------
+
+<span class='release_date'>July 16, 2020. Bugfix release</span>
+
+- Fix script errors that were fired on touch devices during [drag and drop](desktop/dnd.md)
+- Fix the incorrect work of the [Auto Scheduling](desktop/auto_scheduling.md) extension when [types of links](api/gantt_links_config.md) were defined using numeric values
+- Reduced the number of redundant repaints of the [resource histogram](desktop/resource_management.md#resourceviewpanel)
+- Performance improvements for the task [grouping](desktop/grouping.md) extension
+- Fix the ability to scroll a resource timeline on touch devices
+- Fix the incorrect work of the [resource control](desktop/resource_management.md) when the 'hide empty' button is used
+- The return type of [gantt.Promise](api/gantt_promise.md) in type definitions is fixed
 
 7.0.5
 --------
