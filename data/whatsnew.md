@@ -10,6 +10,14 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.0.7
+--------
+
+<span class='release_date'>July 17, 2020. Bugfix release</span>
+
+- Fix the syntax error in type definition of [gantt.Promise](api/gantt_promise.md)
+
+
 7.0.6
 --------
 
