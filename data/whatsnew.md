@@ -10,6 +10,19 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.0.8
+-------
+
+<span class='release_date'>July 24, 2020. Bugfix release</span>
+
+- Fix some issues with touch support on Android/iOS devices
+- Fix regression (appeared in v7.0.6) with link creation and [gantt.isLinkAllowed](api/gantt_islinkallowed.md) method
+- Fix the script error which was thrown when the 'locale' parameter was used in [gantt.getGanttInstance](desktop/multiple_gantts.md)
+- Fix the script error that was thrown from [gantt.destructor](api/gantt_destructor.md) when the [Keyboard Navigation](desktop/extensions_list.md#keyboardnavigation) and the [Quick Info](desktop/extensions_list.md#quickinfo) extensions were used
+
+
+
+
 7.0.7
 --------
 
