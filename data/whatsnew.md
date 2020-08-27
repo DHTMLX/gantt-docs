@@ -24,7 +24,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix the sizes of the [Lightbox](desktop/default_edit_form.md) modal overlay on mobile devices
 - Fix the incorrect display of [lightbox buttons](desktop/custom_button.md) in some browsers
 - Fix support of Italian and Portuguese locales in the [gantt.i18n](api/gantt_i18n_other.md) module
-- Fix the bug in the [Parent control](desktop/parent.html) of the [Lightbox](desktop/default_edit_form.md) which caused the incorrect work when tasks were assigned to the root level
+- Fix the bug in the [Parent control](desktop/parent.md) of the [Lightbox](desktop/default_edit_form.md) which caused the incorrect work when tasks were assigned to the root level
 - Fix the script error which happened when initializing a gantt inside an iframe
 - Fix the incorrect work of the [redo](api/gantt_redo_config.md) config when the [undo](api/gantt_undo_config.md) config is disabled
 
