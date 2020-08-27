@@ -10,10 +10,30 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.0.9
+-------
+
+<span class='release_date'>August 27, 2020. Bugfix release</span>
+
+### Fixes
+
+- Fix the script error on the second [initialization](api/gantt_init.md) of Gantt when [custom datastores](api/gantt_createdatastore.md) are added
+- Fix the incorrect work of [auto-scheduling](desktop/auto_scheduling.md) when using with [FF and SS links](api/gantt_links_config.md) and when the source and target tasks use [different working calendars](desktop/working_time.md#multipleworktimecalendars)
+- Fix the incorrect [calculation of working time](desktop/working_time.md) when [duration_unit](api/gantt_duration_unit_config.md) is set to "minute" and the start time is set to the middle of a non-working day
+- Fix touch support for Safari iPad on iPadOS v13.6
+- Fix the sizes of the [Lightbox](desktop/default_edit_form.md) modal overlay on mobile devices
+- Fix the incorrect display of [lightbox buttons](desktop/custom_button.md) in some browsers
+- Fix support of Italian and Portuguese locales in the [gantt.i18n](api/gantt_i18n_other.md) module
+- Fix the bug in the [Parent control](desktop/parent.html) of the [Lightbox](desktop/default_edit_form.md) which caused the incorrect work when tasks were assigned to the root level
+- Fix the script error which happened when initializing a gantt inside an iframe
+- Fix the incorrect work of the [redo](api/gantt_redo_config.md) config when the [undo](api/gantt_undo_config.md) config is disabled
+
 7.0.8
 -------
 
 <span class='release_date'>July 24, 2020. Bugfix release</span>
+
+### Fixes
 
 - Fix some issues with touch support on Android/iOS devices
 - Fix regression (appeared in v7.0.6) with link creation and [gantt.isLinkAllowed](api/gantt_islinkallowed.md) method
@@ -35,6 +55,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 --------
 
 <span class='release_date'>July 16, 2020. Bugfix release</span>
+
+### Fixes
 
 - Fix script errors that were fired on touch devices during [drag and drop](desktop/dnd.md)
 - Fix the incorrect work of the [Auto Scheduling](desktop/auto_scheduling.md) extension when [types of links](api/gantt_links_config.md) were defined using numeric values
