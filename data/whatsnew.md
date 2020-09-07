@@ -299,7 +299,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 ### Updates
 
-- Ability to [display tasks](api/gantt_show_tasks_outside_timescale_config.md) outside the explicit api/gantt_start_date_config.md and api/gantt_end_date_config.md range of the [time scale](desktop/configuring_time_scale.html#range)
+- Ability to [display tasks](api/gantt_show_tasks_outside_timescale_config.md) outside the explicit api/gantt_start_date_config.md and api/gantt_end_date_config.md range of the [time scale](desktop/configuring_time_scale.md#range)
 - Add a new api/gantt_task_end_date_template.md template for formatting end dates of tasks
 - Ability to add custom actions to the [Undo](desktop/undo_redo.md#undoingredoingchangesmadefromcode) stack
 - Ability to connect custom layers to [smart rendering](api/gantt_addtasklayer.md#smartrenderingforcustomlayers)
