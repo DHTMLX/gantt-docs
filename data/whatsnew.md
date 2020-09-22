@@ -10,6 +10,23 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.0.10
+------
+
+<span class='release_date'>September 22, 2020. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect work of [vertical resizers](desktop/layout_config.md#defaultlayout) (the regression appeared in v7.0.9)
+- Prevent unexpected page refresh which happened during vertical reordering of tasks on Android Chrome (pull-to-refresh)
+- Fix the script error which fired during creating a link on mobile Firefox
+- Fix the incorrect work of task selection when the [multiselect](api/gantt_multiselect_config.md) config is enabled but the [multiselect](desktop/extensions_list.md#multitaskselection) plugin is not activated
+- Improve the work of HTML select controls inside [Inline Editors](desktop/inline_editing.md)
+- Fix the incorrect work of [Auto Scheduling](desktop/auto_scheduling.md) when linked tasks use different [work calendars](desktop/working_time.md)
+- The [gantt.plugins](api/gantt_plugins.md) method will not activate plugins which are specified with `false` value
+- Fix the conflict between [Inline Editors](desktop/inline_editing.md) and [Keyboard Navigation](desktop/keyboard_navigation.md)
+- Fix the issue that caused [Inline Editors](desktop/inline_editing.md) to close on double click
+
 7.0.9
 -------
 
