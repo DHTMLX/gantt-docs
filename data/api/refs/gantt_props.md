@@ -24,6 +24,7 @@ Properties
 - api/gantt_click_drag_config.md - enables advanced drag-n-drop
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_constraint_types_config.md - contains all available constraint types
+- api/gantt_container_resize_timeout_config.md - specifies the delay (in milliseconds) before redrawing the gantt when resizing the container
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
 - api/gantt_csp_config.md - defines internal implementation of the code of date formatting methods
 - api/gantt_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
@@ -149,6 +150,7 @@ Properties
 - api/gantt_undo_steps_config.md - sets the number of steps that should be reverted by the undo method
 - api/gantt_undo_types_config.md - sets the types of entities for which the Undo operation will be applied
 - api/gantt_wai_aria_attributes_config.md - enables WAI-ARIA support to make the component recognizable for screen readers
+- api/gantt_wheel_scroll_sensitivity_config.md - specifies the speed of scrolling the gantt by the mouse wheel
 - api/gantt_wide_form_config.md - sets both the section and its label on the same line
 - api/gantt_work_time_config.md - enables calculating the duration of tasks in working time instead of calendar time
 - api/gantt_xml_date_config.md - defines date formats that are used to parse data from a data set and to send data to a server
@@ -176,6 +178,7 @@ Properties
 - api/gantt_click_drag_config.md
 - api/gantt_columns_config.md
 - api/gantt_constraint_types_config.md
+- api/gantt_container_resize_timeout_config.md
 - api/gantt_correct_work_time_config.md
 - api/gantt_csp_config.md
 - api/gantt_date_format_config.md
@@ -301,6 +304,7 @@ Properties
 - api/gantt_undo_steps_config.md
 - api/gantt_undo_types_config.md
 - api/gantt_wai_aria_attributes_config.md
+- api/gantt_wheel_scroll_sensitivity_config.md
 - api/gantt_wide_form_config.md
 - api/gantt_work_time_config.md
 - api/gantt_xml_date_config.md
