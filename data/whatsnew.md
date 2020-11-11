@@ -17,8 +17,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### Updates
 
-- Add the api/gantt_container_resize_timeout_config.md config for changing the timeout before redrawing Gantt when resizing the container
-- Add the api/gantt_wheel_scroll_sensitivity_config.md config for changing the speed of scrolling the gantt by the mouse wheel
+- Add the [container_resize_timeout](api/gantt_container_resize_timeout_config.md) config for changing the timeout before redrawing Gantt when resizing the container
+- Add the [wheel_scroll_sensitivity](api/gantt_wheel_scroll_sensitivity_config.md) config for changing the speed of scrolling the gantt by the mouse wheel
 
 ### Fixes
 
