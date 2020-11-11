@@ -10,6 +10,26 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.0.11
+------
+
+<span class='release_date'>November 11, 2020. Bugfix release</span>
+
+### Updates
+
+- Add the api/gantt_container_resize_timeout_config.md config for changing the timeout before redrawing Gantt when resizing the container
+- Add the api/gantt_wheel_scroll_sensitivity_config.md config for changing the speed of scrolling the gantt by the mouse wheel
+
+### Fixes
+
+- Fix the bug with [Auto Scheduling](desktop/auto_scheduling.md) when using different working calendars
+- Fix the conflict between [placeholder](api/gantt_placeholder_task_config.md) tasks and [Auto Scheduling](desktop/auto_scheduling.md)
+- Fix redundant repaints when api/gantt_sort_config.md is enabled
+- Fix the issue with [Inline Editors](desktop/inline_editing.md) and a scrollable grid, when inline editors lose focus right after click
+- Fix the issue that caused Gantt to close the [Quick Info](desktop/extensions_list.md#quickinfo) popup when the user clicks on it
+
+
+
 7.0.10
 ------
 
