@@ -67,6 +67,14 @@ Each object in the array specifies a single column. An object can take the follo
 
 <br>
 
+The width of Grid columns depends on two attributes: the **width** of the column and [grid_width](api/gantt_grid_width_config.md). If the sum of the width of columns is not equal to the width of the grid, Gantt changes one of the parameters.
+
+- When initializing the gantt via [gantt.init()](api/gantt_init.md), the **width** of the column is a priority.
+- When rendering the gantt via [gantt.render()](api/gantt_render.md), the [grid_width](api/gantt_grid_width_config.md) is a priority. <br> 
+{{editor	https://snippet.dhtmlx.com/5/36b6baa89	Adjustment of column width}}
+- When initializing the gantt via [gantt.init()](api/gantt_init.md) and either the width of the column is not specified or is set to **'*'**, the [grid_width](api/gantt_grid_width_config.md) is a priority. <br>{{editor	https://snippet.dhtmlx.com/5/a35378204	Adjusting column width}}
+
+<br>
 The **template** attribute is a function that takes a data item object as a parameter and returns the final data template. The function definition allows you to present almost any content.
 
 ~~~js

@@ -99,6 +99,12 @@ gantt.init("gantt_here");
 Use the '*' value, to make the column occupy all the remaining space.
 }}
 
+**Note**, that the width of Grid columns depends on two attributes: the [width](api/gantt_columns_config.md) of the column and [grid_width](api/gantt_grid_width_config.md). If the sum of the width of columns is not equal to the width of the grid, Gantt changes one of the parameters.
+
+- When initializing the gantt via [gantt.init()](api/gantt_init.md), the [width](api/gantt_columns_config.md) of the column is a priority.
+- When rendering the gantt via [gantt.render()](api/gantt_render.md), the [grid_width](api/gantt_grid_width_config.md) is a priority. <br> 
+{{editor	https://snippet.dhtmlx.com/5/36b6baa89	Adjustment of column width}}
+- When initializing the gantt via [gantt.init()](api/gantt_init.md) and either the width of the column is not specified or is set to **'*'**, the [grid_width](api/gantt_grid_width_config.md) is a priority. <br>{{editor	https://snippet.dhtmlx.com/5/a35378204	Adjusting column width}}
 
 ###Min/max column width
 
