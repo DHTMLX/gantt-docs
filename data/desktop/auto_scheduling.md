@@ -219,7 +219,7 @@ By default, it's implied that the lag value of each dependency link is set as 0.
 Gantt doesn't provide a built-in UI for editing lag or any other properties of the link. However, you can implement it manually by following the recommendations given in the
 [related chapter](desktop/crud_dependency.md#editinglinkvaluesfromui).
 
-{{editor	http://snippet.dhtmlx.com/7c812e5bd		 Edit-lag Popup}}
+{{editor	https://snippet.dhtmlx.com/5/5ebe2f82f		 Edit-lag Popup}}
 
 
 ## Time constraints for tasks

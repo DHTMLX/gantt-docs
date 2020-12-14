@@ -4,7 +4,7 @@ parse
 	
 
 @params:
-- url		string,object	 a string or object which represents data
+- data		string,object	 a string or object which represents data
 * type		string	 		 optional, (<i>'json', 'xml'</i>) the data type. The default value - <i>'json'</i>
 
 
