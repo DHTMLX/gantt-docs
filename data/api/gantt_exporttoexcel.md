@@ -89,6 +89,36 @@ properties are exported
 <tr><td>dd/mm/yyyy hh:mm:ss</td><td>09/01/2012 16:20:00</td></tr>
 </table>
 
+#### Default date parameters
+
+To export Gantt to the Excel file correctly when [inline editing](desktop/inline_editing.md) is enabled in Grid, you should set the type of the **start_date** and **end_date** editors to *Date*, and the type of the **duration** editor to *number*. 
+
+In case of applying custom template to the editor, it is necessary to define a different value in the **name** property of the column configuration. For instance:
+
+~~~js
+...
+var start_dateEditor = {type: "date", map_to: "start_date"};
+var end_dateEditor = {type: "date", map_to: "end_date"};
+var durationEditor = {type: "number", map_to: "duration", min:0, max: 100}; /*!*/
+...
+
+gantt.config.columns = [
+    ...
+    {name: "start_date", align: "center", width: 100, resize: true, 
+        editor: start_dateEditor},
+    {name: "end_date", align: "center", width: 100, resize: true, 
+        editor: end_dateEditor},
+    {name: "duration_formatted", align: "center", width: 40, resize: true, 
+        editor: durationEditor, 
+        template: function(task){ /*!*/
+			return formatter.format(task.duration_formatted); /*!*/
+        }
+    },
+    ...
+];
+~~~
+
+Otherwise, the Gantt data won't be exported. [Check the related example](https://snippet.dhtmlx.com/5/310ae348d).
 
 @related:
 desktop/excel.md
