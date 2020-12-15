@@ -135,6 +135,30 @@ The property that is not specified will be calculated based on the ones that are
 	01_initialization/18_backward_planning.html
 }}
 
+The **end_date** has a higher priority than the **duration** parameter. If there are 3 parameters specified in the task object, Gantt will ignore the **duration** parameter and the task will be loaded with a different duration value. For example:
+
+~~~js
+{
+    "id":"20", "text":"Project #2", 
+    "start_date":"01-04-2025", 
+    "duration":3, 
+    "end_date":"05-04-2025", 
+    "order":10,"progress":0.4, 
+    "type": "project", "open": true
+}
+
+// the task above will be loaded with the duration value calculated in accordance
+// with the specified 'start_date' and 'end_date'
+{
+    "id":"20", "text":"Project #2", 
+    "start_date":"01-04-2025", 
+    "duration":4, 
+    "end_date":"05-04-2025", 
+    "order":10,"progress":0.4, 
+    "type": "project", "open": true
+}
+~~~
+
 <h3 id="enddateformat">Formatting end dates of tasks</h3>
 
 The end dates of tasks are not inclusive. It means that Gantt inteprets the midnight of the latest date in the range as the end of the task, while the latest date itself isn't included into the task duration, and is not

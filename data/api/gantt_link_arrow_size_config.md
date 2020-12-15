@@ -11,5 +11,9 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
+The property specifies the size of the HTML element and does not change the actual size of the link arrow.<br>
+To change it, you need to use CSS.
 
+Check the example to find the styles for different skins: 
 
+{{editor	https://snippet.dhtmlx.com/5/f0c3e794f	Skins}}
