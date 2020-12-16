@@ -111,20 +111,22 @@ To shift Gantt in the exported file, you need to add the following style rule to
 
 ~~~js
 var width = 1000;
+var height = 1000;
 var total_width = gantt.$task_bg.scrollWidth + gantt.$grid.scrollWidth;
 
 for (var i = 0; i < total_width; i += width) {
 	gantt.exportToPDF({
 		header:`<style>#gantt_here{left:-${i}px;position: absolute;}</style>`,
-		//raw: true,
-		additional_settings:{
-			width: width
-		}
+     	//raw: true,
+     	additional_settings:{
+       		width: width,
+       		height: height,
+     	}
    	});
 }
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/55b12b7a1	Export to the file of defined sizes}}
+{{editor	https://snippet.dhtmlx.com/5/d8462d9e6	Export to the file of defined sizes}}
 
 In case you want to export Gantt to the specific format ('A4', for example), note, that the file format is defined in millimeters but the size in HTML is specified in pixels. Therefore, you need to convert the shift value from millimeters to pixels. 
 
