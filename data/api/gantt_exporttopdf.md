@@ -89,8 +89,51 @@ The api/gantt_exporttopdf.md method takes as a parameter an object with a number
 			<td class="webixdoc_links0"><b>raw</b></td>
 			<td>(<i>boolean</i>) defines that all Gantt markup will be exported as it is, with all custom elements. <em>false</em> by default. <a href="desktop/export.md#exportingcustommarkupandstyles">Read the details</a> </td>
 		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>additional_settings</b></td>
+			<td>(<i>object</i>) an object with additional settings. The object can contain the following attributes:
+			<ul>
+					<li><b>format</b> - (<i>string</i>) the format of the output file: <i>'A3', 'A4', 'A5', 'Legal', 'Letter', 'Tabloid'</i></li>
+					<li><b>landscape</b> - (<i>boolean</i>) the portrait or landscape orientation of the output file. The attribute works only when the "format" attribute is specified.</li>
+					<li><b>width</b> - (<i>string|number|"content"</i>) the width of the output page. The attribute is used when exporting multiple pages. </li>
+					<li><b>height</b> - (<i>string|number|"content"</i>) the height of the output page. The attribute is used when exporting multiple pages.</li>
+				</ul>
+			</td>
+		</tr>
     </tbody>
 </table>
+
+### Multi-page export
+
+When Gantt is exported, only its leftmost part is exported to the PDF document each time. Thus, to implement multi-page export, it is necessary to export Gantt several times, shifting Gantt to the left each time.  
+
+To shift Gantt in the exported file, you need to add the following style rule to **#gantt_here** in the **header** parameter:
+
+~~~js
+var width = 1000;
+var total_width = gantt.$task_bg.scrollWidth + gantt.$grid.scrollWidth;
+
+for (var i = 0; i < total_width; i += width) {
+	gantt.exportToPDF({
+		header:`<style>#gantt_here{left:-${i}px;position: absolute;}</style>`,
+		//raw: true,
+		additional_settings:{
+			width: width
+		}
+   	});
+}
+~~~
+
+{{editor	https://snippet.dhtmlx.com/5/55b12b7a1	Export to the file of defined sizes}}
+
+In case you want to export Gantt to the specific format ('A4', for example), note, that the file format is defined in millimeters but the size in HTML is specified in pixels. Therefore, you need to convert the shift value from millimeters to pixels. 
+
+~~~js
+var widthMM = 297;
+var width = widthMM / (25.4 inch / 144 PDF PPI);
+~~~
+
+{{editor	https://snippet.dhtmlx.com/5/a4a4e62e3	Export to the file of defined format}}
 
 @related:
 desktop/export.md

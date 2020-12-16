@@ -142,6 +142,23 @@ gantt.templates.grid_row_class = function(start, end, task){
 
 {{editor	https://docs.dhtmlx.com/gantt/snippet/3328e356			Coloring Grid Rows}}
 
+### Color of the grid rows on hover
+
+You can highlight the grid row on hover by applying the following style rules:
+
+~~~js
+.gantt_grid_data .gantt_row.odd:hover, .gantt_grid_data .gantt_row:hover,
+.gantt_grid_data .gantt_row.gantt_selected,
+.gantt_grid_data .gantt_row.odd.gantt_selected,
+.gantt_task_row.gantt_selected{
+	background-color: cyan; 
+}
+~~~
+
+<img src="desktop/grid_row_hover_color.png">
+
+{{editor	https://snippet.dhtmlx.com/5/d4f9e7f02	Coloring Grid Rows on Hover}}
+
 <h3 id="customizationgridcolumns">Customization of the grid columns</h3>
 
 dhtmlxGantt provides the possibility to modify the default appearance of the grid columns via the **template** attribute of the [**gantt.config.columns**](api/gantt_columns_config.md) configuration option.
@@ -546,6 +563,29 @@ gantt.getLink(2).color = "blue";
 ~~~
 
 Read the related section of the desktop/colouring_lines.md#specifyingcolorinthepropertiesofthelinkobject article to get the details.
+
+### Link color on hover
+
+It is possible to modify the color of a link on hover via CSS:
+
+~~~js
+.gantt_task_link:hover .gantt_line_wrapper div{
+	box-shadow: 0 0 5px 0 yellowgreen;
+	background: yellowgreen
+}
+  
+.gantt_task_link:hover .gantt_link_arrow_left,
+.gantt_task_link:hover .gantt_link_arrow_right{
+	border-left-color: yellowgreen !important;
+	border-right-color: yellowgreen !important;
+}
+~~~
+
+{{editor	https://snippet.dhtmlx.com/5/3f2cca8a8	Link color on hover}}
+
+<img src="desktop/link_hover_color.png">
+
+For more information, see the related article desktop/colouring_lines.md.
 
 ###Popups of dependency links
 

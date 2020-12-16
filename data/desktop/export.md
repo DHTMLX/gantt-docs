@@ -131,6 +131,17 @@ The api/gantt_exporttopdf.md and api/gantt_exporttopng.md methods take as a para
 			<td class="webixdoc_links0"><b>raw</b></td>
 			<td>(<i>boolean</i>) defines that all Gantt markup will be exported as it is, with all custom elements. <em>false</em> by default. <a href="desktop/export.md#exportingcustommarkupandstyles">Read the details below</a> </td>
 		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>additional_settings</b></td>
+			<td>(<i>object</i>) an object with additional settings for the <b>exportToPDF()</b> method. The object can contain the following attributes:
+			<ul>
+					<li><b>format</b> - (<i>string</i>) the format of the output file: <i>'A3', 'A4', 'A5', 'Legal', 'Letter', 'Tabloid'</i></li>
+					<li><b>landscape</b> - (<i>boolean</i>) the portrait or landscape orientation of the output file. The attribute works only when the "format" attribute is specified.</li>
+					<li><b>width</b> - (<i>string|number|"content"</i>) the width of the output page. The attribute is used when exporting multiple pages. </li>
+					<li><b>height</b> - (<i>string|number|"content"</i>) the height of the output page. The attribute is used when exporting multiple pages.</li>
+				</ul>
+			</td>
+		</tr>
     </tbody>
 </table>
 <br>
