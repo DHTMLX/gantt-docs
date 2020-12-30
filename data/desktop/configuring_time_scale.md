@@ -347,7 +347,7 @@ Or as a function that takes a date object as a parameter:
 gantt.config.scales = [
   { unit: "day", step:1, format: function(date){
     return "<strong>Day " + dayNumber(date) + "</strong><br/>" + dateFormat(date);
-  }
+  }}
 ]
 ~~~
 
