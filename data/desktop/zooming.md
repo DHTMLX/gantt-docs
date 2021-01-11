@@ -28,7 +28,7 @@ var zoomConfig = {
          scales:[
           {unit: "week", step: 1, format: function (date) {
            var dateToStr = gantt.date.date_to_str("%d %M");
-           var endDate = gantt.date.add(date, -6, "day");
+           var endDate = gantt.date.add(date, 6, "day");
            var weekNum = gantt.date.date_to_str("%W")(date);
            return "#" + weekNum + ", " + dateToStr(date) + " - " + dateToStr(endDate);
            }},
