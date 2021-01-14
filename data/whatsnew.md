@@ -10,6 +10,28 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.0.12
+------
+
+<span class='release_date'>January 14, 2021. Bugfix release</span>
+
+### Fixes
+
+- Fix some minor issues with [vertical drag and drop](desktop/reordering_tasks.md#dragndropwithinthewholeganttstructure) in large projects
+- Fix the issue with the incorrect size of the container when the [autosize](api/gantt_autosize_config.md) config is used
+- [Keyboard navigation](desktop/keyboard_navigation.md) should now work correctly with the horizontal scroll of the grid
+- [HTML views](desktop/layout_config.md#htmlasinnerview) of Layout now support external [scrollbars](desktop/layout_config.md#scrollbar)
+- Fix the issue that caused the incorrect state of the grid after [reordering tasks](desktop/reordering_tasks.md#dragndropwithinthewholeganttstructure), if the [additional grid](https://docs.dhtmlx.com/gantt/samples/10_layout/01_rightside_columns.html) was added to the layout
+- Fix the script error that happened after clearing and reloading the [resource panel](desktop/resource_management.md) if a resource was selected
+- Add the ability to disable automatic correction of the end date in the [time](desktop/time.md) section of the lightbox, which was applied when the selected start date was greater than the end date
+- Fix a typo in the default config of [Duration Formatter](desktop/formatters_ext.md)
+- Fix the script error thrown when the gantt is [destroyed](api/gantt_destructor.md) while a [popup message](desktop/message_boxes.md#basicpopupmessage) is shown
+- Fix the initial position of the horizontal scroll in Grid and Timeline in the [RTL](desktop/rtl_mode.md) mode
+- Fix the incorrect work of the lightbox which caused the selected type of a task not to be saved if the [typeselect](desktop/typeselect.md) control was not added to the lightbox configuration
+- Fix the issue that caused [markers](desktop/markers.md) to disappear after calling the [gantt.resetLayout()](api/gantt_resetlayout.md) method
+- Fix the performance issue with the [drag_project](api/gantt_drag_project_config.md) config used in large projects
+- Fix the issue that prevented the [QuickInfo](api/gantt_showquickinfo.md) popup from being displayed in the [read-only](desktop/readonly_mode.md) mode when custom buttons were added to the config
+
 7.0.11
 ------
 

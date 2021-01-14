@@ -54,7 +54,7 @@ The following properties are mostly important and commonly set for the 'time' co
 - **single_date** - (*boolean*) if you set the "true" value, just the *start Date* selector will be presented in the section. 
 Edited tasks will be specified only by the start date and have a zero duration. Makes sense only for [milestones](desktop/task_types.md#milestones)
 - **time_format** - (*string*) sets the order of date-time selectors
-
+- **autofix_end** - (*boolean*) defines whether the end date will be corrected automatically if the selected start date is greater than the end date, *true* by default. The disabled mode allows validating the dates, but if you enable the mode and don't validate the dates, you can get tasks with 0 duration when the *start_date* is greater than the *end_date*.
  
 Configuring date-time selectors 
 -------------------------------------------------
