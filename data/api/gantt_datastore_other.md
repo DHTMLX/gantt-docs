@@ -10,9 +10,9 @@ datastore
 @template:	api_config
 @descr:
 
-The **datastore** object possesses the following methods and events:
+The **datastore** object possesses the following [methods](#methods) and [events](#events):
 
-### Methods
+<h3 id="methods">Methods</h3>
 
 <ul><li>
     	<b>parse(data)</b> - loads data from an array
@@ -26,7 +26,7 @@ The **datastore** object possesses the following methods and events:
 Sample
 ~~~
 <br>
- <i>The twin of datastore.parse() is <a href="api/gantt_parse.md">gantt.parse()</a></i>
+ <i>The twin of datastore.parse() is <a href="api/gantt_parse.md">gantt.parse()</a>.</i>
 </ul>
 
 
@@ -45,7 +45,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.getItem() is <a href="   ">gantt.   ()</a></i>
+ <i>The twin of datastore.getItem() is <a href="   ">gantt.   ()</a>.</i>
 </ul>
 
 <ul>
@@ -63,7 +63,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.updateItem() is <a href="   ">gantt.   ()</a></i>
+ <i>The twin of datastore.updateItem() is <a href="   ">gantt.   ()</a>.</i>
 </ul>
 
 <ul>
@@ -80,7 +80,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.removeItem() is <a href="   ">gantt.   ()</a></i>
+ <i>The twin of datastore.removeItem() is <a href="   ">gantt.   ()</a>.</i>
 </ul>
 
 <ul>
@@ -98,7 +98,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.isVisible() is <a href="api/gantt_istaskvisible.md">gantt.isTaskVisible()</a></i>
+ <i>The twin of datastore.isVisible() is <a href="api/gantt_istaskvisible.md">gantt.isTaskVisible()</a>.</i>
 </ul>
 
 <ul>
@@ -112,7 +112,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.isVisible() is <a href="api/gantt_istaskvisible.md">gantt.isTaskVisible()</a></i>
+ <i>The twin of datastore.isVisible() is <a href="api/gantt_istaskvisible.md">gantt.isTaskVisible()</a>.</i>
 </ul>
 
 <ul>
@@ -132,7 +132,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.addItem() is <a href="api/gantt_addtask.md">gantt.addtask()</a></i>
+ <i>The twin of datastore.addItem() is <a href="api/gantt_addtask.md">gantt.addtask()</a>.</i>
 </ul>
 
 <ul>
@@ -151,7 +151,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.changeId() is <a href="api/gantt_changetaskid.md">gantt.changeTaskId()</a></i>
+ <i>The twin of datastore.changeId() is <a href="api/gantt_changetaskid.md">gantt.changeTaskId()</a>.</i>
 </ul>
 
 
@@ -170,7 +170,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.exists() is <a href="api/gantt_istaskexists.md">gantt.isTaskExists()</a></i>
+ <i>The twin of datastore.exists() is <a href="api/gantt_istaskexists.md">gantt.isTaskExists()</a>.</i>
 </ul>
 
 
@@ -189,7 +189,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.move() is <a href="api/gantt_movetask.md">gantt.moveTask()</a></i>
+ <i>The twin of datastore.move() is <a href="api/gantt_movetask.md">gantt.moveTask()</a>.</i>
 </ul>
 
 <ul>
@@ -203,7 +203,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.clearAll() is <a href="api/gantt_clearall.md">gantt.clearAll()</a></i>
+ <i>The twin of datastore.clearAll() is <a href="api/gantt_clearall.md">gantt.clearAll()</a>.</i>
 </ul>
 
 <ul>
@@ -220,7 +220,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.silent() is <a href="api/gantt_silent.md">gantt.silent()</a></i>
+ <i>The twin of datastore.silent() is <a href="api/gantt_silent.md">gantt.silent()</a>.</i>
 </ul>
 
 <ul>
@@ -237,42 +237,465 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.refresh() is <a href="api/gantt_refreshtask.md">gantt.refreshTask()</a></i>
+ <i>The twin of datastore.refresh() is <a href="api/gantt_refreshtask.md">gantt.refreshTask()</a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>count()</b> - returns the number of items that are currently loaded into the datastore
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.count() is <a href="api/gantt_gettaskcount.md">gantt.getTaskCount()</a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>countVisible()</b> - returns the number of items that are currently visible
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.countVisible() is <a href="api/gantt_getvisibletaskcount.md">gantt.getVisibleTaskCount()</a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>eachItem(callback)</b> - iterates over all tasks of the datastore
+        <ul>
+          	<li><b><i>callback</i></b> - (<i>function</i>) the callback function</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.eachItem() is <a href="api/gantt_eachtask.md">gantt.eachTask()</a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>filter()</b> - runs the filters and updates visible item array (<b>translate is not clear</b>)
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.filter() is <a href=""></a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>getIndexRange(from, to)</b> - returns records between the specified range of indexes (<b>уточнить</b>)
+        <ul>
+          	<li><b><i>from</i></b> - (<i>number</i>) the position of the start record</li>
+          	<li><b><i>to</i></b> - (<i>number</i>) the position of the end record</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.getIndexRange() is <a href=""></a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>getItems()</b> - returns all records of the datastore
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.getItems() is <a href=""></a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>getIdByIndex(index)</b> - returns the id of the item by its index
+        <ul>
+          	<li><b><i>index</i></b> - (<i>number</i>) the position of the item</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.getIdByIndex() is <a href="api/gantt_gettaskbyindex.md">gantt.getTaskByIndex()</a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>getIndexById(id)</b> - returns the index of the item by its id
+        <ul>
+          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.getIndexById() is <a href="api/gantt_gettaskindex.md">gantt.getTaskIndex()</a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>getFirst()</b> - returns the first item of the datastore
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.getFirst() is <a href=""></a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>getLast()</b> - returns the last item of the datastore
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.getLast() is <a href=""></a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>getNext(id)</b> - returns the id of the next item of the datastore
+        <ul>
+          	<li><b><i>id</i></b> - (<i>string|number</i>) the item's id</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.getNext() is <a href="api/gantt_getnext.md">gantt.getNext()</a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>getPrev(id)</b> - returns the id of the previous item of the datastore
+        <ul>
+          	<li><b><i>id</i></b> - (<i>string|number</i>) the item's id</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.getPrev() is <a href="api/gantt_getprev.md">gantt.getPrev()</a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>destructor()</b> - clears the datastore and removes all attached event handlers. The datastore is not usable after this method is called.
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.destructor() is <a href="api/gantt_destructor.md">gantt.destructor()</a>.</i>
+</ul>
+
+
+<ul>
+    <li>
+    	<b>attachEvent(name, handler, settings)</b> - attaches the handler to an inner event of DataStore
+        <ul>
+          	<li><b><i>name</i></b> - (<i>DataStoreEventName</i>) the event's name, case-insensitive</li>
+          	<li><b><i>handler</i></b> - (<i>function</i>) the handler function</li>
+          	<li><b><i>settings</i></b> - (<i>object</i>) optional, an object with settings for the event handler</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.attachEvent() is <a href="api/gantt_attachevent.md">gantt.attachEvent()</a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>callEvent(name, params)</b> - calls an inner event
+        <ul>
+          	<li><b><i>name</i></b> - (<i>string</i>) the event's name, case-insensitive</li>
+          	<li><b><i>params</i></b> - (<i>array</i>) an array of the event-related data</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.callEvent() is <a href="api/gantt_callevent.md">gantt.callEvent()</a>.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>detachEvent(id)</b> - detaches a handler from an event (which was attached before by the attachEvent() method)
+        <ul>
+          	<li><b><i>id</i></b> - (<i>string</i>) the event's id</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of datastore.detachEvent() is <a href="api/gantt_detachevent.md">gantt.detachEvent()</a>.</i>
+</ul>
+
+
+<h3 id="events">Events</h3>  <b>Check</b>
+
+<ul>
+    <li>
+    	<b>onItemLoading(item)</b> - fires when an item is being loaded from the data source
+        <ul>
+          	<li><b><i>item</i></b> - (<i>object</i>) the object of an item</li>
+        </ul>
+        Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of the onItemLoading() event of datastore is the <a href="api/gantt_ontaskloading_event.md">onTaskLoading()</a> event of Gantt.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>onBeforeParse()</b> - fires before data started to be parsed
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of the onBeforeParse() event of datastore is the <a href="api/gantt_ontaskloading_event.md">onTaskLoading()</a> event of Gantt.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>onParse()</b> - fires after data were parsed (became available for API) but before they were rendered in the Gantt chart (<b>проверить описание</b>)
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of the onParse() event of datastore is the <a href="api/gantt_onparse_event.md">onParse()</a> event of Gantt.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>onBeforeUpdate(id, new_item)</b> - fires before an item is updated
+        <ul>
+          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
+          	<li><b><i>new_item</i></b> - (<i>object</i>) the new (updated) object of the item</li>
+        </ul>
+        Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of the onBeforeUpdate() event of datastore is the <a href="api/gantt_onbeforetaskupdate_event.md">onBeforeTaskUpdate()</a> event of Gantt.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>onAfterUpdate(id, item)</b> - fires after an item is updated
+        <ul>
+          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) the object of the item</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of the onAfterUpdate() event of datastore is the <a href="api/gantt_onaftertaskupdate_event.md">onAfterTaskUpdate()</a> event of Gantt.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>onBeforeDelete(id, item)</b> - fires before an item is deleted
+        <ul>
+          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) the object of the item</li>
+        </ul>
+        Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of the onBeforeDelete() event of datastore is the <a href="api/gantt_onbeforetaskdelete_event.md">onBeforeTaskDelete()</a> event of Gantt.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>onAfterDelete(id, item)</b> - fires after an item is deleted
+        <ul>
+          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) the object of the item</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of the onAfterDelete() event of datastore is the <a href="api/gantt_onaftertaskdelete_event.md">onAfterTaskDelete()</a> event of Gantt.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>onBeforeAdd(id, item)</b> - fires before a new item is added to the datastore
+        <ul>
+          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) the object of the item</li>
+        </ul>
+        Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of the onBeforeAdd() event of datastore is the <a href="api/gantt_onbeforetaskadd_event.md">onBeforeTaskAdd()</a> event of Gantt.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>onAfterAdd(id, item)</b> - fires after an item is added to the datastore
+        <ul>
+          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) the object of the item</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of the onAfterAdd() event of datastore is the <a href="api/gantt_onaftertaskadd_event.md">onAfterTaskAdd()</a> event of Gantt.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>onIdChange(id, new_id)</b> - fires when the id of an item is changed
+        <ul>
+          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
+          	<li><b><i>new_id</i></b> - (<i>string|number</i>) the new id of the item</li>
+        </ul>
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of the onIdChange() event of datastore is the <a href="api/gantt_ontaskidchange_event.md">onTaskIdChange()</a> event of Gantt.</i>
+</ul>
+
+<ul>
+    <li>
+    	<b>onClearAll()</b> - fires after all items were removed from the datastore
+</li>
+</ul>
+
+<ul>
+~~~js
+Sample
+~~~
+<br>
+ <i>The twin of the onClearAll() event of datastore is the <a href="api/gantt_onclear_event.md">onClear()</a> event of Gantt.</i>
 </ul>
 
 
 
-count() - returns the number of items that are currently loaded into the datastore
+- **onBeforeStoreUpdate**
+- **onStoreUpdated**
+- **onBeforeFilter**
+- **onFilterItem**
+- **onFilter**
 
-countVisible() - returns the number of items that are currently visible
-
-eachItem(callback) - iterates over all tasks of the datastore
-
-filter() - runs the filters and updates visible item array
-
-getIndexRange(from, to) - returns records between the specified indexes
-
-getItems() - return all records of the datastore
-
-getIdByIndex(index) - returns an item by its index
-
-getIndexById(id) - returns the id of the specified item
-
-getFirst() - returns the first item of the datastore
-
-getLast() - returns the last item of the datastore
-
-getNext(id) - return the id of the next item of the datastore
-
-getPrev(id) - return the id of the previous item of the datastore
-
-destructor() - clears the datastore and removes all attached event handlers. The datastore is not usable after this method is called
-
-attachEvent - https://docs.dhtmlx.com/gantt/api__gantt_attachevent.html
-
-callEvent - https://docs.dhtmlx.com/gantt/api__gantt_callevent.html
-
-detachEvent - https://docs.dhtmlx.com/gantt/api__gantt_detachevent.html
 
 
 @relatedapi:
