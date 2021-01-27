@@ -10,6 +10,9 @@ datastore
 @template:	api_config
 @descr:
 
+{{note Datastores are created automatically for tasks and links. But applying methods of datastore to the tasks or links can produce unexpected result. Thus, you should use the common [API of Gantt](api/refs/gantt.md) when working with the tasks and links.}}
+
+
 The **datastore** object possesses the following [methods](#methods) and [events](#events):
 
 <h3 id="methods">Methods</h3>
@@ -45,7 +48,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.getItem() is <a href="   ">gantt.   ()</a>.</i>
+ <i>The twins of datastore.getItem() are <a href="api/gantt_gettask.md">gantt.getTask()</a> and <a href="api/gantt_getlink.md">gantt.getLink()</a>.</i>
 </ul>
 
 <ul>
@@ -63,7 +66,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.updateItem() is <a href="   ">gantt.   ()</a>.</i>
+ <i>The twins of datastore.updateItem() are <a href="api/gantt_updatetask.md">gantt.updateTask()</a> and <a href="api/gantt_updatelink.md">gantt.updateLink()</a>.</i>
 </ul>
 
 <ul>
@@ -80,7 +83,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.removeItem() is <a href="   ">gantt.   ()</a>.</i>
+ <i>The twins of datastore.removeItem() are <a href="api/gantt_deletetask.md">gantt.deleteTask()</a> and <a href="api/gantt_deletelink.md">gantt.deleteLink()</a>.</i>
 </ul>
 
 <ul>
@@ -112,7 +115,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.isVisible() is <a href="api/gantt_istaskvisible.md">gantt.isTaskVisible()</a>.</i>
+ <i>The twin of datastore.getVisibleItems() is <a href="">gantt.()</a>.</i>
 </ul>
 
 <ul>
@@ -132,7 +135,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.addItem() is <a href="api/gantt_addtask.md">gantt.addtask()</a>.</i>
+ <i>The twins of datastore.addItem() are <a href="api/gantt_addtask.md">gantt.addTask()</a> and <a href="api/gantt_addlink.md">gantt.addLink()</a>.</i>
 </ul>
 
 <ul>
@@ -151,7 +154,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.changeId() is <a href="api/gantt_changetaskid.md">gantt.changeTaskId()</a>.</i>
+ <i>The twins of datastore.changeId() are <a href="api/gantt_changetaskid.md">gantt.changeTaskId()</a> and <a href="api/gantt_changelinkid.md">gantt.changeLinkId()</a>.</i>
 </ul>
 
 
@@ -170,7 +173,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.exists() is <a href="api/gantt_istaskexists.md">gantt.isTaskExists()</a>.</i>
+ <i>The twin of datastore.exists() is <a href="api/gantt_istaskexists.md">gantt.isTaskExists()</a> and <a href="api/gantt_islinkexists.md">gantt.isLinkExists()</a>.</i>
 </ul>
 
 
@@ -237,7 +240,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.refresh() is <a href="api/gantt_refreshtask.md">gantt.refreshTask()</a>.</i>
+ <i>The twins of datastore.refresh() are <a href="api/gantt_refreshtask.md">gantt.refreshTask()</a> and <a href="api/gantt_refreshlink.md">gantt.refreshLink()</a>.</i>
 </ul>
 
 <ul>
@@ -251,7 +254,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.count() is <a href="api/gantt_gettaskcount.md">gantt.getTaskCount()</a>.</i>
+ <i>The twins of datastore.count() are <a href="api/gantt_gettaskcount.md">gantt.getTaskCount()</a> and <a href="api/gantt_getlinkcount.md">gantt.getLinkCount()</a>.</i>
 </ul>
 
 <ul>
@@ -528,7 +531,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of the onBeforeParse() event of datastore is the <a href="api/gantt_ontaskloading_event.md">onTaskLoading()</a> event of Gantt.</i>
+ <i>The twin of the onBeforeParse() event of datastore is the <a href="api/gantt_onbeforeparse_event.md">onBeforeParse()</a> event of Gantt.</i>
 </ul>
 
 <ul>
@@ -561,7 +564,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of the onBeforeUpdate() event of datastore is the <a href="api/gantt_onbeforetaskupdate_event.md">onBeforeTaskUpdate()</a> event of Gantt.</i>
+ <i>The twins of the onBeforeUpdate() event of datastore are the <a href="api/gantt_onbeforetaskupdate_event.md">onBeforeTaskUpdate()</a> and <a href="api/gantt_onbeforelinkupdate_event.md">onBeforeLinkUpdate()</a> events of Gantt.</i>
 </ul>
 
 <ul>
@@ -579,7 +582,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of the onAfterUpdate() event of datastore is the <a href="api/gantt_onaftertaskupdate_event.md">onAfterTaskUpdate()</a> event of Gantt.</i>
+ <i>The twins of the onAfterUpdate() event of datastore are the <a href="api/gantt_onaftertaskupdate_event.md">onAfterTaskUpdate()</a> and <a href="api/gantt_onafterlinkupdate_event.md">onAfterLinkUpdate()</a> events of Gantt.</i>
 </ul>
 
 <ul>
@@ -598,7 +601,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of the onBeforeDelete() event of datastore is the <a href="api/gantt_onbeforetaskdelete_event.md">onBeforeTaskDelete()</a> event of Gantt.</i>
+ <i>The twins of the onBeforeDelete() event of datastore are the <a href="api/gantt_onbeforetaskdelete_event.md">onBeforeTaskDelete()</a> and <a href="api/gantt_onbeforelinkdelete_event.md">onBeforeLinkDelete()</a> events of Gantt.</i>
 </ul>
 
 <ul>
@@ -616,7 +619,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of the onAfterDelete() event of datastore is the <a href="api/gantt_onaftertaskdelete_event.md">onAfterTaskDelete()</a> event of Gantt.</i>
+ <i>The twins of the onAfterDelete() event of datastore are the <a href="api/gantt_onaftertaskdelete_event.md">onAfterTaskDelete()</a> and <a href="api/gantt_onafterlinkdelete_event.md">onAfterLinkDelete()</a> events of Gantt.</i>
 </ul>
 
 <ul>
@@ -635,7 +638,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of the onBeforeAdd() event of datastore is the <a href="api/gantt_onbeforetaskadd_event.md">onBeforeTaskAdd()</a> event of Gantt.</i>
+ <i>The twins of the onBeforeAdd() event of datastore are the <a href="api/gantt_onbeforetaskadd_event.md">onBeforeTaskAdd()</a> and <a href="api/gantt_onbeforelinkadd_event.md">onBeforeLinkAdd()</a> events of Gantt.</i>
 </ul>
 
 <ul>
@@ -653,7 +656,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of the onAfterAdd() event of datastore is the <a href="api/gantt_onaftertaskadd_event.md">onAfterTaskAdd()</a> event of Gantt.</i>
+ <i>The twins of the onAfterAdd() event of datastore are the <a href="api/gantt_onaftertaskadd_event.md">onAfterTaskAdd()</a>  and <a href="api/gantt_onafterlinkadd_event.md">onAfterLinkAdd()</a> events of Gantt.</i>
 </ul>
 
 <ul>
