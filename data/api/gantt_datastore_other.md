@@ -173,7 +173,7 @@ Sample
 Sample
 ~~~
 <br>
- <i>The twin of datastore.exists() is <a href="api/gantt_istaskexists.md">gantt.isTaskExists()</a> and <a href="api/gantt_islinkexists.md">gantt.isLinkExists()</a>.</i>
+ <i>The twins of datastore.exists() are <a href="api/gantt_istaskexists.md">gantt.isTaskExists()</a> and <a href="api/gantt_islinkexists.md">gantt.isLinkExists()</a>.</i>
 </ul>
 
 
