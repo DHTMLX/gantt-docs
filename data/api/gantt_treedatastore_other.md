@@ -206,8 +206,27 @@ store.getChildren(9, 2);
 
 <ul>
 ~~~js
-Sample
+var store = gantt.getDatastore(gantt.config.resource_store);
+store.parse([
+    {id: 1, text: "QA", parent:null},
+    {id: 2, text: "Development", parent:null},
+    {id: 3, text: "Sales", parent:null},
+    {id: 4, text: "Other", parent:null},
+    {id: 5, text: "Unassigned", parent:4},
+    {id: 6, text: "John", parent:1},
+    {id: 7, text: "Mike", parent:2},
+    {id: 8, text: "Anna", parent:2},
+    {id: 9, text: "Bill", parent:3},
+    {id: 10, text: "Floe", parent:3}
+]);
+
+store.getSiblings(1);
+// -> [1,2,3,4]
+
+store.getSiblings(6);
+// -> [6]
 ~~~
+<br>
 <br>
  <i>The twin of treeDatastore.getSiblings() is <a href="api/gantt_getsiblings.md">gantt.getSiblings()</a>.</i>
 </ul>
