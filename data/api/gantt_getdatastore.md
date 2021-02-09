@@ -22,3 +22,6 @@ var tasksStore = gantt.getDatastore("task");
 
 @relatedsample:
 10_layout/02_resource_panel.html
+
+@relatedapi: api/gantt_datastore_other.md
+api/gantt_treedatastore_other.md
