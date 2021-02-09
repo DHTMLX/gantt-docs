@@ -8,14 +8,13 @@ treeDatastore
 
 @template:	api_config
 @descr:
-
-TreeDatastore extends the [Datastore](api/gantt_datastore_other.md) and has all of its methods.
-
-The extended API of the treeDatastore object provides the following [methods](#methods) and [events](#events):
-
 {{note This is an experimental API that might be changed in the future.}}
-{{note Tasks and Links should be modified using the common [API of Gantt](api/refs/gantt.md). Modifying tasks or links directly in the datastore can produce unexpected results. Datastores are expected to be used for resources or other custom objects. }}
-{{note A new datastore can be created using api/gantt_createdatastore.md method}}
+**_Note_**, that Tasks and Links should be modified using the common [API of Gantt](api/refs/gantt.md). Modifying tasks or links directly in the datastore can produce unexpected results. Datastores are expected to be used for resources or other custom objects.
+
+A new datastore can be created using api/gantt_createdatastore.md method.
+
+TreeDatastore extends [Datastore](api/gantt_datastore_other.md) and has all of its methods.
+The extended API of the **treeDatastore** object provides the following [methods](#methods) and [events](#events):
 
 <h3 id="methods">Methods</h3>
 
@@ -52,7 +51,7 @@ store.move(6, -1, 2);// move 'John' from 'QA' to 'Development'
 <br>
  <i>The twin of treeDatastore.move() is <a href="api/gantt_movetask.md">gantt.moveTask()</a>.</i>
   <br>
-  <i>Calls <a href="#onBeforeItemMove">onBeforeItemMove</a>, <a href="#onAfterItemMove">onAfterItemMove</a> events, and all events of the <a href="api/gantt_datastore_other.md#refresh">refresh</a> method.</i>
+  <i>Calls the <a href="#onBeforeItemMove">onBeforeItemMove</a>, <a href="#onAfterItemMove">onAfterItemMove</a> events, and all events of the <a href="api/gantt_datastore_other.md#refresh">refresh</a> method.</i>
 
 </ul>
 
@@ -380,7 +379,7 @@ store.calculateItemLevel(store.getItem(1));
 <ul>
 
 {{note
-Use **TreeDatastore.move** in order to move task to a different parent. **setParent** only writes the value to the property specified by the config, it won't update the internal state of the tree.
+Use **treeDatastore.move()** in order to move task to a different parent. The **setParent()** method only writes the value to the property specified by the config, it won't update the internal state of the tree.
 }}
 
 ~~~js
@@ -514,7 +513,7 @@ store.open(1);
 <br>
 <br>
  <i>The twin of treeDatastore.open() is <a href="api/gantt_open.md">gantt.open()</a>.</i>
-<i>Calls <a href="#onItemOpen">onItemOpen</a> event.<i>
+<i>Calls the <a href="#onItemOpen">onItemOpen</a> event.</i>
 </ul>
 
 <ul><li>
@@ -545,7 +544,7 @@ store.close(1);
 <br>
 <br>
  <i>The twin of treeDatastore.close() is <a href="api/gantt_close.md">gantt.close()</a>.</i>
-   <i>Calls <a href="#onItemClose">onItemClose</a> event.<i>
+   <i>Calls the <a href="#onItemClose">onItemClose</a> event.</i>
 </ul>
 
 <h3 id="events">Events</h3>

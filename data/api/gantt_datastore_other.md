@@ -11,10 +11,9 @@ datastore
 @descr:
 
 {{note This is an experimental API that might be changed in the future.}}
-{{note Tasks and Links should be modified using the common [API of Gantt](api/refs/gantt.md). Modifying tasks or links directly in the datastore can produce unexpected results. Datastores are expected to be used for resources or other custom objects. }}
-{{note A new datastore can be created using api/gantt_createdatastore.md method}}
+**_Note_**, that Tasks and Links should be modified using the common [API of Gantt](api/refs/gantt.md). Modifying tasks or links directly in the datastore can produce unexpected results. Datastores are expected to be used for resources or other custom objects.
 
-
+A new datastore can be created using api/gantt_createdatastore.md method. <br>
 The **datastore** object possesses the following [methods](#methods) and [events](#events):
 
 <h3 id="methods">Methods</h3>
@@ -50,7 +49,7 @@ gantt.$resourcesStore.parse([
 <br>
  <i>The twin of datastore.parse() is <a href="api/gantt_parse.md">gantt.parse()</a>.</i>
   <br>
- <i>Calls <a href="#onBeforeParse">onBeforeParse</a>, <a href="#onItemLoading">onItemLoading</a>, <a href="#onParse">onParse</a>, and <a href="#onStoreUpdated">onStoreUpdated</a> events.<i>
+ <i>Calls the <a href="#onBeforeParse">onBeforeParse</a>, <a href="#onItemLoading">onItemLoading</a>, <a href="#onParse">onParse</a>, and <a href="#onStoreUpdated">onStoreUpdated</a> events.</i>
 </ul>
 
 
@@ -95,13 +94,13 @@ var resource = store.getItem(resourceId);
 resource.text = "modified";
 store.updateItem(resourceId);
 // or
-// store.updateItem(resourceId, { text: "modified" });
+store.updateItem(resourceId, { text: "modified" });
 ~~~
 <br>
 <br>
  <i>The twins of datastore.updateItem() are <a href="api/gantt_updatetask.md">gantt.updateTask()</a> and <a href="api/gantt_updatelink.md">gantt.updateLink()</a>.</i>
 <br>
- <i>Calls <a href="#onBeforeUpdate">onBeforeUpdate</a>, <a href="#onAfterUpdate">onAfterUpdate</a> and <a href="#onStoreUpdated">onStoreUpdated</a> events.<i>
+ <i>Calls the <a href="#onBeforeUpdate">onBeforeUpdate</a>, <a href="#onAfterUpdate">onAfterUpdate</a> and <a href="#onStoreUpdated">onStoreUpdated</a> events.</i>
 
 </ul>
 
@@ -123,7 +122,7 @@ store.removeItem(resourceId);
 <br>
  <i>The twins of datastore.removeItem() are <a href="api/gantt_deletetask.md">gantt.deleteTask()</a> and <a href="api/gantt_deletelink.md">gantt.deleteLink()</a>.</i>
 <br>
- <i>Calls <a href="#onBeforeDelete">onBeforeDelete</a>, <a href="#onAfterDelete">onAfterDelete</a> and <a href="#onStoreUpdated">onStoreUpdated</a> events.<i>
+ <i>Calls the <a href="#onBeforeDelete">onBeforeDelete</a>, <a href="#onAfterDelete">onAfterDelete</a> and <a href="#onStoreUpdated">onStoreUpdated</a> events.</i>
 </ul>
 
 <ul id="isVisible">
@@ -140,7 +139,7 @@ store.removeItem(resourceId);
 ~~~js
 var store = gantt.getDatastore(gantt.config.resource_store);
 if(store.isVisible(resourceId)){
-   console.log(resourceId);
+    console.log(resourceId);
 }
 ~~~
 <br>
@@ -160,9 +159,8 @@ var store = gantt.getDatastore(gantt.config.resource_store);
 var items = store.getVisibleItems();
 ~~~
 <br>
-<br>
- <i>The twin of datastore.getVisibleItems() is <a href="">gantt.()</a>.</i>
 </ul>
+
 
 <ul id="addItem">
     <li>
@@ -172,7 +170,7 @@ var items = store.getVisibleItems();
           	<li><b><i>index</i></b> - (<i>string|number</i>) the position the task will be added into (0 or greater)
 </li>
         </ul>
-        Returns the id of the item.
+    Returns the id of the item.
 </li>
 </ul>
 
@@ -180,15 +178,15 @@ var items = store.getVisibleItems();
 ~~~js
 var store = gantt.getDatastore(gantt.config.resource_store);
 var itemId = store.addItem({
-  text: "Unassigned",
-  parent:4
+    text: "Unassigned",
+    parent:4
 });
 ~~~
 <br>
 <br>
  <i>The twins of datastore.addItem() are <a href="api/gantt_addtask.md">gantt.addTask()</a> and <a href="api/gantt_addlink.md">gantt.addLink()</a>.</i>
 <br>
- <i>Calls <a href="#onBeforeAdd">onBeforeAdd</a>, <a href="#onAfterAdd">onAfterAdd</a> and <a href="#onStoreUpdated">onStoreUpdated</a> events.<i>
+ <i>Calls the <a href="#onBeforeAdd">onBeforeAdd</a>, <a href="#onAfterAdd">onAfterAdd</a> and <a href="#onStoreUpdated">onStoreUpdated</a> events.</i>
 </ul>
 
 <ul id="changeId">
@@ -207,8 +205,8 @@ var itemId = store.addItem({
 var store = gantt.getDatastore(gantt.config.resource_store);
 
 var itemId = store.addItem({
-  text: "Unassigned",
-  parent:4
+    text: "Unassigned",
+    parent:4
 });
 
 // itemId - temporary client-side id of the new item
@@ -220,7 +218,7 @@ store.changeId(itemId, "databaseId");
 <br>
  <i>The twins of datastore.changeId() are <a href="api/gantt_changetaskid.md">gantt.changeTaskId()</a> and <a href="api/gantt_changelinkid.md">gantt.changeLinkId()</a>.</i>
  <br>
- <i>Calls <a href="#onIdChange">onIdChange</a> event.<i>
+ <i>Calls the <a href="#onIdChange">onIdChange</a> event.</i>
 </ul>
 
 
@@ -230,7 +228,7 @@ store.changeId(itemId, "databaseId");
         <ul>
           	<li><b><i>id</i></b> - (<i>string|number</i>) the item's id</li>
         </ul>
-        Returns <i>true</i>, if the task exists. Otherwise, <i>false</i>
+        Returns <i>true</i>, if the task exists. Otherwise, <i>false</i>.
 </li>
 </ul>
 
@@ -238,11 +236,9 @@ store.changeId(itemId, "databaseId");
 ~~~js
 var store = gantt.getDatastore(gantt.config.resource_store);
 
-
 if(store.exists(resourceId)){
-   console.log(resourceId);
+    console.log(resourceId);
 }
-
 ~~~
 <br>
 <br>
@@ -276,9 +272,9 @@ store.move(indexA, indexB);
 ~~~
 <br>
 <br>
- <i>The twin of datastore.move() is <a href="api/gantt_movetask.md">gantt.moveTask()</a>.</i>
- <br>
- <i>Call <a href="#onStoreUpdated">onStoreUpdated</a> event.<i>
+    <i>The twin of datastore.move() is <a href="api/gantt_movetask.md">gantt.moveTask()</a>.</i>
+    <br>
+    <i>Call the <a href="#onStoreUpdated">onStoreUpdated</a> event.</i>
 </ul>
 
 <ul>
@@ -296,7 +292,7 @@ store.clearAll();
 <br>
  <i>The twin of datastore.clearAll() is <a href="api/gantt_clearall.md">gantt.clearAll()</a>.</i>
    <br>
- <i>Calls <a href="#onClearAll">onClearAll</a>, <a href="#onBeforeStoreUpdate">onBeforeStoreUpdate</a> and <a href="#onStoreUpdated">onStoreUpdated</a> events.<i>
+ <i>Calls the <a href="#onClearAll">onClearAll</a>, <a href="#onBeforeStoreUpdate">onBeforeStoreUpdate</a> and <a href="#onStoreUpdated">onStoreUpdated</a> events.</i>
 
 </ul>
 
@@ -313,10 +309,10 @@ store.clearAll();
 ~~~js
 var store = gantt.getDatastore(gantt.config.resource_store);
 store.silent(function(){
-  store.eachItem(function(item){
-     item.text += " modified";
-     store.updateItem(item.id);
-  });
+    store.eachItem(function(item){
+        item.text += " modified";
+        store.updateItem(item.id);
+    });
 });
 store.refresh();
 ~~~
@@ -337,14 +333,14 @@ store.refresh();
 <ul>
 ~~~js
 var store = gantt.getDatastore(gantt.config.resource_store);
-store.refresh(itemId);// repaints an item
-store.refresh();// repaints all items
+store.refresh(itemId); // repaints an item
+store.refresh(); // repaints all items
 ~~~
 <br>
 <br>
  <i>The twins of datastore.refresh() are <a href="api/gantt_refreshtask.md">gantt.refreshTask()</a> and <a href="api/gantt_refreshlink.md">gantt.refreshLink()</a>.</i>
    <br>
- <i>Calls <a href="#onBeforeStoreUpdate">onBeforeStoreUpdate</a>, <a href="#onBeforeFilter">onBeforeFilter</a>, <a href="#onFilterItem">onFilterItem</a>, <a href="#onFilter">onFilter</a> and <a href="#onStoreUpdated">onStoreUpdated</a> events.<i>
+ <i>Calls the <a href="#onBeforeStoreUpdate">onBeforeStoreUpdate</a>, <a href="#onBeforeFilter">onBeforeFilter</a>, <a href="#onFilterItem">onFilterItem</a>, <a href="#onFilter">onFilter</a> and <a href="#onStoreUpdated">onStoreUpdated</a> events.</i>
 
 </ul>
 
@@ -376,7 +372,6 @@ store.attachEvent("onParse", function(){
 ~~~js
 var store = gantt.getDatastore(gantt.config.resource_store);
 alert(store.countVisible() + " items are visible");
-
 ~~~
 <br>
 <br>
@@ -398,11 +393,10 @@ var store = gantt.getDatastore(gantt.config.resource_store);
 
 var searchItems = [];
 store.eachItem(function(item){
-   if(!item.value){
-      searchItems.push(item);
-   }
+    if(!item.value){
+        searchItems.push(item);
+    }
 });
-
 ~~~
 <br>
 <br>
@@ -411,9 +405,9 @@ store.eachItem(function(item){
 
 <ul id="filter">
     <li>
-    	<b>filter()</b> - runs the filters and updates visible item array (<b>translate is not clear</b>)
+    	<b>filter()</b> - runs the filters and updates visible array of items
 </li>
-Normally, you don't need to call this method, it is called automatically from store.refresh() method
+Normally, you don't need to call this method, it is called automatically from the <b>store.refresh()</b> method.
 </ul>
 
 <ul>
@@ -427,7 +421,7 @@ store.filter();
 
 <ul id="getIndexRange">
     <li>
-    	<b>getIndexRange(from, to)</b> - returns records between the specified range of indexes (<b>уточнить</b>)
+    	<b>getIndexRange(from, to)</b> - returns records between the specified indexes
         <ul>
           	<li><b><i>from</i></b> - (<i>number</i>) the position of the start record</li>
           	<li><b><i>to</i></b> - (<i>number</i>) the position of the end record</li>
@@ -462,7 +456,7 @@ var items = store.getItems();
 
 <ul id="getIdByIndex">
     <li>
-    	<b>getIdByIndex(index)</b> - returns the id of the item by its index. Returns `undefined` if there is no item at the specified index
+    	<b>getIdByIndex(index)</b> - returns the id of the item by its index. Returns `undefined` if there is no item at the specified index.
         <ul>
           	<li><b><i>index</i></b> - (<i>number</i>) the position of the item</li>
         </ul>
@@ -544,7 +538,6 @@ var store = gantt.getDatastore(gantt.config.resource_store);
 var firstId = store.getFirst();
 var secondId = store.getNext(firstId);
 ~~~
-<br>
 <br>
 <br>
  <i>The twin of datastore.getNext() is <a href="api/gantt_getnext.md">gantt.getNext()</a>.</i>
@@ -631,7 +624,7 @@ store.callEvent("CustomEvent", [param1, param2]);
 
 <ul id="detachEvent">
     <li>
-    	<b>detachEvent(id)</b> - detaches a handler from an event (which was attached before by the attachEvent() method)
+    	<b>detachEvent(id)</b> - detaches a handler from an event (which was attached before by the <b>attachEvent()</b> method)
         <ul>
           	<li><b><i>id</i></b> - (<i>string</i>) the event's id</li>
         </ul>
@@ -645,7 +638,7 @@ var handlerId = store.attachEvent("onAfterSelect", function(id){
     gantt.refreshData();
 });
 
-// detach listener
+// detach a listener
 store.detachEvent(handlerId);
 ~~~
 <br>
@@ -654,7 +647,7 @@ store.detachEvent(handlerId);
 </ul>
 
 
-<h3 id="events">Events</h3>  <b>Check</b>
+<h3 id="events">Events</h3> 
 
 <ul id="onItemLoading">
     <li>
@@ -670,7 +663,7 @@ store.detachEvent(handlerId);
 ~~~js
 var store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onItemLoading", function(item){
-    if(item.valid){// filter items on load by custom property
+    if(item.valid){ // filter items on loading by custom property
         return true;
     }
     return false;
@@ -704,7 +697,7 @@ store.attachEvent("onParse", function(item){
 
 <ul id="onParse">
     <li>
-    	<b>onParse()</b> - fires after data were parsed (became available for API) but before they were rendered in the Gantt chart (<b>проверить описание</b>)
+    	<b>onParse()</b> - fires after data were parsed (became available for API) but before they were rendered in the Gantt chart
 </li>
 </ul>
 
@@ -907,11 +900,11 @@ store.attachEvent("onClearAll", function(oldId, newId){
         <ul>
           	<li><b><i>id</i></b> - (<i>string|number"null</i>) the id of an item or null</li>
           	<li><b><i>item</i></b> - (<i>object|null</i>) the item object or null</li>
-          	<li><b><i>action</i></b> - (<i>string|null</i>) action type. One of the following: "paint", "move", "add", "delete", "delete", null</li>
+          	<li><b><i>action</i></b> - (<i>string|null</i>) the action type ("paint", "move", "add", "delete", null)</li>
         </ul>
         Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
         <br>
-        This event signals that the datastore items needs a repaint. `null` argument value means that the whole datastore is updated.
+        This event signals that the datastore items need a repaint. `null` argument value means that the whole datastore is updated.
 
 </li>
 </ul>
@@ -934,11 +927,9 @@ store.attachEvent("onBeforeStoreUpdate", function(id, item, action){
         <ul>
           	<li><b><i>id</i></b> - (<i>string|number"null</i>) the id of an item or null</li>
           	<li><b><i>item</i></b> - (<i>object|null</i>) the item object or null</li>
-          	<li><b><i>action</i></b> - (<i>string|null</i>) action type. One of the following: "paint", "move", "add", "delete", "delete", null</li>
+          	<li><b><i>action</i></b> - (<i>string|null</i>) the action type ("paint", "move", "add", "delete", null)</li>
         </ul>
-        <br>
-        This event signals that the datastore items needs a repaint. `null` argument value means that the whole datastore is updated.
-
+        This event signals that the datastore items need a repaint. `null` argument value means that the whole datastore is updated.
 </li>
 </ul>
 
@@ -991,17 +982,14 @@ store.attachEvent("onFilter", function(item){
 <br>
 </ul>
 
-
 <ul id="onFilterItem">
     <li>
-    	<b>onFilterItem(id, item)</b> - fires for each item during filtering stage, returning `false` will mark item as not visible
+    	<b>onFilterItem(id, item)</b> - fires for each item during the filtering stage, returning `false` will mark item as not visible
         <ul>
           	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
           	<li><b><i>item</i></b> - (<i>object</i>) the item object</li>
         </ul>
-        <br>
         Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
-
 </li>
 </ul>
 
@@ -1013,7 +1001,6 @@ store.attachEvent("onFilterItem", function(id, item){
     return true;
 });
 ~~~
-<br>
 <br>
  <i>The twin of the onFilterItem event of datastore is the <a href="api/gantt_onbeforetaskdisplay_event.md">onBeforeTaskDisplay</a> event of Gantt.</i>
 </ul>
