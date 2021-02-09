@@ -416,7 +416,6 @@ var store = gantt.getDatastore(gantt.config.resource_store);
 store.filter();
 ~~~
 <br>
-<br>
 </ul>
 
 <ul id="getIndexRange">
@@ -434,7 +433,6 @@ store.filter();
 var store = gantt.getDatastore(gantt.config.resource_store);
 var itemsInViewPort = store.getIndexRange(5, 10);// get items from 5th to 10th
 ~~~
-<br>
 <br>
 </ul>
 
@@ -519,8 +517,6 @@ var store = gantt.getDatastore(gantt.config.resource_store);
 var lastId = store.getLast();
 ~~~
 <br>
-<br>
- <i>The twin of datastore.getLast() is <a href=""></a>.</i>
 </ul>
 
 <ul id="getNext">
