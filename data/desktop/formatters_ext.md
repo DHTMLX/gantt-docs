@@ -223,7 +223,7 @@ formatter.format({id:1, type:"1", source: 1, target: 2, lag: 5});
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
 
-formatter.format("1SS+5 days");
+formatter.parse("1SS+5 days");
 // {id:1, type:"1", source: 1, target: null, lag: 5}
 ~~~
 
