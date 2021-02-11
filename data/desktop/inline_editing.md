@@ -66,7 +66,8 @@ var editors = {
 };
 ~~~
 
-<h3 id="dateslimits">Dates limits in date editor</h3>
+
+<h3 id="dateslimits">Dates limits in the Date editor</h3>
 
 Starting from v6.3, there are no default limits to minimal and maximal input values of **date** inline editors.
 
@@ -82,6 +83,59 @@ const dateEditor = {type: "date", map_to: "start_date",
     }
 };
 ~~~
+
+<h3 id="inclusiveenddate">Editor for inclusive end dates</h3>
+
+If you are using the [format for inclusive end dates](api/gantt_task_end_date_template.md) of tasks and want to make it work correctly with inline editing in the grid, you have to create a special editor for editing inclusive end dates of tasks, as in:
+
+~~~js
+// inclusive editor for end dates
+// use the default editor, but override the set_value/get_value methods
+var dateEditor = gantt.config.editor_types.date;
+gantt.config.editor_types.end_date = gantt.mixin({
+   set_value: function(value, id, column, node){
+        var correctedValue = gantt.date.add(value, -1, "day");
+        return dateEditor.set_value.apply(this, [correctedValue, id, column, node]);
+   },
+   get_value: function(id, column, node) {
+        var selectedValue = dateEditor.get_value.apply(this, [id, column, node]);
+        return gantt.date.add(selectedValue, 1, "day");
+   },
+}, dateEditor);
+
+var textEditor = {type: "text", map_to: "text"};
+var startDateEditor = {type: "date", map_to: "start_date"};
+var endDateEditor = {type: "end_date", map_to: "end_date"};
+var durationEditor = {type: "number", map_to: "duration", min:0, max: 100};
+
+gantt.config.columns = [
+    {name: "text", label: "Name", tree: true, width: 200, editor: textEditor, 
+        resize: true},
+    {name: "duration", label: "Duration", width:80, align: "center", 
+        editor: durationEditor, resize: true},
+    {name: "start_date", label: "Start", width:140, align: "center", 
+        editor: startDateEditor, resize: true},
+    {name: "end_date", label: "Finish", width:140, align: "center", 
+        editor: endDateEditor, resize: true}
+];
+
+// change lightbox and grid templates to display dates of tasks in an inclusive format
+gantt.templates.task_end_date = function(date){
+    return gantt.templates.task_date(new Date(date.valueOf() - 1)); 
+};
+
+
+var gridDateToStr = gantt.date.date_to_str("%Y-%m-%d");
+gantt.templates.grid_date_format = function(date, column){
+    if(column === "end_date"){
+        return gridDateToStr(new Date(date.valueOf() - 1)); 
+    }else{
+        return gridDateToStr(date); 
+    }
+}
+~~~
+
+{{editor	https://snippet.dhtmlx.com/5/b9a3d78bc	Inclusive end date editor}}
 
 <h3 id="linkformatter">Formatting values of the Predecessor editor</h3>
 
@@ -114,7 +168,8 @@ var editors = {
  
 gantt.config.columns = [
     {name: "wbs", label: "#", width: 60, align: "center", template: gantt.getWBSCode},
-    {name: "text", label: "Name", tree: true, width: 200, editor: editors.text, resize: true},
+    {name: "text", label: "Name", tree: true, width: 200, editor: editors.text, 
+        resize: true},
     {name: "start_date", label: "Start", width:80, align: "center", 
       editor: editors.start_date, resize: true},
     {name: "predecessors", label: "Predecessors",width:80, align: "left", 
@@ -160,8 +215,8 @@ gantt.config.editor_types.custom_editor = {
   },
   
   is_changed: function (value, id, column, node) {
-    // called before save/close. Return true if new value differs from the original one
-    // returning true will trigger saving changes, returning false will skip saving 
+    //called before save/close. Return true if new value differs from the original one
+    //returning true will trigger saving changes, returning false will skip saving 
   },
   
   is_valid: function (value, id, column, node) {
