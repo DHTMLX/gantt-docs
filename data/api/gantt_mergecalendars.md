@@ -28,16 +28,16 @@ const mikeCalendarId = gantt.addCalendar({
 
 // pass an array of calendars as an argument
 const joinedCalendar = gantt.mergeCalendars([
-gantt.getResourceCalendar(mikeCalendarId),
-gantt.getResourceCalendar(johnCalendarId)
-])
+    gantt.getCalendar(mikeCalendarId),
+    gantt.getCalendar(johnCalendarId)
+]);
 
 @template:	api_method
 @descr:
-You can also specify a set of [objects of calendars](api/gantt_calendar_other.md) as parameters of the **mergeCalendars** method: 
+You can also specify a set of [objects of calendars](api/gantt_calendar_other.md) as parameters of the **mergeCalendars** method:
 
 ~~~js
-// pass calendars as arguments 
+// pass calendars as arguments
 const joinedCalendar = gantt.mergeCalendars(
     gantt.getCalendar(mikeCalendarId),
     gantt.getCalendar(johnCalendarId)
