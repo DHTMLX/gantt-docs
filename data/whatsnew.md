@@ -10,6 +10,20 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.0.13
+------
+
+<span class='release_date'>February 15, 2021. Bugfix release</span>
+
+### Fixes
+
+- Fix the script error happened when the [layout configuration](desktop/layout_config.md#layoutcustomization) is changed dynamically and [gantt.addTaskLayer](api/gantt_addtasklayer.md) is used
+- Fix the issue with the initial inner height of the [resource histogram](desktop/resource_management.md#resourceviewpanel) when the `fetchTasks` option is used
+- Fix the incorrect work of the [predecessor editor](desktop/inline_editing.md#typesofeditors) which caused it to delete existing links when the value is edited
+- Fix the incorrect work of the gantt when a [task with a non-unique ID](desktop/task_object_operations.md) is added to the gantt via the [gantt.addTask](api/gantt_addtask.md) and [gantt.parse](api/gantt_parse.md) methods
+- Performance improvement for drag and drop when the [auto_types](api/gantt_auto_types_config.md) and [drag_project](api/gantt_drag_project_config.md) configuration options are enabled
+- Performance improvement for [calculation of working time](desktop/working_time.md) when [duration_unit](api/gantt_duration_unit_config.md) is set to "day"
+
 7.0.12
 ------
 
@@ -188,7 +202,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ###Fixes
 
-- Major performance improvement for [calculation tasks' duration in the working minutes](desktop/working_time.md)
+- Major performance improvement for [calculation of tasks' duration in the working minutes](desktop/working_time.md)
 - Fix regression in the [Tooltip](desktop/tooltips.md) and [Undo](desktop/undo_redo.md) extensions which caused the incorrect work when multiple instances of Gantt were created
 - Fix the issue with the [reordering of grid columns](api/gantt_reorder_grid_columns_config.md) which caused the timeline to scroll when a mouse pointer moved to the edge of the grid during drag and drop
 - Fix [the incorrect position of the column after its dragging and dropping to the right side of the grid border](api/gantt_reorder_grid_columns_config.md)
