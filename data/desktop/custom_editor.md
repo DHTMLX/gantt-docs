@@ -183,3 +183,109 @@ gantt.config.lightbox.sections = [
 
 The *unassigned_value* property in the control object is used to hide resources that shouldn't be available for selection in the control. You need to set the id of the corresponding resource as a value of this property.
 In the example above the resource with the id=5 is not shown as an option in the control.
+
+##Custom third-party datepicker
+
+You can add a custom datepicker control to the lightbox for setting task duration by specifying the start and end dates of a task.
+
+For example, you can create a Datepicker control on the base of jQuery UI Datepicker.
+
+![Custom Datepicker control](desktop/custom_datepicker.png)
+
+{{editor	https://snippet.dhtmlx.com/5/7bc15ccec	3rd party Datepicker control}}
+
+To use a jQuery Datepicker control in the Gantt Chart:
+
+- include the source files of the jQuery library on the page
+
+~~~js
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link  rel="stylesheet" type="text/css" 
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+~~~
+
+- describe the control logic
+
+~~~js
+(function () {
+    function startDatepicker(node){
+    	return $(node).find("input[name='start']");
+    }
+    function endDateInput(node){
+    	return $(node).find("input[name='end']");
+    }
+          
+	gantt.form_blocks["datepicker"] = {
+		render: function (sns) { //sns - the section's configuration object
+			return "<div class='gantt-lb-datepicker'>"+
+				"<input type='text' name='start'>"+
+				"<input type='text' name='end'>"+
+				"</div>";;
+		},
+		set_value: function (node, value, task, section) {
+			//node - an html object related to the html defined above
+			//value - a value defined by the map_to property
+			//task - the task object
+			//section- the section's configuration object
+          
+			startDatepicker(node).datepicker({
+				dateFormat: "yy-mm-dd",
+				onSelect: function (dateStr) {
+					var endValue = endDateInput(node).datepicker('getDate');
+                    var startValue = startDatepicker(node).datepicker('getDate');
+                  
+                    if(startValue && endValue){
+                    	if(endValue.valueOf() <= startValue.valueOf()){
+                        	endDateInput(node).datepicker("setDate", 
+                            	gantt.calculateEndDate({
+									start_date: startValue, duration: 1, task:task
+							  	})
+							);
+                       	}
+                    }
+				}
+			});
+
+			startDatepicker(node).datepicker("setDate", task.start_date);
+
+			endDateInput(node).datepicker({
+				dateFormat: "yy-mm-dd",
+				onSelect: function (dateStr) {
+					//	gantt.ext.inlineEditors.save()
+				}
+			});
+			endDateInput(node).datepicker("setDate", task.end_date);
+		},
+		get_value: function (node, task, section) {
+          
+            if(task.start_date && task.end_date) {
+            	var start = startDatepicker(node).datepicker('getDate');
+            	var end =  endDateInput(node).datepicker('getDate');
+              
+           		if(end.valueOf() <= start.valueOf()){
+               		end = gantt.calculateEndDate({
+						start_date: start, duration: 1, task:task
+					});
+              	}
+              	task.start_date = start;
+              	task.end_date = end;                 
+            }
+
+			task.duration = gantt.calculateDuration(task);
+		},
+		focus: function (node) {
+
+		}
+	}
+})();
+~~~
+
+- use the control as a lightbox section with the type:"datepicker"
+
+~~~js
+gantt.config.lightbox.sections = [
+	{ name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+	{ name: "time", height: 72, map_to: "auto", type: "datepicker" }
+];
+~~~
