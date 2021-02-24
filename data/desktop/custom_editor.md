@@ -289,3 +289,122 @@ gantt.config.lightbox.sections = [
 	{ name: "time", height: 72, map_to: "auto", type: "datepicker" }
 ];
 ~~~
+
+##Custom third-party Duration control
+
+You may also need to add a custom Duration control to the lightbox for specifying the start date of a task and the number of days.
+
+![Custom Duration control](desktop/custom_duration_control.png)
+
+{{editor	http://snippet.dhtmlx.com/5/df371dcb4	3rd party Duration control}}
+
+
+Let's consider how to add a custom Duration control on the base of jQuery:
+
+- include the source files of the jQuery library on the page
+
+~~~js
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link  rel="stylesheet" type="text/css" 
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+~~~
+
+- describe the logic of the control
+
+~~~js
+(function () {
+	function startDatepicker(node){
+		return $(node).find("input[name='start']");
+	}
+	function durationInput(node){
+		return $(node).find("input[name='duration']");
+	}
+	function endDateLabel(node){
+		return $(node).find("span.gantt-lb-datepicker-label");
+	}
+
+	var formatter = gantt.ext.formatters.durationFormatter({
+		enter: "day",
+		store: "day",
+		format: "auto"
+	});
+
+	gantt.form_blocks["datepicker_duration"] = {
+		render: function (sns) { //sns - the section's configuration object
+			return "<div class='gantt-lb-datepicker'>"+
+				"<label>Start:<input type='text' name='start'></label>"+
+				"<label>Duration: <input type='text' name='duration'></label>"+
+				"<span class='gantt-lb-datepicker-label'></span>"
+				"</div>";
+		},
+		set_value: function (node, value, task, section) {
+			//node - an html object related to the html defined above
+			//value - a value defined by the map_to property
+			//task - the task object
+			//section- the section's configuration object
+
+			startDatepicker(node).datepicker({
+				dateFormat: "yy-mm-dd",
+				onSelect: function (dateStr) {
+					var endValue = durationInput(node).datepicker('getDate');
+					var startValue = startDatepicker(node).datepicker('getDate');
+
+					if(startValue && endValue){
+						if(endValue.valueOf() <= startValue.valueOf()){
+							durationInput(node).datepicker("setDate",
+								gantt.calculateEndDate({
+									start_date: startValue, duration: 1, task:task
+								})
+							);
+						}
+					}
+				}
+			});
+
+			startDatepicker(node).datepicker("setDate", task.start_date);
+
+			durationInput(node).val(formatter.format(task.duration));
+			endDateLabel(node).text(
+				"Ends: " + gantt.templates.task_date(task.end_date)
+			);
+		},
+		get_value: function (node, task, section) {
+
+			if(task.start_date && task.end_date) {
+				var start = startDatepicker(node).datepicker('getDate');
+				var end = task.end_date;
+				var duration = formatter.parse(durationInput(node).val());
+
+				if(duration && !isNaN(Number(duration))){
+					end = gantt.calculateEndDate({
+						start_date: start, duration: duration, task:task
+					});
+				}
+				task.start_date = start;
+				task.duration = duration;
+				task.end_date = end;
+			}
+
+			task.duration = gantt.calculateDuration(task);
+			return {
+				start_date: task.start_date,
+				end_date: task.end_date,
+				duration: task.duration
+			}
+		},
+		focus: function (node) {
+
+		}
+	}
+})();
+~~~
+
+- use the control as a lightbox section with the type:"datepicker_duration"
+
+~~~js
+gantt.config.lightbox.sections = [
+	{ name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+	{ name: "time", height: 72, map_to: "auto", type: "datepicker_duration" }
+];
+~~~
