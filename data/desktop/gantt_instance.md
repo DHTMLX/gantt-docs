@@ -20,7 +20,7 @@ Here is the list of things that you need to keep in mind when using this way:
 
 ## Custom events
 
-When you load the page with Gantt you need to manually save the IDs of the events in an array before adding them:
+When you load the page with Gantt you need to manually save the IDs of the events to an array before adding them:
 
 ~~~js
 const onTaskClick = gantt.attachEvent('onTaskClick', (id) => {
@@ -30,7 +30,7 @@ const onTaskClick = gantt.attachEvent('onTaskClick', (id) => {
 eventIDs.push(onTaskClick);
 ~~~
 
-When you switch to another page, you need to manually detach events by using the IDs that you've saved in an array:
+When you switch to another page, you need to manually detach events by using the IDs that you've saved to an array:
 
 ~~~js
 eventIDs.forEach(event => gantt.detachEvent(event));
@@ -49,23 +49,21 @@ dp.destructor();
 
 Please, be aware that you need to destroy only dataProcessor, not Gantt. Otherwise, you won't be able to use Gantt until you reload the page.
 
-
 ## Tasks, links, resource data, markers, custom hotkeys 
 
 You can safely remove these data from the Gantt instance by using the [clearAll()](api/gantt_clearall.md) method.
 
 ## Gantt configuration
 
-There is no a built-in way to save it or reset the Gantt configuration to the default one. Most of the Gantt configuration is saved inside the [[gantt.config](api/refs/gantt_props.md) object.
+There is no a built-in way to save it or reset the Gantt configuration to the default one. Most of the Gantt configuration is saved inside the [gantt.config](api/refs/gantt_props.md) object.
 
-##CSS
+## CSS
 
 If you've added custom CSS, you need to manually remove it if it causes problems.
 
 ## Calendar settings
 
 You need to manually remove them with the [gantt.deleteCalendar()](api/gantt_deletecalendar.md) method.
-
 
 ## Other cases
 
