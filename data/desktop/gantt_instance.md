@@ -39,10 +39,6 @@ eventIDs = [];
 
 For more details, see the [Detaching events](desktop/handling_events.md#detachingevents) section.
 
-## Predefined events
-
-Right now, there is no easy way to detach them.
-
 ## Data Processor
 
 You need to manually destroy [dataProcessor](api/gantt_dataprocessor.md):
