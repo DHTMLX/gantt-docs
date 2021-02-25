@@ -73,6 +73,6 @@ You need to manually remove them with the [gantt.deleteCalendar()](api/gantt_del
 
 ## Other cases
 
-Probably, apart from the points described above, you will need to implement something else, but we have not tested all possible scenarios with that approach.
+Apart from the points described above, you probably will need to implement some other options, but we have not tested all possible scenarios of this approach yet.
 
 
