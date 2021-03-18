@@ -215,8 +215,6 @@ let borders = "full";
 ### Events
 
 ~~~js
-// will be called with DataStore value on Gantt initalization
-let store = null;
 // will be called on any action in the Gantt
 let actions = null;
 // will be called on any data modification in the Gantt
@@ -260,7 +258,7 @@ function handler({ action, obj, id }) {
 ~~~html
 let store;
 
-<Gantt on:store={v => (store = v)} />;
+<Gantt bind:store />;
 ~~~
 
 and now you can use store's API to get or modify data.
