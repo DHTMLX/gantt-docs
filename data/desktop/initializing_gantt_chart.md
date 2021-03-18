@@ -82,6 +82,8 @@ import { gantt, Gantt } from 'dhtmlx-gantt';
 React example
 ------------------
 
+{{note While DHTMLX Gantt can be used with React, there is a native React solution - web/react.md }}
+
 An example of importing dhtmlxGantt files into a React-based app:
 
 ~~~js
@@ -146,6 +148,18 @@ export class GanttComponent implements OnInit {
     }
 }
 ~~~
+
+
+Vue example
+---
+
+{{note While DHTMLX Gantt can be used with React, there is a native React solution - web/vue.md }}
+
+
+Svelte example
+---
+
+{{note While DHTMLX Gantt can be used with React, there is a native React solution - web/svelte.md }}
 
 Include files into a RequireJS-based app
 ------------------------------------------- 

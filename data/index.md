@@ -52,6 +52,7 @@ Start
 - desktop/video_guides.md
 - desktop/copyright.md
 - faq.md
+- web/all.md
 
 @metadescr:
 
