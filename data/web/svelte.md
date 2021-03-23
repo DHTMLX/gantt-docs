@@ -1,14 +1,16 @@
 Svelte Gantt
 ==================
 
+[DHTMLX Svelte Gantt chart](https://dhtmlx.com/docs/products/dhtmlxGantt-for-Svelte/) is a separate Gantt chart library for your Svelte application.
+
 {{note 
-There are two different products, DHTMLX Gantt and Svelte Gantt.  
+There are two different products, DHTMLX Gantt and DHTMLX Svelte Gantt.  
 While they are very similar in UX, they are very different in API.
 }}
 
-- Online demo: [https://dhtmlx.com/svelte/demos/gantt/#/base/default](https://dhtmlx.com/svelte/demos/gantt/#/base/default)
-- Code of demos: [https://github.com/web-widgets/svelte-gantt-demos](https://github.com/web-widgets/svelte-gantt-demos)
-- Minimal project: [https://svelte.dev/repl/f2f23aea85094858a36d3c1712282dfc](https://svelte.dev/repl/f2f23aea85094858a36d3c1712282dfc)
+- Check [Online Demo](https://dhtmlx.com/svelte/demos/gantt/#/base/default)
+- The complete demo code is available on [GitHub](https://github.com/web-widgets/svelte-gantt-demos)
+- View the [basic project](https://svelte.dev/repl/f2f23aea85094858a36d3c1712282dfc)
 
 ## Supported functionality
 
@@ -30,15 +32,15 @@ While they are very similar in UX, they are very different in API.
 
 ### Installation
 
-- add library to your svelte project
+- add the svelte-gantt library into your Svelte project by the following command:
 
-~~~
+~~~js
 npm install @dhtmlx/trial-svelte-gantt
 ~~~
 
-This will install trial version, for commercial one, use "@dhx/svelte-gantt"
+This command will install the Trial version, for Commercial one, use "@dhx/svelte-gantt".
 
-- place Gantt tag into the desired page
+- place the Gantt tag into the desired page:
 
 ~~~html
 import { Gantt, DefaultTheme } from "@dhtmlx/trial-svelte-gantt";
@@ -52,15 +54,14 @@ export default function GanttBasic() {
 }
 ~~~
 
-You can check the demo of mininal project here - [https://svelte.dev/repl/f2f23aea85094858a36d3c1712282dfc](https://svelte.dev/repl/f2f23aea85094858a36d3c1712282dfc)
-
-Source code of the gantt can be checked in node_modules/@dhtmlx/trial-svelte-gantt/src
+You can check the demo of our mininal project [here](https://svelte.dev/repl/f2f23aea85094858a36d3c1712282dfc).
+You will find the source code of the gantt in the *node_modules/@dhtmlx/trial-svelte-gantt/src* folder.
 
 ### Themes
 
-Package contains two predefined themes - Default and Material.
+The svelte-gantt package contains two predefined themes - Default and Material.
 
-You can apply theme by wrapping Gantt into DefaultTheme or MaterialTheme tags
+You can apply the desired theme by wrapping Gantt into the DefaultTheme or MaterialTheme tags:
 
 ~~~html
 <div>
@@ -73,7 +74,7 @@ You can apply theme by wrapping Gantt into DefaultTheme or MaterialTheme tags
 </div>
 ~~~
 
-or you can just add theme tag on the page and add skin class to one of Gantt's parent tags
+or you can just add the theme tag on the page and add a skin class into one of the parent tags of Gantt:
 
 ~~~html
 <div>
@@ -91,14 +92,13 @@ or you can just add theme tag on the page and add skin class to one of Gantt's p
 
 ### Initialization
 
-You can define scales/columns/tasks/links during Gantt initialization
+You can define scales/columns/tasks/links during Gantt initialization:
 
 ~~~svelte
 <Gantt {scales} {columns} {tasks} {links} />
-
 ~~~
 
-where data may look like next
+where data may look like this:
 
 ~~~js
 const scales = [
@@ -138,34 +138,32 @@ const links = [{ source: 2, target: 1, type: 0 }];
 
 ### Integration with backend
 
-Check
-[https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttBackend.svelte](https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttBackend.svelte)
+Let's take a look at [GanttBackend.svelte](https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttBackend.svelte).
 
-Code defines the action handler through **save** event. This event will be triggered on any update and may be used to save changes to the persistent storage.
+Code defines the action handler through the **save** event. This event will be triggered on any update and may be used to save changes to the persistent storage.
 
-In the above example, the RestDataProvider is used
-[https://github.com/web-widgets/gantt-data-provider/blob/master/src/providers/rest.ts](https://github.com/web-widgets/gantt-data-provider/blob/master/src/providers/rest.ts)
+In the above example, [RestDataProvider](https://github.com/web-widgets/gantt-data-provider/blob/master/src/providers/rest.ts) is used.
 You are not limited to this solution, though, and can extend the provided class or define a custom handler.
 
-We provide 2 demo backends, with nodejs and go
+We provide you with 2 demo backends:
 
-- [https://github.com/web-widgets/gantt-go](https://github.com/web-widgets/gantt-go)
-- [https://github.com/web-widgets/gantt-node](https://github.com/web-widgets/gantt-node)
+- [Go Demo Backend](https://github.com/web-widgets/gantt-go)
+- [NodeJS Demo Backend](https://github.com/web-widgets/gantt-node)
 
-again, you are not limited to this solution. The above RestDataProvider can work with any REST like service and you can implement a fully custom solution ( sockets, graphql, etc. ) through custom save event.
+Again, you are not limited to this solution. The above RestDataProvider can work with any REST like service and you can implement a fully custom solution ( sockets, graphql, etc. ) through a custom save event.
 
 ### Templates
 
-The next elements can be customized through templates
+The following elements can be customized via templates:
 
 - task text
 - sidebar form
 
-check [https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttText.svelte](https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttText.svelte)
+Сheck the code example [here](https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttText.svelte).
 
 - tooltip content
 
-check [https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttTooltips.svelte](https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttTooltips.svelte)
+Сheck the code example [here](https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttTooltips.svelte).
 
 ## API
 
@@ -202,7 +200,7 @@ let cellWidth = 100;
 let cellHeight = 38;
 // height of scale cell
 let scaleHeight = 30;
-// readonly mode flag
+// read-only mode flag
 let readonly = false;
 // show or hide grid
 let grid = true;
@@ -255,13 +253,15 @@ function handler({ action, obj, id }) {
 
 ### Methods
 
+Retrieve the store object:
+
 ~~~html
 let store;
 
 <Gantt bind:store />;
 ~~~
 
-and now you can use store's API to get or modify data.
+and now you can use the store's API to get or modify data:
 
 ~~~ts
 interface IStore {
@@ -277,7 +277,7 @@ interface IStore {
 }
 ~~~
 
-action method can be used to trigger any of above actions
+The **action** method can be used to trigger any of the above actions:
 
 ~~~js
 store.action(taskId, "tasks-toggle");

@@ -1,14 +1,16 @@
 Vue Gantt
 ==================
 
+[DHTMLX Vue JS Gantt chart](https://dhtmlx.com/docs/products/dhtmlxGantt-for-Vuejs/) is a separate Gantt chart library for your Vue.js application.
+
 {{note
 There are two different products, DHTMLX Gantt and Vue Gantt.
 While they are very similar in UX, they are very different in API.
 }}
 
-- Online demo: [https://dhtmlx.com/vue/demos/gantt/#/base/default](https://dhtmlx.com/vue/demos/gantt/#/base/default)
-- Code of demos: [https://github.com/web-widgets/vue-gantt-demos](https://github.com/web-widgets/vue-gantt-demos)
-- Minimal project: [https://stackblitz.com/edit/vue-gantt-basic](https://stackblitz.com/edit/vue-gantt-basic)
+- Check [Online Demo](https://dhtmlx.com/vue/demos/gantt/#/base/default)
+- The complete demo code is available on [GitHub](https://github.com/web-widgets/vue-gantt-demos)
+- View the [basic project](https://stackblitz.com/edit/vue-gantt-basic)
 
 ## Supported functionality
 
@@ -30,15 +32,15 @@ While they are very similar in UX, they are very different in API.
 
 ### Installation
 
-- add library to your vue project
+- add the vue-gantt library into your Vue.js project by the following command:
 
 ~~~js
 npm install @dhtmlx/trial-vue-gantt
 ~~~
 
-This will install trial version, for commercial one, use "@dhx/vue-gantt"
+This command will install the Trial version, for Commercial one, use "@dhx/vue-gantt"
 
-- place Gantt tag into the desired page
+- place the Gantt tag into the desired page:
 
 ~~~html
 import { Gantt, DefaultTheme } from "@dhtmlx/trial-vue-gantt";
@@ -52,15 +54,14 @@ export default function GanttBasic() {
 }
 ~~~
 
-You can check the demo of mininal project here - [https://stackblitz.com/edit/vue-gantt-basic](https://stackblitz.com/edit/vue-gantt-basic)
-
-Source code of the gantt can be checked in node_modules/@dhtmlx/trial-vue-gantt/src
+You can check the demo of our mininal project [here](https://stackblitz.com/edit/vue-gantt-basic).
+You will find the source code of the gantt in the *node_modules/@dhtmlx/trial-vue-gantt/src* folder.
 
 ### Themes
 
-Package contains two predefined themes - Default and Material.
+The vue-gantt package includes two predefined themes - Default and Material.
 
-You can apply theme by wrapping Gantt into DefaultTheme or MaterialTheme tags
+You can apply the desired theme by wrapping Gantt into the DefaultTheme or MaterialTheme tags:
 
 ~~~html
 <div>
@@ -73,7 +74,7 @@ You can apply theme by wrapping Gantt into DefaultTheme or MaterialTheme tags
 </div>
 ~~~
 
-or you can just add theme tag on the page and add skin class to one of Gantt's parent tags
+or you can just add the theme tag on the page and add a skin class into one of the parent tags of Gantt:
 
 ~~~html
 <div>
@@ -91,13 +92,13 @@ or you can just add theme tag on the page and add skin class to one of Gantt's p
 
 ### Initialization
 
-You can define scales/columns/tasks/links during Gantt initialization
+You can define scales/columns/tasks/links during Gantt initialization:
 
 ~~~vue
 <Gantt :scales="scales" :columns="columns" :tasks="tasks" :links="links" />
 ~~~
 
-where data may look like next
+where data may look like this:
 
 ~~~js
 const scales = [
@@ -137,34 +138,32 @@ const links = [{ source: 2, target: 1, type: 0 }];
 
 ### Integration with backend
 
-Check
-[https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttBackend.vue](https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttBackend.vue)
+Let's take a look at [GanttBackend.vue](https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttBackend.vue).
 
-Code defines the action handler through **save** event. This event will be triggered on any update and may be used to save changes to the persistent storage.
+Code defines the action handler through the **save** event. This event will be triggered on any update and may be used to save changes to the persistent storage.
 
-In the above example, the RestDataProvider is used
-[https://github.com/web-widgets/gantt-data-provider/blob/master/src/providers/rest.ts](https://github.com/web-widgets/gantt-data-provider/blob/master/src/providers/rest.ts)
+In the above example, the [RestDataProvider](https://github.com/web-widgets/gantt-data-provider/blob/master/src/providers/rest.ts) is used.
 You are not limited to this solution, though, and can extend the provided class or define a custom handler.
 
-We provide 2 demo backends, with nodejs and go
+We provide you with 2 demo backends:
 
-- [https://github.com/web-widgets/gantt-go](https://github.com/web-widgets/gantt-go)
-- [https://github.com/web-widgets/gantt-node](https://github.com/web-widgets/gantt-node)
+- [Go Demo Backend](https://github.com/web-widgets/gantt-go)
+- [NodeJS Demo Backend](https://github.com/web-widgets/gantt-node)
 
-again, you are not limited to this solution. The above RestDataProvider can work with any REST like service and you can implement a fully custom solution ( sockets, graphql, etc. ) through custom save event.
+Again, you are not limited to this solution. The above RestDataProvider can work with any REST like service and you can implement a fully custom solution (sockets, graphql, etc.) through a custom save event.
 
 ### Templates
 
-The next elements can be customized through templates
+The following elements can be customized via templates:
 
 - task text
 - sidebar form
 
-check [https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttText.vue](https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttText.vue)
+Сheck the code example [here](https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttText.vue).
 
 - tooltip content
 
-check [https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttTooltips.vue](https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttTooltips.vue)
+Сheck the code example [here](https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttTooltips.vue).
 
 ## API
 
@@ -201,7 +200,7 @@ let cellWidth = 100;
 let cellHeight = 38;
 // height of scale cell
 let scaleHeight = 30;
-// readonly mode flag
+// read-only mode flag
 let readonly = false;
 // show or hide grid
 let grid = true;
@@ -214,7 +213,7 @@ let borders = "full";
 ### Events
 
 ~~~js
-// will be called with DataStore value on Gantt initalization
+// will be called with DataStore value on Gantt initialization
 let store = null;
 // will be called on any action in the Gantt
 let actions = null;
@@ -257,13 +256,15 @@ function handler({ action, obj, id }){
 
 ### Methods
 
+Retrieve the store object:
+
 ~~~html
 let store;
 
 <Gantt @store="v => store = v" />
 ~~~
 
-and now you can use store's API to get or modify data.
+and now you can use the store's API to get or modify data:
 
 ~~~ts
 interface IStore {
@@ -279,7 +280,7 @@ interface IStore {
 }
 ~~~
 
-action method can be used to trigger any of above actions
+The **action** method can be used to trigger any of the above actions:
 
 ~~~js
 store.action(taskId, "tasks-toggle");
