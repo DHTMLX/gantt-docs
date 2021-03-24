@@ -1,14 +1,14 @@
 React Gantt
 ==================
 
-[DHTMLX React JS Gantt chart](https://dhtmlx.com/docs/products/dhtmlxGantt-for-React/) is a separate Gantt chart library for your [React](https://reactjs.org) application.
+<a href="https://dhtmlx.com/docs/products/dhtmlxGantt-for-React/" target="_blank">DHTMLX React JS Gantt chart</a> is a separate Gantt chart library for your <a href="https://reactjs.org" target="_blank">React</a> application.
 
-{{note There are two different products, DHTMLX Gantt and DHTMLX React Gantt.  
+{{note There are two different products, DHTMLX Gantt and DHTMLX React Gantt. 
 While they are very similar in UX, they are very different in API.}}
 
-- Check [Online Demo](https://dhtmlx.com/react/demos/gantt/#/base/default)
-- The complete demo code is available on [GitHub](https://github.com/web-widgets/react-gantt-demos)
-- View the [basic project](https://stackblitz.com/edit/react-gantt-basic)
+- Check <a href="https://dhtmlx.com/react/demos/gantt/#/base/default" target="_blank">Online Demo</a>
+- The complete demo code is available on <a href="https://github.com/web-widgets/react-gantt-demos" target="_blank">GitHub</a>
+- View the <a href="https://stackblitz.com/edit/react-gantt-basic" target="_blank">basic project</a>
 
 ## Supported functionality
 
@@ -52,7 +52,7 @@ export default function GanttBasic() {
 }
 ~~~
 
-You can check the demo of our minimal project [here](https://stackblitz.com/edit/react-gantt-basic).
+You can check the demo of our minimal project <a href="https://stackblitz.com/edit/react-gantt-basic" target="_blank">here</a>.
 You will find the source code of the gantt in the *node_modules/@dhtmlx/trial-react-gantt/src* folder.
 
 ### Themes
@@ -136,17 +136,17 @@ const links = [{ source: 2, target: 1, type: 0 }];
 
 ### Integration with backend
 
-Let's take a look at [GanttBackend.js](https://github.com/web-widgets/react-gantt-demos/blob/master/src/GanttBackend.js).
+Let's take a look at <a href="https://github.com/web-widgets/react-gantt-demos/blob/master/src/GanttBackend.js" target="_blank">GanttBackend.js</a>.
 
 Code defines the action handler through the **save** property. This handler will be triggered on any update and may be used to save changes to the persistent storage.
 
-In the example above, we use [RestDataProvider](https://github.com/web-widgets/gantt-data-provider/blob/master/src/providers/rest.ts).
+In the example above, we use <a href="https://github.com/web-widgets/gantt-data-provider/blob/master/src/providers/rest.ts" target="_blank">RestDataProvider</a>.
 You are not limited to this solution, though, and can extend the provided class or define a custom handler.
 
 We provide you with 2 demo backends:
 
-- [Go Demo Backend](https://github.com/web-widgets/gantt-go)
-- [NodeJS Demo Backend](https://github.com/web-widgets/gantt-node)
+- <a href="https://github.com/web-widgets/gantt-go" target="_blank">Go Demo Backend</a>
+- <a href="https://github.com/web-widgets/gantt-node" target="_blank">NodeJS Demo Backend</a>
 
 Again, you are not limited to this solution. The above RestDataProvider can work with any REST like service and you can implement a fully custom solution (sockets, graphql, etc.) through a custom save handler.
 
@@ -157,11 +157,11 @@ The following elements can be customized via templates:
 - task text
 - sidebar form
 
-Сheck the code example [here](https://github.com/web-widgets/react-gantt-demos/blob/master/src/GanttText.js).
+Check the code example <a href="https://github.com/web-widgets/react-gantt-demos/blob/master/src/GanttText.js" target="_blank">here</a>.
 
 - tooltip content
 
-Check the code example [here](https://github.com/web-widgets/react-gantt-demos/blob/master/src/GanttTooltips.js).
+Check the code example <a href="https://github.com/web-widgets/react-gantt-demos/blob/master/src/GanttTooltips.js" target="_blank">here</a>.
 
 ## API
 
