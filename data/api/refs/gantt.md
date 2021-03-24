@@ -110,7 +110,7 @@ Gantt API
 - api/gantt_getsubtaskdates.md - calculates the combined start/end dates of tasks nested in a project or another task
 - api/gantt_getsubtaskduration.md - calculates the combined duration of tasks nested in a project or another task.
 - api/gantt_gettask.md - returns the task object
-- api/gantt_gettaskbarheight.md - 
+- api/gantt_gettaskbarheight.md - returns the height (in pixels) of the DOM element of the task
 - api/gantt_gettaskby.md - finds a task by the specified criteria
 - api/gantt_gettaskbyindex.md - returns a task by its global task index
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period
@@ -218,7 +218,7 @@ Gantt API
 - api/gantt_onafterlinkupdate_event.md - fires after the user updates a link
 - api/gantt_onafterquickinfo_event.md - fires after the pop-up edit form is closed
 - api/gantt_onafterredo_event.md - fires after the redo() method was called
-- api/gantt_onafterrowresize_event.md - 
+- api/gantt_onafterrowresize_event.md - fires after resizing of the row height is finished
 - api/gantt_onaftersort_event.md - fires after tasks are sorted in the grid
 - api/gantt_onaftertaskadd_event.md - fires after the user adds a task to the Gantt chart
 - api/gantt_onaftertaskautoschedule_event.md - fires for each task which has been autoscheduled
@@ -248,8 +248,8 @@ Gantt API
 - api/gantt_onbeforeredostack_event.md - fires before an action is added into the redo stack
 - api/gantt_onbeforerowdragend_event.md - fires when a user drops a row in the grid
 - api/gantt_onbeforerowdragmove_event.md - fires before a task is dragged to a different position
-- api/gantt_onbeforerowresize_event.md - 
-- api/gantt_onbeforerowresizeend_event.md - 
+- api/gantt_onbeforerowresize_event.md - fires before the user starts to resize the row height by drag-and-drop
+- api/gantt_onbeforerowresizeend_event.md - fires before resizing of the row height is completed
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
 - api/gantt_onbeforetaskchanged_event.md - fires after the user has finished dragging and released the mouse button but before the changes are applied
@@ -303,7 +303,7 @@ Gantt API
 - api/gantt_onquickinfo_event.md - fires when the pop-up edit form appears
 - api/gantt_onrowdragend_event.md - fires after the user drops a row in the grid
 - api/gantt_onrowdragstart_event.md - fires before the user drags a row of the grid
-- api/gantt_onrowresize_event.md - 
+- api/gantt_onrowresize_event.md - fires when the user is dragging the border of the row to resize the row height
 - api/gantt_onscaleadjusted_event.md - fires when the scale is re-rendered in order to display all tasks completely
 - api/gantt_onscaleclick_event.md - fires when the user clicks on the cell in the time scale
 - api/gantt_ontaskclick_event.md - fires when the user clicks on a task row in the grid area (including the 'expand/collapse' and 'add task' buttons) or on a task bar in the timeline area
@@ -337,7 +337,7 @@ Gantt API
 - api/gantt_autoscroll_speed_config.md - defines the speed of autoscrolling (in ms) while dragging a task or link out of the current browser screen
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
-- api/gantt_bar_height_config.md - 
+- api/gantt_bar_height_config.md - sets the height of task bars in the timeline area
 - api/gantt_branch_loading_config.md - enables dynamic loading in the Gantt chart
 - api/gantt_branch_loading_property_config.md - specifies that the task has children that are not yet loaded from the backend
 - api/gantt_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
@@ -398,7 +398,7 @@ Gantt API
 - api/gantt_min_column_width_config.md - sets the minimum width for a column in the timeline area
 - api/gantt_min_duration_config.md - sets the minimum duration (in milliseconds) that can be set for a task during resizing.
 - api/gantt_min_grid_column_width_config.md - sets the minumum width for the grid (in pixels) while being resized
-- api/gantt_min_task_grid_row_height_config.md - 
+- api/gantt_min_task_grid_row_height_config.md - sets the minimal row height that can be set for a task during resizing
 - api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
 - api/gantt_open_split_tasks_config.md - enables the possibility to expand/collapse split tasks by clicking the +/- button
@@ -416,7 +416,7 @@ Gantt API
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_reorder_grid_columns_config.md - enables the possibility to reorder grid columns by drag and drop
-- api/gantt_resize_rows_config.md - 
+- api/gantt_resize_rows_config.md - enables the ability to adjust the row height by drag-and-drop
 - api/gantt_resource_attribute_config.md - changes the name of the attribute that Gantt uses to find which resource the task row in the resource grid/timeline is referring to
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
 - api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram/Calendar

@@ -1,7 +1,7 @@
 resize_rows
 =============
 
-@short: enables adjusting the row height by drag-and-drop
+@short: enables the ability to adjust the row height by drag-and-drop
 	
 
 @type: boolean

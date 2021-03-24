@@ -15,7 +15,7 @@ Properties
 - api/gantt_autoscroll_speed_config.md - defines the speed of autoscrolling (in ms) while dragging a task or link out of the current browser screen
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
-- api/gantt_bar_height_config.md - 
+- api/gantt_bar_height_config.md - sets the height of task bars in the timeline area
 - api/gantt_branch_loading_config.md - enables dynamic loading in the Gantt chart
 - api/gantt_branch_loading_property_config.md - specifies that the task has children that are not yet loaded from the backend
 - api/gantt_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
@@ -76,7 +76,7 @@ Properties
 - api/gantt_min_column_width_config.md - sets the minimum width for a column in the timeline area
 - api/gantt_min_duration_config.md - sets the minimum duration (in milliseconds) that can be set for a task during resizing.
 - api/gantt_min_grid_column_width_config.md - sets the minumum width for the grid (in pixels) while being resized
-- api/gantt_min_task_grid_row_height_config.md - 
+- api/gantt_min_task_grid_row_height_config.md - sets the minimal row height that can be set for a task during resizing
 - api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
 - api/gantt_open_split_tasks_config.md - enables the possibility to expand/collapse split tasks by clicking the +/- button
@@ -94,7 +94,7 @@ Properties
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_reorder_grid_columns_config.md - enables the possibility to reorder grid columns by drag and drop
-- api/gantt_resize_rows_config.md - 
+- api/gantt_resize_rows_config.md - enables the ability to adjust the row height by drag-and-drop
 - api/gantt_resource_attribute_config.md - changes the name of the attribute that Gantt uses to find which resource the task row in the resource grid/timeline is referring to
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
 - api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram/Calendar
