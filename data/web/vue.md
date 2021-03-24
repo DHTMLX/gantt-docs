@@ -1,16 +1,16 @@
 Vue Gantt
 ==================
 
-[DHTMLX Vue JS Gantt chart](https://dhtmlx.com/docs/products/dhtmlxGantt-for-Vuejs/) is a separate Gantt chart library for your Vue.js application.
+<a href="https://dhtmlx.com/docs/products/dhtmlxGantt-for-Vuejs/" target="_blank">DHTMLX Vue JS Gantt chart</a> is a separate Gantt chart library for your Vue.js application.
 
 {{note
-There are two different products, DHTMLX Gantt and Vue Gantt.
+There are two different products, DHTMLX Gantt and Vue Gantt. 
 While they are very similar in UX, they are very different in API.
 }}
 
-- Check [Online Demo](https://dhtmlx.com/vue/demos/gantt/#/base/default)
-- The complete demo code is available on [GitHub](https://github.com/web-widgets/vue-gantt-demos)
-- View the [basic project](https://stackblitz.com/edit/vue-gantt-basic)
+- Check <a href="https://dhtmlx.com/vue/demos/gantt/#/base/default" target="_blank">Online Demo</a>
+- The complete demo code is available on <a href="https://github.com/web-widgets/vue-gantt-demos" target="_blank">GitHub</a>
+- View the <a href="https://stackblitz.com/edit/vue-gantt-basic" target="_blank">basic project</a>
 
 ## Supported functionality
 
@@ -38,7 +38,7 @@ While they are very similar in UX, they are very different in API.
 npm install @dhtmlx/trial-vue-gantt
 ~~~
 
-This command will install the Trial version, for Commercial one, use "@dhx/vue-gantt"
+This command will install the Trial version, for Commercial one, use "@dhx/vue-gantt".
 
 - place the Gantt tag into the desired page:
 
@@ -54,7 +54,7 @@ export default function GanttBasic() {
 }
 ~~~
 
-You can check the demo of our mininal project [here](https://stackblitz.com/edit/vue-gantt-basic).
+You can check the demo of our minimal project <a href="https://stackblitz.com/edit/vue-gantt-basic" target="_blank">here</a>.
 You will find the source code of the gantt in the *node_modules/@dhtmlx/trial-vue-gantt/src* folder.
 
 ### Themes
@@ -138,17 +138,17 @@ const links = [{ source: 2, target: 1, type: 0 }];
 
 ### Integration with backend
 
-Let's take a look at [GanttBackend.vue](https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttBackend.vue).
+Let's take a look at <a href="https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttBackend.vue" target="_blank">GanttBackend.vue</a>.
 
 Code defines the action handler through the **save** event. This event will be triggered on any update and may be used to save changes to the persistent storage.
 
-In the above example, the [RestDataProvider](https://github.com/web-widgets/gantt-data-provider/blob/master/src/providers/rest.ts) is used.
+In the above example, the <a href="https://github.com/web-widgets/gantt-data-provider/blob/master/src/providers/rest.ts" target="_blank">RestDataProvider</a> is used.
 You are not limited to this solution, though, and can extend the provided class or define a custom handler.
 
 We provide you with 2 demo backends:
 
-- [Go Demo Backend](https://github.com/web-widgets/gantt-go)
-- [NodeJS Demo Backend](https://github.com/web-widgets/gantt-node)
+- <a href="https://github.com/web-widgets/gantt-go" target="_blank">Go Demo Backend</a>
+- <a href="https://github.com/web-widgets/gantt-node" target="_blank">NodeJS Demo Backend</a>
 
 Again, you are not limited to this solution. The above RestDataProvider can work with any REST like service and you can implement a fully custom solution (sockets, graphql, etc.) through a custom save event.
 
@@ -159,11 +159,11 @@ The following elements can be customized via templates:
 - task text
 - sidebar form
 
-Сheck the code example [here](https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttText.vue).
+Сheck the code example <a href="https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttText.vue" target="_blank">here</a>.
 
 - tooltip content
 
-Сheck the code example [here](https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttTooltips.vue).
+Сheck the code example <a href="https://github.com/web-widgets/vue-gantt-demos/blob/master/src/components/GanttTooltips.vue" target="_blank">here</a>.
 
 ## API
 

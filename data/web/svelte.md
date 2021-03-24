@@ -1,16 +1,15 @@
 Svelte Gantt
 ==================
 
-[DHTMLX Svelte Gantt chart](https://dhtmlx.com/docs/products/dhtmlxGantt-for-Svelte/) is a separate Gantt chart library for your Svelte application.
+<a href="https://dhtmlx.com/docs/products/dhtmlxGantt-for-Svelte/" target="_blank">DHTMLX Svelte Gantt chart</a> is a separate Gantt chart library for your Svelte application.
 
 {{note 
-There are two different products, DHTMLX Gantt and DHTMLX Svelte Gantt.  
-While they are very similar in UX, they are very different in API.
+There are two different products, DHTMLX Gantt and DHTMLX Svelte Gantt. While they are very similar in UX, they are very different in API.
 }}
 
-- Check [Online Demo](https://dhtmlx.com/svelte/demos/gantt/#/base/default)
-- The complete demo code is available on [GitHub](https://github.com/web-widgets/svelte-gantt-demos)
-- View the [basic project](https://svelte.dev/repl/f2f23aea85094858a36d3c1712282dfc)
+- Check <a href="https://dhtmlx.com/svelte/demos/gantt/#/base/default" target="_blank">Online Demo</a>
+- The complete demo code is available on <a href="https://github.com/web-widgets/svelte-gantt-demos" target="_blank">GitHub</a>
+- View the <a href="https://svelte.dev/repl/f2f23aea85094858a36d3c1712282dfc" target="_blank">basic project</a>
 
 ## Supported functionality
 
@@ -54,7 +53,7 @@ export default function GanttBasic() {
 }
 ~~~
 
-You can check the demo of our mininal project [here](https://svelte.dev/repl/f2f23aea85094858a36d3c1712282dfc).
+You can check the demo of our minimal project <a href="https://svelte.dev/repl/f2f23aea85094858a36d3c1712282dfc" target="_blank">here</a>.
 You will find the source code of the gantt in the *node_modules/@dhtmlx/trial-svelte-gantt/src* folder.
 
 ### Themes
@@ -138,17 +137,17 @@ const links = [{ source: 2, target: 1, type: 0 }];
 
 ### Integration with backend
 
-Let's take a look at [GanttBackend.svelte](https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttBackend.svelte).
+Let's take a look at <a href="https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttBackend.svelte" target="_blank">GanttBackend.svelte</a>.
 
 Code defines the action handler through the **save** event. This event will be triggered on any update and may be used to save changes to the persistent storage.
 
-In the above example, [RestDataProvider](https://github.com/web-widgets/gantt-data-provider/blob/master/src/providers/rest.ts) is used.
+In the above example, <a href="https://github.com/web-widgets/gantt-data-provider/blob/master/src/providers/rest.ts" target="_blank">RestDataProvider</a> is used.
 You are not limited to this solution, though, and can extend the provided class or define a custom handler.
 
 We provide you with 2 demo backends:
 
-- [Go Demo Backend](https://github.com/web-widgets/gantt-go)
-- [NodeJS Demo Backend](https://github.com/web-widgets/gantt-node)
+- <a href="https://github.com/web-widgets/gantt-go" target="_blank">Go Demo Backend</a>
+- <a href="https://github.com/web-widgets/gantt-node" target="_blank">NodeJS Demo Backend</a>
 
 Again, you are not limited to this solution. The above RestDataProvider can work with any REST like service and you can implement a fully custom solution ( sockets, graphql, etc. ) through a custom save event.
 
@@ -159,11 +158,11 @@ The following elements can be customized via templates:
 - task text
 - sidebar form
 
-Сheck the code example [here](https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttText.svelte).
+Сheck the code example <a href="https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttText.svelte" target="_blank">here</a>.
 
 - tooltip content
 
-Сheck the code example [here](https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttTooltips.svelte).
+Сheck the code example <a href="https://github.com/web-widgets/svelte-gantt-demos/blob/master/src/GanttTooltips.svelte" target="_blank">here</a>.
 
 ## API
 
