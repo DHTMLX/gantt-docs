@@ -12,6 +12,7 @@ Events
 - api/gantt_onafterlinkupdate_event.md - fires after the user updates a link
 - api/gantt_onafterquickinfo_event.md - fires after the pop-up edit form is closed
 - api/gantt_onafterredo_event.md - fires after the redo() method was called
+- api/gantt_onafterrowresize_event.md - 
 - api/gantt_onaftersort_event.md - fires after tasks are sorted in the grid
 - api/gantt_onaftertaskadd_event.md - fires after the user adds a task to the Gantt chart
 - api/gantt_onaftertaskautoschedule_event.md - fires for each task which has been autoscheduled
@@ -41,6 +42,8 @@ Events
 - api/gantt_onbeforeredostack_event.md - fires before an action is added into the redo stack
 - api/gantt_onbeforerowdragend_event.md - fires when a user drops a row in the grid
 - api/gantt_onbeforerowdragmove_event.md - fires before a task is dragged to a different position
+- api/gantt_onbeforerowresize_event.md - 
+- api/gantt_onbeforerowresizeend_event.md - 
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
 - api/gantt_onbeforetaskchanged_event.md - fires after the user has finished dragging and released the mouse button but before the changes are applied
@@ -94,6 +97,7 @@ Events
 - api/gantt_onquickinfo_event.md - fires when the pop-up edit form appears
 - api/gantt_onrowdragend_event.md - fires after the user drops a row in the grid
 - api/gantt_onrowdragstart_event.md - fires before the user drags a row of the grid
+- api/gantt_onrowresize_event.md - 
 - api/gantt_onscaleadjusted_event.md - fires when the scale is re-rendered in order to display all tasks completely
 - api/gantt_onscaleclick_event.md - fires when the user clicks on the cell in the time scale
 - api/gantt_ontaskclick_event.md - fires when the user clicks on a task row in the grid area (including the 'expand/collapse' and 'add task' buttons) or on a task bar in the timeline area
@@ -121,6 +125,7 @@ Events
 - api/gantt_onafterlinkupdate_event.md
 - api/gantt_onafterquickinfo_event.md
 - api/gantt_onafterredo_event.md
+- api/gantt_onafterrowresize_event.md
 - api/gantt_onaftersort_event.md
 - api/gantt_onaftertaskadd_event.md
 - api/gantt_onaftertaskautoschedule_event.md
@@ -150,6 +155,8 @@ Events
 - api/gantt_onbeforeredostack_event.md
 - api/gantt_onbeforerowdragend_event.md
 - api/gantt_onbeforerowdragmove_event.md
+- api/gantt_onbeforerowresize_event.md
+- api/gantt_onbeforerowresizeend_event.md
 - api/gantt_onbeforetaskadd_event.md
 - api/gantt_onbeforetaskautoschedule_event.md
 - api/gantt_onbeforetaskchanged_event.md
@@ -203,6 +210,7 @@ Events
 - api/gantt_onquickinfo_event.md
 - api/gantt_onrowdragend_event.md
 - api/gantt_onrowdragstart_event.md
+- api/gantt_onrowresize_event.md
 - api/gantt_onscaleadjusted_event.md
 - api/gantt_onscaleclick_event.md
 - api/gantt_ontaskclick_event.md
