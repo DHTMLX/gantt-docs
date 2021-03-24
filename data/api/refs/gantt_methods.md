@@ -106,6 +106,7 @@ Methods
 - api/gantt_getsubtaskdates.md - calculates the combined start/end dates of tasks nested in a project or another task
 - api/gantt_getsubtaskduration.md - calculates the combined duration of tasks nested in a project or another task.
 - api/gantt_gettask.md - returns the task object
+- api/gantt_gettaskbarheight.md - 
 - api/gantt_gettaskby.md - finds a task by the specified criteria
 - api/gantt_gettaskbyindex.md - returns a task by its global task index
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period
@@ -303,6 +304,7 @@ Methods
 - api/gantt_getsubtaskdates.md
 - api/gantt_getsubtaskduration.md
 - api/gantt_gettask.md
+- api/gantt_gettaskbarheight.md
 - api/gantt_gettaskby.md
 - api/gantt_gettaskbyindex.md
 - api/gantt_gettaskbytime.md

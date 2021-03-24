@@ -15,6 +15,7 @@ Properties
 - api/gantt_autoscroll_speed_config.md - defines the speed of autoscrolling (in ms) while dragging a task or link out of the current browser screen
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
+- api/gantt_bar_height_config.md - 
 - api/gantt_branch_loading_config.md - enables dynamic loading in the Gantt chart
 - api/gantt_branch_loading_property_config.md - specifies that the task has children that are not yet loaded from the backend
 - api/gantt_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
@@ -30,6 +31,7 @@ Properties
 - api/gantt_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
+- api/gantt_deepcopy_on_parse_config.md - 
 - api/gantt_details_on_create_config.md - 'says' to open the lightbox while creating new events by clicking the '+' button
 - api/gantt_details_on_dblclick_config.md - 'says' to open the lightbox after double clicking on a task
 - api/gantt_drag_lightbox_config.md - enables the possibility to drag the lightbox by the header
@@ -74,6 +76,7 @@ Properties
 - api/gantt_min_column_width_config.md - sets the minimum width for a column in the timeline area
 - api/gantt_min_duration_config.md - sets the minimum duration (in milliseconds) that can be set for a task during resizing.
 - api/gantt_min_grid_column_width_config.md - sets the minumum width for the grid (in pixels) while being resized
+- api/gantt_min_task_grid_row_height_config.md - 
 - api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
 - api/gantt_open_split_tasks_config.md - enables the possibility to expand/collapse split tasks by clicking the +/- button
@@ -91,6 +94,7 @@ Properties
 - api/gantt_readonly_property_config.md - changes the name of a property that affects the read-only behaviour of tasks/links
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_reorder_grid_columns_config.md - enables the possibility to reorder grid columns by drag and drop
+- api/gantt_resize_rows_config.md - 
 - api/gantt_resource_attribute_config.md - changes the name of the attribute that Gantt uses to find which resource the task row in the resource grid/timeline is referring to
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
 - api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram/Calendar
@@ -131,6 +135,7 @@ Properties
 - api/gantt_subscales_config.md - specifies the second time scale(s) (deprecated)
 - api/gantt_task_attribute_config.md - sets the name of the attribute that will specify the id of the task's HTML element
 - api/gantt_task_date_config.md - sets the format of the date label in the 'Time period' section of the lightbox
+- api/gantt_task_grid_row_resizer_attribute_config.md - 
 - api/gantt_task_height_config.md - sets the height of task bars in the timeline area
 - api/gantt_task_scroll_offset_config.md - sets the offset (in pixels) of the nearest task from the left border in the timeline
 - api/gantt_time_picker_config.md - sets the format of the time drop-down selector in the lightbox
@@ -169,6 +174,7 @@ Properties
 - api/gantt_autoscroll_speed_config.md
 - api/gantt_autosize_config.md
 - api/gantt_autosize_min_width_config.md
+- api/gantt_bar_height_config.md
 - api/gantt_branch_loading_config.md
 - api/gantt_branch_loading_property_config.md
 - api/gantt_buttons_left_config.md
@@ -184,6 +190,7 @@ Properties
 - api/gantt_date_format_config.md
 - api/gantt_date_grid_config.md
 - api/gantt_date_scale_config.md
+- api/gantt_deepcopy_on_parse_config.md
 - api/gantt_details_on_create_config.md
 - api/gantt_details_on_dblclick_config.md
 - api/gantt_drag_lightbox_config.md
@@ -228,6 +235,7 @@ Properties
 - api/gantt_min_column_width_config.md
 - api/gantt_min_duration_config.md
 - api/gantt_min_grid_column_width_config.md
+- api/gantt_min_task_grid_row_height_config.md
 - api/gantt_multiselect_config.md
 - api/gantt_multiselect_one_level_config.md
 - api/gantt_open_split_tasks_config.md
@@ -245,6 +253,7 @@ Properties
 - api/gantt_readonly_property_config.md
 - api/gantt_redo_config.md
 - api/gantt_reorder_grid_columns_config.md
+- api/gantt_resize_rows_config.md
 - api/gantt_resource_attribute_config.md
 - api/gantt_resource_calendars_config.md
 - api/gantt_resource_property_config.md
@@ -285,6 +294,7 @@ Properties
 - api/gantt_subscales_config.md
 - api/gantt_task_attribute_config.md
 - api/gantt_task_date_config.md
+- api/gantt_task_grid_row_resizer_attribute_config.md
 - api/gantt_task_height_config.md
 - api/gantt_task_scroll_offset_config.md
 - api/gantt_time_picker_config.md
