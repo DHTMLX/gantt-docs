@@ -56,10 +56,10 @@ In the initial state tasks look like this:
 <img src="desktop/baselines_start.png">
 
 First of all, you need to free some space for baselines under the tasks. 
-For this purpose, it's necessary to reduce the task height to make it equal to approximately a half of the row height:
+For this purpose, it's necessary to reduce the height of the task bar to make it equal to approximately a half of the row height:
 
 ~~~js
-gantt.config.task_height = 16;
+gantt.config.bar_height = 16;
 gantt.config.row_height = 40;
 ~~~
 

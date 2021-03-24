@@ -238,6 +238,10 @@ A data source for the Gantt chart is an object that stores 2 types of informatio
             Used as an alternative to the <i>duration</i> property for setting the duration of a task.
             Must match api/gantt_date_format_config.md format if provided as a string. 
             </li>  
+             <li><b>row_height</b> - (<i> number </i>) sets the default height for rows of the table, 35 by default 
+            </li>
+            <li><b>bar_height</b> - (<i> number,string </i>) sets the height of task bars in the timeline area, "full" by default
+            </li>
             <li><b>readonly</b>-(<i>boolean</i>) optional, can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">readonly</a>. </li>
         	<li><b>editable</b>-(<i>boolean</i>) optional, can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">editable</a>. </li>
     </ul>
