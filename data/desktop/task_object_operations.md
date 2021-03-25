@@ -50,7 +50,37 @@ The method won't work after only changing the **duration** parameter and updatin
 
 Note, if the api/gantt_work_time_config.md option is enabled, the api/gantt_calculateduration.md method calculates the task's duration in working time. 
 
+Task height
+-------------
 
+To get the height of the DOM element of the task, use the [getTaskBarHeight](api/gantt_gettaskbarheight.md) method:
+
+~~~js
+gantt.config.bar_height = 45;
+gantt.render();
+ 
+gantt.getTaskBarHeight(1); // -> 45
+~~~
+
+The return value can also match the value specified to the **bar_height** property of the task object:
+
+~~~js
+var tasks = {
+  	data:[
+     	{ id: 1, text: "Project #2", start_date: "01-04-2018", duration: 18, 
+		 	progress: 0.4, open: true, bar_height: "full", row:height: 50 }, 
+		{ id: 2, text: "Task #1", start_date: "02-04-2018", duration: 8, 
+			progress: 0.6, parent: 1, bar_height: 25, row:height: 50 },
+   	]
+};
+gantt.init("gantt_here");
+gantt.parse(tasks);
+
+gantt.getTaskBarHeight(1); // -> 45
+gantt.getTaskBarHeight(2); // -> 25
+~~~
+
+Note, if the **bar_height** config is specified to "full", the method calculates the height of the task bar in pixels.
 
 Task end date
 ----------------------------------------

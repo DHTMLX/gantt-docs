@@ -18,3 +18,5 @@ gantt.init("gantt_here");
 @changelog: added in v7.1
 
 @relatedapi: api/gantt_gettaskbarheight.md
+
+@related: desktop/resizing_rows.md

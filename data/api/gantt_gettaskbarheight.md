@@ -21,7 +21,7 @@ gantt.getTaskBarHeight(1); // -> 45
 @template:	api_method
 @descr:
 
-The return value can also match the value specified to the **bar_height** property of a task object:
+The return value can also match the value specified to the **bar_height** property of the task object:
 
 ~~~js
 var tasks = {
@@ -40,9 +40,13 @@ gantt.getTaskBarHeight(2); // -> 25
 ~~~
 
 {{note 
-The method calculates and returns the height of the task bar in pixels if the **bar_height** config is specified to "full".}}
+If the **bar_height** config is specified to "full", the method calculates the height of the task bar in pixels.}}
 
 
 @changelog: added in v7.1
 
 @relatedapi: api/gantt_bar_height_config.md
+
+@related: 
+desktop/resizing_rows.md
+desktop/task_object_operations.md#taskheight
