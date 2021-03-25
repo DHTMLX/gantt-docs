@@ -20,6 +20,30 @@ Migration from Older Versions
 	}
 </style>
 
+7.0 -> 7.1
+-------------
+
+### Deep copy on data parsing
+
+Gantt performed a deep copy of data objects on data parsing from [v6.3.2](whatsnew.md#632) till v7.1.
+Starting with v7.1, the functionality will be disabled by default. 
+
+You can enable the old behavior by setting the [gantt.config.deepcopy_on_parse](api/gantt_deepcopy_on_parse_config.md) to *true*:
+
+~~~js
+gantt.config.deepcopy_on_parse = true;
+~~~
+
+### Task height
+
+Since v7.1, the **gantt.config.task_height** property has been deprecated. Despite the property will still continue work, you'd better use the new [gantt.config.bar_height](api/gantt_bar_height_config.md) option instead:
+
+~~~js
+gantt.config.bar_height = 50;
+~~~
+
+
+
 6.3 -> 7.0
 ---------------------
 

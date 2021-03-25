@@ -80,7 +80,7 @@ gantt.getTaskBarHeight(1); // -> 45
 gantt.getTaskBarHeight(2); // -> 25
 ~~~
 
-Note, if the **bar_height** config is specified to "full", the method calculates the height of the task bar in pixels.
+Note, if the **bar_height** property is specified to "full", the method calculates the height of the task bar in pixels.
 
 Task end date
 ----------------------------------------
