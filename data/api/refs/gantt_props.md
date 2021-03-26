@@ -31,7 +31,7 @@ Properties
 - api/gantt_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
-- api/gantt_deepcopy_on_parse_config.md - 
+- api/gantt_deepcopy_on_parse_config.md - defines whether gantt will perform a deep copy of data objects passed into the [gantt.parse](api/gantt_parse.md) method
 - api/gantt_details_on_create_config.md - 'says' to open the lightbox while creating new events by clicking the '+' button
 - api/gantt_details_on_dblclick_config.md - 'says' to open the lightbox after double clicking on a task
 - api/gantt_drag_lightbox_config.md - enables the possibility to drag the lightbox by the header
@@ -49,6 +49,7 @@ Properties
 - api/gantt_editable_property_config.md - changes the name of a property that affects the editing ability  of tasks/links in the read-only Gantt chart
 - api/gantt_editor_types_config.md - an object that contains definitions of inline editors
 - api/gantt_end_date_config.md - sets the end value of the time scale
+- api/gantt_external_render_config.md - renders an external component into the DOM
 - api/gantt_fit_tasks_config.md - 'says' the Gantt chart to automatically extend the time scale in order to fit all displayed tasks
 - api/gantt_grid_elastic_columns_config.md - adjusts the width of columns inside a scrollable grid
 - api/gantt_grid_resize_config.md - makes the grid resizable by dragging the right grid's border
@@ -208,6 +209,7 @@ Properties
 - api/gantt_editable_property_config.md
 - api/gantt_editor_types_config.md
 - api/gantt_end_date_config.md
+- api/gantt_external_render_config.md
 - api/gantt_fit_tasks_config.md
 - api/gantt_grid_elastic_columns_config.md
 - api/gantt_grid_resize_config.md

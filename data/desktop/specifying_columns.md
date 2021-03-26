@@ -379,6 +379,65 @@ You can take a look at the video guide that demonstrates how to manage the visib
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/rqYrqqoaI_U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+Modifying cells after rendering
+-----------------------------
+
+In some cases you may need to change the look or behavior of a grid cell after its rendering. <br>Since v7.1, the library provides the **onrender** attribute of the [columns](api/gantt_columns_config.md) parameter that will help you to modify the cell after rendering, for example:
+
+~~~js
+gantt.config.columns =  [
+    {name: "text", tree: true, width: "*", resize: true},
+    {name: "start_date", align: "center", resize: true},
+    {name: "duration", align: "center", onrender: function(task, node} {
+        node.setAttribute("title", task.text);
+    },
+    {name: "add", width: 44}
+];
+~~~
+
+<br>
+Another way the **onrender** callback can be used is for injection of external components into the cells of the grid. For instance, you use DHTMLX Gantt with React and need to inject a React component into the grid cells of Gantt. The code sample below shows how it can be implemented:
+
+~~~js
+gantt.config.columns = [
+	{name:"text",       label:"Task name",  tree:true, width:"*"},
+	{name:"start_date", label:"Start time", align: "center"},
+	{name:"duration",   label:"Duration",   align: "center"},
+	{ 
+		name:"external", label:"Element 1", align: "center",
+		onrender: (item, node) => {
+			return <DemoButton
+					text="Edit 1"
+					onClick={() => alert("Element as React Component")}
+					/>
+		}
+	}
+];
+~~~
+
+To make it work and display the React component, the [gantt.config.external_render](api/gantt_external_render_config.md) config must be defined:
+
+~~~js
+import ReactDOM from 'react-dom';
+import React from 'react';
+
+gantt.config.external_render = { 
+	// checks the element is a React element
+	isElement: (element) => {
+		return React.isValidElement(element);
+	},
+	// renders the React element into the DOM
+	renderElement: (element, container) => {
+		ReactDOM.render(element, container);
+	}
+};
+~~~
+
+The logic is the following:
+
+- Firstly, the return object of the **onrender** callback will be passed into the **isElement** function to verify it's an object that can be rendered by the framework/library you use.
+- If **isElement** returns *true* - the object will be passed into **renderElement** which is supposed to initialize the component object inside the DOM element of the cell.
+
 Horizontal scrollbar
 ---------------------
 

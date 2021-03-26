@@ -270,10 +270,11 @@ gantt.getClosestWorkTime(new Date(2019,3,30));
 
 You may often need to specify some working time that will repeat only on certain days (e.g. the last Friday of a month is a short day, December 25 is a holiday) but during the whole span of the project.
 
-The current version of dhtmlxGantt doesn't provide any configs for setting such type of the working time and the library allows you only:  
+The current version of dhtmlxGantt doesn't provide any configs for setting such type of the working time. <br>The library allows you only:  
 
 - to specify the working time for a day of the week (Monday, Tuesday,...)
 - to specify the working time for a specific date (4th June 2020)
+- to override working time rules for a date range (1st June 2020 - 1st September 2020)
 
 So if you have some exceptions to the working time rules you need to manually get the dates that match your rule and apply worktime settings to each of these dates separately.
 
