@@ -26,6 +26,7 @@ const gantt = Gantt.getGanttInstance({
 	container: "gantt_here",
 	config: {
 		work_time: true,
+		duration_unit: "minute"
 		auto_scheduling_compatibility: true,
 		auto_scheduling: true,
 		auto_scheduling_strict: true,
@@ -37,9 +38,23 @@ const gantt = Gantt.getGanttInstance({
         {
             id:"global",
             worktime: {
-                hours: [ "8:00-12:00", "13:00-17:00"],
-                days: [ 0, 1, 1, 1, 1, 1, 0 ]
-            }
+				hours: ["8:00-17:00"],
+				days: [ 0, 1, 1, 1, 1, 0 ,0],
+				customWeeks: {
+					lastMonthOfYear: {
+						from: new Date(2020, 11, 1),// December 1st, 2020
+						to: new Date(2021, 0, 1),// January 1st 00:00, 2021,
+						hours: ["9:00-13:00"],
+						days: [ 0, 1, 1, 1, 1, 1, 0]
+					},
+					firstMonthOfNextYear:{
+						from: new Date(2021, 0, 1),// January 1st, 2021
+						to: new Date(2021, 1, 1),// Feb 1st 00:00, 2021,
+						hours: ["14:00-16:00"],
+						days: [ 1, 1, 1, 1, 1, 0, 1]
+					}
+				}
+			}
         }
     ],
 	data: {

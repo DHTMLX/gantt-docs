@@ -175,6 +175,22 @@ gantt.setWorkTime({date:new Date(2019,0,1), hours:false})
 09_worktime/04_custom_workday_duration.html
 }}
 
+There is the ability to configure different working time rules for different periods of time by using the **customWeeks** attribute of the [setWorkTime](api/gantt_setworktime.md) method. For instance, you can change the default working time for winter months:
+
+~~~js
+//changes the working time for winter months
+gantt.setWorkTime({
+	customWeeks: {
+		winter: {
+			from: new Date(2018, 11, 1), // December 1st, 2018
+			to: new Date(2019, 2, 1), // March 1st 00:00, 2019
+			hours: ["9:00-13:00", "14:00-16:00"],
+			days: [ 1, 1, 1, 1, 0, 0, 0]
+		}
+	}
+});
+~~~
+
 To specify the working time not only from an hour to hour (e.g."8:00-12:00") but also including minutes (e.g. "8:15-12:45"), set the api/gantt_duration_unit_config.md config to *"minute"*.
 
 {{snippet
@@ -374,6 +390,29 @@ var calendarId = gantt.addCalendar({
 You can also use this option for creating a calendar.
 }}
 
+<h3 id="rules_for_periods">Setting different working hours for different time spans</h3>
+
+Starting with v7.1, there is the possibility to set different working-time rules for different periods of time within one calendar. For instance, you can apply a separate schedule for winter months while adding a calendar into Gantt. For that, you need to use the **customWeeks** property of the [addCalendar](api/gantt_addcalendar.md) method:
+
+~~~js
+var calendarId = gantt.addCalendar({
+	id:"global", // optional
+	worktime: {
+		hours: ["8:00-17:00"],
+		days: [ 1, 1, 1, 1, 1, 1 ,1],
+		customWeeks: {
+			winter: {
+				from: new Date(2018, 11, 1),// December 1st, 2018
+				to: new Date(2019, 2, 1),// March 1st 00:00, 2019
+				hours: ["9:00-13:00", "14:00-16:00"],
+				days: [ 1, 1, 1, 1, 0, 0, 0]
+			}
+		}
+	},
+});
+~~~
+
+{{sample 09_worktime/12_calendar_ranges.html}}
 
 <h3 id="getcalendars">Getting Calendars</h3>
 

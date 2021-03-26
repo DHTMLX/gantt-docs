@@ -121,8 +121,38 @@ gantt.setWorkTime({day : 5, hours : ["8:00-12:00"]});
 ~~~
 		</td>
 	</tr>
+	<tr>
+		<td rowspan=2><b id="hours">customWeeks</b></td>
+        <td> an object with different working-time rules for different periods of time.<br> The object can contain a set of <i>key:value</i> pairs where <i>key</i> is the name of a time span and <i>value</i> is an object that includes the following attributes:
+		<ul>
+            <li><b>from</b> - (<i>Date</i>) mandatory, the date when the time span is scheduled to begin</li>
+            <li><b>to</b> - (<i>Date</i>) mandatory, the date when the time span is scheduled to be completed</li>
+            <li><b>hours</b> - (<i>array</i>) an array of working hours as 'from'-'to' pairs. <br><i>'false'</i> value sets a day-off, <i>'true' (default value)</i> applies the default hours (["8:00-17:00"])</li>
+            <li><b>days</b> - (<i>array</i>) an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day.</li>
+		</ul>
+		</td>
+    </tr>
+    <tr>
+		<td colspan=2 style="text-align:left !important; ">
+~~~js
+//changes the working time for winter months
+gantt.setWorkTime({
+	customWeeks: {
+		winter: {
+			from: new Date(2018, 11, 1), // December 1st, 2018
+			to: new Date(2019, 2, 1), // March 1st 00:00, 2019
+			hours: ["9:00-13:00", "14:00-16:00"],
+			days: [ 1, 1, 1, 1, 0, 0, 0]
+		}
+	}
+});
+~~~
+		</td>
+	</tr>
 	</tbody>
 </table>
 
 
-@changelog: the format of the **hours** property of the config is changed in version 7.0
+@changelog: 
+- the **customWeeks** property is added in v7.1;
+- the format of the **hours** property of the config is changed in version 7.0.

@@ -21,12 +21,12 @@ The **calendar** object possesses the following methods and properties:
 - **setWorkTime(config)** - sets the working time for the Gantt chart
 	- **_config_** - (*object*) the [configuration object](api/gantt_setworktime.md#configurationobjectproperties) of a time span
 ~~~js
-calendar.setWorkTime({ hours:[9,18] });
+calendar.setWorkTime({ hours:["9:00-18:00"] });
 ~~~
 - **unsetWorkTime(config)** unsets a working time in the Gantt Chart
 	- **_config_** - (*object*) the [configuration object](api/gantt_unsetworktime.md#configurationobjectproperties) of a time span
 ~~~js
-calendar.unsetWorkTime({ hours:[9,18] });
+calendar.unsetWorkTime({ hours:["9:00-18:00"] });
 ~~~
 - **isWorkTime(date[,time_unit])** checks whether the specified date is working 
 	- **_date_** - (*Date*)	a date to check
