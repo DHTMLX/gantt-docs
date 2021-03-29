@@ -136,4 +136,26 @@ gantt.addTaskLayer({
 
 - **update** - allows updating an inner html of a custom element, i.e. hiding cells that are not visible and displaying the visible ones
 
-The **update** method is called after the [onGanttScroll](api/gantt_onganttscroll_event.md) event is fired. It provides a task node (created by the **render** method initially) and a current viewport. 
+The **update** method is called after the [onGanttScroll](api/gantt_onganttscroll_event.md) event is fired. It provides a task node (created by the **render** method initially) and a current viewport.
+
+### Element render callback
+
+The **renderer** object of the *addTaskLayer()* method provides the **onrender** callback:
+
+~~~js
+gantt.addTaskLayer({
+    renderer: {
+        render: function (task, timeline, viewport) {
+            ...
+            return  HTMLElement
+        },
+        onrender: function(item, node, view){
+            console.log("render", item, node)
+        }
+    }
+});
+~~~
+
+The **onrender** function is called whenever the data item of the layer is rendered to DOM. The arguments give you access to the data item that has been rendered, the result DOM element and the view object which called the render (grid or timeline). 
+
+The callback can be used either to modify DOM elements after they are rendered to DOM, or to initialize the 3rd party widgets inside the rendered elements.

@@ -26,8 +26,8 @@ The update brings some changes in the API methods. Check the [Migration](migrati
 - [The ability to resize a row in the grid by drag-and-drop](desktop/resizing_rows.md#resizingrowsbydraganddrop)
 - The ability to get the height of the DOM element of the task via the [getTaskBarHeight](api/gantt_gettaskbarheight.md) method
 - New events: [onBeforeRowResize](api/gantt_onbeforerowresize_event.md), [onRowResize](api/gantt_onrowresize_event.md), [onBeforeRowResizeEnd](api/gantt_onbeforerowresizeend_event.md), [onAfterRowResize](api/gantt_onafterrowresize_event.md)
-- [The ability to inject React components into the grid columns](desktop/specifying_columns.md#modifyingcellsafterrendering)
-- [Element render callback](api/gantt_addtasklayer.md)
+- [The **onrender** callback for rendering a grid cell into DOM](desktop/specifying_columns.md#modifyingcellsafterrendering) is added
+- [The **onrender** callback for rendering a custom element of the task layer into DOM](api/gantt_addtasklayer.md) is added
 - [The ability to set different working hours for different time spans](desktop/working_time.md#rules_for_periods)
 
 7.0.13

@@ -63,7 +63,7 @@ Each object in the array specifies a single column. An object can take the follo
 			<td>(<i>number</i>) defines the width of the column</td>
 		</tr><tr>
 			<td class="webixdoc_links0"><b>onrender</b></td>
-			<td>(<i>function</i>) optional, a callback function for rendering a cell into the DOM. The function takes a task object and the DOM element of the grid cell as parameters and may return a component of the framework. See details <a href="desktop/specifying_columns.md#modifyingcellsafterrender">here</a>.</td>
+			<td>(<i>function</i>) optional, a callback function for rendering a cell into the DOM. The function takes a task object and the DOM element of the grid cell as parameters and may return a component of the framework. See details <a href="desktop/specifying_columns.md#modifyingcellsafterrendering">here</a>.</td>
 		</tr>
 </tbody>
 </table>
