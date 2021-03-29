@@ -26,7 +26,7 @@ Migration from Older Versions
 ### Deep copy on data parsing
 
 Gantt performed a deep copy of data objects on data parsing from [v6.3.2](whatsnew.md#632) till v7.1.
-Starting with v7.1, the functionality will be disabled by default. 
+<br>Starting with v7.1, the functionality is disabled by default. 
 
 You can enable the old behavior by setting the [gantt.config.deepcopy_on_parse](api/gantt_deepcopy_on_parse_config.md) to *true*:
 
