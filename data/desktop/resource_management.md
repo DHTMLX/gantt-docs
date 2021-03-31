@@ -44,7 +44,7 @@ Resources can be connected to tasks via the properties of the task object in one
 
 You can use this format with the [custom multiselect control](desktop/custom_editor.md#customthirdpartyeditor). 
 
-- assigning multiple resources and specifiying their quantity
+- assigning multiple resources and specifying their quantity
 
 ~~~js
 {
@@ -59,6 +59,105 @@ This format is supported by the desktop/resources.md of the lightbox.
 When sending data to the server, DataProcessor serializes the values of the described properies into JSON. To process such records on the server with ease, make use of the ["REST_JSON"](desktop/server_side.md#restjson)
 dataprocessor mode.
 
+
+<h3 id="resourceassignmenttime">Setting the time of the resource assignments</h3>
+
+By default, the resource is considered to be assigned for the whole duration of a task.<br>
+Starting from v7.1, the object of the resource assignment can accept additional optional parameters that allow specifying the time of the assignment within the task. 
+
+The additional properties are:
+
+- **id** - (*string|number*) the id of the assignment
+- **start_date** - (*Date|string*) the date the assignment is scheduled to start
+- **end_date** - (*Date|string*) the date the assignment is scheduled to be completed
+- **delay** - (*number*) the difference between the assignment start date and the task start date
+- **duration** - (*number*) the duration of the assignment
+- **mode** - (*string*) the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
+
+The *start and the end dates* of the resource assignment will be reflected in the resource histogram and diagram.
+
+Optionally, the *id* of the assignment can be added to a resource assignment object:
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+    users: [{
+		id: 5, 
+		resource_id: 2, value: 8, 
+		start_date: "03-04-2018", 
+		end_date: "11-04-2018", 
+		delay: 1
+	}]  
+}
+~~~
+
+The assignment object will be accessible for the gantt API via this id:
+
+~~~js
+var assignment = gantt.getDatastore("resourceAssignments").getItem(5);
+~~~
+<br>
+
+The work of the rest properties is defined by the value of the **mode** property:
+
+- **_the "default" mode_**
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+    users: [{
+		resource_id: 2, value: 8, 
+		start_date: "03-04-2018", end_date: "11-04-2018", delay: 1
+	}]  
+}
+~~~
+
+If the *mode* is not specified or is set to the "default" value, the *start_date* and *end_date* of the assignment are calculated from the dates of a task. By default, the start date of an assignment matches the start date of a task. The same approach is applied to the end date.
+
+The *delay* property works similarly to the *Delay* property of <a href="https://support.microsoft.com/en-us/office/assignment-delay-fields-427ac799-225c-4e10-9dcb-f58e524c8173">MS Project</a>. 
+
+If the delay is specified, the *start_date* of the assignment is calculated as <br>`gantt.calculateEndDate({start_date:task.start_date, duration:assignment.delay, task:task})`.
+
+The resource assignment will start with the specified delay from the start of the task. The end date of the assignment will match the end date of the task.<br>
+Whenever the task object is updated, the start/end dates of the assignment will be updated accordingly.
+
+- **_the "fixedDuration" mode_**
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+    users: [
+       	{resource_id:2, value:8, start_date:"03-04-2018", duration: 1, 
+	   		end_date:"04-04-2018", delay:1, mode: "fixedDuration"},
+       	{resource_id:2, value:2, start_date:"04-04-2018", duration: 1, 
+	   		end_date:"05-04-2018", delay:1, mode: "fixedDuration"},
+       	{resource_id:2, value:3, start_date:"05-04-2018", duration: 6, 
+	   		end_date:"11-04-2018", delay:1, mode: "fixedDuration"}
+    ]  
+}
+~~~
+
+The *start_date* of the assignment is calculated in the same way as in the *"default"* mode.
+
+The *end_date* is no longer linked to the end date of a task. Instead, it's calculated, as<br> `gantt.calculateEndDate({start_date:assignment.start_date, duration:assignment.delay, task:task})`.
+
+Whenever a task object is updated, the dates of the assignment are recalculated, and the duration of the assignment remains unchanged.
+
+- **_the "fixedDate" mode_**
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+    users: [{
+		resource_id:2, value:8, 
+		start_date:"03-04-2018", end_date:"11-04-2018", mode: "fixedDates"
+	}]  
+}
+~~~
+
+In this mode, the dates of the resource assignment have exactly the same value as specified in the data and are not changed when the task is modified.
+
+The *delay* field doesn't affect the dates of the assignment when the *"fixedDates"* mode is used.
 
 ###Getting tasks a resource is assigned to 
 
@@ -84,7 +183,6 @@ Each object contains the following properties:
 - *task_id* - the id of the task
 - *resource_id* - the id of the resource
 - *value* - the quantity of the resource assigned to a task
-
 
 ###Setting connection via lightbox
 

@@ -29,6 +29,7 @@ The update brings some changes in the API methods. Check the [Migration](migrati
 - [The **onrender** callback for rendering a grid cell into DOM](desktop/specifying_columns.md#modifyingcellsafterrendering) is added
 - [The **onrender** callback for rendering a custom element of the task layer into DOM](api/gantt_addtasklayer.md) is added
 - [The ability to set different working hours for different time spans](desktop/working_time.md#rules_for_periods)
+- [The ability to assign resources to the specific time of the task](desktop/resource_management.md#resourceassignmenttime)
 
 7.0.13
 ------
