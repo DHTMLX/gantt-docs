@@ -87,6 +87,7 @@ Properties
 - api/gantt_placeholder_task_config.md - adds an empty row into the end of the list of tasks to simplify tasks editing via keyboard
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
+- api/gantt_process_resource_assignments_config.md - 
 - api/gantt_project_end_config.md - specifies the end date of a project
 - api/gantt_project_start_config.md - specifies the start date of a project
 - api/gantt_quick_info_detached_config.md - defines whether the task form will appear from the left/right side of the screen or near the selected task
@@ -96,6 +97,7 @@ Properties
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_reorder_grid_columns_config.md - enables the possibility to reorder grid columns by drag and drop
 - api/gantt_resize_rows_config.md - enables the ability to adjust the row height by drag-and-drop
+- api/gantt_resource_assignment_store_config.md - 
 - api/gantt_resource_attribute_config.md - changes the name of the attribute that Gantt uses to find which resource the task row in the resource grid/timeline is referring to
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
 - api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram/Calendar
@@ -247,6 +249,7 @@ Properties
 - api/gantt_placeholder_task_config.md
 - api/gantt_preserve_scroll_config.md
 - api/gantt_prevent_default_scroll_config.md
+- api/gantt_process_resource_assignments_config.md
 - api/gantt_project_end_config.md
 - api/gantt_project_start_config.md
 - api/gantt_quick_info_detached_config.md
@@ -256,6 +259,7 @@ Properties
 - api/gantt_redo_config.md
 - api/gantt_reorder_grid_columns_config.md
 - api/gantt_resize_rows_config.md
+- api/gantt_resource_assignment_store_config.md
 - api/gantt_resource_attribute_config.md
 - api/gantt_resource_calendars_config.md
 - api/gantt_resource_property_config.md

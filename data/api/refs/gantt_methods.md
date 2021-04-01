@@ -106,6 +106,7 @@ Methods
 - api/gantt_getsubtaskdates.md - calculates the combined start/end dates of tasks nested in a project or another task
 - api/gantt_getsubtaskduration.md - calculates the combined duration of tasks nested in a project or another task.
 - api/gantt_gettask.md - returns the task object
+- api/gantt_gettaskassignments.md - 
 - api/gantt_gettaskbarheight.md - returns the height (in pixels) of the DOM element of the task
 - api/gantt_gettaskby.md - finds a task by the specified criteria
 - api/gantt_gettaskbyindex.md - returns a task by its global task index
@@ -198,6 +199,7 @@ Methods
 - api/gantt_updatelink.md - updates the specified dependency link
 - api/gantt_updatemarker.md - updates the specified marker
 - api/gantt_updatetask.md - updates the specified task
+- api/gantt_updatetaskassignments.md - 
 }}
 
 @index:
@@ -304,6 +306,7 @@ Methods
 - api/gantt_getsubtaskdates.md
 - api/gantt_getsubtaskduration.md
 - api/gantt_gettask.md
+- api/gantt_gettaskassignments.md
 - api/gantt_gettaskbarheight.md
 - api/gantt_gettaskby.md
 - api/gantt_gettaskbyindex.md
@@ -396,5 +399,6 @@ Methods
 - api/gantt_updatelink.md
 - api/gantt_updatemarker.md
 - api/gantt_updatetask.md
+- api/gantt_updatetaskassignments.md
 
 

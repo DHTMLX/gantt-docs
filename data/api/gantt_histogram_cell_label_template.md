@@ -9,9 +9,11 @@ histogram_cell_label
 - end_date		Date		end date of the scale cell
 - resource		object	 	the resource object
 - tasks			array		tasks that are assigned to the specified resource and overlap start/end dates of the cell
+- assignments	array		resource assignments that are assigned to the specified start/end dates of the task
 
 @example:
-gantt.templates.histogram_cell_label = function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_label = function(start_date,end_date,resource,tasks,
+    assignments){
     return tasks.length * 8;
 };
 
@@ -27,3 +29,5 @@ gantt.templates.histogram_cell_label = function(start_date,end_date,resource,tas
 api/gantt_histogram_cell_class_template.md
 api/gantt_histogram_cell_allocated_template.md
 api/gantt_histogram_cell_capacity_template.md
+
+@changelog: the **assignments** parameter is added in v7.1

@@ -171,10 +171,18 @@ The method takes as a parameter the id of the resource and returns an array of o
 
 ~~~js
 [ 
-    {task_id: 5, resource_id: "6", value: 5},
-    {task_id: 18, resource_id: "6", value: 2},
-    {task_id: 19, resource_id: "6", value: 3},
-    {task_id: 21, resource_id: "6", value: 5}
+	{task_id: 5, resource_id: "6", value: 5, delay: 0, duration: 7, 
+		start_date: "03-04-2019 00:00", end_date: "12-04-2019 00:00", 
+		id: 1617258553240, mode: "default"},
+	{task_id: 18, resource_id: "6", value: 2, delay: 0, duration: 2, 
+		start_date: "05-04-2019 00:00", end_date: "09-04-2019 00:00", 
+		id: 1617258553250, mode: "default"},
+	{task_id: 19, resource_id: "6", value: 3, delay: 0, duration: 4, 
+		start_date: "09-04-2019 00:00", end_date: "13-04-2019 00:00", 
+		id: 1617258553251, mode: "default"},
+	{task_id: 21, resource_id: "6", value: 5, delay: 0, duration: 4, 
+		start_date: "03-04-2019 00:00", end_date: "09-04-2019 00:00", 
+		id: 1617258553254, mode: "default"}
 ]
 ~~~
 
@@ -183,6 +191,35 @@ Each object contains the following properties:
 - *task_id* - the id of the task
 - *resource_id* - the id of the resource
 - *value* - the quantity of the resource assigned to a task
+- *delay* - the difference between the assignment start date and the task start date
+- *duration* - the duration of the assignment
+- *start_date* - the date the assignment is scheduled to start
+- *end_date* - the date the assignment is scheduled to be completed
+- *id* - the id of the assignment
+- *mode* - the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
+
+### Getting resource assignments of a task
+
+The api/gantt_gettaskassignments.md method allows getting the parsed resource assignments of a specific task from the datastore:
+
+~~~js
+gantt.getTaskAssignments(5);
+~~~
+
+The method takes as a parameter the id of the task and returns an array of objects with the resource assignments of the task:
+
+~~~js
+[
+	{task_id: 5, id: 1617254693938, delay: 0, duration: 2, 
+		start_date: "03-04-2019 00:00", end_date: "05-04-2019 00:00", 
+		mode: "fixedDuration", resource_id: 6, value: 3},
+	{task_id: 5, id: 1617254693946, delay: 3, duration: 1, 
+		start_date: "06-04-2019 00:00", end_date: "07-04-2019 00:00", 
+		mode: "fixedDuration", resource_id: 6, value: 6}
+]
+~~~
+
+The return object contains the same list of properties as the return object of the api/gantt_getresourceassignments.md method.
 
 ###Setting connection via lightbox
 
@@ -401,7 +438,8 @@ Once initialized, *resourceGrid* will work in the same way as the default grid v
 the api/gantt_resource_cell_class_template.md and api/gantt_resource_cell_value_template.md templates:
 
 ~~~js
-gantt.templates.resource_cell_value = function(start_date, end_date, resource, tasks){
+gantt.templates.resource_cell_value = function(start_date, end_date, resource, tasks,
+	assignments){
 	var html = "<div>" +  tasks.length * 8 + "h</div>";
 		return html;
 };
@@ -456,7 +494,8 @@ The same as in the resource load diagram, *resourceGrid* will work in the same w
 - *histogram_cell_class* - the CSS class which is applied to a cell of the resource panel
 
 ~~~js
-gantt.templates.histogram_cell_class=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_class=function(start_date,end_date,resource,tasks,
+	assignments){
 	return "";
 };
 ~~~
@@ -464,7 +503,8 @@ gantt.templates.histogram_cell_class=function(start_date,end_date,resource,tasks
 - *histogram_cell_label* - the label inside a cell
 
 ~~~js
-gantt.templates.histogram_cell_label=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_label=function(start_date,end_date,resource,tasks,
+	assignments){
  	return tasks.length * 8;
 };
 ~~~
@@ -472,7 +512,8 @@ gantt.templates.histogram_cell_label=function(start_date,end_date,resource,tasks
 - *histogram_cell_allocated* - the height of the filled area in the histogram. Its value can be set from 0 to *maxCapacity* *.
 
 ~~~js
-gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,tasks,
+	assignments){
  	return tasks.length * 8;
 };
 ~~~
@@ -480,7 +521,8 @@ gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,t
 - *histogram_cell_capacity* - the height of the line that defines the available capacity of the resource. Its value can be set from -1 to *maxCapacity* *. Values less than 0 won't render the line.
 
 ~~~js
-gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,tasks,
+	assignments){
  	return 24;
 };
 ~~~

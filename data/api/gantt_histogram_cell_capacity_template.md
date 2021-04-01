@@ -10,9 +10,11 @@ histogram_cell_capacity
 - end_date		Date		end date of the scale cell
 - resource		object	 	the resource object
 - tasks			array		tasks that are assigned to the specified resource and overlap start/end dates of the cell
+- assignments	array		resource assignments that are assigned to the specified start/end dates of the task
 
 @example:
-gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,tasks,
+    assignments){
     return 24;
 };
 
@@ -35,3 +37,5 @@ If each row of the histogram is considered as a bar chart, maxCapacity is the he
 api/gantt_histogram_cell_class_template.md
 api/gantt_histogram_cell_label_template.md
 api/gantt_histogram_cell_allocated_template.md
+
+@changelog: the **assignments** parameter is added in v7.1

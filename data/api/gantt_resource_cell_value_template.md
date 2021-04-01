@@ -11,9 +11,11 @@ resource_cell_value
 - end_date		Date			end date of the scale cell
 - resource		object	 		the resource object
 - tasks			array			tasks that are assigned to specified resource and overlap start/end dates of the cell
+- assignments	array		resource assignments that are assigned to the specified start/end dates of the task
 
 @example:
-gantt.templates.resource_cell_value = function(start_date, end_date, resource, tasks){
+gantt.templates.resource_cell_value = function(start_date, end_date, resource, tasks,
+	assignments){
 	return "<div>" + tasks.length * 8 + "</div>";
 };
 
@@ -40,3 +42,5 @@ api/gantt_resource_cell_class_template.md
 @relatedsample:
 11_resources/04_resource_usage_diagram.html
 11_resources/05_resource_usage_templates.html
+
+@changelog: the **assignments** parameter is added in v7.1
