@@ -242,8 +242,10 @@ A data source for the Gantt chart is an object that stores 2 types of informatio
             </li>
             <li><b>bar_height</b> - (<i> number,string </i>) sets the height of task bars in the timeline area
             </li>
-            <li><b>readonly</b>-(<i>boolean</i>) optional, can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">readonly</a>. </li>
-        	<li><b>editable</b>-(<i>boolean</i>) optional, can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">editable</a>. </li>
+            <li><b>readonly</b>-(<i>boolean</i>) can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">readonly</a>. </li>
+        	<li><b>editable</b>-(<i>boolean</i>) can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">editable</a>. </li>
+        	<li><b>rollup</b>-(<i>boolean</i>) specifies whether a task (type:"task") or milestone (type:"milestone")  <a href="desktop/milestones.md#rolluptasksandmilestones">should appear on the parent projects</a>. </li>
+        	<li><b>hide_bar</b>-(<i>boolean</i>) defines whether a task (type:"task") or milestone (type:"milestone") <a href="desktop/milestones.md#hidingtasksandmilestones">should be hidden in the timeline area</a>. </li>
     </ul>
     <li><b><i>Dynamic properties</i></b> - are created on the client and represent the current state of a task or a link.
     They shouldn't be saved to the database, gantt will ignore these properties if they are specified in your JSON/XML.
