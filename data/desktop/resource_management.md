@@ -76,7 +76,7 @@ The additional properties are:
 
 The *start and the end dates* of the resource assignment will be reflected in the resource histogram and diagram.
 
-Optionally, the *id* of the assignment can be added to a resource assignment object:
+The optional *id* property of the assignment can be added to the resource assignment object:
 
 ~~~js
 {
@@ -112,7 +112,7 @@ The work of the rest properties is defined by the value of the **mode** property
 }
 ~~~
 
-If the *mode* is not specified or is set to the "default" value, the *start_date* and *end_date* of the assignment are calculated from the dates of a task. By default, the start date of an assignment matches the start date of a task. The same approach is applied to the end date.
+If the *mode* is not specified or is set to the "default" value, the *start_date* and *end_date* of the assignment are calculated from the dates of the task. By default, the start date of the assignment matches the start date of the task. The same approach is applied to the end date.
 
 The *delay* property works similarly to the *Delay* property of <a href="https://support.microsoft.com/en-us/office/assignment-delay-fields-427ac799-225c-4e10-9dcb-f58e524c8173">MS Project</a>. 
 
@@ -137,11 +137,11 @@ Whenever the task object is updated, the start/end dates of the assignment will 
 }
 ~~~
 
-The *start_date* of the assignment is calculated in the same way as in the *"default"* mode.
+The *start_date* of the assignment is calculated in the same way as it calculated in the *"default"* mode.
 
-The *end_date* is no longer linked to the end date of a task. Instead, it's calculated, as<br> `gantt.calculateEndDate({start_date:assignment.start_date, duration:assignment.delay, task:task})`.
+The *end_date* is no longer linked to the end date of the task. Instead, it's calculated as<br> `gantt.calculateEndDate({start_date:assignment.start_date, duration:assignment.delay, task:task})`.
 
-Whenever a task object is updated, the dates of the assignment are recalculated, and the duration of the assignment remains unchanged.
+Whenever the task object is updated, the dates of the assignments are recalculated, and the durations of the assignments remain unchanged.
 
 - **_the "fixedDate" mode_**
 
@@ -155,7 +155,7 @@ Whenever a task object is updated, the dates of the assignment are recalculated,
 }
 ~~~
 
-In this mode, the dates of the resource assignment have exactly the same value as specified in the data and are not changed when the task is modified.
+In this mode, the dates of the resource assignment have exactly the same values as specified in the data and are not changed when the task is modified.
 
 The *delay* field doesn't affect the dates of the assignment when the *"fixedDates"* mode is used.
 
@@ -276,6 +276,65 @@ gantt.updateCollection("people", [
 {{sample  11_resources/01_assigning_resources.html}}
 
 If you define resources via the *serverList* collection, they can be [loaded together with the rest of the data](desktop/supported_data_formats.md#jsonwithcollections), otherwise you'll need to load them manually.
+
+
+Managing resource assignments
+---------------------------
+
+### Parsing of resource assignments
+
+Starting with v7.1, you can work with the [resource assignments](desktop/resource_management.md#resourceassignmenttime) as with objects of the data store. 
+
+The new [process_resource_assignments](api/gantt_process_resource_assignments_config.md) property enables the process of parsing of the values from the [gantt.config.resource_property](api/gantt_resource_property_config.md) of tasks into the internal objects of the resource assignments.
+As a result, you are able to manipulate the resource assignments via the DataStore object. For instance, you can get the necessary assignment object or update it.
+
+**Note**, that this functionality is required if you want to [specify the desired duration and time for the resources](desktop/resource_management.md#resourceassignmenttime) when building Resource Diagram and Histogram.
+
+The process may add noticeable performance overhead and large projects may start working slower.
+Therefore, if you don't need to set time or duration of the assignment, you can disable parsing of the resource assignments using the config:
+
+~~~js
+gantt.config.process_resource_assignments = false;
+~~~
+
+When the config is disabled, you won't be able to specify the time of the assignments and manage the objects of the assignments via the datastore. But most of the resource features will continue work.  
+
+### Updating resource assignments
+
+The resource assignments are stored in the [data store](api/gantt_resource_assignment_store_config.md) which is created automatically. 
+
+By default, the store of the assignments is populated from the task objects. It means, that if you modify the resource property of the task object (e.g. task.users), the changes will be automatically reflected in the data store.
+
+~~~js
+task[gantt.config.resource_property] = [
+	{
+		resource_id: "6",
+		value: 3,
+		start_date: "03-04-2019 00:00",
+		end_date: "05-04-2019 00:00",
+	}
+];
+gantt.updateTask(taskId);
+~~~
+
+<br>
+But you may need to refresh the data of the assignments in the opposite direction. Namely, to modify the resource assignments using the datastore API and then to apply the changes to the task object. In this case, you need to update the resource property of the task object with the values from the datastore by calling the **gantt.updateTaskAssignments()** method:
+
+~~~js
+var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
+
+assignmentStore.addItem({
+    resource_id: 5,
+    task_id: 2,
+    value: 4
+});
+assignmentStore.removeItem(assignment.id);
+assignmentStore.updateItem(assignment.id);
+
+// after assignments are updated in the datastore, you need 
+// to call `updateTaskAssignments` to write changes to the task object:
+gantt.updateTaskAssignments(taskId);
+~~~
 
 
 Showing task resource

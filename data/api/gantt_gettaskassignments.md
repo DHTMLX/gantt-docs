@@ -60,7 +60,7 @@ Each object contains the following properties:
 
 @relatedapi: api/gantt_getresourceassignments.md
 
-@related: desktop/resource_management.md
+@related: desktop/resource_management.md#assigningresources
 
 @relatedsample: 11_resources/13_resource_assignments_for_days.html
 
