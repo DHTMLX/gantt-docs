@@ -65,8 +65,10 @@ var data = {
 Tasks with **type="task"** can be characterized as follows:
 
 - Can have 1 parent and any number of child tasks.
-- Can be dragged and resized.
+- Can be dragged and resized. 
 - Doesn't depend on child tasks, i.e. if the user dragges a child of a regular task, the task doesn't change its duration or progress respectively.
+- Can appear on the parent projects. See [details](desktop/milestones.md#rolluptasksandmilestones).
+- Can be hidden in the timeline. See [details](desktop/milestones.md#hidingtasksandmilestones).
 
 
 Project tasks
@@ -151,6 +153,8 @@ Tasks with **type="milestone"** can be characterized as follows:
 - Cannot be dragged and resized.
 - Have zero duration and preserve it all the time.
 - Ignore the **end_date**, **duration**, **progress** properties.
+- Can appear on the parent projects. See [details](desktop/milestones.md#rolluptasksandmilestones).
+- Can be hidden in the timeline. See [details](desktop/milestones.md#hidingtasksandmilestones).
 
 {{note
 To provide a possibility of adding milestones, read article desktop/milestones.md.

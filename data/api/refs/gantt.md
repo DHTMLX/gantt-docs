@@ -110,7 +110,7 @@ Gantt API
 - api/gantt_getsubtaskdates.md - calculates the combined start/end dates of tasks nested in a project or another task
 - api/gantt_getsubtaskduration.md - calculates the combined duration of tasks nested in a project or another task.
 - api/gantt_gettask.md - returns the task object
-- api/gantt_gettaskassignments.md - 
+- api/gantt_gettaskassignments.md - returns the parsed resource assignments of a specific task from the datastore
 - api/gantt_gettaskbarheight.md - returns the height (in pixels) of the DOM element of the task
 - api/gantt_gettaskby.md - finds a task by the specified criteria
 - api/gantt_gettaskbyindex.md - returns a task by its global task index
@@ -203,7 +203,7 @@ Gantt API
 - api/gantt_updatelink.md - updates the specified dependency link
 - api/gantt_updatemarker.md - updates the specified marker
 - api/gantt_updatetask.md - updates the specified task
-- api/gantt_updatetaskassignments.md - 
+- api/gantt_updatetaskassignments.md - updates the resource property of the task object with the values of the resource assignments from the datastore
 }}
 
 
@@ -355,7 +355,7 @@ Gantt API
 - api/gantt_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
-- api/gantt_deepcopy_on_parse_config.md - defines whether gantt will perform a deep copy of data objects passed into the [gantt.parse](api/gantt_parse.md) method
+- api/gantt_deepcopy_on_parse_config.md - defines whether gantt will perform a deep copy of data objects passed into the gantt.parse() method
 - api/gantt_details_on_create_config.md - 'says' to open the lightbox while creating new events by clicking the '+' button
 - api/gantt_details_on_dblclick_config.md - 'says' to open the lightbox after double clicking on a task
 - api/gantt_drag_lightbox_config.md - enables the possibility to drag the lightbox by the header
@@ -411,7 +411,7 @@ Gantt API
 - api/gantt_placeholder_task_config.md - adds an empty row into the end of the list of tasks to simplify tasks editing via keyboard
 - api/gantt_preserve_scroll_config.md - preserves the current position of the vertical and horizontal scrolls while re-drawing the gantt chart
 - api/gantt_prevent_default_scroll_config.md - specifies whether the gantt container should block the mousewheel event, or should it be propagated up to the window element
-- api/gantt_process_resource_assignments_config.md - 
+- api/gantt_process_resource_assignments_config.md - enables/disables parsing of the resource assignments
 - api/gantt_project_end_config.md - specifies the end date of a project
 - api/gantt_project_start_config.md - specifies the start date of a project
 - api/gantt_quick_info_detached_config.md - defines whether the task form will appear from the left/right side of the screen or near the selected task
@@ -421,7 +421,7 @@ Gantt API
 - api/gantt_redo_config.md - enables the Redo functionality for the gantt
 - api/gantt_reorder_grid_columns_config.md - enables the possibility to reorder grid columns by drag and drop
 - api/gantt_resize_rows_config.md - enables the ability to adjust the row height by drag-and-drop
-- api/gantt_resource_assignment_store_config.md - 
+- api/gantt_resource_assignment_store_config.md - specifies the name of the dataStore which stores resource assignments
 - api/gantt_resource_attribute_config.md - changes the name of the attribute that Gantt uses to find which resource the task row in the resource grid/timeline is referring to
 - api/gantt_resource_calendars_config.md - defines a set of working calendars that can be assigned to a specific resource, e.g. a user
 - api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram/Calendar
@@ -462,7 +462,6 @@ Gantt API
 - api/gantt_subscales_config.md - specifies the second time scale(s) (deprecated)
 - api/gantt_task_attribute_config.md - sets the name of the attribute that will specify the id of the task's HTML element
 - api/gantt_task_date_config.md - sets the format of the date label in the 'Time period' section of the lightbox
-- api/gantt_task_grid_row_resizer_attribute_config.md - 
 - api/gantt_task_height_config.md - sets the height of task bars in the timeline area
 - api/gantt_task_scroll_offset_config.md - sets the offset (in pixels) of the nearest task from the left border in the timeline
 - api/gantt_time_picker_config.md - sets the format of the time drop-down selector in the lightbox
