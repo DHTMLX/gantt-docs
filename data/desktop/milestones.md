@@ -98,6 +98,17 @@ The result will be as in:
 
 There is also the ability to switch the rollup functionality via the **Rollup** checkbox in the lightbox:
 
+
+~~~js
+gantt.config.lightbox.milestone_sections = [
+	{name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
+	{name: "rollup", type: "checkbox", map_to: "rollup"},/*!*/
+	{name: "hide_bar", type: "checkbox", map_to: "hide_bar"},
+	{name: "type", type: "typeselect", map_to: "type"},
+	{name: "time", type: "duration", map_to: "auto"}
+];
+~~~
+
 <img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px 20px;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="desktop/rollup.png">
 
 {{sample 01_initialization/21_rollup_tasks.html}}
@@ -111,16 +122,16 @@ Starting with v7.1, you can hide [task bars](desktop/task_types.md#regulartasks)
 var data = {
     tasks:[
         {id:11, text:"Project #1", type:"project", progress: 0.6, open: true},
-		{id:12, text:"Task #1", start_date:"03-04-2018", duration:"3",
-			parent:"11", progress: 1, open: true},
-		{id:13, text:"Task #2", start_date:"03-04-2018", type:"project", 
-			parent:"11", progress: 0.5, open: true},
-		{id:16, text:"Final milestone", start_date:"08-04-2018", type:"milestone", /*!*/
-			rollup: true, hide_bar: true, parent:"11", progress: 0, open: true},  /*!*/
-		{id:17, text:"Task #2.1", start_date:"03-04-2018", duration:"2", 
-			parent:"13", progress: 1, open: true},
-		{id:18, text:"Task #2.2", start_date:"06-04-2018", duration:"1",    
-			parent:"13", progress: 0.8, open: true}],   
+        {id:12, text:"Task #1", start_date:"03-04-2018", duration:"3",
+            parent:"11", progress: 1},
+        {id:13, text:"Task #2", start_date:"03-04-2018", type:"project", 
+            parent:"11", progress: 0.5, open: true},
+        {id:16, text:"Final milestone", start_date:"08-04-2018", type:"milestone",  
+            rollup: true, parent:"11", progress: 0},  
+        {id:17, text:"Task #2.1", start_date:"03-04-2018", duration:"2", 
+            parent:"13", progress: 1},
+        {id:18, text:"Task #2.2", start_date:"06-04-2018", duration:"1",   
+            parent:"13", progress: 0.8}],  
     links:[]
 };
 ~~~
@@ -132,6 +143,32 @@ The result will look like this:
 **Note**, that if both the **hide_bar:true** and **rollup:true** properties are specified for the data item, the item will be hidden in the timeline but shown on the parent project.
 
 You can hide the necessary task/milestone in the timeline area via switching the **Hide bar** checkbox in the lightbox:
+
+~~~js
+gantt.config.lightbox.sections = [
+	{name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
+	{name: "rollup", type: "checkbox", map_to: "rollup"},
+	{name: "hide_bar", type: "checkbox", map_to: "hide_bar"},  /*!*/
+	{name: "type", type: "typeselect", map_to: "type"},
+	{name: "time", type: "duration", map_to: "auto"}
+];
+
+gantt.config.lightbox.milestone_sections = [
+	{name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
+	{name: "rollup", type: "checkbox", map_to: "rollup"},
+	{name: "hide_bar", type: "checkbox", map_to: "hide_bar"},  /*!*/
+	{name: "type", type: "typeselect", map_to: "type"},
+	{name: "time", type: "duration", map_to: "auto"}
+];
+
+gantt.config.lightbox.project_sections = [
+	{name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
+	{name: "hide_bar", type: "checkbox", map_to: "hide_bar"},  /*!*/
+	{name: "type", type: "typeselect", map_to: "type"},
+	{name: "time", type: "duration", map_to: "auto"}
+];
+
+~~~
 
 <img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px 20px;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="desktop/hide_bar.png">
 

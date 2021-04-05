@@ -35,9 +35,9 @@ const gantt = Gantt.getGanttInstance({
 		end_date: new Date(2021, 0, 1),
 	},
 	calendars: [
-        {
-            id:"global",
-            worktime: {
+		{
+			id:"global",
+			worktime: {
 				hours: ["8:00-17:00"],
 				days: [ 0, 1, 1, 1, 1, 0 ,0],
 				customWeeks: {
@@ -55,8 +55,8 @@ const gantt = Gantt.getGanttInstance({
 					}
 				}
 			}
-        }
-    ],
+		}
+	],
 	data: {
 		tasks: [
 			{ id: 11, text: "Project #1", type: "project", "open": true, "parent": 0 },

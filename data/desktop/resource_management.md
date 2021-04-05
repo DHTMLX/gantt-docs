@@ -78,12 +78,24 @@ The additional properties are:
 {
 	id: 5, text: "Interior office", type: "task", start_date: "03-04-2019 00:00",
 	duration: 7, parent: "2", progress: 0.6, priority: 1,
-	owner: [{
+	users: [{
+		resource_id: "3",
+		value: 8,
+		delay: 1 /*!*/
+	},{
 		resource_id: "6",
 		value: 3,
 		start_date: "03-04-2019 00:00", /*!*/
 		end_date: "05-04-2019 00:00", /*!*/
-	}]
+		mode: "fixedDates" /*!*/
+	},{
+		resource_id: "7",
+		value: 3,
+		delay: 1, /*!*/
+		duration: 2, /*!*/
+		mode: "fixedDuration" /*!*/
+	}
+	]
 }
 ~~~
 
@@ -95,14 +107,12 @@ The optional *id* property of the assignment can be added to the resource assign
 
 ~~~js
 {
-    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
-    users: [{
+	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	users: [{
 		id: 5, 
 		resource_id: 2, value: 8, 
-		start_date: "03-04-2018", 
-		end_date: "11-04-2018", 
 		delay: 1
-	}]  
+	}]
 }
 ~~~
 
@@ -113,17 +123,19 @@ var assignment = gantt.getDatastore("resourceAssignments").getItem(5);
 ~~~
 <br>
 
+{{note The "resourceAssignments" datastore is only available when the api/gantt_process_resource_assignments_config.md config is enabled. }}
+
 The work of the rest properties is defined by the value of the **mode** property:
 
 - **_the "default" mode_**
 
 ~~~js
 {
-    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
-    users: [{
-		resource_id: 2, value: 8, 
-		start_date: "03-04-2018", end_date: "11-04-2018", delay: 1
-	}]  
+	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	users: [
+		{ resource_id: 2, value: 8, delay: 1},
+		{ resource_id: 3, value: 6},
+	]
 }
 ~~~
 
@@ -140,15 +152,12 @@ Whenever the task object is updated, the start/end dates of the assignment will 
 
 ~~~js
 {
-    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
-    users: [
-       	{resource_id:2, value:8, start_date:"03-04-2018", duration: 1, 
-	   		end_date:"04-04-2018", delay:1, mode: "fixedDuration"},
-       	{resource_id:2, value:2, start_date:"04-04-2018", duration: 1, 
-	   		end_date:"05-04-2018", delay:1, mode: "fixedDuration"},
-       	{resource_id:2, value:3, start_date:"05-04-2018", duration: 6, 
-	   		end_date:"11-04-2018", delay:1, mode: "fixedDuration"}
-    ]  
+	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	users: [
+		{resource_id:2, value:8, duration: 1, delay:0, mode: "fixedDuration"},
+		{resource_id:2, value:2, duration: 1, delay:1, mode: "fixedDuration"},
+		{resource_id:2, value:3, delay:2, mode: "default"}
+	]
 }
 ~~~
 
@@ -162,17 +171,35 @@ Whenever the task object is updated, the dates of the assignments are recalculat
 
 ~~~js
 {
-    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
-    users: [{
+	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	users: [{
 		resource_id:2, value:8, 
 		start_date:"03-04-2018", end_date:"11-04-2018", mode: "fixedDates"
-	}]  
+	}]
 }
 ~~~
 
 In this mode, the dates of the resource assignment have exactly the same values as specified in the data and are not changed when the task is modified.
 
 The *delay* field doesn't affect the dates of the assignment when the *"fixedDates"* mode is used.
+
+Here is a short summary of how assignment dates are calculated in each mode:
+
+- **default**
+
+  - assignment.start_date = task.start_date + assignment.delay
+  - assignment.end_date = task.end_date
+
+- **fixedDuration**
+
+  - assignment.start_date = task.start_date + assignment.delay
+  - assignment.end_date = assignment.start_date + assignment.duration
+
+- **fixedDates**
+
+  - assignment.start_date = assignment.start_date
+  - assignment.end_date = assignment.end_date
+
 
 ###Getting tasks a resource is assigned to 
 
@@ -212,6 +239,7 @@ Each object contains the following properties:
 - *end_date* - the date the assignment is scheduled to be completed
 - *id* - the id of the assignment
 - *mode* - the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
+
 
 ### Getting resource assignments of a task
 
@@ -312,7 +340,7 @@ Therefore, if you don't need to set time or duration of the assignment, you can 
 gantt.config.process_resource_assignments = false;
 ~~~
 
-When the config is disabled, you won't be able to specify the time of the assignments and manage the objects of the assignments via the datastore. But most of the resource features will continue work.  
+When the config is disabled, the `gantt.getDatastore("resourceAssignments")` datastore won't be available and the assignment objects won't have any dynamic properties. The resource diagram and histogram will consider resources to be assigned to the whole duration of the task.
 
 ### Updating resource assignments
 

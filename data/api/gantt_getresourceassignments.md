@@ -50,6 +50,7 @@ Each object contains the following properties:
 - *id* - the id of the assignment
 - *mode* - the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
 
+{{note *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* will be populated automatically only when api/gantt_process_resource_assignments_config.md is enabled. }}
 
 @related:
 desktop/resource_management.md
@@ -59,6 +60,8 @@ desktop/resource_management.md
 11_resources/10_resource_histogram_workload_percents.html
 11_resources/12_work_and_material_resources.html
 
-@relatedapi: api/gantt_gettaskassignments.md
+@relatedapi: 
+api/gantt_gettaskassignments.md
+api/gantt_process_resource_assignments_config.md
 
 @changelog: the return object will contain the *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* properties starting from v7.1
