@@ -21,7 +21,7 @@ gantt.templates.histogram_cell_label = function(start_date,end_date,resource,tas
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-{{note The "assignments" argument is only available when the api/gantt_process_resource_assignments_config.md config is enabled }}
+{{note The "assignments" argument is only available when the api/gantt_process_resource_assignments_config.md config is enabled. }}
 
 @edition:pro
 

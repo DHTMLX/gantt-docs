@@ -57,7 +57,7 @@ Each object contains the following properties:
 - *resource_id* - the id of the resource
 - *value* - the quantity of the resource assigned to a task
 
-{{note *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* will be populated automatically only when api/gantt_process_resource_assignments_config.md is enabled }}
+{{note *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* will be populated automatically only when api/gantt_process_resource_assignments_config.md is enabled. }}
 
 @relatedapi: 
 api/gantt_getresourceassignments.md

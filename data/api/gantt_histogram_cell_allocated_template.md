@@ -23,7 +23,7 @@ gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,t
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-{{note The "assignments" argument is only available when the api/gantt_process_resource_assignments_config.md config is enabled }}
+{{note The "assignments" argument is only available when the api/gantt_process_resource_assignments_config.md config is enabled. }}
 
 The value of the template can be set from 0 to *maxCapacity*.
 

@@ -123,7 +123,7 @@ var assignment = gantt.getDatastore("resourceAssignments").getItem(5);
 ~~~
 <br>
 
-{{note The "resourceAssignments" datastore is only available when the api/gantt_process_resource_assignments_config.md config is enabled }}
+{{note The "resourceAssignments" datastore is only available when the api/gantt_process_resource_assignments_config.md config is enabled. }}
 
 The work of the rest properties is defined by the value of the **mode** property:
 
@@ -340,7 +340,7 @@ Therefore, if you don't need to set time or duration of the assignment, you can 
 gantt.config.process_resource_assignments = false;
 ~~~
 
-When the config is disabled, the `gantt.getDatastore("resourceAssignments")` datastore won't be available and the assignment objects won't have any dynamic properties. The resource diagram and historgram will consider resources to be assigned to the whole duration of the task.
+When the config is disabled, the `gantt.getDatastore("resourceAssignments")` datastore won't be available and the assignment objects won't have any dynamic properties. The resource diagram and histogram will consider resources to be assigned to the whole duration of the task.
 
 ### Updating resource assignments
 
