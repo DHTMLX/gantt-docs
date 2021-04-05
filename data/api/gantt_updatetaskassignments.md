@@ -73,6 +73,7 @@ desktop/resource_management.md#managingresourceassignments
 
 @relatedapi: 
 api/gantt_resource_assignment_store_config.md
-api/gantt_process_resource_property_config.md
+api/gantt_resource_property_config.md
+api/gantt_process_resource_assignments_config.md
 
 @relatedsample: 11_resources/13_resource_assignments_for_days.html

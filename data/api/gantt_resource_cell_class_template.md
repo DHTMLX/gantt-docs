@@ -44,7 +44,6 @@ api/gantt_resource_property_config.md
 api/gantt_resource_render_empty_cells_config.md
 api/gantt_resource_cell_value_template.md
 api/gantt_process_resource_assignments_config.md
-api/gantt_process_resource_property_config.md
 
 @related: desktop/resource_management.md
 
