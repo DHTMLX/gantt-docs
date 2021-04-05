@@ -74,6 +74,21 @@ The additional properties are:
 - **duration** - (*number*) the duration of the assignment
 - **mode** - (*string*) the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
 
+~~~js
+{
+	id: 5, text: "Interior office", type: "task", start_date: "03-04-2019 00:00",
+	duration: 7, parent: "2", progress: 0.6, priority: 1,
+	owner: [{
+		resource_id: "6",
+		value: 3,
+		start_date: "03-04-2019 00:00", /*!*/
+		end_date: "05-04-2019 00:00", /*!*/
+	}]
+}
+~~~
+
+{{sample 11_resources/13_resource_assignments_for_days.html}}
+
 The *start and end dates* of the resource assignment will be reflected in the resource histogram and diagram.
 
 The optional *id* property of the assignment can be added to the resource assignment object:
