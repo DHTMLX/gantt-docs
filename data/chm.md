@@ -1,15 +1,16 @@
 Start
 =====
 
-<h2>Meet Gantt 7.0!</h2>
+<h2>Meet Gantt 7.1!</h2>
 
 <p>
 New version brings you new functionality and extended API:
 </p>
 <ul>
-    <li><a href="desktop/working_time.md#globalsettings">Working time in minutes</a></li>        
-    <li><a href="desktop/using_gantt_on_server.md">Creating Gantt instance in Node.js</a></li>   
-    <li><a href="api/gantt_reorder_grid_columns_config.md">Reordering grid columns by drag and drop</a></li>
+    <li><a href="desktop/resource_management.md#resourceassignmenttime">Settings dates for resource assignments</a></li>  
+    <li><a href="desktop/milestones.md#rolluptasksandmilestones">Rollup tasks and milestones</a></li>      
+    <li><a href="desktop/working_time.md#rules_for_periods">Different calendars for different time spans</a></li>   
+    <li><a href="desktop/resizing_rows.md">Adjusting height of individual rows</a></li>   
 </ul>
 
 <p>
