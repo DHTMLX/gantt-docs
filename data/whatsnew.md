@@ -18,7 +18,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### Breaking changes
 
-The update brings some changes in the API methods. Check the [Migration](migrating.md#7071) article to keep in step with the latest version.
+The update brings changes to some parts of the component. While the update doesn't introduce any changes that would require modifying the existing code, be sure to check the [Migration](migrating.md#7071) article.
 
 ### New functionality
 
@@ -26,10 +26,15 @@ The update brings some changes in the API methods. Check the [Migration](migrati
 - [The ability to resize a row in the grid by drag-and-drop](desktop/resizing_rows.md#resizingrowsbydraganddrop)
 - The ability to get the height of the DOM element of the task via the [getTaskBarHeight](api/gantt_gettaskbarheight.md) method
 - New events: [onBeforeRowResize](api/gantt_onbeforerowresize_event.md), [onRowResize](api/gantt_onrowresize_event.md), [onBeforeRowResizeEnd](api/gantt_onbeforerowresizeend_event.md), [onAfterRowResize](api/gantt_onafterrowresize_event.md)
-- [The **onrender** callback for rendering a grid cell into DOM](desktop/specifying_columns.md#modifyingcellsafterrendering) is added
-- [The **onrender** callback for rendering a custom element of the task layer into DOM](api/gantt_addtasklayer.md) is added
+- The [onrender](desktop/specifying_columns.md#modifyingcellsafterrendering) callback for rendering a grid cell into DOM is added
+- The [onrender](api/gantt_addtasklayer.md) callback for rendering a custom element of the task layer into DOM is added
 - [The ability to set different working hours for different time spans](desktop/working_time.md#rules_for_periods)
-- [The ability to assign resources to the specific time of the task](desktop/resource_management.md#resourceassignmenttime)
+- [The ability to assign resources to the specific dates of the task](desktop/resource_management.md#resourceassignmenttime)
+- The new [gantt.getTaskAssignments()](api/gantt_gettaskassignments.md) method
+- [The ability to manage the resource assignments](desktop/resource_management.md#managingresourceassignments) via the new [gantt.config.process_resource_assignments](api/gantt_process_resource_assignments_config.md) and [gantt.updateTaskAssignments()](api/gantt_updatetaskassignments.md) Gantt API
+- [Rollup tasks and milestones](desktop/milestones.md#rolluptasksandmilestones)
+- [The ability to hide task bars and milestones in the timeline area](desktop/milestones.md#hidingtasksandmilestones)
+
 
 7.0.13
 ------

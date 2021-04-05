@@ -63,7 +63,7 @@ dataprocessor mode.
 <h3 id="resourceassignmenttime">Setting the time of the resource assignments</h3>
 
 By default, the resource is considered to be assigned for the whole duration of a task.<br>
-Starting from v7.1, the object of the resource assignment can accept additional optional parameters that allow specifying the time of the assignment within the task. 
+Starting from v7.1, the object of the resource assignment can accept additional optional parameters that allow specifying the dates of the assignment within the task. 
 
 The additional properties are:
 
@@ -74,7 +74,7 @@ The additional properties are:
 - **duration** - (*number*) the duration of the assignment
 - **mode** - (*string*) the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
 
-The *start and the end dates* of the resource assignment will be reflected in the resource histogram and diagram.
+The *start and end dates* of the resource assignment will be reflected in the resource histogram and diagram.
 
 The optional *id* property of the assignment can be added to the resource assignment object:
 
@@ -137,7 +137,7 @@ Whenever the task object is updated, the start/end dates of the assignment will 
 }
 ~~~
 
-The *start_date* of the assignment is calculated in the same way as it calculated in the *"default"* mode.
+The *start_date* of the assignment is calculated in the same way as it's calculated in the *"default"* mode.
 
 The *end_date* is no longer linked to the end date of the task. Instead, it's calculated as<br> `gantt.calculateEndDate({start_date:assignment.start_date, duration:assignment.delay, task:task})`.
 
@@ -281,7 +281,7 @@ If you define resources via the *serverList* collection, they can be [loaded tog
 Managing resource assignments
 ---------------------------
 
-### Parsing of resource assignments
+### Parsing resource assignments
 
 Starting with v7.1, you can work with the [resource assignments](desktop/resource_management.md#resourceassignmenttime) as with objects of the data store. 
 
@@ -318,7 +318,7 @@ gantt.updateTask(taskId);
 ~~~
 
 <br>
-But you may need to refresh the data of the assignments in the opposite direction. Namely, to modify the resource assignments using the datastore API and then to apply the changes to the task object. In this case, you need to update the resource property of the task object with the values from the datastore by calling the **gantt.updateTaskAssignments()** method:
+But you may need to refresh the data of the assignments in the opposite direction. Namely, you may need to apply the changes to the task object after the resource assignments are modified via the datastore API. In this case, you need to update the resource property of the task object with the values from the datastore by calling the [gantt.updateTaskAssignments()](api/gantt_updatetaskassignments.md) method:
 
 ~~~js
 var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
