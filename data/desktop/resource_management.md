@@ -183,7 +183,7 @@ In this mode, the dates of the resource assignment have exactly the same values 
 
 The *delay* field doesn't affect the dates of the assignment when the *"fixedDates"* mode is used.
 
-Here a short summary of how assignment dates are calculated in each mode:
+Here is a short summary of how assignment dates are calculated in each mode:
 
 - **default**
 
@@ -264,19 +264,6 @@ The method takes as a parameter the id of the task and returns an array of objec
 
 The return object contains the same list of properties as the return object of the api/gantt_getresourceassignments.md method.
 
-### Performance overhead
-
-Version 7.1 adds a complex logic to resource assignments which allows specifying dates of the resource assignments and working with the resource assignments via DataStore.
-
-If you don't need to assign resources to specific dates of tasks, you can disable the new functionality using the  api/gantt_process_resource_assignments_config.md config in order to improve the performance:
-
-~~~js
-gantt.config.process_resource_assignments = false;
-~~~
-
-If the config is disabled, the ` gantt.getDatastore("resourceAssignments")` datastore won't be available  and the assignment objects won't have any dynamic properties. 
-The resource diagram and historgram will consider resources to be assigned to the whole duration of the task.
-
 ###Setting connection via lightbox
 
 
@@ -353,7 +340,7 @@ Therefore, if you don't need to set time or duration of the assignment, you can 
 gantt.config.process_resource_assignments = false;
 ~~~
 
-When the config is disabled, you won't be able to specify the time of the assignments and manage the objects of the assignments via the datastore. But most of the resource features will continue work.  
+When the config is disabled, the `gantt.getDatastore("resourceAssignments")` datastore won't be available and the assignment objects won't have any dynamic properties. The resource diagram and historgram will consider resources to be assigned to the whole duration of the task.
 
 ### Updating resource assignments
 
