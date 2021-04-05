@@ -16,6 +16,9 @@ var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store)
 @descr:
 
 The datastore is created automatically.
+
+The datastore is only created when the api/gantt_process_resource_assignments_config.md config is enabled.
+
 The datastore can be used to modify resource assignments from the code:
 
 ~~~js
@@ -36,7 +39,12 @@ gantt.updateTaskAssignments(taskId);
 
 @changelog: added in v7.1
 
-@relatedapi: api/gantt_updatetaskassignments.md
+@relatedapi: 
+api/gantt_updatetaskassignments.md
+api/gantt_process_resource_assignments_config.md
 
 @related:
 desktop/resource_management.md
+
+@relatedsample:
+11_resources/13_resource_assignments_for_days.html

@@ -23,6 +23,8 @@ gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,ta
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
+{{note The "assignments" argument is only available when the api/gantt_process_resource_assignments_config.md config is enabled }}
+
 The value of the template can be set from -1 to maxCapacity. Values less than 0 won't render the line.
 
 **maxCapacity definition**
@@ -37,5 +39,12 @@ If each row of the histogram is considered as a bar chart, maxCapacity is the he
 api/gantt_histogram_cell_class_template.md
 api/gantt_histogram_cell_label_template.md
 api/gantt_histogram_cell_allocated_template.md
+api/gantt_process_resource_assignments_config.md
+api/gantt_resource_property_config.md
+
+@relatedsample:
+11_resources/09_resource_histogram.html
+11_resources/10_resource_histogram_workload_percents.html
+11_resources/13_resource_assignments_for_days.html
 
 @changelog: the **assignments** parameter is added in v7.1
