@@ -30,7 +30,7 @@ Large projects that use the resource panel may have a possible performance decre
 
 ### Milestones
 
-The size of Milestone elements has changed compared to the previous versions in order for milestones to have the same height as regular bars.
+The size of Milestone elements has changed compared to the previous versions in order for the milestones to have the same height as regular bars.
 
 If you want the milestones to look the same as in previous versions, you can adjust the height of the milestone elements using the **bar_height** property:
 

@@ -43,7 +43,7 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix the script error thrown when specifying the 0 number value as a task id even if the "root_id" parameter is set
 - Fix the issue that caused the resizer listener not to work in Salesforce environment
 - Fix the script error appeared when applying [Fullscreen Extension](desktop/fullscreen_ext.md) several times together with its methods
-- Fix the issue with [Keyboard Navigation Extension](desktop/keynav_ext.md) that caused navigation in Grid to stop working when adding the pligin several times
+- Fix the issue with [Keyboard Navigation Extension](desktop/keynav_ext.md) that caused navigation in Grid to stop working when adding the plugin several times
 
 7.0.13
 ------

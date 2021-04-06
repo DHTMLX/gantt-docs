@@ -12,11 +12,11 @@ Setting the row height
 
 You can adjust the height of a particular row according to your needs.
 
-{{note Individual row height is currently not compatible with [static background rendering](api/gantt_static_background_config.md).}}
+{{note The individual row height is currently not compatible with [static background rendering](api/gantt_static_background_config.md).}}
 
 <img src="desktop/row_height.png"/>
 
-For that, you need to redefine the **row_height** and the **bar_height** properties of the task object in the data set:  
+For that, you need to redefine the **row_height** and **bar_height** properties of the task object in the data set:  
 
 {{snippet   Specifying the type of a task in the data set}}
 ~~~js

@@ -101,9 +101,9 @@ The additional properties are:
 
 {{sample 11_resources/13_resource_assignments_for_days.html}}
 
-The *start and end dates* of the resource assignment will be reflected in the resource histogram and diagram.
+1\. The *start and end dates* of the resource assignment will be reflected in the resource histogram and diagram.
 
-The optional *id* property of the assignment can be added to the resource assignment object:
+2\. The optional *id* property of the assignment can be added to the resource assignment object:
 
 ~~~js
 {
@@ -121,11 +121,11 @@ The assignment object will be accessible for the gantt API via this id:
 ~~~js
 var assignment = gantt.getDatastore("resourceAssignments").getItem(5);
 ~~~
+
+{{note The ["resourceAssignments"](api/gantt_resource_assignment_store_config.md) datastore is only available when the api/gantt_process_resource_assignments_config.md config is enabled. }}
+
 <br>
-
-{{note The "resourceAssignments" datastore is only available when the api/gantt_process_resource_assignments_config.md config is enabled. }}
-
-The work of the rest properties is defined by the value of the **mode** property:
+3\. The work of the rest properties is defined by the value of the **mode** property:
 
 - **_the "default" mode_**
 
@@ -183,6 +183,7 @@ In this mode, the dates of the resource assignment have exactly the same values 
 
 The *delay* field doesn't affect the dates of the assignment when the *"fixedDates"* mode is used.
 
+<br>
 Here is a short summary of how assignment dates are calculated in each mode:
 
 - **default**
@@ -374,8 +375,8 @@ assignmentStore.addItem({
 assignmentStore.removeItem(assignment.id);
 assignmentStore.updateItem(assignment.id);
 
-// after assignments are updated in the datastore, you need 
-// to call `updateTaskAssignments` to write changes to the task object:
+// after the assignments are updated in the datastore, you need 
+// to call `updateTaskAssignments` to write the changes to the task object:
 gantt.updateTaskAssignments(taskId);
 ~~~
 
