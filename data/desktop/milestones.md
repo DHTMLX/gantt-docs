@@ -126,8 +126,8 @@ var data = {
             parent:"11", progress: 1},
         {id:13, text:"Task #2", start_date:"03-04-2018", type:"project", 
             parent:"11", progress: 0.5, open: true},
-        {id:16, text:"Final milestone", start_date:"08-04-2018", type:"milestone",  
-            rollup: true, parent:"11", progress: 0},  
+        {id:16, text:"Final milestone", start_date:"08-04-2018", type:"milestone",  /*!*/
+            rollup: true, hide_bar: true, parent:"11", progress: 0},  /*!*/
         {id:17, text:"Task #2.1", start_date:"03-04-2018", duration:"2", 
             parent:"13", progress: 1},
         {id:18, text:"Task #2.2", start_date:"06-04-2018", duration:"1",   
