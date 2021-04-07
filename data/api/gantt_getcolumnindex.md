@@ -6,7 +6,7 @@ getColumnIndex
 
 @params:
 - name		string			the name of the column
-* excludeHidden		boolean			skip indexes of hidden columns
+* excludeHidden		boolean			skips indexes of hidden columns
 
 @returns:
 - index		number			the index of the column
@@ -18,7 +18,7 @@ var index = gantt.getColumnIndex("start_date"); // => 1
 @template:	api_method
 @descr:
 
-If `excludeHidden` parameter is set `true`, the method won't count columns which are [hidden](desktop/specifying_columns.md#visibility) using `hide:true` option of the config:
+If the `excludeHidden` parameter is set to *true*, the method won't count the columns which are [hidden](desktop/specifying_columns.md#visibility) via the *hide:true* option of the config:
 
 ~~~js
 gantt.config.columns = [
