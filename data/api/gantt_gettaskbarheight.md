@@ -27,9 +27,9 @@ The return value can also match the value specified to the **bar_height** proper
 var tasks = {
   	data:[
      	{ id: 1, text: "Project #2", start_date: "01-04-2018", duration: 18, 
-		 	progress: 0.4, open: true, bar_height: "full", row:height: 50 }, 
+		 	progress: 0.4, open: true, bar_height: "full", row_height: 50 }, 
 		{ id: 2, text: "Task #1", start_date: "02-04-2018", duration: 8, 
-			progress: 0.6, parent: 1, bar_height: 25, row:height: 50 },
+			progress: 0.6, parent: 1, bar_height: 25, row_height: 50 },
    	]
 };
 gantt.init("gantt_here");

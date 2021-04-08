@@ -167,7 +167,7 @@ The *end_date* is no longer linked to the end date of the task. Instead, it's ca
 
 Whenever the task object is updated, the dates of the assignments are recalculated, and the durations of the assignments remain unchanged.
 
-- **_the "fixedDate" mode_**
+- **_the "fixedDates" mode_**
 
 ~~~js
 {

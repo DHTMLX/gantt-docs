@@ -14,7 +14,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 7.1
 ----------
 
-<span class='release_date'>April 7, 2021. Major update</span>
+<span class='release_date'>April 8, 2021. Major update</span>
 
 ### Breaking changes
 
@@ -44,7 +44,7 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix the issue that caused the resizer listener not to work in Salesforce environment
 - Fix the script error appeared when applying [Fullscreen Extension](desktop/fullscreen_ext.md) several times together with its methods
 - Fix the issue with [Keyboard Navigation Extension](desktop/keynav_ext.md) that caused navigation in Grid to stop working when adding the plugin several times
-- Fix the issue with [Inline Editors](desktop/inline_editing.md) when the editor couldn't be opened after a [hidden](desktop/specifying_columns.md#visibility) column
+- Fix the issue with [Inline Editors](desktop/inline_editing.md) when the editor couldn't be opened in a cell located after a column hidden via the [hide:true](desktop/specifying_columns.md#visibility) property
 
 
 7.0.13
