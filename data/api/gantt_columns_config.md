@@ -61,6 +61,9 @@ Each object in the array specifies a single column. An object can take the follo
         <tr>
 			<td class="webixdoc_links0"><b>width</b></td>
 			<td>(<i>number</i>) defines the width of the column</td>
+		</tr><tr>
+			<td class="webixdoc_links0"><b>onrender</b></td>
+			<td>(<i>function</i>) optional, a callback function for rendering a cell into the DOM. The function takes a task object and the DOM element of the grid cell as parameters and may return a component of the framework. See details <a href="desktop/specifying_columns.md#modifyingcellsafterrendering">here</a>.</td>
 		</tr>
 </tbody>
 </table>
@@ -91,3 +94,5 @@ gantt.init("gantt_here");
 	desktop/specifying_columns.md
 @relatedsample:
 	05_lightbox/02_progress_lightbox.html
+
+@changelog: the **onrender** attribute has been added in v7.1

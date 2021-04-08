@@ -13,4 +13,5 @@ gantt.init("gantt_here");
 @template:	api_config
 @descr:
 
-
+@related:
+desktop/resizing_rows.md

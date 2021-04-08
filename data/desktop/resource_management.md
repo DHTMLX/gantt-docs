@@ -44,7 +44,7 @@ Resources can be connected to tasks via the properties of the task object in one
 
 You can use this format with the [custom multiselect control](desktop/custom_editor.md#customthirdpartyeditor). 
 
-- assigning multiple resources and specifiying their quantity
+- assigning multiple resources and specifying their quantity
 
 ~~~js
 {
@@ -60,6 +60,148 @@ When sending data to the server, DataProcessor serializes the values of the desc
 dataprocessor mode.
 
 
+<h3 id="resourceassignmenttime">Setting the time of the resource assignments</h3>
+
+By default, the resource is considered to be assigned for the whole duration of a task.<br>
+Starting from v7.1, the object of the resource assignment can accept additional optional parameters that allow specifying the dates of the assignment within the task. 
+
+The additional properties are:
+
+- **id** - (*string|number*) the id of the assignment
+- **start_date** - (*Date|string*) the date the assignment is scheduled to start
+- **end_date** - (*Date|string*) the date the assignment is scheduled to be completed
+- **delay** - (*number*) the difference between the assignment start date and the task start date
+- **duration** - (*number*) the duration of the assignment
+- **mode** - (*string*) the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
+
+~~~js
+{
+	id: 5, text: "Interior office", type: "task", start_date: "03-04-2019 00:00",
+	duration: 7, parent: "2", progress: 0.6, priority: 1,
+	users: [{
+		resource_id: "3",
+		value: 8,
+		delay: 1 /*!*/
+	},{
+		resource_id: "6",
+		value: 3,
+		start_date: "03-04-2019 00:00", /*!*/
+		end_date: "05-04-2019 00:00", /*!*/
+		mode: "fixedDates" /*!*/
+	},{
+		resource_id: "7",
+		value: 3,
+		delay: 1, /*!*/
+		duration: 2, /*!*/
+		mode: "fixedDuration" /*!*/
+	}
+	]
+}
+~~~
+
+{{sample 11_resources/13_resource_assignments_for_days.html}}
+
+1\. The *start and end dates* of the resource assignment will be reflected in the resource histogram and diagram.
+
+2\. The optional *id* property of the assignment can be added to the resource assignment object:
+
+~~~js
+{
+	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	users: [{
+		id: 5, 
+		resource_id: 2, value: 8, 
+		delay: 1
+	}]
+}
+~~~
+
+The assignment object will be accessible for the gantt API via this id:
+
+~~~js
+var assignment = gantt.getDatastore("resourceAssignments").getItem(5);
+~~~
+
+{{note The ["resourceAssignments"](api/gantt_resource_assignment_store_config.md) datastore is only available when the api/gantt_process_resource_assignments_config.md config is enabled. }}
+
+<br>
+3\. The work of the rest properties is defined by the value of the **mode** property:
+
+- **_the "default" mode_**
+
+~~~js
+{
+	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	users: [
+		{ resource_id: 2, value: 8, delay: 1},
+		{ resource_id: 3, value: 6},
+	]
+}
+~~~
+
+If the *mode* is not specified or is set to the "default" value, the *start_date* and *end_date* of the assignment are calculated from the dates of the task. By default, the start date of the assignment matches the start date of the task. The same approach is applied to the end date.
+
+The *delay* property works similarly to the *Delay* property of <a href="https://support.microsoft.com/en-us/office/assignment-delay-fields-427ac799-225c-4e10-9dcb-f58e524c8173">MS Project</a>. 
+
+If the delay is specified, the *start_date* of the assignment is calculated as <br>`gantt.calculateEndDate({start_date:task.start_date, duration:assignment.delay, task:task})`.
+
+The resource assignment will start with the specified delay from the start of the task. The end date of the assignment will match the end date of the task.<br>
+Whenever the task object is updated, the start/end dates of the assignment will be updated accordingly.
+
+- **_the "fixedDuration" mode_**
+
+~~~js
+{
+	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	users: [
+		{resource_id:2, value:8, duration: 1, delay:0, mode: "fixedDuration"},
+		{resource_id:2, value:2, duration: 1, delay:1, mode: "fixedDuration"},
+		{resource_id:2, value:3, delay:2, mode: "default"}
+	]
+}
+~~~
+
+The *start_date* of the assignment is calculated in the same way as it's calculated in the *"default"* mode.
+
+The *end_date* is no longer linked to the end date of the task. Instead, it's calculated as<br> `gantt.calculateEndDate({start_date:assignment.start_date, duration:assignment.delay, task:task})`.
+
+Whenever the task object is updated, the dates of the assignments are recalculated, and the durations of the assignments remain unchanged.
+
+- **_the "fixedDates" mode_**
+
+~~~js
+{
+	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	users: [{
+		resource_id:2, value:8, 
+		start_date:"03-04-2018", end_date:"11-04-2018", mode: "fixedDates"
+	}]
+}
+~~~
+
+In this mode, the dates of the resource assignment have exactly the same values as specified in the data and are not changed when the task is modified.
+
+The *delay* field doesn't affect the dates of the assignment when the *"fixedDates"* mode is used.
+
+<br>
+Here is a short summary of how assignment dates are calculated in each mode:
+
+- **default**
+
+  - assignment.start_date = task.start_date + assignment.delay
+  - assignment.end_date = task.end_date
+
+- **fixedDuration**
+
+  - assignment.start_date = task.start_date + assignment.delay
+  - assignment.end_date = assignment.start_date + assignment.duration
+
+- **fixedDates**
+
+  - assignment.start_date = assignment.start_date
+  - assignment.end_date = assignment.end_date
+
+
 ###Getting tasks a resource is assigned to 
 
 There is a shorthand for getting all tasks assigned to a resource - api/gantt_getresourceassignments.md.
@@ -72,10 +214,18 @@ The method takes as a parameter the id of the resource and returns an array of o
 
 ~~~js
 [ 
-    {task_id: 5, resource_id: "6", value: 5},
-    {task_id: 18, resource_id: "6", value: 2},
-    {task_id: 19, resource_id: "6", value: 3},
-    {task_id: 21, resource_id: "6", value: 5}
+	{task_id: 5, resource_id: "6", value: 5, delay: 0, duration: 7, 
+		start_date: "03-04-2019 00:00", end_date: "12-04-2019 00:00", 
+		id: 1617258553240, mode: "default"},
+	{task_id: 18, resource_id: "6", value: 2, delay: 0, duration: 2, 
+		start_date: "05-04-2019 00:00", end_date: "09-04-2019 00:00", 
+		id: 1617258553250, mode: "default"},
+	{task_id: 19, resource_id: "6", value: 3, delay: 0, duration: 4, 
+		start_date: "09-04-2019 00:00", end_date: "13-04-2019 00:00", 
+		id: 1617258553251, mode: "default"},
+	{task_id: 21, resource_id: "6", value: 5, delay: 0, duration: 4, 
+		start_date: "03-04-2019 00:00", end_date: "09-04-2019 00:00", 
+		id: 1617258553254, mode: "default"}
 ]
 ~~~
 
@@ -84,7 +234,36 @@ Each object contains the following properties:
 - *task_id* - the id of the task
 - *resource_id* - the id of the resource
 - *value* - the quantity of the resource assigned to a task
+- *delay* - the difference between the assignment start date and the task start date
+- *duration* - the duration of the assignment
+- *start_date* - the date the assignment is scheduled to start
+- *end_date* - the date the assignment is scheduled to be completed
+- *id* - the id of the assignment
+- *mode* - the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
 
+
+### Getting resource assignments of a task
+
+The api/gantt_gettaskassignments.md method allows getting the parsed resource assignments of a specific task from the datastore:
+
+~~~js
+gantt.getTaskAssignments(5);
+~~~
+
+The method takes as a parameter the id of the task and returns an array of objects with the resource assignments of the task:
+
+~~~js
+[
+	{task_id: 5, id: 1617254693938, delay: 0, duration: 2, 
+		start_date: "03-04-2019 00:00", end_date: "05-04-2019 00:00", 
+		mode: "fixedDuration", resource_id: 6, value: 3},
+	{task_id: 5, id: 1617254693946, delay: 3, duration: 1, 
+		start_date: "06-04-2019 00:00", end_date: "07-04-2019 00:00", 
+		mode: "fixedDuration", resource_id: 6, value: 6}
+]
+~~~
+
+The return object contains the same list of properties as the return object of the api/gantt_getresourceassignments.md method.
 
 ###Setting connection via lightbox
 
@@ -141,6 +320,65 @@ gantt.updateCollection("people", [
 {{sample  11_resources/01_assigning_resources.html}}
 
 If you define resources via the *serverList* collection, they can be [loaded together with the rest of the data](desktop/supported_data_formats.md#jsonwithcollections), otherwise you'll need to load them manually.
+
+
+Managing resource assignments
+---------------------------
+
+### Parsing resource assignments
+
+Starting with v7.1, you can work with the [resource assignments](desktop/resource_management.md#resourceassignmenttime) as with objects of the data store. 
+
+The new [process_resource_assignments](api/gantt_process_resource_assignments_config.md) property enables the process of parsing of the values from the [gantt.config.resource_property](api/gantt_resource_property_config.md) of tasks into the internal objects of the resource assignments.
+As a result, you are able to manipulate the resource assignments via the DataStore object. For instance, you can get the necessary assignment object or update it.
+
+**Note**, that this functionality is required if you want to [specify the desired duration and time for the resources](desktop/resource_management.md#resourceassignmenttime) when building Resource Diagram and Histogram.
+
+The process may add noticeable performance overhead and large projects may start working slower.
+Therefore, if you don't need to set time or duration of the assignment, you can disable parsing of the resource assignments using the config:
+
+~~~js
+gantt.config.process_resource_assignments = false;
+~~~
+
+When the config is disabled, the `gantt.getDatastore("resourceAssignments")` datastore won't be available and the assignment objects won't have any dynamic properties. The resource diagram and histogram will consider resources to be assigned to the whole duration of the task.
+
+### Updating resource assignments
+
+The resource assignments are stored in the [data store](api/gantt_resource_assignment_store_config.md) which is created automatically. 
+
+By default, the store of the assignments is populated from the task objects. It means, that if you modify the resource property of the task object (e.g. task.users), the changes will be automatically reflected in the data store.
+
+~~~js
+task[gantt.config.resource_property] = [
+	{
+		resource_id: "6",
+		value: 3,
+		start_date: "03-04-2019 00:00",
+		end_date: "05-04-2019 00:00",
+	}
+];
+gantt.updateTask(taskId);
+~~~
+
+<br>
+But you may need to refresh the data of the assignments in the opposite direction. Namely, you may need to apply the changes to the task object after the resource assignments are modified via the datastore API. In this case, you need to update the resource property of the task object with the values from the datastore by calling the [gantt.updateTaskAssignments()](api/gantt_updatetaskassignments.md) method:
+
+~~~js
+var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
+
+assignmentStore.addItem({
+    resource_id: 5,
+    task_id: 2,
+    value: 4
+});
+assignmentStore.removeItem(assignment.id);
+assignmentStore.updateItem(assignment.id);
+
+// after the assignments are updated in the datastore, you need 
+// to call `updateTaskAssignments` to write the changes to the task object:
+gantt.updateTaskAssignments(taskId);
+~~~
 
 
 Showing task resource
@@ -303,7 +541,8 @@ Once initialized, *resourceGrid* will work in the same way as the default grid v
 the api/gantt_resource_cell_class_template.md and api/gantt_resource_cell_value_template.md templates:
 
 ~~~js
-gantt.templates.resource_cell_value = function(start_date, end_date, resource, tasks){
+gantt.templates.resource_cell_value = function(start_date, end_date, resource, tasks,
+	assignments){
 	var html = "<div>" +  tasks.length * 8 + "h</div>";
 		return html;
 };
@@ -358,7 +597,8 @@ The same as in the resource load diagram, *resourceGrid* will work in the same w
 - *histogram_cell_class* - the CSS class which is applied to a cell of the resource panel
 
 ~~~js
-gantt.templates.histogram_cell_class=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_class=function(start_date,end_date,resource,tasks,
+	assignments){
 	return "";
 };
 ~~~
@@ -366,7 +606,8 @@ gantt.templates.histogram_cell_class=function(start_date,end_date,resource,tasks
 - *histogram_cell_label* - the label inside a cell
 
 ~~~js
-gantt.templates.histogram_cell_label=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_label=function(start_date,end_date,resource,tasks,
+	assignments){
  	return tasks.length * 8;
 };
 ~~~
@@ -374,7 +615,8 @@ gantt.templates.histogram_cell_label=function(start_date,end_date,resource,tasks
 - *histogram_cell_allocated* - the height of the filled area in the histogram. Its value can be set from 0 to *maxCapacity* *.
 
 ~~~js
-gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,tasks,
+	assignments){
  	return tasks.length * 8;
 };
 ~~~
@@ -382,7 +624,8 @@ gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,t
 - *histogram_cell_capacity* - the height of the line that defines the available capacity of the resource. Its value can be set from -1 to *maxCapacity* *. Values less than 0 won't render the line.
 
 ~~~js
-gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,tasks){
+gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,tasks,
+	assignments){
  	return 24;
 };
 ~~~

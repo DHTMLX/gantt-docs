@@ -65,6 +65,7 @@ Check the [features available in the Standard and PRO versions](desktop/editions
             </h4>
             <ul id="events_sublist">
                     <li>desktop/specifying_columns.md</li>
+                    <li>desktop/resizing_rows.md</li>
                     <li>desktop/tree_column.md</li>
                     <li>desktop/reordering_tasks.md</li>
                     <li>desktop/multiselection.md</li>

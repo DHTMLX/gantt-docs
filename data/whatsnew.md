@@ -10,6 +10,43 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+
+7.1
+----------
+
+<span class='release_date'>April 8, 2021. Major update</span>
+
+### Breaking changes
+
+The update brings changes to some parts of the component. While the update doesn't introduce any changes that would require modifying the existing code, be sure to check the [Migration](migrating.md#7071) article.
+
+### New functionality
+
+- [The ability to assign resources to the specific dates of the task](desktop/resource_management.md#resourceassignmenttime)
+- The new [gantt.getTaskAssignments()](api/gantt_gettaskassignments.md) method
+- [The ability to manage the resource assignments](desktop/resource_management.md#managingresourceassignments) via the new [gantt.config.process_resource_assignments](api/gantt_process_resource_assignments_config.md) and [gantt.updateTaskAssignments()](api/gantt_updatetaskassignments.md) Gantt API
+- [Rollup tasks and milestones](desktop/milestones.md#rolluptasksandmilestones)
+- [The ability to hide task bars and milestones in the timeline area](desktop/milestones.md#hidingtasksandmilestones)
+- [The ability to set different working hours for different time spans](desktop/working_time.md#rules_for_periods)
+- [The ability to set the height for a separate row in the grid](desktop/resizing_rows.md#settingtherowheight)
+- [The ability to resize a row in the grid by drag-and-drop](desktop/resizing_rows.md#resizingrowsbydraganddrop)
+- The ability to get the height of the DOM element of the task via the [gantt.getTaskBarHeight()](api/gantt_gettaskbarheight.md) method
+- New events: [onBeforeRowResize](api/gantt_onbeforerowresize_event.md), [onRowResize](api/gantt_onrowresize_event.md), [onBeforeRowResizeEnd](api/gantt_onbeforerowresizeend_event.md), [onAfterRowResize](api/gantt_onafterrowresize_event.md)
+- The [onrender](desktop/specifying_columns.md#modifyingcellsafterrendering) callback for rendering a grid cell into DOM is added
+- The [onrender](api/gantt_addtasklayer.md) callback for rendering a custom element of the task layer into DOM is added
+
+### Fixes
+
+- Fix the issue with reordering tasks vertically in the resource view when resources have values assigned 
+- Fix the issue that caused "resource_cell_value" not being called and the resource markers not being rendered if a task doesn't start at the beginning of the timeline cell 
+- Fix the issue that caused Gantt to stop working when deleting the task with the id that already exists in the data store
+- Fix the script error thrown when specifying the 0 number value as a task id even if the "root_id" parameter is set
+- Fix the issue that caused the resizer listener not to work in Salesforce environment
+- Fix the script error appeared when applying [Fullscreen Extension](desktop/fullscreen_ext.md) several times together with its methods
+- Fix the issue with [Keyboard Navigation Extension](desktop/keynav_ext.md) that caused navigation in Grid to stop working when adding the plugin several times
+- Fix the issue with [Inline Editors](desktop/inline_editing.md) when the editor couldn't be opened in a cell located after a column hidden via the [hide:true](desktop/specifying_columns.md#visibility) property
+
+
 7.0.13
 ------
 

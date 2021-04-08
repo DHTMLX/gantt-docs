@@ -20,6 +20,69 @@ Migration from Older Versions
 	}
 </style>
 
+7.0 -> 7.1
+-------------
+
+Version 7.1 doesn't introduce any breaking changes that would require modifying the existing code.
+
+There is a minor visual change in the way milestones are rendered, which can be reverted by the code if needed.
+Large projects that use the resource panel may have a possible performance decrease caused by the new logic of the resource assignments, it can be mitigated by disabling the unneeded logic.
+
+### Milestones
+
+The size of Milestone elements has changed compared to the previous versions in order for the milestones to have the same height as regular bars.
+
+If you want the milestones to look the same as in previous versions, you can adjust the height of the milestone elements using the **bar_height** property:
+
+~~~js
+{
+    id:23, text:"Mediate milestone", start_date:"13-04-2018", 
+    type:"milestone", parent:"15", bar_height: 35
+}
+~~~
+
+### Resource assignments
+
+Version 7.1 adds a complex logic to resource assignments which allows specifying dates of the resource assignments and working with the resource assignments via DataStore.
+It should not affect the existing code, but the changes may add noticeable performance overhead to resource calculations.
+
+If you don't need to assign resources to specific dates of tasks, you can disable the new functionality using the **process_resource_assignments** config in order to improve the performance:
+
+~~~js
+gantt.config.process_resource_assignments = false;
+~~~
+
+### New optional properties of Task objects
+
+The following properties of the task object are now processed by the gantt and affect the display of tasks:
+
+- "task.row_height"
+- "task.bar_height"
+- "task.hide_bar"
+- "task.rollup"
+  
+If you have custom properties with the same names, you should rename them to avoid conflicts.
+
+### Deep copy on data parsing
+
+Gantt performed a deep copy of data objects on data parsing from [v6.3.2](whatsnew.md#632) till v7.1.
+<br>Starting with v7.1, the functionality is disabled by default. 
+
+You can enable the old behavior by setting the [gantt.config.deepcopy_on_parse](api/gantt_deepcopy_on_parse_config.md) to *true*:
+
+~~~js
+gantt.config.deepcopy_on_parse = true;
+~~~
+
+### Deprecated config
+
+The **gantt.config.task_height** property has been deprecated since v7.1. Despite the property will still continue work and the **task_height** config will be used if specified, you'd better use the new [gantt.config.bar_height](api/gantt_bar_height_config.md) option instead:
+
+~~~js
+gantt.config.bar_height = 50;
+~~~
+
+
 6.3 -> 7.0
 ---------------------
 
