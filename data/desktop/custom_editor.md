@@ -188,6 +188,9 @@ In the example above the resource with the id=5 is not shown as an option in the
 
 You can add a custom datepicker control to the lightbox for setting task duration by specifying the start and end dates of a task.
 
+
+### jQuery Datepicker in the lightbox
+
 For example, you can create a Datepicker control on the base of jQuery UI Datepicker.
 
 ![Custom Datepicker control](desktop/custom_datepicker.png)
@@ -196,16 +199,16 @@ For example, you can create a Datepicker control on the base of jQuery UI Datepi
 
 To use a jQuery Datepicker control in the Gantt Chart:
 
-- include the source files of the jQuery library on the page
+- include the source files of the jQuery library on the page:
 
-~~~js
+~~~html
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <link  rel="stylesheet" type="text/css" 
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 ~~~
 
-- describe the control logic
+- describe the control logic:
 
 ~~~js
 (function () {
@@ -281,12 +284,109 @@ To use a jQuery Datepicker control in the Gantt Chart:
 })();
 ~~~
 
-- use the control as a lightbox section with the type:"datepicker"
+- use the control as a lightbox section with the type:"datepicker":
 
 ~~~js
 gantt.config.lightbox.sections = [
-	{ name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
-	{ name: "time", height: 72, map_to: "auto", type: "datepicker" }
+  { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+  { name: "time", height: 72, map_to: "auto", type: "datepicker" }
+];
+~~~
+
+### Bootstrap Datepicker in the lightbox
+
+A Bootstrap Datepicker can be added into the lightbox in the similar way as jQuery Datepicker.
+
+![Bootstrap Datepicker control](desktop/bootstrap_datepicker.png)
+
+{{editor	https://snippet.dhtmlx.com/5/e2008b944	Bootstrap Datepicker control}}
+
+To use a Bootstrap Datepicker control in the Gantt Chart:
+
+- include the source files of the Bootstrap library on the page;
+
+- describe the control logic:
+
+~~~js
+(function () {
+    const startDatepicker = (node) => $(node).find("input[name='start']");
+    const endDateInput = (node) => $(node).find("input[name='end']");
+          
+	gantt.form_blocks["datepicker"] = {
+		render: (sns) => {
+          const height = sns.height || 45;
+			return "<div class='gantt-lb-datepicker' style='height:" + height + "px;'>"+
+                        "<input type='text' name='start'> - "+
+                        "<input type='text' name='end'>"+
+                    "</div>";;
+        },
+		set_value: (node, value, task, section) => {
+          	const datepickerConfig = { 
+              	format: 'yyyy-mm-dd',
+              	autoclose: true,
+               	container: gantt.$container
+            };
+			startDatepicker(node).datepicker(datepickerConfig);
+          	startDatepicker(node).datepicker('setDate', 
+			  	value ? value.start_date : task.start_date
+			);
+          
+			endDateInput(node).datepicker(datepickerConfig);
+          	endDateInput(node).datepicker('setDate', 
+			  	value ? value.end_date : task.end_date
+			);
+          
+            startDatepicker(node).datepicker().on('changeDate', function(e) {
+                const endValue = endDateInput(node).datepicker('getDate');
+                const startValue = startDatepicker(node).datepicker('getDate');
+
+                if (startValue && endValue) {
+                    if (endValue.valueOf() <= startValue.valueOf()) {
+                        endDateInput(node).datepicker('setDate', 
+                            gantt.calculateEndDate({
+								start_date: startValue, duration: 1, task:task
+							})
+						);
+                    }
+                }
+            });
+		},
+		get_value: (node, task, section) => {
+            const start = startDatepicker(node).datepicker('getDate');
+            let end =  endDateInput(node).datepicker('getDate');
+
+            if (end.valueOf() <= start.valueOf()) {
+                end = gantt.calculateEndDate({
+                    start_date: start,
+                    duration: 1,
+                    task:task
+                });
+            }
+        	if (task.start_date && task.end_date) {
+              	task.start_date = start;
+              	task.end_date = end;                 
+            }
+            
+			task.duration = gantt.calculateDuration(task);
+          	
+          	return {
+            	start_date: start,
+              	end_date: end,
+              	duration: task.duration
+			};
+		},
+		focus: (node) => {
+		}
+	}
+})();
+~~~
+
+- use the control as a lightbox section with the type:"datepicker":
+
+~~~js
+gantt.config.lightbox.sections = [
+  { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+  { name: "time", height: 45, map_to: "auto", type: "datepicker" }
 ];
 ~~~
 
@@ -301,16 +401,16 @@ You may also need to add a custom Duration control to the lightbox for specifyin
 
 Let's consider how to add a custom Duration control on the base of jQuery:
 
-- include the source files of the jQuery library on the page
+- include the source files of the jQuery library on the page:
 
-~~~js
+~~~html
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <link  rel="stylesheet" type="text/css" 
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 ~~~
 
-- describe the logic of the control
+- describe the logic of the control:
 
 ~~~js
 (function () {
@@ -400,11 +500,11 @@ Let's consider how to add a custom Duration control on the base of jQuery:
 })();
 ~~~
 
-- use the control as a lightbox section with the type:"datepicker_duration"
+- use the control as a lightbox section with the type:"datepicker_duration":
 
 ~~~js
 gantt.config.lightbox.sections = [
-	{ name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
-	{ name: "time", height: 72, map_to: "auto", type: "datepicker_duration" }
+  { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+  { name: "time", height: 72, map_to: "auto", type: "datepicker_duration" }
 ];
 ~~~
