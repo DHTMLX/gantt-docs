@@ -65,6 +65,8 @@ export interface GanttLocaleLabels {
 	/* resource control */
 	resources_filter_placeholder: string;
 	resources_filter_label: string;
+
+	[customLabel: string]: any;
 }
 
 export interface GanttLocale {
