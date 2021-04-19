@@ -11,6 +11,22 @@ What's New
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
 
+7.1.1
+------
+
+<span class='release_date'>April 19, 2021. Bugfix release</span>
+
+### Fixes
+
+- Fix the regression in the [click_drag](desktop/extensions_list.md#advanceddragndrop) plugin
+- Fix the Security Violation error thrown from the gantt when setting the [gantt.config.csp](api/gantt_csp_config.md) config to the "auto" mode
+- Fix code build settings that caused the package code v7.1.0 to contain ES6 syntax, the library is again ES5 compatible
+- Fix the script error fired when trying to resize a grid column when [gantt.config.reorder_grid_columns](api/gantt_reorder_grid_columns_config.md) config is enabled
+- Update TypeScript type definitions
+- Add the [onDestroy](api/gantt_datastore_other.md#ondestroy) event to the [datastore](api/gantt_datastore_other.md)
+- Performance improvement for gantts with a large number of [task calendars](desktop/working_time.md#assigningcalendartotask)
+- Performance improvement for [calculations of resource assignment](desktop/resource_management.md#managingresourceassignments) during [batchUpdate](api/gantt_batchupdate.md) and [autoScheduling](desktop/auto_scheduling.md)
+
 7.1
 ----------
 

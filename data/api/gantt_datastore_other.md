@@ -1001,6 +1001,34 @@ store.attachEvent("onFilterItem", function(id, item){
  <i>The twin of the onFilterItem event of datastore is the <a href="api/gantt_onbeforetaskdisplay_event.md">onBeforeTaskDisplay</a> event of Gantt.</i>
 </ul>
 
+<ul id="ondestroy">
+    <li>
+    	<b>onDestroy()</b> - fires after the destructor() method of the datastore is called
+</li>
+</ul>
+<ul>
+~~~js
+var datastore = gantt.createDatastore({
+	name: gantt.config.resource_store,
+	type: "treeDatastore",
+	initItem: function (item) {
+		item.parent = item.parent || gantt.config.root_id;
+		item[gantt.config.resource_property] = item.parent;
+		item.open = true;
+		return item;
+	}
+});
+
+datastore.attachEvent("onDestroy", function(){
+    alert("free custom resources");
+});
+
+datastore.destructor();
+~~~
+<br>
+</ul>
+
+
 
 @relatedapi:
 api/gantt_createdatastore.md
