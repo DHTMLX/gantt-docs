@@ -10,6 +10,17 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.1.2
+------
+
+<span class='release_date'>April 26, 2021. Bugfix release</span>
+
+### Fixes
+
+- Major performance improvement of the [resource panel](desktop/resource_management.md#resourceviewpanel)
+- Fix the script error thrown when [gantt.destructor](api/gantt_destructor.md) is called while [gantt.load](api/gantt_load.md) is in progress
+- Fix the incorrect behavior of [split tasks](desktop/split_tasks.md) on change of the task id 
+- Fix the incorrect work of scroll on mouse wheel in Angular
 
 7.1.1
 ------
