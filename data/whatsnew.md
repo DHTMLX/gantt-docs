@@ -10,6 +10,17 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.1.3
+------
+
+<span class='release_date'>May 25, 2021. Bugfix release</span>
+
+### Fixes
+
+- Fix the script error thrown on [gantt.moveTask](api/gantt_movetask.md) call when some tasks are hidden via the [onBeforeTaskDisplay](api/gantt_onbeforetaskdisplay_event.md) event
+- Fix the issue with the speed of the scroll in the latest Firefox browser
+- Performance improvement for [calculations of working time](desktop/working_time.md)
+
 7.1.2
 ------
 
