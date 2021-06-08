@@ -16,7 +16,7 @@ Start
 
     <p class='action_buttons'>
        <a class='action_button moredetails' href="whatsnew.html">More details</a>
-       <a class='action_button download' href="http://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml" target="_blank">Download</a>
+       <a class='action_button download' href="https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml" target="_blank">Download</a>
     </p>
 </div>
 
