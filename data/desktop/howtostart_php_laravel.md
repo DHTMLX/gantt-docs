@@ -340,7 +340,7 @@ class GanttController extends Controller
 }
 ~~~
 
-And register a route, so the client could call this action. Note that we'll add the route to the [api.php routes file](https://laravel.com/docs/routing#basic-routing):
+And register a route, so the client could call this action. Note that we'll add the route to the [api.php routes file](https://laravel.com/docs/8.x/routing#basic-routing):
 
 {{snippet routes/api.php}}
 ~~~php

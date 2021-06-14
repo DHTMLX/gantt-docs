@@ -1,7 +1,7 @@
 dhtmlxGantt with ASP.NET MVC  
 ===============================
 
-This tutorial will give you step-by-step instructions on creating Gantt with [ASP.NET](https://www.asp.net/) and REST API on the server side. 
+This tutorial will give you step-by-step instructions on creating Gantt with [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) and REST API on the server side. 
 
 You can also explore other server-side integration possibilities of Gantt by choosing one of the following tutorials:
 

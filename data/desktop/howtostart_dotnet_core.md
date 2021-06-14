@@ -1,7 +1,7 @@
 dhtmlxGantt with ASP.NET Core 
 ==========================
 
-This tutorial gives you step-by-step instructions on how to create Gantt with [ASP.NET](https://www.asp.net/) Core 2 on the server side.
+This tutorial gives you step-by-step instructions on how to create Gantt with [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) Core 2 on the server side.
 
 You can also read tutorials on other server-side technologies:
 

@@ -1,14 +1,14 @@
 How to Install dhtmlxGantt 
 ====================================
 
-You can use [NuGet](http://www.nuget.org/), [Bower](http://bower.io/) or [npm](https://www.npmjs.com/) package managers to install the dhtmlxGantt package into your project.
+You can use [NuGet](https://www.nuget.org/), [Bower](https://bower.io/) or [npm](https://www.npmjs.com/) package managers to install the dhtmlxGantt package into your project.
 
 It's also possible to include the necessary JS/CSS files from CDN.
 
 NuGet
 -------------------------
 
-To install dhtmlxGantt through [NuGet](http://www.nuget.org/), execute the following command line:
+To install dhtmlxGantt through [NuGet](https://www.nuget.org/), execute the following command line:
 
 ~~~html
 nuget install DHTMLX.Gantt
@@ -24,7 +24,7 @@ install-package DHTMLX.Gantt
 Bower
 -------------------------
 
-To install dhtmlxGantt through [Bower](http://bower.io/), execute the following command line:
+To install dhtmlxGantt through [Bower](https://bower.io/), execute the following command line:
 
 ~~~html
 bower install gantt
