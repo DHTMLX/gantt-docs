@@ -119,9 +119,9 @@ Common properties of the boxes are:
 - **cancel** - the text of the "Cancel" button (for the confirm box);
 - **callback** - the function called on button click. Takes *true* or *false* as the parameter (subject to the clicked button);
 - **position** - for now supports only one value - "top", any other value will result in center-align;
-- **width**	- the width of the modal box (set as CSS [&#60;length&#62;](https://developer.mozilla.org/en/docs/Web/CSS/length) or
+- **width**	- the width of the modal box (set as CSS [&#60;length&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/length) or
 	[&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) values, e.g. "100px", "50%");
-- **height** - the height of the modal box (set as CSS [&#60;length&#62;](https://developer.mozilla.org/en/docs/Web/CSS/length) or
+- **height** - the height of the modal box (set as CSS [&#60;length&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/length) or
 	[&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) values, e.g. "100px", "50%").
 
 
