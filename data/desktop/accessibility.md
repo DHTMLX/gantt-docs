@@ -4,7 +4,7 @@ Accessibility
 [Accessibility](https://www.w3.org/WAI/fundamentals/accessibility-intro/) is an important and necessary standard for modern web applications. 
 There's a set of various techniques that allow making an application or a web site handier to use or work with. 
 
-To make an easier access and interaction with DHTMLXGantt for people with disabilities, the component contains a set of accessibility features:
+To make an easier access and interaction with DHTMLX Gantt for people with disabilities, the component contains a set of accessibility features:
 
 - WAI-ARIA Attributes
 - Keyboard  Navigation
@@ -16,7 +16,7 @@ WAI-ARIA Attributes
 DHTMLXGantt provides WAI-ARIA support that implies the use of special attributes in the component's markup.
 These are additional attributes which make the component recognizable for screen readers. 
 
-You can find more information in the [official specification](https://www.w3.org/WAI/intro/aria) of WAI-ARIA.
+You can find more information in the [official specification](https://www.w3.org/WAI/standards-guidelines/aria/) of WAI-ARIA.
 
 WAI-ARIA attributes in Gantt are enabled by default, to disable them you can use the *wai_aria_attributes* property with the *false* value:
 

@@ -12,7 +12,7 @@ You can also explore other server-side integration possibilities of Gantt by cho
 - desktop/howtostart_ruby.md
 
 We will make use of the ASP.NET MVC 5 web platform and the Web API 2 controller for REST API to create a Gantt application.
-To organize communication with a database we will use the [Entity Framework](http://www.asp.net/entity-framework).
+To organize communication with a database we will use the [Entity Framework](https://docs.microsoft.com/en-us/aspnet/entity-framework).
 We will build our application with the help of the Visual Studio IDE. 
 
 {{note
@@ -210,7 +210,7 @@ namespace DHX.Gantt.Web.Models
 
 ####Installing Entity Framework
 
-As you remember, we are going to organize the work with a database with the help of the [Entity Framework](http://www.asp.net/entity-framework).
+As you remember, we are going to organize the work with a database with the help of the [Entity Framework](https://docs.microsoft.com/en-us/aspnet/entity-framework).
 
 So, first of all we need to install the framework. To do it, you need to run the following command in the Package Manager Console:
 

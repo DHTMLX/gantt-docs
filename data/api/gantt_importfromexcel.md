@@ -34,7 +34,7 @@ Read the details in the desktop/excel.md#importfromexcel article.
 The method takes as a parameter an object with configuration properties of an imported file:
 
 - **server** - sets the API endpoint for the request. Can be used with the local install of the import service. The default value is **https://export.dhtmlx.com/gantt**.
-- **data** - an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain an Excel (xlsx) file. 
+- **data** - an instance of [File](https://developer.mozilla.org/en-US/docs/Web/API/File) which should contain an Excel (xlsx) file. 
 - **callback** - a callback function.
 - **sheet** - the number of the sheet of the document that should be returned by the import service.
 

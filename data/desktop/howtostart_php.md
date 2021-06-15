@@ -14,7 +14,7 @@ There are tutorials intended for building server-side integration with the help 
 - desktop/howtostart_php_slim4.md
 - desktop/howtostart_ruby.md
 
-We will use the [Slim 3](http://www.slimframework.com/) framework for routing and MySQL as a data storage. CRUD logic will rely on PDO and will be generic enough to be usable with any other framework.
+We will use the [Slim 3](https://www.slimframework.com/) framework for routing and MySQL as a data storage. CRUD logic will rely on PDO and will be generic enough to be usable with any other framework.
 
 {{note
 The complete source code is [available on GitHub](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x).

@@ -22,7 +22,7 @@ gantt.config.resource_attribute = "data-resource-id";
 
 
 <img src="api/resource_attribute.png" /><br>
-{{editor 	https://snippet.dhtmlx.com/66401acf0 	Resourse_attribute}}
+{{editor 	https://snippet.dhtmlx.com/5/66401acf0 	Resourse_attribute}}
 
 
 

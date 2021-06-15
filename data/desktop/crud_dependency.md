@@ -152,4 +152,4 @@ Here is a sample code of the edit-lag popup implementation:
 })();
 ~~~
 
-{{editor	http://snippet.dhtmlx.com/7c812e5bd		 Edit-lag Popup}}
+{{editor	https://snippet.dhtmlx.com/5/7c812e5bd		 Edit-lag Popup}}

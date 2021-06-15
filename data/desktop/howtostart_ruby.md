@@ -3,7 +3,7 @@ dhtmlxGantt with Ruby on Rails
 
 In this article you'll learn how to create a Gantt chart with a [Ruby on Rails](http://rubyonrails.org/) backend.
 For implementing this app we'll use Ruby 2.4.1, Rails 5.1.3 and MySQL. This tutorial assumes that you have all prerequisites already installed. 
-Otherwise please visit [the official tutorials](http://guides.rubyonrails.org/index.html) first. 
+Otherwise please visit [the official tutorials](https://guides.rubyonrails.org/index.html) first. 
 
 If you use some other technology, check the list of available integration variants below:
 
@@ -251,7 +251,7 @@ gantt.init("gantt_here");
 gantt.load("/api/data");/*!*/
 ~~~
 
-Note that [date_format](api/gantt_date_format_config.md) config specifies the [format of dates](http://api.rubyonrails.org/v5.1/classes/DateTime.html#method-i-to_formatted_s) 
+Note that [date_format](api/gantt_date_format_config.md) config specifies the [format of dates](https://api.rubyonrails.org/v5.1/classes/DateTime.html#method-i-to_formatted_s) 
 (<b>start_date</b> of Task) that comes from the server.
 
 If you run the server now and open *http://localhost:3000/* in your browser, you should be able to see a gantt chart populated with tasks and links from the database.
@@ -334,7 +334,7 @@ A couple of notes regarding this code:
 - we don't need the get action since all data is already loaded from *gantt#data*
 - the *progress* property may be not initialized on the client by default, so we need to provide the default value here. 
 Alternatively, we could have defined the default value in the model class,
-(which can be done, for example, using [migration](http://api.rubyonrails.org/classes/ActiveRecord/Migration.html)) 
+(which can be done, for example, using [migration](https://api.rubyonrails.org/classes/ActiveRecord/Migration.html)) 
 - an action that creates a new item should return the database id of a newly inserted record back to the client
 
 After that we need to add the new routes to the config, and users will be able to view/create/update and delete tasks in our gantt chart:

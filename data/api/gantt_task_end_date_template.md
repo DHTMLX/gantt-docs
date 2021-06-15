@@ -29,14 +29,14 @@ For example, let's consider a task that starts on April 2nd, 2020 and lasts for 
 
 By default, the end date of this task will be displayed as April 3rd, 2020 (`03-04-2020 00:00:00`):
 
-- [Live demo: Default format](https://snippet.dhtmlx.com/24f73d6ec)
+- [Live demo: Default format](https://snippet.dhtmlx.com/5/24f73d6ec)
 
 <img  src="api/task_end_date_template_default.png"/>
 
 
 You can change the format of the end date to April 2nd, 2020:
 
-- [Live demo: Inclusive end date format](https://snippet.dhtmlx.com/f2c801d3d)
+- [Live demo: Inclusive end date format](https://snippet.dhtmlx.com/5/f2c801d3d)
 
 <img  src="api/task_end_date_template.png"/>
 

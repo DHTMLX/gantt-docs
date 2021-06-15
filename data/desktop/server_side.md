@@ -9,7 +9,7 @@ Server-Side Integration
 </style>
 
 The recommended approach to connect dhtmlxGantt to a backend is to implement RESTful API on the server and use dhtmlxDataProcessor on the client.
-[DataProcessor](http://docs.dhtmlx.com/dataprocessor__index.html) is a client-side library included into dhtmlxGantt.js. It monitors data changes and gets the server requests on the client side.
+[DataProcessor](https://docs.dhtmlx.com/dataprocessor__index.html) is a client-side library included into dhtmlxGantt.js. It monitors data changes and gets the server requests on the client side.
  
 Gantt uses its own instance of DataProcessor which has some specificity in comparison to the main version of the library. The current article describes the way of using Gantt DataProcessor to provide
 [integration with server-side platforms](desktop/howtostart_guides.md).

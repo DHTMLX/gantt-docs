@@ -132,7 +132,7 @@ and
 php artisan make:model Link --migration
 ~~~
 
-After that find the migrations in the `database/migrations` folder and define a [database schema](https://laravel.com/docs/migrations#migration-structure). 
+After that find the migrations in the `database/migrations` folder and define a [database schema](https://laravel.com/docs/8.x/migrations#migration-structure). 
 You can find the database schema expected by the gantt [here](desktop/loading.md#databasestructure).
 
 The code for the Tasks table looks like this:

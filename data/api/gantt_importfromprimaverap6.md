@@ -47,7 +47,7 @@ Read the details in the desktop/export_msproject.md#importfrommsproject article.
 
 The method takes as a parameter an object with configuration properties of an imported file:
 
-- **data** - an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain either MPP or XML Project file.
+- **data** - an instance of [File](https://developer.mozilla.org/en-US/docs/Web/API/File) which should contain either MPP or XML Project file.
 - **callback** - a callback function.
 - **durationUnit** - sets an expected duration unit ("minute", "hour", "day", "week", "month", "year").
 - **projectProperties** - specifies an array of project properties that should be put into the response.

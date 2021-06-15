@@ -130,8 +130,8 @@ Setting the template of tree nodes
 To set the template for tree nodes, use the **template** attribute in the api/gantt_columns_config.md property. <br> The return value of the **template'**s function will be added as an inner HTML. That's why, you can use any HTML structures in the attribute.
 
 {{note
-Note, if you don't use [dhtmlxConnector](http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start) to [integrate with the server side](desktop/server_side.md), you have to sanitize the data 
-you load into the Gantt chart in order to prevent possible XSS attacks ([dhtmlxConnector](http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start) does it automatically)
+Note, if you don't use [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) to [integrate with the server side](desktop/server_side.md), you have to sanitize the data 
+you load into the Gantt chart in order to prevent possible XSS attacks ([dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) does it automatically)
 }}
 ~~~js
 gantt.config.columns=[

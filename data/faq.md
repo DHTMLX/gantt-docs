@@ -5,7 +5,7 @@ How to open samples
 ---------------------
 
 The distributive of the component includes a demo backend app that can be used to run samples locally.
-The app requires [Node.js](https://nodejs.org/) and uses in-memory storage for demos which supposed to store data on the backend (i.e. no database setup is needed).
+The app requires [Node.js](https://nodejs.org/en/) and uses in-memory storage for demos which supposed to store data on the backend (i.e. no database setup is needed).
 
 ### What you can do to run the examples
 

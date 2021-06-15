@@ -34,7 +34,7 @@ gantt.templates.grid_header_class = function(columnName, column){
 
 <img src="desktop/styling_columns_headers.png">
 
-{{editor		http://docs.dhtmlx.com/gantt/snippet/356f900e		Styling Headers of Grid Columns}}
+{{editor		https://docs.dhtmlx.com/gantt/snippet/356f900e		Styling Headers of Grid Columns}}
 
 ### Custom elements in the grid header
 
@@ -82,7 +82,7 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 
 <img src="desktop/custom_elements_grid_header.png">
 
-{{editor 		https://snippet.dhtmlx.com/43a01395c			Custom Elements in Grid Header}}
+{{editor 		https://snippet.dhtmlx.com/5/43a01395c			Custom Elements in Grid Header}}
 
 #### Icons and images in the grid header
 
@@ -104,7 +104,7 @@ gantt.config.columns = [
 ];
 ~~~
 
-{{editor	http://snippet.dhtmlx.com/55086fc42	Images in Grid Header: Columns Config}}
+{{editor	https://snippet.dhtmlx.com/5/55086fc42	Images in Grid Header: Columns Config}}
 
 Alternatively, you can set a header cell in CSS using the **.gantt_grid_head_<columnName>** selector:
 
@@ -117,7 +117,7 @@ Alternatively, you can set a header cell in CSS using the **.gantt_grid_head_<co
 
 <img src="desktop/custom_elements_grid_header_image.png">
 
-{{editor	http://snippet.dhtmlx.com/e13d18a10	Images in Grid Header:CSS}}
+{{editor	https://snippet.dhtmlx.com/5/e13d18a10	Images in Grid Header:CSS}}
 
 ###Background color of the grid rows 
 
@@ -261,7 +261,7 @@ gantt.templates.scale_row_class = function(scale){
 
 <img src="desktop/color_scale_row.png">
  
-{{editor	http://docs.dhtmlx.com/gantt/snippet/70bae8cb		Styling Row of the Scale}}
+{{editor	https://docs.dhtmlx.com/gantt/snippet/70bae8cb		Styling Row of the Scale}}
 
 ###Scale cells 
 
@@ -277,7 +277,7 @@ gantt.templates.scale_cell_class = function(date){
 
 <img src="desktop/styling_scale_cells.png">
 
-{{editor	http://docs.dhtmlx.com/gantt/snippet/953ad9f3		Styling Separate Cells on the Scale}}
+{{editor	https://docs.dhtmlx.com/gantt/snippet/953ad9f3		Styling Separate Cells on the Scale}}
 
 Read more in the related articles: desktop/configuring_time_scale.md#settingthescalesstyle and desktop/highlighting_time_slots.md.
 
@@ -435,7 +435,7 @@ gantt.templates.task_row_class = function(start, end, task){
 
 <img src="desktop/styling_timeline_row.png">
 
-{{editor	http://docs.dhtmlx.com/gantt/snippet/25715bf1		Styling Rows of the Timeline Area}}
+{{editor	https://docs.dhtmlx.com/gantt/snippet/25715bf1		Styling Rows of the Timeline Area}}
 
 {{sample	04_customization/02_custom_tree.html}}
 
@@ -606,7 +606,7 @@ gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
 
 <img src="desktop/styling_link_popup.png">
 
-{{editor	http://docs.dhtmlx.com/gantt/snippet/9b4d4246		Styling the Popup of Dependency Link}}
+{{editor	https://docs.dhtmlx.com/gantt/snippet/9b4d4246		Styling the Popup of Dependency Link}}
 
 Check the desktop/dependency_templates.md article to get more details on the topic.
 
@@ -617,7 +617,7 @@ While there are lightboxes for editing and styling tasks bars, there is no built
 
 <img src="desktop/link_edit_ui.png">
 
-{{editor	http://snippet.dhtmlx.com/7c812e5bd		Custom UI for Editing Link Values}}
+{{editor	https://snippet.dhtmlx.com/5/7c812e5bd		Custom UI for Editing Link Values}}
 
 Styling Quick Info Popup
 -------------------

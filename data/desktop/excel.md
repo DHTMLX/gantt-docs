@@ -186,7 +186,7 @@ gantt.importFromExcel({
 	08_api/21_load_from_excel.html
 }}
 
-Where *file* is an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain an Excel (xlsx) file.
+Where *file* is an instance of [File](https://developer.mozilla.org/en-US/docs/Web/API/File) which should contain an Excel (xlsx) file.
 
 {{note	
 **gantt.importFromExcel** requires HTML5 File API support.

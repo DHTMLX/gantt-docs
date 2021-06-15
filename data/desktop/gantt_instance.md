@@ -13,7 +13,7 @@ The following approach can be applicable to the Angular-based (or React-based) a
 
 **The alternative approach** (that will work for all versions) is to manually reset everything by yourself. <br>
 
-{{note Check the [example](http://snippet.dhtmlx.com/5/abec296e0) that demonstrates how the approach can be implemented. <br>
+{{note Check the [example](https://snippet.dhtmlx.com/5/abec296e0) that demonstrates how the approach can be implemented. <br>
 When you click the **Recreate Gantt** button, Gantt will initialize, load tasks, and attach the events. If you destroy Gantt, the events will be detached.}}
 
 Here is the list of things that you need to keep in mind when using this way:

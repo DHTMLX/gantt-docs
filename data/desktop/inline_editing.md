@@ -584,4 +584,4 @@ gantt.ext.inlineEditors.setMapping(mapping);
 gantt.init("gantt_here");
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5da351260	Custom keyboard mapping}}
+{{editor	https://snippet.dhtmlx.com/5/5da351260	Custom keyboard mapping}}

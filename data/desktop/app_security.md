@@ -20,12 +20,12 @@ As for template functions and the lightbox listed below, they can only pose a th
 - a [template](api/refs/gantt_templates.md) output is injected into the inner HTML of Gantt as is, without any escaping or pre-processing. 
 Templates allow inserting a custom markup (formatted text, icons, buttons, etc.) into Gantt elements by design. However, it creates a possibility for injecting a remote code into the page. Any template can be redefined with the implementation you find suitable.
 
-{{editor		http://snippet.dhtmlx.com/01da6922e			Template XSS}}
+{{editor		https://snippet.dhtmlx.com/5/01da6922e			Template XSS}}
 
 
 - the lightbox doesn't have any default validation of a client input, which, if not handled, also creates a gateway for XSS attacks. Please [check the article on the client-side validation](desktop/validation.md#clientsidevalidation).
 
-{{editor		http://snippet.dhtmlx.com/c20f8733f			Lightbox XSS}}
+{{editor		https://snippet.dhtmlx.com/5/c20f8733f			Lightbox XSS}}
 
 
 ##SQL Injections

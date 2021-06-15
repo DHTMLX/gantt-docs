@@ -3,7 +3,7 @@ dhtmlxGantt with dhtmlxConnector
 
 This tutorial will teach you how to create a basic Gantt chart on a page that will be able to save and update tasks in the database (i.e. on the server).<br>
 
-The current tutorial is intended for creating Gantt with [dhtmlxConnector](http://docs.dhtmlx.com/connector__php__index.html).
+The current tutorial is intended for creating Gantt with [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html).
 If you want to use some server-side technology instead, check the list of tutorials describing available integration variants below:
 
 - desktop/howtostart_php_laravel.md
@@ -281,7 +281,7 @@ implement the server script yourself.
 Then, we need to provide the ability to display data from the database in the chart. We'll do it with the <a href="api/gantt_load.md">load</a> method, that takes the URL to the data source as a parameter. 
 In case of a database, it's a PHP file which realizes connection to the server side. <br> 
 <br>
-We will use the PHP platform and the <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a> library, 
+We will use the PHP platform and the <a href="https://docs.dhtmlx.com/connector__php__index.html">dhtmlxConnector</a> library, 
 as this is the easiest way to implement the server-side logic for dhtmlxGantt.
 
 

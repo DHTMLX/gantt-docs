@@ -15,7 +15,7 @@ Using export services
 There are several export services available. You can install them on your computer and export Gantt chart to PDF or PNG locally.
 
 Note that export services are not included into the Gantt package, 
-read the [corresponding article](http://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
+read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
 Limits on request size
 --------------------

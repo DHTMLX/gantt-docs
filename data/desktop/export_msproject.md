@@ -240,7 +240,7 @@ gantt.importFromMSProject({
 	08_api/18_load_from_mpp.html
 }}
 
-Where *file* is an instance of [File](https://developer.mozilla.org/en/docs/Web/API/File) which should contain either an XML or MPP Project file.
+Where *file* is an instance of [File](https://developer.mozilla.org/en-US/docs/Web/API/File) which should contain either an XML or MPP Project file.
 
 {{note	
 **gantt.importFromMSProject** requires HTML5 File API support.

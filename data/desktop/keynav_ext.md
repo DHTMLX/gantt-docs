@@ -13,7 +13,7 @@ Methods
 gantt.ext.keyboardNavigation.focus({type:"taskCell",id:"taskId",column:"columnName"});
 ~~~
 
-{{editor 	https://snippet.dhtmlx.com/689d096b7		Selecting a grid cell}}
+{{editor 	https://snippet.dhtmlx.com/5/689d096b7		Selecting a grid cell}}
 
 - **getActiveNode()** - allows obtaining information about the active cell
 
@@ -22,6 +22,6 @@ var active_node = gantt.ext.keyboardNavigation.getActiveNode();
 // -> {type: "taskCell", id: "10", column: "text"}
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/a889c6e9c		Getting the active cell}}
+{{editor	https://snippet.dhtmlx.com/5/a889c6e9c		Getting the active cell}}
 
 @todo: check and improve

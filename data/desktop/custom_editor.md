@@ -396,7 +396,7 @@ You may also need to add a custom Duration control to the lightbox for specifyin
 
 ![Custom Duration control](desktop/custom_duration_control.png)
 
-{{editor	http://snippet.dhtmlx.com/5/df371dcb4	3rd party Duration control}}
+{{editor	https://snippet.dhtmlx.com/5/df371dcb4	3rd party Duration control}}
 
 
 Let's consider how to add a custom Duration control on the base of jQuery:

@@ -77,13 +77,13 @@ Then include **dhtmlxgantt.js** and **dhtmlxgantt.css** files into a page. Make 
 Adding PRO Edition into Project
 ---------------------------------
 
-All public sources (CDN, NuGet, Bower, and npm) contain a Stardard edition of the component, which is distributed under the GPL license.
+All public sources (CDN, NuGet, Bower, and npm) contain a Standard edition of the component, which is distributed under the GPL license.
 Currently we don't have corresponding private servers from where the Professional version of the component can be installed. There are two possible ways out:
  
 - you can add the Pro version to your project by hand.
 - you can install the Pro version to your project via npm from a local directory.
 
-If case of npm, you can install the Pro package from a local folder using  [`npm install ./local_path`](https://docs.npmjs.com/cli/install) or [`npm link`](https://docs.npmjs.com/cli/link).
+If case of npm, you can install the Pro package from a local folder using  [`npm install ./local_path`](https://docs.npmjs.com/cli/install/) or [`npm link`](https://docs.npmjs.com/cli/link/).
 There are step-by-step instructions for both variants:
 
 ###npm install
