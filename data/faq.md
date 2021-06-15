@@ -20,9 +20,8 @@ The app requires [Node.js](https://nodejs.org/en/) and uses in-memory storage fo
 
 2) Use Apache web server
 
-- Install Apache web server from [https://www.ntu.edu.sg/home/ehchua/programming/howto/Apache_HowToInstall.html](https://www.ntu.edu.sg/home/ehchua/programming/howto/Apache_HowToInstall.html).
-- Put Gantt samples into the apache document root directory 
-[https://www.ntu.edu.sg/home/ehchua/programming/howto/Apache_HowToInstall.html#zz-2](https://www.ntu.edu.sg/home/ehchua/programming/howto/Apache_HowToInstall.html#zz-2.).
+- Install Apache web server. If you're unsure how to do it, we suggest using [XAMPP](https://www.apachefriends.org/index.html).
+- Put Gantt samples into the apache document root directory (*xampp/htdocs*, if you've installed XAMPP).
 - When you run the Apache web server, you can access examples via the **http://localhost/yourfolder** url.
 
 3) Use a development web server built-in into your IDE
