@@ -7,7 +7,7 @@ Start
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="desktop/resource_management.md#resourceassignmenttime">Settings dates for resource assignments</a></li>  
+		<li><a href="desktop/resource_management.md#resourceassignmenttime">Setting dates for resource assignments</a></li>  
         <li><a href="desktop/milestones.md#rolluptasksandmilestones">Rollup tasks and milestones</a></li>      
         <li><a href="desktop/working_time.md#rules_for_periods">Different calendars for different time spans</a></li>   
         <li><a href="desktop/resizing_rows.md">Adjusting height of individual rows</a></li>   
