@@ -24,3 +24,5 @@ desktop/specifying_columns.md#wbscode
 
 @relatedapi:
 api/gantt_getwbscode.md
+
+@relatedsample: 07_grid/09_wbs_column.html

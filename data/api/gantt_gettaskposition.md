@@ -39,7 +39,8 @@ The method returns an object with the following properties:
 
 - **left** - the CSS left position in pixels
 - **top** - the CSS top position in pixels
-- **height** - the CSS height in pixels (defined by the gantt.config.task_height configuration)
+- **height** - the CSS height of the bar element in pixels (defined either by the [bar_height](api/gantt_bar_height_config.md) configuration or the *task.bar_height* property of the task object)
+- **rowHeight** - the CSS height of the task row in pixels (defined either by the [row_height](api/gantt_row_height_config.md) configuration or the *task.row_height* property of the task object) (added in v7.1)
 - **width** - the CSS width in pixels (defined by the period between start and end dates of the task or from 'from', 'to' dates if provided)
 
 If only one argument is provided, the method will use **task.start_date**/**task.end_date** in order to calculate **width** and **left** values. Otherwise, the date values from the second and the third arguments will be used.

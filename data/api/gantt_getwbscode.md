@@ -34,3 +34,7 @@ added in version 4.2
 
 @relatedsample:
 07_grid/09_wbs_column.html
+
+@related: desktop/specifying_columns.md#wbscode
+
+@relatedapi: api/gantt_gettaskbywbscode.md
