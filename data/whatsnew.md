@@ -18,7 +18,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ### Fixes
 
 - Fix the incorrect work of [unsetWorkTime](api/gantt_unsetworktime.md) that caused affected dates to have incorrect work hours
-- Fix the script error thrown in the [Resource histogram](desktop/resource_management.md#resourceviewpanel) after scrolling the histogram when [resource_render_empty_cell](api/gantt_resource_render_empty_cells_config.md) is set to false and [smart_rendering](api/gantt_smart_rendering_config.md) is enabled
+- Fix the script error thrown in the [Resource histogram](desktop/resource_management.md#resourceviewpanel) after scrolling the histogram when [resource_render_empty_cells](api/gantt_resource_render_empty_cells_config.md) is set to false and [smart_rendering](api/gantt_smart_rendering_config.md) is enabled
 - Fix the incorrect work of the `editNextRow` and `editPrevRow` methods of the [Inline Editors](desktop/inline_editors_ext.md) module
 - Fix the incorrect work of the [Quick Info](desktop/extensions_list.md#quickinfo) popup that caused the popup to be displayed after clicking on the "add" button in the grid
 - Fix the incorrect work of the [ASAP constraints](desktop/auto_scheduling.md#timeconstraintsfortasks) that caused tasks not to be moved to the earliest date of the project
