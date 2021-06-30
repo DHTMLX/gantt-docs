@@ -10,6 +10,23 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.1.4
+---------
+
+<span class='release_date'>June 30, 2021. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect work of [unsetWorkTime](api/gantt_unsetworktime.md) that caused affected dates to have incorrect work hours
+- Fix the script error thrown in the [Resource histogram](desktop/resource_management.md#resourceviewpanel) after scrolling the histogram when [resource_render_empty_cell](api/gantt_resource_render_empty_cells_config.md) is set to false and [smart_rendering](api/gantt_smart_rendering_config.md) is enabled
+- Fix the incorrect work of the `editNextRow` and `editPrevRow` methods of the [Inline Editors](desktop/inline_editors_ext.md) module
+- Fix the incorrect work of the [Quick Info](desktop/extensions_list.md#quickinfo) popup that caused the popup to be displayed after clicking on the "add" button in the grid
+- Fix the incorrect work of the [ASAP constraints](desktop/auto_scheduling.md#timeconstraintsfortasks) that caused tasks not to be moved to the earliest date of the project
+- Fix the incorrect work of [Inline Editors](desktop/inline_editors_ext.md) that prevented [constraints](desktop/auto_scheduling.md#timeconstraintsfortasks) from being edited via the inline editor 
+- Fix the incorrect behavior of the "scroll into view" logic of [Keyboard Navigation](desktop/keyboard_navigation.md) which called an unnecessary scroll when selected task bars are visible
+- Fix the script error thrown when the mouse is moved outside the container when the [click_drag](desktop/extensions_list.md#advanceddragndrop) extension is enabled
+- Performance improvements for the [auto_types](api/gantt_auto_types_config.md) configuration option of Gantt
+
 7.1.3
 ------
 
