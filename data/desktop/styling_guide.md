@@ -234,7 +234,7 @@ gantt.init("gantt_here");
 
 <img src="desktop/truncate_text.png">
 
-{{editor	https://snippet.dhtmlx.com/5/0bfadf7d0		Truncate long text with ellipsis}}
+{{editor	https://snippet.dhtmlx.com/5/508ff6e7e		Truncate long text with ellipsis}}
 
 Styling Scale
 ------------
