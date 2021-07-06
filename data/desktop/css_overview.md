@@ -9,7 +9,7 @@ CSS documentation
 Grid
 ------------
 
-In this section you will find CSS classes for styling the main elements of the [grid area](desktop/table.md).
+In this section you will find CSS selectors for styling the main elements of the [grid area](desktop/table.md).
 
 <img src="desktop/grid_area.png"/>
 
@@ -34,16 +34,11 @@ The overall structure of the DOM element of the grid is given below:
 				- .gantt_tree_content
 ~~~
 
-Grid header
---------------
+### **Grid header**
 
-<img src="desktop/grid_header.png"/>
+You can change the style of the Grid header element via the **.gantt_grid_scale** CSS selector.
 
-Grid header element: 
-
-- **.gantt_grid_scale**
-
-Common background and font color for grid and timeline headers:
+Here is an example of applying common background and font color for the headers of the grid and timeline:
 
 ~~~css
 .gantt_grid_scale, .gantt_task_scale, .gantt_task_vscroll {
@@ -58,9 +53,13 @@ Common background and font color for grid and timeline headers:
 }
 ~~~
 
+<img src="desktop/grid_header.png"/>
+
 {{editor 		https://snippet.dhtmlx.com/5/4b8e365e7			Styling grid and timeline headers}}
 
-### *Scale height*
+### Scale height
+
+Do **not** change the height of the grid header and time scale via CSS. 
 
 The height of the scale must be set via the [scale_height](api/gantt_scale_height_config.md) configuration property of Gantt:
 
@@ -68,22 +67,17 @@ The height of the scale must be set via the [scale_height](api/gantt_scale_heigh
 gantt.config.scale_height = 50;
 ~~~
 
-Do **not** change the height of the scale via css.
+### A cell of the grid header
 
-#### Styling a cell of the grid header
+You can apply a custom style for a cell of the grid header via **.gantt_grid_head_cell**.
 
-<img src="desktop/header_cell.png"/>
+The selectors for styling a cell are given below:
 
-Grid header cell:
-
-- `.gantt_grid_head_cell`
-
-Selector for a cell of a specific column:
-
-- `.gantt_grid_head_cell[data-column-id='columnName']`
+- **.gantt_grid_head_cell[data-column-id='columnName']** - selector for a cell of a specific column;
 
 **columnName** matches the value of the **name** property of the [column](desktop/specifying_columns.md):
 
+{{snippet index.js}}
 ~~~js
 gantt.config.columns = [
 	...
@@ -91,7 +85,9 @@ gantt.config.columns = [
 	...
 ];
 ~~~
+<br>
 
+{{snippet index.css}}
 ~~~css
 .gantt_grid_head_cell[data-column-id='columnName'] {
     background-color: #ededed;
@@ -99,35 +95,28 @@ gantt.config.columns = [
 }
 ~~~
 
+<img src="desktop/header_cell.png"/>
+
 {{editor 		https://snippet.dhtmlx.com/5/013219d9b			Styling a particular cell in the grid header}}
 
-Selector for a specific column by index:
+- **.gantt_grid_head_cell[data-column-index='1']** - selector for a specific column by index;
 
-- `.gantt_grid_head_cell[data-column-index='1']`
+- **.gantt_grid_head_cell[data-column-name='start_date']** - selector for a specific column by name.
+### **Grid body**
 
-Selector for a specific column by name:
-
-- `.gantt_grid_head_cell[data-column-name='start_date']`
-### Grid body
-
-Grid body element: 
-
-- .gantt_grid_data
+You can add a custom color to the Grid body element by applying a CSS rule to the **.gantt_grid_data** selector.
 
 <img src="desktop/grid_body.png"/>
 
+### Styling rows
 
-Row:
-
-- .gantt_row
+The style of the grid row is modified via **.gantt_row**.
 
 <img src="desktop/grid_row.png"/>
 
-Every other row: https://prnt.sc/13cj0hd
+#### Every other row
 
-- .gantt_row.odd
-
-
+To style every other row of the grid, you need to specify a CSS rule for the **.gantt_row.odd** selector, for example:
 
 ~~~css
 .gantt_row.odd{
@@ -139,10 +128,12 @@ Every other row: https://prnt.sc/13cj0hd
 
 {{editor 		https://snippet.dhtmlx.com/5/e3773648c			Styling every other row in grid}}
 
+You can see that the even rows are highlighted on the screen instead of the odd ones.
+But if you check the [indexes of rows](api/gantt_gettaskindex.md), you will see that the style is applied to the rows that have odd indexes (1, 3, 5, etc.). 
 
-Selected row:
+#### Selected row
 
-- .gantt_row.gantt_selected
+You can style a selected row in the grid with the help of the **.gantt_row.gantt_selected** CSS selector:
 
 ~~~css
 .gantt_grid_data .gantt_row.gantt_selected,
@@ -154,11 +145,15 @@ Selected row:
 
 {{editor 		https://snippet.dhtmlx.com/5/9bdd40782			Styling selected row}}
 
-Rows of tasks, projects or milestones:
+#### Task rows, project rows, and milestones
 
-- .gantt_row.gantt_row_task
-- .gantt_row.gantt_row_project
-- .gantt_row.gantt_row_milestone
+To style rows of tasks, projects or milestones, use the following selectors:
+
+- **.gantt_row.gantt_row_task**
+- **.gantt_row.gantt_row_project**
+- **.gantt_row.gantt_row_milestone**
+
+For instance:
 
 ~~~css
 .gantt_row.gantt_row_project{
@@ -169,50 +164,52 @@ Rows of tasks, projects or milestones:
 
 {{editor 		https://snippet.dhtmlx.com/5/9d0f8ab3f			Styling rows of project tasks}}
 
-If you want to add styles to specific rows, you can add them a custom class using [gantt.templates.grid_row_class](api/gantt_grid_row_class_template.md) template:
+#### Particular rows
 
-~~~css
+If you want to add custom classes to a specific row, you can apply the [grid_row_class](api/gantt_grid_row_class_template.md) template in the following way:
+
+~~~js
+<style>
+	.highlighted_task.gantt_row { /*!*/
+    	background-color: #ff9668;
+    	border-color: rgba(0,0,0,0.3);
+	}	
+</style>
+
 gantt.templates.grid_row_class = function(start, end, task){
 	if(task.highlight){
-		return "highlighted_task";
+		return "highlighted_task"; /*!*/
 	}
 	return "";
 };
 ~~~
 
-And use this custom class in the selector:
-
-~~~css
-.highlighted_task.gantt_row {
-    background-color: #ff9668;
-    border-color: rgba(0,0,0,0.3);
-}
-~~~
-
 {{editor 		https://snippet.dhtmlx.com/5/f95395843			Styling a particular row in the grid}}
 
+#### Row height
 
-The height of the row can be changed using [row_height](api/gantt_row_height_config.md) config:
+The height of the row can be changed either by using the [row_height](api/gantt_row_height_config.md) config:
 
 ~~~js
 gantt.config.row_height = 40;
 ~~~
 
-Or via the [row_height](desktop/resizing_rows.md#settingtherowheight) property of a task:
+or via the [row_height](desktop/resizing_rows.md#settingtherowheight) property of a task:
 
 ~~~js
-{ id: 2, text: "Task #1", start_date: "02-04-2018", duration: 8, row_height:40, parent: 1 },
+{ id: 2, text: "Task #1", start_date: "02-04-2018", 
+	duration: 8, row_height:40, parent: 1 },
 ~~~
 
-Do not attempt changing row height via css, this will break the layout.
+Do not attempt changing the row height via CSS, this will break the layout.
 
-### Cells/Columns:
+### Styling cells/columns:
 
-- .gantt_row .gantt_cell
+Styling cells or columns of the grid can be implemented via **.gantt_row .gantt_cell**.
 
-Specific column by column name:
+You can apply a CSS rule to a specific column in two ways:
 
-- .gantt_row .gantt_cell[data-column-name='columnName']
+- via the **.gantt_row .gantt_cell[data-column-name='columnName']** selector which defines the column by its name, for example:
 
 ~~~css
 .gantt_grid_head_cell[data-column-id='start_date'],
@@ -224,11 +221,9 @@ Specific column by column name:
 
 {{editor 		https://snippet.dhtmlx.com/5/fc0a24e88			Styling a column in grid}}
 
-Note, that `.gantt_grid_head_cell` and `.gantt_cell` use different data attributes, `data-column-id` and `data-column-name` respectively. This inconsistency in gantt css will be fixed in one of future versions.
+Note, that **.gantt_grid_head_cell** and **.gantt_cell** use different data attributes: `data-column-id` and `data-column-name` respectively. This inconsistency in the CSS rules of Gantt will be fixed in one of the future versions.
 
-Specific column by column index:
-
-- .gantt_row .gantt_cell[data-column-index='1']
+- or you can approach the same result by applying the **.gantt_row .gantt_cell[data-column-index='1']** selector which defines the column by its index.
 
 Timeline
 -------------
@@ -239,7 +234,7 @@ https://prnt.sc/12hcz7d
 
 https://docs.dhtmlx.com/gantt/desktop__time_scale.html
 
-Overall structure
+The overall structure of the DOM element of the timeline area is presented below:
 
 ~~~js
 - .gantt_task
@@ -267,9 +262,9 @@ Overall structure
 		- div - custom layers
 ~~~
 
-### Time scale
+### **Time scale**
 
-Structure:
+The DOM element of the time scale has the following structure:
 
 ~~~js
 - .gantt_task_scale
@@ -298,7 +293,7 @@ Changing the font color and borders of the time scale
 
 {{editor 		https://snippet.dhtmlx.com/5/abf267d53			Styling text and borders of the time scale}}
 
-Single time scale:
+### Single time scale:
 
 - .gantt_scale_line
 
@@ -343,7 +338,7 @@ gantt.templates.scale_row_class = function(scale){
 {{editor 		https://snippet.dhtmlx.com/5/5eabe4823			Styling different time scales}}
 
 
-Cells of the time scale:
+### Cells of the time scale:
 
 - .gantt_scale_cell
 
@@ -384,9 +379,9 @@ CSS:
 
 In order to color the whole column, use `timeline_cell_class`, as described below.
 
-### Data area
+### **Data area**
 
-Structure:
+The DOM element of the data area has the following structure:
 
 ~~~js
 - .gantt_data_area
@@ -633,7 +628,9 @@ Selected row:
 
 {{editor 		https://snippet.dhtmlx.com/5/91cf22b1d			Styling selected row}}
 
-Background grid:
+### Background grid
+
+The structure of the DOM element of the background grid looks as follows: 
 
 ~~~js
 - .gantt_data_area
@@ -686,7 +683,9 @@ CSS:
 
 {{sample	09_worktime/02_working_days.html}}
 
-Link:
+### Link
+
+The structure of the DOM element of the link is given below: 
 
 ~~~js
 - .gantt_task_link
@@ -737,7 +736,7 @@ You can target the resource grid and timeline using the appropriate view name in
 }
 ~~~
 
-Overall structure is the following:
+The overall structure of the DOM element of the resource panel is given below:
 
 ~~~js
 - .gantt_layout_root
@@ -797,7 +796,7 @@ Resource histogram has the same elements as the main timeline. By default, all s
 
 You can target the resource histogram with the following selector: **.resourceHistogram_cell**.
 
-Overall structure
+The overall structure of the DOM element of the resource histogram:
 
 ~~~js
 - .gantt_task_bg
@@ -865,7 +864,7 @@ Resource diagram has the same elements as the main timeline. By default, all sel
 
 You can target the resource diagram with the following selector: **.resourceTimeline_cell**.
 
-Overall structure
+The overall structure of the DOM element of the resource diagram:
 
 ~~~js
 - .gantt_task_bg
