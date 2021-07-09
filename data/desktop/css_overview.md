@@ -6,7 +6,7 @@ CSS documentation
 - Timeline
 - Resource panel
 
-Grid
+Styling Grid
 ------------
 
 In this section you will find CSS selectors for styling the main elements of the [grid area](desktop/table.md).
@@ -77,22 +77,21 @@ The selectors for styling a cell are given below:
 
 **columnName** matches the value of the **name** property of the [column](desktop/specifying_columns.md):
 
-{{snippet index.js}}
+~~~css
+<style>
+	.gantt_grid_head_cell[data-column-id='columnName'] {
+    	background-color: #ededed;
+    	color:black;
+	}
+</style>
+~~~
+
 ~~~js
 gantt.config.columns = [
 	...
 	{name: "columnName", align: "center"},
 	...
 ];
-~~~
-<br>
-
-{{snippet index.css}}
-~~~css
-.gantt_grid_head_cell[data-column-id='columnName'] {
-    background-color: #ededed;
-    color:black;
-}
 ~~~
 
 <img src="desktop/header_cell.png"/>
@@ -108,7 +107,7 @@ You can add a custom color to the Grid body element by applying a CSS rule to th
 
 <img src="desktop/grid_body.png"/>
 
-### Styling rows
+### Styling Grid rows
 
 The style of the grid row is modified via **.gantt_row**.
 
@@ -168,14 +167,16 @@ For instance:
 
 If you want to add custom classes to a specific row, you can apply the [grid_row_class](api/gantt_grid_row_class_template.md) template in the following way:
 
-~~~js
+~~~css
 <style>
-	.highlighted_task.gantt_row { /*!*/
+	.highlighted_task.gantt_row { 
     	background-color: #ff9668;
     	border-color: rgba(0,0,0,0.3);
 	}	
 </style>
+~~~
 
+~~~js
 gantt.templates.grid_row_class = function(start, end, task){
 	if(task.highlight){
 		return "highlighted_task"; /*!*/
@@ -203,7 +204,7 @@ or via the [row_height](desktop/resizing_rows.md#settingtherowheight) property o
 
 Do not attempt changing the row height via CSS, this will break the layout.
 
-### Styling cells/columns:
+### Styling cells/columns of Grid:
 
 Styling cells or columns of the grid can be implemented via **.gantt_row .gantt_cell**.
 
@@ -225,14 +226,12 @@ Note, that **.gantt_grid_head_cell** and **.gantt_cell** use different data attr
 
 - or you can approach the same result by applying the **.gantt_row .gantt_cell[data-column-index='1']** selector which defines the column by its index.
 
-Timeline
+Styling Timeline
 -------------
 
+The "Styling Timeline" section will guide you through the CSS selectors that you can apply to change the default styles of the elements of the [timeline area](desktop/time_scale.md).
+
 <img src="desktop/timeline.png"/>
-
-https://prnt.sc/12hcz7d
-
-https://docs.dhtmlx.com/gantt/desktop__time_scale.html
 
 The overall structure of the DOM element of the timeline area is presented below:
 
@@ -272,11 +271,11 @@ The DOM element of the time scale has the following structure:
 		- .gantt_scale_cell
 ~~~
 
-Time scale container:
+### Time scale container
 
-- .gantt_task_scale
+The **.gantt_task_scale** selector is used to apply CSS rules to the container of the time scale.
 
-Changing the font color and borders of the time scale
+For example, changing of the font color and borders of the time scale looks like this:
 
 ~~~css
 .gantt_grid_scale, .gantt_task_scale {
@@ -293,15 +292,12 @@ Changing the font color and borders of the time scale
 
 {{editor 		https://snippet.dhtmlx.com/5/abf267d53			Styling text and borders of the time scale}}
 
-### Single time scale:
 
-- .gantt_scale_line
+### Time scales
 
-Target a specific time scale by order:
+The **.gantt_scale_line** selector is used to color the whole time scale. To target a specific time scale by its order, just use the **.gantt_scale_line:nth-child(n)** selector.
 
-- .gantt_scale_line:nth-child(n)
-
-Setting background color of the time scale:
+An example of setting background color of the time scale:
 
 ~~~css
 .gantt_scale_line:nth-child(1){
@@ -315,9 +311,25 @@ Setting background color of the time scale:
 
 {{editor 		https://snippet.dhtmlx.com/5/5a7d1f0aa			Background color of the time scale}} 
 
-By default there are no css classes to target time scales by units, but you can add such classes using `scale_row_class` template.
+By default, there are no CSS classes to target time scales by units, but you can add such classes using the [scale_row_class](api/gantt_scale_row_class_template.md) template.
 
-Setting different styles to **month**, **week**, **day** scales
+An example of setting different styles for the **month**, **week**, **day** scales is given below:
+
+~~~css
+<style>
+	.gantt_scale_line.month_scale{
+		font-weight:bold;
+		background-color:#ddd;
+	}
+	.gantt_scale_line.week_scale{
+		background-color:#e1e1e1;
+	}  
+  
+	.gantt_scale_line.day_scale{
+		background-color:#efefef;
+	}
+</style>
+~~~
 
 ~~~js
 gantt.templates.scale_row_class = function(scale){
@@ -325,24 +337,13 @@ gantt.templates.scale_row_class = function(scale){
 };
 ~~~
 
-~~~css
-.gantt_scale_line.month_scale{
-	font-weight:bold;
-	background-color:#eee;
-}
-.gantt_scale_line.day_scale{
-	background-color:#fff;
-}
-~~~
-
 {{editor 		https://snippet.dhtmlx.com/5/5eabe4823			Styling different time scales}}
 
 
 ### Cells of the time scale:
 
-- .gantt_scale_cell
-
-Changing the font color and borders of the cells in the time scale:
+You can add custom styles to the cells of the time scale via the **.gantt_scale_cell** selector.
+For example, you can change the font color and borders of the cells:
 
 ~~~css
 .gantt_task .gantt_task_scale .gantt_scale_cell {
@@ -353,7 +354,7 @@ Changing the font color and borders of the cells in the time scale:
 
 {{editor 		https://snippet.dhtmlx.com/5/3532e30d7			Styling text and borders of the scale cells}}
 
-In order to color specific dates, use the css property of `gantt.config.scales` objects, as described here: https://docs.dhtmlx.com/gantt/desktop__configuring_time_scale.html#styling
+In order to [color specific dates](desktop/configuring_time_scale.md#styling) of the time scale, use the **css** property of the [gantt.config.scales](api/gantt_scales_config.md) object, as it's shown below:
 
 ~~~js
 gantt.config.scales = [
@@ -367,17 +368,17 @@ gantt.config.scales = [
 ];
 ~~~
 
-CSS:
-
 ~~~css
-.gantt_scale_cell.weekend {
-	background-color: #F5F5F5;
-}
+<style>
+	.gantt_scale_cell.weekend {
+		background-color: #F5F5F5;
+	}
+</style>
 ~~~
 
 {{sample	09_worktime/02_working_days.html}}
 
-In order to color the whole column, use `timeline_cell_class`, as described below.
+If you need to color the whole column, use the **timeline_cell_class** template, as described below.
 
 ### **Data area**
 
@@ -404,6 +405,8 @@ The DOM element of the data area has the following structure:
 				- .gantt_link_point
 	- div - custom layers
 ~~~
+
+### Task
 
 Task bar
 
@@ -446,7 +449,7 @@ To style task borders, you can apply the **.gantt_task_line** class:
 
 {{editor 		https://snippet.dhtmlx.com/5/a3a5bb2f5			Styling task bars}}
 
-**Background, foreground, and progress color**:
+An example of changing background, foreground, and progress colors:
 
 ~~~css
 /* task */
@@ -468,7 +471,7 @@ To style task borders, you can apply the **.gantt_task_line** class:
 }
 ~~~
 
-**Styles of Project(Summary) bars**:
+An example of styling Project(Summary) bars:
 
 ~~~css
 /* project */
@@ -484,7 +487,7 @@ To style task borders, you can apply the **.gantt_task_line** class:
 }
 ~~~
 
-**Styles of Milestone bars**:
+An example of styling Milestone bars:
 
 ~~~css
 /* milestone */
@@ -496,7 +499,7 @@ To style task borders, you can apply the **.gantt_task_line** class:
 
 {{editor 		https://snippet.dhtmlx.com/5/13a0a0e28			Background, foreground, and progress color. Styling Project and Milestone bars.}}
 
-If you want to set color of specific tasks, you'll need to assign them custom class using the [gantt.templates.task_class](api/gantt_task_class_template.md) template:
+If you want to set color of specific tasks, you need to assign a custom class to them using the [gantt.templates.task_class](api/gantt_task_class_template.md) template:
 
 ~~~js
 gantt.templates.task_class = function(start, end, task){
@@ -507,7 +510,7 @@ gantt.templates.task_class = function(start, end, task){
 };
 ~~~
 
-And use this custom class in the selector:
+and use this custom class in the selector:
 
 ~~~css
 .highlighted_task.gantt_task_line {
@@ -523,7 +526,7 @@ And use this custom class in the selector:
 
 {{editor 		https://snippet.dhtmlx.com/5/67f3a26bb			Styling particular task bars}}
 
-Selected bar styles:
+An example of styling a selected bar:
 
 ~~~css
 .gantt_task_line.gantt_selected {
@@ -537,7 +540,7 @@ Selected bar styles:
 
 {{editor 		https://snippet.dhtmlx.com/5/ed520b1a9			Styling selected bar}}
 
-If you want to highlight custom areas inside the task bar, you'll need to inject additional elements into the bar using the `gantt.templates.task_text` template:
+If you want to highlight custom areas inside the task bar, you need to inject additional elements into the bar using the [gantt.templates.task_text](api/gantt_task_text_template.md) template:
 
 ~~~js
 gantt.templates.task_text = function(start, end, task){
@@ -547,7 +550,7 @@ gantt.templates.task_text = function(start, end, task){
 };
 ~~~
 
-CSS:
+and apply CSS:
 
 ~~~css
 .custom_progress {
@@ -572,116 +575,6 @@ CSS:
 
 {{sample	04_customization/09_html_content.html}}
 
-Resize element:
-
-- .gantt_task_drag
-- .gantt_task_drag.task_start_date
-- .gantt_task_drag.task_end_date
-
-Disable resizer of the start date:
-
-~~~css
-.gantt_task_line:hover .gantt_task_drag.task_start_date{
-	display: none;
-}
-~~~
-
-{{editor 		https://snippet.dhtmlx.com/5/8a25fe936			Disabling resizer of the start date}}
-
-Disable resizer of the end date:
-
-~~~css
-.gantt_task_line:hover .gantt_task_drag.task_end_date{
-	display: none;
-}
-~~~
-
-{{editor 		https://snippet.dhtmlx.com/5/9e8c0a0aa			Disabling resizer of the end date}}
-
-
-Link control:
-
-- .gantt_link_control .gantt_link_point
-- .gantt_link_control.task_start_date .gantt_link_point
-- .gantt_link_control.task_end_date .gantt_link_point
-
-Background rows:
-
-- .gantt_task_row
-
-every other background row:
-
-- .gantt_task_row.odd
-
-Selected row:
-
-~~~css
-.gantt_grid_data .gantt_row.gantt_selected,
-.gantt_grid_data .gantt_row.odd.gantt_selected,
-.gantt_task_row.gantt_selected {
-	background-color: #fff3a1;
-}
-.gantt_task_row.gantt_selected .gantt_task_cell{
-	border-right-color: #ffec6e;
-}
-~~~
-
-{{editor 		https://snippet.dhtmlx.com/5/91cf22b1d			Styling selected row}}
-
-### Background grid
-
-The structure of the DOM element of the background grid looks as follows: 
-
-~~~js
-- .gantt_data_area
-	- .gantt_task_bg
-		- .gantt_task_row
-		- .gantt_task_row.odd
-			- .gantt_task_cell
-~~~
-
-Background rows:
-
-- .gantt_task_row
-
-Background cells:
-
-- gantt_task_cell
-
-Color rows:
-
-~~~css
-.gantt_row,
-.gantt_task_row {
-    border-bottom: 1px solid #ebebeb;
-    background-color: #fff;
-}
-~~~
-
-In order to color background columns, use `timeline_cell_class` template:
-
-~~~js
-gantt.templates.timeline_cell_class = function (task, date) {
-	if(!gantt.isWorkTime({date: date, unit: "day", task: task})){
-		return "weekend";
-	}
-	return "";
-};
-~~~
-
-CSS:
-
-~~~css
-.gantt_task_cell.weekend {
-	background-color: #F5F5F5;
-}
-
-.gantt_task_row.gantt_selected .gantt_task_cell.weekend {
-	background-color: #F8EC9C;
-}
-~~~
-
-{{sample	09_worktime/02_working_days.html}}
 
 ### Link
 
@@ -698,7 +591,7 @@ The structure of the DOM element of the link is given below:
 - .gantt_link_arrow.gantt_link_arrow_left
 ~~~
 
-Color links:
+Here is an example of how you can color the elements of the dependency links:
 
 ~~~css
 .gantt_line_wrapper div {
@@ -718,6 +611,113 @@ Color links:
 {{editor 		https://snippet.dhtmlx.com/5/8d0941797			Styling links}}
 
 Thickness of the link line is set via the [gantt.config.link_line_width](api/gantt_link_line_width_config.md) config.
+
+### Resizer
+
+The following selectors can be applied to style the resizer's DOM element:
+
+- **.gantt_task_drag**
+- **.gantt_task_drag.task_start_date**
+- **.gantt_task_drag.task_end_date**
+
+An example of disabling resizer of the start date:
+
+~~~css
+.gantt_task_line:hover .gantt_task_drag.task_start_date{
+	display: none;
+}
+~~~
+
+{{editor 		https://snippet.dhtmlx.com/5/8a25fe936			Disabling resizer of the start date}}
+
+An example of disabling resizer of the end date:
+
+~~~css
+.gantt_task_line:hover .gantt_task_drag.task_end_date{
+	display: none;
+}
+~~~
+
+{{editor 		https://snippet.dhtmlx.com/5/9e8c0a0aa			Disabling resizer of the end date}}
+
+### Link control
+
+The following selectors can be applied to style the element of the round handle at the start (end) of the task:
+
+- **.gantt_link_control .gantt_link_point**
+- **.gantt_link_control.task_start_date .gantt_link_point**
+- **.gantt_link_control.task_end_date .gantt_link_point**
+
+### Background grid
+
+The structure of the DOM element of the background grid looks as follows: 
+
+~~~js
+- .gantt_data_area
+	- .gantt_task_bg
+		- .gantt_task_row
+		- .gantt_task_row.odd
+			- .gantt_task_cell
+~~~
+
+
+#### Background rows:
+
+To change the default style settings of the background rows, you need to add a custom style to the **.gantt_task_row** selector.  For instance:
+
+~~~css
+.gantt_row,
+.gantt_task_row {
+    border-bottom: 1px solid #ebebeb;
+    background-color: #fff;
+}
+~~~
+
+To color every other background row, you should define custom CSS properties in the **.gantt_task_row.odd** selector.
+
+You can easily specify custom colors for the selected row, for instance: 
+
+~~~css
+.gantt_grid_data .gantt_row.gantt_selected,
+.gantt_grid_data .gantt_row.odd.gantt_selected,
+.gantt_task_row.gantt_selected {
+	background-color: #fff3a1;
+}
+.gantt_task_row.gantt_selected .gantt_task_cell{
+	border-right-color: #ffec6e;
+}
+~~~
+
+{{editor 		https://snippet.dhtmlx.com/5/91cf22b1d			Styling selected row}}
+
+#### Background cells
+
+To change the default style settings of the background cells, you should specify a custom style in the **.gantt_task_cell** selector.
+
+In order to color the background columns, use the [timeline_cell_class](api/gantt_timeline_cell_class_template.md) template:
+
+~~~js
+gantt.templates.timeline_cell_class = function (task, date) {
+	if(!gantt.isWorkTime({date: date, unit: "day", task: task})){
+		return "weekend";
+	}
+	return "";
+};
+~~~
+
+and apply CSS:
+
+~~~css
+.gantt_task_cell.weekend {
+	background-color: #F5F5F5;
+}
+
+.gantt_task_row.gantt_selected .gantt_task_cell.weekend {
+	background-color: #F8EC9C;
+}
+~~~
+
+{{sample	09_worktime/02_working_days.html}}
 
 Resource panel
 --------------
