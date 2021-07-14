@@ -36,7 +36,7 @@ The overall structure of the DOM element of the grid is given below:
 
 ### **Grid header**
 
-You can change the style of the Grid header element via the **.gantt_grid_scale** CSS selector.
+You can change the style of the Grid header element via the **.gantt_grid_scale** class selector.
 
 Here is an example of applying common background and font color for the headers of the grid and timeline:
 
@@ -73,7 +73,7 @@ You can apply a custom style for a cell of the grid header via **.gantt_grid_hea
 
 The selectors for styling a cell are given below:
 
-- **.gantt_grid_head_cell[data-column-id='columnName']** - selector for a cell of a specific column;
+- **.gantt_grid_head_cell[data-column-id='columnName']** - selects a cell of a specific column;
 
 **columnName** matches the value of the **name** property of the [column](desktop/specifying_columns.md):
 
@@ -98,12 +98,12 @@ gantt.config.columns = [
 
 {{editor 		https://snippet.dhtmlx.com/5/013219d9b			Styling a particular cell in the grid header}}
 
-- **.gantt_grid_head_cell[data-column-index='1']** - selector for a specific column by index;
+- **.gantt_grid_head_cell[data-column-index='1']** - selects a specific column by its index;
 
-- **.gantt_grid_head_cell[data-column-name='start_date']** - selector for a specific column by name.
+- **.gantt_grid_head_cell[data-column-name='start_date']** - selects a specific column by name.
 ### **Grid body**
 
-You can add a custom color to the Grid body element by applying a CSS rule to the **.gantt_grid_data** selector.
+You can add a custom color to the Grid body element by applying CSS styles to the **.gantt_grid_data** selector.
 
 <img src="desktop/grid_body.png"/>
 
@@ -115,7 +115,7 @@ The style of the grid row is modified via **.gantt_row**.
 
 #### Every other row
 
-To style every other row of the grid, you need to specify a CSS rule for the **.gantt_row.odd** selector, for example:
+To color every other row of the grid, you need to specify CSS styles for the **.gantt_row.odd** selector, for example:
 
 ~~~css
 .gantt_row.odd{
@@ -132,7 +132,7 @@ But if you check the [indexes of rows](api/gantt_gettaskindex.md), you will see 
 
 #### Selected row
 
-You can style a selected row in the grid with the help of the **.gantt_row.gantt_selected** CSS selector:
+You can style a selected row in the grid with the help of the **.gantt_row.gantt_selected** selector:
 
 ~~~css
 .gantt_grid_data .gantt_row.gantt_selected,
@@ -208,7 +208,7 @@ Do not attempt changing the row height via CSS, this will break the layout.
 
 Styling cells or columns of the grid can be implemented via **.gantt_row .gantt_cell**.
 
-You can apply a CSS rule to a specific column in two ways:
+You can apply CSS styles to a specific column in two ways:
 
 - via the **.gantt_row .gantt_cell[data-column-name='columnName']** selector which defines the column by its name, for example:
 
@@ -273,7 +273,7 @@ The DOM element of the time scale has the following structure:
 
 ### Time scale container
 
-The **.gantt_task_scale** selector is used to apply CSS rules to the container of the time scale.
+The **.gantt_task_scale** selector is used to apply custom CSS to the container of the time scale.
 
 For example, changing of the font color and borders of the time scale looks like this:
 
@@ -408,17 +408,41 @@ The DOM element of the data area has the following structure:
 
 ### Task
 
-Task bar
+#### Task bar
 
-- .gantt_task_line
+To change the look of the task bar, you should declare a custom style in the **.gantt_task_line** selector.  
 
-Rows of tasks, projects or milestones:
+An example of changing the border style of the bar is given below:
 
-- .gantt_task_line.gantt_bar_task
-- .gantt_task_line.gantt_bar_project
-- .gantt_task_line.gantt_bar_milestone
+~~~css
+.gantt_task_line {
+    border-radius: 14px;
+}
+~~~
 
-Tasks of [custom type](desktop/task_types.md#creatingacustomtype) will have the appropriate class name:
+{{editor 		https://snippet.dhtmlx.com/5/a3a5bb2f5			Styling borders of the task bars}}
+
+To color rows of [tasks](desktop/task_types.md#regulartasks), [projects](desktop/task_types.md#projecttasks), or [milestones](desktop/task_types.md#milestones), you need to add custom CSS to the related class selector:
+
+- **.gantt_task_line.gantt_bar_task**
+- **.gantt_task_line.gantt_bar_project**
+- **.gantt_task_line.gantt_bar_milestone**
+
+An example of styling a selected bar:
+
+~~~css
+.gantt_task_line.gantt_selected {
+    box-shadow: 0 2px 5px #000;
+}
+
+.gantt_task_line.gantt_bar_project.gantt_selected {
+    box-shadow: 0 2px 5px #000;
+}
+~~~
+
+{{editor 		https://snippet.dhtmlx.com/5/ed520b1a9			Styling selected bar}}
+
+Tasks of a [custom type](desktop/task_types.md#creatingacustomtype) will have the appropriate class name:
 
 ~~~js
 { 
@@ -427,29 +451,18 @@ Tasks of [custom type](desktop/task_types.md#creatingacustomtype) will have the 
 },
 ~~~
 
--->
+-> **.gantt_task_line.gantt_bar_custom_type**.
 
-- .gantt_task_line.gantt_bar_custom_type
+#### Progress bar
 
-Progress bar fill:
+The following selectors can be used to color the progress bar:
 
-- .gantt_task_progress
+- **.gantt_task_progress** - to change the color of the progress bar fill;
+- **.gantt_task_progress_drag** - to style the drag handle of the progress bar.
 
-Progress bar drag handle:
+You can change the look and feel of the task and progress bars by applying CSS rules as follows:
 
-- .gantt_task_progress_drag
-
-To style task borders, you can apply the **.gantt_task_line** class:
-
-~~~css
-.gantt_task_line {
-    border-radius: 14px;
-}
-~~~
-
-{{editor 		https://snippet.dhtmlx.com/5/a3a5bb2f5			Styling task bars}}
-
-An example of changing background, foreground, and progress colors:
+- an example of changing background, foreground, and progress colors:
 
 ~~~css
 /* task */
@@ -471,7 +484,7 @@ An example of changing background, foreground, and progress colors:
 }
 ~~~
 
-An example of styling Project(Summary) bars:
+- an example of styling Project(Summary) bars:
 
 ~~~css
 /* project */
@@ -487,7 +500,7 @@ An example of styling Project(Summary) bars:
 }
 ~~~
 
-An example of styling Milestone bars:
+- an example of styling Milestone bars:
 
 ~~~css
 /* milestone */
@@ -497,9 +510,11 @@ An example of styling Milestone bars:
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/13a0a0e28			Background, foreground, and progress color. Styling Project and Milestone bars.}}
+{{editor 		https://snippet.dhtmlx.com/5/13a0a0e28			Background, foreground, and progress colors. Styling Project and Milestone bars.}}
 
-If you want to set color of specific tasks, you need to assign a custom class to them using the [gantt.templates.task_class](api/gantt_task_class_template.md) template:
+#### Custom color for particular task bars
+
+If you want to set color for specific task bars, you need to assign a custom class to them using the [gantt.templates.task_class](api/gantt_task_class_template.md) template:
 
 ~~~js
 gantt.templates.task_class = function(start, end, task){
@@ -526,21 +541,9 @@ and use this custom class in the selector:
 
 {{editor 		https://snippet.dhtmlx.com/5/67f3a26bb			Styling particular task bars}}
 
-An example of styling a selected bar:
+#### Highlighting area inside the task bar
 
-~~~css
-.gantt_task_line.gantt_selected {
-    box-shadow: 0 2px 5px #000;
-}
-
-.gantt_task_line.gantt_bar_project.gantt_selected {
-    box-shadow: 0 2px 5px #000;
-}
-~~~
-
-{{editor 		https://snippet.dhtmlx.com/5/ed520b1a9			Styling selected bar}}
-
-If you want to highlight custom areas inside the task bar, you need to inject additional elements into the bar using the [gantt.templates.task_text](api/gantt_task_text_template.md) template:
+If you want to highlight some areas inside the task bar, you need to inject additional elements into the bar using the [gantt.templates.task_text](api/gantt_task_text_template.md) template:
 
 ~~~js
 gantt.templates.task_text = function(start, end, task){
@@ -642,7 +645,7 @@ An example of disabling resizer of the end date:
 
 ### Link control
 
-The following selectors can be applied to style the element of the round handle at the start (end) of the task:
+The following selectors can be used to apply styles to the element of the round handle at the start (end) of the task:
 
 - **.gantt_link_control .gantt_link_point**
 - **.gantt_link_control.task_start_date .gantt_link_point**
@@ -726,7 +729,7 @@ The [resource panel](desktop/resource_management.md#resourceviewpanel) consists 
 
 By default, grids and timelines of the resource view will use global templates and configs. You can use different configs and templates for the resource panel by passing them into the [layout config](desktop/layout_config.md#configsandtemplatesofviews).
 
-You can target the resource grid and timeline using the appropriate view name in css selector:
+You can target the resource grid and timeline using the appropriate view name in CSS selector:
 
 ~~~css
 .resourceGrid_cell .gantt_row,
@@ -747,7 +750,7 @@ The overall structure of the DOM element of the resource panel is given below:
 	- .resourceTimeline_cell
 ~~~
 
-Names of classes under **.gantt_layout_root** come from the layout config and match the value of the view property of layout cell:
+The names of the classes under **.gantt_layout_root** come from the layout config and match the value of the **view** property of a layout cell:
 
 ~~~js
 gantt.config.layout = {
