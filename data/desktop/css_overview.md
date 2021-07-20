@@ -1,4 +1,4 @@
-CSS documentation
+CSS Documentation
 ===========================
 
 This article shows you the ways of overriding the default color settings of the elements of Gantt chart with the custom ones. The article covers the main class selectors and templates for styling the following parts of Gantt: [Grid area](desktop/css_overview.md#stylinggrid), [Timeline area](desktop/css_overview.md#stylingtimeline), [Resource panel](desktop/css_overview.md#resourcepanel).
