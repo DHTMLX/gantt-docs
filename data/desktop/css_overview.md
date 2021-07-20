@@ -1,10 +1,7 @@
 CSS documentation
 ===========================
 
-
-- Grid
-- Timeline
-- Resource panel
+This article shows you the ways of overriding the default color settings of the elements of Gantt chart with the custom ones. The article covers the main class selectors and templates for styling the following parts of Gantt: [Grid area](desktop/css_overview.md#stylinggrid), [Timeline area](desktop/css_overview.md#stylingtimeline), [Resource panel](desktop/css_overview.md#resourcepanel).
 
 Styling Grid
 ------------
@@ -780,9 +777,9 @@ gantt.config.layout = {
 
 ### Resource grid
 
-https://prnt.sc/12hdmxb
+![](/desktop/resource_grid.png)
 
-You can use the same selectors as for the task grid, top level selector is **.resourceGrid_cell**
+You can use the same selectors as for the task grid, the top level selector is **.resourceGrid_cell**:
 
 ~~~css
 .resourceGrid_cell .gantt_row,
@@ -793,7 +790,7 @@ You can use the same selectors as for the task grid, top level selector is **.re
 
 ### Resource histogram:
 
-https://prnt.sc/12hdp12
+![](/desktop/resource_histogram_css.png)
 
 Resource histogram has the same elements as the main timeline. By default, all selectors that target the main timeline will target the resource timeline as well, unless you use the layout cell class (**.timeline_cell**, **.resourceHistogram_cell**) in your selectors.
 
@@ -812,7 +809,7 @@ The overall structure of the DOM element of the resource histogram:
 		- .gantt_histogram_vert_bar
 ~~~
 
-Changing the color of histogram elements
+An example of changing the color of histogram elements:
 
 ~~~css
 .gantt_histogram_cell {
@@ -832,14 +829,14 @@ Changing the color of histogram elements
 In order to change the color of specific cells, use the [gantt.templates.histogram_cell_class](api/gantt_histogram_cell_class_template.md) template:
 
 ~~~js
-gantt.templates.histogram_cell_class = function(start_date, end_date, resource, tasks) {
+gantt.templates.histogram_cell_class = function(start_date,end_date,resource,tasks) {
 	if (getAllocatedValue(tasks, resource) > getCapacity(start_date, resource)) {
 		return "column_overload"
 	}
 };
 ~~~
 
-CSS:
+and apply CSS:
 
 ~~~css
 .column_overload .gantt_histogram_fill {
@@ -847,11 +844,12 @@ CSS:
 }
 ~~~
 
-Histogram line:
+To color the histogram line you can apply custom CSS to the following class selectors:
 
-- .gantt_histogram_hor_bar, .gantt_histogram_vert_bar
+- **.gantt_histogram_hor_bar**
+- **.gantt_histogram_vert_bar**
 
-Changing the color of the histogram line:
+Changing the color of the histogram line looks like this:
 
 ~~~css
 .gantt_histogram_hor_bar, .gantt_histogram_vert_bar {
@@ -861,7 +859,7 @@ Changing the color of the histogram line:
 
 ### Resource diagram:
 
-https://prnt.sc/12hdvjp
+![](/desktop/resource_diagram.png)
 
 Resource diagram has the same elements as the main timeline. By default, all selectors that target the main timeline will target the resource timeline as well, unless you use the layout cell class (**.timeline_cell**, **.resourceTimeline_cell**) in your selectors.
 
@@ -877,9 +875,9 @@ The overall structure of the DOM element of the resource diagram:
 			- div
 ~~~
 
-Top level selector is **.resourceTimeline_cell**
+The top level selector is **.resourceTimeline_cell**.
 
-Style for labels of the resource diagram:
+An example of style for the labels of the resource diagram:
 
 ~~~css
 .gantt_resource_marker div {
@@ -895,6 +893,14 @@ Style for labels of the resource diagram:
 
 In order to change styles of specific markers, use the [gantt.templates.resource_cell_class](api/gantt_resource_cell_class_template.md) template:
 
+~~~css
+<style>
+	.resource_marker.workday_over div {
+    	border-radius: 3px;
+    	background: #ff8686;
+	}
+~~~
+
 ~~~js
 gantt.templates.resource_cell_class = function(start_date, end_date, resource, tasks){
 	var css = [];
@@ -906,13 +912,4 @@ gantt.templates.resource_cell_class = function(start_date, end_date, resource, t
 	}
 	return css.join(" ");
 };
-~~~
-
-CSS:
-
-~~~css
-.resource_marker.workday_over div {
-    border-radius: 3px;
-    background: #ff8686;
-}
 ~~~
