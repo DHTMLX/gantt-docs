@@ -29,7 +29,7 @@ Every other row of the grid and the timeline area contains an extra css class na
 }
 ~~~
 
-By default, the styles will be applied only to even rows. To style odd rows, you need to add the **odd** class name to the style rule selectors. Therefore, if you want to assign the same color to all rows, you usually need to specify css rule for both selectors (with and without '.odd' class), otherwise the default css rules [becomes more specific and gets higher priority](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity).
+By default, the styles will be applied only to even rows. To style odd rows, you need to add the **odd** class name to the style rule selectors. Therefore, if you want to assign the same color to all rows, you usually need to specify a css rule for both selectors (with and without '.odd' class), otherwise the default css rules [become more specific and get higher priority](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity).
 
 ~~~css
 .gantt_row.odd, .gantt_task_row.odd,
@@ -56,10 +56,8 @@ gantt.templates.grid_row_class = function(start, end, task){
 }
 ~~~
 
-If you check the [indexes of rows](api/gantt_gettaskindex.md), you may notice that the odd class is added to rows with numbers 0, 2, 4, 6, etc., instead of 1, 3, 5, etc. So, in fact, the **odd** class is applied to rows with **even** indexes instead of the opposite.
-
-This is a mistake we made in the early days of dhtmlxGantt, and by the time it was noticed, the correction would do more harm than good by causing existing users to modify code that already works.
-But, while the behavior of this class is counter-intuitive, it isn't likely to change due to backward compatibility reasons.
+You may notice that the even rows are highlighted on the screen instead of the odd ones.
+But if you check the [indexes of rows](api/gantt_gettaskindex.md), you will see that the style is applied to the rows that have odd indexes (1, 3, 5, etc.).
 
 
 
