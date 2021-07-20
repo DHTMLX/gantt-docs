@@ -31,7 +31,7 @@ The overall structure of the DOM element of the grid is given below:
 				- .gantt_tree_content
 ~~~
 
-### **Grid header**
+<h3 id="grid_header"><b>Grid header</b></h3>
 
 You can change the style of the Grid header element via the **.gantt_grid_scale** class selector.
 
@@ -54,7 +54,7 @@ Here is an example of applying common background and font color for the headers 
 
 {{editor 		https://snippet.dhtmlx.com/5/4b8e365e7			Styling grid and timeline headers}}
 
-### Scale height
+<h3 id="scale_height">Scale height</h3>
 
 Do **not** change the height of the grid header and time scale via CSS. 
 
@@ -64,7 +64,7 @@ The height of the scale must be set via the [scale_height](api/gantt_scale_heigh
 gantt.config.scale_height = 50;
 ~~~
 
-### A cell of the grid header
+<h3 id="grid_header_cell">A cell of the grid header</h3>
 
 You can apply a custom style for a cell of the grid header via **.gantt_grid_head_cell**.
 
@@ -98,13 +98,14 @@ gantt.config.columns = [
 - **.gantt_grid_head_cell[data-column-index='1']** - selects a specific column by its index;
 
 - **.gantt_grid_head_cell[data-column-name='start_date']** - selects a specific column by name.
-### **Grid body**
+
+<h3 id="grid_body"><b>Grid body</b></h3>
 
 You can add a custom color to the Grid body element by applying CSS styles to the **.gantt_grid_data** selector.
 
 <img src="desktop/grid_body.png"/>
 
-### Styling Grid rows
+<h3 id="styling_grid_rows">Styling Grid rows</h3>
 
 The style of the grid row is modified via **.gantt_row**.
 
@@ -201,7 +202,7 @@ or via the [row_height](desktop/resizing_rows.md#settingtherowheight) property o
 
 Do not attempt changing the row height via CSS, this will break the layout.
 
-### Styling cells/columns of Grid:
+<h3 id="styling_grid_cells">Styling cells/columns of Grid</h3>
 
 Styling cells or columns of the grid can be implemented via **.gantt_row .gantt_cell**.
 
@@ -258,7 +259,7 @@ The overall structure of the DOM element of the timeline area is presented below
 		- div - custom layers
 ~~~
 
-### **Time scale**
+<h3 id="time_scale"><b>Time scale</b></h3>
 
 The DOM element of the time scale has the following structure:
 
@@ -268,7 +269,7 @@ The DOM element of the time scale has the following structure:
 		- .gantt_scale_cell
 ~~~
 
-### Time scale container
+<h3 id="time_scale_container">Time scale container</h3>
 
 The **.gantt_task_scale** selector is used to apply custom CSS to the container of the time scale.
 
@@ -290,7 +291,7 @@ For example, changing of the font color and borders of the time scale looks like
 {{editor 		https://snippet.dhtmlx.com/5/abf267d53			Styling text and borders of the time scale}}
 
 
-### Time scales
+<h3 id="time_scales">Time scales</h3>
 
 The **.gantt_scale_line** selector is used to color the whole time scale. To target a specific time scale by its order, just use the **.gantt_scale_line:nth-child(n)** selector.
 
@@ -336,8 +337,7 @@ gantt.templates.scale_row_class = function(scale){
 
 {{editor 		https://snippet.dhtmlx.com/5/5eabe4823			Styling different time scales}}
 
-
-### Cells of the time scale:
+<h3 id="timescale_cells">Cells of the time scale</h3>
 
 You can add custom styles to the cells of the time scale via the **.gantt_scale_cell** selector.
 For example, you can change the font color and borders of the cells:
@@ -377,7 +377,7 @@ gantt.config.scales = [
 
 If you need to color the whole column, use the **timeline_cell_class** template, as described below.
 
-### **Data area**
+<h3 id="data_area"><b>Data area</b></h3>
 
 The DOM element of the data area has the following structure:
 
@@ -403,7 +403,7 @@ The DOM element of the data area has the following structure:
 	- div - custom layers
 ~~~
 
-### Task
+<h3 id="task">Task</h3>
 
 #### Task bar
 
@@ -576,7 +576,7 @@ and apply CSS:
 {{sample	04_customization/09_html_content.html}}
 
 
-### Link
+<h3 id="link">Link</h3>
 
 The structure of the DOM element of the link is given below: 
 
@@ -612,7 +612,7 @@ Here is an example of how you can color the elements of the dependency links:
 
 Thickness of the link line is set via the [gantt.config.link_line_width](api/gantt_link_line_width_config.md) config.
 
-### Resizer
+<h3 id="resizer">Resizer</h3>
 
 The following selectors can be applied to style the resizer's DOM element:
 
@@ -640,7 +640,7 @@ An example of disabling resizer of the end date:
 
 {{editor 		https://snippet.dhtmlx.com/5/9e8c0a0aa			Disabling resizer of the end date}}
 
-### Link control
+<h3 id="link_control">Link control</h3>
 
 The following selectors can be used to apply styles to the element of the round handle at the start (end) of the task:
 
@@ -648,7 +648,7 @@ The following selectors can be used to apply styles to the element of the round 
 - **.gantt_link_control.task_start_date .gantt_link_point**
 - **.gantt_link_control.task_end_date .gantt_link_point**
 
-### Background grid
+<h3 id="background_grid">Background grid</h3>
 
 The structure of the DOM element of the background grid looks as follows: 
 
@@ -775,7 +775,7 @@ gantt.config.layout = {
 };
 ~~~
 
-### Resource grid
+<h3 id="resource_grid">Resource grid</h3>
 
 ![](/desktop/resource_grid.png)
 
@@ -788,7 +788,7 @@ You can use the same selectors as for the task grid, the top level selector is *
 }
 ~~~
 
-### Resource histogram:
+<h3 id="resource_histogram">Resource histogram</h3>
 
 ![](/desktop/resource_histogram_css.png)
 
@@ -857,7 +857,7 @@ Changing the color of the histogram line looks like this:
 }
 ~~~
 
-### Resource diagram:
+<h3 id="resource_diagram">Resource diagram</h3>
 
 ![](/desktop/resource_diagram.png)
 
