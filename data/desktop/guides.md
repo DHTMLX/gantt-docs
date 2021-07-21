@@ -169,6 +169,7 @@ Check the [features available in the Standard and PRO versions](desktop/editions
                 Styling
             </h4>
             <ul id="import_sublist">
+                    <li>desktop/css_overview.md</li>
             		<li>desktop/skins.md</li>
                     <li>desktop/templates.md</li>
                     <li>desktop/colouring_tasks.md</li>
