@@ -10,6 +10,20 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.1.5
+---------------
+
+<span class='release_date'>July 22, 2021. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect work of vertical reordering of tasks in the ["marker" mode](desktop/reordering_tasks.md#improvingperformanceforlargedatasets) when gantt rows have different heights
+- Fix the issue with the sizes of the timeline and the grid in some layouts when the [show_grid](api/gantt_show_grid_config.md) and [show_chart](api/gantt_show_chart_config.md) configs are disabled
+- The `data-column-name` and `data-column-index` attributes are added for cells of the grid header
+- Fix the incorrect display of the grid after [re-initialization](api/gantt_init.md) of the gantt after removing all columns [from the config](desktop/specifying_columns.md#overview)
+- Fix the issue that caused the resource panel configuration to overwrite [the main configuration](desktop/common_configuration.md#ganttconfigobject) of the gantt in Vue.js applications
+- Added the ability to modify the configuration of the [resource panel](desktop/resource_management.md#resourceviewpanel) on the fly by modifying the configuration object provided to the [resource layout](desktop/layout_config.md#configsandtemplatesofviews)
+
 7.1.4
 ---------
 
