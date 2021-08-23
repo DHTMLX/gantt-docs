@@ -10,6 +10,19 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.1.6
+---------------
+
+<span class='release_date'>August 23, 2021. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect work of the [auto_scheduling_move_projects](api/gantt_auto_scheduling_move_projects_config.md) config when [schedule_from_end](api/gantt_schedule_from_end_config.md) is enabled
+- Fix the incorrect work of the [onrender](api/gantt_columns_config.md) callback of the column which caused custom elements to disappear when the grid is scrolled quickly
+- Fix the regression (appeared in v7.1.5) which caused rows of the grid to disappear after the grid cell is resized in complex layouts
+- Fix the incorrect work of the [size/visibility groups](desktop/layout_config.md#visibilitygroups) which prevented the sizes of columns from being synchronized in the complex layout
+- Improved the display of the grid when the gantt is rendered in a small container
+
 7.1.5
 ---------------
 
