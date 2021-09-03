@@ -33,6 +33,14 @@ remain on their places.
 
 <img src="api/moving_project_false.png">
 
+<br>
+**Note**, if you use constraint scheduling (*gantt.config.auto_scheduling_compatibility = true*), this config will be active only when the strict mode is disabled:
+
+~~~js
+gantt.config.auto_scheduling_compatibility = true;
+gantt.config.auto_scheduling_strict = false;
+~~~
+
 @related:
 desktop/auto_scheduling.md
 
