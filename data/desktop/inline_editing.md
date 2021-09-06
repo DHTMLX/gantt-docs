@@ -188,6 +188,11 @@ gantt.config.columns = [
 
 {{sample 07_grid/12_inline_edit_key_nav.html}}
 
+The section below provides you with code samples for the following custom editors:
+
+- [Simple numeric input](desktop/inline_editing.md#custominlineeditor)
+- [JQuery Datepicker input](desktop/inline_editing.md#jquery_datepicker)
+
 Custom inline editor
 -----------------------
 
@@ -307,7 +312,7 @@ gantt.config.columns = [
 
 Note, that we don't need to implement the **`hide`** method in this case, since Gantt detaches the DOM element of the editor automatically and there is nothing else that we need to clean up after the editor closes.
 
-### editor.hide
+<h3 id="jquery_datepicker">editor.hide</h3>
 
 You may need to add a **`hide`** logic if you use a complex widget inside an inline editor.
 
