@@ -415,6 +415,16 @@ var calendarId = gantt.addCalendar({
 
 {{sample 09_worktime/12_calendar_ranges.html}}
 
+<h3 id="change_worktime">Changing working hours</h3>
+
+You can change the working time for separate days of the necessary calendar via the [setWorkTime()](api/gantt_setworktime.md) method:
+
+~~~js
+var calendar = gantt.getCalendar("custom");
+calendar.setWorkTime({day : 6, hours : ["8:00-12:00"]});
+calendar.setWorkTime({date:new Date(2021,0,1),  ["8:00-12:00"]});
+~~~
+
 <h3 id="getcalendars">Getting Calendars</h3>
 
 
