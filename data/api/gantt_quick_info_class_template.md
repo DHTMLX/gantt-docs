@@ -17,7 +17,7 @@ gantt.templates.quick_info_class = function(start, end, task){
 @template:	api_template
 @descr:
 
-{{note This template is defined in the **quick_info.js** extension, so you need to activate the [quick_info](desktop/extensions_list.md#quickinfo) plugin.}}
+{{note This template is defined in the **Quick Info** extension, so you need to activate the [quick_info](desktop/extensions_list.md#quickinfo) plugin.}}
 
 
 

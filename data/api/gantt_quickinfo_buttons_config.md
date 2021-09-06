@@ -18,7 +18,7 @@ gantt.$click.buttons.advanced_details_button=function(id){
 @template:	api_config
 @descr:
 
-{{note This option is defined in the **quick_info.js** extension, so you need to activate the [quick_info](desktop/extensions_list.md#quickinfo) plugin.}}
+{{note This option is defined in the **Quick Info** extension, so you need to activate the [quick_info](desktop/extensions_list.md#quickinfo) plugin.}}
 
 
 

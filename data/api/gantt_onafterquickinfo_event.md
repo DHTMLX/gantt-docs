@@ -15,7 +15,7 @@ gantt.attachEvent("onAfterQuickInfo",function(taskId){
 @template:	api_event
 @descr:
 
-{{note This event is defined in the **quick_info.js** extension, so you need to activate the [quick_info](desktop/extensions_list.md#quickinfo) plugin.}}
+{{note This event is defined in the **Quick Info** extension, so you need to activate the [quick_info](desktop/extensions_list.md#quickinfo) plugin.}}
 
 
 added in version 4.1

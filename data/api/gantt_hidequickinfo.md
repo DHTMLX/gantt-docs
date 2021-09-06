@@ -11,7 +11,7 @@ gantt.hideQuickInfo();
 @template:	api_method
 @descr:
 
-{{note This method is defined in the **quick_info.js** extension, so you need to activate the [quick_info](desktop/extensions_list.md#quickinfo) plugin.}}
+{{note This method is defined in the **Quick Info** extension, so you need to activate the [quick_info](desktop/extensions_list.md#quickinfo) plugin.}}
 
 
 @relatedapi:
