@@ -20,6 +20,42 @@ To set a custom style for the task through a template, use the api/gantt_task_cl
 {{snippet
 Coloring tasks depending on their priority
 }}
+~~~css
+<style>
+	/* common styles for overriding borders/progress color */
+	.gantt_task_line{
+		border-color: rgba(0, 0, 0, 0.25);
+	}
+	.gantt_task_line .gantt_task_progress {
+		background-color: rgba(0, 0, 0, 0.25);
+	}
+
+	/* high */
+	.gantt_task_line.high {
+		background-color: #03A9F4;
+	}
+	.gantt_task_line.high .gantt_task_content {
+		color: #fff;
+	}
+
+	/* medium */
+	.gantt_task_line.medium {
+		background-color: #f57730;
+	}
+	.gantt_task_line.medium .gantt_task_content {
+		color: #fff;
+	}
+
+	/* low */
+	.gantt_task_line.low {
+		background-color: #e157de;
+	}
+	.gantt_task_line.low .gantt_task_content {
+		color: #fff;
+	}
+</style>
+~~~
+
 ~~~js
 gantt.templates.task_class  = function(start, end, task){
 	switch (task.priority){
