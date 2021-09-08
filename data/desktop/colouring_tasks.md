@@ -164,8 +164,8 @@ gantt.attachEvent("onLoadEnd", function(){
 				"background-color:"+r.backgroundColor+"; " +
 			"}");
 
-			html.push(".gantt_task_line.gantt_resource_" + r.key + " .gantt_task_content {" +
-				"color:"+r.textColor+";" +
+			html.push(".gantt_task_line.gantt_resource_" + r.key + 
+				" .gantt_task_content {" + "color:"+r.textColor+";" +
 			"}");
 		}
 	});

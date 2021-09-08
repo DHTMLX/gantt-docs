@@ -489,6 +489,31 @@ gantt.config.layout = {
 In the above example the sizes of the Gantt chart and the resource chart make a proportion 2:1. It means that the Gantt chart will take 66%, while the resource chart will take 33%. 
 By using the proportion 1:1, you will have 50% for both charts.
 
+Hiding parent layout views
+-----------------------
 
+If you need to hide a layout view when all its child items are invisible, specify **hide_empty:true** in the configuration of the related layout cell, for example: 
 
+~~~js
+gantt.config.layout = {
+    css: "gantt_container",
+    cols: [
+      	{
+        	hide_empty: true, /*!*/
+        	rows:[
+          		{view: "grid"}
+        	]
+      	},
+      	{resizer: true},
+      	{
+        	hide_empty: true, /*!*/
+        	rows:[
+          		{view: "timeline"}
+        	]
+      	}
+    ]
+};
+~~~
+
+{{editor	https://snippet.dhtmlx.com/5/157c0db66	Hiding grid/timeline views}}
 
