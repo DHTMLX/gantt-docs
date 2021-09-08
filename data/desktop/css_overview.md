@@ -419,6 +419,34 @@ An example of changing the border style of the bar is given below:
 
 {{editor 		https://snippet.dhtmlx.com/5/a3a5bb2f5			Styling borders of the task bars}}
 
+<br>
+To change the color of the task bars you should implement the following two steps:
+
+1. Override styles of borders and progress bars, so that their colors would match any custom color applied to the task bar:
+
+~~~css
+.gantt_task_line{
+	border-color: rgba(0, 0, 0, 0.25); /* Black color with 25% alpha/opacity */
+}
+.gantt_task_line .gantt_task_progress {
+	background-color: rgba(0, 0, 0, 0.25);
+}
+~~~
+
+2. Apply the necessary color to the task bar and to the content inside the task bar:
+
+~~~css
+.gantt_task_line{
+	background-color: #03A9F4;
+}
+.gantt_task_line.gantt_task_content {
+	color: #fff;
+}
+~~~
+
+You can find an example of applying common color of borders and progress bars to the task bars with different colors in the [Task Coloring](desktop__colouring_tasks.html#redefiningthetaskstemplate) article.
+
+<br>
 To color rows of [tasks](desktop/task_types.md#regulartasks), [projects](desktop/task_types.md#projecttasks), or [milestones](desktop/task_types.md#milestones), you need to add custom CSS to the related class selector:
 
 - **.gantt_task_line.gantt_bar_task**
