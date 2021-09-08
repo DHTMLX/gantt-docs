@@ -159,14 +159,21 @@ gantt.attachEvent("onLoadEnd", function(){
 	// generate css styles for each option and write css into the style element,
     
 	resources.forEach(function(r){
-		html.push(".gantt_task_line.gantt_resource_" + r.key + "{" +
-			"background-color:"+r.backgroundColor+"; " +
-			"color:"+r.textColor+";" +
-		"}");
+		if(r.backgroundColor && r.textColor){
+			html.push(".gantt_task_line.gantt_resource_" + r.key + "{" +
+				"background-color:"+r.backgroundColor+"; " +
+			"}");
+
+			html.push(".gantt_task_line.gantt_resource_" + r.key + " .gantt_task_content {" +
+				"color:"+r.textColor+";" +
+			"}");
+		}
 	});
 	element.innerHTML = html.join("");
 });
 ~~~
+
+If you get resources from the [resource datastore](api/gantt_resource_store_config.md), you need to use *r.id* instead of *r.key* for the resource id.
 
 - After that you'll be able to assign related classes you generated from the task templates:
 
