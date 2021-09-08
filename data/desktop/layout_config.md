@@ -220,6 +220,30 @@ var tasksStore = gantt.getDatastore("task");
 
 The method takes the name of the datastore as a parameter.
 
+<h3 id="enable_disable_resizers">Disabling/enabling resizers dynamically</h3>
+
+In some cases you may need to disable resizers between the cells of the gantt dynamically. The simplest solution is to hide them via CSS.
+
+For that, you’ll need a rule like the following:
+
+~~~css
+.no_resizers .gantt_resizer{
+	display:none;
+}
+~~~
+
+Then you’ll be able to hide the resizers by attaching the class to the container of the gantt:
+
+~~~js
+gantt.$container.classList.add("no_resizers");
+~~~
+
+To show the resizers again, just remove the class:
+
+~~~js
+gantt.$container.classList.remove("no_resizers");
+~~~
+
 HTML as Inner View
 ------------------------
 
