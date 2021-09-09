@@ -13,6 +13,32 @@ you need to change the schedule of the first task by moving it to a new date.
 Auto scheduling makes the start date of the second task update according to the end date of the first task each time when it changes.
 This feature allows you to generate and maintain project schedule by specifying relations between tasks with no need to set dates of each task manually.
 
+How to use
+--------------
+
+To use the auto scheduling functionality, you should enable the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin using the [gantt.plugins](api/gantt_plugins.md) method:
+
+~~~js
+gantt.plugins({
+	auto_scheduling: true
+});
+~~~
+
+And set the **auto_scheduling** property to *true*:
+
+~~~js
+gantt.config.auto_scheduling = true;
+~~~
+
+{{sample
+	02_extensions/12_auto_scheduling.html
+}}
+
+When auto scheduling is enabled, individual tasks still can be scheduled manually. 
+
+Forward/backward planning
+------------------
+
 ### Strategies of projects planning
 
 There are two strategies of planning tasks within a project: forward and backward planning. They are defined by combinations of configuration settings:
@@ -21,9 +47,7 @@ There are two strategies of planning tasks within a project: forward and backwar
 - api/gantt_project_start_config.md - (*Date*) the start date of a project; used as a start date of tasks by default, if forward planning is applied, *null* by default
 - api/gantt_project_end_config.md - (*Date*) the end date of a project; used for the default time of tasks, if backward planning is used, *null* by default
 
-
-Forward planning
-------------------
+### Forward planning
 
 The forward planning of tasks is used by default, i.e. **gantt.config.schedule_from_end** is set to *false*.
 
@@ -42,8 +66,7 @@ gantt.config.project_start = new Date(2019, 2, 1);
 
 {{sample 02_extensions/19_constraints_scheduling.html}}
 
-Backward planning
---------------------
+### Backward planning
 
 Is also possible to plan tasks from the end of the project, i.e. to apply backward planning. For this you need to set the **gantt.config.schedule_from_end** property to *true* and specify the end date of the project
 via the **gantt.config.project_end** configuration option:
@@ -177,29 +200,6 @@ Gantt doesn't provide a built-in UI for editing lag or any other properties of t
 [related chapter](desktop/crud_dependency.md#editinglinkvaluesfromui).
 
 {{editor	https://snippet.dhtmlx.com/5/5ebe2f82f		 Edit-lag Popup}}
-
-How to use
---------------
-
-To use the auto scheduling functionality, you should enable the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin using the [gantt.plugins](api/gantt_plugins.md) method:
-
-~~~js
-gantt.plugins({
-	auto_scheduling: true
-});
-~~~
-
-And set the **auto_scheduling** property to *true*:
-
-~~~js
-gantt.config.auto_scheduling = true;
-~~~
-
-{{sample
-	02_extensions/12_auto_scheduling.html
-}}
-
-When auto scheduling is enabled, individual tasks still can be scheduled manually. 
 
 Disabling auto scheduling for specific tasks
 ----------------------
