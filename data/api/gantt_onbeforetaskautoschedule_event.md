@@ -23,7 +23,7 @@ gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predece
 @template:	api_event
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
-{{note This event is defined in the **auto_scheduling.js** extension, so you need to activate the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin. Read the details in the desktop/auto_scheduling.md article.}}
+{{note This event is defined in the **auto_scheduling** extension, so you need to activate the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin. Read the details in the desktop/auto_scheduling.md article.}}
 
 
 The event is blockable. Returning *false* will cancel further processing.
