@@ -13,7 +13,7 @@ gantt.focus();
 @template:	api_method
 @descr:
 
-{{note This method is defined in the **keyboard_navigation.js** extension, so you need to activate the [keyboard_navigation](desktop/extensions_list.md#keyboardnavigation) plugin. Read the details in the desktop/keyboard_navigation.md article.}}
+{{note This method is defined in the **keyboard_navigation** extension, so you need to activate the [keyboard_navigation](desktop/extensions_list.md#keyboardnavigation) plugin. Read the details in the desktop/keyboard_navigation.md article.}}
 
 
 added in version 4.1

@@ -3,7 +3,7 @@ Grouping Tasks
 
 {{pronote This functionality is available only in the PRO edition}}
 
-The library provides the **grouping.js** extension that allows you to group tasks by any of task's attributes.
+The library provides the **grouping** extension that allows you to group tasks by any of task's attributes.
 
 <div style="text-align:center;"><img src="desktop/grouping_tasks.png"/></div>
 

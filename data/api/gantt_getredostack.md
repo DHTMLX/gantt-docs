@@ -19,7 +19,7 @@ var stack = gantt.getRedoStack();
 @template:	api_method
 @descr:
 
-{{note This method is defined in the **undo.js** extension, so you need to enable the [undo](desktop/extensions_list.md#undo) plugin. Read the details in the desktop/undo_redo.md article.}}
+{{note This method is defined in the **undo** extension, so you need to enable the [undo](desktop/extensions_list.md#undo) plugin. Read the details in the desktop/undo_redo.md article.}}
 
 
 

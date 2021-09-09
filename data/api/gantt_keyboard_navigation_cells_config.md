@@ -11,7 +11,7 @@ gantt.config.keyboard_navigation_cells = true;
 @template:	api_config
 @descr:
 
-{{note This option is defined in the **keyboard_navigation.js** extension, so you need to activate the [keyboard_navigation](desktop/extensions_list.md#keyboardnavigation) plugin. Read the details in the desktop/keyboard_navigation.md article.}}
+{{note This option is defined in the **keyboard_navigation** extension, so you need to activate the [keyboard_navigation](desktop/extensions_list.md#keyboardnavigation) plugin. Read the details in the desktop/keyboard_navigation.md article.}}
 
 
 

@@ -25,7 +25,7 @@ gantt.config.drag_timeline = {
 
 @descr:
 
-{{note This option is defined in the **drag_timeline.js** extension, so you need to activate the [drag_timeline](desktop/extensions_list.md#dragtimeline) plugin.}}
+{{note This option is defined in the **drag_timeline** extension, so you need to activate the [drag_timeline](desktop/extensions_list.md#dragtimeline) plugin.}}
 
 The config value can be either an object or **null** value, **null** value disables the extension.
 ~~~js

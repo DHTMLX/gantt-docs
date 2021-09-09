@@ -12,7 +12,7 @@ gantt.init('gantt_here');
 @template:	api_config
 @descr:
 
-{{note This option is defined in the **multiselect.js** extension, so you need to activate the [multiselect](desktop/extensions_list.md#multitaskselection) plugin. Read the details in the desktop/multiselection.md article.}}
+{{note This option is defined in the **multiselect** extension, so you need to activate the [multiselect](desktop/extensions_list.md#multitaskselection) plugin. Read the details in the desktop/multiselection.md article.}}
 
 
 

@@ -15,7 +15,7 @@ gantt.attachEvent("onCollapse", function (){
 @template:	api_event
 @descr:
 
-{{note This event is defined in the **fullscreen.js** extension, so you need to activate the [fullscreen](desktop/extensions_list.md#fullscreen) plugin using the [gantt.plugins](api/gantt_plugins.md) method. Read the details in the desktop/fullscreen_mode.md article.}}
+{{note This event is defined in the **fullscreen** extension, so you need to activate the [fullscreen](desktop/extensions_list.md#fullscreen) plugin using the [gantt.plugins](api/gantt_plugins.md) method. Read the details in the desktop/fullscreen_mode.md article.}}
 
 
 

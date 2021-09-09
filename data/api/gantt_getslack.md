@@ -45,7 +45,7 @@ gantt.getSlack(gantt.getTask(2), gantt.getTask(3)); // -> 1  /*!*/
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-{{note This method is defined in the **ext/dhtmlxgantt_critical_path.js** extension, so you need to include it on the page. Read the details in the desktop/critical_path.md article.}}
+{{note This method is defined in the **critical_path** extension, so you need to include it on the page. Read the details in the desktop/critical_path.md article.}}
 
 
 <img src="api/iscritical_path.png"/>

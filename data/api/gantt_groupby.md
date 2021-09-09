@@ -60,7 +60,7 @@ gantt.groupBy(false);
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-{{note This method is defined in the **grouping.js** extension, so you need to activate the [grouping](desktop/extensions_list.md#grouping) plugin. Read the details in the desktop/grouping.md article.}}
+{{note This method is defined in the **grouping** extension, so you need to activate the [grouping](desktop/extensions_list.md#grouping) plugin. Read the details in the desktop/grouping.md article.}}
 
 
 

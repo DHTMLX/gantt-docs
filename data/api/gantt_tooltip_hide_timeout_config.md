@@ -12,7 +12,7 @@ gantt.init("gantt_here");
 @template:	api_config
 @descr:
 
-{{note This option is defined in the **tooltip.js** extension, so you need to activate the [tooltip](desktop/extensions_list.md#tooltip) plugin. Read the details in the desktop/tooltips.md article.}}
+{{note This option is defined in the **tooltip** extension, so you need to activate the [tooltip](desktop/extensions_list.md#tooltip) plugin. Read the details in the desktop/tooltips.md article.}}
 
 
 

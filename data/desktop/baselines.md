@@ -209,7 +209,7 @@ The **gantt.ext.overlay.addOverlay()** method returns the id of a new overlay as
 
 ### Overlay extension API
 
-The **dhtmlxgantt_overlay.js** extension contains a set of API methods to simplify work with overlays. These methods are available via the **gantt.ext.overlay** object.
+The **dhtmlxgantt_overlay** extension contains a set of API methods to simplify work with overlays. These methods are available via the **gantt.ext.overlay** object.
 
 #### addOverlay
 

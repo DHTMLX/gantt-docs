@@ -19,7 +19,7 @@ gantt.deleteMarker(todayMarker);/*!*/
 @template:	api_method
 @descr:
 
-{{note This method is defined in the **marker.js** extension, so you need to enable the [marker](desktop/extensions_list.md#verticalmarker) plugin. Read the details in the desktop/markers.md article.}}
+{{note This method is defined in the **marker** extension, so you need to enable the [marker](desktop/extensions_list.md#verticalmarker) plugin. Read the details in the desktop/markers.md article.}}
 
 
 

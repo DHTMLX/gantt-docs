@@ -1,7 +1,7 @@
 Overlay Extension
 ======================
 
-The **overlay.js** extension contains a set of API methods to simplify work with overlays. Read details about the Overlay extension in the article desktop/baselines.md#extraoverlayforthechart.
+The **overlay** extension contains a set of API methods to simplify work with overlays. Read details about the Overlay extension in the article desktop/baselines.md#extraoverlayforthechart.
 
 Methods
 ------------

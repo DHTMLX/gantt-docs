@@ -44,7 +44,7 @@ Getting the stack of stored Undo/Redo actions
 --------------------------------------------
 
 All user actions in the Gantt Chart are implemented as arrays that contain sets of command objects. Gantt stores a stack of the most recently executed commands.
-The **undo.js** extension can make reverse operations out of them and execute them in Gantt. 
+The **undo** extension can make reverse operations out of them and execute them in Gantt. 
 
 When you need to undo or redo a command, the extension takes the most recent command object and executes the corresponding method.
 

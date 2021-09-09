@@ -505,7 +505,7 @@ You can provide tooltips for tasks to show their details in a compact way.
 
 <img src="desktop/default_task_tooltip.png">
 
-Default tooltips are automatically displayed for tasks, once you include the **ext/dhtmlxgantt_tooltip.js** extension file on the page. 
+Default tooltips are automatically displayed for tasks, once you activate the [tooltip](desktop/extensions_list.md#tooltip) plugin. 
 
 ####Custom text for tooltips
 

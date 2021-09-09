@@ -1,7 +1,7 @@
 Full Screen Mode
 ================
 
-Starting from the version 3.3, the library includes the **fullscreen.js** extension. 
+Starting from the version 3.3, the library includes the **fullscreen** extension. 
 
 This extension provides an API that expands the component to the fullscreen mode, by using FullScreen API whenever possible
 ([the list of supported browsers](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)).

@@ -20,7 +20,7 @@ gantt.batchUpdate(function () {
 @template:	api_method
 @descr:
 
-{{note This method is defined in the **multiselect.js** extension, so you need to activate the [multiselect](desktop/extensions_list.md#multitaskselection) plugin. Read the details in the desktop/multiselection.md article.}}
+{{note This method is defined in the **multiselect** extension, so you need to activate the [multiselect](desktop/extensions_list.md#multitaskselection) plugin. Read the details in the desktop/multiselection.md article.}}
 
 @relatedsample:	
 	02_extensions/09_multiselection.html

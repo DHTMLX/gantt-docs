@@ -44,7 +44,7 @@ gantt.isCriticalTask(gantt.getTask(3));// ->'true' /*!*/
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-{{note This method is defined in the **critical_path.js** extension, so you need to activate the [critical_path](desktop/extensions_list.md#criticalpath) plugin. Read the details in the desktop/critical_path.md article.}}
+{{note This method is defined in the **critical_path** extension, so you need to activate the [critical_path](desktop/extensions_list.md#criticalpath) plugin. Read the details in the desktop/critical_path.md article.}}
 
 
 

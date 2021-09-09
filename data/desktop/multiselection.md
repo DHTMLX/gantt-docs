@@ -1,7 +1,7 @@
 Multi-Task Selection 
 ===========================================
 
-Starting from version 3.2, the library provides the **multiselect.js** extension that allows you to select multiple tasks at once.
+Starting from version 3.2, the library provides the **multiselect** extension that allows you to select multiple tasks at once.
 
 <div style="text-align:center;"><img src="desktop/multiselection.png"/></div>
 

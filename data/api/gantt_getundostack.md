@@ -18,7 +18,7 @@ var stack = gantt.getUndoStack();
 @template:	api_method
 @descr:
 
-{{note This method is defined in the **undo.js** extension, so you need to enable the [undo](desktop/extensions_list.md#undo) plugin. Read the details in the desktop/undo_redo.md article.}}
+{{note This method is defined in the **undo** extension, so you need to enable the [undo](desktop/extensions_list.md#undo) plugin. Read the details in the desktop/undo_redo.md article.}}
 
 
 The returned stack is an array of the undo user actions. Each user action contains a set of commands. A command is an object with the following attributes:
