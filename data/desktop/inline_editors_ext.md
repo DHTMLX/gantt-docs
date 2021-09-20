@@ -30,10 +30,12 @@ Read details about the Inline editors extension in the article desktop/inline_ed
 
 - **editNextCell(canChangeRow)** - saves the current editor and moves editor to the next cell 
 	- `canChangeRow` parameter specifies whether it can move the editor to the first cell of the next row after the last cell of the current one
-- **editNextRow()** - saves the current editor and opens an editor in the same cell of the task below
+- **editNextRow(skipReadonly)** - saves the current editor and opens an editor in the same cell of the task below
+    - `skipReadonly` parameter specifies whether it can skip the read-only task and open an editor in the cell of the first editable task. The default *false* state of the parameter closes the editor if the next task is read-only.
 - **editPrevCell(canChangeRow)** - saves the current editor and moves editor to the previous cell 
 	- `canChangeRow` parameter specifies whether it can move editor to the last cell of the row above after reaching the first cell of the current row
-- **editPrevRow()** - saves the current editor and opens an editor in the same cell of the task above
+- **editPrevRow(skipReadonly)** - saves the current editor and opens an editor in the same cell of the task above
+    - `skipReadonly` parameter specifies whether it can skip the read-only task and open an editor in the cell of the first editable task. The default *false* state of the parameter closes the editor if the previous task is read-only.
 - **getFirstCell()** - gets the name of the first editable column in the grid
 - **getLastCell()** - gets the name of the last editable column in the grid
 - **getNextCell(direction)** - returns the name of the next editable column
