@@ -149,7 +149,7 @@ gantt.config.columns = [
 
 There are several types of time constraints:
 
-1\. **As soon as possible** - If this constraint is set to an independent task, the task starts at the same time that the project does. If this constraint is set to a dependent task, the task starts as soon as its predecessor tasks end.
+1\. **As soon as possible** - If this constraint is set to an independent task and the **strict** mode is enabled, the task starts at the same time that the project does. If the **strict** mode is disabled, the task starts on the specified date. <br>If this constraint is set to a dependent task, the task starts as soon as its predecessor tasks end.
 
 2\. **As late as possible** - If this constraint is set to an independent task, the task ends at the same time that the project does. If this constraint is set to a dependent task, the end of the task coincides with
 the start of its immediate successor task.
