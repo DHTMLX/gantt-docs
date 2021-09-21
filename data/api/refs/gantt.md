@@ -349,6 +349,7 @@ Gantt API
 - api/gantt_click_drag_config.md - enables advanced drag-n-drop
 - api/gantt_columns_config.md - configures the columns of the table
 - api/gantt_constraint_types_config.md - contains all available constraint types
+- api/gantt_container_resize_method_config.md - defines whether the gantt should track resizing of the container at time intervals
 - api/gantt_container_resize_timeout_config.md - specifies the delay (in milliseconds) before redrawing the gantt when resizing the container
 - api/gantt_correct_work_time_config.md - enables adjusting the task's start and end dates to the work time (while dragging)
 - api/gantt_csp_config.md - defines internal implementation of the code of date formatting methods
