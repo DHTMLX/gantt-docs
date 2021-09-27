@@ -1,4 +1,4 @@
-tasksExploring Supported Data Formats
+Exploring Supported Data Formats
 =======================================
 
 dhtmlxGantt can load data in the following formats:
