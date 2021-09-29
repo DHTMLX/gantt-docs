@@ -253,7 +253,7 @@ In order to always reschedule tasks to the earliest possible date, use the prope
 gantt.config.auto_scheduling_strict = true;
 ~~~
 
-{{note Note that starting from v6.1 the config works only when the api/gantt_auto_scheduling_compatibility_config.md option is enabled. You need to follow this rule until v7.1.3.}}
+{{note Note that in versions 6.1.0 - 7.1.3, the config works only when the api/gantt_auto_scheduling_compatibility_config.md option is enabled.}}
 
 ###Initial auto-scheduling
 

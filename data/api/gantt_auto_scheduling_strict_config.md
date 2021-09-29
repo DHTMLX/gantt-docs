@@ -17,7 +17,7 @@ gantt.init("gantt_here");
 
 {{note This config is defined in the **auto_scheduling** extension, so you need to activate the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin. Read the details in the desktop/auto_scheduling.md article.<br>
 
-Note that starting from v6.1 the config works only when the api/gantt_auto_scheduling_compatibility_config.md option is enabled. You need to follow this rule until v7.1.3.}}
+Note that in versions 6.1.0 - 7.1.3, the config works only when the api/gantt_auto_scheduling_compatibility_config.md option is enabled.}}
 
 
 
