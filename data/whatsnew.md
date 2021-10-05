@@ -22,7 +22,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Style fixes for the [lightbox](desktop/edit_form.md) in the [Material](desktop/skins.md#materialskin) skin
 - Fix the issue with the [Zoom plugin](desktop/zooming.md#builtinzoomingmodule) that prevented the [zoom.init](desktop/zoom.md) method from working when calling the method after [gantt.init](api/gantt_init.md)
 - Fix the script error that happened when using the [inherit_calendar](desktop/working_time.md#assigningcalendartoproject) config together with the [gantt.groupBy](desktop/grouping.md) method
-- Fix the script error thrown when adding tasks via [gantt.bathUpdate](api/gantt_batchupdate.md) if the [placeholder task](api/gantt_placeholder_task_config.md) is active
+- Fix the script error thrown when adding tasks via [gantt.batchUpdate](api/gantt_batchupdate.md) if the [placeholder task](api/gantt_placeholder_task_config.md) is active
 - Fix the issue that allowed the [placeholder task](api/gantt_placeholder_task_config.md) to be sorted, reordered, or accept subtasks
 - Fix issues with incorrect size of [grid columns](desktop/specifying_columns.md)
 - Fix the incorrect work of the [column's resizers](desktop/specifying_columns.md#resizing) which conflicted with [reordering of the columns](api/gantt_reorder_grid_columns_config.md)
