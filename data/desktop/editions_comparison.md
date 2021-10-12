@@ -16,7 +16,7 @@ The PRO edition includes all the functionality of the Standard version and also 
         {"name":"WBS codes calculation","url":"desktop__specifying_columns.html#showingthewbscodeofatask","standard":true,"pro":true},
         {"name":"Working days and hours for individual tasks", "url":"desktop__working_time.html#multipleworktimecalendars","standard":true,"pro":true},
         {"name":"Material design","url":"desktop__skins.html#materialskin","standard":true,"pro":true},
-        {"name":"Creating multiple Gantt charts on one page (<strong>Enterprise and Ultimate licenses only</strong>)\n", "url":"desktop__multiple_gantts.html", "standard":false,"pro":true},
+        {"name":"Creating multiple Gantt charts on one page (<strong>Commercial, Enterprise and Ultimate licenses since October 6, 2021</strong>)\n", "url":"desktop__multiple_gantts.html", "standard":false,"pro":true},
     	{"name":"Editable or readonly Gantt chart\n", "url":"desktop__readonly_mode.html","standard":true,"pro":true},
     	{"name":"Auto scheduling\n","url":"desktop__auto_scheduling.html","standard":false,"pro":true},
     	{"name":"Keyboard navigation\n","url":"desktop__keyboard_navigation.html","standard":true,"pro":true},

@@ -6,7 +6,7 @@ dhtmlxGantt provides an online export service that will allow you to export the 
 
 {{note
 The service is free, but the output PDF/PNG file will contain the library's watermark under the GPL license. In case you buy a license, the result of export will be available without a watermark
-during the valid support period (12 months for Commercial and Enterprise licenses).
+during the valid support period (12 months for all PRO licenses).
 }}
 
 Using export services

@@ -62,7 +62,7 @@ Download the Package
 
 ###PRO version
 
-If you have the Commercial or Enterprise license, you need to go to the [Client Area](https://dhtmlx.com/clients/) and download the PRO package from there.
+If you have the PRO version of the component, you need to go to the [Client Area](https://dhtmlx.com/clients/) and download the PRO package from there.
 
 Independent of the version, unpack the downloaded package into a folder of your project. 
 Then include **dhtmlxgantt.js** and **dhtmlxgantt.css** files into a page. Make sure that you set correct relative paths to these files:

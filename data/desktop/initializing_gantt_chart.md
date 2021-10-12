@@ -73,7 +73,7 @@ Use the following command to import files:
 import { gantt } from 'dhtmlx-gantt';
 ~~~
 
-For the Enterprise version the command look like this:
+For the Commercial, Enterprise or Ultimate version the command look like this:
 
 ~~~js
 import { gantt, Gantt } from 'dhtmlx-gantt';
@@ -189,7 +189,7 @@ requirejs(["codebase/dhtmlxgantt"], function(dhx){
 });
 ~~~
 
-The dhtmlxGantt library will return an object with fields `gantt` and `Gantt` (in Enterprise versions) - the *gantt* and *Gantt* objects described [here](desktop/multiple_gantts.md).
+The dhtmlxGantt library will return an object with fields `gantt` and `Gantt` (in Commercial, Enterprise or Ultimate versions) - the *gantt* and *Gantt* objects described [here](desktop/multiple_gantts.md).
 
 {{note  When using Gantt with custom extensions in RequireJS, you should specify the `shim` config for RequireJS and directly set the dependency of extensions from Gantt in it.}}
 

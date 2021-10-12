@@ -20,6 +20,7 @@ Possible values are:
 
 - "gpl"
 - "evaluation"
+- "individual"
 - "commercial"
 - "enterprise"
 - "ultimate"

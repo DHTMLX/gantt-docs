@@ -5,7 +5,7 @@ This article highlights the main features of using Gantt Instance.
 
 Let's consider the most common case - building an application with several pages/tabs/views. 
 
-The following approach can be applicable to the Angular-based (or React-based) apps and is available only in the Enterprise or Ultimate version of dhtmlxGantt (and not available in the GPL or Commercial editions):
+The following approach can be applicable to the Angular-based (or React-based) apps and is available only in the Commercial, Enterprise or Ultimate version of dhtmlxGantt (and not available in the GPL or Individual editions):
 
 - when you open a page/tab/view with Gantt, you need to create a new Gantt instance;
 - when you switch to a different page/tab/view, you need to [destroy the Gantt instance](desktop/multiple_gantts.md#destructorofganttanddataprocessorinstances). 
