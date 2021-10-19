@@ -281,5 +281,5 @@ The **action** method can be used to trigger any of the above actions:
 ~~~js
 store.action(taskId, "tasks-toggle");
 store.action(linkId, "delete-link");
-store.action(null, "add-link", { source: 1, target 2, type: 0 });
+store.action(null, "add-link", { source: 1, target: 2, type: 0 });
 ~~~
