@@ -177,6 +177,17 @@ gantt.exportToPNG({
 ~~~
 
 
+{{note The export service has time restrictions. If the process takes over than 20 seconds, the export will be canceled and the following error will occur:
+
+~~~html
+Error: Timeout trigger 20 seconds
+~~~
+
+If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately. 
+}}
+
+If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
+
 ##Name of the output file
 
 To set a custom name for the output file, use the **name** property in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
