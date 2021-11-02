@@ -28,6 +28,6 @@ gantt.config.process_resource_assignments = false;
 
 @changelog: added in v7.1
 
-@relatedsample: 11_resources\13_resource_assignments_for_days.html
+@relatedsample: 11_resources/13_resource_assignments_for_days.html
 
 @related: desktop/resource_management.md#managingresourceassignments
