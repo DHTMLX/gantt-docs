@@ -18,6 +18,9 @@ gantt.getTaskAssignments(5); // -> see details
 
 @template:	api_method
 @descr:
+
+{{note The **getTaskAssignments** method is not available if api/gantt_process_resource_assignments_config.md is disabled.}}
+
 The method returns an array with objects as in:
 
 ~~~js
@@ -57,7 +60,7 @@ Each object contains the following properties:
 - *resource_id* - the id of the resource
 - *value* - the quantity of the resource assigned to a task
 
-{{note *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* will be populated automatically only when api/gantt_process_resource_assignments_config.md is enabled. }}
+{{note *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* will be populated automatically only when api/gantt_process_resource_assignments_config.md is enabled.}}
 
 @relatedapi: 
 api/gantt_getresourceassignments.md
