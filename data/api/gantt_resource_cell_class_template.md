@@ -48,9 +48,9 @@ api/gantt_process_resource_assignments_config.md
 @related: desktop/resource_management.md
 
 @relatedsample:
-11_resources\04_resource_usage_diagram.html
-11_resources\05_resource_usage_templates.html
-11_resources\06_assign_multiple_owners.html
-11_resources\12_work_and_material_resources.html
+11_resources/04_resource_usage_diagram.html
+11_resources/05_resource_usage_templates.html
+11_resources/06_assign_multiple_owners.html
+11_resources/12_work_and_material_resources.html
 
 @changelog: the **assignments** parameter is added in v7.1
