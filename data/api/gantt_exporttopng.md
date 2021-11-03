@@ -89,8 +89,53 @@ The api/gantt_exporttopng.md method takes as a parameter an object with a number
 			<td class="webixdoc_links0"><b>raw</b></td>
 			<td>(<i>boolean</i>) defines that all Gantt markup will be exported as it is, with all custom elements. <em>false</em> by default. <a href="desktop/export.md#exportingcustommarkupandstyles">Read the details</a> </td>
 		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>additional_settings</b></td>
+			<td>(<i>object</i>) an object with additional settings. The object can contain the following attributes:
+			<ul>
+					<li><b>width</b> - (<i>number|string</i>) the width of the output page</li>
+					<li><b>height</b> - (<i>number|string</i>) the width of the output page</li>
+					The <b>width</b> and <b>height</b> parameters will be ignored if <b>slice_archive</b> is specified.
+					<li><b>slice_archive</b> - (<i>boolean|object</i>) allows saving large chart by pieces and obtaining them in the archive. As an object, the attribute takes the <b>width</b> and <b>height</b> options. 
+					If the piece size is not defined (i.e. <i>slice_archive: true</i>), the default sizes are 1000×1000.  </li>
+					<li><b>slice_check</b> - (<i>boolean</i>) adds an HTML page to the archive. The page lets you check that all pieces are exported correctly.</li>
+				</ul>
+			</td>
+		</tr>
     </tbody>
 </table>
+
+## Exporting large Gantt by pieces
+
+The maximal sizes of the exported file are 10000х10000. 
+
+You can increase one of the sizes, and decrease another one correspondingly via the **width**/**height** attributes of the **additional_settings** property. But if the product of the values of the width and height is greater than 100000000 (10000х10000), the output PNG image will be cropped off. 
+
+There is the ability to export the gantt by pieces and obtain them in the archive by using the **slice_archive** attribute of the **additional_settings** property of the method:
+
+~~~js
+gantt.exportToPNG({
+    server: "https://export.dhtmlx.com/beta/gantt",
+    additional_settings:{
+    	//width: 2000,
+    	//height: 2000,
+      	slice_archive: {width: 2000, height: 2000},
+      	slice_check: true,
+    }
+});
+~~~
+
+You can either define the sizes of the output PNG images via setting the attribute as an object with the *width* and *height* options:
+
+~~~js
+slice_archive: {width: 2000, height: 2000}
+~~~
+
+or you can set the attribute to *true*. In this case, the exported pieces of the gantt will have default sizes: 1000×1000.
+
+~~~js
+slice_archive: true
+~~~
 
 @related:
 desktop/export.md
