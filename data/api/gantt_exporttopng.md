@@ -125,6 +125,8 @@ gantt.exportToPNG({
 });
 ~~~
 
+**Related sample:** [Export into PNG images](https://snippet.dhtmlx.com/5/fc4ac8769)
+
 You can either define the sizes of the output PNG images via setting the attribute as an object with the *width* and *height* options:
 
 ~~~js
