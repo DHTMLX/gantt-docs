@@ -138,6 +138,10 @@ or you can set the attribute to *true*. In this case, the exported pieces of the
 ~~~js
 slice_archive: true
 ~~~
+<br>
+
+The functionality, which is described above, is helpful when you export large charts. But this process can take more than 20 seconds. As a result, the export will be canceled and the "Timeout trigger 20 seconds" error will occur.<br>
+To avoid the problem, use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) which does not have any time restrictions. The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
 
 @related:
 desktop/export.md
