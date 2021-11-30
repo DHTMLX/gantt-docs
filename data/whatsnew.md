@@ -10,6 +10,22 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+
+7.1.8
+-----------
+
+<span class='release_date'>November 30, 2021. Bugfix release</span>
+
+### Fixes
+
+- Fix the script error that was thrown from the [gantt.groupBy](desktop/grouping.md) method when the [Resource Histogram](desktop/resource_management.md#resourceviewpanel) and [fit_tasks](api/gantt_fit_tasks_config.md) config were enabled
+- Fix the incorrect work of the [Undo extension](desktop/undo_redo.md) that didn't send updates [to the server](desktop/server_side.md) when [vertical reordering](desktop/reordering_tasks.md) was reverted
+- Fix the issue with the [Export to MS Project](desktop/export_msproject.md) module which in some cases caused an `Unknown error` result when custom properties were sent to the export
+- Fix the incorrect work of the [gantt.silent](api/gantt_silent.md) method, which did not prevent [gantt.changeTaskId](api/gantt_changetaskid.md) from triggering API events and repaints
+- Fix the incorrect work of the [gantt.undo](api/gantt_undo_config.md) method that did not restore the original vertical position of the reverted item
+- Fix the incorrect work of the [resource assignment form](desktop/resources.md) which caused gantt to replace the user-provided id of the [resource assignment](desktop/resource_management.md#assigningresources) with an auto-generated value
+- Fix the incorrect work of [gantt.changeTaskId](api/gantt_changetaskid.md) in cases when the affected tasks had nested items, which caused the level of nested items to be calculated incorrectly
+
 7.1.7
 -----------
 
