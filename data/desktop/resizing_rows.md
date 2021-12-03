@@ -7,6 +7,8 @@ The dhtmlxGantt library provides 2 ways to manage the row height:
 - By setting both the height of the row and the height of the task bar for the necessary task object;
 - By dragging the bottom border of the grid row.
 
+{{note The functionality is available in v7.2 and upper.}}
+
 Setting the row height
 ------------------------
 

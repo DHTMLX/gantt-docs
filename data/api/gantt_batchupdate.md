@@ -4,6 +4,7 @@ batchUpdate
 
 @params:
 - callback  function    the callback function
+- noRedraw  boolean     optional, specifies if Gantt should repaint the chart after the callback function; <i>true</i> - not to repaint and <i>false</i> (by default) - to repaint
 
 @example:
 gantt.batchUpdate(function () {
