@@ -1,13 +1,13 @@
 hasChild
 =============
-@short:checks whether the specified item has child tasks
+@short:returns the number of child task(s) 
 	
 
 @params:
 - id	string, number	the task id
 
 @returns:
-- childs	boolean	<i>true</i> if the item has some child task(s). Otherwise, <i>false</i>
+- childs	number | undefined	the number of child tasks (if exist), or "undefined" otherwise
 
 
 
@@ -26,8 +26,8 @@ var tasks = {
 gantt.init("gantt_here");
 gantt.parse(tasks);
 
-gantt.hasChild("p_1"); //-> true /*!*/
-gantt.hasChild("t_1"); //-> false /*!*/
+gantt.hasChild("p_1"); //-> 2 /*!*/
+gantt.hasChild("t_1"); //-> undefined /*!*/
 
 @template:	api_method
 @descr:

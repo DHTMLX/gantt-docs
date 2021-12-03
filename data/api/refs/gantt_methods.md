@@ -127,7 +127,7 @@ Methods
 - api/gantt_getwbscode.md - returns the WBS code (the outline number) of a task
 - api/gantt_getworkhours.md - returns the working hours of the specified date
 - api/gantt_groupby.md - groups tasks by the specified task's attribute
-- api/gantt_haschild.md - checks whether the specified item has child tasks
+- api/gantt_haschild.md - returns the number of child task(s)
 - api/gantt_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
 - api/gantt_hidelightbox.md - closes the lightbox if it's currently active
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)

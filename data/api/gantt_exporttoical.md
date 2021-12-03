@@ -27,9 +27,10 @@ Read the details in the desktop/excel.md article.
 
 
 
-The **exportToICal()** method takes as a parameter an object with the following property (optional):
+The **exportToICal()** method takes as a parameter an object with the following properties (optional):
 
-- **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**.
+- **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**;
+- **name** - (*string*) allows specifying custom name and extension for the file but the file will still be exported in the iCal format. [Check the example](https://snippet.dhtmlx.com/5/53eebead2).
 
 @related:
 desktop/excel.md#exporttoical

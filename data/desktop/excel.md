@@ -262,9 +262,10 @@ To export data from the Gantt chart to an iCal string, do the following:
 
 ####Parameters of the export method
 
-The **exportToICal()** method takes as a parameter an object with the following property (optional):
+The [exportToICal()](api/gantt_exporttoical.md) method takes as a parameter an object with the following properties (optional):
 
-- **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**.
+- **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**;
+- **name** - (*string*) allows specifying custom name and extension for the file but the file will still be exported in the iCal format.
 		
 {{snippet
 Calling the export method with optional properties
