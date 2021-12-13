@@ -16,8 +16,8 @@ gantt.init("gantt_here");
 The 'autosize' config defines whether the gantt will fit data inside the sizes of container where it's initialized showing inner scrollbars,
 or modify the sizes of container in order to show all data without inner scrolls:
 
-- [a sample with sizes of gantt div defined in css ](https://docs.dhtmlx.com/gantt/snippet/6b31c4e1) - inner scrollbars are active if necessary
-- [a sample with sizes of gantt div calculated by a component](https://docs.dhtmlx.com/gantt/snippet/cb6165f4) - inner scrollbars are disabled
+- [a sample with sizes of gantt div defined in css ](https://snippet.dhtmlx.com/5/b4d4d1b80) - inner scrollbars are active if necessary
+- [a sample with sizes of gantt div calculated by a component](https://snippet.dhtmlx.com/5/c278b3859) - inner scrollbars are disabled
 
 In case gantt should fit a certain area on a page, the size of gantt container must be managed manually:
 
@@ -27,7 +27,7 @@ In case gantt should fit a certain area on a page, the size of gantt container m
 ### Scrolling to hidden elements 
 
 In the default mode, Gantt is scrolled automatically when you use the [showTask](api/gantt_showtask.md) or [showDate](api/gantt_showdate.md) method.
-But if **autosize** is enabled, Gantt increases the size of its container and starts to scroll the page instead of showing the hidden element.
+But if **autosize** is enabled, Gantt increases the size of its container to show itself on the page instead of showing the hidden element.
 
 In a simple configuration, Gantt may be located before or after some elements in your application. And it will work correctly if you scroll the page.
 

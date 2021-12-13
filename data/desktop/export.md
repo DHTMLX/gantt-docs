@@ -9,6 +9,20 @@ The service is free, but the output PDF/PNG file will contain the library's wate
 during the valid support period (12 months for all PRO licenses).
 }}
 
+### Time restrictions
+
+{{note The export service has time restrictions.}}
+
+If the process takes over than 20 seconds, the export will be canceled and the following error will occur:
+
+~~~html
+Error: Timeout trigger 20 seconds
+~~~
+
+If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately.
+
+{{note If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).}}
+
 Using export services
 -----------------------
 
@@ -188,18 +202,6 @@ gantt.exportToPNG({
     raw:true
 });
 ~~~
-
-
-{{note The export service has time restrictions. If the process takes over than 20 seconds, the export will be canceled and the following error will occur:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately. 
-}}
-
-If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
 
 ##Name of the output file
 
