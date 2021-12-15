@@ -27,16 +27,16 @@ In case gantt should fit a certain area on a page, the size of gantt container m
 ### Scrolling to hidden elements 
 
 In the default mode, Gantt is scrolled automatically when you use the [showTask](api/gantt_showtask.md) or [showDate](api/gantt_showdate.md) method.
-But if **autosize** is enabled, Gantt increases the size of its container to show itself on the page instead of showing the hidden element.
+But, when **autosize** is enabled, Gantt increases the size of its container to show itself on the page instead of showing the hidden element.
 
-In a simple configuration, Gantt may be located before or after some elements in your application. And it will work correctly if you scroll the page.
+There is no any universal way to escape the problem because the page can also include other elements except for Gantt, and some of the elements also need to be scrolled. Therefore, this problem should be solved depending on the page/application configuration.
 
-In a complex configuration, the Gantt container may be placed into other containers which can also be placed in some other containers. 
-In this case, Gantt will scroll each parent container and the page, and this may not work as you expect. For example, Gantt will scroll some containers you don't want to scroll.
+In a *simple* configuration, Gantt may be located before or after some elements in your application. And it can work correctly if you scroll the page.
 
-So, this problem should be solved depending on the page/application configuration.
+In a *complex* configuration, the Gantt container can be placed into other containers which can also be placed in some other containers. 
+In this case, you need to manually scroll only the elements you need. 
 
-The easiest way is to use the **element.scrollIntoView** method:
+One of the ways to make the page to be scrolled to the necessary element is use the **element.scrollIntoView** method:
 
 ~~~js
 var attr = gantt.config.task_attribute;
@@ -45,7 +45,7 @@ if(timelineElement)
     timelineElement.scrollIntoView({block:"center"});
 ~~~
 
-Where id is the task ID you need to show.
+where id is the task ID you need to show.
 
 Another way is to modify the [showTask](api/gantt_showtask.md) or [showDate](api/gantt_showdate.md) method of Gantt:
 
