@@ -67,6 +67,7 @@ gantt.init("gantt_here");
 
 ~~~
 
+For more details on formatting end dates, see the [Task end date display & Inclusive end dates](desktop/loading.md#taskenddatedisplayampinclusiveenddates) article. 
 
 @relatedapi:
 	api/gantt_task_date_config.md
@@ -74,3 +75,4 @@ gantt.init("gantt_here");
     api/gantt_grid_date_format_template.md
 @related:
 	desktop/lightbox_templates.md
+  desktop/loading.md#taskenddatedisplayampinclusiveenddates

@@ -137,6 +137,8 @@ gantt.templates.grid_date_format = function(date, column){
 
 {{editor	https://snippet.dhtmlx.com/5/b9a3d78bc	Inclusive end date editor}}
 
+For more details on formatting end dates, see the [Task end date display & Inclusive end dates](desktop/loading.md#taskenddatedisplayampinclusiveenddates) article.
+
 <h3 id="linkformatter">Formatting values of the Predecessor editor</h3>
 
 {{pronote This functionality is available in the PRO edition only.}}

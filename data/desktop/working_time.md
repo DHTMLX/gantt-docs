@@ -3,6 +3,8 @@ Work Time Calculation
 
 By default, dhtmlxGantt calculates the duration of tasks in calendar time. It assumes that the final duration of the tasks can include weekends and holidays.
 
+{{note Check the [Task end date display & Inclusive end dates](desktop/loading.md#taskenddatedisplayampinclusiveenddates) article to read about the format of the end date of a task.}}
+
 ##Enabling Work Time Calculation
 
 To provide calculating tasks' duration in work time, use the api/gantt_work_time_config.md option:

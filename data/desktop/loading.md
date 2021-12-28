@@ -42,6 +42,8 @@ gantt.parse(data); /*!*/
 	01_initialization/01_basic_init.html
 }}
 
+{{note If your data objects contain both "start_date" and "end_date" values and date values contain only date part (i.e. 01-12-2021 and not 01-12-2021 00:00) - you may need extra configuration. Be sure to check this article [Task end date display & Inclusive end dates](desktop/loading.md#taskenddatedisplayampinclusiveenddates).}}
+
 Loading from Server
 ---------------------------
 
@@ -159,42 +161,196 @@ The **end_date** has a higher priority than the **duration** parameter. If there
 }
 ~~~
 
-<h3 id="enddateformat">Formatting end dates of tasks</h3>
+## Task end date display & Inclusive end dates
 
-The end dates of tasks are not inclusive. It means that Gantt inteprets the midnight of the latest date in the range as the end of the task, while the latest date itself isn't included into the task duration, and is not
-shown, as a result. For example, for Gantt a 1-day task scheduled for the 20th of May, 2018 (20-05-2018 00:00:00) will be ended on 21-05-2018 00:00:00, although the 21st of May, 2018 won't be covered by this task. 
+This section will give you an answer to the question: "How to correctly save and display the end date of the task?".
 
-It's impossible to influence the Gantt format of storing data. However, you can redefine templates for a gantt grid in order to make it show inclusive dates only.
-Thus, Gantt will display the end date of a task as *end_date - 1* rather than take the exact "end_date" value from the code.
- 
-In the example below displaying of the end task in the tooltip is redefined via the api/gantt_tooltip_text_template.md template:
+Firstly, let's consider two possible scenarios you may face when working with task dates:
+
+#### Scenario 1
+
+- When task duration is measured in whole days (duration_unit="day")
+- When task data objects contain start and end dates in the format of "%Y-%m-%d" or "%d-%m-%Y" (i.e. without hour-minute part)
+
+Due to the details of how dhtmlxGantt interprets and stores end dates of tasks, the result dates may have values that are not expected.
+
+Take a look at the following example:
 
 ~~~js
-function formatEndDate(date, template){ 
-	// get 23:59:59 instead of 00:00:00 for the end date
-  	return template(new Date(date.valueOf() - 1));  
-}
+gantt.parse({ tasks: [
+    { 
+        id: 1,
+        text: "Task 1",
+        start_date: "22-12-2021",
+        end_date: "22-12-2021"
+    }
+]}, links:[]);
 
+console.log(gantt.getTask(1).end_date);
+// 22 December 2021 00:00:00
+
+console.log(gantt.getTask(1).duration);
+// 0
+~~~
+
+In this example, both start and end dates will refer to the same point of time and the task duration will be 0.
+
+#### Scenario 2
+
+- When the End Date of a task is displayed in the Grid
+- And the format of the end date doesn't include the hour-minute part
+
+~~~js
 gantt.config.columns = [
-	{name: "text", label: "Task name", tree: true, width: 160, resize:true},
-	{name: "start_date", label:"Start", align: "center", width: 100, resize:true},
-	{name: "end_date", label:"End", align: "center", width: 100, 
-    	template: function(task){
-			return formatEndDate(task.end_date, gantt.templates.date_grid);
-		}, resize:true},
-	// more columns
+    {name: "text", label: "Name", tree: true, width: 200, resize: true},
+    {name: "duration", label: "Duration", width:80, align: "center", resize: true},
+    {name: "start_date", label: "Start", width:80, align: "center", resize: true},
+    {name: "end_date", label: "Finish", width:80, align: "center", resize: true}
 ];
 
 gantt.init("gantt_here");
-var formatFunc = gantt.date.date_to_str("%Y-%m-%d %H:%i");
-gantt.templates.tooltip_text = function (start, end, task) {
-     return "<b>Task:</b> " + task.text + "<br/><b>Start date:</b> " + 
-       formatFunc(task.start_date) + "<br/><b>End date:</b> " + 
-       formatEndDate(task.end_date, formatFunc);
-};
+
+gantt.parse({ tasks: [
+    { 
+        id: 1,
+        text: "Task 1",
+        start_date: "02-04-2020",
+        end_date: "02-04-2020"
+    }
+]}, links:[]);
 ~~~
 
-<img src="desktop/format_end_dates.png">
+In this example, the Finish date (end_date of the task) is specified as April 3, while the task itself ends at the end of April 2.
+
+![](desktop/end_date.png)
+
+We will explain the details on how Gantt stores end dates below.
+
+### **How does Gantt stores end dates?**
+
+Even if you don't specify the hour-minute part for the task date (duration_unit = "day"), dhtmlxGantt always saves it as JS Date, which has the hour-minute-second-millisecond part, on the client side. 
+
+The current format of the end dates is the following:
+
+- the second and millisecond parts of the date is always 0, Gantt does not support units less than 1 minute
+- the end date of the task is specified as beginning of the day ("day-hour-minute") following the last busy day ("day-hour-minute"). That is:
+  - *the task that starts on the 2nd of April and lasts for 1 day* will have the following start and end dates: *"02-04-2022 00:00:00 - 03-04-2022 00:00:00"*. The end date will match the date of the beginning of the day following the 2nd of April
+  - *the task which starts on the 2nd of April at 13:00 and lasts for 1 day* will have the following start and end dates: *"02-04-2022 13:00:00 - 02-04-2022 14:00:00"*. The end date will match the date of the beginning of the next hour
+
+If we show the end date of the task on the screen without setting an hour-minute part, the result may be misleading. In the example from **scenario 2**, the start and end dates will look like "02-04-2022 - 03-04-2022". This will make you think that the task lasts not 1 day but 2 (from the 2nd to the 3rd of April).
+
+This is the default behavior and it may confuse you but there is the ability to fix it via configuration. In the following part we will show you several ways on how you can deal with it.
+
+### **How to change the default behavior?**
+
+**1\)** The first thing you *should not do* is to change the actual task dates which are stored in the gantt.
+
+You may also want to modify the task dates which are loaded into the gantt, i.e. to specify end dates as 02-04-2022 23:59:59. But *you'd better not do this* because such decision may conflict with the calculation of the duration of tasks and auto-scheduling.
+
+**Instead, we recommend that you use the following methods:**
+
+**2a\)** To change the format of the end dates of tasks in the gantt (i.e. to include the end date in the duration of the tasks), you can redefine the [task_end_date](api/gantt_task_end_date_template.md)
+template.
+
+Let's take a task that starts on April 2nd, 2020 and lasts for one day and consider how the template can change the end date.
+
+By default, the end date of this task should be displayed as April 3rd, 2020 (`03-04-2020 00:00:00`):
+
+- [Live demo: Default format](https://snippet.dhtmlx.com/5/24f73d6ec)
+
+<img  src="api/task_end_date_template_default.png"/>
+
+But if you apply the [task_end_date](api/gantt_task_end_date_template.md)
+template, the same task will be finished on April 2nd, 2020:
+
+- [Live demo: Inclusive end date format](https://snippet.dhtmlx.com/5/f2c801d3d)
+
+<img  src="api/task_end_date_template.png"/>
+
+The code looks like:
+
+~~~js
+// override the columns config
+gantt.config.columns = [
+  {name: "wbs", label: "#", width: 60, align: "center", template: gantt.getWBSCode},
+  {name: "text", label: "Name", tree: true, width: 200, resize: true},
+  {name: "start_date", label: "Start", width:80, align: "center", resize: true},
+  {name: "end_date", label: "Finish", width:80, align: "center", resize: true}, 
+  {name:"add"}
+];
+
+// redefine the template
+gantt.templates.task_end_date = function(date){
+   return gantt.templates.task_date(new Date(date.valueOf() - 1)); 
+};
+ 
+var gridDateToStr = gantt.date.date_to_str("%Y-%m-%d");
+gantt.templates.grid_date_format = function(date, column){
+   if(column === "end_date"){
+     return gridDateToStr(new Date(date.valueOf() - 1)); 
+   }else{
+     return gridDateToStr(date); 
+   }
+}
+gantt.init("gantt_here");
+~~~
+
+This way lets you change the task end date shown in the grid, header of the lightbox, and any other places where you need to show the end date.
+
+If you are using the [format for inclusive end dates](api/gantt_task_end_date_template.md) of tasks and want to make it work correctly with [inline editing](desktop/inline_editing.md) in the grid, you have to create a special editor for editing inclusive end dates of tasks, as in:
+
+~~~js
+// inclusive editor for end dates
+// use the default editor, but override the set_value/get_value methods
+var dateEditor = gantt.config.editor_types.date;
+gantt.config.editor_types.end_date = gantt.mixin({
+    set_value: function(value, id, column, node){
+        var correctedValue = gantt.date.add(value, -1, "day");
+        return dateEditor.set_value.apply(this, [correctedValue, id, column, node]);
+    },
+    get_value: function(id, column, node) {
+        var selectedValue = dateEditor.get_value.apply(this, [id, column, node]);
+        return gantt.date.add(selectedValue, 1, "day");
+    },
+}, dateEditor);
+
+var textEditor = {type: "text", map_to: "text"};
+var startDateEditor = {type: "date", map_to: "start_date"};
+var endDateEditor = {type: "end_date", map_to: "end_date"};
+var durationEditor = {type: "number", map_to: "duration", min:0, max: 100};
+
+gantt.config.columns = [
+    {name: "text", label: "Name", tree: true, width: 200, editor: textEditor, 
+        resize: true},
+    {name: "duration", label: "Duration", width:80, align: "center", 
+        editor: durationEditor, resize: true},
+    {name: "start_date", label: "Start", width:140, align: "center", 
+        editor: startDateEditor, resize: true},
+    {name: "end_date", label: "Finish", width:140, align: "center", 
+        editor: endDateEditor, resize: true}
+];
+
+// change lightbox and grid templates to display dates of tasks in an inclusive format
+gantt.templates.task_end_date = function(date){
+    return gantt.templates.task_date(new Date(date.valueOf() - 1)); 
+};
+
+var gridDateToStr = gantt.date.date_to_str("%Y-%m-%d");
+gantt.templates.grid_date_format = function(date, column){
+    if(column === "end_date"){
+        return gridDateToStr(new Date(date.valueOf() - 1)); 
+    }else{
+        return gridDateToStr(date); 
+    }
+}
+~~~
+
+{{editor	https://snippet.dhtmlx.com/5/b9a3d78bc	Inclusive end date editor}}
+
+**2b\)** If other parts of the application require the end dates to be stored in the "inclusive" format -  *i.e. a task that starts on April 2nd, 2020 and lasts for one day needs to be stored with the start_date: "02-04-2022", end_date: "02-04-2022"* - you have to implement additional processing of the end dates, namely:
+
+- to add one day to the end dates before loading data into the gantt
+- to subtract one day from the end dates before saving the changes received from the gantt back to the data storage
 
 Data Properties
 -------------------------

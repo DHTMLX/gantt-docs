@@ -50,6 +50,10 @@ gantt.init("gantt_here");
 
 where 'text', 'holder', 'start_date', 'end_date', 'progress' are [the names of the data properties](desktop/specifying_columns.md#datamappingandtemplates).
 
+Displaying end date of tasks
+--------------------------------
+
+When task data objects contain start and end dates in the format of "%Y-%m-%d" or "%d-%m-%Y" (i.e. without hour-minute part), the result dates in the default format may have values that are not expected. For more details on formatting end dates, see the [Task end date display & Inclusive end dates](desktop/loading.md#taskenddatedisplayampinclusiveenddates) article.
 
 Hiding the "Add" button for certain tasks
 ----------------------------------------------

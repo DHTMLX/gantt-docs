@@ -109,3 +109,30 @@ or
 
 Read the desktop/troubleshooting.md article that gives instructions on how to identify the reasons of the problems.
 
+How to include the last day of the task into the duration
+---------------------------------------------------------- 
+
+You may notice, that when the date is specified in days without an hour-minute part and the start and end dates are the same, the duration of the task will be calculated as 0 days not 1 day. 
+
+Let's consider one more example where the start and end dates are "01-12-2021" and "05-12-2021" respectively. This will make you think that the task should last for 5 days (from the 1st to the 5th of December). But the gantt calculates its duration as 4 days.
+
+
+~~~js
+gantt.parse({ tasks: [
+    { 
+        id: 1,
+        text: "Task 1",
+        start_date: "01-12-2021",
+        end_date: "05-12-2021"
+    }
+]}, links:[]);
+
+console.log(gantt.getTask(1).end_date);
+// 5 December 2021 00:00:00
+
+console.log(gantt.getTask(1).duration);
+// 4
+~~~
+
+By default, the last day of the task is excluded from the duration of the task but there is the ability to change the default behavior and include the last day into the duration. For more details, check the [Task end date display & Inclusive end dates](desktop/loading.md#taskenddatedisplayampinclusiveenddates) article.
+
