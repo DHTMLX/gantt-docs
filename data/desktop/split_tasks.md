@@ -92,5 +92,26 @@ gantt.config.open_split_tasks = true;
 
 ![Expanding split task](desktop/expand_split_task.png)
 
+Styling
+-------------------
+
+Split tasks are defined as subtasks of a parent item, and the light green bar in the background is a bar of that parent item, with additional styles applied.
+
+When split tasks are collapsed and displayed in a single row, the light green bar of their parent item is still rendered at the same position, but with the modified opacity and z-index values.
+
+![](desktop/split_task_style.png)
+
+{{sample	04_customization/21_open_split_task.html}}
+
+You can change the color of the bar of the parent item in the same way as you can style all bars in the [timeline](desktop/css_overview.md#stylingtimeline) or completely hide it via css:
+
+~~~css
+.gantt_task_line.gantt_split_parent {
+	display: none;
+}
+~~~
+
+<br>
+When you have only one split task, the summary item (type=“project”) becomes invisible because it is completely covered by the split task. If there are no split-subtasks, the summary item has a default date and duration.
 
 @edition:pro

@@ -478,6 +478,29 @@ Tasks of a [custom type](desktop/task_types.md#creatingacustomtype) will have th
 
 -> **.gantt_task_line.gantt_bar_custom_type**.
 
+#### Split tasks
+
+[Split tasks](desktop/split_tasks.md) are defined as subtasks of a parent item, and the light green bar in the background is a bar of that parent item, with additional styles applied.
+
+![](desktop/split_parent_css.png)
+
+{{sample	04_customization/21_open_split_task.html}}
+
+If you open [the example](https://docs.dhtmlx.com/gantt/samples/) and expand ‘Task #2’, you’ll see a green bar of the ‘Task #2’ summary item. 
+
+When split tasks are displayed in a single row, this green bar is still rendered at the same position, but with the modified opacity and z-index values.
+
+You can style it in the same way as you can style all bars in the [timeline](desktop/css_overview.md#stylingtimeline), and hide it completely using the following css:
+
+~~~css
+.gantt_task_line.gantt_split_parent {
+	display: none;
+}
+~~~
+
+<br>
+When you have only one split task, the summary item (type=“project”) becomes invisible because it is completely covered by the split task. If there are no split subtasks, the summary item has a default date and duration.
+
 #### Progress bar
 
 The following selectors can be used to color the progress bar:
