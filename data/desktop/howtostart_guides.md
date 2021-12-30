@@ -1,13 +1,49 @@
 How to Start with dhtmlxGantt
 ===============================
 
-This section is dedicated to the very beginning of work with Gantt chart. Each chapter tells about basic Gantt initialization on different server-side platforms to suit all tastes and preferences.
+This section is dedicated to the very beginning of [work with Gantt chart and its communication with a server using different technologies](#integrationwithserversideplatforms).
 
-You can take a look at the video guide that shows how to create a Gantt chart on the page and load the data into it on the example of a Node.js platform.
+But before you start learning how to build your application with Gantt on the server-side, take a look at how to initialize or, simply speaking, to display the Gantt chart on the page.
+
+To display a basic Gantt on the page, follow 3 steps: 
+
+1. Include the [dhtmlxGantt code files](desktop/initializing_gantt_chart.md#howtoaddganttsourcefilesintoaproject) on the page.
+2. Create a DIV container on the page.
+3. Initialize dhtmlxGantt in the newly created container with the api/gantt_init.md method. As a parameter the method takes an HTML container (or its id)  that the Gantt chart will be  displayed in.
+
+~~~html
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="codebase/dhtmlxgantt.js"></script>
+   <link href="codebase/dhtmlxgantt.css" rel="stylesheet">
+</head>
+<body>
+    <div id="gantt_here" style='width:1000px; height:400px;'></div>
+    <script type="text/javascript"> 
+        gantt.init("gantt_here");   /*!*/                        
+    </script>
+</body>
+</html>
+~~~
+
+![desktop/init_gantt_front.png](desktop/init_gantt_front.png)
+
+{{sample
+	01_initialization/01_basic_init.html
+}}
+
+{{note For mode details, check the desktop/initializing_gantt_chart.md article.}}
+
+<h3 id="integrationwithserversideplatforms"><b>Integration with server-side platforms</b></h3>
+
+You can watch the video guide that shows how to create a Gantt chart on the page and load the data into it on the example of a Node.js platform.
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <br>
+
+Below you will find a brief overview of the guides which tell you about basic Gantt initialization on different server-side platforms to suit all tastes and preferences.<br>
 
 <table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
