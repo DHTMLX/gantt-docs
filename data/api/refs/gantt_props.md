@@ -137,7 +137,8 @@ Properties
 - api/gantt_step_config.md - sets the step of the time scale (X-Axis)
 - api/gantt_subscales_config.md - specifies the second time scale(s) (deprecated)
 - api/gantt_task_attribute_config.md - sets the name of the attribute that will specify the id of the task's HTML element
-- api/gantt_task_date_config.md - sets the format of the date label in the 'Time period' section of the lightbox 
+- api/gantt_task_date_config.md - sets the format of the date label in the 'Time period' section of the lightbox
+- api/gantt_task_grid_row_resizer_attribute_config.md - sets the name of the attribute of the resizer's DOM element of the grid row. The attribute presents the row's index
 - api/gantt_task_height_config.md - sets the height of task bars in the timeline area
 - api/gantt_task_scroll_offset_config.md - sets the offset (in pixels) of the nearest task from the left border in the timeline
 - api/gantt_time_picker_config.md - sets the format of the time drop-down selector in the lightbox
