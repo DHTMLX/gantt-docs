@@ -9,6 +9,9 @@ onBeforeRowResizeEnd
 - item	object	the task object
 - newHeight	number	the new height of the row
 
+@returns:  
+- result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
+
 @example:
 gantt.attachEvent("onBeforeRowResizeEnd", function (id, item, newHeight) {
 	gantt.message.hide(message);
