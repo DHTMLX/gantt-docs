@@ -3,7 +3,10 @@ How to Start with dhtmlxGantt
 
 This section is dedicated to the very beginning of [work with Gantt chart and its communication with a server using different technologies](#integrationwithserversideplatforms).
 
-But before you start learning how to build your application with Gantt on the server-side, take a look at how to initialize or, simply speaking, to display the Gantt chart on the page.
+Basic initialization
+-----------------------
+
+Before you start learning [how to build your application with Gantt on the server-side](#integrationwithserversideplatforms), take a look at how to initialize or, simply speaking, to display the Gantt chart on the page.
 
 To display a basic Gantt on the page, follow 3 steps: 
 
@@ -35,7 +38,8 @@ To display a basic Gantt on the page, follow 3 steps:
 
 {{note For mode details, check the desktop/initializing_gantt_chart.md article.}}
 
-<h3 id="integrationwithserversideplatforms"><b>Integration with server-side platforms</b></h3>
+Integration with server-side platforms
+---------------------------------------
 
 You can watch the video guide that shows how to create a Gantt chart on the page and load the data into it on the example of a Node.js platform.
 
