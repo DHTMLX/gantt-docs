@@ -19,6 +19,8 @@ gantt.getResourceAssignments("6"); // -> see details
 
 @template:	api_method
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 The method returns an array with objects as in:
 
 ~~~js
@@ -65,3 +67,5 @@ api/gantt_gettaskassignments.md
 api/gantt_process_resource_assignments_config.md
 
 @changelog: the return object will contain the *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* properties starting from v7.1
+
+@edition: pro

@@ -3,7 +3,6 @@ show_markers
 
 @short:shows/hides markers on the page
 	
-@edition: pro
 @type: boolean
 @default:true
 @example:
@@ -15,7 +14,6 @@ gantt.config.show_markers = false;// hides all 3 markers
 
 @template:	api_config
 @descr:
-{{pronote This functionality is available in the PRO edition only.}}
 
 {{note This option is defined in the **marker** extension, so you need to enable the [marker](desktop/extensions_list.md#verticalmarker) plugin. Read the details in the desktop/markers.md article.}}
 

@@ -18,6 +18,7 @@ gantt.getTaskAssignments(5); // -> see details
 
 @template:	api_method
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
 
 {{note The **getTaskAssignments** method is not available if api/gantt_process_resource_assignments_config.md is disabled.}}
 
@@ -71,3 +72,5 @@ api/gantt_process_resource_assignments_config.md
 @relatedsample: 11_resources/13_resource_assignments_for_days.html
 
 @changelog: added in v7.1
+
+@edition: pro

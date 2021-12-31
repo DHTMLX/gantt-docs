@@ -28,7 +28,9 @@ gantt.updateTaskAssignments(taskId);
 @template:	api_method
 @descr:
 
-{note This method is only available when the api/gantt_process_resource_assignments_config.md config is enabled. }
+{{pronote This functionality is available in the PRO edition only.}}
+
+{{note This method is only available when the api/gantt_process_resource_assignments_config.md config is enabled. }}
 
 By default, the store of assignments is populated from the task objects. It means, that if you modify the resource property of the task object (e.g. task.users), the changes will be automatically reflected in the data store.
 
@@ -77,3 +79,5 @@ api/gantt_resource_property_config.md
 api/gantt_process_resource_assignments_config.md
 
 @relatedsample: 11_resources/13_resource_assignments_for_days.html
+
+@edition: pro

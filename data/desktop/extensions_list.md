@@ -87,6 +87,8 @@ API: api/gantt_drag_timeline_config.md<br>
 Extra overlay
 --------------
 
+{{pronote This extension is available in the PRO version only.}}
+
 Provides the possibility to add an extra layer over the Gantt Chart for placing some custom content into it.
 
 ~~~js

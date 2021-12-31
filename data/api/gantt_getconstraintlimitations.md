@@ -59,6 +59,8 @@ function renderDiv(task, date, className) {
 @template:	api_method
 @descr:
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 The return value has the following structure: 
 
 ~~~js
@@ -73,3 +75,5 @@ The return value has the following structure:
 @relatedapi:
 api/gantt_constraint_types_config.md
 api/gantt_getconstrainttype.md
+
+@edition: pro

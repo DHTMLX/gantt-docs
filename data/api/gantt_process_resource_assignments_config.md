@@ -13,6 +13,8 @@ gantt.config.process_resource_assignments = false;
 
 @template:	api_config
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 When you [assign resources to the specific time of a task](desktop/resource_management.md#resourceassignmenttime), the functionality requires the **process_resource_assignments** property to be enabled.
 This is related to the fact, that the property provides parsing of the values from [gantt.config.resource_property](api/gantt_resource_property_config.md) of tasks into the internal resource assignment objects. 
 
@@ -31,3 +33,5 @@ gantt.config.process_resource_assignments = false;
 @relatedsample: 11_resources/13_resource_assignments_for_days.html
 
 @related: desktop/resource_management.md#managingresourceassignments
+
+@edition: pro

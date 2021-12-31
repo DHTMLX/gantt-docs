@@ -11,6 +11,8 @@ constraint_types
 @template:	api_config
 @descr:
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 The object definition:
 
 ~~~js
@@ -58,3 +60,5 @@ desktop/auto_scheduling.md
 @relatedsample:
 02_extensions/19_constraints_scheduling.html
 02_extensions/20_backwards_scheduling.html
+
+@edition: pro

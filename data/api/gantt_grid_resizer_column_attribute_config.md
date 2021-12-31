@@ -7,9 +7,12 @@ grid_resizer_column_attribute
 @example:
 gantt.config.grid_resizer_column_attribute = "data-column-index";
 
+@descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 @template:	api_config
 
 @relatedapi:
-	api/gantt_grid_resizer_attribute_config.md
 	api/gantt_grid_resize_config.md
 
+@edition: pro

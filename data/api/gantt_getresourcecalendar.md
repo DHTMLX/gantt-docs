@@ -24,4 +24,8 @@ var calendar = gantt.getResourceCalendar(mikeCalendarId);
 @template:	api_method
 @descr:
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 @changelog: added in v7.0
+
+@edition: pro

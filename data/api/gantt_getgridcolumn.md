@@ -1,7 +1,6 @@
 getGridColumn
 =============
 @short: gets the configuration object of a column
-@edition: pro
 
 @params:
 - name	string	the column's name
@@ -19,7 +18,6 @@ gantt.config.columns = [
 gantt.getGridColumn("text");//->{ name:"text", tree:true, width:150}
 @template:	api_method
 @descr:
-{{pronote This functionality is available in the PRO edition only.}}
 
 
 @related:

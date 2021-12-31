@@ -1,6 +1,8 @@
 Overlay Extension
 ======================
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 The **overlay** extension contains a set of API methods to simplify work with overlays. Read details about the Overlay extension in the article desktop/baselines.md#extraoverlayforthechart.
 
 Methods
@@ -63,3 +65,5 @@ checks visibility of the specified overlay. Returns *true* if the overlay is vis
 ~~~js
 var isVisible = gantt.ext.overlay.isOverlayVisible(id);
 ~~~
+
+@edition: pro

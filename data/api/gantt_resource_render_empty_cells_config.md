@@ -5,6 +5,9 @@ resource_render_empty_cells
 	tells the resource timeline to render elements and call templates for non-allocated cells
 
 @descr:
+
+{{pronote This functionality is available in the PRO edition only.}}
+
 By default, the resource timeline won't call the api/gantt_resource_cell_value_template.md and api/gantt_resource_cell_class_template.md templates for cells that don't have any tasks allocated.
 
 If this option is enabled, templates will be called for all cells of the resource timeline.
@@ -26,3 +29,4 @@ api/gantt_resource_cell_value_template.md
 @related:
 desktop/resource_management.md
 
+@edition: pro

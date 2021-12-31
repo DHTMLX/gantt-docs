@@ -15,6 +15,8 @@ var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store)
 @template:	api_config
 @descr:
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 The datastore is created automatically.
 
 The datastore is only created when the api/gantt_process_resource_assignments_config.md config is enabled.
@@ -48,3 +50,5 @@ desktop/resource_management.md
 
 @relatedsample:
 11_resources/13_resource_assignments_for_days.html
+
+@edition: pro
