@@ -414,5 +414,65 @@ It allows sending requests up to 40MB in size and supports MS Project exports an
 
 Any other methods, for example, *gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})* should return a server error.
 
+dhtmlxGantt vs MS Project time calculation
+------------------------------------------
+
+There are fundamental differences between how date calculations work in dhtmlxGantt and MS Project, and in some cases it leads to different results. 
+
+The differences also vary on a combination of configs used in the gantt. But you can change the settings of the gantt which can influence the results of calculations:
+
+1\. Firstly, there are differences in duration conversions between dhtmlxGantt and [MS Project](https://blog.epmainc.com/start-and-end-date-do-not-align-task-duration/).
+
+It can be bypassed by specifying *HoursPerDay* and *MinutesPerDay* when you export the gantt to MS Project:
+
+~~~js
+gantt.exportToMSProject({
+    project: {
+        HoursPerDay: function () {
+            return 24;
+        },
+        MinutesPerDay: function () {
+            return 24 * 60;
+        }
+    }
+});
+~~~
+
+2\. Secondly, your project may have the [work_time](desktop/working_time.md) setting disabled:
+
+~~~js
+gantt.config.work_time = false;
+~~~
+
+Note, even when the work time calculations are disabled, the gantt still has the default calendar settings in the config (8 hours per day, Mon-Fri workweek).
+And our export client always sends the default calendar to MS Project, even if the worktime is disabled in gantt. That’s why MS Project calculates task durations differently.
+
+As a workaround, you can clear the default calendar so even if it’s sent to MS Project, tasks durations will be calculated in the same way as in the gantt:
+
+~~~js
+gantt.setWorkTime({day:0, hours:[0,24]});
+gantt.setWorkTime({day:1, hours:[0,24]});
+gantt.setWorkTime({day:2, hours:[0,24]});
+gantt.setWorkTime({day:3, hours:[0,24]});
+gantt.setWorkTime({day:4, hours:[0,24]});
+gantt.setWorkTime({day:5, hours:[0,24]});
+gantt.setWorkTime({day:6, hours:[0,24]});
+~~~
+
+3\. Besides, you may notice divergence between dates of summary items if you have specified [gantt.config.duration_unit](api/gantt_duration_unit_config.md) to "day":
+
+~~~js
+gantt.config.duration_unit = "day";
+~~~
+
+In this case the gantt will round durations to total days count. But MS Project won't do it and will display fraction durations. For example, the top project will have a duration of 439 in the gantt but 438.58 in MS Project.
+
+The only workaround for it would be to switch [duration_unit](api__gantt_duration_unit_config.html) to hour units:
+
+~~~js
+gantt.config.duration_unit = "hour";
+~~~
+
+
 @index:
 - desktop/tags.md
