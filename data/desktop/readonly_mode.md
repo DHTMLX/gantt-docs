@@ -53,6 +53,14 @@ By default, the gantt checks whether a task/link has this property with a no-neg
 
 When the task/link is read-only,  it won't react on clicks, double clicks, isn't draggable or editable in any way.
 
+In case you want to show the lightbox for read-only tasks, you can manually call it using [gantt.showLightbox(id)](api/gantt_showlightbox.md):
+
+~~~js
+gantt.attachEvent("onTaskDblClick", function(id,e){
+    gantt.showLightbox(id)
+    return true;
+});
+~~~
 
 By default, the read-only behavior is binded to the 'readonly' property of a task/link. But you can change the target property using the  api/gantt_readonly_property_config.md configuration option:
 

@@ -10,6 +10,29 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.1.9
+-----------
+
+<span class='release_date'>January 10, 2022. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue with alignment of subtasks after dragging a project in the "year" scale and [switching between scales dynamically](desktop/dynamic_scale.md)
+- Fix the issue which caused the duration of the project to change after [dragging the project with subtasks](api/gantt_drag_project_config.md) in the ["month"](api/gantt_scales_config.md) scale
+- Fix the issue with [Auto Scheduling](desktop/auto_scheduling.md) that caused the [constraint type](desktop/auto_scheduling.md#timeconstraintsfortasks) to be changed from "ASAP" to "SNET" after changing the duration of the task
+- Fix the incorrect work of [backward scheduling](desktop/auto_scheduling.md#forwardbackwardplanning) after changing the start and end dates via inline editors when [schedule_from_end](api/gantt_schedule_from_end_config.md) is enabled
+- Now it is possible to open the lightbox [for read-only tasks in the read-only mode ](desktop/readonly_mode.md#readonlymodeforspecifictaskslinks)
+- Now it is impossible to edit read-only tasks via the lightbox
+- Fix the issue with the lightbox which caused it not to open for [editable tasks in the read-only mode](desktop/readonly_mode.md#readonlymodefortheentiregantt) (appeared in v6.3.1)
+- Fix the issue with resizing columns in grid after hiding the timeline via [show_chart](api/gantt_show_chart_config.md)
+- Fix the issue with [Auto Scheduling](desktop/auto_scheduling.md) which couldn't be canceled after changing values of [project_start](api/gantt_project_start_config.md) and [project_end](api/gantt_project_end_config.md)
+- Fix the issue which caused the gantt to assign constraints to the tasks with disabled auto-scheduling
+- Fix the issue with defining a year range by the lightbox when the range of dates of tasks is more than 10 years and [a range for the year selector isn't specified](desktop/duration.md)
+- Fix the script error that was thrown after loading Gantt if a horizontal scrollbar was attached to 3 or more vertical views
+- Fix the incorrect work of the [onBeforeTaskAutoSchedule](api/gantt_onbeforeautoschedule_event.md) event after setting [the ASAP constraint](desktop/auto_scheduling.md#timeconstraintsfortasks) for the task without links when [the strict mode](api/gantt_auto_scheduling_strict_config.md) is enabled
+- Fix the error occurred when running minified versions of Gantt in Next.js projects
+- Fix the issue which caused the width of Gantt to be changed after initializing the [gantt instance](desktop/multiple_gantts.md#ganttinstanceconfiguration) inside an empty container 
+
 
 7.1.8
 -----------
