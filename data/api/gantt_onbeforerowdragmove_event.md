@@ -2,10 +2,10 @@ onBeforeRowDragMove
 =============
 
 @short:
-	fires before a task is dragged to a different position
+	fires before a row of the grid is dragged vertically to a different position
 
 @params:
-- id			string,number			the id of the task to move
+- id			string,number			the id of the task to move in the grid
 - parent		string,number			the parent id
 - tindex		number					the index of the position in the parent branch that the task will be moved to 
 

@@ -226,7 +226,7 @@ Gantt API
 - api/gantt_onaftertaskautoschedule_event.md - fires for each task which has been autoscheduled
 - api/gantt_onaftertaskdelete_event.md - fires after the user deletes a task
 - api/gantt_onaftertaskdrag_event.md - fires after the user has finished to drag and released the mouse button
-- api/gantt_onaftertaskmove_event.md - fires after a task was moved to a new position
+- api/gantt_onaftertaskmove_event.md - fires after a task was moved to a new vertical position
 - api/gantt_onaftertaskupdate_event.md - fires after the user updates a task
 - api/gantt_onafterundo_event.md - fires after the undo() method was called
 - api/gantt_onajaxerror_event.md - fires if the server returns an error
@@ -249,7 +249,7 @@ Gantt API
 - api/gantt_onbeforeredo_event.md - fires before the redo() method is called
 - api/gantt_onbeforeredostack_event.md - fires before an action is added into the redo stack
 - api/gantt_onbeforerowdragend_event.md - fires when a user drops a row in the grid
-- api/gantt_onbeforerowdragmove_event.md - fires before a task is dragged to a different position
+- api/gantt_onbeforerowdragmove_event.md - fires before a row of the grid is dragged vertically to a different position
 - api/gantt_onbeforerowresize_event.md - fires before the user starts to resize the row height by drag-and-drop
 - api/gantt_onbeforerowresizeend_event.md - fires before resizing of the row height is completed
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
@@ -258,14 +258,14 @@ Gantt API
 - api/gantt_onbeforetaskdelete_event.md - fires before the user deletes a task
 - api/gantt_onbeforetaskdisplay_event.md - fires after the tasks have been loaded to the Gantt chart, but before they are displayed
 - api/gantt_onbeforetaskdrag_event.md - fires after the user has pressed the mouse button and started dragging, but before dhtmlxGantt starts the drag-and-drop operation
-- api/gantt_onbeforetaskmove_event.md - fires before a task is moved to a new position
+- api/gantt_onbeforetaskmove_event.md - fires before a task is moved to a new vertical position
 - api/gantt_onbeforetaskmultiselect_event.md - fires before the task selection state is being changed (the task is being selected or unselected)
 - api/gantt_onbeforetaskselected_event.md - fires before the user selects a task
 - api/gantt_onbeforetaskupdate_event.md - fires before the user updates a task
 - api/gantt_onbeforeundo_event.md - fires before the undo() method is called
 - api/gantt_onbeforeundostack_event.md - fires before an action is added into the undo stack
 - api/gantt_oncircularlinkerror_event.md - fires when the circular reference has been detected and auto scheduling is not possible
-- api/gantt_onclear_event.md - fires after all tasks were removed from the Gantt chart
+- api/gantt_onclear_event.md - fires after all tasks were removed from the Gantt chart by the api/gantt_clearall.md method
 - api/gantt_oncollapse_event.md - fires when gantt went back to normal mode from the full screen mode
 - api/gantt_oncolumnresize_event.md - fires when the user is dragging the column's border to resize the column
 - api/gantt_oncolumnresizeend_event.md - fires after the user finished dragging the column's border to resize the column
@@ -303,8 +303,8 @@ Gantt API
 - api/gantt_onoptionsload_event.md - fires after a collection of options has been loaded from the server, but isn't parsed yet
 - api/gantt_onparse_event.md - fires after data was parsed (became available for API) but before it was rendered in the Gantt chart
 - api/gantt_onquickinfo_event.md - fires when the pop-up edit form appears
-- api/gantt_onrowdragend_event.md - fires after the user drops a row in the grid
-- api/gantt_onrowdragstart_event.md - fires before the user drags a row of the grid
+- api/gantt_onrowdragend_event.md - fires after the user drops a vertically reordered row in the grid
+- api/gantt_onrowdragstart_event.md - fires before the user drags a row of the grid to vertically reorder it
 - api/gantt_onrowresize_event.md - fires when the user is dragging the border of the row to resize the row height
 - api/gantt_onscaleadjusted_event.md - fires when the scale is re-rendered in order to display all tasks completely
 - api/gantt_onscaleclick_event.md - fires when the user clicks on the cell in the time scale

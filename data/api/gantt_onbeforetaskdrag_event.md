@@ -21,6 +21,8 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 
 @template:	api_event
 @descr:
+The event fires when the user drags a task in the timeline area.
+
 The event is blockable. Return *false* and the task will be backed to the initial position.
 @relatedapi:
 	api/gantt_drag_mode_config.md

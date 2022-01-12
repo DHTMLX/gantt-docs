@@ -1,6 +1,6 @@
 onAfterTaskMove
 =============
-@short:fires after a task was moved to a new position
+@short:fires after a task was moved to a new vertical position
 	
 
 @params: 

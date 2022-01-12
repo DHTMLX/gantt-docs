@@ -17,6 +17,8 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 
 @template:	api_event
 @descr:
+The event fires when the user drags a task in the timeline area.
+
 @relatedapi:
 	api/gantt_drag_mode_config.md
 	api/gantt_onbeforetaskdrag_event.md

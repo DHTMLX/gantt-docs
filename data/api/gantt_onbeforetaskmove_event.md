@@ -1,6 +1,6 @@
 onBeforeTaskMove
 =============
-@short:fires before a task is moved to a new position
+@short:fires before a task is moved to a new vertical position
 	
 
 

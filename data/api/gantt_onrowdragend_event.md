@@ -1,11 +1,11 @@
 onRowDragEnd
 =============
 
-@short:fires after the user drops a row in the grid
+@short:fires after the user drops a vertically reordered row in the grid
 	
 
 @params:
-- id			string,number		the id of the task that the user has dragged in the grid
+- id			string,number		the id of the task that the user has dragged vertically in the grid
 - target		string,number		the id of the task which place the dragged row has occupied
 
 @example:

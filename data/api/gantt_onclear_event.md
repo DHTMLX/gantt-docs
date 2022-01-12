@@ -1,7 +1,7 @@
 onClear
 =============
 
-@short: fires after all tasks were removed from the Gantt chart
+@short: fires after all tasks were removed from the Gantt chart by the api/gantt_clearall.md method
 	
 
 @example:

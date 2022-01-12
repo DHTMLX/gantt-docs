@@ -22,6 +22,7 @@ gantt.attachEvent("onBeforeTaskChanged", function(id, mode, task){
 @template:	api_event
 @descr:
 
+- The event fires when the user drags a task in the timeline area.
 - The event is blockable. Return *false* to cancel the drag operation.
 - The event fires before the api/gantt_onaftertaskdrag_event.md event.
 

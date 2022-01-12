@@ -1,6 +1,6 @@
 onRowDragStart
 =============
-@short:fires before the user drags a row of the grid 
+@short:fires before the user drags a row of the grid to vertically reorder it
 	
 
 @params:

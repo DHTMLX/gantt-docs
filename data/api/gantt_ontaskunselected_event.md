@@ -20,3 +20,5 @@ gantt.attachEvent("onTaskUnselected", function(id){
     
 @descr:
 The event is called for each task of the multiselection range.
+
+If the [multiselect](desktop/extensions_list.md#multitaskselection) extension is enabled, the event also fires when a user removes selection from the selected task.  
