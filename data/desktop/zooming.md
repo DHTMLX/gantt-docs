@@ -95,9 +95,9 @@ Let's consider the following presets:
 function setScaleConfig(level) {
     switch (level) {
         case "day":
-			gantt.config.scales = {
+			gantt.config.scales = [
   				{unit: "day", step: 1, format: "%d %M"}
-			};
+            ];
 			gantt.config.scale_height = 27;
             break;
         case "week":
@@ -106,24 +106,24 @@ function setScaleConfig(level) {
               var endDate = gantt.date.add(gantt.date.add(date, 1, "week"), -1, "day");
               return dateToStr(date) + " - " + dateToStr(endDate);
             };
- 			gantt.config.scales = {
+ 			gantt.config.scales = [
 				{unit: "week", step: 1, format: weekScaleTemplate},
 				{unit: "day", step: 1, format: "%D"}
-			};
+            ];
 			gantt.config.scale_height = 50;
             break;
         case "month":
- 			gantt.config.scales = {
+ 			gantt.config.scales = [
 				{unit: "month", step: 1, format: "%F, %Y"},
 				{unit: "day", step: 1, format: "%j, %D"}
-			};
+            ];
 			gantt.config.scale_height = 50;
             break;
         case "year":
-			gantt.config.scales = {
+			gantt.config.scales = [
 				{unit: "year", step: 1, format: "%Y"},
 				{unit: "month", step: 1, format: "%M"}
-			};
+            ];
             gantt.config.scale_height = 90;
             break;
     }

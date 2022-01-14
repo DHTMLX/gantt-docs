@@ -88,6 +88,13 @@ gantt.ext.zoom.init(zoomConfig);
 
 
 // or, in a more simple way levels can be presented as scale arrays
+var hourToStr = gantt.date.date_to_str("%H:%i");
+var hourRangeFormat = function(step){
+	return function(date){
+    	var intervalEnd = new Date(gantt.date.add(date, step, "hour") - 1)
+        return hourToStr(date) + " - " + hourToStr(intervalEnd);
+    };
+};
 var zoomConfig = {
     levels: [
         [
