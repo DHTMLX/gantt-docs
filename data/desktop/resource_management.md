@@ -639,6 +639,14 @@ If each row of the histogram is considered as a bar chart, maxCapacity is the he
 
 Thus, if the templates *histogram_cell_allocated* or *histogram_cell_capacity* are set to value 24, it implies the highest point of the row.
 
+By default, **maxCapacity** is 24 for all resources. It means that if you return the value bigger than 24 in the *histogram_cell_capacity* template, the numbers will be calculated correctly, but the area of the cells of the resource panel may not be filled as you expected.
+
+![filled_capacity](desktop/filled_capacity.png)
+
+But there is the ability to configure **maxCapacity** for all histogram at once and for each resource separately. Check the example below:
+
+{{editor	http://snippet.dhtmlx.com/5/723939de5	Configuring maxCapacity}}
+
 **maxCapacity** can be defined either at the histogram level:
 
 ~~~js

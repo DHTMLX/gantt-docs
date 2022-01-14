@@ -31,6 +31,16 @@ The value of the template can be set from -1 to maxCapacity. Values less than 0 
 
 If each row of the histogram is considered as a bar chart, maxCapacity is the height of the Y-scale of this chart. In the image below maxCapacity = 24:
 
+![maxCapacity](desktop/maxcapacity.png)
+
+By default, **maxCapacity** is 24 for all resources. It means that if you return the value bigger than 24 in the *histogram_cell_capacity* template, the numbers will be calculated correctly, but the area of the cells of the resource panel may not be filled as you expected.
+
+![filled_capacity](desktop/filled_capacity.png)
+
+But there is the ability to configure **maxCapacity** for all histogram at once and for each resource separately. Check the example below:
+
+{{editor	http://snippet.dhtmlx.com/5/723939de5	Configuring maxCapacity}}
+
 @edition:pro
 
 @related: desktop/resource_management.md#resourceviewpanel
