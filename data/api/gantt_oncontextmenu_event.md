@@ -21,9 +21,9 @@ gantt.attachEvent("onContextMenu", function (taskId, linkId, event) {
 @template:	api_event
 @descr:
 
+Right clicks in the Gantt chart open the default browser context menu, if there are no other conditions. 
+In the following example a click on a task shows a [DHTMLX context menu](https://docs.dhtmlx.com/menu__index.html) and hides the default browser context menu.
 
-
-Right clicks in the Gantt chart open the default browser context menu, if there are no other conditions. In the following example a click on a task shows a [DHTMLX context menu](https://docs.dhtmlx.com/menu__index.html) and hides the default browser context menu.
 ~~~
 //requires DHTMLX menu component
 gantt.attachEvent("onContextMenu", function (taskId, linkId, event) {
@@ -39,6 +39,10 @@ gantt.attachEvent("onContextMenu", function (taskId, linkId, event) {
 });
 ~~~
 
+Don't forget to include either [files of DHTMLX Menu or DHTMLX Suite](https://docs.dhtmlx.com/menu__how_to_start.html) on the page. Otherwise, the example won't work.
+<br>
+
+Check [another example](https://snippet.dhtmlx.com/5/8ff534c34) if you need to add a custom context menu in pure JavaScript.
 
 @relatedsample:
     04_customization/10_context_menu.html
