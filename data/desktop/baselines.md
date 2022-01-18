@@ -162,6 +162,118 @@ The full code of the considered example you can see in the related sample.
 04_customization/15_baselines.html
 }}
 
+Samples of custom content
+----------------
+
+The following samples show you different ways of applying the [addTaskLayer()](api/gantt_addtasklayer.md) method to enrich the timeline of the Gantt chart with different custom elements:
+
+- [Custom baselines](https://snippet.dhtmlx.com/5/94dd464a0)
+- [Highlighting cells with overdue time](https://snippet.dhtmlx.com/5/fad73bd9d)
+- [Highlighting overdue tasks](https://snippet.dhtmlx.com/5/e395c26c3)
+- [Showing the missed deadline for the whole project](https://snippet.dhtmlx.com/5/7abb89fe8)
+- [Displaying task progress value](https://snippet.dhtmlx.com/5/e9a4bcbb9)
+- [Adding custom elements for tasks](https://snippet.dhtmlx.com/5/0c055a26b)
+- [Draggable baselines](https://snippet.dhtmlx.com/5/e3edf6d6b)
+- [Baselines with a draggable progress knob](https://snippet.dhtmlx.com/5/6fc3a9f7a)
+- [Custom milestones](https://snippet.dhtmlx.com/5/c3f9c5297)
+- [Recurring tasks](https://snippet.dhtmlx.com/5/7faa7b03a)
+
+
+Drag-and-drop for custom elements
+----------------------------------
+
+It may be useful for you if we explore the question of enabling drag-and-drop for custom elements. The thing is that there is no built-in function for the implementation of a custom drag-and-drop in DHTMLX Gantt. But it can be done manually in a rather simple way.
+
+Here you need to capture three DOM events (**mousedown**, **mousemove**, **mouseup**) and define a couple of flags to store the state of drag-and-drop between these events.
+
+1\. The **mousedown** event signals that drag-and-drop is starting. However, this may also be the first stage of a regular **click** event, which shouldn’t activate drag-and-drop. At this step, you have to set a flag, meaning that drag-and-drop is requested, and remember the initial mouse position as well as any other data that will be required later.
+
+~~~js
+var dndRequested = false;
+var dndActivated = false;
+var startPosition = null;
+var startTimestamp = null
+var taskId = null;
+var domUtils = gantt.utils.dom;
+// in this sample we'll drag `.baseline` elements inside `gantt.$task_data` container
+gantt.event(gantt.$task_data, 'mousedown', function(e) {
+  // use element.closest or gantt.utils.dom.closest to locate the draggable element
+  var draggableElement = domUtils.closest(e.target, '.baseline');
+ 
+  if (draggableElement) {
+    // we don't know yet whether a user is going to drag the element or just click it
+    // store the event info, we'll check it at 'mousemove'
+    dndRequested = true;
+    startTimestamp = Date.now();
+    startPosition = domUtils.getRelativeEventPosition(e, gantt.$task_data);
+    taskId = draggableElement.getAttribute("data-task");
+  }
+});
+~~~
+
+Note that the event handler is added using [gantt.event](api/gantt_event.md) rather than native [Element.addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener). It is done because Gantt can be destroyed using the **gantt.destructor** method and all events attached via **gantt.event** will be cleared automatically. If you use the native method and **gantt.destructor**, you may need to clear event handlers manually in order to avoid memory leaks.
+
+2\. The actual drag-and-drop will start in the **mousemove** handler. Instead of initiating drag-and-drop when a user clicks the mouse, compare the current mouse position with the initial position saved in **mousedown**. This way you can start drag-and-drop only when the current position differs enough from the initial one. If you don’t want to set a minimum threshold for drag-and-drop, you can also estimate the time passed since **mousedown**.
+
+Once you determine that drag-and-drop has started, you can use the **mousemove** event handler to update the position of the dragged element on the screen. If you drag a custom layer element, the expected approach for refreshing it is to modify the underlying object and repaint it using Gantt API ([gantt.refreshTask](api/gantt_refreshtask.md)), rather than modifying the DOM element directly.
+
+~~~js
+gantt.event(window, 'mousemove', function(e) {
+  if (dndRequested && gantt.isTaskExists(taskId)) {
+    // we captured 'mousemove' after 'mousedown' event
+    var currentPosition = domUtils.getRelativeEventPosition(e, gantt.$task_data);
+    if (!dndActivated) {
+      // 'mousemove' may be a part of the regular click process, 
+	  // we don't want to invoke dnd on regular click
+      // we check whether mouse position has changed significantly, 
+	  // or if the user holds a mouse longer than it usually happens for regular click      
+      if(Math.abs(
+		  currentPosition.x - startPosition.x) > 5 || (Date.now() - startTimestamp
+		) > 500) {
+          // if so - we assume dnd has started
+          dndActivated = true;
+      }
+    }
+    if (dndActivated) {
+      // here we can update the position of the dragged element.
+      // when we drag an element added via `gantt.addTaskLayer`, 
+	  // it's better to update the task object
+      // and repaint it via `gantt.refreshTask`
+      // you can also get the corresponding date of the time scale:
+      var pointerDate = gantt.dateFromPos(currentPosition.x);
+      gantt.getTask(taskId).baseline_date = pointerDate;
+      gantt.refreshTask(taskId);
+    }
+  }
+ 
+});
+~~~
+
+3\. Finally, you should capture the mouseup event. If drag-and-drop has been started – apply changes to the moved object, call the [gantt.updateTask](api/gantt_updatetask.md) method, if necessary, and clear all temporary flags.
+
+~~~js
+gantt.event(window, 'mouseup', function(e) {
+  // apply changes if drag-and-drop was in progress
+  if (dndActivated) {
+    // validate and finalize changes if needed
+    var task = gantt.getTask(taskId);
+    task.baseline_date = gantt.roundDate({
+      date: task.baseline_date,
+      unit: "hour",
+      step: 1    
+    });
+    // call gantt.updateTask to invoke the update of data    
+    gantt.updateTask(taskId);
+  }
+  // clear all flags we've set at previous stages
+  dndRequested = false;
+  dndActivated = false;
+  startPosition = null;
+  startTimestamp = null;
+  taskId = null;
+});
+~~~
+
 Extra overlay for the chart
 ----------------
 
