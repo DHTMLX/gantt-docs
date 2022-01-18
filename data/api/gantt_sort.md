@@ -37,4 +37,4 @@ sort
 
 @template:	api_method
 @descr:
-
+The **parent** parameter is ignored when applying a custom function for sorting. Check the [example](https://snippet.dhtmlx.com/5/ac5beb945).
