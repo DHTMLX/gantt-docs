@@ -217,15 +217,16 @@ Step 4. Loading data
 
 Now we need to implement data loading. 
 
-Since we use MySQL, we need to install necessary modules that we could use to access it. In this tutorial CRUD operations will be implented based on the promises approach.
+Since we use MySQL, we need to install necessary modules that we could use to access it. In this tutorial CRUD operations will be implemented based on the promises approach.
 So, we will use [promise-mysql](https://www.npmjs.com/package/promise-mysql) - a Node.js package for working with MySQL using promises and 
 the [bluebird](https://www.npmjs.com/package/bluebird) promise library.
 
-You can install them from the console:
+To install them we can use the console. We need to specify the following component versions as the newer ones aren't compatible with one another or don't have old functions:
 
 ~~~js
-npm install bluebird --save
-npm install promise-mysql --save
+npm install bluebird@3.5.0 --save
+npm install promise-mysql@3.0.2 --save
+npm install date-format-lite@0.7.4 --save
 ~~~
 
 You can choose any other appropriate modules. The code is fairly simple and you can implement the same logic using a different set of tools.
@@ -276,6 +277,20 @@ app.get("/data", function (req, res) {
     sendResponse(res, "error", null, error);
   });
 });
+
+function sendResponse(res, action, tid, error) {
+
+  if (action == "error")
+    console.log(error);
+
+  var result = {
+    action: action
+  };
+  if (tid !== undefined && tid !== null)
+    result.tid = tid;
+
+  res.send(result);
+}
 ~~~
 
 What we have done in this code:
@@ -439,20 +454,6 @@ function getLink(data) {
     target: data.target,
     type: data.type
   };
-}
-
-function sendResponse(res, action, tid, error) {
-
-  if (action == "error")
-    console.log(error);
-
-  var result = {
-    action: action
-  };
-  if (tid !== undefined && tid !== null)
-    result.tid = tid;
-
-  res.send(result);
 }
 ~~~
 
