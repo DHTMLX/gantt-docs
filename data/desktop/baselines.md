@@ -167,16 +167,16 @@ Samples of custom content
 
 The following samples show you different ways of applying the [addTaskLayer()](api/gantt_addtasklayer.md) method to enrich the timeline of the Gantt chart with different custom elements:
 
-- [Custom baselines](https://snippet.dhtmlx.com/5/94dd464a0)
-- [Highlighting cells with overdue time](https://snippet.dhtmlx.com/5/fad73bd9d)
-- [Highlighting overdue tasks](https://snippet.dhtmlx.com/5/e395c26c3)
-- [Showing the missed deadline for the whole project](https://snippet.dhtmlx.com/5/7abb89fe8)
-- [Displaying task progress value](https://snippet.dhtmlx.com/5/e9a4bcbb9)
-- [Adding custom elements for tasks](https://snippet.dhtmlx.com/5/0c055a26b)
-- [Draggable baselines](https://snippet.dhtmlx.com/5/e3edf6d6b)
-- [Baselines with a draggable progress knob](https://snippet.dhtmlx.com/5/6fc3a9f7a)
-- [Custom milestones](https://snippet.dhtmlx.com/5/c3f9c5297)
-- [Recurring tasks](https://snippet.dhtmlx.com/5/7faa7b03a)
+- <a href="https://snippet.dhtmlx.com/5/94dd464a0" target="_blank">Custom baselines</a>
+- <a href="https://snippet.dhtmlx.com/5/fad73bd9d" target="_blank">Highlighting cells with overdue time</a> 
+- <a href="https://snippet.dhtmlx.com/5/e395c26c3" target="_blank">Highlighting overdue tasks</a>
+- <a href="https://snippet.dhtmlx.com/5/7abb89fe8" target="_blank">Showing the missed deadline for the whole project</a>
+- <a href="https://snippet.dhtmlx.com/5/e9a4bcbb9" target="_blank">Displaying task progress value</a>
+- <a href="https://snippet.dhtmlx.com/5/0c055a26b" target="_blank">Adding custom elements for tasks</a>
+- <a href="https://snippet.dhtmlx.com/5/e3edf6d6b" target="_blank">Draggable baselines</a>
+- <a href="https://snippet.dhtmlx.com/5/6fc3a9f7a" target="_blank">Baselines with a draggable progress knob</a>
+- <a href="https://snippet.dhtmlx.com/5/c3f9c5297" target="_blank">Custom milestones</a>
+- <a href="https://snippet.dhtmlx.com/5/7faa7b03a" target="_blank">Recurring tasks</a> 
 
 
 Drag-and-drop for custom elements
