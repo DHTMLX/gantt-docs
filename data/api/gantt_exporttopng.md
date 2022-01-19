@@ -94,7 +94,7 @@ The api/gantt_exporttopng.md method takes as a parameter an object with a number
 			<td>(<i>object</i>) an object with additional settings. The object can contain the following attributes:
 			<ul>
 					<li><b>width</b> - (<i>number|string</i>) the width of the output page</li>
-					<li><b>height</b> - (<i>number|string</i>) the width of the output page</li>
+					<li><b>height</b> - (<i>number|string</i>) the height of the output page</li>
 					The <b>width</b> and <b>height</b> parameters will be ignored if <b>slice_archive</b> is specified.
 					<li><b>slice_archive</b> - (<i>boolean|object</i>) allows saving large chart by pieces and obtaining them in the archive. As an object, the attribute takes the <b>width</b> and <b>height</b> options. 
 					If the piece size is not defined (i.e. <i>slice_archive: true</i>), the default sizes are 1000×1000.  </li>

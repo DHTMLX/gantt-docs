@@ -6,4 +6,5 @@ Exporting and Importing Data
 - desktop/excel.md
 - desktop/export_msproject.md
 - desktop/serialization.md
+- desktop/export_nodejs.md
 }}
