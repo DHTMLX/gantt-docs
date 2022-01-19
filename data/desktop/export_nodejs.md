@@ -3,8 +3,9 @@ Export and Import Data on Node.js
 
 You can export and import data of DHTMLX Gantt which is built with Node.js. 
 
-For that, download the [api.js](https://files.dhtmlx.com/30d/099ae82449593df43ef02926ecae6b49/api.js) file and 
-include its code into the Gantt configuration file. 
+{{note To try out the functionality, download the [demo](https://files.dhtmlx.com/30d/dab8331c9127a736d545dd9076fbf55d/gantt_node_export_demo.zip). To run the demo you need to install the [gantt-node](desktop/using_gantt_on_server.md#termsofusing) package.}}
+
+To configure export/import for your project, download the [api.js](https://files.dhtmlx.com/30d/099ae82449593df43ef02926ecae6b49/api.js) file and include its code into the Gantt configuration file. Read the information below for more details.
 
 Exporting data
 ----------------
