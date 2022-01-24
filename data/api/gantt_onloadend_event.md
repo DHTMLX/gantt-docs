@@ -3,10 +3,13 @@ onLoadEnd
 
 @short:fires after loading data from the data source has been completed
 	
+@params:
+- url	string	the server-side url (may be a static file or a server side script that outputs data)
+- type	string	('json', 'xml', 'oldxml') the data type
 
 @example:
-gantt.attachEvent("onLoadEnd", function(){
-    //any custom logic here
+gantt.attachEvent("onLoadEnd", function(url, type){
+    console.log("onLoadEnd",url, type)
 });
 
 @template:	api_event

@@ -2,11 +2,15 @@ onLoadStart
 =============
 @short:fires immediately before loading data from the data source has been started
 
+@params:
+- url	string	the server-side url (may be a static file or a server side script that outputs data)
+- type	string	('json', 'xml', 'oldxml') the data type
 
 @example:
-gantt.attachEvent("onLoadStart", function(){
-    //any custom logic here
+gantt.attachEvent("onLoadStart", function(url, type){
+    console.log("onLoadStart",url, type)
 });
+
 
 @template:	api_event
 @descr:
