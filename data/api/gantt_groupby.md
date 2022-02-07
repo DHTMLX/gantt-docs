@@ -71,6 +71,7 @@ The grouping configuration object has the following properties:
 - **group_id** - (<i>string</i>) the group's id. Optional. The default value is 'key'.
 - **group_text** - (<i>string</i>) the group's label. Optional. The default value is 'label'.
 - **delimiter** - (*string*) the delimiter is used for automatic creation of groups for tasks with multiple resources. Optional. The default value is ",".
+- **default_group_label** - (<i>string</i>) the name of the default group. Optional. The default value is 'None'.
 
 Please, note:
 
@@ -85,4 +86,5 @@ gantt.templates.task_class=function(start, end, task){
 };
 ~~~
 
+- The default group includes tasks which are not included into the other groups. The default group doesn't include tasks if they have **relation_property** specified as a <i>string|number</i> value.<br> {{sample	02_extensions/28_tasks_grouping_relation_properties.html}}
 

@@ -116,6 +116,9 @@ gantt.templates.task_class=function(start, end, task){
 - **group_id** - (*optional*) the group's id. The default value - 'key'. 
 - **group_text** - (*optional*) the group's label. The default value - 'label'.  
 - **delimiter** - (*optional*) the delimiter is used for automatic creation of groups for tasks with multiple resources. "," by default.
+- **default_group_label** - (<i>string</i>) the name of the default group. Optional. The default value is 'None'.
+
+Note, that the default group includes tasks which are not included into the other groups. The default group doesn't include tasks if they have **relation_property** specified as a <i>string|number</i> value.<br> {{sample	02_extensions/28_tasks_grouping_relation_properties.html}}
 
 
 Ungrouping tasks
