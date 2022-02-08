@@ -1,15 +1,7 @@
 scale_unit
 =============
 
-@deprecated:Use the **unit** property of the api/gantt_scales_config.md instead:
-
-~~~js
-gantt.config.scales = [
-    {unit: "month", step: 1, format: "%F, %Y"},
-    {unit: "week", step: 1, format: weekScaleTemplate},
-    {unit: "day", step: 1, format: "%D", css:daysStyle }
-];
-~~~   
+@deprecated: The property is deprecated.
 
 @short:sets the unit of the time scale (X-Axis)
 	
@@ -32,6 +24,18 @@ gantt.init("gantt_here");
 
 @descr:
 There is a possiblity to set a custom unit. Read more on the topic [here](desktop/configuring_time_scale.md#customtimeunits).
+<br>
+
+{{note The property is deprecated.
+Use the **unit** property of the api/gantt_scales_config.md instead: }}
+
+~~~js
+gantt.config.scales = [
+    {unit: "month", step: 1, format: "%F, %Y"},
+    {unit: "week", step: 1, format: weekScaleTemplate},
+    {unit: "day", step: 1, format: "%D", css:daysStyle }
+];
+~~~
 
 @default:'day'
 

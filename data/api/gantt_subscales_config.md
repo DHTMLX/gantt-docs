@@ -51,7 +51,11 @@ Each object in the array specifies a single scale. An object can take the follow
 	</tbody>
 </table>
 
-@deprecated: The **subscales** method is deprecated, use the api/gantt_scales_config.md config instead.
+<br>
+{{note
+The **subscales** property is deprecated. Use the api/gantt_scales_config.md config instead.}}
+
+@deprecated: The property is deprecated.
 
 @changelog: deprecated since v6.2
 

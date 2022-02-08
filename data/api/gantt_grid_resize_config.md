@@ -29,8 +29,9 @@ gantt.init("gantt_here");
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-@deprecated:
-Use the [gantt.config.layout](api/gantt_layout_config.md) instead and specify grid and resizer objects with the necessary configuration inside. Check the details [here](desktop/layout_config.md#defaultlayout).
+<br>
+
+{{note The property is deprecated. Use the [gantt.config.layout](api/gantt_layout_config.md) instead and specify grid and resizer objects with the necessary configuration inside. Check the details [here](desktop/layout_config.md#defaultlayout).}}
 
 ~~~js
 gantt.config.layout = {
@@ -50,6 +51,10 @@ gantt.config.layout = {
  
 gantt.init("gantt_here");
 ~~~
+
+@deprecated:
+The property is deprecated.
+
 
 @changelog:
 deprecated since version 5.0

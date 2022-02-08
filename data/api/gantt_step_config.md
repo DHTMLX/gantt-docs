@@ -3,15 +3,7 @@ step
 
 @short: sets the step of the time scale (X-Axis)
 	
-@deprecated:Use the **step** property of the api/gantt_scales_config.md instead:
-
-~~~js
-gantt.config.scales = [
-    {unit: "month", step: 1, format: "%F, %Y"},
-    {unit: "week", step: 1, format: weekScaleTemplate},
-    {unit: "day", step: 1, format: "%D", css:daysStyle }
-];
-~~~        
+@deprecated: The property is deprecated.     
 
 @type: number
 @example:
@@ -31,6 +23,15 @@ gantt.init("gantt_here");
     api/gantt_date_scale_config.md
 @template:	api_config
 @descr:
+{{note The **step** property is deprecated. Use the **step** property of the api/gantt_scales_config.md instead:}}
+
+~~~js
+gantt.config.scales = [
+    {unit: "month", step: 1, format: "%F, %Y"},
+    {unit: "week", step: 1, format: weekScaleTemplate},
+    {unit: "day", step: 1, format: "%D", css:daysStyle }
+];
+~~~      
 
 @changelog: deprecated since v6.2
 
