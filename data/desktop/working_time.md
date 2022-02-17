@@ -148,8 +148,6 @@ The default working time is the following:
 - Working days:  Monday - Friday.
 - Working hours: 8:00 - 12:00, 13:00 - 17:00.
 
-(*hours configuration is taken into account only when api/gantt_duration_unit_config.md is less than a day (hours or minutes)*).
-
 To change the default working time, use the api/gantt_setworktime.md method:
 
 {{snippet
