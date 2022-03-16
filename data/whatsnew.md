@@ -10,6 +10,25 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.1.10
+-----------
+
+<span class='release_date'>March 16, 2022. Bugfix release</span>
+
+- Fix the issue which caused Gantt not to render a [project task](desktop/task_types.md#projecttasks) if it didn't have children and the `start_date` parameter was specified for the task
+- Fix the issue with [resizing a task row by drag and drop](desktop/resizing_rows.md#resizingrowsbydraganddrop) if the task ID was either a non-number value or a numeric string with more than 16 symbols
+- Fix the incorrect work of [visibility groups](desktop/layout_config.md#visibilitygroups) which prevented the sizes of the grid and time scale from being synchronized in the [complex layout](desktop/layout_config.md)
+- Fix the issues with task dates after dragging several tasks horizontally at once
+- Fix the issue which caused [dataProcessor](desktop/server_side.md) not to send all updates from different datastores when the [auto-update mode](https://docs.dhtmlx.com/api__dataprocessor_setupdatemode.html) was disabled
+- Fix the issue which caused the [milestone](desktop/milestones.md) with the [FF link](api/gantt_links_config.md) to be moved to the next day
+- Fix the incorrect calculation of the `end_date` of milestones when using [backward scheduling](desktop/auto_scheduling.md#forwardbackwardplanning) and setting [project_end](api/gantt_project_end_config.md) to the non-working time
+- Fix the incorrect work of task reordering if HTML elements were displayed above the gantt
+- Fix the issue with the [unsetWorkTime()](api/gantt_unsetworktime.md) method when the date/day configuration was removed from the calendar but the changes were not applied immediately
+- Fix the issue with the [clearAll()](api/gantt_clearall.md) method which didn't clear selected tasks if the [multiselect](desktop/extensions_list.md#multitaskselection) extension was enabled
+- Fix the error appeared when applying the [exportToExcel()](api/gantt_exporttoexcel.md) method with the
+`visual: true` parameter and setting the [duration_unit](api/gantt_duration_unit_config.md) config to 'hour'
+
+
 7.1.9
 -----------
 
