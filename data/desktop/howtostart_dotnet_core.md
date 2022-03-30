@@ -12,7 +12,7 @@ You can also read tutorials on other server-side technologies:
 - desktop/howtostart_ruby.md
 
 
-To organize communication with database, the [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) is used. The application is built with the help of the Visual Studio 2017.
+To organize communication with database, the [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) is used. The application is built with the help of the Visual Studio 2022.
 
 {{note
 The complete source code is [available on GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core).
@@ -20,15 +20,18 @@ The complete source code is [available on GitHub](https://github.com/DHTMLX/gant
 
 ## Step 1. Creating a project
 
-Launch Visual Studio 2017 and create a new project. Open the **File** menu and select: *New -> Project*.
+Launch Visual Studio 2022 and create a new project. Select: *Create a new project*.
 
-Next select ASP.NET Core Web Application and name it *DHX.Gantt*.
+![dhtmlxGantt with ASP.NET Core creating a project](desktop/howtostart_dotnetcore_newapp.png)
 
-![dhtmlxGantt with ASP.NET Core 2 creating a project](desktop/create_project_step1.png)
+Next select "ASP.NET Core Web App" and name it *DHX.Gantt*.
 
-Select an Empty template.
+![dhtmlxGantt with ASP.NET Core creating a project](desktop/howtostart_dotnetcore_newproject.png)
 
-![dhtmlxGantt with ASP.NET Core 2 creating a project](desktop/create_project_step2.png)
+
+![dhtmlxGantt with ASP.NET Core configure a project](desktop/howtostart_dotnetcore_configureproject.png)
+
+![dhtmlxGantt with ASP.NET Core configure a project](desktop/howtostart_dotnetcore_addinfo.png)
 
 Thus you've created a project and can proceed to add markup and script for Gantt.
 
@@ -38,9 +41,7 @@ Go to **wwwroot** and create an **index.html** file.
 
 ![dhtmlxGantt with ASP.NET Core 2 creating a project](desktop/create_project_step3.png)
 
-
 ![dhtmlxGantt with ASP.NET Core 2 creating a project](desktop/create_project_step4.png)
-
 
 In the newly created file make a simple page for a gantt chart.
 
@@ -84,58 +85,53 @@ you'll need to [add gantt files to your project manually](desktop/install_with_b
 When the page is loaded, in addition to [initializing gantt chart](desktop/initializing_gantt_chart.md) [data loading](desktop/loading.md) is immediately called and the 
 [`dataProcessor`](desktop/server_side.md#technique) is set up, so all changes made to gantt chart by the user will be saved to the backend. The backend isn't implemented yet, so it will make more sense later.
 
-Next go to **Startup.cs** and tell the application to use the **index.html** page. In order to do so, you need to configure the app to serve static files from the `wwwroot` folder. 
-It's done in the `Configure` method by calling the `app.UseStaticFiles()` method.
+Next go to **Program.cs** and tell the application to use the **index.html** page. In order to do so, you need to configure the app to serve static files from the `wwwroot` folder. 
+For this, you need to add the `app.UseDefaultFiles()` method.
 You can find [more details here](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-2.1&tabs=aspnetcore2x).
 
-We also need to add the required middleware to **Startup.cs**, by replacing the "Hello world" stub in the `Configure()` method with two highlighted lines of code:
-
-{{snippet Startup.cs}}
+{{snippet Program.cs}}
 ~~~js
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
+var builder = WebApplication.CreateBuilder(args);
 
-namespace DHX.Gantt
+// Add services to the container.
+builder.Services.AddRazorPages();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
 {
-    public class Startup
-    {
-        // This method gets called by the runtime. 
-        // Use this method to add services to the container.
-        // For more information on how to configure your application, 
-        // visit https://go.microsoft.com/fwlink/?LinkID=398940
-        public void ConfigureServices(IServiceCollection services)
-        {
-        }
-
-        // This method gets called by the runtime.
-        // Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseDefaultFiles(); /*!*/
-            app.UseStaticFiles();  /*!*/
-        }
-    }
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. 
+    // You may want to change this for production scenarios, 
+    // see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
+
+app.UseHttpsRedirection();
+
+app.UseDefaultFiles(); /*!*/
+
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapRazorPages();
+
+app.Run();
 ~~~
 
-The 2 added middleware are:
+The `app.UseDefaultFiles()` method allows serving default files. It will search the **wwwroot** folder for the following files:
 
-- `app.UseDefaultFiles()` – allows serving default files. It will search the **wwwroot** folder for the following files:
-	- index.html
-	- index.htm
-	- default.html
-	- default.htm
+- index.html
+- index.htm
+- default.html
+- default.htm
+
 Thus, you can choose any of them, while in this tutorial "index.html" is used.
 `UseDefaultFiles()` is just an URL-rewriter that doesn't actually serve the file. For this purpose you need to also add the `UseStaticFiles()` file.
-
-- `app.UseStaticFiles()` – is responsible for serving all static files present in the **wwwroot** folder.
 
 Once you are done with it, an empty gantt should appear on the page when you run the application. Note that the "Invalid data" label at the top right corner shows up because `gantt.load()` is called,
 as there is still no proper backend to serve the data. When the controller will be implemented, gantt will be able to display tasks and links.
@@ -170,19 +166,17 @@ This is how the model must look like:
 
 {{snippet	DHX.Gantt/Models/Task.cs}}
 ~~~js
-using System;
-
 namespace DHX.Gantt.Models
 {
     public class Task
     {
         public int Id { get; set; }
-        public string Text { get; set; }
+        public string? Text { get; set; }
         public DateTime StartDate { get; set; }
         public int Duration { get; set; }
         public decimal Progress { get; set; }
         public int? ParentId { get; set; }
-        public string Type { get; set; }
+        public string? Type { get; set; }
     }
 }
 ~~~
@@ -200,7 +194,7 @@ namespace DHX.Gantt.Models
     public class Link
     {
         public int Id { get; set; }
-        public string Type { get; set; }
+        public string? Type { get; set; }
         public int SourceTaskId { get; set; }
         public int TargetTaskId { get; set; }
     }
@@ -219,9 +213,19 @@ The [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) will be u
 
 - find Dependencies of DHTMLX.Gantt in the project tree
 - call the context menu and select *Manage NuGet packages* 
-- open the *Browse* tab and install **Microsoft.EntityFrameworkCore.SqlServer**
+- open the *Browse* tab and install **Microsoft.EntityFrameworkCore.SqlServer**, **Microsoft.EntityFrameworkCore**, and **Microsoft.EntityFrameworkCore.Design**
 
-![dhtmlxGantt with ASP.NET Core 2 EF core installation](desktop/install_ef_dotnet_core.png)
+![dhtmlxGantt with ASP.NET Core EF core installation](desktop/howtostart_dotnetcore_entityvianuget.png)
+
+Or use the Package Manager command line:
+
+~~~
+PM> Install-Package Microsoft.EntityFrameworkCore.SqlServer
+PM> Install-Package Microsoft.EntityFrameworkCore
+PM> Install-Package Microsoft.EntityFrameworkCore.Design
+~~~
+
+The Entity Framework Core will be used to manage communication of the app with a database.
 
 #### Create Entity Context
 
@@ -242,8 +246,8 @@ namespace DHX.Gantt.Models
            : base(options)
         {
         }
-        public DbSet<Task> Tasks { get; set; }
-        public DbSet<Link> Links { get; set; }
+        public DbSet<Task> Tasks { get; set; } = null;
+        public DbSet<Link> Links { get; set; } = null;
 
     }
 }
@@ -256,10 +260,6 @@ In the **Models** folder define a class and call it **GanttSeeder**. The class w
 
 {{snippet	DHX.Gantt/Models/GanttSeeder.cs}}
 ~~~js
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 using Microsoft.EntityFrameworkCore;
 
 namespace DHX.Gantt.Models
@@ -307,10 +307,10 @@ namespace DHX.Gantt.Models
                };
 
                tasks.ForEach(s => context.Tasks.Add(s));
-               context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Tasks ON;");
+               context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Tasks ON;");
                context.SaveChanges();
 
-               context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Tasks OFF;");
+               context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Tasks OFF;");
                List<Link> links = new List<Link>()
                {
                    new Link() {Id = 1, SourceTaskId = 1, TargetTaskId = 2, Type = "1"},
@@ -318,9 +318,9 @@ namespace DHX.Gantt.Models
                };
 
                links.ForEach(s => context.Links.Add(s));
-               context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Links ON;");
+               context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Links ON;");
                context.SaveChanges();
-               context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Links OFF;");
+               context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Links OFF;");
                transaction.Commit();
             }
         }
@@ -330,7 +330,7 @@ namespace DHX.Gantt.Models
 
 #### Register Database
 
-Now you should register the database in **Startup.cs**. But first you need a connection string for it. It will be stored  
+Now you should register the database in **Program.cs**. But first you need a connection string for it. It will be stored  
 [in a JSON file in the application settings ](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment).
 Create the **appsettings.json** file (or open it if you have it already) and add a connection string to the database:
 
@@ -340,83 +340,89 @@ Create the **appsettings.json** file (or open it if you have it already) and add
   "ConnectionStrings": {
     "DefaultConnection": "Server=(localdb)\\mssqllocaldb;
     	Database=GanttDatabase;Trusted_Connection=True;"
-  }
+    }
 }
 ~~~
 
 The database context will be registered via 
 [dependency injection](https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-2.1). 
 
-Add the following namespaces to **Startup.cs**:
+Add the following namespaces to **Program.cs**:
 
 {{snippet	Startup.cs}}
 ~~~js
 using Microsoft.EntityFrameworkCore;
 using DHX.Gantt.Models;
-using Microsoft.Extensions.Configuration;
 ~~~
 
 The declaration will look like this:
 
-{{snippet	Startup.cs}}
+{{snippet	Program.cs}}
 ~~~js
-public IConfiguration Configuration { get; }
-public Startup(IConfiguration configuration)
-{
-    Configuration = configuration;
-}
-
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddDbContext<GanttContext>(options => 
-    	options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-}
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<GanttContext>(
+    options => options.UseSqlServer(connectionString));
 ~~~
 
-Here is the complete code of **Startup.cs**:
+To enable controllers, the **services.AddControllers()** method is called:
 
-{{snippet	Startup.cs}}
+{{snippet	Program.cs}}
 ~~~js
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+builder.Services.AddControllers();
+~~~
 
+And we call **app.MapControllers()** to register our controller routes:
+
+{{snippet	Program.cs}}
+~~~js
+app.MapControllers();
+~~~
+
+Here is the complete code of **Program.cs**:
+
+{{snippet	Program.cs}}
+~~~js
 using Microsoft.EntityFrameworkCore;
 using DHX.Gantt.Models;
-using Microsoft.Extensions.Configuration;
 
-namespace DHX.Gantt
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddRazorPages();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<GanttContext>(
+    options => options.UseSqlServer(connectionString));
+
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
 {
- public class Startup
-   {
-    public IConfiguration Configuration { get; }
-    public Startup(IConfiguration configuration)
-     {
-        Configuration = configuration;
-     }
-
-
-     //This method is called by the runtime. Use it to add services to the container.
-     //More info on app config here - https://go.microsoft.com/fwlink/?LinkID=398940
-     public void ConfigureServices(IServiceCollection services)
-     {
-       services.AddDbContext<GanttContext>(options => 
-         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-     }
-
-     //The method is called by the runtime. Use it to configure HTTP request pipeline.
-     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-     {
-       if (env.IsDevelopment())
-       {
-          app.UseDeveloperExceptionPage();
-       }
-
-       app.UseDefaultFiles();
-       app.UseStaticFiles();
-     }
-  }
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days.
+    // You may want to change this for production scenarios, 
+    // see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
+
+app.UseHttpsRedirection();
+
+app.UseDefaultFiles();
+
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapRazorPages();
+
+app.MapControllers();
+
+app.Run();
 ~~~
 
 Finally, you need to initialize and seed the database on the app startup. Normally, you'd want to use migrations for that, but for simplicity they aren't used here.
@@ -425,22 +431,20 @@ Let's begin with creating a class where initialization will be done. Create the 
 
 {{snippet	Models/GanttInitializerExtension.cs}}
 ~~~js
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Hosting;
-
 namespace DHX.Gantt.Models
 {
   public static class GanttInitializerExtension
   {
-    public static IWebHost InitializeDatabase(this IWebHost webHost)
+    public static IHost InitializeDatabase(this IHost webHost)
     {
       var serviceScopeFactory = 
-       (IServiceScopeFactory)webHost.Services.GetService(typeof(IServiceScopeFactory));
+       (IServiceScopeFactory?)webHost.Services.GetService(typeof(IServiceScopeFactory));
 
-      using (var scope = serviceScopeFactory.CreateScope())
+      using (var scope = serviceScopeFactory!.CreateScope())
        {
           var services = scope.ServiceProvider;
           var dbContext = services.GetRequiredService<GanttContext>();
+          dbContext.Database.EnsureDeleted();
           dbContext.Database.EnsureCreated();
           GanttSeeder.Seed(dbContext);
        }
@@ -451,32 +455,11 @@ namespace DHX.Gantt.Models
 }
 ~~~
 
-Next call **InitializeDatabase()** in the *Program.Main* pipeline:
+Next call **InitializeDatabase()**:
 
 {{snippet	Program.cs}}
 ~~~js
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using DHX.Gantt.Models;
-
-namespace DHX.Gantt
-{
-    public class Program
-    {
-     
-        public static void Main(string[] args)
-        {
-            BuildWebHost(args)
-                .InitializeDatabase() /*!*/
-                .Run();
-        }
-
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .Build();
-    }
-}
+app.InitializeDatabase();
 ~~~
 
 As it was mentioned above, migrations aren't used in this tutorial. Instead simple *EnsureCreated* and *seed* are used.
@@ -489,19 +472,17 @@ It is high time to define DTO classes that will be used for Web API. Let's begin
 
 {{snippet	Models/WebApiTask.cs}}
 ~~~js
-using System;
-
 namespace DHX.Gantt.Models
 {
     public class WebApiTask
     {
         public int id { get; set; }
-        public string text { get; set; }
-        public string start_date { get; set; }
+        public string? text { get; set; }
+        public string? start_date { get; set; }
         public int duration { get; set; }
         public decimal progress { get; set; }
         public int? parent { get; set; }
-        public string type { get; set; }
+        public string? type { get; set; }
         public bool open
         {
             get { return true; }
@@ -528,8 +509,8 @@ namespace DHX.Gantt.Models
             {
                 Id = task.id,
                 Text = task.text,
-      			StartDate = DateTime.Parse(task.start_date, 
-                	System.Globalization.CultureInfo.InvariantCulture),
+      			StartDate = task.start_date != null ? DateTime.Parse(task.start_date,
+                  System.Globalization.CultureInfo.InvariantCulture) : new DateTime(),
                 Duration = task.duration,
                 ParentId = task.parent,
                 Type = task.type,
@@ -549,7 +530,7 @@ namespace DHX.Gantt.Models
     public class WebApiLink
     {
         public int id { get; set; }
-        public string type { get; set; }
+        public string? type { get; set; }
         public int source { get; set; }
         public int target { get; set; }
 
@@ -580,43 +561,20 @@ namespace DHX.Gantt.Models
 
 When you finish this step, you should get the following folder structure:
 
-![Gantt ASP.NET Core 2 All models](desktop/dotnet_core_all_models.png)
+![Gantt ASP.NET Core 2 All models](desktop/howtostart_dotnetcore_structure.png)
 
 Now you can run the app in order to check that everything is in place. If you don't see a runtime error, then everything is fine.
 
 Step 4. Implementing Web API
 --------------------------
 
-Now it's time for the actual REST API implementation. Go to **Startup.cs** and enable MVC routing, if it's not enabled yet:
-
-{{snippet	Startup.cs}}
-~~~js
-public void ConfigureServices(IServiceCollection services)
-{
-	services.AddMvc(); /*!*/
-	services.AddDbContext<GanttContext>(options => 
-		options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-}
-
-//The method is called by the runtime. Use it to configure HTTP request pipeline.
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-{
-	if (env.IsDevelopment())
-	{
-		app.UseDeveloperExceptionPage();
-	}
-          
-	app.UseDefaultFiles();
-	app.UseStaticFiles();
-	app.UseMvc(); /*!*/
-}
-~~~
+Now it's time for the actual REST API implementation.
 
 ### Adding Controllers
 
 Create the **Controllers** folder and create three empty API Controllers: one for Tasks, another for Links and one more for the whole dataset:
 
-![Gantt ASP.NET Core 2 adding controllers](desktop/adding_controllers.png)
+![Gantt ASP.NET Core 2 adding controllers](desktop/howtostart_dotnetcore_addcontrollers.png)
 
 
 #### Task Controller
@@ -632,9 +590,6 @@ So, you should convert them into the format of our data model for EntityFramewor
 
 {{snippet	Controllers/TaskController.cs}}
 ~~~js
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using DHX.Gantt.Models;
 
@@ -661,9 +616,9 @@ namespace DHX.Gantt.Controllers
 
         // GET api/task/5
         [HttpGet("{id}")]
-        public WebApiTask Get(int id)
+        public Models.Task? Get(int id)
         {
-            return (WebApiTask)_context
+            return _context
                 .Tasks
                 .Find(id);
         }
@@ -672,7 +627,7 @@ namespace DHX.Gantt.Controllers
         [HttpPost]
         public ObjectResult Post(WebApiTask apiTask)
         {
-            var newTask = (Task)apiTask;
+            var newTask = (Models.Task)apiTask;
 
             _context.Tasks.Add(newTask);
             _context.SaveChanges();
@@ -686,10 +641,14 @@ namespace DHX.Gantt.Controllers
 
         // PUT api/task/5
         [HttpPut("{id}")]
-        public ObjectResult Put(int id, WebApiTask apiTask)
+        public ObjectResult? Put(int id, WebApiTask apiTask)
         {
-            var updatedTask = (Task)apiTask;
+            var updatedTask = (Models.Task)apiTask;
             var dbTask = _context.Tasks.Find(id);
+            if (dbTask == null)
+            {
+                return null;
+            }
             dbTask.Text = updatedTask.Text;
             dbTask.StartDate = updatedTask.StartDate;
             dbTask.Duration = updatedTask.Duration;
@@ -731,8 +690,6 @@ Next you should create a controller for Links:
 
 {{snippet	Controllers/LinkController.cs}}
 ~~~js
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using DHX.Gantt.Models;
@@ -760,9 +717,9 @@ namespace DHX.Gantt.Controllers
 
         // GET api/Link/5
         [HttpGet("{id}")]
-        public WebApiLink Get(int id)
+        public Link, Get(int id)
         {
-            return (WebApiLink)_context
+            return _context
                 .Links
                 .Find(id);
         }
@@ -826,9 +783,6 @@ Finally, you need to create a controller for a data action:
 
 {{snippet	Controllers/DataController.cs}}
 ~~~js
-using System.Collections.Generic;
-using System.Linq;
-
 using Microsoft.AspNetCore.Mvc;
 using DHX.Gantt.Models;
 
@@ -862,7 +816,7 @@ namespace DHX.Gantt.Controllers
 
 Everything is ready. You can run the application and see the fully-fledged Gantt.
 
-![Gantt ASP.NET Core 2 Gantt is ready](desktop/ready_gantt_dotnet_core.png)
+![Gantt ASP.NET Core Gantt is ready](desktop/ready_gantt_dotnet_core.png)
 
 
 [You can also view the full source code on GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core/).
@@ -874,9 +828,19 @@ that will capture runtime exceptions and write responses. Next it will be added 
 
 1\. Create a middleware class from a template in the project folder.
  
-![Gantt ASP.NET Core 2 middleware class](desktop/dotnet_core_middleware.png)
+![Gantt ASP.NET Core middleware class](desktop/dotnet_core_middleware.png)
 
-2\. Find the **invoke** method and note the `_next` call. Some handlers can throw exceptions, so let's catch them. Wrap the `_next` call with a `try-catch` block and run our handler if an error is captured. 
+2\. Install the JSON framework for ASP.NET Core. You can either do it via the NuGet package manager:
+
+![Gantt ASP.NET Core Install NewtonSoft Json](desktop/install_newtonsoft.png)
+
+Or use the Package Manager command line:
+
+~~~
+PM> Install-Package NewtonSoft.JSON
+~~~
+
+3\. Find the **invoke** method and note the `_next` call. Some handlers can throw exceptions, so let's catch them. Wrap the `_next` call with a `try-catch` block and run our handler if an error is captured. 
 
 {{snippet	GanttErrorMiddleware.cs}}
 ~~~js
@@ -901,22 +865,24 @@ private static Task HandleExceptionAsync(HttpContext context, Exception exceptio
 }
 ~~~
 
-3\. The middleware is ready. Now go to **Startup.cs** and connect the middleware in the **Configure()** method:
+4\. Add the following namespaces to **GanttErrorMiddleware.cs**:
 
-{{snippet	Startup.cs}}
 ~~~js
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-{
-	if (env.IsDevelopment())
-    	{
-			app.UseDeveloperExceptionPage();
-		}	
+using Newtonsoft.Json;
+~~~
 
-	app.UseGanttErrorMiddleware(); /*!*/
- 	app.UseDefaultFiles();
-    app.UseStaticFiles();
-    app.UseMvc(); 
-}
+5\. The middleware is ready. Now go to **Program.cs** and connect the middleware. Add the following namespaces:
+
+{{snippet	Program.cs}}
+~~~js
+using DHX.Gantt;
+~~~
+
+Next call the **app.UseGanttErrorMiddleware()** method:
+
+{{snippet	Program.cs}}
+~~~js
+app.UseGanttErrorMiddleware();
 ~~~
 
 ## Storing the order of tasks
@@ -947,19 +913,17 @@ Next you must change the backend so that it reflected the current order of tasks
 
 {{snippet	Models/Task.cs}}
 ~~~js
-using System;
-
 namespace DHX.Gantt.Models
 {
     public class Task
     {
         public int Id { get; set; }
-        public string Text { get; set; }
+        public string? Text { get; set; }
         public DateTime StartDate { get; set; }
         public int Duration { get; set; }
         public decimal Progress { get; set; }
         public int? ParentId { get; set; }
-        public string Type { get; set; }
+        public string? Type { get; set; }
         public int SortOrder { get; set; } /*!*/
     }
 }
@@ -979,9 +943,9 @@ public object Get()
 	return new
 		{
 			data = _context.Tasks
-           .OrderBy(t => t.SortOrder) /*!*/
-           .ToList()
-           .Select(t => (WebApiTask)t),
+                .OrderBy(t => t.SortOrder) /*!*/
+                .ToList()
+                .Select(t => (WebApiTask)t),
            	links = _context.Links
                 .ToList()
                 .Select(l => (WebApiLink)l)
@@ -997,7 +961,7 @@ public object Get()
 [HttpPost]
 public IActionResult Post(WebApiTask apiTask)
 {
-	var newTask = (Task)apiTask;
+	var newTask = (Models.Task)apiTask;
 
 	newTask.SortOrder = _context.Tasks.Max(t => t.SortOrder) + 1; /*!*/
 	_context.Tasks.Add(newTask);
@@ -1021,13 +985,13 @@ Add `target` to the **WebApiTask.cs** class:
 public class WebApiTask
 {
     public int id { get; set; }
-    public string text { get; set; }
-    public string start_date { get; set; }
+    public string? text { get; set; }
+    public string? start_date { get; set; }
     public int duration { get; set; }
     public decimal progress { get; set; }
     public int? parent { get; set; }
-    public string type { get; set; }
-    public string target { get; set; } /*!*/
+    public string? type { get; set; }
+    public string? target { get; set; } /*!*/
     public bool open
     {
         get { return true; }
@@ -1042,12 +1006,16 @@ And now let's implement reordering in our PUT (EditTask) action. Modify the Put 
 ~~~js
 // PUT api/task/5
 [HttpPut("{id}")]
-public IActionResult Put(int id, WebApiTask apiTask)
+public IActionResult? Put(int id, WebApiTask apiTask)
 {
-    var updatedTask = (Task)apiTask;
+    var updatedTask = (Models.Task)apiTask;
     updatedTask.Id = id;
  
     var dbTask = _context.Tasks.Find(id);
+    if (dbTask == null)
+    {
+        return null;
+    }
     dbTask.Text = updatedTask.Text;
     dbTask.StartDate = updatedTask.StartDate;
     dbTask.Duration = updatedTask.Duration;
@@ -1074,7 +1042,7 @@ And add the method that will update the order of tasks:
  
 {{snippet	Controllers/TaskController.cs}}
 ~~~js
-private void _UpdateOrders(Task updatedTask, string orderTarget)
+private void _UpdateOrders(Models.Task updatedTask, string orderTarget)
 {
     int adjacentTaskId;
     var nextSibling = false;
@@ -1095,7 +1063,7 @@ private void _UpdateOrders(Task updatedTask, string orderTarget)
     }
 
     var adjacentTask = _context.Tasks.Find(adjacentTaskId);
-    var startOrder = adjacentTask.SortOrder;
+    var startOrder = adjacentTask!.SortOrder;
 
     if (nextSibling)
          startOrder++;
@@ -1134,7 +1102,7 @@ public static explicit operator WebApiTask(Task task)
 	return new WebApiTask
 	{
 		id = task.Id,
-		text = HtmlEncoder.Default.Encode(task.Text), /*!*/
+		text = HtmlEncoder.Default.Encode(task.Text != null ? task.Text : ""), /*!*/
 		start_date = task.StartDate.ToString("yyyy-MM-dd HH:mm"),
 		duration = task.Duration,
 		parent = task.ParentId,
