@@ -55,7 +55,7 @@ Below you will find a brief overview of the guides which tell you about basic Ga
         <td>
 		    <span style="font-size:15px;">desktop/howtostart_dotnet_core.md</span>
             <br>
-         	A comprehensive tutorial that describes how to use Gantt together with ASP.Net Core 2. 
+         	A comprehensive tutorial that describes how to use Gantt together with ASP.Net Core. 
         </td> 
          <td>
         	<a href="desktop/howtostart_dotnet_core.md"><img src="desktop/asp_dotnet_core_tutorial.png"></a>
