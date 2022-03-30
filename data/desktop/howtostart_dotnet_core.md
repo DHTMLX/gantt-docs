@@ -1,7 +1,7 @@
 dhtmlxGantt with ASP.NET Core 
 ==========================
 
-This tutorial gives you step-by-step instructions on how to create Gantt with [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) Core 2 on the server side.
+This tutorial gives you step-by-step instructions on how to create Gantt with [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) Core on the server side.
 
 You can also read tutorials on other server-side technologies:
 
@@ -330,8 +330,7 @@ namespace DHX.Gantt.Models
 
 #### Register Database
 
-Now you should register the database in **Program.cs**. But first you need a connection string for it. It will be stored  
-[in a JSON file in the application settings ](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment).
+Now you should register the database in **Program.cs**. But first you need a connection string for it. It will be stored [in a JSON file in the application settings ](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment).
 Create the **appsettings.json** file (or open it if you have it already) and add a connection string to the database:
 
 {{snippet	appsettings.json}}
@@ -340,7 +339,7 @@ Create the **appsettings.json** file (or open it if you have it already) and add
   "ConnectionStrings": {
     "DefaultConnection": "Server=(localdb)\\mssqllocaldb;
     	Database=GanttDatabase;Trusted_Connection=True;"
-    }
+  }
 }
 ~~~
 
@@ -349,7 +348,7 @@ The database context will be registered via
 
 Add the following namespaces to **Program.cs**:
 
-{{snippet	Startup.cs}}
+{{snippet	Program.cs}}
 ~~~js
 using Microsoft.EntityFrameworkCore;
 using DHX.Gantt.Models;
@@ -378,6 +377,7 @@ And we call **app.MapControllers()** to register our controller routes:
 app.MapControllers();
 ~~~
 
+<br>
 Here is the complete code of **Program.cs**:
 
 {{snippet	Program.cs}}
@@ -717,7 +717,7 @@ namespace DHX.Gantt.Controllers
 
         // GET api/Link/5
         [HttpGet("{id}")]
-        public Link, Get(int id)
+        public Link? Get(int id)
         {
             return _context
                 .Links
