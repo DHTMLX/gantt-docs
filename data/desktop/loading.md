@@ -235,7 +235,7 @@ The current format of the end dates is the following:
 - the second and millisecond parts of the date is always 0, Gantt does not support units less than 1 minute
 - the end date of the task is specified as beginning of the day ("day-hour-minute") following the last busy day ("day-hour-minute"). That is:
   - *the task that starts on the 2nd of April and lasts for 1 day* will have the following start and end dates: *"02-04-2022 00:00:00 - 03-04-2022 00:00:00"*. The end date will match the date of the beginning of the day following the 2nd of April
-  - *the task which starts on the 2nd of April at 13:00 and lasts for 1 day* will have the following start and end dates: *"02-04-2022 13:00:00 - 02-04-2022 14:00:00"*. The end date will match the date of the beginning of the next hour
+  - *the task which starts on the 2nd of April at 13:00 and lasts for 1 day* will have the following start and end dates: *"02-04-2022 13:00:00 - 02-04-2022 13:00:00"*. The end date will match the date of the beginning of the next hour
 
 If we show the end date of the task on the screen without setting an hour-minute part, the result may be misleading. In the example from **scenario 2**, the start and end dates will look like "02-04-2022 - 03-04-2022". This will make you think that the task lasts not 1 day but 2 (from the 2nd to the 3rd of April).
 
