@@ -5,6 +5,9 @@ click_drag
 	
 
 @type: object
+
+@default:{ useKey: false, ignore: ".gantt_task_line, .gantt_task_link" }
+
 @example:
 gantt.config.click_drag = {
     callback: function(
@@ -58,6 +61,17 @@ The **gantt.config.click_drag** object includes the following properties:
 	- **tasksBetweenDates** - (*array*) an array of tasks between the start and end date points
 	- **tasksInRows** - (*array*) an array of tasks selected between the start and end coordinates vertically
 - **singleRow** - (*boolean*) true to add selection only in one row equal to the height of a task
+- **ignore** - (*string*) CSS selector. Drag-n-drop won't be activated for the elements that match the selector
+- **useKey** - (*string|boolean*) if the property is specified, drag-n-drop will be activated only when the specified modifier key is pressed. Supported values: "ctrlKey", "shiftKey", "metaKey", "altKey"
+
+~~~js
+gantt.config.click_drag = {
+    callback: onDragEnd,
+    ignore: ".gantt_task_line, .gantt_marker_content, .gantt_task_link",
+    useKey: "ctrlKey"
+};
+~~~
+
 - **render** - (*function*) a function that creates an element rendered during dragging. It takes two parameters: 
 	- **startPoint** - (*object*) - an object of the type:<br>
     `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
