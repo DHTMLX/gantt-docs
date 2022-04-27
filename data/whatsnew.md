@@ -17,15 +17,15 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### Fixes
 
-- Fix the incorrect position of [markers](desktop/markers.md) when [autosize = 'y'](api/gantt_autosize_config.md) was used
-- Scrollbars of the default [gantt layout](desktop/layout_config.md#defaultlayout) no longer require fixed **scrollVer**/**scrollHor** names to work correctly
-- Fix the issue that caused the incorrect work of the [smart rendering](api/gantt_smart_rendering_config.md) after expanding or collapsing of tasks in some cases
-- Fix the script error that fired when the [changeId](api/gantt_datastore_other.md) method was called for the [resource assignments store](desktop/resource_management.md#assigningresources)
-- [Split tasks](desktop/split_tasks.md) now receive the 'gantt_selected' class on [selection](api/gantt_select_task_config.md), in the same way as regular tasks do
-- Fix the issue that prevented canceling action using the [onBeforeDrag](desktop/advanced_dnd.md) event when [click_drag](desktop/extensions_list.md#advanceddragndrop) and [drag_timeline](desktop/extensions_list.md#dragtimeline) extensions were used
-- Fix the incorrect position of the [tooltip](desktop/tooltips.md) and some other elements of the gantt in cases when the gantt container has extra margin or vertical offsets
+- Fix sourcemaps for compressed Gantt files
+- Fix the incorrect position of [markers](desktop/markers.md) when [autosize = 'y'](api/gantt_autosize_config.md) was applied
+- Fix the incorrect position of the [tooltip](desktop/tooltips.md) and some other elements of Gantt in cases when the Gantt container had extra margin or vertical offsets
 - Fix the issue that caused rows of the [editable resource diagram](desktop/resource_management.md) to change the order after the first cell of the resource assignment was edited
-- Fix sourcemaps for compressed gantt files
+- Fix the issue that caused the incorrect work of the [smart rendering](api/gantt_smart_rendering_config.md) after expanding or collapsing of tasks in some cases
+- Fix the issue with the [onBeforeDrag](desktop/advanced_dnd.md) event which didn't block the default actions when the [click_drag](desktop/extensions_list.md#advanceddragndrop) and [drag_timeline](desktop/extensions_list.md#dragtimeline) extensions were activated
+- Fix the script error that fired when the [changeId()](api/gantt_datastore_other.md) method was called for the [resource assignments store](desktop/resource_management.md#assigningresources)
+- Scrollbars of the default [Gantt layout](desktop/layout_config.md#defaultlayout) no longer require fixed **scrollVer**/**scrollHor** names to work correctly
+- [Split tasks](desktop/split_tasks.md) now receive the 'gantt_selected' class on [selection](api/gantt_select_task_config.md), in the same way as regular tasks do
 
 7.1.10
 -----------
