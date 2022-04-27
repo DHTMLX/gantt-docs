@@ -10,10 +10,29 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.1.11
+-----------
+
+<span class='release_date'>April 27, 2022. Bugfix release</span>
+
+### Fixes
+
+- Fix sourcemaps for compressed Gantt files
+- Fix the incorrect position of [markers](desktop/markers.md) when [autosize = 'y'](api/gantt_autosize_config.md) was applied
+- Fix the incorrect position of the [tooltip](desktop/tooltips.md) and some other elements of Gantt in cases when the Gantt container had extra margin or vertical offsets
+- Fix the issue that caused rows of the [editable resource diagram](desktop/resource_management.md) to change the order after the first cell of the resource assignment was edited
+- Fix the issue that caused the incorrect work of the [smart rendering](api/gantt_smart_rendering_config.md) after expanding or collapsing of tasks in some cases
+- Fix the issue with the [onBeforeDrag](desktop/advanced_dnd.md) event which didn't block the default actions when the [click_drag](desktop/extensions_list.md#advanceddragndrop) and [drag_timeline](desktop/extensions_list.md#dragtimeline) extensions were activated
+- Fix the script error that fired when the [changeId()](api/gantt_datastore_other.md) method was called for the [resource assignments store](desktop/resource_management.md#assigningresources)
+- Scrollbars of the default [Gantt layout](desktop/layout_config.md#defaultlayout) no longer require fixed **scrollVer**/**scrollHor** names to work correctly
+- [Split tasks](desktop/split_tasks.md) now receive the 'gantt_selected' class on [selection](api/gantt_select_task_config.md), in the same way as regular tasks do
+
 7.1.10
 -----------
 
 <span class='release_date'>March 16, 2022. Bugfix release</span>
+
+### Fixes
 
 - Fix the issue which caused Gantt not to render a [project task](desktop/task_types.md#projecttasks) if it didn't have children and the `start_date` parameter was specified for the task
 - Fix the issue with [resizing a task row by drag and drop](desktop/resizing_rows.md#resizingrowsbydraganddrop) if the task ID was either a non-number value or a numeric string with more than 16 symbols
