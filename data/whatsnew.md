@@ -10,6 +10,23 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.1.12
+-----------
+
+<span class='release_date'>June 16, 2022. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect work of the [gantt.isWorkTime()](api/gantt_isworktime.md) method with the "week" time unit
+- Fix the issue that prevented tasks and links from being rendered when they were added via the [gantt.silent()](api/gantt_silent.md) method
+- Fix the issue that caused the "Task not found" error message to be shown after data loading in some cases
+- Fix the incorrect work of the [gantt.changeLightboxType()](api/gantt_changelightboxtype.md) method that left old lightbox elements in DOM
+- Fix the incorrect calculation of the end dates of tasks when the tasks overlap after the Summer/Winter clock change
+- Fix the issue that caused the [Resource Grid](desktop/resource_management.md#resourceviewpanel) to disappear when the user edited a resource value using the cell editor
+- Fix the script error that happened when the [Gantt layout](desktop/layout_config.md) contained the ["resourceGrid"/"resourceTimeline"](desktop/resource_management.md#resourceviewpanel) views but not included the "grid"/"timeline" views
+- Fix the incorrect work of the [autosize](api/gantt_autosize_config.md) config when the Gantt layout contained [Resource Panel](desktop/resource_management.md#resourceviewpanel) 
+- Fix the [lightbox](desktop/default_edit_form.md) for [split tasks](desktop/split_tasks.md), the lightbox now should be displayed when you double-click on a split task
+
 7.1.11
 -----------
 
