@@ -619,8 +619,9 @@ If you want to synchronize client-server sides but don't want to make any server
 ~~~js
 gantt.silent(function(){
     gantt.deleteTask(item.id);
-    gantt.render();
 });
+
+gantt.render();
 ~~~
 
 Cascade Deletion

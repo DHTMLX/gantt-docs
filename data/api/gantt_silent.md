@@ -12,12 +12,13 @@ silent
 
 @example:
 gantt.silent(function () {
-	// the task will be deleted only from the client side
-	gantt.deleteTask(id);
-	// forces the gantt re-rendering because default rendering won't be called 
-	// from the silent method 
-	gantt.render(); 
+    // the task will be deleted only from the client side
+    // the gantt won't repaint it automatically
+    gantt.deleteTask(id);
 });
+
+// repaint the gantt manually when ready
+gantt.render();
 
 @template:	api_method
 @descr:
