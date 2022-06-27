@@ -67,7 +67,7 @@ Adding the time selector to the 'Time period' section
 ~~~js
 gantt.config.lightbox.sections = [
 	{name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"period",type:"time", map_to:"auto", time_format:["%d","%m","%Y","%H:%i"]}/*!*/
+    {name:"time",type:"time", map_to:"auto", time_format:["%d","%m","%Y","%H:%i"]}/*!*/
 ];
 ~~~
 

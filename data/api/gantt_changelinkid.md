@@ -17,7 +17,7 @@ gantt.addLink({
     type:1
 });
 
-gantt.changeLinkId(1, 5); //changes the task's id '1 -> 5' /*!*/
+gantt.changeLinkId(1, 5); //changes the link's id '1 -> 5' /*!*/
 
 
 @template:	api_method

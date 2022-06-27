@@ -8,7 +8,7 @@ onBeforeTaskChanged
 
 - id	string,number	the task id
 - mode	string 			the drag-and-drop mode ("resize", "progress", "move", "ignore")
-- task  object			the task object
+- task  object			the copy of the task object in its original state (before drag and drop)
 
 @returns:  
   - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
@@ -25,6 +25,10 @@ gantt.attachEvent("onBeforeTaskChanged", function(id, mode, task){
 - The event fires when the user drags a task in the timeline area.
 - The event is blockable. Return *false* to cancel the drag operation.
 - The event fires before the api/gantt_onaftertaskdrag_event.md event.
+
+The **task** argument contains the original (not modified) task object, while the same data object available via the **gantt.getTask(id)** method is already modified.
+This object can be used to check the exact changes made by drag and drop compared to the initial state of the task - e.g. whether duration increased or decreased, start date moved forward or backward, etc.<br>
+If *false* is returned from the method, the task object in gantt will rollback to the values from the original task object.
 
 @relatedapi:
 	api/gantt_drag_mode_config.md

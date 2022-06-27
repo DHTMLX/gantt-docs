@@ -161,6 +161,19 @@ The **end_date** has a higher priority than the **duration** parameter. If there
 }
 ~~~
 
+## Loading dates in ISO format
+
+You can use ISO date format in Gantt. For this, you need to redefine functions that parse and serialize dates in Gantt:
+
+~~~js
+gantt.templates.parse_date = function(date) { 
+    return new Date(date);
+};
+gantt.templates.format_date = function(date) { 
+    return date.toISOString();
+};
+~~~
+
 ## Task end date display & Inclusive end dates
 
 This section will give you an answer to the question: "How to correctly save and display the end date of the task?".
