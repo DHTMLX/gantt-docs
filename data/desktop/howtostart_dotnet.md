@@ -22,16 +22,22 @@ The complete source code is [available on GitHub](https://github.com/DHTMLX/gant
 Step 1. Creating a project
 -----------------------------
 
-###Creating a new Visual Studio project 
+### Creating a new Visual Studio project 
 
-Let's start by running Visual Studio and creating a new project. For this, open the File menu tab and choose:<br>
-New -> Project. Then select ASP.NET Web Application and name it *DHX.Gantt.Web*. 
+Launch Visual Studio 2022 and select *Create a new project*.
 
 <img src="desktop/how_to_start_net_create_project.png">
 
-Select an *Empty* project among available templates and check MVC and Web API checkboxes below the list of templates.
+Next select "ASP.NET Web Application" and name it *DHX.Gantt.Web*.
+
 
 <img src="desktop/how_to_start_net_project_template.png">
+
+<img src="desktop/how_to_start_net_configure_project.png">
+
+Select an *Empty* project among available templates and check MVC and Web API checkboxes near the list of templates.
+
+<img src="desktop/how_to_start_net_app.png">
 
 Step 2. Adding Gantt to the page
 --------------------------------
@@ -130,12 +136,12 @@ gantt.config.date_format = "%Y-%m-%d %H:%i";
 
 It's needed for our client to be able to parse dates that come from the server.
 
-And also we told the gantt that it's going to work with RESTful API on a backend and use ["/api/data/"](desktop/server_side.md#technique) as a default route:
+And also we told the gantt that it's going to work with RESTful API on a backend and use ["/api/"](desktop/server_side.md#technique) as a default route:
 {{snippet Views/Home/Index.cshtml}}
 ~~~js
 gantt.load("/api/data");
 // initializing dataProcessor
-var dp = new gantt.dataProcessor("/api/data");
+var dp = new gantt.dataProcessor("/api/");
 // and attaching it to gantt
 dp.init(gantt);
 // setting the REST mode for dataProcessor
@@ -208,7 +214,7 @@ namespace DHX.Gantt.Web.Models
 ### Configuring DataBase Connection
 
 
-####Installing Entity Framework
+#### Installing Entity Framework
 
 As you remember, we are going to organize the work with a database with the help of the [Entity Framework](https://docs.microsoft.com/en-us/aspnet/entity-framework).
 
@@ -218,7 +224,7 @@ So, first of all we need to install the framework. To do it, you need to run the
 Install-Package EntityFramework
 ~~~
 
-####Creating Database Context
+#### Creating Database Context
 
 The next step is to create Context. Context represents a session with the DataBase. It allows getting and saving data.
 
@@ -238,7 +244,7 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-####Adding initial records to database
+#### Adding initial records to database
 
 Now we can add some records into the database.
 
@@ -257,8 +263,6 @@ The full code of the *GanttInitializer* class is given below:
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 
 namespace DHX.Gantt.Web.Models
@@ -449,10 +453,7 @@ Lastly, let's add a model for the [data source](desktop/supported_data_formats.m
 
 {{snippet Models/GanttDto.cs}}
 ~~~js
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace DHX.Gantt.Web.Models
 {
@@ -584,13 +585,12 @@ Everything is pretty straightforward here:
 
 Now let's do the same for the links.
 
-###Link Controller
+### Link Controller
 
 We'll create an empty Web API Controller for links like this:
 
 {{snippet Controllers/LinkController.cs}}
 ~~~js
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -682,16 +682,14 @@ namespace DHX.Gantt.Web.Controllers
 }
 ~~~
 
-###Data Controller
+### Data Controller
 
 Finally, we will add a controller for the data action:
 
 {{snippet Controllers/DataController.cs}}
 ~~~js
-using System;
-using System.Collections.Generic;
 using System.Web.Http;
-using DHX.Gantt.Web;
+
 using DHX.Gantt.Web.Models;
 
 namespace DHX.Gantt.Web.Controllers
@@ -731,7 +729,6 @@ Go to *App_Start* and add a new class called *GanttAPIExceptionFilterAttribute*:
 
 {{snippet App_Start/GanttAPIExceptionFilterAttribute.cs}}
 ~~~js
-using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
@@ -999,8 +996,52 @@ Gantt doesn't provide any means of preventing an application from various threat
 Trouble shooting
 -----------------
 
-In case you've completed the above steps to implement Gantt integration with ASP.NET MVC, but Gantt doesn't render tasks and links on a page, have a look at the desktop/troubleshooting.md article. It describes 
-the ways of identifying the roots of the problems.
+### ASP.NET Web Application template is absent
+
+If you can't find the necessary "ASP.NET Web Application" project template in Visual Studio 2022, follow the steps below:
+
+1\. Close Visual Studio 2022
+
+2\. Start Menu -> Visual Studio Installer
+
+3\. Find *Visual Studio Community 2022* -> click on *Modify*
+
+<img src="desktop/vsinstaller.png">
+
+4\. In the window opened, select *Individual components*, check *".NET Framework Project and item templates"* point in the list and click on *Modify*
+
+<img src="desktop/components.png">
+
+After that, you can launch Visual Studio 2022 and find the necessary template.
+
+### An exception occurred while initializing the database
+
+Sometimes, you may face a problem with the DropCreateDatabaseIfModelChanges initializer which drops an existing database but doesn't create a new one. 
+
+<img src="desktop/exception_error.png">
+
+In this case, open *GanttInitializer.cs* and replace *DropCreateDatabaseIfModelChanges* with *DropCreateDatabaseAlways*:
+
+{{snippet App_Start/GanttInitializer.cs}}
+~~~js
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+
+namespace DHX.Gantt.Web.Models
+{
+    public class GanttInitializer : DropCreateDatabaseAlways<GanttContext> /*!*/
+    {
+        ...
+    }
+}
+~~~
+
+Then run the application again.
+
+### Issues with rendering tasks and links
+
+In case you've completed the above steps to implement Gantt integration with ASP.NET MVC, but Gantt doesn't render tasks and links on a page, have a look at the desktop/troubleshooting.md article. It describes the ways of identifying the roots of the problems.
 
 
 What's next
