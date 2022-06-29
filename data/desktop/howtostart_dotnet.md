@@ -28,7 +28,7 @@ Launch Visual Studio 2022 and select *Create a new project*.
 
 <img src="desktop/how_to_start_net_create_project.png">
 
-Next select "ASP.NET Web Application" and name it *DHX.Gantt.Web*.
+Next select "ASP.NET Web Application" and name it *DHX.Gantt.Web*. If you can't find the necessary template, check the [Troubleshooting](#troubleshooting) section.
 
 
 <img src="desktop/how_to_start_net_project_template.png">
