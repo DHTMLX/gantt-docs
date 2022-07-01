@@ -321,7 +321,7 @@ namespace DHX.Gantt.Web.Models
 Open the *Global.asax* file. It contains the code that runs on the application start.
 Add the necessary namespace and the code line that will set Initializer for our context into the *Application_Start()* method:
 
-{{snippet Global.asax}}
+{{snippet Global.asax.cs}}
 ~~~js
 using System;
 using System.Web;
