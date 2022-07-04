@@ -8,6 +8,7 @@ If you use some other technology, check the list of available integration varian
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_php_slim4.md
+- desktop/howtostart_salesforce.md
 - desktop/howtostart_ruby.md
 
 Our implementation of Gantt with Node.js will be based on REST API that will be used for communication with a server. 
