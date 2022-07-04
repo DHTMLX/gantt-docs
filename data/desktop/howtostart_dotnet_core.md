@@ -9,6 +9,7 @@ You can also read tutorials on other server-side technologies:
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_php_slim4.md
+- desktop/howtostart_salesforce.md
 - desktop/howtostart_ruby.md
 
 

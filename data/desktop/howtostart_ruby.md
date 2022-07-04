@@ -12,7 +12,7 @@ If you use some other technology, check the list of available integration varian
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_php_slim4.md
-
+- desktop/howtostart_salesforce.md
 
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-rails) on GitHub.

@@ -11,6 +11,7 @@ There are tutorials intended for building server-side integration with the help 
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_php_laravel.md
+- desktop/howtostart_salesforce.md
 - desktop/howtostart_ruby.md
 
 We will use the [Slim 4](https://www.slimframework.com/) framework for routing and MySQL as a data storage. CRUD logic will rely on PDO and will be generic enough to be usable with any other framework.

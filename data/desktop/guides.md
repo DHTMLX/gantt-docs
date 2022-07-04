@@ -20,6 +20,7 @@ Check the [features available in the Standard and PRO versions](desktop/editions
                     <li>desktop/howtostart_php_slim4.md</li>
                     <li>desktop/howtostart_nodejs.md</li>
                     <li>desktop/howtostart_dotnet.md</li>
+                    <li>desktop/howtostart_salesforce.md</li>
                     <li>desktop/howtostart_ruby.md</li>
             </ul>
         </td>

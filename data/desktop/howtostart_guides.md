@@ -103,6 +103,16 @@ Below you will find a brief overview of the guides which tell you about basic Ga
         </tr>
     <tr>
         <td>
+		    <span style="font-size:15px;">desktop/howtostart_salesforce.md</span>
+            <br>
+         	An extensive tutorial that helps you to realize a Gantt chart inside SalesForce Lightning Web Component. 
+        </td> 
+         <td>
+        	<a href="desktop/howtostart_salesforce.md"></a>
+        </td>
+    </tr>	
+    <tr>
+        <td>
 		    <span style="font-size:15px;">desktop/howtostart_ruby.md</span>
             <br>
          	An easy to reproduce tutorial that will walk you through the stages of implementing a Gantt chart on the base of Ruby on Rails. 
@@ -110,7 +120,7 @@ Below you will find a brief overview of the guides which tell you about basic Ga
          <td>
         	<a href="desktop/howtostart_ruby.md"><img src="desktop/ruby_tutorial.png"></a>
         </td>
-    </tr>	
+    </tr>
     </tbody>
 </table>
 
@@ -122,5 +132,6 @@ Below you will find a brief overview of the guides which tell you about basic Ga
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_php_slim4.md
 - desktop/howtostart_ruby.md
+- desktop/howtostart_salesforce.md
 - desktop/howtostart_php.md
 

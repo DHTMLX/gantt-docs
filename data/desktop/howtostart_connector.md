@@ -10,6 +10,7 @@ If you want to use some server-side technology instead, check the list of tutori
 - desktop/howtostart_php.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
+- desktop/howtostart_salesforce.md
 - desktop/howtostart_ruby.md
 
 <img src="desktop/gantt_basic.png"/>
