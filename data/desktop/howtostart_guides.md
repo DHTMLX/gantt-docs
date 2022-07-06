@@ -108,7 +108,7 @@ Below you will find a brief overview of the guides which tell you about basic Ga
          	An extensive tutorial that helps you to realize a Gantt chart inside SalesForce Lightning Web Component. 
         </td> 
          <td>
-        	<a href="desktop/howtostart_salesforce.md"></a>
+        	<a href="desktop/howtostart_salesforce.md"><img src="desktop/salesforce_tutorial.png"></a>
         </td>
     </tr>	
     <tr>
