@@ -138,6 +138,12 @@ Give the name for the task object, let it be *GanttTask/GanttTasks*.
 
 ![](desktop/sf_task_object.png)
 
+{{note
+The record name must match the object name, for example:
+
+Object Name: GanttTask => Record Name: GanttTask Name
+}}
+
 Press the "Save" button.
 
 After the object is created, open the "Fields & Relationships" tab. Press the "New" button.
@@ -162,11 +168,15 @@ Create a "Parent" field. Select "Text" as the Data Type.
 
 ![](desktop/sf_parent.png)
 
+Press the "Next" button (accepting all default settings) until the "Save & New" button is not available.
+
 - **Progress**
 
 Create a "Progress" field. Select "Number" as the Data Type.
 
 ![](desktop/sf_progress.png)
+
+Press the "Next" button (accepting all default settings) until the "Save & New" button is not available.
 
 
 - **Start date**
@@ -174,6 +184,8 @@ Create a "Progress" field. Select "Number" as the Data Type.
 Create a "Start Date" field. Select "Date/Time" as the Data Type.
 
 ![](desktop/sf_start_date.png)
+
+Press the "Next" button (accepting all default settings) until the "Save" button is not available.
 
 In the end it should look like this:
 
@@ -189,6 +201,12 @@ Give the name for the link object, let it be *GanttLink/GanttLinks*.
 
 ![](desktop/sf_link_object.png)
 
+{{note
+The record name must match the object name, for example:
+
+Object Name: GanttLink => Record Name: GanttLink Name
+}}
+
 Next, create the required fields.
 
 - **Source**
@@ -197,17 +215,23 @@ Create a "Source" field. Select "Text" as the Data Type.
 
 ![](desktop/sf_source.png)
 
+Press the "Next" button (accepting all default settings) until the "Save & New" button is not available.
+
 - **Target**
 
 Create a "Target" field. Select "Text" as the Data Type.
 
 ![](desktop/sf_target.png)
 
+Press the "Next" button (accepting all default settings) until the "Save & New" button is not available.
+
 - **Type**
 
 Create a "Type" field. Select "Text" as the Data Type.
 
 ![](desktop/sf_type.png)
+
+Press the "Next" button (accepting all default settings) until the "Save" button is not available.
 
 In the end it should look like this:
 
