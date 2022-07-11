@@ -7,7 +7,7 @@ getConstraintLimitations
 @params:
 - task 	object	a task object
 
-@returns
+@returns:
 - constraintLimitations		object		an object containing constraint dates
 
 @relatedsample:
