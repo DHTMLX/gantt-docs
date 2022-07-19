@@ -201,9 +201,16 @@ Let's create a new file *app/gantt.php* and add the required code:
 
 {{snippet app/gantt.php}}
 ~~~php
+<?php
+
 function getConnection()
 {
-    return new PDO("mysql:host=localhost;dbname=gantt", "root", "root", [
+    return new PDO("mysql:host=localhost;dbname=gantt", "root", "root", 
+    // where "host" - the host name,
+    // "dbname" - the database name
+    // "root" - the user name
+    // "root" - the password
+    [
       PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
       PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
@@ -267,7 +274,7 @@ return function (App $app) {
 
 Let's consider the above described code in detail:
 
-- we have defined a [route](https://www.slimframework.com/docs/v4/objects/routing.html) for our data action in *src/routes.php*
+- we have defined a [route](https://www.slimframework.com/docs/v4/objects/routing.html) for our data action in *app/routes.php*
 - in the handler for that route we read all tasks and links from the database and send them to the client as [JSON](desktop/supported_data_formats.md#json)
 - we have also added the *open* property to the task objects. It will specify that the tasks tree will be open by default
 
@@ -280,7 +287,7 @@ Step 5. Saving changes
 -----------------------------------
 
 Our next step is to implement saving of the changes made on the client side to the server. It is usually done using the [dataProcessor](desktop/server_side.md#technique) library, which is embedded into the gantt.
-Open *index.phtml* and add the following lines of code:
+Open *basic.html* and add the following lines of code:
 
 {{snippet app/templates/basic.html}}
 ~~~js
@@ -341,10 +348,10 @@ Routes are added, now we will implement methods we've linked to them:
 ~~~php
 function getConnection()
 {
-    return new PDO("mysql:host=db4free.net;dbname=myslimtest", "myslimtest", "01230123", [
-      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
+	return new PDO("mysql:host=localhost;dbname=gantt", "root", "root", [
+		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+	]);
 }
  
 function getGanttData($request, $response, $args) {
@@ -425,8 +432,10 @@ function updateTask($request, $response, $args) {
     "WHERE id = :sid";
   $db->prepare($query)->execute(array_merge($task, [":sid"=>$sid]));
  
-  if(isset($params["target"]) && $params["target"])
-   updateOrder($sid, $params["target"], $db);
+  if (isset($body["target"]) && $body["target"])
+  updateOrder($sid, $body["target"], $db);
+
+
  
   $result = [
     "action"=>"updated"
@@ -436,7 +445,7 @@ function updateTask($request, $response, $args) {
   $response->getBody()->write($payload);
   return $response->withHeader("Content-Type", "application/json");
 }
-
+ 
 // delete a task
 function deleteTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
@@ -494,7 +503,7 @@ function updateLink($request, $response, $args) {
   $response->getBody()->write($payload);
   return $response->withHeader("Content-Type", "application/json");
 }
-
+ 
 // delete a link
 function deleteLink($request, $response, $args) {
   $sid = $request->getAttribute("id");
@@ -647,45 +656,46 @@ function updateTask($request, $response, $args) {
       "progress = :progress, parent = :parent, sortorder = :sortorder ".
     "WHERE id = :sid";
   $db->prepare($query)->execute(array_merge($task, [":sid"=>$sid]));
- 
-  if(isset($params["target"]) && $params["target"])
-   updateOrder($sid, $params["target"], $db);
- 
+   
+  if(isset($body["target"]) && $body["target"])
+	updateOrder($sid, $body["target"], $db);
+
+   
   $result = [
     "action"=>"updated"
   ];
   $payload = json_encode($result);
- 
+   
   $response->getBody()->write($payload);
   return $response->withHeader("Content-Type", "application/json");
 }
- 
-
+   
+   
 function updateOrder($taskId, $target, $db){
   $nextTask = false;
   $targetId = $target;
- 
+   
   if(strpos($target, "next:") === 0){
     $targetId = substr($target, strlen("next:"));
     $nextTask = true;
   }
- 
+   
   if($targetId == "null")
     return;
- 
+   
   $sql = "SELECT sortorder FROM gantt_tasks WHERE id = :id";
   $statement = $db->prepare($sql);
   $statement->execute([":id"=>$targetId]);
- 
+  
   $targetOrder = $statement->fetchColumn();
   if($nextTask)
-    $targetOrder++;
- 
+      $targetOrder++;
+   
   $sql = "UPDATE gantt_tasks SET sortorder = sortorder + 1 ".
     "WHERE sortorder >= :targetOrder";
   $statement = $db->prepare($sql);
   $statement->execute([":targetOrder"=>$targetOrder]);
- 
+   
   $sql = "UPDATE gantt_tasks SET sortorder = :targetOrder WHERE id = :taskId";
   $statement = $db->prepare($sql);
   $statement->execute([
