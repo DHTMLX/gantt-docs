@@ -99,6 +99,9 @@ Note, these are special properties.
 By default, Gantt checks whether a task has them and if it does, applies the related values to the task's bar and text. Otherwise, the predefined colors are applied.
 }}
 
+{{note
+Adding a custom color via the **color** property is followed by adding of an inline style, which has the highest priority among other styles. As a result, the critical path won't be highlighted, and any custom style you have added to change the task background or color won't be applied.}}
+
 {{snippet
 Setting the task's color in the data object
 }}
