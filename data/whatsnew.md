@@ -209,6 +209,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 <span class='release_date'>April 8, 2021. Minor update</span>
 
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-gantt-7-1-part-time-resource-assignment-rollup-tasks/)
 ### Breaking changes
 
 The update brings changes to some parts of the component. While the update doesn't introduce any changes that would require modifying the existing code, be sure to check the [Migration](migrating.md#7071) article.
@@ -449,6 +450,7 @@ The update brings changes to some parts of the component. While the update doesn
 
 <span class='release_date'>April 7, 2020. Major update</span>
 
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-gantt-7-0-node-js-server-module-merging-multiple-calendars-reordering-grid-columns-drag-n-drop-new-customization-options/)
 ### Breaking changes
 
 The update brings multiple changes in the API methods. Check the [Migration](migrating.md#6370) article to keep in step with the latest version.
@@ -589,6 +591,7 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>November 14, 2019. Minor update</span>
 
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-gantt-chart-6-3-decimal-durations-link-formatting-drag-n-drop-multiple-tasks-even-smarter-rendering/)
 ### Breaking changes
 
 The update brings multiple changes in the API methods. Check the [Migration](migrating.md#6263) article to keep in step with the latest version.
@@ -723,6 +726,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 -------
 
 <span class='release_date'>July 16, 2019. Minor update</span>
+
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlxgantt-6-2-minor-update-boosting-gantt-chart-performance-zooming-mouse-wheel-much/)
 
 ### Breaking changes
 
@@ -868,6 +873,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>February 21, 2019. Minor update</span>
 
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlxgantt-6-1-time-constraints-backward-scheduling-s-curve/)
+
 ### New functionality
 
 - [Ability to add an overlay for the Gantt Chart](desktop/baselines.md#extraoverlayforthechart) (PRO)
@@ -926,6 +933,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>November 5, 2018. Major update</span>
 
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlxgantt-6-0-major-update-advanced-resource-management/)
+
 ### Functionality
 
 - [Assignment of several resources to a task](desktop/resource_management.md#assigningresources) (PRO version)
@@ -956,6 +965,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>July 6, 2018. Minor update</span>
 
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlxgantt-5-2/)
+
 ### Functionality
 
 - [Inline editing in Grid](desktop/inline_editing.md)
@@ -978,6 +989,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 ----------
 
 <span class='release_date'>February 27, 2018. Minor update</span>
+
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlxgantt-5-1-resource-management-rtl-mode-and-more/)
 
 ### Functionality
 
@@ -1009,6 +1022,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 <span class='release_date'>December 12, 2017. Major update</span>
 
+[Review of release on the blog](https://dhtmlx.com/blog/large-scale-update-dhtmlxgantt-version-5-0/)
+
 ### Functionality
 
 - [Flexible Gantt layout](desktop/layout_config.md)
@@ -1024,6 +1039,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 ------------
 
 <span class='release_date'>August 17, 2017. Minor update</span>
+
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlxgantt-4-2-manage-working-days-hours-individual-tasks/)
 
 ### Functionality
 
@@ -1045,6 +1062,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 ---------
 
 <span class='release_date'>September 1, 2016. Minor update</span>
+
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlxgantt-4-1-full-accessibility-support/)
 
 ### Functionality
 
