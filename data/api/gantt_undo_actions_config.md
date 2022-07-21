@@ -7,9 +7,10 @@ undo_actions
 @type: object
 @example:
 gantt.config.undo_actions = {
-	update:"update",
-	remove:"remove", // remove an item from datastore
-	add:"add"
+	update: "update",
+	remove: "remove", // remove an item from datastore
+	add: "add",
+	move: "move"
 };
 
 @template:	api_config
