@@ -161,3 +161,32 @@ gantt.init("gantt_here");
 {{sample 02_extensions/26_full_screen_with_additional_elements.html}}
 
 
+Why full screen mode doesn't work?
+-------------------------
+
+The fullscreen extension can work only if you don't forbid Gantt to expand to the fullscreen mode.
+
+In cases when the gantt is placed into a frame where:
+
+- the **allowfullscreen** property or the **allow="fullscreen"** is absent
+- or the "fullscreen" value is not specified for the **allow** property
+
+the gantt won't be able to expand to the fullscreen mode (try it in our snippet tool ([Example 1](https://snippet.dhtmlx.com/k72wjyzl), [Example 2](https://snippet.dhtmlx.com/7jdrk6q5))).
+
+### Full Screen in Salesforce
+
+There are no frames in Salesforce, and all is generated different there.
+
+Full screen doesn't work in Salesforce because of *Locker* which blocks the ability to switch to the full screen mode. 
+
+If you add the following command to the configuration with Gantt:
+
+~~~js
+console.log("document.body.requestFullscreen", document.body.requestFullscreen)
+~~~
+
+the `undefined` value will be returned. It means that there is no possibility to expand Gantt in Salesforce at all.
+
+But there is **Lightning Web Components: Open Source - Salesforce (LWC OSS)** implementation which works without *Locker*. [Check the example](https://webcomponents.dev/edit/mX6Nh0fHOolfaJpjYHj3).
+
+
