@@ -62,12 +62,12 @@ Gantt considers a task as a critical one in the following cases:
 
 2\. The task is connected to a critical task, and the lag between them is 0.
 
-The lag depends on the value of the **gantt.config.duration_unit** parameter. When the **duration_unit** is set to *'day'* and interval between tasks is several hours, Gantt rounds the intervals by the following rules:
+The lag depends on the value of the **gantt.config.duration_unit** parameter. When the **duration_unit** is set to *'day'* and duration between tasks is several hours, Gantt rounds the duration by the following rules:
 
-- rounds the interval down if it is greater than or equal to 12 hours
-- rounds the interval up if it is less than 12 hours
+- rounds the duration down if it is greater than or equal to 12 hours
+- rounds the duration up if it is less than 12 hours
 
-If the link object includes the lag parameter, it allows changing the interval between tasks. For example, when *lag* is set to 1, the task becomes critical when the interval between tasks is 1. 
+If the link object includes the lag parameter, it allows changing the duration between tasks. For example, when *lag* is set to 1, the task becomes critical when the duration between tasks is 1. 
 	
 Here are some examples with different values of **link.lag**:
 
