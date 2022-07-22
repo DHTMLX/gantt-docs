@@ -6,7 +6,7 @@ Critical Path
 A critical path is a sequence of tasks that can't be delayed. Otherwise, the whole project would be delayed.<br>
 The critical path also determines the shortest time the project can take.<br>
 
-A task is considered critical if it has no days of slack and any delay would directly affect the project completion date.<br>
+A task is considered critical if it has no days of slack and any delay would directly affect the project completion date. The detailed explanation of how the logic of calculation of the critical path works is given in the [Critical path logic](#criticalpathlogic) section.<br>
 Slack time is the time that a task can slip without affecting other tasks or the project's completion date.
 
 
@@ -50,6 +50,82 @@ Each time a task is modified, dhtmlxGantt will completely re-draw data in order 
 Sometimes it may create performance issues. For that case, the component provides public methods that allow you to check
 a certain task or link and implement a performance-friendlier strategy for displaying a critical path.
 
+
+Critical path logic
+--------------------
+
+Gantt considers a task as a critical one in the following cases:
+
+1\. The task has the latest end date in the whole chart.
+
+![](desktop/critical_tasks.png)
+
+2\. The task is connected to a critical task, and the lag between them is 0.
+
+The lag depends on the value of the **gantt.config.duration_unit** parameter. When the **duration_unit** is set to *'day'* and interval between tasks is several hours, Gantt rounds the intervals by the following rules:
+
+- rounds the interval down if it is greater than or equal to 12 hours
+- rounds the interval up if it is less than 12 hours
+
+If the link object includes the lag parameter, it allows changing the interval between tasks. For example, when *lag* is set to 1, the task becomes critical when the interval between tasks is 1. 
+	
+Here are some examples with different values of **link.lag**:
+
+- link.lag is 0
+
+~~~js
+const tasks = {
+    "data": [
+		...
+    ],
+    "links": [
+        ...
+        { "id": 3, "source": 3, "target": 4, "lag": 0, "type": "0" },
+        
+    ]
+}
+~~~
+
+![](desktop/lag0.png)
+
+- link.lag is 1
+
+~~~js
+const tasks = {
+    "data": [
+		...
+    ],
+    "links": [
+        ...
+        { "id": 3, "source": 3, "target": 4, "lag": 1, "type": "0" }, 
+        
+    ]
+}
+~~~
+
+![](desktop/lag1.png)
+
+- link.lag is -1
+
+~~~js
+const tasks = {
+    "data": [
+		...
+    ],
+    "links": [
+        ...
+        { "id": 3, "source": 3, "target": 4, "lag": -1, "type": "0" },
+        
+    ]
+}
+~~~
+
+![](desktop/lag_1.png)
+
+3\. The **gantt.config.project_end** parameter is specified and the task dates are greater than the **gantt.config.project_end** date.
+
+Unfortunately, there is no way to change the built-in logic that defines the critical path.
+But you can [customize the critical path behaviour](#customizingthecriticalpathbehaviour).
 
 Checking if a task is critical 
 ---------------------------------------
@@ -165,8 +241,14 @@ gantt.init("gantt_here");
 
 gantt.parse(data);
 ~~~
+<br>
 
+It is also possible to highlight tasks and links manually:
 
+- If you return "gantt_critical_task" in the [task_class](api/gantt_task_class_template.md) template, the task will be highlighted as a critical one.
+- If you return "gantt_critical_link" in the [link_class](api/gantt_link_class_template.md) template, the link will be highlighted as a critical one.
+
+**Related sample:** [Custom critical path per project](https://snippet.dhtmlx.com/5/eb05a1f90)
 
 Setting lag and lead times between tasks
 ---------------------------------
