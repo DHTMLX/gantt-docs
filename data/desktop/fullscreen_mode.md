@@ -173,20 +173,16 @@ In cases when the gantt is placed into a frame where:
 
 the gantt won't be able to expand to the fullscreen mode (try it in our snippet tool ([Example 1](https://snippet.dhtmlx.com/k72wjyzl), [Example 2](https://snippet.dhtmlx.com/7jdrk6q5))).
 
-### Full Screen in Salesforce
+### Full screen mode in Salesforce
 
-There are no frames in Salesforce, and all is generated different there.
+The Fullscreen extension doesn't work in Salesforce applications that use <a href="https://developer.salesforce.com/docs/atlas.en-us.238.0.lightning.meta/lightning/security_code.htm" target="_blank">Locker Service</a>, since Locker blocks the ability to switch the element to the full screen mode.
 
-Full screen doesn't work in Salesforce because of *Locker* which blocks the ability to switch to the full screen mode. 
+More specifically, the Fullscreen extension won't work with **Lightning Aura** framework and with **Lightning Web Components** but may work with **Visualforce** framework.
 
-If you add the following command to the configuration with Gantt:
+You can check the availability of the fullscreen in your app by adding the following code snippet to the configuration code:
 
 ~~~js
 console.log("document.body.requestFullscreen", document.body.requestFullscreen)
 ~~~
 
-the `undefined` value will be returned. It means that there is no possibility to expand Gantt in Salesforce at all.
-
-But there is **Lightning Web Components: Open Source - Salesforce (LWC OSS)** implementation which works without *Locker*. [Check the example](https://webcomponents.dev/edit/mX6Nh0fHOolfaJpjYHj3).
-
-
+If you see the `undefined` value in the output, it means the feature is disabled and there is no possibility to expand Gantt.
