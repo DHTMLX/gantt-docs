@@ -129,6 +129,7 @@ Below you will find a brief overview of the guides which tell you about basic Ga
 - desktop/howtostart_dotnet_core.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
+- desktop/howtostart_django.md
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_php_slim4.md
 - desktop/howtostart_salesforce.md
