@@ -8,6 +8,7 @@ If you want to use some server-side technology instead, check the list of tutori
 
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_php.md
+- desktop/howtostart_python.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_salesforce.md

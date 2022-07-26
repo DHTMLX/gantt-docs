@@ -7,6 +7,7 @@ There are tutorials intended for building server-side integration with the help 
 
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_dotnet_core.md
+- desktop/howtostart_python.md
 - desktop/howtostart_nodejs.md
 - desktop/howtostart_php_slim4.md
 - desktop/howtostart_salesforce.md
