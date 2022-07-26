@@ -63,22 +63,22 @@ Below you will find a brief overview of the guides which tell you about basic Ga
     </tr>	
     <tr>
         <td>
-		    <span style="font-size:15px;">desktop/howtostart_nodejs.md</span>  
-            <br>
-            A detailed tutorial which dwells on Gantt chart implementation on a Node.js platform. 
-        </td>
-        <td>
-        	<a href="desktop/howtostart_nodejs.md"><img src="desktop/node_tutorial.png"></a>
-        </td>
-    </tr>
-    <tr>
-        <td>
 		    <span style="font-size:15px;">desktop/howtostart_dotnet.md</span>
             <br>
             An elaborated tutorial that explores the specificity of implementing a Gantt chart with ASP.NET MVC and ASP.NET WebAPI 2. 
         </td>
         <td>
         	<a href="desktop/howtostart_dotnet.md"><img src="desktop/asp_dotnet_mvc_tutorial.png"></a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+		    <span style="font-size:15px;">desktop/howtostart_nodejs.md</span>  
+            <br>
+            A detailed tutorial which dwells on Gantt chart implementation on a Node.js platform. 
+        </td>
+        <td>
+        	<a href="desktop/howtostart_nodejs.md"><img src="desktop/node_tutorial.png"></a>
         </td>
     </tr>
     <tr>
@@ -95,10 +95,20 @@ Below you will find a brief overview of the guides which tell you about basic Ga
     	<td>
     		<span style="font-size:15px;">desktop/howtostart_php_slim4.md</span>
             <br>            
-            A comprehensive tutorial that discusses how to implement a PHP-based Gantt using Slim 4 Framework.
+            A comprehensive tutorial that discusses how to implement a PHP-based Gantt using a Slim 4 Framework.
         </td>
         <td>
             <a href="desktop/howtostart_php_slim4.md"><img src="desktop/php_tutorial.png"></a>
+        </td>
+        </tr>
+    <tr>
+    	<td>
+    		<span style="font-size:15px;">desktop/howtostart_python.md</span>
+            <br>            
+            A detailed tutorial which teaches how to implement a Python-based Gantt using a Django 4 Framework.
+        </td>
+        <td>
+            <a href="desktop/howtostart_python.md"><img src="desktop/how_to_start_python.png"></a>
         </td>
         </tr>
     <tr>
@@ -127,11 +137,11 @@ Below you will find a brief overview of the guides which tell you about basic Ga
 
 @index:
 - desktop/howtostart_dotnet_core.md
-- desktop/howtostart_nodejs.md
 - desktop/howtostart_dotnet.md
-- desktop/howtostart_django.md
+- desktop/howtostart_nodejs.md
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_php_slim4.md
+- desktop/howtostart_python.md
 - desktop/howtostart_salesforce.md
 - desktop/howtostart_ruby.md
 - desktop/howtostart_php.md

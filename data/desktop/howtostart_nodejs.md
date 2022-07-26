@@ -6,6 +6,7 @@ If you use some other technology, check the list of available integration varian
 
 - desktop/howtostart_dotnet_core.md
 - desktop/howtostart_dotnet.md
+- desktop/howtostart_python.md
 - desktop/howtostart_php_laravel.md
 - desktop/howtostart_php_slim4.md
 - desktop/howtostart_salesforce.md
