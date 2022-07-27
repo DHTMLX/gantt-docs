@@ -198,6 +198,102 @@ gantt.config.autoscroll_speed = 50;
 gantt.init("gantt_here");
 ~~~
 
+Disabling resize of specific tasks
+---------------------------------
+
+If you want to prevent certain tasks from being resized, there are two things you can do:
+
+1. Remove resize handles of a task from the UI via CSS.
+In order to do this, you need to use the **task_class** template to add an extra CSS class to the required items so that you could locate them via the selector:
+
+~~~js
+gantt.templates.task_class = function(start, end, task){
+    if(task.no_resize) { // no_resize is a custom property used for the demonstration
+        return "no_resize";
+    }
+    return "";
+~~~
+
+Then, you can hide the resize handles using the following CSS:
+
+~~~css
+.no_resize .gantt_task_drag{
+   display: none !important;
+}
+~~~
+
+2. Prevent drag and drop from code using the [onBeforeTaskDrag](api/gantt_onbeforetaskdrag_event.md) event.
+Returning *false* from the handler will prevent resizing:
+
+~~~js
+gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
+    if(mode === "resize" && gantt.getTask(id).no_resize){
+        return false;
+    }
+    return true;
+});
+~~~
+
+Which side of a task is being resized
+---------------------------------------
+
+The ["resize"](api/gantt_onbeforetaskdrag_event.md) mode of drag and drop means that the user resizes the task either from the start date or from the end date.
+
+If you need to find out which date the user is modifying by the resize, you can use the **gantt.getState().drag_from_start** flag:
+
+~~~js
+gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
+    if(mode === "resize"){
+        if(gantt.getState().drag_from_start === true) {
+            // changing the start date of a task
+        } else {
+            // changing the end date of a task
+        }
+    }
+    return true;
+});
+~~~
+
+Disabling resize of the start or the end date of a task
+---------------------------------------------------------
+
+You can locate resize handles using the following selectors:
+
+- .gantt_task_drag[data-bind-property="start_date"]
+- .gantt_task_drag[data-bind-property="end_date"]
+
+The following CSS can be used for disabling resizing of start dates of tasks:
+
+~~~css
+.gantt_task_drag[data-bind-property="start_date"]{
+   display: none !important;
+}
+~~~
+
+Similarly, preventing resizing of the end dates looks like this:
+
+~~~css
+.gantt_task_drag[data-bind-property="end_date"]{
+   display: none !important;
+}
+~~~
+
+Another way to do this is use the [onBeforeTaskDrag](api/gantt_onbeforetaskdrag_event.md) event.
+Returning *false* from the handler will prevent resizing:
+
+~~~js
+gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
+    if(mode === "resize"){
+        if(gantt.getState().drag_from_start === true) {
+             return false;
+        } else {
+             // changing the end date of a task
+        }
+    }
+    return true;
+});
+~~~
+
 
 @index:
 - desktop/dragging_dependent_tasks.md
