@@ -27,7 +27,7 @@ gantt.init("gantt_here");
 gantt.parse(tasks);
 
 var globalTaskIndex = gantt.getGlobalTaskIndex("t_1"); // -> 1 /*!*/
-var taskIndex - gantt.getTaskIndex("t_1"); // -> 0 
+var taskIndex = gantt.getTaskIndex("t_1"); // -> 0 
 
 @relatedapi:
   api/gantt_gettaskindex.md

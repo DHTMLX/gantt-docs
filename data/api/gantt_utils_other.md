@@ -14,7 +14,7 @@ tooltips.tooltipFor({
 	selector: ".gantt_scale_cell",
 	html: function (event, node) {
 		var domHelper = gantt.utils.dom;
-		var pos = domHelper .getRelativeEventPosition(event, gantt.$task_scale);
+		var pos = domHelper.getRelativeEventPosition(event, gantt.$task_scale);
 		return gantt.templates.task_date(gantt.dateFromPos(pos.x));
 }
 });
@@ -28,9 +28,7 @@ Currently the module contains only the helper for DOM operations available at **
 
 
 ~~~js
-
 var domHelpers = gantt.utils.dom;
-
 ~~~
 
 Which have following methods:
