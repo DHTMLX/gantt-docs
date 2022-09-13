@@ -157,11 +157,11 @@ Select "Number" as the Data Type and press the "Next" button.
 
 ![](desktop/sf_data_type.png)
 
-Name it "Duration". It stores the JSON-serialized Task properties. Press the "Next" button until the "Save & New" button is not available.
+Name it "Duration". It stores the JSON-serialized Task properties. Press the "Next" button until the "Save & New" button is available.
 
 ![](desktop/sf_new_field.png)
 
-Press the "Next" button (accepting all default settings) until the "Save & New" button is not available.
+Press the "Next" button (accepting all default settings) until the "Save & New" button is available.
 
 - **Parent**
 
@@ -169,7 +169,7 @@ Create a "Parent" field. Select "Text" as the Data Type.
 
 ![](desktop/sf_parent.png)
 
-Press the "Next" button (accepting all default settings) until the "Save & New" button is not available.
+Press the "Next" button (accepting all default settings) until the "Save & New" button is available.
 
 - **Progress**
 
@@ -177,7 +177,7 @@ Create a "Progress" field. Select "Number" as the Data Type.
 
 ![](desktop/sf_progress.png)
 
-Press the "Next" button (accepting all default settings) until the "Save & New" button is not available.
+Press the "Next" button (accepting all default settings) until the "Save & New" button is available.
 
 
 - **Start date**
@@ -186,7 +186,7 @@ Create a "Start Date" field. Select "Date/Time" as the Data Type.
 
 ![](desktop/sf_start_date.png)
 
-Press the "Next" button (accepting all default settings) until the "Save" button is not available.
+Press the "Next" button (accepting all default settings) until the "Save" button is available.
 
 In the end it should look like this:
 
@@ -216,7 +216,7 @@ Create a "Source" field. Select "Text" as the Data Type.
 
 ![](desktop/sf_source.png)
 
-Press the "Next" button (accepting all default settings) until the "Save & New" button is not available.
+Press the "Next" button (accepting all default settings) until the "Save & New" button is available.
 
 - **Target**
 
@@ -224,7 +224,7 @@ Create a "Target" field. Select "Text" as the Data Type.
 
 ![](desktop/sf_target.png)
 
-Press the "Next" button (accepting all default settings) until the "Save & New" button is not available.
+Press the "Next" button (accepting all default settings) until the "Save & New" button is available.
 
 - **Type**
 
@@ -232,7 +232,7 @@ Create a "Type" field. Select "Text" as the Data Type.
 
 ![](desktop/sf_type.png)
 
-Press the "Next" button (accepting all default settings) until the "Save" button is not available.
+Press the "Next" button (accepting all default settings) until the "Save" button is available.
 
 In the end it should look like this:
 
