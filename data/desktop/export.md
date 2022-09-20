@@ -34,9 +34,9 @@ read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/ex
 Limits on request size
 --------------------
 
-There is a common API endpoint [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) which serves for all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 10 MB**.
+There is a common API endpoint **https://export.dhtmlx.com/gantt** which serves for all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 10 MB**.
 
-There is also a separate API endpoint [https://export.dhtmlx.com/gantt/project](https://export.dhtmlx.com/gantt/project) specific for the [MSProject export/import services](desktop/export_msproject.md) 
+There is also a separate API endpoint **https://export.dhtmlx.com/gantt/project** specific for the [MSProject export/import services](desktop/export_msproject.md) 
 (*exportToMSProject*/*importFromMSProject* only). **Max request size: 40 MB**.
 
 

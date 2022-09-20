@@ -255,7 +255,7 @@ $app->run();
 
 Let's consider the above described code in detail:
 
-- we have defined a [route](https://www.slimframework.com/docs/objects/router.html) for our data action in *src/routes.php*
+- we have defined a [route](https://www.slimframework.com/docs/v3/objects/router.html) for our data action in *src/routes.php*
 - in the handler for that route we read all tasks and links from the database and send them to the client as [JSON](desktop/supported_data_formats.md#json)
 - we have also added the *open* property to the task objects. It will specify that the tasks tree will be open by default
 

@@ -48,7 +48,7 @@ python manage.py runserver
 
 Now you can open the http://localhost:8000 URL in a browser and you should see the default page there:
 
-![start_page](desktop\howtostart_django_startpage.png)
+![start_page](desktop/howtostart_django_startpage.png)
 
 Step 2. Adding Gantt to the page
 -----------------------
@@ -170,7 +170,7 @@ python manage.py runserver
 
 If everything is done correctly, you should see the page with an empty gantt:
 
-![init_gantt](desktop\howtostart_django_initpage.png)
+![init_gantt](desktop/howtostart_django_initpage.png)
 
 
 Step 3. Loading data
@@ -384,7 +384,7 @@ gantt.load("/data/", "json");
 
 Now if we run the `python manage.py runserver` command, we should see our Gantt with tasks and links.
 
-![gantt](desktop\howtostart_django_gantt.png)
+![gantt](desktop/howtostart_django_gantt.png)
 
 
 Step 4. Saving changes
@@ -512,7 +512,7 @@ To send the changes to the server, you need to use the Data Processor. Add the f
 
 Now, you can add, update, and delete tasks and links, and the changes will be saved. If you reload the page, you will have the same dataset:
 
-![saving_changes](desktop\howtostart_django_gantt_savechanges.png)
+![saving_changes](desktop/howtostart_django_gantt_savechanges.png)
 
 
 
@@ -634,7 +634,7 @@ dp.setTransactionMode("REST");
 
 Now, if you start the server and vertically reorder tasks, the changes will be saved:
 
-![sort_order](desktop\howtostart_django_sortorder.png)
+![sort_order](desktop/howtostart_django_sortorder.png)
 
 Application security
 -------------------------
