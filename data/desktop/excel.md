@@ -17,7 +17,7 @@ Export to Excel
 
 To export data from the Gantt chart to an Excel document, do the following:
 
-- Include the **"http://export.dhtmlx.com/gantt/api.js"** file on the page to enable the online export service:
+- Include the **"https://export.dhtmlx.com/gantt/api.js"** file on the page to enable the online export service:
 
 ~~~html
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -231,7 +231,7 @@ Export to iCal
 
 To export data from the Gantt chart to an iCal string, do the following:
 
-- Include the **"http://export.dhtmlx.com/gantt/api.js"** file on the page to enable the online export service:
+- Include the **"https://export.dhtmlx.com/gantt/api.js"** file on the page to enable the online export service:
 
 ~~~html
 <script src="codebase/dhtmlxgantt.js"></script>

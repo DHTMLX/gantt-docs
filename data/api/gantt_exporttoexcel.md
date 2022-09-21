@@ -29,7 +29,7 @@ gantt.exportToExcel({
 
 {{note This method is defined in the **export** extension, so you need to include it on the page:
 ~~~html
-<script src="http://export.dhtmlx.com/gantt/api.js"></script>  
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>  
 ~~~
 Read the details in the desktop/excel.md article.
 
