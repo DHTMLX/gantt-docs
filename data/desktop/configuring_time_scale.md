@@ -234,7 +234,7 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 });
 ~~~
 
-{{editor		https://docs.dhtmlx.com/gantt/snippet/d3c07958			Re-rendering Scale during Task Dragging}}
+{{editor		https://snippet.dhtmlx.com/o2bgk6uf			Re-rendering Scale during Task Dragging}}
 
 <h3 id="tasksoutsidetimescale">Displaying tasks outside the explicit date range</h3>
 

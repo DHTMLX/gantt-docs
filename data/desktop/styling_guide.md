@@ -34,7 +34,7 @@ gantt.templates.grid_header_class = function(columnName, column){
 
 <img src="desktop/styling_columns_headers.png">
 
-{{editor		https://docs.dhtmlx.com/gantt/snippet/356f900e		Styling Headers of Grid Columns}}
+{{editor		https://snippet.dhtmlx.com/j01gqhtj		Styling Headers of Grid Columns}}
 
 ### Custom elements in the grid header
 
@@ -140,7 +140,7 @@ gantt.templates.grid_row_class = function(start, end, task){
 
 <img src="desktop/grid_row_bg.png">
 
-{{editor	https://docs.dhtmlx.com/gantt/snippet/3328e356			Coloring Grid Rows}}
+{{editor	https://snippet.dhtmlx.com/y0dbph4x			Coloring Grid Rows}}
 
 ### Color of the grid rows on hover
 
@@ -261,7 +261,7 @@ gantt.templates.scale_row_class = function(scale){
 
 <img src="desktop/color_scale_row.png">
  
-{{editor	https://docs.dhtmlx.com/gantt/snippet/70bae8cb		Styling Row of the Scale}}
+{{editor	https://snippet.dhtmlx.com/7ngm6yzk		Styling Row of the Scale}}
 
 ###Scale cells 
 
@@ -277,7 +277,7 @@ gantt.templates.scale_cell_class = function(date){
 
 <img src="desktop/styling_scale_cells.png">
 
-{{editor	https://docs.dhtmlx.com/gantt/snippet/953ad9f3		Styling Separate Cells on the Scale}}
+{{editor	https://snippet.dhtmlx.com/emdjgwln		Styling Separate Cells on the Scale}}
 
 Read more in the related articles: desktop/configuring_time_scale.md#settingthescalesstyle and desktop/highlighting_time_slots.md.
 
@@ -360,7 +360,7 @@ gantt.templates.task_text = function(start, end, task){
 
 <img src="desktop/inline_styling_task_text.png">
 
-{{editor		https://docs.dhtmlx.com/gantt/snippet/c31afbec		Inline Styling of the Task Text}}
+{{editor		https://snippet.dhtmlx.com/us1g45wg		Inline Styling of the Task Text}}
 
 
 ###Custom elements in task bars
@@ -375,7 +375,7 @@ gantt.templates.task_text = function(start, end, task){
 
 <img src="desktop/custom_elements_task_bars.png">
 
-{{editor	https://docs.dhtmlx.com/gantt/snippet/97b6dddc  	Custom Elements in Task Bars}}
+{{editor	https://snippet.dhtmlx.com/fahpyr58  	Custom Elements in Task Bars}}
 
 ###Setting style via properties of a task object
 
@@ -435,7 +435,7 @@ gantt.templates.task_row_class = function(start, end, task){
 
 <img src="desktop/styling_timeline_row.png">
 
-{{editor	https://docs.dhtmlx.com/gantt/snippet/25715bf1		Styling Rows of the Timeline Area}}
+{{editor	https://snippet.dhtmlx.com/33jfmwsp		Styling Rows of the Timeline Area}}
 
 {{sample	04_customization/02_custom_tree.html}}
 
@@ -606,7 +606,7 @@ gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
 
 <img src="desktop/styling_link_popup.png">
 
-{{editor	https://docs.dhtmlx.com/gantt/snippet/9b4d4246		Styling the Popup of Dependency Link}}
+{{editor	https://snippet.dhtmlx.com/7o5f261z		Styling the Popup of Dependency Link}}
 
 Check the desktop/dependency_templates.md article to get more details on the topic.
 
@@ -649,6 +649,6 @@ gantt.templates.quick_info_class = function(start, end, task){
 
 <img src="desktop/styling_quick_info.png">
 
-{{editor			https://docs.dhtmlx.com/gantt/snippet/0e519fb2			Styling Quick Info Popup}}
+{{editor			https://snippet.dhtmlx.com/b92gyqwu			Styling Quick Info Popup}}
 
 
