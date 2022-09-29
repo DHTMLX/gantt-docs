@@ -98,6 +98,30 @@ The article provides a short review of video guides prepared for you to make Gan
          <td>
         	<a href="https://www.youtube.com/watch?v=D8YzyzBfyP8&list=PLKS_XdyIGP4OIEInbIARVtsYH1CT3oB6w" target="_blank"><img src="video_icons/gantt_node.png"></a>
         </td>
+    </tr>
+    <tr>
+        <td>
+		    <span style="font-size:15px;"><a href = "https://www.youtube.com/watch?v=cCvULTQxPfg&list=PLKS_XdyIGP4MEW6yvvQUZT8vJKHVOq2S0" target="_blank">dhtmlxGantt with Salesforce LWC</a></span>
+            <br>
+         	The video tutorial shows how to create a Gantt chart in Salesforce.
+            <br>
+            <br> Related article: <br> desktop/howtostart_salesforce.md
+        </td> 
+         <td>
+        	<a href="https://www.youtube.com/watch?v=cCvULTQxPfg&list=PLKS_XdyIGP4MEW6yvvQUZT8vJKHVOq2S0" target="_blank"><img src="video_icons/gantt_salesforce.png"></a>
+        </td>
+    </tr>	
+    <tr>
+        <td>
+		    <span style="font-size:15px;"><a href = "https://www.youtube.com/watch?v=IgoXvVSerkE&list=PLKS_XdyIGP4Of4S6QgaqMKbJK1Z3bWlf8" target="_blank">dhtmlxGantt with Vue.js</a></span>
+            <br>
+         	The video tutorial shows how to create a basic Vue.js Gantt chart application.
+            <br>
+            <br> Related article: <br> desktop/howtostart_guides.md
+        </td> 
+         <td>
+        	<a href="https://www.youtube.com/watch?v=IgoXvVSerkE&list=PLKS_XdyIGP4Of4S6QgaqMKbJK1Z3bWlf8" target="_blank"><img src="video_icons/gantt_vuejs.png"></a>
+        </td>
     </tr>	
     </tbody>
 </table>
