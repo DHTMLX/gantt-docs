@@ -1,7 +1,7 @@
 inline_editors_multiselect_open
 =============
 
-@short: defines whether inline editors should be opened after one click on a task when multi-task selection is enabled
+@short: defines whether inline editor should be opened after one click on a task when multi-task selection is enabled
 	
 
 @type: boolean
@@ -18,7 +18,7 @@ gantt.init("gantt_here");
 @descr:
 In the single selection mode, Gantt opens the inline editor after you click on a task. 
 
-In the multi selection mode, Gantt selects the task after you click on it, and opens the inline editor only after the second click. 
+In the multi selection mode, the first click on an unselected task will select it whereas the second click on the task will open the inline editor.
 If you want Gantt to open the inline editor after the first click, enable the **inline_editors_multiselect_open** config.
 
 @changelog: added in v7.1.13
