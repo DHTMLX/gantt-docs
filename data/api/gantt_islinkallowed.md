@@ -26,9 +26,9 @@ if(gantt.isLinkAllowed(link))// -> false (because source==target)
 The cases when a link is considered as incorrect:
 
 1. The source task's id is equal to the target task's id.
-2. If the type is set to a value that is not 0, 1 or 2.
+2. If the type is set to a value that is not 0, 1 or 2, 3.
 3. If the link failed the validation.
-
+4. If the link is created from the project task to its sub-task. The dates of the project task depends on the dates of children tasks.
 
 {{note
 The method invokes the api/gantt_onlinkvalidation_event.md event. Therefore, if the api/gantt_onlinkvalidation_event.md event returns `false`, a link will be also considered as incorrect.
