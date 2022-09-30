@@ -21,7 +21,7 @@ The complete source code is [available on GitHub](https://github.com/DHTMLX/sale
 
 You can have a look at the video guide that shows how to create a Gantt chart with Salesforce LWC.
 
-<iframe width="704" height="400" src="https://www.youtube.com/embed/cCvULTQxPfg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="704" height="400" src="https://www.youtube.com/embed/1nXl9jfMdto" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Prerequisites
 -------------------
