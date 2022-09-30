@@ -136,3 +136,23 @@ console.log(gantt.getTask(1).duration);
 
 By default, the last day of the task is excluded from the duration of the task but there is the ability to change the default behavior and include the last day into the duration. For more details, check the [Task end date display & Inclusive end dates](desktop/loading.md#taskenddatedisplayampinclusiveenddates) article.
 
+Cyclic reference error
+-----------------------
+
+If you pass incorrect data to the Gantt, its tree-like structure becomes cyclic which causes the cyclic reference error.
+
+![cyclic_error](desktop/cyclic_error.png)
+
+For example, this error may occur in the following cases:
+
+- If ID of the task's parent is the same as ID of the task:
+
+![equal_ids](desktop/equal_ids.png)
+
+Task #2 cannot be a parent for itself.
+
+- If one of the children of the task becomes its parent:
+
+![parent_child_error](desktop/parent_child_error.png)
+
+"Task #4" is specified as a parent for "Task #1". But at the same time "Task #4" is also a child of "Task #1".
