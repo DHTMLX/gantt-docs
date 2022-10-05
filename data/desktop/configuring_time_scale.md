@@ -465,8 +465,9 @@ Date gantt.date.add_<unit>(Date date, Integer increment);
 - The first function shall return the start time unit for any given date (e.g. month_start for 14 Feb -> 1st Feb).
 - The second function increments the date by any given number of duration units (e.g. 'date minus 2 days') 
 
-Let's create a "fiscal_year" unit and assume that a fiscal year will end on the 31st of January. This is how the new unit can be specified:
+### Example 1
 
+Let's create a "fiscal_year" unit and assume that a fiscal year will end on the 31st of January. This is how the new unit can be specified:
 
 ~~~js
 var firstMonth = 1,
@@ -506,5 +507,210 @@ gantt.config.scales = [
   {unit:"day", step: 1, format:"%d %M"}
 ];
 ~~~
+
+### Example 2
+
+You may divide each "day" cell into three "hour" cells with labels 00, 08, 16. The logic will look like:
+
+~~~js
+gantt.date.hour_custom_start = function (date) {
+    return date;
+};
+
+gantt.date.add_hour_custom = function (date, inc) { // inc depends on the "step" 
+    const nextDate = new Date(date);
+    if (nextDate.getHours() % 8 != 0) { // the hour value is not 0, 8 or 16 /*!*/
+        const diff = Math.abs(8 - nextDate.getHours()); /*!*/
+        return gantt.date.add(nextDate, diff * inc, "hour"); /*!*/
+    } /*!*/
+    return gantt.date.add(date, 8 * inc, "hour"); /*!*/
+};
+
+gantt.config.scales = [
+    { unit: "day", step: 1, date: "%d %F" },
+    { unit: "hour_custom", step: 1, date: "%H" },
+];
+
+gantt.config.date_grid = "%Y-%m-%d %H:%i"
+~~~
+
+{{editor	https://snippet.dhtmlx.com/59qgh9vr	Custom hours on the scale}}
+
+![custom_scale](desktop/custom_scale.png)
+
+Let's consider how Gantt creates the first "hour" cell. As you can see from the example, the earliest task starts at 07:00. But 7 is not a multiple of eight, thus Gantt follows the rule:
+
+~~~js
+if (nextDate.getHours() % 8 != 0) {
+    const diff = Math.abs(8 - nextDate.getHours());  // 8 - 7 = 1
+    return gantt.date.add(nextDate, diff * inc, "hour"); // 7 - 1 = 6
+} 
+~~~
+
+- Gantt calculates the time interval between 8:00 and 7:00: <br>*diff = 08:00 - 07:00 = 1 hour*
+
+- As a value of the *inc* parameter, Gantt uses the negative value of the time step (*-1*): <br> *diff * inc = 1 hour * (-1) = -1 hour*
+
+- Finally, Gantt subtracts the time interval multiplied by the increment from the time of the earliest task: <br> *07:00 - 1 hour = 06:00*
+<br>The value of the first cell is **06**.
+
+To create the second "hour" cell, Gantt follows the same logic but uses the positive increment
+
+- *diff = 08:00 - 06:00 = 2 hours*
+
+- *diff * inc = 2 hour * 1 = 2 hours*
+
+- *06:00 + 2 hours = 08:00*<br> The value of the second cell is **08**
+
+At this stage, we can see that 8 is a multiple of eight, therefore the value of the next cell is calculated as *08:00 + 8 hours = **16:00***, and so on for the other cells.
+
+{{note This logic works because we don't specify [explicit date range](#explicit_date_range).}}
+
+Custom time spans
+----------------------
+
+In this part you will find examples of how to customize and configure the time scale so that it shows or hides non-working time spans. Besides, you'll find an example of how to hide cells with non-working hours from the start of the scale even if the **skip_off_time** mode is enabled.
+
+Below we give you an example of the custom scale for the most common case when working hours are from 08:00 to 12:00 and from 13:00 to 17:00.
+
+~~~js
+gantt.date.day_custom_start = function (date) {
+    return date;
+};
+
+gantt.date.add_day_custom = function (date, inc) { /*!*/
+    const nextDate = new Date(date); /*!*/
+    if (nextDate.getHours() < 8) { /*!*/ // Statement 1
+        const diff = 8 - nextDate.getHours(); /*!*/
+        return gantt.date.add(nextDate, diff * inc, "hour"); /*!*/
+    } /*!*/
+    if (nextDate.getHours() == 8) { /*!*/ // Statement 2
+        return gantt.date.add(nextDate, 9 * inc, "hour"); /*!*/
+    } /*!*/
+    if (nextDate.getHours() == 17) { /*!*/ // Statement 3
+        return gantt.date.add(nextDate, 15 * inc, "hour"); /*!*/
+    } /*!*/
+
+    return gantt.date.add(date, 8 * inc, "hour"); /*!*/
+};
+
+gantt.config.scales = [
+    { unit: "day_custom", step: 1, date: "%d %H:00" },
+];
+
+// gantt.config.skip_off_time = true;
+gantt.config.work_time = true;
+gantt.config.correct_work_time = true;
+gantt.plugins({
+    auto_scheduling: true,
+});
+gantt.setWorkTime({ hours: ["8:00-12:00", "13:00-17:00"] }); /*!*/
+
+gantt.config.duration_unit = "minute";
+gantt.config.duration_step = 1;
+gantt.config.time_step = 1;
+gantt.config.round_dnd_dates = false;
+~~~
+
+{{editor	https://snippet.dhtmlx.com/9s4u81c3	Custom time spans}}
+
+Let's imagine that the earliest task will start at 08:00 of April 1st, 2025 and consider how Gantt will add offsets before this task depending on the value of [gantt.config.skip_off_time](api/gantt_skip_off_time_config.md).
+
+The first configuration will hide non-working hours from the time scale:
+
+~~~js
+gantt.config.skip_off_time = true;
+~~~
+
+In this case, to create the first "hour" cell, Gantt will decrement hours of the earliest task until the time reaches working hours of the previous day. 
+
+- At first, Gantt will subtract 9 hours from 08:00 of April 1st, 2025 (Statement 2): <br>
+*08:00 - 9 hours = 23:00*<br>
+- Since 23:00 is non-working time which doesn't meet any of the conditions, Gantt will decrement the time again by subtracting 8 hours:<br>
+*23:00 - 8 hours = 15:00*
+- The resulting time - 15:00 of March 31, 2025 - is considered as working time. 
+
+Therefore, **31 15:00** is the value which will be displayed on the first cell.
+
+![](desktop/with_skip_off_time.png)
+
+To understand how Gantt calculates all the other cells, let's disable **gantt.config.skip_off_time**:
+
+~~~js
+gantt.config.skip_off_time = false;
+~~~
+
+From the above part we've found out that the first cell of the time scale will have the **31 15:00** value.
+But, now the amount of the empty cells before the earliest task will increase because cells with non-working hours will be displayed on the scale too.
+
+To calculate the values of these cells, the following logic is applied:
+
+- 15:00 of March 31, 2025 is working time which doesn't meet any of the specified conditions. Thus, to calculate the value of the second cell Gantt will increment the time by adding 8 hours:<br>
+*15:00 + 8 hours = 23:00* 
+- 23:00 of March 31, 2025 is non-working time which doesn't meet any of the conditions too. Thus, the value of the third cell will be calculated in the same way:<br>
+*23:00 + 8 hours = 7:00*
+- 7:00 of April 1st, 2025 is non-working time which is less than 8:00 (Statement 3). The value of the next cell will be calculated as in:<br>
+    - *diff = 08:00 - 07:00 = 1 hour*
+    - *diff * inc = 1 hour * 1 = 1 hour*
+    - *07:00 + 1 hour = **08:00***<br>
+
+08:00 0f April 1st, 2025 is the date of our earliest task.
+
+![](desktop/without_skip_off_time.png)
+
+{{note All other cells are created in the similar way.}}
+
+<br>
+As you can see, if you disable the **skip_off_time** property, Gantt can add more than one empty cell before the task with the minimal date. If you want the Gantt to create only one cell regardless of whether the property is enabled or not, you can apply the following logic:
+
+~~~js
+gantt.date.add_day_custom = function (date, inc) {
+    // When the work_time is enabled and the tasks are loaded, 
+    // calculate the date for the first cell.
+    // Go from right to left starting from the minimal date, 
+    // get the closest date within the working hours 
+    // and subtract 1 hour from this date 
+    if (inc < 0 && gantt.getTaskByTime().length) {
+        return gantt.calculateEndDate({ 
+            start_date: date, duration: -1, unit: gantt.config._duration_unit 
+        })
+    }
+
+    // the beginning of the working hours (workday);
+    // calculate when the workday ends
+    if (date.getHours() == 8) {
+        return gantt.calculateEndDate(date, 8);
+    }
+    // the end of the working hours (workday);
+    // calculate when the next working day begins
+    if (date.getHours() == 17) {
+        return gantt.date.add(date, 15 * inc, "hour");
+    }
+
+    // if tasks are loaded, calculate the working dates for the second cell of scale
+    // if tasks are absent, calculate the dates for all scale cells
+    date = gantt.date.add(date, 1 * inc, "day");
+    gantt.date.day_start(date);
+    date = gantt.getClosestWorkTime({ date, dir: "future" })
+    return date
+};
+
+gantt.config.scales = [
+    { unit: "day_custom", step: 1, date: "%d %H:%i" },
+];
+gantt.config.work_time = true;
+
+gantt.config.skip_off_time = false; /*!*/
+~~~
+
+{{editor	https://snippet.dhtmlx.com/wmj92ys5	Equal offset for custom scales}}
+
+This is how the scale looks in the mode when non-working hours are hidden:
+
+![custom_first_scale_cell](desktop/custom_first_scale_cell.png)
+
+And here is how it looks when **gantt.config.skip_off_time** is disabled:
+
+![first_scale_cell_without_skip_off_time](desktop/disable_skip_off_time.png)
 
 @todo: check
