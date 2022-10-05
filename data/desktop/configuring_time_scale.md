@@ -465,6 +465,8 @@ Date gantt.date.add_<unit>(Date date, Integer increment);
 - The first function shall return the start time unit for any given date (e.g. month_start for 14 Feb -> 1st Feb).
 - The second function increments the date by any given number of duration units (e.g. 'date minus 2 days') 
 
+{{note Usually, increment has a positive value because cells of the scale are created from left to right. But creation of the first cell is implemented from right to left, thus Gantt uses the negative value of the increment.}}
+
 ### Example 1
 
 Let's create a "fiscal_year" unit and assume that a fiscal year will end on the 31st of January. This is how the new unit can be specified:
