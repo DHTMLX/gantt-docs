@@ -551,9 +551,9 @@ if (nextDate.getHours() % 8 != 0) {
 
 - Gantt calculates the time interval between 8:00 and 7:00: <br>*diff = 08:00 - 07:00 = 1 hour*
 
-- As a value of the *inc* parameter, Gantt uses the negative value of the time step (*-1*): <br> *diff * inc = 1 hour * (-1) = -1 hour*
+- Then, Gantt finds the product of the time interval and increment: <br> *diff * inc = 1 hour * (-1) = -1 hour* <br> As a value of the *inc* parameter, Gantt uses the negative value of the time step (*-1*).
 
-- Finally, Gantt subtracts the time interval multiplied by the increment from the time of the earliest task: <br> *07:00 - 1 hour = 06:00*
+- Finally, Gantt adds the received value to the time of the earliest task: <br> *07:00 + (- 1 hour) = 06:00*
 <br>The value of the first cell is **06**.
 
 To create the second "hour" cell, Gantt follows the same logic but uses the positive increment
@@ -618,7 +618,7 @@ gantt.config.round_dnd_dates = false;
 
 Let's imagine that the earliest task will start at 08:00 of April 1st, 2025 and consider how Gantt will add offsets before this task depending on the value of [gantt.config.skip_off_time](api/gantt_skip_off_time_config.md).
 
-The first configuration will hide non-working hours from the time scale:
+We will start with configuration which hides non-working hours from the time scale:
 
 ~~~js
 gantt.config.skip_off_time = true;
@@ -642,8 +642,8 @@ To understand how Gantt calculates all the other cells, let's disable **gantt.co
 gantt.config.skip_off_time = false;
 ~~~
 
-From the above part we've found out that the first cell of the time scale will have the **31 15:00** value.
-But, now the amount of the empty cells before the earliest task will increase because cells with non-working hours will be displayed on the scale too.
+As we've found out above, the first cell of the time scale will have the **31 15:00** value.
+But now the amount of the empty cells before the earliest task will increase because cells with non-working hours will be displayed on the scale too.
 
 To calculate the values of these cells, the following logic is applied:
 
@@ -711,7 +711,7 @@ This is how the scale looks in the mode when non-working hours are hidden:
 
 ![custom_first_scale_cell](desktop/custom_first_scale_cell.png)
 
-And here is how it looks when **gantt.config.skip_off_time** is disabled:
+And here is how it looks when they are shown (**gantt.config.skip_off_time** is disabled):
 
 ![first_scale_cell_without_skip_off_time](desktop/disable_skip_off_time.png)
 
