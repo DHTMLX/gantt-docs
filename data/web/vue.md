@@ -1,7 +1,7 @@
 Vue Gantt
 ==================
 
-<a href="https://dhtmlx.com/docs/products/dhtmlxGantt-for-Vuejs/" target="_blank">DHTMLX Vue JS Gantt chart</a> is a separate Gantt chart library for your Vue.js application.
+<a href="https://dhtmlx.com/docs/products/dhtmlxGantt-for-Vuejs/" target="_blank">DHTMLX Vue JS Gantt chart</a> is a separate Gantt chart library for your Vue.js application. The library works only with 3.x version of Vue.js.
 
 {{note
 There are two different products, DHTMLX Gantt and Vue Gantt. 

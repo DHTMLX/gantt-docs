@@ -10,10 +10,15 @@ gantt.init('gantt_here');
 
 @template:	api_config
 @descr:
+
+{{note The property is deprecated.}}
+
 The option is useful in cases when the gantt is inserted in the middle of the page and there is some content outside.
 
 If the option is disabled, the scroll once appeared in the gantt would remain there.
 To scroll the other part of the page a user will need to make a click outside of the gantt.
 
 
+@deprecated: The property is deprecated.
 
+@changelog: deprecated from v5.0
