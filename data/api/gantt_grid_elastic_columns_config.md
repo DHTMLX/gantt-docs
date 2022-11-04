@@ -8,7 +8,7 @@ grid_elastic_columns
 @short: adjusts the width of columns inside a scrollable grid
 	
 
-@type: boolean, string
+@type: boolean,string
 @example:
 gantt.config.grid_elastic_columns = true;
 ...

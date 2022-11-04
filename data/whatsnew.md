@@ -27,7 +27,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix compatibility issues with Vue.js v3.x
 - Fix the script error thrown from the [gantt.getConstraintLimitations()](api/gantt_getconstraintlimitations.md) method when the specified task didn't have 'constraint_date'
 - Fix compatibility issues with SalesForce Web Security
-- Added the method to remove focus from the gantt when [Keyboard Navigation](desktop/keyboard_navigation.md) is enabled
+- Fix the issue which caused focus to be returned to the Gantt after clicking outside the Gantt container when [Keyboard Navigation](desktop/keyboard_navigation.md#focusbehaviorduringkeyboardnavigation) was enabled
 - [German locale](desktop/localization.md#activatingalocale) is updated
 - Now it is possible to open the inline editor after one click on a task in the multi-selection mode (the [inline_editors_multiselect_open](api/gantt_inline_editors_multiselect_open_config.md) property is added)
 
