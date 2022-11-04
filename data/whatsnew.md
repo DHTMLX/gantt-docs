@@ -10,6 +10,27 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+7.1.13
+----------
+
+<span class='release_date'>November 4, 2022. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect work of the [gantt.addLinkLayer()](api/gantt_addlinklayer.md) method with the [smart_rendering](api/gantt_smart_rendering_config.md) property
+- Fix issues with display of [S-Curve Overlay](desktop/baselines.md#extraoverlayforthechart) together with different [time scales](desktop/configuring_time_scale.md)
+- Fix the issue with [resizing of grid columns](desktop/specifying_columns.md#resizing) when the [grid_elastic_columns](api/gantt_grid_elastic_columns_config.md) property is enabled
+- Fix the issue that caused Gantt to reset the position of the vertical scroll after deleting a task using [Keyboard Navigation](desktop/keyboard_navigation.md)
+- Fix the incorrect work of the [treeDatastore.move()](api/gantt_treedatastore_other.md) method
+- Fix the issue with the [gantt.parse()](api/gantt_parse.md) method, [extra collections](desktop/supported_data_formats.md#jsonwithcollections) from the dataset should be available via the [gantt.serverList()](api/gantt_serverlist.md) method
+- Fix the issue with the [gantt.groupBy()](api/gantt_groupby.md) method, which caused the selection state to reset after grouping
+- Fix compatibility issues with Vue.js v3.x
+- Fix the script error thrown from the [gantt.getConstraintLimitations()](api/gantt_getconstraintlimitations.md) method when the specified task didn't have 'constraint_date'
+- Fix compatibility issues with SalesForce Web Security
+- Fix the issue which caused focus to be returned to the Gantt after clicking outside the Gantt container when [Keyboard Navigation](desktop/keyboard_navigation.md#focusbehaviorduringkeyboardnavigation) was enabled
+- [German locale](desktop/localization.md#activatingalocale) is updated
+- Now it is possible to open the inline editor after one click on a task in the multi-selection mode (the [inline_editors_multiselect_open](api/gantt_inline_editors_multiselect_open_config.md) property is added)
+
 7.1.12
 -----------
 

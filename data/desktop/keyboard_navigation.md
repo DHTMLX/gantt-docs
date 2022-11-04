@@ -52,7 +52,12 @@ The default navigation actions in a modal window are as follows:
 
 If the focus is set on some button of the form, pressing *Space* or *Enter* will call pressing the button under focus and not the action.
 
+<br>
+{{note
+When you specify focus on a grid cell/row and then click on a custom HTML element inside the Gantt, the focus will be returned to the grid cell/row.
 
+From v7.1.13, you may add the *'no_keyboard_navigation'* class to the custom element in order that the focus not to be restored on the grid cell/row.
+}}
 
 ##Scopes
 

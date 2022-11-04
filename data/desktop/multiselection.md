@@ -148,6 +148,24 @@ gantt.config.drag_multiple = true;
 
 {{sample 02_extensions/09_multiselection.html}}
 
+Opening editor with one click
+------------------------------
+
+In the single selection mode, Gantt opens the inline editor after you click on a task.  
+
+In the **multi selection** mode, after you click on an unselected task, Gantt will select it, and will open the [inline editor](desktop/inline_editing.md) only after the second click. 
+If you want Gantt to open the inline editor after the first click, enable the [inline_editors_multiselect_open](api/gantt_inline_editors_multiselect_open_config.md) config.
+
+~~~js
+gantt.plugins({
+  multiselect: true
+});
+
+...
+
+gantt.config.inline_editors_multiselect_open = true;
+~~~
+
 API events
 --------------
 

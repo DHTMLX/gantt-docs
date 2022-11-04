@@ -50,4 +50,7 @@ gantt.config.csp = false;
 
 Note, that the work of dhtmlxGantt will stop if the code implementation is blocked by the application settings.
 
-@changelog: added in v7.0
+@changelog: 
+
+- Added in v7.0
+- If the property is set to *true*, the [lightbox](api/gantt_lightbox_config.md) will be rendered inside the Gantt container (from v7.1.13)

@@ -592,3 +592,22 @@ gantt.init("gantt_here");
 ~~~
 
 {{editor	https://snippet.dhtmlx.com/5/5da351260	Custom keyboard mapping}}
+
+Opening editor with one click
+------------------------------
+
+In the single selection mode, Gantt opens the inline editor after you click on a task.  
+
+In the [multi selection](desktop/multiselection.md) mode, after you click on an unselected task, Gantt will select it, and will open the inline editor only after the second click. 
+If you want Gantt to open the inline editor after the first click, enable the [inline_editors_multiselect_open](api/gantt_inline_editors_multiselect_open_config.md) config.
+
+~~~js
+gantt.plugins({
+  multiselect: true
+});
+
+...
+
+gantt.config.inline_editors_multiselect_open = true;
+~~~
+

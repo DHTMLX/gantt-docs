@@ -96,3 +96,7 @@ Edited tasks will be specified only by the start date and have a zero duration. 
 - desktop/custom_button.md
 
 @relatedapi: api/gantt_wide_form_config.md
+
+@changelog:
+
+If either [gantt.config.csp](api/gantt_csp_config.md) is set to *true* or Gantt works in the Salesforce environment, the lightbox will be rendered inside the Gantt container (from v7.1.13)
