@@ -18,6 +18,8 @@ gantt.load("tasks.json");
 	01_initialization/01_basic_init.html
 }}
 
+{{note If you pass incorrect data to the Gantt, its tree-like structure becomes cyclic which causes the [cyclic reference error](faq.md#cyclicreferenceerror).}}
+
 Loading from Object
 -----------------------------------------
 
@@ -239,7 +241,7 @@ In this example, the Finish date (end_date of the task) is specified as April 3,
 
 We will explain the details on how Gantt stores end dates below.
 
-### **How does Gantt stores end dates?**
+### **How does Gantt store end dates?**
 
 Even if you don't specify the hour-minute part for the task date (duration_unit = "day"), dhtmlxGantt always saves it as JS Date, which has the hour-minute-second-millisecond part, on the client side. 
 
