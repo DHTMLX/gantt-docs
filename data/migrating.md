@@ -76,7 +76,7 @@ gantt.config.deepcopy_on_parse = true;
 
 ### Deprecated config
 
-The **gantt.config.task_height** property has been deprecated since v7.1. Despite the property will still continue work and the **task_height** config will be used if specified, you'd better use the new [gantt.config.bar_height](api/gantt_bar_height_config.md) option instead:
+The **gantt.config.task_height** property has been deprecated since v7.1. Despite the property will still continue working and the **task_height** config will be used if specified, you'd better use the new [gantt.config.bar_height](api/gantt_bar_height_config.md) option instead:
 
 ~~~js
 gantt.config.bar_height = 50;
@@ -173,7 +173,7 @@ Deprecated in v6.2 config and templates are removed in v7.0 and replaced with ne
 - gantt.templates.xml_date → [gantt.templates.parse_date](api/gantt_parse_date_template.md)
 - gantt.templates.xml_format → [gantt.templates.format_date](api/gantt_format_date_template.md)
 
-If you have already defined the old names in your code, they will continue work. In other case, use a newer version of the API.
+If you have already defined the old names in your code, they will continue working. In other case, use a newer version of the API.
 
 6.2 -> 6.3
 ---------------

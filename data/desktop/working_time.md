@@ -204,7 +204,7 @@ gantt.setWorkTime({hours:["8:15-12:45"]});
 ~~~
 
 {{note The format of the working time that was used up to version 7.0
-will continue work as before:
+will continue working as before:
 ~~~js
 gantt.setWorkTime({hours:[9, 18]})
 ~~~

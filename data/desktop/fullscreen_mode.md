@@ -186,3 +186,6 @@ console.log("document.body.requestFullscreen", document.body.requestFullscreen)
 ~~~
 
 If you see the `undefined` value in the output, it means the feature is disabled and there is no possibility to expand Gantt.
+
+<br>
+{{note If you activate the [fullscreen support](desktop/extensions_list.md#fullscreen) in the environment which does not support this functionality, errors might appear but Gantt will continue working.}}
