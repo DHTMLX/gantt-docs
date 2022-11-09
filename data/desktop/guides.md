@@ -240,4 +240,5 @@ Check the [features available in the Standard and PRO versions](desktop/editions
 - desktop/styling.md
 - desktop/work_with_dates.md
 - desktop/extra_resources.md
+- desktop/how_to.md
 - overview.md
