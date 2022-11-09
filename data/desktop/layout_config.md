@@ -63,8 +63,8 @@ The layout of Gantt consists of cells which are occupied by views. The main and 
 - **resourceTimeline** - preconfigured timeline for a resource panel. **Available in the PRO edition only**. See more details [here](desktop/resource_management.md).
 
 The view configuration is specified as an object with the corresponding properties. 
-You can [set custom configuration options](desktop/layout_config.md#configuringganttlayout) for the **grid** and **timeline** views. 
-The default options are taken from the global **gantt.config** object.
+You can [set custom configuration options](#configsandtemplatesofviews) for the **grid** and **timeline** views. 
+The default options are taken from the global [gantt.config](desktop/common_configuration.md#ganttconfigobject) object.
 
 {{note Note that you should specify the configuration of layout before Gantt initialization. If you make changes in the layout, you need to refresh it using api/gantt_resetlayout.md.}}
 
@@ -302,7 +302,7 @@ The required views and their ids are:
 - view: "scrollbar", id: "scrollVer"
 
 Note that if the id is not specified, gantt will either use the view name as a default view id, or auto generate a unique id.
-Thus, in case of the default grid and timeline, the "id" parameter can be ommited:
+Thus, in case of the default grid and timeline, the "id" parameter can be omitted:
 
 ~~~js
 gantt.config.layout = {
@@ -325,7 +325,7 @@ The layout can contain any additional number of views.
 Configs and templates of views
 -------------------
 
-Grid and Timeline views reuse the templates and configs from the global gantt.config/gantt.templates. However, these settings can be overridden for the specific views at the layout level.
+Grid and Timeline views reuse the templates and configs from the global [gantt.config/gantt.templates](desktop/common_configuration.md). However, these settings can be overridden for the specific views at the layout level.
 
 For example: 
 
@@ -403,6 +403,8 @@ gantt.config.layout = {
   ]
 };
 ~~~
+
+Check the [Resource Management](desktop/resource_management.md) article.
 
 
 Visibility groups

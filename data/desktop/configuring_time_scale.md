@@ -40,7 +40,7 @@ Time units
 
 To set the unit of the scale, use the **unit** property in the corresponding scale object: 
 
-Possible values are: "minute", "hour", "day", "week", "quarter", "month", "year".
+Possible values are: "minute", "hour", "day" (by default), "week", "quarter", "month", "year".
 
 
 ~~~js
