@@ -168,11 +168,15 @@ gantt.render();
 
 gantt.attachEvent("onTaskDrag", function (id, mode, task, original) {
     if (+task.start_date <= +gantt.config.start_date) {
-        gantt.config.start_date = gantt.date.add(gantt.config.start_date, -1, gantt.config.duration_unit);
+        gantt.config.start_date = gantt.date.add(
+            gantt.config.start_date, -1, gantt.config.duration_unit
+        );
         gantt.render()
     }
     if (+task.end_date >= +gantt.config.end_date) {
-        gantt.config.end_date = gantt.date.add(gantt.config.end_date, 1, gantt.config.duration_unit);
+        gantt.config.end_date = gantt.date.add(
+            gantt.config.end_date, 1, gantt.config.duration_unit
+        );
         gantt.render()
     }
 });
@@ -195,7 +199,7 @@ gantt.attachEvent("onGanttScroll", function (left, top) {
 });
 ~~~
 
-https://snippet.dhtmlx.com/39l7o0rm
+https://snippet.dhtmlx.com/39l7o0rm Gantt. Load data dynamically
 
 ## How to expand/collapse all tasks with a button
 
@@ -219,8 +223,9 @@ function expandAll() {
 }
 ~~~
 
-https://snippet.dhtmlx.com/z7o5qt9s
-https://snippet.dhtmlx.com/72zahagy
+https://snippet.dhtmlx.com/z7o5qt9s Gantt. Add collapse/expand buttons into Gantt header
+
+https://snippet.dhtmlx.com/72zahagy Gantt. Collapse/expand all tasks
 
 ## How to display several lines in the grid cell/header
 
@@ -234,7 +239,7 @@ For the grid header:
 }
 ~~~
 
-https://snippet.dhtmlx.com/lx70v5hw
+https://snippet.dhtmlx.com/lx70v5hw Gantt. Multiline text in the grid header
 
 For the grid cells:
 
@@ -246,9 +251,9 @@ For the grid cells:
 }
 ~~~
 
-https://snippet.dhtmlx.com/55uy7ibo
+https://snippet.dhtmlx.com/55uy7ibo Gantt. Multiline text in Grid cells and Timeline
 
-https://snippet.dhtmlx.com/bwil9sxs
+https://snippet.dhtmlx.com/bwil9sxs Gantt. Multiline text in cells of a Grid column
 
 ## How to add a custom column in the grid
 
@@ -271,9 +276,9 @@ gantt.config.columns = [
 ];
 ~~~
 
-https://snippet.dhtmlx.com/t5ba0gzu
+https://snippet.dhtmlx.com/t5ba0gzu Gantt. Custom column with template for task progress
 
-https://snippet.dhtmlx.com/gfsdp121
+https://snippet.dhtmlx.com/gfsdp121 Gantt. Custom column with template for action buttons
 
 ## How to add custom add(+) button
 
@@ -286,14 +291,15 @@ gantt.config.columns = [
     other columns
     */
     {
-        name: "add_tasks", label: "+", width: 50, resize: true, align: "center", template: function (task) {
+        name: "add_tasks", label: "+", width: 50, resize: true, align: "center", 
+        template: function (task) {
             return `<button onclick='addTask(${task.id})';>`
         }
     },
 ];
 ~~~
 
-https://snippet.dhtmlx.com/o36jnko3
+https://snippet.dhtmlx.com/o36jnko3 Gantt. Custom columns with templates for add (+) buttons
 
 ## How to add a custom scale
 
@@ -325,7 +331,7 @@ gantt.config.scales = [
 ];
 ~~~
 
-https://snippet.dhtmlx.com/0l49yvp2
+https://snippet.dhtmlx.com/0l49yvp2 Gantt. Custom work shift hours on the scale
 
 Numbers in the scale instead of days:
 
@@ -339,7 +345,7 @@ gantt.config.scales = [
 ]
 ~~~
 
-https://snippet.dhtmlx.com/06bp4wdl
+https://snippet.dhtmlx.com/06bp4wdl Gantt. Numbers of days on the scale
 
 Weeks only have 5 days:
 
@@ -373,7 +379,7 @@ gantt.ignore_time = function (date) {
 };
 ~~~
 
-https://snippet.dhtmlx.com/eq70o558
+https://snippet.dhtmlx.com/eq70o558 5-day work weeks on the scale
 
 Week number starts from the first day of the year:
 
@@ -408,7 +414,7 @@ gantt.config.scales = [
 ];
 ~~~
 
-https://snippet.dhtmlx.com/gbowxpmr
+https://snippet.dhtmlx.com/gbowxpmr Gantt. Weeks of the year on the scale
 
 ## How to copy and paste tasks
 
@@ -435,7 +441,7 @@ gantt.config.columns = [
 ];
 ~~~
 
-https://snippet.dhtmlx.com/ii9u6wbe
+https://snippet.dhtmlx.com/ii9u6wbe Gantt. Clone a task
 
 Clone a task with all its subtasks and links:
 
@@ -444,84 +450,84 @@ let child_links;
 let clone_original_ids_table;
 
 function obtain_link_ids(id) {
-    const task = gantt.getTask(id);
-    const source_links = task.$source;
-    for (let i = 0; i < source_links.length; i++) {
-        child_links.push(source_links[i]);
-    }
+  const task = gantt.getTask(id);
+  const source_links = task.$source;
+  for (let i = 0; i < source_links.length; i++) {
+    child_links.push(source_links[i]);
+  }
 }
 
 function create_clone_original_ids_table(original_id, clone_id) {
-    clone_original_ids_table[original_id] = clone_id;
+  clone_original_ids_table[original_id] = clone_id;
 }
 
 function clone_child_links() {
-    for (let i = 0; i < child_links.length; i++) {
-        const link = gantt.getLink(child_links[i]);
-        if (clone_original_ids_table[link.source] && clone_original_ids_table[link.target]) {
-            const clone_link = {};
-            clone_link.id = gantt.uid();
-            clone_link.target = clone_original_ids_table[link.target];
-            clone_link.source = clone_original_ids_table[link.source];
-            clone_link.type = link.type;
-            gantt.addLink(clone_link)
-        }
-
-    }
-
+ for (let i = 0; i < child_links.length; i++) {
+  const link = gantt.getLink(child_links[i]);
+  if (clone_original_ids_table[link.source] && clone_original_ids_table[link.target]){
+    const clone_link = {};
+    clone_link.id = gantt.uid();
+    clone_link.target = clone_original_ids_table[link.target];
+    clone_link.source = clone_original_ids_table[link.source];
+    clone_link.type = link.type;
+    gantt.addLink(clone_link)
+  }
+ }
 }
 
 function clone_children(id, new_parent) {
-    const children = gantt.getChildren(id)
-    for (let i = 0; i < children.length; i++) {
-        const child_original = gantt.getTask(children[i]);
-        const child_clone = gantt.copy(child_original);
-        child_clone.id = gantt.uid();
-        child_clone.parent = new_parent;
-        gantt.addTask(child_clone, child_clone.parent, child_clone.$index);
+  const children = gantt.getChildren(id)
+  for (let i = 0; i < children.length; i++) {
+    const child_original = gantt.getTask(children[i]);
+    const child_clone = gantt.copy(child_original);
+    child_clone.id = gantt.uid();
+    child_clone.parent = new_parent;
+    gantt.addTask(child_clone, child_clone.parent, child_clone.$index);
 
-        obtain_link_ids(child_original.id);
-        create_clone_original_ids_table(child_original.id, child_clone.id);
+    obtain_link_ids(child_original.id);
+    create_clone_original_ids_table(child_original.id, child_clone.id);
 
-        if (gantt.hasChild(child_original.id)) clone_children(child_original.id, child_clone.id);
-    }
+    if (gantt.hasChild(child_original.id)) clone_children(
+      child_original.id, child_clone.id
+    );
+  }
 }
 
 function clone_task(id) {
-    const task = gantt.getTask(id);
-    const clone = gantt.copy(task);
-    clone.id = gantt.uid();
-    gantt.addTask(clone, clone.parent, clone.$index);
+  const task = gantt.getTask(id);
+  const clone = gantt.copy(task);
+  clone.id = gantt.uid();
+  gantt.addTask(clone, clone.parent, clone.$index);
 
-    child_links = [];
-    obtain_link_ids(id);
+  child_links = [];
+  obtain_link_ids(id);
 
-    clone_original_ids_table = {};
-    create_clone_original_ids_table(task.id, clone.id);
+  clone_original_ids_table = {};
+  create_clone_original_ids_table(task.id, clone.id);
 
-    if (gantt.hasChild(id)) {
-        clone_children(id, clone.id)
-    }
+  if (gantt.hasChild(id)) {
+    clone_children(id, clone.id)
+  }
 
-    clone_child_links()
+  clone_child_links()
 }
 
 gantt.config.order_branch = true;
 gantt.config.order_branch_free = true;
 
 gantt.config.columns = [
-    /*
-    other columns
-    */
-    {
-        name: "clone", label: "clone", width: 44, template: function (task) {
-            return "<input type=button value='V' onclick=clone_task(" + task.id + ")>"
-        }
+  /*
+  other columns
+  */
+  {
+    name: "clone", label: "clone", width: 44, template: function (task) {
+      return "<input type=button value='V' onclick=clone_task(" + task.id + ")>"
     }
+  }
 ];
 ~~~
 
-https://snippet.dhtmlx.com/b33jfmws
+https://snippet.dhtmlx.com/b33jfmws Gantt. Clone a task with all its subtasks and links
 
 Select tasks, use the Control+C hotkey to copy them, and Control+V hotkey to paste them as children to the selected task:
 
@@ -551,7 +557,7 @@ gantt.ext.keyboardNavigation.addShortcut("ctrl+v", function (e) {
 }, "taskRow");
 ~~~
 
-https://snippet.dhtmlx.com/kck3pnmh
+https://snippet.dhtmlx.com/kck3pnmh Gantt. Copy and paste tasks via Ctrl+C, Ctrl+V
 
 ## How to add resource chart or custom styles in the exported PDF file
 
@@ -574,7 +580,7 @@ gantt.exportToPDF({
 });
 ~~~
 
-https://snippet.dhtmlx.com/51ds6zwa
+https://snippet.dhtmlx.com/51ds6zwa Gantt. Export Gantt with styled tasks to PDF
 
 ~~~js
 gantt.exportToPDF({
@@ -593,17 +599,18 @@ gantt.exportToPDF({
 </style>
 ~~~
 
-https://snippet.dhtmlx.com/6qwzclr2
-https://snippet.dhtmlx.com/2lqhkfhh
+https://snippet.dhtmlx.com/6qwzclr2 Gantt. Export Gantt with all custom elements to PDF
+
+https://snippet.dhtmlx.com/2lqhkfhh Gantt. Export Gantt with custom icons to PDF
 
 Export with legend:
 
-https://snippet.dhtmlx.com/gz4ddlnl
+https://snippet.dhtmlx.com/gz4ddlnl Gantt. Export Gantt with legend to PDF
 
 Export resource chart and histogram:
 
-https://snippet.dhtmlx.com/lw5xcm31
-https://snippet.dhtmlx.com/i9me4oxl
+https://snippet.dhtmlx.com/lw5xcm31 Gantt. Export Gantt with resource diagram to PDF
+https://snippet.dhtmlx.com/i9me4oxl Gantt. Export Gantt with resource histogram to PDF
 
 ## How to calculate task progress depending on child tasks
 
@@ -614,7 +621,8 @@ In the following example, the progress of parent tasks depends only on the progr
 gantt.config.auto_types = true;
 
 gantt.templates.progress_text = function (start, end, task) {
-    return "<span style='text-align:left;'>" + Math.round(task.progress * 100) + "% </span>";
+    return "<span style='text-align:left;'>" + Math.round(task.progress * 100) 
+          + "% </span>";
 };
 
 gantt.init("gantt_here");
@@ -658,7 +666,7 @@ function parentProgress(id) {
 }
 ~~~
 
-https://snippet.dhtmlx.com/xuicd1q7
+https://snippet.dhtmlx.com/xuicd1q7 Gantt. Calculate progress of a parent task dynamically
 
 In our official example the progress of parent tasks depends on the progress of child tasks and their duration:
 
@@ -734,7 +742,8 @@ gantt.attachEvent("onAfterTaskAdd", function (id) {
 gantt.config.auto_types = true;
 
 gantt.templates.progress_text = function (start, end, task) {
-    return "<span style='text-align:left;'>" + Math.round(task.progress * 100) + "% </span>";
+    return "<span style='text-align:left;'>" + Math.round(task.progress * 100) 
+          + "% </span>";
 };
 
 gantt.templates.task_class = function (start, end, task) {
@@ -749,11 +758,11 @@ https://docs.dhtmlx.com/gantt/samples/08_api/16_dynamic_progress.html
 You can use the addTaskLayer method to display custom HTML elements in the timeline and add the functions to drag them vertically and horizontally.
 In the following example, it will work as a regular task reorder in the grid:
 
-https://snippet.dhtmlx.com/fla78m0y
+https://snippet.dhtmlx.com/fla78m0y Gantt. Reorder tasks vertically in timeline 
 
 In the following example, you can reorder split tasks and place tasks on the same row:
 
-https://snippet.dhtmlx.com/usfulweq
+https://snippet.dhtmlx.com/usfulweq Gantt. Reorder split tasks vertically in timeline 
 
 ## How to freeze/fix columns in the grid
 
@@ -851,16 +860,16 @@ And add CSS styles:
 }
 ~~~
 
-https://snippet.dhtmlx.com/jbiplpjz
+https://snippet.dhtmlx.com/jbiplpjz Gantt. Frozen column in Grid (via CSS)
 
 Another way is to add [several grid views](desktop/layout_config.md), but it doesn't work well with the inline editors:
 
 ~~~js
 gantt.config.columns = [
     { name: "start_date", align: "center", width: 80, resize: true },
-    { name: "end_date", align: "center", width: 80, resize: true },
+    { name: "end_date", label: "End Date", align: "center", width: 80, resize: true },
     { name: "duration", width: 60, align: "center", resize: true },
-    { name: "progress", width: 60, align: "center", resize: true },
+    { name: "progress", label: "Progress", width: 60, align: "center", resize: true },
     { name: "add", width: 44 }
 ];
 
@@ -920,6 +929,6 @@ gantt.config.layout = {
 }
 ~~~
 
-https://snippet.dhtmlx.com/8dg2r8m9
+https://snippet.dhtmlx.com/8dg2r8m9 Gantt. Fixed column in Grid (several grid views)
 
 
