@@ -3,7 +3,7 @@ How-tos
 
 ## How to toggle grid/chart
 
-If you use the default layout configuration, you can change the [show_chart](api/gantt_show_chart_config.md) or [show_grid](api/gantt_show_grid_config.md) parameters and use the [render()](api/gantt_render.md) method to repaint the changes:
+If you use the default layout configuration, you can change the [show_grid](api/gantt_show_grid_config.md) or [show_chart](api/gantt_show_chart_config.md) parameters and use the [render()](api/gantt_render.md) method to repaint the changes.
 
 ~~~js
 function toggleGrid(){
@@ -23,7 +23,7 @@ function toggleChart(){
 
 {{editor	https://snippet.dhtmlx.com/kqe1hqp2	Gantt. Toggle timeline (default layout)}}
  
-If you use a custom layout configuration, you need to make several layout configurations - with and without the grid/timeline. To switch them, you need to modify the [gantt.config.layout](api/gantt_layout_config.md) parameter and apply the [init()](api/gantt_init.md) method to see the changes:
+If you use a custom layout configuration, you need to create several layout configurations - with and without a grid/timeline. To switch between them, you need to modify the [gantt.config.layout](api/gantt_layout_config.md) parameter and apply the [init()](api/gantt_init.md) method to see the changes:
 
 ~~~js
 let showGrid = true;
@@ -61,7 +61,7 @@ function toggleChart() {
 
 ## How to toggle the resource view
 
-As with the previous use case, you need to make several layout configurations - with and without the resource views. To switch them, you need to modify the [gantt.config.layout](api/gantt_layout_config.md) parameter and apply the [init()](api/gantt_init.md) method to see the changes:
+As with the previous use case, you need to create several layout configurations - with and without resource views. To switch between them, you need to modify the [gantt.config.layout](api/gantt_layout_config.md) parameter and apply the [init()](api/gantt_init.md) method to see the changes:
 
 ~~~js
 let resourceChart = true;
@@ -97,17 +97,17 @@ function layoutChange() {
 
 {{editor	https://snippet.dhtmlx.com/isn2ger4	Gantt. Toggle resource histogram}}
 
-Alternatively, you can generate layout by using the layout views and reinitialize Gantt to see the changes:
+Alternatively, you can generate layout by using the layout views and re-initializing Gantt to see the changes:
 
 {{editor	https://snippet.dhtmlx.com/3dnzfhit	Gantt. Generate layout}}
 
 ## How to have an infinite scroll in the timeline
 
-There are several ways how to implement an infinite scroll. But in most cases, you will need to modify the displayed date range ([gantt.config.start_date](api/gantt_start_date_config.md) and [gantt.config.end_date](api/gantt_end_date_config.md) parameters):
+There are several ways to implement an infinite scroll. But in most cases, you will need to modify the displayed date range ([gantt.config.start_date](api/gantt_start_date_config.md) and [gantt.config.end_date](api/gantt_end_date_config.md) parameters):
 
 ### While using the scrollbar
 
-You need to obtain the [scroll position](api/gantt_onganttscroll_event.md) and increase the date range. As [repainting](api/gantt_render.md) Gantt too often will affect performance, you will need to do that after a timeout:
+You need to obtain the [scroll position](api/gantt_onganttscroll_event.md) and increase the date range. Note, [repainting](api/gantt_render.md) of Gantt too often will affect performance, therefore you will need to do that after a timeout:
 
 ~~~js
 gantt.init("gantt_here");
@@ -146,7 +146,7 @@ gantt.attachEvent("onGanttScroll", function (left, top) {
 
 ### While dragging the timeline
 
-You need to get the current position and if it is near the start or end of the timeline, increase the displayed date range:
+You need to get the current scroll position and if it is near the start or end of the timeline, increase the displayed date range:
 
 ~~~js
 gantt.attachEvent("onMouseMove", function (id, e) {
@@ -218,7 +218,8 @@ gantt.attachEvent("onTaskDrag", function (id, mode, task, original) {
 {{editor	https://snippet.dhtmlx.com/3lrm0wyp	Gantt. Infinite scroll while dragging a task (explicit range settings)}}
 
 ## How to load tasks dynamically
-You need to detect that you scrolled to the last visible task in the [onGanttScroll](api/gantt_onganttscroll_event.md) event and use the [parse()](api/gantt_parse.md) method to load new tasks:
+
+You need to detect that you have scrolled to the last visible task in the [onGanttScroll](api/gantt_onganttscroll_event.md) event and use the [parse()](api/gantt_parse.md) method to load new tasks:
 
 ~~~js
 gantt.attachEvent("onGanttScroll", function (left, top) {
@@ -236,7 +237,7 @@ gantt.attachEvent("onGanttScroll", function (left, top) {
 
 ## How to expand/collapse all tasks with a button
 
-You can use the [open()](api/gantt_open.md) and [close()](api/gantt_close.md) methods to open and close a task. To do that with all tasks in the chart, you need to use that method inside the [eachTask()](api/gantt_eachtask.md) function. To repaint the changes only once, you can wrap the function with the [batchUpdate()](api/gantt_batchupdate.md) one:
+You can use the [open()](api/gantt_open.md) and [close()](api/gantt_close.md) methods to open and close a task. To do that with all tasks in the chart, you need to use the  method inside the [eachTask()](api/gantt_eachtask.md) function. To repaint the changes only once, you can wrap the function with the [batchUpdate()](api/gantt_batchupdate.md) one:
 
 ~~~js
 function collapseAll() {
@@ -262,13 +263,14 @@ function expandAll() {
 
 ## How to display several lines in the grid cell/header
 
-You can do that by adding some style rules.
+This can be achieved by adding some style rules.
+
 For the grid header:
 
 ~~~css
 .gantt_grid_head_text{
-  line-height: 12px;
-  white-space:normal;
+    line-height: 12px;
+    white-space:normal;
 }
 ~~~
 
@@ -278,9 +280,9 @@ For the grid cells:
 
 ~~~css
 .gantt_tree_content, .gantt_task_content{
-  line-height: 12px;
-  white-space:normal;
-  overflow-wrap: break-word; 
+    line-height: 12px;
+    white-space:normal;
+    overflow-wrap: break-word; 
 }
 ~~~
 
@@ -290,7 +292,7 @@ For the grid cells:
 
 ## How to add a custom column in the grid
 
-To add a custom column, you need to modify the [gantt.config.columns](api/gantt_columns_config.md) parameter. If you specify the name parameter, Gantt will return the value of the task property with the same name. You can also use the [template()](desktop/specifying_columns.md#datamappingandtemplates) function to return any custom date or HTML elements.
+To add a custom column, you need to modify the [gantt.config.columns](api/gantt_columns_config.md) parameter. If you specify the **name** parameter, Gantt will return the value of the task property with the same name. You can also use the [template()](desktop/specifying_columns.md#datamappingandtemplates) function to return any custom date or HTML elements.
 
 ~~~js
 gantt.config.columns = [
@@ -315,7 +317,7 @@ gantt.config.columns = [
 
 ## How to add custom add(+) button
 
-You need to add a custom column to the [gantt.config.columns](api/gantt_columns_config.md) parameter. You can set any name for that column except *add*. Otherwise, Gantt will add the default *add* column.
+You need to create a custom column via the [gantt.config.columns](api/gantt_columns_config.md) parameter. You can set any name for that column except *add*. Otherwise, Gantt will add the default *add* column.
 It is possible to return any HTML elements in the grid column by using the [template](desktop/specifying_columns.md#datamappingandtemplates) function. It means that you can return a button and attach a click event to it with a custom function for adding tasks.
 
 ~~~js
@@ -337,8 +339,8 @@ gantt.config.columns = [
 ## How to add a custom scale
 
 You need to create a [custom scale unit](desktop/configuring_time_scale.md#customtimeunits) and add logic to calculate the dates.
-Examples:
-Work shift hours in the scale(06:30, 18:30):
+
+An example of a custom scale with work shift hours (06:30, 18:30):
 
 ~~~js
 gantt.date.custom_scale_start = function (date) {
@@ -366,7 +368,7 @@ gantt.config.scales = [
 
 {{editor	https://snippet.dhtmlx.com/0l49yvp2	Gantt. Custom work shift hours on the scale}}
 
-Numbers in the scale instead of days:
+An example of a custom scale with numbers instead of days:
 
 ~~~js
 gantt.config.scales = [
@@ -380,7 +382,7 @@ gantt.config.scales = [
 
 {{editor	https://snippet.dhtmlx.com/06bp4wdl	Gantt. Numbers of days on the scale}}
 
-Weeks only have 5 days:
+An example of a custom scale with 5-day work weeks:
 
 ~~~js
 const weekScaleTemplate = function (date) {
@@ -414,7 +416,7 @@ gantt.ignore_time = function (date) {
 
 {{editor	https://snippet.dhtmlx.com/eq70o558	5-day work weeks on the scale}}
 
-Week number starts from the first day of the year:
+An example of a custom scale with weeks of the year (the week's number starts from the first day of the year):
 
 ~~~js
 gantt.date.custom_week_start = function (date) {
@@ -451,8 +453,9 @@ gantt.config.scales = [
 
 ## How to copy and paste tasks
 
-You can use the [copy()](api/gantt_copy.md) method to make a deep copy of the task object. Then you can change the ID of the cloned task. After that, you can add the cloned task with the [addTask()](api/gantt_addtask.md) or [createTask()](api/gantt_createtask.md) methods:
-Clone a task with the button:
+You can use the [copy()](api/gantt_copy.md) method to create a deep copy of the task object. Then, you can change the ID of the cloned task. After that, you can add the cloned task with the [addTask()](api/gantt_addtask.md) or [createTask()](api/gantt_createtask.md) methods.
+
+This is how you can clone a task with a button:
 
 ~~~js
 function clone_task(id) {
@@ -476,7 +479,7 @@ gantt.config.columns = [
 
 {{editor	https://snippet.dhtmlx.com/ii9u6wbe	Gantt. Clone a task}}
 
-Clone a task with all its subtasks and links:
+The following example shows how to clone a task with all its subtasks and links:
 
 ~~~js
 let child_links;
@@ -562,7 +565,7 @@ gantt.config.columns = [
 
 {{editor	https://snippet.dhtmlx.com/b33jfmws	Gantt. Clone a task with all its subtasks and links}}
 
-Select tasks, use the *Control + C* hotkey to copy them, and *Control + V* hotkey to paste them as children to the selected task:
+One more example demonstrates how to implement copying via key navigation (select tasks, use the *Control + C* hotkey to copy them, and *Control + V* hotkey to paste them as children to the selected task):
 
 ~~~js
 gantt.plugins({
@@ -594,8 +597,9 @@ gantt.ext.keyboardNavigation.addShortcut("ctrl+v", function (e) {
 
 ## How to add resource chart or custom styles in the exported PDF file
 
-You need to export the data in the [raw](desktop/export.md#exportingcustommarkupandstyles) mode and include the styles in the [header](desktop/export.md#customstylefortheoutputfile) or [footer](desktop/export.md#customstylefortheoutputfile) parameters of the export function:
-Include custom styles:
+You need to export the data in the [raw](desktop/export.md#exportingcustommarkupandstyles) mode and include the styles in the [header](desktop/export.md#customstylefortheoutputfile) or [footer](desktop/export.md#customstylefortheoutputfile) parameters of the export function.
+
+For example, you can save custom styles in a variable and then access the styles via the variable as in:
 
 ~~~js
 const header = `
@@ -614,6 +618,8 @@ gantt.exportToPDF({
 ~~~
 
 {{editor	https://snippet.dhtmlx.com/51ds6zwa	Gantt. Export Gantt to PDF (styles from a variable)}}
+
+Or you can find the &lt;style&gt; element on the page and get styles from it:
 
 ~~~js
 gantt.exportToPDF({
@@ -636,11 +642,11 @@ gantt.exportToPDF({
 
 {{editor	https://snippet.dhtmlx.com/2lqhkfhh	Gantt. Export Gantt with custom icons to PDF}}
 
-Export with legend:
+An example of exporting Gantt with legend:
 
 {{editor	https://snippet.dhtmlx.com/gz4ddlnl	Gantt. Export Gantt with legend to PDF}}
 
-Export resource chart and histogram:
+Examples of exporting resource load diagram and histogram:
 
 {{editor	https://snippet.dhtmlx.com/lw5xcm31	Gantt. Export Gantt with resource load diagram to PDF}}
 
@@ -648,7 +654,8 @@ Export resource chart and histogram:
 
 ## How to calculate task progress depending on child tasks
 
-A simple way to implement that would be to calculate the progress of a parent task after you update a child task. To iterate parent tasks, you can use the [eachParent()](api/gantt_eachparent.md) method.
+A simple way to implement that is calculate the progress of a parent task after you update a child task. To iterate parent tasks, you can use the [eachParent()](api/gantt_eachparent.md) method.
+
 In the following example, the progress of parent tasks depends only on the progress of child tasks:
 
 ~~~js
@@ -702,7 +709,7 @@ function parentProgress(id) {
 
 {{editor	https://snippet.dhtmlx.com/xuicd1q7	Gantt. Calculate progress of a parent task dynamically}}
 
-In our official example the progress of parent tasks depends on the progress of child tasks and their duration:
+In the next example, the progress of parent tasks depends on the progress of child tasks and their duration:
 
 ~~~js
 function calculateSummaryProgress(task) {
@@ -790,7 +797,8 @@ gantt.templates.task_class = function (start, end, task) {
 
 ## How to vertically reorder tasks in the timeline
 
-You can use the [addTaskLayer()](api/gantt_addtasklayer.md) method to display custom HTML elements in the timeline and add the functions to drag them vertically and horizontally.
+You can use the [addTaskLayer()](api/gantt_addtasklayer.md) method to display custom HTML elements in the timeline and add functions to drag them vertically and horizontally.
+
 In the following example, it will work as a regular task reorder in the grid:
 
 {{editor	https://snippet.dhtmlx.com/fla78m0y	Gantt. Reorder tasks vertically in timeline}}
@@ -801,7 +809,7 @@ In the following example, you can reorder split tasks and place tasks on the sam
 
 ## How to freeze/fix columns in the grid
 
-That can be done by using CSS. You need to set the 'relative' position to the column that needs to be fixed. The 'left' parameter should have the same value as the scrollbar position, so, you can add the event handler to the scrollbar and update the CSS variable:
+This can be done by using CSS. You need to set the 'relative' position to the column that needs to be fixed. The 'left' parameter should have the same value as the scrollbar position, so, you can add the event handler to the scrollbar and update the CSS variable:
 
 ~~~js
 gantt.attachEvent("onGanttReady", function () {
