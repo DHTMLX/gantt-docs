@@ -16,7 +16,7 @@ To export data from the Gantt chart to Primavera P6, do the following:
 <link rel="stylesheet" href="codebase/dhtmlxgantt.css" type="text/css">
 ~~~
 
-- Call the api/gantt_exporttoprimaverap6.md method to export data from the Gantt chart.
+- Call the [exportToPrimaveraP6()](api/gantt_exporttoprimaverap6.md) method to export data from the Gantt chart.
 
 ~~~js
 gantt.exportToPrimaveraP6();
@@ -34,10 +34,10 @@ The response will contain a JSON of the following structure:
 
 ~~~js
 {
-   data: {},
-   config: {},
-   resources: [],
-   worktime: {}
+    data: {},
+    config: {},
+    resources: [],
+    worktime: {}
 }
 ~~~
 
@@ -48,7 +48,7 @@ Dates are stringified in the "%Y-%m-%d %H:%i" format.
 - **worktime** - an object containing the working time settings from the project calendar.
 
 
-###Export settings
+### Export settings
 
 The **exportToPrimaveraP6()** method takes as a parameter an object with a number of properties (all of the properties are optional):
 
@@ -90,32 +90,32 @@ gantt.exportToPrimaveraP6({
 ~~~
 
 The properties of this object correspond to the appropriate properties of the [Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). 
-The list of supported properties can be found [here](desktop/tags.md). The properties may contain either fixed values or functions that will be executed when export is called.
+The list of supported properties can be found [here](desktop/properties.md). The properties may contain either fixed values or functions that will be executed when export is called.
 
 - **tasks** - (object) allows setting custom properties to the exported task items
 
 ~~~js
 gantt.exportToPrimaveraP6({
    tasks: {
-       'StartVariance': function (task) {
+        'StartVariance': function (task) {
            if (task.startVariance)
                return task.startVariance;
            else
                return 0;
-       },
-       'PercentWorkComplete': function (task) {
+        },
+        'PercentWorkComplete': function (task) {
            return (task.progress + 0.1);
-       },
+        },
        'Custom': function (task) {
            return 'Custom value';
-       },
-       'Custom 2': 'My Custom value'
-   }
+        },
+       '    Custom 2': 'My Custom value'
+    }
 });
 ~~~
 
 The properties of this object correspond to the appropriate properties of the [Task entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx), 
-here is a list of supported [properties](desktop/tags.md#tagsthatcanberepresentedinthetasksobject).
+here is a list of supported [properties](desktop/properties.md#tasksproperties).
 The properties may contain either fixed values or functions that will be called for each task in the dataset when export is called.
 
 
@@ -133,11 +133,11 @@ gantt.exportToPrimaveraP6({
 
 ~~~js
 gantt.exportToPrimaveraP6({
-  resources: [
-    {"id":"1","name":"John","type":"work"},
-    {"id":"2","name":"Mike","type":"work"},
-    {"id":"3","name":"Anna","type":"work"}
-  ]
+    resources: [
+        {"id":"1","name":"John","type":"work"},
+        {"id":"2","name":"Mike","type":"work"},
+        {"id":"3","name":"Anna","type":"work"}
+    ]
 });
 ~~~
 
@@ -145,31 +145,31 @@ Possible resource types are "work", "cost", "material". Resource assignments are
 
 ~~~js
 var users = [// resources
-  {key:'0', label: "N/A"},
-  {key:'1', label: "John"},
-  {key:'2', label: "Mike"},
-  {key:'3', label: "Anna"}
+    {key:'0', label: "N/A"},
+    {key:'1', label: "John"},
+    {key:'2', label: "Mike"},
+    {key:'3', label: "Anna"}
 ];
 
 gantt.exportToPrimaveraP6({
-  resources: users
-     .filter(function(u){
-        if(u.key === '0')//skip the default option 
-           return false;
-        return true;
-     })
-     .map(function(u){
-        return {
-           id: u.key,
-           name: u.label,
-           type: "work"
-       	};
-  	 }),
-  tasks: {
-     ResourceAssignments: function(task){  /*!*/
-        return task.user;				   /*!*/
-     }									   /*!*/
-  }
+    resources: users
+        .filter(function(u){
+            if(u.key === '0')//skip the default option 
+                return false;
+            return true;
+        })
+        .map(function(u){
+            return {
+                id: u.key,
+                name: u.label,
+                type: "work"
+       	    };
+  	    }),
+    tasks: {
+        ResourceAssignments: function(task){  /*!*/
+            return task.user;				   /*!*/
+        }									   /*!*/
+    }
 });
 ~~~
 
@@ -189,7 +189,7 @@ tasks: {
 
 ~~~js
 gantt.exportToPrimaveraP6({
-   server:"https://myapp.com/myexport/gantt"
+    server:"https://myapp.com/myexport/gantt"
 });
 ~~~
 
@@ -255,10 +255,10 @@ The response will contain a JSON of the following structure:
 
 ~~~js
 {
-   data: {},
-   config: {},
-   resources: [],
-   worktime: {}
+    data: {},
+    config: {},
+    resources: [],
+    worktime: {}
 }
 ~~~
 
@@ -301,7 +301,7 @@ gantt.importFromPrimaveraP6({
 
 To get project fields, the **projectProperties** input with an array of necessary fields can be sent to the server.
 It extracts arbitrary properties of [the Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx) 
-into the **config** property of the output. Here is the list of supported [properties](desktop/tags.md#projectproperties).
+into the **config** property of the output. Here is the list of supported [properties](desktop/properties.md#projectproperties).
 
  - **projectProperties** - specifies an array of project properties that should be put into the response.
 
@@ -333,7 +333,7 @@ gantt.importFromPrimaveraP6({
 #### Getting tasks properties
 
 To get task fields, the **taskProperties** input with an array of necessary fields can be sent to the server.
-It extracts arbitrary properties of the [Task entities](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). Here is the list of supported [properties](desktop/tags.md#tasksproperties):
+It extracts arbitrary properties of the [Task entities](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). Here is the list of supported [properties](desktop/properties.md#tasksproperties):
 
  - **taskProperties** - specify an array of additional task properties to be imported.
 
@@ -420,4 +420,4 @@ Any other methods, for example, *gantt.exportToPDF({server:"https://export.dhtml
 
 
 @index:
-- desktop/tags.md
+- desktop/properties.md

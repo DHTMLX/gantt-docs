@@ -57,10 +57,10 @@ The response will contain a JSON of the following structure:
 
 ~~~js
 {
-   data: {},
-   config: {},
-   resources: [],
-   worktime: {}
+    data: {},
+    config: {},
+    resources: [],
+    worktime: {}
 }
 ~~~
 

@@ -115,7 +115,7 @@ gantt.exportToMSProject({
 ~~~
 
 The properties of this object correspond to the appropriate properties of the [Task entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx), 
-here is a list of supported [properties](desktop/tags.md#tagsthatcanberepresentedinthetasksobject).
+here is a list of supported [properties](desktop/tags.md#tasksproperties).
 The properties may contain either fixed values or functions that will be called for each task in the dataset when export is called.
 
 
