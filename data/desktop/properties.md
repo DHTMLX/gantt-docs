@@ -90,11 +90,11 @@ Tasks properties
     <li>DurationFormat</li>
     <li>EffortDriven</li>
     <li>Estimated</li>
+    <li>ExternalTask</li>
 </div>
 
 
 <div class="myblock">
-	<li>ExternalTask</li>
     <li>Finish</li>
     <li>FinishVariance</li>
     <li>HideBar</li>
@@ -109,12 +109,12 @@ Tasks properties
     <li>Name</li>
     <li>Notes</li>
     <li>OutlineLevel</li>
+    <li>OutlineNumber</li>
+    <li>OverAllocated</li>
 </div>
 
 
 <div class="myblock">
-	<li>OutlineNumber</li>
-    <li>OverAllocated</li>
     <li>PercentComplete</li>
     <li>Priority</li>
     <li>Recurring</li>
