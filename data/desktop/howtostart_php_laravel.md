@@ -349,6 +349,7 @@ And register a route, so the client could call this action. Note that we'll add 
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\GanttController;
 
 Route::get('/data', 'GanttController@get');/*!*/
 ~~~
