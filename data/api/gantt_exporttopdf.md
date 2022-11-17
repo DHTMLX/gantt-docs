@@ -161,6 +161,7 @@ If several people export Gantt at the same time, the process can take more time 
 
 @related:
 desktop/export.md
+desktop/how_to.md#howtoaddresourcechartorcustomstylesintheexportedpdffile
 
 @relatedapi:
 api/gantt_exporttomsproject.md

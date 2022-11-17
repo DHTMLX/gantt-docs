@@ -346,6 +346,10 @@ gantt.exportToPDF({
 });
 ~~~
 
+{{note
+For more examples, check the [How to add resource chart or custom styles in the exported PDF file](desktop/how_to.md#howtoaddresourcechartorcustomstylesintheexportedpdffile) article.}}
+
+
 
 ##Exporting custom markup and styles
 
