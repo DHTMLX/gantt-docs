@@ -157,10 +157,13 @@ Check the [features available in the Standard and PRO versions](desktop/editions
 		         Exporting and Importing Data
 		    </h4>
 		    <ul id="manipulations_sublist">
+                   	<li>desktop/export_requirements.md</li>
                    	<li>desktop/export.md</li>
                     <li>desktop/excel.md</li>
                     <li>desktop/export_msproject.md</li>
+                    <li>desktop/export_primavera.md</li>
                     <li>desktop/serialization.md</li>
+                    <li>desktop/export_nodejs.md</li>
             </ul>
         </td>
 		<td class='topic_description'>Discusses the ways of exporting and importing Gantt data in various formats, and serializing data into XML and JSON.</td>
