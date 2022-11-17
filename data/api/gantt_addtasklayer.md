@@ -29,7 +29,11 @@ gantt.addTaskLayer(function draw_deadline(task) {
 });
 
 
-@related:desktop/baselines.md
+@related:
+desktop/baselines.md
+desktop/how_to.md#howtoverticallyreordertasksinthetimeline
+
+
 @relatedapi:api/gantt_gettaskposition.md
   api/gantt_removetasklayer.md
   api/gantt_layer_attribute_config.md

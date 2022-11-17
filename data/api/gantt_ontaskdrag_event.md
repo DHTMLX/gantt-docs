@@ -37,6 +37,7 @@ Shortly, all happens in the following order:
 	08_api/02_constraints.html
 @related:
 	desktop/dnd.md#denyingdraggingtasksoutofspecificdates
+	desktop/how_to.md#howtohaveaninfinitescrollinthetimeline
 @relatedapi:
 	api/gantt_onbeforetaskdrag_event.md
     api/gantt_onaftertaskdrag_event.md

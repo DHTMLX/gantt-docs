@@ -26,4 +26,7 @@ api/gantt_getscrollstate.md
 api/gantt_showtask.md
 api/gantt_showdate.md
 
+@related:
+desktop/how_to.md#howtohaveaninfinitescrollinthetimeline (read how to implement an infinite scroll)
+desktop/how_to.md#howtoloadtasksdynamically (read how to load tasks dynamically)
 

@@ -543,3 +543,7 @@ gantt.config.layout = {
 
 {{editor	https://snippet.dhtmlx.com/5/157c0db66	Hiding grid/timeline views}}
 
+Switching between views
+-------------------------
+
+If you need to switch between different layout views, check the [How to toggle grid/chart](desktop__how_to.html#howtotogglegridchart) and [How to toggle the resource view](desktop__how_to.html#howtotoggletheresourceview) sections for more details.

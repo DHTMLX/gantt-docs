@@ -315,7 +315,7 @@ gantt.config.columns = [
 
 {{editor	https://snippet.dhtmlx.com/gfsdp121	Gantt. Custom column with template for action buttons}}
 
-## How to add custom add(+) button
+## How to add a custom add(+) button
 
 You need to create a custom column via the [gantt.config.columns](api/gantt_columns_config.md) parameter. You can set any name for that column except *add*. Otherwise, Gantt will add the default *add* column.
 It is possible to return any HTML elements in the grid column by using the [template](desktop/specifying_columns.md#datamappingandtemplates) function. It means that you can return a button and attach a click event to it with a custom function for adding tasks.
