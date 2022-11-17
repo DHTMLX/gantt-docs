@@ -217,6 +217,16 @@ Check the [features available in the Standard and PRO versions](desktop/editions
     <tr>
 		<td id="data" class='topics'>
 		    <h4>
+		        How-tos
+		    </h4>
+		    <ul id="data_sublist" >
+                    <li>desktop/how_to.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Provides practical answers on the the most frequently asked questions about the Gantt chart configuration </td>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
 		        User Interface Guide
 		    </h4>
 		    <ul id="data_sublist" >
