@@ -219,7 +219,7 @@ gantt.attachEvent("onTaskDrag", function (id, mode, task, original) {
 
 ## How to load tasks dynamically
 
-You need to detect that you have scrolled to the last visible task in the [onGanttScroll](api/gantt_onganttscroll_event.md) event and use the [parse()](api/gantt_parse.md) method to load new tasks:
+You can detect that you have scrolled to the last visible task in the [onGanttScroll](api/gantt_onganttscroll_event.md) event and use the [parse()](api/gantt_parse.md) method to load new tasks:
 
 ~~~js
 gantt.attachEvent("onGanttScroll", function (left, top) {
@@ -237,7 +237,7 @@ gantt.attachEvent("onGanttScroll", function (left, top) {
 
 ## How to expand/collapse all tasks with a button
 
-You can use the [open()](api/gantt_open.md) and [close()](api/gantt_close.md) methods to open and close a task. To do that with all tasks in the chart, you need to use the  method inside the [eachTask()](api/gantt_eachtask.md) function. To repaint the changes only once, you can wrap the function with the [batchUpdate()](api/gantt_batchupdate.md) one:
+You can use the [open()](api/gantt_open.md) and [close()](api/gantt_close.md) methods to open and close a task. To do that with all tasks in the chart, you need to use the  method inside the [eachTask()](api/gantt_eachtask.md) function. To repaint the changes only once, you can wrap the function with the [batchUpdate()](api/gantt_batchupdate.md) method:
 
 ~~~js
 function collapseAll() {
