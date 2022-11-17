@@ -455,7 +455,7 @@ gantt.config.scales = [
 
 You can use the [copy()](api/gantt_copy.md) method to create a deep copy of the task object. Then, you can change the ID of the cloned task. After that, you can add the cloned task with the [addTask()](api/gantt_addtask.md) or [createTask()](api/gantt_createtask.md) methods.
 
-This is how you can clone a task with a button:
+This is how you can add a button to clone a task:
 
 ~~~js
 function clone_task(id) {
@@ -599,7 +599,7 @@ gantt.ext.keyboardNavigation.addShortcut("ctrl+v", function (e) {
 
 You need to export the data in the [raw](desktop/export.md#exportingcustommarkupandstyles) mode and include the styles in the [header](desktop/export.md#customstylefortheoutputfile) or [footer](desktop/export.md#customstylefortheoutputfile) parameters of the export function.
 
-For example, you can save custom styles in a variable and then access the styles via the variable as in:
+For example, you can save custom styles in a variable and then add the variable to the [header](desktop/export.md#customstylefortheoutputfile) parameter
 
 ~~~js
 const header = `
@@ -619,7 +619,7 @@ gantt.exportToPDF({
 
 {{editor	https://snippet.dhtmlx.com/51ds6zwa	Gantt. Export Gantt to PDF (styles from a variable)}}
 
-Or you can find the &lt;style&gt; element on the page and get styles from it:
+Or you can find the &lt;style&gt; element on the page and add its content as in:
 
 ~~~js
 gantt.exportToPDF({
@@ -654,7 +654,7 @@ Examples of exporting resource load diagram and histogram:
 
 ## How to calculate task progress depending on child tasks
 
-A simple way to implement that is calculate the progress of a parent task after you update a child task. To iterate parent tasks, you can use the [eachParent()](api/gantt_eachparent.md) method.
+A simple way to implement that is calculate the progress of a parent task after you update a child task. To iterate over parent tasks, you can use the [eachParent()](api/gantt_eachparent.md) method.
 
 In the following example, the progress of parent tasks depends only on the progress of child tasks:
 
