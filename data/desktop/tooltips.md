@@ -133,9 +133,10 @@ gantt.attachEvent("onGanttReady", function () {
     var tooltips = gantt.ext.tooltips;
     ...
     tooltips.tooltipFor({
-				selector: ".gantt_task_link",
-				html: function (event, node) {
-          ...
+        selector: ".gantt_task_link",
+        html: function (event, node) {
+        ...
+        }
 		});
     ...
     gantt.init("gantt_here");
