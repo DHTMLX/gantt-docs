@@ -494,21 +494,24 @@ You can regulate relative sizes of the Gantt layout cells via the **gravity** pr
 
 ~~~js
 gantt.config.layout = {
-  css: "gantt_container",
-  rows: [
-	{
-	  cols: [// columns config],
-	  gravity:2     /*!*/
-	},
-	{resizer: true, width: 1},
-	{
-	  config: resourceConfig,
-	  cols: [// columns config],
-	  gravity:1       /*!*/
-	},
-	},
+  	css: "gantt_container",
+  	rows: [
+		{
+	  		cols: [
+				// columns config
+			],
+	  		gravity:2     /*!*/
+		},
+		{ resizer: true, width: 1 },
+		{
+			config: resourceConfig,
+	  		cols: [
+				// columns config
+	  		],
+	  		gravity:1       /*!*/
+		},
 	{view: "scrollbar", id: "scrollHor"}
-  ]
+  	]
 };
 ~~~
 
@@ -547,3 +550,8 @@ Switching between views
 -------------------------
 
 If you need to switch between different layout views, check the [How to toggle grid/chart](desktop__how_to.html#howtotogglegridchart) and [How to toggle the resource view](desktop__how_to.html#howtotoggletheresourceview) sections for more details.
+
+Freezing columns in the grid view
+-----------------------------------
+
+You may initialize a Gantt chart in which one or more columns will be frozen. To implement this, follow the instructions given in the [How to freeze/fix columns in the grid](desktop/how_to.md#howtofreezefixcolumnsinthegrid) section.

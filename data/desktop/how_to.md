@@ -565,7 +565,7 @@ gantt.config.columns = [
 
 {{editor	https://snippet.dhtmlx.com/b33jfmws	Gantt. Clone a task with all its subtasks and links}}
 
-One more example demonstrates how to implement copying via key navigation (select tasks, use the *Control + C* hotkey to copy them, and *Control + V* hotkey to paste them as children to the selected task):
+One more example demonstrates how to implement copying via key navigation (select tasks, use the *Ctrl + C* hotkey to copy them, and *Ctrl + V* hotkey to paste them as children to the selected task):
 
 ~~~js
 gantt.plugins({

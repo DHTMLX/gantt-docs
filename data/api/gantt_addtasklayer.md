@@ -31,7 +31,7 @@ gantt.addTaskLayer(function draw_deadline(task) {
 
 @related:
 desktop/baselines.md
-desktop/how_to.md#howtoverticallyreordertasksinthetimeline
+desktop/how_to.md#howtoverticallyreordertasksinthetimeline (read how to vertically reorder tasks in the timeline)
 
 
 @relatedapi:api/gantt_gettaskposition.md
