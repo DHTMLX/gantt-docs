@@ -35,6 +35,22 @@ gantt.templates.scale_cell_class = function(date){
 };
 ~~~
 
+If you have specified several scales via the [gantt.config.scales](api/gantt_scales_config.md) property, the template will be applied only to the first scale. To specify the CSS class to the cells of any other scale, use the **css** attribute of the [gantt.config.scales](api/gantt_scales_config.md) property:
+
+~~~js
+gantt.config.scales = [
+    { unit: "month", step: 1, date: "%F" },
+    { unit: "week", step: 1, date: "%W" },
+    {
+        unit: "day", step: 1, date: "%d", css: function (date) { /*!*/
+            if (!gantt.isWorkTime({ date: date })) { /*!*/
+                return "weekend"; /*!*/
+            } /*!*/
+        } /*!*/
+    },
+];
+~~~
+
 
 @relatedapi:
     api/gantt_scale_row_class_template.md
