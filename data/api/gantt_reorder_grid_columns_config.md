@@ -56,9 +56,9 @@ gantt.attachEvent("onGanttReady", function(){
     	}
     	return true;
  	});
-  	grid.attachEvent("onAfterColumnReorder", function(column, index){
+  	grid.attachEvent("onAfterColumnReorder", function(object){
 		// get the config of a column after reordering
-    	console.log(gantt.config.columns)
+    	console.log(object)
   	});
 });
 ~~~
