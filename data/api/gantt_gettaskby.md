@@ -6,7 +6,7 @@ getTaskBy
 
 @params:
 - propertyName			string,function			the name of the property to match, or a filter function
-- propertyValue			object					the property value
+- propertyValue			array					an array with the property value
 
 @returns:
 - tasks			array		array of task objects
@@ -14,7 +14,7 @@ getTaskBy
 @example:
 
 // simple search
-var userTasks = gantt.getTaskBy("user_id", 5);
+var userTasks = gantt.getTaskBy("user_id", [5]);
 
 // (task: object) => boolean
 var userTasks = gantt.getTaskBy(function(task){
