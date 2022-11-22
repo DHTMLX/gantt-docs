@@ -30,8 +30,8 @@ Note that while using [work time calculations](desktop/working_time.md), you can
 gantt.config.work_time = true;
 
 gantt.templates.scale_cell_class = function(date){
-   if(!gantt.isWorkTime(date))
-      return true;
+   	if(!gantt.isWorkTime(date))
+      	return true;
 };
 ~~~
 
