@@ -6,7 +6,7 @@ getTaskBy
 
 @params:
 - propertyName			string,function			the name of the property to match, or a filter function
-- propertyValue			array					an array with the property value
+- propertyValue			string,number,array		the property value
 
 @returns:
 - tasks			array		array of task objects
