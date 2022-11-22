@@ -18,6 +18,9 @@ gantt.exportToExcel({
         { id:"start_date",  header:"Start date", width:250, type:"date" }
     ],
     server:"https://myapp.com/myexport/gantt",
+    callback: function(res){
+        alert(res.url);
+    },
     visual:true,
     cellColors:true,
     date_format: "dddd d, mmmm yyyy"
@@ -46,6 +49,7 @@ The **exportToExcel()** method takes as a parameter an object with several prope
     - **'width'** - (*number*) the column width in pixels
     - **'type'** - (*string*) the column type</li>
 - **server** - (*string*) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**
+- **callback** - (*function*) If you want to receive an url to download a generated XLSX file, the callback property can be used. It receives a JSON object with the url property
 - **visual** - (*boolean*) adds the timeline chart to an exported Excel document; *false* by default. Read [how to add task colors](desktop/excel.md#:~:text=Adding%20colors%20of%20tasks%20to%20export) to the exported file
 - **cellColors** - (*boolean*) if set to *true*, the cells of the exported document will have the colors defined by the api/gantt_timeline_cell_class_template.md template, the *color* and *background-color* 
 properties are exported
