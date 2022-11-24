@@ -164,10 +164,6 @@ There is a set of ready shortcuts that you can use to navigate the Gantt chart:
 
 {{sample 02_extensions/16_keyboard_navigation.html}}
 
-{{note
-You can find an example of how to implement the ability to copy/paste tasks via the **Ctrl+C/Ctrl+V** combinations in the [related](desktop/how_to.md#howtocopyandpastetasks) article.
-}}
-
 ###Shortcuts for Task Cells
 
 - **Up/Down/Left/Right Arrow Keys** - navigate over Task cells
@@ -180,6 +176,7 @@ You can find an example of how to implement the ability to copy/paste tasks via 
 - **Ctrl+Left/Right** - expand/collapse the tree
 
 {{sample 02_extensions/17_keyboard_navigation_cell.html}}
+
 
 Built-in Shortcut for Horizontal Timeline Scrolling
 --------------------

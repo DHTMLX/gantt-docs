@@ -113,7 +113,3 @@ gantt.templates.grid_row_class = function(start, end, task){
 };
 ~~~
 
-Reordering tasks vertically in the timeline
------------------------------------------------
-
-Follow the examples given in the [How to vertically reorder tasks in the timeline](desktop/how_to.md#howtoverticallyreordertasksinthetimeline) section.

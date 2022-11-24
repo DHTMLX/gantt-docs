@@ -9,7 +9,7 @@ exportToPrimaveraP6
 	exports data from the Gantt chart to Primavera P6 
 
 @params:
-- export		object		an object with export settings (see the details)
+* export		object		an object with export settings (see the details)
 
 
 
@@ -23,15 +23,18 @@ gantt.exportToPrimaveraP6({
 
 @descr:
 
+{{note This functionality is currently in **Beta** stage. The information given in this article may be substantially changed before the feature enters its stable stage.}}
+
 {{note This method is defined in the **export** extension, so you need to include it on the page:
 ~~~html
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>  
 ~~~
-Read the details in the [Export and Import from Primavera P6](desktop/export_primavera.md#exporttoprimaverap6) article.
+Read the details in the desktop/export_msproject.md#exporttomsproject article.
 }}
 
 
-The **exportToPrimaveraP6()** method takes as a parameter an object with a number of properties (all of the properties are optional):
+
+The **exportToPrimaveraP6()** method takes the same parameters as api/gantt_exporttomsproject.md does:
 
 - **name** - (*string*) the name of the obtained file ('gantt.xml' by default).
 - **auto_scheduling** - (boolean) indicates the scheduling mode for tasks in the exported project. **true** will mark tasks as auto scheduled, **false** will mark tasks as manually scheduled (the default state).
@@ -39,7 +42,7 @@ The **exportToPrimaveraP6()** method takes as a parameter an object with a numbe
 - **project** - (object) allows setting custom properties to the exported project entity.
 - **tasks** - (object) allows setting custom properties to the exported task items.
 - **callback** - (function) if you want to receive an url to download a generated XML, the *callback* property can be used. It receives a JSON object with the *url* property.
-- **resources** - (array) allows exporting the list of resources into a Primavera P6 file.
+- **resources** - (array) allows exporting the list of resources into an MS Project file.
 - **server** - (string) the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**.
 
 ### Response
@@ -62,7 +65,7 @@ Dates are stringified in the "%Y-%m-%d %H:%i" format.
 - **worktime** - an object containing the working time settings from the project calendar.
 
 @related:
-desktop/export_primavera.md#exporttoprimaverap6
+desktop/export_msproject.md#exporttomsproject
 
 @relatedapi:
 api/gantt_importfromprimaverap6.md

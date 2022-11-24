@@ -5,7 +5,7 @@ project_start
 @short:
 	specifies the start date of a project
 
-@type: Date
+@type: Date,undefined
 @example:
 gantt.config.project_start = new Date(2019, 2, 1);
 

@@ -17,32 +17,7 @@ gantt.config.readonly = true;
 
 gantt.init("gantt_here");
 ~~~
-
-You should be aware that the read-only mode affects only the built-in actions which users can perform via UI. It means that when the entire Gantt chart is non-editable, the users can't open the lightbox or inline editor, can't drag-n-drop tasks vertically or horizontally, or resize tasks.
-
-But the api/gantt_readonly_config.md property doesn't block actions implemented via API methods. Thus, if you use the Gantt API, you need to manually check if the read-only mode is enabled in the callback function. For instance, here is how you can block the ability to add tasks via clicking on a custom button:
-
-~~~js
-gantt.config.readonly = true;
-
-gantt.config.columns = [
-    { name: "text", label: "Task name", width: "*", tree: true },
-    { name: "start_date", label: "Start time", align: "center" },
-    { name: "duration", label: "Duration", align: "center" },
-    { name: "add", label: "1", width: 44 },
-    {
-        name: "add_custom", label: "2", width: 44, template: function (task) {
-          return "<div class='custom_add' onclick='customAdd(" + task.id + ")';></div>"
-        }
-    }
-];
-
-function customAdd(parentId) { /*!*/
-    if (gantt.config.readonly){ /*!*/
-        return; /*!*/
-    }/*!*/
-}/*!*/
-~~~
+Note, when the entire Gantt chart is non-editable, users can't open the lightbox.
 
 
 

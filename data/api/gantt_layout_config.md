@@ -32,8 +32,6 @@ gantt.init("gantt_here");
 
 @related:
 desktop/layout_config.md
-desktop/how_to.md#howtotogglegridchart (read how to toggle grid/chart)
-desktop/how_to.md#howtotoggletheresourceview (read how to toggle the resource view)
 
 @relatedapi:
 

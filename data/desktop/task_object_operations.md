@@ -220,8 +220,3 @@ gantt.render();
 
 In order to open/close a single task, you can use the api/gantt_open.md and api/gantt_close.md methods. They'll change the inner state of the task and invoke repainting. 
 However, to modify many tasks, it's better to work with **task.$open** directly in order to avoid unnecessary repaintings.
-
-Copying/pasting tasks
---------------------
-
-Follow the examples given in the [How to copy and paste tasks](desktop/how_to.md#howtocopyandpastetasks) section.

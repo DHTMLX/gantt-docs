@@ -46,6 +46,3 @@ gantt.attachEvent("onMouseMove", function (id, e){
 {{editor    https://snippet.dhtmlx.com/5/cd04d742c		Getting date-time under the mouse cursor}}
 
 @relatedapi: api/gantt_utils_other.md
-
-@related:
-desktop/how_to.md#howtohaveaninfinitescrollinthetimeline

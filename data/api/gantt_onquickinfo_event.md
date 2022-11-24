@@ -5,7 +5,7 @@ onQuickInfo
 	fires when the pop-up edit form appears
 
 @params:
-- taskId		string			the task id
+- taskId		string,number			the task id
 
 @example:
 gantt.attachEvent("onQuickInfo",function(taskId){

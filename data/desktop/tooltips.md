@@ -126,42 +126,7 @@ var pos = domHelper .getRelativeEventPosition(event, gantt.$task_scale);
 return gantt.templates.task_date(gantt.dateFromPos(pos.x));
 ~~~
 
-Note, the [gantt.ext.tooltips.tooltipFor()](#tooltipfor) method must be called after the Gantt initialization is complete. For instance, you can specify the method inside the [onGanttReady](api/gantt_onganttready_event.md) event handler like this:
-
-~~~js
-gantt.attachEvent("onGanttReady", function () {
-    var tooltips = gantt.ext.tooltips;
-    ...
-    tooltips.tooltipFor({
-        selector: ".gantt_task_link",
-        html: function (event, node) {
-        ...
-        }
-		});
-    ...
-    gantt.init("gantt_here");
-});
-~~~
-
 {{sample 02_extensions/22_tooltip_api.html}}
-
-Or you can use the way as in:
-
-~~~js
-gantt.init("gantt_here");
-gantt.parse(tasks);
-
-gantt.ext.tooltips.tooltipFor({
-    selector: ".gantt_task_cell",
-    html: function (event, domElement) {
-        var id = event.target.parentNode.attributes['task_id'].nodeValue;
-        var task = gantt.getTask(id);
-        return task.text;
-    }
-});
-~~~
-
-{{editor	https://snippet.dhtmlx.com/6kb5gm39	Gantt. Custom tooltips for cells}}
 
 A tooltip added in this way will follow the mouse pointer and use the settings *api/gantt_tooltip_offset_x_config.md*, *api/gantt_tooltip_offset_y_config.md*, *api/gantt_tooltip_timeout_config.md*,
 api/gantt_tooltip_hide_timeout_config.md.

@@ -4,7 +4,7 @@ inline_editors_multiselect_open
 @short: defines whether inline editor should be opened after one click on a task when multi-task selection is enabled
 	
 
-@type: boolean
+@type: boolean,undefined
 @example:
 gantt.config.inline_editors_multiselect_open = true;
 

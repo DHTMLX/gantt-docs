@@ -5,7 +5,7 @@ exportToICal
 	exports data from the Gantt chart to an iCal string
 
 @params:
-- export		object		an object with export settings (see the details)
+* export		object		an object with export settings (see the details)
 
 
 @example:

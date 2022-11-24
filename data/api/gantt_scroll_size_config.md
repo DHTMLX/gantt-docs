@@ -4,7 +4,7 @@ scroll_size
 @short:
 	set the sizes of the vertical (width) and horizontal (height) scrolls
 
-@type: number
+@type: number,undefined
 @example:
 gantt.config.scroll_size = 20;
 

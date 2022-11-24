@@ -5,7 +5,7 @@ onLightbox
 	
 
 @params: 
-- task_id	string	the id of the task opened in the lightbox
+- task_id	string,number	the id of the task opened in the lightbox
 
 @example: 
 gantt.attachEvent("onLightbox", function (task_id){

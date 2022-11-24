@@ -72,36 +72,10 @@ Then include **dhtmlxgantt.js** and **dhtmlxgantt.css** files into a page. Make 
 <link rel="stylesheet" href="codebase/dhtmlxgantt.css">
 ~~~
 
+
+
 Adding PRO Edition into Project
 ---------------------------------
-
-### **Uninstall trial version**
-
-The correct way to install the Pro version would be to remove the trial version package:
-
-~~~js
-npm uninstall dhtmlx-gantt
-~~~
-
-Then you need to thoroughly check that your applications don't have the *dhtmlxgantt.js* file anywhere.
-
-**For Linux and MacOS**, you can use the following commands in the terminal:
-
-~~~js
-grep -rin "dhtmlxGantt v"
-grep -rin evaluation
-~~~
-
-**For Windows**, you can use the following commands in the command line:
-
-~~~js
-findstr /mis "dhtmlxGantt v" path_to_your_app\*
-findstr /mis "evaluation" path_to_your_app\*
-~~~
-
-After that, you can install the Pro version of the Gantt chart as described below.
-
-### **Install Pro version**
 
 All public sources (CDN, NuGet, Bower, and npm) contain a Standard edition of the component, which is distributed under the GPL license.
 Currently we don't have corresponding private servers from where the Professional version of the component can be installed. There are two possible ways out:

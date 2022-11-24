@@ -5,7 +5,7 @@ updateTask
 
 @params:
 - id	string	the task id
-- newState      object      optional, the new values of the task
+* newState      object      optional, the new values of the task
 
 @example: 
 var taskId = gantt.addTask({

@@ -13,7 +13,7 @@ Styling Grid
 
 You can change the style of the grid area via the related desktop/table_templates.md.
 
-### Headers of the grid columns
+#### Headers of the grid columns
 
 There is a api/gantt_grid_header_class_template.md template that allows you to apply a custom style to the headers of the grid columns. For example, you can change the background color of certain headers of the grid columns in the following way:
 
@@ -118,10 +118,6 @@ Alternatively, you can set a header cell in CSS using the **.gantt_grid_head_<co
 <img src="desktop/custom_elements_grid_header_image.png">
 
 {{editor	https://snippet.dhtmlx.com/5/e13d18a10	Images in Grid Header:CSS}}
-
-### Multiline text in the grid header
-
-Follow the example shown in the [How to display several lines in the grid cell/header](desktop__how_to.html#howtodisplayseverallinesinthegridcellheader) section.
 
 ###Background color of the grid rows 
 
@@ -239,10 +235,6 @@ gantt.init("gantt_here");
 <img src="desktop/truncate_text.png">
 
 {{editor	https://snippet.dhtmlx.com/5/508ff6e7e		Truncate long text with ellipsis}}
-
-#### Multiline text in grid cells
-
-Follow the examples shown in the [How to display several lines in the grid cell/header](desktop__how_to.html#howtodisplayseverallinesinthegridcellheader) section.
 
 Styling Scale
 ------------
@@ -370,9 +362,6 @@ gantt.templates.task_text = function(start, end, task){
 
 {{editor		https://snippet.dhtmlx.com/us1g45wg		Inline Styling of the Task Text}}
 
-#### Multiline text
-
-Follow the [example](https://snippet.dhtmlx.com/55uy7ibo) shown in the [How to display several lines in the grid cell/header](desktop__how_to.html#howtodisplayseverallinesinthegridcellheader) section.
 
 ###Custom elements in task bars
 

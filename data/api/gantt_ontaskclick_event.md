@@ -5,7 +5,7 @@ onTaskClick
 	
 
 @params:
-- id			string				the id of the clicked task
+- id			string,number				the id of the clicked task
 * e				Event				a native event object
 
 @returns:  

@@ -156,12 +156,3 @@ Task #2 cannot be a parent for itself.
 ![parent_child_error](desktop/parent_child_error.png)
 
 "Task #4" is specified as a parent for "Task #1". But at the same time "Task #4" is also a child of "Task #1".
-
-Evaluation period has expired
-------------------------------
-
-If you have installed a licensed PRO version of the Gantt chart but still see the messages that the evaluation period has expired, it means that there is the Trial version somewhere in your application. Only the trial version has the functionality to show the popup message about the expired trial period.
-
-So remember to completely remove files of the trial package of the Gantt chart before installing the PRO version. For more information, read the [Adding PRO Edition into Project](desktop/install_with_bower.md#addingproeditionintoproject) section.
-
-**Tip:** To check which file is connected, you can type *gantt.license* in the web console.

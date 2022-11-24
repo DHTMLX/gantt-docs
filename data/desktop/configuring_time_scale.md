@@ -568,8 +568,6 @@ At this stage, we can see that 8 is a multiple of eight, therefore the value of 
 
 {{note This logic works because we don't specify [explicit date range](#explicit_date_range).}}
 
-For more samples, check the [How to add a custom scale](desktop/how_to.md#howtoaddacustomscale) article.
-
 Custom time spans
 ----------------------
 
@@ -716,9 +714,5 @@ This is how the scale looks in the mode when non-working hours are hidden:
 And here is how it looks when they are shown (**gantt.config.skip_off_time** is disabled):
 
 ![first_scale_cell_without_skip_off_time](desktop/disable_skip_off_time.png)
-
-## Infinite scroll
-
-You can find detailed examples on how to implement an infinite scroll in the timeline in the [related](desktop/how_to.md#howtohaveaninfinitescrollinthetimeline) article.
 
 @todo: check

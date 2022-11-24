@@ -6,7 +6,7 @@ inline_editors_date_processing
 @default: undefined
 
 @values: undefined,"keepDuration","keepDates"
-@type: string
+@type: string,undefined
 @example:
 gantt.config.inline_editors_date_processing = "keepDuration";
 

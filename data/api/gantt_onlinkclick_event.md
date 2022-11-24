@@ -4,7 +4,7 @@ onLinkClick
 	
 
 @params:
-- id		string		the id of the clicked link
+- id		string,number		the id of the clicked link
 * e		Event		a native event object
 @example:
 gantt.attachEvent("onLinkClick", function(id,e){
