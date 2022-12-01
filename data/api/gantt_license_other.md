@@ -4,6 +4,8 @@ license
 @short:
 	returns the license name of dhtmlxGantt
 
+@type:string
+
 @returns: 
 - license		string		the name of the license
 

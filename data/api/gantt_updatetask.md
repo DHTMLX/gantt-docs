@@ -4,7 +4,7 @@ updateTask
 	
 
 @params:
-- id	string	the task id
+- id	string|number	the task id
 * newState      object      optional, the new values of the task
 
 @example: 
