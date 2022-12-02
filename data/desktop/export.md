@@ -145,6 +145,10 @@ The api/gantt_exporttopdf.md and api/gantt_exporttopng.md methods take as a para
 			<td class="webixdoc_links0"><b>raw</b></td>
 			<td>(<i>boolean</i>) defines that all Gantt markup will be exported as it is, with all custom elements. <em>false</em> by default. <a href="desktop/export.md#exportingcustommarkupandstyles">Read the details below</a> </td>
 		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>callback</b></td>
+			<td>(<i>function</i>) If you want to receive an url to download a generated PDF/PNG file, the callback property can be used. It receives a JSON object with the url property</td>
+		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>additional_settings</b></td>
 			<td>(<i>object</i>) an object with additional settings for the <b>exportToPDF()</b> method. The object can contain the following attributes:
@@ -186,7 +190,10 @@ gantt.exportToPDF({
 	skin:'terrace',
 	data:{ },
     server:"https://myapp.com/myexport/gantt",
-    raw:true
+    raw:true,
+	callback: function(res){
+        alert(res.url);
+    }
 });
 
 gantt.exportToPNG({
@@ -199,7 +206,10 @@ gantt.exportToPNG({
 	skin:'terrace',
 	data:{ },
     server:"https://myapp.com/myexport/gantt",
-    raw:true
+    raw:true,
+	callback: function(res){
+        alert(res.url);
+    }
 });
 ~~~
 
@@ -345,6 +355,10 @@ gantt.exportToPDF({
 	header:"<style>.tier1{background: red; color:white;}</style>"
 });
 ~~~
+
+{{note
+For more examples, check the [How to add resource chart or custom styles in the exported PDF file](desktop/how_to.md#howtoaddresourcechartorcustomstylesintheexportedpdffile) article.}}
+
 
 
 ##Exporting custom markup and styles

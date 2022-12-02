@@ -547,6 +547,61 @@ store.close(1);
    <i>Calls the <a href="#onItemClose">onItemClose</a> event.</i>
 </ul>
 
+<ul><li>
+    	<b>sort(field,desc,parent,silent)</b> -  sorts items in the resource grid
+        <ul>
+          	<li><b><i>field</i></b> - (<i>string|function</i>) the name of the column that the resource grid will be sorted by or a custom sorting function</li>
+          	<li><b><i>desc</i></b> - (<i>boolean</i>) specifies the sorting direction: <i>true</i> - descending sort and <i>false</i> - ascending sort. By default, <i>false</i></li>
+          	<li><b><i>parent</i></b> - (<i>string|number</i>) the id of the parent item. Specify the parameter if you want to sort items only in the branch of the specified parent.</li>
+          	<li><b><i>silent</i></b> - (<i>boolean</i>) specifies whether rendering should be invoked after reordering items</li>
+        </ul>
+</li></ul>
+
+<ul>
+~~~js
+var store = gantt.getDatastore(gantt.config.resource_store);
+store.parse([
+    {id: 1, text: "QA", parent:null},
+    {id: 2, text: "Development", parent:null},
+    {id: 3, text: "Sales", parent:null},
+    {id: 4, text: "Other", parent:null},
+    {id: 5, text: "Unassigned", parent:4},
+    {id: 6, text: "John", parent:1},
+    {id: 7, text: "Mike", parent:2},
+    {id: 8, text: "Anna", parent:2},
+    {id: 9, text: "Bill", parent:3},
+    {id: 10, text: "Floe", parent:3}
+]);
+
+// sort the resource grid by the column
+var resourceSortDirection = false;
+function sortResources(){
+    resourceSortDirection = !resourceSortDirection;
+    gantt.getDatastore("resource").sort("text", resourceSortDirection)
+    gantt.render();
+}
+~~~
+<br>
+{{editor	https://snippet.dhtmlx.com/gypniv9e	Gantt. Sorting resources by the column}}
+<br><br>
+or you can define a custom function for sorting:
+
+~~~js
+var resourceSortDirection = false;
+function sortResources(){
+    resourceSortDirection = !resourceSortDirection;
+    gantt.getDatastore("resource").sort(function (resource1, resource2){
+        return resource1.id - resource2.id;
+    }, resourceSortDirection)
+    gantt.render();
+}
+~~~
+<br>
+{{editor	https://snippet.dhtmlx.com/fvjivly5	Gantt. Sorting resources by a custom function}}
+<br><br>
+ <i>The twin of treeDatastore.sort() is <a href="api/gantt_sort.md">gantt.sort()</a>.</i>
+</ul>
+
 <h3 id="events">Events</h3>
 
 <ul id="onBeforeItemMove">

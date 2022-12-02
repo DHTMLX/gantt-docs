@@ -51,7 +51,8 @@ gantt.eachTask(function(task){
 gantt.render();
 ~~~
 
-
+{{note
+If you want to collapse/expand all tasks at once with a button, go to the [How to expand/collapse all tasks with a button](desktop/how_to.md#howtoexpandcollapsealltaskswithabutton) section.}}
 
 Getting the children of a task
 -------------------------------------------

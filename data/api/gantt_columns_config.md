@@ -92,6 +92,10 @@ gantt.init("gantt_here");
 
 @related:
 	desktop/specifying_columns.md
+	desktop/how_to.md#howtoaddacustomcolumninthegrid (read how to add a custom column in the grid)
+	desktop/how_to.md#howtoaddacustomaddbutton (read how to add a custom add(+) button)
+
+
 @relatedsample:
 	05_lightbox/02_progress_lightbox.html
 

@@ -213,7 +213,7 @@ php artisan make:seeder TasksTableSeeder
 php artisan make:seeder LinksTableSeeder
 ~~~
 
-Add some data to **TasksTableSeeder**:
+Now, create the *database/seeds* folder, open it and add some data to **TasksTableSeeder**:
 
 {{snippet database/seeds/TasksTableSeeder.php}}
 ~~~php
@@ -349,6 +349,7 @@ And register a route, so the client could call this action. Note that we'll add 
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\GanttController;
 
 Route::get('/data', 'GanttController@get');/*!*/
 ~~~

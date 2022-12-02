@@ -157,10 +157,13 @@ Check the [features available in the Standard and PRO versions](desktop/editions
 		         Exporting and Importing Data
 		    </h4>
 		    <ul id="manipulations_sublist">
+                   	<li>desktop/export_requirements.md</li>
                    	<li>desktop/export.md</li>
                     <li>desktop/excel.md</li>
                     <li>desktop/export_msproject.md</li>
+                    <li>desktop/export_primavera.md</li>
                     <li>desktop/serialization.md</li>
+                    <li>desktop/export_nodejs.md</li>
             </ul>
         </td>
 		<td class='topic_description'>Discusses the ways of exporting and importing Gantt data in various formats, and serializing data into XML and JSON.</td>
@@ -214,6 +217,16 @@ Check the [features available in the Standard and PRO versions](desktop/editions
     <tr>
 		<td id="data" class='topics'>
 		    <h4>
+		        How-tos
+		    </h4>
+		    <ul id="data_sublist" >
+                    <li>desktop/how_to.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Provides practical answers on the the most frequently asked questions about the Gantt chart configuration </td>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
 		        User Interface Guide
 		    </h4>
 		    <ul id="data_sublist" >
@@ -240,4 +253,5 @@ Check the [features available in the Standard and PRO versions](desktop/editions
 - desktop/styling.md
 - desktop/work_with_dates.md
 - desktop/extra_resources.md
+- desktop/how_to.md
 - overview.md

@@ -163,6 +163,9 @@ If the request has the *parent_id* parameter, the response must contain children
 
 </table>
 
+## Loading tasks dynamically
+
+You may implement dynamic loading of tasks so that new tasks to load after you scroll to the last visible task. Read details in the [How to load tasks dynamically](desktop/how_to.md#howtoloadtasksdynamically) article.
 
 @edition:pro
 

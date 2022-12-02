@@ -110,11 +110,7 @@ Tasks with **type="project"** can be characterized as follows:
 - Depend on children tasks, i.e. if the user drags a child of a project task, the task changes its duration.
 - Ignore the **start_date**, **end_date**, **duration** properties.
 - Can't be dragged if have no children tasks.
-- Project's **progress** is specified explicitly and doesn't depend on subtasks by default. If you want it to be calculated automatically you'll have to write code for it. Check the sample below for the reference.
-
-{{sample
-08_api/16_dynamic_progress.html
-}}
+- Project's **progress** is specified explicitly and doesn't depend on subtasks by default. If you want it to be calculated automatically you'll have to write code for it. [Check the examples](desktop/how_to.md#howtocalculatetaskprogressdependingonchildtasks).
 
 {{note
 To provide a possibility of adding project tasks, read article desktop/milestones.md. A possibility to add milestones guarantees that your end users can add project tasks as well.
