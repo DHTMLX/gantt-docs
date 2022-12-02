@@ -7,7 +7,7 @@ onBeforeTaskMultiSelect
 @params:
 - id			string,number 		the id of a task
 - state 		boolean				true if the task is going to be selected, false - if unselected
-- e 			Event				a native event object
+- e 			Event,null				a native event object
 
 
 @example:
