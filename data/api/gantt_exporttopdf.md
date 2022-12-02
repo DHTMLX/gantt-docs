@@ -27,8 +27,11 @@ gantt.exportToPDF({
 	end:"11-04-2013",
 	skin:'terrace',
 	data:{ },
-    server:"https://myapp.com/myexport/gantt",
-    raw:true
+	server:"https://myapp.com/myexport/gantt",
+	raw:true,
+	callback: function(res){
+		alert(res.url);
+	}
 });
 
 @template:	api_method
@@ -88,6 +91,10 @@ The api/gantt_exporttopdf.md method takes as a parameter an object with a number
         <tr>
 			<td class="webixdoc_links0"><b>raw</b></td>
 			<td>(<i>boolean</i>) defines that all Gantt markup will be exported as it is, with all custom elements. <em>false</em> by default. <a href="desktop/export.md#exportingcustommarkupandstyles">Read the details</a> </td>
+		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>callback</b></td>
+			<td>(<i>function</i>) If you want to receive an url to download a generated PDF file, the callback property can be used. It receives a JSON object with the url property</td>
 		</tr>
 		<tr>
 			<td class="webixdoc_links0"><b>additional_settings</b></td>
@@ -161,6 +168,7 @@ If several people export Gantt at the same time, the process can take more time 
 
 @related:
 desktop/export.md
+desktop/how_to.md#howtoaddresourcechartorcustomstylesintheexportedpdffile
 
 @relatedapi:
 api/gantt_exporttomsproject.md

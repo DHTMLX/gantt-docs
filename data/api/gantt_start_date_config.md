@@ -19,6 +19,9 @@ gantt.init("gantt_here");
     api/gantt_show_tasks_outside_timescale_config.md
 @template:	api_config
 @descr:
+
+{{note To apply the **start_date** option, you must use it in pair with the [end_date](api/gantt_end_date_config.md) one.}}
+
 - If both the **start_date** and **end_date** options are specified and you create a task that is outside the range, the task will disappear from the chart.
 - Optional parameters of the api/gantt_init.md method can be used as initial values of api/gantt_start_date_config.md and api/gantt_end_date_config.md.
 - api/gantt_start_date_config.md and api/gantt_end_date_config.md overwrite api/gantt_fit_tasks_config.md. If you want to use these settings together, you'll need to [manage the time scale from code](desktop/configuring_time_scale.md#range).
