@@ -6,7 +6,7 @@ onTaskClick
 
 @params:
 - id			string,number				the id of the clicked task
-* e				Event				a native event object
+* e				Event				optional, a native event object
 
 @returns:  
 - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 

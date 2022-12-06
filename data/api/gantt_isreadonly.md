@@ -5,7 +5,7 @@ isReadonly
 checks whether the specified task or link is read-only
 
 @params:
-* id	string,number	the task/link id
+* id	string,number	optional, the task/link id
 
 
 @returns:

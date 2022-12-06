@@ -6,8 +6,8 @@ getTaskPosition
 
 @params:
 - task		object		the task object
-* from		Date		the start date of the item
-* to		Date		the end date of the item
+* from		Date		optional, the start date of the item
+* to		Date		optional, the end date of the item
 
 @returns: 
 - object	object		the size object

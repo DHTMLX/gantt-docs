@@ -9,7 +9,7 @@ exportToPrimaveraP6
 	exports data from the Gantt chart to Primavera P6 
 
 @params:
-* export		object		an object with export settings (see the details)
+* export		object		optional, an object with export settings (see the details)
 
 
 

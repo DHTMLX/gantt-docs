@@ -5,7 +5,7 @@ getTotalSlack
 	returns the total slack of a task
 
 @params:
-* task		object		the object of a task
+* task		object		optional, the object of a task
 
 @returns:
 - total_slack		number 		the total slack of a task
