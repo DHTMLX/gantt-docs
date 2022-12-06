@@ -6,7 +6,7 @@ exportToPDF
 
 @params:
 
-- export		object		an object with export settings (see the details)
+* export		object		optional, an object with export settings (see the details)
 
 
 @example:
@@ -27,11 +27,11 @@ gantt.exportToPDF({
 	end:"11-04-2013",
 	skin:'terrace',
 	data:{ },
-    server:"https://myapp.com/myexport/gantt",
-    raw:true,
+	server:"https://myapp.com/myexport/gantt",
+	raw:true,
 	callback: function(res){
-        alert(res.url);
-    }
+		alert(res.url);
+	}
 });
 
 @template:	api_method

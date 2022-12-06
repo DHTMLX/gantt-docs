@@ -5,7 +5,7 @@ exportToMSProject
 	exports data from the Gantt chart to MS Project
 
 @params:
-- export		object		an object with export settings (see the details)
+* export		object		optional, an object with export settings (see the details)
 
 
 @example:

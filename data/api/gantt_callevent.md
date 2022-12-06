@@ -4,7 +4,7 @@ callEvent
 	
 @params:
 - name		string		the event's name, case-insensitive
-- params	array		an array of the event-related data
+* params	array		optional, an array of the event-related data
 
 @returns:
   - result	boolean     <i>false</i>, if some of the event handlers returns <i>false</i>. Otherwise, <i>true</i>

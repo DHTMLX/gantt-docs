@@ -4,7 +4,7 @@ end_date
 @short: sets the end value of the time scale
 	
 
-@type: Date
+@type: Date,undefined
 @example:
 gantt.config.start_date = new Date(2018, 08, 10);
 gantt.config.end_date = new Date(2018, 08, 20);

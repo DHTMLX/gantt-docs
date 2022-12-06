@@ -6,7 +6,7 @@ exportToJSON
 
 @params:
 
-- config 	object		an object with Gantt configuration
+* config 	object		optional, an object with Gantt configuration
 
 
 @example:

@@ -4,8 +4,8 @@ onLinkDblClick
 	
 
 @params:
-- id		string		the id of the clicked link
-* e		Event		a native event object
+- id		string,number		the id of the clicked link
+* e		Event		optional, a native event object
 @example:
 gantt.attachEvent("onLinkDblClick", function(id,e){
     //any custom logic here

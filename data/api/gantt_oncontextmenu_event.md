@@ -5,8 +5,8 @@ onContextMenu
 	
 
 @params:
-- taskId 	string		the event id
-- linkId 	string		the event id
+- taskId 	string,number		the task id
+- linkId 	string,number		the link id
 - e			Event		a native event object
 
 

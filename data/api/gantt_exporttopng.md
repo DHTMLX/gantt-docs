@@ -6,7 +6,7 @@ exportToPNG
 
 @params:
 
-- export		object		an object with export settings (see the details)
+* export		object		optional, an object with export settings (see the details)
 
 
 @example:
@@ -29,7 +29,7 @@ gantt.exportToPNG({
     data:{ },
     server:"https://myapp.com/myexport/gantt",
     raw:true,
-	callback: function(res){
+    callback: function(res){
         alert(res.url);
     }
 });

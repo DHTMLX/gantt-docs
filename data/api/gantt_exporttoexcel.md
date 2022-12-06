@@ -7,7 +7,7 @@ exportToExcel
 
 @params:
 
-- export		object		an object with export settings (see the details)
+* export		object		optional, an object with export settings (see the details)
 
 
 @example:

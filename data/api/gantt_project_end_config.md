@@ -4,7 +4,7 @@ project_end
 @short:
 	specifies the end date of a project
 
-@type: Date
+@type: Date,undefined
 
 @example:
 gantt.config.project_end = new Date(2019, 2, 1);

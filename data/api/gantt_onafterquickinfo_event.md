@@ -5,7 +5,7 @@ onAfterQuickInfo
 	fires after the pop-up edit form is closed
 
 @params:
-- taskId		string			the task id
+- taskId		string,number			the task id
 
 @example:
 gantt.attachEvent("onAfterQuickInfo",function(taskId){

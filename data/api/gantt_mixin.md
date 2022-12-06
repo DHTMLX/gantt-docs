@@ -9,7 +9,7 @@ mixin
 
 - target		object		the target object
 - source		object		the source object
-- force			boolean		if true, properties of the 'source' will overwrite matching properties of the 'target', if there are any. If false, properties that already exist in the 'target' will be omitted	
+* force			boolean		optional, if true, properties of the 'source' will overwrite matching properties of the 'target', if there are any. If false (by default), properties that already exist in the 'target' will be omitted	
 
 
 

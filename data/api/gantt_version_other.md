@@ -7,7 +7,7 @@ version
 @type:string
 
 @example:
-gantt.version; //->"2.0.0"
+gantt.version; //->"7.0.0"
 @template:	api_config
 @descr:
 
