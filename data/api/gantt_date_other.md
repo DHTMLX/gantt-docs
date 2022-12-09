@@ -18,7 +18,7 @@ The **date** object provides the following methods:
         <ul>
           	<li><b><i>date</i></b> - (<i>Date</i>) the date object that you need to add a time to/subtract a time from </li>
             <li><b><i>number</i></b> - (<i>number</i>) the number of units to add. If this number is positive - the time will be added to the date, if negative - the time will be subtracted </li>
-            <li><b><i>unit</i></b> - (<i>String</i>)  the time unit. Values: 'minute', 'hour', 'day', 'week', 'month', 'year'. </li>
+            <li><b><i>unit</i></b> - (<i>string</i>)  the time unit. Values: 'minute', 'hour', 'day', 'week', 'month', 'year'. </li>
 ~~~js
 //adds 1 year to the specified date: 29 June, 2019 -> 29 June, 2020
 var newDate = gantt.date.add(new Date(2019, 05, 29), 1, 'year');
@@ -67,7 +67,7 @@ var date = gantt.date.date_part(new Date(2019, 05, 29, 14, 30, 10));
         </ul>
     </li>
     <li>
-    	<b class=submethod>date_to_str (format, utc): String</b> - returns a function that converts a Date object to a string of the specified format
+    	<b class=submethod>date_to_str (format, utc): string</b> - returns a function that converts a Date object to a string of the specified format
         <ul>
           	<li><b><i>format</i></b> - (<i>string</i>) the date format ( see desktop/date_format.md)  </li>
           	<li><b><i>utc</i></b> - (<i>boolean</i>) specifies whether local time should be converted to UTC  </li>
@@ -159,7 +159,7 @@ var time = gantt.date.time_part(new Date(2019, 05, 29, 14, 30, 10));
         </ul>
     </li>
     <li>
-    	<b class=submethod>to_fixed (num): String</b> - adds the leading zero to numbers less than 10 and returns the result as a string. Doesn't affect numbers from 10
+    	<b class=submethod>to_fixed (num): string</b> - adds the leading zero to numbers less than 10 and returns the result as a string. Doesn't affect numbers from 10
         <ul>
           	<li><b><i>num</i></b> - (<i>number</i>) the number to format </li>
 ~~~js
