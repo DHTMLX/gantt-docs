@@ -137,7 +137,7 @@ Gantt API
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
 - api/gantt_importfromexcel.md - converts an Excel file to JSON
 - api/gantt_importfrommsproject.md - converts an XML or MPP MS Project file to JSON
-- api/gantt_importfromprimaverap6.md - converts an XML or XAR Primavera P6 file to JSON
+- api/gantt_importfromprimaverap6.md - converts an XML or XER Primavera P6 file to JSON
 - api/gantt_init.md - initializes a dhtmlxGantt inside a container
 - api/gantt_ischildof.md - checks whether a task is a child of a different task
 - api/gantt_iscircularlink.md - checks whether the link is circular
@@ -145,7 +145,7 @@ Gantt API
 - api/gantt_iscriticaltask.md - checks whether the specified task is critical
 - api/gantt_islinkallowed.md - checks whether the specified link is correct
 - api/gantt_islinkexists.md - checks whether the specified link exists
-- api/gantt_isreadonly.md - checks whether the specified task or link is read-only
+- api/gantt_isreadonly.md - checks whether the specified task/link, or the whole Gantt is read-only
 - api/gantt_isselectedtask.md - checks whether the specified task is currently selected
 - api/gantt_issplittask.md - checks whether the specified task is split
 - api/gantt_issummarytask.md - checks whether the specified task is summary
@@ -539,6 +539,7 @@ Gantt API
 - api/gantt_rightside_text_template.md - specifies the text assigned to tasks bars on the right side
 - api/gantt_leftside_text_template.md - specifies the text assigned to tasks bars on the left side
 - api/gantt_lightbox_header_template.md - specifies the lightbox's header
+- api/gantt_marker_class_template.md - specifies the CSS class that will be applied to markers
 }}
 
 
@@ -558,6 +559,7 @@ Gantt API
 - api/gantt_env_other.md - a set of flags which describe current environment
 - api/gantt_ext_other.md - an object that stores various extensions
 - api/gantt_i18n_other.md - a set of methods for Gantt chart localization
+- api/gantt_ignore_time_other.md - hides a time unit in the time scale
 - api/gantt_json_other.md - specifies JSON serialization and parsing
 - api/gantt_keys_other.md - defines the hot keys for the Gantt chart
 - api/gantt_license_other.md - returns the license name of dhtmlxGantt

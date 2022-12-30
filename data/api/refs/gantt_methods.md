@@ -133,7 +133,7 @@ Methods
 - api/gantt_hidequickinfo.md - hides the pop-up task form (if it's currently active)
 - api/gantt_importfromexcel.md - converts an Excel file to JSON
 - api/gantt_importfrommsproject.md - converts an XML or MPP MS Project file to JSON
-- api/gantt_importfromprimaverap6.md - converts an XML or XAR Primavera P6 file to JSON
+- api/gantt_importfromprimaverap6.md - converts an XML or XER Primavera P6 file to JSON
 - api/gantt_init.md - initializes a dhtmlxGantt inside a container
 - api/gantt_ischildof.md - checks whether a task is a child of a different task
 - api/gantt_iscircularlink.md - checks whether the link is circular
@@ -141,7 +141,7 @@ Methods
 - api/gantt_iscriticaltask.md - checks whether the specified task is critical
 - api/gantt_islinkallowed.md - checks whether the specified link is correct
 - api/gantt_islinkexists.md - checks whether the specified link exists
-- api/gantt_isreadonly.md - checks whether the specified task or link is read-only
+- api/gantt_isreadonly.md - checks whether the specified task/link, or the whole Gantt is read-only
 - api/gantt_isselectedtask.md - checks whether the specified task is currently selected
 - api/gantt_issplittask.md - checks whether the specified task is split
 - api/gantt_issummarytask.md - checks whether the specified task is summary

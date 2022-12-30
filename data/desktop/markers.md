@@ -123,7 +123,7 @@ gantt.renderMarkers(); /*!*/
 Styling markers
 ----------------------------
 
-To style markers, use the **gantt.templates.marker_class** template:
+To style markers, use the [gantt.templates.marker_class](api/gantt_marker_class_template.md) template:
 
 ~~~js
 var showAdvancedMarkers;

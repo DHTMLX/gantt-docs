@@ -23,5 +23,8 @@ gantt.config.round_dnd_dates = false;
 ~~~
 }}
 
+{{editor	https://snippet.dhtmlx.com/bd7ir3w7	Gantt. Drag'n'drop of tasks with the minimum step 
+}}
+
 @relatedapi:
 api/gantt_round_dnd_dates_config.md
