@@ -5,7 +5,7 @@ isReadonly
 checks whether the specified task/link, or the whole Gantt is read-only
 
 @params:
-* id	string,number	optional, the task/link id. If not specified, the method checks whether the Gantt is read-only
+* id|task|link	(string,number),object	optional, the id or an object of the task/link. If not specified, the method checks whether the Gantt is read-only
 
 
 @returns:
@@ -22,6 +22,9 @@ gantt.addTask({
 }, "project_2");
 
 gantt.isReadonly(10); // ->false
+
+// or 
+gantt.isReadonly(gantt.getTask(10)); // -> false
 
 
 @template:	api_method

@@ -7,6 +7,8 @@ ignore_time
 
 @short: hides a time unit in the time scale
 
+@type: function
+
 @example:
 // 0 refers to Sunday, 6 - to Saturday
 gantt.ignore_time = function(date){
