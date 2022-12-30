@@ -7,7 +7,7 @@ alert
 
 @params:
 
-- config		object			the alert box's configuration
+- config|text		object|string|number			either an object with the alert box's configuration or the text to show
 
 @returns:
 
@@ -19,6 +19,9 @@ var box = gantt.alert({
     type:"alert-error",
     text:"You can't do this"
 });
+
+// or
+var box = gantt.alert("This is an alert box");
 
 
 @template:	api_method

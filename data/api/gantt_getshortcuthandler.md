@@ -12,7 +12,13 @@ getShortcutHandler
 - shortcut_handler			function		the handler of the shortcut call
 
 @example:
-var shortcut_handler = gantt.getShortcutHandler(shortcut, scope);
+gantt.addShortcut("shift+w", function(e){ 
+    const task = gantt.locate(e); 
+    if(task) 
+        gantt.showQuickInfo(task)
+},"taskRow");
+
+gantt.getShortcutHandler("shift+w", "taskRow")
 
 @template:	api_method
 @descr:

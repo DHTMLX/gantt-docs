@@ -12,18 +12,20 @@ addLinkLayer
 
 
 @example:
-gantt.addLinkLayer(function (link) {
-  var node = gantt.getLinkNode(link.id)
-  if (node) {
-    var el = document.createElement('div');
-    el.className = 'link_layer';
-    el.style.left = node.childNodes[2].offsetLeft + 'px'
-    el.style.width = 25 + 'px'
-    el.style.top = node.childNodes[2].offsetTop + 'px'
-    el.style.height = 25 + 'px'
-    return el;
-  }
-  return false;
+gantt.attachEvent("onGanttReady", function () {
+    const link_types = ["FS", "SS", "FF", "SF"]
+    gantt.addLinkLayer(function (link) {
+        const node = gantt.getLinkNode(link.id);
+        if (node){
+            const el = document.createElement('div');
+            el.className = 'link_layer';
+            el.style.left = (node.childNodes[2].offsetLeft + 20) + 'px'
+            el.style.top = (node.childNodes[2].offsetTop - 6) + 'px'
+            el.innerHTML = link_types[link.type];
+            return el;
+        }
+        return false;
+    });
 });
 
 
@@ -45,4 +47,5 @@ gantt.addLinkLayer(function (link) {
 - Beware, custom layers will be reset after the next call of <a href="api/gantt_init.md">gantt.init</a>
 - Calling the [gantt.resetLayout()](api/gantt_resetlayout.md) method will also reset custom layers. In order for custom layers to be displayed on a page, you need to redefine the **gantt.addLinkLayer** method after calling api/gantt_resetlayout.md.
 
-{{editor	https://snippet.dhtmlx.com/5/8eadb357b	addLinkLayer}}
+{{editor	https://snippet.dhtmlx.com/6mmt1nvw	Gantt. Additional layer with link types
+}}

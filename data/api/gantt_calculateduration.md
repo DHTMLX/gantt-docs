@@ -5,7 +5,8 @@ calculateDuration
     calculates the duration of a task 
 
 @params:
-- config	object		the <a href="#configurationobjectproperties">configuration object</a> of a time span
+- config|start_date 	object | Date		either the <a href="#configurationobjectproperties">configuration object</a> of a time span or the start date of the task
+* end_date    Date    optional, the end date of the task. The parameter is required when the first parameter is specified as  <i>start_date</i>.
 
 @returns:
 - duration		number		the duration of a task in units specified by the <a href="api/gantt_duration_unit_config.md">duration_unit</a> option

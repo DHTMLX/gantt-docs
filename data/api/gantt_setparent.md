@@ -13,7 +13,8 @@ setParent
 
 
 @example:
-gantt.setParent(task, pid);
+gantt.setParent(gantt.getTask(2), 20);
+gantt.updateTask(2);
 
 
 @template:	api_method

@@ -6,8 +6,7 @@ confirm
 
 @params:
 
-- config		object			the confirm box's configuration
-
+- config|text		object|string|number			either an object with the confirm box's configuration or the text to show
 
 @returns:
 
@@ -26,6 +25,9 @@ var box = gantt.confirm({
         }
     }
 });
+
+// or
+var box = gantt.confirm("Do you want to continue?");
 
 @template:	api_method
 @descr:

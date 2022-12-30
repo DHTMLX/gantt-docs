@@ -78,7 +78,7 @@ To create a new keyboard shortcut, you need to use the api/gantt_addshortcut.md 
 
 - **shortcut** - (*string*) a new shortcut key or keys' combination name
 - **handler** - (*function*) a handler function that will be called on the shortcut call 
-- **scope** - (*string*) the name of the context element to attach the handler function to
+- **scope** - (*string*) optional, the name of the context element to attach the handler function to; "gantt" by default
 
 ~~~js
 gantt.addShortcut("shift+w", function(e){ 

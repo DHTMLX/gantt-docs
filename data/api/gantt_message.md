@@ -7,7 +7,7 @@ message
 
 @params:
 
-- config		object			the message box's configuration
+- config|text		object|string|number			either an object with the message box's configuration or the text to show
 
 @returns:
 
@@ -19,6 +19,9 @@ var box = gantt.message({
     type:"confirm-warning", 
     text:"Are you sure you want to do it?"
 });
+
+// or
+var box = gantt.message("This is the message");
 
 @template:	api_method
 @descr:

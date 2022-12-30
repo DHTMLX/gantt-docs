@@ -2,14 +2,14 @@ isReadonly
 =============
 
 @short:
-checks whether the specified task or link is read-only
+checks whether the specified task/link, or the whole Gantt is read-only
 
 @params:
-* id	string,number	optional, the task/link id
+* id	string,number	optional, the task/link id. If not specified, the method checks whether the Gantt is read-only
 
 
 @returns:
-- mode		boolean		<i>true</i>, if such a task/link is readonly. Otherwise, <i>false</i>
+- mode		boolean		<i>true</i>, if a task/link, or the Gantt is readonly. Otherwise, <i>false</i>
 
 
 

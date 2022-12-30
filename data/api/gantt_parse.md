@@ -4,7 +4,7 @@ parse
 	
 
 @params:
-- data		string,object	 a string or object which represents data
+- data		string,object	 a string or object which represents <a href="https://docs.dhtmlx.com/gantt/desktop__loading.html#dataproperties">data</a>
 * type		string	 		 optional, (<i>'json', 'xml'</i>) the data type. The default value - <i>'json'</i>
 
 
@@ -20,7 +20,7 @@ gantt.parse({
     links:[
         { id:1, source:1, target:2, type:1},
         { id:2, source:2, target:3, type:0}
-  ]
+    ]
 });
 
 @template:	api_method
@@ -31,5 +31,19 @@ gantt.parse({
 @related:
     desktop/loading.md
     desktop/supported_data_formats.md
+    desktop/supported_data_formats.md#jsonwithcollections (read how to load JSON with Collections)
 @descr:
+Gantt expects that *an array with tasks* will be named either **data** or **tasks** whereas *an array with links* will be named **links**.
+
+If you want to load data which doesn't contain tasks, you still need to define an array of tasks in the object with data but it can be empty:
+
+~~~js
+gantt.parse({
+    data:[],
+    links:[
+        { id:1, source:1, target:2, type:1},
+        { id:2, source:2, target:3, type:0}
+    ]
+});
+~~~
 
