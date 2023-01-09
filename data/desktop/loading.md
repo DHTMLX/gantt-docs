@@ -378,59 +378,8 @@ A data source for the Gantt chart is an object that stores 2 types of informatio
 
 <h3 id="task_properties">Properties of a task object</h3>
 
-<ul>
-	<li><b><i>Mandatory properties</i></b> - these properties will always be defined on the client, 
-    they must be provided by the datasource in order for gantt to operate correctly. 
-    </li>
-	<ul>
-			<li><b>text</b> - (<i> string </i>) the task text.</li>
-			<li><b>start_date</b> -  (<i> Date|string </i>) the date when a task is scheduled to begin. 
-            Must match api/gantt_date_format_config.md format if provided as a string. </li>
-			<li><b>duration</b> - (<i> number </i>) the task duration.  <a href="desktop/loading.md#loadingtaskdates">Can be replaced with the 'end_date' property</a>.</li>
-			<li><b>id</b> -  (<i> string|number </i>) the task id.</li>
-	</ul>
-	<li><b><i>Optional properties</i></b> - these properties may or may not be defined.
-    The default logic and templates of gantt will use these properties if they are defined.
-    </li>
-	<ul>
-    		<li><b>type</b> - (<i>string</i>) the task type. The available values are stored in the api/gantt_types_config.md object:</li>
-            <ul>
-				<li><a href="desktop/task_types.md#regulartasks">"task"</a> -  a regular task (<i>default value</i>).</li>
-				<li><a href="desktop/task_types.md#projecttasks">"project"</a> -  a task that starts, when its earliest child task starts, and ends, when its latest child ends. 
-                <i>The <b>start_date</b>, <b>end_date</b>, <b>duration</b> properties are ignored for such tasks.</i> 
-               	</li>
-				<li><a href="desktop/task_types.md#milestones">"milestone"</a> -  a zero-duration task that is used to mark out important dates of the project.
-                 <i>The <b>duration</b>, <b>progress</b>, <b>end_date</b> properties are ignored for such tasks. </i></li>
-			</ul>
-			<li><b>parent</b> - (<i> string|number </i>) the id of the parent task. The id of the root task is specified by the api/gantt_root_id_config.md config.</li>            
-			<li><b>progress</b> -  (<i> number from 0 to 1 </i>) the task progress.</li>
-			<li><b>open</b> - (<i> boolean </i>) specifies whether the task branch will be opened initially (to show child tasks).</li>
-            <li><b>end_date</b> - (<i> Date|string </i>) the date when a task is scheduled to be completed. 
-            Used as an alternative to the <i>duration</i> property for setting the duration of a task.
-            Must match api/gantt_date_format_config.md format if provided as a string. 
-            </li>  
-             <li><b>row_height</b> - (<i> number </i>) sets the default height for rows of the table 
-            </li>
-            <li><b>bar_height</b> - (<i> number,string </i>) sets the height of task bars in the timeline area
-            </li>
-            <li><b>readonly</b>-(<i>boolean</i>) can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">readonly</a>. </li>
-        	<li><b>editable</b>-(<i>boolean</i>) can mark task as <a href="desktop/readonly_mode.md#readonlymodeforspecifictaskslinks">editable</a>. </li>
-        	<li><b>rollup</b>-(<i>boolean</i>) specifies whether a task (type:"task") or milestone (type:"milestone")  <a href="desktop/milestones.md#rolluptasksandmilestones">should appear on the parent projects</a>. </li>
-        	<li><b>hide_bar</b>-(<i>boolean</i>) defines whether a task (type:"task") or milestone (type:"milestone") <a href="desktop/milestones.md#hidingtasksandmilestones">should be hidden in the timeline area</a>. </li>
-    </ul>
-    <li><b><i>Dynamic properties</i></b> - are created on the client and represent the current state of a task or a link.
-    They shouldn't be saved to the database, gantt will ignore these properties if they are specified in your JSON/XML.
-    </li>
-    <ul>
-    		<li><b>$source</b> - (<i> array </i>) <a href="desktop/link_object_operations.md#gettingthelinksrelatedtoacertaintask">ids of links that come out of the task.</a></li>
-			<li><b>$target</b> -  (<i> array </i>) <a href="desktop/link_object_operations.md#gettingthelinksrelatedtoacertaintask">ids of links that come into task.</a></li>
-            <li><b>$level</b> - (<i> number </i>) the task's level in the tasks hierarchy (zero-based numbering).</li>
-            <li><b>$open</b> - (<i> boolean </i>) specifies whether the task is currently opened.</li>
-            <li><b>$index</b> - (<i> number </i>) the number of the task row in the gantt.</li>
-    </ul>
-</ul>
-	
-
+{{note
+The full list of properties of a task object is given in the [Task properties](desktop/task_properties.md) article.}}
 
 The default date format for JSON and XML data is **"%d-%m-%Y %H:%i"** (see the <a href="desktop/date_format.md"> date format specification</a>).<br>
 To change it, use the api/gantt_date_format_config.md configuration option.
@@ -446,32 +395,8 @@ Date formats that are not supported by the api/gantt_date_format_config.md confi
 
 <h3 id="link_properties">Properties of a link object</h3>
 
-<ul>
-	<li><b><i>Mandatory properties</i></b></li>
-	<ul>
-			<li><b>id</b> -  (<i> string|number </i>) the link id.</li>
-			<li><b>source</b> - (<i> number </i>) the id of a task that the dependency will start from.</li>
-			<li><b>target</b> -  (<i> number </i>) the id of a task that the dependency will end with.</li>
-			<li><b>type</b> - (<i>string</i>) the dependency type. The available values are stored in the api/gantt_links_config.md object. By default, they are:</li>
-            <ul>
-				<li><b>"0"</b> -  'finish_to_start'.</li>
-				<li><b>"1"</b> -  'start_to_start'.</li>
-				<li><b>"2"</b> -  'finish_to_finish'.</li>
-                <li><b>"3"</b> -  'start_to_finish'.</li>
-			</ul>
-            If you want to store the dependency types in some way other than the default values('0','1','2'), you may change values of the related properties of the api/gantt_links_config.md object. For example:
-~~~js
-gantt.config.links.start_to_start = "start2start";
-~~~
-Note, these values affect only the way the dependency type is stored, not the behaviour of visualization. 
-	</ul>
-	<li><b><i>Optional properties</i></b></li>
-	<ul>
-			<li><b>lag</b>-(<i>number</i>) optional, <a href="desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks">task lag</a>. </li>
-        	<li><b>readonly</b>-(<i>boolean</i>) optional, can mark link as <a href="desktop/readonly_mode.md">readonly</a>. </li>
-        	<li><b>editable</b>-(<i>boolean</i>) optional, can mark link as <a href="desktop/readonly_mode.md">editable</a>. </li>
-	</ul>
-</ul>
+{{note
+The full list of properties of a link object is given in the [Link properties](desktop/link_properties.md) article.}}
 
 ###Custom properties
 

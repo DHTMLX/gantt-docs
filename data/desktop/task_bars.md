@@ -5,6 +5,7 @@ Configuring Tasks
 
 {{index
 - desktop/task_types.md
+- desktop/task_properties.md
 - desktop/task_object_operations.md
 - desktop/task_tree_operations.md
 - desktop/crud_task.md
