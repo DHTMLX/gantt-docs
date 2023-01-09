@@ -4,7 +4,7 @@ Task Properties
 Required properties
 -------------------
 
-These properties will always be defined on the client, they must be provided by the datasource in order for gantt to operate correctly. 
+These properties will always be defined on the client. Gantt expects these properties to be specified in the task object on data loading but if they are not specified, Gantt will add them by itself.
 If you remove one of these properties, Gantt will start throwing errors.
 
 <table>
@@ -13,16 +13,6 @@ If you remove one of these properties, Gantt will start throwing errors.
             <th>Name</th><th>Type</th><th>Description</th>
         </tr>
         <tr>
-			<td><b>duration</b></td>
-            <td><i>number</i></td>
-			<td>The task duration. <a href="desktop/loading.md#loadingtaskdates">If not specified, Gantt will calculate it based on the <b>start_date</b> and <b>end_date</b> properties.</a></td>
-		</tr>
-        <tr>
-			<td><b>end_date</b></td>
-            <td><i>Date</i></td>
-			<td>The date when a task is scheduled to be completed. <a href="desktop/loading.md#loadingtaskdates">If not specified, Gantt will calculate it based on the <b>start_date</b> and <b>duration</b> properties.</a></td>
-		</tr>
-        <tr>
 			<td><b>id</b></td>
             <td><i>string | number</i></td>
 			<td>The task id, auto-generated if not set</td>
@@ -30,7 +20,17 @@ If you remove one of these properties, Gantt will start throwing errors.
         <tr>
 			<td ><b>start_date</b></td>
             <td><i>Date</i></td>
-			<td>The date when a task is scheduled to begin. <a href="desktop/loading.md#loadingtaskdates">If not specified, Gantt will calculate it based on the <b>end_date</b> and <b>duration</b> properties.</a></td>
+			<td>The date when a task is scheduled to begin. <a href="desktop/loading.md#loadingtaskdates">If not specified, Gantt will calculate it based on the <b>end_date</b> and <b>duration</b> properties.</a><br>The property becomes optional when setting <b>unscheduled: true</b>.</td>
+		</tr>
+		<tr>
+			<td><b>end_date</b></td>
+            <td><i>Date</i></td>
+			<td>The date when a task is scheduled to be completed. <a href="desktop/loading.md#loadingtaskdates">If not specified, Gantt will calculate it based on the <b>start_date</b> and <b>duration</b> properties.</a><br>The property becomes optional when setting <b>unscheduled: true</b>.</td>
+		</tr>
+		<tr>
+			<td><b>duration</b></td>
+            <td><i>number</i></td>
+			<td>The task duration. <a href="desktop/loading.md#loadingtaskdates">If not specified, Gantt will calculate it based on the <b>start_date</b> and <b>end_date</b> properties.</a></td>
 		</tr>
     </tbody>
 </table>
@@ -112,8 +112,8 @@ These properties may or may not be defined. The default logic and templates of g
 		</tr>
 		<tr>
 			<td><b>progress</b></td>
-            <td><i>number from 0 to 1</i></td>
-			<td>The task's progress</td>
+            <td><i>number</i></td>
+			<td>The task's progress (from 0 to 1)</td>
 		</tr>
 		<tr>
 			<td><b>progressColor</b></td>
@@ -127,8 +127,8 @@ These properties may or may not be defined. The default logic and templates of g
 		</tr>
 		<tr>
 			<td><b>render</b></td>
-            <td><i>"split" | ""</i></td>
-			<td>Defines how subtasks of the task must be displayed. If set to <a href="desktop/split_tasks.md">"split"</a>, the subtasks will be displayed in one row. In addition, if you enable the <a href="api/gantt_open_split_tasks_config.md">open_split_tasks</a> property, the subtasks will be rendered in one row only if the task is collapsed. </td>
+            <td><i>string</i></td>
+			<td>Defines how subtasks of the task must be displayed. <br>Values: <i>"split" | ""</i>. <br>If set to <a href="desktop/split_tasks.md">"split"</a>, the subtasks will be displayed in one row. In addition, if you enable the <a href="api/gantt_open_split_tasks_config.md">open_split_tasks</a> property, the subtasks will be rendered in one row only if the task is collapsed. </td>
 		</tr>
 		<tr>
 			<td><b>resource</b></td>
@@ -148,12 +148,12 @@ These properties may or may not be defined. The default logic and templates of g
 		<tr>
 			<td><b>target</b></td>
             <td><i>string</i></td>
-			<td>The id of the target task. The property displays the same value as the <i>$drop_target</i> property but requires the Data Processor to be added. The property is added to the task object after the task is updated and data is sent to the sever. </td>
+			<td>The id of the target task. The property displays the same value as the <b>$drop_target</b> property. <br>The property is added to the task object only if Data Processor is enabled, after the task is updated and data is sent to the sever. </td>
 		</tr>
 		<tr>
 			<td><b>text</b></td>
             <td><i>string | number | array</i></td>
-			<td>The name of the task. If necessary you may use any other name for this property.</td>
+			<td>The name of the task. If necessary you may use any other name for this property.<br>By default, Gantt displays an empty text.</td>
 		</tr>
 		<tr>
 			<td><b>textColor</b></td>
