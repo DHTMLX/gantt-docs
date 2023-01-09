@@ -4,8 +4,8 @@ Task Properties
 Required properties
 -------------------
 
-These properties will always be defined on the client. Gantt expects these properties to be specified in the task object on data loading but if they are not specified, Gantt will add them by itself.
-If you remove one of these properties, Gantt will start throwing errors.
+These properties will always be defined on the client. Gantt expects the properties to be specified in the task object on data loading but if they are not specified, Gantt will add them by itself.
+If you remove one of these properties for the loaded tasks, Gantt will start throwing errors.
 
 <table>
 	<tbody>
@@ -153,7 +153,7 @@ These properties may or may not be defined. The default logic and templates of g
 		<tr>
 			<td><b>text</b></td>
             <td><i>string | number | array</i></td>
-			<td>The name of the task. If necessary you may use any other name for this property.<br>By default, Gantt displays an empty text.</td>
+			<td>The name of the task. If necessary you may use any other name for this property.<br>The property is used in default configurations of different parts of Gantt.</td>
 		</tr>
 		<tr>
 			<td><b>textColor</b></td>
