@@ -1,6 +1,6 @@
 min_grid_column_width
 =============
-@short:sets the minumum width for the grid (in pixels) while being resized
+@short:sets the minimal width for each grid column (in pixels) while resizing grid
 	
 
 @type: number
@@ -12,7 +12,7 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
-
+The **min_width** property of a column has a priority over the **min_grid_column_width** property of the gantt.
 
 @related:
 	desktop/specifying_columns.md#resizingcolumns

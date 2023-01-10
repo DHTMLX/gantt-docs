@@ -123,12 +123,22 @@ gantt.config.columns =  [
 gantt.init("gantt_here");
 ~~~
 
+{{note The **min_width** property of a column has a priority over the [min_grid_column_width](api/gantt_min_grid_column_width_config.md) property of the gantt.}}
+
 ### Minimal grid width during resizing
 
-The minimal width that the grid can be resized to is defined via the [gantt.config.min_grid_column_width](api/gantt_min_grid_column_width_config.md) option: 
+The minimal width that the grid can be resized to is defined via the [gantt.config.min_grid_column_width](api/gantt_min_grid_column_width_config.md) option. The option defines the minimal width to which each column can be resized while resizing the grid:
 
 ~~~js
-gantt.config.min_grid_column_width = 1; // the grid can be resized to 1 px
+gantt.config.columns =  [
+    {name:"text",       label:"Task name",  width:150, tree:true },
+    {name:"start_date", label:"Start time", width:100 },
+    {name:"duration",   label:"Duration",   width:50 },
+   // {name:"add",        label:"",           width:44 }
+];
+gantt.config.min_grid_column_width = 30; // the grid can be resized to 90 px
+
+gantt.init("gantt_here");
 ~~~
 
 {{editor	http://snippet.dhtmlx.com/5/80a8df4b0	Minimal grid width}}

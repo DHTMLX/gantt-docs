@@ -78,7 +78,7 @@ Properties
 - api/gantt_links_config.md - stores the types of links dependencies
 - api/gantt_min_column_width_config.md - sets the minimum width for a column in the timeline area
 - api/gantt_min_duration_config.md - sets the minimum duration (in milliseconds) that can be set for a task during resizing.
-- api/gantt_min_grid_column_width_config.md - sets the minumum width for the grid (in pixels) while being resized
+- api/gantt_min_grid_column_width_config.md - sets the minimal width for each grid column (in pixels) while resizing grid
 - api/gantt_min_task_grid_row_height_config.md - sets the minimal row height that can be set for a task during resizing
 - api/gantt_multiselect_config.md - enables/disables multi-task selection in the Gantt chart
 - api/gantt_multiselect_one_level_config.md - specifies whether multi-task selection will be available within one or any level
