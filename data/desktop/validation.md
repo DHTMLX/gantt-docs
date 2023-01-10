@@ -26,11 +26,11 @@ For example, to restrict saving of a task, if no users are assigned to it, use t
 ~~~js
 gantt.attachEvent("onLightboxSave", function(id, item){
 	if(!item.text){
-		dhtmlx.message({type:"error", text:"Enter task description!"});
+		gantt.message({type:"error", text:"Enter task description!"});
 		return false;
 	}
 	if(!item.user){
-		dhtmlx.message({type:"error", text:"Choose a worker for this task!"});
+		gantt.message({type:"error", text:"Choose a worker for this task!"});
 		return false;
 	}
 		return true;
@@ -58,7 +58,7 @@ dp.init(gantt);
 
 dp.attachEvent("onBeforeUpdate", function (id, status, data) {
      if (!data.text) {
-         dhtmlx.message("The event's text can't be empty!");
+         gantt.message("The event's text can't be empty!");
          return false;
      }
      return true;

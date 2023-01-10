@@ -15,10 +15,10 @@ It can be implemented by setting the **unscheduled** property with the value *tr
 
 Thus, the task with the id "3" will be added to the gantt without the start date and displayed as an empty row.
 
-In order to display unscheduled tasks, use the config parameter api/gantt_show_unscheduled_config.md set to *true*:
+In order to display unscheduled tasks, use the config parameter api/gantt_show_unscheduled_config.md set to *false*:
 
 ~~~js
-gantt.config.show_unscheduled = true;
+gantt.config.show_unscheduled = false;
 ~~~
 
 Note, that gantt will assign default dates to unsheduled tasks. Meaning that **start_date/end_date** properties of such task objects won't be empty:

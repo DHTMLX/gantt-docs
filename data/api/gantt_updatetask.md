@@ -27,7 +27,7 @@ gantt.updateTask(taskId); //renders the updated task
 @template:	api_method
 @descr:
 
-{{note The method invokes the api/gantt_onaftertaskupdate_event.md method.}}
+{{note The method invokes the api/gantt_onaftertaskupdate_event.md event.}}
 
 You can also replace the existing task with new values via setting a new task object as the second parameter of the **updateTask** method: 
 

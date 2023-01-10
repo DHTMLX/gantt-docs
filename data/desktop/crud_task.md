@@ -55,7 +55,19 @@ var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2020",
  
 task.text = "Task #10_1";/*!*/ 
 gantt.updateTask(10); /*!*/
-gantt.refreshData(); /*!*/
+~~~
+
+If Data Processor is enabled, the [updateTask()](api/gantt_updatetask.md) method will cause the changes to be sent to the server. 
+
+After the task is updated, the api/gantt_onaftertaskupdate_event.md event fires. It can cause other changes, for example, when the auto scheduling is enabled, Gantt will auto-schedule the task and all its successors. 
+
+If you need just to re-render the changes, call the [refreshTask()](api/gantt_refreshtask.md) method instead of [updateTask()](api/gantt_updatetask.md).
+
+~~~js
+var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2020",...}
+ 
+task.text = "Task #10_1"; 
+gantt.refreshTask(10);
 ~~~
 
 Redrawing tasks

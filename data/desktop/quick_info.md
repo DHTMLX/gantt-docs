@@ -3,9 +3,6 @@ Quick Info (Touch Support)
 
 The library includes the **Quick Info** extension that allows displaying a popup with details about the task when a user touches the task on the screen. 
 
-{{note This functionality requires [Touch Support](api/gantt_touch_config.md) to be enabled.}}
-
-
 <img src="desktop/quick_info.png">
 
 {{sample 02_extensions/01_quickinfo.html}}

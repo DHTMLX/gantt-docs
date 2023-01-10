@@ -33,7 +33,15 @@ var data = {
 gantt.getChildren("p_1");//->["t_1"]
 ~~~
 
+To get all children of a task (not only the 1 st-level child tasks), apply the [eachTask()](api/gantt_eachtask.md) method and pass the ID of the parent task as a second parameter:
 
+~~~js
+const children = [];
+// iterate through all children of a task
+gantt.eachTask(function(child){
+    children.push(child)
+}, 11);
+~~~
 
 Checking if a task has a child
 ----------------------------------------
