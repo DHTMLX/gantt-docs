@@ -118,6 +118,38 @@ The properties of this object correspond to the appropriate properties of the [T
 here is a list of supported [properties](desktop/tags.md#tasksproperties).
 The properties may contain either fixed values or functions that will be called for each task in the dataset when export is called.
 
+- **data** - (object) allows setting a custom data source that will be presented in the output Gantt chart
+
+{{note It is expected that the **start_date** and **end_date** properties will be specified in the format which includes both the date and time (*%d-%m-%Y %H:%i*).}}
+
+~~~js
+const customData = {
+    "data": [
+        { "id": "10", "text": "Project #5", "start_date": "01-04-2025 00:00", 
+            "duration": 3, "order": 10, "progress": 0.4, "open": true, 
+            "end_date": "04-04-2025 00:00", "parent": 0 
+        },
+        { "id": "1", "text": "Task #67", "start_date": "02-04-2025 00:00", 
+            "duration": 2, "order": 10, "progress": 0.6, "parent": "10", 
+            "end_date": "04-04-2025 00:00" 
+        },
+        { "id": "2", "text": "Task #89", "start_date": "01-04-2025 00:00", 
+            "duration": 2, "order": 20, "progress": 0.6, "parent": "10", 
+            "end_date": "03-04-2025 00:00" 
+        },
+    ],
+    "links": [
+        { "id": 1, "source": 1, "target": 2, "type": "1" },
+    ]
+}
+
+gantt.exportToMSProject({
+    data: customData
+});
+~~~
+
+{{editor	https://snippet.dhtmlx.com/10ytgdxs	Gantt. Export custom data
+}}
 
 - **callback** - (function) If you want to receive an url to download a generated XML, the *callback* property can be used. It receives a JSON object with the *url* property:
 

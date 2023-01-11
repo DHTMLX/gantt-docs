@@ -34,6 +34,7 @@ The **exportToMSProject()** method takes as a parameter an object with a number 
 - **skip_circular_links** - (boolean) indicates whether the circular links will be removed or not (true - will be removed (the default mode), false - will not be removed).
 - **project** - (object) allows setting custom properties to the exported project entity.
 - **tasks** - (object) allows setting custom properties to the exported task items.
+- **data** - (object) allows setting a custom data source that will be presented in the output Gantt chart. It is expected that the **start_date** and **end_date** properties will be specified in the format which includes both the date and time (*%d-%m-%Y %H:%i*).
 - **callback** - (function) if you want to receive an url to download a generated XML, the *callback* property can be used. It receives a JSON object with the *url* property.
 - **resources** - (array) allows exporting the list of resources into an MS Project file.
 - **server** - (string) the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**.
