@@ -488,6 +488,18 @@ gantt.ext.inlineEditors.setMapping(mapping);
 
 {{sample 07_grid/13_custom_mapping.html}}
 
+### Custom mapping for placeholder task
+
+Let's imagine that you use keyboard navigation, inline editors and a placeholder task in your gantt and consider two real-life scenarios.
+
+**Scenario 1**. When you type the name for a new placeholder task and then press Tab, you expect Gantt to open the next cell for this task. Instead, Gantt moves focus to the new placeholder task below and doesn't open the inline editor.
+
+**Scenario 2**. If you type the name for a new placeholder task and then click on the next cell, Gantt moves focus to the next placeholder task instead of moving it to the cell you've clicked on.
+
+Custom mapping will help you to deal with the problems described above.  You just need to specify the logic of how the inline editor must handle the mouse and keyboard clicks. Check the example:
+
+{{editor	https://snippet.dhtmlx.com/xcgiommu	Gantt. Custom mapping for placeholder task
+}}
 
 Validation of input values
 -------------------------------
