@@ -974,6 +974,30 @@ gantt.config.layout = {
 
 {{editor	https://snippet.dhtmlx.com/8dg2r8m9	Gantt. Fixed column in Grid (several grid views)}}
 
- 
+## How to add legend to the gantt
+
+There is no built-in method for displaying legend in the Gantt, the closest thing is the [Overlay extension](desktop/baselines.md#extraoverlayforthechart), but it’s not exactly the same and can’t be customized that easily.
+
+However, legends can be implemented fairly simple. You can code the legend element in HTML and then just inject it into the gantt node:
+
+~~~js
+gantt.$root.appendChild(legend);
+~~~
+
+Here is a live example, to show the legend, press the "Toggle legend" button on top of the gantt:
+
+{{editor	https://snippet.dhtmlx.com/1ui0lim5	Gantt. Add information legend
+}}
+
+To add interactivity, you can add listeners for DOM events to the legend element directly, or you can listen to DOM events at the root level of the gantt (event delegation):
+
+~~~js
+gantt.event(gantt.$root, "click", function(e){
+    var closest = gantt.utils.dom.closest;
+    if(closest(e.target, ".gantt-legend")) {
+        gantt.message("Mouse click inside the legend element");
+    }
+});
+~~~
 
 
