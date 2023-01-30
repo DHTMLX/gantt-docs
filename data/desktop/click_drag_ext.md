@@ -24,7 +24,7 @@ gantt.config.click_drag = {
     `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
 	where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort 
 - **viewPort** - (*HTMLElement*) the element to attach an event to and select
-- **useRequestAnimationFrame** - (*boolean*) defines whether requestAnimationFrame is used during rendering
+- **useRequestAnimationFrame**</span> - (*boolean*) defines whether requestAnimationFrame is used during rendering
 - **callback** - (*function*) - a function that will be called when the mouse button is released. Takes 6 parameters:
 	- **startPoint** - (*object*) - an object of the type: <br>
     `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>

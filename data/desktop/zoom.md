@@ -5,7 +5,7 @@ Read details about the Zoom extension in the article desktop/zooming.md. <br> Th
 
 ##Methods
 
-- **init(zoomConfig)** - to enable the module. The method takes a **zoomConfig** object with configuration settings that contains the *levels* array of zooming levels and a number of additional properties:
+- <span class=submethod>**init (zoomConfig): undefined**</span> - to enable the module. The method takes a **zoomConfig** object with configuration settings that contains the *levels* array of zooming levels and a number of additional properties:
 	- **levels** - (*array*) obligatory, an array of zooming levels, each of which includes the following properties:
     	- **name** - (*string*) the name of the level
     	- **scale_height** -  (*number*) the height of the scale
@@ -122,20 +122,23 @@ var zoomConfig = {
 gantt.ext.zoom.init(zoomConfig);
 ~~~
 
-- **getCurrentLevel()** - returns the number (index) of the current zooming level
+- <span class=submethod>**getCurrentLevel (): number**</span> - returns the number (index) of the current zooming level
 
 ~~~js
 gantt.ext.zoom.getCurrentLevel();
 ~~~
 
-- **setLevel(level)** - switches to the specified zooming level. The level is defined either by a string (the name of the level from the config, e.g. "year"), or by its number in the array of levels
+- <span class=submethod>**setLevel (level): undefined**</span> - switches to the specified zooming level.
+	- **level** - (*number | string*) - The level is defined either by a string (the name of the level from the config, e.g. "year"), or by its number in the array of levels
 
 ~~~js
 gantt.ext.zoom.setLevel("year");
+// or 
+gantt.ext.zoom.setLevel(5);
 ~~~
 
 
-- **zoomIn()** - increases the current zooming level
+- <span class=submethod>**zoomIn (): undefined**</span> - increases the current zooming level
 
 ~~~js
 gantt.ext.zoom.zoomIn();
@@ -147,7 +150,7 @@ For the same purpose you can also use:
 gantt.ext.zoom.setLevel(zoom.getCurrentLevel() - 1)
 ~~~
 
-- **zoomOut()** - decreases the current zooming level
+- <span class=submethod>**zoomOut (): undefined**</span> - decreases the current zooming level
 
 ~~~js
 gantt.ext.zoom.zoomOut();

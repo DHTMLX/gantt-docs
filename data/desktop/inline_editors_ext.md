@@ -7,7 +7,7 @@ Read details about the Inline editors extension in the article desktop/inline_ed
 
 ###Actions:
 
-- <span class=submethod>**startEdit (taskId, columnName): undefined**</span> - opens an editor in the <b>specified</b> task/cell, sets the mapped value and puts browser focus on the editor
+- <span class=submethod>**startEdit (taskId, columnName): undefined**</span> - opens an editor in the specified task/cell, sets the mapped value and puts browser focus on the editor
 	- **taskId** - (*number | string*) - the task ID
 	- **columnName** - (*string*) - the column name
 - <span class=submethod>**show (taskId, columnName): undefined**</span> - opens an empty editor in specified task/cell
@@ -61,12 +61,20 @@ Read details about the Inline editors extension in the article desktop/inline_ed
 - <span class=submethod>**setMapping (mapping): undefined**</span> - sets a mapping object
 	- **mapping** - (*object*) - the HTML an object with the mapping configuration
 - <span class=submethod>**getMapping (): object**</span> - returns a currently applied mapping object
-<span></span>
+<span class=submgethod></span>
 
 
 ##Events
 
-### onBeforeEditStart <br><br>
+### <span class=eventname>onBeforeEditStart</span>
+
+Arguments:
+<span class=eventarguments>
+
+- **state** - (*object*) - the editor state object
+	- **id** - (*number | string*) - the id of an edited task
+	- **columnName** - (*string*) - the column name
+</span>
 
 ~~~js
 var inlineEditors = gantt.ext.inlineEditors;
@@ -78,13 +86,15 @@ inlineEditors.attachEvent("onBeforeEditStart", function(state){
 });
 ~~~
 
+### <span class=eventname>onEditStart</span>
+
 Arguments:
+<span class=eventarguments>
 
-- state - the editor state object
-	- id - the id of an edited task
-	- columnName - the column name
-
-### onEditStart <br><br>
+- **state** - (*object*) - the editor state object
+	- **id** - (*number | string*) - the id of an edited task
+	- **columnName** - (*string*) - the column name
+</span>
 
 ~~~js
 var inlineEditors = gantt.ext.inlineEditors;
@@ -95,15 +105,19 @@ inlineEditors.attachEvent("onEditStart", function(state){
 });
 ~~~
 
-Arguments:
-
-- state - the editor state object
-	- id - the id of an edited task
-	- columnName - the column name
-
-### onBeforeSave 
+### <span class=eventname>onBeforeSave</span>
 
 fires when an editor is about to close and save changes
+
+Arguments:
+<span class=eventarguments>
+
+- **state** - (*object*) - the editor state object
+	- **id** - (*number | string*) - the id of an edited task
+	- **columnName** - (*string*) - the column name
+	- **oldValue** - (*any*) - the initial value of the editor
+	- **newValue** - (*any*) - the current value of the editor, can be modified
+</span>
 
 ~~~js
 var inlineEditors = gantt.ext.inlineEditors;
@@ -119,17 +133,19 @@ inlineEditors.attachEvent("onBeforeSave", function(state){
 });
 ~~~
 
-Arguments:
-
-- state - the editor state object
-	- id - the id of an edited task
-	- columnName - the column name
-	- oldValue - the initial value of the editor
-	- newValue - the current value of the editor, can be modified
-
-### onSave 
+### <span class=eventname>onSave</span>
 
 fires after a task has been updated from the editor
+
+Arguments:
+<span class=eventarguments>
+
+- **state** - (*object*) - the editor state object
+	- **id** - (*number | string*) - the id of an edited task
+	- **columnName** - (*string*) - the column name
+	- **oldValue** - (*any*) - the initial value of the editor
+	- **newValue** - (*any*) - the current value of the editor
+</span>
 
 ~~~js
 var inlineEditors = gantt.ext.inlineEditors;
@@ -144,17 +160,18 @@ inlineEditors.attachEvent("onSave", function(state){
 });
 ~~~
 
-Arguments:
-
-- state - the editor state object
-	- id - the id of an edited task
-	- columnName - the column name
-	- oldValue - the initial value of the editor
-	- newValue - the current value of the editor
-
-### onEditEnd 
+### <span class=eventname>onEditEnd</span>
 
 fires after an inline editor has been hidden
+
+
+Arguments:
+<span class=eventarguments>
+
+- **state** - (*object*) - the editor state object
+	- **id** - (*number | string*) - the id of an edited task
+	- **columnName** - (*string*) - the column name
+</span>
 
 ~~~js
 var inlineEditors = gantt.ext.inlineEditors;
@@ -164,9 +181,3 @@ inlineEditors.attachEvent("onEditEnd", function(state){
    // -> {id: itemId, columnName: columnName};
 });
 ~~~
-
-Arguments:
-
-- state - the editor state object
-	- id - the id of an edited task
-	- columnName - the column name
