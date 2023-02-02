@@ -37,13 +37,13 @@ Read details about the Inline editors extension in the article desktop/inline_ed
 ###Navigation:
 
 - <span class=submethod>**editNextCell (canChangeRow): undefined**</span> - saves the current editor and moves editor to the next cell 
-	- **canChangeRow**  - (*boolean | undefined*) - parameter specifies whether it can move the editor to the first cell of the next row after the last cell of the current one
+	- **canChangeRow?**  - (*boolean*) - parameter specifies whether it can move the editor to the first cell of the next row after the last cell of the current one
 - <span class=submethod>**editNextRow (skipReadonly): undefined**</span> - saves the current editor and opens an editor in the same cell of the task below
-    - **skipReadonly**  - (*boolean | undefined*) - parameter specifies whether it can skip the read-only task and open an editor in the cell of the first editable task. The default *false* state of the parameter closes the editor if the next task is read-only.
+    - **skipReadonly?**  - (*boolean*) - parameter specifies whether it can skip the read-only task and open an editor in the cell of the first editable task. The default *false* state of the parameter closes the editor if the next task is read-only.
 - <span class=submethod>**editPrevCell (canChangeRow): undefined**</span> - saves the current editor and moves editor to the previous cell 
-	- **canChangeRow**  - (*boolean | undefined*) - parameter specifies whether it can move editor to the last cell of the row above after reaching the first cell of the current row
+	- **canChangeRow?**  - (*boolean*) - parameter specifies whether it can move editor to the last cell of the row above after reaching the first cell of the current row
 - <span class=submethod>**editPrevRow (skipReadonly): undefined**</span> - saves the current editor and opens an editor in the same cell of the task above
-    - **skipReadonly**  - (*boolean | undefined*) - parameter specifies whether it can skip the read-only task and open an editor in the cell of the first editable task. The default *false* state of the parameter closes the editor if the previous task is read-only.
+    - **skipReadonly?**  - (*boolean*) - parameter specifies whether it can skip the read-only task and open an editor in the cell of the first editable task. The default *false* state of the parameter closes the editor if the previous task is read-only.
 - <span class=submethod>**getFirstCell (): string**</span> - gets the name of the first editable column in the grid
 - <span class=submethod>**getLastCell (): string**</span> - gets the name of the last editable column in the grid
 - <span class=submethod>**getNextCell (direction): string | null**</span> - returns the name of the next editable column

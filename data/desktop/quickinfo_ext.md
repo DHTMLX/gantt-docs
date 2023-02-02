@@ -23,7 +23,7 @@ gantt.ext.quickInfo.show(10,30);
 ~~~
 
 - <span class=submethod>**hide (force): HTMLElement**</span> - hides the quick info popup. When **gantt.config.quick_info_detached** is set to *false*, the quick info will not disappear immediately, but after a short animation. Providing *true* value as an argument will cancel the animation and will remove the popup immediately.
-	- **force** - (*boolean*) - hide immediately without animation
+	- **force?** - (*boolean*) - hide immediately without animation
 
 
 ~~~js
@@ -56,14 +56,16 @@ The returned DOM element of the shown quick info looks like:
 
 <img src="desktop/quick_node.png">
 
-- <span class=submethod>**setContent (config): undefined**</span> - (*object*) puts the content into the quick info. It takes a configuration object of a quick info as a parameter. <br>
+- <span class=submethod>**setContent (config): undefined**</span> - puts the content into the quick info. It takes a configuration object of a quick info as a parameter. <br>
 The configuration object has the following structure:
-    - **taskId** - (*string | number*) optional, the id of the task to which the action buttons of the quick info will be connected
-    - **header** - optional, the header of the pop-up edit form which may include:
-        - **title** - (*string*) optional, the title of the pop-up edit form
-        - **date** - (*string*) optional, the date of the pop-up edit form
-    - **content** - (*string*) optional, the content of the pop-up edit form
-    - **buttons** - (*string[]*) optional, buttons to be placed in the pop-up edit form
+
+    - **config?** - (*object*) - optional, the configuration object
+        - **taskId?** - (*string | number*) - optional, the id of the task to which the action buttons of the quick info will be connected
+        - **header?** - (*object*) - optional, the header of the pop-up edit form which may include:
+            - **title?** - (*string*) - optional, the title of the pop-up edit form
+            - **date?** - (*string*) - optional, the date of the pop-up edit form
+        - **content?** - (*string*) - optional, the content of the pop-up edit form
+        - **buttons?** - (*string[]*) - optional, buttons to be placed in the pop-up edit form
     <br>
 If neither header nor buttons are specified, the related areas of the quick info popup will be hidden.
 
