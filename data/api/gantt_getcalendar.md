@@ -9,7 +9,7 @@ getCalendar
 * calendarId		string,number		optional, the id of the global calendar or "global"
 
 @returns:
-- config		object		calendar object
+- config		Calendar		calendar object
 
 
 @example:

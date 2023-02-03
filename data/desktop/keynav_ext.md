@@ -9,10 +9,10 @@ Methods
 
 - <span class=submethod>**focus (config): undefined**</span> - allows selecting any cell in the grid. Works only if the Grid already has the focus
 
-    - **config** - (*object*) - the config object
-        - **id** - (*number | string*) - the id of an edited task
-        - **columnName** - (*string*) - the column name
-        - **type** - (*string*) - type of the scope. Possible values: "gantt", "taskRow", "taskCell", "headerCell"
+    - **_config_** - (*object*) - the config object
+        - **_id_** - (*number | string*) - the id of an edited task
+        - **_columnName_** - (*string*) - the column name
+        - **_type_** - (*string*) - type of the scope. Possible values: "gantt", "taskRow", "taskCell", "headerCell"
 
 
 ~~~js
