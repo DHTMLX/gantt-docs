@@ -8,6 +8,8 @@ createDatastore
 
 - config			object			a configuration object of a datastore
 
+@returns:
+- datastore	datastore | treedatastore		the datastore or treedatastore object depending on the type
 
 @example:
 var resourcesStore = gantt.createDatastore({

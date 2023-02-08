@@ -19,11 +19,11 @@ The **datastore** object possesses the following [methods](#methods) and [events
 <h3 id="methods">Methods</h3>
 
 <ul id="parse"><li>
-    	<b>parse(data)</b> - loads data from an array
+    	<b class=submethod>parse (data): undefined</b> - loads data from an array
         <ul>
-          	<li><b><i>data</i></b> - (<i>array</i>) the data to load</li>
-        </ul>
-</li></ul>
+          	<li><b><i>data</i></b> - (<i>Array&lt;object&gt; | string</i>) - the data to load</li>
+        </ul></li>
+</ul>
 
 <ul>
 ~~~js
@@ -56,9 +56,9 @@ gantt.$resourcesStore.parse([
 
 <ul id="getItem">
     <li>
-    	<b>getItem(id)</b> - returns the item by its id
+    	<b class=submethod>getItem (id): object | undefined</b> - returns the item by its id
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
     </li>
 </ul>
@@ -79,10 +79,10 @@ var resource = store.getItem(resourceId);
 
 <ul id="updateItem">
     <li>
-    	<b>updateItem(id, item)</b> - updates the specified item
+    	<b class=submethod>updateItem (id, item): undefined</b> - updates the specified item
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item</li>
-          	<li><b><i>item</i></b> - (<i>object</i>) an object the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
+          	<li><b><i>item?</i></b> - (<i>object</i>) - an object the item</li>
         </ul>
     </li>
 </ul>
@@ -106,9 +106,9 @@ store.updateItem(resourceId, { text: "modified" });
 
 <ul id="removeItem">
     <li>
-    	<b>removeItem(id)</b> - deletes the specified item
+    	<b class=submethod>removeItem (id): undefined</b> - deletes the specified item
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
     </li>
 </ul>
@@ -127,9 +127,9 @@ store.removeItem(resourceId);
 
 <ul id="isVisible">
     <li>
-    	<b>isVisible(id)</b> - checks whether the specified item is visible or hidden via filters
+    	<b class=submethod>isVisible (id): boolean</b> - checks whether the specified item is visible or hidden via filters
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
         Returns <i>true</i>, if the task is visible. Otherwise, <i>false</i>.
     </li>
@@ -149,7 +149,7 @@ if(store.isVisible(resourceId)){
 
 <ul id="getVisibleItems">
     <li>
-    	<b>getVisibleItems()</b> - returns the array of visible items
+    	<b class=submethod>getVisibleItems (): Array&lt;object&gt;</b> - returns the array of visible items
 </li>
 </ul>
 
@@ -164,10 +164,10 @@ var items = store.getVisibleItems();
 
 <ul id="addItem">
     <li>
-    	<b>addItem(item, index)</b> - adds a new task
+    	<b class=submethod>addItem (item, index): number | string</b> - adds a new item to the datastore
         <ul>
-          	<li><b><i>item</i></b> - (<i>object</i>) the task object</li>
-          	<li><b><i>index</i></b> - (<i>string|number</i>) the position the task will be added into (0 or greater)
+          	<li><b><i>item</i></b> - (<i>object</i>) - the item object</li>
+          	<li><b><i>index?</i></b> - (<i>string | number</i>) - the position the task will be added into (0 or greater)
 </li>
         </ul>
     Returns the id of the item.
@@ -191,10 +191,10 @@ var itemId = store.addItem({
 
 <ul id="changeId">
     <li>
-    	<b>changeId(oldId, newId)</b> - changes the id of the item
+    	<b class=submethod>changeId (oldId, newId): undefined</b> - changes the id of the item
         <ul>
-          	<li><b><i>oldId</i></b> - (<i>string|number</i>) the current item's id</li>
-          	<li><b><i>newId</i></b> - (<i>string|number</i>) the new item's id
+          	<li><b><i>oldId</i></b> - (<i>string | number</i>) - the current item's id</li>
+          	<li><b><i>newId</i></b> - (<i>string | number</i>) - the new item's id
 </li>
         </ul>
 </li>
@@ -224,9 +224,9 @@ store.changeId(itemId, "databaseId");
 
 <ul id="exists">
     <li>
-    	<b>exists(id)</b> - checks whether the specified item exists in the datastore
+    	<b class=submethod>exists (id): boolean</b> - checks whether the specified item exists in the datastore
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the item's id</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the item's id</li>
         </ul>
         Returns <i>true</i>, if the task exists. Otherwise, <i>false</i>.
 </li>
@@ -248,10 +248,10 @@ if(store.exists(resourceId)){
 
 <ul id="move">
     <li>
-    	<b>move(sindex, tindex)</b> - moves an item to a new position
+    	<b class=submethod>move (sindex, tindex): undefined</b> - moves an item to a new position
         <ul>
-          	<li><b><i>sindex</i></b> - (<i>number</i>) the index of the current position of the task</li>
-          	<li><b><i>tindex</i></b> - (<i>number</i>) the index of the position that the item will be moved to</li>
+          	<li><b><i>sindex</i></b> - (<i>number</i>) - the index of the current position of the task</li>
+          	<li><b><i>tindex</i></b> - (<i>number</i>) - the index of the position that the item will be moved to</li>
         </ul>
 </li>
 </ul>
@@ -279,7 +279,7 @@ store.move(indexA, indexB);
 
 <ul>
     <li>
-    	<b>clearAll()</b> - clears the datastore
+    	<b class=submethod>clearAll (): undefined</b> - clears the datastore
 </li>
 </ul>
 
@@ -298,9 +298,9 @@ store.clearAll();
 
 <ul id="silent">
     <li>
-    	<b>silent(callback)</b> - execute the code without firing API events of the datastore
+    	<b class=submethod>silent (callback): undefined</b> - execute the code without firing API events of the datastore
         <ul>
-          	<li><b><i>callback</i></b> - (<i>function</i>) the callback function</li>
+          	<li><b><i>callback</i></b> - (<i>Function</i>) - the callback function</li>
         </ul>
 </li>
 </ul>
@@ -323,9 +323,9 @@ store.refresh();
 
 <ul id="refresh">
     <li>
-    	<b>refresh(id)</b> - fires repainting of events of the specified record, runs filters
+    	<b class=submethod>refresh (id): undefined</b> - fires repainting of events of the specified record, runs filters
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) optional, the id of the record</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - optional, the id of the record</li>
         </ul>
 </li>
 </ul>
@@ -346,7 +346,7 @@ store.refresh(); // repaints all items
 
 <ul id="count">
     <li>
-    	<b>count()</b> - returns the number of items that are currently loaded into the datastore
+    	<b class=submethod>count (): number</b> - returns the number of items that are currently loaded into the datastore
 </li>
 </ul>
 
@@ -364,7 +364,7 @@ store.attachEvent("onParse", function(){
 
 <ul id="countVisible">
     <li>
-    	<b>countVisible()</b> - returns the number of items that are currently visible
+    	<b class=submethod>countVisible (): number</b> - returns the number of items that are currently visible
 </li>
 </ul>
 
@@ -380,9 +380,9 @@ alert(store.countVisible() + " items are visible");
 
 <ul id="eachItem">
     <li>
-    	<b>eachItem(callback)</b> - iterates over all tasks of the datastore
+    	<b class=submethod>eachItem (callback): undefined</b> - iterates over all tasks of the datastore
         <ul>
-          	<li><b><i>callback</i></b> - (<i>function</i>) the callback function</li>
+          	<li><b><i>callback</i></b> - (<i>Function</i>) - the callback function</li>
         </ul>
 </li>
 </ul>
@@ -405,7 +405,7 @@ store.eachItem(function(item){
 
 <ul id="filter">
     <li>
-    	<b>filter()</b> - runs the filters and updates visible array of items
+    	<b class=submethod>filter (): undefined</b> - runs the filters and updates visible array of items
 </li>
 Normally, you don't need to call this method, it is called automatically from the <b>store.refresh()</b> method.
 </ul>
@@ -419,12 +419,12 @@ store.filter();
 </ul>
 
 <ul id="sort"><li>
-    	<b>sort(field,desc,parent,silent)</b> -  sorts items in the resource grid
+    	<b class=submethod>sort (field, desc, parent, silent): undefined</b> -  sorts items in the resource grid
         <ul>
-          	<li><b><i>field</i></b> - (<i>string|function</i>) the name of the column that the resource grid will be sorted by or a custom sorting function</li>
-          	<li><b><i>desc</i></b> - (<i>boolean</i>) specifies the sorting direction: <i>true</i> - descending sort and <i>false</i> - ascending sort. By default, <i>false</i></li>
-          	<li><b><i>parent</i></b> - (<i>string|number</i>) the id of the parent item. Specify the parameter if you want to sort items only in the branch of the specified parent.</li>
-          	<li><b><i>silent</i></b> - (<i>boolean</i>) specifies whether rendering should be invoked after reordering items</li>
+          	<li><b><i>field</i></b> - (<i>string | Function</i>) - the name of the column that the resource grid will be sorted by or a custom sorting function</li>
+          	<li><b><i>desc?</i></b> - (<i>boolean</i>) - specifies the sorting direction: <i>true</i> - descending sort and <i>false</i> - ascending sort. By default, <i>false</i></li>
+          	<li><b><i>parent?</i></b> - (<i>string | number</i>) - the id of the parent item. Specify the parameter if you want to sort items only in the branch of the specified parent.</li>
+          	<li><b><i>silent?</i></b> - (<i>boolean</i>) - specifies whether rendering should be invoked after reordering items</li>
         </ul>
 </li></ul>
 
@@ -472,10 +472,10 @@ function sortResources(){
 
 <ul id="getIndexRange">
     <li>
-    	<b>getIndexRange(from, to)</b> - returns records between the specified indexes
+    	<b class=submethod>getIndexRange (from, to): Array&lt;object&gt;</b> - returns records between the specified indexes
         <ul>
-          	<li><b><i>from</i></b> - (<i>number</i>) the position of the start record</li>
-          	<li><b><i>to</i></b> - (<i>number</i>) the position of the end record</li>
+          	<li><b><i>from</i></b> - (<i>number</i>) - the position of the start record</li>
+          	<li><b><i>to</i></b> - (<i>number</i>) - the position of the end record</li>
         </ul>
 </li>
 </ul>
@@ -490,7 +490,7 @@ var itemsInViewPort = store.getIndexRange(5, 10);// get items from 5th to 10th
 
 <ul id="getItems">
     <li>
-    	<b>getItems()</b> - returns all records of the datastore
+    	<b class=submethod>getItems (): Array&lt;object&gt;</b> - returns all records of the datastore
 </li>
 </ul>
 
@@ -506,9 +506,9 @@ var items = store.getItems();
 
 <ul id="getIdByIndex">
     <li>
-    	<b>getIdByIndex(index)</b> - returns the id of the item by its index. Returns `undefined` if there is no item at the specified index.
+    	<b class=submethod>getIdByIndex (index): string | number | undefined</b> - returns the id of the item by its index. Returns `undefined` if there is no item at the specified index.
         <ul>
-          	<li><b><i>index</i></b> - (<i>number</i>) the position of the item</li>
+          	<li><b><i>index</i></b> - (<i>number</i>) - the position of the item</li>
         </ul>
 </li>
 </ul>
@@ -525,9 +525,9 @@ var firstItem = store.getIdByIndex(0);
 
 <ul id="getIndexById">
     <li>
-    	<b>getIndexById(id)</b> - returns the index of the item by its id. Returns `-1` if no such item exists in the datastore.
+    	<b class=submethod>getIndexById (id): number</b> - returns the index of the item by its id. Returns `-1` if no such item exists in the datastore.
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
 </li>
 </ul>
@@ -544,7 +544,7 @@ var itemIndex = store.getIndexById(5);
 
 <ul id="getFirst">
     <li>
-    	<b>getFirst()</b> - returns the id of the first item of the datastore
+    	<b class=submethod>getFirst (): string | number | null</b> - returns the id of the first item of the datastore
 </li>
 </ul>
 
@@ -559,7 +559,7 @@ var firstId = store.getFirst();
 
 <ul id="getLast">
     <li>
-    	<b>getLast()</b> - returns the id of the last item of the datastore
+    	<b class=submethod>getLast (): string | number | null</b> - returns the id of the last item of the datastore
 </li>
 </ul>
 
@@ -573,9 +573,9 @@ var lastId = store.getLast();
 
 <ul id="getNext">
     <li>
-    	<b>getNext(id)</b> - returns the id of the next item of the datastore
+    	<b class=submethod>getNext (id): string | number | null</b> - returns the id of the next item of the datastore
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the item's id</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the item's id</li>
         </ul>
 </li>
 </ul>
@@ -593,9 +593,9 @@ var secondId = store.getNext(firstId);
 
 <ul id="getPrev">
     <li>
-    	<b>getPrev(id)</b> - returns the id of the previous item of the datastore
+    	<b class=submethod>getPrev (id): string | number | null</b> - returns the id of the previous item of the datastore
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the item's id</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the item's id</li>
         </ul>
 </li>
 </ul>
@@ -612,7 +612,7 @@ var prevId = store.getPrev(itemId);
 
 <ul id="destructor">
     <li>
-    	<b>destructor()</b> - clears the datastore and removes all attached event handlers. The datastore is not usable after this method is called.
+    	<b class=submethod>destructor (): undefined</b> - clears the datastore and removes all attached event handlers. The datastore is not usable after this method is called.
 </li>
 </ul>
 
@@ -629,11 +629,11 @@ store.destructor();
 
 <ul id="attachEvent">
     <li>
-    	<b>attachEvent(name, handler, settings)</b> - attaches the handler to an inner event of DataStore
+    	<b class=submethod>attachEvent (name, handler, settings): string</b> - attaches the handler to an inner event of DataStore
         <ul>
-          	<li><b><i>name</i></b> - (<i>DataStoreEventName</i>) the event's name, case-insensitive</li>
-          	<li><b><i>handler</i></b> - (<i>function</i>) the handler function</li>
-          	<li><b><i>settings</i></b> - (<i>object</i>) optional, an object with settings for the event handler</li>
+          	<li><b><i>name</i></b> - (<i>string</i>) - the event's name, case-insensitive</li>
+          	<li><b><i>handler</i></b> - (<i>Function</i>) - the handler function</li>
+          	<li><b><i>settings?</i></b> - (<i>object</i>) - optional, an object with settings for the event handler</li>
         </ul>
 </li>
 </ul>
@@ -652,10 +652,10 @@ store.attachEvent("onAfterSelect", function(id){
 
 <ul id="callEvent">
     <li>
-    	<b>callEvent(name, params)</b> - calls an inner event
+    	<b class=submethod>callEvent (name, params): boolean</b> - calls an inner event
         <ul>
-          	<li><b><i>name</i></b> - (<i>string</i>) the event's name, case-insensitive</li>
-          	<li><b><i>params</i></b> - (<i>array</i>) an array of the event-related data</li>
+          	<li><b><i>name</i></b> - (<i>string</i>) - the event's name, case-insensitive</li>
+          	<li><b><i>params</i></b> - (<i>Array&lt;any&gt;</i>) - an array of the event-related data</li>
         </ul>
 </li>
 </ul>
@@ -672,9 +672,9 @@ store.callEvent("CustomEvent", [param1, param2]);
 
 <ul id="detachEvent">
     <li>
-    	<b>detachEvent(id)</b> - detaches a handler from an event (which was attached before by the <b>attachEvent()</b> method)
+    	<b class=submethod>detachEvent (id): undefined</b> - detaches a handler from an event (which was attached before by the <b>attachEvent()</b> method)
         <ul>
-          	<li><b><i>id</i></b> - (<i>string</i>) the event's id</li>
+          	<li><b><i>id</i></b> - (<i>string</i>) - the event's id</li>
         </ul>
 </li>
 </ul>
@@ -699,9 +699,9 @@ store.detachEvent(handlerId);
 
 <ul id="onItemLoading">
     <li>
-    	<b>onItemLoading(item)</b> - fires when an item is being loaded from the data source
+    	<b class=eventname>onItemLoading (item)</b> - fires when an item is being loaded from the data source
         <ul>
-          	<li><b><i>item</i></b> - (<i>object</i>) the object of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) - the object of an item</li>
         </ul>
         Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
 </li>
@@ -724,7 +724,7 @@ store.attachEvent("onItemLoading", function(item){
 
 <ul id="onBeforeParse">
     <li>
-    	<b>onBeforeParse()</b> - fires before data started to be parsed
+    	<b class=eventname>onBeforeParse ()</b> - fires before data started to be parsed
 </li>
 </ul>
 
@@ -745,7 +745,7 @@ store.attachEvent("onParse", function(item){
 
 <ul id="onParse">
     <li>
-    	<b>onParse()</b> - fires after data were parsed (became available for API) but before they were rendered in the Gantt chart
+    	<b class=eventname>onParse ()</b> - fires after data were parsed (became available for API) but before they were rendered in the Gantt chart
 </li>
 </ul>
 
@@ -766,10 +766,10 @@ store.attachEvent("onParse", function(item){
 
 <ul id="onBeforeUpdate">
     <li>
-    	<b>onBeforeUpdate(id, item)</b> - fires before an item is updated
+    	<b class=eventname>onBeforeUpdate (id, item)</b> - fires before an item is updated
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
-          	<li><b><i>item</i></b> - (<i>object</i>) the new (updated) object of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) - the new (updated) object of the item</li>
         </ul>
         Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
 </li>
@@ -790,10 +790,10 @@ store.attachEvent("onBeforeUpdate", function(id, item){
 
 <ul id="onAfterUpdate">
     <li>
-    	<b>onAfterUpdate(id, item)</b> - fires after an item is updated
+    	<b class=eventname>onAfterUpdate (id, item)</b> - fires after an item is updated
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
-          	<li><b><i>item</i></b> - (<i>object</i>) the object of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) - the object of the item</li>
         </ul>
 </li>
 </ul>
@@ -812,10 +812,10 @@ store.attachEvent("onAfterUpdate", function(id, item){
 
 <ul id="onBeforeDelete">
     <li>
-    	<b>onBeforeDelete(id, item)</b> - fires before an item is deleted
+    	<b class=eventname>onBeforeDelete (id, item)</b> - fires before an item is deleted
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
-          	<li><b><i>item</i></b> - (<i>object</i>) the object of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) - the object of the item</li>
         </ul>
         Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
 </li>
@@ -836,10 +836,10 @@ store.attachEvent("onBeforeDelete", function(id, item){
 
 <ul id="onAfterDelete">
     <li>
-    	<b>onAfterDelete(id, item)</b> - fires after an item is deleted
+    	<b class=eventname>onAfterDelete (id, item)</b> - fires after an item is deleted
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
-          	<li><b><i>item</i></b> - (<i>object</i>) the object of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) - the object of the item</li>
         </ul>
 </li>
 </ul>
@@ -858,10 +858,10 @@ store.attachEvent("onAfterDelete", function(id, item){
 
 <ul id="onBeforeAdd">
     <li>
-    	<b>onBeforeAdd(id, item)</b> - fires before a new item is added to the datastore
+    	<b class=eventname>onBeforeAdd (id, item)</b> - fires before a new item is added to the datastore
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
-          	<li><b><i>item</i></b> - (<i>object</i>) the object of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) - the object of the item</li>
         </ul>
         Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
 </li>
@@ -882,10 +882,10 @@ store.attachEvent("onBeforeAdd", function(id, item){
 
 <ul id="onAfterAdd">
     <li>
-    	<b>onAfterAdd(id, item)</b> - fires after an item is added to the datastore
+    	<b class=eventname>onAfterAdd (id, item)</b> - fires after an item is added to the datastore
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
-          	<li><b><i>item</i></b> - (<i>object</i>) the object of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) - the object of the item</li>
         </ul>
 </li>
 </ul>
@@ -904,10 +904,10 @@ store.attachEvent("onAfterAdd", function(id, item){
 
 <ul id="onIdChange">
     <li>
-    	<b>onIdChange(id, newId)</b> - fires when the id of an item is changed
+    	<b class=eventname>onIdChange (id, newId)</b> - fires when the id of an item is changed
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
-          	<li><b><i>newId</i></b> - (<i>string|number</i>) the new id of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of an item</li>
+          	<li><b><i>newId</i></b> - (<i>string | number</i>) - the new id of the item</li>
         </ul>
 </li>
 </ul>
@@ -926,7 +926,7 @@ store.attachEvent("onIdChange", function(oldId, newId){
 
 <ul id="onClearAll">
     <li>
-    	<b>onClearAll()</b> - fires after all items were removed from the datastore
+    	<b class=eventname>onClearAll ()</b> - fires after all items were removed from the datastore
 </li>
 </ul>
 
@@ -944,11 +944,11 @@ store.attachEvent("onClearAll", function(oldId, newId){
 
 <ul id="onBeforeStoreUpdate">
     <li>
-    	<b>onBeforeStoreUpdate(id, item, action)</b> - fires before the datastore is refreshed
+    	<b class=eventname>onBeforeStoreUpdate (id, item, action)</b> - fires before the datastore is refreshed
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number"null</i>) the id of an item or null</li>
-          	<li><b><i>item</i></b> - (<i>object|null</i>) the item object or null</li>
-          	<li><b><i>action</i></b> - (<i>string|null</i>) the action type ("paint", "move", "add", "delete", null)</li>
+          	<li><b><i>id</i></b> - (<i>string | number | null</i>) - the id of an item or null</li>
+          	<li><b><i>item</i></b> - (<i>object | null</i>) - the item object or null</li>
+          	<li><b><i>action</i></b> - (<i>string | null</i>) - the action type ("paint", "move", "add", "delete", null)</li>
         </ul>
         Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
         <br>
@@ -971,11 +971,11 @@ store.attachEvent("onBeforeStoreUpdate", function(id, item, action){
 
 <ul id="onStoreUpdated">
     <li>
-    	<b>onStoreUpdated(id, item, action)</b> - fires after the datastore has been refreshed
+    	<b class=eventname>onStoreUpdated (id, item, action)</b> - fires after the datastore has been refreshed
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number"null</i>) the id of an item or null</li>
-          	<li><b><i>item</i></b> - (<i>object|null</i>) the item object or null</li>
-          	<li><b><i>action</i></b> - (<i>string|null</i>) the action type ("paint", "move", "add", "delete", null)</li>
+          	<li><b><i>id</i></b> - (<i>string | number | null</i>) - the id of an item or null</li>
+          	<li><b><i>item</i></b> - (<i>object | null</i>) - the item object or null</li>
+          	<li><b><i>action</i></b> - (<i>string | null</i>) - the action type ("paint", "move", "add", "delete", null)</li>
         </ul>
         This event signals that the datastore items need a repaint. `null` argument value means that the whole datastore is updated.
 </li>
@@ -994,7 +994,7 @@ store.attachEvent("onStoreUpdated", function(id, item, action){
 
 <ul id="onBeforeFilter">
     <li>
-    	<b>onBeforeFilter()</b> - fires before filtering is applied
+    	<b class=eventname>onBeforeFilter ()</b> - fires before filtering is applied
     </li>
 </ul>
 
@@ -1013,7 +1013,7 @@ store.attachEvent("onFilter", function(item){
 
 <ul id="onFilter">
     <li>
-    	<b>onFilter()</b> - fires after the datastore has update the filtering state
+    	<b class=eventname>onFilter ()</b> - fires after the datastore has update the filtering state
     </li>
 </ul>
 
@@ -1032,10 +1032,10 @@ store.attachEvent("onFilter", function(item){
 
 <ul id="onFilterItem">
     <li>
-    	<b>onFilterItem(id, item)</b> - fires for each item during the filtering stage, returning `false` will mark item as not visible
+    	<b class=eventname>onFilterItem (id, item)</b> - fires for each item during the filtering stage, returning `false` will mark item as not visible
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of an item</li>
-          	<li><b><i>item</i></b> - (<i>object</i>) the item object</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of an item</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) - the item object</li>
         </ul>
         Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
 </li>
@@ -1055,7 +1055,7 @@ store.attachEvent("onFilterItem", function(id, item){
 
 <ul id="ondestroy">
     <li>
-    	<b>onDestroy()</b> - fires after the destructor() method of the datastore is called
+    	<b class=eventname>onDestroy ()</b> - fires after the destructor() method of the datastore is called
 </li>
 </ul>
 <ul>

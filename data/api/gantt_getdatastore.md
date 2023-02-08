@@ -9,7 +9,7 @@ getDatastore
 - name 		string		the name of the datastore
 
 @returns:
-- datastore		object			the configuration object of a datastore
+- datastore		datastore | treedatastore			the configuration object of a datastore
 
 @example:
 var tasksStore = gantt.getDatastore("task");
