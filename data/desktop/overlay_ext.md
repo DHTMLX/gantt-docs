@@ -12,7 +12,9 @@ The following methods are available via the **gantt.ext.overlay** object:
 
 ### addOverlay
 
-adds a new overlay into the Gantt Chart and returns its id. Takes a container with custom content as a parameter.
+- <span class=submethod>**addOverlay (render, id): string | number**</span> - adds a new overlay into the Gantt Chart and returns its id. Takes a container with custom content as a parameter.
+	- **_render_** - (*Function*) - the render function
+	- **_id?_** - (*number | string*) - optional, the ID of the overlay
 
 ~~~js
 var overlay = gantt.ext.overlay.addOverlay(function(container){});
@@ -20,7 +22,8 @@ var overlay = gantt.ext.overlay.addOverlay(function(container){});
 
 ### deleteOverlay
 
-removes an overlay by its id
+- <span class=submethod>**deleteOverlay (id): boolean**</span> - removes an overlay by its id
+	- **_id_** - (*number | string*) - the ID of the overlay
 
 ~~~js
 gantt.ext.overlay.deleteOverlay(id);
@@ -28,7 +31,7 @@ gantt.ext.overlay.deleteOverlay(id);
 
 ### getOverlaysIds 
 
-returns an array with ids of overlays added into the chart
+- <span class=submethod>**getOverlaysIds (): Array&lt;string&gt;**</span> - returns an array with ids of overlays added into the chart
 
 ~~~js
 var ids = gantt.ext.overlay.getOverlaysIds();
@@ -36,7 +39,8 @@ var ids = gantt.ext.overlay.getOverlaysIds();
 
 ### refreshOverlay
 
-repaints the specified overlay. Takes the id of an overlay as a parameter.
+- <span class=submethod>**refreshOverlay (id): undefined**</span> - repaints the specified overlay.
+	- **_id_** - (*number | string*) - the ID of the overlay
 
 ~~~js
 gantt.ext.overlay.refreshOverlay(id);
@@ -44,7 +48,8 @@ gantt.ext.overlay.refreshOverlay(id);
 
 ### showOverlay
 
-shows an overlay by its id. Takes the id of an overlay as a parameter.
+- <span class=submethod>**refreshOverlay (id): undefined**</span> - shows an overlay by its id.
+	- **_id_** - (*number | string*) - the ID of the overlay
 
 ~~~js
 gantt.ext.overlay.showOverlay(id);
@@ -52,7 +57,8 @@ gantt.ext.overlay.showOverlay(id);
 
 ### hideOverlay
 
-hides an overlay by its id
+- <span class=submethod>**hideOverlay (id): undefined**</span> - hides an overlay by its id
+	- **_id_** - (*number | string*) - the ID of the overlay
 
 ~~~js
 gantt.ext.overlay.hideOverlay(id);
@@ -60,7 +66,8 @@ gantt.ext.overlay.hideOverlay(id);
 
 ### isOverlayVisible
 
-checks visibility of the specified overlay. Returns *true* if the overlay is visible.
+- <span class=submethod>**isOverlayVisible (id): boolean**</span> - checks visibility of the specified overlay. Returns *true* if the overlay is visible.
+	- **_id_** - (*number | string*) - the ID of the overlay
 
 ~~~js
 var isVisible = gantt.ext.overlay.isOverlayVisible(id);
