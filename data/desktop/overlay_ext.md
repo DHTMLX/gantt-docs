@@ -48,7 +48,7 @@ gantt.ext.overlay.refreshOverlay(id);
 
 ### showOverlay
 
-- <span class=submethod>**refreshOverlay (id): undefined**</span> - shows an overlay by its id.
+- <span class=submethod>**showOverlay (id): undefined**</span> - shows an overlay by its id.
 	- **_id_** - (*number | string*) - the ID of the overlay
 
 ~~~js

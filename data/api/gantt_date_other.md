@@ -67,10 +67,10 @@ var date = gantt.date.date_part(new Date(2019, 05, 29, 14, 30, 10));
         </ul>
     </li>
     <li>
-    	<b class=submethod>date_to_str (format, utc): string</b> - returns a function that converts a Date object to a string of the specified format
+    	<b class=submethod>date_to_str (format, utc): Function</b> - returns a function that converts a Date object to a string of the specified format
         <ul>
           	<li><b><i>format</i></b> - (<i>string</i>) the date format ( see desktop/date_format.md)  </li>
-          	<li><b><i>utc</i></b> - (<i>boolean</i>) specifies whether local time should be converted to UTC  </li>
+          	<li><b><i>utc?</i></b> - (<i>boolean</i>) specifies whether local time should be converted to UTC  </li>
 ~~~js
 var formatFunc = gantt.date.date_to_str("%d/%m/%Y");
 var date = formatFunc(new Date(2019, 05, 29)); // -> "29/06/2019"
@@ -139,10 +139,10 @@ var date = gantt.date.parseDate("29/06/2019","%d/%m/%Y");//-> 29 June, 2019 00:0
 		</ul>
     </li>
     <li>
-    	<b class=submethod>str_to_date (format, utc): Date</b> - returns a function that converts a string of the specified format to a Date object
+    	<b class=submethod>str_to_date (format, utc): Function</b> - returns a function that converts a string of the specified format to a Date object
         <ul>
           	<li><b><i>format</i></b> - (<i>string</i>) the date format ( see desktop/date_format.md)  </li>
-          	<li><b><i>utc</i></b> - (<i>boolean</i>) specifies whether local time should be converted to UTC  </li>
+          	<li><b><i>utc?</i></b> - (<i>boolean</i>) specifies whether local time should be converted to UTC  </li>
 ~~~js
 var formatFunc = gantt.date.str_to_date("%d/%m/%Y");
 var date = formatFunc("29/06/2019"); // -> 29 June, 2019 00:00:00
