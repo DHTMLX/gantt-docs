@@ -271,7 +271,7 @@ console.log(formatter.canParse("abc"));
 ~~~
 
 - <span class=submethod>**format (link): string**</span> - converts the provided link value into the string
-    - **_value_** - (*any*) - link object that will be converted
+    - **_value_** - (*Link*) - link object that will be converted
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();

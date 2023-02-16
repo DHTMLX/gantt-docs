@@ -7,7 +7,7 @@ getTask
 - id	string, number	the task id
 
 @returns:
-- obj	object	the task object
+- obj	Task	the task object
 
 
 @example:

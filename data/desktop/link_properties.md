@@ -10,29 +10,29 @@ Required properties
             <th>Name</th><th>Type</th><th>Description</th>
         </tr>
         <tr>
-			<td><b>id</b></td>
+			<td><b class=subproperty>id</b></td>
             <td><i>string | number</i></td>
 			<td>the link id</td>
 		</tr>
         <tr>
-			<td><b>source</b></td>
+			<td><b class=subproperty>source</b></td>
             <td><i>number</i></td>
 			<td>the id of a task that the dependency will start from</td>
 		</tr>
         <tr>
-			<td><b>target</b></td>
+			<td><b class=subproperty>target</b></td>
             <td><i>number</i></td>
 			<td>the id of a task that the dependency will end with.</td>
 		</tr>
         <tr>
-			<td><b>type</b></td>
+			<td><b class=subproperty>type</b></td>
             <td><i>string</i></td>
-			<td>the dependency type. The available values are stored in the api/gantt_links_config.md object. By default, they are:</li>
+			<td>the dependency type. The available values are stored in the api/gantt_links_config.md object. By default, they are:
             <ul>
 				<li><b>"0"</b> -  'finish_to_start'.</li>
 				<li><b>"1"</b> -  'start_to_start'.</li>
 				<li><b>"2"</b> -  'finish_to_finish'.</li>
-                <li><b>"3"</b> -  'start_to_finish'.</li>
+				<li><b>"3"</b> -  'start_to_finish'.</li>
 			</ul>
             </td>
 		</tr>
@@ -56,19 +56,19 @@ Optional properties
             <th>Name</th><th>Type</th><th>Description</th>
         </tr>
         <tr>
-			<td><b>lag</b></td>
+			<td><b class=subproperty>lag</b></td>
             <td><i>number</i></td>
-			<td><a href="desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks">the task's lag</a>
+			<td><a href="desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks">the task's lag</a></td>
         </tr>
         <tr>
-			<td><b>readonly</b></td>
+			<td><b class=subproperty>readonly</b></td>
             <td><i>boolean</i></td>
-			<td>can mark link as <a href="desktop/readonly_mode.md">readonly</a>
+			<td>can mark link as <a href="desktop/readonly_mode.md">readonly</a></td>
         </tr>
         <tr>
-			<td><b>editable</b></td>
+			<td><b class=subproperty>editable</b></td>
             <td><i>boolean</i></td>
-			<td>can mark link as <a href="desktop/readonly_mode.md">editable</a>
+			<td>can mark link as <a href="desktop/readonly_mode.md">editable</a></td>
         </tr>
     </tbody>
 </table>
