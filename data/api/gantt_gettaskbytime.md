@@ -8,7 +8,7 @@ getTaskByTime
 * to	Date	 the end date of the period
 
 @returns:
-- array		array	an array of tasks' objects
+- array		Array &lt;Task&gt;	an array of tasks' objects
 
 
 

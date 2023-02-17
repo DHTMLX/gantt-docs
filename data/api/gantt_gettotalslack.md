@@ -5,7 +5,7 @@ getTotalSlack
 	returns the total slack of a task
 
 @params:
-* task		object		optional, the object of a task
+* task		Task | string | number		optional, the object of a task or its ID
 
 @returns:
 - total_slack		number|object 		either the total slack of a task or, if the <i>task</i> parameter is not specified, an object with key:value pairs where key is the id of a task and value is the total slack of the task
@@ -13,6 +13,9 @@ getTotalSlack
 @example:
 var task = gantt.getTask(7);
 gantt.getTotalSlack(task);
+
+gantt.getTotalSlack(7);
+
 
 @template:	api_method
 @descr:

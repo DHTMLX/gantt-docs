@@ -152,7 +152,7 @@ These properties may or may not be defined. The default logic and templates of g
 		</tr>
 		<tr>
 			<td><b class=subproperty>text</b></td>
-            <td><i>string | number | Array &lt;any&gt;</i></td>
+            <td><i>any</i></td>
 			<td>The name of the task. If necessary you may use any other name for this property.<br>The property is used in default configurations of different parts of Gantt.</td>
 		</tr>
 		<tr>

@@ -20,53 +20,31 @@ gantt.init("gantt_here");
 @descr:
 Each object in the array specifies a single column. An object can take the following attributes:
 
-<table class="webixdoc_links">
-	<tbody>
-    	<tr>
-			<td class="webixdoc_links0"><b>align</b></td>
-			<td>(<i>'left', 'center', 'right'</i>) sets the horizontal title alignment </td>
-		</tr>
-    	<tr>
-			<td class="webixdoc_links0"><b>hide </b></td>
-			<td>(<i>boolean</i>) hides/shows a column (PRO)</td>
-		</tr>
-		<tr>
-			<td class="webixdoc_links0"><b>label</b></td>
-			<td>(<i>string</i>) specifies the title of the column</td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>max_width</b></td>
-			<td>(<i>number</i>) sets the maximum column width in case of resize operations</td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>min_width</b></td>
-			<td>(<i>number</i>) sets the minimum column width in case of resize operations</td>
-		</tr>
-		<tr>
-			<td class="webixdoc_links0"><b>name</b></td>
-			<td>(<i>string</i>) defines the column's id. The name 'add' allows you to add a column with the '+' sign</td>
-		</tr>
-    	<tr>
-			<td class="webixdoc_links0"><b>resize </b></td>
-			<td>(<i>boolean</i>) enables the possibility to resize a column by dragging the column's border (PRO)</td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>template</b></td>
-			<td>(<i>function</i>) sets a data template  </td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>tree</b></td>
-			<td>(<i>boolean</i>) indicates that the related column should display a tree</td>
-		</tr>
-        <tr>
-			<td class="webixdoc_links0"><b>width</b></td>
-			<td>(<i>number</i>) defines the width of the column</td>
-		</tr><tr>
-			<td class="webixdoc_links0"><b>onrender</b></td>
-			<td>(<i>function</i>) optional, a callback function for rendering a cell into the DOM. The function takes a task object and the DOM element of the grid cell as parameters and may return a component of the framework. See details <a href="desktop/specifying_columns.md#modifyingcellsafterrendering">here</a>.</td>
-		</tr>
-</tbody>
-</table>
+
+- <span class=subproperty>**align?**</span> - (*string*) - sets the horizontal title alignment. Possible values: *'left'*, *'center'*, or *'right'*
+- <span class=subproperty>**hide?**</span> - (*boolean*) - hides/shows a column (PRO)
+- <span class=subproperty>**label?**</span> - (*string*) - specifies the title of the column
+- <span class=subproperty>**max_width?**</span> - (*number*) - sets the maximum column width in case of resize operations
+- <span class=subproperty>**min_width?**</span> - (*number*) - sets the minimum column width in case of resize operations
+- <span class=subproperty>**name?**</span> - (*string*) - defines the column's id. The name 'add' allows you to add a column with the '+' sign
+- <span class=subproperty>**resize?**</span> - (*boolean*) - enables the possibility to resize a column by dragging the column's border (PRO)
+- <span class=submethod>**template? (task): any**</span> - sets a data template
+    - **_task_** - (*Task*) - the Task object
+- <span class=subproperty>**tree?**</span> - (*boolean*) - indicates that the related column should display a tree
+- <span class=subproperty>**width?**</span> - (*number*) - defines the width of the column
+- <span class=submethod>**onrender? (task, node): any**</span> - optional, a callback function for rendering a cell into the DOM. The function takes a task object and the DOM element of the grid cell as parameters and may return a component of the framework. See details <a href="desktop/specifying_columns.md#modifyingcellsafterrendering">here</a>
+    - **_task_** - (*Task*) - the Task object
+    - **_node_** - (*HTMLElement*) - the HTML element of the Grid cell
+- <span class=subproperty>**editor?**</span> - (*object*) - attached inline editor
+    - **_type_** - (*string*) - type of the inline editor
+    - **_map_to_** - (*string*) - specifies which property of the task should be updated by the inline editor
+    - **_min?_** - (*Date | number*) - minimal value for the date and duration types
+    - **_max?_** - (*Date | number*) - maximal value for the date and duration types
+    - **_options?_** - (*Array &lt;any&gt;*) - an array with the options for the select types
+    - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - formatter for the date and predecessor types
+
+
+
 
 <br>
 

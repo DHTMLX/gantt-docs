@@ -5,7 +5,7 @@ getWBSCode
 	returns the WBS code (the outline number) of a task
 
 @params:
-- task		object		the object of a task
+- task		Task		the object of a task
 
 @returns:
 - wbs_code		string		the WBS code of the task in the gantt

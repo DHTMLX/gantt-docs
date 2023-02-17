@@ -4,7 +4,7 @@ grid_indent
 	
 
 @params:
-- task	object	the task object
+- task	Task	the task object
 
 @example:
 gantt.templates.grid_indent = function(item) {

@@ -7,7 +7,7 @@ getLinks
 
 
 @returns:
-links	array 	an array of links' objects 
+links	Array &lt;Link&gt; 	an array of links' objects 
 
 @example:
 var links = gantt.getLinks();

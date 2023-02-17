@@ -3,7 +3,7 @@ createTask
 @short:adds a new task and opens the lightbox to confirm
 	
 @params:
-* task			object			optional, the task object
+* task			Task | object			optional, an object that should be parsed or the task object
 * parent		string			optional, the parent's id
 * index			number			optional, the position the task will be added into (0 or greater)
 

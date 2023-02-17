@@ -8,7 +8,7 @@ getConstraintType
 - constraintType	string	constraint type as defined in api/gantt_constraint_types_config.md config
 
 @params:
-- task 	object	a task object
+- task 	Task	a task object
 
 @example:
 var constraintType = gantt.getConstraintType(task);

@@ -10,7 +10,7 @@ getTaskByWBSCode
 
 @returns:
 
-- task 		object		a task object
+- task 		Task		a task object
 
 @example:
 var task = gantt.getTaskByWBSCode("1.2");

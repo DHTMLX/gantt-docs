@@ -9,7 +9,7 @@ getTaskBy
 - propertyValue			string,number,array		the property value
 
 @returns:
-- tasks			array		array of task objects
+- tasks			Array &lt;Task&gt;		array of task objects
 
 @example:
 

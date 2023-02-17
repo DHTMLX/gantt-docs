@@ -7,7 +7,7 @@ isCircularLink
 
 @params:
 
-- link			object		the link object
+- link			Link		the link object
 
 @returns:
 

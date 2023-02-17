@@ -6,7 +6,7 @@ defined
 
 @params:
 
-- task			object			the object that should be checked 						
+- task			Task			the object that should be checked 						
 
 @returns:
 - state			boolean			false if the provided argument is undefined, otherwise true

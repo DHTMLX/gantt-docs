@@ -10,7 +10,7 @@ getTaskByIndex
 
 @returns:
 
-- task		object 		a task object
+- task		Task 		a task object
 
 @example:
 var globalTaskIndex = gantt.getGlobalTaskIndex(19); // -> 10

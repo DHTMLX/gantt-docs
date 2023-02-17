@@ -6,7 +6,7 @@ rightside_text
 @params: 
 - start	Date	the date when a task is scheduled to begin
 - end	Date	the date when a task is scheduled to be completed
-- task	object	the task object
+- task	Task	the task object
 
 @example:
 gantt.templates.rightside_text = function(start, end, task){

@@ -7,7 +7,7 @@ isUnscheduledTask
 
 @params:
 
-- task			object			the task's object
+- task			Task			the task's object
 
 @returns:
 - value	boolean	'true' if the specified task is unscheduled, 'false' otherwise 

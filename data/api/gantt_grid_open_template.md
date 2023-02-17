@@ -3,7 +3,7 @@ grid_open
 @short:specifies the icon of the open/close sign in the tree column
 	
 @params:
-- task	object	the task object
+- task	Task	the task object
 
 @example:
 gantt.templates.grid_open = function(item) {

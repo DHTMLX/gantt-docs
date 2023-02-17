@@ -5,7 +5,7 @@ getTaskCalendar
 	gets a calendar assigned to the specified task (a task level calendar)
 
 @params:
-- task		string,number,object		the id or object of a task 
+- task		string,number,Task		the id or object of a task 
 
 @returns:
 - task_calendar		object		the object of the task's calendar
@@ -21,6 +21,9 @@ var task_calendar = gantt.getTaskCalendar({
 	"progress":0.5, 
 	"open": true
 });
+
+gantt.getTaskCalendar(2);
+
 
 
 @template:	api_method

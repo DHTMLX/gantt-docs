@@ -7,11 +7,11 @@ copy
 
 @params:
 
-- task		object		the object that needs to be copied
+- initialObject		object		the object that needs to be copied
 
 @returns:
 
-- backupTask		object		a deep copy of provided object
+- clonedObject		object		a deep copy of provided object
 
 @example:
 

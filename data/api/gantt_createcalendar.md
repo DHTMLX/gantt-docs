@@ -9,6 +9,9 @@ createCalendar
 
 * parentCalendar			object			(optional) an existing calendar that is used for creating a new one on the base of it		
 
+@returns: 
+- calendar		Calendar		the Calendar object
+
 
 
 @example:

@@ -4,7 +4,7 @@ grid_folder
 	
 
 @params:
-- task	object	the task object
+- task	Task	the task object
 
 
 @example:

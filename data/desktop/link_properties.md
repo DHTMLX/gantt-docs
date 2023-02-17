@@ -16,12 +16,12 @@ Required properties
 		</tr>
         <tr>
 			<td><b class=subproperty>source</b></td>
-            <td><i>number</i></td>
+            <td><i>string | number</i></td>
 			<td>the id of a task that the dependency will start from</td>
 		</tr>
         <tr>
 			<td><b class=subproperty>target</b></td>
-            <td><i>number</i></td>
+            <td><i>string | number</i></td>
 			<td>the id of a task that the dependency will end with.</td>
 		</tr>
         <tr>

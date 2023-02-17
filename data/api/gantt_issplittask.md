@@ -6,7 +6,7 @@ isSplitTask
 
 @params:
 
-- task		object			the object of a task
+- task		Task			the object of a task
 
 @returns:
 - isSplit		boolean			true, if the task is split, false otherwise

@@ -5,7 +5,7 @@ grid_row_class
 @params: 
 - start	Date	the date when a task is scheduled to begin
 - end	Date	the date when a task is scheduled to be completed
-- task	object	the task object
+- task	Task	the task object
 
 @example:
 gantt.templates.grid_row_class = function(start, end, task){

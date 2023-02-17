@@ -5,7 +5,7 @@ isCriticalLink
 	
 @edition: pro
 @params:
-- link	object	the link's object
+- link	Link	the link's object
 
 
 @returns:
