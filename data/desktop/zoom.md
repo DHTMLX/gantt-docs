@@ -11,9 +11,9 @@ Read details about the Zoom extension in the article desktop/zooming.md. <br> Th
             - **_name_** - (*string*) - the name of the level
             - **_scale_height?_** -  (*number*) - the height of the scale
             - **_height?_** -  (*number*) - the height of the scale
-            - **_min_column_width?_** - (*number*) - the minimal width of a column
+            - **_min_column_width?_** - (*number*) - the minimal width of a column. Has a higher priority than minColumnWidth and maxColumnWidth
             - **_scales_** - (*Scale[]*) - an array of scales to switch between while zooming in/out on this level
-        - **_handler?_** - (*Event*) - allows specifying a custom handler of the mouse wheel to work with zooming manually
+        - **_handler?_** - (*Function*) - allows specifying a custom handler of the mouse wheel to work with zooming manually
         - **_startDate?_** - (*Date*) - the start value of the time scale zooming
         - **_endDate?_** - (*Date*) - the end value of the time scale zooming
         - **_activeLevelIndex?_** - (*number*) - the number of the default active level

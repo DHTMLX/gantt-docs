@@ -82,7 +82,7 @@ These properties may or may not be defined. The default logic and templates of g
 		</tr>
         <tr>
 			<td><b class=subproperty>group_id</b></td>
-            <td><i>string</i></td>
+            <td><i>string | number</i></td>
 			<td>The group's id. It is added to the tasks grouped by some criterion if the property used for grouping tasks (<a href="desktop/grouping.md#groupingtasks">relation_property</a> in the groupBy() method) is specified as an object.</td>
 		</tr>
         <tr>
@@ -92,7 +92,7 @@ These properties may or may not be defined. The default logic and templates of g
 		</tr>
         <tr>
 			<td><b class=subproperty>key</b></td>
-            <td><i>string</i></td>
+            <td><i>string | number</i></td>
 			<td>The key of the group. It is added to the tasks grouped by some criterion if the property used for grouping tasks (<a href="desktop/grouping.md#groupingtasks">relation_property</a> in the groupBy() method) is specified as an array.<br>It is also added to the tasks with the name of the group (for example, to the "High", "Normal", "Low" tasks if you've grouped tasks by priority. <a href="https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_relation_properties.html">Check the example</a>).</td>
 		</tr>
 		<tr>

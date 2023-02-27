@@ -238,7 +238,6 @@ gantt.ext.formatters.linkFormatter({durationFormatter: durationFormatter})
 
 - **_labels_**:
 ~~~js
-{
 const formatter = gantt.ext.formatters.linkFormatter({
     //default values
     durationFormatter: gantt.ext.formatters.durationFormatter(),

@@ -11,7 +11,7 @@ Methods
 
     - **_config_** - (*object*) - the config object
         - **_id_** - (*number | string*) - the id of an edited task
-        - **_columnName_** - (*string*) - the column name
+        - **_column_** - (*string*) - the column name
         - **_type_** - (*string*) - type of the scope. Possible values: "gantt", "taskRow", "taskCell", "headerCell"
 
 

@@ -5,7 +5,7 @@ addCalendar
 	adds a calendar into Gantt
 
 @params:
-- calendar		Calendar		an object with configuration of the calendar
+- calendar		object		an object with configuration of the calendar
 
 
 @returns:

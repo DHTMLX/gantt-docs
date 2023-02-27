@@ -372,7 +372,7 @@ store.calculateItemLevel(store.getItem(1));
     	<b class=submethod>setParent (item, newParentId): undefined</b> -  sets the parent for an item. The parent id will be writen to the property specified by `parentProperty` config, "item.parent" by default.
         <ul>
           	<li><b><i>item</i></b> - (<i>object</i>) - the item's object</li>
-          	<li><b><i>newParentId</i></b> - (<i>string | number</i>) - the id of the parent</li>
+          	<li><b><i>newParentId</i></b> - (<i>string | number | null</i>) - the id of the parent</li>
         </ul>
 </li></ul>
 

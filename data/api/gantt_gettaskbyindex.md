@@ -6,7 +6,7 @@ getTaskByIndex
 
 @params:
 
-- index		number		the task index in the tree (zero-based numbering)
+- index		number | string		the task index in the tree (zero-based numbering)
 
 @returns:
 

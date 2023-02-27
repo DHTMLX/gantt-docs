@@ -23,15 +23,15 @@ Each object in the array specifies a single column. An object can take the follo
 
 - <span class=subproperty>**align?**</span> - (*string*) - sets the horizontal title alignment. Possible values: *'left'*, *'center'*, or *'right'*
 - <span class=subproperty>**hide?**</span> - (*boolean*) - hides/shows a column (PRO)
-- <span class=subproperty>**label?**</span> - (*string*) - specifies the title of the column
+- <span class=subproperty>**label?**</span> - (*string | number*) - specifies the title of the column
 - <span class=subproperty>**max_width?**</span> - (*number*) - sets the maximum column width in case of resize operations
 - <span class=subproperty>**min_width?**</span> - (*number*) - sets the minimum column width in case of resize operations
-- <span class=subproperty>**name?**</span> - (*string*) - defines the column's id. The name 'add' allows you to add a column with the '+' sign
+- <span class=subproperty>**name?**</span> - (*string | number*) - defines the column's id. The name 'add' allows you to add a column with the '+' sign
 - <span class=subproperty>**resize?**</span> - (*boolean*) - enables the possibility to resize a column by dragging the column's border (PRO)
 - <span class=submethod>**template? (task): any**</span> - sets a data template
     - **_task_** - (*Task*) - the Task object
 - <span class=subproperty>**tree?**</span> - (*boolean*) - indicates that the related column should display a tree
-- <span class=subproperty>**width?**</span> - (*number*) - defines the width of the column
+- <span class=subproperty>**width?**</span> - (*number | string*) - defines the width of the column
 - <span class=submethod>**onrender? (task, node): any**</span> - optional, a callback function for rendering a cell into the DOM. The function takes a task object and the DOM element of the grid cell as parameters and may return a component of the framework. See details <a href="desktop/specifying_columns.md#modifyingcellsafterrendering">here</a>
     - **_task_** - (*Task*) - the Task object
     - **_node_** - (*HTMLElement*) - the HTML element of the Grid cell

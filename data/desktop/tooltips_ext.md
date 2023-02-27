@@ -27,15 +27,36 @@ There are several methods that allow controlling behavior of the tooltip while h
     - **_config_** - (*object*) - an object with the tooltip settings.
         - **_selector_** - (*string*) - defines CSS-selector for the elements to listen to mouse events on
         - **_onmouseenter_** - (*Function*) - a handler called when the mouse pointer enters the element. The parameters are:
-            - **_event_** - (*Event*) - a native mouse event
+            - **_event_** - (*MouseEvent*) - a native mouse event
             - **_node_** -  (*HTMLElement*) - the HTML node
         - **_onmousemove?_** - (*Function*) - a handler called when the mouse pointer moves inside the element. The parameters are:
-            - **_event_** - (*Event*) - a native mouse event
+            - **_event_** - (*MouseEvent*) - a native mouse event
             - **_node_** -  (*HTMLElement*) - the HTML node
         - **_onmouseleave_** - (*Function*) - a handler called when the mouse pointer leaves the element. The parameters are:	
-            - **_event_** - (*Event*) - a native mouse event
+            - **_event_** - (*MouseEvent*) - a native mouse event
             - **_node_** -  (*HTMLElement*) - the HTML node
         - **_global?_** - (*boolean*) - defines whether the module listens to mouse events on the whole page (*true*) or only inside a gantt element (*false*). By default the option is set to *false*.
+        
+~~~js
+gantt.ext.tooltips.attach({
+    selector: ".gantt_task_cell",
+    onmouseenter: function (e, node) {
+        const id = node.parentNode.attributes['task_id'].nodeValue;
+        const task = gantt.getTask(id);
+
+        if (typeof task.text == "string") {
+            gantt.ext.tooltips.tooltip.setContent(task.text);
+            gantt.ext.tooltips.tooltip.show(e.clientX + 20, e.clientY + 20)
+        }
+    },
+    onmousemove: function (e, node) {
+        gantt.ext.tooltips.tooltip.show(e.clientX + 20, e.clientY + 20)
+    },
+    onmouseleave: function (e, node) {
+        gantt.ext.tooltips.tooltip.hide()
+    },
+})
+~~~
 
 ###gantt.ext.tooltips.tooltipFor()
 
@@ -46,6 +67,17 @@ There are several methods that allow controlling behavior of the tooltip while h
             - **_event_** - (*Event*) - a native mouse event
             - **_node_** -  (*HTMLElement*) - the HTML node and returns a string with a template.
         - **_global?_** - (*boolean*) - optional, defines whether the module listens to mouse events on the whole page (*true*) or only inside a gantt element (*false*). By default the option is set to *false*. 
+        
+~~~js
+gantt.ext.tooltips.tooltipFor({
+    selector: ".gantt_task_cell",
+    html: function (e, domElement) {
+        const id = domElement.parentNode.attributes['task_id'].nodeValue;
+        const task = gantt.getTask(id);
+        return task.text;
+    }
+});
+~~~  
 
 ###gantt.ext.tooltips.detach()
 

@@ -6,7 +6,7 @@ assert
 
 @params:
 
-- expression		boolean			true to assert the expression, false - if assertion fails
+- expression		any			true to assert the expression, false - if assertion fails
 - errorMessage		string			an error message that will be shown in the red popup
 
 

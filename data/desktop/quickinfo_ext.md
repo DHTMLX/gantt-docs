@@ -37,7 +37,7 @@ gantt.ext.quickInfo.hide();
 gantt.ext.quickInfo.hide(true);
 ~~~
 
-- <span class=submethod>**setContainer (container): undefined**</span> - sets a container where the quick info will be displayed. If no custom container specified, QuickInfo will be placed into the first of the found nodes: **gantt.$task, gantt.$grid, gantt.$layout**
+- <span class=submethod>**setContainer (container): undefined**</span> - sets a container where the quick info will be displayed. If no custom container specified, QuickInfo will be placed into the first of the found nodes: **gantt.$task, gantt.$grid, gantt.$root**
 	- **_container_** - (*HTMLElement | string*) - container element or its ID
 
 ~~~js

@@ -4,7 +4,7 @@ updateMarker
 @short:updates the specified marker
 
 @params:
-- markerId	string	the marker's id
+- markerId	string | number	the marker's id
 
 
 @example:

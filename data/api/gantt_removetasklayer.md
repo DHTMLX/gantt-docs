@@ -6,7 +6,7 @@ removeTaskLayer
 
 
 @params:
-- layerId		string		a DOM element that will be displayed in the layer
+- layerId		string | number		a DOM element that will be displayed in the layer
 
 
 @example:

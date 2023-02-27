@@ -4,7 +4,7 @@ addLink
 	
 
 @params:
-- link	Link 	the link object
+- link	object 	the link object
 
 @returns:
 - id	string,number	the link's id

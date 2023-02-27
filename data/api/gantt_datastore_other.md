@@ -21,7 +21,7 @@ The **datastore** object possesses the following [methods](#methods) and [events
 <ul id="parse"><li>
     	<b class=submethod>parse (data): undefined</b> - loads data from an array
         <ul>
-          	<li><b><i>data</i></b> - (<i>Array&lt;object&gt; | string</i>) - the data to load</li>
+          	<li><b><i>data</i></b> - (<i>Array&lt;object&gt;</i>) - the data to load</li>
         </ul></li>
 </ul>
 
@@ -167,7 +167,7 @@ var items = store.getVisibleItems();
     	<b class=submethod>addItem (item, index): number | string</b> - adds a new item to the datastore
         <ul>
           	<li><b><i>item</i></b> - (<i>object</i>) - the item object</li>
-          	<li><b><i>index?</i></b> - (<i>string | number</i>) - the position the task will be added into (0 or greater)
+          	<li><b><i>index?</i></b> - (<i>number</i>) - the position the task will be added into (0 or greater)
 </li>
         </ul>
     Returns the id of the item.
@@ -325,7 +325,7 @@ store.refresh();
     <li>
     	<b class=submethod>refresh (id): undefined</b> - fires repainting of events of the specified record, runs filters
         <ul>
-          	<li><b><i>id</i></b> - (<i>string | number</i>) - optional, the id of the record</li>
+          	<li><b><i>id?</i></b> - (<i>string | number</i>) - optional, the id of the record</li>
         </ul>
 </li>
 </ul>
@@ -724,7 +724,10 @@ store.attachEvent("onItemLoading", function(item){
 
 <ul id="onBeforeParse">
     <li>
-    	<b class=eventname>onBeforeParse ()</b> - fires before data started to be parsed
+    	<b class=eventname>onBeforeParse (data)</b> - fires before data started to be parsed
+        <ul>
+          	<li><b><i>data</i></b> - (<i>Array &lt;any&gt;</i>) - the array with the data that was loaded</li>
+        </ul>
 </li>
 </ul>
 
@@ -745,7 +748,10 @@ store.attachEvent("onParse", function(item){
 
 <ul id="onParse">
     <li>
-    	<b class=eventname>onParse ()</b> - fires after data were parsed (became available for API) but before they were rendered in the Gantt chart
+    	<b class=eventname>onParse (data)</b> - fires after data were parsed (became available for API) but before they were rendered in the Gantt chart
+        <ul>
+          	<li><b><i>data</i></b> - (<i>Array &lt;any&gt;</i>) - the array with the data that was loaded</li>
+        </ul>
 </li>
 </ul>
 
@@ -933,7 +939,7 @@ store.attachEvent("onIdChange", function(oldId, newId){
 <ul>
 ~~~js
 var store = gantt.getDatastore(gantt.config.resource_store);
-store.attachEvent("onClearAll", function(oldId, newId){
+store.attachEvent("onClearAll", function(){
     // your code here
 });
 ~~~
@@ -1001,10 +1007,10 @@ store.attachEvent("onStoreUpdated", function(id, item, action){
 <ul>
 ~~~js
 var store = gantt.getDatastore(gantt.config.resource_store);
-store.attachEvent("onBeforeFilter", function(item){
+store.attachEvent("onBeforeFilter", function(){
     console.time("filtering");
 });
-store.attachEvent("onFilter", function(item){
+store.attachEvent("onFilter", function(){
     console.timeEnd("filtering");
 });
 ~~~
@@ -1020,10 +1026,10 @@ store.attachEvent("onFilter", function(item){
 <ul>
 ~~~js
 var store = gantt.getDatastore(gantt.config.resource_store);
-store.attachEvent("onBeforeFilter", function(item){
+store.attachEvent("onBeforeFilter", function(){
     console.time("filtering");
 });
-store.attachEvent("onFilter", function(item){
+store.attachEvent("onFilter", function(){
     console.timeEnd("filtering");
 });
 ~~~

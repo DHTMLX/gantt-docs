@@ -4,8 +4,9 @@ container_resize_method
 @short: defines whether the gantt should track resizing of the container at time intervals
 	
 
-@type: string
-@values: "timeout"
+@type: string | undefined
+@default: undefined
+@values: "timeout", undefined
 @example:
 gantt.config.container_resize_method = "timeout";
 

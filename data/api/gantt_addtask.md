@@ -5,7 +5,7 @@ addTask
 
 
 @params:
-- task			Task			the task object
+- task			object			the task object
 * parent		string, number			optional, the parent's id
 * index			number			optional, the position the task will be added into (0 or greater)
 

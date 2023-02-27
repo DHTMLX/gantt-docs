@@ -4,7 +4,7 @@ getLightboxSection
 	
 
 @params:
-- name	string	the name of the section
+- name	string | number	the name of the section
 
 @returns:
 - obj	object 	the section object

@@ -35,8 +35,8 @@ gantt.config.click_drag = {
             - **_top_** - (*number*) - the top coordinate
     - **_startDate?_** - (*Date*) - the date that corresponds to the starting point
     - **_endDate?_** - (*Date*) - the date that corresponds to the ending point
-    - **_tasksBetweenDates?_** - (*Array&lt;any&gt;*) - an array of tasks between the start and end date points
-    - **_tasksInRows?_** - (*Array&lt;any&gt;*) - an array of tasks selected between the start and end coordinates vertically
+    - **_tasksBetweenDates?_** - (*Array&lt;Task&gt;*) - an array of tasks between the start and end date points
+    - **_tasksInRows?_** - (*Array&lt;Task&gt;*) - an array of tasks selected between the start and end coordinates vertically
 - <span class=subproperty>**singleRow?**</span> - (*boolean*) - true to add selection only in one row equal to the height of a task
 - <span class=subproperty>**ignore?**</span> - (*string*) - CSS selector. Drag-n-drop won't be activated for the elements that match the selector
 - <span class=subproperty>**useKey?**</span> - (*string | boolean*) - if the property is specified, drag-n-drop will be activated only when the specified modifier key is pressed. Supported values: "ctrlKey", "shiftKey", "metaKey", "altKey"

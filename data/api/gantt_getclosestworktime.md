@@ -5,7 +5,7 @@ getClosestWorkTime
 	
 
 @params:
-- config	object		the configuration object 
+- config	object		the configuration object or the date
 
 
 @returns: 

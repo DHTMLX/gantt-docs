@@ -5,7 +5,7 @@ getColumnIndex
 	returns the index of the column by its name
 
 @params:
-- name		string			the name of the column
+- name		string | number			the name of the column
 * excludeHidden		boolean			skips indexes of the hidden columns
 
 @returns:

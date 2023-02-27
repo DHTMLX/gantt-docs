@@ -5,7 +5,7 @@ isLinkAllowed
 	
 
 @params:
-- link	Link 		the link object
+- link	object 		the link object
 
 @returns:
 - value		boolean		<i>true</i>, if the link is correct. Otherwise, <i>false</i>
