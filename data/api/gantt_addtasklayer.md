@@ -47,7 +47,7 @@ desktop/how_to.md#howtoverticallyreordertasksinthetimeline (read how to vertical
 
 - The argument function takes a task's object as a parameter and must return a DOM element that will be displayed in the layer.
 - The argument can also be an object. In this case, it can have the following properties:
-	- **id?** - (*string | number*) - layer ID
+	- **id?** - (*string | number*) - the layer ID
 	- **renderer** - (*function|object*) - a function that answers for rendering the layer's elements (mandatory)
 	- **container?** - (*HTMLElement*) - a layer's container (optional)
     - **topmost?** - (*boolean*) - if true, the element will be displayed over the task (optional)

@@ -36,7 +36,7 @@ Each object in the array specifies a single column. An object can take the follo
     - **_task_** - (*Task*) - the Task object
     - **_node_** - (*HTMLElement*) - the HTML element of the Grid cell
 - <span class=subproperty>**editor?**</span> - (*object*) - attached inline editor
-    - **_type_** - (*string*) - type of the inline editor
+    - **_type_** - (*string*) - the type of the inline editor
     - **_map_to_** - (*string*) - specifies which property of the task should be updated by the inline editor
     - **_min?_** - (*Date | number*) - minimal value for the date and duration types
     - **_max?_** - (*Date | number*) - maximal value for the date and duration types
