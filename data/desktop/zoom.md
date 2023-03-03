@@ -6,12 +6,12 @@ Read details about the Zoom extension in the article desktop/zooming.md. <br> Th
 ##Methods
 
 - <span class=submethod>**init (zoomConfig): undefined**</span> - initialize the extension with the provided configuration.
-    - **_zoomConfig_** - (*object*) - object with configuration settings that contains the *levels* array of zooming levels and a number of additional properties:
-        - **_levels_** - (*ZoomLevels[]*) - obligatory, an array of zooming levels, each of which includes the following properties:
+    - **_zoomConfig_** - (*object*) - an object with configuration settings that contains the *levels* array of zooming levels and a number of additional properties:
+        - **_levels_** - (*ZoomLevels[]*) - required, an array of zooming levels, each of which includes the following properties:
             - **_name_** - (*string*) - the name of the level
             - **_scale_height?_** -  (*number*) - the height of the scale
             - **_height?_** -  (*number*) - the height of the scale
-            - **_min_column_width?_** - (*number*) - the minimal width of a column. Has a higher priority than minColumnWidth and maxColumnWidth
+            - **_min_column_width?_** - (*number*) - the minimal width of a column. It has a higher priority than minColumnWidth and maxColumnWidth
             - **_scales_** - (*Scale[]*) - an array of scales to switch between while zooming in/out on this level
         - **_handler?_** - (*Function*) - allows specifying a custom handler of the mouse wheel to work with zooming manually
         - **_startDate?_** - (*Date*) - the start value of the time scale zooming
@@ -24,9 +24,7 @@ Read details about the Zoom extension in the article desktop/zooming.md. <br> Th
         - **_trigger?_** - (*string | null | undefined*) - the trigger of zooming: "wheel" | null | undefined 
         - **_element?_** - (*HTMLElement | Function*) - a DOM element over which zooming is triggered or a function that returns a DOM element
 
-
 These are two examples of setting zoom configuration:
-
 
 ~~~js
 var zoomConfig = {

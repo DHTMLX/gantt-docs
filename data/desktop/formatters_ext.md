@@ -15,8 +15,8 @@ The **gantt.ext.formatters.durationFormatter(config)** method returns a new inst
 
 ###**Configuration**
 
-- <span class=submethod>**durationFormatter (config): DurationFormatter**</span> - create a Duration Formatter
-    - **_config?_** - (*object*) - optional, a configuration object
+- <span class=submethod>**durationFormatter (config): DurationFormatter**</span> - creates a Duration Formatter
+    - **_config?_** - (*object*) - optional, a configuration object which can include the following attributes:
         - **_enter?_** - (*string*) - specifies the default format for the **parse** method, which is used when an input value is entering without units. Default value: "day".
         - **_store?_** - (*string*) - specifies the format for the duration values storage in the gantt. This property affects the output value of the **parse** method. Default value: "hour".
         - **_format?_** - (*string | Array &lt;string&gt;*) - specifies the format for the output value. Supported values: "auto", "minute", "hour", "day", "week", "month", "year", "an array containing any of these values". The "auto" value  means the formatter will try to select an appropriate unit depending on provided value (i.e. larger values will be formatted as days/months/years, smaller values will be formatted as minutes/hours).
@@ -98,7 +98,7 @@ gantt.ext.formatters.durationFormatter({
 	short: false /*!*/	
 }).format(10021); //"4 weeks 7 hours 1 minute"
  
-gantt.ext.formattersdurationFormatter.durationFormatter({
+gantt.ext.formatters.durationFormatter({
 	format: ["week", "hour", "minute"],
 	store:"minute",
 	short: true	 /*!*/
@@ -156,10 +156,10 @@ const formatter = gantt.ext.formatters.durationFormatter({
 
 ###**API**
 
-The created instance of the *DurationFormatter* provides following methods:
+The created instance of the *DurationFormatter* provides the following methods:
 
 - <span class=submethod>**canParse (value): boolean**</span> - returns *true* if the provided string can be parsed into the duration value, otherwise - returns *false*
-    - **_value_** - (*string*) - string that will be checked
+    - **_value_** - (*string*) - the string that will be checked
 
 
 ~~~js
@@ -172,7 +172,7 @@ console.log(formatter.canParse("abc"));
 ~~~
 
 - <span class=submethod>**format (value): string**</span> - converts the provided duration value into the duration string
-    - **_value_** - (*number*) - duration value that will be converted
+    - **_value_** - (*number*) - the duration value that will be converted
 
 ~~~js
 const formatter = gantt.ext.formatters.durationFormatter();
@@ -181,7 +181,7 @@ console.log(formatter.format(24));
 ~~~
 
 - <span class=submethod>**parse (value): number**</span> - parses the provided string into the duration value. If the value can’t be parsed, ‘null’ will be returned
-    - **_value_** - (*string*) - string that will be converted
+    - **_value_** - (*string*) - the string that will be converted
 
 
 ~~~js
@@ -202,7 +202,7 @@ The **gantt.ext.formatters.linkFormatter(config)** method returns a new instance
 ###**Configuration**
 
 - <span class=submethod>**linkFormatter (config): LinkFormatter**</span> - create a Link Formatter
-    - **_config?_** - (*object*) - optional, a configuration object
+    - **_config?_** - (*object*) - optional, a configuration object which can include the following attributes:
         - **_durationFormatter?_** - (*DurationFormatter*) - an instance of the *DurationFormatter* created by the *gantt.ext.formatters.durationFormatter()*. It affects how lag/lead values of links are parsed and formatted:
         - **_labels?_** - (*object*) - locale labels for different types of links
             - **_finish_to_start?_** - (*string*) - labels for the Finish to Start links
@@ -254,11 +254,11 @@ const formatter = gantt.ext.formatters.linkFormatter({
 
 ###**API**
 
-The created instance of the *LinkFormatter* provides following methods:
+The created instance of the *LinkFormatter* provides the following methods:
 
 
 - <span class=submethod>**canParse (value): boolean**</span> - returns *true* if the provided string can be parsed into the link object, otherwise - returns *false*
-    - **_value_** - (*string*) - string that will be checked
+    - **_value_** - (*string*) - the string that will be checked
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
@@ -270,7 +270,7 @@ console.log(formatter.canParse("abc"));
 ~~~
 
 - <span class=submethod>**format (link): string**</span> - converts the provided link value into the string
-    - **_value_** - (*Link*) - link object that will be converted
+    - **_value_** - (*Link*) - the link object that will be converted
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
@@ -280,7 +280,7 @@ formatter.format({id:1, type:"1", source: 1, target: 2, lag: 5});
 ~~~
 
 - <span class=submethod>**parse (value): object**</span> - parses the provided string into the link object. If the value can’t be parsed, ‘null’ will be returned. **Note** that the *link.target* of the given link will have "null" value
-    - **_value_** - (*string*) - string that will be converted
+    - **_value_** - (*string*) - the string that will be converted
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();

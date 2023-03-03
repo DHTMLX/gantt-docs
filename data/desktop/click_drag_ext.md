@@ -19,14 +19,14 @@ gantt.config.click_drag = {
 - <span class=subproperty>**viewPort?**</span> - (*HTMLElement*) - the element to attach an event to and select
 - <span class=subproperty>**useRequestAnimationFrame?**</span> - (*boolean*) - defines whether requestAnimationFrame is used during rendering
 - <span class=submethod>**callback? (startPoint, endPoint, startDate, endDate, tasksBetweenDates, tasksInRows): any**</span> - a function that will be called when the mouse button is released. Takes 6 parameters:
-    - **_startPoint?_** - (*object*) - an object of the type:
+    - **_startPoint?_** - (*object*) - an object with the following attributes:
         - **_absolute_** - (*object*) - the coordinates of the left top corner of the document
             - **_left_** - (*number*) - the left coordinate
             - **_top_** - (*number*) - the top coordinate
         - **_relative_** - (*object*) - the coordinates of the left top element used as a viewPort 
             - **_left_** - (*number*) - the left coordinate
             - **_top_** - (*number*) - the top coordinate
-    - **_endPoint?_** - (*object*) - an object of the type:
+    - **_endPoint?_** - (*object*) - an object with the following attributes:
         - **_absolute_** - (*object*) - the coordinates of the left top corner of the document
             - **_left_** - (*number*) - the left coordinate
             - **_top_** - (*number*) - the top coordinate
@@ -41,14 +41,14 @@ gantt.config.click_drag = {
 - <span class=subproperty>**ignore?**</span> - (*string*) - CSS selector. Drag-n-drop won't be activated for the elements that match the selector
 - <span class=subproperty>**useKey?**</span> - (*string | boolean*) - if the property is specified, drag-n-drop will be activated only when the specified modifier key is pressed. Supported values: "ctrlKey", "shiftKey", "metaKey", "altKey"
 - <span class=submethod>**render? (startPoint, endPoint): any**</span> - a function that creates an element rendered during dragging. Takes two parameters: 
-    - **_startPoint?_** - (*object*) - an object of the type:
+    - **_startPoint?_** - (*object*) - an object with the attributes:
         - **_absolute_** - (*object*) - the coordinates of the left top corner of the document
             - **_left_** - (*number*) - the left coordinate
             - **_top_** - (*number*) - the top coordinate
         - **_relative_** - (*object*) - the coordinates of the left top element used as a viewPort 
             - **_left_** - (*number*) - the left coordinate
             - **_top_** - (*number*) - the top coordinate
-    - **_endPoint?_** - (*object*) - an object of the type:
+    - **_endPoint?_** - (*object*) - an object with the attributes:
         - **_absolute_** - (*object*) - the coordinates of the left top corner of the document
             - **_left_** - (*number*) - the left coordinate
             - **_top_** - (*number*) - the top coordinate
