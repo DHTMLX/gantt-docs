@@ -12,8 +12,8 @@ The following methods are available via the **gantt.ext.overlay** object:
 
 ### addOverlay
 
-- <span class=submethod>**addOverlay (render, id): string | number**</span> - adds a new overlay into the Gantt Chart and returns its id. Takes a container with custom content as a parameter.
-	- **_render_** - (*Function*) - the render function
+- <span class=submethod>**addOverlay (render, id): string | number**</span> - adds a new overlay into the Gantt Chart and returns its id
+	- **_render_** - (*Function*) - the render function. Takes a container with custom content as a parameter
 	- **_id?_** - (*number | string*) - optional, the ID of the overlay
 
 ~~~js

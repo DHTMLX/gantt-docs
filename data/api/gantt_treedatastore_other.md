@@ -19,7 +19,7 @@ The extended API of the **treeDatastore** object provides the following [methods
 <h3 id="methods">Methods</h3>
 
 <ul><li>
-    	<b class=submethod>move (sid, tindex, parent): undefined</b> - moves an item to the new position or to a new parent
+    	<b class=submethod>move (sid, tindex, parent): boolean | undefined</b> - moves an item to the new position or to a new parent
         <ul>
           	<li><b><i>sid</i></b> - (<i>string | number</i>) - the id of the item to move</li>
           	<li><b><i>tindex</i></b> - (<i>number</i>) - the index of the position that the item will be moved to (the index within a branch)</li>
