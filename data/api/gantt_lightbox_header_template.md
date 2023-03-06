@@ -7,7 +7,7 @@ lightbox_header
 @params:
 - start_date	Date	the date when a task is scheduled to begin   
 - end_date	Date	the date when a task is scheduled to be completed
-- task	object	the task's object
+- task	Task	the task's object
 
 @returns:
 - text    string     an HTML text for rendering in the gantt

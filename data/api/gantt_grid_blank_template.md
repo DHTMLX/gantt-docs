@@ -4,7 +4,7 @@ grid_blank
 	
 
 @params:
-- task	object	the task object
+- task	Task	the task object
 
 
 @example:

@@ -9,7 +9,7 @@ addCalendar
 
 
 @returns:
-- calendarId		number		the id of the calendar
+- calendarId		string		the id of the calendar
 
 @example:
 

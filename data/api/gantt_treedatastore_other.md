@@ -19,14 +19,14 @@ The extended API of the **treeDatastore** object provides the following [methods
 <h3 id="methods">Methods</h3>
 
 <ul><li>
-    	<b>move(sid, tindex, parent)</b> - moves an item to the new position or to a new parent
+    	<b class=submethod>move (sid, tindex, parent): boolean | undefined</b> - moves an item to the new position or to a new parent
         <ul>
-          	<li><b><i>sid</i></b> - (<i>string|number</i>) the id of the item to move</li>
-          	<li><b><i>tindex</i></b> - (<i>number</i>) the index of the position that the item will be moved to (the index within a branch)</li>
-          	<li><b><i>parent</i></b> - (<i>string|number</i>) the parent id. If specified, the <b>tindex</b> will refer to the index in the
+          	<li><b><i>sid</i></b> - (<i>string | number</i>) - the id of the item to move</li>
+          	<li><b><i>tindex</i></b> - (<i>number</i>) - the index of the position that the item will be moved to (the index within a branch)</li>
+          	<li><b><i>parent?</i></b> - (<i>string | number</i>) - the parent id. If specified, the <b>tindex</b> will refer to the index in the
 <b>'parent'</b> branch</li>
         </ul>
-        Returns <i>false</i> if the action has been canceled using <b>onBeforeItemMove</b>, returns <i>true</i> otherwise.
+        Returns <i>false</i> if the action has been canceled using <b>onBeforeItemMove</b>, returns <i>undefined</i> otherwise.
 </li></ul>
 
 <ul>
@@ -56,9 +56,9 @@ store.move(6, -1, 2);// move 'John' from 'QA' to 'Development'
 </ul>
 
 <ul><li>
-    	<b>getBranchIndex(id)</b> - returns the index of an item in the branch
+    	<b class=submethod>getBranchIndex (id): number</b> - returns the index of an item in the branch
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
 
 </li></ul>
@@ -89,11 +89,11 @@ store.getBranchIndex(8);
 
 
 <ul><li>
-    	<b>hasChild(id)</b> - checks whether the specified item has child items
+    	<b class=submethod>hasChild (id): number | undefined</b> - checks whether the specified item has child items
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
-      Returns <i>true</i> if the item has some child item(s). Otherwise, <i>false</i>.
+      Returns the <i>number</i> of child tasks (if exist), or <i>undefined</i> otherwise.
 
 </li></ul>
 
@@ -125,9 +125,9 @@ store.hasChild(9);
 </ul>
 
 <ul><li>
-    	<b>getChildren(id)</b> - returns the 1st-level child items of the specified parent branch
+    	<b class=submethod>getChildren (id): Array&lt;number | string | object&gt;</b> - returns the 1st-level child items of the specified parent branch
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the parent branch</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the parent branch</li>
         </ul>
       Returns an array of children's ids.
 </li></ul>
@@ -160,10 +160,10 @@ store.getChildren(9);
 </ul>
 
 <ul><li>
-    	<b>isChildOf(childId, parentId)</b> - checks whether an item is a child of a different item
+    	<b class=submethod>isChildOf (childId, parentId): boolean</b> - checks whether an item is a child of a different item
         <ul>
-          	<li><b><i>childId</i></b> - (<i>string|number</i>) the id of an item that you want to check as a child</li>
-          	<li><b><i>parentId</i></b> - (<i>string|number</i>) the id of an item that you want to check as a parent</li>
+          	<li><b><i>childId</i></b> - (<i>string | number</i>) - the id of an item that you want to check as a child</li>
+          	<li><b><i>parentId</i></b> - (<i>string | number</i>) - the id of an item that you want to check as a parent</li>
         </ul>
       Returns <i>true</i>, if the item is a child of the specified parent item. Otherwise, <i>false</i>.
 </li></ul>
@@ -196,9 +196,9 @@ store.getChildren(9, 2);
 </ul>
 
 <ul><li>
-    	<b>getSiblings(id)</b> - returns siblings of the specified item (including itself)
+    	<b class=submethod>getSiblings (id): Array&lt;number | string | object&gt;</b> - returns siblings of the specified item (including itself)
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
       Returns an array with the ids of the item's siblings.
 </li></ul>
@@ -231,11 +231,11 @@ store.getSiblings(6);
 </ul>
 
 <ul><li>
-    	<b>getNextSibling(id)</b> - returns the id of the next item of the same level
+    	<b class=submethod>getNextSibling (id): number | string | null</b> - returns the id of the next item of the same level
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
-      Returns the id of the next sibling.
+      Returns the id of the next sibling or <i>null</i>.
 </li></ul>
 
 <ul>
@@ -266,11 +266,11 @@ store.getNextSibling(10);
 </ul>
 
 <ul><li>
-    	<b>getPrevSibling(id)</b> - returns the id of the previous item of the same level
+    	<b class=submethod>getPrevSibling (id): number | string | null</b> - returns the id of the previous item of the same level
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
-      Returns the id of the previous sibling.
+      Returns the id of the previous sibling or <i>null</i>.
 </li></ul>
 
 <ul>
@@ -301,9 +301,9 @@ store.getPrevSibling(10);
 </ul>
 
 <ul><li>
-    	<b>getParent(id)</b> -  returns the id of the parent item
+    	<b class=submethod>getParent (id): number| string</b> -  returns the id of the parent item or 0.
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
 </li></ul>
 
@@ -335,9 +335,9 @@ store.getParent(1);
 </ul>
 
 <ul><li>
-    	<b>calculateItemLevel(item)</b> -  calculates the level of nesting of an item
+    	<b class=submethod>calculateItemLevel (item): number</b> -  calculates the level of nesting of an item
         <ul>
-          	<li><b><i>item</i></b> - (<i>object</i>) the item's object</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) - the item's object</li>
         </ul>
 </li></ul>
 
@@ -369,10 +369,10 @@ store.calculateItemLevel(store.getItem(1));
 </ul>
 
 <ul><li>
-    	<b>setParent(item, newParentId)</b> -  sets the parent for an item. The parent id will be writen to the property specified by `parentProperty` config, "item.parent" by default.
+    	<b class=submethod>setParent (item, newParentId): undefined</b> -  sets the parent for an item. The parent id will be writen to the property specified by `parentProperty` config, "item.parent" by default.
         <ul>
-          	<li><b><i>item</i></b> - (<i>object</i>) the item's object</li>
-          	<li><b><i>newParentId</i></b> - (<i>string|number</i>) the id of the parent</li>
+          	<li><b><i>item</i></b> - (<i>object</i>) - the item's object</li>
+          	<li><b><i>newParentId</i></b> - (<i>string | number | null</i>) - the id of the parent</li>
         </ul>
 </li></ul>
 
@@ -409,7 +409,7 @@ store.parse([
     {id: 10, text: "Floe", parent:3}
 ]);
 
-store.setParent(9, 4);
+store.setParent(store.getItem(9), 4);
 // -> 3
 
 ~~~
@@ -419,10 +419,10 @@ store.setParent(9, 4);
 </ul>
 
 <ul><li>
-    	<b>eachItem(callback, parentId)</b> -  iterates over all children of a specific item
+    	<b class=submethod>eachItem (callback, parentId): undefined</b> -  iterates over all children of a specific item
         <ul>
-          	<li><b><i>callback</i></b> - (<i>function</i>) the callback function</li>
-          	<li><b><i>parentId</i></b> - (<i>string|number</i>) the id of the parent</li>
+          	<li><b><i>callback</i></b> - (<i>Function</i>) - the callback function</li>
+          	<li><b><i>parentId?</i></b> - (<i>string | number</i>) - the id of the parent</li>
         </ul>
 </li></ul>
 
@@ -452,10 +452,10 @@ store.eachItem(function(item){
 </ul>
 
 <ul><li>
-    	<b>eachParent(callback, startItem)</b> -  iterates over all parent items of the specified item
+    	<b class=submethod>eachParent (callback, startItem): undefined</b> -  iterates over all parent items of the specified item
         <ul>
-          	<li><b><i>callback</i></b> - (<i>function</i>) the callback function</li>
-          	<li><b><i>startItem</i></b> - (<i>string|number</i>) the id of the item the parent item of which should be iterated over</li>
+          	<li><b><i>callback</i></b> - (<i>Function</i>) - the callback function</li>
+          	<li><b><i>startItem</i></b> - (<i>string | number</i>) - the id of the item the parent item of which should be iterated over</li>
         </ul>
 </li></ul>
 
@@ -486,9 +486,9 @@ store.eachParent(function(item){
 </ul>
 
 <ul><li>
-    	<b>open(id)</b> -  opens the branch with the specified id
+    	<b class=submethod>open (id): undefined</b> -  opens the branch with the specified id
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the branch id</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the branch id</li>
         </ul>
 </li></ul>
 
@@ -517,9 +517,9 @@ store.open(1);
 </ul>
 
 <ul><li>
-    	<b>close(id)</b> -  closes the branch with the specified id
+    	<b class=submethod>close (id): undefined</b> -  closes the branch with the specified id
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the branch id</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the branch id</li>
         </ul>
 </li></ul>
 
@@ -548,12 +548,12 @@ store.close(1);
 </ul>
 
 <ul><li>
-    	<b>sort(field,desc,parent,silent)</b> -  sorts items in the resource grid
+    	<b class=submethod>sort (field, desc, parent, silent): undefined</b> -  sorts items in the resource grid
         <ul>
-          	<li><b><i>field</i></b> - (<i>string|function</i>) the name of the column that the resource grid will be sorted by or a custom sorting function</li>
-          	<li><b><i>desc</i></b> - (<i>boolean</i>) specifies the sorting direction: <i>true</i> - descending sort and <i>false</i> - ascending sort. By default, <i>false</i></li>
-          	<li><b><i>parent</i></b> - (<i>string|number</i>) the id of the parent item. Specify the parameter if you want to sort items only in the branch of the specified parent.</li>
-          	<li><b><i>silent</i></b> - (<i>boolean</i>) specifies whether rendering should be invoked after reordering items</li>
+          	<li><b><i>field</i></b> - (<i>string | Function</i>) - the name of the column that the resource grid will be sorted by or a custom sorting function</li>
+          	<li><b><i>desc?</i></b> - (<i>boolean</i>) - specifies the sorting direction: <i>true</i> - descending sort and <i>false</i> - ascending sort. By default, <i>false</i></li>
+          	<li><b><i>parent?</i></b> - (<i>string | number</i>) - the id of the parent item. Specify the parameter if you want to sort items only in the branch of the specified parent.</li>
+          	<li><b><i>silent?</i></b> - (<i>boolean</i>) - specifies whether rendering should be invoked after reordering items</li>
         </ul>
 </li></ul>
 
@@ -606,11 +606,11 @@ function sortResources(){
 
 <ul id="onBeforeItemMove">
     <li>
-    	<b>onBeforeItemMove(id, parent, tindex)</b> - fires before an item is moved to a new position
+    	<b class=eventname>onBeforeItemMove (id, parent, tindex)</b> - fires before an item is moved to a new position
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item to move</li>
-          	<li><b><i>parent</i></b> - (<i>string|number</i>) the parent id</li>
-          	<li><b><i>tindex</i></b> - (<i>number</i>) the index of the position in the parent branch that the item will be moved to</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item to move</li>
+          	<li><b><i>parent</i></b> - (<i>string | number</i>) - the parent id</li>
+          	<li><b><i>tindex</i></b> - (<i>number</i>) - the index of the position in the parent branch that the item will be moved to</li>
         </ul>
         Return <i>false</i> to prevent the default action of the event, otherwise <i>true</i>.
 </li>
@@ -631,11 +631,11 @@ store.attachEvent("onBeforeItemMove", function(id, parent, tindex){
 
 <ul id="onAfterItemMove">
     <li>
-    	<b>onAfterItemMove(id, parent, tindex)</b> - fires after an item was moved to a new position
+    	<b class=eventname>onAfterItemMove (id, parent, tindex)</b> - fires after an item was moved to a new position
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the item to move</li>
-          	<li><b><i>parent</i></b> - (<i>string|number</i>) the parent id</li>
-          	<li><b><i>tindex</i></b> - (<i>number</i>) the index of the position in the parent branch that the item will be moved to</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item to move</li>
+          	<li><b><i>parent</i></b> - (<i>string | number</i>) - the parent id</li>
+          	<li><b><i>tindex</i></b> - (<i>number</i>) - the index of the position in the parent branch that the item will be moved to</li>
         </ul>
 </li>
 </ul>
@@ -654,9 +654,9 @@ store.attachEvent("onAfterItemMove", function(id, parent, tindex){
 
 <ul id="onItemOpen">
     <li>
-    	<b>onItemOpen(id)</b> - fires on opening a branch
+    	<b class=eventname>onItemOpen (id)</b> - fires on opening a branch
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the branch</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the branch</li>
         </ul>
 </li>
 </ul>
@@ -675,9 +675,9 @@ store.attachEvent("onItemOpen", function(id){
 
 <ul id="onItemClose">
     <li>
-    	<b>onItemClose(id)</b> - fires on closing a branch
+    	<b class=eventname>onItemClose (id)</b> - fires on closing a branch
         <ul>
-          	<li><b><i>id</i></b> - (<i>string|number</i>) the id of the branch</li>
+          	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the branch</li>
         </ul>
 </li>
 </ul>

@@ -11,13 +11,13 @@ The following methods are available via the **gantt.ext.undo** object:
 
 ###Undo() / Redo() 
 
-- **undo()** - reverts the changes made in the gantt
+- <span class=submethod>**undo (): undefined**</span> - reverts the changes made in the gantt
 
 ~~~js
 gantt.ext.undo.undo();
 ~~~
 
-- **redo()** - applies the reverted changes to the gantt once again
+- <span class=submethod>**redo (): undefined**</span> - applies the reverted changes to the gantt once again
 
 ~~~js
 gantt.ext.undo.redo();
@@ -25,13 +25,13 @@ gantt.ext.undo.redo();
 
 ###getUndoStack() / getRedoStack() 
 
-- **getUndoStack()** - returns the stack of stored undo user actions
+- <span class=submethod>**getUndoStack (): Array&lt;object&gt;**</span> - returns the stack of stored undo user actions
 
 ~~~js
 var stack = gantt.ext.undo.getUndoStack();
 ~~~
 
-- **getRedoStack()** - returns the stack of stored redo user actions
+- <span class=submethod>**getRedoStack (): Array&lt;object&gt;**</span> - returns the stack of stored redo user actions
 
 ~~~js
 var stack = gantt.ext.undo.getRedoStack();
@@ -39,20 +39,20 @@ var stack = gantt.ext.undo.getRedoStack();
 
 The returned stack is an array of the undo user actions. Each user action contains a set of commands. A command is an object with the following attributes:
  
-- **type** - (*string*) the type of a command: "add/remove/update"
-- **entity** - (*string*) the type of the object which was changed: "task" or "link"
-- **value** - (*object*) the changed task/link object 
-- **oldValue** - (*object*) the task/link object before changes
+- **_type_** - (*string*) the type of a command: "add/remove/update"
+- **_entity_** - (*string*) the type of the object which was changed: "task" or "link"
+- **_value_** - (*object*) the changed task/link object 
+- **_oldValue_** - (*object*) the task/link object before changes
 
 ###clearUndoStack() / clearRedoStack()
 
-- **clearUndoStack()** - clears the stack of stored undo commands
+- <span class=submethod>**clearUndoStack (): undefined**</span> - clears the stack of stored undo commands
 
 ~~~js
 gantt.ext.undo.clearUndoStack();
 ~~~
 
-- **clearRedoStack()** - clears the stack of stored redo commands
+- <span class=submethod>**clearRedoStack (): undefined**</span> - clears the stack of stored redo commands
 
 ~~~js
 gantt.ext.undo.clearRedoStack();
@@ -60,9 +60,9 @@ gantt.ext.undo.clearRedoStack();
 
 ###saveState()
 
-- **saveState(taskId|linkId, entityType)** - saves the current state of a task/link before the changes are made
-    - id - (*string|number*) the id of a task/link,
-    - type - (*string*) the type of an entry for which the id is provided as the first argument. <br>Supported values: "task", "link". 
+- <span class=submethod>**saveState (id, entityType): boolean**</span> - saves the current state of a task/link before the changes are made
+	- **_id_** - (*string | number*) - the id of a task/link,
+	- **_type_** - (*string*) - the type of an entry for which the id is provided as the first argument. <br>Supported values: "task", "link". 
 
 ~~~js
 gantt.ext.undo.saveState(1, "task");

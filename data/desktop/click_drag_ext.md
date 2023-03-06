@@ -15,28 +15,46 @@ gantt.config.click_drag = {
 };
 ~~~
 
-- **className** -  (*string*) sets a custom CSS class for a selected element
-- **render** - (*function*) a function that creates an element rendered during dragging. Takes two parameters: 
-	- **startPoint** - (*object*) - an object of the type:<br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
-	where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort 
-	- **endPoint** - (*object*) an object of the type: <br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
-	where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort 
-- **viewPort** - (*HTMLElement*) the element to attach an event to and select
-- **useRequestAnimationFrame** - (*boolean*) defines whether requestAnimationFrame is used during rendering
-- **callback** - (*function*) - a function that will be called when the mouse button is released. Takes 6 parameters:
-	- **startPoint** - (*object*) - an object of the type: <br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
-	where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort 
-	- **endPoint** - (*object*) an object of the type: <br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
-	where absolute - the coordinates of the left top corner of the document, and relative - the coordinates of the left top element used as a viewPort 
- 	- **startDate** - (*Date*) the date that corresponds to the starting point
-	- **endDate** - (*Date*) the date that corresponds to the ending point
-	- **tasksBetweenDates** - (*array*) an array of tasks between the start and end date points
-	- **tasksInRows** - (*array*) an array of tasks selected between the start and end coordinates vertically
-- **singleRow** - (*boolean*) true to add selection only in one row equal to the height of a task
+- <span class=subproperty>**className?**</span> -  (*string*) - sets a custom CSS class for a selected element
+- <span class=subproperty>**viewPort?**</span> - (*HTMLElement*) - the element to attach an event to and select
+- <span class=subproperty>**useRequestAnimationFrame?**</span> - (*boolean*) - defines whether requestAnimationFrame is used during rendering
+- <span class=submethod>**callback? (startPoint, endPoint, startDate, endDate, tasksBetweenDates, tasksInRows): any**</span> - a function that will be called when the mouse button is released. Takes 6 parameters:
+    - **_startPoint?_** - (*object*) - an object with the following attributes:
+        - **_absolute_** - (*object*) - the coordinates of the left top corner of the document
+            - **_left_** - (*number*) - the left coordinate
+            - **_top_** - (*number*) - the top coordinate
+        - **_relative_** - (*object*) - the coordinates of the left top element used as a viewPort 
+            - **_left_** - (*number*) - the left coordinate
+            - **_top_** - (*number*) - the top coordinate
+    - **_endPoint?_** - (*object*) - an object with the following attributes:
+        - **_absolute_** - (*object*) - the coordinates of the left top corner of the document
+            - **_left_** - (*number*) - the left coordinate
+            - **_top_** - (*number*) - the top coordinate
+        - **_relative_** - (*object*) - the coordinates of the left top element used as a viewPort 
+            - **_left_** - (*number*) - the left coordinate
+            - **_top_** - (*number*) - the top coordinate
+    - **_startDate?_** - (*Date*) - the date that corresponds to the starting point
+    - **_endDate?_** - (*Date*) - the date that corresponds to the ending point
+    - **_tasksBetweenDates?_** - (*Array&lt;Task&gt;*) - an array of tasks between the start and end date points
+    - **_tasksInRows?_** - (*Array&lt;Task&gt;*) - an array of tasks selected between the start and end coordinates vertically
+- <span class=subproperty>**singleRow?**</span> - (*boolean*) - true to add selection only in one row equal to the height of a task
+- <span class=subproperty>**ignore?**</span> - (*string*) - CSS selector. Drag-n-drop won't be activated for the elements that match the selector
+- <span class=subproperty>**useKey?**</span> - (*string | boolean*) - if the property is specified, drag-n-drop will be activated only when the specified modifier key is pressed. Supported values: "ctrlKey", "shiftKey", "metaKey", "altKey"
+- <span class=submethod>**render? (startPoint, endPoint): any**</span> - a function that creates an element rendered during dragging. Takes two parameters: 
+    - **_startPoint?_** - (*object*) - an object with the attributes:
+        - **_absolute_** - (*object*) - the coordinates of the left top corner of the document
+            - **_left_** - (*number*) - the left coordinate
+            - **_top_** - (*number*) - the top coordinate
+        - **_relative_** - (*object*) - the coordinates of the left top element used as a viewPort 
+            - **_left_** - (*number*) - the left coordinate
+            - **_top_** - (*number*) - the top coordinate
+    - **_endPoint?_** - (*object*) - an object with the attributes:
+        - **_absolute_** - (*object*) - the coordinates of the left top corner of the document
+            - **_left_** - (*number*) - the left coordinate
+            - **_top_** - (*number*) - the top coordinate
+        - **_relative_** - (*object*) - the coordinates of the left top element used as a viewPort 
+            - **_left_** - (*number*) - the left coordinate
+            - **_top_** - (*number*) - the top coordinate
 
 
 Events

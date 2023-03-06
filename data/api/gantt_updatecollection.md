@@ -4,7 +4,7 @@ updateCollection
 	updates the specified collection with new options
 
 @params: 
-- collection	string 		the name of the collection to update
+- collection	string |number 		the name of the collection to update
 - options		array	the new values of the collection
 
 @example: 

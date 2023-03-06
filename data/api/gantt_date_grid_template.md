@@ -6,12 +6,12 @@ date_grid
 
 @params:
 - date			Date		the date which needs formatting
-- task			object 			the task object
+- task			Task 			the task object
 - column			string 			the name of the column that called the template
 
 @example:
 gantt.templates.date_grid = function(date, task, column){
-   if(task && gantt.isUnscheduled(task) && gantt.config.show_unscheduled){
+   if(task && gantt.isUnscheduledTask(task) && gantt.config.show_unscheduled){
     	return gantt.templates.task_unscheduled_time(task);
    	}else{
     	return gantt.templates.grid_date_format(date);

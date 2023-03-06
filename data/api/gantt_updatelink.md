@@ -5,7 +5,7 @@ updateLink
 	
 
 @params:
-- id	string	the task id
+- id	string | number	the task id
 
 @example: 
 gantt.addLink({

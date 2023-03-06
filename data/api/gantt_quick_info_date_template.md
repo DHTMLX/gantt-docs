@@ -5,7 +5,7 @@ quick_info_date
 @params: 
 - start	Date	the date when a task is scheduled to begin
 - end	Date	the date when  a task is scheduled to be completed
-- task	object	the task object
+- task	Task	the task object
 @require:quick_info
 
 

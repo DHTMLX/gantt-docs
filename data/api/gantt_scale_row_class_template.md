@@ -4,7 +4,7 @@ scale_row_class
 @short:specifies the CSS class that will be applied to the time scale  
 
 @params:
-- scale 	object	the scale's configuration object
+- scale 	Scale	the scale's configuration object
 
 
 @example:

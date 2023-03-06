@@ -9,7 +9,7 @@ plugins
 	
 
 @params:
-- ext	object		extensions that need to be activated
+- ext	object		an object with extension names that need to be activated
 
 
 

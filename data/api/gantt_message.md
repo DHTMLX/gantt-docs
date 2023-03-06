@@ -7,7 +7,7 @@ message
 
 @params:
 
-- config|text		object|string|number			either an object with the message box's configuration or the text to show
+- config		object|string|number			either an object with the message box's configuration or the text to show
 
 @returns:
 

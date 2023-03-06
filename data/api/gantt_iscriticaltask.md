@@ -4,7 +4,7 @@ isCriticalTask
 	
 @edition: pro
 @params:
-- task	object	the task's object
+- task	Task	the task's object
 
 
 @returns:

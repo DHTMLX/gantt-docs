@@ -3,7 +3,7 @@ getGridColumn
 @short: gets the configuration object of a column
 
 @params:
-- name	string	the column's name
+- name	string |number	the column's name
 
 @returns:
 - column	object	the column's object

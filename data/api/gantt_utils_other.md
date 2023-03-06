@@ -33,8 +33,13 @@ var domHelpers = gantt.utils.dom;
 
 Which have following methods:
 
-- <b> object domHelpers.getNodePosition(HTMLElement node) </b> - returns position of the element on the screen in the format of `{x:number, y:number,width:number, height:number}` object
-- <b> object domHelpers.getRelativeEventPosition(event e, HTMLElement node) </b> - returns mouse coordinates relatively to the DOM element in the format of `{x:number, y:number}` object
+- <span class=submethod>**getNodePosition (node): object**</span> - returns position of the element on the screen in the format of `{x:number, y:number,width:number, height:number}` object
+  - **_node_** - (*HTMLElement*) - DOM element that will be checked
+
+- <span class=submethod>**getRelativeEventPosition (e, node): object**</span> - returns mouse coordinates relatively to the DOM element in the format of `{x:number, y:number}` object
+  - **_e_** - (*Event*) - event that occured
+  - **_node_** - (*HTMLElement*) - DOM element that will be checked
+
 
 ~~~js
 gantt.message({
@@ -54,9 +59,17 @@ gantt.attachEvent("onMouseMove", function (id, e){
 });
 ~~~
 
-- <b> boolean domHelpers.isChildOf(HTMLElement child, HTMLElement parent) </b> - returns `true` if the node provided as the first argument is DOM child of the node provided as the second argument
-- <b> boolean domHelpers.hasClass(HTMLElement node, string className) </b> - returns `true` if the class list of the provided `node` contains a specified css class 
-- <b> HTMLElement domHelpers.closest(HTMLElement node, string cssSelector) </b> - returns the first node that matches the provided css selector, starting from the `node` attribute, up to its DOM parents' branch.
+- <span class=submethod>**isChildOf (child, parent): boolean**</span> - returns `true` if the node provided as the first argument is DOM child of the node provided as the second argument
+  - **_child_** - (*HTMLElement*) - child node that will be checked
+  - **_parent_** - (*HTMLElement*) - parent node that will be checked
+
+- <span class=submethod>**hasClass (node, className): boolean**</span> - returns `true` if the class list of the provided `node` contains a specified css class 
+  - **_node_** - (*HTMLElement*) - DOM element that will be checked
+  - **_className_** - (*string*) - class name that will be checked
+
+- <span class=submethod>**closest (node, cssSelector): HTMLElement**</span>> - returns the first node that matches the provided css selector, starting from the `node` attribute, up to its DOM parents' branch.
+  - **_node_** - (*HTMLElement*) - DOM element will be checked
+  - **_cssSelector_** - (*string*) - a class name for the target node
 
 ~~~js
 gantt.attachEvent("onEmptyClick", function (e) {

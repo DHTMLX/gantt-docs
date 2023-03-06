@@ -5,7 +5,7 @@ getFreeSlack
 	returns the free slack of a task
 
 @params:
-- task		object		the object of a task
+- task		Task		the object of a task
 
 @returns:
 - free_slack		number 		the free slack of a task

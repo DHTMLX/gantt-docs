@@ -4,7 +4,7 @@ serverList
 @short:	returns a list of options
 	
 @params: 
-- list_name	string 		the name of a list
+- list_name	string | number 		the name of a list
 * options	array		an array of options
 
 

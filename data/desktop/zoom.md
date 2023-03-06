@@ -5,26 +5,26 @@ Read details about the Zoom extension in the article desktop/zooming.md. <br> Th
 
 ##Methods
 
-- **init(zoomConfig)** - to enable the module. The method takes a **zoomConfig** object with configuration settings that contains the *levels* array of zooming levels and a number of additional properties:
-	- **levels** - (*array*) obligatory, an array of zooming levels, each of which includes the following properties:
-    	- **name** - (*string*) the name of the level
-    	- **scale_height** -  (*number*) the height of the scale
-    	- **min_column_width** - (*number*) the minimal width of a column
-    	- **scales** - (*array*) an array of scales to switch between while zooming in/out on this level
-    - **handler** - (*Event*) allows specifying a custom handler of the mouse wheel to work with zooming manually
-    - **startDate** - (*Date*) the start value of the time scale zooming
-    - **endDate** - (*Date*) the end value of the time scale zooming
-    - **activeLevelIndex** - (*number*) the number of the default active level
-    - **widthStep** - (*number*) the step of increasing/decreasing the width of scale while switching to the next/previous zooming level
-    - **minColumnWidth** - (*number*) the minimal width of a column that allows switching to the previous zooming level
-    - **maxColumnWidth** - (*number*) the maximal width of a column that allows switching to the next zooming level
-    - **useKey** - (*string*) the key that enables zooming by scrolling the mouse wheel:"ctrlKey" | "altKey" | "shiftKey"
-    - **trigger** - the trigger of zooming: "wheel" | null | undefined 
-    - **element** - (*HTMLElement|function*) a DOM element over which zooming is triggered or a function that returns a DOM element
-
+- <span class=submethod>**init (zoomConfig): undefined**</span> - initialize the extension with the provided configuration.
+    - **_zoomConfig_** - (*object*) - an object with configuration settings that contains the *levels* array of zooming levels and a number of additional properties:
+        - **_levels_** - (*ZoomLevels[]*) - required, an array of zooming levels, each of which includes the following properties:
+            - **_name_** - (*string*) - the name of the level
+            - **_scale_height?_** -  (*number*) - the height of the scale
+            - **_height?_** -  (*number*) - the height of the scale
+            - **_min_column_width?_** - (*number*) - the minimal width of a column. It has a higher priority than minColumnWidth and maxColumnWidth
+            - **_scales_** - (*Scale[]*) - an array of scales to switch between while zooming in/out on this level
+        - **_handler?_** - (*Function*) - allows specifying a custom handler of the mouse wheel to work with zooming manually
+        - **_startDate?_** - (*Date*) - the start value of the time scale zooming
+        - **_endDate?_** - (*Date*) - the end value of the time scale zooming
+        - **_activeLevelIndex?_** - (*number*) - the number of the default active level
+        - **_widthStep?_** - (*number*) - the step of increasing/decreasing the width of scale while switching to the next/previous zooming level
+        - **_minColumnWidth?_** - (*number*) - the minimal width of a column that allows switching to the previous zooming level
+        - **_maxColumnWidth?_** - (*number*) - the maximal width of a column that allows switching to the next zooming level
+        - **_useKey?_** - (*string*) - the key that enables zooming by scrolling the mouse wheel:"ctrlKey" | "altKey" | "shiftKey"
+        - **_trigger?_** - (*string | null | undefined*) - the trigger of zooming: "wheel" | null | undefined 
+        - **_element?_** - (*HTMLElement | Function*) - a DOM element over which zooming is triggered or a function that returns a DOM element
 
 These are two examples of setting zoom configuration:
-
 
 ~~~js
 var zoomConfig = {
@@ -122,20 +122,23 @@ var zoomConfig = {
 gantt.ext.zoom.init(zoomConfig);
 ~~~
 
-- **getCurrentLevel()** - returns the number (index) of the current zooming level
+- <span class=submethod>**getCurrentLevel (): number**</span> - returns the number (index) of the current zooming level
 
 ~~~js
 gantt.ext.zoom.getCurrentLevel();
 ~~~
 
-- **setLevel(level)** - switches to the specified zooming level. The level is defined either by a string (the name of the level from the config, e.g. "year"), or by its number in the array of levels
+- <span class=submethod>**setLevel (level): undefined**</span> - switches to the specified zooming level.
+	- **_level_** - (*number | string*) - The level is defined either by a string (the name of the level from the config, e.g. "year"), or by its number in the array of levels
 
 ~~~js
 gantt.ext.zoom.setLevel("year");
+// or 
+gantt.ext.zoom.setLevel(5);
 ~~~
 
 
-- **zoomIn()** - increases the current zooming level
+- <span class=submethod>**zoomIn (): undefined**</span> - increases the current zooming level
 
 ~~~js
 gantt.ext.zoom.zoomIn();
@@ -147,7 +150,7 @@ For the same purpose you can also use:
 gantt.ext.zoom.setLevel(zoom.getCurrentLevel() - 1)
 ~~~
 
-- **zoomOut()** - decreases the current zooming level
+- <span class=submethod>**zoomOut (): undefined**</span> - decreases the current zooming level
 
 ~~~js
 gantt.ext.zoom.zoomOut();
@@ -159,16 +162,28 @@ For the same purpose you can also use:
 gantt.ext.zoom.setLevel(zoom.getCurrentLevel() + 1)
 ~~~
 
+- <span class=submethod>**attachEvent (name, handler): string**</span> - attaches an event handler
+    - **_name_** - (*string*) - the name of the event handler
+    - **_handler_** - (*Function*) - the function that will be called when the event fires
+- <span class=submethod>**detachEvent (id): undefined**</span> - detaches a handler from an event
+    - **_id_** - (*string*) - the id of the attached event handler
+
+
+
 
 ##Events
 
 
-- **onAfterZoom** -  fires during switching of the zooming level
+- **<span class=eventname>onAfterZoom</span>** -  fires during switching of the zooming level
 
 Arguments: 
+<span class=eventarguments>
 
-- level - the number of the level
-- config - the config of the level
+- **_level_** - (*number | string*) - the number of the level
+- **_config_** - (*ZoomLevels*) - the config of the level
+</span>
+
+
 
 ~~~js
 gantt.ext.zoom.attachEvent("onAfterZoom", function(level, config){ 

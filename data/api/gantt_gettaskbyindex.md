@@ -6,11 +6,11 @@ getTaskByIndex
 
 @params:
 
-- index		number		the task index in the tree (zero-based numbering)
+- index		number | string		the task index in the tree (zero-based numbering)
 
 @returns:
 
-- task		object 		a task object
+- task		Task 		a task object
 
 @example:
 var globalTaskIndex = gantt.getGlobalTaskIndex(19); // -> 10

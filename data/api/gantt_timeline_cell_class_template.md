@@ -5,7 +5,7 @@ timeline_cell_class
 	
 
 @params:
-- item		object		the task object assigned to the row 
+- item		Task | object		either the task's or resource's object assigned to the row
 - date		Date		the date of a cell
 
 @returns:

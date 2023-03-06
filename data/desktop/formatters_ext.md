@@ -13,50 +13,100 @@ Duration Formatter
 
 The **gantt.ext.formatters.durationFormatter(config)** method returns a new instance of the *DurationFormatter*. 
 
-**Parameters:**
+###**Configuration**
 
-- **config** - (*object*) optional, a configuration object
+- <span class=submethod>**durationFormatter (config): DurationFormatter**</span> - creates a Duration Formatter
+    - **_config?_** - (*object*) - optional, a configuration object which can include the following attributes:
+        - **_enter?_** - (*string*) - specifies the default format for the **parse** method, which is used when an input value is entering without units. Default value: "day".
+        - **_store?_** - (*string*) - specifies the format for the duration values storage in the gantt. This property affects the output value of the **parse** method. Default value: "hour".
+        - **_format?_** - (*string | Array &lt;string&gt;*) - specifies the format for the output value. Supported values: "auto", "minute", "hour", "day", "week", "month", "year", "an array containing any of these values". The "auto" value  means the formatter will try to select an appropriate unit depending on provided value (i.e. larger values will be formatted as days/months/years, smaller values will be formatted as minutes/hours).
+        - **_short?_** - (*boolean*) - sets short labels (abbreviations) for time units. Default value: *false*
+        - **_minutesPerHour?_** - (*number*) - defines how duration values will be converted from minutes to hours and vice-versa. *Default value: 60*
+        - **_hoursPerDay?_** - (*number*) - defines how duration values will be converted from hours to days and vice-versa. *Default value: 8*
+        - **_hoursPerWeek?_** - (*number*) - defines how duration values will be converted from hours to weeks and vice-versa. *Default value: 40*
+        - **_daysPerMonth?_** - (*number*) - defines how duration values will be converted from days to months and vice-versa. *Default value: 30*
+        - **_daysPerYear?_** - (*number*) - defines how duration values will be converted from days to years and vice-versa. *Default: 365*
+        - **_labels?_** - (*object*) - defines text labels for different time units. These labels are used both for parsed and formatted values. 
+            - **_minute?_** - (*object*) - configuration for minutes
+                - **_full?_** - (*string*) - full text label for minutes
+                - **_plural?_** - (*string*) - plural text label for minutes
+                - **_short?_** - (*string*) - short text label for minutes
+            - **_hour?_** - (*object*) - configuration for hours
+                - **_full?_** - (*string*) - full text label for hours
+                - **_plural?_** - (*string*) - plural text label for hours
+                - **_short?_** - (*string*) - short text label for hours
+            - **_day?_** - (*object*) - configuration for days
+                - **_full?_** - (*string*) - full text label for days
+                - **_plural?_** - (*string*) - plural text label for days
+                - **_short?_** - (*string*) - short text label for days
+            - **_week?_** - (*object*) - configuration for weeks
+                - **_full?_** - (*string*) - full text label for weeks
+                - **_plural?_** - (*string*) - plural text label for weeks
+                - **_short?_** - (*string*) - short text label for weeks
+            - **_month?_** - (*object*) - configuration for months
+                - **_full?_** - (*string*) - full text label for months
+                - **_plural?_** - (*string*) - plural text label for months
+                - **_short?_** - (*string*) - short text label for months
+            - **_year?_** - (*object*) - configuration for years
+                - **_full?_** - (*string*) - full text label for years
+                - **_plural?_** - (*string*) - plural text label for years
+                - **_short?_** - (*string*) - short text label for years
 
+
+**Examples:**
+
+Initialize Duration Formatter with the default settings:
 ~~~js
 const formatter = gantt.ext.formatters.durationFormatter();
 // an instance of the formatter object is created using the factory method
 ~~~
 
-###**API**
-
-The created instance of the *DurationFormatter* provides following methods:
-
-- **canParse(value: string)** - returns *true* if the provided string can be parsed into the duration value, otherwise - returns *false*
-
+- **_enter_**:
 ~~~js
-const formatter = gantt.ext.formatters.durationFormatter();
-console.log(formatter.canParse("1 day"));
-// true
-
-console.log(formatter.canParse("abc"));
-// false
+formatter.parse("1"); // entered value: 1 day - if enter:"day" (default)
+formatter.parse("1"); // entered value: 1 hour - if enter:"hour"
 ~~~
 
-- **format(value: number) : string**- converts the provided duration value into the duration string
+- **_store_**:
 
 ~~~js
-const formatter = gantt.ext.formatters.durationFormatter();
-console.log(formatter.format(24));
-// 3 days
+formatter.parse("1 day"); // stored value: 8 - if store:"hour"
+formatter.parse("1 day"); // stored value: 480 - store:"minute" 
 ~~~
 
-- **parse(value: string) : number** - parses the provided string into the duration value. If the value can’t be parsed, ‘null’ will be returned
 
+- **_format_**
 ~~~js
-const formatter = gantt.ext.formatters.durationFormatter();
-console.log(formatter.parse("1 day"));
-// 8
+gantt.ext.formatters.durationFormatter({
+	format: ["hour", "minute"], /*!*/
+	store:"minute"
+}).format(260); // 4 hours 20 minutes
+
+gantt.ext.formatters.durationFormatter({
+	format: "hour", /*!*/
+	store:"minute"	
+}).format(260);// 4.33 hours
 ~~~
 
-###**Configuration**
 
-The **durationFormatter** method takes a configuration object with optional properties of the *durationFormatter* as a parameter:
 
+- **_short_**
+~~~js
+gantt.ext.formatters.durationFormatter({
+	format: ["week", "hour", "minute"],
+	store:"minute",
+	short: false /*!*/	
+}).format(10021); //"4 weeks 7 hours 1 minute"
+ 
+gantt.ext.formatters.durationFormatter({
+	format: ["week", "hour", "minute"],
+	store:"minute",
+	short: true	 /*!*/
+}).format(10021); //"4wk 7h 1min"
+~~~
+
+
+Example of the full configuration:
 ~~~js
 const formatter = gantt.ext.formatters.durationFormatter({
     // default values
@@ -104,78 +154,42 @@ const formatter = gantt.ext.formatters.durationFormatter({
 });
 ~~~
 
-The *object* has the following properties:
+###**API**
 
-- **enter** - (*string*) specifies the default format for the **parse** method, which is used when an input value is entering without units
+The created instance of the *DurationFormatter* provides the following methods:
 
-~~~js
-formatter.parse("1");
-// is it 1 day or 1 hour?
-~~~
+- <span class=submethod>**canParse (value): boolean**</span> - returns *true* if the provided string can be parsed into the duration value, otherwise - returns *false*
+    - **_value_** - (*string*) - the string that will be checked
 
-Default value: "day".
-
-- **store** - (*string*) specifies the format for the duration values storage in the gantt. This property affects the output value of the **parse** method:
 
 ~~~js
-formatter.parse("1 day"); // 8 - if store:"hour"
-formatter.parse("1 day"); // 480 - store:"minute" 
+const formatter = gantt.ext.formatters.durationFormatter();
+console.log(formatter.canParse("1 day"));
+// true
+
+console.log(formatter.canParse("abc"));
+// false
 ~~~
 
-Default value: "hour".
-
-- **format** - (*string|array*) specifies the format for the output value
+- <span class=submethod>**format (value): string**</span> - converts the provided duration value into the duration string
+    - **_value_** - (*number*) - the duration value that will be converted
 
 ~~~js
-gantt.ext.formatters.durationFormatter({
-	format: ["hour", "minute"], /*!*/
-	store:"minute"
-}).format(260); // 4 hours 20 minutes
-
-gantt.ext.formatters.durationFormatter({
-	format: "hour", /*!*/
-	store:"minute"	
-}).format(260);// 4.33 hours
+const formatter = gantt.ext.formatters.durationFormatter();
+console.log(formatter.format(24));
+// 3 days
 ~~~
 
-**Supported values**: "auto", "minute", "hour", "day", "week", "month", "year", "an array containing any of these values".
+- <span class=submethod>**parse (value): number**</span> - parses the provided string into the duration value. If the value can’t be parsed, ‘null’ will be returned
+    - **_value_** - (*string*) - the string that will be converted
 
-The "auto" value  means the formatter will try to select an appropriate unit depending on provided value (i.e. larger values will be formatted as days/months/years, smaller values will be formatted as minutes/hours).
-
-- **short** - (*boolean*)  sets short labels (abbreviations) for time units
 
 ~~~js
-gantt.ext.formatters.durationFormatter({
-	format: ["week", "hour", "minute"],
-	store:"minute",
-	short: false /*!*/	
-}).format(10021); //"4 weeks 7 hours 1 minute"
- 
-gantt.ext.formattersdurationFormatter.durationFormatter({
-	format: ["week", "hour", "minute"],
-	store:"minute",
-	short: true	 /*!*/
-}).format(10021); //"4wk 7h 1min"
+const formatter = gantt.ext.formatters.durationFormatter();
+console.log(formatter.parse("1 day"));
+// 8
 ~~~
 
-Default value: *false*
-
-- **minutesPerHour** - (*number*) - defines how duration values will be converted from minutes to hours and vice-versa. 
-*Default value: 60*
-
-- **hoursPerDay** - (*number*) - defines how duration values will be converted from hours to days and vice-versa. 
-*Default value: 8*
-
-- **hoursPerWeek** - (*number*) - defines how duration values will be converted from hours to weeks and vice-versa. 
-*Default value: 40*
-
-- **daysPerMonth** - (*number*) - defines how duration values will be converted from days to months and vice-versa. 
-*Default value: 30*
-
-- **daysPerYear** - (*number*) - defines how duration values will be converted from days to years and vice-versa. 
-*Default: 365*
-
-- **labels** - (*object*) - defines text labels for different time units. These labels are used both for parsed and formatted values. 
 
 
 Read details about the **durationFormatter** method in the desktop/working_time.md#taskdurationindecimalformat article.
@@ -183,22 +197,68 @@ Read details about the **durationFormatter** method in the desktop/working_time.
 Link Formatter
 ----------------------
 
-The **gantt.ext.formatters.linkFormatter(config)** method returns a new instance of the *LinkFormatter*. 
+The **gantt.ext.formatters.linkFormatter(config)** method returns a new instance of the *LinkFormatter*. It reuses some methods and the configuration of the Duration Formatter
 
-**Parameters:**
+###**Configuration**
 
-- **config** - (*object*) optional, a configuration object
+- <span class=submethod>**linkFormatter (config): LinkFormatter**</span> - create a Link Formatter
+    - **_config?_** - (*object*) - optional, a configuration object which can include the following attributes:
+        - **_durationFormatter?_** - (*DurationFormatter*) - an instance of the *DurationFormatter* created by the *gantt.ext.formatters.durationFormatter()*. It affects how lag/lead values of links are parsed and formatted:
+        - **_labels?_** - (*object*) - locale labels for different types of links
+            - **_finish_to_start?_** - (*string*) - labels for the Finish to Start links
+            - **_start_to_start?_** - (*string*) - labels for the Start to Start links
+            - **_finish_to_finish?_** - (*string*) - labels for the Finish to Finish links
+            - **_start_to_finish?_** - (*string*) - labels for the Start to Finish links
+
+**Examples:**
+
+
+Initialize Link Formatter with the default settings:
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
 // an instance of the formatter object is created using the factory method
 ~~~
 
+- **_short_**:
+
+~~~js
+gantt.ext.formatters.linkFormatter()
+   .format({id:1, type:"1", source: 1, target: 2, lag: 5});
+//"1SS+5 days"
+ 
+var durationFormatter = gantt.ext.formatters.durationFormatter({
+    short: true
+});
+gantt.ext.formatters.linkFormatter({durationFormatter: durationFormatter})
+    .format({id:1, type:"2", source: 1, target: 2, lag: -1});
+//"1FF-1d"
+~~~
+
+
+- **_labels_**:
+~~~js
+const formatter = gantt.ext.formatters.linkFormatter({
+    //default values
+    durationFormatter: gantt.ext.formatters.durationFormatter(),
+    labels: {
+        finish_to_start: "FS",
+        start_to_start: "SS",
+        finish_to_finish: "FF",
+        start_to_finish: "SF"
+    }
+});
+~~~
+
+
+
 ###**API**
 
-The created instance of the *LinkFormatter* provides following methods:
+The created instance of the *LinkFormatter* provides the following methods:
 
-- **canParse(value: string)** - returns *true* if the provided string can be parsed into the link object, otherwise - returns *false*
+
+- <span class=submethod>**canParse (value): boolean**</span> - returns *true* if the provided string can be parsed into the link object, otherwise - returns *false*
+    - **_value_** - (*string*) - the string that will be checked
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
@@ -209,7 +269,8 @@ console.log(formatter.canParse("abc"));
 // false
 ~~~
 
-- **format(object: link) : string** - converts the provided link value into the string
+- <span class=submethod>**format (link): string**</span> - converts the provided link value into the string
+    - **_value_** - (*Link*) - the link object that will be converted
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
@@ -218,7 +279,8 @@ formatter.format({id:1, type:"1", source: 1, target: 2, lag: 5});
 //"1SS+5 days"
 ~~~
 
-- **parse(value: string) : object** - parses the provided string into the link object. If the value can’t be parsed, ‘null’ will be returned. **Note** that the *link.target* of the given link will have "null" value
+- <span class=submethod>**parse (value): object**</span> - parses the provided string into the link object. If the value can’t be parsed, ‘null’ will be returned. **Note** that the *link.target* of the given link will have "null" value
+    - **_value_** - (*string*) - the string that will be converted
 
 ~~~js
 const formatter = gantt.ext.formatters.linkFormatter();
@@ -262,43 +324,8 @@ console.log(formatter.format({id:1, type:"1", source: 2, target: 3, lag: 1}));
 Finish-To-Start links with no lag/lead will be formatted using the short format, while the other links will be formatted using the complete format.
 Similarly, if only WBS code of a task is provided into the **parse** method, the formatter will assume Finish-to-Start type and zero lag time.
 
-###**Configuration**
 
-The **linkFormatter** method takes a configuration object with optional properties of the *linkFormatter* as a parameter. 
 
-~~~js
-{
-const formatter = gantt.ext.formatters.linkFormatter({
-    //default values
-    durationFormatter: gantt.ext.formatters.durationFormatter(),
-    labels: {
-        finish_to_finish: "FF",
-        finish_to_start: "FS",
-        start_to_start: "SS",
-        start_to_finish: "SF"
-    }
-});
-~~~
-
-The *object* has the following properties:
-
-- **durationFormatter** - (*object*) an instance of the *DurationFormatter* created by the *gantt.ext.formatters.durationFormatter()*. 
-It affects how lag/lead values of links are parsed and formatted:
-
-~~~js
-gantt.ext.formatters.linkFormatter()
-   .format({id:1, type:"1", source: 1, target: 2, lag: 5});
-//"1SS+5 days"
- 
-var durationFormatter = gantt.ext.formatters.durationFormatter({
-    short: true
-});
-gantt.ext.formatters.linkFormatter({durationFormatter: durationFormatter})
-    .format({id:1, type:"2", source: 1, target: 2, lag: -1});
-//"1FF-1d"
-~~~
-
-- **labels** - (*object*) locale labels for different types of links
 
 Read details about the linkFormatter method in the desktop/inline_editing.md#linkformatter article.
 

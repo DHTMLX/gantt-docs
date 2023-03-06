@@ -5,7 +5,7 @@ getMarker
 @short:gets the marker's object
 
 @params:
-- markerId	string	the marker's id
+- markerId	string |number	the marker's id
 
 @returns:
 - marker	object	the marker's configuration object

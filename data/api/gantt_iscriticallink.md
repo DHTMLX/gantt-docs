@@ -5,7 +5,7 @@ isCriticalLink
 	
 @edition: pro
 @params:
-- link	object	the link's object
+- link	Link	the link's object
 
 
 @returns:
@@ -28,7 +28,7 @@ gantt.config.highlight_critical_path = true; /*!*/
 gantt.init("gantt_here");
 gantt.parse(tasks);
 
-gantt.isCriticaLink(gantt.getLink(2));// ->'false' /*!*/
+gantt.isCriticalLink(gantt.getLink(2));// ->'false' /*!*/
 
 @template:	api_method
 

@@ -5,7 +5,7 @@ getConstraintLimitations
 	returns the earliest and latest dates allowed by the constraint applied to a task
 
 @params:
-- task 	object	a task object
+- task 	Task	a task object
 
 @returns:
 - constraintLimitations		object		an object containing constraint dates

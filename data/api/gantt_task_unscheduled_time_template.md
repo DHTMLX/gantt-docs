@@ -7,7 +7,7 @@ task_unscheduled_time
 @type:
 
 @params:
-- task		object			the task object	
+- task		Task			the task object	
 
 
 @example:

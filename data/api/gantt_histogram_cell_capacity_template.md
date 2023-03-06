@@ -9,7 +9,7 @@ histogram_cell_capacity
 - start_date	Date		start date of the scale cell  
 - end_date		Date		end date of the scale cell
 - resource		object	 	the resource object
-- tasks			array		tasks that are assigned to the specified resource and overlap start/end dates of the cell
+- tasks			Array &lt;Task&gt;		tasks that are assigned to the specified resource and overlap start/end dates of the cell
 - assignments	array		resource assignments that are assigned to the specified start/end dates of the task
 
 @example:

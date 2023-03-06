@@ -6,7 +6,7 @@ link_class
 
 
 @params: 
-- link	object	the link object
+- link	Link	the link object
 
 @example:
 gantt.templates.link_class = function(link){

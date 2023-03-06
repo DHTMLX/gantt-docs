@@ -7,19 +7,24 @@ The *quickInfo* object possesses the following API:
 Methods
 ----------------
 
-- **show(id)** - displays the quick info popup for a specified element
+- <span class=submethod>**show (id): undefined**</span> - displays the quick info popup for a specified element
+	- **_id_** - (*number | string*) - the task ID
  
 ~~~js
 gantt.ext.quickInfo.show("1");
 ~~~
 
-- **show(x,y)**  - displays the quick info popup at specific coordinates
+- <span class=submethod>**show (x, y): undefined**</span>  - displays the quick info popup at specific coordinates
+	- **_x_** - (*number | string*) - horizontal coordinate
+	- **_y_** - (*number | string*) - vertical coordinate
 
 ~~~js
 gantt.ext.quickInfo.show(10,30);
 ~~~
 
-- **hide([force: boolean])** - hides the quick info popup. When **gantt.config.quick_info_detached** is set to *false*, the quick info will not disappear immediately, but after a short animation. Providing *true* value as an argument will cancel the animation and will remove the popup immediately.
+- <span class=submethod>**hide (force): HTMLElement**</span> - hides the quick info popup. When **gantt.config.quick_info_detached** is set to *false*, the quick info will not disappear immediately, but after a short animation. Providing *true* value as an argument will cancel the animation and will remove the popup immediately.
+	- **_force?_** - (*boolean*) - defines whether the quick info popup will be hidden immediately without animation
+
 
 ~~~js
 gantt.config.quick_info_detached = false;
@@ -32,7 +37,8 @@ gantt.ext.quickInfo.hide();
 gantt.ext.quickInfo.hide(true);
 ~~~
 
-- **setContainer(container)** - sets a container where the quick info will be displayed. If no custom container specified, QuickInfo will be placed into the first of the found nodes: **gantt.$task, gantt.$grid, gantt.$layout**
+- <span class=submethod>**setContainer (container): undefined**</span> - sets a container where the quick info will be displayed. If no custom container specified, QuickInfo will be placed into the first of the found nodes: **gantt.$task, gantt.$grid, gantt.$root**
+	- **_container_** - (*HTMLElement | string*) - container element or its ID
 
 ~~~js
 gantt.ext.quickInfo.setContainer(document.body);
@@ -40,7 +46,7 @@ gantt.ext.quickInfo.show(1300,100);
 
 ~~~
 
-- **getNode()** - returns the HTMLElement of the quick info popup. Returns *null* if the quick info is not initialized
+- <span class=submethod>**getNode (): HTMLElement | null**</span> - returns the HTMLElement of the quick info popup. Returns *null* if the quick info is not initialized
 
 ~~~js
 const node = gantt.ext.quickInfo.getNode();
@@ -50,14 +56,15 @@ The returned DOM element of the shown quick info looks like:
 
 <img src="desktop/quick_node.png">
 
-- **setContent(config)** - (*object*) puts the content into the quick info. It takes a configuration object of a quick info as a parameter. <br>
-The configuration object has the following structure:
-    - **taskId** - (*string|number*) optional, the id of the task to which the action buttons of the quick info will be connected
-    - **header** - optional, the header of the pop-up edit form which may include:
-        - **title** - (*string*) optional, the title of the pop-up edit form
-        - **date** - (*string*) optional, the date of the pop-up edit form
-    - **content** - (*string*) optional, the content of the pop-up edit form
-    - **buttons** - (*string[]*) optional, buttons to be placed in the pop-up edit form<br>
+- <span class=submethod>**setContent (config): undefined**</span> - puts the content into the quick info
+    - **_config?_** - (*object*) - optional, the configuration object of a quick info which can include the following attributes:
+        - **_taskId?_** - (*string | number*) - optional, the id of the task to which the action buttons of the quick info will be connected
+        - **_header?_** - (*object*) - optional, the header of the pop-up edit form which may include:
+            - **_title?_** - (*string*) - optional, the title of the pop-up edit form
+            - **_date?_** - (*string*) - optional, the date of the pop-up edit form
+        - **_content?_** - (*string*) - optional, the content of the pop-up edit form
+        - **_buttons?_** - (*string[]*) - optional, buttons to be placed in the pop-up edit form
+    <br>
 If neither header nor buttons are specified, the related areas of the quick info popup will be hidden.
 
 Here is what the configuration object of the **setContent** method can look like:

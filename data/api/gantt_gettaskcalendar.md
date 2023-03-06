@@ -22,6 +22,9 @@ var task_calendar = gantt.getTaskCalendar({
 	"open": true
 });
 
+gantt.getTaskCalendar(2);
+
+
 
 @template:	api_method
 @descr:

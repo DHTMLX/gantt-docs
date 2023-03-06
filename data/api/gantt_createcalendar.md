@@ -7,7 +7,10 @@ createCalendar
 
 @params:
 
-* parentCalendar			object			(optional) an existing calendar that is used for creating a new one on the base of it		
+* parentCalendar			Calendar			(optional) an existing calendar that is used for creating a new one on the base of it		
+
+@returns: 
+- calendar		Calendar		the Calendar object
 
 
 

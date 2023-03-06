@@ -417,7 +417,7 @@ In some cases you may need to change the look or behavior of a grid cell after i
 gantt.config.columns =  [
     {name: "text", tree: true, width: "*", resize: true},
     {name: "start_date", align: "center", resize: true},
-    {name: "duration", align: "center", onrender: function(task, node} {
+    {name: "duration", align: "center", onrender: function(task, node) {
         node.setAttribute("title", task.text);
     },
     {name: "add", width: 44}

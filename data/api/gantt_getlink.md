@@ -8,7 +8,7 @@ getLink
 - id	string,number	the link id
 
 @returns:
-link	object 	the link object 
+link	Link 	the link object 
 
 @example:
 gantt.addLink({
