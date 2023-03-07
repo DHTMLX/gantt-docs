@@ -230,6 +230,7 @@ The list of available methods and properties:
 - api/gantt_auto_scheduling_config.md
 - api/gantt_auto_scheduling_strict_config.md
 - api/gantt_auto_scheduling_initial_config.md
+- api/gantt_auto_scheduling_project_constraint_config.md
 - api/gantt_autoschedule.md
 - api/gantt_isunscheduledtask.md
 - api/gantt_findcycles.md
@@ -261,6 +262,14 @@ The api/gantt_auto_scheduling_initial_config.md property specifies whether gantt
 
 ~~~js
 gantt.config.auto_scheduling_initial = true;
+~~~
+
+###Inheritance of project constraint
+
+The api/gantt_auto_scheduling_project_constraint_config.md property defines whether the tasks without the specified constraint type should inherit the constraint type from their (project) parent task:
+
+~~~js
+gantt.config.auto_scheduling_project_constraint = true;
 ~~~
 
 ###Recalculating the project

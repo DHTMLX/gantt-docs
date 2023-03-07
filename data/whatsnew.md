@@ -10,6 +10,19 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+<b>8.0</b>
+--------------
+
+<span class='release_date'>April 7, 2023. Major update</span>
+
+### New functionality
+
+- Tasks now can inherit the constraint type from parent projects (new api/gantt_auto_scheduling_project_constraint_config.md config)
+- Grouping tasks functionality now can preserve the original Gantt tree structure inside groups (new **save_tree_structure** of the [groupBy()](api/gantt_groupby.md) method)
+- The ability to style separate [rollup items](desktop/milestones.md#stylingseparaterollupitems) and [split tasks](desktop/split_tasks.md#styling)
+- The ability to [hide all rollup items from the project task](desktop/milestones.md#hidingtasksandmilestones)
+
+
 7.1.13
 ----------
 

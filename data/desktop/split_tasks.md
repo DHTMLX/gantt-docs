@@ -114,4 +114,19 @@ You can change the color of the bar of the parent item in the same way as you ca
 <br>
 When you have only one split task, the summary item (type=“project”) becomes invisible because it is completely covered by the split task. If there are no split-subtasks, the summary item has a default date and duration.
 
+### Styling separate split tasks
+
+From v8.0, split tasks come into template functions with the *task.$rendered_at* property which contains the id of a row the split task is rendered at. Thus, to style specific split tasks based on the row they are displayed at, you may use the api/gantt_task_class_template.md template:
+
+~~~js
+gantt.templates.task_class = function(start, end, task) {
+    if(task.$rendered_at) {
+        if(gantt.calculateTaskLevel(gantt.getTask(task.$rendered_at)) === 1) {
+            return "phase-level-split-task";
+        }
+    }
+    return "";
+};
+~~~
+
 @edition:pro

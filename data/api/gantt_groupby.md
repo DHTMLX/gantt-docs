@@ -21,7 +21,8 @@ gantt.groupBy({
 	    {key:5, label: "Low"},
     ],
     group_id: "key",
-	group_text: "label"
+	group_text: "label",
+	save_tree_structure: true
 });
 
 //multi-level grouping
@@ -72,6 +73,7 @@ The grouping configuration object has the following properties:
 - **group_text** - (<i>string</i>) the group's label. Optional. The default value is 'label'.
 - **delimiter** - (*string*) the delimiter is used for automatic creation of groups for tasks with multiple resources. Optional. The default value is ",".
 - **default_group_label** - (<i>string</i>) the name of the default group. Optional. The default value is 'None'.
+- **save_tree_structure** - (<i>boolean</i>) defines whether the gantt should save its tree structure inside groups. If not specified or is set to *false*, gantt tasks will be displayed in a flat list view.
 
 Please, note:
 
@@ -86,5 +88,7 @@ gantt.templates.task_class=function(start, end, task){
 };
 ~~~
 
-- The default group includes tasks which are not included into the other groups. The default group doesn't include tasks if they have **relation_property** specified as a <i>string|number</i> value.<br> {{sample	02_extensions/28_tasks_grouping_relation_properties.html}}
+- The default group includes tasks which are not included into the other groups. The default group doesn't include tasks if they have **relation_property** specified as a <i>string|number</i> value.<br> {{sample	02_extensions/28_tasks_grouping_save_tree_structure.html}}
 
+@changelog: 
+- the **save_tree_structure** parameter was added in v8.0
