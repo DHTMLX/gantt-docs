@@ -183,6 +183,20 @@ gantt.config.lightbox.project_sections = [
 
 {{sample 01_initialization/21_rollup_tasks.html}}
 
+## API overview
+
+There is an event that can be used to control the process of display of rollup tasks on their parent projects:
+
+- api/gantt_onbeforerolluptaskdisplay_event.md
+
+~~~js
+// before the rollup task is displayed on its parent project 
+gantt.attachEvent("onBeforeRollupTaskDisplay", function(taskId, task, parentId){
+    // any custom logic here
+    return false;
+});
+~~~
+
 ## Styling separate rollup items
 
 From v8.0, rollup items come into template functions with the *task.$rendered_at* property which contains the id of a row the rollup item is rendered at. Thus, to style specific rollup items based on the row they are displayed at, you may use the api/gantt_task_class_template.md template:

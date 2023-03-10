@@ -17,10 +17,18 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### New functionality
 
-- Tasks now can inherit the constraint type from parent projects (new api/gantt_auto_scheduling_project_constraint_config.md config)
-- Grouping tasks functionality now can preserve the original Gantt tree structure inside groups (new **save_tree_structure** of the [groupBy()](api/gantt_groupby.md) method)
-- The ability to style separate [rollup items](desktop/milestones.md#stylingseparaterollupitems) and [split tasks](desktop/split_tasks.md#styling)
-- The ability to [hide all rollup items from the project task](desktop/milestones.md#hidingtasksandmilestones)
+- Updated Auto Scheduling & Constraint calculation:
+	- tasks now can inherit the constraint type from parent projects (new api/gantt_auto_scheduling_project_constraint_config.md config)
+- Grouping tasks functionality now can preserve the original Gantt tree structure inside groups:
+	- new **save_tree_structure** parameter of the [groupBy()](api/gantt_groupby.md) method
+- Improvements for rollup and split tasks:
+	- the ability to style separate [rollup items](desktop/milestones.md#stylingseparaterollupitems) and [split tasks](desktop/split_tasks.md#styling)
+	- the ability to [hide all rollup items from the project task](desktop/milestones.md#hidingtasksandmilestones)
+	- the ability to control where rollup items are displayed (new api/gantt_onbeforerolluptaskdisplay_event.md event)
+	- the ability to [filter split tasks](desktop/split_tasks.md#filteringsplittasks) (new api/gantt_onbeforesplittaskdisplay_event.md event)
+- [Empty state screen for Gantt](desktop/empty_state_screen.md):
+	- new api/gantt_show_empty_state_config.md config
+	- new [emptyStateElement extension](desktop/empty_state_element_ext.md)
 
 
 7.1.13

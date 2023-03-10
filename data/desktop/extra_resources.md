@@ -4,6 +4,7 @@ Common Features
 {{index
 - desktop/localization.md
 - desktop/fullscreen_mode.md
+- desktop/empty_state_screen.md
 - desktop/undo_redo.md
 - desktop/message_boxes.md
 - desktop/quick_info.md

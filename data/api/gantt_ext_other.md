@@ -14,6 +14,7 @@ gantt.ext.inlineEditors.init();
 The **ext** object includes the following extensions:
 
 - [gantt.ext.clickDrag](desktop/click_drag_ext.md)
+- [gantt.ext.emptyStateElement](desktop/empty_state_element_ext.md)
 - [gantt.ext.formatters](desktop/formatters_ext.md)
 - [gantt.ext.fullscreen](desktop/fullscreen_ext.md)
 - [gantt.ext.inlineEditors](desktop/inline_editors_ext.md)
@@ -26,6 +27,7 @@ The **ext** object includes the following extensions:
 
 @index:
 - desktop/click_drag_ext.md
+- desktop/empty_state_element_ext.md
 - desktop/formatters_ext.md
 - desktop/fullscreen_ext.md
 - desktop/inline_editors_ext.md

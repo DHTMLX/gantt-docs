@@ -120,6 +120,7 @@ Properties
 - api/gantt_select_task_config.md - enables selection of tasks in the Gantt chart
 - api/gantt_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
 - api/gantt_show_chart_config.md - shows the chart (timeline) area of the Gantt chart
+- api/gantt_show_empty_state_config.md - defines whether to display the placeholder element inside the grid when it is empty
 - api/gantt_show_errors_config.md - enables showing error alerts in case of unexpected behavior
 - api/gantt_show_grid_config.md - shows the grid area of the Gantt chart
 - api/gantt_show_links_config.md - enables/disables displaying links in the Gantt chart
@@ -285,6 +286,7 @@ Properties
 - api/gantt_select_task_config.md
 - api/gantt_server_utc_config.md
 - api/gantt_show_chart_config.md
+- api/gantt_show_empty_state_config.md
 - api/gantt_show_errors_config.md
 - api/gantt_show_grid_config.md
 - api/gantt_show_links_config.md

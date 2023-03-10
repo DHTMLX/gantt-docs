@@ -248,10 +248,12 @@ Gantt API
 - api/gantt_onbeforeparse_event.md - fires before data started to be parsed
 - api/gantt_onbeforeredo_event.md - fires before the redo() method is called
 - api/gantt_onbeforeredostack_event.md - fires before an action is added into the redo stack
+- api/gantt_onbeforerolluptaskdisplay_event.md - fires before the rollup task is displayed on its parent project
 - api/gantt_onbeforerowdragend_event.md - fires when a user drops a row in the grid
 - api/gantt_onbeforerowdragmove_event.md - fires before a row of the grid is dragged vertically to a different position
 - api/gantt_onbeforerowresize_event.md - fires before the user starts to resize the row height by drag-and-drop
 - api/gantt_onbeforerowresizeend_event.md - fires before resizing of the row height is completed
+- api/gantt_onbeforesplittaskdisplay_event.md - fires before a subtask of the split task is displayed on the Gantt chart
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
 - api/gantt_onbeforetaskchanged_event.md - fires after the user has finished dragging and released the mouse button but before the changes are applied
@@ -444,6 +446,7 @@ Gantt API
 - api/gantt_select_task_config.md - enables selection of tasks in the Gantt chart
 - api/gantt_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
 - api/gantt_show_chart_config.md - shows the chart (timeline) area of the Gantt chart
+- api/gantt_show_empty_state_config.md - defines whether to display the placeholder element inside the grid when it is empty
 - api/gantt_show_errors_config.md - enables showing error alerts in case of unexpected behavior
 - api/gantt_show_grid_config.md - shows the grid area of the Gantt chart
 - api/gantt_show_links_config.md - enables/disables displaying links in the Gantt chart

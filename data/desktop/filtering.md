@@ -30,6 +30,7 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 	07_grid/03_filtering.html
 }}
 
+To filter data of a split task, apply the api/gantt_onbeforesplittaskdisplay_event.md event.
 
 You can have a look at the video guide that shows how to implement filtering tasks.
 

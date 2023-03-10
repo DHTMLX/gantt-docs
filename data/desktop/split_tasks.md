@@ -92,6 +92,22 @@ gantt.config.open_split_tasks = true;
 
 ![Expanding split task](desktop/expand_split_task.png)
 
+## Filtering split tasks
+
+To filter the subtasks of the split task rendered on the Gantt chart, apply the api/gantt_onbeforesplittaskdisplay_event.md event and return:
+
+- *true*, for a subtask you want to display
+- *false*, for a subtask you want not to display
+
+~~~js
+gantt.attachEvent("onBeforeSplitTaskDisplay", function (id, task, parent) {
+    if (task.duration < 3) {
+        return false;
+    }
+    return true;
+});
+~~~
+
 Styling
 -------------------
 
