@@ -19,7 +19,7 @@ The **datastore** object possesses the following [methods](#methods) and [events
 <h3 id="methods">Methods</h3>
 
 <ul id="parse"><li>
-    	<b class=submethod>parse (data): undefined</b> - loads data from an array
+    	<b class=submethod>parse (data): void</b> - loads data from an array
         <ul>
           	<li><b><i>data</i></b> - (<i>Array&lt;object&gt;</i>) - the data to load</li>
         </ul></li>
@@ -56,7 +56,7 @@ gantt.$resourcesStore.parse([
 
 <ul id="getItem">
     <li>
-    	<b class=submethod>getItem (id): object | undefined</b> - returns the item by its id
+    	<b class=submethod>getItem (id): object | void</b> - returns the item by its id
         <ul>
           	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
@@ -79,7 +79,7 @@ var resource = store.getItem(resourceId);
 
 <ul id="updateItem">
     <li>
-    	<b class=submethod>updateItem (id, item): undefined</b> - updates the specified item
+    	<b class=submethod>updateItem (id, item): void</b> - updates the specified item
         <ul>
           	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
           	<li><b><i>item?</i></b> - (<i>object</i>) - an object the item</li>
@@ -106,7 +106,7 @@ store.updateItem(resourceId, { text: "modified" });
 
 <ul id="removeItem">
     <li>
-    	<b class=submethod>removeItem (id): undefined</b> - deletes the specified item
+    	<b class=submethod>removeItem (id): void</b> - deletes the specified item
         <ul>
           	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
@@ -191,7 +191,7 @@ var itemId = store.addItem({
 
 <ul id="changeId">
     <li>
-    	<b class=submethod>changeId (oldId, newId): undefined</b> - changes the id of the item
+    	<b class=submethod>changeId (oldId, newId): void</b> - changes the id of the item
         <ul>
           	<li><b><i>oldId</i></b> - (<i>string | number</i>) - the current item's id</li>
           	<li><b><i>newId</i></b> - (<i>string | number</i>) - the new item's id
@@ -248,7 +248,7 @@ if(store.exists(resourceId)){
 
 <ul id="move">
     <li>
-    	<b class=submethod>move (sindex, tindex): undefined</b> - moves an item to a new position
+    	<b class=submethod>move (sindex, tindex): void</b> - moves an item to a new position
         <ul>
           	<li><b><i>sindex</i></b> - (<i>number</i>) - the index of the current position of the task</li>
           	<li><b><i>tindex</i></b> - (<i>number</i>) - the index of the position that the item will be moved to</li>
@@ -279,7 +279,7 @@ store.move(indexA, indexB);
 
 <ul>
     <li>
-    	<b class=submethod>clearAll (): undefined</b> - clears the datastore
+    	<b class=submethod>clearAll (): void</b> - clears the datastore
 </li>
 </ul>
 
@@ -298,7 +298,7 @@ store.clearAll();
 
 <ul id="silent">
     <li>
-    	<b class=submethod>silent (callback): undefined</b> - execute the code without firing API events of the datastore
+    	<b class=submethod>silent (callback): void</b> - execute the code without firing API events of the datastore
         <ul>
           	<li><b><i>callback</i></b> - (<i>Function</i>) - the callback function</li>
         </ul>
@@ -323,7 +323,7 @@ store.refresh();
 
 <ul id="refresh">
     <li>
-    	<b class=submethod>refresh (id): undefined</b> - fires repainting of events of the specified record, runs filters
+    	<b class=submethod>refresh (id): void</b> - fires repainting of events of the specified record, runs filters
         <ul>
           	<li><b><i>id?</i></b> - (<i>string | number</i>) - optional, the id of the record</li>
         </ul>
@@ -380,7 +380,7 @@ alert(store.countVisible() + " items are visible");
 
 <ul id="eachItem">
     <li>
-    	<b class=submethod>eachItem (callback): undefined</b> - iterates over all tasks of the datastore
+    	<b class=submethod>eachItem (callback): void</b> - iterates over all tasks of the datastore
         <ul>
           	<li><b><i>callback</i></b> - (<i>Function</i>) - the callback function</li>
         </ul>
@@ -405,7 +405,7 @@ store.eachItem(function(item){
 
 <ul id="filter">
     <li>
-    	<b class=submethod>filter (): undefined</b> - runs the filters and updates visible array of items
+    	<b class=submethod>filter (): void</b> - runs the filters and updates visible array of items
 </li>
 Normally, you don't need to call this method, it is called automatically from the <b>store.refresh()</b> method.
 </ul>
@@ -419,7 +419,7 @@ store.filter();
 </ul>
 
 <ul id="sort"><li>
-    	<b class=submethod>sort (field, desc, parent, silent): undefined</b> -  sorts items in the resource grid
+    	<b class=submethod>sort (field, desc, parent, silent): void</b> -  sorts items in the resource grid
         <ul>
           	<li><b><i>field</i></b> - (<i>string | Function</i>) - the name of the column that the resource grid will be sorted by or a custom sorting function</li>
           	<li><b><i>desc?</i></b> - (<i>boolean</i>) - specifies the sorting direction: <i>true</i> - descending sort and <i>false</i> - ascending sort. By default, <i>false</i></li>
@@ -506,7 +506,7 @@ var items = store.getItems();
 
 <ul id="getIdByIndex">
     <li>
-    	<b class=submethod>getIdByIndex (index): string | number | undefined</b> - returns the id of the item by its index. Returns `undefined` if there is no item at the specified index.
+    	<b class=submethod>getIdByIndex (index): string | number | void</b> - returns the id of the item by its index. Returns `undefined` if there is no item at the specified index.
         <ul>
           	<li><b><i>index</i></b> - (<i>number</i>) - the position of the item</li>
         </ul>
@@ -612,7 +612,7 @@ var prevId = store.getPrev(itemId);
 
 <ul id="destructor">
     <li>
-    	<b class=submethod>destructor (): undefined</b> - clears the datastore and removes all attached event handlers. The datastore is not usable after this method is called.
+    	<b class=submethod>destructor (): void</b> - clears the datastore and removes all attached event handlers. The datastore is not usable after this method is called.
 </li>
 </ul>
 
@@ -672,7 +672,7 @@ store.callEvent("CustomEvent", [param1, param2]);
 
 <ul id="detachEvent">
     <li>
-    	<b class=submethod>detachEvent (id): undefined</b> - detaches a handler from an event (which was attached before by the <b>attachEvent()</b> method)
+    	<b class=submethod>detachEvent (id): void</b> - detaches a handler from an event (which was attached before by the <b>attachEvent()</b> method)
         <ul>
           	<li><b><i>id</i></b> - (<i>string</i>) - the event's id</li>
         </ul>

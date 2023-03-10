@@ -19,7 +19,7 @@ The extended API of the **treeDatastore** object provides the following [methods
 <h3 id="methods">Methods</h3>
 
 <ul><li>
-    	<b class=submethod>move (sid, tindex, parent): boolean | undefined</b> - moves an item to the new position or to a new parent
+    	<b class=submethod>move (sid, tindex, parent): boolean | void</b> - moves an item to the new position or to a new parent
         <ul>
           	<li><b><i>sid</i></b> - (<i>string | number</i>) - the id of the item to move</li>
           	<li><b><i>tindex</i></b> - (<i>number</i>) - the index of the position that the item will be moved to (the index within a branch)</li>
@@ -89,7 +89,7 @@ store.getBranchIndex(8);
 
 
 <ul><li>
-    	<b class=submethod>hasChild (id): number | undefined</b> - checks whether the specified item has child items
+    	<b class=submethod>hasChild (id): number | void</b> - checks whether the specified item has child items
         <ul>
           	<li><b><i>id</i></b> - (<i>string | number</i>) - the id of the item</li>
         </ul>
@@ -369,7 +369,7 @@ store.calculateItemLevel(store.getItem(1));
 </ul>
 
 <ul><li>
-    	<b class=submethod>setParent (item, newParentId): undefined</b> -  sets the parent for an item. The parent id will be writen to the property specified by `parentProperty` config, "item.parent" by default.
+    	<b class=submethod>setParent (item, newParentId): void</b> -  sets the parent for an item. The parent id will be writen to the property specified by `parentProperty` config, "item.parent" by default.
         <ul>
           	<li><b><i>item</i></b> - (<i>object</i>) - the item's object</li>
           	<li><b><i>newParentId</i></b> - (<i>string | number | null</i>) - the id of the parent</li>
@@ -419,7 +419,7 @@ store.setParent(store.getItem(9), 4);
 </ul>
 
 <ul><li>
-    	<b class=submethod>eachItem (callback, parentId): undefined</b> -  iterates over all children of a specific item
+    	<b class=submethod>eachItem (callback, parentId): void</b> -  iterates over all children of a specific item
         <ul>
           	<li><b><i>callback</i></b> - (<i>Function</i>) - the callback function</li>
           	<li><b><i>parentId?</i></b> - (<i>string | number</i>) - the id of the parent</li>
@@ -452,7 +452,7 @@ store.eachItem(function(item){
 </ul>
 
 <ul><li>
-    	<b class=submethod>eachParent (callback, startItem): undefined</b> -  iterates over all parent items of the specified item
+    	<b class=submethod>eachParent (callback, startItem): void</b> -  iterates over all parent items of the specified item
         <ul>
           	<li><b><i>callback</i></b> - (<i>Function</i>) - the callback function</li>
           	<li><b><i>startItem</i></b> - (<i>string | number</i>) - the id of the item the parent item of which should be iterated over</li>
@@ -486,7 +486,7 @@ store.eachParent(function(item){
 </ul>
 
 <ul><li>
-    	<b class=submethod>open (id): undefined</b> -  opens the branch with the specified id
+    	<b class=submethod>open (id): void</b> -  opens the branch with the specified id
         <ul>
           	<li><b><i>id</i></b> - (<i>string | number</i>) - the branch id</li>
         </ul>
@@ -517,7 +517,7 @@ store.open(1);
 </ul>
 
 <ul><li>
-    	<b class=submethod>close (id): undefined</b> -  closes the branch with the specified id
+    	<b class=submethod>close (id): void</b> -  closes the branch with the specified id
         <ul>
           	<li><b><i>id</i></b> - (<i>string | number</i>) - the branch id</li>
         </ul>
@@ -548,7 +548,7 @@ store.close(1);
 </ul>
 
 <ul><li>
-    	<b class=submethod>sort (field, desc, parent, silent): undefined</b> -  sorts items in the resource grid
+    	<b class=submethod>sort (field, desc, parent, silent): void</b> -  sorts items in the resource grid
         <ul>
           	<li><b><i>field</i></b> - (<i>string | Function</i>) - the name of the column that the resource grid will be sorted by or a custom sorting function</li>
           	<li><b><i>desc?</i></b> - (<i>boolean</i>) - specifies the sorting direction: <i>true</i> - descending sort and <i>false</i> - ascending sort. By default, <i>false</i></li>

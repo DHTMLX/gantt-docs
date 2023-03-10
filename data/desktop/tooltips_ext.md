@@ -23,7 +23,7 @@ There are several methods that allow controlling behavior of the tooltip while h
 
 ###gantt.ext.tooltips.attach()
 
-- <span class=submethod>**attach (config): undefined**</span> - adds tooltip with extended configuration. The method takes one parameter:
+- <span class=submethod>**attach (config): void**</span> - adds tooltip with extended configuration. The method takes one parameter:
     - **_config_** - (*object*) - an object with the tooltip settings. The settings are:
         - **_selector_** - (*string*) - defines CSS-selector for the elements to listen to mouse events on
         - **_onmouseenter_** - (*Function*) - a handler called when the mouse pointer enters the element. The parameters are:
@@ -60,7 +60,7 @@ gantt.ext.tooltips.attach({
 
 ###gantt.ext.tooltips.tooltipFor()
 
-- <span class=submethod>**tooltipFor (config): undefined**</span> - adds a tooltip for the specified Gantt element. It is a more simplified version of the **attach()** method. The method takes one parameter:
+- <span class=submethod>**tooltipFor (config): void**</span> - adds a tooltip for the specified Gantt element. It is a more simplified version of the **attach()** method. The method takes one parameter:
     - **_config_** - (*object*) - an object with the tooltip settings. The settings are:
         - **_selector_** - (*string*) - a CSS-selector of the Gantt element to add a tooltip to
         - **_html_** - (*Function*) - a template for the tooltip. The template function takes two parameters in its turn:
@@ -81,6 +81,6 @@ gantt.ext.tooltips.tooltipFor({
 
 ###gantt.ext.tooltips.detach()
 
-- <span class=submethod>**detach (selector): undefined**</span> - removes tooltip. As a parameter the method takes:
+- <span class=submethod>**detach (selector): void**</span> - removes tooltip. As a parameter the method takes:
 
 	- **_selector_** - (*string*) - the CSS selector of a Gantt element

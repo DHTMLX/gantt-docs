@@ -11,13 +11,13 @@ The following methods are available via the **gantt.ext.undo** object:
 
 ###Undo() / Redo() 
 
-- <span class=submethod>**undo (): undefined**</span> - reverts the changes made in the gantt
+- <span class=submethod>**undo (): void**</span> - reverts the changes made in the gantt
 
 ~~~js
 gantt.ext.undo.undo();
 ~~~
 
-- <span class=submethod>**redo (): undefined**</span> - applies the reverted changes to the gantt once again
+- <span class=submethod>**redo (): void**</span> - applies the reverted changes to the gantt once again
 
 ~~~js
 gantt.ext.undo.redo();
@@ -46,13 +46,13 @@ The returned stack is an array of the undo user actions. Each user action contai
 
 ###clearUndoStack() / clearRedoStack()
 
-- <span class=submethod>**clearUndoStack (): undefined**</span> - clears the stack of stored undo commands
+- <span class=submethod>**clearUndoStack (): void**</span> - clears the stack of stored undo commands
 
 ~~~js
 gantt.ext.undo.clearUndoStack();
 ~~~
 
-- <span class=submethod>**clearRedoStack (): undefined**</span> - clears the stack of stored redo commands
+- <span class=submethod>**clearRedoStack (): void**</span> - clears the stack of stored redo commands
 
 ~~~js
 gantt.ext.undo.clearRedoStack();
