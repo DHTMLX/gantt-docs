@@ -14,6 +14,8 @@ gantt.config.auto_scheduling_project_constraint = true;
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
+{{note This config is defined in the **auto_scheduling** extension, so you need to activate the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin. Read the details in the desktop/auto_scheduling.md article.}}
+
 By default, the constraint type of the (project) parent task doesn't affect the constraint type of its nested tasks.
 
 If you set the config to *true*, the child tasks (except for tasks with their own constraint type) will have the same constraint type as their (project) parent task (for example, **finish no later than**).
@@ -29,6 +31,7 @@ If you set the config to *true*, the child tasks (except for tasks with their ow
 - api/gantt_auto_scheduling_descendant_links_config.md
 - api/gantt_auto_scheduling_move_projects_config.md
 - api/gantt_auto_scheduling_strict_config.md
+- api/gantt_auto_scheduling_use_progress_config.md
 - api/gantt_findcycles.md
 - api/gantt_iscircularlink.md
 - api/gantt_onafterautoschedule_event.md

@@ -41,14 +41,16 @@ gantt.load("apiUrl");
 var dp = new gantt.dataProcessor("apiUrl");
 dp.init(gantt);
 dp.setTransactionMode("REST");
+dp.deleteAfterConfirmation = true;
 ~~~
 
 - Call the api/gantt_createdataprocessor.md method and pass an object with configuration options as its parameter:
 
 ~~~js
 var dp = gantt.createDataProcessor({
-      url: "apiUrl",
-      mode: "REST"
+    url: "apiUrl",
+    mode: "REST",
+    deleteAfterConfirmation: true
 });
 ~~~
 
@@ -62,8 +64,9 @@ While creating a DataProcessor via the API method api/gantt_createdataprocessor.
 
 ~~~js
 var dp = gantt.createDataProcessor({
-   url: "/api",
-   mode: "REST"
+    url: "/api",
+    mode: "REST",
+    deleteAfterConfirmation: true
 });
 ~~~
 
@@ -71,6 +74,7 @@ where:
 
 - **url** - the URL to the server side
 - **mode** - the mode of sending data to the server:  "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
+- **deleteAfterConfirmation** - defines whether the task must be deleted from the gantt only after a successful response from the server. Dependency links and subtasks will be deleted after the deletion of the parent task is confirmed.
 
 2\. Provide a custom **router** object:
 

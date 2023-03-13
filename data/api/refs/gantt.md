@@ -336,6 +336,7 @@ Gantt API
 - api/gantt_auto_scheduling_move_projects_config.md - defines whether the whole project will be moved (see the details below)
 - api/gantt_auto_scheduling_project_constraint_config.md - 
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
+- api/gantt_auto_scheduling_use_progress_config.md - sets the way the scheduling algorithms process completed tasks
 - api/gantt_auto_types_config.md - automatically converts tasks with subtasks to projects and projects without subtasks back to tasks
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
 - api/gantt_autoscroll_config.md - enables autoscrolling while dragging a task or link out of the current browser screen

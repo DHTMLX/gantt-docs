@@ -29,8 +29,17 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - [Empty state screen for Gantt](desktop/empty_state_screen.md):
 	- new api/gantt_show_empty_state_config.md property
 	- new [emptyStateElement extension](desktop/empty_state_element_ext.md)
-- Ability to extend the background grid of the timeline to the whole container:
+- The ability to extend the background grid of the timeline to the whole container:
 	- new api/gantt_timeline_placeholder_config.md property
+- The ability to delete items only after receiving confirmation from the backend:
+	- new **deleteAfterConfirmation** parameter of the [dataProcessor configuration object](api/gantt_createdataprocessor.md)
+- Improvements for Critical path, Total Slack, and Free Slack calculations:
+	- Slack calculation can now include the progress of a task
+ 	- Fixed various bugs in slack calculation
+ 	- Total Slack can now be calculated for projects
+ 	- Major performance improvement of critical path calculation
+- Using task progress for Critical path, Slack and Auto scheduling algorithms:
+	- new api/gantt_auto_scheduling_use_progress_config.md property
 
 7.1.13
 ----------

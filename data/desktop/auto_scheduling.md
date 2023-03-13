@@ -222,6 +222,23 @@ gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predece
 });
 ~~~
 
+Scheduling completed tasks
+----------------------------
+
+By default, there is no difference in how the auto scheduling algorithm processes completed tasks (tasks which have progress value of 1) and incomplete tasks.
+
+Optionally, you can enable the api/gantt_auto_scheduling_use_progress_config.md config to change this behavior:
+
+~~~js
+gantt.config.auto_scheduling_use_progress = true;
+ 
+gantt.init("gantt_here");
+~~~
+
+When the config is enabled, completed tasks will be excluded from the critical path and auto scheduling.
+
+You can find more details on the [API page](api/gantt_auto_scheduling_use_progress_config.md).
+
 
 ##API overview
 
