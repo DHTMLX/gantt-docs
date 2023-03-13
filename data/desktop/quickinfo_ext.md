@@ -7,14 +7,14 @@ The *quickInfo* object possesses the following API:
 Methods
 ----------------
 
-- <span class=submethod>**show (id): undefined**</span> - displays the quick info popup for a specified element
+- <span class=submethod>**show (id): void**</span> - displays the quick info popup for a specified element
 	- **_id_** - (*number | string*) - the task ID
  
 ~~~js
 gantt.ext.quickInfo.show("1");
 ~~~
 
-- <span class=submethod>**show (x, y): undefined**</span>  - displays the quick info popup at specific coordinates
+- <span class=submethod>**show (x, y): void**</span>  - displays the quick info popup at specific coordinates
 	- **_x_** - (*number | string*) - horizontal coordinate
 	- **_y_** - (*number | string*) - vertical coordinate
 
@@ -37,7 +37,7 @@ gantt.ext.quickInfo.hide();
 gantt.ext.quickInfo.hide(true);
 ~~~
 
-- <span class=submethod>**setContainer (container): undefined**</span> - sets a container where the quick info will be displayed. If no custom container specified, QuickInfo will be placed into the first of the found nodes: **gantt.$task, gantt.$grid, gantt.$root**
+- <span class=submethod>**setContainer (container): void**</span> - sets a container where the quick info will be displayed. If no custom container specified, QuickInfo will be placed into the first of the found nodes: **gantt.$task, gantt.$grid, gantt.$root**
 	- **_container_** - (*HTMLElement | string*) - container element or its ID
 
 ~~~js
@@ -56,7 +56,7 @@ The returned DOM element of the shown quick info looks like:
 
 <img src="desktop/quick_node.png">
 
-- <span class=submethod>**setContent (config): undefined**</span> - puts the content into the quick info
+- <span class=submethod>**setContent (config): void**</span> - puts the content into the quick info
     - **_config?_** - (*object*) - optional, the configuration object of a quick info which can include the following attributes:
         - **_taskId?_** - (*string | number*) - optional, the id of the task to which the action buttons of the quick info will be connected
         - **_header?_** - (*object*) - optional, the header of the pop-up edit form which may include:

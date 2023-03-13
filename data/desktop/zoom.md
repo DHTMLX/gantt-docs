@@ -5,7 +5,7 @@ Read details about the Zoom extension in the article desktop/zooming.md. <br> Th
 
 ##Methods
 
-- <span class=submethod>**init (zoomConfig): undefined**</span> - initialize the extension with the provided configuration.
+- <span class=submethod>**init (zoomConfig): void**</span> - initialize the extension with the provided configuration.
     - **_zoomConfig_** - (*object*) - an object with configuration settings that contains the *levels* array of zooming levels and a number of additional properties:
         - **_levels_** - (*ZoomLevels[]*) - required, an array of zooming levels, each of which includes the following properties:
             - **_name_** - (*string*) - the name of the level
@@ -128,7 +128,7 @@ gantt.ext.zoom.init(zoomConfig);
 gantt.ext.zoom.getCurrentLevel();
 ~~~
 
-- <span class=submethod>**setLevel (level): undefined**</span> - switches to the specified zooming level.
+- <span class=submethod>**setLevel (level): void**</span> - switches to the specified zooming level.
 	- **_level_** - (*number | string*) - The level is defined either by a string (the name of the level from the config, e.g. "year"), or by its number in the array of levels
 
 ~~~js
@@ -138,7 +138,7 @@ gantt.ext.zoom.setLevel(5);
 ~~~
 
 
-- <span class=submethod>**zoomIn (): undefined**</span> - increases the current zooming level
+- <span class=submethod>**zoomIn (): void**</span> - increases the current zooming level
 
 ~~~js
 gantt.ext.zoom.zoomIn();
@@ -150,7 +150,7 @@ For the same purpose you can also use:
 gantt.ext.zoom.setLevel(zoom.getCurrentLevel() - 1)
 ~~~
 
-- <span class=submethod>**zoomOut (): undefined**</span> - decreases the current zooming level
+- <span class=submethod>**zoomOut (): void**</span> - decreases the current zooming level
 
 ~~~js
 gantt.ext.zoom.zoomOut();
@@ -165,7 +165,7 @@ gantt.ext.zoom.setLevel(zoom.getCurrentLevel() + 1)
 - <span class=submethod>**attachEvent (name, handler): string**</span> - attaches an event handler
     - **_name_** - (*string*) - the name of the event handler
     - **_handler_** - (*Function*) - the function that will be called when the event fires
-- <span class=submethod>**detachEvent (id): undefined**</span> - detaches a handler from an event
+- <span class=submethod>**detachEvent (id): void**</span> - detaches a handler from an event
     - **_id_** - (*string*) - the id of the attached event handler
 
 
