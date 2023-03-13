@@ -473,6 +473,7 @@ Gantt API
 - api/gantt_task_scroll_offset_config.md - sets the offset (in pixels) of the nearest task from the left border in the timeline
 - api/gantt_time_picker_config.md - sets the format of the time drop-down selector in the lightbox
 - api/gantt_time_step_config.md - sets the minimum step (in minutes) for the task's time values
+- api/gantt_timeline_placeholder_config.md - shows the background grid in the empty timeline
 - api/gantt_tooltip_hide_timeout_config.md - sets the length of time, in milliseconds, before the tooltip hides
 - api/gantt_tooltip_offset_x_config.md - sets the right (if positive) offset of the tooltip's position
 - api/gantt_tooltip_offset_y_config.md - sets the top (if positive) offset of the tooltip's position

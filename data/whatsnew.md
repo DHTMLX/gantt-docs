@@ -18,7 +18,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ### New functionality
 
 - Updated Auto Scheduling & Constraint calculation:
-	- tasks now can inherit the constraint type from parent projects (new api/gantt_auto_scheduling_project_constraint_config.md config)
+	- tasks now can inherit the constraint type from parent projects (new api/gantt_auto_scheduling_project_constraint_config.md property)
 - Grouping tasks functionality now can preserve the original Gantt tree structure inside groups:
 	- new **save_tree_structure** parameter of the [groupBy()](api/gantt_groupby.md) method
 - Improvements for rollup and split tasks:
@@ -27,9 +27,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 	- the ability to control where rollup items are displayed (new api/gantt_onbeforerolluptaskdisplay_event.md event)
 	- the ability to [filter split tasks](desktop/split_tasks.md#filteringsplittasks) (new api/gantt_onbeforesplittaskdisplay_event.md event)
 - [Empty state screen for Gantt](desktop/empty_state_screen.md):
-	- new api/gantt_show_empty_state_config.md config
+	- new api/gantt_show_empty_state_config.md property
 	- new [emptyStateElement extension](desktop/empty_state_element_ext.md)
-
+- Ability to extend the background grid of the timeline to the whole container:
+	- new api/gantt_timeline_placeholder_config.md property
 
 7.1.13
 ----------
