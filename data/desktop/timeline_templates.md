@@ -28,6 +28,10 @@ Templates of the Timeline Area
 			<td>specifies the CSS class that will be applied to the cells of the timeline area</td>
 		</tr>
         <tr>
+			<td class="webixdoc_links0">api/gantt_timeline_cell_content_template.md</td>
+			<td>specifies HTML content in the timeline cells</td>
+		</tr>
+        <tr>
 			<td class="webixdoc_links0">api/gantt_task_class_template.md</td>
 			<td>specifies the CSS class that will be applied to task bars</td>
 		</tr>

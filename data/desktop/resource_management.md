@@ -204,7 +204,32 @@ resourcesStore.parse([
 By default both views (either "resourceGrid" and "resourceTimeline" or "resourceGrid" and "resourceHistogram") will be bound to the data store named as specified in the 
 [gantt.config.resource_store](api/gantt_resource_store_config.md) configuration option.
 
-This data store has to be initialized manually with the help of the api/gantt_createdatastore.md method:
+#### Auto creation of data store
+
+From v8.0, the data store for resources will be created automatically during the initialization of the gantt and will be available by the time "onGanttReady" is called. To use the datastore created by gantt, apply the [gantt.getDatastore(gantt.config.resource_store)](api/gantt_getdatastore.md) method.
+
+If you need to provide an extra configuration to the resource store, you can use the new [gantt.config.resources](api/gantt_resources_config.md) option:
+
+~~~js
+gantt.config.resources = {
+    resource_store: {
+        type: "treeDataStore",
+        fetchTasks: true,
+        initItem: function(item) {
+            item.parent = item.parent || gantt.config.root_id;
+            item[gantt.config.resource_property] = item.parent;
+            item.open = true;
+            return item;
+        }
+    },
+}
+~~~
+
+Settings passed to **resource_store** will be used by the gantt to create the default resource datastore. If you've already created the resource datastore in your code, the gantt will use your store instead.
+
+#### Manual creation of data store
+
+It is also possible to initialize the data store manually with the help of the api/gantt_createdatastore.md method:
 
 ~~~js
 var resourcesStore = gantt.createDatastore({
@@ -604,6 +629,78 @@ gantt.updateCollection("people", [
 
 If you define resources via the *serverList* collection, they can be [loaded together with the rest of the data](desktop/supported_data_formats.md#jsonwithcollections), otherwise you'll need to load them manually.
 
+Loading resources and resource assignments
+-----------------------------------------
+
+From v8.0, resources and resource assignments can be loaded into the gantt using [gantt.parse()](api/gantt_parse.md) or [gantt.load()](api/gantt_load.md) methods:
+
+~~~js
+gantt.parse({
+    tasks: [
+        ...,
+        {
+            id: 5,
+            text: "Interior office",
+            type: "task",
+            start_date: "03-04-2024 00:00",
+            duration: 7,
+            parent: "2",
+            owner: [
+            	{
+                    resource_id: "6",
+                    value: 3,
+                    start_date: "03-04-2024 00:00",
+                    end_date: "05-04-2024 00:00",
+            	}
+			]
+        },
+        ...
+    ],
+    links: [],
+    resources: [
+        {id: 6, text: "John", unit: "hours/day" },
+        {id: 7, text: "Mike", unit: "hours/day" },
+        {id: 8, text: "Anna", unit: "hours/day" },
+        {id: 9, text: "Bill", unit: "hours/day" },
+        {id: 10, text: "Floe", unit: "hours/day" }
+    ]
+});
+~~~
+
+Resource assignments can be passed into the method separately from tasks:
+
+~~~js
+gantt.parse({
+    tasks: [
+        ...,
+        {
+            id: 5,
+            text: "Interior office",
+            type: "task",
+            start_date: "03-04-2024 00:00",
+            duration: 7,
+            parent: "2",
+            priority: 1
+        },
+        ...
+    ],
+    links: [],
+    assignments: [
+        {
+			id: 1, task_id: 5, resource_id: 6, value: 3,
+            start_date: "03-04-2024 00:00", 
+            end_date: "05-04-2024 00:00"
+		}
+    ],
+    resources: [
+        {id: 6, text: "John", unit: "hours/day" },
+        {id: 7, text: "Mike", unit: "hours/day" },
+        {id: 8, text: "Anna", unit: "hours/day" },
+        {id: 9, text: "Bill", unit: "hours/day" },
+        {id: 10, text: "Floe", unit: "hours/day" }
+    ]
+});
+~~~
 
 Managing resource assignments
 ---------------------------

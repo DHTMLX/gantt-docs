@@ -433,6 +433,7 @@ Gantt API
 - api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram/Calendar
 - api/gantt_resource_render_empty_cells_config.md - tells the resource timeline to render elements and call templates for non-allocated cells
 - api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline/resourceHistogram views
+- api/gantt_resources_config.md - defines an extra configuration for the resource store
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table
@@ -538,6 +539,7 @@ Gantt API
 - api/gantt_task_unscheduled_time_template.md - specifies the dates of unscheduled tasks
 - api/gantt_time_picker_template.md - specifies the format of the drop-down time selector in the lightbox
 - api/gantt_timeline_cell_class_template.md - specifies the CSS class that will be applied to the cells of the timeline area
+- api/gantt_timeline_cell_content_template.md - specifies custom HTML content in the timeline cells
 - api/gantt_tooltip_date_format_template.md - specifies the format of start and end dates displayed in the tooltip
 - api/gantt_tooltip_text_template.md - specifies the text of tooltips
 - api/gantt_xml_date_template.md - a string from an XML file is converted into a date object in conformity with this template

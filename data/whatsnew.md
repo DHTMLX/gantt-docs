@@ -40,6 +40,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
  	- Major performance improvement of critical path calculation
 - Using task progress for Critical path, Slack and Auto scheduling algorithms:
 	- new api/gantt_auto_scheduling_use_progress_config.md property
+- The [getTaskBy()](api/gantt_gettaskby.md) method now allows selecting 'project' tasks:
+	- new **types** parameter of the [getTaskBy()](api/gantt_gettaskby.md) method
+- The ability to put any HTML content into the cells of the Timeline:
+	- new api/gantt_timeline_cell_content_template.md template
 
 7.1.13
 ----------

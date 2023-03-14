@@ -107,6 +107,7 @@ Properties
 - api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram/Calendar
 - api/gantt_resource_render_empty_cells_config.md - tells the resource timeline to render elements and call templates for non-allocated cells
 - api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline/resourceHistogram views
+- api/gantt_resources_config.md - defines an extra configuration for the resource store
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table
@@ -275,6 +276,7 @@ Properties
 - api/gantt_resource_property_config.md
 - api/gantt_resource_render_empty_cells_config.md
 - api/gantt_resource_store_config.md
+- api/gantt_resources_config.md
 - api/gantt_root_id_config.md
 - api/gantt_round_dnd_dates_config.md
 - api/gantt_row_height_config.md

@@ -42,6 +42,10 @@ Note:
 
 *To learn how to increase the perfomance speed of rendering custom elements, read the api/gantt_addtasklayer.md#smartrenderingforcustomlayers article.*
 
+{{note
+If you need to show the custom content in all cells of the timeline, place HTML directly in the cells using the api/gantt_timeline_cell_content_template.md template. This way is easier to implement and faster in performance.
+}}
+
 Example of usage
 --------------------------
 

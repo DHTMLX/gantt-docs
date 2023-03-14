@@ -41,6 +41,7 @@ Templates
 - api/gantt_task_unscheduled_time_template.md - specifies the dates of unscheduled tasks
 - api/gantt_time_picker_template.md - specifies the format of the drop-down time selector in the lightbox
 - api/gantt_timeline_cell_class_template.md - specifies the CSS class that will be applied to the cells of the timeline area
+- api/gantt_timeline_cell_content_template.md - specifies custom HTML content in the timeline cells
 - api/gantt_tooltip_date_format_template.md - specifies the format of start and end dates displayed in the tooltip
 - api/gantt_tooltip_text_template.md - specifies the text of tooltips
 - api/gantt_xml_date_template.md - a string from an XML file is converted into a date object in conformity with this template
@@ -89,6 +90,7 @@ Templates
 - api/gantt_task_unscheduled_time_template.md
 - api/gantt_time_picker_template.md
 - api/gantt_timeline_cell_class_template.md
+- api/gantt_timeline_cell_content_template.md
 - api/gantt_tooltip_date_format_template.md
 - api/gantt_tooltip_text_template.md
 - api/gantt_xml_date_template.md

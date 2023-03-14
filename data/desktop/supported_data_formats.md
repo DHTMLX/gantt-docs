@@ -14,6 +14,8 @@ You can also [add any custom properties to the Gantt data](desktop/supported_dat
 JSON
 -------------------------
 
+### Tasks and links
+
 ~~~js
 {
 	"tasks":[
@@ -30,6 +32,76 @@ JSON
 		{"id":"3", "source":"3", "target":"4", "type":"0"},
 		{"id":"4", "source":"2", "target":"5", "type":"2"}
   	]
+}
+~~~
+
+### Tasks with resources and resource assignments
+
+~~~js
+{
+    tasks: [
+        ...,
+        {
+            id: 5,
+            text: "Interior office",
+            type: "task",
+            start_date: "03-04-2024 00:00",
+            duration: 7,
+            parent: "2",
+            owner: [
+            	{
+					resource_id: "6",
+					value: 3,
+					start_date: "03-04-2024 00:00",
+					end_date: "05-04-2024 00:00",
+            	}
+			]
+        },
+        ...
+    ],
+    links: [],
+    resources: [
+        {id: 6, text: "John", unit: "hours/day" },
+        {id: 7, text: "Mike", unit: "hours/day" },
+        {id: 8, text: "Anna", unit: "hours/day" },
+        {id: 9, text: "Bill", unit: "hours/day" },
+        {id: 10, text: "Floe", unit: "hours/day" }
+    ]
+}
+~~~
+
+Resource assignments can be passed into the method separately from tasks:
+
+~~~js
+{
+    tasks: [
+        ...,
+        {
+            id: 5,
+            text: "Interior office",
+            type: "task",
+            start_date: "03-04-2024 00:00",
+            duration: 7,
+            parent: "2",
+            priority: 1
+        },
+        ...
+    ],
+    links: [],
+    assignments: [
+        {
+			id: 1, task_id: 5, resource_id: 6, value: 3,
+            start_date: "03-04-2024 00:00", 
+            end_date: "05-04-2024 00:00"
+		}
+    ],
+    resources: [
+        {id: 6, text: "John", unit: "hours/day" },
+        {id: 7, text: "Mike", unit: "hours/day" },
+        {id: 8, text: "Anna", unit: "hours/day" },
+        {id: 9, text: "Bill", unit: "hours/day" },
+        {id: 10, text: "Floe", unit: "hours/day" }
+    ]
 }
 ~~~
 
