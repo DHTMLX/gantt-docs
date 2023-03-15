@@ -795,6 +795,30 @@ gantt.templates.rightside_text = function(start, end, task){
 
 {{sample 11_resources/01_assigning_resources.html}}
 
+Editable resource diagram
+-------------------------
+
+In order to make resource assignments editable in the resource diagram, you can use the following configuration:
+
+~~~js
+gantt.config.resources = {
+    editable_resource_diagram: true
+};
+~~~
+
+When the **editable_resource_diagram** property is enabled, gantt will automatically assign [gantt.templates.resource_cell_value](api/gantt_resource_cell_value_template.md) and [gantt.templates.resource_cell_class](api/gantt_resource_cell_class_template.md) templates in order to make resource assignments editable in the gantt.
+
+If you assign custom functions to these templates - the gantt will use templates defined by you.
+
+The default implementation of templates is available in the **gantt.ext.resources** object.
+
+~~~js
+gantt.templates.resource_cell_value = gantt.ext.resources.editableResourceCellTemplate;
+gantt.templates.resource_cell_class = gantt.ext.resources.editableResourceCellClass;
+~~~
+
+Normally you won't need to assign these templates for editable diagram manually, it's expected to be handled by Gantt.
+
 Custom styling of resources
 ------------------------
 
