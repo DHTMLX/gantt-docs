@@ -520,6 +520,61 @@ Other methods that invoke sending an update to the backend:
 - api/gantt_updatelink.md
 - api/gantt_deletelink.md
 
+Custom Routing
+----------------
+
+In case RESTful AJAX API isn't what you need on the backend, or if you want to manually control what is sent to the server, you can make use of custom routing.
+
+For example, if you use Angular, React, or any other framework where a component on a page doesn't send changes directly to the server, but passes them to a different component which is responsible for data saving.
+
+To provide custom routing options for DataProcessor, you should use the [**createDataProcessor()**](#createdp) method:
+
+~~~js
+gantt.createDataProcessor(function(entity, action, data, id){
+    const services = {
+        "task": this.taskService,
+        "link": this.linkService
+    };
+    const service = services[entity];
+ 
+    switch (action) {
+        case "update":
+            return service.update(data);
+        case "create":
+            return service.insert(data);
+        case "delete":
+            return service.remove(id);
+    }
+});
+~~~
+
+{{sample 08_api/22_data_processor.html}}
+
+### Using AJAX for setting custom routers
+
+[Gantt AJAX module](api/gantt_ajax_other.md) can be useful for setting custom routes. Gantt expects a custom router to return a Promise object as a result of an operation, which allows catching the end of an action. 
+The AJAX module supports promises and is suitable for usage inside of custom routers. Gantt will get Promise and process the content of Promise, when it is resolved.  
+
+In the example below a new task is created. If the server response includes the id of a newly created task, Gantt will be able to apply it.
+
+~~~js
+gantt.createDataProcessor(function(entity, action, data, id){
+...
+ 
+  switch (action) {
+    case "create":
+      return gantt.ajax.post({
+        headers: { 
+          "Content-Type": "application/json" 
+        },
+        url: server + "/task",
+        data: JSON.stringify(data)
+      });
+    break;
+  }
+});
+~~~
+
 Routing CRUD actions of resources and resource assignments
 --------------------------------------------------------
 
@@ -604,63 +659,6 @@ gantt.createDataProcessor(function(entity, action, data, id){
     }
 });
 ~~~
-
-Custom Routing
-----------------
-
-In case RESTful AJAX API isn't what you need on the backend, or if you want to manually control what is sent to the server, you can make use of custom routing.
-
-For example, if you use Angular, React, or any other framework where a component on a page doesn't send changes directly to the server, but passes them to a different component which is responsible for data saving.
-
-To provide custom routing options for DataProcessor, you should use the [**createDataProcessor()**](#createdp) method:
-
-~~~js
-gantt.createDataProcessor(function(entity, action, data, id){
-    const services = {
-        "task": this.taskService,
-        "link": this.linkService
-    };
-    const service = services[entity];
- 
-    switch (action) {
-        case "update":
-            return service.update(data);
-        case "create":
-            return service.insert(data);
-        case "delete":
-            return service.remove(id);
-    }
-});
-~~~
-
-{{sample 08_api/22_data_processor.html}}
-
-### Using AJAX for setting custom routers
-
-[Gantt AJAX module](api/gantt_ajax_other.md) can be useful for setting custom routes. Gantt expects a custom router to return a Promise object as a result of an operation, which allows catching the end of an action. 
-The AJAX module supports promises and is suitable for usage inside of custom routers. Gantt will get Promise and process the content of Promise, when it is resolved.  
-
-In the example below a new task is created. If the server response includes the id of a newly created task, Gantt will be able to apply it.
-
-~~~js
-gantt.createDataProcessor(function(entity, action, data, id){
-...
- 
-  switch (action) {
-    case "create":
-      return gantt.ajax.post({
-        headers: { 
-          "Content-Type": "application/json" 
-        },
-        url: server + "/task",
-        data: JSON.stringify(data)
-      });
-    break;
-  }
-});
-~~~
-
-
 
 Error Handling
 ----------------------

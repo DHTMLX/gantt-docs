@@ -199,12 +199,12 @@ resourcesStore.parse([
 
 {{note Capacity defined at the resource level overrides the global capacity of histogram for a given resource.}}
 
-### Working with the resource view panel
+## Working with the resource view panel
 
 By default both views (either "resourceGrid" and "resourceTimeline" or "resourceGrid" and "resourceHistogram") will be bound to the data store named as specified in the 
 [gantt.config.resource_store](api/gantt_resource_store_config.md) configuration option.
 
-#### Auto creation of data store
+### Auto creation of data store
 
 From v8.0, the data store for resources will be created automatically during the initialization of the gantt and will be available by the time "onGanttReady" is called. To use the datastore created by gantt, apply the [gantt.getDatastore(gantt.config.resource_store)](api/gantt_getdatastore.md) method.
 
@@ -227,7 +227,7 @@ gantt.config.resources = {
 
 Settings passed to **resource_store** will be used by the gantt to create the default resource datastore. If you've already created the resource datastore in your code, the gantt will use your store instead.
 
-#### Manual creation of data store
+### Manual creation of data store
 
 It is also possible to initialize the data store manually with the help of the api/gantt_createdatastore.md method:
 
@@ -263,7 +263,6 @@ resourcesStore.parse([
 ]);
 ~~~
 
-
 If you want to use resources in the lightbox, it might be a good idea to do it via the api/gantt_serverlist.md method from the onParse event of the data store:
 
 ~~~js
@@ -281,11 +280,9 @@ resourcesStore.attachEvent("onParse", function(){
 });
 ~~~
 
-
 ### Expanding resources panel
 
-It is possible to expand the resources panel to show all the tasks assigned to a particular resource by enabling the **fetchTasks** property during initialization of the datastore via the
-api/gantt_createdatastore.md method:
+It is possible to expand the resources panel to show all the tasks assigned to a particular resource by enabling the **fetchTasks** property during initialization of the datastore:
 
 ![Expanded resource panel](desktop/expanded_resource_panel.png)
 
@@ -364,7 +361,20 @@ You can use this format with the [custom multiselect control](desktop/custom_edi
 The resources are assigned to the Task1 as follows: the resource with id=2 - in the quantity of 8 units, while the resource with the id=3 - in the quantity of 4 units.
 This format is supported by the desktop/resources.md of the lightbox.
 
-When sending data to the server, DataProcessor serializes the values of the described properies into JSON. To process such records on the server with ease, make use of the ["REST_JSON"](desktop/server_side.md#restjson)
+Starting from v8.0 you can also load resource assignments as a separate list, and gantt will connect them to tasks automatically:
+
+~~~js
+gantt.parse({
+   	tasks: [...],
+   	links: [...],
+   	resources: [...],
+   	assignments: [{id:1, resource_id:2, task_id: 5, value: 8}, ...]
+});
+~~~
+
+You can read more about data formats [here](desktop/resource_management.md#loadingresourcesandresourceassignments).
+
+When sending data to the server, DataProcessor serializes the values of the described properties into JSON. To process such records on the server with ease, make use of the ["REST_JSON"](desktop/server_side.md#restjson)
 dataprocessor mode.
 
 
@@ -595,7 +605,6 @@ gantt.config.lightbox.sections = [
   {name:"time", type:"duration", map_to: "auto"}
 ];
 ~~~
-
 
 ###Loading collections
 
