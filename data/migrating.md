@@ -20,6 +20,28 @@ Migration from Older Versions
 	}
 </style>
 
+7.1 -> 8.0
+-------------
+
+### Export file
+
+From v8.0, the import/export functionality is included into the gantt library. 
+
+Therefore, if you have already included the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, for example:
+
+~~~js
+<script src="codebase/dhtmlxgantt.js"></script>
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>
+~~~
+
+Then you need to remove the file and enable the **export_api** extension using the **gantt.plugins** method:
+
+~~~js
+gantt.plugins({
+    export_api: true
+});
+~~~
+
 7.0 -> 7.1
 -------------
 

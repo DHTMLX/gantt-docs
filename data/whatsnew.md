@@ -44,6 +44,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 	- new **types** parameter of the [getTaskBy()](api/gantt_gettaskby.md) method
 - The ability to put any HTML content into the cells of the Timeline:
 	- new api/gantt_timeline_cell_content_template.md template
+- The export API is included into [gantt.plugins](desktop/extensions_list.md#exportservice) and no longer requires adding additional JS file. Check the [Migration](migrating.md#7180) article
 
 7.1.13
 ----------

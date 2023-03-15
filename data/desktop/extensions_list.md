@@ -103,6 +103,21 @@ Article: desktop/baselines.md#extraoverlayforthechart
 
 {{sample 02_extensions/21_overlay.html}}
 
+Export service
+-----------
+
+Provides the possibility to enable the online export service.
+
+~~~js
+gantt.plugins({
+  	export_api: true
+});
+~~~
+
+####Related resources
+
+Article: desktop/export_common.md
+
 Full screen
 -----------
 
