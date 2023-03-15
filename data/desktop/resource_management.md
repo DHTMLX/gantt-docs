@@ -361,6 +361,27 @@ It is possible to expand the resources panel to show all the tasks assigned to a
 ![Expanded resource panel](desktop/expanded_resource_panel.png)
 
 ~~~js
+gantt.config.resources = {
+    resource_store: {
+        type: "treeDataStore",
+        fetchTasks: true, /*!*/
+        initItem: function (item) {
+ 			item.parent = item.parent || gantt.config.root_id;
+ 			item[gantt.config.resource_property] = item.parent;
+ 			if(!item.parent){
+ 				item.open = true;
+ 			}else{
+ 				item.open = false;
+ 			}
+ 			return item;
+ 		}
+    },
+};
+~~~
+
+or
+
+~~~js
 gantt.$resourcesStore = gantt.createDatastore({
  	name: gantt.config.resource_store,
     type: "treeDatastore",
