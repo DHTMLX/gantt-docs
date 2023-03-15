@@ -17,6 +17,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### New functionality
 
+- Updated Resource Management
+	- Resources and Resource assignments can now be [loaded together with the data](desktop/supported_data_formats.md#tasks-with-resources-and-resource-assignments)
+	- Changes of Resources and Resource Assignments can be captured using the [DataProcessor](desktop/server_side.md)
+	- Reduced amount of boilerplate code required to use the [Resource panel](desktop/resource_management.md#resourceviewpanel)
 - Updated Auto Scheduling & Constraint calculation:
 	- tasks now can inherit the constraint type from parent projects (new api/gantt_auto_scheduling_project_constraint_config.md property)
 - Grouping tasks functionality now can preserve the original Gantt tree structure inside groups:
@@ -45,6 +49,22 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - The ability to put any HTML content into the cells of the Timeline:
 	- new api/gantt_timeline_cell_content_template.md template
 - The export API is included into [gantt.plugins](desktop/extensions_list.md#exportservice) and no longer requires adding additional JS file. Check the [Migration](migrating.md#7180) article
+
+### Fixes
+
+- Fix the [duration calculation](desktop/working_time.md) issue with minute [duration_unit](api/gantt_duration_unit_config.md) and custom work_time settings
+- Fix the script error on data loading when [Slack calculations](desktop/critical_path.md#gettingfreeandtotalslack) are enabled
+- [setWorkTime](api/gantt_setworktime.md) method now supports setting rules for dates inside customWeeks
+- Fix the issue with smart rendering that causes blank spaces instead of data in the Gantt
+- Fix the issue with [vertical reordering](desktop/reordering_tasks.md) of rows in the Grid when some rows have [custom heights](desktop/resizing_rows.md#settingtherowheight)
+- Fix the incorrect work of [Inline editors](desktop/inline_editing.md) when the [Multiselect](desktop/multiselection.md) extension is enabled
+- Fix the incorrect display of [Quick Info](desktop/quick_info.md) popup when [gantt.config.quick_info_detached](api/gantt_quick_info_detached_config.md) config is set to `false`
+- Correct arguments of `is_valid` function of [Inline Editor](desktop/inline_editing.md#custominlineeditor) interface. The function now receives the column object
+- Ensure the `parent` property of task is saved correctly when the task is created with [gantt.groupBy](desktop/grouping.md) active
+- Fix the issue with unexpected vertical scroll when [placeholder tasks](api/gantt_placeholder_task_config.md) and [Keyboard navigation](desktop/keyboard_navigation.md) are enabled
+- Fix the issue with [DataProcessor](desktop/server_side.md) causing some changes not to be set to the backend after [Auto Scheduling](desktop/auto_scheduling.md)
+- Fix the incorrect work of [vertical reordering](desktop/reordering_tasks.md), which allowed task rows from being dragged outside the Gantt
+- Fix the incorrect order of `odd` CSS classes of rows in the [Resource panel](desktop/resource_management.md#resourceviewpanel)
 
 7.1.13
 ----------
