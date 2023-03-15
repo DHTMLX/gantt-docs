@@ -227,6 +227,80 @@ gantt.config.resources = {
 
 Settings passed to **resource_store** will be used by the gantt to create the default resource datastore. If you've already created the resource datastore in your code, the gantt will use your store instead.
 
+In order to load resources, you can either pass resources into the **gantt.parse()**/**gantt.load()** methods as described [here](desktop/resource_management.md#loadingresourcesandresourceassignments), or you can access the datastore and populate it using the **datastore.parse()** method:
+
+~~~js
+gantt.attachEvent("onGanttReady", function(){
+    const store = gantt.getDatastore(gantt.config.resource_store);
+    store.parse([
+       {id: 6, text: "John"},
+       {id: 7, text: "Mike"},
+       {id: 8, text: "Anna"},
+       {id: 9, text: "Bill"},
+    ])
+});
+~~~
+
+The resource control of the lightbox will be connected to the resource list automatically:
+
+~~~js
+gantt.config.lightbox = {
+    sections: [
+        ...,
+        { name: "resources", type: "resources", map_to: "auto", default_value: 8}
+    ]
+};
+~~~
+
+If the [resource control](desktop/resources.md) is initialized without the **options** parameter, it will be connected to the **gantt.serverList("resourceOptions")** collection. This collection will be populated with the resources from the resource datastore. You can access options by code:
+
+~~~js
+const options = gantt.serverList("resourceOptions");
+~~~
+
+Note, the options array will be empty before the resources are loaded into the datastore.
+
+You can also update this collection using the custom list of options:
+
+~~~js
+gantt.updateCollection("resourceOptions", [...]);
+~~~
+
+Note, that if you load resources into the gantt after that, the gantt will update this collection and overwrite your changes.
+
+If you want to control which resources go to the lightbox, you can redefine the **gantt.config.resources.lightbox_resources** config:
+
+~~~js
+gantt.config.resources = {
+    lightbox_resources: function selectResourceControlOptions(resources){
+      	const lightboxOptions = [];
+      	resources.forEach(function(res) {
+         	if (!gantt.$resourcesStore.hasChild(res.id)) {
+            	const copy = gantt.copy(res);
+            	copy.key = res.id;
+            	copy.label = res.text;
+            	lightboxOptions.push(copy);
+         	}
+      	});
+      	return lightboxOptions;
+   	}
+}
+~~~
+
+You can also set the list of options for the resource control manually by providing the **options** parameter to the lightbox configuration:
+
+~~~js
+gantt.config.lightbox = {
+	sections: [
+		...,
+		{ 
+			name: "resources", type: "resources", map_to: "auto", 
+			default_value: 8, options: [...]
+		}
+	]
+};
+~~~
+
 ### Manual creation of data store
 
 It is also possible to initialize the data store manually with the help of the api/gantt_createdatastore.md method:
