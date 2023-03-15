@@ -23,6 +23,12 @@ Migration from Older Versions
 7.1 -> 8.0
 -------------
 
+### Routing changes made to resources and resource assignments
+
+In previous versions of DHTMLX Gantt, changes in resource assignments were sent to the backend as properties of tasks objects, which in some cases made integration with backend API more difficult then it's required.
+
+Starting from DHTMLX Gantt v8.0, changes made to resources and resource assignments can be routed via dataProcessor. Check the [Routing CRUD actions of resources and resource assignments](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments) section.
+
 ### Export file
 
 From v8.0, the import/export functionality is included into the gantt library. 

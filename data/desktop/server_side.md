@@ -520,6 +520,91 @@ Other methods that invoke sending an update to the backend:
 - api/gantt_updatelink.md
 - api/gantt_deletelink.md
 
+Routing CRUD actions of resources and resource assignments
+--------------------------------------------------------
+
+From v8.0, modified resource assignments can be sent to the dataProcessor as separate entries with persistent IDs, so making it easy to connect to backend API. Changes of resource objects can be also sent to the DataProcessor.
+
+Note, this feature is disabled by default. By default, the dataProcessor only receives changes made to tasks and links.
+
+~~~js
+gantt.config.resources = {
+    dataprocessor_assignments: true,
+    dataprocessor_resources: true,
+};
+~~~
+
+Once the resource mode of the dataProcessor is enabled, if the DataProcessor is configured to REST mode - resources and resource assignments will be sent to the backend in separate requests.
+If you use the dataProcessor in the Custom Routing mode - you'll be able to capture changes of resource assignments and resources in the handler:
+
+~~~js
+gantt.createDataProcessor({
+    task: {
+        create: (data) => {
+            return createRecord({type: "task", ...data}).then((res) => {
+                return { tid: res.id, ...res };
+            });
+        },
+        update: (data, id) => {
+            return updateRecord({type: "task", ...data}).then(() => ({}));
+        },
+        delete: (id) => {
+            return deleteRecord({type: "task:", id: id}).then(() => ({}));
+        }
+    },
+    link: {
+        create: (data) => {
+            ...
+        },
+        update: (data, id) => {
+            ...
+        },
+        delete: (id) => {
+            ...
+        }
+    },
+    assignment: {
+        create: (data) => {
+            ...
+        },
+        update: (data, id) => {
+            ...
+        },
+        delete: (id) => {
+            ...
+        }
+    },
+    resource: {
+        create: (data) => {
+            ...
+        },
+        update: (data, id) => {
+            ...
+        },
+        delete: (id) => {
+            ...
+        }
+    }
+});
+~~~
+
+Or, using function declaration:
+
+~~~js
+gantt.createDataProcessor(function(entity, action, data, id){
+    switch (entity) {
+        case "task":
+            break;
+        case "link":
+            break;
+        case "resource":
+            break;
+        case "assignment":
+            break;
+    }
+});
+~~~
+
 Custom Routing
 ----------------
 
