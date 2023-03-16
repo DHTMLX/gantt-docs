@@ -10,7 +10,7 @@ onBeforeRollupTaskDisplay
 - parentId	number|string	the id of the parent (project) task
 
 @returns:  
-- result     boolean       defines whether the rollup task will be displayed on its parent (project) task (<b>true</b>) or not (<b>false</b>) 
+- result     boolean       defines whether the rollup task will be displayed on its parent project (<b>true</b>) or not (<b>false</b>) 
 
 @example:
 gantt.attachEvent("onBeforeRollupTaskDisplay", function(taskId, task, parentId){
