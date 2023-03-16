@@ -8,7 +8,7 @@ Properties
 - api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creating links from parent tasks (projects) to their children
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading/parsing
 - api/gantt_auto_scheduling_move_projects_config.md - defines whether the whole project will be moved (see the details below)
-- api/gantt_auto_scheduling_project_constraint_config.md - 
+- api/gantt_auto_scheduling_project_constraint_config.md - defines whether tasks should inherit the constraint type from their parent project
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
 - api/gantt_auto_scheduling_use_progress_config.md - sets the way the scheduling algorithms process completed tasks
 - api/gantt_auto_types_config.md - automatically converts tasks with subtasks to projects and projects without subtasks back to tasks
