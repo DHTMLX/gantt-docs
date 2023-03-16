@@ -1,7 +1,7 @@
 auto_scheduling_project_constraint
 =============
 
-@short: defines whether tasks should inherit the constraint type from their (project) parent tasks
+@short: defines whether tasks should inherit the constraint type from their parent project
 	
 
 @type: boolean
@@ -16,9 +16,9 @@ gantt.config.auto_scheduling_project_constraint = true;
 
 {{note This config is defined in the **auto_scheduling** extension, so you need to activate the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin. Read the details in the desktop/auto_scheduling.md article.}}
 
-By default, the constraint type of the (project) parent task doesn't affect the constraint type of its nested tasks.
+By default, the constraint type of the parent project doesn't affect the constraint type of its nested tasks.
 
-If you set the config to *true*, the child tasks (except for tasks with their own constraint type) will have the same constraint type as their (project) parent task (for example, **finish no later than**).
+If you set the config to *true*, the child tasks (except for tasks with their own constraint type) will have the same constraint type as their parent project (for example, **finish no later than**).
 
 @relatedsample: 
 02_extensions/19_constraints_scheduling.html
