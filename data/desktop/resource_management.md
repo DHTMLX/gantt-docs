@@ -665,6 +665,8 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
+Read about how to configure the resource control of the lightbox in the [Resources Control](desktop/resources.md) article.
+
 ###Loading collections
 
 Collections specified as server lists can be loaded and updated dynamically, after gantt is initialized:
@@ -689,13 +691,13 @@ gantt.updateCollection("people", [
 ]);
 ~~~
 
-
 <img src="desktop/resource_management.png">
-
 
 {{sample  11_resources/01_assigning_resources.html}}
 
 If you define resources via the *serverList* collection, they can be [loaded together with the rest of the data](desktop/supported_data_formats.md#jsonwithcollections), otherwise you'll need to load them manually.
+
+Read about how to configure the resource control of the lightbox in the [Resources Control](desktop/resources.md) article.
 
 Loading resources and resource assignments
 -----------------------------------------
