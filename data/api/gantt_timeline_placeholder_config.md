@@ -35,7 +35,7 @@ For background rows, a temporary task object will be added to the template. The 
 
 ~~~js
 if(task.id === "timeline_placeholder_task"){
-
+	...
 }
 ~~~
 

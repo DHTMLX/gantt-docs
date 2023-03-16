@@ -35,6 +35,7 @@ Check the [Migration article](migrating.md#7180) to keep in step with the latest
 	- the ability to [hide all rollup items from the project task](desktop/milestones.md#hidingtasksandmilestones)
 	- the ability to control where rollup items are displayed (new api/gantt_onbeforerolluptaskdisplay_event.md event)
 	- the ability to [filter split tasks](desktop/split_tasks.md#filteringsplittasks) (new api/gantt_onbeforesplittaskdisplay_event.md event)
+	- performance optimization for display of split tasks
 - [Empty state screen for Gantt](desktop/empty_state_screen.md):
 	- new api/gantt_show_empty_state_config.md property
 	- new [emptyStateElement extension](desktop/empty_state_element_ext.md)
