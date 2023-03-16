@@ -874,6 +874,8 @@ gantt.config.resources = {
 };
 ~~~
 
+{{sample 11_resources/13_resource_assignments_for_days.html}}
+
 When the **editable_resource_diagram** property is enabled, gantt will automatically assign [gantt.templates.resource_cell_value](api/gantt_resource_cell_value_template.md) and [gantt.templates.resource_cell_class](api/gantt_resource_cell_class_template.md) templates in order to make resource assignments editable in the gantt.
 
 If you assign custom functions to these templates - the gantt will use templates defined by you.

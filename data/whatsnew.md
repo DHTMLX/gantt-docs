@@ -17,10 +17,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### New functionality
 
-- Updated Resource Management
-	- Resources and Resource assignments can now be [loaded together with the data](desktop/supported_data_formats.md#tasks-with-resources-and-resource-assignments)
-	- Changes of Resources and Resource Assignments can be captured using the [DataProcessor](desktop/server_side.md)
-	- Reduced amount of boilerplate code required to use the [Resource panel](desktop/resource_management.md#resourceviewpanel)
+- Updated Resource Management:
+	- resources and resource assignments can now be [loaded together with the data](desktop/supported_data_formats.md#json)
+	- changes of resources and resource Assignments can be captured using the [DataProcessor](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments)
+	- reduced amount of boilerplate code required to use the [Resource panel](desktop/resource_management.md#workingwithresourceviewpanel)
 - Updated Auto Scheduling & Constraint calculation:
 	- tasks now can inherit the constraint type from parent projects (new api/gantt_auto_scheduling_project_constraint_config.md property)
 - Grouping tasks functionality now can preserve the original Gantt tree structure inside groups:
@@ -38,10 +38,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - The ability to delete items only after receiving confirmation from the backend:
 	- new **deleteAfterConfirmation** parameter of the [dataProcessor configuration object](api/gantt_createdataprocessor.md)
 - Improvements for Critical path, Total Slack, and Free Slack calculations:
-	- Slack calculation can now include the progress of a task
- 	- Fixed various bugs in slack calculation
- 	- Total Slack can now be calculated for projects
- 	- Major performance improvement of critical path calculation
+	- slack calculation can now include the progress of a task
+	- fixed various bugs in slack calculation
+ 	- [total slack](desktop/critical_path.md#gettingfreeandtotalslack) can now be calculated for projects
+ 	- major performance improvement of critical path calculation
 - Using task progress for Critical path, Slack and Auto scheduling algorithms:
 	- new api/gantt_auto_scheduling_use_progress_config.md property
 - The [getTaskBy()](api/gantt_gettaskby.md) method now allows selecting 'project' tasks:
