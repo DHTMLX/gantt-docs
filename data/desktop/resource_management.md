@@ -199,7 +199,7 @@ resourcesStore.parse([
 
 {{note Capacity defined at the resource level overrides the global capacity of histogram for a given resource.}}
 
-## Working with the resource view panel
+## Working with resource view panel
 
 By default both views (either "resourceGrid" and "resourceTimeline" or "resourceGrid" and "resourceHistogram") will be bound to the data store named as specified in the 
 [gantt.config.resource_store](api/gantt_resource_store_config.md) configuration option.
@@ -252,54 +252,7 @@ gantt.config.lightbox = {
 };
 ~~~
 
-If the [resource control](desktop/resources.md) is initialized without the **options** parameter, it will be connected to the **gantt.serverList("resourceOptions")** collection. This collection will be populated with the resources from the resource datastore. You can access options by code:
 
-~~~js
-const options = gantt.serverList("resourceOptions");
-~~~
-
-Note, the options array will be empty before the resources are loaded into the datastore.
-
-You can also update this collection using the custom list of options:
-
-~~~js
-gantt.updateCollection("resourceOptions", [...]);
-~~~
-
-Note, that if you load resources into the gantt after that, the gantt will update this collection and overwrite your changes.
-
-If you want to control which resources go to the lightbox, you can redefine the **gantt.config.resources.lightbox_resources** config:
-
-~~~js
-gantt.config.resources = {
-    lightbox_resources: function selectResourceControlOptions(resources){
-      	const lightboxOptions = [];
-      	resources.forEach(function(res) {
-         	if (!gantt.$resourcesStore.hasChild(res.id)) {
-            	const copy = gantt.copy(res);
-            	copy.key = res.id;
-            	copy.label = res.text;
-            	lightboxOptions.push(copy);
-         	}
-      	});
-      	return lightboxOptions;
-   	}
-}
-~~~
-
-You can also set the list of options for the resource control manually by providing the **options** parameter to the lightbox configuration:
-
-~~~js
-gantt.config.lightbox = {
-	sections: [
-		...,
-		{ 
-			name: "resources", type: "resources", map_to: "auto", 
-			default_value: 8, options: [...]
-		}
-	]
-};
-~~~
 
 ### Manual creation of data store
 
@@ -350,7 +303,7 @@ resourcesStore.attachEvent("onParse", function(){
 		people.push(copy);
 	}
   });
-  gantt.updateCollection("people", people);
+  gantt.updateCollection("resourceOptions", people);
 });
 ~~~
 
@@ -471,6 +424,17 @@ You can read more about data formats [here](desktop/resource_management.md#loadi
 
 When sending data to the server, DataProcessor serializes the values of the described properties into JSON. To process such records on the server with ease, make use of the ["REST_JSON"](desktop/server_side.md#restjson)
 dataprocessor mode.
+
+In some cases, you may want to save changes in Resource Assignments separately from task objects. In this case, you can enable the following config:
+
+~~~js
+gantt.config.resources = {
+    dataprocessor_assignments: true,
+    dataprocessor_resources: true,
+};
+~~~
+
+Read more about it in a [separate article](desktop/server_side.md#routing-crud-actions-of-resources-and-resource-assignments).
 
 
 <h3 id="resourceassignmenttime">Setting the time of the resource assignments</h3>
@@ -701,6 +665,8 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
+Read about how to configure the resource control of the lightbox in the [Resources Control](desktop/resources.md) article.
+
 ###Loading collections
 
 Collections specified as server lists can be loaded and updated dynamically, after gantt is initialized:
@@ -725,13 +691,13 @@ gantt.updateCollection("people", [
 ]);
 ~~~
 
-
 <img src="desktop/resource_management.png">
-
 
 {{sample  11_resources/01_assigning_resources.html}}
 
 If you define resources via the *serverList* collection, they can be [loaded together with the rest of the data](desktop/supported_data_formats.md#jsonwithcollections), otherwise you'll need to load them manually.
+
+Read about how to configure the resource control of the lightbox in the [Resources Control](desktop/resources.md) article.
 
 Loading resources and resource assignments
 -----------------------------------------
@@ -909,6 +875,8 @@ gantt.config.resources = {
     editable_resource_diagram: true
 };
 ~~~
+
+{{sample 11_resources/13_resource_assignments_for_days.html}}
 
 When the **editable_resource_diagram** property is enabled, gantt will automatically assign [gantt.templates.resource_cell_value](api/gantt_resource_cell_value_template.md) and [gantt.templates.resource_cell_class](api/gantt_resource_cell_class_template.md) templates in order to make resource assignments editable in the gantt.
 
