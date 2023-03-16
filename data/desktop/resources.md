@@ -70,7 +70,7 @@ Properties
 The following properties are mostly important and commonly set for the **resources** control (see the full list [here](api/gantt_lightbox_config.md)):
 
 - **name** - (*string*) the section name 
-- **map_to** - (*string*) the name of a data property that will be mapped to the section. 
+- **map_to** - (*string*) the name of a data property that will be mapped to the section
 - **type** - (*string*) the type of the [section control](desktop/default_edit_form.md#lightboxcontrols)
 - **options** - (*array*) an array of objects. Defines select options of the control (*used for the **select**, **checkbox**,**radio** and **resources**  controls*). 
 Each object in the array specifies a single option and includes the following properties:
@@ -78,16 +78,16 @@ Each object in the array specifies a single option and includes the following pr
 	- **label** - (*string*) the option label
     - **unit** - (*number*) the unit of measurement of the resource
 - **focus** - (*boolean*) if set to *true*, the section will take focus on opening the lightbox
-- **default_value** - (*any*) the default value of the section's control. Applied if the value of the resource is underfined. Each option from the **options** array can have its own default value specified.
+- **default_value** - (*any*) the default value of the section's control. Applied if the value of the resource is undefined. Each option from the **options** array can have its own default value specified.
 
-{{note By default the resource control is mapped to the property specified in api/gantt_resource_property_config.md config, so **map_to** option can be omited.}}
-{{note By default the resource control is automatically populated from the [resource datastore](desktop/resource_management.md#workingwiththeresourceviewpanel) via `gantt.serverList("resourceOptions")` [collection](api/gantt_serverlist.md). You only need to specify the options list manually if you want to change the default behavior.}}
+{{note By default the resource control is mapped to the property specified in the api/gantt_resource_property_config.md config, so the **map_to** option can be omitted.}}
+{{note By default the resource control is automatically populated from the [resource datastore](desktop/resource_management.md#workingwithresourceviewpanel) via the `gantt.serverList("resourceOptions")` [collection](api/gantt_serverlist.md). You only need to specify the options list manually if you want to change the default behavior.}}
 
 Populating control with data
 -------------------------------
 
 
-Starting from v8.0, the resource control gets options from the [resource Datastore](desktop/resource_management.md#workingwiththeresourceviewpanel) by default.
+Starting from v8.0, the resource control gets options from the [resource Datastore](desktop/resource_management.md#workingwithresourceviewpanel) by default.
 
 If you use the default resource Datastore created by Gantt, the [resource control](desktop/resources.md) initialized without the **options** parameter, will be connected to the **gantt.serverList("resourceOptions")** collection. This collection will be populated with the resources from the resource datastore. You can access options by code:
 

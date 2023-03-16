@@ -199,7 +199,7 @@ resourcesStore.parse([
 
 {{note Capacity defined at the resource level overrides the global capacity of histogram for a given resource.}}
 
-## Working with the resource view panel
+## Working with resource view panel
 
 By default both views (either "resourceGrid" and "resourceTimeline" or "resourceGrid" and "resourceHistogram") will be bound to the data store named as specified in the 
 [gantt.config.resource_store](api/gantt_resource_store_config.md) configuration option.
