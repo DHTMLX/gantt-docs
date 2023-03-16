@@ -15,6 +15,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 <span class='release_date'>March 20, 2023. Major update</span>
 
+### Breaking changes
+
+Check the [Migration article](migrating.md#7180) to keep in step with the latest version.
+
 ### New functionality
 
 - Updated Resource Management:
