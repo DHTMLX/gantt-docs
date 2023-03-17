@@ -143,7 +143,7 @@ The result will look like this:
 **Note**, that if both the **hide_bar:true** and **rollup:true** properties are specified for the data item, the item will be hidden in the timeline but shown on the parent project.
 
 {{note
-To hide all rollup items from the project task, set **rollup:false** in the [project](desktop/task_types.md#projecttasks) object (from v8.0):
+To hide all rollup items from the parent project, set **rollup:false** in the [project](desktop/task_types.md#projecttasks) object (from v8.0):
 
 ~~~js
 { id:11, text:"Project #1", type:"project", rollup:false, open: true }
@@ -185,7 +185,7 @@ gantt.config.lightbox.project_sections = [
 
 ## API overview
 
-There is an event that can be used to control the process of display of rollup tasks on their parent projects:
+There is an event that can be used to control the visibility of rollup tasks on their parent projects:
 
 - api/gantt_onbeforerolluptaskdisplay_event.md
 

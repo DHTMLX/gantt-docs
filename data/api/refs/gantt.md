@@ -253,7 +253,7 @@ Gantt API
 - api/gantt_onbeforerowdragmove_event.md - fires before a row of the grid is dragged vertically to a different position
 - api/gantt_onbeforerowresize_event.md - fires before the user starts to resize the row height by drag-and-drop
 - api/gantt_onbeforerowresizeend_event.md - fires before resizing of the row height is completed
-- api/gantt_onbeforesplittaskdisplay_event.md - fires before a subtask of the split task is displayed on the Gantt chart
+- api/gantt_onbeforesplittaskdisplay_event.md - fires before a part of the split task is displayed on the Gantt chart
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
 - api/gantt_onbeforetaskchanged_event.md - fires after the user has finished dragging and released the mouse button but before the changes are applied
@@ -334,7 +334,7 @@ Gantt API
 - api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creating links from parent tasks (projects) to their children
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading/parsing
 - api/gantt_auto_scheduling_move_projects_config.md - defines whether the whole project will be moved (see the details below)
-- api/gantt_auto_scheduling_project_constraint_config.md - 
+- api/gantt_auto_scheduling_project_constraint_config.md - defines whether tasks should inherit the constraint type from their parent project
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
 - api/gantt_auto_scheduling_use_progress_config.md - sets the way the scheduling algorithms process completed tasks
 - api/gantt_auto_types_config.md - automatically converts tasks with subtasks to projects and projects without subtasks back to tasks

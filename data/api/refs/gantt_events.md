@@ -45,7 +45,7 @@ Events
 - api/gantt_onbeforerowdragmove_event.md - fires before a row of the grid is dragged vertically to a different position
 - api/gantt_onbeforerowresize_event.md - fires before the user starts to resize the row height by drag-and-drop
 - api/gantt_onbeforerowresizeend_event.md - fires before resizing of the row height is completed
-- api/gantt_onbeforesplittaskdisplay_event.md - fires before a subtask of the split task is displayed on the Gantt chart
+- api/gantt_onbeforesplittaskdisplay_event.md - fires before a part of the split task is displayed on the Gantt chart
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
 - api/gantt_onbeforetaskchanged_event.md - fires after the user has finished dragging and released the mouse button but before the changes are applied

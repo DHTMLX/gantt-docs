@@ -13,38 +13,63 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 <b>8.0</b>
 --------------
 
-<span class='release_date'>April 7, 2023. Major update</span>
+<span class='release_date'>March 20, 2023. Major update</span>
+
+### Breaking changes
+
+Check the [Migration article](migrating.md#7180) to keep in step with the latest version.
 
 ### New functionality
 
-- Updated Auto Scheduling & Constraint calculation:
-	- tasks now can inherit the constraint type from parent projects (new api/gantt_auto_scheduling_project_constraint_config.md property)
+- Updated Resource Management:
+	- resources and resource assignments can now be [loaded together with the data](desktop/supported_data_formats.md#json)
+	- changes of resources and resource Assignments can be captured using the [DataProcessor](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments)
+	- reduced amount of boilerplate code required to use the [Resource panel](desktop/resource_management.md#workingwithresourceviewpanel)
 - Grouping tasks functionality now can preserve the original Gantt tree structure inside groups:
 	- new **save_tree_structure** parameter of the [groupBy()](api/gantt_groupby.md) method
-- Improvements for rollup and split tasks:
-	- the ability to style separate [rollup items](desktop/milestones.md#stylingseparaterollupitems) and [split tasks](desktop/split_tasks.md#styling)
-	- the ability to [hide all rollup items from the project task](desktop/milestones.md#hidingtasksandmilestones)
-	- the ability to control where rollup items are displayed (new api/gantt_onbeforerolluptaskdisplay_event.md event)
-	- the ability to [filter split tasks](desktop/split_tasks.md#filteringsplittasks) (new api/gantt_onbeforesplittaskdisplay_event.md event)
-- [Empty state screen for Gantt](desktop/empty_state_screen.md):
+- [Empty state screen](desktop/empty_state_screen.md):
 	- new api/gantt_show_empty_state_config.md property
 	- new [emptyStateElement extension](desktop/empty_state_element_ext.md)
 - The ability to extend the background grid of the timeline to the whole container:
 	- new api/gantt_timeline_placeholder_config.md property
+- Improvements for rollup items and split tasks:
+	- the ability to style separate [rollup items](desktop/milestones.md#stylingseparaterollupitems) and [split tasks](desktop/split_tasks.md#styling)
+	- the ability to [hide all rollup items from the project task](desktop/milestones.md#hidingtasksandmilestones)
+	- the ability to control where rollup items are displayed (new api/gantt_onbeforerolluptaskdisplay_event.md event)
+	- the ability to [filter split tasks](desktop/split_tasks.md#filteringsplittasks) (new api/gantt_onbeforesplittaskdisplay_event.md event)
+	- performance optimization for display of split tasks
 - The ability to delete items only after receiving confirmation from the backend:
 	- new **deleteAfterConfirmation** parameter of the [dataProcessor configuration object](api/gantt_createdataprocessor.md)
-- Improvements for Critical path, Total Slack, and Free Slack calculations:
-	- Slack calculation can now include the progress of a task
- 	- Fixed various bugs in slack calculation
- 	- Total Slack can now be calculated for projects
- 	- Major performance improvement of critical path calculation
-- Using task progress for Critical path, Slack and Auto scheduling algorithms:
-	- new api/gantt_auto_scheduling_use_progress_config.md property
+- Updated Auto Scheduling & Constraint calculation:
+	- tasks now can inherit the constraint type from parent projects:
+		- new api/gantt_auto_scheduling_project_constraint_config.md property
+- Improvements for Critical Path, Slack and Auto Scheduling:
+	- Critical path, Slack and Auto scheduling algorithms can now use progress of a task:
+		- new api/gantt_auto_scheduling_use_progress_config.md property
+ 	- [total slack](desktop/critical_path.md#gettingfreeandtotalslack) can now be calculated for projects
+ 	- major performance improvement of critical path calculation
 - The [getTaskBy()](api/gantt_gettaskby.md) method now allows selecting 'project' tasks:
 	- new **types** parameter of the [getTaskBy()](api/gantt_gettaskby.md) method
 - The ability to put any HTML content into the cells of the Timeline:
 	- new api/gantt_timeline_cell_content_template.md template
 - The export API is included into [gantt.plugins](desktop/extensions_list.md#exportservice) and no longer requires adding additional JS file. Check the [Migration](migrating.md#7180) article
+
+### Fixes
+
+- Fix the [duration calculation](desktop/working_time.md) issue with minute [duration_unit](api/gantt_duration_unit_config.md) and custom [working time](desktop/working_time.md#globalsettings) settings
+- Fix various issues with slack calculation
+- Fix the script error on data loading when [Slack calculations](desktop/critical_path.md#gettingfreeandtotalslack) are enabled
+- [setWorkTime](api/gantt_setworktime.md) method now supports setting rules for dates inside customWeeks
+- Fix the issue with smart rendering that causes blank spaces instead of data in the Gantt
+- Fix the issue with [vertical reordering](desktop/reordering_tasks.md) of rows in the Grid when some rows have [custom heights](desktop/resizing_rows.md#settingtherowheight)
+- Fix the incorrect work of [Inline editors](desktop/inline_editing.md) when the [Multiselect](desktop/multiselection.md) extension is enabled
+- Fix the incorrect display of [Quick Info](desktop/quick_info.md) popup when [gantt.config.quick_info_detached](api/gantt_quick_info_detached_config.md) config is set to `false`
+- Correct arguments of `is_valid` function of [Inline Editor](desktop/inline_editing.md#custominlineeditor) interface. The function now receives the column object
+- Ensure the `parent` property of task is saved correctly when the task is created with [gantt.groupBy](desktop/grouping.md) active
+- Fix the issue with unexpected vertical scroll when [placeholder tasks](api/gantt_placeholder_task_config.md) and [Keyboard navigation](desktop/keyboard_navigation.md) are enabled
+- Fix the issue with [DataProcessor](desktop/server_side.md) causing some changes not to be set to the backend after [Auto Scheduling](desktop/auto_scheduling.md)
+- Fix the incorrect work of [vertical reordering](desktop/reordering_tasks.md), which allowed task rows to being dragged outside the Gantt
+- Fix the incorrect order of `odd` CSS classes of rows in the [Resource panel](desktop/resource_management.md#resourceviewpanel)
 
 7.1.13
 ----------

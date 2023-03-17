@@ -283,7 +283,7 @@ gantt.config.auto_scheduling_initial = true;
 
 ###Inheritance of project constraint
 
-The api/gantt_auto_scheduling_project_constraint_config.md property defines whether the tasks without the specified constraint type should inherit the constraint type from their (project) parent task:
+The api/gantt_auto_scheduling_project_constraint_config.md property defines whether the tasks without the specified constraint type should inherit the constraint type from their parent project:
 
 ~~~js
 gantt.config.auto_scheduling_project_constraint = true;
