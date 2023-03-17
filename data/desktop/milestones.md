@@ -185,7 +185,7 @@ gantt.config.lightbox.project_sections = [
 
 ## API overview
 
-There is an event that can be used to control the process of display of rollup tasks on their parent projects:
+There is an event that can be used to control the visibility of rollup tasks on their parent projects:
 
 - api/gantt_onbeforerolluptaskdisplay_event.md
 
