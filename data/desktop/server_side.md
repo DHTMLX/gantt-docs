@@ -85,7 +85,7 @@ var dp = gantt.createDataProcessor(router);
 - where **router** is either a function:
 
 ~~~js
-// entity - "task"|"link"
+// entity - "task"|"link"|"resource"|"assignment"
 // action - "create"|"update"|"delete"
 // data - an object with task or link data
 // id – the id of a processed object (task or link)
@@ -153,6 +153,8 @@ The URL is formed by the following rule:
 
 - api/link/id
 - api/task/id
+- api/resource/id
+- api/assignment/id
 
 where "api" is the URL you've specified in the dataProcessor configuration.
 
@@ -168,43 +170,86 @@ The list of possible requests and responses is:
         <td>/apiUrl</td>
         <td><a href="desktop/supported_data_formats.md#json">JSON format</a></td>
 	</tr>
+    <tr><td colspan="4" style="font-weight:bold">Tasks</td></tr>
     <tr>
 		<td>add a new task</td>
 		<td>POST</td>
         <td>/apiUrl/task</td>
-        <td>{"action":"inserted","tid":"taskId"}</td>
+        <td>{"action":"inserted","tid":"id"}</td>
     </tr>
 	<tr>
     	<td>update a task</td>
 		<td>PUT</td>
-        <td>/apiUrl/task/taskId</td>
+        <td>/apiUrl/task/id</td>
         <td>{"action":"updated"}</td>
 	</tr>
 	<tr>
     	<td>delete a task</td>
 		<td>DELETE</td>
-        <td>/apiUrl/task/taskId</td>
+        <td>/apiUrl/task/id</td>
         <td>{"action":"deleted"}</td>
 	</tr>
+    <tr><td colspan="4" style="font-weight:bold">Links</td></tr>
 	<tr>
     	<td>add a new link</td>
 		<td>POST</td>
         <td>/apiUrl/link</td>
-        <td>{"action":"inserted","tid":"linkId"}</td>
+        <td>{"action":"inserted","tid":"id"}</td>
 	</tr>
     <tr>
 		<td>update a link</td>
 		<td>PUT</td>
-        <td>/apiUrl/link/linkId</td>
+        <td>/apiUrl/link/id</td>
         <td>{"action":"updated"}</td>
     </tr>
     <tr>
 		<td>delete a link</td>
 		<td>DELETE</td>
-        <td>/apiUrl/link/linkId</td>
+        <td>/apiUrl/link/id</td>
+        <td>{"action":"deleted"}</td>
+	</tr>
+    <tr><td colspan="4" style="font-weight:bold">Resources</td></tr>
+    <tr>
+    	<td>add a new resource</td>
+		<td>POST</td>
+        <td>/apiUrl/resource</td>
+        <td>{"action":"inserted","tid":"id"}</td>
+	</tr>
+    <tr>
+		<td>update a resource</td>
+		<td>PUT</td>
+        <td>/apiUrl/resource/id</td>
+        <td>{"action":"updated"}</td>
+    </tr>
+    <tr>
+		<td>delete a resource</td>
+		<td>DELETE</td>
+        <td>/apiUrl/resource/id</td>
+        <td>{"action":"deleted"}</td>
+	</tr>
+    <tr><td colspan="4" style="font-weight:bold">Resource Assignments</td></tr>
+    <tr>
+    	<td>add a new assignment</td>
+		<td>POST</td>
+        <td>/apiUrl/assignment</td>
+        <td>{"action":"inserted","tid":"id"}</td>
+	</tr>
+    <tr>
+		<td>update an assignment</td>
+		<td>PUT</td>
+        <td>/apiUrl/assignment/id</td>
+        <td>{"action":"updated"}</td>
+    </tr>
+    <tr>
+		<td>delete an assignment</td>
+		<td>DELETE</td>
+        <td>/apiUrl/assignment/id</td>
         <td>{"action":"deleted"}</td>
 	</tr>
 </table>
+
+{{note By default, Resources and Resource Assignments are not sent to the DataProcessor. If needed, this behavour needs to be enabled explicitly.
+Read more [here](desktop/server_side.md#resources_crud).}}
 
 <h3 id="requestparams">Request parameters</h3>
 
@@ -574,6 +619,8 @@ gantt.createDataProcessor(function(entity, action, data, id){
   }
 });
 ~~~
+
+<span id="resources_crud"></span>
 
 Routing CRUD actions of resources and resource assignments
 --------------------------------------------------------
