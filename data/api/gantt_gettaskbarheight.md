@@ -24,7 +24,7 @@ gantt.getTaskBarHeight(1); // -> 45
 The return value can also match the value specified to the **bar_height** property of the task object:
 
 ~~~js
-var tasks = {
+const tasks = {
   	data:[
      	{ id: 1, text: "Project #2", start_date: "01-04-2018", duration: 18, 
 		 	progress: 0.4, open: true, bar_height: "full", row_height: 50 }, 

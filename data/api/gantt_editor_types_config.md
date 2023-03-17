@@ -24,8 +24,8 @@ There are several predefined inline editors:
 Editors defined in this object can be attached to gantt columns:
 
 ~~~js
-var textEditor = {type: "text", map_to: "text"};
-var dateEditor =  {type: "date", map_to: "start_date",
+const textEditor = {type: "text", map_to: "text"};
+const dateEditor =  {type: "date", map_to: "start_date",
 	min: new Date(2018, 0, 1), max: new Date(2019, 0, 1)};
 
 gantt.config.columns = [

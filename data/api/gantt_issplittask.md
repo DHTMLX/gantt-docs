@@ -13,7 +13,7 @@ isSplitTask
 
 @example:
 
-var task = gantt.getTask(13);
+const task = gantt.getTask(13);
 // --> { id: 13, render:"split", text: "Task #2", ...}
 
 if(gantt.isSplitTask(task)){

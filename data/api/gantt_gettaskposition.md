@@ -17,8 +17,8 @@ getTaskPosition
 // adding baseline display
 gantt.addTaskLayer(function draw_planned(task) {
 	if (task.planned_start && task.planned_end) {
-		var sizes = gantt.getTaskPosition(task, task.planned_start, task.planned_end); /*!*/
-		var el = document.createElement('div');
+		const sizes = gantt.getTaskPosition(task, task.planned_start, task.planned_end); /*!*/
+		const el = document.createElement('div');
 		el.className = 'baseline';
 		el.style.left = sizes.left + 'px';
 		el.style.top = sizes.top + 'px';

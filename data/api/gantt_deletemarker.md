@@ -8,8 +8,8 @@ deleteMarker
 
 
 @example:
-var todayMarker = gantt.addMarker({
-	start_date: new Date(),
+const todayMarker = gantt.addMarker({
+    start_date: new Date(),
     css: "today",
     title:date_to_str( new Date())
 });

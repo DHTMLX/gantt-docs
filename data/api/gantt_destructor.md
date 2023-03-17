@@ -8,7 +8,7 @@ destructor
 
 
 @example:
-var myGantt = Gantt.getGanttInstance();
+const myGantt = Gantt.getGanttInstance();
 
 //destroying a gantt instance
 myGantt.destructor();

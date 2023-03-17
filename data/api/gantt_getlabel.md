@@ -19,7 +19,7 @@ gantt.config.lightbox.sections=[
         {key:2, label:"John Williams"}]}
 ];
 
-var holder2 = gantt.getLabel("unit_id", 2);// ->"John Williams"
+const holder2 = gantt.getLabel("unit_id", 2);// ->"John Williams"
 
 @template:	api_method
 @descr: 

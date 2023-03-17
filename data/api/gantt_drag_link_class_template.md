@@ -13,12 +13,12 @@ drag_link_class
 
 @example:
 gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
-	var add = "";
+	let add = "";
 	if(from && to){
-		var allowed = gantt.isLinkAllowed(from, to, from_start, to_start);
-		add = " " + (allowed ? "gantt_link_allow" : "gantt_link_deny");
+		const allowed = gantt.isLinkAllowed(from, to, from_start, to_start);
+		add = (allowed ? "gantt_link_allow" : "gantt_link_deny");
 	}
-	return "gantt_link_tooltip" + add;
+	return `gantt_link_tooltip ${add}`;
 };
 @template:	api_template
 @returns:

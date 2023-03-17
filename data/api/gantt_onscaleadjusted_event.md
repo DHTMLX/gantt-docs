@@ -6,12 +6,12 @@ onScaleAdjusted
 
 @example:
 gantt.attachEvent("onScaleAdjusted", function(){
-	var min = gantt.getState().min_date,
-	max = gantt.getState().max_date,
-	to_str = gantt.templates.task_date;
+	const min = gantt.getState().min_date;
+	const max = gantt.getState().max_date;
+	const to_str = gantt.templates.task_date;
 
-	return gantt.message("Scale shows days from " + to_str(min) 
-    + " to " + to_str(max));
+	return gantt.message(`Scale shows days from ${to_str(min)} 
+ to ${to_str(max)}`);
 });
 
 @template:	api_event

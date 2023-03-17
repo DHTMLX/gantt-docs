@@ -11,7 +11,7 @@ getLinkCount
 - count			number			the number of dependency links
 
 @example:
-var count = gantt.getLinkCount();
+const count = gantt.getLinkCount();
 
 @template:	api_method
 @descr:

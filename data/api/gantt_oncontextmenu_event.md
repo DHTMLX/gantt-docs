@@ -27,8 +27,8 @@ In the following example a click on a task shows a [DHTMLX context menu](https:/
 ~~~
 //requires DHTMLX menu component
 gantt.attachEvent("onContextMenu", function (taskId, linkId, event) {
-  	var x = event.clientX+document.body.scrollLeft+document.documentElement.scrollLeft,
-		y = event.clientY+document.body.scrollTop+document.documentElement.scrollTop;
+	const x = event.clientX+document.body.scrollLeft+document.documentElement.scrollLeft;
+	const y = event.clientY+document.body.scrollTop+document.documentElement.scrollTop;
 
 	if (taskId) {
 		menu.showContextMenu(x, y);

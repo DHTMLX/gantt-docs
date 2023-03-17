@@ -16,7 +16,7 @@ onGridResizeEnd
 gantt.attachEvent("onGridResizeEnd", function(old_width, new_width){
 	gantt.message.hide(message);
 	message = null;
-	gantt.message("Grid is now <b>" + new_width + "</b>px width" );
+	gantt.message(`Grid is now <b>${new_width}</b>px width`);
 	return true;
 });
 @template:	api_event

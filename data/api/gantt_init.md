@@ -30,21 +30,21 @@ gantt.load("tasks.json");
 Using the 2nd and 3rd parameters of the method is a good way to set the boundary values of the time scale:
 
 ~~~js
-gantt.init("gantt_here", new Date(2019, 08, 10), new Date(2019, 08, 20));
+gantt.init("gantt_here", new Date(2023, 08, 10), new Date(2023, 08, 20));
 ~~~
 
 Note, that date paremeters of the `gantt.init` method are shortcuts for [start_date](api/gantt_start_date_config.md) and [end_date](api/gantt_end_date_config.md) configs.
 The two code snippets below are equivalent to each other:
 
 ~~~js
-gantt.init("gantt_here", new Date(2019, 08, 10), new Date(2019, 08, 20));
+gantt.init("gantt_here", new Date(2023, 08, 10), new Date(2023, 08, 20));
 ~~~
 
 and
 
 ~~~js
-gantt.config.start_date = new Date(2019, 08, 10);
-gantt.config.end_date = new Date(2019, 08, 20);
+gantt.config.start_date = new Date(2023, 08, 10);
+gantt.config.end_date = new Date(2023, 08, 20);
 gantt.init("gantt_here");
 ~~~
 

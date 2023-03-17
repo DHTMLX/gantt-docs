@@ -12,12 +12,12 @@ drag_link
 
 @example:
 gantt.templates.drag_link = function(from, from_start, to, to_start) {
-	from = gantt.getTask(from);
+	const sourceTask = gantt.getTask(from);
 
-	var text = "From:<b> " +from.text + "</b> " +(from_start?"Start":"End")+"<br/>";
+	let text = `From:<b> ${sourceTask.text}</b> ${(from_start?"Start":"End")}<br/>`;
 	if(to){
-		to = gantt.getTask(to);
-		text += "To:<b> " + to.text + "</b> "+ (to_start?"Start":"End")+"<br/>";
+		const targetTask = gantt.getTask(to);
+		text += `To:<b> ${targetTask.text}</b> ${(to_start?"Start":"End")}<br/>`;
 	}
 	return text;
 };

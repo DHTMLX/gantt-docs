@@ -16,8 +16,8 @@ configures the behavior of the drag_timeline extension
 @example:
 
 gantt.config.drag_timeline = {
-      ignore:".gantt_task_line, .gantt_task_link",
-      useKey: false
+    ignore:".gantt_task_line, .gantt_task_link",
+    useKey: false
 };
 
 
@@ -38,8 +38,8 @@ The **drag_timeline** object includes two properties:
 
 ~~~
 gantt.config.drag_timeline = {
-      ignore:".gantt_task_line, .gantt_task_link",
-      useKey: false
+    ignore:".gantt_task_line, .gantt_task_link",
+    useKey: false
 };
 ~~~
 

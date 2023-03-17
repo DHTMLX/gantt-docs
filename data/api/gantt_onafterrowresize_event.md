@@ -13,8 +13,8 @@ onAfterRowResize
 
 @example:
 gantt.attachEvent("onAfterRowResize", function (id, item, oldHeight, newHeight) {
-	gantt.message("<b>" + item.text + "</b> was <b>" + oldHeight+ "px</b> height." +
-    	+ "<br><b>" + item.text + "</b> is now <b>" + newHeight+ "px</b> height");
+	gantt.message(`<b>${item.text}</b> was <b>${oldHeight}px</b> height.<br>
+	<b>${item.text}</b> is now <b>${newHeight}px</b> height`);
 });
 
 @template:	api_event

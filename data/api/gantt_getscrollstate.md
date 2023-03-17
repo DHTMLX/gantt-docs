@@ -11,9 +11,9 @@ scroll	object	the scroll position object as { x:scrollLeft, y:scrollTop }
 
 
 @example:
-var sPos = gantt.getScrollState(); // {x:58,y:180}
-var posX = sPos.x;
-var posY = sPos.y;
+const sPos = gantt.getScrollState(); // {x:58,y:180}
+const posX = sPos.x;
+const posY = sPos.y;
 
 @template:	api_method
 @descr:

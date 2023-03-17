@@ -12,7 +12,7 @@ isLinkAllowed
 
 
 @example:
-var link = {
+const link = {
     source:2,
     target:2,
     type:gantt.config.link.start_to_start

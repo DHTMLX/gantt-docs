@@ -14,8 +14,9 @@ marker_class
 @example:
 var showAdvancedMarkers;
 gantt.templates.marker_class = function(marker){
-    if (showAdvancedMarkers)
-    return "advanced_marker";
+    if (showAdvancedMarkers) {
+        return "advanced_marker";
+    }
     return "hidden";
 }
 

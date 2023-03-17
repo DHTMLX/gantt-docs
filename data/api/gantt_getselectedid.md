@@ -7,7 +7,7 @@ getSelectedId
 - id	string 		the id of the selected task or <i>null</i> if no tasks are selected in the Gantt chart
 
 @example:
-var tasks = {
+const tasks = {
   data:[
      {id:"p_1", text:"Project #1", start_date:"01-04-2013", duration:18, open:true},
      {id:"t_1", text:"Task #1", start_date:"02-04-2013", duration:8, parent:"p_1"},

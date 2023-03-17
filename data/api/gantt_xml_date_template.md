@@ -19,8 +19,8 @@ gantt.templates.xml_date = function(date){
 {{note The template is deprecated. Use api/gantt_parse_date_template.md instead:}}
 
 ~~~js
-var cfg = gantt.config;
-var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
+const cfg = gantt.config;
+const strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
  
 gantt.templates.parse_date = function(date){
     return strToDate (date);
@@ -81,8 +81,8 @@ gantt.load("/data");
 Use api/gantt_parse_date_template.md instead:
 
 ~~~js
-var cfg = gantt.config;
-var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
+const cfg = gantt.config;
+const strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
  
 gantt.templates.parse_date = function(date){
     return strToDate (date);
