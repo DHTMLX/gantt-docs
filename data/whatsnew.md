@@ -25,24 +25,24 @@ Check the [Migration article](migrating.md#7180) to keep in step with the latest
 	- resources and resource assignments can now be [loaded together with the data](desktop/supported_data_formats.md#json)
 	- changes of resources and resource Assignments can be captured using the [DataProcessor](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments)
 	- reduced amount of boilerplate code required to use the [Resource panel](desktop/resource_management.md#workingwithresourceviewpanel)
-- Updated Auto Scheduling & Constraint calculation:
-	- tasks now can inherit the constraint type from parent projects:
-		- new api/gantt_auto_scheduling_project_constraint_config.md property
 - Grouping tasks functionality now can preserve the original Gantt tree structure inside groups:
 	- new **save_tree_structure** parameter of the [groupBy()](api/gantt_groupby.md) method
-- Improvements for rollup and split tasks:
+- [Empty state screen](desktop/empty_state_screen.md):
+	- new api/gantt_show_empty_state_config.md property
+	- new [emptyStateElement extension](desktop/empty_state_element_ext.md)
+- The ability to extend the background grid of the timeline to the whole container:
+	- new api/gantt_timeline_placeholder_config.md property
+- Improvements for rollup items and split tasks:
 	- the ability to style separate [rollup items](desktop/milestones.md#stylingseparaterollupitems) and [split tasks](desktop/split_tasks.md#styling)
 	- the ability to [hide all rollup items from the project task](desktop/milestones.md#hidingtasksandmilestones)
 	- the ability to control where rollup items are displayed (new api/gantt_onbeforerolluptaskdisplay_event.md event)
 	- the ability to [filter split tasks](desktop/split_tasks.md#filteringsplittasks) (new api/gantt_onbeforesplittaskdisplay_event.md event)
 	- performance optimization for display of split tasks
-- [Empty state screen for Gantt](desktop/empty_state_screen.md):
-	- new api/gantt_show_empty_state_config.md property
-	- new [emptyStateElement extension](desktop/empty_state_element_ext.md)
-- The ability to extend the background grid of the timeline to the whole container:
-	- new api/gantt_timeline_placeholder_config.md property
 - The ability to delete items only after receiving confirmation from the backend:
 	- new **deleteAfterConfirmation** parameter of the [dataProcessor configuration object](api/gantt_createdataprocessor.md)
+- Updated Auto Scheduling & Constraint calculation:
+	- tasks now can inherit the constraint type from parent projects:
+		- new api/gantt_auto_scheduling_project_constraint_config.md property
 - Improvements for Critical Path, Slack and Auto Scheduling:
 	- Critical path, Slack and Auto scheduling algorithms can now use progress of a task:
 		- new api/gantt_auto_scheduling_use_progress_config.md property
