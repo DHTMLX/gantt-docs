@@ -7,10 +7,10 @@ Start
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="whatsnew.md#x2x80x3x">Updated resource management</a></li>  
-        <li><a href="whatsnew.md#x2x80x3x">Improved task grouping</a></li>      
+		<li><a href="desktop/resource_management.md">Updated resource management</a></li>  
+        <li><a href="desktop/grouping.md">Improved task grouping</a></li>      
         <li><a href="desktop/empty_state_screen.md">Empty state screen</a></li>   
-        <li><a href="whatsnew.md#x2x80x3x">Ability to hide rollup items and filter split tasks</a></li>   
+        <li><a href="desktop/milestones.md#hidingtasksandmilestones">Ability to hide rollup items</a> and <a href="desktop/split_tasks.md#filteringsplittasks">filter split tasks</a></li>   
         
 	</ul>
 
