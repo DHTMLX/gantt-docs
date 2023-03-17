@@ -12,7 +12,7 @@ resources
 gantt.config.resources = {
     dataprocessor_assignments: true,
     dataprocessor_resources: true,
-    editable_resource_diagram: true
+    editable_resource_diagram: true,
     resource_store: {
         type: "treeDataStore",
         fetchTasks: true,
