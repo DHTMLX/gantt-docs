@@ -162,6 +162,8 @@ Getting free and total slack
 
 **Free slack** - a period of time that can be used to increase the duration of a task or move it on the timeline without affecting the next task it is connected with.
 
+Free slack can be calculated for 'task' and 'milestone' types of tasks.
+
 To get the free slack of a task, make use of the api/gantt_getfreeslack.md method. It takes the object of a task as a parameter:
 
 ~~~js
@@ -172,6 +174,8 @@ gantt.getFreeSlack(task);
 {{sample 08_api/17_show_task_slack.html}}
 
 **Total slack** - a period of time that can be used to increase the duration of a task or move it on the timeline without affecting the time of ending of the whole project.
+
+Total slack can be calculated for all types of tasks, including projects.
 
 To get the total slack of a task, make use of the api/gantt_gettotalslack.md method. It takes the object of a task as a parameter as well:
 
@@ -254,6 +258,23 @@ Setting lag and lead times between tasks
 ---------------------------------
 
 It's possible to set lag and lead times between tasks of the critical path. You find the details [here](desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks).
+
+Scheduling completed tasks
+----------------------------
+
+By default, there is no difference in how the critical path algorithm processes completed tasks (tasks which have progress value of 1) and incomplete tasks.
+
+Optionally, you can enable the api/gantt_auto_scheduling_use_progress_config.md config to change this behavior:
+
+~~~js
+gantt.config.auto_scheduling_use_progress = true;
+ 
+gantt.init("gantt_here");
+~~~
+
+When the config is enabled, completed tasks will be excluded from the critical path and auto scheduling.
+
+You can find more details on the [API page](api/gantt_auto_scheduling_use_progress_config.md).
 
 @edition: pro
 

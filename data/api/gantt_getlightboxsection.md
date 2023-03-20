@@ -12,12 +12,12 @@ getLightboxSection
 
 
 @example:
-var time = gantt.getLightboxSection('time');
-var descr = gantt.getLightboxSection('description');
+const time = gantt.getLightboxSection('time');
+const descr = gantt.getLightboxSection('description');
  
 //gets the value
-var value = time.getValue();
-var value1 = descr.getValue();
+const value = time.getValue();
+const value1 = descr.getValue();
  
 //sets the value
 descr.setValue('New Task'); //for sections that contain the only control

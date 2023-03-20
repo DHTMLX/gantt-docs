@@ -1,16 +1,16 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 7.1!</h2>
+    <h2>Meet Gantt 8.0!</h2>
     
     <p>
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="desktop/resource_management.md#resourceassignmenttime">Setting dates for resource assignments</a></li>  
-        <li><a href="desktop/milestones.md#rolluptasksandmilestones">Rollup tasks and milestones</a></li>      
-        <li><a href="desktop/working_time.md#rules_for_periods">Different calendars for different time spans</a></li>   
-        <li><a href="desktop/resizing_rows.md">Adjusting height of individual rows</a></li>   
+		<li><a href="desktop/resource_management.md">Updated resource management</a></li>  
+        <li><a href="desktop/grouping.md">Improved task grouping</a></li>      
+        <li><a href="desktop/empty_state_screen.md">Empty state screen</a></li>   
+        <li><a href="desktop/milestones.md#hidingtasksandmilestones">Ability to hide rollup items</a> and <a href="desktop/split_tasks.md#filteringsplittasks">filter split tasks</a></li>   
         
 	</ul>
 

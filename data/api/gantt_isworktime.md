@@ -14,12 +14,12 @@ isWorkTime
 
 @example:
 //checks whether the specified date is a working day in global settings
-gantt.isWorkTime({ date: new Date(2017,3,5) });
+gantt.isWorkTime({ date: new Date(2023,3,5) });
 // or
-gantt.isWorkTime(new Date(2017,3,5));
+gantt.isWorkTime(new Date(2023,3,5));
 
 //checks whether the specified date is working day for a specific task
-gantt.isWorkTime({date: new Date(2017,3,5), task: task});
+gantt.isWorkTime({date: new Date(2023,3,5), task: task});
 
 
 @template:	api_method
@@ -44,13 +44,13 @@ Let's  assume that you set the following working time for the chart:
 - **Working days**: Monday - Friday
 - **Working hours**: 6:00 - 15:00
 
-Then, if you check Monday April,1 2013 as in, you will get: 
+Then, if you check Monday April,3 2023 as in, you will get: 
 
 ~~~js
-gantt.isWorkTime({date: new Date(2013,3,1,17,00), unit: "hour"}); 
+gantt.isWorkTime({date: new Date(2023,3,3,17,00), unit: "hour"}); 
 //->false, cause 17:00-18:00 is not working time
 
-gantt.isWorkTime({date: new Date(2013,3,1,17,00), unit:  "day"}); 
+gantt.isWorkTime({date: new Date(2023,3,3,17,00), unit:  "day"}); 
 //-> true, cause Monday is a working day
 ~~~
 

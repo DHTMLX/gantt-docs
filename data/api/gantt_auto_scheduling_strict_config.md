@@ -36,6 +36,8 @@ desktop/auto_scheduling.md
 - api/gantt_auto_scheduling_descendant_links_config.md
 - api/gantt_auto_scheduling_initial_config.md
 - api/gantt_auto_scheduling_move_projects_config.md
+- api/gantt_auto_scheduling_project_constraint_config.md
+- api/gantt_auto_scheduling_use_progress_config.md
 - api/gantt_findcycles.md
 - api/gantt_iscircularlink.md
 - api/gantt_onafterautoschedule_event.md

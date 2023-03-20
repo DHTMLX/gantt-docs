@@ -41,14 +41,16 @@ gantt.load("apiUrl");
 var dp = new gantt.dataProcessor("apiUrl");
 dp.init(gantt);
 dp.setTransactionMode("REST");
+dp.deleteAfterConfirmation = true;
 ~~~
 
 - Call the api/gantt_createdataprocessor.md method and pass an object with configuration options as its parameter:
 
 ~~~js
 var dp = gantt.createDataProcessor({
-      url: "apiUrl",
-      mode: "REST"
+    url: "apiUrl",
+    mode: "REST",
+    deleteAfterConfirmation: true
 });
 ~~~
 
@@ -62,8 +64,9 @@ While creating a DataProcessor via the API method api/gantt_createdataprocessor.
 
 ~~~js
 var dp = gantt.createDataProcessor({
-   url: "/api",
-   mode: "REST"
+    url: "/api",
+    mode: "REST",
+    deleteAfterConfirmation: true
 });
 ~~~
 
@@ -71,6 +74,7 @@ where:
 
 - **url** - the URL to the server side
 - **mode** - the mode of sending data to the server:  "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
+- **deleteAfterConfirmation** - defines whether the task must be deleted from the gantt only after a successful response from the server. Dependency links and subtasks will be deleted after the deletion of the parent task is confirmed.
 
 2\. Provide a custom **router** object:
 
@@ -81,7 +85,7 @@ var dp = gantt.createDataProcessor(router);
 - where **router** is either a function:
 
 ~~~js
-// entity - "task"|"link"
+// entity - "task"|"link"|"resource"|"assignment"
 // action - "create"|"update"|"delete"
 // data - an object with task or link data
 // id – the id of a processed object (task or link)
@@ -149,6 +153,8 @@ The URL is formed by the following rule:
 
 - api/link/id
 - api/task/id
+- api/resource/id
+- api/assignment/id
 
 where "api" is the URL you've specified in the dataProcessor configuration.
 
@@ -164,43 +170,86 @@ The list of possible requests and responses is:
         <td>/apiUrl</td>
         <td><a href="desktop/supported_data_formats.md#json">JSON format</a></td>
 	</tr>
+    <tr><td colspan="4" style="font-weight:bold">Tasks</td></tr>
     <tr>
 		<td>add a new task</td>
 		<td>POST</td>
         <td>/apiUrl/task</td>
-        <td>{"action":"inserted","tid":"taskId"}</td>
+        <td>{"action":"inserted","tid":"id"}</td>
     </tr>
 	<tr>
     	<td>update a task</td>
 		<td>PUT</td>
-        <td>/apiUrl/task/taskId</td>
+        <td>/apiUrl/task/id</td>
         <td>{"action":"updated"}</td>
 	</tr>
 	<tr>
     	<td>delete a task</td>
 		<td>DELETE</td>
-        <td>/apiUrl/task/taskId</td>
+        <td>/apiUrl/task/id</td>
         <td>{"action":"deleted"}</td>
 	</tr>
+    <tr><td colspan="4" style="font-weight:bold">Links</td></tr>
 	<tr>
     	<td>add a new link</td>
 		<td>POST</td>
         <td>/apiUrl/link</td>
-        <td>{"action":"inserted","tid":"linkId"}</td>
+        <td>{"action":"inserted","tid":"id"}</td>
 	</tr>
     <tr>
 		<td>update a link</td>
 		<td>PUT</td>
-        <td>/apiUrl/link/linkId</td>
+        <td>/apiUrl/link/id</td>
         <td>{"action":"updated"}</td>
     </tr>
     <tr>
 		<td>delete a link</td>
 		<td>DELETE</td>
-        <td>/apiUrl/link/linkId</td>
+        <td>/apiUrl/link/id</td>
+        <td>{"action":"deleted"}</td>
+	</tr>
+    <tr><td colspan="4" style="font-weight:bold">Resources</td></tr>
+    <tr>
+    	<td>add a new resource</td>
+		<td>POST</td>
+        <td>/apiUrl/resource</td>
+        <td>{"action":"inserted","tid":"id"}</td>
+	</tr>
+    <tr>
+		<td>update a resource</td>
+		<td>PUT</td>
+        <td>/apiUrl/resource/id</td>
+        <td>{"action":"updated"}</td>
+    </tr>
+    <tr>
+		<td>delete a resource</td>
+		<td>DELETE</td>
+        <td>/apiUrl/resource/id</td>
+        <td>{"action":"deleted"}</td>
+	</tr>
+    <tr><td colspan="4" style="font-weight:bold">Resource Assignments</td></tr>
+    <tr>
+    	<td>add a new assignment</td>
+		<td>POST</td>
+        <td>/apiUrl/assignment</td>
+        <td>{"action":"inserted","tid":"id"}</td>
+	</tr>
+    <tr>
+		<td>update an assignment</td>
+		<td>PUT</td>
+        <td>/apiUrl/assignment/id</td>
+        <td>{"action":"updated"}</td>
+    </tr>
+    <tr>
+		<td>delete an assignment</td>
+		<td>DELETE</td>
+        <td>/apiUrl/assignment/id</td>
         <td>{"action":"deleted"}</td>
 	</tr>
 </table>
+
+{{note By default, Resources and Resource Assignments are not sent to the DataProcessor. If needed, you have to enable this behavior explicitly.
+Read more [here](desktop/server_side.md#resources_crud).}}
 
 <h3 id="requestparams">Request parameters</h3>
 
@@ -571,7 +620,93 @@ gantt.createDataProcessor(function(entity, action, data, id){
 });
 ~~~
 
+<span id="resources_crud"></span>
 
+Routing CRUD actions of resources and resource assignments
+--------------------------------------------------------
+
+From v8.0, modified resource assignments can be sent to the dataProcessor as separate entries with persistent IDs, so making it easy to connect to backend API. Changes of resource objects can be also sent to the DataProcessor.
+
+Note, this feature is disabled by default. By default, the dataProcessor only receives changes made to tasks and links. To enable the feature, use the following settings:
+
+~~~js
+gantt.config.resources = {
+    dataprocessor_assignments: true,
+    dataprocessor_resources: true,
+};
+~~~
+
+Once the resource mode of the dataProcessor is enabled, if the DataProcessor is configured to the REST mode - resources and resource assignments will be sent to the backend in separate requests.
+
+If you use the dataProcessor in the Custom Routing mode, you'll be able to capture changes of resource assignments and resources in the handler:
+
+~~~js
+gantt.createDataProcessor({
+    task: {
+        create: (data) => {
+            return createRecord({type: "task", ...data}).then((res) => {
+                return { tid: res.id, ...res };
+            });
+        },
+        update: (data, id) => {
+            return updateRecord({type: "task", ...data}).then(() => ({}));
+        },
+        delete: (id) => {
+            return deleteRecord({type: "task:", id: id}).then(() => ({}));
+        }
+    },
+    link: {
+        create: (data) => {
+            ...
+        },
+        update: (data, id) => {
+            ...
+        },
+        delete: (id) => {
+            ...
+        }
+    },
+    assignment: {
+        create: (data) => {
+            ...
+        },
+        update: (data, id) => {
+            ...
+        },
+        delete: (id) => {
+            ...
+        }
+    },
+    resource: {
+        create: (data) => {
+            ...
+        },
+        update: (data, id) => {
+            ...
+        },
+        delete: (id) => {
+            ...
+        }
+    }
+});
+~~~
+
+Or, using function declaration:
+
+~~~js
+gantt.createDataProcessor(function(entity, action, data, id){
+    switch (entity) {
+        case "task":
+            break;
+        case "link":
+            break;
+        case "resource":
+            break;
+        case "assignment":
+            break;
+    }
+});
+~~~
 
 Error Handling
 ----------------------

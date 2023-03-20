@@ -26,6 +26,7 @@ gantt.templates.timeline_cell_class = function(task,date){
 	api/gantt_scale_cell_class_template.md
     api/gantt_task_row_class_template.md
     api/gantt_task_class_template.md
+	api/gantt_timeline_placeholder_config.md
 @relatedsample:
 	04_customization/06_highlight_weekend.html
 @related:

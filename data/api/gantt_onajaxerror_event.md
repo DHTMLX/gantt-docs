@@ -14,7 +14,7 @@ onAjaxError
 @example:
 
 gantt.attachEvent("onAjaxError", function(request){
-    gantt.message({type: "error", text:"Http error "+request.status+ "!"})
+    gantt.message({type: "error", text:`Http error ${request.status}!`})
     gantt.message(request.response)
     return true;
 });

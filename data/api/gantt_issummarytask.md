@@ -12,7 +12,7 @@ isSummaryTask
 
 
 @example:
-var task = gantt.getTask(10);
+const task = gantt.getTask(10);
 gantt.isSummaryTask(task); // ->false
 
 

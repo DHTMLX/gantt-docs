@@ -20,6 +20,34 @@ Migration from Older Versions
 	}
 </style>
 
+7.1 -> 8.0
+-------------
+
+### Resource assignments
+
+In previous versions of DHTMLX Gantt, changes in resource assignments were sent to the backend as properties of tasks objects, which in some cases made integration with backend API more difficult then it's required.
+
+Starting from DHTMLX Gantt v8.0, changes made to resources and resource assignments can be routed via dataProcessor. Check the [Routing CRUD actions of resources and resource assignments](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments) section.
+
+### Export service
+
+From v8.0, the import/export functionality is included into the gantt library. 
+
+Therefore, if you have already included the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, for example:
+
+~~~js
+<script src="codebase/dhtmlxgantt.js"></script>
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>
+~~~
+
+Then you need to remove the file and enable the **export_api** extension using the **gantt.plugins** method:
+
+~~~js
+gantt.plugins({
+    export_api: true
+});
+~~~
+
 7.0 -> 7.1
 -------------
 

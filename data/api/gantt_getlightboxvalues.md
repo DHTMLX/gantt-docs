@@ -20,7 +20,7 @@ gantt.getLightboxValues();
 The method returns the values as a hash of *'section_name:value'* pairs 
 
 ~~~js
-var values = gantt.getLightboxValues();
+const values = gantt.getLightboxValues();
 ~~~
 
 ~~~js

@@ -40,10 +40,12 @@ Events
 - api/gantt_onbeforeparse_event.md - fires before data started to be parsed
 - api/gantt_onbeforeredo_event.md - fires before the redo() method is called
 - api/gantt_onbeforeredostack_event.md - fires before an action is added into the redo stack
+- api/gantt_onbeforerolluptaskdisplay_event.md - fires before the rollup task is displayed on its parent project
 - api/gantt_onbeforerowdragend_event.md - fires when a user drops a row in the grid
 - api/gantt_onbeforerowdragmove_event.md - fires before a row of the grid is dragged vertically to a different position
 - api/gantt_onbeforerowresize_event.md - fires before the user starts to resize the row height by drag-and-drop
 - api/gantt_onbeforerowresizeend_event.md - fires before resizing of the row height is completed
+- api/gantt_onbeforesplittaskdisplay_event.md - fires before a part of the split task is displayed on the Gantt chart
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
 - api/gantt_onbeforetaskchanged_event.md - fires after the user has finished dragging and released the mouse button but before the changes are applied
@@ -153,10 +155,12 @@ Events
 - api/gantt_onbeforeparse_event.md
 - api/gantt_onbeforeredo_event.md
 - api/gantt_onbeforeredostack_event.md
+- api/gantt_onbeforerolluptaskdisplay_event.md
 - api/gantt_onbeforerowdragend_event.md
 - api/gantt_onbeforerowdragmove_event.md
 - api/gantt_onbeforerowresize_event.md
 - api/gantt_onbeforerowresizeend_event.md
+- api/gantt_onbeforesplittaskdisplay_event.md
 - api/gantt_onbeforetaskadd_event.md
 - api/gantt_onbeforetaskautoschedule_event.md
 - api/gantt_onbeforetaskchanged_event.md

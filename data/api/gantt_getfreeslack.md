@@ -11,7 +11,7 @@ getFreeSlack
 - free_slack		number 		the free slack of a task
 
 @example:
-var task = gantt.getTask(7);
+const task = gantt.getTask(7);
 gantt.getFreeSlack(task);
 
 @template:	api_method

@@ -11,7 +11,7 @@ getMarker
 - marker	object	the marker's configuration object
 
 @example:
-var todayMarker = gantt.addMarker({
+const todayMarker = gantt.addMarker({
 	start_date: new Date(),
     css: "today",
     text:"Now"

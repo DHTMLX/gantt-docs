@@ -16,8 +16,8 @@ onColumnResizeEnd
 gantt.attachEvent("onColumnResizeEnd", function(index, column, new_width){
 	gantt.message.hide(message);
 	message = null;
-	gantt.message("Column <b>" +gantt.locale.labels["column_"+column.name]
-    + "</b> is now " + new_width + "px width" );
+	gantt.message(`Column <b>${gantt.locale.labels["column_"+column.name]}
+    </b> is now ${new_width}px width`);
 	return true;
 });
 

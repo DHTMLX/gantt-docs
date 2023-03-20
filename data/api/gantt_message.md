@@ -15,13 +15,13 @@ message
 
 
 @example:
-var box = gantt.message({ 
+let box = gantt.message({ 
     type:"confirm-warning", 
     text:"Are you sure you want to do it?"
 });
 
 // or
-var box = gantt.message("This is the message");
+box = gantt.message("This is the message");
 
 @template:	api_method
 @descr:

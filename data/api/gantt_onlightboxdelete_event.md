@@ -12,7 +12,7 @@ onLightboxDelete
  
 @example:
 gantt.attachEvent("onLightboxDelete", function(id){
-	var task = gantt.getTask(id);
+	const task = gantt.getTask(id);
     if (task.duration > 60){
     	alert("The duration is too long. Please, try again");
         return false;

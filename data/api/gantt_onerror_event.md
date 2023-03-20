@@ -12,8 +12,8 @@ onError
 
 @example:
 gantt.attachEvent("onError", function(errorMessage){
-	gantt.message({
-    	text:"Error"
+    gantt.message({
+        text:"Error"
     });
     return true;
 });

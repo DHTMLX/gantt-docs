@@ -117,9 +117,9 @@ gantt.templates.task_class=function(start, end, task){
 - **group_text** - (*optional*) the group's label. The default value - 'label'.  
 - **delimiter** - (*optional*) the delimiter is used for automatic creation of groups for tasks with multiple resources. "," by default.
 - **default_group_label** - (<i>string</i>) the name of the default group. Optional. The default value is 'None'.
+- **save_tree_structure** - (<i>boolean</i>) defines whether the gantt should save its tree structure inside groups. If not specified or is set to *false*, the tasks will be displayed in a flat list view.
 
-Note, that the default group includes tasks which are not included into the other groups. The default group doesn't include tasks if they have **relation_property** specified as a <i>string|number</i> value.<br> {{sample	02_extensions/28_tasks_grouping_relation_properties.html}}
-
+Note, that the default group includes tasks which are not included into the other groups. The default group doesn't include tasks if they have **relation_property** specified as a <i>string|number</i> value.<br> 
 
 Ungrouping tasks
 ------------------------------
@@ -152,6 +152,30 @@ gantt.groupBy({
 });
 ~~~
 
+
+Keeping original task hierarchy in groups
+---------------------------------------
+
+In the group mode, the Gantt tree's original structure isn't displayed by default, and all tasks appear as first-level children of their respective groups.
+
+To maintain the original subtask structure within groups, use the **save_tree_structure** setting:
+
+~~~js
+gantt.groupBy({
+	groups: [
+		{ key: 1, label: "Ilona" },
+		{ key: 2, label: "John" },
+		{ key: 3, label: "Mike" }
+	],
+	relation_property: "owner",
+	group_id: "key",
+	group_text: "label",
+	default_group_label: "Not Assigned",
+	save_tree_structure: true /* ! */
+});
+~~~
+
+{{sample	02_extensions/28_tasks_grouping_save_tree_structure.html}}
 
 @edition: pro
 

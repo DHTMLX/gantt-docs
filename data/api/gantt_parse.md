@@ -11,10 +11,10 @@ parse
 @example:
 gantt.parse({
 	data:[
-        {id:1, text:"Project #2", start_date:"01-04-2013", duration:18},
-        {id:2, text:"Task #1",    start_date:"02-04-2013", duration:8,
+        {id:1, text:"Project #2", start_date:"01-04-2023", duration:18},
+        {id:2, text:"Task #1",    start_date:"02-04-2023", duration:8,
     		progress:0.6, parent:1},
-        {id:3, text:"Task #2",    start_date:"11-04-2013", duration:8,
+        {id:3, text:"Task #2",    start_date:"11-04-2023", duration:8,
     		progress:0.6, parent:1}
     ],
     links:[
@@ -39,7 +39,7 @@ If you want to load data which doesn't contain tasks, you still need to define a
 
 ~~~js
 gantt.parse({
-    data:[],
+    tasks:[],
     links:[
         { id:1, source:1, target:2, type:1},
         { id:2, source:2, target:3, type:0}
@@ -47,3 +47,40 @@ gantt.parse({
 });
 ~~~
 
+<br>
+From v8.0, besides tasks and links, you can load resources and resource assignments into the gantt via the **parse()** method:
+
+~~~js
+gantt.parse({
+    tasks: [
+        ...,
+        {
+            id: 5,
+            text: "Interior office",
+            type: "task",
+            start_date: "03-04-2024 00:00",
+            duration: 7,
+            parent: "2",
+            owner: [
+                {
+                    resource_id: "6",
+                    value: 3,
+                    start_date: "03-04-2024 00:00",
+                    end_date: "05-04-2024 00:00",
+                }
+            ]
+        },
+        ...
+    ],
+    links: [],
+    resources: [
+        {id: 6, text: "John", unit: "hours/day" },
+        {id: 7, text: "Mike", unit: "hours/day" },
+        {id: 8, text: "Anna", unit: "hours/day" },
+        {id: 9, text: "Bill", unit: "hours/day" },
+        {id: 10, text: "Floe", unit: "hours/day" }
+    ]
+});
+~~~
+
+You can read more [here](desktop/resource_management.html#loadingresourcesandresourceassignments).

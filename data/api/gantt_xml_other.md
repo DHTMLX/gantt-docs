@@ -6,7 +6,7 @@ xml
 @type:object
 
 @example:
-var obj = gantt.xml; // -> { parse(text,loader){...}, serialize(){...}}
+const obj = gantt.xml; // -> { parse(text,loader){...}, serialize(){...}}
 @template:	api_config
 @descr:
 The XML object contains 2 members:

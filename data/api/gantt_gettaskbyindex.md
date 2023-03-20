@@ -13,9 +13,9 @@ getTaskByIndex
 - task		Task 		a task object
 
 @example:
-var globalTaskIndex = gantt.getGlobalTaskIndex(19); // -> 10
+const globalTaskIndex = gantt.getGlobalTaskIndex(19); // -> 10
 
-var task = gantt.getTaskByIndex(10); 
+const task = gantt.getTaskByIndex(10); 
 // -> {id:"19", text:"Task name", type:"project", order:"10", progress:0.4, …}
 
 

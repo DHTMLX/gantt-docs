@@ -15,44 +15,44 @@ getConstraintLimitations
 
 @example:
 gantt.addTaskLayer(function draw_deadline(task) {
-	var constraintType = gantt.getConstraintType(task);
-	var types = gantt.config.constraint_types;
-	if (constraintType != types.ASAP && 
-    		constraintType != types.ALAP && task.constraint_date) {
+  const constraintType = gantt.getConstraintType(task);
+  const types = gantt.config.constraint_types;
+  if (constraintType != types.ASAP && 
+      constraintType != types.ALAP && task.constraint_date) {
 
-		var dates = gantt.getConstraintLimitations(task);
+    const dates = gantt.getConstraintLimitations(task);
 
-		var els = document.createElement("div");
+    const els = document.createElement("div");
 
-		if (dates.earliestStart) {
-			els.appendChild(renderDiv(
-            	task, 
-                dates.earliestStart, 
-                'constraint-marker earliest-start'
-            ));
-		}
+    if (dates.earliestStart) {
+      els.appendChild(renderDiv(
+        task, 
+        dates.earliestStart, 
+        'constraint-marker earliest-start'
+      ));
+    }
 
-		if (dates.latestEnd) {
-			els.appendChild(renderDiv(
-            	task, 
-                dates.latestEnd, 
-                'constraint-marker latest-end'
-            ));
-		}
+    if (dates.latestEnd) {
+      els.appendChild(renderDiv(
+        task, 
+        dates.latestEnd, 
+        'constraint-marker latest-end'
+      ));
+    }
 
-		if (els.children.length)
-			return els;
-	}
-	return false;
+    if (els.children.length)
+      return els;
+  }
+  return false;
 });
 
 function renderDiv(task, date, className) {
-	var el = document.createElement('div');
-	el.className = className;
-	var sizes = gantt.getTaskPosition(task, date);
-	el.style.left = sizes.left + 'px';
-	el.style.top = sizes.top + 'px';
-	return el;
+  const el = document.createElement('div');
+  el.className = className;
+  const sizes = gantt.getTaskPosition(task, date);
+  el.style.left = sizes.left + 'px';
+  el.style.top = sizes.top + 'px';
+  return el;
 }
 
 

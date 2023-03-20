@@ -37,11 +37,7 @@ gantt.exportToPNG({
 @template:	api_method
 @descr:
 
-{{note This method is defined in the **export** extension, so you need to include it on the page:
-~~~html
-<script src="https://export.dhtmlx.com/gantt/api.js"></script>  
-~~~
-Read the details in the desktop/export.md article.
+{{note This method is defined in the **export** extension, so you need to activate the [export_api](desktop/extensions_list.md#exportservice) plugin. Read the details in the desktop/export.md article.
 
 }}
 

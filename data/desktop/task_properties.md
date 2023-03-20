@@ -93,12 +93,12 @@ These properties may or may not be defined. The default logic and templates of g
         <tr>
 			<td><b class=subproperty>key</b></td>
             <td><i>string | number</i></td>
-			<td>The key of the group. It is added to the tasks grouped by some criterion if the property used for grouping tasks (<a href="desktop/grouping.md#groupingtasks">relation_property</a> in the groupBy() method) is specified as an array.<br>It is also added to the tasks with the name of the group (for example, to the "High", "Normal", "Low" tasks if you've grouped tasks by priority. <a href="https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_relation_properties.html">Check the example</a>).</td>
+			<td>The key of the group. It is added to the tasks grouped by some criterion if the property used for grouping tasks (<a href="desktop/grouping.md#groupingtasks">relation_property</a> in the groupBy() method) is specified as an array.<br>It is also added to the tasks with the name of the group (for example, to the "High", "Normal", "Low" tasks if you've grouped tasks by priority. <a href="https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_save_tree_structure.html">Check the example</a>).</td>
 		</tr>
 		<tr>
 			<td><b class=subproperty>label</b></td>
             <td><i>string</i></td>
-			<td>The label of the group. It is added to the tasks with the name of the group (for example, if you've grouped tasks by priority, the property will be added to the tasks with "High", "Normal", "Low" names. <a href="https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_relation_properties.html">Check the example</a>).</td>
+			<td>The label of the group. It is added to the tasks with the name of the group (for example, if you've grouped tasks by priority, the property will be added to the tasks with "High", "Normal", "Low" names. <a href="https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_save_tree_structure.html">Check the example</a>).</td>
 		</tr>
 		<tr>
 			<td><b class=subproperty>open</b></td>
@@ -271,6 +271,11 @@ Dynamic properties are created on the client and represent the current state of 
 			<td><b class=subproperty>$raw</b></td>
             <td><i>object</i></td>
 			<td>An object with original names of task properties which were imported from <a href="desktop/export_msproject.md">MS Project</a> / <a href="desktop/export_primavera.md">Primavera</a> into the export module (export server). The properties appear in the <b>$raw</b> object while the file is converted into JSON-format but before they are converted into names and format expected by Gantt.</td>
+		</tr>
+		<tr>
+			<td><b class=subproperty>$rendered_at</b></td>
+            <td><i>string | number</i></td>
+			<td>The id of a row the <a href="https://docs.dhtmlx.com/gantt/desktop__milestones.html#rolluptasksandmilestones">rollup item</a> / <a href="https://docs.dhtmlx.com/gantt/desktop__split_tasks.html">split</a> task is rendered at. This is the temporary property which appears in the object of the rollup/split task only when it's been rendering on the page.</td>
 		</tr>
 		<tr>
 			<td><b class=subproperty>$rendered_parent</b></td>

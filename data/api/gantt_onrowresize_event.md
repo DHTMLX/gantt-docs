@@ -15,8 +15,8 @@ gantt.attachEvent("onRowResize", function (id, item, currentHeight) {
 	if (!message) {
 		message = gantt.message({
 			expire: -1,
-			text: "<b>" + item.text + "</b> is now <b id='height_placeholder'></b>" +
-				+ "<b>px</b> height"
+			text: `<b>${item.text}</b> is now <b id='height_placeholder'></b>
+<b>px</b> height`
 		});
 	}
 	document.getElementById("height_placeholder").innerText = currentHeight;

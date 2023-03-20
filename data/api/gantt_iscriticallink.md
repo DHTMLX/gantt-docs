@@ -12,11 +12,11 @@ isCriticalLink
 - value		boolean			'true' if the specified link is critical, 'false' otherwise 
 
 @example:
-var tasks = {
+const tasks = {
 	data:[
-      {id:1, text:"Project #1", start_date:"01-04-2013", duration:18, type:"project"},
-      {id:2, text:"Task #1", start_date:"02-04-2013", duration:8, parent:1},
-      {id:3, text:"Task #2", start_date:"13-04-2013", duration:8, parent:1}
+      {id:1, text:"Project #1", start_date:"01-04-2023", duration:18, type:"project"},
+      {id:2, text:"Task #1", start_date:"02-04-2023", duration:8, parent:1},
+      {id:3, text:"Task #2", start_date:"13-04-2023", duration:8, parent:1}
     ],
     links:[
         {id:1, source:1, target:2, type:"1"},

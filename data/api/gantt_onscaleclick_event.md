@@ -16,11 +16,11 @@ gantt.attachEvent("onScaleClick", function (e, date) {
 @descr:
 
 ~~~js
-var selected_column = null;
+let selected_column = null;
 
 gantt.attachEvent("onScaleClick", function (e, date) {
 	selected_column = date;
-	var pos = gantt.getScrollState();
+	const pos = gantt.getScrollState();
 	gantt.render();
 	gantt.scrollTo(pos.x, pos.y);
 });

@@ -9,7 +9,7 @@ onTaskClosed
 
 @example:
 gantt.attachEvent("onTaskClosed", function(id) {
-	alert("You've closed a branch with id="+id);
+	alert(`You've closed a branch with id=${id}`);
 });
 
 @template:	api_event

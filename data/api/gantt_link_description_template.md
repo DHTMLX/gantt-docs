@@ -8,17 +8,15 @@ link_description
 
 @example:
 gantt.templates.link_description = function(link){
-	var from = gantt.getTask(link.source),
-	to = gantt.getTask(link.target),
-	types = gantt.config.links;
+	const from = gantt.getTask(link.source);
+	const to = gantt.getTask(link.target);
+	const types = gantt.config.links;
 
-	var from_start = link.type == types.start_to_start;
-	var to_start = link.type == types.finish_to_start ||  
+	const from_start = link.type == types.start_to_start;
+	const to_start = link.type == types.finish_to_start ||  
     				link.type == types.start_to_start;
-	var text = "From <b>" + from.text + "</b> " +(from_start?"Start":"End")+"<br/>";
-	text += "To <b>" + to.text + "</b> "+ (to_start ? "Start" : "End")+"<br/>";
-
-	return text;
+	return `From <b>${from.text}</b> ${(from_start?"Start":"End")}<br/>
+To <b>${to.text}</b> ${(to_start ? "Start" : "End")}<br/>`;
 };
 
 @template:	api_template

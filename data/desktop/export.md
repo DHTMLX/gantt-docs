@@ -46,11 +46,11 @@ Export to PDF
 To export Gantt chart as a PDF document, do the following steps:
 
 <ol>
-	<li>Include the <b>"https://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
-~~~html
-<script src="codebase/dhtmlxgantt.js"></script>
-<script src="https://export.dhtmlx.com/gantt/api.js"></script>  /*!*/
-<link rel="stylesheet" href="codebase/dhtmlxgantt.css" type="text/css">
+	<li>To use the online export service, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
+~~~js
+gantt.plugins({
+  	export_api: true
+});
 ~~~
 </li>
 	<li>Call the <a href="desktop/export.md#parametersoftheexportmethods">exportToPDF</a> method to export the Gantt chart: 
@@ -75,11 +75,11 @@ Export to PNG
 To export Gantt chart as a PNG image, do the following steps:
 
 <ol>
-	<li>Include the <b>"https://export.dhtmlx.com/gantt/api.js"</b> file on the page to enable the online export service:
-~~~html
-<script src="codebase/dhtmlxgantt.js"></script>
-<script src="https://export.dhtmlx.com/gantt/api.js"></script>  /*!*/
-<link rel="stylesheet" href="codebase/dhtmlxgantt.css" type="text/css">
+	<li>To use the online export service, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
+~~~js
+gantt.plugins({
+  	export_api: true
+});
 ~~~
 </li>
 	<li>Call the <a href="desktop/export.md#parametersoftheexportmethods">exportToPNG</a> method to export the Gantt chart: 

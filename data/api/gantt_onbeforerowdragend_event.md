@@ -12,7 +12,7 @@ onBeforeRowDragEnd
 
 @example:
 gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
-	var task = gantt.getTask(id);
+	const task = gantt.getTask(id);
 	if(task.parent != parent)
 		return false;
 	return true;

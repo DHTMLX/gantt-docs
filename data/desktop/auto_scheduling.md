@@ -222,6 +222,23 @@ gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predece
 });
 ~~~
 
+Scheduling completed tasks
+----------------------------
+
+By default, there is no difference in how the auto scheduling algorithm processes completed tasks (tasks which have progress value of 1) and incomplete tasks.
+
+Optionally, you can enable the api/gantt_auto_scheduling_use_progress_config.md config to change this behavior:
+
+~~~js
+gantt.config.auto_scheduling_use_progress = true;
+ 
+gantt.init("gantt_here");
+~~~
+
+When the config is enabled, completed tasks will be excluded from the critical path and auto scheduling.
+
+You can find more details on the [API page](api/gantt_auto_scheduling_use_progress_config.md).
+
 
 ##API overview
 
@@ -230,6 +247,7 @@ The list of available methods and properties:
 - api/gantt_auto_scheduling_config.md
 - api/gantt_auto_scheduling_strict_config.md
 - api/gantt_auto_scheduling_initial_config.md
+- api/gantt_auto_scheduling_project_constraint_config.md
 - api/gantt_autoschedule.md
 - api/gantt_isunscheduledtask.md
 - api/gantt_findcycles.md
@@ -261,6 +279,14 @@ The api/gantt_auto_scheduling_initial_config.md property specifies whether gantt
 
 ~~~js
 gantt.config.auto_scheduling_initial = true;
+~~~
+
+###Inheritance of project constraint
+
+The api/gantt_auto_scheduling_project_constraint_config.md property defines whether the tasks without the specified constraint type should inherit the constraint type from their parent project:
+
+~~~js
+gantt.config.auto_scheduling_project_constraint = true;
 ~~~
 
 ###Recalculating the project

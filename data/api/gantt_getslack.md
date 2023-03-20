@@ -13,7 +13,7 @@ getSlack
 @edition: pro
 
 @example:
-var tasks = {
+const tasks = {
     data:[
        {id:1, text:"Project #1", start_date:"01-04-2013", duration:18, type:"project"},
        {id:2, text:"Task #1", start_date:"02-04-2013",duration:8, parent:1},

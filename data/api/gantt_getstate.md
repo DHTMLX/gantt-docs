@@ -7,7 +7,7 @@ getState
 - obj	object 	the state object
 
 @example:
-var opened_task = gantt.getState().lightbox;
+const opened_task = gantt.getState().lightbox;
 
 @template:	api_method
 @descr:

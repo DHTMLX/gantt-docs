@@ -14,9 +14,9 @@ drag_mode
 	
 @example:
 gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-	var modes = gantt.config.drag_mode;
+    const modes = gantt.config.drag_mode;
     switch (mode){
-    	case modes.move:
+        case modes.move:
         
         break;
         case modes.resize:

@@ -142,6 +142,15 @@ The result will look like this:
 
 **Note**, that if both the **hide_bar:true** and **rollup:true** properties are specified for the data item, the item will be hidden in the timeline but shown on the parent project.
 
+{{note
+To hide all rollup items from the parent project, set **rollup:false** in the [project](desktop/task_types.md#projecttasks) object (from v8.0):
+
+~~~js
+{ id:11, text:"Project #1", type:"project", rollup:false, open: true }
+~~~
+}}
+
+<br>
 You can hide the necessary task/milestone in the timeline area via switching the **Hide bar** checkbox in the lightbox:
 
 ~~~js
@@ -173,5 +182,34 @@ gantt.config.lightbox.project_sections = [
 <img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px 20px;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="desktop/hide_bar.png">
 
 {{sample 01_initialization/21_rollup_tasks.html}}
+
+## API overview
+
+There is an event that can be used to control the visibility of rollup tasks on their parent projects:
+
+- api/gantt_onbeforerolluptaskdisplay_event.md
+
+~~~js
+// before the rollup task is displayed on its parent project 
+gantt.attachEvent("onBeforeRollupTaskDisplay", function(taskId, task, parentId){
+    // any custom logic here
+    return false;
+});
+~~~
+
+## Styling separate rollup items
+
+From v8.0, rollup items come into template functions with the *task.$rendered_at* property which contains the id of a row the rollup item is rendered at. Thus, to style specific rollup items based on the row they are displayed at, you may use the api/gantt_task_class_template.md template:
+
+~~~js
+gantt.templates.task_class = function(start, end, task) {
+    if(task.$rendered_at) {
+        if(gantt.calculateTaskLevel(gantt.getTask(task.$rendered_at)) === 1) {
+            return "phase-level-rollup";
+        }
+    }
+    return "";
+};
+~~~
 
 @edition: pro

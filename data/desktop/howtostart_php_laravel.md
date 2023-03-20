@@ -534,7 +534,7 @@ Route::resource('link', 'LinkController'); /*!*/
 
 ###Enabling data saving on the client side
 
-Finally, we will [configure the client side](desktop/server_side.md#technique) to utilize the API we've just implemented:
+Finally, we will [configure the client side](desktop/server_side.md#technique) to use the API we've just implemented:
 
 {{snippet resources/views/gantt.blade.php }}
 ~~~js

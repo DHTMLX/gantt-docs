@@ -8,7 +8,9 @@ Properties
 - api/gantt_auto_scheduling_descendant_links_config.md - allows or forbids creating links from parent tasks (projects) to their children
 - api/gantt_auto_scheduling_initial_config.md - defines whether gantt will do autoscheduling on data loading/parsing
 - api/gantt_auto_scheduling_move_projects_config.md - defines whether the whole project will be moved (see the details below)
+- api/gantt_auto_scheduling_project_constraint_config.md - defines whether tasks should inherit the constraint type from their parent project
 - api/gantt_auto_scheduling_strict_config.md - enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
+- api/gantt_auto_scheduling_use_progress_config.md - sets the way the scheduling algorithms process completed tasks
 - api/gantt_auto_types_config.md - automatically converts tasks with subtasks to projects and projects without subtasks back to tasks
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
 - api/gantt_autoscroll_config.md - enables autoscrolling while dragging a task or link out of the current browser screen
@@ -105,6 +107,7 @@ Properties
 - api/gantt_resource_property_config.md - defines the property of a task object that stores a resource id associated with resourceGrid/Timeline/Histogram/Calendar
 - api/gantt_resource_render_empty_cells_config.md - tells the resource timeline to render elements and call templates for non-allocated cells
 - api/gantt_resource_store_config.md - specifies the name of the dataStore connected to the resourceGrid/resourceTimeline/resourceHistogram views
+- api/gantt_resources_config.md - defines an extra configuration for the resource store
 - api/gantt_root_id_config.md - sets the id of the virtual root element
 - api/gantt_round_dnd_dates_config.md - enables rounding the task's start and end dates to the nearest scale marks
 - api/gantt_row_height_config.md - sets the default height for rows of the table
@@ -119,6 +122,7 @@ Properties
 - api/gantt_select_task_config.md - enables selection of tasks in the Gantt chart
 - api/gantt_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
 - api/gantt_show_chart_config.md - shows the chart (timeline) area of the Gantt chart
+- api/gantt_show_empty_state_config.md - defines whether to display the placeholder element inside the grid when it is empty
 - api/gantt_show_errors_config.md - enables showing error alerts in case of unexpected behavior
 - api/gantt_show_grid_config.md - shows the grid area of the Gantt chart
 - api/gantt_show_links_config.md - enables/disables displaying links in the Gantt chart
@@ -145,6 +149,7 @@ Properties
 - api/gantt_task_scroll_offset_config.md - sets the offset (in pixels) of the nearest task from the left border in the timeline
 - api/gantt_time_picker_config.md - sets the format of the time drop-down selector in the lightbox
 - api/gantt_time_step_config.md - sets the minimum step (in minutes) for the task's time values
+- api/gantt_timeline_placeholder_config.md - shows the background grid in the empty timeline
 - api/gantt_tooltip_hide_timeout_config.md - sets the length of time, in milliseconds, before the tooltip hides
 - api/gantt_tooltip_offset_x_config.md - sets the right (if positive) offset of the tooltip's position
 - api/gantt_tooltip_offset_y_config.md - sets the top (if positive) offset of the tooltip's position
@@ -172,7 +177,9 @@ Properties
 - api/gantt_auto_scheduling_descendant_links_config.md
 - api/gantt_auto_scheduling_initial_config.md
 - api/gantt_auto_scheduling_move_projects_config.md
+- api/gantt_auto_scheduling_project_constraint_config.md
 - api/gantt_auto_scheduling_strict_config.md
+- api/gantt_auto_scheduling_use_progress_config.md
 - api/gantt_auto_types_config.md
 - api/gantt_autofit_config.md
 - api/gantt_autoscroll_config.md
@@ -269,6 +276,7 @@ Properties
 - api/gantt_resource_property_config.md
 - api/gantt_resource_render_empty_cells_config.md
 - api/gantt_resource_store_config.md
+- api/gantt_resources_config.md
 - api/gantt_root_id_config.md
 - api/gantt_round_dnd_dates_config.md
 - api/gantt_row_height_config.md
@@ -283,6 +291,7 @@ Properties
 - api/gantt_select_task_config.md
 - api/gantt_server_utc_config.md
 - api/gantt_show_chart_config.md
+- api/gantt_show_empty_state_config.md
 - api/gantt_show_errors_config.md
 - api/gantt_show_grid_config.md
 - api/gantt_show_links_config.md
@@ -309,6 +318,7 @@ Properties
 - api/gantt_task_scroll_offset_config.md
 - api/gantt_time_picker_config.md
 - api/gantt_time_step_config.md
+- api/gantt_timeline_placeholder_config.md
 - api/gantt_tooltip_hide_timeout_config.md
 - api/gantt_tooltip_offset_x_config.md
 - api/gantt_tooltip_offset_y_config.md

@@ -12,9 +12,9 @@ onBeforeLightbox
  
  @example:
 gantt.attachEvent("onBeforeLightbox", function(id) {
-  	var task = gantt.getTask(id);
-   	task.my_template = "<span id='title1'>Holders: </span>"+ task.users
-    +"<span id='title2'>Progress: </span>"+ task.progress*100 +" %";
+  	const task = gantt.getTask(id);
+   	task.my_template = `<span id='title1'>Holders: </span>${task.users}
+    <span id='title2'>Progress: </span>${task.progress*100}%`;
 	return true;
 });
 

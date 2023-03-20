@@ -11,7 +11,7 @@ getNext
 
 
 @example:
-var tasks = {
+const tasks = {
   data:[
      {id:"p_1", text:"Project #1", start_date:"01-04-2013", duration:18, 
      open:true},

@@ -14,7 +14,8 @@ createDataProcessor
 @example:
 var dp = gantt.createDataProcessor({
    url: "/api",
-   mode: "REST"
+   mode: "REST",
+   deleteAfterConfirmation: true
 });
 
 
@@ -24,12 +25,13 @@ var dp = gantt.createDataProcessor({
 
 The method can take one of the following types of parameters:
 
-1\. `{url:string, mode:string}` object specifying one of the predefined modes of sending data
+1\. `{url:string, mode:string, deleteAfterConfirmation:boolean}` object specifying one of the predefined modes of sending data
 
 ~~~js
 var dp = gantt.createDataProcessor({
    url: "/api",
-   mode: "REST"
+   mode: "REST",
+   deleteAfterConfirmation: true
 });
 ~~~
 
@@ -37,6 +39,7 @@ where:
 
 - url - the URL to the server side
 - mode - the mode of sending data to the server: "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
+- deleteAfterConfirmation - defines whether the task must be deleted from the gantt only after a successful response from the server. Dependency links and subtasks will be deleted after the deletion of the parent task is confirmed.
 
 2\. Or a custom router object:
 
@@ -47,7 +50,7 @@ var dp = gantt.createDataProcessor(router);
 where the router is either a function:
 
 ~~~js
-// entity - "task"|"link"
+// entity - "task"|"link"|"resource"|"assignment"
 // action - "create"|"update"|"delete"
 // data - an object with task or link data
 // id – the id of a processed object (task or link)
@@ -105,8 +108,16 @@ router = function(entity, action, data, id) {
 Thus you can use DataProcessor for saving data in localStorage, or any other storage which is not linked to a certain URL, or in case if there are two different servers (URLs) responsible for creation and deletion of objects.
 
 
+### Saving Resources and Resource Assignments
+
+By default, the DataProcessor doesn't receive updates of resources and resource assignments. 
+However, you can enable this feature via a [separate config](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments).
+
 @related:
 	desktop/server_side.md
 
 @relatedsample:
 	08_api/22_data_processor.html
+
+@changelog:
+the **deleteAfterConfirmation** parameter is added in v8.0

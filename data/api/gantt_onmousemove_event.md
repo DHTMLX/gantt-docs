@@ -32,13 +32,13 @@ gantt.message({
 	text: "<span id='pointer-date'></span>"
 });
 
-var formatDate = gantt.date.date_to_str("%Y-%m-%d %H:%i");
+const formatDate = gantt.date.date_to_str("%Y-%m-%d %H:%i");
 gantt.attachEvent("onMouseMove", function (id, e){
-	var helper = gantt.utils.dom;
+	const helper = gantt.utils.dom;
 	if(helper.isChildOf(e.target, gantt.$task_data)){
-      	var textContainer = document.querySelector("#pointer-date");
-		var pos = helper.getRelativeEventPosition(e, gantt.$task_data);
-		var pointerDate = gantt.dateFromPos(pos.x);
+      	const textContainer = document.querySelector("#pointer-date");
+		const pos = helper.getRelativeEventPosition(e, gantt.$task_data);
+		const pointerDate = gantt.dateFromPos(pos.x);
 		textContainer.innerText = formatDate(pointerDate);
     }
 });
