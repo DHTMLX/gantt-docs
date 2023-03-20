@@ -248,7 +248,7 @@ The list of possible requests and responses is:
 	</tr>
 </table>
 
-{{note By default, Resources and Resource Assignments are not sent to the DataProcessor. If needed, this behavour needs to be enabled explicitly.
+{{note By default, Resources and Resource Assignments are not sent to the DataProcessor. If needed, you have to enable this behavior explicitly.
 Read more [here](desktop/server_side.md#resources_crud).}}
 
 <h3 id="requestparams">Request parameters</h3>

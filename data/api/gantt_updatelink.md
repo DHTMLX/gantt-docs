@@ -31,7 +31,7 @@ Calling this method will fire the api/gantt_onafterlinkupdate_event.md event, wh
 
 If you're using the [DataProcessor](desktop/server_side.md), invoking this method will prompt an **update** request to the server.
 
-For making visual changes that don't require saving, **utilize the api/gantt_refreshlink.md method instead**. This will repaint the record in the Gantt without any extra calculations or server requests.
+For making visual changes that don't require saving, **use the api/gantt_refreshlink.md method instead**. This will repaint the record in the Gantt without any extra calculations or server requests.
 
 ~~~js
 let selectedLink = null;

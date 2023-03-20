@@ -39,7 +39,7 @@ Calling this method will fire the api/gantt_onaftertaskupdate_event.md event, wh
 
 If you're using the [DataProcessor](desktop/server_side.md), invoking this method will prompt an **update** request to the server.
 
-For making visual changes that don't require saving, **utilize the api/gantt_refreshtask.md method instead**. This will repaint the task without invoking extra calculations.
+For making visual changes that don't require saving, **use the api/gantt_refreshtask.md method instead**. This will repaint the task without invoking extra calculations.
 
 ~~~js
 gantt.templates.task_class = function(start, end, task){

@@ -156,10 +156,9 @@ gantt.groupBy({
 Keeping original task hierarchy in groups
 ---------------------------------------
 
-In group mode, the Gantt tree's original structure isn't displayed by default, and all tasks appear as first-level children of their respective groups.
+In the group mode, the Gantt tree's original structure isn't displayed by default, and all tasks appear as first-level children of their respective groups.
 
-To maintain the original subtask structure within groups, utilize the **save_tree_structure** setting:
-
+To maintain the original subtask structure within groups, use the **save_tree_structure** setting:
 
 ~~~js
 gantt.groupBy({
@@ -177,7 +176,6 @@ gantt.groupBy({
 ~~~
 
 {{sample	02_extensions/28_tasks_grouping_save_tree_structure.html}}
-
 
 @edition: pro
 

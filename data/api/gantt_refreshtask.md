@@ -28,7 +28,6 @@ gantt.refreshTask(10);       /*!*/
 
 You can use this method to repaint a task after changing its properties. Unlike api/gantt_updatetask.md, this method does not trigger the [DataProcessor](desktop/server_side.md), and no updates will be sent to the server.
 
- api/gantt_updatetask.md
 @relatedapi:
 	api/gantt_refreshlink.md
     api/gantt_refreshdata.md
