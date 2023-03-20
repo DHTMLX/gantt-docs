@@ -15,12 +15,12 @@ getTaskByTime
 
 
 @example:
-var tasks = gantt.getTaskByTime(new Date(2013,3,10),new Date(2013,4,10)); 
-for (var i=0; i<tasks.length; i++){
+let tasks = gantt.getTaskByTime(new Date(2013,3,10),new Date(2013,4,10)); 
+for (let i=0; i<tasks.length; i++){
        alert(tasks[i].text);
 }
 // or
-var tasks = gantt.getTaskByTime();//returns all tasks 
+tasks = gantt.getTaskByTime();//returns all tasks 
 
 
 @template:	api_method

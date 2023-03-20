@@ -17,7 +17,7 @@ checks whether the specified task/link, or the whole Gantt is read-only
 gantt.addTask({
     id:10,
     text:"Task #5",
-    start_date:"02-09-2013",
+    start_date:"02-09-2023",
     duration:28
 }, "project_2");
 

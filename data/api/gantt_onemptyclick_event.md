@@ -10,7 +10,7 @@ onEmptyClick
 @example: 
 	
 gantt.attachEvent("onEmptyClick", function (e){
-       //any custom logic here
+    //any custom logic here
 });
 
 

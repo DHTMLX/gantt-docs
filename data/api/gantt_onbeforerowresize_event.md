@@ -12,7 +12,7 @@ onBeforeRowResize
 
 @example:
 gantt.attachEvent("onBeforeRowResize", function (item) {
-	gantt.message("Start resizing <b>" + item.text + "</b>");
+	gantt.message(`Start resizing <b>${item.text}</b>`);
 	return true;
 });
 

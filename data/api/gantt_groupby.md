@@ -83,8 +83,8 @@ Please, note:
 
 ~~~js
 gantt.templates.task_class=function(start, end, task){
-	if(task.$virtual)
-	return "summary-bar";
+  if(task.$virtual)
+    return "summary-bar";
 };
 ~~~
 

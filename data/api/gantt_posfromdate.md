@@ -26,7 +26,7 @@ The method returns the position of a date that is currently rendered in the Gant
 For example, for the Gantt chart above, the method will return the following:
 
 ~~~js
-gantt.posFromDate(new Date(2013,02,31)); // -> 0
-gantt.posFromDate(new Date(2013,03,1));  // -> 74
-gantt.posFromDate(new Date(2013,03,2));  // -> 148
+gantt.posFromDate(new Date(2023,02,31)); // -> 0
+gantt.posFromDate(new Date(2023,03,1));  // -> 74
+gantt.posFromDate(new Date(2023,03,2));  // -> 148
 ~~~ 

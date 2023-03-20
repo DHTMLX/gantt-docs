@@ -24,10 +24,10 @@ In this case we can extend the range:
 
 ~~~js
 gantt.attachEvent("onLightboxSave", function(id, task, is_new){
- var taskStart = task.start_date;
- var taskEnd = task.end_date;
- var scaleStart = gantt.config.start_date;
- var scaleEnd = gantt.config.end_date;
+ const taskStart = task.start_date;
+ const taskEnd = task.end_date;
+ const scaleStart = gantt.config.start_date;
+ const scaleEnd = gantt.config.end_date;
 
  // if the task is out of the range
  if(scaleStart > taskEnd || scaleEnd < taskStart ){
@@ -44,21 +44,21 @@ Or add validation to the lightbox control:
 
 ~~~js
 gantt.attachEvent("onLightboxSave", function(id, task, is_new){
- 	var taskStart = task.start_date;
- 	var taskEnd = task.end_date;
- 	var scaleStart = gantt.config.start_date;
- 	var scaleEnd = gantt.config.end_date;
+  const taskStart = task.start_date;
+  const taskEnd = task.end_date;
+  const scaleStart = gantt.config.start_date;
+  const scaleEnd = gantt.config.end_date;
 
-    // check if the task is out of the range
-    if(scaleStart > taskEnd || scaleEnd < taskStart ){
-        gantt.message({
-            type:"warning", 
-            text:"Warning! The task is outside the date range!",
-            expire:5000
-        });
-          return false;
-    } 
-    return true;
+  // check if the task is out of the range
+  if(scaleStart > taskEnd || scaleEnd < taskStart ){
+    gantt.message({
+      type:"warning", 
+      text:"Warning! The task is outside the date range!",
+      expire:5000
+    });
+    return false;
+  } 
+  return true;
 });
 ~~~
 

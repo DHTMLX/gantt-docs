@@ -12,7 +12,7 @@ onBeforeTaskMove
 @example:
 //prevent moving to another sub-branch:
 gantt.attachEvent("onBeforeTaskMove", function(id, parent, tindex){
-	var task = gantt.getTask(id);
+	const task = gantt.getTask(id);
 	if(task.parent != parent)
 		return false;
 	return true;

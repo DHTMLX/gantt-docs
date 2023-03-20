@@ -12,7 +12,7 @@ getTaskCalendar
 
 
 @example:
-var task_calendar = gantt.getTaskCalendar({
+const task_calendar = gantt.getTaskCalendar({
 	"id":2, 
 	"calendar_id":"custom", 
 	"text":"Task #1", 

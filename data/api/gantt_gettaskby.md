@@ -15,14 +15,14 @@ getTaskBy
 @example:
 
 // simple search
-var userTasks = gantt.getTaskBy("user_id", [5]);
+const userTasks = gantt.getTaskBy("user_id", [5]);
 
 // (task: object) => boolean
-var userTasks = gantt.getTaskBy(function(task){
+let userTasks = gantt.getTaskBy(function(task){
    return task.user_id == 5 || !task.user_id;
 });
 
-var userTasks = gantt.getTaskBy(task => task.user_id == 5);
+userTasks = gantt.getTaskBy(task => task.user_id == 5);
 
 
 @descr:

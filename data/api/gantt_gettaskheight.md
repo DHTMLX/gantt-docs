@@ -12,7 +12,7 @@ getTaskHeight
 
 
 @example:
-var height = gantt.getTaskHeight(); // -> 30
+const height = gantt.getTaskHeight(); // -> 30
 
 @template:	api_method
 @descr:

@@ -12,16 +12,15 @@ getSubtaskDates
 
 @example:
 // duration of the whole project
-var dates = gantt.getSubtaskDates(),
-	dateToStr = gantt.templates.task_date;
+let dates = gantt.getSubtaskDates();
+const dateToStr = gantt.templates.task_date;
     
-console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
+console.log(`${dateToStr(dates.start_date)} - ${dateToStr(dates.end_date)}`);
 
 // duration of the subproject
-var dates = gantt.getSubtaskDates(1),
-	dateToStr = gantt.templates.task_date;
+dates = gantt.getSubtaskDates(1);
     
-console.log(dateToStr(dates.start_date) + " - " + dateToStr(dates.end_date));
+console.log(`${dateToStr(dates.start_date)} - ${dateToStr(dates.end_date)}`);
 
 
 @template:	api_method

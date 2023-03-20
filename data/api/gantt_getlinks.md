@@ -10,7 +10,7 @@ getLinks
 links	Array &lt;Link&gt; 	an array of links' objects 
 
 @example:
-var links = gantt.getLinks();
+const links = gantt.getLinks();
 
 
 @template:	api_method

@@ -113,19 +113,19 @@ When Gantt is exported, only its leftmost part is exported to the PDF document e
 To shift Gantt in the exported file, you need to add the following style rule to **#gantt_here** in the **header** parameter:
 
 ~~~js
-var width = 1000;
-var height = 1000;
-var total_width = gantt.$task_bg.scrollWidth + gantt.$grid.scrollWidth;
+const width = 1000;
+const height = 1000;
+const total_width = gantt.$task_bg.scrollWidth + gantt.$grid.scrollWidth;
 
-for (var i = 0; i < total_width; i += width) {
-	gantt.exportToPDF({
-		header:`<style>#gantt_here{left:-${i}px;position: absolute;}</style>`,
-     	//raw: true,
-     	additional_settings:{
-       		width: width,
-       		height: height,
-     	}
-   	});
+for (let i = 0; i < total_width; i += width) {
+  gantt.exportToPDF({
+    header:`<style>#gantt_here{left:-${i}px;position: absolute;}</style>`,
+    //raw: true,
+    additional_settings:{
+      width: width,
+      height: height,
+    }
+  });
 }
 ~~~
 
@@ -134,8 +134,8 @@ for (var i = 0; i < total_width; i += width) {
 In case you want to export Gantt to the specific format ('A4', for example), note, that the file format is defined in millimeters but the size in HTML is specified in pixels. Therefore, you need to convert the shift value from millimeters to pixels. 
 
 ~~~js
-var widthMM = 297;
-var width = widthMM / (25.4 inch / 144 PDF PPI);
+const widthMM = 297;
+const width = widthMM / (25.4 inch / 144 PDF PPI);
 ~~~
 
 {{editor	https://snippet.dhtmlx.com/5/a4a4e62e3	Export to the file of defined format}}

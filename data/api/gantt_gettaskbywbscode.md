@@ -13,7 +13,7 @@ getTaskByWBSCode
 - task 		Task		a task object
 
 @example:
-var task = gantt.getTaskByWBSCode("1.2");
+const task = gantt.getTaskByWBSCode("1.2");
 // => {id:"t1", text:"Task #1, unscheduled: true, duration: 1, …}
 
 @template:	api_method

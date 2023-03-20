@@ -14,7 +14,7 @@ locate
 
 @example:
 gantt.$container.addEventListener("mouseover", function(event){
-    var taskId = gantt.locate(event);
+    const taskId = gantt.locate(event);
     if(gantt.isTaskExists(taskId)){
        gantt.message({
          id:1,

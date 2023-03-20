@@ -13,7 +13,7 @@ getTaskIndex
 - index		number		the task index in the branch (zero-based numbering)
 
 @example:
-var tasks = {
+const tasks = {
   data:[
      {id:"p_1", text:"Project #1", start_date:"01-04-2013", duration:18, 
      	open:true},
@@ -26,8 +26,8 @@ var tasks = {
 gantt.init("gantt_here");
 gantt.parse(tasks);
 
-var taskIndex = gantt.getTaskIndex("t_1"); // -> 0 /*!*/
-var globalTaskIndex = gantt.getGlobalTaskIndex("t_1"); // -> 1
+const taskIndex = gantt.getTaskIndex("t_1"); // -> 0 /*!*/
+const globalTaskIndex = gantt.getGlobalTaskIndex("t_1"); // -> 1
 
 @relatedapi:
 	api/gantt_getglobaltaskindex.md

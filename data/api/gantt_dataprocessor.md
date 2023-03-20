@@ -12,13 +12,13 @@ dataProcessor
 
 @example:
 
-var dp = new gantt.dataProcessor("php/update.php");
+const dp = new gantt.dataProcessor("api/");
 
 
 
 @template:	api_method
 @descr:
-You can find more information about dataProcessor, including its API [here](https://docs.dhtmlx.com/dataprocessor__index.html).
+You can find more information about dataProcessor, including its API [here](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments).
 
 @changelog:
 added in version 4.0

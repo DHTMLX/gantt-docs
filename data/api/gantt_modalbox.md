@@ -14,7 +14,7 @@ modalbox
 
 @example:
 
-var box = gantt.modalbox({
+let box = gantt.modalbox({
 	title: "Close",
  	type: "alert-warning"
 });

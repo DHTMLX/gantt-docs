@@ -50,7 +50,7 @@ var dp = gantt.createDataProcessor(router);
 where the router is either a function:
 
 ~~~js
-// entity - "task"|"link"
+// entity - "task"|"link"|"resource"|"assignment"
 // action - "create"|"update"|"delete"
 // data - an object with task or link data
 // id – the id of a processed object (task or link)
@@ -107,6 +107,11 @@ router = function(entity, action, data, id) {
 
 Thus you can use DataProcessor for saving data in localStorage, or any other storage which is not linked to a certain URL, or in case if there are two different servers (URLs) responsible for creation and deletion of objects.
 
+
+### Saving Resources and Resource Assignments
+
+By default, the DataProcessor doesn't receive updates of resources and resource assignments. 
+However, you can enable this feature via a [separate config](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments).
 
 @related:
 	desktop/server_side.md

@@ -9,8 +9,9 @@ grid_folder
 
 @example:
 gantt.templates.grid_folder = function(item) {
-	return "<div class='gantt_tree_icon gantt_folder_" +
-    (item.$open ? "open" : "closed") + "'></div>";
+  return `<div 
+   class='gantt_tree_icon gantt_folder_${(item.$open ? "open" : "closed")}'>
+   </div>`;
 };
 
 @template:	api_template

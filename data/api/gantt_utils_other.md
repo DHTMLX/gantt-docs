@@ -13,8 +13,8 @@ var tooltips = gantt.ext.tooltips;
 tooltips.tooltipFor({
 	selector: ".gantt_scale_cell",
 	html: function (event, node) {
-		var domHelper = gantt.utils.dom;
-		var pos = domHelper.getRelativeEventPosition(event, gantt.$task_scale);
+		const domHelper = gantt.utils.dom;
+		const pos = domHelper.getRelativeEventPosition(event, gantt.$task_scale);
 		return gantt.templates.task_date(gantt.dateFromPos(pos.x));
 }
 });
@@ -47,15 +47,15 @@ gantt.message({
 	text: "<span id='pointer-date'></span>"
 });
 
-var formatDate = gantt.date.date_to_str("%Y-%m-%d %H:%i");
+const formatDate = gantt.date.date_to_str("%Y-%m-%d %H:%i");
 gantt.attachEvent("onMouseMove", function (id, e){
-	var helper = gantt.utils.dom;
+	const helper = gantt.utils.dom;
 	if(helper.isChildOf(e.target, gantt.$task_data)){
-      	var textContainer = document.querySelector("#pointer-date");
-		var pos = helper.getRelativeEventPosition(e, gantt.$task_data);
-		var pointerDate = gantt.dateFromPos(pos.x);
+		const textContainer = document.querySelector("#pointer-date");
+		const pos = helper.getRelativeEventPosition(e, gantt.$task_data);
+		const pointerDate = gantt.dateFromPos(pos.x);
 		textContainer.innerText = formatDate(pointerDate);
-    }
+	}
 });
 ~~~
 
@@ -73,8 +73,8 @@ gantt.attachEvent("onMouseMove", function (id, e){
 
 ~~~js
 gantt.attachEvent("onEmptyClick", function (e) {
-  var domHelpers = gantt.utils.dom;
-  if(!domHelpers.closest(e.target, "[" + gantt.config.link_attribute + "]")){
+  const domHelpers = gantt.utils.dom;
+  if(!domHelpers.closest(e.target, `[${gantt.config.link_attribute}]`)){
     gantt.message("not a link");
   }else{
     gantt.message("link!"); 

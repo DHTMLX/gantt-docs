@@ -12,7 +12,7 @@ detachEvent
 
 
 @example:
-var myEvent = gantt.attachEvent("onTaskClick", function(id, e) {
+const myEvent = gantt.attachEvent("onTaskClick", function(id, e) {
     alert("You've just clicked an item with id="+id);
 });
 

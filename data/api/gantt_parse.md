@@ -11,10 +11,10 @@ parse
 @example:
 gantt.parse({
 	data:[
-        {id:1, text:"Project #2", start_date:"01-04-2013", duration:18},
-        {id:2, text:"Task #1",    start_date:"02-04-2013", duration:8,
+        {id:1, text:"Project #2", start_date:"01-04-2023", duration:18},
+        {id:2, text:"Task #1",    start_date:"02-04-2023", duration:8,
     		progress:0.6, parent:1},
-        {id:3, text:"Task #2",    start_date:"11-04-2013", duration:8,
+        {id:3, text:"Task #2",    start_date:"11-04-2023", duration:8,
     		progress:0.6, parent:1}
     ],
     links:[
@@ -39,7 +39,7 @@ If you want to load data which doesn't contain tasks, you still need to define a
 
 ~~~js
 gantt.parse({
-    data:[],
+    tasks:[],
     links:[
         { id:1, source:1, target:2, type:1},
         { id:2, source:2, target:3, type:0}
@@ -82,3 +82,5 @@ gantt.parse({
     ]
 });
 ~~~
+
+You can read more [here](desktop/resource_management.html#loadingresourcesandresourceassignments).

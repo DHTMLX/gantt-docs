@@ -21,8 +21,16 @@ gantt.addTask({
 gantt.getTaskNode(10);//-><div task_id=​"2" class=​"gantt_task_line" ​…​​>​​…​</div>​
 
 @template:	api_method
+
 @descr:
+
+Please note that when a task is repainted, the old DOM element will be discarded and replaced by a new element. This means that any changes you make to the element will be reset after the next repaint.
+
+If you need to modify the appearance of an element, we recommend using templates as they are the preferred method for customizing the look of Gantt elements.
 
 @relatedapi:
 	api/gantt_gettaskrownode.md
     api/gantt_gettask.md
+    api/gantt_task_text_template.md
+    api/gantt_task_class_template.md
+    api/gantt_row_class_template.md

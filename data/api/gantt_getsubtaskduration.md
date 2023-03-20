@@ -21,17 +21,22 @@ The return value is calculated in [duration units](api/gantt_duration_unit_confi
 - duration			number		total duration of nested tasks
 
 @example:
+
+const formatter = gantt.ext.formatters.durationFormatter();
 //duration of the whole project
-var duration = gantt.getSubtaskDuration();
+let duration = gantt.getSubtaskDuration();
     
-console.log(duration + gantt.config.duration_unit + "s");
+console.log(formatter.format(duration));
 
 //duration of the subproject
-var duration = gantt.getSubtaskDates(1);
+duration = gantt.getSubtaskDates(1);
     
-console.log(duration + gantt.config.duration_unit + "s");
+console.log(formatter.format(duration));
 
 @template:	api_method
+
+@related:
+desktop/formatters_ext.md#durationformatter
 
 @relatedapi:
 api/gantt_getsubtaskdates.md

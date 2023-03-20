@@ -14,7 +14,7 @@ eventRemove
 
 @example:
 
-var handler = function(event){
+const handler = function(event){
 	console.log("event!");
 };
 var element = document.querySelector(".my-element");

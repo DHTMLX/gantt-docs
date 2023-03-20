@@ -16,7 +16,7 @@ onBeforeRowResizeEnd
 gantt.attachEvent("onBeforeRowResizeEnd", function (id, item, newHeight) {
 	gantt.message.hide(message);
 	message = null;
-	gantt.message("<b>" + item.text + "</b> is now <b>" + newHeight +"px</b> height");
+	gantt.message(`<b>${item.text}</b> is now <b>${newHeight}px</b> height`);
 	return true;
 });
 

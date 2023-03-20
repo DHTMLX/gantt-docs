@@ -26,7 +26,7 @@ gantt.parse({
  "links":[]
 });
 
-var wbs_code = gantt.getWBSCode(gantt.getTask(3)) // -> returns "1.2"
+const wbs_code = gantt.getWBSCode(gantt.getTask(3)) // -> returns "1.2"
 
 @template:	api_method
 @descr:

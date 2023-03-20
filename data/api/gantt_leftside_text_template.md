@@ -9,8 +9,13 @@ leftside_text
 - task	Task	the task object
 
 @example:
+
+const formatter = gantt.ext.formatters.durationFormatter({
+    format: ["day"]
+});
+
 gantt.templates.leftside_text = function(start, end, task){
-	return task.duration + " days";
+    return formatter.format(task.duration);
 };
 
 
@@ -27,5 +32,6 @@ gantt.templates.leftside_text = function(start, end, task){
 @related:
 	desktop/timeline_templates.md
 	desktop/text_block_for_task.md
+	desktop/formatters_ext.md#durationformatter
 @relatedsample:
 	04_customization/01_outer_content.html
