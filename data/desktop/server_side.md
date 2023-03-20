@@ -627,7 +627,7 @@ Routing CRUD actions of resources and resource assignments
 
 From v8.0, modified resource assignments can be sent to the dataProcessor as separate entries with persistent IDs, so making it easy to connect to backend API. Changes of resource objects can be also sent to the DataProcessor.
 
-Note, this feature is disabled by default. By default, the dataProcessor only receives changes made to tasks and links.
+Note, this feature is disabled by default. By default, the dataProcessor only receives changes made to tasks and links. To enable the feature, use the following settings:
 
 ~~~js
 gantt.config.resources = {
@@ -636,8 +636,9 @@ gantt.config.resources = {
 };
 ~~~
 
-Once the resource mode of the dataProcessor is enabled, if the DataProcessor is configured to REST mode - resources and resource assignments will be sent to the backend in separate requests.
-If you use the dataProcessor in the Custom Routing mode - you'll be able to capture changes of resource assignments and resources in the handler:
+Once the resource mode of the dataProcessor is enabled, if the DataProcessor is configured to the REST mode - resources and resource assignments will be sent to the backend in separate requests.
+
+If you use the dataProcessor in the Custom Routing mode, you'll be able to capture changes of resource assignments and resources in the handler:
 
 ~~~js
 gantt.createDataProcessor({
