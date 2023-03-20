@@ -36,7 +36,7 @@ The **calendar** object possesses the following methods and properties:
 calendar.setWorkTime({ hours:["9:00-18:00"] });
 ~~~
 
-- <span class=submethod>**unsetWorkTime (config): undefined**</span> - unsets a working time in the Gantt Chart
+- <span class=submethod>**unsetWorkTime (config): void**</span> - unsets a working time in the Gantt Chart
     - **_config_** - (*object*) - the [configuration object](api/gantt_unsetworktime.md#configurationobjectproperties) of a time span:
         - **_day?_** - (*string | number*) - optional, a number of a week day [0 (Sunday) - 6 (Saturday)]. Note, you can set only 1 day at once
         - **_date?_** - (*Date*) - optional, a specific date to set as a working day or day off

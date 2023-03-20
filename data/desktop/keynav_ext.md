@@ -7,7 +7,7 @@ The *keyboardNavigation* object possesses the following API:
 Methods
 ----------
 
-- <span class=submethod>**focus (config): undefined**</span> - allows selecting any cell in the grid. Works only if the Grid already has the focus
+- <span class=submethod>**focus (config): void**</span> - allows selecting any cell in the grid. Works only if the Grid already has the focus
 
     - **_config_** - (*object*) - the config object
         - **_id_** - (*number | string*) - the id of an edited task
@@ -21,7 +21,7 @@ gantt.ext.keyboardNavigation.focus({type:"taskCell",id:"taskId",column:"columnNa
 
 {{editor 	https://snippet.dhtmlx.com/v5ffah8w		Selecting a grid cell}}
 
-- <span class=submethod>**getActiveNode (): boolean | undefined**</span> - allows obtaining information about the active cell
+- <span class=submethod>**getActiveNode (): boolean | void**</span> - allows obtaining information about the active cell
 
 ~~~js
 var active_node = gantt.ext.keyboardNavigation.getActiveNode();

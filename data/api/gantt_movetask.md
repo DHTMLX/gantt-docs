@@ -10,7 +10,7 @@ moveTask
 * parent	string,number			the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
 
 @returns:
-- result	boolean | undefined		returns `false` if the action has been canceled using api/gantt_onbeforetaskmove_event.md, returns `undefined` otherwise
+- result	boolean | void		returns `false` if the action has been canceled using api/gantt_onbeforetaskmove_event.md, returns `undefined` otherwise
 
 @example:
 const tasks = {
