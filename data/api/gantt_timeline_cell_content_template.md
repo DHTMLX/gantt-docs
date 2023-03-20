@@ -30,7 +30,7 @@ gantt.templates.timeline_cell_content = function (task, date) {
 @template:	api_template
 
 @descr:
-{{note You should use this template instead of the [addTaskLayer()](desktop/baselines.md) method in cases when you need to show the custom content in all cells of the timeline. It will be easier to implement and faster in performance.}}
+{{note You should use this template instead of the [addTaskLayer()](desktop/baselines.md) method in cases when you need to show custom content in cells of the timeline. It will be easier to implement and faster in performance.}}
 
 Note, that the custom content will be displayed *below* the task bars, meaning the task bars will have higher z-index and the content of cells won't be visible when the task bar is located on top of it.
 If you need the content to be visible over the bar, you can add 'z-index' to the custom element:
