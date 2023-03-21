@@ -43,6 +43,6 @@ if(task.id === "timeline_placeholder_task"){
 api/gantt_timeline_cell_class_template.md
 
 @relatedsample:
-08_api\23_empty_gantt_with_placeholder_views.html
+08_api/23_empty_gantt_with_placeholder_views.html
 
 @changelog: added in v8.0

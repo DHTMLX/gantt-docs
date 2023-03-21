@@ -33,4 +33,4 @@ If you need to modify the appearance of an element, we recommend using templates
     api/gantt_gettask.md
     api/gantt_task_text_template.md
     api/gantt_task_class_template.md
-    api/gantt_row_class_template.md
+    api/gantt_grid_row_class_template.md

@@ -15,6 +15,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 <span class='release_date'>March 20, 2023. Major update</span>
 
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-gantt-8-0/)
+
 ### Breaking changes
 
 Check the [Migration article](migrating.md#7180) to keep in step with the latest version.
@@ -53,6 +55,10 @@ Check the [Migration article](migrating.md#7180) to keep in step with the latest
 - The ability to put any HTML content into the cells of the Timeline:
 	- new api/gantt_timeline_cell_content_template.md template
 - The export API is included into [gantt.plugins](desktop/extensions_list.md#exportservice) and no longer requires adding additional JS file. Check the [Migration](migrating.md#7180) article
+
+### Updates
+
+- Updated TypeScript type definitions
 
 ### Fixes
 
