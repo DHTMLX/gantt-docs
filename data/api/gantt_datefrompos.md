@@ -28,3 +28,5 @@ For example, for the Gantt chart above, the method will return the following:
 gantt.dateFromPos(0); // -> Sun Mar 31 2013 00:00:00
 gantt.dateFromPos(74);  // -> Mon Apr 01 2013 01:22:17
 ~~~
+
+@relatedapi: api/gantt_getlayoutview.md

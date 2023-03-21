@@ -21,6 +21,8 @@ gantt.scrollTo(null, 80); // scrolls container only vertically
 @relatedapi:
 api/gantt_showdate.md
 api/gantt_showtask.md
+api/gantt_scrolllayoutcell.md
+
 
 api/gantt_getscrollstate.md
 api/gantt_onganttscroll_event.md

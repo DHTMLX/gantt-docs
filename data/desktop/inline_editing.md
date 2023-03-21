@@ -452,6 +452,14 @@ Additionally, you can activate a [placeholder row](api/gantt_placeholder_task_co
 gantt.config.placeholder_task = true;
 ~~~
 
+Alternatively, if you want the focus to move to the placeholder task after adding of a new task, use the following configuration:
+
+~~~js
+gantt.config.placeholder_task = {
+    focusOnCreate: true
+};
+~~~
+
 If needed, you can also add [automatic detection of the types of tasks](api/gantt_auto_types_config.md):
 
 ~~~js

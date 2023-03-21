@@ -29,4 +29,6 @@ For example, for the Gantt chart above, the method will return the following:
 gantt.posFromDate(new Date(2023,02,31)); // -> 0
 gantt.posFromDate(new Date(2023,03,1));  // -> 74
 gantt.posFromDate(new Date(2023,03,2));  // -> 148
-~~~ 
+~~~
+
+@relatedapi: api/gantt_getlayoutview.md
