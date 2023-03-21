@@ -82,6 +82,7 @@ Gantt API
 - api/gantt_getgridcolumns.md - gets columns of the Gantt chart
 - api/gantt_getlabel.md - gets the label of a select control in the lightbox
 - api/gantt_getlastselectedtask.md - returns the id of the last selected task
+- api/gantt_getlayoutview.md - returns the object of the layout view by its name
 - api/gantt_getlightbox.md - gets the lightbox's HTML object element
 - api/gantt_getlightboxsection.md - returns the object of the lightbox's section
 - api/gantt_getlightboxtype.md - returns the name of the active lighbox's structure
@@ -180,6 +181,7 @@ Gantt API
 - api/gantt_resizelightbox.md - forces the lightbox to resize
 - api/gantt_rounddate.md - rounds the specified date to the nearest date in the time scale
 - api/gantt_roundtaskdates.md - rounds the start and end task's dates to the nearest dates in the time scale
+- api/gantt_scrolllayoutcell.md - scrolls the layout view to the specified position
 - api/gantt_scrollto.md - scrolls the Gantt container to the specified position
 - api/gantt_selecttask.md - selects the specified task
 - api/gantt_serialize.md - serializes the data into JSON or XML format

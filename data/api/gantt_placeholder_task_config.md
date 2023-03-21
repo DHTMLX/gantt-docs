@@ -4,11 +4,17 @@ placeholder_task
 @short:
 	adds an empty row into the end of the list of tasks to simplify tasks editing via keyboard
     
-@type: boolean
+@type: boolean | object
 
 @default:false
 @example:
 gantt.config.placeholder_task = true;
+
+// or
+gantt.config.placeholder_task = {
+   // moves focus to the placeholder task after adding a new task
+   focusOnCreate: true
+};
 
 @template:	api_config
 @descr:

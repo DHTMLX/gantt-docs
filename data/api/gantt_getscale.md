@@ -19,3 +19,4 @@ gantt.getScale();
 @template:	api_method
 @descr:
 
+@relatedapi: api/gantt_getlayoutview.md
