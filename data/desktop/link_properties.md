@@ -1,6 +1,11 @@
 Link Properties 
 =======================================
 
+On this page you'll find the full list of properties that the link object may include.
+
+The full list of properties of the task object is given in the [Task Properties](desktop/task_properties.md) article.
+
+
 Required properties
 -------------------
 
