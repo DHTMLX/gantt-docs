@@ -155,9 +155,7 @@ gantt.attachEvent("onMouseMove", function (id, e) {
     const right_date = gantt.dateFromPos(
       gantt.getScrollState().x + gantt.$task.offsetWidth - 1
     );
-    if (left_date && +gantt.date.add(
-      left_date, -1, 'day'
-    ) < +gantt.config.start_date) {
+    if (left_date && +left_date <= +gantt.config.start_date) {
       gantt.config.start_date = gantt.date.add(gantt.config.start_date, -1, 'day');
       gantt.render();
     }
