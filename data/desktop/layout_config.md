@@ -186,8 +186,8 @@ Custom grid and timeline have additional properties:
 
 ###Adding a datastore for custom views
 
-To populate custom views with corresponding data, you need to add a separate datastore. To create a new datastore, use the method 
-api/gantt_createdatastore.md and specify the configuration of the datastore:
+To populate custom views with corresponding data, you need to add a separate data store. To create a new data store, use the method 
+api/gantt_createdatastore.md and specify the configuration of the data store:
 
 ~~~js
 var resourcesStore = gantt.createDatastore({
@@ -199,9 +199,9 @@ var resourcesStore = gantt.createDatastore({
 });
 ~~~
 
-In the above example a datastore named "resource" is added.
+In the above example a data store named "resource" is added.
 
-To load data into custom views from the datastore, use the api/gantt_parse.md method:
+To load data into custom views from the data store, use the api/gantt_parse.md method:
 
 ~~~js
 resourcesStore.parse([// resources
@@ -212,13 +212,16 @@ resourcesStore.parse([// resources
 ]);
 ~~~
 
-To return a configuration object of the necessary datastore, use the api/gantt_getdatastore.md method:
+To return a configuration object of the necessary data store, use the api/gantt_getdatastore.md method:
 
 ~~~js
 var tasksStore = gantt.getDatastore("task");
 ~~~
 
-The method takes the name of the datastore as a parameter.
+The method takes the name of the data store as a parameter.
+
+{{note
+If you use built-in resource views, the gantt can automatically create the data store for them. [Read the details](desktop/resource_management.md#workingwithresourceviewpanel).}}
 
 <h3 id="enable_disable_resizers">Disabling/enabling resizers dynamically</h3>
 
