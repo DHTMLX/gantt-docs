@@ -73,7 +73,10 @@ Scrollbar
 
 Layout scrollbars are specified by the **"scrollbar"** view. You can set both a horizontal and vertical scrollbar. 
 
-To use a scrollbar in the layout, you need to bind it to a corresponding view with the help of the **scrollX** or **scrollY** properties via the id of the necessary scrollbar. 
+To use a scrollbar in the layout, you need to bind it to a corresponding view with the help of the **scrollX** or **scrollY** properties via the id of the necessary scrollbar.
+
+### A scrollbar for a view
+
 It is possible to bind several views to the same scrollbar. In order to bind a view to a scrollbar:
 
 - set a scrollbar with the necessary scrolling direction and assign an ID to it
@@ -120,6 +123,59 @@ When you scroll the vertical scrollbar, the grid and timeline are scrolled toget
 In the default layout the grid and timeline views are bound to both the horizontal and vertical scrolls.
 
 It is also possible to specify a separate horizontal scrollbar for the Grid view. [Read the details](desktop/specifying_columns.md#horizontalscrollbar) in the corresponding section.
+
+### Scrollbars for a view
+
+In the sub-section above we've considered how to add one specific scrollbar to the necessary view. For that, it was enough to create a simple layout configuration like:
+
+~~~js
+{cols: [ {rows: [{}, {}]}, {rows: [{}, {}]}]}
+~~~
+
+or
+
+~~~js
+{rows: [ {cols: [{}, {}]}, {cols: [{}, {}]}]}
+~~~
+
+In case you need to bind a view to both vertical and horizontal scrollbars, create a complex configuration of the layout when `cols` and `rows` arrays are nested multiple times, for instance:
+
+~~~js
+{cols: [ 
+	{
+		rows: [
+			{
+				cols: [{}, {}]
+			}, 
+			{
+				cols: [{}, {}]
+			}
+		]
+	}, 
+	{
+		rows: [
+			{
+				cols: [{}, {}]
+			}, 
+			{
+				cols: [
+					{
+						rows: [{}, {}]
+					}, 
+					{	
+						rows: [{}, {}]
+					}
+				]
+			}
+		]
+	}
+]}
+~~~
+
+Follow the examples below:
+
+- [Gantt. Layout views with own scrollbars](https://snippet.dhtmlx.com/cv9w37tu)
+- [Gantt. Universal Layout configuration](https://snippet.dhtmlx.com/uqejdyqc)
 
 Layout customization
 -------------------
