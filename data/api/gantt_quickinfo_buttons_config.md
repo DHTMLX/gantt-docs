@@ -11,7 +11,7 @@ gantt.locale.labels["advanced_details_button"] = "Advanced Info";
 gantt.init("gantt_here");
 
 gantt.$click.buttons.advanced_details_button=function(id){
-    alert("These are advanced details");
+    gantt.message("These are advanced details");
     return false; //blocks the default behavior
 };
 
@@ -31,6 +31,7 @@ desktop/extensions_list.md#quickinfo
 02_extensions/01_quickinfo.html
 
 @relatedapi:
+api/gantt_$click_other.md
 api/gantt_showquickinfo.md
 api/gantt_hidequickinfo.md
 api/gantt_quick_info_detached_config.md

@@ -209,6 +209,21 @@ As a result, the following quick info popup will appear on the page:
 <img src="desktop/quick_custom.png">
 
 
+####**Adding custom buttons with custom behavior**
+
+The [$click](api/gantt_$click_other.md) object allows you to add custom behavior for custom buttons placed into the pop-up edit form:
+
+~~~js
+gantt.config.quickinfo_buttons=["icon_delete","icon_edit","advanced_details_button"];
+gantt.locale.labels["advanced_details_button"] = "Advanced Info";
+gantt.init("gantt_here");
+ 
+gantt.$click.buttons.advanced_details_button=function(id){
+    gantt.message("These are advanced details");
+    return false; //blocks the default behavior
+};
+~~~
+
 ####**Setting a container for QuickInfo** 
 
 You can use the **gantt.ext.quickInfo.setContainer()** method to make the quick info popup to be displayed in a custom container:

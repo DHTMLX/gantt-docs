@@ -10,12 +10,13 @@ gantt.locale.labels["advanced_details_button"] = "Advanced Info";
 gantt.init("gantt_here");
 
 gantt.$click.advanced_details_button=function(e, id, trg){
-    alert("These are advanced details"); 
+    gantt.message("These are advanced details"); 
     return false; //blocks the default behavior
 };
 
 @template:	api_config
 @descr:
+{{note The behavior of the button will be redefined for both the lightbox and quick info popup.}}
 
 The $click object of the default Gantt chart is:
 
