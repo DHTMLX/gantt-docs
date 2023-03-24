@@ -669,6 +669,8 @@ const joinedCalendar = gantt.mergeCalendars(
 );
 ~~~
 
+Learn the logic of how merging of working hours is performed in the [mergeCalendars()](api/gantt_mergecalendars.md) article.
+
 ## Assigning Calendar to Project
 
 {{pronote This functionality is available in the PRO edition only.}}
