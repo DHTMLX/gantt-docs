@@ -270,6 +270,16 @@ CREATE TABLE `gantt_tasks` (
 </p>
 </div>
 
+To be able to save tasks in the database when some column has an empty value, add the following code to the **myGantt.html** file:
+
+{{snippet myGantt.html}}
+~~~js 
+gantt.attachEvent("onBeforeTaskAdd", function(id,task){
+    task.sortorder = 0;
+    return true;
+});
+~~~
+
 Step 6. Loading Data from the Database
 -----------------------------------------------------------
 {{note
@@ -416,6 +426,21 @@ dp.init(gantt); /*!*/
 </p>
 </div>
 
+Logging errors
+----------------------
+
+In case you've completed the above steps but something still is not working, enable logging in Gantt to detect an error.
+
+First of all, make sure, that there are write permissions on the directory where the HTML file is located. Then add the following line into the **data.php** file:
+
+{{snippet data.php}}
+~~~php
+$gantt = new JSONGanttConnector($res);
+
+$gantt->enable_log("log.txt"); /*!*/
+~~~
+
+After that, you can view logs in the **log.txt** file.
 
 What's Next?
 -----------------------------------------------------------
