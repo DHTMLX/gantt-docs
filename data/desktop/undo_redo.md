@@ -98,7 +98,8 @@ Undoing/Redoing changes made from code
 ---------------------------------
 
 It is possible to undo/redo changes made to your code. To do this you have to use the **undo()/redo()** methods in combination with the **saveState()** method of the **gantt.ext.undo** object. 
-The **saveState()** method allows saving the initial value of the task before the code changes are made.
+
+The **saveState()** method allows saving the initial value of the task before the code changes are made. However Gantt can't identify when you finish making the changes with the API by itself. To signal to Gantt that you've finished updating the task or link, you will need to apply the **updateTask()** or **updateLink()** method. Then the previous and new states will be saved to the stack of undo user actions.
 
 For example, this is how you can revert the initial text of the task after it was reassigned in the code to another value:
 
@@ -111,8 +112,8 @@ console.log(task.text);
 
 undoExtension.saveState(task.id, "task"); /*!*/
 
-task.text = "modified";
-gantt.updateTask(1);
+task.text = "modified"; /*!*/
+gantt.updateTask(1); /*!*/
 
 console.log(task.text);
 // ->  "modified";

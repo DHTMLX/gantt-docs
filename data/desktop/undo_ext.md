@@ -68,3 +68,5 @@ gantt.ext.undo.clearRedoStack();
 gantt.ext.undo.saveState(1, "task");
 gantt.ext.undo.saveState(1, "link");
 ~~~
+
+Read the details in the [Undoing/Redoing changes made from code](desktop/undo_redo.md#undoingredoingchangesmadefromcode) article.
