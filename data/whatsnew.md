@@ -10,6 +10,19 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+8.0.1
+----------
+
+<span class='release_date'>March 30, 2023. Major update</span>
+
+### Fixes
+
+- Fix an error thrown from [gantt.showCover()](api/gantt_showcover.md) called when the [lightbox](desktop/default_edit_form.md) is not opened
+- Fix regression in [split tasks](desktop/split_tasks.md) which caused a script error for the split tasks displayed outside of the time scale
+- Fix regression in the [gantt.addLinkLayer()](api/gantt_addlinklayer.md) method
+- Fix the incorrect work of [auto scheduling](desktop/auto_scheduling.md) with [MSO, FNET, and FNLT constraints](desktop/auto_scheduling.md#timeconstraintsfortasks) when the [settings of work time](desktop/working_time.md#globalsettings) contain a minute part
+- Fix work of the [onBeforeSplitTaskDisplay](api/gantt_onbeforesplittaskdisplay_event.md) event on scroll
+
 <b>8.0</b>
 --------------
 
