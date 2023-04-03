@@ -13,7 +13,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 8.0.1
 ----------
 
-<span class='release_date'>March 30, 2023. Major update</span>
+<span class='release_date'>March 30, 2023. Bugfix release</span>
 
 ### Fixes
 
