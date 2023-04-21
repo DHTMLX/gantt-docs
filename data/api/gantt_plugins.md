@@ -26,4 +26,7 @@ gantt.plugins({
 @related: desktop/extensions_list.md
 
 
-@changelog: added in v7.0
+@changelog: 
+
+- The **export_api** plugin was included into the list of plugins in v8.0. To activate export service in earlier versions, you need to include the **https://export.dhtmlx.com/gantt/api.js** file on your page. Check the [Migration](migrating.md#7180) article.
+- Added in v7.0
