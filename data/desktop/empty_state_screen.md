@@ -18,6 +18,14 @@ gantt.config.show_empty_state = true;
 
 The "empty state" comes with a set of API methods provided by the [emptyStateElement](desktop/empty_state_element_ext.md) extension. 
 
+Display of the "empty state" is possible not only when there are no tasks loaded in the gantt. You may display it also if the tasks are loaded but filtered and they are not visible on the page. For that, use the **isEnabled()** method:
+
+~~~js
+gantt.ext.emptyStateElement.isEnabled = function (){
+  return !gantt.getVisibleTaskCount().length;
+}
+~~~
+
 If you want to display the "empty state" in the timeline area not in the grid, use the **getContainer()** method:
 
 ~~~js
@@ -29,15 +37,17 @@ gantt.ext.emptyStateElement.getContainer = function() {
 To change the content rendered in the "empty state", apply the **renderContent()** method:
 
 ~~~js
-gantt.ext.emptyStateElement.renderContent = function(container) {
-    return `<div class='gantt_empty_state'>
-       <div class='gantt_empty_state_image'></div>
-       <div class='gantt_empty_state_text'>
-           <div class='gantt_empty_state_text_link' data-empty-state-create-task>
-		   	${gantt.locale.labels.empty_state_text_link}</div>
-           <div class='gantt_empty_state_text_description'>
-		   	${gantt.locale.labels.empty_state_text_description}</div>
-       </div>
-</div>`;
-};
+gantt.ext.emptyStateElement.renderContent = function (container) {
+    const placeholderTextElement = `<div class='gantt_empty_state_text'>
+    <div class='gantt_empty_state_text_link' data-empty-state-create-task>
+       ${gantt.locale.labels.empty_state_text_link}</div>
+    <div class='gantt_empty_state_text_description'>
+       ${gantt.locale.labels.empty_state_text_description}</div>
+    </div>`;
+    const placeholderImageElement = "<div class='gantt_empty_state_image'></div>";
+
+    const placeholderContainer = `<div class='gantt_empty_state'>
+       ${placeholderImageElement}${placeholderTextElement}</div>`;
+    container.innerHTML = placeholderContainer;
+}
 ~~~
