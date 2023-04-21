@@ -22,7 +22,7 @@ Display of the "empty state" is possible not only when there are no tasks loaded
 
 ~~~js
 gantt.ext.emptyStateElement.isEnabled = function (){
-  return !gantt.getVisibleTaskCount().length;
+    return !gantt.getVisibleTaskCount().length;
 }
 ~~~
 
@@ -30,7 +30,7 @@ If you want to display the "empty state" in the timeline area not in the grid, u
 
 ~~~js
 gantt.ext.emptyStateElement.getContainer = function() {
-       return gantt.$task_data.closest(".gantt_layout_content");
+    return gantt.$task_data.closest(".gantt_layout_content");
 };
 ~~~
 
