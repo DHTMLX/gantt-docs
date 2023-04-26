@@ -497,7 +497,8 @@ gantt.config.layout = {
   cols: [
 	{
 	   width:400,
-	   min_width: 300,
+	   minWidth: 200,
+       maxWidth: 600,
 	   rows:[
 		 {view: "grid", scrollX: "gridScroll", scrollable: true, scrollY: "scrollVer"},
 		 {view: "scrollbar", id: "gridScroll", group:"horizontal"}    /*!*/
@@ -576,6 +577,47 @@ gantt.config.layout = {
 
 In the above example the sizes of the Gantt chart and the resource chart make a proportion 2:1. It means that the Gantt chart will take 66%, while the resource chart will take 33%. 
 By using the proportion 1:1, you will have 50% for both charts.
+
+### Min/max cell width
+
+The **minWidth/maxWidth** properties can be used to limit the width of a layout part in case of resize operations:
+
+~~~js
+gantt.config.grid_elastic_columns = true;
+
+gantt.config.layout = {
+  css: "gantt_container",
+  cols: [
+    {
+      width: 400,
+      minWidth: 200,
+      maxWidth: 600,
+      rows: [
+        {
+          view: "grid", scrollable: true, scrollX: "scrollHor1", scrollY: "scrollVer"
+        },
+        {
+          view: "scrollbar", id: "scrollHor1", scroll: 'x', group: 'hor'
+        },
+      ]
+    },
+    { resizer: true, width: 1 },
+    {
+      rows: [
+        {
+          view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"
+        },
+        {
+          view: "scrollbar", id: "scrollHor", scroll: 'x', group: 'hor'
+        },
+      ]
+    },
+    {
+      view: "scrollbar", id: "scrollVer"
+    }
+  ]
+}
+~~~
 
 Hiding parent layout views
 -----------------------

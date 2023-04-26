@@ -252,11 +252,13 @@ gantt.config.columns = [
       name:"constraint_type", align:"center", width:100, 
       	template:function(task){//template logic}, 
         resize: true, editor: constraintTypeEditor
-    },
+	  }
+	},
     {
       name:"constraint_date", align:"center", width:120, 
       	template:function(task){//template logic}, 
         resize: true, editor: constraintDateEditor
+	  }
     },
     { name: "add", width: 44 }
 ];
@@ -483,7 +485,8 @@ gantt.config.layout = {
   cols: [
    {
 	 width:400,
-	 min_width: 300,
+	 minWidth: 200,
+     maxWidth: 600,
       
      // adding horizontal scrollbar to the grid via the scrollX attribute
 	 rows:[
@@ -516,7 +519,8 @@ gantt.config.layout = {
   cols: [
 	{
 	  width:400,
-	  min_width: 300,
+	  minWidth: 200,
+      maxWidth: 600,
 	  rows:[
 		{view: "grid", scrollX: "gridScroll", scrollable: true, scrollY: "scrollVer"}, 
                 
