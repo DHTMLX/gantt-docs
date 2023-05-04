@@ -6,6 +6,7 @@ getResourceAssignments
 
 @params:
 - resourceId		string,number		the id of the resource
+* taskId		string,number		the id of the task
 
 
 @returns:

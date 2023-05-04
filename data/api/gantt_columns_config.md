@@ -28,6 +28,9 @@ Each object in the array specifies a single column. An object can take the follo
 - <span class=subproperty>**min_width?**</span> - (*number*) - sets the minimum column width in case of resize operations
 - <span class=subproperty>**name?**</span> - (*string | number*) - defines the column's id. The name 'add' allows you to add a column with the '+' sign
 - <span class=subproperty>**resize?**</span> - (*boolean*) - enables the possibility to resize a column by dragging the column's border (PRO)
+- <span class=hybrid_property>**sort? (task1, task2): number**</span> - (*boolean | string | Function*) - sort configuration after clicking on the column header. When it is set to *false*, sorting is disabled. Otherwise you can set a different task property in the *string* to sort the column or use a custom sorting function
+    - **_task1_** - (*Task*) - the first task that will be sorted
+    - **_task2_** - (*Task*) - the second task that will be sorted
 - <span class=submethod>**template? (task): any**</span> - sets a data template
     - **_task_** - (*Task*) - the Task object
 - <span class=subproperty>**tree?**</span> - (*boolean*) - indicates that the related column should display a tree
@@ -42,7 +45,6 @@ Each object in the array specifies a single column. An object can take the follo
     - **_max?_** - (*Date | number*) - maximal value for the date and duration types
     - **_options?_** - (*Array &lt;any&gt;*) - an array with the options for the select types
     - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - formatter for the date and predecessor types
-
 
 
 
