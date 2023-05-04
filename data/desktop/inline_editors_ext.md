@@ -27,7 +27,7 @@ Read details about the Inline editors extension in the article desktop/inline_ed
 
 ###Events:
 
-- <span class=submethod>**attachEvent (name, handler): boolean**</span> - attaches an event handler to inlineEditors object
+- <span class=submethod>**attachEvent (name, handler): string**</span> - attaches an event handler to inlineEditors object
     - **_name_** - (*string*) - the name of the event handler
     - **_handler_** - (*Function*) - the function that will be called when the event fires
 - <span class=submethod>**detachEvent (id): void**</span> - detaches a handler from an event (which was attached before by the attachEvent() method) 
