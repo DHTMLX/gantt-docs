@@ -12,12 +12,12 @@ The following methods are available via the **gantt.ext.emptyStateElement** obje
 - <span class=submethod>**renderContent (container): void**</span> - puts an HTML content into the empty state element. The method can be redefined.
     - **_container_** - (*HTMLElement*) - the container element
 - <span class=submethod>**getContainer (): HTMLElement | null**</span> - returns the DOM element where the empty state will be attached to. By default, returns the grid element (the "empty state" will be displayed in the grid). If there is no grid, returns the timeline element (the "empty state" will be displayed in the timeline). The method can be redefined.
-- <span class=submethod>**getNode (): HTMLElement | null**</span> - returns the DOM node of the empty state element.
-- <span class=submethod>**show (): null | void**</span> - displays the "empty state". Returns *false* if there is no container for the Empty State Element.  The extension calls the method by itself
+- <span class=submethod>**getNode (): HTMLElement | null**</span> - returns the DOM node of the empty state element
+- <span class=submethod>**show (): null | void**</span> - displays the "empty state". Returns *null* if there is no container for the Empty State Element.  The extension calls the method by itself
 - <span class=submethod>**hide (): boolean | void**</span> - hides the "empty state". Returns *false* if there is no Empty State Element node, so there is nothing to hide.  The extension calls the method by itself
-- <span class=subproperty>**clickEvents?**</span> -  (*Array&lt;string&gt;*) - an array with the IDs of the attached handlers. Modified by the *attachAddTaskEvent* and *detachAddTaskEvents* methods.
-- <span class=submethod>**attachAddTaskEvent (): void**</span> - adds the handler that will fire after clicking on the Empty State Element. By default, used to add a new task.
-- <span class=submethod>**detachAddTaskEvents (): void**</span> - removes the handlers that were used to add a task after clicking on the Empty State Element.
+- <span class=subproperty>**clickEvents?**</span> -  (*Array&lt;string&gt;*) - an array with the IDs of the attached handlers. It is modified by the *attachAddTaskEvent* and *detachAddTaskEvents* methods.
+- <span class=submethod>**attachAddTaskEvent (): void**</span> - adds the handler that will fire after clicking on the Empty State Element. By default, it is used to add a new task.
+- <span class=submethod>**detachAddTaskEvents (): void**</span> - removes the handlers that were used to add a task after clicking on the Empty State Element
 
 
 
