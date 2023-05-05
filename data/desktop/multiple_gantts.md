@@ -26,7 +26,7 @@ const gantt = Gantt.getGanttInstance({
 	container: "gantt_here",
 	config: {
 		work_time: true,
-		duration_unit: "minute"
+		duration_unit: "minute",
 		auto_scheduling_compatibility: true,
 		auto_scheduling: true,
 		auto_scheduling_strict: true,
