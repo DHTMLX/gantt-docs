@@ -10,6 +10,20 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+8.0.2
+----------
+
+<span class='release_date'>May 31, 2023. Bugfix release</span>
+
+### Fixes
+
+- Fix [Export](desktop/export_common.md) errors that happen when [LinkFormatters](desktop/formatters_ext.md#linkformatter) are used.
+- Fix the incorrect work of the [Undo extension](desktop/undo_redo.md) with [Resources and Resource Assignments](desktop/resource_management.md)
+- Type definitions are updated
+- Performance improvements for [Rollup](desktop/milestones.md#rolluptasksandmilestones) tasks rendering
+- Performance improvement for [Split Tasks](desktop/split_tasks.md) rendering
+- Other performance improvements
+
 8.0.1
 ----------
 
