@@ -10,6 +10,17 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+8.0.3
+----------
+
+<span class='release_date'>June 14, 2023. Bugfix release</span>
+
+### Fixes
+
+- Performance improvements for the [Resource Panel](desktop/resource_management.md)
+- Fix incorrect calculation of [Free Slack](desktop/critical_path.md#gettingfreeandtotalslack) for tasks with a [negative Lag](desktop/auto_scheduling.md#settinglagandleadtimesbetweentasks)
+- Fix incorrect calculation of [Critical Path](desktop/critical_path.md) for tasks with 100% progress
+
 8.0.2
 ----------
 
