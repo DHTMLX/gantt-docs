@@ -10,6 +10,18 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+8.0.4
+----------
+
+<span class='release_date'>July 31, 2023. Bugfix release</span>
+
+### Fixes
+
+- Fix issue with [DataProcessor](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments) not tracking changes of the [Resource Datastore](desktop/resource_management.md#workingwithresourceviewpanel)
+- Resolve an error that occurred after dragging a task when the [process_resource_assignments](api/gantt_process_resource_assignments_config.md) config is disabled
+- Fix the incorrect work of [gantt.calculateEndDate](api/gantt_calculateenddate.md) when subtracting dates in minute units
+- Minor performance improvement for layouts with [visibility groups](desktop/layout_config.md#visibilitygroups)
+
 8.0.3
 ----------
 
