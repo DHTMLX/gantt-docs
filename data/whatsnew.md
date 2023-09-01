@@ -10,6 +10,17 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+8.0.5
+----------
+
+<span class='release_date'>September 1, 2023. Bugfix release</span>
+
+### Fixes
+
+- Fix incorrect warnings triggered by enabling extensions via the [gantt.getGanttInstance](desktop/multiple_gantts.md) configuration.
+- Fix the incorrect work of [gantt.exportToExcel()](api/gantt_exporttoexcel.md) when the [skip_off_time](api/gantt_skip_off_time_config.md) config is enabled
+- Improvements for the [Samples Viewer](https://docs.dhtmlx.com/gantt/samples/)
+
 8.0.4
 ----------
 
