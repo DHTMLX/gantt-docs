@@ -45,15 +45,24 @@ Export to PDF
 
 To export Gantt chart as a PDF document, do the following steps:
 
-<ol>
-	<li>To use the online export service, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
+1. To use the online export service, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
+
 ~~~js
 gantt.plugins({
   	export_api: true
 });
 ~~~
-</li>
-	<li>Call the <a href="desktop/export.md#parametersoftheexportmethods">exportToPDF</a> method to export the Gantt chart: 
+
+{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, for example:
+
+~~~js
+<script src="codebase/dhtmlxgantt.js"></script>
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>
+~~~
+}}
+
+2. Call the <a href="desktop/export.md#parametersoftheexportmethods">exportToPDF</a> method to export the Gantt chart: 
+
 ~~~html
 <input value="Export to PDF" type="button" onclick='gantt.exportToPDF()'>/*!*/
 
@@ -63,8 +72,6 @@ gantt.plugins({
 </script>
 ~~~
 
-</li>
-</ol>
 {{sample
 08_api/06_export.html
 }}
@@ -74,15 +81,24 @@ Export to PNG
 
 To export Gantt chart as a PNG image, do the following steps:
 
-<ol>
-	<li>To use the online export service, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
+1. To use the online export service, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
+
 ~~~js
 gantt.plugins({
   	export_api: true
 });
 ~~~
-</li>
-	<li>Call the <a href="desktop/export.md#parametersoftheexportmethods">exportToPNG</a> method to export the Gantt chart: 
+
+{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, for example:
+
+~~~js
+<script src="codebase/dhtmlxgantt.js"></script>
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>
+~~~
+}}
+
+2. Call the <a href="desktop/export.md#parametersoftheexportmethods">exportToPNG</a> method to export the Gantt chart: 
+
 ~~~html
 <input value="Export to PNG" type="button" onclick='gantt.exportToPNG()'>/*!*/
 
@@ -92,8 +108,6 @@ gantt.plugins({
 </script>
 ~~~
 
-</li>
-</ol>
 {{sample
 08_api/06_export.html
 }}
