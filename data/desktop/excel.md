@@ -24,6 +24,14 @@ gantt.plugins({
 });
 ~~~
 
+{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, e.g.:
+
+~~~js
+<script src="codebase/dhtmlxgantt.js"></script>
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>
+~~~
+}}
+
 - Call the api/gantt_exporttoexcel.md method to export data from the Gantt chart: 
 
 ~~~html
