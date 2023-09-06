@@ -35,7 +35,13 @@ Read the details in the desktop/excel.md article.
 
 }}
 
+{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, e.g.:
 
+~~~js
+<script src="codebase/dhtmlxgantt.js"></script>
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>
+~~~
+}}
 
 The **exportToExcel()** method takes as a parameter an object with several properties (all the properties are optional):
 
