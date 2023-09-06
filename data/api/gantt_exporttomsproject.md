@@ -21,6 +21,13 @@ gantt.exportToMSProject({
 {{note This method is defined in the **export** extension, so you need to activate the [export_api](desktop/extensions_list.md#exportservice) plugin. Read the details in the desktop/export_msproject.md#exporttomsproject article.
 }}
 
+{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, e.g.:
+
+~~~js
+<script src="codebase/dhtmlxgantt.js"></script>
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>
+~~~
+}}
 
 
 The **exportToMSProject()** method takes as a parameter an object with a number of properties (all of the properties are optional):
