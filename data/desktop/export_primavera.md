@@ -17,7 +17,7 @@ gantt.plugins({
 ~~~
 
 {{note
-If you use the Gantt version older than 8.0, you need to include the https://export.dhtmlx.com/gantt/api.js on your page to enable the online export service, for example:
+If you use the Gantt version older than 8.0, you need to include the https://export.dhtmlx.com/gantt/api.js on your page to enable the online export service, e.g.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
