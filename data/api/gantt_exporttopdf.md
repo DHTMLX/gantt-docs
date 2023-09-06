@@ -41,7 +41,13 @@ gantt.exportToPDF({
 
 }}
 
+{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, e.g.:
 
+~~~js
+<script src="codebase/dhtmlxgantt.js"></script>
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>
+~~~
+}}
 
 
 The api/gantt_exporttopdf.md method takes as a parameter an object with a number of properties (all of the properties are optional):
