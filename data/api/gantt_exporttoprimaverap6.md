@@ -26,6 +26,14 @@ gantt.exportToPrimaveraP6({
 {{note This method is defined in the **export** extension, so you need to activate the [export_api](desktop/extensions_list.md#exportservice) plugin. Read the details in the [Export and Import from Primavera P6](desktop/export_primavera.md#exporttoprimaverap6) article.
 }}
 
+{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, e.g.:
+
+~~~js
+<script src="codebase/dhtmlxgantt.js"></script>
+<script src="https://export.dhtmlx.com/gantt/api.js"></script>
+~~~
+}}
+
 
 The **exportToPrimaveraP6()** method takes as a parameter an object with a number of properties (all of the properties are optional):
 
