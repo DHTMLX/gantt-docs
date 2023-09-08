@@ -452,7 +452,7 @@ gantt.attachEvent("onTaskLoading", function (task) {
 });
 ~~~
 
-{{editor    https://snippet.dhtmlx.com/sjka4br8?tag=gantt Gantt. Import MSP files. Get task type from properties
+{{editor    https://snippet.dhtmlx.com/sjka4br8      Gantt. Import MSP files. Get task type from properties
 }}
 
 ##Limits on request size and import of large files
