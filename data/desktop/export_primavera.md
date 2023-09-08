@@ -411,6 +411,53 @@ gantt.attachEvent("onTaskLoading", function(task) {
 });
 ~~~
 
+#### Getting task types
+
+The following logic allows you to obtain the task type: the tasks with the **Project** type have the `Summary: "1"` property, and the tasks with the **Milestone** type have the `Milestone: "1"` property. We need to import the data with these properties and then set the task type depending on these properties.
+
+The call of the import function will look like this:
+
+~~~js
+gantt.importFromPrimaveraP6({
+    data: file,
+    taskProperties: [
+        "Summary", 
+        "Milestone",
+    ],
+    callback: function (project) {
+        if (project) {
+            console.log(project)
+            gantt.clearAll();
+            if (project.config.duration_unit) {
+                gantt.config.duration_unit = project.config.duration_unit;
+            }
+            console.log('import: ', project.data);
+            gantt.parse(project.data);
+        }
+    }
+});
+~~~
+
+After that you can convert the types of tasks based on the received properties as follows:
+
+~~~js
+gantt.attachEvent("onTaskLoading", function (task) {
+    if (task.$custom_data) {
+        if (task.$custom_data.Summary == "1") {
+            task.type = "project";
+        }
+        if (task.$custom_data.Milestone == "1") {
+            task.type = "milestone";
+        }
+        // delete task.$custom_data;
+    }
+    return true;
+});
+~~~
+
+{{editor    https://snippet.dhtmlx.com/y95rsxor Gantt. Import Primavera P6 files. Get task type from properties 
+}}
+
 ##Limits on request size and import of large files
 
 There are two API endpoints for the Primavera P6 export/import services:
