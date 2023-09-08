@@ -455,9 +455,6 @@ gantt.attachEvent("onTaskLoading", function (task) {
 });
 ~~~
 
-{{editor    https://snippet.dhtmlx.com/y95rsxor Gantt. Import Primavera P6 files. Get task type from properties 
-}}
-
 ##Limits on request size and import of large files
 
 There are two API endpoints for the Primavera P6 export/import services:
