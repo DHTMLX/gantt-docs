@@ -10,9 +10,9 @@ branch_loading_property
 
 @type: string
 @example:
-gantt.init("gantt_here");
 gantt.config.branch_loading = true;
 gantt.config.branch_loading_property = "hasChild";
+gantt.init("gantt_here");
 
 @template:	api_config
 @descr:

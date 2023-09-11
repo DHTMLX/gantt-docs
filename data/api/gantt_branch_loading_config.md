@@ -7,9 +7,10 @@ branch_loading
 @type: boolean
 @default: false
 @example:
-gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
-gantt.init("gantt_here");
+gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
 gantt.config.branch_loading = true;
+gantt.init("gantt_here");
+
 		
 gantt.load("/data"); /*!*/
 
