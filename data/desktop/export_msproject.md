@@ -452,6 +452,8 @@ gantt.attachEvent("onTaskLoading", function (task) {
 });
 ~~~
 
+{{editor	https://snippet.dhtmlx.com/sjka4br8		Gantt. Import MSP files. Get task type from properties}}
+
 ##Limits on request size and import of large files
 
 There are two API endpoints for the MSProject export/import services:

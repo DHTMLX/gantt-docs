@@ -11,7 +11,6 @@ gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
 gantt.config.branch_loading = true;
 gantt.init("gantt_here");
 
-		
 gantt.load("/data"); /*!*/
 
 @template:	api_config
