@@ -33,7 +33,7 @@ Start
     <div class='hot-right'>
     	Check also:    	
     	<a class='second' href='https://docs.dhtmlx.com/scheduler/index.html'>Scheduler</a>
-        <a class='second' href='http://scheduler-net.com/'>Scheduler.Net</a>
+        <a class='second' href='https://scheduler-net.com/'>Scheduler.Net</a>
 	</div>
     
     <form method="get" action="search.php">
