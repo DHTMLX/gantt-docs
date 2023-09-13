@@ -71,7 +71,7 @@ the following properties:
 	- **key** - (*string*) the option id. This attribute is compared with the task data property to assign options to tasks
 	- **label** - (*string*) the option label
 - **default_value** - (*any*) the default value of the section's control. Applied only if the input value is underfined	
-- **onchange** - (*function*) specifies the 'onChange' event handler function for the section's control 
+- **onchange** - (*function*) specifies the ['onChange' event handler function](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) for the section's control 
 
 
 Populating control with data
