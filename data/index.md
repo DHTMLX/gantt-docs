@@ -32,7 +32,7 @@ Start
     
     <div class='hot-right'>
     	Check also:    	
-    	<a class='second' href='https://docs.dhtmlx.com/scheduler/index.html'>Scheduler</a>
+    	<a class='second' href='https://docs.dhtmlx.com/scheduler/'>Scheduler</a>
         <a class='second' href='https://scheduler-net.com/'>Scheduler.Net</a>
 	</div>
     
