@@ -18,10 +18,10 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ### Fixes
 
 - Enhancements and corrections in the usage of [WAI-ARIA attributes](desktop/accessibility.md#waiariaattributes) for improved accessibility
-- Fix the issue of decreasing grid width after repaint when [`grid_elastic_columns`](api/gantt_grid_elastic_columns_config.md) config is enabled
+- Fix the issue of decreasing grid's width after repainting when the [`grid_elastic_columns`](api/gantt_grid_elastic_columns_config.md) config is enabled
 - The default number of [`undo_steps`](desktop/undo_redo.md#configuringtheundofunctionality) is increased from 10 to 100
-- The [Export API client](desktop/extensions_list.md#exportservice) is now integrated into the GPL version of Gantt, previously it was included only in PRO versions
-- Add support for https export [server endpoints](desktop/export.md#parametersoftheexportmethods) in the [Node.js version of Gantt](desktop/using_gantt_on_server.md)
+- The [Export API client](desktop/extensions_list.md#exportservice) is now integrated into the GPL version of Gantt, previously it has been included only in PRO versions
+- Add support for the https export [server endpoints](desktop/export.md#parametersoftheexportmethods) in the [Node.js version of Gantt](desktop/using_gantt_on_server.md)
 
 8.0.5
 ----------
