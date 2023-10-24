@@ -21,9 +21,9 @@ Specifying the type of a task in the data set
 ~~~js
 var data = {
 	task:[
-    	{id:1, text:"Project #1",    type:gantt.config.types.project,    open:true},   /*!*/
+    	{id:1, text:"Project #1",    type:"project",    open:true},   /*!*/
 		{id:2, text:"Task #1", 	     start_date:"12-04-2020", duration:3, parent:1},
-		{id:3, text:"Alpha release", type:gantt.config.types.milestone,   parent:1, /*!*/
+		{id:3, text:"Alpha release", type:"milestone",   parent:1, /*!*/
         	start_date:"14-04-2020"},                                                /*!*/
 		{id:4, text:"Task #2", 	     start_date:"17-04-2020", duration:3, parent:1}],
 	links:[]
@@ -51,7 +51,7 @@ var data = {
 //or
 var data = {
  	tasks:[{id:2, text:"Task #1", start_date:"12-04-2020", duration:3, /*!*/
-    		type:gantt.config.types.task}],  /*!*/
+    		type:"task"}],  /*!*/
     links:[]
 };
 ~~~
@@ -89,9 +89,9 @@ Specifying project tasks
 ~~~js
 var data = {
     tasks:[
-    	{id:1, text:"Project #1",    type:gantt.config.types.project,    open:true}, /*!*/
+    	{id:1, text:"Project #1",    type:"project",    open:true}, /*!*/
         {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:gantt.config.types.milestone,   parent:1,
+        {id:3, text:"Alpha release", type:"milestone",   parent:1,
             start_date:"14-04-2020"}],
     links:[]
 };
@@ -130,9 +130,9 @@ Specifying milestones
 ~~~js
 var data = {
     tasks:[
-    	{id:1, text:"Project #1",    type:gantt.config.types.project,    open:true},
+    	{id:1, text:"Project #1",    type:"project",    open:true},
         {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:gantt.config.types.milestone,   parent:1, /*!*/
+        {id:3, text:"Alpha release", type:"milestone",   parent:1, /*!*/
             start_date:"14-04-2020"}],/*!*/
     links:[]
 };
@@ -291,7 +291,7 @@ To customize the look of existing task types, use the api/gantt_type_renderers_c
 <img src="desktop/custom_look.png"/>
 
 ~~~js
-gantt.config.type_renderers[gantt.config.types.project]=function(task, defaultRender){
+gantt.config.type_renderers["project"]=function(task, defaultRender){
 	var main_el = document.createElement("div");
 	main_el.setAttribute(gantt.config.task_attribute, task.id);
 	var size = gantt.getTaskPosition(task);
