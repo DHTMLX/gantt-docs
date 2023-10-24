@@ -721,4 +721,3 @@ And here is how it looks when they are shown (**gantt.config.skip_off_time** is 
 
 You can find detailed examples on how to implement an infinite scroll in the timeline in the [related](desktop/how_to.md#howtohaveaninfinitescrollinthetimeline) article.
 
-@todo: check

@@ -54,7 +54,7 @@ where:
 
 You can apply classes from the api/gantt_link_class_template.md template to this element. 
 
-####Critical links
+#### Critical links
 
 The styling of critical links is defined by adding the **gantt_critical_link** class to the **gantt_task_link** element.
 
@@ -187,6 +187,7 @@ gantt.parse(tasks);
 gantt.getLink(4).color = "green";
 ~~~
 
+{{editor		https://snippet.dhtmlx.com/e5utei5g			Link colors from the "color" property}}
 
 If, at least one of the properties is assigned, the link receives additional class - **"gantt_link_inline_color"**. 
 
