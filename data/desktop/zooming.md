@@ -1,8 +1,7 @@
 Zooming
 ==============
 
-dhtmlxGantt provides a built-in module for handy managing of time scale zooming. In case you want to customize the default zooming behaviour, there is a flexible API that allows 
-you to implement the ability to change the settings of time scale dynamically.
+dhtmlxGantt provides a built-in module for handy managing of time scale zooming. In case you want to customize the default zooming behaviour, there is a [flexible API](desktop/zoom.md) that allows you to implement the ability to change the settings of time scale dynamically.
 
 Built-in zooming module
 -------------------

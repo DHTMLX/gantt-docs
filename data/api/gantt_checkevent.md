@@ -8,7 +8,7 @@ checkEvent
 
 
 @returns:
-isExist	boolean	returns <i>true</i>, if some handler is specified for the event
+- isExist	boolean		returns <i>true</i>, if some handler is specified for the event
 
 @example:
 gantt.attachEvent("onTaskClick", function(id, e) {

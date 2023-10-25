@@ -1,11 +1,11 @@
 Zoom Extension
 ==============
 
-Read details about the Zoom extension in the article desktop/zooming.md. <br> The *zoom* object possesses the following API:
+You can read details about the Zoom extension in the desktop/zooming.md article. The current article provides the API reference of the **zoom** object:
 
-##Methods
+## Methods
 
-- <span class=submethod>**init (zoomConfig): void**</span> - initialize the extension with the provided configuration.
+- <span class=submethod>**init (zoomConfig): void**</span> - initializes the extension with the provided configuration.
     - **_zoomConfig_** - (*object*) - an object with configuration settings that contains the *levels* array of zooming levels and a number of additional properties:
         - **_levels_** - (*ZoomLevels[]*) - required, an array of zooming levels, each of which includes the following properties:
             - **_name_** - (*string*) - the name of the level
@@ -24,7 +24,7 @@ Read details about the Zoom extension in the article desktop/zooming.md. <br> Th
         - **_trigger?_** - (*string | null | undefined*) - the trigger of zooming: "wheel" | null | undefined 
         - **_element?_** - (*HTMLElement | Function*) - a DOM element over which zooming is triggered or a function that returns a DOM element
 
-These are two examples of setting zoom configuration:
+These are two examples of setting the **zoom** configuration:
 
 ~~~js
 var zoomConfig = {
@@ -137,6 +137,13 @@ gantt.ext.zoom.setLevel("year");
 gantt.ext.zoom.setLevel(5);
 ~~~
 
+- <span class=submethod>**getLevels (): void**</span> - allows getting all zooming levels
+
+~~~js
+gantt.ext.zoom.getLevels();
+~~~
+
+Returns an array of zooming levels (*ZoomLevels[]*) passed to the **init()** method that initializes the extension.
 
 - <span class=submethod>**zoomIn (): void**</span> - increases the current zooming level
 
@@ -163,26 +170,28 @@ gantt.ext.zoom.setLevel(zoom.getCurrentLevel() + 1)
 ~~~
 
 - <span class=submethod>**attachEvent (name, handler): string**</span> - attaches an event handler
-    - **_name_** - (*string*) - the name of the event handler
-    - **_handler_** - (*Function*) - the function that will be called when the event fires
+    - **_name_** - (*string*) the name of the event handler
+    - **_handler_** - (*Function*) the function that will be called when the event fires
+
 - <span class=submethod>**detachEvent (id): void**</span> - detaches a handler from an event
-    - **_id_** - (*string*) - the id of the attached event handler
+    - **_id_** - (*string*) the id of the attached event handler
 
+- <span class=submethod>**callEvent (name, params): boolean**</span> - calls an inner event
+    - **_name_** - (*string*) the event's name, case-insensitive
+    - **_params_** - (*array*) optional, an array of the event-related data
 
+- <span class=submethod>**checkEvent (name): boolean**</span> - checks whether an event has some handler(s) specified
+    - **_name_** - (*GanttEventName*)  the event's name
 
+Returns <i>true</i>, if some handler is specified for the event.
 
-##Events
+## Events
 
+- **<span class=eventname>onAfterZoom</span>** -  fires during switching of the zooming level.
+The arguments are: 
 
-- **<span class=eventname>onAfterZoom</span>** -  fires during switching of the zooming level
-
-Arguments: 
-<span class=eventarguments>
-
-- **_level_** - (*number | string*) - the number of the level
-- **_config_** - (*ZoomLevels*) - the config of the level
-</span>
-
+    - **_level_** - (*number | string*) - the number of the level
+    - **_config_** - (*ZoomLevels*) - the config of the level
 
 
 ~~~js
