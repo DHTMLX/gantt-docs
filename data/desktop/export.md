@@ -322,7 +322,7 @@ gantt.exportToPDF({
 [Check the full list of available Gantt skins](desktop/skins.md).
 
 
-##Header/footer of the output file
+## Header/footer of the output file
 
 To add a header/footer to the output PNG or PDF file, use the **header**/**footer** properties in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
 
@@ -339,7 +339,7 @@ gantt.exportToPDF({
 ~~~
 
 
-##Custom style for the output file
+## Custom style for the output file
 
 To apply a custom style for the gantt, provide the stylesheet with your custom CSS classes:
 
@@ -373,9 +373,36 @@ gantt.exportToPDF({
 {{note
 For more examples, check the [How to add resource chart or custom styles in the exported PDF file](desktop/how_to.md#howtoaddresourcechartorcustomstylesintheexportedpdffile) article.}}
 
+### Collecting all styles for the export function
+
+Sometimes styles are specified in different files unavailable for public access, and it is unhandy to include styles from each of them separately. There is a way to collect all styles together for export. 
+
+All styles are stored in the **document.styleSheets** object on an HTML page. If the *style* or *link* element included from the same site is used, you can collect all of them and then specify in the **header**. Check the example below:
+
+~~~js
+const styles = []
+for (el in document.styleSheets) {
+    try {
+        const rules = (document.styleSheets[el]).cssRules;
+        for (rule in rules) {
+            styles.push(rules[rule].cssText)
+        }
+    }
+    catch (e) { }
+}
+
+gantt.exportToPDF({
+    raw: true,
+    header: "<style>" + styles.join(" ") + "</style>"
+});
+~~~ 
+
+{{editor		https://snippet.dhtmlx.com/osbscj62			 Export Gantt with custom icons to PDF}}
 
 
-##Exporting custom markup and styles
+{{editor		https://snippet.dhtmlx.com/duf5ijuv			 Export Gantt with resource load diagram to PDF with no need to specify styles}}
+
+## Exporting custom markup and styles
 
 By default the Gantt chart is exported based on the specified configuration and loaded data, while [custom elements](desktop/baselines.md) and some templates are not exported.
 To export the whole gantt markup as it is, with all custom elements, you can set the **raw:true** property in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods.
