@@ -26,6 +26,8 @@ gantt.scrollLayoutCell("resourceTimeline", 100, 100);
 @template:	api_method
 @descr:
 
+{{editor	https://snippet.dhtmlx.com/0v4mmoxu		Public methods to get the layout cell views and scroll them}}
+
 @relatedapi:
 api/gantt_scrollto.md
 

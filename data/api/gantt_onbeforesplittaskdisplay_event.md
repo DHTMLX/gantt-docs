@@ -27,6 +27,9 @@ gantt.attachEvent("onBeforeSplitTaskDisplay", function (id, task, parent) {
 
 When the split task is rendered, firstly the [onBeforeTaskDisplay](api/gantt_onbeforetaskdisplay_event.md) event is fired for the parent item (a task with *render:"split"*). Then "onBeforeSplitTaskDisplay" is fired for its every subtask. Returning *false* from "onBeforeSplitTaskDisplay" prevents a subtask from being displayed.
 
+{{editor	https://snippet.dhtmlx.com/3q1yd7iz		Filter split tasks}}
+
+
 @changelog: added in v8.0
 
 @related: desktop/split_tasks.md

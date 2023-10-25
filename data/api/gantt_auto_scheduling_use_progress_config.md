@@ -25,6 +25,8 @@ When the property is enabled, the critical path, slack, and auto scheduling algo
 
 3) Completed tasks can't be critical.
 
+{{editor	https://snippet.dhtmlx.com/ju3km1uy		Use progress for auto-scheduling, critical path and slack calculations}}
+
 
 @related:
 desktop/auto_scheduling.md

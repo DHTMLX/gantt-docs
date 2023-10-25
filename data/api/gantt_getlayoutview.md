@@ -30,6 +30,8 @@ The method allows applying some methods to the returned object of the layout vie
 
 To scroll the view to the specified position, apply the api/gantt_scrolllayoutcell.md method.
 
+{{editor	https://snippet.dhtmlx.com/0v4mmoxu		Public methods to get the layout cell views and scroll them}}
+
 @related:
 desktop/layout_config.md
 
