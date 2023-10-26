@@ -49,7 +49,7 @@ gantt.parse(data); /*!*/
 Loading from Server
 ---------------------------
 
-###Client side
+### Client side
 
 To load data from a server, use the api/gantt_load.md method:
 
@@ -87,7 +87,7 @@ The format is specified in the second argument of the method: "json", "xml" or "
 gantt.load("data.xml", "xml");
 ~~~
 
-###Server side
+### Server side
 
 On the server you can have either a static file with data or a script that will collect data from the data source and write it to the response.
 The server-side implementation depends on the framework you want to use. 
@@ -125,7 +125,7 @@ app.get("/data", function(req, res){
 Loading Task Dates
 ---------------------
 
-###Setting task schedule
+### Setting task schedule
 
 There are three ways to define a schedule for a task in the data feed:
 
@@ -173,6 +173,19 @@ gantt.templates.parse_date = function(date) {
 };
 gantt.templates.format_date = function(date) { 
     return date.toISOString();
+};
+~~~
+
+## Changing the date format dynamically
+
+If you need to change the [date format](api/gantt_date_format_config.md) dynamically, it is necessary to modify the [parse_date](api/gantt_parse_date_template.md) template in the following way:
+
+~~~js
+var cfg = gantt.config;
+var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
+
+gantt.templates.parse_date = function(date){
+    return strToDate (date);
 };
 ~~~
 

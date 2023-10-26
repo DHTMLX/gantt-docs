@@ -1,10 +1,6 @@
 format_date
 =============
 
-@todo:
-	check example
-
-
 @short:
 	converts a date object to a date string. Used to send data back to the server
 
@@ -34,6 +30,19 @@ gantt.templates.parse_date = function(date) {
 };
 gantt.templates.format_date = function(date) { 
     return date.toISOString();
+};
+~~~
+
+### Changing the date format dynamically
+
+If you need to change the [date format](api/gantt_date_format_config.md) dynamically, it is necessary to modify the [parse_date](api/gantt_parse_date_template.md) template in the following way:
+
+~~~js
+var cfg = gantt.config;
+var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
+
+gantt.templates.parse_date = function(date){
+    return strToDate (date);
 };
 ~~~
 

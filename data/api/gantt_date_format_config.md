@@ -30,6 +30,19 @@ gantt.templates.format_date = function(date) {
 };
 ~~~
 
+### Changing the date format dynamically
+
+If you need to change the date format dynamically, it is necessary to modify the [parse_date](api/gantt_parse_date_template.md) template in the following way:
+
+~~~js
+var cfg = gantt.config;
+var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
+
+gantt.templates.parse_date = function(date){
+    return strToDate (date);
+};
+~~~
+
 @default:"%d-%m-%Y %H:%i"
 @related:
 	desktop/date_format.md
