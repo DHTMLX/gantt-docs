@@ -47,5 +47,3 @@ api/gantt_load.md
     desktop/date_format.md
     desktop/server_side.md
 
-@todo:
-	check example
