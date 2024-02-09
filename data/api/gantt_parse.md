@@ -83,4 +83,4 @@ gantt.parse({
 });
 ~~~
 
-You can read more [here](desktop/resource_management.html#loadingresourcesandresourceassignments).
+You can read more [here](desktop/resource_management.md#loadingresourcesandresourceassignments).
