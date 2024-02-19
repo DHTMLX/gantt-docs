@@ -24,7 +24,7 @@ gantt.templates.grid_date_format = function(date, column){
 };
 ~~~
 
-**Related sample:** [Changing date in grid dynamically](https://snippet.dhtmlx.com/5/eb8d92554)
+**Related sample:** [Changing date in grid dynamically](https://snippet.dhtmlx.com/qo5s7lfs)
 
 
 @relatedapi:

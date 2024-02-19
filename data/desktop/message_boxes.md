@@ -57,7 +57,7 @@ that overlay the parent application and block its work. You can change the posit
 gantt.message.position = 'bottom';
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/13007a8d2		Message position}}
+{{editor	https://snippet.dhtmlx.com/tte3rx78		Message position}}
 
 There are four possible values for the message position:
 
@@ -351,7 +351,7 @@ There are some rules related to setting the 'type' parameter you should keep in 
 gantt.message({ type:"myCss", text:"some text" });
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/f0c608393	Styling message boxes}}
+{{editor	https://snippet.dhtmlx.com/p950vym3	Styling message boxes}}
 ##Modal Windows and Keyboard Interaction
 
 The keyboard functionality for modal boxes is controlled by the **gantt.message.keyboard** property. Initially, it's set to *true*. 

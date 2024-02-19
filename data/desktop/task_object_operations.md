@@ -46,7 +46,7 @@ To get the duration of a task, use the api/gantt_calculateduration.md method:
 gantt.calculateDuration(new Date(2020,03,30),new Date (2020,04,02)); // ->16
 ~~~
 
-The method won't work after only changing the **duration** parameter and updating the task object. To make it work, you also need to update the **end_date** parameter via the [calculateEndDate](api/gantt_calculateenddate.md) method. [Check the example](https://snippet.dhtmlx.com/5/35bb3f545).
+The method won't work after only changing the **duration** parameter and updating the task object. To make it work, you also need to update the **end_date** parameter via the [calculateEndDate](api/gantt_calculateenddate.md) method. [Check the example](https://snippet.dhtmlx.com/f6keqhy5).
 
 Note, if the api/gantt_work_time_config.md option is enabled, the api/gantt_calculateduration.md method calculates the task's duration in working time. 
 

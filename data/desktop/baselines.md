@@ -171,15 +171,15 @@ Samples of custom content
 
 The following samples show you different ways of applying the [addTaskLayer()](api/gantt_addtasklayer.md) method to enrich the timeline of the Gantt chart with different custom elements:
 
-- <a href="https://snippet.dhtmlx.com/5/94dd464a0" target="_blank">Custom baselines</a>
-- <a href="https://snippet.dhtmlx.com/5/fad73bd9d" target="_blank">Highlighting cells with overdue time</a> 
-- <a href="https://snippet.dhtmlx.com/5/e395c26c3" target="_blank">Highlighting overdue tasks</a>
-- <a href="https://snippet.dhtmlx.com/5/7abb89fe8" target="_blank">Showing the missed deadline for the whole project</a>
-- <a href="https://snippet.dhtmlx.com/5/e9a4bcbb9" target="_blank">Displaying task progress value</a>
-- <a href="https://snippet.dhtmlx.com/5/0c055a26b" target="_blank">Adding custom elements for tasks</a>
-- <a href="https://snippet.dhtmlx.com/5/e3edf6d6b" target="_blank">Draggable baselines</a>
-- <a href="https://snippet.dhtmlx.com/5/6fc3a9f7a" target="_blank">Baselines with a draggable progress knob</a>
-- <a href="https://snippet.dhtmlx.com/5/c3f9c5297" target="_blank">Custom milestones</a>
+- <a href="https://snippet.dhtmlx.com/wv23be05" target="_blank">Custom baselines</a>
+- <a href="https://snippet.dhtmlx.com/bk5m6his" target="_blank">Highlighting cells with overdue time</a> 
+- <a href="https://snippet.dhtmlx.com/p74m3du2" target="_blank">Highlighting overdue tasks</a>
+- <a href="https://snippet.dhtmlx.com/cuc7d4vn" target="_blank">Showing the missed deadline for the whole project</a>
+- <a href="https://snippet.dhtmlx.com/bpupkrce" target="_blank">Displaying task progress value</a>
+- <a href="https://snippet.dhtmlx.com/quqe9s2o" target="_blank">Adding custom elements for tasks</a>
+- <a href="https://snippet.dhtmlx.com/pmuy0lj8" target="_blank">Draggable baselines</a>
+- <a href="https://snippet.dhtmlx.com/38h66bni" target="_blank">Baselines with a draggable progress knob</a>
+- <a href="https://snippet.dhtmlx.com/70kqo4do" target="_blank">Custom milestones</a>
 - <a href="https://snippet.dhtmlx.com/5/7faa7b03a" target="_blank">Recurring tasks</a> 
 
 

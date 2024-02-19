@@ -195,7 +195,7 @@ For example, you can create a Datepicker control on the base of jQuery UI Datepi
 
 ![Custom Datepicker control](desktop/custom_datepicker.png)
 
-{{editor	https://snippet.dhtmlx.com/5/7bc15ccec	3rd party Datepicker control}}
+{{editor	https://snippet.dhtmlx.com/ux7u9fqp	3rd party Datepicker control}}
 
 To use a jQuery Datepicker control in the Gantt Chart:
 
@@ -299,7 +299,7 @@ A Bootstrap Datepicker can be added into the lightbox in the similar way as jQue
 
 ![Bootstrap Datepicker control](desktop/bootstrap_datepicker.png)
 
-{{editor	https://snippet.dhtmlx.com/5/e2008b944	Bootstrap Datepicker control}}
+{{editor	https://snippet.dhtmlx.com/azx7vhli	Bootstrap Datepicker control}}
 
 To use a Bootstrap Datepicker control in the Gantt Chart:
 
@@ -396,7 +396,7 @@ You may also need to add a custom Duration control to the lightbox for specifyin
 
 ![Custom Duration control](desktop/custom_duration_control.png)
 
-{{editor	https://snippet.dhtmlx.com/5/df371dcb4	3rd party Duration control}}
+{{editor	https://snippet.dhtmlx.com/snb64bz6	3rd party Duration control}}
 
 
 Let's consider how to add a custom Duration control on the base of jQuery:

@@ -224,7 +224,7 @@ tasks: {
 }
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/68c831215	Export Gantt with resources to Primavera P6}}
+{{editor	https://snippet.dhtmlx.com/6bfbwp8g	Export Gantt with resources to Primavera P6}}
 
 - **server** - (string) the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**.
 

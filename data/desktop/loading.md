@@ -291,7 +291,7 @@ By default, the end date of this task should be displayed as April 3rd, 2020 (`0
 But if you apply the [task_end_date](api/gantt_task_end_date_template.md)
 template, the same task will be finished on April 2nd, 2020:
 
-- [Live demo: Inclusive end date format](https://snippet.dhtmlx.com/5/f2c801d3d)
+- [Live demo: Inclusive end date format](https://snippet.dhtmlx.com/t1k1rwo7)
 
 <img  src="api/task_end_date_template.png"/>
 
@@ -373,7 +373,7 @@ gantt.templates.grid_date_format = function(date, column){
 }
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/b9a3d78bc	Inclusive end date editor}}
+{{editor	https://snippet.dhtmlx.com/ds28tk3c	Inclusive end date editor}}
 
 **2b\)** If other parts of the application require the end dates to be stored in the "inclusive" format -  *i.e. a task that starts on April 2nd, 2020 and lasts for one day needs to be stored with the start_date: "02-04-2022", end_date: "02-04-2022"* - you have to implement additional processing of the end dates, namely:
 

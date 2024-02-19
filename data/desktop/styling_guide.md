@@ -82,7 +82,7 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 
 <img src="desktop/custom_elements_grid_header.png">
 
-{{editor 		https://snippet.dhtmlx.com/5/43a01395c			Custom Elements in Grid Header}}
+{{editor 		https://snippet.dhtmlx.com/8jilpcrg			Custom Elements in Grid Header}}
 
 #### Icons and images in the grid header
 
@@ -161,7 +161,7 @@ You can highlight the grid row on hover by applying the following style rules:
 
 <img src="desktop/grid_row_hover_color.png">
 
-{{editor	https://snippet.dhtmlx.com/5/d4f9e7f02	Coloring Grid Rows on Hover}}
+{{editor	https://snippet.dhtmlx.com/730ig4ck	Coloring Grid Rows on Hover}}
 
 <h3 id="customizationgridcolumns">Customization of the grid columns</h3>
 
@@ -238,7 +238,7 @@ gantt.init("gantt_here");
 
 <img src="desktop/truncate_text.png">
 
-{{editor	https://snippet.dhtmlx.com/5/508ff6e7e		Truncate long text with ellipsis}}
+{{editor	https://snippet.dhtmlx.com/d82twxd8		Truncate long text with ellipsis}}
 
 #### Multiline text in grid cells
 
@@ -592,7 +592,7 @@ It is possible to modify the color of a link on hover via CSS:
 }
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/3f2cca8a8	Link color on hover}}
+{{editor	https://snippet.dhtmlx.com/z3friavt	Link color on hover}}
 
 <img src="desktop/link_hover_color.png">
 
@@ -628,7 +628,7 @@ While there are lightboxes for editing and styling tasks bars, there is no built
 
 <img src="desktop/link_edit_ui.png">
 
-{{editor	https://snippet.dhtmlx.com/5/7c812e5bd		Custom UI for Editing Link Values}}
+{{editor	https://snippet.dhtmlx.com/2208ic0t		Custom UI for Editing Link Values}}
 
 Styling Quick Info Popup
 -------------------

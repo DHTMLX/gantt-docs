@@ -135,7 +135,7 @@ gantt.templates.grid_date_format = function(date, column){
 }
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/b9a3d78bc	Inclusive end date editor}}
+{{editor	https://snippet.dhtmlx.com/ds28tk3c	Inclusive end date editor}}
 
 For more details on formatting end dates, see the [Task end date display & Inclusive end dates](desktop/loading.md#taskenddatedisplayampinclusiveenddates) article.
 
@@ -402,7 +402,7 @@ var editors = {
 
 A good example of such a control is a built-in predecessor editor. You can find its simplified implementation in the related sample:
 
-{{editor	https://snippet.dhtmlx.com/5/bf98a4228	Built-in predecessor editor}}
+{{editor	https://snippet.dhtmlx.com/xz6192wd	Built-in predecessor editor}}
 
 
 Inline editing modes

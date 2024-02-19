@@ -117,7 +117,7 @@ gantt.config.columns = [
 ];
 ~~~
 
-Otherwise, the Gantt data won't be exported. [Check the related example](https://snippet.dhtmlx.com/5/e325f5ff0).
+Otherwise, the Gantt data won't be exported. [Check the related example](https://snippet.dhtmlx.com/q1lhyvt3).
 
 ###Setting a custom data source to export
 
@@ -150,7 +150,7 @@ gantt.exportToExcel({
 })
 ~~~
 
-{{editor https://snippet.dhtmlx.com/5/ba21cf5e8		Export colors of tasks}}
+{{editor https://snippet.dhtmlx.com/t2znjrfj		Export colors of tasks}}
 
 Import from Excel
 -------------------

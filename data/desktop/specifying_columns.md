@@ -141,7 +141,7 @@ gantt.config.min_grid_column_width = 30; // the grid can be resized to 90 px
 gantt.init("gantt_here");
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/80a8df4b0	Minimal grid width}}
+{{editor	https://snippet.dhtmlx.com/zdza8tws	Minimal grid width}}
 
 Note, that the minimal width of the grid during resizing also depends on the minimal width of the 'add' column (44 by default). To be able to resize the grid to the value smaller than 44 px, specify the [min_width](api/gantt_columns_config.md) option in the object of the 'add' column:
 
