@@ -26,7 +26,7 @@ You can have a look at the video guide that shows how to create a Gantt chart wi
 Prerequisites
 -------------------
 
-Install [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli) if you don’t have it. See [this article](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm) for installation guidance.
+Install [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli) if you don't have it. See [this article](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm) for installation guidance.
 
 Step 1. Creating a project
 ----------------------------
@@ -51,7 +51,7 @@ Create a Salesforce DX project via CLI:
 
 ~~~
 $ cd ~/salesforce
-$ sfdx force:project:create -n gantt-salesforce-app
+$ sfdx project generate -n gantt-salesforce-app  
     target dir = C:\Users\User\salesforce
         create gantt-salesforce-app\config\project-scratch-def.json
         create gantt-salesforce-app\README.md
@@ -86,9 +86,9 @@ Step 2. Authorization
 [Authorize an Org](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm) using the Web Server Flow:
 
 ~~~js
-$ sfdx force:auth:web:login --setdefaultdevhubusername
+$ sfdx org login web -d
 
-Successfully authorized ...@...com with org ID ...
+Successfully authorized ... with org ID ...
 ~~~
 
 Update your project configuration file (*sfdx-project.json*). Set the "sfdcLoginUrl" parameter to your "My Domain URL". You can find your org’s "My Domain URL" on the "My Domain" setup page. For example:
@@ -103,9 +103,22 @@ Update your project configuration file (*sfdx-project.json*). Set the "sfdcLogin
 Create a Scratch Org:
 
 ~~~js
-$ sfdx force:org:create -f config/project-scratch-def.json -s
+$ sfdx org create scratch -f config/project-scratch-def.json -d
 
-Successfully created scratch org: ..., username: test-...@example.com
+Creating Scratch Org...
+RequestId: 2SR5j0000006JhCGAU 
+(https://xbsoftware2-dev-ed.my.salesforce.com/2SR5j0000006JhCGAU)
+OrgId: 00DH40000000s0D
+Username: test-tc0telfqhudt@example.com
+✓ Prepare Request
+✓ Send Request
+✓ Wait For Org
+✓ Available
+✓ Authenticate
+✓ Deploy Settings
+Done
+
+Your scratch org is ready.
 ~~~
 
 Step 3. Adding Gantt to Salesforce
@@ -115,7 +128,7 @@ In order to start using the library, we need to upload it inside Salesforce as a
 Resource. Thus, open your scratch org:
 
 ~~~js
-$ sfdx force:org:open
+$ sfdx org open
 ~~~
 
 Now, open the "Static Resources" tab and press the "New" button
@@ -249,9 +262,10 @@ Step 5. Creating a Lightning Web Component
 To create a Lightning Web Component, run the command:
 
 ~~~js
-$ sfdx force:lightning:component:create --type lwc -n gantt -d force-app/main/default/lwc
+$ sfdx lightning generate component --type lwc -n gantt -d force-app/main/default/lwc
 
-target dir = C:\Users\User\source\salesforce\gantt-salesforce-app\force-app\main\default\lwc
+target dir = 
+C:\Users\User\source\salesforce\gantt-salesforce-app\force-app\main\default\lwc
    create force-app\main\default\lwc\gantt\gantt.js
    create force-app\main\default\lwc\gantt\gantt.html
    create force-app\main\default\lwc\gantt\gantt.js-meta.xml
@@ -447,10 +461,10 @@ export default class GanttView extends LightningElement {
 Step 6. Creating an Apex class
 ----------------------------------
 
-The next step is to create a class that will make possible the interactions between the Lighting Component and our data model.
+The next step is to create a class that will enable interactions between the Lighting Component and our data model.
 
 ~~~js
-$ sfdx force:apex:class:create -n GanttData -d force-app/main/default/classes
+$ sfdx apex generate class -n GanttData -d force-app/main/default/classes
 
 target dir = 
 C:\Users\User\salesforce\gantt-salesforce-app\force-app\main\default\classes
@@ -486,13 +500,13 @@ public with sharing class GanttData {
 Pull Source from the Scratch Org to Your Project
 
 ~~~js
-$ sfdx force:source:pull
+$ sfdx project retrieve start
 ~~~
 
 and then push the sources to the Scratch Org
 
 ~~~js
-$ sfdx force:source:push
+$ sfdx project deploy start
 ~~~
 
 Step 7. Creating Lightning Page
