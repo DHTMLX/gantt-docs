@@ -27,7 +27,7 @@ To get the task object before the changes are applied, you need to use the event
 
 If the changes are made via API, you may get the task object before the code, which modifies the task, is executed. Check the example where you may modify a task in different ways (for instance, change the task dates):
 
-{{editor	https://snippet.dhtmlx.com/5/6d5ccd13a	Updating a task}}
+{{editor	https://snippet.dhtmlx.com/9xy8wr2a	Updating a task}}
 
 After comparison, you will notice that the events, which fire right before you modify the task, return the old task object, while the **onBeforeTaskUpdate** event returns a new object of the task.
 

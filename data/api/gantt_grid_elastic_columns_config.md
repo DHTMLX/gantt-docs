@@ -30,7 +30,7 @@ To make columns dependent on the grid size, set **grid_elastic_columns** to *tru
 gantt.config.grid_elastic_columns = true;
 ~~~
 
-{{editor https://snippet.dhtmlx.com/5/5f524d22e		Elastic columns of Grid}}
+{{editor https://snippet.dhtmlx.com/k0qqj5w5		Elastic columns of Grid}}
 
 Now, if the width of the grid is changed, the width of columns will be also resized, and vice versa:
 

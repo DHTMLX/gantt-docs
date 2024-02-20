@@ -68,4 +68,4 @@ var task = {
 gantt.updateTask(2,task);
 ~~~
 
-{{editor https://snippet.dhtmlx.com/5/a88813dbd		Updating task}}
+{{editor https://snippet.dhtmlx.com/fnfpoiik		Updating task}}

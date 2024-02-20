@@ -42,7 +42,7 @@ gantt.attachEvent("onContextMenu", function (taskId, linkId, event) {
 Don't forget to include either [files of DHTMLX Menu or DHTMLX Suite](https://docs.dhtmlx.com/menu__how_to_start.html) on the page. Otherwise, the example won't work.
 <br>
 
-Check [another example](https://snippet.dhtmlx.com/5/8ff534c34) if you need to add a custom context menu in pure JavaScript.
+Check [another example](https://snippet.dhtmlx.com/xuvxhjbc) if you need to add a custom context menu in pure JavaScript.
 
 @relatedsample:
     04_customization/10_context_menu.html

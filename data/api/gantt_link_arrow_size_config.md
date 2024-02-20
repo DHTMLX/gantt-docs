@@ -16,4 +16,4 @@ To change it, you need to use CSS.
 
 Check the example to find the styles for different skins: 
 
-{{editor	https://snippet.dhtmlx.com/5/f0c3e794f	Skins}}
+{{editor	https://snippet.dhtmlx.com/hb0be53m	Skins}}

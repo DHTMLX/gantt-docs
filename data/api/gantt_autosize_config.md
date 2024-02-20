@@ -73,7 +73,7 @@ function showTask(id){
 }
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/71a70c1d0	Scrolling to the specified element}}
+{{editor	https://snippet.dhtmlx.com/or73u6a5	Scrolling to the specified element}}
 
 @relatedapi: 
 	api/gantt_autosize_min_width_config.md

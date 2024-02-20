@@ -39,7 +39,7 @@ By default, **maxCapacity** is 24 for all resources. It means that if you return
 
 But there is the ability to configure **maxCapacity** for all histogram at once and for each resource separately. Check the example below:
 
-{{editor	https://snippet.dhtmlx.com/5/723939de5	Configuring maxCapacity}}
+{{editor	https://snippet.dhtmlx.com/glnqcsgq	Configuring maxCapacity}}
 
 @edition:pro
 

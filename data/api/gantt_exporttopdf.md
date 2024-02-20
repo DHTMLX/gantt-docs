@@ -135,7 +135,7 @@ for (let i = 0; i < total_width; i += width) {
 }
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/d8462d9e6	Export to the file of defined sizes}}
+{{editor	https://snippet.dhtmlx.com/zbhc506m	Export to the file of defined sizes}}
 
 In case you want to export Gantt to the specific format ('A4', for example), note, that the file format is defined in millimeters but the size in HTML is specified in pixels. Therefore, you need to convert the shift value from millimeters to pixels. 
 
@@ -144,7 +144,7 @@ const widthMM = 297;
 const width = widthMM / (25.4 inch / 144 PDF PPI);
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/a4a4e62e3	Export to the file of defined format}}
+{{editor	https://snippet.dhtmlx.com/qt54zfuw	Export to the file of defined format}}
 
 <br>
 **Note**, if you export the multi-page Gantt but get only one PDF file, it means that the browser blocks the pop-ups because the function opens them simultaneously. 

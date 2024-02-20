@@ -120,7 +120,7 @@ gantt.config.lightbox.sections = [
 gantt.init("gantt_here");
 ~~~
 
-{{editor https://snippet.dhtmlx.com/5/9a68c1292		Aligning Lightbox}}
+{{editor https://snippet.dhtmlx.com/hf45hvr3		Aligning Lightbox}}
 
 ## Button in the section header 
 

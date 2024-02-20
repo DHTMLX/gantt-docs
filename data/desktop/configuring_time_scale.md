@@ -386,7 +386,7 @@ gantt.config.scales = [
 ];
 ~~~
 
-{{editor    https://snippet.dhtmlx.com/5/997ef604d	Styling of cells of the time scale}}
+{{editor    https://snippet.dhtmlx.com/tadcjjk4	Styling of cells of the time scale}}
 
 In case the **css** property is not specified in the config of the scales, you can define the [scale_cell_class](api/gantt_scale_cell_class_template.md) template to apply the CSS class to the first time scale of the array of the **scales** config.
 
@@ -412,7 +412,7 @@ gantt.templates.scale_cell_class = function(date) {
 };
 ~~~
 
-{{editor    https://snippet.dhtmlx.com/5/440576e8d	Styling of the first time scale}}
+{{editor    https://snippet.dhtmlx.com/vovv2wde	Styling of the first time scale}}
 
 To apply the [scale_cell_class](api/gantt_scale_cell_class_template.md) template to all scales of the time scale, set the api/gantt_inherit_scale_class_config.md property to *true*.
 
@@ -433,7 +433,7 @@ gantt.templates.scale_cell_class = function(date) {
 gantt.config.inherit_scale_class = true; /*!*/
 ~~~
 
-{{editor    https://snippet.dhtmlx.com/5/98d26ef67	Styling of all scales}}
+{{editor    https://snippet.dhtmlx.com/v6p55wdz	Styling of all scales}}
 
 Note that while using [work time calculations](desktop/working_time.md), you can use api/gantt_isworktime.md instead of hardcoded values:
 

@@ -52,7 +52,7 @@ Here is an example of applying common background and font color for the headers 
 
 <img src="desktop/grid_header.png"/>
 
-{{editor 		https://snippet.dhtmlx.com/5/4b8e365e7			Styling grid and timeline headers}}
+{{editor 		https://snippet.dhtmlx.com/akr9tz4h			Styling grid and timeline headers}}
 
 <h3 id="scale_height">Scale height</h3>
 
@@ -93,7 +93,7 @@ gantt.config.columns = [
 
 <img src="desktop/header_cell.png"/>
 
-{{editor 		https://snippet.dhtmlx.com/5/013219d9b			Styling a particular cell in the grid header}}
+{{editor 		https://snippet.dhtmlx.com/pf5q56kl			Styling a particular cell in the grid header}}
 
 - **.gantt_grid_head_cell[data-column-index='1']** - selects a specific column by its index;
 
@@ -123,7 +123,7 @@ To color every other row of the grid, you need to specify CSS styles for the **.
 
 <img src="desktop/odd_row_style.png"/>
 
-{{editor 		https://snippet.dhtmlx.com/5/e3773648c			Styling every other row in grid}}
+{{editor 		https://snippet.dhtmlx.com/ayr3sgov			Styling every other row in grid}}
 
 You can see that the even rows are highlighted on the screen instead of the odd ones.
 But if you check the [indexes of rows](api/gantt_gettaskindex.md), you will see that the style is applied to the rows that have odd indexes (1, 3, 5, etc.). 
@@ -140,7 +140,7 @@ You can style a selected row in the grid with the help of the **.gantt_row.gantt
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/9bdd40782			Styling selected row}}
+{{editor 		https://snippet.dhtmlx.com/c177qsgx			Styling selected row}}
 
 #### Task rows, project rows, and milestones
 
@@ -159,7 +159,7 @@ For instance:
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/9d0f8ab3f			Styling rows of project tasks}}
+{{editor 		https://snippet.dhtmlx.com/g5oxrq5v			Styling rows of project tasks}}
 
 #### Particular rows
 
@@ -183,7 +183,7 @@ gantt.templates.grid_row_class = function(start, end, task){
 };
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/f95395843			Styling a particular row in the grid}}
+{{editor 		https://snippet.dhtmlx.com/9o8pbq8z			Styling a particular row in the grid}}
 
 #### Row height
 
@@ -218,7 +218,7 @@ You can apply CSS styles to a specific column in two ways:
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/fc0a24e88			Styling a column in grid}}
+{{editor 		https://snippet.dhtmlx.com/hq5q2hpz			Styling a column in grid}}
 
 Note, that **.gantt_grid_head_cell** and **.gantt_cell** use different data attributes: `data-column-id` and `data-column-name` respectively. This inconsistency in the CSS rules of Gantt will be fixed in one of the future versions.
 
@@ -288,7 +288,7 @@ For example, changing of the font color and borders of the time scale looks like
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/abf267d53			Styling text and borders of the time scale}}
+{{editor 		https://snippet.dhtmlx.com/qt0ttw64			Styling text and borders of the time scale}}
 
 
 <h3 id="time_scales">Time scales</h3>
@@ -307,7 +307,7 @@ An example of setting background color of the time scale:
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/5a7d1f0aa			Background color of the time scale}} 
+{{editor 		https://snippet.dhtmlx.com/jl1k7kxr			Background color of the time scale}} 
 
 By default, there are no CSS classes to target time scales by units, but you can add such classes using the [scale_row_class](api/gantt_scale_row_class_template.md) template.
 
@@ -335,7 +335,7 @@ gantt.templates.scale_row_class = function(scale){
 };
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/5eabe4823			Styling different time scales}}
+{{editor 		https://snippet.dhtmlx.com/g6ogfvvb			Styling different time scales}}
 
 <h3 id="timescale_cells">Cells of the time scale</h3>
 
@@ -349,7 +349,7 @@ For example, you can change the font color and borders of the cells:
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/3532e30d7			Styling text and borders of the scale cells}}
+{{editor 		https://snippet.dhtmlx.com/dcfo1yek			Styling text and borders of the scale cells}}
 
 In order to [color specific dates](desktop/configuring_time_scale.md#styling) of the time scale, use the **css** property of the [gantt.config.scales](api/gantt_scales_config.md) object, as it's shown below:
 
@@ -417,7 +417,7 @@ An example of changing the border style of the bar is given below:
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/a3a5bb2f5			Styling borders of the task bars}}
+{{editor 		https://snippet.dhtmlx.com/c24kdh89			Styling borders of the task bars}}
 
 <br>
 To change the color of the task bars you should implement the following two steps:
@@ -465,7 +465,7 @@ An example of styling a selected bar:
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/ed520b1a9			Styling selected bar}}
+{{editor 		https://snippet.dhtmlx.com/9c6w6o78			Styling selected bar}}
 
 Tasks of a [custom type](desktop/task_types.md#creatingacustomtype) will have the appropriate class name:
 
@@ -558,7 +558,7 @@ You can change the look and feel of the task and progress bars by applying CSS r
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/13a0a0e28			Background, foreground, and progress colors. Styling Project and Milestone bars.}}
+{{editor 		https://snippet.dhtmlx.com/f2rmc1oc			Background, foreground, and progress colors. Styling Project and Milestone bars.}}
 
 #### Custom color for particular task bars
 
@@ -587,7 +587,7 @@ and use this custom class in the selector:
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/67f3a26bb			Styling particular task bars}}
+{{editor 		https://snippet.dhtmlx.com/yyoe31vo			Styling particular task bars}}
 
 #### Highlighting area inside the task bar
 
@@ -659,7 +659,7 @@ Here is an example of how you can color the elements of the dependency links:
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/8d0941797			Styling links}}
+{{editor 		https://snippet.dhtmlx.com/unlr4jbw			Styling links}}
 
 Thickness of the link line is set via the [gantt.config.link_line_width](api/gantt_link_line_width_config.md) config.
 
@@ -679,7 +679,7 @@ An example of disabling resizer of the start date:
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/8a25fe936			Disabling resizer of the start date}}
+{{editor 		https://snippet.dhtmlx.com/x8lpcu2d			Disabling resizer of the start date}}
 
 An example of disabling resizer of the end date:
 
@@ -689,7 +689,7 @@ An example of disabling resizer of the end date:
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/9e8c0a0aa			Disabling resizer of the end date}}
+{{editor 		https://snippet.dhtmlx.com/9gtsg4s8			Disabling resizer of the end date}}
 
 <h3 id="link_control">Link control</h3>
 
@@ -739,7 +739,7 @@ You can easily specify custom colors for the selected row, for instance:
 }
 ~~~
 
-{{editor 		https://snippet.dhtmlx.com/5/91cf22b1d			Styling selected row}}
+{{editor 		https://snippet.dhtmlx.com/y393xnmv			Styling selected row}}
 
 #### Background cells
 

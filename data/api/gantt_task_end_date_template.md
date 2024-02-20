@@ -36,7 +36,7 @@ By default, the end date of this task will be displayed as April 3rd, 2020 (`03-
 
 You can change the format of the end date to April 2nd, 2020:
 
-- [Live demo: Inclusive end date format](https://snippet.dhtmlx.com/5/f2c801d3d)
+- [Live demo: Inclusive end date format](https://snippet.dhtmlx.com/t1k1rwo7)
 
 <img  src="api/task_end_date_template.png"/>
 

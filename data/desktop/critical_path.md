@@ -252,7 +252,7 @@ It is also possible to highlight tasks and links manually:
 - If you return "gantt_critical_task" in the [task_class](api/gantt_task_class_template.md) template, the task will be highlighted as a critical one.
 - If you return "gantt_critical_link" in the [link_class](api/gantt_link_class_template.md) template, the link will be highlighted as a critical one.
 
-**Related sample:** [Custom critical path per project](https://snippet.dhtmlx.com/5/eb05a1f90)
+**Related sample:** [Custom critical path per project](https://snippet.dhtmlx.com/jd4dyc5p)
 
 Setting lag and lead times between tasks
 ---------------------------------

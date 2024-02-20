@@ -121,7 +121,7 @@ gantt.config.columns = [
 ];
 ~~~
 
-Otherwise, the Gantt data won't be exported. [Check the related example](https://snippet.dhtmlx.com/5/e325f5ff0).
+Otherwise, the Gantt data won't be exported. [Check the related example](https://snippet.dhtmlx.com/q1lhyvt3).
 
 @related:
 desktop/excel.md
