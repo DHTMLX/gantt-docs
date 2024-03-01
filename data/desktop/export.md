@@ -419,5 +419,29 @@ Pay attention that the use of this mode increases the size of the API request. L
 In such a case you need to have an [export service](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) installed locally and increase the request size. <br>
 Check [system requirements](desktop/export_requirements.md) to install export services locally.
 
+## Exporting HTML elements
+ 
+While exporting the Gantt chart to the PNG and PDF formats, you should note that export of HTML elements is limited due to their possible insecurity. 
 
+There are HTML elements which are not entirely allowed for export, such as `<canvas>`, `<svg>`, `<script>` and images with the *src* attribute that contains a Base64 image. However, there are safe ways of exporting images in the SVG and Base64 formats:
 
+- you can use an `<img>` element with the *src* attribute that contains a URL of the image in the SVG format (suitable for the PNG and JPG formats, doesn't work for the Base64 format), e.g.:
+
+~~~html
+<img src=https://www.svgrepo.com/download/530597/hat.svg>
+~~~
+
+- you can use style elements, such as *background* or *background-image* and specify the `url` attribute with the link to the image or an image in the Base64 format as its value (suitable for the PNG/JPG/SVG formats)
+
+~~~css
+.red {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABmJLR0QA/wD/AP+gvaeTAAAAB3RJTUUH1ggDCwMADQ4NnwAAAFVJREFUGJWNkMEJADEIBEcbSDkXUnfSgnBVeZ8LSAjiwjyEQXSFEIcHGP9oAi+H0Bymgx9MhxbFdZE2a0s9kTZdw01ZhhYkABSwgmf1Z6r1SNyfFf4BZ+ZUExcNUQUAAAAASUVORK5CYII=") 100%/contain no-repeat;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
+~~~
+
+{{editor	https://snippet.dhtmlx.com/hj6w4dk3?text=gantt 	Exporting safe and insecure HTML elements to PDF}}
+
+If you have an export module and you need to export HTML elements that are not supported by our online export server, you can submit a support request to get instructions on the changes you need to make in your module to remove restrictions. However, you should take into account that your server will be vulnerable to XSS-attacks.
