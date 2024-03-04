@@ -31,7 +31,7 @@ To add the **parent** control to the lightbox, follow these steps:
 ~~~js
 gantt.config.lightbox.sections = [
 	{name:"description", height:38, map_to:"text", type:"textarea",focus:true},
-    {name:"type", type:"typeselect", map_to:"type"},  /*!*/
+   	{name:"parent", type:"parent", allow_root:"true", root_label:"No parent"},   /*!*/
     {name:"time", height:72, type:"duration", map_to:"auto"}
 ];
 ~~~

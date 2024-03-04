@@ -74,7 +74,7 @@ To do that, you need to use the *object* parameter of the *addTaskLayer()* metho
 ~~~js
 gantt.addTaskLayer({
     renderer: {
-        render: function (task, timeline, viewport) {
+        render: function(task, timeline, viewport){
             ...
             return  HTMLElement
         },
@@ -123,11 +123,11 @@ The **renderer** object of the *addTaskLayer()* method provides a possibility to
 ~~~js
 gantt.addTaskLayer({
     renderer: {
-        render: function (task, timeline, viewport) {
+        render: function(task, timeline, viewport){
             ...
             return  HTMLElement
         },
-        update: function (task, node, timeline, viewport) {
+        update: function(task, node, timeline, viewport){
             ...
             // put the currently visible part of the element into node inner html
         },
@@ -143,6 +143,33 @@ gantt.addTaskLayer({
 
 The **update** method is called after the [onGanttScroll](api/gantt_onganttscroll_event.md) event is fired. It provides a task node (created by the **render** method initially) and a current viewport.
 
+### Rendering visible tasks rows
+
+Since v7.1.8 the **renderer** object of the *addTaskLayer()* method allows getting a visible range of tasks rows with the **getVisibleRange** function: 
+
+~~~js
+gantt.addTaskLayer({
+    renderer: {
+        render: function(task, timeline, viewport){
+            ...
+            return  HTMLElement
+        },
+        getVisibleRange: function(){
+        	...
+            return { 
+  				start: indexStart,
+  				end: indexEnd
+			}
+        }
+	}
+});     
+~~~
+
+- **getVisibleRange** - a function that returns an object with the start and end indexes of visible tasks rows. 
+If a task is out of the specified range, an additional layer is not rendered for it. 
+
+If the **getVisibleRange** function returns *false* instead of an object, Gantt supposes that all the range of tasks is used and an additional layer will be rendered even if a task is not visible on the screen.
+
 ### Element render callback
 
 The **renderer** object of the *addTaskLayer()* method provides the **onrender** callback:
@@ -150,7 +177,7 @@ The **renderer** object of the *addTaskLayer()* method provides the **onrender**
 ~~~js
 gantt.addTaskLayer({
     renderer: {
-        render: function (task, timeline, viewport) {
+        render: function(task, timeline, viewport){
             ...
             return  HTMLElement
         },

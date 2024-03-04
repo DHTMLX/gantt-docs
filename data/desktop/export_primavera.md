@@ -106,7 +106,7 @@ The list of supported properties can be found [here](desktop/properties.md). The
 ~~~js
 gantt.exportToPrimaveraP6({
    tasks: {
-        'StartVariance': function (task) {
+		'StartVariance': function (task) {
            if (task.startVariance)
                return task.startVariance;
            else
@@ -115,10 +115,10 @@ gantt.exportToPrimaveraP6({
         'PercentWorkComplete': function (task) {
            return (task.progress + 0.1);
         },
-       'Custom': function (task) {
+        'Custom': function (task) {
            return 'Custom value';
         },
-       '    Custom 2': 'My Custom value'
+        'Custom 2': 'My Custom value'
     }
 });
 ~~~

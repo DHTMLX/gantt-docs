@@ -17,7 +17,14 @@ gantt.templates.task_unscheduled_time = function(task){
 
 @template:	api_template
 @descr:
-by default, returns an empty string 
+By default, returns an empty string.
+
+If a task is [unscheduled](desktop/unscheduled_tasks.md), i.e. has the `unscheduled:true` property in its configuraion object, all its dates will be rendered with empty rows. 
+Check the example below:
+
+{{editor	https://snippet.dhtmlx.com/t6skfgjx		Rendering dates in unscheduled tasks}}
+
+In case you need to show some dates for an unscheduled task, you can do it with the help of the api/gantt_date_grid_template.md template.
 
 @related:
 desktop/crud_task.md#addingunscheduledtasks

@@ -1,13 +1,13 @@
 date_grid
 =============
 @short:
-	specifies the content of start date or end date columns in grid
+	specifies the content of columns that show dates (return `Date` values) in grid
 	
 
 @params:
-- date			Date		the date which needs formatting
+- date			Date			the date which needs formatting
 - task			Task 			the task object
-- column			string 			the name of the column that called the template
+- column		string 			the name of the column that called the template
 
 @example:
 gantt.templates.date_grid = function(date, task, column){
@@ -28,3 +28,6 @@ gantt.templates.date_grid = function(date, task, column){
 	api/gantt_grid_date_format_template.md
 @related:
 	desktop/table_templates.md
+    
+@relatedsample:
+https://snippet.dhtmlx.com/87j43fc3		Gantt. Setting the format of columns with dates in grid

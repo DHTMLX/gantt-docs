@@ -27,4 +27,4 @@ The event is blockable. Returning false will stop further processing of the AJAX
 desktop/server_side.md
 
 
-@relatedsample: http://snippet.dhtmlx.com/5/9596ea969	Error from the server
+@relatedsample: https://snippet.dhtmlx.com/5/9596ea969	Error from the server

@@ -5,7 +5,7 @@ Templates of the Grid
 	<tbody>
     	<tr>
 			<td class="webixdoc_links0">api/gantt_date_grid_template.md</td>
-			<td>specifies the content of start date or end date columns in grid</td>
+			<td>specifies the content of columns that show dates (return `Date` values) in grid</td>
 		</tr>
 		<tr>
 			<td class="webixdoc_links0">api/gantt_grid_blank_template.md</td>
@@ -13,7 +13,7 @@ Templates of the Grid
 		</tr>
         <tr>
 			<td class="webixdoc_links0">api/gantt_grid_date_format_template.md</td>
-			<td>specifies the format of dates in the "Start time" column</td>
+			<td>specifies the format of dates for the columns that show dates (return the `Date` values)</td>
 		</tr>
 		<tr>
 			<td class="webixdoc_links0">api/gantt_grid_file_template.md</td>
