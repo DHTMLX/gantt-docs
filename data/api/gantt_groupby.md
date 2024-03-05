@@ -64,7 +64,6 @@ gantt.groupBy(false);
 {{note This method is defined in the **grouping** extension, so you need to activate the [grouping](desktop/extensions_list.md#grouping) plugin. Read the details in the desktop/grouping.md article.}}
 
 
-
 The grouping configuration object has the following properties:
 
 - **relation_property** - (<i>string</i>) a property of a task object that will be used to group items. Mandatory.
@@ -77,9 +76,11 @@ The grouping configuration object has the following properties:
 
 Please, note:
 
-- Each 'group' object must contain at least 2 properties (but any number of additional ones): the id and text description (specified by the 'group_id', 'group_text' parameters respectively).
+- Each 'group' object must contain at least 2 properties (but any number of additional ones): the id and text description, specified by the 'group_id' and 'group_text' parameters respectively. By default these parameters have the *key* and *label* values, correspondingly. You can use any other values for these parameters (**except for "id"**), provided that they are specified in the group array. 
+{{note The "id" value is not allowed, since when Gantt is grouping tasks, it creates virtual group tasks and adds the 'group_id' and 'group_text' parameters into these tasks. 
+It means that by default the grouped tasks will have the 'key' and 'value' properties. At the same time, each task already has the 'id' property and changing the default ids of tasks will lead to the breakage of the tree structure.}}
 - The 'project' tasks from the original dataset won't be displayed in the grouping mode, however they will be available via api.
-- Group items are added into the data set as items with the type 'project' and the 'readonly' property enabled. They can be detected by the '$virtual' property, and handled as a regular data items:
+- Group items are added into the data set as items with the type 'project' and the 'readonly' property enabled. They can be detected by the '$virtual' property, and handled as regular data items:
 
 ~~~js
 gantt.templates.task_class=function(start, end, task){
