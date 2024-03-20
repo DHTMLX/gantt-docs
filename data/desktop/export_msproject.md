@@ -524,6 +524,8 @@ gantt.exportToMSProject({
 });
 ~~~
 
+{{editor	https://snippet.dhtmlx.com/92fje5jq		Export to MSProject without the "work_time" settings}}
+
 2\. Secondly, your project may have the [work_time](desktop/working_time.md) setting disabled:
 
 ~~~js
@@ -558,6 +560,8 @@ The only workaround for it would be to switch [duration_unit](api__gantt_duratio
 ~~~js
 gantt.config.duration_unit = "hour";
 ~~~
+
+{{editor	https://snippet.dhtmlx.com/92fje5jq		Export to MSProject without the "work_time" settings}}
 
 
 @index:
