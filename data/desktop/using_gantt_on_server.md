@@ -14,7 +14,7 @@ DHTMLX Gantt for Node.js has the same functionality as Commercial/Enterprise/Ult
 Terms of using
 --------------
 
-Node.js server module of DHTMLX Gantt is provided as an add-on package to the client-side version of Gantt. Thus, you can acquire the Node.js build while buying Gantt under any commercial license ([Individual](https://dhtmlx.com/docs/products/dhtmlxGantt/individual/), [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/commercial/), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/enterprise/), or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/ultimate/)).
+Node.js server module of DHTMLX Gantt is provided as an add-on package to the client-side version of Gantt. Thus, you can add the Node.js build at extra fee while buying Gantt under any commercial license ([Individual](https://dhtmlx.com/docs/products/dhtmlxGantt/individual/), [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/commercial/), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/enterprise/)). The [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/ultimate/) license includes it by default.
 
 In case you have already obtained the main library of dhtmlxGantt, you can [purchase the Node.js module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=58429) and we will send you a link to the server-side version of Gantt.
 
