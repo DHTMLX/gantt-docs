@@ -10,6 +10,27 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+
+8.0.7
+----------
+
+<span class='release_date'>May 16, 2024. Bugfix release</span>
+
+### Fixes
+
+- Fix the script error occurring in the trial build on SalesForce
+- The api/gantt_onaftertaskupdate_event.md event now fires before [Auto Scheduling](desktop/auto_scheduling.md) events after dragging tasks in the timeline
+- Fix duplicate event firing when interacting with a selected task when the [Multiselect](desktop/multiselection.md) extension is enabled
+- Fix the script error that happened when the first task in the chart did not contain dates
+- Add the [lightbox](desktop/default_edit_form.md) section name as a class name to the section element for better identification.
+- Fix inability to unschedule tasks from the [lightbox](desktop/default_edit_form.md) when [Auto Scheduling](desktop/auto_scheduling.md) is enabled.
+- Fix the api/gantt_resize_rows_config.md marker positioning when scrolling the Gantt chart.
+- Prevent [Auto Scheduling](desktop/auto_scheduling.md) of linked [unscheduled tasks](desktop/unscheduled_tasks.md).
+- Fix Gantt crash when disabling smart rendering and adding [Rollup](desktop/milestones.md#rolluptasksandmilestones) tasks.
+- Fix dragging of [split tasks](desktop/split_tasks.md) on touch devices.
+- Fix errors with api/gantt_iscriticaltask.md, api/gantt_getfreeslack.md, and api/gantt_gettotalslack.md methods for [unscheduled tasks](desktop/unscheduled_tasks.md)
+- Fix error when a linked project contains only [unscheduled](desktop/unscheduled_tasks.md) child tasks.
+
 8.0.6
 ----------
 
