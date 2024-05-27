@@ -93,6 +93,23 @@ optimizeDeps: {
 }
 ~~~
 
+### Svelte production build
+
+If you use Gantt in a Svelte app, you need to add the following setting into the **vite.config.js** file for the production build, 
+replacing the *gantt_8.0.6_evaluation* folder with the path to your Gantt folder:
+
+{{snippet vite.config.js}}
+~~~js 
+build: {
+	commonjsOptions: {
+		include: [
+			"node_modules",
+			"gantt_8.0.6_evaluation/codebase/dhtmlxgantt.js"
+		]
+	},
+}
+~~~
+
 React example
 ------------------
 
