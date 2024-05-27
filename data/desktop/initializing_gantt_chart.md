@@ -79,6 +79,20 @@ For the Commercial, Enterprise or Ultimate version the command look like this:
 import { gantt, Gantt } from 'dhtmlx-gantt';
 ~~~
 
+Using Gantt with Vite
+--------------------------
+
+If you use Vite in your project, the following setting is required for the **vite.config.js** file to ensure that Gantt is correctly included into the app:
+
+{{snippet vite.config.js}}
+~~~js 
+optimizeDeps: {
+	include: [
+		'dhtmlx-gantt',
+	]
+}
+~~~
+
 React example
 ------------------
 
