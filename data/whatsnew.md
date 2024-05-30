@@ -10,6 +10,19 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+8.0.8
+----------
+
+<span class='release_date'>May 31, 2024. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue that caused the [Undo extension](desktop/undo_redo.md) to skip some actions in bulk operations
+- Fix the script error that occurs when [gantt.deleteLink](api/gantt_deletelink.md) is called from the [gantt.silent](api/gantt_silent.md) function
+- Fix the incorrect behavior of [Auto Scheduling](desktop/auto_scheduling.md) when two connected tasks have different [calendars](desktop/working_time.md)
+- Fix the script error that occurs after creating a [circular link](api/gantt_iscircularlink.md)
+- Fix the script error that occurs after [destroying](api/gantt_destructor.md) the Gantt which has an  editable [Resource Panel](desktop/resource_management.md)
+- Fix the issue that caused the [tooltip](desktop/tooltips.md) to disappear in some browsers
 
 8.0.7
 ----------
