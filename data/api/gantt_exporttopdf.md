@@ -102,11 +102,15 @@ The api/gantt_exporttopdf.md method takes as a parameter an object with a number
 			<td class="webixdoc_links0"><b>additional_settings</b></td>
 			<td>(<i>object</i>) an object with additional settings. The object can contain the following attributes:
 			<ul>
-					<li><b>format</b> - (<i>string</i>) the format of the output file: <i>'A3', 'A4', 'A5', 'Legal', 'Letter', 'Tabloid'</i></li>
-					<li><b>landscape</b> - (<i>boolean</i>) the portrait or landscape orientation of the output file. The attribute works only when the "format" attribute is specified.</li>
-					<li><b>width</b> - (<i>string|number|"content"</i>) the width of the output page. The attribute is used when exporting multiple pages. </li>
-					<li><b>height</b> - (<i>string|number|"content"</i>) the height of the output page. The attribute is used when exporting multiple pages.</li>
-				</ul>
+				<li><b>format</b> - (<i>string</i>) the format of the output file: <i>'A3', 'A4', 'A5', 'Legal', 'Letter', 'Tabloid'</i></li>
+				<li><b>landscape</b> - (<i>boolean</i>) the portrait or landscape orientation of the output file. The attribute works only when the "format" attribute is specified.</li>
+				<li><b>width</b> - (<i>string|number|"content"</i>) the width of the output page. The attribute is used when exporting multiple pages. </li>
+				<li><b>height</b> - (<i>string|number|"content"</i>) the height of the output page. The attribute is used when exporting multiple pages.</li>
+                <li><b>merge_pages</b> - (<i>boolean</i>) enables the multipage export in one file; if set to <i>false</i> you will have to make export several times to get
+                all the Gantt data</li>
+                <li><b>fixed_headers</b> - (<i>boolean</i>) enables displaying of the grid and timeline headers on each page; <i>false</i> by default. Works only with
+                    the enabled <b>merge_pages</b> setting</li>
+			</ul>
 			</td>
 		</tr>
     </tbody>
@@ -114,7 +118,33 @@ The api/gantt_exporttopdf.md method takes as a parameter an object with a number
 
 ### Multi-page export
 
-When Gantt is exported, only its leftmost part is exported to the PDF document each time. Thus, to implement multi-page export, it is necessary to export Gantt several times, shifting Gantt to the left each time.  
+#### Using the export module  
+
+The [export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) allows making a multi-page export in one file.
+All you need to do is to use the **merge_pages** attribute of the **additional_settings** object:
+
+~~~js
+gantt.exportToPDF({
+	additional_settings: {
+    	merge_pages: true, /*!*/
+        format: "A4"
+    }
+});
+~~~
+
+The export module will export all data by itself and provide one file with all the pages. 
+
+{{editor	https://snippet.dhtmlx.com/2qzecnke	Multi-page export in one file}}
+
+The disadvantage of this method is that data export takes much more time than export of all data on one page. To spend less time on exporting Gantt data,
+you can change the Zoom level and render the data in weeks, months or years, since then Gantt will take less width and you will apply export fewer times.
+
+Check the detailed overview of the multi-page export in one PDF file in the [related blog article](https://dhtmlx.com/blog/maintenance-release-pdf-export-module-gantt-0-6-4-scheduler-0-6-5-suite-8-3-10-kanban-1-5-12/#:~:text=Multipage%20Export%20in%20One%20PDF%20File).
+
+#### Exporting Gantt data manually   
+
+When Gantt is exported, only its leftmost part is exported to the PDF document each time. 
+Thus, to implement a multi-page export, it is necessary to export Gantt several times, shifting Gantt to the left each time.
 
 To shift Gantt in the exported file, you need to add the following style rule to **#gantt_here** in the **header** parameter:
 
@@ -137,11 +167,12 @@ for (let i = 0; i < total_width; i += width) {
 
 {{editor	https://snippet.dhtmlx.com/zbhc506m	Export to the file of defined sizes}}
 
-In case you want to export Gantt to the specific format ('A4', for example), note, that the file format is defined in millimeters but the size in HTML is specified in pixels. Therefore, you need to convert the shift value from millimeters to pixels. 
+In case you want to export Gantt to the specific format ('A3', for example), note, that the file format is defined in millimeters but the size in HTML is specified in pixels.
+Therefore, you need to convert the shift value from millimeters to pixels. 
 
 ~~~js
 const widthMM = 297;
-const width = widthMM / (25.4 inch / 144 PDF PPI);
+const width = widthMM / (25.4 inch / 96 PDF PPI);
 ~~~
 
 {{editor	https://snippet.dhtmlx.com/qt54zfuw	Export to the file of defined format}}
@@ -151,6 +182,37 @@ const width = widthMM / (25.4 inch / 144 PDF PPI);
 In this case, you need to enable the pop-ups and try exporting again.
 
 ![blocked_popup](desktop/popup_blocked.png)
+
+
+### Displaying timeline and grid headers on every page in the exported file
+
+You can enable displaying timeline and grid headers on every page in the exported file with the help of the **fixed_headers** attribute of the **additional_settings** object.
+Note that this feature works only with the **merge_pages** attribute enabled as well:
+
+~~~js
+gantt.exportToPDF({
+	additional_settings: {
+		merge_pages: true,  /*!*/
+		fixed_headers: true,  /*!*/
+		format: "A4"
+	}
+});
+~~~
+
+{{editor 	https://snippet.dhtmlx.com/w905ht5t		Multi-page export with timeline and grid headers on each page}}
+
+{{editor	https://snippet.dhtmlx.com/xkmvduu5		Multi-page export with timeline and grid headers on each page for the Resource panel view}}
+
+In case you need to make it work without the config, e.g. if you want to perform several export operations and merge the files manually, you can use the following styles:
+
+~~~css
+.grid_cell .gantt_grid_scale,
+.timeline_cell .gantt_task_scale {
+  position: fixed;
+  top:0;
+  z-index:99999;
+}
+~~~
 
 ### Time restrictions
 
@@ -165,8 +227,6 @@ Error: Timeout trigger 20 seconds
 If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately.
 
 {{note If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).}}
-
-
 
 @related:
 desktop/export.md
