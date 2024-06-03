@@ -118,9 +118,10 @@ The api/gantt_exporttopdf.md method takes as a parameter an object with a number
 
 ### Multi-page export
 
-#### Using the export module  
+#### Exporting data automatically in one file 
 
-The [export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) allows making a multi-page export in one file.
+For multi-page export in one file, you can either use the export service (with <a href="#time_limit">time limitations</a>) or 
+the [export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) (without limitations).
 All you need to do is to use the **merge_pages** attribute of the **additional_settings** object:
 
 ~~~js
@@ -132,7 +133,9 @@ gantt.exportToPDF({
 });
 ~~~
 
-The export module will export all data by itself and provide one file with all the pages. 
+The export service suits well if a chart is not very big. If a chart is large, the data will be exported partially. 
+In this case, you can [make several data exports manually](#manual_export)
+or use the export module. The export module will export all data by itself and provide one file with all the pages. 
 
 {{editor	https://snippet.dhtmlx.com/2qzecnke	Multi-page export in one file}}
 
@@ -141,8 +144,9 @@ you can change the Zoom level and render the data in weeks, months or years, sin
 
 Check the detailed overview of the multi-page export in one PDF file in the [related blog article](https://dhtmlx.com/blog/maintenance-release-pdf-export-module-gantt-0-6-4-scheduler-0-6-5-suite-8-3-10-kanban-1-5-12/#:~:text=Multipage%20Export%20in%20One%20PDF%20File).
 
-#### Exporting Gantt data manually   
+<h4 id="manual_export">Making several data exports manually</h4>
 
+Since the sizes of the Gantt chart almost always exceed the standard document sizes, the chart takes more than one page to fit in.
 When Gantt is exported, only its leftmost part is exported to the PDF document each time. 
 Thus, to implement a multi-page export, it is necessary to export Gantt several times, shifting Gantt to the left each time.
 
@@ -214,7 +218,7 @@ In case you need to make it work without the config, e.g. if you want to perform
 }
 ~~~
 
-### Time restrictions
+<h3 id="time_limit">Time restrictions</h3>
 
 {{note The export service has time restrictions.}}
 
