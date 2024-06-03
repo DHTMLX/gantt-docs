@@ -116,11 +116,28 @@ The api/gantt_exporttopdf.md method takes as a parameter an object with a number
     </tbody>
 </table>
 
-### Multi-page export
+Time restrictions
+---------------------
 
-#### Exporting data automatically in one file 
+{{note The export service has time restrictions.}}
 
-For multi-page export in one file, you can either use the online export service (with <a href="#time_limit">time limitations</a>) or 
+If the process takes over than 20 seconds, the export will be canceled and the following error will occur:
+
+~~~html
+Error: Timeout trigger 20 seconds
+~~~
+
+If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately.
+
+{{note If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).}}
+
+
+Multi-page export
+-------------------
+
+### Exporting data automatically in one file 
+
+For multi-page export in one file, you can either use the online export service (with [time limitations](#timerestrictions)) or 
 the standalone [export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) (without limitations).
 All you need to do is to use the **merge_pages** attribute of the **additional_settings** object:
 
@@ -144,7 +161,7 @@ you can change the Zoom level and render the data in weeks, months or years, sin
 
 Check the detailed overview of the multi-page export in one PDF file in the [related blog article](https://dhtmlx.com/blog/maintenance-release-pdf-export-module-gantt-0-6-4-scheduler-0-6-5-suite-8-3-10-kanban-1-5-12/#:~:text=Multipage%20Export%20in%20One%20PDF%20File).
 
-<h4 id="manual_export">Making several data exports manually</h4>
+<h3 id="manual_export">Making several data exports manually</h3>
 
 Since the sizes of the Gantt chart almost always exceed the standard document sizes, the chart takes more than one page to fit in.
 When Gantt is exported, only its leftmost part is exported to the PDF document each time. 
@@ -217,20 +234,6 @@ In case you need to make it work without the config, e.g. if you want to perform
   z-index:99999;
 }
 ~~~
-
-<h3 id="time_limit">Time restrictions</h3>
-
-{{note The export service has time restrictions.}}
-
-If the process takes over than 20 seconds, the export will be canceled and the following error will occur:
-
-~~~html
-Error: Timeout trigger 20 seconds
-~~~
-
-If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately.
-
-{{note If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).}}
 
 @related:
 desktop/export.md
