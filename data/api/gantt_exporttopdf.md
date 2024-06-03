@@ -120,8 +120,8 @@ The api/gantt_exporttopdf.md method takes as a parameter an object with a number
 
 #### Exporting data automatically in one file 
 
-For multi-page export in one file, you can either use the export service (with <a href="#time_limit">time limitations</a>) or 
-the [export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) (without limitations).
+For multi-page export in one file, you can either use the online export service (with <a href="#time_limit">time limitations</a>) or 
+the standalone [export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) (without limitations).
 All you need to do is to use the **merge_pages** attribute of the **additional_settings** object:
 
 ~~~js
