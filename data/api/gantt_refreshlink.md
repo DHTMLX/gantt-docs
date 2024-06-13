@@ -4,7 +4,7 @@ refreshLink
 	
 
 @params:
-- id	string, number	the link id
+- id	string | number	the link id
 
 
 

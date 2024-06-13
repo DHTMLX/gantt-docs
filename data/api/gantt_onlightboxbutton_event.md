@@ -7,7 +7,7 @@ onLightboxButton
 @params: 
 - css	string	the name of the CSS class applied to the button
 - node	HTMLElement	 an HTML element of the clicked button
-- e		event	 a native 'click' event object
+- e		Event	 a native 'click' event object
 
 @example: 
 gantt.attachEvent("onLightboxButton", function (css, node, e){

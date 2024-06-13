@@ -5,7 +5,7 @@ getChildren
 	
 
 @params:
-- id	string,number		the parent branch's id
+- id	string | number		the parent branch's id
 
 @returns:
 - ids	array				an array of children's ids

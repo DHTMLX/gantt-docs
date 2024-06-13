@@ -4,13 +4,13 @@ onBeforeLinkDelete
 
 @params:
 - id		string,number		the link id
-- item		object				the link object 
+- link		Link				the link object 
 
 @returns:  
   - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
  
  @example:
-gantt.attachEvent("onBeforeLinkDelete", function(id,item){
+gantt.attachEvent("onBeforeLinkDelete", function(id,link){
     //any custom logic here
     return true;
 });

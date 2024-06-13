@@ -5,6 +5,9 @@ editor_types
 	an object that contains definitions of inline editors
 
 @type: object
+
+
+
 @example:
 gantt.config.editor_types.custom_editor = {// custom editor logic}
 
@@ -15,11 +18,14 @@ The config can be used for creation of custom editors (see the above example).
 
 There are several predefined inline editors:
 
-- **text** editor - for editing text columns, e.g. task name
-- **number** editor - for editing number columns, e.g. task duration, order, etc.
-- **date** editor - for editing date columns, e.g. start and end dates of the task
-- **select** editor - for choosing an option from a list
-- **predecessor** editor - for setting task-predecessor for the currently edited task. This editor gets the [WBS codes of tasks](desktop/specifying_columns.md#wbscode) to set connection with the predecessor task.
+- <span class=subproperty>**text**</span> - (*InlineEditor*) - for editing text columns, e.g. task name
+- <span class=subproperty>**number**</span> - (*InlineEditor*) - for editing number columns, e.g. task duration, order, etc.
+- <span class=subproperty>**date**</span> - (*InlineEditor*) - for editing date columns, e.g. start and end dates of the task
+- <span class=subproperty>**select**</span> - (*InlineEditor*) - for choosing an option from a list
+- <span class=subproperty>**predecessor**</span> - (*InlineEditor*) - for setting task-predecessor for the currently edited task. This editor gets the [WBS codes of tasks](desktop/specifying_columns.md#wbscode) to set connection with the predecessor task.
+- <span class=subproperty>**[customEditorName: string]**</span> - (*InlineEditor | undefined*) - custom inline editors
+
+
 
 Editors defined in this object can be attached to gantt columns:
 

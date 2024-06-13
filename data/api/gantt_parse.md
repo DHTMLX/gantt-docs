@@ -4,7 +4,7 @@ parse
 	
 
 @params:
-- data		string,object	 a string or object which represents <a href="https://docs.dhtmlx.com/gantt/desktop__loading.html#dataproperties">data</a>
+- data		string | object	 a string or object which represents <a href="https://docs.dhtmlx.com/gantt/desktop__loading.html#dataproperties">data</a>
 * type		string	 		 optional, (<i>'json', 'xml'</i>) the data type. The default value - <i>'json'</i>
 
 

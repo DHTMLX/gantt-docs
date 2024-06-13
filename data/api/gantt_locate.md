@@ -10,7 +10,7 @@ locate
 
 
 @returns:
-- id		string,number	the task id
+- id		string | number	the task id
 
 @example:
 gantt.$container.addEventListener("mouseover", function(event){

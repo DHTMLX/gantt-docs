@@ -6,10 +6,10 @@ onAfterTaskUpdate
 
 @params:
 - id			string,number			the task id
-- item			object					the task object 
+- task			Task					the task object 
 
 @example:
-gantt.attachEvent("onAfterTaskUpdate", function(id,item){
+gantt.attachEvent("onAfterTaskUpdate", function(id,task){
     //any custom logic here
 });
 

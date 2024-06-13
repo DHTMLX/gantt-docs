@@ -4,7 +4,7 @@ calculateEndDate
 @short:calculates the end date of a task 
 
 @params:
-- config 	object|Date		either the <a href="#configurationobjectproperties">configuration object</a> of a time span or the start date of the task
+- config 	object | Date		either the <a href="#configurationobjectproperties">configuration object</a> of a time span or the start date of the task
 * duration  number  optional, the duration of the task. The parameter is required when the first parameter is specified as  <i>start_date</i>
 
 @returns:

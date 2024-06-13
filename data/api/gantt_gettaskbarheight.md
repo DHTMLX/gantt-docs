@@ -6,7 +6,7 @@ getTaskBarHeight
 
 
 @params:
-- taskId	number|string	the task's id
+- taskId	number | string	the task's id
 
 @returns:
 - param		number		the task height

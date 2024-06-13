@@ -6,17 +6,15 @@ onBeforeRowResizeEnd
 
 @params:
 - id 	number|string	the task id
-- item	object	the task object
+- task	Task	the task object
 - newHeight	number	the new height of the row
 
 @returns:  
 - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
 
 @example:
-gantt.attachEvent("onBeforeRowResizeEnd", function (id, item, newHeight) {
-	gantt.message.hide(message);
-	message = null;
-	gantt.message(`<b>${item.text}</b> is now <b>${newHeight}px</b> height`);
+gantt.attachEvent("onBeforeRowResizeEnd", function (id, task, newHeight) {
+	gantt.message(`<b>${task.text}</b> is now <b>${newHeight}px</b> height`);
 	return true;
 });
 

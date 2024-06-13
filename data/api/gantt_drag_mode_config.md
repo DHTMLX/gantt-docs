@@ -32,9 +32,11 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 
 @template:	api_config
 @descr:
-The property is readonly.
+You shouldn't change the existing names of the drag modes. Otherwise, that functionality will stop working. But you can add new properties if you want to implement custom behavior.
+If  you want to disable the specific drag mode, it is better to use the [drag_move](api/gantt_drag_move_config.md), [drag_resize](api/gantt_drag_resize_config.md), [drag_progress](api/gantt_drag_progress_config.md) configs.
 
-- "resize" - the mode when the user drags a task bar to change its duration.
-- "progress" - the mode when the user drags the progress knob of a task bar.
-- "move" - the mode when the user drags a task bar to replace it.
-- "ignore" - the service mode which restricts the drag-and-drop action.
+- <span class=subproperty>**resize**</span> - (*string*) - the mode when the user drags a task bar to change its duration.
+- <span class=subproperty>**progress**</span> - (*string*) - the mode when the user drags the progress knob of a task bar.
+- <span class=subproperty>**move**</span> - (*string*) - the mode when the user drags a task bar to replace it.
+- <span class=subproperty>**ignore**</span> - (*string*) - the service mode which restricts the drag-and-drop action.
+

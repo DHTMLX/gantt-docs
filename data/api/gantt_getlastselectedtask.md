@@ -8,7 +8,7 @@ getLastSelectedTask
 
 
 @returns:
-- id	string/number	the id of the last selected task
+- id	string | number	the id of the last selected task
 
 
 @example:

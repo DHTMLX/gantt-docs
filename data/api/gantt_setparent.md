@@ -8,7 +8,7 @@ setParent
 @params:
 
 - task		Task				the task object
-- pid		number, string				the parent task id
+- pid		number | string				the parent task id
 
 
 

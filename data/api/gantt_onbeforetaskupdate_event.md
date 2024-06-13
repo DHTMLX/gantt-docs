@@ -5,11 +5,11 @@ onBeforeTaskUpdate
 	
 @params:
 - id			string,number		the task id
-- new_item		object				the new (updated) object of the task 
+- new_task		Task				the new (updated) object of the task 
 
  
 @example:
-gantt.attachEvent("onBeforeTaskUpdate", function(id,new_item){
+gantt.attachEvent("onBeforeTaskUpdate", function(id,new_task){
     //any custom logic here
 });
 

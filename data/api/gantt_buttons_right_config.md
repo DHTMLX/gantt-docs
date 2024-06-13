@@ -5,7 +5,7 @@ buttons_right
 
 @default:["gantt_delete_btn"];
 
-@type: array
+@type: string[]
 @example:
 <style>
     .complete_button{

@@ -5,7 +5,7 @@ isSelectedTask
 
 
 @params:
-- task	string,number	the task's id
+- task	string | number	the task's id
 
 
 @returns:

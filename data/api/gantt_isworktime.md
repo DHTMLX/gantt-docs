@@ -6,7 +6,7 @@ isWorkTime
 	
 
 @params:
-- config	object|Date		either the configuration object of a time span or a specific date
+- config	object | Date		either the configuration object of a time span or a specific date
 
 
 @returns:

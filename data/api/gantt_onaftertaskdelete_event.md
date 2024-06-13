@@ -5,10 +5,10 @@ onAfterTaskDelete
 
 @params:
 - id		string,number			the task id
-- item		object					the task object 
+- task		Task					the task object 
 
 @example:
-gantt.attachEvent("onAfterTaskDelete", function(id,item){
+gantt.attachEvent("onAfterTaskDelete", function(id,task){
     //any custom logic here
 });
 

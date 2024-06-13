@@ -6,7 +6,7 @@ onCircularLinkError
 
 @params:
 
-- link 			object			the link object
+- link 			Link			the link object
 - group			object 			a group of tasks and links connected in a loop
 
 @example:

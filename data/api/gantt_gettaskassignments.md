@@ -6,7 +6,7 @@ getTaskAssignments
 	
 
 @params:
-- taskId	string|number	the task id
+- taskId	string | number	the task id
 
 
 

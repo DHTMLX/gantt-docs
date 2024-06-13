@@ -4,7 +4,7 @@ groupBy
 @short:groups tasks by the specified task's attribute
 
 @params:
-- config		object,boolean		the grouping configuration object, or false to ungroup tasks
+- config		object | boolean		the grouping configuration object, or false to ungroup tasks
 
 @edition: pro
 @related:desktop/grouping.md

@@ -5,7 +5,7 @@ getPrevSibling
 	
 
 @params:
-- id	string, number	the task id
+- id	string | number	the task id
 
 @returns:
 - prevSibling	 string, number		the id of the previous sibling

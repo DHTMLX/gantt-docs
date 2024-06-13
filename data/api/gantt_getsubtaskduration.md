@@ -15,7 +15,7 @@ The return value is calculated in [duration units](api/gantt_duration_unit_confi
 
 
 @params:
-* task_id		string,number		the task's id, api/gantt_root_id_config.md will be used if not specified
+* task_id		string | number		the task's id, api/gantt_root_id_config.md will be used if not specified
 
 @returns:
 - duration			number		total duration of nested tasks

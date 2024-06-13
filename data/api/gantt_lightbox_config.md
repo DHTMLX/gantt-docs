@@ -5,7 +5,7 @@ lightbox
 	specifies the lightbox object
 	
 
-@type: object
+@type: LightboxSections
 @example:
 gantt.config.lightbox.sections = [
     {name:"description", height:38, map_to:"text", type:"textarea",focus:true},
@@ -20,7 +20,7 @@ gantt.init("gantt_here");
 @descr:
 The lightbox object has 1 property:
 
-- **sections** - (*array*) specifies lightbox sections 
+- **sections** - (*array*) - specifies lightbox sections 
 
 ~~~js
 // default lightbox definition   
@@ -34,49 +34,61 @@ Objects in the **sections** array can have the following properties, depending o
 
 ####Common for all sections
 
-- **name** - (*string*) the section's name (according to this name, dhtmlxGantt will take the section's label from the *locale.labels* collection). 
+- <span class=subproperty>**name**</span> - (*string*) - the section's name (according to this name, dhtmlxGantt will take the section's label from the *locale.labels* collection). 
 For example, for the **time** section, dhtmlxGantt will take the label stored as **gantt.locale.labels.section_time**.
-- **map_to** - (*string*) the name of a data property that will be mapped to the section.
-- **type** - (*string*) the [type of the section control](desktop/default_edit_form.md#lightboxcontrols) (editor).
-- **height** - (*number*) the section's height. Not used with the [checkbox](desktop/checkbox.md) and [radio](desktop/radio.md) sections.
-- **focus** - (*boolean*) if set to *true*, the section will take focus on opening the lightbox
+- <span class=subproperty>**map_to**</span> - (*string*) - the name of a data property that will be mapped to the section.
+- <span class=subproperty>**type**</span> - (*string*) - the [type of the section control](desktop/default_edit_form.md#lightboxcontrols) (editor).
+- <span class=subproperty>**height?**</span> - (*number*) - the section's height. Not used with the [checkbox](desktop/checkbox.md) and [radio](desktop/radio.md) sections.
+- <span class=subproperty>**focus?**</span> - (*boolean*) - the section's name (according to this name, dhtmlxGantt will take the section's label from the *locaif set to *true*, the section will take focus on opening the lightbox
+
+
 
 
 ####Time and Duration controls 
 
-- **readonly** - (*boolean*) if you set the "true" value, the section will be read-only 
-- **year_range**  -(*array,number*) sets a range for the year selector. Can be set in 2 ways: 
+- <span class=subproperty>**readonly?**</span> - (*boolean*) - if you set the "true" value, the section will be read-only
+- <span class=subproperty>**year_range?**</span> - (*number | number[]*) - sets a range for the year selector. Can be set in 2 ways: 
     - *year_range: [2005, 2025]* - a period from 2005 till 2025 year
     - *year_range: 10*  - a period [current year - 10 years; current year + 10 years]
-- **single_date** - (*boolean*) if you set the "true" value, just the 'start Date' selector will be presented in the section.<br>
+- <span class=subproperty>**single_date?**</span> - (*boolean*) - if you set the "true" value, just the 'start Date' selector will be presented in the section.<br>
 Edited tasks will be specified only by the start date and have a zero duration. Makes sense only for [milestones](desktop/task_types.md#milestone). 
-- **time_format** - (*string*) sets the order of date-time selectors 
+- <span class=subproperty>**time_format?**</span> - (*string[]*) - sets the order of date-time selectors 
+- <span class=subproperty>**autofix_end?**</span> - (*boolean*) - defines whether the end date will be corrected automatically if the selected start date is greater than the end date, *true* by default. The disabled mode allows validating the dates, but if you enable the mode and don't validate the dates, you can get tasks with 0 duration when the *start_date* is greater than the *end_date*.
+
 
 ####Select control
 
-- **onchange** - (*function*) specifies the 'onChange' event handler function for the section's control 
+- <span class=submethod>**onchange? (*e*): any**</span> - specifies the 'onChange' event handler function for the section's control
+    - **_e_** - (*Event*) - a native event object.
 
 ####Select, Checkbox, Radio and Resources controls
 
-- **options** - (*array of objects*) defines select options of the control.Each object in the array specifies a single option and takes the following properties:
-	- **key** - (*string*) the option's id. This attribute is compared with the task's data property to assign select options to tasks
-	- **label** - (*string*) the option's label
-    - **unit** - (*number*) the unit of measurement of the resource (for the Resources control)
-- **default_value** - (*any*) the default value of the section's control. Applied only if the input value is underfined. For the resources control is applied if the value of the resource is underfined.
+- <span class=subproperty>**options?**</span> - (*object[]*) - defines select options of the control.Each object in the array specifies a single option and takes the following properties:
+	- **_key_** - (*number | string*) - the option's id. This attribute is compared with the task's data property to assign select options to tasks
+	- **_label_** - (*string*) - the option's label
+	- **_unit?_** - (*string | number*) - the unit of measurement of the resource (for the Resources control)
+- <span class=subproperty>**default_value?**</span> - (*any*) - the default value of the section's control. Applied only if the input value is underfined. For the resources control is applied if the value of the resource is underfined.
 
 
 ####Parent control
 
-- **allow_root** - (*boolean*) if set to "true", the options list will contain an additional option that will allow users to set the root level as the parent for tasks. Used in pair with the **root_label** property 
-- **root_label** - (*string*) sets a label for the root-level parent. Used in pair with the **allow_root** property 
-- **sort** - (*function*) sets a sorting function for the select options 
-- **filter** - (*function*) sets a filtering function for the select options. Takes the task id and task object as parameters
-- **template** - (*function*) sets a template for select options
-	
+- <span class=subproperty>**allow_root?**</span> - (*boolean*) - if set to "true", the options list will contain an additional option that will allow users to set the root level as the parent for tasks. Used in pair with the **root_label** property 
+- <span class=subproperty>**root_label?**</span> - (*string*) - sets a label for the root-level parent. Used in pair with the **allow_root** property 
+- <span class=submethod>**sort? (task1, task2): number**</span> - sets a sorting function for the select options
+    - **_task1_** - (*Task*) - an object of the first task that will be sorted
+    - **_task2_** - (*Task*) - an object of the second task that will be sorted
+- <span class=submethod>**filter? (id, task): boolean**</span> - sets a filtering function for the select options. Takes the task id and task object as parameters
+    - **_id_** - (*string | number*) - the ID of the task object
+    - **_task_** - (*Task*) - the Task object
+- <span class=submethod>**template? (start_date, end_date, task): string|number**</span> - sets a template for select options
+    - **_start_date_** - (*Date | number*) - the start date of the task object
+    - **_end_date_** - (*Date | number*) - the end date of the task object
+    - **_task_** - (*Task*) - the Task object
+
 
 ####Typeselect control
 
-- **filter** - (*function*) sets a filtering function for the types of tasks. Takes the type name as a parameter
+- **filter** - (*function*) - sets a filtering function for the types of tasks. Takes the type name as a parameter
 
   
 @related:

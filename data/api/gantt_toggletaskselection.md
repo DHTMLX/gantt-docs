@@ -4,7 +4,7 @@ toggleTaskSelection
 	
 
 @params:
-- task		string/number		the task's id
+- taskId		string | number		the task's id
 
 
 

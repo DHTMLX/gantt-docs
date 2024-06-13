@@ -6,7 +6,7 @@ eachTask
 
 @params:
 - code 		function				a function that will iterate over tasks. Takes a task object as a parameter
-* parent	string,number			the parent id. If specified, the function will iterate over children of the <br> specified parent	
+* parent	string | number			the parent id. If specified, the function will iterate over children of the <br> specified parent	
 * master	object					the object, that 'this'  will refer to
 
 

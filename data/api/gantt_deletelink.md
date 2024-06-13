@@ -4,7 +4,7 @@ deleteLink
 	
 
 @params:
--id		string, number	the dependency link's id
+- id		string | number	the dependency link's id
 
 
 

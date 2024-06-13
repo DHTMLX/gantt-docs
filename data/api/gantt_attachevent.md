@@ -4,7 +4,7 @@ attachEvent
 	
 
 @params: 
-- name		GanttEventName		the event's name, case-insensitive
+- name		string		the event's name, case-insensitive
 - handler	function	the handler function
 * settings 	object		optional, an <a href="#propertiesofsettingsobject">object with settings</a> for the event handler
 

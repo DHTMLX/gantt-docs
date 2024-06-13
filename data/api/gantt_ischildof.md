@@ -5,8 +5,8 @@ isChildOf
 	
 
 @params:
-- childId	string,number	the id of a task that you want to check as a child
-- parentId 	string,number	the id of a task that you want to check as a parent
+- childId	string | number	the id of a task that you want to check as a child
+- parentId 	string | number	the id of a task that you want to check as a parent
 
 
 @returns:

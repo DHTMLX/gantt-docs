@@ -7,19 +7,15 @@ onRowResize
 
 @params:
 - id	string|number	the task id
-- item	object	the task object
+- task	Task	the task object
 - currentHeight	number	the current height of the row
 
 @example:
-gantt.attachEvent("onRowResize", function (id, item, currentHeight) {
-	if (!message) {
-		message = gantt.message({
-			expire: -1,
-			text: `<b>${item.text}</b> is now <b id='height_placeholder'></b>
-<b>px</b> height`
-		});
-	}
-	document.getElementById("height_placeholder").innerText = currentHeight;
+gantt.attachEvent("onRowResize", function (id, task, currentHeight) {
+	gantt.message({
+		expire: -1,
+		text: `<b>${task.text}</b> is now <b>${currentHeight}px</b> height`
+	});
 });
 
 @template:	api_event

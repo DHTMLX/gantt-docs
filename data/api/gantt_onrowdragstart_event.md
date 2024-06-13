@@ -6,7 +6,7 @@ onRowDragStart
 @params:
 - id			string,number			the id of the task that the user drags in the grid
 - target		HTMLElement				an HTML element of the task that the user drags
-- e	 			event					a native event object
+- e	 			Event					a native event object
 
 @returns:  
 - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 

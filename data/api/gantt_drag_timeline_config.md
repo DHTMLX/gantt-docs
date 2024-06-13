@@ -5,7 +5,7 @@ drag_timeline
 configures the behavior of the drag_timeline extension
 	
 
-@type: object
+@type: null | object
 
 @default:{ useKey: false, ignore: ".gantt_task_line, .gantt_task_link" }
 
@@ -31,7 +31,10 @@ gantt.config.drag_timeline = null; // disables the extension
 
 The **drag_timeline** object includes two properties:
 
-- **ignore** - (string) CSS selector. Scrolling the timeline won't be activated for the elements that match the selector.
+
+
+- <span class=subproperty>**ignore**</span> - (*string*) - CSS selector. Scrolling the timeline won't be activated for the elements that match the selector.
+
 
 ~~~
 gantt.config.drag_timeline = {
@@ -40,7 +43,8 @@ gantt.config.drag_timeline = {
 };
 ~~~
 
-- **useKey** - (string|boolean) if the property is specified, scrolling the timeline will be activated only when the specified modifier key is pressed. Supported values: "ctrlKey", "shiftKey", "metaKey", "altKey".
+
+- <span class=subproperty>**useKey**</span> - (*string | boolean*) - if the property is specified, scrolling the timeline will be activated only when the specified modifier key is pressed. Supported values: "ctrlKey", "shiftKey", "metaKey", "altKey".
 
 
 @relatedsample:

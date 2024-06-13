@@ -4,7 +4,7 @@ resources
 @short:
 	defines an extra configuration for the resource store
 
-@type: object
+@type: boolean | object
 
 @edition: pro
 
@@ -42,14 +42,17 @@ gantt.config.resources = {
 
 The **resources** property presents an object with a set of attributes:
 
-- **dataprocessor_assignments** - (*boolean*) defines whether modified resource assignments can be sent to the DataProcessor as separate entries with persistent IDs
-- **dataprocessor_resources** - (*boolean*) defines whether modified resource objects can be sent to the DataProcessor as separate entries with persistent IDs
-- **editable_resource_diagram** - (*boolean*) defines whether resource assignments will be editable in the resource diagram
-- **resource_store** - (*object*) creates the default resource datastore. The object includes the following properties:
-    - **initItem** - (*function*) optional, preprocesses items loaded into the datastore. It is a good place to set the default values of the datastore items.
-    - **type** - (*string*) optional, accepts only one fixed value **"treeDatastore"**. If the type:"treeDatastore" is specified, the datastore will support hierarchical data, with the **id** property as a primary key, and **parent** as a link to the parent id. Any other value will produce a flat list datastore.
-    - **fetchTasks** - (*boolean*) enables showing all tasks assigned to a certain resource in the resource view panel. This functionality works both for the resource diagram and resource histogram types of layout.
-- **lightbox_resources** - (*function*) a function which takes all resources as an argument and must return an array of resources that should be available in the resource control of the lightbox. By default, the control will be populated with resources that don't have sub-resources. 
+- <span class=subproperty>**dataprocessor_assignments**</span> - (*boolean*) - defines whether modified resource assignments can be sent to the DataProcessor as separate entries with persistent IDs
+- <span class=subproperty>**dataprocessor_resources**</span> - (*boolean*) - defines whether modified resource objects can be sent to the DataProcessor as separate entries with persistent IDs
+- <span class=subproperty>**editable_resource_diagram**</span> - (*boolean*) - defines whether resource assignments will be editable in the resource diagram
+- <span class=subproperty>**resource_store**</span> - (*object*) - creates the default resource datastore. The object includes the following properties:
+    - **_type?_** - (*string*) - optional, accepts only one fixed value **"treeDatastore"**. If the type:"treeDatastore" is specified, the datastore will support hierarchical data, with the **id** property as a primary key, and **parent** as a link to the parent id. Any other value will produce a flat list datastore.
+    - **_initItem?_** - (*Function*): any - optional, preprocesses items loaded into the datastore. It is a good place to set the default values of the datastore items.
+        - **_item_** - (*any*) - the resource item
+    - **_fetchTasks?_** - (*boolean*) - enables showing all tasks assigned to a certain resource in the resource view panel. This functionality works both for the resource diagram and resource histogram types of layout.
+- <span class=submethod>**lightbox_resources? (resourceArray): any**</span> - a function which takes all resources as an argument and must return an array of resources that should be available in the resource control of the lightbox. By default, the control will be populated with resources that don't have sub-resources. 
+    - **_resourceArray_** - (*any*) - array with resources
+
 
 
 @relatedsample:

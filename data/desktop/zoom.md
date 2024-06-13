@@ -170,18 +170,18 @@ gantt.ext.zoom.setLevel(zoom.getCurrentLevel() + 1)
 ~~~
 
 - <span class=submethod>**attachEvent (name, handler): string**</span> - attaches an event handler
-    - **_name_** - (*string*) the name of the event handler
-    - **_handler_** - (*Function*) the function that will be called when the event fires
+    - **_name_** - (*string*) - the name of the event handler
+    - **_handler_** - (*Function*) - the function that will be called when the event fires
 
 - <span class=submethod>**detachEvent (id): void**</span> - detaches a handler from an event
-    - **_id_** - (*string*) the id of the attached event handler
+    - **_id_** - (*string*) - the id of the attached event handler
 
 - <span class=submethod>**callEvent (name, params): boolean**</span> - calls an inner event
-    - **_name_** - (*string*) the event's name, case-insensitive
-    - **_params_** - (*array*) optional, an array of the event-related data
+    - **_name_** - (*string*) - the event's name, case-insensitive
+    - **_params_** - (*Array&lt;any&gt;*) - optional, an array of the event-related data
 
 - <span class=submethod>**checkEvent (name): boolean**</span> - checks whether an event has some handler(s) specified
-    - **_name_** - (*GanttEventName*)  the event's name
+    - **_name_** - (*string*) - the event's name
 
 Returns <i>true</i>, if some handler is specified for the event.
 
@@ -189,10 +189,10 @@ Returns <i>true</i>, if some handler is specified for the event.
 
 - **<span class=eventname>onAfterZoom</span>** -  fires during switching of the zooming level.
 The arguments are: 
-
+<span class=eventarguments>
     - **_level_** - (*number | string*) - the number of the level
     - **_config_** - (*ZoomLevels*) - the config of the level
-
+</span>
 
 ~~~js
 gantt.ext.zoom.attachEvent("onAfterZoom", function(level, config){ 

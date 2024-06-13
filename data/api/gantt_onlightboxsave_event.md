@@ -5,7 +5,7 @@ onLightboxSave
 
 @params:
 - id	 	string,number   	the id of unmodified task. Note, at this stage the lightbox values aren't applied to the task object yet and you can access the initial task using gantt.getTask(id)
-- task 		object				the modified task object
+- task 		Task				the modified task object
 - is_new	boolean				specifies whether the user opens the lightbox to create a new task (<i>true</i>)<br> or update an existing one (<i>false</i>)
 
 @returns:  

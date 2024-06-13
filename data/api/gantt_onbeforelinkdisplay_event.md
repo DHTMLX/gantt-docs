@@ -5,7 +5,7 @@ onBeforeLinkDisplay
 
 @params:
 - id	string,number	the link id
-- link	object	the link object
+- link	Link	the link object
 
 @returns:  
   - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 

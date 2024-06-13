@@ -5,8 +5,8 @@ getTaskBy
 	finds a task by the specified criteria
 
 @params:
-- propertyName			string,function			the name of the property to match, or a filter function
-* propertyValue			string,number,array		the property value
+- propertyName			string | function			the name of the property to match, or a filter function
+* propertyValue			string | number | boolean | array		the property value
 * types					object					an object with types of the tasks which should be returned
 
 @returns:
