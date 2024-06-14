@@ -39,7 +39,7 @@ A function that renders tasks takes 2 parameters:
 
 Here are the possible type_renderers types:
 
-- <span class=subproperty>**type_renderers**</span> - (*object*) - custom render function for the *task* type
+- <span class=subproperty>**type_renderers**</span> - (*object*) - a custom render function for the *task* type
     - **_task?_** - (*typeRenderer*) - optional, a custom render function for the *task* type
     - **_project?_** - (*typeRenderer*) - optional, a custom render function for the *project* type
     - **_milestone?_** - (*typeRenderer*) - optional, a custom render function for the *milestone* type

@@ -18,10 +18,10 @@ gantt.config.undo_actions = {
 
 {{note This option is defined in the **undo** extension, so you need to enable the [undo](desktop/extensions_list.md#undo) plugin. Read the details in the desktop/undo_redo.md article.}}
 
-- <span class=subproperty>**update**</span> - (*string*) - name of the "update" action
-- <span class=subproperty>**remove**</span> - (*string*) - name of the "remove" action
-- <span class=subproperty>**add**</span> - (*string*) - name of the "add" action
-- <span class=subproperty>**move**</span> - (*string*) - name of the "move" action
+- <span class=subproperty>**update**</span> - (*string*) - the name of the "update" action
+- <span class=subproperty>**remove**</span> - (*string*) - the name of the "remove" action
+- <span class=subproperty>**add**</span> - (*string*) - the name of the "add" action
+- <span class=subproperty>**move**</span> - (*string*) - the name of the "move" action
 
 
 

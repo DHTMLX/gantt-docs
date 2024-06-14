@@ -16,9 +16,9 @@ More information is given in the article desktop/task_types.md#specificlightboxp
 
 The overall type structure looks like this:
 
-- <span class=subproperty>**sections?**</span> - (*LightboxSection[]*) - the lightbox sections array for regular tasks
-- <span class=subproperty>**project_sections?**</span> - (*LightboxSection[]*) - the lightbox sections array for project tasks
-- <span class=subproperty>**milestone_sections?**</span> - (*LightboxSection[]*) - the lightbox sections array for milestones
+- <span class=subproperty>**sections?**</span> - (*LightboxSection[]*) - optional, the lightbox sections array for regular tasks
+- <span class=subproperty>**project_sections?**</span> - (*LightboxSection[]*) - optional, the lightbox sections array for project tasks
+- <span class=subproperty>**milestone_sections?**</span> - (*LightboxSection[]*) - optional, the lightbox sections array for milestones
 - <span class=subproperty>**[lightboxType: string]**</span> - (*LightboxSection[] | undefined*) - the lightbox sections array for the custom type
 
 

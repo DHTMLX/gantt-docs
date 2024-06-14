@@ -241,36 +241,36 @@ gantt.config.editor_types.custom_editor = {
 
 Here is a more detailed type description:
 
-- <span class=submethod>**show? (id, column, config, placeholder): void**</span> - the function is called when you open the inline editor. Here, you can add a container for the DOM elements and initialize 3rd party libraries
+- <span class=submethod>**show (id, column, config, placeholder): void**</span> - the function is called when you open the inline editor. Here, you can add a container for the DOM elements and initialize the third-party libraries. The parameters are:
     - **_id_** - (*string | number*) - task ID
     - **_column_** - (*GridColumn*) - the column configuration object
     - **_config_** - (*any*) - the configuration object of the custom inline editor
     - **_placeholder_** - (*HTMLElement*) - the DOM element of the inline editor
-- <span class=submethod>**hide? (): void**</span> - the function is called when hiding the inline editor
-- <span class=submethod>**set_value? (start_date, end_date, task): void**</span> - the function is called after the **show** function. There, you need to set the values to the inline editor elements from the **task** object
+- <span class=submethod>**hide? (): void**</span> - optional, the function is called when hiding the inline editor
+- <span class=submethod>**set_value (value, id, column, node): void**</span> - the function is called after the **show** function. There, you need to set the values to the inline editor elements from the **task** object. The parameters are:
     - **_value_** - (*any*) - the value of the task property
     - **_id_** - (*string | number*) - task ID
     - **_column_** - (*GridColumn*) - the column configuration object
     - **_node_** - (*HTMLElement*) - the DOM element of the inline editor
-- <span class=submethod>**get_value? (start_date, end_date, task): any**</span> - the function is called before hiding the inline editor. You need to obtain the values from the inline editor and add it to the **task** object
+- <span class=submethod>**get_value (id, column, node): any**</span> - the function is called before hiding the inline editor. You need to obtain the values from the inline editor and add it to the **task** object. The parameters are:
     - **_id_** - (*string | number*) - task ID
     - **_column_** - (*GridColumn*) - the column configuration object
     - **_node_** - (*HTMLElement*) - the DOM element of the inline editor
-- <span class=submethod>**is_changed? (start_date, end_date, task): boolean**</span>- the function is called before hiding the inline editor. If you return **true** the changes will be saved, otherwise, they will be cancelled.
+- <span class=submethod>**is_changed? (value, id, column, node): boolean**</span> - optional, the function is called before hiding the inline editor. If you return **true** the changes will be saved, otherwise, they will be cancelled. The parameters are:
     - **_value_** - (*any*) - the value of the task property
     - **_id_** - (*string | number*) - task ID
     - **_column_** - (*GridColumn*) - the column configuration object
     - **_node_** - (*HTMLElement*) - the DOM element of the inline editor
-- <span class=submethod>**is_valid? (value, id, column, node): boolean**</span> - the function where you can add validation. If you return **false**, the changes will be cancelled.
+- <span class=submethod>**is_valid? (value, id, column, node): boolean**</span> - optional, the function where you can add validation. If you return **false**, the changes will be cancelled. The parameters are:
     - **_value_** - (*any*) - the value of the task property
     - **_id_** - (*string | number*) - task ID
     - **_column_** - (*GridColumn*) - the column configuration object
     - **_node_** - (*HTMLElement*) - the DOM element of the inline editor
-- <span class=submethod>**save? (id, column, node): void**</span> - the function for complex save behavior, when the editor has the `map_to:auto` property.
+- <span class=submethod>**save? (id, column, node): void**</span> - optional, the function for a complex save behavior, when the editor has the `map_to:auto` property. The parameters are:
     - **_id_** - (*string | number*) - task ID
     - **_column_** - (*GridColumn*) - the column configuration object
     - **_node_** - (*HTMLElement*) - the Task object
-- <span class=submethod>**focus? (node): void**</span> - this function is called when the inline editor receives focus
+- <span class=submethod>**focus? (node): void**</span> - optional, this function is called when the inline editor receives focus.
     - **_node_** - (*HTMLElement*) - the DOM element of the inline editor
 
 

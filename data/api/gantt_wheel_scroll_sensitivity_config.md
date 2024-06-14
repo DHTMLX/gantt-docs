@@ -27,8 +27,8 @@ gantt.config.wheel_scroll_sensitivity = {
 
 The object configuration has these properties:
 
-- <span class=subproperty>**x**</span> - (*number*) - horizontal speed
-- <span class=subproperty>**y**</span> - (*number*) - vertical speed
+- <span class=subproperty>**x**</span> - (*number*) - the horizontal speed
+- <span class=subproperty>**y**</span> - (*number*) - the vertical speed
 
 @changelog: added in v7.0.11
 

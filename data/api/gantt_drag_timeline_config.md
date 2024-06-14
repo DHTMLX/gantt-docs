@@ -44,7 +44,7 @@ gantt.config.drag_timeline = {
 ~~~
 
 
-- <span class=subproperty>**useKey**</span> - (*string | boolean*) - if the property is specified, scrolling the timeline will be activated only when the specified modifier key is pressed. Supported values: "ctrlKey", "shiftKey", "metaKey", "altKey".
+- <span class=subproperty>**useKey**</span> - (*string | boolean*) - if the property is specified, scrolling the timeline will be activated only when the specified modifier key is pressed. The supported values are: "ctrlKey", "shiftKey", "metaKey", "altKey".
 
 
 @relatedsample:

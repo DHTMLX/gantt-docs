@@ -47,11 +47,11 @@ The **resources** property presents an object with a set of attributes:
 - <span class=subproperty>**editable_resource_diagram**</span> - (*boolean*) - defines whether resource assignments will be editable in the resource diagram
 - <span class=subproperty>**resource_store**</span> - (*object*) - creates the default resource datastore. The object includes the following properties:
     - **_type?_** - (*string*) - optional, accepts only one fixed value **"treeDatastore"**. If the type:"treeDatastore" is specified, the datastore will support hierarchical data, with the **id** property as a primary key, and **parent** as a link to the parent id. Any other value will produce a flat list datastore.
-    - **_initItem?_** - (*Function*): any - optional, preprocesses items loaded into the datastore. It is a good place to set the default values of the datastore items.
+    - **_initItem?_** - (*Function*): any - optional, preprocesses items loaded into the datastore. It is a good place to set the default values of the datastore items. The function takes the following parameter:
         - **_item_** - (*any*) - the resource item
-    - **_fetchTasks?_** - (*boolean*) - enables showing all tasks assigned to a certain resource in the resource view panel. This functionality works both for the resource diagram and resource histogram types of layout.
-- <span class=submethod>**lightbox_resources? (resourceArray): any**</span> - a function which takes all resources as an argument and must return an array of resources that should be available in the resource control of the lightbox. By default, the control will be populated with resources that don't have sub-resources. 
-    - **_resourceArray_** - (*any*) - array with resources
+    - **_fetchTasks?_** - (*boolean*) - optional, enables showing all tasks assigned to a certain resource in the resource view panel. This functionality works both for the resource diagram and resource histogram types of layout.
+- <span class=submethod>**lightbox_resources? (resourceArray): any**</span> - optional, a function which takes all resources as an argument and must return an array of resources that should be available in the resource control of the lightbox. By default, the control will be populated with resources that don't have sub-resources. 
+    - **_resourceArray_** - (*any*) - an array with resources
 
 
 
