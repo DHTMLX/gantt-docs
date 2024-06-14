@@ -3,7 +3,7 @@ showQuickInfo
 @short:displays the pop-up task form for the specified task
 	
 @params: 
-- id	string, number 	the task id
+- id	string | number 	the task id
 
 @example: 
 gantt.addTask({

@@ -15,6 +15,15 @@ constraint_types
 
 The object definition:
 
+- <span class=subproperty>**ASAP**</span> - (*string*) - As Soon As Possible
+- <span class=subproperty>**ALAP**</span> - (*string*) - As Late As Possible
+- <span class=subproperty>**SNET**</span> - (*string*) - Start No Earlier Than
+- <span class=subproperty>**SNLT**</span> - (*string*) - Start No Later Than
+- <span class=subproperty>**FNET**</span> - (*string*) - Finish No Earlier Than
+- <span class=subproperty>**FNLT**</span> - (*string*) - Finish No Later Than
+- <span class=subproperty>**MSO**</span> - (*string*) - Must Start On
+- <span class=subproperty>**MFO**</span> - (*string*) - Must Finish On
+
 ~~~js
 gantt.config.constraint_types = {
  // As Soon As Possible

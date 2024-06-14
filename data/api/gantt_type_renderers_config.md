@@ -4,7 +4,7 @@ type_renderers
 @short:redefines functions responsible for displaying different types of tasks
 	
 @edition: pro
-@type: object
+@type: CustomTypeRenderers
 @default:{}
 @example:
 gantt.config.type_renderers[gantt.config.types.project] = function(task,defaultRender){
@@ -29,10 +29,24 @@ gantt.config.type_renderers[gantt.config.types.project] = function(task,defaultR
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
+
+
 A function that renders tasks takes 2 parameters:
 
-- **task** - the task object
-- **defaultRender** - the default render function used in the dhtmlxGantt
+- <span class=submethod>**typeRenderer (task, defaultRender): HTMLElement | boolean | void | undefined**</span> - a function takes a task's object as a parameter and must return a DOM element that will be displayed instead of the task bar.
+    - **_task_** - (*Task*) - the task object
+    - **_defaultRender?_** - (*TaskLayerRender*) - optional, the default render function used in the dhtmlxGantt
+
+Here are the possible type_renderers types:
+
+- <span class=subproperty>**type_renderers**</span> - (*object*) - a custom render function for the *task* type
+    - **_task?_** - (*typeRenderer*) - optional, a custom render function for the *task* type
+    - **_project?_** - (*typeRenderer*) - optional, a custom render function for the *project* type
+    - **_milestone?_** - (*typeRenderer*) - optional, a custom render function for the *milestone* type
+    - **_[typeName: string]_** - (*typeRenderer | undefined*) - optional, a custom render function for the custom task type
+
+
+
 
 You can use this option  to define a custom display for certain types of tasks.
 For example, the setting allows you to implement a more conservative view for the project or summary tasks.

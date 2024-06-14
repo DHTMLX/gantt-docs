@@ -5,7 +5,7 @@ createDataProcessor
 	creates a new dataProcessor instance and attaches it to gantt
 
 @params:
-- config	string,object 		dataProcessor configuration object
+- config	string | object 		dataProcessor configuration object
 
 @returns: 
 - dataProcessor		object		the dataProcessor object

@@ -6,10 +6,10 @@ getParent
 	
 
 @params:
-- id 	string, number	the task id
+- id 	string | number	the task id
 
 @returns:
-- id 	string, number	the id of the parent task. Root's id if there is no parent for the specified task
+- id 	string | number	the id of the parent task. Root's id if there is no parent for the specified task
 
 
 

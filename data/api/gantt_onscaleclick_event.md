@@ -3,8 +3,8 @@ onScaleClick
 @short:fires when the user clicks on the cell in the time scale
 
 @params:
-- e Event	a native event object
-- date	Date	the date of the clicked cell
+- e 	Event	a native event object
+- date 	Date	the date of the clicked cell
 
 @example:
 gantt.attachEvent("onScaleClick", function (e, date) {

@@ -6,13 +6,13 @@ onBeforeTaskAdd
 
 @params:
 - id		string,number		the task id
-- item		object				the task object 
+- task		Task				the task object 
 
 @returns:  
   - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 
  
 @example:
-gantt.attachEvent("onBeforeTaskAdd", function(id,item){
+gantt.attachEvent("onBeforeTaskAdd", function(id,task){
     //any custom logic here
 	return true;
 });

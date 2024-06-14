@@ -3,8 +3,8 @@ changeTaskId
 @short:changes the task's id
 	
 @params: 
-- id	string, number	the current task's id
-- new_id	string, number	the new task's id
+- id	string | number	the current task's id
+- new_id	string | number	the new task's id
 
 
 

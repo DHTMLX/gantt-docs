@@ -5,7 +5,7 @@ wheel_scroll_sensitivity
 @short: specifies the speed of scrolling the gantt by the mouse wheel
 	
 
-@type: number|object
+@type: undefined | number | object
 
 @default: undefined
 
@@ -24,6 +24,11 @@ gantt.config.wheel_scroll_sensitivity = {
 
 @template:	api_config
 @descr:
+
+The object configuration has these properties:
+
+- <span class=subproperty>**x**</span> - (*number*) - the horizontal speed
+- <span class=subproperty>**y**</span> - (*number*) - the vertical speed
 
 @changelog: added in v7.0.11
 

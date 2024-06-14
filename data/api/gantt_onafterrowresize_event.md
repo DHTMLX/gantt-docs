@@ -7,12 +7,12 @@ onAfterRowResize
 
 @params:
 - id	string|number	the task id
-- item	object	the item object
+- task	Task	the item object
 - oldHeight	number	the old height of the row
 - newHeight	number	the new height of the row
 
 @example:
-gantt.attachEvent("onAfterRowResize", function (id, item, oldHeight, newHeight) {
+gantt.attachEvent("onAfterRowResize", function (id, task, oldHeight, newHeight) {
 	gantt.message(`<b>${item.text}</b> was <b>${oldHeight}px</b> height.<br>
 	<b>${item.text}</b> is now <b>${newHeight}px</b> height`);
 });

@@ -5,7 +5,7 @@ getResourceCalendar
 	
 
 @params:
-- resource		string,number,object		the id or object of the resource
+- resource		string | number | object		the id or object of the resource
 
 @returns:
 - param		object		the calendar object

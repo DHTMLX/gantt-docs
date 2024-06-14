@@ -3,7 +3,7 @@ columns
 @short: configures the columns of the table
 	
 
-@type: array
+@type: GridColumn[]
 @example:
 // default columns definition
 gantt.config.columns=[

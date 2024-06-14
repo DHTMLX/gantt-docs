@@ -5,7 +5,7 @@ isReadonly
 checks whether the specified task/link, or the whole Gantt is read-only
 
 @params:
-* item	number|string|Task|Link	optional, the id or an object of the task/link. If not specified, the method checks whether the Gantt is read-only
+* item	number | string | Task | Link	optional, the id or an object of the task/link. If not specified, the method checks whether the Gantt is read-only
 
 
 @returns:

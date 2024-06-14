@@ -9,7 +9,7 @@ getLabel
 
 @params: 
 - property	string	the name of a data property that the control is mapped to
-- key	string, number	 the option's id. This parameter is compared with the task's data property to <br> assign the select's option to the task
+- key	string | number	 the option's id. This parameter is compared with the task's data property to <br> assign the select's option to the task
 
 @example: 
 

@@ -4,7 +4,7 @@ click_drag
 @short:enables advanced drag-n-drop
 	
 
-@type: object
+@type: undefined | ClickDrag
 
 @default:{ useKey: false, ignore: ".gantt_task_line, .gantt_task_link" }
 

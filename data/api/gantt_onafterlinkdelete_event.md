@@ -4,10 +4,10 @@ onAfterLinkDelete
 
 @params:
 - id		string,number			the link id
-- item		object					the link object 
+- link		Link					the link object 
 
 @example:
-gantt.attachEvent("onAfterLinkDelete", function(id,item){
+gantt.attachEvent("onAfterLinkDelete", function(id,link){
     //any custom logic here
 });
 

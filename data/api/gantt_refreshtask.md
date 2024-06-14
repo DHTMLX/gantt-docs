@@ -5,7 +5,7 @@ refreshTask
 	
 
 @params:
-- id				string, number			the task id
+- id				string | number			the task id
 * refresh_links		boolean					optional, defines whether links related to the task should be refreshed, <em>true</em> by default
 
 

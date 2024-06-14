@@ -3,10 +3,10 @@ getGridColumn
 @short: gets the configuration object of a column
 
 @params:
-- name	string |number	the column's name
+- name	string | number	the column's name
 
 @returns:
-- column	object	the column's object
+- column	GridColumn	the column's object
 
 @example:
 gantt.config.columns = [

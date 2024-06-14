@@ -5,7 +5,7 @@ onColumnResize
 @edition: pro
 @params:
 - index			number		the column index
-- column		object		the column object
+- column		GridColumn		the column object
 - new_width		number		the new column's width
 
 

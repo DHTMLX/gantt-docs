@@ -3,7 +3,7 @@ getTaskNode
 @short:returns the HTML element of the task bar 
 	
 @params:
-- id	string, number	the task id
+- id	string | number	the task id
 
 @returns:
 node	HTMLElement		the HTML element of the task bar

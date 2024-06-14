@@ -6,7 +6,7 @@ onBeforeSplitTaskDisplay
 
 @params:
 - id 	number|string	the id of the subtask
-- task	object	the object of the subtask
+- task	Task	the object of the subtask
 - parent	object	the object of the parent task 
 
 @returns:  

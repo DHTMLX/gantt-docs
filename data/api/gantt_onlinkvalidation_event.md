@@ -5,7 +5,7 @@ onLinkValidation
 	
 
 @params:
-- link	object	the link object
+- link	Link	the link object
 
 @returns:  
   - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or cancelled (<b>false</b>) 

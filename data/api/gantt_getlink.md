@@ -5,7 +5,7 @@ getLink
 	
 
 @params:
-- id	string,number	the link id
+- id	string | number	the link id
 
 @returns:
 link	Link 	the link object 

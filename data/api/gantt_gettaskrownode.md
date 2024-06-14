@@ -3,7 +3,7 @@ getTaskRowNode
 @short:returns the HTML element of the task row in the table
 	
 @params:
-- id	string, number	the task id
+- id	string | number	the task id
 
 @returns:
 node	HTMLElement		the HTML element of the task row

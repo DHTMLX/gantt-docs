@@ -3,8 +3,8 @@ changeLinkId
 @short:changes the link's id
 	
 @params: 
-- id	string, number	the current link's id
-- new_id	string, number	the new link's id
+- id	string | number	the current link's id
+- new_id	string | number	the new link's id
 
 
 

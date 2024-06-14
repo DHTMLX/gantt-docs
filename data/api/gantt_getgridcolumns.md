@@ -4,7 +4,7 @@ getGridColumns
 	
 
 @returns:
-- columns	array	an array of columns 
+- columns	GridColumn[]	an array of columns 
 
 
 

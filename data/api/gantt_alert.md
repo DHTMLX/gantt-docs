@@ -7,7 +7,7 @@ alert
 
 @params:
 
-- config		object|string|number			either an object with the alert box's configuration or the text to show
+- config		object | string | number			either an object with the alert box's configuration or the text to show
 
 @returns:
 

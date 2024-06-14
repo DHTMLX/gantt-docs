@@ -4,10 +4,10 @@ selectTask
 	
 
 @params:
-- id	string,number		the task id
+- id	string | number		the task id
 
 @returns:
-- id	string,number		the id of the selected task
+- id	string | number		the id of the selected task
 
 @example:
 var tasks = {

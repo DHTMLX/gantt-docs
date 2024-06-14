@@ -26,6 +26,9 @@ gantt.config.resource_calendars = {
 
 {{pronote This functionality is available in the PRO edition only.}}
 
+- <span class=subproperty>**[resourceId: string | number]**</span> - (*string | number | {[resourceId: string | number]: string | number | undefined } | undefined*) - mapping of the resource calendar
+
+
 Before version 7.0, dhtmlxGantt used a slightly different format of **resource_calendars**.
 
 The new way of assigning a working calendar to a user described above is easier and more convenient to use but the old configuration of the **resource_calendars** property will also  work:

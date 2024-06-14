@@ -5,10 +5,10 @@ onAfterTaskAutoSchedule
 	fires for each task which has been autoscheduled
 
 @params:
-- task					object					the task object
+- task					Task					the task object
 - start					Date					a new start date
-- link					object					the link object that creates the constraint 
-- predecessor			object					the predecessor task object
+- link					Link					the link object that creates the constraint 
+- predecessor			Task					the predecessor task object
 
 
 @example:

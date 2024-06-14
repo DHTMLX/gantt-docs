@@ -5,7 +5,7 @@ addTaskLayer
 @edition: pro
 
 @params:
-- func		function,object		a render function or a config object 
+- func		TaskLayerRender | TaskLayerConfig		a render function or a config object 
 
 @returns:
 - layerId		string		a DOM element that will be displayed in the layer
@@ -45,13 +45,59 @@ desktop/how_to.md#howtoverticallyreordertasksinthetimeline (read how to vertical
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-- The argument function takes a task's object as a parameter and must return a DOM element that will be displayed in the layer.
-- The argument can also be an object. In this case, it can have the following properties:
-	- **id?** - (*string | number*) - the layer ID
-	- **renderer** - (*function|object*) - a function that answers for rendering the layer's elements (mandatory)
-	- **container?** - (*HTMLElement*) - a layer's container (optional)
-    - **topmost?** - (*boolean*) - if true, the element will be displayed over the task (optional)
-    - **filter?** - (*function*) - a function that takes a task object as a parameter. If returns 'false', the 'renderer' function won't be called for a task (optional)
+The argument can have these types:
+
+
+- <span class=submethod>**taskLayerRender (task, timeline, config, viewport): HTMLElement|boolean|void**</span> - a function takes a task's object as a parameter and must return a DOM element that will be displayed in the layer.
+    - **_task_** - (*Task*) - the task object
+    - **_timeline?_** - (*any*) - the timeline view
+    - **_config?_** - (*GanttConfigOptions*) - the Gantt configuration object
+    - **_viewport?_** - (*LayerViewport*) - the viewport object
+
+- <span class=subproperty>**taskLayerConfig**</span> - (*object*) - the configuration object for the additional task layer. Has the following properties:
+    - **_id?_** - (*string | number*) - optional, the layer ID
+    - **_renderer_** - (*object*) - mandatory, a function that answers for rendering the layer's elements
+        - **_render_** - (*TaskLayerRender*) - the function that returns HTML element that should be rendered
+        - **_update?_** - (*Function*): void - optional, a function where you can update the rendered HTML elements
+            - **_task_** - (*Task*) - the task object
+            - **_node_** - (*HTMLElement*) - the container of the rendered node
+            - **_timeline?_** - (*any*) - the timeline view
+            - **_config?_** - (*GanttConfigOptions*) - the Gantt configuration object
+            - **_viewport?_** - (*LayerViewport*) - the viewport object
+        - **_onrender?_** - (*Function*): void - optional, this function is called after rendering is complete. You can use it to render native components (for example, using the `ReactDOM.render` method)
+            - **_task_** - (*Task*) - the task object
+            - **_node_** - (*HTMLElement*) - the container of the rendered node
+            - **_view?_** - (*any*) - the layout cell where the layer is added (timeline, by default)
+        - **_getRectangle?_** - (*Function*): { left: number, top: number, height: number, width: number } | void - optional, a function that returns the coordinates of the viewport rectangle
+            - **_task_** - (*Task*) - the task object
+            - **_view?_** - (*any*) - the layout cell where the layer is added (timeline, by default)
+            - **_config?_** - (*GanttConfigOptions*) - the Gantt configuration object
+            - **_gantt?_** - (*GanttStatic*) - the Gantt object
+        - **_getVisibleRange_** - (*Function*): {start: number, end: number} | undefined | void - a function that returns the object with of the visible range
+            - **_gantt?_** - (*GanttStatic*) - the Gantt object
+            - **_view?_** - (*any*) - the layout cell where the layer is added (timeline, by default)
+            - **_config?_** - (*GanttConfigOptions*) - the Gantt configuration object
+            - **_datastore?_** - (*any*) - the task datastore object
+            - **_viewport?_** - (*LayerViewport*) - the viewport object
+    - **_container?_** - (*HTMLElement*) - optional, a layer's container
+    - **_topmost?_** - (*boolean*) - optional, if true, the element will be displayed over the task
+    - **_filter?_** - (*Function*): boolean - optional, a function that takes a task object as a parameter. If returns 'false', the 'renderer' function won't be called for a task
+        - **_task_** - (*Task*) - the task object
+
+        
+The layer viewport has these properties:
+
+- <span class=subproperty>**viewport**</span> -  (*object*) - the layer viewport object
+    - **_x_** - (*number*) - the left rectangle position
+    - **_x_end_** - (*number*) - the right rectangle position
+    - **_y_** - (*number*) - the top rectangle position
+    - **_y_end_** - (*number*) - the bottom rectangle position
+    - **_width_** - (*number*) - the rectangle width
+    - **_height_** - (*number*) - the rectangle height
+
+
+
+
 - Beware, custom layers will be reset after the next call of <a href="api/gantt_init.md">gantt.init</a>
 - Calling the [gantt.resetLayout()](api/gantt_resetlayout.md) method will also reset custom layers. In order for custom layers to be displayed on a page, you need to redefine the **gantt.addTaskLayer**  method after calling api/gantt_resetlayout.md.
 

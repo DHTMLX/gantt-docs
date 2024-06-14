@@ -5,7 +5,7 @@ roundDate
 	
 
 @params:
-- date	Date, object 	the Date object to round or an object with settings
+- date	Date | object 	the Date object to round or an object with settings
 
 
 @returns: 

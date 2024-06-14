@@ -17,10 +17,10 @@ var type1 = gantt.config.links.finish_to_start;
 @template:	api_config
 @descr:
 
-- **"finish_to_start"** - the target task can't start before the source task ends (but it may start later).
-- **"start_to_start"** - the target task can't start until the source task starts (but it may start later).
-- **"finish_to_finish"** -  the target task can't end before the source task ends (but it may end later).
-- **"start_to_finish"** - the target task can't end before the source task starts (but it may end later).
+- <span class=subproperty>**finish_to_start**</span> - (*string | number*) - the target task can't start before the source task ends (but it may start later).
+- <span class=subproperty>**start_to_start**</span> - (*string | number*) - the target task can't start until the source task starts (but it may start later).
+- <span class=subproperty>**finish_to_finish**</span> - (*string | number*) -  the target task can't end before the source task ends (but it may end later).
+- <span class=subproperty>**start_to_finish**</span> - (*string | number*) - the target task can't end before the source task starts (but it may end later).
 
 
 @related:

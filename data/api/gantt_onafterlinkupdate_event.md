@@ -5,10 +5,10 @@ onAfterLinkUpdate
 
 @params:
 - id		string,number			the link id
-- item		object					the link object 
+- link		Link					the link object 
 
 @example:
-gantt.attachEvent("onAfterLinkUpdate", function(id,item){
+gantt.attachEvent("onAfterLinkUpdate", function(id,link){
     //any custom logic here
 });
 

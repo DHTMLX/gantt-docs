@@ -4,7 +4,7 @@ onTaskCreated
 @short:fires when a user creates a new task by pressing the'+' button in a grid, or when the api/gantt_createtask.md method is called
 
 @params:
-- task		object		the object of a new task
+- task		Task		the object of a new task
 
 @returns:  
   - result     boolean       returning `false` will cancel the creation of a new task, returning `true` will continue the default processing

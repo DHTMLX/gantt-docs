@@ -6,7 +6,7 @@ onBeforeRollupTaskDisplay
 
 @params:
 - taskId 	number|string	the rollup task id
-- task	object	the rollup task object
+- task	Task	the rollup task object
 - parentId	number|string	the id of the parent (project) task
 
 @returns:  

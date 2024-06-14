@@ -5,7 +5,7 @@ buttons_left
 
 @default:["gantt_save_btn", "gantt_cancel_btn"]
 
-@type: array
+@type: string[]
 @example:
 <style>
     .complete_button{

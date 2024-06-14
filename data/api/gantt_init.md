@@ -5,7 +5,7 @@ init
 	
 
 @params:
-- container		string,HTMLElement		an HTML container (or its id) where a dhtmlxGantt object will be initialized
+- container		string | HTMLElement		an HTML container (or its id) where a dhtmlxGantt object will be initialized
 * from			Date					the start value of the time scale (X&ndash;Axis)
 * to			Date					the end value of the time scale (X&ndash;Axis)
 

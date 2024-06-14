@@ -14,6 +14,14 @@ Lightboxes may differ depending on the type and peculiarities of tasks they are 
 It is also possible to [add a custom type](desktop/task_types.md#creatingacustomtype) and define necessary structure of the lightbox for it.
 More information is given in the article desktop/task_types.md#specificlightboxpertasktype.
 
+The overall type structure looks like this:
+
+- <span class=subproperty>**sections?**</span> - (*LightboxSection[]*) - optional, the lightbox sections array for regular tasks
+- <span class=subproperty>**project_sections?**</span> - (*LightboxSection[]*) - optional, the lightbox sections array for project tasks
+- <span class=subproperty>**milestone_sections?**</span> - (*LightboxSection[]*) - optional, the lightbox sections array for milestones
+- <span class=subproperty>**[lightboxType: string]**</span> - (*LightboxSection[] | undefined*) - the lightbox sections array for the custom type
+
+
 {{note
 From v7.1.13, if either [gantt.config.csp](api/gantt_csp_config.md) is set to *true* or Gantt works in the Salesforce environment, the lightbox will be rendered inside the Gantt container.}}
 

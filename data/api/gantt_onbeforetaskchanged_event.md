@@ -8,7 +8,7 @@ onBeforeTaskChanged
 
 - id	string,number	the task id
 - mode	string 			the drag-and-drop mode ("resize", "progress", "move", "ignore")
-- task  object			the copy of the task object in its original state (before drag and drop)
+- task  Task			the copy of the task object in its original state (before drag and drop)
 
 @returns:  
   - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 

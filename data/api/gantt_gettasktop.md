@@ -4,7 +4,7 @@ getTaskTop
 	
 
 @params:
-- id	number, string	the task's id
+- id	number | string	the task's id
 
 @returns:
 -top	number	the CSS top position the task's DOM element in pixels

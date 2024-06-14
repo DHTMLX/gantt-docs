@@ -6,7 +6,7 @@ deleteCalendar
 
 @params:
 
-- id		string,number		the id of the calendar
+- id		string | number		the id of the calendar
 
 
 @example:

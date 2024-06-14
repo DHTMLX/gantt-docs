@@ -4,7 +4,7 @@ checkEvent
 	
 
 @params:
-- name	GanttEventName	the event's name
+- name	string	the event's name
 
 
 @returns:

@@ -7,7 +7,7 @@ autoSchedule
 @require:auto_scheduling
 
 @params:
-* taskId		string,number		optional, the task id 
+* taskId		string | number		optional, the task id 
 
 @example:
 gantt.autoSchedule();

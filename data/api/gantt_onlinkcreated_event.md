@@ -4,7 +4,7 @@ onLinkCreated
 @short: fires when a user creates a new link between tasks
 
 @params:
-- link		object		the object of a new link
+- link		Link		the object of a new link
 
 @returns:  
 - result     boolean       returning `false` will cancel the creation of a new link, returning `true` will continue the default processing

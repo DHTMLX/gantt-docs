@@ -4,7 +4,7 @@ getLinkNode
 	
 
 @params:
-- id	string, number	the link id
+- id	string | number	the link id
 
 @returns:
 node	HTMLElement		the HTML element of the link

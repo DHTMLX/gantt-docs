@@ -5,14 +5,14 @@ onBeforeRowResize
 	
 
 @params:
-- item	object	the task object
+- task	Task	the task object
 
 @returns:
 - param	boolean	defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>)
 
 @example:
-gantt.attachEvent("onBeforeRowResize", function (item) {
-	gantt.message(`Start resizing <b>${item.text}</b>`);
+gantt.attachEvent("onBeforeRowResize", function (task) {
+	gantt.message(`Start resizing <b>${task.text}</b>`);
 	return true;
 });
 

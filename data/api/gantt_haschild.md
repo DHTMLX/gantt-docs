@@ -4,7 +4,7 @@ hasChild
 	
 
 @params:
-- id	string, number	the task id
+- id	string | number	the task id
 
 @returns:
 - childs	number | undefined	the number of child tasks (if exist), or "undefined" otherwise

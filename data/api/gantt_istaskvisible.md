@@ -5,7 +5,7 @@ isTaskVisible
 	
 
 @params:
-- id	string, number		the task's id
+- id	string | number		the task's id
 
 @returns:
 - isvisible		boolean		<i>true</i>, if the task is currently rendered in the Gantt chart. Otherwise, <i>false</i>

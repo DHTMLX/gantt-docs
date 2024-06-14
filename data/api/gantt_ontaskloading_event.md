@@ -6,7 +6,7 @@ onTaskLoading
 	
 
 @params:
-- task			object			the object of a task
+- task			Task			the object of a task
 
 @returns:  
 - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>) 

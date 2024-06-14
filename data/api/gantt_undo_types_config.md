@@ -16,6 +16,9 @@ gantt.config.undo_types = {
 
 {{note This option is defined in the **undo** extension, so you need to enable the [undo](desktop/extensions_list.md#undo) plugin. Read the details in the desktop/undo_redo.md article.}}
 
+- <span class=subproperty>**link**</span> - (*string*) - the name of the "link" entity
+- <span class=subproperty>**task**</span> - (*string*) - the name of the "task" entity
+
 
 @relatedapi:
 - api/gantt_undo_config.md
