@@ -25,6 +25,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix the issue that causes tasks to disappear after [vertically dragging](api/gantt_order_branch_config.md) a parent task
 - Fix the incorrect work of [keyboard shortcut](desktop/keyboard_navigation.md) for scrolling when [smart_rendering](api/gantt_smart_rendering_config.md) is enabled
 - Fix the issue with custom properties of [Resource Assignments](desktop/resource_management.md) objects not being included after parsing
+- Update TypeScript type definitions
 
 
 8.0.8
