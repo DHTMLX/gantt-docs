@@ -10,6 +10,24 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+8.0.9
+----------
+
+<span class='release_date'>June 18, 2024. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue that prevented reopening the [Inline editor](desktop/inline_editing.md) after vertically scrolling the Gantt
+- Fix the issue with [DataProcessor](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments) ignoring custom headers specified in the [gantt.createDataProcessor](api/gantt_createdataprocessor.md) method
+- Fix tasks display issue that occurs when [onBeforeLightbox](api/gantt_onbeforelightbox_event.md) handler returns `false` while creating a new task
+- Fix the incorrect [markers](desktop/markers.md) height when [timeline_placeholder](api/gantt_timeline_placeholder_config.md) config is enabled
+- Fix [Formatter](desktop/formatters_ext.md) working only with Latin symbols
+- Fix the issue that causes tasks to disappear after [vertically dragging](api/gantt_order_branch_config.md) a parent task
+- Fix the incorrect work of [keyboard shortcut](desktop/keyboard_navigation.md) for scrolling when [smart_rendering](api/gantt_smart_rendering_config.md) is enabled
+- Fix the issue with custom properties of [Resource Assignments](desktop/resource_management.md) objects not being included after parsing
+- Update TypeScript type definitions
+
+
 8.0.8
 ----------
 
