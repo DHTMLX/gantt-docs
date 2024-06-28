@@ -102,6 +102,6 @@ export interface GanttInitializationConfig {
 
 export interface GanttInternationalization {
 	setLocale(locale: any): void;
-	getLocale(language?: string): GanttLocale;
+	getLocale(language: string): GanttLocale;
 	addLocale(language: string, locale: GanttLocale): void;
 }
