@@ -24,7 +24,7 @@ It is distributed in the form of source code and as a Docker image.
 	<tr>
     	<td>- 1 CPU core (shared virtual core will do)<br>- at least 500MB RAM</td>
 		<td>- Linux<br>- Windows<br>- MacOS</td>
-        <td>- Node.js v10.0.0 or newer<br>or<br>- Docker</td>
+        <td>- Node.js v12.03 or newer, v18 or v20 are recommended<br>or<br>- Docker</td>
 	</tr>
 </table>
 
@@ -34,11 +34,10 @@ It is distributed in the form of source code and as a Docker image.
 
 ### Overview
 
-Export to MS Project is an ASP.NET MVC application written in C# and runs on Windows and IIS server.
-<br>The app works in .NET Framework, there is no build for .NET Core Framework.
+Export to MS Project is a .Net Core Framework application written in C# and runs on Windows, MacOS, Linux.
 
-We can provide you with the source code (Visual Studio solution) that can be deployed on your own server or any cloud provider.
-The source project is compatible with MS VisualStudio 2013-2019.
+We can provide you with the source code that can be deployed on your own server or any cloud provider.
+The source project is compatible with MS VisualStudio 2022+.
 
 ### System requirements
 
@@ -48,8 +47,8 @@ The source project is compatible with MS VisualStudio 2013-2019.
     </tr>
 	<tr>
     	<td>- 1 CPU core (shared virtual core will do)<br>- at least 1000MB RAM</td>
-		<td>- Windows Server 2008 R2 or newer<br>- Windows 7 or newer</td>
-        <td>- .NET Framework 4.7.2+<br>- IIS 7.5+</td>
+		<td>- Windows<br>- MacOS<br>- Linux</td>
+        <td>- .NET Core 7.0+</td>
 	</tr>
 </table>
 
