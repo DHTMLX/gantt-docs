@@ -135,6 +135,14 @@ If several people export Gantt at the same time, the process can take more time 
 Multi-page export
 -------------------
 
+Please note that the export module doesn't have technical possibilities to do the following:
+
+- control the cutoff position (so the tasks may be sliced in the middle between the pages)
+- show scales on each page without overlaying tasks
+- show the header and the footer on each page without overlaying the task rows
+
+So to complete the above described tasks you need to apply custom solutions. Some of them are provided below.
+
 ### Exporting data automatically in one file 
 
 For multi-page export in one file, you can either use the online export service (with [time limitations](#timerestrictions)) or 

@@ -37,6 +37,26 @@ The method will send a request to the remote service, which will either output a
 	08_api/08_export_other.html
 }}
 
+Note that when you export data to Primavera, you need to return *true* for the **Summary** property for the project tasks to make that feature work correctly:
+
+~~~js
+gantt.exportToPrimaveraP6({
+  tasks: {
+    Summary: function (task) {
+      return !!gantt.hasChild(task.id);
+    },
+    CustomProperty: function (task) {
+      return task.custom_property;
+    },
+    SlateId: function (task) {
+      return task.id + "";
+    },
+  }
+});
+~~~
+
+{{editor	https://snippet.dhtmlx.com/r90hjlvo?tag=gantt	Custom properties for WBS tasks (PrimaveraP6's Summary tasks)}}
+
 ### Response
 
 The response will contain a JSON of the following structure:
