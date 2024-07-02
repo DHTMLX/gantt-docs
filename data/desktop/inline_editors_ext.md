@@ -60,10 +60,18 @@ Read details about the Inline editors extension in the article desktop/inline_ed
 
 - <span class=submethod>**setMapping (mapping): void**</span> - sets a mapping object
     - **_mapping_** - (*object*) - an object with the mapping configuration:
-        - **_init_** - (*Function*) - the method to initialize mapping
-        - **_onShow_** - (*Function*) - the method that will be called when the inline editor is opened
-        - **_onHide_** - (*Function*) - the method that will be called when the inline editor is closed
-        - **_destroy_** - (*Function*) - the method to destroy mapping
+        - **_init_** - (*Function*): void - the method to initialize mapping
+            - **_inlineEditors_** - (*InlineEditorMethods*) - the inlineEditors object
+            - **_grid_** - (*any*) - the Grid layout view
+        - **_onShow_** - (*Function*): void - the method that will be called when the inline editor is opened
+            - **_inlineEditors_** - (*InlineEditorMethods*) - the inlineEditors object
+            - **_node_** - (*HTMLElement*) - the HTML element
+            - **_grid_** - (*any*) - the Grid layout view
+        - **_onHide_** - (*Function*): void - the method that will be called when the inline editor is closed
+            - **_inlineEditors_** - (*InlineEditorMethods*) - the inlineEditors object
+            - **_node_** - (*HTMLElement*) - the HTML element
+            - **_grid_** - (*any*) - the Grid layout view
+        - **_destroy_** - (*Function*): void - the method to destroy mapping
 - <span class=submethod>**getMapping (): object**</span> - returns a currently applied mapping object
 
 

@@ -4,7 +4,7 @@ getScrollState
 	
 
 @returns:
-scroll	object	the scroll position object as { x:scrollLeft, y:scrollTop } 
+ScrollState	ScrollState	the scroll position object as { x:scrollLeft, y:scrollTop } 
 
 
 
