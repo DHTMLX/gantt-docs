@@ -568,6 +568,7 @@ Gantt API
 - api/gantt_date_other.md - a set of date formatting methods
 - api/gantt_env_other.md - a set of flags which describe current environment
 - api/gantt_ext_other.md - an object that stores various extensions
+- api/gantt_form_blocks_other.md - an object of the lightbox controls
 - api/gantt_i18n_other.md - a set of methods for Gantt chart localization
 - api/gantt_ignore_time_other.md - hides a time unit in the time scale
 - api/gantt_json_other.md - specifies JSON serialization and parsing
