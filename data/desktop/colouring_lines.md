@@ -189,16 +189,30 @@ gantt.getLink(4).color = "green";
 
 {{editor		https://snippet.dhtmlx.com/e5utei5g			Link colors from the "color" property}}
 
-If, at least one of the properties is assigned, the link receives additional class - **"gantt_link_inline_color"**. 
+{{note
+Adding a custom color via the **color** property is followed by adding of an inline style, which has the highest priority among other styles. As a result, the critical path won't be highlighted, and any custom style you have added to change the link color won't be applied.}}
 
-You can use this class to override some other style for the link:
+In order to make the links look critical, you can use the following code:
 
-~~~js
+~~~css
+.gantt_critical_link .gantt_line_wrapper>div {
+  background-color: #e63030 !important;
+}
+
+.gantt_critical_link .gantt_link_arrow {
+  border-left-color: #e63030 !important;
+}
+~~~
+
+{{editor	https://snippet.dhtmlx.com/xipdml7a		Coloring critical tasks and links}}
+
+If at least one of the properties of a link object is assigned, the link receives additional class **"gantt_link_inline_color"**. You can use this class to override some other style for the link:
+
+~~~css
 .gantt_link_inline_color {
 	opacity:0.4
 }
 ~~~
-
 
 The properties can have any valid CSS color value, e.g. all of the following notations are valid:
 
