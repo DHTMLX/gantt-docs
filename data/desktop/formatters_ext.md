@@ -8,6 +8,8 @@ The **gantt.ext.formatters** extension provides two formatting methods:
 - [durationFormatter()](desktop/formatters_ext.md#durationformatter)
 - [linkFormatter()](desktop/formatters_ext.md#linkformatter)
 
+You can also specify a [custom formatter](#customformatter) based on the existing ones.
+
 Duration Formatter
 ----------------------
 
@@ -190,8 +192,6 @@ console.log(formatter.parse("1 day"));
 // 8
 ~~~
 
-
-
 Read details about the **durationFormatter** method in the desktop/working_time.md#taskdurationindecimalformat article.
 
 Link Formatter
@@ -324,9 +324,70 @@ console.log(formatter.format({id:1, type:"1", source: 2, target: 3, lag: 1}));
 Finish-To-Start links with no lag/lead will be formatted using the short format, while the other links will be formatted using the complete format.
 Similarly, if only WBS code of a task is provided into the **parse** method, the formatter will assume Finish-to-Start type and zero lag time.
 
-
-
-
 Read details about the linkFormatter method in the desktop/inline_editing.md#linkformatter article.
+
+
+Custom Formatter
+-------------------
+
+The Gantt functionality allows you to create a custom formatter on the base of the existing Gantt formatters. You can add a custom formatter to the inline editor. Under the 
+hood Gantt will store data in the values habitual for it, while when a user will open the inline editor, it will show the value that the user needs.
+
+A custom formatter is an object with two functions: the **format()** function and the **parse()** one.
+
+The **format** function converts either a number (custom duration formatter) or a link  (custom link formatter) into the necessary value. The **parse** function converts a
+formatted value either into a number (custom duration formatter) or a link (custom link formatter).
+
+This is how the custom formatters look like: 
+
+~~~js
+const customDurationFormatter = {
+    format: function (duration) {
+        let formattedDuration;
+        // code to convert from number to the desired value
+        return formattedDuration;
+    },
+    parse: function (formattedValue) {
+        let duration;
+        // code to convert from the desired value to number
+        return duration;
+    }
+};
+
+const customLinkFormatter = {
+    format: function (link) {
+        let formattedLink;
+        // code to convert from the link object to the desired value
+        return formattedLink;
+    },
+    parse: function (formattedValue) {
+        let link;
+        // code to convert from the desired value to the `link` object
+        return link
+    }
+};
+~~~
+
+You can use the existing formatters in the custom formatters and modify the values they return.
+
+Custom formatters are specified for the inline editors the same as the usual formatters. For example:
+
+~~~js
+const durationEditor = { 
+	type: "duration", map_to: "duration", formatter: customDurationFormatter 
+};
+~~~
+
+Here's an example of custom duration and link formatters:
+
+{{editor	https://snippet.dhtmlx.com/gcvw2a6c		Custom duration and link formatters}}
+
+### Using different plural values in the formatters
+
+The configuration of the default [Duration Formatter](desktop/formatters_ext.md#durationformatter) allows using just one form for multiple values. 
+However, you can use a custom formatter and specify rules for your language. The example below shows how you can apply the necessary rules in a custom formatter for the
+Japanese language:
+
+{{editor	https://snippet.dhtmlx.com/jyvsiqop		Custom duration formatter with different plural values for Japanese locale}}
 
 @edition: pro
