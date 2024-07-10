@@ -26,16 +26,16 @@ There are several methods that allow controlling behavior of the tooltip while h
 - <span class=submethod>**attach (config): void**</span> - adds tooltip with extended configuration. The method takes one parameter:
     - **_config_** - (*object*) - an object with the tooltip settings. The settings are:
         - **_selector_** - (*string*) - defines CSS-selector for the elements to listen to mouse events on
-        - **_onmouseenter_** - (*Function*) - a handler called when the mouse pointer enters the element. The parameters are:
+        - **_onmouseenter_** - (*Function*): void - a handler called when the mouse pointer enters the element. The parameters are:
             - **_event_** - (*MouseEvent*) - a native mouse event
             - **_node_** -  (*HTMLElement*) - the HTML node
-        - **_onmousemove?_** - (*Function*) - a handler called when the mouse pointer moves inside the element. The parameters are:
+        - **_onmousemove?_** - (*Function*): void - optional, a handler called when the mouse pointer moves inside the element. The parameters are:
             - **_event_** - (*MouseEvent*) - a native mouse event
             - **_node_** -  (*HTMLElement*) - the HTML node
-        - **_onmouseleave_** - (*Function*) - a handler called when the mouse pointer leaves the element. The parameters are:	
+        - **_onmouseleave_** - (*Function*): void - a handler called when the mouse pointer leaves the element. The parameters are:	
             - **_event_** - (*MouseEvent*) - a native mouse event
             - **_node_** -  (*HTMLElement*) - the HTML node
-        - **_global?_** - (*boolean*) - defines whether the module listens to mouse events on the whole page (*true*) or only inside a gantt element (*false*). By default the option is set to *false*.
+        - **_global?_** - (*boolean*) - optional, defines whether the module listens to mouse events on the whole page (*true*) or only inside a gantt element (*false*). By default the option is set to *false*.
         
 ~~~js
 gantt.ext.tooltips.attach({
@@ -63,7 +63,7 @@ gantt.ext.tooltips.attach({
 - <span class=submethod>**tooltipFor (config): void**</span> - adds a tooltip for the specified Gantt element. It is a more simplified version of the **attach()** method. The method takes one parameter:
     - **_config_** - (*object*) - an object with the tooltip settings. The settings are:
         - **_selector_** - (*string*) - a CSS-selector of the Gantt element to add a tooltip to
-        - **_html_** - (*Function*) - a template for the tooltip. The template function takes two parameters in its turn:
+        - **_html_** - (*Function*): HTMLElement | string | number | void - a template for the tooltip. The template function takes two parameters in its turn:
             - **_event_** - (*Event*) - a native mouse event
             - **_node_** -  (*HTMLElement*) - the HTML node and returns a string with a template.
         - **_global?_** - (*boolean*) - optional, defines whether the module listens to mouse events on the whole page (*true*) or only inside a gantt element (*false*). By default the option is set to *false*. 
@@ -82,5 +82,4 @@ gantt.ext.tooltips.tooltipFor({
 ###gantt.ext.tooltips.detach()
 
 - <span class=submethod>**detach (selector): void**</span> - removes tooltip. As a parameter the method takes:
-
 	- **_selector_** - (*string*) - the CSS selector of a Gantt element

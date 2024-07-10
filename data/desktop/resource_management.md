@@ -891,6 +891,10 @@ gantt.templates.resource_cell_class = gantt.ext.resources.editableResourceCellCl
 
 Normally you won't need to assign these templates for editable diagram manually, it's expected to be handled by Gantt.
 
+In the example below, a template with editable cells is provided. You can customize it if needed:
+
+{{editor	https://snippet.dhtmlx.com/libwuna4?tag=gantt	Customizable resource diagram template}}
+
 Custom styling of resources
 ------------------------
 

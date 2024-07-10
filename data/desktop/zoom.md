@@ -1,19 +1,32 @@
 Zoom Extension
 ==============
 
+
 You can read details about the Zoom extension in the desktop/zooming.md article. The current article provides the API reference of the **zoom** object:
+
+
+
+## Zoom Levels
+
+The Zoom extension uses a set of the scale settings and allows quickly switching between them.
+
+**ZoomLevel** is an object that contains the scale settings. It has the following properties:
+
+- <span class=subproperty>**name**</span> - (*string*) - the name of the level
+- <span class=subproperty>**scale_height?**</span> - (*number*) - the height of the scale
+- <span class=subproperty>**height?**</span> - (*number*) - the height of the scale
+- <span class=subproperty>**min_column_width?**</span> - (*number*) - the minimal width of a column. It has a higher priority than minColumnWidth and maxColumnWidth
+- <span class=subproperty>**scales**</span> - (*Scale[]*) - an array of scales to switch between while zooming in/out on this level
+
+
 
 ## Methods
 
 - <span class=submethod>**init (zoomConfig): void**</span> - initializes the extension with the provided configuration.
     - **_zoomConfig_** - (*object*) - an object with configuration settings that contains the *levels* array of zooming levels and a number of additional properties:
-        - **_levels_** - (*ZoomLevels[]*) - required, an array of zooming levels, each of which includes the following properties:
-            - **_name_** - (*string*) - the name of the level
-            - **_scale_height?_** -  (*number*) - the height of the scale
-            - **_height?_** -  (*number*) - the height of the scale
-            - **_min_column_width?_** - (*number*) - the minimal width of a column. It has a higher priority than minColumnWidth and maxColumnWidth
-            - **_scales_** - (*Scale[]*) - an array of scales to switch between while zooming in/out on this level
-        - **_handler?_** - (*Function*) - allows specifying a custom handler of the mouse wheel to work with zooming manually
+        - **_levels_** - (*ZoomLevel[]*) - required, an array of zooming levels
+        - **_handler?_** - (*Function*): void - allows specifying a custom handler of the mouse wheel to work with zooming manually
+            - **_e_** - (*Event*) - a native event object.
         - **_startDate?_** - (*Date*) - the start value of the time scale zooming
         - **_endDate?_** - (*Date*) - the end value of the time scale zooming
         - **_activeLevelIndex?_** - (*number*) - the number of the default active level
@@ -22,7 +35,7 @@ You can read details about the Zoom extension in the desktop/zooming.md article.
         - **_maxColumnWidth?_** - (*number*) - the maximal width of a column that allows switching to the next zooming level
         - **_useKey?_** - (*string*) - the key that enables zooming by scrolling the mouse wheel:"ctrlKey" | "altKey" | "shiftKey"
         - **_trigger?_** - (*string | null | undefined*) - the trigger of zooming: "wheel" | null | undefined 
-        - **_element?_** - (*HTMLElement | Function*) - a DOM element over which zooming is triggered or a function that returns a DOM element
+        - **_element?_** - (*HTMLElement | Function*): HTMLElement - a DOM element over which zooming is triggered or a function that returns a DOM element
 
 These are two examples of setting the **zoom** configuration:
 
@@ -191,7 +204,7 @@ Returns <i>true</i>, if some handler is specified for the event.
 The arguments are: 
 <span class=eventarguments>
     - **_level_** - (*number | string*) - the number of the level
-    - **_config_** - (*ZoomLevels*) - the config of the level
+    - **_config_** - (*ZoomLevel*) - the config of the level
 </span>
 
 ~~~js
