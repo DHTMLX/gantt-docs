@@ -45,7 +45,7 @@ The response will contain a JSON of the following structure:
    data: {},
    config: {},
    resources: [],
-   worktime: {}
+   worktimes: []
 }
 ~~~
 
@@ -53,7 +53,12 @@ The response will contain a JSON of the following structure:
 Dates are stringified in the "%Y-%m-%d %H:%i" format.
 - **config** - a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
 - **resources** - an array of objects (each having the following properties: {*id: string, name:string, type:string*}) that represent the list of resources from the project file.
-- **worktime** - an object containing the working time settings from the project calendar.
+- **worktimes** - an array containing objects for creating a new calendar. Each calendar configuration object can contain the following attributes:
+	- **id** - (id) optional, the calendar id
+    - **hours** - (array) an array with global working hours, sets the start and end hours of the task
+    - **dates** - (array) an array of dates that can contain:
+    	- 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
+        - other records are dates
 
 
 ###Export settings
