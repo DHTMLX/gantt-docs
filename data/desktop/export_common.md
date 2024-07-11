@@ -3,6 +3,7 @@ Exporting and Importing Data
 {{index
 - desktop/export_requirements.md
 - desktop/export.md
+- desktop/pdf_export_module.md
 - desktop/excel.md
 - desktop/export_msproject.md
 - desktop/msp_export_module.md

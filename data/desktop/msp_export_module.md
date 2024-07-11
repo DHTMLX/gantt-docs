@@ -82,7 +82,7 @@ gantt.exportToMSProject({
 
 Now you can export data with the button.
 
-## Frequently asked questions
+## Problem solving
 
 ### Export to PDF/PNG/Excel doesn't work
 
