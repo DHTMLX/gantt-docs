@@ -1,0 +1,2 @@
+dhtmlxGantt with Vue.js
+========================

@@ -1,4 +1,4 @@
-Initialization
+dhtmlxGantt in Plain JS/HTML
 ==================
 
 When you develop an application with dhtmlxGantt, the first thing you need is to initialize or, simply speaking, to display the Gantt chart on the page.
