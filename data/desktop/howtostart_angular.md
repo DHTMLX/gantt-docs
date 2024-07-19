@@ -404,7 +404,7 @@ export class GanttComponent implements OnInit {
 
 Now, if you reopen the app page, you should see Gantt with tasks:
 
-![Gantt Angular events](howtostart_frontend_frameworks/gantt_angular_events.png)
+![Gantt Angular events](howtostart_frontend_frameworks/gantt_angular_tasks.png)
 
 ## Step 5. Saving Data
 
@@ -434,5 +434,3 @@ XSS and CSRF attacks. It is important that responsibility for keeping an applica
 Check the [Application Security](desktop/app_security.md) article to learn the most vulnerable points of the component and
 the measures you can take to improve the safety of your application.
 
-<br><br>
-![Gantt events](howtostart_frontend_frameworks/gantt_events.png)
