@@ -265,7 +265,7 @@ export default function GanttView(props) {
 
 Now, if you reopen the app page, you should see a Gantt with tasks:
 
-![Gantt events](howtostart_frontend_frameworks/gantt_tasks.png)
+![Gantt tasks](howtostart_frontend_frameworks/gantt_tasks.png)
 
 ## Step 5. Saving Data
 
