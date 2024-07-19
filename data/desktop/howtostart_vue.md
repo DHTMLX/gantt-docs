@@ -229,8 +229,9 @@ export function getData() {
 }
 ~~~
 
-We should [pass props (our data)](https://vuejs.org/guide/components/props.html) to a Gantt component:
+We should [pass props (our data)](https://vuejs.org/guide/components/props.html) to the Gantt component in the ***App.vue*** file:
 
+{{snippet App.vue}}
 ~~~html
 <script>
 import Gantt from "./components/Gantt.vue";
