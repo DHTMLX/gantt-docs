@@ -15,7 +15,7 @@ Here's the overview of guides which tell you about basic Gantt initialization wi
          	A comprehensive tutorial that describes how to create Gantt using plain JavaScript and HTML. 
         </td> 
          <td>
-        	<a href="desktop/initializing_gantt_chart.md"><img src=""></a>
+        	<a href="desktop/initializing_gantt_chart.md"><img src="howtostart_frontend_frameworks/gantt_plainjs.png"></a>
         </td>
     </tr>	
     <tr>
@@ -25,7 +25,7 @@ Here's the overview of guides which tell you about basic Gantt initialization wi
             An elaborated tutorial that explores the specificity of implementing a Gantt chart with Angular. 
         </td>
         <td>
-        	<a href="desktop/howtostart_angular.md"><img src=""></a>
+        	<a href="desktop/howtostart_angular.md"><img src="howtostart_frontend_frameworks/gantt_angular.png"></a>
         </td>
     </tr>
     <tr>
@@ -35,7 +35,7 @@ Here's the overview of guides which tell you about basic Gantt initialization wi
             A detailed tutorial which dwells on Gantt chart implementation with React. 
         </td>
         <td>
-        	<a href="desktop/howtostart_react.md"><img src=""></a>
+        	<a href="desktop/howtostart_react.md"><img src="howtostart_frontend_frameworks/gantt_react.png"></a>
         </td>
     </tr>
     <tr>
@@ -45,7 +45,7 @@ Here's the overview of guides which tell you about basic Gantt initialization wi
             An extensive tutorial that describes how to create Gantt using Vue.js. 
         </td>
         <td>
-            <a href="desktop/howtostart_vue.md"><img src=""></a>
+            <a href="desktop/howtostart_vue.md"><img src="howtostart_frontend_frameworks/gantt_vue.png"></a>
         </td>
         </tr>
     <tr>
@@ -55,7 +55,7 @@ Here's the overview of guides which tell you about basic Gantt initialization wi
             A comprehensive tutorial that discusses how to create Gantt using Svelte.
         </td>
         <td>
-            <a href="desktop/howtostart_svelte.md"><img src=""></a>
+            <a href="desktop/howtostart_svelte.md"><img src="howtostart_frontend_frameworks/gantt_svelte.png"></a>
         </td>
         </tr>
     </tbody>

@@ -47,7 +47,7 @@ npm run dev
 
 You should now have your Svelte project running on [http://localhost:5173](http://localhost:5173).
 
-![Scheduler Svelte app running](frontend_frameworks_howtostart/gantt_svelte_app_run.png)
+![Gantt Svelte app running](howtostart_frontend_frameworks/gantt_svelte_app_run.png)
 
 ## Creating Gantt
 
@@ -56,7 +56,7 @@ Then we can proceed with installing the Gantt package.
 
 ## Step 1. Package installation
 
-There are two options available: you can install the **Pro** package from a local folder, or install the **trial** version using `npm` or `yarn`.
+There are two options available: you can install the **Pro** package from a local folder, or install the **trial** version using **npm** or **yarn**.
 
 ### Installing the package from a local folder
 
@@ -175,7 +175,7 @@ instead of the default content by inserting the code below:
 
 After that, when we start the app, we should see an empty Gantt on a page:
 
-![Gantt Vue init](howtostart_frontend_frameworks/gantt_init.png)
+![Gantt Svelte init](howtostart_frontend_frameworks/gantt_init.png)
 
 ## Step 4. Providing Data
 
@@ -266,7 +266,7 @@ Now, if you reopen the app page, you should see a Gantt with tasks:
 
 To capture changes made in the Gantt, you can use a [dataProcessor](https://docs.dhtmlx.com/gantt/api__gantt_dataprocessor.html) handler that lets you 
 "communicate" with the server-side backend. The handler can be declared either as a function or as a router object. 
-Gantt accepts a Promise response from the handler, so Gantt will correctly process the completion of an action. 
+dhtmlxGantt accepts a Promise response from the handler, so your Gantt will correctly process the completion of an action. 
 
 You can create a **DataProcessor** via the **createDataProcessor()** API method and capture changes like this:
 

@@ -3,6 +3,9 @@ dhtmlxGantt in Plain JS/HTML
 
 When you develop an application with dhtmlxGantt, the first thing you need is to initialize or, simply speaking, to display the Gantt chart on the page.
 
+This guide tells about initialization of dhtmlxScheduler in plain JS and HTML. You can also check the guides on integration with front-end frameworks:
+
+
 To display a basic Gantt on the page, follow 3 steps: 
 
 1. Include the [dhtmlxGantt code files](desktop/initializing_gantt_chart.md#howtoaddganttsourcefilesintoaproject) on the page.
@@ -95,7 +98,7 @@ optimizeDeps: {
 
 ### Svelte production build
 
-If you use Gantt in a Svelte app, you need to add the following setting into the **vite.config.js** file for the production build, 
+If you use [Gantt in a Svelte app](desktop/howtostart_svelte.md), you need to add the following setting into the **vite.config.js** file for the production build, 
 replacing the *gantt_8.0.6_evaluation* folder with the path to your Gantt folder:
 
 {{snippet vite.config.js}}
@@ -109,84 +112,6 @@ build: {
 	},
 }
 ~~~
-
-React example
-------------------
-
-An example of importing dhtmlxGantt files into a React-based app:
-
-~~~js
-import React, { Component } from 'react';
-import { gantt } from 'dhtmlx-gantt';
-import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
- 
-export default class Gantt extends Component {
-  componentDidUpdate() {
-    gantt.render();
-  }
-  componentDidMount() {
-    gantt.init(this.ganttContainer);
-    gantt.parse(this.props.tasks);
-  }
- 
-  render() {
-    return (
-      <div
-        ref={(input) => { this.ganttContainer = input }}
-        style={{ width: '100%', height: '100%' }}
-      ></div>
-    );
-  }
-}
-~~~
-
-Check a [tutorial on the usage of dhtmlxGantt with React](https://dhtmlx.com/blog/create-react-gantt-chart-component-dhtmlxgantt/) on the blog.
-
-Angular example
------------------
-
-An example of importing dhtmlxGantt files into an Angular-based app:
-
-~~~js
-import {Component,ElementRef,OnInit,ViewChild,ViewEncapsulation} from '@angular/core';
-import {TaskService} from '../services/task.service';
-import {LinkService} from '../services/link.service';
-import {Task} from '../models/task';
-import {Link} from '../models/link';
- 
- 
-import { gantt, Gantt } from 'dhtmlx-gantt';
- 
-@Component({
-    encapsulation: ViewEncapsulation.None,
-    selector: 'gantt',
-    styleUrls: ['./gantt.component.css'],
-    providers: [TaskService, LinkService],
-    template: `<div #gantt_here class='gantt-chart'></div>`,
-})
-export class GanttComponent implements OnInit {
-    @ViewChild('gantt_here') ganttContainer: ElementRef;
- 
-    constructor(private taskService:TaskService, private linkService:LinkService){ }
- 
-    ngOnInit() {
-        gantt.config.xml_date = '%Y-%m-%d %H:%i';
-        gantt.init(this.ganttContainer.nativeElement);
-        Promise.all([this.taskService.get(), this.linkService.get()])
-            .then(([data, links]) => {
-                gantt.parse({ data, links });
-            });
-    }
-}
-~~~
-
-Check a [tutorial on the usage of dhtmlxGantt with Angular](https://dhtmlx.com/blog/dhtmlx-gantt-chart-usage-angularjs-2-framework/) on the blog.
-
-Vue example
--------------
-
-Check a [tutorial on the usage of dhtmlxGantt with Vue.js](https://dhtmlx.com/blog/use-dhtmlxgantt-vue-js-framework-demo/) on the blog.
-
 
 Include files into a RequireJS-based app
 ------------------------------------------- 

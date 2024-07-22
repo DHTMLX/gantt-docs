@@ -271,7 +271,7 @@ Now, if you reopen the app page, you should see a Gantt with tasks:
 
 To capture changes made in the Gantt, you can use a [dataProcessor](https://docs.dhtmlx.com/gantt/api__gantt_dataprocessor.html) handler that lets you 
 "communicate" with the server-side backend. The handler can be declared either as a function or as a router object. 
-Gantt accepts a Promise response from the handler, so Gantt will correctly process the completion of an action. 
+dhtmlxGantt accepts a Promise response from the handler, so your Gantt will correctly process the completion of an action. 
 
 You can create a **DataProcessor** via the **createDataProcessor()** API method and capture changes like this:
 
