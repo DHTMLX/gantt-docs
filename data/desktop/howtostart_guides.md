@@ -1,45 +1,69 @@
-How to Start with dhtmlxGantt
+How to Start with dhtmlxGantt 
 ===============================
 
-This section is dedicated to the very beginning of [work with Gantt chart and its communication with a server using different technologies](#integrationwithserversideplatforms).
+<h2>How to Start with Gantt and Front-End</h2>
 
-Basic initialization
------------------------
 
-Before you start learning [how to build your application with Gantt on the server-side](#integrationwithserversideplatforms), take a look at how to initialize or, simply speaking, to display the Gantt chart on the page.
+Here's the overview of guides which tell you about basic Gantt initialization with popular front-end frameworks.<br><br>
 
-To display a basic Gantt on the page, follow 3 steps: 
+<table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
+	<tbody>
+    <tr>
+        <td>
+		    <span style="font-size:15px;">desktop/initializing_gantt_chart.md</span>
+            <br>
+         	A comprehensive tutorial that describes how to create Gantt using plain JavaScript and HTML. 
+        </td> 
+         <td>
+        	<a href="desktop/initializing_gantt_chart.md"><img src="howtostart_frontend_frameworks/gantt_plainjs.png"></a>
+        </td>
+    </tr>	
+    <tr>
+        <td>
+		    <span style="font-size:15px;">desktop/howtostart_angular.md</span>
+            <br>
+            An elaborated tutorial that explores the specificity of implementing a Gantt chart with Angular. 
+        </td>
+        <td>
+        	<a href="desktop/howtostart_angular.md"><img src="howtostart_frontend_frameworks/gantt_angular.png"></a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+		    <span style="font-size:15px;">desktop/howtostart_react.md</span>  
+            <br>
+            A detailed tutorial which dwells on Gantt chart implementation with React. 
+        </td>
+        <td>
+        	<a href="desktop/howtostart_react.md"><img src="howtostart_frontend_frameworks/gantt_react.png"></a>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+    		<span style="font-size:15px;">desktop/howtostart_vue.md</span>
+            <br>            
+            An extensive tutorial that describes how to create Gantt using Vue.js. 
+        </td>
+        <td>
+            <a href="desktop/howtostart_vue.md"><img src="howtostart_frontend_frameworks/gantt_vue.png"></a>
+        </td>
+        </tr>
+    <tr>
+    	<td>
+    		<span style="font-size:15px;">desktop/howtostart_svelte.md</span>
+            <br>            
+            A comprehensive tutorial that discusses how to create Gantt using Svelte.
+        </td>
+        <td>
+            <a href="desktop/howtostart_svelte.md"><img src="howtostart_frontend_frameworks/gantt_svelte.png"></a>
+        </td>
+        </tr>
+    </tbody>
+</table>
 
-1. Include the [dhtmlxGantt code files](desktop/initializing_gantt_chart.md#howtoaddganttsourcefilesintoaproject) on the page.
-2. Create a DIV container on the page.
-3. Initialize dhtmlxGantt in the newly created container with the api/gantt_init.md method. As a parameter the method takes an HTML container (or its id)  that the Gantt chart will be  displayed in.
 
-~~~html
-<!DOCTYPE html>
-<html>
-<head>
-   <script src="codebase/dhtmlxgantt.js"></script>
-   <link href="codebase/dhtmlxgantt.css" rel="stylesheet">
-</head>
-<body>
-    <div id="gantt_here" style='width:1000px; height:400px;'></div>
-    <script type="text/javascript"> 
-        gantt.init("gantt_here");   /*!*/                        
-    </script>
-</body>
-</html>
-~~~
 
-![desktop/init_gantt_front.png](desktop/init_gantt_front.png)
-
-{{sample
-	01_initialization/01_basic_init.html
-}}
-
-{{note For mode details, check the desktop/initializing_gantt_chart.md article.}}
-
-Integration with server-side platforms
----------------------------------------
+<h2>How to Start with Gantt on Server Side</h2>
 
 You can watch the video guide that shows how to create a Gantt chart on the page and load the data into it on the example of a Node.js platform.
 
@@ -136,6 +160,10 @@ Below you will find a brief overview of the guides which tell you about basic Ga
 
 
 @index:
+- desktop/howtostart_angular.md
+- desktop/howtostart_react.md
+- desktop/howtostart_vue.md
+- desktop/howtostart_svelte.md
 - desktop/howtostart_dotnet_core.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_nodejs.md

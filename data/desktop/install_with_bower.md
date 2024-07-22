@@ -5,6 +5,33 @@ You can use [NuGet](https://www.nuget.org/), [Bower](https://bower.io/) or [npm]
 
 It's also possible to include the necessary JS/CSS files from CDN.
 
+
+npm - standard free version
+-------------------------
+
+To install dhtmlxGantt through [npm](https://www.npmjs.com/package/dhtmlx-gantt), execute the following command line:
+
+~~~html
+npm install dhtmlx-gantt
+~~~
+
+npm - Evaluation and PRO versions
+-----------------------------------
+
+The trial and licensed (paid) versions of Gantt can be installed from DHTMLX npm registry using the following commands:
+
+**Professional Evaluation version**
+
+- **npm config set @dhx<wbr />:registry https://npm.dhtmlx.com**
+- **npm install @dhx/trial-gantt**
+
+
+**Professional version**
+
+- **npm config set @dhx<wbr />:registry https://npm.dhtmlx.com**
+- **npm install @dhx/gantt**
+
+
 NuGet
 -------------------------
 
@@ -28,15 +55,6 @@ To install dhtmlxGantt through [Bower](https://bower.io/), execute the following
 
 ~~~html
 bower install gantt
-~~~
-
-npm
--------------------------
-
-To install dhtmlxGantt through [npm](https://www.npmjs.com/package/dhtmlx-gantt), execute the following command line:
-
-~~~html
-npm install dhtmlx-gantt
 ~~~
 
 CDN
@@ -104,12 +122,15 @@ After that, you can install the Pro version of the Gantt chart as described belo
 ### **Install Pro version**
 
 All public sources (CDN, NuGet, Bower, and npm) contain a Standard edition of the component, which is distributed under the GPL license.
-Currently we don't have corresponding private servers from where the Professional version of the component can be installed. There are two possible ways out:
- 
-- you can add the Pro version to your project by hand.
-- you can install the Pro version to your project via npm from a local directory.
 
-If case of npm, you can install the Pro package from a local folder using  [`npm install ./local_path`](https://docs.npmjs.com/cli/install/) or [`npm link`](https://docs.npmjs.com/cli/link/).
+We also provide our [private npm registry](#npmevaluationandproversions) from where the Professional and Evaluation versions of the component can be installed.
+
+If for some reason the methods described above are not available to you, there are two possible ways out:
+ 
+- you can add the Pro version to your project by hand
+- you can install the Pro version to your project via npm from a local directory
+
+If case of **npm**, you can install the Pro package from a local folder using  [`npm install ./local_path`](https://docs.npmjs.com/cli/install/) or [`npm link`](https://docs.npmjs.com/cli/link/).
 There are step-by-step instructions for both variants:
 
 ###npm install
