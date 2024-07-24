@@ -783,6 +783,7 @@ Check the desktop/app_security.md article to learn the most vulnerable points of
 
 @index:
 desktop/app_security.md
+desktop/gantt_security.md
 
 
 
