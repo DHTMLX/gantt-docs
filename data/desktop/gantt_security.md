@@ -7,7 +7,7 @@ Thus, you can customize most of the Gantt features according to your project req
 
 However, you must bear in mind that DHTMLX Gantt doesn't provide any means for protecting your app from various threats such as SQL injections or XSS and CSRF 
 attacks on its own. So it is up to you to ensure the safety of your project by providing the necessary configuration settings.
-In this article we'll give you some relevant information and recommendations on HTML sanitization.
+In this article you will find some relevant information and recommendations on HTML sanitization.
 
 ## Vulnerable Gantt areas on the client side
 
@@ -24,7 +24,7 @@ Now we get to the list of vulnerable areas of DHTMLX Gantt, where you can expect
 
 - the data entered and saved by end-users
 - the displayed Gantt data (textual content, various visual elements)
-- custom HTML elements that somehow interact with Gantt data
+- [custom HTML elements](desktop/export.md#exportinghtmlelements) that somehow interact with Gantt data
 - the access to the Gantt object
 
 Let's proceed to practical consideration of these potential issues.
@@ -43,7 +43,7 @@ they can change literally everything in Gantt and redefine all functions. Theref
 
 To do this, you need to create a separate Gantt instance in a function. The goal here is to make code that runs within the function inaccessible outside of it. 
 
-What is more, by default, Gantt creates a new instance in the *gantt* object. It is important to add a new variable inside the function 
+What is more, by default Gantt creates a new instance in the *gantt* object. It is important to add a new variable inside the function 
 using either the *const* or the *let* keyword to make it inaccessible outside the function and safely put the Gantt instance inside this variable. 
 
 ~~~js
@@ -79,8 +79,7 @@ Data entry areas are considered to be the main targets for XSS attacks. In our G
 - any custom solutions that use the Gantt API and require data entry (e.g. a toolbar or a custom form for editing tasks)
 
 The task object has [many different parameters](desktop/task_properties.md) that are used depending on the activated functions.
-
-All editable Gantt parameters must be sanitized when entering them.
+The more parameters are editable, the more parameters should be sanitized on entering data.
 
 ### Considering an example
 
@@ -153,7 +152,7 @@ protectedGantt.attachEvent("onLightboxSave", function(id, task, is_new){
 
 protectedGantt.ext.inlineEditors.attachEvent("onBeforeSave", function(state){
     if (state.columnName == "notes") {
-         state.newValue = sanitizeText(state.newValue);
+    	state.newValue = sanitizeText(state.newValue);
     }
     return true;
 });
@@ -214,7 +213,7 @@ As a result, XSS attacks will be ineffective within the Gantt chart and, definit
 ## Displaying data in Gantt
 
 The next vulnerable area that we should mention is displaying data in the Gantt chart. 
-Although it's not so efficient as with data entry, sanitizing the displayed data still will help to stop or interrupt the XSS attack chain.
+Although not so efficient as with data entry, sanitizing the displayed data still will help to stop or interrupt the XSS attack chain.
 For instance, if the server with data has been attacked, but there is no access to Gantt, the XSS attack will be interrupted on Gantt.
 
 The most secure approach will be to sanitize all Gantt areas, where data is displayed.
@@ -225,5 +224,63 @@ However, there is a simpler solution for potential issues with displaying data i
 As data can be uploaded in the Gantt chart via a user input or from the server, we can limit these two data flows.
 Then there won't be any chance to affect the Gantt content and embed malicious code into data.
 
+It is possible to protect the properties of tasks while loading them from the server. It can be done in the **onTaskLoading** event handler:
+
+~~~js
+protectedGantt.attachEvent("onTaskLoading", function (task) {
+	task.text = sanitizeText(task.text);
+    if (task.notes) {
+    	task.notes = sanitizeText(task.notes);
+    }
+    sanitizeResourceValues(task)
+    return true;
+});
+~~~
+
+There may be some other ways to load data into the Gantt chart. For instance, a task object
+may come separately from the server and being processed by some function. After that, a new task is added to the Gantt chart or an existing task is updated.
+In this case, you need to sanitize the task inside this function before data is loaded into Gantt.
+
+It might look like this:
+
+~~~js
+let newTask = await loadFromServer(23);
+sanitizeTaskProperties(newTask);
+gantt.addTask(newTask);
+~~~
+
+If a cybercriminal tricks a user into employing the element inspector in a given web browser and inserting malicious code into Gantt DOM elements, 
+you can't avoid that. But at the same time, all the applied changes will be lost next time the Gantt is re-rendered and won't be saved on the server.
+
+## Server side issues
+
+Please note that the client-side validation can be easily compromised or bypassed completely, thus it can't be relied on as a security means. It is aimed to give a user an immediate feedback in case of an erroneous input, without having to wait a server response, while the final validation should be done on the server.
+
+The backend must properly validate/escape/cleanse incoming data, user access rules, etc.
+
+### SQL Injections
+
+dhtmlxGantt is a 100% client-side component, thus SQL injections have to be prevented on the backend by the developer.
+
+There are two points to consider:
+
+- the lightbox doesn't have any default validation, which, if not handled, allows the user to enter any values into editable inputs
+- your backend API can be called by a PUT/POST request containing dangerous values manually, bypassing the client-side UI
+
+Thus you'll need to have some kind of SQL injections escaping on your backend. If you use [dhtmlxConnector](desktop/howtostart_connector.md) and specify a table configuration as shown in the related [documentation](https://docs.dhtmlx.com/connector__php__basis.html#loadingfromdatabase), all values will be escaped automatically. Otherwise, you'll have to use a safe CRUD implementation, according to the good practices of the platform you use. Implementations shown in the [how to start guides](desktop/howtostart_guides.md) should be safe in terms of SQL injections.
+
+### CSRF Attacks
+
+If you use [dhtmlxConnector](desktop/howtostart_connector.md) on the backend, CSRF security can be enabled in the connector configuration. See the details
+[in the related article](https://docs.dhtmlx.com/connector__php__app_security.html#preventingcsrfandxsrfattacks).
+
+Otherwise, you'll have to handle it manually. Please check [this article](desktop/server_side.md#customrequestheadersandparameters) for adding custom tokens of headers to a request sent by Gantt to the backend. 
+
+## Content Security Policy
+
+The library provides a special config that allows you to adjust the code of your application created with dhtmlxGantt to comply with the CSP (Content Security Policy) standard. 
+It helps preventing various code injection attacks and improve the safety of application. 
+
+[Read more about applying the CSP standard to a dhtmlxGantt application](api/gantt_csp_config.md).
 
 
