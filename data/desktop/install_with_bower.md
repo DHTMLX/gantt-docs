@@ -9,27 +9,26 @@ It's also possible to include the necessary JS/CSS files from CDN.
 npm - standard free version
 -------------------------
 
-To install dhtmlxGantt through [npm](https://www.npmjs.com/package/dhtmlx-gantt), execute the following command line:
+You can install the Standard version of dhtmlxGantt from [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt), by executing the following command line:
 
 ~~~html
 npm install dhtmlx-gantt
 ~~~
 
+{{note Only the Standard version of the Gantt is available at [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt) }}
+
 npm - Evaluation and PRO versions
 -----------------------------------
 
-The trial and licensed (paid) versions of Gantt can be installed from DHTMLX npm registry using the following commands:
-
 **Professional Evaluation version**
 
-- **npm config set @dhx<wbr />:registry https://npm.dhtmlx.com**
-- **npm install @dhx/trial-gantt**
-
+Download the [trial Gantt package](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml) and follow the steps mentioned in the README file. 
+Note that the trial Gantt version is available 30 days only.
 
 **Professional version**
 
-- **npm config set @dhx<wbr />:registry https://npm.dhtmlx.com**
-- **npm install @dhx/gantt**
+Send your **license number** to the ***contact@dhtmlx.com*** email to receive a login and a password for a private **npm** as well as a detailed guide on how to
+install Gantt. Note that a private **npm** is available before the expiration of the proprietary Gantt license.
 
 
 NuGet
