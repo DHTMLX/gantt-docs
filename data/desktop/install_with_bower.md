@@ -92,7 +92,42 @@ Then include **dhtmlxgantt.js** and **dhtmlxgantt.css** files into a page. Make 
 Adding PRO Edition into Project
 ---------------------------------
 
-### **Uninstall trial version**
+### **Install Pro version**
+
+{{note
+Before installing the Pro version of Gantt, you should [uninstall the trial version package](#uninstalltrialversion) (if you've installed it)
+}}
+
+All public sources (CDN, NuGet, Bower, and npm) contain a Standard edition of the component, which is distributed under the GPL license.
+
+We also provide our [private npm registry](#npmevaluationandproversions) from where the Professional and Evaluation versions of the component can be installed.
+
+If for some reason the methods described above are not available to you, there are two possible ways out:
+ 
+- you can add the Pro version to your project by hand
+- you can install the Pro version to your project via npm from a local directory
+
+### Installing the package from a local folder {#installfromlocalfolder}
+
+If case of **npm**, you can install the Pro package from a local folder using  [`npm install ./local_path`](https://docs.npmjs.com/cli/install/) or [`npm link`](https://docs.npmjs.com/cli/link/).
+There are step-by-step instructions for both variants:
+
+###npm install
+
+1. Copy the Gantt package into some local directory.
+2. Go to your project directory. 
+3. Call `npm install ../gantt-local-package-path`.
+
+###npm link
+
+1. Copy the Gantt package into some local directory.
+2. Call `npm link` in the package folder.
+3. Go to your project directory.
+4. Call `npm link dhtmlx-gantt`.
+
+To see the difference between the Standard and PRO versions of the dhtmlxGantt library, check the related article desktop/editions_comparison.md.
+
+### **Uninstall trial version** {#uninstalltrialversion}
 
 The correct way to install the Pro version would be to remove the trial version package:
 
@@ -116,37 +151,7 @@ findstr /mis "dhtmlxGantt v" path_to_your_app\*
 findstr /mis "evaluation" path_to_your_app\*
 ~~~
 
-After that, you can install the Pro version of the Gantt chart as described below.
-
-### **Install Pro version**
-
-All public sources (CDN, NuGet, Bower, and npm) contain a Standard edition of the component, which is distributed under the GPL license.
-
-We also provide our [private npm registry](#npmevaluationandproversions) from where the Professional and Evaluation versions of the component can be installed.
-
-If for some reason the methods described above are not available to you, there are two possible ways out:
- 
-- you can add the Pro version to your project by hand
-- you can install the Pro version to your project via npm from a local directory
-
-If case of **npm**, you can install the Pro package from a local folder using  [`npm install ./local_path`](https://docs.npmjs.com/cli/install/) or [`npm link`](https://docs.npmjs.com/cli/link/).
-There are step-by-step instructions for both variants:
-
-###npm install
-
-1. Copy the Gantt package into some local directory.
-2. Go to your project directory. 
-3. Call `npm install ../gantt-local-package-path`.
-
-###npm link
-
-1. Copy the Gantt package into some local directory.
-2. Call `npm link` in the package folder.
-3. Go to your project directory.
-4. Call `npm link dhtmlx-gantt`.
-
-To see the difference between the Standard and PRO versions of the dhtmlxGantt library, check the related article desktop/editions_comparison.md.
-
+After that you can install the Pro version of the Gantt chart as described above.
 
 @index:
 - desktop/cdn_links_list.md
