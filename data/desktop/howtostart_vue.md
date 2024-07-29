@@ -56,32 +56,10 @@ the command line. Then we can proceed with installing the Gantt package.
 
 ## Step 1. Package installation
 
-There are two options available: you can install the **Pro** package from a local folder, or install the **trial** version using **npm** or **yarn**.
+The PRO versions of the library are available for the **npm/yarn** install from our private repository, please follow 
+[this instruction](desktop/install_with_bower.md#npmevaluationandproversions) to gain access to it.
 
-### Installing the package from a local folder
-
-Copy the Gantt package into some local directory inside the project.
-In the project directory run the command below replacing *gantt-local-package-path* with the actual path:
-
-~~~
-npm install ./gantt-local-package-path
-// or
-yarn add "./gantt-local-package-path"
-~~~
-
-For example:
-
-~~~
-npm install ./gantt_8.0.0_enterprise
-// or
-yarn add "./gantt_8.0.0_enterprise"
-~~~
-
-### Installing the trial version via a package manager
-
-To install the trial version of the Gantt, you need to create a file with the *.npmrc* type and add the **&#64;dhx:registry=https://npm.dhtmlx.com/** string into it.
-
-After that, you can install the trial version of Gantt using **npm** or **yarn** commands:
+After you've got the Evaluation version of the Gantt, you can install it with the following commands:
 
 - for npm:
 
@@ -94,6 +72,9 @@ npm install @dhx/trial-gantt
 ~~~
 yarn add @dhx/trial-gantt
 ~~~
+
+Alternatively, since the zip-package of the library is structured as an **npm** module, you can 
+[install it from a local folder](desktop/install_with_bower.md#installfromlocalfolder).
 
 ## Step 2. Component creation
 
