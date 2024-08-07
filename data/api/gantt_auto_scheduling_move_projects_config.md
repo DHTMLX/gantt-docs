@@ -34,10 +34,10 @@ remain on their places.
 <img src="api/moving_project_false.png">
 
 <br>
-**Note**, if you use constraint scheduling (*gantt.config.auto_scheduling_compatibility = false*), this config will be active only when the strict mode is disabled:
+**Note**, if you use constraint scheduling (*gantt.config.auto_scheduling_compatibility = false*), the *auto_scheduling_move_projects* config will be active only when the strict mode is disabled:
 
 ~~~js
-gantt.config.auto_scheduling_compatibility = true;
+gantt.config.auto_scheduling_compatibility = false;
 gantt.config.auto_scheduling_strict = false;
 ~~~
 
