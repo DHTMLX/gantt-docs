@@ -5,6 +5,13 @@ When you develop an application with dhtmlxGantt, the first thing you need is to
 
 This guide tells about initialization of dhtmlxScheduler in plain JS and HTML. You can also check the guides on integration with front-end frameworks:
 
+- desktop/howtostart_angular.md
+- desktop/howtostart_react.md
+- desktop/howtostart_vue.md
+- desktop/howtostart_svelte.md
+
+Creating basic Gantt chart
+-----------------------
 
 To display a basic Gantt on the page, follow 3 steps: 
 

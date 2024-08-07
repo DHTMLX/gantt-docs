@@ -15,8 +15,8 @@ Check the [features available in the Standard and PRO versions](desktop/editions
 		         Creating Gantt Chart on a Page 
 		    </h4>
 		    <ul id="data_sublist" >  
-            		<li><a href="desktop/initializing_gantt_chart.md">Initializing Gantt</a></li>
                    	<li>desktop/install_with_bower.md</li>
+                    <li><a href="desktop/initializing_gantt_chart.md">Initializing Gantt</a></li>
                     <li>desktop/extensions_list.md</li>            		
             </ul>
         </td>
