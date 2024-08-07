@@ -1,12 +1,11 @@
 Export Module for PDF
 =======================
 
-In fact, there are 2 export modules with different functionalities:
+This export module can export data to PDF, PNG, Excel, and iCal files. It can be installed on any platform as a Node.js application or as a Docker image.
 
-1. The first export module can export data to PDF, PNG, Excel, and iCal files. It can be installed on any platform as a Node.js application or as a Docker image.
+It doesn't include the import/export functionality for the MS Project and Primavera files. If you need such a functionality, you should use 
+the [corresponding export module](desktop/msp_export_module.md) or our online server.
 
-2. The second export module can only import/export MS Project and Primavera files. It is a .NET Core application that you can run inside the dotnet environment 
-or inside the docker image.
 
 ## Installation guide
 
@@ -125,61 +124,3 @@ docker run -d -p 3200:80 dhtmlx/scheduler-gantt-export
 
 3200 is the port on which the docker service will work.
 
-## Change log
-
-### 0.6.3
-
-• Updated the base image for the node.js environment to Node.js 20 for the Docker images
-
-• Optimized the Dockerfile and reduced the Docker image size
-
-### 0.6.2
-
-• Added template for DHTMLX Scheduler 7.0
-
-### 0.6.0
-
-• Changed the endpoint of MS Project / Primavera P6 export service
-
-• Fixed for the Excel export: correct highlight of the timeline cells with the "visual:true" parameter
-
-• Updated packages for building the docker file
-
-### 0.5.9
-
-• Updated the node.js version for the docker image
-
-• Removed unused file in the docker image to fix the security warning
-
-• Fixed the bug when the export doesn't work if we have the formatter in the grid columns
-
-### 0.5.8
-
-• Main page for the export module with the link to test the export module functionality (check the URL in the dropdown before testing it).
-Example: [https://export.dhtmlx.com](https://export.dhtmlx.com)
-
-• New feature: [import and export of Gantt for Node.js](desktop/export_nodejs.md)
-
-• Bug fix for the Excel export with the `visual:true` parameter. Now you can export data with several scales, 
-different duration units, and tasks don't need to start and end at the beginning of the timeline cells
-
-
-### 0.5.7
-
-• Improved compatibility with Node.js 14
-
-• Fixes for custom locales
-
-• Added the "init" process for the docker.
-
-### 0.5.6
-
-• Fixed some memory leaks when running on headless servers (without the graphical interface) and in the docker
-
-### 0.5.5
-
-• Improved the work of the application inside the docker image
-
-### 0.5.0
-
-• Switched from PhantomJS to Electron for the PDF and PNG export

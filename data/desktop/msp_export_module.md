@@ -1,12 +1,11 @@
-Export Module for the MS Project
+Export Module for MS Project
 =================================
 
-In fact, there are 2 export modules with different functionalities:
-
-1. The first export module can export data to PDF, PNG, Excel, and iCal files. It can be installed on any platform as a Node.js application or as a Docker image.
-
-2. The second export module can only import/export MS Project and Primavera files. It is a .NET Core application that you can run inside the dotnet environment 
+This export module can import/export MS Project and Primavera files. It is a .NET Core application that you can run inside the dotnet environment 
 or inside the docker image.
+
+It doesn't include the import/export functionality for the PDF, PNG, Excel, and iCal files. If you need such a functionality, you should use 
+the [corresponding export module](desktop/pdf_export_module.md) or our online server.
 
 ## Installation guide
 
@@ -128,13 +127,3 @@ If you run the docker image in the "detached" mode, it will run in the backgroun
 ~~~
 docker run -p 65163:80 msp_export_module 
 ~~~
-
-## Change log
-
-### 2.0.0.1
-
-• Various internal optimizations and imported Dockerfile
-
-### 2.0.0.0
-
-• Migrated from ASP.NET MVC to ASP.NET core. So, now it is possible to run the MSP export module on Linux and inside the Docker image.
