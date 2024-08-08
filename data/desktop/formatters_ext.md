@@ -331,11 +331,11 @@ Custom Formatter
 -------------------
 
 The Gantt functionality allows you to create a custom formatter on the base of the existing Gantt formatters. You can add a custom formatter to the inline editor. Under the 
-hood Gantt will store data in the values habitual for it, while when a user will open the inline editor, it will show the value that the user needs.
+hood Gantt will store data in the format it expects, while when a user will open the inline editor, it will show the value that the user needs.
 
-A custom formatter is an object with two functions: the **format()** function and the **parse()** one.
+A custom formatter is an object with two functions: **format()** and **parse()**.
 
-The **format** function converts either a number (custom duration formatter) or a link  (custom link formatter) into the necessary value. The **parse** function converts a
+The **format()** function converts either a number (custom duration formatter) or a link  (custom link formatter) into the necessary value. The **parse()** function converts a
 formatted value either into a number (custom duration formatter) or a link (custom link formatter).
 
 This is how the custom formatters look like: 

@@ -56,7 +56,9 @@ to the **"duration"** type:
 { type: "duration", map_to: "duration", formatter: formatter }
 ~~~
 
-Uses the [Duration Formatter](desktop/formatters_ext.md#durationformatter) by default and is necessary only when you need to use the specified formatter. 
+This type of an inline editor is useful if you need to specify the duration that contains both a number and the [duration unit](api/gantt_duration_unit_config.md). 
+For example: `5 days`.
+Uses the [Duration Formatter](desktop/formatters_ext.md#durationformatter) by default.
 Instead of using the default duration formatter, you can also change its configuration or set a [custom formatter](desktop/formatters_ext.md#customformatter).
 
 - **date** editor - for editing date columns, e.g. start and end dates of the task
