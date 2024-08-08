@@ -102,7 +102,7 @@ but you can [import both XML and MPP files](https://www.mpxj.org/faq/).
 ### Import of large files
 
 If you want to import large files, you will need to remove the limits on the request size. To do that, you need to open the 
-`GanttToMSProject/Controllers/MspConversionController.cs` file. There, you need to uncomment the `DisableRequestSizeLimit` and the following string.
+`GanttToMSProject/Controllers/MspConversionController.cs` file. There, you need to uncomment the `DisableRequestSizeLimit` and the line that follows it.
 
 After saving the changes and restarting the server, you should be able to import large files. It was tested that importing a 244Mb file requires up to 4Gb RAM.
 

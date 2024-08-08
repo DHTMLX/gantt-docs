@@ -5,13 +5,21 @@ dhtmlxGantt provides an online export service that will allow you to export the 
 [PNG](desktop/export.md#exporttopng) format.
 
 {{note
-The service is free, but the output PDF/PNG file will contain the library's watermark under the GPL license. In case you buy a license, the result of export will be available without a watermark
+The service is free, but the output PDF/PNG file will contain the library's watermark under the GPL license. 
+In case you buy a license, the result of export will be available without a watermark
 during the valid support period (12 months for all PRO licenses).
 }}
 
-### Time restrictions
+There are several export services available. You can install them on your computer and export Gantt chart to PDF or PNG locally.
+Note that export services are not included into the Gantt package, 
+read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
-{{note The export service has time restrictions.}}
+Online export service restrictions
+-----------------------------
+
+{{note The export service has time and request size restrictions.}}
+
+### Time limits
 
 If the process takes over than 20 seconds, the export will be canceled and the following error will occur:
 
@@ -21,24 +29,21 @@ Error: Timeout trigger 20 seconds
 
 If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately.
 
-{{note If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).}}
-
-Using export services
------------------------
-
-There are several export services available. You can install them on your computer and export Gantt chart to PDF or PNG locally.
-
-Note that export services are not included into the Gantt package, 
-read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
-
-Limits on request size
---------------------
+### Limits on request size
 
 There is a common API endpoint **https://export.dhtmlx.com/gantt** which serves for all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 10 MB**.
 
-There is also a separate API endpoint **https://export.dhtmlx.com/gantt/project** specific for the [MSProject export/import services](desktop/export_msproject.md) 
-(*exportToMSProject*/*importFromMSProject* only). **Max request size: 40 MB**.
+There is also a separate API endpoint **https://export.dhtmlx.com/gantt/project** specific for the [MSProject](desktop/export_msproject.md) and 
+[Primavera P6](desktop/export_primavera.md) 
+export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
 
+Using export modules
+---------------------
+
+{{note If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
+The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).}}
+
+[Read more on the usage of the export module for PDF](desktop/pdf_export_module.md).
 
 Export to PDF
 -----------------------------
