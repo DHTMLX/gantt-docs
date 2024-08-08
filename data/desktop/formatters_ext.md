@@ -382,10 +382,13 @@ Here's an example of custom duration and link formatters:
 
 {{editor	https://snippet.dhtmlx.com/gcvw2a6c		Custom duration and link formatters}}
 
-### Using different plural values in the formatters
+## Custom rules for plural forms 
 
-The configuration of the default [Duration Formatter](desktop/formatters_ext.md#durationformatter) allows using just one form for multiple values. 
-However, you can use a custom formatter and specify rules for your language. The example below shows how you can apply the necessary rules in a custom formatter for the
+The configuration of the default [Duration Formatter](desktop/formatters_ext.md#durationformatter) allows using just one form for the plural form of a noun, since in English 
+the plural form is made by adding a suffix or changing the noun itself.
+
+In other languages a word can have several variants of the plural form. Besides, there can be different rules for the usage of different plural forms. 
+You can use a custom formatter and specify the rules for your language. The example below shows how you can apply the necessary rules in a custom formatter for the
 Japanese language:
 
 {{editor	https://snippet.dhtmlx.com/jyvsiqop		Custom duration formatter with different plural values for Japanese locale}}
