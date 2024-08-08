@@ -99,9 +99,6 @@ Note, these are special properties.
 By default, Gantt checks whether a task has them and if it does, applies the related values to the task's bar and text. Otherwise, the predefined colors are applied.
 }}
 
-{{note
-Adding a custom color via the **color** property is followed by adding of an inline style, which has the highest priority among other styles. As a result, the critical path won't be highlighted, and any custom style you have added to change the task background or color won't be applied.}}
-
 {{snippet
 Setting the task's color in the data object
 }}
@@ -118,18 +115,31 @@ var tasks = {
 gantt.init("gantt_here");
 gantt.parse(tasks);
 
-gantt.getTask(1).color = "red"
+gantt.getTask(1).color = "red";
 ~~~
 
 {{sample
 04_customization/16_inline_task_colors.html
 }}
 
+{{note
+Adding a custom color via the **color** property is followed by adding of an inline style, which has the highest priority among other styles. As a result, the critical path won't be highlighted, and any custom style you have added to change the task background or color won't be applied.}}
 
-If, at least one of the properties is assigned, the task receives additional class - **"gantt_task_inline_color"**. <br>
+In order to make the tasks look critical, you can use the following code:
+
+~~~css
+.gantt_critical_task {
+  background-color: #e63030 !important;
+  border-color: #9d3a3a !important;
+}
+~~~
+
+{{editor	https://snippet.dhtmlx.com/xipdml7a		Coloring critical tasks and links}}
+
+If at least one of the properties of a task object is assigned, the task receives additional class **"gantt_task_inline_color"**. <br>
 You can use this class to override some other style for the task (use the "*.gantt_task_line.gantt_task_inline_color*" selector for the class):
 
-~~~js
+~~~css
 .gantt_task_line.gantt_task_inline_color .gantt_task_progress {
 	background-color: rgb(54, 54, 54);
 	opacity: 0.2;
@@ -183,8 +193,8 @@ gantt.attachEvent("onLoadEnd", function(){
     // use an arbitrary id for the style element
 	var styleId = "dynamicGanttStyles";
     
-    // in case you'll be reloading options with colors - reuse previously
-    // created style element
+    // in case you'll be reloading options with colors - 
+    // reuse a previously created style element
     
 	var element = document.getElementById(styleId);
 	if(!element){
@@ -195,7 +205,7 @@ gantt.attachEvent("onLoadEnd", function(){
 	var html = [];
 	var resources = gantt.serverList("people");
 
-	// generate css styles for each option and write css into the style element,
+	// generate css styles for each option and write css into the style element
     
 	resources.forEach(function(r){
 		if(r.backgroundColor && r.textColor){

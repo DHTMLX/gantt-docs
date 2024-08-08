@@ -10,6 +10,37 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+8.0.9
+----------
+
+<span class='release_date'>June 18, 2024. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue that prevented reopening the [Inline editor](desktop/inline_editing.md) after vertically scrolling the Gantt
+- Fix the issue with [DataProcessor](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments) ignoring custom headers specified in the [gantt.createDataProcessor](api/gantt_createdataprocessor.md) method
+- Fix tasks display issue that occurs when [onBeforeLightbox](api/gantt_onbeforelightbox_event.md) handler returns `false` while creating a new task
+- Fix the incorrect [markers](desktop/markers.md) height when [timeline_placeholder](api/gantt_timeline_placeholder_config.md) config is enabled
+- Fix [Formatter](desktop/formatters_ext.md) working only with Latin symbols
+- Fix the issue that causes tasks to disappear after [vertically dragging](api/gantt_order_branch_config.md) a parent task
+- Fix the incorrect work of [keyboard shortcut](desktop/keyboard_navigation.md) for scrolling when [smart_rendering](api/gantt_smart_rendering_config.md) is enabled
+- Fix the issue with custom properties of [Resource Assignments](desktop/resource_management.md) objects not being included after parsing
+- Update TypeScript type definitions
+
+
+8.0.8
+----------
+
+<span class='release_date'>May 31, 2024. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue that caused the [Undo extension](desktop/undo_redo.md) to skip some actions in bulk operations
+- Fix the script error that occurs when [gantt.deleteLink](api/gantt_deletelink.md) is called from the [gantt.silent](api/gantt_silent.md) function
+- Fix the incorrect behavior of [Auto Scheduling](desktop/auto_scheduling.md) when two connected tasks have different [calendars](desktop/working_time.md)
+- Fix the script error that occurs after creating a [circular link](api/gantt_iscircularlink.md)
+- Fix the script error that occurs after [destroying](api/gantt_destructor.md) the Gantt which has an  editable [Resource Panel](desktop/resource_management.md)
+- Fix the issue that caused the [tooltip](desktop/tooltips.md) to disappear in some browsers
 
 8.0.7
 ----------

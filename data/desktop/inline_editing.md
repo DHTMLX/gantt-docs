@@ -49,6 +49,18 @@ There are several predefined inline editors:
 
 - **text** editor - for editing text columns, e.g. task name
 - **number** editor - for editing number columns, e.g. task duration, order, etc.
+- **duration** editor - for editing duration columns, i.e. task duration. Works only when the **map_to: "duration"** config is used and the editor type is set 
+to the **"duration"** type:
+
+~~~js
+{ type: "duration", map_to: "duration", formatter: formatter }
+~~~
+
+This type of an inline editor is useful if you need to specify the duration that contains both a number and the [duration unit](api/gantt_duration_unit_config.md). 
+For example: `5 days`.
+Uses the [Duration Formatter](desktop/formatters_ext.md#durationformatter) by default.
+Instead of using the default duration formatter, you can also change its configuration or set a [custom formatter](desktop/formatters_ext.md#customformatter).
+
 - **date** editor - for editing date columns, e.g. start and end dates of the task
 - **select** editor - for choosing an option from a list
 - **predecessor** editor - for setting task-predecessor for the currently edited task. This editor gets the [WBS codes of tasks](desktop/specifying_columns.md#wbscode) to set connection with the predecessor task.

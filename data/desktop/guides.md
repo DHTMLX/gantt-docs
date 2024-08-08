@@ -7,12 +7,40 @@ The articles come around key procedures and problem-solving activities.
 
 Check the [features available in the Standard and PRO versions](desktop/editions_comparison.md) of the dhtmlxGantt library.
 
-<table  style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
+<table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
     <tr>
 		<td id="data" class='topics'>
 		    <h4>
-		         How to Start with dhtmlxGantt
+		         Creating Gantt Chart on a Page 
+		    </h4>
+		    <ul id="data_sublist" >  
+                   	<li>desktop/install_with_bower.md</li>
+                    <li><a href="desktop/initializing_gantt_chart.md">Initializing Gantt</a></li>
+                    <li>desktop/extensions_list.md</li>            		
+            </ul>
+        </td>
+        <td class='topic_description'>Shows how to install and initialize Gantt and provides the list of available extensions.</td>
+	</tr>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		         How to Start with Gantt and Front-End 
+		    </h4>
+		    <ul id="data_sublist" >
+            		<li>desktop/initializing_gantt_chart.md</li>
+            		<li>desktop/howtostart_angular.md</li>
+                    <li>desktop/howtostart_react.md</li>
+                    <li>desktop/howtostart_vue.md</li>
+                    <li>desktop/howtostart_svelte.md</li>
+            </ul>
+        </td>
+        <td class='topic_description'>Says how to build and configure a standard Gantt on the front-end.</td>
+	</tr>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		         How to Start with Gantt on Server Side 
 		    </h4>
 		    <ul id="data_sublist" >
             		<li>desktop/howtostart_dotnet_core.md</li>
@@ -31,17 +59,14 @@ Check the [features available in the Standard and PRO versions](desktop/editions
 	<tr>
 		<td id="data" class='topics'>
 		    <h4>
-		         Creating Gantt Chart on a Page
+		         Configuring Gantt Chart
 		    </h4>
 		    <ul id="data_sublist" >
-                    <li>desktop/initializing_gantt_chart.md</li>
-                    <li>desktop/install_with_bower.md</li>
                     <li>desktop/common_configuration.md</li>
                     <li>desktop/layout_config.md</li>
                     <li>desktop/resource_management.md</li>
                     <li>desktop/handling_events.md</li>
-                    <li>desktop/multiple_gantts.md</li> 
-                    <li>desktop/extensions_list.md</li>
+                    <li>desktop/multiple_gantts.md</li>                     
                     <li>desktop/using_gantt_on_server.md</li>
             </ul>
         </td>
@@ -241,8 +266,9 @@ Check the [features available in the Standard and PRO versions](desktop/editions
 @index:
 
 - desktop/editions_comparison.md
-- desktop/howtostart_guides.md
 - desktop/general_gantt_chart.md
+- desktop/howtostart_guides.md
+- desktop/configuring_gantt.md
 - desktop/loading_storing_data.md
 - desktop/export_common.md
 - desktop/table.md

@@ -1,6 +1,50 @@
 Export and Import from Primavera P6
 ============================
 
+The dhtmlxGantt library allows you to export data from the Gantt chart into Primavera P6. You can also import data into Gantt from Primavera P6.
+
+{{note
+The service is free, but the output file will contain the library's watermark under the GPL license. 
+In case you buy a license, the result of export will be available without a watermark
+during the valid support period (12 months for all PRO licenses).
+}}
+
+There are several export services available. You can install them on your computer and export Gantt chart to Primavera P6 locally.
+Note that export services are not included into the Gantt package, 
+read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
+
+Online export service restrictions
+-----------------------------
+
+{{note The export service has time and request size restrictions.}}
+
+### Time limits
+
+If the process takes over than 20 seconds, the export will be canceled and the following error will occur:
+
+~~~html
+Error: Timeout trigger 20 seconds
+~~~
+
+If several people export Gantt at the same time, the process can take more time than usual. But that's fine because the time which is spent for export request from a specific user is counted separately.
+
+### Limits on request size
+
+There is a common API endpoint **https://export.dhtmlx.com/gantt** which serves for all export methods (*exportToPDF*, *exportToPNG*, *exportToMSProject*, etc.). **Max request size is 10 MB**.
+
+There is also a separate API endpoint **https://export.dhtmlx.com/gantt/project** specific for the [MSProject](desktop/export_msproject.md) and 
+[Primavera P6](#limitsonrequestsizeandimportoflargefiles) 
+export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
+
+Using export modules
+---------------------
+
+{{note If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
+The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).}}
+
+[Read more on the usage of the export module for MS Project](desktop/msp_export_module.md). This export module provides export/import functionality for MS Project and 
+Primavera P6.
+
 Export to Primavera P6
 -----------------------
 
@@ -36,6 +80,26 @@ The method will send a request to the remote service, which will either output a
 {{sample
 	08_api/08_export_other.html
 }}
+
+Note that when you export data to Primavera, you need to return *true* for the **Summary** property for the project tasks to make that feature work correctly:
+
+~~~js
+gantt.exportToPrimaveraP6({
+  tasks: {
+    Summary: function (task) {
+      return !!gantt.hasChild(task.id);
+    },
+    CustomProperty: function (task) {
+      return task.custom_property;
+    },
+    SlateId: function (task) {
+      return task.id + "";
+    },
+  }
+});
+~~~
+
+{{editor	https://snippet.dhtmlx.com/r90hjlvo?tag=gantt	Custom properties for WBS tasks (PrimaveraP6's Summary tasks)}}
 
 ### Response
 
@@ -462,8 +526,11 @@ gantt.attachEvent("onTaskLoading", function (task) {
 
 There are two API endpoints for the Primavera P6 export/import services:
 
-- <b>*https://export.dhtmlx.com/gantt*</b> - the default endpoint which serves all export methods (*exportToPDF*, *exportToPNG*, *exportToPrimaveraP6*, etc.). **Max request size is 10 MB**.
-- <b>*https://export.dhtmlx.com/gantt/project*</b> - the endpoint dedicated to Primavera P6 services (*exportToPrimaveraP6*/*importFromPrimaveraP6* only). **Max request size: 40 MB**.
+- **https://export.dhtmlx.com/gantt** - the default endpoint which serves all export methods (*exportToPDF*, *exportToPNG*, *exportToPrimaveraP6*, etc.). **Max request size is 10 MB**.
+- **https://export.dhtmlx.com/gantt/project** - the endpoint specific for the [MSProject](desktop/export_msproject.md) and 
+[Primavera P6](desktop/export_primavera.md) 
+export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
+
 
 The endpoint can be specified by the **server** property of the export configuration object:
 

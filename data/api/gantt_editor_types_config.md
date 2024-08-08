@@ -20,9 +20,11 @@ There are several predefined inline editors:
 
 - <span class=subproperty>**text**</span> - (*InlineEditor*) - for editing text columns, e.g. task name
 - <span class=subproperty>**number**</span> - (*InlineEditor*) - for editing number columns, e.g. task duration, order, etc.
+- <span class=subproperty>**duration**</span> - (*InlineEditor*) - for editing duration columns, i.e. task duration.
+Works only when the ***map_to:"duration"*** config is used and [the editor type](desktop/inline_editing.md#typesofeditors) is set to the **"duration"** type
 - <span class=subproperty>**date**</span> - (*InlineEditor*) - for editing date columns, e.g. start and end dates of the task
 - <span class=subproperty>**select**</span> - (*InlineEditor*) - for choosing an option from a list
-- <span class=subproperty>**predecessor**</span> - (*InlineEditor*) - for setting task-predecessor for the currently edited task. This editor gets the [WBS codes of tasks](desktop/specifying_columns.md#wbscode) to set connection with the predecessor task.
+- <span class=subproperty>**predecessor**</span> - (*InlineEditor*) - for setting task-predecessor for the currently edited task. This editor gets the [WBS codes of tasks](desktop/specifying_columns.md#wbscode) to set connection with the predecessor task
 - <span class=subproperty>**[customEditorName: string]**</span> - (*InlineEditor | undefined*) - custom inline editors
 
 

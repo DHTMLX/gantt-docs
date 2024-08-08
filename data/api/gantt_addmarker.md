@@ -7,7 +7,7 @@ addMarker
 - marker	object	the marker's configuration object
 
 @returns:
-- markerId	string	the marker's id
+* markerId	number|string	optional, the marker's id
 
 
 @example:
