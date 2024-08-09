@@ -1,6 +1,16 @@
 What's new in PDF Export Module
 ================================
 
+## 0.6.5
+
+• Fixes for DHTMLX Scheduler 7.0 template
+
+## 0.6.4
+
+• Added the multipage export in one PDF file (export the chart for the specified format by chunks, then merge the pages into one file)
+
+• Added the feature to show the grid and timeline headers per page when using the multipage export in one file functionality
+
 ## 0.6.3
 
 • Updated the base image for the node.js environment to Node.js 20 for the Docker images
