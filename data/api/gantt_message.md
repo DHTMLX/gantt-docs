@@ -7,16 +7,16 @@ message
 
 @params:
 
-- config		object|string|number			either an object with the message box's configuration or the text to show
+- config		object | string | number			either an object with the message box's configuration or the text to show
 
 @returns:
 
-- div			HTMLElement		the div container of the message box
+- id			string | number		the ID of the message box
 
 
 @example:
 let box = gantt.message({ 
-    type:"confirm-warning", 
+    type:"warning", 
     text:"Are you sure you want to do it?"
 });
 
@@ -25,8 +25,6 @@ box = gantt.message("This is the message");
 
 @template:	api_method
 @descr:
-For details about supported configuration options of a message box, see the desktop/message_boxes.md article.
-
 
 The configuration object uses the following properties:
 
@@ -43,11 +41,18 @@ The **message** property can be a function, but can also be used as a configurat
 ~~~js
 gantt.message.position = "left";
 ~~~
+- <span class=subproperty>**keyboard**</span> - (*boolean*) - specifies if Gantt should block keyboard events. *true* by default.
+
+~~~js
+gantt.message.keyboard = false;
+~~~
 - <span class=submethod>**hide (id): any**</span> - a function that hides the popup message. Uses **id** as a parameter:
     - **_id_** - (*number | string*) - the ID of the popup message
 ~~~js
 gantt.message.hide("popupId");
 ~~~
+
+For additional details about supported configuration options of a message box, see the desktop/message_boxes.md article.
 
 
 
