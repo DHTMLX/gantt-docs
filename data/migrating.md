@@ -48,6 +48,22 @@ gantt.plugins({
 });
 ~~~
 
+### Deprecated class names
+
+Since v8.0 the following deprecated class names have been removed and replaced with the new ones:
+
+- ".dhtmlx-info" -> **".gantt-info"**
+- ".dhtmlx-error" -> **".gantt-info"**
+- ".dhtmlx_popup_title" -> **".gantt_popup_title"**
+- ".dhtmlx_popup_text" -> **".gantt_popup_text"**
+- ".dhtmlx_popup_controls" -> **".gantt_popup_controls"**
+- ".dhtmlx_ok_button" -> **".gantt_ok_button"**
+- ".dhtmlx_click_me_button" -> **".gantt_click_me_button"**
+- ".dhtmlx_popup_button" -> **".gantt_popup_button"**
+- ".dhtmlx_modal_box" -> **".gantt_modal_box"**
+- ".dhtmlx-" + config.type -> **".gantt-" + config.type**
+- ".dhtmlx_" + btn.label.toLowerCase() + "_button" -> **".gantt_" + btn.label.toLowerCase() + "_button"**
+
 7.0 -> 7.1
 -------------
 
