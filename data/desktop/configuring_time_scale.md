@@ -566,7 +566,7 @@ To create the second "hour" cell, Gantt follows the same logic but uses the posi
 
 At this stage, we can see that 8 is a multiple of eight, therefore the value of the next cell is calculated as *08:00 + 8 hours = **16:00***, and so on for the other cells.
 
-{{note This logic works because we don't specify [explicit date range](#explicit_date_range).}}
+{{note This logic works because we don't specify [the date range explicitly](#explicit_date_range).}}
 
 For more samples, check the [How to add a custom scale](desktop/how_to.md#howtoaddacustomscale) article.
 
