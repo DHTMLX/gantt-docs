@@ -9,6 +9,104 @@ However, you must bear in mind that DHTMLX Gantt doesn't provide any means for p
 attacks on its own. So it is up to you to ensure the safety of your project by providing the necessary configuration settings.
 In this article you will find some relevant information and recommendations on HTML sanitization.
 
+## Basic security steps
+
+While cybersecurity is a complex discipline, and can't really be covered with a single step of instructions, 
+we recommend following the practicle steps that will cover the basics and help mitigating most frequent threats.
+
+**1\. Use Content Security Policy (CSP) in your application**
+
+Adding a CSP header as simple as the following one will prevent XSS code from being executed in your application:
+
+~~~
+Content-Security-Policy: script-src 'self'
+~~~
+
+Your app might require a more complex policy, but disabling the inline script execution would prevent a large number of XSS and CSRF attacks.
+
+**2\. Sanitize user input on the backend before saving it to the database**
+
+When you inserting a new record, instead of saving values as is:
+
+~~~
+db.query("INSERT INTO gantt_tasks(text, start_date, duration, progress, parent)"
+	+ " VALUES (?,?,?,?,?)",
+    [task.text, task.start_date, task.duration, task.progress, task.parent])
+~~~
+
+You may want to ensure they are in the expected format and remove a potentially malicious content.
+If you use Node.js this can be done with any of numerous available libraries, for example, [DOMPurify](https://www.npmjs.com/package/dompurify):
+
+~~~
+const createDOMPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
+
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
+
+...
+
+db.query("INSERT INTO gantt_tasks(text, start_date, duration, progress, parent)"
+	+ " VALUES (?,?,?,?,?)",
+    [task.text, task.start_date, task.duration, task.progress, task.parent]
+    	.map((input) => DOMPurify.sanitize(input))
+~~~
+
+**3\. Escape HTML entities before rendering data**
+
+If you don't want displayable values to contain HTML markup that will be executed during rendering, make sure to escape HTML characters that
+users might have entered before feeding data into Gantt. Here is an example of using the [validator](https://www.npmjs.com/package/validator) library:
+
+~~~
+const validator = require('validator');
+...
+
+// GET /data
+
+Promise.all([
+  db.query("SELECT * FROM gantt_tasks"),
+  db.query("SELECT * FROM gantt_links")
+]).then(results => {
+    let tasks = results[0],
+        links = results[1];
+ 
+    tasks.forEach((task) => {
+        Object.entries(task).forEach(([key, value]) => {
+            if(typeof value === "string") {
+                task[key] = validator.escape(value); //#!
+            }
+        });
+        task.open = true;
+        task.start_date = task.start_date.format("YYYY-MM-DD hh:mm:ss");
+    });
+
+    links.forEach((link) => {
+        Object.entries(link).forEach(([key, value]) => {
+            if(typeof value === "string") {
+                link[key] = validator.escape(value); //#!
+            }
+        });
+    });
+    
+ 
+    res.send({
+        tasks,
+        links 
+   });
+~~~
+
+**4\. If you work with SQL database, avoid creating SQL queries by concatenating string values. Use parametrized queries, ORM or Query Builders instead**
+
+This item concerns SQL injection types of attacks. As a rule, you should never use an unescaped or unvalidated user input in your SQL queries. If
+you found yourself doing it, consider rewriting your code using parametrized queries or use escape functions supported by the SQL provider that you use.
+
+**5\. Last but not least: consult with a cybersecurity expert and follow the security policies accepted by your company**
+
+The security work is never fully complete, but by implementing these steps, following your company policies and having your work reviewed by a security
+specialist, you will avoid the majority of threats that can find you in the web.
+
+Now, when basics are covered, let's proceed to the things specific to Gantt.
+
 ## Vulnerable Gantt areas on the client side
 
 First of all, let us highlight three points when integrating complex functionalities like Gantt on the client side:
@@ -271,10 +369,7 @@ Thus you'll need to have some kind of SQL injections escaping on your backend. I
 
 ### CSRF Attacks
 
-If you use [dhtmlxConnector](desktop/howtostart_connector.md) on the backend, CSRF security can be enabled in the connector configuration. See the details
-[in the related article](https://docs.dhtmlx.com/connector__php__app_security.html#preventingcsrfandxsrfattacks).
-
-Otherwise, you'll have to handle it manually. Please check [this article](desktop/server_side.md#customrequestheadersandparameters) for adding custom tokens of headers to a request sent by Gantt to the backend. 
+Please check [this article](desktop/server_side.md#customrequestheadersandparameters) for adding custom authorization tokens of headers to a request sent by Gantt to the backend.
 
 ## Content Security Policy
 
