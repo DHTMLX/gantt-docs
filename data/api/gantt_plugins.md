@@ -5,9 +5,10 @@ plugins
 	
 
 @params:
-- ext	object		an object with the extensions' names that need to be activated
+* ext	GanttPlugins		an object with the extensions' names that need to be activated
 
-
+@returns:
+- activatedPlugins	GanttPlugins	an object of activated extensions
 
 @example:
 gantt.plugins({

@@ -6,7 +6,7 @@ attachEvent
 @params: 
 - name		string		the event's name, case-insensitive
 - handler	function	the handler function
-* settings 	object		optional, an <a href="#propertiesofsettingsobject">object with settings</a> for the event handler
+* settings 	HandlerSettings		optional, an <a href="#propertiesofsettingsobject">object with settings</a> for the event handler
 
 @example: 
 gantt.attachEvent("onTaskClick", function(id, e) {
@@ -34,10 +34,9 @@ Event handlers are processed in the same order that they were attached.
 
 Properties of settings object 
 -----------------------
-The settings object can contain two properties:
+The settings object can contain the following properties:
 
-1\. **id** - (*string*) the id of the event handler 
-
+- <span class=subproperty>**id?**</span> - (*string | number*) - the id of the event handler.
 For example, you can easily detach a handler from the specified event:
 
 ~~~js
@@ -48,8 +47,7 @@ gantt.attachEvent("onTaskClick", function(){
 gantt.detachEvent("my-click");
 ~~~
 
-2\. **once** - (*boolean*) defines whether the event will be executed only once
-
+- <span class=subproperty>**once?**</span> - (*boolean*) - defines whether the event will be executed only once.
 Set the property to *true* if you want to capture the first triggering of the event, as in:
 
 ~~~js
@@ -59,7 +57,7 @@ gantt.attachEvent("onTaskClick", function(){
 }, {once: true}); /*!*/
 ~~~
 
-3\. **thisObject** - (*object*) specifies the `this` object for the listener 
+- <span class=subproperty>**thisObject?**</span> - (*any*) - specifies the `this` object for the listener.
 
 ~~~js
 gantt.attachEvent("onTaskClick", function(){

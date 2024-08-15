@@ -5,7 +5,7 @@ sort
 	
 
 @params:
-- field		string,function		the name of the column that the  grid will be sorted by or a custom sorting function
+- field		string | SortTasks		the name of the column that the  grid will be sorted by or a custom sorting function
 * desc		boolean	 			specifies the sorting direction: <i>true</i> - descending sort and <i>false</i> - ascending<br> sort. By default, <i>false</i>
 * parent	string,number		the id of the parent task. Specify the parameter if you want to sort tasks only in the branch of the specified parent.
 * silent	boolean	 			specifies whether rendering should be invoked after reordering items
@@ -37,4 +37,7 @@ sort
 
 @template:	api_method
 @descr:
+
+The custom sorting function takes the **Task** objects as arguments and should return the number (1,0, or -1)
+
 The **parent** parameter is ignored when applying a custom function for sorting. Check the [example](https://snippet.dhtmlx.com/5/ac5beb945).

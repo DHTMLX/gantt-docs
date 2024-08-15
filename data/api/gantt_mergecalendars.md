@@ -4,7 +4,7 @@ mergeCalendars
 @short: merges several working calendars into one
 
 @params:
-- calendars		array		an array of calendars' objects
+- calendars		Calendar[]		an array of calendars' objects
 
 @example:
 const johnCalendarId = gantt.addCalendar({
