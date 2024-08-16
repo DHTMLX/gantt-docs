@@ -3,12 +3,25 @@ dhtmlxGantt in Plain JS/HTML
 
 When you develop an application with dhtmlxGantt, the first thing you need is to initialize or, simply speaking, to display the Gantt chart on the page.
 
-This guide tells about initialization of dhtmlxScheduler in plain JS and HTML. You can also check the guides on integration with front-end frameworks:
+This guide tells about initialization of dhtmlxScheduler in plain JS and HTML. You can also check the guides on integration with front-end frameworks:<br><br>
 
-- desktop/howtostart_angular.md
-- desktop/howtostart_react.md
-- desktop/howtostart_vue.md
-- desktop/howtostart_svelte.md
+<table>
+	<tbody style="text-align:center">
+	<tr>
+    	<td><a href="desktop/howtostart_angular.md"><img src="howtostart_frontend_frameworks/angular_icon.png"></a></td>
+        <td><a href="desktop/howtostart_react.md"><img src="howtostart_frontend_frameworks/react_icon.png"></a></td>
+        <td><a href="desktop/howtostart_svelte.md"><img src="howtostart_frontend_frameworks/svelte_icon.png"></a></td>
+        <td><a href="desktop/howtostart_vue.md"><img src="howtostart_frontend_frameworks/vue_icon.png"></a></td>
+    </tr>
+	<tr>
+		<td><a href="desktop/howtostart_angular.md">Angular</a></td>
+        <td><a href="desktop/howtostart_react.md">React</a></td>
+        <td><a href="desktop/howtostart_svelte.md">Svelte</a></td>
+        <td><a href="desktop/howtostart_vue.md">Vue.js</a></td>
+	</tr>
+    </tbody>
+</table>
+
 
 Creating basic Gantt chart
 -----------------------
