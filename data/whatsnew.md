@@ -26,6 +26,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix the issue where [worktime settings](desktop/working_time.md) of the [merged](desktop/working_time.md#:~:text=Merging%20multiple%20calendars) calendar were treated as weekends
 - Fix the issue that prevented [grouping](api/gantt_groupby.md) by resources when a task had [Resource Assignments](desktop/resource_management.md) on different dates
 - Fix the error caused by attempting to [filter split tasks](desktop/split_tasks.md#filteringsplittasks) with no children using the api/gantt_onbeforesplittaskdisplay_event.md event
+- Fix the issue where [Resource Assignments](desktop/resource_management.md) were not updated after [dragging the project with subtasks](api/gantt_drag_project_config.md)
 
 8.0.9
 ----------
