@@ -10,6 +10,24 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+8.0.10
+----------
+
+<span class='release_date'>August 23, 2024. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where Gantt didn't [merge](desktop/working_time.md#:~:text=Merging%20multiple%20calendars) date settings from the second [Calendar](desktop/working_time.md)
+- Fix the issue where [Resources](desktop/resource_management.md) were not assigned when the ["hide empty"](desktop/resources.md) option was enabled
+- Fix the api/gantt_getlightboxsection.md method returning a `null` for the [Resource Section](desktop/resources.md) until any value was modified
+- Fix the issue where templates of the [Resource Histogram](desktop/resource_management.md#resourceviewpanel) were not called for tasks starting before the minimum date but ending within the displayed date range
+- Fix the issue where [Resource Assignments](desktop/resource_management.md) were not saved after changing the task [type](desktop/typeselect.md)
+- Fix the issue where the 'project' task [type](desktop/typeselect.md) was not set in the lightbox
+- Fix the issue where [worktime settings](desktop/working_time.md) of the [merged](desktop/working_time.md#:~:text=Merging%20multiple%20calendars) calendar were treated as weekends
+- Fix the issue that prevented [grouping](api/gantt_groupby.md) by resources when a task had [Resource Assignments](desktop/resource_management.md) on different dates
+- Fix the error caused by attempting to [filter split tasks](desktop/split_tasks.md#filteringsplittasks) with no children using the api/gantt_onbeforesplittaskdisplay_event.md event
+- Fix the issue where [Resource Assignments](desktop/resource_management.md) were not updated after [dragging the project with subtasks](api/gantt_drag_project_config.md)
+
 8.0.9
 ----------
 
