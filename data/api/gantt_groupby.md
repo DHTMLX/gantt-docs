@@ -4,7 +4,7 @@ groupBy
 @short:groups tasks by the specified task's attribute
 
 @params:
-- config		object | boolean		the grouping configuration object, or false to ungroup tasks
+- config		GroupConfig | boolean		the grouping configuration object, or false to ungroup tasks
 
 @edition: pro
 @related:desktop/grouping.md
@@ -66,13 +66,15 @@ gantt.groupBy(false);
 
 The grouping configuration object has the following properties:
 
-- **relation_property** - (<i>string</i>) a property of a task object that will be used to group items. Mandatory.
-- **groups** - (<i>array</i>) an array of the groups (summary) items. Mandatory.
-- **group_id** - (<i>string</i>) the group's id. Optional. The default value is 'key'.
-- **group_text** - (<i>string</i>) the group's label. Optional. The default value is 'label'.
-- **delimiter** - (*string*) the delimiter is used for automatic creation of groups for tasks with multiple resources. Optional. The default value is ",".
-- **default_group_label** - (<i>string</i>) the name of the default group. Optional. The default value is 'None'.
-- **save_tree_structure** - (<i>boolean</i>) defines whether the gantt should save its tree structure inside groups. If not specified or is set to *false*, gantt tasks will be displayed in a flat list view.
+- <span class=subproperty>**relation_property**</span> - (*string*) - a property of a task object that will be used to group items.
+- <span class=subproperty>**groups**</span> - (*СollectionItem[]*) - an array of the groups (summary) items. Each item should have the properties set in the **group_id** and **group_text** parameters (by default, *key* and *label*)
+- <span class=subproperty>**group_id?**</span> - (*string*) - optional, the group's id. The default value is 'key'.
+- <span class=subproperty>**group_text?**</span> - (*string*) - optional, the group's label. The default value is 'label'.
+- <span class=subproperty>**delimiter?**</span> - (*string*) - optional, the delimiter is used for automatic creation of groups for tasks with multiple resources. The default value is ",".
+- <span class=subproperty>**default_group_label?**</span> - (*string*) - optional, the name of the default group. Optional. The default value is 'None'.
+- <span class=subproperty>**save_tree_structure?**</span> - (*boolean*) - optional, defines whether the gantt should save its tree structure inside groups. If not specified or is set to *false*, gantt tasks will be displayed in a flat list view.
+
+
 
 Please, note:
 

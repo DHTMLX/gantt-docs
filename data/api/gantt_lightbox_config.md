@@ -40,6 +40,8 @@ For example, for the **time** section, dhtmlxGantt will take the label stored as
 - <span class=subproperty>**type**</span> - (*string*) - the [type of the section control](desktop/default_edit_form.md#lightboxcontrols) (editor).
 - <span class=subproperty>**height?**</span> - (*number*) - optional, the section's height. Not used with the [checkbox](desktop/checkbox.md) and [radio](desktop/radio.md) sections.
 - <span class=subproperty>**focus?**</span> - (*boolean*) - optional, if set to *true*, the section will take focus on opening the lightbox
+- <span class=subproperty>**formatter?**</span> - (*DurationFormatter | LinkFormatter*) - optional, a formatter for the section
+
 
 
 

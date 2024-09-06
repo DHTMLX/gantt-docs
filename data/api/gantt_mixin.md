@@ -7,8 +7,8 @@ mixin
 
 @params:
 
-- target		object		the target object
-- source		object		the source object
+- target		CustomObject		the target object
+- source		CustomObject		the source object
 * force			boolean		optional, if true, properties of the 'source' will overwrite matching properties of the 'target', if there are any. If false (by default), properties that already exist in the 'target' will be omitted	
 
 

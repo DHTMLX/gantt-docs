@@ -11,7 +11,7 @@ getTaskAssignments
 
 
 @returns:
-- param	array	an array of objects with the resource assignments of the task
+- param	ResourceAssignment[]	an array of objects with the resource assignments of the task
 
 @example:
 gantt.getTaskAssignments(5); // -> see details
@@ -51,15 +51,17 @@ The method returns an array with objects as in:
 
 Each object contains the following properties:
 
-- *task_id* - the id of the task
-- *id* - the id of the assignment
-- *delay* - the difference between the assignment start date and the task start date
-- *duration* - the duration of the assignment
-- *start_date* - the date the assignment is scheduled to start
-- *end_date* - the date the assignment is scheduled to be completed
-- *mode* - the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
-- *resource_id* - the id of the resource
-- *value* - the quantity of the resource assigned to a task
+- <span class=subproperty>**id**</span> - (*string | number*) - the id of the assignment
+- <span class=subproperty>**task_id**</span> - (*string | number*) - the ID of the task the resource is assigned to.
+- <span class=subproperty>**resource_id**</span> - (*string | number*) - the ID of the resource that is assigned to the task.
+- <span class=subproperty>**value**</span> - (*number | string*) - the quantity of the resource assigned to a task
+- <span class=subproperty>**delay**</span> - (*number*) - the difference between the assignment start date and the task start date
+- <span class=subproperty>**start_date**</span> - (*Date*) - the date the assignment is should start.
+- <span class=subproperty>**end_date**</span> - (*Date*) - the date the assignment is should end.
+- <span class=subproperty>**duration**</span> - (*number*) - the duration of the assignment
+- <span class=subproperty>**mode**</span> - (*string*) - the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
+- <span class=subproperty>**[customProperty: string]**</span> - (*any*) - any custom property.
+
 
 {{note *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* will be populated automatically only when api/gantt_process_resource_assignments_config.md is enabled.}}
 

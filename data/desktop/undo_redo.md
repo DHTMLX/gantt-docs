@@ -60,12 +60,20 @@ To return the stack of the stored redo actions, apply the api/gantt_getredostack
 var stack = gantt.getRedoStack();
 ~~~
 
-The returned stack is an array of the undo user actions. Each user action contains a set of commands. A command is an object with the following attributes:
- 
-- **type** - (*string*) the type of a command: "add/remove/update"
-- **entity** - (*string*) the type of the object which was changed: "task" or "link"
-- **value** - (*object*) the changed task/link object 
-- **oldValue** - (*object*) the task/link object before changes
+The returned stack is an array of the user actions. Each user action contains a set of commands:
+
+- <span class=subproperty>**UndoRedoAction**</span> - (*object*) - an onject that stores the commands of the Undo or Redo action
+    - **_commands_** - (*UndoRedoCommand[]*) - an array that stores the changes (commands) of the Undo or Redo action.
+
+
+A command is an object with the following attributes:
+
+- <span class=subproperty>**UndoRedoCommand**</span> - (*object*) - an object that stores the initial and updated state of the **Task** or **Link** objects:
+    - **_type_** - (*string*) - the type of a command: "add/remove/update"
+    - **_entity_** - (*string*) - the type of the object which was changed: "task" or "link"
+    - **_value_** - (*Task | Link*) - the changed task/link object 
+    - **_oldValue_** - (*Task | Link*) - the task/link object before changes
+
 
 Have a look at the example below:
 

@@ -5,7 +5,7 @@ onBeforeUndoStack
 	fires before an action is added into the undo stack
 
 @params:
-- action		array			a user action as an array of command objects
+- action		UndoRedoAction			a user action as an array of command objects
 
 
 @returns:
