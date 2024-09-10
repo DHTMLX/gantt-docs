@@ -46,13 +46,13 @@ Each object contains the following properties:
 - <span class=subproperty>**id**</span> - (*string | number*) - the id of the assignment
 - <span class=subproperty>**task_id**</span> - (*string | number*) - the ID of the task the resource is assigned to.
 - <span class=subproperty>**resource_id**</span> - (*string | number*) - the ID of the resource that is assigned to the task.
-- <span class=subproperty>**value**</span> - (*number | string*) - the quantity of the resource assigned to a task
+- <span class=subproperty>**value**</span> - (*number | string*) - the quantity of the resources assigned to a task
 - <span class=subproperty>**delay**</span> - (*number*) - the difference between the assignment start date and the task start date
-- <span class=subproperty>**start_date**</span> - (*Date*) - the date the assignment is should start.
-- <span class=subproperty>**end_date**</span> - (*Date*) - the date the assignment is should end.
+- <span class=subproperty>**start_date**</span> - (*Date*) - the date the assignment should start
+- <span class=subproperty>**end_date**</span> - (*Date*) - the date the assignment should end
 - <span class=subproperty>**duration**</span> - (*number*) - the duration of the assignment
 - <span class=subproperty>**mode**</span> - (*string*) - the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
-- <span class=subproperty>**[customProperty: string]**</span> - (*any*) - any custom property.
+- <span class=subproperty>**[customProperty: string]**</span> - (*any*) - any custom property
 
 
 

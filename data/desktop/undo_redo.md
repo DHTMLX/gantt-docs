@@ -62,7 +62,7 @@ var stack = gantt.getRedoStack();
 
 The returned stack is an array of the user actions. Each user action contains a set of commands:
 
-- <span class=subproperty>**UndoRedoAction**</span> - (*object*) - an onject that stores the commands of the Undo or Redo action
+- <span class=subproperty>**UndoRedoAction**</span> - (*object*) - an object that stores the commands of the Undo or Redo action
     - **_commands_** - (*UndoRedoCommand[]*) - an array that stores the changes (commands) of the Undo or Redo action.
 
 

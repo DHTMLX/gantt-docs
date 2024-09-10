@@ -54,7 +54,7 @@ The lightbox control has the following types:
     - **_sns_** - (*LightboxSection*) - the section's configuration object
 - <span class=submethod>**set_value (node, value, task, section): any**</span> - a function that obtains the value from the **Task** object and sets it to the section
     - **_node_** - (*HTMLElement*) - an html object related to the html defined above
-    - **_value_** - (*any*) - a value defined by the map_to property
+    - **_value_** - (*any*) - a value defined by the **map_to** property
     - **_task_** - (*Task*) - the task object
     - **_section_** - (*LightboxSection*) - the section's configuration object
 - <span class=submethod>**get_value (node, task, section): any**</span> - a function that obtains the value from the section and saves it to the **Task** object

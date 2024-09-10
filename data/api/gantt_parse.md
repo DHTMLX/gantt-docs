@@ -46,19 +46,26 @@ This is the list of expected properties:
 ~~~js
 gantt.parse({
     data: [
-        { id: 1, start_date: "2025-09-23", duration: 42, text: "House Construction" },
-        { id: 2, start_date: "2025-12-02", duration: 60, text: "House Construction" },
+        { id: 1, start_date: "2025-09-23", duration: 42, 
+    		text: "House Construction" },
+        { id: 2, start_date: "2025-12-02", duration: 60, 
+    		text: "House Construction" },
     ],
     "links": [
         { id: "1", source: "1", target: "2", type: "0" },
     ],
     "resources": [
-        { id: 1, text: "Anna, Architect", unit: "hours/day", default_value: 8, type: "work" },
+        { id: 1, text: "Anna, Architect", unit: "hours/day", 
+    		default_value: 8, type: "work" },
     ],
     "assignments": [
       { task_id: "1", resource_id: "1", value: "8" },
-      { task_id: "2", resource_id: "1", value: "8", mode: "fixedDates", start_date: "2025-09-23", end_date: "2025-09-25", duration: 4, delay: 2,  },
-      { task_id: "2", resource_id: "1", value: "8", start_date: new Date("2025-09-23 00:00:00"), end_date: new Date("2025-09-26 00:00:00"), },
+      { task_id: "2", resource_id: "1", value: "8", 
+    		mode: "fixedDates", start_date: "2025-09-23", 
+    		end_date: "2025-09-25", duration: 4, delay: 2,  },
+      { task_id: "2", resource_id: "1", value: "8", 
+    		start_date: new Date("2025-09-23 00:00:00"), 
+    		end_date: new Date("2025-09-26 00:00:00"), },
     ]
 })
 ~~~
@@ -66,7 +73,7 @@ gantt.parse({
 
 The **data** or **tasks** array expects the **NewTask** object that is different from the **Task** object. It can be a string, an empty object.
 It can have the same properties as the [**Task** object](desktop/task_properties.md), and you can add any custom properties there. 
-The difference is that some properties that start from the *$* sign of the **Task** object are ignored and the dates can have the *string* type. 
+The difference is that some properties of the **Task** object that start from the *$* sign are ignored and the dates can have the *string* type. 
 Here is the type description:
 
 - <span class=subproperty>**NewTask**</span> - (*string | {} | object*) - the task object that will be added to Gantt. It can have the following properties:
@@ -85,7 +92,8 @@ This is not the full list of possible task properties. For that, please refer to
 ~~~js
 gantt.parse({
     data: [
-        { id: 1, start_date: "2025-09-23", duration: 42, text: "House Construction" },
+        { id: 1, start_date: "2025-09-23", duration: 42, 
+    		text: "House Construction" },
     ]
 })
 ~~~
@@ -108,22 +116,23 @@ gantt.parse({
 ---
 
 
-The **resources** array expects the **NewResourceItem** object that may have any properties:
+The **resources** array expects the **NewResourceItem** object that may have the properties below:
 
 - <span class=subproperty>**NewResourceItem**</span> - (*object*) - the resource item object that will be added to Gantt. It can have the following properties:
-    - **_id?_** - (*string | number*) - optional, the resource ID, auto-generated if not set.
-    - **_parent?_** - (*string | number*) - optional, the ID of the parent resource.
-    - **_text?_** - (*string*) - optional, the resource name.
-    - **_open?_** - (*boolean*) - optional, specifies if the resource will be opened on load (to show child items).
-    - **_unit?_** - (*string | number*) - optional, the unit of the resource assignment.
-    - **_default_value?_** - (*string | number*) - optional, the value that is assigned by default when adding the assignment in the lightbox section.
-    - **_[customProperty: string]_** - (*any*) - any other property you want to add.
+    - **_id?_** - (*string | number*) - optional, the resource ID, auto-generated if not set
+    - **_parent?_** - (*string | number*) - optional, the ID of the parent resource
+    - **_text?_** - (*string*) - optional, the resource name
+    - **_open?_** - (*boolean*) - optional, specifies if the resource will be opened on load (to show child items)
+    - **_unit?_** - (*string | number*) - optional, the unit of the resource assignment
+    - **_default_value?_** - (*string | number*) - optional, the value that is assigned by default when adding the assignment in the lightbox section
+    - **_[customProperty: string]_** - (*any*) - any other property you want to add
 
 ~~~js
 gantt.parse({
     data: [],
     resources: [
-        { id: 1, text: "Anna, Architect", unit: "hours/day", default_value: 8, type: "work" },
+        { id: 1, text: "Anna, Architect", unit: "hours/day", 
+    		default_value: 8, type: "work" },
     ]
 })
 ~~~
@@ -132,19 +141,19 @@ gantt.parse({
 ---
 
 
-The **assignments** array expects the **NewAssignmentItem** object  that may have any properties:
+The **assignments** array expects the **NewAssignmentItem** object that may have the properties below:
 
 - <span class=subproperty>**NewAssignmentItem**</span> - (*object*) - the assignment item object that will be added to Gantt. It can have the following properties:
-    - **_id?_** - (*string | number*) - optional, the assignment ID, auto-generated if not set.
-    - **_task_id_** - (*string | number*) - the ID of the task the resource is assigned to.
-    - **_resource_id_** - (*string | number*) - the ID of the resource that is assigned to the task.
-    - **_value_** - (*number | string*) - optional, the assignment value.
-    - **_mode?_** - (*string*) - optional, the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration".
-    - **_delay?_** - (*number*) - optional, the difference between the assignment start date and the task start date.
-    - **_start_date?_** - (*string | Date*) - optional, the date the assignment is should start.
-    - **_duration?_** - (*number*) - optional, the assignment duration.
-    - **_end_date?_** - (*string | Date*) - optional, the date the assignment is should end.
-    - **_[customProperty: string]_** - (*any*) - any other property you want to add.
+    - **_id?_** - (*string | number*) - optional, the assignment ID, auto-generated if not set
+    - **_task_id_** - (*string | number*) - the ID of the task the resource is assigned to
+    - **_resource_id_** - (*string | number*) - the ID of the resource that is assigned to the task
+    - **_value_** - (*number | string*) - optional, the assignment value
+    - **_mode?_** - (*string*) - optional, the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
+    - **_delay?_** - (*number*) - optional, the difference between the assignment start date and the task start date
+    - **_start_date?_** - (*string | Date*) - optional, the date the assignment should start
+    - **_duration?_** - (*number*) - optional, the assignment duration
+    - **_end_date?_** - (*string | Date*) - optional, the date the assignment should end
+    - **_[customProperty: string]_** - (*any*) - any other property you want to add
 
 
 ~~~js
@@ -162,7 +171,7 @@ The **collections** object allows loading any custom data. The properties can ha
 
 - <span class=subproperty>**[collectionName: string]**</span> - (*[] | СollectionItem[]*) - an array that contains the collection items.
 
-The **СollectionItem** is an object that can have any properties:
+The **СollectionItem** is an object that can have any properties. It has the following types for its properties:
 
 - <span class=subproperty>**[itemProperty: string]**</span> - (*any*) - any custom property of the collection item.
 
@@ -170,10 +179,14 @@ The **СollectionItem** is an object that can have any properties:
 ~~~js
 gantt.parse({
     data: [
-        { "id": "1", "text": "Task #1", "priority": 1, "start_date": "02-04-2019", "duration": 1, },
-        { "id": "2", "text": "Task #2", "priority": 2, "start_date": "01-04-2019", "duration": 1, },
-        { "id": "3", "text": "Task #3", "priority": 3, "start_date": "02-04-2019", "duration": 1, },
-        { "id": "4", "text": "Task #4", "priority": 1, "start_date": "03-04-2019", "duration": 1, },
+        { "id": "1", "text": "Task #1", "priority": 1, 
+    		"start_date": "02-04-2019", "duration": 1, },
+        { "id": "2", "text": "Task #2", "priority": 2,  
+    		"start_date": "01-04-2019", "duration": 1, },
+        { "id": "3", "text": "Task #3", "priority": 3,  
+    		"start_date": "02-04-2019", "duration": 1, },
+        { "id": "4", "text": "Task #4", "priority": 1,  
+    		"start_date": "03-04-2019", "duration": 1, },
     ],
     links: [],
     collections: {

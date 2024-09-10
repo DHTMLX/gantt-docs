@@ -31,12 +31,12 @@ The configuration object uses the following properties:
 - <span class=subproperty>**id?**</span> - (*number | string*) - optional, the ID of the popup message
 - <span class=subproperty>**text**</span> - (*number | string*) - the content of the popup message
 - <span class=subproperty>**type?**</span> - (*string*) - optional, the class name of the popup message
-- <span class=subproperty>**expire?**</span> - (*number*) - optional, the time period until the popup message disappears. -1 means, it won't hide yb itself
+- <span class=subproperty>**expire?**</span> - (*number*) - optional, the time period until the popup message disappears. -1 means, it won't hide by itself
 
 
 The **message** property can be a function, but can also be used as a configuration object for the popup message. It has the following properties:
 
-- <span class=subproperty>**position**</span> - (*string*) - the position of the popup message. Possible values: "top", "bottom", "left", "right"
+- <span class=subproperty>**position**</span> - (*string*) - the position of the popup message. Possible values are: "top", "bottom", "left", "right"
 
 ~~~js
 gantt.message.position = "left";

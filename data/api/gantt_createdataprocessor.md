@@ -42,8 +42,8 @@ var dp = gantt.createDataProcessor({
 
 
 - <span class=submethod>**RouterFunction (entity, action, data, id): Promise**</span> - the router function to process changes in Gantt
-    - **_entity_** - (*string*) - the name of the relevant entity. Possible values: "task"|"link"|"resource"|"assignment"
-    - **_action_** - (*string*) - the name of the relevant action. Possible values:  "create"|"update"|"delete"
+    - **_entity_** - (*string*) - the name of the relevant entity. Possible values are: "task"|"link"|"resource"|"assignment"
+    - **_action_** - (*string*) - the name of the relevant action. Possible values are:  "create"|"update"|"delete"
     - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - the processed object
     - **_id_** - (*string | number*) - the id of a processed object
 
@@ -87,12 +87,12 @@ var dp = gantt.createDataProcessor(function(entity, action, data, id) {
 
 The **RouterForEntity** object has the following properties:
 
-- <span class=submethod>**create (data): Promise**</span> - a function to process adding items
+- <span class=submethod>**create (data): Promise**</span> - a function to process adding of items
     - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - the processed item
-- <span class=submethod>**update (data, id): Promise**</span> - a function to process updating items
+- <span class=submethod>**update (data, id): Promise**</span> - a function to process updating of items
     - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - the processed item
     - **_id_** - (*string | number*) - the id of a processed item
-- <span class=submethod>**delete (id): Promise**</span> - a function to process deleting items
+- <span class=submethod>**delete (id): Promise**</span> - a function to process deleting of items
     - **_id_** - (*string | number*) - the id of a processed item
 
 

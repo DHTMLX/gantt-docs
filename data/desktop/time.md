@@ -129,7 +129,7 @@ As an object, **map_to** has 3 properties:
 Switching section visibility
 --------------------------
 
-There is the ability to manipulate the visibility of the time section if you specify **type:"time_optional"** and **button: true** while configuring the section for the lightbox:
+It is possible to manipulate the visibility of the time section if you specify **type:"time_optional"** and **button: true** while configuring the section for the lightbox:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -145,11 +145,11 @@ gantt.locale.labels.time_enable_button = 'Schedule';
 gantt.locale.labels.time_disable_button = 'Unschedule';
 ~~~
 
-The toggle button allowing you to switch the visibility of the section will appear near the section.  If the section is visible, everything works as if **type:"duration"** would be specified.
+The toggle button allowing you to switch the visibility of the section will appear near the section.  If the section is visible, everything works as if **type:"time"** is specified.
 
 ![](desktop/time_optional.png)
 
-If you toggle the button off, the section will become invisible but nothing will happen. After you click the "Save" button, the values of the task properties which are mapped to the duration control via the **map_to** property of the section will become `null`.
+If you toggle the button off, the section will become invisible but nothing will happen. After you click the "Save" button, the values of the task properties which are mapped to the time control via the **map_to** property of the section will become `null`.
 
 ~~~js
 gantt.getTask(1);
