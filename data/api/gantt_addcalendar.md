@@ -5,7 +5,7 @@ addCalendar
 	adds a calendar into Gantt
 
 @params:
-- calendar		object		an object with configuration of the calendar
+- calendar		CalendarConfig		an object with configuration of the calendar
 
 
 @returns:
@@ -31,15 +31,18 @@ var calendar = gantt.getCalendar(calendarId);
 @descr:
 The calendar configuration object can contain the following attributes:
 
-- **id** - (id) optional, the calendar id
-- **worktime** - (object) an object that sets the worktime in days and hours. It can include:
-	- **hours** - (array) an array with global working hours, sets the start and end hours of the task
-    - **days** - (array) an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
-    - **customWeeks** - (object) an object that sets different working-time rules for different time spans. The object can contain a set of <i>key:value</i> pairs where <i>key</i> is the name of a time span which can be arbitrary and <i>value</i> is an object that includes the following attributes:
-        - <b>from</b> - (<i>Date</i>) mandatory, the date when the time span is scheduled to begin
-        - <b>to</b> - (<i>Date</i>) mandatory, the date when the time span is scheduled to be completed
-        - <b>hours</b> - (<i>array</i>) an array of working hours as 'from'-'to' pairs. <br><i>'false'</i> value sets a day-off, <i>'true' (default value)</i> applies the default hours (["8:00-17:00"])
-        - <b>days</b> - (<i>array</i>) an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day    
+- <span class=subproperty>**id?**</span> - (*string | number*) - optional, the calendar id
+- <span class=subproperty>**worktime?**</span> - (*object*) - an object that sets the worktime in days and hours. It can include:
+    - **_hours?_** - (*string[] | number[] | boolean*) - optional, an array with global working hours, sets the start and end hours of the task
+    - **_days?_** - (*WorkDaysTuple*) - optional, an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
+    - **_customWeeks?_** - (*object*) - optional, an object with different working-time rules for different periods of time. The object can contain a set of key:value pairs where key is the name of a time span and value is an object with a list of attributes.
+        - **_[timespan: string]_** - (*object*) - the time span with the working time settings. The name of that object is used as the name of the time span
+            - **_from_** - (*Date*) - the date when the time span is scheduled to begin
+            - **_to_** - (*Date*) - the date when the time span is scheduled to be completed
+            - **_hours?_** - (*Array&lt;string | number&gt;*) - optional, an array of working hours as 'from'-'to' pairs.'false' value sets a day-off, 'true' (default value) applies the default hours (["8:00-17:00"])
+            - **_days?_** - (*WorkDaysTuple | boolean*) - optional, an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day.
+
+
 
 ###Setting individual working hours for a day
 

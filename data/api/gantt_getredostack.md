@@ -10,7 +10,7 @@ getRedoStack
 
 @returns:
 
-- stack		array		an array of the redo user actions
+- stack		UndoRedoAction[]		an array of the redo user actions
 
 @example:
 

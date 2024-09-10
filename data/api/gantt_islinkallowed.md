@@ -5,7 +5,10 @@ isLinkAllowed
 	
 
 @params:
-- link	object 		the link object
+- linkOrFrom	string | number | LinkForValidation 		either ID of the source (predecessor) task or a link object with the following properties:
+* from_start	boolean 		optional, specifies if the link is being dragged from the start of the source (predecessor) task (*true*) or from its end (*false*). Not needed at all when the first parameter is specified as an object
+* to	string | number | null | undefined 		optional, the ID of the target (successor) task. Can have the *null* or *undefined* value if the target task isn't specified yet. Not needed at all when the first parameter is specified as an object
+* to_start	boolean 		optional, specifies if the link is being dragged to the start of the target (successor) task (*true*) or from its end (*false*). Not needed at all when the first parameter is specified as an object
 
 @returns:
 - value		boolean		<i>true</i>, if the link is correct. Otherwise, <i>false</i>
@@ -23,6 +26,15 @@ if(gantt.isLinkAllowed(link))// -> false (because source==target)
 
 @template:	api_method
 @descr:
+
+The link object is different from the [Link](desktop/link_properties.md) object and has only 3 properties:
+
+- <span class=subproperty>**source**</span> - (*string | number*) - the ID of the source (predecessor) task.
+- <span class=subproperty>**target**</span> - (*string | number*) - the ID of the target (successor) task.
+- <span class=subproperty>**type**</span> - (*string*) - the link type.
+
+
+
 The cases when a link is considered as incorrect:
 
 1. The source task's id is equal to the target task's id.
@@ -42,12 +54,14 @@ Note, there is the 2nd way to call the method:
 gantt.isLinkAllowed(from, from_start, to, to_start )
 ~~~
 
-where 
+Here is the type description of the arguments:
 
-- **from**  - (*string, number*)	the id of the source task
-- **from_start** - 	(*boolean*)		<i>true</i>, if the link is being dragged from the start of the  source task, <i>false</i> - if <br> from the end of the task
-- **to** - (*string, number*)	the id of the target task( 'null' or 'undefined', if the target task isn't specified yet)
-- **to_start** - (*boolean*)		<i>true</i>, if the link is being dragged to the start of the target task, <i>false</i> - if <br> to the end of the task
+- **from** - (*string | number | object*) - either ID of the source (predecessor) task or a link object with the following properties:
+- **from_start?** - (*boolean*) - optional, specifies if the link is being dragged from the start of the source (predecessor) task (*true*) or from its end (*false*). Not needed at all when the first parameter is specified as an object
+- **to?** - (*string | number | null | undefined
+*) - optional, the ID of the target (successor) task. Can have the *null* or *undefined* value if the target task isn't specified yet. Not needed at all when the first parameter is specified as an object
+- **to_start?** - (*boolean*) - optional, specifies if the link is being dragged to the start of the target (successor) task (*true*) or from its end (*false*). Not needed at all when the first parameter is specified as an object
+
 
 For example, the code above you alter as in:
 

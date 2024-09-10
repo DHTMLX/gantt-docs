@@ -5,7 +5,7 @@ createDataProcessor
 	creates a new dataProcessor instance and attaches it to gantt
 
 @params:
-- config	string | object 		dataProcessor configuration object
+- config	DataProcessorConfig | RouterFunction | RouterConfig 		dataProcessor configuration object
 
 @returns: 
 - dataProcessor		object		the dataProcessor object
@@ -25,7 +25,11 @@ var dp = gantt.createDataProcessor({
 
 The method can take one of the following types of parameters:
 
-1\. `{url:string, mode:string, deleteAfterConfirmation:boolean}` object specifying one of the predefined modes of sending data
+- <span class=subproperty>**DataProcessorConfig**</span> - (*object*) - object specifying one of the predefined modes of sending the data
+    - **_url_** - (*string*) - the URL to the server side
+    - **_mode?_** - (*string*) - optional, the mode of sending data to the server: "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
+    - **_deleteAfterConfirmation?_** - (*boolean*) - optional, defines whether the task must be deleted from the gantt only after a successful response from the server. Dependency links and subtasks will be deleted after the deletion of the parent task is confirmed.
+
 
 ~~~js
 var dp = gantt.createDataProcessor({
@@ -35,19 +39,15 @@ var dp = gantt.createDataProcessor({
 });
 ~~~
 
-where:
 
-- url - the URL to the server side
-- mode - the mode of sending data to the server: "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
-- deleteAfterConfirmation - defines whether the task must be deleted from the gantt only after a successful response from the server. Dependency links and subtasks will be deleted after the deletion of the parent task is confirmed.
 
-2\. Or a custom router object:
+- <span class=submethod>**RouterFunction (entity, action, data, id): Promise**</span> - the router function to process changes in Gantt
+    - **_entity_** - (*string*) - the name of the relevant entity. Possible values are: "task"|"link"|"resource"|"assignment"
+    - **_action_** - (*string*) - the name of the relevant action. Possible values are:  "create"|"update"|"delete"
+    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - the processed object
+    - **_id_** - (*string | number*) - the id of a processed object
 
-~~~js
-var dp = gantt.createDataProcessor(router);
-~~~
 
-where the router is either a function:
 
 ~~~js
 // entity - "task"|"link"|"resource"|"assignment"
@@ -77,7 +77,24 @@ var dp = gantt.createDataProcessor(function(entity, action, data, id) {
 });
 ~~~
 
-or an object of the following structure:
+
+- <span class=subproperty>**RouterConfig**</span> - (*object*) - the router configuration for different entities
+    - **_task?_** - (*RouterForEntity*) - the router object for tasks
+    - **_link?_** - (*RouterForEntity*) - the router object for links
+    - **_resource?_** - (*RouterForEntity*) - the router object for resources
+    - **_assignment?_** - (*RouterForEntity*) - the router object for assignments
+
+
+The **RouterForEntity** object has the following properties:
+
+- <span class=submethod>**create (data): Promise**</span> - a function to process adding of items
+    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - the processed item
+- <span class=submethod>**update (data, id): Promise**</span> - a function to process updating of items
+    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - the processed item
+    - **_id_** - (*string | number*) - the id of a processed item
+- <span class=submethod>**delete (id): Promise**</span> - a function to process deleting of items
+    - **_id_** - (*string | number*) - the id of a processed item
+
 
 ~~~js
 var dp = gantt.createDataProcessor({ 
