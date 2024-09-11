@@ -23,13 +23,13 @@ The **calendar** object possesses the following methods and properties:
     - **_config_** - (*object*) - the [configuration object](api/gantt_setworktime.md#configurationobjectproperties) of a time span:
         - **_day?_** - (*string | number*) - optional, a number of a week day [0 (Sunday) - 6 (Saturday)]. Note, you can set only 1 day at once
         - **_date?_** - (*Date*) - optional, a specific date to set as a working day or day off
-        - **_hours?_** - (*Array&lt;string | number&gt; | boolean*) - optional, an array of working hours as 'from'-'to' pairs.'false' value sets a day-off, 'true' (default value) applies the default hours (["8:00-17:00"])
+        - **_hours?_** - (*string[] | number[] | boolean*) - optional, an array of working hours as 'from'-'to' pairs.'false' value sets a day-off, 'true' (default value) applies the default hours (["8:00-17:00"])
         - **_customWeeks?_** - (*object*) - optional, an object with different working-time rules for different periods of time. The object can contain a set of key:value pairs where key is the name of a time span and value is an object with a list of attributes.
             - **_[timespan: string]_** - (*object*) - the time span with the working time settings. The name of that object is used as the name of the time span
                 - **_from_** - (*Date*) - the date when the time span is scheduled to begin
                 - **_to_** - (*Date*) - the date when the time span is scheduled to be completed
-                - **_hours?_** - (*Array&lt;string | number&gt;*) - optional, an array of working hours as 'from'-'to' pairs.'false' value sets a day-off, 'true' (default value) applies the default hours (["8:00-17:00"])
-                - **_days?_** - (*Array&lt;string | number | Array&lt;string | number&gt;&gt; | boolean*) - optional, an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day.
+                - **_hours?_** - (*string[] | number[]*) - optional, an array of working hours as 'from'-'to' pairs.'false' value sets a day-off, 'true' (default value) applies the default hours (["8:00-17:00"])
+                - **_days?_** - (*WorkDaysTuple | boolean*) - optional, an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day.
 
     
 ~~~js
@@ -40,7 +40,7 @@ calendar.setWorkTime({ hours:["9:00-18:00"] });
     - **_config_** - (*object*) - the [configuration object](api/gantt_unsetworktime.md#configurationobjectproperties) of a time span:
         - **_day?_** - (*string | number*) - optional, a number of a week day [0 (Sunday) - 6 (Saturday)]. Note, you can set only 1 day at once
         - **_date?_** - (*Date*) - optional, a specific date to set as a working day or day off
-        - **_hours?_** - (*Array&lt;string | number&gt; | boolean*) - optional, an array of working hours as 'from'-'to' pairs.
+        - **_hours?_** - (*string[] | number[] | boolean*) - optional, an array of working hours as 'from'-'to' pairs.
 'false' value sets a day-off, 'true' (default value) applies the default hours (["8:00-17:00"])
 
 

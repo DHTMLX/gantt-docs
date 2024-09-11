@@ -5,7 +5,7 @@ roundDate
 	
 
 @params:
-- date	Date | object 	the Date object to round or an object with settings
+- date	Date | RoundDateConfig 	the Date object to round or an object with settings
 
 
 @returns: 
@@ -26,9 +26,10 @@ console.log(today);
 
 If the specified date should be rounded to the nearest date considering the unit of time, pass an object with settings to the **roundDate()** method. The object can take the following attributes:
 
-- **date** - (*object*) the Date object to round;
-- **unit** - (*string*) the time unit ("minute", "hour", "day", "week", "month", "year");
-- **step** - (*number*) the step of the time scale (X-Axis), 1 by default.
+- <span class=subproperty>**date**</span> - (*Date*) - the Date object to round;
+- <span class=subproperty>**unit?**</span> - (*string*) - the time unit ("minute", "hour", "day", "week", "month", "year");
+- <span class=subproperty>**step?**</span> - (*number*) - the step of the time scale (X-Axis), 1 by default.
+
 
 ~~~js
 var today = gantt.roundDate({

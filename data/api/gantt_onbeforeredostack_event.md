@@ -5,7 +5,7 @@ onBeforeRedoStack
 	 fires before an action is added into the redo stack
 
 @params:
-- action		array			a user action as an array of command objects
+- action		UndoRedoAction			a user action as an array of command objects
 
 
 @returns:

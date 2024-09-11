@@ -4,7 +4,7 @@ scales
 @short: defines configuration settings of the time scale
 	
 
-@type: Scale[]
+@type: Scales
 @example:
 gantt.config.scales = [
     {unit: "month", step: 1, format: "%F, %Y"},

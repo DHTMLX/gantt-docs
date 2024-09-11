@@ -16,7 +16,7 @@ The Zoom extension uses a set of the scale settings and allows quickly switching
 - <span class=subproperty>**scale_height?**</span> - (*number*) - the height of the scale
 - <span class=subproperty>**height?**</span> - (*number*) - the height of the scale
 - <span class=subproperty>**min_column_width?**</span> - (*number*) - the minimal width of a column. It has a higher priority than minColumnWidth and maxColumnWidth
-- <span class=subproperty>**scales**</span> - (*Scale[]*) - an array of scales to switch between while zooming in/out on this level
+- <span class=subproperty>**scales**</span> - (*Scales*) - an array of scales to switch between while zooming in/out on this level
 
 
 

@@ -4,7 +4,7 @@ addMarker
 @short:adds a marker to the timeline area
 
 @params:
-- marker	object	the marker's configuration object
+- marker	MarkerConfig	the marker's configuration object
 
 @returns:
 * markerId	number|string	optional, the marker's id
@@ -32,12 +32,14 @@ setInterval(function(){
 
 The configuration object has the following properties:
 
-- **id** - the marker id
-- **start_date** - a Date object that sets the marker's start date
-- **end_date** - a Date object that sets the marker's end date
-- **css** - a CSS class applied to the marker
-- **text** - the marker title
-- **title** - the marker's tooltip
+- <span class=subproperty>**id?**</span> - (*string | number*) - the marker id
+- <span class=subproperty>**start_date**</span> - (*Date*) - a Date object that sets the marker's start date
+- <span class=subproperty>**end_date?**</span> - (*Date*) - a Date object that sets the marker's end date
+- <span class=subproperty>**css?**</span> - (*string*) - a CSS class applied to the marker
+- <span class=subproperty>**text?**</span> - (*string | number*) - the marker title
+- <span class=subproperty>**title?**</span> - (*string | number*) - the marker's tooltip
+
+
 
 
 @related:

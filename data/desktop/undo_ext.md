@@ -25,13 +25,13 @@ gantt.ext.undo.redo();
 
 ###getUndoStack() / getRedoStack() 
 
-- <span class=submethod>**getUndoStack (): Array&lt;object&gt;**</span> - returns the stack of stored undo user actions
+- <span class=submethod>**getUndoStack (): UndoRedoAction[]**</span> - returns the stack of stored undo user actions
 
 ~~~js
 var stack = gantt.ext.undo.getUndoStack();
 ~~~
 
-- <span class=submethod>**getRedoStack (): Array&lt;object&gt;**</span> - returns the stack of stored redo user actions
+- <span class=submethod>**getRedoStack (): UndoRedoAction[]**</span> - returns the stack of stored redo user actions
 
 ~~~js
 var stack = gantt.ext.undo.getRedoStack();

@@ -123,3 +123,46 @@ As an object, **map_to** has 3 properties:
 3. **duration** - optional, the name of a data property that will store the duration defined by the input 
 
 {{note If some property is not specified, the control takes the value of the related mandatory date property.}}
+
+
+
+Switching section visibility
+--------------------------
+
+It is possible to manipulate the visibility of the time section if you specify **type:"time_optional"** and **button: true** while configuring the section for the lightbox:
+
+~~~js
+gantt.config.lightbox.sections = [
+  {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
+  {name: "time", map_to: "auto", button: true, type: "time_optional"} /*!*/
+];
+~~~
+
+and set labels for two states of the button:
+
+~~~js
+gantt.locale.labels.time_enable_button = 'Schedule';
+gantt.locale.labels.time_disable_button = 'Unschedule';
+~~~
+
+The toggle button allowing you to switch the visibility of the section will appear near the section.  If the section is visible, everything works as if **type:"time"** is specified.
+
+![](desktop/time_optional.png)
+
+If you toggle the button off, the section will become invisible but nothing will happen. After you click the "Save" button, the values of the task properties which are mapped to the time control via the **map_to** property of the section will become `null`.
+
+~~~js
+gantt.getTask(1);
+
+// return value
+{
+    id: '1', text: 'Task #1', unscheduled: true, 
+    duration: 0, parent: '10',
+    end_date: null, start_date: null,
+    ...
+}
+~~~
+
+This functionality can be helpful if you need to make the task unscheduled. Check the related sample:
+
+{{editor	https://snippet.dhtmlx.com/5/81f51a96d	Unscheduled tasks}}

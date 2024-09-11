@@ -47,6 +47,28 @@ render:function(){
 	05_lightbox/04_custom_editor.html
 }}
 
+
+The lightbox control has the following types:
+
+- <span class=submethod>**render (sns): string**</span> - a function that returns a string with the HTML elements of the section
+    - **_sns_** - (*LightboxSection*) - the section's configuration object
+- <span class=submethod>**set_value (node, value, task, section): any**</span> - a function that obtains the value from the **Task** object and sets it to the section
+    - **_node_** - (*HTMLElement*) - an html object related to the html defined above
+    - **_value_** - (*any*) - a value defined by the **map_to** property
+    - **_task_** - (*Task*) - the task object
+    - **_section_** - (*LightboxSection*) - the section's configuration object
+- <span class=submethod>**get_value (node, task, section): any**</span> - a function that obtains the value from the section and saves it to the **Task** object
+    - **_node_** - (*HTMLElement*) - an html object related to the html defined above
+    - **_task_** - (*Task*) - the task object
+    - **_section_** - (*LightboxSection*) - the section's configuration object
+- <span class=submethod>**focus (node): void**</span> - a function to set focus to the section
+    - **_node_** - (*HTMLElement*) - an html object related to the html defined above
+
+
+
+
+
+
 ##Custom editor with two inputs
 
 Let's consider how to create the following custom editor:

@@ -130,7 +130,7 @@ As an object, **map_to** has 3 properties:
 Switching section visibility
 --------------------------
 
-There is the ability to manipulate the visibility of the duration section if you specify **type:"duration_optional"** and **button: true** while configuring the section for the lightbox:
+It is possible to manipulate the visibility of the duration section if you specify **type:"duration_optional"** and **button: true** while configuring the section for the lightbox:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -146,7 +146,7 @@ gantt.locale.labels.time_enable_button = 'Schedule';
 gantt.locale.labels.time_disable_button = 'Unschedule';
 ~~~
 
-The toggle button allowing you to switch the visibility of the section will appear near the section.  If the section is visible, everything works as if **type:"duration"** would be specified.
+The toggle button allowing you to switch the visibility of the section will appear near the section.  If the section is visible, everything works as if **type:"duration"** is specified.
 
 ![](desktop/duration_optional.png)
 
