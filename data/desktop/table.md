@@ -1,4 +1,4 @@
-Configuring Grid Area
+Configuring Grid 
 ============================
 
 <img src="desktop/gantt_left.png"/>

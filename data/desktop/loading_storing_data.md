@@ -1,5 +1,6 @@
-Loading and Storing Tasks
+Loading and Saving Tasks
 ==============================
+
 <img src="desktop/gantt_basic.png"/>
 
 {{index

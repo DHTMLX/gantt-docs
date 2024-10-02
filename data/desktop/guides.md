@@ -75,7 +75,7 @@ Check the [features available in the Standard and PRO versions](desktop/editions
 	<tr>
 		<td id="manipulations" class='topics'>
 		    <h4>
-		         Loading and Storing Data
+		         Loading and Saving Data
 		    </h4>
 		    <ul id="manipulations_sublist">                
 					<li>desktop/loading.md</li>

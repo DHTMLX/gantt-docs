@@ -1,4 +1,4 @@
-Performance: Ways to Increase
+Performance: Ways to Improve
 ==================================
 
 Common techniques
