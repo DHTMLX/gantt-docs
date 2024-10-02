@@ -1,9 +1,13 @@
 Vue Gantt
 ==================
 
-{{note The functionality that was described in this tutorial is no longer supported. You can use the actual materials on integrating Gantt with Vue.js: 
+{{note Currently, there is no native Vue component for DHTMLX Gantt. 
+However, you can still easily integrate DHTMLX Gantt into your Vue applications using the materials below. }}
 
-- [a step-by-step tutorial](https://dhtmlx.com/blog/use-dhtmlxgantt-vue-js-framework-demo/) 
-- [a demo on GitHub](https://github.com/DHTMLX/vue-gantt-demo)
-- [a video tutorial](https://www.youtube.com/watch?v=IgoXvVSerkE&t=10s)
-}}
+Here are the recommended resources for integrating DHTMLX Gantt with Vue:
+
+- [Step-by-step tutorial on integrating Gantt with Vue](desktop/howtostart_vue.md)
+- [Vue Gantt demo on GitHub](https://github.com/DHTMLX/vue-gantt-demo)
+- [Video tutorial on integrating DHTMLX Gantt with Vue](https://www.youtube.com/watch?v=IgoXvVSerkE&t=10s)
+
+By following these guides, you can effectively use DHTMLX Gantt within Vue projects and take advantage of its full capabilities.

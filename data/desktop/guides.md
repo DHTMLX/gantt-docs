@@ -2,7 +2,7 @@ Guides
 ======
 
 The guidance information makes up the major part of the documentation and helps you in actual use of dhtmlxGantt.
-The chapter is divided into task-oriented manuals that assist you in performing both simple and difficult, often and seldom used tasks. 
+The chapter is divided into task-oriented manuals that assist you in performing tasks of various complexity.
 The articles come around key procedures and problem-solving activities. 
 
 Check the [features available in the Standard and PRO versions](desktop/editions_comparison.md) of the dhtmlxGantt library.
