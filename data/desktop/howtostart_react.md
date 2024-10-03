@@ -107,25 +107,25 @@ To display Gantt on the page, we need to set the container to render the compone
 
 {{snippet Gantt.jsx}}
 ~~~
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react"; /*!*/
 import { Gantt } from "@dhx/trial-gantt";
 import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
 
-export default function GanttView() {
-  let container = useRef();
+export default function GanttView() { /*!*/
+  let container = useRef(); /*!*/
 
-  useEffect(() => {
-    let gantt = Gantt.getGanttInstance();
-    gantt.init(container.current);
+  useEffect(() => { /*!*/
+    let gantt = Gantt.getGanttInstance(); /*!*/
+    gantt.init(container.current); /*!*/
 
-    return () => {
-      gantt.destructor();
-      container.current.innerHTML = "";
-    };
-  }, []);
+    return () => { /*!*/
+      gantt.destructor(); /*!*/
+      container.current.innerHTML = ""; /*!*/
+    }; /*!*/
+  }, []); /*!*/
 
-  return <div ref={container} style={{ width: "100%", height: "100%" }}></div>;
-}
+  return <div ref={container} style={ {width: "100%", height: "100%"} }></div>; /*!*/
+} /*!*/
 ~~~
 
 ## Step 3. Adding Gantt into the app
@@ -232,7 +232,7 @@ export default function GanttView(props) {
   useEffect(() => {
     let gantt = Gantt.getGanttInstance();
     gantt.init(container.current);
-    gantt.parse(props.tasks);
+    gantt.parse(props.tasks); /*!*/
 
     return () => {
       gantt.destructor();
@@ -240,7 +240,7 @@ export default function GanttView(props) {
     };
   }, []);
 
-  return <div ref={container} style={{ width: "100%", height: "100%" }}></div>;
+  return <div ref={container} style={ {width: "100%", height: "100%"} }></div>;
 }
 ~~~
 
