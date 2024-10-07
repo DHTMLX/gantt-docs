@@ -10,6 +10,29 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+8.0.11
+----------
+
+<span class='release_date'>October 8, 2024. Bugfix release</span>
+
+### Fixes
+
+- Fix the Grid scrolling with the Timeline when a [column resizers](desktop/specifying_columns.md#resizing) is present on the rightmost column
+- Prevent the [lightbox](desktop/default_edit_form.md) from switching to api/gantt_wide_form_config.md mode upon adding the [Time section](desktop/time.md)
+- Ensure the [number editor](desktop/inline_editing.md) respects min and max properties, preventing entry of values outside the defined range
+- Fix error when deleting a task inside the [gantt.batchUpdate](api/gantt_batchupdate.md) method while tasks are displayed in the [Resource Panel](desktop/resource_management.md)
+- Resolve the issue where tasks disappear after using [keyboard shortcuts](desktop/keyboard_navigation.md) to indent or outdent multiple times
+- Correct the [lightbox](desktop/default_edit_form.md) positioning to be properly centered in the Salesforce environment
+- Fix [Keyboard navigation](desktop/keyboard_navigation.md) stopping due to the api/gantt_row_height_config.md setting
+- Correct the dates for project [Auto Scheduling](desktop/auto_scheduling.md) in some scenarios, so only one auto-scheduling call is needed for accurate results
+- Resolve issue with [Keyboard navigation](desktop/keyboard_navigation.md) when the [Resource Histogram](desktop/resource_management.md#resourceviewpanel) is present on the page
+- Fix initialization error on touch-enabled devices when [gantt.getGanttInstance](desktop/multiple_gantts.md) is called with configuration parameters
+- gantt.load method is removed from the the Node.js version
+- Fix error thrown by Gantt when calling defining custom [getVisibleRange](api/gantt_addtasklayer.md) function
+- Resolve regression causing Gantt to scroll to a task after it is updated when [Keyboard navigation](desktop/keyboard_navigation.md) is enabled
+- Ensure [grid sorting](api/gantt_sort_config.md) works properly when clicking the sort icon in the header
+- Fix inconsistent task repaints when api/gantt_drag_timeline_config.md is enabled
+
 8.0.10
 ----------
 
