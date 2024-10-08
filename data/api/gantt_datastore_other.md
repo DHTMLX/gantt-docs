@@ -10,7 +10,6 @@ datastore
 @template:	api_config
 @descr:
 
-{{note This is an experimental API that might be changed in the future.}}
 **_Note_**, that Tasks and Links should be modified using the common [API of Gantt](api/refs/gantt.md). Modifying tasks or links directly in the datastore can produce unexpected results. Datastores are expected to be used for resources or other custom objects.
 
 A new datastore can be created using api/gantt_createdatastore.md method. <br>
