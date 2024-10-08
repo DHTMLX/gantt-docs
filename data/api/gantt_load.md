@@ -44,3 +44,7 @@ gantt.load("data.xml","xml", function(){ //specifying the callback function
 	api/gantt_onajaxerror_event.md
 @descr: 
 The method invokes the api/gantt_onloadstart_event.md and api/gantt_onloadend_event.md events.
+
+{{note
+Note that the method doesn't work in the Gantt version for Node.js.
+}}
