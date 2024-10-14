@@ -4,7 +4,7 @@ Available Skins
 dhtmlxGantt provides several predefined skins that you can use to change the overall look of the Gantt chart:
 
 1. [Terrace (default)](desktop/skins.md#terraceskin)
-2. [Dark](skins.md#darkskin)
+2. [Dark](desktop/skins.md#darkskin)
 3. [Material](desktop/skins.md#materialskin)
 4. [Contrast Black](desktop/skins.md#contrastblackskin) 
 5. [Contrast White](desktop/skins.md#contrastwhiteskin)
@@ -37,7 +37,8 @@ By default, skins import the `Inter` font from `https://fonts.googleapis.com`. R
 );
 ~~~
 
-If necessary, you can remove the font directly from **.less** files in the **codebase/sources/less/** folder and then rebuild the skin as described in the custom_skins.md article.
+If necessary, you can remove the font directly from **.less** files in the **codebase/sources/less/** folder 
+and then rebuild the skin as described in the desktop/custom_skins.md article.
 
 'Teracce' skin 
 -----------------------------

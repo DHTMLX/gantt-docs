@@ -15,6 +15,7 @@ Gantt API
 - api/gantt_addshortcut.md - adds a new keyboard shortcut
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displays an additional layer with custom elements for a task in the timeline area
+- api/gantt_adjusttaskheightforbaselines.md - 
 - api/gantt_alert.md - calls an alert message box
 - api/gantt_assert.md - if the specified expression is false, an errorMessage is shown in the red popup at the top right corner of the screen
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt
@@ -113,6 +114,7 @@ Gantt API
 - api/gantt_gettask.md - returns the task object
 - api/gantt_gettaskassignments.md - returns the parsed resource assignments of a specific task from the datastore
 - api/gantt_gettaskbarheight.md - returns the height (in pixels) of the DOM element of the task
+- api/gantt_gettaskbaselines.md - returns the array of baselines of a specific task from the datastore
 - api/gantt_gettaskby.md - finds a task by the specified criteria
 - api/gantt_gettaskbyindex.md - returns a task by its global task index
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period
@@ -123,6 +125,7 @@ Gantt API
 - api/gantt_gettaskindex.md - gets the index of a task in the branch
 - api/gantt_gettasknode.md - returns the HTML element of the task bar
 - api/gantt_gettaskposition.md - calculates the position and size of the task's DOM element in the timeline area
+- api/gantt_gettaskresources.md - returns the array of unique resources assigned to a specific task from the datastore
 - api/gantt_gettaskrownode.md - returns the HTML element of the task row in the table
 - api/gantt_gettasktop.md - gets the top position of the task's DOM element in the timeline area
 - api/gantt_gettasktype.md - returns the type of a task
@@ -163,7 +166,7 @@ Gantt API
 - api/gantt_movetask.md - moves a task to a new position
 - api/gantt_open.md - opens the branch with the specified id
 - api/gantt_parse.md - loads data from a client-side resource
-- api/gantt_plugins.md - activates specified extensions
+- api/gantt_plugins.md - activates the specified extensions
 - api/gantt_posfromdate.md - gets the relative horizontal position of the specified date in the chart area
 - api/gantt_redo.md - applies the reverted changes to the gantt once again
 - api/gantt_refreshdata.md - refreshes data in the Gantt chart
@@ -188,6 +191,7 @@ Gantt API
 - api/gantt_serverlist.md - returns a list of options
 - api/gantt_setparent.md - set the parent for a task
 - api/gantt_setsizes.md - resizes the Gantt chart
+- api/gantt_setskin.md - sets the active skin
 - api/gantt_setworktime.md - sets the working time for the Gantt chart
 - api/gantt_showcover.md - shows the lightbox modal overlay that blocks interactions with the remaining screen
 - api/gantt_showdate.md - scrolls the chart area to makes the specified date visible
@@ -223,6 +227,7 @@ Gantt API
 - api/gantt_onafterquickinfo_event.md - fires after the pop-up edit form is closed
 - api/gantt_onafterredo_event.md - fires after the redo() method was called
 - api/gantt_onafterrowresize_event.md - fires after resizing of the row height is finished
+- api/gantt_onafterselect_event.md - 
 - api/gantt_onaftersort_event.md - fires after tasks are sorted in the grid
 - api/gantt_onaftertaskadd_event.md - fires after the user adds a task to the Gantt chart
 - api/gantt_onaftertaskautoschedule_event.md - fires for each task which has been autoscheduled
@@ -231,6 +236,7 @@ Gantt API
 - api/gantt_onaftertaskmove_event.md - fires after a task was moved to a new vertical position
 - api/gantt_onaftertaskupdate_event.md - fires after the user updates a task
 - api/gantt_onafterundo_event.md - fires after the undo() method was called
+- api/gantt_onafterunselect_event.md - 
 - api/gantt_onajaxerror_event.md - fires if the server returns an error
 - api/gantt_onautoschedulecircularlink_event.md - fires if some dependency loops were found during auto scheduling
 - api/gantt_onbeforeautoschedule_event.md - fires before auto scheduling
@@ -255,6 +261,7 @@ Gantt API
 - api/gantt_onbeforerowdragmove_event.md - fires before a row of the grid is dragged vertically to a different position
 - api/gantt_onbeforerowresize_event.md - fires before the user starts to resize the row height by drag-and-drop
 - api/gantt_onbeforerowresizeend_event.md - fires before resizing of the row height is completed
+- api/gantt_onbeforeselect_event.md - 
 - api/gantt_onbeforesplittaskdisplay_event.md - fires before a part of the split task is displayed on the Gantt chart
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
@@ -346,6 +353,7 @@ Gantt API
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
 - api/gantt_bar_height_config.md - sets the height of task bars in the timeline area
+- api/gantt_baselines_config.md - 
 - api/gantt_branch_loading_config.md - enables dynamic loading in the Gantt chart
 - api/gantt_branch_loading_property_config.md - specifies that the task has children that are not yet loaded from the backend
 - api/gantt_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
@@ -362,6 +370,7 @@ Gantt API
 - api/gantt_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
+- api/gantt_deadlines_config.md - 
 - api/gantt_deepcopy_on_parse_config.md - defines whether gantt will perform a deep copy of data objects passed into the gantt.parse() method
 - api/gantt_details_on_create_config.md - 'says' to open the lightbox while creating new events by clicking the '+' button
 - api/gantt_details_on_dblclick_config.md - 'says' to open the lightbox after double clicking on a task
@@ -474,6 +483,7 @@ Gantt API
 - api/gantt_task_date_config.md - sets the format of the date label in the 'Time period' section of the lightbox
 - api/gantt_task_grid_row_resizer_attribute_config.md - sets the name of the attribute of the resizer's DOM element of the grid row. The attribute presents the row's index
 - api/gantt_task_height_config.md - sets the height of task bars in the timeline area
+- api/gantt_task_height_offset_config.md - 
 - api/gantt_task_scroll_offset_config.md - sets the offset (in pixels) of the nearest task from the left border in the timeline
 - api/gantt_time_picker_config.md - sets the format of the time drop-down selector in the lightbox
 - api/gantt_time_step_config.md - sets the minimum step (in minutes) for the task's time values
@@ -504,12 +514,13 @@ Gantt API
 <div class='h2'>Templates</div>
 
 {{api
-- api/gantt_date_grid_template.md - specifies the content of start date or end date columns in grid
+- api/gantt_baseline_text_template.md - 
+- api/gantt_date_grid_template.md - specifies the content of columns that show dates (return `Date` values) in grid
 - api/gantt_drag_link_template.md - specifies the text of tooltips that are displayed when the user creates a new dependency link
 - api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the pop-up that appears when a user drags a link
 - api/gantt_format_date_template.md - converts a date object to a date string. Used to send data back to the server
 - api/gantt_grid_blank_template.md - specifies the custom content inserted before the labels of child items in the tree column
-- api/gantt_grid_date_format_template.md - specifies the format of dates in the "Start time" column
+- api/gantt_grid_date_format_template.md - specifies the format of dates for the columns that show dates (return the `Date` values)
 - api/gantt_grid_file_template.md - specifies the icon of child items in the tree column
 - api/gantt_grid_folder_template.md - specifies the icon of parent items in the tree column
 - api/gantt_grid_header_class_template.md - specifies the CSS class that will be applied to the headers of the table's columns
@@ -549,7 +560,6 @@ Gantt API
 - api/gantt_rightside_text_template.md - specifies the text assigned to tasks bars on the right side
 - api/gantt_leftside_text_template.md - specifies the text assigned to tasks bars on the left side
 - api/gantt_lightbox_header_template.md - specifies the lightbox's header
-- api/gantt_marker_class_template.md - specifies the CSS class that will be applied to markers
 }}
 
 

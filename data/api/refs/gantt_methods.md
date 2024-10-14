@@ -11,6 +11,7 @@ Methods
 - api/gantt_addshortcut.md - adds a new keyboard shortcut
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displays an additional layer with custom elements for a task in the timeline area
+- api/gantt_adjusttaskheightforbaselines.md - 
 - api/gantt_alert.md - calls an alert message box
 - api/gantt_assert.md - if the specified expression is false, an errorMessage is shown in the red popup at the top right corner of the screen
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt
@@ -109,6 +110,7 @@ Methods
 - api/gantt_gettask.md - returns the task object
 - api/gantt_gettaskassignments.md - returns the parsed resource assignments of a specific task from the datastore
 - api/gantt_gettaskbarheight.md - returns the height (in pixels) of the DOM element of the task
+- api/gantt_gettaskbaselines.md - returns the array of baselines of a specific task from the datastore
 - api/gantt_gettaskby.md - finds a task by the specified criteria
 - api/gantt_gettaskbyindex.md - returns a task by its global task index
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period
@@ -119,6 +121,7 @@ Methods
 - api/gantt_gettaskindex.md - gets the index of a task in the branch
 - api/gantt_gettasknode.md - returns the HTML element of the task bar
 - api/gantt_gettaskposition.md - calculates the position and size of the task's DOM element in the timeline area
+- api/gantt_gettaskresources.md - returns the array of unique resources assigned to a specific task from the datastore
 - api/gantt_gettaskrownode.md - returns the HTML element of the task row in the table
 - api/gantt_gettasktop.md - gets the top position of the task's DOM element in the timeline area
 - api/gantt_gettasktype.md - returns the type of a task
@@ -159,7 +162,7 @@ Methods
 - api/gantt_movetask.md - moves a task to a new position
 - api/gantt_open.md - opens the branch with the specified id
 - api/gantt_parse.md - loads data from a client-side resource
-- api/gantt_plugins.md - activates specified extensions
+- api/gantt_plugins.md - activates the specified extensions
 - api/gantt_posfromdate.md - gets the relative horizontal position of the specified date in the chart area
 - api/gantt_redo.md - applies the reverted changes to the gantt once again
 - api/gantt_refreshdata.md - refreshes data in the Gantt chart
@@ -184,6 +187,7 @@ Methods
 - api/gantt_serverlist.md - returns a list of options
 - api/gantt_setparent.md - set the parent for a task
 - api/gantt_setsizes.md - resizes the Gantt chart
+- api/gantt_setskin.md - sets the active skin
 - api/gantt_setworktime.md - sets the working time for the Gantt chart
 - api/gantt_showcover.md - shows the lightbox modal overlay that blocks interactions with the remaining screen
 - api/gantt_showdate.md - scrolls the chart area to makes the specified date visible
@@ -213,6 +217,7 @@ Methods
 - api/gantt_addshortcut.md
 - api/gantt_addtask.md
 - api/gantt_addtasklayer.md
+- api/gantt_adjusttaskheightforbaselines.md
 - api/gantt_alert.md
 - api/gantt_assert.md
 - api/gantt_attachevent.md
@@ -311,6 +316,7 @@ Methods
 - api/gantt_gettask.md
 - api/gantt_gettaskassignments.md
 - api/gantt_gettaskbarheight.md
+- api/gantt_gettaskbaselines.md
 - api/gantt_gettaskby.md
 - api/gantt_gettaskbyindex.md
 - api/gantt_gettaskbytime.md
@@ -321,6 +327,7 @@ Methods
 - api/gantt_gettaskindex.md
 - api/gantt_gettasknode.md
 - api/gantt_gettaskposition.md
+- api/gantt_gettaskresources.md
 - api/gantt_gettaskrownode.md
 - api/gantt_gettasktop.md
 - api/gantt_gettasktype.md
@@ -386,6 +393,7 @@ Methods
 - api/gantt_serverlist.md
 - api/gantt_setparent.md
 - api/gantt_setsizes.md
+- api/gantt_setskin.md
 - api/gantt_setworktime.md
 - api/gantt_showcover.md
 - api/gantt_showdate.md

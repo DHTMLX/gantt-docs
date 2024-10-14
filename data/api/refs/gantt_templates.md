@@ -4,12 +4,13 @@ Templates
 =======
 
 {{api
-- api/gantt_date_grid_template.md - specifies the content of start date or end date columns in grid
+- api/gantt_baseline_text_template.md - 
+- api/gantt_date_grid_template.md - specifies the content of columns that show dates (return `Date` values) in grid
 - api/gantt_drag_link_template.md - specifies the text of tooltips that are displayed when the user creates a new dependency link
 - api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the pop-up that appears when a user drags a link
 - api/gantt_format_date_template.md - converts a date object to a date string. Used to send data back to the server
 - api/gantt_grid_blank_template.md - specifies the custom content inserted before the labels of child items in the tree column
-- api/gantt_grid_date_format_template.md - specifies the format of dates in the "Start time" column
+- api/gantt_grid_date_format_template.md - specifies the format of dates for the columns that show dates (return the `Date` values)
 - api/gantt_grid_file_template.md - specifies the icon of child items in the tree column
 - api/gantt_grid_folder_template.md - specifies the icon of parent items in the tree column
 - api/gantt_grid_header_class_template.md - specifies the CSS class that will be applied to the headers of the table's columns
@@ -49,10 +50,10 @@ Templates
 - api/gantt_rightside_text_template.md - specifies the text assigned to tasks bars on the right side
 - api/gantt_leftside_text_template.md - specifies the text assigned to tasks bars on the left side
 - api/gantt_lightbox_header_template.md - specifies the lightbox's header
-- api/gantt_marker_class_template.md - specifies the CSS class that will be applied to markers
 }}
 
 @index:
+- api/gantt_baseline_text_template.md
 - api/gantt_date_grid_template.md
 - api/gantt_drag_link_template.md
 - api/gantt_drag_link_class_template.md
@@ -98,6 +99,5 @@ Templates
 - api/gantt_rightside_text_template.md
 - api/gantt_leftside_text_template.md
 - api/gantt_lightbox_header_template.md
-- api/gantt_marker_class_template.md
 
 
