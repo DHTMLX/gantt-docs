@@ -109,7 +109,7 @@ It is also possible to [specify separate columns for the type of constraint and 
 Use the **constraint_type** and **constraint_date** columns' names, correspondingly.
 
 ~~~js
-var constraintTypeEditor = {
+const constraintTypeEditor = {
 	type: "select", map_to: "constraint_type", options: [
 		{ key: "asap", label: gantt.locale.labels.asap },
 		{ key: "alap", label: gantt.locale.labels.alap },
@@ -118,7 +118,7 @@ var constraintTypeEditor = {
 	]
 };
 
-var constraintDateEditor = {
+const constraintDateEditor = {
     type: "date",
     map_to: "constraint_date",
     min: new Date(2019, 0, 1),

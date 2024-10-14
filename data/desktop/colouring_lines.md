@@ -19,7 +19,7 @@ Structure of the link DOM element
 The DOM element of the link has the following structure:
 
 - **.gantt_task_link**  - static positioning, zero-sized
-	- **.gantt_line_wrapper/gantt_link_arrow** - absolute positioning
+	- **.gantt_line_wrapper/gantt_link_arrow/gantt_link_corner** - absolute positioning
 		- **.gantt_link_line_down(/up/right/left)** - static positioning inside the wrapper element
         
 The DOM looks as follows:
@@ -32,9 +32,11 @@ The DOM looks as follows:
     <div class="gantt_line_wrapper">
     	<div class="gantt_link_line_left"></div>
   	</div>
+	<div class="gantt_link_corner gantt_link_corner_left_down"></div>
     <div class="gantt_line_wrapper">
     	<div class="gantt_link_line_down"></div>
   	</div>
+	<div class="gantt_link_corner gantt_link_corner_down_right"></div>
     <div class="gantt_line_wrapper">
     	<div class="gantt_link_line_right"></div>
   	</div>
@@ -44,11 +46,11 @@ The DOM looks as follows:
 
 where: 
 
-- **gantt_task_link** - the element with zero sizing and static positioning. It is used just as a common parent for all parts of the link, for example, to apply styles:
+- **gantt_task_link** - the element with zero sizing and static positioning. It is used as a common parent for all parts of the link, for example, to apply styles:
 
 ~~~css
-.gantt_task_link:hover .gantt_line_wrapper div{
-   background-color:red;
+.gantt_task_link{
+   --dhx-gantt-link-background:red;
 } 
 ~~~
 
@@ -81,17 +83,6 @@ The size of the **gantt_link_arrow** element is defined by the api/gantt_link_ar
 gantt.config.link_arrow_size = 8;
 ~~~
 
-The color of the link arrow is modified via CSS as the color of a border:
-
-~~~css
-.gantt_link_arrow_right {
-    border-left-color: blue;
-}
-
-.gantt_link_arrow_left {
-    border-right-color: blue;
-}
-~~~
 
 - **gantt_link_line_<%dir%>** -  the visible element of a link. Use **left/right/up/down** instead of the **dir** part of the element name.
 
@@ -101,13 +92,13 @@ The width of this element can be changed via the api/gantt_link_line_width_confi
 gantt.config.link_line_width = 3;
 ~~~
 
-The color of the element is set via CSS like this:
+- **gantt_link_corner** -  the rounded corner of a link line. The corner radius is defined by api/gantt_link_radius_config.md:
 
-~~~css
-.gantt_line_wrapper div{
-	background-color: #e63030;
-}
+~~~js
+gantt.config.link_radius = 2;
 ~~~
+
+Setting **gantt.config.link_radius = 1** will remove rounded corners.
 
 
 Redefining the link's template
@@ -195,12 +186,8 @@ Adding a custom color via the **color** property is followed by adding of an inl
 In order to make the links look critical, you can use the following code:
 
 ~~~css
-.gantt_critical_link .gantt_line_wrapper>div {
-  background-color: #e63030 !important;
-}
-
-.gantt_critical_link .gantt_link_arrow {
-  border-left-color: #e63030 !important;
+.gantt_critical_link {
+  --dhx-gantt-link-background: #e63030 !important;
 }
 ~~~
 

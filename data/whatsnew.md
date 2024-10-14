@@ -10,6 +10,32 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+<b>9.0</b>
+---------------
+<span class='release_date'>October 18, 2024. Major update</span>
+
+### Breaking Changes
+
+This update brings some changes in the structure of the Gantt package and behavior of the functionality. Make sure to check the [Migration notes](migrating.md) to be on the safe side.
+
+### New functionality
+
+- [Skins customization](desktop/custom_skins.md) with CSS variables
+- New [Dark skin](desktop/skins.html#darkskin) is introduced
+- Built-in support for [Baselines](desktop/baselines.md) is added
+
+### Updates
+
+- [Terrace skin](desktop/skins.md#terraceskin) is updated
+- Added support of Deadlines
+- Added default display of [Constraints](desktop/auto_scheduling.md)
+- [Source files of skins](desktop/custom_skins.md) are now included in the package
+- Ability to [install the professional versions of the Gantt via npm](desktop/install_with_bower.md)
+- [Bluebird Promise](api/gantt_promise.md) library is **removed** from the core library
+- Various improvements for scaling on high-definition screens and responsiveness on smaller screens
+- Updated type definitions
+
+
 8.0.11
 ----------
 

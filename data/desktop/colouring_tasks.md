@@ -22,37 +22,26 @@ Coloring tasks depending on their priority
 }}
 ~~~css
 <style>
-	/* common styles for overriding borders/progress color */
-	.gantt_task_line{
-		border-color: rgba(0, 0, 0, 0.25);
-	}
-	.gantt_task_line .gantt_task_progress {
-		background-color: rgba(0, 0, 0, 0.25);
-	}
+
 
 	/* high */
 	.gantt_task_line.high {
-		background-color: #03A9F4;
-	}
-	.gantt_task_line.high .gantt_task_content {
-		color: #fff;
+		--dhx-gantt-task-background: #d96c49;
+		--dhx-gantt-task-color: #fff;
 	}
 
 	/* medium */
 	.gantt_task_line.medium {
-		background-color: #f57730;
-	}
-	.gantt_task_line.medium .gantt_task_content {
-		color: #fff;
+		--dhx-gantt-task-background: #f57730;
+		--dhx-gantt-task-color: #fff;
 	}
 
 	/* low */
 	.gantt_task_line.low {
-		background-color: #e157de;
+		--dhx-gantt-task-background: #fff;
+		--dhx-gantt-task-color: #fff;
 	}
-	.gantt_task_line.low .gantt_task_content {
-		color: #fff;
-	}
+
 </style>
 ~~~
 
@@ -129,8 +118,7 @@ In order to make the tasks look critical, you can use the following code:
 
 ~~~css
 .gantt_critical_task {
-  background-color: #e63030 !important;
-  border-color: #9d3a3a !important;
+  --dhx-gantt-task-background: #e63030 !important;
 }
 ~~~
 
@@ -210,12 +198,10 @@ gantt.attachEvent("onLoadEnd", function(){
 	resources.forEach(function(r){
 		if(r.backgroundColor && r.textColor){
 			html.push(".gantt_task_line.gantt_resource_" + r.key + "{" +
-				"background-color:"+r.backgroundColor+"; " +
+				"--dhx-gantt-task-background:"+r.backgroundColor+"; " +
+				"--dhx-gantt-task-color:"+r.textColor+"; " +
 			"}");
 
-			html.push(".gantt_task_line.gantt_resource_" + r.key + 
-				" .gantt_task_content {" + "color:"+r.textColor+";" +
-			"}");
 		}
 	});
 	element.innerHTML = html.join("");
