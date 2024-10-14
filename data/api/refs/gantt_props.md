@@ -56,6 +56,7 @@ Properties
 - api/gantt_end_date_config.md - sets the end value of the time scale
 - api/gantt_external_render_config.md - renders an external component into the DOM
 - api/gantt_fit_tasks_config.md - 'says' the Gantt chart to automatically extend the time scale in order to fit all displayed tasks
+- api/gantt_form_blocks_config.md - 
 - api/gantt_grid_elastic_columns_config.md - adjusts the width of columns inside a scrollable grid
 - api/gantt_grid_resize_config.md - makes the grid resizable by dragging the right grid's border
 - api/gantt_grid_resizer_attribute_config.md - sets the name of the attribute  of the grid resizer's  DOM element
@@ -228,6 +229,7 @@ Properties
 - api/gantt_end_date_config.md
 - api/gantt_external_render_config.md
 - api/gantt_fit_tasks_config.md
+- api/gantt_form_blocks_config.md
 - api/gantt_grid_elastic_columns_config.md
 - api/gantt_grid_resize_config.md
 - api/gantt_grid_resizer_attribute_config.md

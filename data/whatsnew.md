@@ -21,7 +21,7 @@ This update brings some changes in the structure of the Gantt package and behavi
 ### New functionality
 
 - [Skins customization](desktop/custom_skins.md) with CSS variables
-- New [Dark skin](desktop/skins.html#darkskin) is introduced
+- New [Dark skin](desktop/skins.md#darkskin) is introduced
 - Built-in support for [Baselines](desktop/baselines.md) is added
 
 ### Updates
