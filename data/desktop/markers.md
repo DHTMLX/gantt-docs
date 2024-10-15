@@ -30,6 +30,7 @@ To start using the extension, enable the **marker** plugin using the [gantt.plug
 
 
 ##Adding a marker
+
 To add a marker to the timeline area, e.g. the today's marker, call the api/gantt_addmarker.md method:
 
 ~~~js
@@ -83,6 +84,7 @@ gantt.deleteMarker(markerId); /*!*/
 ~~~
 
 ##Hiding markers
+
 To hide all added markers, set the api/gantt_show_markers_config.md configuration option to 'false': 
 
 ~~~js
@@ -118,20 +120,6 @@ var marker2 = gantt.addMarker({ ...});
 var marker3 = gantt.addMarker({ ...}); 
 
 gantt.renderMarkers(); /*!*/
-~~~
-
-Styling markers
-----------------------------
-
-To style markers, use the [gantt.templates.marker_class](api/gantt_marker_class_template.md) template:
-
-~~~js
-var showAdvancedMarkers;
-gantt.templates.marker_class = function(marker){
-	if (showAdvancedMarkers)
-    return "advanced_marker";
-    return "hidden";
-}
 ~~~
 
 Today's marker
