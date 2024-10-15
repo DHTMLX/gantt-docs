@@ -12,11 +12,15 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 <b>9.0</b>
 ---------------
+
 <span class='release_date'>October 18, 2024. Major update</span>
+
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-gantt-9-0/)
 
 ### Breaking Changes
 
-This update brings some changes in the structure of the Gantt package and behavior of the functionality. Make sure to check the [Migration notes](migrating.md) to be on the safe side.
+This update brings some changes in the structure of the Gantt package and behavior of the functionality. Make sure to check the 
+[Migration notes](migrating.md#8090) to be on the safe side.
 
 ### New functionality
 

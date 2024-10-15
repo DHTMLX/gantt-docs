@@ -24,7 +24,7 @@ If called before initialization, the method will have the same effect as the ass
 gantt.skin = "dark";
 ~~~
 
-@related
+@related:
 	desktop/skins.md
 @relatedsample:
 	06_skins/10_themes.html

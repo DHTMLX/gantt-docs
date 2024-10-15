@@ -20,6 +20,142 @@ Migration from Older Versions
 	}
 </style>
 
+8.0 -> 9.0
+-------------
+
+The v9.0 update introduces several breaking changes.
+
+
+### Skins switched to CSS variables
+
+CSS skins (themes) have been completely reworked and now utilize CSS variables. While the HTML structure of the component and CSS class names have mostly remained unchanged, CSS styles written for older versions of the Gantt are likely no longer effective with v9.0.
+
+For example, the following style was used to color tasks depending on their priority:
+
+~~~html
+<style>
+	/* common styles for overriding borders/progress color */
+	.gantt_task_line{
+		border-color: rgba(0, 0, 0, 0.25);
+	}
+	.gantt_task_line .gantt_task_progress {
+		background-color: rgba(0, 0, 0, 0.25);
+	}
+
+	/* high */
+	.gantt_task_line.high {
+		background-color: #03A9F4;
+	}
+	.gantt_task_line.high .gantt_task_content {
+		color: #fff;
+	}
+
+	/* medium */
+	.gantt_task_line.medium {
+		background-color: #f57730;
+	}
+	.gantt_task_line.medium .gantt_task_content {
+		color: #fff;
+	}
+
+	/* low */
+	.gantt_task_line.low {
+		background-color: #e157de;
+	}
+	.gantt_task_line.low .gantt_task_content {
+		color: #fff;
+	}
+</style>
+~~~
+
+Starting from v9.0, the same effect is achieved with the following style:
+
+~~~html
+<style>
+	/* high */
+	.gantt_task_line.high {
+		--dhx-gantt-task-background: #d96c49;
+		--dhx-gantt-task-color: #fff;
+	}
+
+	/* medium */
+	.gantt_task_line.medium {
+		--dhx-gantt-task-background: #f57730;
+		--dhx-gantt-task-color: #fff;
+	}
+
+	/* low */
+	.gantt_task_line.low {
+		--dhx-gantt-task-background: #fff;
+		--dhx-gantt-task-color: #fff;
+	}
+</style>
+~~~
+
+Check the available variables on the desktop/custom_skins.md page.
+
+{{note
+Migration will require the rewriting of existing CSS to achieve the required design.
+}}
+
+### Single CSS file
+
+All themes are now embedded into a single **dhtmlxgantt.css** file.
+
+To activate a specific skin, use the `gantt.skin` property:
+
+~~~js
+gantt.skin = "material";
+~~~
+
+Or the api/gantt_setskin.md method:
+
+~~~js
+gantt.setSkin("material");
+~~~
+
+{{note
+Note that `gantt.setSkin()` will repaint Gantt.
+}}
+
+If you use a skin other than the **terrace**, the following migration steps are required:
+
+1) Replace the CSS file of the skin with the `dhtmlxgantt.css` file:
+
+~~~html
+<!-- OLD -->
+<link rel="stylesheet" href="./codebase/dhtmlxgantt_material.css" type="text/css">
+<!-- NEW -->
+<link rel="stylesheet" href="./codebase/dhtmlxgantt.css" type="text/css">
+~~~
+
+2) Enable the required skin from javascript:
+
+~~~js
+gantt.setSkin("material");
+gantt.init("gantt_here");
+~~~
+
+### Built-in support for baselines, deadlines and constraints
+
+Previously, adding baselines required manual coding using the `gantt.addTaskLayer` API. With Gantt 9.0, we've introduced built-in support for baseline entities together with
+deadlines and task constraints. 
+
+In case, you want to switch off the default settings and render baselines and deadlines manually, 
+you can use the corresponding confguration options: api/gantt_baselines_config.md and api/gantt_deadlines_config.md:
+
+~~~js
+// disabling the built-in baselines functionality
+gantt.config.baselines = false;
+
+// disabling the built-in deadlines and constraints functionality
+gantt.config.deadlines = false;
+~~~
+
+### Promise implementation
+
+The **Bluebird** library has been excluded from the Gantt bundle. api/gantt_promise.md now uses the native Promise implementation.
+
 7.1 -> 8.0
 -------------
 

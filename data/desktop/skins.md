@@ -1,5 +1,5 @@
-Available Skins
-===================================
+Skins
+==============
 
 dhtmlxGantt provides several predefined skins that you can use to change the overall look of the Gantt chart:
 
@@ -19,7 +19,7 @@ Starting from v9.0, all skins are bundled in the main **dhtmlxgantt.css** file. 
 gantt.skin = "dark";
 ~~~
 
-Or by calling the **gantt.setSkin** method:
+Or by calling the [gantt.setSkin()](api/gantt_setskin.md) method:
 
 ~~~js
 gantt.setSkin("dark");
