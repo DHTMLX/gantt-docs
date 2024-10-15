@@ -16,7 +16,7 @@ gantt.setSkin("dark");
 @template:	api_method
 @descr:
 
-If the method is called after a gantt is initialized, it will trigger the [repaint](api/gantt_render.md) method. 
+If the method is called after a gantt is initialized, it will trigger the [render](api/gantt_render.md) method. 
 
 If called before initialization, the method will have the same effect as the assignment of the `gantt.skin` property:
 

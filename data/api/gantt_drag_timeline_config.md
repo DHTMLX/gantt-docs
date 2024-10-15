@@ -13,7 +13,8 @@ configures the behavior of the drag_timeline extension
 
 gantt.config.drag_timeline = {
     ignore:".gantt_task_line, .gantt_task_link",
-    useKey: false
+    useKey: false,
+    render: false
 };
 
 
@@ -29,22 +30,15 @@ The config value can be either an object or the **null** value, the **null** val
 gantt.config.drag_timeline = null; // disables the extension
 ~~~
 
-The **drag_timeline** object includes two properties:
+The **drag_timeline** object includes the following properties:
 
 
 
-- <span class=subproperty>**ignore**</span> - (*string*) - CSS selector. Scrolling the timeline won't be activated for the elements that match the selector.
+- <span class=subproperty>**ignore**</span> - (*string*) - CSS selector. Scrolling the timeline won't be activated for the elements that match the selector
 
+- <span class=subproperty>**useKey**</span> - (*string | boolean*) - if the property is specified, scrolling the timeline will be activated only when the specified modifier key is pressed. The supported values are: "ctrlKey", "shiftKey", "metaKey", "altKey"
 
-~~~
-gantt.config.drag_timeline = {
-    ignore:".gantt_task_line, .gantt_task_link",
-    useKey: false
-};
-~~~
-
-
-- <span class=subproperty>**useKey**</span> - (*string | boolean*) - if the property is specified, scrolling the timeline will be activated only when the specified modifier key is pressed. The supported values are: "ctrlKey", "shiftKey", "metaKey", "altKey".
+- <span class=subproperty>**render**</span> - (*boolean*) - if the property is enabled, scrolling the timeline will be rerendered when the scroll is started and when it is ended
 
 
 @relatedsample:

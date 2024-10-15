@@ -87,6 +87,13 @@ gantt.skin = "material";
 06_skins/09_material.html
 }}
 
+Starting from v6.3, the import of `Roboto` font was removed from the Material skin. If necessary, you can add `Roboto` font manually, as in:
+
+~~~js
+<link rel="stylesheet" href="'https://fonts.googleapis.com/css?'+
+    +'family=Open+Sans|Roboto:regular,medium,thin,bold'">
+~~~
+
 'Contrast Black' skin
 --------------------
 To apply the 'Contrast Black' skin, include the default CSS file:
@@ -181,9 +188,3 @@ gantt.skin = "broadway";
 
 
 
-Starting from v6.3, the import of `Roboto` font was removed from the material skin. If necessary, you can add `Roboto` font manually, as in:
-
-~~~js
-<link rel="stylesheet" href="'https://fonts.googleapis.com/css?'+
-    +'family=Open+Sans|Roboto:regular,medium,thin,bold'">
-~~~

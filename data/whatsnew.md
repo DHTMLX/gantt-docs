@@ -31,7 +31,7 @@ This update brings some changes in the structure of the Gantt package and behavi
 ### Updates
 
 - [Terrace skin](desktop/skins.md#terraceskin) is updated
-- Added support of Deadlines
+- Added support for Deadlines
 - Added default display of [Constraints](desktop/auto_scheduling.md)
 - [Source files of skins](desktop/custom_skins.md) are now included in the package
 - Ability to [install the professional versions of the Gantt via npm](desktop/install_with_bower.md)
