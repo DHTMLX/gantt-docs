@@ -27,5 +27,5 @@ gantt.skin = "dark";
 @related:
 	desktop/skins.md
 @relatedsample:
-	06_skins/10_themes.html
+	06_skins/10_dark.html
 

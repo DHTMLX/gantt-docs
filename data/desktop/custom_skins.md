@@ -123,7 +123,7 @@ The easiest method to customize the Gantt's appearance is by overriding the rele
 ~~~
 
 {{sample
-	07_skins/07_themes.html
+	06_skins/06_dynamic_skin.html
 }}
 
 By defining variables in this manner, you can redefine the default styles, ensuring that your custom styles are applied to the Gantt.
