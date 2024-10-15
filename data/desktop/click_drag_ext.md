@@ -67,4 +67,3 @@ You can attach the following events to the element passed as a viewPort (gantt.$
 - **onBeforeDragEnd** - fires after releasing the mouse button but before the rendered element is deleted and tasks that come under selection are searched for
 - **onDragEnd** - fires after removing a rendered element and finding tasks that come under selection but before calling the callback function (if specified)
 
-@todo: check and improve

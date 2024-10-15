@@ -56,7 +56,7 @@ Properties
 - api/gantt_end_date_config.md - sets the end value of the time scale
 - api/gantt_external_render_config.md - renders an external component into the DOM
 - api/gantt_fit_tasks_config.md - 'says' the Gantt chart to automatically extend the time scale in order to fit all displayed tasks
-- api/gantt_form_blocks_config.md - 
+- api/gantt_form_blocks_config.md - an object of the lightbox controls
 - api/gantt_grid_elastic_columns_config.md - adjusts the width of columns inside a scrollable grid
 - api/gantt_grid_resize_config.md - makes the grid resizable by dragging the right grid's border
 - api/gantt_grid_resizer_attribute_config.md - sets the name of the attribute  of the grid resizer's  DOM element
@@ -79,6 +79,7 @@ Properties
 - api/gantt_link_arrow_size_config.md - sets the size of the link arrow
 - api/gantt_link_attribute_config.md - sets the name of the attribute that will specify the id of the link's HTML element
 - api/gantt_link_line_width_config.md - sets the width of dependency links in the timeline area
+- api/gantt_link_radius_config.md - 
 - api/gantt_link_wrapper_width_config.md - sets the width of the area (over the link) sensitive to clicks
 - api/gantt_links_config.md - stores the types of links dependencies
 - api/gantt_min_column_width_config.md - sets the minimum width for a column in the timeline area
@@ -252,6 +253,7 @@ Properties
 - api/gantt_link_arrow_size_config.md
 - api/gantt_link_attribute_config.md
 - api/gantt_link_line_width_config.md
+- api/gantt_link_radius_config.md
 - api/gantt_link_wrapper_width_config.md
 - api/gantt_links_config.md
 - api/gantt_min_column_width_config.md

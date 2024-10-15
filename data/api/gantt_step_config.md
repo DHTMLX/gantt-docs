@@ -35,4 +35,3 @@ gantt.config.scales = [
 
 @changelog: deprecated since v6.2
 
-@todo:check

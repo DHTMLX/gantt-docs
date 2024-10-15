@@ -30,4 +30,3 @@ var active_node = gantt.ext.keyboardNavigation.getActiveNode();
 
 {{editor	https://snippet.dhtmlx.com/dznf7xjw		Getting the active cell}}
 
-@todo: check and improve

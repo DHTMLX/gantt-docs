@@ -59,4 +59,3 @@ The **subscales** property is deprecated. Use the api/gantt_scales_config.md con
 
 @changelog: deprecated since v6.2
 
-@todo:check
