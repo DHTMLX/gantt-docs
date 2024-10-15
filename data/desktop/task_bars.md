@@ -22,4 +22,5 @@ Configuring Tasks
 - desktop/validation.md
 - desktop/dnd.md
 - desktop/advanced_dnd.md
+- desktop/custom_projects_dates.md
 }}
