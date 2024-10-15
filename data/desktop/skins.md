@@ -64,7 +64,7 @@ And set the skin via the **scheduler.skin** property:
 scheduler.skin = "dark";
 ~~~
 
-<img alt="DHTMLX Gantt - Dark Theme" src="desktop/gantt-dark-skin.png" style="border: 1px solid #E4E4E4"/>
+<img alt="DHTMLX Gantt - Dark Theme" src="desktop/gantt_dark_skin.png" style="border: 1px solid #E4E4E4"/>
 
 {{sample 06_skins/10_dark.html}}
 

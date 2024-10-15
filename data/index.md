@@ -1,17 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 8.0!</h2>
+    <h2>Meet Gantt 9.0!</h2>
     
     <p>
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="desktop/resource_management.md">Updated resource management</a></li>  
-        <li><a href="desktop/grouping.md">Improved task grouping</a></li>      
-        <li><a href="desktop/empty_state_screen.md">Empty state screen</a></li>   
-        <li><a href="desktop/milestones.md#hidingtasksandmilestones">Ability to hide rollup items</a> and <a href="desktop/split_tasks.md#filteringsplittasks">filter split tasks</a></li>   
-        
+		<li><a href="desktop/custom_skins.md">Skins customization with CSS variables</a></li>  
+        <li><a href="desktop/skins.md#darkskin">New Dark skin</a></li>      
+        <li><a href="desktop/baselines.md">Built-in support for Baselines</a></li>    
 	</ul>
 
     <p class='action_buttons'>
