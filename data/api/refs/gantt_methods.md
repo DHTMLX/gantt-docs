@@ -11,7 +11,7 @@ Methods
 - api/gantt_addshortcut.md - adds a new keyboard shortcut
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displays an additional layer with custom elements for a task in the timeline area
-- api/gantt_adjusttaskheightforbaselines.md - 
+- api/gantt_adjusttaskheightforbaselines.md - adjusts the task's row height for proper display of baseline elements
 - api/gantt_alert.md - calls an alert message box
 - api/gantt_assert.md - if the specified expression is false, an errorMessage is shown in the red popup at the top right corner of the screen
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt

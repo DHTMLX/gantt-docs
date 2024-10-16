@@ -18,7 +18,8 @@ Properties
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
 - api/gantt_bar_height_config.md - sets the height of task bars in the timeline area
-- api/gantt_baselines_config.md - 
+- api/gantt_bar_height_padding_config.md - adjusts the padding around task bars in the timeline when `bar_height` is set to "full"
+- api/gantt_baselines_config.md - configures the functionality of baselines in the Gantt chart
 - api/gantt_branch_loading_config.md - enables dynamic loading in the Gantt chart
 - api/gantt_branch_loading_property_config.md - specifies that the task has children that are not yet loaded from the backend
 - api/gantt_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
@@ -35,7 +36,7 @@ Properties
 - api/gantt_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
-- api/gantt_deadlines_config.md - 
+- api/gantt_deadlines_config.md - enables or disables the display of deadline elements for tasks
 - api/gantt_deepcopy_on_parse_config.md - defines whether gantt will perform a deep copy of data objects passed into the gantt.parse() method
 - api/gantt_details_on_create_config.md - 'says' to open the lightbox while creating new events by clicking the '+' button
 - api/gantt_details_on_dblclick_config.md - 'says' to open the lightbox after double clicking on a task
@@ -79,7 +80,7 @@ Properties
 - api/gantt_link_arrow_size_config.md - sets the size of the link arrow
 - api/gantt_link_attribute_config.md - sets the name of the attribute that will specify the id of the link's HTML element
 - api/gantt_link_line_width_config.md - sets the width of dependency links in the timeline area
-- api/gantt_link_radius_config.md - 
+- api/gantt_link_radius_config.md - sets the radius for rounding corners of link lines in the timeline
 - api/gantt_link_wrapper_width_config.md - sets the width of the area (over the link) sensitive to clicks
 - api/gantt_links_config.md - stores the types of links dependencies
 - api/gantt_min_column_width_config.md - sets the minimum width for a column in the timeline area
@@ -150,7 +151,6 @@ Properties
 - api/gantt_task_date_config.md - sets the format of the date label in the 'Time period' section of the lightbox
 - api/gantt_task_grid_row_resizer_attribute_config.md - sets the name of the attribute of the resizer's DOM element of the grid row. The attribute presents the row's index
 - api/gantt_task_height_config.md - sets the height of task bars in the timeline area
-- api/gantt_task_height_offset_config.md - 
 - api/gantt_task_scroll_offset_config.md - sets the offset (in pixels) of the nearest task from the left border in the timeline
 - api/gantt_time_picker_config.md - sets the format of the time drop-down selector in the lightbox
 - api/gantt_time_step_config.md - sets the minimum step (in minutes) for the task's time values
@@ -192,6 +192,7 @@ Properties
 - api/gantt_autosize_config.md
 - api/gantt_autosize_min_width_config.md
 - api/gantt_bar_height_config.md
+- api/gantt_bar_height_padding_config.md
 - api/gantt_baselines_config.md
 - api/gantt_branch_loading_config.md
 - api/gantt_branch_loading_property_config.md
@@ -324,7 +325,6 @@ Properties
 - api/gantt_task_date_config.md
 - api/gantt_task_grid_row_resizer_attribute_config.md
 - api/gantt_task_height_config.md
-- api/gantt_task_height_offset_config.md
 - api/gantt_task_scroll_offset_config.md
 - api/gantt_time_picker_config.md
 - api/gantt_time_step_config.md

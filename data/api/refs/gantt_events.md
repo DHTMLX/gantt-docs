@@ -13,7 +13,6 @@ Events
 - api/gantt_onafterquickinfo_event.md - fires after the pop-up edit form is closed
 - api/gantt_onafterredo_event.md - fires after the redo() method was called
 - api/gantt_onafterrowresize_event.md - fires after resizing of the row height is finished
-- api/gantt_onafterselect_event.md - 
 - api/gantt_onaftersort_event.md - fires after tasks are sorted in the grid
 - api/gantt_onaftertaskadd_event.md - fires after the user adds a task to the Gantt chart
 - api/gantt_onaftertaskautoschedule_event.md - fires for each task which has been autoscheduled
@@ -22,7 +21,6 @@ Events
 - api/gantt_onaftertaskmove_event.md - fires after a task was moved to a new vertical position
 - api/gantt_onaftertaskupdate_event.md - fires after the user updates a task
 - api/gantt_onafterundo_event.md - fires after the undo() method was called
-- api/gantt_onafterunselect_event.md - 
 - api/gantt_onajaxerror_event.md - fires if the server returns an error
 - api/gantt_onautoschedulecircularlink_event.md - fires if some dependency loops were found during auto scheduling
 - api/gantt_onbeforeautoschedule_event.md - fires before auto scheduling
@@ -47,7 +45,6 @@ Events
 - api/gantt_onbeforerowdragmove_event.md - fires before a row of the grid is dragged vertically to a different position
 - api/gantt_onbeforerowresize_event.md - fires before the user starts to resize the row height by drag-and-drop
 - api/gantt_onbeforerowresizeend_event.md - fires before resizing of the row height is completed
-- api/gantt_onbeforeselect_event.md - 
 - api/gantt_onbeforesplittaskdisplay_event.md - fires before a part of the split task is displayed on the Gantt chart
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
@@ -131,7 +128,6 @@ Events
 - api/gantt_onafterquickinfo_event.md
 - api/gantt_onafterredo_event.md
 - api/gantt_onafterrowresize_event.md
-- api/gantt_onafterselect_event.md
 - api/gantt_onaftersort_event.md
 - api/gantt_onaftertaskadd_event.md
 - api/gantt_onaftertaskautoschedule_event.md
@@ -140,7 +136,6 @@ Events
 - api/gantt_onaftertaskmove_event.md
 - api/gantt_onaftertaskupdate_event.md
 - api/gantt_onafterundo_event.md
-- api/gantt_onafterunselect_event.md
 - api/gantt_onajaxerror_event.md
 - api/gantt_onautoschedulecircularlink_event.md
 - api/gantt_onbeforeautoschedule_event.md
@@ -165,7 +160,6 @@ Events
 - api/gantt_onbeforerowdragmove_event.md
 - api/gantt_onbeforerowresize_event.md
 - api/gantt_onbeforerowresizeend_event.md
-- api/gantt_onbeforeselect_event.md
 - api/gantt_onbeforesplittaskdisplay_event.md
 - api/gantt_onbeforetaskadd_event.md
 - api/gantt_onbeforetaskautoschedule_event.md
