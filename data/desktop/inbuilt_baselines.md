@@ -238,6 +238,11 @@ After that you can customize the display of deadlines by [creating a custom dead
 The **gantt.config.deadlines** config enables or disables the display of deadline elements for tasks. If enabled, Gantt will check the **task.deadline** property, 
 and if it contains a valid date, the deadline element will be displayed in the timeline.
 
+### Task constraints
 
+When [auto scheduling](desktop/auto_scheduling.md) is enabled and works in the Constraint mode (api/gantt_auto_scheduling_compatibility_config.md is set to *false*),
+Gantt will automatically display constraint dates in the chart. 
+
+{{sample 02_extensions/19_constraints_scheduling.html}}
 
 

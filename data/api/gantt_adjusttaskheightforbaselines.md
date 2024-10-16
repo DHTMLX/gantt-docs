@@ -22,3 +22,5 @@ api/gantt_baselines_config.md
 
 @relatedsample:
 04_customization/15_baselines.html
+
+@changelog: added in v9.0

@@ -16,7 +16,6 @@ Gantt API
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displays an additional layer with custom elements for a task in the timeline area
 - api/gantt_adjusttaskheightforbaselines.md - adjusts the task's row height for proper display of baseline elements
-- api/gantt_adjusttaskheightforbaselines.md - adjusts the task's row height for proper display of baseline elements
 - api/gantt_alert.md - calls an alert message box
 - api/gantt_assert.md - if the specified expression is false, an errorMessage is shown in the red popup at the top right corner of the screen
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt
@@ -115,7 +114,7 @@ Gantt API
 - api/gantt_gettask.md - returns the task object
 - api/gantt_gettaskassignments.md - returns the parsed resource assignments of a specific task from the datastore
 - api/gantt_gettaskbarheight.md - returns the height (in pixels) of the DOM element of the task
-- api/gantt_gettaskbaselines.md - returns the array of baselines of a specific task from the datastore
+- api/gantt_gettaskbaselines.md - returns an array of baselines of a specific task from the datastore
 - api/gantt_gettaskby.md - finds a task by the specified criteria
 - api/gantt_gettaskbyindex.md - returns a task by its global task index
 - api/gantt_gettaskbytime.md - returns a collection of tasks which occur during the specified period

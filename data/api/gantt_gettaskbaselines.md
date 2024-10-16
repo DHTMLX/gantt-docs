@@ -2,7 +2,7 @@ getTaskBaselines
 =============
 
 
-@short: returns the array of baselines of a specific task from the datastore
+@short: returns an array of baselines of a specific task from the datastore
 	
 
 @params:
@@ -20,7 +20,7 @@ gantt.getTaskBaselines(5); // -> see details
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-{{note The **getTaskBaselines** method is not available if api/gantt_baselines_config.md is disabled.}}
+{{note The **getTaskBaselines** method is not available if the api/gantt_baselines_config.md config is disabled.}}
 
 The method returns an array with objects as in:
 
@@ -43,11 +43,10 @@ The method returns an array with objects as in:
 ]
 ~~~
 
+ 
 
-@relatedapi: 
 
-
-@related: desktop/resource_baselines.md
+@related: desktop/inbuilt_baselines.md
 
 @relatedsample: 04_customization/15_baselines.html
 
