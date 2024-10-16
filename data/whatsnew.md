@@ -13,7 +13,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 <b>9.0</b>
 ---------------
 
-<span class='release_date'>October 18, 2024. Major update</span>
+<span class='release_date'>October 17, 2024. Major update</span>
 
 [Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-gantt-9-0/)
 
@@ -28,6 +28,7 @@ This update brings some changes in the structure of the Gantt package and behavi
 - New [Dark skin](desktop/skins.md#darkskin) is introduced
 - Built-in support for [Baselines](desktop/baselines.md) is added
 - [Manually Scheduled Summary tasks](desktop/custom_projects_dates.md) are now supported
+- [Sticky labels for time scales](desktop/configuring_time_scale.html#stickylabels)
 
 ### Updates
 

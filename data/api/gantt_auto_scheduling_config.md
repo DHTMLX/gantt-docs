@@ -4,8 +4,8 @@ auto_scheduling
 @short:
 	enables auto scheduling
 
-@type: boolean
-@default:false
+@type: boolean | object
+@default: false
 @example:
 gantt.config.auto_scheduling = true;
 
@@ -19,6 +19,20 @@ gantt.init("gantt_here");
 {{note This config is defined in the **auto_scheduling** extension, so you need to activate the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin. Read the details in the desktop/auto_scheduling.md article.}}
 
 
+The `auto_scheduling` config can be set as a boolean or as an object to enable additional control over the auto-scheduling behavior. When set as an object, the following options are available:
+
+- **enabled** (*boolean*) - turns auto-scheduling on or off (same as using a boolean value directly).
+- **show_constraints** (*boolean*) - controls the display of task constraints on the Gantt chart. Set to `true` to display constraints or `false` to hide them.
+
+For example, to enable auto-scheduling but disable the display of task constraints:
+
+~~~js
+gantt.config.auto_scheduling = {
+  enabled: true,
+  show_constraints: false
+};
+gantt.init("gantt_here");
+~~~
 
 @related:
 desktop/auto_scheduling.md

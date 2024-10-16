@@ -148,8 +148,33 @@ you can use the corresponding confguration options: api/gantt_baselines_config.m
 // disabling the built-in baselines functionality
 gantt.config.baselines = false;
 
-// disabling the built-in deadlines and constraints functionality
+// disabling the built-in deadlines functionality
 gantt.config.deadlines = false;
+~~~
+
+Built-in display of task constraints can also be disabled using the extended api/gantt_autoscheduling_config.md config:
+
+~~~js
+gantt.config.auto_scheduling = {
+  enabled: true, 
+  show_constraints: false
+};
+~~~
+
+This disables the default display of task constraints while still keeping auto-scheduling functionality active.
+
+### Sticky labels in the Timeline
+
+Starting from v9.0, time scale labels are sticky by default. This means the labels stay visible on the screen as you scroll, following the viewport until they scroll off naturally. In previous versions, labels were centered within their cells and did not remain visible while scrolling.
+
+If you need to revert to the old behavior and disable sticky labels, you can set the `sticky` property of the [scale](desktop/configuring_time_scale.md) object to false:
+
+~~~js
+gantt.config.scales = [
+  {unit: "year", step: 1, format: "%Y", sticky: false},
+  {unit: "month", step: 1, format: "%F", sticky: false},
+  {unit: "day", step:1, format: "%j", sticky: false}
+];
 ~~~
 
 ### Promise implementation

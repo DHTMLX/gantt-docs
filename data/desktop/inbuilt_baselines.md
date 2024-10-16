@@ -240,8 +240,33 @@ and if it contains a valid date, the deadline element will be displayed in the t
 
 ### Task constraints
 
-When [auto scheduling](desktop/auto_scheduling.md) is enabled and works in the Constraint mode (api/gantt_auto_scheduling_compatibility_config.md is set to *false*),
-Gantt will automatically display constraint dates in the chart. 
+Starting from v9.0, when [auto scheduling](desktop/auto_scheduling.md) is enabled and works in Constraint mode (api/gantt_auto_scheduling_compatibility_config.md is set to *false*), Gantt will automatically display constraint dates in the chart.
+
+~~~js
+gantt.parse({
+  data: [
+    { 
+      id: 1, 
+      text: "Task #1", 
+      start_date: "2025-04-04", 
+      duration: 4, 
+      constraint_date: "2025-04-04", 
+      constraint_type: "snet", 
+      parent: 0
+    },
+    // Additional tasks
+  ]
+})
+~~~
+
+The display of constraints can be controlled using the `display_constraints` option in the api/gantt_auto_scheduling_config.md config. By default, constraints are shown, but you can disable them by setting `display_constraints` to `false`:
+
+~~~js
+gantt.config.auto_scheduling = {
+  enabled: true,
+  display_constraints: false
+};
+~~~
 
 {{sample 02_extensions/19_constraints_scheduling.html}}
 
