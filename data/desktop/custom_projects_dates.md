@@ -1,14 +1,20 @@
 Manually Scheduled Summary Tasks
 ===============================
 
-There is a possibility to schedule summary tasks manually. This feature serves to outline project phases before all subtasks are detailed, 
+There is a possibility to schedule [projects](desktop/task_types.md) (summary tasks) manually. This feature serves to outline project phases before all subtasks are detailed, 
  providing a framework for your project timeline. 
  
 By default, summary tasks automatically calculate their dates based on the earliest start and latest end dates of their subtasks. 
 You can also set fixed start and end dates for summary tasks independently of their subtasks. As a result, the Gantt chart will display both the fixed duration 
 and the duration derived from subtasks.
 
-To activate this feature for a summary task, set the api/gantt_auto_scheduling_config.md property to *false*. The fixed dates are stored in **task.start_date** and 
+{{sample
+ 04_customization/25_project_dates.html
+}}
+
+To activate this feature for a summary task, set the api/gantt_auto_scheduling_config.md property to *false*. 
+
+The fixed dates are stored in **task.start_date** and 
 **task.end_date**, while the computed dates from subtasks are available in **task.$auto_start_date** and **task.$auto_end_date**.
 
 ~~~js
@@ -20,7 +26,7 @@ gantt.parse({
       type: "project",
       start_date: "2025-05-01 00:00:00",
       duration: 15,
-      auto_scheduling: false
+      auto_scheduling: false /* ! */
     },
     // ...
   ],

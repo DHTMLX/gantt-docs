@@ -28,7 +28,7 @@ The v9.0 update introduces several breaking changes.
 
 ### Skins switched to CSS variables
 
-CSS skins (themes) have been completely reworked and now utilize CSS variables. While the HTML structure of the component and CSS class names have mostly remained unchanged, CSS styles written for older versions of the Gantt are likely no longer effective with v9.0.
+CSS skins (themes) have been completely reworked and now utilize CSS variables. While the HTML structure of the component and CSS class names have mostly remained unchanged, CSS styles written for older versions of the Gantt may no longer work as intended with v9.0.
 
 For example, the following style was used to color tasks depending on their priority:
 
@@ -95,7 +95,7 @@ Starting from v9.0, the same effect is achieved with the following style:
 Check the available variables on the desktop/custom_skins.md page.
 
 {{note
-Migration will require the rewriting of existing CSS to achieve the required design.
+Migration will likely require updating of existing CSS to achieve the required design.
 }}
 
 ### Single CSS file

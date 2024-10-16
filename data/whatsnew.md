@@ -27,6 +27,7 @@ This update brings some changes in the structure of the Gantt package and behavi
 - [Skins customization](desktop/custom_skins.md) with CSS variables
 - New [Dark skin](desktop/skins.md#darkskin) is introduced
 - Built-in support for [Baselines](desktop/baselines.md) is added
+- [Manually Scheduled Summary tasks](desktop/custom_projects_dates.md) are now supported
 
 ### Updates
 
@@ -34,10 +35,22 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Added support for Deadlines
 - Added default display of [Constraints](desktop/auto_scheduling.md)
 - [Source files of skins](desktop/custom_skins.md) are now included in the package
+- Add `setUndoStack` and `setRedoStack` methods to the [Undo plugin](desktop/undo_redo.md) for managing the undo/redo stacks
 - Ability to [install the professional versions of the Gantt via npm](desktop/install_with_bower.md)
 - [Bluebird Promise](api/gantt_promise.md) library is **removed** from the core library
 - Various improvements for scaling on high-definition screens and responsiveness on smaller screens
 - Updated type definitions
+
+### Fixes
+
+
+- Fix the incorrect link positions for Milestones when the parent task has a larger height
+- Resolve the error that occurs during [Auto Scheduling](desktop/auto_scheduling.md) if auto-scheduling is canceled for a task
+- Ensure [split tasks](desktop/split_tasks.md) are properly displayed within the split parent row
+- Correct the [Auto Scheduling](desktop/auto_scheduling.md#summaryscheduling) of projects when a subtask link has a lag of 0
+- Fix incorrect link positions for [split tasks](desktop/split_tasks.md) that have different row heights
+- Ensure Gantt properly auto-schedules projects with 2 levels of tasks
+- Fix the issue where Gantt doesn't return the fixedDate "assignments" in the [resource_cell_value](desktop/resource_management.md#resourcecellvalue) when the task is outside the specified date range
 
 
 8.0.11

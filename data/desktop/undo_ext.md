@@ -44,6 +44,20 @@ The returned stack is an array of the undo user actions. Each user action contai
 - **_value_** - (*object*) the changed task/link object 
 - **_oldValue_** - (*object*) the task/link object before changes
 
+###setUndoStack() / setRedoStack()
+
+- <span class=submethod>**setUndoStack (stack: UndoRedoAction[]) **</span> - sets the stack of stored undo user actions
+
+~~~js
+gantt.ext.undo.setUndoStack(stack);
+~~~
+
+- <span class=submethod>**setRedoStack (stack: UndoRedoAction[]) **</span> - sets the stack of stored redo user actions
+
+~~~js
+gantt.ext.undo.setRedoStack(stack);
+~~~
+
 ###clearUndoStack() / clearRedoStack()
 
 - <span class=submethod>**clearUndoStack (): void**</span> - clears the stack of stored undo commands
