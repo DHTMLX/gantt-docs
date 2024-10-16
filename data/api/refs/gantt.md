@@ -16,6 +16,7 @@ Gantt API
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displays an additional layer with custom elements for a task in the timeline area
 - api/gantt_adjusttaskheightforbaselines.md - adjusts the task's row height for proper display of baseline elements
+- api/gantt_adjusttaskheightforbaselines.md - adjusts the task's row height for proper display of baseline elements
 - api/gantt_alert.md - calls an alert message box
 - api/gantt_assert.md - if the specified expression is false, an errorMessage is shown in the red popup at the top right corner of the screen
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt
@@ -259,7 +260,6 @@ Gantt API
 - api/gantt_onbeforerowdragmove_event.md - fires before a row of the grid is dragged vertically to a different position
 - api/gantt_onbeforerowresize_event.md - fires before the user starts to resize the row height by drag-and-drop
 - api/gantt_onbeforerowresizeend_event.md - fires before resizing of the row height is completed
-- api/gantt_onbeforeselect_event.md - 
 - api/gantt_onbeforesplittaskdisplay_event.md - fires before a part of the split task is displayed on the Gantt chart
 - api/gantt_onbeforetaskadd_event.md - fires before a new task is added to the Gantt chart
 - api/gantt_onbeforetaskautoschedule_event.md - fires for each task which is rescheduled
@@ -351,6 +351,7 @@ Gantt API
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
 - api/gantt_bar_height_config.md - sets the height of task bars in the timeline area
+- api/gantt_bar_height_padding_config.md - adjusts the padding around task bars in the timeline when `bar_height` is set to "full"
 - api/gantt_baselines_config.md - configures the functionality of baselines in the Gantt chart
 - api/gantt_branch_loading_config.md - enables dynamic loading in the Gantt chart
 - api/gantt_branch_loading_property_config.md - specifies that the task has children that are not yet loaded from the backend
@@ -483,7 +484,6 @@ Gantt API
 - api/gantt_task_date_config.md - sets the format of the date label in the 'Time period' section of the lightbox
 - api/gantt_task_grid_row_resizer_attribute_config.md - sets the name of the attribute of the resizer's DOM element of the grid row. The attribute presents the row's index
 - api/gantt_task_height_config.md - sets the height of task bars in the timeline area
-- api/gantt_task_height_offset_config.md - 
 - api/gantt_task_scroll_offset_config.md - sets the offset (in pixels) of the nearest task from the left border in the timeline
 - api/gantt_time_picker_config.md - sets the format of the time drop-down selector in the lightbox
 - api/gantt_time_step_config.md - sets the minimum step (in minutes) for the task's time values
