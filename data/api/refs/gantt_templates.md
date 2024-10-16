@@ -4,7 +4,7 @@ Templates
 =======
 
 {{api
-- api/gantt_baseline_text_template.md - 
+- api/gantt_baseline_text_template.md - specifies the text displayed inside the baseline element
 - api/gantt_date_grid_template.md - specifies the content of columns that show dates (return `Date` values) in grid
 - api/gantt_drag_link_template.md - specifies the text of tooltips that are displayed when the user creates a new dependency link
 - api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the pop-up that appears when a user drags a link

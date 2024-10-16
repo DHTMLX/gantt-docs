@@ -1,19 +1,10 @@
-Extra Elements in Timeline Area
+Custom Elements in Timeline Area
 ==========================================
 
 {{pronote This functionality is available only in the PRO edition}}
 
-Common description
-------------------------------------------
-
-By default, dhtmlxGantt renders elements of the timeline area as layers and does it in the following order:
-
-1. Timeline's grid
-2. Links
-3. Tasks
-
-Displaying additional elements, such as a baseline or deadline marker, is usually done by creating a displayable layer and placing custom elements there
-(using the absolute positioning to put custom elements next to the related task).
+dhtmlxGantt provides the [built-in functionality](desktop/inbuilt_baselines.md) that allows rendering such extra elements as baselines, 
+deadlines and task constraints by default. In case, you need to extend or modify the default features, you can add custom elements into timeline manually as described below.
 
 **To add one more layer to the timeline area**, use the api/gantt_addtasklayer.md method. As a parameter, the method takes a function that: 
 

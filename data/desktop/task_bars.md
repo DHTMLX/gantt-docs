@@ -14,6 +14,7 @@ Configuring Tasks
 - desktop/multiselection.md
 - desktop/working_time.md
 - desktop/critical_path.md
+- desktop/inbuilt_baselines.md
 - desktop/baselines.md
 - desktop/milestones.md
 - desktop/tooltips.md

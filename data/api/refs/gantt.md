@@ -15,7 +15,7 @@ Gantt API
 - api/gantt_addshortcut.md - adds a new keyboard shortcut
 - api/gantt_addtask.md - adds a new task
 - api/gantt_addtasklayer.md - displays an additional layer with custom elements for a task in the timeline area
-- api/gantt_adjusttaskheightforbaselines.md - 
+- api/gantt_adjusttaskheightforbaselines.md - adjusts the task's row height for proper display of baseline elements
 - api/gantt_alert.md - calls an alert message box
 - api/gantt_assert.md - if the specified expression is false, an errorMessage is shown in the red popup at the top right corner of the screen
 - api/gantt_attachevent.md - attaches the handler to an inner event of dhtmlxGantt
@@ -227,7 +227,6 @@ Gantt API
 - api/gantt_onafterquickinfo_event.md - fires after the pop-up edit form is closed
 - api/gantt_onafterredo_event.md - fires after the redo() method was called
 - api/gantt_onafterrowresize_event.md - fires after resizing of the row height is finished
-- api/gantt_onafterselect_event.md - 
 - api/gantt_onaftersort_event.md - fires after tasks are sorted in the grid
 - api/gantt_onaftertaskadd_event.md - fires after the user adds a task to the Gantt chart
 - api/gantt_onaftertaskautoschedule_event.md - fires for each task which has been autoscheduled
@@ -236,7 +235,6 @@ Gantt API
 - api/gantt_onaftertaskmove_event.md - fires after a task was moved to a new vertical position
 - api/gantt_onaftertaskupdate_event.md - fires after the user updates a task
 - api/gantt_onafterundo_event.md - fires after the undo() method was called
-- api/gantt_onafterunselect_event.md - 
 - api/gantt_onajaxerror_event.md - fires if the server returns an error
 - api/gantt_onautoschedulecircularlink_event.md - fires if some dependency loops were found during auto scheduling
 - api/gantt_onbeforeautoschedule_event.md - fires before auto scheduling
@@ -353,7 +351,7 @@ Gantt API
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
 - api/gantt_bar_height_config.md - sets the height of task bars in the timeline area
-- api/gantt_baselines_config.md - 
+- api/gantt_baselines_config.md - configures the functionality of baselines in the Gantt chart
 - api/gantt_branch_loading_config.md - enables dynamic loading in the Gantt chart
 - api/gantt_branch_loading_property_config.md - specifies that the task has children that are not yet loaded from the backend
 - api/gantt_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
@@ -370,7 +368,7 @@ Gantt API
 - api/gantt_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/gantt_date_grid_config.md - sets the format of dates in the "Start time" column of the table
 - api/gantt_date_scale_config.md - sets the format of the time scale (X-Axis)
-- api/gantt_deadlines_config.md - 
+- api/gantt_deadlines_config.md - enables or disables the display of deadline elements for tasks
 - api/gantt_deepcopy_on_parse_config.md - defines whether gantt will perform a deep copy of data objects passed into the gantt.parse() method
 - api/gantt_details_on_create_config.md - 'says' to open the lightbox while creating new events by clicking the '+' button
 - api/gantt_details_on_dblclick_config.md - 'says' to open the lightbox after double clicking on a task
@@ -414,7 +412,7 @@ Gantt API
 - api/gantt_link_arrow_size_config.md - sets the size of the link arrow
 - api/gantt_link_attribute_config.md - sets the name of the attribute that will specify the id of the link's HTML element
 - api/gantt_link_line_width_config.md - sets the width of dependency links in the timeline area
-- api/gantt_link_radius_config.md - 
+- api/gantt_link_radius_config.md - sets the radius for rounding corners of link lines in the timeline
 - api/gantt_link_wrapper_width_config.md - sets the width of the area (over the link) sensitive to clicks
 - api/gantt_links_config.md - stores the types of links dependencies
 - api/gantt_min_column_width_config.md - sets the minimum width for a column in the timeline area
@@ -516,7 +514,7 @@ Gantt API
 <div class='h2'>Templates</div>
 
 {{api
-- api/gantt_baseline_text_template.md - 
+- api/gantt_baseline_text_template.md - specifies the text displayed inside the baseline element
 - api/gantt_date_grid_template.md - specifies the content of columns that show dates (return `Date` values) in grid
 - api/gantt_drag_link_template.md - specifies the text of tooltips that are displayed when the user creates a new dependency link
 - api/gantt_drag_link_class_template.md - specifies the CSS class that will be applied to the pop-up that appears when a user drags a link
