@@ -6,6 +6,9 @@ Custom Elements in Timeline Area
 dhtmlxGantt provides the [built-in functionality](desktop/inbuilt_baselines.md) that allows rendering such extra elements as baselines, 
 deadlines and task constraints by default. In case, you need to extend or modify the default features, you can add custom elements into timeline manually as described below.
 
+Displaying additional elements is usually done by creating a displayable layer and placing custom elements there
+(using the absolute positioning to put custom elements next to the related task).
+
 **To add one more layer to the timeline area**, use the api/gantt_addtasklayer.md method. As a parameter, the method takes a function that: 
 
 - Takes a task object;
