@@ -21,8 +21,9 @@ gantt.init("gantt_here");
 
 The `auto_scheduling` config can be set as a boolean or as an object to enable additional control over the auto-scheduling behavior. When set as an object, the following options are available:
 
-- **enabled** (*boolean*) - turns auto-scheduling on or off (same as using a boolean value directly).
-- **show_constraints** (*boolean*) - controls the display of task constraints on the Gantt chart. Set to `true` to display constraints or `false` to hide them.
+- <span class=subproperty>**enabled**</span> - (*boolean*) - turns auto-scheduling on or off (same as using a boolean value directly).
+- <span class=subproperty>**show_constraints**</span> - (*boolean*) - controls the display of task constraints on the Gantt chart.
+Set to `true` to display constraints or `false` to hide them.
 
 For example, to enable auto-scheduling but disable the display of task constraints:
 
@@ -58,3 +59,6 @@ desktop/auto_scheduling.md
 - api/gantt_onautoschedulecircularlink_event.md
 
 @edition:pro
+
+@changelog:
+Can be set as an object since v9.0

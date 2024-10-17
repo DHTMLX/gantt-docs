@@ -19,9 +19,15 @@ gantt.templates.baseline_text = function(task, baseline, index) {
 
 @descr:
 
+@related:
+desktop/inbuilt_baselines.md
 
 @relatedapi:
 api/gantt_baselines_config.md
 
 @relatedsample:
 04_customization/15_baselines.html
+
+@edition: pro
+
+@changelog: added in v9.0

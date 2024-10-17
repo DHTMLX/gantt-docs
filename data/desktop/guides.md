@@ -152,6 +152,7 @@ Check the [features available in the Standard and PRO versions](desktop/editions
                     <li>desktop/multiselection.md</li>
                     <li>desktop/working_time.md</li>
                     <li>desktop/critical_path.md</li>
+                    <li>desktop/inbuilt_baselines.md</li>
                     <li>desktop/baselines.md</li>
                     <li>desktop/milestones.md</li>
                     <li>desktop/tooltips.md</li>
@@ -159,6 +160,8 @@ Check the [features available in the Standard and PRO versions](desktop/editions
  		    		<li>desktop/readonly_mode.md</li>
                     <li>desktop/validation.md</li>
                     <li>desktop/dnd.md</li>
+                    <li>desktop/advanced_dnd.md</li>
+					<li>desktop/custom_projects_dates.md</li>
             </ul>
         </td>
         <td class='topic_description'>Covers the basics of performing general operations over task objects, such as adding, deleting, setting the date format, filtering, etc.</td>

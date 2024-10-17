@@ -16,3 +16,5 @@ The property defines the radius for rounding the corners of link lines in the ti
 @relatedapi:
 api/gantt_link_line_width_config.md
 api/gantt_link_arrow_size_config.md
+
+@changelog: added in v9.0

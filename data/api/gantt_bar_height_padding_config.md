@@ -35,3 +35,5 @@ gantt.config.bar_height_padding = 14;
 @relatedapi:
 api/gantt_bar_height_config.md
 api/gantt_row_height_config.md
+
+@changelog: added in v9.0
