@@ -29,3 +29,5 @@ gantt.skin = "dark";
 @relatedsample:
 	06_skins/10_dark.html
 
+@changelog:
+added in v9.0

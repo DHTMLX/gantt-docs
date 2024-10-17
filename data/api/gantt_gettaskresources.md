@@ -40,6 +40,6 @@ api/gantt_process_resource_assignments_config.md
 
 @relatedsample: 11_resources/13_resource_assignments_for_days.html
 
-@changelog: added in v9.0
+@changelog: added in v8.0
 
 @edition: pro
