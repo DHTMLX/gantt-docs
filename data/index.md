@@ -9,7 +9,7 @@ Start
     <ul>
 		<li><a href="desktop/custom_skins.md">Skins customization with CSS variables</a></li>  
         <li><a href="desktop/skins.md#darkskin">New Dark skin</a></li>      
-        <li><a href="desktop/baselines.md">Built-in support for baselines</a></li>    
+        <li><a href="desktop/inbuilt_baselines.md">Built-in support for baselines</a></li>    
         <li><a href="desktop/custom_projects_dates.md">Manually scheduled projects</a></li>    
 	</ul>
 

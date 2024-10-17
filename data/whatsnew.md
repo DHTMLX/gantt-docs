@@ -26,17 +26,17 @@ This update brings some changes in the structure of the Gantt package and behavi
 
 - [Skins customization](desktop/custom_skins.md) with CSS variables
 - New [Dark skin](desktop/skins.md#darkskin) is introduced
-- Built-in support for [Baselines](desktop/baselines.md) is added
-- [Manually Scheduled Summary tasks](desktop/custom_projects_dates.md) are now supported
-- [Sticky labels for time scales](desktop/configuring_time_scale.html#stickylabels)
+- Built-in support for [baselines](desktop/inbuilt_baselines.md) is added
+- [Manually scheduled summary tasks](desktop/custom_projects_dates.md) are now supported
+- [Sticky labels for time scales](desktop/configuring_time_scale.md#stickylabels)
 
 ### Updates
 
 - [Terrace skin](desktop/skins.md#terraceskin) is updated
-- Added support for Deadlines
-- Added default display of [Constraints](desktop/auto_scheduling.md)
+- Default display of [deadlines](desktop/inbuilt_baselines.md#deadlinesandconstraints) is added
+- Default display of [task constraints](desktop/inbuilt_baselines.md#taskconstraints) is added
 - [Source files of skins](desktop/custom_skins.md) are now included in the package
-- Add `setUndoStack` and `setRedoStack` methods to the [Undo plugin](desktop/undo_redo.md) for managing the undo/redo stacks
+- The `setUndoStack` and `setRedoStack` methods are added to the [Undo plugin](desktop/undo_redo.md) for managing the undo/redo stacks
 - Ability to [install the professional versions of the Gantt via npm](desktop/install_with_bower.md)
 - [Bluebird Promise](api/gantt_promise.md) library is **removed** from the core library
 - Various improvements for scaling on high-definition screens and responsiveness on smaller screens

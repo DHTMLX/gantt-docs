@@ -209,7 +209,7 @@ The script will rebuild CSS files from sources and put them into the *codebase* 
 Structure
 ------------
 
-The structure of the **less** folder for version 7.0 (may be changed in future versions) is given below:
+The structure of the **less** folder for version 9.0 (may be changed in future versions) is given below:
 
 ### Images
 
@@ -279,15 +279,15 @@ npm run build
 
 <br>
 {{note
-Note that gantt may apply some predefined settings to the calendar based on the applied skin.
-When you create a new skin by copying an existing one, you may need to apply the corresponding settings to the gantt manually.
+Note that Gantt may apply some predefined settings to the calendar based on the applied skin.
+When you create a new skin by copying an existing one, you may need to apply the corresponding settings to the Gantt manually.
 }}
 
 
 JS styling settings
 ---------------------
 
-Note that not all aspects of Gantt styling are controlled from CSS, some parameters are defined from the JavaScript configuration, for example following properties:
+Note that not all aspects of Gantt styling are controlled from CSS, some parameters are defined from the JavaScript configuration, for example the following properties:
 
 - api/gantt_link_line_width_config.md
 - api/gantt_link_radius_config.md

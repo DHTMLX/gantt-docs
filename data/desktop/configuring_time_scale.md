@@ -723,7 +723,7 @@ You can find detailed examples on how to implement an infinite scroll in the tim
 
 ## Sticky labels
 
-Starting from v9.0, time scale labels are sticky by default. This means that when the width of a cell is significantly larger than the width of its label, the label will remain visible as you scroll through the timeline, staying attached to the viewport until it naturally scrolls off. This improves the visibility of scale labels, particularly when zoomed in or out.
+Starting from v9.0, time scale labels are sticky by default. It means that when the width of a cell is significantly larger than the width of its label, the label will remain visible as you scroll through the timeline, staying attached to the viewport until it naturally scrolls off. This improves the visibility of scale labels, particularly when zoomed in or out.
 
 To revert to the old behavior where labels are centered within their cells and do not remain visible while scrolling, you can disable sticky labels by setting the `sticky` property of the scale object to `false`:
 
@@ -736,7 +736,7 @@ gantt.config.scales = [
 gantt.init("gantt_here");
 ~~~
 
-You can also force sticky labels for a particular scale regardless of cell width by setting `sticky: true`. This will ensure the labels are always sticky, even when the label width is smaller than the cell width:
+You can also force sticky labels for a particular scale regardless of the cell width by setting `sticky: true`. It will ensure the labels are always sticky, even when the label width is smaller than the cell width:
 
 ~~~js
 gantt.config.scales = [

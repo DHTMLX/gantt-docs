@@ -36,13 +36,13 @@ After that you can customize the display of baselines in one of the following wa
 
 1\. Using the **gantt.config.baselines** configuration object
 
-The **baselines** configuration option also allows customizing the rendering of baselines in the Gantt chart when set as an object. 
+The **baselines** configuration option allows customizing the rendering of baselines in the Gantt chart when set as an object. 
 The object configuration contains the following properties:
 
 - **datastore** (*string*) - the name of the datastore used for storing baseline entries. For related functionality, see the `getDatastore` method.
 - **render_mode** (*boolean | string*) - determines how baselines are displayed:
 	- `false` - baselines are not shown.
-	- `"taskRow"` - baselines are displayed in the same row as the task bar.
+	- `"taskRow"` - baselines are displayed in the same row with the task bar.
 	- `"separateRow"` - baselines are shown in a separate subrow, expanding the task row height.
 	- `"individualRow"` - each baseline is displayed in its own subrow beneath the task.
 - **dataprocessor_baselines** (*boolean*) - specifies whether baseline updates trigger the DataProcessor as individual entries.
@@ -75,7 +75,7 @@ gantt.render();
 
 ### Loading baselines with tasks
 
-Baselines can be loaded directly alongside tasks, streamlining data management and display. Check the example below:
+Baselines can be loaded directly alongside tasks. Check the example below:
 
 ~~~js
 gantt.parse({
@@ -151,14 +151,14 @@ gantt.config.lightbox.sections = [
 
 ![Baseline lightbox](desktop/baselines_lightbox.png)
 
-### Baseline rendering modes
+### Baselines rendering modes
 
 Gantt offers three modes for displaying baselines. You can choose the rendering mode that suits best for your needs
 by setting the **gantt.config.baselines.render_mode** configuration option to the corresponding value. There are three modes available:
 
-- Same row as task ("taskRow")
+- In the same row with the task ("taskRow")
 
-Baselines are displayed directly on the same row as the task bars:
+Baselines are displayed directly in the same row with the task bars:
 
 ~~~js
 gantt.config.baselines.render_mode = "taskRow";
@@ -166,9 +166,9 @@ gantt.config.baselines.render_mode = "taskRow";
 
 ![Task row mode](desktop/baselines_task_row.png)
 
-- Separate subrow below task ("separateRow")
+- In a separate subrow below the task ("separateRow")
 
-All baselines are rendered on a single subrow below each task:
+All baselines are rendered in a single subrow below each task:
 
 ~~~js
 gantt.config.baselines.render_mode = "separateRow";
@@ -176,9 +176,9 @@ gantt.config.baselines.render_mode = "separateRow";
 
 ![Subrow mode](desktop/baselines_subrow.png)
 
-- Individual subrows for each baseline ("individualRow")
+- In an individual subrow ("individualRow")
 
-Each baseline is displayed on its subrow for maximum clarity:
+Each baseline is displayed in its subrow for maximum clarity:
 
 ~~~js
 gantt.config.baselines.render_mode = "individualRow";
@@ -208,7 +208,7 @@ DHTMLX Gantt comes with built-in visualization for deadlines and constraints, en
 
 ### Deadlines visualization
 
-Gantt supports a numeric **task.deadline** field. When specified, it displays a visual indicator on the chart, thereby simplifying the tracking of task deadlines.
+Gantt supports the **task.deadline** field. When specified, it displays a visual indicator on the chart, thereby simplifying the tracking of task deadlines.
 
 ~~~js
 gantt.parse({
@@ -238,9 +238,9 @@ After that you can customize the display of deadlines by [creating a custom dead
 The **gantt.config.deadlines** config enables or disables the display of deadline elements for tasks. If enabled, Gantt will check the **task.deadline** property, 
 and if it contains a valid date, the deadline element will be displayed in the timeline.
 
-### Task constraints
+### Task constraints {#taskconstraints}
 
-Starting from v9.0, when [auto scheduling](desktop/auto_scheduling.md) is enabled and works in Constraint mode (api/gantt_auto_scheduling_compatibility_config.md is set to *false*), Gantt will automatically display constraint dates in the chart.
+Starting from v9.0, when [auto scheduling](desktop/auto_scheduling.md) is enabled and works in the Constraint mode (api/gantt_auto_scheduling_compatibility_config.md is set to *false*), Gantt will automatically display constraint dates in the chart.
 
 ~~~js
 gantt.parse({
@@ -259,12 +259,13 @@ gantt.parse({
 })
 ~~~
 
-The display of constraints can be controlled using the `display_constraints` option in the api/gantt_auto_scheduling_config.md config. By default, constraints are shown, but you can disable them by setting `display_constraints` to `false`:
+The display of constraints can be controlled using the `show_constraints` option in the api/gantt_auto_scheduling_config.md config. 
+By default, constraints are shown, but you can disable them by setting `show_constraints` to `false`:
 
 ~~~js
 gantt.config.auto_scheduling = {
   enabled: true,
-  display_constraints: false
+  show_constraints: false
 };
 ~~~
 

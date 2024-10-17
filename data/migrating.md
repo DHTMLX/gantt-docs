@@ -141,8 +141,8 @@ gantt.init("gantt_here");
 Previously, adding baselines required manual coding using the `gantt.addTaskLayer` API. With Gantt 9.0, we've introduced built-in support for baseline entities together with
 deadlines and task constraints. 
 
-In case, you want to switch off the default settings and render baselines and deadlines manually, 
-you can use the corresponding confguration options: api/gantt_baselines_config.md and api/gantt_deadlines_config.md:
+In case you want to switch off the default settings and render baselines and deadlines manually, 
+you can use the corresponding configuration options: api/gantt_baselines_config.md and api/gantt_deadlines_config.md:
 
 ~~~js
 // disabling the built-in baselines functionality
@@ -152,16 +152,16 @@ gantt.config.baselines = false;
 gantt.config.deadlines = false;
 ~~~
 
-Built-in display of task constraints can also be disabled using the extended api/gantt_autoscheduling_config.md config:
+Built-in display of task constraints can also be disabled using the extended api/gantt_auto_scheduling_config.md config:
 
 ~~~js
 gantt.config.auto_scheduling = {
   enabled: true, 
-  show_constraints: false
+  show_constraints: false /*!*/
 };
 ~~~
 
-This disables the default display of task constraints while still keeping auto-scheduling functionality active.
+It disables the default display of task constraints while still keeping auto-scheduling functionality active.
 
 ### Sticky labels in the Timeline
 

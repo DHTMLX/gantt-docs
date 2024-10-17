@@ -40,7 +40,7 @@ By default, skins import the `Inter` font from `https://fonts.googleapis.com`. R
 If necessary, you can remove the font directly from **.less** files in the **codebase/sources/less/** folder 
 and then rebuild the skin as described in the desktop/custom_skins.md article.
 
-'Teracce' skin 
+'Terrace' skin 
 -----------------------------
 
 To apply the default skin, include the default CSS file:
@@ -49,6 +49,7 @@ To apply the default skin, include the default CSS file:
 - **dhtmlxgantt.css**
 
 <img alt="DHTMLX Gantt - Light Theme" src="desktop/gantt-default-skin.png"/>
+
 {{sample 06_skins/01_default.html}}
 
 'Dark' skin 

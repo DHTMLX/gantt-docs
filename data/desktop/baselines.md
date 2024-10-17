@@ -4,7 +4,7 @@ Custom Elements in Timeline Area
 {{pronote This functionality is available only in the PRO edition}}
 
 dhtmlxGantt provides the [built-in functionality](desktop/inbuilt_baselines.md) that allows rendering such extra elements as baselines, 
-deadlines and task constraints by default. In case, you need to extend or modify the default features, you can add custom elements into timeline manually as described below.
+deadlines and task constraints by default. In case you need to extend or modify the default features, you can add custom elements into timeline manually as described below.
 
 Displaying additional elements is usually done by creating a displayable layer and placing custom elements there
 (using the absolute positioning to put custom elements next to the related task).

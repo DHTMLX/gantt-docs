@@ -23,7 +23,7 @@ This config defines how baselines are handled and displayed in the Gantt chart. 
 - **datastore** (*string*) - the name of the datastore used for storing baseline entries. For related functionality, see the `getDatastore` method.
 - **render_mode** (*boolean | string*) - determines how baselines are displayed:
   - `false` - baselines are not shown.
-  - `"taskRow"` - baselines are displayed in the same row as the task bar.
+  - `"taskRow"` - baselines are displayed in the same row with the task bar.
   - `"separateRow"` - baselines are shown in a separate subrow, expanding the task row height.
   - `"individualRow"` - each baseline is displayed in its own subrow beneath the task.
 - **dataprocessor_baselines** (*boolean*) - specifies whether baseline updates trigger the DataProcessor as individual entries.

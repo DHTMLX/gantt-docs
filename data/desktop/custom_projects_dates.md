@@ -1,8 +1,8 @@
 Manually Scheduled Summary Tasks
 ===============================
 
-There is a possibility to schedule [projects](desktop/task_types.md) (summary tasks) manually. This feature serves to outline project phases before all subtasks are detailed, 
- providing a framework for your project timeline. 
+There is a possibility to schedule [projects](desktop/task_types.md) (summary tasks) manually. 
+This feature serves to increase flexibility and accuracy in managing projects with Gantt charts. 
  
 By default, summary tasks automatically calculate their dates based on the earliest start and latest end dates of their subtasks. 
 You can also set fixed start and end dates for summary tasks independently of their subtasks. As a result, the Gantt chart will display both the fixed duration 
