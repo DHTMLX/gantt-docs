@@ -175,6 +175,32 @@ gantt.setWorkTime({date:new Date(2019,0,1), hours:false})
 09_worktime/04_custom_workday_duration.html
 }}
 
+### Setting working time hours for the night shift
+
+Working time settings for the **hours** attribute of the [setWorkTime](api/gantt_setworktime.md) method' config object should be specified from 
+the lesser interval to the greater one, that is in the ascending order. In case time settings are provided in the descending order, part of them 
+will be ignored. In the example below the time intervals after `18:00` will be ignored:
+
+~~~js
+// the settings below are incorrect 
+gantt.setWorkTime({day : 5, hours : ["16:00-18:00", "14:00-15:00",  "08:00-10:00"]});
+gantt.setWorkTime({day : 5, hours : ["16:00-18:00", "00:00-04:00",  "05:00-06:00"]});
+~~~
+
+If you need to specify working time settings for the night shift, you should set them in the following way: 
+
+- within 24 hours for the first day
+- within 24 hours for the following day
+
+For example:
+
+~~~js
+gantt.setWorkTime({day : 5, hours : ["16:00-18:00"]});
+gantt.setWorkTime({day : 6, hours : ["00:00-04:00",  "05:00-06:00"]});
+~~~
+
+### Configuring working time rules
+
 There is the ability to configure different working time rules for different periods of time by using the **customWeeks** attribute of the [setWorkTime](api/gantt_setworktime.md) method. For instance, you can change the default working time for winter months:
 
 ~~~js
@@ -211,12 +237,14 @@ gantt.setWorkTime({hours:[9, 18]})
 }}
 
 
+### Re-writing a working time rule 
+
 Note, each next call of the method for the same date will re-write the previous working-time rule. So, if you need to unset some rule, call the api/gantt_setworktime.md method with other configuration: 
 
 ~~~js
 gantt.setWorkTime({hours:["8:00-12:00"]});
 gantt.setWorkTime({hours:["13:00-17:00"]});
-//the result of following commands will be the working time 13:00-17:00
+//the result of the above commands will be the working time 13:00-17:00
 //and not a mixin of both commands
 ~~~
 
