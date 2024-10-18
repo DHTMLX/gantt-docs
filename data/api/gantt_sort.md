@@ -40,4 +40,7 @@ sort
 
 The custom sorting function takes the **Task** objects as arguments and should return the number (1,0, or -1)
 
-The **parent** parameter is ignored when applying a custom function for sorting. Check the [example](https://snippet.dhtmlx.com/5/ac5beb945).
+The **parent** parameter is ignored when applying a custom function for sorting. [Check the example](https://snippet.dhtmlx.com/d8li6kq2).
+
+When the **sort()** method is used, Gantt doesn't add any sorting icon (an arrow displaying the sorting direction). In case you need to render a sorting icon, you can add it
+manually. [Check the example](https://snippet.dhtmlx.com/5bjavofk).
