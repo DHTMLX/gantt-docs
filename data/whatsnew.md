@@ -23,7 +23,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix the incorrect behavior of [sticky labels](desktop/configuring_time_scale.md#stickylabels) when api/gantt_smart_scales_config.md is disabled
 - Resolve the issue where Gantt continues [vertically dragging](api/gantt_order_branch_config.md) a task after a right-click
 - Fix the issue where calling api/gantt_resetlayout.md breaks the functionality of the [S-Curve Overlay](desktop/baselines.md#extraoverlayforthechart) plugin
-- Prevent duplicate links created by the [predecessor editor](desktop/inline_editing.md#typesofeditors)
+- Prevent creation of duplicate links by the [predecessor editor](desktop/inline_editing.md#typesofeditors)
 
 <b>9.0</b>
 ---------------
