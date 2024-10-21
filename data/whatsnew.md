@@ -17,11 +17,11 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### Fixes
 
-- Fix the regression with the incorrect link position while dragging when [smart_rendering](api/gantt_smart_rendering_config.md) enabled
+- Fix the regression with the incorrect link position while dragging with [smart_rendering](api/gantt_smart_rendering_config.md) enabled
 - Fix the regression where the [Resource Control](desktop/resources.md) of the [lightbox](desktop/default_edit_form.md) expands beyond its container
 - Correct the missing bottom border of [time scale](desktop/configuring_time_scale.md) cells in the last row when cells are highlighted with custom CSS
 - Fix the incorrect behavior of [sticky labels](desktop/configuring_time_scale.md#stickylabels) when api/gantt_smart_scales_config.md is disabled
-- Resolve the issue where Gantt continues [vertically dragging](api/gantt_order_branch_config.md) a task after a right-click
+- Resolve the issue where Gantt continues [vertically dragging](api/gantt_order_branch_config.md) a task after a right click
 - Fix the issue where calling api/gantt_resetlayout.md breaks the functionality of the [S-Curve Overlay](desktop/baselines.md#extraoverlayforthechart) plugin
 - Prevent creation of duplicate links by the [predecessor editor](desktop/inline_editing.md#typesofeditors)
 
