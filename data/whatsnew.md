@@ -17,7 +17,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### Fixes
 
-- Fix the regression with the incorrect link position while dragging with [smart_rendering](api/gantt_smart_rendering_config.md) enabled
+- Fix the regression with the incorrect link position while dragging with enabled [smart_rendering](api/gantt_smart_rendering_config.md)
 - Fix the regression where the [Resource Control](desktop/resources.md) of the [lightbox](desktop/default_edit_form.md) expands beyond its container
 - Correct the missing bottom border of [time scale](desktop/configuring_time_scale.md) cells in the last row when cells are highlighted with custom CSS
 - Fix the incorrect behavior of [sticky labels](desktop/configuring_time_scale.md#stickylabels) when api/gantt_smart_scales_config.md is disabled
