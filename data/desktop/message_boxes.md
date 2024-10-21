@@ -199,11 +199,11 @@ gantt.modalbox({
 ~~~
 
 
-###Configuring modalbox buttons
+###Configuring modalbox buttons {#configuringmodalboxbuttons}
 
 There are two main ways to define the configuration of modalbox buttons:
 
-- a short form:
+- a short form: 
 
 ~~~js
 gantt.modalbox({
@@ -325,6 +325,84 @@ var box = gantt.confirm({
 gantt.modalbox.hide(box);
 ~~~
 
+##How Gantt Works with Modalbox Buttons
+
+By default, the names of buttons are set as text. If the name of a button is set as an HTML element (e.g. to make the font bold, or add a material icon),
+the result of the callback function on clicking the button will be *null*. 
+
+It happens as Gantt watches certain attributes of the clicked element's parent. If there aren't the expected attributes, Gantt will return *null*. 
+Besides, Gantt wraps all the elements you specify for the buttons into the `<div>` tags. 
+
+Thus if you return a string element when a text is clicked, its parent will be an empty `<div>` element and you'll get `null`. 
+But when a button is clicked outside the text, its parent is an element with all the necessary attributes, so you'll get some more expected result:
+
+- *true/false* for the confirm box
+- for the modalbox:
+	- the number of the element in an array (for the [short form](#configuringmodalboxbuttons))
+    - the value of the `value` parameter (for the [full form](#configuringmodalboxbuttons))
+    
+It means that if you want to set an HTML element as a button name, you need to wrap everything into two div elements that have the `data-result` attribute. For example:
+
+~~~js
+gantt.confirm({
+    ok:`<div data-result="yes"><div data-result="yes"><i>Yes</i></div></div>`,
+    cancel:`<div data-result="no"><div data-result="no"><i>No</i></div></div>`,
+});
+
+gantt.modalbox({
+  buttons: [
+   { label:`<div data-result="yes">
+   		<div data-result="yes"><i>Yes</i></div>
+     </div>`,   
+     css:"link_save_btn", value:"yes" },
+   { label:`<div data-result="no">
+   		<div data-result="no"><i>No</i></div>
+     </div>`, 
+     css:"link_cancel_btn", value:"no" },
+   { label:`<div data-result="cancel">
+   		<div data-result="cancel"><i>Cancel</i></div>
+     </div>`, 
+     css:"link_cancel_btn", value:"cancel" },
+  ],
+});
+~~~
+
+If you need to use some other elements for a button, all the parent elements should also have the `data-result` attribute. In the example below 
+the `<u>` tags are used for the name of the button. So, they have the `data-result` attribute the same as the other two `<div>` parent elements of the button: 
+
+~~~js
+gantt.confirm({
+  ok:`<div data-result="yes">
+  	<div data-result="yes"><u data-result="yes"><i>Yes</i></u></div>
+  </div>`,
+  cancel:`<div data-result="no">
+  	<div data-result="no"><u data-result="no"><i>No</i></u></div>
+  </div>`,
+});
+
+gantt.modalbox({
+  buttons: [
+    { label:`<div data-result="yes">
+    	<div data-result="yes">
+    		<u data-result="yes"><i>Yes</i></u>
+       	</div>
+      </div>`,   
+      css:"link_save_btn",  value:"yes" },
+    { label:`<div data-result="no">
+    	<div data-result="no">
+        	<u data-result="no"><i>No</i></u>
+        </div>
+      </div>`, 
+      css:"link_cancel_btn", value:"no" },
+    { label:`<div data-result="cancel">
+    	<div data-result="cancel">
+        	<u data-result="cancel"><i>Cancel</i></u>
+        </div>
+      </div>`, 
+      css:"link_cancel_btn", value:"cancel" },
+  ],
+});
+~~~
 
 ##Styling
 
