@@ -58,6 +58,7 @@ Each section of the lightbox is based on some control. The following types of co
 - [Radio button](desktop/radio.md) - a radio button for selecting only one option from a given set of options 
 - [Resources](desktop/resources.md) - a complex control for assigning several resources to a task
 - [Constraint](desktop/constraint.md) - a complex control for setting constraints for a task
+- [Baselines](desktop/baseline.md) - a complex control for setting baselines for a task
 
 ~~~js
 var opts = [
@@ -86,4 +87,6 @@ gantt.config.lightbox.sections = [
 - desktop/radio.md
 - desktop/resources.md
 - desktop/constraint.md
+- desktop/baseline.md
+
 
