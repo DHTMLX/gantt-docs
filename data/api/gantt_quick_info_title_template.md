@@ -18,7 +18,7 @@ gantt.templates.quick_info_title = function(start, end, task){
 
 @template:	api_template
 @returns:
-- text		string		html text which will be rendered in the gantt
+- text		string | number | void		html text which will be rendered in the gantt
 @descr:
 
 {{note This template is defined in the **Quick Info** extension, so you need to activate the [quick_info](desktop/extensions_list.md#quickinfo) plugin.}}

@@ -17,6 +17,9 @@ gantt.templates.histogram_cell_class = function(start_date,end_date,resource,tas
     return "";
 };
 
+@returns:
+- className		string | void		css class for the histogram timeline cell
+
 @template:	api_template
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}

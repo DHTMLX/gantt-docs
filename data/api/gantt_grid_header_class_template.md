@@ -13,7 +13,7 @@ gantt.templates.grid_header_class = function(columnName, column){
 };
 @template:	api_template
 @returns:
-- text		string		css class for the item in question
+- text		string | void		css class for the item in question
 @descr:
 
 

@@ -19,6 +19,9 @@ gantt.templates.quick_info_class = function(start, end, task){
 
 {{note This template is defined in the **Quick Info** extension, so you need to activate the [quick_info](desktop/extensions_list.md#quickinfo) plugin.}}
 
+@returns:
+- text		string | void		class name that will be applied to the Quick Info popup
+
 
 
 @related:

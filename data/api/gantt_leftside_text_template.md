@@ -22,7 +22,7 @@ gantt.templates.leftside_text = function(start, end, task){
 
 @template:	api_template
 @returns:
-- text		string		html text which will be rendered in the gantt
+- text		string | number | void		html text which will be rendered in the gantt
 @descr:
 
 

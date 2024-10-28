@@ -22,7 +22,7 @@ gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
 };
 @template:	api_template
 @returns:
-- text		string		css class for item in question
+- text		string | void		css class for item in question
 
 @descr:
 

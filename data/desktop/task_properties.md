@@ -202,6 +202,16 @@ Dynamic properties are created on the client and represent the current state of 
 			<td><a href="api/gantt_resource_property_config.md">The property may have any other name</a>. This property stores the resource id associated with <i>resourceGrid/Timeline/Histogram/Calendar.</i></td>
 		</tr>
         <tr>
+			<td><b class=subproperty>$auto_end_date</b></td>
+            <td><i>Date</i></td>
+			<td>A computed end date of the project task from its subtasks. Added and updated when "auto_scheduling" is disabled.</td>
+		</tr>
+        <tr>
+			<td><b class=subproperty>$auto_start_date</b></td>
+            <td><i>Date</i></td>
+			<td>A computed start date of the project task from its subtasks. Added and updated when "auto_scheduling" is disabled.</td>
+		</tr>
+        <tr>
 			<td><b class=subproperty>$calculate_duration</b></td>
             <td><i>boolean</i></td>
 			<td>A system property that is used in internal calculations.</td>

@@ -9,7 +9,7 @@ timeline_cell_class
 - date		Date		the date of a cell
 
 @returns:
-- text		string		css class for item in question
+- text		string | void		css class for item in question
 
 @example:
 <style>
