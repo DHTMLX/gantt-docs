@@ -15,7 +15,7 @@ gantt.templates.link_class = function(link){
 
 @template:	api_template
 @returns:
-- text		string | void		css class for item in question
+- text		string | void		a CSS class for the item in question
 @descr:
 
 @related:

@@ -16,7 +16,7 @@ gantt.templates.task_unscheduled_time = function(task){
 };
 
 @returns:
-- text		string | void		html text which will be rendered in the grid for the columns with the Date values
+- text		string | void		an HTML text which will be rendered in the grid for the columns with the Date values
 
 @template:	api_template
 @descr:

@@ -25,7 +25,7 @@ gantt.getTaskResources(5); // -> see details
 The method returns an array with **resourceItem** objects that have the following properties:
 
 - <span class=subproperty>**id**</span> - (*string | number*) - the ID of the resource item
-- <span class=subproperty>**open?**</span> - (*boolean*) - indicates of the resource item is expanded in the tree (*true*) or collapsed (*false*)
+- <span class=subproperty>**open?**</span> - (*boolean*) - indicates whether the resource item is expanded in the tree (*true*) or collapsed (*false*)
 - <span class=subproperty>**parent?**</span> - (*string | number*) - the ID of the resource item's parent
 - <span class=subproperty>**text?**</span> - (*string*) - the resource name
 - <span class=subproperty>**unit?**</span> - (*string*) - the unit for the assignments

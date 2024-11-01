@@ -32,7 +32,7 @@ gantt.templates.resource_cell_value = function(start_date, end_date, resource, t
 
 
 @returns:
-- html		string | number | void		html string which will inserted into cell's innerHTML
+- html		string | number | void		an HTML string which will be inserted into cell's innerHTML
 
 @relatedapi:
 api/gantt_resource_property_config.md

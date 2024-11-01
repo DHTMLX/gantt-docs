@@ -28,7 +28,7 @@ gantt.templates.scale_row_class = function(scale){
 	}
 }
 @returns:
-- text		string | void		a CSS class for item in question
+- text		string | void		a CSS class for the item in question
 
 @template:	api_template
 @descr:

@@ -18,7 +18,7 @@ gantt.templates.histogram_cell_label = function(start_date,end_date,resource,tas
 };
 
 @returns:
-- label		string | number | void		html text for the label inside a histogram cell
+- label		string | number | void		an HTML text for the label inside a histogram cell
 
 @template:	api_template
 @descr:

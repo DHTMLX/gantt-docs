@@ -20,7 +20,7 @@ gantt.templates.tooltip_text = function(start,end,task){
 @template:	api_template
 
 @returns:
-- text		string | void		html text which will be rendered in the gantt
+- text		string | void		an HTML text which will be rendered in the gantt
 
 @descr:
 

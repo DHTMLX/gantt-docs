@@ -14,7 +14,7 @@ gantt.templates.grid_row_class = function(start, end, task){
 
 @template:	api_template
 @returns:
-- text		string | void		css class for item in question
+- text		string | void		a CSS class for the item in question
 @descr:
 
 Every other row of the grid and the timeline area contains an extra css class named **odd** that can be used to alternate colors of rows:
