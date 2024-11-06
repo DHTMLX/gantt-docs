@@ -46,13 +46,16 @@ The returned stack is an array of the undo user actions. Each user action contai
 
 ###setUndoStack() / setRedoStack()
 
-- <span class=submethod>**setUndoStack (stack: UndoRedoAction[]) **</span> - sets the stack of stored undo user actions
+- <span class=submethod>**setUndoStack (stack): void**</span> - sets the stack of stored undo user actions
+  - **_stack_** - (*UndoRedoAction[]*) - the undo stack
+
 
 ~~~js
 gantt.ext.undo.setUndoStack(stack);
 ~~~
 
-- <span class=submethod>**setRedoStack (stack: UndoRedoAction[]) **</span> - sets the stack of stored redo user actions
+- <span class=submethod>**setRedoStack (stack): void**</span> - sets the stack of stored redo user actions
+  - **_stack_** - (*UndoRedoAction[]*) - the redo stack
 
 ~~~js
 gantt.ext.undo.setRedoStack(stack);

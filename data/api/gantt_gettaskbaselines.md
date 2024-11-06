@@ -22,7 +22,18 @@ gantt.getTaskBaselines(5); // -> see details
 
 {{note The **getTaskBaselines** method is not available if the api/gantt_baselines_config.md config is disabled.}}
 
-The method returns an array with objects as in:
+The method returns an array with the **baseline** objects that have the following properties:
+
+- <span class=subproperty>**id**</span> - (*string | number*) - the baseline ID
+- <span class=subproperty>**task_id**</span> - (*string | number*) - the ID of the task the baseline belongs to
+- <span class=subproperty>**start_date**</span> - (*Date*) - the start date of the baseline
+- <span class=subproperty>**duration**</span> - (*number*) - the duration of the baseline
+- <span class=subproperty>**end_date**</span> - (*Date | number*) - the end date of the baseline
+- <span class=subproperty>**[customProperty: string]**</span> - (*any*) - any custom property
+
+
+
+For example:
 
 ~~~js
 [
@@ -42,6 +53,10 @@ The method returns an array with objects as in:
 	}
 ]
 ~~~
+
+
+
+
 
  
 

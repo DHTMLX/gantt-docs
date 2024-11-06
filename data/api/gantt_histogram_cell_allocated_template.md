@@ -20,6 +20,10 @@ gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,t
 
 @template:	api_template
 
+@returns:
+- height		number | void		the height of the filled area in the resourceHistogram
+
+
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
