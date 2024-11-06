@@ -12,7 +12,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 9.0.2
 ---------------
-<span class='release_date'>November 4, 2024. Bugfix release</span>
+<span class='release_date'>November 6, 2024. Bugfix release</span>
 
 ### Fixes
 
@@ -27,6 +27,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix the issue where [Quick Info](desktop/quick_info.md) in [detached mode](api/gantt_quick_info_detached_config.md) is not hidden due to increased width and hardcoded styles
 - Update the [Export API](api/gantt_exporttoexcel.md) to support tree indentation for Excel export
 - Resolve the issue preventing task selection when the api/gantt_multiselect_one_level_config.md is enabled and a task on another tree level is selected
+- Restore functionality of the [export_api](api/gantt_exporttopdf.md) plugin in the TypeScript environment
+- Updated type definitions
 
 9.0.1
 ---------------
