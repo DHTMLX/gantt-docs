@@ -12,7 +12,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 9.0.2
 ---------------
-<span class='release_date'>November 6, 2024. Bugfix release</span>
+<span class='release_date'>November 11, 2024. Bugfix release</span>
 
 ### Fixes
 
