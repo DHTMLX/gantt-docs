@@ -28,7 +28,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Update the [Export API](api/gantt_exporttoexcel.md) to support tree indentation for Excel export
 - Resolve the issue preventing task selection when the api/gantt_multiselect_one_level_config.md is enabled and a task on another tree level is selected
 - Restore functionality of the [export_api](api/gantt_exporttopdf.md) plugin in the TypeScript environment
-- Updated type definitions
+- Update type definitions
 
 9.0.1
 ---------------
