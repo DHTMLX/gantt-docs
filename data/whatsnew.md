@@ -17,8 +17,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ### Fixes
 
 - Fix the regression causing incorrect styles for task borders and progress when the task color is specified via [properties of a task object](desktop/colouring_tasks.md#specifyingstyleinthepropertiesofataskobject)
-- Restore the functionality of the api/gantt_marker_class_template.md
-- Restore missing classname from the [textarea](desktop/textarea.md) section of the lightbox
+- Restore the functionality of the api/gantt_marker_class_template.md template
+- Restore missing classname of the [textarea](desktop/textarea.md) section of the lightbox
 - Correct the issue where [deadlines](desktop/inbuilt_baselines.md#deadlinesandconstraints) are displayed outside the task row and are not fully centered
 - Ensure that links are displayed above other links on mouse hover
 - Fix the issue where [baseline](desktop/inbuilt_baselines.md) dates are not calculated when loading them using the api/gantt_parse.md method
