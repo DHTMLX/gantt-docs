@@ -12,7 +12,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 9.0.3
 ---------------
-<span class='release_date'>November 18, 2024. Bugfix release</span>
+<span class='release_date'>November 19, 2024. Bugfix release</span>
 
 - Fix regression in styles for the [Quick Info](desktop/quick_info.md) popup
 - Resolve build warnings from PostCSS caused by the usage of 'start'/'end' instead of 'flex-start'/'flex-end'
