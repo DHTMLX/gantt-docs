@@ -14,14 +14,14 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ---------------
 <span class='release_date'>November 19, 2024. Bugfix release</span>
 
-- Fix regression in styles for the [Quick Info](desktop/quick_info.md) popup
+- Fix the regression in styles for the [Quick Info](desktop/quick_info.md) popup
 - Resolve build warnings from PostCSS caused by the usage of 'start'/'end' instead of 'flex-start'/'flex-end'
 - Prevent [resource assignment](desktop/resource_management.md#assigningresources) from being removed when updated via the lightbox
-- Fix issue with an empty task array in api/gantt_resource_cell_value_template.md on non-working days when api/gantt_resource_render_empty_cells_config.md is enabled
-- Correct error occurring when clicking on buttons embedded into sections of the [lightbox](desktop/default_edit_form.md)
-- Ensure [resource panel](desktop/resource_management.md#resourceviewpanel) and [zoom levels](desktop/zooming.md#builtinzoomingmodule) remain in sync
+- Fix the issue with an empty task array in api/gantt_resource_cell_value_template.md on non-working days when api/gantt_resource_render_empty_cells_config.md is enabled
+- Correct the error occurring when clicking on buttons embedded into sections of the [lightbox](desktop/default_edit_form.md)
+- Ensure the [resource panel](desktop/resource_management.md#resourceviewpanel) and [zoom levels](desktop/zooming.md#builtinzoomingmodule) remain in sync
 - Prevent [Inline Editors](desktop/inline_editors_ext.md) events from being removed after [reinitializing](api/gantt_init.md) Gantt or [resetting the layout](api/gantt_resetlayout.md)
-- Fix issue where the open state is not restored after [redoing](desktop/undo_redo.md) changes
+- Fix the issue where the open state is not restored after [redoing](desktop/undo_redo.md) changes
 
 9.0.2
 ---------------
