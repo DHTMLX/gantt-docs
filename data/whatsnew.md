@@ -10,6 +10,39 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.3
+---------------
+<span class='release_date'>November 19, 2024. Bugfix release</span>
+
+- Fix the regression in styles for the [Quick Info](desktop/quick_info.md) popup
+- Resolve build warnings from PostCSS caused by the usage of 'start'/'end' instead of 'flex-start'/'flex-end'
+- Prevent [resource assignment](desktop/resource_management.md#assigningresources) from being removed when updated via the lightbox
+- Fix the issue with an empty task array in api/gantt_resource_cell_value_template.md on non-working days when api/gantt_resource_render_empty_cells_config.md is enabled
+- Correct the error occurring when clicking on buttons embedded into sections of the [lightbox](desktop/default_edit_form.md)
+- Ensure the [resource panel](desktop/resource_management.md#resourceviewpanel) and [zoom levels](desktop/zooming.md#builtinzoomingmodule) remain in sync
+- Prevent [Inline Editors](desktop/inline_editors_ext.md) events from being removed after [reinitializing](api/gantt_init.md) Gantt or [resetting the layout](api/gantt_resetlayout.md)
+- Fix the issue where the open state is not restored after [redoing](desktop/undo_redo.md) changes
+
+9.0.2
+---------------
+<span class='release_date'>November 11, 2024. Bugfix release</span>
+
+### Fixes
+
+- Fix the regression causing incorrect styles for task borders and progress when the task color is specified via [properties of a task object](desktop/colouring_tasks.md#specifyingstyleinthepropertiesofataskobject)
+- Restore the functionality of the api/gantt_marker_class_template.md template
+- Restore missing classname of the [textarea](desktop/textarea.md) section of the lightbox
+- Correct the issue where [deadlines](desktop/inbuilt_baselines.md#deadlinesandconstraints) are displayed outside the task row and are not fully centered
+- Ensure that links are displayed above other links on mouse hover
+- Fix the issue where [baseline](desktop/inbuilt_baselines.md) dates are not calculated when loading them using the api/gantt_parse.md method
+- Correct positions of [constrains](desktop/inbuilt_baselines.md#deadlinesandconstraints) for both regular and [RTL](desktop/rtl_mode.md) views
+- Prevent unnecessary link loops when linking parts of split tasks
+- Fix the issue where [Quick Info](desktop/quick_info.md) in [detached mode](api/gantt_quick_info_detached_config.md) is not hidden due to increased width and hardcoded styles
+- Update the [Export API](api/gantt_exporttoexcel.md) to support tree indentation for Excel export
+- Resolve the issue preventing task selection when the api/gantt_multiselect_one_level_config.md is enabled and a task on another tree level is selected
+- Restore functionality of the [export_api](api/gantt_exporttopdf.md) plugin in the TypeScript environment
+- Update type definitions
+
 9.0.1
 ---------------
 
