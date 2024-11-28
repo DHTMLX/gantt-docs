@@ -113,7 +113,6 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Prevent the [lightbox](desktop/default_edit_form.md) from switching to the api/gantt_wide_form_config.md mode upon adding the [Time section](desktop/time.md)
 - Ensure the [number editor](desktop/inline_editing.md) respects min and max properties, preventing entry of values outside the defined range
 - Fix the error on deleting a task inside the [gantt.batchUpdate](api/gantt_batchupdate.md) method while tasks are displayed in the [Resource Panel](desktop/resource_management.md)
-- Resolve the issue where tasks disappear after using [keyboard shortcuts](desktop/keyboard_navigation.md) to indent or outdent multiple times
 - Correct the [lightbox](desktop/default_edit_form.md) positioning to be properly centered in the Salesforce environment
 - Fix [Keyboard navigation](desktop/keyboard_navigation.md) stopping due to the api/gantt_row_height_config.md setting
 - Correct the dates for project [Auto Scheduling](desktop/auto_scheduling.md) in some scenarios, so only one auto-scheduling call is needed for accurate results
@@ -150,6 +149,7 @@ This update brings some changes in the structure of the Gantt package and behavi
 
 ### Fixes
 
+- Resolve the issue where tasks disappear after using [keyboard shortcuts](desktop/keyboard_navigation.md) to indent or outdent multiple times
 - Fix the issue that prevented reopening the [Inline editor](desktop/inline_editing.md) after vertically scrolling the Gantt
 - Fix the issue with [DataProcessor](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments) ignoring custom headers specified in the [gantt.createDataProcessor](api/gantt_createdataprocessor.md) method
 - Fix tasks display issue that occurs when [onBeforeLightbox](api/gantt_onbeforelightbox_event.md) handler returns `false` while creating a new task
