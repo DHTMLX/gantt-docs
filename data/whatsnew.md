@@ -10,6 +10,18 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.4
+---------------
+<span class='release_date'>December 3, 2024. Bugfix release</span>
+
+- Fix issue where the [SNET constraint](desktop/auto_scheduling.md#timeconstraintsfortasks) date cannot be changed via the [inline editor](desktop/inline_editors_ext.md)
+- Fix the issue where Gantt returns the global [calendar](desktop/working_time.md) instead of the resource calendar for tasks that have awith a single [resource assignment](desktop/resource_management.md#assigningresources) when the api/gantt_dynamic_resource_calendars_config.md config is disabled
+- Fix the [constraint](desktop/auto_scheduling.md#timeconstraintsfortasks) date issue when changing the start date via the inline editor after [reinitializing](api/gantt_init.md) Gantt or [resetting the layout](api/gantt_resetlayout.md)
+- Fix the script error with some configurations of [gantt.plugins](api/gantt_plugins.md) when using the [gantt.getGanttInstance](desktop/multiple_gantts.md) method without specifying a container
+- Fix issue where Gantt stops working when the api/gantt_auto_scheduling_project_constraint_config.md configuration is enabled, and tasks are [grouped](api/gantt_groupby.md)
+- Ensure Gantt retains the task [constraint](desktop/auto_scheduling.md#timeconstraintsfortasks) after dragging a task
+
+
 9.0.3
 ---------------
 <span class='release_date'>November 19, 2024. Bugfix release</span>
