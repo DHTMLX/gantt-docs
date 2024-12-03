@@ -19,7 +19,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix the [constraint](desktop/auto_scheduling.md#timeconstraintsfortasks) date issue when changing the start date via the inline editor after [reinitializing](api/gantt_init.md) Gantt or [resetting the layout](api/gantt_resetlayout.md)
 - Fix the script error with some configurations of [gantt.plugins](api/gantt_plugins.md) when using the [gantt.getGanttInstance](desktop/multiple_gantts.md) method without specifying a container
 - Fix the issue where Gantt stops working when the api/gantt_auto_scheduling_project_constraint_config.md configuration is enabled, and tasks are [grouped](api/gantt_groupby.md)
-- Ensure Gantt retains the task [constraint](desktop/auto_scheduling.md#timeconstraintsfortasks) after dragging a task
+- Ensure Gantt retains the task [constraint](desktop/auto_scheduling.md#timeconstraintsfortasks) after dragging a task 
 
 
 9.0.3
