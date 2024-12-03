@@ -14,7 +14,7 @@ You can also explore other server-side integration possibilities of Gantt by cho
 - desktop/howtostart_ruby.md
 
 We will make use of the ASP.NET MVC 5 web platform and the Web API 2 controller for REST API to create a Gantt application.
-To organize communication with a database we will use the [Entity Framework](https://docs.microsoft.com/en-us/aspnet/entity-framework).
+To organize communication with a database we will use the [Entity Framework](https://learn.microsoft.com/en-us/aspnet/entity-framework).
 We will build our application with the help of the Visual Studio IDE. 
 
 {{note
@@ -165,7 +165,7 @@ Now we should define model classes for the gantt chart. A Gantt data model consi
 As you can see, dhtmlxGantt uses a certain naming convention for data model that is different from the one traditionally used in C#. 
 The client-side model can also contain some properties that you don't need to store in a database, but which will be used either on the client or in the backend logic.
 
-Because of this, we'll go with the [Data Transfer Object](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) 
+Because of this, we'll go with the [Data Transfer Object](https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) 
 pattern here: we'll define domain model classes that will be used with EF and inside the app, and DTO classes that will be used to communicate with Web API. Then we'll implement some kind of mapping between the two models.
 
 Let's start!
@@ -218,7 +218,7 @@ namespace DHX.Gantt.Web.Models
 
 #### Installing Entity Framework
 
-As you remember, we are going to organize the work with a database with the help of the [Entity Framework](https://docs.microsoft.com/en-us/aspnet/entity-framework).
+As you remember, we are going to organize the work with a database with the help of the [Entity Framework](https://learn.microsoft.com/en-us/aspnet/entity-framework).
 
 So, first of all we need to install the framework. To do it, you need to run the following command in the Package Manager Console:
 
@@ -722,8 +722,7 @@ Now everything is ready. Run the application and a fully-fledged Gantt should ap
 Error handling 
 -----------
 
-[Exception filters](https://msdn.microsoft.com/en-us/library/gg416513(v=vs.98).aspx) can be used for capturing exceptions in CRUD handlers and returning a client response 
-that can be [recognized](desktop/server_side.md#errorhandling) by the client-side gantt.
+[Exception filters](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v=vs.98)) can be used for capturing exceptions in CRUD handlers and returning a client response that can be [recognized](desktop/server_side.md#errorhandling) by the client-side gantt.
 
 To provide error handling for the gantt, follow the steps below:
 

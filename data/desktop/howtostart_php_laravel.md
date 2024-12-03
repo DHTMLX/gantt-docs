@@ -121,8 +121,8 @@ DB_PASSWORD=
 ~~~
 
 
-The next step is to create [model classes](https://laravel.com/docs/eloquent#defining-models) and
-[migrations](https://laravel.com/docs/migrations#generating-migrations). You can generate classes and migration files using the Artisan command:
+The next step is to create [model classes](https://laravel.com/docs/11.x/eloquent) and
+[migrations](https://laravel.com/docs/11.x/migrations). You can generate classes and migration files using the Artisan command:
 
 ~~~js
 php artisan make:model Task --migration
@@ -206,7 +206,7 @@ php artisan migrate
 ~~~
 
 While we're at it, we can generate some test data for our app. 
-Generate a [seeder](https://laravel.com/docs/seeding) class using the artisan command:
+Generate a [seeder](https://laravel.com/docs/11.x/seeding) class using the artisan command:
 
 ~~~php
 php artisan make:seeder TasksTableSeeder
@@ -273,11 +273,11 @@ php artisan db:seed
 
 ### Defining model classes
 
-The data is managed via the [Eloquent model](https://laravel.com/docs/eloquent) classes. We've already generated classes for tasks and links at the previous step.
+The data is managed via the [Eloquent model](https://laravel.com/docs/11.x/eloquent) classes. We've already generated classes for tasks and links at the previous step.
 They are ready to use and don't require any changes to work with gantt. 
 
 What we can do, however, is to add an **open** [attribute of the Task class](desktop/loading.md#dataproperties) to 
-[JSON response](https://laravel.com/docs/eloquent-serialization#appending-values-to-json). It will make the project tree expanded when tasks are loaded to the client side. 
+[JSON response](https://laravel.com/docs/11.x/eloquent-serialization). It will make the project tree expanded when tasks are loaded to the client side. 
 Otherwise, all branches would be closed initially: 
 
 The Task model will look as in:
@@ -386,7 +386,7 @@ What we need now is to define controllers that handle actions on both models, cr
 
 ###Adding controllers
 
-Let's start with controllers. We'll create one RESTful [resource controller](https://laravel.com/docs/controllers#resource-controllers) for each model. 
+Let's start with controllers. We'll create one RESTful [resource controller](https://laravel.com/docs/11.x/controllers) for each model. 
 It will contain methods for adding/deleting and updating the model. 
 
 ####Controller for tasks
@@ -446,7 +446,7 @@ class TaskController extends Controller
 }
 ~~~
 
-And a [route](http://laravel.com/docs/controllers#restful-resource-controllers) for it:
+And a [route](https://laravel.com/docs/11.x/controllers#resource-controllers) for it:
 
 {{snippet routes/api.php}}
 ~~~php
