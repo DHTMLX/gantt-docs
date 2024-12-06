@@ -3,7 +3,7 @@ dhtmlxGantt in Plain JS/HTML
 
 When you develop an application with dhtmlxGantt, the first thing you need is to initialize or, simply speaking, to display the Gantt chart on the page.
 
-This guide tells about initialization of dhtmlxScheduler in plain JS and HTML. You can also check the guides on integration with front-end frameworks:<br><br>
+This guide tells about initialization of dhtmlxGantt in plain JS and HTML. You can also check the guides on integration with front-end frameworks:<br><br>
 
 <table>
 	<tbody style="text-align:center">
@@ -82,10 +82,9 @@ Let's quickly explore the structure of the dhtmlxGantt package to find out where
 
 Main folders and files that make up the dhtmlxGantt package are:
 
-- <b>sources</b> - the source code files of the library. The files are not minified and easy-to-read. The package is mostly intended to be used for components' debugging.
-- <b>samples</b> - the code samples.
-- <b>docs</b> - the full documentation of the component.
-- <b>codebase</b> - the packed code files of the library. These files have much smaller size and intended to be used in production. <b>In your apps you need to use files from this folder.</b>
+- <b>sources</b> - the source code files of the library. The files are not minified and easy-to-read. The package is mostly intended to be used for components' debugging
+- <b>samples</b> - the code samples
+- <b>codebase</b> - the packed code files of the library. These files have much smaller size and intended to be used in production. <b>In your apps you need to use files from this folder</b>
 
 Import files into ES6/7 and TypeScript apps
 ---------------------------------------------
