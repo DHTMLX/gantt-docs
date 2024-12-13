@@ -35,12 +35,8 @@
 				<a href="$$samples_http$$samples_index">Samples</a>
 				<a href="$$forum_http">Forum</a>
 				<a href="$$support_http">Support</a>
+				<span class="langSelect"></span>
 			</div>
-			<select style="background:transparent;border: none;color:white;position:relative; left: -20px; top: -22px;" onchange="window.location.href='https://docs.dhtmlx.com/'+(this.value === 'en' ? '' : (this.value+'/'))+'gantt/$$pagehttp'">
-			    <option selected value="en">English</option>
-			    <option value="de">Deutsch</option>
-			    <option value="ru">Русский</option>
-			</select>
 		</div>
 	</div>
 	</div>
@@ -62,9 +58,20 @@
         </div>
 	</div>
 	<script src="assets/autocomplete.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/langswitch.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		AutoComplete_init("");
 		Scroll_init();
+
+		uiHelpers.mount(uiHelpers.Select, {
+			target: document.querySelector('.langSelect'),
+			props: {
+				value: 'en',
+				onchange: function({value}) {
+					window.location.href = 'https://docs.dhtmlx.com/' + (value === 'en' ? '' : (value + '/')) + 'gantt/$$pagehttp';
+				}
+			}
+		});
 	</script>
 </body>
 </html>
