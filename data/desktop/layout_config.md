@@ -16,6 +16,8 @@ or add another grid and a timeline below the default ones.
 
 {{sample 10_layout/02_resource_panel.html}}
 
+
+
 Default layout
 ------------------
 
@@ -24,32 +26,33 @@ The layout is set through the [gantt.config.layout](api/gantt_layout_config.md) 
 ~~~js
 gantt.config.layout = {
 	css: "gantt_container",
-  	rows:[
-   		{
-    	   cols: [
-     		{
-              // the default grid view	
-        	  view: "grid",  
-              scrollX:"scrollHor", 
-              scrollY:"scrollVer"
-         	},
-     		{ resizer: true, width: 1 },
-     		{
-              // the default timeline view
-        	  view: "timeline", 
-              scrollX:"scrollHor", 
-              scrollY:"scrollVer"
-        	},
-     	    {
-              view: "scrollbar", 
-              id:"scrollVer"
-           	}
-	    ]},
-   	 	{
-        	view: "scrollbar", 
-            id:"scrollHor"
-        }
-  	]
+	rows: [
+		{
+			cols: [
+				{
+					// the default grid view
+					view: "grid",
+					scrollX: "scrollHor",
+					scrollY: "scrollVer"
+				},
+				{ resizer: true, width: 1 },
+				{
+					// the default timeline view
+					view: "timeline",
+					scrollX: "scrollHor",
+					scrollY: "scrollVer"
+				},
+				{
+					view: "scrollbar",
+					id: "scrollVer"
+				}
+			]
+		},
+		{
+			view: "scrollbar",
+			id: "scrollHor"
+		}
+	]
 }
 ~~~
 
@@ -58,8 +61,8 @@ The layout of Gantt consists of cells which are occupied by views. The main and 
 - **grid** - defines the grid part of the Gantt chart. The main grid predefined for showing tasks has the *id:"grid"*;
 - **timeline** - defines the timeline part of the Gantt chart. The main timeline predefined for showing tasks has the *id:"timeline"*;
 - **resizer** - defines the resizer line. To enable a resizer, you need to set the **resizer** property to *true*. **Available in the PRO edition only**;
-- **scrollbar** - defines scrollbars used in the Gantt chart. Grid and timeline views can be bound to particular scrollbars. Read details below.
-- **resourceGrid** - preconfigured grid for a resource panel. **Available in the PRO edition only**. See more details [here](desktop/resource_management.md).
+- **scrollbar** - defines scrollbars used in the Gantt chart. Grid and timeline views can be bound to particular scrollbars. Read details below;
+- **resourceGrid** - preconfigured grid for a resource panel. **Available in the PRO edition only**. See more details [here](desktop/resource_management.md);
 - **resourceTimeline** - preconfigured timeline for a resource panel. **Available in the PRO edition only**. See more details [here](desktop/resource_management.md).
 
 The view configuration is specified as an object with the corresponding properties. 
@@ -67,6 +70,8 @@ You can [set custom configuration options](#configsandtemplatesofviews) for the 
 The default options are taken from the global [gantt.config](desktop/common_configuration.md#ganttconfigobject) object.
 
 {{note Note that you should specify the configuration of layout before Gantt initialization. If you make changes in the layout, you need to refresh it using api/gantt_resetlayout.md.}}
+
+
 
 Scrollbar
 -----------
@@ -79,18 +84,18 @@ To use a scrollbar in the layout, you need to bind it to a corresponding view wi
 
 It is possible to bind several views to the same scrollbar. In order to bind a view to a scrollbar:
 
-- set a scrollbar with the necessary scrolling direction and assign an ID to it
-- use the id of the scrollbar as a value of the **scrollX/scrollY** property inside the view configuration object
+- set a scrollbar with the necessary scrolling direction and assign an ID to it;
+- use the id of the scrollbar as a value of the **scrollX/scrollY** property inside the view configuration object.
 
 Defining a scrollbar inside the `cols` array will create a vertical scrollbar, defining one in the `rows` array will make a horizontal scrollbar.
 Alternatively, you can define the scroll mode explicitly using the **scroll** parameter:
 
 ~~~js
-{ view: "scrollbar", id:"scroller", scroll: "x"	} // horizontal
+{ view: "scrollbar", id: "scroller", scroll: "x"	} // horizontal
 ~~~
 or:
 ~~~js
-{ view: "scrollbar", id:"scroller", scroll: "y"	} // vertical
+{ view: "scrollbar", id: "scroller", scroll: "y"	} // vertical
 ~~~
 
 Let's bind custom grid and timeline views to the vertical scroll:
@@ -98,24 +103,16 @@ Let's bind custom grid and timeline views to the vertical scroll:
 ~~~js
 gantt.config.layout = {
 	css: "gantt_container",
-  	rows:[
-   		{
-    	   cols: [
-     		{             
-        	  view: "grid", 
-              scrollY:"scrollVer"
-         	},
-     		{ resizer: true, width: 1 },
-     		{
-        	  view: "timeline", 
-              scrollY:"scrollVer"
-        	},
-     	    {
-              view: "scrollbar", 
-              id:"scrollVer"
-           	}
-	    ]}
-  	]
+	rows: [
+		{
+			cols: [
+				{ view: "grid", scrollY: "scrollVer" },
+				{ resizer: true, width: 1 },
+				{ view: "timeline", scrollY: "scrollVer" },
+				{ view: "scrollbar", id: "scrollVer" }
+			]
+		}
+	]
 }
 ~~~
 
@@ -129,41 +126,41 @@ It is also possible to specify a separate horizontal scrollbar for the Grid view
 In the sub-section above we've considered how to add one specific scrollbar to the necessary view. For that, it was enough to create a simple layout configuration like:
 
 ~~~js
-{cols: [ {rows: [{}, {}]}, {rows: [{}, {}]}]}
+{ cols: [ { rows: [ {}, {} ] }, { rows: [ {}, {} ] } ] }
 ~~~
 
 or
 
 ~~~js
-{rows: [ {cols: [{}, {}]}, {cols: [{}, {}]}]}
+{ rows: [ { cols: [ {}, {} ] }, { cols: [ {}, {} ] } ] }
 ~~~
 
 In case you need to bind a view to both vertical and horizontal scrollbars, create a complex configuration of the layout when `cols` and `rows` arrays are nested multiple times, for instance:
 
 ~~~js
-{cols: [ 
+{ cols: [
 	{
 		rows: [
 			{
-				cols: [{}, {}]
+				cols: [ {}, {} ]
 			}, 
 			{
-				cols: [{}, {}]
+				cols: [ {}, {} ]
 			}
 		]
-	}, 
+	},
 	{
 		rows: [
 			{
-				cols: [{}, {}]
+				cols: [ {}, {} ]
 			}, 
 			{
 				cols: [
 					{
-						rows: [{}, {}]
+						rows: [ {}, {} ]
 					}, 
 					{	
-						rows: [{}, {}]
+						rows: [ {}, {} ]
 					}
 				]
 			}
@@ -177,6 +174,8 @@ Follow the examples below:
 - [Gantt. Layout views with own scrollbars](https://snippet.dhtmlx.com/cv9w37tu)
 - [Gantt. Universal Layout configuration](https://snippet.dhtmlx.com/uqejdyqc)
 
+
+
 Layout customization
 -------------------
 
@@ -185,41 +184,41 @@ You can change the default layout configuration and specify the necessary scheme
 For example, you can create additional grid and timeline views that will make a bottom resource panel for the main gantt chart. The steps to implement such a 
 custom layout are:
 
-- create a multi-row layout
-- add a default grid and a timeline to the first row of the layout
-- add an additional grid and timeline to the next row and bind them to a custom datasource
-- add a resizer between these rows
-- add a scrollbar to the last row and bind it to both the default and the resource timeline
+- create a multi-row layout;
+- add a default grid and a timeline to the first row of the layout;
+- add an additional grid and timeline to the next row and bind them to a custom datasource;
+- add a resizer between these rows;
+- add a scrollbar to the last row and bind it to both the default and the resource timeline.
 
 ~~~js
 gantt.config.layout = {
 	css: "gantt_container",
-	rows:[
+	rows: [
 		{
-          // the default layout
-		  cols: [
-			{view: "grid",
-                config: mainGridConfig, scrollY:"scrollVer"},
-			{resizer: true, width: 1},
-			{view: "timeline", 
-                scrollX:"scrollHor", scrollY:"scrollVer"},
-			{view: "scrollbar", id:"scrollVer"}
-		  ]
+			// the default layout
+			cols: [
+				{ view: "grid", config: mainGridConfig, scrollY: "scrollVer" },
+				{ resizer: true, width: 1 },
+				{ view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+				{ view: "scrollbar", id: "scrollVer" }
+			]
 		},
-		{resizer: true, width: 1},
+		{ resizer: true, width: 1 },
 		{
-          // a custom layout
-		  cols: [
-			{view: "grid", id: "resourceGrid", bind:"resource", 
-                config:resourceGridConfig, scrollY:"resourceVScroll"},
-			{resizer: true, width: 1},
-			{view:"timeline", id:"resourceTimeline", scrollX:"scrollHor", 
-            	bind:"resource", bindLinks: null, layers: resourceLayers, 
-                scrollY:"resourceVScroll"},
-			{view: "scrollbar", id:"resourceVScroll"}
-		  ]
+			// a custom layout
+			cols: [
+				{ view: "grid", id: "resourceGrid", bind: "resource",
+					config: resourceGridConfig, scrollY: "resourceVScroll"
+				},
+				{ resizer: true, width: 1 },
+				{ view: "timeline", id: "resourceTimeline", scrollX: "scrollHor",
+					bind: "resource", bindLinks: null, layers: resourceLayers,
+					scrollY: "resourceVScroll"
+				},
+				{ view: "scrollbar", id: "resourceVScroll" }
+			]
 		},
-		{view: "scrollbar", id:"scrollHor"}
+		{ view: "scrollbar", id: "scrollHor" }
 	]
 };
 ~~~
@@ -233,7 +232,7 @@ Custom grid and timeline have additional properties:
 
 ####For the grid and timeline views
 
-- **bind** - (*string*) sets the id of a datastore to take data from ("resource" in the example)
+- **bind** - (*string*) sets the id of a datastore to take data from ("resource" in the example);
 
 ####For the timeline view
 
@@ -246,9 +245,9 @@ To populate custom views with corresponding data, you need to add a separate dat
 api/gantt_createdatastore.md and specify the configuration of the data store:
 
 ~~~js
-var resourcesStore = gantt.createDatastore({
-	name:"resource",
-	initItem: function(item){
+const resourcesStore = gantt.createDatastore({
+	name: "resource",
+	initItem: (item) => {
 		item.id = item.key || gantt.uid();
 		return item;
 	}
@@ -260,18 +259,18 @@ In the above example a data store named "resource" is added.
 To load data into custom views from the data store, use the api/gantt_parse.md method:
 
 ~~~js
-resourcesStore.parse([// resources
-	{key:'0', label: "N/A"},
-	{key:'1', label: "John"},
-	{key:'2', label: "Mike"},
-	{key:'3', label: "Anna"}
+resourcesStore.parse([ // resources
+	{ key: '0', label: "N/A" },
+	{ key: '1', label: "John" },
+	{ key: '2', label: "Mike" },
+	{ key: '3', label: "Anna" }
 ]);
 ~~~
 
 To return a configuration object of the necessary data store, use the api/gantt_getdatastore.md method:
 
 ~~~js
-var tasksStore = gantt.getDatastore("task");
+const tasksStore = gantt.getDatastore("task");
 ~~~
 
 The method takes the name of the data store as a parameter.
@@ -286,8 +285,8 @@ In some cases you may need to disable resizers between the cells of the gantt dy
 For that, you’ll need a rule like the following:
 
 ~~~css
-.no_resizers .gantt_resizer{
-	display:none;
+.no_resizers .gantt_resizer {
+	display: none;
 }
 ~~~
 
@@ -303,6 +302,8 @@ To show the resizers again, just remove the class:
 gantt.$container.classList.remove("no_resizers");
 ~~~
 
+
+
 HTML as Inner View
 ------------------------
 
@@ -310,23 +311,26 @@ You can also use some custom HTML as inner views of the Gantt layout. For exampl
 
 ~~~js
 gantt.config.layout = {
- css: "gantt_container",
-  rows: [
-  	{
-   	  cols: [
-    	{view: "grid",scrollX: "scrollHor", scrollY: "scrollVer"},
-    	{ html:"<div class='custom-content'>custom content</div>", 
-    		css:"custom-content", width:50},
-    	{view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-    	{ html:"<div class='custom-content'>custom content</div>", 
-    		css:"custom-content", width:50},
-    	{view: "scrollbar", id: "scrollVer"}
-   	  ]
-    },
-    {view: "scrollbar", scroll: "x", id: "scrollHor"}
- ]
+	css: "gantt_container",
+	rows: [
+		{
+			cols: [
+				{ view: "grid", scrollX: "scrollHor", scrollY: "scrollVer" },
+				{ html: "<div class='custom-content'>custom content</div>",
+					css: "custom-content", width: 50
+				},
+				{ view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+				{ html: "<div class='custom-content'>custom content</div>",
+					css: "custom-content", width: 50
+				},
+				{ view: "scrollbar", id: "scrollVer" }
+			]
+		},
+		{ view: "scrollbar", scroll: "x", id: "scrollHor" }
+	]
 }
 ~~~
+
 
 
 Required views and settings
@@ -339,47 +343,53 @@ It is done by assigning specific ids to the default views:
 
 ~~~js
 gantt.config.layout = {
- css: "gantt_container",
-  rows: [
-  {
-   cols: [
-    {view: "grid", id: "grid", scrollX: "scrollHor", scrollY: "scrollVer"},
-    {view: "timeline", id: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-    {view: "scrollbar", id: "scrollVer"}
-   ]
-  },
-  {view: "scrollbar", id: "scrollHor"}
- ]
+	css: "gantt_container",
+	rows: [
+		{
+			cols: [
+				{ view: "grid", id: "grid", scrollX: "scrollHor",
+					scrollY: "scrollVer"
+				},
+				{ view: "timeline", id: "timeline", scrollX: "scrollHor",
+					scrollY: "scrollVer"
+				},
+				{ view: "scrollbar", id: "scrollVer" }
+			]
+		},
+		{ view: "scrollbar", id: "scrollHor" }
+	]
 };
 ~~~
 
 The required views and their ids are:
 
-- view: "grid", id: "grid"
-- view: "timeline", id: "timeline"
-- view: "scrollbar", id: "scrollHor"
-- view: "scrollbar", id: "scrollVer"
+- view: "grid", id: "grid";
+- view: "timeline", id: "timeline";
+- view: "scrollbar", id: "scrollHor";
+- view: "scrollbar", id: "scrollVer".
 
 Note that if the id is not specified, gantt will either use the view name as a default view id, or auto generate a unique id.
 Thus, in case of the default grid and timeline, the "id" parameter can be omitted:
 
 ~~~js
 gantt.config.layout = {
- css: "gantt_container",
-  rows: [
-  {
-   cols: [
-    {view: "grid", scrollX: "scrollHor", scrollY: "scrollVer"},
-    {view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-    {view: "scrollbar", id: "scrollVer"}
-   ]
-  },
-  {view: "scrollbar", id: "scrollHor"}
- ]
+	css: "gantt_container",
+	rows: [
+		{
+			cols: [
+				{ view: "grid", scrollX: "scrollHor", scrollY: "scrollVer" },
+				{ view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+				{ view: "scrollbar", id: "scrollVer" }
+			]
+		},
+		{ view: "scrollbar", id: "scrollHor" }
+	]
 };
 ~~~
 
 The layout can contain any additional number of views.
+
+
 
 Configs and templates of views
 -------------------
@@ -389,41 +399,43 @@ Grid and Timeline views reuse the templates and configs from the global [gantt.c
 For example: 
 
 ~~~js
-var secondGridColumns = {
-  columns: [
-	{
-		name: "status", label: "Status", width: 60, align: "center", 
-        template: function (task) {
-			var progress = task.progress || 0;
-			return Math.floor(progress * 100) + "";
+const secondGridColumns = {
+	columns: [
+		{ name: "status", label: "Status", width: 60, align: "center", 
+			template: (task) => {
+				const progress = task.progress || 0;
+				return Math.floor(progress * 100) + "";
+			}
+		},
+		{ name: "impact", width: 80, label: "Impact",
+			template: (task) => {
+				return (task.duration * 1000).toLocaleString("en-US", {
+					style: 'currency', currency: 'USD'
+				});
+			}
 		}
-	},
-	{
-	    name: "impact", width: 80, label: "Impact", template: function (task) {
-			return (task.duration * 1000).toLocaleString("en-US", {
-              style: 'currency', currency: 'USD'
-          });
-		}
-	}
-  ]
+	]
 };
 
 gantt.config.layout = {
-  css: "gantt_container",
-  rows: [
-	{
-	  cols: [
-		{view: "grid", id: "grid", width: 320, scrollY: "scrollVer"},
-		{resizer: true, width: 1},
-	    {view: "timeline", id: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-		{resizer: true, width: 1},
-		{view: "grid", width: 120, bind:"task", 
-        	scrollY:"scrollVer", config:secondGridColumns},   /*!*/
-		{view: "scrollbar", scroll: "y", id: "scrollVer"}
-	  ]
-	},
-	{view: "scrollbar", id: "scrollHor", height: 20}
-  ]
+	css: "gantt_container",
+	rows: [
+		{
+			cols: [
+				{ view: "grid", id: "grid", width: 320, scrollY: "scrollVer" },
+				{ resizer: true, width: 1 },
+				{ view: "timeline", id: "timeline", scrollX: "scrollHor",
+					scrollY: "scrollVer"
+				},
+				{ resizer: true, width: 1 },
+				{ view: "grid", width: 120, bind: "task", scrollY: "scrollVer",
+					config: secondGridColumns /*!*/
+				},
+				{ view: "scrollbar", scroll: "y", id: "scrollVer" }
+			]
+		},
+		{ view: "scrollbar", id: "scrollHor", height: 20 }
+	]
 };
 ~~~
 
@@ -431,39 +443,44 @@ gantt.config.layout = {
 Views can inherit configs and templates from the parent layout:
 
 ~~~js
-var resourceConfig = {    /*!*/
-	scale_height: 30	  /*!*/
-};						  /*!*/
+const resourceConfig = {  /*!*/
+	scale_height: 30      /*!*/
+};                        /*!*/
 
 gantt.config.layout = {
-  css: "gantt_container",
-  rows: [
-	{
-	  cols: [
-		{view: "grid", group:"grids", scrollY: "scrollVer"},
-		{resizer: true, width: 1},
-		{view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-		{view: "scrollbar", id: "scrollVer", group:"vertical"}
-	  ],
-	  gravity:2
-	},
-	{resizer: true, width: 1},
-	{
-	  config: resourceConfig,   /*!*/
-	  cols: [
-		{view: "resourceGrid", group:"grids", width: 435, scrollY: "resourceVScroll" },
-		{resizer: true, width: 1},
-		{view: "resourceTimeline", scrollX: "scrollHor", scrollY: "resourceVScroll"},
-		{view: "scrollbar", id: "resourceVScroll", group:"vertical"}
-	  ],
-	  gravity:1
-	},
-	{view: "scrollbar", id: "scrollHor"}
-  ]
+	css: "gantt_container",
+	rows: [
+		{
+			cols: [
+				{ view: "grid", group: "grids", scrollY: "scrollVer" },
+				{ resizer: true, width: 1 },
+				{ view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+				{ view: "scrollbar", id: "scrollVer", group: "vertical" }
+			],
+			gravity: 2
+		},
+		{ resizer: true, width: 1 },
+		{
+			config: resourceConfig,   /*!*/
+			cols: [
+				{ view: "resourceGrid", group: "grids", width: 435,
+					scrollY: "resourceVScroll"
+				},
+				{ resizer: true, width: 1 },
+				{ view: "resourceTimeline", scrollX: "scrollHor",
+					scrollY: "resourceVScroll"
+				},
+				{ view: "scrollbar", id: "resourceVScroll", group: "vertical" }
+			],
+			gravity: 1
+		},
+		{ view: "scrollbar", id: "scrollHor" }
+	]
 };
 ~~~
 
 Check the [Resource Management](desktop/resource_management.md) article.
+
 
 
 Visibility groups
@@ -493,26 +510,28 @@ Synchronizing the visibility of scrollbars:
 
 ~~~js
 gantt.config.layout = {
-  css: "gantt_container",
-  cols: [
-	{
-	   width:400,
-	   minWidth: 200,
-       maxWidth: 600,
-	   rows:[
-		 {view: "grid", scrollX: "gridScroll", scrollable: true, scrollY: "scrollVer"},
-		 {view: "scrollbar", id: "gridScroll", group:"horizontal"}    /*!*/
-		]
-	},
-	{resizer: true, width: 1},
-	{
-	  rows:[
-		{view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-		{view: "scrollbar", id: "scrollHor", group:"horizontal"}      /*!*/
-	  ]
-	},
-	{view: "scrollbar", id: "scrollVer"}
-  ]
+	css: "gantt_container",
+	cols: [
+		{
+			width: 400,
+			minWidth: 200,
+			maxWidth: 600,
+			rows: [
+				{ view: "grid", scrollX: "gridScroll", scrollable: true,
+					scrollY: "scrollVer"
+				},
+				{ view: "scrollbar", id: "gridScroll", group: "horizontal" }    /*!*/
+			]
+		},
+		{ resizer: true, width: 1 },
+		{
+			rows: [
+				{ view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+				{ view: "scrollbar", id: "scrollHor", group: "horizontal" }      /*!*/
+			]
+		},
+		{ view: "scrollbar", id: "scrollVer" }
+	]
 };
 ~~~
 
@@ -520,32 +539,38 @@ Synchronizing the width of grids:
 
 ~~~js
 gantt.config.layout = {
-  css: "gantt_container",
-  rows: [
-	{
-	  cols: [
-		{view: "grid", group:"grids", scrollY: "scrollVer"},
-		{resizer: true, width: 1},
-		{view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-		{view: "scrollbar", id: "scrollVer", group:"vertical"}    /*!*/
-	  ],
-	  gravity:2
-	},
-	{resizer: true, width: 1},
-	{
-	  config: resourceConfig,
-	  cols: [
-		{view: "resourceGrid", group:"grids", width: 435, scrollY: "resourceVScroll" },
-		{resizer: true, width: 1},
-		{view: "resourceTimeline", scrollX: "scrollHor", scrollY: "resourceVScroll"},
-		{view: "scrollbar", id: "resourceVScroll", group:"vertical"}   /*!*/
-	  ],
-	  gravity:1
-	},
-	{view: "scrollbar", id: "scrollHor"}
-  ]
+	css: "gantt_container",
+	rows: [
+		{
+			cols: [
+				{ view: "grid", group: "grids", scrollY: "scrollVer" },
+				{ resizer: true, width: 1 },
+				{ view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+				{ view: "scrollbar", id: "scrollVer", group: "vertical" }    /*!*/
+			],
+			gravity: 2
+		},
+		{ resizer: true, width: 1 },
+		{
+			config: resourceConfig,
+			cols: [
+				{ view: "resourceGrid", group: "grids", width: 435,
+					scrollY: "resourceVScroll"
+				},
+				{ resizer: true, width: 1 },
+				{ view: "resourceTimeline", scrollX: "scrollHor",
+					scrollY: "resourceVScroll"
+				},
+				{ view: "scrollbar", id: "resourceVScroll", group: "vertical" }   /*!*/
+			],
+			gravity: 1
+		},
+		{ view: "scrollbar", id: "scrollHor" }
+	]
 };
 ~~~
+
+
 
 Sizing of Gantt layout parts
 ------------------------------
@@ -554,24 +579,24 @@ You can regulate relative sizes of the Gantt layout cells via the **gravity** pr
 
 ~~~js
 gantt.config.layout = {
-  	css: "gantt_container",
-  	rows: [
+	css: "gantt_container",
+	rows: [
 		{
-	  		cols: [
+			cols: [
 				// columns config
 			],
-	  		gravity:2     /*!*/
+			gravity: 2     /*!*/
 		},
 		{ resizer: true, width: 1 },
 		{
 			config: resourceConfig,
-	  		cols: [
+			cols: [
 				// columns config
-	  		],
-	  		gravity:1       /*!*/
+			],
+			gravity: 1       /*!*/
 		},
-	{view: "scrollbar", id: "scrollHor"}
-  	]
+		{ view: "scrollbar", id: "scrollHor" }
+	]
 };
 ~~~
 
@@ -586,71 +611,71 @@ The **minWidth/maxWidth** properties can be used to limit the width of a layout 
 gantt.config.grid_elastic_columns = true;
 
 gantt.config.layout = {
-  css: "gantt_container",
-  cols: [
-    {
-      width: 400,
-      minWidth: 200,
-      maxWidth: 600,
-      rows: [
-        {
-          view: "grid", scrollable: true, scrollX: "scrollHor1", scrollY: "scrollVer"
-        },
-        {
-          view: "scrollbar", id: "scrollHor1", scroll: 'x', group: 'hor'
-        },
-      ]
-    },
-    { resizer: true, width: 1 },
-    {
-      rows: [
-        {
-          view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"
-        },
-        {
-          view: "scrollbar", id: "scrollHor", scroll: 'x', group: 'hor'
-        },
-      ]
-    },
-    {
-      view: "scrollbar", id: "scrollVer"
-    }
-  ]
-}
+	css: "gantt_container",
+	cols: [
+		{
+			width: 400,
+			minWidth: 200,
+			maxWidth: 600,
+			rows: [
+				{ view: "grid", scrollable: true, scrollX: "scrollHor1",
+					scrollY: "scrollVer"
+				},
+				{ view: "scrollbar", id: "scrollHor1", scroll: 'x', group: 'hor' }
+			]
+		},
+		{ resizer: true, width: 1 },
+		{
+			rows: [
+				{ view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+				{ view: "scrollbar", id: "scrollHor", scroll: 'x', group: 'hor' }
+			]
+		},
+		{
+			view: "scrollbar", id: "scrollVer"
+		}
+	]
+};
 ~~~
+
+
 
 Hiding parent layout views
 -----------------------
 
-If you need to hide a layout view when all its child items are invisible, specify **hide_empty:true** in the configuration of the related layout cell, for example: 
+If you need to hide a layout view when all its child items are invisible, specify **hide_empty: true** in the configuration of the related layout cell, for example: 
 
 ~~~js
 gantt.config.layout = {
-    css: "gantt_container",
-    cols: [
-      	{
-        	hide_empty: true, /*!*/
-        	rows:[
-          		{view: "grid"}
-        	]
-      	},
-      	{resizer: true},
-      	{
-        	hide_empty: true, /*!*/
-        	rows:[
-          		{view: "timeline"}
-        	]
-      	}
-    ]
+	css: "gantt_container",
+	cols: [
+		{
+			hide_empty: true, /*!*/
+			rows: [
+				{ view: "grid" }
+			]
+		},
+		{ resizer: true },
+		{
+			hide_empty: true, /*!*/
+			rows: [
+				{ view: "timeline" }
+			]
+		}
+	]
 };
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/157c0db66	Hiding grid/timeline views}}
+{{editor	https://snippet.dhtmlx.com/wfc0i2b7	Hiding grid/timeline views}}
+
+
 
 Switching between views
 -------------------------
 
 If you need to switch between different layout views, check the [How to toggle grid/chart](desktop__how_to.html#howtotogglegridchart) and [How to toggle the resource view](desktop__how_to.html#howtotoggletheresourceview) sections for more details.
+
+
 
 Freezing columns in the grid view
 -----------------------------------
