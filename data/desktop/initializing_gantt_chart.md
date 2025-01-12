@@ -3,7 +3,7 @@ dhtmlxGantt in Plain JS/HTML
 
 When you develop an application with dhtmlxGantt, the first thing you need is to initialize or, simply speaking, to display the Gantt chart on the page.
 
-This guide tells about initialization of dhtmlxScheduler in plain JS and HTML. You can also check the guides on integration with front-end frameworks:<br><br>
+This guide tells about initialization of dhtmlxGantt in plain JS and HTML. You can also check the guides on integration with front-end frameworks:<br><br>
 
 <table>
 	<tbody style="text-align:center">
@@ -23,6 +23,7 @@ This guide tells about initialization of dhtmlxScheduler in plain JS and HTML. Y
 </table>
 
 
+
 Creating basic Gantt chart
 -----------------------
 
@@ -36,14 +37,14 @@ To display a basic Gantt on the page, follow 3 steps:
 <!DOCTYPE html>
 <html>
 <head>
-   <script src="codebase/dhtmlxgantt.js"></script>
-   <link href="codebase/dhtmlxgantt.css" rel="stylesheet">
+<script src="codebase/dhtmlxgantt.js"></script>
+<link href="codebase/dhtmlxgantt.css" rel="stylesheet">
 </head>
 <body>
-    <div id="gantt_here" style='width:1000px; height:400px;'></div>
-    <script type="text/javascript"> 
-        gantt.init("gantt_here");   /*!*/                        
-    </script>
+	<div id="gantt_here" style='width:1000px; height:400px;'></div>
+	<script type="text/javascript"> 
+		gantt.init("gantt_here");   /*!*/                        
+	</script>
 </body>
 </html>
 ~~~
@@ -53,16 +54,18 @@ To display a basic Gantt on the page, follow 3 steps:
 {{sample
 	01_initialization/01_basic_init.html
 }}
- 
- 
+
+
+
 How to add Gantt source files into a project
 ------------------------------------------------------------
 
 You can add Gantt code file into your project in several ways, depending on the type of an application you create:
 
-- [Include files via the &#60;script&#62; tag](#scripttag)
-- [Import files into ES6/7 and TypeScript apps](#moduleimport)
-- [Include files into a RequireJS-based app](#requirejsimport)
+- [Include files via the &#60;script&#62; tag](#includefilesviathe60script62tag)
+- [Import files into ES6/7 and TypeScript apps](#importfilesintoes67andtypescriptapps)
+- [Include files into a RequireJS-based app](#includefilesintoarequirejsbasedapp)
+
 
 
 Include files via the &#60;script&#62; tag
@@ -82,10 +85,11 @@ Let's quickly explore the structure of the dhtmlxGantt package to find out where
 
 Main folders and files that make up the dhtmlxGantt package are:
 
-- <b>sources</b> - the source code files of the library. The files are not minified and easy-to-read. The package is mostly intended to be used for components' debugging.
+- <b>sources</b> - the source code files of the library. The files are not minified and easy-to-read. The package is mostly intended to be used for debugging components.
 - <b>samples</b> - the code samples.
-- <b>docs</b> - the full documentation of the component.
 - <b>codebase</b> - the packed code files of the library. These files have much smaller size and intended to be used in production. <b>In your apps you need to use files from this folder.</b>
+
+
 
 Import files into ES6/7 and TypeScript apps
 ---------------------------------------------
@@ -101,6 +105,8 @@ For the Commercial, Enterprise or Ultimate version the command look like this:
 ~~~js
 import { gantt, Gantt } from 'dhtmlx-gantt';
 ~~~
+
+
 
 Using Gantt with Vite
 --------------------------
@@ -127,11 +133,13 @@ build: {
 	commonjsOptions: {
 		include: [
 			"node_modules",
-			"gantt_8.0.6_evaluation/codebase/dhtmlxgantt.js"
+			"gantt_9.0.3_evaluation/codebase/dhtmlxgantt.js"
 		]
 	},
 }
 ~~~
+
+
 
 Include files into a RequireJS-based app
 ------------------------------------------- 
@@ -139,25 +147,25 @@ Include files into a RequireJS-based app
 To include dhtmlxGantt files into a RequireJS-based app, you need to follow the logic shown in the example below:
 
 ~~~js
-requirejs(["codebase/dhtmlxgantt"], function(dhx){
-  var gantt = dhx.gantt;
-  var Gantt = dhx.Gantt;// for Enterprise builds
- 
-  gantt.init("gantt_here");
-  gantt.parse({
-    data: [
-      { id:1, text:"Project #2", start_date:"01-04-2018", 
-      	duration:18, progress:0.4, open:true },
-      { id:2, text:"Task #1", start_date:"02-04-2018", 
-      	duration:8, progress:0.6, parent:1 },
-      { id:3, text:"Task #2", start_date:"11-04-2018", 
-      	duration:8, progress:0.6, parent:1 }
-    ],
-    links: [
-      { id:1, source:1, target:2, type:"1" },
-      { id:2, source:2, target:3, type:"0" }
-    ]
-  });
+requirejs(["codebase/dhtmlxgantt"], (dhx) => {
+	const gantt = dhx.gantt;
+	const Gantt = dhx.Gantt; // for Enterprise builds
+
+	gantt.init("gantt_here");
+	gantt.parse({
+		tasks: [
+			{ id: 1, text: "Project #2", start_date: "01-04-2025", duration: 18,
+				progress: 0.4, open: true },
+			{ id: 2, text: "Task #1", start_date: "02-04-2025", duration: 8,
+				progress: 0.6, parent: 1 },
+			{ id: 3, text: "Task #2", start_date: "11-04-2025", duration: 8,
+				progress: 0.6, parent: 1 }
+		],
+		links: [
+			{ id: 1, source: 1, target: 2, type: "1" },
+			{ id: 2, source: 2, target: 3, type: "0" }
+		]
+	});
 });
 ~~~
 
@@ -169,43 +177,43 @@ The example below demonstrates how a custom extension file *custom_tooltip_plugi
 
 ~~~js
 requirejs.config({
-  paths: {
-    "dhtmlxgantt": "../../codebase/dhtmlxgantt",
-    "ext/dhtmlxgantt_custom_tooltip": "../custom_tooltip_plugin"
-  },
-  shim: {
-    "ext/dhtmlxgantt_custom_tooltip": ["dhtmlxgantt"]
-  }
+	paths: {
+		"dhtmlxgantt": "../../codebase/dhtmlxgantt",
+		"ext/dhtmlxgantt_custom_tooltip": "../custom_tooltip_plugin"
+	},
+	shim: {
+		"ext/dhtmlxgantt_custom_tooltip": ["dhtmlxgantt"]
+	}
 });
  
-requirejs(["dhtmlxgantt"], 
-function (dhx) {
-  var gantt = dhx.gantt;
+requirejs(["dhtmlxgantt"], (dhx) => {
+	const gantt = dhx.gantt;
 
-  var date_to_str = gantt.date.date_to_str(gantt.config.task_date);
-  var today = new Date(2018, 3, 5);
-  gantt.addMarker({
-    start_date: today,
-    css: "today",
-    text: "Today",
-    title: "Today: " + date_to_str(today)
-  });
- 
-  gantt.init("gantt_here");
-  gantt.parse({
-    data: [
-      { id:1, text:"Project #2", start_date:"01-04-2018",
-      	duration:18, progress:0.4, open:true },
-      { id:2, text:"Task #1", start_date:"02-04-2018", 
-      	duration:8, progress:0.6, parent:1 },
-      { id:3, text:"Task #2", start_date:"11-04-2018", 
-      	duration:8, progress:0.6, parent:1 }
-    ],
-    links: [
-      { id:1, source:1, target:2, type:"1" },
-      { id:2, source:2, target:3, type:"0" }
-    ]
-  });
+	const date_to_str = gantt.date.date_to_str(gantt.config.task_date);
+	const today = new Date();
+
+	gantt.addMarker({
+		start_date: today,
+		css: "today",
+		text: "Today",
+		title: `Today: ${date_to_str(today)}`
+	});
+
+	gantt.init("gantt_here");
+	gantt.parse({
+		tasks: [
+			{ id: 1, text: "Project #2", start_date: "01-04-2025", duration: 18,
+				progress: 0.4, open: true },
+			{ id: 2, text: "Task #1", start_date: "02-04-2025", duration: 8,
+				progress: 0.6, parent: 1 },
+			{ id: 3, text: "Task #2", start_date: "11-04-2025", duration: 8,
+				progress: 0.6, parent: 1 }
+		],
+		links: [
+			{ id: 1, source: 1, target: 2, type: "1" },
+			{ id: 2, source: 2, target: 3, type: "0" }
+		]
+	});
 });
 ~~~
 
@@ -216,6 +224,7 @@ Check that the module name for any file inside the package is specified as *a re
 - "dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"
 
 
+
 Full screen mode
 ---------------------------------
 
@@ -223,13 +232,11 @@ To correctly display a Gantt chart in the full-screen mode in different browsers
 
 ~~~html
 <style type="text/css" media="screen">
-    html, body{
-        margin:0px;
-        padding:0px;
-        height:100%;
-        overflow:hidden;
-    }   
+	html, body {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		overflow: hidden;
+	}
 </style>
 ~~~
-
-
