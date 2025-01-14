@@ -2,29 +2,6 @@
 
 DHTMLX Gantt is the most complete JavaScript Gantt chart library for project management.
 
-## Explore documentation locally
-
-To run the Gantt documentation locally, take the following steps:
-
-#### 1. Clone the documentation to the local folder
-
-```
-$ git clone git@github.com:DHTMLX/gantt-docs.git
-$ cd gantt-docs
-```
-
-#### 2. Install dependencies
-
-```
-$ yarn
-```
-
-#### 3. Run the documentation on the local server and explore it
-
-```
-$ yarn start
-```
-
 ## Related sources
 
 [Download DHTMLX Gantt](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml)
