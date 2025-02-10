@@ -1,7 +1,7 @@
 Resource Management
 ======================
 
-{{pronote  This functionality is available in the Gantt PRO edition only. }}
+{{pronote This functionality is available only in the PRO edition. }}
 
 Gantt provides predefined resource views for highlighting resource load, methods for breaking project down by a resource for load balancing, 
 task and resource-specific work-time calendars.
@@ -10,10 +10,14 @@ task and resource-specific work-time calendars.
 
 {{note Although Gantt itself does not calculate the resource load, and does not have any methods that can be used out of the box,  Gantt provides you with public API for implementing any custom behavior.}}
 
+
+
 Resource view panel
 ------------------------
 
 dhtmlxGantt has two types of predefined layout view for displaying resource load of gantt: resource load diagram and resource histogram.
+
+
 
 ### Resource load diagram
 
@@ -29,29 +33,33 @@ You need to pass a separate [config](desktop/layout_config.md#configsandtemplate
 gantt.config.layout = {
 	css: "gantt_container",
 	rows: [
-	  {
-		// layout for default Grid and Timeline
-		cols: [
-		  {view: "grid", group:"grids", scrollY: "scrollVer"},
-		  {resizer: true, width: 1},
-		  {view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-		  {view: "scrollbar", id: "scrollVer", group:"vertical"}
-		],
-		gravity:2
-	  },
-	  { resizer: true, width: 1},
-	  {
-		// layout for Grid and Timeline of resource panel
-		config: resourceConfig, // config for Grid and Timeline
-		cols: [
-		  {view: "resourceGrid", group:"grids", width: 435, scrollY:"resourceVScroll"},
-		  {resizer: true, width: 1},
-		  {view: "resourceTimeline", scrollX: "scrollHor", scrollY:"resourceVScroll"},
-		  {view: "scrollbar", id: "resourceVScroll", group:"vertical"}
-		],
-		gravity:1
-	   },
-	   {view: "scrollbar", id: "scrollHor"}
+		{
+			// layout for default Grid and Timeline
+			cols: [
+				{ view: "grid", group: "grids", scrollY: "scrollVer" },
+				{ resizer: true, width: 1 },
+				{ view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+				{ view: "scrollbar", id: "scrollVer", group: "vertical" }
+			],
+			gravity: 2
+		},
+		{ resizer: true, width: 1 },
+		{
+			// layout for Grid and Timeline of resource panel
+			config: resourceConfig, // config for Grid and Timeline
+			cols: [
+				{ view: "resourceGrid", group: "grids", width: 435,
+					scrollY: "resourceVScroll"
+				},
+				{ resizer: true, width: 1 },
+				{ view: "resourceTimeline", scrollX: "scrollHor",
+					scrollY: "resourceVScroll"
+				},
+				{ view: "scrollbar", id: "resourceVScroll", group: "vertical" }
+			],
+			gravity: 1
+		},
+		{ view: "scrollbar", id: "scrollHor" }
 	]
 };
 ~~~
@@ -65,15 +73,12 @@ Once initialized, *resourceGrid* will work in the same way as the default grid v
 the api/gantt_resource_cell_class_template.md and api/gantt_resource_cell_value_template.md templates:
 
 ~~~js
-gantt.templates.resource_cell_value = function(start_date, end_date, resource, tasks,
-	assignments){
-	var html = "<div>" +  tasks.length * 8 + "h</div>";
-		return html;
-};
+gantt.templates.resource_cell_value = (startDate, endDate, resource, tasks) => 
+    `<div>${tasks.length * 8}h</div>`;
 ~~~
 
-
 {{sample 11_resources/05_resource_usage_templates.html}}
+
 
 
 ### Resource histogram
@@ -86,37 +91,40 @@ This type of the layout view for displaying resource load of gantt includes the 
 You need to pass a separate [config](desktop/layout_config.md#configsandtemplatesofviews) for "resourceGrid" (to display columns for resources not for tasks) and "resourceHistogram" views, and [templates](desktop/layout_config.md#configsandtemplatesofviews) to configure display of the resource assignments in the panel.  
 }}
 
-
 ~~~js
-gantt.config.layout = {
+gantt.config.layout = { 
 	css: "gantt_container",
 	rows: [
 		{
 			// layout for default Grid and Timeline
 			gravity: 2,
 			cols: [
-				{view: "grid", group:"grids", scrollY: "scrollVer"},
-				{resizer: true, width: 1},
-				{view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-				{view: "scrollbar", id: "scrollVer", group:"vertical"}
+				{ view: "grid", group: "grids", scrollY: "scrollVer" },
+				{ resizer: true, width: 1 },
+				{ view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+				{ view: "scrollbar", id: "scrollVer", group: "vertical" }
 			]
 		},
-		{ resizer: true, width: 1, next: "resources"},
+		{ resizer: true, width: 1, next: "resources" },
 		{
 			// layout for Grid and Timeline of resource panel
-			gravity:1,
+			gravity: 1,
 			id: "resources",
 			config: resourceConfig, // config for Grid and Timeline
 			templates: resourceTemplates, // templates for Grid and Timeline
 			cols: [
-				{ view: "resourceGrid", group:"grids", scrollY: "resourceVScroll" },
-				{ resizer: true, width: 1},
-				{ view: "resourceHistogram", capacity:24, scrollX: "scrollHor", 
-                	scrollY: "resourceVScroll"},
-				{ view: "scrollbar", id: "resourceVScroll", group:"vertical"}
+				{ view: "resourceGrid", group: "grids", scrollY: "resourceVScroll" },
+				{ resizer: true, width: 1 },
+				{ 
+					view: "resourceHistogram", 
+					capacity: 24, 
+					scrollX: "scrollHor", 
+					scrollY: "resourceVScroll" 
+				},
+				{ view: "scrollbar", id: "resourceVScroll", group: "vertical" }
 			]
 		},
-		{view: "scrollbar", id: "scrollHor"}
+		{ view: "scrollbar", id: "scrollHor" }
 	]
 };
 ~~~
@@ -128,43 +136,34 @@ The same as in the resource load diagram, *resourceGrid* will work in the same w
 - *histogram_cell_class* - the CSS class which is applied to a cell of the resource panel
 
 ~~~js
-gantt.templates.histogram_cell_class=function(start_date,end_date,resource,tasks,
-	assignments){
-	return "";
-};
+gantt.templates.histogram_cell_class =
+	(start_date, end_date, resource, tasks, assignments) => "";
 ~~~
 
 - *histogram_cell_label* - the label inside a cell
 
 ~~~js
-gantt.templates.histogram_cell_label=function(start_date,end_date,resource,tasks,
-	assignments){
- 	return tasks.length * 8;
-};
+gantt.templates.histogram_cell_label =
+	(start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
 ~~~
 
 - *histogram_cell_allocated* - the height of the filled area in the histogram. Its value can be set from 0 to *maxCapacity* *.
 
 ~~~js
-gantt.templates.histogram_cell_allocated=function(start_date,end_date,resource,tasks,
-	assignments){
- 	return tasks.length * 8;
-};
+gantt.templates.histogram_cell_allocated =
+	(start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
 ~~~
 
 - *histogram_cell_capacity* - the height of the line that defines the available capacity of the resource. Its value can be set from -1 to *maxCapacity* *. Values less than 0 won't render the line.
 
 ~~~js
-gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,tasks,
-	assignments){
- 	return 24;
-};
+gantt.templates.histogram_cell_capacity =
+	(start_date, end_date, resource, tasks, assignments) => 24;
 ~~~
 
 **What maxCapacity is**
 
 If each row of the histogram is considered as a bar chart, maxCapacity is the height of the Y-scale of this chart. In the image below maxCapacity = 24:
-
 
 ![maxCapacity](desktop/maxcapacity.png)
 
@@ -181,23 +180,25 @@ But there is the ability to configure **maxCapacity** for all histogram at once 
 **maxCapacity** can be defined either at the histogram level:
 
 ~~~js
-{ view: "resourceHistogram", capacity:24, scrollX: "scrollHor", 
-	scrollY: "resourceVScroll"}
+{ view: "resourceHistogram", capacity: 24, scrollX: "scrollHor",
+	scrollY: "resourceVScroll" }
 ~~~
 
 or individually for each resource:
 
 ~~~js
 resourcesStore.parse([
-    {id: 1, text: "John", capacity:8},
-    {id: 2, text: "Mike", capacity:4},
-    {id: 3, text: "Anna", capacity:8},
-    {id: 4, text: "Bill", capacity:8},
-    {id: 5, text: "Floe", capacity:8}
+	{ id: 1, text: "John", capacity: 8 },
+	{ id: 2, text: "Mike", capacity: 4 },
+	{ id: 3, text: "Anna", capacity: 8 },
+	{ id: 4, text: "Bill", capacity: 8 },
+	{ id: 5, text: "Floe", capacity: 8 }
 ]);
 ~~~
 
 {{note Capacity defined at the resource level overrides the global capacity of histogram for a given resource.}}
+
+
 
 ## Working with resource view panel
 
@@ -212,17 +213,17 @@ If you need to provide an extra configuration to the resource store, you can use
 
 ~~~js
 gantt.config.resources = {
-    resource_store: {
-        type: "treeDataStore",
-        fetchTasks: true,
-        initItem: function(item) {
-            item.parent = item.parent || gantt.config.root_id;
-            item[gantt.config.resource_property] = item.parent;
-            item.open = true;
-            return item;
-        }
-    },
-}
+	resource_store: {
+		type: "treeDataStore",
+		fetchTasks: true,
+		initItem: item => {
+			item.parent = item.parent || gantt.config.root_id;
+			item[gantt.config.resource_property] = item.parent;
+			item.open = true;
+			return item;
+		}
+	}
+};
 ~~~
 
 Settings passed to **resource_store** will be used by the gantt to create the default resource datastore. If you've already created the resource datastore in your code, the gantt will use your store instead.
@@ -230,14 +231,14 @@ Settings passed to **resource_store** will be used by the gantt to create the de
 In order to load resources, you can either pass resources into the **gantt.parse()**/**gantt.load()** methods as described [here](desktop/resource_management.md#loadingresourcesandresourceassignments), or you can access the datastore and populate it using the **datastore.parse()** method:
 
 ~~~js
-gantt.attachEvent("onGanttReady", function(){
-    const store = gantt.getDatastore(gantt.config.resource_store);
-    store.parse([
-       {id: 6, text: "John"},
-       {id: 7, text: "Mike"},
-       {id: 8, text: "Anna"},
-       {id: 9, text: "Bill"},
-    ])
+gantt.attachEvent("onGanttReady", () => {
+	const store = gantt.getDatastore(gantt.config.resource_store);
+	store.parse([
+		{ id: 6, text: "John" },
+		{ id: 7, text: "Mike" },
+		{ id: 8, text: "Anna" },
+		{ id: 9, text: "Bill" }
+	]);
 });
 ~~~
 
@@ -245,10 +246,10 @@ The resource control of the lightbox will be connected to the resource list auto
 
 ~~~js
 gantt.config.lightbox = {
-    sections: [
-        ...,
-        { name: "resources", type: "resources", map_to: "auto", default_value: 8}
-    ]
+	sections: [
+		...,
+		{ name: "resources", type: "resources", map_to: "auto", default_value: 8 }
+	]
 };
 ~~~
 
@@ -259,17 +260,17 @@ gantt.config.lightbox = {
 It is also possible to initialize the data store manually with the help of the api/gantt_createdatastore.md method:
 
 ~~~js
-var resourcesStore = gantt.createDatastore({
-  name: gantt.config.resource_store,
-  // use treeDatastore if you have hierarchical resources (e.g. workers/departments), 
-  // skip the "type" if you have a flat structure
-  type: "treeDatastore", 
-  initItem: function (item) {
-	item.parent = item.parent || gantt.config.root_id;
-	item[gantt.config.resource_property] = item.parent;
-	item.open = true;
-	return item;
-  }
+const resourcesStore = gantt.createDatastore({
+	name: gantt.config.resource_store,
+	// Use treeDatastore if you have hierarchical resources (e.g. workers/departments),
+	// skip the "type" if you have a flat structure
+	type: "treeDatastore",
+	initItem: item => {
+		item.parent = item.parent || gantt.config.root_id;
+		item[gantt.config.resource_property] = item.parent;
+		item.open = true;
+		return item;
+	}
 });
 ~~~
 
@@ -277,35 +278,37 @@ In order to populate the data store, use the **datastore.parse** method:
 
 ~~~js
 resourcesStore.parse([
-	{id: 1, text: "QA", parent:null},
-  	{id: 2, text: "Development", parent:null},
-    {id: 3, text: "Sales", parent:null},
-    {id: 4, text: "Other", parent:null},
-    {id: 5, text: "Unassigned", parent:4},
-    {id: 6, text: "John", parent:1},
-    {id: 7, text: "Mike", parent:2},
-    {id: 8, text: "Anna", parent:2},
-    {id: 9, text: "Bill", parent:3},
-    {id: 10, text: "Floe", parent:3}
+	{ id: 1, text: "QA", parent: null },
+	{ id: 2, text: "Development", parent: null },
+	{ id: 3, text: "Sales", parent: null },
+	{ id: 4, text: "Other", parent: null },
+	{ id: 5, text: "Unassigned", parent: 4 },
+	{ id: 6, text: "John", parent: 1 },
+	{ id: 7, text: "Mike", parent: 2 },
+	{ id: 8, text: "Anna", parent: 2 },
+	{ id: 9, text: "Bill", parent: 3 },
+	{ id: 10, text: "Floe", parent: 3 }
 ]);
 ~~~
 
 If you want to use resources in the lightbox, it might be a good idea to do it via the api/gantt_serverlist.md method from the onParse event of the data store:
 
 ~~~js
-resourcesStore.attachEvent("onParse", function(){
-  var people = [];
-  resourcesStore.eachItem(function(res){
-	if(!resourcesStore.hasChild(res.id)){
-		var copy = gantt.copy(res);
-		copy.key = res.id;
-		copy.label = res.text;
-		people.push(copy);
-	}
-  });
-  gantt.updateCollection("resourceOptions", people);
+resourcesStore.attachEvent("onParse", () => {
+	const people = [];
+	resourcesStore.eachItem(res => {
+		if (!resourcesStore.hasChild(res.id)) {
+			const copy = gantt.copy(res);
+			copy.key = res.id;
+			copy.label = res.text;
+			people.push(copy);
+		}
+	});
+	gantt.updateCollection("resourceOptions", people);
 });
 ~~~
+
+
 
 ### Expanding resources panel
 
@@ -315,20 +318,16 @@ It is possible to expand the resources panel to show all the tasks assigned to a
 
 ~~~js
 gantt.config.resources = {
-    resource_store: {
-        type: "treeDataStore",
-        fetchTasks: true, /*!*/
-        initItem: function (item) {
- 			item.parent = item.parent || gantt.config.root_id;
- 			item[gantt.config.resource_property] = item.parent;
- 			if(!item.parent){
- 				item.open = true;
- 			}else{
- 				item.open = false;
- 			}
- 			return item;
- 		}
-    },
+	resource_store: {
+		type: "treeDataStore",
+		fetchTasks: true, /*!*/
+		initItem: item => {
+			item.parent = item.parent || gantt.config.root_id;
+			item[gantt.config.resource_property] = item.parent;
+			item.open = !item.parent;
+			return item;
+		}
+	}
 };
 ~~~
 
@@ -336,19 +335,15 @@ or
 
 ~~~js
 gantt.$resourcesStore = gantt.createDatastore({
- 	name: gantt.config.resource_store,
-    type: "treeDatastore",
- 	fetchTasks: true, /*!*/
- 	initItem: function (item) {
- 		item.parent = item.parent || gantt.config.root_id;
- 		item[gantt.config.resource_property] = item.parent;
- 		if(!item.parent){
- 			item.open = true;
- 		}else{
- 			item.open = false;
- 		}
- 		return item;
- 	}
+	name: gantt.config.resource_store,
+	type: "treeDatastore",
+	fetchTasks: true, /*!*/
+	initItem: item => {
+		item.parent = item.parent || gantt.config.root_id;
+		item[gantt.config.resource_property] = item.parent;
+		item.open = !item.parent;
+		return item;
+	}
 });
 ~~~
 
@@ -363,8 +358,12 @@ There is a shorthand for getting all tasks assigned to a resource - api/gantt_ge
 gantt.getResourceAssignments("6");
 ~~~
 
+
+
 Assigning resources 
 -------------------
+
+
 
 ###Connecting resources to tasks 
 
@@ -381,7 +380,7 @@ Resources can be connected to tasks via the properties of the task object in one
 
 ~~~js
 {
-	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6, 
+	id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6, 
 	user_id: 5 // 5 is the id of the resource 
 }
 ~~~
@@ -390,7 +389,7 @@ Resources can be connected to tasks via the properties of the task object in one
 
 ~~~js
 {
-	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6, 
+	id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6, 
 	users: [2, 3] // 2 and 3 are the ids of resources
 }
 ~~~
@@ -401,8 +400,8 @@ You can use this format with the [custom multiselect control](desktop/custom_edi
 
 ~~~js
 {
-	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
-	users: [{resource_id:2, value:8}, {resource_id:3, value:4}]  
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
+    users: [{resource_id: 2, value: 8}, {resource_id: 3, value: 4}]
 }
 ~~~
 
@@ -413,10 +412,10 @@ Starting from v8.0 you can also load resource assignments as a separate list, an
 
 ~~~js
 gantt.parse({
-   	tasks: [...],
-   	links: [...],
-   	resources: [...],
-   	assignments: [{id:1, resource_id:2, task_id: 5, value: 8}, ...]
+	tasks: [...],
+	links: [...],
+	resources: [...],
+	assignments: [{id: 1, resource_id: 2, task_id: 5, value: 8}, ...]
 });
 ~~~
 
@@ -429,13 +428,12 @@ In some cases, you may want to save changes in Resource Assignments separately f
 
 ~~~js
 gantt.config.resources = {
-    dataprocessor_assignments: true,
-    dataprocessor_resources: true,
+	dataprocessor_assignments: true,
+	dataprocessor_resources: true,
 };
 ~~~
 
 Read more about it in a [separate article](desktop/server_side.md#routing-crud-actions-of-resources-and-resource-assignments).
-
 
 <h3 id="resourceassignmenttime">Setting the time of the resource assignments</h3>
 
@@ -453,26 +451,29 @@ The additional properties are:
 
 ~~~js
 {
-	id: 5, text: "Interior office", type: "task", start_date: "03-04-2019 00:00",
-	duration: 7, parent: "2", progress: 0.6, priority: 1,
-	users: [{
-		resource_id: "3",
-		value: 8,
-		delay: 1 /*!*/
-	},{
-		resource_id: "6",
-		value: 3,
-		start_date: "03-04-2019 00:00", /*!*/
-		end_date: "05-04-2019 00:00", /*!*/
-		mode: "fixedDates" /*!*/
-	},{
-		resource_id: "7",
-		value: 3,
-		delay: 1, /*!*/
-		duration: 2, /*!*/
-		mode: "fixedDuration" /*!*/
-	}
-	]
+    id: 5, text: "Interior office", type: "task", start_date: "03-04-2025 00:00",
+    duration: 7, parent: "2", progress: 0.6, priority: 1,
+    users: [
+        {
+            resource_id: "3",
+            value: 8,
+            delay: 1 /*!*/
+        },
+        {
+            resource_id: "6",
+            value: 3,
+            start_date: "03-04-2025 00:00", /*!*/
+            end_date: "05-04-2025 00:00", /*!*/
+            mode: "fixedDates" /*!*/
+        },
+        {
+            resource_id: "7",
+            value: 3,
+            delay: 1, /*!*/
+            duration: 2, /*!*/
+            mode: "fixedDuration" /*!*/
+        }
+    ]
 }
 ~~~
 
@@ -484,10 +485,11 @@ The additional properties are:
 
 ~~~js
 {
-	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
 	users: [{
 		id: 5, 
-		resource_id: 2, value: 8, 
+		resource_id: 2,
+		value: 8, 
 		delay: 1
 	}]
 }
@@ -496,7 +498,7 @@ The additional properties are:
 The assignment object will be accessible for the gantt API via this id:
 
 ~~~js
-var assignment = gantt.getDatastore("resourceAssignments").getItem(5);
+const assignment = gantt.getDatastore("resourceAssignments").getItem(5);
 ~~~
 
 {{note The ["resourceAssignments"](api/gantt_resource_assignment_store_config.md) datastore is only available when the api/gantt_process_resource_assignments_config.md config is enabled. }}
@@ -508,7 +510,7 @@ var assignment = gantt.getDatastore("resourceAssignments").getItem(5);
 
 ~~~js
 {
-	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
 	users: [
 		{ resource_id: 2, value: 8, delay: 1},
 		{ resource_id: 3, value: 6},
@@ -520,7 +522,7 @@ If the *mode* is not specified or is set to the "default" value, the *start_date
 
 The *delay* property works similarly to the *Delay* property of <a href="https://support.microsoft.com/en-us/office/assignment-delay-fields-427ac799-225c-4e10-9dcb-f58e524c8173">MS Project</a>. 
 
-If the delay is specified, the *start_date* of the assignment is calculated as <br>`gantt.calculateEndDate({start_date:task.start_date, duration:assignment.delay, task:task})`.
+If the delay is specified, the *start_date* of the assignment is calculated as <br>`gantt.calculateEndDate({start_date: task.start_date, duration: assignment.delay, task: task})`.
 
 The resource assignment will start with the specified delay from the start of the task. The end date of the assignment will match the end date of the task.<br>
 Whenever the task object is updated, the start/end dates of the assignment will be updated accordingly.
@@ -529,18 +531,18 @@ Whenever the task object is updated, the start/end dates of the assignment will 
 
 ~~~js
 {
-	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
 	users: [
-		{resource_id:2, value:8, duration: 1, delay:0, mode: "fixedDuration"},
-		{resource_id:2, value:2, duration: 1, delay:1, mode: "fixedDuration"},
-		{resource_id:2, value:3, delay:2, mode: "default"}
+		{ resource_id: 2, value: 8, duration: 1, delay: 0, mode: "fixedDuration" },
+		{ resource_id: 2, value: 2, duration: 1, delay: 1, mode: "fixedDuration" },
+		{ resource_id: 2, value: 3, delay: 2, mode: "default" }
 	]
 }
 ~~~
 
 The *start_date* of the assignment is calculated in the same way as it's calculated in the *"default"* mode.
 
-The *end_date* is no longer linked to the end date of the task. Instead, it's calculated as<br> `gantt.calculateEndDate({start_date:assignment.start_date, duration:assignment.delay, task:task})`.
+The *end_date* is no longer linked to the end date of the task. Instead, it's calculated as<br> `gantt.calculateEndDate({start_date: assignment.start_date, duration: assignment.delay, task: task})`.
 
 Whenever the task object is updated, the dates of the assignments are recalculated, and the durations of the assignments remain unchanged.
 
@@ -548,10 +550,10 @@ Whenever the task object is updated, the dates of the assignments are recalculat
 
 ~~~js
 {
-	id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+	id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
 	users: [{
-		resource_id:2, value:8, 
-		start_date:"03-04-2018", end_date:"11-04-2018", mode: "fixedDates"
+		resource_id: 2, value: 8,
+		start_date: "03-04-2025", end_date: "11-04-2025", mode: "fixedDates"
 	}]
 }
 ~~~
@@ -579,6 +581,7 @@ Here is a short summary of how assignment dates are calculated in each mode:
   - assignment.end_date = assignment.end_date
 
 
+
 ###Getting tasks a resource is assigned to 
 
 There is a shorthand for getting all tasks assigned to a resource - api/gantt_getresourceassignments.md.
@@ -591,18 +594,18 @@ The method takes as a parameter the id of the resource and returns an array of o
 
 ~~~js
 [ 
-	{task_id: 5, resource_id: "6", value: 5, delay: 0, duration: 7, 
-		start_date: "03-04-2019 00:00", end_date: "12-04-2019 00:00", 
-		id: 1617258553240, mode: "default"},
-	{task_id: 18, resource_id: "6", value: 2, delay: 0, duration: 2, 
-		start_date: "05-04-2019 00:00", end_date: "09-04-2019 00:00", 
-		id: 1617258553250, mode: "default"},
-	{task_id: 19, resource_id: "6", value: 3, delay: 0, duration: 4, 
-		start_date: "09-04-2019 00:00", end_date: "13-04-2019 00:00", 
-		id: 1617258553251, mode: "default"},
-	{task_id: 21, resource_id: "6", value: 5, delay: 0, duration: 4, 
-		start_date: "03-04-2019 00:00", end_date: "09-04-2019 00:00", 
-		id: 1617258553254, mode: "default"}
+	{ task_id: 5, resource_id: "6", value: 5, delay: 0, duration: 7, 
+		start_date: "03-04-2025 00:00", end_date: "12-04-2025 00:00", 
+		id: 1617258553240, mode: "default" },
+	{ task_id: 18, resource_id: "6", value: 2, delay: 0, duration: 2, 
+		start_date: "05-04-2025 00:00", end_date: "09-04-2025 00:00", 
+		id: 1617258553250, mode: "default" },
+	{ task_id: 19, resource_id: "6", value: 3, delay: 0, duration: 4, 
+		start_date: "09-04-2025 00:00", end_date: "13-04-2025 00:00", 
+		id: 1617258553251, mode: "default" },
+	{ task_id: 21, resource_id: "6", value: 5, delay: 0, duration: 4, 
+		start_date: "03-04-2025 00:00", end_date: "09-04-2025 00:00", 
+		id: 1617258553254, mode: "default" }
 ]
 ~~~
 
@@ -619,6 +622,7 @@ Each object contains the following properties:
 - *mode* - the calculation mode of the time of the resource assignment: "default"|"fixedDates"|"fixedDuration"
 
 
+
 ### Getting resource assignments of a task
 
 The api/gantt_gettaskassignments.md method allows getting the parsed resource assignments of a specific task from the datastore:
@@ -631,41 +635,45 @@ The method takes as a parameter the id of the task and returns an array of objec
 
 ~~~js
 [
-	{task_id: 5, id: 1617254693938, delay: 0, duration: 2, 
-		start_date: "03-04-2019 00:00", end_date: "05-04-2019 00:00", 
-		mode: "fixedDuration", resource_id: 6, value: 3},
-	{task_id: 5, id: 1617254693946, delay: 3, duration: 1, 
-		start_date: "06-04-2019 00:00", end_date: "07-04-2019 00:00", 
-		mode: "fixedDuration", resource_id: 6, value: 6}
+	{ task_id: 5, id: 1617254693938, delay: 0, duration: 2, 
+		start_date: "03-04-2025 00:00", end_date: "05-04-2025 00:00", 
+		mode: "fixedDuration", resource_id: 6, value: 3 },
+	{ task_id: 5, id: 1617254693946, delay: 3, duration: 1, 
+		start_date: "06-04-2025 00:00", end_date: "07-04-2025 00:00", 
+		mode: "fixedDuration", resource_id: 6, value: 6 }
 ]
 ~~~
 
 The return object contains the same list of properties as the return object of the api/gantt_getresourceassignments.md method.
 
-###Setting connection via lightbox
 
+
+###Setting connection via lightbox
 
 Resources can be assigned to any property of the task object using the built-in lightbox.
 
 ~~~js
 gantt.serverList("people", [
-	{key: 1, label: "John"},
-	{key: 2, label: "Mike"},
-	{key: 3, label: "Anna"},
-	{key: 4, label: "Bill"},
-	{key: 7, label: "Floe"}
+	{ key: 1, label: "John" },
+	{ key: 2, label: "Mike" },
+	{ key: 3, label: "Anna" },
+	{ key: 4, label: "Bill" },
+	{ key: 7, label: "Floe" }
 ]);
 
 gantt.locale.labels.section_owner = "Owner";
 
 gantt.config.lightbox.sections = [
-  {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-  {name:"owner", map_to:"owner_id", type:"select", options:gantt.serverList("people")},
-  {name:"time", type:"duration", map_to: "auto"}
+	{ name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+	{ name: "owner", map_to: "owner_id", type: "select",
+		options: gantt.serverList("people") },
+	{ name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
 
 Read about how to configure the resource control of the lightbox in the [Resources Control](desktop/resources.md) article.
+
+
 
 ###Loading collections
 
@@ -676,18 +684,19 @@ Collections specified as server lists can be loaded and updated dynamically, aft
 gantt.locale.labels.section_owner = "Owner";
 
 gantt.config.lightbox.sections = [
-  {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-  {name:"owner", map_to:"owner_id", type:"select", options:gantt.serverList("people")},
-  {name:"time", type:"duration", map_to: "auto"}
+	{ name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+	{ name: "owner", map_to: "owner_id", type: "select",
+		options: gantt.serverList("people") },
+	{ name: "time", type: "duration", map_to: "auto" }
 ];
 
 // once options are loaded 
 gantt.updateCollection("people", [
-	{key: 1, label: "John"},
-	{key: 2, label: "Mike"},
-	{key: 3, label: "Anna"},
-	{key: 4, label: "Bill"},
-	{key: 7, label: "Floe"}
+	{ key: 1, label: "John" },
+	{ key: 2, label: "Mike" },
+	{ key: 3, label: "Anna" },
+	{ key: 4, label: "Bill" },
+	{ key: 7, label: "Floe" }
 ]);
 ~~~
 
@@ -699,6 +708,8 @@ If you define resources via the *serverList* collection, they can be [loaded tog
 
 Read about how to configure the resource control of the lightbox in the [Resources Control](desktop/resources.md) article.
 
+
+
 Loading resources and resource assignments
 -----------------------------------------
 
@@ -706,34 +717,34 @@ From v8.0, resources and resource assignments can be loaded into the gantt using
 
 ~~~js
 gantt.parse({
-    tasks: [
-        ...,
-        {
-            id: 5,
-            text: "Interior office",
-            type: "task",
-            start_date: "03-04-2024 00:00",
-            duration: 7,
-            parent: "2",
-            owner: [
-            	{
-                    resource_id: "6",
-                    value: 3,
-                    start_date: "03-04-2024 00:00",
-                    end_date: "05-04-2024 00:00",
-            	}
+	tasks: [
+		...,
+		{
+			id: 5,
+			text: "Interior office",
+			type: "task",
+			start_date: "03-04-2025 00:00",
+			duration: 7,
+			parent: "2",
+			owner: [
+				{
+					resource_id: "6",
+					value: 3,
+					start_date: "03-04-2025 00:00",
+					end_date: "05-04-2025 00:00",
+				}
 			]
-        },
-        ...
-    ],
-    links: [],
-    resources: [
-        {id: 6, text: "John", unit: "hours/day" },
-        {id: 7, text: "Mike", unit: "hours/day" },
-        {id: 8, text: "Anna", unit: "hours/day" },
-        {id: 9, text: "Bill", unit: "hours/day" },
-        {id: 10, text: "Floe", unit: "hours/day" }
-    ]
+		},
+		...
+	],
+	links: [],
+	resources: [
+		{ id: 6, text: "John", unit: "hours/day" },
+		{ id: 7, text: "Mike", unit: "hours/day" },
+		{ id: 8, text: "Anna", unit: "hours/day" },
+		{ id: 9, text: "Bill", unit: "hours/day" },
+		{ id: 10, text: "Floe", unit: "hours/day" }
+	]
 });
 ~~~
 
@@ -747,7 +758,7 @@ gantt.parse({
             id: 5,
             text: "Interior office",
             type: "task",
-            start_date: "03-04-2024 00:00",
+            start_date: "03-04-2025 00:00",
             duration: 7,
             parent: "2",
             priority: 1
@@ -757,23 +768,30 @@ gantt.parse({
     links: [],
     assignments: [
         {
-			id: 1, task_id: 5, resource_id: 6, value: 3,
-            start_date: "03-04-2024 00:00", 
-            end_date: "05-04-2024 00:00"
-		}
+            id: 1,
+            task_id: 5,
+            resource_id: 6,
+            value: 3,
+            start_date: "03-04-2025 00:00",
+            end_date: "05-04-2025 00:00"
+        }
     ],
     resources: [
-        {id: 6, text: "John", unit: "hours/day" },
-        {id: 7, text: "Mike", unit: "hours/day" },
-        {id: 8, text: "Anna", unit: "hours/day" },
-        {id: 9, text: "Bill", unit: "hours/day" },
-        {id: 10, text: "Floe", unit: "hours/day" }
+        { id: 6, text: "John", unit: "hours/day" },
+        { id: 7, text: "Mike", unit: "hours/day" },
+        { id: 8, text: "Anna", unit: "hours/day" },
+        { id: 9, text: "Bill", unit: "hours/day" },
+        { id: 10, text: "Floe", unit: "hours/day" }
     ]
 });
 ~~~
 
+
+
 Managing resource assignments
 ---------------------------
+
+
 
 ### Parsing resource assignments
 
@@ -793,6 +811,8 @@ gantt.config.process_resource_assignments = false;
 
 When the config is disabled, the `gantt.getDatastore("resourceAssignments")` datastore won't be available and the assignment objects won't have any dynamic properties. The resource diagram and histogram will consider resources to be assigned to the whole duration of the task.
 
+
+
 ### Updating resource assignments
 
 The resource assignments are stored in the [data store](api/gantt_resource_assignment_store_config.md) which is created automatically. 
@@ -804,10 +824,11 @@ task[gantt.config.resource_property] = [
 	{
 		resource_id: "6",
 		value: 3,
-		start_date: "03-04-2019 00:00",
-		end_date: "05-04-2019 00:00",
+		start_date: "03-04-2025 00:00",
+		end_date: "05-04-2025 00:00",
 	}
 ];
+
 gantt.updateTask(taskId);
 ~~~
 
@@ -815,13 +836,14 @@ gantt.updateTask(taskId);
 But you may need to refresh the data of the assignments in the opposite direction. Namely, you may need to apply the changes to the task object after the resource assignments are modified via the datastore API. In this case, you need to update the resource property of the task object with the values from the datastore by calling the [gantt.updateTaskAssignments()](api/gantt_updatetaskassignments.md) method:
 
 ~~~js
-var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
+const assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
 
 assignmentStore.addItem({
-    resource_id: 5,
-    task_id: 2,
-    value: 4
+	resource_id: 5,
+	task_id: 2,
+	value: 4
 });
+
 assignmentStore.removeItem(assignment.id);
 assignmentStore.updateItem(assignment.id);
 
@@ -838,32 +860,29 @@ The resource name can be displayed as a part of task description or a label of o
 Gantt doesn't provide a ready method for getting an item specified in the server list by its id, so you'll need to implement a small helper for this:
 
 ~~~js
-function byId(list, id) {
-	for (var i = 0; i < list.length; i++) {
-		if (list[i].key == id)
-			return list[i].label || "";
-	}
-	return "";
-}
+const byId = (list, id) => {
+	const item = list.find(item => item.key === id);
+	return item ? item.label || "" : "";
+};
 ~~~
 
 After that you can use the resource name in templates:
 
 ~~~js
 gantt.config.columns = [
-	{name: "owner", width: 80, align: "center", template: function (item) {
-		return byId(gantt.serverList('people'), item.owner_id)}},
-	{name: "text", label: "Task name", tree: true, width: '*'},
-	{name: "add", width: 40}
+	{ name: "owner", width: 80, align: "center",
+		template: (item) => byId(gantt.serverList('people'), item.owner_id) },
+	{ name: "text", label: "Task name", tree: true, width: '*' },
+	{ name: "add", width: 40 }
 ];
 
-gantt.templates.rightside_text = function(start, end, task){
-	return byId(gantt.serverList('people'), task.owner_id);
-};
+gantt.templates.rightside_text =
+	(start, end, task) => byId(gantt.serverList('people'), task.owner_id);
 ~~~
 
-
 {{sample 11_resources/01_assigning_resources.html}}
+
+
 
 Editable resource diagram
 -------------------------
@@ -872,7 +891,7 @@ In order to make resource assignments editable in the resource diagram, you can 
 
 ~~~js
 gantt.config.resources = {
-    editable_resource_diagram: true
+	editable_resource_diagram: true
 };
 ~~~
 
@@ -895,6 +914,8 @@ In the example below, a template with editable cells is provided. You can custom
 
 {{editor	https://snippet.dhtmlx.com/libwuna4?tag=gantt	Customizable resource diagram template}}
 
+
+
 Custom styling of resources
 ------------------------
 
@@ -913,6 +934,7 @@ Depending on your context, you can
 {{sample  11_resources/01_assigning_resources.html}}
 
 
+
 Resource calendars
 ------------------
 
@@ -927,9 +949,9 @@ They are mapped to tasks via the property value in one-to-one relation:
 gantt.config.resource_property = "resource_id";
 
 gantt.config.resource_calendars = {
-    "resource1" : "calendarId1",
-    "resource2" : "calendarId2",
-    "resource3" : "calendarId3"
+	"resource1" : "calendarId1",
+	"resource2" : "calendarId2",
+	"resource3" : "calendarId3"
 };
 ~~~
 
@@ -941,6 +963,7 @@ You can use any property to assign calendars to resources. If the resource prope
 If multiple resources can be assigned to a single task, the gantt can [automatically generate a common calendar](api/gantt_dynamic_resource_calendars_config.md) for all assigned resources.
 
 You can [get more information in the related article](desktop/working_time.md#assigningcalendartoresource).
+
 
 
 Balancing resource load
@@ -955,6 +978,8 @@ This feature can be used for balancing resource load in the calendar.
 {{sample  11_resources/03_break_down_by_resource.html}}
 
 Read more about task grouping in [the related article](desktop/grouping.md).  
+
+
 
 ###Grouping tasks by multiple resources 
 
