@@ -10,6 +10,23 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.5
+---------------
+<span class='release_date'>February 20, 2025. Bugfix release</span>
+
+- Fix the error when resizing rows in the [Resource Grid](desktop/resource_management.md#resourceviewpanel)
+- Ensure the last year is included when specified in the **year_range** property of the [Time control](desktop/time.md#properties)
+- Correct the position of link arrows affected by the `line-height` CSS style
+- Fix the error when loading [collections](desktop/supported_data_formats.md#jsonwithcollections) without the `links` array
+- Resolve the issue when `gantt.config.baselines` is falsy but not explicitly set to `false`
+- Fix the issue where [click_drag](desktop/extensions_list.md#advanceddragndrop) doesn't work after calling [resetLayout](api/gantt_resetlayout.md)
+- Ensure selected child tasks are not displayed above their parent when [keyboard_navigation](desktop/keyboard_navigation.md) is enabled
+- Fix keyboard navigation issues with task IDs containing single quotes
+- Correct [calculateEndDate](api/gantt_calculateenddate.md) behavior when the duration is negative
+- Resolve the error when loading datasets with [baselines](desktop/inbuilt_baselines.md) without an active timeline
+- Ensure grid cells are focused even when tasks fall outside the chart time range
+- Fix the error when partially deleting a date value in the [inline editor](desktop/inline_editors_ext.md)
+
 9.0.4
 ---------------
 <span class='release_date'>December 3, 2024. Bugfix release</span>
