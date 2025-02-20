@@ -57,12 +57,12 @@ To apply the default skin, include the default CSS file:
 
 To apply the 'Dark' skin, include the default CSS file:
 
-- **dhtmlxscheduler.css**
+- **dhtmlxgantt.css**
 
-And set the skin via the **scheduler.skin** property:
+And set the skin via the **gantt.skin** property:
 
 ~~~js
-scheduler.skin = "dark";
+gantt.skin = "dark";
 ~~~
 
 <img alt="DHTMLX Gantt - Dark Theme" src="desktop/gantt_dark_skin.png" style="border: 1px solid #E4E4E4"/>
