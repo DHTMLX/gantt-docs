@@ -35,7 +35,7 @@ Installation and NPM access
 Version Requirements
 --------------------
 
-- React `v16.0.0` or newre
+- React `v16.0.0` or newer
 
 Basic Usage
 -------------------
@@ -54,7 +54,7 @@ export default function BasicGantt() {
   const [links, setLinks] = useState(demoData.links);
 
   return (
-    <div style={{ height: '500px' }}>
+    <div style={ { height: '500px' } }>
       <ReactGantt
         tasks={tasks}
         links={links}
@@ -73,12 +73,18 @@ const demoData = {
   tasks: [
     { id: 1, text: "Product Launch", type: "project", open: true, parent: 0},
     { id: 2, text: "Planning Phase", type: "project", open: true, parent: 1},
-    { id: 3, text: "Requirement Gathering", type: "task", progress: 0.2, start_date: "2025-06-01", duration: 3, parent: 2},
-    { id: 4, text: "Technical Feasibility", type: "task", progress: 0.4, start_date: "2025-06-04", duration: 2, parent: 2},
-    { id: 5, text: "Implementation Phase", type: "project", progress: 0.1, open: true, start_date: "2025-06-08", duration: 10, parent: 1},
-    { id: 6, text: "Prototype Development", type: "task", progress: 0.0, start_date: "2025-06-08", duration: 4, parent: 5},
-    { id: 7, text: "Feature Testing", type: "task", progress: 0.0, start_date: "2025-06-12", duration: 4, parent: 5},
-    { id: 8, text: "Go-Live Milestone", type: "milestone", progress: 0, start_date: "2025-06-18", duration: 0, parent: 1}
+    { id: 3, text: "Requirement Gathering", type: "task", progress: 0.2, 
+      start_date: "2025-06-01", duration: 3, parent: 2},
+    { id: 4, text: "Technical Feasibility", type: "task", progress: 0.4, 
+      start_date: "2025-06-04", duration: 2, parent: 2},
+    { id: 5, text: "Implementation Phase", type: "project", progress: 0.1, 
+      open: true, start_date: "2025-06-08", duration: 10, parent: 1},
+    { id: 6, text: "Prototype Development", type: "task", progress: 0.0, 
+     start_date: "2025-06-08", duration: 4, parent: 5},
+    { id: 7, text: "Feature Testing", type: "task", progress: 0.0, 
+     start_date: "2025-06-12", duration: 4, parent: 5},
+    { id: 8, text: "Go-Live Milestone", type: "milestone", progress: 0, 
+     start_date: "2025-06-18", duration: 0, parent: 1}
   ],
   links: [
     { id: 1, source: 3, target: 4, type: "0" },
@@ -94,6 +100,31 @@ Binding Data
 --------------------
 
 Gantt React Wrapper supports multiple ways of loading and saving data.
+
+#### Using existing data
+
+When the data is available on the code it can be passed to Gantt using state variables and appropriate props:
+
+~~~js
+export default function GanttTemplatesDemo() {
+  const [tasks, setTasks] = useState(projectData.tasks);
+  const [links, setLinks] = useState(projectData.links);
+  const [resources, setResources] = useState(projectData.resources);
+  const [resourceAssignments, setResourceAssignments] = 
+      useState(projectData.resourceAssignments);
+
+  return (
+    <div style={{height: '100vh'}}>
+      <ReactGantt
+        tasks={tasks}
+        links={links}
+        resources={resources}
+        resourceAssignments={resourceAssignments}
+      />
+    </div>
+  );
+};
+~~~
 
 #### Using built-in transport
 
@@ -159,7 +190,7 @@ The React wrapper accepts a config prop (mapped to [gantt.config](api/refs/gantt
 <ReactGantt
   tasks={tasks}
   links={links}
-  config={{
+  config= { {
     scales: [
       { unit: "year", step: 1, format: "%Y" },
       { unit: "month", step: 1, format: "%F, %Y" },
@@ -177,13 +208,13 @@ The React wrapper accepts a config prop (mapped to [gantt.config](api/refs/gantt
       },
       { name: "add", width: 44 },
     ],
-  }}
-  templates={{
+  } }
+  templates= { {
     task_text: (start, end, task) => `#${task.id}: ${task.text}`,
     task_class: (start, end, task) => {
       return task.priority === 'high' ? 'highlight-task' : '';
     },
-  }}
+  } }
 />
 ~~~
 
@@ -193,15 +224,15 @@ When specifying templates in props, you can return React elements from your temp
 
 ~~~js
 function PriorityBadge({ priority }) {
-  return <span style={{ color: 'red' }}>{priority}</span>;
+  return <span style={ { color: 'red' } }>{priority}</span>;
 }
 
 <ReactGantt
-  templates={{
+  templates={ {
     task_text: (start, end, task) => {
       return <PriorityBadge priority={task.priority} />;
     }
-  }}
+  } }
 />
 ~~~
 
@@ -215,6 +246,55 @@ You can override many aspects using templates:
 - and many more. Please refer to the [available guides](desktop/guides.md) on Gantt
 
 You can find the full list of props supported by React Gantt in the following article: web/react_configuration_props.md
+
+Themes & Styling
+-----------------
+
+Gantt ships with several built-in themes that can be activated via **skin** prop and changed dynamically:
+
+~~~js
+import { useEffect, useRef } from 'react';
+import ReactGantt from "@dhx/gantt-react";
+import "@dhx/gantt-react/dist/gantt-react.css";
+
+export default function BasicInitDemo() {
+  const [theme, setTheme] = useState("terrace"); 
+  const tasks = [.];
+  const links = [...];
+
+  const switchTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "terrace" ? "dark" : "terrace"));
+  };
+
+
+  return (
+    <div style={ {height: '600px'} }>
+      <div>
+        <button onClick={switchTheme}>Switch Theme</button>
+      </div>
+      <ReactGantt
+        tasks={tasks}
+        links={links}
+        skin={theme}  /*!*/
+      />
+    </div>
+  );
+};
+~~~
+
+You can find detailed descriptions of the existing themes in [this article](desktop/skins.md).
+
+Themes can be additionally customized using custom styles and by overriding css variables:
+
+~~~css
+  :root {
+      --dhx-gantt-task-background: #d96c49;
+      --dhx-gantt-task-color: #fff;
+      --dhx-gantt-task-border-radius: 8px;
+  }
+~~~
+
+For additional configuration, please check the desktop/custom_skins.md
 
 Replacing the Lightbox
 ------------------
@@ -264,7 +344,7 @@ const CustomLightbox: React.FC<CustomLightboxProps> = ({
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            style={{ width: '100%', padding: '8px', marginTop: '10px' }}
+            style={ { width: '100%', padding: '8px', marginTop: '10px' } }
           />
         </div>
         <div style={modalStyles.buttonGroup}>
@@ -406,10 +486,58 @@ See the DHTMLX Gantt API Reference for the full list of methods.
 - The recommended approach is to rely on the wrapper's props for tasks and links, or manage them in your React state. Then let the wrapper handle re-parsing.
 
 
-#### Plugins & Extensions
+
+Compatibility with SSR Frameworks (Next.js, Remix)
+--------------
 
 
-If you have an external plugin (e.g., [gantt.plugins](api/gantt_plugins.md) for critical_path, auto_scheduling, etc.), you can pass them via the plugins prop or attach them to the instance in a useEffect. For details, see DHTMLX Gantt Extensions.
+{{note Because the underlying DHTMLX Gantt library is purely a browser widget (it reads and manipulates the DOM directly), it cannot be rendered in a Node/SSR environment. Therefore, you must disable or delay server-side rendering for any route or component that uses ReactGantt. }}
+
+#### Next.js
+
+If you're using Next.js, you can dynamically import your ReactGantt component with SSR disabled:
+
+~~~js
+import dynamic from 'next/dynamic';
+
+const GanttDemo = dynamic(() => import('../components/GanttDemo'), {
+  ssr: false
+});
+
+export default function GanttPage() {
+  return (
+    <div style={ { height: '100vh' } }>
+      <GanttDemo />
+    </div>
+  );
+}
+~~~
+This ensures that Next.js only loads your Gantt in the client's browser, preventing errors during the server-render phase.
+
+#### Remix
+
+In Remix, you can conditionally render the Gantt component only on the client:
+
+~~~js
+import { ClientOnly } from 'remix-utils/client-only';
+import ReactGantt from '@dhx/gantt-react';
+
+export default function GanttPage() {
+
+  return (
+    <div style={ { height: '100vh' } }>
+      <ClientOnly fallback={<p>Loading...</p>}>
+        {() => <ReactGantt
+          tasks={[/* ... */]}
+          links={[/* ... */]}
+        />}
+      </ClientOnly>
+    </div>
+  );
+}
+~~~
+
+That pattern defers rendering the actual Gantt until the component is hydrated in the browser, avoiding SSR errors.
 
 Next Steps
 -------------------

@@ -149,7 +149,19 @@ You can pass any DHTMLX Gantt event as a prop. For example:
 ~~~
 Internally, the wrapper calls [gantt.attachEvent("onBeforeTaskAdd", handler)](api/gantt_attachevent.md) if you pass a prop named `onBeforeTaskAdd`. For a full event list, see [DHTMLX Gantt API](api/refs/gantt_events.md).
 
+React Components in Grid column headers
+---------------
+
+React Components in Grid column cells
+---------------
+
+React Components in tooltips
+---------------
+
+
+
+
 Combining Props and the DHTMLX API
 ---------------
 
-If you want to do something not exposed by a prop, you can still call gantt methods directly. See Accessing the Underlying Gantt API for more details.
+If you want to do something not exposed by a prop, you can still call gantt methods directly. See [Accessing the Underlying Gantt API](web/react.md#accessingtheunderlyingganttapi) for more details.
