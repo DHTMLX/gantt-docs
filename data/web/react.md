@@ -1,13 +1,13 @@
 React Gantt
 ==================
 
-{{note React Wrapper for Gantt is available under [Commercial, Enterprise and Ultimate licenses](https://dhtmlx.com/docs/products/licenses.shtml).
+{{note React Gantt is available under [Commercial, Enterprise and Ultimate licenses](https://dhtmlx.com/docs/products/licenses.shtml).
 If you're using Individual or GPL editions of Gantt, please refer to [How to Start article](desktop/howtostart_react.md) for React. }}
 
 Overview
 --------------------
 
-DHTMLX Gantt is a pure JS component that can work in any browser environment. The Commercial and higher editions of Gantt include a **React Wrapper** component that encapsulates DHTMLX Gantt and allows you to use it natively with React.
+DHTMLX Gantt is a pure JS component that can work in any browser environment. The Commercial and higher editions of Gantt include a **React Gantt** component that encapsulates DHTMLX Gantt and allows you to use it natively with React.
 
 The wrapper lets you create a fully functional Gantt chart in your React applications using the familiar props/state model. Under the hood, it manages a standard DHTMLX Gantt instance, translating your React props (such as tasks and config) into the corresponding Gantt initialization and data structures.
 
