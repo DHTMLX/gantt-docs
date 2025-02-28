@@ -12,7 +12,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 9.0.5
 ---------------
-<span class='release_date'>February 20, 2025. Bugfix release</span>
+<span class='release_date'>February 28, 2025. Bugfix release</span>
 
 - Fix the error that occurs while resizing rows in the [Resource Grid](desktop/resource_management.md#resourceviewpanel)
 - Ensure the last year is specified in the range specified by the **year_range** property of the [Time control](desktop/time.md#properties)
