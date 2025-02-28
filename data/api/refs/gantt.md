@@ -345,7 +345,7 @@ Gantt API
 - api/gantt_auto_scheduling_use_progress_config.md - sets the way the scheduling algorithms process completed tasks
 - api/gantt_auto_types_config.md - automatically converts tasks with subtasks to projects and projects without subtasks back to tasks
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
-- api/gantt_autoscroll_config.md - enables autoscrolling while dragging a task or link out of the current browser screen
+- api/gantt_autoscroll_config.md - enables autoscrolling while dragging a task or a link out of the current browser screen
 - api/gantt_autoscroll_speed_config.md - defines the speed of autoscrolling (in ms) while dragging a task or link out of the current browser screen
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
@@ -573,6 +573,7 @@ Gantt API
 - api/gantt_calendar_other.md - the interface of the working calendar object
 - api/gantt_config_other.md - defines configuration options for dates, scale, controls
 - api/gantt_constants_other.md - stores various constants to reduce the use of magic numbers in the code
+- api/gantt_dataprocessor_other.md - 
 - api/gantt_datastore_other.md - a set of datastore methods
 - api/gantt_date_other.md - a set of date formatting methods
 - api/gantt_env_other.md - a set of flags which describe current environment
