@@ -14,18 +14,19 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ---------------
 <span class='release_date'>February 20, 2025. Bugfix release</span>
 
-- Fix the error when resizing rows in the [Resource Grid](desktop/resource_management.md#resourceviewpanel)
-- Ensure the last year is included when specified in the **year_range** property of the [Time control](desktop/time.md#properties)
+- Fix the error that occurs while resizing rows in the [Resource Grid](desktop/resource_management.md#resourceviewpanel)
+- Ensure the last year is specified in the range specified by the **year_range** property of the [Time control](desktop/time.md#properties)
 - Correct the position of link arrows affected by the `line-height` CSS style
-- Fix the error when loading [collections](desktop/supported_data_formats.md#jsonwithcollections) without the `links` array
-- Resolve the issue when `gantt.config.baselines` is falsy but not explicitly set to `false`
+- Fix the error that occurs while loading [collections](desktop/supported_data_formats.md#jsonwithcollections) without the `links` array
+- Resolve the issue with `gantt.config.baselines` when it is falsy but not explicitly set to `false`
 - Fix the issue where [click_drag](desktop/extensions_list.md#advanceddragndrop) doesn't work after calling [resetLayout](api/gantt_resetlayout.md)
 - Ensure selected child tasks are not displayed above their parent when [keyboard_navigation](desktop/keyboard_navigation.md) is enabled
-- Fix keyboard navigation issues with task IDs containing single quotes
+- Fix keyboard navigation issues that occur when task IDs contain single quotes
 - Correct [calculateEndDate](api/gantt_calculateenddate.md) behavior when the duration is negative
-- Resolve the error when loading datasets with [baselines](desktop/inbuilt_baselines.md) without an active timeline
+- Resolve the error that occurs while loading datasets with [baselines](desktop/inbuilt_baselines.md) without an active timeline
 - Ensure grid cells are focused even when tasks fall outside the chart time range
-- Fix the error when partially deleting a date value in the [inline editor](desktop/inline_editors_ext.md)
+- Fix the error that occurs while partially deleting a date value in the [inline editor](desktop/inline_editors_ext.md)
+- Fix the issue where the [resource panel](desktop/resource_management.md#resourceviewpanel) is displayed incorrectly after filtering when `fetchTasks` is enabled
 
 9.0.4
 ---------------
