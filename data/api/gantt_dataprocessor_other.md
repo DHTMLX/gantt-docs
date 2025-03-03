@@ -10,14 +10,14 @@ dataprocessor
 @template:	api_config
 @descr:
 
-A new DataProcessor can be created using api/gantt_createdataprocessor.md method. Alternatively, the api/gantt_dataprocessor.md constructor provides a legacy way to create a DataProcessor instance. <br>
+A new instance of DataProcessor can be created using api/gantt_createdataprocessor.md method. Alternatively, the api/gantt_dataprocessor.md constructor provides a legacy way to create a DataProcessor instance. <br>
 The **dataprocessor** object possesses the following [methods](#methods) and [events](#events):
 
 <h3 id="methods">Methods</h3>
 
 <ul id="attachEvent">
 	<li>
-		<b class=submethod>attachEvent (name, handler, settings): string</b> - attaches the handler to an inner event of DataStore
+		<b class=submethod>attachEvent (name, handler, settings): string</b> - attaches the handler to an API event of DataProcessor
 		<ul>
 			<li><b><i>name</i></b> - (<i>string</i>) - the event's name, case-insensitive</li>
 			<li><b><i>handler</i></b> - (<i>Function</i>) - the handler function</li>
@@ -64,17 +64,45 @@ dp.detachEvent(handlerId);
 ~~~
 </ul>
 
-<ul id="detachAllEvents">
+<ul id="getState">
 	<li>
-		<b class="submethod">detachAllEvents(): void</b> - removes all attached event listeners
+		<b class="submethod">getState (id): string</b> - returns the state of an item (updated or not)
+		<ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - the ID of an item</li>
+		</ul>
 	</li>
 </ul>
 
 <ul>
 ~~~js
-dp.detachAllEvents();
-console.log("All events detached");
+const status = dp.getState(id);
 ~~~
+</ul>
+
+<ul id="ignore">
+	<li>
+		<b class="submethod">ignore (code): void</b> - executes a block without triggering DataProcessor
+		<ul>
+			<li><b><i>code</i></b> - (<i>Function</i>) - data modification code</li>
+		</ul>
+	</li>
+</ul>
+
+<ul>
+~~~js
+dp.ignore(() => {
+	// won't be saved
+	gantt.addTask({
+		id: 10,
+		text: "Task #5",
+		start_date: "03-02-2025",
+		duration: 5
+	});
+});
+~~~
+
+<p>You can place data adding and deleting operations here when you don't want to save that changes on the server side.</p>
+<i>The dp.ignore() method works similarly to <a href="api/gantt_silent.md">gantt.silent()</a>.</i>
 </ul>
 
 <ul id="setTransactionMode">
@@ -113,6 +141,24 @@ dp.setTransactionMode({
 ~~~
 </ul>
 
+<ul id="setUpdated">
+	<li>
+		<b class="submethod">setUpdated (rowId, [mode, state]): void</b> - marks an item as updated
+		<ul>
+			<li><b><i>rowId</i></b> - (<i>string | number</i>) - the ID of an item to set the update status for</li>
+			<li><b><i>mode?</i></b> - (<i>boolean</i>) - optional, <code>true</code> (default) for "updated", <code>false</code> for "not updated"</li>
+			<li><b><i>state?</i></b> - (<i>string</i>) - optional, the update mode name, <code>"updated"</code> by default</li>
+		</ul>
+	</li>
+</ul>
+
+<ul>
+~~~js
+dp.setUpdated(1);
+dp.setUpdated(2, true, "deleted");
+~~~
+</ul>
+
 
 
 <h3 id="events">Events</h3> 
@@ -132,7 +178,9 @@ dp.setTransactionMode({
 <ul>
 ~~~js
 dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
-	// Custom logic after receiving server response
+	if (action === "error") {
+		alert(`Server error: ${response.message}`);
+	}
 });
 ~~~
 </ul>
