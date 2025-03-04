@@ -573,7 +573,7 @@ Gantt API
 - api/gantt_calendar_other.md - the interface of the working calendar object
 - api/gantt_config_other.md - defines configuration options for dates, scale, controls
 - api/gantt_constants_other.md - stores various constants to reduce the use of magic numbers in the code
-- api/gantt_dataprocessor_other.md - 
+- api/gantt_dataprocessor_other.md - a set of dataprocessor methods
 - api/gantt_datastore_other.md - a set of datastore methods
 - api/gantt_date_other.md - a set of date formatting methods
 - api/gantt_env_other.md - a set of flags which describe current environment
