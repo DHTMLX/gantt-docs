@@ -820,3 +820,8 @@ gantt.batchUpdate(function(){
 });
 ~~~
 
+{{editor	https://snippet.dhtmlx.com/6cvo9dy9		Toggle working time settings and move the task to the working date}}
+
+{{editor	https://snippet.dhtmlx.com/wb8vc82p		Toggle working time settings and recalculate the task's end dates}}
+
+
