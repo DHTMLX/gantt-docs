@@ -66,7 +66,7 @@ gantt.config.columns = [
 	{ name: "text",        label: "Task name",  tree: true, width: "*" },
 	{ name: "start_date",  label: "Start time", align: "center" },
 	{ name: "staff",       label: "Holder(s)", template: (obj) => {
-		return obj.holder + "(" + obj.progress + ")";
+		return `${obj.holder} (${obj.progress})`;
 	} }
 ];
 
