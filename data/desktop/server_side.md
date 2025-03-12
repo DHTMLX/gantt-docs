@@ -7,7 +7,7 @@ Server-Side Integration
 }
 </style>
 
-The recommended approach to connecting dhtmlxGantt to a backend is to implement a RESTful API on the server and use api/gantt_dataprocessor_other.md module on the client.
+The recommended approach of connecting dhtmlxGantt to a backend is to implement a RESTful API on the server and use the api/gantt_dataprocessor_other.md module on the client.
 
 DataProcessor is a built-in module that monitors data changes in Gantt and sends updates to the REST API in the specified format, allowing easy [integration with server-side platforms](desktop/howtostart_guides.md). When using an object data source, DataProcessor can be configured to provide callbacks for data changes, which you can utilize for data binding.
 
