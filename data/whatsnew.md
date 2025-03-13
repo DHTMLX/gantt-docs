@@ -10,6 +10,25 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.6
+---------------
+<span class='release_date'>March 17, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue with the [lightbox](desktop/default_edit_form.md) buttons not reflecting the current locale until reinitializing Gantt
+- Resolve the error occurring when deleting links if tasks are partially loaded
+- Prevent tasks from incorrectly moving to the bottom of their branch after changing the `parent` property type from numeric to string
+- Improve scrollbar behavior by adjusting the resizers near scrollbars
+- Ensure [resource assignments](desktop/resource_management.md#assigningresources) persist correctly when adding tasks within [gantt.batchUpdate](api/gantt_batchupdate.md)
+- Fix task disappearance during drag-and-drop actions in the [infinite scale](desktop/configuring_time_scale.md#infinitescroll)
+- Ensure correct display of resource names in the [lightbox](desktop/default_edit_form.md) after parsing data multiple times
+- Fix incorrect date calculation by [`getClosestWorkTime`](api/gantt_getclosestworktime.md) when using the api/gantt_duration_step_config.md config
+- Allow the [onColumnDragMove](api/gantt_reorder_grid_columns_config.md) event to be properly cancellable
+- Fix compatibility issue preventing the trial build from running in Lightning Web Components (LWC)
+- Resolve issues related to `fetchTasks` and api/gantt_deepcopy_on_parse_config.md configurations affecting the [resource panel](desktop/resource_management.md#resourceviewpanel)
+- Correct incorrect font icons appearance during Gantt initialization
+
 9.0.5
 ---------------
 <span class='release_date'>February 28, 2025. Bugfix release</span>
