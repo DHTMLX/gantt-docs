@@ -178,6 +178,53 @@ export default function BasicInitDemo() {
 }
 ~~~
 
+#### Batch saving mode
+
+In previous modes, React Gantt would invoke the callback for each modified entity individually. This behavior mirrors the default approach of the underlying Gantt library. However, in some cases, it can lead to performance issues in React - especially during bulk operations such as Auto Scheduling, which may modify dozens or even hundreds of tasks at once. Recalculating state for each individual update is not an efficient solution in such scenarios.
+
+To address this, React Gantt provides a dedicated data.batchSave handler for bulk operations. This handler is called once with the result of multiple changes performed in the Gantt instance:
+
+~~~
+
+const [tasks, setTasks] = useState(data.tasks);
+const [links, setLinks] = useState(data.links);
+
+return <ReactGantt
+  ref={ganttRef}
+  tasks={tasks}
+  links={links}
+
+  data={ {
+    batchSave: (updates) => {
+      if (updates.task) {
+        setTasks(tasks => updateTasks(tasks, updates.task));
+      }
+      if (updates.link) {
+        setLinks(links => updateLinks(links, updates.link));
+      }
+
+    }
+  } }
+/>
+~~~
+
+The `updates` object passed to the batchSave callback has the following structure:
+
+~~~js
+{
+  tasks: DataCallbackChange<Task>[],
+  links: DataCallbackChange<Link>[],
+  resources: DataCallbackChange<Resource>[],
+  resourceAssignments: DataCallbackChange<ResourceAssignment>[],
+}
+
+interface DataCallbackChange<T> {
+  entity: string;
+  action: string;
+  data: T;
+  id: number | string;
+}
+~~~
 
 Configuration & Props
 -------------------
