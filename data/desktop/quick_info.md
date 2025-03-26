@@ -15,6 +15,13 @@ gantt.plugins({
 });
 ~~~
 
+To disable the **quick_info** extension, set the api/gantt_show_quick_info_config.md property to *false*:
+
+~~~js
+gantt.config.show_quick_info = false;
+gantt.init("gantt_here");
+~~~
+
 API overview
 ----------------
 

@@ -20,7 +20,9 @@ gantt.bind(method, thisArg);
 
 @template:	api_method
 @descr:
-The method is used as the IE8 compatible replacement of the [Function.prototype.bind()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) function.
+The method is used as the IE8 compatible replacement of the
+[Function.prototype.bind()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) 
+function.
 
 @changelog:
 added in version 4.0

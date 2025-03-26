@@ -122,6 +122,20 @@ var marker3 = gantt.addMarker({ ...});
 gantt.renderMarkers(); /*!*/
 ~~~
 
+Styling markers 
+----------------------------
+
+To style markers, use the [gantt.templates.marker_class](api/gantt_marker_class_template.md) template:
+
+~~~js
+var showAdvancedMarkers;
+gantt.templates.marker_class = function(marker){
+	if (showAdvancedMarkers)
+    return "advanced_marker";
+    return "hidden";
+}
+~~~
+
 Today's marker
 -------------------------------------
 

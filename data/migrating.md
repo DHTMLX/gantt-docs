@@ -181,6 +181,11 @@ gantt.config.scales = [
 
 The **Bluebird** library has been excluded from the Gantt bundle. api/gantt_promise.md now uses the native Promise implementation.
 
+### Lightbox resizing
+
+Since v9.0 the api/gantt_resizelightbox.md method has been deprecated and removed from the Gantt code. It isn't needed anymore, since lightbox resizing now works automatically.
+Pay attention that if you have the **resizeLightbox()** method in your configuration, you should remove it to avoid errors. 
+
 7.1 -> 8.0
 -------------
 

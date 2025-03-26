@@ -11,7 +11,7 @@ You can also [check the demo on GitHub](https://github.com/DHTMLX/svelte-gantt-d
 
 ## Creating a project
 
-Before you start to create a new project, install [Vite](https://vitejs.dev/) (optional) and [Node.js](https://nodejs.org/en/).
+Before you start to create a new project, install [Vite](https://vite.dev/) (optional) and [Node.js](https://nodejs.org/en/).
 
 To create a Svelte project, we will use Svelte with Vite and run the following command:
 

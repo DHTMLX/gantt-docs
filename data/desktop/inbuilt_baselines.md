@@ -146,7 +146,7 @@ gantt.config.lightbox.sections = [
   { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
   { name: "time", type: "duration", map_to: "auto" },
   { name: "baselines", height: 100, type: "baselines", map_to: "baselines" }, /*!*/
- ];
+];
 ~~~
 
 ![Baseline lightbox](desktop/baselines_lightbox.png)

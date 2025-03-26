@@ -4,7 +4,7 @@ adjustTaskHeightForBaselines
 @short: adjusts the task's row height for proper display of baseline elements
 
 @params: 
-- task (*object*) - the task object whose `row_height` will be adjusted
+- task	Task	the task object whose `row_height` will be adjusted
 
 @example:
 const task = gantt.getTask(taskId);

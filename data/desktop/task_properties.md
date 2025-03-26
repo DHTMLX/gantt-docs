@@ -59,6 +59,11 @@ These properties may or may not be defined. The default logic and templates of g
             <td><i>number</i></td>
 			<td>Sets the height of the DOM element of the task in the timeline area</td>
 		</tr>
+		<tr>
+			<td><b class=subproperty>baselines</b></td>
+            <td><i>Baseline[]</i></td>
+			<td>An array with the baselines</td>
+		</tr>
         <tr>
 			<td><b class=subproperty>calendar_id</b></td>
             <td><i>number | string</i></td>
@@ -78,6 +83,11 @@ These properties may or may not be defined. The default logic and templates of g
 			<td><b class=subproperty>constraint_type</b></td>
             <td><i>string</i></td>
 			<td><a href="https://docs.dhtmlx.com/gantt/desktop__auto_scheduling.html#timeconstraintsfortasks">The type of the task constraint ("asap", "alap", "snet", "snlt", "fnet", "fnlt", "mso", "mfo")</a>. It is added to the task object when <a href="https://docs.dhtmlx.com/gantt/desktop__auto_scheduling.html">auto-scheduling with time constraints is enabled</a>. The property isn't used if <a href="https://docs.dhtmlx.com/gantt/api__gantt_auto_scheduling_compatibility_config.html">auto_scheduling_compatibility</a> is enabled.</td>
+		</tr>
+		<tr>
+			<td><b class=subproperty>deadline</b></td>
+            <td><i>Date</i></td>
+			<td>Specifies the deadline date for the task. A [visual indicator](desktop/inbuilt_baselines.md#deadlinesandconstraints) is displayed in the timeline when this property is set.</td>
 		</tr>
         <tr>
 			<td><b class=subproperty>editable</b></td>
@@ -200,6 +210,16 @@ Dynamic properties are created on the client and represent the current state of 
 			<td><b class=subproperty>[resource_property]</b></td>
             <td><i>string | Array &lt;any&gt;</i></td>
 			<td><a href="api/gantt_resource_property_config.md">The property may have any other name</a>. This property stores the resource id associated with <i>resourceGrid/Timeline/Histogram/Calendar.</i></td>
+		</tr>
+        <tr>
+			<td><b class=subproperty>$auto_end_date</b></td>
+            <td><i>Date</i></td>
+			<td>A computed end date of the project task from its subtasks. Added and updated when "auto_scheduling" is disabled.</td>
+		</tr>
+        <tr>
+			<td><b class=subproperty>$auto_start_date</b></td>
+            <td><i>Date</i></td>
+			<td>A computed start date of the project task from its subtasks. Added and updated when "auto_scheduling" is disabled.</td>
 		</tr>
         <tr>
 			<td><b class=subproperty>$calculate_duration</b></td>

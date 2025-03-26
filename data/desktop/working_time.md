@@ -261,6 +261,56 @@ gantt.setWorkTime({ hours: ["13:00-17:00"] });
 //and not a mixin of both commands
 ~~~
 
+### Setting custom working days/days-off
+
+Note that it is not possible to apply the working time settings that don't include any working days/hours. For example, in the following way:
+
+~~~js
+gantt.setWorkTime({ day: 0, hours: [] });
+gantt.setWorkTime({ day: 1, hours: [] });
+gantt.setWorkTime({ day: 2, hours: [] });
+gantt.setWorkTime({ day: 3, hours: [] });
+gantt.setWorkTime({ day: 4, hours: [] });
+gantt.setWorkTime({ day: 5, hours: [] });
+gantt.setWorkTime({ day: 6, hours: [] });
+~~~
+
+As a result, Gantt will ignore applying the method to one of the working days, and it will still contain working hours. 
+
+If you tried to calculate the nearest working time or duration from some date, there would be neither such date, nor duration.
+It means that setting such a calendar doesn't make any sense. Even if you set certain dates with working hours, it wouldn't work correctly, 
+since Gantt can calculate dates only within a date range that contains working days/hours. Trying to calculate dates out of
+the range would result in the absence of the date and various errors. 
+
+If you want to make a calendar where some months or even years have only non-working days, you should use the *customWeeks* setting of the **setWorkTime()** method. 
+In order to specify working days/hours within the necessary range, you need to:
+
+- divide it into periods without working hours
+- set working hours for the necessary dates
+
+~~~js
+gantt.setWorkTime({ date: new Date(2025, 3, 10), hours: ["8:00-12:00"] })
+gantt.setWorkTime({ date: new Date(2025, 3, 11), hours: ["13:00-17:00"] })
+
+gantt.setWorkTime({
+    customWeeks: {
+        period1: {
+            from: new Date(2025, 3, 1),
+            to: new Date(2025, 3, 10),
+            hours: false,
+        },
+
+        period2: {
+            from: new Date(2025, 3, 12),
+            to: new Date(2025, 5, 1),
+            hours: false,
+        },
+
+    }
+});
+~~~
+
+{{editor	https://snippet.dhtmlx.com/i0o74zg7		Using `customWeeks` to make all days in the calendar days-off}}
 
 
 <h3 id="unsetworktime">Unsetting the working time</h3>
@@ -811,3 +861,9 @@ gantt.batchUpdate(() => {
 	});
 });
 ~~~
+
+{{editor	https://snippet.dhtmlx.com/6cvo9dy9		Toggle working time settings and move the task to the working date}}
+
+{{editor	https://snippet.dhtmlx.com/wb8vc82p		Toggle working time settings and recalculate the task's end dates}}
+
+

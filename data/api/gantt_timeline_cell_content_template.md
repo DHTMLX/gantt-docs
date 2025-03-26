@@ -9,7 +9,7 @@ timeline_cell_content
 - date		Date		the date of a cell
 
 @returns:
-- text		string		an HTML string
+- text		string | number | void		an HTML string
 
 @example:
 gantt.templates.timeline_cell_content = function (task, date) {

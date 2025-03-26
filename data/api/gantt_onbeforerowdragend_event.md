@@ -7,8 +7,8 @@ onBeforeRowDragEnd
 
 @params:
 - sid			string,number			the id of the task to move
-- parent		string,number			the parent id. If specified, the <b>tindex</b> will  refer to the  index in the <br> <b>'parent'</b> branch
-- tindex		number					the index of the position that the task will be moved from <br> (the index in the whole tree)
+- parent		string,number			the parent id. Check the details below
+- tindex		number					the index of the position that the task will be moved from <br> (the index in the whole tree). If specified, the <b>tindex</b> will refer to the index in the 'parent' branch. Check the details below
 
 @example:
 gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
@@ -27,14 +27,17 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 The event is fired when a task is moved by the mouse pointer in the left-hand grid, while the api/gantt_order_branch_config.md setting is enabled. If branch reordering is disabled, the event will never be called.
 }}
 
-
-- When event is fired the task is already moved to a new position, but the changes still can be reverted.
+- When the event is fired the task is already moved to a new position, but the changes still can be reverted
 - The event is blockable. Return *false* operation and move task to it's original location
 - Original position (parent and index) are available from handler arguments
 - Target position can be retrieved from a task object as [task.parent](desktop/task_tree_operations.md#parentofatask) and [gantt.getGlobalTaskIndex(taskId)](api/gantt_getglobaltaskindex.md)
-- The **parent** parameter depends on the set api/gantt_order_branch_config.md mode: 
-	- In the regular mode ("true") the **parent** parameter refers to the *original* task's parent (the parent of a task before it was moved to a new position).
-	- In the "marker" mode the **parent** parameter refers to the new task's parent.
+- The **parent** and **tindex** parameters depend on the set api/gantt_order_branch_config.md mode: 
+	- In the regular mode ("true"):
+    	- the **parent** parameter refers to the *original* task's parent (the parent of a task before it was moved to a new position)
+    	- the **tindex** parameter refers to the *original* local index
+	- In the "marker" mode:
+    	- the **parent** parameter refers to the new task's parent
+        - the **tindex** parameter refers to the new local index
 
 @relatedapi:
 	api/gantt_onrowdragend_event.md

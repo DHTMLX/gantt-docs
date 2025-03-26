@@ -1,6 +1,12 @@
 What's new in PDF Export Module
 ================================
 
+## 0.6.6
+
+• Ignore unscheduled tasks when using export to Excel with the 'visual' config
+
+• Added templates for DHTMLX Gantt 9.0
+
 ## 0.6.5
 
 • Fixes for DHTMLX Scheduler 7.0 template

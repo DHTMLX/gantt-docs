@@ -3,7 +3,7 @@ autoscroll
 
 
 @short:
-	enables autoscrolling while dragging a task or link out of the current browser screen
+	enables autoscrolling while dragging a task or a link out of the current browser screen
 
 @type: boolean
 @default:true
@@ -14,18 +14,19 @@ gantt.init("gantt_here");
 
 @template:	api_config
 @descr:
-You need to use [the reserved views and their ids for scrollbars](desktop/layout_config.md#requiredviewsandsettings) while using the **autoscroll** option. 
+Note that **up to version 7.1.11**
+you need to use [the reserved views and their ids for scrollbars](desktop/layout_config.md#requiredviewsandsettings) while using the **autoscroll** option. 
 
 ~~~js
-//horizontal scrollbar:
+// horizontal scrollbar:
 {view: "scrollbar", id: "scrollHor"}
-//vertical scrollbar:
+// vertical scrollbar:
 {view: "scrollbar", id: "scrollVer"}
 ~~~
 
-If you use different names, the scrollbars will work but the "autoscroll" functionality won't. 
+If you use different names, the scrollbars will work, but the "autoscroll" functionality won't. 
 
-
+Starting from v7.1.11, you can use any names for scrollbars.
 
 @relatedapi:
 api/gantt_autoscroll_speed_config.md
