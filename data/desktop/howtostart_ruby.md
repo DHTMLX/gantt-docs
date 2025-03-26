@@ -1,7 +1,7 @@
 dhtmlxGantt with Ruby on Rails 
 =========================
 
-In this article you'll learn how to create a Gantt chart with a [Ruby on Rails](http://rubyonrails.org/) backend.
+In this article you'll learn how to create a Gantt chart with a [Ruby on Rails](https://rubyonrails.org/) backend.
 For implementing this app we'll use Ruby 2.4.1, Rails 5.1.3 and MySQL. This tutorial assumes that you have all prerequisites already installed. 
 Otherwise please visit [the official tutorials](https://guides.rubyonrails.org/index.html) first. 
 

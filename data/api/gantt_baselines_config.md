@@ -3,7 +3,7 @@ baselines
 
 @short: configures the functionality of baselines in the Gantt chart
 
-@type: object | boolean
+@type: BaselineConfig | boolean
 
 
 @example:
@@ -28,7 +28,7 @@ see the `getDatastore` method.
   - **_"separateRow"_** - baselines are shown in a separate subrow, expanding the task row height.
   - **_"individualRow"_** - each baseline is displayed in its own subrow beneath the task.
 - <span class=subproperty>**dataprocessor_baselines**</span> - (*boolean*) - specifies whether baseline updates trigger the DataProcessor as individual entries.
-- <span class=subproperty>**row_height** - (*number*)</span> - defines the height of the subrow for baselines, applicable only when `render_mode` 
+- <span class=subproperty>**row_height**</span> - (*number*) - defines the height of the subrow for baselines, applicable only when `render_mode` 
 is set to `"separateRow"` or `"individualRow"`.
 - <span class=subproperty>**bar_height**</span> -  (*number*) - sets the height of the baseline bar.
 

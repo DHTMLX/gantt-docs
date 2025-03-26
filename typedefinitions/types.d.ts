@@ -20,6 +20,8 @@ export interface GanttLocaleLabels {
 	section_description: string;
 	section_time: string;
 	section_type: string;
+	section_deadline: string;
+	section_baselines: string;
 
 	/* grid columns */
 	column_wbs: string;
@@ -88,6 +90,7 @@ export interface GanttPlugins {
 	marker?: boolean;
 	multiselect?: boolean;
 	overlay?: boolean;
+	export_api?: boolean;
 }
 
 export interface GanttInitializationConfig {

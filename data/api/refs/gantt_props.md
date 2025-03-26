@@ -13,7 +13,7 @@ Properties
 - api/gantt_auto_scheduling_use_progress_config.md - sets the way the scheduling algorithms process completed tasks
 - api/gantt_auto_types_config.md - automatically converts tasks with subtasks to projects and projects without subtasks back to tasks
 - api/gantt_autofit_config.md - enables automatic adjusting of the grid's columns to the grid's width
-- api/gantt_autoscroll_config.md - enables autoscrolling while dragging a task or link out of the current browser screen
+- api/gantt_autoscroll_config.md - enables autoscrolling while dragging a task or a link out of the current browser screen
 - api/gantt_autoscroll_speed_config.md - defines the speed of autoscrolling (in ms) while dragging a task or link out of the current browser screen
 - api/gantt_autosize_config.md - forces the Gantt chart to automatically change its size to show all tasks without scrolling
 - api/gantt_autosize_min_width_config.md - sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode
@@ -57,7 +57,6 @@ Properties
 - api/gantt_end_date_config.md - sets the end value of the time scale
 - api/gantt_external_render_config.md - renders an external component into the DOM
 - api/gantt_fit_tasks_config.md - 'says' the Gantt chart to automatically extend the time scale in order to fit all displayed tasks
-- api/gantt_form_blocks_config.md - an object of the lightbox controls
 - api/gantt_grid_elastic_columns_config.md - adjusts the width of columns inside a scrollable grid
 - api/gantt_grid_resize_config.md - makes the grid resizable by dragging the right grid's border
 - api/gantt_grid_resizer_attribute_config.md - sets the name of the attribute  of the grid resizer's  DOM element
@@ -231,7 +230,6 @@ Properties
 - api/gantt_end_date_config.md
 - api/gantt_external_render_config.md
 - api/gantt_fit_tasks_config.md
-- api/gantt_form_blocks_config.md
 - api/gantt_grid_elastic_columns_config.md
 - api/gantt_grid_resize_config.md
 - api/gantt_grid_resizer_attribute_config.md

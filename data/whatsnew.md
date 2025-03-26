@@ -10,6 +10,88 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.6
+---------------
+<span class='release_date'>March 18, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue with the [lightbox](desktop/default_edit_form.md) where buttons did not reflect the current locale until Gantt was reinitialized
+- Resolve an error that occurred when deleting links with partially loaded tasks
+- Prevent tasks from incorrectly moving to the bottom of their branches after changing the `parent` property type from numeric to string
+- Improve scrollbar behavior by adjusting the resizers near scrollbars
+- Ensure that [resource assignments](desktop/resource_management.md#assigningresources) persist correctly when adding tasks within [gantt.batchUpdate](api/gantt_batchupdate.md)
+- Fix an issue causing tasks to disappear during drag-and-drop actions in the [infinite scale](desktop/configuring_time_scale.md#infinitescroll)
+- Ensure the correct display of resource names in the [lightbox](desktop/default_edit_form.md) after data is parsed multiple times
+- Fix an incorrect date calculation in [`getClosestWorkTime`](api/gantt_getclosestworktime.md) when using the api/gantt_duration_step_config.md config
+- Allow the [onColumnDragMove](api/gantt_reorder_grid_columns_config.md) event to be canceled
+- Fix a compatibility issue preventing the trial build from running in Lightning Web Components (LWC)
+- Resolve issues related to `fetchTasks` and api/gantt_deepcopy_on_parse_config.md configurations that affected the [resource panel](desktop/resource_management.md#resourceviewpanel)
+- Correct the appearance of font icons during Gantt initialization
+
+9.0.5
+---------------
+<span class='release_date'>February 28, 2025. Bugfix release</span>
+
+- Fix the error that occurs while resizing rows in the [Resource Grid](desktop/resource_management.md#resourceviewpanel)
+- Ensure the last year is specified in the range specified by the **year_range** property of the [Time control](desktop/time.md#properties)
+- Correct the position of link arrows affected by the `line-height` CSS style
+- Fix the error that occurs while loading [collections](desktop/supported_data_formats.md#jsonwithcollections) without the `links` array
+- Resolve the issue with `gantt.config.baselines` when it is falsy but not explicitly set to `false`
+- Fix the issue where [click_drag](desktop/extensions_list.md#advanceddragndrop) doesn't work after calling [resetLayout](api/gantt_resetlayout.md)
+- Ensure selected child tasks are not displayed above their parent when [keyboard_navigation](desktop/keyboard_navigation.md) is enabled
+- Fix keyboard navigation issues that occur when task IDs contain single quotes
+- Correct [calculateEndDate](api/gantt_calculateenddate.md) behavior when the duration is negative
+- Resolve the error that occurs while loading datasets with [baselines](desktop/inbuilt_baselines.md) without an active timeline
+- Ensure grid cells are focused even when tasks fall outside the chart time range
+- Fix the error that occurs while partially deleting a date value in the [inline editor](desktop/inline_editors_ext.md)
+- Fix the issue where the [resource panel](desktop/resource_management.md#resourceviewpanel) is displayed incorrectly after filtering when `fetchTasks` is enabled
+
+9.0.4
+---------------
+<span class='release_date'>December 3, 2024. Bugfix release</span>
+
+- Fix the issue where the [SNET constraint](desktop/auto_scheduling.md#timeconstraintsfortasks) date cannot be changed via the [inline editor](desktop/inline_editors_ext.md)
+- Fix the issue where Gantt returns the global [calendar](desktop/working_time.md) instead of the resource calendar for tasks that have a single [resource assignment](desktop/resource_management.md#assigningresources) when the api/gantt_dynamic_resource_calendars_config.md config is disabled
+- Fix the [constraint](desktop/auto_scheduling.md#timeconstraintsfortasks) date issue when changing the start date via the inline editor after [reinitializing](api/gantt_init.md) Gantt or [resetting the layout](api/gantt_resetlayout.md)
+- Fix the script error with some configurations of [gantt.plugins](api/gantt_plugins.md) when using the [gantt.getGanttInstance](desktop/multiple_gantts.md) method without specifying a container
+- Fix the issue where Gantt stops working when the api/gantt_auto_scheduling_project_constraint_config.md configuration is enabled, and tasks are [grouped](api/gantt_groupby.md)
+- Ensure Gantt retains the task [constraint](desktop/auto_scheduling.md#timeconstraintsfortasks) after dragging a task
+
+
+9.0.3
+---------------
+<span class='release_date'>November 19, 2024. Bugfix release</span>
+
+- Fix the regression in styles for the [Quick Info](desktop/quick_info.md) popup
+- Resolve build warnings from PostCSS caused by the usage of 'start'/'end' instead of 'flex-start'/'flex-end'
+- Prevent [resource assignment](desktop/resource_management.md#assigningresources) from being removed when updated via the lightbox
+- Fix the issue with an empty task array in api/gantt_resource_cell_value_template.md on non-working days when api/gantt_resource_render_empty_cells_config.md is enabled
+- Correct the error occurring when clicking on buttons embedded into sections of the [lightbox](desktop/default_edit_form.md)
+- Ensure the [resource panel](desktop/resource_management.md#resourceviewpanel) and [zoom levels](desktop/zooming.md#builtinzoomingmodule) remain in sync
+- Prevent [Inline Editors](desktop/inline_editors_ext.md) events from being removed after [reinitializing](api/gantt_init.md) Gantt or [resetting the layout](api/gantt_resetlayout.md)
+- Fix the issue where the open state is not restored after [redoing](desktop/undo_redo.md) changes
+
+9.0.2
+---------------
+<span class='release_date'>November 11, 2024. Bugfix release</span>
+
+### Fixes
+
+- Fix the regression causing incorrect styles for task borders and progress when the task color is specified via [properties of a task object](desktop/colouring_tasks.md#specifyingstyleinthepropertiesofataskobject)
+- Restore the functionality of the api/gantt_marker_class_template.md template
+- Restore missing classname of the [textarea](desktop/textarea.md) section of the lightbox
+- Correct the issue where [deadlines](desktop/inbuilt_baselines.md#deadlinesandconstraints) are displayed outside the task row and are not fully centered
+- Ensure that links are displayed above other links on mouse hover
+- Fix the issue where [baseline](desktop/inbuilt_baselines.md) dates are not calculated when loading them using the api/gantt_parse.md method
+- Correct positions of [constrains](desktop/inbuilt_baselines.md#deadlinesandconstraints) for both regular and [RTL](desktop/rtl_mode.md) views
+- Prevent unnecessary link loops when linking parts of split tasks
+- Fix the issue where [Quick Info](desktop/quick_info.md) in [detached mode](api/gantt_quick_info_detached_config.md) is not hidden due to increased width and hardcoded styles
+- Update the [Export API](api/gantt_exporttoexcel.md) to support tree indentation for Excel export
+- Resolve the issue preventing task selection when the api/gantt_multiselect_one_level_config.md is enabled and a task on another tree level is selected
+- Restore functionality of the [export_api](api/gantt_exporttopdf.md) plugin in the TypeScript environment
+- Update type definitions
+
 9.0.1
 ---------------
 
@@ -80,7 +162,6 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Prevent the [lightbox](desktop/default_edit_form.md) from switching to the api/gantt_wide_form_config.md mode upon adding the [Time section](desktop/time.md)
 - Ensure the [number editor](desktop/inline_editing.md) respects min and max properties, preventing entry of values outside the defined range
 - Fix the error on deleting a task inside the [gantt.batchUpdate](api/gantt_batchupdate.md) method while tasks are displayed in the [Resource Panel](desktop/resource_management.md)
-- Resolve the issue where tasks disappear after using [keyboard shortcuts](desktop/keyboard_navigation.md) to indent or outdent multiple times
 - Correct the [lightbox](desktop/default_edit_form.md) positioning to be properly centered in the Salesforce environment
 - Fix [Keyboard navigation](desktop/keyboard_navigation.md) stopping due to the api/gantt_row_height_config.md setting
 - Correct the dates for project [Auto Scheduling](desktop/auto_scheduling.md) in some scenarios, so only one auto-scheduling call is needed for accurate results
@@ -117,6 +198,7 @@ This update brings some changes in the structure of the Gantt package and behavi
 
 ### Fixes
 
+- Resolve the issue where tasks disappear after using [keyboard shortcuts](desktop/keyboard_navigation.md) to indent or outdent multiple times
 - Fix the issue that prevented reopening the [Inline editor](desktop/inline_editing.md) after vertically scrolling the Gantt
 - Fix the issue with [DataProcessor](desktop/server_side.md#routingcrudactionsofresourcesandresourceassignments) ignoring custom headers specified in the [gantt.createDataProcessor](api/gantt_createdataprocessor.md) method
 - Fix tasks display issue that occurs when [onBeforeLightbox](api/gantt_onbeforelightbox_event.md) handler returns `false` while creating a new task

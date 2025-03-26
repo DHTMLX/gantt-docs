@@ -2,7 +2,7 @@ dhtmlxGantt with Vue.js
 ========================
 
 You should be familiar with the basic concepts and patterns of [Vue](https://vuejs.org/) to use this documentation. If you 
-are not, please refer to the [Vue 3 documentation](https://v3.vuejs.org/guide/introduction.html#getting-started) for a getting-started tutorial.
+are not, please refer to the [Vue 3 documentation](https://vuejs.org/guide/introduction.html) for a getting-started tutorial.
 
 DHTMLX Gantt is compatible with Vue. We have prepared code examples of how to use DHTMLX Gantt with Vue. 
 To check online samples, please refer to the corresponding [Example on Replit](https://replit.com/@dhtmlx/dhtmlx-gantt-with-vue3).

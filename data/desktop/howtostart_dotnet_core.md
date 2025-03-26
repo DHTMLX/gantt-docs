@@ -14,7 +14,7 @@ You can also read tutorials on other server-side technologies:
 - desktop/howtostart_ruby.md
 
 
-To organize communication with database, the [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) is used. The application is built with the help of the Visual Studio 2022.
+To organize communication with database, the [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) is used. The application is built with the help of the Visual Studio 2022.
 
 {{note
 The complete source code is [available on GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core).
@@ -89,7 +89,7 @@ When the page is loaded, in addition to [initializing gantt chart](desktop/initi
 
 Next go to **Program.cs** and tell the application to use the **index.html** page. In order to do so, you need to configure the app to serve static files from the `wwwroot` folder. 
 For this, you need to add the `app.UseDefaultFiles()` method.
-You can find [more details here](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-2.1&tabs=aspnetcore2x).
+You can find [more details here](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-2.1&tabs=aspnetcore2x).
 
 {{snippet Program.cs}}
 ~~~js
@@ -149,7 +149,7 @@ Let's begin with data models. A data model for Gantt includes [links and tasks](
 dhtmlxGantt uses [non-conventional names for model properties](desktop/supported_data_formats.md#json) from the .NET world perspective. 
 Sometimes the client-side model also contains some properties for the client side or the backend logic, but these properties shouldn't be stored in a database.
 
-To deal with this, the [Data Transfer Object (DTO)](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) pattern will be used. Two kinds of models will be defined:
+To deal with this, the [Data Transfer Object (DTO)](https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) pattern will be used. Two kinds of models will be defined:
 
 - domain model classes that will be used with EF Core and inside the app
 - DTO classes that will be used to communicate with Web API.
@@ -211,7 +211,7 @@ To configure database connection, you need to take the steps listed below:
 
 #### Install Entity Framework Core 
 
-The [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) will be used to manage communication of the app with a database. Let's install the framework: 
+The [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) will be used to manage communication of the app with a database. Let's install the framework: 
 
 - find Dependencies of DHTMLX.Gantt in the project tree
 - call the context menu and select *Manage NuGet packages* 
@@ -332,7 +332,8 @@ namespace DHX.Gantt.Models
 
 #### Register Database
 
-Now you should register the database in **Program.cs**. But first you need a connection string for it. It will be stored [in a JSON file in the application settings ](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment).
+Now you should register the database in **Program.cs**. But first you need a connection string for it. 
+It will be stored [in a JSON file in the application settings ](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration).
 Create the **appsettings.json** file (or open it if you have it already) and add a connection string to the database:
 
 {{snippet	appsettings.json}}
@@ -346,7 +347,7 @@ Create the **appsettings.json** file (or open it if you have it already) and add
 ~~~
 
 The database context will be registered via 
-[dependency injection](https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-2.1). 
+[dependency injection](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-2.1). 
 
 Add the following namespaces to **Program.cs**:
 
@@ -825,7 +826,7 @@ Everything is ready. You can run the application and see the fully-fledged Gantt
 
 ## Error handling
 
-In order to handle errors, you need to declare a special [middleware class](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/startup?view=aspnetcore-2.1#startup-filters) 
+In order to handle errors, you need to declare a special [middleware class](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/startup?view=aspnetcore-2.1) 
 that will capture runtime exceptions and write responses. Next it will be added to the app request pipeline. Follow the steps below:
 
 1\. Create a middleware class from a template in the project folder.
