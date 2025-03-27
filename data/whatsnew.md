@@ -17,8 +17,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ### Fixes
 
 - Fix the error that occurs when clicking on a task in the timeline without a grid if [keyboard_navigation](desktop/keyboard_navigation.md) is enabled
-- Correct [WBS code](desktop/specifying_columns.md#wbscode) calculation for sorted tasks that include a placeholder task
-- Resolve the issue where scale cells in the resource timeline disappear upon collapsing tasks or resizing the grid (placeholder url)
+- Correct [WBS code](desktop/specifying_columns.md#wbscode) calculation for sorted tasks that include a [placeholder task](api/gantt_placeholder_task_config.md)
+- Resolve the issue where scale cells in the resource timeline disappear upon collapsing tasks or [resizing the grid](desktop/layout_config.md#defaultlayout)
 - Ensure that the correct task order is maintained when adding both child and parent tasks inside the [`gantt.silent`](api/gantt_silent.md) function
 - Preserve focus in editable [resource cells](desktop/resource_management.md#resourcecellvalue) after the value has been edited
 - Prevent Gantt from scrolling to the leftmost position of the grid when clicking on a task
