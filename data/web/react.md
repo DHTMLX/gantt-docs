@@ -35,12 +35,12 @@ Installation and NPM access
 Version Requirements
 --------------------
 
-- React `v16.0.0` or newer
+- React `v18.0.0` or newer
 
 Basic Usage
 -------------------
 
-Below is a minimal snippet showing how to import and render the Gantt chart:
+Here is a minimal snippet showing how to import and render the Gantt chart:
 
 ~~~js
 import { useState } from 'react';
@@ -103,7 +103,7 @@ Gantt React Wrapper supports multiple ways of loading and saving data.
 
 #### Using existing data
 
-When the data is available on the code it can be passed to Gantt using state variables and appropriate props:
+When the data is available in the code, it can be passed to Gantt using state variables and appropriate props:
 
 ~~~js
 export default function GanttTemplatesDemo() {
@@ -150,11 +150,11 @@ export default function BasicInitDemo() {
 }
 ~~~
 
-Internally, the **load** URL is passed to api/gantt_load.md method. The endpoint must return data in the format described in desktop/loading.md article.
+Internally, the **load** URL is passed to the api/gantt_load.md method. The endpoint must return data in the format described in the desktop/loading.md article.
 
 The **save** URL receives updates in the format described in this [article](desktop/server_side.md#technique:~:text=Request%20and%20response%20details).
 
-You can also pass a function callback to **save**. This function will be called each time Gantt data changes and serves as a routing function for the internal [DataProcessor](desktop/server_side.md#customrouting)
+You can also pass a function callback to the **save** property of the **data**. This function will be called each time Gantt data changes and serves as a routing function for the internal [DataProcessor](desktop/server_side.md#customrouting):
 
 ~~~js
 import React from 'react';
@@ -229,7 +229,7 @@ interface DataCallbackChange<T> {
 Configuration & Props
 -------------------
 
-The React wrapper accepts a config prop (mapped to [gantt.config](api/refs/gantt_props.md)) and a templates prop (mapped to [gantt.templates](api/refs/gantt_templates.md)).
+The React wrapper accepts the `config` prop (mapped to [gantt.config](api/refs/gantt_props.md)) and the `templates` prop (mapped to [gantt.templates](api/refs/gantt_templates.md)).
 
 
 ~~~js
@@ -297,7 +297,7 @@ You can find the full list of props supported by React Gantt in the following ar
 Themes & Styling
 -----------------
 
-Gantt ships with several built-in themes that can be activated via **skin** prop and changed dynamically:
+Gantt is shipped with several built-in themes that can be activated via the **skin** prop and changed dynamically:
 
 ~~~js
 import { useEffect, useRef } from 'react';
@@ -407,7 +407,7 @@ const CustomLightbox: React.FC<CustomLightboxProps> = ({
 export default CustomLightbox;
 ~~~
 
-Usage:
+After that, you can use the added component in the following way:
 
 ~~~js
 
@@ -478,7 +478,7 @@ Please refer to desktop/custom_edit_form.md for further details on overriding or
 Accessing the Underlying Gantt API
 ------------------
 
-In many cases, ReactGantt props are enough to configure your chart. However, sometimes you'll need direct access to the DHTMLX Gantt API for advanced operations (e.g. gantt.showDate, gantt.unselectTask, or custom zooming).
+In most cases, ReactGantt props are enough to configure your chart. However, sometimes you'll need direct access to the DHTMLX Gantt API for advanced operations (e.g. gantt.showDate, gantt.unselectTask, or custom zooming).
 
 #### Using a Ref
 
@@ -525,7 +525,7 @@ gantt.addTask({ id: 5, text: "New Task", start_date: new Date(2025, 05, 01), dur
 gantt.render(); 
 ~~~
 
-See the DHTMLX Gantt API Reference for the full list of methods.
+See the DHTMLX Gantt [API Reference](api/refs/gantt_methods.md) for the full list of methods.
 
 #### Avoid Conflicts with React Props
 
@@ -538,7 +538,7 @@ Compatibility with SSR Frameworks (Next.js, Remix)
 --------------
 
 
-{{note Because the underlying DHTMLX Gantt library is purely a browser widget (it reads and manipulates the DOM directly), it cannot be rendered in a Node/SSR environment. Therefore, you must disable or delay server-side rendering for any route or component that uses ReactGantt. }}
+{{note Since the underlying DHTMLX Gantt library is a purely browser widget (it reads and manipulates the DOM directly), it cannot be rendered in a Node/SSR environment. Therefore, you must disable or delay server-side rendering for any route or component that uses ReactGantt. }}
 
 #### Next.js
 
@@ -584,7 +584,7 @@ export default function GanttPage() {
 }
 ~~~
 
-That pattern defers rendering the actual Gantt until the component is hydrated in the browser, avoiding SSR errors.
+That pattern defers rendering of the actual Gantt until the component is hydrated in the browser, avoiding SSR errors.
 
 Next Steps
 -------------------
