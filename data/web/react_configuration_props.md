@@ -228,49 +228,61 @@ DHTMLX Gantt supports [inline editing for grid cells](desktop/inline_editing.md)
 Define a React-based inline editor component:
 
 ~~~js
-import React, { forwardRef, useState, useImperativeHandle } from 'react';
+import React, {
+	useState,
+	forwardRef,
+	useImperativeHandle
+} from 'react';
+import { InlineEditorMethods, InlineEditorProps } from '@dhx/react-gantt';
 
-const DurationEditor = forwardRef(function DurationEditor({ initialValue }, ref) {
-  const [value, setValue] = useState(initialValue);
 
-  // Gantt's wrapper will call these methods during the editing lifecycle:
-  useImperativeHandle(ref, () => ({
-    getValue: () => value,
-    setValue: (val) => setValue(val),
-    isChanged: (originalValue) => originalValue !== value,
-    isValid: () => true,
-    // optionally implement focus(), save(), etc. if you need them
-  }));
+const MyInlineEditor = forwardRef<InlineEditorMethods, InlineEditorProps>(
+	({ initialValue, task, save, cancel, ganttInstance }, ref) => {
+		const [value, setValue] = useState(initialValue || "");
 
-  return (
-    <input
-      type="number"
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-      style={{ width: '95%' }}
-    />
-  );
-});
+		useImperativeHandle(ref, (): InlineEditorMethods => ({
+			getValue: () => value,
+			setValue: (val: any) => setValue(val),
+			isValid: () => true, 
+			focus: () => {
 
-export default DurationEditor;
+			},
+			isChanged: (originalValue: any) => {
+				return originalValue !== value;
+			},
+
+			save: () => {  }
+		}));
+
+		return (
+			<input
+				type="text"
+				value={value}
+				onChange={e => setValue(e.target.value)}
+				autoFocus
+			/>
+		);
+	}
+);
+
+export default MyInlineEditor;
 ~~~
 
 Use the custom editor in your Gantt config
 
 ~~~js
 import ReactGantt from "@dhx/react-gantt";
-import DurationEditor from "./DurationEditor";
+import MyInlineEditor from "./CustomInlineEditor";
 
 function Demo() {
   const config = {
     columns: [
       { name: "text", tree: true, width: 180, resize: true },
-      // Enable inline editing with a React component:
       {
         name: "duration",
         width: 80,
         align: "center",
-        editor: { type: "myDurationEditor" }, // must match the key in inlineEditors
+        editor: { type: "customInputEditor", map_to: "text" }, /*!*/
         resize: true
       },
       { name: "start_date", width: 150 },
@@ -283,7 +295,7 @@ function Demo() {
     <ReactGantt
       config={config}
       inlineEditors={{
-        myDurationEditor: DurationEditor // maps to editor: { type: "myDurationEditor" }
+        customInputEditor: MyInlineEditor  /*!*/
       }}
       tasks={[/*...*/]}
       links={[/*...*/]}
@@ -292,7 +304,26 @@ function Demo() {
 }
 ~~~
 
-When the user double-clicks the column cell, Gantt will display your DurationEditor component in place. The wrapper's internal code calls the methods (getValue, setValue, etc.) that you expose via `useImperativeHandle(ref, ...)`, ensuring the Gantt instance stays in sync with the changes in your component.
+When the user double-clicks the column cell, Gantt will display your editor component in place. The wrapper's internal code calls the methods (getValue, setValue, etc.) that you expose via `useImperativeHandle(ref, ...)`, ensuring the Gantt instance stays in sync with the changes in your component.
+
+The value of `type` of the editor object must match the key in `inlineEditors`. 
+
+The `map_to` property specifies the property of the Task object from which the editor will read and write values. Please refer to the article that covers [inline editing](desktop/inline_editing.md) for futher details.
+
+If you're implementing an editor that makes something more complex than writing a value to a property of a task - you need to implement a required logic in the **save** function and specify the `map_to` option of the input to **"auto"**. In this case, the gantt won't modify the task object, but instead will call the **save** function when it's time to apply the changes made to the editor. The `initialValue` of the editor will be passed as `null`.
+
+{{note Note, you can define non-React inline editors using the [editor_types](desktop/inline_editing.md#custominlineeditor) property of the **config** prop}}
+
+
+
+
+#### Props of the editor component
+
+- <span class=subproperty>**initialValue**</span> - (*any*) - initial value of the editor
+- <span class=subproperty>**task**</span> - (*Task*) - task that is being edited
+- <span class=subproperty>**save**</span> - (*function*) - tells the gantt to save and close the editor
+- <span class=subproperty>**cancel**</span> - (*function*) - tells the gantt to close the editor without saving
+- <span class=subproperty>**ganttInstance**</span> - (*GanttStatic*) - the current instance of the underlying Gantt object
 
 React Components in tooltips
 ---------------
