@@ -20,6 +20,10 @@ gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,ta
 
 @template:	api_template
 
+@returns:
+- height		number | void		the height of the line that defines the available capacity of the resource
+
+
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 

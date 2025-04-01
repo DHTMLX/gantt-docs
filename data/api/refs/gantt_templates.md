@@ -50,6 +50,7 @@ Templates
 - api/gantt_rightside_text_template.md - specifies the text assigned to tasks bars on the right side
 - api/gantt_leftside_text_template.md - specifies the text assigned to tasks bars on the left side
 - api/gantt_lightbox_header_template.md - specifies the lightbox's header
+- api/gantt_marker_class_template.md - specifies the CSS class that will be applied to markers
 }}
 
 @index:
@@ -99,5 +100,6 @@ Templates
 - api/gantt_rightside_text_template.md
 - api/gantt_leftside_text_template.md
 - api/gantt_lightbox_header_template.md
+- api/gantt_marker_class_template.md
 
 

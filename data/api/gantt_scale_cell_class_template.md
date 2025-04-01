@@ -21,7 +21,7 @@ gantt.templates.scale_cell_class = function(date){
 
 @template:	api_template
 @returns:
-- text		string		css class for item in question
+- text		string | void		a CSS class for the item in question
 @descr:
 
 Note that while using [work time calculations](desktop/working_time.md), you can use api/gantt_isworktime.md instead of hardcoded values:

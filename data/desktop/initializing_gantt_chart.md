@@ -62,9 +62,15 @@ How to add Gantt source files into a project
 
 You can add Gantt code file into your project in several ways, depending on the type of an application you create:
 
-- [Include files via the &#60;script&#62; tag](#includefilesviathe60script62tag)
-- [Import files into ES6/7 and TypeScript apps](#importfilesintoes67andtypescriptapps)
-- [Include files into a RequireJS-based app](#includefilesintoarequirejsbasedapp)
+- [dhtmlxGantt in Plain JS/HTML](#dhtmlxgantt-in-plain-jshtml)
+	- [Creating basic Gantt chart](#creating-basic-gantt-chart)
+	- [How to add Gantt source files into a project](#how-to-add-gantt-source-files-into-a-project)
+	- [Include files via the \<script\> tag](#include-files-via-the-script-tag)
+	- [Import files into ES6/7 and TypeScript apps](#import-files-into-es67-and-typescript-apps)
+	- [Using Gantt with Vite](#using-gantt-with-vite)
+		- [Svelte production build](#svelte-production-build)
+	- [Include files into a RequireJS-based app](#include-files-into-a-requirejs-based-app)
+	- [Full screen mode](#full-screen-mode)
 
 
 

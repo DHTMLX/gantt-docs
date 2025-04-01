@@ -14,7 +14,7 @@ gantt.templates.task_class = function(start, end, task){return "";};
 
 @template:	api_template
 @returns:
-- text		string		css class for item in question
+- text		string | void		a CSS class for the item in question
 @descr:
 
 @related:

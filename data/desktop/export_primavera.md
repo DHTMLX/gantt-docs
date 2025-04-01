@@ -162,7 +162,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-The properties of this object correspond to the appropriate properties of the [Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). 
+The properties of this object correspond to the appropriate properties of the [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). 
 The list of supported properties can be found [here](desktop/properties.md). The properties may contain either fixed values or functions that will be executed when export is called.
 
 - **tasks** - (object) allows setting custom properties to the exported task items
@@ -187,7 +187,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-The properties of this object correspond to the appropriate properties of the [Task entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx), 
+The properties of this object correspond to the appropriate properties of the [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), 
 here is a list of supported [properties](desktop/properties.md#tasksproperties).
 The properties may contain either fixed values or functions that will be called for each task in the dataset when export is called.
 
@@ -405,7 +405,7 @@ gantt.importFromPrimaveraP6({
 #### Getting properties of the Project
 
 To get project fields, the **projectProperties** input with an array of necessary fields can be sent to the server.
-It extracts arbitrary properties of [the Project entity](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx) 
+It extracts arbitrary properties of [the Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 
 into the **config** property of the output. Here is the list of supported [properties](desktop/properties.md#projectproperties).
 
  - **projectProperties** - specifies an array of project properties that should be put into the response.
@@ -438,7 +438,7 @@ gantt.importFromPrimaveraP6({
 #### Getting tasks properties
 
 To get task fields, the **taskProperties** input with an array of necessary fields can be sent to the server.
-It extracts arbitrary properties of the [Task entities](https://msdn.microsoft.com/en-us/library/bb968652(v=office.12).aspx). Here is the list of supported [properties](desktop/properties.md#tasksproperties):
+It extracts arbitrary properties of the [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Here is the list of supported [properties](desktop/properties.md#tasksproperties):
 
  - **taskProperties** - specify an array of additional task properties to be imported.
 

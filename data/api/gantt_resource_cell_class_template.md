@@ -36,7 +36,7 @@ gantt.templates.resource_cell_class = function(start_date, end_date, resource, t
 
 
 @returns:
-- className		string		string that is appended to cell element className attribute
+- className		string | void		a string that is appended to cell element className attribute
 
 
 @relatedapi:
