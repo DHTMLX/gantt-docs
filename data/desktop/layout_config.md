@@ -578,9 +578,12 @@ gantt.config.layout = {
 In the above example the sizes of the Gantt chart and the resource chart make a proportion 2:1. It means that the Gantt chart will take 66%, while the resource chart will take 33%. 
 By using the proportion 1:1, you will have 50% for both charts.
 
-### Min/max cell width
+### Min/max cell width/height
 
-The **minWidth/maxWidth** properties can be used to limit the width of a layout part in case of resize operations:
+The **minWidth/maxWidth** properties can be used to limit the width of the layout part in case of resize operations. Note that these settings can be applied only to the cells
+inside the **cols** array. You can also apply the **minHeight/maxHeight** properties to the cells in the **rows** array to define the minimal/maximal height of the layout cells.
+
+The example below shows how the **minWidth/maxWidth** properties can be added into the columns configuration:
 
 ~~~js
 gantt.config.grid_elastic_columns = true;
@@ -590,8 +593,8 @@ gantt.config.layout = {
   cols: [
     {
       width: 400,
-      minWidth: 200,
-      maxWidth: 600,
+      minWidth: 200, /*!*/
+      maxWidth: 600, /*!*/
       rows: [
         {
           view: "grid", scrollable: true, scrollX: "scrollHor1", scrollY: "scrollVer"
@@ -650,7 +653,7 @@ gantt.config.layout = {
 Switching between views
 -------------------------
 
-If you need to switch between different layout views, check the [How to toggle grid/chart](desktop__how_to.html#howtotogglegridchart) and [How to toggle the resource view](desktop__how_to.html#howtotoggletheresourceview) sections for more details.
+If you need to switch between different layout views, check the [How to toggle grid/chart](desktop/how_to.md#howtotogglegridchart) and [How to toggle the resource view](desktop/how_to.md#howtotoggletheresourceview) sections for more details.
 
 Freezing columns in the grid view
 -----------------------------------
