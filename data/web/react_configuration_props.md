@@ -334,4 +334,167 @@ React Components in tooltips
 Combining Props and the DHTMLX API
 ---------------
 
+The `@dhx/react-gantt` library is designed to be as declarative as possible for day-to-day usage - most use cases can be addressed through the standard props (such as tasks, links, resources, templates, etc.). However, there may be scenarios where you need deeper access to the Gantt engine for:
+
+- [Worktime calculations](desktop/working_time.md)
+- [Auto scheduling](desktop/auto_scheduling.md) logic or advanced features like [resource computations](desktop/resource_management.md)
+- Calling any of specialized methods of [Gantt API](api/refs/gantt.md)
+
+In these cases, you can use two additional approaches to tap into the underlying DHTMLX Gantt functionality:
+
+- **React Hooks** specifically provided by the wrapper to bridge Gantt's data stores and scheduling logic
+
+- **Direct access** to the Gantt instance via a `ref` if the built-in hooks don't cover all your needs
+
+### Using built-in Hooks 
+
+The `@dhx/react-gantt` library exposes a set of optional hooks that connect React components to internal Gantt APIs. These hooks provide a 'bridge' to Gantt's underlying methods and data stores. You can either call these hooks directly in your components or compose them into your own custom hooks for specialized features like resource histograms.
+
+#### useGanttDatastore<T>(ganttRef, storeName)
+
+The `useGanttDatastore` hook hives read-only access to a specific Gantt datastore. Common use is accessing the resource datastore, baseline, or any other built-in or custom store.
+
+It provides the following functions:
+
+- `getItem(id)` -  returns a specified item from the datastore
+
+- `getItems()` -  returns all items in the specified datastore
+
+- `hasChild(id: string | number)` - checks if an item has children
+
+- `getChildren(id: string | number)` - retrieves child items
+
+~~~js
+import { useMemo } from 'react';
+import { useGanttDatastore } from '@dhx/react-gantt';
+
+function MyResourceList({ ganttRef }) {
+  const resourceStore = useGanttDatastore(ganttRef, 'resource');
+
+  const resourceIds = resourceStore.getItems().map(item => item.id);
+
+  // for demonstration, just log the data
+  useMemo(() => {
+    console.log('Resource IDs:', resourceIds);
+  }, [resourceIds]);
+
+  return null; 
+}
+~~~
+
+You can use this hook whenever you need direct low-level data from a specific datastore. For example, checking if a resource is a group vs. an individual.
+
+#### useResourceAssignments(ganttRef)
+
+The `useResourceAssignments` hook exposes Gantt's resource-related methods, such as retrieving assignments for a resource or enumerating which resources are assigned to a given task.
+
+It provides the following functions:
+
+- `getResourceAssignments(resourceId, taskId?)` - bridge to api/gantt_getresourceassignments.md
+- `getTaskResources(taskId)` - bridge to api/gantt_gettaskresources.md
+
+~~~js
+import React from 'react';
+import { useResourceAssignments } from '@dhx/react-gantt';
+
+export function ResourceUsage({ ganttRef, taskId }) {
+  const { getTaskResources } = useResourceAssignments(ganttRef);
+
+  const resources = getTaskResources(taskId);
+  return (
+    <div>
+      Task {taskId} assigned to: 
+      {resources.map(r => r.text).join(', ')}
+    </div>
+  );
+}
+~~~
+
+You may need this hook for any custom logic around resource usage, e.g., calculating allocated hours or grouping tasks by owner
+
+#### useWorkTime(ganttRef)
+
+Provides a direct bridge for built-in DHTMLX Gantt worktime functions, such as api/gantt_isworktime.md, api/gantt_calculateenddate.md, api/gantt_calculateduration.md.
+
+You'll need this hook for highlighting working/non-working time according to Gantt work calendar settings, as well as for date operations in accordance to work calendars.
+
+It provides the following functions:
+
+- `isWorkTime({ date:Date, unit?: string, task?:Task })` - bridge to api/gantt_isworktime.md
+- `calculateEndDate({start:Date, duration:number, unit?: string, task?: Task})` - bridge to api/gantt_calculateenddate.md
+- `calculateDuration({start:Date, end:Date, task?: Task})` - bridge to api/gantt_calculateduration.md
+- `getClosestWorkTime({ date:Date, unit?: string, task?: Task, dir?: "past"|"future" })` - bridge to api/gantt_getclosestworktime.md
+
+
+
+~~~js
+import { useEffect, useRef, useState } from 'react';
+import ReactGantt, {GanttTemplates, useWorkTime} from "@dhx/react-gantt";
+import "@dhx/react-gantt/dist/react-gantt.css";
+
+export default function GanttTemplatesDemo() {
+  const ganttRef = useRef<ReactGanttRef>(null);
+
+  const { isWorkTime }= useWorkTime(ganttRef);
+  ...
+  const templates: GanttTemplates = {
+    timeline_cell_class: (task: Task, date: Date) => {
+      return isWorkTime({date, task}) ? "" : "weekend";
+    }
+  };
+  ...
+~~~
+
+#### Composing Hooks into Your Own Custom Hooks
+
+A great practice is to build your own domain or project-specific hooks using these fundamental bridging hooks. For instance, if you want to create a resource histogram, you might create a custom hook that caches capacity values, sums resource usage, etc.:
+
+~~~js
+import { useMemo } from 'react';
+import { useGanttDatastore, useResourceAssignments } from '@dhx/react-gantt';
+
+export function useResourceHistogram(ganttRef) {
+  const resourceStore = useGanttDatastore(ganttRef, 'resource');
+  const { getResourceAssignments } = useResourceAssignments(ganttRef);
+
+  // Custom logic: capacity caching, group detection, etc.
+  // ...
+  return {
+    // e.g. getCapacity, getAllocatedValue
+  };
+}
+~~~
+
+### Direct Access to Gantt Instance with ref
+
+While these hooks handle most advanced needs, you might still want direct access to the entire Gantt instance. For that, the ref approach remains available:
+
+~~~js
+import React, { useRef, useEffect } from 'react';
+import ReactGantt, { ReactGanttRef } from '@dhx/react-gantt';
+
+export function DirectRefExample({ tasks, links }) {
+  const ganttRef = useRef<ReactGanttRef>(null);
+
+  useEffect(() => {
+    const gantt = ganttRef.current?.instance;
+    if (!gantt) return;
+
+    // here you can call ANY Gantt API method
+    console.log('All tasks:', gantt.getTaskByTime());
+    gantt.showDate(new Date());
+  }, []);
+
+  return (
+    <ReactGantt
+      ref={ganttRef}
+      tasks={tasks}
+      links={links}
+    />
+  );
+}
+~~~
+
+{{info Be mindful that if you alter tasks/links in the direct Gantt instance while also feeding them as React props, you should keep them in sync or re-parse the data. Otherwise, the next React re-render might overwrite your manual changes. }}
+
 If you want to do something not exposed by a prop, you can still call gantt methods directly. See [Accessing the Underlying Gantt API](web/react.md#accessingtheunderlyingganttapi) for more details.

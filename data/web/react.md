@@ -101,7 +101,7 @@ Binding Data
 
 Gantt React Wrapper supports multiple ways of loading and saving data.
 
-#### Using existing data
+### Using existing data
 
 When the data is available in the code, it can be passed to Gantt using state variables and appropriate props:
 
@@ -126,7 +126,7 @@ export default function GanttTemplatesDemo() {
 };
 ~~~
 
-#### Using built-in transport
+### Using built-in transport
 
 You can provide a URL from which Gantt will load data and another URL to which Gantt will send updates:
 
@@ -178,7 +178,7 @@ export default function BasicInitDemo() {
 }
 ~~~
 
-#### Batch saving mode
+### Batch saving mode
 
 In previous modes, React Gantt would invoke the callback for each modified entity individually. This behavior mirrors the default approach of the underlying Gantt library. However, in some cases, it can lead to performance issues in React - especially during bulk operations such as Auto Scheduling, which may modify dozens or even hundreds of tasks at once. Recalculating state for each individual update is not an efficient solution in such scenarios.
 
@@ -265,7 +265,7 @@ The React wrapper accepts the `config` prop (mapped to [gantt.config](api/refs/g
 />
 ~~~
 
-#### Using React Components in Templates 
+### Using React Components in Templates 
 
 When specifying templates in props, you can return React elements from your template functions:
 
@@ -350,7 +350,7 @@ DHTMLX Gantt comes with a built-in configurable task editor called the [Lightbox
 
 If needed, you can replace it with a React-based modal or any other component in one of the following ways:
 
-#### By Providing a Custom Component via the customLightbox Prop
+### By Providing a Custom Component via the customLightbox Prop
 
 To do so, pass a component through the **customLightbox** prop:
 
@@ -437,7 +437,7 @@ export default function BasicInitDemo() {
 }
 ~~~
 
-#### By using onBeforeLightbox event prop
+### By using onBeforeLightbox event prop
 
 For more complex scenarios, you can capture the [onBeforeLightbox](api/gantt_onbeforelightbox_event.md) event (fired when the Lightbox is invoked) and override the default behavior:
 
@@ -470,7 +470,7 @@ export default function BasicInitDemo() {
 }
 ~~~
 
-#### By using JS Gantt API
+### By using JS Gantt API
 
 Please refer to desktop/custom_edit_form.md for further details on overriding or extending the built-in Lightbox.
 
@@ -478,36 +478,42 @@ Please refer to desktop/custom_edit_form.md for further details on overriding or
 Accessing the Underlying Gantt API
 ------------------
 
-In most cases, ReactGantt props are enough to configure your chart. However, sometimes you'll need direct access to the DHTMLX Gantt API for advanced operations (e.g. gantt.showDate, gantt.unselectTask, or custom zooming).
+In most cases, ReactGantt props are enough to configure your chart. However, sometimes you'll need direct access to the DHTMLX Gantt API for advanced operations (e.g. worktime calculations, gantt.showDate, gantt.unselectTask, or custom zooming).
 
-#### Using a Ref
+### Using built-in hooks
 
-The recommended approach is to attach a ref to your <ReactGantt> component. The wrapper uses forwardRef to expose the internal Gantt instance:
+ReactGantt provides ready to use hooks that expose some methods of Gantt API. Please check the related article web/react_configuration_props.md
+
+### Using a Ref
+
+For the cases when declarative props and built-in hooks are not enough, the wrapper allows accessing the internal Gantt instance using `ref`:
 
 ~~~js
 import React, { useRef, useEffect } from 'react';
-import ReactGantt from '@dhx/gantt-react';
+import ReactGantt, { ReactGanttRef } from '@dhx/react-gantt';
 
-export default function GanttWithRef() {
-  const ganttRef = useRef(null);
+export function DirectRefExample({ tasks, links }) {
+  const ganttRef = useRef<ReactGanttRef>(null);
 
   useEffect(() => {
     const gantt = ganttRef.current?.instance;
-    if (gantt) {
-      // For example, select a task programmatically
-      gantt.selectTask(1);
-    }
+    if (!gantt) return;
+
+    // here you can call ANY Gantt API method
+    console.log('All tasks:', gantt.getTaskByTime());
+    gantt.showDate(new Date());
   }, []);
 
   return (
     <ReactGantt
       ref={ganttRef}
-      tasks={[/* ... */]}
-      links={[/* ... */]}
+      tasks={tasks}
+      links={links}
     />
   );
 }
 ~~~
+
 
 #### Common API Examples
 
