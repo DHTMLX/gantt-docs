@@ -877,7 +877,7 @@ That pattern defers rendering of the actual Gantt until the component is hydrate
 Next Steps
 -------------------
 
-- For detailed info on how to pass config, see web/react_configuration_props.md
+- For additional info on how to configure ReactGantt, see [this article](web/react_configuration_props.md)
 - For advanced use see [DHTMLX Gantt documentation](desktop/guides.md) 
 
 
