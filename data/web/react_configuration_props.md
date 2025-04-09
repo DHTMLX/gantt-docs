@@ -68,9 +68,9 @@ Available Props
       <td>Sets <a href="desktop/localization.md">gantt.i18n.setLocale(locale)</a>. Defaults to "en".</td>
     </tr>
     <tr>
-      <td>skin</td>
+      <td>theme</td>
       <td>string</td>
-      <td>Applies <a href="desktop/skins.md">gantt.setSkin(skin)</a>. Defaults to "terrace".</td>
+      <td>Applies <a href="desktop/skins.md">gantt.setSkin(theme)</a>. Defaults to "terrace".</td>
     </tr>
     <tr>
       <td>customLightbox</td>
@@ -114,7 +114,7 @@ Example Usage
 <ReactGantt
   tasks={tasks}
   links={links}
-  skin="material"
+  theme="material"
   locale="en"
   config={{
     scales: [

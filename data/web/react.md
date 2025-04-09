@@ -58,7 +58,7 @@ export default function BasicGantt() {
       <ReactGantt
         tasks={tasks}
         links={links}
-        skin={theme}
+        theme={theme}
       />
     </div>
   );
@@ -360,7 +360,7 @@ You can find the full list of props supported by React Gantt in the following ar
 Themes & Styling
 -----------------
 
-Gantt is shipped with several built-in themes that can be activated via the **skin** prop and changed dynamically:
+Gantt is shipped with several built-in themes that can be activated via the **theme** prop and changed dynamically:
 
 ~~~js
 import { useEffect, useRef } from 'react';
@@ -385,7 +385,7 @@ export default function BasicInitDemo() {
       <ReactGantt
         tasks={tasks}
         links={links}
-        skin={theme}  /*!*/
+        theme={theme}  /*!*/
       />
     </div>
   );
