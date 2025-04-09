@@ -29,12 +29,12 @@ Available Props
     <tr>
       <td>templates</td>
       <td>GanttTemplates</td>
-      <td>Overrides <a href="api/refs/gantt_templates.md">gantt.templates</a>, e.g. api/gantt_task_text_template.md, api/gantt_task_class_template.md, api/gantt_scale_cell_class_template.md.</td>
+      <td>Overrides <a href="api/refs/gantt_templates.md">gantt.templates</a>, for example: api/gantt_task_text_template.md, api/gantt_task_class_template.md, api/gantt_scale_cell_class_template.md.</td>
     </tr>
     <tr>
       <td>config</td>
-      <td>GanttConfigOptions</td>
-      <td>Merged into <a href="api/refs/gantt_props.md">gantt.config</a>, e.g. api/gantt_scales_config.md, api/gantt_columns_config.md, api/gantt_autosize_config.md.</td>
+      <td>GanttConfig</td>
+      <td>Merged into <a href="api/refs/gantt_props.md">gantt.config</a>, for example: api/gantt_scales_config.md, api/gantt_columns_config.md, api/gantt_autosize_config.md.</td>
     </tr>
     <tr>
       <td>resources</td>
@@ -52,24 +52,15 @@ Available Props
       <td>An array of marker objects for <a href="desktop/markers.md">timeline markers</a>.</td>
     </tr>
     <tr>
-      <td>taskLayers</td>
-      <td>TaskLayer[]</td>
-      <td>An array of <a href="api/gantt_addtasklayer.md">custom drawing layers for tasks</a>.</td>
-    </tr>
-    <tr>
       <td>plugins</td>
       <td>GanttPlugins</td>
-      <td><a href="desktop/extensions_list.md">Gantt extensions</a> that need to be activated (e.g., <a href="desktop/critical_path.md">critical_path</a>, <a href="desktop/auto_scheduling.md">auto_scheduling</a>).</td>
+      <td><a href="desktop/extensions_list.md">Gantt extensions</a> that need to be activated (for example: <a href="desktop/critical_path.md">critical_path</a>, <a href="desktop/auto_scheduling.md">auto_scheduling</a>).</td>
     </tr>
     <tr>
       <td>data</td>
-      <td>{ load: any; save: any }</td>
-      <td>If you want to load and save data via Gantt's dataProcessor (see DHTMLX DataProcessor docs).</td>
-    </tr>
-    <tr>
-      <td>dataProcessor</td>
-      <td>any</td>
-      <td>A <a href="api/gantt_createdataprocessor.md">custom data processor</a> function or config.</td>
+      <td>{ load?: string, save?: string|RouterFunction, batchSave?: BatchChanges}</td>
+      <td>Allows loading data via the built-in Gantt transport and provides
+        callbacks for changes made to Gantt data.</td>
     </tr>
     <tr>
       <td>locale</td>
@@ -84,12 +75,29 @@ Available Props
     <tr>
       <td>customLightbox</td>
       <td>ReactElement | null</td>
-      <td>A React component to replace the built-in lightbox (see Lightbox & Custom Forms.)</td>
+      <td>A React component that replaces the built-in Lightbox (see <a href="desktop/custom_edit_form.md">Custom Lightbox</a>.)</td>
     </tr>
     <tr>
       <td>inlineEditors</td>
       <td>{ [editorType: string]: React.ComponentType }</td>
-      <td>Allows mapping your React-based inline editors to DHTMLX's inline editor interface.</td>
+      <td>Allows mapping your React-based inline editors to DHTMLX's inline
+        editor interface.</td>
+    </tr>
+    <tr>
+      <td>filter</td>
+      <td>((task: Task) =&gt; boolean) | null</td>
+      <td>A function used to filter Gantt tasks.</td>
+    </tr>
+    <tr>
+      <td>resourceFilter</td>
+      <td>((resource: Resource) =&gt; boolean) | null</td>
+      <td> A function used to filter resources for the <a href="desktop/resource_management.md">Resource Panel</a>.</td>
+    </tr>
+    <tr>
+      <td>modals</td>
+      <td>GanttModals</td>
+      <td>Allows replacing <code>onBeforeTaskDelete</code> and
+        <code>onBeforeLinkDelete</code> modals with custom components.</td>
     </tr>
     <tr>
       <td>(Event Props)</td>
@@ -324,9 +332,6 @@ If you're implementing an editor that makes something more complex than writing 
 - <span class=subproperty>**save**</span> - (*function*) - tells the gantt to save and close the editor
 - <span class=subproperty>**cancel**</span> - (*function*) - tells the gantt to close the editor without saving
 - <span class=subproperty>**ganttInstance**</span> - (*GanttStatic*) - the current instance of the underlying Gantt object
-
-React Components in tooltips
----------------
 
 
 

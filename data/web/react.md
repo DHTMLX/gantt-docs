@@ -99,9 +99,70 @@ export demoData;
 Binding Data
 --------------------
 
-Gantt React Wrapper supports multiple ways of loading and saving data.
+The **ReactGantt** wrapper offers flexible ways of loading and saving data. Conceptually, there are two primary approaches to manage changes in your Gantt data:
 
-### Using existing data
+1. React State as the Source of Truth
+2. Gantt as the Source of Truth
+
+Either approach is valid, but you should pick one and follow it consistently to avoid unexpected behavior.
+
+### React State as the Source of Truth
+
+In this pattern, the **ReactGantt** reads all task/link data from your React state. Whenever the user modifies tasks or links inside the Gantt (for example, by creating or deleting a task), the Gantt triggers a callback. In this callback, you update your React state with the new or removed data. Once the state is updated, React re-renders the **ReactGantt** component, which in turn re-initializes the Gantt data from the latest state.
+
+~~~js
+function MyGanttApp() {
+  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [links, setLinks] = useState<Link[]>(initialLinks);
+
+  const data = {
+    save: (entity: string, action: string, raw: any, id: string | number) => {
+      if (entity === 'task') {
+        if (action === 'create') {
+          setTasks((prev) => [...prev, item]);
+        } ...
+      }
+      ...
+    }
+  };
+
+  return (
+    <ReactGantt
+      tasks={tasks}
+      links={links}
+      data={data}
+      // ...other props
+    />
+  );
+}
+~~~
+
+In this example, **ReactGantt** calls the **save** callback when a new task is created, and the React state is updated accordingly. When the state changes, ReactGantt re-initializes the Gantt data.
+
+This approach makes your React state a single source of truth for both UI and server updates and works naturally with other React logic or Redux-based state.
+
+However, it will require more frequent re-parsing or re-rendering of the Gantt.
+
+### Gantt as source of truth
+
+In this approach, changes happen directly inside the Gantt instance without necessarily being mirrored into a React state variable. You can still initialize or load tasks and links (through props or via the Gantt's built-in data processor), but once the Gantt is running, it handles data internally. If you configure an update callback or use built-in transport, Gantt will forward changes to a server endpoint or a custom function, but it will not automatically overwrite or revert from a React state after modifications.
+
+~~~js
+<ReactGantt
+  data={ {
+    load: "/api/data",     // gantt loads initial tasks/links from here
+    save: "/api/data"      // gantt sends updates back here
+  } }
+/>
+~~~
+
+Here, Gantt handles fetching/sending data on its own. The local Gantt instance remains the primary holder of current data.
+
+This approach reduces the overhead of constantly updating React state when Gantt data changes and simplifies large-batch operations (like auto-scheduling) without repeated re-renders.
+
+On the other side, you lose the direct synchronization between Gantt data and your React state. And if you do store tasks/links in state, you need to be sure not to unintentionally overwrite Gantt's internal state.
+
+### Loading data
 
 When the data is available in the code, it can be passed to Gantt using state variables and appropriate props:
 
@@ -126,7 +187,7 @@ export default function GanttTemplatesDemo() {
 };
 ~~~
 
-### Using built-in transport
+### Loading data using built-in transport
 
 You can provide a URL from which Gantt will load data and another URL to which Gantt will send updates:
 
@@ -151,6 +212,8 @@ export default function BasicInitDemo() {
 ~~~
 
 Internally, the **load** URL is passed to the api/gantt_load.md method. The endpoint must return data in the format described in the desktop/loading.md article.
+
+### Saving changes
 
 The **save** URL receives updates in the format described in this [article](desktop/server_side.md#technique:~:text=Request%20and%20response%20details).
 
@@ -474,6 +537,241 @@ export default function BasicInitDemo() {
 
 Please refer to desktop/custom_edit_form.md for further details on overriding or extending the built-in Lightbox.
 
+Replacing built-in Modals
+------------------
+
+The default UI includes two modal popups:
+
+- the confirm dialog that appears before deleting a task
+- the confirm dialog that appears before deleting a link
+
+Both can be overridden using the `modals` prop of ReactGantt:
+
+~~~js
+<ReactGantt
+  ...
+  modals={ {
+    onBeforeTaskDelete: ({
+      task,
+      callback,
+      ganttInstance,
+    }: {
+      task: Task;
+      callback: () => void;
+      ganttInstance: GanttStatic;
+    }) => void,
+    onBeforeLinkDelete: ({
+      link,
+      callback,
+      ganttInstance,
+    }: {
+      link: Link;
+      callback: () => void;
+      ganttInstance: GanttStatic;
+    }) => void,
+  } }
+  ...
+/>
+
+~~~
+
+You can use these props to activate your custom modals whenever a confirmation dialog is called by Gantt.
+Calling the `callback()` provided in the arguments will finalize the deletion of the appropriate task or link. To cancel the deletion, simply close the modal without calling the callback.
+
+
+Filtering
+-----------------
+
+Use the `filter` prop to specify a filter for the tasks that should be displayed:
+
+~~~js
+const [filter, setFilter] = useState<((task: Task) => boolean) | null>(null);
+
+function showCompleted() {
+  setFilter(() => (task: Task) => task.progress === 1);
+}
+function resetFilter() {
+  setFilter(null);
+}
+
+return (
+  <ReactGantt
+    ...
+    filter={filter}
+    ...
+  />
+);
+
+~~~
+
+To filter resources in the [Resource Panel](desktop/resource_management.md), use the `resourceFilter` prop:
+
+~~~js
+function handleResourceSelectChange(resourceId: string | null) {
+  setSelectedResource(resourceId);
+  if (resourceId === null) {
+    setResourceFilter(null);
+  } else {
+    setResourceFilter(
+      () => (resource: ResourceItem) => String(resource.id) === String(resourceId)
+    );
+  }
+}
+
+return (
+  <ReactGantt
+    ref={ganttRef}
+    tasks={tasks}
+    links={links}
+    resources={resources}
+    resourceFilter={resourceFilter}
+    config={config}
+    templates={templates}
+    plugins={{ auto_scheduling: true }}
+  />
+);
+
+~~~
+
+Working Calendars
+------------------
+
+To enable work-time calculations in **ReactGantt**, make sure to enable  api/gantt_work_time_config.md:
+
+~~~js
+  const config: GanttConfig = {
+    ...
+    work_time: true
+  };
+~~~
+
+Working calendars can be passed to **ReactGantt** through the `calendars` prop:
+
+~~~js
+const calendars: Calendar[] = [
+  {
+    id: "global",
+    hours: ["8:00-12:00", "13:00-17:00"], // global work hours for weekdays
+    days: {
+      weekdays: {
+        0: false, // 0 = Sunday, 6 = Saturday
+        1: true,
+        2: true,
+        3: true,
+        4: true,
+        5: true,
+        6: false
+      },
+      dates: {
+        "2025-04-06": true,  // override work hours for a specific date
+        "2025-04-08": false
+      }
+    }
+  }
+];
+
+return (
+  <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <ReactGantt
+      ...
+      calendars={calendars}
+      ...
+    />
+  </div>
+);
+
+~~~
+
+In order to highlight working time in the Gantt Timeline or to perform work-time calculations, you can use the provided `useWorkTime` hook:
+
+~~~js
+import ReactGantt, { useWorkTime, Calendar } from "@dhx/react-gantt";
+
+export default function GanttTemplatesDemo() {
+  const ganttRef = useRef<ReactGanttRef>(null);
+
+  const { isWorkTime } = useWorkTime(ganttRef);
+  const templates: GanttTemplates = {
+    timeline_cell_class: (task: Task, date: Date) => {
+      return isWorkTime({ date, task }) ? "" : "weekend";
+    }
+  };
+
+  const calendars: Calendar[] = [
+    {
+      id: "global",
+      hours: ["8:00-12:00", "13:00-17:00"], // global work hours for weekdays
+      days: {
+        weekdays: {
+          0: false, // 0 = Sunday, 6 = Saturday
+          1: true,
+          2: true,
+          3: true,
+          4: true,
+          5: true,
+          6: false
+        },
+        dates: {
+          "2025-04-06": true,  // override work hours for a specific date
+          "2025-04-08": false
+        }
+      }
+    }
+  ];
+
+  return (
+    <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <ReactGantt
+        ...
+        calendars={calendars}
+        templates={templates}
+        config={config}
+        ref={ganttRef}
+      />
+    </div>
+  );
+};
+
+~~~
+
+Alternatively, you can access the [inner Gantt object](#accessingtheunderlyingganttapi) and use [working time](desktop/working_time.md) methods directly.
+
+Vertical Markers in Timeline Area
+-----------------
+
+[Vertical markers](desktop/markers.md) can be added to **ReactGantt** via the `markers` property:
+
+~~~js
+  const projectStartMarker = {
+    id: "marker1",
+    start_date: new Date(2025, 3, 2),
+    text: "Project start!",
+    css: "project-start"
+  };
+  const projectEndMarker = {
+    id: "marker2",
+    start_date: new Date(2025, 3, 16),
+    text: "Project end",
+    css: "project-end"
+  };
+
+  const [markers, setMarkers] = useState<Marker[]>([
+    projectStartMarker,
+    projectEndMarker
+  ]);
+
+  return (
+    <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <ReactGantt
+        ...
+        markers={markers}
+        ...
+      />
+    </div>
+  );
+~~~
+
+{{note Note, the **text** property of the Marker object accepts either HTML string or React Element}}
 
 Accessing the Underlying Gantt API
 ------------------
@@ -515,27 +813,11 @@ export function DirectRefExample({ tasks, links }) {
 ~~~
 
 
-#### Common API Examples
-
-
-~~~js
-// getTask and updateTask
-const task = gantt.getTask(1);
-task.text = "Updated task name";
-gantt.updateTask(1);
-
-// addTask
-gantt.addTask({ id: 5, text: "New Task", start_date: new Date(2025, 05, 01), duration: 3 });
-
-// render
-gantt.render(); 
-~~~
-
 See the DHTMLX Gantt [API Reference](api/refs/gantt_methods.md) for the full list of methods.
 
 #### Avoid Conflicts with React Props
 
-- If you manually call gantt.parse({ tasks, links }) or gantt.addTask() from your code, be aware you may need to keep the React props in sync. Otherwise, the next time React re-renders, it may overwrite your manual changes.
+- If you manually call `gantt.parse({ tasks, links })` or `gantt.addTask()` from your code, be aware you may need to keep the React props in sync. Otherwise, the next time React re-renders, it may overwrite your manual changes.
 - The recommended approach is to rely on the wrapper's props for tasks and links, or manage them in your React state. Then let the wrapper handle re-parsing.
 
 
