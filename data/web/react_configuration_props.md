@@ -1,4 +1,4 @@
-Using DHTMLX Gantt Properties in React Gantt
+Using DHTMLX Gantt Properties in ReactGantt
 ===============
 
 This page describes the props accepted by React Gantt and how they map to DHTMLX Gantt features.
