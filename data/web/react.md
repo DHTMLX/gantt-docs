@@ -369,7 +369,7 @@ import "@dhx/gantt-react/dist/gantt-react.css";
 
 export default function BasicInitDemo() {
   const [theme, setTheme] = useState("terrace"); 
-  const tasks = [.];
+  const tasks = [...];
   const links = [...];
 
   const switchTheme = () => {

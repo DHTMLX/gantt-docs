@@ -182,7 +182,7 @@ const config: GanttConfig = {
 };
 ~~~
 
-When the wrapper detects a React element in a label or any other template property, it will render it using a React Portal in the grid's header cell.
+When the wrapper detects a React element in a label or any other template property, it will render this element using a React Portal in the grid's header cell.
 
 ### In cells
 
