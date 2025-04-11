@@ -160,18 +160,21 @@ Internally, the wrapper calls [gantt.attachEvent("onBeforeTaskAdd", handler)](ap
 React Components in Grid
 -------------------
 
-### In Headers
+### In headers
 
 The **label** property of a grid column can be either a `string` or a `ReactElement`. This lets you embed React-based filters, buttons, or other UI directly in the column header:
 
 ~~~js
 const config: GanttConfig = {
   columns: [
-    { name: "text", label: "Name", tree: true, width: 180, resize: true },
+    { name: "text", label: "Name", tree: true, width: 180, 
+    	resize: true },
     // Embedding React element directly
-    { name: "start_date", label: <DateFilter />, width: 150, align: "center", resize: true },
+    { name: "start_date", label: <DateFilter />, width: 150, 
+    	align: "center", resize: true },
     // Alternatively, using a function returning a React element:
-    { name: "end_date", label: () => <DateFilter />, width: 150, align: "center", resize: true },
+    { name: "end_date", label: () => <DateFilter />, width: 150, 
+    	align: "center", resize: true },
     ...
   ],
   row_height: 40,
@@ -181,7 +184,7 @@ const config: GanttConfig = {
 
 When the wrapper detects a React element in a label or any other template property, it will render it using a React Portal in the grid's header cell.
 
-### In Cells
+### In cells
 
 Grid cells are defined by the **template** property of the column. This template function receives a task object and must return either a plain `string` or a `ReactElement`:
 
@@ -209,7 +212,7 @@ export default function GanttWithGridCells({ handleButtonClick, ganttRef }) {
             task={task}
             onClick={() => {
               handleButtonClick(task);
-              // Force re-render of the task if needed
+              // Force re-rendering of the task if needed
               ganttRef.current?.instance.updateTask(task.id);
             }}
           />
@@ -228,9 +231,9 @@ export default function GanttWithGridCells({ handleButtonClick, ganttRef }) {
 
 By returning a React element from your column template, you can create fully interactive content (buttons, dropdowns, badges, etc.) in each cell of the Gantt grid. Internally, the wrapper will inject those elements via portals into the DOM nodes that Gantt manages.
 
-### In Inline Editors
+### In inline editors
 
-DHTMLX Gantt supports [inline editing for grid cells](desktop/inline_editing.md). In this React wrapper, you can provide your own custom React editors by specifying an editor object in the **column** config, and then mapping an editor name to a React component in the `inlineEditors` prop:
+DHTMLX Gantt supports [inline editing for grid cells](desktop/inline_editing.md). In this React wrapper, you can provide your own custom React editors by specifying an editor object in the **column** config, and then mapping an editor name to a React component in the `inlineEditors` prop. Check the example below.
 
 
 Define a React-based inline editor component:
@@ -276,7 +279,7 @@ const MyInlineEditor = forwardRef<InlineEditorMethods, InlineEditorProps>(
 export default MyInlineEditor;
 ~~~
 
-Use the custom editor in your Gantt config
+Use the custom editor in your Gantt configuration:
 
 ~~~js
 import ReactGantt from "@dhx/react-gantt";
@@ -320,15 +323,15 @@ The `map_to` property specifies the property of the Task object from which the e
 
 If you're implementing an editor that makes something more complex than writing a value to a property of a task - you need to implement a required logic in the **save** function and specify the `map_to` option of the input to **"auto"**. In this case, the gantt won't modify the task object, but instead will call the **save** function when it's time to apply the changes made to the editor. The `initialValue` of the editor will be passed as `null`.
 
-{{note Note, you can define non-React inline editors using the [editor_types](desktop/inline_editing.md#custominlineeditor) property of the **config** prop}}
+{{note Note, you can define non-React inline editors using the [editor_types](desktop/inline_editing.md#custominlineeditor) property of the **config** property.}}
 
 
 
 
-#### Props of the editor component
+#### Editor component properties
 
-- <span class=subproperty>**initialValue**</span> - (*any*) - initial value of the editor
-- <span class=subproperty>**task**</span> - (*Task*) - task that is being edited
+- <span class=subproperty>**initialValue**</span> - (*any*) - the initial value of the editor
+- <span class=subproperty>**task**</span> - (*Task*) - the task that is being edited
 - <span class=subproperty>**save**</span> - (*function*) - tells the gantt to save and close the editor
 - <span class=subproperty>**cancel**</span> - (*function*) - tells the gantt to close the editor without saving
 - <span class=subproperty>**ganttInstance**</span> - (*GanttStatic*) - the current instance of the underlying Gantt object
@@ -339,25 +342,26 @@ If you're implementing an editor that makes something more complex than writing 
 Combining Props and the DHTMLX API
 ---------------
 
-The `@dhx/react-gantt` library is designed to be as declarative as possible for day-to-day usage - most use cases can be addressed through the standard props (such as tasks, links, resources, templates, etc.). However, there may be scenarios where you need deeper access to the Gantt engine for:
+The `@dhx/react-gantt` library is designed to be as declarative as possible for day-to-day usage - most use cases can be addressed through the standard props (such as tasks, links, resources, templates, etc.). However, there may be scenarios where you need a deeper access to the Gantt engine. For example, for:
 
 - [Worktime calculations](desktop/working_time.md)
 - [Auto scheduling](desktop/auto_scheduling.md) logic or advanced features like [resource computations](desktop/resource_management.md)
-- Calling any of specialized methods of [Gantt API](api/refs/gantt.md)
+- Calling any of specialized methods of the [Gantt API](api/refs/gantt.md)
 
 In these cases, you can use two additional approaches to tap into the underlying DHTMLX Gantt functionality:
 
-- **React Hooks** specifically provided by the wrapper to bridge Gantt's data stores and scheduling logic
+- **React hooks** specifically provided by the wrapper to bridge Gantt's data stores and scheduling logic
 
 - **Direct access** to the Gantt instance via a `ref` if the built-in hooks don't cover all your needs
 
-### Using built-in Hooks 
+### Using built-in hooks 
 
 The `@dhx/react-gantt` library exposes a set of optional hooks that connect React components to internal Gantt APIs. These hooks provide a 'bridge' to Gantt's underlying methods and data stores. You can either call these hooks directly in your components or compose them into your own custom hooks for specialized features like resource histograms.
 
 #### useGanttDatastore<T>(ganttRef, storeName)
 
-The `useGanttDatastore` hook hives read-only access to a specific Gantt datastore. Common use is accessing the resource datastore, baseline, or any other built-in or custom store.
+The `useGanttDatastore` hook hives a read-only access to a specific Gantt datastore. 
+The common use is accessing the resource datastore, baseline, or any other built-in or custom store.
 
 It provides the following functions:
 
@@ -450,7 +454,7 @@ export default function GanttTemplatesDemo() {
   ...
 ~~~
 
-#### Composing Hooks into Your Own Custom Hooks
+#### Composing hooks into your own custom hooks
 
 A great practice is to build your own domain or project-specific hooks using these fundamental bridging hooks. For instance, if you want to create a resource histogram, you might create a custom hook that caches capacity values, sums resource usage, etc.:
 
@@ -470,7 +474,7 @@ export function useResourceHistogram(ganttRef) {
 }
 ~~~
 
-### Direct Access to Gantt Instance with ref
+### Direct access to Gantt instance with ref
 
 While these hooks handle most advanced needs, you might still want direct access to the entire Gantt instance. For that, the ref approach remains available:
 
@@ -500,6 +504,7 @@ export function DirectRefExample({ tasks, links }) {
 }
 ~~~
 
-{{info Be mindful that if you alter tasks/links in the direct Gantt instance while also feeding them as React props, you should keep them in sync or re-parse the data. Otherwise, the next React re-render might overwrite your manual changes. }}
+{{info Be mindful that if you alter tasks/links in the direct Gantt instance while also feeding them as React props, 
+you should keep them in sync or re-parse the data. Otherwise, the next React re-rendering may overwrite your manual changes. }}
 
 If you want to do something not exposed by a prop, you can still call gantt methods directly. See [Accessing the Underlying Gantt API](web/react.md#accessingtheunderlyingganttapi) for more details.

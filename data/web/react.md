@@ -2,7 +2,7 @@ React Gantt
 ==================
 
 {{note React Gantt is available under [Commercial, Enterprise and Ultimate licenses](https://dhtmlx.com/docs/products/licenses.shtml).
-If you're using Individual or GPL editions of Gantt, please refer to [How to Start article](desktop/howtostart_react.md) for React. }}
+If you're using Individual or GPL editions of Gantt, please refer to the [How to Start](desktop/howtostart_react.md) article for React. }}
 
 Overview
 --------------------
@@ -11,11 +11,11 @@ DHTMLX Gantt is a pure JS component that can work in any browser environment. Th
 
 The wrapper lets you create a fully functional Gantt chart in your React applications using the familiar props/state model. Under the hood, it manages a standard DHTMLX Gantt instance, translating your React props (such as tasks and config) into the corresponding Gantt initialization and data structures.
 
-**Key Features**
+**Key features**
 
 - Declarative data handling: Pass an array of tasks, links, resources, etc. as props.
-- Configurable: Map React props to the underlying gantt.config, gantt.templates, gantt.plugins, etc.
-- Access to Gantt's full API: Use a ref to call methods like api/gantt_gettask.md, api/gantt_updatetask.md, or api/gantt_addtasklayer.md.
+- Configurable: Map React props to the underlying *gantt.config*, *gantt.templates*, *gantt.plugins*, etc.
+- Access to the full Gantt API: Use a ref to call methods like api/gantt_gettask.md, api/gantt_updatetask.md, or api/gantt_addtasklayer.md.
 - Easy customization: Use React components for templates, lightbox forms, or inline editors.
 
 If you're new to DHTMLX Gantt, see the [DHTMLX Gantt documentation](desktop/guides.md) for an overview of features like desktop/working_time.md, desktop/auto_scheduling.md, desktop/resource_management.md, and more.
@@ -23,11 +23,11 @@ If you're new to DHTMLX Gantt, see the [DHTMLX Gantt documentation](desktop/guid
 Installation and NPM access
 -------------------
 
-**Installing the Trial Version of React Gantt Component**
+**Installing the Trial version of React Gantt component**
 
 {{note If you want to use the trial version of DHTMLX Gantt, download the trial DHTMLX Gantt package and follow the steps mentioned in the README file. Note that the trial React Gantt component is available for 30 days only.}}
 
-**Installing the PRO Version of React Gantt Component**
+**Installing the PRO version of React Gantt component**
 
 {{note If you already own DHTMLX Gantt under a proprietary license, send your license number to contact@dhtmlx.com to receive login credentials for the private npm registry as well as a detailed guide on how to install the React Gantt component. Note that private npm access is available until your proprietary license expires.}}
 
@@ -68,7 +68,6 @@ export default function BasicGantt() {
 Where **demoData** has the following [format](desktop/loading.md):
 
 ~~~
-
 const demoData = {
   tasks: [
     { id: 1, text: "Product Launch", type: "project", open: true, parent: 0},
@@ -101,12 +100,12 @@ Binding Data
 
 The **ReactGantt** wrapper offers flexible ways of loading and saving data. Conceptually, there are two primary approaches to manage changes in your Gantt data:
 
-1. React State as the Source of Truth
-2. Gantt as the Source of Truth
+1. React state as the source of truth
+2. Gantt as the source of truth
 
 Either approach is valid, but you should pick one and follow it consistently to avoid unexpected behavior.
 
-### React State as the Source of Truth
+### React state as the source of truth
 
 In this pattern, the **ReactGantt** reads all task/link data from your React state. Whenever the user modifies tasks or links inside the Gantt (for example, by creating or deleting a task), the Gantt triggers a callback. In this callback, you update your React state with the new or removed data. Once the state is updated, React re-renders the **ReactGantt** component, which in turn re-initializes the Gantt data from the latest state.
 
@@ -143,7 +142,7 @@ This approach makes your React state a single source of truth for both UI and se
 
 However, it will require more frequent re-parsing or re-rendering of the Gantt.
 
-### Gantt as source of truth
+### Gantt as the source of truth
 
 In this approach, changes happen directly inside the Gantt instance without necessarily being mirrored into a React state variable. You can still initialize or load tasks and links (through props or via the Gantt's built-in data processor), but once the Gantt is running, it handles data internally. If you configure an update callback or use built-in transport, Gantt will forward changes to a server endpoint or a custom function, but it will not automatically overwrite or revert from a React state after modifications.
 
@@ -156,11 +155,12 @@ In this approach, changes happen directly inside the Gantt instance without nece
 />
 ~~~
 
-Here, Gantt handles fetching/sending data on its own. The local Gantt instance remains the primary holder of current data.
+Here, Gantt handles fetching/sending data on its own. The local Gantt instance remains the primary holder of the current data.
 
 This approach reduces the overhead of constantly updating React state when Gantt data changes and simplifies large-batch operations (like auto-scheduling) without repeated re-renders.
 
-On the other side, you lose the direct synchronization between Gantt data and your React state. And if you do store tasks/links in state, you need to be sure not to unintentionally overwrite Gantt's internal state.
+On the other side, you lose the direct synchronization between Gantt data and your React state. And if you do store tasks/links in a React state,
+you need to be sure not to unintentionally overwrite Gantt's internal state.
 
 ### Loading data
 
@@ -245,7 +245,8 @@ export default function BasicInitDemo() {
 
 In previous modes, React Gantt would invoke the callback for each modified entity individually. This behavior mirrors the default approach of the underlying Gantt library. However, in some cases, it can lead to performance issues in React - especially during bulk operations such as Auto Scheduling, which may modify dozens or even hundreds of tasks at once. Recalculating state for each individual update is not an efficient solution in such scenarios.
 
-To address this, React Gantt provides a dedicated data.batchSave handler for bulk operations. This handler is called once with the result of multiple changes performed in the Gantt instance:
+To address this, React Gantt provides a dedicated **data.batchSave** handler for bulk operations. 
+This handler is called once with the result of multiple changes performed in the Gantt instance:
 
 ~~~
 
@@ -271,7 +272,7 @@ return <ReactGantt
 />
 ~~~
 
-The `updates` object passed to the batchSave callback has the following structure:
+The `updates` object passed to the **batchSave** callback has the following structure:
 
 ~~~js
 {
@@ -296,7 +297,6 @@ The React wrapper accepts the `config` prop (mapped to [gantt.config](api/refs/g
 
 
 ~~~js
-
 <ReactGantt
   tasks={tasks}
   links={links}
@@ -328,7 +328,7 @@ The React wrapper accepts the `config` prop (mapped to [gantt.config](api/refs/g
 />
 ~~~
 
-### Using React Components in Templates 
+### Using React components in templates 
 
 When specifying templates in props, you can return React elements from your template functions:
 
@@ -394,26 +394,26 @@ export default function BasicInitDemo() {
 
 You can find detailed descriptions of the existing themes in [this article](desktop/skins.md).
 
-Themes can be additionally customized using custom styles and by overriding css variables:
+Themes can be additionally customized using custom styles and by overriding CSS variables:
 
 ~~~css
-  :root {
-      --dhx-gantt-task-background: #d96c49;
-      --dhx-gantt-task-color: #fff;
-      --dhx-gantt-task-border-radius: 8px;
-  }
+:root {
+	--dhx-gantt-task-background: #d96c49;
+	--dhx-gantt-task-color: #fff;
+	--dhx-gantt-task-border-radius: 8px;
+}
 ~~~
 
-For additional configuration, please check the desktop/custom_skins.md
+For additional configuration, please check the desktop/custom_skins.md guide.
 
 Replacing the Lightbox
 ------------------
 
-DHTMLX Gantt comes with a built-in configurable task editor called the [Lightbox](desktop/default_edit_form.md).
+DHTMLX Gantt comes with a built-in configurable task editor called [Lightbox](desktop/default_edit_form.md).
 
 If needed, you can replace it with a React-based modal or any other component in one of the following ways:
 
-### By Providing a Custom Component via the customLightbox Prop
+### By providing a custom component via the `customLightbox` prop
 
 To do so, pass a component through the **customLightbox** prop:
 
@@ -473,7 +473,6 @@ export default CustomLightbox;
 After that, you can use the added component in the following way:
 
 ~~~js
-
 import { useEffect, useRef } from 'react';
 import ReactGantt from "@dhx/gantt-react";
 import "@dhx/gantt-react/dist/gantt-react.css";
@@ -780,7 +779,7 @@ In most cases, ReactGantt props are enough to configure your chart. However, som
 
 ### Using built-in hooks
 
-ReactGantt provides ready to use hooks that expose some methods of Gantt API. Please check the related article web/react_configuration_props.md
+ReactGantt provides ready to use hooks that expose some methods of Gantt API. Please check the related article web/react_configuration_props.md.
 
 ### Using a Ref
 
@@ -815,7 +814,7 @@ export function DirectRefExample({ tasks, links }) {
 
 See the DHTMLX Gantt [API Reference](api/refs/gantt_methods.md) for the full list of methods.
 
-#### Avoid Conflicts with React Props
+#### Avoid conflicts with React props
 
 - If you manually call `gantt.parse({ tasks, links })` or `gantt.addTask()` from your code, be aware you may need to keep the React props in sync. Otherwise, the next time React re-renders, it may overwrite your manual changes.
 - The recommended approach is to rely on the wrapper's props for tasks and links, or manage them in your React state. Then let the wrapper handle re-parsing.
