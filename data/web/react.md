@@ -20,16 +20,19 @@ The wrapper lets you create a fully functional Gantt chart in your React applica
 
 If you're new to DHTMLX Gantt, see the [DHTMLX Gantt documentation](desktop/guides.md) for an overview of features like desktop/working_time.md, desktop/auto_scheduling.md, desktop/resource_management.md, and more.
 
-Installation and NPM access
+Installation and NPM Access
 -------------------
 
 **Installing the Trial version of React Gantt component**
 
-{{note If you want to use the trial version of DHTMLX Gantt, download the trial DHTMLX Gantt package and follow the steps mentioned in the README file. Note that the trial React Gantt component is available for 30 days only.}}
+{{note If you want to use the trial version of React Gantt, [download the trial DHTMLX Gantt package](https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml) and follow 
+the steps mentioned in the README file. The React Gantt samples are included into this package as well.
+Note that the trial React Gantt component is available for 30 days only.}}
 
 **Installing the PRO version of React Gantt component**
 
-{{note If you already own DHTMLX Gantt under a proprietary license, send your license number to contact@dhtmlx.com to receive login credentials for the private npm registry as well as a detailed guide on how to install the React Gantt component. Note that private npm access is available until your proprietary license expires.}}
+{{note If you already own DHTMLX Gantt under a proprietary license, send your **license number** to ***contact@dhtmlx.com*** to receive login credentials for the private
+**npm** registry as well as a detailed guide on how to install the React Gantt component. Note that private **npm** access is available until your proprietary license expires.}}
 
 
 Version Requirements
