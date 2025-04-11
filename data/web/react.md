@@ -44,8 +44,8 @@ Here is a minimal snippet showing how to import and render the Gantt chart:
 
 ~~~js
 import { useState } from 'react';
-import ReactGantt from '@dhx/gantt-react';
-import '@dhx/gantt-react/dist/gantt-react.css';
+import ReactGantt from '@dhx/react-gantt';
+import '@dhx/react-gantt/dist/react-gantt.css';
 import { demoData } from './DemoData'
 
 export default function BasicGantt() {
@@ -193,8 +193,8 @@ You can provide a URL from which Gantt will load data and another URL to which G
 
 ~~~js
 import React from 'react';
-import ReactGantt from "@dhx/gantt-react";
-import "@dhx/gantt-react/dist/gantt-react.css";
+import ReactGantt from "@dhx/react-gantt";
+import "@dhx/react-gantt/dist/react-gantt.css";
 
 export default function BasicInitDemo() {
 
@@ -221,8 +221,8 @@ You can also pass a function callback to the **save** property of the **data**. 
 
 ~~~js
 import React from 'react';
-import ReactGantt from "@dhx/gantt-react";
-import "@dhx/gantt-react/dist/gantt-react.css";
+import ReactGantt from "@dhx/react-gantt";
+import "@dhx/react-gantt/dist/react-gantt.css";
 
 export default function BasicInitDemo() {
 
@@ -364,8 +364,8 @@ Gantt is shipped with several built-in themes that can be activated via the **th
 
 ~~~js
 import { useEffect, useRef } from 'react';
-import ReactGantt from "@dhx/gantt-react";
-import "@dhx/gantt-react/dist/gantt-react.css";
+import ReactGantt from "@dhx/react-gantt";
+import "@dhx/react-gantt/dist/react-gantt.css";
 
 export default function BasicInitDemo() {
   const [theme, setTheme] = useState("terrace"); 
@@ -474,8 +474,8 @@ After that, you can use the added component in the following way:
 
 ~~~js
 import { useEffect, useRef } from 'react';
-import ReactGantt from "@dhx/gantt-react";
-import "@dhx/gantt-react/dist/gantt-react.css";
+import ReactGantt from "@dhx/react-gantt";
+import "@dhx/react-gantt/dist/react-gantt.css";
 import CustomLightbox from "./EditorModal";
 
 export default function BasicInitDemo() {
@@ -505,8 +505,8 @@ For more complex scenarios, you can capture the [onBeforeLightbox](api/gantt_onb
 
 ~~~js
 import { useEffect, useRef } from 'react';
-import ReactGantt from "@dhx/gantt-react";
-import "@dhx/gantt-react/dist/gantt-react.css";
+import ReactGantt from "@dhx/react-gantt";
+import "@dhx/react-gantt/dist/react-gantt.css";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -1031,7 +1031,7 @@ In Remix, you can conditionally render the Gantt component only on the client:
 
 ~~~js
 import { ClientOnly } from 'remix-utils/client-only';
-import ReactGantt from '@dhx/gantt-react';
+import ReactGantt from '@dhx/react-gantt';
 
 export default function GanttPage() {
 
