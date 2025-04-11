@@ -577,6 +577,183 @@ Both can be overridden using the `modals` prop of ReactGantt:
 You can use these props to activate your custom modals whenever a confirmation dialog is called by Gantt.
 Calling the `callback()` provided in the arguments will finalize the deletion of the appropriate task or link. To cancel the deletion, simply close the modal without calling the callback.
 
+Using React Components in Grid
+-------------------
+
+### In headers
+
+The **label** property of a grid column can be either a `string` or a `ReactElement`. This lets you embed React-based filters, buttons, or other UI directly in the column header:
+
+~~~js
+const config: GanttConfig = {
+  columns: [
+    { name: "text", label: "Name", tree: true, width: 180, 
+    	resize: true },
+    // Embedding React element directly
+    { name: "start_date", label: <DateFilter />, width: 150, 
+    	align: "center", resize: true },
+    // Alternatively, using a function returning a React element:
+    { name: "end_date", label: () => <DateFilter />, width: 150, 
+    	align: "center", resize: true },
+    ...
+  ],
+  row_height: 40,
+  grid_width: 550,
+};
+~~~
+
+When the wrapper detects a React element in a label or any other template property, it will render this element using a React Portal in the grid's header cell.
+
+### In cells
+
+Grid cells are defined by the **template** property of the column. This template function receives a task object and must return either a plain `string` or a `ReactElement`:
+
+~~~
+import { useRef } from 'react';
+
+function AlertButton({ task, onClick }) {
+  return <button onClick={onClick}>{`Task ID: ${task.id}`}</button>;
+}
+
+export default function GanttWithGridCells({ handleButtonClick, ganttRef }) {
+  const config = {
+    columns: [
+      { name: "text", tree: true, width: 180, resize: true },
+      { name: "start_date", width: 150, align: "center", resize: true },
+      { name: "duration", width: 80, align: "center", resize: true },
+      {
+        name: "custom",
+        align: "center",
+        label: <span>My Column</span>,
+        width: 140,
+        // Returning a React element
+        template: (task) => (
+          <AlertButton
+            task={task}
+            onClick={() => {
+              handleButtonClick(task);
+              // Force re-rendering of the task if needed
+              ganttRef.current?.instance.updateTask(task.id);
+            }}
+          />
+        ),
+        resize: true,
+      },
+      { name: "add", width: 44 },
+    ],
+    row_height: 40,
+    grid_width: 550,
+  };
+
+  return <ReactGantt ref={ganttRef} config={config} /* ...other props */ />;
+}
+~~~
+
+By returning a React element from your column template, you can create fully interactive content (buttons, dropdowns, badges, etc.) in each cell of the Gantt grid. Internally, the wrapper will inject those elements via portals into the DOM nodes that Gantt manages.
+
+### In inline editors
+
+DHTMLX Gantt supports [inline editing for grid cells](desktop/inline_editing.md). In this React wrapper, you can provide your own custom React editors by specifying an editor object in the **column** config, and then mapping an editor name to a React component in the `inlineEditors` prop. Check the example below.
+
+
+Define a React-based inline editor component:
+
+~~~js
+import React, {
+	useState,
+	forwardRef,
+	useImperativeHandle
+} from 'react';
+import { InlineEditorMethods, InlineEditorProps } from '@dhx/react-gantt';
+
+
+const MyInlineEditor = forwardRef<InlineEditorMethods, InlineEditorProps>(
+	({ initialValue, task, save, cancel, ganttInstance }, ref) => {
+		const [value, setValue] = useState(initialValue || "");
+
+		useImperativeHandle(ref, (): InlineEditorMethods => ({
+			getValue: () => value,
+			setValue: (val: any) => setValue(val),
+			isValid: () => true, 
+			focus: () => {
+
+			},
+			isChanged: (originalValue: any) => {
+				return originalValue !== value;
+			},
+
+			save: () => {  }
+		}));
+
+		return (
+			<input
+				type="text"
+				value={value}
+				onChange={e => setValue(e.target.value)}
+				autoFocus
+			/>
+		);
+	}
+);
+
+export default MyInlineEditor;
+~~~
+
+Use the custom editor in your Gantt configuration:
+
+~~~js
+import ReactGantt from "@dhx/react-gantt";
+import MyInlineEditor from "./CustomInlineEditor";
+
+function Demo() {
+  const config = {
+    columns: [
+      { name: "text", tree: true, width: 180, resize: true },
+      {
+        name: "duration",
+        width: 80,
+        align: "center",
+        editor: { type: "customInputEditor", map_to: "text" }, /*!*/
+        resize: true
+      },
+      { name: "start_date", width: 150 },
+      { name: "add", width: 44 }
+    ],
+    editable: true
+  };
+
+  return (
+    <ReactGantt
+      config={config}
+      inlineEditors={{
+        customInputEditor: MyInlineEditor  /*!*/
+      }}
+      tasks={[/*...*/]}
+      links={[/*...*/]}
+    />
+  );
+}
+~~~
+
+When the user double-clicks the column cell, Gantt will display your editor component in place. The wrapper's internal code calls the methods (getValue, setValue, etc.) that you expose via `useImperativeHandle(ref, ...)`, ensuring the Gantt instance stays in sync with the changes in your component.
+
+The value of `type` of the editor object must match the key in `inlineEditors`. 
+
+The `map_to` property specifies the property of the Task object from which the editor will read and write values. Please refer to the article that covers [inline editing](desktop/inline_editing.md) for futher details.
+
+If you're implementing an editor that makes something more complex than writing a value to a property of a task - you need to implement a required logic in the **save** function and specify the `map_to` option of the input to **"auto"**. In this case, the gantt won't modify the task object, but instead will call the **save** function when it's time to apply the changes made to the editor. The `initialValue` of the editor will be passed as `null`.
+
+{{note Note, you can define non-React inline editors using the [editor_types](desktop/inline_editing.md#custominlineeditor) property of the **config** property.}}
+
+#### Editor component properties
+
+- <span class=subproperty>**initialValue**</span> - (*any*) - the initial value of the editor
+- <span class=subproperty>**task**</span> - (*Task*) - the task that is being edited
+- <span class=subproperty>**save**</span> - (*function*) - tells the gantt to save and close the editor
+- <span class=subproperty>**cancel**</span> - (*function*) - tells the gantt to close the editor without saving
+- <span class=subproperty>**ganttInstance**</span> - (*GanttStatic*) - the current instance of the underlying Gantt object
+
+
 
 Filtering
 -----------------
