@@ -23,7 +23,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix the issue where mouse wheel zooming stopped working after calling the [resetLayout](api/gantt_resetlayout.md) method
 - Fix the issue where the [Quick Info](desktop/quick_info.md) popup appeared after clicking the expand/collapse button in the [Timeline](desktop/configuring_time_scale.md) or [Grid](desktop/specifying_columns.md) views
 - Fix the error that occurred when destroying Gantt without initializing the grid view
-- Fix the error when loading a task with a non-existent parent while the [Undo extension](desktop/undo_redo.md) is enabled
+- Fix the error that occurred when when loading a task with a non-existent parent while the [Undo extension](desktop/undo_redo.md) is enabled
 - Fix the issue where the [click_drag](desktop/extensions_list.md#advanceddragndrop) extension did not function on touch devices
 - Improve grid scrolling responsiveness on touch devices
 
