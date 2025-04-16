@@ -116,7 +116,7 @@ Example Usage
   links={links}
   theme="material"
   locale="en"
-  config={{
+  config={ {
     scales: [
       { unit: "year", step: 1, format: "%Y" },
       { unit: "month", step: 1, format: "%M" }
@@ -128,14 +128,14 @@ Example Usage
       { name: "add" }
     ],
     // any other gantt.config you want
-  }}
+  } }
   onTaskClick={(id, e) => {
     console.log('Task clicked:', id);
     return true; 
   }}
-  templates={{
+  templates={ {
     task_text: (start, end, task) => `#${task.id}: ${task.text}`,
-  }}
+  } }
 />
 ~~~
 

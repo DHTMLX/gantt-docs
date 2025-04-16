@@ -178,7 +178,7 @@ export default function GanttTemplatesDemo() {
       useState(projectData.resourceAssignments);
 
   return (
-    <div style={{height: '100vh'}}>
+    <div style={ {height: '100vh'} }>
       <ReactGantt
         tasks={tasks}
         links={links}
@@ -728,9 +728,9 @@ function Demo() {
   return (
     <ReactGantt
       config={config}
-      inlineEditors={{
+      inlineEditors={ {
         customInputEditor: MyInlineEditor  /*!*/
-      }}
+      } }
       tasks={[/*...*/]}
       links={[/*...*/]}
     />
@@ -806,7 +806,7 @@ return (
     resourceFilter={resourceFilter}
     config={config}
     templates={templates}
-    plugins={{ auto_scheduling: true }}
+    plugins={ { auto_scheduling: true } }
   />
 );
 
@@ -850,7 +850,7 @@ const calendars: Calendar[] = [
 ];
 
 return (
-  <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+  <div style={ { height: '100%', display: 'flex', flexDirection: 'column' } }>
     <ReactGantt
       ...
       calendars={calendars}
@@ -899,7 +899,7 @@ export default function GanttTemplatesDemo() {
   ];
 
   return (
-    <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div style={ { height: '100%', display: 'flex', flexDirection: 'column' } }>
       <ReactGantt
         ...
         calendars={calendars}
@@ -940,7 +940,7 @@ Vertical Markers in Timeline Area
   ]);
 
   return (
-    <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div style={ { height: '100%', display: 'flex', flexDirection: 'column' } }>
       <ReactGantt
         ...
         markers={markers}
