@@ -4,13 +4,14 @@ Performance: Ways to Improve
 Common techniques
 --------------------
 
-Starting from 1000-2000 tasks, depending on what configuration options and plugins you use, there may be delays in rendering the Gantt chart on the page.
+Starting from 10000-20000 tasks, depending on what configuration options and plugins you use, there may be delays in rendering the Gantt chart on the page.
 
  
 There are the following ways to solve this problem:
 
 1. To disable the rendering of single cells and leave just rendering of rows (set the api/gantt_show_task_cells_config.md option to 'false') 
-2. To set the background image for the timeline area instead of rendering the actual lines (set the api/gantt_static_background_config.md option to 'true') (**PRO** functionality)
+2. To set the background image for the timeline area instead of rendering the actual lines 
+(set the api/gantt_static_background_config.md option to 'true') (**PRO** functionality, for versions before v6.3, [read the details below](#static_background))
 3. To enable the dynamic loading (set the api/gantt_branch_loading_config.md option to 'true')
 4. To increase the scale's step (set the **unit** property of the api/gantt_scales_config.md option to "month" or "year")
 5. To decrease the range of displayable dates (use the api/gantt_start_date_config.md and api/gantt_end_date_config.md options)
@@ -51,16 +52,16 @@ However, the smart rendering of [custom layers](desktop/baselines.md) enables on
 
 
 
-###Working with a large date range
+###Working with a large date range {#static_background} 
 
 {{pronote This functionality is available only in PRO version}}
 
-If you use a big date range in your project, you may also want to enable the api/gantt_static_background_config.md parameter in addition to smart rendering:
+If you use a big date range in your project and the Gantt version before v6.3, 
+you can enable the api/gantt_static_background_config.md parameter in addition to smart rendering
+to set the background image for the timeline area instead of rendering the actual lines. 
 
 ~~~js
 gantt.config.static_background = true;
 ~~~
 
-{{sample
-08_api/10_performance_tweaks.html
-}}
+For Gantt versions above v6.3, this configuration option is useful only if you want to decrease the size of request to the export server when you export data.
