@@ -41,7 +41,7 @@ var dp = gantt.createDataProcessor({
 
 
 
-- <span class=submethod>**RouterFunction (entity, action, data, id): Promise**</span> - the router function to process changes in Gantt
+- <span class=submethod>**RouterFunction (entity, action, data, id): Promise | object | void**</span> - the router function to process changes in Gantt
     - **_entity_** - (*string*) - the name of the relevant entity. Possible values are: "task"|"link"|"resource"|"assignment"
     - **_action_** - (*string*) - the name of the relevant action. Possible values are:  "create"|"update"|"delete"
     - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - the processed object
