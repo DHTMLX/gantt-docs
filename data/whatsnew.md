@@ -10,6 +10,21 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.10
+---------------
+<span class='release_date'>April 22, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue preventing changes to the `parent` field value in the [Lightbox](desktop/default_edit_form.md)
+- Fix excessive scroll speed when using a mouse wheel in Firefox 88 and newer
+- Fix the inability to drag [project tasks](desktop/task_types.md#projecttasks) when a subtask is unscheduled and lacks date parameters
+- Ensure [gantt.render()](api/gantt_render.md) is not called unexpectedly during the [gantt.silent](api/gantt_silent.md) operation when using the api/gantt_open.md or api/gantt_close.md methods
+- Fix the issue where [project tasks](desktop/task_types.md#projecttasks) are not repainted if the api/gantt_onbeforetaskchanged_event.md event returns `false`
+- Ensure that task progress bars span the full width of the task when expected
+- Remove invalid WAI-ARIA attributes from read-only task links to improve [accessibility](desktop/accessibility.md#waiariaattributes)
+- Fix the issue where task bar resizers do not adapt to changes in task bar height
+
 9.0.9
 ---------------
 <span class='release_date'>April 16, 2025. Bugfix release</span>
