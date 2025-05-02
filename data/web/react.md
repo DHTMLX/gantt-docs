@@ -232,11 +232,11 @@ export default function BasicInitDemo() {
   const props = {
     data: {
       load: "/api/data",
-      save: (entity, action, data, id){
-          console.log(`${entity} - ${action} - ${id}`, data);;
+      save: (entity, action, data, id) => {
+          console.log(`${entity} - ${action} - ${id}`, data);
       }
     }
-  }
+  };
 
   return (
     <ReactGantt ...{props} />
