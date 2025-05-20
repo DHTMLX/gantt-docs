@@ -915,6 +915,40 @@ export default function GanttTemplatesDemo() {
 
 Alternatively, you can access the [inner Gantt object](#accessingtheunderlyingganttapi) and use [working time](desktop/working_time.md) methods directly.
 
+Grouping Tasks
+-----------------
+
+Use the `groupTasks` prop to [group tasks](desktop/grouping.md) by any of task's properties:
+
+~~~js
+  const [grouping, setGrouping] = useState<GroupConfig | boolean>({
+    relation_property: 'status',
+    groups:[
+      {id: 1, name: "New"},
+      {id: 2, name: "In Progress"},
+      {id: 3, name: "Done"}
+    ],
+    group_id: "key",
+    group_text: "label"
+  });
+
+  return (
+  <ReactGantt
+    ref={ganttRef}
+    tasks={tasks}
+    links={links}
+    groupTasks={grouping}
+  />
+);
+~~~
+
+To disable grouping, set `groupTasks` to `false`:
+
+~~~js
+setGrouping(false);
+~~~
+
+
 Vertical Markers in Timeline Area
 -----------------
 
