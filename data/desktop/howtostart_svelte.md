@@ -4,10 +4,7 @@ dhtmlxGantt with Svelte
 You should be familiar with the basic concepts and patterns of Svelte to use this documentation. If 
 you are not, please refer to the [Svelte documentation](https://svelte.dev/) for a getting-started tutorial.
 
-DHTMLX Gantt is compatible with Svelte. We have prepared code examples of how to use DHTMLX 
-Gantt with Svelte. To check online samples, please refer to the corresponding [Example on Replit](https://replit.com/@dhtmlx/dhtmlx-gantt-with-svelte).
-
-You can also [check the demo on GitHub](https://github.com/DHTMLX/svelte-gantt-demo).
+DHTMLX Gantt is compatible with Svelte. You can check the corresponding example on GitHub: [DHTMLX Gantt with Svelte Demo](https://github.com/DHTMLX/svelte-gantt-demo).
 
 ## Creating a project
 

@@ -7,10 +7,7 @@ dhtmlxGantt with React
 You should be familiar with the basic concepts and patterns of [React](https://react.dev/) to use this documentation. If
 you are not, please refer to the [React documentation](https://reactjs.org/docs/getting-started.html) for a getting-started tutorial.
 
-DHTMLX Gantt is compatible with React. We have prepared code examples of how to use DHTMLX Gantt with React. 
-To check online samples, please refer to the corresponding [Example on Replit](https://replit.com/@dhtmlx/dhtmlx-gantt-with-react). 
-
-You can also [check the demo on GitHub](https://github.com/DHTMLX/react-gantt-demo). 
+DHTMLX Gantt is compatible with React. You can check the corresponding example on GitHub: [DHTMLX Gantt with React Demo](https://github.com/DHTMLX/react-gantt-demo). 
 
 ## Creating a project
 
