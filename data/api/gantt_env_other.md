@@ -21,7 +21,7 @@ The possible flags are:
 - isChrome	- set to true if browser is Chrome
 - isSafari	- set to true if browser is Safari
 - isEdge	- set to true if browser is Edge
-- isSalesforce - set true if Gantt runs inside a SalesForce app
+- isSalesforce - set to true if Gantt runs inside a SalesForce app
 - isFF		- set to true if browser is Firefox
 - isIE		- set to true if browser is Internet Explorer
 - isOpera	- set to true if browser is Opera

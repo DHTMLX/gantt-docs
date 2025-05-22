@@ -18,13 +18,13 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - Fix the issue where api/gantt_mergecalendars.md merged `customWeeks` values incorrectly
 - Fix the error thrown in the `onrender` function when the [column](desktop/specifying_columns.md#wbscode) `name` includes spaces
-- Fix the issue where Gantt stayed in read-only mode after [click_drag](desktop/extensions_list.md#advanceddragndrop) the Timeline when the [S-Curve Overlay](desktop/baselines.md#extraoverlayforthechart) is enabled
-- Fix the issue where task duration was reset to `0` when using a [Resource calendar](desktop/resource_management.md) and the [Resources](desktop/resource_management.md#resourceviewpanel) section is placed below the duration section of the [Lightbox](desktop/default_edit_form.md)
+- Fix the issue where Gantt stayed in read-only mode after [click_drag](desktop/extensions_list.md#advanceddragndrop) the Timeline when the [S-Curve Overlay](desktop/baselines.md#extraoverlayforthechart) was enabled
+- Fix the issue where task duration was reset to `0` when using a [Resource calendar](desktop/resource_management.md) and the [Resources](desktop/resource_management.md#resourceviewpanel) section was placed below the duration section of the [Lightbox](desktop/default_edit_form.md)
 - Fix the console error triggered by the "This is a Trial version" warning when Gantt is used in **React StrictMode**
-- Fix the issue where the api/gantt_adjusttaskheightforbaselines function did not recalculate row height when [gantt.config.baselines.render_mode](api/gantt_baselines_config.md#rendermode) is disabled
+- Fix the issue where the api/gantt_adjusttaskheightforbaselines function did not recalculate row height when [gantt.config.baselines.render_mode](api/gantt_baselines_config.md#rendermode) was disabled
 - Fix the issue preventing tasks from being displayed when the Timeline is [hidden](api/gantt_show_chart_config.md) in the Salesforce environment
 - Fix the issue where calendars are not inherited from parent tasks when [dynamic_resource_calendars](api/gantt_dynamic_resource_calendars_config.md) config is disabled
-- Fix the issue where scroll position reset on re-render when [ReactGantt](web/react.md) is in groupBy mode
+- Fix the issue where scroll position reset on re-render when [ReactGantt](web/react.md) was in groupBy mode
 
 ### Updates
 
