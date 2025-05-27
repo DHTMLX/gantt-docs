@@ -5,6 +5,8 @@ On this page you'll find the full list of properties that the task object may in
 
 The full list of properties of the link object is given in the [Link Properties](desktop/link_properties.md) article.
 
+
+
 Required properties
 -------------------
 
@@ -38,6 +40,8 @@ If you remove one of these properties for the loaded tasks, Gantt will start thr
 		</tr>
     </tbody>
 </table>
+
+
 
 Optional properties
 ------------------
@@ -177,7 +181,7 @@ These properties may or may not be defined. The default logic and templates of g
 		<tr>
 			<td><b class=subproperty>type</b></td>
             <td><i>string</i></td>
-			<td>the task type. The available values are stored in the api/gantt_types_config.md object:
+			<td>The task type. The available values are stored in the api/gantt_types_config.md object:
             <ul>
 				<li><a href="desktop/task_types.md#regulartasks">"task"</a> -  a regular task (<i>default value</i>).</li>
 				<li><a href="desktop/task_types.md#projecttasks">"project"</a> -  a task that starts, when its earliest child task starts, and ends, when its latest child ends. 
@@ -194,6 +198,8 @@ These properties may or may not be defined. The default logic and templates of g
 		</tr>
     </tbody>
 </table>
+
+
 
 Dynamic properties
 ------------------
@@ -357,12 +363,12 @@ Dynamic properties are created on the client and represent the current state of 
 ## Example
 
 ~~~js
-var data = {
-  tasks:[
-     	{id:1, text:"Project #1", start_date:"01-04-2020", duration:18},
-     	{id:2, text:"Task #1", start_date:"02-04-2020", duration:8, parent:1},
-     	{id:3, text:"Task #2", start_date:"11-04-2020", duration:8, parent:1}
-   	],
-    links:[]
+const data = {
+  tasks: [
+    { id: 1, text: "Project #1", start_date: "01-04-2025", duration: 18 },
+    { id: 2, text: "Task #1", start_date: "02-04-2025", duration: 8, parent: 1 },
+    { id: 3, text: "Task #2", start_date: "11-04-2025", duration: 8, parent: 1 }
+  ],
+  links: []
 };
 ~~~

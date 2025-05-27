@@ -10,6 +10,95 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.10
+---------------
+<span class='release_date'>April 22, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue preventing changes to the `parent` field value in the [Lightbox](desktop/default_edit_form.md)
+- Fix excessive scroll speed when using a mouse wheel in Firefox 88 and newer
+- Fix the inability to drag [project tasks](desktop/task_types.md#projecttasks) when a subtask is unscheduled and lacks date parameters
+- Ensure [gantt.render()](api/gantt_render.md) is not called unexpectedly during the [gantt.silent](api/gantt_silent.md) operation when using the api/gantt_open.md or api/gantt_close.md methods
+- Fix the issue where [project tasks](desktop/task_types.md#projecttasks) are not repainted if the api/gantt_onbeforetaskchanged_event.md event returns `false`
+- Ensure that task progress bars span the full width of the task when expected
+- Remove invalid WAI-ARIA attributes from read-only task links to improve [accessibility](desktop/accessibility.md#waiariaattributes)
+- Fix the issue where task bar resizers do not adapt to changes in task bar height
+
+9.0.9
+---------------
+<span class='release_date'>April 16, 2025. Bugfix release</span>
+
+### Updates
+
+- Samples for [React Gantt](web/react.md) were added to the Commercial, Enterprise, Ultimate, and Evaluation packages
+
+### Fixes
+
+- Fix the issue where mouse wheel zooming stopped working after calling the [resetLayout](api/gantt_resetlayout.md) method
+- Fix the issue where the [Quick Info](desktop/quick_info.md) popup appeared after clicking the expand/collapse button in the [Timeline](desktop/configuring_time_scale.md) or [Grid](desktop/specifying_columns.md) views
+- Fix the error that occurred when destroying Gantt without initializing the grid view
+- Fix the error that occurred when loading a task with a non-existent parent while the [Undo extension](desktop/undo_redo.md) was enabled
+- Fix the issue where the [click_drag](desktop/extensions_list.md#advanceddragndrop) extension did not function on touch devices
+- Improve grid scrolling responsiveness on touch devices
+
+9.0.7
+---------------
+<span class='release_date'>March 27, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the error that occurs when clicking on a task in the timeline without a grid if [keyboard_navigation](desktop/keyboard_navigation.md) is enabled
+- Correct [WBS code](desktop/specifying_columns.md#wbscode) calculation for sorted tasks that include a [placeholder task](api/gantt_placeholder_task_config.md)
+- Resolve the issue where scale cells in the resource timeline disappear upon collapsing tasks or [resizing the grid](desktop/layout_config.md#defaultlayout)
+- Ensure that the correct task order is maintained when adding both child and parent tasks inside the [`gantt.silent`](api/gantt_silent.md) function
+- Preserve focus in editable [resource cells](desktop/resource_management.md#resourcecellvalue) after the value has been edited
+- Prevent Gantt from scrolling to the leftmost position of the grid when clicking on a task
+- Retain the `group` property when adding new tasks while in the [group](api/gantt_groupby.md) mode
+- Fix the issue where [markers](desktop/markers.md) are not displayed if the timeline has been initially disabled
+- Prevent duplicate [markers](desktop/markers.md) when the chart is not initially displayed in the layout configuration
+- Fix the disappearing of drag handles (link, progress, task resize) after [dragging the timeline](api/gantt_drag_timeline_config.md)
+- Ensure the [predecessor inline editor](desktop/inline_editors_ext.md#predecessoreditor) functions correctly when the link id type is numeric
+- Prevent duplication of the `gantt_marker_area` elements
+- Fix the [undo](desktop/undo_redo.md) functionality with the `changeTaskId` action
+
+9.0.6
+---------------
+<span class='release_date'>March 18, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue with the [lightbox](desktop/default_edit_form.md) where buttons did not reflect the current locale until Gantt was reinitialized
+- Resolve an error that occurred when deleting links with partially loaded tasks
+- Prevent tasks from incorrectly moving to the bottom of their branches after changing the `parent` property type from numeric to string
+- Improve scrollbar behavior by adjusting the resizers near scrollbars
+- Ensure that [resource assignments](desktop/resource_management.md#assigningresources) remain when adding tasks within [gantt.batchUpdate](api/gantt_batchupdate.md)
+- Fix an issue causing tasks to disappear during drag-and-drop actions in the [infinite scale](desktop/configuring_time_scale.md#infinitescroll)
+- Ensure the correct display of resource names in the [lightbox](desktop/default_edit_form.md) after data is parsed multiple times
+- Fix an incorrect date calculation in [`getClosestWorkTime`](api/gantt_getclosestworktime.md) when using the api/gantt_duration_step_config.md config
+- Allow the [onColumnDragMove](api/gantt_reorder_grid_columns_config.md) event to be canceled
+- Fix a compatibility issue preventing the trial build from running in Lightning Web Components (LWC)
+- Resolve issues related to `fetchTasks` and api/gantt_deepcopy_on_parse_config.md configurations that affected the [resource panel](desktop/resource_management.md#resourceviewpanel)
+- Correct the appearance of font icons during Gantt initialization
+
+9.0.5
+---------------
+<span class='release_date'>February 28, 2025. Bugfix release</span>
+
+- Fix the error that occurs while resizing rows in the [Resource Grid](desktop/resource_management.md#resourceviewpanel)
+- Ensure the last year is specified in the range specified by the **year_range** property of the [Time control](desktop/time.md#properties)
+- Correct the position of link arrows affected by the `line-height` CSS style
+- Fix the error that occurs while loading [collections](desktop/supported_data_formats.md#jsonwithcollections) without the `links` array
+- Resolve the issue with `gantt.config.baselines` when it is falsy but not explicitly set to `false`
+- Fix the issue where [click_drag](desktop/extensions_list.md#advanceddragndrop) doesn't work after calling [resetLayout](api/gantt_resetlayout.md)
+- Ensure selected child tasks are not displayed above their parent when [keyboard_navigation](desktop/keyboard_navigation.md) is enabled
+- Fix keyboard navigation issues that occur when task IDs contain single quotes
+- Correct [calculateEndDate](api/gantt_calculateenddate.md) behavior when the duration is negative
+- Resolve the error that occurs while loading datasets with [baselines](desktop/inbuilt_baselines.md) without an active timeline
+- Ensure grid cells are focused even when tasks fall outside the chart time range
+- Fix the error that occurs while partially deleting a date value in the [inline editor](desktop/inline_editors_ext.md)
+- Fix the issue where the [resource panel](desktop/resource_management.md#resourceviewpanel) is displayed incorrectly after filtering when `fetchTasks` is enabled
+
 9.0.4
 ---------------
 <span class='release_date'>December 3, 2024. Bugfix release</span>
