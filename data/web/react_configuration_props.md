@@ -84,6 +84,12 @@ Available Props
         editor interface.</td>
     </tr>
     <tr>
+      <td>groupTasks</td>
+      <td>GroupConfig | boolean | null</td>
+      <td>Grouping configuration object or false/null to disable grouping (see <a href="api/gantt_groupby.md">Grouping Tasks
+</a>.).</td>
+    </tr>
+    <tr>
       <td>filter</td>
       <td>((task: Task) =&gt; boolean) | null</td>
       <td>A function used to filter Gantt tasks.</td>
