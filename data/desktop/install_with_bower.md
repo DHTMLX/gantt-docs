@@ -27,8 +27,8 @@ Note that the trial Gantt version is available 30 days only.
 
 **Professional version**
 
-Send your **license number** to the ***contact@dhtmlx.com*** email to receive a login and a password for a private **npm** as well as a detailed guide on how to
-install Gantt. Note that a private **npm** is available before the expiration of the proprietary Gantt license.
+You can access the DHTMLX private **npm** directly in the [Client's Area](https://dhtmlx.com/clients/) by generating your login and password for **npm**. 
+A detailed installation guide is also available there. Please note that access to the private **npm** is available only while your proprietary Gantt license is active.
 
 
 NuGet
