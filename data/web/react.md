@@ -721,8 +721,7 @@ function Demo() {
       },
       { name: "start_date", width: 150 },
       { name: "add", width: 44 }
-    ],
-    editable: true
+    ]
   };
 
   return (
