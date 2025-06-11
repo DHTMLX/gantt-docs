@@ -10,17 +10,17 @@ parse
 
 @example:
 gantt.parse({
-	data:[
-        {id:1, text:"Project #2", start_date:"01-04-2023", duration:18},
-        {id:2, text:"Task #1",    start_date:"02-04-2023", duration:8,
-    		progress:0.6, parent:1},
-        {id:3, text:"Task #2",    start_date:"11-04-2023", duration:8,
-    		progress:0.6, parent:1}
-    ],
-    links:[
-        { id:1, source:1, target:2, type:1},
-        { id:2, source:2, target:3, type:0}
-    ]
+	tasks: [
+		{ id: 1, text: "Project #2", start_date: "01-04-2026", duration: 18 },
+		{ id: 2, text: "Task #1", start_date: "02-04-2026", duration: 8, progress: 0.6,
+			parent: 1 },
+		{ id: 3, text: "Task #2", start_date: "11-04-2026", duration: 8, progress: 0.6,
+			parent: 1 }
+	],
+	links: [
+		{ id: 1, source: 1, target: 2, type: 1 },
+		{ id: 2, source: 2, target: 3, type: 0 }
+	]
 });
 
 @template:	api_method
@@ -33,11 +33,11 @@ gantt.parse({
     desktop/supported_data_formats.md
     desktop/supported_data_formats.md#jsonwithcollections (read how to load JSON with Collections)
 @descr:
-Gantt expects that *an array with tasks* will be named either **data** or **tasks** whereas *an array with links* will be named **links**.
+Gantt expects that *an array with tasks* will be named either **tasks** or **data** whereas *an array with links* will be named **links**.
 
 This is the list of expected properties:
 
-- <span class=subproperty>**data**</span> - (*[] | NewTask[]*) - the array with the task data
+- <span class=subproperty>**tasks**</span> - (*[] | NewTask[]*) - the array with the task data
 - <span class=subproperty>**links?**</span> - (*Link[]*) - the array with the link data
 - <span class=subproperty>**resources?**</span> - (*NewResourceItem[]*) - the array with the resource data
 - <span class=subproperty>**assignments?**</span> - (*NewAssignmentItem[]*) - the array with the assignment data
@@ -45,33 +45,30 @@ This is the list of expected properties:
 
 ~~~js
 gantt.parse({
-    data: [
-        { id: 1, start_date: "2025-09-23", duration: 42, 
-    		text: "House Construction" },
-        { id: 2, start_date: "2025-12-02", duration: 60, 
-    		text: "House Construction" },
-    ],
-    "links": [
-        { id: "1", source: "1", target: "2", type: "0" },
-    ],
-    "resources": [
-        { id: 1, text: "Anna, Architect", unit: "hours/day", 
-    		default_value: 8, type: "work" },
-    ],
-    "assignments": [
-      { task_id: "1", resource_id: "1", value: "8" },
-      { task_id: "2", resource_id: "1", value: "8", 
-    		mode: "fixedDates", start_date: "2025-09-23", 
-    		end_date: "2025-09-25", duration: 4, delay: 2,  },
-      { task_id: "2", resource_id: "1", value: "8", 
-    		start_date: new Date("2025-09-23 00:00:00"), 
-    		end_date: new Date("2025-09-26 00:00:00"), },
-    ]
-})
+	tasks: [
+		{ id: 1, start_date: "2026-09-23", duration: 42, text: "House Construction" },
+		{ id: 2, start_date: "2026-12-02", duration: 60, text: "House Construction" }
+	],
+	links: [
+		{ id: 1, source: 1, target: 2, type: 0 }
+	],
+	resources: [
+		{ id: 1, text: "Anna, Architect", unit: "hours/day", default_value: 8,
+			type: "work" }
+	],
+	assignments: [
+		{ task_id: 1, resource_id: 1, value: "8" },
+		{ task_id: 2, resource_id: 1, value: "8", mode: "fixedDates",
+			start_date: "2026-09-23", end_date: "2026-09-25", duration: 4, delay: 2 },
+		{ task_id: 2, resource_id: 1, value: "8",
+			start_date: new Date("2026-09-23T00:00:00"),
+			end_date: new Date("2026-09-26T00:00:00") }
+	]
+});
 ~~~
 
 
-The **data** or **tasks** array expects the **NewTask** object that is different from the **Task** object. It can be a string, an empty object.
+The **tasks** or **data** array expects the **NewTask** object that is different from the **Task** object. It can be a string, an empty object.
 It can have the same properties as the [**Task** object](desktop/task_properties.md), and you can add any custom properties there. 
 The difference is that some properties of the **Task** object that start from the *$* sign are ignored and the dates can have the *string* type. 
 Here is the type description:
@@ -91,14 +88,11 @@ This is not the full list of possible task properties. For that, please refer to
 
 ~~~js
 gantt.parse({
-    data: [
-        { id: 1, start_date: "2025-09-23", duration: 42, 
-    		text: "House Construction" },
-    ]
+	tasks: [
+		{ id: 1, text: "House Construction", start_date: "2026-09-23", duration: 42 },
+	]
 })
 ~~~
-
-
 ---
 
 
@@ -106,13 +100,12 @@ The **links** array expects the [**Link** objects](desktop/link_properties.md).
 
 ~~~js
 gantt.parse({
-    data: [],
-    links: [
-        { id: "1", source: "1", target: "2", type: "0" },
-    ]
+	tasks: [],
+	links: [
+		{ id: "1", source: "1", target: "2", type: "0" },
+	]
 })
 ~~~
-
 ---
 
 
@@ -129,15 +122,13 @@ The **resources** array expects the **NewResourceItem** object that may have the
 
 ~~~js
 gantt.parse({
-    data: [],
-    resources: [
-        { id: 1, text: "Anna, Architect", unit: "hours/day", 
-    		default_value: 8, type: "work" },
-    ]
+	tasks: [],
+	resources: [
+		{ id: 1, text: "Anna, Architect", unit: "hours/day", default_value: 8,
+			type: "work" },
+	]
 })
 ~~~
-
-
 ---
 
 
@@ -158,14 +149,14 @@ The **assignments** array expects the **NewAssignmentItem** object that may have
 
 ~~~js
 gantt.parse({
-    data: [],
-    assignments: [
-      { task_id: "1", resource_id: "1", value: "8" },
-    ]
+	tasks: [],
+	assignments: [
+		{ task_id: "1", resource_id: "1", value: "8" },
+	]
 })
 ~~~
-
 ---
+
 
 The **collections** object allows loading any custom data. The properties can have any name, and the value should be an array that contains the collection items:
 
@@ -178,27 +169,22 @@ The **СollectionItem** is an object that can have any properties. It has the fo
 
 ~~~js
 gantt.parse({
-    data: [
-        { "id": "1", "text": "Task #1", "priority": 1, 
-    		"start_date": "02-04-2019", "duration": 1, },
-        { "id": "2", "text": "Task #2", "priority": 2,  
-    		"start_date": "01-04-2019", "duration": 1, },
-        { "id": "3", "text": "Task #3", "priority": 3,  
-    		"start_date": "02-04-2019", "duration": 1, },
-        { "id": "4", "text": "Task #4", "priority": 1,  
-    		"start_date": "03-04-2019", "duration": 1, },
-    ],
-    links: [],
-    collections: {
-        task_priority: [
-            { key: 1, label: "High" },
-            { key: 2, label: "Normal" },
-            { key: 3, label: "Low" }
-        ]
-    }
+	tasks: [
+		{ id: "1", text: "Task #1", priority: 1, start_date: "02-04-2026", duration:1 },
+		{ id: "2", text: "Task #2", priority: 2, start_date: "01-04-2026", duration:1 },
+		{ id: "3", text: "Task #3", priority: 3, start_date: "02-04-2026", duration:1 },
+		{ id: "4", text: "Task #4", priority: 1, start_date: "03-04-2026", duration:1 }
+	],
+	links: [],
+	collections: {
+		task_priority: [
+			{ key: 1, label: "High" },
+			{ key: 2, label: "Normal" },
+			{ key: 3, label: "Low" }
+		]
+	}
 });
 ~~~
-
 ---
 
 
@@ -206,11 +192,11 @@ If you want to load data which doesn't contain tasks, you still need to define a
 
 ~~~js
 gantt.parse({
-    tasks:[],
-    links:[
-        { id:1, source:1, target:2, type:1},
-        { id:2, source:2, target:3, type:0}
-    ]
+	tasks: [],
+	links: [
+		{ id: 1, source: 1, target: 2, type: 1 },
+		{ id: 2, source: 2, target: 3, type: 0 }
+	]
 });
 ~~~
 
@@ -219,34 +205,30 @@ From v8.0, besides tasks and links, you can load resources and resource assignme
 
 ~~~js
 gantt.parse({
-    tasks: [
-        ...,
-        {
-            id: 5,
-            text: "Interior office",
-            type: "task",
-            start_date: "03-04-2024 00:00",
-            duration: 7,
-            parent: "2",
-            owner: [
-                {
-                    resource_id: "6",
-                    value: 3,
-                    start_date: "03-04-2024 00:00",
-                    end_date: "05-04-2024 00:00",
-                }
-            ]
-        },
-        ...
-    ],
-    links: [],
-    resources: [
-        {id: 6, text: "John", unit: "hours/day" },
-        {id: 7, text: "Mike", unit: "hours/day" },
-        {id: 8, text: "Anna", unit: "hours/day" },
-        {id: 9, text: "Bill", unit: "hours/day" },
-        {id: 10, text: "Floe", unit: "hours/day" }
-    ]
+	tasks: [
+		// ...
+		{
+			id: 5,
+			text: "Interior office",
+			type: "task",
+			start_date: "03-04-2026 00:00",
+			duration: 7,
+			parent: "2",
+			owner: [
+				{ resource_id: "6", value: 3, start_date: "03-04-2026 00:00",
+					end_date: "05-04-2026 00:00" }
+			]
+		},
+		// ...
+	],
+	links: [],
+	resources: [
+		{ id: 6, text: "John", unit: "hours/day" },
+		{ id: 7, text: "Mike", unit: "hours/day" },
+		{ id: 8, text: "Anna", unit: "hours/day" },
+		{ id: 9, text: "Bill", unit: "hours/day" },
+		{ id: 10, text: "Floe", unit: "hours/day" }
+	]
 });
 ~~~
 
