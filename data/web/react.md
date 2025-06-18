@@ -32,7 +32,9 @@ Note that the trial React Gantt component is available for 30 days only.}}
 **Installing the PRO version of React Gantt component**
 
 {{note
-You can access the DHTMLX private npm directly in the [Client's Area](https://dhtmlx.com/clients/) by generating your login and password for npm. A detailed installation guide is also available there. Please note that access to the private npm is available only while your proprietary Gantt license is active.
+You can access the DHTMLX private npm directly in the [Client's Area](https://dhtmlx.com/clients/) by generating your login and password for npm. 
+To install the React Gantt package, follow the instructions provided in the README file. 
+Please note that access to the private npm is available only while your proprietary Gantt license is active.
 }}
 
 Version Requirements
