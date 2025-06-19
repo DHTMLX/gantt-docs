@@ -1037,12 +1037,28 @@ See the DHTMLX Gantt [API Reference](api/refs/gantt_methods.md) for the full lis
 Compatibility with SSR Frameworks (Next.js, Remix)
 --------------
 
+{{note Starting from ReactGantt v9.0.12 the wrapper is SSR‑ready. You can import it in Next.js or Remix without turning SSR off. If you use older versions - you must disable or delay server-side rendering for any route or component that uses ReactGantt.}}
 
-{{note Since the underlying DHTMLX Gantt library is a purely browser widget (it reads and manipulates the DOM directly), it cannot be rendered in a Node/SSR environment. Therefore, you must disable or delay server-side rendering for any route or component that uses ReactGantt. }}
+{{note During the server render the component outputs only a placeholder `<div>`, the actual Gantt markup is created during the browser‑side hydration phase.}}
 
 #### Next.js
 
-If you're using Next.js, you can dynamically import your ReactGantt component with SSR disabled:
+The wrapper already contains a top‑level "use client" directive, so you do **not** need dynamic import and can import ReactGantt directly:
+
+~~~js
+import "@dhx/react-gantt/dist/react-gantt.css";
+import ReactGantt from '@dhx/react-gantt';
+
+export default function GanttPage() {
+  return (
+    <div style={ { height: '100vh' } }>
+      <ReactGantt tasks={/* ... */} links={/* ... */} />
+    </div>
+  );
+}
+~~~
+
+If you use legacy versions (v9.0.11 or older), you need to dynamically import your ReactGantt component with SSR disabled:
 
 ~~~js
 import dynamic from 'next/dynamic';
@@ -1059,11 +1075,28 @@ export default function GanttPage() {
   );
 }
 ~~~
-This ensures that Next.js only loads your Gantt in the client's browser, preventing errors during the server-render phase.
+
 
 #### Remix
 
-In Remix, you can conditionally render the Gantt component only on the client:
+Starting from v9.0.12, no `<ClientOnly>` wrapper is required:
+
+~~~js
+
+import "@dhx/react-gantt/dist/react-gantt.css";
+import ReactGantt from '@dhx/react-gantt';
+
+export default function GanttPage() {
+  return (
+    <div style={ { height: '100vh' } }>
+      <ReactGantt tasks={/* ... */} links={/* ... */} />
+    </div>
+  );
+}
+~~~
+
+
+If you use legacy versions (v9.0.11 or older), you have to conditionally render the Gantt component only on the client:
 
 ~~~js
 import { ClientOnly } from 'remix-utils/client-only';
@@ -1083,8 +1116,6 @@ export default function GanttPage() {
   );
 }
 ~~~
-
-That pattern defers rendering of the actual Gantt until the component is hydrated in the browser, avoiding SSR errors.
 
 Next Steps
 -------------------
