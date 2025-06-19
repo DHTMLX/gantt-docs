@@ -1037,13 +1037,14 @@ See the DHTMLX Gantt [API Reference](api/refs/gantt_methods.md) for the full lis
 Compatibility with SSR Frameworks (Next.js, Remix)
 --------------
 
-{{note Starting from ReactGantt v9.0.12 the wrapper is SSR‑ready. You can import it in Next.js or Remix without turning SSR off. If you use older versions - you must disable or delay server-side rendering for any route or component that uses ReactGantt.}}
+{{note Starting from ReactGantt v9.0.12 the wrapper is SSR-ready. You can import it in Next.js or Remix without turning SSR off. If you use older versions - you must disable or delay server-side rendering for any route or component that uses ReactGantt.}}
 
-{{note During the server render the component outputs only a placeholder `<div>`, the actual Gantt markup is created during the browser‑side hydration phase.}}
+{{note During the server render the component outputs only a placeholder `<div>`, the actual Gantt markup is created during the browser-side hydration phase.}}
 
 #### Next.js
 
-The wrapper already contains a top‑level "use client" directive, so you do **not** need dynamic import and can import ReactGantt directly:
+
+The wrapper already contains a top-level "use client" directive, so you do **not** need dynamic import and can import ReactGantt directly:
 
 ~~~js
 import "@dhx/react-gantt/dist/react-gantt.css";
