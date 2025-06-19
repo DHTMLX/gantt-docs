@@ -18,8 +18,8 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 - Ensure the [contrast-white](desktop/skins.md#contrastwhiteskin) skin passes color contrast accessibility tests
 - Fix the issue where [dynamic loading](desktop/dynamic_loading.md) stops working after calling [gantt.clearAll()](api/gantt_clearall.md)
-- Prevent the [Tooltip](desktop/tooltips.md) from rendering outside the Gantt container when displaying long text
-- Fix the issue where [server updates](desktop/server_side.md) were not finalized when [keyboard navigation](desktop/keyboard_navigation.md) is active
+- Prevent the [Tooltip](desktop/tooltips.md) from rendering outside the Gantt container when displaying a long text
+- Fix the issue where [server updates](desktop/server_side.md) were not finalized when [keyboard navigation](desktop/keyboard_navigation.md) was active
 - Fix the incorrect work of custom class names applied to [milestone baselines](desktop/inbuilt_baselines.md#milestonebaseline)
 
 ### Updates
