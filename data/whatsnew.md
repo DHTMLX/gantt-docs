@@ -10,6 +10,22 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.12
+---------------
+<span class='release_date'>June 19, 2025. Bugfix release</span>
+
+### Fixes
+
+- Ensure the [contrast-white](desktop/skins.md#contrastwhiteskin) skin passes color contrast accessibility tests
+- Fix the issue where [dynamic loading](desktop/dynamic_loading.md) stops working after calling [gantt.clearAll()](api/gantt_clearall.md)
+- Prevent the [Tooltip](desktop/tooltips.md) from rendering outside the Gantt container when displaying long text
+- Fix the issue where [server updates](desktop/server_side.md) were not finalized when [keyboard navigation](desktop/keyboard_navigation.md) is active
+- Fix the incorrect work of custom class names applied to [milestone baselines](desktop/inbuilt_baselines.md#milestonebaseline)
+
+### Updates
+
+- [React Gantt](web/react.md) is now compatible with **Next.js** and **Remix** SSR frameworks without additional configuring
+
 9.0.11
 ---------------
 <span class='release_date'>May 27, 2025. Bugfix release</span>
