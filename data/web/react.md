@@ -1039,7 +1039,7 @@ Compatibility with SSR Frameworks (Next.js, Remix)
 
 {{note Starting from ReactGantt v9.0.12 the wrapper is SSR-ready. You can import it in Next.js or Remix without turning SSR off. If you use older versions - you must disable or delay server-side rendering for any route or component that uses ReactGantt.}}
 
-{{note During the server render the component outputs only a placeholder `<div>`, the actual Gantt markup is created during the browser-side hydration phase.}}
+{{note During the server rendering, the component outputs only a placeholder `<div>`, the actual Gantt markup is created during the browser-side hydration phase.}}
 
 #### Next.js
 

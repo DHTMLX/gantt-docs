@@ -24,7 +24,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### Updates
 
-- [React Gantt](web/react.md) is now compatible with **Next.js** and **Remix** SSR frameworks without requiring additional configuration
+- [React Gantt](web/react.md) is now compatible with **Next.js** and **Remix** SSR frameworks without additional configuring
 
 9.0.11
 ---------------
