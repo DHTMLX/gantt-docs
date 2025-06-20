@@ -44,12 +44,25 @@ gantt.config.click_drag = {
 	- **tasksInRows** - (*array*) an array of tasks selected between the start and end coordinates vertically
 - **singleRow** - (*boolean*) true to add selection only in one row equal to the height of a task
 
-You can attach the following events to the element passed as a viewPort (gantt.$task_data by default - a part of the timeline with task bars):
+You can attach the following events to the element of a timeline viewport (gantt.$task_data by default - a part of the timeline with task bars):
 
 - **onBeforeDrag** - fires after pressing the mouse button before starting to drag
 - **onDrag** - fires each time after dragging is started but before the mouse button is released
 - **onBeforeDragEnd** - fires after releasing the mouse button but before the rendered element is deleted and tasks that come under selection are searched for
 - **onDragEnd** - fires after removing a rendered element and finding tasks that come under selection but before calling the callback function (if specified)
+
+~~~js
+gantt.$task_data.attachEvent("onBeforeDrag", function (coords) {
+    gantt.message("onBeforeDrag event");
+});
+~~~
+
+{{editor	https://snippet.dhtmlx.com/l13f1cxl		Attaching event handlers for the "click_drag" extension}}
+
+{{note
+Note that the event handlers can be added just for an existing element. Thus you should add event handlers after Gantt initialization, otherwise they won't work, since
+the elements won't have been created yet.
+}}
 
 Creating tasks with drag-n-drop
 ---------------------------

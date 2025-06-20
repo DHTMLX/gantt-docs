@@ -150,7 +150,7 @@ gantt.ext.zoom.setLevel("year");
 gantt.ext.zoom.setLevel(5);
 ~~~
 
-- <span class=submethod>**getLevels (): array**</span> - allows getting all zooming levels
+- <span class=submethod>**getLevels (): ZoomLevel[]**</span> - allows getting all zooming levels
 
 ~~~js
 gantt.ext.zoom.getLevels();

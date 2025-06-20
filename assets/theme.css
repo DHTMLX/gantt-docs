@@ -507,3 +507,7 @@ body{
 html, body, .header, .footer{
     background: #5C6BAD;
 }
+
+/* lang switch */
+.langSelect { margin-top: 9px; display: inline-block; }
+.dx-i18n-content.svelte-12xgw0w .wx-popup{position:fixed;overflow:hidden;z-index:1000;background:#fff;box-shadow:0 3px 9px #0003;border:none;border-radius:8px;padding:8px 0}button.svelte-12xgw0w{outline:none;border:none;background:#fff;padding:4px 12px;cursor:pointer;border-radius:0}.dx-i18n-item.svelte-12xgw0w{display:block;width:100%;color:#202020;font-size:14px;font-weight:400;line-height:24px;text-align:left}.dx-i18n-item.svelte-12xgw0w:hover{background:#e6e6e6;outline:none}.dx-i18n-active.svelte-12xgw0w{font-size:14px;font-weight:400;line-height:24px;display:inline-block;width:22px}.dx-i18n-button.svelte-12xgw0w{background:transparent;color:#fff;padding:0 12px;display:flex;flex-direction:row}.dx-i18n-icon.svelte-12xgw0w{height:23px;width:20px;display:flex;align-items:center;justify-content:center}

@@ -19,5 +19,5 @@ gantt.templates.marker_class = function(marker){
 @template:	api_template
 @descr:
 
-@related: desktop/markers.md
+@related: desktop/markers.md#stylingmarkers
 

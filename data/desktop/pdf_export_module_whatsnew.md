@@ -1,6 +1,42 @@
 What's new in PDF Export Module
 ================================
 
+## 0.7.0
+    
+• Updated Electron version to 29
+
+• Added custom margin support for PDF export
+
+• Added support for footer and header on each page (including a way to specify the page number)
+
+• Added support for A0, A1, A2, and Ledger formats
+
+• Updated templates for Gantt and Scheduler
+
+• The `background-clip: text` and other style rules should work since it is supported by Chrome 122
+
+• Fixed PDF export with complex custom layout
+
+• Fixed partial content export when using the resource panel
+
+• Fixed empty pages in PDF when adding h1, h2 and similar tags in the `header`
+
+• Fixed export hang when using custom data with the `raw: true` and `merge_pages: true` configs
+
+• Fixed the Electron launch on Windows (EINVAL error)
+
+## 0.6.7
+
+• Updated templates for DHTMLX Gantt 9.0 raw export
+
+• Fixes for the sticky scale cells for the `raw` export
+
+## 0.6.6
+
+• Ignore unscheduled tasks when using export to Excel with the 'visual' config
+
+• Added templates for DHTMLX Gantt 9.0
+
 ## 0.6.5
 
 • Fixes for DHTMLX Scheduler 7.0 template

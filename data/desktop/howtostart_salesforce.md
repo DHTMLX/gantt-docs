@@ -1,7 +1,7 @@
 dhtmlxGantt with Salesforce LWC
 ===============================
 
-This tutorial describes how to add dhtmlxGantt into a [Salesforce Lightning Web Component](https://developer.salesforce.com/docs/component-library/documentation/en/lwc).
+This tutorial describes how to add dhtmlxGantt into a [Salesforce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide).
 
 If you use some other technology, check the list of available integration variants below:
 
@@ -13,7 +13,8 @@ If you use some other technology, check the list of available integration varian
 - desktop/howtostart_php_slim4.md
 - desktop/howtostart_ruby.md
 
-We will use [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli) to create Lightning Web Component and upload it to an organization. You can also install [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) to Visual Studio Code for working with development orgs. 
+We will use [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) to create Lightning Web Component and upload it to an organization. 
+You can also install [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) to Visual Studio Code for working with development orgs. 
 
 {{note
 The complete source code is [available on GitHub](https://github.com/DHTMLX/salesforce-gantt-demo).
@@ -26,7 +27,7 @@ You can have a look at the video guide that shows how to create a Gantt chart wi
 Prerequisites
 -------------------
 
-Install [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli) if you don't have it. See [this article](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm) for installation guidance.
+Install [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) if you don't have it. See [this article](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm) for installation guidance.
 
 Step 1. Creating a project
 ----------------------------

@@ -31,4 +31,5 @@ There is also a possiblity to set a custom unit. Read more on the topic [here](d
     - **_date_** - (*Date*) - a date that will be converted
 - <span class=submethod>**css? (date): any**</span> - a function that returns the name of a CSS class that will be applied to the scale units. Takes a date object as a parameter.
     - **_date_** - (*Date*) - a date that will be checked
+- <span class=subproperty>**sticky?**</span> - (*boolean*) - makes the scale label visible if the scale cell is larger than the viewport width
 

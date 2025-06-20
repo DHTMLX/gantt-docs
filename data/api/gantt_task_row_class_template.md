@@ -16,7 +16,7 @@ gantt.templates.task_row_class = function(start, end, task){
 
 @template:	api_template
 @returns:
-- text		string		CSS class for the item in question
+- text		string | void		a CSS class for the item in question
 @descr:
 Returns the CSS class for the item in question.
 
