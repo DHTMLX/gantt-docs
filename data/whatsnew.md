@@ -10,6 +10,43 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.12
+---------------
+<span class='release_date'>June 19, 2025. Bugfix release</span>
+
+### Fixes
+
+- Ensure the [contrast-white](desktop/skins.md#contrastwhiteskin) skin passes color contrast accessibility tests
+- Fix the issue where [dynamic loading](desktop/dynamic_loading.md) stops working after calling [gantt.clearAll()](api/gantt_clearall.md)
+- Prevent the [Tooltip](desktop/tooltips.md) from rendering outside the Gantt container when displaying a long text
+- Fix the issue where [server updates](desktop/server_side.md) were not finalized when [keyboard navigation](desktop/keyboard_navigation.md) was active
+- Fix the incorrect work of custom class names applied to [milestone baselines](desktop/inbuilt_baselines.md#milestonebaseline)
+
+### Updates
+
+- [React Gantt](web/react.md) is now compatible with **Next.js** and **Remix** SSR frameworks without additional configuring
+
+9.0.11
+---------------
+<span class='release_date'>May 27, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where api/gantt_mergecalendars.md merged `customWeeks` values incorrectly
+- Fix the error thrown in the `onrender` function when the [column](desktop/specifying_columns.md#wbscode) `name` includes spaces
+- Fix the issue where Gantt stayed in read-only mode after [click_drag](desktop/extensions_list.md#advanceddragndrop) the Timeline when the [S-Curve Overlay](desktop/baselines.md#extraoverlayforthechart) was enabled
+- Fix the issue where task duration was reset to `0` when using a [Resource calendar](desktop/resource_management.md) and the [Resources](desktop/resource_management.md#resourceviewpanel) section was placed below the duration section of the [Lightbox](desktop/default_edit_form.md)
+- Fix the console error triggered by the "This is a Trial version" warning when Gantt is used in **React StrictMode**
+- Fix the issue where the api/gantt_adjusttaskheightforbaselines.md function did not recalculate row height when [gantt.config.baselines.render_mode](api/gantt_baselines_config.md#rendermode) was disabled
+- Fix the issue preventing tasks from being displayed when the Timeline is [hidden](api/gantt_show_chart_config.md) in the Salesforce environment
+- Fix the issue where calendars are not inherited from parent tasks when [dynamic_resource_calendars](api/gantt_dynamic_resource_calendars_config.md) config is disabled
+- Fix the issue where scroll position reset on re-render when [ReactGantt](web/react.md) was in the groupBy mode
+
+### Updates
+
+- Add the `isSalesforce` flag to [gantt.env](api/gantt_env_other.md)
+- Add the `groupTasks` prop to [React Gantt](web/react.md#groupingtasks)
+
 9.0.10
 ---------------
 <span class='release_date'>April 22, 2025. Bugfix release</span>

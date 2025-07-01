@@ -31,9 +31,11 @@ Note that the trial React Gantt component is available for 30 days only.}}
 
 **Installing the PRO version of React Gantt component**
 
-{{note If you already own DHTMLX Gantt under a proprietary license, send your **license number** to ***contact@dhtmlx.com*** to receive login credentials for the private
-**npm** registry as well as a detailed guide on how to install the React Gantt component. Note that private **npm** access is available until your proprietary license expires.}}
-
+{{note
+You can access the DHTMLX private npm directly in the [Client's Area](https://dhtmlx.com/clients/) by generating your login and password for npm. 
+To install the React Gantt package, follow the instructions provided in the README file. 
+Please note that access to the private npm is available only while your proprietary Gantt license is active.
+}}
 
 Version Requirements
 --------------------
@@ -721,8 +723,7 @@ function Demo() {
       },
       { name: "start_date", width: 150 },
       { name: "add", width: 44 }
-    ],
-    editable: true
+    ]
   };
 
   return (
@@ -915,6 +916,40 @@ export default function GanttTemplatesDemo() {
 
 Alternatively, you can access the [inner Gantt object](#accessingtheunderlyingganttapi) and use [working time](desktop/working_time.md) methods directly.
 
+Grouping Tasks
+-----------------
+
+Use the `groupTasks` prop to [group tasks](desktop/grouping.md) by any of task's properties:
+
+~~~js
+  const [grouping, setGrouping] = useState<GroupConfig | boolean>({
+    relation_property: 'status',
+    groups:[
+      {id: 1, name: "New"},
+      {id: 2, name: "In Progress"},
+      {id: 3, name: "Done"}
+    ],
+    group_id: "key",
+    group_text: "label"
+  });
+
+  return (
+  <ReactGantt
+    ref={ganttRef}
+    tasks={tasks}
+    links={links}
+    groupTasks={grouping}
+  />
+);
+~~~
+
+To disable grouping, set `groupTasks` to `false`:
+
+~~~js
+setGrouping(false);
+~~~
+
+
 Vertical Markers in Timeline Area
 -----------------
 
@@ -1004,12 +1039,29 @@ See the DHTMLX Gantt [API Reference](api/refs/gantt_methods.md) for the full lis
 Compatibility with SSR Frameworks (Next.js, Remix)
 --------------
 
+{{note Starting from ReactGantt v9.0.12 the wrapper is SSR-ready. You can import it in Next.js or Remix without turning SSR off. If you use older versions - you must disable or delay server-side rendering for any route or component that uses ReactGantt.}}
 
-{{note Since the underlying DHTMLX Gantt library is a purely browser widget (it reads and manipulates the DOM directly), it cannot be rendered in a Node/SSR environment. Therefore, you must disable or delay server-side rendering for any route or component that uses ReactGantt. }}
+{{note During the server rendering, the component outputs only a placeholder `<div>`, the actual Gantt markup is created during the browser-side hydration phase.}}
 
 #### Next.js
 
-If you're using Next.js, you can dynamically import your ReactGantt component with SSR disabled:
+
+The wrapper already contains a top-level "use client" directive, so you do **not** need dynamic import and can import ReactGantt directly:
+
+~~~js
+import "@dhx/react-gantt/dist/react-gantt.css";
+import ReactGantt from '@dhx/react-gantt';
+
+export default function GanttPage() {
+  return (
+    <div style={ { height: '100vh' } }>
+      <ReactGantt tasks={/* ... */} links={/* ... */} />
+    </div>
+  );
+}
+~~~
+
+If you use legacy versions (v9.0.11 or older), you need to dynamically import your ReactGantt component with SSR disabled:
 
 ~~~js
 import dynamic from 'next/dynamic';
@@ -1026,11 +1078,28 @@ export default function GanttPage() {
   );
 }
 ~~~
-This ensures that Next.js only loads your Gantt in the client's browser, preventing errors during the server-render phase.
+
 
 #### Remix
 
-In Remix, you can conditionally render the Gantt component only on the client:
+Starting from v9.0.12, no `<ClientOnly>` wrapper is required:
+
+~~~js
+
+import "@dhx/react-gantt/dist/react-gantt.css";
+import ReactGantt from '@dhx/react-gantt';
+
+export default function GanttPage() {
+  return (
+    <div style={ { height: '100vh' } }>
+      <ReactGantt tasks={/* ... */} links={/* ... */} />
+    </div>
+  );
+}
+~~~
+
+
+If you use legacy versions (v9.0.11 or older), you have to conditionally render the Gantt component only on the client:
 
 ~~~js
 import { ClientOnly } from 'remix-utils/client-only';
@@ -1050,8 +1119,6 @@ export default function GanttPage() {
   );
 }
 ~~~
-
-That pattern defers rendering of the actual Gantt until the component is hydrated in the browser, avoiding SSR errors.
 
 Next Steps
 -------------------
