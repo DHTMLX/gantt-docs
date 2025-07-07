@@ -384,8 +384,9 @@ Dates are stringified in the "%Y-%m-%d %H:%i" format.
 - **resources** - an array of objects (each having the following properties: {*id:string, name:string, type:string, calendar: string*} 
 that represent the list of resources from the project file.
 - **worktime** - an object containing the working time settings from the project calendar.
-- **calendars** - an array containing objects for all calendars. Each calendar configuration object can contain the following attributes:
-	- **id** - (*id*) optional, the calendar id
+- **calendars** - an array containing objects for creating a new calendar. Each calendar configuration object can contain the following attributes:
+	- **id** - (id) optional, the calendar id
+    - **name** - (string) the calendar name
     - **hours** - (array) an array with global working hours, sets the start and end hours of the task
     - **dates** - (array) an array of dates that can contain:
     	- 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
@@ -539,7 +540,7 @@ gantt.attachEvent("onTaskLoading", function (task) {
 
 #### Adding and adjusting calendars
 
-Note that calendars aren't added during the import. You need to add them using the [addCalendar()](api/gantt_addcalendar.md) method. 
+Note that calendars aren't automatically added during the import. You need to add them using the [addCalendar()](api/gantt_addcalendar.md) method. 
 
 ~~~js
 var calendar = gantt.addCalendar({
@@ -552,7 +553,7 @@ After that, you should specify calendar settings via the [setWorkTime()](api/gan
 ~~~js
 gantt.config.work_time = true;
  
-//changes the working time of working days from ["8:00-17:00"] to ["9:00-18:00"]
+//changes the working time of the working days from ["8:00-17:00"] to ["9:00-18:00"]
 gantt.setWorkTime({ hours: ["9:00-18:00"] });
 ~~~
 
@@ -590,7 +591,7 @@ If there are resources in the file, they come in the **resources** array during 
 }
 ~~~
 
-If there are resource assignments, they will be imported in the **resource** array, where the assignment object contains the 
+If there are resource assignments, they will be imported in the **resources** array, where the assignment object contains the 
 *resource_id: string* and *value: number* parameters. For example:
 
 ~~~js
