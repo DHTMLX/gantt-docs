@@ -35,7 +35,7 @@ or
 npm start
 ~~~
 
-Now the app should be running on [http://localhost:4200](http://localhost:4200).
+Now the app should be running on **http://localhost:4200**.
 
 ![Gantt Angular app running](howtostart_frontend_frameworks/gantt_angular_app_run.png)
 
