@@ -49,7 +49,9 @@ The method takes as a parameter an object with configuration properties of an im
 - **projectProperties** - specifies an array of project properties that should be put into the response.
 - **taskProperties** - specifies an array of additional task properties to be imported.
 
-###Response
+Check the detailed descriptions of the import settings in the [related section](desktop/export_msproject.md#importsettings).
+
+### Response
 
 The response will contain a JSON of the following structure:
 
@@ -58,15 +60,29 @@ The response will contain a JSON of the following structure:
    data: {},
    config: {},
    resources: [],
-   worktime: {}
+   worktime: {},
+   calendars: []
 }
 ~~~
 
-- **data** - a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
+- **data** - (*object*) a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
 Dates are stringified in the "%Y-%m-%d %H:%i" format. 
-- **config** - a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
-- **resources** - an array of objects (each having the following properties: {*id:string, name:string, type:string*} that represent the list of resources from the project file.
-- **worktime** - an object containing the working time settings from the project calendar.
+- **config** - (*object*) a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
+- **resources** - (*array*) an array of objects (each having the following properties: {*id: string, name: string, type: string, calendar: string*} that represent the list of resources from the project file.
+- **worktime** - (*object*) an object containing the working time settings from the project calendar. It can contain the following attributes:
+   - **id** - (*string | number*) optional, the calendar id
+   - **hours** - (*array*) an array with global working hours, sets the start and end hours of the task
+    - **dates** - (*array*) an array of dates that can contain:
+        - 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
+        - other records are dates 
+- **calendars** - (*array*) an array containing calendar configuration objects for creating a new calendar. 
+    - **calendarConfig** - (*object*) a calendar configuration object that can contain the following attributes:
+      - **id** - (*string | number*) optional, the calendar id
+      - **name** - (*string*) the calendar name
+      - **hours** - (*array*) an array with global working hours, sets the start and end hours of the task
+      - **dates** - (*array*) an array of dates that can contain:
+            - 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
+            - other records are dates
 
 @related:
 desktop/export_msproject.md#importfrommsproject

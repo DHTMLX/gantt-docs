@@ -45,8 +45,7 @@ The export module is provided free of charge if you've obtained Gantt under [Com
 [Read more on the usage of the export module for MS Project](desktop/msp_export_module.md). 
 
 
-Export to MS Project
------------------------
+## Export to MS Project
 
 The Gantt component allows exporting links, tasks and resources into MS Project.
 
@@ -80,32 +79,7 @@ The method will send a request to the remote service, which will either output a
 	08_api/08_export_other.html
 }}
 
-### Response
-
-The response will contain a JSON of the following structure:
-
-~~~js
-{
-   data: {},
-   config: {},
-   resources: [],
-   worktimes: []
-}
-~~~
-
-- **data** - a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
-Dates are stringified in the "%Y-%m-%d %H:%i" format.
-- **config** - a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
-- **resources** - an array of objects (each having the following properties: {*id: string, name:string, type:string*}) that represent the list of resources from the project file.
-- **worktimes** - an array containing objects for creating a new calendar. Each calendar configuration object can contain the following attributes:
-	- **id** - (id) optional, the calendar id
-    - **hours** - (array) an array with global working hours, sets the start and end hours of the task
-    - **dates** - (array) an array of dates that can contain:
-    	- 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
-        - other records are dates
-
-
-###Export settings
+<h3 id="exportsettings">Export settings</h3>
 
 The **exportToMSProject()** method takes as a parameter an object with a number of properties (all of the properties are optional):
 
@@ -205,8 +179,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/10ytgdxs	Gantt. Export custom data
-}}
+{{editor	https://snippet.dhtmlx.com/10ytgdxs	Gantt. Export custom data}}
 
 - **callback** - (function) If you want to receive an url to download a generated XML, the *callback* property can be used. It receives a JSON object with the *url* property:
 
@@ -309,8 +282,7 @@ gantt.exportToMSProject({
 });
 ~~~
 
-Import from MS Project
-----------------------
+## Import from MS Project
 
 In order to convert an XML or MPP MS Project file, you need to send the following request to the export service:
 
@@ -364,7 +336,7 @@ Where *file* is an instance of [File](https://developer.mozilla.org/en-US/docs/W
 }}
 
 
-###Response
+### Response
 
 The response will contain a JSON of the following structure:
 
@@ -373,26 +345,33 @@ The response will contain a JSON of the following structure:
    data: {},
    config: {},
    resources: [],
-   worktime: {}
+   worktime: {},
+   calendars: []
 }
 ~~~
 
  
-- **data** - a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
+- **data** - (*object*) a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
 Dates are stringified in the "%Y-%m-%d %H:%i" format. 
-- **config** - a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
-- **resources** - an array of objects (each having the following properties: {*id:string, name:string, type:string, calendar: string*} 
+- **config** - (*object*) a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
+- **resources** - (*array*) an array of objects (each having the following properties: {*id: string, name: string, type: string, calendar: string*} 
 that represent the list of resources from the project file.
-- **worktime** - an object containing the working time settings from the project calendar.
-- **calendars** - an array containing objects for creating a new calendar. Each calendar configuration object can contain the following attributes:
-	- **id** - (id) optional, the calendar id
-    - **name** - (string) the calendar name
-    - **hours** - (array) an array with global working hours, sets the start and end hours of the task
-    - **dates** - (array) an array of dates that can contain:
-    	- 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
-        - other records are dates
-
-###Import settings
+- **worktime** - (*object*) an object containing the working time settings from the project calendar. It can contain the following attributes:
+	- **id** - (*string | number*) optional, the calendar id
+	- **hours** - (*array*) an array with global working hours, sets the start and end hours of the task
+    - **dates** - (*array*) an array of dates that can contain:
+        - 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
+        - other records are dates 
+- **calendars** - (*array*) an array containing calendar configuration objects for creating a new calendar. 
+    - **calendarConfig** - (*object*) a calendar configuration object that can contain the following attributes:
+    	- **id** - (*string | number*) optional, the calendar id
+    	- **name** - (*string*) the calendar name
+    	- **hours** - (*array*) an array with global working hours, sets the start and end hours of the task
+    	- **dates** - (*array*) an array of dates that can contain:
+            - 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
+            - other records are dates
+     
+<h3 id="importsettings">Import settings</h3>
 
 #### Setting the duration unit
 
@@ -541,41 +520,89 @@ gantt.attachEvent("onTaskLoading", function (task) {
 #### Adding and adjusting calendars
 
 Note that calendars aren't automatically added during the import. You need to add them using the [addCalendar()](api/gantt_addcalendar.md) method. 
+After that, you should specify calendar settings via the [setWorkTime()](api/gantt_setworktime.md) method. For example:
 
 ~~~js
-var calendar = gantt.addCalendar({
-    // calendar configuration object
+gantt.importFromMSProject({
+    data: file,
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // settings for adding calendars
+            project.calendars.forEach(function (calendar) {
+                let addedCalendar;
+                // adding working time settings for the global calendar
+                if (calendar.id == project.config.global_calendar_id) {
+                    addedCalendar = gantt.getCalendar("global");
+                }
+                else {
+                    // Gantt doesn't add a calendar 
+                    // if the `hours` parameter is an empty array
+                    let calendarHours = calendar.hours;
+                    if (!calendarHours.length) {
+                        calendarHours = undefined
+                    }
+                    gantt.addCalendar({
+                        id: calendar.id,
+                        hours: calendarHours,
+                        name: calendar.name
+                    });
+
+                    addedCalendar = gantt.getCalendar(calendar.id);
+                }
+                const worktimeDates = calendar.dates;
+                for (let element in worktimeDates) {
+                    const date = new Date(+element)
+                    if (element < 10) {
+                        addedCalendar.setWorkTime({ 
+                            day: element, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                    else {
+                        addedCalendar.setWorkTime({ 
+                            date: date, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                }
+            })
+        }
+    }
 });
 ~~~
 
-After that, you should specify calendar settings via the [setWorkTime()](api/gantt_setworktime.md) method, e.g.:
-
-~~~js
-gantt.config.work_time = true;
- 
-//changes the working time of the working days from ["8:00-17:00"] to ["9:00-18:00"]
-gantt.setWorkTime({ hours: ["9:00-18:00"] });
-~~~
+{{editor	https://snippet.dhtmlx.com/668xqts7		Gantt. Calendars settings for export/import in MSProject and Primavera6}}
 
 #### Resource calendars
 
 If there are resource calendars, you need to specify them via the [gantt.config.resource_calendars](api/gantt_resource_calendars_config.md) property:
 
 ~~~js
-// adding a working calendar
-var johnCalendarId = gantt.addCalendar({
-    worktime: {
-        days: [0, 1, 1, 1, 1, 1, 0]
+gantt.importFromMSProject({
+    data: file,
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // settings for calendars
+            project.calendars.forEach(function (calendar) {
+                // adding the calendars and work time settings for them 
+            })
+
+            // settings for resource calendars
+            gantt.config.resource_calendars = {}
+
+            project.resources.forEach(function (resource) {
+                if (resource.calendar) {
+                    gantt.config.resource_calendars[resource.id] = resource.calendar;
+                }
+            })
+        }
     }
-}),
- 
-// binding the calendar to a user
-gantt.config.resource_calendars = {
-  "user":{
-      1 : johnCalendarId
-   }
-};
+});
 ~~~
+
+{{editor	https://snippet.dhtmlx.com/10czv54b		Gantt. Resource calendars settings for export/import in MSProject and Primavera6}}
 
 #### Resources and resource assignments
 
@@ -621,7 +648,7 @@ If there are resource assignments, they will be imported in the **resources** ar
 }
 ~~~
 
-##Limits on request size and import of large files
+## Limits on request size and import of large files
 
 There are two API endpoints for the MSProject export/import services:
 
@@ -669,8 +696,7 @@ It allows sending requests up to 40MB in size and supports MS Project exports an
 
 Any other methods, for example, *gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})* should return a server error.
 
-dhtmlxGantt vs MS Project time calculation
-------------------------------------------
+## dhtmlxGantt vs MS Project time calculation
 
 There are fundamental differences between how date calculations work in dhtmlxGantt and MS Project, and in some cases it leads to different results. 
 
