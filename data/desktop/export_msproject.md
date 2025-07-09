@@ -256,7 +256,7 @@ It is possible to specify the *units* parameter for resource assignments by retu
 
 - **resource calendars**
 
-By default, each calendar has another calendar added to it. If the resource calendars are used, you need to specify -1 for a task in the 
+By default, each task has some calendar added to it. If the resource calendars are used, you need to specify -1 for a task in the 
 *CalendarUID* property during the export (in the [tasks](#tasks) object). Then the task will use the resource calendar.
 
 While exporting [resource calendars](api/gantt_resource_calendars_config.md), it is possible to specify the resource calendar in an object of the [resources](#resources) array: 
@@ -618,7 +618,7 @@ If there are resources in the file, they come in the **resources** array during 
 }
 ~~~
 
-If there are resource assignments, they will be imported in the **resources** array, where the assignment object contains the 
+If there are resource assignments, they will be imported in the **assignments** array, where the assignment object contains the 
 *resource_id: string* and *value: number* parameters. For example:
 
 ~~~js

@@ -70,8 +70,8 @@ Dates are stringified in the "%Y-%m-%d %H:%i" format.
 - **config** - (*object*) a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
 - **resources** - (*array*) an array of objects (each having the following properties: {*id: string, name: string, type: string, calendar: string*} that represent the list of resources from the project file.
 - **worktime** - (*object*) an object containing the working time settings from the project calendar. It can contain the following attributes:
-   - **id** - (*string | number*) optional, the calendar id
-   - **hours** - (*array*) an array with global working hours, sets the start and end hours of the task
+    - **id** - (*string | number*) optional, the calendar id
+    - **hours** - (*array*) an array with global working hours, sets the start and end hours of the task
     - **dates** - (*array*) an array of dates that can contain:
         - 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
         - other records are dates 
