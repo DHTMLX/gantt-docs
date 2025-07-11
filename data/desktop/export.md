@@ -359,7 +359,9 @@ gantt.exportToPDF({
 <h3 id="headerfooterforeachpage">Header/footer for each page of the output PDF file</h3>
 
 To add a header/footer for each page of the output PDF file, use the **header**/**footer** properties in the **additional_settings** object of the `exportToPDF` method.
-The **header**/**footer** properties allow specifying the number of the page and the total number of pages.
+
+You can specify the number of the current page by using the element with `class="pageNumber"` and the total number of pages by using the
+element with `class="totalPages"` in the **header**/**footer** properties: 
 
 ~~~js
 gantt.exportToPDF({
