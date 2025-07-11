@@ -183,7 +183,7 @@ The api/gantt_exporttopdf.md and api/gantt_exporttopng.md methods take as a para
                  if set to <i>false</i> you will have to make export several times to get all the Gantt data</li>                    
                 <li><b>fixed_headers</b> - (<i>boolean</i>) enables displaying of the grid and timeline headers on each page; <i>false</i> by default. Works only with
                     the enabled <b>merge_pages</b> setting</li>
-                <li><b>margins</b> - (<i>object</i>) the object with the top, bottom, left and right margins.
+                <li><b>margins</b> - (<i>object</i>) the object with the top, bottom, left and right margins for the output PDF file.
                 	<a href="#marginsoftheoutputpdffile">Read the details below</a></li>
                 <li><b>header</b> - (<i>string</i>) specifies the header that will be added to each page of the output PDF file.
                 	<a href="#headerfooterforeachpage">Read the details below</a></li>
@@ -378,7 +378,7 @@ gantt.exportToPDF({
 });
 ~~~
 
-Note that these settings work only when the **margins** are specified and there is enough space to display the header/footer correctly. 
+Note that these settings work only when [**margins**](#marginsoftheoutputpdffile) are specified and there is enough space to display the header/footer correctly. 
 Otherwise, headers/footers will be rendered outside the gantt. It is recommended to set *10* as a minimal margin for a plain line of text.
 
 ## Margins of the output PDF file

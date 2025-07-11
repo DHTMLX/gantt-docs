@@ -111,7 +111,7 @@ The api/gantt_exporttopdf.md method takes as a parameter an object with a number
                 <li><b>merge_pages</b> - (<i>boolean</i>) enables the <a href="#multipageexport">multipage export</a> in one file; if set to <i>false</i> you will have to make export several times to get all the Gantt data</li>
                 <li><b>fixed_headers</b> - (<i>boolean</i>) enables displaying of the grid and timeline headers on each page; <i>false</i> by default. Works only with
                     the enabled <b>merge_pages</b> setting</li>
-                <li><b>margins</b> - (<i>object</i>) the object with the top, bottom, left and right margins.
+                <li><b>margins</b> - (<i>object</i>) the object with the top, bottom, left and right margins for the output PDF file.
                 	<a href="desktop/export.md#marginsoftheoutputpdffile">Read the details</a></li>
                 <li><b>header</b> - (<i>string</i>) specifies the header that will be added to each page of the output PDF file.
                 	<a href="desktop/export.md#headerfooterforeachpage">Read the details</a></li>
