@@ -1,6 +1,14 @@
 What's new in MSP Project Export Module
 ===========================================
 
+## 2.1.1.0
+
+• Renamed the property that contains calendars from `worktimes` to `calendars`
+
+• Added a property that contains the ID of the global calendar
+
+• Restored the `worktime` property that contains the global calendars settings for backward compatibility
+
 ## 2.1.0.0
 
 • Added support for custom calendars for the imported and exported MSP and Primavera files (including resource calendars)

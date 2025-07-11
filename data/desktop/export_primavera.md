@@ -45,8 +45,7 @@ The export module is provided free of charge if you've obtained Gantt under [Com
 [Read more on the usage of the export module for MS Project](desktop/msp_export_module.md). This export module provides export/import functionality for MS Project and 
 Primavera P6.
 
-Export to Primavera P6
------------------------
+## Export to Primavera P6
 
 The Gantt component allows exporting links, tasks and resources into Primavera P6.
 
@@ -101,27 +100,7 @@ gantt.exportToPrimaveraP6({
 
 {{editor	https://snippet.dhtmlx.com/r90hjlvo?tag=gantt	Custom properties for WBS tasks (PrimaveraP6's Summary tasks)}}
 
-### Response
-
-The response will contain a JSON of the following structure:
-
-~~~js
-{
-    data: {},
-    config: {},
-    resources: [],
-    worktime: {}
-}
-~~~
-
-- **data** - a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
-Dates are stringified in the "%Y-%m-%d %H:%i" format.
-- **config** - a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
-- **resources** - an array of objects (each having the following properties: {*id: string, name:string, type:string*}) that represent the list of resources from the project file.
-- **worktime** - an object containing the working time settings from the project calendar.
-
-
-### Export settings
+<h3 id="exportsettings">Export settings</h3>
 
 The **exportToPrimaveraP6()** method takes as a parameter an object with a number of properties (all of the properties are optional):
 
@@ -165,7 +144,7 @@ gantt.exportToPrimaveraP6({
 The properties of this object correspond to the appropriate properties of the [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). 
 The list of supported properties can be found [here](desktop/properties.md). The properties may contain either fixed values or functions that will be executed when export is called.
 
-- **tasks** - (object) allows setting custom properties to the exported task items
+- <p id="tasks"><b>tasks</b> - (object) allows setting custom properties to the exported task items</p>
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -234,7 +213,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
  
-- **resources** - (array) allows exporting the list of resources into an Primavera P6 file
+- <p id="resources"><b>resources</b> - (array) allows exporting the list of resources into a Primavera P6 file</p>
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -290,6 +269,36 @@ tasks: {
 
 {{editor	https://snippet.dhtmlx.com/6bfbwp8g	Export Gantt with resources to Primavera P6}}
 
+It is possible to specify the *units* parameter for resource assignments by returning the following object in the **ResourceAssignments** property:
+
+~~~js
+{
+  resource_id: "id",
+  units: "units value"
+}
+~~~
+
+- **resource calendars**
+
+By default, each task has some calendar added to it. If the resource calendars are used, you need to specify -1 for a task in the 
+*CalendarUID* property during the export (in the [tasks](#tasks) object). Then the task will use the resource calendar.
+
+While exporting [resource calendars](api/gantt_resource_calendars_config.md), it is possible to specify the resource calendar in an object of the [resources](#resources) array: 
+
+~~~js
+gantt.exportToPrimaveraP6({
+  resources: [
+    {
+      id: "10",
+      name: "John",
+      type: "work",
+      calendar: gantt.config.resource_calendars[10]
+    }
+  ]
+});    
+~~~
+
+
 - **server** - (string) the API endpoint for the request. Can be used with the local install of the export service. The default value is **https://export.dhtmlx.com/gantt**.
 
 ~~~js
@@ -298,9 +307,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-
-Import from Primavera P6
-----------------------
+## Import from Primavera P6
 
 In order to convert an XML or XER file, you need to send the following request to the export service:
 
@@ -353,8 +360,7 @@ Where *file* is an instance of [File](https://developer.mozilla.org/en-US/docs/W
 **gantt.importFromPrimaveraP6** requires HTML5 File API support.
 }}
 
-
-###Response
+### Response
 
 The response will contain a JSON of the following structure:
 
@@ -363,19 +369,32 @@ The response will contain a JSON of the following structure:
     data: {},
     config: {},
     resources: [],
-    worktime: {}
+    worktime: {},
+    calendars: []
 }
 ~~~
 
- 
-- **data** - a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
+- **data** - (*object*) a gantt [data object](desktop/supported_data_formats.md#json). Each task has the following properties: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. 
 Dates are stringified in the "%Y-%m-%d %H:%i" format. 
-- **config** - a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
-- **resources** - an array of objects (each having the following properties: {*id:string, name:string, type:string*} that represent the list of resources from the project file.
-- **worktime** - an object containing the working time settings from the project calendar.
+- **config** - (*object*) a gantt [configuration](api/refs/gantt_props.md) object with settings retrieved from the project file.
+- **resources** - (*array*) an array of objects (each having the following properties: 
+{*id: string, name: string, type: string, calendar: string*} that represent the list of resources from the project file.
+- **worktime** - (*object*) an object containing the working time settings from the project calendar. It can contain the following attributes:
+   - **id** - (*string | number*) optional, the calendar id
+   - **hours** - (*array*) an array with global working hours, sets the start and end hours of the task
+    - **dates** - (*array*) an array of dates that can contain:
+        - 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
+        - other records are dates 
+- **calendars** - (*array*) an array containing calendar configuration objects for creating a new calendar. 
+    - **calendarConfig** - (*object*) a calendar configuration object that can contain the following attributes:
+      - **id** - (*string | number*) optional, the calendar id
+      - **name** - (*string*) the calendar name
+      - **hours** - (*array*) an array with global working hours, sets the start and end hours of the task
+      - **dates** - (*array*) an array of dates that can contain:
+            - 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
+            - other records are dates
 
-
-###Import settings
+<h3 id="importsettings">Import settings</h3>
 
 #### Setting the duration unit
 
@@ -522,7 +541,138 @@ gantt.attachEvent("onTaskLoading", function (task) {
 {{editor	https://snippet.dhtmlx.com/y95rsxor		Gantt. Import Primavera P6 files. Get task type from properties
 }}
 
-##Limits on request size and import of large files
+#### Adding and adjusting calendars
+
+Note that calendars aren't automatically added during the import. You need to add them using the [addCalendar()](api/gantt_addcalendar.md) method. 
+After that, you should specify calendar settings via the [setWorkTime()](api/gantt_setworktime.md) method. For example:
+
+~~~js
+gantt.importFromPrimaveraP6({
+    data: file,
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // settings for adding calendars
+            project.calendars.forEach(function (calendar) {
+                let addedCalendar;
+                // adding working time settings for the global calendar
+                if (calendar.id == project.config.global_calendar_id) {
+                    addedCalendar = gantt.getCalendar("global");
+                }
+                else {
+                    // Gantt doesn't add a calendar 
+                    // if the `hours` parameter is an empty array
+                    let calendarHours = calendar.hours;
+                    if (!calendarHours.length) {
+                        calendarHours = undefined
+                    }
+                    gantt.addCalendar({
+                        id: calendar.id,
+                        hours: calendarHours,
+                        name: calendar.name
+                    });
+
+                    addedCalendar = gantt.getCalendar(calendar.id);
+                }
+                const worktimeDates = calendar.dates;
+                for (let element in worktimeDates) {
+                    const date = new Date(+element)
+                    if (element < 10) {
+                        addedCalendar.setWorkTime({ 
+                            day: element, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                    else {
+                        addedCalendar.setWorkTime({ 
+                            date: date, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                }
+            })
+        }
+    }
+});
+~~~
+
+{{editor		https://snippet.dhtmlx.com/668xqts7		Gantt. Calendars settings for export/import in MSProject and Primavera P6}}
+
+#### Resource calendars
+
+If there are resource calendars, you need to specify them via the [gantt.config.resource_calendars](api/gantt_resource_calendars_config.md) property:
+
+~~~js
+gantt.importFromPrimaveraP6({
+    data: file,
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // settings for calendars
+            project.calendars.forEach(function (calendar) {
+                // adding the calendars and work time settings for them 
+            })
+
+            // settings for resource calendars
+            gantt.config.resource_calendars = {}
+
+            project.resources.forEach(function (resource) {
+                if (resource.calendar) {
+                    gantt.config.resource_calendars[resource.id] = resource.calendar;
+                }
+            })
+        }
+    }
+});
+~~~
+
+{{editor	https://snippet.dhtmlx.com/10czv54b		Gantt. Resource calendars settings for export/import in MSProject and Primavera P6}}
+
+#### Resources and resource assignments
+
+If there are resources in the file, they come in the **resources** array during the import. The *calendar* parameter of the 
+**resources** property specifies the resource calendar:
+
+~~~js
+{
+    resources: [
+        { id: 6, name: "John", type: "work", calendar: "8" },
+        // more resources
+    ]
+}
+~~~
+
+If there are resource assignments, they will be imported in the **assignments** array, where the assignment object contains the 
+*resource_id: string* and *value: number* parameters. For example:
+
+~~~js
+{
+    tasks: [
+        {
+            id: 5,
+            text: "Interior office",
+            type: "task",
+            start_date: "03-04-2024 00:00",
+            duration: 7,
+            parent: "2",
+            priority: 1
+        },
+        // more tasks
+    ],
+    links: [],
+    assignments: [
+        { id: 1, task_id: 5, resource_id: 6, value: 3},
+        // more assignments
+    ],
+    resources: [
+        {id: 6, text: "John", unit: "hours/day" },
+        {id: 7, text: "Mike", unit: "hours/day" },
+        // more resources
+    ]
+}
+~~~
+
+## Limits on request size and import of large files
 
 There are two API endpoints for the Primavera P6 export/import services:
 
@@ -530,7 +680,6 @@ There are two API endpoints for the Primavera P6 export/import services:
 - **https://export.dhtmlx.com/gantt/project** - the endpoint specific for the [MSProject](desktop/export_msproject.md) and 
 [Primavera P6](desktop/export_primavera.md) 
 export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
-
 
 The endpoint can be specified by the **server** property of the export configuration object:
 
@@ -570,9 +719,6 @@ gantt.importFromPrimaveraP6({
 It allows sending requests up to 40MB in size and supports Primavera P6 exports and imports. It can be used for Primavera P6 exports only. 
 
 Any other methods, for example, *gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})* should return a server error.
-
-
-
 
 @index:
 - desktop/properties.md

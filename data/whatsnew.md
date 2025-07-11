@@ -10,6 +10,21 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.13
+---------------
+<span class='release_date'>June 26, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where Gantt became unusable after creating and deleting a duplicate link
+- Ensure link placeholders are displayed correctly on touch devices
+- Fix the issue where a project's `end_date` is not updated when it has a single milestone child
+- Prevent unnecessary repaints of resource items when using a custom datastore
+- Fix the issue where [silently](api/gantt_silent.md) calling [gantt.addLink](api/gantt_addlink.md) resulted in an incorrect state of the internal datastore
+- Prevent [DataProcessor](desktop/server_side.md) from adding the `!nativeeditor_status` property to [custom router](desktop/server_side.md#customrouting) arguments
+- Fix incorrect handling of `tasks` and `links` props changes in the [React Gantt](web/react.md) component
+
+
 9.0.12
 ---------------
 <span class='release_date'>June 19, 2025. Bugfix release</span>
