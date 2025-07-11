@@ -162,7 +162,8 @@ The api/gantt_exporttopdf.md and api/gantt_exporttopng.md methods take as a para
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>raw</b></td>
-			<td>(<i>boolean</i>) defines that all Gantt markup will be exported as it is, with all custom elements. <em>false</em> by default. <a href="desktop/export.md#exportingcustommarkupandstyles">Read the details below</a> </td>
+			<td>(<i>boolean</i>) defines that all Gantt markup will be exported as it is, with all custom elements. <em>false</em> by default. 
+            	<a href="#exportingcustommarkupandstyles">Read the details below</a> </td>
 		</tr>
 		<tr>
 			<td class="webixdoc_links0"><b>callback</b></td>
@@ -172,14 +173,22 @@ The api/gantt_exporttopdf.md and api/gantt_exporttopng.md methods take as a para
 			<td class="webixdoc_links0"><b>additional_settings</b></td>
 			<td>(<i>object</i>) an object with additional settings for the <b>exportToPDF()</b> method. The object can contain the following attributes:
 			<ul>
-				<li><b>format</b> - (<i>string</i>) the format of the output file: <i>'A3', 'A4', 'A5', 'Legal', 'Letter', 'Tabloid'</i></li>
-				<li><b>landscape</b> - (<i>boolean</i>) the portrait or landscape orientation of the output file. The attribute works only when the "format" attribute is specified.</li>
+				<li><b>format</b> - (<i>string</i>) the format of the output file: 
+                <i>"A0", "A1", "A2", "A3", "A4", "A5", "A6", "Legal", "Ledger", "Letter", "Tabloid"</i></li>
+				<li><b>landscape</b> - (<i>boolean</i>) the portrait or landscape orientation of the output file. 
+                	The attribute works only when the "format" attribute is specified.</li>
 				<li><b>width</b> - (<i>string | number | "content"</i>) the width of the output page. The attribute is used when exporting multiple pages. </li>
 				<li><b>height</b> - (<i>string | number | "content"</i>) the height of the output page. The attribute is used when exporting multiple pages.</li>
-                <li><b>merge_pages</b> - (<i>boolean</i>) enables the multipage export in one file; 
+                <li><b>merge_pages</b> - (<i>boolean</i>) enables the <a href="api/gantt_exporttopdf.md#multipageexport">multipage export</a> in one file; 
                  if set to <i>false</i> you will have to make export several times to get all the Gantt data</li>                    
                 <li><b>fixed_headers</b> - (<i>boolean</i>) enables displaying of the grid and timeline headers on each page; <i>false</i> by default. Works only with
                     the enabled <b>merge_pages</b> setting</li>
+                <li><b>margins</b> - (<i>object</i>) the object with the top, bottom, left and right margins.
+                	<a href="#marginsoftheoutputpdffile">Read the details below</a></li>
+                <li><b>header</b> - (<i>string</i>) specifies the header that will be added to each page of the output PDF file.
+                	<a href="#headerfooterforeachpage">Read the details below</a></li>
+                <li><b>footer</b> - (<i>string</i>) specifies the footer that will be added to each page of the output PDF file.
+                	<a href="#headerfooterforeachpage">Read the details below</a></li>
 			</ul>
 			</td>
 		</tr>
@@ -236,7 +245,7 @@ gantt.exportToPNG({
 });
 ~~~
 
-##Name of the output file
+## Name of the output file
 
 To set a custom name for the output file, use the **name** property in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
 
@@ -246,7 +255,7 @@ gantt.exportToPDF({
 });
 ~~~
 
-##Language of the output file
+## Language of the output file
 
 By default, the Gantt chart will be exported in the same language as it is shown on the page.
 
@@ -270,7 +279,7 @@ To set the tasks that should be presented in the output PDF or PNG file, use one
 
 <a id="daterange"></a>
 
-###Specifying the date range of the output tasks
+### Specifying the date range of the output tasks
 
 To set the range of tasks that will be presented in the output document, use the **start**, **end** properties in the parameter of the [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
 
@@ -288,7 +297,7 @@ Note, the date format is defined by the api/gantt_date_format_config.md config.
 
 <a id="customdata"></a>
 
-###Setting a custom data source to export
+### Setting a custom data source to export
 
 To export the Gantt chart with a custom data set (i.e. not with the data presented in the initial Gantt chart), use the **data** property in the parameter of the 
 [exportToPDF/exportToPNG](desktop/export.md#parametersoftheexportmethods) methods:
@@ -315,7 +324,7 @@ gantt.exportToPDF({
 Note, you cannot specify some URL as the value of the **data** parameter, just a data object.
 }}
 
-##Skin of the output Gantt chart
+## Skin of the output Gantt chart
 
 By default, the Gantt chart will be exported with the same skin as it is shown on the page.
 
@@ -347,6 +356,69 @@ gantt.exportToPDF({
 });
 ~~~
 
+<h3 id="headerfooterforeachpage">Header/footer for each page of the output PDF file</h3>
+
+To add a header/footer for each page of the output PDF file, use the **header**/**footer** properties in the **additional_settings** object of the `exportToPDF` method.
+The **header**/**footer** properties allow specifying the number of the page and the total number of pages.
+
+~~~js
+gantt.exportToPDF({
+  additional_settings: {
+	  format: "A4",
+	  // correct margins are obligatory to render headers/footers
+	  margins: {
+		top: 10,
+		bottom: 10,
+		left: 0.1,
+		right: 1
+	  },
+      header:"Each page header",
+	  footer:'Page: <span class="pageNumber"></span>/<span class="totalPages"></span>',
+  },
+});
+~~~
+
+Note that these settings work only when the **margins** are specified and there is enough space to display the header/footer correctly. 
+Otherwise, headers/footers will be rendered outside the gantt. It is recommended to set *10* as a minimal margin for a plain line of text.
+
+## Margins of the output PDF file
+
+To add margins to the output PDF file, use the **margins** property in the **additional_settings** object of 
+the [exportToPDF](desktop/export.md#parametersoftheexportmethods) method. The **margins** property works both for one-page and 
+<a href="api/gantt_exporttopdf.md#multipageexport">multipage export</a>.
+
+The values of margin settings are specified as numbers:
+
+~~~js
+gantt.exportToPDF({
+    additional_settings: {
+        margins: {
+            top: 5,
+            bottom: 10,
+            left: 2,
+            right: 2
+        },
+    },
+});
+~~~
+
+If some of the margin settings isn't specified, it will be ignored. 
+
+The values are set in millimeters by default, but you can specify the values of margins in inches by setting the <b>unit: "inch"</b> property: 
+
+~~~js 
+gantt.exportToPDF({
+    additional_settings: {
+        margins: {
+            top: 5,
+            bottom: 10,
+            left: 2,
+            right: 2,
+            unit: "inch" /*!*/
+        },
+    },
+});
+~~~
 
 ## Custom style for the output file
 
