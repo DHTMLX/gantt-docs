@@ -31,7 +31,7 @@ var xml = gantt.serialize("xml");
 As a result, the **xml** variable from the code above will look something like this:
 
 ~~~html
-"<data>
+<data>
 	<task id='11' parent=''   start_date='01-04-2013 00:00' duration='11' 
      open='true' progress='0.6' end_date='12-04-2013 00:00'>
     	<![CDATA[Project #1]]>
@@ -40,10 +40,10 @@ As a result, the **xml** variable from the code above will look something like t
      open='true' progress='1' end_date='08-04-2013 00:00'>
     	<![CDATA[Task #1]]>
     </task>
-</data>"
+</data>
 ~~~
 
 {{note
-Serialization to old (dhtmlxGantt <2.0) XML format  is not available
+Serialization to old (dhtmlxGantt \<2.0) XML format  is not available
 }}
 

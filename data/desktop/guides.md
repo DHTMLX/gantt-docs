@@ -252,6 +252,7 @@ Check the [features available in the Standard and PRO versions](desktop/editions
             </ul>
         </td>
 		<td class='topic_description'>Provides practical answers on the the most frequently asked questions about the Gantt chart configuration </td>
+    </tr>
     <tr>
 		<td id="data" class='topics'>
 		    <h4>

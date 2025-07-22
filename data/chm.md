@@ -14,7 +14,8 @@ New version brings you new functionality and extended API:
 </ul>
 
 <p>
-Full dhtmlxGantt documentation is at your disposal: start from the beginner step-by-step, explore detailed guides, look up in the API and check out live demos.</p>
+Full dhtmlxGantt documentation is at your disposal: start from the beginner step-by-step, explore detailed guides, look up in the API and check out live demos.
+</p>
 
 <h2>Index:</h2>
 
