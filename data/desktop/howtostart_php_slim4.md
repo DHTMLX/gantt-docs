@@ -47,7 +47,7 @@ cd gantt-rest-php
 php -S 0.0.0.0:8080 -t public public/index.php
 ~~~
 
-After that you can open [http://127.0.0.1:8080]() in a browser and you will see the default Slim page.
+After that you can open [http://127.0.0.1:8080](http://127.0.0.1:8080/) in a browser and you will see the default Slim page.
 
 Step 2. Adding Gantt to the page
 -----------------------
