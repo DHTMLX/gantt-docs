@@ -4,10 +4,7 @@ dhtmlxGantt with Angular
 You should be familiar with the basic concepts and patterns of Angular to use this documentation. If 
 you are not, please refer to the [Angular documentation](https://angular.io/docs) for a getting-started tutorial.
 
-DHTMLX Gantt is compatible with Angular. We have prepared code examples of how to use DHTMLX Gantt with Angular. 
-To check online samples, please refer to the corresponding [Example on Replit](https://replit.com/@dhtmlx/dhtmlx-gantt-with-angular). 
-
-You can also [check the demo on GitHub](https://github.com/DHTMLX/angular-gantt-demo).
+DHTMLX Gantt is compatible with Angular. You can check the corresponding example on GitHub: [DHTMLX Gantt with Angular Demo](https://github.com/DHTMLX/angular-gantt-demo).
 
 ## Creating a project
 
@@ -38,7 +35,7 @@ or
 npm start
 ~~~
 
-Now the app should be running on [http://localhost:4200](http://localhost:4200).
+Now the app should be running on **http://localhost:4200**.
 
 ![Gantt Angular app running](howtostart_frontend_frameworks/gantt_angular_app_run.png)
 

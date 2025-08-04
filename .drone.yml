@@ -12,4 +12,9 @@ pipeline:
       - ./build.sh gantt 2>&1
       - curl "https://docs.dhtmlx.com/hooks/docs-release?token=$$HOOK_TOKEN&name=gantt"
     when:
-      branch: master
+      branch:
+        - master
+        - ru
+        - de
+        - cn
+        - ko

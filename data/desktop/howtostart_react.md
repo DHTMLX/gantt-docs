@@ -1,13 +1,13 @@
 dhtmlxGantt with React
 ======================
 
+
+{{note This tutorial covers the usage of the JS DHTMLX Gantt in React apps. If you want to use the official React Gantt component, please refer to [React Gantt](web/react.md) article. }}
+
 You should be familiar with the basic concepts and patterns of [React](https://react.dev/) to use this documentation. If
 you are not, please refer to the [React documentation](https://reactjs.org/docs/getting-started.html) for a getting-started tutorial.
 
-DHTMLX Gantt is compatible with React. We have prepared code examples of how to use DHTMLX Gantt with React. 
-To check online samples, please refer to the corresponding [Example on Replit](https://replit.com/@dhtmlx/dhtmlx-gantt-with-react). 
-
-You can also [check the demo on GitHub](https://github.com/DHTMLX/react-gantt-demo). 
+DHTMLX Gantt is compatible with React. You can check the corresponding example on GitHub: [DHTMLX Gantt with React Demo](https://github.com/DHTMLX/react-gantt-demo). 
 
 ## Creating a project
 
@@ -43,7 +43,7 @@ npm install
 npm run dev
 ~~~
 
-You should now have your React project running on [http://localhost:5173](http://localhost:5173).
+You should now have your React project running on **http://localhost:5173**.
 
 ![Gantt React app running](howtostart_frontend_frameworks/gantt_react_app_run.png)
 

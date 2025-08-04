@@ -92,7 +92,8 @@ The api/gantt_exporttopdf.md method takes as a parameter an object with a number
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>raw</b></td>
-			<td>(<i>boolean</i>) defines that all Gantt markup will be exported as it is, with all custom elements. <em>false</em> by default. <a href="desktop/export.md#exportingcustommarkupandstyles">Read the details</a> </td>
+			<td>(<i>boolean</i>) defines that all Gantt markup will be exported as it is, with all custom elements. <em>false</em> by default. 
+            	<a href="desktop/export.md#exportingcustommarkupandstyles">Read the details</a> </td>
 		</tr>
 		<tr>
 			<td class="webixdoc_links0"><b>callback</b></td>
@@ -102,14 +103,20 @@ The api/gantt_exporttopdf.md method takes as a parameter an object with a number
 			<td class="webixdoc_links0"><b>additional_settings</b></td>
 			<td>(<i>object</i>) an object with additional settings. The object can contain the following attributes:
 			<ul>
-				<li><b>format</b> - (<i>string</i>) the format of the output file: <i>'A3', 'A4', 'A5', 'Legal', 'Letter', 'Tabloid'</i></li>
-				<li><b>landscape</b> - (<i>boolean</i>) the portrait or landscape orientation of the output file. The attribute works only when the "format" attribute is specified.</li>
-				<li><b>width</b> - (<i>string|number|"content"</i>) the width of the output page. The attribute is used when exporting multiple pages. </li>
-				<li><b>height</b> - (<i>string|number|"content"</i>) the height of the output page. The attribute is used when exporting multiple pages.</li>
-                <li><b>merge_pages</b> - (<i>boolean</i>) enables the multipage export in one file; if set to <i>false</i> you will have to make export several times to get
-                all the Gantt data</li>
+				<li><b>format</b> - (<i>string</i>) the format of the output file:
+                <i>"A0", "A1", "A2", "A3", "A4", "A5", "A6", "Legal", "Ledger", "Letter", "Tabloid"</i></li>
+				<li><b>landscape</b> - (<i>boolean</i>) the portrait or landscape orientation of the output file. The attribute works only when the "format" attribute is specified</li>
+				<li><b>width</b> - (<i>string|number|"content"</i>) the width of the output page. The attribute is used when exporting multiple pages</li>
+				<li><b>height</b> - (<i>string|number|"content"</i>) the height of the output page. The attribute is used when exporting multiple pages</li>
+                <li><b>merge_pages</b> - (<i>boolean</i>) enables the <a href="#multipageexport">multipage export</a> in one file; if set to <i>false</i> you will have to make export several times to get all the Gantt data</li>
                 <li><b>fixed_headers</b> - (<i>boolean</i>) enables displaying of the grid and timeline headers on each page; <i>false</i> by default. Works only with
                     the enabled <b>merge_pages</b> setting</li>
+                <li><b>margins</b> - (<i>object</i>) the object with the top, bottom, left and right margins for the output PDF file.
+                	<a href="desktop/export.md#marginsoftheoutputpdffile">Read the details</a></li>
+                <li><b>header</b> - (<i>string</i>) specifies the header that will be added to each page of the output PDF file.
+                	<a href="desktop/export.md#headerfooterforeachpage">Read the details</a></li>
+                <li><b>footer</b> - (<i>string</i>) specifies the footer that will be added to each page of the output PDF file.
+                	<a href="desktop/export.md#headerfooterforeachpage">Read the details</a></li>
 			</ul>
 			</td>
 		</tr>

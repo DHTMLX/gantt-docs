@@ -55,9 +55,8 @@ To deny dragging tasks out of specific dates, use the api/gantt_ontaskdrag_event
 	<li>The user makes a move.</li>
     <li>dhtmlxGantt recalculates the task's  date according to the new position.</li>
     <li>dhtmlxGantt fires the api/gantt_ontaskdrag_event.md event.</li>
-    <li>dhtmlxGantt re-renders the task in the Gantt chart. <br>  <br> <i>As the api/gantt_ontaskdrag_event.md event fires after dhtmlxGantt makes recalculation, 
-    you can specify any custom values for the dragged task in the event's handler, without being afraid that these values will be overwritten. As a result, the task will be rendered in the desired position.</i>
-</li>
+    <li>dhtmlxGantt re-renders the task in the Gantt chart.<br><i>As the api/gantt_ontaskdrag_event.md event fires after dhtmlxGantt makes recalculation, 
+    you can specify any custom values for the dragged task in the event's handler, without being afraid that these values will be overwritten. As a result, the task will be rendered in the desired position.</i></li>
 </ol>
 
 

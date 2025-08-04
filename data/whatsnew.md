@@ -10,6 +10,101 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.14
+---------------
+<span class='release_date'>July 31, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the script error thrown after closing a [Modalbox](desktop/message_boxes.md)
+- Prevent creation of an empty row in the tree after re-parsing data in [grouped](api/gantt_groupby.md) mode
+- Ensure the [setWorkTime](api/gantt_setworktime.md) method correctly applies **customWeeks** in Firefox
+- Fix the issue where calling [setTasks](web/react.md#:~:text=export%20demoData%3B-,Binding%20Data,-The%20ReactGantt%20wrapper) with an empty dataset broke the React Gantt component
+
+9.0.13
+---------------
+<span class='release_date'>June 26, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where Gantt became unusable after creating and deleting a duplicate link
+- Ensure link placeholders are displayed correctly on touch devices
+- Fix the issue where a project's `end_date` is not updated when it has a single milestone child
+- Prevent unnecessary repaints of resource items when using a custom datastore
+- Fix the issue where [silently](api/gantt_silent.md) calling [gantt.addLink](api/gantt_addlink.md) resulted in an incorrect state of the internal datastore
+- Prevent [DataProcessor](desktop/server_side.md) from adding the `!nativeeditor_status` property to [custom router](desktop/server_side.md#customrouting) arguments
+- Fix incorrect handling of `tasks` and `links` props changes in the [React Gantt](web/react.md) component
+
+
+9.0.12
+---------------
+<span class='release_date'>June 19, 2025. Bugfix release</span>
+
+### Fixes
+
+- Ensure the [contrast-white](desktop/skins.md#contrastwhiteskin) skin passes color contrast accessibility tests
+- Fix the issue where [dynamic loading](desktop/dynamic_loading.md) stops working after calling [gantt.clearAll()](api/gantt_clearall.md)
+- Prevent the [Tooltip](desktop/tooltips.md) from rendering outside the Gantt container when displaying a long text
+- Fix the issue where [server updates](desktop/server_side.md) were not finalized when [keyboard navigation](desktop/keyboard_navigation.md) was active
+- Fix the incorrect work of custom class names applied to [milestone baselines](desktop/inbuilt_baselines.md#milestonebaseline)
+
+### Updates
+
+- [React Gantt](web/react.md) is now compatible with **Next.js** and **Remix** SSR frameworks without additional configuring
+
+9.0.11
+---------------
+<span class='release_date'>May 27, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where api/gantt_mergecalendars.md merged `customWeeks` values incorrectly
+- Fix the error thrown in the `onrender` function when the [column](desktop/specifying_columns.md#wbscode) `name` includes spaces
+- Fix the issue where Gantt stayed in read-only mode after [click_drag](desktop/extensions_list.md#advanceddragndrop) the Timeline when the [S-Curve Overlay](desktop/baselines.md#extraoverlayforthechart) was enabled
+- Fix the issue where task duration was reset to `0` when using a [Resource calendar](desktop/resource_management.md) and the [Resources](desktop/resource_management.md#resourceviewpanel) section was placed below the duration section of the [Lightbox](desktop/default_edit_form.md)
+- Fix the console error triggered by the "This is a Trial version" warning when Gantt is used in **React StrictMode**
+- Fix the issue where the api/gantt_adjusttaskheightforbaselines.md function did not recalculate row height when [gantt.config.baselines.render_mode](api/gantt_baselines_config.md#rendermode) was disabled
+- Fix the issue preventing tasks from being displayed when the Timeline is [hidden](api/gantt_show_chart_config.md) in the Salesforce environment
+- Fix the issue where calendars are not inherited from parent tasks when [dynamic_resource_calendars](api/gantt_dynamic_resource_calendars_config.md) config is disabled
+- Fix the issue where scroll position reset on re-render when [ReactGantt](web/react.md) was in the groupBy mode
+
+### Updates
+
+- Add the `isSalesforce` flag to [gantt.env](api/gantt_env_other.md)
+- Add the `groupTasks` prop to [React Gantt](web/react.md#groupingtasks)
+
+9.0.10
+---------------
+<span class='release_date'>April 22, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue preventing changes to the `parent` field value in the [Lightbox](desktop/default_edit_form.md)
+- Fix excessive scroll speed when using a mouse wheel in Firefox 88 and newer
+- Fix the inability to drag [project tasks](desktop/task_types.md#projecttasks) when a subtask is unscheduled and lacks date parameters
+- Ensure [gantt.render()](api/gantt_render.md) is not called unexpectedly during the [gantt.silent](api/gantt_silent.md) operation when using the api/gantt_open.md or api/gantt_close.md methods
+- Fix the issue where [project tasks](desktop/task_types.md#projecttasks) are not repainted if the api/gantt_onbeforetaskchanged_event.md event returns `false`
+- Ensure that task progress bars span the full width of the task when expected
+- Remove invalid WAI-ARIA attributes from read-only task links to improve [accessibility](desktop/accessibility.md#waiariaattributes)
+- Fix the issue where task bar resizers do not adapt to changes in task bar height
+
+9.0.9
+---------------
+<span class='release_date'>April 16, 2025. Bugfix release</span>
+
+### Updates
+
+- Samples for [React Gantt](web/react.md) were added to the Commercial, Enterprise, Ultimate, and Evaluation packages
+
+### Fixes
+
+- Fix the issue where mouse wheel zooming stopped working after calling the [resetLayout](api/gantt_resetlayout.md) method
+- Fix the issue where the [Quick Info](desktop/quick_info.md) popup appeared after clicking the expand/collapse button in the [Timeline](desktop/configuring_time_scale.md) or [Grid](desktop/specifying_columns.md) views
+- Fix the error that occurred when destroying Gantt without initializing the grid view
+- Fix the error that occurred when loading a task with a non-existent parent while the [Undo extension](desktop/undo_redo.md) was enabled
+- Fix the issue where the [click_drag](desktop/extensions_list.md#advanceddragndrop) extension did not function on touch devices
+- Improve grid scrolling responsiveness on touch devices
+
 9.0.7
 ---------------
 <span class='release_date'>March 27, 2025. Bugfix release</span>

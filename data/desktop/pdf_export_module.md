@@ -35,9 +35,9 @@ To run on a server with a graphical interface, you can use the following command
 npm start
 ~~~
 
-To test how it works, you can open the following URL: [http://localhost:3200/test](http://localhost:3200/test).
+To test how it works, you can open the following URL: **http://localhost:3200/test**.
 
-Or open the main page and click the Test link: [http://localhost:3200](http://localhost:3200).
+Or open the main page and click the Test link: **http://localhost:3200**.
 
 ## Using server without graphical interface
 

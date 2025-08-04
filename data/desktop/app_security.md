@@ -199,7 +199,7 @@ Therefore, you need to sanitize the value input. In our example, you can see onl
 ![](desktop/preventing_xss_attack.png)
 
 When it comes to a real project, you need to add all possible data sanitization options. 
-In our case, we simply replace the "<" and ">" symbols with the corresponding HTML entities - **`&lt;`** and **`&gt;`**.
+In our case, we simply replace the "\<" and "\>" symbols with the corresponding HTML entities - **`&lt;`** and **`&gt;`**.
 Thus, we exclude the possibility of displaying HTML elements inside the task text.
 
 The above described replacement of symbols is implemented in the **sanitizeText()** function as in:

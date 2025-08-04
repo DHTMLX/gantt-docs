@@ -23,7 +23,7 @@ Each object in the array specifies a single column. An object can take the follo
 
 - <span class=subproperty>**align?**</span> - (*string*) - sets the horizontal title alignment. Possible values: *'left'*, *'center'*, or *'right'*;
 - <span class=subproperty>**hide?**</span> - (*boolean*) - hides/shows a column (PRO);
-- <span class=subproperty>**label?**</span> - (*string | number*) - specifies the title of the column;
+- <span class=subproperty>**label?**</span> - (*string | number | any*) - specifies the title of the column;
 - <span class=subproperty>**max_width?**</span> - (*number*) - sets the maximum column width in case of resize operations;
 - <span class=subproperty>**min_width?**</span> - (*number*) - sets the minimum column width in case of resize operations;
 - <span class=subproperty>**name?**</span> - (*string | number*) - defines the column's id. The name 'add' allows you to add a column with the '+' sign;

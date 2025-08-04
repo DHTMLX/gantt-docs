@@ -3,22 +3,20 @@ addTask
 
 @short:adds a new task
 
-
 @params:
 - task			NewTask			the task object
 * parent		string | number			optional, the parent's id
 * index			number			optional, the position the task will be added into (0 or greater)
 
-
 @returns:
 - id	string, number	the task's id
 
 @example:
-var taskId = gantt.addTask({
-    id:10,
-    text:"Task #5",
-    start_date:"02-09-2013",
-    duration:28
+const taskId = gantt.addTask({
+	id: 10,
+	text: "Task #5",
+	start_date: "02-09-2025",
+	duration: 28
 }, "project_2", 1);
 @template:	api_method
 @descr:
@@ -38,9 +36,9 @@ A quite easy way to prevent users from adding sub-tasks to specific tasks is to 
 <ol>
 <li>First, assign a CSS class for each task row using the api/gantt_grid_row_class_template.md template:
 ~~~js
-gantt.templates.grid_row_class = function( start, end, task ){
-	if ( task.$level > 1 ){
-		return "nested_task"
+gantt.templates.grid_row_class = (start, end, task) => {
+	if (task.$level > 1) {
+		return "nested_task";
 	}
 	return "";
 };
@@ -55,6 +53,7 @@ gantt.templates.grid_row_class = function( start, end, task ){
 ~~~
 </li>
 </ol>
+
 {{sample
 	08_api/11_project_structure.html
 }}
