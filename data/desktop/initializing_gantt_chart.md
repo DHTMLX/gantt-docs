@@ -62,19 +62,14 @@ How to add Gantt source files into a project
 
 You can add Gantt code file into your project in several ways, depending on the type of an application you create:
 
-- [dhtmlxGantt in Plain JS/HTML](#dhtmlxgantt-in-plain-jshtml)
-	- [Creating basic Gantt chart](#creating-basic-gantt-chart)
-	- [How to add Gantt source files into a project](#how-to-add-gantt-source-files-into-a-project)
-	- [Include files via the \<script\> tag](#include-files-via-the-script-tag)
-	- [Import files into ES6/7 and TypeScript apps](#import-files-into-es67-and-typescript-apps)
-	- [Using Gantt with Vite](#using-gantt-with-vite)
-		- [Svelte production build](#svelte-production-build)
-	- [Include files into a RequireJS-based app](#include-files-into-a-requirejs-based-app)
-	- [Full screen mode](#full-screen-mode)
+- [Include files via the &#60;script&#62; tag](#usingscripttag)
+- [Import files into ES6/7 and TypeScript apps](#importfilesintoes67andtypescriptapps)
+- [Using Gantt with Vite](#usingganttwithvite)
+	- [Svelte production build](#svelteproductionbuild)
+- [Include files into a RequireJS-based app](#includefilesintoarequirejsbasedapp)
 
 
-
-Include files via the &#60;script&#62; tag
+Include files via the &#60;script&#62; tag {#usingscripttag}
 --------------------------------------------
 
 The dhtmlxGantt requires including 2 code files on the page:
@@ -128,10 +123,10 @@ optimizeDeps: {
 }
 ~~~
 
-### Svelte production build
+### Svelte production build {#svelteproductionbuild}
 
 If you use [Gantt in a Svelte app](desktop/howtostart_svelte.md), you need to add the following setting into the **vite.config.js** file for the production build, 
-replacing the *gantt_8.0.6_evaluation* folder with the path to your Gantt folder:
+replacing the *gantt_9.0.14_evaluation* folder with the path to your Gantt folder:
 
 {{snippet vite.config.js}}
 ~~~js 
@@ -139,7 +134,7 @@ build: {
 	commonjsOptions: {
 		include: [
 			"node_modules",
-			"gantt_9.0.3_evaluation/codebase/dhtmlxgantt.js"
+			"gantt_9.0.14_evaluation/codebase/dhtmlxgantt.js"
 		]
 	},
 }
