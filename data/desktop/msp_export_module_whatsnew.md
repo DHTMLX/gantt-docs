@@ -1,6 +1,20 @@
 What's new in MSP Project Export Module
 ===========================================
 
+## 2.2.0.0
+
+• Updated MPXJ library to the 12.0.0 version
+
+• Correct import of the `Start` and `Finish` properties specified in the `taskProperties` parameter
+
+• Fixed import when specifying duplicate values in the `taskProperties` parameter
+
+• Fixed import when specifying the `CalendarUID` property in the `taskProperties` parameter and a task doesn't have the calendar
+
+• Fixed export when `gantt.config.worktimes` has an empty array
+
+• Fixed export when specifying working time settings in the old format
+
 ## 2.1.1.0
 
 • Renamed the property that contains calendars from `worktimes` to `calendars`
