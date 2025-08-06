@@ -1125,7 +1125,7 @@ Next Steps
 
 - For additional info on how to configure ReactGantt, see [this article](web/react_configuration_props.md)
 - For advanced use see [DHTMLX Gantt documentation](desktop/guides.md) 
-
+- For exploring the possibilities of integrating dhtmlxReactGantt with Firebase, see [the related guide](desktop/react_gantt_firebase_integration.md)
 
 
 @index:
