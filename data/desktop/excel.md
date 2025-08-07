@@ -49,14 +49,17 @@ Export to Excel
 
 To export data from the Gantt chart to an Excel document, do the following:
 
-- To use the online export service, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
+- To use the export/import functionality, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
+
 ~~~js
 gantt.plugins({
   	export_api: true
 });
 ~~~
 
-{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, e.g.:
+It allows you to use either the online export service or a local export module.
+
+{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the export functionality, e.g.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
