@@ -61,7 +61,7 @@ In this case planning of tasks is implemented from the start date or from the da
 The start date of the project can be optionally set by the **gantt.config.project_start** config:
 
 ~~~js
-gantt.config.project_start = new Date(2019, 2, 1);
+gantt.config.project_start = new Date(2025, 2, 1);
 ~~~
 
 {{sample 02_extensions/19_constraints_scheduling.html}}
@@ -73,7 +73,7 @@ via the **gantt.config.project_end** configuration option:
 
 ~~~js
 gantt.config.schedule_from_end = true;
-gantt.config.project_end = new Date(2019, 4, 1);
+gantt.config.project_end = new Date(2025, 4, 1);
 ~~~
 
 In this case tasks are planned as late as possible. The last task should end on the end date of the project.
@@ -94,9 +94,9 @@ You can specify constraints for a task via the [**Constraint** control](desktop/
 
 ~~~js
 gantt.config.lightbox.sections = [
-	{ name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-	{ name:"constraint", type:"constraint" }, /*!*/
-	{ name:"time", type:"duration", map_to:"auto" }
+	{ name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
+	{ name: "constraint", type: "constraint" }, /*!*/
+	{ name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
 
@@ -119,22 +119,22 @@ const constraintTypeEditor = {
 };
 
 const constraintDateEditor = {
-    type: "date",
-    map_to: "constraint_date",
-    min: new Date(2019, 0, 1),
-    max: new Date(2020, 0, 1)
+	type: "date",
+	map_to: "constraint_date",
+	min: new Date(2025, 0, 1),
+	max: new Date(2026, 0, 1)
 };
 
 gantt.config.columns = [
-	{ // previous column},
+	{ /* previous column */ },
 	{
-		name:"constraint_type", align:"center", width:100, template:function (task){
-			return gantt.locale.labels[gantt.getConstraintType(task)];
-		}, resize: true, editor: constraintTypeEditor
+		name: "constraint_type", align: "center", width: 100,
+		template: task => gantt.locale.labels[gantt.getConstraintType(task)],
+		resize: true, editor: constraintTypeEditor
 	},
 	{
-		name:"constraint_date", align:"center", width:120, template:function (task) {
-		//template logic
+		name: "constraint_date", align: "center", width: 120, template: (task) => {
+			// template logic
 		},
 		resize: true, editor: constraintDateEditor
 	},
@@ -207,18 +207,15 @@ Disabling auto scheduling for specific tasks
 To disable auto scheduling for a particular task and make it manually scheduled, set the **auto_scheduling** property of the task object to *false*:
 
 ~~~js
-var task = gantt.getTask(id);
+const task = gantt.getTask(id);
 task.auto_scheduling = false;
 ~~~
 
 You can also prevent auto scheduling of a specific task using the api/gantt_onbeforetaskautoschedule_event.md handler:
 
 ~~~js
-gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predecessor){
-    if(task.completed) {
-        return false;
-    }
-    return true;
+gantt.attachEvent("onBeforeTaskAutoSchedule", (task, start, link, predecessor) => {
+	return !task.completed;
 });
 ~~~
 
@@ -308,7 +305,7 @@ gantt.autoSchedule(taskId);
 In case you need to check whether the task is unscheduled, use the api/gantt_isunscheduledtask.md method with the task object as an argument:
 
 ~~~js
-var isUnscheduled = gantt.isUnscheduledTask(task);
+const isUnscheduled = gantt.isUnscheduledTask(task);
 ~~~
 
 ###Search for circular references
@@ -324,7 +321,7 @@ gantt.findCycles();
 If you need to check whether the link is circular, you can apply the api/gantt_iscircularlink.md method:
 
 ~~~js
-var isCircular = gantt.isCircularLink(link);
+const isCircular = gantt.isCircularLink(link);
 ~~~
 
 ###Getting connected tasks and links
@@ -350,35 +347,35 @@ The list of available events is given below:
 
 ~~~js
 // before auto scheduling starts
-gantt.attachEvent("onBeforeAutoSchedule",function(taskId){
-    // any custom logic here
-    return true;
+gantt.attachEvent("onBeforeAutoSchedule", (taskId) => {
+	// any custom logic here
+	return true;
 });
 
 // after auto scheduling finishes
-gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
-    // any custom logic here
+gantt.attachEvent("onAfterAutoSchedule", (taskId, updatedTasks) => {
+	// any custom logic here
 });
 
 // before a particular task is rescheduled
-gantt.attachEvent("onBeforeTaskAutoSchedule",function(task,start,link,predecessor){
-    // any custom logic here
-    return true;
+gantt.attachEvent("onBeforeTaskAutoSchedule", (task, start, link, predecessor) => {
+	// any custom logic here
+	return true;
 });
 
 // after a particular task is rescheduled
-gantt.attachEvent("onAfterTaskAutoSchedule",function(task,start,link,predecessor){
-    // any custom logic here
+gantt.attachEvent("onAfterTaskAutoSchedule", (task, start, link, predecessor) => {
+	// any custom logic here
 });
 
 // if the circular reference has been detected and auto scheduling is not possible
-gantt.attachEvent("onCircularLinkError",function(link, group){
-    // any custom logic here
+gantt.attachEvent("onCircularLinkError", (link, group) => {
+	// any custom logic here
 });
 
 // if circular links were found during auto scheduling
-gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
-    // any custom logic here
+gantt.attachEvent("onAutoScheduleCircularLink", (groups) => {
+	// any custom logic here
 });
 ~~~
 
