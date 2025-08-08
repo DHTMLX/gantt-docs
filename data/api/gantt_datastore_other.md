@@ -572,7 +572,7 @@ const items = store.getItems();
 ~~~
 <br>
 <br>
-<i>The twin of datastore.getItems() is 
+<i>The twins of datastore.getItems() are 
     <a href="api/gantt_gettaskbytime.md">gantt.getTaskByTime()</a> and 
     <a href="api/gantt_getlinks.md">gantt.getLinks()</a>.
 </i>
@@ -844,7 +844,7 @@ store.attachEvent("onParse", () => {
 
 <ul id="onParse">
     <li>
-        <b class=eventname>onParse (data)</b> — fires after data were parsed (became available for API) but before they were rendered in the Gantt chart
+        <b class=eventname>onParse (data)</b> — fires after data have been parsed (became available for API) but before they are rendered in the Gantt chart
         <ul>
             <li><b><i>data</i></b> — (<i>Array &lt;any&gt;</i>) — the array with the data that was loaded</li>
         </ul>
