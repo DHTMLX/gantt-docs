@@ -13,25 +13,34 @@ There are 3 predefined types of tasks that you can present in a Gantt chart ([yo
 <img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;"  src="desktop/task_types.png"/>
 
 
-To set the type of a task, use the [type](desktop/loading.md#specifyingdataproperties) property of a data item (*values are stored in the api/gantt_types_config.md object*):
+To set the type of a task, use the [type](desktop/task_properties.md) property of a data item (*values are stored in the api/gantt_types_config.md object*):
 
 {{snippet
 Specifying the type of a task in the data set
 }}
+
 ~~~js
-var data = {
-	task:[
-    	{id:1, text:"Project #1",    type:"project",    open:true},   /*!*/
-		{id:2, text:"Task #1", 	     start_date:"12-04-2020", duration:3, parent:1},
-		{id:3, text:"Alpha release", type:"milestone",   parent:1, /*!*/
-        	start_date:"14-04-2020"},                                                /*!*/
-		{id:4, text:"Task #2", 	     start_date:"17-04-2020", duration:3, parent:1}],
-	links:[]
+const data = {
+	tasks: [
+		{ id: 1, text: "Project #1", type: "project", open: true },
+		{ id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1 },
+		{ id: 3, text: "Alpha release", start_date: "16-04-2025", type: "milestone",
+			parent: 1 },
+		{ id: 4, text: "Task #2", start_date: "17-04-2025", duration: 3, parent: 1 },
+	],
+	links: [
+		{ id: 1, source: "1", target: "2", type: "1" },
+		{ id: 2, source: "2", target: "3", type: "0" },
+		{ id: 3, source: "3", target: "4", type: "0" },
+	],
 };
 ~~~
+
 {{sample
 01_initialization/16_projects_and_milestones.html
 }}
+
+
 
 Regular tasks
 -----------------
@@ -43,24 +52,29 @@ By default, dhtmlxGantt provides creating of regular tasks (tasks with **type="t
 {{snippet
 Specifying regular tasks
 }}
+
 ~~~js
-var data = {
-    tasks:[{id:2, text:"Task #1", start_date:"12-04-2020", duration:3}],  /*!*/
-    links:[]
+const data = {
+	tasks: [
+		{ id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1 }, /*!*/
+	],
+	links: [],
 };
 //or
-var data = {
- 	tasks:[{id:2, text:"Task #1", start_date:"12-04-2020", duration:3, /*!*/
-    		type:"task"}],  /*!*/
-    links:[]
+const data = {
+	tasks: [
+		{ id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1, /*!*/
+			type: "task" }, /*!*/
+	],
+	links: [],
 };
 ~~~
+
 {{sample
 01_initialization/16_projects_and_milestones.html
 }}
 
 <br>
-
 
 Tasks with **type="task"** can be characterized as follows:
 
@@ -69,6 +83,7 @@ Tasks with **type="task"** can be characterized as follows:
 - Doesn't depend on child tasks, i.e. if the user dragges a child of a regular task, the task doesn't change its duration or progress respectively.
 - Can appear on the parent projects. See [details](desktop/milestones.md#rolluptasksandmilestones).
 - Can be hidden in the timeline. See [details](desktop/milestones.md#hidingtasksandmilestones).
+
 
 
 Project tasks
@@ -86,14 +101,17 @@ The difference between project and regular tasks is that the duration of a proje
 {{snippet
 Specifying project tasks
 }}
+
 ~~~js
-var data = {
-    tasks:[
-    	{id:1, text:"Project #1",    type:"project",    open:true}, /*!*/
-        {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:"milestone",   parent:1,
-            start_date:"14-04-2020"}],
-    links:[]
+const data = {
+	tasks: [
+		{ id: 1, text: "Project #1", type: "project", open: true }, /*!*/
+		{ id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1 },
+		{ id: 3, text: "Alpha release", start_date: "16-04-2025", type: "milestone",
+			parent: 1 },
+		{ id: 4, text: "Task #2", start_date: "17-04-2025", duration: 3, parent: 1 },
+	],
+	links: [],
 };
 ~~~
 
@@ -116,6 +134,8 @@ Tasks with **type="project"** can be characterized as follows:
 To provide a possibility of adding project tasks, read article desktop/milestones.md. A possibility to add milestones guarantees that your end users can add project tasks as well.
 }}
 
+
+
 Milestones
 --------------------------------------------------------
 
@@ -128,15 +148,15 @@ Milestones
 Specifying milestones
 }}
 ~~~js
-var data = {
-    tasks:[
-    	{id:1, text:"Project #1",    type:"project",    open:true},
-        {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:"milestone",   parent:1, /*!*/
-            start_date:"14-04-2020"}],/*!*/
-    links:[]
+const data = {
+	tasks: [
+		{ id: 3, text: "Alpha release", start_date: "16-04-2025", type: "milestone", /*!*/
+			parent: 1 }, /*!*/
+	],
+	links: [],
 };
 ~~~
+
 {{sample
 01_initialization/16_projects_and_milestones.html
 }}
@@ -156,6 +176,8 @@ Tasks with **type="milestone"** can be characterized as follows:
 To provide a possibility of adding milestones, read article desktop/milestones.md.
 }}
 
+
+
 Specific lightbox per task type
 ----------------------------------------------
 
@@ -172,18 +194,20 @@ The default configuration settings are the following:
 
 ~~~js
 gantt.config.lightbox.sections = [
-	{name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-	{name: "time", type: "duration", map_to: "auto"}
+	{ name: "description", type: "textarea", map_to: "text", height: 70, focus: true },
+	{ name: "time", type: "duration", map_to: "auto" }
 ];
-gantt.config.lightbox.project_sections= [
-	{name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-	{name: "type", type: "typeselect", map_to: "type"},
-	{name: "time", type: "duration", readonly: true, map_to: "auto"}
+
+gantt.config.lightbox.project_sections = [
+	{ name: "description", type: "textarea", map_to: "text", height: 70, focus: true },
+	{ name: "type", type: "typeselect", map_to: "type" },
+	{ name: "time", type: "duration", map_to: "auto", readonly: true }
 ];
-gantt.config.lightbox.milestone_sections= [
-	{name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-	{name: "type", type: "typeselect", map_to: "type"},
-	{name: "time", type: "duration", single_date: true, map_to: "auto"}
+
+gantt.config.lightbox.milestone_sections = [
+	{ name: "description", type: "textarea", map_to: "text", height: 70, focus: true },
+	{ name: "type", type: "typeselect", map_to: "type" },
+	{ name: "time", type: "duration", map_to: "auto", single_date: true }
 ];
 ~~~
 
@@ -194,6 +218,7 @@ You can [add a custom type](desktop/task_types.md#creatingacustomtype) and speci
 To go into details on a lightbox configuration, you can read the desktop/edit_form.md chapter.
 
 
+
 Creating a custom type
 -----------------------------------------------
 
@@ -202,12 +227,10 @@ All tasks' types are defined in the api/gantt_types_config.md object. <br>Genera
 1. Add a new value to the api/gantt_types_config.md object.
 2. Define individual settings for the new type.
 
-
 Let's assume, you want to add a new type of tasks - **meeting**.
 **Meeting**  will be an ordinary task but colored in different color and with different inputs in the lightbox.
 
 <img style="border: 1px #C4C4C5 solid;margin: 20px auto 20px auto;display: block;box-shadow: #D8D8D8 0px 0px 7px 1px;" src="desktop/custom_task_type.png">
-
 
 To define a new type with the name **meeting** and specify an individual lightbox for it, use the following technique:
 
@@ -217,6 +240,7 @@ To define a new type with the name **meeting** and specify an individual lightbo
 ~~~js
 gantt.config.types.meeting = "type_id";
 ~~~
+
 <i>
 where "meeting" is a programmatic name of the type. It doesn't affect anything. The only purpose of the programmatic type name is to make work with types more readable.<br>
 "type_id" is the type identifier, that will be stored in the database. The type identifier must be unique within the <a href="api/gantt_types_config.md ">types</a> object.</i>
@@ -227,17 +251,19 @@ where "meeting" is a programmatic name of the type. It doesn't affect anything. 
 ~~~js
 gantt.locale.labels.type_meeting = "Meeting";
 ~~~
+
 <br>
 </li>
 <li>Specify a new structure of the lightbox for the newly-created type:<br><br>
 
 ~~~js
 gantt.config.lightbox.meeting_sections = [
-	{name:"title", height:20, map_to:"text", type:"textarea", focus:true},
-	{name:"details", height:70, map_to: "details", type: "textarea"},
-	{name:"type", type:"typeselect", map_to:"type"},
-	{name:"time", height:72, type:"time", map_to:"auto"}
+	{ name: "title", type: "textarea", map_to: "text", height: 20, focus: true },
+	{ name: "details", type: "textarea", map_to: "details", height: 70 },
+	{ name: "type", type: "typeselect", map_to: "type" },
+	{ name: "time", type: "time", map_to: "auto", height: 72 }
 ];
+
 gantt.locale.labels.section_title = "Subject";
 gantt.locale.labels.section_details = "Details";
 ~~~
@@ -251,17 +277,17 @@ gantt.locale.labels.section_details = "Details";
 	color:#6ba8e3;
 	background: #F2F67E;
 }
+
 .meeting_task .gantt_task_progress{
 	background:#D9DF29;
 }
 ~~~
 
 ~~~js
-gantt.templates.task_class = function(start, end, task){
-	if(task.type == gantt.config.types.meeting){
-		return "meeting_task";
-	}
-	return "";
+gantt.templates.task_class = (start, end, task) => {
+	return task.type === gantt.config.types.meeting 
+		? "meeting_task" 
+		: "";
 };
 ~~~
 <br>
@@ -269,12 +295,10 @@ gantt.templates.task_class = function(start, end, task){
 	<li>Set the template for text of the "meeting" tasks using the api/gantt_task_text_template.md template: <br><br>
 
 ~~~js
-gantt.templates.task_text = function(start, end, task){
-	if(task.type == gantt.config.types.meeting){
-		return "Meeting: <b>" + task.text + "</b>";
-	}
-	return task.text;
-};
+gantt.templates.task_text = (start, end, task) =>
+	task.type === gantt.config.types.meeting
+		? `Meeting: <b>${task.text}</b>`
+		: task.text;
 ~~~
 	</li>
 </ol>
@@ -282,6 +306,8 @@ gantt.templates.task_text = function(start, end, task){
 {{sample
 04_customization/12_custom_task_type.html
 }}
+
+
 
 Custom display of task types
 -----------------------------------------------------------------
@@ -291,23 +317,25 @@ To customize the look of existing task types, use the api/gantt_type_renderers_c
 <img src="desktop/custom_look.png"/>
 
 ~~~js
-gantt.config.type_renderers["project"]=function(task, defaultRender){
-	var main_el = document.createElement("div");
-	main_el.setAttribute(gantt.config.task_attribute, task.id);
-	var size = gantt.getTaskPosition(task);
-	main_el.innerHTML = [
-		"<div class='project-left'></div>",
-		"<div class='project-right'></div>"
-	].join('');
-	main_el.className = "custom-project";
+gantt.config.type_renderers["project"] = (task, defaultRender) => {
+    const taskBar = document.createElement("div");
+    taskBar.setAttribute(gantt.config.task_attribute, task.id);
+    taskBar.className = "custom-project";
 
-	main_el.style.left = size.left + "px";
-	main_el.style.top = size.top + 7 + "px";
-	main_el.style.width = size.width + "px";
+    const taskSize = gantt.getTaskPosition(task);
+    taskBar.innerHTML = [
+        "<div class='project-left'></div>",
+        "<div class='project-right'></div>"
+    ].join('');
 
-	return main_el;
+    taskBar.style.left = `${taskSize.left}px`;
+    taskBar.style.top = `${taskSize.top + 7}px`;
+    taskBar.style.width = `${taskSize.width}px`;
+
+    return taskBar;
 };
 ~~~
+
 {{sample
 04_customization/17_classic_gantt_look.html
 }}
