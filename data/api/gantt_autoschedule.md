@@ -16,7 +16,7 @@ gantt.autoSchedule();
 @template:	api_method
 @descr:
 
-To recalculate the schedule starting from a particular task, pass the id of the task as an argument to the **autoSchedule()** method:
+To recalculate the schedule for a group of linked tasks, pass the id of one of the tasks in this group as an argument to the **autoSchedule()** method:
 
 ~~~js
 gantt.autoSchedule(taskId);
