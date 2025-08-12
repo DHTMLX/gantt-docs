@@ -109,6 +109,17 @@ removes tooltip. As a parameter the method takes:
 
 - **selector** - (*string*) the CSS selector of a Gantt element
 
+<h4 id="delayShow">gantt.ext.tooltips.delayShow()</h4> 
+
+sets the delay before showing a tooltip. As parameters the method takes:
+
+- **event** - (*Event*) a native mouse event
+- **tooltipText** - (*string*) the text of the tooltip
+
+<h4 id="delayHide">gantt.ext.tooltips.delayHide()</h4> 
+
+sets the delay before hiding a tooltip
+
 
 
 Tooltips for different elements
