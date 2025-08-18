@@ -1,7 +1,7 @@
 dhtmlxGantt with ASP.NET MVC  
 ===============================
 
-This tutorial will give you step-by-step instructions on creating Gantt with [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) and REST API on the server side. 
+This tutorial will give you step-by-step instructions on creating Gantt with [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet) and REST API on the server side. 
 
 You can also explore other server-side integration possibilities of Gantt by choosing one of the following tutorials:
 
@@ -987,7 +987,7 @@ Known issues
 HTTP PUT and DELETE requests return 405 or 401 error when an app is running on IIS.
 The issue may be caused by the **WebDAV** module which can conflict with RESTful handlers. 
 
-As a common solution, the module can be disabled from the **web.config** file. More details are given [here](https://forums.iis.net/t/1166025.aspx).
+As a common solution, the module can be disabled from the **web.config** file. More details are given [here](https://learn.microsoft.com/en-us/answers/tags/828/developer-technologies).
 
 Application security
 -------------------------
