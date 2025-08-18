@@ -198,7 +198,7 @@ export function getData() {
 }
 ~~~
 
-We should [pass props (our data)](https://learn.svelte.dev/tutorial/declaring-props) to the Gantt component in the **App.svelte** file:
+We should [pass props (our data)](https://svelte.dev/tutorial/svelte/declaring-props) to the Gantt component in the **App.svelte** file:
 
 {{snippet App.svelte}}
 ~~~html

@@ -29,7 +29,7 @@ Step 1. Creating a project
 
 To begin with, we'll create a project folder and then add the required dependencies. We'll make use of the following modules:
 
-- [Express](http://expressjs.com/) - a tiny framework for Node.js
+- [Express](https://expressjs.com/) - a tiny framework for Node.js
 - [body-parser](https://www.npmjs.com/package/body-parser) - a Node.js parsing tool
 
 
