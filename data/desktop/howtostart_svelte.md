@@ -16,7 +16,7 @@ To create a Svelte project, we will use Svelte with Vite and run the following c
 npm create vite@latest
 ~~~
 
-Check the details in the [related article](https://svelte.dev/docs/introduction#start-a-new-project-alternatives-to-sveltekit).
+Check the details in the [related article](https://svelte.dev/docs/svelte/overview).
 
 ### Installation of dependencies
 
@@ -198,7 +198,7 @@ export function getData() {
 }
 ~~~
 
-We should [pass props (our data)](https://learn.svelte.dev/tutorial/declaring-props) to the Gantt component in the **App.svelte** file:
+We should [pass props (our data)](https://svelte.dev/tutorial/svelte/declaring-props) to the Gantt component in the **App.svelte** file:
 
 {{snippet App.svelte}}
 ~~~html
