@@ -70,25 +70,32 @@ export default function BasicGantt() {
 }
 ~~~
 
-Where **demoData** has the following [format](desktop/loading.md):
+Note that the above snippet shows how to include the commercial Gantt version. To use the trial code sources, include the package in the following way:
+
+~~~js
+import ReactGantt from '@dhx/trial-react-gantt';
+import '@dhx/trial-react-gantt/dist/react-gantt.css';
+~~~
+
+**demoData** from the above code snippet has the following [format](desktop/loading.md):
 
 ~~~
-const demoData = {
+export const demoData = {
   tasks: [
     { id: 1, text: "Product Launch", type: "project", open: true, parent: 0},
     { id: 2, text: "Planning Phase", type: "project", open: true, parent: 1},
-    { id: 3, text: "Requirement Gathering", type: "task", progress: 0.2, 
-      start_date: "2025-06-01", duration: 3, parent: 2},
+   	{ id: 3, text: "Requirement Gathering", type: "task", progress: 0.2, 
+      start_date: "01-06-2025", duration: 3, parent: 2},
     { id: 4, text: "Technical Feasibility", type: "task", progress: 0.4, 
-      start_date: "2025-06-04", duration: 2, parent: 2},
+      start_date: "04-06-2025", duration: 2, parent: 2},
     { id: 5, text: "Implementation Phase", type: "project", progress: 0.1, 
-      open: true, start_date: "2025-06-08", duration: 10, parent: 1},
+      open: true, start_date: "08-06-2025", duration: 10, parent: 1},
     { id: 6, text: "Prototype Development", type: "task", progress: 0.0, 
-     start_date: "2025-06-08", duration: 4, parent: 5},
+     start_date: "08-06-2025", duration: 4, parent: 5},
     { id: 7, text: "Feature Testing", type: "task", progress: 0.0, 
-     start_date: "2025-06-12", duration: 4, parent: 5},
+     start_date: "12-06-2025", duration: 4, parent: 5},
     { id: 8, text: "Go-Live Milestone", type: "milestone", progress: 0, 
-     start_date: "2025-06-18", duration: 0, parent: 1}
+     start_date: "18-06-2025", duration: 0, parent: 1}
   ],
   links: [
     { id: 1, source: 3, target: 4, type: "0" },
@@ -97,7 +104,6 @@ const demoData = {
     { id: 4, source: 7, target: 8, type: "0" }
   ]
 };
-export demoData;
 ~~~
 
 Binding Data
@@ -120,7 +126,7 @@ function MyGanttApp() {
   const [links, setLinks] = useState<Link[]>(initialLinks);
 
   const data = {
-    save: (entity: string, action: string, raw: any, id: string | number) => {
+    save: (entity: string, action: string, item: any, id: string | number) => {
       if (entity === 'task') {
         if (action === 'create') {
           setTasks((prev) => [...prev, item]);
