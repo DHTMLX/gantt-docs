@@ -1,6 +1,12 @@
 What's new in MSP Project Export Module
 ===========================================
 
+## 2.2.1.0
+
+• Fixed specifying 24-hour value as the working time config (for example, `gantt.setWorkTime({ hours: ["00:00-24:00"] })`)
+
+• Fixed the returned Project calendar when specifying the `CalendarUID` property in the `projectProperties` parameter in the import functions
+
 ## 2.2.0.0
 
 • Updated MPXJ library to the 12.0.0 version
