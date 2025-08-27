@@ -323,7 +323,7 @@ gantt.templates.task_end_date = (date) => {
 
 const gridDateToStr = gantt.date.date_to_str("%Y-%m-%d");
 
-gantt.templates.grid_date_format = function (date, column) {
+gantt.templates.grid_date_format = (date, column) =>  {
 	if (column === "end_date") {
 		return gridDateToStr(new Date(date.valueOf() - 1));
 	} else {
