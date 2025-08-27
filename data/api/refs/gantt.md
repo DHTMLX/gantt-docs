@@ -569,6 +569,7 @@ Gantt API
 
 {{api
 - api/gantt_$click_other.md - redefines the default click behavior for buttons of the Gantt chart
+- api/gantt_gantt_other.md - a factory object that can be used to create new instances of dhtmlxGantt chart
 - api/gantt_ajax_other.md - gantt ajax module
 - api/gantt_calendar_other.md - the interface of the working calendar object
 - api/gantt_config_other.md - defines configuration options for dates, scale, controls
