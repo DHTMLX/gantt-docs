@@ -2,13 +2,13 @@ dhtmlxGantt with Angular
 ==========================
 
 You should be familiar with the basic concepts and patterns of Angular to use this documentation. If 
-you are not, please refer to the [Angular documentation](https://angular.io/docs) for a getting-started tutorial.
+you are not, please refer to the [Angular documentation](https://angular.dev/overview) for a getting-started tutorial.
 
 DHTMLX Gantt is compatible with Angular. You can check the corresponding example on GitHub: [DHTMLX Gantt with Angular Demo](https://github.com/DHTMLX/angular-gantt-demo).
 
 ## Creating a project
 
-Before you start to create a new project, install [Angular CLI](https://angular.io/cli) and [Node.js](https://nodejs.org/en/).
+Before you start to create a new project, install [Angular CLI](https://angular.dev/tools/cli) and [Node.js](https://nodejs.org/en/).
 
 ~~~
 ng new my-angular-gantt-app
@@ -35,7 +35,7 @@ or
 npm start
 ~~~
 
-Now the app should be running on [http://localhost:4200](http://localhost:4200).
+Now the app should be running on **http://localhost:4200**.
 
 ![Gantt Angular app running](howtostart_frontend_frameworks/gantt_angular_app_run.png)
 

@@ -127,7 +127,8 @@ You can change the color of the bar of the parent item in the same way as you ca
 }
 ~~~
 
-<br>
+{{editor	https://snippet.dhtmlx.com/svgo5vfn		Hide transparent parent bar of the split tasks}}
+
 When you have only one split task, the summary item (type=“project”) becomes invisible because it is completely covered by the split task. If there are no split-subtasks, the summary item has a default date and duration.
 
 ### Styling separate split tasks

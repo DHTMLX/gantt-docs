@@ -1,7 +1,7 @@
 dhtmlxGantt with ASP.NET Core 
 ==========================
 
-This tutorial gives you step-by-step instructions on how to create Gantt with [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) Core on the server side.
+This tutorial gives you step-by-step instructions on how to create Gantt with [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet) Core on the server side.
 
 You can also read tutorials on other server-side technologies:
 
@@ -89,7 +89,7 @@ When the page is loaded, in addition to [initializing gantt chart](desktop/initi
 
 Next go to **Program.cs** and tell the application to use the **index.html** page. In order to do so, you need to configure the app to serve static files from the `wwwroot` folder. 
 For this, you need to add the `app.UseDefaultFiles()` method.
-You can find [more details here](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-2.1&tabs=aspnetcore2x).
+You can find [more details here](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-9.0).
 
 {{snippet Program.cs}}
 ~~~js
@@ -333,7 +333,7 @@ namespace DHX.Gantt.Models
 #### Register Database
 
 Now you should register the database in **Program.cs**. But first you need a connection string for it. 
-It will be stored [in a JSON file in the application settings ](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration).
+It will be stored [in a JSON file in the application settings ](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-9.0).
 Create the **appsettings.json** file (or open it if you have it already) and add a connection string to the database:
 
 {{snippet	appsettings.json}}
@@ -347,7 +347,7 @@ Create the **appsettings.json** file (or open it if you have it already) and add
 ~~~
 
 The database context will be registered via 
-[dependency injection](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-2.1). 
+[dependency injection](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-9.0&viewFallbackFrom=aspnetcore-2.1&tabs=visual-studio). 
 
 Add the following namespaces to **Program.cs**:
 
@@ -826,7 +826,7 @@ Everything is ready. You can run the application and see the fully-fledged Gantt
 
 ## Error handling
 
-In order to handle errors, you need to declare a special [middleware class](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/startup?view=aspnetcore-2.1) 
+In order to handle errors, you need to declare a special [middleware class](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/startup?view=aspnetcore-9.0) 
 that will capture runtime exceptions and write responses. Next it will be added to the app request pipeline. Follow the steps below:
 
 1\. Create a middleware class from a template in the project folder.

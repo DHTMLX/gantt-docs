@@ -13,20 +13,22 @@ addTaskLayer
 
 @example:
 gantt.init("gantt_here");
-gantt.addTaskLayer(function draw_deadline(task) {
+
+gantt.addTaskLayer((task) => {
 	if (task.deadline) {
-		var el = document.createElement('div');
-		el.className = 'deadline';
-		var sizes = gantt.getTaskPosition(task, task.deadline);
+		const el = document.createElement("div");
+		el.className = "deadline";
 
-		el.style.left = sizes.left + 'px';
-		el.style.top = sizes.top + 'px';
+		const sizes = gantt.getTaskPosition(task, task.deadline);
+		el.style.left = `${sizes.left}px`;
+		el.style.top = `${sizes.top}px`;
 
-		el.setAttribute('title', gantt.templates.task_date(task.deadline));
+		el.setAttribute("title", gantt.templates.task_date(task.deadline));
 		return el;
 	}
 	return false;
 });
+
 
 
 @related:
@@ -119,16 +121,16 @@ To do that, you need to use the *object* parameter of the *addTaskLayer()* metho
 
 ~~~js
 gantt.addTaskLayer({
-    renderer: {
-        render: function(task, timeline, viewport){
-            ...
-            return  HTMLElement
-        },
-        getRectangle: function(task, view){
-            ....
-            return {left, top, height, width};
-        }
-    }
+	renderer: {
+		render: (task, timeline, viewport) => {
+			// ...
+			return /* HTMLElement */;
+		},
+		getRectangle: (task, view) => {
+			// ...
+			return { left, top, height, width };
+		}
+	}
 });
 ~~~
 
@@ -141,24 +143,31 @@ The logic of rendering custom elements is the following:
 
 ~~~js
 gantt.addTaskLayer({
-    renderer: {
-      render: function draw_planned(task) {
-        if (task.planned_start && task.planned_end) {
-          var sizes = gantt.getTaskPosition(task,task.planned_start,task.planned_end);
-          var el = document.createElement('div');
-          el.className = 'baseline';
-          el.style.left = sizes.left + 'px';
-          el.style.width = sizes.width + 'px';
-          el.style.top = sizes.top + gantt.config.task_height + 13 + 'px';
-          return el;
-        }
-        return false;
-      },
-      // define getRectangle in order to hook layer with the smart rendering
-      getRectangle: function(task, view){
-        return gantt.getTaskPosition(task, task.planned_start, task.planned_end);
-      }
-    }
+	renderer: {
+		render: (task) => {
+			if (task.planned_start && task.planned_end) {
+				const sizes = gantt.getTaskPosition(
+					task,
+					task.planned_start,
+					task.planned_end
+				);
+				const el = document.createElement('div');
+				el.className = 'baseline';
+				el.style.left = sizes.left + 'px';
+				el.style.width = sizes.width + 'px';
+				el.style.top = (sizes.top + gantt.config.task_height + 13) + 'px';
+				return el;
+			}
+			return false;
+		},
+		// define getRectangle in order to hook layer with the smart rendering
+		getRectangle: (task, view) =>
+			gantt.getTaskPosition(
+				task,
+				task.planned_start,
+				task.planned_end
+			)
+	}
 });
 ~~~
 
@@ -168,20 +177,20 @@ The **renderer** object of the *addTaskLayer()* method provides a possibility to
 
 ~~~js
 gantt.addTaskLayer({
-    renderer: {
-        render: function(task, timeline, viewport){
-            ...
-            return  HTMLElement
-        },
-        update: function(task, node, timeline, viewport){
-            ...
-            // put the currently visible part of the element into node inner html
-        },
-        getRectangle: function(task, view){
-            ....
-            return {left, top, height, width};
-        }
-    }
+	renderer: {
+		render: (task, timeline, viewport) => {
+			// ...
+			return /* HTMLElement */;
+		},
+		update: (task, node, timeline, viewport) => {
+			// ...
+			// put the currently visible part of the element into node inner html
+		},
+		getRectangle: (task, view) => {
+			// ...
+			return { left, top, height, width };
+		}
+	}
 });
 ~~~
 
@@ -195,20 +204,20 @@ Since v7.1.8 the **renderer** object of the *addTaskLayer()* method allows getti
 
 ~~~js
 gantt.addTaskLayer({
-    renderer: {
-        render: function(task, timeline, viewport){
-            ...
-            return  HTMLElement
-        },
-        getVisibleRange: function(){
-        	...
-            return { 
-  				start: indexStart,
-  				end: indexEnd
-			}
-        }
+	renderer: {
+		render: (task, timeline, viewport) => {
+			// ...
+			return /* HTMLElement */;
+		},
+		getVisibleRange: () => {
+			// ...
+			return {
+				start: indexStart,
+				end: indexEnd
+			};
+		}
 	}
-});     
+});
 ~~~
 
 - **getVisibleRange** - a function that returns an object with the start and end indexes of visible tasks rows. 
@@ -222,15 +231,15 @@ The **renderer** object of the *addTaskLayer()* method provides the **onrender**
 
 ~~~js
 gantt.addTaskLayer({
-    renderer: {
-        render: function(task, timeline, viewport){
-            ...
-            return  HTMLElement
-        },
-        onrender: function(item, node, view){
-            console.log("render", item, node)
-        }
-    }
+	renderer: {
+		render: (task, timeline, viewport) => {
+			// ...
+			return /* HTMLElement */;
+		},
+		onrender: (item, node, view) => {
+			console.log("render", item, node);
+		}
+	}
 });
 ~~~
 

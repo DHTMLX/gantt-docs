@@ -102,7 +102,7 @@ gantt.attachEvent("onBeforeTaskChanged", function(id, mode, old_task){
 
 Accessing the gantt object inside the handler
 ---------------------------------
-Inside the event handler you can refer to the gantt object through the keyword **this**. </br>
+Inside the event handler you can refer to the gantt object through the keyword **this**. <br>
 
 {{snippet
 Referring within the event handler

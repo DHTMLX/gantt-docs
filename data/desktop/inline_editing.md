@@ -586,89 +586,113 @@ When validation of editors is enabled Gantt does not save incorrect input values
 A good way for preventing the editor from closing is to pop up an alert box that gives a user the opportunity to fix the incorrect value. For this purpose you need to use custom keyboard mapping, as in:
 
 ~~~js
-const editAnotherCell = (inlineEditors) => {
-	const value = inlineEditors.getValue();
-	if (confirm(`does '${value}' look ok to you?`)) {
-		inlineEditors.save();
-	}
-};
+function customValidation() {
+    const state = gantt.ext.inlineEditors.getState()
+    if (!state.id){
+        return
+    }
+    const value = gantt.ext.inlineEditors.getValue()
+    if (state.columnName == "start_date" || state.columnName == "end_date") {
+        if (value.getFullYear() != 2025) {
+            gantt.message({ text: "Validation failed", type: "error" })
+            return false
+        }
+    }
+    if (state.columnName == "duration") {
+        if (value > 4) {
+            gantt.message({ text: "Validation failed", type: "error" })
+            return false
+        }
+    }
+
+    return true
+}
 
 const mapping = {
-	init: (inlineEditors) => {
-		gantt.attachEvent("onTaskClick", (id, e) => {
-			const cell = inlineEditors.locateCell(e.target);
-			if (cell && inlineEditors.getEditorConfig(cell.columnName)) {
-				if (inlineEditors.isVisible()) {
-					editAnotherCell(inlineEditors);
-				} else {
-					inlineEditors.startEdit(cell.id, cell.columnName);
-				}
-				return false;
-			}
-			return true;
-		});
+    init: function (inlineEditors) {
+        keyNav.attachEvent("onBeforeFocus", function (e) {
+            if (gantt.ext.inlineEditors.isVisible()) {
+                return false;
+            }
+        });
 
-		gantt.attachEvent("onEmptyClick", () => {
-			inlineEditors.hide();
-			return true;
-		});
-	},
+        gantt.attachEvent("onTaskClick", function (id, e) {
+            const cell = inlineEditors.locateCell(e.target);
+            if (!gantt.ext.inlineEditors.isVisible()) {
+                if (cell && inlineEditors.getEditorConfig(cell.columnName)) {
+                    inlineEditors.startEdit(cell.id, cell.columnName);
+                    return false;
+                }
+            }
+            return true;
 
-	onShow: (inlineEditors, node) => {
-		node.onkeydown = (e) => {
-			e = e || window.event;
-			if (e.defaultPrevented) return;
+        });
 
-			const keyboard = gantt.constants.KEY_CODES;
-			let shouldPrevent = true;
+        keyNav.attachEvent("onKeyDown", function (id, e) {
 
-			switch (e.keyCode) {
-				case gantt.keys.edit_save: {
-					const value = inlineEditors.getValue();
-					if (confirm(`does '${value}' look ok to you?`)) {
-						inlineEditors.save();
-					}
-					break;
-				}
-				case gantt.keys.edit_cancel:
-					inlineEditors.hide();
-					break;
-				case keyboard.TAB:
-					if (e.shiftKey) {
-						if (inlineEditors.isVisible()) {
-							editAnotherCell(inlineEditors);
-						} else {
-							inlineEditors.editPrevCell(true);
-						}
-					} else {
-						if (inlineEditors.isVisible()) {
-							editAnotherCell(inlineEditors);
-						} else {
-							inlineEditors.editNextCell(true);
-						}
-					}
-					break;
-				default:
-					shouldPrevent = false;
-			}
+            const editorOpened = gantt.ext.inlineEditors.isVisible();
+            if (editorOpened && e.keyCode >= 37 && e.keyCode <= 40) return false;
+            return true;
+        });
 
-			if (shouldPrevent) {
-				e.preventDefault();
-			}
-		};
-	},
+        gantt.attachEvent("onEmptyClick", function () {
 
-	onHide: (inlineEditors, node) => {
-	}
+            if (customValidation()) {
+                inlineEditors.hide();
+            }
+            return true;
+        });
+    },
+
+    onShow: function (inlineEditors, node) {
+
+        node.onkeydown = function (e) {
+            e = e || window.event;
+            if (e.defaultPrevented) {
+                return;
+            }
+
+            const keyboard = gantt.constants.KEY_CODES;
+
+            let shouldPrevent = true;
+            switch (e.keyCode) {
+                case gantt.keys.edit_save:
+                    if (customValidation()) {
+                        inlineEditors.save();
+                    }
+
+                    break;
+                case gantt.keys.edit_cancel:
+                    inlineEditors.hide();
+
+                    break;
+                case keyboard.TAB:
+                    if (e.shiftKey) {
+                        inlineEditors.editPrevCell(true);
+                    } else {
+                        inlineEditors.editNextCell(true);
+                    }
+                    break;
+                default:
+                    shouldPrevent = false;
+                    break;
+            }
+
+
+            if (shouldPrevent) {
+                e.preventDefault();
+            }
+        };
+    },
+
+    onHide: function (inlineEditors, node) { }
 };
 
 gantt.ext.inlineEditors.setMapping(mapping);
 gantt.init("gantt_here");
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/hd9ew20m	Custom keyboard mapping}}
-
-
+{{editor	https://snippet.dhtmlx.com/efsftrq1		Validation for inline editors via custom mapping}}
 
 Opening editor with one click
 ------------------------------

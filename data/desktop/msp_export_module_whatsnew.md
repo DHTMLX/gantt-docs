@@ -1,6 +1,34 @@
 What's new in MSP Project Export Module
 ===========================================
 
+## 2.2.1.0
+
+• Fixed specifying 24-hour value as the working time config (for example, `gantt.setWorkTime({ hours: ["00:00-24:00"] })`)
+
+• Fixed the returned Project calendar when specifying the `CalendarUID` property in the `projectProperties` parameter in the import functions
+
+## 2.2.0.0
+
+• Updated MPXJ library to the 12.0.0 version
+
+• Correct import of the `Start` and `Finish` properties specified in the `taskProperties` parameter
+
+• Fixed import when specifying duplicate values in the `taskProperties` parameter
+
+• Fixed import when specifying the `CalendarUID` property in the `taskProperties` parameter and a task doesn't have the calendar
+
+• Fixed export when `gantt.config.worktimes` has an empty array
+
+• Fixed export when specifying working time settings in the old format
+
+## 2.1.1.0
+
+• Renamed the property that contains calendars from `worktimes` to `calendars`
+
+• Added a property that contains the ID of the global calendar
+
+• Restored the `worktime` property that contains the global calendars settings for backward compatibility
+
 ## 2.1.0.0
 
 • Added support for custom calendars for the imported and exported MSP and Primavera files (including resource calendars)

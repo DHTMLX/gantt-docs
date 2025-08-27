@@ -10,6 +10,48 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.14
+---------------
+<span class='release_date'>July 31, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the script error thrown after closing a [Modalbox](desktop/message_boxes.md)
+- Prevent creation of an empty row in the tree after re-parsing data in [grouped](api/gantt_groupby.md) mode
+- Ensure the [setWorkTime](api/gantt_setworktime.md) method correctly applies **customWeeks** in Firefox
+- Fix the issue where calling [setTasks](web/react.md#:~:text=export%20demoData%3B-,Binding%20Data,-The%20ReactGantt%20wrapper) with an empty dataset broke the React Gantt component
+
+9.0.13
+---------------
+<span class='release_date'>June 26, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where Gantt became unusable after creating and deleting a duplicate link
+- Ensure link placeholders are displayed correctly on touch devices
+- Fix the issue where a project's `end_date` is not updated when it has a single milestone child
+- Prevent unnecessary repaints of resource items when using a custom datastore
+- Fix the issue where [silently](api/gantt_silent.md) calling [gantt.addLink](api/gantt_addlink.md) resulted in an incorrect state of the internal datastore
+- Prevent [DataProcessor](desktop/server_side.md) from adding the `!nativeeditor_status` property to [custom router](desktop/server_side.md#customrouting) arguments
+- Fix incorrect handling of `tasks` and `links` props changes in the [React Gantt](web/react.md) component
+
+
+9.0.12
+---------------
+<span class='release_date'>June 19, 2025. Bugfix release</span>
+
+### Fixes
+
+- Ensure the [contrast-white](desktop/skins.md#contrastwhiteskin) skin passes color contrast accessibility tests
+- Fix the issue where [dynamic loading](desktop/dynamic_loading.md) stops working after calling [gantt.clearAll()](api/gantt_clearall.md)
+- Prevent the [Tooltip](desktop/tooltips.md) from rendering outside the Gantt container when displaying a long text
+- Fix the issue where [server updates](desktop/server_side.md) were not finalized when [keyboard navigation](desktop/keyboard_navigation.md) was active
+- Fix the incorrect work of custom class names applied to [milestone baselines](desktop/inbuilt_baselines.md#milestonebaseline)
+
+### Updates
+
+- [React Gantt](web/react.md) is now compatible with **Next.js** and **Remix** SSR frameworks without additional configuring
+
 9.0.11
 ---------------
 <span class='release_date'>May 27, 2025. Bugfix release</span>

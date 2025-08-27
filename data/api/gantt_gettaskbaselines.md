@@ -30,8 +30,7 @@ The method returns an array with the **baseline** objects that have the followin
 - <span class=subproperty>**duration**</span> - (*number*) - the duration of the baseline
 - <span class=subproperty>**end_date**</span> - (*Date | number*) - the end date of the baseline
 - <span class=subproperty>**[customProperty: string]**</span> - (*any*) - any custom property
-
-
+- <span class=subproperty>**className**</span> - (*string | number*) - the value of this property is used by Gantt as a custom class for an HTML element
 
 For example:
 

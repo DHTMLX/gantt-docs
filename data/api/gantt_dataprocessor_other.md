@@ -159,6 +159,37 @@ dp.setUpdated(2, true, "deleted");
 ~~~
 </ul>
 
+<ul id="getSyncState">
+	<li>
+		<b class="submethod">getSyncState (): boolean</b> - returns the state of DataProcessor (<i>true</i> when all data is saved)
+	</li>
+</ul>
+
+<ul>
+~~~js
+var state = dp.getSyncState();
+~~~
+
+<p>If some records haven't been saved yet, or have received an "error" response, the method will return <i>false</i>.</p>
+</ul>
+
+<ul id="sendData">
+	<li>
+		<b class="submethod">sendData ([id]): void</b> - sends all the data which aren't saved to the server side yet
+        <ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - optional, the id of an item</li>
+		</ul>
+	</li>
+</ul>
+
+<ul>
+~~~js
+dp.sendData();
+~~~
+
+<p> If an ID is provided, only one item will be sent to the server side.</p>
+<p> When called without parameters, the method will send all the items that aren't saved yet.</p>
+</ul>
 
 
 <h3 id="events">Events</h3> 

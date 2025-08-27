@@ -32,7 +32,9 @@ Note that the trial React Gantt component is available for 30 days only.}}
 **Installing the PRO version of React Gantt component**
 
 {{note
-You can access the DHTMLX private npm directly in the [Client's Area](https://dhtmlx.com/clients/) by generating your login and password for npm. A detailed installation guide is also available there. Please note that access to the private npm is available only while your proprietary Gantt license is active.
+You can access the DHTMLX private npm directly in the [Client's Area](https://dhtmlx.com/clients/) by generating your login and password for npm. 
+To install the React Gantt package, follow the instructions provided in the README file. 
+Please note that access to the private npm is available only while your proprietary Gantt license is active.
 }}
 
 Version Requirements
@@ -68,25 +70,32 @@ export default function BasicGantt() {
 }
 ~~~
 
-Where **demoData** has the following [format](desktop/loading.md):
+Note that the above snippet shows how to include the commercial Gantt version. To use the trial code sources, include the package in the following way:
+
+~~~js
+import ReactGantt from '@dhx/trial-react-gantt';
+import '@dhx/trial-react-gantt/dist/react-gantt.css';
+~~~
+
+**demoData** from the above code snippet has the following [format](desktop/loading.md):
 
 ~~~
-const demoData = {
+export const demoData = {
   tasks: [
     { id: 1, text: "Product Launch", type: "project", open: true, parent: 0},
     { id: 2, text: "Planning Phase", type: "project", open: true, parent: 1},
-    { id: 3, text: "Requirement Gathering", type: "task", progress: 0.2, 
-      start_date: "2025-06-01", duration: 3, parent: 2},
+   	{ id: 3, text: "Requirement Gathering", type: "task", progress: 0.2, 
+      start_date: "01-06-2025", duration: 3, parent: 2},
     { id: 4, text: "Technical Feasibility", type: "task", progress: 0.4, 
-      start_date: "2025-06-04", duration: 2, parent: 2},
+      start_date: "04-06-2025", duration: 2, parent: 2},
     { id: 5, text: "Implementation Phase", type: "project", progress: 0.1, 
-      open: true, start_date: "2025-06-08", duration: 10, parent: 1},
+      open: true, start_date: "08-06-2025", duration: 10, parent: 1},
     { id: 6, text: "Prototype Development", type: "task", progress: 0.0, 
-     start_date: "2025-06-08", duration: 4, parent: 5},
+     start_date: "08-06-2025", duration: 4, parent: 5},
     { id: 7, text: "Feature Testing", type: "task", progress: 0.0, 
-     start_date: "2025-06-12", duration: 4, parent: 5},
+     start_date: "12-06-2025", duration: 4, parent: 5},
     { id: 8, text: "Go-Live Milestone", type: "milestone", progress: 0, 
-     start_date: "2025-06-18", duration: 0, parent: 1}
+     start_date: "18-06-2025", duration: 0, parent: 1}
   ],
   links: [
     { id: 1, source: 3, target: 4, type: "0" },
@@ -95,7 +104,6 @@ const demoData = {
     { id: 4, source: 7, target: 8, type: "0" }
   ]
 };
-export demoData;
 ~~~
 
 Binding Data
@@ -118,7 +126,7 @@ function MyGanttApp() {
   const [links, setLinks] = useState<Link[]>(initialLinks);
 
   const data = {
-    save: (entity: string, action: string, raw: any, id: string | number) => {
+    save: (entity: string, action: string, item: any, id: string | number) => {
       if (entity === 'task') {
         if (action === 'create') {
           setTasks((prev) => [...prev, item]);
@@ -1037,12 +1045,29 @@ See the DHTMLX Gantt [API Reference](api/refs/gantt_methods.md) for the full lis
 Compatibility with SSR Frameworks (Next.js, Remix)
 --------------
 
+{{note Starting from ReactGantt v9.0.12 the wrapper is SSR-ready. You can import it in Next.js or Remix without turning SSR off. If you use older versions - you must disable or delay server-side rendering for any route or component that uses ReactGantt.}}
 
-{{note Since the underlying DHTMLX Gantt library is a purely browser widget (it reads and manipulates the DOM directly), it cannot be rendered in a Node/SSR environment. Therefore, you must disable or delay server-side rendering for any route or component that uses ReactGantt. }}
+{{note During the server rendering, the component outputs only a placeholder `<div>`, the actual Gantt markup is created during the browser-side hydration phase.}}
 
 #### Next.js
 
-If you're using Next.js, you can dynamically import your ReactGantt component with SSR disabled:
+
+The wrapper already contains a top-level "use client" directive, so you do **not** need dynamic import and can import ReactGantt directly:
+
+~~~js
+import "@dhx/react-gantt/dist/react-gantt.css";
+import ReactGantt from '@dhx/react-gantt';
+
+export default function GanttPage() {
+  return (
+    <div style={ { height: '100vh' } }>
+      <ReactGantt tasks={/* ... */} links={/* ... */} />
+    </div>
+  );
+}
+~~~
+
+If you use legacy versions (v9.0.11 or older), you need to dynamically import your ReactGantt component with SSR disabled:
 
 ~~~js
 import dynamic from 'next/dynamic';
@@ -1059,11 +1084,28 @@ export default function GanttPage() {
   );
 }
 ~~~
-This ensures that Next.js only loads your Gantt in the client's browser, preventing errors during the server-render phase.
+
 
 #### Remix
 
-In Remix, you can conditionally render the Gantt component only on the client:
+Starting from v9.0.12, no `<ClientOnly>` wrapper is required:
+
+~~~js
+
+import "@dhx/react-gantt/dist/react-gantt.css";
+import ReactGantt from '@dhx/react-gantt';
+
+export default function GanttPage() {
+  return (
+    <div style={ { height: '100vh' } }>
+      <ReactGantt tasks={/* ... */} links={/* ... */} />
+    </div>
+  );
+}
+~~~
+
+
+If you use legacy versions (v9.0.11 or older), you have to conditionally render the Gantt component only on the client:
 
 ~~~js
 import { ClientOnly } from 'remix-utils/client-only';
@@ -1083,8 +1125,6 @@ export default function GanttPage() {
   );
 }
 ~~~
-
-That pattern defers rendering of the actual Gantt until the component is hydrated in the browser, avoiding SSR errors.
 
 Next Steps
 -------------------

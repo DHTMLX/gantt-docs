@@ -29,7 +29,7 @@ Every other row of the grid and the timeline area contains an extra css class na
 }
 ~~~
 
-By default, the styles will be applied only to even rows. To style odd rows, you need to add the **odd** class name to the style rule selectors. Therefore, if you want to assign the same color to all rows, you usually need to specify a css rule for both selectors (with and without '.odd' class), otherwise the default css rules [become more specific and get higher priority](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity).
+By default, the styles will be applied only to even rows. To style odd rows, you need to add the **odd** class name to the style rule selectors. Therefore, if you want to assign the same color to all rows, you usually need to specify a css rule for both selectors (with and without '.odd' class), otherwise the default css rules [become more specific and get higher priority](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Specificity).
 
 ~~~css
 .gantt_row.odd, .gantt_task_row.odd,
