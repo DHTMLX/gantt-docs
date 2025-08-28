@@ -91,11 +91,11 @@ Defining a scrollbar inside the `cols` array will create a vertical scrollbar, d
 Alternatively, you can define the scroll mode explicitly using the **scroll** parameter:
 
 ~~~js
-{ view: "scrollbar", id: "scroller", scroll: "x"	} // horizontal
+{ view: "scrollbar", id: "scroller", scroll: "x" } // horizontal
 ~~~
 or:
 ~~~js
-{ view: "scrollbar", id: "scroller", scroll: "y"	} // vertical
+{ view: "scrollbar", id: "scroller", scroll: "y" } // vertical
 ~~~
 
 Let's bind custom grid and timeline views to the vertical scroll:
