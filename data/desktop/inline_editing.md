@@ -236,9 +236,9 @@ gantt.config.editor_types.custom_editor = {
 		// return input value
 	},
 	is_changed: (value, id, column, node) => {
-		// called before save/close. Return true if new value differs from the original
-		// one returning true will trigger saving changes, returning false will skip
-		// saving
+		// called before save/close
+		// return true if the new value differs from the original one
+		// returning true will trigger saving changes, while false will skip saving
 	},
 	is_valid: (value, id, column, node) => {
 		// validate, changes will be discarded if the method returns false
