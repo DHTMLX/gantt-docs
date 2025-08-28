@@ -15,20 +15,20 @@ To enable inline editing, you need to:
 - specify the list of editors configurations and use the **map_to** property of an editor object to map the necessary editor to a grid column
 
 ~~~js
-var textEditor = {type: "text", map_to: "text"};
-var dateEditor = {type: "date", map_to: "start_date", min: new Date(2018, 0, 1), 
-	max: new Date(2019, 0, 1)};
-var durationEditor = {type: "number", map_to: "duration", min:0, max: 100};
+const textEditor = { type: "text", map_to: "text" };
+const dateEditor = { type: "date", map_to: "start_date", min: new Date(2025, 0, 1),
+	max: new Date(2026, 0, 1) };
+const durationEditor = { type: "number", map_to: "duration", min: 0, max: 100 };
 ~~~
 
 - in the column configuration use the **editor** property to define the editor that should be used in the column
 
 ~~~js
 gantt.config.columns = [
-	{name: "text", tree: true, width: '*', resize: true, editor: textEditor},
-	{name: "start_date", align: "center", resize: true, editor: dateEditor},
-	{name: "duration", align: "center", editor: durationEditor},
-	{name: "add", width: 44}
+	{ name: "text", tree: true, width: "*", editor: textEditor, resize: true },
+	{ name: "start_date", align: "center", editor: dateEditor, resize: true },
+	{ name: "duration", align: "center", editor: durationEditor },
+	{ name: "add", width: 44 }
 ];
 ~~~
 
@@ -66,17 +66,19 @@ Instead of using the default duration formatter, you can also change its configu
 - **predecessor** editor - for setting task-predecessor for the currently edited task. This editor gets the [WBS codes of tasks](desktop/specifying_columns.md#wbscode) to set connection with the predecessor task.
 
 ~~~js
-var editors = {
-	text: {type: "text", map_to: "text"},
-	start_date: {type: "date", map_to: "start_date", min: new Date(2018, 0, 1), 
-    	max: new Date(2019, 0, 1)},
-	end_date: {type: "date", map_to: "end_date", min: new Date(2018, 0, 1), 
-    	max: new Date(2019, 0, 1)},
-	duration: {type: "number", map_to: "duration", min:0, max: 100},
-	priority: {type:"select", map_to:"priority", options:gantt.serverList("priority")},
-	predecessors: {type: "predecessor", map_to: "auto"}
+const editors = {
+	text: { type: "text", map_to: "text" },
+	start_date: { type: "date", map_to: "start_date", min: new Date(2025, 0, 1),
+		max: new Date(2026, 0, 1) },
+	end_date: { type: "date", map_to: "end_date", min: new Date(2025, 0, 1), 
+		max: new Date(2026, 0, 1) },
+	duration: { type: "number", map_to: "duration", min: 0, max: 100 },
+	priority: { type: "select", map_to: "priority",
+		options: gantt.serverList("priority") },
+	predecessors: { type: "predecessor", map_to: "auto" }
 };
 ~~~
+
 
 
 <h3 id="dateslimits">Dates limits in the Date editor</h3>
@@ -86,15 +88,15 @@ Starting from v6.3, there are no default limits to minimal and maximal input val
 In case you want the dates visible on the time scale to limit the minimal and maximal values of the **date** inline editor (unless custom min/max values are provided), you can specify dynamic **min/max** values:
 
 ~~~js
-const dateEditor = {type: "date", map_to: "start_date", 
-    min: function(taskId){
-      return gantt.getState().min_date
-    },
-    max: function( taskId ){
-      return gantt.getState().max_date
-    }
+const dateEditor = {
+	type: "date",
+	map_to: "start_date",
+	min: taskId => gantt.getState().min_date,
+	max: taskId => gantt.getState().max_date
 };
 ~~~
+
+
 
 <h3 id="inclusiveenddate">Editor for inclusive end dates</h3>
 
@@ -103,100 +105,101 @@ If you are using the [format for inclusive end dates](api/gantt_task_end_date_te
 ~~~js
 // inclusive editor for end dates
 // use the default editor, but override the set_value/get_value methods
-var dateEditor = gantt.config.editor_types.date;
+const dateEditor = gantt.config.editor_types.date;
+
 gantt.config.editor_types.end_date = gantt.mixin({
-   set_value: function(value, id, column, node){
-        var correctedValue = gantt.date.add(value, -1, "day");
-        return dateEditor.set_value.apply(this, [correctedValue, id, column, node]);
-   },
-   get_value: function(id, column, node) {
-        var selectedValue = dateEditor.get_value.apply(this, [id, column, node]);
-        return gantt.date.add(selectedValue, 1, "day");
-   },
+	set_value: function(value, id, column, node) {
+		const correctedValue = gantt.date.add(value, -1, "day");
+		return dateEditor.set_value.apply(this, [correctedValue, id, column, node]);
+	},
+	get_value: function(id, column, node) {
+		const selectedValue = dateEditor.get_value.apply(this, [id, column, node]);
+		return gantt.date.add(selectedValue, 1, "day");
+	}
 }, dateEditor);
 
-var textEditor = {type: "text", map_to: "text"};
-var startDateEditor = {type: "date", map_to: "start_date"};
-var endDateEditor = {type: "end_date", map_to: "end_date"};
-var durationEditor = {type: "number", map_to: "duration", min:0, max: 100};
+const textEditor = { type: "text", map_to: "text" };
+const startDateEditor = { type: "date", map_to: "start_date" };
+const endDateEditor = { type: "end_date", map_to: "end_date" };
+const durationEditor = { type: "number", map_to: "duration", min: 0, max: 100 };
 
 gantt.config.columns = [
-    {name: "text", label: "Name", tree: true, width: 200, editor: textEditor, 
-        resize: true},
-    {name: "duration", label: "Duration", width:80, align: "center", 
-        editor: durationEditor, resize: true},
-    {name: "start_date", label: "Start", width:140, align: "center", 
-        editor: startDateEditor, resize: true},
-    {name: "end_date", label: "Finish", width:140, align: "center", 
-        editor: endDateEditor, resize: true}
+	{ name: "text", label: "Name", tree: true, width: 200, editor: textEditor, 
+		resize: true },
+	{ name: "duration", label: "Duration", width: 80, align: "center", 
+		editor: durationEditor, resize: true },
+	{ name: "start_date", label: "Start", width: 140, align: "center", 
+		editor: startDateEditor, resize: true },
+	{ name: "end_date", label: "Finish", width: 140, align: "center", 
+		editor: endDateEditor, resize: true }
 ];
 
 // change lightbox and grid templates to display dates of tasks in an inclusive format
-gantt.templates.task_end_date = function(date){
-    return gantt.templates.task_date(new Date(date.valueOf() - 1)); 
-};
+gantt.templates.task_end_date = date => 
+	gantt.templates.task_date(new Date(date.valueOf() - 1));
 
-
-var gridDateToStr = gantt.date.date_to_str("%Y-%m-%d");
-gantt.templates.grid_date_format = function(date, column){
-    if(column === "end_date"){
-        return gridDateToStr(new Date(date.valueOf() - 1)); 
-    }else{
-        return gridDateToStr(date); 
-    }
-}
+const gridDateToStr = gantt.date.date_to_str("%Y-%m-%d");
+gantt.templates.grid_date_format = (date, column) =>
+	column === "end_date"
+		? gridDateToStr(new Date(date.valueOf() - 1))
+		: gridDateToStr(date);
 ~~~
 
 {{editor	https://snippet.dhtmlx.com/ds28tk3c	Inclusive end date editor}}
 
 For more details on formatting end dates, see the [Task end date display & Inclusive end dates](desktop/loading.md#taskenddatedisplayampinclusiveenddates) article.
 
+
+
 <h3 id="linkformatter">Formatting values of the Predecessor editor</h3>
 
-{{pronote This functionality is available in the PRO edition only.}}
+{{pronote This functionality is available only in the PRO edition.}}
 
 Starting from v6.3 Gantt allows specifying types of links as well as lag/lead values directly from inline editor. 
 
 In order to do so, you need to use the [Link Formatter](desktop/formatters_ext.md#linkformatter) module and provide an instance of the *LinksFormatter* into the **predecessor** editor:
 
 ~~~js
-var formatter = gantt.ext.formatters.durationFormatter({
-    enter: "day", 
-    store: "day", 
-    format: "auto"
+const formatter = gantt.ext.formatters.durationFormatter({
+	enter: "day",
+	store: "day",
+	format: "auto"
 });
-var linksFormatter = gantt.ext.formatters.linkFormatter({durationFormatter: formatter});
- 
-var editors = {
-    text: {type: "text", map_to: "text"},
-    start_date: {type: "date", map_to: "start_date", 
-                min: new Date(2018, 0, 1), max: new Date(2019, 0, 1)},
-    end_date: {type: "date", map_to: "end_date", 
-                min: new Date(2018, 0, 1), max: new Date(2019, 0, 1)},
-    duration: {type: "duration", map_to: "duration", 
-                min:0, max: 100, formatter: formatter},
-    priority: {type: "select", map_to: "priority", 
-                options:gantt.serverList("priority")},
-    predecessors: {type: "predecessor", map_to: "auto", formatter: linksFormatter} /*!*/
+
+const linksFormatter = gantt.ext.formatters.linkFormatter({
+	durationFormatter: formatter
+});
+
+const editors = {
+	text: { type: "text", map_to: "text" },
+	start_date: { type: "date", map_to: "start_date", min: new Date(2025, 0, 1),
+		max: new Date(2026, 0, 1) },
+	end_date: { type: "date", map_to: "end_date", min: new Date(2025, 0, 1),
+		max: new Date(2026, 0, 1) },
+	duration: { type: "duration", map_to: "duration", min: 0,
+		max: 100, formatter: formatter },
+	priority: { type: "select", map_to: "priority",
+		options: gantt.serverList("priority") },
+	predecessors: { type: "predecessor", map_to: "auto", formatter: linksFormatter }
 };
- 
+
 gantt.config.columns = [
-    {name: "wbs", label: "#", width: 60, align: "center", template: gantt.getWBSCode},
-    {name: "text", label: "Name", tree: true, width: 200, editor: editors.text, 
-        resize: true},
-    {name: "start_date", label: "Start", width:80, align: "center", 
-      editor: editors.start_date, resize: true},
-    {name: "predecessors", label: "Predecessors",width:80, align: "left", 
-      editor: editors.predecessors, resize: true, template: function(task){
-            var links = task.$target;
-            var labels = [];
-            for(var i = 0; i < links.length; i++){
-                var link = gantt.getLink(links[i]);
-                labels.push(linksFormatter.format(link)); /*!*/
-            }
-            return labels.join(", ")
-        }},
-    {name:"add"}
+	{ name: "wbs", label: "#", width: 60, align: "center", template: gantt.getWBSCode },
+	{ name: "text", label: "Name", tree: true, width: 200,
+		editor: editors.text, resize: true },
+	{ name: "start_date", label: "Start", width: 80, align: "center",
+		editor: editors.start_date, resize: true },
+	{ name: "predecessors", label: "Predecessors", width: 80, align: "left",
+		editor: editors.predecessors, resize: true, template: task => {
+			const links = task.$target || [];
+			const labels = links.map(id => {
+				const link = gantt.getLink(id);
+				return linksFormatter.format(link);
+			});
+			return labels.join(", ");
+		}
+	},
+	{ name: "add" }
 ];
 ~~~
 
@@ -207,6 +210,8 @@ The section below provides you with code samples for the following custom editor
 - [Simple numeric input](desktop/inline_editing.md#custominlineeditor)
 - [JQuery Datepicker input](desktop/inline_editing.md#jquery_datepicker)
 
+
+
 Custom inline editor
 -----------------------
 
@@ -214,41 +219,38 @@ You can also specify a custom inline editor. For this, you need to create a new 
 
 ~~~js
 gantt.config.editor_types.custom_editor = {
-  show: function (id, column, config, placeholder) {
-    // called when input is displayed, put html markup of the editor into placeholder 
-    // and initialize your editor if needed:
-    var html = "<div><input type='text' name='" + column.name + "'></div>";
-   	placeholder.innerHTML = html;
-  },
-  hide: function () {
-    // called when input is hidden 
-    // destroy any complex editors or detach event listeners from here
-  },
-  
-  set_value: function (value, id, column, node) {
-    // set input value
-  },
-  
-  get_value: function (id, column, node) {
-    // return input value
-  },
-  
-  is_changed: function (value, id, column, node) {
-    //called before save/close. Return true if new value differs from the original one
-    //returning true will trigger saving changes, returning false will skip saving 
-  },
-  
-  is_valid: function (value, id, column, node) {
-    // validate, changes will be discarded if the method returns false
-    return true/false;
-  },
-
-  save: function (id, column, node) {
-     // only for inputs with map_to:auto. complex save behavior goes here
-  },
-  focus: function (node) {
-  }
-}
+	show: (id, column, config, placeholder) => {
+		// called when input is displayed, put html markup of the editor into
+		// placeholder and initialize your editor if needed:
+		const html = "<div><input type='text' name='" + column.name + "'></div>";
+		placeholder.innerHTML = html;
+	},
+	hide: () => {
+		// called when input is hidden
+		// destroy any complex editors or detach event listeners from here
+	},
+	set_value: (value, id, column, node) => {
+		// set input value
+	},
+	get_value: (id, column, node) => {
+		// return input value
+	},
+	is_changed: (value, id, column, node) => {
+		// called before save/close
+		// return true if the new value differs from the original one
+		// returning true will trigger saving changes, while false will skip saving
+	},
+	is_valid: (value, id, column, node) => {
+		// validate, changes will be discarded if the method returns false
+		return true/false;
+	},
+	save: (id, column, node) => {
+		// only for inputs with map_to:auto. complex save behavior goes here
+	},
+	focus: (node) => {
+		// 
+	}
+};
 ~~~
 
 Here is a more detailed type description:
@@ -287,9 +289,6 @@ Here is a more detailed type description:
 
 
 
-
-
-
 There are some key points to remember in order to implement a reusable editor:
 
 - As a rule, **`get_value`** does not modify the task object. The method only returns the current value of the inline editor. If the value is deemed valid, Gantt will automatically update the related task with this value.
@@ -304,66 +303,60 @@ Here is an example of the implementation of a simple number input.
 Note, that the **`hide`** method can be an empty function, and the **`save`** method can be skipped completely.
 
 ~~~js
-var getInput = function(node){
-	return node.querySelector("input");
-};
+const getInput = node => node.querySelector("input");
 
 gantt.config.editor_types.simpleNumber = {
-    show: function (id, column, config, placeholder) {
-        var min = config.min || 0,
-        max = config.max || 100;
-
-        var html = "<div><input type='number' min='" + min + 
-                      "' max='" + max + "' name='" + column.name + "'></div>";
-        placeholder.innerHTML = html;
-    },
-    hide: function () {
-      // can be empty since we don't have anything to clean up after the editor 
-          // is detached
-    },
-    set_value: function (value, id, column, node) {
-        getInput(node).value = value;
-    },
-    get_value: function (id, column, node) {
-        return getInput(node).value || 0;
-    },
-    is_changed: function (value, id, column, node) {
-        var currentValue = this.get_value(id, column, node);
-        return Number(value) !== Number(currentValue);
-    },
-    is_valid: function (value, id, column, node) {
-        return !isNaN(parseInt(value, 10));
-    },
-    focus: function (node) {
-        var input = getInput(node);
-        if (!input) {
-            return;
-        }
-        if (input.focus) {
-            input.focus();
-        }
-
-        if (input.select) {
-          input.select();
-        }
-    }
+	show: (id, column, config, placeholder) => {
+		const min = config.min ?? 0,
+			max = config.max ?? 100;
+		const html = "<div><input type='number' min='" + min + 
+			"' max='" + max + 
+			"' name='" + column.name + "'></div>";
+		placeholder.innerHTML = html;
+	},
+	hide: () => {
+		// can be empty since we don't have anything to clean up after the editor 
+		// is detached
+	},
+	set_value: (value, id, column, node) => {
+		getInput(node).value = value;
+	},
+	get_value: (id, column, node) => {
+		return getInput(node).value || 0;
+	},
+	is_changed: function(value, id, column, node) {
+		const currentValue = this.get_value(id, column, node);
+		return Number(value) !== Number(currentValue);
+	},
+	is_valid: (value, id, column, node) => {
+		return !isNaN(parseInt(value, 10));
+	},
+	focus: node => {
+		const input = getInput(node);
+		if (!input) return;
+		if (input.focus) input.focus();
+		if (input.select) input.select();
+	}
 };
 ~~~
 
 After that, you can use the editor in the same way as built-in editors:
 
 ~~~js
-var numberEditor = {type: "simpleNumber", map_to: "quantity", min:0, max: 50}; 
+const numberEditor = { type: "simpleNumber", map_to: "quantity", min: 0, max: 50 };
 
 gantt.config.columns = [
-    ...
-    {name: "quantity", label: "Quantity", width: 80, editor: numberEditor, 
-        resize: true},
-    ...
+	...
+	{ name: "quantity", label: "Quantity", width: 80, editor: numberEditor,
+		resize: true },
+	...
 ];
+
 ~~~
 
 Note, that we don't need to implement the **`hide`** method in this case, since Gantt detaches the DOM element of the editor automatically and there is nothing else that we need to clean up after the editor closes.
+
+
 
 <h3 id="jquery_datepicker">editor.hide</h3>
 
@@ -384,54 +377,48 @@ Editor:
 
 ~~~js
 gantt.config.editor_types.custom_datepicker_editor = {
-    show: function (id, column, config, placeholder) {
-        placeholder.innerHTML = "<div><input type='text' id='datepicker' name='" + 
-                                  column.name + "'></div>";
-        $("#datepicker").datepicker({
-            dateFormat: "yy-mm-dd",
-            onSelect: function(dateStr){
-                gantt.ext.inlineEditors.save()
-            }
-        });
-    },
-    hide: function (node) {
-        $("#datepicker").datepicker( "destroy" );
-    },
-
-    set_value: function (value, id, column, node) {
-        $("#datepicker").datepicker("setDate", value);
-    },
-
-    get_value: function (id, column, node) {
-        return $("#datepicker").datepicker( "getDate" );
-    },
-
-    is_changed: function (value, id, column, node) {
-        return (+$("#datepicker").datepicker( "getDate" ) !== +value);
-    },
-    is_valid: function (value, id, column, node) {
-        return !(isNaN(+$("#datepicker").datepicker( "getDate" )))
-    },
-    save: function (id, column, node) {
-    },
-    focus: function (node) {
-    }
+	show: (id, column, config, placeholder) => {
+		placeholder.innerHTML =
+			`<div><input type="text" id="datepicker" name="${column.name}"></div>`;
+		$("#datepicker").datepicker({
+			dateFormat: "yy-mm-dd",
+			onSelect: () => gantt.ext.inlineEditors.save()
+		});
+	},
+	hide: (node) => {
+		$("#datepicker").datepicker("destroy");
+	},
+	set_value: (value, id, column, node) => {
+		$("#datepicker").datepicker("setDate", value);
+	},
+	get_value: (id, column, node) => {
+		return $("#datepicker").datepicker("getDate");
+	},
+	is_changed: (value, id, column, node) => {
+		return +$("#datepicker").datepicker("getDate") !== +value;
+	},
+	is_valid: (value, id, column, node) => {
+		return !isNaN(+$("#datepicker").datepicker("getDate"));
+	},
+	save: (id, column, node) => {
+	},
+	focus: (node) => {
+	}
 };
 
-let dateEditor = {
-    type: "custom_datepicker_editor",
-    map_to: "start_date"
-};
+const dateEditor = { type: "custom_datepicker_editor", map_to: "start_date" };
 
 gantt.config.columns = [
-    {name: "text", tree: true, width: '*', resize: true},
-    {name: "start_date", align: "center", resize: true, editor: dateEditor},
-    {name: "duration", align: "center"},
-    {name: "add", width: 44}
+	{ name: "text", tree: true, width: '*', resize: true },
+	{ name: "start_date", align: "center", resize: true, editor: dateEditor },
+	{ name: "duration", align: "center" },
+	{ name: "add", width: 44 }
 ];
 ~~~
 
 {{editor	https://plnkr.co/edit/U3vHJvleRBJ1Js0N?preview	Using jQuery Datepicker in the editor}}
+
+
 
 ### editor.save
 
@@ -445,15 +432,16 @@ Gantt will call the [onSave](desktop/inline_editors_ext.md#events) event after t
 **Note!** The **`save`** method will be called only if you specify **`map_to:"auto"`** in the configuration of the editor:
 
 ~~~js
-var editors = {
-    ...
-    predecessors: {type: "predecessor", map_to: "auto"}
+const editors = {
+	...
+	predecessors: { type: "predecessor", map_to: "auto" }
 };
 ~~~
 
 A good example of such a control is a built-in predecessor editor. You can find its simplified implementation in the related sample:
 
 {{editor	https://snippet.dhtmlx.com/xz6192wd	Built-in predecessor editor}}
+
 
 
 Inline editing modes
@@ -467,6 +455,8 @@ This mode presupposes the use of a mouse pointer for setting focus on cells and 
 - Shift+Tab - to return to the previous editor.
 
 {{sample 07_grid/11_inline_edit_basic.html}}
+
+
 
 ###Keyboard navigation mode
 
@@ -507,7 +497,7 @@ Alternatively, if you want the focus to move to the placeholder task after addin
 
 ~~~js
 gantt.config.placeholder_task = {
-    focusOnCreate: true
+	focusOnCreate: true
 };
 ~~~
 
@@ -520,32 +510,36 @@ gantt.config.auto_types = true;
 
 {{sample 07_grid/12_inline_edit_key_nav.html}}
 
+
+
 ###Custom inline editing
 
 You can also provide custom keyboard mapping, i.e. describe the logic of editors opening by a user, specify handlers of editor-related events (opening, closing of editors, start and end of editing, etc.)
 in a separate object and then pass this object to the special method that will apply your mapping scheme:
 
 ~~~js
-var mapping = {
- init: function(inlineEditors){
-  // inlineEditor module is initialized
-  // add global listeners for starting/ending editing
- },
+const mapping = {
+	init: (inlineEditors) => {
+		// inlineEditor module is initialized
+		// add global listeners for starting/ending editing
+	},
 
- onShow: function(inlineEditors, node){
-  // the editor is displayed
- },
+	onShow: (inlineEditors, node) => {
+		// the editor is displayed
+	},
 
- onHide: function(inlineEditors, node){
-  // the editor is hidden
-  // clean the onShow changes if needed
- }
+	onHide: (inlineEditors, node) => {
+		// the editor is hidden
+		// clean the onShow changes if needed
+	}
 };
 
 gantt.ext.inlineEditors.setMapping(mapping);
 ~~~
 
 {{sample 07_grid/13_custom_mapping.html}}
+
+
 
 ### Custom mapping for placeholder task
 
@@ -559,6 +553,8 @@ Custom mapping will help you to deal with the problems described above.  You jus
 
 {{editor	https://snippet.dhtmlx.com/xcgiommu	Gantt. Custom mapping for placeholder task
 }}
+
+
 
 Validation of input values
 -------------------------------
@@ -580,6 +576,8 @@ For example, you have opened the editor in a Grid cell via a mouse pointer. The 
 
 
 {{note For information about how to perform validation on the client side or on the server side, see the desktop/validation.md article.}}
+
+
 
 ###Preventing editor from closing
 
@@ -691,7 +689,6 @@ const mapping = {
 };
 
 gantt.ext.inlineEditors.setMapping(mapping);
-
 gantt.init("gantt_here");
 ~~~
 
@@ -707,7 +704,7 @@ If you want Gantt to open the inline editor after the first click, enable the [i
 
 ~~~js
 gantt.plugins({
-  multiselect: true
+	multiselect: true
 });
 
 ...
