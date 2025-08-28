@@ -282,7 +282,7 @@ If you use built-in resource views, the gantt can automatically create the data 
 
 In some cases you may need to disable resizers between the cells of the gantt dynamically. The simplest solution is to hide them via CSS.
 
-For that, you’ll need a rule like the following:
+For that, you'll need a rule like the following:
 
 ~~~css
 .no_resizers .gantt_resizer {
