@@ -73,7 +73,7 @@ Once initialized, *resourceGrid* will work in the same way as the default grid v
 the api/gantt_resource_cell_class_template.md and api/gantt_resource_cell_value_template.md templates:
 
 ~~~js
-gantt.templates.resource_cell_value = (startDate, endDate, resource, tasks) => 
+gantt.templates.resource_cell_value = (startDate, endDate, resource, tasks, assignments) => 
     `<div>${tasks.length * 8}h</div>`;
 ~~~
 
