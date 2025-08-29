@@ -812,7 +812,6 @@ gantt.config.process_resource_assignments = false;
 When the config is disabled, the `gantt.getDatastore("resourceAssignments")` datastore won't be available and the assignment objects won't have any dynamic properties. The resource diagram and histogram will consider resources to be assigned to the whole duration of the task.
 
 
-
 ### Updating resource assignments
 
 The resource assignments are stored in the [data store](api/gantt_resource_assignment_store_config.md) which is created automatically. 
@@ -850,6 +849,26 @@ assignmentStore.updateItem(assignment.id);
 // after the assignments are updated in the datastore, you need 
 // to call `updateTaskAssignments` to write the changes to the task object:
 gantt.updateTaskAssignments(taskId);
+~~~
+
+### Re-rendering resource assignments during task drag
+
+When a task is being dragged, the resource panel is re-rendered, but the resource assignments are not modified. Only the cells of the resource panel that are affected by 
+the task dragging (by default, only those inside the task dates) are re-rendered. 
+
+To update the resource assignments in all the cells, you need either to disable the [process_resource_assignments](api/gantt_process_resource_assignments_config.md) 
+configuration option or update all the resource assignments of the task manually, as it is shown in the example below: 
+
+~~~js
+gantt.attachEvent("onTaskDrag", (id, mode, task, original) => {
+    const assignments = gantt.getTaskAssignments(id);
+    assignments.forEach(assignment => {
+        if (assignment.mode === "default") {
+            assignment.start_date = task.start_date;
+            assignment.end_date = task.end_date;
+        }
+    });
+});
 ~~~
 
 
