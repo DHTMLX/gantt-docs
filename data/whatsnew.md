@@ -10,6 +10,16 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.0.15
+---------------
+<span class='release_date'>September 19, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where Gantt ignored the weekday configuration of `customWeeks` when set via the [setWorkTime](api/gantt_setworktime.md) method
+- Improve support for [HTML5 Custom Elements](https://html.spec.whatwg.org/multipage/custom-elements.html) inside templates
+- Fix the issue in [React Gantt](web/react.md) where multiple component instances caused duplicated templates
+
 9.0.14
 ---------------
 <span class='release_date'>July 31, 2025. Bugfix release</span>
