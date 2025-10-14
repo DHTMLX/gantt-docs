@@ -23,7 +23,7 @@ gantt.templates.resource_cell_value = function(start_date, end_date, resource, t
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
-{{note The "assignments" argument is only awailable when the api/gantt_process_resource_assignments_config.md config is enabled. }}
+{{note The "assignments" argument is only available when the api/gantt_process_resource_assignments_config.md config is enabled. }}
 
 - Defines the HTML content of resource timeline cells.
 - Resource timeline links tasks to a resource by the api/gantt_resource_property_config.md property of the task object.
