@@ -3,6 +3,9 @@ dhtmlxGantt with Salesforce LWC
 
 This tutorial describes how to add dhtmlxGantt into a [Salesforce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide).
 
+Check the [online demo](https://dhtmlx-dev-ed.develop.lightning.force.com/) on integrating DHTMLX components with Salesforce LWC (Login: *user*, Password: *demo*).
+The source code for the demo is [provided on GitHub](https://github.com/DHTMLX/salesforce-lwc-demo).
+
 If you use some other technology, check the list of available integration variants below:
 
 - desktop/howtostart_dotnet_core.md
@@ -17,7 +20,7 @@ We will use [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecl
 You can also install [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) to Visual Studio Code for working with development orgs. 
 
 {{note
-The complete source code is [available on GitHub](https://github.com/DHTMLX/salesforce-gantt-demo).
+The complete source code of the demo created in this tutorial is [available on GitHub](https://github.com/DHTMLX/salesforce-gantt-demo).
 }}
 
 You can have a look at the video guide that shows how to create a Gantt chart with Salesforce LWC.
