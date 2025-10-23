@@ -730,3 +730,31 @@ gantt.config.scales = [
 
 gantt.init("gantt_here");
 ~~~
+
+## Fixed column width
+
+By default, Timeline columns use flexible width - they expand to fill the container's width or shrink down to the value specified by api/gantt_min_column_width_config.md before horizontal scroll appears.
+
+You can lock the width of the **bottom-most** scale to a fixed value by setting `column_width` property on that scale item:
+
+~~~js
+gantt.config.scales = [
+	{ unit: "year", step: 1, format: "%Y" },
+	{ unit: "month", step: 1, format: "%F" },
+	{ unit: "day", step: 1, format: "%j", column_width: 60 }
+];
+
+gantt.init("gantt_here");
+~~~
+
+With this setting, each cell in the bottom scale ("day" in the example) will be exactly 60px wide, regardless of how many columns are rendered. If there are too few columns to fill the container, the remaining space will stay empty on the right. If there are many columns, a horizontal scrollbar will appear.
+
+Note, `column_width` is applied only to the bottom-most scale item in `gantt.config.scales`, specifying it on higher levels has no effect.
+
+When `column_width` is set, `gantt.config.min_column_width` does not apply to the bottom scale.
+
+## Workhour-Aware Positioning in Day-Week Scales
+
+Use scale projection to position and size task bars against **working time** at the edges of a scale cell, instead of raw `00:00-24:00` interval. This makes a task that spans a full working day (e.g. `09:00-17:00`) fill the whole day cell, imroving readability of dense timelines.
+
+@todo: finish the article
