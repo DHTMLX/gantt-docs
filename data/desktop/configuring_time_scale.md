@@ -733,25 +733,31 @@ gantt.init("gantt_here");
 
 ## Fixed column width
 
-By default, Timeline columns use flexible width - they expand to fill the container's width or shrink down to the value specified by api/gantt_min_column_width_config.md before horizontal scroll appears.
+By default, Timeline columns have flexible width. They either expand to fill the container's width or shrink down to the value specified by 
+api/gantt_min_column_width_config.md until the horizontal scroll appears.
 
-You can lock the width of the **bottom-most** scale to a fixed value by setting `column_width` property on that scale item:
+You can lock the width of the **bottom-most** scale to a fixed value by setting the `column_width` property in the object of the scale:
 
 ~~~js
 gantt.config.scales = [
 	{ unit: "year", step: 1, format: "%Y" },
 	{ unit: "month", step: 1, format: "%F" },
-	{ unit: "day", step: 1, format: "%j", column_width: 60 }
+	{ unit: "day", step: 1, format: "%j", column_width: 60 } /*!*/
 ];
 
 gantt.init("gantt_here");
 ~~~
 
-With this setting, each cell in the bottom scale ("day" in the example) will be exactly 60px wide, regardless of how many columns are rendered. If there are too few columns to fill the container, the remaining space will stay empty on the right. If there are many columns, a horizontal scrollbar will appear.
+With this setting specified, each cell in the bottom scale ("day" in the above example) will be exactly *60px* wide, regardless of the number of rendered columns:
 
-Note, `column_width` is applied only to the bottom-most scale item in `gantt.config.scales`, specifying it on higher levels has no effect.
+- If there are too few columns to fill the container, the remaining space will stay empty on the right. 
+- If there are too many columns, a horizontal scrollbar will appear.
 
-When `column_width` is set, `gantt.config.min_column_width` is not applied to the bottom scale.
+{{note
+Note that `column_width` is applied only to the bottom-most scale item in `gantt.config.scales`, while specifying it on higher levels will have no effect.
+}}
+
+Also note that when `column_width` is set, `gantt.config.min_column_width` is not applied to the bottom scale.
 
 ## Workhour-aware positioning in Day-Week scales
 
