@@ -16,14 +16,14 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### New Functionality
 
-- Add [Remote Updates API](desktop/multiuser_live_updates.md) for managing data synchronization in real time
-- Intoduce a new [Resource Assignments control](desktop/resource_management.md)
+- [Remote Updates API](desktop/multiuser_live_updates.md) for managing data synchronization in real time is added
+- A new [Resource Assignments control](desktop/resource_management.md) is introduced
 - Ability to adjust [scale rendering](desktop/configuring_time_scale.mdl#workhourawarepositioningindayweekscales) to task size in day cells reflects actual working hours rather than fixed 24-hour period
 
 
 ### Updates
 
-- Add ability to fix the size of [Timeline cells](desktop/configuring_time_scale.md#fixedcolumnwidth)
+- Add the ability to fix the size of [Timeline cells](desktop/configuring_time_scale.md#fixedcolumnwidth)
 - Add support for specifying [dates in the calendar configuration](api/gantt_addcalendar.md)
 - Add configuration object for [Auto Scheduling](desktop/auto_scheduling.md) to simplify setup
 - Fonts are now embedded to the package for offline compatibility
@@ -33,7 +33,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ### Fixes
 
 - Fix the issue where api/gantt_exporttoexcel.md with `visual:true` and custom data failed when the timeline was hidden
-- Fix the issue where api/gantt_exporttopdf.md with `additional_settins.slice_archive` setting causes incomplete display of Gantt
+- Fix the issue where api/gantt_exporttopdf.md with `additional_settings.slice_archive` setting causes incomplete display of Gantt
 - Prevent [unscheduled tasks](desktop/unscheduled_tasks.md) from being included in Excel exports
 - Add support for exporting [split tasks](desktop/split_tasks.md) in Excel output
 - Fix the incorrect display of the [Resource Histogram](desktop/resource_management.md#resourceviewpanel) after resizing
