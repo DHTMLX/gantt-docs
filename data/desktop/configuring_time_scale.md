@@ -751,10 +751,10 @@ With this setting, each cell in the bottom scale ("day" in the example) will be 
 
 Note, `column_width` is applied only to the bottom-most scale item in `gantt.config.scales`, specifying it on higher levels has no effect.
 
-When `column_width` is set, `gantt.config.min_column_width` does not apply to the bottom scale.
+When `column_width` is set, `gantt.config.min_column_width` is not applied to the bottom scale.
 
-## Workhour-Aware Positioning in Day-Week Scales
+## Workhour-aware positioning in Day-Week scales
 
-Use scale projection to position and size task bars against **working time** at the edges of a scale cell, instead of raw `00:00-24:00` interval. This makes a task that spans a full working day (e.g. `09:00-17:00`) fill the whole day cell, imroving readability of dense timelines.
+Use scale projection to position and size task bars according to **working time** at the edges of a scale cell, instead of raw `00:00-24:00` interval. This makes a task that spans a full working day (e.g. `09:00-17:00`) fill the whole day cell, improving readability of dense timelines.
 
 @todo: finish the article
