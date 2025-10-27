@@ -759,8 +759,76 @@ Note that `column_width` is applied only to the bottom-most scale item in `gantt
 
 Also note that when `column_width` is set, `gantt.config.min_column_width` is not applied to the bottom scale.
 
-## Workhour-aware positioning in Day-Week scales
+## Workhour-aware task bars rendering in Day/Week scales
 
-Use scale projection to position and size task bars according to **working time** at the edges of a scale cell, instead of raw `00:00-24:00` interval. This makes a task that spans a full working day (e.g. `09:00-17:00`) fill the whole day cell, improving readability of dense timelines.
+You can position and size task bars according to **working time** at the edges of a scale cell, instead of raw `00:00-24:00` interval using *scale projection*.
+This makes a task that spans a full working day (e.g. `09:00-17:00`) fill the whole day cell, improving readability of dense timelines.
 
-@todo: finish the article
+![Scale projection](desktop/scale_projection.png)
+
+To set the projection mode, use the `projection` property of the bottom-most scale object:
+
+~~~js
+gantt.config.scales = [
+	{unit: "month", step: 1, format:"%M %Y"},
+	{unit: "week", step: 1, format: function (date) {
+		const dateToStr = gantt.date.date_to_str("%d %M");
+		const endDate = gantt.date.add(date, 7 - date.getDay(), "day");
+		return dateToStr(date) + " - " + dateToStr(endDate);
+	}},
+    // applying the projection mode to the Day scale 
+	{unit: "day", step: 1, format: "%d", projection: {source: "fixedHours"}} /*!*/
+];
+~~~
+
+{{sample 03_scales/15_scale_projection_modes.html}}
+
+There are three projection modes available:
+
+- **default mode**
+
+In the default mode, if projection is not set, the scale uses the absolute time (00:00-24:00) for positioning.
+
+- **fixed hours mode**
+
+In this mode fixed working hours are applied for all tasks on the time scale. By default, hours are taken from the global work calendar.
+
+~~~js
+gantt.config.scales = [
+	{
+    	unit: "day", 
+        step: 1, 
+        format: "%d", 
+        projection: {source: "fixedHours"} /*!*/
+    }
+];
+~~~
+
+The projection hours can be set explicitly:
+
+~~~js
+gantt.config.scales = [
+	{
+    	unit: "day", 
+        step: 1,
+        format: "%d", 
+    	projection: {source: "fixedHours", hours: "09:00-18:00" } /*!*/
+    }
+];
+~~~
+
+- **task calendar mode**
+
+This mode presupposes that the tasks calendar is used to calculate the working hours per cell. 
+If a cell has no working time, the scale falls back to absolute positioning for that cell.
+
+### Details
+
+Take notice that projection modes are designed for Day and Week scales. Other units ignore projection and use absolute positioning.
+
+Drag and drop follows the projection, but when autoscheduling is applied, the scheduling logic of a task still depends on such settings as api/gantt_correct_work_time_config.md and the worktime calendars applied for tasks.
+
+
+@todo: 
+- check Fixed column width + add link to snippet<br>
+- check Workhour-aware task bars rendering in Day-Week scales
