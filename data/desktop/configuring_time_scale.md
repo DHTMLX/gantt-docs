@@ -748,6 +748,8 @@ gantt.config.scales = [
 gantt.init("gantt_here");
 ~~~
 
+{{editor		https://snippet.dhtmlx.com/gpq46mvq			Fixed column width for the Time Scale}}
+
 With this setting specified, each cell in the bottom scale ("day" in the above example) will be exactly *60px* wide, regardless of the number of rendered columns:
 
 - If there are too few columns to fill the container, the remaining space will stay empty on the right. 
@@ -830,5 +832,5 @@ Drag and drop follows the projection, but when autoscheduling is applied, the sc
 
 
 @todo: 
-- check Fixed column width + add link to snippet<br>
+- check Fixed column width<br>
 - check Workhour-aware task bars rendering in Day-Week scales
