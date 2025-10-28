@@ -10,35 +10,35 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
-9.1.0
----------------
+9.1
+----------
 <span class='release_date'>October 30, 2025. Minor update</span>
 
 ### New Functionality
 
 - [Remote Updates API](desktop/multiuser_live_updates.md) for managing data synchronization in real time is added
-- A new [Resource Assignments control](desktop/resource_management.md) is introduced
-- Ability to adjust [scale rendering](desktop/configuring_time_scale.mdl#workhourawarepositioningindayweekscales) to task size in day cells reflects actual working hours rather than fixed 24-hour period
+- New [Resource Assignments control](desktop/resource_management.md) is introduced
+- Ability to [display tasks in Day/Week scale](desktop/configuring_time_scale.md#workhourawaretaskbarsrenderingindayweekscales) 
+based on actual working hours instead of the fixed 24-hour period
 
 
 ### Updates
 
-- Add the ability to fix the size of [Timeline cells](desktop/configuring_time_scale.md#fixedcolumnwidth)
-- Add support for specifying [dates in the calendar configuration](api/gantt_addcalendar.md)
-- Add configuration object for [Auto Scheduling](desktop/auto_scheduling.md) to simplify setup
+- Ability to fix the size of [Timeline cells](desktop/configuring_time_scale.md#fixedcolumnwidth) is added
+- Support for specifying [dates in the calendar configuration](api/gantt_addcalendar.md) is added
+- A configuration object for [Auto Scheduling](desktop/auto_scheduling.md) to simplify setup is added
 - Fonts are now embedded to the package for offline compatibility
-- Improved touch screen support for Windows devices
-- Remove the obsolete [subscales API](api/gantt_subscales_config.md)
+- Improved touch screen support for Windows devices is added
+- The obsolete [subscales API](api/gantt_subscales_config.md) is removed
 
 ### Fixes
 
 - Fix the issue where api/gantt_exporttoexcel.md with `visual:true` and custom data failed when the timeline was hidden
-- Fix the issue where api/gantt_exporttopdf.md with `additional_settings.slice_archive` setting causes incomplete display of Gantt
+- Fix the issue where api/gantt_exporttopdf.md with `additional_settings.slice_archive` setting caused incomplete display of Gantt
 - Prevent [unscheduled tasks](desktop/unscheduled_tasks.md) from being included in Excel exports
 - Add support for exporting [split tasks](desktop/split_tasks.md) in Excel output
 - Fix the incorrect display of the [Resource Histogram](desktop/resource_management.md#resourceviewpanel) after resizing
-
-
+- Fix the issue with tasks overlapping on changing the zoom level
 
 
 9.0.15
