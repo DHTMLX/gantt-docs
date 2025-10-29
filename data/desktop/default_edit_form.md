@@ -35,8 +35,8 @@ The structure of the lightbox is specified by the **sections** property of the l
 ~~~js
 //default lightbox definition   
 gantt.config.lightbox.sections=[
-	{name:"description", height:70, map_to:"text", type:"textarea", focus:true},
-    {name:"time", 		 height:72, map_to:"auto", type:"duration"}
+	{ name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+    { name: "time", height: 72, map_to: "auto", type: "duration" }
 ];
 ~~~
 
@@ -57,6 +57,7 @@ Each section of the lightbox is based on some control. The following types of co
 - [Checkbox](desktop/checkbox.md) - a checkbox for switching an option or several values on/off 
 - [Radio button](desktop/radio.md) - a radio button for selecting only one option from a given set of options 
 - [Resources](desktop/resources.md) - a complex control for assigning several resources to a task
+- [Resource Assignments](desktop/resource_assignments.md) - an extended control for assigning resources to a task
 - [Constraint](desktop/constraint.md) - a complex control for setting constraints for a task
 - [Baselines](desktop/baseline.md) - a complex control for setting baselines for a task
 
@@ -68,9 +69,9 @@ var opts = [
 ];
 
 gantt.config.lightbox.sections = [
-	{name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"priority", 	 height:22, map_to:"priority", type:"select", options:opts},
-    {name:"time", 		 height:72, map_to:"auto", type:"duration"}
+	{ name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
+    { name: "priority", height: 22, map_to: "priority", type: "select", options: opts},
+    { name: "time", height: 72, map_to: "auto", type: "duration"}
 ];
 ~~~
 
@@ -86,6 +87,7 @@ gantt.config.lightbox.sections = [
 - desktop/checkbox.md
 - desktop/radio.md
 - desktop/resources.md
+- desktop/resource_assignments.md
 - desktop/constraint.md
 - desktop/baseline.md
 
