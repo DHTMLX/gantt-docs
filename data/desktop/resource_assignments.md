@@ -5,6 +5,8 @@ Resource Assignments Control
 
 An extended control used to [assign multiple resources and their quantity to a task](desktop/resource_management.md#assigningresources).
 
+Here is an example of the Resource Assignments control with the default configuration: 
+
 ![Resource Assignments control](desktop/resource_assignments_control.png)
 
 ~~~js
@@ -18,26 +20,56 @@ gantt.config.lightbox.sections = [
 
 {{sample 	11_resources/07_assign_multiple_resources.html}}
 
-or
+You can [configure the resource grid columns of the control](#configuringresourcegridcolumnsinthelightbox) and provide the necessary resource options:
 
-[image2]
+![Resource Assignments control options](desktop/resource_assignments_control_options.png)
 
 ~~~js
-gantt.config.lightbox.sections = [
-  { name: "description", height: 38, map_to:"text", type: "textarea", focus: true },
-  { name: "time", type: "duration", map_to: "auto" },
-  { name: "rooms", type: "resource_selector", map_to: "rooms", options: [  /*!*/
-  	  { key: 1, label: "room 1", unit: "hours" },    /*!*/
-	  { key: 2, label: "room 2", unit: "hours" },   /*!*/
-	  { key: 3, label: "room 3", unit: "hours" }   /*!*/
-    ]  /*!*/
-  }	   /*!*/
+// resource options
+const usageMap = [
+    { key: 1, label: "wood", text: "wood", unit: "box" },
+    { key: 2, label: "water", text: "water", unit: "liter" },
+    { key: 3, label: "grain", text: "grain", unit: "lbs" }
 ];
 
-gantt.locale.labels.section_rooms = "Rooms";
+// helper editors
+const selectResEditor = { type: "select", map_to: "resource_id", options: usageMap };
+const numberEditor = { type: "number", map_to: "value", min: 0, max: 100 };
+
+// resource grid columns config
+const resourceLightboxConfig = {
+    columns: [
+        {
+       		name: "resource", 
+            label: "Resource", 
+            editor: selectResEditor
+            // more column's options
+        },
+        {
+            name: "units", 
+            label: "Units", 
+            editor: numberEditor,
+            // more column's options
+        },
+        {
+            name: "delete", 
+            label: "Delete", 
+            // more column's options
+        }
+    ]
+};
+
+gantt.config.lightbox.sections = [
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "time", type: "duration", map_to: "auto" },
+    { name: "resource_selector", type: "resource_selector", map_to: "auto", /*!*/
+    	config: resourceLightboxConfig } /*!*/
+];
+
+gantt.locale.labels.section_resource_selector = "Resources";
 ~~~
 
-{{sample  05_lightbox/13_resources.html}}
+{{editor	 https://snippet.dhtmlx.com/id54i1b3		Resource Assignments Control}}
 
 {{note You can also create [a custom control to assign multiple resources to a task](desktop/custom_editor.md#customthirdpartyeditor).}}
 
@@ -61,14 +93,12 @@ gantt.config.lightbox.sections = [
 2\. Set a label for the section:
 
 ~~~js
-gantt.locale.labels.section_resource_selector = "Rooms";
+gantt.locale.labels.section_resource_selector = "Resources";
 ~~~
-
-{{sample 05_lightbox/13_resources.html}}
 
 ## Properties
 
-The following properties are mostly important and commonly set for the **resource_assignments** control (see the full list [here](api/gantt_lightbox_config.md)):
+The following properties are mostly important and commonly set for the **resource_selector** control:
 
 - **name** - (*string*) the section name 
 - **map_to** - (*string*) the name of a data property that will be mapped to the section
@@ -76,10 +106,8 @@ The following properties are mostly important and commonly set for the **resourc
 - **config** - (*object*) the resource grid config in the lightbox to display required columns
 - **label** - (*string*) the option label
 - **templates** - (*object*) templates for the resource grid in the lightbox
-- **focus** - (*boolean*) if set to *true*, the section will take focus on opening the lightbox
-- **default_value** - (*any*) the default value of the section's control. Applied if the value of the resource is undefined. Each option from the **options** array can have its own default value specified
 
-## Configuring resource table columns in the lightbox
+## Configuring resource grid columns in the lightbox
 
 The default configuration of columns of the resource table in the lightbox is given below:
 
@@ -178,8 +206,9 @@ parameters and may return a component of the framework. See details <a href="des
 <br>
 
 {{note
-The template attribute is a function that takes a data item object as a parameter and returns the final data template. The function definition allows you to present almost any content.
+The **template** attribute is a function that takes a data item object as a parameter and returns the final data template. The function definition allows you to present almost any content.
 }}
+
 
 ## Populating control with data
 
@@ -211,20 +240,22 @@ const resourceEditor = {
 };
 
 const defaultResourceLightboxConfig = {
-	...
+	// other settings
+    ...
+    // an array with the columns configs
 	columns:[
 		{
   			name: "resource", 
             label: "Resource", 
             align: "center",  
             editor: resourceEditor
-		}
-        ...
+		},
+        // more columns configs
     ]
 }
 ~~~
 
-The contents of `gantt.serverList("resourceOptions")` can be defined when the options become available using the [updateCollection](api/gantt_updatecollection.md) method:
+The contents of `gantt.serverList("resourceOptions")` can be defined when the options become available using the [updateCollection()](api/gantt_updatecollection.md) method:
 
 ~~~js
 gantt.updateCollection("resourceOptions", [
@@ -243,3 +274,5 @@ gantt.updateCollection("resourceOptions", [
 ~~~
 
 @edition:pro
+
+@todo: add/check links to new samples/snippets

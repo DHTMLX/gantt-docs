@@ -8,7 +8,7 @@ Start
     </p>
     <ul>
 		<li><a href="desktop/multiuser_live_updates.md">Multi-user live updates</a></li>  
-        <li><a href="desktop/resource_management.md">New Resource Assignments control</a></li>      
+        <li><a href="desktop/resource_assignments.md">New Resource Assignments control</a></li>      
         <li><a href="desktop/configuring_time_scale.md#workhourawaretaskbarsrenderingindayweekscales">Worktime-based tasks display in Day/Week scales</a></li>        
 	</ul>
 

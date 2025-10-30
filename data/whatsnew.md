@@ -17,7 +17,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ### New Functionality
 
 - [Remote Updates API](desktop/multiuser_live_updates.md) for managing data synchronization in real time is added
-- New [Resource Assignments control](desktop/resource_management.md) is introduced
+- New [Resource Assignments control](desktop/resource_assignments.md) is introduced
 - Ability to [display tasks in Day/Week scale](desktop/configuring_time_scale.md#workhourawaretaskbarsrenderingindayweekscales) 
 based on actual working hours instead of the fixed 24-hour period
 
