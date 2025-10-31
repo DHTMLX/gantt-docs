@@ -20,7 +20,15 @@ The **auto_scheduling_compatibility** config was added to [provide backward comp
 @related:
 desktop/auto_scheduling.md
 
+@deprecated: The property has been deprecated in v9.1, use `apply_constraints` property of api/gantt_auto_scheduling_config.md#applyconstraints instead.
+
 @changelog:
 added in v6.1 for compatibility with earlier versions
+
+the property has been deprecated in v9.1
+
+@relatedapi:
+api/gantt_auto_scheduling_config.md
+
 
 @edition:pro

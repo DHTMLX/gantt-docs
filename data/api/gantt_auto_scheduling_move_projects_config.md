@@ -14,6 +14,14 @@ gantt.init("gantt_here");
 @default:true
 
 @template:	api_config
+
+@changelog:
+added in version 4.1
+
+the property has been deprecated in v9.1
+
+@deprecated: The property has been deprecated in v9.1, use `move_projects` property of api/gantt_auto_scheduling_config.md#moveprojects instead.
+
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
 
@@ -21,7 +29,7 @@ gantt.init("gantt_here");
 
 
 
-added in version 4.1
+
 
 By default (when the property is set to *true*), the whole project is moved during auto scheduling. It means that all tasks in the project remain on their places
 relative to each other and the beginning of the project.

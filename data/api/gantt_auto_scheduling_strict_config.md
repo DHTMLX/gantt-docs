@@ -47,4 +47,8 @@ desktop/auto_scheduling.md
 - api/gantt_oncircularlinkerror_event.md
 - api/gantt_onautoschedulecircularlink_event.md
 
+@changelog: the property has been deprecated in v9.1
+
+@deprecated: The property has been deprecated in v9.1, use `gap_behavior` property of api/gantt_auto_scheduling_config.md#gapbehavior instead.
+
 @edition:pro

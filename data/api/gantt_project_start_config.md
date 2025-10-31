@@ -7,7 +7,7 @@ project_start
 
 @type: Date,undefined
 @example:
-gantt.config.project_start = new Date(2019, 2, 1);
+gantt.config.project_start = new Date(2025, 10, 1);
 
 @template:	api_config
 
@@ -20,6 +20,9 @@ The value of this config can be used as the default start date of new tasks, whe
 
 @related:
 desktop/auto_scheduling.md
+
+@relatedapi:
+api/gantt_auto_scheduling_config.md
 
 @relatedsample:
 02_extensions/19_constraints_scheduling.html

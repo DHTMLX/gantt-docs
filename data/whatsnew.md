@@ -14,6 +14,11 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 ----------
 <span class='release_date'>October 30, 2025. Minor update</span>
 
+### Breaking Changes
+
+This update brings some changes in the structure of the Gantt package and behavior of the functionality. Make sure to check the 
+[Migration notes](migrating.md#9091) to be on the safe side.
+
 ### New Functionality
 
 - [Remote Updates API](desktop/multiuser_live_updates.md) for managing data synchronization in real time is added
