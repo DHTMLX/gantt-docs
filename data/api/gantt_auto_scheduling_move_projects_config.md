@@ -16,11 +16,10 @@ gantt.init("gantt_here");
 @template:	api_config
 
 @changelog:
-added in version 4.1
+- the property has been deprecated in v9.1
+- added in v4.1
 
-the property has been deprecated in v9.1
-
-@deprecated: The property has been deprecated in v9.1, use `move_projects` property of api/gantt_auto_scheduling_config.md#moveprojects instead.
+@deprecated: The property has been deprecated in v9.1, use the `move_projects` property of api/gantt_auto_scheduling_config.md#moveprojects instead.
 
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}

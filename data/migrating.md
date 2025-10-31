@@ -27,7 +27,7 @@ The v9.1 does not introduce breaking changes but several configuration options h
 
 ### Unified auto scheduling configuration
 
-Multiple properties that previosly controlled desktop/auto_scheduling.md behavior have been deprecated in favor of the unified api/gantt_auto_scheduling_config.md configuration object.
+Multiple properties that previously controlled desktop/auto_scheduling.md behavior have been deprecated in favor of the unified api/gantt_auto_scheduling_config.md configuration object.
 
 ~~~js
 // before v9.1
@@ -36,16 +36,16 @@ gantt.config.auto_scheduling_compatibility = true;
 gantt.config.auto_scheduling_strict = true;
 gantt.config.auto_scheduling_initial = false;
 
-// v9.1+
+// since v9.1
 gantt.config.auto_scheduling = {
-  enabled: true,
-  apply_constraints: false,
-  gap_behavior: "compress",
-  schedule_on_parse: false
+    enabled: true,
+    apply_constraints: false,
+    gap_behavior: "compress",
+    schedule_on_parse: false
 };
 ~~~
 
-Deprecated properties continue to work for backward compatibility, but  switching to the new object format is recommended.
+The deprecated properties continue working for backward compatibility, but switching to the new object format is recommended.
 
 The following options were deprecated:
 

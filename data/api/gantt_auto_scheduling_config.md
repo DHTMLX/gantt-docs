@@ -8,8 +8,8 @@ auto_scheduling
 @default: object
 @example:
 gantt.config.auto_scheduling = {
-  enabled: true,
-  strict: true
+  	enabled: true,
+  	strict: true
 };
 
 gantt.init("gantt_here");
@@ -22,14 +22,13 @@ gantt.init("gantt_here");
 {{note This config is defined in the **auto_scheduling** extension, so you need to activate the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin. Read the details in the desktop/auto_scheduling.md article.}}
 
 
-While `auto_scheduling` config can be set as a boolean, usage of the object definition is the recommended aproach for configuring the auto-scheduling behavior. 
+While `auto_scheduling` config can be set as a boolean, usage of the object definition is the recommended approach for configuring the auto-scheduling behavior. 
 
 
 When set as an object, the following options are available:
 
 <span id="enabled"></span>
-
-###enabled###
+###enabled
 
 **Type**: boolean
 
@@ -39,27 +38,27 @@ Turns auto-scheduling on or off (same as using a boolean value directly).
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true
+    enabled: true
 };
 ~~~
 
 <span id="applyconstraints"></span>
-###apply_constraints###
+###apply_constraints
 
 **Type**: boolean
 
 **Default**: `true`
 
-Enables or disables usage of time contraints for auto scheduling.
+Enables or disables usage of time constraints for auto scheduling.
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  apply_constraints: false
+    enabled: true,
+    apply_constraints: false
 };
 ~~~
 
-Setting the value `false` switches auto scheduling to mode that ignores constraints assiciated with tasks (e.g. ASAP, ALAP, SNET, etc.) and scheduling depends solely on task dependencies.
+Setting the value to `false` switches auto scheduling to the mode that ignores constraints associated with tasks (e.g. ASAP, ALAP, SNET, etc.) and scheduling depends solely on task dependencies.
 
 This property replaces the deprecated api/gantt_auto_scheduling_compatibility_config.md setting.
 
@@ -68,7 +67,7 @@ This property replaces the deprecated api/gantt_auto_scheduling_compatibility_co
 {{editor	02_extensions/19_constraints_scheduling.html		Constraint Scheduling}}
 
 <span id="gapbehavior"></span>
-###gap_behavior###
+###gap_behavior
 
 **Type**: String
 
@@ -79,16 +78,16 @@ This property replaces the deprecated api/gantt_auto_scheduling_compatibility_co
 
 Defines how Gantt handles gaps between dependent tasks during scheduling.
 
-- **"preserve"** - keeps tasks in their current positions if no conflicts exist.
+- **"preserve"** - keeps tasks in their current positions if there are no conflicts
 - **"compress"** - moves tasks to the earliest allowed date (or latest if `schedule_from_end` is enabled)
 
-By default, tasks are only rescheduled when their current date violate a constraint or dependency. 
+By default, tasks are only rescheduled when their current date violates a constraint or dependency. 
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  apply_constraints: false,
-  gap_behavior: "compress"
+    enabled: true,
+    apply_constraints: false,
+    gap_behavior: "compress"
 };
 ~~~
 
@@ -106,31 +105,31 @@ By default, such links can't be created.
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  apply_constraints: false,
-  descendant_links: true
+    enabled: true,
+    apply_constraints: false,
+    descendant_links: true
 };
 ~~~
 
 <span id="scheduleonparse"></span>
-###schedule_on_parse###
+###schedule_on_parse
 
 
 **Type**: boolean
 
 **Default**: `true`
 
-Defines whether gantt will do autoscheduling on data loading/parsing.
+Defines whether Gantt will do auto-scheduling on data loading/parsing.
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  schedule_on_parse: false
+    enabled: true,
+    schedule_on_parse: false
 };
 ~~~
 
 <span id="moveprojects"></span>
-###move_projects###
+###move_projects
 
 **Type**: boolean
 
@@ -141,25 +140,25 @@ relative to each other and the beginning of the project.
 
 <img src="api/moving_project_true.png">
 
-If the *move_projects* is set to *false*, auto scheduling will move separate tasks inside of the project. Thus, some tasks will be moved, others will
+If the *move_projects* property is set to *false*, auto scheduling will move separate tasks inside of the project. Thus, some tasks will be moved, others will
 remain on their places.
 
 <img src="api/moving_project_false.png">
 
 <br>
-**Note**, if you use constraint scheduling (*apply_constraints: true*), the *move_projects* config will be active only when the `gap_behavior` is set to "preserve"`:
+**Note**, if you use the constraint scheduling (*apply_constraints: true*), the *move_projects* config will be active only when the `gap_behavior` property is set to "preserve"`:
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  apply_constraints: true,
-  move_projects: true,
-  gap_behavior: "preserve"
+    enabled: true,
+    apply_constraints: true,
+    move_projects: true,
+    gap_behavior: "preserve"
 };
 ~~~
 
 <span id="useprogress"></span>
-###use_progress###
+###use_progress
 
 **Type**: boolean
 
@@ -169,8 +168,8 @@ Specifies whether completed tasks should affect scheduling and critical path cal
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  use_progress: true
+    enabled: true,
+    use_progress: true
 };
 ~~~
 
@@ -185,7 +184,7 @@ When the property is enabled, the critical path, slack, and auto scheduling algo
 {{editor	https://snippet.dhtmlx.com/ju3km1uy		Use progress for auto-scheduling, critical path and slack calculations}}
 
 <span id="schedulefromend"></span>
-###schedule_from_end###
+###schedule_from_end
 
 **Type**: boolean
 
@@ -200,15 +199,15 @@ The value will be only applied if api/gantt_project_end_config.md is specified a
 ~~~js
 gantt.config.project_end = new Date(2025, 10, 1);
 gantt.config.auto_scheduling = {
-  enabled: true,
-  schedule_from_end: true
+    enabled: true,
+    schedule_from_end: true
 };
 ~~~
 
 {{editor	02_extensions/20_backwards_scheduling.html		Backward Scheduling}}
 
 <span id="projectconstraint"></span>
-###project_constraint###
+###project_constraint
 
 **Type**: boolean
 
@@ -218,8 +217,8 @@ Defines whether tasks should inherit the constraint type from their parent proje
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  project_constraint: true
+    enabled: true,
+    project_constraint: true
 };
 ~~~
 
@@ -230,7 +229,7 @@ If you set the config to *true*, the child tasks (except for tasks with their ow
 {{editor	02_extensions/19_constraints_scheduling.html		Constraint Scheduling}}
 
 <span id="showconstraints"></span>
-###show_constraints###
+###show_constraints
 
 **Type**: boolean
 
@@ -243,8 +242,8 @@ For example, to enable auto-scheduling but disable the display of task constrain
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  show_constraints: false
+    enabled: true,
+    show_constraints: false
 };
 gantt.init("gantt_here");
 ~~~
@@ -280,5 +279,5 @@ desktop/auto_scheduling.md
 @edition:pro
 
 @changelog:
-Can be set as an object since v9.0.
-Starting from v9.1, using the object configuration for `auto_scheduling` is the recommended approach.
+- since v9.1, using the object configuration for `auto_scheduling` is the recommended approach
+- сan be set as an object since v9.0

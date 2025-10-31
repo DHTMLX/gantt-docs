@@ -10,7 +10,7 @@ schedule_from_end
 
 @example:
 gantt.config.schedule_from_end = true;
-gantt.config.project_end = new Date(2019, 4, 1);
+gantt.config.project_end = new Date(2025, 10, 1);
 
 @template:	api_config
 
@@ -35,9 +35,9 @@ api/gantt_project_end_config.md
 @edition:pro
 
 @changelog: 
-the property has been deprecated in v9.1
+The property has been deprecated in v9.1
 
-@deprecated: The property has been deprecated in v9.1, use `schedule_from_end` property of api/gantt_auto_scheduling_config.md#schedulefromend instead.
+@deprecated: The property has been deprecated in v9.1, use the `schedule_from_end` property of api/gantt_auto_scheduling_config.md#schedulefromend instead.
 
 
 

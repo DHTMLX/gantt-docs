@@ -56,8 +56,8 @@ The forward planning of tasks is used by default, i.e. **gantt.config.auto_sched
 ~~~js
 // forward planning of tasks is used
 gantt.config.auto_scheduling = {
-  enabled: true,
-  schedule_from_end: false
+  	enabled: true,
+  	schedule_from_end: false
 };
 ~~~
 
@@ -73,14 +73,14 @@ gantt.config.project_start = new Date(2025, 2, 1);
 
 ### Backward planning
 
-Is also possible to plan tasks from the end of the project, i.e. to apply backward planning. For this you need to set the **gantt.config.auto_scheduling.schedule_from_end** property to *true* and specify the end date of the project
+It is also possible to plan tasks from the end of the project, i.e. to apply backward planning. For this you need to set the **gantt.config.auto_scheduling.schedule_from_end** property to *true* and specify the end date of the project
 via the **gantt.config.project_end** configuration option:
 
 ~~~js
 gantt.config.project_end = new Date(2025, 10, 1);
 gantt.config.auto_scheduling = {
-  enabled: true,
-  schedule_from_end: true
+  	enabled: true,
+  	schedule_from_end: true
 };
 ~~~
 
@@ -164,17 +164,17 @@ the start of its immediate successor task.
 
 The other types of constraints affect tasks regardless of the their types (dependent or independent):
 
-3\. **Start no earlier than** – the task should start on the specified date or after it.
+3\. **Start no earlier than** - the task should start on the specified date or after it.
 
-4\. **Start no later than** – the task should start on the specified date or before it.
+4\. **Start no later than** - the task should start on the specified date or before it.
 
-5\. **Finish no earlier than** – the task should end on the specified date or after it.
+5\. **Finish no earlier than** - the task should end on the specified date or after it.
 
-6\. **Finish no later than** – the task should end on the specified date or before it.
+6\. **Finish no later than** - the task should end on the specified date or before it.
 
-7\. **Must start on** – the task should start exactly on the specified date.
+7\. **Must start on** - the task should start exactly on the specified date.
 
-8\. **Must finish on** – the task should end exactly on the specified date.
+8\. **Must finish on** - the task should end exactly on the specified date.
 
 {{note By independent tasks here we mean tasks that don't have any successors or predecessors. In other words, these are tasks that don't have any links/relations that connect them or any of their parents to other tasks.}}
 
@@ -236,8 +236,8 @@ Optionally, you can enable the [auto_scheduling.use_progress](api/gantt_auto_sch
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  use_progress: true
+  	enabled: true,
+  	use_progress: true
 };
  
 gantt.init("gantt_here");
@@ -263,11 +263,11 @@ The list of available methods and properties:
 
 ###Activation
 
-To enable auto scheduling in the Gantt chart, set the api/gantt_auto_scheduling_config.md property to true:
+To enable auto scheduling in the Gantt chart, set the **enabled** property of the **auto_scheduling** config to *true*:
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
+  	enabled: true
 };
 ~~~
 
@@ -278,9 +278,9 @@ In order to always reschedule tasks to the earliest possible date, use the prope
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  apply_constraints: false,
-  gap_behavior: "compress"
+  	enabled: true,
+  	apply_constraints: false,
+  	gap_behavior: "compress"
 };
 ~~~
 
@@ -288,12 +288,12 @@ gantt.config.auto_scheduling = {
 
 ###Initial auto-scheduling
 
-The [auto_scheduling.schedule_on_parse](api/gantt_auto_scheduling_config.md#scheduleonparse) property specifies whether gantt will do auto scheduling on data loading. It's set to true by default:
+The [auto_scheduling.schedule_on_parse](api/gantt_auto_scheduling_config.md#scheduleonparse) property specifies whether gantt will do auto scheduling on data loading. It's set to *true* by default:
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  schedule_on_parse: true
+  	enabled: true,
+  	schedule_on_parse: true
 };
 ~~~
 
@@ -303,8 +303,8 @@ The [auto_scheduling.project_constraint](api/gantt_auto_scheduling_config.md#pro
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  project_constraint: true
+  	enabled: true,
+  	project_constraint: true
 };
 ~~~
 
@@ -408,19 +408,18 @@ When a user changes the date of a task by moving it with the mouse pointer or vi
 
 Thus a task won't be scheduled to the earliest date if the later date is set from the UI. This may be confusing to a not prepared user especially since constraints are not displayed in the chart by default.
 
-Starting from v9.1 you can enable displaying of constraints using the [auto_scheduling.show_constraints](api/gantt_auto_scheduling_config.md#show_constraints). 
-older versions require usage of api/gantt_addtasklayer.md method to add constraints to the chart.
+Starting from **v9.1** you can enable displaying of constraints using the [auto_scheduling.show_constraints](api/gantt_auto_scheduling_config.md#show_constraints) property. The older versions require usage of the api/gantt_addtasklayer.md method to add constraints to the chart.
 
 {{sample 02_extensions/19_constraints_scheduling.html}}
 
 This behavior differs from the auto scheduling logic of gantt prior to **v6.1** and is considered to be correct, since it's the same way auto planning works in MS Project.
 
-If that is not what you want, you can switch back to pre-6.1 auto scheduling by disabling constraints:
+If that is not what you want, you can switch back to the pre-6.1 auto scheduling by disabling constraints in the following way:
 
 ~~~js
 gantt.config.auto_scheduling = {
-  enabled: true,
-  apply_constraints: false
+  	enabled: true,
+  	apply_constraints: false
 };
 ~~~
 
