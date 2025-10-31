@@ -9,7 +9,7 @@ auto_scheduling
 @example:
 gantt.config.auto_scheduling = {
   	enabled: true,
-  	strict: true
+  	gap_behavior: "compress"
 };
 
 gantt.init("gantt_here");
@@ -280,4 +280,4 @@ desktop/auto_scheduling.md
 
 @changelog:
 - since v9.1, using the object configuration for `auto_scheduling` is the recommended approach
-- сan be set as an object since v9.0
+- can be set as an object since v9.0
