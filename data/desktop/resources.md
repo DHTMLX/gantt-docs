@@ -9,9 +9,9 @@ A complex control used to [assign multiple resources and their quantity to a tas
 
 ~~~js
 gantt.config.lightbox.sections = [
- {name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
- {name:"owner",height:60, type:"resources", default_value:8},   /*!*/
- {name: "time", type: "duration", map_to: "auto"}
+ { name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
+ { name: "owner", height: 60, type: "resources", default_value: 8},   /*!*/
+ { name: "time", type: "duration", map_to: "auto"}
 ];
 ~~~
 
@@ -23,9 +23,9 @@ or
 
 ~~~js
 gantt.config.lightbox.sections = [
-  { name:"description",height:38,map_to:"text",type:"textarea",focus:true },
-  { name:"time",type:"duration",map_to:"auto" },
-  { name:"rooms",type:"resources",map_to:"rooms", options:[  /*!*/
+  { name: "description", height: 38, map_to:"text", type: "textarea", focus: true },
+  { name: "time", type: "duration", map_to: "auto" },
+  { name: "rooms", type: "resources", map_to: "rooms", options: [  /*!*/
   	  { key: 1, label: "room 1", unit: "hours" },    /*!*/
 	  { key: 2, label: "room 2", unit: "hours" },   /*!*/
 	  { key: 3, label: "room 3", unit: "hours" }   /*!*/
@@ -49,9 +49,9 @@ To add the **resources** control to the lightbox, follow the steps below:
 
 ~~~js
 gantt.config.lightbox.sections = [
-  { name:"description",height:38,map_to:"text",type:"textarea",focus:true },
-  { name:"time",type:"duration",map_to:"auto" },
-  { name:"rooms",type:"resources" }	   /*!*/
+  { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+  { name: "time", type: "duration", map_to: "auto" },
+  { name: "rooms", type:"resources" }	   /*!*/
 ];
 ~~~
 
@@ -81,6 +81,7 @@ Each object in the array specifies a single option and includes the following pr
 - **default_value** - (*any*) the default value of the section's control. Applied if the value of the resource is undefined. Each option from the **options** array can have its own default value specified.
 
 {{note By default the resource control is mapped to the property specified in the api/gantt_resource_property_config.md config, so the **map_to** option can be omitted.}}
+
 {{note By default the resource control is automatically populated from the [resource datastore](desktop/resource_management.md#workingwithresourceviewpanel) via the `gantt.serverList("resourceOptions")` [collection](api/gantt_serverlist.md). You only need to specify the options list manually if you want to change the default behavior.}}
 
 Populating control with data
