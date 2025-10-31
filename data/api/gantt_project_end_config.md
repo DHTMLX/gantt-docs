@@ -7,7 +7,7 @@ project_end
 @type: Date,undefined
 
 @example:
-gantt.config.project_end = new Date(2019, 2, 1);
+gantt.config.project_end = new Date(2025, 10, 1);
 
 @template:	api_config
 
@@ -22,6 +22,7 @@ desktop/auto_scheduling.md
 
 @relatedapi:
 api/gantt_schedule_from_end_config.md
+api/gantt_auto_scheduling_config.md
 
 @relatedsample:
 02_extensions/20_backwards_scheduling.html

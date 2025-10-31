@@ -52,3 +52,7 @@ desktop/critical_path.md
 pro
 
 @changelog: added in v8.0
+
+the property has been deprecated in v9.1
+
+@deprecated: The property has been deprecated in v9.1, use `use_progress` property of api/gantt_auto_scheduling_config.md#useprogress instead.

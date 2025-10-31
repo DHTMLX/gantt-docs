@@ -43,4 +43,9 @@ If you set the config to *true*, the child tasks (except for tasks with their ow
 
 @changelog: added in v8.0
 
+the property has been deprecated in v9.1
+
+@deprecated: The property has been deprecated in v9.1, use `project_constraint` property of api/gantt_auto_scheduling_config.md#projectconstraint instead.
+
+
 @edition:pro
