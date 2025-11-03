@@ -15,8 +15,6 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-{{sample 	11_resources/07_assign_multiple_resources.html}}
-
 or
 
 ![Resources control options](desktop/resources_control2.png)
@@ -177,6 +175,5 @@ gantt.updateCollection("resourceOptions", [
 ~~~
 
 
-{{sample 11_resources/07_assign_multiple_resources.html}}
 
 @edition:pro

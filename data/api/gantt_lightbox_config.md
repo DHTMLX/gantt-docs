@@ -34,13 +34,13 @@ Objects in the **sections** array can have the following properties, depending o
 
 ####Common for all sections
 
-- <span class=subproperty>**name**</span> - (*string*) - the section's name (according to this name, dhtmlxGantt will take the section's label from the *locale.labels* collection). 
-For example, for the **time** section, dhtmlxGantt will take the label stored as **gantt.locale.labels.section_time**.
+- <span class=subproperty>**name**</span> - (*string*) - the section's name. dhtmlxGantt will take the section's label from the *locale.labels* collection according to this name. For example, for the **time** section, dhtmlxGantt will take the label stored as **gantt.locale.labels.section_time**. If the section has the **label** property specified, the section's label will be taken from it instead of the locale. <br>The **name** property can also be used for getting the control's object via the api/gantt_getlightboxsection.md method.
 - <span class=subproperty>**map_to**</span> - (*string*) - the name of a data property that will be mapped to the section.
 - <span class=subproperty>**type**</span> - (*string*) - the [type of the section control](desktop/default_edit_form.md#lightboxcontrols) (editor).
+- <span class=subproperty>**label?**</span> - (*string*) - the section's label.
 - <span class=subproperty>**height?**</span> - (*number*) - optional, the section's height. Not used with the [checkbox](desktop/checkbox.md) and [radio](desktop/radio.md) sections.
-- <span class=subproperty>**focus?**</span> - (*boolean*) - optional, if set to *true*, the section will take focus on opening the lightbox
-- <span class=subproperty>**formatter?**</span> - (*DurationFormatter | LinkFormatter*) - optional, a formatter for the section
+- <span class=subproperty>**focus?**</span> - (*boolean*) - optional, if set to *true*, the section will take focus on opening the lightbox.
+- <span class=subproperty>**formatter?**</span> - (*DurationFormatter | LinkFormatter*) - optional, a formatter for the section.
 
 
 
@@ -70,6 +70,17 @@ Edited tasks will be specified only by the start date and have a zero duration. 
 	- **_label_** - (*string*) - the option's label
 	- **_unit?_** - (*string | number*) - optional, the unit of measurement of the resource (for the Resources control)
 - <span class=subproperty>**default_value?**</span> - (*any*) - optional, the default value of the section's control. Applied only if the input value is underfined. For the resources control is applied if the value of the resource is underfined.
+
+####Resource Assignments control
+
+- **config** - (*object*) the resource grid config in the lightbox to display required columns
+- **templates** - (*object*) templates for the resource grid in the lightbox
+- **resource_default_assignment** - (*object*) the configuration object of the default assignment (that will be added by the "Add Assignment" button)
+	- **start_date** - (*Date | string | null*) the date the assignment is scheduled to start
+	- **end_date** - (*Date | string | null*) the date the assignment is scheduled to be completed
+	- **value** - (*number | string*) the quantity of the resource assigned to a task
+	- **duration** - (*number | null*) the duration of the assignment
+	- **mode** - (*string*) the calculation mode of the time of the resource assignment: "default" | "fixedDates" | "fixedDuration"
 
 
 ####Parent control

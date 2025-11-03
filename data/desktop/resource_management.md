@@ -228,7 +228,7 @@ gantt.config.resources = {
 
 Settings passed to **resource_store** will be used by the gantt to create the default resource datastore. If you've already created the resource datastore in your code, the gantt will use your store instead.
 
-In order to load resources, you can either pass resources into the **gantt.parse()**/**gantt.load()** methods as described [here](desktop/resource_management.md#loadingresourcesandresourceassignments), or you can access the datastore and populate it using the **datastore.parse()** method:
+In order to load resources, you can either pass resources into the **gantt.parse()** / **gantt.load()** methods as described [here](desktop/resource_management.md#loadingresourcesandresourceassignments), or you can access the datastore and populate it using the **datastore.parse()** method:
 
 ~~~js
 gantt.attachEvent("onGanttReady", () => {
@@ -248,7 +248,8 @@ The resource control of the lightbox will be connected to the resource list auto
 gantt.config.lightbox = {
 	sections: [
 		...,
-		{ name: "resources", type: "resources", map_to: "auto", default_value: 8 }
+		{ name: "resource_selector", label: "Resources",   
+        	type: "resource_selector", map_to: "auto" } 
 	]
 };
 ~~~
@@ -406,7 +407,7 @@ You can use this format with the [custom multiselect control](desktop/custom_edi
 ~~~
 
 The resources are assigned to the Task1 as follows: the resource with id=2 - in the quantity of 8 units, while the resource with the id=3 - in the quantity of 4 units.
-This format is supported by the desktop/resources.md of the lightbox.
+This format is supported by the [Resources control](desktop/resources.md) and [Resource Assignments control](desktop/resource_assignments.md) of the lightbox.
 
 Starting from v8.0 you can also load resource assignments as a separate list, and gantt will connect them to tasks automatically:
 
@@ -671,7 +672,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-Read about how to configure the resource control of the lightbox in the [Resources Control](desktop/resources.md) article.
+Read about how to configure the resource control of the lightbox in the [Resources control](desktop/resources.md) and [Resource Assignments control](desktop/resource_assignments.md) articles.
 
 
 
@@ -706,7 +707,7 @@ gantt.updateCollection("people", [
 
 If you define resources via the *serverList* collection, they can be [loaded together with the rest of the data](desktop/supported_data_formats.md#jsonwithcollections), otherwise you'll need to load them manually.
 
-Read about how to configure the resource control of the lightbox in the [Resources Control](desktop/resources.md) article.
+Read about how to configure the resource control of the lightbox in the [Resources control](desktop/resources.md) and [Resource Assignments control](desktop/resource_assignments.md) articles.
 
 
 

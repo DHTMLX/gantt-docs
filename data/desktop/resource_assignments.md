@@ -82,8 +82,20 @@ To add the **resource_selector** control to the lightbox, follow the steps below
 ~~~js
 gantt.config.lightbox.sections = [
 	{ name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
-	{ name: "resource_selector", label: "Resources",   /*!*/
-    	type: "resource_selector", map_to: "auto" },  /*!*/
+	{ 
+    	name: "resource_selector",
+    	label: "Resources",
+   	 	type: "resource_selector",
+    	map_to: "auto",
+        // the default assignment (that will be added by the "Add Assignment" button)
+    	resource_default_assignment: {
+        	duration: null,
+        	value: 8,
+        	start_date: null,
+        	end_date: null,
+        	mode: "default" // "default" | "fixedDates" | "fixedDuration"
+    	}
+	},
     { name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
@@ -100,12 +112,22 @@ gantt.locale.labels.section_resource_selector = "Resources";
 
 The following properties are mostly important and commonly set for the **resource_selector** control:
 
-- **name** - (*string*) the section name 
+- **name** - (*string*) the section's name 
 - **map_to** - (*string*) the name of a data property that will be mapped to the section
 - **type** - (*string*) the type of the [section control](desktop/default_edit_form.md#lightboxcontrols)
+- **label** - (*string*) the section's label
 - **config** - (*object*) the resource grid config in the lightbox to display required columns
-- **label** - (*string*) the option label
 - **templates** - (*object*) templates for the resource grid in the lightbox
+- **resource_default_assignment** - (*object*) the configuration object of the default assignment (that will be added by the "Add Assignment" button)
+	- **start_date** - (*Date | string | null*) the date the assignment is scheduled to start
+	- **end_date** - (*Date | string | null*) the date the assignment is scheduled to be completed
+	- **value** - (*number | string*) the quantity of the resource assigned to a task
+	- **duration** - (*number | null*) the duration of the assignment
+	- **mode** - (*string*) the calculation mode of the time of the resource assignment: "default" | "fixedDates" | "fixedDuration"
+    
+{{note
+The initial *start_date*, *end_date*, and *duration* properties may have `null` values. If so, they will be initialized using the corresponding values from the task object.
+}}
 
 ## Configuring resource grid columns in the lightbox
 
