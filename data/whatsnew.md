@@ -12,7 +12,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 9.1
 ----------
-<span class='release_date'>October 30, 2025. Minor update</span>
+<span class='release_date'>November 3, 2025. Minor update</span>
 
 ### Breaking Changes
 
@@ -22,7 +22,7 @@ This update brings some changes in the structure of the Gantt package and behavi
 ### New Functionality
 
 - [Remote Updates API](desktop/multiuser_live_updates.md) for managing data synchronization in real time is added
-- New [Resource Assignments control](desktop/resource_assignments.md) is introduced
+- New [Resource Assignments control](desktop/resource_assignments.md) is introduced to extend the functionality of the [Resources](desktop/resources.md) control
 - Ability to [display tasks in Day/Week scale](desktop/configuring_time_scale.md#workhourawaretaskbarsrenderingindayweekscales) 
 based on actual working hours instead of the fixed 24-hour period
 
@@ -31,10 +31,10 @@ based on actual working hours instead of the fixed 24-hour period
 
 - Ability to fix the size of [Timeline cells](desktop/configuring_time_scale.md#fixedcolumnwidth) is added
 - Support for specifying [dates in the calendar configuration](api/gantt_addcalendar.md) is added
-- A configuration object for [Auto Scheduling](desktop/auto_scheduling.md) to simplify setup is added
+- A [configuration object](api/gantt_auto_scheduling_config.md) for [Auto Scheduling](desktop/auto_scheduling.md) to simplify setup is added
 - Fonts are now embedded to the package for offline compatibility
 - Improved touch screen support for Windows devices is added
-- The obsolete [subscales API](api/gantt_subscales_config.md) is removed
+- The obsolete **subscales** API is removed
 
 ### Fixes
 

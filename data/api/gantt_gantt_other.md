@@ -1,8 +1,6 @@
 Gantt
 =============
 
-@todo: check
-
 @short:
 	a factory object that can be used to create new instances of dhtmlxGantt chart
 

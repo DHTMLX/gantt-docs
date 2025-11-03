@@ -829,8 +829,3 @@ If a cell has no working time, the scale falls back to absolute positioning for 
 Take notice that projection modes are designed for Day and Week scales. Other units ignore projection and use absolute positioning.
 
 Drag and drop follows the projection, but when autoscheduling is applied, the scheduling logic of a task still depends on such settings as api/gantt_correct_work_time_config.md and the worktime calendars applied for tasks.
-
-
-@todo: 
-- check Fixed column width<br>
-- check Workhour-aware task bars rendering in Day-Week scales
