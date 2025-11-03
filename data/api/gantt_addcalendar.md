@@ -14,10 +14,10 @@ addCalendar
 @example:
 
 // adding a previously created calendar
-var calendarId = gantt.addCalendar(calendar);
+const calendarId = gantt.addCalendar(calendar);
 
 // adding a calendar with a new config (the "days" property is set as array)
-var calendarId = gantt.addCalendar({
+const calendarId = gantt.addCalendar({
     id: "custom", // optional
     worktime: {
         hours: ["8:00-17:00"],
@@ -26,30 +26,37 @@ var calendarId = gantt.addCalendar({
 });
 
 // adding a calendar with a new config (the "days" property is set as object)
-var calendarId = gantt.addCalendar({
+const calendarId = gantt.addCalendar({
     id: "global", // the calendar id is optional
     worktime: {
       hours: ["8:00-12:00", "13:00-17:00"], // global work hours for weekdays
       days: {
-        weekdays: {
-          0: false, // 0 = Sunday, 6 = Saturday
-          1: true,
-          2: true,
-          3: true,
-          4: true,
-          5: true,
-          6: false
-        },
+        weekdays: [0, 1, 1, 1, 1, 1, 0],
         dates: {
           "2025-04-06": true,  // override work hours for a specific date
           "2025-04-08": false,
           "2025-04-09":  ["9:00-15:00"]
         }
+      },
+      customWeeks: {
+        lastMonthOfTheYear: {
+          from: new Date(2025, 11, 1),
+          to: new Date(2026, 0, 1),
+          hours: ["9:00-13:00"],
+          days: {
+            weekdays: [0, 1, 1, 1, 1, 0, 0],
+            dates: {
+              "2025-12-08": true,
+              "2025-12-09":  false,
+              "2025-12-10":  ["9:00-15:00"]
+            }
+          }
+        }
       }
     }
 });
 
-var calendar = gantt.getCalendar(calendarId);
+const calendar = gantt.getCalendar(calendarId);
 
 @template:	api_method
 @descr:
@@ -85,7 +92,7 @@ Instead of the number of a week day, you can also set custom working hours for t
 For example:
 
 ~~~js
-var calendar = {
+const calendar = {
     id: "calendar1", // optional
     worktime: {
         hours: ["8:00-17:00"],
@@ -122,7 +129,7 @@ gantt.addCalendar({
 You can also specify working hours for certain dates by setting them in the **_dates_** property of the **_days_** object (both for the **worktime** attribute and the **customWeeks** property). For example:  
 
 ~~~js
-var calendar = {
+const calendar = {
     id: "calendar1", // optional
     worktime: {
         hours: ["8:00-17:00"],
