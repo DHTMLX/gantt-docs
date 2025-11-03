@@ -69,7 +69,7 @@ gantt.config.lightbox.sections = [
 gantt.locale.labels.section_resource_selector = "Resources";
 ~~~
 
-{{editor	 https://snippet.dhtmlx.com/id54i1b3		Resource Assignments Control}}
+{{editor	 https://snippet.dhtmlx.com/id54i1b3		Resource Assignments control}}
 
 {{note You can also create [a custom control to assign multiple resources to a task](desktop/custom_editor.md#customthirdpartyeditor).}}
 
