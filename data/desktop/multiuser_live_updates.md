@@ -181,7 +181,7 @@ Upon receiving these messages, Gantt automatically synchronizes its data using t
 
 ~~~js
 {"action":"event","body":{"name":"tasks",
-   "value":{"type":"add-task","event":EVENT_OBJECT}}}
+   "value":{"type":"add-task","task":TASK_OBJECT}}}
 ~~~
 
 Example:
@@ -193,8 +193,8 @@ app.post("/data/task", (req, res) => {
 
 	// Broadcast changes to connected clients
 	wsManager.broadcast("event", {
-		name: "events",
-		value: { action: "add-task", type: result.item },
+		name: "tasks",
+		value: { type: "add-task", task: result.item },
 	});
 
 	res.status(200).json(result);
@@ -205,7 +205,7 @@ app.post("/data/task", (req, res) => {
 
 ~~~js
 {"action":"event","body":{"name":"tasks",
-   "value":{"type":"update-task","event":EVENT_OBJECT}}}
+   "value":{"type":"update-task","task":TASK_OBJECT}}}
 ~~~
 
 Example:
@@ -219,8 +219,8 @@ app.put("/data/task/:id", (req, res) => {
 	
     // Broadcast changes to connected clients
 	wsManager.broadcast("event", {
-		name: "events",
-		value: { action: "update-task", type: result.item },
+		name: "tasks",
+		value: { type: "update-task", task: result.item },
 	});
 
 	res.status(200).send(result);
@@ -231,7 +231,7 @@ app.put("/data/task/:id", (req, res) => {
 
 ~~~js
 {"action":"event","body":{"name":"tasks",
-   "value":{"type":"delete-task","event":{"id":ID}}}}
+   "value":{"type":"delete-task","task":{"id":ID}}}}
 ~~~
 
 Example:
@@ -243,8 +243,8 @@ app.delete("/data/task/:id", (req, res) => {
 
 	// Broadcast changes to connected clients
 	wsManager.broadcast("event", {
-		name: "events",
-		value: { action: "delete-task", type: { id } },
+		name: "tasks",
+		value: { type: "delete-task", task: { id } },
 	});
 
 	res.status(200).send();
@@ -255,7 +255,7 @@ app.delete("/data/task/:id", (req, res) => {
 
 ~~~js
 {"action":"event","body":{"name":"links",
-   "value":{"type":"add-link","event":EVENT_OBJECT}}}
+   "value":{"type":"add-link","link":LINK_OBJECT}}}
 ~~~
 
 Example:
@@ -267,8 +267,8 @@ app.post("/data/link", (req, res) => {
 
 	// Broadcast changes to connected clients
 	wsManager.broadcast("event", {
-		name: "events",
-		value: { action: "add-link", type: result.item },
+		name: "links",
+		value: { type: "add-link", link: result.item },
 	});
 
 	res.status(200).json(result);
@@ -279,7 +279,7 @@ app.post("/data/link", (req, res) => {
 
 ~~~js
 {"action":"event","body":{"name":"links",
-   "value":{"type":"update-link","event":EVENT_OBJECT}}}
+   "value":{"type":"update-link","link":LINK_OBJECT}}}
 ~~~
 
 Example:
@@ -293,8 +293,8 @@ app.put("/data/link/:id", (req, res) => {
 
 	// Broadcast changes to connected clients
 	wsManager.broadcast("event", {
-		name: "events",
-		value: { action: "update-link", type: result.item },
+		name: "links",
+		value: { type: "update-link", link: result.item },
 	});
 
 	res.status(200).send(result);
@@ -305,7 +305,7 @@ app.put("/data/link/:id", (req, res) => {
 
 ~~~js
 {"action":"event","body":{"name":"links",
-   "value":{"type":"delete-link","event":{"id":ID}}}}
+   "value":{"type":"delete-link","link":{"id":ID}}}}
 ~~~
 
 Example:
@@ -317,8 +317,8 @@ app.delete("/data/link/:id", (req, res) => {
 
 	// Broadcast changes to connected clients
 	wsManager.broadcast("event", {
-		name: "events",
-		value: { action: "delete-link", type: { id } },
+		name: "links",
+		value: { type: "delete-link", link: { id } },
 	});
 
 	res.status(200).send();
@@ -347,7 +347,7 @@ The `RemoteEvents.on` method expects the object argument which can specify handl
 const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
 remoteEvents.on({ 
 	tasks: function(message) {
-		const { type, event } = message;
+		const { type, task } = message;
 		switch (type) {
 			case "add-task":
 				// handle the add event
@@ -372,7 +372,7 @@ const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
 remoteEvents.on(remoteUpdates);
 remoteEvents.on({ 
 	tasks: function(message) {
-		const { type, event } = message;
+		const { type, task } = message;
 		switch (type) {
 			case "custom-action":
 				// handle custom action
@@ -386,7 +386,7 @@ The handler will be invoked by the following message:
 
 ~~~js
 {"action":"event","body":{"name":"tasks",
-   "value":{"type":"custom-action","event":value}}}
+   "value":{"type":"custom-action","task":value}}}
 ~~~
 
 If you want to use `RemoteEvents` to receive updates for custom entities, you can achieve it by adding a handler:
@@ -434,18 +434,18 @@ The `RemoteUpdates` module can be used to connect Gantt to any source of externa
 const { remoteUpdates } = gantt.ext.liveUpdates;
 
 // inserts task into gantt without invoking update hooks
-remoteUpdates.events({ type: "add-task", task: TASK_OBJECT });
+remoteUpdates.tasks({ type: "add-task", task: TASK_OBJECT });
 
 // updates task in gantt without invoking update hooks
-remoteUpdates.events({ type: "update-task", task: TASK_OBJECT });
+remoteUpdates.tasks({ type: "update-task", task: TASK_OBJECT });
 
 // deletes task from gantt without invoking update hooks
-remoteUpdates.events({ type: "delete-task", task: {id: TASK_ID}});
+remoteUpdates.tasks({ type: "delete-task", task: {id: TASK_ID}});
 
 // link operations
-remoteUpdates.events({ type: "add-link", link: LINK_OBJECT });
-remoteUpdates.events({ type: "update-link", link: LINK_OBJECT });
-remoteUpdates.events({ type: "delete-link", link: {id: LINK_ID}});
+remoteUpdates.links({ type: "add-link", link: LINK_OBJECT });
+remoteUpdates.links({ type: "update-link", link: LINK_OBJECT });
+remoteUpdates.links({ type: "delete-link", link: {id: LINK_ID}});
 ~~~
 
 Check the example of how Gantt can be connected to the Firestore updates in the [GitHub repository](https://github.com/DHTMLX/firebase-gantt-demo/).
