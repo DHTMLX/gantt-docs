@@ -426,8 +426,26 @@ And the handler will be called whenever a message directed to the specified enti
 This guide provides the foundation for implementing and customizing live updates in DHTMLX Gantt. For a complete example, 
 [refer to the GitHub repository](https://github.com/DHTMLX/gantt-multiuser-backend-demo).
 
+## Remote Updates API
 
-@todo: 
-add link to the github demo:<br>
-- in the Simplified Example section<br>
-- at the end of the guide
+The `RemoteUpdates` module can be used to connect Gantt to any source of external changes allowing easy integration of remote changes.
+
+~~~js
+const { remoteUpdates } = gantt.ext.liveUpdates;
+
+// inserts task into gantt without invoking update hooks
+remoteUpdates.events({ type: "add-task", task: TASK_OBJECT });
+
+// updates task in gantt without invoking update hooks
+remoteUpdates.events({ type: "update-task", task: TASK_OBJECT });
+
+// deletes task from gantt without invoking update hooks
+remoteUpdates.events({ type: "delete-task", task: {id: TASK_ID}});
+
+// link operations
+remoteUpdates.events({ type: "add-link", link: LINK_OBJECT });
+remoteUpdates.events({ type: "update-link", link: LINK_OBJECT });
+remoteUpdates.events({ type: "delete-link", link: {id: LINK_ID}});
+~~~
+
+Check the example of how Gantt can be connected to the Firestore updates in the [GitHub repository](https://github.com/DHTMLX/firebase-gantt-demo/).
