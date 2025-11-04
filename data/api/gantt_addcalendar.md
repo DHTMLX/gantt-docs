@@ -68,7 +68,7 @@ The calendar configuration object can contain the following attributes:
     - **_days?_** - (*WorkDaysTuple* | *object*) - optional, it can be:
         -  either an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
         - or an object that contains weekdays and dates. It can include:
-            - **_weekdays?_** - (*object*) optional, an object that contains a set of key:value pairs, where key is the number of the day of the week (from 0 - Sunday, to 6 - Saturday), and value is a boolean that defines either a working day (*true*) or a non-working day (*false*)
+            - **_weekdays?_** - (*WorkDaysTuple*) optional, an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
             - **_dates?_** - (*object*) optional, an object with working time settings for specified dates. The object can contain a number of key: value pairs where:
                 - key is a date set as a string 
                 - value is either an array of working hours as 'from'-'to' pairs or a boolean ('false' value sets a day-off, 'true' applies the default hours (["8:00-17:00"]))
@@ -80,7 +80,7 @@ The calendar configuration object can contain the following attributes:
             - **_days?_** - (*WorkDaysTuple* | *object*) - optional, it can be:
         		-  either an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
         		- or an object that contains weekdays and dates. It can include:
-            		- **_weekdays?_** - (*object*) optional, an object that contains a set of key:value pairs, where key is the number of the day of the week (from 0 - Sunday, to 6 - Saturday), and value is a boolean that defines either a working day (*true*) or a non-working day (*false*)
+            		- **_weekdays?_** - (*WorkDaysTuple*) optional, an array of 7 days of the week (from 0 - Sunday, to 6 - Saturday), where 1/true stands for a working day and 0/false - a non-working day
             		- **_dates?_** - (*object*) optional, an object with working time settings for specified dates. The object can contain a number of key: value pairs where:
                 		- key is a date set as a string 
                 		- value is either an array of working hours as 'from'-'to' pairs or a boolean ('false' value sets a day-off, 'true' applies the default hours (["8:00-17:00"]))
