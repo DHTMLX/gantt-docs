@@ -814,7 +814,7 @@ gantt.config.scales = [
     	unit: "day", 
         step: 1,
         format: "%d", 
-    	projection: {source: "fixedHours", hours: "09:00-18:00" } /*!*/
+    	projection: {source: "fixedHours", hours: ["09:00-18:00"] } /*!*/
     }
 ];
 ~~~
@@ -823,6 +823,18 @@ gantt.config.scales = [
 
 This mode presupposes that the tasks calendar is used to calculate the working hours per cell. 
 If a cell has no working time, the scale falls back to absolute positioning for that cell.
+
+
+~~~js
+gantt.config.scales = [
+	{
+    	unit: "day", 
+        step: 1,
+        format: "%d", 
+    	projection: {source: "taskCalendar" } /*!*/
+    }
+];
+~~~
 
 ### Details
 
