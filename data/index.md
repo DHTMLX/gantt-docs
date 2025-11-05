@@ -1,16 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Gantt 9.0!</h2>
+    <h2>Meet Gantt 9.1!</h2>
     
     <p>
     New version brings you new functionality and extended API:
     </p>
     <ul>
-		<li><a href="desktop/custom_skins.md">Skins customization with CSS variables</a></li>  
-        <li><a href="desktop/skins.md#darkskin">New Dark skin</a></li>      
-        <li><a href="desktop/inbuilt_baselines.md">Built-in support for baselines</a></li>    
-        <li><a href="desktop/custom_projects_dates.md">Manually scheduled projects</a></li>    
+		<li><a href="desktop/multiuser_live_updates.md">Multi-user live updates</a></li>  
+        <li><a href="desktop/resource_assignments.md">New Resource Assignments control</a></li>      
+        <li><a href="desktop/configuring_time_scale.md#workhourawaretaskbarsrenderingindayweekscales">Worktime-based tasks display in Day/Week scales</a></li>        
 	</ul>
 
     <p class='action_buttons'>

@@ -17,7 +17,11 @@ gantt.init("gantt_here");
 
 {{note This config is defined in the **auto_scheduling** extension, so you need to activate the [auto_scheduling](desktop/extensions_list.md#autoscheduling) plugin. Read the details in the desktop/auto_scheduling.md article.}}
 
+@changelog:
+- the property has been deprecated in v9.1
+- added in v4.0
 
+@deprecated: The property has been deprecated in v9.1, use the `schedule_on_parse` property of api/gantt_auto_scheduling_config.md#scheduleonparse instead.
 
 @related:
 desktop/auto_scheduling.md

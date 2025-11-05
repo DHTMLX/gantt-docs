@@ -12,4 +12,5 @@ Common Features
 - desktop/keyboard_navigation.md
 - desktop/content_security_policy.md
 - desktop/jquery_integration.md
+- desktop/multiuser_live_updates.md
 }}

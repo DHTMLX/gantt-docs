@@ -477,7 +477,6 @@ Gantt API
 - api/gantt_static_background_config.md - generates a background image for the timeline area instead of rendering actual columns' and rows' lines
 - api/gantt_static_background_cells_config.md - enables rendering of highlighted cells in the static_background mode
 - api/gantt_step_config.md - sets the step of the time scale (X-Axis)
-- api/gantt_subscales_config.md - specifies the second time scale(s) (deprecated)
 - api/gantt_task_attribute_config.md - sets the name of the attribute that will specify the id of the task's HTML element
 - api/gantt_task_date_config.md - sets the format of the date label in the 'Time period' section of the lightbox
 - api/gantt_task_grid_row_resizer_attribute_config.md - sets the name of the attribute of the resizer's DOM element of the grid row. The attribute presents the row's index
@@ -569,6 +568,7 @@ Gantt API
 
 {{api
 - api/gantt_$click_other.md - redefines the default click behavior for buttons of the Gantt chart
+- api/gantt_gantt_other.md - a factory object that can be used to create new instances of dhtmlxGantt chart
 - api/gantt_ajax_other.md - gantt ajax module
 - api/gantt_calendar_other.md - the interface of the working calendar object
 - api/gantt_config_other.md - defines configuration options for dates, scale, controls
