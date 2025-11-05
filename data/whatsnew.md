@@ -34,7 +34,6 @@ based on actual working hours instead of the fixed 24-hour period
 - Ability to fix the size of [Timeline cells](desktop/configuring_time_scale.md#fixedcolumnwidth) is added
 - Support for specifying [dates in the calendar configuration](api/gantt_addcalendar.md) is added
 - A [configuration object](api/gantt_auto_scheduling_config.md) for [Auto Scheduling](desktop/auto_scheduling.md) to simplify setup is added
-- Fonts are now embedded to the package for offline compatibility
 - Improved touch screen support for Windows devices is added
 - The obsolete **subscales** API is removed
 
