@@ -12,7 +12,7 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 9.1
 ----------
-<span class='release_date'>November 4, 2025. Minor update</span>
+<span class='release_date'>November 5, 2025. Minor update</span>
 
 ### Breaking Changes
 
@@ -24,8 +24,9 @@ This update brings some changes in the structure of the Gantt package and behavi
 - [Multi-user backend](desktop/multiuser_live_updates.md) module for real-time updates is added
 - [Remote updates API](desktop/multiuser_live_updates.md#remoteupdatesapi) for managing data synchronization in real time is added
 - New [Resource Assignments control](desktop/resource_assignments.md) is introduced to extend the functionality of the [Resources](desktop/resources.md) control
-- Ability to [display tasks in Day/Week scale](desktop/configuring_time_scale.md#workhourawaretaskbarsrenderingindayweekscales) 
+- The ability to [display tasks in Day/Week scale](desktop/configuring_time_scale.md#workhourawaretaskbarsrenderingindayweekscales) 
 based on actual working hours instead of the fixed 24-hour period
+- The ability to [render split subtasks depending on the state of the parent row](desktop/split_tasks.md#perchildplacementofsplitsubtasks)
 
 
 ### Updates
