@@ -50,7 +50,7 @@ Export to PDF
 
 To export Gantt chart as a PDF document, do the following steps:
 
-- To use the online export service, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
+- To use the export/import functionality, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
 
 ~~~js
 gantt.plugins({
@@ -58,7 +58,9 @@ gantt.plugins({
 });
 ~~~
 
-{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, e.g.:
+It allows you to use either the online export service or a local export module.
+
+{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the export functionality, e.g.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -86,7 +88,7 @@ Export to PNG
 
 To export Gantt chart as a PNG image, do the following steps:
 
-- To use the online export service, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
+- To use the export/import functionality, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
 
 ~~~js
 gantt.plugins({
@@ -94,7 +96,9 @@ gantt.plugins({
 });
 ~~~
 
-{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, e.g.:
+It allows you to use either the online export service or a local export module.
+
+{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the export functionality, e.g.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
