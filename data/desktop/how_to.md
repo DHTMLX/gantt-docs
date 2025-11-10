@@ -984,7 +984,7 @@ gantt.config.layout = {
 
 ## How to add legend to the gantt
 
-There is no built-in method for displaying legend in the Gantt, the closest thing is the [Overlay extension](desktop/baselines.md#extraoverlayforthechart), but it’s not exactly the same and can’t be customized that easily.
+There is no built-in method for displaying legend in the Gantt, the closest thing is the [Overlay extension](desktop/baselines.md#extraoverlayforthechart), but it's not exactly the same and can't be customized that easily.
 
 However, legends can be implemented fairly simple. You can code the legend element in HTML and then just inject it into the gantt node:
 
