@@ -91,7 +91,6 @@ calendar.unsetWorkTime({ date: new Date(2025, 5, 6), hours: true });
     - **_config_** - (*Date | object*) - either a date to check or the [configuration object](api/gantt_isworktime.md#configurationobjectproperties) of a time span:
         - **_date_** - (*Date*) - a date to check
         - **_unit?_** - (*string*) - optional, a time unit: "minute", "hour", "day", "week", "month", "year"
-        - **_task?_** - (*Task*) - optional, the object of the task the duration of which should be calculated
     - **_time_unit?_** - (*string*) - optional, a time unit: "minute", "hour", "day", "week", "month", "year". Not needed at all when the first parameter is specified as an object
 
 ~~~js
@@ -110,24 +109,22 @@ calendar.isWorkTime({ date: new Date(2025, 5, 6), unit: "hour" });
         - **_date_** - (*Date*) - a date to get the closest working time for
         - **_dir?_** - (*string*) - optional, specifies the direction of the closest time: "future" or "past" 
         - **_unit?_** - (*string*) - optional, a time unit to search for the closest working time
-        - **_task?_** - (*Task*) - optional, the object of the task to use its calendar
 
 ~~~js
 calendar.getClosestWorkTime(new Date(2025, 5, 6));
 calendar.getClosestWorkTime({ 
     date: new Date(2025, 5, 6), 
-    unit: "hour", 
-    task: gantt.getTask(2), 
+    unit: "hour",
     dir: "past" 
 });
 ~~~
+
 
 - <span class=submethod>**calculateEndDate (config, duration, unit): Date**</span> - calculates the end date of a task
     - **_config_** - (*Date | object*) - either the date when a task is scheduled to begin or the [configuration object](api/gantt_calculateenddate.md#configurationobjectproperties) of a time span:
         - **_start_date_** - (*Date*) - the date when a task is scheduled to begin
         - **_duration_** - (*number*) - the duration of a task
         - **_unit?_** - (*string*) - optional, the time unit of the duration: "minute", "hour", "day", "week", "month", "year"
-        - **_task?_** - (*Task*) - optional, the object of the task the duration of which should be calculated
     - **_duration?_** - (*number*) - optional, the duration of a task. Not needed at all when the first parameter is specified as an object
     - **_unit?_** - (*string*) - optional, the time unit of the duration. Not needed at all when the first parameter is specified as an object<br>
 
@@ -144,7 +141,6 @@ calendar.calculateEndDate({
     - **_config_** - (*Date | object*) - either the date when a task is scheduled to begin or the [configuration object](api/gantt_calculateduration.md#configurationobjectproperties) of a time span:
         - **_start_date_** - (*Date*) - the date when a task is scheduled to begin
         - **_end_date_** - (*Date*) - the date when a task is scheduled to be completed
-        - **_task?_** - (*Task*) - optional, the object of the task the duration of which should be calculated
     - **_end?_**	- (*Date*) - the date when a task is scheduled to be completed. Not needed at all when the first parameter is specified as an object<br>
 
 ~~~js
