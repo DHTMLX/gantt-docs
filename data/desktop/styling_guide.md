@@ -19,17 +19,17 @@ There is a api/gantt_grid_header_class_template.md template that allows you to a
 
 ~~~js
 <style>
-  	.updColor{
-		background-color:#ffeb8a!important;
-  	}
+	.gantt-grid__header--highlighted {
+		background-color: #ffeb8a !important;
+	}
 </style>
 ~~~
 
 ~~~js
-gantt.templates.grid_header_class = function(columnName, column){
-  if(columnName == 'duration' ||columnName == 'text')
-    return "updColor";
-};
+gantt.templates.grid_header_class = (columnName) =>
+	(columnName === 'duration' || columnName === 'text')
+		? 'gantt-grid__header--highlighted'
+		: '';
 ~~~
 
 <img src="desktop/styling_columns_headers.png">
@@ -43,9 +43,16 @@ It is possible to add custom elements (such as buttons, icons, inputs, etc.) int
 
 ~~~js
 gantt.config.columns = [
-  {name:"add", label:"", width:50, align:"left" },
-  {name:"text", label:"<div class='searchEl'>Task name <input id='search' type='text'"+   /*!*/
-  	"placeholder='Search tasks...'></div>", width:250, tree:true},						  /*!*/
+	{
+		name: "text",
+		label: ` /*!*/
+			<div class="gantt-grid__header-search-wrapper"> /*!*/
+				Task name  /*!*/
+				<input id="task-search" type="text" placeholder="Search tasks..."> /*!*/
+			</div> /*!*/
+		`, /*!*/
+		width: 250, tree: true
+	},
 	// other columns
 ];
 ~~~
@@ -53,30 +60,34 @@ gantt.config.columns = [
 The implementation of the search functionality looks like this:
 
 ~~~js 
-var inputEl = document.getElementById('search');
+const taskSearchInput = document.getElementById('task-search');
 
-inputEl.oninput = function(){
-  gantt.refreshData();
+taskSearchInput.addEventListener('input', () => {
+	gantt.refreshData();
+});
+
+function hasSubstring(parentId, searchValue) {
+	const task = gantt.getTask(parentId);
+	if (!task) return false;
+
+	if (task.text.toLowerCase().includes(searchValue)) {
+		return true;
+	}
+
+	const children = gantt.getChildren(parentId);
+	for (let i = 0; i < children.length; i++) {
+		if (hasSubstring(children[i], searchValue)) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
-function hasSubstr(parentId){
-  var task = gantt.getTask(parentId);
-  if(task.text.toLowerCase().indexOf(inputEl.value.toLowerCase() ) !== -1)
-    return true;
-
-  var child = gantt.getChildren(parentId);
-  for (var i = 0; i < child.length; i++) {
-    if (hasSubstr(child[i]))
-      return true;
-  }
-  return false;
-}
-
-gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
-  if (hasSubstr(id))
-	return true;
-  
-  	return false;
+gantt.attachEvent('onBeforeTaskDisplay', (id) => {
+	const searchValue = taskSearchInput.value.toLowerCase().trim();
+	if (!searchValue) return true;
+	return hasSubstring(id, searchValue);
 });
 ~~~
 
@@ -89,35 +100,35 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 To add an image or an icon into the header, you can also put it into the inner HTML of the cell using the **label** property:
 
 ~~~js
-var textLabel = [
-    "<div class='gantt-text-label'>"+
-	"<img src='http://docs.dhtmlx.com/scheduler/assets/index/icon1.png'>"+
-	"<span>Text</span>" +
-	"</div>"
-].join("");
+const textLabel = `
+	<div class="gantt-grid__header-label">
+		<img src="http://docs.dhtmlx.com/scheduler/assets/index/icon1.png" alt="icon">
+		<span>Text</span>
+	</div>
+`;
 
 gantt.config.columns = [
-	{name: "text", label:textLabel,tree: true, width: '*', resize: true},
-	{name: "start_date", align: "center", resize: true},
-	{name: "duration", align: "center"},
-	{name: "add", width: 44}
+	{ name: "text", label: textLabel, tree: true, width: "*", resize: true },
+	{ name: "start_date", align: "center", resize: true },
+	{ name: "duration", align: "center" },
+	{ name: "add", width: 44 }
 ];
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5/55086fc42	Images in Grid Header: Columns Config}}
+{{editor	https://snippet.dhtmlx.com/10y58pbv	Images in Grid Header: Columns Config}}
 
 Alternatively, you can set a header cell in CSS using the **.gantt_grid_head_<columnName>** selector:
 
 ~~~css
-.gantt_grid_head_text  {
-    background-image:url('http://docs.dhtmlx.com/scheduler/assets/index/icon1.png');
-    background-repeat:no-repeat;  
+.gantt_grid_head_text {
+	background-image: url("http://docs.dhtmlx.com/scheduler/assets/index/icon1.png");
+	background-repeat: no-repeat;
 }
 ~~~
 
 <img src="desktop/custom_elements_grid_header_image.png">
 
-{{editor	https://snippet.dhtmlx.com/5/e13d18a10	Images in Grid Header:CSS}}
+{{editor	https://snippet.dhtmlx.com/gvcsrpmb	Images in Grid Header:CSS}}
 
 ### Multiline text in the grid header
 
@@ -129,17 +140,15 @@ You can apply a custom color for all or separate grid rows with tasks via the ap
 
 ~~~js
 <style>
-  .updColor{
-  	background-color:#ffeb8a!important;  
-  }
+	.gantt-grid__row--highlight {
+		background-color: #ffeb8a !important;
+	}
 </style>
 ~~~
 
 ~~~js
-gantt.templates.grid_row_class = function(start, end, task){
- if(task.id == 12)
-    return "updColor";
-};
+gantt.templates.grid_row_class = (start, end, task) =>
+	task.id === 3 ? "gantt-grid__row--highlight" : "";
 ~~~
 
 <img src="desktop/grid_row_bg.png">
@@ -154,7 +163,7 @@ You can highlight the grid row on hover by applying the following style rules:
 .gantt_grid_data .gantt_row.odd:hover, .gantt_grid_data .gantt_row:hover,
 .gantt_grid_data .gantt_row.gantt_selected,
 .gantt_grid_data .gantt_row.odd.gantt_selected,
-.gantt_task_row.gantt_selected{
+.gantt_task_row.gantt_selected {
 	background-color: cyan; 
 }
 ~~~
@@ -175,17 +184,21 @@ change the default color of the text in grid rows, or use custom elements in gri
 You can define a special color for the text of tasks depending on their priority as in:
 
 ~~~js
-gantt.config.columns=[
-	{name:"text",       label:"Task name",  tree:true, width:230, template:myFunc },   /*!*/
-	{name:"start_date", label:"Start time", align: "center" },
-	{name:"duration",   label:"Duration",   align: "center" }
+gantt.config.columns = [
+	{ name: "text", label: "Task name", tree: true, width: 230,
+		template: gridTaskTextTemplate  /*!*/
+	},
+	{ name: "start_date", label: "Start time", align: "center" },
+	{ name: "duration", label: "Duration", align: "center" }
 ];
 
-function myFunc(task){
-	if(task.priority ==1)
-		return "<div class='important'>"+task.text+" ("+task.users+") </div>";
-	return task.text+" ("+task.users+")";
-};
+function gridTaskTextTemplate (task) {
+	const text = `${task.text} (${task.users})`;
+	if (task.priority === 1) {
+		return `<div class="gantt-grid__text--important">${text}</div>`;
+	}
+	return text;
+}
 ~~~
 
 <img src="desktop/columns_text_color.png">
@@ -198,47 +211,27 @@ function myFunc(task){
 To add a custom element, such as a button, an input, etc. into the grid columns, you should set the HTML of the element as the value of the **template** attribute of the column:
 
 ~~~js
-var colContent = function (task) {
-	return ('<i class="fa gantt_button_grid gantt_grid_edit fa-pencil"'+
-    			'onclick="clickGridButton(' + task.id + ', \'edit\')"></i>' +
-			'<i class="fa gantt_button_grid gantt_grid_add fa-plus"'+
-        		'onclick="clickGridButton(' + task.id + ', \'add\')"></i>' +
-			'<i class="fa gantt_button_grid gantt_grid_delete fa-times"'+
-        		'onclick="clickGridButton(' + task.id + ', \'delete\')"></i>');
-};
+function gridColumnTemplate (task) {
+	return `
+		<i class="fa fa-pencil" onclick="clickGridButton(${task.id}, 'edit')"></i>
+		<i class="fa fa-plus" onclick="clickGridButton(${task.id}, 'add')"></i>
+		<i class="fa fa-times" onclick="clickGridButton(${task.id}, 'delete')"></i>
+	`;
+}
 
 gantt.config.columns = [
-	{name: "text", tree: true, width: '*', resize: true},
-	{name: "start_date", align: "center", resize: true},
-	{name: "duration", align: "center"},
-	{name: "buttons", label: colHeader, width: 75, template: colContent}  /*!*/
+	{ name: "text", tree: true, width: "*", resize: true },
+	{ name: "start_date", align: "center", resize: true },
+	{ name: "duration", align: "center" },
+	{ name: "buttons", width: 75, label: gridColumnHeaderTemplate,
+		template: gridColumnTemplate /*!*/
+	}
 ];
 ~~~
 
 <img src="desktop/custom_elements_grid_columns.png">
 
 {{sample  07_grid/07_custom_buttons.html}}
-
-####Truncate long text with ellipsis in grid columns
-
-Gantt shortens long text in grid rows.
-
-Starting from v7.0, it is possible to truncate long content of grid rows with ellipsis. To do that, you should redefine the related css class which is **.gantt_tree_content**:
-
-~~~js
-<style>
-.gantt_tree_content {
-	overflow:hidden;
-	text-overflow: ellipsis;
-}
-</style>
-
-gantt.init("gantt_here");
-~~~
-
-<img src="desktop/truncate_text.png">
-
-{{editor	https://snippet.dhtmlx.com/d82twxd8		Truncate long text with ellipsis}}
 
 #### Multiline text in grid cells
 
@@ -255,16 +248,14 @@ You can style the row of the scale with the help of the **scale_row_class** temp
 
 ~~~js
 <style>
-  .updColor{
-  	background-color:#ffeb8a!important  	
-  }
+	.gantt-scale__row--highlight {
+		background-color: #ffeb8a !important;
+	}
 </style>
 ~~~
 
 ~~~js
-gantt.templates.scale_row_class = function(scale){           
-	return "updColor";
-}
+gantt.templates.scale_row_class = (scale) => "gantt-scale__row--highlight";
 ~~~
 
 <img src="desktop/color_scale_row.png">
@@ -276,11 +267,16 @@ gantt.templates.scale_row_class = function(scale){
 It is also possible to style certain cells of the scale via the **scale_cell_class** template. For example, you can color particular days of the timeline area:
 
 ~~~js
-gantt.templates.scale_cell_class = function(date){
-    if(date.getDay()==0||date.getDay()==6){
-        return "updColor";
-    }
-};
+<style>
+	.gantt-scale__cell--highlight {
+		background-color: #ffeb8a !important;
+	}
+</style>
+~~~
+
+~~~js
+gantt.templates.scale_cell_class = date =>
+	date.getDay() === 0 || date.getDay() === 6 ? "gantt-scale__cell--highlight" : "";
 ~~~
 
 <img src="desktop/styling_scale_cells.png">
@@ -295,22 +291,21 @@ You can specify a new style for a scale via the **css** attribute of the api/gan
 
 ~~~js
 <style type="text/css">
-	.weekend{
-    	background: #F0DFE5 !important;
+	.gantt-scale__cell--weekend {
+		background-color: #F0DFE5 !important;
 	}
 </style>
 ~~~
 
 ~~~js
-var daysStyle = function(date){
-	var dateToStr = gantt.date.date_to_str("%D");
-    if (dateToStr(date) == "Sun"||dateToStr(date) == "Sat")  return "weekend";
-
-	return "";
+const isWeekendStyle = (date) => {
+	const day = gantt.date.day_start(date).getDay();
+	return (day === 0 || day === 6) ? "gantt-scale__cell--weekend" : "";
 };
 
 gantt.config.scales = [
-	{unit:"day", format:"%D", css:daysStyle }
+	// other scales
+	{ unit: "day", format: "%D", css: isWeekendStyle }
 ];
 ~~~
 
@@ -329,7 +324,7 @@ You can redefine the api/gantt_task_class_template.md template to refresh the st
 You can find the details in the article desktop/colouring_tasks.md#redefiningthetaskstemplate.
 
 ~~~js
-gantt.templates.task_class = function(start, end, task){return "";};
+gantt.templates.task_class = (start, end, task) => "";
 ~~~
 
 <img src="desktop/coloring_tasks.png">
@@ -339,13 +334,8 @@ gantt.templates.task_class = function(start, end, task){return "";};
 Templates allow applying styles dynamically. For example, you can change colors depending on the progress of the task:
 
 ~~~js
-gantt.templates.task_class = function(start,end,task){
-	if(task.progress > 0.5){
-		return "";
-	}else{
-		return "important";
-	}
-};
+gantt.templates.task_class = (start, end, task) =>
+	task.progress > 0.5 ? "" : "task--low-progress";
 ~~~
 
 <img src="desktop/dynamic_styling.png">
@@ -358,12 +348,8 @@ gantt.templates.task_class = function(start,end,task){
 The api/gantt_task_text_template.md template allows using inline styles to change the style of the task bar text:
 
 ~~~js
-gantt.templates.task_text = function(start, end, task){
-  if(task.id == 12)
-    return "<span style='color:red'>"+task.text+"</span>";
-  
-  return task.text;
-};
+gantt.templates.task_text = (start, end, task) =>
+	task.id === 12 ? `<span style="color:red">${task.text}</span>` : task.text;
 ~~~
 
 <img src="desktop/inline_styling_task_text.png">
@@ -379,9 +365,7 @@ Follow the [example](https://snippet.dhtmlx.com/55uy7ibo) shown in the [How to d
 You can insert custom elements into task bars via the api/gantt_task_text_template.md template as well. For example, you can add buttons into task bars in the following way:
 
 ~~~js
-gantt.templates.task_text = function(start, end, task){  
-  return task.text+" <button>Text</button>";    
-};
+gantt.templates.task_text = (start, end, task) => `${task.text} <button>Text</button>`;
 ~~~
 
 <img src="desktop/custom_elements_task_bars.png">
@@ -393,17 +377,18 @@ gantt.templates.task_text = function(start, end, task){
 You can set additional properties in the task object configuration to define a custom color for a task. They are: **color**, **textColor** and **progressColor**.
 
 ~~~js
-var tasks = {
-  data:[
-     {id:1, text:"Project #1", start_date:"01-04-2013", duration:18, color:"red"},
-     {id:2, text:"Task #1", start_date:"02-04-2013", 
-        duration:8, color:"blue", parent:1}
-   ]
+const data = {
+	tasks: [
+		{ id: 1, text: "Task #1", start_date: "01-04-2026", duration: 2, color:"red" },
+		{ id: 2, text: "Task #2", start_date: "02-04-2026", duration: 3, color:"blue" }
+	]
 };
+
 gantt.init("gantt_here");
-gantt.parse(tasks);
- 
-gantt.getTask(1).color = "red"
+gantt.parse(data);
+
+const task = gantt.getTask(2);
+task.color = "red";
 ~~~
 
 Read the related section of the desktop/colouring_tasks.md#specifyingstyleinthepropertiesofataskobject article to get the details.
@@ -413,19 +398,21 @@ Read the related section of the desktop/colouring_tasks.md#specifyingstyleinthep
 You can define a set of predefined colors and specify them as options in the lightbox configuration to set the text or background color of a task:
 
 ~~~js
-var colors = [
-	{key:"", label:"Default"},
-	{key:"#4B0082",label:"Indigo"},
-	{key:"#FFFFF0",label:"Ivory"},
-	{key:"#F0E68C",label:"Khaki"}
+const colors = [
+	{ key: "", label: "Default" },
+	{ key: "#4B0082", label: "Indigo" },
+	{ key: "#FFFFF0", label: "Ivory" },
+	{ key: "#F0E68C", label: "Khaki" }
 	// more colors
 ];
 
 gantt.config.lightbox.sections = [
-	{name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-	{name:"priority", height:22, map_to:"color", type:"select", options:colors},
-	{name:"textColor", height:22, map_to:"textColor", type:"select", options:colors},
-	{name:"time", type:"duration", map_to:"auto"}
+	{ name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+	{ name: "priority", height: 22, map_to: "color", type: "select", options: colors },
+	{ name: "textColor", height: 22, map_to: "textColor", type: "select",
+		options: colors
+	},
+	{ name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
 
@@ -438,10 +425,16 @@ gantt.config.lightbox.sections = [
 The api/gantt_task_row_class_template.md template allows you to change the color of the rows of the timeline area (those lying behind the Gantt tasks).
 
 ~~~js
-gantt.templates.task_row_class = function(start, end, task){
-  if(task.id == 12)
-  	return "updColor";
-};
+<style>
+	.gantt-timeline__row--highlight {
+		background-color: #ffeb8a !important;
+	}
+</style>
+~~~
+
+~~~js
+gantt.templates.task_row_class = (start, end, task) =>
+	task.id === 3 ? "gantt-timeline__row--highlight" : "";
 ~~~
 
 <img src="desktop/styling_timeline_row.png">
@@ -458,18 +451,15 @@ class to the specified cells. For example, you can highlight weekends as in:
 
 ~~~js
 <style>
-	.weekend{
-		background: #f4f7f4;
-	}	
+	.gantt-timeline__cell--weekend {
+		background-color: #f4f7f4;
+	}
 </style>
 ~~~
 
 ~~~js
-gantt.templates.timeline_cell_class = function(item,date){
-	if(date.getDay()==0||date.getDay()==6){
-		return "weekend"
-	}
-};
+gantt.templates.timeline_cell_class = (task, date) =>
+	(date.getDay() === 0 || date.getDay() === 6) ? "gantt-timeline__cell--weekend" :"";
 ~~~
 
 <img src="desktop/styling_timeline_cells.png">
@@ -480,33 +470,19 @@ Read more on this topic in the article desktop/highlighting_time_slots.md.
 
 ###Showing external elements (baselines, deadlines, etc.)
 
-{{pronote This functionality is available in the PRO edition only.}}
+{{pronote This functionality is available only in the PRO edition. }}
 
 
 You can display additional elements, such as baseline or deadline markers in the Gantt. For this you need to create a new displayable layer via the api/gantt_addtasklayer.md method and place custom elements there.
 As a parameter, the method takes a function that takes a task object and returns either a DOM element that will be displayed, or *false* (the element for a task should be hidden):
 
 ~~~js
-gantt.addTaskLayer(function myNewElement(task) {
-    var el = document.createElement('div');
-    // your code
-    return el;
+gantt.addTaskLayer(function createTaskLayerElement(task) {
+	const layerElement = document.createElement('div');
+	// your code here
+	return layerElement;
 });
 ~~~
-
-Examples of external elements are:
-
-- baselines
-
-<img src="desktop/show_baselines.png">
-
-{{sample 04_customization/15_baselines.html}}
-
-- deadlines
-
-<img src="desktop/show_deadlines.png">
-
-{{sample 04_customization/14_deadline.html}}
 
 Read more about displaying external elements in Gantt in the article desktop/baselines.md.
 
@@ -523,9 +499,8 @@ Default tooltips are automatically displayed for tasks, once you activate the [t
 To set a custom text for tooltips, use the api/gantt_tooltip_text_template.md template:
 
 ~~~js
-gantt.templates.tooltip_text = function(start,end,task){
-    return "<b>Task:</b> "+task.text+"<br/><b>Duration:</b> " + task.duration;
-};
+gantt.templates.tooltip_text = (start, end, task) =>
+	`<b>Task:</b> ${task.text}<br/><b>Duration:</b> ${task.duration}`;
 ~~~
 
 More information about tooltips in Gantt is given in the article desktop/tooltips.md.
@@ -540,9 +515,7 @@ You can change the style of the dependency links via the related desktop/depende
 You can change the color of the dependency line via the api/gantt_link_class_template.md template.
 
 ~~~js
-gantt.templates.link_class = function(link){
-    return "";
-};
+gantt.templates.link_class = (link) => "";
 ~~~
 
 <img src="desktop/coloring_links.png">
@@ -557,19 +530,19 @@ There is more information in the related article desktop/colouring_lines.md.
 You can also set a custom color for a dependency link by specifying the **color** property in the link object:
 
 ~~~js
-var tasks = {
-  data:[
-     // tasks configuration
-  ],
-  links:[
-     {id:1, source:1, target:2, type:"1", color:"red"}, 
-     {id:2, source:2, target:3, type:"0", color:"blue"}
-  ]
+const data = {
+	tasks: [
+		// tasks configuration
+	],
+	links: [
+		{ id: 1, source: 1, target: 2, type: "1", color: "red" },
+		{ id: 2, source: 2, target: 3, type: "0", color: "blue" }
+	]
 };
- 
+
 gantt.init("gantt_here");
-gantt.parse(tasks);
- 
+gantt.parse(data);
+
 gantt.getLink(2).color = "blue";
 ~~~
 
@@ -580,13 +553,13 @@ Read the related section of the desktop/colouring_lines.md#specifyingcolorinthep
 It is possible to modify the color of a link on hover via CSS:
 
 ~~~js
-.gantt_task_link:hover .gantt_line_wrapper div{
+.gantt_task_link:hover .gantt_line_wrapper div {
 	box-shadow: 0 0 5px 0 yellowgreen;
 	background: yellowgreen
 }
-  
+
 .gantt_task_link:hover .gantt_link_arrow_left,
-.gantt_task_link:hover .gantt_link_arrow_right{
+.gantt_task_link:hover .gantt_link_arrow_right {
 	border-left-color: yellowgreen !important;
 	border-right-color: yellowgreen !important;
 }
@@ -604,15 +577,17 @@ The api/gantt_drag_link_class_template.md template allows styling the popup that
 
 ~~~js
 <style>
-  .gantt_link_tooltip{color:red; background-color:yellow} 
-</style> 
+	.gantt_link_tooltip {
+		color: red;
+		background-color: yellow;
+	}
+</style>
 ~~~
 
 
 ~~~js
-gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
-    return "gantt_link_tooltip" ;
-};
+gantt.templates.drag_link_class = (from, from_start, to, to_start) =>
+	`gantt_link_tooltip`;
 ~~~
 
 <img src="desktop/styling_link_popup.png">
@@ -640,22 +615,18 @@ particular tasks as follows:
 
 ~~~js
 <style>
-  .updColor{
-  	background-color:#ffeb8a!important;
-  }
-  .updColor .gantt_cal_qi_title{
-  	background-color:#ffeb8a!important;
-  }
+	.quick-info-highlight {
+		background-color: #ffeb8a !important;
+	}
+	.quick-info-highlight .gantt_cal_qi_title {
+		background-color: #ffeb8a !important;
+	}
 </style>
 ~~~
 
 ~~~js
-gantt.templates.quick_info_class = function(start, end, task){ 
-  if(task.id == "12")
-    return "updColor";
-  
-  	return ""
-};
+gantt.templates.quick_info_class = (start, end, task) =>
+	task.id === "2" ? "quick-info-highlight" : "";
 ~~~
 
 <img src="desktop/styling_quick_info.png">
