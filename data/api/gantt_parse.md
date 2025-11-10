@@ -160,7 +160,7 @@ gantt.parse({
 
 The **collections** object allows loading any custom data. The properties can have any name, and the value should be an array that contains the collection items:
 
-- <span class=subproperty>**[collectionName: string]**</span> - (*[] | СollectionItem[]*) - an array that contains the collection items.
+- <span class=subproperty>**[collectionName: string]**</span> - (*[] | CollectionItem[]*) - an array that contains the collection items.
 
 The **СollectionItem** is an object that can have any properties. It has the following types for its properties:
 
