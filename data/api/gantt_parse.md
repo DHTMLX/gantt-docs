@@ -41,7 +41,7 @@ This is the list of expected properties:
 - <span class=subproperty>**links?**</span> - (*Link[]*) - the array with the link data
 - <span class=subproperty>**resources?**</span> - (*NewResourceItem[]*) - the array with the resource data
 - <span class=subproperty>**assignments?**</span> - (*NewAssignmentItem[]*) - the array with the assignment data
-- <span class=subproperty>**collections?**</span> - (*Сollections*) - the object that has the arrays with the custom data
+- <span class=subproperty>**collections?**</span> - (*Collections*) - the object that has the arrays with the custom data
 
 ~~~js
 gantt.parse({
@@ -162,7 +162,7 @@ The **collections** object allows loading any custom data. The properties can ha
 
 - <span class=subproperty>**[collectionName: string]**</span> - (*[] | CollectionItem[]*) - an array that contains the collection items.
 
-The **СollectionItem** is an object that can have any properties. It has the following types for its properties:
+The **CollectionItem** is an object that can have any properties. It has the following types for its properties:
 
 - <span class=subproperty>**[itemProperty: string]**</span> - (*any*) - any custom property of the collection item.
 
