@@ -116,9 +116,38 @@ A custom sorting function is called for a pair of task objects (a and b) and ret
 - **0** - the order of both objects doesn't change.
 
 
-3) sorting a column according to the values of a different field of the task by
-setting *sort* to that field 
+3) sorting a column according to the values of a different field of the task by setting *sort* to that field 
 
 ~~~js
 gantt.config.columns[1].sort = 'other_field';
 ~~~
+
+
+Sorting by several fields
+---------------------
+
+You can sort the grid of the Gantt chart by several properties (fields) by using a custom sorting function. 
+In the following example, data is sorted by the *duration* and *priority* fields:
+
+~~~js
+let sortDirection = -1
+function customSort() {
+    sortDirection *= -1;
+    gantt.sort(function (task1, task2) {
+        // sort by priority
+        if (task1.duration == task2.duration) {
+            return (task1.priority - task2.priority) * sortDirection
+        }
+        // sort by duration
+        return (task1.duration - task2.duration) * sortDirection
+    });
+}
+~~~
+
+{{editor	https://snippet.dhtmlx.com/upu86azw		Sort by several properties (fields) with a custom sort function}}
+
+- In case the duration of the tasks is the same, sorting by this field isn't applied, and the tasks are sorted by the *priority* field. 
+- If the duration of the tasks is different, the grid will be sorted by the *duration* property.
+
+
+
