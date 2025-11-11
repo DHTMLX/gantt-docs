@@ -7,7 +7,7 @@ How to Start with dhtmlxGantt
 Here's the overview of guides which tell you about basic Gantt initialization with popular front-end frameworks.<br><br>
 
 <table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
-	<tbody>
+  <tbody>
     <tr>
         <td>
 		    <span style="font-size:15px;">desktop/initializing_gantt_chart.md</span>
@@ -30,12 +30,12 @@ Here's the overview of guides which tell you about basic Gantt initialization wi
     </tr>
     <tr>
         <td>
-		    <span style="font-size:15px;">desktop/howtostart_react.md</span>  
+            <span style="font-size:15px;">desktop/howtostart_react.md</span>  
             <br>
             A detailed tutorial which dwells on Gantt chart implementation with React. 
         </td>
         <td>
-        	<a href="desktop/howtostart_react.md"><img src="howtostart_frontend_frameworks/gantt_react.png"></a>
+            <a href="desktop/howtostart_react.md"><img src="howtostart_frontend_frameworks/gantt_react.png"></a>
         </td>
     </tr>
     <tr>
@@ -47,7 +47,7 @@ Here's the overview of guides which tell you about basic Gantt initialization wi
         <td>
             <a href="desktop/howtostart_vue.md"><img src="howtostart_frontend_frameworks/gantt_vue.png"></a>
         </td>
-        </tr>
+    </tr>
     <tr>
     	<td>
     		<span style="font-size:15px;">desktop/howtostart_svelte.md</span>
@@ -57,10 +57,9 @@ Here's the overview of guides which tell you about basic Gantt initialization wi
         <td>
             <a href="desktop/howtostart_svelte.md"><img src="howtostart_frontend_frameworks/gantt_svelte.png"></a>
         </td>
-        </tr>
-    </tbody>
+    </tr>
+  </tbody>
 </table>
-
 
 
 <h2>How to Start with Gantt on Server Side</h2>
@@ -74,7 +73,7 @@ You can watch the video guide that shows how to create a Gantt chart on the page
 Below you will find a brief overview of the guides which tell you about basic Gantt initialization on different server-side platforms to suit all tastes and preferences.<br>
 
 <table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
-	<tbody>
+  <tbody>
     <tr>
         <td>
 		    <span style="font-size:15px;">desktop/howtostart_dotnet_core.md</span>
@@ -114,7 +113,7 @@ Below you will find a brief overview of the guides which tell you about basic Ga
         <td>
             <a href="desktop/howtostart_php_laravel.md"><img src="desktop/how_to_start_laravel.png"></a>
         </td>
-        </tr>
+    </tr>
     <tr>
     	<td>
     		<span style="font-size:15px;">desktop/howtostart_php_slim4.md</span>
@@ -124,7 +123,7 @@ Below you will find a brief overview of the guides which tell you about basic Ga
         <td>
             <a href="desktop/howtostart_php_slim4.md"><img src="desktop/php_tutorial.png"></a>
         </td>
-        </tr>
+    </tr>
     <tr>
     	<td>
     		<span style="font-size:15px;">desktop/howtostart_python.md</span>
@@ -134,7 +133,7 @@ Below you will find a brief overview of the guides which tell you about basic Ga
         <td>
             <a href="desktop/howtostart_python.md"><img src="desktop/how_to_start_python.png"></a>
         </td>
-        </tr>
+    </tr>
     <tr>
         <td>
 		    <span style="font-size:15px;">desktop/howtostart_salesforce.md</span>
@@ -155,15 +154,15 @@ Below you will find a brief overview of the guides which tell you about basic Ga
         	<a href="desktop/howtostart_ruby.md"><img src="desktop/ruby_tutorial.png"></a>
         </td>
     </tr>
-    </tbody>
+  </tbody>
 </table>
 
 
 @index:
 - desktop/howtostart_angular.md
-- desktop/howtostart_react.md
 - desktop/howtostart_vue.md
 - desktop/howtostart_svelte.md
+- desktop/howtostart_react.md
 - desktop/howtostart_dotnet_core.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_nodejs.md

@@ -106,6 +106,8 @@ export const demoData = {
 };
 ~~~
 
+**Related article**: [dhtmlxReactGantt and Firebase Integration](web/react_gantt_firebase_integration.md)
+
 Binding Data
 --------------------
 
@@ -1136,3 +1138,4 @@ Next Steps
 
 @index:
 - web/react_configuration_props.md
+- web/react_gantt_firebase_integration.md
