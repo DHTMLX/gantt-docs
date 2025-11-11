@@ -111,7 +111,7 @@ removes tooltip. As a parameter the method takes:
 
 <h4 id="delayShow">gantt.ext.tooltips.delayShow()</h4> 
 
-Shows a tooltip after the delay set by api/gantt_tooltip_timeout_config.md. If the config is not set, a small default delay is used.
+shows a tooltip after the delay set by api/gantt_tooltip_timeout_config.md. If the config is not set, a small default delay is used.
 
 This method is **debounced**, meaning that repeated calls within the delay window reset the timer and the tooltip is shown only once.
 
@@ -122,7 +122,7 @@ As parameters the method takes:
 
 <h4 id="delayHide">gantt.ext.tooltips.delayHide()</h4> 
 
-Hides the currently displayed tooltip after a delay set by api/gantt_tooltip_hide_timeout_config.md. If the config is not set, a small default delay is used.
+hides the currently displayed tooltip after a delay set by api/gantt_tooltip_hide_timeout_config.md. If the config is not set, a small default delay is used.
 
 
 
