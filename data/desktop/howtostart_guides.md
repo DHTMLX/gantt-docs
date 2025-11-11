@@ -29,6 +29,16 @@ Here's the overview of guides which tell you about basic Gantt initialization wi
         </td>
     </tr>
     <tr>
+        <td>
+            <span style="font-size:15px;">desktop/howtostart_react.md</span>  
+            <br>
+            A detailed tutorial which dwells on Gantt chart implementation with React. 
+        </td>
+        <td>
+            <a href="desktop/howtostart_react.md"><img src="howtostart_frontend_frameworks/gantt_react.png"></a>
+        </td>
+    </tr>
+    <tr>
     	<td>
     		<span style="font-size:15px;">desktop/howtostart_vue.md</span>
             <br>            
@@ -49,33 +59,6 @@ Here's the overview of guides which tell you about basic Gantt initialization wi
         </td>
     </tr>
   </tbody>
-</table>
-
-<h2>How to Start with React Gantt</h2>
-
-<table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
-	<tbody>
-     <tr>
-        <td>
-            <span style="font-size:15px;">desktop/howtostart_react.md</span>  
-            <br>
-            A detailed tutorial which dwells on Gantt chart implementation with React. 
-        </td>
-        <td>
-            <a href="desktop/howtostart_react.md"><img src="howtostart_frontend_frameworks/gantt_react.png"></a>
-        </td>
-    </tr>
-    <tr>
-    	<td>
-    		<span style="font-size:15px;">desktop/react_gantt_firebase_integration.md</span>
-            <br>            
-            An extensive tutorial that describes how to provide real-time updates in React Gantt using Firebase Firestore. 
-        </td>
-        <td>
-            <a href="desktop/howtostart_vue.md"><img src="howtostart_frontend_frameworks/gantt_react.png"></a>
-        </td>
-    </tr>
-   </tbody>
 </table>
 
 
@@ -180,7 +163,6 @@ Below you will find a brief overview of the guides which tell you about basic Ga
 - desktop/howtostart_vue.md
 - desktop/howtostart_svelte.md
 - desktop/howtostart_react.md
-- desktop/react_gantt_firebase_integration.md
 - desktop/howtostart_dotnet_core.md
 - desktop/howtostart_dotnet.md
 - desktop/howtostart_nodejs.md
