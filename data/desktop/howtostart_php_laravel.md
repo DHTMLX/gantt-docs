@@ -21,6 +21,8 @@ You can have a look at the video guide that shows how to create a Gantt chart us
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/eu5R86a-9jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
+
 Step 1. Initializing a project
 -----------------------
 
@@ -44,6 +46,8 @@ At this step you should get a default Laravel page:
 
 <img src="desktop/how_to_start_laravel_blank_page.png"/>
 
+
+
 Step 2. Adding Gantt to the page
 -----------------------
 
@@ -56,24 +60,25 @@ Go to the *resources/views* folder and create a new view named *gantt.blade.php*
 ~~~html
 <!DOCTYPE html>
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
-    <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
-    <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet">
+	<script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
+	<link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet">
 
-    <style type="text/css">
-        html, body{
-            height:100%;
-            padding:0px;
-            margin:0px;
-            overflow: hidden;
-        }
-    </style>
+	<style type="text/css">
+		html,
+		body {
+			height: 100%;
+			padding: 0px;
+			margin: 0px;
+			overflow: hidden;
+		}
+	</style>
 </head>
 <body>
 <div id="gantt_here" style='width:100%; height:100%;'></div>
 <script type="text/javascript">
-    gantt.init("gantt_here");
+	gantt.init("gantt_here");
 </script>
 </body>
 ~~~
@@ -81,6 +86,8 @@ Go to the *resources/views* folder and create a new view named *gantt.blade.php*
 Here we've defined a simple HTML layout, added sources of dhtmlxGantt from [CDN](desktop/cdn_links_list.md) and initialized gantt using the api/gantt_init.md method.
 
 Note that we've also specified **100% height** for the document body and for the gantt container. Gantt will use the size of its container, so some initial sizes are required.
+
+
 
 ### Changing the default route
 
@@ -93,13 +100,15 @@ Go to *routes/web.php* and change the default route:
 <?php
 
 Route::get('/', function () {
-    return view('gantt');
+	return view('gantt');
 });
 ~~~
 
 Run the app again to make sure it did the trick:
 
 <img src="desktop/how_to_start_laravel_empty_gantt.png"/>
+
+
 
 Step 3. Creating models and migrations
 ---------------------
@@ -120,9 +129,8 @@ DB_USERNAME=root
 DB_PASSWORD=
 ~~~
 
-
-The next step is to create [model classes](https://laravel.com/docs/11.x/eloquent) and
-[migrations](https://laravel.com/docs/11.x/migrations). You can generate classes and migration files using the Artisan command:
+The next step is to create [model classes](https://laravel.com/docs/12.x/eloquent) and
+[migrations](https://laravel.com/docs/12.x/migrations). You can generate classes and migration files using the Artisan command:
 
 ~~~js
 php artisan make:model Task --migration
@@ -134,12 +142,13 @@ and
 php artisan make:model Link --migration
 ~~~
 
-After that find the migrations in the `database/migrations` folder and define a [database schema](https://laravel.com/docs/8.x/migrations#migration-structure). 
+After that find the migrations in the `database/migrations` folder and define a [database schema](https://laravel.com/docs/12.x/migrations#migration-structure). 
 You can find the database schema expected by the gantt [here](desktop/loading.md#databasestructure).
 
 The code for the Tasks table looks like this:
 
 {{snippet database/migrations/_create_tasks_table.php}}
+
 ~~~php
 <?php
 
@@ -172,6 +181,7 @@ class CreateTasksTable extends Migration
 Below you will find the code for the Links table:
 
 {{snippet database/migrations/_create_links_table.php}}
+
 ~~~php
 <?php
 
@@ -206,42 +216,72 @@ php artisan migrate
 ~~~
 
 While we're at it, we can generate some test data for our app. 
-Generate a [seeder](https://laravel.com/docs/11.x/seeding) class using the artisan command:
+Generate a [seeder](https://laravel.com/docs/12.x/seeding) class using the artisan command:
 
 ~~~php
 php artisan make:seeder TasksTableSeeder
 php artisan make:seeder LinksTableSeeder
 ~~~
 
-Now, create the *database/seeds* folder, open it and add some data to **TasksTableSeeder**:
+Now, open the *database/seeders* folder and add some data to **TasksTableSeeder**:
 
-{{snippet database/seeds/TasksTableSeeder.php}}
+{{snippet database/seeders/TasksTableSeeder.php}}
+
 ~~~php
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TasksTableSeeder extends Seeder
 {
-	public function run()
+	public function run(): void
 	{
+		DB::table('tasks')->truncate();
 		DB::table('tasks')->insert([
-			['id'=>1, 'text'=>'Project #1', 'start_date'=>'2017-04-01 00:00:00', 
+			['id'=>1, 'text'=>'Project #1', 'start_date'=>'2025-04-01 00:00:00', 
 				'duration'=>5, 'progress'=>0.8, 'parent'=>0],
-			['id'=>2, 'text'=>'Task #1', 'start_date'=>'2017-04-06 00:00:00', 
+			['id'=>2, 'text'=>'Task #1', 'start_date'=>'2025-04-06 00:00:00', 
 				'duration'=>4, 'progress'=>0.5, 'parent'=>1],
-			['id'=>3, 'text'=>'Task #2', 'start_date'=>'2017-04-05 00:00:00', 
+			['id'=>3, 'text'=>'Task #2', 'start_date'=>'2025-04-05 00:00:00', 
 				'duration'=>6, 'progress'=>0.7, 'parent'=>1],
-			['id'=>4, 'text'=>'Task #3', 'start_date'=>'2017-04-07 00:00:00', 
+			['id'=>4, 'text'=>'Task #3', 'start_date'=>'2025-04-07 00:00:00', 
 				'duration'=>2, 'progress'=>0, 'parent'=>1],
-			['id'=>5, 'text'=>'Task #1.1', 'start_date'=>'2017-04-05 00:00:00', 
+			['id'=>5, 'text'=>'Task #1.1', 'start_date'=>'2025-04-05 00:00:00', 
 				'duration'=>5, 'progress'=>0.34, 'parent'=>2],
-			['id'=>6, 'text'=>'Task #1.2', 'start_date'=>'2017-04-11 00:00:00', 
+			['id'=>6, 'text'=>'Task #1.2', 'start_date'=>'2025-04-11 00:00:00', 
 				'duration'=>4, 'progress'=>0.5, 'parent'=>2],
-			['id'=>7, 'text'=>'Task #2.1', 'start_date'=>'2017-04-07 00:00:00', 
+			['id'=>7, 'text'=>'Task #2.1', 'start_date'=>'2025-04-07 00:00:00', 
 				'duration'=>5, 'progress'=>0.2, 'parent'=>3],
-			['id'=>8, 'text'=>'Task #2.2', 'start_date'=>'2017-04-06 00:00:00', 
+			['id'=>8, 'text'=>'Task #2.2', 'start_date'=>'2025-04-06 00:00:00', 
 				'duration'=>4, 'progress'=>0.9, 'parent'=>3]
+		]);
+	}
+}
+~~~
+
+Then, do the same for **LinksTableSeeder**:
+
+{{snippet database/seeders/LinksTableSeeder.php}}
+
+~~~php
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class LinksTableSeeder extends Seeder
+{
+	public function run(): void
+	{
+		DB::table('links')->truncate();
+		DB::table('links')->insert([
+			['id' => 1, 'source' => 2, 'target' => 3, 'type' => 0],
+			['id' => 2, 'source' => 3, 'target' => 4, 'type' => 1]
 		]);
 	}
 }
@@ -249,15 +289,22 @@ class TasksTableSeeder extends Seeder
 
 And call table seeders from **DatabaseSeeder.php**:
 
-{{snippet database/seeds/DatabaseSeeder.php}}
+{{snippet database/seeders/DatabaseSeeder.php}}
+
 ~~~php
 <?php
 
+namespace Database\Seeders;
+
+use App\Models\Task;
+use App\Models\Link;
+use Database\Seeders\TasksTableSeeder;
+use Database\Seeders\LinksTableSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-	public function run()
+	public function run(): void
 	{
 		$this->call(TasksTableSeeder::class);
 		$this->call(LinksTableSeeder::class);
@@ -271,18 +318,21 @@ After that we can seed our database from the command line:
 php artisan db:seed
 ~~~
 
+
+
 ### Defining model classes
 
-The data is managed via the [Eloquent model](https://laravel.com/docs/11.x/eloquent) classes. We've already generated classes for tasks and links at the previous step.
+The data is managed via the [Eloquent model](https://laravel.com/docs/12.x/eloquent) classes. We've already generated classes for tasks and links at the previous step.
 They are ready to use and don't require any changes to work with gantt. 
 
 What we can do, however, is to add an **open** [attribute of the Task class](desktop/loading.md#dataproperties) to 
-[JSON response](https://laravel.com/docs/11.x/eloquent-serialization). It will make the project tree expanded when tasks are loaded to the client side. 
+[JSON response](https://laravel.com/docs/12.x/eloquent-serialization). It will make the project tree expanded when tasks are loaded to the client side. 
 Otherwise, all branches would be closed initially: 
 
 The Task model will look as in:
 
-{{snippet /app/Task.php }}
+{{snippet /app/Models/Task.php }}
+
 ~~~php
 <?php
 
@@ -302,7 +352,8 @@ class Task extends Model
 
 And the Link model doesn't need any changes:
 
-{{snippet /app/Link.php }}
+{{snippet /app/Models/Link.php }}
+
 ~~~php
 <?php
 
@@ -315,6 +366,8 @@ class Link extends Model
 }
 ~~~
 
+
+
 Step 4. Loading data
 -------------------
 
@@ -322,41 +375,78 @@ Once the database is created and the models are defined, we can load data into o
 The client side requires dates of [the following format](desktop/supported_data_formats.md#json), so let's create a controller with an action that produces such JSON:
 
 {{snippet app/Http/Controllers/GanttController.php}}
+
 ~~~php
 <?php
+
 namespace App\Http\Controllers;
-use App\Task;
-use App\Link;
+
+use Illuminate\Http\JsonResponse;
+use App\Models\Task;
+use App\Models\Link;
 
 class GanttController extends Controller
 {
-	public function get(){
-		$tasks = new Task();
-		$links = new Link();
+	public function get(): JsonResponse
+	{
+		$tasks = Task::all();
+		$links = Link::all();
 
 		return response()->json([
-			"data" => $tasks->all(),
-			"links" => $links->all()
+			"tasks" => $tasks,
+			"links" => $links
 		]);
 	}
 }
 ~~~
 
-And register a route, so the client could call this action. Note that we'll add the route to the [api.php routes file](https://laravel.com/docs/8.x/routing#basic-routing):
+And register a route, so the client could call this action. Note that we'll add the route to the [api.php routes file](https://laravel.com/docs/12.x/routing#basic-routing):
 
 {{snippet routes/api.php}}
+
 ~~~php
 <?php
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GanttController;
 
-Route::get('/data', 'GanttController@get');/*!*/
+Route::get('/data', [GanttController::class, 'get']); /*!*/
+~~~
+
+Now, let's configure Laravel to correctly load API routes.
+Create **RouteServiceProvider.php** by running the following command:
+
+~~~php
+php artisan make:provider RouteServiceProvider
+~~~
+
+Then update the file with the following content:
+
+{{snippet Providers/RouteServiceProvider.php}}
+
+~~~php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+	public function boot(): void
+	{
+		Route::prefix('api')
+		->middleware('api')
+		->group(base_path('routes/api.php'));
+	}
+}
 ~~~
 
 And finally, call this action from the view:
 
 {{snippet resources/views/gantt.blade.php }}
+
 ~~~js
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
 
@@ -374,6 +464,8 @@ If you check the app now, you should see that there are now tasks in our gantt c
 
 <img src="desktop/how_to_start_laravel_complete.png"/>
 
+
+
 Step 5. Saving changes
 -----------------------------------
 
@@ -384,9 +476,11 @@ You can find the format of requests and all the routes the gantt will use [here]
 
 What we need now is to define controllers that handle actions on both models, create routes for them and enable data saving on the client side.
 
+
+
 ###Adding controllers
 
-Let's start with controllers. We'll create one RESTful [resource controller](https://laravel.com/docs/11.x/controllers) for each model. 
+Let's start with controllers. We'll create one RESTful [resource controller](https://laravel.com/docs/12.x/controllers) for each model. 
 It will contain methods for adding/deleting and updating the model. 
 
 ####Controller for tasks
@@ -394,68 +488,65 @@ It will contain methods for adding/deleting and updating the model.
 {{snippet app/Http/Controllers/TaskController.php}}
 ~~~php
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Task;
+use App\Models\Task;
 
 class TaskController extends Controller
 {
-	public function store(Request $request){
+	public function store(Request $request)
+	{
+		$data = $request->only(['text', 'start_date', 'duration', 'parent']);
+		$data['progress'] = $request->input('progress', 0);
 
-		$task = new Task();
-
-		$task->text = $request->text;
-		$task->start_date = $request->start_date;
-		$task->duration = $request->duration;
-		$task->progress = $request->has("progress") ? $request->progress : 0;
-		$task->parent = $request->parent;
-
-		$task->save();
+		$task = Task::create($data);
 
 		return response()->json([
-			"action"=> "inserted",
-			"tid" => $task->id
+			'action' => 'inserted',
+			'tid' => $task->id,
 		]);
 	}
 
-	public function update($id, Request $request){
-		$task = Task::find($id);
+	public function update(Request $request, $id)
+	{
+		$task = Task::findOrFail($id);
 
-		$task->text = $request->text;
-		$task->start_date = $request->start_date;
-		$task->duration = $request->duration;
-		$task->progress = $request->has("progress") ? $request->progress : 0;
-		$task->parent = $request->parent;
+		$data = $request->only(['text', 'start_date', 'duration', 'parent']);
+		$data['progress'] = $request->input('progress', 0);
 
-		$task->save();
+		$task->update($data);
 
 		return response()->json([
-			"action"=> "updated"
+			'action' => 'updated',
 		]);
 	}
 
-	public function destroy($id){
-		$task = Task::find($id);
+	public function destroy($id)
+	{
+		$task = Task::findOrFail($id);
 		$task->delete();
 
 		return response()->json([
-			"action"=> "deleted"
+			'action' => 'deleted',
 		]);
 	}
 }
 ~~~
 
-And a [route](https://laravel.com/docs/11.x/controllers#resource-controllers) for it:
+And a [route](https://laravel.com/docs/12.x/controllers#resource-controllers) for it:
 
 {{snippet routes/api.php}}
 ~~~php
 <?php
- 
-use Illuminate\Http\Request;
- 
-Route::get('/data', 'GanttController@get');
-Route::resource('task', 'TaskController');/*!*/
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GanttController;
+use App\Http\Controllers\TaskController;
+
+Route::get('/data', [GanttController::class, 'get']);
+Route::resource('task', TaskController::class); /*!*/
 ~~~
 
 A couple of notes regarding this code:
@@ -467,53 +558,48 @@ Many request parameters are optional, which means that if a client-side task doe
 
 Now let's implement the same for a LinkController.
 
+
+
 ####Controller for links
 
 {{snippet app/Http/Controllers/LinkController.php}}
 ~~~php
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Link;
+use App\Models\Link;
 
 class LinkController extends Controller
 {
-	public function store(Request $request){
-		$link = new Link();
-
-		$link->type = $request->type;
-		$link->source = $request->source;
-		$link->target = $request->target;
-
-		$link->save();
+	public function store(Request $request)
+	{
+		$link = Link::create($request->only(['type', 'source', 'target']));
 
 		return response()->json([
-			"action"=> "inserted",
-			"tid" => $link->id
+			'action' => 'inserted',
+			'tid' => $link->id,
 		]);
 	}
 
-	public function update($id, Request $request){
-		$link = Link::find($id);
-
-		$link->type = $request->type;
-		$link->source = $request->source;
-		$link->target = $request->target;
-
-		$link->save();
+	public function update(Request $request, $id)
+	{
+		$link = Link::findOrFail($id);
+		$link->update($request->only(['type', 'source', 'target']));
 
 		return response()->json([
-			"action"=> "updated"
+			'action' => 'updated',
 		]);
 	}
 
-	public function destroy($id){
-		$link = Link::find($id);
+	public function destroy($id)
+	{
+		$link = Link::findOrFail($id);
 		$link->delete();
 
 		return response()->json([
-			"action"=> "deleted"
+			'action' => 'deleted',
 		]);
 	}
 }
@@ -525,12 +611,17 @@ And its routes:
 ~~~php
 <?php
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GanttController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\LinkController;
 
-Route::get('/data', 'GanttController@get');
-Route::resource('task', 'TaskController');
-Route::resource('link', 'LinkController'); /*!*/
+Route::get('/data', [GanttController::class, 'get']);
+Route::resource('task', TaskController::class);
+Route::resource('link', LinkController::class); /*!*/
 ~~~
+
+
 
 ###Enabling data saving on the client side
 
@@ -539,14 +630,13 @@ Finally, we will [configure the client side](desktop/server_side.md#technique) t
 {{snippet resources/views/gantt.blade.php }}
 ~~~js
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
-    
 gantt.init("gantt_here");
-    
 gantt.load("/api/data");
-    
-var dp = new gantt.dataProcessor("/api");/*!*/
-dp.init(gantt);/*!*/
-dp.setTransactionMode("REST");/*!*/
+
+const dp = gantt.createDataProcessor({ /*!*/
+	url: "/api", /*!*/
+	mode: "REST" /*!*/
+}); /*!*/
 ~~~
 
 Now you have a fully interactive Gantt chart with the ability to view, add, update and delete tasks and links.
@@ -554,6 +644,8 @@ Now you have a fully interactive Gantt chart with the ability to view, add, upda
 <img src="desktop/how_to_start_laravel_crud.png"/>
 
 Please check more of [our guides](desktop/guides.md) for more features of dhtmlxGantt.
+
+
 
 Storing the order of tasks
 ------------------
@@ -574,6 +666,8 @@ gantt.config.order_branch_free = true;/*!*/
 
 gantt.init("gantt_here");
 ~~~
+
+
 
 ###Enable tasks reordering on the server
 
@@ -640,18 +734,20 @@ After that we need to update CRUD defined in our controllers.
 ~~~php
 <?php
 namespace App\Http\Controllers;
-use App\Task;
-use App\Link;
+use Illuminate\Http\JsonResponse;
+use App\Models\Task;
+use App\Models\Link;
 
 class GanttController extends Controller
 {
-	public function get(){
-		$tasks = new Task();
-		$links = new Link();
+	public function get(): JsonResponse
+	{
+		$tasks = Task::orderBy('sortorder')->get(); /*!*/
+		$links = Link::all();
 
 		return response()->json([
-			"data" => $tasks->orderBy('sortorder')->get(),/*!*/
-			"links" => $links->all()
+			"tasks" => $tasks,
+			"links" => $links
 		]);
 	}
 }
@@ -660,21 +756,17 @@ class GanttController extends Controller
 
 {{snippet app/Http/Controllers/TaskController.php}}
 ~~~php
-public function store(Request $request){
-	$task = new Task();
+public function store(Request $request)
+{
+	$data = $request->only(['text', 'start_date', 'duration', 'parent']);
+	$data['progress'] = $request->input('progress', 0);
+	$data['sortorder'] = Task::max('sortorder') + 1;
 
-	$task->text = $request->text;
-	$task->start_date = $request->start_date;
-	$task->duration = $request->duration;
-	$task->progress = $request->has("progress") ? $request->progress : 0;
-	$task->parent = $request->parent;
-	$task->sortorder = Task::max("sortorder") + 1;/*!*/
-
-	$task->save();
+	$task = Task::create($data);
 
 	return response()->json([
-		"action"=> "inserted",
-		"tid" => $task->id
+		'action' => 'inserted',
+		'tid' => $task->id,
 	]);
 }
 ~~~
@@ -683,50 +775,56 @@ public function store(Request $request){
 
 {{snippet app/Http/Controllers/TaskController.php}}
 ~~~php
-public function update($id, Request $request){
-	$task = Task::find($id);
+public function update(Request $request, $id)
+{
+	$task = Task::findOrFail($id);
 
-	$task->text = $request->text;
-	$task->start_date = $request->start_date;
-	$task->duration = $request->duration;
-	$task->progress = $request->has("progress") ? $request->progress : 0;
-	$task->parent = $request->parent;
-	
-	$task->save();
-	
-	if($request->has("target")){/*!*/
-		$this->updateOrder($id, $request->target);/*!*/
-	}/*!*/
+	$data = $request->only(['text', 'start_date', 'duration', 'parent']);
+	$data['progress'] = $request->input('progress', 0);
+
+	$task->update($data);
+
+	if ($request->has('target')) {
+		$this->updateOrder($id, $request->input('target'));
+	}
 
 	return response()->json([
-		"action"=> "updated"
+		'action' => 'updated',
 	]);
 }
 
-private function updateOrder($taskId, $target){
+private function updateOrder($taskId, $target)
+{
 	$nextTask = false;
 	$targetId = $target;
 
-	if(strpos($target, "next:") === 0){
-		$targetId = substr($target, strlen("next:"));
+	if (str_starts_with($target, 'next:')) {
+		$targetId = substr($target, strlen('next:'));
 		$nextTask = true;
 	}
 
-	if($targetId == "null")
+	if ($targetId === 'null') {
 		return;
+	}
 
-	$targetOrder = Task::find($targetId)->sortorder;
-	if($nextTask)
+	$targetTask = Task::find($targetId);
+	if (!$targetTask) {
+		return;
+	}
+
+	$targetOrder = $targetTask->sortorder;
+	if ($nextTask) {
 		$targetOrder++;
+	}
 
-	Task::where("sortorder", ">=", $targetOrder)->increment("sortorder");
+	Task::where('sortorder', '>=', $targetOrder)->increment('sortorder');
 
 	$updatedTask = Task::find($taskId);
 	$updatedTask->sortorder = $targetOrder;
 	$updatedTask->save();
 }
-
 ~~~
+
 
 
 Application security
@@ -735,11 +833,14 @@ Application security
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](desktop/app_security.md).
 
 
+
 Trouble shooting
 -----------------
 
 In case you've completed the above steps to implement Gantt integration with PHP but Gantt doesn't render tasks and links on a page, have a look at the desktop/troubleshooting.md article. It describes 
 the ways of identifying the roots of the problems.
+
+
 
 What's next
 ------------

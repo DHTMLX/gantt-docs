@@ -20,6 +20,63 @@ Migration from Older Versions
 	}
 </style>
 
+9.0 -> 9.1
+-------------
+
+The v9.1 does not introduce breaking changes but several configuration options have been **deprecated** and 
+[migration to the new unified format](#autoscheduling) is recommended.
+Also note that the [previously deprecated **subscales** configuration option](#subscales) has been deleted.
+
+### Unified auto scheduling configuration {#autoscheduling}
+
+Multiple properties that previously controlled desktop/auto_scheduling.md behavior have been deprecated in favor of the unified api/gantt_auto_scheduling_config.md configuration object.
+
+~~~js
+// before v9.1
+gantt.config.auto_scheduling = true;
+gantt.config.auto_scheduling_compatibility = true;
+gantt.config.auto_scheduling_strict = true;
+gantt.config.auto_scheduling_initial = false;
+
+// since v9.1
+gantt.config.auto_scheduling = {
+    enabled: true,
+    apply_constraints: false,
+    gap_behavior: "compress",
+    schedule_on_parse: false
+};
+~~~
+
+The deprecated properties continue working for backward compatibility, but switching to the new object format is recommended.
+
+The following options were deprecated:
+
+- api/gantt_auto_scheduling_initial_config.md
+- api/gantt_auto_scheduling_compatibility_config.md
+- api/gantt_auto_scheduling_descendant_links_config.md
+- api/gantt_auto_scheduling_move_projects_config.md
+- api/gantt_auto_scheduling_project_constraint_config.md
+- api/gantt_auto_scheduling_strict_config.md
+- api/gantt_auto_scheduling_use_progress_config.md
+
+**Mapping of deprecated configs to the unified object**
+
+
+- `gantt.config.auto_scheduling_initial` -> `schedule_on_parse`
+- `gantt.config.auto_scheduling_descendant_links` -> `descendant_links`
+- `gantt.config.auto_scheduling_move_projects` -> `move_projects`
+- `gantt.config.auto_scheduling_project_constraint` -> `project_constraint`
+- `gantt.config.auto_scheduling_use_progress` -> `use_progress`
+- `gantt.config.auto_scheduling_compatibility = true` -> `apply_constraints: false`
+- `gantt.config.auto_scheduling_compatibility = false` -> `apply_constraints: true`
+- `gantt.config.auto_scheduling_strict = true` -> `gap_behavior: "compress"`
+- `gantt.config.auto_scheduling_strict = false` -> `gap_behavior: "preserve"`
+
+### The obsolete **subscales** configuration option is deleted {#subscales}
+
+Pay attention that the **subscales** configuration option [deprecated in v6.2](#timescalesettings) has been deleted in v9.1.
+
+
 8.0 -> 9.0
 -------------
 
@@ -519,7 +576,7 @@ gantt.config.static_background_cells = false;
 ~~~
 
 
-### Time scale settings
+### Time scale settings {#timescalesettings}
 
 Configuration of time scale has been simplified. Instead of specifying a bunch of scale settings for each scale separately, now you should use just one configuration option api/gantt_scales_config.md that will contain 
 a number of scale objects with settings for them.

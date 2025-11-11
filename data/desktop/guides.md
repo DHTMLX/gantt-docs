@@ -113,7 +113,6 @@ Check the [features available in the Standard and PRO versions](desktop/editions
                     <li>desktop/configuring_time_scale.md </li>
                     <li>desktop/zooming.md</li>
                     <li>desktop/highlighting_time_slots.md</li>
-                    <li>desktop/second_scale.md</li>
                     <li>desktop/dynamic_scale.md</li>
                     <li>desktop/custom_scale.md</li>
                     <li>desktop/markers.md</li>

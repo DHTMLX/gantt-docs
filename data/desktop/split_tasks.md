@@ -92,6 +92,37 @@ gantt.config.open_split_tasks = true;
 
 ![Expanding split task](desktop/expand_split_task.png)
 
+## Per-child placement of split subtasks
+
+By default, split subtasks are rendered inline on the parent row when the parent is collapsed and are moved to subrows when the parent row is expanded. 
+You can control this behavior per child with the **split_placement** property of a task object by using the necessary mode of splitting tasks depending on the state of the parent row:
+
+- when the parent row is collapsed:
+	- `split_placement: "auto" (default)` - a subtask is rendered on the parent row
+	- `split_placement: "inline"` - a subtask is rendered on the parent row
+    - `split_placement: "subrow"` - a subtask is not visible
+- when the parent row is expanded: 
+	- `split_placement: "auto" (default)` - a subtask is rendered as a subrow
+    - `split_placement: "inline"` - a subtask is rendered on the parent row
+    - `split_placement: "subrow"` - a subtask is rendered as a subrow
+
+~~~js
+// the parent row is expanded on rendering
+{ id: 10, text: "Creative Production", parent: 1, render: "split", 
+	start_date: "01-04-2025", duration: 35, open: true },
+// the subtask is rendered on the parent row
+{ id: 11, text: "Photo Shoot", parent: 10, start_date: "03-04-2025", 
+    duration: 3,  split_placement: "inline" },
+// the subtask is rendered as a subrow
+{ id: 12, text: "Video Editing", parent: 10, start_date: "08-04-2025", 
+    duration: 10, split_placement: "subrow" },
+// the subtask is rendered on the parent row (default)
+{ id: 13, text: "Copywriting", parent: 10, start_date: "04-04-2025", 
+	duration: 7 } 
+~~~
+
+{{sample 04_customization/26_custom_child_split_tasks.html}}
+
 ## Filtering split tasks
 
 To filter the subtasks of the split task rendered on the Gantt chart, apply the api/gantt_onbeforesplittaskdisplay_event.md event and return:
@@ -127,7 +158,8 @@ You can change the color of the bar of the parent item in the same way as you ca
 }
 ~~~
 
-<br>
+{{editor	https://snippet.dhtmlx.com/svgo5vfn		Hide transparent parent bar of the split tasks}}
+
 When you have only one split task, the summary item (type=“project”) becomes invisible because it is completely covered by the split task. If there are no split-subtasks, the summary item has a default date and duration.
 
 ### Styling separate split tasks

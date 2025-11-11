@@ -24,7 +24,13 @@ gantt.init("gantt_here");
 By default, links from parent tasks (projects) to their children can't be created.
 
 @changelog:
-added in version 4.0
+- the property has been deprecated in v9.1
+- added in v4.0
+
+
+
+@deprecated: The property has been deprecated in v9.1, use the `descendant_links` property of api/gantt_auto_scheduling_config.md#descendantlinks instead.
+
 
 @related:
 desktop/auto_scheduling.md

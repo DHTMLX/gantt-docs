@@ -194,7 +194,7 @@ gantt.ext.tooltips.detach(`[${gantt.config.task_attribute}]:not(.gantt_task_row)
 ~~~js
 gantt.ext.tooltips.tooltipFor({
 	selector: `.gantt_grid [${gantt.config.task_attribute}]`,
-	html: (event: MouseEvent) => {
+	html: (event) => {
 		if (gantt.config.touch && !gantt.config.touch_tooltip) {
 			return;
 		}

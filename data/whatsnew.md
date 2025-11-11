@@ -10,6 +10,53 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.1
+----------
+<span class='release_date'>November 5, 2025. Minor update</span>
+
+### Breaking Changes
+
+This update brings some changes in the structure of the Gantt package and behavior of the functionality. Make sure to check the 
+[Migration notes](migrating.md#9091) to be on the safe side.
+
+### New Functionality
+
+- [Multi-user backend](desktop/multiuser_live_updates.md) module for real-time updates is added
+- [Remote updates API](desktop/multiuser_live_updates.md#remoteupdatesapi) for managing data synchronization in real time is added
+- New [Resource Assignments control](desktop/resource_assignments.md) is introduced to extend the functionality of the [Resources](desktop/resources.md) control
+- The ability to [display tasks in Day/Week scale](desktop/configuring_time_scale.md#workhourawaretaskbarsrenderingindayweekscales) 
+based on actual working hours instead of the fixed 24-hour period
+- The ability to [render split subtasks depending on the state of the parent row](desktop/split_tasks.md#perchildplacementofsplitsubtasks)
+
+
+### Updates
+
+- Ability to fix the size of [Timeline cells](desktop/configuring_time_scale.md#fixedcolumnwidth) is added
+- Support for specifying [dates in the calendar configuration](api/gantt_addcalendar.md) is added
+- A [configuration object](api/gantt_auto_scheduling_config.md) for [Auto Scheduling](desktop/auto_scheduling.md) to simplify setup is added
+- Improved touch screen support for Windows devices is added
+- The obsolete **subscales** API is removed
+
+### Fixes
+
+- Fix the issue where api/gantt_exporttoexcel.md with `visual:true` and custom data failed when the timeline was hidden
+- Fix the issue where api/gantt_exporttopdf.md with `additional_settings.slice_archive` setting caused incomplete display of Gantt
+- Prevent [unscheduled tasks](desktop/unscheduled_tasks.md) from being included in Excel exports
+- Add support for exporting [split tasks](desktop/split_tasks.md) in Excel output
+- Fix the incorrect display of the [Resource Histogram](desktop/resource_management.md#resourceviewpanel) after resizing
+- Fix the issue with tasks overlapping on changing the zoom level
+
+
+9.0.15
+---------------
+<span class='release_date'>September 19, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where Gantt ignored the weekday configuration of `customWeeks` when set via the [setWorkTime](api/gantt_setworktime.md) method
+- Improve support for [Shadow DOM](https://html.spec.whatwg.org/multipage/custom-elements.html) inside elements of Gantt
+- Fix the [React Gantt](web/react.md) issue where multiple component instances caused duplicated templates
+
 9.0.14
 ---------------
 <span class='release_date'>July 31, 2025. Bugfix release</span>

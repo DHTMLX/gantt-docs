@@ -51,7 +51,7 @@ The Gantt component allows exporting links, tasks and resources into MS Project.
 
 To export data from the Gantt chart to MS Project, do the following:
 
-- To use the online export service, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
+- To use the export/import functionality, enable the <b>export_api</b> plugin via the api/gantt_plugins.md method:
 
 ~~~js
 gantt.plugins({
@@ -59,7 +59,9 @@ gantt.plugins({
 });
 ~~~
 
-{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the online export service, e.g.:
+It allows you to use either the online export service or a local export module.
+
+{{note If you use the Gantt version older than 8.0, you need to include the **https://export.dhtmlx.com/gantt/api.js** on your page to enable the export functionality, e.g.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>

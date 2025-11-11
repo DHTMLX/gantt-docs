@@ -41,6 +41,12 @@ If you set the config to *true*, the child tasks (except for tasks with their ow
 - api/gantt_oncircularlinkerror_event.md
 - api/gantt_onautoschedulecircularlink_event.md
 
-@changelog: added in v8.0
+@changelog: 
+
+- the property has been deprecated in v9.1
+- added in v8.0
+
+@deprecated: The property has been deprecated in v9.1, use the `project_constraint` property of api/gantt_auto_scheduling_config.md#projectconstraint instead.
+
 
 @edition:pro

@@ -15,9 +15,9 @@ unsetWorkTime
 gantt.config.work_time = true;
  
 // changes the working time of working days from ["8:00-17:00"] to ["9:00-18:00"]
-gantt.setWorkTime({ hours:["9:00-18:00"] });
+gantt.setWorkTime({ hours: ["9:00-18:00"] });
 // unsets the working time
-gantt.unsetWorkTime({ hours:["9:00-18:00"] });
+gantt.unsetWorkTime({ hours: ["9:00-18:00"] });
 
 @template:	api_method
 @descr:
@@ -51,32 +51,36 @@ The configuration object can contain the following properties:
     <tr>
 		<td colspan=2 style="text-align:left !important; ">
 ~~~js
-//makes all Mondays day-offs
-gantt.unsetWorkTime({ day:1, hours:false }); 
+// unsets working hours for Mondays 
+gantt.unsetWorkTime({ day: 1, hours: false }); 
 ~~~
 		</td>
 	</tr>
 	<tr>
 		<td rowspan=2><b id="date">date</b></td>
-        <td> a specific date to set as a working day or day off</td>
+        <td> a specific date to set/unset working hours for</td>
     </tr>
     <tr>
 		<td colspan=2 style="text-align:left !important; ">
 ~~~js
-//makes a specific date a day-off
-gantt.unsetWorkTime({date:new Date(2013,0,1), hours:false})
+// unsets working hours for a specific date 
+gantt.unsetWorkTime({ 
+	date: new Date(2025, 11, 1), 
+	hours: false 
+});
 ~~~
 		</td>
 	</tr>
     <tr>
 		<td rowspan=2><b id="hours">hours</b></td>
-        <td> an array of working hours as 'from'-'to' pairs. <br><i>'false'</i> value sets a day-off, <i>'true' (default value)</i> applies the default hours (["8:00-17:00"])</td>
+        <td> an array of working hours as 'from'-'to' pairs. <br><i>'false'</i> value unsets working hours, 
+        <i>'true' (default value)</i> applies the default hours: (["8:00-17:00"])</td>
     </tr>
     <tr>
 		<td colspan=2 style="text-align:left !important; ">
 ~~~js
-//sets the working time for Fridays from 8:00 till 12:00
-gantt.unsetWorkTime({day : 5, hours : ["8:00-12:00"]});
+// unsets the working time for Fridays from 8:00 till 12:00
+gantt.unsetWorkTime({ day : 5, hours : ["8:00-12:00"] });
 ~~~
 		</td>
 	</tr>

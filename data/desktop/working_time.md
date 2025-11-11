@@ -866,4 +866,11 @@ gantt.batchUpdate(() => {
 
 {{editor	https://snippet.dhtmlx.com/wb8vc82p		Toggle working time settings and recalculate the task's end dates}}
 
+## Work-time based displaying of task bars in Day/Week scales
+
+Since v9.1 Gantt allows specifying the **`projection`** setting in the configuration of a task object. With this property, you can 
+set the position and size of task bars in the Day and Week scales based on the **working time**, instead of the 00:00-24:00 interval.
+
+Check the detailed description of **scale projection** possibilities [in the related guide](desktop/configuring_time_scale.md#workhourawaretaskbarsrenderingindayweekscales).
+
 
