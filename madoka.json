@@ -24,8 +24,7 @@
 	"export_config" :{
 		"search_root" : "./",
 		"samples_http": "./samples/",
-		"analytic": "<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->",
-		"discuss":"<div id='disqus_thread'></div><script type='text/javascript'>var disqus_shortname = 'dhxdocumentation';var disqus_developer = 1;(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>"
+		"analytic": "<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5M5RCSJ');</script><!-- End Google Tag Manager -->"
 	},
 	"chm_config" :{
 		"samples_http": "https://docs.dhtmlx.com/gantt/samples/",
