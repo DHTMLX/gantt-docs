@@ -20,12 +20,12 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 - Fix the issue in [React Gantt](web/react.md) where reloaded tasks did not have link IDs in their `$source` and `$target` properties
 - Fix the issue where Gantt opened the inline editor after pressing the **Meta** key
 - Fix the `%w` [date format](desktop/date_format.md) not working correctly in CSP production environments
-- Fix the issue that prevented [group tasks](api/gantt_groupby.md) from being displayed as [split tasks](desktop/split_tasks.md) when they have `render="split"` specified
-- Fix the disappearance of the resource grid when pressing the **Tab** key after editing a resource cell
+- Fix the issue that prevented [group tasks](api/gantt_groupby.md) from being displayed as [split tasks](desktop/split_tasks.md) when they had `render="split"` specified
+- Fix the issue with the resource grid disappearing on pressing the **Tab** key after editing a resource cell
 
 ### Updates 
 
-- Add support for **landscape** mode when using the [merge_pages](api/gantt_exporttopdf.md) parameter during export
+- Add support for the **landscape** mode when using the [merge_pages](api/gantt_exporttopdf.md) parameter during export
 - Allow configuring row and task bar height for [virtual tasks](api/gantt_groupby.md)
 
 
