@@ -10,6 +10,25 @@ What's New
 
 If your current version of dhtmlxGantt is older than 2.0, check migrating.md for details of updating.
 
+9.1.1
+---------------
+<span class='release_date'>December 12, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the error that occurred in [React Gantt](web/react.md) when the user provided `links` prop without the `tasks` prop
+- Fix the issue in [React Gantt](web/react.md) where reloaded tasks did not have link IDs in their `$source` and `$target` properties
+- Fix the issue where Gantt opened the inline editor after pressing the **Meta** key
+- Fix the `%w` [date format](desktop/date_format.md) not working correctly in CSP production environments
+- Fix the issue that prevented [group tasks](api/gantt_groupby.md) from being displayed as [split tasks](desktop/split_tasks.md) when they have `render="split"` specified
+- Fix the disappearance of the resource grid when pressing the **Tab** key after editing a resource cell
+
+### Updates 
+
+- Add support for **landscape** mode when using the [merge_pages](api/gantt_exporttopdf.md) parameter during export
+- Allow configuring row and task bar height for [virtual tasks](api/gantt_groupby.md)
+
+
 9.1
 ----------
 <span class='release_date'>November 5, 2025. Minor update</span>
