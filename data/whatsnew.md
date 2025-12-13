@@ -25,7 +25,6 @@ If your current version of dhtmlxGantt is older than 2.0, check migrating.md for
 
 ### Updates 
 
-- Add support for the **landscape** mode when using the [merge_pages](api/gantt_exporttopdf.md) parameter during export
 - Allow configuring row and task bar height for [virtual tasks](api/gantt_groupby.md)
 
 
