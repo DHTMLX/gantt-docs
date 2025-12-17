@@ -1,0 +1,62 @@
+{
+	"link.title.Development center": {
+		"message": "开发中心",
+		"description": "页脚中标题为开发中心的链接栏标题"
+	},
+	"link.title.Community": {
+		"message": "社区",
+		"description": "页脚中标题为社区的链接栏标题"
+	},
+	"link.title.Company": {
+		"message": "公司",
+		"description": "页脚中标题为公司的链接栏标题"
+	},
+	"link.item.label.Download Gantt": {
+		"message": "下载甘特图",
+		"description": "页脚链接标签为下载甘特图，链接到 https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml"
+	},
+	"link.item.label.Examples": {
+		"message": "示例",
+		"description": "页脚链接标签为示例，链接到 https://docs.dhtmlx.com/gantt/samples/"
+	},
+	"link.item.label.Blog": {
+		"message": "博客",
+		"description": "页脚链接标签为博客，链接到 https://dhtmlx.com/blog/"
+	},
+	"link.item.label.Forum": {
+		"message": "论坛",
+		"description": "页脚链接标签为论坛，链接到 https://forum.dhtmlx.com/c/gantt/15"
+	},
+	"link.item.label.GitHub": {
+		"message": "GitHub",
+		"description": "页脚链接标签为GitHub，链接到 https://github.com/DHTMLX"
+	},
+	"link.item.label.Youtube": {
+		"message": "YouTube",
+		"description": "页脚链接标签为YouTube，链接到 https://www.youtube.com/user/dhtmlx"
+	},
+	"link.item.label.Facebook": {
+		"message": "Facebook",
+		"description": "页脚链接标签为Facebook，链接到 https://www.facebook.com/dhtmlx"
+	},
+	"link.item.label.Twitter": {
+		"message": "Twitter",
+		"description": "页脚链接标签为Twitter，链接到 https://twitter.com/dhtmlx"
+	},
+	"link.item.label.Linkedin": {
+		"message": "LinkedIn",
+		"description": "页脚链接标签为LinkedIn，链接到 https://www.linkedin.com/groups/3345009/"
+	},
+	"link.item.label.About us": {
+		"message": "关于我们",
+		"description": "页脚链接标签为关于我们，链接到 https://dhtmlx.com/docs/company.shtml"
+	},
+	"link.item.label.Contact us": {
+		"message": "联系我们",
+		"description": "页脚链接标签为联系我们，链接到 https://dhtmlx.com/docs/contact.shtml"
+	},
+	"link.item.label.Licensing": {
+		"message": "许可协议",
+		"description": "页脚链接标签为许可协议，链接到 https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing"
+	}
+}

@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "JavaScript Gantt Dokumentation",
+    "description": "Der Titel in der Navigationsleiste"
+  },
+  "logo.alt": {
+    "message": "DHTMLX JavaScript Gantt Logo",
+    "description": "Der Alt-Text des Logos in der Navigationsleiste"
+  },
+  "item.label.Examples": {
+    "message": "Beispiele",
+    "description": "Navigationsleisten-Element mit dem Label Beispiele"
+  },
+  "item.label.Forum": {
+    "message": "Forum",
+    "description": "Navigationsleisten-Element mit dem Label Forum"
+  },
+  "item.label.Support": {
+    "message": "Support",
+    "description": "Navigationsleisten-Element mit dem Label Support"
+  },
+  "item.label.Download": {
+    "message": "Download",
+    "description": "Navigationsleisten-Element mit dem Label Download"
+  }
+}

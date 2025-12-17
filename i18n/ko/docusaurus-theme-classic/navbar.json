@@ -1,0 +1,26 @@
+{
+	"title": {
+		"message": "자바스크립트 간트 문서",
+		"description": "내비게이션 바의 제목"
+	},
+	"logo.alt": {
+		"message": "DHTMLX 자바스크립트 간트 로고",
+		"description": "내비게이션 바 로고의 대체 텍스트"
+	},
+	"item.label.Examples": {
+		"message": "예시",
+		"description": "예시 라벨이 있는 내비게이션 바 항목"
+	},
+	"item.label.Forum": {
+		"message": "포럼",
+		"description": "포럼 라벨이 있는 내비게이션 바 항목"
+	},
+	"item.label.Support": {
+		"message": "지원",
+		"description": "지원 라벨이 있는 내비게이션 바 항목"
+	},
+	"item.label.Download": {
+		"message": "다운로드",
+		"description": "다운로드 라벨이 있는 내비게이션 바 항목"
+	}
+}

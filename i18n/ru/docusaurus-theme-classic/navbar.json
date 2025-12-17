@@ -1,0 +1,26 @@
+{
+	"title": {
+		"message": "Документация по JavaScript Gantt",
+		"description": "Заголовок в навигационной панели"
+	},
+	"logo.alt": {
+		"message": "Логотип DHTMLX JavaScript Gantt",
+		"description": "Альтернативный текст логотипа в навигационной панели"
+	},
+	"item.label.Examples": {
+		"message": "Примеры",
+		"description": "Элемент навигационной панели с меткой Примеры"
+	},
+	"item.label.Forum": {
+		"message": "Форум",
+		"description": "Элемент навигационной панели с меткой Форум"
+	},
+	"item.label.Support": {
+		"message": "Поддержка",
+		"description": "Элемент навигационной панели с меткой Поддержка"
+	},
+	"item.label.Download": {
+		"message": "Скачать",
+		"description": "Элемент навигационной панели с меткой Скачать"
+	}
+}

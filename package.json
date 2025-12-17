@@ -1,0 +1,51 @@
+{
+  "name": "docs-calendar",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids"
+  },
+  "dependencies": {
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
+    "@easyops-cn/docusaurus-search-local": "^0.48.4",
+    "@mdx-js/react": "^3.0.0",
+    "@svgr/webpack": "^5.5.0",
+    "clsx": "^1.1.1",
+    "docusaurus-gtm-plugin": "^0.0.2",
+    "prism-react-renderer": "^2.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.70.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "^3.9.2",
+    "@docusaurus/types": "^3.9.2",
+    "dhx-md-data-parser": "file:local_modules/dhx-md-data-parser",
+    "docusaurus-plugin-sass": "^0.2.5",
+    "webpack-cli": "^4.4.0"
+  },
+  "engines": {
+    "node": ">=18.0"
+  }
+}

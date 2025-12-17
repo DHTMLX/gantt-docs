@@ -1,0 +1,17 @@
+---
+title: "Configuring Scales"
+sidebar_label: "Configuring Scales"
+---
+
+Configuring Scales
+=======================
+
+![gantt_right](/img/gantt_right.png)
+
+- [Setting up Scale](guides/configuring-time-scale.md) 
+- [Zooming](guides/zooming.md)
+- [Highlighting  Time Slots](guides/highlighting-time-slots.md)
+- [Dynamic Change of Scale Settings](guides/dynamic-scale.md)
+- [Hiding Time Units in the Scale](guides/custom-scale.md)
+- [Adding Vertical Markers](guides/markers.md)
+- [RTL (Right-to-left) Mode](guides/rtl-mode.md)

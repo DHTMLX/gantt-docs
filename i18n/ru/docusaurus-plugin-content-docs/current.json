@@ -1,0 +1,158 @@
+{
+	"version.label": {
+		"message": "Текущая версия",
+		"description": "Метка текущей версии"
+	},
+	"sidebar.docs.category.Gantt API": {
+		"message": "Gantt API",
+		"description": "Метка категории Gantt API в боковой панели документации"
+	},
+	"sidebar.docs.category.Methods": {
+		"message": "Методы",
+		"description": "Метка категории Методы в боковой панели документации"
+	},
+	"sidebar.docs.category.Properties": {
+		"message": "Свойства",
+		"description": "Метка категории Свойства в боковой панели документации"
+	},
+	"sidebar.docs.category.Events": {
+		"message": "События",
+		"description": "Метка категории События в боковой панели документации"
+	},
+	"sidebar.docs.category.Templates": {
+		"message": "Шаблоны",
+		"description": "Метка категории Шаблоны в боковой панели документации"
+	},
+	"sidebar.docs.category.Others": {
+		"message": "Другие",
+		"description": "Метка категории Другие в боковой панели документации"
+	},
+	"sidebar.docs.category.ext": {
+		"message": "ext",
+		"description": "Метка категории ext в боковой панели документации"
+	},
+	"sidebar.docs.category.Guides": {
+		"message": "Руководства",
+		"description": "Метка категории Руководства в боковой панели документации"
+	},
+	"sidebar.docs.category.Creating Gantt Chart on a Page": {
+		"message": "Создание диаграммы Ганта на странице",
+		"description": "Метка категории Создание диаграммы Ганта на странице в боковой панели документации"
+	},
+	"sidebar.docs.category.Creating Gantt Chart on a Page.link.generated-index.title": {
+		"message": "Создание диаграммы Ганта на странице",
+		"description": "Заголовок сгенерированной страницы для категории Создание диаграммы Ганта на странице в боковой панели документации"
+	},
+	"sidebar.docs.category.How to Install dhtmlxGantt": {
+		"message": "Как установить dhtmlxGantt",
+		"description": "Метка категории Как установить dhtmlxGantt в боковой панели документации"
+	},
+	"sidebar.docs.category.How to Start with dhtmlxGantt": {
+		"message": "Как начать с dhtmlxGantt",
+		"description": "Метка категории Как начать с dhtmlxGantt в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Gantt Chart": {
+		"message": "Настройка диаграммы Ганта",
+		"description": "Метка категории Настройка диаграммы Ганта в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Gantt Chart.link.generated-index.title": {
+		"message": "Настройка диаграммы Ганта",
+		"description": "Заголовок сгенерированной страницы для категории Настройка диаграммы Ганта в боковой панели документации"
+	},
+	"sidebar.docs.category.Loading and Saving Tasks": {
+		"message": "Загрузка и сохранение задач",
+		"description": "Метка категории Загрузка и сохранение задач в боковой панели документации"
+	},
+	"sidebar.docs.category.Loading and Saving Tasks.link.generated-index.title": {
+		"message": "Загрузка и сохранение задач",
+		"description": "Заголовок сгенерированной страницы для категории Загрузка и сохранение задач в боковой панели документации"
+	},
+	"sidebar.docs.category.Exporting and Importing Data": {
+		"message": "Экспорт и импорт данных",
+		"description": "Метка категории Экспорт и импорт данных в боковой панели документации"
+	},
+	"sidebar.docs.category.Exporting and Importing Data.link.generated-index.title": {
+		"message": "Экспорт и импорт данных",
+		"description": "Заголовок сгенерированной страницы для категории Экспорт и импорт данных в боковой панели документации"
+	},
+	"sidebar.docs.category.Export Modules": {
+		"message": "Модули экспорта",
+		"description": "Метка категории Модули экспорта в боковой панели документации"
+	},
+	"sidebar.docs.category.Export Modules.link.generated-index.title": {
+		"message": "Модули экспорта",
+		"description": "Заголовок сгенерированной страницы для категории Модули экспорта в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Grid": {
+		"message": "Настройка сетки",
+		"description": "Метка категории Настройка сетки в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Grid.link.generated-index.title": {
+		"message": "Настройка сетки",
+		"description": "Заголовок сгенерированной страницы для категории Настройка сетки в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Scales": {
+		"message": "Настройка шкал",
+		"description": "Метка категории Настройка шкал в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Scales.link.generated-index.title": {
+		"message": "Настройка шкал",
+		"description": "Заголовок сгенерированной страницы для категории Настройка шкал в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Edit Form": {
+		"message": "Настройка формы редактирования",
+		"description": "Метка категории Настройка формы редактирования в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Edit Form.link.generated-index.title": {
+		"message": "Настройка формы редактирования",
+		"description": "Заголовок сгенерированной страницы для категории Настройка формы редактирования в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Lightbox Elements": {
+		"message": "Настройка элементов лайтбокса",
+		"description": "Метка категории Настройка элементов лайтбокса в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Tasks": {
+		"message": "Настройка задач",
+		"description": "Метка категории Настройка задач в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Tasks.link.generated-index.title": {
+		"message": "Настройка задач",
+		"description": "Заголовок сгенерированной страницы для категории Настройка задач в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Dependency Links": {
+		"message": "Настройка зависимостей",
+		"description": "Метка категории Настройка зависимостей в боковой панели документации"
+	},
+	"sidebar.docs.category.Configuring Dependency Links.link.generated-index.title": {
+		"message": "Настройка зависимостей",
+		"description": "Заголовок сгенерированной страницы для категории Настройка зависимостей в боковой панели документации"
+	},
+	"sidebar.docs.category.Styling": {
+		"message": "Стилизация",
+		"description": "Метка категории Стилизация в боковой панели документации"
+	},
+	"sidebar.docs.category.Styling.link.generated-index.title": {
+		"message": "Стилизация",
+		"description": "Заголовок сгенерированной страницы для категории Стилизация в боковой панели документации"
+	},
+	"sidebar.docs.category.Working with Dates": {
+		"message": "Работа с датами",
+		"description": "Метка категории Работа с датами в боковой панели документации"
+	},
+	"sidebar.docs.category.Common Features": {
+		"message": "Общие функции",
+		"description": "Метка категории Общие функции в боковой панели документации"
+	},
+	"sidebar.docs.category.Common Features.link.generated-index.title": {
+		"message": "Общие функции",
+		"description": "Заголовок сгенерированной страницы для категории Общие функции в боковой панели документации"
+	},
+	"sidebar.docs.category.Gantt for Frameworks": {
+		"message": "Диаграммы Ганта для фреймворков",
+		"description": "Метка категории Диаграммы Ганта для фреймворков в боковой панели документации"
+	},
+	"sidebar.docs.category.React Gantt": {
+		"message": "React Gantt",
+		"description": "Метка категории React Gantt в боковой панели документации"
+	}
+}

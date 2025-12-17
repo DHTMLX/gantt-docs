@@ -1,0 +1,38 @@
+---
+sidebar_label: env
+title: env config
+description: "a set of flags which describe current environment"
+---
+
+# env
+
+### Description
+
+@short: A set of flags which describe current environment
+
+@signature: env: any
+
+### Example
+
+~~~jsx
+if (gantt.env.isEdge) {
+    // your code
+}
+~~~
+
+### Details
+
+The possible flags are:
+
+- isChrome    - set to true if browser is Chrome
+- isSafari    - set to true if browser is Safari
+- isEdge    - set to true if browser is Edge
+- isSalesforce - set to true if Gantt runs inside a SalesForce app
+- isFF        - set to true if browser is Firefox
+- isIE        - set to true if browser is Internet Explorer
+- isOpera    - set to true if browser is Opera
+- isIPad    - set to true if browser is Safari on IPad
+
+### Change log
+- added in version 4.0
+- updated in 9.0.11

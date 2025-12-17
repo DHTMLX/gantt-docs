@@ -1,0 +1,137 @@
+---
+title: "CSS classes renamed in v.3.0"
+sidebar_label: "CSS classes renamed in v.3.0"
+---
+
+CSS classes renamed in v.3.0
+============================================
+<table class="list" cellspacing="0" cellpadding="5" border="0">
+  <thead>
+  <tr>
+  <th>
+  Old class name
+  </th>
+  <th>
+  New class name
+  </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>.dhx_unselectable</td>
+  <td>.gantt_unselectable</td>
+  </tr>
+  <tr>
+  <td>.dhx_cal_light</td>
+  <td>.gantt_cal_light</td>
+  </tr>
+  <tr>
+  <td>.dhx_cal_light_wide</td>
+  <td>.gantt_cal_light_wide</td>
+  </tr>
+  <tr>
+  <td>.dhx_mark</td>
+  <td>.gantt_mark</td>
+  </tr>
+  <tr>
+  <td>.dhx_cal_ltitle</td>
+  <td>.gantt_cal_ltitle</td>
+  </tr>
+  <tr>
+  <td>.dhx_cal_lsection</td>
+  <td>.gantt_cal_lsection</td>
+  </tr>
+  <tr>
+  <td>.dhx_fullday</td>
+  <td>.gantt_fullday</td>
+  </tr>
+  <tr>
+  <td>.dhx_cal_ltext</td>
+  <td>.gantt_cal_ltext</td>
+  </tr>
+  <tr>
+  <td>.dhx_time</td>
+  <td>.gantt_time</td>
+  </tr>
+  <tr>
+  <td>.dhx_title</td>
+  <td>.gantt_title</td>
+  </tr>
+  <tr>
+  <td>.dhx_cal_larea</td>
+  <td>.gantt_cal_larea</td>
+  </tr>
+  <tr>
+  <td>.dhx_btn_set</td>
+  <td>.gantt_btn_set</td>
+  </tr>
+  <tr>
+  <td>.dhx_save_btn</td>
+  <td>.gantt_save_btn</td>
+  </tr>
+  <tr>
+  <td>.dhx_cancel_btn</td>
+  <td>.gantt_cancel_btn</td>
+  </tr>
+  <tr>
+  <td>.dhx_delete_btn</td>
+  <td>.gantt_delete_btn</td>
+  </tr>
+  <tr>
+  <td>.dhx_cal_cover</td>
+  <td>.gantt_cal_cover</td>
+  </tr>
+  <tr>
+  <td>.dhx_custom_button</td>
+  <td>.gantt_custom_button</td>
+  </tr>
+  <tr>
+  <td>.dhx_wrap_section</td>
+  <td>.gantt_wrap_section</td>
+  </tr>
+  <tr>
+  <td>.dhx_section_time</td>
+  <td>.gantt_section_time</td>
+  </tr>
+  <tr>
+  <td>.dhx_cal_checkbox</td>
+  <td>.gantt_cal_checkbox</td>
+  </tr>
+  <tr>
+  <td>.dhx_repeat_right</td>
+  <td>.gantt_repeat_right</td>
+  </tr>
+  <tr>
+  <td>.dhx_cal_light_full</td>
+  <td>.gantt_cal_light_full</td>
+  </tr>
+  <tr>
+  <td>.dhx_cal_wide_checkbox</td>
+  <td>.gantt_cal_wide_checkbox</td>
+  </tr>
+  <tr>
+  <td>.dhx_cal_light input</td>
+  <td>.gantt_cal_light input</td>
+  </tr>
+  <tr>
+  <td>.dhx_time_selects</td>
+  <td>.gantt_time_selects</td>
+  </tr>
+  <tr>
+  <td>.dhx_gantt_duration</td>
+  <td>.gantt_duration</td>
+  </tr>
+  <tr>
+  <td>.dhx_gantt_duration_value</td>
+  <td>.gantt_duration_value</td>
+  </tr>
+  <tr>
+  <td>.dhx_gantt_duration_dec</td>
+  <td>.gantt_duration_dec</td>
+  </tr>
+  <tr>
+  <td>.dhx_gantt_duration_inc</td>
+  <td>.gantt_duration_inc</td>
+  </tr>
+  </tbody>
+</table>

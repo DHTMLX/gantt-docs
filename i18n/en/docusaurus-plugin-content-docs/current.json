@@ -1,0 +1,158 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.Gantt API": {
+    "message": "Gantt API",
+    "description": "The label for category Gantt API in sidebar docs"
+  },
+  "sidebar.docs.category.Methods": {
+    "message": "Methods",
+    "description": "The label for category Methods in sidebar docs"
+  },
+  "sidebar.docs.category.Properties": {
+    "message": "Properties",
+    "description": "The label for category Properties in sidebar docs"
+  },
+  "sidebar.docs.category.Events": {
+    "message": "Events",
+    "description": "The label for category Events in sidebar docs"
+  },
+  "sidebar.docs.category.Templates": {
+    "message": "Templates",
+    "description": "The label for category Templates in sidebar docs"
+  },
+  "sidebar.docs.category.Others": {
+    "message": "Others",
+    "description": "The label for category Others in sidebar docs"
+  },
+  "sidebar.docs.category.ext": {
+    "message": "ext",
+    "description": "The label for category ext in sidebar docs"
+  },
+  "sidebar.docs.category.Guides": {
+    "message": "Guides",
+    "description": "The label for category Guides in sidebar docs"
+  },
+  "sidebar.docs.category.Creating Gantt Chart on a Page": {
+    "message": "Creating Gantt Chart on a Page",
+    "description": "The label for category Creating Gantt Chart on a Page in sidebar docs"
+  },
+  "sidebar.docs.category.Creating Gantt Chart on a Page.link.generated-index.title": {
+    "message": "Creating Gantt Chart on a Page",
+    "description": "The generated-index page title for category Creating Gantt Chart on a Page in sidebar docs"
+  },
+  "sidebar.docs.category.How to Install dhtmlxGantt": {
+    "message": "How to Install dhtmlxGantt",
+    "description": "The label for category How to Install dhtmlxGantt in sidebar docs"
+  },
+  "sidebar.docs.category.How to Start with dhtmlxGantt": {
+    "message": "How to Start with dhtmlxGantt",
+    "description": "The label for category How to Start with dhtmlxGantt in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Gantt Chart": {
+    "message": "Configuring Gantt Chart",
+    "description": "The label for category Configuring Gantt Chart in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Gantt Chart.link.generated-index.title": {
+    "message": "Configuring Gantt Chart",
+    "description": "The generated-index page title for category Configuring Gantt Chart in sidebar docs"
+  },
+  "sidebar.docs.category.Loading and Saving Tasks": {
+    "message": "Loading and Saving Tasks",
+    "description": "The label for category Loading and Saving Tasks in sidebar docs"
+  },
+  "sidebar.docs.category.Loading and Saving Tasks.link.generated-index.title": {
+    "message": "Loading and Saving Tasks",
+    "description": "The generated-index page title for category Loading and Saving Tasks in sidebar docs"
+  },
+  "sidebar.docs.category.Exporting and Importing Data": {
+    "message": "Exporting and Importing Data",
+    "description": "The label for category Exporting and Importing Data in sidebar docs"
+  },
+  "sidebar.docs.category.Exporting and Importing Data.link.generated-index.title": {
+    "message": "Exporting and Importing Data",
+    "description": "The generated-index page title for category Exporting and Importing Data in sidebar docs"
+  },
+  "sidebar.docs.category.Export Modules": {
+    "message": "Export Modules",
+    "description": "The label for category Export Modules in sidebar docs"
+  },
+  "sidebar.docs.category.Export Modules.link.generated-index.title": {
+    "message": "Export Modules",
+    "description": "The generated-index page title for category Export Modules in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Grid": {
+    "message": "Configuring Grid",
+    "description": "The label for category Configuring Grid in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Grid.link.generated-index.title": {
+    "message": "Configuring Grid",
+    "description": "The generated-index page title for category Configuring Grid in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Scales": {
+    "message": "Configuring Scales",
+    "description": "The label for category Configuring Scales in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Scales.link.generated-index.title": {
+    "message": "Configuring Scales",
+    "description": "The generated-index page title for category Configuring Scales in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Edit Form": {
+    "message": "Configuring Edit Form",
+    "description": "The label for category Configuring Edit Form in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Edit Form.link.generated-index.title": {
+    "message": "Configuring Edit Form",
+    "description": "The generated-index page title for category Configuring Edit Form in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Lightbox Elements": {
+    "message": "Configuring Lightbox Elements",
+    "description": "The label for category Configuring Lightbox Elements in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Tasks": {
+    "message": "Configuring Tasks",
+    "description": "The label for category Configuring Tasks in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Tasks.link.generated-index.title": {
+    "message": "Configuring Tasks",
+    "description": "The generated-index page title for category Configuring Tasks in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Dependency Links": {
+    "message": "Configuring Dependency Links",
+    "description": "The label for category Configuring Dependency Links in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Dependency Links.link.generated-index.title": {
+    "message": "Configuring Dependency Links",
+    "description": "The generated-index page title for category Configuring Dependency Links in sidebar docs"
+  },
+  "sidebar.docs.category.Styling": {
+    "message": "Styling",
+    "description": "The label for category Styling in sidebar docs"
+  },
+  "sidebar.docs.category.Styling.link.generated-index.title": {
+    "message": "Styling",
+    "description": "The generated-index page title for category Styling in sidebar docs"
+  },
+  "sidebar.docs.category.Working with Dates": {
+    "message": "Working with Dates",
+    "description": "The label for category Working with Dates in sidebar docs"
+  },
+  "sidebar.docs.category.Common Features": {
+    "message": "Common Features",
+    "description": "The label for category Common Features in sidebar docs"
+  },
+  "sidebar.docs.category.Common Features.link.generated-index.title": {
+    "message": "Common Features",
+    "description": "The generated-index page title for category Common Features in sidebar docs"
+  },
+  "sidebar.docs.category.Gantt for Frameworks": {
+    "message": "Gantt for Frameworks",
+    "description": "The label for category Gantt for Frameworks in sidebar docs"
+  },
+  "sidebar.docs.category.React Gantt": {
+    "message": "React Gantt",
+    "description": "The label for category React Gantt in sidebar docs"
+  }
+}

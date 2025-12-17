@@ -1,0 +1,62 @@
+{
+  "link.title.Development center": {
+    "message": "Entwicklungszentrum",
+    "description": "Der Titel der Spalte für Footer-Links mit Titel 'Entwicklungszentrum' im Footer"
+  },
+  "link.title.Community": {
+    "message": "Community",
+    "description": "Der Titel der Spalte für Footer-Links mit Titel 'Community' im Footer"
+  },
+  "link.title.Company": {
+    "message": "Unternehmen",
+    "description": "Der Titel der Spalte für Footer-Links mit Titel 'Unternehmen' im Footer"
+  },
+  "link.item.label.Download Gantt": {
+    "message": "Gantt herunterladen",
+    "description": "Das Label des Footer-Links 'Gantt herunterladen', der auf https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml verweist"
+  },
+  "link.item.label.Examples": {
+    "message": "Beispiele",
+    "description": "Das Label des Footer-Links 'Beispiele', der auf https://docs.dhtmlx.com/gantt/samples/ verweist"
+  },
+  "link.item.label.Blog": {
+    "message": "Blog",
+    "description": "Das Label des Footer-Links 'Blog', der auf https://dhtmlx.com/blog/ verweist"
+  },
+  "link.item.label.Forum": {
+    "message": "Forum",
+    "description": "Das Label des Footer-Links 'Forum', der auf https://forum.dhtmlx.com/c/gantt/15 verweist"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Das Label des Footer-Links 'GitHub', der auf https://github.com/DHTMLX verweist"
+  },
+  "link.item.label.Youtube": {
+    "message": "YouTube",
+    "description": "Das Label des Footer-Links 'YouTube', der auf https://www.youtube.com/user/dhtmlx verweist"
+  },
+  "link.item.label.Facebook": {
+    "message": "Facebook",
+    "description": "Das Label des Footer-Links 'Facebook', der auf https://www.facebook.com/dhtmlx verweist"
+  },
+  "link.item.label.Twitter": {
+    "message": "Twitter",
+    "description": "Das Label des Footer-Links 'Twitter', der auf https://twitter.com/dhtmlx verweist"
+  },
+  "link.item.label.Linkedin": {
+    "message": "LinkedIn",
+    "description": "Das Label des Footer-Links 'LinkedIn', der auf https://www.linkedin.com/groups/3345009/ verweist"
+  },
+  "link.item.label.About us": {
+    "message": "Über uns",
+    "description": "Das Label des Footer-Links 'Über uns', der auf https://dhtmlx.com/docs/company.shtml verweist"
+  },
+  "link.item.label.Contact us": {
+    "message": "Kontaktieren Sie uns",
+    "description": "Das Label des Footer-Links 'Kontaktieren Sie uns', der auf https://dhtmlx.com/docs/contact.shtml verweist"
+  },
+  "link.item.label.Licensing": {
+    "message": "Lizenzierung",
+    "description": "Das Label des Footer-Links 'Lizenzierung', der auf https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing verweist"
+  }
+}

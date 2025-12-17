@@ -1,0 +1,17 @@
+---
+title: "Configuring Gantt Chart"
+sidebar_label: "Configuring Gantt Chart"
+---
+
+Configuring Gantt Chart
+==========================
+
+![gantt_basic](/img/gantt_basic.png)
+
+- [Configuration](guides/common-configuration.md)
+- [Gantt Layout](guides/layout-config.md)
+- [Resource Management](guides/resource-management.md)
+- [Event Handling](guides/handling-events.md)
+- [Multiple Charts on a Page](guides/multiple-gantts.md)
+- [Peculiarities of Gantt Instance](guides/gantt-instance.md)
+- [Using Gantt on the server](guides/using-gantt-on-server.md)

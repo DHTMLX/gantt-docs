@@ -1,0 +1,444 @@
+{
+  "theme.ErrorPageContent.title": {
+    "message": "Эта страница упала.",
+    "description": "Заголовок резервной страницы при падении страницы"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Прокрутить обратно наверх",
+    "description": "ARIA метка для кнопки возврата наверх"
+  },
+  "theme.blog.archive.title": {
+    "message": "Архив",
+    "description": "Заголовок страницы и героя архивной страницы блога"
+  },
+  "theme.blog.archive.description": {
+    "message": "Архив",
+    "description": "Описание страницы и героя архивной страницы блога"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Навигация по списку страниц блога",
+    "description": "ARIA метка для пагинации блога"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Новые записи",
+    "description": "Метка для навигации к странице с более новыми записями блога (предыдущая страница)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Старые записи",
+    "description": "Метка для навигации к странице с более старыми записями блога (следующая страница)"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "Навигация по страницам записей блога",
+    "description": "ARIA метка для пагинации записей блога"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "Новая запись",
+    "description": "Метка кнопки записи блога для навигации к новой/предыдущей записи"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "Старая запись",
+    "description": "Метка кнопки записи блога для навигации к старой/следующей записи"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "Посмотреть все теги",
+    "description": "Метка ссылки, направляющей на страницу списка тегов"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Переключить между темным и светлым режимом (сейчас {mode})",
+    "description": "ARIA метка для переключателя цветового режима в навигационной панели"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "темный режим",
+    "description": "Название темного цветового режима"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "светлый режим",
+    "description": "Название светлого цветового режима"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Хлебные крошки",
+    "description": "ARIA метка для хлебных крошек"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "1 элемент|{count} элемента|{count} элементов",
+    "description": "Описание по умолчанию для карточки категории в сгенерированном индексе о количестве элементов в этой категории"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Страницы документации",
+    "description": "ARIA метка для пагинации документации"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Предыдущая",
+    "description": "Метка для навигации к предыдущему документу"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Следующая",
+    "description": "Метка для навигации к следующему документу"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "Один документ отмечен|{count} документа отмечены|{count} документов отмечены",
+    "description": "Множественная метка для \"{count} docs tagged\". Используйте столько множественных форм (разделенных \"|\"), сколько поддерживает ваш язык"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} с \"{tagName}\"",
+    "description": "Заголовок страницы для тега документации"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Версия: {versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "Это неопубликованная документация для {siteTitle} версии {versionLabel}.",
+    "description": "Метка, сообщающая пользователю, что он просматривает неопубликованную версию документации"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "Это документация для {siteTitle} {versionLabel}, которая больше не поддерживается активно.",
+    "description": "Метка, сообщающая пользователю, что он просматривает неподдерживаемую версию документации"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "Для актуальной документации смотрите {latestVersionLink} ({versionLabel}).",
+    "description": "Метка, предлагающая пользователю проверить последнюю версию"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "последняя версия",
+    "description": "Метка ссылки на предложение последней версии"
+  },
+  "theme.common.editThisPage": {
+    "message": "Редактировать эту страницу",
+    "description": "Метка ссылки для редактирования текущей страницы"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Прямая ссылка на {heading}",
+    "description": "Заголовок для ссылки на заголовок"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " {date}",
+    "description": "Слова, описывающие дату последнего обновления страницы"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " пользователем {user}",
+    "description": "Слова, описывающие, кем была обновлена страница в последний раз"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Последнее обновление{atDate}{byUser}",
+    "description": "Предложение для отображения времени последнего обновления страницы и кем"
+  },
+  "theme.NotFound.title": {
+    "message": "Страница не найдена",
+    "description": "Заголовок страницы 404"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Версии",
+    "description": "Метка для выпадающего списка версий в мобильном виде навигационной панели"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "Теги:",
+    "description": "Метка рядом со списком тегов"
+  },
+  "theme.admonition.caution": {
+    "message": "осторожно",
+    "description": "Метка по умолчанию для предупреждения Caution (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "опасность",
+    "description": "Метка по умолчанию для предупреждения Danger (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "информация",
+    "description": "Метка по умолчанию для предупреждения Info (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "заметка",
+    "description": "Метка по умолчанию для предупреждения Note (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "совет",
+    "description": "Метка по умолчанию для предупреждения Tip (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "предупреждение",
+    "description": "Метка по умолчанию для предупреждения Warning (:::warning)"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Закрыть",
+    "description": "ARIA метка для кнопки закрытия панели объявлений"
+  },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "Навигация по последним записям блога",
+    "description": "ARIA метка для последних записей в боковой панели блога"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Скопировано",
+    "description": "Метка кнопки копирования в блоках кода"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Скопировать код в буфер обмена",
+    "description": "ARIA метка для кнопки копирования блоков кода"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Копировать",
+    "description": "Метка кнопки копирования в блоках кода"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Переключить перенос слов",
+    "description": "Атрибут title для кнопки переключения переноса слов в строках блока кода"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Развернуть категорию боковой панели '{label}'",
+    "description": "ARIA метка для разворачивания категории боковой панели"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Свернуть категорию боковой панели '{label}'",
+    "description": "ARIA метка для сворачивания категории боковой панели"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Главная",
+    "description": "ARIA метка для основной навигации"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Языки",
+    "description": "Метка для выпадающего списка переключения языка в мобильном виде"
+  },
+  "theme.NotFound.p1": {
+    "message": "Мы не смогли найти то, что вы искали.",
+    "description": "Первый абзац страницы 404"
+  },
+  "theme.NotFound.p2": {
+    "message": "Пожалуйста, свяжитесь с владельцем сайта, который направил вас на исходный URL, и сообщите им, что их ссылка не работает.",
+    "description": "Второй абзац страницы 404"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "На этой странице",
+    "description": "Метка кнопки сворачиваемого компонента оглавления"
+  },
+  "theme.blog.post.readMore": {
+    "message": "Читать далее",
+    "description": "Метка, используемая в отрывках записей блога для ссылки на полные записи блога"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "Читать далее о {title}",
+    "description": "ARIA метка для ссылки на полные записи блога из отрывков"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "Одна минута чтения|{readingTime} минуты чтения|{readingTime} минут чтения",
+    "description": "Множественная метка для \"{readingTime} min read\". Используйте столько множественных форм (разделенных \"|\"), сколько поддерживает ваш язык"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Главная страница",
+    "description": "ARIA метка для главной страницы в хлебных крошках"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Свернуть боковую панель",
+    "description": "Атрибут title для кнопки сворачивания боковой панели документации"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Свернуть боковую панель",
+    "description": "Атрибут title для кнопки сворачивания боковой панели документации"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Боковая панель документации",
+    "description": "ARIA метка для навигации боковой панели"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Закрыть панель навигации",
+    "description": "ARIA метка для кнопки закрытия мобильной боковой панели"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Переключить панель навигации",
+    "description": "ARIA метка для кнопки гамбургер-меню мобильной навигации"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Вернуться в главное меню",
+    "description": "Метка кнопки возврата в главное меню внутри вторичного меню мобильной боковой панели навигации"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Развернуть боковую панель",
+    "description": "ARIA метка и атрибут title для кнопки разворачивания боковой панели документации"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Развернуть боковую панель",
+    "description": "ARIA метка и атрибут title для кнопки разворачивания боковой панели документации"
+  },
+  "theme.SearchPage.documentsFound.plurals": {
+    "message": "Найден один документ|Найдено {count} документа|Найдено {count} документов",
+    "description": "Множественная метка для \"{count} documents found\". Используйте столько множественных форм (разделенных \"|\"), сколько поддерживает ваш язык"
+  },
+  "theme.SearchPage.existingResultsTitle": {
+    "message": "Результаты поиска для \"{query}\"",
+    "description": "Заголовок страницы поиска для непустого запроса"
+  },
+  "theme.SearchPage.emptyResultsTitle": {
+    "message": "Поиск в документации",
+    "description": "Заголовок страницы поиска для пустого запроса"
+  },
+  "theme.SearchPage.inputPlaceholder": {
+    "message": "Введите ваш поисковый запрос здесь",
+    "description": "Заполнитель для поля ввода страницы поиска"
+  },
+  "theme.SearchPage.inputLabel": {
+    "message": "Поиск",
+    "description": "ARIA метка для поля ввода страницы поиска"
+  },
+  "theme.SearchPage.algoliaLabel": {
+    "message": "Поиск от Algolia",
+    "description": "ARIA метка для упоминания Algolia"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "Результаты не найдены",
+    "description": "Абзац для пустого результата поиска"
+  },
+  "theme.SearchPage.fetchingNewResults": {
+    "message": "Получение новых результатов...",
+    "description": "Абзац для получения новых результатов поиска"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "Посмотреть все {count} результатов"
+  },
+  "theme.SearchBar.label": {
+    "message": "Поиск",
+    "description": "ARIA метка и заполнитель для кнопки поиска"
+  },
+  "theme.SearchModal.searchBox.resetButtonTitle": {
+    "message": "Очистить запрос",
+    "description": "Метка и ARIA метка для кнопки сброса поискового поля"
+  },
+  "theme.SearchModal.searchBox.cancelButtonText": {
+    "message": "Отмена",
+    "description": "Метка и ARIA метка для кнопки отмены поискового поля"
+  },
+  "theme.SearchModal.startScreen.recentSearchesTitle": {
+    "message": "Недавние",
+    "description": "Заголовок для недавних поисков"
+  },
+  "theme.SearchModal.startScreen.noRecentSearchesText": {
+    "message": "Нет недавних поисков",
+    "description": "Текст при отсутствии недавних поисков"
+  },
+  "theme.SearchModal.startScreen.saveRecentSearchButtonTitle": {
+    "message": "Сохранить этот поиск",
+    "description": "Метка для кнопки сохранения недавнего поиска"
+  },
+  "theme.SearchModal.startScreen.removeRecentSearchButtonTitle": {
+    "message": "Удалить этот поиск из истории",
+    "description": "Метка для кнопки удаления недавнего поиска"
+  },
+  "theme.SearchModal.startScreen.favoriteSearchesTitle": {
+    "message": "Избранное",
+    "description": "Заголовок для избранных поисков"
+  },
+  "theme.SearchModal.startScreen.removeFavoriteSearchButtonTitle": {
+    "message": "Удалить этот поиск из избранного",
+    "description": "Метка для кнопки удаления избранного поиска"
+  },
+  "theme.SearchModal.errorScreen.titleText": {
+    "message": "Не удалось получить результаты",
+    "description": "Заголовок экрана ошибки модального окна поиска"
+  },
+  "theme.SearchModal.errorScreen.helpText": {
+    "message": "Возможно, стоит проверить ваше сетевое соединение.",
+    "description": "Текст помощи для экрана ошибки модального окна поиска"
+  },
+  "theme.SearchModal.footer.selectText": {
+    "message": "для выбора",
+    "description": "Пояснительный текст действия для клавиши Enter"
+  },
+  "theme.SearchModal.footer.selectKeyAriaLabel": {
+    "message": "Клавиша Enter",
+    "description": "ARIA метка для кнопки клавиши Enter, которая делает выбор"
+  },
+  "theme.SearchModal.footer.navigateText": {
+    "message": "для навигации",
+    "description": "Пояснительный текст действия для клавиш стрелки вверх и вниз"
+  },
+  "theme.SearchModal.footer.navigateUpKeyAriaLabel": {
+    "message": "Стрелка вверх",
+    "description": "ARIA метка для кнопки клавиши стрелка вверх для навигации"
+  },
+  "theme.SearchModal.footer.navigateDownKeyAriaLabel": {
+    "message": "Стрелка вниз",
+    "description": "ARIA метка для кнопки клавиши стрелка вниз для навигации"
+  },
+  "theme.SearchModal.footer.closeText": {
+    "message": "для закрытия",
+    "description": "Пояснительный текст действия для клавиши Escape"
+  },
+  "theme.SearchModal.footer.closeKeyAriaLabel": {
+    "message": "Клавиша Escape",
+    "description": "ARIA метка для кнопки клавиши Escape, которая закрывает модальное окно"
+  },
+  "theme.SearchModal.footer.searchByText": {
+    "message": "Поиск от",
+    "description": "Текст, объясняющий, что поиск осуществляется через Algolia"
+  },
+  "theme.SearchModal.noResultsScreen.noResultsText": {
+    "message": "Нет результатов для",
+    "description": "Текст, объясняющий, что нет результатов для следующего поиска"
+  },
+  "theme.SearchModal.noResultsScreen.suggestedQueryText": {
+    "message": "Попробуйте поискать",
+    "description": "Текст для предлагаемого запроса, когда не найдены результаты для следующего поиска"
+  },
+  "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
+    "message": "Считаете, что этот запрос должен вернуть результаты?",
+    "description": "Текст вопроса, где пользователь думает, что отсутствуют результаты"
+  },
+  "theme.SearchModal.noResultsScreen.reportMissingResultsLinkText": {
+    "message": "Сообщите нам.",
+    "description": "Текст ссылки для сообщения о недостающих результатах"
+  },
+  "theme.SearchModal.placeholder": {
+    "message": "Поиск в документации",
+    "description": "Заполнитель поля ввода всплывающего модального окна DocSearch"
+  },
+  "theme.blog.post.plurals": {
+    "message": "Одна запись|{count} записи|{count} записей",
+    "description": "Множественная метка для \"{count} posts\". Используйте столько множественных форм (разделенных \"|\"), сколько поддерживает ваш язык"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} отмечены тегом \"{tagName}\"",
+    "description": "Заголовок страницы для тега блога"
+  },
+  "theme.blog.author.pageTitle": {
+    "message": "{authorName} - {nPosts}",
+    "description": "Заголовок страницы для автора блога"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "Авторы",
+    "description": "Заголовок страницы авторов"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "Посмотреть всех авторов",
+    "description": "Метка ссылки, направляющей на страницу авторов блога"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "Этот автор еще не написал ни одной записи.",
+    "description": "Текст для авторов с 0 записями в блоге"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Неперечисленная страница",
+    "description": "Заголовок баннера неперечисленного контента"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "Эта страница не перечислена. Поисковые системы не будут индексировать ее, и только пользователи с прямой ссылкой могут получить к ней доступ.",
+    "description": "Сообщение баннера неперечисленного контента"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Черновик страницы",
+    "description": "Заголовок баннера черновика контента"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "Эта страница является черновиком. Она будет видна только в разработке и исключена из продакшн сборки.",
+    "description": "Сообщение баннера черновика контента"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Попробовать снова",
+    "description": "Метка кнопки для повторной попытки рендеринга, когда граница ошибки React перехватывает ошибку"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Перейти к основному содержимому",
+    "description": "Метка перехода к содержимому, используемая для доступности, позволяющая быстро перейти к основному содержимому с помощью навигации клавиатурой tab/enter"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Теги",
+    "description": "Заголовок страницы списка тегов"
+  }
+ }

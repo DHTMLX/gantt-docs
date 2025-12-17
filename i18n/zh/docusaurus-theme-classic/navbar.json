@@ -1,0 +1,26 @@
+{
+	"title": {
+		"message": "JavaScript 甘特图文档",
+		"description": "导航栏标题"
+	},
+	"logo.alt": {
+		"message": "DHTMLX JavaScript 甘特图标志",
+		"description": "导航栏标志的替代文字"
+	},
+	"item.label.Examples": {
+		"message": "示例",
+		"description": "导航栏中标签为示例的项目"
+	},
+	"item.label.Forum": {
+		"message": "论坛",
+		"description": "导航栏中标签为论坛的项目"
+	},
+	"item.label.Support": {
+		"message": "支持",
+		"description": "导航栏中标签为支持的项目"
+	},
+	"item.label.Download": {
+		"message": "下载",
+		"description": "导航栏中标签为下载的项目"
+	}
+}

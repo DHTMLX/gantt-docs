@@ -1,0 +1,158 @@
+{
+  "version.label": {
+    "message": "下一步",
+    "description": "版本当前的标签"
+  },
+  "sidebar.docs.category.Gantt API": {
+    "message": "甘特图 API",
+    "description": "侧边栏文档中类别甘特图 API 的标签"
+  },
+  "sidebar.docs.category.Methods": {
+    "message": "方法",
+    "description": "侧边栏文档中类别方法的标签"
+  },
+  "sidebar.docs.category.Properties": {
+    "message": "属性",
+    "description": "侧边栏文档中类别属性的标签"
+  },
+  "sidebar.docs.category.Events": {
+    "message": "事件",
+    "description": "侧边栏文档中类别事件的标签"
+  },
+  "sidebar.docs.category.Templates": {
+    "message": "模板",
+    "description": "侧边栏文档中类别模板的标签"
+  },
+  "sidebar.docs.category.Others": {
+    "message": "其他",
+    "description": "侧边栏文档中类别其他的标签"
+  },
+  "sidebar.docs.category.ext": {
+    "message": "扩展",
+    "description": "侧边栏文档中类别扩展的标签"
+  },
+  "sidebar.docs.category.Guides": {
+    "message": "指南",
+    "description": "侧边栏文档中类别指南的标签"
+  },
+  "sidebar.docs.category.Creating Gantt Chart on a Page": {
+    "message": "在页面上创建甘特图",
+    "description": "侧边栏文档中类别在页面上创建甘特图的标签"
+  },
+  "sidebar.docs.category.Creating Gantt Chart on a Page.link.generated-index.title": {
+    "message": "在页面上创建甘特图",
+    "description": "侧边栏文档中类别在页面上创建甘特图的生成索引页面标题"
+  },
+  "sidebar.docs.category.How to Install dhtmlxGantt": {
+    "message": "如何安装 dhtmlxGantt",
+    "description": "侧边栏文档中类别如何安装 dhtmlxGantt 的标签"
+  },
+  "sidebar.docs.category.How to Start with dhtmlxGantt": {
+    "message": "如何开始使用 dhtmlxGantt",
+    "description": "侧边栏文档中类别如何开始使用 dhtmlxGantt 的标签"
+  },
+  "sidebar.docs.category.Configuring Gantt Chart": {
+    "message": "配置甘特图",
+    "description": "侧边栏文档中类别配置甘特图的标签"
+  },
+  "sidebar.docs.category.Configuring Gantt Chart.link.generated-index.title": {
+    "message": "配置甘特图",
+    "description": "侧边栏文档中类别配置甘特图的生成索引页面标题"
+  },
+  "sidebar.docs.category.Loading and Saving Tasks": {
+    "message": "加载和保存任务",
+    "description": "侧边栏文档中类别加载和保存任务的标签"
+  },
+  "sidebar.docs.category.Loading and Saving Tasks.link.generated-index.title": {
+    "message": "加载和保存任务",
+    "description": "侧边栏文档中类别加载和保存任务的生成索引页面标题"
+  },
+  "sidebar.docs.category.Exporting and Importing Data": {
+    "message": "导出和导入数据",
+    "description": "侧边栏文档中类别导出和导入数据的标签"
+  },
+  "sidebar.docs.category.Exporting and Importing Data.link.generated-index.title": {
+    "message": "导出和导入数据",
+    "description": "侧边栏文档中类别导出和导入数据的生成索引页面标题"
+  },
+  "sidebar.docs.category.Export Modules": {
+    "message": "导出模块",
+    "description": "侧边栏文档中类别导出模块的标签"
+  },
+  "sidebar.docs.category.Export Modules.link.generated-index.title": {
+    "message": "导出模块",
+    "description": "侧边栏文档中类别导出模块的生成索引页面标题"
+  },
+  "sidebar.docs.category.Configuring Grid": {
+    "message": "配置网格",
+    "description": "侧边栏文档中类别配置网格的标签"
+  },
+  "sidebar.docs.category.Configuring Grid.link.generated-index.title": {
+    "message": "配置网格",
+    "description": "侧边栏文档中类别配置网格的生成索引页面标题"
+  },
+  "sidebar.docs.category.Configuring Scales": {
+    "message": "配置刻度",
+    "description": "侧边栏文档中类别配置刻度的标签"
+  },
+  "sidebar.docs.category.Configuring Scales.link.generated-index.title": {
+    "message": "配置刻度",
+    "description": "侧边栏文档中类别配置刻度的生成索引页面标题"
+  },
+  "sidebar.docs.category.Configuring Edit Form": {
+    "message": "配置编辑表单",
+    "description": "侧边栏文档中类别配置编辑表单的标签"
+  },
+  "sidebar.docs.category.Configuring Edit Form.link.generated-index.title": {
+    "message": "配置编辑表单",
+    "description": "侧边栏文档中类别配置编辑表单的生成索引页面标题"
+  },
+  "sidebar.docs.category.Configuring Lightbox Elements": {
+    "message": "配置灯箱元素",
+    "description": "侧边栏文档中类别配置灯箱元素的标签"
+  },
+  "sidebar.docs.category.Configuring Tasks": {
+    "message": "配置任务",
+    "description": "侧边栏文档中类别配置任务的标签"
+  },
+  "sidebar.docs.category.Configuring Tasks.link.generated-index.title": {
+    "message": "配置任务",
+    "description": "侧边栏文档中类别配置任务的生成索引页面标题"
+  },
+  "sidebar.docs.category.Configuring Dependency Links": {
+    "message": "配置依赖链接",
+    "description": "侧边栏文档中类别配置依赖链接的标签"
+  },
+  "sidebar.docs.category.Configuring Dependency Links.link.generated-index.title": {
+    "message": "配置依赖链接",
+    "description": "侧边栏文档中类别配置依赖链接的生成索引页面标题"
+  },
+  "sidebar.docs.category.Styling": {
+    "message": "样式",
+    "description": "侧边栏文档中类别样式的标签"
+  },
+  "sidebar.docs.category.Styling.link.generated-index.title": {
+    "message": "样式",
+    "description": "侧边栏文档中类别样式的生成索引页面标题"
+  },
+  "sidebar.docs.category.Working with Dates": {
+    "message": "处理日期",
+    "description": "侧边栏文档中类别处理日期的标签"
+  },
+  "sidebar.docs.category.Common Features": {
+    "message": "常用功能",
+    "description": "侧边栏文档中类别常用功能的标签"
+  },
+  "sidebar.docs.category.Common Features.link.generated-index.title": {
+    "message": "常用功能",
+    "description": "侧边栏文档中类别常用功能的生成索引页面标题"
+  },
+  "sidebar.docs.category.Gantt for Frameworks": {
+    "message": "框架用甘特图",
+    "description": "侧边栏文档中类别框架用甘特图的标签"
+  },
+  "sidebar.docs.category.React Gantt": {
+    "message": "React 甘特图",
+    "description": "侧边栏文档中类别 React 甘特图的标签"
+  }
+}

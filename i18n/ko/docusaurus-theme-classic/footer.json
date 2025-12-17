@@ -1,0 +1,62 @@
+{
+	"link.title.Development center": {
+		"message": "개발 센터",
+		"description": "푸터 내 'Development center' 제목을 가진 링크 열의 제목"
+	},
+	"link.title.Community": {
+		"message": "커뮤니티",
+		"description": "푸터 내 'Community' 제목을 가진 링크 열의 제목"
+	},
+	"link.title.Company": {
+		"message": "회사",
+		"description": "푸터 내 'Company' 제목을 가진 링크 열의 제목"
+	},
+	"link.item.label.Download Gantt": {
+		"message": "간트 다운로드",
+		"description": "https://dhtmlx.com/docs/products/dhtmlxGantt/download.shtml 링크가 연결된 'Download Gantt' 라벨의 푸터 링크"
+	},
+	"link.item.label.Examples": {
+		"message": "예시",
+		"description": "https://docs.dhtmlx.com/gantt/samples/ 링크가 연결된 'Examples' 라벨의 푸터 링크"
+	},
+	"link.item.label.Blog": {
+		"message": "블로그",
+		"description": "https://dhtmlx.com/blog/ 링크가 연결된 'Blog' 라벨의 푸터 링크"
+	},
+	"link.item.label.Forum": {
+		"message": "포럼",
+		"description": "https://forum.dhtmlx.com/c/gantt/15 링크가 연결된 'Forum' 라벨의 푸터 링크"
+	},
+	"link.item.label.GitHub": {
+		"message": "깃허브",
+		"description": "https://github.com/DHTMLX 링크가 연결된 'GitHub' 라벨의 푸터 링크"
+	},
+	"link.item.label.Youtube": {
+		"message": "유튜브",
+		"description": "https://www.youtube.com/user/dhtmlx 링크가 연결된 'Youtube' 라벨의 푸터 링크"
+	},
+	"link.item.label.Facebook": {
+		"message": "페이스북",
+		"description": "https://www.facebook.com/dhtmlx 링크가 연결된 'Facebook' 라벨의 푸터 링크"
+	},
+	"link.item.label.Twitter": {
+		"message": "트위터",
+		"description": "https://twitter.com/dhtmlx 링크가 연결된 'Twitter' 라벨의 푸터 링크"
+	},
+	"link.item.label.Linkedin": {
+		"message": "링크드인",
+		"description": "https://www.linkedin.com/groups/3345009/ 링크가 연결된 'Linkedin' 라벨의 푸터 링크"
+	},
+	"link.item.label.About us": {
+		"message": "회사 소개",
+		"description": "https://dhtmlx.com/docs/company.shtml 링크가 연결된 'About us' 라벨의 푸터 링크"
+	},
+	"link.item.label.Contact us": {
+		"message": "문의하기",
+		"description": "https://dhtmlx.com/docs/contact.shtml 링크가 연결된 'Contact us' 라벨의 푸터 링크"
+	},
+	"link.item.label.Licensing": {
+		"message": "라이선스",
+		"description": "https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing 링크가 연결된 'Licensing' 라벨의 푸터 링크"
+	}
+}

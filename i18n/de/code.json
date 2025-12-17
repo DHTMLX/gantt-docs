@@ -1,0 +1,360 @@
+{
+  "theme.ErrorPageContent.title": {
+    "message": "Die Seite ist abgestürzt.",
+    "description": "Der Titel der Ersatzseite, wenn die Seite abgestürzt ist"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Zurück nach oben scrollen",
+    "description": "Das ARIA-Label für die Zurück-nach-oben-Schaltfläche"
+  },
+  "theme.blog.archive.title": {
+    "message": "Archiv",
+    "description": "Der Seiten- und Hero-Titel der Blog-Archivseite"
+  },
+  "theme.blog.archive.description": {
+    "message": "Archiv",
+    "description": "Die Seiten- und Hero-Beschreibung der Blog-Archivseite"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Navigation der Blog-Listenseite",
+    "description": "Das ARIA-Label für die Blog-Paginierung"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Neuere Einträge",
+    "description": "Das Label, das verwendet wird, um zur Seite mit neueren Blogeinträgen (vorherige Seite) zu navigieren"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Ältere Einträge",
+    "description": "Das Label, das verwendet wird, um zur Seite mit älteren Blogeinträgen (nächste Seite) zu navigieren"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "Navigation der Blog-Post-Seiten",
+    "description": "Das ARIA-Label für die Paginierung von Blog-Posts"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "Neuer Post",
+    "description": "Das Blogpost-Button-Label, um zum neueren/vorherigen Post zu navigieren"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "Älterer Post",
+    "description": "Das Blogpost-Button-Label, um zum älteren/nächsten Post zu navigieren"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "Alle Tags anzeigen",
+    "description": "Das Label des Links, der auf die Tag-Listen-Seite verweist"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "Systemmodus",
+    "description": "Der Name für den System-Farbmodus"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "Hellmodus",
+    "description": "Der Name für den hellen Farbmodus"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "Dunkelmodus",
+    "description": "Der Name für den dunklen Farbmodus"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Umschalten zwischen dunkler und heller Ansicht (momentan {mode})",
+    "description": "Das ARIA-Label für den Umschalter des Farbmodus"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Breadcrumbs",
+    "description": "Das ARIA-Label für die Breadcrumbs"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "1 Eintrag|{count} Einträge",
+    "description": "Die Standardbeschreibung für eine Kategorie-Karte im generierten Index, wie viele Elemente diese Kategorie enthält"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Dokumentationsseiten",
+    "description": "Das ARIA-Label für die Dokumentations-Paginierung"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Zurück",
+    "description": "Das Label, das verwendet wird, um zum vorherigen Dokument zu navigieren"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Weiter",
+    "description": "Das Label, das verwendet wird, um zum nächsten Dokument zu navigieren"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "Ein Dokument getaggt|{count} Dokumente getaggt",
+    "description": "Pluralisiertes Label für „{count} Dokumente getaggt“. Verwenden Sie so viele Pluralformen (getrennt durch „|“), wie Ihre Sprache unterstützt"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} mit „{tagName}“",
+    "description": "Der Titel der Seite für einen Dokumenten-Tag"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Version: {versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "Dies ist die unveröffentlichte Dokumentation für {siteTitle} {versionLabel}.",
+    "description": "Das Label, das den Nutzer informiert, dass er eine unveröffentlichte Dokumentenversion durchsucht"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "Dies ist die Dokumentation für {siteTitle} {versionLabel} und wird nicht weiter gewartet.",
+    "description": "Das Label, das den Nutzer informiert, dass er eine nicht mehr gepflegte Dokumentenversion durchsucht"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "Für die aktuellste Dokumentation bitte auf {latestVersionLink} ({versionLabel}) gehen.",
+    "description": "Das Label, das den Nutzer auffordert, die neueste Version zu prüfen"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "Letzte Version",
+    "description": "Das Label für den Link der neuesten Version"
+  },
+  "theme.common.editThisPage": {
+    "message": "Diese Seite bearbeiten",
+    "description": "Das Link-Label zum Bearbeiten der aktuellen Seite"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Direkter Link zu {heading}",
+    "description": "Titel für den Link zur Überschrift"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " am {date}",
+    "description": "Die Wörter, um zu beschreiben, an welchem Datum eine Seite zuletzt aktualisiert wurde"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " von {user}",
+    "description": "Die Wörter, um zu beschreiben, von wem eine Seite zuletzt aktualisiert wurde"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Letztes Update{atDate}{byUser}",
+    "description": "Der Satz, der anzeigt, wann eine Seite zuletzt aktualisiert wurde und von wem"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versionen",
+    "description": "Das Label für das Versions-Dropdown im mobilen Navbar"
+  },
+  "theme.NotFound.title": {
+    "message": "Seite nicht gefunden",
+    "description": "Der Titel der 404-Seite"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "Tags:",
+    "description": "Das Label neben einer Tag-Liste"
+  },
+  "theme.admonition.caution": {
+    "message": "Vorsicht",
+    "description": "Das Standard-Label für die Vorsicht-Anmerkung (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "Gefahr",
+    "description": "Das Standard-Label für die Gefahr-Anmerkung (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "Info",
+    "description": "Das Standard-Label für die Info-Anmerkung (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "Hinweis",
+    "description": "Das Standard-Label für die Hinweis-Anmerkung (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "Tipp",
+    "description": "Das Standard-Label für die Tipp-Anmerkung (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "Warnung",
+    "description": "Das Standard-Label für die Warnung-Anmerkung (:::warning)"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Schließen",
+    "description": "Das ARIA-Label für die Schließen-Schaltfläche der Ankündigungsleiste"
+  },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "Navigation der letzten Beiträge im Blog",
+    "description": "Das ARIA-Label für die letzten Beiträge in der Blog-Seitenleiste"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Seitenleisten-Kategorie '{label}' erweitern",
+    "description": "Das ARIA-Label zum Erweitern der Seitenleistenkategorie"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Seitenleisten-Kategorie '{label}' einklappen",
+    "description": "Das ARIA-Label zum Einklappen der Seitenleistenkategorie"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Hauptnavigation",
+    "description": "Das ARIA-Label für die Hauptnavigation"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Sprachen",
+    "description": "Das Label für das Sprachwechsel-Dropdown im mobilen Navbar"
+  },
+  "theme.NotFound.p1": {
+    "message": "Wir konnten nicht finden, wonach Sie gesucht haben.",
+    "description": "Der erste Absatz der 404-Seite"
+  },
+  "theme.NotFound.p2": {
+    "message": "Bitte kontaktieren Sie den Besitzer der Seite, die Sie mit der ursprünglichen URL verlinkt hat, und teilen Sie ihm mit, dass der Link nicht mehr funktioniert.",
+    "description": "Der zweite Absatz der 404-Seite"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "Auf dieser Seite",
+    "description": "Das Label der Schaltfläche der einklappbaren Inhaltsübersicht"
+  },
+  "theme.blog.post.readMore": {
+    "message": "Mehr lesen",
+    "description": "Das Label in Blog-Post-Ausschnitten, um zu den vollständigen Blogposts zu verlinken"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "Mehr lesen über {title}",
+    "description": "Das ARIA-Label für den Link zu vollständigen Blogbeiträgen aus Ausschnitten"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "Eine Minute Lesezeit|{readingTime} Minuten Lesezeit",
+    "description": "Pluralisiertes Label für „{readingTime} min Lesezeit“."
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Kopieren",
+    "description": "Das Label der Kopier-Schaltfläche in Codeblöcken"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Kopiert",
+    "description": "Das Label der Schaltfläche nach dem Kopieren von Codeblöcken"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "In die Zwischenablage kopieren",
+    "description": "Das ARIA-Label für die Kopieren-Schaltfläche in Codeblöcken"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Zeilenumbruch umschalten",
+    "description": "Der Titel-Attribut für die Umschalt-Schaltfläche des Zeilenumbruchs in Codeblock-Zeilen"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Startseite",
+    "description": "Das ARIA-Label für die Startseite in den Breadcrumbs"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Seitenleiste einklappen",
+    "description": "Der Titel-Attribut für die Einklapptaste der Dokumentationsseitenleiste"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Seitenleiste einklappen",
+    "description": "Der ARIA-Label für die Einklapptaste der Dokumentationsseitenleiste"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Dokumentationsseitenleiste",
+    "description": "Das ARIA-Label für die Navigation der Seitenleiste"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Navigationsleiste schließen",
+    "description": "Das ARIA-Label für die Schließen-Schaltfläche der mobilen Seitenleiste"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Zurück zum Hauptmenü",
+    "description": "Das Label der Zurück-Schaltfläche, um zum Hauptmenü zurückzukehren, im mobilen Navbar-Seitenleisten-Sekundärmenü (wird z. B. für die Docs-Seitenleiste verwendet)"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Navigation umschalten",
+    "description": "Das ARIA-Label für die Hamburger-Menü-Schaltfläche der mobilen Navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Dropdown erweitern",
+    "description": "Das ARIA-Label der Schaltfläche zum Erweitern des mobilen Dropdown-Navbar-Elements"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Dropdown einklappen",
+    "description": "Das ARIA-Label der Schaltfläche zum Einklappen des mobilen Dropdown-Navbar-Elements"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Seitenleiste ausklappen",
+    "description": "Das ARIA-Label und Titel-Attribut für die Ausklapptaste der Dokumentationsseitenleiste"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Seitenleiste ausklappen",
+    "description": "Das ARIA-Label und Titel-Attribut für die Ausklapptaste der Dokumentationsseitenleiste"
+  },
+  "theme.SearchBar.noResultsText": {
+    "message": "Keine Ergebnisse"
+  },
+  "theme.SearchBar.seeAllOutsideContext": {
+    "message": "Alle Ergebnisse außerhalb von \"{context}\" anzeigen"
+  },
+  "theme.SearchBar.searchInContext": {
+    "message": "Alle Ergebnisse innerhalb von \"{context}\" anzeigen"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "Alle Ergebnisse anzeigen"
+  },
+  "theme.SearchBar.label": {
+    "message": "Suche",
+    "description": "Das ARIA-Label und Platzhalter für die Such-Schaltfläche"
+  },
+  "theme.SearchPage.existingResultsTitle": {
+    "message": "Suchergebnisse für \"{query}\"",
+    "description": "Der Titel der Suchseite für eine nicht-leere Abfrage"
+  },
+  "theme.SearchPage.emptyResultsTitle": {
+    "message": "Suche in der Dokumentation",
+    "description": "Der Titel der Suchseite für eine leere Abfrage"
+  },
+  "theme.SearchPage.searchContext.everywhere": {
+    "message": "Überall"
+  },
+  "theme.SearchPage.documentsFound.plurals": {
+    "message": "1 Dokument gefunden|{count} Dokumente gefunden",
+    "description": "Pluralisiertes Label für „{count} Dokumente gefunden“."
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "Es wurden keine Dokumente gefunden",
+    "description": "Der Absatz für leere Suchergebnisse"
+  },
+  "theme.blog.post.plurals": {
+    "message": "Ein Post|{count} Posts",
+    "description": "Pluralisiertes Label für „{count} Posts“."
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} getaggt mit „{tagName}“",
+    "description": "Der Titel der Seite für einen Blog-Tag"
+  },
+  "theme.blog.author.pageTitle": {
+    "message": "{authorName} - {nPosts}",
+    "description": "Der Titel der Seite für einen Blog-Autor"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "Autoren",
+    "description": "Der Titel der Autoren-Seite"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "Alle Autoren anzeigen",
+    "description": "Das Label des Links, der auf die Blog-Autoren-Seite verweist"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "Dieser Autor hat noch keine Beiträge geschrieben.",
+    "description": "Der Text für Autoren ohne Blogbeiträge"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Nicht gelistete Seite",
+    "description": "Der Titel des Banners für nicht gelisteten Inhalt"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "Diese Seite ist nicht gelistet. Suchmaschinen werden sie nicht indexieren, und nur Nutzer mit einem direkten Link können darauf zugreifen.",
+    "description": "Die Nachricht des Banners für nicht gelisteten Inhalt"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Entwurfsseite",
+    "description": "Der Titel des Banners für Entwurfsinhalt"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "Diese Seite ist ein Entwurf. Sie wird nur in der Entwicklungsumgebung sichtbar sein und wird vom Produktions-Build ausgeschlossen.",
+    "description": "Die Nachricht des Banners für Entwurfsinhalt"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Nochmal versuchen",
+    "description": "Das Label der Schaltfläche, um das Rendern erneut zu versuchen, wenn der React-Error-Boundary einen Fehler erfasst"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Zum Hauptinhalt springen",
+    "description": "Das Label zum überspringen des Inhalts, verwendet für Barrierefreiheit, ermöglicht schnelles Navigieren zum Hauptinhalt mit Tastatur (Tab/Enter)"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tags",
+    "description": "Der Titel der Tag-Listen-Seite"
+  }
+}

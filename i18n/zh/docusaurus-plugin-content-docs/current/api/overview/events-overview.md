@@ -1,0 +1,124 @@
+---
+sidebar_label: Events overview
+title: Events Overview
+description: You can explore a methods overview in the documentation of the DHTMLX JavaScript Gantt library. Browse developer guides and API reference, try out code examples and live demos, and download a free 30-day evaluation version of DHTMLX Gantt.
+---
+
+# Events overview
+
+
+| Name                                                    | Description                                                    |
+|---------------------------------------------------------|----------------------------------------------------------------|
+| [](../event/onafterautoschedule.md)                      | @getshort(../event/onafterautoschedule.md)        |
+| [](../event/onafterbatchupdate.md)                        | @getshort(../event/onafterbatchupdate.md)         |
+| [](../event/onafterbranchloading.md)                    | @getshort(../event/onafterbranchloading.md)       |
+| [](../event/onafterlightbox.md)                              | @getshort(../event/onafterlightbox.md)            |
+| [](../event/onafterlinkadd.md)                                | @getshort(../event/onafterlinkadd.md)             |
+| [](../event/onafterlinkdelete.md)                          | @getshort(../event/onafterlinkdelete.md)          |
+| [](../event/onafterlinkupdate.md)                          | @getshort(../event/onafterlinkupdate.md)          |
+| [](../event/onafterquickinfo.md)                            | @getshort(../event/onafterquickinfo.md)           |
+| [](../event/onafterredo.md)                                      | @getshort(../event/onafterredo.md)                |
+| [](../event/onafterrowresize.md)                            | @getshort(../event/onafterrowresize.md)           |
+| [](../event/onaftersort.md)                                      | @getshort(../event/onaftersort.md)                |
+| [](../event/onaftertaskadd.md)                                | @getshort(../event/onaftertaskadd.md)             |
+| [](../event/onaftertaskautoschedule.md)              | @getshort(../event/onaftertaskautoschedule.md)    |
+| [](../event/onaftertaskdelete.md)                          | @getshort(../event/onaftertaskdelete.md)          |
+| [](../event/onaftertaskdrag.md)                              | @getshort(../event/onaftertaskdrag.md)            |
+| [](../event/onaftertaskmove.md)                              | @getshort(../event/onaftertaskmove.md)            |
+| [](../event/onaftertaskupdate.md)                          | @getshort(../event/onaftertaskupdate.md)          |
+| [](../event/onafterundo.md)                                      | @getshort(../event/onafterundo.md)                |
+| [](../event/onajaxerror.md)                                      | @getshort(../event/onajaxerror.md)                |
+| [](../event/onautoschedulecircularlink.md)        | @getshort(../event/onautoschedulecircularlink.md) |
+| [](../event/onbeforeautoschedule.md)                    | @getshort(../event/onbeforeautoschedule.md)       |
+| [](../event/onbeforebatchupdate.md)                      | @getshort(../event/onbeforebatchupdate.md)        |
+| [](../event/onbeforebranchloading.md)                  | @getshort(../event/onbeforebranchloading.md)      |
+| [](../event/onbeforecollapse.md)                            | @getshort(../event/onbeforecollapse.md)           |
+| [](../event/onbeforedatarender.md)                        | @getshort(../event/onbeforedatarender.md)         |
+| [](../event/onbeforeexpand.md)                                | @getshort(../event/onbeforeexpand.md)             |
+| [](../event/onbeforeganttready.md)                        | @getshort(../event/onbeforeganttready.md)         |
+| [](../event/onbeforeganttrender.md)                      | @getshort(../event/onbeforeganttrender.md)        |
+| [](../event/onbeforelightbox.md)                            | @getshort(../event/onbeforelightbox.md)           |
+| [](../event/onbeforelinkadd.md)                              | @getshort(../event/onbeforelinkadd.md)            |
+| [](../event/onbeforelinkdelete.md)                        | @getshort(../event/onbeforelinkdelete.md)         |
+| [](../event/onbeforelinkdisplay.md)                      | @getshort(../event/onbeforelinkdisplay.md)        |
+| [](../event/onbeforelinkupdate.md)                        | @getshort(../event/onbeforelinkupdate.md)         |
+| [](../event/onbeforemultiselect.md)                      | @getshort(../event/onbeforemultiselect.md)        |
+| [](../event/onbeforeparse.md)                                  | @getshort(../event/onbeforeparse.md)              |
+| [](../event/onbeforeredo.md)                                    | @getshort(../event/onbeforeredo.md)               |
+| [](../event/onbeforeredostack.md)                          | @getshort(../event/onbeforeredostack.md)          |
+| [](../event/onbeforerolluptaskdisplay.md)          | @getshort(../event/onbeforerolluptaskdisplay.md)  |
+| [](../event/onbeforerowdragend.md)                        | @getshort(../event/onbeforerowdragend.md)         |
+| [](../event/onbeforerowdragmove.md)                      | @getshort(../event/onbeforerowdragmove.md)        |
+| [](../event/onbeforerowresize.md)                          | @getshort(../event/onbeforerowresize.md)          |
+| [](../event/onbeforerowresizeend.md)                    | @getshort(../event/onbeforerowresizeend.md)       |
+| [](../event/onbeforesplittaskdisplay.md)            | @getshort(../event/onbeforesplittaskdisplay.md)   |
+| [](../event/onbeforetaskadd.md)                              | @getshort(../event/onbeforetaskadd.md)            |
+| [](../event/onbeforetaskautoschedule.md)            | @getshort(../event/onbeforetaskautoschedule.md)   |
+| [](../event/onbeforetaskchanged.md)                      | @getshort(../event/onbeforetaskchanged.md)        |
+| [](../event/onbeforetaskdelete.md)                        | @getshort(../event/onbeforetaskdelete.md)         |
+| [](../event/onbeforetaskdisplay.md)                      | @getshort(../event/onbeforetaskdisplay.md)        |
+| [](../event/onbeforetaskdrag.md)                            | @getshort(../event/onbeforetaskdrag.md)           |
+| [](../event/onbeforetaskmove.md)                            | @getshort(../event/onbeforetaskmove.md)           |
+| [](../event/onbeforetaskmultiselect.md)              | @getshort(../event/onbeforetaskmultiselect.md)    |
+| [](../event/onbeforetaskselected.md)                    | @getshort(../event/onbeforetaskselected.md)       |
+| [](../event/onbeforetaskupdate.md)                        | @getshort(../event/onbeforetaskupdate.md)         |
+| [](../event/onbeforeundo.md)                                    | @getshort(../event/onbeforeundo.md)               |
+| [](../event/onbeforeundostack.md)                          | @getshort(../event/onbeforeundostack.md)          |
+| [](../event/oncircularlinkerror.md)                      | @getshort(../event/oncircularlinkerror.md)        |
+| [](../event/onclear.md)                                              | @getshort(../event/onclear.md)                    |
+| [](../event/oncollapse.md)                                        | @getshort(../event/oncollapse.md)                 |
+| [](../event/oncolumnresize.md)                                | @getshort(../event/oncolumnresize.md)             |
+| [](../event/oncolumnresizeend.md)                          | @getshort(../event/oncolumnresizeend.md)          |
+| [](../event/oncolumnresizestart.md)                      | @getshort(../event/oncolumnresizestart.md)        |
+| [](../event/oncontextmenu.md)                                  | @getshort(../event/oncontextmenu.md)              |
+| [](../event/ondataprocessorready.md)                    | @getshort(../event/ondataprocessorready.md)       |
+| [](../event/ondatarender.md)                                    | @getshort(../event/ondatarender.md)               |
+| [](../event/ondestroy.md)                                          | @getshort(../event/ondestroy.md)                  |
+| [](../event/onemptyclick.md)                                    | @getshort(../event/onemptyclick.md)               |
+| [](../event/onerror.md)                                              | @getshort(../event/onerror.md)                    |
+| [](../event/onexpand.md)                                            | @getshort(../event/onexpand.md)                   |
+| [](../event/onganttlayoutready.md)                        | @getshort(../event/onganttlayoutready.md)         |
+| [](../event/onganttready.md)                                    | @getshort(../event/onganttready.md)               |
+| [](../event/onganttrender.md)                                  | @getshort(../event/onganttrender.md)              |
+| [](../event/onganttscroll.md)                                  | @getshort(../event/onganttscroll.md)              |
+| [](../event/ongridheaderclick.md)                          | @getshort(../event/ongridheaderclick.md)          |
+| [](../event/ongridresize.md)                                    | @getshort(../event/ongridresize.md)               |
+| [](../event/ongridresizeend.md)                              | @getshort(../event/ongridresizeend.md)            |
+| [](../event/ongridresizestart.md)                          | @getshort(../event/ongridresizestart.md)          |
+| [](../event/onlightbox.md)                                        | @getshort(../event/onlightbox.md)                 |
+| [](../event/onlightboxbutton.md)                            | @getshort(../event/onlightboxbutton.md)           |
+| [](../event/onlightboxcancel.md)                            | @getshort(../event/onlightboxcancel.md)           |
+| [](../event/onlightboxchange.md)                            | @getshort(../event/onlightboxchange.md)           |
+| [](../event/onlightboxdelete.md)                            | @getshort(../event/onlightboxdelete.md)           |
+| [](../event/onlightboxsave.md)                                | @getshort(../event/onlightboxsave.md)             |
+| [](../event/onlinkclick.md)                                      | @getshort(../event/onlinkclick.md)                |
+| [](../event/onlinkcreated.md)                                  | @getshort(../event/onlinkcreated.md)              |
+| [](../event/onlinkdblclick.md)                                | @getshort(../event/onlinkdblclick.md)             |
+| [](../event/onlinkidchange.md)                                | @getshort(../event/onlinkidchange.md)             |
+| [](../event/onlinkvalidation.md)                            | @getshort(../event/onlinkvalidation.md)           |
+| [](../event/onloadend.md)                                          | @getshort(../event/onloadend.md)                  |
+| [](../event/onloadstart.md)                                      | @getshort(../event/onloadstart.md)                |
+| [](../event/onmousemove.md)                                      | @getshort(../event/onmousemove.md)                |
+| [](../event/onmultiselect.md)                                  | @getshort(../event/onmultiselect.md)              |
+| [](../event/onoptionsload.md)                                  | @getshort(../event/onoptionsload.md)              |
+| [](../event/onparse.md)                                              | @getshort(../event/onparse.md)                    |
+| [](../event/onquickinfo.md)                                      | @getshort(../event/onquickinfo.md)                |
+| [](../event/onrowdragend.md)                                    | @getshort(../event/onrowdragend.md)               |
+| [](../event/onrowdragstart.md)                                | @getshort(../event/onrowdragstart.md)             |
+| [](../event/onrowresize.md)                                      | @getshort(../event/onrowresize.md)                |
+| [](../event/onscaleadjusted.md)                              | @getshort(../event/onscaleadjusted.md)            |
+| [](../event/onscaleclick.md)                                    | @getshort(../event/onscaleclick.md)               |
+| [](../event/ontaskclick.md)                                      | @getshort(../event/ontaskclick.md)                |
+| [](../event/ontaskclosed.md)                                    | @getshort(../event/ontaskclosed.md)               |
+| [](../event/ontaskcreated.md)                                  | @getshort(../event/ontaskcreated.md)              |
+| [](../event/ontaskdblclick.md)                                | @getshort(../event/ontaskdblclick.md)             |
+| [](../event/ontaskdrag.md)                                        | @getshort(../event/ontaskdrag.md)                 |
+| [](../event/ontaskidchange.md)                                | @getshort(../event/ontaskidchange.md)             |
+| [](../event/ontaskloading.md)                                  | @getshort(../event/ontaskloading.md)              |
+| [](../event/ontaskmultiselect.md)                          | @getshort(../event/ontaskmultiselect.md)          |
+| [](../event/ontaskopened.md)                                    | @getshort(../event/ontaskopened.md)               |
+| [](../event/ontaskrowclick.md)                                | @getshort(../event/ontaskrowclick.md)             |
+| [](../event/ontaskselected.md)                                | @getshort(../event/ontaskselected.md)             |
+| [](../event/ontaskunselected.md)                            | @getshort(../event/ontaskunselected.md)           |
+| [](../event/ontemplatesready.md)                            | @getshort(../event/ontemplatesready.md)           |
+

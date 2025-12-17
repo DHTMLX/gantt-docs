@@ -1,0 +1,158 @@
+{
+  "version.label": {
+    "message": "Nächste",
+    "description": "Das Label für die aktuelle Version"
+  },
+  "sidebar.docs.category.Gantt API": {
+    "message": "Gantt API",
+    "description": "Das Label für die Kategorie Gantt API in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Methods": {
+    "message": "Methoden",
+    "description": "Das Label für die Kategorie Methoden in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Properties": {
+    "message": "Eigenschaften",
+    "description": "Das Label für die Kategorie Eigenschaften in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Events": {
+    "message": "Ereignisse",
+    "description": "Das Label für die Kategorie Ereignisse in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Templates": {
+    "message": "Vorlagen",
+    "description": "Das Label für die Kategorie Vorlagen in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Others": {
+    "message": "Sonstiges",
+    "description": "Das Label für die Kategorie Sonstiges in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.ext": {
+    "message": "ext",
+    "description": "Das Label für die Kategorie ext in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Guides": {
+    "message": "Anleitungen",
+    "description": "Das Label für die Kategorie Anleitungen in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Creating Gantt Chart on a Page": {
+    "message": "Gantt-Diagramm auf einer Seite erstellen",
+    "description": "Das Label für die Kategorie 'Gantt-Diagramm auf einer Seite erstellen' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Creating Gantt Chart on a Page.link.generated-index.title": {
+    "message": "Gantt-Diagramm auf einer Seite erstellen",
+    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Gantt-Diagramm auf einer Seite erstellen' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.How to Install dhtmlxGantt": {
+    "message": "Installation von dhtmlxGantt",
+    "description": "Das Label für die Kategorie 'Installation von dhtmlxGantt' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.How to Start with dhtmlxGantt": {
+    "message": "Erste Schritte mit dhtmlxGantt",
+    "description": "Das Label für die Kategorie 'Erste Schritte mit dhtmlxGantt' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Gantt Chart": {
+    "message": "Gantt-Diagramm konfigurieren",
+    "description": "Das Label für die Kategorie 'Gantt-Diagramm konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Gantt Chart.link.generated-index.title": {
+    "message": "Gantt-Diagramm konfigurieren",
+    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Gantt-Diagramm konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Loading and Saving Tasks": {
+    "message": "Aufgaben laden und speichern",
+    "description": "Das Label für die Kategorie 'Aufgaben laden und speichern' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Loading and Saving Tasks.link.generated-index.title": {
+    "message": "Aufgaben laden und speichern",
+    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Aufgaben laden und speichern' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Exporting and Importing Data": {
+    "message": "Daten exportieren und importieren",
+    "description": "Das Label für die Kategorie 'Daten exportieren und importieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Exporting and Importing Data.link.generated-index.title": {
+    "message": "Daten exportieren und importieren",
+    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Daten exportieren und importieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Export Modules": {
+    "message": "Export-Module",
+    "description": "Das Label für die Kategorie 'Export-Module' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Export Modules.link.generated-index.title": {
+    "message": "Export-Module",
+    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Export-Module' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Grid": {
+    "message": "Gitter konfigurieren",
+    "description": "Das Label für die Kategorie 'Gitter konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Grid.link.generated-index.title": {
+    "message": "Gitter konfigurieren",
+    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Gitter konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Scales": {
+    "message": "Skalen konfigurieren",
+    "description": "Das Label für die Kategorie 'Skalen konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Scales.link.generated-index.title": {
+    "message": "Skalen konfigurieren",
+    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Skalen konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Edit Form": {
+    "message": "Bearbeitungsformular konfigurieren",
+    "description": "Das Label für die Kategorie 'Bearbeitungsformular konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Edit Form.link.generated-index.title": {
+    "message": "Bearbeitungsformular konfigurieren",
+    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Bearbeitungsformular konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Lightbox Elements": {
+    "message": "Lightbox-Elemente konfigurieren",
+    "description": "Das Label für die Kategorie 'Lightbox-Elemente konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Tasks": {
+    "message": "Aufgaben konfigurieren",
+    "description": "Das Label für die Kategorie 'Aufgaben konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Tasks.link.generated-index.title": {
+    "message": "Aufgaben konfigurieren",
+    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Aufgaben konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Dependency Links": {
+    "message": "Abhängigkeitslinks konfigurieren",
+    "description": "Das Label für die Kategorie 'Abhängigkeitslinks konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Dependency Links.link.generated-index.title": {
+    "message": "Abhängigkeitslinks konfigurieren",
+    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Abhängigkeitslinks konfigurieren' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Styling": {
+    "message": "Gestaltung",
+    "description": "Das Label für die Kategorie Gestaltung in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Styling.link.generated-index.title": {
+    "message": "Gestaltung",
+    "description": "Der Titel der generierten Index-Seite für die Kategorie Gestaltung in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Working with Dates": {
+    "message": "Arbeiten mit Datumsangaben",
+    "description": "Das Label für die Kategorie 'Arbeiten mit Datumsangaben' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Common Features": {
+    "message": "Allgemeine Funktionen",
+    "description": "Das Label für die Kategorie 'Allgemeine Funktionen' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Common Features.link.generated-index.title": {
+    "message": "Allgemeine Funktionen",
+    "description": "Der Titel der generierten Index-Seite für die Kategorie 'Allgemeine Funktionen' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.Gantt for Frameworks": {
+    "message": "Gantt für Frameworks",
+    "description": "Das Label für die Kategorie 'Gantt für Frameworks' in der Sidebar-Dokumentation"
+  },
+  "sidebar.docs.category.React Gantt": {
+    "message": "React Gantt",
+    "description": "Das Label für die Kategorie 'React Gantt' in der Sidebar-Dokumentation"
+  }
+}

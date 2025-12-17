@@ -1,0 +1,281 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+
+/* You can override the default Infima variables here. */
+
+:root {
+  --ifm-color-primary: #0288D1;
+  --ifm-color-primary-dark: rgb(33, 175, 144);
+  --ifm-color-primary-darker: rgb(31, 165, 136);
+  --ifm-color-primary-darkest: rgb(26, 136, 112);
+  --ifm-color-primary-light: rgb(70, 203, 174);
+  --ifm-color-primary-lighter: rgb(102, 212, 189);
+  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-code-font-size: 95%;
+  --ifm-color-feedback-background: #fff;
+  --dhx-color-brand: #2095F3;
+  --ifm-hr-border-color: var(--ifm-color-emphasis-200);
+  --ifm-list-item-margin: 0.7rem;
+}
+
+/* deprecated from v3.1
+html[data-theme=dark] {
+  --ifm-color-primary: #26adf7;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(210, 213, 214);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+*/
+
+/* If you have a different syntax highlighting theme for dark mode. */
+/* deprecated from v3.1
+html[data-theme='dark'] .docusaurus-highlight-code-line {
+  background-color: rgb(122, 124, 126);
+  Color which works with dark mode syntax highlighting theme
+}
+*/
+
+/* typography */
+
+/* h1 */
+
+.docTitle_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem- {
+  font-size: 2rem!important;
+}
+
+.markdown > h1 {
+  font-size: 3rem;
+}
+
+/* h2 */
+
+.markdown>h2 {
+  --ifm-h2-font-size: 2rem;
+}
+
+/* h3 */
+
+.markdown>h3 {
+  --ifm-h3-font-size: 1.5rem;
+}
+
+/* end typography */
+
+
+/* Search input styles */
+
+.rel_date {
+  color: #a0a0a0;
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+.DocSearch-Button {
+  order: -1;
+  margin-right: 10px!important;
+}
+
+.DocSearch-Button-Placeholder {
+  flex-basis: 70%;
+  text-align: left;
+  width: 160px;
+}
+
+/* end Search input styles */
+
+/* Link icons */
+
+.iconExternalLink_lCJq,
+.iconExternalLink_node_modules-\@docusaurus-theme-classic-lib-theme-IconExternalLink-styles-module,
+.iconExternalLink_nPIU,
+.iconExternalLink_node_modules-\@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module {
+  display: none; /* hides the link icon */
+}
+
+/* end Link icons */
+
+/* imgs */
+
+.markdown img {
+  margin-bottom: var(--ifm-leading);
+
+  /* center alignment of images */
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+
+  border-radius: 3px;
+}
+
+
+/* end imgs */
+
+
+/* Change the appearance of mobile navigation */
+
+@media (max-width: 996px) {
+  .navbar__toggle {
+      display: block;
+  }
+  .menu--responsive .menu__button {
+      border-radius: 100px;
+      padding: 15px;
+      background: var(--dhx-color-brand);
+      color: var(--ifm-color-feedback-background);
+  }
+}
+
+/* end change the appearance of mobile navigation */
+
+/* for Code Snippet iframe */
+
+.snippet_iframe {
+  border: 1px solid var(--ifm-hr-border-color);
+  margin-bottom: var(--ifm-leading);
+
+  border-radius: 5px; 
+}
+
+/* end for Code Snippet iframe */
+
+/* small code block */
+
+code {
+  border-radius: 5px;
+  padding: 2px 8px;
+  font-weight: 600;
+}
+
+/* end small code block */
+
+/* styles for block of code */
+/*
+.token-line.theme-code-block-highlighted-line{ added after updating to 2.0.0-beta.19 
+  background-color: rgb(156 159 166 / 30%);
+}
+*/
+
+/* specify code box background */
+.codeBlockLines_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module {
+  /*background-color: rgb(90, 86, 86);*/
+}
+  /* specify the comment text color */
+span.token.comment {
+  color: rgb(12, 121, 8) !important;
+} 
+
+  /* specify the comment background color */
+span.token-line.theme-code-block-highlighted-line {
+  background-color: rgba(225, 212, 212, 0.075);
+}
+
+/* end styles for block of code */
+
+/* list */
+
+.markdown ul li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 2;
+}
+
+::marker {
+  color: #9c9c9c;
+}
+
+/* end list */
+
+/* buttons */
+
+.support_btn{
+  
+  font-size: 16pt;
+  color: rgb(53, 148, 243);
+  background-color: transparent;
+  border: 1px solid rgba(53, 148, 243, 0.692);;
+  border-radius: 5px;
+  width: 280px;
+  height: 50px;
+  margin-bottom: 30px;
+}
+
+.support_btn:hover{
+  background-color: rgba(53, 148, 243, 0.692);
+  color: white;
+}
+
+.support_btn > a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* buttons end */
+
+
+/* styles for tables */
+
+table {
+  width: 100%;
+  display: inline-table;
+}
+table th:first-child {
+  width: 25%;
+}
+
+/* end styles for tables */
+
+/* styles for infoblock */
+
+.theme-admonition.theme-admonition-info {
+  line-height: 35px;
+}
+
+/* end styles for infoblock */
+
+p {
+  line-height: 2;
+}
+
+/* pro version and deprecated rules */
+.menu__list-item{
+  position: relative;
+}
+
+.menu__list-item .pro-version::before {
+  content: "PRO";
+  font-size: 11px;
+  margin-top: 7px;
+  left: -18px;
+  color: white;
+  background: #E74C3C;
+  padding: 0px 3px 1px 2px;
+  border-radius: 3px;
+  position: absolute;
+}
+
+.deprecated {
+  text-decoration: line-through;
+}
+
+@import url('./framework_icons.css');
+
+
+.guidesList h3{
+  font-size: unset;
+  color: unset;
+  font-family: unset;
+  font-weight: unset;
+  line-height: unset;
+  margin: unset;
+}

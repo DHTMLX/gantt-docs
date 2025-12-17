@@ -1,0 +1,158 @@
+{
+	"version.label": {
+		"message": "다음",
+		"description": "현재 버전을 위한 라벨"
+	},
+	"sidebar.docs.category.Gantt API": {
+		"message": "간트 API",
+		"description": "사이드바 문서의 Gantt API 카테고리 라벨"
+	},
+	"sidebar.docs.category.Methods": {
+		"message": "메서드",
+		"description": "사이드바 문서의 Methods 카테고리 라벨"
+	},
+	"sidebar.docs.category.Properties": {
+		"message": "속성",
+		"description": "사이드바 문서의 Properties 카테고리 라벨"
+	},
+	"sidebar.docs.category.Events": {
+		"message": "이벤트",
+		"description": "사이드바 문서의 Events 카테고리 라벨"
+	},
+	"sidebar.docs.category.Templates": {
+		"message": "템플릿",
+		"description": "사이드바 문서의 Templates 카테고리 라벨"
+	},
+	"sidebar.docs.category.Others": {
+		"message": "기타",
+		"description": "사이드바 문서의 Others 카테고리 라벨"
+	},
+	"sidebar.docs.category.ext": {
+		"message": "ext",
+		"description": "사이드바 문서의 ext 카테고리 라벨"
+	},
+	"sidebar.docs.category.Guides": {
+		"message": "가이드",
+		"description": "사이드바 문서의 Guides 카테고리 라벨"
+	},
+	"sidebar.docs.category.Creating Gantt Chart on a Page": {
+		"message": "페이지에 간트 차트 만들기",
+		"description": "사이드바 문서의 Creating Gantt Chart on a Page 카테고리 라벨"
+	},
+	"sidebar.docs.category.Creating Gantt Chart on a Page.link.generated-index.title": {
+		"message": "페이지에 간트 차트 만들기",
+		"description": "사이드바 문서의 Creating Gantt Chart on a Page 카테고리 생성된 인덱스 페이지 제목"
+	},
+	"sidebar.docs.category.How to Install dhtmlxGantt": {
+		"message": "dhtmlxGantt 설치 방법",
+		"description": "사이드바 문서의 How to Install dhtmlxGantt 카테고리 라벨"
+	},
+	"sidebar.docs.category.How to Start with dhtmlxGantt": {
+		"message": "dhtmlxGantt 시작 방법",
+		"description": "사이드바 문서의 How to Start with dhtmlxGantt 카테고리 라벨"
+	},
+	"sidebar.docs.category.Configuring Gantt Chart": {
+		"message": "간트 차트 구성",
+		"description": "사이드바 문서의 Configuring Gantt Chart 카테고리 라벨"
+	},
+	"sidebar.docs.category.Configuring Gantt Chart.link.generated-index.title": {
+		"message": "간트 차트 구성",
+		"description": "사이드바 문서의 Configuring Gantt Chart 카테고리 생성된 인덱스 페이지 제목"
+	},
+	"sidebar.docs.category.Loading and Saving Tasks": {
+		"message": "작업 불러오기 및 저장",
+		"description": "사이드바 문서의 Loading and Saving Tasks 카테고리 라벨"
+	},
+	"sidebar.docs.category.Loading and Saving Tasks.link.generated-index.title": {
+		"message": "작업 불러오기 및 저장",
+		"description": "사이드바 문서의 Loading and Saving Tasks 카테고리 생성된 인덱스 페이지 제목"
+	},
+	"sidebar.docs.category.Exporting and Importing Data": {
+		"message": "데이터 내보내기 및 가져오기",
+		"description": "사이드바 문서의 Exporting and Importing Data 카테고리 라벨"
+	},
+	"sidebar.docs.category.Exporting and Importing Data.link.generated-index.title": {
+		"message": "데이터 내보내기 및 가져오기",
+		"description": "사이드바 문서의 Exporting and Importing Data 카테고리 생성된 인덱스 페이지 제목"
+	},
+	"sidebar.docs.category.Export Modules": {
+		"message": "내보내기 모듈",
+		"description": "사이드바 문서의 Export Modules 카테고리 라벨"
+	},
+	"sidebar.docs.category.Export Modules.link.generated-index.title": {
+		"message": "내보내기 모듈",
+		"description": "사이드바 문서의 Export Modules 카테고리 생성된 인덱스 페이지 제목"
+	},
+	"sidebar.docs.category.Configuring Grid": {
+		"message": "그리드 구성",
+		"description": "사이드바 문서의 Configuring Grid 카테고리 라벨"
+	},
+	"sidebar.docs.category.Configuring Grid.link.generated-index.title": {
+		"message": "그리드 구성",
+		"description": "사이드바 문서의 Configuring Grid 카테고리 생성된 인덱스 페이지 제목"
+	},
+	"sidebar.docs.category.Configuring Scales": {
+		"message": "스케일 구성",
+		"description": "사이드바 문서의 Configuring Scales 카테고리 라벨"
+	},
+	"sidebar.docs.category.Configuring Scales.link.generated-index.title": {
+		"message": "스케일 구성",
+		"description": "사이드바 문서의 Configuring Scales 카테고리 생성된 인덱스 페이지 제목"
+	},
+	"sidebar.docs.category.Configuring Edit Form": {
+		"message": "편집 폼 구성",
+		"description": "사이드바 문서의 Configuring Edit Form 카테고리 라벨"
+	},
+	"sidebar.docs.category.Configuring Edit Form.link.generated-index.title": {
+		"message": "편집 폼 구성",
+		"description": "사이드바 문서의 Configuring Edit Form 카테고리 생성된 인덱스 페이지 제목"
+	},
+	"sidebar.docs.category.Configuring Lightbox Elements": {
+		"message": "라이트박스 요소 구성",
+		"description": "사이드바 문서의 Configuring Lightbox Elements 카테고리 라벨"
+	},
+	"sidebar.docs.category.Configuring Tasks": {
+		"message": "작업 구성",
+		"description": "사이드바 문서의 Configuring Tasks 카테고리 라벨"
+	},
+	"sidebar.docs.category.Configuring Tasks.link.generated-index.title": {
+		"message": "작업 구성",
+		"description": "사이드바 문서의 Configuring Tasks 카테고리 생성된 인덱스 페이지 제목"
+	},
+	"sidebar.docs.category.Configuring Dependency Links": {
+		"message": "종속 링크 구성",
+		"description": "사이드바 문서의 Configuring Dependency Links 카테고리 라벨"
+	},
+	"sidebar.docs.category.Configuring Dependency Links.link.generated-index.title": {
+		"message": "종속 링크 구성",
+		"description": "사이드바 문서의 Configuring Dependency Links 카테고리 생성된 인덱스 페이지 제목"
+	},
+	"sidebar.docs.category.Styling": {
+		"message": "스타일링",
+		"description": "사이드바 문서의 Styling 카테고리 라벨"
+	},
+	"sidebar.docs.category.Styling.link.generated-index.title": {
+		"message": "스타일링",
+		"description": "사이드바 문서의 Styling 카테고리 생성된 인덱스 페이지 제목"
+	},
+	"sidebar.docs.category.Working with Dates": {
+		"message": "날짜 작업",
+		"description": "사이드바 문서의 Working with Dates 카테고리 라벨"
+	},
+	"sidebar.docs.category.Common Features": {
+		"message": "공통 기능",
+		"description": "사이드바 문서의 Common Features 카테고리 라벨"
+	},
+	"sidebar.docs.category.Common Features.link.generated-index.title": {
+		"message": "공통 기능",
+		"description": "사이드바 문서의 Common Features 카테고리 생성된 인덱스 페이지 제목"
+	},
+	"sidebar.docs.category.Gantt for Frameworks": {
+		"message": "프레임워크용 간트",
+		"description": "사이드바 문서의 Gantt for Frameworks 카테고리 라벨"
+	},
+	"sidebar.docs.category.React Gantt": {
+		"message": "React 간트",
+		"description": "사이드바 문서의 React Gantt 카테고리 라벨"
+	}
+}

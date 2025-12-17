@@ -1,0 +1,62 @@
+{
+	"link.title.Development center": {
+		"message": "Центр разработки",
+		"description": "Заголовок колонки ссылок в подвале с названием Центр разработки"
+	},
+	"link.title.Community": {
+		"message": "Сообщество",
+		"description": "Заголовок колонки ссылок в подвале с названием Сообщество"
+	},
+	"link.title.Company": {
+		"message": "Компания",
+		"description": "Заголовок колонки ссылок в подвале с названием Компания"
+	},
+	"link.item.label.Download Gantt": {
+		"message": "Скачать Gantt",
+		"description": "Метка ссылки в подвале с надписью Скачать Gantt"
+	},
+	"link.item.label.Examples": {
+		"message": "Примеры",
+		"description": "Метка ссылки в подвале с надписью Примеры"
+	},
+	"link.item.label.Blog": {
+		"message": "Блог",
+		"description": "Метка ссылки в подвале с надписью Блог"
+	},
+	"link.item.label.Forum": {
+		"message": "Форум",
+		"description": "Метка ссылки в подвале с надписью Форум"
+	},
+	"link.item.label.GitHub": {
+		"message": "GitHub",
+		"description": "Метка ссылки в подвале с надписью GitHub"
+	},
+	"link.item.label.Youtube": {
+		"message": "YouTube",
+		"description": "Метка ссылки в подвале с надписью YouTube"
+	},
+	"link.item.label.Facebook": {
+		"message": "Facebook",
+		"description": "Метка ссылки в подвале с надписью Facebook"
+	},
+	"link.item.label.Twitter": {
+		"message": "Twitter",
+		"description": "Метка ссылки в подвале с надписью Twitter"
+	},
+	"link.item.label.Linkedin": {
+		"message": "Linkedin",
+		"description": "Метка ссылки в подвале с надписью Linkedin"
+	},
+	"link.item.label.About us": {
+		"message": "О нас",
+		"description": "Метка ссылки в подвале с надписью О нас"
+	},
+	"link.item.label.Contact us": {
+		"message": "Контакты",
+		"description": "Метка ссылки в подвале с надписью Контакты"
+	},
+	"link.item.label.Licensing": {
+		"message": "Лицензирование",
+		"description": "Метка ссылки в подвале с надписью Лицензирование"
+	}
+}
