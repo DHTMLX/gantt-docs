@@ -25,11 +25,12 @@
   --ifm-list-item-margin: 0.7rem;
 }
 
-/* deprecated from v3.1
+
 html[data-theme=dark] {
   --ifm-color-primary: #26adf7;
+  --ifm-background-color: #111111;
 }
-
+/* deprecated from v3.1
 .docusaurus-highlight-code-line {
   background-color: rgb(210, 213, 214);
   display: block;
