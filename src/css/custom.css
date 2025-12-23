@@ -204,7 +204,7 @@ span.token-line.theme-code-block-highlighted-line {
   font-size: 16pt;
   color: rgb(53, 148, 243);
   background-color: transparent;
-  border: 1px solid rgba(53, 148, 243, 0.692);;
+  border: 1px solid rgba(53, 148, 243, 0.692);
   border-radius: 5px;
   width: 280px;
   height: 50px;
@@ -279,4 +279,17 @@ p {
   font-weight: unset;
   line-height: unset;
   margin: unset;
+}
+
+.contact-support-link-wrapper{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 1rem;
+}
+
+.contact-support-link{
+  font-size: var(--ifm-h4-font-size);
+  font-weight: var(--ifm-heading-font-weight);
+  text-align: center;
 }
