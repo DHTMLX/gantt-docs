@@ -60,12 +60,12 @@ When the file is ready, open it and put the above listed dependencies into it. T
 ~~~js title="package.json"
 {
   "name": "dhx-gantt-app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "body-parser": "^1.19.1",
-    "express": "^4.17.2"
+    "body-parser": "^2.2.1",
+    "express": "^5.2.1"
   },
   "scripts": {
     "test": "echo "Error: no test specified" && exit 1",
@@ -198,21 +198,21 @@ CREATE TABLE `gantt_tasks` (
 
 and add some test data:
 ~~~js
-INSERT INTO `gantt_tasks` VALUES ('1', 'Project #1', '2017-04-01 00:00:00', 
+INSERT INTO `gantt_tasks` VALUES ('1', 'Project #1', '2026-04-01 00:00:00', 
   '5', '0.8', '0');
-INSERT INTO `gantt_tasks` VALUES ('2', 'Task #1', '2017-04-06 00:00:00', 
+INSERT INTO `gantt_tasks` VALUES ('2', 'Task #1', '2026-04-06 00:00:00', 
   '4', '0.5', '1');
-INSERT INTO `gantt_tasks` VALUES ('3', 'Task #2', '2017-04-05 00:00:00', 
+INSERT INTO `gantt_tasks` VALUES ('3', 'Task #2', '2026-04-05 00:00:00', 
   '6', '0.7', '1');
-INSERT INTO `gantt_tasks` VALUES ('4', 'Task #3', '2017-04-07 00:00:00', 
+INSERT INTO `gantt_tasks` VALUES ('4', 'Task #3', '2026-04-07 00:00:00', 
   '2', '0', '1');
-INSERT INTO `gantt_tasks` VALUES ('5', 'Task #1.1', '2017-04-05 00:00:00', 
+INSERT INTO `gantt_tasks` VALUES ('5', 'Task #1.1', '2026-04-05 00:00:00', 
   '5', '0.34', '2');
-INSERT INTO `gantt_tasks` VALUES ('6', 'Task #1.2', '2017-04-11 13:22:17', 
+INSERT INTO `gantt_tasks` VALUES ('6', 'Task #1.2', '2026-04-11 13:22:17', 
   '4', '0.5', '2');
-INSERT INTO `gantt_tasks` VALUES ('7', 'Task #2.1', '2017-04-07 00:00:00',
+INSERT INTO `gantt_tasks` VALUES ('7', 'Task #2.1', '2026-04-07 00:00:00',
   '5', '0.2', '3');
-INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00', 
+INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2026-04-06 00:00:00', 
   '4', '0.9', '3');
 ~~~
 
@@ -286,12 +286,11 @@ async function serverСonfig() {
 
             for (let i = 0; i < tasks.length; i++) {
               tasks[i].start_date = tasks[i].start_date.format("YYYY-MM-DD hh:mm:ss");
-              tasks[i].open = true;
             }
 
             res.send({
                 data: tasks,
-                collections: { links: links }
+                collections: { links }
             });
 
         }).catch(error => {
@@ -321,19 +320,18 @@ What we have done in this code:
 - opened MySql connection to our database 
 - defined that on the <b>GET /data</b> request we'll read data from tasks and links tables and format them so they could be parsed on the client
 
-Note that we've also added the *open* property to ensure that the tasks tree will be initially expanded.
-
 Now, we can call this route from the client:
 
 ~~~js title="public/index.html"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
+gantt.config.open_tree_initially = true;
   
 gantt.init("gantt_here");
 
 gantt.load("/data");/*!*/
 ~~~
 
-Note that [date_format](api/config/date_format.md) config specifies the format of dates (<b>start_date</b> of the task) that comes from the server.
+Note that [date_format](api/config/date_format.md) config specifies the format of dates (<b>start_date</b> of the task) that comes from the server. The [gantt.config.open_tree_initially](api/config/open_tree_initially.md) config is set to `true` to ensure that the tasks tree will be initially expanded.
 
 Let's run the application now by opening http://127.0.0.1:1337. The gantt will be loaded with the test data that we have previously added into the database.
 
@@ -344,7 +342,7 @@ Step 5. Saving changes
 
 The last thing that we should implement is data saving. 
 For this we need a code that will send updates happening on the client side back to the server.
-Go to *public/index.html* and add [gantt.dataProcessor](guides/server-side.md#technique) to the page:
+Go to *public/index.html* and add [gantt.createDataProcessor](guides/server-side.md#technique) to the page:
 
 
 ~~~js title="public/index.html"
@@ -354,9 +352,10 @@ gantt.init("gantt_here");
 
 gantt.load("/data");
   
-const dp = new gantt.dataProcessor("/data");/*!*/
-dp.init(gantt);/*!*/
-dp.setTransactionMode("REST");/*!*/
+const dp = gantt.createDataProcessor({ /*!*/
+  url: '/data', /*!*/
+  mode: 'REST', /*!*/
+}); /*!*/
 ~~~
 
 Let's go deeper and see what role it plays. 
@@ -377,10 +376,11 @@ The resulting code will be rather spacious:
 // add a new task
 app.post("/data/task", (req, res) => {
     let task = getTask(req.body);
+    const { text, start_date, duration, progress, parent } = task;
 
     db.query("INSERT INTO gantt_tasks(text, start_date, duration, progress, parent)"
         + " VALUES (?,?,?,?,?)",
-        [task.text, task.start_date, task.duration, task.progress, task.parent])
+        [text, start_date, duration, progress, parent])
     .then(result => {
         sendResponse(res, "inserted", result.insertId);
     })
@@ -393,10 +393,11 @@ app.post("/data/task", (req, res) => {
 app.put("/data/task/:id", (req, res) => {
     let sid = req.params.id,
         task = getTask(req.body);
+    const { text, start_date, duration, progress, parent } = task;
 
     db.query("UPDATE gantt_tasks SET text = ?, start_date = ?, "
         + "duration = ?, progress = ?, parent = ? WHERE id = ?",
-        [task.text, task.start_date, task.duration, task.progress, task.parent, sid])
+        [text, start_date, duration, progress, parent, sid])
     .then(result => {
         sendResponse(res, "updated");
     })
@@ -421,9 +422,10 @@ app.delete("/data/task/:id", (req, res) => {
 // add a link
 app.post("/data/link", (req, res) => {
     let link = getLink(req.body);
+    const { source, target, type } = link;
 
     db.query("INSERT INTO gantt_links(source, target, type) VALUES (?,?,?)",
-        [link.source, link.target, link.type])
+        [source, target, type])
     .then(result => {
         sendResponse(res, "inserted", result.insertId);
     })
@@ -436,9 +438,10 @@ app.post("/data/link", (req, res) => {
 app.put("/data/link/:id", (req, res) => {
     let sid = req.params.id,
         link = getLink(req.body);
+    const { source, target, type, sid } = link;
 
     db.query("UPDATE gantt_links SET source = ?, target = ?, type = ? WHERE id = ?",
-        [link.source, link.target, link.type, sid])
+        [source, target, type, sid])
     .then(result => {
         sendResponse(res, "updated");
     })
@@ -559,7 +562,7 @@ app.get("/data", (req, res) => {
 
         res.send({
             data: tasks,
-            collections: { links: links }
+            collections: { links }
         });
 
     }).catch(error => {
