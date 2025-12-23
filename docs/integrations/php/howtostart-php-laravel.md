@@ -37,11 +37,17 @@ Create a new application using [Composer](https://getcomposer.org/):
 composer create-project laravel/laravel gantt-laravel-app
 ~~~
 
-It should take a minute to download and create all necessary files. 
-Once everything is done, you can check that everything is correct so far:
+It should take a minute to download and create all necessary files.
+Once everything is done, you can check that everything is correct so far. Go the project folder and run database migrations:
 
 ~~~php
 cd gantt-laravel-app
+php artisan migrate
+~~~
+
+Now, you can run the server:
+
+~~~php
 php artisan serve
 ~~~
 
@@ -323,7 +329,7 @@ The Task model will look as in:
 ~~~php title="/app/Models/Task.php"
 <?php
  
-namespace App;
+namespace App\Models;
  
 use Illuminate\Database\Eloquent\Model;
  
@@ -343,7 +349,7 @@ And the Link model doesn't need any changes:
 ~~~php title="/app/Models/Link.php"
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -509,6 +515,34 @@ class TaskController extends Controller
 }
 ~~~
 
+
+#### Configuring the Task model
+
+Before the controller methods will work, we need to configure the `Task` model to allow mass assignment. [Laravel's mass assignment](https://laravel.com/docs/11.x/eloquent#mass-assignment) protection requires you to explicitly specify which attributes can be filled using the `create()` and `update()` methods. 
+Update your Task model to include the `$fillable` property:
+
+~~~php title="app/Models/Task.php"
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Task extends Model
+{
+    protected $fillable = ['text', 'start_date', 'duration', 'progress', 'parent']; /*!*/
+    protected $appends = ["open"];
+
+    public function getOpenAttribute(){
+        return true;
+    }
+}
+~~~
+
+The `$fillable` array specifies which fields can be mass-assigned. This is a security feature that protects against unwanted fields being updated through user input.
+
+
+
 And a [route](https://laravel.com/docs/12.x/controllers#resource-controllers) for it:
 
 
@@ -576,6 +610,24 @@ class LinkController extends Controller
 	}
 }
 ~~~
+
+#### Configuring the Link model
+
+Similarly to the Task model, we need to configure the Link model for mass assignment:
+
+~~~php title="app/Models/Link.php"
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Link extends Model
+{
+    protected $fillable = ['type', 'source', 'target']; /*!*/
+}
+~~~
+
 
 And its routes:
 
