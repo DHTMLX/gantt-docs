@@ -289,7 +289,7 @@ const config = {
 			"style": "dark",
 			"links": [
 				{
-					"title": "Development center",
+					"title": "Development Center",
 					"items": [
 						{
 							"label": "Download Gantt",
@@ -341,11 +341,11 @@ const config = {
 					"title": "Company",
 					"items": [
 						{
-							"label": "About us",
+							"label": "About Us",
 							"href": "https://dhtmlx.com/docs/company.shtml"
 						},
 						{
-							"label": "Contact us",
+							"label": "Contact Us",
 							"href": "https://dhtmlx.com/docs/contact.shtml"
 						},
 						{
