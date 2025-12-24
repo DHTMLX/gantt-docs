@@ -3,8 +3,8 @@ title: "持续时间控件"
 sidebar_label: "持续时间控件"
 ---
 
-持续时间控件
-======================
+# 持续时间控件
+
 
 本节介绍了一组选择器，用于通过指定任务的开始日期和持续天数来设置任务的持续时间。
 
@@ -21,8 +21,8 @@ gantt.config.lightbox.sections="["
 [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
-初始化
----------------------------
+## 初始化
+
 
 默认情况下，lightbox 包含一个 **duration** 控件。如需添加更多控件，请按照以下步骤操作:
 
@@ -43,8 +43,8 @@ gantt.locale.labels.section_time2 = "实际持续时间";
 ~~~
 
 
-属性
-------------------------
+## 属性
+
 
 以下是 **time** 控件常用的主要属性（完整列表见 [这里](api/config/lightbox.md)）:
 
@@ -63,8 +63,8 @@ gantt.locale.labels.section_time2 = "实际持续时间";
 
   
 
-配置日期时间选择器
----------------------------------------
+## 配置日期时间选择器
+
 
 可以通过 [time_format](api/config/lightbox.md) 属性自定义"时间区间"分区中的选择器（参见 [날짜 형식 지정](guides/date-format.md)）:
 
@@ -98,8 +98,8 @@ time_format:["%H:%i", "%m", "%d"]
 time_format:["%H:%i", "%M", "%d", "%Y"] // "%m" 被 "%M" 替换
 ~~~
 
-映射到自定义开始/结束日期时间属性
--------------------------------------------------
+## 映射到自定义开始/结束日期时间属性
+
 
 ### 默认映射
 
@@ -133,8 +133,8 @@ gantt.config.lightbox.sections = [
 :::
 
 
-切换分区可见性
---------------------------
+## 切换分区可见性
+
 
 你可以通过在 lightbox 分区配置中设置 **type:"duration_optional"** 和 **button: true** 来切换持续时间分区的可见性:
 

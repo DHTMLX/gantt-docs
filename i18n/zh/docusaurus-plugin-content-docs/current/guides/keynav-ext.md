@@ -3,16 +3,16 @@ title: "键盘导航扩展"
 sidebar_label: "键盘导航扩展"
 ---
 
-键盘导航扩展
-==========================
+# 键盘导航扩展
+
 
 关于键盘导航扩展的更多信息，请参阅文章 [키보드 내비게이션](guides/keyboard-navigation.md)。
 
 
 *keyboardNavigation* 对象提供以下 API:
 
-方法
-----------
+## 方法
+
 
 - <span class="submethod">**focus (config): void**</span> - 允许选择网格中的任意单元格。此方法仅在 Grid 已经获得焦点时有效。
 

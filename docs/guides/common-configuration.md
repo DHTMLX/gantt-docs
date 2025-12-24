@@ -3,8 +3,8 @@ title: "Configuration"
 sidebar_label: "Configuration"
 ---
 
-Configuration
-================================================
+# Configuration
+
 
 To gain the desired look for the Gantt chart, dhtmlxGantt provides 2 objects: 
 

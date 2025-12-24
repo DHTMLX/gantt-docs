@@ -3,8 +3,8 @@ title: "Duration Control"
 sidebar_label: "Duration Control"
 ---
 
-Duration Control  
-======================
+# Duration Control  
+
 
 이 섹션에서는 작업의 시작 날짜와 기간(일수)을 지정하여 작업의 기간을 설정할 수 있는 셀렉터 세트를 소개합니다.
 
@@ -21,8 +21,8 @@ gantt.config.lightbox.sections="["
 [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
-초기화  
----------------------------
+## 초기화  
+
 
 기본적으로 lightbox에는 하나의 **duration** 컨트롤이 포함되어 있습니다. 여러 개를 추가하려면 다음 단계를 따르세요:
 
@@ -42,8 +42,8 @@ gantt.config.lightbox.sections="["
 gantt.locale.labels.section_time2 = "Actual duration";
 ~~~
 
-속성  
-------------------------
+## 속성  
+
 
 **time** 컨트롤에서 자주 사용하는 주요 속성은 다음과 같습니다 (전체 목록은 [여기](api/config/lightbox.md)에서 확인하세요):
 
@@ -60,8 +60,8 @@ gantt.locale.labels.section_time2 = "Actual duration";
 - **single_date** - (*boolean*) *true*로 설정 시 *start Date* 셀렉터만 표시. 편집된 작업은 시작 날짜만으로 정의되고 기간은 0이 됨. 주로 [milestones](guides/task-types.md#milestones)에 유용
 - **time_format** - (*string*) 날짜-시간 셀렉터의 순서 지정
 
-날짜-시간 셀렉터 구성  
----------------------------------------
+## 날짜-시간 셀렉터 구성  
+
 
 "Time period" 섹션의 셀렉터는 [time_format](api/config/lightbox.md) 속성을 사용하여 커스터마이즈할 수 있습니다 ([날짜 형식 지정](guides/date-format.md) 참조):
 
@@ -95,8 +95,8 @@ time_format:["%H:%i", "%m", "%d"]
 time_format:["%H:%i", "%M", "%d", "%Y"] // "%m" 대신 "%M" 사용
 ~~~
 
-커스텀 시작/종료 날짜-시간 속성 매핑  
--------------------------------------------------
+## 커스텀 시작/종료 날짜-시간 속성 매핑  
+
 
 ### 기본 매핑
 
@@ -129,8 +129,8 @@ gantt.config.lightbox.sections = [
 속성이 생략된 경우, 컨트롤은 관련 필수 날짜 속성으로 기본 설정됩니다.
 :::
 
-섹션 가시성 전환  
---------------------------
+## 섹션 가시성 전환  
+
 
 lightbox 섹션 설정에서 **type:"duration_optional"** 및 **button: true**로 duration 섹션의 표시 여부를 토글할 수 있습니다:
 

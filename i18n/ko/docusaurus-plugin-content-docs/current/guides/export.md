@@ -3,8 +3,8 @@ title: "Export to PDF and PNG"
 sidebar_label: "Export to PDF and PNG"
 ---
 
-Export to PDF and PNG  
-==================================
+# Export to PDF and PNG  
+
 
 dhtmlxGantt는 Gantt 차트를 [PDF](guides/export.md#exporttopdf) 또는 [PNG](guides/export.md#exporttopng) 파일로 저장할 수 있는 온라인 내보내기 서비스를 제공합니다.
 
@@ -15,7 +15,7 @@ dhtmlxGantt는 Gantt 차트를 [PDF](guides/export.md#exporttopdf) 또는 [PNG](
 Gantt 차트를 PDF 또는 PNG로 로컬에서 내보내기 위해 직접 설정할 수 있는 다양한 내보내기 서비스가 있습니다. 내보내기 서비스는 Gantt 패키지에 포함되어 있지 않으므로 각 서비스의 사용 조건에 대해서는 [관련 문서](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)를 참고하세요.
 
 ## 온라인 내보내기 서비스 제한 사항  {#onlineexportservicerestrictions}
------------------------------
+
 
 :::note
 내보내기 서비스는 처리 시간과 요청 크기에 제한이 있습니다.
@@ -38,7 +38,7 @@ Error: Timeout trigger 20 seconds
 또한, [MSProject](guides/export-msproject.md) 및 [Primavera P6](guides/export-primavera.md) 내보내기/가져오기 서비스(*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* 전용)를 위한 전용 API 엔드포인트 **https://export.dhtmlx.com/gantt/project** 가 있습니다. 이 엔드포인트는 최대 **40 MB**의 요청을 지원합니다.
 
 ## 내보내기 모듈 사용   {#usingexportmodules}
----------------------
+
 
 :::note
 대용량 차트 내보내기에는 [독립형 내보내기 모듈](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)을 사용할 수 있습니다.  
@@ -48,7 +48,7 @@ Error: Timeout trigger 20 seconds
 [PDF 내보내기 모듈 사용에 대한 자세한 내용은 여기를 참고하세요.](guides/pdf-export-module.md)
 
 ## Export to PDF   {#exporttopdf}
------------------------------
+
 
 Gantt 차트를 PDF로 내보내려면 다음 단계를 따르세요:
 
@@ -85,7 +85,7 @@ Gantt 8.0 미만 버전을 사용하는 경우, 온라인 내보내기 서비스
 
 
 ## Export to PNG   {#exporttopng}
------------------------------
+
 
 Gantt 차트를 PNG 이미지로 내보내려면 다음 단계를 따르세요:
 
@@ -122,7 +122,7 @@ Gantt 8.0 미만 버전을 사용하는 경우, 온라인 내보내기 서비스
 
 
 ## 내보내기 메서드의 파라미터   {#parametersoftheexportmethods}
-----------------------------------------------------------
+
 
 [exportToPDF](api/method/exporttopdf.md) 및 [exportToPNG](api/method/exporttopng.md) 메서드는 다양한 선택적 속성을 가진 객체를 인자로 받을 수 있습니다:
 
@@ -244,7 +244,7 @@ gantt.exportToPDF({
 ~~~
 
 ## 내보낼 데이터 지정  {#datatoexport}
------------------
+
 
 PDF 또는 PNG로 내보낼 작업을 지정하는 방법은 두 가지가 있습니다:
 

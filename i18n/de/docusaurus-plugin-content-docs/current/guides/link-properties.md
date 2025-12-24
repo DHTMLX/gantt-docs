@@ -3,16 +3,16 @@ title: "Link-Eigenschaften"
 sidebar_label: "Link-Eigenschaften"
 ---
 
-Link-Eigenschaften 
-=======================================
+# Link-Eigenschaften 
+
 
 Auf dieser Seite sind alle Eigenschaften aufgeführt, die ein Link-Objekt haben kann.
 
 Für einen vollständigen Überblick über die Eigenschaften von Aufgabenobjekten lesen Sie den Artikel [Task Properties](guides/task-properties.md).
 
 
-Erforderliche Eigenschaften
--------------------
+## Erforderliche Eigenschaften
+
 
 <table>
   <tbody>
@@ -51,8 +51,8 @@ gantt.config.links.start_to_start = "start2start";
 Beachten Sie, dass diese Änderung nur die Speicherung des Abhängigkeitstyps betrifft, nicht aber dessen Anzeige.
 
 
-Optionale Eigenschaften
-------------------
+## Optionale Eigenschaften
+
 
 <table>
   <tbody>

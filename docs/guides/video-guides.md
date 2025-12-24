@@ -3,8 +3,8 @@ title: "Video Guides"
 sidebar_label: "Video Guides"
 ---
 
-Video Guides
-======
+# Video Guides
+
 
 The article provides a short review of video guides prepared for you to make Gantt easier to understand. 
 

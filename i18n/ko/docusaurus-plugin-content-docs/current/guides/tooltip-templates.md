@@ -3,8 +3,8 @@ title: "툴팁 템플릿"
 sidebar_label: "툴팁 템플릿"
 ---
 
-툴팁 템플릿
-=============================
+# 툴팁 템플릿
+
 <table class="webixdoc_links">
     <tbody>
         <tr>

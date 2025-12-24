@@ -3,8 +3,8 @@ title: "Fullscreen 扩展"
 sidebar_label: "Fullscreen 扩展"
 ---
 
-Fullscreen 扩展
-========================
+# Fullscreen 扩展
+
 
 关于 Fullscreen 扩展的更多信息，请参阅 [전체 화면 모드](guides/fullscreen-mode.md) 文章。
 

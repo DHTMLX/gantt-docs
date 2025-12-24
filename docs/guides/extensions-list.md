@@ -3,15 +3,15 @@ title: "Full List of Extensions"
 sidebar_label: "Full List of Extensions"
 ---
 
-Full List of Extensions
-=========================
+# Full List of Extensions
+
 
 dhtmlxGantt includes a set of extensions which add extra functionality to the standard behavior.
 
 To use an extension, you should activate the plugin with the help of the [gantt.plugins](api/method/plugins.md) method. 
 
-Advanced drag-n-drop
-----------------------
+## Advanced drag-n-drop
+
 
 Provides the possibility to create and select tasks with drag-n-drop.
 
@@ -57,8 +57,8 @@ API: [auto_scheduling](api/config/auto_scheduling.md)
 [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 
-Critical path
--------------
+## Critical path
+
 
 :::note
 This extension is available in PRO version only
@@ -84,8 +84,8 @@ API: [highlight_critical_path](api/config/highlight_critical_path.md)
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-Drag Timeline
--------------
+## Drag Timeline
+
 
 Allows scrolling timeline views by mouse-drag.
 
@@ -103,8 +103,8 @@ API: [drag_timeline](api/config/drag_timeline.md)
 [Drag timeline](https://docs.dhtmlx.com/gantt/samples/02_extensions/27_drag_timeline.html)
 
 
-Extra overlay
---------------
+## Extra overlay
+
 
 :::note
 This extension is available in the PRO version only.
@@ -126,8 +126,8 @@ Article: [Custom Elements in Timeline Area](guides/baselines.md#extra-overlay-fo
 [Gantt chart with overlay and zoom (S-Curve)](https://docs.dhtmlx.com/gantt/samples/02_extensions/21_overlay.html)
 
 
-Export service
------------
+## Export service
+
 
 Provides the possibility to enable the online export service.
 
@@ -159,8 +159,8 @@ Article: [Full Screen Mode](guides/fullscreen-mode.md)
 [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 
-Grouping
-------------
+## Grouping
+
 
 :::note
 This extension is available in PRO version only
@@ -224,8 +224,8 @@ API: [multiselect](api/config/multiselect.md)
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-Quick info
------------
+## Quick info
+
 
 Provides a popup with a task details.
 
@@ -246,8 +246,8 @@ Article: [Templates of the 'Quick Info' Extension (Touch Support)](guides/touch-
 [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
 
-Tooltip
----------
+## Tooltip
+
 Gives the possibility to add extra information for users without overflowing the screen with the text.
 
 ~~~js
@@ -264,8 +264,8 @@ Article: [Tooltips for Gantt Elements](guides/tooltips.md)
 [Tooltip](https://docs.dhtmlx.com/gantt/samples/02_extensions/02_tooltip.html)
 
 
-Undo
-------
+## Undo
+
 
 Allows you to undo/redo the made changes.
 
@@ -286,8 +286,8 @@ API: [undo](api/config/undo.md), [redo](api/config/redo.md)
 [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 
-Vertical marker
----------
+## Vertical marker
+
 
 Highlights certain dates or date ranges.
 

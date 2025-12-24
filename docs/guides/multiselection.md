@@ -3,16 +3,16 @@ title: "Multi-Task Selection"
 sidebar_label: "Multi-Task Selection"
 ---
 
-Multi-Task Selection 
-===========================================
+# Multi-Task Selection 
+
 
 Starting from version 3.2, the library provides the **multiselect** extension that allows you to select multiple tasks at once.
 
 <div style="text-align:center;">![multiselection](/img/multiselection.png)</div>
 
 
-Activating multi-task selection
---------------------------------------
+## Activating multi-task selection
+
 To activate multi-task selection for tasks, enable it using the [gantt.plugins](api/method/plugins.md) method:
 
 ~~~js
@@ -44,8 +44,8 @@ gantt.config.multiselect = false;
 ~~~
 
 
-One-time update for multiple tasks
---------------------------------
+## One-time update for multiple tasks
+
 To update multiple tasks/links at once, use the [batchUpdate](api/method/batchupdate.md) method:
 
 ~~~js
@@ -65,8 +65,8 @@ The method allows you to update multiple tasks/links at once with a single re-re
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-Iterator
-------------------------
+## Iterator
+
 To iterate over all selected tasks in the Gantt chart, use the [eachSelectedTask](api/method/eachselectedtask.md) method:
 
 ~~~js
@@ -82,16 +82,16 @@ gantt.batchUpdate(function () {
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-Simultaneous indentation/outdentation
--------------------------------------
+## Simultaneous indentation/outdentation
+
 Multi-task selection allows you to apply different operations to multiple tasks at once. For example, you can add an indentation/outdentation thereby transforming tasks to sub-tasks and vice versa.
 
 
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-Checking if a task is selected
--------------------------------------
+## Checking if a task is selected
+
 To check if a task is currenly selected, use the [isSelectedTask](api/method/isselectedtask.md) method:
 
 ~~~js
@@ -113,8 +113,8 @@ gantt.toggleTaskSelection("t_1"); //"t_1" is the task's id
 gantt.render();
 ~~~
 
-Getting all selected tasks
------------------------------------
+## Getting all selected tasks
+
 To get all tasks that are currently selected, use the [getSelectedTasks](api/method/getselectedtasks.md) method:
 
 ~~~js
@@ -127,8 +127,8 @@ To get the last selected task, use the [getLastSelectedTask](api/method/getlasts
 gantt.getLastSelectedTask();
 ~~~
 
-Limiting multi-task selection within one level
------------------------------------------------
+## Limiting multi-task selection within one level
+
 To deny selecting tasks from different levels, use the [multiselect_one_level](api/config/multiselect_one_level.md) option:
 
 ~~~js
@@ -150,8 +150,8 @@ gantt.config.drag_multiple = true;
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-Opening editor with one click
-------------------------------
+## Opening editor with one click
+
 
 In the single selection mode, Gantt opens the inline editor after you click on a task. 
 

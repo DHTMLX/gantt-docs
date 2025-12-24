@@ -43,7 +43,7 @@ gantt.getClosestWorkTime({ date: new Date(2019,04,26), task:task });
 - 또한, 이 메서드는 [캘린더 객체](api/other/calendar.md)에서 직접 호출할 수도 있습니다.
 
 ## 설정 객체 속성 {#configurationobjectproperties}
----------------------------------------
+
 
 설정 객체는 다음 속성을 포함할 수 있습니다:
 

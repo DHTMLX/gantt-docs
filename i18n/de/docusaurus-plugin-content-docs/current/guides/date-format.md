@@ -3,8 +3,8 @@ title: "Datumsformat-Spezifikation"
 sidebar_label: "Datumsformat-Spezifikation"
 ---
 
-Datumsformat-Spezifikation
-==============
+# Datumsformat-Spezifikation
+
 
 Beim Festlegen von Datumsformaten können Sie die folgenden Zeichen verwenden:
 

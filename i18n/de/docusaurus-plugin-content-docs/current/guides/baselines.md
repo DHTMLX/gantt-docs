@@ -3,8 +3,8 @@ title: "Benutzerdefinierte Elemente im Timeline-Bereich"
 sidebar_label: "Benutzerdefinierte Elemente im Timeline-Bereich"
 ---
 
-Benutzerdefinierte Elemente im Timeline-Bereich
-==========================================
+# Benutzerdefinierte Elemente im Timeline-Bereich
+
 :::info
  Diese Funktion ist nur in der PRO-Edition verfügbar. 
 :::
@@ -43,8 +43,8 @@ Hinweise:
 Wenn Sie in jeder Timeline-Zelle eigenen Inhalt anzeigen möchten, ist es einfacher und schneller, HTML direkt mit der Vorlage [timeline_cell_content](api/template/timeline_cell_content.md) in die Zellen einzufügen.
 :::
 
-Beispiel für die Verwendung
---------------------------
+## Beispiel für die Verwendung
+
 
 Hier ein Beispiel zur Verdeutlichung der Funktionsweise: Angenommen, Sie haben sowohl geplante als auch tatsächliche Zeiten für Aufgaben und möchten beide anzeigen.
 
@@ -160,8 +160,8 @@ Den vollständigen Beispielcode finden Sie im zugehörigen Beispiel.
 [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 
-Beispiele für benutzerdefinierte Inhalte
-----------------
+## Beispiele für benutzerdefinierte Inhalte
+
 
 Hier sind einige Beispiele, wie Sie die Methode [addTaskLayer()](api/method/addtasklayer.md) verwenden können, um die Gantt-Diagramm-Zeitleiste mit verschiedenen benutzerdefinierten Elementen zu erweitern:
 
@@ -177,8 +177,8 @@ Hier sind einige Beispiele, wie Sie die Methode [addTaskLayer()](api/method/addt
 - [Wiederkehrende Aufgaben](https://snippet.dhtmlx.com/5/7faa7b03a) 
 
 
-Drag-and-drop für benutzerdefinierte Elemente
-----------------------------------
+## Drag-and-drop für benutzerdefinierte Elemente
+
 
 Wenn Sie Drag-and-drop für benutzerdefinierte Elemente ermöglichen möchten, sollten Sie wissen, dass DHTMLX Gantt hierfür keine eingebaute Funktion bietet. Sie können dies jedoch mit einigen einfachen Schritten manuell umsetzen.
 
@@ -272,8 +272,8 @@ gantt.event(window, 'mouseup', function(e) {
 });
 ~~~
 
-Zusätzliche Overlay-Schicht für das Diagramm
-----------------
+## Zusätzliche Overlay-Schicht für das Diagramm
+
 
 Mit dhtmlxGantt können Sie eine zusätzliche Ebene über dem Diagramm hinzufügen, um benutzerdefinierte Inhalte zu platzieren. Dieses Overlay kann ein div-Container, ein HTML-Canvas oder ein anderes Element sein. Sie können jede beliebige Drittanbieter-Bibliothek verwenden, um Inhalte darin darzustellen.
 

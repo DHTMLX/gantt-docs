@@ -3,8 +3,8 @@ title: "Configuring Grid"
 sidebar_label: "Configuring Grid"
 ---
 
-Configuring Grid 
-============================
+# Configuring Grid 
+
 
 ![gantt_left](/img/gantt_left.png)
 

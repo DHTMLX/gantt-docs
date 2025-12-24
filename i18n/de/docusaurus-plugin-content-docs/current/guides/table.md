@@ -3,8 +3,8 @@ title: "Konfiguration des Rasters"
 sidebar_label: "Konfiguration des Rasters"
 ---
 
-Konfiguration des Rasters 
-============================
+# Konfiguration des Rasters 
+
 
 ![gantt_left](/img/gantt_left.png)
 

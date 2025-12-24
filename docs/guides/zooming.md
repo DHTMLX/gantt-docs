@@ -3,13 +3,13 @@ title: "Zooming"
 sidebar_label: "Zooming"
 ---
 
-Zooming
-==============
+# Zooming
+
 
 dhtmlxGantt provides a built-in module for handy managing of time scale zooming. In case you want to customize the default zooming behaviour, there is a [flexible API](guides/zoom.md) that allows you to implement the ability to change the settings of time scale dynamically.
 
-Built-in zooming module
--------------------
+## Built-in zooming module
+
 
 The embedded [zooming module](guides/zoom.md) is declared in the **gantt.ext.zoom** extension. To enable the module, you need to call **gantt.ext.zoom.init(zoomConfig)** and pass 
 a **zoomConfig** object with configuration settings that contains an array of zooming levels. For example:
@@ -83,8 +83,8 @@ The detailed information about the zooming module and its API is given in the ar
 [Mouse wheel zoom](https://docs.dhtmlx.com/gantt/samples/03_scales/14_scale_zoom_by_wheelmouse.html)
 
 
-Custom zooming settings
-----------------------
+## Custom zooming settings
+
 
 In case you don't want to use the zooming module and prefer controlling scale settings manually, you can do so via corresponding configuration options.
 

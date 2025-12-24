@@ -3,8 +3,8 @@ title: "dhtmlxGantt 与 Angular 集成"
 sidebar_label: "Angular"
 ---
 
-dhtmlxGantt 与 Angular 集成
-==========================
+# dhtmlxGantt 与 Angular 集成
+
 
 本指南假设您已具备 Angular 的基础概念和模式。如果需要复习，请参考 [Angular 官方文档](https://angular.io/docs) 中的入门教程。
 

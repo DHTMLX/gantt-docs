@@ -3,8 +3,8 @@ title: "Skins"
 sidebar_label: "Skins"
 ---
 
-Skins
-==============
+# Skins
+
 
 dhtmlxGantt bietet eine Vielzahl vordefinierter Skins, mit denen Sie das Gesamtbild des Gantt-Diagramms einfach anpassen können:
 
@@ -102,7 +102,7 @@ Ab Version 6.3 importiert der Material-Skin die Schriftart `Roboto` nicht mehr a
 ~~~
 
 ## 'Skin Contrast Black' {#contrastblackskin}
---------------------
+
 Um den 'Contrast Black'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**
@@ -119,7 +119,7 @@ gantt.skin = "contrast-black";
 
 
 ## 'Skin Contrast White' {#contrastwhiteskin}
----------------------
+
 Um den 'Contrast White'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**
@@ -136,7 +136,7 @@ gantt.skin = "contrast-white";
 
 
 ## 'Skin Skyblue' {#skyblueskin}
-----------------------------------
+
 Um den 'Skyblue'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**
@@ -153,7 +153,7 @@ gantt.skin = "skyblue";
 
 
 ## 'Skin Meadow' {#meadowskin}
------------------------------
+
 
 Um den 'Meadow'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
 
@@ -171,7 +171,7 @@ gantt.skin = "meadow";
 
 
 ## 'Skin Broadway' {#broadwayskin}
------------------------------
+
 Um den 'Broadway'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**

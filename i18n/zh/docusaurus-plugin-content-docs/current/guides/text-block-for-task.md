@@ -3,14 +3,14 @@ title: "显示任务内容"
 sidebar_label: "显示任务内容"
 ---
 
-显示任务内容
-====================================
+# 显示任务内容
+
 任务条旁边的标签可用于显示与任务相关的额外细节信息。通常，这包括分配的资源信息，如人员、材料等。
 
 ![assigned_text](/img/assigned_text.png)
 
-自定义任务条的显示格式
--------------------------------------------------
+## 自定义任务条的显示格式
+
 要修改任务条的默认外观，可以使用 [task_text](api/template/task_text.md) 模板:
 
 ~~~js
@@ -27,8 +27,8 @@ gantt.templates.task_text="function(start,end,task){"
 
 ![task_text](/img/task_text.png)
 
-在任务条左侧显示文本
--------------------------------------------------
+## 在任务条左侧显示文本
+
 若要在任务条左侧添加文本块，请使用 [leftside_text](api/template/leftside_text.md) 模板:
 
 ~~~js
@@ -40,8 +40,8 @@ gantt.templates.leftside_text = function(start, end, task){
 [Define side content](https://docs.dhtmlx.com/gantt/samples/04_customization/01_outer_content.html)
 
 
-在任务条右侧显示文本
--------------------------------------------------
+## 在任务条右侧显示文本
+
 若要在任务条右侧添加文本块，请使用 [rightside_text](api/template/rightside_text.md) 模板:
 
 ~~~js

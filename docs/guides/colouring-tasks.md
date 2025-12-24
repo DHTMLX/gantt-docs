@@ -3,8 +3,8 @@ title: "Tasks Coloring"
 sidebar_label: "Tasks Coloring"
 ---
 
-Tasks Coloring 
-=======================
+# Tasks Coloring 
+
 
 Coloring tasks allows you to highlight specific tasks in order to pay user's attention to them.
 

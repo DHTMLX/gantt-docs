@@ -3,8 +3,8 @@ title: "Export/Import for Excel, Export to iCal"
 sidebar_label: "Export/Import for Excel, Export to iCal"
 ---
 
-Export/Import for Excel, Export to iCal
-==============================
+# Export/Import for Excel, Export to iCal
+
 
 dhtmlxGantt 라이브러리는 간트 차트의 데이터를 Excel 및 iCal 형식으로 내보내는 기능을 지원합니다. 또한 Excel 파일에서 간트 차트로 데이터를 가져오는 것도 가능합니다.
 
@@ -17,8 +17,8 @@ dhtmlxGantt 라이브러리는 간트 차트의 데이터를 Excel 및 iCal 형�
 이 내보내기 서비스들은 Gantt 패키지에 포함되어 있지 않음을 유의하세요. 
 자세한 내용은 [관련 문서](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)를 참고하여 사용 조건을 확인하세요.
 
-온라인 내보내기 서비스 제한 사항
------------------------------
+## 온라인 내보내기 서비스 제한 사항
+
 
 :::note
 내보내기 서비스에는 처리 시간 및 요청 크기에 대한 제한이 있습니다.
@@ -42,8 +42,8 @@ Error: Timeout trigger 20 seconds
 [Primavera P6](guides/export-primavera.md) 
 내보내기/가져오기 서비스(*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*)를 위한 전용 API 엔드포인트 **https://export.dhtmlx.com/gantt/project**도 있습니다. 이 엔드포인트의 최대 요청 크기는 **40 MB**입니다.
 
-내보내기 모듈 사용하기
----------------------
+## 내보내기 모듈 사용하기
+
 
 :::note
 대용량 차트 내보내기가 필요한 경우 [독립 실행형 내보내기 모듈](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 사용을 고려하세요. 
@@ -52,8 +52,8 @@ Error: Timeout trigger 20 seconds
 
 PDF 내보내기 모듈 사용법에 대한 자세한 내용은 다음 가이드에서 확인할 수 있습니다: [PDF export module](guides/pdf-export-module.md). 이 모듈은 PDF, PNG, Excel, iCal 형식으로 내보내기를 지원합니다.
 
-Excel로 내보내기
--------------------
+## Excel로 내보내기
+
 
 간트 차트의 데이터를 Excel 파일로 내보내려면 다음 단계를 따르세요:
 
@@ -191,8 +191,8 @@ gantt.exportToExcel({
 **Related example:** [Export colors of tasks](https://snippet.dhtmlx.com/t2znjrfj)
 
 
-Excel에서 가져오기
--------------------
+## Excel에서 가져오기
+
 
 임의의 Excel 열을 Gantt 데이터 모델에 자동 매핑하는 기능은 지원되지 않으므로, 내보내기 서비스는 Excel 문서를 JSON으로 반환되는 행 배열로 변환합니다. 
 이 데이터를 Gantt 형식으로 변환하는 작업은 개발자가 직접 구현해야 합니다.
@@ -276,8 +276,8 @@ gantt.importFromExcel({
 ~~~
 
 
-iCal로 내보내기
--------------------
+## iCal로 내보내기
+
 
 간트 차트 데이터를 iCal 문자열로 내보내려면 다음 단계를 따르세요:
 

@@ -3,8 +3,8 @@ title: "页面上的多个甘特图"
 sidebar_label: "页面上的多个甘特图"
 ---
 
-页面上的多个甘特图
-=========================
+# 页面上的多个甘特图
+
 
 :::info
 此功能包含在 Gantt PRO 版本中，可通过 Commercial（自 2021 年 10 月 6 日起）、Enterprise 和 Ultimate 许可证获得。
@@ -12,8 +12,8 @@ sidebar_label: "页面上的多个甘特图"
 
 本质上，dhtmlxGantt 作为一个静态对象存在，其默认实例始终存在于页面上。你可以随时通过全局 **gantt** 对象访问它。不过，如果有需要，你也可以创建一个新的 gantt 实例。
 
-甘特实例配置
------------------------------
+## 甘特实例配置
+
 要创建一个新的 dhtmlxGantt 实例，请使用 **Gantt.getGanttInstance()** 方法:
 
 ~~~js
@@ -141,8 +141,8 @@ window.addEventListener("DOMContentLoaded", function(){
 </body>
 ~~~
 
-与 dhtmlxLayout 的集成
-------------------------
+## 与 dhtmlxLayout 的集成
+
 
 在页面上组织多个甘特图的一个有效方法是使用 [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html)。它提供了整洁的布局框架，并能正确处理与其他页面元素的交互以及大小调整事件。
 
@@ -172,8 +172,8 @@ function init() {
 }
 ~~~
 
-Gantt 和 DataProcessor 实例的析构函数
-------------------------------------
+## Gantt 和 DataProcessor 实例的析构函数
+
 
 从 5.1 版本开始，dhtmlxGantt 对象提供了 [destructor](api/method/destructor.md)，用于清理不再需要的 gantt 实例。
 

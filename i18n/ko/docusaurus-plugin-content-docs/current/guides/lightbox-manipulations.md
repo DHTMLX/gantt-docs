@@ -3,8 +3,8 @@ title: "Lightbox 요소 작업하기"
 sidebar_label: "Lightbox 요소 작업하기"
 ---
 
-Lightbox 요소 작업하기
-====================================
+# Lightbox 요소 작업하기
+
 
 ## 컨트롤 값 가져오기/설정하기
 

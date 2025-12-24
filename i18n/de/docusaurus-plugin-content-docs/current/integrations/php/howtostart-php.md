@@ -3,8 +3,8 @@ title: "dhtmlxGantt mit PHP: Slim3"
 sidebar_label: "PHP: Slim3"
 ---
 
-dhtmlxGantt mit PHP: Slim3
-==========================
+# dhtmlxGantt mit PHP: Slim3
+
 
 Dieses Tutorial enthält alle wichtigen Details zur Erstellung eines Gantt-Diagramms mit PHP 5.6x-7.x in Kombination mit einer RESTful API auf der Serverseite.
 
@@ -29,8 +29,8 @@ In diesem Beispiel wird das [Slim 3](https://www.slimframework.com/) Framework f
 Der vollständige Quellcode ist [auf GitHub verfügbar](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x).
 :::
 
-Schritt 1. Initialisierung eines Projekts
------------------------------------------
+## Schritt 1. Initialisierung eines Projekts
+
 
 ### Ein Projekt erstellen
 
@@ -57,8 +57,8 @@ php -S 0.0.0.0:8080 -t public public/index.php
 
 Öffnen Sie dann [http://127.0.0.1:8080](http://127.0.0.1:8080) in Ihrem Browser, um die Standard-Willkommensseite von Slim zu sehen.
 
-Schritt 2. Gantt zur Seite hinzufügen
------------------------
+## Schritt 2. Gantt zur Seite hinzufügen
+
 
 Als nächstes erstellen wir eine Seite, die unser Gantt-Diagramm anzeigt. Die Standardseite finden Sie unter <b>templates/index.phtml</b>. Hier wird das Gantt-Diagramm eingebettet und die nötige Einrichtung für das Laden der Daten vorgenommen.
 
@@ -101,8 +101,8 @@ php -S 0.0.0.0:8080 -t public public/index.php
 
 Öffnen Sie [http://127.0.0.1:8080/](http://127.0.0.1:8080/) in Ihrem Browser. Sie sollten das Gantt-Diagramm auf der Seite sehen.
 
-Schritt 3. Eine Datenbank konfigurieren
----------------------
+## Schritt 3. Eine Datenbank konfigurieren
+
 
 Erstellen Sie nun eine einfache Datenbank mit zwei Tabellen.
 
@@ -149,8 +149,8 @@ Weitere Details finden Sie im Beispiel [hier](guides/loading.md#standarddatabase
 
 Nachdem das Projekt eingerichtet ist, geht es weiter mit dem Laden der Daten.
 
-Schritt 4. Daten laden
--------------------------------
+## Schritt 4. Daten laden
+
 
 Jetzt implementieren wir das Laden der Daten aus der Datenbank. Auf der Clientseite werden die Daten mit der [gantt.load](api/method/load.md)-Methode angefordert:
 
@@ -264,8 +264,8 @@ Mit der implementierten Datenladefunktion können Sie [http://127.0.0.1:8080/](h
 
 ![load_data](/img/load_data.png)
 
-Schritt 5. Änderungen speichern
------------------------------------
+## Schritt 5. Änderungen speichern
+
 
 Im nächsten Schritt speichern wir die auf dem Client vorgenommenen Änderungen wieder auf dem Server. Dies wird normalerweise von der [dataProcessor](guides/server-side.md#technique)-Bibliothek übernommen, die in Gantt integriert ist.
 
@@ -616,23 +616,23 @@ function updateOrder($taskId, $target, $db){
 
 Eine fertige Demo steht als Referenz auf GitHub zur Verfügung: [https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x).
 
-Verwendung von dhtmlxConnector
----------------
+## Verwendung von dhtmlxConnector
+
 
 Alternativ kann das PHP-Backend auch mit der [dhtmlxConnector-Bibliothek](https://docs.dhtmlx.com/connector__php__index.html) erstellt werden. Eine ausführliche Anleitung ist [hier](integrations/php/howtostart-connector.md) verfügbar.
 
-Anwendungssicherheit
--------------------------
+## Anwendungssicherheit
+
 
 Gantt selbst bietet keinen Schutz gegen Bedrohungen wie SQL-Injections, XSS oder CSRF-Angriffe. Entwickler sollten entsprechende Sicherheitsmaßnahmen in ihren Backend-Implementierungen berücksichtigen. Weitere Informationen finden Sie [im zugehörigen Artikel](guides/app-security.md).
 
-Fehlerbehebung
------------------
+## Fehlerbehebung
+
 
 Falls nach Abschluss der Integrationsschritte das Gantt-Diagramm keine Aufgaben oder Verknüpfungen anzeigt, bietet die Anleitung zur Fehlerbehebung in [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) hilfreiche Tipps zur Identifizierung und Lösung von Problemen.
 
-Wie geht es weiter?
-------------
+## Wie geht es weiter?
+
 
 Mit der abgeschlossenen Grundkonfiguration von Gantt ist der vollständige Code auf [GitHub](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x) verfügbar. Sie können ihn klonen oder herunterladen, um Ihre Projekte zu unterstützen.
 

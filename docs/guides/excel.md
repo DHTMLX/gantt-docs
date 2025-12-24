@@ -3,8 +3,8 @@ title: "Export/Import for Excel, Export to iCal"
 sidebar_label: "Export/Import for Excel, Export to iCal"
 ---
 
-Export/Import for Excel, Export to iCal
-==============================
+# Export/Import for Excel, Export to iCal
+
 
 The dhtmlxGantt library allows you to export data from the Gantt chart in the Excel and iCal formats. You can also import data into Gantt from an Excel file.
 
@@ -18,8 +18,8 @@ There are several export services available. You can install them on your comput
 Note that export services are not included into the Gantt package, 
 read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
-Online export service restrictions
------------------------------
+## Online export service restrictions
+
 
 :::note
 The export service has time and request size restrictions.
@@ -42,8 +42,8 @@ There is a common API endpoint `https://export.dhtmlx.com/gantt` which serves fo
 There is also a separate API endpoint `https://export.dhtmlx.com/gantt/project` specific for the [MSProject](guides/export-msproject.md) and 
 [Primavera P6](guides/export-primavera.md)export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
 
-Using export modules
----------------------
+## Using export modules
+
 
 :::note
 If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
@@ -52,8 +52,8 @@ The export module is provided free of charge if you've obtained Gantt under [Com
 
 [Read more on the usage of the export module for PDF](guides/pdf-export-module.md). This export module can export data to PDF, PNG, Excel, and iCal files.
 
-Export to Excel
--------------------
+## Export to Excel
+
 
 To export data from the Gantt chart to an Excel document, do the following:
 
@@ -272,8 +272,8 @@ gantt.importFromExcel({
 ~~~
 
 
-Export to iCal
--------------------
+## Export to iCal
+
 
 To export data from the Gantt chart to an iCal string, do the following:
 

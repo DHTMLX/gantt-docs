@@ -3,8 +3,8 @@ title: "Changing Buttons in the Lightbox"
 sidebar_label: "Changing Buttons in the Lightbox"
 ---
 
-Changing Buttons in the Lightbox
-============================================
+# Changing Buttons in the Lightbox
+
 There is a possibility to change the default buttons in the lightbox. For example, you can hide the 'Edit' button for a group of users that can just view tasks or add a new button "Print" that will allow users
 to print the task description. 
 
@@ -70,8 +70,8 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 [Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
 
 
-Changing button labels
------------------------
+## Changing button labels
+
 
 You can redefine labels of buttons by using the following syntax before initialization of Gantt:
 

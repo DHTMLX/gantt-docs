@@ -3,8 +3,8 @@ title: "Wie man mit dhtmlxGantt startet"
 sidebar_label: "Wie man mit dhtmlxGantt startet"
 ---
 
-Wie man mit dhtmlxGantt startet
-===============================
+# Wie man mit dhtmlxGantt startet
+
 
 <h2>Erste Schritte mit Gantt und Front-End</h2>
 

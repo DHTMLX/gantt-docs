@@ -3,8 +3,8 @@ title: "Manually Scheduled Summary Tasks"
 sidebar_label: "Manually Scheduled Summary Tasks"
 ---
 
-Manually Scheduled Summary Tasks
-===============================
+# Manually Scheduled Summary Tasks
+
 
 There is a possibility to schedule [projects](guides/task-types.md) (summary tasks) manually. 
 This feature serves to increase flexibility and accuracy in managing projects with Gantt charts. 

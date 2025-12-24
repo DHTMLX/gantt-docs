@@ -3,8 +3,8 @@ title: "Formatters-Erweiterung"
 sidebar_label: "Formatters-Erweiterung"
 ---
 
-Formatters-Erweiterung
-========================
+# Formatters-Erweiterung
+
 :::info
  Diese Funktion ist nur in der PRO-Edition verfügbar. 
 :::

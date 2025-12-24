@@ -3,8 +3,8 @@ title: "How-tos"
 sidebar_label: "How-tos"
 ---
 
-How-tos
-==================================
+# How-tos
+
 
 ## How to toggle grid/chart
 

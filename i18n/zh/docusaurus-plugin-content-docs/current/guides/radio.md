@@ -3,8 +3,8 @@ title: "单选按钮控件"
 sidebar_label: "单选按钮控件"
 ---
 
-单选按钮控件
-=============
+# 单选按钮控件
+
 
 该控件用于呈现一组选项，同一时间只能选择其中一个。
 
@@ -14,8 +14,8 @@ sidebar_label: "单选按钮控件"
 [Radio control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
 
 
-初始化
-----------------
+## 初始化
+
 
 要在 lightbox 中包含**单选按钮**控件，需要进行以下设置:
 
@@ -45,8 +45,8 @@ gantt.locale.labels.section_priority = "Priority";
 [Radio control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
 
 
-属性
--------------
+## 属性
+
 
 以下是**单选按钮**控件常用的一些关键属性（完整列表请参见[这里](api/config/lightbox.md)）:
 
@@ -60,8 +60,8 @@ gantt.locale.labels.section_priority = "Priority";
 - **default_value** - (*any*) 控件的默认值，仅在输入值未定义时应用            
 
 
-为控件填充数据
--------------------------------
+## 为控件填充数据
+
 
 要为**单选按钮**控件指定选项，请使用 [options](api/config/lightbox.md) 参数:
 

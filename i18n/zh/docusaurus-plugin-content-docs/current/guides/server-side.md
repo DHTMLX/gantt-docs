@@ -3,8 +3,8 @@ title: "服务器端集成"
 sidebar_label: "服务器端集成"
 ---
 
-服务器端集成
-==============================
+# 服务器端集成
+
 
 
 将 dhtmlxGantt 与后端连接的最佳方式是，在服务器端搭建一个 RESTful API，并在客户端使用 [dataprocessor](api/other/dataprocessor.md) 模块。
@@ -15,8 +15,8 @@ DataProcessor 是一个内置功能，用于跟踪 Gantt 数据的更改，并�
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-技术说明
-----------------------------------------------
+## 技术说明
+
 
 通常，要通过 REST API 从服务器加载数据，你需要:
 
@@ -360,8 +360,8 @@ Content-type: application/json
 - [dhtmlxGantt 与 Ruby on Rails 集成](integrations/other/howtostart-ruby.md)
 
 
-任务顺序的存储
--------------------------------------------------
+## 任务顺序的存储
+
 
 Gantt 会按照数据源中的顺序显示任务。如果用户可以[手动调整任务顺序](guides/reordering-tasks.md#kuazhenggeganttjiegoutuofang)，
 你需要将这种顺序保存到数据库，并确保数据源返回的任务已按此顺序排序。
@@ -452,8 +452,8 @@ tasks.save(currentTask);
 [Rails](integrations/other/howtostart-ruby.md#renwushunxudecunchu)。
 
 
-自定义请求头和参数
-----------------
+## 自定义请求头和参数
+
 
 ### 添加自定义请求头
 
@@ -530,8 +530,8 @@ dp.attachEvent("onBeforeUpdate", (id, state, data) => {
 ~~~
 
 
-从脚本触发数据保存
-------------------------------------
+## 从脚本触发数据保存
+
 
 当 dataProcessor 初始化后，用户通过界面或脚本进行的任何更改都会自动保存到数据源。
 
@@ -558,8 +558,8 @@ gantt.updateTask(1); // 重新渲染已更新的任务
 - [deleteLink](api/method/deletelink.md)
 
 
-自定义路由
-----------------
+## 自定义路由
+
 
 如果 RESTful AJAX API 不满足您的后端需求，或者您希望完全控制发送到服务器的数据内容，可以使用自定义路由。
 
@@ -702,8 +702,8 @@ gantt.createDataProcessor((entity, action, data, id) => {
 ~~~
 
 
-错误处理
-----------------------
+## 错误处理
+
 
 如果服务器报告某个操作失败，可以返回如下内容:
 
@@ -755,8 +755,8 @@ gantt.render();
 ~~~
 
 
-级联删除
-----------------
+## 级联删除
+
 
 默认情况下，删除任务会触发其嵌套任务及相关链接的级联删除。Gantt 会为每个被移除的任务和链接发送 *delete* 请求。 
 这意味着无需手动维护后端数据完整性，Gantt 会自动处理。
@@ -767,8 +767,8 @@ gantt.render();
 禁用后，删除项目分支只会为顶层项发送删除请求，后端需自行处理相关链接和子任务的删除。
 
 
-XSS、CSRF 和 SQL 注入攻击
-----------------------------
+## XSS、CSRF 和 SQL 注入攻击
+
 
 需要注意的是，Gantt 并未内置防护 SQL 注入、XSS 或 CSRF 等安全威胁的机制。 
 确保应用安全是后端开发者的责任。

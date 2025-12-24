@@ -39,8 +39,8 @@ If some of handlers will return *false* - the related operation will be blocked.
 Event handlers are processed in the same order that they were attached.
 
 
-Properties of settings object 
------------------------
+## Properties of settings object 
+
 The settings object can contain the following properties:
 
 - **id?** - (*string | number*) - the id of the event handler.

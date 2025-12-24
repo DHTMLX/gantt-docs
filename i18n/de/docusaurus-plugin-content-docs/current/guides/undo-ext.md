@@ -3,16 +3,16 @@ title: "Undo-Erweiterung"
 sidebar_label: "Undo-Erweiterung"
 ---
 
-Undo-Erweiterung
-=================
+# Undo-Erweiterung
+
 
 Das *Undo*-Objekt bietet eine Reihe von Methoden, um Änderungen rückgängig zu machen oder wiederherzustellen. 
 
 
 Weitere Informationen zur Undo-Erweiterung finden Sie im Artikel [Undo/Redo Functionality](guides/undo-redo.md).
 
-Methoden
-----------
+## Methoden
+
 
 Das **gantt.ext.undo**-Objekt stellt folgende Methoden zur Verfügung:
 

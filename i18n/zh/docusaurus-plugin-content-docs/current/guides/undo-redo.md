@@ -3,8 +3,8 @@ title: "撤销/重做功能"
 sidebar_label: "撤销/重做功能"
 ---
 
-撤销/重做功能
-======================================
+# 撤销/重做功能
+
 
 dhtmlxGantt 图表支持在图表中撤销和重做所做的更改。要启用此功能，请通过 [gantt.plugins](api/method/plugins.md) 方法启用 **undo** 插件。
 
@@ -28,8 +28,8 @@ gantt.config.redo = true;
 [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 
-撤销/重做 API
-----------------------------
+## 撤销/重做 API
+
 
 要撤销在 Gantt 图表中的更改，请使用 [undo](api/method/undo.md) 方法:
 
@@ -45,8 +45,8 @@ gantt.redo();
 
 从 6.3 版本开始，**undo()/redo()** 方法也可以通过 **gantt.ext.undo** 对象调用。详情请参阅 [Undo Extension](guides/undo-ext.md) 文章。
 
-获取已存储的撤销/重做操作栈
---------------------------------------------
+## 获取已存储的撤销/重做操作栈
+
 
 Gantt 图表中的用户操作会以包含命令对象的数组形式存储。Gantt 会维护一个最近执行命令的栈。**undo** 扩展会处理这些命令以执行相应的逆向操作。
 
@@ -85,8 +85,8 @@ var stack = gantt.getRedoStack();
 
 从 6.3 版本开始，**getUndoStack()/getRedoStack()** 方法也可以通过 **gantt.ext.undo** 对象调用。更多信息请参阅 [Undo Extension](guides/undo-ext.md) 文章。
 
-清空已存储的撤销/重做命令栈
-------------------------------
+## 清空已存储的撤销/重做命令栈
+
 
 您可以通过 Gantt API 方法清空撤销/重做命令栈。
 
@@ -104,8 +104,8 @@ gantt.clearRedoStack();
 
 从 6.3 版本开始，**clearUndoStack()/clearRedoStack()** 方法也可以通过 **gantt.ext.undo** 对象调用。详情请参阅 [Undo Extension](guides/undo-ext.md) 文章。
 
-撤销/重做代码中进行的更改
----------------------------------
+## 撤销/重做代码中进行的更改
+
 
 通过结合使用 **undo()/redo()** 方法和 **gantt.ext.undo** 对象的 **saveState()** 方法，可以撤销或重做通过代码进行的更改。
 
@@ -140,8 +140,8 @@ console.log(task.text);
 
 关于 **saveState()** 的更多信息，请参阅 [Undo Extension](guides/undo-ext.md) 文章。
 
-配置撤销功能
-----------------------------
+## 配置撤销功能
+
 
 有多个设置可以用于自定义撤销操作。
 
@@ -172,8 +172,8 @@ gantt.config.undo_types = {
 };
 ~~~
 
-API 事件列表
--------------------
+## API 事件列表
+
 
 与撤销/重做功能相关的事件包括:
 

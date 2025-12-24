@@ -38,8 +38,8 @@ added in version 4.1
 - Besides, the method can be called directly from a [calendar object](api/other/calendar.md).
 
 
-Configuration object properties
----------------------------------------
+## Configuration object properties
+
 
 The configuration object can contain the following properties:
 

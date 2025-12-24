@@ -3,11 +3,11 @@ title: "Serializing Data into XML and JSON"
 sidebar_label: "Serializing Data into XML and JSON"
 ---
 
-Serializing Data into XML and JSON 
-===============================================
+# Serializing Data into XML and JSON 
 
-JSON format
---------------------------------------------------
+
+## JSON format
+
 
 To serialize data from a Gantt chart into a JSON object, use the [serialize](api/method/serialize.md) method as in:
 
@@ -24,8 +24,8 @@ As a result, the **json** variable from the code above will look something like 
 }
 ~~~
 
-XML format
-----------------------------------
+## XML format
+
 
 To serialize data from a Gantt chart into an XML string, use the [serialize](api/method/serialize.md) method as in:
 

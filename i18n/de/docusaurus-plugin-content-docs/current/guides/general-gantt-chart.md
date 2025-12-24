@@ -3,8 +3,8 @@ title: "Erstellen eines Gantt-Diagramms auf einer Seite"
 sidebar_label: "Erstellen eines Gantt-Diagramms auf einer Seite"
 ---
 
-Erstellen eines Gantt-Diagramms auf einer Seite
-==============================================================
+# Erstellen eines Gantt-Diagramms auf einer Seite
+
 
 ![gantt_basic](/img/gantt_basic.png)
 

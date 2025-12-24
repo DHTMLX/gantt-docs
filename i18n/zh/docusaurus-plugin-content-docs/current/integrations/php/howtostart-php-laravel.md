@@ -3,8 +3,8 @@ title: "dhtmlxGantt 与 PHP:Laravel 集成教程"
 sidebar_label: "PHP: Laravel"
 ---
 
-dhtmlxGantt 与 PHP:Laravel 集成教程
-=====================
+# dhtmlxGantt 与 PHP:Laravel 集成教程
+
 
 本教程介绍如何将 dhtmlxGantt 集成到 [Laravel](https://laravel.com/) 应用程序中。
 
@@ -26,8 +26,8 @@ dhtmlxGantt 与 PHP:Laravel 集成教程
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/eu5R86a-9jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-步骤 1. 初始化项目
------------------------
+## 步骤 1. 初始化项目
+
 
 ### 创建项目
 
@@ -48,8 +48,8 @@ php artisan serve
 
 ![how_to_start_laravel_blank_page](/img/how_to_start_laravel_blank_page.png)
 
-步骤 2. 将 Gantt 添加到页面
------------------------
+## 步骤 2. 将 Gantt 添加到页面
+
 
 ### 添加视图
 
@@ -104,8 +104,8 @@ Route::get('/', function () {
 
 ![how_to_start_laravel_empty_gantt](/img/how_to_start_laravel_empty_gantt.png)
 
-步骤 3. 创建模型和迁移
----------------------
+## 步骤 3. 创建模型和迁移
+
 
 甘特图已经显示，下一步是将其连接到数据库并填充数据。
 
@@ -312,8 +312,8 @@ class Link extends Model
 }
 ~~~
 
-步骤 4. 加载数据
--------------------
+## 步骤 4. 加载数据
+
 
 数据库和模型准备好后，可以将数据加载到甘特图中。
 由于客户端期望日期为特定 [格式](guides/supported-data-formats.md#json)，因此需要创建一个控制器方法以相应格式返回 JSON:
@@ -370,8 +370,8 @@ gantt.load("/api/data");/*!*/
 
 ![how_to_start_laravel_complete](/img/how_to_start_laravel_complete.png)
 
-步骤 5. 保存更改
------------------------------------
+## 步骤 5. 保存更改
+
 
 目前，甘特图已能从后端读取数据。下一步是让其支持将更改保存回数据库。
 
@@ -720,18 +720,18 @@ private function updateOrder($taskId, $target){
 
 ~~~
 
-应用安全性
--------------------------
+## 应用安全性
+
 
 Gantt 组件本身不包含针对 SQL 注入、XSS 或 CSRF 攻击等威胁的防护。保障应用安全性是后端开发者的职责。详情请参阅 [相关文档](guides/app-security.md)。
 
-故障排查
------------------
+## 故障排查
+
 
 如果按照上述步骤操作后，Gantt 图未显示任务或链接，请参考 [백엔드 통합 문제 해결](guides/troubleshooting.md) 文章以查找和解决常见问题。
 
-后续内容
-------------
+## 后续内容
+
 
 Gantt 现已具备完整功能。完整源码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel) 获取，便于克隆或下载用于项目开发。
 

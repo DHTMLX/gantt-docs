@@ -3,8 +3,8 @@ title: "约束控件"
 sidebar_label: "约束控件"
 ---
 
-约束控件
-====================
+# 约束控件
+
 
 :::info
 此功能仅包含在 PRO 版本中。
@@ -26,8 +26,8 @@ gantt.config.lightbox.sections = [
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-初始化
-------------
+## 初始化
+
 
 要在 lightbox 中集成 **constraint** 控件，请按照以下步骤操作:
 
@@ -51,8 +51,8 @@ gantt.locale.labels.section_constraint = "Constraint";
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-属性
-------------------------
+## 属性
+
 
 以下是 **constraint** 控件常用的主要属性（完整列表请参见[此处](api/config/lightbox.md)）:
 

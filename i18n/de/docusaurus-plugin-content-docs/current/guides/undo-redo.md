@@ -3,8 +3,8 @@ title: "Undo/Redo-Funktionalität"
 sidebar_label: "Undo/Redo-Funktionalität"
 ---
 
-Undo/Redo-Funktionalität
-======================================
+# Undo/Redo-Funktionalität
+
 
 Das dhtmlxGantt Chart unterstützt das Rückgängigmachen und Wiederherstellen von Änderungen innerhalb des Diagramms. Um diese Funktion zu aktivieren, aktivieren Sie das **undo**-Plugin mit der [gantt.plugins](api/method/plugins.md)-Methode.
 
@@ -28,8 +28,8 @@ gantt.config.redo = true;
 [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 
-Undo/Redo API
-----------------------------
+## Undo/Redo API
+
 
 Um Änderungen im Gantt Chart rückgängig zu machen, verwenden Sie die [undo](api/method/undo.md)-Methode:
 
@@ -45,8 +45,8 @@ gantt.redo();
 
 Ab Version 6.3 sind die Methoden **undo()/redo()** auch über das **gantt.ext.undo**-Objekt zugänglich. Weitere Informationen finden Sie im Artikel [Undo Extension](guides/undo-ext.md).
 
-Abrufen des Stapels gespeicherter Undo/Redo-Aktionen
---------------------------------------------
+## Abrufen des Stapels gespeicherter Undo/Redo-Aktionen
+
 
 Benutzeraktionen im Gantt Chart werden als Arrays von Befehlsobjekten gespeichert. Gantt führt einen Stapel der zuletzt ausgeführten Befehle. Die **undo**-Erweiterung verarbeitet diese Befehle, um Rückgängig-Operationen auszuführen.
 
@@ -85,8 +85,8 @@ Die **getUndoStack()**-Methode gibt einen Stapel mit 2 Undo-Aktionen zurück. Di
 
 Ab Version 6.3 sind die Methoden **getUndoStack()/getRedoStack()** ebenfalls über das **gantt.ext.undo**-Objekt verfügbar. Weitere Informationen finden Sie im Artikel [Undo Extension](guides/undo-ext.md).
 
-Löschen des Stapels gespeicherter Undo/Redo-Befehle
-------------------------------
+## Löschen des Stapels gespeicherter Undo/Redo-Befehle
+
 
 Sie können die Undo/Redo-Befehlsstapel mit den entsprechenden Gantt-API-Methoden leeren.
 
@@ -104,8 +104,8 @@ gantt.clearRedoStack();
 
 Ab Version 6.3 sind die Methoden **clearUndoStack()/clearRedoStack()** ebenfalls über das **gantt.ext.undo**-Objekt zugänglich. Weitere Details finden Sie im Artikel [Undo Extension](guides/undo-ext.md).
 
-Rückgängigmachen/Wiederherstellen von Änderungen aus dem Code
----------------------------------
+## Rückgängigmachen/Wiederherstellen von Änderungen aus dem Code
+
 
 Das Rückgängigmachen oder Wiederherstellen von programmatisch vorgenommenen Änderungen ist möglich, indem Sie die Methoden **undo()/redo()** mit der **saveState()**-Methode aus dem **gantt.ext.undo**-Objekt kombinieren.
 
@@ -140,8 +140,8 @@ Hier speichert die **saveState()**-Methode den ursprünglichen Text "task 1", be
 
 Weitere Informationen zu **saveState()** finden Sie im Artikel [Undo Extension](guides/undo-ext.md).
 
-Konfiguration der Undo-Funktionalität
-----------------------------
+## Konfiguration der Undo-Funktionalität
+
 
 Mehrere Einstellungen ermöglichen die Anpassung der Undo-Operation.
 
@@ -173,8 +173,8 @@ gantt.config.undo_types = {
 ~~~
 
 
-Liste der API-Events
--------------------
+## Liste der API-Events
+
 
 Es gibt mehrere Events, die sich auf die Undo/Redo-Funktionalität beziehen:
 

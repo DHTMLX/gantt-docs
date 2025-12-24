@@ -3,8 +3,8 @@ title: "Task Types"
 sidebar_label: "Task Types"
 ---
 
-Task Types
-==============
+# Task Types
+
 
 :::info
 This functionality is available only in the PRO edition.
@@ -41,8 +41,8 @@ const data = {
 **Related sample**: [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-Regular tasks
------------------
+## Regular tasks
+
 
 By default, dhtmlxGantt provides creating of regular tasks (tasks with **type="task"**).
 
@@ -76,8 +76,8 @@ Tasks with **type="task"** can be characterized as follows:
 - Can be hidden in the timeline. See [details](guides/milestones.md#hiding-tasks-and-milestones).
 
 
-Project tasks
------------------
+## Project tasks
+
 
 Project task is a task that starts, when its earliest child task starts, and ends, when its latest child ends.
 
@@ -185,8 +185,8 @@ You can [add a custom type](guides/task-types.md#creating-a-custom-type) and spe
 To go into details on a lightbox configuration, you can read the [Configuring Edit Form](guides/edit-form.md) chapter.
 
 
-Creating a custom type
------------------------------------------------
+## Creating a custom type
+
 
 All tasks' types are defined in the [types](api/config/types.md) object. 
 
@@ -269,8 +269,8 @@ gantt.templates.task_text = (start, end, task) =>
 **Related sample**: [Custom task type](https://docs.dhtmlx.com/gantt/samples/04_customization/12_custom_task_type.html)
 
 
-Custom display of task types
------------------------------------------------------------------
+## Custom display of task types
+
 
 To customize the look of existing task types, use the [type_renderers](api/config/type_renderers.md) option. The options allows you to redefine functions responsible for displaying different tasks types on the page.
 

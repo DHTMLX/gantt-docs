@@ -3,8 +3,8 @@ title: "Formatters Extension"
 sidebar_label: "Formatters Extension"
 ---
 
-Formatters Extension
-========================
+# Formatters Extension
+
 
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다.
@@ -18,7 +18,7 @@ Formatters Extension
 또한 기존 포매터를 기반으로 [사용자 지정 포매터](#customformatter)를 생성할 수도 있습니다.
 
 ## Duration Formatter {#durationformatter}
-----------------------
+
 
 **gantt.ext.formatters.durationFormatter(config)** 메서드는 새로운 *DurationFormatter* 인스턴스를 생성합니다.
 
@@ -195,7 +195,7 @@ console.log(formatter.parse("1 day"));
 **durationFormatter**에 대한 자세한 내용은 [작업 시간 계산](guides/working-time.md#taskdurationindecimalformat) 문서에서 확인할 수 있습니다.
 
 ## Link Formatter {#linkformatter}
-----------------------
+
 
 **gantt.ext.formatters.linkFormatter(config)** 메서드는 새로운 *LinkFormatter* 인스턴스를 생성합니다. 일부 메서드 및 설정은 Duration Formatter와 공유합니다.
 
@@ -323,7 +323,7 @@ linkFormatter 메서드에 대한 자세한 내용은 [그리드에서 인라인
 
 
 ## 커스텀 포매터 {#customformatter}
--------------------
+
 
 Gantt 도구는 내장 포매터를 기반으로 커스텀 포매터를 만들 수 있습니다. 이러한 커스텀 포매터는 인라인 에디터에 추가할 수 있습니다. 내부적으로 Gantt는 데이터를 기대하는 형식으로 유지하지만, 사용자가 인라인 에디터를 열면 원하는 포맷으로 값을 보여줍니다.
 

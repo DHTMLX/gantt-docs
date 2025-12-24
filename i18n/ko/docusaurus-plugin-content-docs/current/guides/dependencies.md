@@ -3,8 +3,8 @@ title: "의존성 링크 구성하기"
 sidebar_label: "의존성 링크 구성하기"
 ---
 
-의존성 링크 구성하기
-=================================
+# 의존성 링크 구성하기
+
 ![gantt_arrows](/img/gantt_arrows.png)
 
 ((index

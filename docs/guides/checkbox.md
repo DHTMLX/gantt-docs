@@ -3,8 +3,8 @@ title: "Checkbox Control"
 sidebar_label: "Checkbox Control"
 ---
 
-Checkbox Control
-==================
+# Checkbox Control
+
 
 A two-state checkbox. The control is used for switching an option or several values on/off.
 
@@ -37,8 +37,8 @@ gantt.config.lightbox.project_sections = [
 [Split task](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
 
 
-Initialization
---------------------------
+## Initialization
+
 
 To add the **checkbox** control to the lightbox, follow these steps:
 
@@ -66,8 +66,8 @@ gantt.locale.labels.section_split = "Display";
 [Split task](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
 
 
-Properties
-------------
+## Properties
+
 
 The following properties are mostly important and commonly set for the **checkbox** control (see the full list [here](api/config/lightbox.md)):
 
@@ -83,8 +83,8 @@ the following properties:
   
 
 
-Populating control with data
-------------------------------
+## Populating control with data
+
 
 Generally, to set values for the **checkbox** control, use the [options](api/config/lightbox.md) parameter:
 

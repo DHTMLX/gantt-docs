@@ -3,8 +3,8 @@ title: "작업 구성하기"
 sidebar_label: "작업 구성하기"
 ---
 
-작업 구성하기
-================================
+# 작업 구성하기
+
 
 ![gantt_tasks](/img/gantt_tasks.png)
 

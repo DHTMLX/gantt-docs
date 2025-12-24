@@ -3,8 +3,8 @@ title: "Select Control"
 sidebar_label: "Select Control"
 ---
 
-Select Control
-=========================
+# Select Control
+
 
 Выпадающий список.
 
@@ -28,8 +28,8 @@ gantt.locale.labels.section_priority = "Priority";
 [Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
-Инициализация
--------------------
+## Инициализация
+
 
 Чтобы добавить контрол **select** в lightbox, выполните следующие шаги:
 
@@ -60,8 +60,8 @@ gantt.locale.labels.section_priority = "Priority";
 [Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
-Свойства
--------------
+## Свойства
+
 
 Ниже перечислены основные свойства, которые обычно задаются для контрола **select** (полный список смотрите [здесь](api/config/lightbox.md)):
 
@@ -77,8 +77,8 @@ gantt.locale.labels.section_priority = "Priority";
 - **onchange** - (*function*) функция-обработчик события ['onChange'](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) для контрола
 
 
-Заполнение контрола данными
--------------------------------
+## Заполнение контрола данными
+
 
 Чтобы указать значения для контрола **select**, используйте параметр [options](api/config/lightbox.md):
 
@@ -99,8 +99,8 @@ gantt.config.lightbox.sections = [
 - **label** - подпись опции
 
 
-Заполнение контрола данными с сервера
----------------------------------------------
+## Заполнение контрола данными с сервера
+
 
 Чтобы заполнить контрол данными с сервера, присвойте параметру [options](api/config/lightbox.md) значение, возвращаемое методом [serverList](api/method/serverlist.md):
 

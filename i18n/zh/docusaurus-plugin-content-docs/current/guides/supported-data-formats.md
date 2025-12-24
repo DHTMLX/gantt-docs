@@ -3,8 +3,8 @@ title: "支持的数据格式"
 sidebar_label: "支持的数据格式"
 ---
 
-支持的数据格式
-=======================================
+# 支持的数据格式
+
 
 dhtmlxGantt 支持以多种格式加载数据:
 
@@ -15,8 +15,8 @@ dhtmlxGantt 支持以多种格式加载数据:
 
 同时也支持[在 Gantt 数据中包含任意自定义属性](guides/supported-data-formats.md#shujuzhongdezidingyishuxing)。
 
-JSON
--------------------------
+## JSON
+
 
 ### 任务和链接
 
@@ -109,8 +109,8 @@ JSON
 }
 ~~~
 
-XML（dhtmlxGantt 2.0+）
----------------------------------
+## XML（dhtmlxGantt 2.0+）
+
 
 ~~~xml
 <data>
@@ -135,8 +135,8 @@ XML（dhtmlxGantt 2.0+）
 </data>
 ~~~
 
-数据中的自定义属性
--------------------------------
+## 数据中的自定义属性
+
 
 以下示例包含两个自定义属性:
 
@@ -195,8 +195,8 @@ XML（dhtmlxGantt 2.0+）
 </data>
 ~~~
 
-带集合的 JSON
-------------------
+## 带集合的 JSON
+
 
 JSON 数据可以在 *data* 对象的 "collections" 属性中包含多个额外的数组。
 
@@ -228,8 +228,8 @@ JSON 数据可以在 *data* 对象的 "collections" 属性中包含多个额外�
 
 这些集合可以通过 [gantt.serverList](api/method/serverlist.md) 方法按名称访问。
 
-XML（dhtmlxGantt < 2.0）
---------------------
+## XML（dhtmlxGantt < 2.0）
+
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>

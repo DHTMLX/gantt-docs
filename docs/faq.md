@@ -3,11 +3,11 @@ title: "FAQ"
 sidebar_label: "FAQ"
 ---
 
-FAQ
-==============
+# FAQ
 
-How to open samples
----------------------
+
+## How to open samples
+
 
 The distributive of the component includes a demo backend app that can be used to run samples locally.
 The app requires [Node.js](https://nodejs.org/en/) and uses in-memory storage for demos which supposed to store data on the backend (i.e. no database setup is needed).
@@ -58,8 +58,8 @@ When you open an example from a web server, the URL will look like this (*http:/
 **http://localhost/gantt-eval/samples/11_resources/09_resource_histogram.html**
 
 
-The Gantt chart isn't rendered correctly
------------------------------------------
+## The Gantt chart isn't rendered correctly
+
 
 If the Gantt chart wasn't rendered on the page properly, please, check a CSS style for the chart's container - it must have a valid size in pixels or percents.
 
@@ -77,8 +77,8 @@ html, body{
 ~~~
 
 
-The Gantt chart isn't rendered in Internet Explorer correctly
----------------------------------------------------------
+## The Gantt chart isn't rendered in Internet Explorer correctly
+
 
 If the Gantt chart wasn't rendered on the page properly only in the Internet Explorer browser, please, make sure that your page uses a full DOCTYPE declaration.
 dhtmlxGantt can work correctly in the standard modes of IE6, IE7 and IE8 but isn't purposed to be used with the quirks modes of IE.
@@ -89,8 +89,8 @@ For example, HTML5 DOCTYPE is:
 <!DOCTYPE html>
 ~~~
 
-An error alert appears in the right top corner
------------------------------------------
+## An error alert appears in the right top corner
+
 
 ![error_alert](/img/error_alert.png)
 
@@ -106,8 +106,8 @@ gantt.config.show_errors = false;
 ~~~
 
 
-Gantt doesn't show anything
---------------------------
+## Gantt doesn't show anything
+
 
 There are two most obvious scenarios:
 
@@ -119,8 +119,8 @@ or
 
 Read the [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) article that gives instructions on how to identify the reasons of the problems.
 
-How to include the last day of the task into the duration
----------------------------------------------------------- 
+## How to include the last day of the task into the duration
+ 
 
 You may notice, that when the date is specified in days without an hour-minute part and the start and end dates are the same, the duration of the task will be calculated as 0 days not 1 day. 
 
@@ -146,8 +146,8 @@ console.log(gantt.getTask(1).duration);
 
 By default, the last day of the task is excluded from the duration of the task but there is the ability to change the default behavior and include the last day into the duration. For more details, check the [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates) article.
 
-Cyclic reference error
------------------------
+## Cyclic reference error
+
 
 If you pass incorrect data to the Gantt, its tree-like structure becomes cyclic which causes the cyclic reference error.
 
@@ -167,8 +167,8 @@ Task #2 cannot be a parent for itself.
 
 "Task #4" is specified as a parent for "Task #1". But at the same time "Task #4" is also a child of "Task #1".
 
-Evaluation period has expired
-------------------------------
+## Evaluation period has expired
+
 
 If you have installed a licensed PRO version of the Gantt chart but still see the messages that the evaluation period has expired, it means that there is the Trial version somewhere in your application. Only the trial version has the functionality to show the popup message about the expired trial period.
 

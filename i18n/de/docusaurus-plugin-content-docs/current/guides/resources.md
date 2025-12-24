@@ -3,8 +3,8 @@ title: "Ressourcen-Steuerung"
 sidebar_label: "Ressourcen-Steuerung"
 ---
 
-Ressourcen-Steuerung
-===================
+# Ressourcen-Steuerung
+
 
 :::info
 Dieses Feature ist nur in der PRO Edition verfügbar.
@@ -53,8 +53,8 @@ gantt.locale.labels.section_rooms = "Rooms";
 Es ist auch möglich, [ein benutzerdefiniertes Steuerelement zu erstellen, um mehreren Ressourcen einer Aufgabe zuzuweisen](guides/custom-editor.md#customthirdpartyeditor).
 :::
 
-Initialisierung
-------------
+## Initialisierung
+
 
 Um das **resources**-Steuerelement im Lightbox-Dialog einzubinden, gehen Sie wie folgt vor:
 
@@ -78,8 +78,8 @@ gantt.locale.labels.section_resources = "Rooms";
 [Resources control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/13_resources.html)
 
 
-Eigenschaften
--------------
+## Eigenschaften
+
 
 Hier sind die wichtigsten Eigenschaften, die häufig für das **resources**-Steuerelement festgelegt werden (vollständige Details finden Sie [hier](api/config/lightbox.md)):
 
@@ -100,8 +100,8 @@ Standardmäßig wird das Ressourcen-Steuerelement der in [resource_property](api
 Standardmäßig werden die Optionen des Ressourcen-Steuerelements automatisch aus dem [Resource Datastore](guides/resource-management.md#workingwithresourceviewpanel) über die `gantt.serverList("resourceOptions")` [Collection](api/method/serverlist.md) übernommen. Sie müssen die Optionen nur manuell setzen, wenn Sie dieses Verhalten überschreiben möchten.
 :::
 
-Befüllen des Steuerelements mit Daten
--------------------------------
+## Befüllen des Steuerelements mit Daten
+
 
 Seit Version 8.0 erhält das Ressourcen-Steuerelement die Optionen automatisch aus dem [Resource Datastore](guides/resource-management.md#workingwithresourceviewpanel).
 
@@ -163,8 +163,8 @@ Jedes Element im [options](api/config/lightbox.md) Array muss enthalten:
 - **unit** - die Einheit der Ressource
 
 
-Befüllen des Steuerelements mit Daten vom Server
----------------------------------------------
+## Befüllen des Steuerelements mit Daten vom Server
+
 
 Um das Steuerelement mit Daten vom Server zu befüllen, setzen Sie die [options](api/config/lightbox.md) Eigenschaft auf den Wert, der von der [serverList](api/method/serverlist.md) Methode zurückgegeben wird:
 

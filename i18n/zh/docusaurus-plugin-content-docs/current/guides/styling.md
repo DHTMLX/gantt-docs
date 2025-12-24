@@ -3,8 +3,8 @@ title: "样式"
 sidebar_label: "样式"
 ---
 
-样式
-==============================
+# 样式
+
 
 - [CSS 문서](guides/css-overview.md)
 - [스킨(Skins)](guides/skins.md)

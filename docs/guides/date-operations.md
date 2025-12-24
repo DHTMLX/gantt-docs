@@ -3,16 +3,16 @@ title: "Operations with Dates"
 sidebar_label: "Operations with Dates"
 ---
 
-Operations with Dates
-==============
+# Operations with Dates
+
 
 dhtmlxGantt includes the [date](api/other/date.md) object that provides a set of date formatting methods. You can use these methods while working with the date objects.
 
 In this article we will consider the particularly important and commonly used methods. A full list of methods you can find at the [date object page](api/other/date.md).
 
 
-Converting a Date object to a string
--------------------------------------------------------
+## Converting a Date object to a string
+
 
 To convert a Date object to a string, use the [date_to_str](api/other/date.md) method: 
 
@@ -24,8 +24,8 @@ var date = formatFunc(new Date(2013, 05, 29)); // -> "29/06/2013"
 ~~~
 
 
-Converting a string to a Date object
------------------------------------------------------
+## Converting a string to a Date object
+
 To convert a string to a Date object, use the [str_to_date](api/other/date.md) method: 
 
  
@@ -40,8 +40,8 @@ var date = formatFunc("29/06/2013"); // -> 29 June, 2013 00:00:00
 ~~~
 
 
-Converting to UTC
---------------------------------------
+## Converting to UTC
+
 To convert local time to UTC, use the [convert_to_utc](api/other/date.md) method:
 
 ~~~js
@@ -49,8 +49,8 @@ To convert local time to UTC, use the [convert_to_utc](api/other/date.md) method
 var time = gantt.date.convert_to_utc(new Date(2013, 05, 29, 14, 00));
 ~~~
 
-Adding(subtracting) a time interval to(from) a date
-----------------------------------------------------------
+## Adding(subtracting) a time interval to(from) a date
+
 To add(subtract) a time interval to(from) the specified date, use the [add](api/other/date.md) method:
 
 ~~~js

@@ -3,8 +3,8 @@ title: "Соответствие политике Content Security Policy (CSP)"
 sidebar_label: "Соответствие политике Content Security Policy (CSP)"
 ---
 
-Соответствие политике Content Security Policy (CSP)
-=========================
+# Соответствие политике Content Security Policy (CSP)
+
 
 Content Security Policy (CSP) - это веб-стандарт, предназначенный для предотвращения несанкционированного выполнения JavaScript и повышения [безопасности создаваемых приложений](guides/app-security.md).
 

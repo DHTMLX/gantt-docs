@@ -3,8 +3,8 @@ title: "dhtmlxGantt с Vue.js"
 sidebar_label: "Vue.js"
 ---
 
-dhtmlxGantt с Vue.js
-====================
+# dhtmlxGantt с Vue.js
+
 
 Это руководство предполагает, что вы обладаете базовыми знаниями о [Vue](https://vuejs.org/) и его паттернах. Если вы только начинаете работать с Vue, рекомендуем ознакомиться с [документацией по Vue 3](https://vuejs.org/guide/introduction.html) для быстрого старта.
 

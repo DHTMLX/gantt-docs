@@ -3,8 +3,8 @@ title: "Nicht terminierte Aufgaben"
 sidebar_label: "Nicht terminierte Aufgaben"
 ---
 
-Nicht terminierte Aufgaben
-========================
+# Nicht terminierte Aufgaben
+
 
 Es ist möglich, Aufgaben ohne spezifische Termine zum Gantt-Diagramm hinzuzufügen.
 

@@ -3,8 +3,8 @@ title: "配置依赖关系链接"
 sidebar_label: "配置依赖关系链接"
 ---
 
-配置依赖关系链接
-=================================
+# 配置依赖关系链接
+
 ![gantt_arrows](/img/gantt_arrows.png)
 
 ((index

@@ -3,8 +3,8 @@ title: "Undo/Redo Functionality"
 sidebar_label: "Undo/Redo Functionality"
 ---
 
-Undo/Redo Functionality
-======================================
+# Undo/Redo Functionality
+
 
 dhtmlxGantt Chart allows you to undo/redo the made changes. To enable this functionality, you need to enable the **undo** plugin using the [gantt.plugins](api/method/plugins.md) method.
 
@@ -28,8 +28,8 @@ gantt.config.redo = true;
 [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 
-Undo/Redo API
-----------------------------
+## Undo/Redo API
+
 
 To revert the changes made in the Gantt Chart, use the [undo](api/method/undo.md) method:
 
@@ -45,8 +45,8 @@ gantt.redo();
 
 Starting from v6.3 the **undo()/redo()** methods are also available via the **gantt.ext.undo** object. See the [Undo Extension](guides/undo-ext.md) article. 
 
-Getting the stack of stored Undo/Redo actions
---------------------------------------------
+## Getting the stack of stored Undo/Redo actions
+
 
 All user actions in the Gantt Chart are implemented as arrays that contain sets of command objects. Gantt stores a stack of the most recently executed commands.
 The **undo** extension can make reverse operations out of them and execute them in Gantt. 
@@ -88,8 +88,8 @@ The **getUndoStack()** method returns a stack with 2 undo user actions. The firs
 
 Starting from v6.3 the **getUndoStack()/getRedoStack()** methods are also available via the **gantt.ext.undo** object. See the [Undo Extension](guides/undo-ext.md) article. 
 
-Clearing the stack of stored Undo/Redo commands
-------------------------------
+## Clearing the stack of stored Undo/Redo commands
+
 
 There is a possibility to clear the stack of Undo/Redo commands via the related Gantt API. 
 
@@ -142,8 +142,8 @@ The **saveState()** method saved the "task 1" text of the task with the id = 1 b
 
 For details about the **saveState()** method, see the [Undo Extension](guides/undo-ext.md) article.
 
-Configuring the Undo functionality
-----------------------------
+## Configuring the Undo functionality
+
 
 There are several settings that help to adjust the Undo operation.
 
@@ -175,8 +175,8 @@ gantt.config.undo_types = {
 ~~~
 
 
-The List of API Events
--------------------
+## The List of API Events
+
 
 There is a set of helpful Undo/Redo-related events:
 

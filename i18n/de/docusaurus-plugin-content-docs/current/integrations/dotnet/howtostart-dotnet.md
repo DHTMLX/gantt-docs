@@ -3,8 +3,8 @@ title: "dhtmlxGantt mit ASP.NET MVC"
 sidebar_label: "ASP.NET MVC"
 ---
 
-dhtmlxGantt mit ASP.NET MVC 
-===============================
+# dhtmlxGantt mit ASP.NET MVC 
+
 
 Dieses Tutorial bietet eine klare, schrittweise Anleitung zur Erstellung eines Gantt-Diagramms mit [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) und einer REST-API auf der Serverseite.
 
@@ -24,8 +24,8 @@ In diesem Beispiel wird das ASP.NET MVC 5 Framework zusammen mit Web API 2 Contr
 Der vollständige Quellcode ist [auf GitHub verfügbar](https://github.com/DHTMLX/gantt-howto-dotnet).
 :::
 
-Schritt 1. Projekt erstellen
------------------------------
+## Schritt 1. Projekt erstellen
+
 
 ### Ein neues Visual Studio-Projekt erstellen
 
@@ -43,8 +43,8 @@ Wählen Sie die Projektvorlage *Empty* und aktivieren Sie sowohl die Optionen f�
 
 ![how_to_start_net_app](/img/how_to_start_net_app.png)
 
-Schritt 2. Gantt zur Seite hinzufügen
--------------------------------------
+## Schritt 2. Gantt zur Seite hinzufügen
+
 
 ### Einen Controller erstellen
 
@@ -156,8 +156,8 @@ Die serverseitige Implementierung wird im nächsten Schritt behandelt. Sie könn
 ![adding_gantt](/img/adding_gantt.png)
 
 
-Schritt 3. Modelle und Datenbank erstellen
-------------------------------------------
+## Schritt 3. Modelle und Datenbank erstellen
+
 
 ### Modelle erstellen
 
@@ -461,8 +461,8 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Schritt 4. Implementierung der Web API
-------------------------------------------------
+## Schritt 4. Implementierung der Web API
+
 
 ### Allgemeine Technik zum Laden von Daten mit REST API
 
@@ -711,8 +711,8 @@ Mit dieser Konfiguration zeigt die Anwendung beim Ausführen ein voll funktionsf
 
 [Eine fertige Demo ist auf GitHub verfügbar](https://github.com/DHTMLX/gantt-howto-dotnet).
 
-Fehlerbehandlung 
------------
+## Fehlerbehandlung 
+
 
 [Exception filters](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98))" bieten eine Möglichkeit, Ausnahmen in CRUD-Handlern abzufangen und Antworten zu senden, die vom Client-seitigen gantt [interpretiert](guides/server-side.md#errorhandling) werden können.
 
@@ -969,20 +969,20 @@ Nun implementieren Sie die Logik zur Neuanordnung in der PUT- (EditTask-) Aktion
 
 ~~~
 
-Bekannte Probleme
------------------
+## Bekannte Probleme
+
 
 Beim Ausführen der App auf IIS können HTTP PUT- und DELETE-Anfragen Fehler 405 oder 401 zurückgeben. Dies kann daran liegen, dass das **WebDAV**-Modul mit RESTful-Handlern in Konflikt steht.
 
 Eine übliche Lösung ist, das WebDAV-Modul in der **web.config**-Datei zu deaktivieren. Weitere Details finden Sie [hier](https://forums.iis.net/t/1166025.aspx).
 
-Anwendungssicherheit
--------------------------
+## Anwendungssicherheit
+
 
 Gantt selbst bietet keinen Schutz vor Bedrohungen wie SQL-Injection, XSS oder CSRF-Angriffen. Die Sicherstellung der Anwendungssicherheit liegt in der Verantwortung des Entwicklers bei der Implementierung des Backends. Weitere Informationen finden Sie [im zugehörigen Artikel](guides/app-security.md).
 
-Fehlerbehebung
------------------
+## Fehlerbehebung
+
 
 ### ASP.NET Web Application-Vorlage fehlt
 
@@ -1031,8 +1031,8 @@ Führen Sie die Anwendung anschließend erneut aus.
 
 Wenn Aufgaben und Verknüpfungen nach der Integration von Gantt mit ASP.NET MVC nicht angezeigt werden, lesen Sie bitte den Artikel [Troubleshooting Backend Integration Issues](guides/troubleshooting.md). Dort finden Sie Hinweise zur Ursachenermittlung.
 
-Wie geht es weiter?
--------------------
+## Wie geht es weiter?
+
 
 An diesem Punkt ist das Gantt-Diagramm voll funktionsfähig. Der vollständige Code ist auf [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet) verfügbar und kann für eigene Projekte geklont oder heruntergeladen werden.
 

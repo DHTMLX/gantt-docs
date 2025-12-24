@@ -3,8 +3,8 @@ title: "使用 Lightbox 元素"
 sidebar_label: "使用 Lightbox 元素"
 ---
 
-使用 Lightbox 元素
-====================================
+# 使用 Lightbox 元素
+
 
 ## 获取/设置控件的值
 

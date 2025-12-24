@@ -3,8 +3,8 @@ title: "资源管理"
 sidebar_label: "资源管理"
 ---
 
-资源管理
-======================
+# 资源管理
+
 
 :::info
 此功能仅包含在 Gantt PRO 版本中。
@@ -18,8 +18,8 @@ Gantt 提供了预定义的资源视图，用于可视化资源负载、按资�
 虽然 Gantt 本身不会计算资源负载，也不提供内置方法，但它提供了公共 API，您可以据此实现任何自定义功能。
 :::
 
-资源视图面板
-------------------------
+## 资源视图面板
+
 
 dhtmlxGantt 提供了两种预定义布局视图，用于展示资源负载:资源负载图和资源直方图。
 
@@ -718,8 +718,8 @@ gantt.updateCollection("people", [
 
 关于在 lightbox 中配置资源控件的详细指导，请参阅 [Resources Control](guides/resources.md) 文章。
 
-加载资源与资源分配
-------------------------
+## 加载资源与资源分配
+
 
 从 v8.0 开始，可以使用 [gantt.parse()](api/method/parse.md) 或 [gantt.load()](api/method/load.md) 方法将资源和资源分配加载到甘特图中:
 
@@ -791,8 +791,8 @@ gantt.parse({
 });
 ~~~
 
-管理资源分配
----------------------------
+## 管理资源分配
+
 
 ### 解析资源分配
 
@@ -846,8 +846,8 @@ assignmentStore.updateItem(assignment.id);
 gantt.updateTaskAssignments(taskId);
 ~~~
 
-显示任务资源
-----------------------
+## 显示任务资源
+
 
 资源名称可以作为任务描述的一部分显示，也可以作为网格单元格中的标签显示。由于 gantt 没有内置方法通过 id 从服务器列表获取项，可以使用一个简单的辅助函数:
 
@@ -880,8 +880,8 @@ gantt.templates.rightside_text = function(start, end, task){
 [Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
 
 
-可编辑资源图
--------------------------
+## 可编辑资源图
+
 
 要直接在资源图中编辑资源分配，请进行如下配置:
 
@@ -914,8 +914,8 @@ gantt.templates.resource_cell_class = gantt.ext.resources.editableResourceCellCl
 **Related example:** [Customizable resource diagram template](https://snippet.dhtmlx.com/libwuna4?tag="gantt")
 
 
-资源的自定义样式
-------------------------
+## 资源的自定义样式
+
 
 应用颜色时，通常使用以下模板:
 
@@ -932,8 +932,8 @@ gantt.templates.resource_cell_class = gantt.ext.resources.editableResourceCellCl
 [Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
 
 
-资源日历
-------------------
+## 资源日历
+
 
 Gantt 支持可自定义的工作时间日历，可与特定资源关联。
 
@@ -962,8 +962,8 @@ gantt.config.resource_calendars = {
 
 更多详情请参阅[为资源分配日历](guides/working-time.md#weiziyuanfenpeirili)相关文章。
 
-平衡资源负载
-------------------------
+## 平衡资源负载
+
 
 [grouping extension](guides/extensions-list.md#renwufenzu) 支持按 **resource** 属性对整个项目进行分组。
 

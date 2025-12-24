@@ -3,8 +3,8 @@ title: "Skalierung konfigurieren"
 sidebar_label: "Skalierung konfigurieren"
 ---
 
-Skalierung konfigurieren
-=======================
+# Skalierung konfigurieren
+
 
 ![gantt_right](/img/gantt_right.png)
 

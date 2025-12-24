@@ -3,8 +3,8 @@ title: "拆分任务"
 sidebar_label: "拆分任务"
 ---
 
-拆分任务
-=================
+# 拆分任务
+
 
 :::info
 此功能仅在 PRO 版本中可用。
@@ -115,8 +115,8 @@ gantt.attachEvent("onBeforeSplitTaskDisplay", function (id, task, parent) {
 });
 ~~~
 
-样式
--------------------
+## 样式
+
 
 拆分任务是父项的子任务，子任务后方的浅绿色条代表父项的条，并带有额外样式。
 

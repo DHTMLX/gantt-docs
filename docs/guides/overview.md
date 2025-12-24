@@ -3,8 +3,8 @@ title: "Interface of Gantt Chart"
 sidebar_label: "Interface of Gantt Chart"
 ---
 
-Interface of Gantt Chart
-====================
+# Interface of Gantt Chart
+
 A Gantt chart is one of the most popular ways to show the activities occurred over a time period. 
 
 - Each activity in the chart is displayed as a bar.
@@ -15,8 +15,8 @@ grid is a tree that presents the hierarchy of the tasks. You can close, open a b
 ![gantt_overview_01](/img/gantt_overview_01.png)
 
 
-Managing tasks
-----------------------
+## Managing tasks
+
 ### Adding new tasks
 
 - To add a root task, click on the "+" icon in the header of the grid.
@@ -35,8 +35,8 @@ Managing tasks
 
 ![gantt_overview_03](/img/gantt_overview_03.png)
 
-Managing dependency links
--------------------------------
+## Managing dependency links
+
 
 
 ### Adding new links

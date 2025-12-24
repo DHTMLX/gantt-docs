@@ -3,8 +3,8 @@ title: "그리드의 템플릿"
 sidebar_label: "그리드의 템플릿"
 ---
 
-그리드의 템플릿
-=====================================
+# 그리드의 템플릿
+
 
 <table class="webixdoc_links">
     <tbody>

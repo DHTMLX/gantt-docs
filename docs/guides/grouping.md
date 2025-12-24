@@ -3,8 +3,8 @@ title: "Grouping Tasks"
 sidebar_label: "Grouping Tasks"
 ---
 
-Grouping Tasks
-=========================
+# Grouping Tasks
+
 
 :::info
 This functionality is available only in the PRO edition
@@ -133,8 +133,8 @@ Note, that the default group includes tasks which are not included into the othe
 
  
 
-Ungrouping tasks
-------------------------------
+## Ungrouping tasks
+
 
 To reset grouping, call the [groupBy](api/method/groupby.md) method and pass *false* as a parameter:
 
@@ -143,8 +143,8 @@ To reset grouping, call the [groupBy](api/method/groupby.md) method and pass *fa
 gantt.groupBy(false);
 ~~~
 
-Using collections for specifying groups
-------------------------------------------
+## Using collections for specifying groups
+
 
 Usually, groups are used by multiple elements on the page and to avoid repetitions, you can present groups as a named collection.
 
@@ -163,8 +163,8 @@ gantt.groupBy({
 ~~~
 
 
-Keeping original task hierarchy in groups
----------------------------------------
+## Keeping original task hierarchy in groups
+
 
 In the group mode, the Gantt tree's original structure isn't displayed by default, and all tasks appear as first-level children of their respective groups.
 

@@ -43,7 +43,7 @@ Wenn die Option [work_time](api/config/work_time.md) deaktiviert ist, gibt die M
 - Zusätzlich kann diese Methode direkt von einem [Kalenderobjekt](api/other/calendar.md) aufgerufen werden.
 
 ## Eigenschaften des Konfigurationsobjekts {#configurationobjectproperties}
----------------------------------------
+
 
 Das Konfigurationsobjekt kann folgende Eigenschaften enthalten:
 

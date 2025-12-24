@@ -3,8 +3,8 @@ title: "Шаблоны расширения 'Quick Info' (Поддержка Tou
 sidebar_label: "Шаблоны расширения 'Quick Info' (Поддержка Touch)"
 ---
 
-Шаблоны расширения 'Quick Info' (Поддержка Touch)
-===========================================================
+# Шаблоны расширения 'Quick Info' (Поддержка Touch)
+
 
 <table class="webixdoc_links">
   <tbody>

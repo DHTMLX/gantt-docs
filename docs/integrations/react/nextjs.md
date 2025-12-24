@@ -4,8 +4,8 @@ sidebar_label: Next.js
 
 ---
 
-React Gantt with Next.js
-===============
+# React Gantt with Next.js
+
 
 **Next.js Quick Start**
 

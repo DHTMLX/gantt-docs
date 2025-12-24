@@ -3,8 +3,8 @@ title: "Baselines Control"
 sidebar_label: "Baselines Control"
 ---
 
-Baselines Control
-====================
+# Baselines Control
+
 
 :::info
 This functionality is available in the PRO Edition only.
@@ -24,8 +24,8 @@ gantt.config.lightbox.sections = [
 [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 
-Initialization
----------------------------
+## Initialization
+
 
 To add the **baselines** control to the lightbox, follow the steps below:
 
@@ -45,8 +45,8 @@ gantt.config.lightbox.sections = [
 gantt.locale.labels.section_baselines = "Baselines";
 ~~~
 
-Properties
-------------------------
+## Properties
+
 
 The following properties are mostly important and commonly set for the **baselines** control (see the full list [here](api/config/lightbox.md)):
 
@@ -64,8 +64,8 @@ The following properties are mostly important and commonly set for the **baselin
 Edited tasks will be specified only by the start date and have a zero duration. Makes sense only for [milestones](guides/task-types.md#milestones)
 - **time_format** - (*string*) sets the order of date-time selectors
 
-Localization
------------------
+## Localization
+
 
 You can localize the labels of the following elements of the **baselines** control:
 

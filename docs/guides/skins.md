@@ -3,8 +3,8 @@ title: "Skins"
 sidebar_label: "Skins"
 ---
 
-Skins
-==============
+# Skins
+
 
 dhtmlxGantt provides several predefined skins that you can use to change the overall look of the Gantt chart:
 

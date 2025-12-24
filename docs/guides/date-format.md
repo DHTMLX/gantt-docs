@@ -3,8 +3,8 @@ title: "Date Format Specification"
 sidebar_label: "Date Format Specification"
 ---
 
-Date Format Specification
-==============
+# Date Format Specification
+
 
 While specifying the format for dates you can use any character from the following list:
 

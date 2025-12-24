@@ -3,8 +3,8 @@ title: "CSS classes renamed in v.3.0"
 sidebar_label: "CSS classes renamed in v.3.0"
 ---
 
-CSS classes renamed in v.3.0
-============================================
+# CSS classes renamed in v.3.0
+
 <table class="list" cellspacing="0" cellpadding="5" border="0">
   <thead>
   <tr>

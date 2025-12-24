@@ -3,8 +3,8 @@ title: "Typeselect-Steuerelement"
 sidebar_label: "Typeselect-Steuerelement"
 ---
 
-Typeselect-Steuerelement
-======================
+# Typeselect-Steuerelement
+
 
 :::info
 Diese Funktion ist ausschließlich in der PRO Edition verfügbar.
@@ -30,8 +30,8 @@ gantt.config.lightbox.sections = [
 [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-Initialisierung
----------------------
+## Initialisierung
+
 
 Um das **typeselect**-Steuerelement im Lightbox-Dialog zu verwenden, fügen Sie einfach einen Abschnitt zur Lightbox-Konfiguration wie folgt hinzu:
 
@@ -57,8 +57,8 @@ gantt.locale.labels.section_type = "Neues Label für den Abschnitt";
 ~~~
   
 
-Eigenschaften
-----------------
+## Eigenschaften
+
 
 Hier sind die wichtigsten Eigenschaften, die häufig mit dem **typeselect**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 

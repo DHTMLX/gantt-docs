@@ -3,12 +3,12 @@ title: "Migration von älteren Versionen"
 sidebar_label: "Migration von älteren Versionen"
 ---
 
-Migration von älteren Versionen
-=================================================
+# Migration von älteren Versionen
 
 
-8.0 -> 9.0
--------------
+
+## 8.0 -> 9.0
+
 
 Das Update auf v9.0 bringt mehrere Breaking Changes mit sich.
 
@@ -172,8 +172,8 @@ Die **Bluebird**-Bibliothek wurde aus dem Gantt-Bundle entfernt. [Promise](api/m
 Seit v9.0 ist die Methode [resizeLightbox](api/method/resizelightbox.md) veraltet und wurde aus dem Gantt-Code entfernt. Sie wird nicht mehr benötigt, da die Größenanpassung der Lightbox jetzt automatisch funktioniert.
 Beachten Sie, dass Sie die Methode **resizeLightbox()** aus Ihrer Konfiguration entfernen sollten, um Fehler zu vermeiden, falls sie noch vorhanden ist.
 
-7.1 -> 8.0
--------------
+## 7.1 -> 8.0
+
 
 ### Ressourcen-Zuweisungen
 
@@ -216,8 +216,8 @@ Seit v8.0 wurden die folgenden veralteten Klassennamen entfernt und durch neue e
 - ".dhtmlx-" + config.type -> **".gantt-" + config.type**
 - ".dhtmlx_" + btn.label.toLowerCase() + "_button" -> **".gantt_" + btn.label.toLowerCase() + "_button"**
 
-7.0 -> 7.1
--------------
+## 7.0 -> 7.1
+
 
 Version 7.1 bringt keine Breaking Changes mit sich, die eine Anpassung des bestehenden Codes erfordern würden.
 
@@ -281,8 +281,8 @@ gantt.config.bar_height = 50;
 ~~~
 
 
-6.3 -> 7.0
----------------------
+## 6.3 -> 7.0
+
 
 ### Erweiterungen und Sprachdateien
 
@@ -377,8 +377,8 @@ In Version 6.2 veraltete Konfigurationen und Templates wurden in Version 7.0 ent
 
 Falls Sie die alten Namen bereits in Ihrem Code definiert haben, funktionieren diese weiterhin. Andernfalls verwenden Sie bitte die neuere Version der API.
 
-6.2 -> 6.3
----------------
+## 6.2 -> 6.3
+
 
 ### Multi-Task-Auswahl
 
@@ -483,8 +483,8 @@ const dateEditor = {type: "date", map_to: "start_date",
 };
 ~~~
 
-6.1 -> 6.2
----------------
+## 6.1 -> 6.2
+
 
 Das Update auf Version 6.2 ist im Allgemeinen kompatibel mit Version 6.1 und sollte keine Codeänderungen erfordern.
 Allerdings wurde das Verhalten einiger Komponenten geändert (das alte Verhalten kann über die Konfiguration wiederhergestellt werden) und einige APIs wurden als veraltet markiert.
@@ -586,8 +586,8 @@ gantt.config.api_date = "%d-%m-%Y %H:%i";
 gantt.templates.api_date = gantt.date.date_to_str(gantt.config.api_date);
 ~~~
 
-6.0 -> 6.1 
--------------
+## 6.0 -> 6.1 
+
 
 ### Zeitliche Einschränkungen und automatisches Scheduling
 
@@ -616,8 +616,8 @@ gantt.init("gantt_here");
 gantt.parse(demo_tasks);
 ~~~
 
-5.2 -> 6.0
-------------------
+## 5.2 -> 6.0
+
 
 In Version 6.0 ist die Methode **getSlack()** veraltet. Stattdessen wurden zwei Methoden hinzugefügt:
 
@@ -645,8 +645,8 @@ Falls Sie eine der veralteten Methoden verwenden, müssen Sie diese gemäß der 
 </table>
 
 
-3.x -> 4.0
-------------
+## 3.x -> 4.0
+
 
 Version 4.0 bringt einige Änderungen in der öffentlichen API mit sich, insbesondere:
 
@@ -719,8 +719,8 @@ Die vollständige Liste der überholten API ist unten aufgeführt:
 </table>
 
 
-2.0 -> 3.0
-----------------------
+## 2.0 -> 3.0
+
 1) Um CSS-Konflikte mit dhtmlxScheduler zu vermeiden, wurden die Klassennamen, die von beiden Komponenten verwendet wurden, in dhtmlxGantt umbenannt (alle Klassen bezogen sich auf die Lightbox).
 Wenn Sie das Styling der Lightbox angepasst haben, besteht die Migration darin, die Klassen entsprechend umzubenennen.
 
@@ -761,8 +761,8 @@ Alte Konfigurationen ("dhx_save_btn", "dhx_cancel_btn", "gantt_delete_btn") funk
 - Möglichkeit, Tage in Wochen-, Monats- und Timeline-Ansicht auszublenden
 - Projekte, Meilensteine und andere benutzerdefinierte Typen
 
-1.0 -> 2.0
-----------------------
+## 1.0 -> 2.0
+
 
 1) Verschiedene Objekte (**GanttProjectInfo**, **GanttTaskInfo**, **GanttChart**, **GanttProject**, **GanttTask**) wurden durch ein statisches Objekt ersetzt - **gantt**. 
 

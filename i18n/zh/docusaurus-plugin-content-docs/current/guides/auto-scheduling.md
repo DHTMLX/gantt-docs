@@ -3,8 +3,8 @@ title: "自动调度"
 sidebar_label: "自动调度"
 ---
 
-自动调度
-===================
+# 自动调度
+
 
 :::info
 此功能仅在 PRO 版中提供。
@@ -16,8 +16,8 @@ sidebar_label: "自动调度"
 
 例如，假设有两个通过依赖关系连接的任务，其中第二个任务在第一个任务结束后立即开始。如果第一个任务的计划发生变化，自动调度会相应地更新第二个任务的开始日期。通过定义任务之间的关系，而无需手动调整每个任务的日期，这有助于维护项目进度。
 
-如何使用
---------------
+## 如何使用
+
 
 要启用自动调度，请通过 [gantt.plugins](api/method/plugins.md) 方法开启 [auto_scheduling](guides/extensions-list.md#zidongpaicheng) 插件:
 
@@ -39,8 +39,8 @@ gantt.config.auto_scheduling = true;
 
 即使开启了自动调度，仍然可以根据需要手动安排任务。
 
-前向/后向计划
-------------------
+## 前向/后向计划
+
 
 ### 项目计划策略
 
@@ -208,8 +208,8 @@ Gantt 没有内置的 UI 用于编辑滞后或其他链接属性，但你可以�
 **Related example:** [Edit-lag Popup](https://snippet.dhtmlx.com/2208ic0t)
 
 
-为特定任务禁用自动调度
-----------------------
+## 为特定任务禁用自动调度
+
 
 要关闭某个任务的自动调度并手动安排它，请将该任务的 **auto_scheduling** 属性设置为 *false*:
 
@@ -229,8 +229,8 @@ gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predece
 });
 ~~~
 
-已完成任务的调度
-----------------------------
+## 已完成任务的调度
+
 
 默认情况下，自动调度会将已完成的任务（progress 值为 1）与未完成任务同等处理。
 

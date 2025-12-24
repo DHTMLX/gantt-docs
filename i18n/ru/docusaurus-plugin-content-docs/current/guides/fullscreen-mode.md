@@ -3,8 +3,8 @@ title: "Полноэкранный режим"
 sidebar_label: "Полноэкранный режим"
 ---
 
-Полноэкранный режим
-===================
+# Полноэкранный режим
+
 
 Начиная с версии 3.3, библиотека предоставляет расширение **fullscreen**.
 
@@ -48,8 +48,8 @@ var button = document.getElementById("fullscreen_button");
 [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 
-Обзор API
----------------
+## Обзор API
+
 Существует два основных метода для управления режимом отображения Gantt:
 
 - [expand](api/method/expand.md) - переводит Gantt в полноэкранный режим
@@ -64,8 +64,8 @@ gantt.expand();
 gantt.collapse();
 ~~~
 
-Поддерживаемые события
-----------------------
+## Поддерживаемые события
+
 
 Для обработки изменений полноэкранного режима доступны следующие события:
 
@@ -98,8 +98,8 @@ gantt.attachEvent("onCollapse", function (){
 });
 ~~~
 
-Fullscreen API
-------------------
+## Fullscreen API
+
 
 Объект [fullscreen](guides/fullscreen-ext.md) предоставляет четыре метода для управления полноэкранным поведением Gantt, а также других элементов:
 
@@ -129,8 +129,8 @@ gantt.ext.fullscreen.getFullscreenElement();
 
 По умолчанию **getFullscreenElement()** возвращает HTML-контейнер Gantt. Вы можете переопределить этот метод, чтобы добавить дополнительные элементы в полноэкранный режим, как описано [здесь](guides/fullscreen-mode.md#ganttwithheadertoolbarinfullscreen).
 
-Gantt с заголовком/панелью инструментов в полноэкранном режиме
---------------------------------------------------------------
+## Gantt с заголовком/панелью инструментов в полноэкранном режиме
+
 
 API Gantt позволяет расширить полноэкранный режим на другие элементы с помощью метода **getFullscreenElement()** объекта *fullscreen*:
 
@@ -167,8 +167,8 @@ gantt.init("gantt_here");
 [Full Screen with additional elements](https://docs.dhtmlx.com/gantt/samples/02_extensions/26_full_screen_with_additional_elements.html)
 
 
-Почему полноэкранный режим может не работать?
----------------------------------------------
+## Почему полноэкранный режим может не работать?
+
 
 Расширение fullscreen работает только в том случае, если Gantt разрешено переходить в полноэкранный режим.
 

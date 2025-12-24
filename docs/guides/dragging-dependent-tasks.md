@@ -3,13 +3,13 @@ title: "Dragging Tasks Together with Their Dependent Tasks"
 sidebar_label: "Dragging Tasks Together with Their Dependent Tasks"
 ---
 
-Dragging Tasks Together with Their Dependent Tasks
-===========================
+# Dragging Tasks Together with Their Dependent Tasks
+
 
 There are several ways of implementing tasks moving with their dependent tasks.
 
-Using Auto Scheduling Extension
-------------------------
+## Using Auto Scheduling Extension
+
 
 Firstly, you can make use of the [Auto Scheduling](guides/auto-scheduling.md) extension.
 It allows scheduling tasks automatically depending on relations between them.
@@ -28,8 +28,8 @@ And set the **auto_scheduling** property to true:
 gantt.config.auto_scheduling = true;
 ~~~
 
-Moving Tasks Manually
------------------------
+## Moving Tasks Manually
+
 
 ### Chapter Contents
 

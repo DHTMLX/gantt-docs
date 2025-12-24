@@ -3,8 +3,8 @@ title: "Aufgaben neu anordnen"
 sidebar_label: "Aufgaben neu anordnen"
 ---
 
-Aufgaben neu anordnen
-=====================
+# Aufgaben neu anordnen
+
 
 dhtmlxGantt bietet zwei Möglichkeiten, Aufgaben im Grid neu anzuordnen:
 
@@ -28,8 +28,8 @@ Es gibt auch ein Video-Tutorial, das zeigt, wie Aufgaben im Grid sortiert und ne
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/srtb3nYOb-E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Drag-and-Drop über die gesamte Gantt-Struktur hinweg
-----------------------------------------------------
+## Drag-and-Drop über die gesamte Gantt-Struktur hinweg
+
 
 Die Option [order_branch](api/config/order_branch.md) beschränkt das Ziehen auf Aufgaben innerhalb derselben Baumebene.
 
@@ -47,8 +47,8 @@ gantt.init("gantt_here");
 [Drag and drop rows in Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
 
 
-Einschränkung der Ablagepositionen
-----------------------------------
+## Einschränkung der Ablagepositionen
+
 
 Um zu verhindern, dass Aufgaben an bestimmten Positionen abgelegt werden, verwenden Sie die Events [onBeforeTaskMove](api/event/onbeforetaskmove.md) oder [onBeforeRowDragEnd](api/event/onbeforerowdragend.md):
 
@@ -70,8 +70,8 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 });
 ~~~
 
-Leistungsverbesserung bei großen Datenmengen
---------------------------------------------
+## Leistungsverbesserung bei großen Datenmengen
+
 
 Bei der Arbeit mit vielen Aufgaben kann der Standardmodus zur Zweigneuordnung die Leistung beeinträchtigen. Um dies zu verbessern, kann der "marker"-Modus verwendet werden.
 
@@ -87,8 +87,8 @@ In diesem Modus wird beim Halten der linken Maustaste nur der Aufgabenname versc
 
 Um das Ablegen von Aufgaben an bestimmten Positionen in diesem Modus einzuschränken, verwenden Sie das Event [onBeforeRowDragMove](api/event/onbeforerowdragmove.md) (dies funktioniert nur im "marker"-Modus).
 
-Hervorheben verfügbarer Ablageziele während des Drag-and-Drop
--------------------------------------------------------------
+## Hervorheben verfügbarer Ablageziele während des Drag-and-Drop
+
 
 Um beim Ziehen gültige Ablageziele visuell hervorzuheben (z. B. um zu verhindern, dass ein Wurzelknoten unter einen anderen Wurzelknoten verschoben wird), verwenden Sie die Events [onRowDragStart](api/event/onrowdragstart.md) und [onRowDragEnd](api/event/onrowdragend.md):
 
@@ -116,8 +116,8 @@ gantt.templates.grid_row_class = function(start, end, task){
 };
 ~~~
 
-Vertikales Neuordnen von Aufgaben in der Zeitleiste
----------------------------------------------------
+## Vertikales Neuordnen von Aufgaben in der Zeitleiste
+
 
 Siehe die Beispiele im Abschnitt [Wie man Aufgaben in der Zeitleiste vertikal neu anordnet](guides/how-to.md#howtoverticallyreordertasksinthetimeline) für weitere Hinweise.
 

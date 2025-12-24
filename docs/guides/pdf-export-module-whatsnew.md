@@ -3,8 +3,8 @@ title: "What's new in PDF Export Module"
 sidebar_label: "What's new in PDF Export Module"
 ---
 
-What's new in PDF Export Module
-================================
+# What's new in PDF Export Module
+
 
 ## 0.7.0
   

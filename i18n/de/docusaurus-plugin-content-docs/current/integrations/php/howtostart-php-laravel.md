@@ -3,8 +3,8 @@ title: "dhtmlxGantt mit PHP: Laravel"
 sidebar_label: "PHP: Laravel"
 ---
 
-dhtmlxGantt mit PHP: Laravel 
-=====================
+# dhtmlxGantt mit PHP: Laravel 
+
 
 In diesem Tutorial wird erklärt, wie Sie dhtmlxGantt in eine [Laravel](https://laravel.com/)-Anwendung integrieren.
 
@@ -26,8 +26,8 @@ Zusätzlich zeigt ein Video-Guide, wie ein Gantt-Diagramm mit PHP Laravel erstel
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/eu5R86a-9jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Schritt 1. Initialisieren eines Projekts
------------------------
+## Schritt 1. Initialisieren eines Projekts
+
 
 ### Ein Projekt erstellen
 
@@ -49,8 +49,8 @@ An diesem Punkt sollte die Standard-Willkommensseite von Laravel angezeigt werde
 
 ![how_to_start_laravel_blank_page](/img/how_to_start_laravel_blank_page.png)
 
-Schritt 2. Hinzufügen von Gantt zur Seite
------------------------
+## Schritt 2. Hinzufügen von Gantt zur Seite
+
 
 ### Eine View hinzufügen
 
@@ -106,8 +106,8 @@ Starten Sie die App neu und prüfen Sie, ob die Gantt-Seite angezeigt wird:
 
 ![how_to_start_laravel_empty_gantt](/img/how_to_start_laravel_empty_gantt.png)
 
-Schritt 3. Erstellen von Modellen und Migrationen
----------------------
+## Schritt 3. Erstellen von Modellen und Migrationen
+
 
 Nachdem das Gantt-Diagramm angezeigt wird, besteht der nächste Schritt darin, es mit einer Datenbank zu verbinden und mit Daten zu füllen.
 
@@ -317,8 +317,8 @@ class Link extends Model
 }
 ~~~
 
-Schritt 4. Daten laden
--------------------
+## Schritt 4. Daten laden
+
 
 Mit der Datenbank und den Modellen können die Daten in das Gantt-Diagramm geladen werden.
 Da der Client Datumsangaben in einem bestimmten [Format](guides/supported-data-formats.md#json) erwartet, erstellen Sie eine Controller-Action, die das JSON entsprechend zurückgibt:
@@ -375,8 +375,8 @@ Nun sollten beim Prüfen der App die Aufgaben im Gantt-Diagramm erscheinen:
 
 ![how_to_start_laravel_complete](/img/how_to_start_laravel_complete.png)
 
-Schritt 5. Änderungen speichern
------------------------------------
+## Schritt 5. Änderungen speichern
+
 
 Derzeit liest das Gantt-Diagramm Daten vom Backend. Im nächsten Schritt soll es möglich sein, Änderungen wieder in die Datenbank zu speichern.
 
@@ -725,19 +725,19 @@ private function updateOrder($taskId, $target){
 
 ~~~
 
-Anwendungssicherheit
--------------------------
+## Anwendungssicherheit
+
 
 Die Gantt-Komponente selbst bietet keinen Schutz gegen Bedrohungen wie SQL-Injection, XSS oder CSRF-Angriffe. Die Sicherstellung der Anwendungssicherheit liegt in der Verantwortung der Backend-Entwickler. Weitere Einzelheiten finden Sie [im entsprechenden Artikel](guides/app-security.md).
 
 
-Fehlerbehebung
------------------
+## Fehlerbehebung
+
 
 Wenn nach diesen Schritten das Gantt-Diagramm keine Aufgaben oder Links anzeigt, finden Sie im Artikel [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) Hinweise zur Identifizierung und Lösung häufiger Probleme.
 
-Wie geht es weiter?
--------------------
+## Wie geht es weiter?
+
 
 Das Gantt ist nun vollständig funktionsfähig. Der vollständige Quellcode steht auf [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel) zum Klonen oder Herunterladen für eigene Projekte zur Verfügung.
 

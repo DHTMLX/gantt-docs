@@ -3,15 +3,15 @@ title: "Textarea-Steuerelement"
 sidebar_label: "Textarea-Steuerelement"
 ---
 
-Textarea-Steuerelement
-============================
+# Textarea-Steuerelement
+
 
 Dies ist ein mehrzeiliges Textfeld.
 
 ![textarea_control](/img/textarea_control.png)
 
-Initialisierung
----------------------------------
+## Initialisierung
+
 
 Standardmäßig enthält das Lightbox-Formular ein **textarea**-Steuerelement. Um ein weiteres hinzuzufügen, gehen Sie wie folgt vor:
 
@@ -31,8 +31,8 @@ gantt.config.lightbox.sections = [
 gantt.locale.labels.section_details = "Details";
 ~~~
 
-Eigenschaften
----------------
+## Eigenschaften
+
 
 Hier sind die wichtigsten Eigenschaften, die häufig mit dem **textarea**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 

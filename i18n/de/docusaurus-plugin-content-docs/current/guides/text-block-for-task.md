@@ -3,15 +3,15 @@ title: "Anzeigen von Aufgabeninhalten"
 sidebar_label: "Anzeigen von Aufgabeninhalten"
 ---
 
-Anzeigen von Aufgabeninhalten
-====================================
+# Anzeigen von Aufgabeninhalten
+
 Ein Label neben einer Aufgabenleiste kann verwendet werden, um zusätzliche Details zur Aufgabe anzuzeigen. 
 In der Regel beinhaltet dies Informationen wie zugewiesene Ressourcen, zum Beispiel Personen, Materialien usw.
 
 ![assigned_text](/img/assigned_text.png)
 
-Anpassen des Formats von Aufgabenleisten
--------------------------------------------------
+## Anpassen des Formats von Aufgabenleisten
+
 Um das Standardaussehen der Aufgabenleisten zu ändern, können Sie die Vorlage [task_text](api/template/task_text.md) verwenden:
 
 ~~~js
@@ -28,8 +28,8 @@ Diese Vorlage kann beliebigen HTML-Inhalt enthalten, den Sie innerhalb der Aufga
 
 ![task_text](/img/task_text.png)
 
-Text auf der linken Seite einer Leiste zuweisen
--------------------------------------------------
+## Text auf der linken Seite einer Leiste zuweisen
+
 Um einen Textblock auf der linken Seite einer Aufgabenleiste hinzuzufügen, verwenden Sie die Vorlage [leftside_text](api/template/leftside_text.md):
 
 ~~~js
@@ -41,8 +41,8 @@ gantt.templates.leftside_text = function(start, end, task){
 [Define side content](https://docs.dhtmlx.com/gantt/samples/04_customization/01_outer_content.html)
 
 
-Text auf der rechten Seite einer Leiste zuweisen
--------------------------------------------------
+## Text auf der rechten Seite einer Leiste zuweisen
+
 Um einen Textblock auf der rechten Seite einer Aufgabenleiste hinzuzufügen, verwenden Sie die Vorlage [rightside_text](api/template/rightside_text.md):
 
 ~~~js

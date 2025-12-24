@@ -3,12 +3,12 @@ title: "Configuring the Tree Column"
 sidebar_label: "Configuring the Tree Column"
 ---
 
-Configuring the Tree Column
-============================================
+# Configuring the Tree Column
+
 To know about available tree-related methods, please, refer to the [Task Parent/Child](guides/task-tree-operations.md) article.
 
-Expanding/collapsing a task branch
---------------------------------------
+## Expanding/collapsing a task branch
+
 - To open a task branch, use the [open](api/method/open.md) method:
 
 ~~~js
@@ -33,8 +33,8 @@ var data = {
 gantt.close("p_1"); /*!*/
 ~~~ 
 
-Expanding/collapsing several branches
---------------------------------
+## Expanding/collapsing several branches
+
 If you need to open/close several task branches, the fastest way is to programatically set the corresponding boolean value (true - to open, false - to close)
 to the *.$open* property of the needed tasks and then redraw the gantt.
 
@@ -60,8 +60,8 @@ gantt.render();
 If you want to collapse/expand all tasks at once with a button, go to the [How to expand/collapse all tasks with a button](guides/how-to.md#how-to-expandcollapse-all-tasks-with-a-button) section.
 :::
 
-Getting the children of a task
--------------------------------------------
+## Getting the children of a task
+
 To get the children of a branch task, use the [getChildren](api/method/getchildren.md) method:
 
 ~~~js
@@ -76,8 +76,8 @@ gantt.getChildren("p_1");//->["t_1"] /*!*/
 
 *To see more tree-related methods, please, read the [Task Parent/Child](guides/task-tree-operations.md) article.*
 
-Changing the tree's icons
----------------------------------------------
+## Changing the tree's icons
+
 ### Parent items
 To set the icon for the parent items, use the [grid_folder](api/template/grid_folder.md) template:
 
@@ -110,8 +110,8 @@ gantt.templates.grid_open = function(item) {
 ~~~
 
 
-Setting the indent of children in a branch
-------------------------------------------------
+## Setting the indent of children in a branch
+
 To set the indent of child tasks in a branch, use the [grid_indent](api/template/grid_indent.md) template (change the **width** CSS property):
 
 ~~~js
@@ -121,8 +121,8 @@ gantt.templates.grid_indent="function(task){"
 ~~~
 
 
-Adding checkboxes to tree nodes
-------------------------------------
+## Adding checkboxes to tree nodes
+
 To add the checkboxes (or any other HTML content) to tree nodes, use the [grid_blank](api/template/grid_blank.md) template:
 
 ~~~js
@@ -132,8 +132,8 @@ gantt.templates.grid_blank="function(task){"
 ~~~
 
 
-Setting the template of tree nodes
----------------------------------------
+## Setting the template of tree nodes
+
 To set the template for tree nodes, use the **template** attribute in the [columns](api/config/columns.md) property. 
 
  The return value of the **template'**s function will be added as an inner HTML. That's why, you can use any HTML structures in the attribute.

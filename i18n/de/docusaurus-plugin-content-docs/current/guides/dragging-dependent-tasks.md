@@ -3,13 +3,13 @@ title: "Aufgaben zusammen mit ihren abhängigen Aufgaben verschieben"
 sidebar_label: "Aufgaben zusammen mit ihren abhängigen Aufgaben verschieben"
 ---
 
-Aufgaben zusammen mit ihren abhängigen Aufgaben verschieben
-===========================
+# Aufgaben zusammen mit ihren abhängigen Aufgaben verschieben
+
 
 Es gibt mehrere Möglichkeiten, Aufgaben gemeinsam mit ihren abhängigen Aufgaben zu verschieben.
 
-Verwendung der Auto Scheduling Extension
-------------------------
+## Verwendung der Auto Scheduling Extension
+
 
 Eine Möglichkeit ist die Verwendung der Extension [Auto Scheduling](guides/auto-scheduling.md). Sie plant Aufgaben automatisch basierend auf deren Beziehungen.
 
@@ -27,8 +27,8 @@ Setzen Sie außerdem die Eigenschaft **auto_scheduling** auf true:
 gantt.config.auto_scheduling = true;
 ~~~
 
-Aufgaben manuell verschieben
------------------------
+## Aufgaben manuell verschieben
+
 
 ### Inhaltsverzeichnis
 

@@ -3,8 +3,8 @@ title: "그리드에서 행 크기 조정하기"
 sidebar_label: "그리드에서 행 크기 조정하기"
 ---
 
-그리드에서 행 크기 조정하기
-============================
+# 그리드에서 행 크기 조정하기
+
 
 그리드에서 개별 행의 높이를 조정할 수 있습니다. 
 
@@ -19,7 +19,7 @@ dhtmlxGantt 라이브러리는 행 높이를 제어하는 두 가지 방법을 �
 :::
 
 ## 행 높이 설정하기 {#settingtherowheight}
-------------------------
+
 
 필요에 따라 특정 행의 높이를 사용자 정의할 수 있습니다.
 
@@ -58,7 +58,7 @@ gantt.render();
 **row_height** 및 **bar_height** 속성이 없거나 비어 있는 경우(기본값), [gantt.config.row_height](api/config/row_height.md) 및 [gantt.config.bar_height](api/config/bar_height.md)의 값이 적용됩니다.
 
 ## 드래그 앤 드롭으로 행 크기 조정하기 {#resizingrowsbydraganddrop}
----------------------------------
+
 
 ![resize_row](/img/resize_row.png)
 

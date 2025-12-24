@@ -3,8 +3,8 @@ title: "Export Module for PDF"
 sidebar_label: "Export Module for PDF"
 ---
 
-Export Module for PDF
-=======================
+# Export Module for PDF
+
 
 This export module can export data to PDF, PNG, Excel, and iCal files. It can be installed on any platform as a Node.js application or as a Docker image.
 

@@ -3,8 +3,8 @@ title: "Resizing Rows in Grid"
 sidebar_label: "Resizing Rows in Grid"
 ---
 
-Resizing Rows in Grid
-============================
+# Resizing Rows in Grid
+
 
 There is the possibility to change the height of the separate rows in the grid. 
 
@@ -18,8 +18,8 @@ The dhtmlxGantt library provides 2 ways to manage the row height:
 The functionality is available in v7.1 and upper.
 :::
 
-Setting the row height
-------------------------
+## Setting the row height
+
 
 You can adjust the height of a particular row according to your needs.
 
@@ -57,8 +57,8 @@ gantt.render();
 
 In case the **row_height** and **bar_height** attributes of the task object are not specified or empty (the default state), the values of [gantt.config.row_height](api/config/row_height.md) and [gantt.config.bar_height](api/config/bar_height.md) will be used.
 
-Resizing rows by drag and drop
----------------------------------
+## Resizing rows by drag and drop
+
 
 ![resize_row](/img/resize_row.png)
 

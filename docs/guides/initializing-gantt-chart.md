@@ -5,8 +5,8 @@ sidebar_label: "Quick Start"
 
 import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 
-dhtmlxGantt in Plain JS/HTML
-==================
+# dhtmlxGantt in Plain JS/HTML
+
 
 When you develop an application with dhtmlxGantt, the first thing you need is to initialize or, simply speaking, to display the Gantt chart on the page.
 
@@ -31,8 +31,8 @@ This guide tells about initialization of dhtmlxGantt in plain JS and HTML. You c
 </table>
 
 
-Creating basic Gantt chart
------------------------
+## Creating basic Gantt chart
+
 
 To display a basic Gantt on the page, follow 3 steps: 
 
@@ -61,8 +61,8 @@ To display a basic Gantt on the page, follow 3 steps:
 
 **Related sample**: [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
  
-How to add Gantt source files into a project
-------------------------------------------------------------
+## How to add Gantt source files into a project
+
 
 You can add Gantt code file into your project in several ways, depending on the type of an application you create:
 
@@ -73,8 +73,8 @@ You can add Gantt code file into your project in several ways, depending on the 
 - [Include files into a RequireJS-based app](#include-files-into-a-requirejs-based-app)
 
 
-Include files via the &#60;script&#62; tag
---------------------------------------------
+## Include files via the &#60;script&#62; tag
+
 
 The dhtmlxGantt requires including 2 code files on the page:
 
@@ -108,8 +108,8 @@ For the Commercial, Enterprise or Ultimate version the command look like this:
 import { gantt, Gantt } from 'dhtmlx-gantt';
 ~~~
 
-Using Gantt with Vite
---------------------------
+## Using Gantt with Vite
+
 
 If you use Vite in your project, the following setting is required for the **vite.config.js** file to ensure that Gantt is correctly included into the app:
 
@@ -121,8 +121,8 @@ optimizeDeps: {
 }
 ~~~
 
-Svelte production build
---------------------------
+## Svelte production build
+
 
 If you use [Gantt in a Svelte app](integrations/svelte/howtostart-svelte.md), you need to add the following setting into the **vite.config.js** file for the production build, 
 replacing the *gantt_9.0.14_evaluation* folder with the path to your Gantt folder:
@@ -138,8 +138,8 @@ build: {
 }
 ~~~
 
-Include files into a RequireJS-based app
-------------------------------------------- 
+## Include files into a RequireJS-based app
+ 
 
 To include dhtmlxGantt files into a RequireJS-based app, you need to follow the logic shown in the example below:
 
@@ -217,8 +217,8 @@ Check that the module name for any file inside the package is specified as *a re
 - "dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"
 
 
-Full screen mode
----------------------------------
+## Full screen mode
+
 
 To correctly display a Gantt chart in the full-screen mode in different browsers, define the following style on the page:
 

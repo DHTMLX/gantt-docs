@@ -3,8 +3,8 @@ title: "Empty State Screen"
 sidebar_label: "Empty State Screen"
 ---
 
-Empty State Screen
-================
+# Empty State Screen
+
 
 Starting from v8.0, the library includes the ability to display an empty screen ("empty state") with the placeholder element in the grid if there is no data loaded in the Gantt chart.
 

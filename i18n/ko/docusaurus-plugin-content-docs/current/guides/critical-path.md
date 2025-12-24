@@ -3,8 +3,8 @@ title: "Critical Path"
 sidebar_label: "Critical Path"
 ---
 
-Critical Path
-===================================
+# Critical Path
+
 
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다
@@ -61,8 +61,8 @@ Critical Path
 이 과정은 성능에 영향을 줄 수 있습니다. 이를 해결하기 위해, 특정 작업이나 링크만 확인할 수 있는 공개 메서드가 제공되어 크리티컬 패스 표시 시 더 나은 성능을 보장할 수 있습니다.
 
 
-Critical path logic
---------------------
+## Critical path logic
+
 
 간트는 다음 조건에서 작업을 크리티컬로 표시합니다:
 
@@ -137,8 +137,8 @@ const tasks = {
 현재 내장된 크리티컬 패스 로직은 변경할 수 없습니다.
 하지만 [크리티컬 패스 동작을 커스터마이징](#customizingthecriticalpathbehaviour)할 수 있습니다.
 
-Checking if a task is critical 
----------------------------------------
+## Checking if a task is critical 
+
 작업이 크리티컬인지 확인하려면 [isCriticalTask](api/method/iscriticaltask.md) 메서드를 사용하세요:
 
 ~~~js
@@ -153,8 +153,8 @@ gantt.isCriticalTask(gantt.getTask("task3"));// ->'true' /*!*/
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-Checking if a link is critical 
----------------------------------------
+## Checking if a link is critical 
+
 
 링크가 두 크리티컬 작업을 연결하는지 확인하려면 [isCriticalLink](api/method/iscriticallink.md) 메서드를 사용하세요:
 
@@ -167,8 +167,8 @@ gantt.isCriticalLink(gantt.getLink("link1"));
 
 
 
-Getting free and total slack
---------------------------
+## Getting free and total slack
+
 
 **Free slack(자유 여유 시간)**은 작업이나 마일스톤이 다음 연결된 작업을 지연시키지 않고 연장되거나 이동될 수 있는 시간입니다.
 
@@ -202,8 +202,8 @@ gantt.getTotalSlack(task);
 
 ![Slack](/img/show_slack.png)
 
-Customizing the critical path behaviour
----------------------------------------------
+## Customizing the critical path behaviour
+
 기본적으로 gantt는 크리티컬 패스에 대해 기본 하이라이트 스타일을 적용하고, 데이터가 변경될 때마다 경로를 다시 계산합니다.
 
 크리티컬 패스의 표시 여부를 제어하려면 다음과 같은 방법을 사용할 수 있습니다:
@@ -270,13 +270,13 @@ gantt.parse(data);
 
 **관련 예제:** [Custom critical path per project](https://snippet.dhtmlx.com/jd4dyc5p)
 
-Setting lag and lead times between tasks
----------------------------------
+## Setting lag and lead times between tasks
+
 
 크리티컬 패스 작업 간의 지연(lag) 및 리드(lead) 시간을 설정할 수 있습니다. 자세한 내용은 [여기](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks)에서 확인하세요.
 
-Scheduling completed tasks
-----------------------------
+## Scheduling completed tasks
+
 
 기본적으로 크리티컬 패스 알고리즘은 완료된 작업(progress 값이 1인 작업)도 미완료 작업과 동일하게 처리합니다.
 

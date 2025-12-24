@@ -3,11 +3,11 @@ title: "Custom Lightbox"
 sidebar_label: "Custom Lightbox"
 ---
 
-Custom Lightbox
-===============
+# Custom Lightbox
 
-The ways of creating a custom lightbox
-----------------------------------------
+
+## The ways of creating a custom lightbox
+
 
 You can create a fully custom lightbox for gantt and replace the default one with it. There are two possible ways to do it:
 
@@ -131,8 +131,8 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 });
 ~~~
 
-Processing actions in the custom form
---------------------------------
+## Processing actions in the custom form
+
 
 
 When user saves the form, you'll need to manually get form values and update the appropriate task using the public API: [addTask](api/method/addtask.md), [updateTask](api/method/updatetask.md) and [deleteTask](api/method/deletetask.md).

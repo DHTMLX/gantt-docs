@@ -3,13 +3,13 @@ title: "任务的基本操作"
 sidebar_label: "任务的基本操作"
 ---
 
-任务的基本操作
-========================================
+# 任务的基本操作
+
 
 本章介绍如何处理任务的基本操作:动态创建、删除和更新任务属性。
 
-添加新任务
-----------------------------
+## 添加新任务
+
 
 要向甘特图添加新任务，请使用 [addTask](api/method/addtask.md) 方法:
 
@@ -48,8 +48,8 @@ gantt.templates.grid_row_class = function( start, end, task ){
 [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
 
-更新任务属性
-------------------------------
+## 更新任务属性
+
 
 要动态更新任务对象的属性，请使用 [updateTask](api/method/updatetask.md) 方法:
 
@@ -73,8 +73,8 @@ task.text = "Task #10_1";
 gantt.refreshTask(10);
 ~~~
 
-重绘任务
-----------------------
+## 重绘任务
+
 
 要重绘甘特图中的所有任务，请使用 [refreshData](api/method/refreshdata.md) 方法:
 
@@ -87,8 +87,8 @@ task2.text = "Task #11_1";/*!*/
 gantt.refreshData(); /*!*/ 
 ~~~
 
-删除任务
--------------------------------
+## 删除任务
+
 
 要移除一个任务，请使用 [deleteTask](api/method/deletetask.md) 方法:
 
@@ -96,8 +96,8 @@ gantt.refreshData(); /*!*/
 gantt.deleteTask(taskId);
 ~~~
 
-级联删除嵌套任务
----------------------------
+## 级联删除嵌套任务
+
 
 [cascade_delete](api/config/cascade_delete.md) 设置控制任务删除的处理方式。默认情况下，它设置为 *true*，意味着删除一个任务会为每个相关的嵌套任务和关联的链接向服务器发起请求。
 
@@ -112,8 +112,8 @@ gantt.config.cascade_delete = false;
 此选项会影响后端的实现。更多细节请参见
 [Server-side Integration 文章的相关部分](guides/server-side.md#jilianshanchu)。
 
-从甘特图中移除所有任务
--------------------------------------------
+## 从甘特图中移除所有任务
+
 
 要清空甘特图中的所有任务，请调用 [clearAll](api/method/clearall.md) 方法:
 

@@ -3,8 +3,8 @@ title: "Konfiguration"
 sidebar_label: "Konfiguration"
 ---
 
-Konfiguration
-================================================
+# Konfiguration
+
 
 Um das gewünschte Erscheinungsbild für das Gantt-Diagramm zu erreichen, bietet dhtmlxGantt zwei Hauptobjekte:
 
@@ -33,8 +33,8 @@ Eine vollständige Liste der in **gantt.config** verfügbaren Eigenschaften find
 [Month view](https://docs.dhtmlx.com/gantt/samples/03_scales/02_month_days.html)
 
 
-'gantt.templates'-Objekt
--------------------------------------
+## 'gantt.templates'-Objekt
+
 
 Mit Vorlagen lässt sich anpassen, wie Datumsangaben und Beschriftungen dargestellt werden.
 

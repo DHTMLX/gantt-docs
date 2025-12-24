@@ -3,8 +3,8 @@ title: "dhtmlxGantt in Plain JS/HTML"
 sidebar_label: "Schnellstart"
 ---
 
-dhtmlxGantt in Plain JS/HTML
-==================
+# dhtmlxGantt in Plain JS/HTML
+
 
 Beim Erstellen einer Anwendung mit dhtmlxGantt besteht der erste Schritt darin, das Gantt-Diagramm einzurichten bzw. einfach gesagt, auf Ihrer Seite darzustellen.
 
@@ -28,8 +28,8 @@ Diese Anleitung beschreibt, wie Sie dhtmlxGantt mit einfachem JavaScript und HTM
 </table>
 
 
-Erstellen eines einfachen Gantt-Diagramms
------------------------
+## Erstellen eines einfachen Gantt-Diagramms
+
 
 Um ein einfaches Gantt-Diagramm auf einer Seite anzuzeigen, sind drei Schritte notwendig:
 
@@ -60,8 +60,8 @@ Um ein einfaches Gantt-Diagramm auf einer Seite anzuzeigen, sind drei Schritte n
 
  
  
-Wie man Gantt-Quelldateien zu einem Projekt hinzufügt
-------------------------------------------------------------
+## Wie man Gantt-Quelldateien zu einem Projekt hinzufügt
+
 
 Je nach Art der Anwendung, die Sie erstellen, gibt es verschiedene Möglichkeiten, die Gantt-Quelldateien zu Ihrem Projekt hinzuzufügen:
 
@@ -70,8 +70,8 @@ Je nach Art der Anwendung, die Sie erstellen, gibt es verschiedene Möglichkeite
 - [Dateien in RequireJS-basierten Anwendungen einbinden](#requirejsimport)
 
 
-Dateien über das &#60;script&#62;-Tag einbinden
---------------------------------------------
+## Dateien über das &#60;script&#62;-Tag einbinden
+
 
 Um dhtmlxGantt zu verwenden, müssen Sie zwei Dateien zu Ihrer Seite hinzufügen:
 
@@ -91,8 +91,8 @@ Die Hauptordner und -dateien im dhtmlxGantt-Paket sind:
 - <b>samples</b> - Beispiel-Codebeispiele.
 - <b>codebase</b> - Minifizierte Code-Dateien für den produktiven Einsatz. <b>Sie sollten die Dateien aus diesem Ordner in Ihren Anwendungen verwenden.</b>
 
-Dateien in ES6/7- und TypeScript-Anwendungen importieren
----------------------------------------------
+## Dateien in ES6/7- und TypeScript-Anwendungen importieren
+
 
 Verwenden Sie diesen Befehl, um die Dateien zu importieren:
 
@@ -106,8 +106,8 @@ Für die Commercial-, Enterprise- oder Ultimate-Versionen verwenden Sie:
 import { gantt, Gantt } from 'dhtmlx-gantt';
 ~~~
 
-Verwendung von Gantt mit Vite
---------------------------
+## Verwendung von Gantt mit Vite
+
 
 Wenn Ihr Projekt Vite verwendet, fügen Sie diese Einstellung zu Ihrer **vite.config.js** Datei hinzu, damit Gantt korrekt eingebunden wird:
 
@@ -136,8 +136,8 @@ build: {
 }
 ~~~
 
-Dateien in eine RequireJS-basierte Anwendung einbinden
-------------------------------------------- 
+## Dateien in eine RequireJS-basierte Anwendung einbinden
+ 
 
 Um dhtmlxGantt-Dateien in einer RequireJS-basierten Anwendung hinzuzufügen, verwenden Sie folgendes Muster:
 
@@ -221,8 +221,8 @@ Stellen Sie sicher, dass der Modulname für jede Datei innerhalb des Pakets als 
 - "dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"
 
 
-Vollbildmodus
----------------------------------
+## Vollbildmodus
+
 
 Damit das Gantt-Diagramm im Vollbildmodus in verschiedenen Browsern korrekt angezeigt wird, fügen Sie diesen Stil zu Ihrer Seite hinzu:
 

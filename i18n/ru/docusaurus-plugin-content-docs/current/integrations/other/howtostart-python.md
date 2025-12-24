@@ -3,8 +3,8 @@ title: "dhtmlxGantt с Python"
 sidebar_label: "Python"
 ---
 
-dhtmlxGantt с Python
-=====================
+# dhtmlxGantt с Python
+
 
 В этом руководстве описывается создание диаграммы Gantt на базе Python с использованием фреймворка Django 4 и RESTful API на серверной стороне.
 
@@ -22,16 +22,16 @@ dhtmlxGantt с Python
 Полный исходный код доступен на [GitHub](https://github.com/DHTMLX/gantt-howto-django).
 :::
 
-Необходимые условия
------------------
+## Необходимые условия
+
 
 Если Django еще не установлен, вот инструкции по установке:
 
 - [Установка на Windows](https://docs.djangoproject.com/en/4.0/howto/windows/)
 - [Установка на Linux](https://linuxhint.com/install_django_ubuntu/)
 
-Шаг 1. Инициализация проекта
------------------------
+## Шаг 1. Инициализация проекта
+
 
 Откройте папку вашего проекта и создайте новый проект Django с помощью команды:
 
@@ -55,8 +55,8 @@ python manage.py runserver
 
 ![start_page](/img/howtostart_django_startpage.png)
 
-Шаг 2. Добавление Gantt на страницу
------------------------
+## Шаг 2. Добавление Gantt на страницу
+
 
 Создайте новое приложение для компонента Gantt:
 
@@ -175,8 +175,8 @@ python manage.py runserver
 
 ![init_gantt](/img/howtostart_django_initpage.png)
 
-Шаг 3. Загрузка данных
----------------------
+## Шаг 3. Загрузка данных
+
 
 В *gantt_rest_python/settings.py* добавьте `'rest_framework'` и `'gantt.apps.GanttConfig'` в список `INSTALLED_APPS`, а также настройте параметры REST framework:
 
@@ -368,8 +368,8 @@ gantt.load("/data/", "json");
 
 ![gantt](/img/howtostart_django_gantt.png)
 
-Шаг 4. Сохранение изменений
--------------------
+## Шаг 4. Сохранение изменений
+
 
 Чтобы обеспечить сохранение изменений, добавьте поддержку методов `POST`, `PUT` и `DELETE` в *gantt/views.py*:
 
@@ -615,18 +615,18 @@ dp.setTransactionMode("REST");
 
 ![sort_order](/img/howtostart_django_sortorder.png)
 
-Безопасность приложения
--------------------------
+## Безопасность приложения
+
 
 DHTMLX Gantt не содержит встроенной защиты от таких угроз, как SQL-инъекции, XSS или CSRF. Защита приложения лежит на ответственности разработчика на серверной стороне. Подробнее см. в [статье по безопасности](guides/app-security.md).
 
-Устранение неполадок
------------------
+## Устранение неполадок
+
 
 Если задачи и связи не отображаются после завершения интеграции, ознакомьтесь с руководством по устранению неполадок в [Устранение проблем интеграции с backend](guides/troubleshooting.md). Там приведены советы по диагностике и решению распространенных проблем.
 
-Что дальше
-------------
+## Что дальше
+
 
 На данном этапе у вас есть работающее приложение с диаграммой Gantt. Полный исходный код доступен на [GitHub](https://github.com/DHTMLX/gantt-howto-django) для клонирования или скачивания для использования в ваших проектах.
 

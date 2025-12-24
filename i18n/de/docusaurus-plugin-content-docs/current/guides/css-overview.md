@@ -3,13 +3,13 @@ title: "CSS Dokumentation"
 sidebar_label: "CSS Dokumentation"
 ---
 
-CSS Dokumentation
-===========================
+# CSS Dokumentation
+
 
 Dieser Artikel erklärt, wie Sie die Standardfarbeinstellungen der Gantt-Diagramm-Elemente mit eigenen benutzerdefinierten Stilen überschreiben können. Er behandelt die wichtigsten Klassenselektoren und Templates zum Stylen verschiedener Bereiche des Gantt-Diagramms: des [Gitterbereichs](guides/css-overview.md#stylinggrid), des [Zeitachsenbereichs](guides/css-overview.md#stylingtimeline) und des [Ressourcenpanels](guides/css-overview.md#resourcepanel).
 
 ## Styling des Gitters {#stylinggrid}
--------------------
+
 
 Hier finden Sie die CSS-Selektoren, die verwendet werden, um die Hauptelemente des [Gitterbereichs](guides/table.md) zu gestalten.
 
@@ -229,7 +229,7 @@ Beachten Sie, dass **.gantt_grid_head_cell** und **.gantt_cell** unterschiedlich
 - Alternativ können Sie **.gantt_row .gantt_cell[data-column-index='1']** verwenden, um eine Spalte anhand ihres Index anzusprechen.
 
 ## Styling der Zeitachse {#stylingtimeline}
----------------------
+
 
 In diesem Abschnitt werden die CSS-Selektoren beschrieben, die zum Anpassen der Standardstile von Elementen im [Zeitachsenbereich](guides/time-scale.md) verfügbar sind.
 
@@ -784,7 +784,7 @@ Anschließend wenden Sie folgendes CSS an:
 
 
 ## Ressourcen-Panel {#resourcepanel}
-----------------
+
 
 Das [Ressourcen-Panel](guides/resource-management.md#resourceviewpanel) enthält Grids und Zeitachsen, ähnlich wie im Hauptbereich von Gantt.
 

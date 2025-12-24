@@ -3,11 +3,11 @@ title: "Properties for importing from Primavera"
 sidebar_label: "Properties for importing from Primavera"
 ---
 
-Properties for importing from Primavera
-================================
+# Properties for importing from Primavera
 
-Project properties
----------------------------------
+
+## Project properties
+
 
 <div class="myblock">
   <li>ActualsInSync</li>
@@ -67,8 +67,8 @@ Project properties
   <li>WorkFormat</li>
 </div>
 
-Tasks properties
----------------------------------
+## Tasks properties
+
 
 <div class="myblock">
   <li>ActualCost</li>

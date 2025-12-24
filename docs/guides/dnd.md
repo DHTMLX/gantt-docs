@@ -3,8 +3,8 @@ title: "Dragging Tasks within the Timeline"
 sidebar_label: "Dragging Tasks within the Timeline"
 ---
 
-Dragging Tasks within the Timeline
-=============================================
+# Dragging Tasks within the Timeline
+
 
 Dragging allows users to quickly change the start (end) dates of the tasks, their duration. 
 
@@ -28,8 +28,8 @@ Let's consider typical cases when the default drag behavior needs customization:
 6. [Autoscroll during tasks' dragging](#autoscrollduringtasksdragging).
 
 
-Denying dragging of specific tasks
----------------------------------------
+## Denying dragging of specific tasks
+
 
 To deny dragging of specific tasks, use the [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) event:
 
@@ -43,8 +43,8 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 ~~~
 
 
-Denying dragging tasks out of specific dates
----------------------------------------
+## Denying dragging tasks out of specific dates
+
 To deny dragging tasks out of specific dates, use the [onTaskDrag](api/event/ontaskdrag.md) event. 
 
 <p style="margin-top: 20px; font-weight: bold;"> The onTaskDrag event: </p>
@@ -99,8 +99,8 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 [Drag parent task with its children](https://docs.dhtmlx.com/gantt/samples/08_api/05_limit_drag_dates.html)
 
 
-Dragging children together with the parent
------------------------------------------------------
+## Dragging children together with the parent
+
 
 To allow dragging children when the user is dragging their parent's task, use the [onTaskDrag](api/event/ontaskdrag.md) event (see more on the event [above](guides/dnd.md#denying-dragging-tasks-out-of-specific-dates)):
 
@@ -152,15 +152,15 @@ gantt.config.drag_project = true;
 [Draggable projects](https://docs.dhtmlx.com/gantt/samples/08_api/19_draggable_projects.html)
 
 
-Dragging dependent tasks together with independent tasks
--------------------------------------------
+## Dragging dependent tasks together with independent tasks
+
 
 There are several ways of implementing tasks moving with their dependent tasks.
 You can read about all of them in a separate article [Dragging Tasks Together with Their Dependent Tasks](guides/dragging-dependent-tasks.md).
 
 
-Setting minimal task duration
--------------------------------------------
+## Setting minimal task duration
+
 
 Minimal task duration can be specified via the [min_duration](api/config/min_duration.md) setting.
 
@@ -198,8 +198,8 @@ gantt.config.autoscroll_speed = 50;
 gantt.init("gantt_here");
 ~~~
 
-Disabling resize of specific tasks
----------------------------------
+## Disabling resize of specific tasks
+
 
 If you want to prevent certain tasks from being resized, there are two things you can do:
 
@@ -234,8 +234,8 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 });
 ~~~
 
-Which side of a task is being resized
----------------------------------------
+## Which side of a task is being resized
+
 
 The ["resize"](api/event/onbeforetaskdrag.md) mode of drag and drop means that the user resizes the task either from the start date or from the end date.
 
@@ -254,8 +254,8 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 });
 ~~~
 
-Disabling resize of the start or the end date of a task
----------------------------------------------------------
+## Disabling resize of the start or the end date of a task
+
 
 You can locate resize handles using the following selectors:
 

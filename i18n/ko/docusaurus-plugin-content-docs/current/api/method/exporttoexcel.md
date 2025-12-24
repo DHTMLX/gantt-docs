@@ -89,7 +89,7 @@ note Gantt 버전 8.0 이전에서는 온라인 내보내기 서비스를 사용
 <tr><td>dd/mm/yyyy hh:mm:ss</td><td>09/01/2012 16:20:00</td></tr>
 </table>
 
-## # 기본 날짜 파라미터
+## 기본 날짜 파라미터
 
 Export 모듈은 **start_date** 와 **end_date** 컬럼이 *Date* 타입이어야 하며, **duration** 컬럼은 *number* 타입이어야 합니다.
 

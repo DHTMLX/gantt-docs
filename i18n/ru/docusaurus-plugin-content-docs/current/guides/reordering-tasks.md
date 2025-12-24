@@ -3,8 +3,8 @@ title: "Изменение порядка задач"
 sidebar_label: "Изменение порядка задач"
 ---
 
-Изменение порядка задач
-=====================
+# Изменение порядка задач
+
 
 dhtmlxGantt предоставляет два способа изменения порядка задач в гриде:
 
@@ -29,7 +29,7 @@ gantt.init("gantt_here");
 <iframe width="676" height="400" src="https://www.youtube.com/embed/srtb3nYOb-E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Перетаскивание по всей структуре Gantt {#dragndropwithinthewholeganttstructure}
---------------------------------------------
+
 
 Опция @[order_branch](api/config/order_branch.md) ограничивает перетаскивание задачами внутри одного уровня дерева.
 
@@ -48,7 +48,7 @@ gantt.init("gantt_here");
 
 
 ## Ограничение позиций для перемещения {#denyingdroppingtospecificpositions}
-------------------------------------------------
+
 
 Чтобы запретить сброс задач в определённые позиции, используйте события @[onBeforeTaskMove](api/event/onbeforetaskmove.md) или @[onBeforeRowDragEnd](api/event/onbeforerowdragend.md):
 
@@ -71,7 +71,7 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 ~~~
 
 ## Повышение производительности при больших наборах данных {#improvingperformanceforlargedatasets}
-------------------
+
 
 При работе с большим количеством задач стандартный режим изменения порядка веток может замедлять работу. Для улучшения производительности можно использовать режим "marker".
 
@@ -88,7 +88,7 @@ gantt.config.order_branch = "marker";
 Чтобы ограничить сброс задач в определённые позиции в этом режиме, используйте событие @[onBeforeRowDragMove](api/event/onbeforerowdragmove.md) (работает только в режиме "marker").
 
 ## Подсветка доступных позиций для сброса при перетаскивании {#highlightingavailabledropplaceswhiledragampdrop}
-------------------------------------------------------------
+
 
 Чтобы визуально выделять допустимые позиции для сброса во время перетаскивания (например, чтобы не позволить перетаскивать корневой узел под другой корневой), используйте события @[onRowDragStart](api/event/onrowdragstart.md) и @[onRowDragEnd](api/event/onrowdragend.md):
 
@@ -117,7 +117,7 @@ gantt.templates.grid_row_class = function(start, end, task){
 ~~~
 
 ## Вертикальное изменение порядка задач на временной шкале {#reorderingtasksverticallyinthetimeline}
------------------------------------------------
+
 
 См. примеры в разделе [Решения: Как вертикально изменить порядок задач на временной шкале](guides/how-to.md#howtoverticallyreordertasksinthetimeline).
 

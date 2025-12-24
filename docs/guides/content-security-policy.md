@@ -3,8 +3,8 @@ title: "Content Security Policy Compliance"
 sidebar_label: "Content Security Policy Compliance"
 ---
 
-Content Security Policy Compliance
-=========================
+# Content Security Policy Compliance
+
 
 Content Security Policy (CSP) is a web standard used to prevent unauthorized JavaScript execution and enhance the [security of created apps](guides/app-security.md).
 

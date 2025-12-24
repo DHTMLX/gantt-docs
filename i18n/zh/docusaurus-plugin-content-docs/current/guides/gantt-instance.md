@@ -3,8 +3,8 @@ title: "Gantt 实例的特殊性"
 sidebar_label: "Gantt 实例的特殊性"
 ---
 
-Gantt 实例的特殊性
-=========================
+# Gantt 实例的特殊性
+
 
 本文介绍了使用 Gantt 实例的关键方面。
 

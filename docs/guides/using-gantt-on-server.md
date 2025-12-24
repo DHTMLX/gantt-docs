@@ -3,8 +3,8 @@ title: "Using Gantt on the server"
 sidebar_label: "Node.js Gantt"
 ---
 
-Using Gantt on the server
-=================================
+# Using Gantt on the server
+
 
 In some cases, you may need to use a specialized logic of dhtmlxGantt separately from the gantt chart, for example:
 
@@ -16,15 +16,15 @@ For this reason, we provide a separate build of dhtmlxGantt that can run on the 
 
 DHTMLX Gantt for Node.js has the same functionality as Commercial/Enterprise/Ultimate packages, which means the **Gantt.getGanttInstance** method is available and allows creating a new instance of a gantt.
 
-Terms of using
---------------
+## Terms of using
+
 
 Node.js server module of DHTMLX Gantt is provided as an add-on package to the client-side version of Gantt. Thus, you can add the Node.js build at extra fee while buying Gantt under any commercial license ([Individual](https://dhtmlx.com/docs/products/dhtmlxGantt/individual/), [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/commercial/), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/enterprise/)). The [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/ultimate/) license includes it by default.
 
 In case you have already obtained the main library of dhtmlxGantt, you can [purchase the Node.js module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=58429) and we will send you a link to the server-side version of Gantt.
 
-Versioning
--------------------
+## Versioning
+
 
 dhtmlxGantt applies to the Node.js package the same scheme of the version numbering as to the browser packages (for example, v7.0.0 is the first version of Gantt for a Node.js package).
 
@@ -32,8 +32,8 @@ dhtmlxGantt applies to the Node.js package the same scheme of the version number
 We advice you to use the same version of the gantt libraries on the client side as on the server side.
 :::
 
-Adding the library to the project
-----------------------------------
+## Adding the library to the project
+
 
 You can install dhtmlxGantt for Node.js as a local package:
 
@@ -105,8 +105,8 @@ const gantt = Gantt.getGanttInstance({
 console.table(gantt.serialize());
 ~~~
 
-Limitations
-------------
+## Limitations
+
 
 dhtmlxGantt provides the same core API for Node.js as the browser version.
 

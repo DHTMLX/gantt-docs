@@ -3,8 +3,8 @@ title: "网格的模板"
 sidebar_label: "网格的模板"
 ---
 
-网格的模板
-=====================================
+# 网格的模板
+
 
 <table class="webixdoc_links">
   <tbody>

@@ -3,16 +3,16 @@ title: "Event Handling"
 sidebar_label: "Event Handling"
 ---
 
-Event Handling 
-===================================
+# Event Handling 
+
 
 Events help to interact with users and bring interactivity to the page.
 
 When the user makes some action in the Gantt chart, dhtmlxGantt invokes an event. You can use this event to detect the action and run the desired code for it. 
 
 
-Attaching events
---------------------------------------------
+## Attaching events
+
 
 To attach an event, use the [attachEvent](api/method/attachevent.md) method.
 
@@ -30,8 +30,8 @@ gantt.attachEvent("onTaskClick", function(id, e) {
 - Events' names are case-insensitive.
 - You can attach several handlers to the same event.
 
-Detaching events
--------------------------
+## Detaching events
+
 
 To detach an event handler, use the [detachEvent](api/method/detachevent.md) method:
 
@@ -61,8 +61,8 @@ while (events.length)
    gantt.detachEvent(events.pop()); 
 ~~~
 
-Checking the existence of a handler
-------------------------------------------
+## Checking the existence of a handler
+
 
 To check, whether a specific event has any handlers attached, use the [checkEvent](api/method/checkevent.md) method:
 
@@ -74,8 +74,8 @@ gantt.attachEvent("onTaskClick", function(id, e) {
 gantt.checkEvent("onTaskClick"); //returns 'true' 
 ~~~
 
-Cancelable events 
------------------------
+## Cancelable events 
+
 
 All events with the preceding subword 'onbefore' can be cancelled.
 
@@ -98,8 +98,8 @@ gantt.attachEvent("onBeforeTaskChanged", function(id, mode, old_task){
 **Related sample**: [D'n'D Events](https://docs.dhtmlx.com/gantt/samples/08_api/01_dnd_events.html)
 
 
-Accessing the gantt object inside the handler
----------------------------------
+## Accessing the gantt object inside the handler
+
 Inside the event handler you can refer to the gantt object through the keyword **this**. 
 
 ~~~jsx title="Referring within the event handler"

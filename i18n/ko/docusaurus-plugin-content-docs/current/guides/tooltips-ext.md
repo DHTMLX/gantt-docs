@@ -3,8 +3,8 @@ title: "툴팁(Tooltips) 확장 기능"
 sidebar_label: "툴팁(Tooltips) 확장 기능"
 ---
 
-툴팁(Tooltips) 확장 기능
-======================
+# 툴팁(Tooltips) 확장 기능
+
 
 Tooltips 확장 기능에 대한 자세한 내용은 [Gantt 요소의 툴팁](guides/tooltips.md) 문서를 참고하세요.
 

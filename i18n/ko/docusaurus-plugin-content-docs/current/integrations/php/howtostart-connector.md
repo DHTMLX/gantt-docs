@@ -3,8 +3,8 @@ title: "dhtmlxGantt와 dhtmlxConnector 사용하기"
 sidebar_label: "dhtmlxGantt와 dhtmlxConnector 사용하기"
 ---
 
-dhtmlxGantt와 dhtmlxConnector 사용하기
-================================
+# dhtmlxGantt와 dhtmlxConnector 사용하기
+
 
 이 튜토리얼은 웹페이지에 간단한 Gantt 차트를 설정하고, 해당 차트에서 작업을 데이터베이스(서버)에 저장 및 업데이트하는 방법을 설명합니다.
 
@@ -27,8 +27,8 @@ dhtmlxGantt와 dhtmlxConnector 사용하기
 [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
-1단계. dhtmlxGantt 패키지 다운로드
---------------------------------------------------------------
+## 1단계. dhtmlxGantt 패키지 다운로드
+
 
 <div>
 <p>
@@ -44,8 +44,8 @@ dhtmlxGantt와 dhtmlxConnector 사용하기
 </p>
 </div>
 
-2단계. dhtmlxGantt 코드 파일 포함하기 
------------------------------------------------------------
+## 2단계. dhtmlxGantt 코드 파일 포함하기 
+
 
 <div>
 <p>
@@ -84,8 +84,8 @@ dhtmlxGantt와 dhtmlxConnector 사용하기
 </p>
 </div>
 
-3단계. dhtmlxGantt 초기화하기
------------------------------------------------------------
+## 3단계. dhtmlxGantt 초기화하기
+
 
 <div>
 <p>
@@ -139,8 +139,8 @@ dhtmlxGantt 인스턴스는 <b>dhtmlxGantt</b> 또는 <b>gantt</b>로 참조할 
 </style>
 ~~~
 
-4단계. Gantt 차트에 데이터 불러오기
-------------------------------------------------------------------------
+## 4단계. Gantt 차트에 데이터 불러오기
+
 <div>
 
 <p>
@@ -221,8 +221,8 @@ gantt.parse (tasks);/*!*/
 [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
-5단계. 데이터베이스 생성
------------------------------------------------------------
+## 5단계. 데이터베이스 생성
+
 :::note
 이 단계와 이후 단계는 인라인 데이터가 아닌 데이터베이스에서 데이터를 불러오고자 할 때 적용됩니다.
 :::
@@ -279,8 +279,8 @@ gantt.attachEvent("onBeforeTaskAdd", function(id,task){
 });
 ~~~
 
-6단계. 데이터베이스에서 데이터 불러오기
------------------------------------------------------------
+## 6단계. 데이터베이스에서 데이터 불러오기
+
 :::note
 다음 두 단계에서는 서버-클라이언트 통합을 위해 PHP를 사용합니다.
 
@@ -389,8 +389,8 @@ $gantt->render_table("gantt_tasks","id",
 ~~~
 
 
-7단계. 데이터베이스에 데이터 업데이트하기
------------------------------------------------------------
+## 7단계. 데이터베이스에 데이터 업데이트하기
+
 
 <div>
 
@@ -420,8 +420,8 @@ dp.init(gantt); /*!*/
 </p>
 </div>
 
-오류 로깅
-----------------------
+## 오류 로깅
+
 
 모든 설정이 완료되었는데도 문제가 발생한다면, Gantt에서 로깅을 활성화하여 문제를 진단할 수 있습니다.
 
@@ -436,8 +436,8 @@ $gantt->enable_log("log.txt"); /*!*/
 
 이후 **log.txt** 파일을 확인하여 기록된 정보를 검토할 수 있습니다.
 
-다음 단계는?
------------------------------------------------------------
+## 다음 단계는?
+
 이제 데이터베이스에서 데이터를 불러오고 변경사항을 저장할 수 있는 기본 Gantt 차트가 완성되었습니다.
 이제 필요에 맞게 조정 및 확장할 수 있습니다.
 

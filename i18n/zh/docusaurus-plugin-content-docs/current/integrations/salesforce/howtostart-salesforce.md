@@ -3,8 +3,8 @@ title: "dhtmlxGantt 与 Salesforce LWC 集成"
 sidebar_label: "Salesforce LWC"
 ---
 
-dhtmlxGantt 与 Salesforce LWC 集成
-===============================
+# dhtmlxGantt 与 Salesforce LWC 集成
+
 
 本教程将介绍如何将 dhtmlxGantt 集成到 [Salesforce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide) 中。
 
@@ -28,13 +28,13 @@ dhtmlxGantt 与 Salesforce LWC 集成
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/1nXl9jfMdto" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-前置条件
--------------------
+## 前置条件
+
 
 请确保已经安装了 [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli)。如未安装，可参考[本指南](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)进行安装。
 
-步骤 1. 创建项目
-----------------------------
+## 步骤 1. 创建项目
+
 
 如果还没有开发者账号，可以[注册](https://developer.salesforce.com/)一个免费的开发者账号。具体操作可参考[本指南](https://webkul.com/blog/create-free-developer-account-in-salesforce/)。
 
@@ -84,8 +84,8 @@ $ sfdx project generate -n gantt-salesforce-app
 $ cd gantt-salesforce-app
 ~~~
 
-步骤 2. 授权
-----------
+## 步骤 2. 授权
+
 
 使用 Web Server Flow [授权 Org](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm):
 
@@ -125,8 +125,8 @@ Done
 Your scratch org is ready.
 ~~~
 
-步骤 3. 向 Salesforce 添加 Gantt
-------------
+## 步骤 3. 向 Salesforce 添加 Gantt
+
 
 要使用该库，需要将其作为静态资源上传到 Salesforce。打开你的 scratch org:
 
@@ -146,8 +146,8 @@ $ sfdx org open
 
 ![](/img/sf_gantt_in_sf.png)
 
-步骤 4. 创建数据模型
--------------
+## 步骤 4. 创建数据模型
+
 
 dhtmlxGantt 的主要组件是 Tasks 和 Links。一个实用的处理方式是将它们的属性以 JSON 格式存储在 Salesforce 中。首先为 Tasks 和 Links 创建自定义对象。在 Object Manager 中，选择 "Create"，然后选择 "Custom Object":
 
@@ -256,8 +256,8 @@ Object Name: GanttTask => Record Name: GanttTask Name
 
 ![](/img/sf_ganttlink.png)
 
-步骤 5. 创建 Lightning Web 组件
----------------------------------------------
+## 步骤 5. 创建 Lightning Web 组件
+
 
 要生成 Lightning Web 组件，运行以下命令:
 
@@ -458,8 +458,8 @@ export default class GanttView extends LightningElement {
 }
 ~~~
 
-步骤 6. 创建 Apex 类
-----------------------------------
+## 步骤 6. 创建 Apex 类
+
 
 接下来，创建一个类，用于处理 Lightning 组件与数据模型之间的通信。
 
@@ -509,8 +509,8 @@ $ sfdx project retrieve start
 $ sfdx project deploy start
 ~~~
 
-步骤 7. 创建 Lightning 页面
----------------
+## 步骤 7. 创建 Lightning 页面
+
 
 启动"Lightning App Builder"并创建一个新的 Lightning 页面。
 
@@ -548,18 +548,18 @@ Gantt 自定义组件现在应可用于新页面。将其添加到任意分区�
 
 ![](/img/sf_final_page.png)
 
-应用安全性
----------------------
+## 应用安全性
+
 
 Gantt 本身不提供针对 SQL 注入、XSS 或 CSRF 攻击等威胁的内置防护。确保应用安全是开发者的责任。更多详情请参阅[相关文档](guides/app-security.md)。Salesforce 提供了强大的安全功能来保护你的数据和应用。你也可以根据自己组织的结构和需求定制安全策略。如需进一步指导，请查阅 [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm)。关于 Lightning 组件安全的更多信息，请参阅[此处](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm)。
 
-故障排查
----------------------
+## 故障排查
+
 
 如果你已完成所有步骤，但页面上的甘特图未显示任务和链接，请参阅 [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) 文章。该文档提供了诊断和解决常见问题的方法。
 
-后续步骤
-------------
+## 后续步骤
+
 
 完成甘特图配置后，你可以在 [GitHub](https://github.com/DHTMLX/salesforce-gantt-demo) 上查看完整代码，支持克隆或下载，用于你的项目。
 

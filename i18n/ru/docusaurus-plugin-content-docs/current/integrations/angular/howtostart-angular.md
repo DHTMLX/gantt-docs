@@ -3,8 +3,8 @@ title: "dhtmlxGantt с Angular"
 sidebar_label: "Angular"
 ---
 
-dhtmlxGantt с Angular
-==========================
+# dhtmlxGantt с Angular
+
 
 Это руководство предполагает базовое понимание концепций и паттернов Angular. Если вам нужно освежить знания, ознакомьтесь с [документацией Angular](https://angular.io/docs), где есть полезный вводный туториал.
 

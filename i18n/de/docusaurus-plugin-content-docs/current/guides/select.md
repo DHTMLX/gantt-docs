@@ -3,8 +3,8 @@ title: "Select Control"
 sidebar_label: "Select Control"
 ---
 
-Select Control
-=========================
+# Select Control
+
 
 Ein Dropdown-Auswahlfeld.
 
@@ -28,8 +28,8 @@ gantt.locale.labels.section_priority = "Priority";
 [Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
-Initialisierung
--------------------
+## Initialisierung
+
 
 Um das **select**-Steuerelement im Lightbox-Formular einzubinden, gehen Sie wie folgt vor:
 
@@ -60,8 +60,8 @@ gantt.locale.labels.section_priority = "Priority";
 [Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
-Eigenschaften
--------------
+## Eigenschaften
+
 
 Hier sind einige wichtige Eigenschaften, die üblicherweise für das **select**-Steuerelement gesetzt werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 
@@ -77,8 +77,8 @@ Hier sind einige wichtige Eigenschaften, die üblicherweise für das **select**-
 - **onchange** - (*function*) Die ['onChange'-Event-Handler-Funktion](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) für das Steuerelement 
 
 
-Befüllen des Steuerelements mit Daten
--------------------------------
+## Befüllen des Steuerelements mit Daten
+
 
 Um Werte für das **select**-Steuerelement zu setzen, verwenden Sie den [options](api/config/lightbox.md)-Parameter:
 
@@ -99,8 +99,8 @@ Jedes Element im [options](api/config/lightbox.md)-Array muss diese zwei Eigensc
 - **label** - Die Bezeichnung der Option
 
 
-Befüllen des Steuerelements mit Daten vom Server
----------------------------------------------
+## Befüllen des Steuerelements mit Daten vom Server
+
 
 Um das Steuerelement mit Daten vom Server zu befüllen, weisen Sie dem [options](api/config/lightbox.md)-Parameter den Wert zu, der von der Methode [serverList](api/method/serverlist.md) zurückgegeben wird:
 

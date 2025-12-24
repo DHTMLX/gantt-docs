@@ -3,8 +3,8 @@ title: "如何开始使用 dhtmlxGantt"
 sidebar_label: "dhtmlxGantt 入门"
 ---
 
-如何开始使用 dhtmlxGantt
-===============================
+# 如何开始使用 dhtmlxGantt
+
 
 <h2>如何开始在前端使用 Gantt</h2>
 

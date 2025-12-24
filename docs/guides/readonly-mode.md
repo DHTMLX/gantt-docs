@@ -3,8 +3,8 @@ title: "Read-Only Mode"
 sidebar_label: "Read-Only Mode"
 ---
 
-Read-Only Mode
-===================================
+# Read-Only Mode
+
 
 In this part we want to consider read-only mode in the context of 2 situations:
 
@@ -97,8 +97,8 @@ gantt.config.readonly_property = "property_name";
 ~~~
 
 
-Details of the "editable_property" config option
----------------------------
+## Details of the "editable_property" config option
+
 
 The 'editable_property' refers to the property of the task data object, not to the lightbox section or the column of the left-hand grid:
 
@@ -132,8 +132,8 @@ gantt.config.lightbox.sections = [
 gantt.config.editable_property = "some_property";
 ~~~
 
-Setting event readonly based on multiple properties
------------------------
+## Setting event readonly based on multiple properties
+
 
 If you want to make events conditionally editable based on a set of properties, you can:
 

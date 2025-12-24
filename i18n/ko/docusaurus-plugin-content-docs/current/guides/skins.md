@@ -3,8 +3,8 @@ title: "스킨(Skins)"
 sidebar_label: "스킨(Skins)"
 ---
 
-스킨(Skins)
-==============
+# 스킨(Skins)
+
 
 dhtmlxGantt는 Gantt 차트의 전체적인 외관을 손쉽게 변경할 수 있도록 다양한 기본 스킨을 제공합니다:
 
@@ -44,7 +44,7 @@ gantt.setSkin("dark");
 필요한 경우, **codebase/sources/less/** 폴더에 있는 **.less** 파일에서 폰트 import를 직접 제거하고, [스킨 커스터마이제이션](guides/custom-skins.md) 문서의 안내에 따라 스킨을 다시 빌드할 수 있습니다.
 
 ## 'Terrace' 스킨 {#terraceskin}
------------------------------
+
 
 기본 스킨을 사용하려면 기본 CSS 파일을 포함하세요:
 
@@ -57,7 +57,7 @@ gantt.setSkin("dark");
 
 
 ## 'Dark' 스킨 {#darkskin}
------------------------------
+
 
 'Dark' 스킨을 적용하려면 기본 CSS 파일을 포함하세요:
 
@@ -76,7 +76,7 @@ gantt.skin = "dark";
 
 
 ## 'Material' 스킨 {#materialskin}
---------------------
+
 
 'Material' 스킨을 사용하려면 기본 CSS 파일을 포함하세요:
 
@@ -102,7 +102,7 @@ gantt.skin = "material";
 ~~~
 
 ## 'Contrast Black' 스킨 {#contrastblackskin}
---------------------
+
 'Contrast Black' 스킨을 사용하려면 기본 CSS 파일을 포함하세요:
 
 - **dhtmlxgantt.css**
@@ -119,7 +119,7 @@ gantt.skin = "contrast-black";
 
 
 ## 'Contrast White' 스킨 {#contrastwhiteskin}
----------------------
+
 'Contrast White' 스킨을 적용하려면 기본 CSS 파일을 포함하세요:
 
 - **dhtmlxgantt.css**
@@ -136,7 +136,7 @@ gantt.skin = "contrast-white";
 
 
 ## 'Skyblue' 스킨 {#skyblueskin}
-----------------------------------
+
 'Skyblue' 스킨을 사용하려면 기본 CSS 파일을 포함하세요:
 
 - **dhtmlxgantt.css**
@@ -153,7 +153,7 @@ gantt.skin = "skyblue";
 
 
 ## 'Meadow' 스킨 {#meadowskin}
------------------------------
+
 
 'Meadow' 스킨을 적용하려면 기본 CSS 파일을 포함하세요:
 
@@ -171,7 +171,7 @@ gantt.skin = "meadow";
 
 
 ## 'Broadway' 스킨 {#broadwayskin}
------------------------------
+
 'Broadway' 스킨을 적용하려면 기본 CSS 파일을 포함하세요:
 
 - **dhtmlxgantt.css**

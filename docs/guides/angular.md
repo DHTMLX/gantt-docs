@@ -3,8 +3,8 @@ title: "Angular Gantt"
 sidebar_label: "Angular Gantt"
 ---
 
-Angular Gantt
-==================
+# Angular Gantt
+
 
 :::note
 Currently, there is no native Angular component for DHTMLX Gantt. 

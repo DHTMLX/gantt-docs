@@ -3,8 +3,8 @@ title: "导出为 PDF 和 PNG"
 sidebar_label: "导出为 PDF 和 PNG"
 ---
 
-导出为 PDF 和 PNG
-==================================
+# 导出为 PDF 和 PNG
+
 
 dhtmlxGantt 提供了一个在线导出服务，允许您将甘特图保存为 [PDF](guides/export.md#daochuweipdf) 或 [PNG](guides/export.md#daochuweipng) 文件。
 
@@ -16,8 +16,8 @@ dhtmlxGantt 提供了一个在线导出服务，允许您将甘特图保存为 [
 您也可以在本地计算机上搭建多种导出服务，实现本地导出甘特图为 PDF 或 PNG。
 请注意，导出服务并未随 Gantt 包一同提供--请查阅 [相关文档](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 了解各服务的使用条款。
 
-在线导出服务限制
------------------------------
+## 在线导出服务限制
+
 
 :::note
 导出服务对处理时间和请求大小有限制。
@@ -39,8 +39,8 @@ Error: Timeout trigger 20 seconds
 
 还有一个专用 API 端点 **https://export.dhtmlx.com/gantt/project**，用于 [MSProject](guides/export-msproject.md) 和 [Primavera P6](guides/export-primavera.md) 的导出/导入服务（仅限 *exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。该端点支持最大 **40 MB** 的请求。
 
-使用导出模块
----------------------
+## 使用导出模块
+
 
 :::note
 如需导出大型甘特图，您可以使用 [独立导出模块](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
@@ -49,8 +49,8 @@ Error: Timeout trigger 20 seconds
 
 [查看更多关于 PDF 导出模块的使用详情](guides/pdf-export-module.md)。
 
-导出为 PDF
------------------------------
+## 导出为 PDF
+
 
 要将甘特图导出为 PDF，请按照以下步骤操作:
 
@@ -86,8 +86,8 @@ gantt.plugins({
 [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
 
-导出为 PNG
------------------------------
+## 导出为 PNG
+
 
 要将甘特图导出为 PNG 图片，请按照以下步骤操作:
 
@@ -123,8 +123,8 @@ gantt.plugins({
 [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
 
-导出方法的参数
-----------------------------------------------------------
+## 导出方法的参数
+
 
 [exportToPDF](api/method/exporttopdf.md) 和 [exportToPNG](api/method/exporttopng.md) 方法接受包含多种可选属性的对象作为参数:
 
@@ -244,8 +244,8 @@ gantt.exportToPDF({
 });
 ~~~
 
-导出数据
------------------
+## 导出数据
+
 
 有两种方式指定导出的 PDF 或 PNG 中包含哪些任务:
 

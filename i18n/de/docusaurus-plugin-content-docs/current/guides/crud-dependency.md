@@ -3,12 +3,12 @@ title: "Hinzufügen/Aktualisieren/Löschen von Verknüpfungen"
 sidebar_label: "Hinzufügen/Aktualisieren/Löschen von Verknüpfungen"
 ---
 
-Hinzufügen/Aktualisieren/Löschen von Verknüpfungen
-==================================================
+# Hinzufügen/Aktualisieren/Löschen von Verknüpfungen
+
 In diesem Abschnitt werden die Grundlagen für die Arbeit mit Abhängigkeitsverknüpfungen behandelt: das Erstellen, Löschen und das dynamische Aktualisieren von Verknüpfungseigenschaften.
 
 ## Eine neue Verknüpfung hinzufügen {##addinganewlink}
--------------------------------
+
 Um eine neue Verknüpfung im Gantt-Diagramm einzufügen, verwenden Sie die Methode [addLink](api/method/addlink.md):
 
 ~~~js
@@ -21,7 +21,7 @@ var linkId = gantt.addLink({
 ~~~
 
 ## Eigenschaft einer Verknüpfung aktualisieren {#updatingalinksproperty}
--------------------------------------------
+
 Um eine Eigenschaft einer Verknüpfung dynamisch zu ändern, ist die Methode [refreshLink](api/method/refreshlink.md) sehr hilfreich:
 
 ~~~js
@@ -52,7 +52,7 @@ Beachten Sie, dass alle Arten von Verknüpfungsabhängigkeiten im Objekt [links]
 :::
 
 ## Eine Verknüpfung löschen {#deletingalink}
-------------------------
+
 Um eine Verknüpfung zu entfernen, verwenden Sie die Methode [deleteLink](api/method/deletelink.md):
 
 ~~~js
@@ -60,7 +60,7 @@ gantt.deleteLink(linkId);
 ~~~
 
 ## Alle Verknüpfungen aus dem Gantt-Diagramm entfernen {#removingalllinksfromtheganttchart}
----------------------------------------------------
+
 Um alle Aufgaben und Verknüpfungen aus dem Gantt-Diagramm zu löschen, rufen Sie einfach die Methode [clearAll](api/method/clearall.md) auf:
 
 ~~~js
@@ -68,7 +68,7 @@ gantt.clearAll();
 ~~~
 
 ## Bearbeiten von Verknüpfungswerten über die Benutzeroberfläche {#editinglinkvaluesfromui}
-------------------------------------------------------------
+
 
 Es gibt keine integrierte Benutzeroberfläche zum Bearbeiten von Verzögerungen (Lag) oder anderen Verknüpfungseigenschaften. Wenn Sie eine solche Oberfläche benötigen, müssen Sie diese selbst erstellen.
 

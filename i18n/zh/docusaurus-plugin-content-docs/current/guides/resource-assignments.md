@@ -3,8 +3,8 @@ title: "Resource Assignments Control"
 sidebar_label: "Resource Assignments Control"
 ---
 
-Resource Assignments Control
-=========================
+# Resource Assignments Control
+
 
 :::info
 This functionality is available in the Gantt PRO edition only.

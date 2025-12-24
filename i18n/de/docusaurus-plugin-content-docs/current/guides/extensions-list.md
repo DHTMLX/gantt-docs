@@ -3,15 +3,15 @@ title: "Vollständige Liste der Erweiterungen"
 sidebar_label: "Vollständige Liste der Erweiterungen"
 ---
 
-Vollständige Liste der Erweiterungen
-=====================================
+# Vollständige Liste der Erweiterungen
+
 
 dhtmlxGantt bietet eine Vielzahl von Erweiterungen, die die Grundfunktionalität erweitern.
 
 Um eine Erweiterung zu aktivieren, schalten Sie einfach das Plugin mit der Methode [gantt.plugins](api/method/plugins.md) ein.
 
 ## Erweitertes Drag-and-Drop {#advanceddragndrop}
--------------------------
+
 
 Mit dieser Erweiterung können Sie Aufgaben per Drag-and-Drop erstellen und auswählen.
 
@@ -33,7 +33,7 @@ API: [click_drag](api/config/click_drag.md)
 
 
 ## Automatische Terminplanung {#autoscheduling}
--------------------------
+
 
 :::info
 Diese Erweiterung ist nur in der PRO-Version verfügbar
@@ -59,7 +59,7 @@ API: [auto_scheduling](api/config/auto_scheduling.md)
 
 
 ## Kritischer Pfad {#criticalpath}
----------------
+
 
 :::info
 Diese Erweiterung ist nur in der PRO-Version verfügbar
@@ -85,7 +85,7 @@ API: [highlight_critical_path](api/config/highlight_critical_path.md)
 
 
 ## Zeitachse ziehen {#dragtimeline}
-----------------
+
 
 Ermöglicht das Scrollen durch die Zeitachsenansicht per Ziehen mit der Maus.
 
@@ -104,7 +104,7 @@ API: [drag_timeline](api/config/drag_timeline.md)
 
 
 ## Zusätzliche Überlagerung {#overlay}
-------------------------
+
 
 :::info
 Diese Erweiterung ist nur in der PRO-Version verfügbar.
@@ -127,7 +127,7 @@ Artikel: [Custom Elements in Timeline Area](guides/baselines.md#extraoverlayfort
 
 
 ## Exportdienst {#exportservice}
-------------
+
 
 Aktiviert den Online-Exportdienst.
 
@@ -142,7 +142,7 @@ gantt.plugins({
 Artikel: [Exporting and Importing Data](guides/export-common.md)
 
 ## Vollbildmodus {#fullscreen}
--------------
+
 
 Zeigt das Gantt-Diagramm im Vollbildmodus an.
 
@@ -161,7 +161,7 @@ Artikel: [Full Screen Mode](guides/fullscreen-mode.md)
 
 
 ## Gruppierung {#grouping}
------------
+
 
 :::info
 Diese Erweiterung ist nur in der PRO-Version verfügbar
@@ -187,7 +187,7 @@ API: [groupBy](api/method/groupby.md)
 
 
 ## Tastaturnavigation {#keyboardnavigation}
-------------------
+
 Bietet eine Navigation im Gantt-Diagramm über die Tastatur.
 
 ~~~js
@@ -205,7 +205,7 @@ API: [keyboard_navigation](api/config/keyboard_navigation.md),[keyboard_navigati
 
 
 ## Mehrfachauswahl von Aufgaben {#multitaskselection}
-----------------------------
+
 
 Ermöglicht das gleichzeitige Auswählen mehrerer Aufgaben im Gantt-Diagramm.
 
@@ -227,7 +227,7 @@ API: [multiselect](api/config/multiselect.md)
 
 
 ## Quick info {#quickinfo}
-----------
+
 
 Zeigt ein Popup mit Aufgabendetails an.
 
@@ -249,7 +249,7 @@ Artikel: [Templates of the 'Quick Info' Extension (Touch Support)](guides/touch-
 
 
 ## Tooltip {#tooltip}
--------
+
 
 Fügt zusätzliche Informationen für Benutzer hinzu, ohne die Ansicht zu überladen.
 
@@ -268,7 +268,7 @@ Artikel: [Tooltips for Gantt Elements](guides/tooltips.md)
 
 
 ## Rückgängig machen (Undo) {#undo}
-------------------------
+
 
 Bietet Rückgängig- und Wiederherstellen-Funktionen für vorgenommene Änderungen.
 
@@ -290,7 +290,7 @@ API: [undo](api/config/undo.md), [redo](api/config/redo.md)
 
 
 ## Vertikaler Marker {#verticalmarker}
------------------
+
 
 Hebt bestimmte Daten oder Zeiträume hervor.
 

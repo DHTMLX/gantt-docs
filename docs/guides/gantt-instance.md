@@ -3,8 +3,8 @@ title: "Peculiarities of Gantt Instance"
 sidebar_label: "Peculiarities of Gantt Instance"
 ---
 
-Peculiarities of Gantt Instance
-=========================
+# Peculiarities of Gantt Instance
+
 
 This article highlights the main features of using Gantt Instance. 
 

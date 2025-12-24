@@ -3,8 +3,8 @@ title: "Reordering Tasks"
 sidebar_label: "Reordering Tasks"
 ---
 
-Reordering Tasks
-=====================
+# Reordering Tasks
+
 
 dhtmlxGantt provides 2 ways to reorder tasks in the grid:
 
@@ -28,8 +28,8 @@ You can take a look at the video guide that shows how to sort and reorder tasks 
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/srtb3nYOb-E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Drag-n-drop within the whole Gantt structure
---------------------------------------------
+## Drag-n-drop within the whole Gantt structure
+
 
 The [order_branch](api/config/order_branch.md) option allows dragging tasks within the same Tree level.
 
@@ -71,8 +71,8 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 });
 ~~~
 
-Improving performance for large datasets
-------------------
+## Improving performance for large datasets
+
  
 If your Gantt contains lots of tasks, the default mode of branch reordering may slow down the performance.
 To speed it up, you can make use of the "marker" mode. 
@@ -91,8 +91,8 @@ Unlike the default mode, changing of the task position doesn't involve firing of
 To prevent dropping of a task in a particular position, use the [onBeforeRowDragMove](api/event/onbeforerowdragmove.md) event instead (works only in the "marker" mode).
 
 
-Highlighting available drop places while drag-&-drop
-------------------------------------------------------------
+## Highlighting available drop places while drag-&-drop
+
 
 To highlight available target places during dragging (for example, it's not possible to drag the root node under another root and you want visually inform the user about this), 
 use the [onRowDragStart](api/event/onrowdragstart.md) and [onRowDragEnd](api/event/onrowdragend.md) events: 
@@ -121,8 +121,8 @@ gantt.templates.grid_row_class = function(start, end, task){
 };
 ~~~
 
-Reordering tasks vertically in the timeline
------------------------------------------------
+## Reordering tasks vertically in the timeline
+
 
 Follow the examples given in the [How to vertically reorder tasks in the timeline](guides/how-to.md#how-to-vertically-reorder-tasks-in-the-timeline) section.
 

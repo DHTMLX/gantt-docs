@@ -3,8 +3,8 @@ title: "Auto Scheduling"
 sidebar_label: "Auto Scheduling"
 ---
 
-Auto Scheduling
-===================
+# Auto Scheduling
+
 
 :::info
  Diese Funktion ist nur in der PRO-Edition verfügbar. 
@@ -16,8 +16,8 @@ Die Bibliothek enthält die **auto_scheduling**-Erweiterung, mit der Gantt Aufga
 
 Beispielsweise nehmen wir zwei Aufgaben, die durch eine Abhängigkeit verbunden sind, wobei die zweite Aufgabe direkt nach Abschluss der ersten beginnt. Wenn sich der Zeitplan der ersten Aufgabe ändert, aktualisiert die automatische Planung das Startdatum der zweiten Aufgabe entsprechend. Dies hilft, den Projektzeitplan einzuhalten, indem Aufgabenbeziehungen definiert werden, ohne dass die Daten jeder Aufgabe manuell angepasst werden müssen.
 
-Verwendung
---------------
+## Verwendung
+
 
 Um die automatische Planung zu aktivieren, aktivieren Sie das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin mit der [gantt.plugins](api/method/plugins.md)-Methode:
 
@@ -39,8 +39,8 @@ gantt.config.auto_scheduling = true;
 
 Auch bei aktivierter automatischer Planung können Aufgaben bei Bedarf weiterhin manuell geplant werden.
 
-Vorwärts-/Rückwärtsplanung
-------------------
+## Vorwärts-/Rückwärtsplanung
+
 
 ### Projektplanungsstrategien
 
@@ -206,8 +206,8 @@ Gantt bietet keine integrierte Benutzeroberfläche zum Bearbeiten von Lag oder a
 
 **Related example:** [Edit-lag Popup](https://snippet.dhtmlx.com/2208ic0t)
 
-Automatische Planung für bestimmte Aufgaben deaktivieren
-----------------------
+## Automatische Planung für bestimmte Aufgaben deaktivieren
+
 
 Um die automatische Planung für eine bestimmte Aufgabe zu deaktivieren und sie manuell zu planen, setzen Sie die **auto_scheduling**-Eigenschaft der Aufgabe auf *false*:
 
@@ -227,8 +227,8 @@ gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predece
 });
 ~~~
 
-Abgeschlossene Aufgaben planen
-----------------------------
+## Abgeschlossene Aufgaben planen
+
 
 Standardmäßig behandelt die automatische Planung abgeschlossene Aufgaben (mit Fortschrittswert 1) genauso wie unvollständige Aufgaben.
 

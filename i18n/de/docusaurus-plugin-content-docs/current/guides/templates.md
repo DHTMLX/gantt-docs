@@ -3,8 +3,8 @@ title: "Vorlagen des Gantt-Diagramms"
 sidebar_label: "Vorlagen des Gantt-Diagramms"
 ---
 
-Vorlagen des Gantt-Diagramms
-=======================================
+# Vorlagen des Gantt-Diagramms
+
 
 Vorlagen bieten die Flexibilität, das Erscheinungsbild von Datumsangaben und Beschriftungen individuell anzupassen. Sie ermöglichen außerdem das Anwenden von CSS-Klassen, um verschiedene Bereiche des Gantt-Diagramms zu gestalten.
 

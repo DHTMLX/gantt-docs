@@ -3,8 +3,8 @@ title: "RTL (Rechts-nach-links) Modus"
 sidebar_label: "RTL (Rechts-nach-links) Modus"
 ---
 
-RTL (Rechts-nach-links) Modus
-=============================
+# RTL (Rechts-nach-links) Modus
+
 
 ![rtl_mode](/img/rtl_mode.png)
 

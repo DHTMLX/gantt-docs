@@ -3,8 +3,8 @@ title: "Templates of the Lightbox"
 sidebar_label: "Templates of the Lightbox"
 ---
 
-Templates of the Lightbox
-====================================
+# Templates of the Lightbox
+
 
 <table class="webixdoc_links">
   <tbody>

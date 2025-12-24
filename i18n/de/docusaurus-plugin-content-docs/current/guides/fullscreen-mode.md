@@ -3,8 +3,8 @@ title: "Vollbildmodus"
 sidebar_label: "Vollbildmodus"
 ---
 
-Vollbildmodus
-=============
+# Vollbildmodus
+
 
 Ab Version 3.3 bietet die Bibliothek die **fullscreen**-Erweiterung an.
 
@@ -48,8 +48,8 @@ Durch Klicken auf den Button wird das Gantt-Diagramm zwischen seiner Originalgr�
 [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 
-API-Überblick
----------------
+## API-Überblick
+
 Es gibt zwei Hauptmethoden, um den Anzeigemodus des Gantt-Diagramms zu steuern:
 
 - [expand](api/method/expand.md) - schaltet das Gantt-Diagramm in den Vollbildmodus
@@ -64,8 +64,8 @@ gantt.expand();
 gantt.collapse();
 ~~~
 
-Unterstützte Events
--------------------
+## Unterstützte Events
+
 
 Die folgenden Events stehen zur Verfügung, um Änderungen am Vollbildmodus zu behandeln:
 
@@ -98,8 +98,8 @@ gantt.attachEvent("onCollapse", function (){
 });
 ~~~
 
-Fullscreen API
-------------------
+## Fullscreen API
+
 
 Das [fullscreen](guides/fullscreen-ext.md)-Objekt stellt vier Methoden zur Verfügung, um das Vollbildverhalten des Gantt-Diagramms (einschließlich anderer Elemente) zu steuern:
 
@@ -129,8 +129,8 @@ gantt.ext.fullscreen.getFullscreenElement();
 
 Standardmäßig gibt **getFullscreenElement()** den HTML-Container des Gantt-Diagramms zurück. Sie können diese Methode überschreiben, um im Vollbildmodus weitere Elemente einzubeziehen, wie [hier](guides/fullscreen-mode.md#ganttwithheadertoolbarinfullscreen) beschrieben.
 
-Gantt mit Header/Toolbar im Vollbild
---------------------------------------------------
+## Gantt mit Header/Toolbar im Vollbild
+
 
 Die Gantt-API ermöglicht es, den Vollbildmodus mithilfe der **getFullscreenElement()**-Methode des *fullscreen*-Objekts auf andere Elemente auszuweiten:
 
@@ -167,8 +167,8 @@ gantt.init("gantt_here");
 [Full Screen with additional elements](https://docs.dhtmlx.com/gantt/samples/02_extensions/26_full_screen_with_additional_elements.html)
 
 
-Warum funktioniert der Vollbildmodus möglicherweise nicht?
--------------------------
+## Warum funktioniert der Vollbildmodus möglicherweise nicht?
+
 
 Die Vollbild-Erweiterung funktioniert nur, wenn Gantt in den Vollbildmodus wechseln darf.
 

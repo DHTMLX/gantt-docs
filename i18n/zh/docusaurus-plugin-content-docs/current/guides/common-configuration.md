@@ -3,8 +3,8 @@ title: "配置"
 sidebar_label: "配置"
 ---
 
-配置
-================================================
+# 配置
+
 
 为了实现所需的甘特图外观，dhtmlxGantt 提供了两个主要对象:
 
@@ -33,8 +33,8 @@ gantt.init("gantt_here");
 [Month view](https://docs.dhtmlx.com/gantt/samples/03_scales/02_month_days.html)
 
 
-'gantt.templates' 对象
--------------------------------------
+## 'gantt.templates' 对象
+
 
 模板允许自定义日期和标签的显示方式。
 

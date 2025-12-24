@@ -3,8 +3,8 @@ title: "Typeselect 컨트롤"
 sidebar_label: "Typeselect 컨트롤"
 ---
 
-Typeselect 컨트롤
-======================
+# Typeselect 컨트롤
+
 
 :::info
 이 기능은 PRO Edition에서만 사용할 수 있습니다.
@@ -31,8 +31,8 @@ gantt.config.lightbox.sections = [
 
 
 
-초기화
----------------------
+## 초기화
+
 
 **typeselect** 컨트롤을 lightbox에 포함하려면, 다음과 같이 lightbox 설정에 섹션을 추가하세요:
 
@@ -58,8 +58,8 @@ gantt.locale.labels.section_type = "섹션에 대한 새로운 레이블";
 ~~~
     
 
-속성
-----------------
+## 속성
+
 
 **typeselect** 컨트롤에서 일반적으로 사용하는 주요 속성은 다음과 같습니다. (전체 목록은 [여기](api/config/lightbox.md)에서 확인하세요):
 

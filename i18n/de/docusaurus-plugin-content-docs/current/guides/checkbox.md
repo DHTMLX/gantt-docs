@@ -3,8 +3,8 @@ title: "Checkbox-Steuerelement"
 sidebar_label: "Checkbox-Steuerelement"
 ---
 
-Checkbox-Steuerelement
-======================
+# Checkbox-Steuerelement
+
 
 Dies ist ein einfaches Zwei-Zustands-Checkbox-Steuerelement, das verwendet wird, um eine Option oder mehrere Werte ein- und auszuschalten.
 
@@ -37,8 +37,8 @@ gantt.config.lightbox.project_sections = [
 [Split task](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
 
 
-Initialisierung
---------------------------
+## Initialisierung
+
 
 Um das **Checkbox**-Steuerelement in das Lightbox-Formular einzufügen, müssen Sie:
 
@@ -66,8 +66,8 @@ gantt.locale.labels.section_split = "Display";
 [Split task](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
 
 
-Eigenschaften
--------------
+## Eigenschaften
+
 
 Hier sind einige wichtige Eigenschaften, die häufig mit dem **Checkbox**-Steuerelement verwendet werden (eine vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 
@@ -82,8 +82,8 @@ Hier sind einige wichtige Eigenschaften, die häufig mit dem **Checkbox**-Steuer
   
 
 
-Steuerelement mit Daten befüllen
-------------------------------
+## Steuerelement mit Daten befüllen
+
 
 Um Werte für das **Checkbox**-Steuerelement zu setzen, wird in der Regel der [options](api/config/lightbox.md)-Parameter verwendet:
 

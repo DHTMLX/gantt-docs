@@ -3,8 +3,8 @@ title: "Creating Gantt Chart on a Page"
 sidebar_label: "Creating Gantt Chart on a Page"
 ---
 
-Creating Gantt Chart on a Page
-==============================================================
+# Creating Gantt Chart on a Page
+
 
 ![gantt_basic](/img/gantt_basic.png)
 

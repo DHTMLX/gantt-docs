@@ -117,8 +117,8 @@ Die Methode [exportToPDF](api/method/exporttopdf.md) akzeptiert ein Objekt als P
   </tbody>
 </table>
 
-Zeitliche Beschränkungen
----------------------
+## Zeitliche Beschränkungen
+
 
 :::note
  Der Exportservice erzwingt Zeitlimits. 
@@ -137,8 +137,8 @@ Wenn viele Benutzer gleichzeitig Gantt-Diagramme exportieren, kann der Prozess l
 :::
 
 
-Mehrseitiger Export
--------------------
+## Mehrseitiger Export
+
 
 Beachten Sie, dass das Exportmodul nicht in der Lage ist:
 

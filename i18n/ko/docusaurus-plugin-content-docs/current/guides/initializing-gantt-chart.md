@@ -3,8 +3,8 @@ title: "dhtmlxGantt를 Plain JS/HTML에서 사용하기"
 sidebar_label: "Node.js Gantt"
 ---
 
-dhtmlxGantt를 Plain JS/HTML에서 사용하기
-==================
+# dhtmlxGantt를 Plain JS/HTML에서 사용하기
+
 
 dhtmlxGantt로 앱을 개발할 때, 가장 먼저 해야 할 일은 Gantt 차트를 페이지에 설정(렌더링)하는 것입니다.
 
@@ -30,8 +30,8 @@ dhtmlxGantt로 앱을 개발할 때, 가장 먼저 해야 할 일은 Gantt 차�
     </tbody>
 </table>
 
-기본 Gantt 차트 생성하기
------------------------
+## 기본 Gantt 차트 생성하기
+
 
 페이지에 간단한 Gantt 차트를 표시하려면 다음 세 단계를 따라야 합니다:
 
@@ -62,8 +62,8 @@ dhtmlxGantt로 앱을 개발할 때, 가장 먼저 해야 할 일은 Gantt 차�
 
  
  
-Gantt 소스 파일을 프로젝트에 추가하는 방법
-------------------------------------------------------------
+## Gantt 소스 파일을 프로젝트에 추가하는 방법
+
 
 앱의 유형에 따라 Gantt 소스 파일을 프로젝트에 추가하는 방법에는 여러 가지가 있습니다:
 
@@ -72,8 +72,8 @@ Gantt 소스 파일을 프로젝트에 추가하는 방법
 - [RequireJS 기반 앱에서 파일 포함하기](#requirejsimport)
 
 
-&#60;script&#62; 태그로 파일 포함하기
---------------------------------------------
+## &#60;script&#62; 태그로 파일 포함하기
+
 
 dhtmlxGantt를 사용하려면 두 개의 파일을 페이지에 추가해야 합니다:
 
@@ -93,8 +93,8 @@ dhtmlxGantt 패키지의 주요 폴더 및 파일:
 - <b>samples</b> - 예제 코드 샘플
 - <b>codebase</b> - 실제 앱에서 사용해야 하는 프로덕션용 난독화/압축된 코드 파일
 
-ES6/7 및 TypeScript 앱에 파일 임포트하기
----------------------------------------------
+## ES6/7 및 TypeScript 앱에 파일 임포트하기
+
 
 다음 명령어로 파일을 임포트할 수 있습니다:
 
@@ -108,8 +108,8 @@ Commercial, Enterprise, Ultimate 버전의 경우:
 import { gantt, Gantt } from 'dhtmlx-gantt';
 ~~~
 
-Vite에서 Gantt 사용하기
---------------------------
+## Vite에서 Gantt 사용하기
+
 
 프로젝트가 Vite를 사용한다면, **vite.config.js** 파일에 아래 설정을 추가하여 Gantt가 제대로 포함되도록 해야 합니다:
 
@@ -138,8 +138,8 @@ build: {
 }
 ~~~
 
-RequireJS 기반 앱에 파일 포함하기
-------------------------------------------- 
+## RequireJS 기반 앱에 파일 포함하기
+ 
 
 RequireJS 기반 앱에 dhtmlxGantt 파일을 추가하려면 다음과 같이 작성합니다:
 
@@ -222,8 +222,8 @@ function (dhx) {
 
 - "dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"
 
-전체화면 모드
----------------------------------
+## 전체화면 모드
+
 
 브라우저별로 Gantt 차트가 전체화면에서 올바르게 표시되도록 하려면, 페이지에 아래 스타일을 추가하세요:
 

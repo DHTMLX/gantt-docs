@@ -3,8 +3,8 @@ title: "指定列"
 sidebar_label: "指定列"
 ---
 
-指定列
-====================
+# 指定列
+
 
 可以通过 [columns](api/config/columns.md) 参数设置网格列。
 
@@ -24,8 +24,8 @@ gantt.config.columns = [
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-概述
-----------
+## 概述
+
 
 默认情况下，网格显示 4 列:
 
@@ -55,13 +55,13 @@ gantt.init("gantt_here");
 
 这里，'text'、'holder'、'start_date'、'end_date' 和 'progress' 对应于[数据属性的名称](guides/specifying-columns.md#shujuyingsheyumoban)。
 
-显示任务结束日期
---------------------------------
+## 显示任务结束日期
+
 
 如果任务数据对象包含格式为 "%Y-%m-%d" 或 "%d-%m-%Y"（不含小时和分钟）的开始和结束日期，默认格式下显示的结束日期可能不是你期望的。有关结束日期格式化的详细信息，请参阅 [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates) 文章。
 
-为特定任务隐藏"添加"按钮
-----------------------------------------------
+## 为特定任务隐藏"添加"按钮
+
 
 一种简单的方式是通过 CSS 隐藏"Add"按钮，防止用户为某些任务添加子任务。
 
@@ -87,8 +87,8 @@ gantt.templates.grid_row_class = ( start, end, task ) => {
 [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
 
-宽度
--------------
+## 宽度
+
 
 要控制列的宽度，可在配置对象中使用 [width](api/config/columns.md) 属性:
 
@@ -170,8 +170,8 @@ gantt.init("gantt_here");
 { name: "add", label: "", min_width: 1 }
 ~~~
 
-数据映射与模板
----------------------------------------
+## 数据映射与模板
+
 
 默认情况下，dhtmlxGantt 使用与列名相同的数据属性填充网格。例如，如果某列为 **name:"holder"**，dhtmlxGantt 会查找 JSON 数据中的 'holder' 属性，并在该列显示。
 
@@ -193,8 +193,8 @@ gantt.config.columns = [
 gantt.init("gantt_here");
 ~~~
 
-文本对齐 
-------------------------
+## 文本对齐 
+
 
 要设置列中文本的水平对齐方式，可在该列配置中使用 [align](api/config/columns.md) 属性:
 
@@ -258,8 +258,8 @@ const task = gantt.getTaskByWBSCode("1.2");
 ~~~
 
 
-任务的时间约束
---------------------
+## 任务的时间约束
+
 
 :::info
 此功能仅在 PRO 版本中可用
@@ -307,8 +307,8 @@ const constraintDateEditor = {
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-调整列宽
-----------
+## 调整列宽
+
 
 :::info
 此功能仅在 PRO 版本中可用
@@ -386,8 +386,8 @@ dhtmlxGantt 提供了 6 个与调整大小相关的事件:
 - [onGridResizeEnd](api/event/ongridresizeend.md) - 用户完成拖动网格边界调整大小后触发
 
 
-列可见性
---------------
+## 列可见性
+
 
 要控制列的可见性，请在列配置中使用 [hide](api/config/columns.md) 属性。
 
@@ -438,8 +438,8 @@ gantt.init("gantt_here");
 <iframe width="676" height="400" src="https://www.youtube.com/embed/rqYrqqoaI_U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-渲染后修改单元格
------------------------------
+## 渲染后修改单元格
+
 
 有时需要在网格单元格渲染后调整其外观或行为。
 
@@ -500,8 +500,8 @@ gantt.config.external_render = {
 - 如果 **isElement** 返回 *true*，则对象会传递给 **renderElement**，在单元格 DOM 元素内部初始化组件。
 
 
-水平滚动条
----------------------
+## 水平滚动条
+
 
 通过在 [layout](guides/layout-config.md) 配置中启用 **scrollable** 属性，可以让网格支持滚动。
 [了解更多关于将布局视图绑定到滚动条的信息](guides/layout-config.md#gundongtiao)。
@@ -580,8 +580,8 @@ gantt.config.layout = {
 [Horizontal scroll inside Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/10_scrollable_grid.html)
 
 
-样式
---------
+## 样式
+
 
 关于网格单元格样式的详细信息，请参见 [Gantt 스타일 작업하기](guides/styling-guide.md)
 

@@ -38,8 +38,8 @@ Mehrere Handler können an dasselbe Event angehängt werden, und alle werden aus
 Wenn ein Handler *false* zurückgibt, wird die entsprechende Operation abgebrochen.
 Die Handler werden in der Reihenfolge ausgeführt, in der sie angehängt wurden.
 
-Eigenschaften des settings-Objekts
------------------------
+## Eigenschaften des settings-Objekts
+
 Das settings-Objekt kann folgende Eigenschaften enthalten:
 
 - **id?** - (*string | number*) - der Bezeichner des Event-Handlers.

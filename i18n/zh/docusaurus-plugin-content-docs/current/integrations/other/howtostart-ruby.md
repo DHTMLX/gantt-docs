@@ -3,8 +3,8 @@ title: "dhtmlxGantt 与 Ruby on Rails 集成"
 sidebar_label: "Ruby on Rails"
 ---
 
-dhtmlxGantt 与 Ruby on Rails 集成
-=========================
+# dhtmlxGantt 与 Ruby on Rails 集成
+
 
 本文将介绍如何使用 [Ruby on Rails](https://rubyonrails.org/) 后端创建一个甘特图。示例环境为 Ruby 2.4.1、Rails 5.1.3 和 MySQL。假设你已经安装了这些前置条件。如果尚未安装，建议先参考 [官方教程](https://guides.rubyonrails.org/index.html)。
 
@@ -20,8 +20,8 @@ dhtmlxGantt 与 Ruby on Rails 集成
 
 你还可以在 GitHub 上找到演示项目:[https://github.com/DHTMLX/gantt-howto-rails](https://github.com/DHTMLX/gantt-howto-rails)。
 
-步骤 1. 创建项目
-------------------------
+## 步骤 1. 创建项目
+
 
 在终端中运行以下命令以创建新项目:
 
@@ -29,8 +29,8 @@ dhtmlxGantt 与 Ruby on Rails 集成
 rails new gantt-app -d mysql
 ~~~
 
-步骤 2. 将 Gantt 添加到页面
------------------------------------------
+## 步骤 2. 将 Gantt 添加到页面
+
 
 首先创建控制器及应用的默认页面。进入应用目录并生成带有 *index* 动作的新控制器:
 
@@ -113,8 +113,8 @@ rails server
 
 此时你已经拥有了一个可以添加和编辑任务的甘特图，但还没有保存功能。接下来将通过创建模型来实现。
 
-步骤 3. 创建模型
---------------
+## 步骤 3. 创建模型
+
 
 由于使用的是 MySQL，请确保 *config/database.yml* 中的连接设置正确，例如:
 
@@ -183,8 +183,8 @@ Link.create :source=>1, :target=>2, :link_type=>"0";
 
 接下来将在控制器中实现数据的加载和保存。
 
-步骤 4. 加载数据
--------------------
+## 步骤 4. 加载数据
+
 
 模型和迁移准备好后，可以将数据库中的数据加载到甘特图中。
 
@@ -248,8 +248,8 @@ gantt.load("/api/data");/*!*/
 
 此时启动服务器并打开 *http://localhost:3000/*，你应该会看到甘特图中已加载数据库中的任务和依赖。但此时对数据的更改还无法保存，下一步将实现保存功能。
 
-步骤 5. 保存更改
---------------------
+## 步骤 5. 保存更改
+
 
 dhtmlxGantt 可以将所有用户更改发送到后端的 RESTful API，并保存到数据库。该协议的详细信息见 [这里](guides/server-side.md#jishushuoming)。
 
@@ -589,18 +589,18 @@ class Task < ApplicationRecord
 end
 ~~~
 
-应用安全
--------------------------
+## 应用安全
+
 
 Gantt 本身不包含针对常见威胁（如 SQL 注入、XSS 或 CSRF 攻击）的保护措施。开发者需要自行负责后端实现的安全性。更多详情请参见[本文](guides/app-security.md)。
 
-故障排查
------------------
+## 故障排查
+
 
 如果你已经按照步骤将 Gantt 集成到 Ruby on Rails，但页面上没有显示任务和链接，请查阅 [백엔드 통합 문제 해결](guides/troubleshooting.md) 中的故障排查指南。它提供了诊断常见问题的建议。
 
-后续步骤
-------------
+## 后续步骤
+
 
 现在你的甘特图已经完全可用，你可以在 [GitHub](https://github.com/DHTMLX/gantt-howto-rails) 上查看完整代码，可以克隆或下载用于你的项目。
 

@@ -3,8 +3,8 @@ title: "'Quick Info' 扩展的模板（触控支持）"
 sidebar_label: "'Quick Info' 扩展的模板（触控支持）"
 ---
 
-'Quick Info' 扩展的模板（触控支持）
-===========================================================
+# 'Quick Info' 扩展的模板（触控支持）
+
 
 <table class="webixdoc_links">
   <tbody>

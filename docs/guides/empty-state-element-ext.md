@@ -3,8 +3,8 @@ title: "emptyStateElement Extension"
 sidebar_label: "emptyStateElement Extension"
 ---
 
-emptyStateElement Extension
-======================
+# emptyStateElement Extension
+
 
 Read details about the emptyStateElement extension in the [Empty State Screen](guides/empty-state-screen.md) article.
 

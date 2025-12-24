@@ -3,8 +3,8 @@ title: "Типовой контрол"
 sidebar_label: "Типовой контрол"
 ---
 
-Типовой контрол
-======================
+# Типовой контрол
+
 
 :::info
 Эта функция доступна только в PRO-версии.
@@ -29,8 +29,8 @@ gantt.config.lightbox.sections = [
 [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-Инициализация
----------------------
+## Инициализация
+
 
 Чтобы добавить контрол **typeselect** в lightbox, просто добавьте секцию в конфигурацию lightbox следующим образом:
 
@@ -56,8 +56,8 @@ gantt.locale.labels.section_type = "Новая метка для секции";
 ~~~
   
 
-Свойства
-----------------
+## Свойства
+
 
 Ниже приведены основные свойства, которые часто используются с контролом **typeselect** (полный список смотрите [здесь](api/config/lightbox.md)):
 

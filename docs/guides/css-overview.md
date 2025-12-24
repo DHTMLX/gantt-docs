@@ -3,13 +3,13 @@ title: "CSS Documentation"
 sidebar_label: "CSS Documentation"
 ---
 
-CSS Documentation
-===========================
+# CSS Documentation
+
 
 This article shows you the ways of overriding the default color settings of the elements of Gantt chart with the custom ones. The article covers the main class selectors and templates for styling the following parts of Gantt: [Grid area](guides/css-overview.md#styling-grid), [Timeline area](guides/css-overview.md#styling-timeline), [Resource panel](guides/css-overview.md#resource-panel).
 
-Styling Grid
-------------
+## Styling Grid
+
 
 In this section you will find CSS selectors for styling the main elements of the [grid area](guides/table.md).
 
@@ -229,8 +229,8 @@ Note, that **.gantt_grid_head_cell** and **.gantt_cell** use different data attr
 
 - or you can approach the same result by applying the **.gantt_row .gantt_cell[data-column-index='1']** selector which defines the column by its index.
 
-Styling Timeline
--------------
+## Styling Timeline
+
 
 The "Styling Timeline" section will guide you through the CSS selectors that you can apply to change the default styles of the elements of the [timeline area](guides/time-scale.md).
 
@@ -782,8 +782,8 @@ and apply CSS:
 **Related sample**: [Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
 
 
-Resource panel
---------------
+## Resource panel
+
 
 The [resource panel](guides/resource-management.md#resourceviewpanel) consists of the grids and timelines similar to the main gantt area.
 

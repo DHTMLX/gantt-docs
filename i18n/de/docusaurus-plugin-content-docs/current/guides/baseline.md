@@ -3,8 +3,8 @@ title: "Baselines-Steuerung"
 sidebar_label: "Baselines-Steuerung"
 ---
 
-Baselines-Steuerung
-====================
+# Baselines-Steuerung
+
 
 :::info
 Dieses Feature ist nur in der PRO Edition enthalten.
@@ -24,8 +24,8 @@ gantt.config.lightbox.sections = [
 [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 
-Initialisierung
----------------------------
+## Initialisierung
+
 
 Um das **baselines**-Steuerelement in der Lightbox zu verwenden, gehen Sie wie folgt vor:
 
@@ -45,8 +45,8 @@ gantt.config.lightbox.sections = [
 gantt.locale.labels.section_baselines = "Baselines";
 ~~~
 
-Eigenschaften
-------------------------
+## Eigenschaften
+
 
 Hier sind die wichtigsten Eigenschaften, die häufig mit dem **baselines**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 
@@ -63,8 +63,8 @@ Hier sind die wichtigsten Eigenschaften, die häufig mit dem **baselines**-Steue
 - **single_date** - (*boolean*) wenn true, wird nur der *Startdatum*-Selektor angezeigt. Aufgaben, die auf diese Weise bearbeitet werden, haben eine Dauer von null, was hauptsächlich für [Meilensteine](guides/task-types.md#milestones) nützlich ist
 - **time_format** - (*string*) legt die Reihenfolge der Datums-/Zeit-Selektoren fest
 
-Lokalisierung
------------------
+## Lokalisierung
+
 
 Sie können die Beschriftungen für diese Teile des **baselines**-Steuerelements anpassen:
 

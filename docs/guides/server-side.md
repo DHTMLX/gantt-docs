@@ -3,8 +3,8 @@ title: "Server-Side Integration"
 sidebar_label: "Server-Side Integration"
 ---
 
-Server-Side Integration
-==============================
+# Server-Side Integration
+
 
 <style>
 .dp_table td (
@@ -21,8 +21,8 @@ You can take a look at the video guide that shows how to create a Gantt chart on
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-Technique
-----------------------------------------------
+## Technique
+
 
 Generally, to load data from the server side using REST API, you need to:
 
@@ -460,8 +460,8 @@ You can have a look at the detailed examples on how to implement storing the tas
 [Rails](integrations/other/howtostart-ruby.md#storingtheorderoftasks).
 
 
-Custom Request Headers and Parameters 
-----------------
+## Custom Request Headers and Parameters 
+
 
 ### Adding custom request headers
 
@@ -538,8 +538,8 @@ dp.attachEvent("onBeforeUpdate", (id, state, data) => {
 ~~~
 
 
-Triggering Data Saving from Script
-------------------------------------
+## Triggering Data Saving from Script
+
 
 If you have dataProcessor initialized, any change made by the user or programmatically will be automatically saved in the data source.
 
@@ -706,8 +706,8 @@ gantt.createDataProcessor((entity, action, data, id) => {
 ~~~
 
 
-Error Handling
-----------------------
+## Error Handling
+
 
 A server can inform Gantt that an action has failed by returning the "action":"error" response:
 
@@ -759,8 +759,8 @@ gantt.render();
 ~~~
 
 
-Cascade Deletion
-----------------
+## Cascade Deletion
+
 
 By default, deletion of a task invokes a chain deletion of its nested task and related links. Gantt will send a *delete* request for each removed task and link.
 Thus, you don't have to maintain data integrity on a backend, it can be handled by the Gantt reasonably well.
@@ -772,8 +772,8 @@ In that case, cascade deletion can be disabled using the [](api/config/cascade_d
 Thus, when a project branch is deleted, the client will send a delete request only for the top item and will expect the backend to delete the related links and subtasks.
 
 
-XSS, CSRF and SQL Injection Attacks
-----------------------------
+## XSS, CSRF and SQL Injection Attacks
+
 
 Pay attention that Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. 
 It is important that responsibility for keeping an application safe is on the developers implementing the backend. 

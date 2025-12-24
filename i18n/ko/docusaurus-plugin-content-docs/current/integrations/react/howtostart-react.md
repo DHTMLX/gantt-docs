@@ -3,8 +3,8 @@ title: "dhtmlxGantt와 React 연동하기"
 sidebar_label: "로우레벨 통합"
 ---
 
-dhtmlxGantt와 React 연동하기
-======================
+# dhtmlxGantt와 React 연동하기
+
 
 :::note
 이 튜토리얼은 JS DHTMLX Gantt를 React 애플리케이션 내에서 사용하는 방법을 안내합니다. 공식 React Gantt 컴포넌트에 대해서는 [React Gantt](integrations/react.md) 문서를 참고하세요.

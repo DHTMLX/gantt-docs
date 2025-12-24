@@ -3,8 +3,8 @@ title: "Full List of CDN Links"
 sidebar_label: "Full List of CDN Links"
 ---
 
-Full List of CDN Links
-=====================
+# Full List of CDN Links
+
 
 The given article presents the full set of links for including the Gantt functionality from CDN.
 Each section corresponds to a particular Gantt version:
@@ -13,8 +13,8 @@ Each section corresponds to a particular Gantt version:
 - Skins - links for including all the available [skins](guides/skins.md)
 
 
-Latest Gantt version
------------------------
+## Latest Gantt version
+
 
 To set path to the sources of the latest version of the library, specify the link as `https://cdn.dhtmlx.com/gantt/edge/...`
 
@@ -29,8 +29,8 @@ Skins: [Terrace](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_terrace.css
 [Material](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_material.css).
 
 
-Latest Gantt version, Uncompressed
------------------------------
+## Latest Gantt version, Uncompressed
+
 
 To set path to the uncompressed sources of the latest version of the library, specify the link as `https://cdn.dhtmlx.com/gantt/edge/sources/...`
 
@@ -47,8 +47,8 @@ Skins: [Terrace]( https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_te
 [Material](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_material.css).
 
 
-Particular Gantt version
---------------
+## Particular Gantt version
+
 
 To set path to the sources of a certain version of the library, specify the link as `https://cdn.dhtmlx.com/gantt/[version_number]/...`. 
 
@@ -65,8 +65,8 @@ Skins: [Terrace]( https://cdn.dhtmlx.com/gantt/4.0/skins/dhtmlxgantt_terrace.css
 [Material](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_material.css).
  
 
-Particular Gantt version, Uncompressed 
--------------------------------
+## Particular Gantt version, Uncompressed 
+
 
 To set path to the uncompressed sources of a certain version of the library, specify the link as `https://cdn.dhtmlx.com/gantt/[version_number]/sources/...`. 
 

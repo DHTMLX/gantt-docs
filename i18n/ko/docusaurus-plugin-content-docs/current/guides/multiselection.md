@@ -3,15 +3,15 @@ title: "멀티 태스크 선택"
 sidebar_label: "멀티 태스크 선택"
 ---
 
-멀티 태스크 선택  
-===========================================
+# 멀티 태스크 선택  
+
 
 버전 3.2부터 라이브러리에는 여러 작업을 동시에 선택할 수 있는 **multiselect** 확장 기능이 포함되어 있습니다.
 
 <div style="text-align:center;">![multiselection](/img/multiselection.png)</div>
 
-멀티 태스크 선택 활성화  
---------------------------------------
+## 멀티 태스크 선택 활성화  
+
 작업에 대해 멀티 태스크 선택을 활성화하려면 [gantt.plugins](api/method/plugins.md) 메서드를 사용하여 활성화하세요:
 
 ~~~js
@@ -44,8 +44,8 @@ sidebar_label: "멀티 태스크 선택"
 gantt.config.multiselect = false; 
 ~~~
 
-여러 작업을 한 번에 수정하기  
---------------------------------
+## 여러 작업을 한 번에 수정하기  
+
 여러 작업이나 링크를 동시에 수정하려면 [batchUpdate](api/method/batchupdate.md) 메서드를 사용하세요:
 
 ~~~js
@@ -65,8 +65,8 @@ gantt.batchUpdate(function () {
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-이터레이터  
-------------------------
+## 이터레이터  
+
 간트 차트에서 선택된 모든 작업을 반복 처리하려면 [eachSelectedTask](api/method/eachselectedtask.md) 메서드를 사용하세요:
 
 ~~~js
@@ -82,16 +82,16 @@ gantt.batchUpdate(function () {
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-동시 들여쓰기/내어쓰기  
--------------------------------------
+## 동시 들여쓰기/내어쓰기  
+
 멀티 태스크 선택을 사용하면 여러 작업에 동시에 작업을 적용할 수 있습니다. 예를 들어, 들여쓰기 또는 내어쓰기를 통해 작업을 하위 작업으로 만들거나, 하위 작업을 다시 상위 작업으로 승격할 수 있습니다.
 
 
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-작업이 선택되었는지 확인하기  
--------------------------------------
+## 작업이 선택되었는지 확인하기  
+
 현재 작업이 선택되어 있는지 확인하려면 [isSelectedTask](api/method/isselectedtask.md) 메서드를 사용하세요:
 
 ~~~js
@@ -113,8 +113,8 @@ gantt.toggleTaskSelection("t_1"); //"t_1"은 작업의 id입니다
 gantt.render();
 ~~~
 
-선택된 모든 작업 가져오기  
------------------------------------
+## 선택된 모든 작업 가져오기  
+
 현재 선택된 모든 작업을 가져오려면 [getSelectedTasks](api/method/getselectedtasks.md) 메서드를 사용하세요:
 
 ~~~js
@@ -127,8 +127,8 @@ gantt.getSelectedTasks();
 gantt.getLastSelectedTask();
 ~~~
 
-동일 레벨 내에서만 멀티 선택 제한  
------------------------------------------------
+## 동일 레벨 내에서만 멀티 선택 제한  
+
 동일한 레벨의 작업만 선택할 수 있도록 제한하려면 [multiselect_one_level](api/config/multiselect_one_level.md) 옵션을 사용하세요:
 
 ~~~js
@@ -150,8 +150,8 @@ gantt.config.drag_multiple = true;
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-한 번의 클릭으로 에디터 열기  
-------------------------------
+## 한 번의 클릭으로 에디터 열기  
+
 
 단일 선택 모드에서는 작업을 클릭하면 바로 인라인 에디터가 열립니다.  
 
@@ -168,8 +168,8 @@ gantt.plugins({
 gantt.config.inline_editors_multiselect_open = true;
 ~~~
 
-API 이벤트  
---------------
+## API 이벤트  
+
 
 멀티 태스크 선택이 활성화된 경우, 하나 이상의 작업을 선택하면 일반 [onTaskSelected](api/event/ontaskselected.md) / [onTaskUnselected](api/event/ontaskunselected.md) 이벤트와 멀티셀렉트 확장 전용 이벤트가 모두 발생합니다.
 

@@ -3,8 +3,8 @@ title: "Hiding Time Units in the Scale"
 sidebar_label: "Hiding Time Units in the Scale"
 ---
 
-Hiding Time Units in the Scale
-================================================
+# Hiding Time Units in the Scale
+
 
 :::info
 This functionality is available only in PRO edition

@@ -3,13 +3,13 @@ title: "Verwendung von DHTMLX Gantt Properties in ReactGantt"
 sidebar_label: "Konfiguration"
 ---
 
-Verwendung von DHTMLX Gantt Properties in ReactGantt
-===============
+# Verwendung von DHTMLX Gantt Properties in ReactGantt
+
 
 Diese Seite bietet einen Überblick über die von React Gantt unterstützten Props und erklärt, wie sie den Funktionen von DHTMLX Gantt entsprechen.
 
-Verfügbare Props
------------------
+## Verfügbare Props
+
 
 <table>
   <thead>
@@ -113,8 +113,8 @@ Verfügbare Props
   </tbody>
 </table>
 
-Beispielnutzung
--------------------
+## Beispielnutzung
+
 
 ~~~js
 <ReactGantt
@@ -145,8 +145,8 @@ Beispielnutzung
 />
 ~~~
 
-Verwendung von Event Props
-----------------
+## Verwendung von Event Props
+
 
 Jedes DHTMLX Gantt-Event kann als Prop übergeben werden. Zum Beispiel:
 
@@ -163,8 +163,8 @@ Jedes DHTMLX Gantt-Event kann als Prop übergeben werden. Zum Beispiel:
 Wenn Sie eine Prop wie `onBeforeTaskAdd` bereitstellen, ruft der Wrapper intern [gantt.attachEvent("onBeforeTaskAdd", handler)](api/method/attachevent.md) auf. Eine vollständige Liste der Events finden Sie unter [DHTMLX Gantt API](api/overview/events-overview.md).
 
 
-Kombinieren von Props und der DHTMLX API
----------------
+## Kombinieren von Props und der DHTMLX API
+
 
 Die Bibliothek `@dhx/react-gantt` ist darauf ausgelegt, möglichst deklarativ zu arbeiten und die meisten Anforderungen über Standard-Props wie tasks, links, resources, templates und mehr abzudecken. Es gibt jedoch Situationen, in denen ein tieferer Zugriff auf die Gantt-Engine notwendig ist, beispielsweise:
 

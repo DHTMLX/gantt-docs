@@ -3,12 +3,12 @@ title: "링크 추가/수정/삭제"
 sidebar_label: "링크 추가/수정/삭제"
 ---
 
-링크 추가/수정/삭제
-=========================================
+# 링크 추가/수정/삭제
+
 이 섹션에서는 의존성 링크 작업의 기본 사항(링크 생성, 삭제, 속성 실시간 수정)에 대해 다룹니다.
 
 ## 새 링크 추가하기 {#addinganewlink}
-----------------------------
+
 Gantt 차트에 새 링크를 추가하려면 [addLink](api/method/addlink.md) 메서드를 사용하세요:
 
 ~~~js
@@ -21,7 +21,7 @@ var linkId = gantt.addLink({
 ~~~
 
 ## 링크 속성 수정하기 {#updatingalinksproperty}
-------------------------------
+
 링크의 속성을 동적으로 변경하려면 [refreshLink](api/method/refreshlink.md) 메서드를 사용할 수 있습니다:
 
 ~~~js
@@ -52,7 +52,7 @@ if (link1.type == links.finish_to_finish){/*!*/
 :::
 
 ## 링크 삭제하기 {#deletingalink}
--------------------------------
+
 링크를 제거하려면 [deleteLink](api/method/deletelink.md) 메서드를 사용하세요:
 
 ~~~js
@@ -60,7 +60,7 @@ gantt.deleteLink(linkId);
 ~~~
 
 ## Gantt 차트에서 모든 링크 제거하기 {#removingalllinksfromtheganttchart}
--------------------------------------------
+
 Gantt 차트에서 모든 태스크와 링크를 제거하려면 [clearAll](api/method/clearall.md) 메서드를 호출하세요:
 
 ~~~js
@@ -68,7 +68,7 @@ gantt.clearAll();
 ~~~
 
 ## UI에서 링크 값 편집하기 {#editinglinkvaluesfromui}
-------------------------------
+
 
 지연(lag) 또는 기타 링크 속성을 편집할 수 있는 기본 제공 UI는 없습니다. 인터페이스가 필요하다면 직접 구현해야 합니다.
 

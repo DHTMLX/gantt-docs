@@ -3,16 +3,16 @@ title: "Link Properties"
 sidebar_label: "Link Properties"
 ---
 
-Link Properties 
-=======================================
+# Link Properties 
+
 
 On this page you'll find the full list of properties that the link object may include.
 
 The full list of properties of the task object is given in the [Task Properties](guides/task-properties.md) article.
 
 
-Required properties
--------------------
+## Required properties
+
 
 <table>
   <tbody>
@@ -50,8 +50,8 @@ gantt.config.links.start_to_start = "start2start";
 
 Note, these values affect only the way the dependency type is stored, not the behaviour of visualization. 
 
-Optional properties
-------------------
+## Optional properties
+
 
 <table>
   <tbody>

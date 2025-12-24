@@ -3,8 +3,8 @@ title: "Leerer Zustand Bildschirm"
 sidebar_label: "Leerer Zustand Bildschirm"
 ---
 
-Leerer Zustand Bildschirm
-=========================
+# Leerer Zustand Bildschirm
+
 
 Seit Version 8.0 unterstützt die Bibliothek das Anzeigen eines leeren Bildschirms („Empty State") mit einem Platzhalter-Element im Grid, wenn keine Daten im Gantt-Diagramm geladen sind.
 

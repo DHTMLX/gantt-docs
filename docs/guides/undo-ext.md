@@ -3,16 +3,16 @@ title: "Undo Extension"
 sidebar_label: "Undo Extension"
 ---
 
-Undo Extension
-=================
+# Undo Extension
+
 
 The *Undo* object has a set of methods that allow you to undo/redo the made changes. 
 
 
 Read details about the Undo extension in the [Undo/Redo Functionality](guides/undo-redo.md) article.
 
-Methods
-----------
+## Methods
+
 
 The following methods are available via the **gantt.ext.undo** object:
 

@@ -3,8 +3,8 @@ title: "Work Time Calculation"
 sidebar_label: "Work Time Calculation"
 ---
 
-Work Time Calculation
-========================
+# Work Time Calculation
+
 
 By default, dhtmlxGantt calculates the duration of tasks in calendar time. It assumes that the final duration of the tasks can include weekends and holidays.
 

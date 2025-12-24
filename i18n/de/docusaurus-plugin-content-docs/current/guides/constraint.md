@@ -3,8 +3,8 @@ title: "Constraint-Steuerung"
 sidebar_label: "Constraint-Steuerung"
 ---
 
-Constraint-Steuerung
-====================
+# Constraint-Steuerung
+
 
 :::info
 Dieses Feature ist nur in der PRO Edition enthalten.
@@ -26,8 +26,8 @@ gantt.config.lightbox.sections = [
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-Initialisierung
----------------
+## Initialisierung
+
 
 Um das **constraint**-Steuerelement in das Lightbox-Formular einzubinden, gehen Sie wie folgt vor:
 
@@ -51,8 +51,8 @@ gantt.locale.labels.section_constraint = "Constraint";
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-Eigenschaften
-------------------------
+## Eigenschaften
+
 
 Hier sind die wichtigsten Eigenschaften, die häufig mit dem **constraint**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 

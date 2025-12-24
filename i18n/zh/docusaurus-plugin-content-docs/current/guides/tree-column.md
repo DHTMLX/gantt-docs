@@ -3,12 +3,12 @@ title: "配置树形列"
 sidebar_label: "配置树形列"
 ---
 
-配置树形列
-============================================
+# 配置树形列
+
 有关可用的树相关方法的详细信息，请参阅 [Task Parent/Child](guides/task-tree-operations.md) 文章。
 
-展开/折叠任务分支
---------------------------------------
+## 展开/折叠任务分支
+
 - 要展开任务分支，请使用 [open](api/method/open.md) 方法:
 
 ~~~js
@@ -33,8 +33,8 @@ var data = {
 gantt.close("p_1"); /*!*/
 ~~~ 
 
-展开/折叠多个分支
---------------------------------
+## 展开/折叠多个分支
+
 当需要同时展开或折叠多个任务分支时，最快的方法是通过代码将相关任务的 *.$open* 属性赋值为布尔值（true 为展开，false 为折叠），然后刷新 gantt。
 
 - 展开所有任务:
@@ -59,8 +59,8 @@ gantt.render();
 如需添加一个按钮以一次性折叠或展开所有任务，请参见 [How to expand/collapse all tasks with a button](guides/how-to.md#ruhetongguoanniuzhankaishouqisuoyourenwu) 部分。
 :::
 
-获取任务的子节点
--------------------------------------------
+## 获取任务的子节点
+
 要获取某个分支任务的子节点，请使用 [getChildren](api/method/getchildren.md) 方法:
 
 ~~~js
@@ -75,8 +75,8 @@ gantt.getChildren("p_1");//->["t_1"] /*!*/
 
 *更多树相关方法，请参阅 [Task Parent/Child](guides/task-tree-operations.md) 文章。*
 
-更改树的图标
----------------------------------------------
+## 更改树的图标
+
 ###父节点
 如需自定义父节点的图标，请使用 [grid_folder](api/template/grid_folder.md) 模板:
 
@@ -109,8 +109,8 @@ gantt.templates.grid_open = function(item) {
 ~~~
 
 
-设置分支中子节点的缩进
-------------------------------------------------
+## 设置分支中子节点的缩进
+
 要调整分支中子任务的缩进，请通过修改 **width** CSS 属性，使用 [grid_indent](api/template/grid_indent.md) 模板:
 
 ~~~js
@@ -120,8 +120,8 @@ gantt.templates.grid_indent="function(task){"
 ~~~
 
 
-为树节点添加复选框
-------------------------------------
+## 为树节点添加复选框
+
 如需在树节点内添加复选框（或其他 HTML 内容），请使用 [grid_blank](api/template/grid_blank.md) 模板:
 
 ~~~js
@@ -131,8 +131,8 @@ gantt.templates.grid_blank="function(task){"
 ~~~
 
 
-设置树节点的模板
----------------------------------------
+## 设置树节点的模板
+
 要为树节点设置模板，请在 [columns](api/config/columns.md) 属性中使用 **template** 属性。
 
  **template** 函数的返回值将作为 inner HTML 添加，因此该属性可包含任意 HTML 结构。

@@ -3,8 +3,8 @@ title: "dhtmlxGantt mit Python"
 sidebar_label: "Python"
 ---
 
-dhtmlxGantt mit Python
-=====================
+# dhtmlxGantt mit Python
+
 
 Diese Anleitung führt durch die Erstellung eines Gantt-Diagramms auf Python-Basis mit dem Django 4 Framework und einer RESTful API im Backend.
 
@@ -22,16 +22,16 @@ Wenn Sie mit anderen Plattformen arbeiten, gibt es Tutorials für die serverseit
 Der vollständige Quellcode ist auf [GitHub](https://github.com/DHTMLX/gantt-howto-django) verfügbar.
 :::
 
-Voraussetzungen
------------------
+## Voraussetzungen
+
 
 Falls Django noch nicht installiert ist, finden Sie hier Installationsanleitungen:
 
 - [Windows-Setup](https://docs.djangoproject.com/en/4.0/howto/windows/)
 - [Linux-Setup](https://linuxhint.com/install_django_ubuntu/)
 
-Schritt 1. Projekt initialisieren
------------------------
+## Schritt 1. Projekt initialisieren
+
 
 Öffnen Sie zunächst Ihren Projektordner und erstellen Sie mit folgendem Befehl ein neues Django-Projekt:
 
@@ -55,8 +55,8 @@ python manage.py runserver
 
 ![start_page](/img/howtostart_django_startpage.png)
 
-Schritt 2. Gantt auf der Seite einbinden
------------------------
+## Schritt 2. Gantt auf der Seite einbinden
+
 
 Beginnen Sie mit der Erstellung einer neuen App für die Gantt-Komponente:
 
@@ -175,8 +175,8 @@ Wenn alles korrekt eingerichtet ist, erscheint eine leere Gantt-Ansicht:
 
 ![init_gantt](/img/howtostart_django_initpage.png)
 
-Schritt 3. Daten laden
----------------------
+## Schritt 3. Daten laden
+
 
 Fügen Sie in *gantt_rest_python/settings.py* `'rest_framework'` und `'gantt.apps.GanttConfig'` zur Liste `INSTALLED_APPS` hinzu und konfigurieren Sie die REST Framework Optionen:
 
@@ -368,8 +368,8 @@ Wenn Sie den Server jetzt starten, wird das Gantt-Diagramm mit Aufgaben und Verk
 
 ![gantt](/img/howtostart_django_gantt.png)
 
-Schritt 4. Änderungen speichern
--------------------
+## Schritt 4. Änderungen speichern
+
 
 Um das Speichern von Änderungen zu ermöglichen, fügen Sie Unterstützung für die Methoden `POST`, `PUT` und `DELETE` in *gantt/views.py* hinzu:
 
@@ -614,18 +614,18 @@ Mit dieser Konfiguration wird beim vertikalen Umordnen die neue Reihenfolge gesp
 
 ![sort_order](/img/howtostart_django_sortorder.png)
 
-Sicherheit der Anwendung
--------------------------
+## Sicherheit der Anwendung
+
 
 DHTMLX Gantt bietet keinen integrierten Schutz gegen Bedrohungen wie SQL-Injection, XSS oder CSRF. Die Absicherung der Anwendung liegt in der Verantwortung des Entwicklers auf der Serverseite. Weitere Informationen finden Sie im [Sicherheitsartikel](guides/app-security.md).
 
-Fehlerbehebung
------------------
+## Fehlerbehebung
+
 
 Wenn nach der Integration Aufgaben und Verknüpfungen nicht angezeigt werden, hilft der Leitfaden in [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) weiter. Dort finden Sie Tipps zur Identifikation und Behebung häufiger Probleme.
 
-Wie geht es weiter
-------------------
+## Wie geht es weiter
+
 
 Sie haben nun eine funktionierende Gantt-Anwendung. Der vollständige Quellcode steht auf [GitHub](https://github.com/DHTMLX/gantt-howto-django) zum Klonen oder Herunterladen bereit.
 

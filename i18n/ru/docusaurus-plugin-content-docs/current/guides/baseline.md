@@ -3,8 +3,8 @@ title: "Контроль базовых планов"
 sidebar_label: "Контроль базовых планов"
 ---
 
-Контроль базовых планов
-====================
+# Контроль базовых планов
+
 
 :::info
 Эта функция доступна только в редакции PRO.
@@ -24,8 +24,8 @@ gantt.config.lightbox.sections = [
 [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 
-Инициализация
----------------------------
+## Инициализация
+
 
 Чтобы добавить элемент управления **baselines** в lightbox, выполните следующие шаги:
 
@@ -45,8 +45,8 @@ gantt.config.lightbox.sections = [
 gantt.locale.labels.section_baselines = "Baselines";
 ~~~
 
-Свойства
-------------------------
+## Свойства
+
 
 Ниже приведены основные свойства, которые часто используются с элементом управления **baselines** (полный список смотрите [здесь](api/config/lightbox.md)):
 
@@ -63,8 +63,8 @@ gantt.locale.labels.section_baselines = "Baselines";
 - **single_date** - (*boolean*) если true, будет отображаться только селектор *start Date*. Задачи, отредактированные таким образом, будут иметь нулевую длительность, что полезно в основном для [вех](guides/task-types.md#milestones)
 - **time_format** - (*string*) задаёт порядок селекторов даты и времени
 
-Локализация
------------------
+## Локализация
+
 
 Вы можете настроить метки для следующих частей элемента управления **baselines**:
 

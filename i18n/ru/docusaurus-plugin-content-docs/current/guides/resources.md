@@ -3,8 +3,8 @@ title: "Контрол ресурсов"
 sidebar_label: "Контрол ресурсов"
 ---
 
-Контрол ресурсов
-===================
+# Контрол ресурсов
+
 
 :::info
 Эта функция доступна только в PRO-версии.
@@ -53,8 +53,8 @@ gantt.locale.labels.section_rooms = "Rooms";
 Также возможно создать [кастомный контрол для назначения нескольких ресурсов задаче](guides/custom-editor.md#customthirdpartyeditor).
 :::
 
-Инициализация
-------------
+## Инициализация
+
 
 Чтобы добавить контрол **resources** в lightbox, выполните следующие шаги:
 
@@ -78,8 +78,8 @@ gantt.locale.labels.section_resources = "Rooms";
 [Resources control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/13_resources.html)
 
 
-Свойства
--------------
+## Свойства
+
 
 Ниже приведены основные свойства, которые обычно задаются для контрола **resources** (полный список доступен [здесь](api/config/lightbox.md)):
 
@@ -100,8 +100,8 @@ gantt.locale.labels.section_resources = "Rooms";
 По умолчанию контрол ресурсов автоматически заполняется из [хранилища ресурсов](guides/resource-management.md#workingwithresourceviewpanel) через коллекцию `gantt.serverList("resourceOptions")` ([подробнее](api/method/serverlist.md)). Необходимо задавать опции вручную только для переопределения этого поведения.
 :::
 
-Заполнение контрола данными
--------------------------------
+## Заполнение контрола данными
+
 
 Начиная с версии 8.0, контрол ресурсов автоматически получает опции из [хранилища ресурсов](guides/resource-management.md#workingwithresourceviewpanel).
 
@@ -163,8 +163,8 @@ gantt.config.lightbox.sections = [
 - **unit** - единица измерения ресурса
 
 
-Заполнение контрола данными с сервера
----------------------------------------------
+## Заполнение контрола данными с сервера
+
 
 Чтобы заполнить контрол данными с сервера, установите свойство [options](api/config/lightbox.md) в значение, возвращаемое методом [serverList](api/method/serverlist.md):
 

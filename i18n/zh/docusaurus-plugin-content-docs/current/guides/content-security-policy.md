@@ -3,8 +3,8 @@ title: "内容安全策略（Content Security Policy）合规性"
 sidebar_label: "内容安全策略（Content Security Policy）合规性"
 ---
 
-内容安全策略（Content Security Policy）合规性
-=========================
+# 内容安全策略（Content Security Policy）合规性
+
 
 内容安全策略（CSP）是一项Web标准，旨在阻止未经授权的JavaScript运行，并提升[应用程序的安全性](guides/app-security.md)。
 

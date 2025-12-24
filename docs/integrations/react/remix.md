@@ -4,8 +4,8 @@ sidebar_label: Remix
 
 ---
 
-React Gantt with Remix
-===============
+# React Gantt with Remix
+
 
 **Remix Quick Start**
 

@@ -3,8 +3,8 @@ title: "제약 컨트롤"
 sidebar_label: "제약 컨트롤"
 ---
 
-제약 컨트롤
-====================
+# 제약 컨트롤
+
 
 :::info
 이 기능은 PRO Edition에만 포함되어 있습니다.
@@ -26,8 +26,8 @@ gantt.config.lightbox.sections = [
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-초기화
-------------
+## 초기화
+
 
 **constraint** 컨트롤을 라이트박스에 추가하려면 다음 단계를 따르세요:
 
@@ -51,8 +51,8 @@ gantt.locale.labels.section_constraint = "Constraint";
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-속성
-------------------------
+## 속성
+
 
 **constraint** 컨트롤에 일반적으로 사용되는 주요 속성은 다음과 같습니다 (전체 목록은 [여기](api/config/lightbox.md)에서 확인할 수 있습니다):
 

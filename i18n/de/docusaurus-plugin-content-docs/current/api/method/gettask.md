@@ -51,8 +51,8 @@ const targetLinks = taskObj.$target;       //-> ["l5","l8"] - IDs der eingehende
 ~~~
 
 
-Fehler
------------
+## Fehler
+
 
 Die Methode **getTask** setzt voraus, dass ein Task mit der angegebenen "id" bereits im Gantt-Diagramm geladen ist. Falls kein Task mit dieser "id" existiert, wird eine Fehlermeldung ausgegeben: "Task not found id = ID". 
 

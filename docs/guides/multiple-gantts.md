@@ -3,8 +3,8 @@ title: "Multiple Charts on a Page"
 sidebar_label: "Multiple Charts on a Page"
 ---
 
-Multiple Charts on a Page
-=========================
+# Multiple Charts on a Page
+
 
 :::info
 This functionality is available in the Gantt PRO version under the Commercial (since October 6, 2021), Enterprise and Ultimate licenses
@@ -12,8 +12,8 @@ This functionality is available in the Gantt PRO version under the Commercial (s
 
 Basically, dhtmlxGantt is a static object and the default instance of it continually exists on the page. You may access it via the global **gantt** object at any time. But you can also create a new gantt object if needed.
 
-Gantt Instance Configuration
------------------------------
+## Gantt Instance Configuration
+
 To create a new instance of dhtmlxGantt, use the **Gantt.getGanttInstance()** method:
 
 ~~~js
@@ -142,8 +142,8 @@ window.addEventListener("DOMContentLoaded", function(){
 </body>
 ~~~
 
-Integration with dhtmlxLayout
-------------------------
+## Integration with dhtmlxLayout
+
 
 A good way to place multiple Gantt charts on the page is using [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html). 
 It not only provides a beautiful frame, but also ensures correct interacting with other elements on the page and acting according to the page size changes. 

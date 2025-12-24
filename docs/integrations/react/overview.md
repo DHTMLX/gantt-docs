@@ -5,16 +5,16 @@ description: "Overview of the official React wrapper: features, props, theming, 
 
 ---
 
-React Gantt Overview
-==================
+# React Gantt Overview
+
 
 :::note
 React Gantt is available under [Commercial, Enterprise and Ultimate licenses](https://dhtmlx.com/docs/products/licenses.shtml).
 If you're using Individual or GPL editions of Gantt, please refer to the [How to Start](integrations/react/js-gantt-react.md) article for React.
 :::
 
-Overview
---------------------
+## Overview
+
 
 DHTMLX Gantt is a pure JS component that can work in any browser environment. The Commercial and higher editions of Gantt include a **React Gantt** component that encapsulates DHTMLX Gantt and allows you to use it natively with React.
 
@@ -29,8 +29,8 @@ The wrapper lets you create a fully functional Gantt chart in your React applica
 
 If you're new to DHTMLX Gantt, see the [DHTMLX Gantt documentation](guides.md) for an overview of features like [Work Time Calculation](guides/working-time.md), [Auto Scheduling](guides/auto-scheduling.md), [Resource Management](guides/resource-management.md), and more.
 
-Installation and NPM Access
--------------------
+## Installation and NPM Access
+
 
 For up-to-date installation instructions for both the Evaluation and Professional builds, including npm registry configuration and offline examples, see the [Installation Guide](integrations/react/installation.md).
 
@@ -46,13 +46,13 @@ import ReactGantt from '@dhx/react-gantt';
 import '@dhx/react-gantt/dist/react-gantt.css';
 ~~~
 
-Version Requirements
---------------------
+## Version Requirements
+
 
 - React `v18.0.0` or newer
 
-Basic Usage
--------------------
+## Basic Usage
+
 
 Here is a minimal snippet showing how to import and render the Gantt chart:
 
@@ -222,8 +222,8 @@ If you still keep some representation of tasks/links in React state, be careful 
 
 For more details see [Gantt as the source of truth](integrations/react/state/state-management-basics.md#ganttasthesourceoftruth).
 
-Configuration & Props
--------------------
+## Configuration & Props
+
 
 The React wrapper accepts the `config` prop (mapped to [gantt.config](api/overview/properties-overview.md)) and the `templates` prop (mapped to [gantt.templates](api/overview/templates-overview.md)).
 
@@ -291,8 +291,8 @@ You can override many aspects using templates:
 
 You can find the full list of props supported by React Gantt in the following article: [](integrations/react/configuration-props.md)
 
-Themes & Styling
------------------
+## Themes & Styling
+
 
 Gantt is shipped with several built-in themes that can be activated via the **theme** prop and changed dynamically:
 
@@ -340,8 +340,8 @@ Themes can be additionally customized using custom styles and by overriding CSS 
 
 For additional configuration, please check the [Skins Customization](guides/custom-skins.md) guide.
 
-Replacing the Lightbox
-------------------
+## Replacing the Lightbox
+
 
 DHTMLX Gantt comes with a built-in configurable task editor called [Lightbox](guides/default-edit-form.md).
 
@@ -470,8 +470,8 @@ export default function BasicInitDemo() {
 
 Please refer to [Custom Lightbox](guides/custom-edit-form.md) for further details on overriding or extending the built-in Lightbox.
 
-Replacing built-in Modals
-------------------
+## Replacing built-in Modals
+
 
 The default UI includes two modal popups:
 
@@ -511,8 +511,8 @@ Both can be overridden using the `modals` prop of ReactGantt:
 You can use these props to activate your custom modals whenever a confirmation dialog is called by Gantt.
 Calling the `callback()` provided in the arguments will finalize the deletion of the appropriate task or link. To cancel the deletion, simply close the modal without calling the callback.
 
-Using React Components in Grid
--------------------
+## Using React Components in Grid
+
 
 ### In headers
 
@@ -689,8 +689,8 @@ Note, you can define non-React inline editors using the [editor_types](guides/in
 - <span class="subproperty">**ganttInstance**</span> - (*GanttStatic*) - the current instance of the underlying Gantt object
 
 
-Filtering
------------------
+## Filtering
+
 
 Use the `filter` prop to specify a filter for the tasks that should be displayed:
 
@@ -743,8 +743,8 @@ return (
 
 ~~~
 
-Working Calendars
-------------------
+## Working Calendars
+
 
 To enable work-time calculations in **ReactGantt**, make sure to enable [work_time](api/config/work_time.md):
 
@@ -879,8 +879,8 @@ setGrouping(false);
 ~~~
 
 
-Vertical Markers in Timeline Area
------------------
+## Vertical Markers in Timeline Area
+
 
 [Vertical markers](guides/markers.md) can be added to **ReactGantt** via the `markers` property:
 
@@ -965,8 +965,8 @@ See the DHTMLX Gantt [API Reference](api/overview/methods-overview.md) for the f
 - The recommended approach is to rely on the wrapper's props for tasks and links, or manage them in your React state. Then let the wrapper handle re-parsing.
 
 
-Compatibility with SSR Frameworks (Next.js, Remix)
---------------
+## Compatibility with SSR Frameworks (Next.js, Remix)
+
 
 :::note
 Starting from ReactGantt v9.0.12 the wrapper is SSR-ready. You can import it in Next.js or Remix without turning SSR off. If you use older versions - you must disable or delay server-side rendering for any route or component that uses ReactGantt.
@@ -1059,8 +1059,8 @@ export default function GanttPage() {
 }
 ~~~
 
-Next Steps
--------------------
+## Next Steps
+
 
 - For additional info on how to configure ReactGantt, see [this article](integrations/react/configuration-props.md)
 - For advanced use see [DHTMLX Gantt documentation](guides.md) 

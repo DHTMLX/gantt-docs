@@ -3,8 +3,8 @@ title: "dhtmlxGantt mit dhtmlxConnector"
 sidebar_label: "dhtmlxConnector"
 ---
 
-dhtmlxGantt mit dhtmlxConnector
-================================
+# dhtmlxGantt mit dhtmlxConnector
+
 
 Dieses Tutorial erklärt, wie Sie ein einfaches Gantt-Diagramm auf einer Webseite einrichten, das Aufgaben in einer Datenbank (auf dem Server) speichern und aktualisieren kann.
 
@@ -26,8 +26,8 @@ Wenn Sie eine andere serverseitige Technologie bevorzugen, finden Sie unten Tuto
 [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
-Schritt 1. Herunterladen des dhtmlxGantt-Pakets
---------------------------------------------------------------
+## Schritt 1. Herunterladen des dhtmlxGantt-Pakets
+
 
 <div>
 
@@ -40,8 +40,8 @@ Laden Sie zunächst das Bibliothekspaket auf Ihren Computer herunter.
 
 </div>
 
-Schritt 2. Einbinden der dhtmlxGantt-Code-Dateien
------------------------------------------------------------
+## Schritt 2. Einbinden der dhtmlxGantt-Code-Dateien
+
 
 <div>
 
@@ -76,8 +76,8 @@ Die benötigten dhtmlxGantt-Dateien sind:
 
 </div>
 
-Schritt 3. Initialisieren von dhtmlxGantt
------------------------------------------------------------
+## Schritt 3. Initialisieren von dhtmlxGantt
+
 
 <div>
 
@@ -126,8 +126,8 @@ Wenn Sie den Vollbildmodus verwenden, fügen Sie dieses CSS hinzu, um eine korre
 </style>
 ~~~
 
-Schritt 4. Laden von Daten in das Gantt-Diagramm
-------------------------------------------------------------------------
+## Schritt 4. Laden von Daten in das Gantt-Diagramm
+
 <div>
 
 
@@ -202,8 +202,8 @@ gantt.parse (tasks);/*!*/
 [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
-Schritt 5. Erstellen einer Datenbank
------------------------------------------------------------
+## Schritt 5. Erstellen einer Datenbank
+
 :::note
 Dieser und die folgenden Schritte gelten, wenn Sie Daten aus einer Datenbank laden möchten, anstatt Inline-Daten zu verwenden.
 :::
@@ -257,8 +257,8 @@ gantt.attachEvent("onBeforeTaskAdd", function(id,task){
 });
 ~~~
 
-Schritt 6. Laden von Daten aus der Datenbank
------------------------------------------------------------
+## Schritt 6. Laden von Daten aus der Datenbank
+
 :::note
 In den nächsten beiden Schritten wird PHP für die Server-Client-Integration verwendet.
 
@@ -359,8 +359,8 @@ $gantt->render_table("gantt_tasks","id",
 ~~~
 
 
-Schritt 7. Aktualisierung der Datenbankdaten
------------------------------------------------------------
+## Schritt 7. Aktualisierung der Datenbankdaten
+
 
 <div>
 Als nächstes ist es wichtig, das Speichern von Änderungen, die im Gantt-Diagramm vorgenommen wurden, zurück in die Datenbank zu ermöglichen. Hierzu wird die Hilfsbibliothek [dataProcessor](api/method/dataprocessor.md) verwendet. Der Vorgang umfasst die Initialisierung des DataProcessor und die Verknüpfung mit der dhtmlxGantt-Instanz.
@@ -384,8 +384,8 @@ dp.init(gantt); /*!*/
 </ul>
 </div>
 
-Protokollierung von Fehlern
-----------------------
+## Protokollierung von Fehlern
+
 
 Wenn alles eingerichtet ist, aber weiterhin Probleme auftreten, kann das Aktivieren der Protokollierung in Gantt bei der Fehlersuche helfen.
 
@@ -400,8 +400,8 @@ $gantt->enable_log("log.txt"); /*!*/
 
 Sie können anschließend die Datei **log.txt** überprüfen, um die protokollierten Informationen einzusehen.
 
-Wie geht es weiter?
------------------------------------------------------------
+## Wie geht es weiter?
+
 Das war's! Ein grundlegendes Gantt-Diagramm, das Daten aus der Datenbank laden und Änderungen zurückspeichern kann, ist nun eingerichtet.
 Ab jetzt können Sie es weiter anpassen und erweitern, um Ihre spezifischen Anforderungen zu erfüllen.
 

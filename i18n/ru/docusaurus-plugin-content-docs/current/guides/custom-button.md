@@ -3,8 +3,8 @@ title: "Изменение кнопок в Lightbox"
 sidebar_label: "Изменение кнопок в Lightbox"
 ---
 
-Изменение кнопок в Lightbox
-============================================
+# Изменение кнопок в Lightbox
+
 Вы можете настраивать стандартные кнопки в lightbox. Например, кнопку 'Edit' можно скрыть для пользователей, которым требуется только просмотр задач, или добавить новую кнопку "Print" для печати описания задачи.
 
 ![complete_button](/img/complete_button.png)
@@ -69,8 +69,8 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 [Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
 
 
-Изменение подписей кнопок
------------------------
+## Изменение подписей кнопок
+
 
 Подписи кнопок можно переопределить до инициализации Gantt следующим образом:
 

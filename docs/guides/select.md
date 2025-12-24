@@ -3,8 +3,8 @@ title: "Select Control"
 sidebar_label: "Select Control"
 ---
 
-Select Control
-=========================
+# Select Control
+
 
 A drop-down list box.
 
@@ -28,8 +28,8 @@ gantt.locale.labels.section_priority = "Priority";
 [Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
-Initialization
--------------------
+## Initialization
+
 
 To add the **select** control to the lightbox, follow these steps:
 
@@ -60,8 +60,8 @@ gantt.locale.labels.section_priority = "Priority";
 [Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
-Properties
--------------
+## Properties
+
 
 The following properties are mostly important and commonly set for the **select** control (see the full list [here](api/config/lightbox.md)):
 
@@ -78,8 +78,8 @@ the following properties:
 - **onchange** - (*function*) specifies the ['onChange' event handler function](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) for the section's control 
 
 
-Populating control with data
--------------------------------
+## Populating control with data
+
 
 Generally, to set values for the **select** control, use the [options](api/config/lightbox.md) parameter:
 
@@ -100,8 +100,8 @@ Items in the [options](api/config/lightbox.md) parameter have 2 mandatory proper
 - **label** - the option label
 
 
-Populating control with data from the server
----------------------------------------------
+## Populating control with data from the server
+
 
 To populate the control from the server, set the [options](api/config/lightbox.md) option to the value returned by the [serverList](api/method/serverlist.md) method:
 

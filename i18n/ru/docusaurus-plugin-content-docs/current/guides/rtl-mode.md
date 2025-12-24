@@ -3,8 +3,8 @@ title: "RTL (Right-to-left) режим"
 sidebar_label: "RTL (Right-to-left) режим"
 ---
 
-RTL (Right-to-left) режим
-=========================
+# RTL (Right-to-left) режим
+
 
 ![rtl_mode](/img/rtl_mode.png)
 

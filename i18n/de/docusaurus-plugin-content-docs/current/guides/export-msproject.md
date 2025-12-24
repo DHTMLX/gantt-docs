@@ -3,8 +3,8 @@ title: "Export und Import aus MS Project"
 sidebar_label: "Export und Import aus MS Project"
 ---
 
-Export und Import aus MS Project
-============================
+# Export und Import aus MS Project
+
 
 Die dhtmlxGantt-Bibliothek unterstützt sowohl den Export von Daten aus dem Gantt-Diagramm nach MS Project als auch den Import von Daten aus MS Project in das Gantt-Diagramm.
 
@@ -17,8 +17,8 @@ Es stehen mehrere Exportdienste zur Verfügung, die lokal auf Ihrem Computer ins
 Beachten Sie, dass diese Exportdienste nicht im Gantt-Paket enthalten sind.
 Weitere Informationen zu den Nutzungsbedingungen der einzelnen Dienste finden Sie im [zugehörigen Artikel](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
 
-Einschränkungen des Online-Exportdienstes
------------------------------
+## Einschränkungen des Online-Exportdienstes
+
 
 :::note
 Der Exportdienst hat Begrenzungen bezüglich der Verarbeitungszeit und der Anfragegröße.
@@ -41,8 +41,8 @@ Der allgemeine API-Endpunkt **https://export.dhtmlx.com/gantt** verarbeitet alle
 Es gibt auch einen speziellen API-Endpunkt **https://export.dhtmlx.com/gantt/project** speziell für [MSProject](#limitsonrequestsizeandimportoflargefiles) und
 [Primavera P6](guides/export-primavera.md) Export-/Importdienste (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*). Dieser Endpunkt erlaubt eine größere Anfragegröße von bis zu **40 MB**.
 
-Verwendung von Exportmodulen
----------------------
+## Verwendung von Exportmodulen
+
 
 :::note
 Für den Export großer Diagramme empfiehlt sich die Nutzung eines [eigenständigen Exportmoduls](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
@@ -51,8 +51,8 @@ Dieses Modul ist kostenlos, wenn Sie eine [Commercial](https://dhtmlx.com/docs/p
 
 [Mehr über die Verwendung des Exportmoduls für MS Project erfahren](guides/msp-export-module.md).
 
-Export nach MS Project
------------------------
+## Export nach MS Project
+
 
 Die Gantt-Komponente kann Verknüpfungen, Aufgaben und Ressourcen nach MS Project exportieren.
 
@@ -286,8 +286,8 @@ gantt.exportToMSProject({
 });
 ~~~
 
-Import aus MS Project
-----------------------
+## Import aus MS Project
+
 
 Um eine XML- oder MPP-MS Project-Datei zu konvertieren, senden Sie eine Anfrage an den Exportdienst mit folgenden Angaben:
 
@@ -544,8 +544,8 @@ Dieser Endpunkt unterstützt Anfragen bis zu 40 MB und ist für MS Project Expor
 
 Andere Methoden wie *gantt.exportToPDF((server:"https://export.dhtmlx.com/gantt/project"))* führen zu einem Serverfehler.
 
-dhtmlxGantt vs MS Project Zeitberechnung
-------------------------------------------
+## dhtmlxGantt vs MS Project Zeitberechnung
+
 
 Es gibt wesentliche Unterschiede darin, wie dhtmlxGantt und MS Project Datumsberechnungen durchführen, was zu unterschiedlichen Ergebnissen führen kann.
 

@@ -3,8 +3,8 @@ title: "Integration with JQuery"
 sidebar_label: "Integration with JQuery"
 ---
 
-Integration with JQuery
-==========================================
+# Integration with JQuery
+
 
 If you are using JQuery library, you can render the Gantt chart on a page using a usual syntax. 
 

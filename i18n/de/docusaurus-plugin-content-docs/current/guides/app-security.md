@@ -3,8 +3,8 @@ title: "Application Security"
 sidebar_label: "Application Security"
 ---
 
-Application Security
-=======================
+# Application Security
+
 
 DHTMLX Gantt ist eine clientseitige JavaScript-Bibliothek, die entwickelt wurde, um Gantt-Funktionen nahtlos in verschiedene Webanwendungen zu integrieren. 
 Wir schränken die Funktionalität von Gantt nicht auf eine Weise ein, die zwar die Sicherheit erhöhen, aber gleichzeitig die Möglichkeiten begrenzen würde. 

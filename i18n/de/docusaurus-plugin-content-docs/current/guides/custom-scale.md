@@ -3,8 +3,8 @@ title: "Ausblenden von Zeiteinheiten in der Skala"
 sidebar_label: "Ausblenden von Zeiteinheiten in der Skala"
 ---
 
-Ausblenden von Zeiteinheiten in der Skala
-================================================
+# Ausblenden von Zeiteinheiten in der Skala
+
 :::info
 Diese Funktion ist nur in der PRO-Edition verfügbar. 
 :::

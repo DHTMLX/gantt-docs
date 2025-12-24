@@ -3,8 +3,8 @@ title: "dhtmlxGantt with PHP:Slim3"
 sidebar_label: "PHP: Slim3"
 ---
 
-dhtmlxGantt with PHP:Slim3 
-=====================
+# dhtmlxGantt with PHP:Slim3 
+
 
 In this tutorial you will find necessary information on how to create a Gantt Chart using PHP 5.6x-7.x and RESTful API on the server.
 
@@ -29,8 +29,8 @@ We will use the [Slim 3](https://www.slimframework.com/) framework for routing a
 The complete source code is [available on GitHub](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x).
 :::
 
-Step 1. Initializing a project
------------------------
+## Step 1. Initializing a project
+
 
 ### Creating a project
 
@@ -57,8 +57,8 @@ php -S 0.0.0.0:8080 -t public public/index.php
 
 After that you can open [http://127.0.0.1:8080](http://127.0.0.1:8080/) in a browser and you will see the default Slim page.
 
-Step 2. Adding Gantt to the page
------------------------
+## Step 2. Adding Gantt to the page
+
 
 Now we need to create a page with our gantt chart.
 Find a default page in <b>templates/index.phtml</b>. We want to place the gantt chart there and set up prerequisites to implement data loading.
@@ -101,8 +101,8 @@ php -S 0.0.0.0:8080 -t public public/index.php
 
 Now open [http://127.0.0.1:8080/](http://127.0.0.1:8080/) in a browser and you will see that a gantt is rendered on the page.
 
-Step 3. Configuring a database
----------------------
+## Step 3. Configuring a database
+
 
 The next step is to create a database. We'll make a simple database with two tables.
 
@@ -150,8 +150,8 @@ Check a detailed example [here](guides/loading.md#databasestructure).
 
 So, we've finished preparing our project. Now we can proceed with data loading.
 
-Step 4. Loading data
--------------------------------
+## Step 4. Loading data
+
 
 Now it's time to implement loading from the database. 
 On the client side we'll request data using the [gantt.load](api/method/load.md) method:
@@ -270,8 +270,8 @@ Open [http://127.0.0.1:8080/ ](http://127.0.0.1:8080/) and you will see that the
 
 ![load_data](/img/load_data.png)
 
-Step 5. Saving changes
------------------------------------
+## Step 5. Saving changes
+
 
 Our next step is to implement saving of the changes made on the client side to the server. It is usually done using the [dataProcessor](guides/server-side.md#technique) library, which is embedded into the gantt.
 Open *index.phtml* and add the following lines of code:
@@ -622,26 +622,26 @@ function updateOrder($taskId, $target, $db){
 
 You can check [a ready demo](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x) on GitHub.
 
-Using dhtmlxConnector
----------------
+## Using dhtmlxConnector
+
 
 Alternatively, a PHP backend can also be implemented using the [dhtmlxConnector library](https://docs.dhtmlx.com/connector__php__index.html). 
 You can find a detailed tutorial [here](integrations/php/howtostart-connector.md). 
 
 
-Application security
--------------------------
+## Application security
+
 
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](guides/app-security.md).
 
-Trouble shooting
------------------
+## Trouble shooting
+
 
 In case you've completed the above steps to implement Gantt integration with PHP but Gantt doesn't render tasks and links on a page, have a look at the [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) article. It describes 
 the ways of identifying the roots of the problems.
 
-What's next
-------------
+## What's next
+
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x), clone or download it and use it for your projects.
 

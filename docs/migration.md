@@ -3,11 +3,11 @@ title: "Migration from Older Versions"
 sidebar_label: "Migration from Older Versions"
 ---
 
-Migration from Older Versions
-=================================================
+# Migration from Older Versions
 
-9.0 -> 9.1
--------------
+
+## 9.0 -> 9.1
+
 
 The v9.1 does not introduce breaking changes but several configuration options have been **deprecated** and 
 [migration to the new unified format](#autoscheduling) is recommended.
@@ -62,8 +62,8 @@ The following options were deprecated:
 
 Pay attention that the **subscales** configuration option [deprecated in v6.2](#timescalesettings) has been deleted in v9.1.
 
-8.0 -> 9.0
--------------
+## 8.0 -> 9.0
+
 
 The v9.0 update introduces several breaking changes.
 
@@ -228,8 +228,8 @@ The **Bluebird** library has been excluded from the Gantt bundle. [](api/method/
 Since v9.0 the [](api/method/resizelightbox.md) method has been deprecated and removed from the Gantt code. It isn't needed anymore, since lightbox resizing now works automatically.
 Pay attention that if you have the **resizeLightbox()** method in your configuration, you should remove it to avoid errors. 
 
-7.1 -> 8.0
--------------
+## 7.1 -> 8.0
+
 
 ### Resource assignments
 
@@ -272,8 +272,8 @@ Since v8.0 the following deprecated class names have been removed and replaced w
 - ".dhtmlx-" + config.type -> **".gantt-" + config.type**
 - ".dhtmlx_" + btn.label.toLowerCase() + "_button" -> **".gantt_" + btn.label.toLowerCase() + "_button"**
 
-7.0 -> 7.1
--------------
+## 7.0 -> 7.1
+
 
 Version 7.1 doesn't introduce any breaking changes that would require modifying the existing code.
 
@@ -337,8 +337,8 @@ gantt.config.bar_height = 50;
 ~~~
 
 
-6.3 -> 7.0
----------------------
+## 6.3 -> 7.0
+
 
 ### Extensions and locale files
 
@@ -432,8 +432,8 @@ Deprecated in v6.2 config and templates are removed in v7.0 and replaced with ne
 
 If you have already defined the old names in your code, they will continue working. In other case, use a newer version of the API.
 
-6.2 -> 6.3
----------------
+## 6.2 -> 6.3
+
 
 ### Multi-task selection
 
@@ -538,8 +538,8 @@ const dateEditor = {type: "date", map_to: "start_date",
 };
 ~~~
 
-6.1 -> 6.2
----------------
+## 6.1 -> 6.2
+
 
 The update to v6.2 is generally compatible with v6.1 and should not require any changes in code.
 However, some behavior of the component has been changed (old behavior can be restored via config), and some APIs has been deprecated.
@@ -645,8 +645,8 @@ gantt.config.api_date = "%d-%m-%Y %H:%i";
 gantt.templates.api_date = gantt.date.date_to_str(gantt.config.api_date);
 ~~~
 
-6.0 -> 6.1 
--------------
+## 6.0 -> 6.1 
+
 
 ### Time constraints and auto scheduling
 
@@ -675,8 +675,8 @@ gantt.init("gantt_here");
 gantt.parse(demo_tasks);
 ~~~
 
-5.2 -> 6.0
-------------------
+## 5.2 -> 6.0
+
 
 In the version 6.0 the **getSlack()** method is deprecated. Two methods are added instead:
 
@@ -704,8 +704,8 @@ If you use any of the obsolete methods, you'll need to replace them with support
 </table>
 
 
-3.x -> 4.0
-------------
+## 3.x -> 4.0
+
 
 Version 4.0 introduces some changes in public API, namely:
 
@@ -777,8 +777,8 @@ The whole list of the obsolete API is given below:
 </table>
 
 
-2.0 -> 3.0
-----------------------
+## 2.0 -> 3.0
+
 1) In order to prevent CSS conflicts with dhtmlxScheduler, the class names that have been used by both components were renamed in dhtmlxGantt (all classes were related to the lightbox).
 If you have customized styling for the lightbox, the migration will consist in renaming to appropriate CSS classes.
 
@@ -819,8 +819,8 @@ Old configurations ( "dhx_save_btn", "dhx_cancel_btn", "gantt_delete_btn") will 
 - Ability to hide days in week, month, timeline view
 - Projects, milestones and other custom types
 
-1.0 -> 2.0
-----------------------
+## 1.0 -> 2.0
+
 
 1) A variety of objects (**GanttProjectInfo**, **GanttTaskInfo**, **GanttChart**, **GanttProject**, **GanttTask**) are replaced with 1 static object - **gantt**. 
 

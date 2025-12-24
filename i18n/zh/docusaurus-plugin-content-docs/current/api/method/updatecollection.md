@@ -40,7 +40,7 @@ gantt.updateCollection("priorities", new_values_array); /*!*/
 
 ## 示例
 
-## #Select 控件
+##Select 控件
 
 假设 lightbox 配置如下:
 

@@ -3,8 +3,8 @@ title: "键盘导航"
 sidebar_label: "键盘导航"
 ---
 
-键盘导航
-========================
+# 键盘导航
+
 
 Gantt 图表及其元素可以通过按键或组合键进行访问。本文介绍了 Gantt 的键盘导航基础，包括焦点行为、内置快捷键的使用以及如何自定义快捷键。
 
@@ -180,8 +180,8 @@ Gantt 图表内置了多种快捷键，便于导航:
 [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
 
 
-内置水平时间轴滚动快捷键
---------------------
+## 内置水平时间轴滚动快捷键
+
 
 自 4.2 版本起，Gantt 图表支持通过以下方式进行水平时间轴滚动:
 

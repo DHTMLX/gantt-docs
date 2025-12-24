@@ -3,8 +3,8 @@ title: "Gantt-Diagramm konfigurieren"
 sidebar_label: "Gantt-Diagramm konfigurieren"
 ---
 
-Gantt-Diagramm konfigurieren
-============================
+# Gantt-Diagramm konfigurieren
+
 
 ![gantt_basic](/img/gantt_basic.png)
 

@@ -3,8 +3,8 @@ title: "Content Security Policy-Konformität"
 sidebar_label: "Content Security Policy-Konformität"
 ---
 
-Content Security Policy-Konformität
-=========================
+# Content Security Policy-Konformität
+
 
 Content Security Policy (CSP) ist ein Web-Standard, der dazu dient, das Ausführen von nicht autorisiertem JavaScript zu verhindern und die [Sicherheit erstellter Apps](guides/app-security.md) zu erhöhen.
 

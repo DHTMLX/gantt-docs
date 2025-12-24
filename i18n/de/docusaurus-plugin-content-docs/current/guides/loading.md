@@ -3,8 +3,8 @@ title: "Datenladen"
 sidebar_label: "Datenladen"
 ---
 
-Datenladen 
-=======================================
+# Datenladen 
+
 
 dhtmlxGantt unterstützt zwei Datenformate zum Laden von Informationen:
 
@@ -27,7 +27,7 @@ Wenn Sie dem Gantt-Diagramm fehlerhafte Daten bereitstellen, kann dessen baumart
 :::
 
 ## Laden aus einem Objekt {#loadingfromobject}
------------------------------------------
+
 
 Wenn Sie Daten direkt aus einem Objekt laden möchten, verwenden Sie die Methode [parse](api/method/parse.md):
 
@@ -53,7 +53,7 @@ Wenn Ihre Datenobjekte sowohl "start_date" als auch "end_date" enthalten, die Da
 :::
 
 ## Laden vom Server {#loadingfromserver}
----------------------------
+
 
 ### Client-Seite
 
@@ -129,7 +129,7 @@ Alle unterstützten Datenformate finden Sie in [Supported Data Formats](guides/s
 
 
 ## Laden von Aufgabendaten {#loadingtaskdates}
----------------------
+
 
 ### Festlegen des Aufgabenzeitplans
 
@@ -384,7 +384,7 @@ Sample: [Inklusiver Enddatum-Editor](https://snippet.dhtmlx.com/ds28tk3c)
 - Einen Tag von den Enddaten abziehen, bevor Änderungen vom Gantt zurück ins Datenspeicher geschrieben werden
 
 ## Daten-Eigenschaften {#dataproperties}
--------------------------
+
 
 Die Datenquelle für das Gantt-Diagramm ist ein Objekt mit zwei Hauptinformationsarten:
 
@@ -424,7 +424,7 @@ Sie sind nicht auf die Pflichtfelder beschränkt und können beliebige benutzerd
 Beispiele für Daten mit benutzerdefinierten Eigenschaften finden Sie [hier](guides/supported-data-formats.md#custompropertiesindata).
 
 ## Datenbankstruktur {#databasestructure}
-------------------------------------------
+
 
 Für die Nutzung mit einer Datenbank empfiehlt es sich, zwei separate Tabellen zu verwenden: eine für Aufgaben und eine für Links.
 
@@ -481,7 +481,7 @@ CREATE TABLE `gantt_tasks` (
 
 
 ## Ablauf der Events {#eventsflow}
---------------------------------------
+
 
 Hier sehen Sie den Ablauf der Events im Zusammenhang mit den Lademethoden:
 

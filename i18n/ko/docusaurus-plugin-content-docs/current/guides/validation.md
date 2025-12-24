@@ -3,15 +3,15 @@ title: "Validation"
 sidebar_label: "Validation"
 ---
 
-Validation
-====================
+# Validation
+
 
 Validation(유효성 검사)는 사용자가 입력한 데이터가 정확한지 확인하고 잘못된 값이 저장되는 것을 방지합니다. 예를 들어, 동시에 두 개의 작업을 같은 사람에게 할당하는 것을 막을 수 있습니다.
 
 일반적으로 데이터 유효성 검사는 [dhtmlxGantt API](api/overview/events-overview.md)의 이벤트를 사용하여 입력 데이터를 가로채고 올바른지 확인하는 방식으로 수행됩니다.
 
-클라이언트 측 유효성 검사
---------------------------
+## 클라이언트 측 유효성 검사
+
 
 다음 이벤트들은 데이터 유효성 검증에 핵심적으로 자주 사용됩니다:
 
@@ -42,8 +42,8 @@ gantt.attachEvent("onLightboxSave", function(id, item){
 [Validate lightbox values](https://docs.dhtmlx.com/gantt/samples/05_lightbox/03_validation.html)
 
 
-서버 측 유효성 검사
------------------------------
+## 서버 측 유효성 검사
+
 
 위 방법의 한계는 인라인 편집이나 Gantt 차트에서 작업을 드래그하여 변경할 때 이벤트가 발생하지 않는다는 점입니다.
 

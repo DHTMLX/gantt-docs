@@ -3,8 +3,8 @@ title: "dhtmlxGantt with Python"
 sidebar_label: "Python"
 ---
 
-dhtmlxGantt with Python
-=====================
+# dhtmlxGantt with Python
+
 
 This tutorial will teach you how to create a Python-based Gantt using a Django 4 framework and RESTful API on the server.
 
@@ -22,16 +22,16 @@ There are tutorials intended for building server-side integration with the help 
 The complete source code is [available on GitHub](https://github.com/DHTMLX/gantt-howto-django).
 :::
 
-Prerequisites
------------------
+## Prerequisites
+
 
 Install Django if you don't have it:
 
 - [for Windows](https://docs.djangoproject.com/en/4.0/howto/windows/)
 - [for Linux](https://linuxhint.com/install_django_ubuntu/)
 
-Step 1. Initializing a project
------------------------
+## Step 1. Initializing a project
+
 
 Open your project folder and create a new Django project with the following command:
 
@@ -55,8 +55,8 @@ Now you can open the http://localhost:8000 URL in a browser and you should see t
 
 ![start_page](/img/howtostart_django_startpage.png)
 
-Step 2. Adding Gantt to the page
------------------------
+## Step 2. Adding Gantt to the page
+
 
 Now we can start creating a Gantt component. Run the following command:
 
@@ -178,8 +178,8 @@ If everything is done correctly, you should see the page with an empty gantt:
 ![init_gantt](/img/howtostart_django_initpage.png)
 
 
-Step 3. Loading data
----------------------
+## Step 3. Loading data
+
 
 Open the *gantt_rest_python/settings.py* file. Add the `'rest_framework'` and `'gantt.apps.GanttConfig'` strings to the `INSTALLED_APPS` array. Then add the `REST_FRAMEWORK` configuration:
 
@@ -391,8 +391,8 @@ Now if we run the `python manage.py runserver` command, we should see our Gantt 
 ![gantt](/img/howtostart_django_gantt.png)
 
 
-Step 4. Saving changes
--------------------
+## Step 4. Saving changes
+
 
 To save the changes, you need to add the methods for handling the `POST`, `PUT` and `DELETE` requests. Open the *gantt/views.py* file and add the following code there:
 
@@ -638,20 +638,20 @@ Now, if you start the server and vertically reorder tasks, the changes will be s
 
 ![sort_order](/img/howtostart_django_sortorder.png)
 
-Application security
--------------------------
+## Application security
+
 
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](guides/app-security.md).
 
 
-Trouble shooting
------------------
+## Trouble shooting
+
 
 In case you've completed the above steps to implement Gantt integration with Django but Gantt doesn't render tasks and links on a page, have a look at the [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) article. It describes 
 the ways of identifying the roots of the problems.
 
-What's next
-------------
+## What's next
+
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-django), clone or download it and use it for your projects.
 

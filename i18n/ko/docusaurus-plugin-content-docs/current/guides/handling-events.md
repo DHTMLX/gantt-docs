@@ -3,8 +3,8 @@ title: "이벤트 처리"
 sidebar_label: "이벤트 처리"
 ---
 
-이벤트 처리
-===================================
+# 이벤트 처리
+
 
 이벤트는 페이지를 상호작용적이고 사용자 행동에 반응하도록 만드는 핵심 요소입니다.
 
@@ -12,7 +12,7 @@ sidebar_label: "이벤트 처리"
 
 
 ## 이벤트 연결하기 {#attachingevents}
---------------------------------------------
+
 
 이벤트 리스너를 추가하려면 [attachEvent](api/method/attachevent.md) 메서드를 사용하세요.
 
@@ -31,7 +31,7 @@ gantt.attachEvent("onTaskClick", function(id, e) {
 - 동일한 이벤트에 여러 개의 핸들러를 연결할 수 있습니다.
 
 ## 이벤트 해제하기 {#detachingevents}
--------------------------
+
 
 이벤트 핸들러를 제거하려면 [detachEvent](api/method/detachevent.md) 메서드를 사용하세요:
 
@@ -63,7 +63,7 @@ while (events.length)
 ~~~
 
 ## 핸들러 존재 여부 확인하기 {#checkingtheexistenceofahandler}
-------------------------------------------
+
 
 특정 이벤트에 핸들러가 연결되어 있는지 확인하려면 [checkEvent](api/method/checkevent.md) 메서드를 사용하세요:
 
@@ -76,7 +76,7 @@ gantt.checkEvent("onTaskClick"); // 'true' 반환 /*!*/
 ~~~
 
 ## 취소 가능한 이벤트 {#cancelableevents}
------------------------
+
 
 'onbefore'로 시작하는 이벤트는 취소할 수 있습니다.
 
@@ -102,7 +102,7 @@ gantt.attachEvent("onBeforeTaskChanged", function(id, mode, old_task){
 
 
 ## 핸들러 내부에서 gantt 객체 접근하기 {#accessingtheganttobjectinsidethehandler}
----------------------------------
+
 이벤트 핸들러 내부에서는 **this** 키워드를 사용하여 gantt 객체에 접근할 수 있습니다. <br/>
 
 **이벤트 핸들러 내부에서 참조하기**

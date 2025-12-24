@@ -4,8 +4,8 @@ sidebar_label: Firebase Quick Start
 description: "Build a real-time collaborative React Gantt synced via Firebase Firestore"
 ---
 
-React Gantt and Firebase Integration
-====================================
+# React Gantt and Firebase Integration
+
 
 This tutorial describes how to build a [React Gantt](integrations/react.md) chart that synchronizes task and link data across multiple clients 
 in real time using Firebase Firestore. This functionality is especially useful for:

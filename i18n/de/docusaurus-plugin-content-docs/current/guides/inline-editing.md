@@ -3,8 +3,8 @@ title: "Inline-Bearbeitung im Grid"
 sidebar_label: "Inline-Bearbeitung im Grid"
 ---
 
-Inline-Bearbeitung im Grid
-==========================
+# Inline-Bearbeitung im Grid
+
 
 dhtmlxGantt bietet zwei Möglichkeiten zur Bearbeitung von Inhalten:
 
@@ -49,8 +49,8 @@ Es gibt auch eine Videoanleitung, die zeigt, wie die Inline-Bearbeitung im Grid 
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Editor-Typen
-------------
+## Editor-Typen
+
 
 Die Inline-Editoren werden im Konfigurationsobjekt [editor_types](api/config/editor_types.md) definiert.
 
@@ -216,8 +216,8 @@ Nachfolgend finden Sie Codebeispiele für benutzerdefinierte Editoren wie:
 - [Einfaches numerisches Eingabefeld](guides/inline-editing.md#custominlineeditor)
 - [JQuery Datepicker-Eingabefeld](guides/inline-editing.md#jquery_datepicker)
 
-Benutzerdefinierter Inline-Editor
----------------------------------
+## Benutzerdefinierter Inline-Editor
+
 
 Es ist möglich, einen eigenen Inline-Editor zu erstellen, indem Sie ein neues Editor-Objekt wie folgt definieren:
 
@@ -456,8 +456,8 @@ Ein gutes Beispiel hierfür ist der eingebaute Vorgänger-Editor. Eine vereinfac
 **Related example:** [Built-in predecessor editor](https://snippet.dhtmlx.com/xz6192wd)
 
 
-Inline-Bearbeitungsmodi
------------------------
+## Inline-Bearbeitungsmodi
+
 
 ### Grundlegende Inline-Bearbeitung
 
@@ -564,8 +564,8 @@ Mit einer benutzerdefinierten Zuordnung können Sie festlegen, wie der Inline-Ed
 **Related example:** [Gantt. Custom mapping for placeholder task](https://snippet.dhtmlx.com/xcgiommu)
 ))
 
-Validierung von Eingabewerten
------------------------------
+## Validierung von Eingabewerten
+
 
 Beim Bearbeiten von Zellen im Grid können Fehler auftreten.
 
@@ -669,8 +669,8 @@ gantt.init("gantt_here");
 
 **Related example:** [Custom keyboard mapping](https://snippet.dhtmlx.com/5/5da351260)
 
-Editor mit einem Klick öffnen
-------------------------------
+## Editor mit einem Klick öffnen
+
 
 Im Einzel-Auswahlmodus öffnet ein Klick auf eine Aufgabe sofort den Inline-Editor.
 

@@ -3,8 +3,8 @@ title: "Arbeiten mit Lightbox-Elementen"
 sidebar_label: "Arbeiten mit Lightbox-Elementen"
 ---
 
-Arbeiten mit Lightbox-Elementen
-====================================
+# Arbeiten mit Lightbox-Elementen
+
 
 ## Abrufen/Setzen des Kontrollwerts
 

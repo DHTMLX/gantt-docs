@@ -3,8 +3,8 @@ title: "Meilensteine"
 sidebar_label: "Meilensteine"
 ---
 
-Meilensteine
-============
+# Meilensteine
+
 
 :::info
 Diese Funktionalität ist nur in der PRO-Edition verfügbar
@@ -57,8 +57,8 @@ Nach diesen Schritten ist das Gantt-Diagramm vollständig für die Arbeit mit Me
 [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-Meilensteine im Datensatz angeben
-----------------------------------------------
+## Meilensteine im Datensatz angeben
+
 
 Um Meilensteine in den Anfangsdaten zu definieren, setzen Sie die [type](guides/loading.md#dataproperties)-Eigenschaft eines Elements auf **'milestone'** (die Werte sind im Objekt [types](api/config/types.md) gespeichert):
 ~~~js
@@ -116,8 +116,8 @@ gantt.config.lightbox.milestone_sections = [
 [Rollup tasks and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/21_rollup_tasks.html)
 
 
-Aufgaben und Meilensteine ausblenden
----------------------------
+## Aufgaben und Meilensteine ausblenden
+
 
 Seit Version 7.1 ist es möglich, [Aufgabenbalken](guides/task-types.md#regulartasks) und [Meilensteine](guides/task-types.md#milestones) in der Zeitleiste auszublenden, indem Sie die Eigenschaft **hide_bar: true** für ein Datenobjekt setzen:
 

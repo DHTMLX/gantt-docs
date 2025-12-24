@@ -3,8 +3,8 @@ title: "Typeselect Control"
 sidebar_label: "Typeselect Control"
 ---
 
-Typeselect Control
-======================
+# Typeselect Control
+
 
 :::info
 This functionality is available in the PRO Edition only.
@@ -30,8 +30,8 @@ gantt.config.lightbox.sections = [
 [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-Initialization
----------------------
+## Initialization
+
 
 To add the **typeselect** control to the lightbox, just add a section to the lightbox configuration as in:
 
@@ -57,8 +57,8 @@ gantt.locale.labels.section_type = "New label for the section";
 ~~~
   
 
-Properties
-----------------
+## Properties
+
 
 The following properties are mostly important and commonly set for the **typeselect** control (see the full list [here](api/config/lightbox.md)):
 

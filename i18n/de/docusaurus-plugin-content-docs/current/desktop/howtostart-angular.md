@@ -3,8 +3,8 @@ title: "dhtmlxGantt mit Angular"
 sidebar_label: "dhtmlxGantt mit Angular"
 ---
 
-dhtmlxGantt mit Angular
-==========================
+# dhtmlxGantt mit Angular
+
 
 Diese Anleitung setzt grundlegende Kenntnisse der Angular-Konzepte und -Muster voraus. Falls Sie eine Auffrischung benötigen, finden Sie im [Angular-Handbuch](https://angular.io/docs) ein hilfreiches Einstiegstutorial.
 

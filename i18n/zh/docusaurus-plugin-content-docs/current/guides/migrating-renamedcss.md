@@ -3,8 +3,8 @@ title: "v.3.0 中 CSS 类名重命名"
 sidebar_label: "v.3.0 中 CSS 类名重命名"
 ---
 
-v.3.0 中 CSS 类名重命名
-============================================
+# v.3.0 中 CSS 类名重命名
+
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">
   <thead>

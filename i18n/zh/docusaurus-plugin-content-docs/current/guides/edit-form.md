@@ -3,8 +3,8 @@ title: "配置编辑表单"
 sidebar_label: "配置编辑表单"
 ---
 
-配置编辑表单
-======================
+# 配置编辑表单
+
 
 ![lightbox](/img/lightbox.png)
 

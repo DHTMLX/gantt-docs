@@ -3,8 +3,8 @@ title: "Adding Vertical Markers"
 sidebar_label: "Adding Vertical Markers"
 ---
 
-Adding Vertical Markers
-=========================================================
+# Adding Vertical Markers
+
 
 The library provides the **marker** extension that allows you to mark (highlight) certain dates or date ranges.
 
@@ -126,8 +126,8 @@ var marker3 = gantt.addMarker({ ...});
 gantt.renderMarkers(); /*!*/
 ~~~
 
-Styling markers 
-----------------------------
+## Styling markers 
+
 
 To style markers, use the [gantt.templates.marker_class](api/template/marker_class.md) template:
 
@@ -140,8 +140,8 @@ gantt.templates.marker_class = function(marker){
 }
 ~~~
 
-Today's marker
--------------------------------------
+## Today's marker
+
 
 Let's assume that you want to have the today's marker in your Gantt chart. In this case you need both: to add a marker on the page and to provide a function that will move the marker as the time changes. You can do this with the following code:
 
