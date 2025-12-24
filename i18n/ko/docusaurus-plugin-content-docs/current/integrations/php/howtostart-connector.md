@@ -347,7 +347,7 @@ gantt.load('data.php');//loads data to Gantt from the database  /*!*/
 </p>
 </div>
 
-###데이터베이스 컬럼 매핑
+### 데이터베이스 컬럼 매핑
 
 **$connector->render_table**에서 컬럼의 순서가 중요하다는 점을 기억하세요. 목록의 처음 세 개 컬럼은 사용한 컬럼명과 관계없이 항상 클라이언트 측 task 객체의 *start_date/duration/text* 혹은 *start_date/end_date/text* 속성과 매핑됩니다. 매핑 로직은 아래에 설명되어 있습니다.
 
@@ -371,7 +371,7 @@ $gantt->render_table("gantt_tasks","id","Start,End,Name,progress,parent","");
 // JS: task.start_date, task.end_date, task.text, task.progress, task.parent
 ~~~
 
-####기타 컬럼 매핑
+#### 기타 컬럼 매핑
 
 나머지 컬럼들은 이름 그대로 직접적으로 매핑됩니다:
 

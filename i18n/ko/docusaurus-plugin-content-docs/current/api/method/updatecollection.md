@@ -40,7 +40,7 @@ gantt.updateCollection("priorities", new_values_array); /*!*/
 
 ## 예제
 
-##Select 컨트롤
+## Select 컨트롤
 
 다음과 같이 설정된 lightbox를 고려해보세요:
 

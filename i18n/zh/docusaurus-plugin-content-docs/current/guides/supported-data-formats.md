@@ -143,7 +143,7 @@ dhtmlxGantt 支持以多种格式加载数据:
 - **priority** - 表示任务的优先级。
 - **holder**  - 指定分配给任务的人员。
 
-####JSON
+#### JSON
 
 ~~~js
 {
@@ -164,7 +164,7 @@ dhtmlxGantt 支持以多种格式加载数据:
 }
 ~~~
 
-####XML（dhtmlxGantt 2.0+）
+#### XML（dhtmlxGantt 2.0+）
 
 ~~~xml
 <data>

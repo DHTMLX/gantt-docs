@@ -221,7 +221,7 @@ gantt.exportToPNG({
 });
 ~~~
 
-##输出文件名
+## 输出文件名
 
 如需自定义导出文件的名称，请在 [exportToPDF/exportToPNG](guides/export.md#daochufangfadecanshu) 参数中设置 **name** 属性:
 
@@ -231,7 +231,7 @@ gantt.exportToPDF({
 });
 ~~~
 
-##输出文件的语言
+## 输出文件的语言
 
 默认情况下，导出的甘特图使用与页面显示相同的语言。
 
@@ -254,7 +254,7 @@ gantt.exportToPDF({
 
 <a id="daterange"></a>
 
-###定义需导出的任务日期范围
+### 定义需导出的任务日期范围
 
 要设置导出包含的任务范围，可在 [exportToPDF/exportToPNG](guides/export.md#daochufangfadecanshu) 参数中使用 **start** 和 **end** 属性:
 
@@ -298,7 +298,7 @@ gantt.exportToPDF({
 请注意，**data** 参数必须是包含数据的对象，不能直接传递 URL 作为其值。
 :::
 
-##输出甘特图的皮肤
+## 输出甘特图的皮肤
 
 默认情况下，导出的甘特图与页面显示的皮肤一致。
 

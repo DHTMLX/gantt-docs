@@ -885,7 +885,7 @@ sidebar_label: "What's New"
 <span class='release_date'>2020년 4월 16일. 버그 수정 릴리즈</span>
 
 
-###수정 사항
+### 수정 사항
 
 - [작업 기간의 근무 분 단위 계산](guides/working-time.md)에서 주요 성능 향상
 - [Tooltip](guides/tooltips.md) 및 [Undo](guides/undo-redo.md) 확장 기능에서 여러 개의 Gantt 인스턴스를 생성할 때 잘못 동작하던 회귀 문제 수정

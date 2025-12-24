@@ -88,7 +88,7 @@ Das **gantt.ext.quickInfo** Objekt bietet folgende Methoden:
 
 Wenn weder header noch buttons angegeben werden, werden diese Bereiche im Popup ausgeblendet.
 
-####**Quick Info anzeigen**
+#### **Quick Info anzeigen**
 
 Das Popup kann für eine bestimmte Aufgabe, Verknüpfung, Ressourcenpanel oder an einer benutzerdefinierten Position auf dem Bildschirm mit der **gantt.ext.quickInfo.show()** Methode angezeigt werden:
 
@@ -176,7 +176,7 @@ gantt.attachEvent("onLinkClick", function(id,e){
 });
 ~~~
 
-####**Quick Info ausblenden**
+#### **Quick Info ausblenden**
 
 Um das Popup zu schließen, verwenden Sie die **gantt.ext.quickInfo.hide()** Methode. Das Verhalten hängt von der Einstellung **gantt.config.quick_info_detached** ab, mit zwei Möglichkeiten:
 
@@ -202,7 +202,7 @@ gantt.ext.quickInfo.hide(true);
 
 Beachten Sie, dass wenn **gantt.config.quick_info_detached** auf *true* gesetzt ist, das Popup immer sofort geschlossen wird.
 
-####**Eigenes QuickInfo erstellen**
+#### **Eigenes QuickInfo erstellen**
 
 Standardmäßig enthält das Quick Info-Popup einen Titel, ein Datum, Inhalt und Buttons und sieht so aus:
 
@@ -227,7 +227,7 @@ Dies erzeugt ein Quick Info-Popup wie dieses:
 ![quick_custom](/img/quick_custom.png)
 
 
-####**Eigene Buttons mit individuellem Verhalten hinzufügen**
+#### **Eigene Buttons mit individuellem Verhalten hinzufügen**
 
 Mit dem [$click](api/other/click.md) Objekt können Sie benutzerdefinierte Aktionen für Buttons im Popup hinzufügen:
 
@@ -242,7 +242,7 @@ gantt.$click.buttons.advanced_details_button="function(id){"
 };
 ~~~
 
-####**Einen Container für QuickInfo festlegen** 
+#### **Einen Container für QuickInfo festlegen** 
 
 Verwenden Sie **gantt.ext.quickInfo.setContainer()**, um das Quick Info-Popup in einem benutzerdefinierten Container anzuzeigen:
 

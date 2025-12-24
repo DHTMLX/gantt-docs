@@ -30,14 +30,14 @@ gantt.config.auto_scheduling = true;
 ## 작업을 수동으로 이동하기
 
 
-###챕터 목차
+### 챕터 목차
 
 - [모든 연결된 작업 가져오기](#linked_tasks)
 - [주 작업과 하위 작업을 동시에 이동하기](#sync)
 - [주 작업 이동 후 하위 작업 이동하기](#after)
 
 
-###주요 아이디어
+### 주요 아이디어
 종속 작업을 드래그하는 일반적인 방법은 다음과 같습니다:
 
 - 작업이 이동 중임을 감지합니다.
@@ -102,11 +102,11 @@ gantt.eachSuccessor = function(callback, root){
 
 하위 작업은 주 작업을 드래그하는 동안 함께 이동할 수 있습니다. 즉, 사용자가 주 작업을 이동할 때 모든 종속 작업도 동시에 이동합니다. 이 방식은 부드럽게 보이지만, 작업이 많을 경우 성능이 저하될 수 있습니다.
 
-####1단계
+#### 1단계
 
 먼저, [모든 연결된 작업 가져오기](#linked_tasks)에서 보여준 대로 이터레이터를 선언하세요.
 
-####2단계
+#### 2단계
 
 다음으로, [onTaskDrag](api/event/ontaskdrag.md) 이벤트에 핸들러를 연결하세요. 이 이벤트는 드래그 프레임마다 발생하며, 여기서 연결된 모든 작업을 이동할 수 있습니다.
 
@@ -125,7 +125,7 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 });
 ~~~
 
-####3단계
+#### 3단계
 
 마지막으로, 드래그가 끝나고 사용자가 마우스를 놓았을 때 하위 작업의 위치를 스케일에 맞게 반올림하세요. 이는 [onAfterTaskDrag](api/event/onaftertaskdrag.md) 이벤트를 사용하여 할 수 있습니다:
 
@@ -151,11 +151,11 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 
 아이디어는 드래그 앤 드롭이 끝날 때까지 기다렸다가, 주 작업이 얼마나 이동했는지 계산한 후 모든 연결된 작업을 그만큼 이동시키는 것입니다.
 
-####1단계
+#### 1단계
 
 먼저, 앞서 [모든 연결된 작업 가져오기](#linked_tasks)에서 설명한 대로 이터레이터를 선언하세요.
 
-####2단계
+#### 2단계
 
 사용자가 드래그를 끝냈을 때 [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) 이벤트를 캡처하세요. 이 이벤트는 이동된 작업의 원본과 수정본을 모두 제공하므로 날짜 차이를 계산할 수 있습니다.
 
@@ -178,7 +178,7 @@ gantt.attachEvent("onBeforeTaskChanged", function(id, mode, originalTask){
 });
 ~~~
 
-####3단계
+#### 3단계
 
 마지막으로, [onAfterTaskDrag](api/event/onaftertaskdrag.md) 이벤트를 사용하여 이전에 계산한 *diff* 만큼 모든 종속 작업을 업데이트하세요:
 

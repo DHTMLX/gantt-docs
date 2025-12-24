@@ -77,7 +77,7 @@ gantt.getChildren("p_1");//->["t_1"] /*!*/
 
 ## 트리 아이콘 변경하기
 
-###부모 항목
+### 부모 항목
 부모 항목의 아이콘을 사용자 정의하려면 [grid_folder](api/template/grid_folder.md) 템플릿을 사용하세요:
 
 ~~~js
@@ -87,7 +87,7 @@ gantt.templates.grid_folder = function(item) {
 };
 ~~~
 
-###자식 항목
+### 자식 항목
 자식 항목의 아이콘을 사용자 정의하려면 [grid_file](api/template/grid_file.md) 템플릿을 사용하세요:
 
 ~~~js
@@ -96,7 +96,7 @@ gantt.templates.grid_file = function(item) {
 };
 ~~~
 
-###열기/닫기 표시 아이콘
+### 열기/닫기 표시 아이콘
 열기/닫기 표시 아이콘을 사용자 정의하려면 [grid_open](api/template/grid_open.md) 템플릿을 사용하세요:
 
 ~~~js

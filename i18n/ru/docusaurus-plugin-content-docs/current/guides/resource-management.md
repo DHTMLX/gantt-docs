@@ -660,7 +660,7 @@ gantt.getTaskAssignments(5);
 
 Возвращаемые объекты содержат те же свойства, что и объекты из метода [getResourceAssignments](api/method/getresourceassignments.md).
 
-###Связывание через lightbox
+### Связывание через lightbox
 
 Ресурсы могут быть связаны с любым свойством объекта задачи с помощью встроенного lightbox.
 

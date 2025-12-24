@@ -20,7 +20,7 @@ Sie können auch einen [benutzerdefinierten Formatter](#customformatter) erstell
 
 Die Methode **gantt.ext.formatters.durationFormatter(config)** erzeugt eine neue *DurationFormatter*-Instanz.
 
-###**Konfiguration**
+### **Konfiguration**
 
 - <span class="submethod">**durationFormatter (config): DurationFormatter**</span> - erstellt einen Duration Formatter
     - **_config?_** - (*object*) - optionales Konfigurationsobjekt mit folgenden Optionen:
@@ -156,7 +156,7 @@ const formatter = gantt.ext.formatters.durationFormatter({
 });
 ~~~
 
-###**API**
+### **API**
 
 Die *DurationFormatter*-Instanz stellt folgende Methoden bereit:
 
@@ -196,7 +196,7 @@ Weitere Details zu **durationFormatter** finden Sie im Artikel [Work Time Calcul
 
 Die Methode **gantt.ext.formatters.linkFormatter(config)** erstellt eine neue *LinkFormatter*-Instanz. Sie teilt sich einige Methoden und Konfigurationen mit dem Duration Formatter.
 
-###**Konfiguration**
+### **Konfiguration**
 
 - <span class="submethod">**linkFormatter (config): LinkFormatter**</span> - erstellt einen Link Formatter
     - **_config?_** - (*object*) - optionales Konfigurationsobjekt mit folgenden Optionen:
@@ -245,7 +245,7 @@ const formatter = gantt.ext.formatters.linkFormatter({
 });
 ~~~
 
-###**API**
+### **API**
 
 Die *LinkFormatter*-Instanz bietet folgende Methoden:
 
@@ -281,7 +281,7 @@ formatter.parse("1SS+5 days");
 // Ausgabe: {id:1, type:"1", source: 1, target: null, lag: 5}
 ~~~
 
-###**Formatinformationen**
+### **Formatinformationen**
 
 Der *LinkFormatter* arbeitet mit zwei Link-Formaten:
 

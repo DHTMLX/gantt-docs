@@ -56,7 +56,7 @@ gantt.templates.tooltip_text = (start, end, task) =>
 
 ## API тултипов {#tooltipapi}
 
-###Объект tooltip
+### Объект tooltip
 
 Объект тултипа доступен как **gantt.ext.tooltips.tooltip**. Он предоставляет методы для управления позицией, содержимым и видимостью тултипа:
 
@@ -74,7 +74,7 @@ gantt.templates.tooltip_text = (start, end, task) =>
     - **html** - (*string*) строка с HTML-содержимым
 
 
-###Методы
+### Методы
 
 Несколько методов позволяют управлять поведением тултипов при наведении на DOM-элементы.
 

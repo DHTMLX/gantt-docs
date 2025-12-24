@@ -389,7 +389,7 @@ Dazu müssen Controller erstellt werden, die CRUD-Operationen für beide Modelle
 Beginnen Sie mit dem Erstellen von RESTful [Resource Controllern](https://laravel.com/docs/11.x/controllers) für beide Modelle.
 Diese Controller enthalten Methoden zum Hinzufügen, Löschen und Aktualisieren von Daten.
 
-####Controller für Aufgaben
+#### Controller für Aufgaben
 
 **app/Http/Controllers/TaskController.php**
 ~~~php
@@ -466,7 +466,7 @@ Einige Hinweise zu diesem Code:
 
 Als Nächstes erstellen wir einen ähnlichen Controller für Links.
 
-####Controller für Links
+#### Controller für Links
 
 **app/Http/Controllers/LinkController.php**
 ~~~php

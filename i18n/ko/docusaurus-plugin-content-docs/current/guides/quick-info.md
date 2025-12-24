@@ -88,7 +88,7 @@ v7.0부터 Quick Info 기능은 [gantt.ext.quickInfo](guides/quickinfo-ext.md) �
 
 헤더나 버튼이 제공되지 않으면 해당 섹션은 팝업에서 숨겨집니다.
 
-####**Quick Info 표시하기**
+#### **Quick Info 표시하기**
 
 팝업은 **gantt.ext.quickInfo.show()** 메서드를 사용하여 특정 작업, 링크, 리소스 패널 또는 화면의 원하는 위치에 표시할 수 있습니다:
 
@@ -176,7 +176,7 @@ gantt.attachEvent("onLinkClick", function(id,e){
 });
 ~~~
 
-####**Quick Info 숨기기**
+#### **Quick Info 숨기기**
 
 팝업을 닫으려면 **gantt.ext.quickInfo.hide()** 메서드를 사용하세요. 이 메서드의 동작은 **gantt.config.quick_info_detached** 설정에 따라 다르며, 두 가지 옵션이 있습니다:
 
@@ -202,7 +202,7 @@ gantt.ext.quickInfo.hide(true);
 
 **gantt.config.quick_info_detached**가 *true*인 경우, 팝업은 항상 즉시 닫힙니다.
 
-####**사용자 정의 QuickInfo 만들기**
+#### **사용자 정의 QuickInfo 만들기**
 
 기본적으로 퀵 인포 팝업에는 제목, 날짜, 내용, 버튼이 포함되며 다음과 같이 표시됩니다:
 
@@ -227,7 +227,7 @@ gantt.ext.quickInfo.setContent({
 ![quick_custom](/img/quick_custom.png)
 
 
-####**사용자 정의 동작이 있는 버튼 추가하기**
+#### **사용자 정의 동작이 있는 버튼 추가하기**
 
 [$click](api/other/click.md) 객체를 사용하면 팝업 내부에 배치된 버튼에 사용자 정의 동작을 추가할 수 있습니다:
 
@@ -242,7 +242,7 @@ gantt.$click.buttons.advanced_details_button="function(id){"
 };
 ~~~
 
-####**QuickInfo 컨테이너 설정하기**
+#### **QuickInfo 컨테이너 설정하기**
 
 **gantt.ext.quickInfo.setContainer()**를 사용하면 퀵 인포 팝업을 원하는 커스텀 컨테이너 안에 표시할 수 있습니다:
 

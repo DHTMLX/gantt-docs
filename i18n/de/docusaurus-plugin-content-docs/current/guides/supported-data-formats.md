@@ -144,7 +144,7 @@ Die folgenden Beispiele enthalten zwei benutzerdefinierte Eigenschaften:
 - **priority** - gibt die Prioritätsstufe der Aufgabe an.
 - **holder**  - gibt die für die Aufgabe verantwortliche Person an.
 
-####JSON
+#### JSON
 
 ~~~js
 {

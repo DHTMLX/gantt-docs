@@ -21,7 +21,7 @@ sidebar_label: "格式化器扩展"
 
 **gantt.ext.formatters.durationFormatter(config)** 方法用于创建新的 *DurationFormatter* 实例。
 
-###**配置参数**
+### **配置参数**
 
 - <span class="submethod">**durationFormatter (config): DurationFormatter**</span> - 创建一个持续时间格式化器
     - **_config?_** - (*object*) - 可选的配置对象，包含以下选项:
@@ -161,7 +161,7 @@ const formatter = gantt.ext.formatters.durationFormatter({
 });
 ~~~
 
-###**API**
+### **API**
 
 *DurationFormatter* 实例提供以下方法:
 
@@ -203,7 +203,7 @@ console.log(formatter.parse("1 day"));
 
 **gantt.ext.formatters.linkFormatter(config)** 方法用于创建新的 *LinkFormatter* 实例。它与持续时间格式化器共享部分方法和配置。
 
-###**配置参数**
+### **配置参数**
 
 - <span class="submethod">**linkFormatter (config): LinkFormatter**</span> - 创建一个链接格式化器
     - **_config?_** - (*object*) - 可选的配置对象，包含以下选项:
@@ -255,7 +255,7 @@ const formatter = gantt.ext.formatters.linkFormatter({
 ~~~
 
 
-###**API**
+### **API**
 
 *LinkFormatter* 实例提供以下方法:
 
@@ -292,7 +292,7 @@ formatter.parse("1SS+5 days");
 // 输出: {id:1, type:"1", source: 1, target: null, lag: 5}
 ~~~
 
-###**格式信息**
+### **格式信息**
 
 *LinkFormatter* 支持两种链接格式:
 

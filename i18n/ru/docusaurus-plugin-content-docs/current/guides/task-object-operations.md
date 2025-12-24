@@ -189,7 +189,7 @@ for(var i="0;i" < tasks.length; i++){
 };
 ~~~
 
-###Изменение id задачи
+### Изменение id задачи
 
 Чтобы изменить id задачи, используйте метод [changeTaskId](api/method/changetaskid.md):
 

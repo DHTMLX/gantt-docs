@@ -144,7 +144,7 @@ dhtmlxGantt는 여러 가지 데이터 형식으로 데이터를 불러오는 �
 - **priority** - 작업의 우선순위 레벨을 나타냅니다.
 - **holder**  - 해당 작업에 할당된 담당자를 명시합니다.
 
-####JSON
+#### JSON
 
 ~~~js
 {
@@ -165,7 +165,7 @@ dhtmlxGantt는 여러 가지 데이터 형식으로 데이터를 불러오는 �
 }
 ~~~
 
-####XML (dhtmlxGantt 2.0+)
+#### XML (dhtmlxGantt 2.0+)
 
 ~~~xml
 <data>

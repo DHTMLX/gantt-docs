@@ -85,7 +85,7 @@ gantt.addShortcut("shift+w", function(e){
 },"taskRow");
 ~~~
 
-###Удаление сочетания клавиш
+### Удаление сочетания клавиш
 
 Чтобы удалить сочетание клавиш из области, используйте метод [removeShortcut](api/method/removeshortcut.md) с двумя параметрами:
 

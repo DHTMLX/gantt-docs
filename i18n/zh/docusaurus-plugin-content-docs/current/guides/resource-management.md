@@ -660,7 +660,7 @@ gantt.getTaskAssignments(5);
 
 返回对象的属性与 [getResourceAssignments](api/method/getresourceassignments.md) 方法一致。
 
-###通过 lightbox 设置关联
+### 通过 lightbox 设置关联
 
 可以使用内置 lightbox 功能将资源关联到任务对象的任意属性。
 

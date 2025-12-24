@@ -77,7 +77,7 @@ gantt.getChildren("p_1");//->["t_1"] /*!*/
 
 ## 更改树的图标
 
-###父节点
+### 父节点
 如需自定义父节点的图标，请使用 [grid_folder](api/template/grid_folder.md) 模板:
 
 ~~~js
@@ -88,7 +88,7 @@ gantt.templates.grid_folder = function(item) {
 ~~~
 
 
-###子节点
+### 子节点
 如需自定义子节点的图标，请使用 [grid_file](api/template/grid_file.md) 模板:
 
 ~~~js
@@ -98,7 +98,7 @@ gantt.templates.grid_file = function(item) {
 ~~~
 
 
-###展开/折叠标识
+### 展开/折叠标识
 如需自定义展开/折叠标识的图标，请使用 [grid_open](api/template/grid_open.md) 模板:
 
 ~~~js

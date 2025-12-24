@@ -688,7 +688,7 @@ Die vollständige Liste der veralteten Methoden umfasst:
 <tr><td>window.dataProcessor</td><td>gantt.dataProcessor</td></tr>
 </table>
 
-###Überholte API
+### Überholte API
 
 Einige Methoden sind überholt und werden in v4.x nicht mehr verwendet.
 Wenn Sie diese Methoden oder Objekte noch nutzen, müssen Sie entweder den Code der Anwendung anpassen oder die Datei **dhtmlxgantt_deprecated.js** in die Seite einbinden.

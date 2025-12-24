@@ -648,7 +648,7 @@ gantt.parse(demo_tasks);
 v4.x中包含了对旧API的兼容，因此为v3.3及更早版本编写的代码仍可继续使用。但在某些情况下需要做出调整。
 通常，除 **window.gantt** 和 **window.Gantt**（仅限企业版）外的所有全局声明都已废弃，并将在5.0版本中移除。
 
-###废弃的API
+### 废弃的API
 
 有些方法已被废弃。在v4.x中仍可使用，但每次调用时会在控制台发出警告（终端用户不可见）。
 
@@ -680,7 +680,7 @@ v4.x中包含了对旧API的兼容，因此为v3.3及更早版本编写的代码
 <tr><td>window.dataProcessor</td><td>gantt.dataProcessor</td></tr>
 </table>
 
-###废弃的API
+### 废弃的API
 
 某些方法已被废弃，在v4.x中不再使用。
 如果你仍在使用这些方法或对象，需要修改应用代码，或在页面中引入 **dhtmlxgantt_deprecated.js** 文件。

@@ -220,7 +220,7 @@ gantt.exportToPNG({
 });
 ~~~
 
-##내보내기 파일 이름 지정
+## 내보내기 파일 이름 지정
 
 내보내는 파일의 이름을 지정하려면 [exportToPDF/exportToPNG](guides/export.md#parametersoftheexportmethods) 파라미터에서 **name** 속성을 사용하세요:
 
@@ -230,7 +230,7 @@ gantt.exportToPDF({
 });
 ~~~
 
-##내보내기 파일의 언어
+## 내보내기 파일의 언어
 
 기본적으로 내보내는 Gantt 차트는 페이지에 표시된 언어와 동일한 언어를 사용합니다.
 
@@ -253,7 +253,7 @@ PDF 또는 PNG로 내보낼 작업을 지정하는 방법은 두 가지가 있�
 
 <a id="daterange"></a>
 
-###내보낼 작업의 날짜 범위 지정
+### 내보낼 작업의 날짜 범위 지정
 
 내보내기에 포함할 작업의 범위를 지정하려면 [exportToPDF/exportToPNG](guides/export.md#parametersoftheexportmethods) 파라미터에 **start** 와 **end** 속성을 사용하세요:
 

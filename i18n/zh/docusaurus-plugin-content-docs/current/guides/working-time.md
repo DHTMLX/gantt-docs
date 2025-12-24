@@ -636,7 +636,7 @@ gantt.addCalendar({
 gantt.deleteCalendar("custom");
 ~~~
 
-##为任务分配日历
+## 为任务分配日历
 
 要为任务分配工作日历，首先需使用 id 和指定工作日与工作时间的 **worktime** 对象添加日历:
 
@@ -669,7 +669,7 @@ gantt.config.calendar_property = "property_name";
 [Task level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/06_task_calendars.html)
 
 
-##为资源分配日历
+## 为资源分配日历
 
 :::note
 此功能仅在 PRO 版本中可用。
@@ -770,7 +770,7 @@ const joinedCalendar = gantt.mergeCalendars(
 
 有关工作时间合并方式的详细说明，请参阅 [mergeCalendars()](api/method/mergecalendars.md) 文章。
 
-##为项目分配日历
+## 为项目分配日历
 
 :::note
 此功能仅在 PRO 版本中可用。
@@ -800,7 +800,7 @@ gantt.config.inherit_calendar = true;
 [Project level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/08_project_calendars.html)
 
 
-##动态更换日历
+## 动态更换日历
 
 自 7.0 版本起，Gantt 会自动检测任务日历的变更，并相应更新任务时间。
 
