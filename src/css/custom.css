@@ -283,8 +283,10 @@ p {
 
 .contact-support-link-wrapper{
   display: flex;
+  flex-direction: column;
   justify-content: start;
-  align-items: center;
+  align-items: start;
+  gap: 0.5rem;
   margin: 1rem;
 }
 
