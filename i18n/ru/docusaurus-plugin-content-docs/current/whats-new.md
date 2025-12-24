@@ -3,14 +3,13 @@ title: "Что нового"
 sidebar_label: "Что нового"
 ---
 
-Что нового
-==========
+# Что нового
 
 
 Если ваша текущая версия dhtmlxGantt старше 2.0, ознакомьтесь с [](migration.md) для получения информации об обновлении.
 
-9.0.11
----------------
+## 9.0.11
+
 <span class='release_date'>27 мая 2025. Релиз с исправлениями</span>
 
 ### Исправления
@@ -30,8 +29,8 @@ sidebar_label: "Что нового"
 - Добавлен флаг `isSalesforce` в [gantt.env](api/other/env.md)
 - Добавлено свойство `groupTasks` для [React Gantt](integrations/react.md#groupingtasks)
 
-9.0.10
----------------
+## 9.0.10
+
 <span class='release_date'>22 апреля 2025. Релиз с исправлениями</span>
 
 ### Исправления
@@ -45,8 +44,8 @@ sidebar_label: "Что нового"
 - Удалены некорректные WAI-ARIA-атрибуты из ссылок задач только для чтения для повышения [доступности](guides/accessibility.md#waiariaattributes)
 - Исправлена проблема, при которой ресайзеры панели задач не адаптировались к изменению высоты панели задачи
 
-9.0.9
----------------
+## 9.0.9
+
 <span class='release_date'>16 апреля 2025. Релиз с исправлениями</span>
 
 ### Обновления
@@ -62,8 +61,8 @@ sidebar_label: "Что нового"
 - Исправлена проблема, при которой расширение [click_drag](guides/extensions-list.md#advanceddragndrop) не работало на сенсорных устройствах
 - Улучшена отзывчивость прокрутки грида на сенсорных устройствах
 
-9.0.7
----------------
+## 9.0.7
+
 <span class='release_date'>27 марта 2025. Релиз с исправлениями</span>
 
 ### Исправления
@@ -82,8 +81,8 @@ sidebar_label: "Что нового"
 - Предотвращено дублирование элементов `gantt_marker_area`
 - Исправлена работа [undo](guides/undo-redo.md) с действием `changeTaskId`
 
-9.0.6
----------------
+## 9.0.6
+
 <span class='release_date'>18 марта 2025. Релиз с исправлениями</span>
 
 ### Исправления
@@ -101,8 +100,8 @@ sidebar_label: "Что нового"
 - Решены проблемы, связанные с конфигурациями `fetchTasks` и [deepcopy_on_parse](api/config/deepcopy_on_parse.md), влияющие на [ресурсную панель](guides/resource-management.md#resourceviewpanel)
 - Исправлен внешний вид иконок-шрифтов при инициализации Gantt
 
-9.0.5
----------------
+## 9.0.5
+
 <span class='release_date'>28 февраля 2025. Релиз с исправлениями</span>
 
 - Исправлена ошибка при изменении размера строк в [Resource Grid](guides/resource-management.md#resourceviewpanel)
@@ -119,8 +118,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка при частичном удалении значения даты в [инлайн-редакторе](guides/inline-editors-ext.md)
 - Исправлена проблема некорректного отображения [ресурсной панели](guides/resource-management.md#resourceviewpanel) после фильтрации при включённом `fetchTasks`
 
-9.0.4
----------------
+## 9.0.4
+
 <span class='release_date'>3 декабря 2024. Релиз с исправлениями</span>
 
 - Исправлена проблема, при которой дату ограничения [SNET](guides/auto-scheduling.md#timeconstraintsfortasks) нельзя было изменить через [инлайн-редактор](guides/inline-editors-ext.md)
@@ -130,8 +129,8 @@ sidebar_label: "Что нового"
 - Исправлена проблема, при которой Gantt переставал работать при включённой конфигурации [auto_scheduling_project_constraint](api/config/auto_scheduling_project_constraint.md) и [группировке](api/method/groupby.md) задач
 - Обеспечено сохранение задачи [constraint](guides/auto-scheduling.md#timeconstraintsfortasks) после перетаскивания задачи
 
-9.0.3
----------------
+## 9.0.3
+
 <span class='release_date'>19 ноября 2024. Релиз с исправлениями</span>
 
 - Исправлена регрессия в стилях для всплывающего окна [Quick Info](guides/quick-info.md)
@@ -143,8 +142,8 @@ sidebar_label: "Что нового"
 - Предотвращено удаление событий [Inline Editors](guides/inline-editors-ext.md) после [переинициализации](api/method/init.md) Gantt или [сброса layout](api/method/resetlayout.md)
 - Исправлена проблема, при которой состояние открытия не восстанавливалось после [redo](guides/undo-redo.md) изменений
 
-9.0.2
----------------
+## 9.0.2
+
 <span class='release_date'>11 ноября 2024. Релиз с исправлениями</span>
 
 ### Исправления
@@ -163,8 +162,8 @@ sidebar_label: "Что нового"
 - Восстановлена работоспособность плагина [export_api](api/method/exporttopdf.md) в среде TypeScript
 - Обновлены определения типов
 
-9.0.1
----------------
+## 9.0.1
+
 
 <span class='release_date'>21 октября 2024. Релиз с исправлением ошибок</span>
 
@@ -178,8 +177,8 @@ sidebar_label: "Что нового"
 - Исправлена проблема, при которой вызов [resetLayout](api/method/resetlayout.md) нарушал работу плагина [S-Curve Overlay](guides/baselines.md#extraoverlayforthechart)
 - Предотвращено создание дублирующихся связей редактором предшественников ([predecessor editor](guides/inline-editing.md#typesofeditors))
 
-<b>9.0</b>
----------------
+## <b>9.0</b>
+
 
 <span class='release_date'>17 октября 2024. Крупное обновление</span>
 
@@ -220,8 +219,8 @@ sidebar_label: "Что нового"
 - Gantt корректно автоматически планирует проекты с двумя уровнями задач
 - Исправлена проблема, при которой Gantt не возвращал fixedDate "assignments" в [resource_cell_value](guides/resource-management.md#resourcecellvalue), если задача вне указанного диапазона дат
 
-8.0.11
-----------
+## 8.0.11
+
 
 <span class='release_date'>8 октября 2024. Релиз с исправлением ошибок</span>
 
@@ -242,8 +241,8 @@ sidebar_label: "Что нового"
 - Исправлено [сортировка грида](api/config/sort.md) при клике по иконке сортировки в заголовке
 - Исправлено неконсистентное перерисовывание задач при включённой опции [drag_timeline](api/config/drag_timeline.md)
 
-8.0.10
-----------
+## 8.0.10
+
 
 <span class='release_date'>23 августа 2024. Релиз с исправлением ошибок</span>
 
@@ -260,8 +259,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка при попытке [отфильтровать разбитые задачи](guides/split-tasks.md#filteringsplittasks) без дочерних элементов с помощью события [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md)
 - Исправлена проблема, при которой [назначения ресурсов](guides/resource-management.md) не обновлялись после [перетаскивания проекта с подзадачами](api/config/drag_project.md)
 
-8.0.9
-----------
+## 8.0.9
+
 
 <span class='release_date'>18 июня 2024. Релиз с исправлением ошибок</span>
 
@@ -278,8 +277,8 @@ sidebar_label: "Что нового"
 - Исправлена проблема, при которой пользовательские свойства объектов [Resource Assignments](guides/resource-management.md) не включались после парсинга
 - Обновлены определения типов TypeScript
 
-8.0.8
-----------
+## 8.0.8
+
 
 <span class='release_date'>31 мая 2024. Релиз с исправлением ошибок</span>
 
@@ -292,8 +291,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта после [уничтожения](api/method/destructor.md) Gantt с редактируемой [Resource Panel](guides/resource-management.md)
 - Исправлена проблема, из-за которой [тултип](guides/tooltips.md) исчезал в некоторых браузерах
 
-8.0.7
-----------
+## 8.0.7
+
 
 <span class='release_date'>16 мая 2024. Релиз с исправлением ошибок</span>
 
@@ -312,8 +311,8 @@ sidebar_label: "Что нового"
 - Исправлены ошибки, возникающие при работе методов [isCriticalTask](api/method/iscriticaltask.md), [getFreeSlack](api/method/getfreeslack.md) и [getTotalSlack](api/method/gettotalslack.md) для [несогласованных задач](guides/unscheduled-tasks.md)
 - Исправлена ошибка, возникающая при наличии в связанном проекте только дочерних [несогласованных](guides/unscheduled-tasks.md) задач
 
-8.0.6
-----------
+## 8.0.6
+
 
 <span class='release_date'>25 сентября 2023. Релиз с исправлениями</span>
 
@@ -325,8 +324,8 @@ sidebar_label: "Что нового"
 - [Export API client](guides/extensions-list.md#exportservice) теперь интегрирован в GPL-версию Gantt, ранее был доступен только в PRO-версиях
 - Добавлена поддержка https export [server endpoints](guides/export.md#parametersoftheexportmethods) в [Node.js версии Gantt](guides/using-gantt-on-server.md)
 
-8.0.5
-----------
+## 8.0.5
+
 
 <span class='release_date'>1 сентября 2023. Релиз с исправлениями</span>
 
@@ -336,8 +335,8 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа [gantt.exportToExcel()](api/method/exporttoexcel.md) при включённой конфигурации [skip_off_time](api/config/skip_off_time.md)
 - Улучшения для [Samples Viewer](https://docs.dhtmlx.com/gantt/samples/)
 
-8.0.4
-----------
+## 8.0.4
+
 
 <span class='release_date'>31 июля 2023. Релиз с исправлениями</span>
 
@@ -348,8 +347,8 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа [gantt.calculateEndDate](api/method/calculateenddate.md) при вычитании дат в минутах
 - Незначительное повышение производительности для макетов с [visibility groups](guides/layout-config.md#visibilitygroups)
 
-8.0.3
-----------
+## 8.0.3
+
 
 <span class='release_date'>14 июня 2023. Релиз с исправлениями</span>
 
@@ -359,8 +358,8 @@ sidebar_label: "Что нового"
 - Исправлен некорректный расчёт [Free Slack](guides/critical-path.md#gettingfreeandtotalslack) для задач с [отрицательным Lag](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks)
 - Исправлен некорректный расчёт [Critical Path](guides/critical-path.md) для задач с прогрессом 100%
 
-8.0.2
-----------
+## 8.0.2
+
 
 <span class='release_date'>31 мая 2023. Релиз с исправлениями</span>
 
@@ -373,8 +372,8 @@ sidebar_label: "Что нового"
 - Повышена производительность отрисовки [Split Tasks](guides/split-tasks.md)
 - Другие улучшения производительности
 
-8.0.1
-----------
+## 8.0.1
+
 
 <span class='release_date'>30 марта 2023. Релиз с исправлениями</span>
 
@@ -386,8 +385,8 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа [auto scheduling](guides/auto-scheduling.md) с ограничениями [MSO, FNET и FNLT](guides/auto-scheduling.md#timeconstraintsfortasks) при наличии минутных настроек рабочего времени ([settings of work time](guides/working-time.md#globalsettings))
 - Исправлена работа события [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) при прокрутке
 
-<b>8.0</b>
---------------
+## <b>8.0</b>
+
 
 <span class='release_date'>20 марта 2023. Крупное обновление</span>
 
@@ -453,8 +452,8 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа [вертикального перемещения](guides/reordering-tasks.md), позволявшая перетаскивать строки задач за пределы Gantt
 - Исправлен неправильный порядок CSS-классов `odd` строк в [Resource panel](guides/resource-management.md#resourceviewpanel)
 
-7.1.13
-----------
+## 7.1.13
+
 
 <span class='release_date'>4 ноября 2022. Релиз с исправлениями</span>
 
@@ -474,8 +473,8 @@ sidebar_label: "Что нового"
 - Обновлена [немецкая локализация](guides/localization.md#activatingalocale)
 - Теперь возможно открыть встроенный редактор одним кликом по задаче в режиме мультивыделения (добавлено свойство [inline_editors_multiselect_open](api/config/inline_editors_multiselect_open.md))
 
-7.1.12
------------
+## 7.1.12
+
 
 <span class='release_date'>16 июня 2022. Релиз исправлений</span>
 
@@ -491,8 +490,8 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа конфигурации [autosize](api/config/autosize.md) при наличии в макете Gantt [Resource Panel](guides/resource-management.md#resourceviewpanel)
 - Исправлена работа [lightbox](guides/default-edit-form.md) для [разделённых задач](guides/split-tasks.md): теперь lightbox появляется при двойном клике по разделённой задаче
 
-7.1.11
------------
+## 7.1.11
+
 
 <span class='release_date'>27 апреля 2022. Релиз исправлений</span>
 
@@ -508,8 +507,8 @@ sidebar_label: "Что нового"
 - Полосы прокрутки стандартного [макета Gantt](guides/layout-config.md#defaultlayout) больше не требуют фиксированных имён **scrollVer**/**scrollHor** для корректной работы
 - [Разделённые задачи](guides/split-tasks.md) теперь получают класс 'gantt_selected' при [выделении](api/config/select_task.md), как и обычные задачи
 
-7.1.10
------------
+## 7.1.10
+
 
 <span class='release_date'>16 марта 2022. Релиз исправлений</span>
 
@@ -528,8 +527,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка при использовании метода [exportToExcel()](api/method/exporttoexcel.md) с параметром
 `visual: true` и установкой конфигурации [duration_unit](api/config/duration_unit.md) в 'hour'
 
-7.1.9
------------
+## 7.1.9
+
 
 <span class='release_date'>10 января 2022. Релиз исправлений</span>
 
@@ -551,8 +550,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка при запуске минифицированных версий Gantt в проектах Next.js
 - Исправлена проблема, из-за которой ширина Gantt изменялась после инициализации [экземпляра gantt](guides/multiple-gantts.md#ganttinstanceconfiguration) внутри пустого контейнера
 
-7.1.8
------------
+## 7.1.8
+
 
 <span class='release_date'>30 ноября 2021. Релиз исправлений</span>
 
@@ -566,8 +565,8 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа [формы назначения ресурсов](guides/resources.md), из-за которой gantt заменял пользовательский id [назначения ресурса](guides/resource-management.md#assigningresources) автоматически сгенерированным значением
 - Исправлена некорректная работа [gantt.changeTaskId](api/method/changetaskid.md) в случаях, когда затронутые задачи имели вложенные элементы, что приводило к некорректному вычислению уровня вложенности
 
-7.1.7
------------
+## 7.1.7
+
 
 <span class='release_date'>5 октября 2021. Релиз исправлений</span>
 
@@ -583,8 +582,8 @@ sidebar_label: "Что нового"
 - Исправлены ошибки с некорректным размером [столбцов грида](guides/specifying-columns.md)
 - Исправлена некорректная работа [разделителей столбцов](guides/specifying-columns.md#resizing), конфликтующих с [перетаскиванием столбцов](api/config/reorder_grid_columns.md)
 
-7.1.6
----------------
+## 7.1.6
+
 
 <span class='release_date'>23 августа 2021. Исправление ошибок</span>
 
@@ -596,8 +595,8 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа [групп видимости/размера](guides/layout-config.md#visibilitygroups), из-за которой размеры столбцов не синхронизировались в сложных макетах
 - Улучшено отображение грида при рендеринге Gantt в маленьком контейнере
 
-7.1.5
----------------
+## 7.1.5
+
 
 <span class='release_date'>22 июля 2021. Исправление ошибок</span>
 
@@ -610,8 +609,8 @@ sidebar_label: "Что нового"
 - Исправлена проблема, из-за которой конфигурация панели ресурсов перезаписывала [основную конфигурацию](guides/common-configuration.md#ganttconfigobject) Gantt в приложениях на Vue.js
 - Добавлена возможность изменять конфигурацию [панели ресурсов](guides/resource-management.md#resourceviewpanel) на лету путём изменения объекта конфигурации, передаваемого в [resource layout](guides/layout-config.md#configsandtemplatesofviews)
 
-7.1.4
----------
+## 7.1.4
+
 
 <span class='release_date'>30 июня 2021. Исправление ошибок</span>
 
@@ -627,8 +626,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта при перемещении мыши за пределы контейнера, если включено расширение [click_drag](guides/extensions-list.md#advanceddragndrop)
 - Улучшена производительность для опции конфигурации [auto_types](api/config/auto_types.md) в Gantt
 
-7.1.3
-------
+## 7.1.3
+
 
 <span class='release_date'>25 мая 2021. Исправление ошибок</span>
 
@@ -638,8 +637,8 @@ sidebar_label: "Что нового"
 - Исправлена проблема со скоростью прокрутки в последних версиях браузера Firefox
 - Улучшена производительность [расчётов рабочего времени](guides/working-time.md)
 
-7.1.2
-------
+## 7.1.2
+
 
 <span class='release_date'>26 апреля 2021. Исправление ошибок</span>
 
@@ -650,8 +649,8 @@ sidebar_label: "Что нового"
 - Исправлено некорректное поведение [split tasks](guides/split-tasks.md) при изменении id задачи
 - Исправлена некорректная работа прокрутки с помощью колёсика мыши в Angular
 
-7.1.1
-------
+## 7.1.1
+
 
 <span class='release_date'>19 апреля 2021. Исправление ошибок</span>
 
@@ -666,8 +665,8 @@ sidebar_label: "Что нового"
 - Улучшена производительность Gantt с большим количеством [календарей задач](guides/working-time.md#assigningcalendartotask)
 - Улучшена производительность [расчёта назначений ресурсов](guides/resource-management.md#managingresourceassignments) во время [batchUpdate](api/method/batchupdate.md) и [autoScheduling](guides/auto-scheduling.md)
 
-7.1
-----------
+## 7.1
+
 
 <span class='release_date'>8 апреля 2021. Минорное обновление</span>
 
@@ -702,8 +701,8 @@ sidebar_label: "Что нового"
 - Исправлена проблема с [Keyboard Navigation Extension](guides/keynav-ext.md), из-за которой навигация по гриду прекращалась при многократном добавлении плагина
 - Исправлена проблема с [Inline Editors](guides/inline-editing.md), когда редактор нельзя было открыть в ячейке после скрытого столбца с помощью свойства [hide:true](guides/specifying-columns.md#visibility)
 
-7.0.13
-------
+## 7.0.13
+
 
 <span class='release_date'>15 февраля 2021. Исправление ошибок</span>
 
@@ -716,8 +715,8 @@ sidebar_label: "Что нового"
 - Повышена производительность drag and drop при включённых опциях [auto_types](api/config/auto_types.md) и [drag_project](api/config/drag_project.md)
 - Улучшена производительность [расчёта рабочего времени](guides/working-time.md), когда [duration_unit](api/config/duration_unit.md) установлен в "day"
 
-7.0.12
-------
+## 7.0.12
+
 
 <span class='release_date'>14 января 2021. Исправление ошибок</span>
 
@@ -738,8 +737,8 @@ sidebar_label: "Что нового"
 - Исправлена проблема с производительностью при использовании конфигурации [drag_project](api/config/drag_project.md) в крупных проектах
 - Исправлена ошибка, из-за которой тултип [QuickInfo](api/method/showquickinfo.md) не отображался в режиме [read-only](guides/readonly-mode.md), если в конфиг были добавлены пользовательские кнопки
 
-7.0.11
-------
+## 7.0.11
+
 
 <span class='release_date'>11 ноября 2020. Bugfix release</span>
 
@@ -756,8 +755,8 @@ sidebar_label: "Что нового"
 - Исправлена проблема с [Inline Editors](guides/inline-editing.md) и прокручиваемым гридом, когда inline editors теряли фокус сразу после клика
 - Исправлена ошибка, из-за которой Gantt закрывал тултип [Quick Info](guides/extensions-list.md#quickinfo) при клике по нему пользователем
 
-7.0.10
-------
+## 7.0.10
+
 
 <span class='release_date'>22 сентября 2020. Bugfix release</span>
 
@@ -773,8 +772,8 @@ sidebar_label: "Что нового"
 - Исправлен конфликт между [Inline Editors](guides/inline-editing.md) и [Клавиатурной навигацией](guides/keyboard-navigation.md)
 - Исправлена ошибка, из-за которой [Inline Editors](guides/inline-editing.md) закрывались при двойном клике
 
-7.0.9
--------
+## 7.0.9
+
 
 <span class='release_date'>27 августа 2020. Bugfix release</span>
 
@@ -791,8 +790,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта при инициализации gantt внутри iframe
 - Исправлена некорректная работа конфигурации [redo](api/config/redo.md) при отключенной опции [undo](api/config/undo.md)
 
-7.0.8
--------
+## 7.0.8
+
 
 <span class='release_date'>24 июля 2020. Bugfix release</span>
 
@@ -803,15 +802,15 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта при использовании параметра 'locale' в [gantt.getGanttInstance](guides/multiple-gantts.md)
 - Исправлена ошибка скрипта, возникавшая при вызове [gantt.destructor](api/method/destructor.md) при активных расширениях [Keyboard Navigation](guides/extensions-list.md#keyboardnavigation) и [Quick Info](guides/extensions-list.md#quickinfo)
 
-7.0.7
---------
+## 7.0.7
+
 
 <span class='release_date'>17 июля 2020. Bugfix release</span>
 
 - Исправлена синтаксическая ошибка в type definition для [gantt.Promise](api/method/promise.md)
 
-7.0.6
---------
+## 7.0.6
+
 
 <span class='release_date'>16 июля 2020. Bugfix release</span>
 
@@ -825,8 +824,8 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа [resource control](guides/resource-management.md) при использовании кнопки 'hide empty'
 - Исправлен тип возвращаемого значения [gantt.Promise](api/method/promise.md) в type definitions
 
-7.0.5
---------
+## 7.0.5
+
 
 <span class='release_date'>19 июня 2020. Bugfix release</span>
 
@@ -836,8 +835,8 @@ sidebar_label: "Что нового"
 - Улучшена производительность [расчёта рабочего времени](guides/working-time.md), когда конфигурация [duration_unit](api/config/duration_unit.md) установлена в "minute"
 - Добавлена возможность указывать рабочие календари в объекте конфигурации [`Gantt.getGanttInstance`](guides/multiple-gantts.md#ganttinstanceconfiguration)
 
-7.0.4
-------
+## 7.0.4
+
 
 <span class='release_date'>4 июня 2020. Bugfix release</span>
 
@@ -857,8 +856,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта при вызове [gantt.addTask](api/method/addtask.md) в [node.js пакете](guides/using-gantt-on-server.md)
 - Исправлена ошибка скрипта при вызове [gantt.destructor](api/method/destructor.md) в [node.js пакете](guides/using-gantt-on-server.md)
 
-7.0.3
-------
+## 7.0.3
+
 
 <span class='release_date'>14 мая 2020. Bugfix release</span>
 
@@ -867,8 +866,8 @@ sidebar_label: "Что нового"
 - Исправлена регрессия в [методе setWorkTime](api/method/setworktime.md), приводившая к ошибке скрипта при установке рабочего времени для конкретного дня
 - Исправлена некорректная работа расширения [Keyboard Navigation](guides/keyboard-navigation.md), когда Gantt используется внутри [SalesForce Lightning Web Component](https://github.com/DHTMLX/salesforce-gantt-demo)
 
-7.0.2
-------
+## 7.0.2
+
 
 <span class='release_date'>30 апреля 2020. Bugfix release</span>
 
@@ -879,8 +878,8 @@ sidebar_label: "Что нового"
 - Исправлен некорректный css-класс строки задачи после возврата статуса ошибки из [dataProcessor router function](guides/server-side.md#customrouting)
 - Исправлена некорректная работа [inline editors](guides/inline-editing.md) внутри Shadow DOM
 
-7.0.1
------
+## 7.0.1
+
 
 <span class='release_date'>16 апреля 2020. Bugfix release</span>
 
@@ -898,8 +897,8 @@ sidebar_label: "Что нового"
 - Исправлено некорректное положение placeholder после открытия [inline-редактора](guides/inline-editing.md) в [RTL-режиме](guides/rtl-mode.md)
 
 
-<b>7.0</b>
---------------
+## <b>7.0</b>
+
 
 <span class='release_date'>7 апреля 2020. Крупное обновление</span>
 
@@ -939,8 +938,8 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа `gantt.sort` для задач с одинаковой датой начала
 - Исправлен drag and drop связи при инициализации Gantt внутри Web Component
 
-6.3.7
------
+## 6.3.7
+
 
 <span class='release_date'>12 февраля 2020. Исправление ошибок</span>
 
@@ -948,8 +947,8 @@ sidebar_label: "Что нового"
 
 - Значительное повышение производительности при умном рендеринге диаграммы и панели ресурсов
 
-6.3.6
------
+## 6.3.6
+
 
 <span class='release_date'>10 февраля 2020. Исправление ошибок</span>
 
@@ -962,8 +961,8 @@ sidebar_label: "Что нового"
 - [gantt.getTaskNode](api/method/gettasknode.md) теперь возвращает корректный HTML-элемент для [разделённых задач](https://docs.dhtmlx.com/gantt/desktop__split_tasks.html)
 - Исправлена проблема с [горизонтальными полосами прокрутки](https://docs.dhtmlx.com/gantt/desktop__specifying_columns.html#horizontalscrollbar), не отображавшимися при наличии [visibility groups](https://docs.dhtmlx.com/gantt/desktop__layout_config.html#visibilitygroups) в некоторых конфигурациях layout
 
-6.3.5
------
+## 6.3.5
+
 
 <span class='release_date'>31 января 2020. Исправление ошибок</span>
 
@@ -979,8 +978,8 @@ sidebar_label: "Что нового"
 
 - [Добавлен публичный метод для перестроения layout Gantt после изменения его конфигурации](api/method/resetlayout.md)
 
-6.3.4
------
+## 6.3.4
+
 
 <span class='release_date'>27 декабря 2019. Исправление ошибок</span>
 
@@ -993,8 +992,8 @@ sidebar_label: "Что нового"
 - Создание связи между задачей на временной шкале и [placeholder](api/config/placeholder_task.md) в гриде теперь заблокировано
 - Исправлена ошибка в [расширении авто-планирования](guides/auto-scheduling.md), которая приводила к зависанию Gantt при наличии у задачи [типа ограничения (SNET/FNET/SNLT/FNLT)](guides/auto-scheduling.md#timeconstraintsfortasks) без даты или с некорректной датой
 
-6.3.3
------
+## 6.3.3
+
 
 <span class='release_date'>18 декабря 2019. Исправление ошибок</span>
 
@@ -1009,8 +1008,8 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа config [min_duration](api/config/min_duration.md)
 - Исправлена некорректная работа [link formatters](guides/formatters-ext.md#linkformatter) с пользовательскими [экземплярами Gantt](guides/multiple-gantts.md)
 
-6.3.2
------
+## 6.3.2
+
 
 <span class='release_date'>10 декабря 2019. Исправление ошибок</span>
 
@@ -1025,8 +1024,8 @@ sidebar_label: "Что нового"
 - Добавлены публичные события [onBeforeBranchLoading](api/event/onbeforebranchloading.md) и [onAfterBranchLoading](api/event/onafterbranchloading.md), чтобы можно было изменять url или динамические параметры запросов [динамической загрузки](guides/dynamic-loading.md)
 - Добавлен публичный метод для изменения url [dataProcessor](guides/server-side.md) после его инициализации
 
-6.3.1
------
+## 6.3.1
+
 
 <span class='release_date'>29 ноября 2019. Исправление ошибок</span>
 
@@ -1037,8 +1036,8 @@ sidebar_label: "Что нового"
 - Исправлена проблема отображения с [расширением Fullscreen](guides/fullscreen-mode.md), при которой некоторые элементы страницы отображались поверх Gantt в полноэкранном режиме
 - Исправлена ошибка, при которой [расширение drag-timeline](guides/extensions-list.md#dragtimeline) сбрасывало значение config [readonly](guides/readonly-mode.md)
 
-6.3
--------
+## 6.3
+
 
 <span class='release_date'>14 ноября 2019. Минорное обновление</span>
 
@@ -1074,8 +1073,8 @@ sidebar_label: "Что нового"
 - Исправлено некорректное состояние [DataProcessor](guides/server-side.md#customrouting) при последовательном изменении задач и связей из [пользовательского роутера](guides/server-side.md#customrouting)
 - Корректный объект данных задачи/связи теперь также передаётся в вызов **delete** [пользовательского роутера](guides/server-side.md#customrouting)
 
-6.2.7
------
+## 6.2.7
+
 
 <span class='release_date'>11 октября 2019. Релиз с исправлениями ошибок</span>
 
@@ -1085,8 +1084,8 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа [гистограммы ресурсов](guides/resource-management.md#resourceviewpanel) при [шаге шкалы времени](guides/configuring-time-scale.md#timestep) больше одного
 - Исправлена повторно возникшая ошибка со свернутыми ветками после вызова [gantt.parse](api/method/parse.md) из исправления ошибок [v6.2.4](#624)
 
-6.2.6
------
+## 6.2.6
+
 
 <span class='release_date'>19 сентября 2019. Релиз с исправлениями ошибок</span>
 
@@ -1096,8 +1095,8 @@ sidebar_label: "Что нового"
 - Исправлена проблема с [всплывающим окном QuickInfo](guides/extensions-list.md#quickinfo), не отображавшимся для [незапланированных задач](guides/unscheduled-tasks.md)
 - Исправлена некорректная работа файлов расширения с Ultimate-сборкой Gantt
 
-6.2.5
------
+## 6.2.5
+
 
 <span class='release_date'>12 сентября 2019. Релиз с исправлениями ошибок</span>
 
@@ -1108,8 +1107,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта после возврата значения *false* из обработчика события [onTaskLoading](api/event/ontaskloading.md)
 - Добавлены более понятные сообщения об ошибках для исключений, которые могут возникнуть при вызове [gantt.load](api/method/load.md) и [gantt.parse](api/method/parse.md)
 
-6.2.4
------
+## 6.2.4
+
 
 <span class='release_date'>5 сентября 2019. Релиз с исправлениями ошибок</span>
 
@@ -1119,8 +1118,8 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа [умного рендеринга](guides/performance.md#smartrendering) в [ресурсном представлении](guides/resource-management.md#resourceviewpanel)
 - Исправлена проблема, из-за которой [Zoom-модуль](guides/zooming.md) добавлял лишние обработчики DOM-событий при каждой [повторной инициализации](api/method/init.md) Gantt
 
-6.2.3
------
+## 6.2.3
+
 
 <span class='release_date'>29 августа 2019. Релиз с исправлениями ошибок</span>
 
@@ -1137,8 +1136,8 @@ sidebar_label: "Что нового"
 - Исправлена проблема с колонкой [WBS](api/method/getwbscode.md), которая не обновлялась после [сортировки](guides/sorting.md) Gantt
 - Исправлено некорректное отображение [static_background](api/config/static_background.md) в [Material skin](guides/skins.md#materialskin)
 
-6.2.2
------
+## 6.2.2
+
 
 <span class='release_date'>13 августа 2019. Релиз с исправлениями ошибок</span>
 
@@ -1156,8 +1155,8 @@ sidebar_label: "Что нового"
 - Исправлено исчезновение модального оверлея [lightbox](guides/default-edit-form.md) при изменении [типа задачи](guides/typeselect.md)
 - Исправлено [поведение в пресетах клавиатурной навигации](https://docs.dhtmlx.com/gantt/desktop__keyboard_navigation.html#comment-4488512513), когда событие [onAfterTaskUpdate](api/event/onaftertaskupdate.md) срабатывало после горячей клавиши **Shift+стрелка влево**, даже если действие было отменено с помощью [onBeforeTaskMove](api/event/onbeforetaskmove.md)
 
-6.2.1
------
+## 6.2.1
+
 
 <span class='release_date'>7 августа 2019. Релиз с исправлениями ошибок</span>
 
@@ -1171,8 +1170,8 @@ sidebar_label: "Что нового"
 - Перетаскивание задач и drag-and-drop теперь завершаются по mouseup на любом элементе gantt
 - Исправлена ошибка скрипта, возникавшая после сохранения [незапланированной задачи](guides/unscheduled-tasks.md)
 
-6.2
--------
+## 6.2
+
 
 <span class='release_date'>16 июля 2019. Минорное обновление</span>
 
@@ -1200,8 +1199,8 @@ sidebar_label: "Что нового"
 - Подсветка нескольких задач сбрасывается после рендеринга
 - Ошибка скрипта при уничтожении Gantt из обработчика data processor
 
-6.1.7
------
+## 6.1.7
+
 
 <span class='release_date'>27 июня 2019. Релиз с исправлениями ошибок</span>
 
@@ -1214,8 +1213,8 @@ sidebar_label: "Что нового"
 - Исправлено некорректное поведение при попытке переключения между [встроенными редакторами](guides/inline-editing.md) с помощью клавиши `Tab`, если некоторые колонки грида были [скрыты](guides/specifying-columns.md#visibility)
 - Исправлено неожиданное поведение, мешающее [lightbox](guides/edit-form.md) и [встроенным редакторам](guides/inline-editing.md) переопределять [даты ограничений](guides/auto-scheduling.md#timeconstraintsfortasks)
 
-6.1.6
------
+## 6.1.6
+
 
 <span class='release_date'>14 мая 2019. Релиз с исправлениями ошибок</span>
 
@@ -1226,8 +1225,8 @@ sidebar_label: "Что нового"
 - Исправлен некорректный аргумент `action` для [роутера dataProcessor](guides/server-side.md#customrouting) после [вертикального drag-and-drop](guides/reordering-tasks.md)
 - Исправлена проблема, когда [createTask](api/method/createtask.md) игнорировал параметр `index`
 
-6.1.5
------
+## 6.1.5
+
 
 <span class='release_date'>25 апреля 2019. Релиз с исправлениями ошибок</span>
 
@@ -1236,8 +1235,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта при втором вызове [init](api/method/init.md), если конфиг [show_chart](api/config/show_chart.md) отключён
 - Исправлено некорректное положение плейсхолдера [вертикального drag-and-drop](guides/reordering-tasks.md) в [режиме маркера](guides/reordering-tasks.md#improvingperformancewithlargedatasets)
 
-6.1.4
------
+## 6.1.4
+
 
 <span class='release_date'>18 апреля 2019. Релиз с исправлениями ошибок</span>
 
@@ -1249,8 +1248,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка в расширении [Undo](guides/undo-redo.md), когда действие Redo для восстановления новых задач не возвращало все свойства
 - Исправлен регресс в GPL-сборке, вызывавший ошибку скрипта при втором вызове [gantt.init](api/method/init.md)
 
-6.1.3
------
+## 6.1.3
+
 
 <span class='release_date'>15 апреля 2019. Релиз с исправлениями ошибок</span>
 
@@ -1277,8 +1276,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка, из-за которой задача не распознавалась как часть [критического пути](guides/critical-path.md) после [изменения id](api/method/changetaskid.md)
 
 
-6.1.2
------
+## 6.1.2
+
 
 <span class='release_date'>26 марта 2019. Релиз исправлений</span>
 
@@ -1296,8 +1295,8 @@ sidebar_label: "Что нового"
 - Совместимость с SalesForce: новый resize listener не работал в SF, добавлен fallback
 
 
-6.1.1
------
+## 6.1.1
+
 
 <span class='release_date'>5 марта 2019. Релиз исправлений</span>
 
@@ -1312,8 +1311,8 @@ sidebar_label: "Что нового"
 - Исправлены проблемы с [lightbox](api/config/lightbox.md) и расширением [tooltip](guides/tooltips.md) в [полноэкранном режиме](guides/fullscreen-mode.md)
 
 
-6.1
-------
+## 6.1
+
 
 <span class='release_date'>21 февраля 2019. Минорное обновление</span>
 
@@ -1333,8 +1332,8 @@ sidebar_label: "Что нового"
 - [Рабочие календари на уровне проекта](guides/working-time.md#assigningcalendartoproject) (PRO)
 - Возможность [импортировать dhtmlxGantt как ES6-модуль](guides/initializing-gantt-chart.md#moduleimport)
 
-6.0.7
------
+## 6.0.7
+
 
 <span class='release_date'>16 января 2019. Релиз исправлений</span>
 
@@ -1347,8 +1346,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта после удаления [нескольких выбранных задач](guides/multiselection.md) через [навигацию с клавиатуры](guides/keyboard-navigation.md)
 - Исправлено стандартное сопоставление [inline editors](guides/inline-editing.md). Inline editors не должны блокировать горячие клавиши на ячейках задач
 
-6.0.4
------
+## 6.0.4
+
 
 <span class='release_date'>27 декабря 2018. Релиз исправлений</span>
 
@@ -1358,8 +1357,8 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта после удаления поддерева, содержащего выбранную задачу
 - Исправлена ошибка скрипта при сохранении/отмене lightbox, содержащего фильтры ресурсов
 
-6.0.2
------
+## 6.0.2
+
 
 <span class='release_date'>6 декабря 2018. Релиз исправлений</span>
 
@@ -1372,8 +1371,8 @@ sidebar_label: "Что нового"
 - Исправлен "зависание" страницы при `gantt.parse`, если дерево задач содержит циклические ссылки - теперь выбрасывается ошибка скрипта
 
 
-<b>6.0</b>
-----------
+## <b>6.0</b>
+
 
 <span class='release_date'>5 ноября 2018. Крупное обновление</span>
 
@@ -1404,8 +1403,8 @@ sidebar_label: "Что нового"
 - Метод [importFromExcel](api/method/importfromexcel.md)
 - Опция *delimiter* в методе [groupBy](api/method/groupby.md) для группировки ресурсов
 
-5.2
---------------
+## 5.2
+
 
 <span class='release_date'>6 июля 2018. Минорное обновление</span>
 
@@ -1429,8 +1428,8 @@ sidebar_label: "Что нового"
 
 - Новые методы и события для расширений [undo](guides/undo-redo.md) и [autoscheduling](guides/auto-scheduling.md).
 
-5.1
-----------
+## 5.1
+
 
 <span class='release_date'>27 февраля 2018. Минорное обновление</span>
 
@@ -1461,8 +1460,8 @@ sidebar_label: "Что нового"
 - Исправлены проблемы с навигацией с клавиатуры в режиме умного рендеринга
 
 
-<b>5.0</b>
----------
+## <b>5.0</b>
+
 
 <span class='release_date'>12 декабря 2017. Крупное обновление</span>
 
@@ -1479,8 +1478,8 @@ sidebar_label: "Что нового"
 - Новый скин ["Material"](guides/skins.md#materialskin)
 
 
-4.2
-------------
+## 4.2
+
 
 <span class='release_date'>17 августа 2017. Минорное обновление</span>
 
@@ -1502,8 +1501,8 @@ sidebar_label: "Что нового"
 - GIF-изображения в скинах Gantt заменены на PNG
 
 
-4.1
----------
+## 4.1
+
 
 <span class='release_date'>1 сентября 2016. Минорное обновление</span>
 
@@ -1525,8 +1524,8 @@ sidebar_label: "Что нового"
 - Обновлена [турецкая локализация](guides/localization.md#predefinedlocales)
 
 
-<b>4.0</b>
----------
+## <b>4.0</b>
+
 
 <span class='release_date'>1 декабря 2015. Крупное обновление</span>
 
@@ -1547,8 +1546,8 @@ sidebar_label: "Что нового"
 - Добавлены публичные хелперы для [всплывающих сообщений](guides/message-boxes.md)
 
 
-3.3
-----------
+## 3.3
+
 
 <span class='release_date'>21 июля 2015. Минорное обновление</span>
 
@@ -1570,8 +1569,8 @@ sidebar_label: "Что нового"
 - [REST-режим для загрузки/сохранения через ajax](guides/server-side.md)
 
 
-3.2
-----------------
+## 3.2
+
 
 <span class='release_date'>18 марта 2015. Минорное обновление</span>
 
@@ -1595,8 +1594,8 @@ sidebar_label: "Что нового"
 - Новые примеры, методы, события
 
 
-3.1
-----------------
+## 3.1
+
 
 <span class='release_date'>25 октября 2014. Минорное обновление</span>
 
@@ -1615,8 +1614,8 @@ sidebar_label: "Что нового"
 - Некорректная работа вертикальных маркеров при очистке или переинициализации Gantt
 
 
-<b>3.0</b>
-----------------
+## <b>3.0</b>
+
 
 <span class='release_date'>11 сентября 2014. Крупное обновление</span>
 
@@ -1642,8 +1641,8 @@ sidebar_label: "Что нового"
 
 - [Новые методы для работы с деревом](guides/task-tree-operations.md)
 
-2.1
--------------
+## 2.1
+
 
 <span class='release_date'>28 марта 2014. Минорное обновление</span>
 
@@ -1668,8 +1667,8 @@ sidebar_label: "Что нового"
 - Добавлено больше конфигураций, методов, событий
 
 
-<b>2.0</b>
--------------------------------------
+## <b>2.0</b>
+
 
 <span class='release_date'>18 октября 2013. Крупное обновление</span>
 

@@ -3,15 +3,14 @@ title: "What's New"
 sidebar_label: "What's New"
 ---
 
-What's New
-==========
+# What's New
 
 :::note
 Updating from an earlier version? Check the [migration guide](migration.md) for required changes and update steps.
 :::
 
-9.1.1
----------------
+## 9.1.1
+
 <span class='release_date'>December 15, 2025. Bugfix release</span>
 
 ### Fixes
@@ -27,8 +26,8 @@ Updating from an earlier version? Check the [migration guide](migration.md) for 
 
 - Allow configuring row and task bar height for [virtual tasks](api/method/groupby.md)
 
-9.1
-----------
+## 9.1
+
 <span class='release_date'>November 5, 2025. Minor update</span>
 
 ### Breaking Changes
@@ -64,8 +63,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Fix the issue with tasks overlapping on changing the zoom level
 
 
-9.0.15
----------------
+## 9.0.15
+
 <span class='release_date'>September 19, 2025. Bugfix release</span>
 
 ### Fixes
@@ -74,8 +73,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Improve support for [Shadow DOM](https://html.spec.whatwg.org/multipage/custom-elements.html) inside elements of Gantt
 - Fix the [React Gantt](integrations/react.md) issue where multiple component instances caused duplicated templates
 
-9.0.14
----------------
+## 9.0.14
+
 <span class='release_date'>July 31, 2025. Bugfix release</span>
 
 ### Fixes
@@ -86,8 +85,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Fix the issue where calling [setTasks](integrations/react.md) with an empty dataset broke the React Gantt component
 
 
-9.0.13
----------------
+## 9.0.13
+
 <span class='release_date'>June 26, 2025. Bugfix release</span>
 
 ### Fixes
@@ -101,8 +100,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Fix incorrect handling of `tasks` and `links` props changes in the [React Gantt](integrations/react.md) component
 
 
-9.0.12
----------------
+## 9.0.12
+
 <span class='release_date'>June 19, 2025. Bugfix release</span>
 
 ### Fixes
@@ -117,8 +116,8 @@ based on actual working hours instead of the fixed 24-hour period
 
 - [React Gantt](integrations/react.md) is now compatible with **Next.js** and **Remix** SSR frameworks without additional configuring
 
-9.0.11
----------------
+## 9.0.11
+
 <span class='release_date'>May 27, 2025. Bugfix release</span>
 
 ### Fixes
@@ -138,8 +137,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Add the `isSalesforce` flag to [gantt.env](api/other/env.md)
 - Add the `groupTasks` prop to [React Gantt](integrations/react.md#groupingtasks)
 
-9.0.10
----------------
+## 9.0.10
+
 <span class='release_date'>April 22, 2025. Bugfix release</span>
 
 ### Fixes
@@ -153,8 +152,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Remove invalid WAI-ARIA attributes from read-only task links to improve [accessibility](guides/accessibility.md#wai-aria-attributes)
 - Fix the issue where task bar resizers do not adapt to changes in task bar height
 
-9.0.9
----------------
+## 9.0.9
+
 <span class='release_date'>April 16, 2025. Bugfix release</span>
 
 ### Updates
@@ -170,8 +169,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Fix the issue where the [click_drag](guides/extensions-list.md#advanced-drag-n-drop) extension did not function on touch devices
 - Improve grid scrolling responsiveness on touch devices
 
-9.0.7
----------------
+## 9.0.7
+
 <span class='release_date'>March 27, 2025. Bugfix release</span>
 
 ### Fixes
@@ -190,8 +189,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Prevent duplication of the `gantt_marker_area` elements
 - Fix the [undo](guides/undo-redo.md) functionality with the `changeTaskId` action
 
-9.0.6
----------------
+## 9.0.6
+
 <span class='release_date'>March 18, 2025. Bugfix release</span>
 
 ### Fixes
@@ -209,8 +208,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Resolve issues related to `fetchTasks` and [deepcopy_on_parse](api/config/deepcopy_on_parse.md) configurations that affected the [resource panel](guides/resource-management.md#resourceviewpanel)
 - Correct the appearance of font icons during Gantt initialization
 
-9.0.5
----------------
+## 9.0.5
+
 <span class='release_date'>February 28, 2025. Bugfix release</span>
 
 - Fix the error that occurs while resizing rows in the [Resource Grid](guides/resource-management.md#resourceviewpanel)
@@ -227,8 +226,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Fix the error that occurs while partially deleting a date value in the [inline editor](guides/inline-editors-ext.md)
 - Fix the issue where the [resource panel](guides/resource-management.md#resourceviewpanel) is displayed incorrectly after filtering when `fetchTasks` is enabled
 
-9.0.4
----------------
+## 9.0.4
+
 <span class='release_date'>December 3, 2024. Bugfix release</span>
 
 - Fix the issue where the [SNET constraint](guides/auto-scheduling.md#timeconstraintsfortasks) date cannot be changed via the [inline editor](guides/inline-editors-ext.md)
@@ -239,8 +238,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Ensure Gantt retains the task [constraint](guides/auto-scheduling.md#timeconstraintsfortasks) after dragging a task
 
 
-9.0.3
----------------
+## 9.0.3
+
 <span class='release_date'>November 19, 2024. Bugfix release</span>
 
 - Fix the regression in styles for the [Quick Info](guides/quick-info.md) popup
@@ -252,8 +251,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Prevent [Inline Editors](guides/inline-editors-ext.md) events from being removed after [reinitializing](api/method/init.md) Gantt or [resetting the layout](api/method/resetlayout.md)
 - Fix the issue where the open state is not restored after [redoing](guides/undo-redo.md) changes
 
-9.0.2
----------------
+## 9.0.2
+
 <span class='release_date'>November 11, 2024. Bugfix release</span>
 
 ### Fixes
@@ -272,8 +271,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Restore functionality of the [export_api](api/method/exporttopdf.md) plugin in the TypeScript environment
 - Update type definitions
 
-9.0.1
----------------
+## 9.0.1
+
 
 <span class='release_date'>October 21, 2024. Bugfix release</span>
 
@@ -287,8 +286,8 @@ based on actual working hours instead of the fixed 24-hour period
 - Fix the issue where calling [resetLayout](api/method/resetlayout.md) breaks the functionality of the [S-Curve Overlay](guides/baselines.md#extra-overlay-for-the-chart) plugin
 - Prevent creation of duplicate links by the [predecessor editor](guides/inline-editing.md#types-of-editors)
 
-<b>9.0</b>
----------------
+## <b>9.0</b>
+
 
 <span class='release_date'>October 17, 2024. Major update</span>
 
@@ -331,8 +330,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Fix the issue where Gantt doesn't return the fixedDate "assignments" in the [resource_cell_value](guides/resource-management.md) when the task is outside the specified date range
 
 
-8.0.11
-----------
+## 8.0.11
+
 
 <span class='release_date'>October 8, 2024. Bugfix release</span>
 
@@ -353,8 +352,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Ensure [grid sorting](api/config/sort.md) works properly when clicking the sort icon in the header
 - Fix inconsistent task repainting when [drag_timeline](api/config/drag_timeline.md) is enabled
 
-8.0.10
-----------
+## 8.0.10
+
 
 <span class='release_date'>August 23, 2024. Bugfix release</span>
 
@@ -371,8 +370,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Fix the error caused by attempting to [filter split tasks](guides/split-tasks.md#filtering-split-tasks) with no children using the [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) event
 - Fix the issue where [Resource Assignments](guides/resource-management.md) were not updated after [dragging the project with subtasks](api/config/drag_project.md)
 
-8.0.9
-----------
+## 8.0.9
+
 
 <span class='release_date'>June 18, 2024. Bugfix release</span>
 
@@ -390,8 +389,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Update TypeScript type definitions
 
 
-8.0.8
-----------
+## 8.0.8
+
 
 <span class='release_date'>May 31, 2024. Bugfix release</span>
 
@@ -404,8 +403,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Fix the script error that occurs after [destroying](api/method/destructor.md) the Gantt which has an  editable [Resource Panel](guides/resource-management.md)
 - Fix the issue that caused the [tooltip](guides/tooltips.md) to disappear in some browsers
 
-8.0.7
-----------
+## 8.0.7
+
 
 <span class='release_date'>May 16, 2024. Bugfix release</span>
 
@@ -424,8 +423,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Fix errors that occurred with the [isCriticalTask](api/method/iscriticaltask.md), [getFreeSlack](api/method/getfreeslack.md), and [getTotalSlack](api/method/gettotalslack.md) methods for [unscheduled tasks](guides/unscheduled-tasks.md)
 - Fix the error occurring when a linked project contains only [unscheduled](guides/unscheduled-tasks.md) child tasks
 
-8.0.6
-----------
+## 8.0.6
+
 
 <span class='release_date'>September 25, 2023. Bugfix release</span>
 
@@ -437,8 +436,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - The [Export API client](guides/extensions-list.md#export-service) is now integrated into the GPL version of Gantt, previously it has been included only in PRO versions
 - Add support for the https export [server endpoints](guides/export.md#parameters-of-the-export-methods) in the [Node.js version of Gantt](guides/using-gantt-on-server.md)
 
-8.0.5
-----------
+## 8.0.5
+
 
 <span class='release_date'>September 1, 2023. Bugfix release</span>
 
@@ -448,8 +447,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Fix the incorrect work of [gantt.exportToExcel()](api/method/exporttoexcel.md) when the [skip_off_time](api/config/skip_off_time.md) config is enabled
 - Improvements for the [Samples Viewer](https://docs.dhtmlx.com/gantt/samples/)
 
-8.0.4
-----------
+## 8.0.4
+
 
 <span class='release_date'>July 31, 2023. Bugfix release</span>
 
@@ -460,8 +459,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Fix the incorrect work of [gantt.calculateEndDate](api/method/calculateenddate.md) when subtracting dates in minute units
 - Minor performance improvement for layouts with [visibility groups](guides/layout-config.md#visibility-groups)
 
-8.0.3
-----------
+## 8.0.3
+
 
 <span class='release_date'>June 14, 2023. Bugfix release</span>
 
@@ -471,8 +470,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Fix incorrect calculation of [Free Slack](guides/critical-path.md#gettingfreeandtotalslack) for tasks with a [negative Lag](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks)
 - Fix incorrect calculation of [Critical Path](guides/critical-path.md) for tasks with 100% progress
 
-8.0.2
-----------
+## 8.0.2
+
 
 <span class='release_date'>May 31, 2023. Bugfix release</span>
 
@@ -485,8 +484,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Performance improvement for [Split Tasks](guides/split-tasks.md) rendering
 - Other performance improvements
 
-8.0.1
-----------
+## 8.0.1
+
 
 <span class='release_date'>March 30, 2023. Bugfix release</span>
 
@@ -498,8 +497,8 @@ This update brings some changes in the structure of the Gantt package and behavi
 - Fix the incorrect work of [auto scheduling](guides/auto-scheduling.md) with [MSO, FNET, and FNLT constraints](guides/auto-scheduling.md#timeconstraintsfortasks) when the [settings of work time](guides/working-time.md#global-settings) contain a minute part
 - Fix work of the [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) event on scroll
 
-<b>8.0</b>
---------------
+## <b>8.0</b>
+
 
 <span class='release_date'>March 20, 2023. Major update</span>
 
@@ -565,8 +564,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - Fix the incorrect work of [vertical reordering](guides/reordering-tasks.md), which allowed task rows to being dragged outside the Gantt
 - Fix the incorrect order of `odd` CSS classes of rows in the [Resource panel](guides/resource-management.md#resourceviewpanel)
 
-7.1.13
-----------
+## 7.1.13
+
 
 <span class='release_date'>November 4, 2022. Bugfix release</span>
 
@@ -586,8 +585,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - [German locale](guides/localization.md#activating-a-locale) is updated
 - Now it is possible to open the inline editor after one click on a task in the multi-selection mode (the [inline_editors_multiselect_open](api/config/inline_editors_multiselect_open.md) property is added)
 
-7.1.12
------------
+## 7.1.12
+
 
 <span class='release_date'>June 16, 2022. Bugfix release</span>
 
@@ -603,8 +602,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - Fix the incorrect work of the [autosize](api/config/autosize.md) config when the Gantt layout contained [Resource Panel](guides/resource-management.md#resourceviewpanel) 
 - Fix the [lightbox](guides/default-edit-form.md) for [split tasks](guides/split-tasks.md), the lightbox now should be displayed when you double-click on a split task
 
-7.1.11
------------
+## 7.1.11
+
 
 <span class='release_date'>April 27, 2022. Bugfix release</span>
 
@@ -620,8 +619,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - Scrollbars of the default [Gantt layout](guides/layout-config.md#default-layout) no longer require fixed **scrollVer**/**scrollHor** names to work correctly
 - [Split tasks](guides/split-tasks.md) now receive the 'gantt_selected' class on [selection](api/config/select_task.md), in the same way as regular tasks do
 
-7.1.10
------------
+## 7.1.10
+
 
 <span class='release_date'>March 16, 2022. Bugfix release</span>
 
@@ -641,8 +640,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 `visual: true` parameter and setting the [duration_unit](api/config/duration_unit.md) config to 'hour'
 
 
-7.1.9
------------
+## 7.1.9
+
 
 <span class='release_date'>January 10, 2022. Bugfix release</span>
 
@@ -665,8 +664,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - Fix the issue which caused the width of Gantt to be changed after initializing the [gantt instance](guides/multiple-gantts.md#gantt-instance-configuration) inside an empty container 
 
 
-7.1.8
------------
+## 7.1.8
+
 
 <span class='release_date'>November 30, 2021. Bugfix release</span>
 
@@ -680,8 +679,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - Fix the incorrect work of the [resource assignment form](guides/resources.md) which caused gantt to replace the user-provided id of the [resource assignment](guides/resource-management.md#assigningresources) with an auto-generated value
 - Fix the incorrect work of [gantt.changeTaskId](api/method/changetaskid.md) in cases when the affected tasks had nested items, which caused the level of nested items to be calculated incorrectly
 
-7.1.7
------------
+## 7.1.7
+
 
 <span class='release_date'>October 5, 2021. Bugfix release</span>
 
@@ -697,8 +696,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - Fix issues with incorrect size of [grid columns](guides/specifying-columns.md)
 - Fix the incorrect work of the [column's resizers](guides/specifying-columns.md#resizing) which conflicted with [reordering of the columns](api/config/reorder_grid_columns.md)
 
-7.1.6
----------------
+## 7.1.6
+
 
 <span class='release_date'>August 23, 2021. Bugfix release</span>
 
@@ -710,8 +709,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - Fix the incorrect work of the [size/visibility groups](guides/layout-config.md#visibility-groups) which prevented the sizes of columns from being synchronized in the complex layout
 - Improved the display of the grid when the gantt is rendered in a small container
 
-7.1.5
----------------
+## 7.1.5
+
 
 <span class='release_date'>July 22, 2021. Bugfix release</span>
 
@@ -724,8 +723,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - Fix the issue that caused the resource panel configuration to overwrite [the main configuration](guides/common-configuration.md#ganttconfigobject) of the gantt in Vue.js applications
 - Added the ability to modify the configuration of the [resource panel](guides/resource-management.md#resourceviewpanel) on the fly by modifying the configuration object provided to the [resource layout](guides/layout-config.md#configs-and-templates-of-views)
 
-7.1.4
----------
+## 7.1.4
+
 
 <span class='release_date'>June 30, 2021. Bugfix release</span>
 
@@ -741,8 +740,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - Fix the script error thrown when the mouse is moved outside the container when the [click_drag](guides/extensions-list.md#advanced-drag-n-drop) extension is enabled
 - Performance improvements for the [auto_types](api/config/auto_types.md) configuration option of Gantt
 
-7.1.3
-------
+## 7.1.3
+
 
 <span class='release_date'>May 25, 2021. Bugfix release</span>
 
@@ -752,8 +751,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - Fix the issue with the speed of the scroll in the latest Firefox browser
 - Performance improvement for [calculations of working time](guides/working-time.md)
 
-7.1.2
-------
+## 7.1.2
+
 
 <span class='release_date'>April 26, 2021. Bugfix release</span>
 
@@ -764,8 +763,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - Fix the incorrect behavior of [split tasks](guides/split-tasks.md) on change of the task id 
 - Fix the incorrect work of scroll on mouse wheel in Angular
 
-7.1.1
-------
+## 7.1.1
+
 
 <span class='release_date'>April 19, 2021. Bugfix release</span>
 
@@ -780,8 +779,8 @@ Check the [Migration article](migration.md#71---80) to keep in step with the lat
 - Performance improvement for gantts with a large number of [task calendars](guides/working-time.md#assigningcalendartotask)
 - Performance improvement for [calculations of resource assignment](guides/resource-management.md#managingresourceassignments) during [batchUpdate](api/method/batchupdate.md) and [autoScheduling](guides/auto-scheduling.md)
 
-7.1
-----------
+## 7.1
+
 
 <span class='release_date'>April 8, 2021. Minor update</span>
 
@@ -817,8 +816,8 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix the issue with [Inline Editors](guides/inline-editing.md) when the editor couldn't be opened in a cell located after a column hidden via the [hide:true](guides/specifying-columns.md#visibility) property
 
 
-7.0.13
-------
+## 7.0.13
+
 
 <span class='release_date'>February 15, 2021. Bugfix release</span>
 
@@ -831,8 +830,8 @@ The update brings changes to some parts of the component. While the update doesn
 - Performance improvement for drag and drop when the [auto_types](api/config/auto_types.md) and [drag_project](api/config/drag_project.md) configuration options are enabled
 - Performance improvement for [calculation of working time](guides/working-time.md) when [duration_unit](api/config/duration_unit.md) is set to "day"
 
-7.0.12
-------
+## 7.0.12
+
 
 <span class='release_date'>January 14, 2021. Bugfix release</span>
 
@@ -853,8 +852,8 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix the performance issue with the [drag_project](api/config/drag_project.md) config used in large projects
 - Fix the issue that prevented the [Quick-Info](api/method/showquickinfo.md) popup from being displayed in the [read-only](guides/readonly-mode.md) mode when custom buttons were added to the config
 
-7.0.11
-------
+## 7.0.11
+
 
 <span class='release_date'>November 11, 2020. Bugfix release</span>
 
@@ -872,8 +871,8 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix the issue that caused Gantt to close the [Quick Info](guides/extensions-list.md#quick-info) popup when the user clicks on it
 
 
-7.0.10
-------
+## 7.0.10
+
 
 <span class='release_date'>September 22, 2020. Bugfix release</span>
 
@@ -889,8 +888,8 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix the conflict between [Inline Editors](guides/inline-editing.md) and [Keyboard Navigation](guides/keyboard-navigation.md)
 - Fix the issue that caused [Inline Editors](guides/inline-editing.md) to close on double click
 
-7.0.9
--------
+## 7.0.9
+
 
 <span class='release_date'>August 27, 2020. Bugfix release</span>
 
@@ -907,8 +906,8 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix the script error which happened when initializing a gantt inside an iframe
 - Fix the incorrect work of the [redo](api/config/redo.md) config when the [undo](api/config/undo.md) config is disabled
 
-7.0.8
--------
+## 7.0.8
+
 
 <span class='release_date'>July 24, 2020. Bugfix release</span>
 
@@ -920,16 +919,16 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix the script error that was thrown from [gantt.destructor](api/method/destructor.md) when the [Keyboard Navigation](guides/extensions-list.md#keyboardnavigation) and the [Quick Info](guides/extensions-list.md#quick-info) extensions were used
 
 
-7.0.7
---------
+## 7.0.7
+
 
 <span class='release_date'>July 17, 2020. Bugfix release</span>
 
 - Fix the syntax error in type definition of [gantt.Promise](api/method/promise.md)
 
 
-7.0.6
---------
+## 7.0.6
+
 
 <span class='release_date'>July 16, 2020. Bugfix release</span>
 
@@ -943,8 +942,8 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix the incorrect work of the [resource control](guides/resource-management.md) when the 'hide empty' button is used
 - The return type of [gantt.Promise](api/method/promise.md) in type definitions is fixed
 
-7.0.5
---------
+## 7.0.5
+
 
 <span class='release_date'>June 19, 2020. Bugfix release</span>
 
@@ -955,8 +954,8 @@ The update brings changes to some parts of the component. While the update doesn
 - The ability to specify working calendars in the configuration object of [`Gantt.getGanttInstance`](guides/multiple-gantts.md#gantt-instance-configuration) is added
 
 
-7.0.4
-------
+## 7.0.4
+
 
 <span class='release_date'>June 4, 2020. Bugfix release</span>
 
@@ -976,8 +975,8 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix the script error which was thrown from [gantt.addTask](api/method/addtask.md) in the [node.js package](guides/using-gantt-on-server.md)
 - Fix the script error which was thrown from [gantt.destructor](api/method/destructor.md) in the [node.js package](guides/using-gantt-on-server.md)
 
-7.0.3
-------
+## 7.0.3
+
 
 <span class='release_date'>May 14, 2020. Bugfix release</span>
 
@@ -986,8 +985,8 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix regression in the [setWorkTime method](api/method/setworktime.md) which caused a script error when the working time was set for a specific day
 - Fix the incorrect work of the [Keyboard Navigation](guides/keyboard-navigation.md) extension when Gantt is used inside a [SalesForce Lightning Web Component](https://github.com/DHTMLX/salesforce-gantt-demo)
 
-7.0.2
-------
+## 7.0.2
+
 
 <span class='release_date'>April 30, 2020. Bugfix release</span>
 
@@ -998,8 +997,8 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix the incorrect css class of a task row element after returning the error status from the [dataProcessor router function](guides/server-side.md#customrouting)
 - Fix the incorrect work of [inline editors](guides/inline-editing.md) inside Shadow DOM
 
-7.0.1
------
+## 7.0.1
+
 
 <span class='release_date'>April 16, 2020. Bugfix release</span>
 
@@ -1018,8 +1017,8 @@ The update brings changes to some parts of the component. While the update doesn
 - Fix the incorrect position of a placeholder after opening an [inline editor](guides/inline-editing.md) in the [RTL mode](guides/rtl-mode.md)
 
 
-<b>7.0</b>
---------------
+## <b>7.0</b>
+
 
 <span class='release_date'>April 7, 2020. Major update</span>
 
@@ -1059,8 +1058,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix the incorrect work of `gantt.sort` for tasks with equal start dates
 - Fix drag and drop of a link when Gantt is initialized inside a Web Component
 
-6.3.7
------
+## 6.3.7
+
 
 <span class='release_date'>February 12, 2020. Bugfix release</span>
 
@@ -1068,8 +1067,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 - Significant performance improvement for smart rendering of chart and resource panel
 
-6.3.6
------
+## 6.3.6
+
 
 <span class='release_date'>February 10, 2020. Bugfix release</span>
 
@@ -1084,8 +1083,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 )
 - Fix the issue with [horizontal scrollbars](https://docs.dhtmlx.com/gantt/desktop__specifying_columns.html#horizontal-scrollbar) not being displayed when [visibility groups](https://docs.dhtmlx.com/gantt/desktop__layout_config.html#visibility-groups) are specified in some layout configurations
 
-6.3.5
------
+## 6.3.5
+
 
 <span class='release_date'>January 31, 2020. Bugfix release</span>
 
@@ -1101,8 +1100,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 - [A public method for rebuilding the Gantt layout after changing its config](api/method/resetlayout.md) is added
 
-6.3.4
------
+## 6.3.4
+
 
 <span class='release_date'>December 27, 2019. Bugfix release</span>
 
@@ -1115,8 +1114,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Creating a link between a task in the timeline and [a placeholder](api/config/placeholder_task.md) in the grid is now blocked
 - Fix the bug with the [auto scheduling extension](guides/auto-scheduling.md) that caused Gantt to freeze when a task has [the constraint type (SNET/FNET/SNLT/FNLT)](guides/auto-scheduling.md#timeconstraintsfortasks) with no date specified, or with an invalid date
 
-6.3.3
------
+## 6.3.3
+
 
 <span class='release_date'>December 18, 2019. Bugfix release</span>
 
@@ -1131,8 +1130,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix the incorrect work of the [](api/config/min_duration.md) config
 - Fix the incorrect work of [link formatters](guides/formatters-ext.md#linkformatter) with custom [instances of the gantt](guides/multiple-gantts.md)
 
-6.3.2
------
+## 6.3.2
+
 
 <span class='release_date'>December 10, 2019. Bugfix release</span>
 
@@ -1147,8 +1146,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - [](api/event/onbeforebranchloading.md) and [](api/event/onafterbranchloading.md) public events were added so it would be possible to modify the url or dynamic parameters of [dynamic loading](guides/dynamic-loading.md) requests
 - Added a public method for changing the url of the [dataProcessor](guides/server-side.md) after its initialization
 
-6.3.1
------
+## 6.3.1
+
 
 <span class='release_date'>November 29, 2019. Bugfix release</span>
 
@@ -1159,8 +1158,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix the display issue with [Fullscreen extension](guides/fullscreen-mode.md) which allowed some page elements to be displayed over the gantt in the fullscreen mode
 - Fix the bug that caused the [drag-timeline extension](guides/extensions-list.md#drag-timeline) to reset the value of the [readonly config](guides/readonly-mode.md)
 
-6.3
--------
+## 6.3
+
 
 <span class='release_date'>November 14, 2019. Minor update</span>
 
@@ -1196,8 +1195,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix the incorrect state of the [DataProcessor](guides/server-side.md#customrouting) when tasks and links were modified sequentially from a [custom router](guides/server-side.md#customrouting)
 - A correct data object of Task/Link is now also passed into **delete** call of a [custom router](guides/server-side.md#customrouting)
 
-6.2.7
------
+## 6.2.7
+
 
 <span class='release_date'>October 11, 2019. Bugfix release</span>
 
@@ -1208,8 +1207,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix the reopened bug with collapsed branches after calling [gantt.parse](api/method/parse.md) from [v6.2.4](#624) bugfix
 
 
-6.2.6
------
+## 6.2.6
+
 
 <span class='release_date'>September 19, 2019. Bugfix release</span>
 
@@ -1219,8 +1218,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix the issue with [Quick-Info popup](guides/extensions-list.md#quick-info) not being displayed for [unscheduled tasks](guides/unscheduled-tasks.md)
 - Fix incorrect work of extension files with the Ultimate build of Gantt
 
-6.2.5
------
+## 6.2.5
+
 
 <span class='release_date'>September 12, 2019. Bugfix release</span>
 
@@ -1231,8 +1230,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix the script error after returning the *false* value from the [](api/event/ontaskloading.md) event handler
 - Add clearer error messages for the exceptions that can be thrown from [gantt.load](api/method/load.md) and [gantt.parse](api/method/parse.md)
 
-6.2.4
------
+## 6.2.4
+
 
 <span class='release_date'>September 5, 2019. Bugfix release</span>
 
@@ -1243,8 +1242,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix the issue which caused the [Zoom module](guides/zooming.md) to attach redundant DOM event handlers on each [re-initialization](api/method/init.md) of the Gantt
 
 
-6.2.3
------
+## 6.2.3
+
 
 <span class='release_date'>August 29, 2019. Bugfix release</span>
 
@@ -1261,8 +1260,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix the issue with [WBS](api/method/getwbscode.md) column not being updated after [sorting](guides/sorting.md) the gantt
 - Fix the incorrect display of [static_background](api/config/static_background.md) in [Material skin](guides/skins.md#materialskin)
 
-6.2.2
------
+## 6.2.2
+
 
 <span class='release_date'>August 13, 2019. Bugfix release</span>
 
@@ -1280,8 +1279,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix a disappearing modal overlay of the [lightbox](guides/default-edit-form.md) when a user changed the [type of a task](guides/typeselect.md)
 - Fix the [issue in keyboard navigation presets](https://docs.dhtmlx.com/gantt/desktop__keyboard_navigation.html#comment-4488512513), when [](api/event/onaftertaskupdate.md) was fired after **Shift+left arrow** hotkey even if the action was canceled using [](api/event/onbeforetaskmove.md)
 
-6.2.1
------
+## 6.2.1
+
 
 <span class='release_date'>August 7, 2019. Bugfix release</span>
 
@@ -1295,8 +1294,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Task dragging and drag-and-drop may finish on mouseup on any gantt element
 - Fix the script error which happened after saving an [unscheduled task](guides/unscheduled-tasks.md)
 
-6.2
--------
+## 6.2
+
 
 <span class='release_date'>July 16, 2019. Minor update</span>
 
@@ -1324,8 +1323,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Multiple tasks highlighting resets after rendering
 - Script error when destroying Gantt from data processor handler
 
-6.1.7
------
+## 6.1.7
+
 
 <span class='release_date'>June 27, 2019. Bugfix release</span>
 
@@ -1338,8 +1337,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix incorrect behavior which happened when users tried to switch between [inline editors](guides/inline-editing.md) using the `Tab` key if some columns of the grid were [hidden](guides/specifying-columns.md#visibility)
 - Fix unexpected behavior which prevented the [lightbox](guides/edit-form.md) and [inline editors](guides/inline-editing.md) from overriding [constraint dates](guides/auto-scheduling.md#timeconstraintsfortasks)
 
-6.1.6
------
+## 6.1.6
+
 
 <span class='release_date'>May 14, 2019. Bugfix release</span>
 
@@ -1351,8 +1350,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix issue when [](api/method/createtask.md) ignores the `index` parameter
 
 
-6.1.5
------
+## 6.1.5
+
 
 <span class='release_date'>April 25, 2019. Bugfix release</span>
 
@@ -1362,8 +1361,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix incorrect position of [vertical drag-and-drop](guides/reordering-tasks.md) placeholder in the [marker mode](guides/reordering-tasks.md#improving-performance-for-large-datasets)
 
 
-6.1.4
------
+## 6.1.4
+
 
 <span class='release_date'>April 18, 2019. Bugfix release</span>
 
@@ -1377,8 +1376,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix regression in GPL build which caused a script error on a second [gantt.init](api/method/init.md) call
 
 
-6.1.3
------
+## 6.1.3
+
 
 <span class='release_date'>April 15, 2019. Bugfix release</span>
 
@@ -1405,8 +1404,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix the bug which caused a task not to be recognized as a part of [critical path](guides/critical-path.md) after [id change](api/method/changetaskid.md)
 
 
-6.1.2
------
+## 6.1.2
+
 
 <span class='release_date'>March 26, 2019. Bugfix release</span>
 
@@ -1424,8 +1423,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix SalesForce compatibility: new resize listener was broken in SF, fallback is added
 
 
-6.1.1
------
+## 6.1.1
+
 
 <span class='release_date'>March 5, 2019. Bugfix release</span>
 
@@ -1440,8 +1439,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fix issues with [lightbox](api/config/lightbox.md) and the [tooltip extension](guides/tooltips.md) in the [full-screen mode](guides/fullscreen-mode.md)
 
 
-6.1
-------
+## 6.1
+
 
 <span class='release_date'>February 21, 2019. Minor update</span>
 
@@ -1461,8 +1460,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - [Project-level working calendars](guides/working-time.md#assigning-calendar-to-project) (PRO)
 - Ability to [import dhtmlxGantt as an ES6 module](guides/initializing-gantt-chart.md#moduleimport)
 
-6.0.7
------
+## 6.0.7
+
 
 <span class='release_date'>January 16, 2019. Bugfix release</span>
 
@@ -1475,8 +1474,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fixed script error after deleting [multiple selected tasks](guides/multiselection.md) using [keyboard navigation](guides/keyboard-navigation.md)
 - Fixed default mapping of [inline editors](guides/inline-editing.md). Inline editors shouldn't block keyboard shortcuts on task cells
 
-6.0.4
------
+## 6.0.4
+
 
 <span class='release_date'>December 27, 2018. Bugfix release</span>
 
@@ -1486,8 +1485,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fixed script error after deleting a sub-tree which contains selected task
 - Fixed script error on Save/Cancel lightbox containing resource filters
 
-6.0.2
------
+## 6.0.2
+
 
 <span class='release_date'>December 6, 2018. Bugfix release</span>
 
@@ -1500,8 +1499,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fixed page freeze on `gantt.parse` if tasks tree contains cyclic references, script error is thrown instead
 
 
-<b>6.0</b>
-----------
+## <b>6.0</b>
+
 
 <span class='release_date'>November 5, 2018. Major update</span>
 
@@ -1532,8 +1531,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - The [](api/method/importfromexcel.md) method
 - The *delimiter* option in the [groupBy](api/method/groupby.md) method for grouping resources
 
-5.2
---------------
+## 5.2
+
 
 <span class='release_date'>July 6, 2018. Minor update</span>
 
@@ -1557,8 +1556,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 - New methods and events for [undo](guides/undo-redo.md) and [autoscheduling](guides/auto-scheduling.md) extensions.
 
-5.1
-----------
+## 5.1
+
 
 <span class='release_date'>February 27, 2018. Minor update</span>
 
@@ -1589,8 +1588,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Fixed issues with the keyboard navigation in the smart rendering mode
 
 
-<b>5.0</b>
----------
+## <b>5.0</b>
+
 
 <span class='release_date'>December 12, 2017. Major update</span>
 
@@ -1607,8 +1606,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - New ["Material" skin](guides/skins.md#materialskin)
 
 
-4.2
-------------
+## 4.2
+
 
 <span class='release_date'>August 17, 2017. Minor update</span>
 
@@ -1630,8 +1629,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - GIF images in the Gantt skins are replaced with PNG
 
 
-4.1
----------
+## 4.1
+
 
 <span class='release_date'>September 1, 2016. Minor update</span>
 
@@ -1653,8 +1652,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - [Turkish locale](guides/localization.md#predefinedlocales) updated
 
 
-<b>4.0</b>
----------
+## <b>4.0</b>
+
 
 <span class='release_date'>December 1, 2015. Major update</span>
 
@@ -1675,8 +1674,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Public helpers for [popup messages](guides/message-boxes.md) added
 
 
-3.3
-----------
+## 3.3
+
 
 <span class='release_date'>July 21, 2015. Minor update</span>
 
@@ -1698,8 +1697,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - [REST mode for ajax loading/saving](guides/server-side.md)
 
 
-3.2
-----------------
+## 3.2
+
 
 <span class='release_date'>March 18, 2015. Minor update</span>
 
@@ -1723,8 +1722,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - New samples, methods, events
 
 
-3.1
-----------------
+## 3.1
+
 
 <span class='release_date'>October 25, 2014. Minor update</span>
 
@@ -1743,8 +1742,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Incorrect behavior of vertical markers when Gantt is cleared or reinitialized
 
 
-<b>3.0</b>
-----------------
+## <b>3.0</b>
+
 
 <span class='release_date'>September 11, 2014. Major update</span>
 
@@ -1770,8 +1769,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 
 - [New tree-related methods](guides/task-tree-operations.md)
 
-2.1
--------------
+## 2.1
+
 
 <span class='release_date'>March 28, 2014. Minor update</span>
 
@@ -1796,8 +1795,8 @@ The update brings multiple changes in the API methods. Check the [Migration](mig
 - Added more configurations, methods, events
 
 
-<b>2.0</b>
--------------------------------------
+## <b>2.0</b>
+
 
 <span class='release_date'>October 18, 2013. Major update</span>
 
