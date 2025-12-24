@@ -62,8 +62,8 @@ The default working time is the following:
 
 The method is used to alter the default settings.
 
-Configuration object properties
----------------------------------------
+## Configuration object properties
+
 
 The configuration object can contain the following properties:
 

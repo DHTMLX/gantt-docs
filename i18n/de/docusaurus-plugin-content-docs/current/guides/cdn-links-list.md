@@ -3,8 +3,8 @@ title: "Vollständige Liste der CDN-Links"
 sidebar_label: "Vollständige Liste der CDN-Links"
 ---
 
-Vollständige Liste der CDN-Links
-=====================
+# Vollständige Liste der CDN-Links
+
 
 Dieser Artikel bietet eine vollständige Sammlung von Links zum Hinzufügen der Gantt-Funktionalität über CDN.
 Jeder Abschnitt bezieht sich auf eine bestimmte Gantt-Version:
@@ -13,8 +13,8 @@ Jeder Abschnitt bezieht sich auf eine bestimmte Gantt-Version:
 - Skins - Links zu allen verfügbaren [Skins](guides/skins.md)
 
 
-Neueste Gantt-Version
------------------------
+## Neueste Gantt-Version
+
 
 Um die neueste Version der Bibliothek zu verwenden, setzen Sie den Quellpfad auf **https://cdn.dhtmlx.com/gantt/edge/...**
 
@@ -29,8 +29,8 @@ Skins: [Terrace](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_terrace.css
 [Material](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_material.css).
 
 
-Neueste Gantt-Version, Unkomprimiert
------------------------------
+## Neueste Gantt-Version, Unkomprimiert
+
 
 Für die unkomprimierte Version der neuesten Bibliothek verwenden Sie den Pfad **https://cdn.dhtmlx.com/gantt/edge/sources/...**
 
@@ -47,8 +47,8 @@ Skins: [Terrace]( https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_te
 [Material](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_material.css).
 
 
-Bestimmte Gantt-Version
---------------
+## Bestimmte Gantt-Version
+
 
 Um eine bestimmte Version der Bibliothek zu verwenden, setzen Sie den Quellpfad auf **https://cdn.dhtmlx.com/gantt/[version_number]/...**. 
 
@@ -65,8 +65,8 @@ Skins: [Terrace]( https://cdn.dhtmlx.com/gantt/4.0/skins/dhtmlxgantt_terrace.css
 [Material](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_material.css).
  
 
-Bestimmte Gantt-Version, Unkomprimiert 
--------------------------------
+## Bestimmte Gantt-Version, Unkomprimiert 
+
 
 Für die unkomprimierten Dateien einer bestimmten Version setzen Sie den Pfad auf **https://cdn.dhtmlx.com/gantt/[version_number]/sources/...**. 
 

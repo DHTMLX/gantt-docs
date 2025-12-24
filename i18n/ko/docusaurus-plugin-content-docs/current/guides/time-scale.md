@@ -3,8 +3,8 @@ title: "스케일 설정하기"
 sidebar_label: "스케일 설정하기"
 ---
 
-스케일 설정하기
-=======================
+# 스케일 설정하기
+
 
 ![gantt_right](/img/gantt_right.png)
 

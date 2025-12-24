@@ -3,8 +3,8 @@ title: "dhtmlxGantt 与 Vue.js 集成"
 sidebar_label: "Vue.js"
 ---
 
-dhtmlxGantt 与 Vue.js 集成
-========================
+# dhtmlxGantt 与 Vue.js 集成
+
 
 本指南假设你已经具备了 [Vue](https://vuejs.org/) 的基本概念和使用模式。如果你是 Vue 新手，建议先查阅 [Vue 3 文档](https://vuejs.org/guide/introduction.html) 以快速入门。
 

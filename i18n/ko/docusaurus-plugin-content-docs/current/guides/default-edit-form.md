@@ -3,8 +3,8 @@ title: "Lightbox 요소 구성하기"
 sidebar_label: "Lightbox 요소 구성하기"
 ---
 
-Lightbox 요소 구성하기
-===============================
+# Lightbox 요소 구성하기
+
 
 Lightbox는 작업 세부 정보를 수정하는 편집 폼 역할을 합니다. 
 
@@ -33,8 +33,8 @@ Lightbox는 작업 유형과 해당 작업의 특징에 따라 다르게 구성�
 v7.1.13부터 [gantt.config.csp](api/config/csp.md)가 *true*로 설정되어 있거나 Gantt가 Salesforce 환경에서 실행되는 경우, Lightbox는 Gantt 컨테이너 내부에 렌더링됩니다.
 :::
 
-Lightbox 구조
-------------------------
+## Lightbox 구조
+
 
 ### 섹션(Sections)
 

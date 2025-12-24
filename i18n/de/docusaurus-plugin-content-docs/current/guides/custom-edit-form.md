@@ -3,11 +3,11 @@ title: "Custom Lightbox"
 sidebar_label: "Custom Lightbox"
 ---
 
-Custom Lightbox
-===============
+# Custom Lightbox
 
-Möglichkeiten zur Erstellung eines benutzerdefinierten Lightbox
----------------------------------------------------------------
+
+## Möglichkeiten zur Erstellung eines benutzerdefinierten Lightbox
+
 
 Es ist möglich, eine vollständig benutzerdefinierte Lightbox für das Gantt-Diagramm zu erstellen und die Standard-Lightbox zu ersetzen. Es gibt zwei Hauptansätze:
 
@@ -127,8 +127,8 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 });
 ~~~
 
-Verarbeitung von Aktionen im benutzerdefinierten Formular
---------------------------------------------------------
+## Verarbeitung von Aktionen im benutzerdefinierten Formular
+
 
 Wenn das Formular gespeichert wird, müssen die Formularwerte manuell abgerufen und die entsprechende Aufgabe über die öffentliche API aktualisiert werden: [addTask](api/method/addtask.md), [updateTask](api/method/updatetask.md) und [deleteTask](api/method/deletetask.md).
 

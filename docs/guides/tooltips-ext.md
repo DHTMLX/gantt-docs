@@ -3,8 +3,8 @@ title: "Tooltips Extension"
 sidebar_label: "Tooltips Extension"
 ---
 
-Tooltips Extension
-======================
+# Tooltips Extension
+
 
 Read details about the Tooltips extension in the article [Tooltips for Gantt Elements](guides/tooltips.md).
 

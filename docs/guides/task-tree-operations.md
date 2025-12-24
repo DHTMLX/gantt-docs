@@ -3,15 +3,15 @@ title: "Task Parent/Child"
 sidebar_label: "Task Parent/Child"
 ---
 
-Task Parent/Child
-=============================
+# Task Parent/Child
+
 
 In this article you will find methods related to the tree nature of the Gantt chart tasks.
 
 *To learn about basic operations of getting the task object/id, refer to the [Task Object/Id](guides/task-object-operations.md) article.*
 
-Parent of a task
----------------------------------------
+## Parent of a task
+
 To get the parent of a task, use the [getParent](api/method/getparent.md) method or the "**parent**" property of the task's object:
 
 ~~~js
@@ -23,8 +23,8 @@ var taskParent = taskObj.parent;  //-> "pr_2"
 Note, if there is no parent for the specified task, the method returns the [root id](api/config/root_id.md).
 
 
-Children of a task
---------------------------
+## Children of a task
+
 To get children of a branch task, use the [getChildren](api/method/getchildren.md) method:
 
 ~~~js
@@ -47,8 +47,8 @@ gantt.eachTask(function(child){
 }, 11);
 ~~~
 
-Checking if a task has a child
-----------------------------------------
+## Checking if a task has a child
+
 To check if some task has a child task, use the [hasChild](api/method/haschild.md) method:
 
 ~~~js
@@ -69,8 +69,8 @@ gantt.hasChild("p_1"); //-> true  /*!*/
 gantt.hasChild("t_1"); //-> false /*!*/
 ~~~
 
-Next task in a tree
---------------------------------------
+## Next task in a tree
+
 To get the object of a task next to the specified one, use the [getNext](api/method/getnext.md) method:
 
 ~~~js
@@ -95,8 +95,8 @@ gantt.getNext("t_2"); -> null    /*!*/
 Note, the gantt considers tasks regardless of the tree level
 
 
-Previous task in a tree
---------------------------------------
+## Previous task in a tree
+
 To get the object of a task next to the specified one, use the [getPrev](api/method/getprev.md) method:
 
 ~~~js
@@ -121,8 +121,8 @@ gantt.getPrev("t_2"); -> "t_1"   /*!*/
 Note, the gantt considers tasks regardless of the tree level
 
 
-Siblings of a task
----------------------------------------
+## Siblings of a task
+
 To get siblings of the specified task, use the [getSiblings](api/method/getsiblings.md) method:
 
 ~~~js
@@ -143,8 +143,8 @@ gantt.getSiblings("t_1"); ->  ["t_1", "t_2] /*!*/
 ~~~
 
 
-Next sibling of a task
----------------------------------------
+## Next sibling of a task
+
 To get the next sibling of the specified task, use the [getNextSibling](api/method/getnextsibling.md) method:
 
 ~~~js
@@ -166,8 +166,8 @@ gantt.getNextSibling("t_2"); ->  null (if no next sibling) /*!*/
 ~~~
 
 
-Previous sibling of a task
----------------------------------------
+## Previous sibling of a task
+
 To get the previous sibling of the specified task, use the [getPrevSibling](api/method/getprevsibling.md) method:
 
 ~~~js

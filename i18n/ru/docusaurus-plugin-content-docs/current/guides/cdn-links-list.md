@@ -3,8 +3,8 @@ title: "Полный список CDN-ссылок"
 sidebar_label: "Полный список CDN-ссылок"
 ---
 
-Полный список CDN-ссылок
-=====================
+# Полный список CDN-ссылок
+
 
 В этой статье представлен полный набор ссылок для добавления функциональности Gantt через CDN.
 Каждый раздел относится к определённой версии Gantt:
@@ -13,8 +13,8 @@ sidebar_label: "Полный список CDN-ссылок"
 - Скины - ссылки на все доступные [скины](guides/skins.md)
 
 
-Последняя версия Gantt
------------------------
+## Последняя версия Gantt
+
 
 Чтобы использовать самую свежую версию библиотеки, укажите путь к исходнику **https://cdn.dhtmlx.com/gantt/edge/...**
 
@@ -29,8 +29,8 @@ sidebar_label: "Полный список CDN-ссылок"
 [Material](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_material.css).
 
 
-Последняя версия Gantt, не сжатая
------------------------------
+## Последняя версия Gantt, не сжатая
+
 
 Для не сжатой версии последней библиотеки используйте путь **https://cdn.dhtmlx.com/gantt/edge/sources/...**
 
@@ -47,8 +47,8 @@ sidebar_label: "Полный список CDN-ссылок"
 [Material](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_material.css).
 
 
-Конкретная версия Gantt
---------------
+## Конкретная версия Gantt
+
 
 Чтобы использовать определённую версию библиотеки, укажите путь к исходнику как **https://cdn.dhtmlx.com/gantt/[version_number]/...**.
 
@@ -65,8 +65,8 @@ sidebar_label: "Полный список CDN-ссылок"
 [Material](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_material.css).
  
 
-Конкретная версия Gantt, не сжатая
--------------------------------
+## Конкретная версия Gantt, не сжатая
+
 
 Для не сжатых файлов выбранной версии укажите путь как **https://cdn.dhtmlx.com/gantt/[version_number]/sources/...**.
 

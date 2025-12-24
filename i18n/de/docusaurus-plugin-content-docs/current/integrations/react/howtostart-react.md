@@ -3,8 +3,8 @@ title: "dhtmlxGantt mit React"
 sidebar_label: "Low-Level-Integration"
 ---
 
-dhtmlxGantt mit React
-=====================
+# dhtmlxGantt mit React
+
 
 :::note
 Dieses Tutorial zeigt, wie Sie das JS DHTMLX Gantt in React-Anwendungen verwenden. Für die offizielle React Gantt-Komponente lesen Sie bitte den Artikel [React Gantt](integrations/react.md).

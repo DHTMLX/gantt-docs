@@ -3,8 +3,8 @@ title: "模板控件"
 sidebar_label: "模板控件"
 ---
 
-模板控件
-=====================================
+# 模板控件
+
 
 这是一个用于容纳部分 HTML 内容的容器。
 
@@ -30,8 +30,8 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 [Template control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/05_template.html)
 
 
-初始化
------------------
+## 初始化
+
 
 要在 lightbox 中包含 **template** 控件，需要完成以下步骤:
 
@@ -63,8 +63,8 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 ~~~
 
 
-属性
---------------
+## 属性
+
 
 以下是 **template** 控件常用的一些属性（完整列表请参见 [这里](api/config/lightbox.md)）:
 

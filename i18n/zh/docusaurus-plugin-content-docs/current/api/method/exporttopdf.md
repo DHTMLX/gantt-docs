@@ -115,8 +115,8 @@ gantt.exportToPDF({
   </tbody>
 </table>
 
-时间限制
----------------------
+## 时间限制
+
 
 :::note
  导出服务有时间限制。 
@@ -134,8 +134,8 @@ Error: Timeout trigger 20 seconds
  对于大型图表导出，建议使用[独立导出模块](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。该模块随 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)、[Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 或 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 许可证免费提供，也可单独购买，详见 [这里](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210)。 
 :::
 
-多页导出
--------------------
+## 多页导出
+
 
 请注意，导出模块无法:
 

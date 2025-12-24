@@ -3,8 +3,8 @@ title: "Zeitsteuerung"
 sidebar_label: "Zeitsteuerung"
 ---
 
-Zeitsteuerung
-=================
+# Zeitsteuerung
+
 
 Dieses Steuerelement bietet zwei Auswahlfelder, mit denen die Dauer einer Aufgabe durch Festlegen von Start- und Enddatum bestimmt werden kann.
 
@@ -21,8 +21,8 @@ gantt.config.lightbox.sections="["
 [Time control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/07_time.html)
 
 
-Initialisierung
----------------------------
+## Initialisierung
+
 
 Um das **time**-Steuerelement im Lightbox-Dialog einzubinden, gehen Sie wie folgt vor:
 
@@ -42,8 +42,8 @@ gantt.locale.labels.section_period = "Time period";
 ~~~
 
 
-Eigenschaften
--------------------------
+## Eigenschaften
+
 
 Hier sind einige wichtige Eigenschaften, die häufig mit dem 'time'-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 
@@ -60,8 +60,8 @@ Hier sind einige wichtige Eigenschaften, die häufig mit dem 'time'-Steuerelemen
 - **time_format** - (*string*) steuert die Reihenfolge der Datums- und Zeitauswahlfelder
 - **autofix_end** - (*boolean*) legt fest, ob das Enddatum automatisch angepasst wird, wenn das Startdatum darüber hinausgeht. Standardmäßig ist dies *true*. Wenn deaktiviert, ist eine Datumvalidierung möglich. Ist es aktiviert, aber ohne Validierung, kann es vorkommen, dass Aufgaben eine Dauer von null erhalten, wenn das *start_date* nach dem *end_date* liegt.
  
-Konfiguration der Datums- und Zeitauswahlfelder 
--------------------------------------------------
+## Konfiguration der Datums- und Zeitauswahlfelder 
+
 
 Um die Auswahlfelder im Abschnitt "duration" oder "time" anzupassen, verwenden Sie die Eigenschaft [time_format](api/config/lightbox.md) (siehe [Date Format Specification](guides/date-format.md)):
 
@@ -96,8 +96,8 @@ time_format:["%H:%i", "%M", "%d", "%Y"] // "%m" durch "%M" ersetzt
 ~~~
 
 
-Zuordnung zu benutzerdefinierten Start-/Enddatum-Eigenschaften
--------------------------------------------------
+## Zuordnung zu benutzerdefinierten Start-/Enddatum-Eigenschaften
+
 
 ### Standardzuordnung
 
@@ -131,8 +131,8 @@ Wenn eine Eigenschaft ausgelassen wird, verwendet das Steuerelement die entsprec
 :::
 
 
-Sichtbarkeit des Abschnitts umschalten
---------------------------
+## Sichtbarkeit des Abschnitts umschalten
+
 
 Sie können die Sichtbarkeit des Zeitabschnitts steuern, indem Sie **type:"time_optional"** mit **button: true** in der Lightbox-Abschnittskonfiguration setzen:
 

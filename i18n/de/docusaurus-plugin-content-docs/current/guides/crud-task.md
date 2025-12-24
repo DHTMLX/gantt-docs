@@ -3,14 +3,14 @@ title: "Grundlegende Operationen mit Aufgaben"
 sidebar_label: "Grundlegende Operationen mit Aufgaben"
 ---
 
-Grundlegende Operationen mit Aufgaben
-========================================
+# Grundlegende Operationen mit Aufgaben
+
 
 In diesem Kapitel erfahren Sie, wie Sie grundlegende Aufgabenoperationen ausführen: Aufgaben erstellen, löschen und Eigenschaften dynamisch aktualisieren.
 
 
-Hinzufügen einer neuen Aufgabe
-----------------------------
+## Hinzufügen einer neuen Aufgabe
+
 
 Um eine neue Aufgabe zum Gantt-Diagramm hinzuzufügen, verwenden Sie die Methode [addTask](api/method/addtask.md):
 
@@ -49,8 +49,8 @@ Blenden Sie anschließend die "Add"-Schaltfläche für diese Zeilen aus:
 [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
 
-Aktualisieren einer Aufgabeneigenschaft
-------------------------------
+## Aktualisieren einer Aufgabeneigenschaft
+
 
 Um eine Eigenschaft eines Aufgabenobjekts dynamisch zu aktualisieren, verwenden Sie die Methode [updateTask](api/method/updatetask.md):
 
@@ -74,8 +74,8 @@ task.text = "Task #10_1";
 gantt.refreshTask(10);
 ~~~
 
-Neuzeichnen von Aufgaben
-----------------------
+## Neuzeichnen von Aufgaben
+
 
 Um alle Aufgaben im Gantt-Diagramm neu zu zeichnen, verwenden Sie die Methode [refreshData](api/method/refreshdata.md):
 
@@ -88,8 +88,8 @@ task2.text = "Task #11_1";/*!*/
 gantt.refreshData(); /*!*/ 
 ~~~
 
-Löschen von Aufgaben
--------------------------------
+## Löschen von Aufgaben
+
 
 Um eine Aufgabe zu entfernen, verwenden Sie die Methode [deleteTask](api/method/deletetask.md):
 
@@ -97,8 +97,8 @@ Um eine Aufgabe zu entfernen, verwenden Sie die Methode [deleteTask](api/method/
 gantt.deleteTask(taskId);
 ~~~
 
-Kaskadierendes Löschen von verschachtelten Aufgaben
----------------------------
+## Kaskadierendes Löschen von verschachtelten Aufgaben
+
 
 Die Einstellung [cascade_delete](api/config/cascade_delete.md) steuert, wie Aufgabenlöschungen gehandhabt werden. Standardmäßig ist sie auf *true* gesetzt, was bedeutet, dass das Löschen einer Aufgabe Anfragen an den Server für jede verschachtelte Aufgabe und jede damit verknüpfte Verbindung auslöst.
 
@@ -113,8 +113,8 @@ Mit dieser Einstellung sendet Gantt nur eine Anfrage zum Löschen der übergeord
 Diese Option beeinflusst die Backend-Implementierung. Weitere Informationen finden Sie im 
 [entsprechenden Abschnitt des Artikels Server-side Integration](guides/server-side.md#cascadedeletion).
 
-Entfernen aller Aufgaben aus dem Gantt-Diagramm
--------------------------------------------
+## Entfernen aller Aufgaben aus dem Gantt-Diagramm
+
 
 Um alle Aufgaben aus dem Gantt-Diagramm zu löschen, verwenden Sie die Methode [clearAll](api/method/clearall.md):
 

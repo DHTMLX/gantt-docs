@@ -3,8 +3,8 @@ title: "라이트박스의 버튼 변경하기"
 sidebar_label: "라이트박스의 버튼 변경하기"
 ---
 
-라이트박스의 버튼 변경하기
-============================================
+# 라이트박스의 버튼 변경하기
+
 라이트박스의 기본 버튼을 사용자 정의할 수 있습니다. 예를 들어, 작업을 보기만 하는 사용자에게는 'Edit' 버튼을 숨기거나, 작업 설명을 인쇄할 수 있도록 새로운 "Print" 버튼을 추가할 수 있습니다.
 
 ![complete_button](/img/complete_button.png)
@@ -73,8 +73,8 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 [Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
 
 
-버튼 레이블 변경하기
------------------------
+## 버튼 레이블 변경하기
+
 
 버튼 레이블은 Gantt를 초기화하기 전에 아래와 같은 구문으로 재정의할 수 있습니다:
 

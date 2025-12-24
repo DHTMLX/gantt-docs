@@ -40,7 +40,7 @@ gantt.config.lightbox.sections=[
 
 **sections** 数组中的每个对象根据[section 类型](guides/default-edit-form.md)可以拥有不同的属性:
 
-## #所有部分的通用属性
+## 所有部分的通用属性
 
 - **name** - (*字符串*) - 部分的标识符（dhtmlxGantt 用它从 *locale.labels* 集合中获取标签）。例如，**time** 部分会使用 **gantt.locale.labels.section_time** 中的标签。
 - **map_to** - (*字符串*) - 该部分绑定的数据属性名。
@@ -49,7 +49,7 @@ gantt.config.lightbox.sections=[
 - **focus?** - (*布尔*) - 可选，若为 true，lightbox 打开时该部分会自动获得焦点。
 - **formatter?** - (*DurationFormatter | LinkFormatter*) - 可选，为该部分指定格式化器。
 
-## #时间与持续时间控件 
+## 时间与持续时间控件 
 
 - **readonly?** - (*布尔*) - 可选，若为 true，该部分将变为只读。
 - **year_range?** - (*数字 | 数组*) - 可选，定义年份选择器的范围。可用两种方式指定:
@@ -59,12 +59,12 @@ gantt.config.lightbox.sections=[
 - **time_format?** - (*字符串数组*) - 可选，定义日期时间选择器的顺序。
 - **autofix_end?** - (*布尔*) - 可选，当开始日期晚于结束日期时是否自动调整结束日期。默认开启。关闭后允许手动验证，但若无验证，任务可能出现持续时间为零的情况。
 
-## #Select 控件
+## Select 控件
 
 - **onchange? (*e*): any** - 可选，为该部分控件设置 'onChange' 事件处理函数。
     - **_e_** - (*事件对象*) - 原生事件对象。
 
-## #Select、Checkbox、Radio 和 Resources 控件
+## Select、Checkbox、Radio 和 Resources 控件
 
 - **options?** - (*对象数组*) - 可选，控件的选项列表。数组中的每个对象包含以下属性:
     - **_key_** - (*数字 | 字符串*) - 选项标识符，用于匹配任务的数据属性。
@@ -72,7 +72,7 @@ gantt.config.lightbox.sections=[
     - **_unit?_** - (*字符串 | 数字*) - 可选，资源控件中使用的单位。
 - **default_value?** - (*任意类型*) - 可选，当输入值未定义时使用的默认值。对于资源控件，如果资源值未定义则使用此默认值。
 
-## #Parent 控件
+## Parent 控件
 
 - **allow_root?** - (*布尔*) - 可选，若为 true，添加一个额外选项用于选择根级作为父任务。此属性与 **root_label** 配合使用。
 - **root_label?** - (*字符串*) - 可选，定义根级父任务选项的标签。与 **allow_root** 一起使用。
@@ -87,7 +87,7 @@ gantt.config.lightbox.sections=[
     - **_end_date_** - (*日期 | 数字*) - 任务结束日期。
     - **_task_** - (*任务对象*) - 任务对象。
 
-## #Typeselect 控件
+## Typeselect 控件
 
 - **filter** - (*函数*) - 为任务类型设置过滤函数，接收类型名称作为参数。
 

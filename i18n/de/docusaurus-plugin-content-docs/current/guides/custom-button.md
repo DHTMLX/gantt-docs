@@ -3,8 +3,8 @@ title: "Ändern der Schaltflächen im Lightbox"
 sidebar_label: "Ändern der Schaltflächen im Lightbox"
 ---
 
-Ändern der Schaltflächen im Lightbox
-============================================
+# Ändern der Schaltflächen im Lightbox
+
 Es ist möglich, die Standardschaltflächen im Lightbox anzupassen. Zum Beispiel kann die 'Edit'-Schaltfläche für Benutzer, die Aufgaben nur ansehen dürfen, ausgeblendet werden, oder eine neue "Drucken"-Schaltfläche kann hinzugefügt werden, um die Aufgabenbeschreibung zu drucken.
 
 ![complete_button](/img/complete_button.png)
@@ -69,8 +69,8 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 [Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
 
 
-Schaltflächenbeschriftungen ändern
------------------------
+## Schaltflächenbeschriftungen ändern
+
 
 Die Beschriftungen der Schaltflächen können vor der Initialisierung von Gantt mit folgender Syntax geändert werden:
 

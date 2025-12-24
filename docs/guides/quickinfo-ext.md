@@ -3,16 +3,16 @@ title: "quickInfo Extension"
 sidebar_label: "quickInfo Extension"
 ---
 
-quickInfo Extension
-=======================
+# quickInfo Extension
+
 
 Read details about the quickInfo extension in the [Quick Info (Touch Support)](guides/quick-info.md) article.
 
 
 The *quickInfo* object possesses the following API:
 
-Methods
-----------------
+## Methods
+
 
 - <span class="submethod">**show (id): void**</span> - displays the quick info popup for a specified element
     - **_id_** - (*number | string*) - the task ID

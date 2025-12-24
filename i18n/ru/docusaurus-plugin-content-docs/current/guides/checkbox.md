@@ -3,8 +3,8 @@ title: "Контрол Checkbox"
 sidebar_label: "Контрол Checkbox"
 ---
 
-Контрол Checkbox
-==================
+# Контрол Checkbox
+
 
 Это простой двухпозиционный контрол checkbox, используемый для переключения опций или нескольких значений в режимах включено/выключено.
 
@@ -37,8 +37,8 @@ gantt.config.lightbox.project_sections = [
 [Split task](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
 
 
-Инициализация
---------------------------
+## Инициализация
+
 
 Чтобы добавить контрол **checkbox** в lightbox, необходимо:
 
@@ -66,8 +66,8 @@ gantt.locale.labels.section_split = "Display";
 [Split task](https://docs.dhtmlx.com/gantt/samples/04_customization/11_split_task.html)
 
 
-Свойства
-------------
+## Свойства
+
 
 Ниже приведены основные свойства, которые часто используются с контролом **checkbox** (полный список можно найти [здесь](api/config/lightbox.md)):
 
@@ -82,8 +82,8 @@ gantt.locale.labels.section_split = "Display";
   
 
 
-Заполнение контрола данными
-------------------------------
+## Заполнение контрола данными
+
 
 Для задания значений контрола **checkbox** обычно используется параметр [options](api/config/lightbox.md):
 

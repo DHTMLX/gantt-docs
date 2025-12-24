@@ -3,11 +3,11 @@ title: "将数据序列化为 XML 和 JSON"
 sidebar_label: "将数据序列化为 XML 和 JSON"
 ---
 
-将数据序列化为 XML 和 JSON
-===============================================
+# 将数据序列化为 XML 和 JSON
 
-JSON 格式
---------------------------------------------------
+
+## JSON 格式
+
 
 要将甘特图中的数据转换为 JSON 对象，可以像下面这样使用 [serialize](api/method/serialize.md) 方法:
 
@@ -24,8 +24,8 @@ var json = gantt.serialize();
 }
 ~~~
 
-XML 格式
-----------------------------------
+## XML 格式
+
 
 要将甘特图中的数据转换为 XML 字符串，可以如下使用 [serialize](api/method/serialize.md) 方法:
 

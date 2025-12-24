@@ -3,8 +3,8 @@ title: "Dynamisches Laden (bei Bedarf)"
 sidebar_label: "Dynamisches Laden (bei Bedarf)"
 ---
 
-Dynamisches Laden (bei Bedarf)
-=========================================
+# Dynamisches Laden (bei Bedarf)
+
 :::info
 pronote Diese Funktion ist nur in der PRO-Edition verfügbar. 
 :::
@@ -13,8 +13,8 @@ Standardmäßig lädt dhtmlxGantt alle Daten auf einmal, was bei einer großen A
 
 In solchen Fällen kann der Modus für dynamisches Laden verwendet werden, um Daten nach Zweigen (Teilprojekten), Ebene für Ebene, zu laden, während der Nutzer sie erweitert.
 
-Funktionsweise
-----------------
+## Funktionsweise
+
 
 Wenn das dynamische Laden [aktiviert](#enablingdynamicloading) ist, sendet der Aufruf von [gantt.load("url")](api/method/load.md) eine GET-Anfrage an die angegebene URL und erwartet als Antwort nur die Aufgaben der obersten Ebene, wobei alle verschachtelten Zweige zunächst geschlossen sind.
 
@@ -96,8 +96,8 @@ $gantt->event->attach("beforeRender","check_children");
 [Loading subtasks on demand (branch loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
 
 
-Datenformat für dynamisches Laden
------------------------
+## Datenformat für dynamisches Laden
+
 
 Das Datenformat für das dynamische Laden sieht folgendermaßen aus:
 

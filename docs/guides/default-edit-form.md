@@ -3,8 +3,8 @@ title: "Configuring Lightbox Elements"
 sidebar_label: "Configuring Lightbox Elements"
 ---
 
-Configuring Lightbox Elements 
-================================
+# Configuring Lightbox Elements 
+
 
 Lightbox is an edit form used to change the task's details. 
 
@@ -33,8 +33,8 @@ The overall type structure looks like this:
 From v7.1.13, if either [gantt.config.csp](api/config/csp.md) is set to *true* or Gantt works in the Salesforce environment, the lightbox will be rendered inside the Gantt container.
 :::
 
-Lightbox structure
-------------------------
+## Lightbox structure
+
 
 ### Sections
 

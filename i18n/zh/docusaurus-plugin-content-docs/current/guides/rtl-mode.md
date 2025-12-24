@@ -3,8 +3,8 @@ title: "RTL（从右到左）模式"
 sidebar_label: "RTL（从右到左）模式"
 ---
 
-RTL（从右到左）模式
-========================
+# RTL（从右到左）模式
+
 
 ![rtl_mode](/img/rtl_mode.png)
 

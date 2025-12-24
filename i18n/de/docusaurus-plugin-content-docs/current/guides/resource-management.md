@@ -3,8 +3,8 @@ title: "Ressourcenmanagement"
 sidebar_label: "Ressourcenmanagement"
 ---
 
-Ressourcenmanagement
-======================
+# Ressourcenmanagement
+
 
 :::info
 Diese Funktion ist nur in der Gantt PRO Edition enthalten.
@@ -18,8 +18,8 @@ Gantt bietet vordefinierte Ressourcenansichten, um die Auslastung der Ressourcen
 Gantt berechnet die Ressourcenauslastung selbst nicht und bietet dafür keine integrierten Methoden, stellt aber eine öffentliche API bereit, mit der Sie jede gewünschte benutzerdefinierte Funktionalität erstellen können.
 :::
 
-Ressourcenansicht-Panel
-------------------------
+## Ressourcenansicht-Panel
+
 
 dhtmlxGantt stellt zwei vordefinierte Layout-Ansichten zur Anzeige der Ressourcenauslastung bereit: das Ressourcen-Auslastungsdiagramm und das Ressourcen-Histogramm.
 
@@ -719,8 +719,8 @@ Wenn Ressourcen über die *serverList*-Collection definiert werden, können sie 
 
 Weitere Hinweise zur Konfiguration des Ressourcen-Controls im Lightbox finden Sie im Artikel [Resources Control](guides/resources.md).
 
-Ressourcen und Ressourcenzuweisungen laden
-------------------------------------------
+## Ressourcen und Ressourcenzuweisungen laden
+
 
 Ab Version 8.0 können Ressourcen und Ressourcenzuweisungen mit den Methoden [gantt.parse()](api/method/parse.md) oder [gantt.load()](api/method/load.md) in das Gantt geladen werden:
 
@@ -792,8 +792,8 @@ gantt.parse({
 });
 ~~~
 
-Verwaltung von Ressourcenzuweisungen
----------------------------
+## Verwaltung von Ressourcenzuweisungen
+
 
 ### Parsen von Ressourcenzuweisungen
 
@@ -847,8 +847,8 @@ assignmentStore.updateItem(assignment.id);
 gantt.updateTaskAssignments(taskId);
 ~~~
 
-Anzeige der Ressourcen einer Aufgabe
-----------------------
+## Anzeige der Ressourcen einer Aufgabe
+
 
 Ressourcennamen können als Teil der Aufgabenbeschreibung oder als Labels in den Rasterzellen angezeigt werden. Da Gantt keine eingebaute Methode zum Abrufen eines Elements aus der Serverliste per ID bietet, kann eine einfache Hilfsfunktion verwendet werden:
 
@@ -881,8 +881,8 @@ gantt.templates.rightside_text = function(start, end, task){
 [Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
 
 
-Editierbares Ressourcen-Diagramm
--------------------------
+## Editierbares Ressourcen-Diagramm
+
 
 Um das Bearbeiten von Ressourcenzuweisungen direkt im Ressourcen-Diagramm zu ermöglichen, setzen Sie folgende Konfiguration:
 
@@ -913,8 +913,8 @@ Unten ein Beispiel für ein Template mit editierbaren Zellen, das nach Bedarf an
 
 **Related example:** [Customizable resource diagram template](https://snippet.dhtmlx.com/libwuna4?tag="gantt")
 
-Individuelle Gestaltung von Ressourcen
-------------------------
+## Individuelle Gestaltung von Ressourcen
+
 
 Für die Farbgebung werden häufig folgende Templates verwendet:
 
@@ -931,8 +931,8 @@ Je nach Szenario können Sie entweder:
 [Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
 
 
-Ressourcenkalender
-------------------
+## Ressourcenkalender
+
 
 Gantt unterstützt individuelle Arbeitszeit-Kalender, die bestimmten Ressourcen zugeordnet werden können.
 
@@ -961,8 +961,8 @@ Wenn mehreren Ressourcen eine Aufgabe zugewiesen ist, kann Gantt [automatisch ei
 
 Weitere Details finden Sie im zugehörigen Artikel [Zuweisen von Kalendern zu Ressourcen](guides/working-time.md#assigningcalendartoresource).
 
-Auslastung von Ressourcen ausgleichen
-------------------------
+## Auslastung von Ressourcen ausgleichen
+
 
 Die [Grouping-Erweiterung](guides/extensions-list.md#grouping) ermöglicht die Aufschlüsselung des gesamten Projekts nach der **resource**-Property.
 

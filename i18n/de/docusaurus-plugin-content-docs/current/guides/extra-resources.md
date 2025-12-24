@@ -3,8 +3,8 @@ title: "Allgemeine Funktionen"
 sidebar_label: "Allgemeine Funktionen"
 ---
 
-Allgemeine Funktionen
-=============================
+# Allgemeine Funktionen
+
 
 - [Localization](guides/localization.md)
 - [Full Screen Mode](guides/fullscreen-mode.md)

@@ -51,8 +51,8 @@ const targetLinks = taskObj.$target;       //-> ["l5","l8"] - ids of coming-into
 ~~~
 
 
-Error
------------
+## Error
+
 
 The **getTask** method expects a task with a required "id" is loaded into Gantt. Therefore, if no task with this "id" is found, the method will produce an error message: "Task not found id = ID". 
 

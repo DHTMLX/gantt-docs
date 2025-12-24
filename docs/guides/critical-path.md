@@ -3,8 +3,8 @@ title: "Critical Path"
 sidebar_label: "Critical Path"
 ---
 
-Critical Path
-===================================
+# Critical Path
+
 
 :::info
 This functionality is available only in the PRO edition
@@ -60,8 +60,8 @@ Sometimes it may create performance issues. For that case, the component provide
 a certain task or link and implement a performance-friendlier strategy for displaying a critical path.
 
 
-Critical path logic
---------------------
+## Critical path logic
+
 
 Gantt considers a task as a critical one in the following cases:
 
@@ -136,8 +136,8 @@ const tasks = {
 Unfortunately, there is no way to change the built-in logic that defines the critical path.
 But you can [customize the critical path behaviour](#customizing-the-critical-path-behaviour).
 
-Checking if a task is critical 
----------------------------------------
+## Checking if a task is critical 
+
 To check if some task is critical, use the [isCriticalTask](api/method/iscriticaltask.md) method:
 
 ~~~js
@@ -152,8 +152,8 @@ gantt.isCriticalTask(gantt.getTask("task3"));// ->'true' /*!*/
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-Checking if a link is critical 
----------------------------------------
+## Checking if a link is critical 
+
 
 To check if a link is critical (connects 2 critical tasks), use the [isCriticalLink](api/method/iscriticallink.md) method:
 
@@ -199,8 +199,8 @@ gantt.getTotalSlack(task);
 
 ![Slack](/img/show_slack.png)
 
-Customizing the critical path behaviour
----------------------------------------------
+## Customizing the critical path behaviour
+
 By default, the gantt applies the default behavior to a critical path, such as default style for highlighting, re-calculating the critical path with each data update.
 
 To manipulate the visibility of the critical path, use the following approach:
@@ -265,13 +265,13 @@ It is also possible to highlight tasks and links manually:
 
 **Related sample:** [Custom critical path per project](https://snippet.dhtmlx.com/jd4dyc5p)
 
-Setting lag and lead times between tasks
----------------------------------
+## Setting lag and lead times between tasks
+
 
 It's possible to set lag and lead times between tasks of the critical path. You find the details [here](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks).
 
-Scheduling completed tasks
-----------------------------
+## Scheduling completed tasks
+
 
 By default, there is no difference in how the critical path algorithm processes completed tasks (tasks which have progress value of 1) and incomplete tasks.
 

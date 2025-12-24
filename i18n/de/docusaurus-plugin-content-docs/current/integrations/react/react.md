@@ -3,16 +3,16 @@ title: "React Gantt"
 sidebar_label: "Übersicht"
 ---
 
-React Gantt
-==================
+# React Gantt
+
 
 :::note
 React Gantt ist verfügbar unter [Commercial, Enterprise und Ultimate licenses](https://dhtmlx.com/docs/products/licenses.shtml).
 Für Benutzer der Individual- oder GPL-Editionen von Gantt beachten Sie bitte die Anleitung [How to Start](integrations/react/quick-start.md) für React.
 :::
 
-Überblick
---------------------
+## Überblick
+
 
 DHTMLX Gantt ist eine reine JavaScript-Komponente, die mit jeder Browserumgebung kompatibel ist. Die Commercial- und höherwertigen Editionen beinhalten eine **React Gantt**-Komponente, die DHTMLX Gantt umschließt und so eine einfache native Integration in React-Anwendungen ermöglicht.
 
@@ -27,8 +27,8 @@ Dieser Wrapper erlaubt es, ein voll funktionsfähiges Gantt-Diagramm mit dem bek
 
 Für Einsteiger in DHTMLX Gantt bietet die [DHTMLX Gantt Dokumentation](guides.md) einen Überblick über Funktionen wie [Work Time Calculation](guides/working-time.md), [Auto Scheduling](guides/auto-scheduling.md), [Resource Management](guides/resource-management.md) und mehr.
 
-Installation und NPM-Zugang
--------------------
+## Installation und NPM-Zugang
+
 
 **Installation der Testversion der React Gantt-Komponente**
 
@@ -43,13 +43,13 @@ Beachten Sie, dass die Testversion nur 30 Tage gültig ist.
 Der Zugang zum privaten DHTMLX npm ist über den [Client's Area](https://dhtmlx.com/clients/) verfügbar, wo Sie Ihren npm-Login und Ihr Passwort generieren können. Dort finden Sie eine ausführliche Installationsanleitung. Beachten Sie, dass der Zugriff auf das private npm eine aktive proprietäre Gantt-Lizenz erfordert.
 :::
 
-Versionsanforderungen
---------------------
+## Versionsanforderungen
+
 
 - React `v18.0.0` oder höher
 
-Grundlegende Verwendung
--------------------
+## Grundlegende Verwendung
+
 
 Nachfolgend ein einfaches Beispiel, das zeigt, wie das Gantt-Diagramm importiert und gerendert wird:
 
@@ -106,8 +106,8 @@ const demoData = {
 export demoData;
 ~~~
 
-Datenbindung
---------------------
+## Datenbindung
+
 
 Der **ReactGantt**-Wrapper unterstützt flexible Optionen zum Laden und Speichern von Daten. Es gibt zwei Hauptmethoden, um Änderungen an Ihren Gantt-Daten zu verwalten:
 
@@ -300,8 +300,8 @@ interface DataCallbackChange<T> {
 }
 ~~~
 
-Konfiguration & Props
--------------------
+## Konfiguration & Props
+
 
 Der React-Wrapper akzeptiert eine `config`-Prop (die auf [gantt.config](api/overview/properties-overview.md) abbildet) und eine `templates`-Prop (die auf [gantt.templates](api/overview/templates-overview.md) abbildet).
 
@@ -369,8 +369,8 @@ Templates können zur Anpassung vieler Bereiche verwendet werden:
 
 Die vollständige Liste der von React Gantt unterstützten Props finden Sie unter: [Verwendung von DHTMLX Gantt Properties in ReactGantt](integrations/react/configuration-props.md)
 
-Themes & Styling
------------------
+## Themes & Styling
+
 
 Gantt enthält mehrere eingebaute Themes, die über die **theme**-Prop gesetzt und dynamisch gewechselt werden können:
 
@@ -418,8 +418,8 @@ Themes können zusätzlich durch eigene Styles oder das Überschreiben von CSS-V
 
 Weitere Konfigurationsmöglichkeiten finden Sie im Leitfaden [Skins Customization](guides/custom-skins.md).
 
-Austausch des Lightbox-Editors
-------------------
+## Austausch des Lightbox-Editors
+
 
 DHTMLX Gantt enthält einen eingebauten, konfigurierbaren Task-Editor namens [Lightbox](guides/default-edit-form.md).
 
@@ -548,8 +548,8 @@ export default function BasicInitDemo() {
 
 Weitere Informationen zum Überschreiben oder Erweitern der eingebauten Lightbox finden Sie unter [Custom Lightbox](guides/custom-edit-form.md).
 
-Austausch der eingebauten Modals
-------------------
+## Austausch der eingebauten Modals
+
 
 Die Standard-Benutzeroberfläche enthält zwei Modaldialoge:
 
@@ -589,8 +589,8 @@ Beide können mit der `modals`-Prop von ReactGantt angepasst werden:
 Mit diesen Props können Sie eigene Modals anzeigen, wenn Gantt eine Bestätigung anfordert. 
 Das Aufrufen des bereitgestellten `callback()` schließt das Löschen der Aufgabe oder des Links ab. Um abzubrechen, schließen Sie das Modal einfach, ohne den Callback aufzurufen.
 
-Verwendung von React-Komponenten im Grid
--------------------
+## Verwendung von React-Komponenten im Grid
+
 
 ### In Headern
 
@@ -766,8 +766,8 @@ Hinweis: Nicht-React-Inline-Editoren können ebenfalls über die Eigenschaft [ed
 - <span class="subproperty">**ganttInstance**</span> - (*GanttStatic*) - Die aktuelle Gantt-Instanz
 
 
-Filtern
------------------
+## Filtern
+
 
 Mit der `filter`-Prop können Sie eine Funktion angeben, die steuert, welche Aufgaben sichtbar sind:
 
@@ -820,8 +820,8 @@ return (
 
 ~~~
 
-Arbeitskalender
-------------------
+## Arbeitskalender
+
 
 Um Arbeitszeitberechnungen in **ReactGantt** zu ermöglichen, aktivieren Sie die Arbeitszeitfunktion in der Konfiguration:
 
@@ -923,8 +923,8 @@ export default function GanttTemplatesDemo() {
 
 Alternativ kann das [interne Gantt-Objekt](#accessingtheunderlyingganttapi) für die direkte Nutzung von [Arbeitszeit-Methoden](guides/working-time.md) verwendet werden.
 
-Gruppierung von Aufgaben
------------------
+## Gruppierung von Aufgaben
+
 
 Das Gruppieren von Aufgaben nach beliebigen Task-Eigenschaften ist über die Prop `groupTasks` möglich:
 
@@ -957,8 +957,8 @@ setGrouping(false);
 ~~~
 
 
-Vertikale Marker im Timeline-Bereich
------------------
+## Vertikale Marker im Timeline-Bereich
+
 
 Vertikale Marker können in **ReactGantt** über die Eigenschaft `markers` hinzugefügt werden:
 
@@ -996,8 +996,8 @@ Vertikale Marker können in **ReactGantt** über die Eigenschaft `markers` hinzu
 Hinweis: Die Eigenschaft **text** des Marker-Objekts unterstützt sowohl einen HTML-String als auch ein React-Element.
 :::
 
-Zugriff auf die zugrunde liegende Gantt-API
-------------------
+## Zugriff auf die zugrunde liegende Gantt-API
+
 
 Während die Props von ReactGantt die meisten Konfigurationsanforderungen abdecken, ist für fortgeschrittene Funktionen wie Arbeitszeitberechnungen, gantt.showDate, gantt.unselectTask oder benutzerdefiniertes Zoomen manchmal der direkte Zugriff auf die DHTMLX Gantt API notwendig.
 
@@ -1043,8 +1043,8 @@ Eine vollständige Liste der Methoden finden Sie in der DHTMLX Gantt [API Refere
 - Es ist am besten, Aufgaben und Verknüpfungen über die Wrapper-Props oder den React-Status zu verwalten und das Wrapper-Handling für das erneute Parsen zu überlassen.
 
 
-Kompatibilität mit SSR-Frameworks (Next.js, Remix)
---------------
+## Kompatibilität mit SSR-Frameworks (Next.js, Remix)
+
 
 :::note
 Da DHTMLX Gantt ein reines Browser-Widget ist, das direkt mit dem DOM interagiert, kann es nicht in Node/SSR-Umgebungen gerendert werden. Daher muss das serverseitige Rendering für alle Routen oder Komponenten, die ReactGantt verwenden, deaktiviert oder verzögert werden.
@@ -1096,8 +1096,8 @@ export default function GanttPage() {
 
 Dieses Muster verzögert das Rendering, bis die Komponente im Browser geladen ist, und verhindert SSR-Probleme.
 
-Nächste Schritte
--------------------
+## Nächste Schritte
+
 
 - Weitere Details zur Konfiguration von ReactGantt finden Sie in [diesem Artikel](integrations/react/configuration-props.md)
 - Für fortgeschrittene Nutzungsmöglichkeiten siehe die [DHTMLX Gantt Dokumentation](guides.md) 

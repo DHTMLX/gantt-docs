@@ -3,8 +3,8 @@ title: "Content Security Policy 준수"
 sidebar_label: "Content Security Policy 준수"
 ---
 
-Content Security Policy 준수
-=========================
+# Content Security Policy 준수
+
 
 Content Security Policy(CSP)는 무단 JavaScript 실행을 방지하고 [생성된 앱의 보안성](guides/app-security.md)을 높이기 위해 설계된 웹 표준입니다.
 

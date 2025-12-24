@@ -3,8 +3,8 @@ title: "How-tos"
 sidebar_label: "How-tos"
 ---
 
-How-tos
-==================================
+# How-tos
+
 
 ## So schalten Sie das Grid/Chart um {#howtotogglegridchart}
 

@@ -3,15 +3,15 @@ title: "Textarea 控件"
 sidebar_label: "Textarea 控件"
 ---
 
-Textarea 控件
-============================
+# Textarea 控件
+
 
 这是一个多行文本字段。
 
 ![textarea_control](/img/textarea_control.png)
 
-初始化
----------------------------------
+## 初始化
+
 
 默认情况下，弹出框（lightbox）中包含一个 **textarea** 控件。若需添加额外的 textarea 控件，请按照以下步骤操作:
 
@@ -31,8 +31,8 @@ gantt.config.lightbox.sections = [
 gantt.locale.labels.section_details = "Details";
 ~~~
 
-属性
----------------
+## 属性
+
 
 以下是 **textarea** 控件常用的主要属性（完整列表请参见 [这里](api/config/lightbox.md)）:
 

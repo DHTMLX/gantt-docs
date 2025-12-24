@@ -3,8 +3,8 @@ title: "Lightbox 的模板"
 sidebar_label: "Lightbox 的模板"
 ---
 
-Lightbox 的模板
-====================================
+# Lightbox 的模板
+
 
 <table class="webixdoc_links">
   <tbody>

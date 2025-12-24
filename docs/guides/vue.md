@@ -3,8 +3,8 @@ title: "Vue Gantt"
 sidebar_label: "Vue Gantt"
 ---
 
-Vue Gantt
-==================
+# Vue Gantt
+
 
 :::note
 Currently, there is no native Vue component for DHTMLX Gantt. 

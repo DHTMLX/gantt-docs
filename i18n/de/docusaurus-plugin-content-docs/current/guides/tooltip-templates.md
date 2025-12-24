@@ -3,8 +3,8 @@ title: "Vorlagen für Tooltips"
 sidebar_label: "Vorlagen für Tooltips"
 ---
 
-Vorlagen für Tooltips
-=============================
+# Vorlagen für Tooltips
+
 
 <table class="webixdoc_links">
   <tbody>

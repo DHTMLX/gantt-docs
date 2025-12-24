@@ -3,8 +3,8 @@ title: "dhtmlxGantt 与 PHP:Slim3"
 sidebar_label: "PHP: Slim3"
 ---
 
-dhtmlxGantt 与 PHP:Slim3 
-=====================
+# dhtmlxGantt 与 PHP:Slim3 
+
 
 本教程将为您提供使用 PHP 5.6x-7.x 结合服务端 RESTful API 创建甘特图的所有基本细节。
 
@@ -29,8 +29,8 @@ dhtmlxGantt 与 PHP:Slim3
 完整源代码已[发布在 GitHub](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x)。
 :::
 
-第 1 步. 初始化项目
------------------------
+## 第 1 步. 初始化项目
+
 
 ### 创建项目
 
@@ -57,8 +57,8 @@ php -S 0.0.0.0:8080 -t public public/index.php
 
 然后在浏览器中打开 [http://127.0.0.1:8080](http://127.0.0.1:8080)，你将看到 Slim 默认的欢迎页面。
 
-步骤 2. 在页面中添加 Gantt
------------------------
+## 步骤 2. 在页面中添加 Gantt
+
 
 接下来，我们需要创建一个页面来显示甘特图。找到默认页面 <b>templates/index.phtml</b>。这里将嵌入甘特图，并完成数据加载的设置。
 
@@ -101,8 +101,8 @@ php -S 0.0.0.0:8080 -t public public/index.php
 
 在浏览器中打开 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)，你应该能看到页面上渲染出的甘特图。
 
-步骤 3. 配置数据库
----------------------
+## 步骤 3. 配置数据库
+
 
 接下来，创建一个包含两张表的简单数据库。
 
@@ -149,8 +149,8 @@ INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00',
 
 项目设置完成后，我们将继续进行数据加载。
 
-步骤 4. 加载数据
--------------------------------
+## 步骤 4. 加载数据
+
 
 现在我们将实现从数据库加载数据。在客户端，数据将通过 [gantt.load](api/method/load.md) 方法请求:
 
@@ -264,8 +264,8 @@ $app->run();
 
 ![load_data](/img/load_data.png)
 
-步骤 5. 保存更改
------------------------------------
+## 步骤 5. 保存更改
+
 
 下一步是将客户端的更改保存回服务器。通常通过集成在 gantt 中的 [dataProcessor](guides/server-side.md#jishushuoming) 库实现。
 
@@ -616,23 +616,23 @@ function updateOrder($taskId, $target, $db){
 
 一个可用的演示已在 GitHub 上提供，供参考:[https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x)。
 
-使用 dhtmlxConnector
----------------
+## 使用 dhtmlxConnector
+
 
 另外，PHP 后端也可以基于 [dhtmlxConnector 库](https://docs.dhtmlx.com/connector__php__index.html) 构建。详细教程可参考 [这里](integrations/php/howtostart-connector.md)。
 
-应用安全
--------------------------
+## 应用安全
+
 
 Gantt 本身不包含防御 SQL 注入、XSS 或 CSRF 等威胁的机制。开发者需要在后端实现安全措施。更多信息可参考[相关文档](guides/app-security.md)。
 
-故障排查
------------------
+## 故障排查
+
 
 如果在完成集成步骤后 Gantt 图未显示任务或链接，可以参考 [백엔드 통합 문제 해결](guides/troubleshooting.md) 中的故障排查指南，帮助识别和解决问题。
 
-后续步骤
-------------
+## 后续步骤
+
 
 完成基础的 gantt 配置后，完整代码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x) 上获取，支持克隆或下载以用于你的项目。
 

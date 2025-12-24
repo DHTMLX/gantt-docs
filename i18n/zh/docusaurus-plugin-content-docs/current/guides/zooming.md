@@ -3,13 +3,13 @@ title: "缩放功能"
 sidebar_label: "缩放功能"
 ---
 
-缩放功能
-==============
+# 缩放功能
+
 
 dhtmlxGantt 内置了一个模块，使时间轴缩放的管理变得简单。如果你希望调整默认的缩放行为，可以使用[灵活的 API](guides/zoom.md)，动态更改时间轴设置。
 
-内置缩放模块
--------------------
+## 内置缩放模块
+
 
 集成的[缩放模块](guides/zoom.md)属于 **gantt.ext.zoom** 扩展。要启用它，只需调用 **gantt.ext.zoom.init(zoomConfig)** 并传入包含缩放级别数组的 **zoomConfig** 对象。例如:
 
@@ -82,8 +82,8 @@ gantt.ext.zoom.init(zoomConfig);
 [Mouse wheel zoom](https://docs.dhtmlx.com/gantt/samples/03_scales/14_scale_zoom_by_wheelmouse.html)
 
 
-自定义缩放设置
-----------------------
+## 自定义缩放设置
+
 
 如果你不想使用缩放模块，而是希望自行控制时间轴设置，只需调整相关的配置项即可。
 

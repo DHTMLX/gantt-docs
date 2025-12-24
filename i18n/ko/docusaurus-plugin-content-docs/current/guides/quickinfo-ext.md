@@ -3,16 +3,16 @@ title: "quickInfo 확장 기능"
 sidebar_label: "quickInfo 확장 기능"
 ---
 
-quickInfo 확장 기능
-=======================
+# quickInfo 확장 기능
+
 
 quickInfo 확장 기능에 대한 자세한 내용은 [퀵 인포 (터치 지원)](guides/quick-info.md) 문서에서 확인할 수 있습니다.
 
 
 *quickInfo* 객체는 다음과 같은 API를 제공합니다:
 
-메서드
-----------------
+## 메서드
+
 
 - <span class="submethod">**show (id): void**</span> - 지정된 엘리먼트에 대해 퀵 인포 팝업을 엽니다
     - **_id_** - (*number | string*) - 작업 ID

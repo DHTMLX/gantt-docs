@@ -3,8 +3,8 @@ title: "타임라인 내에서 작업 드래그하기"
 sidebar_label: "타임라인 내에서 작업 드래그하기"
 ---
 
-타임라인 내에서 작업 드래그하기
-=============================================
+# 타임라인 내에서 작업 드래그하기
+
 
 드래그 기능을 사용하면 작업의 시작일이나 종료일, 그리고 작업 기간을 쉽게 조정할 수 있습니다.  
 기본적으로 드래그 앤 드롭이 활성화되어 있어, 사용자는 타임라인의 각 행에서 작업을 이동할 수 있습니다.
@@ -28,7 +28,7 @@ sidebar_label: "타임라인 내에서 작업 드래그하기"
 
 
 ## 특정 작업의 드래그 차단 {#denyingdraggingofspecifictasks}
----------------------------------------
+
 
 특정 작업의 드래그를 비활성화하려면 [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) 이벤트를 사용하세요:
 
@@ -43,7 +43,7 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 
 
 ## 작업을 특정 날짜 범위 밖으로 드래그하지 못하게 하기 {#denyingdraggingtasksoutofspecificdates}
----------------------------------------
+
 작업이 특정 날짜 범위를 벗어나지 않도록 제한하려면 [onTaskDrag](api/event/ontaskdrag.md) 이벤트를 사용하세요.
 
 <p style="margin-top: 20px; font-weight: bold;"> onTaskDrag 이벤트: </p>
@@ -103,7 +103,7 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 
 
 ## 부모 작업과 함께 자식 작업도 같이 드래그하기 {#draggingchildrentogetherwiththeparent}
------------------------------------------------------
+
 
 부모 작업을 이동할 때 자식 작업도 함께 이동하도록 하려면 [onTaskDrag](api/event/ontaskdrag.md) 이벤트를 사용하세요. (이 이벤트에 대한 자세한 내용은 [위](guides/dnd.md#preventingdraggingtasksoutsidecertaindates)에서 확인할 수 있습니다):
 
@@ -139,7 +139,7 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 ~~~
 
 ## 프로젝트와 하위 작업을 함께 드래그하기 {#draggingprojectswithsubtasks}
--------------------------------------------
+
 
 :::info
 이 기능은 Gantt PRO 에디션에서만 제공됩니다.
@@ -157,14 +157,14 @@ gantt.config.drag_project = true;
 
 
 ## 종속 작업을 독립 작업과 함께 드래그하기 {#draggingdependenttaskstogetherwithindependenttasks}
--------------------------------------------
+
 
 종속된 작업과 함께 작업을 이동하는 방법에는 여러 가지가 있습니다.
 자세한 내용은 별도의 문서에서 확인할 수 있습니다: [종속 작업과 함께 작업 드래그하기](guides/dragging-dependent-tasks.md).
 
 
 ## 최소 작업 기간 설정하기 {#settingminimaltaskduration}
--------------------------------------------
+
 
 [min_duration](api/config/min_duration.md) 설정을 사용해 최소 작업 기간을 지정할 수 있습니다.
 
@@ -182,7 +182,7 @@ gantt.config.min_duration = 60*60*1000;
 ~~~
 
 ## 작업 드래그 시 자동 스크롤 {#autoscrollduringtasksdragging}
----------------------------------
+
 
 대형 Gantt 차트에서 작업을 멀리 드래그하거나, 멀리 떨어진 작업 사이에 링크를 생성하는 것은 어려울 수 있습니다.
 
@@ -203,7 +203,7 @@ gantt.init("gantt_here");
 ~~~
 
 ## 특정 작업의 리사이즈 비활성화 {#disablingresizeofspecifictasks}
----------------------------------
+
 
 특정 작업의 리사이즈를 막으려면 다음 두 가지 방법이 있습니다:
 
@@ -239,7 +239,7 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 ~~~
 
 ## 작업의 어느 쪽이 리사이즈되는지 확인하기 {#whichsideofataskisbeingresized}
----------------------------------------
+
 
 드래그 앤 드롭에서 "resize" 모드는 사용자가 작업의 시작일 또는 종료일을 변경하는 경우입니다.
 
@@ -259,7 +259,7 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 ~~~
 
 ## 작업의 시작일 또는 종료일 리사이즈 비활성화 {#disablingresizeofthestartortheenddateofatask}
----------------------------------------------------------
+
 
 리사이즈 핸들은 다음 선택자를 통해 타겟팅할 수 있습니다:
 

@@ -3,8 +3,8 @@ title: "Templates of Tooltips"
 sidebar_label: "Templates of Tooltips"
 ---
 
-Templates of Tooltips
-=============================
+# Templates of Tooltips
+
 <table class="webixdoc_links">
   <tbody>
   <tr>

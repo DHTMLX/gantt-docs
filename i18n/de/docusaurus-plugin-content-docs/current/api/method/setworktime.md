@@ -64,7 +64,7 @@ Standardmäßig sind die Arbeitszeiten wie folgt eingestellt:
 Diese Methode ermöglicht es, diese Standardwerte anzupassen.
 
 ## Eigenschaften des Konfigurationsobjekts {#configurationobjectproperties}
----------------------------------------
+
 
 Das Konfigurationsobjekt kann folgende Eigenschaften enthalten:
 

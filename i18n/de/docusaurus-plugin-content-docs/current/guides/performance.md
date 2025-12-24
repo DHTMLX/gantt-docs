@@ -3,11 +3,11 @@ title: "Performance: Möglichkeiten zur Verbesserung"
 sidebar_label: "Performance: Möglichkeiten zur Verbesserung"
 ---
 
-Performance: Möglichkeiten zur Verbesserung
-==================================
+# Performance: Möglichkeiten zur Verbesserung
 
-### Allgemeine Techniken
---------------------
+
+## Allgemeine Techniken
+
 
 Bei der Verarbeitung von 10.000 bis 20.000 Aufgaben kann es - abhängig von Ihrer Konfiguration und den verwendeten Plugins - zu Verzögerungen beim Rendern des Gantt-Diagramms auf der Seite kommen.
 
@@ -27,8 +27,8 @@ Hier sind verschiedene Ansätze, um dieses Problem zu beheben:
 [Performance tweaks](https://docs.dhtmlx.com/gantt/samples/08_api/10_performance_tweaks.html)
 
 
-### Smart Rendering {#smartrendering}
----------------
+## Smart Rendering {#smartrendering}
+
 
 Smart Rendering steigert die Geschwindigkeit der Datenanzeige erheblich, wenn Sie mit großen Datenmengen arbeiten. In diesem Modus werden nur die Aufgaben und Verknüpfungen gerendert, die aktuell im sichtbaren Bereich sind.
 

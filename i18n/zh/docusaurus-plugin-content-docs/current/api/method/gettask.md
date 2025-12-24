@@ -51,8 +51,8 @@ const targetLinks = taskObj.$target;       //-> ["l5","l8"] - 入站链接的ID
 ~~~
 
 
-错误
------------
+## 错误
+
 
 **getTask** 方法要求指定的 "id" 任务已经加载在甘特图中。如果不存在该 "id" 的任务，它将抛出错误信息:"Task not found id = ID"。
 

@@ -3,13 +3,13 @@ title: "CSS 문서"
 sidebar_label: "CSS 문서"
 ---
 
-CSS 문서
-===========================
+# CSS 문서
+
 
 이 문서에서는 Gantt 차트 요소의 기본 색상 설정을 사용자 정의 스타일로 덮어쓰는 방법을 설명합니다. 주요 class 선택자와 Gantt 차트의 다양한 부분을 스타일링하기 위한 템플릿을 다룹니다: [그리드 영역](guides/css-overview.md#stylinggrid), [타임라인 영역](guides/css-overview.md#stylingtimeline), [리소스 패널](guides/css-overview.md#resourcepanel).
 
 ## 그리드 스타일링 {#stylinggrid}
-------------
+
 
 여기서는 [그리드 영역](guides/table.md)의 주요 요소를 스타일링하는 데 사용되는 CSS 선택자를 확인할 수 있습니다.
 
@@ -242,7 +242,7 @@ CSS로 행 높이를 변경하면 레이아웃이 깨질 수 있으니 권장하
 - 또는, **.gantt_row .gantt_cell[data-column-index='1']**로 컬럼 인덱스로 타겟팅할 수 있습니다.
 
 ## 타임라인 스타일링 {#stylingtimeline}
--------------
+
 
 이 섹션에서는 [타임라인 영역](guides/time-scale.md) 요소의 기본 스타일을 사용자 정의할 수 있는 CSS 선택자를 설명합니다.
 
@@ -827,7 +827,7 @@ gantt.templates.timeline_cell_class = function (task, date) {
 
 
 ## 리소스 패널 {#resourcepanel}
---------------
+
 
 [리소스 패널](guides/resource-management.md#resourceviewpanel)에는 메인 간트 영역과 유사한 그리드와 타임라인이 포함되어 있습니다.
 

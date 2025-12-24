@@ -3,8 +3,8 @@ title: "Spalten festlegen"
 sidebar_label: "Spalten festlegen"
 ---
 
-Spalten festlegen
-====================
+# Spalten festlegen
+
 
 Die Spalten des Grids werden über den Parameter [columns](api/config/columns.md) konfiguriert.
 
@@ -24,8 +24,8 @@ Es gibt auch eine Videoanleitung, die zeigt, wie man die Spalten des Grids konfi
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### Überblick
-----------
+## Überblick
+
 
 Standardmäßig zeigt das Grid 4 Spalten an:
 
@@ -55,13 +55,13 @@ gantt.init("gantt_here");
 
 Hier entsprechen 'text', 'holder', 'start_date', 'end_date' und 'progress' [den Namen der Daten-Properties](guides/specifying-columns.md#datamappingandtemplates).
 
-### Anzeige des Enddatums von Aufgaben
---------------------------------
+## Anzeige des Enddatums von Aufgaben
+
 
 Wenn die Aufgabenobjekte sowohl Start- als auch Enddaten im Format "%Y-%m-%d" oder "%d-%m-%Y" (ohne Stunden und Minuten) enthalten, kann das angezeigte Enddatum im Standardformat von den Erwartungen abweichen. Weitere Informationen zur Formatierung von Enddaten finden Sie im Artikel [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
 
-### Das "Add"-Button für bestimmte Aufgaben ausblenden {#hidingtheaddbuttonforcertaintasks}
-----------------------------------------------
+## Das "Add"-Button für bestimmte Aufgaben ausblenden {#hidingtheaddbuttonforcertaintasks}
+
 
 Eine einfache Möglichkeit, das Hinzufügen von Unteraufgaben für bestimmte Aufgaben zu verhindern, ist das Ausblenden des "Add"-Buttons per CSS.
 
@@ -87,8 +87,8 @@ gantt.templates.grid_row_class = ( start, end, task ) => {
 [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
 
-### Breite
--------------
+## Breite
+
 
 Um die Breite einer Spalte zu steuern, verwenden Sie das [width](api/config/columns.md)-Attribut im Konfigurationsobjekt der Spalte:
 
@@ -164,8 +164,8 @@ Beachten Sie außerdem, dass die minimale Grid-Breite beim Verkleinern von der m
 { name: "add", label: "", min_width: 1 }
 ~~~
 
-### Datenzuordnung und Templates {#datamappingandtemplates}
----------------------------------------
+## Datenzuordnung und Templates {#datamappingandtemplates}
+
 
 Standardmäßig füllt dhtmlxGantt das Grid mit Daten-Properties, deren Namen mit den Spaltennamen übereinstimmen. Wenn eine Spalte z.B. **name:"holder"** hat, sucht dhtmlxGantt nach einer 'holder'-Eigenschaft im JSON-Datensatz und zeigt deren Wert in dieser Spalte an.
 
@@ -187,8 +187,8 @@ gantt.config.columns = [
 gantt.init("gantt_here");
 ~~~
 
-### Textausrichtung 
-------------------------
+## Textausrichtung 
+
 
 Um den Text in einer Spalte horizontal auszurichten, verwenden Sie das [align](api/config/columns.md)-Attribut in der Spaltenkonfiguration:
 
@@ -252,8 +252,8 @@ const task = gantt.getTaskByWBSCode("1.2");
 ~~~
 
 
-### Zeitliche Einschränkungen für Aufgaben
---------------------
+## Zeitliche Einschränkungen für Aufgaben
+
 
 :::info
 Diese Funktionalität ist nur in der PRO-Edition verfügbar
@@ -301,8 +301,8 @@ const constraintDateEditor = {
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-### Größenänderung {#resizing}
-----------
+## Größenänderung {#resizing}
+
 
 :::info
 Diese Funktionalität ist nur in der PRO-Edition verfügbar
@@ -380,8 +380,8 @@ dhtmlxGantt bietet 6 Events im Zusammenhang mit der Größenänderung:
 - [onGridResizeEnd](api/event/ongridresizeend.md) - wird ausgelöst, nachdem der Benutzer das Ziehen des Grids beendet hat
 
 
-### Sichtbarkeit
---------------
+## Sichtbarkeit
+
 
 Um die Sichtbarkeit einer Spalte zu steuern, verwenden Sie das Attribut [hide](api/config/columns.md) in der Spaltenkonfiguration.
 
@@ -432,8 +432,8 @@ Es gibt auch ein Video-Tutorial, das zeigt, wie die Sichtbarkeit von Spalten im 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/rqYrqqoaI_U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### Zellen nach dem Rendern modifizieren
------------------------------
+## Zellen nach dem Rendern modifizieren
+
 
 Manchmal ist es notwendig, das Aussehen oder Verhalten einer Zelle im Grid nach dem Rendern anzupassen.
 
@@ -494,8 +494,8 @@ Der Ablauf ist wie folgt:
 - Gibt **isElement** *true* zurück, wird das Objekt an **renderElement** übergeben, das die Komponente im DOM-Element der Zelle initialisiert.
 
 
-### Horizontaler Scrollbalken
----------------------
+## Horizontaler Scrollbalken
+
 
 Das Grid kann scrollbar gemacht werden, indem die Eigenschaft **scrollable** in der [layout](guides/layout-config.md) Konfiguration aktiviert wird. 
 [Mehr erfahren über das Binden von Layout-Ansichten an einen Scrollbalken](guides/layout-config.md#scrollbar).
@@ -574,8 +574,8 @@ Wenn einer der Scrollbalken in der Gruppe sichtbar ist, werden alle Scrollbalken
 [Horizontal scroll inside Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/10_scrollable_grid.html)
 
 
-### Styling
---------
+## Styling
+
 
 Weitere Informationen zum Styling von Grid-Zellen finden Sie unter [Work with Gantt Styles](guides/styling-guide.md#stylinggrid).
 

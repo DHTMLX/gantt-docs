@@ -3,8 +3,8 @@ title: "Vue Gantt"
 sidebar_label: "Vue Gantt"
 ---
 
-Vue Gantt
-==================
+# Vue Gantt
+
 
 :::note
 目前，DHTMLX Gantt 尚未提供原生的 Vue 组件。

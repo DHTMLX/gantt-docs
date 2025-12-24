@@ -3,8 +3,8 @@ title: "작업 분할"
 sidebar_label: "작업 분할"
 ---
 
-작업 분할
-=================
+# 작업 분할
+
 
 :::info
 이 기능은 PRO 에디션에서만 사용 가능합니다.
@@ -117,8 +117,8 @@ gantt.attachEvent("onBeforeSplitTaskDisplay", function (id, task, parent) {
 });
 ~~~
 
-스타일링
--------------------
+## 스타일링
+
 
 분할 작업은 상위 항목의 하위 작업이며, 뒤의 연한 초록색 막대는 상위 항목의 막대를 추가 스타일로 나타냅니다.
 

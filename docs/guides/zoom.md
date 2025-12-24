@@ -3,8 +3,8 @@ title: "Zoom Extension"
 sidebar_label: "Zoom Extension"
 ---
 
-Zoom Extension
-==============
+# Zoom Extension
+
 
 
 You can read details about the Zoom extension in the [Zooming](guides/zooming.md) article. The current article provides the API reference of the **zoom** object:

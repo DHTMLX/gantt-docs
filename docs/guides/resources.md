@@ -3,8 +3,8 @@ title: "Resources Control"
 sidebar_label: "Resources Control"
 ---
 
-Resources Control
-===================
+# Resources Control
+
 
 :::info
 This functionality is available in the PRO Edition only.
@@ -53,8 +53,8 @@ gantt.locale.labels.section_rooms = "Rooms";
 You can also create [a custom control to assign multiple resources to a task](guides/custom-editor.md#customthirdpartyeditor).
 :::
 
-Initialization
-------------
+## Initialization
+
 
 To add the **resources** control to the lightbox, follow the steps below:
 
@@ -78,8 +78,8 @@ gantt.locale.labels.section_resources = "Rooms";
 [Resources control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/13_resources.html)
 
 
-Properties
--------------
+## Properties
+
 
 The following properties are mostly important and commonly set for the **resources** control (see the full list [here](api/config/lightbox.md)):
 
@@ -101,8 +101,8 @@ By default the resource control is mapped to the property specified in the [reso
 By default the resource control is automatically populated from the [resource datastore](guides/resource-management.md#working-with-resource-view-panel) via the `gantt.serverList("resourceOptions")` [collection](api/method/serverlist.md). You only need to specify the options list manually if you want to change the default behavior.
 :::
 
-Populating control with data
--------------------------------
+## Populating control with data
+
 
 
 Starting from v8.0, the resource control gets options from the [resource Datastore](guides/resource-management.md#working-with-resource-view-panel) by default.
@@ -165,8 +165,8 @@ Items in the [options](api/config/lightbox.md) parameter have 3 mandatory proper
 - **unit** - the unit of measurement of the resource
 
 
-Populating control with data from the server
----------------------------------------------
+## Populating control with data from the server
+
 
 To populate the control from the server, set the [options](api/config/lightbox.md) option to the value returned by the [serverList](api/method/serverlist.md) method:
 

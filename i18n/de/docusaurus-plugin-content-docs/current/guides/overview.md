@@ -3,8 +3,8 @@ title: "Oberfläche des Gantt-Diagramms"
 sidebar_label: "Oberfläche des Gantt-Diagramms"
 ---
 
-Oberfläche des Gantt-Diagramms
-====================
+# Oberfläche des Gantt-Diagramms
+
 Ein Gantt-Diagramm ist eine der beliebtesten Methoden, um Aktivitäten über einen bestimmten Zeitraum darzustellen.
 
 - Jede Aktivität im Diagramm wird als Balken angezeigt.
@@ -14,8 +14,8 @@ Ein Gantt-Diagramm ist eine der beliebtesten Methoden, um Aktivitäten über ein
 ![gantt_overview_01](/img/gantt_overview_01.png)
 
 
-Verwalten von Aufgaben
-----------------------
+## Verwalten von Aufgaben
+
 ### Neue Aufgaben hinzufügen
 
 - Um eine Hauptaufgabe hinzuzufügen, klicken Sie auf das „+"-Symbol in der Kopfzeile des Rasters.
@@ -34,8 +34,8 @@ Verwalten von Aufgaben
 
 ![gantt_overview_03](/img/gantt_overview_03.png)
 
-Verwalten von Abhängigkeitsverknüpfungen
--------------------------------
+## Verwalten von Abhängigkeitsverknüpfungen
+
 
 ### Neue Verknüpfungen hinzufügen
 

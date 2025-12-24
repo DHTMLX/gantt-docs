@@ -3,8 +3,8 @@ title: "排序列"
 sidebar_label: "排序列"
 ---
 
-排序列
-=================================
+# 排序列
+
 
 dhtmlxGantt 提供了在客户端对网格列中的数据进行排序的功能。
 
@@ -18,8 +18,8 @@ dhtmlxGantt 提供了在客户端对网格列中的数据进行排序的功能�
 请注意，Gantt 仅根据实际数据值对任务排序，不会对由列的 template 属性生成的值进行排序。
 :::
 
-通过点击表头进行排序
---------------------------------------------
+## 通过点击表头进行排序
+
 
 当点击表头时，Gantt 图会显示一个可视化指示器，突出显示当前排序的列以及排序顺序（升序或降序）。每次再次点击同一个表头会切换排序方向。
 
@@ -36,8 +36,8 @@ gantt.init("gantt_here");
 [Built-in sorting](https://docs.dhtmlx.com/gantt/samples/07_grid/01_builtin_sorting.html)
 
 
-通过编程方式排序
------------------------
+## 通过编程方式排序
+
 
 如果需要基于某个事件或操作（如点击按钮或页面加载时）对网格进行排序，可以使用 [sort](api/method/sort.md) 方法。
 
@@ -55,8 +55,8 @@ gantt.init("gantt_here");
 [Using sorting methods](https://docs.dhtmlx.com/gantt/samples/07_grid/05_sort_api.html)
 
 
-自定义排序函数
--------------------------------------------------
+## 自定义排序函数
+
 
 可以通过将自定义函数的名称作为 [sort](api/method/sort.md) 方法的第一个（也是唯一一个）参数，实现自定义排序功能。
 
@@ -95,8 +95,8 @@ gantt.init("gantt_here");
 [Custom sorting function](https://docs.dhtmlx.com/gantt/samples/07_grid/04_custom_sorting.html)
 
 
-按列单独设置排序规则
------------------------
+## 按列单独设置排序规则
+
 
 可以为每一列单独定义自定义排序规则。以下是三种常见的按列排序处理方式:
 

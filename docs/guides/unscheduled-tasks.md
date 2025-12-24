@@ -3,8 +3,8 @@ title: "Unscheduled Tasks"
 sidebar_label: "Unscheduled Tasks"
 ---
 
-Unscheduled Tasks
-========================
+# Unscheduled Tasks
+
 
 There's a possibility to add tasks without dates into the Gantt chart.
 

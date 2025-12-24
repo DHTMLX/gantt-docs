@@ -3,8 +3,8 @@ title: "Setting up Scale"
 sidebar_label: "Setting up Scale"
 ---
 
-Setting up Scale
-===========================================
+# Setting up Scale
+
 
 ![gantt_dates](/img/gantt_dates.png)
 
@@ -306,8 +306,8 @@ gantt.init("gantt_here");
 [Step config for the Quarter scale](https://docs.dhtmlx.com/gantt/samples/03_scales/03_full_year.html)
 
 
-Height
---------------------------------------
+## Height
+
 
 ![scale_height](/img/scale_height.png)
 
@@ -561,8 +561,8 @@ This logic works because we don't specify [the date range explicitly](#explicit_
 
 For more samples, check the [How to add a custom scale](guides/how-to.md#how-to-add-a-custom-scale) article.
 
-Custom time spans
-----------------------
+## Custom time spans
+
 
 In this part you will find examples of how to customize and configure the time scale so that it shows or hides non-working time spans. Besides, you'll find an example of how to hide cells with non-working hours from the start of the scale even if the **skip_off_time** mode is enabled.
 

@@ -3,13 +3,13 @@ title: "Aufgaben zusammen mit ihren abhängigen Aufgaben verschieben"
 sidebar_label: "Aufgaben zusammen mit ihren abhängigen Aufgaben verschieben"
 ---
 
-Aufgaben zusammen mit ihren abhängigen Aufgaben verschieben
-===========================
+# Aufgaben zusammen mit ihren abhängigen Aufgaben verschieben
+
 
 Es gibt mehrere Möglichkeiten, Aufgaben gemeinsam mit ihren abhängigen Aufgaben zu verschieben.
 
-Verwendung der Auto Scheduling Extension
-------------------------
+## Verwendung der Auto Scheduling Extension
+
 
 Eine Möglichkeit ist die Verwendung der Extension [Auto Scheduling](guides/auto-scheduling.md). Sie plant Aufgaben automatisch basierend auf deren Beziehungen.
 
@@ -27,8 +27,8 @@ Setzen Sie außerdem die Eigenschaft **auto_scheduling** auf true:
 gantt.config.auto_scheduling = true;
 ~~~
 
-Aufgaben manuell verschieben
------------------------
+## Aufgaben manuell verschieben
+
 
 ### Inhaltsverzeichnis
 
@@ -102,11 +102,11 @@ gantt.eachSuccessor = function(callback, root){
 
 Nachfolgende Aufgaben können beim Ziehen zusammen mit der Hauptaufgabe verschoben werden. Das bedeutet, dass beim Verschieben der Hauptaufgabe alle abhängigen Aufgaben gleichzeitig mitverschoben werden. Dies wirkt flüssig, kann aber die Leistung beeinträchtigen, wenn viele Aufgaben betroffen sind.
 
-####Schritt 1
+#### Schritt 1
 
 Deklarieren Sie zunächst den Iterator wie oben unter [Alle verknüpften Aufgaben ermitteln](#linked_tasks) gezeigt.
 
-####Schritt 2
+#### Schritt 2
 
 Fügen Sie anschließend einen Handler für das Ereignis [onTaskDrag](api/event/ontaskdrag.md) hinzu. Dieses Ereignis wird bei jedem Zieh-Vorgang ausgelöst. Hier können Sie alle verknüpften Aufgaben verschieben.
 
@@ -125,7 +125,7 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 });
 ~~~
 
-####Schritt 3
+#### Schritt 3
 
 Wenn das Ziehen beendet ist und der Nutzer die Maus loslässt, runden Sie die Positionen der Nachfolger auf die Zeitskala. Dies kann mit dem Ereignis [onAfterTaskDrag](api/event/onaftertaskdrag.md) erfolgen:
 
@@ -151,11 +151,11 @@ Alternativ können die nachfolgenden Aufgaben erst aktualisiert werden, nachdem 
 
 Die Idee ist, das Ziehen abzuwarten, dann die Verschiebungsdifferenz der Hauptaufgabe zu berechnen und alle abhängigen Aufgaben um diesen Wert zu verschieben.
 
-####Schritt 1
+#### Schritt 1
 
 Deklarieren Sie zunächst den Iterator wie zuvor unter [Alle verknüpften Aufgaben ermitteln](#linked_tasks) gezeigt.
 
-####Schritt 2
+#### Schritt 2
 
 Wenn der Nutzer das Ziehen beendet, fangen Sie das Ereignis [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) ab. Dieses Ereignis stellt sowohl die ursprüngliche als auch die geänderte Version der verschobenen Aufgabe zur Verfügung, wodurch Sie die Datumsdifferenz berechnen können.
 
@@ -178,7 +178,7 @@ gantt.attachEvent("onBeforeTaskChanged", function(id, mode, originalTask){
 });
 ~~~
 
-####Schritt 3
+#### Schritt 3
 
 Verwenden Sie abschließend das Ereignis [onAfterTaskDrag](api/event/onaftertaskdrag.md), um alle abhängigen Aufgaben mit der zuvor berechneten *diff* zu aktualisieren:
 

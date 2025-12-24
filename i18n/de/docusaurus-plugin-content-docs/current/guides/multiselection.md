@@ -3,15 +3,15 @@ title: "Multi-Task-Auswahl"
 sidebar_label: "Multi-Task-Auswahl"
 ---
 
-Multi-Task-Auswahl 
-===========================================
+# Multi-Task-Auswahl 
+
 
 Ab Version 3.2 enthält die Bibliothek die **multiselect**-Erweiterung, mit der Sie mehrere Aufgaben gleichzeitig auswählen können.
 
 <div style="text-align:center;">![multiselection](/img/multiselection.png)</div>
 
-Aktivierung der Multi-Task-Auswahl
---------------------------------------
+## Aktivierung der Multi-Task-Auswahl
+
 Um die Multi-Task-Auswahl für Aufgaben zu aktivieren, nutzen Sie die Methode [gantt.plugins](api/method/plugins.md):
 
 ~~~js
@@ -42,8 +42,8 @@ Um die Erweiterung zu deaktivieren, verwenden Sie die Option [multiselect](api/c
 gantt.config.multiselect = false; 
 ~~~
 
-Einmaliges Update für mehrere Aufgaben
---------------------------------
+## Einmaliges Update für mehrere Aufgaben
+
 Um mehrere Aufgaben oder Verknüpfungen gleichzeitig zu bearbeiten, nutzen Sie die Methode [batchUpdate](api/method/batchupdate.md):
 
 ~~~js
@@ -63,8 +63,8 @@ Mit dieser Methode können Sie mehrere Aufgaben oder Verknüpfungen mit nur eine
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-Iterator
-------------------------
+## Iterator
+
 Um alle ausgewählten Aufgaben im Gantt-Diagramm zu durchlaufen, verwenden Sie die Methode [eachSelectedTask](api/method/eachselectedtask.md):
 
 ~~~js
@@ -80,16 +80,16 @@ gantt.batchUpdate(function () {
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-Gleichzeitiges Einrücken/Ausrücken
--------------------------------------
+## Gleichzeitiges Einrücken/Ausrücken
+
 Mit der Multi-Task-Auswahl können Sie Operationen auf mehrere Aufgaben gleichzeitig anwenden. Zum Beispiel können Sie Aufgaben einrücken oder ausrücken, sie also zu Unteraufgaben machen oder Unteraufgaben wieder zu Hauptaufgaben hochstufen.
 
 
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-Prüfen, ob eine Aufgabe ausgewählt ist
--------------------------------------
+## Prüfen, ob eine Aufgabe ausgewählt ist
+
 Um herauszufinden, ob eine Aufgabe aktuell ausgewählt ist, verwenden Sie die Methode [isSelectedTask](api/method/isselectedtask.md):
 
 ~~~js
@@ -111,8 +111,8 @@ gantt.toggleTaskSelection("t_1"); //"t_1" ist die ID der Aufgabe
 gantt.render();
 ~~~
 
-Alle ausgewählten Aufgaben abrufen
------------------------------------
+## Alle ausgewählten Aufgaben abrufen
+
 Um alle aktuell ausgewählten Aufgaben abzurufen, verwenden Sie die Methode [getSelectedTasks](api/method/getselectedtasks.md):
 
 ~~~js
@@ -125,8 +125,8 @@ Um die zuletzt ausgewählte Aufgabe zu erhalten, verwenden Sie die Methode [getL
 gantt.getLastSelectedTask();
 ~~~
 
-Multi-Task-Auswahl auf eine Ebene beschränken
------------------------------------------------
+## Multi-Task-Auswahl auf eine Ebene beschränken
+
 Wenn Sie die Auswahl auf Aufgaben derselben Ebene beschränken möchten, nutzen Sie die Option [multiselect_one_level](api/config/multiselect_one_level.md):
 
 ~~~js
@@ -148,8 +148,8 @@ gantt.config.drag_multiple = true;
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-Editor mit einem Klick öffnen
-------------------------------
+## Editor mit einem Klick öffnen
+
 
 Im Einzel-Auswahlmodus öffnet ein Klick auf eine Aufgabe sofort den Inline-Editor.
 
@@ -166,8 +166,8 @@ gantt.plugins({
 gantt.config.inline_editors_multiselect_open = true;
 ~~~
 
-API-Events
---------------
+## API-Events
+
 
 Wenn die Multi-Task-Auswahl aktiv ist, lösen das Auswählen einer oder mehrerer Aufgaben sowohl die allgemeinen [onTaskSelected](api/event/ontaskselected.md) / [onTaskUnselected](api/event/ontaskunselected.md) Events als auch speziell für die Multiselect-Erweiterung vorgesehene Events aus.
 

@@ -89,7 +89,7 @@ gantt.exportToExcel({
 <tr><td>dd/mm/yyyy hh:mm:ss</td><td>09/01/2012 16:20:00</td></tr>
 </table>
 
-## # 默认日期参数
+## 默认日期参数
 
 导出模块期望**start_date**和**end_date**列为*Date*类型，**duration**列为*number*类型。
 

@@ -3,8 +3,8 @@ title: "Erstellen/Auswählen von Aufgaben mit Drag-and-Drop"
 sidebar_label: "Erstellen/Auswählen von Aufgaben mit Drag-and-Drop"
 ---
 
-Erstellen/Auswählen von Aufgaben mit Drag-and-Drop
-==================================================
+# Erstellen/Auswählen von Aufgaben mit Drag-and-Drop
+
 
 Die dhtmlxGantt-Bibliothek bietet eine Erweiterung, die erweiterte Drag-and-Drop-Funktionen zur Verwaltung von Aufgaben auf der Zeitleiste bereitstellt.
 
@@ -74,8 +74,8 @@ gantt.$task_data.attachEvent("onBeforeDrag", function (coords) {
 Beachten Sie, dass Ereignis-Handler nur an bereits existierende Elemente angehängt werden können. Fügen Sie daher die Ereignis-Handler nach der Initialisierung von Gantt hinzu, da die Elemente sonst noch nicht erstellt wurden und die Handler nicht funktionieren.
 :::
 
-Aufgaben mit Drag-and-Drop erstellen
-------------------------------------
+## Aufgaben mit Drag-and-Drop erstellen
+
 
 Aufgaben können direkt auf der Zeitleiste erstellt werden, indem Sie auf eine freie Stelle klicken, um das Startdatum festzulegen, und dann nach rechts ziehen, um die Dauer zu bestimmen.
 
@@ -109,13 +109,13 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
 
-Zeiträume für nicht geplante Aufgaben festlegen
------------------------------------------------
+## Zeiträume für nicht geplante Aufgaben festlegen
+
 
 Die **click_drag**-Erweiterung ermöglicht es außerdem, Zeitintervalle für [nicht geplante Aufgaben](guides/unscheduled-tasks.md) per Drag-and-Drop festzulegen.
 
-Aufgaben mit Drag-and-Drop auswählen
-------------------------------------
+## Aufgaben mit Drag-and-Drop auswählen
+
 
 Das Auswählen von Aufgaben per Drag-and-Drop wird in mehreren Modi unterstützt: nach Datum, nach Zeilen oder innerhalb von Begrenzungen.
 
@@ -163,8 +163,8 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Select multiple tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/25_click_drag_select_by_drag.html)
 
 
-Teile von gesplitteten Aufgaben erstellen
------------------------------------------
+## Teile von gesplitteten Aufgaben erstellen
+
 
 Mit Drag-and-Drop können auch Teile von [gesplitteten Aufgaben](guides/split-tasks.md) erstellt werden.
 

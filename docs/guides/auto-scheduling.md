@@ -3,8 +3,8 @@ title: "Auto Scheduling"
 sidebar_label: "Auto Scheduling"
 ---
 
-Auto Scheduling
-===================
+# Auto Scheduling
+
 
 :::info
 This functionality is available only in the PRO edition.
@@ -20,8 +20,8 @@ you need to change the schedule of the first task by moving it to a new date.
 Auto scheduling makes the start date of the second task update according to the end date of the first task each time when it changes.
 This feature allows you to generate and maintain project schedule by specifying relations between tasks with no need to set dates of each task manually.
 
-How to use
---------------
+## How to use
+
 
 To use the auto scheduling functionality, you should enable the [auto_scheduling](guides/extensions-list.md#autoscheduling) plugin using the [gantt.plugins](api/method/plugins.md) method:
 
@@ -225,8 +225,8 @@ Gantt doesn't provide a built-in UI for editing lag or any other properties of t
 
 **Related sample** [Edit-lag Popup](https://snippet.dhtmlx.com/2208ic0t)
 
-Disabling auto scheduling for specific tasks
-----------------------
+## Disabling auto scheduling for specific tasks
+
 
 To disable auto scheduling for a particular task and make it manually scheduled, set the **auto_scheduling** property of the task object to *false*:
 
@@ -243,8 +243,8 @@ gantt.attachEvent("onBeforeTaskAutoSchedule", (task, start, link, predecessor) =
 });
 ~~~
 
-Scheduling completed tasks
-----------------------------
+## Scheduling completed tasks
+
 
 By default, there is no difference in how the auto scheduling algorithm processes completed tasks (tasks which have progress value of 1) and incomplete tasks.
 

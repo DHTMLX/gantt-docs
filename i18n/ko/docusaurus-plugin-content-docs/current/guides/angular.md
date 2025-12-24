@@ -3,8 +3,8 @@ title: "Angular Gantt"
 sidebar_label: "Angular Gantt"
 ---
 
-Angular Gantt
-==================
+# Angular Gantt
+
 
 :::note
 현재 DHTMLX Gantt에 대한 네이티브 Angular 컴포넌트는 제공되지 않습니다.

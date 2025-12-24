@@ -3,8 +3,8 @@ title: "Управление ограничениями"
 sidebar_label: "Управление ограничениями"
 ---
 
-Управление ограничениями
-====================
+# Управление ограничениями
+
 
 :::info
 Эта функция доступна только в редакции PRO.
@@ -26,8 +26,8 @@ gantt.config.lightbox.sections = [
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-Инициализация
-------------
+## Инициализация
+
 
 Чтобы добавить контрол **constraint** в лайтбокс, выполните следующие шаги:
 
@@ -51,8 +51,8 @@ gantt.locale.labels.section_constraint = "Constraint";
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-Свойства
-------------------------
+## Свойства
+
 
 Ниже приведены основные свойства, которые обычно используются с контролом **constraint** (полный список смотрите [здесь](api/config/lightbox.md)):
 

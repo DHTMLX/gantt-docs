@@ -3,8 +3,8 @@ title: "Supported Data Formats"
 sidebar_label: "Supported Data Formats"
 ---
 
-Supported Data Formats
-=======================================
+# Supported Data Formats
+
 
 dhtmlxGantt can load data in the following formats:
 
@@ -16,8 +16,8 @@ dhtmlxGantt can load data in the following formats:
 You can also [add any custom properties to the Gantt data](guides/supported-data-formats.md#custom-properties-in-data).
 
 
-JSON
--------------------------
+## JSON
+
 
 ### Tasks and links
 
@@ -135,8 +135,8 @@ Resource assignments can be passed into the method separately from tasks:
 </data>
 ~~~
 
-Custom Properties in Data
--------------------------------
+## Custom Properties in Data
+
 
 Let's consider the above examples with 2 custom properties:
 

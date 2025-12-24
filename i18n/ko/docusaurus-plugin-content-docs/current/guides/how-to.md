@@ -3,8 +3,8 @@ title: "How-tos"
 sidebar_label: "How-tos"
 ---
 
-How-tos
-==================================
+# How-tos
+
 
 ## 그리드/차트 토글하는 방법 {#howtotogglegridchart}
 

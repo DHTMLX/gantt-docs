@@ -3,8 +3,8 @@ title: "Resource Management"
 sidebar_label: "Resource Management"
 ---
 
-Resource Management
-======================
+# Resource Management
+
 
 :::info
 This functionality is available only in the PRO edition.
@@ -720,8 +720,8 @@ If you define resources via the *serverList* collection, they can be [loaded tog
 
 Read about how to configure the resource control of the lightbox in the [Resources control](guides/resources.md) and [Resource Assignments control](guides/resource-assignments.md) articles.
 
-Loading resources and resource assignments
------------------------------------------
+## Loading resources and resource assignments
+
 
 From v8.0, resources and resource assignments can be loaded into the gantt using [gantt.parse()](api/method/parse.md) or [gantt.load()](api/method/load.md) methods:
 
@@ -905,8 +905,8 @@ gantt.templates.rightside_text =
 **Related sample**: [Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
 
 
-Editable resource diagram
--------------------------
+## Editable resource diagram
+
 
 In order to make resource assignments editable in the resource diagram, you can use the following configuration:
 
@@ -937,8 +937,8 @@ In the example below, a template with editable cells is provided. You can custom
 
 **Related sample**: [Customizable resource diagram template](https://snippet.dhtmlx.com/libwuna4?tag="gantt")
 
-Custom styling of resources
-------------------------
+## Custom styling of resources
+
 
 For coloring you'll usually need the following templates:
 
@@ -956,8 +956,8 @@ Depending on your context, you can
 **Related sample**: [Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
 
 
-Resource calendars
-------------------
+## Resource calendars
+
 
 Gantt supports the custom work-time calendars feature. Work-time calendars can be associated with specific resources.
 

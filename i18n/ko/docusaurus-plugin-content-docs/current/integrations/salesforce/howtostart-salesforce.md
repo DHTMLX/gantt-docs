@@ -3,8 +3,8 @@ title: "dhtmlxGantt와 Salesforce LWC 연동하기"
 sidebar_label: "Salesforce"
 ---
 
-dhtmlxGantt와 Salesforce LWC 연동하기
-===============================
+# dhtmlxGantt와 Salesforce LWC 연동하기
+
 
 이 튜토리얼에서는 dhtmlxGantt를 [Salesforce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide)에 통합하는 방법을 설명합니다.
 
@@ -28,13 +28,13 @@ dhtmlxGantt와 Salesforce LWC 연동하기
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/1nXl9jfMdto" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-사전 준비 사항
--------------------
+## 사전 준비 사항
+
 
 [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli)가 설치되어 있지 않다면 반드시 설치해야 합니다. 설치 방법은 [이 가이드](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)를 참고하세요.
 
-1단계. 프로젝트 생성
-----------------------------
+## 1단계. 프로젝트 생성
+
 
 아직 개발자 계정이 없다면 [회원가입](https://developer.salesforce.com/)을 통해 무료 개발자 계정을 생성하세요. 자세한 내용은 [이 가이드](https://webkul.com/blog/create-free-developer-account-in-salesforce/)를 참고할 수 있습니다.
 
@@ -84,8 +84,8 @@ $ sfdx project generate -n gantt-salesforce-app
 $ cd gantt-salesforce-app
 ~~~
 
-2단계. 인증
-----------
+## 2단계. 인증
+
 
 Web Server Flow를 사용하여 [Org 인증](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm)을 진행하세요:
 
@@ -125,8 +125,8 @@ Done
 Your scratch org is ready.
 ~~~
 
-3단계. Salesforce에 Gantt 추가하기
-------------
+## 3단계. Salesforce에 Gantt 추가하기
+
 
 라이브러리를 사용하려면 Salesforce에 Static Resource로 업로드해야 합니다. Scratch org를 엽니다:
 
@@ -146,8 +146,8 @@ $ sfdx org open
 
 ![](/img/sf_gantt_in_sf.png)
 
-4단계. 데이터 모델 생성
--------------
+## 4단계. 데이터 모델 생성
+
 
 dhtmlxGantt의 주요 구성 요소는 Tasks와 Links입니다. 이들을 관리하는 실용적인 방법은 Salesforce 내에서 속성을 JSON으로 저장하는 것입니다. 먼저 Tasks와 Links에 대한 커스텀 오브젝트를 생성하세요. Object Manager로 이동하여 "Create"를 선택한 다음 "Custom Object"를 선택합니다:
 
@@ -256,8 +256,8 @@ Object Name: GanttLink => Record Name: GanttLink Name
 
 ![](/img/sf_ganttlink.png)
 
-5단계. Lightning Web Component 생성
----------------------------------------------
+## 5단계. Lightning Web Component 생성
+
 
 Lightning Web Component를 생성하려면 아래 명령어를 실행하세요:
 
@@ -458,8 +458,8 @@ export default class GanttView extends LightningElement {
 }
 ~~~
 
-6단계. Apex 클래스 생성
-----------------------------------
+## 6단계. Apex 클래스 생성
+
 
 다음으로, Lightning Component와 데이터 모델 간의 통신을 처리하는 클래스를 생성합니다.
 
@@ -509,8 +509,8 @@ $ sfdx project retrieve start
 $ sfdx project deploy start
 ~~~
 
-7단계. Lightning 페이지 생성
----------------
+## 7단계. Lightning 페이지 생성
+
 
 "Lightning App Builder"를 실행하고 새 Lightning Page를 생성하세요.
 
@@ -548,18 +548,18 @@ Gantt 사용자 지정 컴포넌트가 새 페이지에 사용할 수 있습니�
 
 ![](/img/sf_final_page.png)
 
-애플리케이션 보안
----------------------
+## 애플리케이션 보안
+
 
 Gantt 자체는 SQL 인젝션, XSS, CSRF 공격과 같은 위협에 대한 내장 보호 기능을 제공하지 않습니다. 애플리케이션 보안은 이를 구현하는 개발자의 책임입니다. 자세한 내용은 [관련 문서](guides/app-security.md)를 참고하세요. Salesforce는 데이터와 애플리케이션을 보호하기 위한 강력한 보안 기능을 제공합니다. 또한 조직의 구조와 요구 사항에 맞게 보안 접근 방식을 맞춤화할 수 있습니다. 자세한 안내는 [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm)를 참고하세요. Lightning 컴포넌트 보안에 관한 추가 정보는 [여기](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm)에서 확인할 수 있습니다.
 
-문제 해결
----------------------
+## 문제 해결
+
 
 모든 단계를 완료했음에도 Gantt 차트가 페이지에 작업과 링크를 표시하지 않는 경우, [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) 문서를 참고하세요. 일반적인 문제를 진단하고 해결하는 방법을 제공합니다.
 
-다음 단계
-------------
+## 다음 단계
+
 
 Gantt 구성이 완료되었다면, [GitHub](https://github.com/DHTMLX/salesforce-gantt-demo)에서 전체 코드를 확인하고 프로젝트에 복제하거나 다운로드할 수 있습니다.
 

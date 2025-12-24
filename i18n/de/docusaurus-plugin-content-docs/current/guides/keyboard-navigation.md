@@ -3,8 +3,8 @@ title: "Tastaturnavigation"
 sidebar_label: "Tastaturnavigation"
 ---
 
-Tastaturnavigation
-========================
+# Tastaturnavigation
+
 
 Das Gantt-Diagramm und seine Elemente können mithilfe von Tasten oder Tastenkombinationen bedient werden. Dieser Artikel behandelt die Grundlagen der Tastaturnavigation im Gantt-Diagramm, einschließlich des Fokusverhaltens, der Verwendung von integrierten Shortcuts und wie Sie eigene Shortcuts erstellen können.
 
@@ -180,8 +180,8 @@ Ein Beispiel, wie Sie das Kopieren/Einfügen von Aufgaben mit den Shortcuts **Ct
 [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
 
 
-Integrierter Shortcut für horizontales Scrollen der Zeitleiste
---------------------
+## Integrierter Shortcut für horizontales Scrollen der Zeitleiste
+
 
 Seit Version 4.2 unterstützt das Gantt-Diagramm das horizontale Scrollen der Zeitleiste mittels:
 

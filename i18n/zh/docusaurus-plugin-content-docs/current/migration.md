@@ -3,11 +3,11 @@ title: "从旧版本迁移"
 sidebar_label: "从旧版本迁移"
 ---
 
-从旧版本迁移
-=================================================
+# 从旧版本迁移
 
-8.0 -> 9.0
--------------
+
+## 8.0 -> 9.0
+
 
 v9.0 更新引入了若干重大变更。
 
@@ -169,8 +169,8 @@ gantt.config.scales = [
 自 v9.0 起，[resizeLightbox](api/method/resizelightbox.md) 方法已弃用并从 Gantt 代码中移除。现在 lightbox 的尺寸调整已自动实现，无需手动调用。
 请注意，如果你的配置中包含 **resizeLightbox()** 方法，应将其移除以避免报错。
 
-7.1 -> 8.0
--------------
+## 7.1 -> 8.0
+
 
 ### 资源分配
 
@@ -213,8 +213,8 @@ gantt.plugins({
 - ".dhtmlx-" + config.type -> **".gantt-" + config.type**
 - ".dhtmlx_" + btn.label.toLowerCase() + "_button" -> **".gantt_" + btn.label.toLowerCase() + "_button"**
 
-7.0 -> 7.1
--------------
+## 7.0 -> 7.1
+
 
 7.1 版本未引入任何需要修改现有代码的重大变更。
 
@@ -275,8 +275,8 @@ gantt.config.deepcopy_on_parse = true;
 gantt.config.bar_height = 50;
 ~~~
 
-6.3 -> 7.0
----------------------
+## 6.3 -> 7.0
+
 
 ### 扩展和本地化文件
 
@@ -369,8 +369,8 @@ gantt.setWorkTime({hours: [8, 17]});
 
 如果您代码中已定义旧名称，它们仍可继续使用。否则，请使用新版 API。
 
-6.2 -> 6.3
----------------
+## 6.2 -> 6.3
+
 
 ### 多任务选择
 
@@ -475,8 +475,8 @@ const dateEditor = {type: "date", map_to: "start_date",
 };
 ~~~
 
-6.1 -> 6.2
----------------
+## 6.1 -> 6.2
+
 
 升级到 v6.2 通常与 v6.1 兼容，无需更改代码。
 但部分组件行为已更改（可通过配置恢复旧行为），部分 API 已弃用。
@@ -578,8 +578,8 @@ gantt.config.api_date = "%d-%m-%Y %H:%i";
 gantt.templates.api_date = gantt.date.date_to_str(gantt.config.api_date);
 ~~~
 
-6.0 -> 6.1 
--------------
+## 6.0 -> 6.1 
+
 
 ### 时间约束和自动调度
 
@@ -608,8 +608,8 @@ gantt.init("gantt_here");
 gantt.parse(demo_tasks);
 ~~~
 
-5.2 -> 6.0
-------------------
+## 5.2 -> 6.0
+
 
 在6.0版本中，**getSlack()** 方法已废弃。新增了两个方法:
 
@@ -637,8 +637,8 @@ gantt.parse(demo_tasks);
 </table>
 
 
-3.x -> 4.0
-------------
+## 3.x -> 4.0
+
 
 4.0版本对公共API做了一些调整，主要包括:
 
@@ -648,7 +648,7 @@ gantt.parse(demo_tasks);
 v4.x中包含了对旧API的兼容，因此为v3.3及更早版本编写的代码仍可继续使用。但在某些情况下需要做出调整。
 通常，除 **window.gantt** 和 **window.Gantt**（仅限企业版）外的所有全局声明都已废弃，并将在5.0版本中移除。
 
-###废弃的API
+### 废弃的API
 
 有些方法已被废弃。在v4.x中仍可使用，但每次调用时会在控制台发出警告（终端用户不可见）。
 
@@ -680,7 +680,7 @@ v4.x中包含了对旧API的兼容，因此为v3.3及更早版本编写的代码
 <tr><td>window.dataProcessor</td><td>gantt.dataProcessor</td></tr>
 </table>
 
-###废弃的API
+### 废弃的API
 
 某些方法已被废弃，在v4.x中不再使用。
 如果你仍在使用这些方法或对象，需要修改应用代码，或在页面中引入 **dhtmlxgantt_deprecated.js** 文件。
@@ -711,8 +711,8 @@ v4.x中包含了对旧API的兼容，因此为v3.3及更早版本编写的代码
 </table>
 
 
-2.0 -> 3.0
-----------------------
+## 2.0 -> 3.0
+
 1) 为避免与dhtmlxScheduler的CSS冲突，dhtmlxGantt中与lightbox相关的类名已全部重命名。
 如果你自定义了lightbox的样式，迁移时需将类名更改为对应的新类名。
 
@@ -753,8 +753,8 @@ gantt.config.buttons_right = [
 - 在周、月、时间轴视图中隐藏某些天的能力
 - 项目、里程碑及其他自定义类型
 
-1.0 -> 2.0
-----------------------
+## 1.0 -> 2.0
+
 
 1) 多种对象（**GanttProjectInfo**、**GanttTaskInfo**、**GanttChart**、**GanttProject**、**GanttTask**）被统一为一个静态对象--**gantt**。
 

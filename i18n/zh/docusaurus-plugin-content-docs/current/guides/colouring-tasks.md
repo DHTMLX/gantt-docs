@@ -3,8 +3,8 @@ title: "任务着色"
 sidebar_label: "任务着色"
 ---
 
-任务着色
-=======================
+# 任务着色
+
 
 为任务着色有助于突出显示特定任务，使其更容易引起注意。
 
@@ -16,8 +16,8 @@ sidebar_label: "任务着色"
 2. [直接在任务对象属性中设置样式值](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject)
 3. [从数据动态生成样式](guides/colouring-tasks.md#tongguoshujujiazaiyanse)
 
-重定义任务模板
------------------------------------------
+## 重定义任务模板
+
 
 要通过模板自定义任务样式，可以使用 [task_class](api/template/task_class.md) 模板。例如，如果你想根据任务优先级为任务着色，可以使用如下代码:
 
@@ -71,8 +71,8 @@ gantt.templates.task_class  = function(start, end, task){
 
 类似的方法也可以用于链接。更多详情见[此处](guides/colouring-lines.md#chongdingyilianjiemoban)。
 
-在任务对象属性中指定样式
------------------------------------------------------
+## 在任务对象属性中指定样式
+
 
 你可以通过在任务数据对象中添加最多三个特殊属性，来自定义任务的外观:
 
@@ -145,8 +145,8 @@ task.color = "rgb(255,0,0)";
 
 类似的方法同样适用于链接。更多信息见[这里](guides/colouring-lines.md#specifyingcolorinthepropertiesofthelinkobject)。
 
-通过数据加载颜色
------------------------------------------------------
+## 通过数据加载颜色
+
 
 当任务颜色来自后端数据--比如颜色与任务阶段或分配的资源相关，无法硬编码时，可以根据数据动态生成样式。
 

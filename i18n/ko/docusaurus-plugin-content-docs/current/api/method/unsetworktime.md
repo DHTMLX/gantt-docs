@@ -39,7 +39,7 @@ gantt.unsetWorkTime({ hours:["9:00-18:00"] });
 
 
 ## 설정 객체 속성 {#configurationobjectproperties}
----------------------------------------
+
 
 설정 객체에는 다음과 같은 속성이 포함될 수 있습니다:
 

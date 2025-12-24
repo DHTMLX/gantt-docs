@@ -3,8 +3,8 @@ title: "RTL (오른쪽-왼쪽) 모드"
 sidebar_label: "RTL (오른쪽-왼쪽) 모드"
 ---
 
-RTL (오른쪽-왼쪽) 모드
-========================
+# RTL (오른쪽-왼쪽) 모드
+
 
 ![rtl_mode](/img/rtl_mode.png)
 

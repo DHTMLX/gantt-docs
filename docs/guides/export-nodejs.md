@@ -3,8 +3,8 @@ title: "Export and Import Data on Node.js"
 sidebar_label: "Export and Import Data on Node.js"
 ---
 
-Export and Import Data on Node.js
-=============================
+# Export and Import Data on Node.js
+
 
 You can export and import data of DHTMLX Gantt which is built with Node.js. 
 
@@ -21,8 +21,8 @@ gantt.plugins({
 ~~~
 Read the information below for more details.
 
-Exporting data
-----------------
+## Exporting data
+
 
 The export functionality should work the same way as it works in the web version, with some exceptions:
 
@@ -34,8 +34,8 @@ data: gantt.serialize().data
 
 - When configuring export, specify the **callback** parameter to define the endpoint of the output file, otherwise, the file will be printed to the console.
 
-Importing data
-----------------
+## Importing data
+
 
 The import functionality needs the additional *formData* component to be installed:
 

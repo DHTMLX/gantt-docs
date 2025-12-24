@@ -3,8 +3,8 @@ title: "皮肤（Skins）"
 sidebar_label: "皮肤（Skins）"
 ---
 
-皮肤（Skins）
-==============
+# 皮肤（Skins）
+
 
 dhtmlxGantt 提供了多种预设皮肤，可轻松更改甘特图的整体外观:
 
@@ -43,8 +43,8 @@ gantt.setSkin("dark");
 
 如有需要，你可以直接从 **codebase/sources/less/** 文件夹下的 **.less** 文件中移除字体导入，然后按照 [스킨 커스터마이제이션](guides/custom-skins.md) 文章中的说明重新构建皮肤。
 
-Terrace 皮肤 
------------------------------
+## Terrace 皮肤 
+
 
 要使用默认皮肤，只需引入默认 CSS 文件:
 
@@ -56,8 +56,8 @@ Terrace 皮肤
 [Default skin](https://docs.dhtmlx.com/gantt/samples/06_skins/01_default.html)
 
 
-Dark 皮肤 
------------------------------
+## Dark 皮肤 
+
 
 要应用 Dark 皮肤，同样引入默认 CSS 文件:
 
@@ -75,8 +75,8 @@ gantt.skin = "dark";
 [Dark skin](https://docs.dhtmlx.com/gantt/samples/06_skins/10_dark.html)
 
 
-Material 皮肤
---------------------
+## Material 皮肤
+
 
 要使用 Material 皮肤，依然需要引入默认 CSS 文件:
 
@@ -101,8 +101,8 @@ gantt.skin = "material";
     +'family="Open+Sans|Roboto:regular,medium,thin,bold"'">
 ~~~
 
-Contrast Black 皮肤
---------------------
+## Contrast Black 皮肤
+
 要使用 Contrast Black 皮肤，同样需引入默认 CSS 文件:
 
 - **dhtmlxgantt.css**
@@ -118,8 +118,8 @@ gantt.skin = "contrast-black";
 [High contrast theme - Black](https://docs.dhtmlx.com/gantt/samples/06_skins/07_high_contrast_black.html)
 
 
-Contrast White 皮肤
----------------------
+## Contrast White 皮肤
+
 要应用 Contrast White 皮肤，需引入默认 CSS 文件:
 
 - **dhtmlxgantt.css**
@@ -135,8 +135,8 @@ gantt.skin = "contrast-white";
 [High contrast theme - White](https://docs.dhtmlx.com/gantt/samples/06_skins/08_high_contrast_white.html)
 
 
-Skyblue 皮肤
-----------------------------------
+## Skyblue 皮肤
+
 要使用 Skyblue 皮肤，需引入默认 CSS 文件:
 
 - **dhtmlxgantt.css**
@@ -152,8 +152,8 @@ gantt.skin = "skyblue";
 ['Skyblue' skin](https://docs.dhtmlx.com/gantt/samples/06_skins/03_skyblue.html)
 
 
-Meadow 皮肤
------------------------------
+## Meadow 皮肤
+
 
 要应用 Meadow 皮肤，引入默认 CSS 文件:
 
@@ -170,8 +170,8 @@ gantt.skin = "meadow";
 ['Meadow' skin](https://docs.dhtmlx.com/gantt/samples/06_skins/04_meadow.html)
 
 
-Broadway 皮肤
------------------------------
+## Broadway 皮肤
+
 要应用 Broadway 皮肤，引入默认 CSS 文件:
 
 - **dhtmlxgantt.css**

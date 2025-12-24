@@ -3,8 +3,8 @@ title: "Creating/Selecting Tasks with DnD"
 sidebar_label: "Creating/Selecting Tasks with DnD"
 ---
 
-Creating/Selecting Tasks with DnD
-======================================
+# Creating/Selecting Tasks with DnD
+
 
 dhtmlxGantt library provides an extension that includes advanced drag-n-drop functionality while working with tasks in the timeline. 
 
@@ -87,8 +87,8 @@ Note that the event handlers can be added just for an existing element. Thus you
 the elements won't have been created yet.
 :::
 
-Creating tasks with drag-n-drop
----------------------------
+## Creating tasks with drag-n-drop
+
 
 You can create tasks with drag-n-drop right on the timeline by clicking in an empty place to set the start date of a task and dragging to the right to set its duration.
 
@@ -122,13 +122,13 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
 
-Setting time for unscheduled tasks
-------------------------
+## Setting time for unscheduled tasks
+
 
 The **click_drag** extension allows setting time for [unscheduled tasks](guides/unscheduled-tasks.md) with drag-n-drop.
 
-Selecting tasks with drag-n-drop
--------------------------------
+## Selecting tasks with drag-n-drop
+
 
 It is possible to select tasks with drag-n-drop in several modes: in dates, rows, or in bounds.
 
@@ -176,8 +176,8 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Select multiple tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/25_click_drag_select_by_drag.html)
 
 
-Creating parts of split tasks
--------------------------
+## Creating parts of split tasks
+
 :::info
 This functionality is available in the PRO Edition only.
 :::

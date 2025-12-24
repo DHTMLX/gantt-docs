@@ -3,11 +3,11 @@ title: "Properties for importing from MS Project"
 sidebar_label: "Properties for importing from MS Project"
 ---
 
-Properties for importing from MS Project
-================================
+# Properties for importing from MS Project
 
-Project properties
----------------------------------
+
+## Project properties
+
 
 <div class="myblock">
   <li>ActualsInSync</li>
@@ -80,8 +80,8 @@ Project properties
   <li>WorkFormat</li>
 </div>
 
-Tasks properties
----------------------------------
+## Tasks properties
+
 
 <div class="myblock">
   <li>ActualCost</li>

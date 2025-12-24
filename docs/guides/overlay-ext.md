@@ -3,8 +3,8 @@ title: "Overlay Extension"
 sidebar_label: "Overlay Extension"
 ---
 
-Overlay Extension
-======================
+# Overlay Extension
+
 
 :::info
 This functionality is available in the PRO edition only.
@@ -12,8 +12,8 @@ This functionality is available in the PRO edition only.
 
 The **overlay** extension contains a set of API methods to simplify work with overlays. Read details about the Overlay extension in the article [Custom Elements in Timeline Area](guides/baselines.md#extra-overlay-for-the-chart).
 
-Methods
-------------
+## Methods
+
 
 The following methods are available via the **gantt.ext.overlay** object:
 

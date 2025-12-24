@@ -3,8 +3,8 @@ title: "베이스라인 컨트롤"
 sidebar_label: "베이스라인 컨트롤"
 ---
 
-베이스라인 컨트롤
-====================
+# 베이스라인 컨트롤
+
 
 :::info
 이 기능은 PRO 에디션에만 포함되어 있습니다.
@@ -25,8 +25,8 @@ gantt.config.lightbox.sections = [
 
 
 
-초기화
----------------------------
+## 초기화
+
 
 **baselines** 컨트롤을 라이트박스에 포함시키려면 다음 단계를 따라주세요:
 
@@ -46,8 +46,8 @@ gantt.config.lightbox.sections = [
 gantt.locale.labels.section_baselines = "Baselines";
 ~~~
 
-속성
-------------------------
+## 속성
+
 
 **baselines** 컨트롤에서 주로 사용되는 주요 속성들은 다음과 같습니다 (전체 목록은 [여기](api/config/lightbox.md)에서 확인할 수 있습니다):
 
@@ -64,8 +64,8 @@ gantt.locale.labels.section_baselines = "Baselines";
 - **single_date** - (*boolean*) true로 설정하면 *시작 날짜* 선택기만 표시됨. 이렇게 편집된 작업은 기간이 0이 되며, 주로 [마일스톤](guides/task-types.md#milestones)에 유용함
 - **time_format** - (*string*) 날짜-시간 선택기의 순서를 지정
 
-지역화
------------------
+## 지역화
+
 
 **baselines** 컨트롤의 다음 부분에 대한 라벨을 사용자 지정할 수 있습니다:
 

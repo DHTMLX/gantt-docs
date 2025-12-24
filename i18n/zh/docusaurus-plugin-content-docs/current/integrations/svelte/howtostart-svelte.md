@@ -3,8 +3,8 @@ title: "dhtmlxGantt 与 Svelte 集成"
 sidebar_label: "Svelte"
 ---
 
-dhtmlxGantt 与 Svelte 集成
-========================
+# dhtmlxGantt 与 Svelte 集成
+
 
 本指南假设你已具备 Svelte 的基本概念和使用模式。如果还不熟悉，可以参考 [Svelte 官方文档](https://svelte.dev/) 的入门教程。
 

@@ -3,8 +3,8 @@ title: "Standard vs PRO Library Versions"
 sidebar_label: "Standard vs PRO Library Versions"
 ---
 
-Standard vs PRO Library Versions
-======================================
+# Standard vs PRO Library Versions
+
 
 If you doubt what is the difference between the Standard and PRO versions of the dhtmlxGantt library and want to know what bonuses you will get with the PRO edition, this guide is what you are looking for.
 

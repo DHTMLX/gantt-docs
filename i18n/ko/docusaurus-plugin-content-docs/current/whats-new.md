@@ -3,14 +3,13 @@ title: "What's New"
 sidebar_label: "What's New"
 ---
 
-What's New
-==========
+# What's New
 
 
 현재 사용 중인 dhtmlxGantt 버전이 2.0보다 이전 버전이라면, 업데이트에 대한 자세한 내용은 [](migration.md)를 참고하세요.
 
-9.0.11
----------------
+## 9.0.11
+
 <span class='release_date'>2025년 5월 27일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -30,8 +29,8 @@ What's New
 - [gantt.env](api/other/env.md)에 `isSalesforce` 플래그 추가
 - [React Gantt](integrations/react.md#groupingtasks)에 `groupTasks` prop 추가
 
-9.0.10
----------------
+## 9.0.10
+
 <span class='release_date'>2025년 4월 22일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -45,8 +44,8 @@ What's New
 - [접근성](guides/accessibility.md#waiariaattributes) 향상을 위해 읽기 전용 작업 링크에서 잘못된 WAI-ARIA 속성 제거
 - 작업 바 높이 변경에 따라 작업 바 리사이저가 적응하지 않는 문제 수정
 
-9.0.9
----------------
+## 9.0.9
+
 <span class='release_date'>2025년 4월 16일. 버그 수정 릴리즈</span>
 
 ### 업데이트
@@ -62,8 +61,8 @@ What's New
 - [click_drag](guides/extensions-list.md#advanceddragndrop) 확장이 터치 디바이스에서 동작하지 않는 문제 수정
 - 터치 디바이스에서 그리드 스크롤 반응성 개선
 
-9.0.7
----------------
+## 9.0.7
+
 <span class='release_date'>2025년 3월 27일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -82,8 +81,8 @@ What's New
 - `gantt_marker_area` 요소 중복 방지
 - `changeTaskId` 액션에 대한 [undo](guides/undo-redo.md) 기능 수정
 
-9.0.6
----------------
+## 9.0.6
+
 <span class='release_date'>2025년 3월 18일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -101,8 +100,8 @@ What's New
 - [resource panel](guides/resource-management.md#resourceviewpanel)에 영향을 주는 `fetchTasks` 및 [deepcopy_on_parse](api/config/deepcopy_on_parse.md) 설정 관련 문제 해결
 - Gantt 초기화 시 폰트 아이콘 표시 오류 수정
 
-9.0.5
----------------
+## 9.0.5
+
 <span class='release_date'>2025년 2월 28일. 버그 수정 릴리즈</span>
 
 - [Resource Grid](guides/resource-management.md#resourceviewpanel)에서 행 크기 조정 시 발생하는 오류 수정
@@ -119,8 +118,8 @@ What's New
 - [inline editor](guides/inline-editors-ext.md)에서 날짜 값을 일부만 삭제할 때 발생하는 오류 수정
 - `fetchTasks`가 활성화된 상태에서 필터링 후 [resource panel](guides/resource-management.md#resourceviewpanel)이 잘못 표시되는 문제 수정
 
-9.0.4
----------------
+## 9.0.4
+
 <span class='release_date'>2024년 12월 3일. 버그 수정 릴리즈</span>
 
 - [SNET constraint](guides/auto-scheduling.md#timeconstraintsfortasks) 날짜를 [inline editor](guides/inline-editors-ext.md)로 변경할 수 없는 문제 수정
@@ -130,8 +129,8 @@ What's New
 - [auto_scheduling_project_constraint](api/config/auto_scheduling_project_constraint.md) 설정이 활성화되고 작업이 [grouped](api/method/groupby.md)된 경우 Gantt가 동작하지 않는 문제 수정
 - 작업을 드래그한 후 작업의 [constraint](guides/auto-scheduling.md#timeconstraintsfortasks)이 유지되도록 보장
 
-9.0.3
----------------
+## 9.0.3
+
 <span class='release_date'>2024년 11월 19일. 버그 수정 릴리즈</span>
 
 - [Quick Info](guides/quick-info.md) 팝업 스타일 관련 회귀 문제 수정
@@ -143,8 +142,8 @@ What's New
 - Gantt를 [재초기화](api/method/init.md)하거나 [레이아웃을 재설정](api/method/resetlayout.md)한 후 [Inline Editors](guides/inline-editors-ext.md) 이벤트가 제거되지 않도록 방지
 - [redoing](guides/undo-redo.md) 후 열림 상태가 복원되지 않는 문제 수정
 
-9.0.2
----------------
+## 9.0.2
+
 <span class='release_date'>2024년 11월 11일. 버그 수정 릴리즈</span>
 
 
@@ -164,8 +163,8 @@ What's New
 - TypeScript 환경에서 [export_api](api/method/exporttopdf.md) 플러그인의 기능 복원
 - 타입 정의 업데이트
 
-9.0.1
----------------
+## 9.0.1
+
 
 <span class='release_date'>2024년 10월 21일. 버그 수정 릴리스</span>
 
@@ -179,8 +178,8 @@ What's New
 - [resetLayout](api/method/resetlayout.md) 호출 시 [S-Curve Overlay](guides/baselines.md#extraoverlayforthechart) 플러그인의 기능이 중단되는 문제 수정
 - [predecessor editor](guides/inline-editing.md#typesofeditors)가 중복 링크를 생성하지 않도록 방지
 
-<b>9.0</b>
----------------
+## <b>9.0</b>
+
 
 <span class='release_date'>2024년 10월 17일. 주요 업데이트</span>
 
@@ -221,8 +220,8 @@ What's New
 - 2단계 작업이 있는 프로젝트도 Gantt가 제대로 자동 스케줄링하도록 보장
 - 작업이 지정된 날짜 범위 밖에 있을 때 [resource_cell_value](guides/resource-management.md#resourcecellvalue)에서 고정 날짜 "assignments"를 반환하지 않는 문제 수정
 
-8.0.11
-----------
+## 8.0.11
+
 
 <span class='release_date'>2024년 10월 8일. 버그 수정 릴리스</span>
 
@@ -243,8 +242,8 @@ What's New
 - 헤더의 정렬 아이콘 클릭 시 [그리드 정렬](api/config/sort.md)이 제대로 동작하도록 수정
 - [drag_timeline](api/config/drag_timeline.md) 활성화 시 작업 리페인팅이 일관되지 않게 표시되는 문제 수정
 
-8.0.10
-----------
+## 8.0.10
+
 
 <span class='release_date'>2024년 8월 23일. 버그 수정 릴리스</span>
 
@@ -261,8 +260,8 @@ What's New
 - [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) 이벤트를 사용하여 자식이 없는 [분할 작업 필터링](guides/split-tasks.md#filteringsplittasks) 시 오류 발생 문제 수정
 - [프로젝트 및 하위 작업 드래그](api/config/drag_project.md) 후 [Resource Assignments](guides/resource-management.md)가 업데이트되지 않는 문제 수정
 
-8.0.9
-----------
+## 8.0.9
+
 
 <span class='release_date'>2024년 6월 18일. 버그 수정 릴리스</span>
 
@@ -279,8 +278,8 @@ What's New
 - [Resource Assignments](guides/resource-management.md) 객체의 커스텀 속성이 파싱 후 포함되지 않는 문제 수정
 - TypeScript 타입 정의 업데이트
 
-8.0.8
-----------
+## 8.0.8
+
 
 <span class='release_date'>2024년 5월 31일. 버그 수정 릴리스</span>
 
@@ -293,8 +292,8 @@ What's New
 - 편집 가능한 [Resource Panel](guides/resource-management.md)이 있는 Gantt를 [destroying](api/method/destructor.md) 후 스크립트 오류 발생 문제 수정
 - 일부 브라우저에서 [툴팁](guides/tooltips.md)이 사라지는 문제 수정
 
-8.0.7
-----------
+## 8.0.7
+
 
 <span class='release_date'>2024년 5월 16일. 버그 수정 릴리스</span>
 
@@ -314,8 +313,8 @@ What's New
 - [unscheduled tasks](guides/unscheduled-tasks.md)에 대해 [isCriticalTask](api/method/iscriticaltask.md), [getFreeSlack](api/method/getfreeslack.md), [getTotalSlack](api/method/gettotalslack.md) 메서드 사용 시 발생하던 오류 수정
 - 연결된 프로젝트에 [unscheduled](guides/unscheduled-tasks.md) 하위 작업만 있을 때 발생하던 오류 수정
 
-8.0.6
-----------
+## 8.0.6
+
 
 <span class='release_date'>2023년 9월 25일. 버그 수정 릴리즈</span>
 
@@ -327,8 +326,8 @@ What's New
 - [Export API client](guides/extensions-list.md#exportservice)가 이제 Gantt의 GPL 버전에 통합됨(이전에는 PRO 버전에만 포함)
 - [Node.js version of Gantt](guides/using-gantt-on-server.md)에서 https export [server endpoints](guides/export.md#parametersoftheexportmethods) 지원 추가
 
-8.0.5
-----------
+## 8.0.5
+
 
 <span class='release_date'>2023년 9월 1일. 버그 수정 릴리즈</span>
 
@@ -338,8 +337,8 @@ What's New
 - [skip_off_time](api/config/skip_off_time.md) 설정이 활성화된 상태에서 [gantt.exportToExcel()](api/method/exporttoexcel.md)이 잘못 동작하던 문제 수정
 - [Samples Viewer](https://docs.dhtmlx.com/gantt/samples/) 개선
 
-8.0.4
-----------
+## 8.0.4
+
 
 <span class='release_date'>2023년 7월 31일. 버그 수정 릴리즈</span>
 
@@ -350,8 +349,8 @@ What's New
 - [gantt.calculateEndDate](api/method/calculateenddate.md)에서 분 단위로 날짜를 빼는 경우 잘못 동작하던 문제 수정
 - [visibility groups](guides/layout-config.md#visibilitygroups)가 포함된 레이아웃의 성능 소폭 개선
 
-8.0.3
-----------
+## 8.0.3
+
 
 <span class='release_date'>2023년 6월 14일. 버그 수정 릴리즈</span>
 
@@ -361,8 +360,8 @@ What's New
 - [negative Lag](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks)이 있는 작업에서 [Free Slack](guides/critical-path.md#gettingfreeandtotalslack) 계산 오류 수정
 - 진행률이 100%인 작업의 [Critical Path](guides/critical-path.md) 계산 오류 수정
 
-8.0.2
-----------
+## 8.0.2
+
 
 <span class='release_date'>2023년 5월 31일. 버그 수정 릴리즈</span>
 
@@ -375,8 +374,8 @@ What's New
 - [Split Tasks](guides/split-tasks.md) 렌더링 성능 개선
 - 기타 성능 개선
 
-8.0.1
-----------
+## 8.0.1
+
 
 <span class='release_date'>2023년 3월 30일. 버그 수정 릴리즈</span>
 
@@ -388,8 +387,8 @@ What's New
 - [settings of work time](guides/working-time.md#globalsettings)에 분 단위가 포함된 경우 [auto scheduling](guides/auto-scheduling.md)과 [MSO, FNET, FNLT constraints](guides/auto-scheduling.md#timeconstraintsfortasks)가 잘못 동작하던 문제 수정
 - 스크롤 시 [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) 이벤트 작동 오류 수정
 
-<b>8.0</b>
---------------
+## <b>8.0</b>
+
 
 <span class='release_date'>2023년 3월 20일. 주요 업데이트</span>
 
@@ -455,8 +454,8 @@ What's New
 - [vertical reordering](guides/reordering-tasks.md)에서 작업 행이 Gantt 외부로 드래그될 수 있던 문제 수정
 - [Resource panel](guides/resource-management.md#resourceviewpanel)에서 행의 `odd` CSS 클래스가 잘못 지정되던 문제 수정
 
-7.1.13
-----------
+## 7.1.13
+
 
 <span class='release_date'>2022년 11월 4일. 버그 수정 릴리즈</span>
 
@@ -476,8 +475,8 @@ What's New
 - [German locale](guides/localization.md#activatingalocale)가 업데이트되었습니다.
 - 다중 선택 모드에서 작업을 한 번 클릭하면 인라인 에디터를 열 수 있습니다([inline_editors_multiselect_open](api/config/inline_editors_multiselect_open.md) 속성 추가).
 
-7.1.12
------------
+## 7.1.12
+
 
 <span class='release_date'>2022년 6월 16일. 버그 수정 릴리즈</span>
 
@@ -493,8 +492,8 @@ What's New
 - [Resource Panel](guides/resource-management.md#resourceviewpanel)이 포함된 Gantt layout에서 [autosize](api/config/autosize.md) 설정이 잘못 동작하던 문제를 수정했습니다.
 - [split tasks](guides/split-tasks.md)에 대한 [lightbox](guides/default-edit-form.md)를 수정하여, 이제 분할 작업을 더블 클릭하면 lightbox가 정상적으로 표시됩니다.
 
-7.1.11
------------
+## 7.1.11
+
 
 <span class='release_date'>2022년 4월 27일. 버그 수정 릴리즈</span>
 
@@ -510,8 +509,8 @@ What's New
 - 기본 [Gantt layout](guides/layout-config.md#defaultlayout)의 스크롤바가 이제 **scrollVer**/**scrollHor** 이름 없이도 올바르게 작동합니다.
 - [split tasks](guides/split-tasks.md)가 [selection](api/config/select_task.md) 시 일반 작업과 동일하게 'gantt_selected' 클래스를 받도록 변경되었습니다.
 
-7.1.10
------------
+## 7.1.10
+
 
 <span class='release_date'>2022년 3월 16일. 버그 수정 릴리즈</span>
 
@@ -529,8 +528,8 @@ What's New
 - [multiselect](guides/extensions-list.md#multitaskselection) 확장이 활성화된 경우 [clearAll()](api/method/clearall.md) 메소드가 선택된 작업을 해제하지 않던 문제를 수정했습니다.
 - [exportToExcel()](api/method/exporttoexcel.md) 메소드에 `visual: true` 파라미터와 [duration_unit](api/config/duration_unit.md)을 'hour'로 설정할 때 오류가 발생하던 문제를 수정했습니다.
 
-7.1.9
------------
+## 7.1.9
+
 
 <span class='release_date'>2022년 1월 10일. 버그 수정 릴리즈</span>
 
@@ -552,8 +551,8 @@ What's New
 - Next.js 프로젝트에서 Gantt의 압축 버전을 실행할 때 오류가 발생하던 문제를 수정했습니다.
 - [gantt instance](guides/multiple-gantts.md#ganttinstanceconfiguration)를 빈 컨테이너에 초기화할 때 Gantt의 너비가 변경되는 문제를 수정했습니다.
 
-7.1.8
------------
+## 7.1.8
+
 
 <span class='release_date'>2021년 11월 30일. 버그 수정 릴리즈</span>
 
@@ -567,8 +566,8 @@ What's New
 - [resource assignment form](guides/resources.md)에서 [resource assignment](guides/resource-management.md#assigningresources)의 id를 사용자가 지정한 값 대신 자동 생성 값으로 대체하던 문제를 수정했습니다.
 - 중첩 항목이 있는 작업에 [gantt.changeTaskId](api/method/changetaskid.md)를 사용할 때 중첩 레벨이 잘못 계산되던 문제를 수정했습니다.
 
-7.1.7
------------
+## 7.1.7
+
 
 <span class='release_date'>2021년 10월 5일. 버그 수정 릴리즈</span>
 
@@ -584,8 +583,8 @@ What's New
 - [grid columns](guides/specifying-columns.md) 크기가 잘못 표시되는 문제 수정
 - [column's resizers](guides/specifying-columns.md#resizing) 동작이 [reordering of the columns](api/config/reorder_grid_columns.md)와 충돌하던 문제 수정
 
-7.1.6
----------------
+## 7.1.6
+
 
 <span class='release_date'>2021년 8월 23일. 버그 수정 릴리즈</span>
 
@@ -597,8 +596,8 @@ What's New
 - [size/visibility groups](guides/layout-config.md#visibilitygroups)가 복잡한 레이아웃에서 컬럼 크기 동기화를 막던 문제 수정
 - gantt가 작은 컨테이너에 렌더링될 때 그리드 표시 개선
 
-7.1.5
----------------
+## 7.1.5
+
 
 <span class='release_date'>2021년 7월 22일. 버그 수정 릴리즈</span>
 
@@ -611,8 +610,8 @@ What's New
 - Vue.js 애플리케이션에서 리소스 패널 설정이 [gantt의 메인 설정](guides/common-configuration.md#ganttconfigobject)을 덮어쓰는 문제 수정
 - [resource layout](guides/layout-config.md#configsandtemplatesofviews)에 제공된 설정 객체를 수정하여 [resource panel](guides/resource-management.md#resourceviewpanel) 구성을 동적으로 변경할 수 있는 기능 추가
 
-7.1.4
----------
+## 7.1.4
+
 
 <span class='release_date'>2021년 6월 30일. 버그 수정 릴리즈</span>
 
@@ -628,8 +627,8 @@ What's New
 - [click_drag](guides/extensions-list.md#advanceddragndrop) 확장 사용 시 마우스가 컨테이너 밖으로 이동할 때 스크립트 오류 발생 문제 수정
 - Gantt의 [auto_types](api/config/auto_types.md) 설정 성능 개선
 
-7.1.3
-------
+## 7.1.3
+
 
 <span class='release_date'>2021년 5월 25일. 버그 수정 릴리즈</span>
 
@@ -639,8 +638,8 @@ What's New
 - 최신 Firefox 브라우저에서 스크롤 속도 문제 수정
 - [작업 시간 계산](guides/working-time.md) 성능 개선
 
-7.1.2
-------
+## 7.1.2
+
 
 <span class='release_date'>2021년 4월 26일. 버그 수정 릴리즈</span>
 
@@ -651,8 +650,8 @@ What's New
 - 작업 id 변경 시 [split tasks](guides/split-tasks.md)가 잘못 동작하는 문제 수정
 - Angular에서 마우스 휠 스크롤이 잘못 동작하는 문제 수정
 
-7.1.1
-------
+## 7.1.1
+
 
 <span class='release_date'>2021년 4월 19일. 버그 수정 릴리즈</span>
 
@@ -667,8 +666,8 @@ What's New
 - [task calendars](guides/working-time.md#assigningcalendartotask)가 많은 Gantt의 성능 개선
 - [batchUpdate](api/method/batchupdate.md) 및 [autoScheduling](guides/auto-scheduling.md) 중 [resource assignment](guides/resource-management.md#managingresourceassignments) 계산 성능 개선
 
-7.1
-----------
+## 7.1
+
 
 <span class='release_date'>2021년 4월 8일. 마이너 업데이트</span>
 
@@ -703,8 +702,8 @@ What's New
 - [Keyboard Navigation Extension](guides/keynav-ext.md)을 여러 번 추가하면 그리드 내 탐색이 중단되는 문제 수정
 - [Inline Editors](guides/inline-editing.md)에서 [hide:true](guides/specifying-columns.md#visibility) 속성으로 숨긴 컬럼 뒤에 있는 셀에서 에디터를 열 수 없던 문제 수정
 
-7.0.13
-------
+## 7.0.13
+
 
 <span class='release_date'>2021년 2월 15일. 버그 수정 릴리즈</span>
 
@@ -717,8 +716,8 @@ What's New
 - [auto_types](api/config/auto_types.md) 및 [drag_project](api/config/drag_project.md) 설정이 활성화된 상태에서 드래그 앤 드롭 성능 개선
 - [duration_unit](api/config/duration_unit.md)이 "day"로 지정된 경우 [작업 시간 계산](guides/working-time.md) 성능 개선
 
-7.0.12
-------
+## 7.0.12
+
 
 <span class='release_date'>2021년 1월 14일. 버그 수정 릴리즈</span>
 
@@ -739,8 +738,8 @@ What's New
 - 대형 프로젝트에서 [drag_project](api/config/drag_project.md) 설정 사용 시 성능 문제 개선
 - [read-only](guides/readonly-mode.md) 모드에서 커스텀 버튼이 추가된 경우 [QuickInfo](api/method/showquickinfo.md) 팝업이 표시되지 않는 문제 수정
 
-7.0.11
-------
+## 7.0.11
+
 
 <span class='release_date'>2020년 11월 11일. 버그 수정 릴리즈</span>
 
@@ -757,8 +756,8 @@ What's New
 - [Inline Editors](guides/inline-editing.md)와 스크롤 가능한 그리드에서 클릭 직후 인라인 에디터 포커스가 해제되는 문제 수정
 - 사용자가 [Quick Info](guides/extensions-list.md#quickinfo) 팝업을 클릭할 때 Gantt가 해당 팝업을 닫아버리는 문제 수정
 
-7.0.10
-------
+## 7.0.10
+
 
 <span class='release_date'>2020년 9월 22일. 버그 수정 릴리즈</span>
 
@@ -774,8 +773,8 @@ What's New
 - [Inline Editors](guides/inline-editing.md)와 [Keyboard Navigation](guides/keyboard-navigation.md) 간의 충돌 문제 수정
 - [Inline Editors](guides/inline-editing.md)에서 더블 클릭 시 에디터가 닫혀버리는 문제 수정
 
-7.0.9
--------
+## 7.0.9
+
 
 <span class='release_date'>2020년 8월 27일. 버그 수정 릴리즈</span>
 
@@ -792,8 +791,8 @@ What's New
 - iframe 내에서 gantt를 초기화할 때 발생하는 스크립트 오류 수정
 - [undo](api/config/undo.md) 설정이 비활성화된 경우 [redo](api/config/redo.md) 설정이 올바르게 동작하지 않는 문제 수정
 
-7.0.8
--------
+## 7.0.8
+
 
 <span class='release_date'>2020년 7월 24일. 버그 수정 릴리즈</span>
 
@@ -804,15 +803,15 @@ What's New
 - [gantt.getGanttInstance](guides/multiple-gantts.md)에서 'locale' 파라미터 사용 시 발생하는 스크립트 오류 수정
 - [gantt.destructor](api/method/destructor.md)에서 [Keyboard Navigation](guides/extensions-list.md#keyboardnavigation) 및 [Quick Info](guides/extensions-list.md#quickinfo) 확장 기능 사용 시 발생하는 스크립트 오류 수정
 
-7.0.7
---------
+## 7.0.7
+
 
 <span class='release_date'>2020년 7월 17일. 버그 수정 릴리즈</span>
 
 - [gantt.Promise](api/method/promise.md) 타입 정의의 문법 오류 수정
 
-7.0.6
---------
+## 7.0.6
+
 
 <span class='release_date'>2020년 7월 16일. 버그 수정 릴리즈</span>
 
@@ -826,8 +825,8 @@ What's New
 - 'hide empty' 버튼 사용 시 [resource control](guides/resource-management.md) 동작 오류 수정
 - [gantt.Promise](api/method/promise.md) 타입 정의의 반환 타입 수정
 
-7.0.5
---------
+## 7.0.5
+
 
 <span class='release_date'>2020년 6월 19일. 버그 수정 릴리즈</span>
 
@@ -837,8 +836,8 @@ What's New
 - [duration_unit](api/config/duration_unit.md)가 "minute"으로 설정된 경우 [작업 시간 계산](guides/working-time.md) 성능 개선
 - [`Gantt.getGanttInstance`](guides/multiple-gantts.md#ganttinstanceconfiguration) 설정 객체에서 작업 캘린더 지정 기능 추가
 
-7.0.4
-------
+## 7.0.4
+
 
 <span class='release_date'>2020년 6월 4일. 버그 수정 릴리즈</span>
 
@@ -858,8 +857,8 @@ What's New
 - [node.js 패키지](guides/using-gantt-on-server.md)에서 [gantt.addTask](api/method/addtask.md) 호출 시 발생하는 스크립트 오류 수정
 - [node.js 패키지](guides/using-gantt-on-server.md)에서 [gantt.destructor](api/method/destructor.md) 호출 시 발생하는 스크립트 오류 수정
 
-7.0.3
-------
+## 7.0.3
+
 
 <span class='release_date'>2020년 5월 14일. 버그 수정 릴리즈</span>
 
@@ -868,8 +867,8 @@ What's New
 - 특정 날짜에 작업 시간을 설정할 때 [setWorkTime 메서드](api/method/setworktime.md) 회귀로 인한 스크립트 오류 수정
 - Gantt가 [SalesForce Lightning Web Component](https://github.com/DHTMLX/salesforce-gantt-demo) 내에서 사용될 때 [Keyboard Navigation](guides/keyboard-navigation.md) 확장 기능 동작 오류 수정
 
-7.0.2
-------
+## 7.0.2
+
 
 <span class='release_date'>2020년 4월 30일. 버그 수정 릴리즈</span>
 
@@ -880,13 +879,13 @@ What's New
 - [dataProcessor router function](guides/server-side.md#customrouting)에서 오류 상태 반환 후 작업 행 요소의 css 클래스가 잘못 표시되는 문제 수정
 - Shadow DOM 내 [inline editors](guides/inline-editing.md) 동작 오류 수정
 
-7.0.1
------
+## 7.0.1
+
 
 <span class='release_date'>2020년 4월 16일. 버그 수정 릴리즈</span>
 
 
-###수정 사항
+### 수정 사항
 
 - [작업 기간의 근무 분 단위 계산](guides/working-time.md)에서 주요 성능 향상
 - [Tooltip](guides/tooltips.md) 및 [Undo](guides/undo-redo.md) 확장 기능에서 여러 개의 Gantt 인스턴스를 생성할 때 잘못 동작하던 회귀 문제 수정
@@ -899,8 +898,8 @@ What's New
 - [분할 작업](guides/split-tasks.md) 내에 중첩된 'project' 작업의 기간을 Gantt가 계산하지 않던 문제 수정
 - [RTL 모드](guides/rtl-mode.md)에서 [인라인 에디터](guides/inline-editing.md)를 열었을 때 플레이스홀더의 잘못된 위치 문제 수정
 
-<b>7.0</b>
---------------
+## <b>7.0</b>
+
 
 <span class='release_date'>2020년 4월 7일. 주요 업데이트</span>
 
@@ -939,8 +938,8 @@ What's New
 - 시작일이 같은 작업에서 `gantt.sort`가 잘못 동작하던 문제 수정
 - Gantt가 웹 컴포넌트 내부에 초기화되었을 때 링크 드래그 앤 드롭 문제 수정
 
-6.3.7
------
+## 6.3.7
+
 
 <span class='release_date'>2020년 2월 12일. 버그 수정 릴리즈</span>
 
@@ -948,8 +947,8 @@ What's New
 
 - 차트 및 리소스 패널의 스마트 렌더링 성능 대폭 개선
 
-6.3.6
------
+## 6.3.6
+
 
 <span class='release_date'>2020년 2월 10일. 버그 수정 릴리즈</span>
 
@@ -962,8 +961,8 @@ What's New
 - [gantt.getTaskNode](api/method/gettasknode.md)이 [분할 작업](https://docs.dhtmlx.com/gantt/desktop__split_tasks.html)에 대해 올바른 HTML 요소를 반환함
 - [가로 스크롤바](https://docs.dhtmlx.com/gantt/desktop__specifying_columns.html#horizontalscrollbar)가 [visibility groups](https://docs.dhtmlx.com/gantt/desktop__layout_config.html#visibilitygroups)가 일부 레이아웃에서 지정될 때 표시되지 않던 문제 수정
 
-6.3.5
------
+## 6.3.5
+
 
 <span class='release_date'>2020년 1월 31일. 버그 수정 릴리즈</span>
 
@@ -979,8 +978,8 @@ What's New
 
 - [Gantt 레이아웃을 설정 변경 후 재구성하는 퍼블릭 메서드](api/method/resetlayout.md) 추가
 
-6.3.4
------
+## 6.3.4
+
 
 <span class='release_date'>2019년 12월 27일. 버그 수정 릴리즈</span>
 
@@ -993,8 +992,8 @@ What's New
 - 타임라인의 작업과 그리드의 [플레이스홀더](api/config/placeholder_task.md) 간 링크 생성이 이제 차단됨
 - [auto scheduling 확장](guides/auto-scheduling.md)에서 [제약 조건 타입(SNET/FNET/SNLT/FNLT)](guides/auto-scheduling.md#timeconstraintsfortasks)이 날짜 없이 지정되거나 잘못된 날짜가 지정된 경우 Gantt가 멈추던 버그 수정
 
-6.3.3
------
+## 6.3.3
+
 
 <span class='release_date'>2019년 12월 18일. 버그 수정 릴리즈</span>
 
@@ -1009,8 +1008,8 @@ What's New
 - [min_duration](api/config/min_duration.md) 설정의 잘못된 동작 수정
 - [링크 포매터](guides/formatters-ext.md#linkformatter)가 사용자 정의 [gantt 인스턴스](guides/multiple-gantts.md)와 함께 잘못 동작하던 문제 수정
 
-6.3.2
------
+## 6.3.2
+
 
 <span class='release_date'>2019년 12월 10일. 버그 수정 릴리즈</span>
 
@@ -1025,8 +1024,8 @@ What's New
 - [onBeforeBranchLoading](api/event/onbeforebranchloading.md) 및 [onAfterBranchLoading](api/event/onafterbranchloading.md) 퍼블릭 이벤트 추가로 [동적 로딩](guides/dynamic-loading.md) 요청의 url 또는 동적 파라미터를 수정 가능
 - [dataProcessor](guides/server-side.md)의 url을 초기화 후 변경할 수 있는 퍼블릭 메서드 추가
 
-6.3.1
------
+## 6.3.1
+
 
 <span class='release_date'>2019년 11월 29일. 버그 수정 릴리즈</span>
 
@@ -1037,8 +1036,8 @@ What's New
 - [전체화면 확장](guides/fullscreen-mode.md)에서 전체화면 모드 시 일부 페이지 요소가 gantt 위에 표시되던 문제 수정
 - [drag-timeline 확장](guides/extensions-list.md#dragtimeline)에서 [readonly 설정](guides/readonly-mode.md) 값을 초기화하던 버그 수정
 
-6.3
--------
+## 6.3
+
 
 <span class='release_date'>2019년 11월 14일. 마이너 업데이트</span>
 
@@ -1073,8 +1072,8 @@ What's New
 - [커스텀 라우터](guides/server-side.md#customrouting)에서 작업 및 링크가 순차적으로 수정될 때 [DataProcessor](guides/server-side.md#customrouting)의 상태가 잘못되는 문제 수정
 - 이제 Task/Link의 올바른 데이터 객체가 [커스텀 라우터](guides/server-side.md#customrouting)의 **delete** 호출에도 전달됨
 
-6.2.7
------
+## 6.2.7
+
 
 <span class='release_date'>2019년 10월 11일. 버그 수정 릴리즈</span>
 
@@ -1084,8 +1083,8 @@ What's New
 - [스케일 스텝](guides/configuring-time-scale.md#timestep)이 1보다 클 때 [리소스 히스토그램](guides/resource-management.md#resourceviewpanel)이 올바르게 동작하지 않는 문제 수정
 - [gantt.parse](api/method/parse.md) 호출 후 브랜치가 접힌 채로 남는 v6.2.4 버그 재발 문제 수정
 
-6.2.6
------
+## 6.2.6
+
 
 <span class='release_date'>2019년 9월 19일. 버그 수정 릴리즈</span>
 
@@ -1095,8 +1094,8 @@ What's New
 - [QuickInfo 팝업](guides/extensions-list.md#quickinfo)이 [스케줄되지 않은 작업](guides/unscheduled-tasks.md)에 표시되지 않던 문제 수정
 - Ultimate 빌드에서 확장 파일이 올바르게 동작하지 않던 문제 수정
 
-6.2.5
------
+## 6.2.5
+
 
 <span class='release_date'>2019년 9월 12일. 버그 수정 릴리즈</span>
 
@@ -1107,8 +1106,8 @@ What's New
 - [onTaskLoading](api/event/ontaskloading.md) 이벤트 핸들러에서 *false*를 반환할 때 스크립트 오류 발생 문제 수정
 - [gantt.load](api/method/load.md) 및 [gantt.parse](api/method/parse.md)에서 발생할 수 있는 예외에 대해 더 명확한 에러 메시지 추가
 
-6.2.4
------
+## 6.2.4
+
 
 <span class='release_date'>2019년 9월 5일. 버그 수정 릴리즈</span>
 
@@ -1118,8 +1117,8 @@ What's New
 - [리소스 뷰](guides/resource-management.md#resourceviewpanel)에서 [스마트 렌더링](guides/performance.md#smartrendering)이 올바르지 않게 동작하는 문제 수정
 - [Zoom 모듈](guides/zooming.md)이 [Gantt 재초기화](api/method/init.md) 시 불필요한 DOM 이벤트 핸들러를 계속 추가하는 문제 수정
 
-6.2.3
------
+## 6.2.3
+
 
 <span class='release_date'>2019년 8월 29일. 버그 수정 릴리즈</span>
 
@@ -1136,8 +1135,8 @@ What's New
 - [정렬](guides/sorting.md) 후 [WBS](api/method/getwbscode.md) 컬럼이 업데이트되지 않는 문제 수정
 - [Material 스킨](guides/skins.md#materialskin)에서 [static_background](api/config/static_background.md)가 올바르지 않게 표시되는 문제 수정
 
-6.2.2
------
+## 6.2.2
+
 
 <span class='release_date'>2019년 8월 13일. 버그 수정 릴리즈</span>
 
@@ -1155,8 +1154,8 @@ What's New
 - 사용자가 [작업 유형](guides/typeselect.md)을 변경할 때 [lightbox](guides/default-edit-form.md)의 모달 오버레이가 사라지는 문제 수정
 - [키보드 네비게이션 프리셋](https://docs.dhtmlx.com/gantt/desktop__keyboard_navigation.html#comment-4488512513)에서 [onBeforeTaskMove](api/event/onbeforetaskmove.md)로 동작이 취소되어도 **Shift+left arrow** 단축키 이후 [onAfterTaskUpdate](api/event/onaftertaskupdate.md)가 호출되는 문제 수정
 
-6.2.1
------
+## 6.2.1
+
 
 <span class='release_date'>2019년 8월 7일. 버그 수정 릴리즈</span>
 
@@ -1170,8 +1169,8 @@ What's New
 - 작업 드래그 및 드래그 앤 드롭이 Gantt의 모든 요소에서 mouseup 시 완료되도록 수정
 - [스케줄되지 않은 작업](guides/unscheduled-tasks.md) 저장 후 발생하는 스크립트 오류 수정
 
-6.2
--------
+## 6.2
+
 
 <span class='release_date'>2019년 7월 16일. 마이너 업데이트</span>
 
@@ -1199,8 +1198,8 @@ What's New
 - 여러 작업 강조 표시가 렌더링 후 초기화되는 문제 수정
 - 데이터 프로세서 핸들러에서 Gantt를 파괴할 때 스크립트 오류 수정
 
-6.1.7
------
+## 6.1.7
+
 
 <span class='release_date'>2019년 6월 27일. 버그 수정 릴리즈</span>
 
@@ -1213,8 +1212,8 @@ What's New
 - 일부 그리드 컬럼이 [숨겨져](guides/specifying-columns.md#visibility) 있을 때 `Tab` 키로 [인라인 에디터](guides/inline-editing.md) 간 전환 시 올바르지 않은 동작 수정
 - [제약 날짜](guides/auto-scheduling.md#timeconstraintsfortasks)를 [lightbox](guides/edit-form.md) 및 [인라인 에디터](guides/inline-editing.md)에서 오버라이드하지 못하게 하는 예기치 않은 동작 수정
 
-6.1.6
------
+## 6.1.6
+
 
 <span class='release_date'>2019년 5월 14일. 버그 수정 릴리즈</span>
 
@@ -1225,8 +1224,8 @@ What's New
 - [수직 드래그 앤 드롭](guides/reordering-tasks.md) 후 [dataProcessor 라우터](guides/server-side.md#customrouting)의 `action` 인자가 올바르지 않은 문제 수정
 - [createTask](api/method/createtask.md)가 `index` 파라미터를 무시하는 문제 수정
 
-6.1.5
------
+## 6.1.5
+
 
 <span class='release_date'>2019년 4월 25일. 버그 수정 릴리즈</span>
 
@@ -1235,8 +1234,8 @@ What's New
 - [show_chart](api/config/show_chart.md) 설정이 비활성화된 상태에서 두 번째 [init](api/method/init.md) 호출 시 스크립트 오류 수정
 - [마커 모드](guides/reordering-tasks.md#improvingperformancewithlargedatasets)에서 [수직 드래그 앤 드롭](guides/reordering-tasks.md) 플레이스홀더 위치가 올바르지 않은 문제 수정
 
-6.1.4
------
+## 6.1.4
+
 
 <span class='release_date'>2019년 4월 18일. 버그 수정 릴리즈</span>
 
@@ -1248,8 +1247,8 @@ What's New
 - [Undo](guides/undo-redo.md) 확장에서 새 작업 재생성에 대한 Redo 동작이 모든 속성을 복원하지 못하는 문제 수정
 - GPL 빌드에서 두 번째 [gantt.init](api/method/init.md) 호출 시 스크립트 오류가 발생하는 회귀 문제 수정
 
-6.1.3
------
+## 6.1.3
+
 
 <span class='release_date'>2019년 4월 15일. 버그 수정 릴리즈</span>
 
@@ -1275,8 +1274,8 @@ What's New
 - [typeselect](guides/typeselect.md) 블록에 빈 줄이 표시되는 버그 수정
 - [id change](api/method/changetaskid.md) 후 작업이 [critical path](guides/critical-path.md)의 일부로 인식되지 않는 버그 수정
 
-6.1.2
------
+## 6.1.2
+
 
 <span class='release_date'>2019년 3월 26일. 버그 수정 릴리스</span>
 
@@ -1293,8 +1292,8 @@ What's New
 - [gantt.undo](api/config/undo.md) 및 그리드에서 들여쓰기 작업 시 스크립트 오류 수정
 - SalesForce 호환성 개선: SF에서 새로운 리사이즈 리스너가 동작하지 않던 문제에 대한 대체 처리 추가
 
-6.1.1
------
+## 6.1.1
+
 
 <span class='release_date'>2019년 3월 5일. 버그 수정 릴리스</span>
 
@@ -1308,8 +1307,8 @@ What's New
 - [lightbox](api/config/lightbox.md)가 열린 상태에서 [gantt.init](api/method/init.md)을 호출할 때 lightbox 커버가 남아있는 문제 수정
 - [lightbox](api/config/lightbox.md) 및 [tooltip extension](guides/tooltips.md)이 [전체 화면 모드](guides/fullscreen-mode.md)에서 올바르게 동작하지 않는 문제 수정
 
-6.1
-------
+## 6.1
+
 
 <span class='release_date'>2019년 2월 21일. 소규모 업데이트</span>
 
@@ -1329,8 +1328,8 @@ What's New
 - [프로젝트 수준의 작업 캘린더](guides/working-time.md#assigningcalendartoproject) (PRO)
 - [dhtmlxGantt를 ES6 모듈로 가져오기](guides/initializing-gantt-chart.md#moduleimport) 지원
 
-6.0.7
------
+## 6.0.7
+
 
 <span class='release_date'>2019년 1월 16일. 버그 수정 릴리스</span>
 
@@ -1343,8 +1342,8 @@ What's New
 - [여러 작업 선택](guides/multiselection.md) 후 [키보드 내비게이션](guides/keyboard-navigation.md)으로 삭제 시 발생하는 스크립트 오류 수정
 - [인라인 에디터](guides/inline-editing.md)의 기본 매핑 수정. 인라인 에디터가 작업 셀에서 키보드 단축키를 차단하지 않도록 개선
 
-6.0.4
------
+## 6.0.4
+
 
 <span class='release_date'>2018년 12월 27일. 버그 수정 릴리스</span>
 
@@ -1354,8 +1353,8 @@ What's New
 - 선택된 작업이 포함된 하위 트리 삭제 후 발생하는 스크립트 오류 수정
 - 리소스 필터가 포함된 lightbox에서 저장/취소 시 발생하는 스크립트 오류 수정
 
-6.0.2
------
+## 6.0.2
+
 
 <span class='release_date'>2018년 12월 6일. 버그 수정 릴리스</span>
 
@@ -1367,8 +1366,8 @@ What's New
 - marker extension 사용 시 타임라인 표시/숨김 토글 시 발생하는 스크립트 오류 수정
 - 작업 트리에 순환 참조가 있을 때 `gantt.parse` 호출 시 페이지가 멈추던 문제를 스크립트 오류로 대체
 
-<b>6.0</b>
-----------
+## <b>6.0</b>
+
 
 <span class='release_date'>2018년 11월 5일. 주요 업데이트</span>
 
@@ -1398,8 +1397,8 @@ What's New
 - [importFromExcel](api/method/importfromexcel.md) 메서드
 - [groupBy](api/method/groupby.md) 메서드의 *delimiter* 옵션으로 리소스 그룹화
 
-5.2
---------------
+## 5.2
+
 
 <span class='release_date'>2018년 7월 6일. 소규모 업데이트</span>
 
@@ -1423,8 +1422,8 @@ What's New
 
 - [undo](guides/undo-redo.md) 및 [autoscheduling](guides/auto-scheduling.md) 확장용 신규 메서드 및 이벤트
 
-5.1
-----------
+## 5.1
+
 
 <span class='release_date'>2018년 2월 27일. 소규모 업데이트</span>
 
@@ -1451,8 +1450,8 @@ What's New
 
 - 스마트 렌더링 모드에서 키보드 내비게이션 관련 이슈 수정
 
-<b>5.0</b>
----------
+## <b>5.0</b>
+
 
 <span class='release_date'>2017년 12월 12일. 주요 업데이트</span>
 
@@ -1467,8 +1466,8 @@ What's New
 
 - 새로운 ["Material" 스킨](guides/skins.md#materialskin)
 
-4.2
-------------
+## 4.2
+
 
 <span class='release_date'>2017년 8월 17일. 소규모 업데이트</span>
 
@@ -1490,8 +1489,8 @@ What's New
 - Gantt 스킨의 GIF 이미지를 PNG로 교체
 
 
-4.1
----------
+## 4.1
+
 
 <span class='release_date'>2016년 9월 1일. 마이너 업데이트</span>
 
@@ -1513,8 +1512,8 @@ What's New
 - [터키어 로케일](guides/localization.md#predefinedlocales) 업데이트
 
 
-<b>4.0</b>
----------
+## <b>4.0</b>
+
 
 <span class='release_date'>2015년 12월 1일. 주요 업데이트</span>
 
@@ -1535,8 +1534,8 @@ What's New
 - [팝업 메시지용 공개 헬퍼](guides/message-boxes.md) 추가
 
 
-3.3
-----------
+## 3.3
+
 
 <span class='release_date'>2015년 7월 21일. 마이너 업데이트</span>
 
@@ -1558,8 +1557,8 @@ What's New
 - [ajax 로딩/저장용 REST 모드](guides/server-side.md)
 
 
-3.2
-----------------
+## 3.2
+
 
 <span class='release_date'>2015년 3월 18일. 마이너 업데이트</span>
 
@@ -1583,8 +1582,8 @@ What's New
 - 신규 샘플, 메서드, 이벤트 추가
 
 
-3.1
-----------------
+## 3.1
+
 
 <span class='release_date'>2014년 10월 25일. 마이너 업데이트</span>
 
@@ -1603,8 +1602,8 @@ What's New
 - Gantt가 지워지거나 재초기화될 때 수직 마커의 잘못된 동작
 
 
-<b>3.0</b>
-----------------
+## <b>3.0</b>
+
 
 <span class='release_date'>2014년 9월 11일. 주요 업데이트</span>
 
@@ -1630,8 +1629,8 @@ What's New
 
 - [새로운 트리 관련 메서드](guides/task-tree-operations.md)
 
-2.1
--------------
+## 2.1
+
 
 <span class='release_date'>2014년 3월 28일. 마이너 업데이트</span>
 
@@ -1656,8 +1655,8 @@ What's New
 - 더 많은 구성, 메서드, 이벤트 추가
 
 
-<b>2.0</b>
--------------------------------------
+## <b>2.0</b>
+
 
 <span class='release_date'>2013년 10월 18일. 주요 업데이트</span>
 

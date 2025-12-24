@@ -3,8 +3,8 @@ title: "dhtmlxGantt mit ASP.NET Core"
 sidebar_label: "ASP.NET Core"
 ---
 
-dhtmlxGantt mit ASP.NET Core
-==========================
+# dhtmlxGantt mit ASP.NET Core
+
 
 Diese Anleitung führt Sie durch die Einrichtung eines Gantt-Diagramms mit [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) Core auf der Serverseite.
 
@@ -569,8 +569,8 @@ Nach Abschluss dieses Schritts sollte die Ordnerstruktur wie folgt aussehen:
 
 An diesem Punkt empfiehlt es sich, die Anwendung zu starten, um zu überprüfen, ob alles korrekt eingerichtet ist. Wenn keine Laufzeitfehler auftreten, war die Einrichtung erfolgreich.
 
-Schritt 4. Implementierung der Web API
---------------------------
+## Schritt 4. Implementierung der Web API
+
 
 Jetzt ist es Zeit, die REST API zu implementieren.
 
@@ -1081,8 +1081,8 @@ private void _UpdateOrders(Models.Task updatedTask, string orderTarget)
 }
 ~~~
 
-Anwendungssicherheit
-----------------
+## Anwendungssicherheit
+
 
 Gantt selbst bietet keinen Schutz vor Bedrohungen wie SQL-Injection, XSS oder CSRF. Die Absicherung der Anwendung liegt in der Verantwortung der Backend-Entwickler. Weitere Informationen finden Sie im [zugehörigen Artikel](guides/app-security.md).
 
@@ -1113,14 +1113,14 @@ public static explicit operator WebApiTask(Task task)
 
 Alternativ kann eine spezialisierte Bibliothek wie [HtmlAgilityPack](https://www.nuget.org/packages/HtmlAgilityPack/) verwendet werden, um jegliches HTML beim Speichern oder Laden von Aufgaben vollständig zu entfernen.
 
-Fehlerbehebung
------------------
+## Fehlerbehebung
+
 
 Falls Sie alle Schritte zur Integration von Gantt mit ASP.NET Core befolgt haben, aber Aufgaben und Links nicht auf der Seite angezeigt werden, lesen Sie den Artikel [Troubleshooting Backend Integration Issues](guides/troubleshooting.md). Dort werden häufige Probleme und deren Lösungen beschrieben.
 
 
-Wie geht es weiter?
--------------------
+## Wie geht es weiter?
+
 
 An diesem Punkt haben Sie eine funktionierende Gantt-Implementierung. Der vollständige Quellcode steht auf [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core) zum Klonen oder Herunterladen für Ihre Projekte bereit.
 

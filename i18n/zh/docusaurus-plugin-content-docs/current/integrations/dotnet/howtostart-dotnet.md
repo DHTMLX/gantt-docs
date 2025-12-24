@@ -3,8 +3,8 @@ title: "dhtmlxGantt 与 ASP.NET MVC"
 sidebar_label: "ASP.NET MVC"
 ---
 
-dhtmlxGantt 与 ASP.NET MVC 
-===============================
+# dhtmlxGantt 与 ASP.NET MVC 
+
 
 本教程将为您提供一个清晰、循序渐进的指南，介绍如何使用 [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) 和服务器端 REST API 创建甘特图。
 
@@ -24,8 +24,8 @@ dhtmlxGantt 与 ASP.NET MVC
 完整源代码已[发布在 GitHub](https://github.com/DHTMLX/gantt-howto-dotnet)。
 :::
 
-步骤 1. 创建项目
------------------------------
+## 步骤 1. 创建项目
+
 
 ### 创建新的 Visual Studio 项目
 
@@ -43,8 +43,8 @@ dhtmlxGantt 与 ASP.NET MVC
 
 ![how_to_start_net_app](/img/how_to_start_net_app.png)
 
-步骤 2. 将 Gantt 添加到页面
---------------------------------
+## 步骤 2. 将 Gantt 添加到页面
+
 
 ### 创建控制器
 
@@ -156,8 +156,8 @@ dp.setTransactionMode("REST");
 ![adding_gantt](/img/adding_gantt.png)
 
 
-步骤 3. 创建模型和数据库
---------------------------------
+## 步骤 3. 创建模型和数据库
+
 
 ### 创建模型
 
@@ -463,8 +463,8 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-第 4 步:实现 Web API
-------------------------------------------------
+## 第 4 步:实现 Web API
+
 
 ### 使用 REST API 加载数据的一般方法
 
@@ -713,8 +713,8 @@ namespace DHX.Gantt.Web.Controllers
 
 [已准备好的演示可在 GitHub 查看](https://github.com/DHTMLX/gantt-howto-dotnet)。
 
-错误处理
------------
+## 错误处理
+
 
 [异常过滤器](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98))" 提供了一种在 CRUD 处理程序中捕获异常并发送响应的方法，客户端 gantt 可以[解析](guides/server-side.md#cuowuchuli)这些响应。
 
@@ -970,20 +970,20 @@ namespace DHX.Gantt.Web.Models
 
 ~~~
 
-已知问题
------------
+## 已知问题
+
 
 在 IIS 上运行应用时，HTTP PUT 和 DELETE 请求可能返回 405 或 401 错误。这可能是由于 **WebDAV** 模块与 RESTful 处理程序冲突导致的。
 
 常见的解决方法是在 **web.config** 文件中禁用 WebDAV 模块。更多细节可参见 [这里](https://forums.iis.net/t/1166025.aspx)。
 
-应用安全
--------------------------
+## 应用安全
+
 
 Gantt 本身不负责防护 SQL 注入、XSS 或 CSRF 等威胁。在实现后端时，确保应用安全是开发者的责任。更多信息可参见 [相关文章](guides/app-security.md)。
 
-故障排除
------------------
+## 故障排除
+
 
 ### 缺少 ASP.NET Web Application 模板
 
@@ -1032,8 +1032,8 @@ namespace DHX.Gantt.Web.Models
 
 如果在将 Gantt 集成到 ASP.NET MVC 后任务和链接未能渲染，请参考 [백엔드 통합 문제 해결](guides/troubleshooting.md) 文章。该文档提供了排查潜在原因的指导。
 
-后续步骤
-------------
+## 后续步骤
+
 
 此时，gantt 已经完全可用。完整代码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet) 获取，可克隆或下载用于项目开发。
 

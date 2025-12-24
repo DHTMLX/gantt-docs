@@ -3,8 +3,8 @@ title: "快速信息（触控支持）"
 sidebar_label: "快速信息（触控支持）"
 ---
 
-快速信息（触控支持）
-==============================
+# 快速信息（触控支持）
+
 
 本库自带 **Quick Info** 扩展，当用户在屏幕上点击任务时，会弹出一个显示任务详情的弹窗。
 
@@ -29,8 +29,8 @@ gantt.config.show_quick_info = false;
 gantt.init("gantt_here");
 ~~~
 
-API 概览
-----------------
+## API 概览
+
 
 Quick Info 扩展提供了一组 API，可用于调整设置、控制行为或自定义弹窗外观。
 
@@ -88,7 +88,7 @@ Quick Info 扩展提供了一组 API，可用于调整设置、控制行为或�
 
 如果未提供 header 或 buttons，相应部分将被隐藏。
 
-####**显示 Quick Info**
+#### **显示 Quick Info**
 
 可通过 **gantt.ext.quickInfo.show()** 方法，为指定任务、链接、资源面板或屏幕自定义位置显示弹窗:
 
@@ -176,7 +176,7 @@ gantt.attachEvent("onLinkClick", function(id,e){
 });
 ~~~
 
-####**隐藏 Quick Info**
+#### **隐藏 Quick Info**
 
 要关闭弹窗，请使用 **gantt.ext.quickInfo.hide()** 方法。其行为取决于 **gantt.config.quick_info_detached** 设置，有以下两种情况:
 
@@ -202,7 +202,7 @@ gantt.ext.quickInfo.hide(true);
 
 注意:如果 **gantt.config.quick_info_detached** 为 *true*，弹窗始终会立即关闭。
 
-####**自定义 QuickInfo**
+#### **自定义 QuickInfo**
 
 默认情况下，quick info 弹窗包含标题、日期、内容和按钮，外观如下:
 
@@ -227,7 +227,7 @@ gantt.ext.quickInfo.setContent({
 ![quick_custom](/img/quick_custom.png)
 
 
-####**添加自定义按钮及行为**
+#### **添加自定义按钮及行为**
 
 通过 [$click](api/other/click.md) 对象，可以为弹窗内的按钮添加自定义操作:
 
@@ -242,7 +242,7 @@ gantt.$click.buttons.advanced_details_button="function(id){"
 };
 ~~~
 
-####**为 QuickInfo 设置容器** 
+#### **为 QuickInfo 设置容器** 
 
 使用 **gantt.ext.quickInfo.setContainer()** 可将 quick info 弹窗显示在自定义容器内:
 

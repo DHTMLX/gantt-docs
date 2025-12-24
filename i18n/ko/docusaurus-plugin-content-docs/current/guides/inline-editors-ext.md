@@ -3,8 +3,8 @@ title: "Inline Editors Extension"
 sidebar_label: "Inline Editors Extension"
 ---
 
-Inline Editors Extension
-========================
+# Inline Editors Extension
+
 
 Inline editors 확장에 대한 자세한 정보는 [그리드에서 인라인 편집](guides/inline-editing.md) 문서에서 확인하실 수 있습니다. 
 

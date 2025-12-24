@@ -3,8 +3,8 @@ title: "Quick Info (Touch Support)"
 sidebar_label: "Quick Info (Touch Support)"
 ---
 
-Quick Info (Touch Support)
-==============================
+# Quick Info (Touch Support)
+
 
 The library includes the **Quick Info** extension that allows displaying a popup with details about the task when a user touches the task on the screen. 
 
@@ -29,8 +29,8 @@ gantt.config.show_quick_info = false;
 gantt.init("gantt_here");
 ~~~
 
-API overview
-----------------
+## API overview
+
 
 The Quick Info extension provides a set of API that allows you to manipulate the settings of Quick Info, to control its behavior or modify the appearance of a popup. 
 

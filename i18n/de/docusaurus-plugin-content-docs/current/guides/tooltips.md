@@ -3,8 +3,8 @@ title: "Tooltips für Gantt-Elemente"
 sidebar_label: "Tooltips für Gantt-Elemente"
 ---
 
-Tooltips für Gantt-Elemente
-===========================
+# Tooltips für Gantt-Elemente
+
 
 Tooltips bieten eine Möglichkeit, zusätzliche Informationen anzuzeigen, ohne den Bildschirm mit zu viel Text zu überladen. Standardmäßig erscheinen Tooltips auf Gantt-Aufgaben.
 
@@ -13,8 +13,8 @@ Tooltips bieten eine Möglichkeit, zusätzliche Informationen anzuzeigen, ohne d
 Es ist möglich, [Tooltips für jedes Gantt-Element hinzuzufügen](#tooltipsfordifferentelements), indem Sie die entsprechende API verwenden.
 
 
-Aktivierung
----------------
+## Aktivierung
+
 
 Um Tooltips für Aufgaben zu aktivieren, schalten Sie einfach das **tooltip**-Plugin mit der [gantt.plugins](api/method/plugins.md)-Methode ein:
 
@@ -35,8 +35,8 @@ Um Tooltips für Aufgaben zu aktivieren, schalten Sie einfach das **tooltip**-Pl
 Sobald die Erweiterung aktiviert ist, werden Tooltips automatisch mit den Standardeinstellungen angezeigt.
 
 
-Eigener Text
-----------------
+## Eigener Text
+
 
 Standardmäßig zeigen Tooltips drei Eigenschaften einer Aufgabe an:
 
@@ -112,8 +112,8 @@ Entfernt einen Tooltip. Erwartet:
 - **selector** - (*string*) CSS-Selektor des Gantt-Elements
 
 
-Tooltips für verschiedene Elemente
--------------------------
+## Tooltips für verschiedene Elemente
+
 
 Standardmäßig werden Tooltips nur zu Gantt-Aufgaben hinzugefügt, sie können aber auch auf andere Gantt-Elemente angewendet werden, wie z. B. einen Ressourcenmarker:
 
@@ -178,8 +178,8 @@ So hinzugefügte Tooltips folgen dem Mauszeiger und berücksichtigen Einstellung
 Mit dieser Methode können Sie Tooltips mit detaillierterer Konfiguration hinzufügen, um das Verhalten beim Bewegen der Maus besser zu steuern.
 
 
-Anpassung des Tooltip-Verhaltens
-------------------------------
+## Anpassung des Tooltip-Verhaltens
+
 
 Sie können das Standardverhalten des Tooltips ändern, indem Sie den eingebauten Handler entfernen und Ihren eigenen hinzufügen:
 
@@ -213,8 +213,8 @@ gantt.ext.tooltips.tooltipFor({
 ~~~
 
 
-Timeout
-------------------
+## Timeout
+
 
 Die Zeitspanne für das Anzeigen und Ausblenden von Tooltips kann über die entsprechenden Einstellungen angepasst werden.
 
@@ -234,8 +234,8 @@ gantt.init("gantt_here");
 ~~~
 
 
-Position
-----------
+## Position
+
 
 Sie können die Position des Tooltips anpassen, indem Sie die horizontalen und vertikalen Offsets über diese Konfigurationseigenschaften ändern:
 
@@ -250,8 +250,8 @@ gantt.init("gantt_here");
 ~~~
 
 
-Anzeigebereich
--------------
+## Anzeigebereich
+
 
 Vor Version 6.1 wurden Tooltips nur im Bereich der Zeitleiste angezeigt. Seit v6.1 können Tooltips überall erscheinen und folgen dem Mauszeiger.
 

@@ -3,8 +3,8 @@ title: "Highlighting Time Slots"
 sidebar_label: "Highlighting Time Slots"
 ---
 
-Highlighting Time Slots
-=======================================
+# Highlighting Time Slots
+
 
 To pay user's attention to specific time slot(s), you may highlight them. 
 

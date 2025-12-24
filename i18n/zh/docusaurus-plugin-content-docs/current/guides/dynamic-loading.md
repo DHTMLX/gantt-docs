@@ -3,8 +3,8 @@ title: "动态加载（按需加载）"
 sidebar_label: "动态加载（按需加载）"
 ---
 
-动态加载（按需加载）
-=========================================
+# 动态加载（按需加载）
+
 
 :::info
 此功能仅在 PRO 版本中提供
@@ -30,8 +30,8 @@ gantt.load("url?parent_id="123"");
 可以使用 [onBeforeBranchLoading](api/event/onbeforebranchloading.md) 事件来修改请求的 URL 或添加额外参数。
 :::
 
-启用动态加载
-----------------------
+## 启用动态加载
+
 
 <span id="enabledynload">要在 Gantt 图中启用动态加载</span>，需要进行客户端和服务器端的配置。
 
@@ -97,8 +97,8 @@ $gantt->event->attach("beforeRender","check_children");
 [Loading subtasks on demand (branch loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
 
 
-动态加载的数据格式 
------------------------
+## 动态加载的数据格式 
+
 
 动态加载的数据格式如下所示:
 

@@ -3,8 +3,8 @@ title: "Tooltips for Gantt Elements"
 sidebar_label: "Tooltips for Gantt Elements"
 ---
 
-Tooltips for Gantt Elements
-===========================
+# Tooltips for Gantt Elements
+
 
 Tooltips allow you to add extra information for users without overflowing the screen with text. By default, tooltips are added to Gantt tasks.
 
@@ -13,8 +13,8 @@ Tooltips allow you to add extra information for users without overflowing the sc
 You can [add tooltips to any Gantt element](#tooltipsfordifferentelements) via the corresponding API. 
 
 
-Activation
----------------
+## Activation
+
 
 To activate tooltips for tasks, enable the **tooltip** plugin using the [gantt.plugins](api/method/plugins.md) method:
 
@@ -35,8 +35,8 @@ To activate tooltips for tasks, enable the **tooltip** plugin using the [gantt.p
 Once the extension is activated, tooltips will be automatically displayed with the default settings.
 
 
-Custom text 
-----------------
+## Custom text 
+
 
 By default, tooltips display 3 properties of a task:
 
@@ -192,8 +192,8 @@ A tooltip added in this way will follow the mouse pointer and use the settings *
 This method allows adding a tooltip with an extended configuration to adjust tooltip behavior to the movement of the mouse pointer.
 
 
-Customization of tooltip behavior
-------------------------------
+## Customization of tooltip behavior
+
 
 There is a possibility to modify the default behavior of tooltip. It can be achieved by removing the default tooltip handler and adding a custom one:
 
@@ -227,8 +227,8 @@ gantt.ext.tooltips.tooltipFor({
 ~~~
 
 
-Timeout
-------------------
+## Timeout
+
 
 You can configure the time of tooltips showing and hiding via the related settings.
 
@@ -248,8 +248,8 @@ gantt.init("gantt_here");
 ~~~
 
 
-Position
-----------
+## Position
+
 
 The position of a tooltip can be configured by changing offsets of its default position via the two configuration properties:
 
@@ -264,8 +264,8 @@ gantt.init("gantt_here");
 ~~~
 
 
-Displaying area
--------------
+## Displaying area
+
 
 Before version 6.1 tooltips have been displayed only inside the timeline area. After v6.1 release tooltips displaying isn't limited, and a tooltip follows the movement of the mouse pointer.
 

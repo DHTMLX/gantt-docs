@@ -3,14 +3,14 @@ title: "Adding/Updating/Deleting Links"
 sidebar_label: "Adding/Updating/Deleting Links"
 ---
 
-Adding/Updating/Deleting Links
-=========================================
+# Adding/Updating/Deleting Links
+
 In this chapter you'll learn how to do basic operations with dependency links: to create or delete a link, 
 to dynamically update a link's property. 
 
 
-Adding a new link
-----------------------------
+## Adding a new link
+
 To add a new link to the Gantt chart, use the [addLink](api/method/addlink.md) method:
 
 ~~~js
@@ -22,8 +22,8 @@ var linkId = gantt.addLink({
 });
 ~~~
 
-Updating a link's property
-------------------------------
+## Updating a link's property
+
 To dynamically update a property of a link object, use the [refreshLink](api/method/refreshlink.md) method:
 
 ~~~js
@@ -53,16 +53,16 @@ if (link1.type == links.finish_to_finish){/*!*/
 Note, all types of links' dependencies are stored in the [links](api/config/links.md) object
 :::
 
-Deleting a link
--------------------------------
+## Deleting a link
+
 To delete a link, use the [deleteLink](api/method/deletelink.md) method:
 
 ~~~js
 gantt.deleteLink(linkId);
 ~~~
 
-Removing all links from the Gantt chart
--------------------------------------------
+## Removing all links from the Gantt chart
+
 To clear the Gantt chart from all tasks and links, call the [clearAll](api/method/clearall.md) method:
 
 
@@ -70,8 +70,8 @@ To clear the Gantt chart from all tasks and links, call the [clearAll](api/metho
 gantt.clearAll();
 ~~~
 
-Editing link values from UI
-------------------------------
+## Editing link values from UI
+
 
 There is no built-in UI for the user to edit lag or any other properties of the link. So if you need some UI, you have to implement it manually.
 

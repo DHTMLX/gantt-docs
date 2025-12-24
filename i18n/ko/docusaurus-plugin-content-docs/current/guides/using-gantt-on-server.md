@@ -3,8 +3,8 @@ title: "서버에서 Gantt 사용하기"
 sidebar_label: "서버에서 Gantt 사용하기"
 ---
 
-서버에서 Gantt 사용하기
-=================================
+# 서버에서 Gantt 사용하기
+
 
 때로는 dhtmlxGantt의 특화된 로직을 간트 차트 자체와 분리하여 사용해야 할 필요가 있습니다. 예를 들어:
 
@@ -16,15 +16,15 @@ sidebar_label: "서버에서 Gantt 사용하기"
 
 DHTMLX Gantt for Node.js는 Commercial/Enterprise/Ultimate 패키지와 동일한 기능을 제공하며, 새로운 간트 인스턴스를 생성할 수 있는 **Gantt.getGanttInstance** 메서드도 사용할 수 있습니다.
 
-이용 조건
---------------
+## 이용 조건
+
 
 DHTMLX Gantt의 Node.js 서버 모듈은 클라이언트 버전의 애드온입니다. 어떤 상업용 라이선스([Individual](https://dhtmlx.com/docs/products/dhtmlxGantt/individual/), [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/commercial/), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/enterprise/))로 Gantt를 구매할 때 추가 비용을 지불하여 사용할 수 있습니다. [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/ultimate/) 라이선스에는 이 모듈이 기본 포함되어 있습니다.
 
 이미 메인 dhtmlxGantt 라이브러리를 보유하고 있다면, Node.js 모듈을 [별도로 구매](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=58429)할 수 있으며, 서버 사이드 버전의 다운로드 링크가 제공됩니다.
 
-버전 관리
--------------------
+## 버전 관리
+
 
 dhtmlxGantt의 Node.js 패키지는 브라우저 패키지와 동일한 버전 넘버링 체계를 따릅니다(예: v7.0.0이 Node.js용 첫 버전입니다).
 
@@ -32,8 +32,8 @@ dhtmlxGantt의 Node.js 패키지는 브라우저 패키지와 동일한 버전 �
 클라이언트와 서버 모두에서 동일한 버전의 gantt 라이브러리 사용을 권장합니다.
 :::
 
-프로젝트에 라이브러리 추가하기
-----------------------------------
+## 프로젝트에 라이브러리 추가하기
+
 
 dhtmlxGantt for Node.js 패키지는 로컬에 설치할 수 있습니다:
 
@@ -105,8 +105,8 @@ const gantt = Gantt.getGanttInstance({
 console.table(gantt.serialize());
 ~~~
 
-제한 사항
-------------
+## 제한 사항
+
 
 dhtmlxGantt의 Node.js 버전은 브라우저 버전과 동일한 핵심 API를 제공합니다.
 

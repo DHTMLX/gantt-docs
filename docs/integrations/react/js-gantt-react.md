@@ -4,8 +4,8 @@ sidebar_label: Low-Level Integration
 description: "Step-by-step guide to using the Gantt inside React without the wrapper"
 ---
 
-dhtmlxGantt with React
-======================
+# dhtmlxGantt with React
+
 
 
 :::note

@@ -3,14 +3,14 @@ title: "Basic Operations with Tasks"
 sidebar_label: "Basic Operations with Tasks"
 ---
 
-Basic Operations with Tasks
-========================================
+# Basic Operations with Tasks
+
 
 In this chapter you'll learn how to do basic operations with tasks: to create or delete a task, to dynamically update a task's property. 
 
 
-Adding a new task
-----------------------------
+## Adding a new task
+
 
 To add a new task to the Gantt chart, use the [addTask](api/method/addtask.md) method:
 
@@ -49,8 +49,8 @@ and hide the 'Add' button for such rows:
 [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
 
-Updating a task's property
-------------------------------
+## Updating a task's property
+
 
 To dynamically update a property of a task object, use the [updateTask](api/method/updatetask.md) method:
 
@@ -74,8 +74,8 @@ task.text = "Task #10_1";
 gantt.refreshTask(10);
 ~~~
 
-Redrawing tasks
-----------------------
+## Redrawing tasks
+
 
 To re-draw all tasks in the Gantt chart, use the [refreshData](api/method/refreshdata.md) method:
 
@@ -88,8 +88,8 @@ task2.text = "Task #11_1";/*!*/
 gantt.refreshData(); /*!*/ 
 ~~~
 
-Deleting tasks
--------------------------------
+## Deleting tasks
+
 
 To delete a task, use the [deleteTask](api/method/deletetask.md) method:
 
@@ -97,8 +97,8 @@ To delete a task, use the [deleteTask](api/method/deletetask.md) method:
 gantt.deleteTask(taskId);
 ~~~
 
-Cascade deleting of nested tasks
----------------------------
+## Cascade deleting of nested tasks
+
 
 There is a [cascade_delete](api/config/cascade_delete.md) config that regulates the process of deleting tasks from Gantt. By default, it is set to *true*,
 which means that when you delete a task, Gantt sends a request to a server for each nested task and link of the deleted task.
@@ -114,8 +114,8 @@ In that case Gantt will send only one request to the server - for deleting just 
 The [cascade_delete](api/config/cascade_delete.md) option affects the way of implemeting a backend. Read more in the 
 [related section of the Server-side Integration article](guides/server-side.md#cascade-deletion).
 
-Removing all tasks from the Gantt chart
--------------------------------------------
+## Removing all tasks from the Gantt chart
+
 
 To clear the Gantt chart from tasks, call the [clearAll](api/method/clearall.md) method:
 

@@ -3,8 +3,8 @@ title: "dhtmlxGantt with PHP: Laravel"
 sidebar_label: "PHP: Laravel"
 ---
 
-dhtmlxGantt with PHP: Laravel 
-=====================
+# dhtmlxGantt with PHP: Laravel 
+
 
 This tutorial describes how to add dhtmlxGantt into a [Laravel](https://laravel.com/) app.
 
@@ -26,8 +26,8 @@ You can have a look at the video guide that shows how to create a Gantt chart us
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/eu5R86a-9jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Step 1. Initializing a project
------------------------
+## Step 1. Initializing a project
+
 
 ### Creating a project
 
@@ -55,8 +55,8 @@ At this step you should get a default Laravel page:
 
 ![how_to_start_laravel_blank_page](/img/how_to_start_laravel_blank_page.png)
 
-Step 2. Adding Gantt to the page
------------------------
+## Step 2. Adding Gantt to the page
+
 
 ### Adding a View
 
@@ -112,8 +112,8 @@ Run the app again to make sure it did the trick:
 
 ![how_to_start_laravel_empty_gantt](/img/how_to_start_laravel_empty_gantt.png)
 
-Step 3. Creating models and migrations
----------------------
+## Step 3. Creating models and migrations
+
 
 So, we've got an empty gantt chart. Let's connect it to the database and populate it with data.
 
@@ -358,8 +358,8 @@ class Link extends Model
 }
 ~~~
 
-Step 4. Loading data
--------------------
+## Step 4. Loading data
+
 
 Once the database is created and the models are defined, we can load data into our gantt. 
 The client side requires dates of [the following format](guides/supported-data-formats.md), so let's create a controller with an action that produces such JSON:
@@ -448,8 +448,8 @@ If you check the app now, you should see that there are now tasks in our gantt c
 
 ![how_to_start_laravel_complete](/img/how_to_start_laravel_complete.png)
 
-Step 5. Saving changes
------------------------------------
+## Step 5. Saving changes
+
 
 For now, our gantt can read data from the backend. Let's make it write changes back to the database.
 
@@ -843,20 +843,20 @@ private function updateOrder($taskId, $target)
 ~~~
 
 
-Application security
--------------------------
+## Application security
+
 
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](guides/app-security.md).
 
 
-Trouble shooting
------------------
+## Trouble shooting
+
 
 In case you've completed the above steps to implement Gantt integration with PHP but Gantt doesn't render tasks and links on a page, have a look at the [](guides/troubleshooting.md) article. It describes 
 the ways of identifying the roots of the problems.
 
-What's next
-------------
+## What's next
+
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel), clone or download it and use it for your projects.
 

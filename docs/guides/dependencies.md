@@ -3,8 +3,8 @@ title: "Configuring Dependency Links"
 sidebar_label: "Configuring Dependency Links"
 ---
 
-Configuring Dependency Links
-=================================
+# Configuring Dependency Links
+
 ![gantt_arrows](/img/gantt_arrows.png)
 
 - [Link Properties](guides/link-properties.md)

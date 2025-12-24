@@ -3,16 +3,16 @@ title: "Keyboard Navigation Extension"
 sidebar_label: "Keyboard Navigation Extension"
 ---
 
-Keyboard Navigation Extension
-==========================
+# Keyboard Navigation Extension
+
 
 Read details about the Keyboard navigation extension in the article [Keyboard Navigation](guides/keyboard-navigation.md). 
 
 
 The *keyboardNavigation* object possesses the following API:
 
-Methods
-----------
+## Methods
+
 
 - <span class="submethod">**focus (config): void**</span> - allows selecting any cell in the grid. Works only if the Grid already has the focus
 

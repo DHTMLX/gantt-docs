@@ -3,13 +3,13 @@ title: "使用 ReactGantt 中的 DHTMLX Gantt 属性"
 sidebar_label: "配置"
 ---
 
-使用 ReactGantt 中的 DHTMLX Gantt 属性
-===============
+# 使用 ReactGantt 中的 DHTMLX Gantt 属性
+
 
 本页概述了 React Gantt 支持的 props，并解释了它们与 DHTMLX Gantt 功能的对应关系。
 
-可用 Props
------------------
+## 可用 Props
+
 
 <table>
   <thead>
@@ -113,8 +113,8 @@ sidebar_label: "配置"
   </tbody>
 </table>
 
-使用示例
--------------------
+## 使用示例
+
 
 ~~~js
 <ReactGantt
@@ -145,8 +145,8 @@ sidebar_label: "配置"
 />
 ~~~
 
-事件 Props 的使用
-----------------
+## 事件 Props 的使用
+
 
 任何 DHTMLX Gantt 事件都可以作为 prop 传递。例如:
 
@@ -162,8 +162,8 @@ sidebar_label: "配置"
 ~~~
 当你传递如 `onBeforeTaskAdd` 这样的 prop 时，封装组件会在内部调用 [gantt.attachEvent("onBeforeTaskAdd", handler)](api/method/attachevent.md)。完整事件列表请参考 [DHTMLX Gantt API](api/overview/events-overview.md)。
 
-组合 Props 与 DHTMLX API
----------------
+## 组合 Props 与 DHTMLX API
+
 
 `@dhx/react-gantt` 库旨在通过声明式 props（如 tasks、links、resources、templates 等）覆盖大多数日常需求。但在某些情况下，您可能需要更深入地访问 Gantt 引擎，例如:
 

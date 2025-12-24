@@ -3,8 +3,8 @@ title: "Select 控件"
 sidebar_label: "Select 控件"
 ---
 
-Select 控件
-=========================
+# Select 控件
+
 
 一个下拉列表框。
 
@@ -28,8 +28,8 @@ gantt.locale.labels.section_priority = "Priority";
 [Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
-初始化
--------------------
+## 初始化
+
 
 要在 lightbox 中包含 **select** 控件，操作步骤如下:
 
@@ -60,8 +60,8 @@ gantt.locale.labels.section_priority = "Priority";
 [Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
-属性
--------------
+## 属性
+
 
 以下是 **select** 控件常用的一些关键属性（完整列表请参见 [这里](api/config/lightbox.md)）:
 
@@ -77,8 +77,8 @@ gantt.locale.labels.section_priority = "Priority";
 - **onchange** - (*function*) 控件的 ['onChange' 事件处理函数](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event)
 
 
-为控件填充数据
--------------------------------
+## 为控件填充数据
+
 
 要为 **select** 控件设置选项值，请使用 [options](api/config/lightbox.md) 参数:
 
@@ -99,8 +99,8 @@ gantt.config.lightbox.sections = [
 - **label** - 选项标签
 
 
-通过服务器数据填充控件
----------------------------------------------
+## 通过服务器数据填充控件
+
 
 如需通过服务器数据为控件填充值，将 [options](api/config/lightbox.md) 参数赋值为 [serverList](api/method/serverlist.md) 方法返回的值:
 

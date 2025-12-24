@@ -3,8 +3,8 @@ title: "Template Control"
 sidebar_label: "Template Control"
 ---
 
-Template Control
-=====================================
+# Template Control
+
 
 A container with some HTML content inside.
 
@@ -30,8 +30,8 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 [Template control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/05_template.html)
 
 
-Initialization
------------------
+## Initialization
+
 
 To add the **template** control to the lightbox, follow these steps:
 
@@ -63,8 +63,8 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 ~~~
 
 
-Properties
---------------
+## Properties
+
 
 The following properties are mostly important and commonly set for the **template** control (see the full list <a href="[lightbox](api/config/lightbox.md)">here</a>):
 

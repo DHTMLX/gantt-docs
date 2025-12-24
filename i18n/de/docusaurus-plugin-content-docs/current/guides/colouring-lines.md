@@ -3,8 +3,8 @@ title: "Links-Färbung und -Stil"
 sidebar_label: "Links-Färbung und -Stil"
 ---
 
-Links-Färbung und -Stil
-================================
+# Links-Färbung und -Stil
+
 
 Es ist möglich, das Aussehen der Verbindungen zwischen Aufgaben individuell anzupassen, um das gewünschte Erscheinungsbild für Ihr Gantt-Diagramm zu erzielen. Die Verwendung verschiedener Farben für Abhängigkeitsverbindungen hilft den Nutzern, diese leichter zu unterscheiden.
 
@@ -18,7 +18,7 @@ Es gibt mehrere Möglichkeiten, benutzerdefinierte Stile für Links festzulegen:
 Schauen wir uns zunächst die DOM-Struktur eines Links an, um zu verstehen, wie die einzelnen Teile positioniert, dimensioniert, verwendet und standardmäßig gestylt werden.
 
 ## Struktur des Link-DOM-Elements {#structureofthelinkdomelement}
-----------------------
+
 
 Das DOM-Element eines Links ist wie folgt aufgebaut:
 

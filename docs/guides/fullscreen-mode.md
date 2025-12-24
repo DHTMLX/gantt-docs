@@ -3,8 +3,8 @@ title: "Full Screen Mode"
 sidebar_label: "Full Screen Mode"
 ---
 
-Full Screen Mode
-================
+# Full Screen Mode
+
 
 Starting from the version 3.3, the library includes the **fullscreen** extension. 
 
@@ -49,8 +49,8 @@ A click on the ready icon will change the gantt's size from original to 'full sc
 [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 
-API overview
----------------
+## API overview
+
 There are two methods that are used to manipulate the gantt's display mode:
 
 - [expand](api/method/expand.md) - expands gantt to the full screen mode
@@ -65,8 +65,8 @@ gantt.expand();
 gantt.collapse();
 ~~~
 
-The list of events
--------------------
+## The list of events
+
 
 The supported events are enumerated below:
 
@@ -99,8 +99,8 @@ gantt.attachEvent("onCollapse", function (){
 });
 ~~~
 
-Fullscreen API
-------------------
+## Fullscreen API
+
 
 There are four methods of the [fullscreen](guides/fullscreen-ext.md) object that are used to manipulate the gantt's display mode together with additional elements:
 
@@ -130,8 +130,8 @@ gantt.ext.fullscreen.getFullscreenElement();
 
 By default the **getFullscreenElement()** method returns an HTML container of the Gantt chart. You can redefine this method [to extend the gannt with additional elements to the fullscreen mode](guides/fullscreen-mode.md#gantt-with-the-headertoolbar-in-the-fullscreen).
 
-Gantt with the header/toolbar in the Fullscreen
---------------------------------------------------
+## Gantt with the header/toolbar in the Fullscreen
+
 
 Gantt API provides a possibility to extend the gantt to the fullscreen mode via the **getFullscreenElement()** method of the *fullscreen* object:
 
@@ -169,8 +169,8 @@ gantt.init("gantt_here");
 [Full Screen with additional elements](https://docs.dhtmlx.com/gantt/samples/02_extensions/26_full_screen_with_additional_elements.html)
 
 
-Why full screen mode doesn't work?
--------------------------
+## Why full screen mode doesn't work?
+
 
 The fullscreen extension can work only if you don't forbid Gantt to expand to the fullscreen mode.
 

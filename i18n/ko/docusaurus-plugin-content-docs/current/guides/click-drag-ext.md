@@ -3,13 +3,13 @@ title: "clickDrag 확장 기능"
 sidebar_label: "clickDrag 확장 기능"
 ---
 
-clickDrag 확장 기능
-======================
+# clickDrag 확장 기능
+
 
 clickDrag 확장 기능에 대한 자세한 내용은 [DnD로 작업 생성/선택하기](guides/advanced-dnd.md) 문서에서 확인할 수 있습니다.
 
-설정 객체
-------------------
+## 설정 객체
+
 
 고급 드래그 앤 드롭 기능을 활성화하려면 [click_drag](api/config/click_drag.md) 설정 옵션을 지정하고, 아래 목록에서 원하는 속성을 객체 내에 포함시키세요:
 
@@ -62,8 +62,8 @@ gantt.config.click_drag = {
             - **_top_** - (*number*) - 수직 위치
 
 
-이벤트
------------
+## 이벤트
+
 
 아래 이벤트들은 viewPort로 사용되는 요소에 바인딩할 수 있습니다 (기본값은 gantt.$task_data이며, 작업 바가 포함된 타임라인 영역입니다):
 

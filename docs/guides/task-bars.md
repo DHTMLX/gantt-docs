@@ -3,8 +3,8 @@ title: "Configuring Tasks"
 sidebar_label: "Configuring Tasks"
 ---
 
-Configuring Tasks
-================================
+# Configuring Tasks
+
 
 ![gantt_tasks](/img/gantt_tasks.png)
 

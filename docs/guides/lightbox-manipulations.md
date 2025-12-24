@@ -3,8 +3,8 @@ title: "Working with Lightbox Elements"
 sidebar_label: "Working with Lightbox Elements"
 ---
 
-Working with Lightbox Elements
-====================================
+# Working with Lightbox Elements
+
 
 ## Getting/setting the control value
 

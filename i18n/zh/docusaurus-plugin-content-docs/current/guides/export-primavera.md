@@ -3,8 +3,8 @@ title: "从 Primavera P6 导出和导入"
 sidebar_label: "从 Primavera P6 导出和导入"
 ---
 
-从 Primavera P6 导出和导入
-============================
+# 从 Primavera P6 导出和导入
+
 
 dhtmlxGantt 库支持将甘特图数据导出到 Primavera P6，以及从 Primavera P6 导入数据到甘特图。
 
@@ -17,8 +17,8 @@ dhtmlxGantt 库支持将甘特图数据导出到 Primavera P6，以及从 Primav
 请注意，导出服务并未与甘特图包捆绑。
 有关使用条款的详细信息，请参阅[相关文档](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
 
-在线导出服务限制
------------------------------
+## 在线导出服务限制
+
 
 :::note
 导出服务在处理时间和请求大小上有限制。
@@ -42,8 +42,8 @@ Error: Timeout trigger 20 seconds
 [Primavera P6](#limitsonrequestsizeandimportoflargefiles)
 的导出/导入服务（*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。该端点支持**最大请求大小为 40 MB**。
 
-使用导出模块
----------------------
+## 使用导出模块
+
 
 :::note
 对于大型甘特图的导出，提供了[独立导出模块](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
@@ -307,8 +307,8 @@ gantt.exportToPrimaveraP6({
 ~~~
 
 
-从 Primavera P6 导入
-----------------------
+## 从 Primavera P6 导入
+
 
 要转换 XML 或 XER 文件，请向导出服务发送包含以下内容的 POST 请求:
 

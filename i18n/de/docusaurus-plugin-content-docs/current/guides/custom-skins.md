@@ -3,8 +3,8 @@ title: "Skins-Anpassung"
 sidebar_label: "Skins-Anpassung"
 ---
 
-Skins-Anpassung
-========================
+# Skins-Anpassung
+
 
 Ab Version 9.0 verwenden Gantt-Skins CSS-Variablen, wodurch Sie die Komponente einfach anpassen und gestalten können.
 
@@ -95,8 +95,8 @@ Wichtige CSS-Variablen:
 
 Alle diese Variablen befinden sich in der Datei **codebase/sources/less/src/themes/variables.less** innerhalb des Pakets.
 
-Wie man Skins anpasst
------------------
+## Wie man Skins anpasst
+
 
 Die einfachste Möglichkeit, das Aussehen des Gantt-Diagramms zu verändern, besteht darin, die CSS-Variablen in Ihrem Stylesheet zu überschreiben. Zum Beispiel:
 
@@ -166,8 +166,8 @@ Beispielsweise erbt die Variable `--dhx-gantt-scale-color` vom Haupt-Textfarben-
 </style>
 ~~~
 
-Wie man den Quellcode verwendet
-------------
+## Wie man den Quellcode verwendet
+
 
 dhtmlxGantt enthält Style-Dateien in verschiedenen Formaten:
 
@@ -177,16 +177,16 @@ dhtmlxGantt enthält Style-Dateien in verschiedenen Formaten:
 
 Die Less-Dateien sind nützlich, wenn Sie bestehende Skins umfassend anpassen oder einen neuen Skin von Grund auf erstellen möchten.
 
-Wie man startet
-------------
+## Wie man startet
+
 
 Sie können **codebase/sources/less** wie ein NPM-Paket behandeln. Es enthält zwei Arten von Dateien:
 
 - Stylesheets;
 - Dateien mit Mikrovariablen-Deklarationen zur Feinabstimmung der Gantt-Ansicht oder zum Erstellen eines neuen Skins.
 
-Wie man Skins baut
---------------------
+## Wie man Skins baut
+
 
 Führen Sie in **codebase/sources/less/** folgenden Befehl aus:
 
@@ -208,8 +208,8 @@ Oder um Änderungen zu überwachen und automatisch neu zu bauen:
 
 Diese Skripte kompilieren die CSS-Dateien aus den Quellen und legen sie im *codebase*-Ordner des Gantt-Pakets ab, wobei die bestehenden Dateien überschrieben werden.
 
-Struktur
-------------
+## Struktur
+
 
 Hier ist die Ordnerstruktur für **less** in Version 9.0 (kann sich in zukünftigen Versionen ändern):
 
@@ -235,8 +235,8 @@ Die Standardvariablen sind im Skin `terrace` gesetzt, während andere Skins dies
 - theme.less
 - package.json
 
-Eigenen Skin erstellen
--------------------
+## Eigenen Skin erstellen
+
 
 Um einen neuen Skin zu erstellen, kopieren und benennen Sie einen bestehenden Skin aus **sources/less/src/themes** um. Gehen Sie folgendermaßen vor:
 
@@ -283,8 +283,8 @@ npm run build
 Beachten Sie, dass Gantt je nach verwendetem Skin einige Voreinstellungen für den Kalender anwenden kann. Wenn Sie einen neuen Skin durch Kopieren eines bestehenden erstellen, müssen Sie diese Einstellungen möglicherweise manuell im Gantt anpassen.
 :::
 
-JS-Styling-Einstellungen
----------------------
+## JS-Styling-Einstellungen
+
 
 Einige Stil-Aspekte des Gantt-Diagramms werden über JavaScript-Konfigurationen und nicht über CSS gesteuert. Beispiele sind:
 

@@ -3,8 +3,8 @@ title: "Svelte Gantt"
 sidebar_label: "Svelte Gantt"
 ---
 
-Svelte Gantt
-==================
+# Svelte Gantt
+
 
 :::note
 Currently, there is no native Svelte component for DHTMLX Gantt. 

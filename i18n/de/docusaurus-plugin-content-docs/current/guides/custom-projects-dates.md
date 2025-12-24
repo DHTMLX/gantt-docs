@@ -3,8 +3,8 @@ title: "Manuell geplante Zusammenfassungsaufgaben"
 sidebar_label: "Manuell geplante Zusammenfassungsaufgaben"
 ---
 
-Manuell geplante Zusammenfassungsaufgaben
-=========================================
+# Manuell geplante Zusammenfassungsaufgaben
+
 
 Es ist möglich, [Projekte](guides/task-types.md) (Zusammenfassungsaufgaben) manuell zu planen, um mehr Kontrolle und Präzision bei der Arbeit mit Gantt-Diagrammen zu erhalten.
 

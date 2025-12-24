@@ -3,8 +3,8 @@ title: "Export and Import from Primavera P6"
 sidebar_label: "Export and Import from Primavera P6"
 ---
 
-Export and Import from Primavera P6
-============================
+# Export and Import from Primavera P6
+
 
 dhtmlxGantt 라이브러리는 Gantt 차트의 데이터를 Primavera P6로 내보내는 것과 Primavera P6에서 Gantt 차트로 데이터를 가져오는 것을 지원합니다.
 
@@ -17,8 +17,8 @@ dhtmlxGantt 라이브러리는 Gantt 차트의 데이터를 Primavera P6로 내�
 내보내기 서비스는 Gantt 패키지에 포함되어 있지 않다는 점을 유념하세요.
 사용 조건에 대한 자세한 내용은 [관련 문서](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)를 참고하세요.
 
-온라인 내보내기 서비스 제한 사항
------------------------------
+## 온라인 내보내기 서비스 제한 사항
+
 
 :::note
 내보내기 서비스는 처리 시간과 요청 크기에 제한이 있습니다.
@@ -40,8 +40,8 @@ Error: Timeout trigger 20 seconds
 
 또한 [MSProject](guides/export-msproject.md) 및 [Primavera P6](#limitsonrequestsizeandimportoflargefiles) 내보내기/가져오기 서비스(*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*)를 위한 전용 API 엔드포인트 **https://export.dhtmlx.com/gantt/project**도 있습니다. 이 엔드포인트는 **최대 요청 크기 40 MB**를 지원합니다.
 
-내보내기 모듈 사용하기
----------------------
+## 내보내기 모듈 사용하기
+
 
 :::note
 대용량 차트 내보내기를 위해 [독립 실행형 내보내기 모듈](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)을 사용할 수 있습니다.
@@ -307,8 +307,8 @@ gantt.exportToPrimaveraP6({
 ~~~
 
 
-Primavera P6에서 가져오기
-----------------------
+## Primavera P6에서 가져오기
+
 
 XML 또는 XER 파일을 변환하려면 다음 정보를 포함하여 내보내기 서비스로 POST 요청을 전송하세요:
 

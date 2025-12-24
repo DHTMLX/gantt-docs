@@ -3,8 +3,8 @@ title: "关键路径"
 sidebar_label: "关键路径"
 ---
 
-关键路径
-===================================
+# 关键路径
+
 
 :::info
 此功能仅在 PRO 版本中可用
@@ -57,8 +57,8 @@ sidebar_label: "关键路径"
 每当任务被更新时，dhtmlxGantt 会完全重绘数据以重新计算关键路径。 
 此过程有时可能会影响性能。为了解决这个问题，组件提供了公共方法，可以检测特定任务或连接，从而以更高效的方式显示关键路径。
 
-关键路径逻辑
---------------------
+## 关键路径逻辑
+
 
 Gantt 在以下情况下将任务标记为关键任务:
 
@@ -133,8 +133,8 @@ const tasks = {
 目前，内置的关键路径逻辑无法更改。
 不过，你可以[自定义关键路径行为](#customizingthecriticalpathbehaviour)。
 
-检查任务是否为关键任务
----------------------------------------
+## 检查任务是否为关键任务
+
 要判断任务是否为关键任务，请使用 [isCriticalTask](api/method/iscriticaltask.md) 方法:
 
 ~~~js
@@ -149,8 +149,8 @@ gantt.isCriticalTask(gantt.getTask("task3"));// ->'true' /*!*/
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-检查连接是否为关键连接
----------------------------------------
+## 检查连接是否为关键连接
+
 
 要检查某连接是否连接了两个关键任务，请使用 [isCriticalLink](api/method/iscriticallink.md) 方法:
 
@@ -162,8 +162,8 @@ gantt.isCriticalLink(gantt.getLink("link1"));
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-获取自由浮动和总浮动
---------------------------
+## 获取自由浮动和总浮动
+
 
 **自由浮动** 指的是任务或里程碑可以延长或推迟而不影响下一个相关任务的时间。
 
@@ -197,8 +197,8 @@ gantt.getTotalSlack(task);
 
 ![Slack](/img/show_slack.png)
 
-自定义关键路径行为
----------------------------------------------
+## 自定义关键路径行为
+
 默认情况下，gantt 会对关键路径应用标准行为，包括默认高亮样式以及每次数据更改时重新计算路径。
 
 你可以通过以下方法控制关键路径的可见性:
@@ -262,13 +262,13 @@ gantt.parse(data);
 
 **相关示例:** [Custom critical path per project](https://snippet.dhtmlx.com/jd4dyc5p)
 
-设置任务之间的滞后和提前时间
----------------------------------
+## 设置任务之间的滞后和提前时间
+
 
 关键路径任务之间的滞后和提前时间可以进行配置。详细内容请参见[此处](guides/auto-scheduling.md#shezhirenwuzhijiandezhihouhetiqianshijian)。
 
-已完成任务的调度
-----------------------------
+## 已完成任务的调度
+
 
 默认情况下，关键路径算法会将已完成的任务（progress 值为 1）与未完成任务同等处理。
 

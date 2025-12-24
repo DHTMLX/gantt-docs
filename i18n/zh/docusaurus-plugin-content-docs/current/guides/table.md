@@ -3,8 +3,8 @@ title: "配置网格"
 sidebar_label: "配置网格"
 ---
 
-配置网格 
-============================
+# 配置网格 
+
 
 ![gantt_left](/img/gantt_left.png)
 

@@ -3,8 +3,8 @@ title: "dhtmlxGantt 시작하기"
 sidebar_label: "dhtmlxGantt 시작하기"
 ---
 
-dhtmlxGantt 시작하기
-===============================
+# dhtmlxGantt 시작하기
+
 
 <h2>Gantt와 프론트엔드에서 시작하는 방법</h2>
 

@@ -3,8 +3,8 @@ title: "Konfiguration von Abhängigkeitsverbindungen"
 sidebar_label: "Konfiguration von Abhängigkeitsverbindungen"
 ---
 
-Konfiguration von Abhängigkeitsverbindungen
-=================================
+# Konfiguration von Abhängigkeitsverbindungen
+
 ![gantt_arrows](/img/gantt_arrows.png)
 
 ((index

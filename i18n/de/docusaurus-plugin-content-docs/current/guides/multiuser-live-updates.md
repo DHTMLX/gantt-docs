@@ -3,8 +3,8 @@ title: "Multi-User Live Updates"
 sidebar_label: "Multi-User Live Updates"
 ---
 
-Multi-User Live Updates
-==========================
+# Multi-User Live Updates
+
 
 This article describes how to implement server-side support for the real-time updates module of DHTMLX Gantt.
 

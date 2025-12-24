@@ -3,8 +3,8 @@ title: "Экспорт и импорт из Primavera P6"
 sidebar_label: "Экспорт и импорт из Primavera P6"
 ---
 
-Экспорт и импорт из Primavera P6
-============================
+# Экспорт и импорт из Primavera P6
+
 
 Библиотека dhtmlxGantt поддерживает экспорт данных из Gantt-диаграммы в Primavera P6, а также импорт данных из Primavera P6 в Gantt-диаграмму.
 
@@ -17,8 +17,8 @@ sidebar_label: "Экспорт и импорт из Primavera P6"
 Обратите внимание, что экспортные сервисы не входят в комплект поставки Gantt.
 Подробную информацию об условиях использования смотрите в [соответствующей статье](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
 
-Ограничения онлайн-сервиса экспорта
------------------------------
+## Ограничения онлайн-сервиса экспорта
+
 
 :::note
 Сервис экспорта имеет ограничения по времени обработки и размеру запроса.
@@ -42,8 +42,8 @@ Error: Timeout trigger 20 seconds
 [Primavera P6](#limitsonrequestsizeandimportoflargefiles)
 (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*). Этот эндпоинт поддерживает **максимальный размер запроса 40 МБ**.
 
-Использование экспортных модулей
----------------------
+## Использование экспортных модулей
+
 
 :::note
 Для экспорта больших диаграмм доступен [отдельный экспортный модуль](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
@@ -308,8 +308,8 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-Импорт из Primavera P6
-----------------------
+## Импорт из Primavera P6
+
 
 Для преобразования XML или XER-файла отправьте POST-запрос к сервису экспорта со следующими параметрами:
 

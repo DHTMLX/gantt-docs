@@ -3,8 +3,8 @@ title: "Dynamic Loading (on demand)"
 sidebar_label: "Dynamic Loading (on demand)"
 ---
 
-Dynamic Loading (on demand)
-=========================================
+# Dynamic Loading (on demand)
+
 
 :::info
 This functionality is available only in the PRO edition
@@ -14,8 +14,8 @@ By default, dhtmlxGantt loads all data at once. It may become problematic when y
 
 In such a situation you may use the dynamic loading mode and load data by branches (sub-projects), level by level as the user opens them. 
 
-How it works
-----------------
+## How it works
+
 
 When dynamic loading is [enabled](#enablingdynamicloading), the [gantt.load("url")](api/method/load.md) call will send a GET request to the specified URL, 
 expecting the response to contain only the top-level tasks, and all the nested branches displayed as closed.
@@ -95,8 +95,8 @@ $gantt->event->attach("beforeRender","check_children");
 **Related sample**: [Loading subtasks on demand (branch loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
 
 
-Data format for dynamic loading 
------------------------
+## Data format for dynamic loading 
+
 
 The format of data for dynamic loading is the following:
 

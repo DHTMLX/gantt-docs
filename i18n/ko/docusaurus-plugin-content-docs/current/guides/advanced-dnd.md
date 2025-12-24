@@ -3,8 +3,8 @@ title: "DnD로 작업 생성/선택하기"
 sidebar_label: "DnD로 작업 생성/선택하기"
 ---
 
-DnD로 작업 생성/선택하기
-======================================
+# DnD로 작업 생성/선택하기
+
 
 dhtmlxGantt 라이브러리는 타임라인에서 작업을 관리할 수 있도록 향상된 드래그 앤 드롭 기능을 제공하는 확장 기능을 지원합니다.
 
@@ -76,8 +76,8 @@ gantt.$task_data.attachEvent("onBeforeDrag", function (coords) {
 이벤트 핸들러는 반드시 이미 생성된 요소에만 추가할 수 있습니다. 따라서 Gantt를 초기화한 후에 이벤트 핸들러를 추가해야 하며, 그렇지 않으면 요소가 아직 생성되지 않아 동작하지 않습니다.
 :::
 
-드래그 앤 드롭으로 작업 생성하기
----------------------------
+## 드래그 앤 드롭으로 작업 생성하기
+
 
 타임라인의 빈 공간을 클릭하여 시작 날짜를 지정한 후, 오른쪽으로 드래그하여 작업의 기간을 설정할 수 있습니다.
 
@@ -111,13 +111,13 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
 
-스케줄되지 않은 작업의 시간 지정하기
-------------------------
+## 스케줄되지 않은 작업의 시간 지정하기
+
 
 **click_drag** 확장을 사용하면 [스케줄되지 않은 작업](guides/unscheduled-tasks.md)의 시간 구간도 드래그 앤 드롭으로 지정할 수 있습니다.
 
-드래그 앤 드롭으로 작업 선택하기
--------------------------------
+## 드래그 앤 드롭으로 작업 선택하기
+
 
 드래그 앤 드롭을 통해 여러 방식(날짜, 행, 경계 내)으로 작업을 선택할 수 있습니다.
 
@@ -165,8 +165,8 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Select multiple tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/25_click_drag_select_by_drag.html)
 
 
-분할 작업의 일부 생성하기
--------------------------
+## 분할 작업의 일부 생성하기
+
 
 드래그 앤 드롭을 사용하여 [분할 작업](guides/split-tasks.md)의 일부를 생성할 수도 있습니다.
 

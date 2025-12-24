@@ -3,8 +3,8 @@ title: "Export and Import from Primavera P6"
 sidebar_label: "Export and Import from Primavera P6"
 ---
 
-Export and Import from Primavera P6
-============================
+# Export and Import from Primavera P6
+
 
 The dhtmlxGantt library allows you to export data from the Gantt chart into Primavera P6. You can also import data into Gantt from Primavera P6.
 
@@ -18,8 +18,8 @@ There are several export services available. You can install them on your comput
 Note that export services are not included into the Gantt package, 
 read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
-Online export service restrictions
------------------------------
+## Online export service restrictions
+
 
 :::note
 The export service has time and request size restrictions.
@@ -43,8 +43,8 @@ There is also a separate API endpoint `https://export.dhtmlx.com/gantt/project` 
 [Primavera P6](#limits-on-request-size-and-import-of-large-files) 
 export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
 
-Using export modules
----------------------
+## Using export modules
+
 
 :::note
 If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 

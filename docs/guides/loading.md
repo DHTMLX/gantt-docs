@@ -3,8 +3,8 @@ title: "Data Loading"
 sidebar_label: "Data Loading"
 ---
 
-Data Loading 
-=======================================
+# Data Loading 
+
 
 dhtmlxGantt can take data of 2 formats:
 
@@ -27,8 +27,8 @@ gantt.load("tasks.json");
 If you pass incorrect data to the Gantt, its tree-like structure becomes cyclic which causes the [cyclic reference error](faq.md#cyclic-reference-error).
 :::
 
-Loading from Object
------------------------------------------
+## Loading from Object
+
 
 To load data from an object, use the [parse](api/method/parse.md) method:
 
@@ -53,8 +53,8 @@ gantt.parse(data); /*!*/
 If your data objects contain both "start_date" and "end_date" values and date values contain only date part (i.e. 01-12-2025 and not 01-12-2025 00:00) - you may need extra configuration. Be sure to check this article [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
 :::
 
-Loading from Server
----------------------------
+## Loading from Server
+
 
 ### Client side
 

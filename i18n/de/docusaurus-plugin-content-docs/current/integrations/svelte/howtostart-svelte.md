@@ -3,8 +3,8 @@ title: "dhtmlxGantt mit Svelte"
 sidebar_label: "Svelte"
 ---
 
-dhtmlxGantt mit Svelte
-======================
+# dhtmlxGantt mit Svelte
+
 
 Diese Anleitung setzt grundlegende Kenntnisse der Svelte-Konzepte und -Muster voraus. Falls nicht, findest du ein hilfreiches Einstiegs-Tutorial in der [Svelte-Dokumentation](https://svelte.dev/).
 

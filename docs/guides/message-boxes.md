@@ -3,8 +3,8 @@ title: "Popup Messages and Modal Boxes"
 sidebar_label: "Popup Messages and Modal Boxes"
 ---
 
-Popup Messages and Modal Boxes
-======================
+# Popup Messages and Modal Boxes
+
 
 Messages are used in the Gantt Chart to notify a user about an error, confirm or deny an action, choose one of the options and so on.
 Gantt Chart messages use [the fork of the dhtmlxMessage repository](https://github.com/DHTMLX/message) as their basis. 

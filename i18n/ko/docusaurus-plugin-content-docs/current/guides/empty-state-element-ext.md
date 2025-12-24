@@ -3,8 +3,8 @@ title: "emptyStateElement 확장"
 sidebar_label: "emptyStateElement 확장"
 ---
 
-emptyStateElement 확장
-======================
+# emptyStateElement 확장
+
 
 emptyStateElement 확장에 대한 자세한 내용은 [Empty State Screen](guides/empty-state-screen.md) 문서에서 확인할 수 있습니다.
 

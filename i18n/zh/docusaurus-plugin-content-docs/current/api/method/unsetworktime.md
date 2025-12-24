@@ -37,8 +37,8 @@ gantt.unsetWorkTime({ hours:["9:00-18:00"] });
 - 如果未指定特定任务，该方法将应用[全局工作时间日历](guides/working-time.md#multipleworktimecalendars)。<br>
 - 此外，也可以直接在[calendar 对象](api/other/calendar.md)上调用此方法。
 
-配置对象属性
----------------------------------------
+## 配置对象属性
+
 
 配置对象可能包含以下属性:
 

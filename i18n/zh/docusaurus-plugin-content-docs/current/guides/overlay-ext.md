@@ -3,8 +3,8 @@ title: "Overlay 扩展"
 sidebar_label: "Overlay 扩展"
 ---
 
-Overlay 扩展
-======================
+# Overlay 扩展
+
 
 :::info
 该功能仅在 PRO 版本中可用。
@@ -12,8 +12,8 @@ Overlay 扩展
 
 **overlay** 扩展提供了一组 API 方法，用于简化叠加层的操作。欲了解更多详细信息，请参阅文章 [타임라인 영역의 커스텀 요소](guides/baselines.md)
 
-方法
-------------
+## 方法
+
 
 以下方法可通过 **gantt.ext.overlay** 对象访问:
 

@@ -3,8 +3,8 @@ title: "Шаблоны Lightbox"
 sidebar_label: "Шаблоны Lightbox"
 ---
 
-Шаблоны Lightbox
-====================================
+# Шаблоны Lightbox
+
 
 <table class="webixdoc_links">
   <tbody>

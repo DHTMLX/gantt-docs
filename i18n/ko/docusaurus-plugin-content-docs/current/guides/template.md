@@ -3,8 +3,8 @@ title: "템플릿 컨트롤"
 sidebar_label: "템플릿 컨트롤"
 ---
 
-템플릿 컨트롤
-=====================================
+# 템플릿 컨트롤
+
 
 이 컨트롤은 일부 HTML 콘텐츠를 내부에 포함하는 컨테이너입니다.
 
@@ -31,8 +31,8 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 
 
-초기화
------------------
+## 초기화
+
 
 **template** 컨트롤을 라이트박스에 포함하려면 다음 단계를 따라야 합니다:
 
@@ -64,8 +64,8 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 ~~~
 
 
-속성
---------------
+## 속성
+
 
 **template** 컨트롤에서 자주 사용되는 주요 속성은 다음과 같습니다 (전체 목록은 [여기](api/config/lightbox.md)를 참고하세요):
 

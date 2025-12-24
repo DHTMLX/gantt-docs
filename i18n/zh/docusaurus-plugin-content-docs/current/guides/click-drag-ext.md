@@ -3,13 +3,13 @@ title: "clickDrag 扩展"
 sidebar_label: "clickDrag 扩展"
 ---
 
-clickDrag 扩展
-======================
+# clickDrag 扩展
+
 
 关于 clickDrag 扩展的更多信息，请参阅文章 [DnD로 작업 생성/선택하기](guides/advanced-dnd.md)。
 
-配置对象
-------------------
+## 配置对象
+
 
 要启用高级拖放功能，需要设置 [click_drag](api/config/click_drag.md) 配置选项，并在其对象中包含下列所需属性:
 
@@ -62,8 +62,8 @@ gantt.config.click_drag = {
             - **_top_** - (*number*) - 垂直位置
 
 
-事件
------------
+## 事件
+
 
 以下事件可以绑定到用作 viewPort 的元素上（默认是 gantt.$task_data，即包含任务条的时间线区域）:
 

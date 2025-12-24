@@ -3,15 +3,15 @@ title: "로컬라이제이션"
 sidebar_label: "로컬라이제이션"
 ---
 
-로컬라이제이션
-================
+# 로컬라이제이션
+
 
 로컬라이제이션을 사용하면 Gantt 차트 인터페이스를 영어, 스페인어, 프랑스어 등 원하는 언어로 표시할 수 있습니다. 기본적으로 dhtmlxGantt는 [영어 로케일](api/other/locale.md)을 사용합니다.
 
 ![gantt_localized](/img/gantt_localized.png)
 
-로케일 활성화하기
----------------------------------------------
+## 로케일 활성화하기
+
 
 영어 이외의 언어로 Gantt 차트를 사용하려면, [gantt.i18n](api/other/i18n.md) 객체의 **setLocale** 메서드를 사용하여 원하는 로케일을 활성화하면 됩니다.
 
@@ -34,8 +34,8 @@ dhtmlxgantt.js 파일에 포함된 [미리 정의된 로케일](#predefinedlocal
 [Localization](https://docs.dhtmlx.com/gantt/samples/01_initialization/12_localization.html)
 
 
-미리 정의된 로케일
--------------------
+## 미리 정의된 로케일
+
 
 <table>
 <tr><td>언어</td><td>언어 코드</td><td>번역 상태</td></tr>
@@ -73,8 +73,8 @@ dhtmlxgantt.js 파일에 포함된 [미리 정의된 로케일](#predefinedlocal
 <tr><td>우크라이나어</td><td>ua</td><td>부분</td></tr>
 </table>
 
-커스텀 로케일 만들기 
--------------------------------
+## 커스텀 로케일 만들기 
+
 
 :::note
 [gantt.i18n](api/other/i18n.md) 객체는 v7.0에서 도입되었습니다. 이전 버전에서는 [gantt.locale](api/other/locale.md) 객체를 사용했습니다. 자세한 내용은 [Migration article](migration.md#63---70)을 참고하세요.

@@ -3,8 +3,8 @@ title: "基线控件"
 sidebar_label: "基线控件"
 ---
 
-基线控件
-====================
+# 基线控件
+
 
 :::info
 此功能仅包含在 PRO 版本中。
@@ -24,8 +24,8 @@ gantt.config.lightbox.sections = [
 [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 
-初始化
----------------------------
+## 初始化
+
 
 要在 lightbox 中包含 **baselines** 控件，请按照以下步骤操作:
 
@@ -45,8 +45,8 @@ gantt.config.lightbox.sections = [
 gantt.locale.labels.section_baselines = "Baselines";
 ~~~
 
-属性
-------------------------
+## 属性
+
 
 以下是 **baselines** 控件常用的主要属性（完整列表请参见[这里](api/config/lightbox.md)）:
 
@@ -63,8 +63,8 @@ gantt.locale.labels.section_baselines = "Baselines";
 - **single_date** - (*boolean*) 如果为 true，仅显示*开始日期*选择器。以这种方式编辑的任务持续时间为零，主要用于[里程碑](guides/task-types.md#lichengbei)
 - **time_format** - (*string*) 设置日期时间选择器的顺序
 
-本地化
------------------
+## 本地化
+
 
 你可以自定义 **baselines** 控件这些部分的标签:
 

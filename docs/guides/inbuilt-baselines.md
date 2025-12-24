@@ -3,8 +3,8 @@ title: "Extra Elements in Timeline"
 sidebar_label: "Extra Elements in Timeline"
 ---
 
-Extra Elements in Timeline
-================================
+# Extra Elements in Timeline
+
 
 :::info
 This functionality is available only in the PRO edition
@@ -21,8 +21,8 @@ By default, dhtmlxGantt renders elements of the timeline area as layers and does
 Gantt includes such built-in elements as baselines, deadlines and time constraints. Instead of the default extra elements, 
 you can also [create custom ones as additional layers](guides/baselines.md). 
 
-Baselines
-----------------
+## Baselines
+
 
 In project management tools like Gantt charts, baselines are essential for comparing the planned project timeline with the actual progress. 
 Gantt API provides built-in support for baseline entities, greatly simplifying the work with this important element.
@@ -205,8 +205,8 @@ gantt.templates.baseline_text = function(task, baseline, index) {
 };
 ~~~
 
-Deadlines and constraints
---------------------------
+## Deadlines and constraints
+
 
 In project management, tracking deadlines and understanding task constraints are vital for timely delivery. 
 DHTMLX Gantt comes with built-in visualization for deadlines and constraints, enhancing the ability to manage project timelines effectively.

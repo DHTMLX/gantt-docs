@@ -3,8 +3,8 @@ title: "Kritischer Pfad"
 sidebar_label: "Kritischer Pfad"
 ---
 
-Kritischer Pfad
-===================================
+# Kritischer Pfad
+
 
 :::info
 Diese Funktion ist nur in der PRO-Edition verfügbar. 
@@ -57,8 +57,8 @@ Kritische Aufgaben und Verbindungen erhalten zusätzliche CSS-Klassen mit den Na
 Jedes Mal, wenn eine Aufgabe aktualisiert wird, zeichnet dhtmlxGantt die Daten vollständig neu, um den kritischen Pfad neu zu berechnen. 
 Dieser Vorgang kann gelegentlich die Leistung beeinträchtigen. Um dem entgegenzuwirken, stellt die Komponente öffentliche Methoden zur Verfügung, mit denen gezielt bestimmte Aufgaben oder Verbindungen überprüft werden können, um den kritischen Pfad ressourcenschonender anzuzeigen.
 
-Logik des kritischen Pfads
---------------------
+## Logik des kritischen Pfads
+
 
 Gantt markiert eine Aufgabe unter folgenden Bedingungen als kritisch:
 
@@ -133,8 +133,8 @@ const tasks = {
 Die eingebaute Logik des kritischen Pfads kann derzeit nicht angepasst werden.
 Sie können jedoch das [Verhalten des kritischen Pfads anpassen](#customizingthecriticalpathbehaviour).
 
-Überprüfen, ob eine Aufgabe kritisch ist 
----------------------------------------
+## Überprüfen, ob eine Aufgabe kritisch ist 
+
 Um zu bestimmen, ob eine Aufgabe kritisch ist, verwenden Sie die Methode [isCriticalTask](api/method/iscriticaltask.md):
 
 ~~~js
@@ -149,8 +149,8 @@ gantt.isCriticalTask(gantt.getTask("task3"));// ->'true' /*!*/
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-Überprüfen, ob eine Verbindung kritisch ist 
----------------------------------------
+## Überprüfen, ob eine Verbindung kritisch ist 
+
 
 Um zu prüfen, ob eine Verbindung zwei kritische Aufgaben verbindet, verwenden Sie die Methode [isCriticalLink](api/method/iscriticallink.md):
 
@@ -162,8 +162,8 @@ gantt.isCriticalLink(gantt.getLink("link1"));
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-Freien und gesamten Puffer ermitteln
---------------------------
+## Freien und gesamten Puffer ermitteln
+
 
 **Freier Puffer** ist die Zeitspanne, um die eine Aufgabe oder ein Meilenstein verlängert oder verschoben werden kann, ohne die nächste verbundene Aufgabe zu verzögern.
 
@@ -197,8 +197,8 @@ gantt.getTotalSlack(task);
 
 ![Slack](/img/show_slack.png)
 
-Anpassen des Verhaltens des kritischen Pfads
----------------------------------------------
+## Anpassen des Verhaltens des kritischen Pfads
+
 Standardmäßig verwendet gantt das Standardverhalten für den kritischen Pfad, einschließlich der Standard-Hervorhebungsstile und der Neuberechnung des Pfads bei jeder Datenänderung.
 
 Um die Sichtbarkeit des kritischen Pfads zu steuern, können Sie diese Methode verwenden:
@@ -262,13 +262,13 @@ Sie können Aufgaben und Verbindungen auch manuell hervorheben:
 
 **Beispiel:** [Custom critical path per project](https://snippet.dhtmlx.com/jd4dyc5p)
 
-Festlegen von Lag- und Leadzeiten zwischen Aufgaben
----------------------------------
+## Festlegen von Lag- und Leadzeiten zwischen Aufgaben
+
 
 Lag- und Leadzeiten zwischen Aufgaben des kritischen Pfads können konfiguriert werden. Details finden Sie [hier](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks).
 
-Planung abgeschlossener Aufgaben
-----------------------------
+## Planung abgeschlossener Aufgaben
+
 
 Standardmäßig behandelt der Algorithmus des kritischen Pfads abgeschlossene Aufgaben (mit Fortschrittswert 1) genauso wie unvollständige Aufgaben.
 

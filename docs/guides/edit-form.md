@@ -3,8 +3,8 @@ title: "Configuring Edit Form"
 sidebar_label: "Configuring Edit Form"
 ---
 
-Configuring Edit Form
-======================
+# Configuring Edit Form
+
 
 ![lightbox](/img/lightbox.png)
 

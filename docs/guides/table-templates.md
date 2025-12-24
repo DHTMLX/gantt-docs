@@ -3,8 +3,8 @@ title: "Templates of the Grid"
 sidebar_label: "Templates of the Grid"
 ---
 
-Templates of the Grid
-=====================================
+# Templates of the Grid
+
 
 <table class="webixdoc_links">
   <tbody>

@@ -3,8 +3,8 @@ title: "dhtmlxGantt 在纯 JS/HTML 中的使用"
 sidebar_label: "快速开始"
 ---
 
-dhtmlxGantt 在纯 JS/HTML 中的使用
-==================
+# dhtmlxGantt 在纯 JS/HTML 中的使用
+
 
 在使用 dhtmlxGantt 构建应用时，第一步就是在页面上设置并渲染 Gantt 图表。
 
@@ -27,8 +27,8 @@ dhtmlxGantt 在纯 JS/HTML 中的使用
   </tbody>
 </table>
 
-创建基础 Gantt 图表
------------------------
+## 创建基础 Gantt 图表
+
 
 在页面上显示一个简单的 Gantt 图表需要三个步骤:
 
@@ -59,8 +59,8 @@ dhtmlxGantt 在纯 JS/HTML 中的使用
 
  
  
-如何将 Gantt 源文件添加到项目中
-------------------------------------------------------------
+## 如何将 Gantt 源文件添加到项目中
+
 
 根据你所构建的应用类型，有多种方式可以将 Gantt 源文件添加到项目中:
 
@@ -68,8 +68,8 @@ dhtmlxGantt 在纯 JS/HTML 中的使用
 - [在 ES6/7 和 TypeScript 应用中导入文件](#moduleimport)
 - [在基于 RequireJS 的应用中引入文件](#requirejsimport)
 
-通过 &#60;script&#62; 标签引入文件
---------------------------------------------
+## 通过 &#60;script&#62; 标签引入文件
+
 
 要使用 dhtmlxGantt，需要在页面中添加两个文件:
 
@@ -89,8 +89,8 @@ dhtmlxGantt 包中的主要文件夹和文件包括:
 - <b>samples</b> - 示例代码样本。
 - <b>codebase</b> - 用于生产环境的压缩代码文件。<b>在你的应用中应使用此文件夹下的文件。</b>
 
-在 ES6/7 和 TypeScript 应用中导入文件
----------------------------------------------
+## 在 ES6/7 和 TypeScript 应用中导入文件
+
 
 使用以下命令导入文件:
 
@@ -104,8 +104,8 @@ import { gantt } from 'dhtmlx-gantt';
 import { gantt, Gantt } from 'dhtmlx-gantt';
 ~~~
 
-在 Vite 中使用 Gantt
---------------------------
+## 在 Vite 中使用 Gantt
+
 
 如果你的项目使用 Vite，需要在 **vite.config.js** 文件中添加如下设置，以确保 Gantt 被正确引入:
 
@@ -134,8 +134,8 @@ build: {
 }
 ~~~
 
-在基于 RequireJS 的应用中引入文件
-------------------------------------------- 
+## 在基于 RequireJS 的应用中引入文件
+ 
 
 在基于 RequireJS 的应用中添加 dhtmlxGantt 文件，参考如下模式:
 
@@ -218,8 +218,8 @@ function (dhx) {
 
 - "dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"
 
-全屏模式
----------------------------------
+## 全屏模式
+
 
 为确保 Gantt 图表在不同浏览器下以全屏模式正确显示，请在页面中添加如下样式:
 

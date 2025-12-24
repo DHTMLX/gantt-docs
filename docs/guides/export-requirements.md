@@ -3,8 +3,8 @@ title: "Export Service - System Requirements for a standalone install"
 sidebar_label: "Export Service - System Requirements for a standalone install"
 ---
 
-Export Service - System Requirements for a standalone install
-=============================================
+# Export Service - System Requirements for a standalone install
+
 
 dhtmlxGantt library provides you with the possibility of exporting and importing data from the Gantt chart using export as online service.
 

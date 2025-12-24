@@ -3,8 +3,8 @@ title: "그리드 구성하기"
 sidebar_label: "그리드 구성하기"
 ---
 
-그리드 구성하기 
-============================
+# 그리드 구성하기 
+
 
 ![gantt_left](/img/gantt_left.png)
 

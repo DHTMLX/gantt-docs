@@ -3,8 +3,8 @@ title: "Validation"
 sidebar_label: "Validation"
 ---
 
-Validation
-====================
+# Validation
+
 
 Validation allows you to control the data entered by the user in order to exclude the possibility of saving incorrect values. 
 For example, with validation you can deny assigning 2 simultaneous tasks to a person.
@@ -12,8 +12,8 @@ For example, with validation you can deny assigning 2 simultaneous tasks to a pe
 
 Generally, to validate the data entered by the user, use the events provided by the [dhtmlxGantt API](api/overview/events-overview.md) and catch the input data to process them in accordance with their correctness:
 
-Client-side validation
---------------------------
+## Client-side validation
+
 
 The following events are mostly important and commonly used for data validation:
 
@@ -45,8 +45,8 @@ gantt.attachEvent("onLightboxSave", function(id, item){
 [Validate lightbox values](https://docs.dhtmlx.com/gantt/samples/05_lightbox/03_validation.html)
 
 
-Server-side validation
------------------------------
+## Server-side validation
+
 
 The solution above has a shortcoming - the event won't fire if the data in the lightbox has been changed through an inline editor or by dragging over the Gantt chart.
 

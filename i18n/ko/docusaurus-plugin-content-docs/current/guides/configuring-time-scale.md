@@ -3,8 +3,8 @@ title: "스케일 설정하기"
 sidebar_label: "스케일 설정하기"
 ---
 
-스케일 설정하기
-===========================================
+# 스케일 설정하기
+
 
 ![gantt_dates](/img/gantt_dates.png)
 
@@ -37,7 +37,7 @@ gantt.config.scales = [
 
 
 ## 시간 단위 {#timeunits}
-----------------------------------------
+
 
 ![month_day_scale_units](/img/month_day_scale_units.png)
 
@@ -60,7 +60,7 @@ gantt.init("gantt_here");
 
 
 ## 범위 {#range}
---------------------------------------
+
 
 ![day_scale_unit](/img/day_scale_unit.png)
 
@@ -269,7 +269,7 @@ gantt.init("gantt_here", new Date(2020, 1, 1), new Date(2020, 2, 1));
 이렇게 하면, ID가 "1"과 "2"인 작업이 타임라인 영역에 빈 행으로 나타나며, 그리드에 이름과 시작일이 표시됩니다.
 
 ## Time step {#timestep}
---------------------------------------
+
 
 ![scale_step](/img/scale_step.png)
 
@@ -296,7 +296,7 @@ gantt.init("gantt_here");
 
 
 ## Height {#height}
---------------------------------------
+
 
 ![scale_height](/img/scale_height.png)
 
@@ -315,7 +315,7 @@ gantt.init("gantt_here");
 여러 개의 스케일이 사용되는 경우, 지정한 높이는 각 스케일에 균등하게 분배됩니다. 예를 들어 **scale_height**가 60 픽셀이고, 3개의 스케일이 있다면 각각 20 픽셀의 높이를 가지게 됩니다.
 
 ## Date format {#dateformat}
-----------------------
+
 
 :::note
 사용 가능한 포맷 문자에 대해 알아보려면 [날짜 형식 지정](guides/date-format.md) 문서를 참고하세요
@@ -358,7 +358,7 @@ gantt.config.scales = [
 ![scale_template](/img/scale_template.png)
 
 ## Styling {#styling}
-------------------------------------
+
 
 ![css_styling](/img/css_styling.png)
 
@@ -454,7 +454,7 @@ gantt.templates.scale_cell_class = function(date){
 타임라인 영역의 스타일을 더 맞춤화하는 방법은 [타임 슬롯 하이라이트하기](guides/highlighting-time-slots.md) 문서를 참고하세요.
 
 ## Custom time units {#customtimeunits}
--------------------------
+
 
 dhtmlxGantt에서는 사용자 정의 시간 단위를 생성하고, 스케일 구성에서 라벨 템플릿을 설정할 수 있습니다.
 
@@ -593,7 +593,7 @@ if (nextDate.getHours() % 8 != 0) {
 더 많은 예시는 [How to add a custom scale](guides/how-to.md#howtoaddacustomscale) 문서를 참고하세요.
 
 ## 커스텀 시간 범위 {#customtimespans}
-----------------------
+
 
 이 섹션에서는 근무하지 않는 시간대를 표시하거나 숨기도록 시간 스케일을 커스터마이즈하는 예시를 제공합니다. 또한 **skip_off_time** 모드가 활성화되어 있을 때 스케일 시작 부분에 근무 외 시간 셀을 숨기는 예시도 포함되어 있습니다.
 

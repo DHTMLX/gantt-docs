@@ -3,8 +3,8 @@ title: "dhtmlxGantt와 Vue.js 연동하기"
 sidebar_label: "Vue.js"
 ---
 
-dhtmlxGantt와 Vue.js 연동하기
-========================
+# dhtmlxGantt와 Vue.js 연동하기
+
 
 이 가이드는 [Vue](https://vuejs.org/)의 기본 개념과 패턴을 이해하고 있다고 가정합니다. Vue가 처음이라면 [Vue 3 공식 문서](https://vuejs.org/guide/introduction.html)를 참고하여 빠르게 시작해 보세요.
 

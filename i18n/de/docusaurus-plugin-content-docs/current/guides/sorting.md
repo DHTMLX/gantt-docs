@@ -3,8 +3,8 @@ title: "Sortieren von Spalten"
 sidebar_label: "Sortieren von Spalten"
 ---
 
-Sortieren von Spalten
-=================================
+# Sortieren von Spalten
+
 
 dhtmlxGantt bietet die Möglichkeit, Daten innerhalb der Gitterspalten direkt auf der Client-Seite zu sortieren.
 
@@ -18,8 +18,8 @@ Es gibt zwei Möglichkeiten, das Sortieren im Gitter zu aktivieren:
 Beachten Sie, dass Gantt Aufgaben nur auf Basis der tatsächlichen Datenwerte sortiert und keine Werte sortiert, die durch das template-Attribut einer Spalte erzeugt werden.
 :::
 
-Sortieren durch Klicken auf den Spaltenkopf
---------------------------------------------
+## Sortieren durch Klicken auf den Spaltenkopf
+
 
 Wenn ein Spaltenkopf angeklickt wird, zeigt das Gantt-Diagramm einen visuellen Indikator an, der hervorhebt, welche Spalte aktuell sortiert ist und in welcher Sortierreihenfolge (aufsteigend oder absteigend). Jeder weitere Klick auf denselben Spaltenkopf wechselt die Sortierrichtung.
 
@@ -36,8 +36,8 @@ gantt.init("gantt_here");
 [Built-in sorting](https://docs.dhtmlx.com/gantt/samples/07_grid/01_builtin_sorting.html)
 
 
-Sortieren per Programmierung
------------------------
+## Sortieren per Programmierung
+
 
 Um das Gitter basierend auf einem bestimmten Ereignis oder einer Aktion zu sortieren (z.B. beim Klicken eines Buttons oder beim Laden der Seite), verwenden Sie die Methode [sort](api/method/sort.md).
 
@@ -55,8 +55,8 @@ Um das Gitter basierend auf einem bestimmten Ereignis oder einer Aktion zu sorti
 [Using sorting methods](https://docs.dhtmlx.com/gantt/samples/07_grid/05_sort_api.html)
 
 
-Eigene Sortierfunktionen
--------------------------------------------------
+## Eigene Sortierfunktionen
+
 
 Eigene Sortierfunktionen können angewendet werden, indem Sie den Namen Ihrer Funktion als ersten (und einzigen) Parameter an die Methode [sort](api/method/sort.md) übergeben.
 
@@ -95,8 +95,8 @@ Diese Funktion wird für jedes Paar benachbarter Werte aufgerufen und sollte 1, 
 [Custom sorting function](https://docs.dhtmlx.com/gantt/samples/07_grid/04_custom_sorting.html)
 
 
-Sortieren pro Spalte im Gitter
------------------------
+## Sortieren pro Spalte im Gitter
+
 
 Es ist möglich, für jede Spalte individuelle Sortierregeln festzulegen. Hier sind drei gängige Methoden, das Sortieren pro Spalte zu steuern:
 

@@ -3,8 +3,8 @@ title: "Exportieren und Importieren von Daten"
 sidebar_label: "Exportieren und Importieren von Daten"
 ---
 
-Exportieren und Importieren von Daten
-=====================================
+# Exportieren und Importieren von Daten
+
 ((index
 - [Export to PDF and PNG](guides/export.md)
 - [Export/Import for Excel, Export to iCal](guides/excel.md)

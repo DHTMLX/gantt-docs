@@ -3,8 +3,8 @@ title: "Was ist neu im PDF Export Modul"
 sidebar_label: "Was ist neu im PDF Export Modul"
 ---
 
-Was ist neu im PDF Export Modul
-===============================
+# Was ist neu im PDF Export Modul
+
 
 ## 0.6.6
 

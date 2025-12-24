@@ -3,8 +3,8 @@ title: "Milestones"
 sidebar_label: "Milestones"
 ---
 
-Milestones
-============
+# Milestones
+
 
 :::info
 This functionality is available only in the PRO edition
@@ -57,8 +57,8 @@ After you have been completed these steps, your Gantt chart is fully ready to wo
 **Related sample**: [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-Specifying milestones in a data set
-----------------------------------------------
+## Specifying milestones in a data set
+
 
 To define milestones in the initial data set, set the [type](guides/loading.md#dataproperties) property of a data item to the **'milestone'** value (*values are stored in the [types](api/config/types.md) object*):
 ~~~js
@@ -117,8 +117,8 @@ gantt.config.lightbox.milestone_sections = [
 **Related sample**: [Rollup tasks and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/21_rollup_tasks.html)
 
 
-Hiding tasks and milestones
----------------------------
+## Hiding tasks and milestones
+
 
 Starting with v7.1, you can hide [task bars](guides/task-types.md#regular-tasks) and [milestones](guides/task-types.md#milestones) in the timeline area via setting the **hide_bar: true** property of a data item:
 

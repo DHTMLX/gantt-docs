@@ -3,8 +3,8 @@ title: "Fullscreen Extension"
 sidebar_label: "Fullscreen Extension"
 ---
 
-Fullscreen Extension
-========================
+# Fullscreen Extension
+
 
 Read details about the Fullscreen extension in the [Full Screen Mode](guides/fullscreen-mode.md#fullscreen-api) article. 
 

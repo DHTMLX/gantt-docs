@@ -3,8 +3,8 @@ title: "Parent Control"
 sidebar_label: "Parent Control"
 ---
 
-Parent Control
-=====================
+# Parent Control
+
 
 Dieses Steuerelement stellt ein Auswahlfeld zur Verfügung, mit dem das übergeordnete Element (Parent) einer Aufgabe geändert werden kann. Es lädt alle Aufgaben, die im Gantt-Diagramm angezeigt werden, mit der Möglichkeit, Filterregeln anzuwenden und die Anzeige der Werte zu individualisieren. Abgesehen von diesen Funktionen verhält es sich wie das Steuerelement [Select Control](guides/select.md).
 
@@ -22,8 +22,8 @@ gantt.config.lightbox.sections = [
 [Parent selector](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
 
 
-Initialisierung
------------------
+## Initialisierung
+
 
 Um das **parent**-Steuerelement im Lightbox-Dialog einzubinden, gehen Sie wie folgt vor:
 
@@ -48,8 +48,8 @@ gantt.locale.labels["section_parent"] = "Parent task";
   
 
 
-Eigenschaften
-----------------
+## Eigenschaften
+
 
 Hier sind einige wichtige Eigenschaften, die häufig mit dem **parent**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 
@@ -65,8 +65,8 @@ Hier sind einige wichtige Eigenschaften, die häufig mit dem **parent**-Steuerel
 - **template** - (*function*) eine Template-Funktion zur individuellen Darstellung der Optionsauswahl
   
 
-Optionen filtern
------------------------
+## Optionen filtern
+
 
 Um zu steuern, welche Optionen im **parent**-Steuerelement angezeigt werden, verwenden Sie die **filter**-Eigenschaft:
 
@@ -99,8 +99,8 @@ und gibt zurück:
 - *false*, um sie auszublenden
 
 
-Optionen sortieren
-------------------
+## Optionen sortieren
+
 
 Um die Reihenfolge der Optionen im **parent**-Steuerelement zu bestimmen, verwenden Sie die **sort**-Eigenschaft:
 
@@ -124,8 +124,8 @@ Die **sort**-Funktion vergleicht jeweils zwei benachbarte Elemente und gibt zur�
 - -1 - das zweite Element soll vor dem ersten erscheinen
 - 0 - die Reihenfolge beider Elemente bleibt unverändert
 
-Template für Optionen
--------------------------
+## Template für Optionen
+
 
 Um die Darstellung der Optionen im **parent**-Steuerelement zu individualisieren, verwenden Sie die **template**-Eigenschaft:
 

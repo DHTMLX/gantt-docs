@@ -40,8 +40,8 @@ gantt.getClosestWorkTime({ date: new Date(2019,04,26), task:task });
 - 当未提供任务时，该方法使用[全局工作时间日历](guides/working-time.md#multipleworktimecalendars)。<br>
 - 此外，该方法也可以直接从[日历对象](api/other/calendar.md)调用。
 
-配置对象属性
----------------------------------------
+## 配置对象属性
+
 
 配置对象可以包含以下属性:
 

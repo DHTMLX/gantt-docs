@@ -3,8 +3,8 @@ title: "dhtmlxGantt с Svelte"
 sidebar_label: "Svelte"
 ---
 
-dhtmlxGantt с Svelte
-=====================
+# dhtmlxGantt с Svelte
+
 
 Данное руководство предполагает, что вы обладаете базовыми знаниями о концепциях и паттернах Svelte. Если нет, вы можете ознакомиться с полезным [вводным руководством в документации Svelte](https://svelte.dev/).
 

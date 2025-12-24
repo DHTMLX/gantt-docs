@@ -3,8 +3,8 @@ title: "dhtmlxGantt with Ruby on Rails"
 sidebar_label: "Ruby on Rails"
 ---
 
-dhtmlxGantt with Ruby on Rails 
-=========================
+# dhtmlxGantt with Ruby on Rails 
+
 
 In this article you'll learn how to create a Gantt chart with a [Ruby on Rails](https://rubyonrails.org/) backend.
 For implementing this app we'll use Ruby 2.4.1, Rails 5.1.3 and MySQL. This tutorial assumes that you have all prerequisites already installed. 
@@ -23,8 +23,8 @@ If you use some other technology, check the list of available integration varian
 
 Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-rails) on GitHub.
 
-Step 1. Creating a project
-------------------------
+## Step 1. Creating a project
+
 
 To add a new project just run the following command in the terminal:
 
@@ -33,8 +33,8 @@ rails new gantt-app -d mysql
 ~~~
 
 
-Step 2. Adding Gantt to the page
------------------------------------------
+## Step 2. Adding Gantt to the page
+
 
 Let's start with creating a controller and a default page for our application.
 Move to the application folder and generate a new controller with the *index* action:
@@ -121,8 +121,8 @@ You should get the following result:
 Thus you've got a Gantt chart where you can add tasks and modify them. But it lacks the saving ability.
 To provide it, we need to proceed with creating models.
 
-Step 3. Creating models
---------------
+## Step 3. Creating models
+
 
 Since we're using MySQL, make sure that you have correct connection settings in *config/database.yml*, for example:
 
@@ -194,8 +194,8 @@ Link.create :source=>1, :target=>2, :link_type=>"0";
 
 Next we need to implement data loading and saving in the chart with the help of controllers.
 
-Step 4. Loading data
--------------------
+## Step 4. Loading data
+
 
 After we've created model classes and run the migration, we can load the database data into our gantt. 
 
@@ -263,8 +263,8 @@ Note that [date_format](api/config/date_format.md) config specifies the [format 
 If you run the server now and open *http://localhost:3000/* in your browser, you should be able to see a gantt chart populated with tasks and links from the database.
 No changes would be posted back to the database, however. We're going to fix it in the next step.
 
-Step 5. Saving changes
---------------------
+## Step 5. Saving changes
+
 
 dhtmlxGantt can transmit all changes made by the user to the RESTful API on a backend, where everything can be saved to the database. 
 You can check the protocol details [here](guides/server-side.md#technique). 
@@ -609,21 +609,21 @@ class Task < ApplicationRecord
 end
 ~~~
 
-Application security
--------------------------
+## Application security
+
 
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and 
 CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](guides/app-security.md).
 
-Trouble shooting
------------------
+## Trouble shooting
+
 
 In case you've completed the above steps to implement Gantt integration with Ruby on Rails, but Gantt doesn't render tasks and links on a page, have a look at the [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) article. It describes 
 the ways of identifying the roots of the problems.
 
 
-What's next
-------------
+## What's next
+
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-rails), clone or download it and use it for your projects.
 

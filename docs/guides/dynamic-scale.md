@@ -3,8 +3,8 @@ title: "Dynamic Change of Scale Settings"
 sidebar_label: "Dynamic Change of Scale Settings"
 ---
 
-Dynamic Change of Scale Settings 
-=================================
+# Dynamic Change of Scale Settings 
+
 
 Changing the scale on-the-fly helps you to make a Gantt chart flexible - able to fit to the user's needs. 
 

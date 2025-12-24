@@ -3,8 +3,8 @@ title: "작업 유형"
 sidebar_label: "작업 유형"
 ---
 
-작업 유형
-==============
+# 작업 유형
+
 
 :::note
 이 기능은 PRO 에디션에서만 사용할 수 있습니다.
@@ -37,7 +37,7 @@ var data = {
 
 
 ## 일반 작업 {#regulartasks}
------------------
+
 
 기본적으로 dhtmlxGantt는 일반 작업(**type="task"**인 작업)을 생성합니다.
 
@@ -73,7 +73,7 @@ var data = {
 - 타임라인에서 숨길 수 있습니다. [자세히 보기](guides/milestones.md#hidingtasksandmilestones)
 
 ## 프로젝트 작업 {#projecttasks}
------------------
+
 
 프로젝트 작업은 가장 이른 자식 작업의 시작부터 가장 늦은 자식 작업의 종료까지의 기간을 가집니다.
 
@@ -117,7 +117,7 @@ var data = {
 :::
 
 ## 마일스톤 {#milestones}
---------------------------------------------------------
+
 
 [마일스톤](guides/milestones.md)은 기간이 0인 작업으로, 프로젝트의 주요 날짜를 강조할 때 사용됩니다([자세히 보기](guides/milestones.md)).
 
@@ -156,7 +156,7 @@ var data = {
 :::
 
 ## 작업 유형별 개별 라이트박스 {#specificlightboxpertasktype}
-----------------------------------------------
+
 
 각 작업 유형마다 고유한 속성이 있으므로, 세부 입력 폼(라이트박스)을 유형별로 개별 구성할 수 있습니다.
 구성 정보는 [lightbox](api/config/lightbox.md) 객체에 저장됩니다.
@@ -193,7 +193,7 @@ gantt.config.lightbox.milestone_sections= [
 라이트박스 구성에 대한 자세한 내용은 [편집 폼 구성하기](guides/edit-form.md) 챕터를 참고하세요.
 
 ## 사용자 정의 유형 생성 {#creatingacustomtype}
------------------------------------------------
+
 
 모든 작업 유형은 [types](api/config/types.md) 객체에 정의되어 있습니다.
 
@@ -276,7 +276,7 @@ gantt.templates.task_text = function(start, end, task){
 
 
 ## 작업 유형의 커스텀 표시 {#customdisplayoftasktypes}
------------------------------------------------------------------
+
 
 기존 작업 유형의 표시 방식을 변경하려면 [type_renderers](api/config/type_renderers.md) 옵션을 사용하세요. 이를 통해 작업 유형이 페이지에 렌더링되는 방식을 제어하는 함수를 오버라이드할 수 있습니다.
 

@@ -3,8 +3,8 @@ title: "Troubleshooting Backend Integration Issues"
 sidebar_label: "Troubleshooting Backend Integration Issues"
 ---
 
-Troubleshooting Backend Integration Issues
-==========================
+# Troubleshooting Backend Integration Issues
+
 
 ## Symptoms 
 

@@ -3,8 +3,8 @@ title: "Fehlerbehebung bei Backend-Integrationsproblemen"
 sidebar_label: "Fehlerbehebung bei Backend-Integrationsproblemen"
 ---
 
-Fehlerbehebung bei Backend-Integrationsproblemen
-==========================
+# Fehlerbehebung bei Backend-Integrationsproblemen
+
 
 ## Symptome
 

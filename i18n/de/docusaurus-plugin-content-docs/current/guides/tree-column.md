@@ -3,12 +3,12 @@ title: "Konfiguration der Baumspalte"
 sidebar_label: "Konfiguration der Baumspalte"
 ---
 
-Konfiguration der Baumspalte
-============================================
+# Konfiguration der Baumspalte
+
 Weitere Informationen zu verfügbaren baumbezogenen Methoden finden Sie im Artikel [Task Parent/Child](guides/task-tree-operations.md).
 
-Auf- und Zuklappen eines Aufgabenastes
---------------------------------------
+## Auf- und Zuklappen eines Aufgabenastes
+
 - Um einen Aufgabenast aufzuklappen, verwenden Sie die Methode [open](api/method/open.md):
 
 ~~~js
@@ -33,8 +33,8 @@ var data = {
 gantt.close("p_1"); /*!*/
 ~~~ 
 
-Mehrere Äste auf- oder zuklappen
---------------------------------
+## Mehrere Äste auf- oder zuklappen
+
 Wenn Sie mehrere Aufgabenäste gleichzeitig öffnen oder schließen möchten, können Sie am schnellsten den booleschen Wert (true für geöffnet, false für geschlossen) der *.$open*-Eigenschaft der jeweiligen Aufgaben zuweisen und anschließend das Gantt-Diagramm neu rendern.
 
 - Alle Aufgaben aufklappen:
@@ -59,8 +59,8 @@ gantt.render();
 Um einen Button hinzuzufügen, der alle Aufgaben gleichzeitig auf- oder zuklappt, siehe den Abschnitt [How to expand/collapse all tasks with a button](guides/how-to.md#howtoexpandcollapsealltaskswithabutton).
 :::
 
-Kinder einer Aufgabe abrufen
--------------------------------------------
+## Kinder einer Aufgabe abrufen
+
 Um die Kinder eines Aufgabenastes abzurufen, verwenden Sie die Methode [getChildren](api/method/getchildren.md):
 
 ~~~js
@@ -75,8 +75,8 @@ gantt.getChildren("p_1");//->["t_1"] /*!*/
 
 *Weitere baumbezogene Methoden finden Sie im Artikel [Task Parent/Child](guides/task-tree-operations.md).*
 
-Baum-Icons ändern
----------------------------------------------
+## Baum-Icons ändern
+
 ### Elternelemente
 Um das Icon für Elternelemente anzupassen, verwenden Sie das Template [grid_folder](api/template/grid_folder.md):
 
@@ -106,8 +106,8 @@ gantt.templates.grid_open = function(item) {
 };
 ~~~
 
-Einzug der Kinder in einem Ast festlegen
-------------------------------------------------
+## Einzug der Kinder in einem Ast festlegen
+
 Um den Einzug der Kindaufgaben innerhalb eines Astes anzupassen, verwenden Sie das Template [grid_indent](api/template/grid_indent.md), indem Sie die **width**-CSS-Eigenschaft ändern:
 
 ~~~js
@@ -116,8 +116,8 @@ gantt.templates.grid_indent="function(task){"
 };
 ~~~
 
-Checkboxen zu Baumknoten hinzufügen
-------------------------------------
+## Checkboxen zu Baumknoten hinzufügen
+
 Um Checkboxen (oder beliebigen anderen HTML-Inhalt) in Baumknoten einzufügen, verwenden Sie das Template [grid_blank](api/template/grid_blank.md):
 
 ~~~js
@@ -126,8 +126,8 @@ gantt.templates.grid_blank="function(task){"
 };
 ~~~
 
-Template für Baumknoten festlegen
----------------------------------------
+## Template für Baumknoten festlegen
+
 Um das Template für Baumknoten zu definieren, verwenden Sie das **template**-Attribut in der Eigenschaft [columns](api/config/columns.md). 
 
  Der Rückgabewert der **template**-Funktion wird als inneres HTML hinzugefügt, sodass jede HTML-Struktur verwendet werden kann.

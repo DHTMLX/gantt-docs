@@ -3,8 +3,8 @@ title: "Radio Button-Steuerelement"
 sidebar_label: "Radio Button-Steuerelement"
 ---
 
-Radio Button-Steuerelement
-==========================
+# Radio Button-Steuerelement
+
 
 Dieses Steuerelement präsentiert eine Auswahl von Optionen, bei der jeweils nur eine ausgewählt werden kann.
 
@@ -14,8 +14,8 @@ Dieses Steuerelement präsentiert eine Auswahl von Optionen, bei der jeweils nur
 [Radio control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
 
 
-Initialisierung
----------------
+## Initialisierung
+
 
 Um das **Radio Button**-Steuerelement in die Lightbox einzubinden, gehen Sie wie folgt vor:
 
@@ -45,8 +45,8 @@ gantt.locale.labels.section_priority = "Priority";
 [Radio control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
 
 
-Eigenschaften
--------------
+## Eigenschaften
+
 
 Hier sind einige der wichtigsten Eigenschaften, die häufig mit dem **Radio Button**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 
@@ -60,8 +60,8 @@ Hier sind einige der wichtigsten Eigenschaften, die häufig mit dem **Radio Butt
 - **default_value** - (*any*) der Standardwert für das Steuerelement, der nur angewendet wird, wenn der Eingabewert nicht definiert ist            
 
 
-Befüllen des Steuerelements mit Daten
--------------------------------------
+## Befüllen des Steuerelements mit Daten
+
 
 Um die Optionen für das **Radio Button**-Steuerelement festzulegen, verwenden Sie den [options](api/config/lightbox.md)-Parameter:
 

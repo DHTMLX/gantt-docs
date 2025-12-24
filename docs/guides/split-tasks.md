@@ -3,8 +3,8 @@ title: "Split Tasks"
 sidebar_label: "Split Tasks"
 ---
 
-Split Tasks 
-=================
+# Split Tasks 
+
 
 :::note
 This functionality is available in the PRO edition only.
@@ -149,8 +149,8 @@ gantt.attachEvent("onBeforeSplitTaskDisplay", function (id, task, parent) {
 });
 ~~~
 
-Styling
--------------------
+## Styling
+
 
 Split tasks are defined as subtasks of a parent item, and the light green bar in the background is a bar of that parent item, with additional styles applied.
 

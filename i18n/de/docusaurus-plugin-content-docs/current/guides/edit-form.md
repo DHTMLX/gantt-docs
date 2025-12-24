@@ -3,8 +3,8 @@ title: "Konfiguration des Bearbeitungsformulars"
 sidebar_label: "Konfiguration des Bearbeitungsformulars"
 ---
 
-Konfiguration des Bearbeitungsformulars
-=======================================
+# Konfiguration des Bearbeitungsformulars
+
 
 ![lightbox](/img/lightbox.png)
 

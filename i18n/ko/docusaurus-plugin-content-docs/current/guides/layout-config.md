@@ -3,8 +3,8 @@ title: "간트 레이아웃"
 sidebar_label: "간트 레이아웃"
 ---
 
-간트 레이아웃
-==============================
+# 간트 레이아웃
+
 
 버전 5.0부터 Gantt는 컴포넌트의 요소들을 레이아웃 내의 내부 뷰로 배치할 수 있는 커스터마이즈 가능한 레이아웃을 정의하는 기능을 지원합니다. 이 기능을 통해 추가 타임라인 및 그리드를 삽입하여, 다양한 방식으로 간트 차트의 구조를 유연하게 구성할 수 있습니다.
 
@@ -25,7 +25,7 @@ sidebar_label: "간트 레이아웃"
 
 
 ## 기본 레이아웃 {#defaultlayout}
-------------------
+
 
 레이아웃은 [gantt.config.layout](api/config/layout.md) 설정을 통해 제어됩니다. 아래는 기본 레이아웃 구성 예시입니다:
 
@@ -79,7 +79,7 @@ gantt.config.layout = {
 :::
 
 ## 스크롤바 {#scrollbar}
------------
+
 
 레이아웃 내의 스크롤바는 **"scrollbar"** 뷰로 정의됩니다. 수평 및 수직 스크롤바 모두 사용할 수 있습니다.
 
@@ -187,7 +187,7 @@ Grid 뷰 전용의 별도 수평 스크롤바도 지정할 수 있습니다. 관
 - [Gantt. Universal Layout configuration](https://snippet.dhtmlx.com/uqejdyqc)
 
 ## 레이아웃 커스터마이즈 {#layoutcustomization}
--------------------
+
 
 기본 레이아웃을 수정하여, Gantt 차트에 추가 뷰를 넣는 방식으로 원하는 레이아웃을 구성할 수 있습니다.
 
@@ -314,7 +314,7 @@ gantt.$container.classList.remove("no_resizers");
 ~~~
 
 ## HTML을 Inner View로 사용하기 {#htmlasinnerview}
-------------------------
+
 
 커스텀 HTML도 Gantt 레이아웃 내에서 inner view로 사용할 수 있습니다. 다음은 예시입니다:
 
@@ -340,7 +340,7 @@ gantt.config.layout = {
 
 
 ## 필수 뷰 및 설정 {#requiredviewsandsettings}
--------------------
+
 
 gantt 객체의 public API에는 [getTaskPosition](api/method/gettaskposition.md), [getTaskNode](api/method/gettasknode.md), [getScrollState](api/method/getscrollstate.md) 등 특정 레이아웃 뷰와 연결된 메서드가 포함되어 있습니다.
 
@@ -390,7 +390,7 @@ gantt.config.layout = {
 레이아웃에 원하는 만큼 추가 뷰를 넣을 수 있습니다.
 
 ## 뷰의 설정과 템플릿 {#configsandtemplatesofviews}
--------------------
+
 
 Grid와 Timeline 뷰는 전역 [gantt.config/gantt.templates](guides/common-configuration.md)에서 템플릿 및 설정을 사용합니다. 하지만, 레이아웃 레벨에서 특정 뷰에 대해 이를 오버라이드할 수 있습니다.
 
@@ -474,7 +474,7 @@ gantt.config.layout = {
 
 
 ## Visibility 그룹 {#visibilitygroups}
------------------
+
 
 특정 레이아웃 요소들의 표시 상태를 동기화해야 할 때가 있습니다. 예를 들어, 인접한 셀에 수평 스크롤바가 있다면, 두 스크롤바가 함께 표시되거나 숨겨지길 원할 수 있습니다.
 
@@ -560,7 +560,7 @@ gantt.config.layout = {
 ~~~
 
 ## Gantt 레이아웃 파트 크기 조정 {#sizingofganttlayoutparts}
-------------------------------
+
 
 Gantt 레이아웃 셀의 상대적인 크기는 각 셀 설정의 **gravity** 속성으로 제어할 수 있습니다. 이 값은 셀 간 크기 비율을 지정합니다.
 
@@ -634,7 +634,7 @@ gantt.config.layout = {
 
 
 ## 부모 레이아웃 뷰 숨기기 {#hidingparentlayoutviews}
------------------------
+
 
 레이아웃 뷰의 모든 자식 뷰가 보이지 않을 때, 해당 레이아웃 셀의 설정에 **hide_empty:true**를 지정하면 부모 뷰를 숨길 수 있습니다:
 
@@ -664,12 +664,12 @@ gantt.config.layout = {
 
 
 ## 뷰 전환 {#switchingbetweenviews}
--------------------------
+
 
 서로 다른 레이아웃 뷰를 전환하려면 [How to toggle grid/chart](guides/how-to.md#howtotogglegridchart) 및 [How to toggle the resource view](guides/how-to.md#howtotoggletheresourceview) 섹션을 참고하세요.
 
 ## 그리드 뷰에서 컬럼 고정 {#freezingcolumnsinthegridview}
------------------------------------
+
 
 Gantt 차트를 하나 이상의 고정 컬럼과 함께 초기화할 수 있습니다. 방법은 [How to freeze/fix columns in the grid](guides/how-to.md#howtofreezefixcolumnsinthegrid) 섹션에서 확인하세요.
 

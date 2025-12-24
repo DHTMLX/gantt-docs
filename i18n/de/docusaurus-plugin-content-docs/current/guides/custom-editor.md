@@ -3,8 +3,8 @@ title: "Erstellen eines benutzerdefinierten Elements"
 sidebar_label: "Erstellen eines benutzerdefinierten Elements"
 ---
 
-Erstellen eines benutzerdefinierten Elements
-===================================
+# Erstellen eines benutzerdefinierten Elements
+
 
 Um ein benutzerdefiniertes Steuerelement zum Lightbox-Dialog hinzuzufügen, definieren Sie ein neues Objekt wie folgt:
 

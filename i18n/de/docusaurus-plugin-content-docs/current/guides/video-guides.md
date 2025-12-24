@@ -3,8 +3,8 @@ title: "Videoanleitungen"
 sidebar_label: "Videoanleitungen"
 ---
 
-Videoanleitungen
-======
+# Videoanleitungen
+
 
 Dieser Artikel bietet einen kurzen Überblick über Videoanleitungen, die Ihnen helfen, Gantt besser zu verstehen. 
 

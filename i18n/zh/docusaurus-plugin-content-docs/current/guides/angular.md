@@ -3,8 +3,8 @@ title: "Angular Gantt"
 sidebar_label: "Angular Gantt"
 ---
 
-Angular Gantt
-==================
+# Angular Gantt
+
 
 :::note
 目前，DHTMLX Gantt 尚未提供原生的 Angular 组件。 但是，您仍然可以通过以下资料，轻松地将 DHTMLX Gantt 集成到您的 Angular 应用程序中。

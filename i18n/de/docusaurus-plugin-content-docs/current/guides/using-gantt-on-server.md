@@ -3,8 +3,8 @@ title: "Verwendung von Gantt auf dem Server"
 sidebar_label: "Node.js Gantt"
 ---
 
-Verwendung von Gantt auf dem Server
-=================================
+# Verwendung von Gantt auf dem Server
+
 
 Manchmal besteht die Notwendigkeit, die spezialisierte Logik von dhtmlxGantt unabhängig vom Gantt-Diagramm selbst zu nutzen, zum Beispiel:
 
@@ -16,15 +16,15 @@ Um diese Anwendungsfälle zu unterstützen, steht eine separate Version von dhtm
 
 DHTMLX Gantt für Node.js bietet die gleichen Funktionen wie die Commercial/Enterprise/Ultimate-Pakete, einschließlich Zugriff auf die **Gantt.getGanttInstance**-Methode zur Erstellung neuer Gantt-Instanzen.
 
-Nutzungsbedingungen
--------------------
+## Nutzungsbedingungen
+
 
 Das Node.js-Servermodul für DHTMLX Gantt ist ein Add-on zur Client-seitigen Version. Es kann gegen eine zusätzliche Gebühr beim Kauf von Gantt unter jeder kommerziellen Lizenz ([Individual](https://dhtmlx.com/docs/products/dhtmlxGantt/individual/), [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/commercial/), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/enterprise/)) hinzugefügt werden. Die [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/ultimate/)-Lizenz enthält dieses Modul standardmäßig.
 
 Wenn Sie bereits die Hauptbibliothek von dhtmlxGantt besitzen, kann das Node.js-Modul [separat erworben](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=58429) werden, und Sie erhalten einen Link zur serverseitigen Version.
 
-Versionierung
--------------------
+## Versionierung
+
 
 Das Node.js-Paket für dhtmlxGantt folgt dem gleichen Versionsschema wie die Browserpakete (z. B. ist v7.0.0 die erste Version für Node.js).
 
@@ -32,8 +32,8 @@ Das Node.js-Paket für dhtmlxGantt folgt dem gleichen Versionsschema wie die Bro
 Es wird empfohlen, auf Client- und Serverseite die gleiche Version der Gantt-Bibliotheken zu verwenden.
 :::
 
-Hinzufügen der Bibliothek zum Projekt
-----------------------------------
+## Hinzufügen der Bibliothek zum Projekt
+
 
 Das dhtmlxGantt für Node.js-Paket kann lokal installiert werden:
 
@@ -105,8 +105,8 @@ const gantt = Gantt.getGanttInstance({
 console.table(gantt.serialize());
 ~~~
 
-Einschränkungen
-------------
+## Einschränkungen
+
 
 Die Node.js-Version von dhtmlxGantt stellt die gleiche Kern-API wie die Browserversion zur Verfügung.
 

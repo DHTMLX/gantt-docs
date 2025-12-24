@@ -3,8 +3,8 @@ title: "Расширение Fullscreen"
 sidebar_label: "Расширение Fullscreen"
 ---
 
-Расширение Fullscreen
-========================
+# Расширение Fullscreen
+
 
 Более подробную информацию о расширении Fullscreen вы можете найти в статье [Полноэкранный режим](guides/fullscreen-mode.md#fullscreenapi). 
 

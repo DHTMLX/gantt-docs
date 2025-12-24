@@ -3,8 +3,8 @@ title: "dhtmlxGantt와 ASP.NET MVC"
 sidebar_label: "ASP.NET MVC"
 ---
 
-dhtmlxGantt와 ASP.NET MVC  
-===============================
+# dhtmlxGantt와 ASP.NET MVC  
+
 
 이 튜토리얼은 [ASP.NET](https://dotnet.microsoft.com/apps/aspnet)과 서버 측 REST API를 사용하여 Gantt 차트를 만드는 방법을 단계별로 안내합니다.
 
@@ -24,8 +24,8 @@ dhtmlxGantt와 ASP.NET MVC
 전체 소스 코드는 [GitHub에서 확인할 수 있습니다](https://github.com/DHTMLX/gantt-howto-dotnet).
 :::
 
-1단계. 프로젝트 생성
------------------------------
+## 1단계. 프로젝트 생성
+
 
 ### 새로운 Visual Studio 프로젝트 만들기
 
@@ -43,8 +43,8 @@ Visual Studio 2022를 실행한 후 *Create a new project*를 선택하세요.
 
 ![how_to_start_net_app](/img/how_to_start_net_app.png)
 
-2단계. 페이지에 Gantt 추가하기
---------------------------------
+## 2단계. 페이지에 Gantt 추가하기
+
 
 ### 컨트롤러 생성
 
@@ -156,8 +156,8 @@ dp.setTransactionMode("REST");
 ![adding_gantt](/img/adding_gantt.png)
 
 
-3단계. 모델 및 데이터베이스 생성
---------------------------------
+## 3단계. 모델 및 데이터베이스 생성
+
 
 ### 모델 생성
 
@@ -462,8 +462,8 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Step 4. Web API 구현
-------------------------------------------------
+## Step 4. Web API 구현
+
 
 ### REST API를 이용한 데이터 로딩의 일반적인 방법
 
@@ -712,8 +712,8 @@ namespace DHX.Gantt.Web.Controllers
 
 [완성된 데모는 GitHub에서 확인할 수 있습니다](https://github.com/DHTMLX/gantt-howto-dotnet).
 
-오류 처리
------------
+## 오류 처리
+
 
 [Exception filters](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98))를" 사용하면 CRUD 핸들러 내에서 발생하는 예외를 포착하여, 클라이언트 측 gantt가 [해석할 수 있는](guides/server-side.md#errorhandling) 응답을 전송할 수 있습니다.
 
@@ -970,20 +970,20 @@ namespace DHX.Gantt.Web.Models
 
 ~~~
 
-알려진 이슈
------------
+## 알려진 이슈
+
 
 IIS에서 앱을 실행할 때, HTTP PUT 및 DELETE 요청이 405 또는 401 오류를 반환할 수 있습니다. 이는 **WebDAV** 모듈이 RESTful 핸들러와 충돌하기 때문일 수 있습니다.
 
 일반적인 해결 방법은 **web.config** 파일에서 WebDAV 모듈을 비활성화하는 것입니다. 자세한 내용은 [여기](https://forums.iis.net/t/1166025.aspx)를 참고하세요.
 
-애플리케이션 보안
--------------------------
+## 애플리케이션 보안
+
 
 Gantt 자체는 SQL 인젝션, XSS, CSRF 공격과 같은 위협에 대한 보호를 처리하지 않습니다. 백엔드 구현 시 애플리케이션 보안을 보장하는 것은 개발자의 책임입니다. 자세한 내용은 [관련 문서](guides/app-security.md)에서 확인할 수 있습니다.
 
-문제 해결
------------------
+## 문제 해결
+
 
 ### ASP.NET Web Application 템플릿이 없음
 
@@ -1032,8 +1032,8 @@ namespace DHX.Gantt.Web.Models
 
 ASP.NET MVC와 Gantt를 통합한 후 작업과 링크가 렌더링되지 않는 경우, [백엔드 통합 문제 해결](guides/troubleshooting.md) 문서를 참고하세요. 잠재적 원인 파악에 도움이 됩니다.
 
-다음 단계
-------------
+## 다음 단계
+
 
 이제 gantt가 완전히 동작합니다. 전체 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet)에서 확인하거나 프로젝트에 복제/다운로드할 수 있습니다.
 

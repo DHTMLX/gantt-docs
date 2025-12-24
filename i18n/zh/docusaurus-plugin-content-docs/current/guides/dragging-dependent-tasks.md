@@ -3,13 +3,13 @@ title: "拖动任务及其依赖任务"
 sidebar_label: "拖动任务及其依赖任务"
 ---
 
-拖动任务及其依赖任务
-===========================
+# 拖动任务及其依赖任务
+
 
 有几种方式可以处理将任务与其依赖任务一起移动的情况。
 
-使用自动调度扩展
-------------------------
+## 使用自动调度扩展
+
 
 一种选择是使用 [자동 스케줄링](guides/auto-scheduling.md) 扩展。它会根据任务之间的关系自动调度任务。
 
@@ -27,17 +27,17 @@ gantt.plugins({
 gantt.config.auto_scheduling = true;
 ~~~
 
-手动移动任务
------------------------
+## 手动移动任务
 
-###章节目录
+
+### 章节目录
 
 - [获取所有关联任务](#linked_tasks)
 - [与主任务同步移动后代任务](#sync)
 - [在主任务移动完成后再移动后代任务](#after)
 
 
-###核心思路
+### 核心思路
 一种常见的拖动依赖任务的方式是:
 
 - 检测任务正在被移动
@@ -102,11 +102,11 @@ gantt.eachSuccessor = function(callback, root){
 
 在拖动主任务时，可以将其后代任务一起移动。也就是说，用户移动主任务时，所有依赖任务会同步移动。这种方式视觉上流畅，但如果涉及任务较多，可能会影响性能。
 
-####第1步
+#### 第1步
 
 首先，按照[获取所有关联任务](#linked_tasks)中的方法声明迭代器。
 
-####第2步
+#### 第2步
 
 接下来，绑定 [onTaskDrag](api/event/ontaskdrag.md) 事件的处理器。该事件会在每一帧拖动时触发，在此可以移动所有关联任务。
 
@@ -125,7 +125,7 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 });
 ~~~
 
-####第3步
+#### 第3步
 
 最后，当拖动结束，用户释放鼠标时，将子任务的位置对齐到时间刻度。这可以通过 [onAfterTaskDrag](api/event/onaftertaskdrag.md) 事件完成:
 
@@ -151,11 +151,11 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 
 思路是等待拖拽操作完成后，再计算主任务移动了多少天，然后将所有关联任务按此幅度移动。
 
-####第1步
+#### 第1步
 
 首先，按照前文[获取所有关联任务](#linked_tasks)的方法声明迭代器。
 
-####第2步
+#### 第2步
 
 当用户完成拖动时，捕获 [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) 事件。该事件会同时提供被移动任务的原始版本和修改后的版本，可以用来计算日期差。
 
@@ -178,7 +178,7 @@ gantt.attachEvent("onBeforeTaskChanged", function(id, mode, originalTask){
 });
 ~~~
 
-####第3步
+#### 第3步
 
 最后，使用 [onAfterTaskDrag](api/event/onaftertaskdrag.md) 事件，利用之前计算的 *diff* 更新所有依赖任务:
 

@@ -39,7 +39,7 @@ hinzugefügt in Version 4.1
 
 
 ## Eigenschaften des Konfigurationsobjekts {#configurationobjectproperties}
----------------------------------------
+
 
 Das Konfigurationsobjekt kann folgende Eigenschaften enthalten:
 

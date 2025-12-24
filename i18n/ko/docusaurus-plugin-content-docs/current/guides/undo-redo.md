@@ -3,8 +3,8 @@ title: "Undo/Redo 기능"
 sidebar_label: "Undo/Redo 기능"
 ---
 
-Undo/Redo 기능
-======================================
+# Undo/Redo 기능
+
 
 dhtmlxGantt 차트는 차트 내에서 이루어진 변경 사항을 되돌리기(Undo) 및 다시 실행(Redo)하는 기능을 지원합니다. 이 기능을 활성화하려면 [gantt.plugins](api/method/plugins.md) 메서드를 사용하여 **undo** 플러그인을 활성화하세요.
 
@@ -28,8 +28,8 @@ gantt.config.redo = true;
 [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 
-Undo/Redo API
-----------------------------
+## Undo/Redo API
+
 
 Gantt 차트에서 변경 사항을 되돌리려면 [undo](api/method/undo.md) 메서드를 사용하세요:
 
@@ -45,8 +45,8 @@ gantt.redo();
 
 버전 6.3부터는 **undo()/redo()** 메서드가 **gantt.ext.undo** 객체를 통해서도 접근 가능합니다. 자세한 내용은 [Undo Extension](guides/undo-ext.md) 문서를 참고하세요.
 
-저장된 Undo/Redo 작업 스택 가져오기
---------------------------------------------
+## 저장된 Undo/Redo 작업 스택 가져오기
+
 
 Gantt 차트에서의 사용자 동작은 명령 객체 배열로 저장됩니다. Gantt는 최근 실행된 명령들의 스택을 유지하며, **undo** 확장 기능이 이러한 명령을 처리하여 역작업을 수행합니다.
 
@@ -85,8 +85,8 @@ var stack = gantt.getRedoStack();
 
 버전 6.3부터는 **getUndoStack()/getRedoStack()** 메서드도 **gantt.ext.undo** 객체를 통해 사용할 수 있습니다. 자세한 내용은 [Undo Extension](guides/undo-ext.md) 문서를 참고하세요.
 
-저장된 Undo/Redo 명령 스택 비우기
-------------------------------
+## 저장된 Undo/Redo 명령 스택 비우기
+
 
 Gantt API의 해당 메서드를 사용하여 Undo/Redo 명령 스택을 비울 수 있습니다.
 
@@ -104,8 +104,8 @@ gantt.clearRedoStack();
 
 버전 6.3부터는 **clearUndoStack()/clearRedoStack()** 메서드도 **gantt.ext.undo** 객체를 통해 사용할 수 있습니다. 자세한 내용은 [Undo Extension](guides/undo-ext.md) 문서를 참고하세요.
 
-코드에서 이루어진 변경 사항 Undo/Redo 처리
----------------------------------
+## 코드에서 이루어진 변경 사항 Undo/Redo 처리
+
 
 코드로 변경된 내용을 Undo/Redo 하려면 **gantt.ext.undo** 객체의 **undo()/redo()** 메서드와 **saveState()** 메서드를 함께 사용해야 합니다.
 
@@ -140,8 +140,8 @@ console.log(task.text);
 
 **saveState()**에 대한 자세한 내용은 [Undo Extension](guides/undo-ext.md) 문서를 참고하세요.
 
-Undo 기능 설정하기
-----------------------------
+## Undo 기능 설정하기
+
 
 Undo 동작을 맞춤 설정할 수 있는 여러 설정이 있습니다.
 
@@ -172,8 +172,8 @@ gantt.config.undo_types = {
 };
 ~~~
 
-API 이벤트 목록
--------------------
+## API 이벤트 목록
+
 
 Undo/Redo 기능과 관련된 여러 이벤트가 있습니다:
 

@@ -3,8 +3,8 @@ title: "Templates of the 'Quick Info' Extension (Touch Support)"
 sidebar_label: "Templates of the 'Quick Info' Extension (Touch Support)"
 ---
 
-Templates of the 'Quick Info' Extension (Touch Support)
-===========================================================
+# Templates of the 'Quick Info' Extension (Touch Support)
+
 
 <table class="webixdoc_links">
   <tbody>

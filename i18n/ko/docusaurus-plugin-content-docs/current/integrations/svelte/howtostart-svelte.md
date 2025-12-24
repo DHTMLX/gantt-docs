@@ -3,8 +3,8 @@ title: "dhtmlxGantt와 Svelte 연동"
 sidebar_label: "Svelte"
 ---
 
-dhtmlxGantt와 Svelte 연동
-========================
+# dhtmlxGantt와 Svelte 연동
+
 
 이 가이드는 Svelte의 기본 개념과 패턴에 대한 이해를 전제로 합니다. 아직 익숙하지 않다면 [Svelte 공식 문서](https://svelte.dev/)에서 시작 가이드를 참고하세요.
 

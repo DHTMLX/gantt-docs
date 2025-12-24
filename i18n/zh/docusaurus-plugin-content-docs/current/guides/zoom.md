@@ -3,8 +3,8 @@ title: "Zoom 扩展"
 sidebar_label: "Zoom 扩展"
 ---
 
-Zoom 扩展
-==============
+# Zoom 扩展
+
 
 有关 Zoom 扩展的更多详细信息，请参阅 [줌(Zooming)](guides/zooming.md) 文章。本文档主要介绍 **zoom** 对象的 API 参考:
 

@@ -3,8 +3,8 @@ title: "Arbeitszeitberechnung"
 sidebar_label: "Arbeitszeitberechnung"
 ---
 
-Arbeitszeitberechnung
-========================
+# Arbeitszeitberechnung
+
 
 Standardmäßig berechnet dhtmlxGantt die Dauern von Aufgaben anhand der Kalenderzeit, das heißt, Wochenenden und Feiertage werden in die Gesamtdauer einbezogen.
 

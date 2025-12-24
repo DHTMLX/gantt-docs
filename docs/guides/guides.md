@@ -3,8 +3,8 @@ title: "Guides"
 sidebar_label: "Guides"
 ---
 
-Guides
-======
+# Guides
+
 
 The guidance information makes up the major part of the documentation and helps you in actual use of dhtmlxGantt.
 The chapter is divided into task-oriented manuals that assist you in performing tasks of various complexity.

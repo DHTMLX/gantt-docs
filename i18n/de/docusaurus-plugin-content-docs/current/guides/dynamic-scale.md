@@ -3,8 +3,8 @@ title: "Dynamische Änderung der Skalierungseinstellungen"
 sidebar_label: "Dynamische Änderung der Skalierungseinstellungen"
 ---
 
-Dynamische Änderung der Skalierungseinstellungen 
-=================================================
+# Dynamische Änderung der Skalierungseinstellungen 
+
 
 Die Möglichkeit, die Skalierung einer Gantt-Diagramm-Ansicht dynamisch anzupassen, macht das Diagramm flexibel und ermöglicht es, auf unterschiedliche Benutzeranforderungen einzugehen.
 

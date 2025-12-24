@@ -3,15 +3,15 @@ title: "Task Parent/Child"
 sidebar_label: "Task Parent/Child"
 ---
 
-Task Parent/Child
-=============================
+# Task Parent/Child
+
 
 Dieser Artikel behandelt Methoden, die mit der hierarchischen Struktur von Aufgaben im Gantt-Diagramm arbeiten.
 
 *Für grundlegende Operationen wie das Abrufen des Aufgabenobjekts oder der ID siehe den Artikel [Task Object/Id](guides/task-object-operations.md).*
 
-Elternelement einer Aufgabe
----------------------------------------
+## Elternelement einer Aufgabe
+
 Um das Elternelement einer Aufgabe zu finden, können Sie die Methode [getParent](api/method/getparent.md) verwenden oder auf die Eigenschaft "**parent**" des Aufgabenobjekts zugreifen:
 
 ~~~js
@@ -22,8 +22,8 @@ var taskParent = taskObj.parent;  //-> "pr_2"
 ~~~
 Beachten Sie, dass die Methode, falls die Aufgabe kein Elternelement hat, die [root id](api/config/root_id.md) zurückgibt.
 
-Kinder einer Aufgabe
---------------------------
+## Kinder einer Aufgabe
+
 Um die Kinder einer übergeordneten Aufgabe abzurufen, verwenden Sie die Methode [getChildren](api/method/getchildren.md):
 
 ~~~js
@@ -46,8 +46,8 @@ gantt.eachTask(function(child){
 }, 11);
 ~~~
 
-Prüfen, ob eine Aufgabe Kinder hat
-----------------------------------------
+## Prüfen, ob eine Aufgabe Kinder hat
+
 Um festzustellen, ob eine Aufgabe untergeordnete Aufgaben hat, verwenden Sie die Methode [hasChild](api/method/haschild.md):
 
 ~~~js
@@ -68,8 +68,8 @@ gantt.hasChild("p_1"); //-> true  /*!*/
 gantt.hasChild("t_1"); //-> false /*!*/
 ~~~
 
-Nächste Aufgabe im Baum
---------------------------------------
+## Nächste Aufgabe im Baum
+
 Um das Aufgabenobjekt zu erhalten, das nach einer bestimmten Aufgabe kommt, verwenden Sie die Methode [getNext](api/method/getnext.md):
 
 ~~~js
@@ -93,8 +93,8 @@ gantt.getNext("t_2"); -> null    /*!*/
 
 Beachten Sie, dass gantt Aufgaben unabhängig von ihrer Baumebene gleich behandelt.
 
-Vorherige Aufgabe im Baum
---------------------------------------
+## Vorherige Aufgabe im Baum
+
 Um das Aufgabenobjekt zu erhalten, das vor einer bestimmten Aufgabe kommt, verwenden Sie die Methode [getPrev](api/method/getprev.md):
 
 ~~~js
@@ -118,8 +118,8 @@ gantt.getPrev("t_2"); -> "t_1"   /*!*/
 
 Auch hier werden Aufgaben unabhängig von ihrer Baumebene betrachtet.
 
-Geschwister einer Aufgabe
----------------------------------------
+## Geschwister einer Aufgabe
+
 Um die Geschwister einer bestimmten Aufgabe zu erhalten, verwenden Sie die Methode [getSiblings](api/method/getsiblings.md):
 
 ~~~js
@@ -140,8 +140,8 @@ gantt.getSiblings("t_1"); ->  ["t_1", "t_2"] /*!*/
 ~~~
 
 
-Nächstes Geschwister einer Aufgabe
----------------------------------------
+## Nächstes Geschwister einer Aufgabe
+
 Um das nächste Geschwister einer Aufgabe zu finden, verwenden Sie die Methode [getNextSibling](api/method/getnextsibling.md):
 
 ~~~js
@@ -163,8 +163,8 @@ gantt.getNextSibling("t_2"); ->  null (wenn kein nächstes Geschwister vorhanden
 ~~~
 
 
-Vorheriges Geschwister einer Aufgabe
----------------------------------------
+## Vorheriges Geschwister einer Aufgabe
+
 Um das vorherige Geschwister einer Aufgabe zu erhalten, verwenden Sie die Methode [getPrevSibling](api/method/getprevsibling.md):
 
 ~~~js

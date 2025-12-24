@@ -3,8 +3,8 @@ title: "Third Party Licenses"
 sidebar_label: "Third Party Licenses"
 ---
 
-Third Party Licenses
-=====================================
+# Third Party Licenses
+
 
 This article contains Third Party Software Notices and/or Additional Terms and Conditions for licensed third party software components included within the DHTMLX Gantt library.
 
@@ -14,8 +14,8 @@ A compiled library **Bluebird** comes under the MIT license and is used in the J
 
 Additionally, we use some open source libraries such as **Node.js Express module, body_parser and strip_tags** in our samples (they can be found in the samples' package, backend/package.json). However, they are not part of the Gantt library and are only used for demonstration purposes.
 
-Components used in the core library of Gantt
---------------
+## Components used in the core library of Gantt
+
 
 ### Bluebird Promise Library
 
@@ -62,8 +62,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-Components used in the samples application
------------------------------------------------
+## Components used in the samples application
+
 
 ### body-parser
 

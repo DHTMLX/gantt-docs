@@ -3,8 +3,8 @@ title: "dhtmlxGantt с Salesforce LWC"
 sidebar_label: "Salesforce"
 ---
 
-dhtmlxGantt с Salesforce LWC
-===============================
+# dhtmlxGantt с Salesforce LWC
+
 
 В этом руководстве описывается, как интегрировать dhtmlxGantt в [Salesforce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide).
 
@@ -28,13 +28,13 @@ dhtmlxGantt с Salesforce LWC
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/1nXl9jfMdto" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Требования
--------------------
+## Требования
+
 
 Убедитесь, что [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) установлен. Если нет, воспользуйтесь [этой инструкцией](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm) для установки.
 
-Шаг 1. Создание проекта
-----------------------------
+## Шаг 1. Создание проекта
+
 
 Если у вас ещё нет аккаунта, создайте бесплатную учётную запись разработчика, [зарегистрировавшись](https://developer.salesforce.com/). Подробнее - в [этом руководстве](https://webkul.com/blog/create-free-developer-account-in-salesforce/).
 
@@ -84,8 +84,8 @@ $ sfdx project generate -n gantt-salesforce-app
 $ cd gantt-salesforce-app
 ~~~
 
-Шаг 2. Авторизация
-----------
+## Шаг 2. Авторизация
+
 
 Используйте Web Server Flow для [авторизации в организации](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm):
 
@@ -125,8 +125,8 @@ Done
 Your scratch org is ready.
 ~~~
 
-Шаг 3. Добавление Gantt в Salesforce
-------------
+## Шаг 3. Добавление Gantt в Salesforce
+
 
 Чтобы использовать библиотеку, её необходимо загрузить в Salesforce как Static Resource. Откройте ваш scratch org:
 
@@ -146,8 +146,8 @@ $ sfdx org open
 
 ![](/img/sf_gantt_in_sf.png)
 
-Шаг 4. Создание модели данных
--------------
+## Шаг 4. Создание модели данных
+
 
 Основные компоненты dhtmlxGantt - это задачи (Tasks) и связи (Links). Практичный способ их хранения - сохранять их свойства в формате JSON в Salesforce. Начните с создания пользовательских объектов для задач и связей. Перейдите в Object Manager, затем выберите "Create" и выберите "Custom Object":
 
@@ -256,8 +256,8 @@ Object Name: GanttLink => Record Name: GanttLink Name
 ![](/img/sf_ganttlink.png)
 
 
-Шаг 5. Создание Lightning Web Component
----------------------------------------------
+## Шаг 5. Создание Lightning Web Component
+
 
 Для создания Lightning Web Component выполните следующую команду:
 
@@ -458,8 +458,8 @@ export default class GanttView extends LightningElement {
 }
 ~~~
 
-Шаг 6. Создание Apex класса
-----------------------------------
+## Шаг 6. Создание Apex класса
+
 
 Далее создайте класс, который будет обеспечивать связь между Lightning компонентом и моделью данных.
 
@@ -509,8 +509,8 @@ $ sfdx project retrieve start
 $ sfdx project deploy start
 ~~~
 
-Шаг 7. Создание Lightning Page
----------------
+## Шаг 7. Создание Lightning Page
+
 
 Откройте "Lightning App Builder" и создайте новую Lightning Page.
 
@@ -549,19 +549,19 @@ $ sfdx project deploy start
 ![](/img/sf_final_page.png)
 
 
-Безопасность приложения
----------------------
+## Безопасность приложения
+
 
 Сам Gantt не содержит встроенных средств защиты от угроз, таких как SQL-инъекции, XSS или CSRF-атаки. За безопасность приложения отвечают разработчики, внедряющие его. Подробнее см. [в соответствующей статье](guides/app-security.md). Salesforce предоставляет мощные инструменты для защиты ваших данных и приложений. Вы также можете адаптировать подход к безопасности под структуру и требования вашей организации. Дополнительные рекомендации смотрите в [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm). Информация по защите Lightning компонентов доступна [здесь](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm).
 
-Устранение неполадок
----------------------
+## Устранение неполадок
+
 
 Если вы выполнили все шаги, но диаграмма Gantt не отображает задачи и связи на странице, обратитесь к статье [Решение проблем с интеграцией бэкенда](guides/troubleshooting.md). В ней описаны методы диагностики и устранения типовых проблем.
 
 
-Что дальше
-------------
+## Что дальше
+
 
 Когда Gantt полностью настроен, вы можете ознакомиться с полным кодом на [GitHub](https://github.com/DHTMLX/salesforce-gantt-demo), где его можно клонировать или скачать для поддержки ваших проектов.
 

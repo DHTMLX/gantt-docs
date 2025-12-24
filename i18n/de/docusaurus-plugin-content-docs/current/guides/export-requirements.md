@@ -3,8 +3,8 @@ title: "Exportdienst - Systemanforderungen für eine eigenständige Installation
 sidebar_label: "Exportdienst - Systemanforderungen für eine eigenständige Installation"
 ---
 
-Exportdienst - Systemanforderungen für eine eigenständige Installation
-=================================================
+# Exportdienst - Systemanforderungen für eine eigenständige Installation
+
 
 Die dhtmlxGantt-Bibliothek ermöglicht das Exportieren und Importieren von Daten aus dem Gantt-Diagramm über einen Online-Exportdienst.
 

@@ -3,8 +3,8 @@ title: "Konfiguration der Lightbox-Elemente"
 sidebar_label: "Konfiguration der Lightbox-Elemente"
 ---
 
-Konfiguration der Lightbox-Elemente 
-====================================
+# Konfiguration der Lightbox-Elemente 
+
 
 Die Lightbox dient als Bearbeitungsformular zur Aktualisierung von Aufgabendetails. 
 
@@ -33,8 +33,8 @@ Die generelle Struktur der Typen ist wie folgt:
 Ab Version v7.1.13, wenn entweder [gantt.config.csp](api/config/csp.md) auf *true* gesetzt ist oder Gantt in einer Salesforce-Umgebung ausgeführt wird, wird die Lightbox innerhalb des Gantt-Containers gerendert.
 :::
 
-Lightbox-Struktur
-------------------------
+## Lightbox-Struktur
+
 
 ### Abschnitte
 

@@ -3,8 +3,8 @@ title: "Svelte Gantt"
 sidebar_label: "Svelte Gantt"
 ---
 
-Svelte Gantt
-==================
+# Svelte Gantt
+
 
 :::note
 현재 DHTMLX Gantt를 위한 전용 Svelte 컴포넌트는 제공되지 않습니다.

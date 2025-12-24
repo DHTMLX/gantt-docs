@@ -3,20 +3,20 @@ title: "Abrufen des Link-Objekts/der Link-ID"
 sidebar_label: "Abrufen des Link-Objekts/der Link-ID"
 ---
 
-Abrufen des Link-Objekts/der Link-ID
-============================================
+# Abrufen des Link-Objekts/der Link-ID
+
 Beim Arbeiten mit Links im Gantt-Diagramm ist es wichtig zu verstehen, wie man auf das Link-Objekt oder die Link-ID zugreift. Die meisten Methoden erfordern das Link-Objekt (oder die ID) als Eingabeparameter. Zusätzlich müssen benutzerdefinierte, linkbezogene Szenarien auf das Link-Objekt oder die Link-ID referenzieren, um korrekt zu funktionieren.
 
-Abrufen des Link-Objekts
---------------------------
+## Abrufen des Link-Objekts
+
 Um ein Link-Objekt abzurufen, verwenden Sie die Methode [getLink](api/method/getlink.md):
 
 ~~~js
 gantt.getLink("link1");                //-> {id:"link1", source:1, target:2, type:1}
 ~~~
 
-Abrufen aller Links aus dem Gantt-Diagramm 
-------------------------------------------------
+## Abrufen aller Links aus dem Gantt-Diagramm 
+
 Um alle aktuell im Diagramm angezeigten Links zu erhalten, verwenden Sie die Methode [getLinks](api/method/getlinks.md) wie folgt:
 
 ~~~js
@@ -25,8 +25,8 @@ var links = gantt.getLinks();
 
 Dies gibt ein Array zurück, das alle Link-Objekte enthält.
 
-Abrufen der Links, die mit einer bestimmten Aufgabe verbunden sind
-------------------------------------------
+## Abrufen der Links, die mit einer bestimmten Aufgabe verbunden sind
+
 Um die Links zu finden, die mit einer bestimmten Aufgabe verknüpft sind, prüfen Sie die Eigenschaften **$source** und **$target** des Aufgabenobjekts.
 
 Diese Eigenschaften werden automatisch generiert und enthalten die IDs der zugehörigen Links:
@@ -66,8 +66,8 @@ target.forEach(function(linkId) {
 });
 ~~~
 
-Abrufen der Link-ID
---------------------------
+## Abrufen der Link-ID
+
 In der Regel befindet sich die ID eines Links im *links*-Objekt des Datensatzes.
 
 ~~~js
@@ -93,8 +93,8 @@ for(var i="0;" i < links.length; i++){                             // iteriert �
 };
 ~~~
 
-Ändern der Link-ID
--------------------------------
+## Ändern der Link-ID
+
 Um die ID eines bestehenden Links zu aktualisieren, verwenden Sie die Methode [changeLinkId](api/method/changelinkid.md):
 
 ~~~js

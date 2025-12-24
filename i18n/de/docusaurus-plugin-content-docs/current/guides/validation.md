@@ -3,15 +3,15 @@ title: "Validierung"
 sidebar_label: "Validierung"
 ---
 
-Validierung
-====================
+# Validierung
+
 
 Die Validierung stellt sicher, dass die von Benutzern eingegebenen Daten korrekt sind und verhindert das Speichern falscher Werte. Sie kann beispielsweise verhindern, dass zwei Aufgaben zur gleichen Zeit derselben Person zugewiesen werden.
 
 In der Regel erfolgt die Datenvalidierung mithilfe von Ereignissen aus der [dhtmlxGantt API](api/overview/events-overview.md), um die eingegebenen Daten abzufangen und auf Korrektheit zu prüfen:
 
-Clientseitige Validierung
---------------------------
+## Clientseitige Validierung
+
 
 Die folgenden Ereignisse sind besonders wichtig und werden häufig zur Validierung von Daten verwendet:
 
@@ -42,8 +42,8 @@ gantt.attachEvent("onLightboxSave", function(id, item){
 [Validate lightbox values](https://docs.dhtmlx.com/gantt/samples/05_lightbox/03_validation.html)
 
 
-Serverseitige Validierung
------------------------------
+## Serverseitige Validierung
+
 
 Eine Einschränkung des oben beschriebenen Ansatzes besteht darin, dass das Ereignis nicht ausgelöst wird, wenn Änderungen durch Inline-Bearbeitung oder durch das Verschieben von Aufgaben im Gantt-Diagramm vorgenommen werden.
 

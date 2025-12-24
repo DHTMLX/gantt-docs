@@ -3,8 +3,8 @@ title: "导出/导入 Excel，导出 iCal"
 sidebar_label: "导出/导入 Excel，导出 iCal"
 ---
 
-导出/导入 Excel，导出 iCal
-==============================
+# 导出/导入 Excel，导出 iCal
+
 
 dhtmlxGantt 库支持将甘特图数据导出为 Excel 和 iCal 格式。同时也支持从 Excel 文件导入数据到甘特图中。
 
@@ -17,8 +17,8 @@ dhtmlxGantt 库支持将甘特图数据导出为 Excel 和 iCal 格式。同时�
 请注意，这些导出服务未随 Gantt 包一起提供。
 更多详情请参阅[相关文档](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)以了解使用条款。
 
-在线导出服务限制
------------------------------
+## 在线导出服务限制
+
 
 :::note
 导出服务对处理时间和请求大小有限制。
@@ -42,8 +42,8 @@ Error: Timeout trigger 20 seconds
 [Primavera P6](guides/export-primavera.md)
 的导出/导入服务（*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。该端点最大请求大小为 **40 MB**。
 
-使用导出模块
----------------------
+## 使用导出模块
+
 
 :::note
 如需导出大型甘特图，建议使用[独立导出模块](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
@@ -52,8 +52,8 @@ Error: Timeout trigger 20 seconds
 
 关于 PDF 导出模块的使用详情请参考:[PDF 导出模块](guides/pdf-export-module.md)。该模块支持导出为 PDF、PNG、Excel 和 iCal 格式。
 
-导出为 Excel
--------------------
+## 导出为 Excel
+
 
 要将甘特图数据导出为 Excel 文件，请执行以下步骤:
 
@@ -189,8 +189,8 @@ gantt.exportToExcel({
 **Related example:** [导出任务颜色](https://snippet.dhtmlx.com/t2znjrfj)
 
 
-从 Excel 导入
--------------------
+## 从 Excel 导入
+
 
 由于不支持自动将任意 Excel 列映射到甘特图数据模型，导出服务会将 Excel 文档转换为 JSON 格式的行数组返回。
 将该数据转换为甘特图格式需由开发者自行处理。
@@ -274,8 +274,8 @@ gantt.importFromExcel({
 ~~~
 
 
-导出为 iCal
--------------------
+## 导出为 iCal
+
 
 要将甘特图数据导出为 iCal 字符串，请执行以下步骤:
 

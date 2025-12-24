@@ -3,8 +3,8 @@ title: "라디오 버튼 컨트롤"
 sidebar_label: "라디오 버튼 컨트롤"
 ---
 
-라디오 버튼 컨트롤
-=============
+# 라디오 버튼 컨트롤
+
 
 이 컨트롤은 한 번에 하나만 선택할 수 있는 여러 옵션을 제공합니다.
 
@@ -14,8 +14,8 @@ sidebar_label: "라디오 버튼 컨트롤"
 [Radio control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
 
 
-초기화
-----------------
+## 초기화
+
 
 라이트박스에 **radio button** 컨트롤을 포함하려면 다음과 같이 설정합니다:
 
@@ -46,8 +46,8 @@ gantt.locale.labels.section_priority = "Priority";
 
 
 
-속성
--------------
+## 속성
+
 
 **radio button** 컨트롤에서 자주 사용되는 주요 속성은 다음과 같습니다 (전체 목록은 [여기](api/config/lightbox.md)에서 확인할 수 있습니다):
 
@@ -61,8 +61,8 @@ gantt.locale.labels.section_priority = "Priority";
 - **default_value** - (*any*) 입력값이 정의되지 않았을 때 적용되는 기본값            
 
 
-컨트롤에 데이터 채우기
--------------------------------
+## 컨트롤에 데이터 채우기
+
 
 **radio button** 컨트롤의 옵션을 지정하려면 [options](api/config/lightbox.md) 파라미터를 사용합니다:
 

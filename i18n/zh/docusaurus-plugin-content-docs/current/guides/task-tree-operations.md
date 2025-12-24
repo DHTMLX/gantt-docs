@@ -3,15 +3,15 @@ title: "任务的父子关系"
 sidebar_label: "任务的父子关系"
 ---
 
-任务的父子关系
-=============================
+# 任务的父子关系
+
 
 本文介绍了处理甘特图中任务层级结构的方法。
 
 *如需了解获取任务对象或ID等基本操作，请参考 [Task Object/Id](guides/task-object-operations.md) 文章。*
 
-任务的父任务
----------------------------------------
+## 任务的父任务
+
 要查找某个任务的父任务，可以使用 [getParent](api/method/getparent.md) 方法，或者访问任务对象的 "**parent**" 属性:
 
 ~~~js
@@ -22,8 +22,8 @@ var taskParent = taskObj.parent;  //-> "pr_2"
 ~~~
 请注意，如果任务没有父任务，该方法会返回 [root id](api/config/root_id.md)。
 
-任务的子任务
---------------------------
+## 任务的子任务
+
 要获取某个分支任务的子任务，可以使用 [getChildren](api/method/getchildren.md) 方法:
 
 ~~~js
@@ -46,8 +46,8 @@ gantt.eachTask(function(child){
 }, 11);
 ~~~
 
-检查任务是否有子任务
-----------------------------------------
+## 检查任务是否有子任务
+
 要判断某个任务是否有子任务，可以使用 [hasChild](api/method/haschild.md) 方法:
 
 ~~~js
@@ -68,8 +68,8 @@ gantt.hasChild("p_1"); //-> true  /*!*/
 gantt.hasChild("t_1"); //-> false /*!*/
 ~~~
 
-树中的下一个任务
---------------------------------------
+## 树中的下一个任务
+
 要获取某个任务之后的任务对象，可以使用 [getNext](api/method/getnext.md) 方法:
 
 ~~~js
@@ -93,8 +93,8 @@ gantt.getNext("t_2"); -> null    /*!*/
 
 请注意，gantt 无论任务的树层级如何，都会以相同方式处理任务。
 
-树中的上一个任务
---------------------------------------
+## 树中的上一个任务
+
 要获取某个任务之前的任务对象，可以使用 [getPrev](api/method/getprev.md) 方法:
 
 ~~~js
@@ -118,8 +118,8 @@ gantt.getPrev("t_2"); -> "t_1"   /*!*/
 
 同样，任务的处理不考虑其在树中的层级。
 
-任务的同级任务（兄弟任务）
----------------------------------------
+## 任务的同级任务（兄弟任务）
+
 要获取某个任务的兄弟任务，可以使用 [getSiblings](api/method/getsiblings.md) 方法:
 
 ~~~js
@@ -139,8 +139,8 @@ gantt.parse(data);
 gantt.getSiblings("t_1"); ->  ["t_1", "t_2"] /*!*/
 ~~~
 
-任务的下一个同级任务
----------------------------------------
+## 任务的下一个同级任务
+
 要查找某个任务的下一个同级任务，可以使用 [getNextSibling](api/method/getnextsibling.md) 方法:
 
 ~~~js
@@ -161,8 +161,8 @@ gantt.getNextSibling("t_1"); ->  "t_2" /*!*/
 gantt.getNextSibling("t_2"); ->  null (如果没有下一个同级任务) /*!*/
 ~~~
 
-任务的上一个同级任务
----------------------------------------
+## 任务的上一个同级任务
+
 要获取某个任务的上一个同级任务，可以使用 [getPrevSibling](api/method/getprevsibling.md) 方法:
 
 ~~~js

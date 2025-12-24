@@ -3,8 +3,8 @@ title: "Export to PDF and PNG"
 sidebar_label: "Export to PDF and PNG"
 ---
 
-Export to PDF and PNG
-==================================
+# Export to PDF and PNG
+
 
 dhtmlxGantt provides an online export service that will allow you to export the Gantt chart into the [PDF](guides/export.md#export-to-pdf) or 
 [PNG](guides/export.md#export-to-png) format.
@@ -19,8 +19,8 @@ There are several export services available. You can install them on your comput
 Note that export services are not included into the Gantt package, 
 read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
-Online export service restrictions
------------------------------
+## Online export service restrictions
+
 
 :::note
 The export service has time and request size restrictions.
@@ -44,8 +44,8 @@ There is also a separate API endpoint `https://export.dhtmlx.com/gantt/project` 
 [Primavera P6](guides/export-primavera.md) 
 export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
 
-Using export modules
----------------------
+## Using export modules
+
 
 :::note
 If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
@@ -54,8 +54,8 @@ The export module is provided free of charge if you've obtained Gantt under [Com
 
 [Read more on the usage of the export module for PDF](guides/pdf-export-module.md).
 
-Export to PDF
------------------------------
+## Export to PDF
+
 
 To export Gantt chart as a PDF document, do the following steps:
 
@@ -93,8 +93,8 @@ If you use the Gantt version older than 8.0, you need to include the `https://ex
 **Related sample**: [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
 
-Export to PNG
------------------------------
+## Export to PNG
+
 
 To export Gantt chart as a PNG image, do the following steps:
 
@@ -130,8 +130,8 @@ If you use the Gantt version older than 8.0, you need to include the `https://ex
 **Related sample**: [Export data from Gantt](https://docs.dhtmlx.com/gantt/samples/08_api/06_export.html)
 
 
-Parameters of the export methods
-----------------------------------------------------------
+## Parameters of the export methods
+
 
 The [exportToPDF](api/method/exporttopdf.md) and [exportToPNG](api/method/exporttopng.md) methods take as a parameter the same object with a number of properties (all of the properties are optional):
 
@@ -251,8 +251,8 @@ gantt.exportToPDF({
 ~~~
 
 
-Data to export
------------------
+## Data to export
+
 
 To set the tasks that should be presented in the output PDF or PNG file, use one of the following ways:
 

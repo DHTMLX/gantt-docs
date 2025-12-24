@@ -3,8 +3,8 @@ title: "데이터 내보내기 및 가져오기"
 sidebar_label: "데이터 내보내기 및 가져오기"
 ---
 
-데이터 내보내기 및 가져오기
-=============================
+# 데이터 내보내기 및 가져오기
+
 ((index
 - [Export to PDF and PNG](guides/export.md)
 - [Export/Import for Excel, Export to iCal](guides/excel.md)

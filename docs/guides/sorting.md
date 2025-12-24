@@ -3,8 +3,8 @@ title: "Sorting Columns"
 sidebar_label: "Sorting Columns"
 ---
 
-Sorting Columns
-=================================
+# Sorting Columns
+
 
 dhtmlxGantt allows you to sort data in the columns of the grid (on the client side). 
 
@@ -18,8 +18,8 @@ There are 2 ways you can provide sorting in the grid:
 Please note that Gantt can only sort tasks by values from data and doesn't sort values set by the template attribute of a column.
 :::
 
-Sorting by a click on the header
---------------------------------------------
+## Sorting by a click on the header
+
 
 Once the user clicks on the header, the Gantt chart starts to display a special control indicating which column the table is currently sorted by and the direction of this sorting (ascending or descending).
 Each next click on the same header will reverse the sorting direction.
@@ -37,8 +37,8 @@ gantt.init("gantt_here");
 [Built-in sorting](https://docs.dhtmlx.com/gantt/samples/07_grid/01_builtin_sorting.html)
 
 
-Programmatic sorting
------------------------
+## Programmatic sorting
+
 
 To sort the grid on some action or event (i.e. button click or page load), call the [sort](api/method/sort.md) method.
 
@@ -56,8 +56,8 @@ To sort the grid on some action or event (i.e. button click or page load), call 
 [Using sorting methods](https://docs.dhtmlx.com/gantt/samples/07_grid/05_sort_api.html)
 
 
-Custom sorting functions
--------------------------------------------------
+## Custom sorting functions
+
 
 To apply a custom sorting function to the grid, call the [sort](api/method/sort.md) method with the name of your custom function as the first (and only) parameter.
 
@@ -129,8 +129,8 @@ gantt.config.columns[1].sort = 'other_field';
 ~~~
 
 
-Sorting by several fields
----------------------
+## Sorting by several fields
+
 
 You can sort the grid of the Gantt chart by several properties (fields) by using a custom sorting function. 
 In the following example, data is sorted by the *duration* and *priority* fields:

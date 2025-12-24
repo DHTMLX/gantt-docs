@@ -41,8 +41,8 @@ If the [work_time](api/config/work_time.md) option is disabled, the method retur
 - Besides, the method can be called directly from a [calendar object](api/other/calendar.md).
 
 
-Configuration object properties
----------------------------------------
+## Configuration object properties
+
 
 The configuration object can contain the following properties:
 

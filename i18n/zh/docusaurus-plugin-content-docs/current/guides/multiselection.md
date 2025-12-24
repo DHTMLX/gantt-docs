@@ -3,15 +3,15 @@ title: "多任务选择"
 sidebar_label: "多任务选择"
 ---
 
-多任务选择
-===========================================
+# 多任务选择
+
 
 从 3.2 版本开始，库中新增了 **multiselect** 扩展，允许您同时选择多个任务。
 
 <div style="text-align:center;">![multiselection](/img/multiselection.png)</div>
 
-启用多任务选择
---------------------------------------
+## 启用多任务选择
+
 要为任务启用多任务选择，请通过 [gantt.plugins](api/method/plugins.md) 方法激活该功能:
 
 ~~~js
@@ -42,8 +42,8 @@ sidebar_label: "多任务选择"
 gantt.config.multiselect = false; 
 ~~~
 
-一次性批量更新多个任务
---------------------------------
+## 一次性批量更新多个任务
+
 要同时修改多个任务或链接，请使用 [batchUpdate](api/method/batchupdate.md) 方法:
 
 ~~~js
@@ -63,8 +63,8 @@ gantt.batchUpdate(function () {
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-遍历器
-------------------------
+## 遍历器
+
 要遍历甘特图中所有被选中的任务，请使用 [eachSelectedTask](api/method/eachselectedtask.md) 方法:
 
 ~~~js
@@ -80,16 +80,16 @@ gantt.batchUpdate(function () {
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-同时缩进/取消缩进
--------------------------------------
+## 同时缩进/取消缩进
+
 通过多任务选择，您可以一次性对多个任务执行操作。例如，您可以对任务进行缩进或取消缩进，将其变为子任务或将子任务提升为主任务。
 
 
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-检查任务是否被选中
--------------------------------------
+## 检查任务是否被选中
+
 要判断某个任务当前是否被选中，请使用 [isSelectedTask](api/method/isselectedtask.md) 方法:
 
 ~~~js
@@ -111,8 +111,8 @@ gantt.toggleTaskSelection("t_1"); //"t_1" 是任务的 id
 gantt.render();
 ~~~
 
-获取所有被选中的任务
------------------------------------
+## 获取所有被选中的任务
+
 要获取当前所有被选中的任务，请使用 [getSelectedTasks](api/method/getselectedtasks.md) 方法:
 
 ~~~js
@@ -125,8 +125,8 @@ gantt.getSelectedTasks();
 gantt.getLastSelectedTask();
 ~~~
 
-限制同一层级的多任务选择
------------------------------------------------
+## 限制同一层级的多任务选择
+
 如果您希望只允许选择同一层级的任务，请使用 [multiselect_one_level](api/config/multiselect_one_level.md) 选项:
 
 ~~~js
@@ -148,8 +148,8 @@ gantt.config.drag_multiple = true;
 [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-单击打开编辑器
-------------------------------
+## 单击打开编辑器
+
 
 在单选模式下，点击任务会立即打开内联编辑器。
 
@@ -166,8 +166,8 @@ gantt.plugins({
 gantt.config.inline_editors_multiselect_open = true;
 ~~~
 
-API 事件
---------------
+## API 事件
+
 
 启用多任务选择后，选择一个或多个任务会同时触发通用的 [onTaskSelected](api/event/ontaskselected.md) / [onTaskUnselected](api/event/ontaskunselected.md) 事件，以及 multiselect 扩展专用事件。
 

@@ -3,8 +3,8 @@ title: "Export Module for MS Project"
 sidebar_label: "Export Module for MS Project"
 ---
 
-Export Module for MS Project
-=================================
+# Export Module for MS Project
+
 
 This export module can import/export MS Project and Primavera files. It is a .NET Core application that you can run inside the dotnet environment 
 or inside the docker image.

@@ -3,8 +3,8 @@ title: "Vorlagen der 'Quick Info'-Erweiterung (Touch-Unterstützung)"
 sidebar_label: "Vorlagen der 'Quick Info'-Erweiterung (Touch-Unterstützung)"
 ---
 
-Vorlagen der 'Quick Info'-Erweiterung (Touch-Unterstützung)
-===========================================================
+# Vorlagen der 'Quick Info'-Erweiterung (Touch-Unterstützung)
+
 
 <table class="webixdoc_links">
   <tbody>

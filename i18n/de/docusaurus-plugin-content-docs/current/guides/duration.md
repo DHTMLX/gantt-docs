@@ -3,8 +3,8 @@ title: "Dauersteuerung"
 sidebar_label: "Dauersteuerung"
 ---
 
-Dauersteuerung
-======================
+# Dauersteuerung
+
 
 In diesem Abschnitt wird eine Gruppe von Selektoren vorgestellt, mit denen Sie die Dauer einer Aufgabe festlegen können, indem Sie das Startdatum und die Anzahl der Tage angeben.
 
@@ -21,8 +21,8 @@ gantt.config.lightbox.sections="["
 [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
-Initialisierung
----------------------------
+## Initialisierung
+
 
 Standardmäßig enthält das Lightbox-Formular ein **duration**-Steuerelement. Um weitere hinzuzufügen, gehen Sie wie folgt vor:
 
@@ -43,8 +43,8 @@ gantt.locale.labels.section_time2 = "Tatsächliche Dauer";
 ~~~
 
 
-Eigenschaften
-------------------------
+## Eigenschaften
+
 
 Hier sind die wichtigsten Eigenschaften, die häufig mit dem **time**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 
@@ -63,8 +63,8 @@ Hier sind die wichtigsten Eigenschaften, die häufig mit dem **time**-Steuerelem
 
   
 
-Konfiguration der Datums-/Zeitselektoren
----------------------------------------
+## Konfiguration der Datums-/Zeitselektoren
+
 
 Die Selektoren im Abschnitt "Zeitspanne" können mit der Eigenschaft [time_format](api/config/lightbox.md) angepasst werden (siehe auch [Date Format Specification](guides/date-format.md)):
 
@@ -98,8 +98,8 @@ time_format:["%H:%i", "%m", "%d"]
 time_format:["%H:%i", "%M", "%d", "%Y"] // "%m" durch "%M" ersetzt
 ~~~
 
-Zuordnung zu benutzerdefinierten Start-/Enddatumseigenschaften
--------------------------------------------------
+## Zuordnung zu benutzerdefinierten Start-/Enddatumseigenschaften
+
 
 ### Standardzuordnung
 
@@ -133,8 +133,8 @@ Wenn eine Eigenschaft ausgelassen wird, verwendet das Steuerelement die zugehör
 :::
 
 
-Sichtbarkeit der Section umschalten
---------------------------
+## Sichtbarkeit der Section umschalten
+
 
 Sie können die Sichtbarkeit der Dauer-Section umschalten, indem Sie **type:"duration_optional"** und **button: true** in der Lightbox-Section-Konfiguration setzen:
 

@@ -3,8 +3,8 @@ title: "dhtmlxGantt with dhtmlxConnector"
 sidebar_label: "dhtmlxGantt with dhtmlxConnector"
 ---
 
-dhtmlxGantt with dhtmlxConnector 
-================================
+# dhtmlxGantt with dhtmlxConnector 
+
 
 This tutorial will teach you how to create a basic Gantt chart on a page that will be able to save and update tasks in the database (i.e. on the server).
 
@@ -351,8 +351,8 @@ $gantt->enable_log("log.txt"); /*!*/
 
 After that, you can view logs in the **log.txt** file.
 
-What's Next?
------------------------------------------------------------
+## What's Next?
+
 That's all. A basic but functional Gantt chart that can load data from the database and save it back is ready.
 Now you may configure and customize it to meet all your needs.
 

@@ -3,8 +3,8 @@ title: "dhtmlxGantt와 Python"
 sidebar_label: "Python"
 ---
 
-dhtmlxGantt와 Python
-=====================
+# dhtmlxGantt와 Python
+
 
 이 가이드는 Django 4 프레임워크와 RESTful API를 백엔드로 사용하여 Python 기반의 Gantt 차트를 만드는 과정을 안내합니다.
 
@@ -22,16 +22,16 @@ dhtmlxGantt와 Python
 전체 소스 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-django)에서 확인할 수 있습니다.
 :::
 
-사전 준비
------------------
+## 사전 준비
+
 
 Django가 아직 설치되지 않았다면, 아래 설치 가이드를 참고하세요:
 
 - [Windows 설치](https://docs.djangoproject.com/en/4.0/howto/windows/)
 - [Linux 설치](https://linuxhint.com/install_django_ubuntu/)
 
-1단계. 프로젝트 초기화
------------------------
+## 1단계. 프로젝트 초기화
+
 
 프로젝트 폴더를 연 뒤, 아래 명령어로 새 Django 프로젝트를 생성하세요:
 
@@ -55,8 +55,8 @@ python manage.py runserver
 
 ![start_page](/img/howtostart_django_startpage.png)
 
-2단계. 페이지에 Gantt 추가하기
------------------------
+## 2단계. 페이지에 Gantt 추가하기
+
 
 먼저 Gantt 컴포넌트를 위한 새 앱을 만듭니다:
 
@@ -177,8 +177,8 @@ python manage.py runserver
 
 ![init_gantt](/img/howtostart_django_initpage.png)
 
-3단계. 데이터 불러오기
----------------------
+## 3단계. 데이터 불러오기
+
 
 *gantt_rest_python/settings.py*에서 `'rest_framework'`와 `'gantt.apps.GanttConfig'`를 `INSTALLED_APPS` 목록에 추가하고 REST framework 옵션을 설정하세요:
 
@@ -370,8 +370,8 @@ gantt.load("/data/", "json");
 
 ![gantt](/img/howtostart_django_gantt.png)
 
-4단계. 변경사항 저장하기
--------------------
+## 4단계. 변경사항 저장하기
+
 
 변경사항 저장을 위해 *gantt/views.py*에 `POST`, `PUT`, `DELETE` 메서드 지원을 추가하세요:
 
@@ -616,18 +616,18 @@ dp.setTransactionMode("REST");
 
 ![sort_order](/img/howtostart_django_sortorder.png)
 
-애플리케이션 보안
--------------------------
+## 애플리케이션 보안
+
 
 DHTMLX Gantt는 SQL 인젝션, XSS, CSRF와 같은 위협에 대한 내장 보호 기능을 포함하지 않습니다. 백엔드에서 애플리케이션을 안전하게 만드는 것은 개발자의 책임입니다. 자세한 내용은 [보안 관련 문서](guides/app-security.md)를 참고하세요.
 
-문제 해결
------------------
+## 문제 해결
+
 
 통합 후 작업과 링크가 표시되지 않는 경우 [백엔드 통합 문제 해결](guides/troubleshooting.md)의 가이드에서 일반적인 문제 해결 방법을 확인하세요.
 
-다음 단계
-------------
+## 다음 단계
+
 
 이제 동작하는 Gantt 차트 애플리케이션이 완성되었습니다. 전체 소스 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-django)에서 복제하거나 다운로드하여 프로젝트에 사용할 수 있습니다.
 

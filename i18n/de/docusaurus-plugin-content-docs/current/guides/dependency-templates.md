@@ -3,8 +3,8 @@ title: "Vorlagen für Abhängigkeitsverknüpfungen"
 sidebar_label: "Vorlagen für Abhängigkeitsverknüpfungen"
 ---
 
-Vorlagen für Abhängigkeitsverknüpfungen
-========================================
+# Vorlagen für Abhängigkeitsverknüpfungen
+
 
 <table class="webixdoc_links">
   <tbody>

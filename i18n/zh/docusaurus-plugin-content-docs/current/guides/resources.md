@@ -3,8 +3,8 @@ title: "资源控制"
 sidebar_label: "资源控制"
 ---
 
-资源控制
-===================
+# 资源控制
+
 
 :::info
 此功能仅包含在 PRO 版本中。
@@ -53,8 +53,8 @@ gantt.locale.labels.section_rooms = "Rooms";
 你也可以创建[自定义控件来为任务分配多个资源](guides/custom-editor.md#zidingyidisanfangbianjiqi)。
 :::
 
-初始化
-------------
+## 初始化
+
 
 要在 lightbox 中包含 **resources** 控件，请按照以下步骤操作:
 
@@ -78,8 +78,8 @@ gantt.locale.labels.section_resources = "Rooms";
 [Resources control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/13_resources.html)
 
 
-属性
--------------
+## 属性
+
 
 以下是 **resources** 控件常用的主要属性（完整细节见[此处](api/config/lightbox.md)）:
 
@@ -100,8 +100,8 @@ gantt.locale.labels.section_resources = "Rooms";
 默认情况下，资源控件会自动从[资源数据存储](guides/resource-management.md#shiyongziyuanshitumianban)通过 `gantt.serverList("resourceOptions")` [集合](api/method/serverlist.md)获取数据。只有在你想覆盖此行为时才需手动设置 options。
 :::
 
-为控件填充数据
--------------------------------
+## 为控件填充数据
+
 
 自 v8.0 起，资源控件会自动从[资源数据存储](guides/resource-management.md#shiyongziyuanshitumianban)获取选项。
 
@@ -163,8 +163,8 @@ gantt.config.lightbox.sections = [
 - **unit** - 资源的计量单位
 
 
-通过服务器为控件填充数据
----------------------------------------------
+## 通过服务器为控件填充数据
+
 
 若要通过服务器为控件填充数据，将 [options](api/config/lightbox.md) 属性设置为 [serverList](api/method/serverlist.md) 方法返回的值:
 

@@ -3,8 +3,8 @@ title: "Specifying Columns"
 sidebar_label: "Specifying Columns"
 ---
 
-Specifying Columns
-====================
+# Specifying Columns
+
 
 
 Grid's columns are configured with the [columns](api/config/columns.md) parameter. 
@@ -26,8 +26,8 @@ You can take a look at the video guide that describes how to specify columns of 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-Overview
-----------
+## Overview
+
 
 By default, the grid contains 4 columns:
 
@@ -58,14 +58,14 @@ gantt.init("gantt_here");
 where 'text', 'holder', 'start_date', 'end_date', 'progress' are [the names of the data properties](guides/specifying-columns.md#datamappingandtemplates).
 
 
-Displaying end date of tasks
---------------------------------
+## Displaying end date of tasks
+
 
 When task data objects contain start and end dates in the format of "%Y-%m-%d" or "%d-%m-%Y" (i.e. without hour-minute part), the result dates in the default format may have values that are not expected. For more details on formatting end dates, see the [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates) article.
 
 
-Hiding the "Add" button for certain tasks
-----------------------------------------------
+## Hiding the "Add" button for certain tasks
+
 
 A quite easy way to prevent users from adding sub-tasks to specific tasks is to hide the 'Add' button through CSS.
 
@@ -92,8 +92,8 @@ Then, hide the 'Add' button for such rows:
 **Related sample**: [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
 
-Width
--------------
+## Width
+
 
 To set the width of a column, use the attribute [width](api/config/columns.md) in the related column's object:
 
@@ -193,8 +193,8 @@ gantt.init("gantt_here");
 ~~~
 
 
-Text alignment 
-------------------------
+## Text alignment 
+
 
 To set the horizontal alignment of the text in a column, use the [align](api/config/columns.md) attribute in the related column's object:
 
@@ -485,8 +485,8 @@ The logic is the following:
 - If **isElement** returns *true* - the object will be passed into **renderElement** which is supposed to initialize the component object inside the DOM element of the cell.
 
 
-Horizontal scrollbar
----------------------
+## Horizontal scrollbar
+
 
 You can make Grid scrollable using the **scrollable** property of the [layout](guides/layout-config.md) configuration option. 
 [Read about binding layout views to a scrollbar](guides/layout-config.md#scrollbar).
@@ -566,8 +566,8 @@ If at least one of the scrollbars assigned to the same group is visible, all scr
 **Related sample**: [Horizontal scroll inside Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/10_scrollable_grid.html)
 
 
-Styling
---------
+## Styling
+
 
 For information on styling cells of the grid, read [Work with Gantt Styles](guides/styling-guide.md#styling-grid).
 

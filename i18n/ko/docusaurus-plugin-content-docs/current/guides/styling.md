@@ -3,8 +3,8 @@ title: "스타일링"
 sidebar_label: "스타일링"
 ---
 
-스타일링
-==============================
+# 스타일링
+
 
 ((index
 - [CSS 문서](guides/css-overview.md)

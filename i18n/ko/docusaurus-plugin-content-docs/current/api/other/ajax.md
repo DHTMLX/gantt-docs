@@ -81,7 +81,7 @@ xhr.post({
 
 아래는 ajax 모듈 API에서 사용 가능한 메서드 목록입니다:
 
-## # 콜백 옵션
+## 콜백 옵션
 
 모든 메서드는 콜백과 [프로미스](#promises)를 모두 지원하여 응답을 처리할 수 있습니다.
 
@@ -115,7 +115,7 @@ gantt.ajax.post({
 ~~~
 
 
-## # query
+## query
 
 요청을 보내는 일반 메서드입니다. 파라미터에서 어떤 HTTP 메서드든 지정할 수 있습니다.
 
@@ -132,7 +132,7 @@ gantt.ajax.query({
 
 ~~~
 
-## # get
+## get
 
 GET 요청을 보냅니다.
 
@@ -148,7 +148,7 @@ gantt.ajax.get({
 });
 ~~~
 
-## # put
+## put
 
 PUT 요청을 보냅니다.
 
@@ -165,7 +165,7 @@ gantt.ajax.put({
 });
 ~~~
 
-## # del
+## del
 
 DELETE 요청을 보냅니다.
 
@@ -181,7 +181,7 @@ gantt.ajax.del({
 });
 ~~~
 
-## # post
+## post
 
 POST 요청을 보냅니다.
 

@@ -3,13 +3,13 @@ title: "clickDrag Erweiterung"
 sidebar_label: "clickDrag Erweiterung"
 ---
 
-clickDrag Erweiterung
-======================
+# clickDrag Erweiterung
+
 
 Weitere Informationen zur clickDrag-Erweiterung finden Sie im Artikel [Creating/Selecting Tasks with DnD](guides/advanced-dnd.md).
 
-Konfigurationsobjekt
-------------------
+## Konfigurationsobjekt
+
 
 Um die erweiterte Drag-and-Drop-Funktionalität zu aktivieren, setzen Sie die Konfigurationsoption [click_drag](api/config/click_drag.md) und fügen Sie die gewünschten Eigenschaften aus der untenstehenden Liste in das Objekt ein:
 
@@ -62,8 +62,8 @@ gantt.config.click_drag = {
             - **_top_** - (*number*) - vertikale Position
 
 
-Ereignisse
------------
+## Ereignisse
+
 
 Die folgenden Ereignisse können an das als viewPort verwendete Element gebunden werden (standardmäßig gantt.$task_data, der Bereich der Zeitleiste, der die Aufgabenbalken enthält):
 

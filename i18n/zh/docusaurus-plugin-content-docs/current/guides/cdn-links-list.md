@@ -3,8 +3,8 @@ title: "CDN 链接完整列表"
 sidebar_label: "CDN 链接完整列表"
 ---
 
-CDN 链接完整列表
-=====================
+# CDN 链接完整列表
+
 
 本文为您提供了通过 CDN 添加 Gantt 功能的完整链接集合。
 每个部分对应特定的 Gantt 版本:
@@ -12,8 +12,8 @@ CDN 链接完整列表
 - 核心文件 -- 包含主要功能的 *dhtmlxgantt.js* 和 *dhtmlxgantt.css* 文件
 - 皮肤 -- 所有可用[皮肤](guides/skins.md)的链接
 
-最新 Gantt 版本
------------------------
+## 最新 Gantt 版本
+
 
 如需使用最新版本库，请将资源路径设置为 **https://cdn.dhtmlx.com/gantt/edge/...**
 
@@ -27,8 +27,8 @@ CDN 链接完整列表
 [Contrast White](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_contrast_white.css)，
 [Material](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_material.css)。
 
-最新 Gantt 版本，未压缩版
------------------------------
+## 最新 Gantt 版本，未压缩版
+
 
 如需使用最新库的未压缩版本，请将路径设置为 **https://cdn.dhtmlx.com/gantt/edge/sources/...**
 
@@ -43,8 +43,8 @@ CDN 链接完整列表
 [Contrast White](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_contrast_white.css)，
 [Material](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_material.css)。
 
-指定 Gantt 版本
---------------
+## 指定 Gantt 版本
+
 
 如需使用特定版本库，请将资源路径设置为 **https://cdn.dhtmlx.com/gantt/[version_number]/...**
 
@@ -59,8 +59,8 @@ CDN 链接完整列表
 [Contrast White](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_contrast_white.css)，
 [Material](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_material.css)。
 
-指定 Gantt 版本，未压缩版
--------------------------------
+## 指定 Gantt 版本，未压缩版
+
 
 如需使用特定版本的未压缩文件，请将路径设置为 **https://cdn.dhtmlx.com/gantt/[version_number]/sources/...**
 

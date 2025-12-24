@@ -3,8 +3,8 @@ title: "Unterstützte Datenformate"
 sidebar_label: "Unterstützte Datenformate"
 ---
 
-Unterstützte Datenformate
-=======================================
+# Unterstützte Datenformate
+
 
 dhtmlxGantt unterstützt das Laden von Daten in mehreren Formaten:
 
@@ -17,7 +17,7 @@ Es ist außerdem möglich, [beliebige benutzerdefinierte Eigenschaften in die Ga
 
 
 ## JSON {#json}
--------------------------
+
 
 ### Aufgaben und Verknüpfungen
 
@@ -111,7 +111,7 @@ Ressourcenzuweisungen können auch separat von Aufgaben bereitgestellt werden:
 ~~~
 
 ## XML (dhtmlxGantt 2.0+) {#xmldhtmlxgantt20}
----------------------------------
+
 
 ~~~xml
 <data>
@@ -136,15 +136,15 @@ Ressourcenzuweisungen können auch separat von Aufgaben bereitgestellt werden:
 </data>
 ~~~
 
-Benutzerdefinierte Eigenschaften in den Daten
--------------------------------
+## Benutzerdefinierte Eigenschaften in den Daten
+
 
 Die folgenden Beispiele enthalten zwei benutzerdefinierte Eigenschaften:
 
 - **priority** - gibt die Prioritätsstufe der Aufgabe an.
 - **holder**  - gibt die für die Aufgabe verantwortliche Person an.
 
-####JSON
+#### JSON
 
 ~~~js
 {
@@ -199,7 +199,7 @@ Die folgenden Beispiele enthalten zwei benutzerdefinierte Eigenschaften:
 
 
 ## JSON mit Collections {#jsonwithcollections}
-------------------
+
 
 JSON-Daten können mehrere zusätzliche Arrays innerhalb der Eigenschaft "collections" des *data*-Objekts enthalten.
 
@@ -232,7 +232,7 @@ JSON-Daten können mehrere zusätzliche Arrays innerhalb der Eigenschaft "collec
 Auf diese Collections kann mit ihren Namen über die Methode [gantt.serverList](api/method/serverlist.md) zugegriffen werden.
 
 ## XML (dhtmlxGantt < 2.0) {#xmldhtmlxganttlt20}
---------------------
+
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>

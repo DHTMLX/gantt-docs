@@ -3,8 +3,8 @@ title: "dhtmlxGantt와 PHP: Laravel 연동"
 sidebar_label: "dhtmlxGantt와 PHP: Laravel 연동"
 ---
 
-dhtmlxGantt와 PHP: Laravel 연동
-=====================
+# dhtmlxGantt와 PHP: Laravel 연동
+
 
 이 튜토리얼은 dhtmlxGantt를 [Laravel](https://laravel.com/) 애플리케이션에 통합하는 방법을 설명합니다.
 
@@ -26,8 +26,8 @@ dhtmlxGantt와 PHP: Laravel 연동
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/eu5R86a-9jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-1단계. 프로젝트 초기화
------------------------
+## 1단계. 프로젝트 초기화
+
 
 ### 프로젝트 생성
 
@@ -49,8 +49,8 @@ php artisan serve
 
 ![how_to_start_laravel_blank_page](/img/how_to_start_laravel_blank_page.png)
 
-2단계. 페이지에 Gantt 추가
------------------------
+## 2단계. 페이지에 Gantt 추가
+
 
 ### 뷰(View) 추가
 
@@ -106,8 +106,8 @@ Route::get('/', function () {
 
 ![how_to_start_laravel_empty_gantt](/img/how_to_start_laravel_empty_gantt.png)
 
-3단계. 모델 및 마이그레이션 생성
----------------------
+## 3단계. 모델 및 마이그레이션 생성
+
 
 gantt 차트가 표시되면, 다음 단계는 데이터베이스와 연결하여 데이터를 불러오는 것입니다.
 
@@ -316,8 +316,8 @@ class Link extends Model
 }
 ~~~
 
-4단계. 데이터 불러오기
--------------------
+## 4단계. 데이터 불러오기
+
 
 데이터베이스와 모델이 준비되었으니, 이제 gantt 차트에 데이터를 불러올 수 있습니다. 
 클라이언트는 특정 [포맷](guides/supported-data-formats.md#json)의 날짜를 기대하므로, 이에 맞는 JSON을 반환하는 컨트롤러 액션을 생성합니다:
@@ -374,8 +374,8 @@ gantt.load("/api/data");/*!*/
 
 ![how_to_start_laravel_complete](/img/how_to_start_laravel_complete.png)
 
-5단계. 변경사항 저장
------------------------------------
+## 5단계. 변경사항 저장
+
 
 현재 gantt 차트는 백엔드에서 데이터를 읽어옵니다. 다음 단계는 변경사항을 데이터베이스에 저장할 수 있도록 하는 것입니다.
 
@@ -388,7 +388,7 @@ gantt.load("/api/data");/*!*/
 먼저 두 모델에 대해 RESTful [리소스 컨트롤러](https://laravel.com/docs/11.x/controllers)를 생성합니다. 
 이 컨트롤러에는 데이터 추가, 삭제, 갱신을 위한 메서드가 포함됩니다.
 
-####작업(Task) 컨트롤러
+#### 작업(Task) 컨트롤러
 
 **app/Http/Controllers/TaskController.php**
 ~~~php
@@ -465,7 +465,7 @@ Route::resource('task', 'TaskController');/*!*/
 
 다음으로, 링크에 대한 유사한 컨트롤러를 생성해보겠습니다.
 
-####링크(Link) 컨트롤러
+#### 링크(Link) 컨트롤러
 
 **app/Http/Controllers/LinkController.php**
 ~~~php
@@ -530,7 +530,7 @@ Route::resource('task', 'TaskController');
 Route::resource('link', 'LinkController'); /*!*/
 ~~~
 
-###클라이언트에서 데이터 저장 활성화
+### 클라이언트에서 데이터 저장 활성화
 
 마지막으로, 클라이언트에서 방금 구성한 API와 연동하도록 설정해야 합니다:
 
@@ -559,7 +559,7 @@ dhtmlxGantt의 더 많은 기능은 [가이드](guides.md)에서 확인할 수 �
 
 이제 이 기능을 앱에 추가해보겠습니다.
 
-###클라이언트에서 작업 순서 변경 활성화
+### 클라이언트에서 작업 순서 변경 활성화
 
 사용자가 UI에서 작업 순서를 변경할 수 있도록, *Index* 뷰의 gantt 설정을 다음과 같이 수정하세요:
 
@@ -571,7 +571,7 @@ gantt.config.order_branch_free = true;/*!*/
 gantt.init("gantt_here");
 ~~~
 
-###서버에서 작업 순서 변경 활성화
+### 서버에서 작업 순서 변경 활성화
 
 백엔드에서는 "sortorder"라는 컬럼에 순서를 저장하게 됩니다. 전체 작업 테이블 스키마 예시는 다음과 같습니다:
 
@@ -725,19 +725,19 @@ private function updateOrder($taskId, $target){
 ~~~
 
 
-애플리케이션 보안
--------------------------
+## 애플리케이션 보안
+
 
 Gantt 컴포넌트 자체에는 SQL 인젝션, XSS, CSRF 공격 등과 같은 위협에 대한 보호 기능이 포함되어 있지 않습니다. 애플리케이션의 보안은 백엔드 개발자의 책임입니다. 자세한 내용은 [관련 문서](guides/app-security.md)를 참고하세요.
 
 
-문제 해결
------------------
+## 문제 해결
+
 
 이 과정을 모두 따라 했음에도 Gantt 차트에 작업이나 링크가 표시되지 않는 경우, [백엔드 통합 문제 해결](guides/troubleshooting.md) 문서에서 일반적인 문제의 원인과 해결 방법을 확인할 수 있습니다.
 
-다음 단계
-------------
+## 다음 단계
+
 
 이제 gantt는 완전히 동작합니다. 전체 소스 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel)에서 복제하거나 다운로드하여 프로젝트에 사용할 수 있습니다.
 
