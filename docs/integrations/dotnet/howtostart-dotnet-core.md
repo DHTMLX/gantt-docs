@@ -972,7 +972,7 @@ You will also need to update controllers.
 public async Task<IActionResult> Get()
 {
     var tasks = await _context.Tasks
-        .OrderBy(t => t.SortOrder)
+        .OrderBy(t => t.SortOrder) /*!*/
         .Select(t => (WebApiTask)t)
         .ToListAsync();
 
@@ -997,7 +997,7 @@ public async Task<IActionResult> Post(WebApiTask apiTask)
 {
     var newTask = (Models.Task)apiTask;
 
-    newTask.SortOrder = await _context.Tasks.MaxAsync(t => t.SortOrder) + 1;
+    newTask.SortOrder = await _context.Tasks.MaxAsync(t => t.SortOrder) + 1; /*!*/
     await _context.Tasks.AddAsync(newTask);
     await _context.SaveChangesAsync();
 
@@ -1055,11 +1055,11 @@ public async Task<IActionResult?> Put(int id, WebApiTask apiTask)
     dbTask.Progress = updatedTask.Progress;
     dbTask.Type = updatedTask.Type;
 
-    if (!string.IsNullOrEmpty(apiTask.target))
-    {
-        // reordering occurred                         
-        await this.UpdateOrdersAsync(dbTask, apiTask.target);
-    }
+    if (!string.IsNullOrEmpty(apiTask.target))                /*!*/
+    {                                                         /*!*/
+        // reordering occurred                                /*!*/   
+        await this.UpdateOrdersAsync(dbTask, apiTask.target); /*!*/
+    }                                                         /*!*/
 
     await _context.SaveChangesAsync();
 
