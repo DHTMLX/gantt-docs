@@ -60,31 +60,30 @@ you'll need to [add gantt files to your project manually](guides/installation.md
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width="device-width"" />
+    <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css"
-          rel="stylesheet" type="text/css" />
+    <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet" type="text/css" />
+    <link href="css/site.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
-            // specifying the date format
-            gantt.config.date_format = "%Y-%m-%d %H:%i";
-            // initializing gantt
-            gantt.init("gantt_here");
+        document.addEventListener('DOMContentLoaded', function () {
+        // specifying the date format
+        gantt.config.date_format = '%Y-%m-%d %H:%i';
+        // initializing gantt
+        gantt.init('gantt_here');
 
-            // initiating data loading
-            gantt.load("/api/data");
-            // initializing dataProcessor
-            var dp = new gantt.dataProcessor("/api/");
-            // and attaching it to gantt
-            dp.init(gantt);
-            // setting the REST mode for dataProcessor
-            dp.setTransactionMode("REST");
+        // initiating data loading
+        gantt.load('/api/data');
+        // creating and configuring dataProcessor
+        const dp = gantt.createDataProcessor({
+          url: '/api/',
+          mode: 'REST',
         });
+      });
     </script>
 </head>
 <body>
-    <div id="gantt_here" style="width: 100%; height: 100vh;"></div>
+    <div id="gantt_here" style="width: 100vw; height: 100vh"></div>
 </body>
 </html>
 ~~~
@@ -139,6 +138,26 @@ The `app.UseDefaultFiles()` method allows serving default files. It will search 
 
 Thus, you can choose any of them, while in this tutorial "index.html" is used.
 `UseDefaultFiles()` is just an URL-rewriter that doesn't actually serve the file. For this purpose you need to also add the `UseStaticFiles()` file.
+To make Gantt occupy the entire space of the body, you need to add the following styles to the `site.css` file located in the `wwwroot/css` folder:
+
+~~~css title="DHX.Gantt/wwwroot/css/site.css"
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+~~~
 
 Once you are done with it, an empty gantt should appear on the page when you run the application. Note that the "Invalid data" label at the top right corner shows up because `gantt.load()` is called,
 as there is still no proper backend to serve the data. When the controller will be implemented, gantt will be able to display tasks and links.
@@ -595,12 +614,13 @@ So, you should convert them into the format of our data model for EntityFramewor
 ~~~js title="Controllers/TaskController.cs"
 using Microsoft.AspNetCore.Mvc;
 using DHX.Gantt.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DHX.Gantt.Controllers
 {
     [Produces("application/json")]
     [Route("api/task")]
-    public class TaskController : Controller
+    public class TaskController : ControllerBase
     {
         private readonly GanttContext _context;
         public TaskController(GanttContext context)
@@ -610,30 +630,33 @@ namespace DHX.Gantt.Controllers
 
         // GET api/task
         [HttpGet]
-        public IEnumerable<WebApiTask> Get()
+        public async Task<IEnumerable<WebApiTask>> Get()
         {
-            return _context.Tasks
-                .ToList()
-                .Select(t => (WebApiTask)t);
+            return await _context.Tasks
+                .Select(t => (WebApiTask)t)
+                .ToListAsync();
         }
 
         // GET api/task/5
         [HttpGet("{id}")]
-        public Models.Task? Get(int id)
+        public async Task<ActionResult<Models.Task>> Get(int id)
         {
-            return _context
-                .Tasks
-                .Find(id);
+            var task = await _context.Tasks.FindAsync(id);
+
+            if (task == null)
+                return NotFound();
+
+            return Ok(task);
         }
 
         // POST api/task
         [HttpPost]
-        public ObjectResult Post(WebApiTask apiTask)
+        public async Task<IActionResult> Post(WebApiTask apiTask)
         {
             var newTask = (Models.Task)apiTask;
 
-            _context.Tasks.Add(newTask);
-            _context.SaveChanges();
+            await _context.Tasks.AddAsync(newTask);
+            await _context.SaveChangesAsync();
 
             return Ok(new
             {
@@ -644,14 +667,16 @@ namespace DHX.Gantt.Controllers
 
         // PUT api/task/5
         [HttpPut("{id}")]
-        public ObjectResult? Put(int id, WebApiTask apiTask)
+        public async Task<IActionResult?> Put(int id, WebApiTask apiTask)
         {
             var updatedTask = (Models.Task)apiTask;
-            var dbTask = _context.Tasks.Find(id);
+            var dbTask = await _context.Tasks.FindAsync(id);
+
             if (dbTask == null)
             {
-                return null;
+                return NotFound();
             }
+
             dbTask.Text = updatedTask.Text;
             dbTask.StartDate = updatedTask.StartDate;
             dbTask.Duration = updatedTask.Duration;
@@ -659,7 +684,7 @@ namespace DHX.Gantt.Controllers
             dbTask.Progress = updatedTask.Progress;
             dbTask.Type = updatedTask.Type;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok(new
             {
@@ -669,13 +694,13 @@ namespace DHX.Gantt.Controllers
 
         // DELETE api/task/5
         [HttpDelete("{id}")]
-        public ObjectResult DeleteTask(int id)
+        public async Task<IActionResult> DeleteTask(int id)
         {
-            var task = _context.Tasks.Find(id);
+            var task = await _context.Tasks.FindAsync(id);
             if (task != null)
             {
                 _context.Tasks.Remove(task);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
 
             return Ok(new
@@ -701,7 +726,7 @@ namespace DHX.Gantt.Controllers
 {
     [Produces("application/json")]
     [Route("api/link")]
-    public class LinkController : Controller
+    public class LinkController : ControllerBase
     {
         private readonly GanttContext _context;
         public LinkController(GanttContext context)
@@ -711,30 +736,33 @@ namespace DHX.Gantt.Controllers
 
         // GET api/Link
         [HttpGet]
-        public IEnumerable<WebApiLink> Get()
+        public async Task<IEnumerable<WebApiLink>> Get()
         {
-            return _context.Links
-                .ToList()
-                .Select(t => (WebApiLink)t);
+            return await _context.Links
+                .Select(t => (WebApiLink)t)
+                .ToListAsync();
         }
 
         // GET api/Link/5
         [HttpGet("{id}")]
-        public Link? Get(int id)
+        public async Task<ActionResult<Link>> Get(int id)
         {
-            return _context
-                .Links
-                .Find(id);
+            var link = await _context.Links.FindAsync(id);
+
+            if (link == null)
+                return NotFound();
+
+            return Ok(link);
         }
 
         // POST api/Link
         [HttpPost]
-        public ObjectResult Post(WebApiLink apiLink)
+        public async Task<IActionResult> Post(WebApiLink apiLink)
         {
             var newLink = (Link)apiLink;
 
             _context.Links.Add(newLink);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok(new
             {
@@ -745,14 +773,14 @@ namespace DHX.Gantt.Controllers
 
         // PUT api/Link/5
         [HttpPut("{id}")]
-        public ObjectResult Put(int id, WebApiLink apiLink)
+        public async Task<IActionResult> Put(int id, WebApiLink apiLink)
         {
             var updatedLink = (Link)apiLink;
             updatedLink.Id = id;
-             _context.Entry(updatedLink).State = EntityState.Modified;
+            _context.Entry(updatedLink).State = EntityState.Modified;
 
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok(new
             {
@@ -762,13 +790,13 @@ namespace DHX.Gantt.Controllers
 
         // DELETE api/Link/5
         [HttpDelete("{id}")]
-        public ObjectResult DeleteLink(int id)
+        public async Task<IActionResult> DeleteLink(int id)
         {
-            var Link = _context.Links.Find(id);
-            if (Link != null)
+            var link = await _context.Links.FindAsync(id);
+            if (link != null)
             {
-                _context.Links.Remove(Link);
-                _context.SaveChanges();
+                _context.Links.Remove(link);
+                await _context.SaveChangesAsync();
             }
 
             return Ok(new
@@ -786,13 +814,14 @@ Finally, you need to create a controller for a data action:
 
 ~~~js title="Controllers/DataController.cs"
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using DHX.Gantt.Models;
 
 namespace DHX.Gantt.Controllers
 {
     [Produces("application/json")]
     [Route("api/data")]
-    public class DataController : Controller
+    public class DataController : ControllerBase
     {
         private readonly GanttContext _context;
         public DataController(GanttContext context)
@@ -802,16 +831,22 @@ namespace DHX.Gantt.Controllers
 
         // GET api/data
         [HttpGet]
-        public object Get()
+        public async Task<IActionResult> Get()
         {
-            return new
-            {
-                data = _context.Tasks.ToList().Select(t => (WebApiTask)t),
-                links = _context.Links.ToList().Select(l => (WebApiLink)l)
+            var tasks = await _context.Tasks
+                .Select(t => (WebApiTask)t)
+                .ToListAsync();
 
-            };
+            var links = await _context.Links
+                .Select(l => (WebApiLink)l)
+                .ToListAsync();
+
+            return Ok(new
+            {
+                tasks,
+                links
+            });
         }
-        
     }
 }
 ~~~
@@ -934,18 +969,22 @@ You will also need to update controllers.
 
 ~~~js title="Controllers/DataController.cs"
 [HttpGet]
-public object Get()
+public async Task<IActionResult> Get()
 {
-    return new
-        {
-            data = _context.Tasks
-                .OrderBy(t => t.SortOrder) /*!*/
-                .ToList()
-                .Select(t => (WebApiTask)t),
-               links = _context.Links
-                .ToList()
-                .Select(l => (WebApiLink)l)
-        };
+    var tasks = await _context.Tasks
+        .OrderBy(t => t.SortOrder)
+        .Select(t => (WebApiTask)t)
+        .ToListAsync();
+
+    var links = await _context.Links
+        .Select(l => (WebApiLink)l)
+        .ToListAsync();
+
+    return Ok(new
+    {
+        data = tasks,
+        links = links
+    });
 }
 ~~~
 
@@ -954,13 +993,13 @@ public object Get()
 ~~~js title="controllers/TaskController.cs"
 // POST api/task
 [HttpPost]
-public IActionResult Post(WebApiTask apiTask)
+public async Task<IActionResult> Post(WebApiTask apiTask)
 {
     var newTask = (Models.Task)apiTask;
 
-    newTask.SortOrder = _context.Tasks.Max(t => t.SortOrder) + 1; /*!*/
-    _context.Tasks.Add(newTask);
-    _context.SaveChanges();
+    newTask.SortOrder = await _context.Tasks.MaxAsync(t => t.SortOrder) + 1;
+    await _context.Tasks.AddAsync(newTask);
+    await _context.SaveChangesAsync();
 
     return Ok(new
     {
@@ -999,34 +1038,34 @@ And now let's implement reordering in our PUT (EditTask) action. Modify the Put 
 ~~~js title="Controllers/TaskController.cs"
 // PUT api/task/5
 [HttpPut("{id}")]
-public IActionResult? Put(int id, WebApiTask apiTask)
+public async Task<IActionResult?> Put(int id, WebApiTask apiTask)
 {
     var updatedTask = (Models.Task)apiTask;
-    updatedTask.Id = id;
- 
-    var dbTask = _context.Tasks.Find(id);
+    var dbTask = await _context.Tasks.FindAsync(id);
+
     if (dbTask == null)
     {
-        return null;
+        return NotFound();
     }
+
     dbTask.Text = updatedTask.Text;
     dbTask.StartDate = updatedTask.StartDate;
     dbTask.Duration = updatedTask.Duration;
     dbTask.ParentId = updatedTask.ParentId;
     dbTask.Progress = updatedTask.Progress;
     dbTask.Type = updatedTask.Type;
- 
-    if (!string.IsNullOrEmpty(apiTask.target))            /*!*/            
-    {                                                    /*!*/
-         // reordering occurred                            /*!*/
-         this._UpdateOrders(dbTask, apiTask.target);    /*!*/
-    }                                                    /*!*/
- 
-    _context.SaveChanges();
- 
+
+    if (!string.IsNullOrEmpty(apiTask.target))
+    {
+        // reordering occurred                         
+        await this.UpdateOrdersAsync(dbTask, apiTask.target);
+    }
+
+    await _context.SaveChangesAsync();
+
     return Ok(new
     {
-         action = "updated"
+        action = "updated"
     });
 }
 ~~~
@@ -1034,7 +1073,7 @@ public IActionResult? Put(int id, WebApiTask apiTask)
 And add the method that will update the order of tasks:
  
 ~~~js title="Controllers/TaskController.cs"
-private void _UpdateOrders(Models.Task updatedTask, string orderTarget)
+private async Task<IActionResult> UpdateOrdersAsync(Models.Task updatedTask, string orderTarget)
 {
     int adjacentTaskId;
     var nextSibling = false;
@@ -1051,25 +1090,34 @@ private void _UpdateOrders(Models.Task updatedTask, string orderTarget)
 
     if (!int.TryParse(targetId, out adjacentTaskId))
     {
-        return;
+        return NotFound();
     }
 
-    var adjacentTask = _context.Tasks.Find(adjacentTaskId);
-    var startOrder = adjacentTask!.SortOrder;
+    var adjacentTask = await _context.Tasks.FindAsync(adjacentTaskId);
+    if (adjacentTask == null)
+    {
+        return NotFound();
+    }
+    var startOrder = adjacentTask.SortOrder;
 
     if (nextSibling)
-         startOrder++;
+        startOrder++;
 
     updatedTask.SortOrder = startOrder;
 
-    var updateOrders = _context.Tasks
+    var updateOrders = await _context.Tasks
         .Where(t => t.Id != updatedTask.Id)
         .Where(t => t.SortOrder >= startOrder)
-        .OrderBy(t => t.SortOrder);
+        .OrderBy(t => t.SortOrder)
+        .ToListAsync();
 
     var taskList = updateOrders.ToList();
-
     taskList.ForEach(t => t.SortOrder++);
+
+    return Ok(new
+    {
+        action = "updated"
+    });
 }
 ~~~
 
