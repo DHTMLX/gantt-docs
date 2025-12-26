@@ -45,7 +45,6 @@ Wenn Sie in jeder Timeline-Zelle eigenen Inhalt anzeigen möchten, ist es einfac
 
 ## Beispiel für die Verwendung
 
-
 Hier ein Beispiel zur Verdeutlichung der Funktionsweise: Angenommen, Sie haben sowohl geplante als auch tatsächliche Zeiten für Aufgaben und möchten beide anzeigen.
 
 ![baselines](/img/baselines.png)
@@ -162,7 +161,6 @@ Den vollständigen Beispielcode finden Sie im zugehörigen Beispiel.
 
 ## Beispiele für benutzerdefinierte Inhalte
 
-
 Hier sind einige Beispiele, wie Sie die Methode [addTaskLayer()](api/method/addtasklayer.md) verwenden können, um die Gantt-Diagramm-Zeitleiste mit verschiedenen benutzerdefinierten Elementen zu erweitern:
 
 - [Benutzerdefinierte Baselines](https://snippet.dhtmlx.com/wv23be05)
@@ -178,7 +176,6 @@ Hier sind einige Beispiele, wie Sie die Methode [addTaskLayer()](api/method/addt
 
 
 ## Drag-and-drop für benutzerdefinierte Elemente
-
 
 Wenn Sie Drag-and-drop für benutzerdefinierte Elemente ermöglichen möchten, sollten Sie wissen, dass DHTMLX Gantt hierfür keine eingebaute Funktion bietet. Sie können dies jedoch mit einigen einfachen Schritten manuell umsetzen.
 
@@ -273,7 +270,6 @@ gantt.event(window, 'mouseup', function(e) {
 ~~~
 
 ## Zusätzliche Overlay-Schicht für das Diagramm
-
 
 Mit dhtmlxGantt können Sie eine zusätzliche Ebene über dem Diagramm hinzufügen, um benutzerdefinierte Inhalte zu platzieren. Dieses Overlay kann ein div-Container, ein HTML-Canvas oder ein anderes Element sein. Sie können jede beliebige Drittanbieter-Bibliothek verwenden, um Inhalte darin darzustellen.
 

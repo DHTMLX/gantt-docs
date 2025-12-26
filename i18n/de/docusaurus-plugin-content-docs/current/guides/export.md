@@ -5,7 +5,6 @@ sidebar_label: "Export nach PDF und PNG"
 
 # Export nach PDF und PNG
 
-
 dhtmlxGantt bietet einen Online-Export-Service, mit dem Sie Ihr Gantt-Diagramm als [PDF](guides/export.md#exporttopdf) oder 
 [PNG](guides/export.md#exporttopng) speichern können.
 
@@ -18,7 +17,6 @@ Es gibt mehrere Export-Services, die Sie auf Ihrem eigenen Computer einrichten k
 Beachten Sie, dass Export-Services nicht im Gantt-Paket enthalten sind - Details zu den Nutzungsbedingungen der einzelnen Services finden Sie im [zugehörigen Artikel](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
 
 ## Einschränkungen des Online-Export-Services
-
 
 :::note
 Der Export-Service hat Begrenzungen hinsichtlich der Verarbeitungszeit und der Anfragegröße.
@@ -44,7 +42,6 @@ Export-/Import-Services (*exportToMSProject* / *importFromMSProject* / *exportTo
 
 ## Verwendung von Exportmodulen
 
-
 :::note
 Für den Export großer Diagramme können Sie ein [eigenständiges Exportmodul](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) verwenden.
 Dieses Modul ist kostenlos, wenn Sie eine [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) oder [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) Lizenz besitzen, oder Sie können es [separat erwerben](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
@@ -53,7 +50,6 @@ Dieses Modul ist kostenlos, wenn Sie eine [Commercial](https://dhtmlx.com/docs/p
 [Hier finden Sie weitere Details zur Verwendung des Exportmoduls für PDF](guides/pdf-export-module.md).
 
 ## Export nach PDF {#exporttopdf}
-
 
 Um Ihr Gantt-Diagramm als PDF zu exportieren, gehen Sie wie folgt vor:
 
@@ -91,7 +87,6 @@ Wenn Sie eine Gantt-Version älter als 8.0 verwenden, binden Sie **https://expor
 
 ## Export nach PNG {#exporttopng}
 
-
 Um Ihr Gantt-Diagramm als PNG-Bild zu exportieren, gehen Sie wie folgt vor:
 
 - Aktivieren Sie das <b>export_api</b>-Plugin mit der Methode [plugins](api/method/plugins.md):
@@ -127,7 +122,6 @@ Wenn Sie eine Gantt-Version älter als 8.0 verwenden, binden Sie **https://expor
 
 
 ## Parameter der Exportmethoden {#parametersoftheexportmethods}
-
 
 Die Methoden [exportToPDF](api/method/exporttopdf.md) und [exportToPNG](api/method/exporttopng.md) akzeptieren ein Objekt mit verschiedenen optionalen Eigenschaften:
 
@@ -248,7 +242,6 @@ gantt.exportToPDF({
 ~~~
 
 ## Zu exportierende Daten
-
 
 Es gibt zwei Möglichkeiten, festzulegen, welche Aufgaben im exportierten PDF oder PNG erscheinen:
 

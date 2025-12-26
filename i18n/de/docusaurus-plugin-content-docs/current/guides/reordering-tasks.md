@@ -5,7 +5,6 @@ sidebar_label: "Aufgaben neu anordnen"
 
 # Aufgaben neu anordnen
 
-
 dhtmlxGantt bietet zwei Möglichkeiten, Aufgaben im Grid neu anzuordnen:
 
 1. Drag-and-Drop.
@@ -30,7 +29,6 @@ Es gibt auch ein Video-Tutorial, das zeigt, wie Aufgaben im Grid sortiert und ne
 
 ## Drag-and-Drop über die gesamte Gantt-Struktur hinweg
 
-
 Die Option [order_branch](api/config/order_branch.md) beschränkt das Ziehen auf Aufgaben innerhalb derselben Baumebene.
 
 Es ist jedoch möglich, einen Modus zu aktivieren, in dem Aufgaben an jeder beliebigen Stelle im Gantt neu angeordnet werden können, sodass eine Aufgabe eine andere auf jeder Baumebene ersetzen kann. Dazu verwenden Sie die Option [order_branch_free](api/config/order_branch_free.md):
@@ -48,7 +46,6 @@ gantt.init("gantt_here");
 
 
 ## Einschränkung der Ablagepositionen
-
 
 Um zu verhindern, dass Aufgaben an bestimmten Positionen abgelegt werden, verwenden Sie die Events [onBeforeTaskMove](api/event/onbeforetaskmove.md) oder [onBeforeRowDragEnd](api/event/onbeforerowdragend.md):
 
@@ -72,7 +69,6 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 
 ## Leistungsverbesserung bei großen Datenmengen
 
-
 Bei der Arbeit mit vielen Aufgaben kann der Standardmodus zur Zweigneuordnung die Leistung beeinträchtigen. Um dies zu verbessern, kann der "marker"-Modus verwendet werden.
 
 ~~~js
@@ -88,7 +84,6 @@ In diesem Modus wird beim Halten der linken Maustaste nur der Aufgabenname versc
 Um das Ablegen von Aufgaben an bestimmten Positionen in diesem Modus einzuschränken, verwenden Sie das Event [onBeforeRowDragMove](api/event/onbeforerowdragmove.md) (dies funktioniert nur im "marker"-Modus).
 
 ## Hervorheben verfügbarer Ablageziele während des Drag-and-Drop
-
 
 Um beim Ziehen gültige Ablageziele visuell hervorzuheben (z. B. um zu verhindern, dass ein Wurzelknoten unter einen anderen Wurzelknoten verschoben wird), verwenden Sie die Events [onRowDragStart](api/event/onrowdragstart.md) und [onRowDragEnd](api/event/onrowdragend.md):
 
@@ -117,7 +112,6 @@ gantt.templates.grid_row_class = function(start, end, task){
 ~~~
 
 ## Vertikales Neuordnen von Aufgaben in der Zeitleiste
-
 
 Siehe die Beispiele im Abschnitt [Wie man Aufgaben in der Zeitleiste vertikal neu anordnet](guides/how-to.md#howtoverticallyreordertasksinthetimeline) für weitere Hinweise.
 

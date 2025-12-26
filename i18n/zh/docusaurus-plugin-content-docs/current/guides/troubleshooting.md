@@ -5,7 +5,6 @@ sidebar_label: "后端集成问题排查指南"
 
 # 后端集成问题排查指南
 
-
 ## 症状
 
 1. 无论是手动实现后端 API，还是按照我们的[教程](integrations/howtostart-guides.md)操作，打开页面时甘特图未显示任何任务或链接。

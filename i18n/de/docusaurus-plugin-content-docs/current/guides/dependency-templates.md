@@ -5,7 +5,6 @@ sidebar_label: "Vorlagen für Abhängigkeitsverknüpfungen"
 
 # Vorlagen für Abhängigkeitsverknüpfungen
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

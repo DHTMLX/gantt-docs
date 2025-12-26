@@ -5,14 +5,12 @@ sidebar_label: "Operations with Dates"
 
 # Operations with Dates
 
-
 dhtmlxGantt includes the [date](api/other/date.md) object that provides a set of date formatting methods. You can use these methods while working with the date objects.
 
 In this article we will consider the particularly important and commonly used methods. A full list of methods you can find at the [date object page](api/other/date.md).
 
 
 ## Converting a Date object to a string
-
 
 To convert a Date object to a string, use the [date_to_str](api/other/date.md) method: 
 

@@ -5,9 +5,7 @@ sidebar_label: "Свойства для импорта из MS Project"
 
 # Свойства для импорта из MS Project
 
-
 ## Свойства проекта
-
 
 <style>
 .myblock(
@@ -90,7 +88,6 @@ sidebar_label: "Свойства для импорта из MS Project"
 </div>
 
 ## Свойства задач
-
 
 <div class="myblock">
   <li>ActualCost</li>

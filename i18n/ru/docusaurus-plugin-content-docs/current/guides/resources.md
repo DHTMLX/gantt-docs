@@ -5,7 +5,6 @@ sidebar_label: "Контрол ресурсов"
 
 # Контрол ресурсов
 
-
 :::info
 Эта функция доступна только в PRO-версии.
 :::
@@ -55,7 +54,6 @@ gantt.locale.labels.section_rooms = "Rooms";
 
 ## Инициализация
 
-
 Чтобы добавить контрол **resources** в lightbox, выполните следующие шаги:
 
 1. Добавьте секцию в конфигурацию lightbox:
@@ -80,7 +78,6 @@ gantt.locale.labels.section_resources = "Rooms";
 
 ## Свойства
 
-
 Ниже приведены основные свойства, которые обычно задаются для контрола **resources** (полный список доступен [здесь](api/config/lightbox.md)):
 
 - **name** - (*string*) имя секции 
@@ -101,7 +98,6 @@ gantt.locale.labels.section_resources = "Rooms";
 :::
 
 ## Заполнение контрола данными
-
 
 Начиная с версии 8.0, контрол ресурсов автоматически получает опции из [хранилища ресурсов](guides/resource-management.md#workingwithresourceviewpanel).
 
@@ -164,7 +160,6 @@ gantt.config.lightbox.sections = [
 
 
 ## Заполнение контрола данными с сервера
-
 
 Чтобы заполнить контрол данными с сервера, установите свойство [options](api/config/lightbox.md) в значение, возвращаемое методом [serverList](api/method/serverlist.md):
 

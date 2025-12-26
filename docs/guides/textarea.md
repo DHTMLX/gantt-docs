@@ -5,13 +5,11 @@ sidebar_label: "Textarea Control"
 
 # Textarea Control
 
-
 A multiline text field.
 
 ![textarea_control](/img/textarea_control.png)
 
 ## Initialization
-
 
 One **textarea** control is added to the lightbox by default. To add another one, follow the steps below:
 
@@ -34,7 +32,6 @@ gantt.locale.labels.section_details = "Details";
   
 
 ## Properties
-
 
 The following properties are mostly important and commonly set for the **textarea** control (see the full list [here](api/config/lightbox.md)):
 

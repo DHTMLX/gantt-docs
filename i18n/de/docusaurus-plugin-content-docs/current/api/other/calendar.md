@@ -26,7 +26,6 @@ Das **calendar**-Objekt umfasst die folgenden Methoden und Eigenschaften:
 
 ## Methoden
 
-
 - **setWorkTime (config): boolean** - definiert die Arbeitszeiten für das Gantt-Diagramm
     - **_config_** - (*object*) - das [Konfigurationsobjekt](api/method/setworktime.md#configurationobjectproperties), das den Zeitraum beschreibt:
         - **_day?_** - (*string | number*) - optional, eine Wochentagsnummer [0 (Sonntag) - 6 (Samstag)]. Es kann jeweils nur ein Tag gesetzt werden

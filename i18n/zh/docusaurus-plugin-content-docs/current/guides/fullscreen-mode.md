@@ -5,7 +5,6 @@ sidebar_label: "全屏模式"
 
 # 全屏模式
 
-
 从 3.3 版本开始，库提供了 **fullscreen** 扩展。
 
 该扩展允许组件在支持 FullScreen API 的情况下切换到全屏模式（[支持的浏览器列表](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)）。
@@ -66,7 +65,6 @@ gantt.collapse();
 
 ## 支持的事件
 
-
 以下事件可用于处理全屏状态的变化:
 
 - [onBeforeExpand](api/event/onbeforeexpand.md)
@@ -100,7 +98,6 @@ gantt.attachEvent("onCollapse", function (){
 
 ## Fullscreen API
 
-
 [fullscreen](guides/fullscreen-ext.md) 对象提供四个方法，用于管理甘特图及其他元素的全屏行为:
 
 - **expand()** - 将甘特图切换为全屏
@@ -130,7 +127,6 @@ gantt.ext.fullscreen.getFullscreenElement();
 默认情况下，**getFullscreenElement()** 返回甘特图的 HTML 容器。你可以重写此方法以在全屏模式下包含其他元素，具体说明见 [此处](guides/fullscreen-mode.md#gantetudaitoubugongjulandequanpingmoshi)。
 
 ## 甘特图带头部/工具栏的全屏模式
-
 
 通过 *fullscreen* 对象的 **getFullscreenElement()** 方法，Gantt API 允许将全屏模式扩展到其他元素:
 
@@ -168,7 +164,6 @@ gantt.init("gantt_here");
 
 
 ## 为什么全屏模式可能无法使用？
-
 
 fullscreen 扩展仅在甘特图允许切换到全屏时工作。
 

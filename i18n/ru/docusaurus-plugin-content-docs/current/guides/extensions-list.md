@@ -5,13 +5,11 @@ sidebar_label: "Полный список расширений"
 
 # Полный список расширений
 
-
 dhtmlxGantt предлагает ряд расширений, которые расширяют базовую функциональность.
 
 Чтобы включить расширение, просто активируйте плагин с помощью метода [gantt.plugins](api/method/plugins.md).
 
 ## Расширенный drag-n-drop {#advanceddragndrop}
-
 
 Это расширение позволяет создавать и выделять задачи с помощью drag-and-drop.
 
@@ -33,7 +31,6 @@ API: [click_drag](api/config/click_drag.md)
 
 
 ## Автоматическое планирование {#autoscheduling}
-
 
 :::info
 Это расширение доступно только в PRO-версии
@@ -60,7 +57,6 @@ API: [auto_scheduling](api/config/auto_scheduling.md)
 
 ## Критический путь {#criticalpath}
 
-
 :::info
 Это расширение доступно только в PRO-версии
 :::
@@ -86,7 +82,6 @@ API: [highlight_critical_path](api/config/highlight_critical_path.md)
 
 ## Перетаскивание таймлайна {#dragtimeline}
 
-
 Позволяет прокручивать временную шкалу путем перетаскивания мышью.
 
 ~~~js
@@ -104,7 +99,6 @@ API: [drag_timeline](api/config/drag_timeline.md)
 
 
 ## Дополнительный overlay {#extraoverlay}
-
 
 :::info
 Это расширение доступно только в PRO-версии.
@@ -128,7 +122,6 @@ gantt.plugins({
 
 ## Сервис экспорта {#exportservice}
 
-
 Включает онлайн-сервис экспорта.
 
 ~~~js
@@ -142,7 +135,6 @@ gantt.plugins({
 Статья: [Экспорт и импорт данных](guides/export-common.md)
 
 ## Полноэкранный режим {#fullscreen}
-
 
 Отображает диаграмму Gantt в полноэкранном режиме.
 
@@ -161,7 +153,6 @@ gantt.plugins({
 
 
 ## Группировка {#grouping}
-
 
 :::info
 Это расширение доступно только в PRO-версии
@@ -206,7 +197,6 @@ API: [keyboard_navigation](api/config/keyboard_navigation.md),[keyboard_navigati
 
 ## Множественный выбор задач {#multitaskselection}
 
-
 Позволяет выделять несколько задач одновременно на диаграмме Gantt.
 
 ~~~js
@@ -227,7 +217,6 @@ API: [multiselect](api/config/multiselect.md)
 
 
 ## Быстрая информация {#quickinfo}
-
 
 Показывает всплывающее окно с деталями задачи.
 
@@ -268,7 +257,6 @@ gantt.plugins({
 
 ## Undo {#undo}
 
-
 Добавляет возможность отмены и возврата изменений.
 
 ~~~js
@@ -289,7 +277,6 @@ API: [undo](api/config/undo.md), [redo](api/config/redo.md)
 
 
 ## Вертикальный маркер {#verticalmarker}
-
 
 Выделяет определённые даты или диапазоны дат.
 

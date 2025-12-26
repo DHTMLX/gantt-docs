@@ -5,7 +5,6 @@ sidebar_label: "Links Coloring and Styling"
 
 # Links Coloring and Styling 
 
-
 You can change the styling of links connecting tasks to get the desired look and feel of your gantt chart.
 Coloring dependency links in various colors allows you to visually differentiate them for users.
 

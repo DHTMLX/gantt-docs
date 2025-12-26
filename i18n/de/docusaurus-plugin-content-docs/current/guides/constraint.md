@@ -5,7 +5,6 @@ sidebar_label: "Constraint-Steuerung"
 
 # Constraint-Steuerung
 
-
 :::info
 Dieses Feature ist nur in der PRO Edition enthalten.
 :::
@@ -27,7 +26,6 @@ gantt.config.lightbox.sections = [
 
 
 ## Initialisierung
-
 
 Um das **constraint**-Steuerelement in das Lightbox-Formular einzubinden, gehen Sie wie folgt vor:
 
@@ -52,7 +50,6 @@ gantt.locale.labels.section_constraint = "Constraint";
 
 
 ## Eigenschaften
-
 
 Hier sind die wichtigsten Eigenschaften, die häufig mit dem **constraint**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 

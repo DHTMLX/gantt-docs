@@ -5,7 +5,6 @@ sidebar_label: "RTL（从右到左）模式"
 
 # RTL（从右到左）模式
 
-
 ![rtl_mode](/img/rtl_mode.png)
 
 Gantt 图表支持从右到左（RTL）模式，可以通过 [rtl](api/config/rtl.md) 配置项进行激活。 

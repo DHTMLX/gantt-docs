@@ -5,14 +5,12 @@ sidebar_label: "Расширение Keyboard Navigation"
 
 # Расширение Keyboard Navigation
 
-
 Более подробную информацию о расширении Keyboard navigation можно найти в статье [Навигация с клавиатуры](guides/keyboard-navigation.md). 
 
 
 Объект *keyboardNavigation* предоставляет следующий API:
 
 ## Методы
-
 
 - <span class="submethod">**focus (config): void**</span> - позволяет выбрать любую ячейку внутри грида. Работает только тогда, когда грид уже в фокусе.
 

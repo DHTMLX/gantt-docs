@@ -5,7 +5,6 @@ sidebar_label: "内联编辑器扩展"
 
 # 内联编辑器扩展
 
-
 您可以在文章 [그리드에서 인라인 편집](guides/inline-editing.md) 中找到关于内联编辑器扩展的更多信息。
 
  *inlineEditors* 对象提供如下 API:

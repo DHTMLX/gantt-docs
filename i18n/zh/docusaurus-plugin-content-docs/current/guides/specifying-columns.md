@@ -5,7 +5,6 @@ sidebar_label: "指定列"
 
 # 指定列
 
-
 可以通过 [columns](api/config/columns.md) 参数设置网格列。
 
 ![gantt_left](/img/gantt_left.png)
@@ -25,7 +24,6 @@ gantt.config.columns = [
 <iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 概述
-
 
 默认情况下，网格显示 4 列:
 
@@ -57,11 +55,9 @@ gantt.init("gantt_here");
 
 ## 显示任务结束日期
 
-
 如果任务数据对象包含格式为 "%Y-%m-%d" 或 "%d-%m-%Y"（不含小时和分钟）的开始和结束日期，默认格式下显示的结束日期可能不是你期望的。有关结束日期格式化的详细信息，请参阅 [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates) 文章。
 
 ## 为特定任务隐藏"添加"按钮
-
 
 一种简单的方式是通过 CSS 隐藏"Add"按钮，防止用户为某些任务添加子任务。
 
@@ -88,7 +84,6 @@ gantt.templates.grid_row_class = ( start, end, task ) => {
 
 
 ## 宽度
-
 
 要控制列的宽度，可在配置对象中使用 [width](api/config/columns.md) 属性:
 
@@ -172,7 +167,6 @@ gantt.init("gantt_here");
 
 ## 数据映射与模板
 
-
 默认情况下，dhtmlxGantt 使用与列名相同的数据属性填充网格。例如，如果某列为 **name:"holder"**，dhtmlxGantt 会查找 JSON 数据中的 'holder' 属性，并在该列显示。
 
 #### 为列数据使用模板
@@ -195,7 +189,6 @@ gantt.init("gantt_here");
 
 ## 文本对齐 
 
-
 要设置列中文本的水平对齐方式，可在该列配置中使用 [align](api/config/columns.md) 属性:
 
 ~~~js
@@ -209,7 +202,6 @@ gantt.init("gantt_here");
 ~~~
 
 ## WBS 编码 {#wbscode}
-
 
 你可以添加一列来显示任务的大纲编号（WBS 编码）。为此，在该列的模板中使用 [getWBSCode](api/method/getwbscode.md) 方法。
 
@@ -260,7 +252,6 @@ const task = gantt.getTaskByWBSCode("1.2");
 
 ## 任务的时间约束
 
-
 :::info
 此功能仅在 PRO 版本中可用
 :::
@@ -308,7 +299,6 @@ const constraintDateEditor = {
 
 
 ## 调整列宽
-
 
 :::info
 此功能仅在 PRO 版本中可用
@@ -388,7 +378,6 @@ dhtmlxGantt 提供了 6 个与调整大小相关的事件:
 
 ## 列可见性
 
-
 要控制列的可见性，请在列配置中使用 [hide](api/config/columns.md) 属性。
 
 
@@ -439,7 +428,6 @@ gantt.init("gantt_here");
 
 
 ## 渲染后修改单元格
-
 
 有时需要在网格单元格渲染后调整其外观或行为。
 
@@ -501,7 +489,6 @@ gantt.config.external_render = {
 
 
 ## 水平滚动条
-
 
 通过在 [layout](guides/layout-config.md) 配置中启用 **scrollable** 属性，可以让网格支持滚动。
 [了解更多关于将布局视图绑定到滚动条的信息](guides/layout-config.md#gundongtiao)。
@@ -581,7 +568,6 @@ gantt.config.layout = {
 
 
 ## 样式
-
 
 关于网格单元格样式的详细信息，请参见 [Gantt 스타일 작업하기](guides/styling-guide.md)
 

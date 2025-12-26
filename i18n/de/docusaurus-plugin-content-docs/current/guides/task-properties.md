@@ -5,14 +5,12 @@ sidebar_label: "Task-Eigenschaften"
 
 # Task-Eigenschaften 
 
-
 Diese Seite bietet eine vollständige Liste der Eigenschaften, die das Task-Objekt enthalten kann.
 
 Die vollständige Liste der Eigenschaften des Link-Objekts finden Sie im Artikel [Link Properties](guides/link-properties.md).
 
 
 ## Erforderliche Eigenschaften
-
 
 Diese Eigenschaften sind immer clientseitig definiert. Gantt erwartet, dass diese Eigenschaften im Task-Objekt beim Laden der Daten vorhanden sind. Falls sie fehlen, fügt Gantt sie automatisch hinzu. Das Entfernen einer dieser Eigenschaften aus geladenen Tasks führt zu Fehlern.
 
@@ -46,7 +44,6 @@ Diese Eigenschaften sind immer clientseitig definiert. Gantt erwartet, dass dies
 
 
 ## Optionale Eigenschaften
-
 
 Diese Eigenschaften können vorhanden sein, müssen es aber nicht. Die Standardlogik und Templates in Gantt nutzen diese Eigenschaften, sofern sie verfügbar sind.
 
@@ -195,7 +192,6 @@ Diese Eigenschaften können vorhanden sein, müssen es aber nicht. Die Standardl
 
 
 ## Dynamische Eigenschaften
-
 
 Dynamische Eigenschaften werden clientseitig erstellt, um den aktuellen Status einer Aufgabe oder eines Links darzustellen. Sie sind nicht zur Speicherung in der Datenbank gedacht, und Gantt ignoriert sie, wenn sie in Ihrem JSON oder XML enthalten sind.
 

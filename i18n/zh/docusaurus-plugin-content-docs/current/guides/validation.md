@@ -5,13 +5,11 @@ sidebar_label: "验证"
 
 # 验证
 
-
 验证有助于确保用户输入的数据准确无误，并防止保存不正确的值。例如，它可以防止在同一时间将两个任务分配给同一个人。
 
 通常，可以通过使用 [dhtmlxGantt API](api/overview/events-overview.md.md) 的事件来拦截并检查输入数据的正确性来进行数据验证:
 
 ## 客户端验证
-
 
 以下事件是进行数据验证时的关键且常用事件:
 
@@ -43,7 +41,6 @@ gantt.attachEvent("onLightboxSave", function(id, item){
 
 
 ## 服务端验证
-
 
 上述方法的一个局限性是:如果通过内联编辑或拖拽任务进行更改，则不会触发该事件。
 

@@ -5,7 +5,6 @@ sidebar_label: "关键路径"
 
 # 关键路径
 
-
 :::info
 此功能仅在 PRO 版本中可用
 :::
@@ -58,7 +57,6 @@ sidebar_label: "关键路径"
 此过程有时可能会影响性能。为了解决这个问题，组件提供了公共方法，可以检测特定任务或连接，从而以更高效的方式显示关键路径。
 
 ## 关键路径逻辑
-
 
 Gantt 在以下情况下将任务标记为关键任务:
 
@@ -151,7 +149,6 @@ gantt.isCriticalTask(gantt.getTask("task3"));// ->'true' /*!*/
 
 ## 检查连接是否为关键连接
 
-
 要检查某连接是否连接了两个关键任务，请使用 [isCriticalLink](api/method/iscriticallink.md) 方法:
 
 ~~~js
@@ -163,7 +160,6 @@ gantt.isCriticalLink(gantt.getLink("link1"));
 
 
 ## 获取自由浮动和总浮动
-
 
 **自由浮动** 指的是任务或里程碑可以延长或推迟而不影响下一个相关任务的时间。
 
@@ -264,11 +260,9 @@ gantt.parse(data);
 
 ## 设置任务之间的滞后和提前时间
 
-
 关键路径任务之间的滞后和提前时间可以进行配置。详细内容请参见[此处](guides/auto-scheduling.md#shezhirenwuzhijiandezhihouhetiqianshijian)。
 
 ## 已完成任务的调度
-
 
 默认情况下，关键路径算法会将已完成的任务（progress 值为 1）与未完成任务同等处理。
 

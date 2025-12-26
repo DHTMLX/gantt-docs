@@ -5,7 +5,6 @@ sidebar_label: "RTL (오른쪽-왼쪽) 모드"
 
 # RTL (오른쪽-왼쪽) 모드
 
-
 ![rtl_mode](/img/rtl_mode.png)
 
 Gantt 차트는 오른쪽-왼쪽(RTL) 모드를 지원하며, [rtl](api/config/rtl.md) 구성 옵션을 사용하여 활성화할 수 있습니다.  

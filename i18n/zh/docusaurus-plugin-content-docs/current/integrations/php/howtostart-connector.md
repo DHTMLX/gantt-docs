@@ -5,7 +5,6 @@ sidebar_label: "dhtmlxConnector"
 
 # dhtmlxGantt 与 dhtmlxConnector
 
-
 本教程将指导你如何在网页上搭建一个简单的甘特图，并实现将任务保存和更新到服务器端数据库的功能。
 
 
@@ -28,7 +27,6 @@ sidebar_label: "dhtmlxConnector"
 
 ## 步骤 1. 下载 dhtmlxGantt 包
 
-
 <div>
 <p>
 
@@ -44,7 +42,6 @@ sidebar_label: "dhtmlxConnector"
 </div>
 
 ## 步骤 2. 引入 dhtmlxGantt 代码文件
-
 
 <div>
 <p>
@@ -85,7 +82,6 @@ sidebar_label: "dhtmlxConnector"
 </div>
 
 ## 步骤 3. 初始化 dhtmlxGantt
-
 
 <div>
 <p>
@@ -140,7 +136,6 @@ sidebar_label: "dhtmlxConnector"
 ~~~
 
 ## 步骤 4. 向甘特图加载数据
-
 
 <div>
 
@@ -224,7 +219,6 @@ gantt.parse (tasks);/*!*/
 
 ## 步骤 5. 创建数据库
 
-
 :::note
 本步骤及后续步骤适用于需要从数据库加载数据而非使用内联数据的场景。
 :::
@@ -283,7 +277,6 @@ gantt.attachEvent("onBeforeTaskAdd", function(id,task){
 ~~~
 
 ## 步骤 6. 从数据库加载数据
-
 
 :::note
 接下来的两个步骤将使用 PHP 进行前后端集成。
@@ -394,7 +387,6 @@ $gantt->render_table("gantt_tasks","id",
 
 ## 第七步:更新数据库中的数据
 
-
 <div>
 
 <p>
@@ -422,7 +414,6 @@ dp.init(gantt); /*!*/
 </div>
 
 ## 错误日志记录
-
 
 如果一切设置无误但仍有问题，可以启用 Gantt 的日志功能来帮助定位问题。
 

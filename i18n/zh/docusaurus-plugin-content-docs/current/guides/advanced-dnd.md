@@ -5,7 +5,6 @@ sidebar_label: "创建/选择任务与拖拽（DnD）"
 
 # 创建/选择任务与拖拽（DnD）
 
-
 dhtmlxGantt 库提供了一个扩展，增强了在时间轴上通过拖拽管理任务的能力。
 
 简而言之，**click_drag** 扩展支持以下功能:
@@ -78,7 +77,6 @@ gantt.$task_data.attachEvent("onBeforeDrag", function (coords) {
 
 ## 通过拖拽创建任务
 
-
 可以直接在时间轴的空白处点击以设置任务起始日期，然后向右拖拽以定义任务持续时间，从而创建任务。
 
 ~~~js
@@ -113,11 +111,9 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 
 ## 为未排期任务设置时间
 
-
 **click_drag** 扩展还支持通过拖拽为[未排期任务](guides/unscheduled-tasks.md)设置时间区间。
 
 ## 通过拖拽选择任务
-
 
 支持多种模式下通过拖拽选择任务:按日期、按行或在范围内选择。
 
@@ -166,7 +162,6 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 
 
 ## 创建拆分任务的部分
-
 
 也可以通过拖拽为[拆分任务](guides/split-tasks.md)创建部分。
 

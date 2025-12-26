@@ -5,7 +5,6 @@ sidebar_label: "Export Service - System Requirements for a standalone install"
 
 # Export Service - System Requirements for a standalone install
 
-
 dhtmlxGantt library provides you with the possibility of exporting and importing data from the Gantt chart using export as online service.
 
 You can also export Gantt locally by installing [export services](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) on your computer. You need to ensure your system meets the system requirements in order to use export modules:
@@ -37,7 +36,6 @@ It is distributed in the form of source code and as a Docker image.
 
 
 ## Import and Export from MS Project and Primavera P6
-
 
 ### Overview
 

@@ -5,8 +5,6 @@ sidebar_label: "Serverseitige Integration"
 
 # Serverseitige Integration
 
-
-
 Die beste Methode, um dhtmlxGantt mit einem Backend zu verbinden, besteht darin, eine RESTful API auf dem Server einzurichten und das Modul [dataprocessor](api/other/dataprocessor.md) auf der Clientseite zu verwenden.
 
 DataProcessor ist eine integrierte Funktion, die Änderungen an den Gantt-Daten überwacht und Aktualisierungen im benötigten Format an die REST API sendet. Dadurch wird die [Integration mit serverseitigen Plattformen](integrations/howtostart-guides.md) besonders einfach. Bei der Arbeit mit einer Objekt-Datenquelle kann DataProcessor so eingerichtet werden, dass Callbacks für Datenänderungen bereitgestellt werden, was für das Data Binding nützlich ist.
@@ -16,7 +14,6 @@ Es gibt auch ein Video-Tutorial, das zeigt, wie man ein Gantt-Diagramm erstellt 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Vorgehensweise {#technique}
-
 
 Im Allgemeinen müssen Sie folgende Schritte ausführen, um Daten mithilfe einer REST API vom Server zu laden:
 
@@ -364,7 +361,6 @@ Hier einige serverseitige Implementierungen, die für die Gantt-Backend-Integrat
 
 ## Speichern der Aufgabenreihenfolge {#storingtheorderoftasks}
 
-
 Gantt zeigt Aufgaben in der Reihenfolge an, in der sie aus der Datenquelle kommen. Falls Benutzer [Aufgaben manuell umsortieren](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure) können,
 sollten Sie diese Reihenfolge in Ihrer Datenbank speichern und sicherstellen, dass Ihr Datenfeed die Aufgaben entsprechend sortiert zurückgibt.
 
@@ -456,7 +452,6 @@ Detaillierte Beispiele für das Speichern der Aufgabenreihenfolge auf bestimmten
 
 ## Eigene Request-Header und Parameter {#customrequestheadersandparameters}
 
-
 ### Hinzufügen benutzerdefinierter Request-Header
 
 Es ist möglich, zusätzliche Header in Anfragen an Ihr Backend einzufügen. Beispielsweise möchten Sie vielleicht ein Autorisierungstoken zu Ihren Anfragen hinzufügen:
@@ -534,7 +529,6 @@ dp.attachEvent("onBeforeUpdate", (id, state, data) => {
 
 ## Auslösen der Datenspeicherung per Skript
 
-
 Wenn der DataProcessor initialisiert ist, werden alle Änderungen, die von Nutzern oder programmatisch vorgenommen werden, automatisch an die Datenquelle gespeichert.
 
 Um eine bestimmte Aufgabe oder Abhängigkeit programmatisch zu aktualisieren, verwenden Sie in der Regel die Methoden [updateTask](api/method/updatetask.md) und [updateLink](api/method/updatelink.md):
@@ -561,7 +555,6 @@ Weitere Methoden, die das Senden von Updates an das Backend auslösen, sind:
 
 
 ## Custom Routing {#customrouting}
-
 
 Wenn die RESTful AJAX API nicht zu den Anforderungen Ihres Backends passt oder Sie genau steuern möchten, was an den Server gesendet wird, kann ein benutzerdefiniertes Routing verwendet werden.
 
@@ -619,7 +612,6 @@ gantt.createDataProcessor((entity, action, data, id) => {
 <span id="resources_crud"></span>
 
 ## Routing von CRUD-Aktionen für Ressourcen und Ressourcenzuweisungen {#resources_crud}
-
 
 Ab Version 8.0 können Änderungen an Ressourcenzuweisungen als separate Einträge mit persistierenden IDs an den DataProcessor gesendet werden, was die Integration mit Backend-APIs vereinfacht. Änderungen an Ressourcenobjekten selbst können ebenfalls an den DataProcessor gesendet werden.
 
@@ -707,7 +699,6 @@ gantt.createDataProcessor((entity, action, data, id) => {
 
 ## Fehlerbehandlung {#errorhandling}
 
-
 Wenn der Server meldet, dass eine Aktion fehlgeschlagen ist, kann er eine Antwort mit `"action":"error"` zurückgeben:
 
 ~~~js
@@ -760,7 +751,6 @@ gantt.render();
 
 ## Kaskadierende Löschung {#cascadedeletion}
 
-
 Standardmäßig löst das Löschen einer Aufgabe eine kaskadierende Löschung ihrer verschachtelten Aufgaben und zugehörigen Verknüpfungen aus. Gantt sendet für jede entfernte Aufgabe und Verknüpfung eine *delete*-Anfrage. 
 Das bedeutet, dass die Datenintegrität im Backend nicht manuell verwaltet werden muss, da Gantt dies effektiv übernimmt.
 
@@ -771,7 +761,6 @@ Ist dies deaktiviert, führt das Löschen eines Projektzweigs nur zu einer Lösc
 
 
 ## XSS-, CSRF- und SQL-Injection-Angriffe
-
 
 Es ist wichtig zu beachten, dass Gantt keinen eingebauten Schutz gegen Bedrohungen wie SQL-Injection, XSS oder CSRF-Angriffe bietet. 
 Die Sicherstellung der Anwendungssicherheit liegt in der Verantwortung der Entwickler, die das Backend implementieren.

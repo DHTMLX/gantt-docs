@@ -5,7 +5,6 @@ sidebar_label: "快速信息（触控支持）"
 
 # 快速信息（触控支持）
 
-
 本库自带 **Quick Info** 扩展，当用户在屏幕上点击任务时，会弹出一个显示任务详情的弹窗。
 
 ![quick_info](/img/quick_info.png)
@@ -30,7 +29,6 @@ gantt.init("gantt_here");
 ~~~
 
 ## API 概览
-
 
 Quick Info 扩展提供了一组 API，可用于调整设置、控制行为或自定义弹窗外观。
 

@@ -35,7 +35,6 @@ gantt.getTotalSlack(7);
 
 ### Details
 
-
 :::note
  Diese Methode ist Teil der **critical_path** Erweiterung. Stellen Sie daher sicher, dass das [critical_path](guides/extensions-list.md#criticalpath) Plugin über die [gantt.plugins](api/method/plugins.md) Methode aktiviert ist. Weitere Informationen finden Sie im Artikel ["Kritischer Pfad"](guides/critical-path.md). 
 :::

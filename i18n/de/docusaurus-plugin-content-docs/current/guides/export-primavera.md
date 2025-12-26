@@ -5,7 +5,6 @@ sidebar_label: "Export und Import aus Primavera P6"
 
 # Export und Import aus Primavera P6
 
-
 Die dhtmlxGantt-Bibliothek unterstützt das Exportieren von Daten aus dem Gantt-Diagramm nach Primavera P6 sowie das Importieren von Daten aus Primavera P6 in das Gantt-Diagramm.
 
 :::note
@@ -18,7 +17,6 @@ Beachten Sie, dass Exportdienste nicht im Gantt-Paket enthalten sind.
 Detaillierte Informationen zu den Nutzungsbedingungen finden Sie im [entsprechenden Artikel](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
 
 ## Einschränkungen des Online-Exportdienstes
-
 
 :::note
 Der Exportdienst hat Einschränkungen hinsichtlich der Verarbeitungszeit und der Anfragegröße.
@@ -44,7 +42,6 @@ Export-/Importdienste (*exportToMSProject* / *importFromMSProject* / *exportToPr
 
 ## Verwendung von Exportmodulen
 
-
 :::note
 Für den Export großer Diagramme steht ein [eigenständiges Exportmodul](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) zur Verfügung.
 Dieses Modul ist kostenlos, wenn Sie eine [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)-, [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)- oder [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)-Lizenz besitzen, oder kann separat über [diesen Link](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210) erworben werden.
@@ -53,7 +50,6 @@ Dieses Modul ist kostenlos, wenn Sie eine [Commercial](https://dhtmlx.com/docs/p
 Weitere Informationen zur Nutzung des Exportmoduls mit MS Project finden Sie in [dieser Anleitung](guides/msp-export-module.md). Das Modul unterstützt Export/Import sowohl für MS Project als auch für Primavera P6.
 
 ## Export nach Primavera P6 {#exporttoprimaverap6}
-
 
 Die Gantt-Komponente kann Verknüpfungen, Aufgaben und Ressourcen nach Primavera P6 exportieren.
 
@@ -304,7 +300,6 @@ gantt.exportToPrimaveraP6({
 
 
 ## Import aus Primavera P6
-
 
 Um eine XML- oder XER-Datei zu konvertieren, senden Sie eine POST-Anfrage an den Exportdienst mit folgenden Angaben:
 

@@ -5,7 +5,6 @@ sidebar_label: "Node.js"
 
 # dhtmlxGantt와 Node.js 연동하기
 
-
 이 튜토리얼에서는 dhtmlxGantt를 Node.js와 서버 측 REST API와 함께 설정하는 방법을 안내합니다.  
 다른 기술 스택을 사용하고 있다면, 아래의 다른 통합 옵션을 참고할 수 있습니다:
 
@@ -29,7 +28,6 @@ Node.js에서는 이미 준비된 다양한 도구를 제공하므로, 모든 �
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 1단계. 프로젝트 생성
-
 
 먼저, 프로젝트 폴더를 만들고 필요한 의존성을 추가합니다. 아래 모듈을 사용할 예정입니다:
 
@@ -127,7 +125,6 @@ app.listen(port, () =>{
 
 ## 2단계. 페이지에 Gantt 추가하기
 
-
 *public* 폴더를 생성하고 그 안에 *index.html* 파일을 추가하세요. *index.html*을 열고 아래 내용을 입력합니다:
 
 **index.html**
@@ -167,7 +164,6 @@ node server.js
 ![gantt_init](/img/gantt_init.png)
 
 ## 3단계. 데이터베이스 준비
-
 
 이제 데이터베이스를 설정합니다.  
 작업(tasks)용 테이블과 링크(links)용 테이블, 두 개의 테이블로 간단한 데이터베이스를 만듭니다:
@@ -215,7 +211,6 @@ INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00',
 자세한 내용은 [여기](guides/loading.md#standarddatabasestructure) 예제를 참고하세요.
 
 ## 4단계. 데이터 불러오기
-
 
 이제 데이터 로딩을 설정할 차례입니다.
 
@@ -336,7 +331,6 @@ gantt.load("/data");/*!*/
 ![load_data_nodejs](/img/load_data_nodejs.png)
 
 ## 5단계. 변경사항 저장하기
-
 
 마지막으로, 변경사항 저장을 설정합니다.  
 즉, 클라이언트에서 발생한 변경을 서버로 전송합니다.  
@@ -643,17 +637,14 @@ function updateOrder(taskId, target) {
 
 ## 애플리케이션 보안
 
-
 Gantt 자체는 SQL 인젝션, XSS, CSRF 공격과 같은 위협에 대한 보호 기능을 제공하지 않습니다. 애플리케이션 보안은 백엔드를 관리하는 개발자의 책임입니다. 자세한 내용은 [이 문서](guides/app-security.md)를 참고하세요.
 
 ## 문제 해결
-
 
 Gantt와 Node.js를 연동하는 모든 단계를 따라 했음에도 작업과 링크가 페이지에 표시되지 않는 경우, [백엔드 통합 문제 해결](guides/troubleshooting.md) 문서를 참고하세요. 일반적인 문제의 원인과 해결 방법을 안내합니다.
 
 
 ## 다음 단계
-
 
 이제 간트 차트가 완전히 동작합니다. 전체 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-node)에서 확인하거나 프로젝트에 사용할 수 있도록 복제하거나 다운로드할 수 있습니다.
 

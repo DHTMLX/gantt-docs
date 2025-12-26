@@ -5,7 +5,6 @@ sidebar_label: "Vue Gantt"
 
 # Vue Gantt
 
-
 :::note
 현재 DHTMLX Gantt를 위한 네이티브 Vue 컴포넌트는 제공되지 않습니다.  
 하지만 아래의 자료들을 활용하면 DHTMLX Gantt를 Vue 애플리케이션에 원활하게 통합할 수 있습니다.

@@ -5,7 +5,6 @@ sidebar_label: "Загрузка и сохранение задач"
 
 # Загрузка и сохранение задач
 
-
 ![gantt_basic](/img/gantt_basic.png)
 
 

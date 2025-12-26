@@ -35,7 +35,6 @@ gantt.config.resource_calendars = {
 
 ### Details
 
-
 - **[resourceId: string | number]** - (*string | number | \{[resourceId: string | number]: string | number | undefined \} | undefined*) - definiert die Zuordnung für den resource_calendar
 
 

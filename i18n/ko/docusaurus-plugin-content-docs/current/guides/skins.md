@@ -5,7 +5,6 @@ sidebar_label: "스킨(Skins)"
 
 # 스킨(Skins)
 
-
 dhtmlxGantt는 Gantt 차트의 전체적인 외관을 손쉽게 변경할 수 있도록 다양한 기본 스킨을 제공합니다:
 
 1. [Terrace (기본)](guides/skins.md#terraceskin)
@@ -45,7 +44,6 @@ gantt.setSkin("dark");
 
 ## 'Terrace' 스킨 {#terraceskin}
 
-
 기본 스킨을 사용하려면 기본 CSS 파일을 포함하세요:
 
 - **dhtmlxgantt.css**
@@ -57,7 +55,6 @@ gantt.setSkin("dark");
 
 
 ## 'Dark' 스킨 {#darkskin}
-
 
 'Dark' 스킨을 적용하려면 기본 CSS 파일을 포함하세요:
 
@@ -76,7 +73,6 @@ gantt.skin = "dark";
 
 
 ## 'Material' 스킨 {#materialskin}
-
 
 'Material' 스킨을 사용하려면 기본 CSS 파일을 포함하세요:
 
@@ -153,7 +149,6 @@ gantt.skin = "skyblue";
 
 
 ## 'Meadow' 스킨 {#meadowskin}
-
 
 'Meadow' 스킨을 적용하려면 기본 CSS 파일을 포함하세요:
 

@@ -5,7 +5,6 @@ sidebar_label: "导出服务 - 独立安装的系统要求"
 
 # 导出服务 - 独立安装的系统要求
 
-
 dhtmlxGantt 库允许通过在线导出服务从甘特图导出和导入数据。
 
 另外，也可以通过在本地安装 [export services](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 实现甘特图的导出。为顺利使用导出模块，请确保您的系统满足以下要求:

@@ -5,7 +5,6 @@ sidebar_label: "Hervorheben von Zeitfenstern"
 
 # Hervorheben von Zeitfenstern
 
-
 Um bestimmte Zeitfenster hervorzuheben, können Sie diese markieren.
 
 - Um eine Zelle im Bereich der Zeitleiste hervorzuheben, verwenden Sie die [timeline_cell_class](api/template/timeline_cell_class.md)-Vorlage.

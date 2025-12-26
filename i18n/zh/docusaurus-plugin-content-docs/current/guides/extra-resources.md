@@ -5,8 +5,6 @@ sidebar_label: "通用功能"
 
 # 通用功能
 
-
-
 - [로컬라이제이션](guides/localization.md)
 - [전체 화면 모드](guides/fullscreen-mode.md)
 - [Empty State Screen](guides/empty-state-screen.md)

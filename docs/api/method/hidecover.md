@@ -14,7 +14,6 @@ description: "hides the lightbox modal overlay that blocks interactions with the
 
 ### Parameters
 
-
 ### Example
 
 ~~~jsx

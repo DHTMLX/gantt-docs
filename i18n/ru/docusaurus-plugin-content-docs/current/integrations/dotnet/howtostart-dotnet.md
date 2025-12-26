@@ -5,7 +5,6 @@ sidebar_label: "ASP.NET MVC"
 
 # dhtmlxGantt с ASP.NET MVC 
 
-
 В этом руководстве представлен пошаговый пример создания диаграммы Gantt с использованием [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) и REST API на стороне сервера.
 
 Другие варианты интеграции с серверной частью описаны в следующих руководствах:
@@ -26,7 +25,6 @@ sidebar_label: "ASP.NET MVC"
 
 ## Шаг 1. Создание проекта
 
-
 ### Создание нового проекта в Visual Studio
 
 Запустите Visual Studio 2022 и выберите *Create a new project*.
@@ -44,7 +42,6 @@ sidebar_label: "ASP.NET MVC"
 ![how_to_start_net_app](/img/how_to_start_net_app.png)
 
 ## Шаг 2. Добавление Gantt на страницу
-
 
 ### Создание контроллера
 
@@ -158,7 +155,6 @@ dp.setTransactionMode("REST");
 
 ## Шаг 3. Создание моделей и базы данных
 
-
 ### Создание моделей
 
 Далее определите классы моделей для диаграммы Gantt. Модель данных состоит из [Задач и Связей](guides/loading.md#standarddatabasestructure).
@@ -214,7 +210,6 @@ namespace DHX.Gantt.Web.Models
 ~~~
 
 ### Настройка подключения к базе данных
-
 
 #### Установка Entity Framework
 
@@ -463,7 +458,6 @@ namespace DHX.Gantt.Web.Models
 ~~~
 
 ## Шаг 4. Реализация Web API
-
 
 ### Общий подход к загрузке данных через REST API
 
@@ -714,7 +708,6 @@ namespace DHX.Gantt.Web.Controllers
 
 ## Обработка ошибок 
 
-
 [Exception filters](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98))" позволяют перехватывать исключения в CRUD-обработчиках и отправлять ответы, которые клиентский Gantt может [интерпретировать](guides/server-side.md#errorhandling).
 
 Чтобы включить обработку ошибок в API Gantt, выполните следующие действия:
@@ -780,7 +773,6 @@ namespace DHX.Gantt.Web.Controllers
 Имейте в виду, что передача текстов исключений напрямую клиенту может быть небезопасна для production-среды.
 
 ## Сохранение порядка задач {#storingtheorderoftasks}
-
 
 Клиентский Gantt поддерживает [смену порядка задач](guides/reordering-tasks.md) с помощью drag and drop. При использовании этой функции становится необходимым сохранять порядок задач в базе данных. Подробнее об этом можно узнать в [общем описании здесь](guides/server-side.md#storingtheorderoftasks).
 
@@ -973,18 +965,15 @@ namespace DHX.Gantt.Web.Models
 
 ## Известные проблемы
 
-
 При запуске приложения на IIS HTTP PUT и DELETE-запросы могут возвращать ошибки 405 или 401. Это может произойти из-за конфликта модуля **WebDAV** с RESTful-обработчиками.
 
 Обычно проблему можно решить, отключив модуль WebDAV в файле **web.config**. Подробнее см. [здесь](https://forums.iis.net/t/1166025.aspx).
 
 ## Безопасность приложения
 
-
 Gantt сам по себе не обеспечивает защиту от угроз, таких как SQL-инъекции, XSS или CSRF-атаки. Обеспечение безопасности приложения лежит на разработчике при реализации серверной части. Подробнее см. [в соответствующей статье](guides/app-security.md).
 
 ## Устранение неполадок
-
 
 ### Шаблон ASP.NET Web Application отсутствует
 
@@ -1034,7 +1023,6 @@ namespace DHX.Gantt.Web.Models
 Если задачи и связи не отображаются после интеграции Gantt с ASP.NET MVC, ознакомьтесь со статьёй [Устранение проблем интеграции с backend](guides/troubleshooting.md). В ней приведены рекомендации по выявлению возможных причин.
 
 ## Что дальше
-
 
 На этом этапе Gantt полностью работоспособен. Полный исходный код доступен на [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet), откуда его можно клонировать или скачать для использования в своих проектах.
 

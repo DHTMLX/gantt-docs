@@ -5,7 +5,6 @@ sidebar_label: "Экспорт и импорт из MS Project"
 
 # Экспорт и импорт из MS Project
 
-
 Библиотека dhtmlxGantt поддерживает экспорт данных из диаграммы Gantt в MS Project, а также импорт данных из MS Project в диаграмму Gantt.
 
 :::note
@@ -18,7 +17,6 @@ sidebar_label: "Экспорт и импорт из MS Project"
 Подробнее об условиях использования каждого сервиса смотрите в [соответствующей статье](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
 
 ## Ограничения онлайн-сервиса экспорта
-
 
 :::note
 Сервис экспорта имеет ограничения по времени обработки и размеру запроса.
@@ -43,7 +41,6 @@ Error: Timeout trigger 20 seconds
 
 ## Использование модулей экспорта
 
-
 :::note
 Для экспорта крупных диаграмм рекомендуется использовать [отдельный модуль экспорта](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
 Этот модуль предоставляется бесплатно при наличии лицензии [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) или [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), либо может быть приобретён отдельно [здесь](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
@@ -53,7 +50,6 @@ Error: Timeout trigger 20 seconds
 
 
 ## Экспорт в MS Project
-
 
 Компонент Gantt поддерживает экспорт связей, задач и ресурсов в MS Project.
 
@@ -292,7 +288,6 @@ gantt.exportToMSProject({
 
 
 ## Импорт из MS Project
-
 
 Чтобы преобразовать XML- или MPP-файл MS Project, отправьте запрос на сервис экспорта со следующими параметрами:
 
@@ -552,7 +547,6 @@ gantt.importFromMSProject({
 Использование других методов, например *gantt.exportToPDF((server:"https://export.dhtmlx.com/gantt/project"))*, приведет к ошибке сервера.
 
 ## dhtmlxGantt vs MS Project: вычисление времени
-
 
 Существуют ключевые различия в том, как dhtmlxGantt и MS Project рассчитывают даты, что иногда может приводить к разным результатам.
 

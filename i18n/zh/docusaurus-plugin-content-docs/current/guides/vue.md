@@ -5,7 +5,6 @@ sidebar_label: "Vue Gantt"
 
 # Vue Gantt
 
-
 :::note
 目前，DHTMLX Gantt 尚未提供原生的 Vue 组件。
 不过，您仍然可以通过以下资源，将 DHTMLX Gantt 平滑集成到您的 Vue 应用中。

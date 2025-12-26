@@ -5,7 +5,6 @@ sidebar_label: "未计划任务"
 
 # 未计划任务
 
-
 可以在甘特图中添加没有具体日期的任务。
 
 ![unscheduled_tasks](/img/unscheduled_tasks.png)

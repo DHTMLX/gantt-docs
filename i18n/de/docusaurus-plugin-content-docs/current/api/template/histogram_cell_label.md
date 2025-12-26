@@ -41,7 +41,6 @@ gantt.templates.histogram_cell_label = function(start_date,end_date,resource,tas
 
 ### Details
 
-
 :::note
  Der Parameter "assignments" wird nur bereitgestellt, wenn die Konfiguration [process_resource_assignments](api/config/process_resource_assignments.md) aktiviert ist. 
 :::

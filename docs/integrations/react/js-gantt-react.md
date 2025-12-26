@@ -6,8 +6,6 @@ description: "Step-by-step guide to using the Gantt inside React without the wra
 
 # dhtmlxGantt with React
 
-
-
 :::note
 This tutorial covers the usage of the JS DHTMLX Gantt in React apps. If you want to use the official React Gantt component, please refer to [React Gantt](integrations/react.md) article.
 :::

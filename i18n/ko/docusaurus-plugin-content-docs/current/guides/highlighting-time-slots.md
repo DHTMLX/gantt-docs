@@ -5,7 +5,6 @@ sidebar_label: "타임 슬롯 하이라이트하기"
 
 # 타임 슬롯 하이라이트하기
 
-
 특정 타임 슬롯에 주목시키기 위해 하이라이트할 수 있습니다.
 
 - 타임라인 영역 내 셀을 하이라이트하려면 [timeline_cell_class](api/template/timeline_cell_class.md) 템플릿을 사용하세요.

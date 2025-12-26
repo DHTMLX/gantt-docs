@@ -5,7 +5,6 @@ sidebar_label: "任务重新排序"
 
 # 任务重新排序
 
-
 dhtmlxGantt 提供了两种在表格中重新排序任务的方法:
 
 1. 拖放操作。
@@ -30,7 +29,6 @@ gantt.init("gantt_here");
 
 ## 跨整个 Gantt 结构拖放
 
-
 [order_branch](api/config/order_branch.md) 选项限制只能在同一树级别内拖动任务。
 
 不过，也可以启用一种模式，使任务可以在 Gantt 的任意位置重新排序，允许任务替换任何树级别的其他任务。要启用此功能，请使用 [order_branch_free](api/config/order_branch_free.md) 选项:
@@ -48,7 +46,6 @@ gantt.init("gantt_here");
 
 
 ## 限制拖放位置
-
 
 如需防止任务被拖放到某些位置，请使用 [onBeforeTaskMove](api/event/onbeforetaskmove.md) 或 [onBeforeRowDragEnd](api/event/onbeforerowdragend.md) 事件:
 
@@ -72,7 +69,6 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 
 ## 提升大数据集下的性能
 
-
 当处理大量任务时，默认的分支重排序模式可能会影响性能。为提升性能，可以使用"marker"模式。
 
 ~~~js
@@ -88,7 +84,6 @@ gantt.config.order_branch = "marker";
 如需在该模式下限制任务拖放位置，请使用 [onBeforeRowDragMove](api/event/onbeforerowdragmove.md) 事件（仅在 "marker" 模式下有效）。
 
 ## 拖放时高亮可用的放置目标
-
 
 如需在拖动过程中直观地显示有效的放置目标（例如，防止根节点被拖到另一个根节点下），请使用 [onRowDragStart](api/event/onrowdragstart.md) 和 [onRowDragEnd](api/event/onrowdragend.md) 事件:
 
@@ -117,7 +112,6 @@ gantt.templates.grid_row_class = function(start, end, task){
 ~~~
 
 ## 在时间轴中垂直重新排序任务
-
 
 请参考[如何在时间轴中垂直重新排序任务](guides/how-to.md#ruhezaishijianxianzhongchuizhichongxinpaixurenwu)部分中的示例。
 

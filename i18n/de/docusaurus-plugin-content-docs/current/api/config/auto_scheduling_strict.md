@@ -29,7 +29,6 @@ gantt.init("gantt_here");
 
 ### Details
 
-
 :::note
 note Diese Einstellung ist Teil der **auto_scheduling** Erweiterung, daher stellen Sie sicher, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. Weitere Informationen finden Sie im Artikel ["Auto Scheduling"](guides/auto-scheduling.md).<br>
 

@@ -5,7 +5,6 @@ sidebar_label: "Installation"
 
 # How to Install dhtmlxGantt 
 
-
 You can use [npm](https://www.npmjs.com/), [NuGet](https://www.nuget.org/) or [Bower](https://bower.io/) package managers to install the dhtmlxGantt package into your project.
 
 It's also possible to include the necessary JS/CSS files from CDN.
@@ -24,7 +23,6 @@ You can access the DHTMLX private npm directly in the [Client's Area](https://dh
 
 ## npm - standard free version
 
-
 You can install the Standard version of dhtmlxGantt from [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt), by executing the following command line:
 
 ~~~html
@@ -37,7 +35,6 @@ Only the Standard version of the Gantt is available at [npmjs.com](https://www.n
 
 
 ## NuGet
-
 
 To install dhtmlxGantt through [NuGet](https://www.nuget.org/), execute the following command line:
 
@@ -54,7 +51,6 @@ install-package DHTMLX.Gantt
 
 ## Bower
 
-
 To install dhtmlxGantt through [Bower](https://bower.io/), execute the following command line:
 
 ~~~html
@@ -62,7 +58,6 @@ bower install gantt
 ~~~
 
 ## CDN
-
 
 To include JS/CSS files from CDN, you should set direct links to **dhtmlxgantt.js** and **dhtmlxgantt.css** files:
 
@@ -75,7 +70,6 @@ To include JS/CSS files from CDN, you should set direct links to **dhtmlxgantt.j
 You can find the full list of links that you can include from CDN, depending on the version of dhtmlxGantt in a [separate article](guides/cdn-links-list.md).
 
 ## Download the Package
-
 
 ### GPL version
 
@@ -95,7 +89,6 @@ Then include **dhtmlxgantt.js** and **dhtmlxgantt.css** files into a page. Make 
 ~~~
 
 ## Adding PRO Edition into Project
-
 
 ### **Install Pro version**
 

@@ -5,7 +5,6 @@ sidebar_label: "任务的父子关系"
 
 # 任务的父子关系
 
-
 本文介绍了处理甘特图中任务层级结构的方法。
 
 *如需了解获取任务对象或ID等基本操作，请参考 [Task Object/Id](guides/task-object-operations.md) 文章。*

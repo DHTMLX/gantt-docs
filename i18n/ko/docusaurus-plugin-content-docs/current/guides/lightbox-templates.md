@@ -5,7 +5,6 @@ sidebar_label: "라이트박스의 템플릿"
 
 # 라이트박스의 템플릿
 
-
 <table class="webixdoc_links">
     <tbody>
         <tr>

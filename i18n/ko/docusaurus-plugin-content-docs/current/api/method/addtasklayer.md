@@ -47,7 +47,6 @@ gantt.addTaskLayer(function draw_deadline(task) {
 
 ### Details
 
-
 인수는 다음 유형 중 하나일 수 있습니다:
 
 

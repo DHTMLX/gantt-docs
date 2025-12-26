@@ -21,7 +21,6 @@ If you haven't rendered a basic chart yet, start from the [Quick Start](integrat
 
 ### React state as the source of truth (recommended)
 
-
 In this model:
 
 - you keep `tasks`, `links`, `resources`, `resourceAssignments` in React state or a state library

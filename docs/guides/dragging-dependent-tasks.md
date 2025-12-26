@@ -5,11 +5,9 @@ sidebar_label: "Dragging Tasks Together with Their Dependent Tasks"
 
 # Dragging Tasks Together with Their Dependent Tasks
 
-
 There are several ways of implementing tasks moving with their dependent tasks.
 
 ## Using Auto Scheduling Extension
-
 
 Firstly, you can make use of the [Auto Scheduling](guides/auto-scheduling.md) extension.
 It allows scheduling tasks automatically depending on relations between them.
@@ -29,7 +27,6 @@ gantt.config.auto_scheduling = true;
 ~~~
 
 ## Moving Tasks Manually
-
 
 ### Chapter Contents
 
@@ -100,7 +97,6 @@ gantt.eachSuccessor = function(callback, root){
 
 
 ### Moving Descendants synchronously with the main task {#sync}
-
 
 Descendant tasks can be moved synchronously with the moving of the main tasks, i.e. when the user starts moving tasks, all dependent branches will be moved together. 
 It will look good, but the downside is that there may be a performance drop, if you are moving many tasks at the same time.

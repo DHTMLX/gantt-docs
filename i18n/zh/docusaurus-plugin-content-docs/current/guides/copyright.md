@@ -5,7 +5,6 @@ sidebar_label: "第三方许可证"
 
 # 第三方许可证
 
-
 本文提供了与 DHTMLX Gantt 库中包含的第三方软件组件相关的声明和附加条款。
 
 我们在 Gantt 图表的 JS 文件中集成了经过编译的 **Bluebird** 库，其遵循 MIT 许可协议。您可以在 JS 文件的注释中找到相关引用。关于其与 Gantt 集成的详细信息，请参见:[Promise](api/method/promise.md)。
@@ -15,7 +14,6 @@ Material 皮肤中使用的 **Roboto Google 字体** 默认未与库捆绑，但
 我们还在示例应用程序中使用了一些开源库，例如 **Node.js Express 模块、body_parser 和 strip_tags**（这些库在 samples 的 package 文件 backend/package.json 中列出）。它们不是 Gantt 库本身的一部分，仅用于演示目的。
 
 ## Gantt 核心库中使用的组件
-
 
 ### Bluebird Promise 库
 
@@ -41,7 +39,6 @@ MIT 许可协议 (MIT)
 除非适用法律要求或书面同意，依据本许可证分发的软件按"原样"提供，不附带任何明示或暗示的担保或条件。具体的许可权限和限制请参阅许可证。
 
 ## 示例应用程序中使用的组件
-
 
 ### body-parser
 

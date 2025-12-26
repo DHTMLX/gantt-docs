@@ -5,14 +5,12 @@ sidebar_label: "Event Handling"
 
 # Event Handling 
 
-
 Events help to interact with users and bring interactivity to the page.
 
 When the user makes some action in the Gantt chart, dhtmlxGantt invokes an event. You can use this event to detect the action and run the desired code for it. 
 
 
 ## Attaching events
-
 
 To attach an event, use the [attachEvent](api/method/attachevent.md) method.
 
@@ -31,7 +29,6 @@ gantt.attachEvent("onTaskClick", function(id, e) {
 - You can attach several handlers to the same event.
 
 ## Detaching events
-
 
 To detach an event handler, use the [detachEvent](api/method/detachevent.md) method:
 
@@ -63,7 +60,6 @@ while (events.length)
 
 ## Checking the existence of a handler
 
-
 To check, whether a specific event has any handlers attached, use the [checkEvent](api/method/checkevent.md) method:
 
 ~~~js {5}
@@ -75,7 +71,6 @@ gantt.checkEvent("onTaskClick"); //returns 'true'
 ~~~
 
 ## Cancelable events 
-
 
 All events with the preceding subword 'onbefore' can be cancelled.
 

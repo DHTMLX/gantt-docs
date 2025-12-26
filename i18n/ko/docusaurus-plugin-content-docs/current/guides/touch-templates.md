@@ -5,7 +5,6 @@ sidebar_label: "'Quick Info' 확장(터치 지원)의 템플릿"
 
 # 'Quick Info' 확장(터치 지원)의 템플릿
 
-
 <table class="webixdoc_links">
     <tbody>
         <tr>

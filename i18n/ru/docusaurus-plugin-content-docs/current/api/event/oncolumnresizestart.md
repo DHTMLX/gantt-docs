@@ -37,7 +37,6 @@ gantt.attachEvent("onColumnResizeStart", function(index, column){
 
 ### Details
 
-
 Это событие можно заблокировать. Возврат *false* предотвратит изменение размера колонки.
 
 ### Related API

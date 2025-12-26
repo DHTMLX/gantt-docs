@@ -5,13 +5,11 @@ sidebar_label: "Textarea 컨트롤"
 
 # Textarea 컨트롤
 
-
 이 컨트롤은 여러 줄의 텍스트 필드를 제공합니다.
 
 ![textarea_control](/img/textarea_control.png)
 
 ## 초기화
-
 
 기본적으로 라이트박스에는 하나의 **textarea** 컨트롤이 포함되어 있습니다. 추가로 textarea 컨트롤을 추가하려면 다음 단계를 따르세요:
 
@@ -32,7 +30,6 @@ gantt.locale.labels.section_details = "Details";
 ~~~
 
 ## 속성
-
 
 **textarea** 컨트롤에서 일반적으로 사용되는 주요 속성은 다음과 같습니다 (전체 목록은 [여기](api/config/lightbox.md)에서 확인할 수 있습니다):
 

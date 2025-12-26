@@ -33,7 +33,6 @@ gantt.init("gantt_here");
 
 ### Details
 
-
 :::note
  Diese Eigenschaft ist jetzt veraltet. Verwenden Sie stattdessen [gantt.config.layout](api/config/layout.md) und konfigurieren Sie die grid- und resizer-Objekte nach Bedarf. Weitere Details finden Sie [hier](guides/layout-config.md#defaultlayout). 
 :::

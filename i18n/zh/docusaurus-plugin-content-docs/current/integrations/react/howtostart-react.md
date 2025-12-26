@@ -5,7 +5,6 @@ sidebar_label: "底层集成"
 
 # dhtmlxGantt 与 React 集成
 
-
 :::note
 本教程演示如何在 React 应用中使用 JS 版本的 DHTMLX Gantt。如需了解官方 React Gantt 组件，请参阅 [React Gantt](integrations/react.md) 文章。
 :::

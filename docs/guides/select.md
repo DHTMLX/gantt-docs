@@ -5,7 +5,6 @@ sidebar_label: "Select Control"
 
 # Select Control
 
-
 A drop-down list box.
 
 ![select_control](/img/select_control.png)
@@ -29,7 +28,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 
 ## Initialization
-
 
 To add the **select** control to the lightbox, follow these steps:
 
@@ -62,7 +60,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 ## Properties
 
-
 The following properties are mostly important and commonly set for the **select** control (see the full list [here](api/config/lightbox.md)):
 
 - **name** - (*string*) the section name 
@@ -79,7 +76,6 @@ the following properties:
 
 
 ## Populating control with data
-
 
 Generally, to set values for the **select** control, use the [options](api/config/lightbox.md) parameter:
 
@@ -101,7 +97,6 @@ Items in the [options](api/config/lightbox.md) parameter have 2 mandatory proper
 
 
 ## Populating control with data from the server
-
 
 To populate the control from the server, set the [options](api/config/lightbox.md) option to the value returned by the [serverList](api/method/serverlist.md) method:
 

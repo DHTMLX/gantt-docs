@@ -5,13 +5,11 @@ sidebar_label: "事件处理"
 
 # 事件处理
 
-
 事件是让页面对用户操作做出交互和响应的关键。
 
 每当用户与 Gantt 图进行交互时，dhtmlxGantt 会触发一个事件。这些事件可用于检测发生了什么并执行相应的代码。
 
 ## 事件绑定
-
 
 要添加事件监听器，请使用 [attachEvent](api/method/attachevent.md) 方法。
 
@@ -30,7 +28,6 @@ gantt.attachEvent("onTaskClick", function(id, e) {
 - 可以为同一个事件绑定多个处理函数。
 
 ## 事件解绑
-
 
 要移除事件处理器，请使用 [detachEvent](api/method/detachevent.md) 方法:
 
@@ -63,7 +60,6 @@ while (events.length)
 
 ## 检查处理器是否存在
 
-
 要验证某个事件是否已绑定处理器，请使用 [checkEvent](api/method/checkevent.md) 方法:
 
 ~~~js
@@ -75,7 +71,6 @@ gantt.checkEvent("onTaskClick"); //返回 'true' /*!*/
 ~~~
 
 ## 可取消事件
-
 
 以 'onbefore' 开头的事件可以被取消。
 

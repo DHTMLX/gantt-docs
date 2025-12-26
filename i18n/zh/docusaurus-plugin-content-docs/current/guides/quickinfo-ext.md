@@ -5,14 +5,12 @@ sidebar_label: "quickInfo 扩展"
 
 # quickInfo 扩展
 
-
 关于 quickInfo 扩展的更多信息，请参见 [퀵 인포 (터치 지원)](guides/quick-info.md) 文章。
 
 
 *quickInfo* 对象提供以下 API:
 
 ## 方法
-
 
 - <span class="submethod">**show (id): void**</span> - 为指定元素打开 quick info 弹窗
     - **_id_** - (*number | string*) - 任务 ID

@@ -27,7 +27,6 @@ gantt.config.drag_project = true;
 
 ### Details
 
-
 사용자가 하위 작업과 함께 전체 프로젝트를 드래그 앤 드롭할 수 있도록 합니다.
 
 ### Related Guides

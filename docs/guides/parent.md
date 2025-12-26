@@ -5,7 +5,6 @@ sidebar_label: "Parent Control"
 
 # Parent Control
 
-
 A select box for changing the parent of a task. The control loads all tasks presented in the Gantt chart but you can set filtering rules and the template of displayable values.
 Everything else is identical to [Select Control](guides/select.md).
  
@@ -25,7 +24,6 @@ gantt.config.lightbox.sections = [
 
 
 ## Initialization 
-
 
 To add the **parent** control to the lightbox, follow these steps:
 
@@ -52,7 +50,6 @@ gantt.locale.labels["section_parent"] = "Parent task";
 
 ## Properties
 
-
 The following properties are mostly important and commonly set for the **parent** control (see the full list <a href="[lightbox](api/config/lightbox.md)">here</a>):
 
 - **name** - (*string*) the section name 
@@ -68,7 +65,6 @@ The following properties are mostly important and commonly set for the **parent*
   
 
 ## Options filtering
-
 
 To filter options presented in the **parent** control, use the **filter** property:
 
@@ -103,7 +99,6 @@ and returns:
 
 ## Options sorting
 
-
 To sort options presented in the **parent** control, use the **sort** property:
 
 **Sorting tasks by the title's length**
@@ -127,7 +122,6 @@ The **sort** property sets a sorting function that is called for each pair of ad
 - 0 - the order of both objects doesn't change
 
 ## Template for options
-
 
 To set the template of options in the **parent** control, use the **template** property:
 

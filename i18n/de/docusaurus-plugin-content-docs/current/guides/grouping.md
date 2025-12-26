@@ -5,7 +5,6 @@ sidebar_label: "Gruppierung von Aufgaben"
 
 # Gruppierung von Aufgaben
 
-
 :::info
 Diese Funktion ist ausschließlich in der PRO-Edition verfügbar
 :::
@@ -131,7 +130,6 @@ Beachten Sie, dass die Standardgruppe Aufgaben enthält, die zu keiner anderen G
 
 ## Aufgaben-Gruppierung aufheben
 
-
 Um die Gruppierung aufzuheben, rufen Sie die Methode [groupBy](api/method/groupby.md) mit *false* als Argument auf:
 
 **Aktuelle Gruppierung zurücksetzen**
@@ -140,7 +138,6 @@ gantt.groupBy(false);
 ~~~
 
 ## Verwendung von Collections zur Gruppendefinition
-
 
 Gruppen werden häufig von mehreren Komponenten auf einer Seite gemeinsam genutzt. Um Duplizierungen zu vermeiden, können Gruppen als benannte Collections definiert werden.
 
@@ -160,7 +157,6 @@ gantt.groupBy({
 
 
 ## Beibehaltung der ursprünglichen Aufgabenhierarchie in Gruppen
-
 
 Standardmäßig wird beim Aktivieren der Gruppierung die ursprüngliche Hierarchie des Gantt-Baums nicht angezeigt; alle Aufgaben erscheinen als direkte Kinder ihrer Gruppen.
 

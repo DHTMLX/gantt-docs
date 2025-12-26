@@ -5,7 +5,6 @@ sidebar_label: "任务类型"
 
 # 任务类型
 
-
 :::info
 本功能仅在 PRO 版本中提供。
 :::
@@ -38,7 +37,6 @@ var data = {
 
 ## 常规任务
 
-
 默认情况下，dhtmlxGantt 会创建常规任务（即 **type="task"** 的任务）。
 
 ![type_task](/img/type_task.png)
@@ -69,7 +67,6 @@ var data = {
 - 可以在时间线上隐藏。详见[说明](guides/milestones.md#yincangrenwuhelichengbei)。
 
 ## 项目任务
-
 
 项目任务的时间跨度为其最早子任务的开始时间到最晚子任务的结束时间。
 
@@ -110,7 +107,6 @@ var data = {
 
 ## 里程碑
 
-
 [里程碑](guides/milestones.md) 是工期为零的任务，用于突出显示项目中的关键日期（[详细信息](guides/milestones.md)）。
 
 ![type_milestone](/img/type_milestone.png)
@@ -144,7 +140,6 @@ var data = {
 :::
 
 ## 针对不同任务类型的专属 lightbox
-
 
 每种任务类型有其独特属性，因此详情表单（lightbox）可针对不同类型单独配置。
 相关配置存储在 [lightbox](api/config/lightbox.md) 对象中。
@@ -181,7 +176,6 @@ gantt.config.lightbox.milestone_sections= [
 更多 lightbox 配置内容请参见 [편집 폼 구성하기](guides/edit-form.md) 章节。
 
 ## 创建自定义类型
-
 
 所有任务类型均定义在 [types](api/config/types.md) 对象中。
 
@@ -263,7 +257,6 @@ gantt.templates.task_text = function(start, end, task){
 
 
 ## 自定义任务类型的显示方式
-
 
 如需更改现有任务类型的外观，可使用 [type_renderers](api/config/type_renderers.md) 选项。此功能允许你重写控制任务类型在页面上渲染方式的函数。
 

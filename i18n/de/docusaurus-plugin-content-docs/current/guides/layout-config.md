@@ -5,7 +5,6 @@ sidebar_label: "Gantt-Layout"
 
 # Gantt-Layout
 
-
 Ab Version 5.0 unterstützt Gantt die Definition eines anpassbaren Layouts, das es Ihnen ermöglicht, die Elemente der Komponente als innere Ansichten innerhalb eines Layouts anzuordnen. Diese Funktion ermöglicht das Hinzufügen zusätzlicher Zeitachsen und Grids und schafft so eine flexible Gantt-Diagrammstruktur mit verschiedenen Möglichkeiten zur Organisation der einzelnen Bereiche.
 
 Zum Beispiel können Sie ein zusätzliches Grid auf der rechten Seite der Zeitachse hinzufügen:
@@ -25,7 +24,6 @@ Oder ein weiteres Grid und eine zusätzliche Zeitachse unterhalb der Standardans
 
 
 ## Standardlayout
-
 
 Das Layout wird über die Einstellung [gantt.config.layout](api/config/layout.md) gesteuert. Hier ist die Standardkonfiguration des Layouts:
 
@@ -79,7 +77,6 @@ Beachten Sie, dass die Layout-Konfiguration vor der Initialisierung von Gantt fe
 :::
 
 ## Scrollbalken
-
 
 Scrollbalken im Layout werden durch die Ansicht **"scrollbar"** definiert. Es können sowohl horizontale als auch vertikale Scrollbalken verwendet werden.
 
@@ -187,7 +184,6 @@ Sehen Sie sich diese Beispiele an:
 - [Gantt. Universal Layout configuration](https://snippet.dhtmlx.com/uqejdyqc)
 
 ## Layout-Anpassung
-
 
 Sie können das Standardlayout anpassen und ein Layout-Schema definieren, das Ihren Anforderungen entspricht, indem Sie dem Gantt-Diagramm zusätzliche Ansichten hinzufügen.
 
@@ -315,7 +311,6 @@ gantt.$container.classList.remove("no_resizers");
 
 ## HTML als innere Ansicht
 
-
 Benutzerdefiniertes HTML kann ebenfalls als innere Ansicht innerhalb des Gantt-Layouts verwendet werden. Hier ein Beispiel:
 
 ~~~js
@@ -340,7 +335,6 @@ gantt.config.layout = {
 
 
 ## Erforderliche Ansichten und Einstellungen {#requiredviewsandsettings}
-
 
 Die öffentliche API des gantt-Objekts umfasst Methoden, die an bestimmte Layout-Ansichten gebunden sind, wie [getTaskPosition](api/method/gettaskposition.md), [getTaskNode](api/method/gettasknode.md) und [getScrollState](api/method/getscrollstate.md).
 
@@ -390,7 +384,6 @@ gantt.config.layout = {
 Sie können beliebig viele zusätzliche Ansichten zum Layout hinzufügen.
 
 ## Konfigurationen und Templates von Ansichten
-
 
 Grid- und Timeline-Ansichten verwenden Templates und Konfigurationen aus den globalen [gantt.config/gantt.templates](guides/common-configuration.md). Diese können jedoch für bestimmte Ansichten auf Layout-Ebene überschrieben werden.
 
@@ -476,7 +469,6 @@ Weitere Informationen finden Sie im Artikel [Resource Management](guides/resourc
 
 ## Sichtbarkeitsgruppen
 
-
 Manchmal ist es nützlich, die Sichtbarkeit bestimmter Layout-Elemente zu synchronisieren. Wenn sich beispielsweise horizontale Scrollleisten in benachbarten Zellen befinden, möchten Sie vielleicht, dass beide gleichzeitig angezeigt oder ausgeblendet werden.
 
 ![scrollable_grid](/img/scrollable_grid.png)
@@ -558,7 +550,6 @@ gantt.config.layout = {
 
 ## Größenanpassung der Gantt-Layout-Teile
 
-
 Die relativen Größen der Gantt-Layout-Zellen können mit der **gravity**-Eigenschaft in der Konfiguration jeder Zelle gesteuert werden. Dieser Wert legt das Größenverhältnis zwischen den Zellen fest.
 
 ~~~js
@@ -632,7 +623,6 @@ gantt.config.layout = {
 
 ## Eltern-Layout-Ansichten ausblenden
 
-
 Wenn eine Layout-Ansicht ausgeblendet werden soll, sobald alle untergeordneten Ansichten unsichtbar sind, setzen Sie **hide_empty:true** in der Konfiguration dieser Layout-Zelle, wie folgt:
 
 ~~~js
@@ -660,11 +650,9 @@ gantt.config.layout = {
 
 ## Wechseln zwischen Ansichten
 
-
 Um zwischen verschiedenen Layout-Ansichten zu wechseln, lesen Sie die Abschnitte [How to toggle grid/chart](guides/how-to.md#howtotogglegridchart) und [How to toggle the resource view](guides/how-to.md#howtotoggletheresourceview) für detaillierte Anweisungen.
 
 ## Spalten im Grid einfrieren
-
 
 Es ist möglich, ein Gantt-Diagramm mit einer oder mehreren eingefrorenen Spalten zu initialisieren. Anleitungen dazu finden Sie im Abschnitt [How to freeze/fix columns in the grid](guides/how-to.md#howtofreezefixcolumnsinthegrid).
 

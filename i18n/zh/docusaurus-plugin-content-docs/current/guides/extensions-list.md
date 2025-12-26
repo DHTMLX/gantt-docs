@@ -5,13 +5,11 @@ sidebar_label: "扩展功能完整列表"
 
 # 扩展功能完整列表
 
-
 dhtmlxGantt 提供了多种扩展功能，用于增强基础功能。
 
 要启用某个扩展，只需通过 [gantt.plugins](api/method/plugins.md) 方法激活相应插件。
 
 ## 高级拖放
-
 
 此扩展允许通过拖放来创建和选择任务。
 
@@ -33,7 +31,6 @@ API: [click_drag](api/config/click_drag.md)
 
 
 ## 自动排程
-
 
 :::note
 此扩展仅在 PRO 版本中可用
@@ -60,7 +57,6 @@ API: [auto_scheduling](api/config/auto_scheduling.md)
 
 ## 关键路径
 
-
 :::note
 此扩展仅在 PRO 版本中可用
 :::
@@ -86,7 +82,6 @@ API: [highlight_critical_path](api/config/highlight_critical_path.md)
 
 ## 拖动时间轴
 
-
 允许通过鼠标拖动来滚动时间轴视图。
 
 ~~~js
@@ -104,7 +99,6 @@ API: [drag_timeline](api/config/drag_timeline.md)
 
 
 ## 额外覆盖层
-
 
 :::note
 此扩展仅在 PRO 版本中可用。
@@ -128,7 +122,6 @@ gantt.plugins({
 
 ## 导出服务
 
-
 启用在线导出服务。
 
 ~~~js
@@ -142,7 +135,6 @@ gantt.plugins({
 文章: [데이터 내보내기 및 가져오기](guides/export-common.md)
 
 ## 全屏显示
-
 
 以全屏模式显示甘特图。
 
@@ -161,7 +153,6 @@ gantt.plugins({
 
 
 ## 任务分组
-
 
 :::note
 此扩展仅在 PRO 版本中可用
@@ -206,7 +197,6 @@ API: [keyboard_navigation](api/config/keyboard_navigation.md),[keyboard_navigati
 
 ## 多任务选择
 
-
 支持在甘特图中同时选择多个任务。
 
 ~~~js
@@ -227,7 +217,6 @@ API: [multiselect](api/config/multiselect.md)
 
 
 ## 快速信息
-
 
 弹出显示任务详情。
 
@@ -268,7 +257,6 @@ gantt.plugins({
 
 ## 撤销
 
-
 为所做更改提供撤销和重做功能。
 
 ~~~js
@@ -289,7 +277,6 @@ API: [undo](api/config/undo.md), [redo](api/config/redo.md)
 
 
 ## 垂直标记
-
 
 高亮显示特定日期或日期范围。
 

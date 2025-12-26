@@ -41,7 +41,6 @@ gantt.attachEvent("onColumnResizeEnd", function(index, column, new_width){
 
 ### Details
 
-
 此事件可以被阻止。返回 *false* 会阻止列宽度的调整。
 
 ### Related API

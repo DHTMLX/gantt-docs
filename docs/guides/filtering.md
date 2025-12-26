@@ -5,7 +5,6 @@ sidebar_label: "Filtering Tasks"
 
 # Filtering Tasks
 
-
 Filtration allows you to manage the number and character of tasks rendered in the Gantt chart. For example, you can use filtration to display the tasks assigned to a specific worker or the
 tasks that have the urgent priority.
 

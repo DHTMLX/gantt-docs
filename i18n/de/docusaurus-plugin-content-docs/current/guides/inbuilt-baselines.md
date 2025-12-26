@@ -5,7 +5,6 @@ sidebar_label: "Zusätzliche Elemente in der Zeitleiste"
 
 # Zusätzliche Elemente in der Zeitleiste
 
-
 :::info
 Dieses Feature ist ausschließlich in der PRO-Edition verfügbar
 :::
@@ -21,7 +20,6 @@ Standardmäßig rendert dhtmlxGantt die Elemente der Zeitleiste als Ebenen in fo
 Gantt enthält eingebaute Elemente wie Basispläne (Baselines), Deadlines und Zeitbeschränkungen. Neben den standardmäßigen zusätzlichen Elementen können Sie auch [eigene Elemente als zusätzliche Ebenen erstellen](guides/baselines.md).
 
 ## Basispläne (Baselines)
-
 
 Basispläne spielen eine entscheidende Rolle in Projektmanagement-Tools wie Gantt-Diagrammen, da sie den Vergleich zwischen dem geplanten Zeitplan und dem tatsächlichen Fortschritt ermöglichen. Die Gantt-API bietet integrierte Unterstützung für Baselines, was die Arbeit mit dieser wichtigen Funktion erleichtert.
 
@@ -201,7 +199,6 @@ gantt.templates.baseline_text = function(task, baseline, index) {
 ~~~
 
 ## Deadlines und Einschränkungen
-
 
 Das Verfolgen von Deadlines und Aufgabenbeschränkungen ist entscheidend für eine erfolgreiche Projektdurchführung. DHTMLX Gantt enthält integrierte Visualisierungen für Deadlines und Einschränkungen, um das Management der Projektzeitleiste zu verbessern.
 

@@ -5,14 +5,12 @@ sidebar_label: "Operationen mit Datumsangaben"
 
 # Operationen mit Datumsangaben
 
-
 dhtmlxGantt enthält das Objekt [date](api/other/date.md), das verschiedene Methoden zur Datumsformatierung bereitstellt. Diese sind besonders nützlich beim Arbeiten mit Date-Objekten.
 
 Dieser Artikel stellt einige der wichtigsten und am häufigsten verwendeten Methoden vor. Die vollständige Liste aller Methoden finden Sie auf der [Date-Objekt-Seite](api/other/date.md).
 
 
 ## Konvertieren eines Date-Objekts in einen String
-
 
 Um ein Date-Objekt in einen String umzuwandeln, können Sie die Methode [date_to_str](api/other/date.md) verwenden: 
 

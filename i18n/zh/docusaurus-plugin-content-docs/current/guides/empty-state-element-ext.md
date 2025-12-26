@@ -5,7 +5,6 @@ sidebar_label: "emptyStateElement 扩展"
 
 # emptyStateElement 扩展
 
-
 关于 emptyStateElement 扩展的更多信息，请参阅 [Empty State Screen](guides/empty-state-screen.md) 文章。
 
 ## 方法

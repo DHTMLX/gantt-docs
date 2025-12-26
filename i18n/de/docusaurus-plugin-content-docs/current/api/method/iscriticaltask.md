@@ -49,7 +49,6 @@ gantt.isCriticalTask(gantt.getTask(3)); // -> 'true' /*!*/
 
 ### Details
 
-
 :::note
  Diese Methode ist Teil der **critical_path**-Erweiterung. Stellen Sie daher sicher, dass das [critical_path](guides/extensions-list.md#criticalpath) Plugin aktiviert ist. Weitere Informationen finden Sie im Artikel ["Kritischer Pfad"](guides/critical-path.md). 
 :::

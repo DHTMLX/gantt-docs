@@ -44,7 +44,6 @@ The section object contains the following members:
 
 ## Properties
 
-
 - **section** - (*object*) - the configuration object of the section
     - **_id_** - (*string*) - the section id
     - **_name_** - (*string*) - the section name. According to the name, the gantt takes the label for the section from the **locale.labels** collection. For example, for the 'description' section, the label will be taken as **gantt.locale.labels.section_description**

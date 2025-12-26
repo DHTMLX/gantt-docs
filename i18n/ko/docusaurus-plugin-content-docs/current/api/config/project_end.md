@@ -25,7 +25,6 @@ gantt.config.project_end = new Date(2019, 2, 1);
 
 ### Details
 
-
 이 설정은 backward scheduling이 켜져 있을 때 새 작업의 기본 종료 날짜로 사용할 수 있습니다.
 
 ### Related API

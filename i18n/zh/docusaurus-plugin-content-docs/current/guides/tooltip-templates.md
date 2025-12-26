@@ -5,7 +5,6 @@ sidebar_label: "Tooltips 模板"
 
 # Tooltips 模板
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

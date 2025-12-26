@@ -5,7 +5,6 @@ sidebar_label: "Контрол Template"
 
 # Контрол Template
 
-
 Это контейнер, который содержит некоторый HTML-контент внутри.
 
 ![template_control](/img/template_control.png)
@@ -31,7 +30,6 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 
 ## Инициализация
-
 
 Чтобы добавить контрол **template** в лайтбокс, выполните следующие действия:
 
@@ -64,7 +62,6 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 
 ## Свойства
-
 
 Ниже приведены основные свойства, часто используемые с контролом **template** (полный список смотрите [здесь](api/config/lightbox.md)):
 

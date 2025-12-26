@@ -5,7 +5,6 @@ sidebar_label: "Dragging Tasks within the Timeline"
 
 # Dragging Tasks within the Timeline
 
-
 Dragging allows users to quickly change the start (end) dates of the tasks, their duration. 
 
 
@@ -29,7 +28,6 @@ Let's consider typical cases when the default drag behavior needs customization:
 
 
 ## Denying dragging of specific tasks
-
 
 To deny dragging of specific tasks, use the [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) event:
 
@@ -101,7 +99,6 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 
 ## Dragging children together with the parent
 
-
 To allow dragging children when the user is dragging their parent's task, use the [onTaskDrag](api/event/ontaskdrag.md) event (see more on the event [above](guides/dnd.md#denying-dragging-tasks-out-of-specific-dates)):
 
 ~~~js
@@ -154,13 +151,11 @@ gantt.config.drag_project = true;
 
 ## Dragging dependent tasks together with independent tasks
 
-
 There are several ways of implementing tasks moving with their dependent tasks.
 You can read about all of them in a separate article [Dragging Tasks Together with Their Dependent Tasks](guides/dragging-dependent-tasks.md).
 
 
 ## Setting minimal task duration
-
 
 Minimal task duration can be specified via the [min_duration](api/config/min_duration.md) setting.
 
@@ -200,7 +195,6 @@ gantt.init("gantt_here");
 
 ## Disabling resize of specific tasks
 
-
 If you want to prevent certain tasks from being resized, there are two things you can do:
 
 1. Remove resize handles of a task from the UI via CSS.
@@ -236,7 +230,6 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 
 ## Which side of a task is being resized
 
-
 The ["resize"](api/event/onbeforetaskdrag.md) mode of drag and drop means that the user resizes the task either from the start date or from the end date.
 
 If you need to find out which date the user is modifying by the resize, you can use the **gantt.getState().drag_from_start** flag:
@@ -255,7 +248,6 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 ~~~
 
 ## Disabling resize of the start or the end date of a task
-
 
 You can locate resize handles using the following selectors:
 

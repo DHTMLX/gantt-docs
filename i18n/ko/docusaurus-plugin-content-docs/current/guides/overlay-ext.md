@@ -5,7 +5,6 @@ sidebar_label: "오버레이 확장"
 
 # 오버레이 확장
 
-
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다.
 :::
@@ -13,7 +12,6 @@ sidebar_label: "오버레이 확장"
 **overlay** 확장 기능은 오버레이 작업을 보다 쉽게 할 수 있도록 설계된 다양한 API 메서드를 제공합니다. 자세한 내용은 [타임라인 영역의 커스텀 요소](guides/baselines.md#extraoverlayforthechart) 문서를 참고하세요.
 
 ## 메서드
-
 
 다음 메서드들은 **gantt.ext.overlay** 객체를 통해 사용할 수 있습니다:
 

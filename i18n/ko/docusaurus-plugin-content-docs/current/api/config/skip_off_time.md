@@ -29,7 +29,6 @@ gantt.init("gantt_here");
 
 ### Details
 
-
 **skip_off_time** 설정은 스케일 자체를 변경하지 않고, 근무 시간이 전혀 포함되지 않은 셀을 숨긴다는 점을 기억하세요.
 
 예제 1

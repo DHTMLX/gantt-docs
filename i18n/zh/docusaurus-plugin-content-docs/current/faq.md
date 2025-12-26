@@ -5,9 +5,7 @@ sidebar_label: "FAQ"
 
 # FAQ
 
-
 ## 如何打开示例
-
 
 组件的分发包中包含一个演示后端应用程序，可用于在本地运行示例。
 该应用程序需要 [Node.js](https://nodejs.org/en/)，并为演示使用内存存储，后端本应存储数据（即无需设置数据库）。
@@ -52,7 +50,6 @@ sidebar_label: "FAQ"
 
 ## 甘特图未正确渲染
 
-
 如果页面上的甘特图未能正确渲染，请检查图表容器的 CSS 样式--必须为其指定有效的像素或百分比尺寸。
 
 
@@ -70,7 +67,6 @@ html, body{
 
 ## 甘特图在 Internet Explorer 中未正确渲染
 
-
 如果甘特图仅在 Internet Explorer 浏览器中未能正确渲染，请确保页面使用了完整的 DOCTYPE 声明。
 dhtmlxGantt 可以在 IE6、IE7 和 IE8 的标准模式下正常工作，但不支持 IE 的怪异模式（quirks mode）。
 
@@ -81,7 +77,6 @@ dhtmlxGantt 可以在 IE6、IE7 和 IE8 的标准模式下正常工作，但不�
 ~~~
 
 ## 右上角出现错误提示
-
 
 ![error_alert](/img/error_alert.png)
 
@@ -98,7 +93,6 @@ gantt.config.show_errors = false;
 
 ## 甘特图没有显示任何内容
 
-
 最常见的两种情况:
 
 1. 你尝试手动实现后端 API，或按照我们的 [教程](integrations/howtostart-guides.md) 实现，但打开页面时甘特图没有显示任何任务或链接。
@@ -110,7 +104,6 @@ gantt.config.show_errors = false;
 请查阅 [백엔드 통합 문제 해결](guides/troubleshooting.md) 文章，按照指引查找问题原因。
 
 ## 如何将任务的最后一天计入持续时间
- 
 
 你可能注意到，如果日期以天为单位指定且没有小时和分钟部分，且开始和结束日期相同，则任务的持续时间会被计算为 0 天而不是 1 天。
 
@@ -137,7 +130,6 @@ console.log(gantt.getTask(1).duration);
 
 ## 循环引用错误
 
-
 如果向 Gantt 传递了不正确的数据，导致其树状结构变为循环结构，就会出现循环引用错误。
 
 ![cyclic_error](/img/cyclic_error.png)
@@ -157,7 +149,6 @@ console.log(gantt.getTask(1).duration);
 "Task #4" 被指定为 "Task #1" 的父任务，但同时 "Task #4" 也是 "Task #1" 的子任务。
 
 ## 试用期已过期
-
 
 如果你已经安装了甘特图的授权 PRO 版本，但仍然看到试用期已过期的提示，这说明应用中仍然存在 Trial 版本。只有试用版才会弹出试用期已过期的提示。
 

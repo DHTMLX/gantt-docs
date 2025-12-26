@@ -5,7 +5,6 @@ sidebar_label: "RTL (Right-to-left) режим"
 
 # RTL (Right-to-left) режим
 
-
 ![rtl_mode](/img/rtl_mode.png)
 
 Gantt поддерживает режим отображения справа налево (RTL), который можно включить с помощью опции конфигурации [rtl](api/config/rtl.md). 

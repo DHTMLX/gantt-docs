@@ -5,7 +5,6 @@ sidebar_label: "Setting up Scale"
 
 # Setting up Scale
 
-
 ![gantt_dates](/img/gantt_dates.png)
 
 The configuration of scales is specified via the [scales](api/config/scales.md) property. You can specify any number of scales by setting scale objects in the array of the **scales** config:
@@ -308,7 +307,6 @@ gantt.init("gantt_here");
 
 ## Height
 
-
 ![scale_height](/img/scale_height.png)
 
 To set the height of the scale, use the [scale_height](api/config/scale_height.md) property:
@@ -562,7 +560,6 @@ This logic works because we don't specify [the date range explicitly](#explicit_
 For more samples, check the [How to add a custom scale](guides/how-to.md#how-to-add-a-custom-scale) article.
 
 ## Custom time spans
-
 
 In this part you will find examples of how to customize and configure the time scale so that it shows or hides non-working time spans. Besides, you'll find an example of how to hide cells with non-working hours from the start of the scale even if the **skip_off_time** mode is enabled.
 

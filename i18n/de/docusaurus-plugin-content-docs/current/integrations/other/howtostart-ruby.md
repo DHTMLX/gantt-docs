@@ -5,7 +5,6 @@ sidebar_label: "Ruby on Rails"
 
 # dhtmlxGantt mit Ruby on Rails
 
-
 Dieser Artikel beschreibt die Erstellung eines Gantt-Diagramms mit einem [Ruby on Rails](https://rubyonrails.org/) Backend. Das Beispiel verwendet Ruby 2.4.1, Rails 5.1.3 und MySQL. Es wird vorausgesetzt, dass diese Voraussetzungen bereits installiert sind. Falls nicht, sollten Sie sich zunächst [die offiziellen Tutorials](https://guides.rubyonrails.org/index.html) ansehen.
 
 Falls Sie mit einem anderen Technologie-Stack arbeiten, finden Sie weitere Integrationsmöglichkeiten hier:
@@ -22,7 +21,6 @@ Eine Demo ist ebenfalls auf GitHub verfügbar: [https://github.com/DHTMLX/gantt-
 
 ## Schritt 1. Projekt erstellen
 
-
 Um ein neues Projekt zu erstellen, führen Sie folgenden Befehl im Terminal aus:
 
 ~~~js
@@ -30,7 +28,6 @@ rails new gantt-app -d mysql
 ~~~
 
 ## Schritt 2. Gantt zur Seite hinzufügen
-
 
 Erstellen Sie zunächst einen Controller und die Standardseite für die App. Navigieren Sie in Ihr Anwendungsverzeichnis und generieren Sie einen neuen Controller mit einer *index*-Aktion:
 
@@ -115,7 +112,6 @@ Sie haben jetzt ein Gantt-Diagramm, in dem Aufgaben hinzugefügt und bearbeitet 
 
 ## Schritt 3. Modelle erstellen
 
-
 Da MySQL verwendet wird, stellen Sie sicher, dass Ihre Verbindungseinstellungen in *config/database.yml* korrekt sind, zum Beispiel:
 
 **config/database.yml**
@@ -185,7 +181,6 @@ Im nächsten Schritt wird das Laden und Speichern von Daten im Controller implem
 
 ## Schritt 4. Daten laden
 
-
 Mit den Modellen und der Migration können die Daten aus der Datenbank in das Gantt-Diagramm geladen werden.
 
 Da dhtmlxGantt die Daten im [JSON-Format](guides/supported-data-formats.md) erwartet, fügen Sie dem *GanttController* eine neue Aktion hinzu, die die Daten liest, formatiert und ausgibt:
@@ -250,7 +245,6 @@ Die Konfiguration [date_format](api/config/date_format.md) legt das Datumsformat
 Wenn Sie den Server starten und *http://localhost:3000/* öffnen, sollte das Gantt-Diagramm nun mit Aufgaben und Verknüpfungen aus der Datenbank gefüllt sein. Änderungen werden jedoch noch nicht gespeichert - das wird im nächsten Schritt behandelt.
 
 ## Schritt 5. Änderungen speichern
-
 
 dhtmlxGantt kann alle Benutzeränderungen an ein RESTful API im Backend senden, wo sie in der Datenbank gespeichert werden können. Details zu diesem Protokoll finden Sie [hier](guides/server-side.md#technique).
 
@@ -592,16 +586,13 @@ end
 
 ## Applikationssicherheit
 
-
 Gantt selbst bietet keinen Schutz gegen gängige Bedrohungen wie SQL-Injection, XSS oder CSRF-Angriffe. Es ist wichtig, dass Entwickler selbst für die Absicherung ihrer Backend-Implementierungen sorgen. Weitere Details finden Sie [in diesem Artikel](guides/app-security.md).
 
 ## Fehlerbehebung
 
-
 Wenn Sie die Schritte zur Integration von Gantt mit Ruby on Rails befolgt haben, aber Aufgaben und Links nicht auf der Seite angezeigt werden, sehen Sie sich den Leitfaden zur Fehlerbehebung unter [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) an. Dort finden Sie Tipps zur Diagnose häufiger Probleme.
 
 ## Wie geht es weiter?
-
 
 Mit Ihrem nun voll funktionsfähigen Gantt-Diagramm können Sie den vollständigen Code auf [GitHub](https://github.com/DHTMLX/gantt-howto-rails) einsehen. Dort steht er zum Klonen oder Herunterladen für eigene Projekte bereit.
 

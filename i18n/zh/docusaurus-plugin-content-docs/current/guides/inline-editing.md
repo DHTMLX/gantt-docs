@@ -5,7 +5,6 @@ sidebar_label: "在网格中进行内联编辑"
 
 # 在网格中进行内联编辑
 
-
 dhtmlxGantt 提供了两种内容编辑方式:
 
 - 使用 [Lightbox](guides/default-edit-form.md) 编辑表单
@@ -50,7 +49,6 @@ gantt.config.columns = [
 <iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 编辑器类型
-
 
 内联编辑器在 [editor_types](api/config/editor_types.md) 配置对象中定义。
 
@@ -219,7 +217,6 @@ gantt.config.columns = [
 - [JQuery Datepicker 输入](guides/inline-editing.md#jquery_datepicker)
 
 ## 自定义内联编辑器
-
 
 你可以通过如下方式定义新的编辑器对象，实现自定义内联编辑器:
 
@@ -462,7 +459,6 @@ var editors = {
 
 ## 内联编辑模式
 
-
 ### 基础内联编辑
 
 此模式假设使用鼠标聚焦单元格，并通过快捷键在单元格间导航:
@@ -572,7 +568,6 @@ gantt.ext.inlineEditors.setMapping(mapping);
 
 ## 输入值校验
 
-
 在 Grid 中编辑单元格时难免出现错误。
 
 为了防止保存无效值，你应在关闭编辑器前校验输入。可通过以下方式实现:
@@ -678,7 +673,6 @@ gantt.init("gantt_here");
 
 
 ## 单击即可打开编辑器
-
 
 在单选模式下，点击任务会立即打开内联编辑器。
 

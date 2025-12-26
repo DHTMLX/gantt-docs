@@ -5,7 +5,6 @@ sidebar_label: "Exportmodul für MS Project"
 
 # Exportmodul für MS Project
 
-
 Dieses Exportmodul ermöglicht das Importieren und Exportieren von MS Project- und Primavera-Dateien. Es handelt sich um eine .NET Core-Anwendung, die entweder in der dotnet-Umgebung oder in einem Docker-Image ausgeführt werden kann.
 
 Der Import/Export von PDF-, PNG-, Excel- oder iCal-Dateien wird nicht unterstützt. Für diese Formate verwenden Sie bitte das [entsprechende Exportmodul](guides/pdf-export-module.md) oder unseren Online-Server.

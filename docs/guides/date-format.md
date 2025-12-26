@@ -5,7 +5,6 @@ sidebar_label: "Date Format Specification"
 
 # Date Format Specification
 
-
 While specifying the format for dates you can use any character from the following list:
 
 - **%y** - the year as a two-digit number ( _00 to 99_ );

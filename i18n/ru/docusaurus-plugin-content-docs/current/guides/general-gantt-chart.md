@@ -5,7 +5,6 @@ sidebar_label: "Создание диаграммы Gantt на странице"
 
 # Создание диаграммы Gantt на странице
 
-
 ![gantt_basic](/img/gantt_basic.png)
 
 ((index

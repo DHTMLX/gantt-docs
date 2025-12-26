@@ -5,7 +5,6 @@ sidebar_label: "Exportdienst - Systemanforderungen für eine eigenständige Inst
 
 # Exportdienst - Systemanforderungen für eine eigenständige Installation
 
-
 Die dhtmlxGantt-Bibliothek ermöglicht das Exportieren und Importieren von Daten aus dem Gantt-Diagramm über einen Online-Exportdienst.
 
 Alternativ kann der Export von Gantt-Diagrammen auch lokal erfolgen, indem Sie die [Exportdienste](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) auf Ihrem Computer installieren. Damit die Exportmodule reibungslos funktionieren, stellen Sie bitte sicher, dass Ihr System die folgenden Anforderungen erfüllt:

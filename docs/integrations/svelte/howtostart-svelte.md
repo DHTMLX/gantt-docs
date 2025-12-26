@@ -5,7 +5,6 @@ sidebar_label: "Svelte"
 
 # dhtmlxGantt with Svelte
 
-
 You should be familiar with the basic concepts and patterns of Svelte to use this documentation. If 
 you are not, please refer to the [Svelte documentation](https://svelte.dev/) for a getting-started tutorial.
 

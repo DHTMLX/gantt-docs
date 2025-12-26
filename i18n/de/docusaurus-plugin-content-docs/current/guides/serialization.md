@@ -5,9 +5,7 @@ sidebar_label: "Serialisierung von Daten in XML und JSON"
 
 # Serialisierung von Daten in XML und JSON
 
-
 ## JSON-Format
-
 
 Um Daten aus einem Gantt-Diagramm in ein JSON-Objekt zu konvertieren, kann die Methode [serialize](api/method/serialize.md) wie folgt verwendet werden:
 
@@ -25,7 +23,6 @@ Die **json**-Variable im obigen Beispiel enthält Daten ähnlich dem folgenden:
 ~~~
 
 ## XML-Format
-
 
 Um Daten aus einem Gantt-Diagramm in einen XML-String zu konvertieren, wird die Methode [serialize](api/method/serialize.md) wie folgt verwendet:
 

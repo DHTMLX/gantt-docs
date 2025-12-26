@@ -27,7 +27,6 @@ gantt.config.inherit_calendar = true;
 
 ### Details
 
-
 Standardmäßig verwenden Aufgaben ohne einen angegebenen Arbeitskalender den globalen Arbeitskalender.
 
 Wenn diese Option auf `true` gesetzt ist, übernehmen diese Aufgaben den Kalender ihrer übergeordneten Summary-(Projekt-)Aufgabe.

@@ -5,8 +5,6 @@ sidebar_label: "服务器端集成"
 
 # 服务器端集成
 
-
-
 将 dhtmlxGantt 与后端连接的最佳方式是，在服务器端搭建一个 RESTful API，并在客户端使用 [dataprocessor](api/other/dataprocessor.md) 模块。
 
 DataProcessor 是一个内置功能，用于跟踪 Gantt 数据的更改，并以所需格式将更新发送到 REST API。这使得[与服务器端平台集成](integrations/howtostart-guides.md)变得非常简单。当使用对象数据源时，DataProcessor 可以设置回调函数来处理数据更改，这对于数据绑定非常有用。
@@ -16,7 +14,6 @@ DataProcessor 是一个内置功能，用于跟踪 Gantt 数据的更改，并�
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 技术说明
-
 
 通常，要通过 REST API 从服务器加载数据，你需要:
 
@@ -362,7 +359,6 @@ Content-type: application/json
 
 ## 任务顺序的存储
 
-
 Gantt 会按照数据源中的顺序显示任务。如果用户可以[手动调整任务顺序](guides/reordering-tasks.md#kuazhenggeganttjiegoutuofang)，
 你需要将这种顺序保存到数据库，并确保数据源返回的任务已按此顺序排序。
 
@@ -454,7 +450,6 @@ tasks.save(currentTask);
 
 ## 自定义请求头和参数
 
-
 ### 添加自定义请求头
 
 可以在发送到后端的请求中包含额外的请求头。例如，您可能希望在请求中添加授权令牌:
@@ -532,7 +527,6 @@ dp.attachEvent("onBeforeUpdate", (id, state, data) => {
 
 ## 从脚本触发数据保存
 
-
 当 dataProcessor 初始化后，用户通过界面或脚本进行的任何更改都会自动保存到数据源。
 
 如果要通过脚本更新某个特定任务或依赖关系，通常可使用 [updateTask](api/method/updatetask.md) 和 [updateLink](api/method/updatelink.md) 方法:
@@ -559,7 +553,6 @@ gantt.updateTask(1); // 重新渲染已更新的任务
 
 
 ## 自定义路由
-
 
 如果 RESTful AJAX API 不满足您的后端需求，或者您希望完全控制发送到服务器的数据内容，可以使用自定义路由。
 
@@ -704,7 +697,6 @@ gantt.createDataProcessor((entity, action, data, id) => {
 
 ## 错误处理
 
-
 如果服务器报告某个操作失败，可以返回如下内容:
 
 ~~~js
@@ -757,7 +749,6 @@ gantt.render();
 
 ## 级联删除
 
-
 默认情况下，删除任务会触发其嵌套任务及相关链接的级联删除。Gantt 会为每个被移除的任务和链接发送 *delete* 请求。 
 这意味着无需手动维护后端数据完整性，Gantt 会自动处理。
 
@@ -768,7 +759,6 @@ gantt.render();
 
 
 ## XSS、CSRF 和 SQL 注入攻击
-
 
 需要注意的是，Gantt 并未内置防护 SQL 注入、XSS 或 CSRF 等安全威胁的机制。 
 确保应用安全是后端开发者的责任。

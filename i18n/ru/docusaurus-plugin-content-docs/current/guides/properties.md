@@ -5,9 +5,7 @@ sidebar_label: "Свойства для импорта из Primavera"
 
 # Свойства для импорта из Primavera
 
-
 ## Свойства проекта
-
 
 <style>
 .myblock(
@@ -76,7 +74,6 @@ sidebar_label: "Свойства для импорта из Primavera"
 </div>
 
 ## Свойства задач
-
 
 <div class="myblock">
   <li>ActualCost</li>

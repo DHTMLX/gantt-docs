@@ -5,7 +5,6 @@ sidebar_label: "Templates of the Grid"
 
 # Templates of the Grid
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

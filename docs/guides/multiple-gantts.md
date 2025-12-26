@@ -5,7 +5,6 @@ sidebar_label: "Multiple Charts on a Page"
 
 # Multiple Charts on a Page
 
-
 :::info
 This functionality is available in the Gantt PRO version under the Commercial (since October 6, 2021), Enterprise and Ultimate licenses
 :::
@@ -143,7 +142,6 @@ window.addEventListener("DOMContentLoaded", function(){
 ~~~
 
 ## Integration with dhtmlxLayout
-
 
 A good way to place multiple Gantt charts on the page is using [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html). 
 It not only provides a beautiful frame, but also ensures correct interacting with other elements on the page and acting according to the page size changes. 

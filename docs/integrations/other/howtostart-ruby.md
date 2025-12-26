@@ -5,7 +5,6 @@ sidebar_label: "Ruby on Rails"
 
 # dhtmlxGantt with Ruby on Rails 
 
-
 In this article you'll learn how to create a Gantt chart with a [Ruby on Rails](https://rubyonrails.org/) backend.
 For implementing this app we'll use Ruby 2.4.1, Rails 5.1.3 and MySQL. This tutorial assumes that you have all prerequisites already installed. 
 Otherwise please visit [the official tutorials](https://guides.rubyonrails.org/index.html) first. 
@@ -25,7 +24,6 @@ Have a look at the [demo](https://github.com/DHTMLX/gantt-howto-rails) on GitHub
 
 ## Step 1. Creating a project
 
-
 To add a new project just run the following command in the terminal:
 
 ~~~js
@@ -34,7 +32,6 @@ rails new gantt-app -d mysql
 
 
 ## Step 2. Adding Gantt to the page
-
 
 Let's start with creating a controller and a default page for our application.
 Move to the application folder and generate a new controller with the *index* action:
@@ -123,7 +120,6 @@ To provide it, we need to proceed with creating models.
 
 ## Step 3. Creating models
 
-
 Since we're using MySQL, make sure that you have correct connection settings in *config/database.yml*, for example:
 
 
@@ -196,7 +192,6 @@ Next we need to implement data loading and saving in the chart with the help of 
 
 ## Step 4. Loading data
 
-
 After we've created model classes and run the migration, we can load the database data into our gantt. 
 
 dhtmlxGantt expects data in the [JSON format](guides/supported-data-formats.md), so firstly we'll add a new action to our *GanttController* where we'll read, 
@@ -264,7 +259,6 @@ If you run the server now and open *http://localhost:3000/* in your browser, you
 No changes would be posted back to the database, however. We're going to fix it in the next step.
 
 ## Step 5. Saving changes
-
 
 dhtmlxGantt can transmit all changes made by the user to the RESTful API on a backend, where everything can be saved to the database. 
 You can check the protocol details [here](guides/server-side.md#technique). 
@@ -611,19 +605,16 @@ end
 
 ## Application security
 
-
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and 
 CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](guides/app-security.md).
 
 ## Trouble shooting
-
 
 In case you've completed the above steps to implement Gantt integration with Ruby on Rails, but Gantt doesn't render tasks and links on a page, have a look at the [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) article. It describes 
 the ways of identifying the roots of the problems.
 
 
 ## What's next
-
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-rails), clone or download it and use it for your projects.
 

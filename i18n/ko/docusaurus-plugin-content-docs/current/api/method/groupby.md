@@ -72,7 +72,6 @@ gantt.groupBy(false);
 
 ### Details
 
-
 :::note
  이 메서드는 **grouping** 확장의 일부이므로, [grouping](guides/extensions-list.md#grouping) 플러그인이 활성화되어 있어야 합니다. 자세한 내용은 [작업 그룹화](guides/grouping.md) 문서를 참조하세요. 
 :::

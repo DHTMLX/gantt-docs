@@ -5,9 +5,7 @@ sidebar_label: "데이터를 XML 및 JSON으로 직렬화하기"
 
 # 데이터를 XML 및 JSON으로 직렬화하기  
 
-
 ## JSON 형식  
-
 
 간트 차트의 데이터를 JSON 객체로 변환하려면 [serialize](api/method/serialize.md) 메서드를 다음과 같이 사용할 수 있습니다:
 
@@ -25,7 +23,6 @@ var json = gantt.serialize();
 ~~~
 
 ## XML 형식  
-
 
 간트 차트의 데이터를 XML 문자열로 변환하려면 [serialize](api/method/serialize.md) 메서드를 다음과 같이 사용합니다:
 

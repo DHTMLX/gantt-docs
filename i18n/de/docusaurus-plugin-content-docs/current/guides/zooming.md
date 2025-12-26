@@ -5,11 +5,9 @@ sidebar_label: "Zooming"
 
 # Zooming
 
-
 dhtmlxGantt enthält ein integriertes Modul, das das Verwalten des Zooms der Zeitskala besonders einfach macht. Wenn Sie das Standardverhalten beim Zoomen anpassen möchten, steht Ihnen eine [flexible API](guides/zoom.md) zur Verfügung, mit der Sie die Einstellungen der Zeitskala dynamisch ändern können.
 
 ## Eingebautes Zoom-Modul
-
 
 Das integrierte [Zoom-Modul](guides/zoom.md) ist Teil der **gantt.ext.zoom**-Erweiterung. Um es zu aktivieren, rufen Sie einfach **gantt.ext.zoom.init(zoomConfig)** auf und übergeben ein **zoomConfig**-Objekt, das ein Array von Zoomstufen enthält. Zum Beispiel:
 
@@ -83,7 +81,6 @@ Ausführliche Informationen über das Zoom-Modul und seine API finden Sie im Art
 
 
 ## Benutzerdefinierte Zoom-Einstellungen
-
 
 Wenn Sie das Zoom-Modul nicht verwenden und die Einstellungen der Zeitskala selbst steuern möchten, können Sie dies tun, indem Sie die entsprechenden Konfigurationsoptionen anpassen.
 

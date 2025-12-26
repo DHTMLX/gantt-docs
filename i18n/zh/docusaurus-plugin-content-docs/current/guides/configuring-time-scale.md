@@ -5,7 +5,6 @@ sidebar_label: "设置时间刻度"
 
 # 设置时间刻度
 
-
 ![gantt_dates](/img/gantt_dates.png)
 
 你可以通过 [scales](api/config/scales.md) 属性来配置时间刻度。通过在配置项中的 **scales** 数组添加刻度对象，可以定义多个时间刻度:
@@ -37,7 +36,6 @@ gantt.config.scales = [
 
 ## 时间单位
 
-
 ![month_day_scale_units](/img/month_day_scale_units.png)
 
 要为刻度定义单位，请在刻度对象中使用 **unit** 属性:
@@ -58,7 +56,6 @@ gantt.init("gantt_here");
 
 
 ## 范围
-
 
 ![day_scale_unit](/img/day_scale_unit.png)
 
@@ -269,7 +266,6 @@ gantt.init("gantt_here", new Date(2020, 1, 1), new Date(2020, 2, 1));
 
 ## 时间步长
 
-
 ![scale_step](/img/scale_step.png)
 
 要定义时间轴的步长，请在时间轴配置对象中使用 **step** 属性:
@@ -296,7 +292,6 @@ gantt.init("gantt_here");
 
 ## 高度
 
-
 ![scale_height](/img/scale_height.png)
 
 要调整时间轴的高度，请使用 [scale_height](api/config/scale_height.md) 属性:
@@ -314,7 +309,6 @@ gantt.init("gantt_here");
 如果使用了多个时间轴，指定的高度会被平均分配。例如，**scale_height** 为 60 像素且有 3 个时间轴时，每个时间轴高度为 20 像素。
 
 ## 日期格式
-
 
 :::note
 请参阅 [날짜 형식 지정](guides/date-format.md) 文章，了解可用的格式字符
@@ -357,7 +351,6 @@ gantt.config.scales = [
 ![scale_template](/img/scale_template.png)
 
 ## 样式
-
 
 ![css_styling](/img/css_styling.png)
 
@@ -453,7 +446,6 @@ gantt.templates.scale_cell_class = function(date){
 关于自定义时间线区域样式的更多内容，请参见 [타임 슬롯 하이라이트하기](guides/highlighting-time-slots.md) 文章。
 
 ## 自定义时间单位
-
 
 dhtmlxGantt 允许你创建自定义时间单位，并在时间轴配置中设置标签模板。
 
@@ -592,7 +584,6 @@ if (nextDate.getHours() % 8 != 0) {
 更多示例请参见[如何添加自定义刻度](guides/how-to.md#ruhetianjiazidingyishijiankedu)一文。
 
 ## 自定义时间段
-
 
 本节提供了自定义时间刻度以显示或隐藏非工作时间段的示例。还包括一个示例，演示即使在启用 **skip_off_time** 模式时，也可以隐藏刻度开始处的非工作小时单元格。
 

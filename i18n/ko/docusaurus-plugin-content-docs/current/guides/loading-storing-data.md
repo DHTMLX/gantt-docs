@@ -5,7 +5,6 @@ sidebar_label: "작업 불러오기 및 저장하기"
 
 # 작업 불러오기 및 저장하기
 
-
 ![gantt_basic](/img/gantt_basic.png)
 
 ((index

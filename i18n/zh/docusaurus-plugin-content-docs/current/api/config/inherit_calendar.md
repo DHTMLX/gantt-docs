@@ -27,7 +27,6 @@ gantt.config.inherit_calendar = true;
 
 ### Details
 
-
 默认情况下，未指定工作日历的任务将使用全局工作日历。
 
 当此选项设置为 `true` 时，这些任务将采用其汇总（项目）父任务的日历。

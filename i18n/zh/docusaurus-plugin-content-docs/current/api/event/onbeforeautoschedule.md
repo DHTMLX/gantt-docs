@@ -34,7 +34,7 @@ gantt.attachEvent("onBeforeAutoSchedule",function(taskId){
 - [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
- 
+
 :::note
  此事件是**auto_scheduling**扩展的一部分，因此请确保已启用[auto_scheduling](guides/extensions-list.md)插件。更多信息请参见[自动调度](guides/auto-scheduling.md)文档。 
 :::

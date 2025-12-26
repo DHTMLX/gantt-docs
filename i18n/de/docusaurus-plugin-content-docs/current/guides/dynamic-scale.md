@@ -5,7 +5,6 @@ sidebar_label: "Dynamische Änderung der Skalierungseinstellungen"
 
 # Dynamische Änderung der Skalierungseinstellungen 
 
-
 Die Möglichkeit, die Skalierung einer Gantt-Diagramm-Ansicht dynamisch anzupassen, macht das Diagramm flexibel und ermöglicht es, auf unterschiedliche Benutzeranforderungen einzugehen.
 
 Ein Manager, der beispielsweise ein einjähriges Projekt betreut, bevorzugt möglicherweise die Anzeige des Zeitplans nach Monaten, um einen Überblick zu erhalten. Beim Fokussieren auf die Details einer Aufgabe kann jedoch das Umschalten auf eine Wochen- oder Tagesansicht hilfreich sein, um präzisere Informationen zu erhalten.

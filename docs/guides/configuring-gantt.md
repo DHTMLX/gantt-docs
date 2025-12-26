@@ -5,7 +5,6 @@ sidebar_label: "Configuring Gantt Chart"
 
 # Configuring Gantt Chart
 
-
 ![gantt_basic](/img/gantt_basic.png)
 
 - [Configuration](guides/common-configuration.md)

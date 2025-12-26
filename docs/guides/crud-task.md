@@ -5,12 +5,10 @@ sidebar_label: "Basic Operations with Tasks"
 
 # Basic Operations with Tasks
 
-
 In this chapter you'll learn how to do basic operations with tasks: to create or delete a task, to dynamically update a task's property. 
 
 
 ## Adding a new task
-
 
 To add a new task to the Gantt chart, use the [addTask](api/method/addtask.md) method:
 
@@ -51,7 +49,6 @@ and hide the 'Add' button for such rows:
 
 ## Updating a task's property
 
-
 To dynamically update a property of a task object, use the [updateTask](api/method/updatetask.md) method:
 
 ~~~js
@@ -76,7 +73,6 @@ gantt.refreshTask(10);
 
 ## Redrawing tasks
 
-
 To re-draw all tasks in the Gantt chart, use the [refreshData](api/method/refreshdata.md) method:
 
 ~~~js
@@ -90,7 +86,6 @@ gantt.refreshData(); /*!*/
 
 ## Deleting tasks
 
-
 To delete a task, use the [deleteTask](api/method/deletetask.md) method:
 
 ~~~js
@@ -98,7 +93,6 @@ gantt.deleteTask(taskId);
 ~~~
 
 ## Cascade deleting of nested tasks
-
 
 There is a [cascade_delete](api/config/cascade_delete.md) config that regulates the process of deleting tasks from Gantt. By default, it is set to *true*,
 which means that when you delete a task, Gantt sends a request to a server for each nested task and link of the deleted task.
@@ -115,7 +109,6 @@ The [cascade_delete](api/config/cascade_delete.md) option affects the way of imp
 [related section of the Server-side Integration article](guides/server-side.md#cascade-deletion).
 
 ## Removing all tasks from the Gantt chart
-
 
 To clear the Gantt chart from tasks, call the [clearAll](api/method/clearall.md) method:
 

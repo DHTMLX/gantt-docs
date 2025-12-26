@@ -5,8 +5,6 @@ sidebar_label: "Модули экспорта"
 
 # Модули экспорта
 
-
-
 - [Сервис экспорта - системные требования для самостоятельной установки](guides/export-requirements.md)
 - [Что нового в модуле экспорта PDF](guides/pdf-export-module-whatsnew.md)
 - [Что нового в модуле экспорта проектов MSP](guides/msp-export-module-whatsnew.md)

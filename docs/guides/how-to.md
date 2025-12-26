@@ -5,7 +5,6 @@ sidebar_label: "How-tos"
 
 # How-tos
 
-
 ## How to toggle grid/chart
 
 If you use the default layout configuration, you can change the [show_grid](api/config/show_grid.md) or [show_chart](api/config/show_chart.md) parameters and use the [render()](api/method/render.md) method to repaint the changes.

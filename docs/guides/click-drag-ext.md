@@ -5,11 +5,9 @@ sidebar_label: "clickDrag Extension"
 
 # clickDrag Extension
 
-
 Read details about the clickDrag extension in the article [Creating/Selecting Tasks with DnD](guides/advanced-dnd.md).
 
 ## Configuration object
-
 
 To enable advanced drag-n-drop, specify the [click_drag](api/config/click_drag.md) configuration option and set the necessary properties from the list below inside its object: 
 
@@ -63,7 +61,6 @@ gantt.config.click_drag = {
 
 
 ## Events
-
 
 You can attach the following events to the element passed as a viewPort (gantt.$task_data by default - a part of the timeline with task bars):
 

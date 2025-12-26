@@ -5,7 +5,6 @@ sidebar_label: "Skins"
 
 # Skins
 
-
 dhtmlxGantt provides several predefined skins that you can use to change the overall look of the Gantt chart:
 
 1. [Terrace (default)](guides/skins.md#terraceskin)

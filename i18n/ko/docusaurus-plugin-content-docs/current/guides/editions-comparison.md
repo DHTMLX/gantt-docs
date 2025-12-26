@@ -5,7 +5,6 @@ sidebar_label: "Standard vs PRO 라이브러리 버전"
 
 # Standard vs PRO 라이브러리 버전
 
-
 dhtmlxGantt 라이브러리의 Standard 버전과 PRO 버전의 차이점이 궁금하시거나, PRO 에디션에서 제공하는 추가 기능이 무엇인지 알고 싶으시다면 이 가이드가 도움이 될 것입니다.
 
 PRO 에디션은 Standard 버전에서 제공하는 모든 기능을 포함하며, 다양한 추가 유용 기능을 제공합니다. 아래 표에서는 두 버전의 기능을 쉽게 비교할 수 있도록 정리하였습니다.

@@ -5,9 +5,7 @@ sidebar_label: "从旧版本迁移"
 
 # 从旧版本迁移
 
-
 ## 8.0 -> 9.0
-
 
 v9.0 更新引入了若干重大变更。
 
@@ -171,7 +169,6 @@ gantt.config.scales = [
 
 ## 7.1 -> 8.0
 
-
 ### 资源分配
 
 在早期版本的 DHTMLX Gantt 中，资源分配的变更作为任务对象的属性发送到后端，这在某些情况下使后端 API 集成变得更复杂。
@@ -214,7 +211,6 @@ gantt.plugins({
 - ".dhtmlx_" + btn.label.toLowerCase() + "_button" -> **".gantt_" + btn.label.toLowerCase() + "_button"**
 
 ## 7.0 -> 7.1
-
 
 7.1 版本未引入任何需要修改现有代码的重大变更。
 
@@ -276,7 +272,6 @@ gantt.config.bar_height = 50;
 ~~~
 
 ## 6.3 -> 7.0
-
 
 ### 扩展和本地化文件
 
@@ -370,7 +365,6 @@ gantt.setWorkTime({hours: [8, 17]});
 如果您代码中已定义旧名称，它们仍可继续使用。否则，请使用新版 API。
 
 ## 6.2 -> 6.3
-
 
 ### 多任务选择
 
@@ -477,7 +471,6 @@ const dateEditor = {type: "date", map_to: "start_date",
 
 ## 6.1 -> 6.2
 
-
 升级到 v6.2 通常与 v6.1 兼容，无需更改代码。
 但部分组件行为已更改（可通过配置恢复旧行为），部分 API 已弃用。
 
@@ -580,7 +573,6 @@ gantt.templates.api_date = gantt.date.date_to_str(gantt.config.api_date);
 
 ## 6.0 -> 6.1 
 
-
 ### 时间约束和自动调度
 
 **dhtmlxgantt_auto_scheduling.js** 扩展已升级并支持 [任务约束](guides/auto-scheduling.md#timeconstraintsfortasks) 功能。由于此功能会修改自动调度的默认行为，
@@ -610,7 +602,6 @@ gantt.parse(demo_tasks);
 
 ## 5.2 -> 6.0
 
-
 在6.0版本中，**getSlack()** 方法已废弃。新增了两个方法:
 
 - [getFreeSlack](api/method/getfreeslack.md) - 返回任务的自由时差
@@ -638,7 +629,6 @@ gantt.parse(demo_tasks);
 
 
 ## 3.x -> 4.0
-
 
 4.0版本对公共API做了一些调整，主要包括:
 
@@ -754,7 +744,6 @@ gantt.config.buttons_right = [
 - 项目、里程碑及其他自定义类型
 
 ## 1.0 -> 2.0
-
 
 1) 多种对象（**GanttProjectInfo**、**GanttTaskInfo**、**GanttChart**、**GanttProject**、**GanttTask**）被统一为一个静态对象--**gantt**。
 

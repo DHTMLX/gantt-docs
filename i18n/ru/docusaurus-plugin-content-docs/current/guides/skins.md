@@ -5,7 +5,6 @@ sidebar_label: "Скины"
 
 # Скины
 
-
 dhtmlxGantt предлагает разнообразие предустановленных скинов для легкой смены внешнего вида диаграммы Gantt:
 
 1. [Terrace (по умолчанию)](guides/skins.md#terraceskin)
@@ -45,7 +44,6 @@ gantt.setSkin("dark");
 
 ## Скин 'Terrace' {#terraceskin}
 
-
 Для использования скина по умолчанию подключите стандартный CSS-файл:
 
 
@@ -58,7 +56,6 @@ gantt.setSkin("dark");
 
 
 ## Скин 'Dark' {#darkskin}
-
 
 Чтобы применить скин 'Dark', подключите стандартный CSS-файл:
 
@@ -77,7 +74,6 @@ gantt.skin = "dark";
 
 
 ## Скин 'Material' {#materialskin}
-
 
 Для использования скина 'Material' подключите стандартный CSS-файл:
 
@@ -154,7 +150,6 @@ gantt.skin = "skyblue";
 
 
 ## Скин 'Meadow' {#meadowskin}
-
 
 Чтобы применить скин 'Meadow', подключите стандартный CSS-файл:
 

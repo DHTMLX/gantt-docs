@@ -5,7 +5,6 @@ sidebar_label: "Configuring Scales"
 
 # Configuring Scales
 
-
 ![gantt_right](/img/gantt_right.png)
 
 - [Setting up Scale](guides/configuring-time-scale.md) 

@@ -5,7 +5,6 @@ sidebar_label: "弹出消息与模态框"
 
 # 弹出消息与模态框
 
-
 在Gantt图中，消息用于告知用户错误、确认或否定操作、选择选项等。这些消息基于[a fork of the dhtmlxMessage repository](https://github.com/DHTMLX/message)实现，因此dhtmlxGantt的消息也支持dhtmlxMessage的所有功能。
 
 主要有两类消息类型:[简单弹出消息框](guides/message-boxes.md#jibendanchuxiaoxi)和带有按钮、会阻止应用交互的[模态消息框](guides/message-boxes.md#motaixiaoxikuang)。

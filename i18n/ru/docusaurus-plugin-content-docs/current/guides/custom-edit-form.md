@@ -5,9 +5,7 @@ sidebar_label: "Кастомный Lightbox"
 
 # Кастомный Lightbox
 
-
 ## Способы создания кастомного lightbox
-
 
 Можно создать полностью кастомный lightbox для Gantt и заменить им стандартный. Существует два основных подхода:
 
@@ -132,8 +130,6 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 ~~~
 
 ## Обработка действий в кастомной форме
-
-
 
 При сохранении формы необходимо вручную получить значения из формы и обновить соответствующую задачу с помощью публичного API: @[addTask](api/method/addtask.md), @[updateTask](api/method/updatetask.md) и @[deleteTask](api/method/deletetask.md).
 

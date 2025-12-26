@@ -5,7 +5,6 @@ sidebar_label: "Изменение размера строк в гриде"
 
 # Изменение размера строк в гриде
 
-
 Вы можете настраивать высоту отдельных строк в гриде.
 
 
@@ -19,7 +18,6 @@ sidebar_label: "Изменение размера строк в гриде"
 :::
 
 ## Установка высоты строки {#settingtherowheight}
-
 
 Вы можете настроить высоту конкретной строки по необходимости.
 
@@ -58,7 +56,6 @@ gantt.render();
 Если атрибуты **row_height** и **bar_height** отсутствуют или пусты (что является значением по умолчанию), будут использованы значения из [gantt.config.row_height](api/config/row_height.md) и [gantt.config.bar_height](api/config/bar_height.md).
 
 ## Изменение размера строк с помощью drag and drop {#resizingrowsbydraganddrop}
-
 
 ![resize_row](/img/resize_row.png)
 

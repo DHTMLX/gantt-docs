@@ -5,13 +5,11 @@ sidebar_label: "Gantt 스타일 작업하기"
 
 # Gantt 스타일 작업하기
 
-
 dhtmlxGantt는 외관을 사용자 정의할 수 있는 다양한 옵션을 제공합니다. 전체 Gantt 차트의 모양을 변경하려면 [미리 정의된 스킨을 적용](guides/skins.md)할 수 있고, 또는 작업, 링크, 스케일, 그리드 등 개별 요소들의 스타일을 세밀하게 조정할 수 있습니다.
 
 이 가이드는 Gantt 차트의 다양한 부분을 스타일링하는 일반적인 방법을 모아, 관련 문서를 더 쉽게 탐색할 수 있도록 도와줍니다. 각 요소별 자세한 정보는 관련 문서를 참고하세요.
 
 ## 그리드 스타일링
-
 
 그리드 영역의 스타일은 관련 [그리드의 템플릿](guides/table-templates.md)를 통해 수정할 수 있습니다.
 
@@ -264,7 +262,6 @@ gantt.init("gantt_here");
 
 ## 스케일 스타일링
 
-
 스케일의 스타일은 [타임라인 영역의 관련 템플릿](guides/timeline-templates.md)으로 제어합니다.
 
 ### 스케일 행
@@ -343,7 +340,6 @@ gantt.config.scales = [
 
 
 ## 작업(Task) 스타일링
-
 
 작업 스타일링은 [타임라인 영역의 관련 템플릿](guides/timeline-templates.md)을 통해 커스터마이즈할 수 있습니다.
 
@@ -575,7 +571,6 @@ gantt.templates.tooltip_text = function(start,end,task){
 
 ## 링크 스타일링
 
-
 [의존성 링크 템플릿](guides/dependency-templates.md) 리소스를 사용하여 의존성 링크의 모양을 커스터마이즈할 수 있습니다.
 
 ### 의존성 링크의 선
@@ -680,7 +675,6 @@ gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
 
 
 ## 퀵 인포 팝업 스타일링
-
 
 퀵 인포(Quick Info) 팝업 스타일은 ['Quick Info' 확장(터치 지원)의 템플릿](guides/touch-templates.md) 템플릿을 통해 제어됩니다.
 

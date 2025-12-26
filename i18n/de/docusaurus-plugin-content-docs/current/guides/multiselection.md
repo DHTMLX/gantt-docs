@@ -5,7 +5,6 @@ sidebar_label: "Multi-Task-Auswahl"
 
 # Multi-Task-Auswahl 
 
-
 Ab Version 3.2 enthält die Bibliothek die **multiselect**-Erweiterung, mit der Sie mehrere Aufgaben gleichzeitig auswählen können.
 
 <div style="text-align:center;">![multiselection](/img/multiselection.png)</div>
@@ -150,7 +149,6 @@ gantt.config.drag_multiple = true;
 
 ## Editor mit einem Klick öffnen
 
-
 Im Einzel-Auswahlmodus öffnet ein Klick auf eine Aufgabe sofort den Inline-Editor.
 
 Im **Multi-Auswahlmodus** wird durch einen Klick auf eine nicht ausgewählte Aufgabe diese zunächst ausgewählt, der Inline-Editor öffnet sich jedoch erst beim zweiten Klick. 
@@ -167,7 +165,6 @@ gantt.config.inline_editors_multiselect_open = true;
 ~~~
 
 ## API-Events
-
 
 Wenn die Multi-Task-Auswahl aktiv ist, lösen das Auswählen einer oder mehrerer Aufgaben sowohl die allgemeinen [onTaskSelected](api/event/ontaskselected.md) / [onTaskUnselected](api/event/ontaskunselected.md) Events als auch speziell für die Multiselect-Erweiterung vorgesehene Events aus.
 

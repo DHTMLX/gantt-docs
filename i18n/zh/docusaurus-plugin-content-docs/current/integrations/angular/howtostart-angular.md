@@ -5,7 +5,6 @@ sidebar_label: "Angular"
 
 # dhtmlxGantt 与 Angular 集成
 
-
 本指南假设您已具备 Angular 的基础概念和模式。如果需要复习，请参考 [Angular 官方文档](https://angular.io/docs) 中的入门教程。
 
 DHTMLX Gantt 可以与 Angular 平滑集成。您可以在 GitHub 上找到相关示例:[DHTMLX Gantt with Angular Demo](https://github.com/DHTMLX/angular-gantt-demo)。

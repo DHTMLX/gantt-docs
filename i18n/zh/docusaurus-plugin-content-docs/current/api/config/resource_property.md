@@ -79,7 +79,6 @@ resourcesStore.parse([
 
 ### Details
 
-
 指定任务对象中包含与 resourceGrid/Timeline/Histogram/Calendar 关联的资源 ID 的属性。此设置可以在运行时更新。
 
 ### Related API

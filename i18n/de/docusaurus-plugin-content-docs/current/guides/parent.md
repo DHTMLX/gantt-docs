@@ -5,7 +5,6 @@ sidebar_label: "Parent Control"
 
 # Parent Control
 
-
 Dieses Steuerelement stellt ein Auswahlfeld zur Verfügung, mit dem das übergeordnete Element (Parent) einer Aufgabe geändert werden kann. Es lädt alle Aufgaben, die im Gantt-Diagramm angezeigt werden, mit der Möglichkeit, Filterregeln anzuwenden und die Anzeige der Werte zu individualisieren. Abgesehen von diesen Funktionen verhält es sich wie das Steuerelement [Select Control](guides/select.md).
 
 ![parent_control](/img/parent_control.png)
@@ -23,7 +22,6 @@ gantt.config.lightbox.sections = [
 
 
 ## Initialisierung
-
 
 Um das **parent**-Steuerelement im Lightbox-Dialog einzubinden, gehen Sie wie folgt vor:
 
@@ -50,7 +48,6 @@ gantt.locale.labels["section_parent"] = "Parent task";
 
 ## Eigenschaften
 
-
 Hier sind einige wichtige Eigenschaften, die häufig mit dem **parent**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 
 - **name** - (*string*) der Name des Abschnitts 
@@ -66,7 +63,6 @@ Hier sind einige wichtige Eigenschaften, die häufig mit dem **parent**-Steuerel
   
 
 ## Optionen filtern
-
 
 Um zu steuern, welche Optionen im **parent**-Steuerelement angezeigt werden, verwenden Sie die **filter**-Eigenschaft:
 
@@ -101,7 +97,6 @@ und gibt zurück:
 
 ## Optionen sortieren
 
-
 Um die Reihenfolge der Optionen im **parent**-Steuerelement zu bestimmen, verwenden Sie die **sort**-Eigenschaft:
 
 **Sortieren der Aufgaben nach der Länge des Titels**
@@ -125,7 +120,6 @@ Die **sort**-Funktion vergleicht jeweils zwei benachbarte Elemente und gibt zur�
 - 0 - die Reihenfolge beider Elemente bleibt unverändert
 
 ## Template für Optionen
-
 
 Um die Darstellung der Optionen im **parent**-Steuerelement zu individualisieren, verwenden Sie die **template**-Eigenschaft:
 

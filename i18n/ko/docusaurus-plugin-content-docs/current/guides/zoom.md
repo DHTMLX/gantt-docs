@@ -5,7 +5,6 @@ sidebar_label: "Zoom Extension"
 
 # Zoom Extension
 
-
 Zoom 확장 기능에 대한 자세한 내용은 [줌(Zooming)](guides/zooming.md) 문서에서 확인할 수 있습니다. 본 문서는 **zoom** 객체의 API 레퍼런스에 중점을 두고 있습니다.
 
 ## Zoom Levels

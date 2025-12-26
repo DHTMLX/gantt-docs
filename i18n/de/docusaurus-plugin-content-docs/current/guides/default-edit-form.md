@@ -5,7 +5,6 @@ sidebar_label: "Konfiguration der Lightbox-Elemente"
 
 # Konfiguration der Lightbox-Elemente 
 
-
 Die Lightbox dient als Bearbeitungsformular zur Aktualisierung von Aufgabendetails. 
 
  Nachfolgend ist das Standardlayout der Lightbox dargestellt.
@@ -34,7 +33,6 @@ Ab Version v7.1.13, wenn entweder [gantt.config.csp](api/config/csp.md) auf *tru
 :::
 
 ## Lightbox-Struktur
-
 
 ### Abschnitte
 

@@ -7,9 +7,7 @@ description: "a set of treeDatastore methods"
 
 # treeDatastore
 
-
 ### Description
-
 
 @short: A set of treeDatastore methods
 
@@ -17,7 +15,6 @@ description: "a set of treeDatastore methods"
 
 
 ### Details
-
 
 **_Note_**, that Tasks and Links should be modified using the common [API of Gantt](api/api-overview.md). Modifying tasks or links directly in the datastore can produce unexpected results. Datastores are expected to be used for resources or other custom objects.
 
@@ -30,7 +27,6 @@ The extended API of the **treeDatastore** object provides the following [methods
 
 
 ## Methods
-
 
 - **move (sid, tindex, parent): boolean | void** - moves an item to the new position or to a new parent
     - **_sid_** - (*string \| number*) - the id of the item to move
@@ -569,7 +565,6 @@ The twin of treeDatastore.sort() is [gantt.sort()](api/method/sort.md).
 
 
 ## Events
-
 
 - **onBeforeItemMove (id, parent, tindex)** - fires before an item is moved to a new position
     - **_id_** - (*string \| number*) - the id of the item to move

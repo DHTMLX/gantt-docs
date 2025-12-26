@@ -47,7 +47,6 @@ gantt.addTaskLayer(function draw_deadline(task) {
 
 ### Details
 
-
 参数可以是以下类型之一:
 
 - **taskLayerRender (task, timeline, config, viewport): HTMLElement|boolean|void** - 一个函数，接收任务对象并返回一个要显示在图层中的DOM元素。

@@ -5,7 +5,6 @@ sidebar_label: "配置编辑表单"
 
 # 配置编辑表单
 
-
 ![lightbox](/img/lightbox.png)
 
 - [Lightbox 요소 구성하기](guides/default-edit-form.md)

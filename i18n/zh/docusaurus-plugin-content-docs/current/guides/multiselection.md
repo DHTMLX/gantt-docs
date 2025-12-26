@@ -5,7 +5,6 @@ sidebar_label: "多任务选择"
 
 # 多任务选择
 
-
 从 3.2 版本开始，库中新增了 **multiselect** 扩展，允许您同时选择多个任务。
 
 <div style="text-align:center;">![multiselection](/img/multiselection.png)</div>
@@ -150,7 +149,6 @@ gantt.config.drag_multiple = true;
 
 ## 单击打开编辑器
 
-
 在单选模式下，点击任务会立即打开内联编辑器。
 
 在 **多选模式** 下，点击未选中的任务会先选中该任务，只有第二次点击才会打开内联编辑器。 
@@ -167,7 +165,6 @@ gantt.config.inline_editors_multiselect_open = true;
 ~~~
 
 ## API 事件
-
 
 启用多任务选择后，选择一个或多个任务会同时触发通用的 [onTaskSelected](api/event/ontaskselected.md) / [onTaskUnselected](api/event/ontaskunselected.md) 事件，以及 multiselect 扩展专用事件。
 

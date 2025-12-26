@@ -15,7 +15,6 @@ In solchen Fällen kann der Modus für dynamisches Laden verwendet werden, um Da
 
 ## Funktionsweise
 
-
 Wenn das dynamische Laden [aktiviert](#enablingdynamicloading) ist, sendet der Aufruf von [gantt.load("url")](api/method/load.md) eine GET-Anfrage an die angegebene URL und erwartet als Antwort nur die Aufgaben der obersten Ebene, wobei alle verschachtelten Zweige zunächst geschlossen sind.
 
 Wenn der Nutzer auf das Symbol zum Erweitern klickt, ruft gantt automatisch die Methode [load](api/method/load.md) auf und sendet die ID der angeklickten Aufgabe an den Server:
@@ -97,7 +96,6 @@ $gantt->event->attach("beforeRender","check_children");
 
 
 ## Datenformat für dynamisches Laden
-
 
 Das Datenformat für das dynamische Laden sieht folgendermaßen aus:
 

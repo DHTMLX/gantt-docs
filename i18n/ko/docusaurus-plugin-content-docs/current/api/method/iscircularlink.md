@@ -32,7 +32,6 @@ var isCircular = gantt.isCircularLink(link);
 
 ### Details
 
-
 :::note
  이 메서드는 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인이 활성화되어 있어야 합니다. 
 :::

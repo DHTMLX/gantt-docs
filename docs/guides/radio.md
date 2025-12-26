@@ -5,7 +5,6 @@ sidebar_label: "Radio Button Control"
 
 # Radio Button Control
 
-
 A block of options that allows selecting only one of them at a time.
 
 ![Radio Button](/img/radiobutton_control.png)
@@ -15,7 +14,6 @@ A block of options that allows selecting only one of them at a time.
 
 
 ## Initialization
-
 
 To add the **radio button** control to the lightbox, follow these steps:
 
@@ -47,7 +45,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 ## Properties
 
-
 The following properties are mostly important and commonly set for the **radio button** control (see the full list [here](api/config/lightbox.md)):
 
 - **name** - (*string*) the section name 
@@ -62,7 +59,6 @@ the following properties:
 
 
 ## Populating control with data
-
 
 Generally, to set values for the **radio button** control, use the [options](api/config/lightbox.md) parameter:
 

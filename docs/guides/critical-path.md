@@ -5,7 +5,6 @@ sidebar_label: "Critical Path"
 
 # Critical Path
 
-
 :::info
 This functionality is available only in the PRO edition
 :::
@@ -61,7 +60,6 @@ a certain task or link and implement a performance-friendlier strategy for displ
 
 
 ## Critical path logic
-
 
 Gantt considers a task as a critical one in the following cases:
 
@@ -153,7 +151,6 @@ gantt.isCriticalTask(gantt.getTask("task3"));// ->'true' /*!*/
 
 
 ## Checking if a link is critical 
-
 
 To check if a link is critical (connects 2 critical tasks), use the [isCriticalLink](api/method/iscriticallink.md) method:
 
@@ -267,11 +264,9 @@ It is also possible to highlight tasks and links manually:
 
 ## Setting lag and lead times between tasks
 
-
 It's possible to set lag and lead times between tasks of the critical path. You find the details [here](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks).
 
 ## Scheduling completed tasks
-
 
 By default, there is no difference in how the critical path algorithm processes completed tasks (tasks which have progress value of 1) and incomplete tasks.
 

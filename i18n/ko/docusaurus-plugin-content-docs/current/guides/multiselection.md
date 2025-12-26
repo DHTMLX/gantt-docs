@@ -5,7 +5,6 @@ sidebar_label: "멀티 태스크 선택"
 
 # 멀티 태스크 선택  
 
-
 버전 3.2부터 라이브러리에는 여러 작업을 동시에 선택할 수 있는 **multiselect** 확장 기능이 포함되어 있습니다.
 
 <div style="text-align:center;">![multiselection](/img/multiselection.png)</div>
@@ -152,7 +151,6 @@ gantt.config.drag_multiple = true;
 
 ## 한 번의 클릭으로 에디터 열기  
 
-
 단일 선택 모드에서는 작업을 클릭하면 바로 인라인 에디터가 열립니다.  
 
 **멀티 선택** 모드에서는 선택되지 않은 작업을 클릭하면 작업이 선택만 되고, 인라인 에디터는 두 번째 클릭 이후에만 열립니다.  
@@ -169,7 +167,6 @@ gantt.config.inline_editors_multiselect_open = true;
 ~~~
 
 ## API 이벤트  
-
 
 멀티 태스크 선택이 활성화된 경우, 하나 이상의 작업을 선택하면 일반 [onTaskSelected](api/event/ontaskselected.md) / [onTaskUnselected](api/event/ontaskunselected.md) 이벤트와 멀티셀렉트 확장 전용 이벤트가 모두 발생합니다.
 

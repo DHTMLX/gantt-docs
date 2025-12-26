@@ -37,7 +37,6 @@ gantt.attachEvent("onColumnResizeStart", function(index, column){
 
 ### Details
 
-
 Dieses Event kann blockiert werden. Wenn *false* zurückgegeben wird, wird das Ändern der Spaltengröße verhindert.
 
 ### Related API

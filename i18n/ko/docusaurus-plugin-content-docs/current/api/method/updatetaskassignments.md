@@ -41,7 +41,6 @@ gantt.updateTaskAssignments(taskId);
 
 ### Details
 
-
 :::note
  이 메서드는 [process_resource_assignments](api/config/process_resource_assignments.md) 설정이 활성화된 경우에만 작동합니다. 
 :::

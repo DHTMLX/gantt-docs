@@ -42,7 +42,6 @@ gantt.templates.resource_cell_value = function(start_date, end_date, resource, t
 
 ### Details
 
-
 :::note
  "assignments" 인수는 [process_resource_assignments](api/config/process_resource_assignments.md) 설정이 활성화된 경우에만 제공됩니다. 
 :::

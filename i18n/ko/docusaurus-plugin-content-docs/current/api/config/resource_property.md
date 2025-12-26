@@ -79,7 +79,6 @@ resourcesStore.parse([
 
 ### Details
 
-
 작업 객체에서 resourceGrid/Timeline/Histogram/Calendar와 연관된 리소스 ID를 포함하는 속성을 지정합니다. 이 설정은 런타임 중에 변경할 수 있습니다.
 
 ### Related API

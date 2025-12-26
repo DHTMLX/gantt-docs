@@ -5,7 +5,6 @@ sidebar_label: "Общие возможности"
 
 # Общие возможности
 
-
 ((index
 - [Локализация](guides/localization.md)
 - [Полноэкранный режим](guides/fullscreen-mode.md)

@@ -5,7 +5,6 @@ sidebar_label: "配置甘特图"
 
 # 配置甘特图
 
-
 ![gantt_basic](/img/gantt_basic.png)
 
 

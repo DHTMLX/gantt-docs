@@ -5,7 +5,6 @@ sidebar_label: "Export/Import für Excel, Export nach iCal"
 
 # Export/Import für Excel, Export nach iCal
 
-
 Die dhtmlxGantt-Bibliothek unterstützt das Exportieren von Daten aus dem Gantt-Diagramm in Excel- und iCal-Formate. Außerdem können Daten aus einer Excel-Datei in das Gantt-Diagramm importiert werden.
 
 :::note
@@ -18,7 +17,6 @@ Beachten Sie, dass diese Export-Services nicht im Gantt-Paket enthalten sind.
 Weitere Details finden Sie im [zugehörigen Artikel](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml), um die Nutzungsbedingungen zu verstehen.
 
 ## Beschränkungen des Online-Export-Services
-
 
 :::note
 Der Export-Service hat Einschränkungen hinsichtlich der Verarbeitungszeit und der Anfragegröße.
@@ -44,7 +42,6 @@ Export-/Import-Services (*exportToMSProject* / *importFromMSProject* / *exportTo
 
 ## Verwendung von Export-Modulen
 
-
 :::note
 Für den Export großer Diagramme empfiehlt sich ein [eigenständiges Export-Modul](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
 Dieses Modul ist kostenlos, wenn Sie eine [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)-, [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)- oder [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)-Lizenz besitzen. Andernfalls kann es [hier](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210) separat erworben werden.
@@ -53,7 +50,6 @@ Dieses Modul ist kostenlos, wenn Sie eine [Commercial](https://dhtmlx.com/docs/p
 Weitere Informationen zur Verwendung des Export-Moduls für den PDF-Export finden Sie in diesem Leitfaden: [PDF-Export-Modul](guides/pdf-export-module.md). Dieses Modul unterstützt den Export in die Formate PDF, PNG, Excel und iCal.
 
 ## Export nach Excel
-
 
 Um Daten aus dem Gantt-Diagramm in eine Excel-Datei zu exportieren, gehen Sie wie folgt vor:
 
@@ -190,7 +186,6 @@ gantt.exportToExcel({
 
 ## Import aus Excel
 
-
 Da die automatische Zuordnung beliebiger Excel-Spalten zum Gantt-Datenmodell nicht unterstützt wird, wandelt der Export-Service das Excel-Dokument in ein Array von Zeilen um, das als JSON zurückgegeben wird.
 Die Umwandlung dieser Daten ins Gantt-Format obliegt den Entwicklern.
 
@@ -274,7 +269,6 @@ gantt.importFromExcel({
 
 
 ## Export nach iCal
-
 
 Um Gantt-Diagrammdaten als iCal-String zu exportieren, gehen Sie wie folgt vor:
 

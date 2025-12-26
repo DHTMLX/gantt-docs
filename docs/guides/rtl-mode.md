@@ -5,7 +5,6 @@ sidebar_label: "RTL (Right-to-left) Mode"
 
 # RTL (Right-to-left) Mode
 
-
 ![rtl_mode](/img/rtl_mode.png)
 
 You can use the Gantt chart in the right-to-left mode, which is enabled via the [rtl](api/config/rtl.md) configuration option.

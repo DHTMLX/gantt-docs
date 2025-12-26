@@ -5,14 +5,12 @@ sidebar_label: "撤销扩展"
 
 # 撤销扩展
 
-
 *Undo* 对象提供了一组用于撤销或重做已进行更改的方法。
 
 
 有关撤销扩展的更多信息，请参阅 [Undo/Redo 기능](guides/undo-redo.md) 文章。
 
 ## 方法
-
 
 **gantt.ext.undo** 对象提供以下方法:
 

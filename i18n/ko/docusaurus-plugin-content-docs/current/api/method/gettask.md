@@ -53,7 +53,6 @@ const targetLinks = taskObj.$target;       //-> ["l5","l8"] - 들어오는 링�
 
 ## Error
 
-
 **getTask** 메서드는 지정된 "id"를 가진 작업이 이미 Gantt 차트에 로드되어 있어야 합니다. 해당 "id"를 가진 작업이 없으면 "Task not found id = ID"라는 오류 메시지를 발생시킵니다.
 
 ~~~js

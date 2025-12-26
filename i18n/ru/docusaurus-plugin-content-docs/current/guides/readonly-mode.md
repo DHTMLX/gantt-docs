@@ -5,7 +5,6 @@ sidebar_label: "Режим только для чтения"
 
 # Режим только для чтения
 
-
 В этом разделе рассмотрим режим только для чтения в двух сценариях:
 
 1. [Режим только для чтения для всего Gantt](guides/readonly-mode.md#readonlymodefortheentiregantt)
@@ -100,7 +99,6 @@ gantt.config.readonly_property = "property_name";
 
 ## Подробнее о параметре "editable_property"
 
-
 Свойство 'editable_property' указывает на свойство самого объекта данных задачи, а не на секцию lightbox или колонку в левом гриде:
 
 ~~~js
@@ -135,7 +133,6 @@ gantt.config.editable_property = "some_property";
 
 
 ## Установка read-only события на основе нескольких свойств
-
 
 Чтобы сделать события редактируемыми на основании нескольких условий, вы можете:
 

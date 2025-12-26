@@ -5,7 +5,6 @@ sidebar_label: "Export Service - 독립형 설치를 위한 시스템 요구 사
 
 # Export Service - 독립형 설치를 위한 시스템 요구 사항
 
-
 dhtmlxGantt 라이브러리는 온라인 내보내기 서비스를 통해 Gantt 차트의 데이터를 내보내고 가져올 수 있습니다.
 
 또한, [export services](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)를 컴퓨터에 직접 설치하여 Gantt 차트 내보내기를 로컬에서 수행할 수도 있습니다. 내보내기 모듈을 원활하게 사용하려면 시스템이 다음 요구 사항을 충족하는지 확인하십시오:

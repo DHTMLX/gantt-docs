@@ -5,14 +5,12 @@ sidebar_label: "Lokalisierung"
 
 # Lokalisierung
 
-
 Mit der Lokalisierung können Sie die Benutzeroberfläche des Gantt-Diagramms in Ihrer bevorzugten Sprache anzeigen lassen, beispielsweise auf Englisch, Spanisch, Französisch und anderen. Standardmäßig verwendet dhtmlxGantt die [englische Spracheinstellung](api/other/locale.md).
 
 ![gantt_localized](/img/gantt_localized.png)
 
 
 ## Aktivieren einer Spracheinstellung
-
 
 Um das Gantt-Diagramm in einer anderen Sprache als Englisch zu nutzen, müssen Sie lediglich die gewünschte Sprache mit der **setLocale**-Methode des [gantt.i18n](api/other/i18n.md)-Objekts aktivieren.
 
@@ -36,7 +34,6 @@ Die Spracheinstellung kann während der Laufzeit geändert werden, aber die Änd
 
 
 ## Vordefinierte Spracheinstellungen
-
 
 <table >
 <tr><td>Sprache</td><td>Sprachcode</td><td>Übersetzungsstatus</td></tr>
@@ -75,7 +72,6 @@ Die Spracheinstellung kann während der Laufzeit geändert werden, aber die Änd
 </table>
 
 ## Erstellen einer eigenen Spracheinstellung 
-
 
 :::note
 Das [gantt.i18n](api/other/i18n.md)-Objekt wurde in Version 7.0 eingeführt. Ältere Versionen nutzten das [gantt.locale](api/other/locale.md)-Objekt. Weitere Informationen finden Sie im [Migrationsartikel](migration.md#63---70).

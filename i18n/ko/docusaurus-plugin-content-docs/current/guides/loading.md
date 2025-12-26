@@ -5,7 +5,6 @@ sidebar_label: "데이터 로딩"
 
 # 데이터 로딩  
 
-
 dhtmlxGantt는 정보를 로드할 때 두 가지 데이터 형식을 지원합니다:
 
 - [XML](guides/supported-data-formats.md#xmldhtmlxgantt20);
@@ -27,7 +26,6 @@ gantt.load("tasks.json");
 :::
 
 ## 객체에서 데이터 로딩 {#loadingfromobject}
-
 
 데이터를 객체에서 직접 로드하려면 [parse](api/method/parse.md) 메서드를 사용하세요:
 
@@ -53,7 +51,6 @@ gantt.parse(data); /*!*/
 :::
  
 ## 서버에서 데이터 로딩 {#loadingfromserver}
-
 
 ### 클라이언트 측
 
@@ -126,7 +123,6 @@ app.get("/data", function(req, res){
 ::: 
 
 ## 작업 날짜 로딩 {#loadingtaskdates}
-
 
 ### 작업 일정 정의
 
@@ -384,7 +380,6 @@ gantt.templates.grid_date_format = function(date, column){
 
 ## 데이터 속성 {#dataproperties}
 
-
 Gantt 차트의 데이터 소스는 두 가지 주요 정보를 포함하는 객체입니다:
 
 - **tasks** - 작업 항목들
@@ -423,7 +418,6 @@ Gantt에 로드된 후 **start_date**와 **end_date** 속성은 Date 객체로 �
 커스텀 속성이 포함된 데이터 예시는 [여기](guides/supported-data-formats.md#custompropertiesindata)에서 확인할 수 있습니다.
 
 ## 데이터베이스 구조 {#databasestructure}
-
 
 데이터베이스를 사용할 경우, 작업과 링크를 위한 별도의 테이블 두 개를 사용하는 것이 권장됩니다.
 
@@ -479,7 +473,6 @@ CREATE TABLE `gantt_tasks` (
 ~~~
 
 ## 이벤트 흐름 {#eventsflow}
-
 
 로드 메서드와 관련된 이벤트 흐름은 다음과 같습니다:
 

@@ -5,7 +5,6 @@ sidebar_label: "PHP: Slim"
 
 # dhtmlxGantt mit PHP:Slim
 
-
 Dieses Tutorial bietet alle notwendigen Schritte, um ein PHP-basiertes Gantt-Diagramm mithilfe des Slim 4 Frameworks sowie einer RESTful API auf der Serverseite zu erstellen.
 
 :::note
@@ -29,7 +28,6 @@ Den vollständigen Quellcode finden Sie [auf GitHub](https://github.com/DHTMLX/g
 :::
 
 ## Schritt 1. Initialisierung eines Projekts
-
 
 ### Ein Projekt erstellen
 
@@ -121,7 +119,6 @@ Wenn Sie nun [http://127.0.0.1:8080/](http://127.0.0.1:8080/) im Browser aufrufe
 
 ## Schritt 3. Konfigurieren einer Datenbank
 
-
 Nachdem das Gantt-Diagramm angezeigt wird, besteht der nächste Schritt darin, eine Datenbank zu erstellen und sie mit der Anwendung zu verbinden.
 
 ### Datenbank erstellen
@@ -175,7 +172,6 @@ Ein ausführlicheres Beispiel finden Sie [hier](guides/loading.md#standarddataba
 Nachdem das Projekt eingerichtet ist, folgt als nächster Schritt das Laden der Daten.
 
 ## Schritt 4. Daten laden
-
 
 Nun ist es an der Zeit, das Laden der Daten aus der Datenbank einzurichten. Auf der Client-Seite werden die Daten mit der [gantt.load](api/method/load.md)-Methode angefordert:
 
@@ -286,7 +282,6 @@ Damit ist das Laden der Daten in Gantt implementiert. Beim Öffnen von [http://1
 ![slim_load](/img/slim_load.png)
 
 ## Schritt 5. Änderungen speichern
-
 
 Im nächsten Schritt werden Änderungen, die auf der Client-Seite vorgenommen wurden, wieder an den Server gesendet. Dies erfolgt üblicherweise mit der in gantt eingebetteten [dataProcessor](guides/server-side.md#technique)-Bibliothek.
 
@@ -705,21 +700,17 @@ Ein vollständiges, funktionierendes Beispiel ist auf GitHub verfügbar: [https:
 
 ## Verwendung von dhtmlxConnector
 
-
 Eine weitere Möglichkeit zur Implementierung des PHP-Backends ist die Nutzung der [dhtmlxConnector-Bibliothek](https://docs.dhtmlx.com/connector__php__index.html). Ein ausführliches Tutorial finden Sie [hier](integrations/php/howtostart-connector.md).
 
 ## Anwendungssicherheit
-
 
 Gantt selbst bietet keinen Schutz gegen gängige Sicherheitsrisiken wie SQL-Injection, XSS oder CSRF. Die Sicherstellung der Anwendungssicherheit liegt in der Verantwortung der Backend-Entwickler. Weitere Informationen finden Sie [in diesem Artikel](guides/app-security.md).
 
 ## Fehlerbehebung
 
-
 Falls nach Durchführung dieser Schritte das Gantt-Diagramm keine Aufgaben und Verknüpfungen anzeigt, lesen Sie die Anleitung zur Fehlerbehebung unter [Troubleshooting Backend Integration Issues](guides/troubleshooting.md). Dort finden Sie Methoden, um häufige Probleme zu identifizieren und zu lösen.
 
 ## Wie geht es weiter?
-
 
 An diesem Punkt ist das Gantt-Diagramm voll funktionsfähig. Der vollständige Quellcode ist auf [GitHub](https://github.com/DHTMLX/gantt-howto-php) verfügbar und kann für eigene Zwecke geklont oder heruntergeladen werden.
 

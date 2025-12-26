@@ -5,7 +5,6 @@ sidebar_label: "Empty State Screen"
 
 # Empty State Screen  
 
-
 버전 8.0부터, 라이브러리는 간트 차트에 데이터가 로드되지 않았을 때 그리드에 플레이스홀더 요소가 포함된 빈 화면("empty state")을 표시하는 기능을 지원합니다.
 
 ![empty screen tip](/img/empty_screen.png)

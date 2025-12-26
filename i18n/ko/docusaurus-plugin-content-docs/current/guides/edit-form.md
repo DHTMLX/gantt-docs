@@ -5,7 +5,6 @@ sidebar_label: "편집 폼 구성하기"
 
 # 편집 폼 구성하기
 
-
 ![lightbox](/img/lightbox.png)
 
 ((index

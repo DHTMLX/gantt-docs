@@ -5,7 +5,6 @@ sidebar_label: "전체 화면 모드"
 
 # 전체 화면 모드
 
-
 버전 3.3부터 라이브러리는 **fullscreen** 확장 기능을 제공합니다.
 
 이 확장 기능을 사용하면, 컴포넌트가 지원되는 경우 FullScreen API를 활용하여 전체 화면 모드로 전환할 수 있습니다  
@@ -67,7 +66,6 @@ gantt.collapse();
 
 ## 지원 이벤트
 
-
 전체 화면 전환을 처리할 수 있는 다음 이벤트들이 제공됩니다:
 
 - [onBeforeExpand](api/event/onbeforeexpand.md)
@@ -101,7 +99,6 @@ gantt.attachEvent("onCollapse", function (){
 
 ## Fullscreen API
 
-
 [fullscreen](guides/fullscreen-ext.md) 객체는 Gantt 차트와 기타 요소의 전체 화면 동작을 제어할 수 있는 네 가지 메서드를 제공합니다:
 
 - **expand()** - Gantt 차트를 전체 화면으로 전환
@@ -131,7 +128,6 @@ gantt.ext.fullscreen.getFullscreenElement();
 기본적으로 **getFullscreenElement()**는 Gantt 차트의 HTML 컨테이너를 반환합니다. 이 메서드를 재정의하여 전체 화면 모드에 추가 요소를 포함할 수 있습니다. 자세한 내용은 [여기](guides/fullscreen-mode.md#ganttwithheadertoolbarinfullscreen)를 참고하세요.
 
 ## 헤더/툴바와 함께 전체 화면으로 Gantt 표시
-
 
 Gantt API는 *fullscreen* 객체의 **getFullscreenElement()** 메서드를 통해 전체 화면 모드에 다른 요소를 포함할 수 있도록 지원합니다:
 
@@ -170,7 +166,6 @@ gantt.init("gantt_here");
 
 
 ## 전체 화면 모드가 동작하지 않는 이유
-
 
 전체 화면 확장 기능은 Gantt가 전체 화면 모드로 전환할 수 있을 때만 동작합니다.
 

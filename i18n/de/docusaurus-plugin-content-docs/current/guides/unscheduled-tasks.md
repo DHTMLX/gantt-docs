@@ -5,7 +5,6 @@ sidebar_label: "Nicht terminierte Aufgaben"
 
 # Nicht terminierte Aufgaben
 
-
 Es ist möglich, Aufgaben ohne spezifische Termine zum Gantt-Diagramm hinzuzufügen.
 
 ![unscheduled_tasks](/img/unscheduled_tasks.png)

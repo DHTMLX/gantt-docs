@@ -5,7 +5,6 @@ sidebar_label: "Milestones"
 
 # Milestones
 
-
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다
 :::
@@ -70,7 +69,6 @@ gantt.config.order_branch = true;
 
 ## 데이터 세트에서 마일스톤 지정하기
 
-
 초기 데이터에서 마일스톤을 지정하려면 항목의 [type](guides/loading.md#dataproperties) 속성을 **'milestone'** 으로 설정하세요(값은 [types](api/config/types.md) 객체에 저장됨):
 ~~~js
 var data = {
@@ -128,7 +126,6 @@ gantt.config.lightbox.milestone_sections = [
 
 
 ## 작업 및 마일스톤 숨기기
-
 
 v7.1부터 [작업 바](guides/task-types.md#regulartasks) 및 [마일스톤](guides/task-types.md#milestones)을 타임라인에서 숨길 수 있습니다. 데이터 항목에 **hide_bar: true** 속성을 설정하세요:
 

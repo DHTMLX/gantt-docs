@@ -5,7 +5,6 @@ sidebar_label: "Zoom-Erweiterung"
 
 # Zoom-Erweiterung
 
-
 Weitere Details zur Zoom-Erweiterung finden Sie im Artikel [Zooming](guides/zooming.md). Dieses Dokument konzentriert sich auf die API-Referenz für das **zoom**-Objekt:
 
 ## Zoom-Stufen

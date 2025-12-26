@@ -5,7 +5,6 @@ sidebar_label: "페이지에 간트 차트 생성하기"
 
 # 페이지에 간트 차트 생성하기
 
-
 ![gantt_basic](/img/gantt_basic.png)
 
 ((index

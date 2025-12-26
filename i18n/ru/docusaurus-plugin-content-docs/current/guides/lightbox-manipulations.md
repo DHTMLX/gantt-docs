@@ -5,7 +5,6 @@ sidebar_label: "Работа с элементами Lightbox"
 
 # Работа с элементами Lightbox
 
-
 ## Получение/установка значения контрола
 
 Чтобы получить или изменить значение контрола lightbox, используйте метод [getLightboxSection](api/method/getlightboxsection.md) следующим образом:

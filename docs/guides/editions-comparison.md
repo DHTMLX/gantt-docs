@@ -5,7 +5,6 @@ sidebar_label: "Standard vs PRO Library Versions"
 
 # Standard vs PRO Library Versions
 
-
 If you doubt what is the difference between the Standard and PRO versions of the dhtmlxGantt library and want to know what bonuses you will get with the PRO edition, this guide is what you are looking for.
 
 The PRO edition includes all the functionality of the Standard version and also contains additional useful features. The table below provides the list of features and allows you to compare the two versions of dhtmlxGantt.

@@ -5,7 +5,6 @@ sidebar_label: "Configuring Edit Form"
 
 # Configuring Edit Form
 
-
 ![lightbox](/img/lightbox.png)
 
 - [Configuring Lightbox Elements](guides/default-edit-form.md)

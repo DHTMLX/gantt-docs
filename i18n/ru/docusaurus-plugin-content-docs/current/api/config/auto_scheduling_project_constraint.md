@@ -27,7 +27,6 @@ gantt.config.auto_scheduling_project_constraint = true;
 
 ### Details
 
-
 :::note
 Эта настройка является частью расширения **auto_scheduling**, поэтому убедитесь, что плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) включен. Дополнительную информацию можно найти в статье [Автоматическое планирование](guides/auto-scheduling.md). 
 :::

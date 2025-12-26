@@ -5,7 +5,6 @@ sidebar_label: "Task Parent/Child"
 
 # Task Parent/Child
 
-
 In this article you will find methods related to the tree nature of the Gantt chart tasks.
 
 *To learn about basic operations of getting the task object/id, refer to the [Task Object/Id](guides/task-object-operations.md) article.*

@@ -29,7 +29,6 @@ gantt.init("gantt_here");
 
 ### Details
 
-
 Начиная с версии 6.2, эта настройка генерирует PNG-фоновое изображение вместе с любыми ячейками, стилизованными с помощью CSS-классов, назначаемых через функцию шаблона [timeline_cell_class](api/template/timeline_cell_class.md).
 
 Чтобы вернуться к поведению версии 6.1 (когда рендерилось только фоновое изображение), можно использовать конфигурацию [static_background_cells](api/config/static_background_cells.md):

@@ -5,7 +5,6 @@ sidebar_label: "Task Parent/Child"
 
 # Task Parent/Child
 
-
 В этой статье рассматриваются методы, работающие с иерархической структурой задач в диаграмме Gantt.
 
 *Для базовых операций, таких как получение объекта задачи или её ID, ознакомьтесь со статьёй [Task Object/Id](guides/task-object-operations.md).*

@@ -5,7 +5,6 @@ sidebar_label: "Konfiguration des Bearbeitungsformulars"
 
 # Konfiguration des Bearbeitungsformulars
 
-
 ![lightbox](/img/lightbox.png)
 
 - [Configuring Lightbox Elements](guides/default-edit-form.md)

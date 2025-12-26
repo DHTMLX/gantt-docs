@@ -5,7 +5,6 @@ sidebar_label: "Tasks Coloring"
 
 # Tasks Coloring 
 
-
 작업 색상 지정은 특정 작업을 강조하여 주목도를 높이고, 작업을 더 쉽게 구분할 수 있도록 도와줍니다.
 
 ![coloring_tasks](/img/coloring_tasks.png)
@@ -17,7 +16,6 @@ sidebar_label: "Tasks Coloring"
 3. [데이터에서 동적으로 스타일 생성하기](guides/colouring-tasks.md#loadingcolorswithdata)
 
 ## 작업 템플릿 재정의하기 {#redefiningthetaskstemplate}
-
 
 템플릿을 사용해 작업의 스타일을 커스터마이즈하려면 [task_class](api/template/task_class.md) 템플릿을 사용합니다. 예를 들어, 작업의 우선순위에 따라 색상을 지정하려면 아래와 같이 코드를 작성할 수 있습니다:
 
@@ -72,7 +70,6 @@ gantt.templates.task_class  = function(start, end, task){
 링크에도 유사한 방법을 적용할 수 있습니다. 자세한 내용은 [여기](guides/colouring-lines.md#redefiningthelinkstemplate)에서 확인할 수 있습니다.
 
 ## 작업 객체 속성에 스타일 지정하기 {#specifyingstyleinthepropertiesofataskobject}
-
 
 작업의 외관을 사용자 정의하려면 작업 데이터 객체에 최대 세 개의 특수 속성을 추가할 수 있습니다:
 
@@ -146,7 +143,6 @@ task.color = "rgb(255,0,0)";
 링크에도 유사한 접근법을 사용할 수 있습니다. 자세한 내용은 [여기](guides/colouring-lines.md#specifyingcolorinthepropertiesofthelinkobject)에서 확인할 수 있습니다.
 
 ## 데이터로 색상 불러오기 {#loadingcolorswithdata}
-
 
 작업 색상이 백엔드 데이터에서 오거나, 색상이 작업에 할당된 단계 또는 리소스에 연결되어 하드코딩할 수 없는 경우, 데이터에서 동적으로 스타일을 생성하는 것이 유용합니다.
 

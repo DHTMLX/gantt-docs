@@ -5,9 +5,7 @@ sidebar_label: "How to Start with dhtmlxGantt"
 
 # How to Start with dhtmlxGantt 
 
-
 ## How to Start with Gantt and Front-End
-
 
 Here's the overview of guides which tell you about basic Gantt initialization with popular front-end frameworks.
 

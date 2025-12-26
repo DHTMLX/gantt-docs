@@ -5,13 +5,11 @@ sidebar_label: "Task Object/Id"
 
 # Task Object/Id
 
-
 간트 차트에서 데이터를 다룰 때, 데이터 항목의 객체 또는 id에 접근하는 방법을 아는 것이 중요합니다. 대부분의 메서드는 데이터 객체나 id를 매개변수로 필요로 합니다. 또한, 모든 데이터 관련 작업은 데이터 객체나 id를 참조하여 수행됩니다.
 
 *작업과 관련된 트리 관련 메서드에 대한 정보는 [Task Parent/Child](guides/task-tree-operations.md) 문서를 참고하세요.*
 
 ## Task object
-
 
 작업 객체를 가져오려면 [getTask](api/method/gettask.md) 메서드를 사용하세요:
 
@@ -22,7 +20,6 @@ gantt.getTask("t1");
 ~~~
 
 ## Parent of a task
-
 
 작업의 상위(parent)를 찾으려면 [getParent](api/method/getparent.md) 메서드를 사용하거나 작업 객체의 **parent** 속성에 접근할 수 있습니다:
 
@@ -37,11 +34,9 @@ var taskParent = taskObj.parent;  //-> "pr_2"
 
 ## Links connected to a task
 
-
 특정 작업에 연결된 모든 링크를 가져오는 방법은 [링크 객체/ID 가져오기](guides/link-object-operations.md#gettingthelinksrelatedtoacertaintask) 문서를 참고하세요.
 
 ## Task duration
-
 
 작업의 기간을 확인하려면 [calculateDuration](api/method/calculateduration.md) 메서드를 사용하세요:
 
@@ -54,7 +49,6 @@ gantt.calculateDuration(new Date(2020,03,30),new Date (2020,04,02)); // ->16
 [work_time](api/config/work_time.md) 옵션이 활성화된 경우, [calculateDuration](api/method/calculateduration.md) 메서드는 작업 기간을 근무 시간 기준으로 계산합니다.
 
 ## Task height
-
 
 작업의 DOM 요소 높이를 가져오려면 [getTaskBarHeight](api/method/gettaskbarheight.md) 메서드를 사용하세요:
 
@@ -87,7 +81,6 @@ gantt.getTaskBarHeight(2); // -> 25
 
 ## Task end date
 
-
 작업의 종료일을 가져오려면 [calculateEndDate](api/method/calculateenddate.md) 메서드를 사용하세요:
 
 ~~~js
@@ -98,7 +91,6 @@ gantt.calculateEndDate(new Date(2020,03,30),48,"hour"); //-> Thu May 07 2020 17:
 
 ## Selected task
 
-
 현재 선택된 작업을 얻으려면 [getSelectedId](api/method/getselectedid.md) 메서드를 사용하세요:
 
 ~~~js
@@ -107,7 +99,6 @@ gantt.getSelectedId();  //-> "t_1" - 선택된 작업의 id
 ~~~
 
 ## Tasks from a specific period
-
 
 특정 기간 내에 있는 작업 목록을 가져오려면 [getTaskByTime](api/method/gettaskbytime.md) 메서드를 사용하세요:
 
@@ -118,7 +109,6 @@ var tasks = gantt.getTaskByTime(new Date(2020,03,05),new Date(2020,03,15));
 
 ## All tasks of Gantt 
 
-
 간트 차트에 표시된 모든 작업을 가져오려면 [getTaskByTime](api/method/gettaskbytime.md) 메서드를 파라미터 없이 호출하세요:
 
 ~~~js
@@ -128,7 +118,6 @@ var tasks = gantt.getTaskByTime();  //모든 작업을 객체 배열로 반환
 또는 [serialize](api/method/serialize.md) 메서드를 사용할 수 있습니다.
 
 ## Links of a certain task
-
 
 특정 작업과 관련된 링크를 가져오려면 작업 객체의 **$source** 및 **$target** 속성을 사용하세요. 이 속성들은 자동 생성되며 관련 링크의 id를 포함합니다:
 
@@ -144,7 +133,6 @@ var targetLinks = taskObj.$target;  //-> ["l5","l8"] - 인커밍 링크의 id  /
 
 ## Nearest oncoming task
 
-
 가장 가까운 예정된 작업을 찾으려면 [getTaskByTime](api/method/gettaskbytime.md) 메서드를 다음과 같이 사용하세요:
 
 ~~~js
@@ -155,7 +143,6 @@ tasks.sort(function(a,b){ return (a.start_date > b.start_date ? 1 : -1); });
 ~~~
 
 ## Task id
-
 
 일반적으로 작업의 id는 데이터셋의 "data" 객체에 포함되어 있습니다:
 
@@ -199,7 +186,6 @@ gantt.changeTaskId("t1", "t11");  //작업 id를 "t1"에서 "t11"로 변경
 
 ## Opening/Closing task branches
 
-
 작업 브랜치의 열림(open) 상태는 **task.$open** 속성으로 제어할 수 있으며, 이 속성은 작업이 간트에 로드된 후에 사용 가능합니다. 이 값을 변경하면 다음 간트 리렌더링 시 반영됩니다:
 
 ~~~js
@@ -219,7 +205,6 @@ gantt.render();
 단일 작업을 열거나 닫으려면 [open](api/method/open.md) 및 [close](api/method/close.md) 메서드를 사용할 수 있습니다. 이 메서드는 내부 상태를 업데이트하고 다시 그리기를 트리거합니다. 여러 작업을 수정할 때는 **task.$open**을 직접 변경하는 것이 불필요한 리렌더링을 피할 수 있어 더 효율적입니다.
 
 ## Copying/pasting tasks
-
 
 작업 복사 및 붙여넣기 예제는 [How to copy and paste tasks](guides/how-to.md#howtocopyandpastetasks) 섹션을 참고하세요.
 

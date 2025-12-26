@@ -5,7 +5,6 @@ sidebar_label: "How-tos"
 
 # How-tos
 
-
 ## So schalten Sie das Grid/Chart um {#howtotogglegridchart}
 
 Bei Verwendung der Standard-Layout-Konfiguration kann das Grid oder das Chart umgeschaltet werden, indem die Parameter [show_grid](api/config/show_grid.md) oder [show_chart](api/config/show_chart.md) geändert werden. Anschließend muss die Methode [render()](api/method/render.md) aufgerufen werden, um die Anzeige zu aktualisieren.

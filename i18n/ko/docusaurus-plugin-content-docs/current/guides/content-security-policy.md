@@ -5,7 +5,6 @@ sidebar_label: "Content Security Policy 준수"
 
 # Content Security Policy 준수
 
-
 Content Security Policy(CSP)는 무단 JavaScript 실행을 방지하고 [생성된 앱의 보안성](guides/app-security.md)을 높이기 위해 설계된 웹 표준입니다.
 
 **버전 7.0부터 CSP 지원이 Gantt 패키지에 내장되어 있습니다.** 이 라이브러리는 dhtmlxGantt 기반 애플리케이션이 CSP(Content Security Policy) 요구사항을 충족할 수 있도록 도와주는 [특별한 설정](api/config/csp.md)을 제공합니다.

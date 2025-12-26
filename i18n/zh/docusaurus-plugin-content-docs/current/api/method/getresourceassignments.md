@@ -35,7 +35,6 @@ gantt.getResourceAssignments("6"); // -> 显示详情
 
 ### Details
 
-
 此方法返回一个对象数组，结构如下:
 
 ~~~js

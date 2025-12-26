@@ -65,7 +65,6 @@ Diese Methode ermöglicht es, diese Standardwerte anzupassen.
 
 ## Eigenschaften des Konfigurationsobjekts {#configurationobjectproperties}
 
-
 Das Konfigurationsobjekt kann folgende Eigenschaften enthalten:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">

@@ -5,7 +5,6 @@ sidebar_label: "dhtmlxConnector"
 
 # dhtmlxGantt с dhtmlxConnector
 
-
 В этом руководстве описано, как создать простой Gantt на веб-странице с возможностью сохранения и обновления задач в базе данных (на сервере).
 
 
@@ -28,7 +27,6 @@ sidebar_label: "dhtmlxConnector"
 
 ## Шаг 1. Загрузка пакета dhtmlxGantt
 
-
 <div>
 <p>
 
@@ -44,7 +42,6 @@ sidebar_label: "dhtmlxConnector"
 </div>
 
 ## Шаг 2. Подключение файлов dhtmlxGantt
-
 
 <div>
 <p>
@@ -85,7 +82,6 @@ sidebar_label: "dhtmlxConnector"
 </div>
 
 ## Шаг 3. Инициализация dhtmlxGantt
-
 
 <div>
 <p>
@@ -385,7 +381,6 @@ $gantt->render_table("gantt_tasks","id",
 
 ## Шаг 7. Обновление данных в базе данных
 
-
 <div>
 
 <p>
@@ -412,7 +407,6 @@ dp.init(gantt); /*!*/
 </div>
 
 ## Логирование ошибок
-
 
 Если все настроено, но проблемы сохраняются, включение логирования в Gantt поможет выявить их причины.
 

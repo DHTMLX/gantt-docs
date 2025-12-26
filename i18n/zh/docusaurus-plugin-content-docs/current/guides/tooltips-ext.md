@@ -5,7 +5,6 @@ sidebar_label: "工具提示扩展"
 
 # 工具提示扩展
 
-
 有关工具提示扩展的更多信息，请参见文章 [Gantt 요소의 툴팁](guides/tooltips.md)。
 
 ## Tooltip 对象

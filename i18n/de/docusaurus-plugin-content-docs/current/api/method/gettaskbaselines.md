@@ -32,7 +32,6 @@ gantt.getTaskBaselines(5); // -> siehe Details
 
 ### Details
 
-
 :::note
  Die **getTaskBaselines** Methode funktioniert nicht, wenn die [baselines](api/config/baselines.md) Konfiguration deaktiviert ist. 
 :::

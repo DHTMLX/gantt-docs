@@ -35,7 +35,6 @@ gantt.config.resource_calendars = {
 
 ### Details
 
-
 - **[resourceId: string | number]** - (*string | number | \{[resourceId: string | number]: string | number | undefined \} | undefined*) - 리소스 캘린더 매핑을 정의합니다.
 
 

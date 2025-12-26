@@ -5,13 +5,11 @@ sidebar_label: "使用甘特图样式"
 
 # 使用甘特图样式
 
-
 dhtmlxGantt 提供了丰富的选项来自定义其外观。你可以[应用预定义的皮肤以更改甘特图的整体外观](guides/skins.md)，也可以针对任务、连接线、时间刻度、网格等各个元素进行样式调整。
 
 本指南汇总了对甘特图各部分进行样式设置的一般说明，帮助你更轻松地查阅文档。关于每个具体元素的详细信息，请参考相关文档。
 
 ## 网格样式
-
 
 网格区域的样式可通过相关的 [그리드의 템플릿](guides/table-templates.md) 进行修改。
 
@@ -263,7 +261,6 @@ gantt.init("gantt_here");
 
 ## 时间刻度样式
 
-
 时间刻度的样式通过相关的 [时间线区域模板](guides/timeline-templates.md) 控制。
 
 ### 刻度行
@@ -342,7 +339,6 @@ gantt.config.scales = [
 
 
 ## 任务样式
-
 
 任务的样式可以通过相应的 [时间线区域模板](guides/timeline-templates.md) 进行自定义。
 
@@ -572,7 +568,6 @@ gantt.templates.tooltip_text = function(start,end,task){
 
 ## 链接样式化
 
-
 你可以使用 [의존성 링크 템플릿](guides/dependency-templates.md) 资源自定义依赖链接的外观。
 
 ### 依赖链接的线条
@@ -677,7 +672,6 @@ gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
 
 
 ## 快速信息弹窗样式化
-
 
 快速信息弹窗的样式通过 ['Quick Info' 확장(터치 지원)의 템플릿](guides/touch-templates.md) 模板控制。
 

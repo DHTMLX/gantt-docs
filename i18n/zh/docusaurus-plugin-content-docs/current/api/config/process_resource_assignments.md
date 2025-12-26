@@ -27,7 +27,6 @@ gantt.config.process_resource_assignments = false;
 
 ### Details
 
-
 当需要将资源分配到任务中的特定时间时，必须启用 **process_resource_assignments** 属性。
 这是因为该属性负责将任务的 [gantt.config.resource_property](api/config/resource_property.md) 中的值解析为内部资源分配对象。
 

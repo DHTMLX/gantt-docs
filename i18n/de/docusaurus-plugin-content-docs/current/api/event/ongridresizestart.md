@@ -36,7 +36,6 @@ gantt.attachEvent("onGridResizeStart", function(old_width){
 
 ### Details
 
-
 Dieses Event kann blockiert werden. Wenn *false* zurückgegeben wird, wird verhindert, dass das Grid in der Größe verändert wird.
 
 ### Related API

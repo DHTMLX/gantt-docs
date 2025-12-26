@@ -5,7 +5,6 @@ sidebar_label: "Aufgaben aufteilen"
 
 # Aufgaben aufteilen
 
-
 :::info
 Dieses Feature ist nur in der PRO-Edition verfügbar.
 :::
@@ -117,7 +116,6 @@ gantt.attachEvent("onBeforeSplitTaskDisplay", function (id, task, parent) {
 ~~~
 
 ## Styling
-
 
 Geteilte Aufgaben sind Unteraufgaben eines übergeordneten Elements, und der hellgrüne Balken dahinter stellt den Balken des übergeordneten Elements mit zusätzlichem Styling dar.
 

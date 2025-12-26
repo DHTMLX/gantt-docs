@@ -5,7 +5,6 @@ sidebar_label: "Full List of CDN Links"
 
 # Full List of CDN Links
 
-
 The given article presents the full set of links for including the Gantt functionality from CDN.
 Each section corresponds to a particular Gantt version:
 
@@ -14,7 +13,6 @@ Each section corresponds to a particular Gantt version:
 
 
 ## Latest Gantt version
-
 
 To set path to the sources of the latest version of the library, specify the link as `https://cdn.dhtmlx.com/gantt/edge/...`
 
@@ -30,7 +28,6 @@ Skins: [Terrace](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_terrace.css
 
 
 ## Latest Gantt version, Uncompressed
-
 
 To set path to the uncompressed sources of the latest version of the library, specify the link as `https://cdn.dhtmlx.com/gantt/edge/sources/...`
 
@@ -49,7 +46,6 @@ Skins: [Terrace]( https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_te
 
 ## Particular Gantt version
 
-
 To set path to the sources of a certain version of the library, specify the link as `https://cdn.dhtmlx.com/gantt/[version_number]/...`. 
 
 Core files: [JS]( https://cdn.dhtmlx.com/gantt/4.0/dhtmlxgantt.js ), 
@@ -66,7 +62,6 @@ Skins: [Terrace]( https://cdn.dhtmlx.com/gantt/4.0/skins/dhtmlxgantt_terrace.css
  
 
 ## Particular Gantt version, Uncompressed 
-
 
 To set path to the uncompressed sources of a certain version of the library, specify the link as `https://cdn.dhtmlx.com/gantt/[version_number]/sources/...`. 
 

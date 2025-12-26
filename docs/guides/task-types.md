@@ -5,7 +5,6 @@ sidebar_label: "Task Types"
 
 # Task Types
 
-
 :::info
 This functionality is available only in the PRO edition.
 :::
@@ -43,7 +42,6 @@ const data = {
 
 ## Regular tasks
 
-
 By default, dhtmlxGantt provides creating of regular tasks (tasks with **type="task"**).
 
 ![type_task](/img/type_task.png)
@@ -77,7 +75,6 @@ Tasks with **type="task"** can be characterized as follows:
 
 
 ## Project tasks
-
 
 Project task is a task that starts, when its earliest child task starts, and ends, when its latest child ends.
 
@@ -187,7 +184,6 @@ To go into details on a lightbox configuration, you can read the [Configuring Ed
 
 ## Creating a custom type
 
-
 All tasks' types are defined in the [types](api/config/types.md) object. 
 
 Generally, to add a custom tasks' type you need to:
@@ -270,7 +266,6 @@ gantt.templates.task_text = (start, end, task) =>
 
 
 ## Custom display of task types
-
 
 To customize the look of existing task types, use the [type_renderers](api/config/type_renderers.md) option. The options allows you to redefine functions responsible for displaying different tasks types on the page.
 

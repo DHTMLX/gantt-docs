@@ -5,7 +5,6 @@ sidebar_label: "Creating Custom Element"
 
 # Creating Custom Element
 
-
 To create a custom control for the lightbox, define a new object in the following way:
 
 ~~~js

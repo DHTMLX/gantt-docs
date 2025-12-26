@@ -79,7 +79,6 @@ resourcesStore.parse([
 
 ### Details
 
-
 "resourceGrid"와 "resourceTimeline" 뷰에 연결되는 datastore를 정의합니다. 또는 뷰의 "bind" 속성을 설정할 수도 있습니다.
 
 ### Related API

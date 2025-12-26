@@ -27,7 +27,6 @@ gantt.config.drag_project = true;
 
 ### Details
 
-
 Damit können Benutzer ganze Projekte zusammen mit ihren Unteraufgaben per Drag & Drop verschieben.
 
 ### Related Guides

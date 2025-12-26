@@ -5,7 +5,6 @@ sidebar_label: "dhtmlxGantt mit Angular"
 
 # dhtmlxGantt mit Angular
 
-
 Diese Anleitung setzt grundlegende Kenntnisse der Angular-Konzepte und -Muster voraus. Falls Sie eine Auffrischung benötigen, finden Sie im [Angular-Handbuch](https://angular.io/docs) ein hilfreiches Einstiegstutorial.
 
 DHTMLX Gantt funktioniert reibungslos mit Angular. Ein entsprechendes Beispiel finden Sie auf GitHub: [DHTMLX Gantt with Angular Demo](https://github.com/DHTMLX/angular-gantt-demo).

@@ -27,7 +27,6 @@ gantt.config.drag_project = true;
 
 ### Details
 
-
 Позволяет пользователям перетаскивать целые проекты вместе с их подзадачами.
 
 ### Related Guides

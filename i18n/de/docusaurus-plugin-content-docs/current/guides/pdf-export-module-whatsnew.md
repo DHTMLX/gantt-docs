@@ -5,7 +5,6 @@ sidebar_label: "Was ist neu im PDF Export Modul"
 
 # Was ist neu im PDF Export Modul
 
-
 ## 0.6.6
 
 * Nicht terminierte Aufgaben werden beim Export nach Excel mit der 'visual'-Konfiguration jetzt ignoriert.

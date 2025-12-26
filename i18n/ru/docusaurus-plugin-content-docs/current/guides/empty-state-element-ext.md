@@ -5,7 +5,6 @@ sidebar_label: "emptyStateElement Extension"
 
 # emptyStateElement Extension
 
-
 Более подробную информацию об расширении emptyStateElement вы можете найти в статье [Экран пустого состояния](guides/empty-state-screen.md).
 
 ## Методы

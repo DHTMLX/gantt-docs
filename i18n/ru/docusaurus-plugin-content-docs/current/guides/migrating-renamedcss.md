@@ -5,7 +5,6 @@ sidebar_label: "CSS-классы переименованы в v.3.0"
 
 # CSS-классы переименованы в v.3.0
 
-
 <table class="list" cellspacing="0" cellpadding="5" border="0">
   <thead>
   <tr>

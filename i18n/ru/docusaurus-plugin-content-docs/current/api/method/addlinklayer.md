@@ -43,7 +43,6 @@ gantt.attachEvent("onGanttReady", function () {
 
 ### Details
 
-
 Аргумент может иметь один из следующих типов:
 
 - **linkLayerRender (link, timeline, config, viewport): HTMLElement|boolean|void** - функция, которая принимает объект связи и возвращает DOM-элемент для отображения в слое.

@@ -41,7 +41,6 @@ gantt.config.type_renderers[gantt.config.types.project] = function(task,defaultR
 
 ### Details
 
-
 이 기능을 사용하면 작업 유형별로 표시 방식을 사용자 정의 렌더링 함수로 정의할 수 있습니다.
 
 렌더링 함수는 두 개의 인수를 받습니다:

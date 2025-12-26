@@ -38,7 +38,6 @@ gantt.attachEvent("onColumnResize", function(index, column, new_width){
 
 ### Details
 
-
 ### Related API
 - [onColumnResizeStart](api/event/oncolumnresizestart.md)
 - [onColumnResizeEnd](api/event/oncolumnresizeend.md)

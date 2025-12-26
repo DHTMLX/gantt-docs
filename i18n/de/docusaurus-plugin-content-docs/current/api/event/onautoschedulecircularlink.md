@@ -31,7 +31,6 @@ gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
 
 ### Details
 
-
 :::note
  Diese Methode erfordert, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. 
 :::

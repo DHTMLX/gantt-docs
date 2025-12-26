@@ -5,7 +5,6 @@ sidebar_label: "dhtmlxGantt와 PHP:Slim3 사용하기"
 
 # dhtmlxGantt와 PHP:Slim3 사용하기
 
-
 이 튜토리얼은 PHP 5.6x-7.x와 서버 측의 RESTful API를 결합하여 Gantt 차트를 생성하는 데 필요한 모든 핵심 정보를 제공합니다.
 
 :::note
@@ -30,7 +29,6 @@ sidebar_label: "dhtmlxGantt와 PHP:Slim3 사용하기"
 :::
 
 ## 1단계. 프로젝트 초기화
-
 
 ### 프로젝트 생성하기
 
@@ -58,7 +56,6 @@ php -S 0.0.0.0:8080 -t public public/index.php
 그런 다음 브라우저에서 [http://127.0.0.1:8080](http://127.0.0.1:8080)을 열어 기본 Slim 환영 페이지가 표시되는지 확인하세요.
 
 ## 2단계. Gantt를 페이지에 추가하기
-
 
 다음 작업은 간트 차트를 표시할 페이지를 만드는 것입니다. 기본 페이지는 <b>templates/index.phtml</b>에 있습니다. 여기에서 간트 차트를 삽입하고 데이터 로딩에 필요한 설정을 할 수 있습니다.
 
@@ -102,7 +99,6 @@ php -S 0.0.0.0:8080 -t public public/index.php
 브라우저에서 [http://127.0.0.1:8080/](http://127.0.0.1:8080/)을 열면 페이지에 간트 차트가 표시됩니다.
 
 ## 3단계. 데이터베이스 구성하기
-
 
 다음으로, 두 개의 테이블이 있는 간단한 데이터베이스를 생성합니다.
 
@@ -150,7 +146,6 @@ INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00',
 프로젝트 설정이 완료되었으니, 이제 데이터 로딩으로 넘어가겠습니다.
 
 ## 4단계. 데이터 로딩하기
-
 
 이제 데이터베이스에서 데이터를 불러오는 기능을 구현하겠습니다. 클라이언트 측에서는 [gantt.load](api/method/load.md) 메서드를 사용해 데이터를 요청합니다:
 
@@ -265,7 +260,6 @@ $app->run();
 ![load_data](/img/load_data.png)
 
 ## 5단계. 변경 사항 저장하기
-
 
 다음 단계는 클라이언트에서 변경한 내용을 서버에 저장하는 것입니다. 이는 일반적으로 gantt에 통합된 [dataProcessor](guides/server-side.md#technique) 라이브러리로 처리합니다.
 
@@ -618,21 +612,17 @@ function updateOrder($taskId, $target, $db){
 
 ## dhtmlxConnector 사용하기
 
-
 또 다른 방법으로, PHP 백엔드는 [dhtmlxConnector 라이브러리](https://docs.dhtmlx.com/connector__php__index.html)를 사용해 구축할 수 있습니다. 자세한 튜토리얼은 [여기](integrations/php/howtostart-connector.md)에서 확인할 수 있습니다.
 
 ## 애플리케이션 보안
-
 
 Gantt 자체는 SQL 인젝션, XSS, CSRF 공격과 같은 위협에 대한 보호 기능을 포함하고 있지 않습니다. 개발자는 백엔드 구현에서 보안 대책을 직접 처리해야 합니다. 자세한 내용은 [관련 문서](guides/app-security.md)에서 확인할 수 있습니다.
 
 ## 문제 해결
 
-
 통합 단계를 완료한 후 Gantt 차트에 작업이나 링크가 표시되지 않는 경우, [백엔드 통합 문제 해결](guides/troubleshooting.md)의 문제 해결 가이드에서 원인 파악 및 해결을 위한 유용한 팁을 확인할 수 있습니다.
 
 ## 다음 단계
-
 
 기본 Gantt 설정이 완료되면, 전체 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x)에서 클론하거나 다운로드하여 프로젝트에 활용할 수 있습니다.
 

@@ -5,7 +5,6 @@ sidebar_label: "Export und Import aus MS Project"
 
 # Export und Import aus MS Project
 
-
 Die dhtmlxGantt-Bibliothek unterstützt sowohl den Export von Daten aus dem Gantt-Diagramm nach MS Project als auch den Import von Daten aus MS Project in das Gantt-Diagramm.
 
 :::note
@@ -18,7 +17,6 @@ Beachten Sie, dass diese Exportdienste nicht im Gantt-Paket enthalten sind.
 Weitere Informationen zu den Nutzungsbedingungen der einzelnen Dienste finden Sie im [zugehörigen Artikel](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
 
 ## Einschränkungen des Online-Exportdienstes
-
 
 :::note
 Der Exportdienst hat Begrenzungen bezüglich der Verarbeitungszeit und der Anfragegröße.
@@ -43,7 +41,6 @@ Es gibt auch einen speziellen API-Endpunkt **https://export.dhtmlx.com/gantt/pro
 
 ## Verwendung von Exportmodulen
 
-
 :::note
 Für den Export großer Diagramme empfiehlt sich die Nutzung eines [eigenständigen Exportmoduls](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
 Dieses Modul ist kostenlos, wenn Sie eine [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) oder [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) Lizenz besitzen, oder kann separat [hier](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210) erworben werden.
@@ -52,7 +49,6 @@ Dieses Modul ist kostenlos, wenn Sie eine [Commercial](https://dhtmlx.com/docs/p
 [Mehr über die Verwendung des Exportmoduls für MS Project erfahren](guides/msp-export-module.md).
 
 ## Export nach MS Project
-
 
 Die Gantt-Komponente kann Verknüpfungen, Aufgaben und Ressourcen nach MS Project exportieren.
 
@@ -287,7 +283,6 @@ gantt.exportToMSProject({
 ~~~
 
 ## Import aus MS Project
-
 
 Um eine XML- oder MPP-MS Project-Datei zu konvertieren, senden Sie eine Anfrage an den Exportdienst mit folgenden Angaben:
 
@@ -545,7 +540,6 @@ Dieser Endpunkt unterstützt Anfragen bis zu 40 MB und ist für MS Project Expor
 Andere Methoden wie *gantt.exportToPDF((server:"https://export.dhtmlx.com/gantt/project"))* führen zu einem Serverfehler.
 
 ## dhtmlxGantt vs MS Project Zeitberechnung
-
 
 Es gibt wesentliche Unterschiede darin, wie dhtmlxGantt und MS Project Datumsberechnungen durchführen, was zu unterschiedlichen Ergebnissen führen kann.
 

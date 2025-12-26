@@ -65,7 +65,6 @@ gantt.setWorkTime({hours : ["8:30-12:00", "13:00-17:00"]})
 
 ## Свойства объекта конфигурации {#configurationobjectproperties}
 
-
 Объект конфигурации может содержать следующие свойства:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">

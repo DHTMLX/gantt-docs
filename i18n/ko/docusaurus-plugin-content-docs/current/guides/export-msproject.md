@@ -5,7 +5,6 @@ sidebar_label: "MS Project로부터의 내보내기 및 가져오기"
 
 # MS Project로부터의 내보내기 및 가져오기
 
-
 dhtmlxGantt 라이브러리는 Gantt 차트의 데이터를 MS Project로 내보내기(Export) 및 MS Project로부터 Gantt 차트로 가져오기(Import)를 지원합니다.
 
 :::note
@@ -18,7 +17,6 @@ dhtmlxGantt 라이브러리는 Gantt 차트의 데이터를 MS Project로 내보
 각 서비스의 사용 조건에 대한 자세한 내용은 [관련 문서](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)를 참고하세요.
 
 ## 온라인 내보내기 서비스 제한 사항
-
 
 :::note
 내보내기 서비스는 처리 시간과 요청 크기에 제한이 있습니다.
@@ -43,7 +41,6 @@ Error: Timeout trigger 20 seconds
 
 ## 내보내기 모듈 사용
 
-
 :::note
 대용량 차트 내보내기가 필요한 경우, [독립형 내보내기 모듈](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 사용을 고려하세요.  
 이 모듈은 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 라이선스 보유 시 무료로 제공되며, 아니면 [여기](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210)에서 별도 구매할 수 있습니다.
@@ -53,7 +50,6 @@ Error: Timeout trigger 20 seconds
 
 
 ## MS Project로 내보내기
-
 
 Gantt 컴포넌트는 링크, 작업, 리소스를 MS Project로 내보낼 수 있습니다.
 
@@ -293,7 +289,6 @@ gantt.exportToMSProject({
 
 
 ## MS Project로부터 가져오기
-
 
 XML 또는 MPP MS Project 파일을 변환하려면 내보내기 서비스로 다음 정보를 포함하여 요청을 전송합니다:
 
@@ -555,7 +550,6 @@ gantt.importFromMSProject({
 다른 메서드, 예를 들어 *gantt.exportToPDF((server:"https://export.dhtmlx.com/gantt/project"))*와 같이 사용하면 서버 오류가 발생합니다.
 
 ## dhtmlxGantt와 MS Project의 시간 계산 차이
-
 
 dhtmlxGantt와 MS Project는 날짜 계산 방식에 차이가 있어 결과가 다를 수 있습니다.
 

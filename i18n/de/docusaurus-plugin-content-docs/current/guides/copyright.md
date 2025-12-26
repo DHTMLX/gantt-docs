@@ -5,7 +5,6 @@ sidebar_label: "Drittanbieter-Lizenzen"
 
 # Drittanbieter-Lizenzen
 
-
 Dieser Artikel enthält Hinweise und zusätzliche Bedingungen zu Drittanbieter-Softwarekomponenten, die in der DHTMLX Gantt-Bibliothek enthalten sind.
 
 Die kompilierte **Bluebird**-Bibliothek, die unter der MIT-Lizenz steht, ist in den JS-Dateien unseres Gantt-Charts enthalten. Verweise darauf finden Sie in den Kommentaren innerhalb der JS-Dateien. Einzelheiten zur Integration mit Gantt finden Sie unter: [Promise](api/method/promise.md).
@@ -15,7 +14,6 @@ Die **Roboto Google Font**, die im Material-Skin verwendet wird, ist standardmä
 Wir verwenden außerdem einige Open-Source-Bibliotheken in unseren Beispielanwendungen, wie z. B. **Node.js Express module, body_parser und strip_tags** (aufgeführt im Paket der Beispiele unter backend/package.json). Diese sind nicht Bestandteil der Gantt-Bibliothek selbst und dienen ausschließlich Demonstrationszwecken.
 
 ## Komponenten, die in der Kernbibliothek von Gantt verwendet werden
-
 
 ### Bluebird Promise Library
 
@@ -41,7 +39,6 @@ Licensed under the Apache License, Version 2.0 (the "License"); use of this file
 Unless required by law or agreed to in writing, software distributed under this License is provided "AS IS", without warranties or conditions of any kind, either express or implied. Please refer to the License for specific language governing permissions and limitations.
 
 ## Komponenten, die in der Beispielanwendung verwendet werden
-
 
 ### body-parser
 

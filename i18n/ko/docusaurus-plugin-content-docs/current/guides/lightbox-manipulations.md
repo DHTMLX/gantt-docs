@@ -5,7 +5,6 @@ sidebar_label: "Lightbox 요소 작업하기"
 
 # Lightbox 요소 작업하기
 
-
 ## 컨트롤 값 가져오기/설정하기
 
 Lightbox 컨트롤의 값을 가져오거나 업데이트하려면 다음과 같이 [getLightboxSection](api/method/getlightboxsection.md) 메서드를 사용하세요:

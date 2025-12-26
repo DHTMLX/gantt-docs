@@ -37,7 +37,6 @@ gantt.attachEvent("onColumnResizeStart", function(index, column){
 
 ### Details
 
-
 이 이벤트는 차단할 수 있습니다. *false*를 반환하면 컬럼 크기 조절이 방지됩니다.
 
 ### Related API

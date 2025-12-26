@@ -5,7 +5,6 @@ sidebar_label: "与 JQuery 集成"
 
 # 与 JQuery 集成
 
-
 在使用 JQuery 库时，可以通过熟悉的语法将甘特图添加到页面中。
 
 以下是使用 JQuery 初始化基本甘特图的示例:

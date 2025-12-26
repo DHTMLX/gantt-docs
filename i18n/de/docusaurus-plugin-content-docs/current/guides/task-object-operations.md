@@ -5,13 +5,11 @@ sidebar_label: "Task-Objekt/Id"
 
 # Task-Objekt/Id
 
-
 Beim Arbeiten mit Daten im Gantt-Diagramm ist es wichtig zu wissen, wie man auf das Objekt oder die Id eines Datenobjekts zugreift. Die meisten Methoden erfordern das Datenobjekt oder die Id als Parameter. Darüber hinaus basieren alle datenbezogenen Operationen auf dem Verweis auf das Datenobjekt oder die Id.
 
 *Informationen zu verfügbaren baumbezogenen Methoden für Aufgaben finden Sie im Artikel [Task Parent/Child](guides/task-tree-operations.md).*
 
 ## Task-Objekt
-
 
 Um ein Task-Objekt abzurufen, verwenden Sie die Methode [getTask](api/method/gettask.md):
 
@@ -22,7 +20,6 @@ gantt.getTask("t1");
 ~~~
 
 ## Elternelement einer Aufgabe
-
 
 Um das Elternelement einer Aufgabe zu ermitteln, können Sie die Methode [getParent](api/method/getparent.md) verwenden oder auf die **parent**-Eigenschaft des Task-Objekts zugreifen:
 
@@ -37,11 +34,9 @@ var taskParent = taskObj.parent;  //-> "pr_2"
 
 ## Verknüpfungen, die mit einer Aufgabe verbunden sind
 
-
 Wie Sie alle Links abrufen, die mit einer bestimmten Aufgabe verbunden sind, erfahren Sie im Artikel [Getting the Link Object/Id](guides/link-object-operations.md#gettingthelinksrelatedtoacertaintask).
 
 ## Aufgabendauer
-
 
 Um die Dauer einer Aufgabe zu bestimmen, verwenden Sie die Methode [calculateDuration](api/method/calculateduration.md):
 
@@ -54,7 +49,6 @@ Diese Methode funktioniert nicht korrekt, wenn nur der **duration**-Parameter ge
 Beachten Sie, dass bei aktivierter Option [work_time](api/config/work_time.md) die Methode [calculateDuration](api/method/calculateduration.md) die Dauer der Aufgabe anhand der Arbeitszeit berechnet.
 
 ## Task-Höhe
-
 
 Um die Höhe des DOM-Elements einer Aufgabe zu erhalten, verwenden Sie die Methode [getTaskBarHeight](api/method/gettaskbarheight.md):
 
@@ -87,7 +81,6 @@ Beachten Sie: Wenn die **bar_height**-Eigenschaft auf "full" gesetzt ist, berech
 
 ## Enddatum einer Aufgabe
 
-
 Um das Enddatum einer Aufgabe zu erhalten, verwenden Sie die Methode [calculateEndDate](api/method/calculateenddate.md):
 
 ~~~js
@@ -98,7 +91,6 @@ Wenn die Option [work_time](api/config/work_time.md) aktiviert ist, behandelt di
 
 ## Ausgewählte Aufgabe
 
-
 Um die aktuell ausgewählte Aufgabe zu erhalten, verwenden Sie die Methode [getSelectedId](api/method/getselectedid.md): 
 
 ~~~js
@@ -107,7 +99,6 @@ gantt.getSelectedId();  //-> "t_1" - die Id der ausgewählten Aufgabe
 ~~~
 
 ## Aufgaben aus einem bestimmten Zeitraum
-
 
 Um eine Liste von Aufgaben zu erhalten, die in einem bestimmten Zeitraum stattfinden, verwenden Sie die Methode [getTaskByTime](api/method/gettaskbytime.md):
 
@@ -118,7 +109,6 @@ var tasks = gantt.getTaskByTime(new Date(2020,03,05),new Date(2020,03,15));
 
 ## Alle Aufgaben im Gantt
 
-
 Um alle im Gantt-Diagramm angezeigten Aufgaben abzurufen, rufen Sie die Methode [getTaskByTime](api/method/gettaskbytime.md) ohne Parameter auf:
 
 ~~~js
@@ -128,7 +118,6 @@ var tasks = gantt.getTaskByTime();  //gibt alle Aufgaben als Array von Objekten 
 Alternativ kann die Methode [serialize](api/method/serialize.md) verwendet werden.
 
 ## Links einer bestimmten Aufgabe
-
 
 Um Links zu einer bestimmten Aufgabe zu erhalten, verwenden Sie die Eigenschaften **$source** und **$target** des Task-Objekts. Diese Eigenschaften werden automatisch generiert und enthalten die Ids der zugehörigen Links:
 
@@ -144,7 +133,6 @@ var targetLinks = taskObj.$target;  //-> ["l5","l8"] - Ids eingehender Links  /*
 
 ## Nächste bevorstehende Aufgabe
 
-
 Um die nächste bevorstehende Aufgabe zu finden, verwenden Sie die Methode [getTaskByTime](api/method/gettaskbytime.md) wie folgt:
 
 ~~~js
@@ -155,7 +143,6 @@ tasks.sort(function(a,b){ return (a.start_date > b.start_date ? 1 : -1); });
 ~~~
 
 ## Task-Id
-
 
 In der Regel ist die Id einer Aufgabe im "data"-Objekt des Datensatzes verfügbar:
 
@@ -199,7 +186,6 @@ gantt.changeTaskId("t1", "t11");  //ändert die Task-Id von "t1" zu "t11"
 
 ## Öffnen/Schließen von Aufgaben-Ästen
 
-
 Der offene Zustand eines Aufgabenastes wird durch die Eigenschaft **task.$open** gesteuert, die nach dem Laden der Aufgaben in gantt verfügbar ist. Eine Änderung dieses Wertes wird nach dem nächsten Neuzeichnen von gantt übernommen:
 
 ~~~js
@@ -219,7 +205,6 @@ gantt.render();
 Um einen einzelnen Task zu öffnen oder zu schließen, können die Methoden [open](api/method/open.md) und [close](api/method/close.md) verwendet werden. Diese Methoden aktualisieren den internen Zustand und lösen ein Neuzeichnen aus. Beim Ändern mehrerer Aufgaben ist das direkte Setzen von **task.$open** effizienter, da unnötige Neuzeichnungen vermieden werden.
 
 ## Kopieren/Einfügen von Aufgaben
-
 
 Beispiele zum Kopieren und Einfügen von Aufgaben finden Sie im Abschnitt [How to copy and paste tasks](guides/how-to.md#howtocopyandpastetasks).
 

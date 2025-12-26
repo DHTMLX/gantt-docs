@@ -5,7 +5,6 @@ sidebar_label: "Constraint Control"
 
 # Constraint Control
 
-
 :::info
 This functionality is available in the PRO Edition only.
 :::
@@ -27,7 +26,6 @@ gantt.config.lightbox.sections = [
 
 
 ## Initialization
-
 
 To add the **constraint** control to the lightbox, follow the steps below:
 
@@ -52,7 +50,6 @@ gantt.locale.labels.section_constraint = "Constraint";
 
 
 ## Properties
-
 
 The following properties are mostly important and commonly set for the **constraint** control (see the full list [here](api/config/lightbox.md)):
 

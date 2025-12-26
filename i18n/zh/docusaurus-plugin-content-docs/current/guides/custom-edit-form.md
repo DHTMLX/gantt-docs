@@ -5,9 +5,7 @@ sidebar_label: "自定义 Lightbox"
 
 # 自定义 Lightbox
 
-
 ## 创建自定义 Lightbox 的方法
-
 
 可以为 gantt 创建完全自定义的 lightbox，并替换默认的 lightbox。主要有两种方法:
 
@@ -128,7 +126,6 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 ~~~
 
 ## 在自定义表单中处理操作
-
 
 当保存表单时，需要手动获取表单的值，并通过公开 API 更新对应的任务:@[addTask](api/method/addtask.md)、@[updateTask](api/method/updatetask.md) 和 @[deleteTask](api/method/deletetask.md)。
 

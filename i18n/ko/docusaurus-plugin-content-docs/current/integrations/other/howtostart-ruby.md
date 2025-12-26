@@ -5,7 +5,6 @@ sidebar_label: "Ruby on Rails"
 
 # dhtmlxGantt와 Ruby on Rails 연동하기
 
-
 이 문서에서는 [Ruby on Rails](https://rubyonrails.org/) 백엔드를 사용하여 Gantt 차트를 만드는 과정을 안내합니다. 예제에서는 Ruby 2.4.1, Rails 5.1.3, 그리고 MySQL을 사용합니다. 이 사전 조건들이 이미 설치되어 있다고 가정합니다. 만약 설치되어 있지 않다면, [공식 튜토리얼](https://guides.rubyonrails.org/index.html)을 먼저 참고하시기 바랍니다.
 
 다른 기술 스택을 사용 중이라면, 아래의 통합 옵션을 참고할 수 있습니다:
@@ -22,7 +21,6 @@ sidebar_label: "Ruby on Rails"
 
 ## 1단계. 프로젝트 생성
 
-
 새 프로젝트를 생성하려면 터미널에서 다음 명령어를 실행하세요:
 
 ~~~js
@@ -30,7 +28,6 @@ rails new gantt-app -d mysql
 ~~~
 
 ## 2단계. 페이지에 Gantt 추가하기
-
 
 먼저 컨트롤러와 앱의 기본 페이지를 생성합니다. 애플리케이션 폴더로 이동한 뒤, *index* 액션이 포함된 새로운 컨트롤러를 생성하세요:
 
@@ -115,7 +112,6 @@ rails server
 
 ## 3단계. 모델 생성하기
 
-
 MySQL을 사용하므로, *config/database.yml*에서 연결 설정이 올바른지 확인하세요. 예시:
 
 **config/database.yml**
@@ -185,7 +181,6 @@ Link.create :source=>1, :target=>2, :link_type=>"0";
 
 ## 4단계. 데이터 로딩하기
 
-
 모델과 마이그레이션이 준비되었으니, 데이터베이스의 데이터를 Gantt 차트에 로드할 수 있습니다.
 
 dhtmlxGantt는 [JSON 형식](guides/supported-data-formats.md)의 데이터를 기대하므로, *GanttController*에 데이터를 읽고 포맷하여 출력하는 새 액션을 추가합니다:
@@ -249,7 +244,6 @@ gantt.load("/api/data");/*!*/
 서버를 시작하고 *http://localhost:3000/* 을 열면, 데이터베이스에 저장된 작업과 링크가 Gantt 차트에 표시됩니다. 하지만 아직 변경 사항을 저장할 수는 없습니다. 다음 단계에서 이를 처리합니다.
 
 ## 5단계. 변경사항 저장하기
-
 
 dhtmlxGantt는 사용자의 모든 변경 사항을 백엔드의 RESTful API로 전송하여 데이터베이스에 저장할 수 있습니다. 이 프로토콜의 자세한 내용은 [여기](guides/server-side.md#technique)에서 확인할 수 있습니다.
 
@@ -591,16 +585,13 @@ end
 
 ## 애플리케이션 보안
 
-
 Gantt 자체에는 SQL 인젝션, XSS, CSRF 공격과 같은 일반적인 위협에 대한 보호 기능이 내장되어 있지 않습니다. 백엔드 구현의 보안은 개발자가 책임져야 합니다. 자세한 내용은 [이 문서](guides/app-security.md)를 참고하세요.
 
 ## 문제 해결
 
-
 Ruby on Rails와 Gantt를 연동하는 단계를 모두 따라 했는데도 작업이나 링크가 페이지에 표시되지 않는다면, [백엔드 통합 문제 해결](guides/troubleshooting.md)의 가이드를 참고하세요. 일반적인 문제를 진단하는 팁이 포함되어 있습니다.
 
 ## 다음 단계
-
 
 이제 간트 차트가 완전히 동작하므로, 전체 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-rails)에서 확인할 수 있습니다. 프로젝트에 복제하거나 다운로드하여 사용할 수 있습니다.
 

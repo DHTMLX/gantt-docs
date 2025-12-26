@@ -5,9 +5,7 @@ sidebar_label: "Performance: Ways to Improve"
 
 # Performance: Ways to Improve
 
-
 ## Common techniques
-
 
 Starting from 10000-20000 tasks, depending on what configuration options and plugins you use, there may be delays in rendering the Gantt chart on the page.
 
@@ -30,7 +28,6 @@ There are the following ways to solve this problem:
 
 
 ## Smart Rendering
-
 
 The Smart Rendering technique allows considerably enhancing the speed of data rendering, while working with big amounts of data. 
 In this mode only the tasks and links visible on the screen at the moment are being rendered.

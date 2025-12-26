@@ -5,7 +5,6 @@ sidebar_label: "Baselines Control"
 
 # Baselines Control
 
-
 :::info
 This functionality is available in the PRO Edition only.
 :::
@@ -25,7 +24,6 @@ gantt.config.lightbox.sections = [
 
 
 ## Initialization
-
 
 To add the **baselines** control to the lightbox, follow the steps below:
 
@@ -47,7 +45,6 @@ gantt.locale.labels.section_baselines = "Baselines";
 
 ## Properties
 
-
 The following properties are mostly important and commonly set for the **baselines** control (see the full list [here](api/config/lightbox.md)):
 
 - **name** - (*string*) the section name 
@@ -65,7 +62,6 @@ Edited tasks will be specified only by the start date and have a zero duration. 
 - **time_format** - (*string*) sets the order of date-time selectors
 
 ## Localization
-
 
 You can localize the labels of the following elements of the **baselines** control:
 

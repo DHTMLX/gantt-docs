@@ -5,7 +5,6 @@ sidebar_label: "Настройка формы редактирования"
 
 # Настройка формы редактирования
 
-
 ![lightbox](/img/lightbox.png)
 
 ((index

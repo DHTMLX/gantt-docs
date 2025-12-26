@@ -5,14 +5,12 @@ sidebar_label: "quickInfo Erweiterung"
 
 # quickInfo Erweiterung
 
-
 Weitere Informationen zur quickInfo-Erweiterung finden Sie im Artikel [Quick Info (Touch Support)](guides/quick-info.md).
 
 
 Das *quickInfo*-Objekt stellt folgende API bereit:
 
 ## Methoden
-
 
 - <span class="submethod">**show (id): void**</span> - öffnet das Quick Info Popup für ein bestimmtes Element
     - **_id_** - (*number | string*) - die Aufgaben-ID

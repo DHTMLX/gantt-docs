@@ -5,7 +5,6 @@ sidebar_label: "Radio Button-Steuerelement"
 
 # Radio Button-Steuerelement
 
-
 Dieses Steuerelement präsentiert eine Auswahl von Optionen, bei der jeweils nur eine ausgewählt werden kann.
 
 ![Radio Button](/img/radiobutton_control.png)
@@ -15,7 +14,6 @@ Dieses Steuerelement präsentiert eine Auswahl von Optionen, bei der jeweils nur
 
 
 ## Initialisierung
-
 
 Um das **Radio Button**-Steuerelement in die Lightbox einzubinden, gehen Sie wie folgt vor:
 
@@ -47,7 +45,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 ## Eigenschaften
 
-
 Hier sind einige der wichtigsten Eigenschaften, die häufig mit dem **Radio Button**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 
 - **name** - (*string*) der Name des Abschnitts
@@ -61,7 +58,6 @@ Hier sind einige der wichtigsten Eigenschaften, die häufig mit dem **Radio Butt
 
 
 ## Befüllen des Steuerelements mit Daten
-
 
 Um die Optionen für das **Radio Button**-Steuerelement festzulegen, verwenden Sie den [options](api/config/lightbox.md)-Parameter:
 

@@ -5,12 +5,10 @@ sidebar_label: "Grundlegende Operationen mit Aufgaben"
 
 # Grundlegende Operationen mit Aufgaben
 
-
 In diesem Kapitel erfahren Sie, wie Sie grundlegende Aufgabenoperationen ausführen: Aufgaben erstellen, löschen und Eigenschaften dynamisch aktualisieren.
 
 
 ## Hinzufügen einer neuen Aufgabe
-
 
 Um eine neue Aufgabe zum Gantt-Diagramm hinzuzufügen, verwenden Sie die Methode [addTask](api/method/addtask.md):
 
@@ -51,7 +49,6 @@ Blenden Sie anschließend die "Add"-Schaltfläche für diese Zeilen aus:
 
 ## Aktualisieren einer Aufgabeneigenschaft
 
-
 Um eine Eigenschaft eines Aufgabenobjekts dynamisch zu aktualisieren, verwenden Sie die Methode [updateTask](api/method/updatetask.md):
 
 ~~~js
@@ -76,7 +73,6 @@ gantt.refreshTask(10);
 
 ## Neuzeichnen von Aufgaben
 
-
 Um alle Aufgaben im Gantt-Diagramm neu zu zeichnen, verwenden Sie die Methode [refreshData](api/method/refreshdata.md):
 
 ~~~js
@@ -90,7 +86,6 @@ gantt.refreshData(); /*!*/
 
 ## Löschen von Aufgaben
 
-
 Um eine Aufgabe zu entfernen, verwenden Sie die Methode [deleteTask](api/method/deletetask.md):
 
 ~~~js
@@ -98,7 +93,6 @@ gantt.deleteTask(taskId);
 ~~~
 
 ## Kaskadierendes Löschen von verschachtelten Aufgaben
-
 
 Die Einstellung [cascade_delete](api/config/cascade_delete.md) steuert, wie Aufgabenlöschungen gehandhabt werden. Standardmäßig ist sie auf *true* gesetzt, was bedeutet, dass das Löschen einer Aufgabe Anfragen an den Server für jede verschachtelte Aufgabe und jede damit verknüpfte Verbindung auslöst.
 
@@ -114,7 +108,6 @@ Diese Option beeinflusst die Backend-Implementierung. Weitere Informationen find
 [entsprechenden Abschnitt des Artikels Server-side Integration](guides/server-side.md#cascadedeletion).
 
 ## Entfernen aller Aufgaben aus dem Gantt-Diagramm
-
 
 Um alle Aufgaben aus dem Gantt-Diagramm zu löschen, verwenden Sie die Methode [clearAll](api/method/clearall.md):
 

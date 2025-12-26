@@ -5,7 +5,6 @@ sidebar_label: "Common Features"
 
 # Common Features
 
-
 - [Localization](guides/localization.md)
 - [Full Screen Mode](guides/fullscreen-mode.md)
 - [Empty State Screen](guides/empty-state-screen.md)

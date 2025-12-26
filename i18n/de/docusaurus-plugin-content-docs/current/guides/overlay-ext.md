@@ -5,7 +5,6 @@ sidebar_label: "Overlay-Erweiterung"
 
 # Overlay-Erweiterung
 
-
 :::info
 Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
@@ -13,7 +12,6 @@ Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 Die **overlay**-Erweiterung stellt eine Sammlung von API-Methoden bereit, die die Arbeit mit Overlays vereinfachen. Ausführlichere Informationen finden Sie im Artikel [Custom Elements in Timeline Area](guides/baselines.md#extraoverlayforthechart).
 
 ## Methoden
-
 
 Die folgenden Methoden sind über das Objekt **gantt.ext.overlay** zugänglich:
 

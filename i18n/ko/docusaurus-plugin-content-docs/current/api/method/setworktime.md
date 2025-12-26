@@ -66,7 +66,6 @@ gantt.setWorkTime({hours : ["8:30-12:00", "13:00-17:00"]})
 
 ## 구성 객체 속성 {#configurationobjectproperties}
 
-
 구성 객체는 다음 속성을 포함할 수 있습니다:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">

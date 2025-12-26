@@ -5,7 +5,6 @@ sidebar_label: "Manuell geplante Zusammenfassungsaufgaben"
 
 # Manuell geplante Zusammenfassungsaufgaben
 
-
 Es ist möglich, [Projekte](guides/task-types.md) (Zusammenfassungsaufgaben) manuell zu planen, um mehr Kontrolle und Präzision bei der Arbeit mit Gantt-Diagrammen zu erhalten.
 
 Normalerweise setzen Zusammenfassungsaufgaben ihre Daten automatisch, indem sie das früheste Start- und das späteste Enddatum ihrer Unteraufgaben übernehmen. Sie können dieses Verhalten jedoch überschreiben, indem Sie den Zusammenfassungsaufgaben feste Start- und Enddaten zuweisen, unabhängig von ihren Unteraufgaben. Das bedeutet, dass im Gantt-Diagramm sowohl die feste Dauer als auch die aus den Unteraufgaben berechnete Dauer angezeigt werden.

@@ -5,7 +5,6 @@ sidebar_label: "Guides"
 
 # Guides
 
-
 Dieser Abschnitt bildet das Kernstück der Dokumentation und bietet praktische Anleitungen zur Verwendung von dhtmlxGantt. Die Inhalte sind in aufgabenorientierte Handbücher gegliedert, die bei Aufgaben unterschiedlicher Komplexität unterstützen. Die Artikel behandeln grundlegende Verfahren und Schritte zur Fehlerbehebung.
 
 Sie können sich auch die [Funktionen der Standard- und PRO-Versionen](guides/editions-comparison.md) der dhtmlxGantt-Bibliothek ansehen.

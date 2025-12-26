@@ -5,7 +5,6 @@ sidebar_label: "Einrichten der Skala"
 
 # Einrichten der Skala
 
-
 ![gantt_dates](/img/gantt_dates.png)
 
 Sie können Skalen über die Eigenschaft [scales](api/config/scales.md) konfigurieren. Es ist möglich, mehrere Skalen zu definieren, indem Sie Skalenobjekte zum **scales**-Array in der Konfiguration hinzufügen:
@@ -38,7 +37,6 @@ Es besteht außerdem die Möglichkeit, eine [benutzerdefinierte Skala](#customti
 
 ## Zeiteinheiten {#timeunits}
 
-
 ![month_day_scale_units](/img/month_day_scale_units.png)
 
 Um die Einheit für die Skala festzulegen, verwenden Sie die Eigenschaft **unit** im Skalenobjekt:
@@ -59,7 +57,6 @@ gantt.init("gantt_here");
 
 
 ## Bereich {#range}
-
 
 ![day_scale_unit](/img/day_scale_unit.png)
 
@@ -267,7 +264,6 @@ Als Ergebnis erscheinen Aufgaben mit den IDs "1" und "2" als leere Zeilen im Zei
 
 ## Zeitintervall {#timestep}
 
-
 ![scale_step](/img/scale_step.png)
 
 Um die Schrittweite des Zeitmaßstabs festzulegen, verwenden Sie die **step**-Eigenschaft im Konfigurationsobjekt des Maßstabs:
@@ -294,7 +290,6 @@ gantt.init("gantt_here");
 
 ## Höhe {#height}
 
-
 ![scale_height](/img/scale_height.png)
 
 Um die Höhe des Maßstabs anzupassen, verwenden Sie die Eigenschaft [scale_height](api/config/scale_height.md):
@@ -312,7 +307,6 @@ gantt.init("gantt_here");
 Wenn mehrere Maßstäbe verwendet werden, wird die angegebene Höhe gleichmäßig aufgeteilt. Beispielsweise erhält bei **scale_height** von 60 Pixeln und 3 Maßstäben jeder Maßstab 20 Pixel Höhe.
 
 ## Datumsformat {#dateformat}
-
 
 :::note
 Siehe den Artikel [Date Format Specification](guides/date-format.md) für verfügbare Formatzeichen
@@ -355,7 +349,6 @@ gantt.config.scales = [
 ![scale_template](/img/scale_template.png)
 
 ## Styling {#styling}
-
 
 ![css_styling](/img/css_styling.png)
 
@@ -445,7 +438,6 @@ gantt.templates.scale_cell_class = function(date){
 Weitere Informationen zur Anpassung des Stils des Zeitachsenbereichs finden Sie im Artikel [Highlighting Time Slots](guides/highlighting-time-slots.md).
 
 ## Benutzerdefinierte Zeiteinheiten {#customtimeunits}
-
 
 dhtmlxGantt ermöglicht es Ihnen, benutzerdefinierte Zeiteinheiten zu erstellen und Vorlagen für Beschriftungen in der Maßstabskonfiguration zu definieren.
 
@@ -582,7 +574,6 @@ Dieses Vorgehen funktioniert, da der [Datumsbereich nicht explizit festgelegt is
 Weitere Beispiele finden Sie im Artikel [How to add a custom scale](guides/how-to.md#howtoaddacustomscale).
 
 ## Benutzerdefinierte Zeitspannen {#customtimespans}
-
 
 In diesem Abschnitt finden Sie Beispiele dafür, wie Sie die Zeitskala anpassen können, um arbeitsfreie Zeiträume anzuzeigen oder auszublenden. Außerdem wird gezeigt, wie Zellen mit arbeitsfreien Stunden am Anfang der Skala ausgeblendet werden können, selbst wenn der **skip_off_time**-Modus aktiv ist.
 

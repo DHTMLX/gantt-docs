@@ -5,7 +5,6 @@ sidebar_label: "Inline Editors Extension"
 
 # Inline Editors Extension
 
-
 Read details about the Inline editors extension in the article [Inline Editing in Grid](guides/inline-editing.md). 
 
  The *inlineEditors* object possesses the following API:

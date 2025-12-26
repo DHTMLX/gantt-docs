@@ -26,7 +26,6 @@ description: "包含所有可用的约束类型"
 
 ### Details
 
-
 该对象包含以下内容:
 
 - **ASAP** - (*string*) - 尽快开始 (As Soon As Possible)

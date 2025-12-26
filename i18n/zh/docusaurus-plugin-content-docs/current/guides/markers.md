@@ -5,7 +5,6 @@ sidebar_label: "添加垂直标记"
 
 # 添加垂直标记
 
-
 该库包含了 **marker** 扩展，可以让你在时间轴上高亮显示特定的日期或日期区间。
 
 <div style="text-align:center;">![today_marker](/img/today_marker.png)</div>
@@ -127,7 +126,6 @@ gantt.renderMarkers(); /*!*/
 
 ## 标记样式
 
-
 你可以通过 [gantt.templates.marker_class](api/template/marker_class.md) 模板为标记自定义样式:
 
 ~~~js
@@ -140,7 +138,6 @@ gantt.templates.marker_class = function(marker){
 ~~~
 
 ## 今日标记
-
 
 如果你希望在甘特图上显示当天的标记，需要添加标记并提供一个函数，使其随时间自动更新位置。可以参考以下代码实现:
 

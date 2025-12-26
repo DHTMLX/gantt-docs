@@ -5,7 +5,6 @@ sidebar_label: "자동 스케줄링"
 
 # 자동 스케줄링
 
-
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다.
 :::
@@ -17,7 +16,6 @@ sidebar_label: "자동 스케줄링"
 예를 들어, 두 작업이 종속성으로 연결되어 있고 두 번째 작업이 첫 번째 작업이 끝난 직후 시작하도록 설정되어 있다고 가정해 보겠습니다. 첫 번째 작업의 일정이 변경되면, 자동 스케줄링 기능은 두 번째 작업의 시작 날짜를 자동으로 업데이트합니다. 이렇게 하면 각 작업의 날짜를 수동으로 조정하지 않고도 작업 간의 관계를 정의하여 프로젝트 일정을 유지할 수 있습니다.
 
 ## 사용 방법 {#howtouse}
-
 
 자동 스케줄링을 활성화하려면, [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인을 [gantt.plugins](api/method/plugins.md) 메서드로 활성화하세요:
 
@@ -40,7 +38,6 @@ gantt.config.auto_scheduling = true;
 자동 스케줄링이 켜져 있어도 필요하다면 작업을 수동으로 스케줄할 수 있습니다.
 
 ## 순방향/역방향 계획 {#forwardbackwardplanning}
-
 
 ### 프로젝트 계획 전략
 
@@ -182,7 +179,6 @@ gantt.config.columns = [
 :::
 
 ## 작업 간 래그(Lag) 및 리드(Lead) 설정 {#settinglagandleadtimesbetweentasks}
- 
 
 래그와 리드는 작업 간 더 복잡한 종속성을 정의하는 데 사용됩니다.
 
@@ -211,7 +207,6 @@ Gantt에는 래그 또는 기타 링크 속성 편집을 위한 기본 UI가 포
 
 ## 특정 작업에 대한 자동 스케줄링 비활성화 {#disablingautoschedulingforspecifictasks}
 
-
 특정 작업에 대해 자동 스케줄링을 끄고 수동으로 스케줄하려면, 해당 작업의 **auto_scheduling** 속성을 *false*로 설정하세요:
 
 ~~~js
@@ -231,7 +226,6 @@ gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predece
 ~~~
 
 ## 완료된 작업 스케줄링 {#schedulingcompletedtasks}
-
 
 기본적으로 자동 스케줄링은 완료된 작업(progress 값이 1인 작업)을 미완료 작업과 동일하게 처리합니다.
 
@@ -346,7 +340,6 @@ gantt.getConnectedGroup(18);
 
 
 ## 이벤트 목록  {#thelistofevents}
-
 
 아래는 사용 가능한 이벤트 목록입니다:
 

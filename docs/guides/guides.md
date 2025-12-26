@@ -5,7 +5,6 @@ sidebar_label: "Guides"
 
 # Guides
 
-
 The guidance information makes up the major part of the documentation and helps you in actual use of dhtmlxGantt.
 The chapter is divided into task-oriented manuals that assist you in performing tasks of various complexity.
 The articles come around key procedures and problem-solving activities. 
@@ -24,7 +23,7 @@ Shows how to install and initialize Gantt and provides the list of available ext
 
 ## Configuring Gantt Chart 
 
- Says how to create Gantt on the server, build a standard Gantt chart on a page and bring it to life: configure with specific settings, customize the default templates, attach events, etc.
+Says how to create Gantt on the server, build a standard Gantt chart on a page and bring it to life: configure with specific settings, customize the default templates, attach events, etc.
 
 - ### [Configuration](guides/common-configuration.md)
 - ### [Gantt Layout](guides/layout-config.md)
@@ -36,7 +35,7 @@ Shows how to install and initialize Gantt and provides the list of available ext
 
 ## Loading and Saving Data 
 
- Discusses the ways of loading data into the Gantt chart: different data sources, formats, techniques.
+Discusses the ways of loading data into the Gantt chart: different data sources, formats, techniques.
 
 - ### [Data Loading](guides/loading.md)
 - ### [Server-Side Integration](guides/server-side.md)

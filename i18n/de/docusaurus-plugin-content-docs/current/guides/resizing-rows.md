@@ -5,7 +5,6 @@ sidebar_label: "Größenänderung von Zeilen im Grid"
 
 # Größenänderung von Zeilen im Grid
 
-
 Es ist möglich, die Höhe einzelner Zeilen im Grid anzupassen. 
 
 
@@ -19,7 +18,6 @@ Diese Funktion ist ab Version 7.1 verfügbar.
 :::
 
 ## Festlegen der Zeilenhöhe {#settingtherowheight}
-
 
 Sie können die Höhe einer bestimmten Zeile nach Bedarf anpassen.
 
@@ -58,7 +56,6 @@ gantt.render();
 Falls die Attribute **row_height** und **bar_height** fehlen oder leer sind (was der Standard ist), werden die Werte aus [gantt.config.row_height](api/config/row_height.md) und [gantt.config.bar_height](api/config/bar_height.md) verwendet.
 
 ## Größenänderung von Zeilen per Drag & Drop {#resizingrowsbydraganddrop}
-
 
 ![resize_row](/img/resize_row.png)
 

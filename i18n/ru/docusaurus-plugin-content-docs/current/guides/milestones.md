@@ -5,7 +5,6 @@ sidebar_label: "Вехи"
 
 # Вехи
 
-
 :::info
 Эта функциональность доступна только в PRO-версии
 :::
@@ -59,7 +58,6 @@ gantt.config.order_branch = true;
 
 ## Указание вех в наборе данных {#specifyingmilestonesinadataset}
 
-
 Чтобы указать веху в исходных данных, задайте свойство [type](guides/loading.md#dataproperties) элемента как **'milestone'** (значения хранятся в объекте [types](api/config/types.md)):
 
 ~~~js
@@ -74,7 +72,6 @@ var data = {
 ~~~
 
 ## Rollup задач и вех {#rolluptasksandmilestones}
-
 
 Начиная с версии 7.1, задачи и вехи могут отображаться на их родительских проектах. Для этого установите свойство **rollup** элемента данных в *true*:
 
@@ -119,7 +116,6 @@ gantt.config.lightbox.milestone_sections = [
 
 
 ## Скрытие задач и вех {#hidingtasksandmilestones}
-
 
 Начиная с версии 7.1, можно скрывать [бары задач](guides/task-types.md#regulartasks) и [вехи](guides/task-types.md#milestones) на временной шкале, установив свойство **hide_bar: true** для элемента данных:
 

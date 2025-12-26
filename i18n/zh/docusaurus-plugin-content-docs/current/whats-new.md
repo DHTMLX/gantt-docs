@@ -163,7 +163,6 @@ sidebar_label: "更新日志"
 
 ## 9.0.1
 
-
 <span class='release_date'>2024年10月21日。Bug修复版本</span>
 
 ### 修复
@@ -177,7 +176,6 @@ sidebar_label: "更新日志"
 - 防止 [predecessor editor](guides/inline-editing.md#bianjiqileixing) 创建重复链接
 
 ## <b>9.0</b>
-
 
 <span class='release_date'>2024年10月17日。重大更新</span>
 
@@ -220,7 +218,6 @@ sidebar_label: "更新日志"
 
 ## 8.0.11
 
-
 <span class='release_date'>2024年10月8日。Bug修复版本</span>
 
 ### 修复
@@ -242,7 +239,6 @@ sidebar_label: "更新日志"
 
 ## 8.0.10
 
-
 <span class='release_date'>2024年8月23日。Bug修复版本</span>
 
 ### 修复
@@ -259,7 +255,6 @@ sidebar_label: "更新日志"
 - 修复了[拖动带有子任务的项目](api/config/drag_project.md)后，[Resource Assignments](guides/resource-management.md) 未更新的问题
 
 ## 8.0.9
-
 
 <span class='release_date'>2024年6月18日。Bug修复版本</span>
 
@@ -278,7 +273,6 @@ sidebar_label: "更新日志"
 
 ## 8.0.8
 
-
 <span class='release_date'>2024年5月31日。Bug修复版本</span>
 
 ### 修复
@@ -291,7 +285,6 @@ sidebar_label: "更新日志"
 - 修复了部分浏览器下 [tooltip](guides/tooltips.md) 消失的问题
 
 ## 8.0.7
-
 
 <span class='release_date'>2024年5月16日。Bug修复版本</span>
 
@@ -312,7 +305,6 @@ sidebar_label: "更新日志"
 
 ## 8.0.6
 
-
 <span class='release_date'>2023年9月25日。Bug 修复版本</span>
 
 ### 修复
@@ -325,7 +317,6 @@ sidebar_label: "更新日志"
 
 ## 8.0.5
 
-
 <span class='release_date'>2023年9月1日。Bug 修复版本</span>
 
 ### 修复
@@ -335,7 +326,6 @@ sidebar_label: "更新日志"
 - 改进了 [Samples Viewer](https://docs.dhtmlx.com/gantt/samples/) 的体验
 
 ## 8.0.4
-
 
 <span class='release_date'>2023年7月31日。Bug 修复版本</span>
 
@@ -348,7 +338,6 @@ sidebar_label: "更新日志"
 
 ## 8.0.3
 
-
 <span class='release_date'>2023年6月14日。Bug 修复版本</span>
 
 ### 修复
@@ -358,7 +347,6 @@ sidebar_label: "更新日志"
 - 修复了进度为 100% 任务的 [关键路径](guides/critical-path.md) 计算不正确的问题
 
 ## 8.0.2
-
 
 <span class='release_date'>2023年5月31日。Bug 修复版本</span>
 
@@ -373,7 +361,6 @@ sidebar_label: "更新日志"
 
 ## 8.0.1
 
-
 <span class='release_date'>2023年3月30日。Bug 修复版本</span>
 
 ### 修复
@@ -385,7 +372,6 @@ sidebar_label: "更新日志"
 - 修复了滚动时 [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) 事件的工作问题
 
 ## <b>8.0</b>
-
 
 <span class='release_date'>2023年3月20日。重大更新</span>
 
@@ -453,7 +439,6 @@ sidebar_label: "更新日志"
 
 ## 7.1.13
 
-
 <span class='release_date'>2022年11月4日。Bug 修复版本</span>
 
 ### 修复
@@ -474,7 +459,6 @@ sidebar_label: "更新日志"
 
 ## 7.1.12
 
-
 <span class='release_date'>2022年6月16日。Bugfix 版本</span>
 
 ### 修复
@@ -491,7 +475,6 @@ sidebar_label: "更新日志"
 
 ## 7.1.11
 
-
 <span class='release_date'>2022年4月27日。Bugfix 版本</span>
 
 ### 修复
@@ -507,7 +490,6 @@ sidebar_label: "更新日志"
 - [拆分任务](guides/split-tasks.md) 现在在 [选中](api/config/select_task.md) 时会像常规任务一样获得 'gantt_selected' 类
 
 ## 7.1.10
-
 
 <span class='release_date'>2022年3月16日。Bugfix 版本</span>
 
@@ -526,7 +508,6 @@ sidebar_label: "更新日志"
 - 修复了在应用 [exportToExcel()](api/method/exporttoexcel.md) 方法并设置 `visual: true` 参数且 [duration_unit](api/config/duration_unit.md) 配置为 'hour' 时出现的错误
 
 ## 7.1.9
-
 
 <span class='release_date'>2022年1月10日。Bugfix 版本</span>
 
@@ -550,7 +531,6 @@ sidebar_label: "更新日志"
 
 ## 7.1.8
 
-
 <span class='release_date'>2021年11月30日。Bugfix 版本</span>
 
 ### 修复
@@ -564,7 +544,6 @@ sidebar_label: "更新日志"
 - 修复了 [gantt.changeTaskId](api/method/changetaskid.md) 在受影响任务包含嵌套项时，嵌套级别计算错误的问题
 
 ## 7.1.7
-
 
 <span class='release_date'>2021年10月5日。Bugfix 版本</span>
 
@@ -583,7 +562,6 @@ sidebar_label: "更新日志"
 
 ## 7.1.6
 
-
 <span class='release_date'>2021年8月23日. Bugfix 版本</span>
 
 ### 修复
@@ -595,7 +573,6 @@ sidebar_label: "更新日志"
 - 优化了在小容器中渲染 gantt 时网格的显示效果
 
 ## 7.1.5
-
 
 <span class='release_date'>2021年7月22日. Bugfix 版本</span>
 
@@ -609,7 +586,6 @@ sidebar_label: "更新日志"
 - 现在可以通过修改传递给[资源布局](guides/layout-config.md#shitudepeizhihemoban)的配置对象，动态修改[资源面板](guides/resource-management.md#ziyuanshitumianban)的配置
 
 ## 7.1.4
-
 
 <span class='release_date'>2021年6月30日. Bugfix 版本</span>
 
@@ -627,7 +603,6 @@ sidebar_label: "更新日志"
 
 ## 7.1.3
 
-
 <span class='release_date'>2021年5月25日. Bugfix 版本</span>
 
 ### 修复
@@ -637,7 +612,6 @@ sidebar_label: "更新日志"
 - 优化了[工时计算](guides/working-time.md)的性能
 
 ## 7.1.2
-
 
 <span class='release_date'>2021年4月26日. Bugfix 版本</span>
 
@@ -649,7 +623,6 @@ sidebar_label: "更新日志"
 - 修复了 Angular 下鼠标滚轮滚动异常的问题
 
 ## 7.1.1
-
 
 <span class='release_date'>2021年4月19日. Bugfix 版本</span>
 
@@ -665,7 +638,6 @@ sidebar_label: "更新日志"
 - 优化了[资源分配计算](guides/resource-management.md#guanliziyuanfenpei)在[batchUpdate](api/method/batchupdate.md)和[autoScheduling](guides/auto-scheduling.md)过程中的性能
 
 ## 7.1
-
 
 <span class='release_date'>2021年4月8日. 小版本更新</span>
 
@@ -702,7 +674,6 @@ sidebar_label: "更新日志"
 
 ## 7.0.13
 
-
 <span class='release_date'>2021年2月15日. Bugfix 版本</span>
 
 ### 修复
@@ -715,7 +686,6 @@ sidebar_label: "更新日志"
 - 优化了[duration_unit](api/config/duration_unit.md)设为 "day" 时，[工时计算](guides/working-time.md)的性能
 
 ## 7.0.12
-
 
 <span class='release_date'>2021年1月14日. Bugfix 版本</span>
 
@@ -738,7 +708,6 @@ sidebar_label: "更新日志"
 
 ## 7.0.11
 
-
 <span class='release_date'>2020年11月11日。Bugfix 修复版本</span>
 
 ### 更新
@@ -756,7 +725,6 @@ sidebar_label: "更新日志"
 
 ## 7.0.10
 
-
 <span class='release_date'>2020年9月22日。Bugfix 修复版本</span>
 
 ### 修复
@@ -772,7 +740,6 @@ sidebar_label: "更新日志"
 - 修复了双击时[内联编辑器](guides/inline-editing.md)自动关闭的问题
 
 ## 7.0.9
-
 
 <span class='release_date'>2020年8月27日。Bugfix 修复版本</span>
 
@@ -791,7 +758,6 @@ sidebar_label: "更新日志"
 
 ## 7.0.8
 
-
 <span class='release_date'>2020年7月24日。Bugfix 修复版本</span>
 
 ### 修复
@@ -803,13 +769,11 @@ sidebar_label: "更新日志"
 
 ## 7.0.7
 
-
 <span class='release_date'>2020年7月17日。Bugfix 修复版本</span>
 
 - 修复了 [gantt.Promise](api/method/promise.md) 类型定义中的语法错误
 
 ## 7.0.6
-
 
 <span class='release_date'>2020年7月16日。Bugfix 修复版本</span>
 
@@ -825,7 +789,6 @@ sidebar_label: "更新日志"
 
 ## 7.0.5
 
-
 <span class='release_date'>2020年6月19日。Bugfix 修复版本</span>
 
 ### 更新
@@ -835,7 +798,6 @@ sidebar_label: "更新日志"
 - [`Gantt.getGanttInstance`](guides/multiple-gantts.md#ganteshilipeizhi) 配置对象中可指定工作日历
 
 ## 7.0.4
-
 
 <span class='release_date'>2020年6月4日。Bugfix 修复版本</span>
 
@@ -857,7 +819,6 @@ sidebar_label: "更新日志"
 
 ## 7.0.3
 
-
 <span class='release_date'>2020年5月14日。Bugfix 修复版本</span>
 
 ### 修复
@@ -866,7 +827,6 @@ sidebar_label: "更新日志"
 - 修复了 Gantt 在 [SalesForce Lightning Web Component](https://github.com/DHTMLX/salesforce-gantt-demo) 中使用时，[键盘导航](guides/keyboard-navigation.md)扩展的异常表现
 
 ## 7.0.2
-
 
 <span class='release_date'>2020年4月30日。Bugfix 修复版本</span>
 
@@ -878,7 +838,6 @@ sidebar_label: "更新日志"
 - 修复了[内联编辑器](guides/inline-editing.md)在 Shadow DOM 中的异常表现
 
 ## 7.0.1
-
 
 <span class='release_date'>2020年4月16日。Bugfix 修复版本</span>
 
@@ -896,7 +855,6 @@ sidebar_label: "更新日志"
 - 修复了在 [RTL 模式](guides/rtl-mode.md) 下打开[内联编辑器](guides/inline-editing.md)后占位符位置不正确的问题
 
 ## <b>7.0</b>
-
 
 <span class='release_date'>2020年4月7日. 重大更新</span>
 
@@ -937,7 +895,6 @@ sidebar_label: "更新日志"
 
 ## 6.3.7
 
-
 <span class='release_date'>2020年2月12日. Bugfix 版本</span>
 
 ### 修复
@@ -945,7 +902,6 @@ sidebar_label: "更新日志"
 - 显著提升了图表和资源面板的 smart rendering 性能
 
 ## 6.3.6
-
 
 <span class='release_date'>2020年2月10日. Bugfix 版本</span>
 
@@ -959,7 +915,6 @@ sidebar_label: "更新日志"
 - 修复了在某些布局配置下指定 [visibility groups](https://docs.dhtmlx.com/gantt/desktop__layout_config.html#visibilitygroups) 时，[水平滚动条](https://docs.dhtmlx.com/gantt/desktop__specifying_columns.html#horizontalscrollbar) 不显示的问题
 
 ## 6.3.5
-
 
 <span class='release_date'>2020年1月31日. Bugfix 版本</span>
 
@@ -977,7 +932,6 @@ sidebar_label: "更新日志"
 
 ## 6.3.4
 
-
 <span class='release_date'>2019年12月27日. Bugfix 版本</span>
 
 ### 修复
@@ -990,7 +944,6 @@ sidebar_label: "更新日志"
 - 修复了 [自动调度扩展](guides/auto-scheduling.md) 的 bug，该 bug 导致当任务存在[约束类型 (SNET/FNET/SNLT/FNLT)](guides/auto-scheduling.md#renwudeshijianyueshu) 且未指定日期或日期无效时，Gantt 卡死
 
 ## 6.3.3
-
 
 <span class='release_date'>2019年12月18日. Bugfix 版本</span>
 
@@ -1007,7 +960,6 @@ sidebar_label: "更新日志"
 
 ## 6.3.2
 
-
 <span class='release_date'>2019年12月10日. Bugfix 版本</span>
 
 ### 修复
@@ -1023,7 +975,6 @@ sidebar_label: "更新日志"
 
 ## 6.3.1
 
-
 <span class='release_date'>2019年11月29日. Bugfix 版本</span>
 
 ### 修复
@@ -1034,7 +985,6 @@ sidebar_label: "更新日志"
 - 修复了 [drag-timeline 扩展](guides/extensions-list.md#tuodongshijianzhou) 会重置 [readonly config](guides/readonly-mode.md) 值的 bug
 
 ## 6.3
-
 
 <span class='release_date'>2019年11月14日. 小版本更新</span>
 
@@ -1072,7 +1022,6 @@ sidebar_label: "更新日志"
 
 ## 6.2.7
 
-
 <span class='release_date'>2019年10月11日。Bugfix 版本</span>
 
 ### 修复
@@ -1083,7 +1032,6 @@ sidebar_label: "更新日志"
 
 ## 6.2.6
 
-
 <span class='release_date'>2019年9月19日。Bugfix 版本</span>
 
 ### 修复
@@ -1093,7 +1041,6 @@ sidebar_label: "更新日志"
 - 修复 Gantt Ultimate 版本下扩展文件的异常
 
 ## 6.2.5
-
 
 <span class='release_date'>2019年9月12日。Bugfix 版本</span>
 
@@ -1106,7 +1053,6 @@ sidebar_label: "更新日志"
 
 ## 6.2.4
 
-
 <span class='release_date'>2019年9月5日。Bugfix 版本</span>
 
 ### 修复
@@ -1116,7 +1062,6 @@ sidebar_label: "更新日志"
 - 修复导致 [缩放模块](guides/zooming.md) 在每次 [重新初始化](api/method/init.md) Gantt 时重复绑定 DOM 事件处理器的问题
 
 ## 6.2.3
-
 
 <span class='release_date'>2019年8月29日。Bugfix 版本</span>
 
@@ -1134,7 +1079,6 @@ sidebar_label: "更新日志"
 - 修复 [Material 皮肤](guides/skins.md#materialpifu)下 [static_background](api/config/static_background.md) 显示异常的问题
 
 ## 6.2.2
-
 
 <span class='release_date'>2019年8月13日。Bugfix 版本</span>
 
@@ -1154,7 +1098,6 @@ sidebar_label: "更新日志"
 
 ## 6.2.1
 
-
 <span class='release_date'>2019年8月7日。Bugfix 版本</span>
 
 ### 修复
@@ -1168,7 +1111,6 @@ sidebar_label: "更新日志"
 - 修复保存[未排期任务](guides/unscheduled-tasks.md)后脚本报错的问题
 
 ## 6.2
-
 
 <span class='release_date'>2019年7月16日。小版本更新</span>
 
@@ -1198,7 +1140,6 @@ sidebar_label: "更新日志"
 
 ## 6.1.7
 
-
 <span class='release_date'>2019年6月27日。Bugfix 版本</span>
 
 ### 修复
@@ -1212,7 +1153,6 @@ sidebar_label: "更新日志"
 
 ## 6.1.6
 
-
 <span class='release_date'>2019年5月14日。Bugfix 版本</span>
 
 ### 修复
@@ -1224,7 +1164,6 @@ sidebar_label: "更新日志"
 
 ## 6.1.5
 
-
 <span class='release_date'>2019年4月25日。Bugfix 版本</span>
 
 ### 修复
@@ -1233,7 +1172,6 @@ sidebar_label: "更新日志"
 - 修复 [marker 模式](guides/reordering-tasks.md#tishengdashujujixiadexingneng)下[垂直拖放](guides/reordering-tasks.md)占位符位置不正确的问题
 
 ## 6.1.4
-
 
 <span class='release_date'>2019年4月18日。Bugfix 版本</span>
 
@@ -1246,7 +1184,6 @@ sidebar_label: "更新日志"
 - 修复 GPL 版本在第二次调用 [gantt.init](api/method/init.md) 时脚本报错的问题
 
 ## 6.1.3
-
 
 <span class='release_date'>2019年4月15日。Bugfix 版本</span>
 
@@ -1275,7 +1212,6 @@ sidebar_label: "更新日志"
 
 ## 6.1.2
 
-
 <span class='release_date'>2019年3月26日。Bug 修复版本</span>
 
 ### 更新
@@ -1293,7 +1229,6 @@ sidebar_label: "更新日志"
 
 ## 6.1.1
 
-
 <span class='release_date'>2019年3月5日。Bug 修复版本</span>
 
 ### 修复
@@ -1307,7 +1242,6 @@ sidebar_label: "更新日志"
 - 修复在 [全屏模式](guides/fullscreen-mode.md) 下 [lightbox](api/config/lightbox.md) 与 [tooltip 扩展](guides/tooltips.md) 的相关问题
 
 ## 6.1
-
 
 <span class='release_date'>2019年2月21日。小版本更新</span>
 
@@ -1329,7 +1263,6 @@ sidebar_label: "更新日志"
 
 ## 6.0.7
 
-
 <span class='release_date'>2019年1月16日。Bug 修复版本</span>
 
 ### 修复
@@ -1343,7 +1276,6 @@ sidebar_label: "更新日志"
 
 ## 6.0.4
 
-
 <span class='release_date'>2018年12月27日。Bug 修复版本</span>
 
 ### 修复
@@ -1353,7 +1285,6 @@ sidebar_label: "更新日志"
 - 修复包含资源过滤器的 lightbox 保存/取消时的脚本错误
 
 ## 6.0.2
-
 
 <span class='release_date'>2018年12月6日。Bug 修复版本</span>
 
@@ -1366,7 +1297,6 @@ sidebar_label: "更新日志"
 - 修复当任务树包含循环引用时，`gantt.parse` 导致页面卡死的问题，现在会抛出脚本错误
 
 ## <b>6.0</b>
-
 
 <span class='release_date'>2018年11月5日。重大版本更新</span>
 
@@ -1398,7 +1328,6 @@ sidebar_label: "更新日志"
 
 ## 5.2
 
-
 <span class='release_date'>2018年7月6日。小版本更新</span>
 
 [博客发布回顾](https://dhtmlx.com/blog/dhtmlxgantt-5-2/)
@@ -1422,7 +1351,6 @@ sidebar_label: "更新日志"
 - [撤销](guides/undo-redo.md) 和 [自动排程](guides/auto-scheduling.md) 扩展的新方法和事件
 
 ## 5.1
-
 
 <span class='release_date'>2018年2月27日。小版本更新</span>
 
@@ -1451,7 +1379,6 @@ sidebar_label: "更新日志"
 
 ## <b>5.0</b>
 
-
 <span class='release_date'>2017年12月12日。重大版本更新</span>
 
 [博客发布回顾](https://dhtmlx.com/blog/large-scale-update-dhtmlxgantt-version-5-0/)
@@ -1466,7 +1393,6 @@ sidebar_label: "更新日志"
 - 新的 ["Material" 皮肤](guides/skins.md#materialpifu)
 
 ## 4.2
-
 
 <span class='release_date'>2017年8月17日。小版本更新</span>
 
@@ -1489,7 +1415,6 @@ sidebar_label: "更新日志"
 
 ## 4.1
 
-
 <span class='release_date'>2016年9月1日. 小型更新</span>
 
 [查看博客中的发布评述](https://dhtmlx.com/blog/dhtmlxgantt-4-1-full-accessibility-support/)
@@ -1511,7 +1436,6 @@ sidebar_label: "更新日志"
 
 ## <b>4.0</b>
 
-
 <span class='release_date'>2015年12月1日. 重大更新</span>
 
 ### 功能
@@ -1531,7 +1455,6 @@ sidebar_label: "更新日志"
 - 新增用于 [弹窗消息](guides/message-boxes.md) 的公共辅助函数
 
 ## 3.3
-
 
 <span class='release_date'>2015年7月21日. 小型更新</span>
 
@@ -1554,7 +1477,6 @@ sidebar_label: "更新日志"
 
 ## 3.2
 
-
 <span class='release_date'>2015年3月18日. 小型更新</span>
 
 ### 功能
@@ -1576,7 +1498,6 @@ sidebar_label: "更新日志"
 
 ## 3.1
 
-
 <span class='release_date'>2014年10月25日. 小型更新</span>
 
 ### 功能
@@ -1594,7 +1515,6 @@ sidebar_label: "更新日志"
 - 清空或重新初始化 Gantt 时垂直标记行为不正确
 
 ## <b>3.0</b>
-
 
 <span class='release_date'>2014年9月11日. 重大更新</span>
 
@@ -1621,7 +1541,6 @@ sidebar_label: "更新日志"
 
 ## 2.1
 
-
 <span class='release_date'>2014年3月28日. 小型更新</span>
 
 ### 全局
@@ -1645,7 +1564,6 @@ sidebar_label: "更新日志"
 - 新增更多配置、方法和事件
 
 ## <b>2.0</b>
-
 
 <span class='release_date'>2013年10月18日. 重大更新</span>
 

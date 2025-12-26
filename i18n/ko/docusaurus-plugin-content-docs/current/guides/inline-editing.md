@@ -5,7 +5,6 @@ sidebar_label: "그리드에서 인라인 편집"
 
 # 그리드에서 인라인 편집
 
-
 dhtmlxGantt는 콘텐츠를 편집하는 두 가지 방법을 제공합니다:
 
 - [Lightbox](guides/default-edit-form.md) 편집 폼 사용
@@ -50,7 +49,6 @@ gantt.config.columns = [
 <iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 에디터 유형 {#typesofeditors}
-
 
 인라인 에디터는 [editor_types](api/config/editor_types.md) 설정 객체에서 정의됩니다.
 
@@ -219,7 +217,6 @@ gantt.config.columns = [
 - [JQuery Datepicker 입력](guides/inline-editing.md#jquery_datepicker)
 
 ## 사용자 정의 인라인 에디터 {#custominlineeditor}
-
 
 새로운 에디터 객체를 정의하여 사용자 정의 인라인 에디터를 만들 수 있습니다:
 
@@ -462,7 +459,6 @@ var editors = {
 
 ## 인라인 편집 모드 {#inlineeditingmodes}
 
-
 ### 기본 인라인 편집
 
 이 모드는 마우스를 이용해 셀에 포커스를 이동하고, 단축키로 셀 간 이동을 지원합니다:
@@ -572,7 +568,6 @@ gantt.ext.inlineEditors.setMapping(mapping);
 
 ## 입력값 검증 {#validationofinputvalues}
 
-
 그리드에서 셀을 편집하다 보면 실수가 발생할 수 있습니다.
 
 잘못된 값이 저장되는 것을 방지하려면, 에디터를 닫기 전에 입력값을 검증해야 합니다. 방법은 두 가지가 있습니다:
@@ -678,7 +673,6 @@ gantt.init("gantt_here");
 
 
 ## 한 번의 클릭으로 에디터 열기 {#openingeditorwithoneclick}
-
 
 싱글 선택 모드에서는 작업을 클릭하면 인라인 에디터가 즉시 열립니다.
 

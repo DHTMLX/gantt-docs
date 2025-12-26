@@ -5,7 +5,6 @@ sidebar_label: "高亮显示时间段"
 
 # 高亮显示时间段
 
-
 为了突出显示特定的时间段，您可以对其进行高亮处理。
 
 - 若要高亮显示时间线区域内的单元格，请使用 [timeline_cell_class](api/template/timeline_cell_class.md) 模板。

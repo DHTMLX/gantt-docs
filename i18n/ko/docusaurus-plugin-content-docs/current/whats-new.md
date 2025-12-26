@@ -5,7 +5,6 @@ sidebar_label: "What's New"
 
 # What's New
 
-
 현재 사용 중인 dhtmlxGantt 버전이 2.0보다 이전 버전이라면, 업데이트에 대한 자세한 내용은 [](migration.md)를 참고하세요.
 
 ## 9.0.11
@@ -165,7 +164,6 @@ sidebar_label: "What's New"
 
 ## 9.0.1
 
-
 <span class='release_date'>2024년 10월 21일. 버그 수정 릴리스</span>
 
 ### 수정 사항
@@ -179,7 +177,6 @@ sidebar_label: "What's New"
 - [predecessor editor](guides/inline-editing.md#typesofeditors)가 중복 링크를 생성하지 않도록 방지
 
 ## <b>9.0</b>
-
 
 <span class='release_date'>2024년 10월 17일. 주요 업데이트</span>
 
@@ -222,7 +219,6 @@ sidebar_label: "What's New"
 
 ## 8.0.11
 
-
 <span class='release_date'>2024년 10월 8일. 버그 수정 릴리스</span>
 
 ### 수정 사항
@@ -244,7 +240,6 @@ sidebar_label: "What's New"
 
 ## 8.0.10
 
-
 <span class='release_date'>2024년 8월 23일. 버그 수정 릴리스</span>
 
 ### 수정 사항
@@ -261,7 +256,6 @@ sidebar_label: "What's New"
 - [프로젝트 및 하위 작업 드래그](api/config/drag_project.md) 후 [Resource Assignments](guides/resource-management.md)가 업데이트되지 않는 문제 수정
 
 ## 8.0.9
-
 
 <span class='release_date'>2024년 6월 18일. 버그 수정 릴리스</span>
 
@@ -280,7 +274,6 @@ sidebar_label: "What's New"
 
 ## 8.0.8
 
-
 <span class='release_date'>2024년 5월 31일. 버그 수정 릴리스</span>
 
 ### 수정 사항
@@ -293,7 +286,6 @@ sidebar_label: "What's New"
 - 일부 브라우저에서 [툴팁](guides/tooltips.md)이 사라지는 문제 수정
 
 ## 8.0.7
-
 
 <span class='release_date'>2024년 5월 16일. 버그 수정 릴리스</span>
 
@@ -315,7 +307,6 @@ sidebar_label: "What's New"
 
 ## 8.0.6
 
-
 <span class='release_date'>2023년 9월 25일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -328,7 +319,6 @@ sidebar_label: "What's New"
 
 ## 8.0.5
 
-
 <span class='release_date'>2023년 9월 1일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -338,7 +328,6 @@ sidebar_label: "What's New"
 - [Samples Viewer](https://docs.dhtmlx.com/gantt/samples/) 개선
 
 ## 8.0.4
-
 
 <span class='release_date'>2023년 7월 31일. 버그 수정 릴리즈</span>
 
@@ -351,7 +340,6 @@ sidebar_label: "What's New"
 
 ## 8.0.3
 
-
 <span class='release_date'>2023년 6월 14일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -361,7 +349,6 @@ sidebar_label: "What's New"
 - 진행률이 100%인 작업의 [Critical Path](guides/critical-path.md) 계산 오류 수정
 
 ## 8.0.2
-
 
 <span class='release_date'>2023년 5월 31일. 버그 수정 릴리즈</span>
 
@@ -376,7 +363,6 @@ sidebar_label: "What's New"
 
 ## 8.0.1
 
-
 <span class='release_date'>2023년 3월 30일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -388,7 +374,6 @@ sidebar_label: "What's New"
 - 스크롤 시 [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) 이벤트 작동 오류 수정
 
 ## <b>8.0</b>
-
 
 <span class='release_date'>2023년 3월 20일. 주요 업데이트</span>
 
@@ -456,7 +441,6 @@ sidebar_label: "What's New"
 
 ## 7.1.13
 
-
 <span class='release_date'>2022년 11월 4일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -477,7 +461,6 @@ sidebar_label: "What's New"
 
 ## 7.1.12
 
-
 <span class='release_date'>2022년 6월 16일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -494,7 +477,6 @@ sidebar_label: "What's New"
 
 ## 7.1.11
 
-
 <span class='release_date'>2022년 4월 27일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -510,7 +492,6 @@ sidebar_label: "What's New"
 - [split tasks](guides/split-tasks.md)가 [selection](api/config/select_task.md) 시 일반 작업과 동일하게 'gantt_selected' 클래스를 받도록 변경되었습니다.
 
 ## 7.1.10
-
 
 <span class='release_date'>2022년 3월 16일. 버그 수정 릴리즈</span>
 
@@ -529,7 +510,6 @@ sidebar_label: "What's New"
 - [exportToExcel()](api/method/exporttoexcel.md) 메소드에 `visual: true` 파라미터와 [duration_unit](api/config/duration_unit.md)을 'hour'로 설정할 때 오류가 발생하던 문제를 수정했습니다.
 
 ## 7.1.9
-
 
 <span class='release_date'>2022년 1월 10일. 버그 수정 릴리즈</span>
 
@@ -553,7 +533,6 @@ sidebar_label: "What's New"
 
 ## 7.1.8
 
-
 <span class='release_date'>2021년 11월 30일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -567,7 +546,6 @@ sidebar_label: "What's New"
 - 중첩 항목이 있는 작업에 [gantt.changeTaskId](api/method/changetaskid.md)를 사용할 때 중첩 레벨이 잘못 계산되던 문제를 수정했습니다.
 
 ## 7.1.7
-
 
 <span class='release_date'>2021년 10월 5일. 버그 수정 릴리즈</span>
 
@@ -585,7 +563,6 @@ sidebar_label: "What's New"
 
 ## 7.1.6
 
-
 <span class='release_date'>2021년 8월 23일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -597,7 +574,6 @@ sidebar_label: "What's New"
 - gantt가 작은 컨테이너에 렌더링될 때 그리드 표시 개선
 
 ## 7.1.5
-
 
 <span class='release_date'>2021년 7월 22일. 버그 수정 릴리즈</span>
 
@@ -611,7 +587,6 @@ sidebar_label: "What's New"
 - [resource layout](guides/layout-config.md#configsandtemplatesofviews)에 제공된 설정 객체를 수정하여 [resource panel](guides/resource-management.md#resourceviewpanel) 구성을 동적으로 변경할 수 있는 기능 추가
 
 ## 7.1.4
-
 
 <span class='release_date'>2021년 6월 30일. 버그 수정 릴리즈</span>
 
@@ -629,7 +604,6 @@ sidebar_label: "What's New"
 
 ## 7.1.3
 
-
 <span class='release_date'>2021년 5월 25일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -639,7 +613,6 @@ sidebar_label: "What's New"
 - [작업 시간 계산](guides/working-time.md) 성능 개선
 
 ## 7.1.2
-
 
 <span class='release_date'>2021년 4월 26일. 버그 수정 릴리즈</span>
 
@@ -651,7 +624,6 @@ sidebar_label: "What's New"
 - Angular에서 마우스 휠 스크롤이 잘못 동작하는 문제 수정
 
 ## 7.1.1
-
 
 <span class='release_date'>2021년 4월 19일. 버그 수정 릴리즈</span>
 
@@ -667,7 +639,6 @@ sidebar_label: "What's New"
 - [batchUpdate](api/method/batchupdate.md) 및 [autoScheduling](guides/auto-scheduling.md) 중 [resource assignment](guides/resource-management.md#managingresourceassignments) 계산 성능 개선
 
 ## 7.1
-
 
 <span class='release_date'>2021년 4월 8일. 마이너 업데이트</span>
 
@@ -704,7 +675,6 @@ sidebar_label: "What's New"
 
 ## 7.0.13
 
-
 <span class='release_date'>2021년 2월 15일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -717,7 +687,6 @@ sidebar_label: "What's New"
 - [duration_unit](api/config/duration_unit.md)이 "day"로 지정된 경우 [작업 시간 계산](guides/working-time.md) 성능 개선
 
 ## 7.0.12
-
 
 <span class='release_date'>2021년 1월 14일. 버그 수정 릴리즈</span>
 
@@ -740,7 +709,6 @@ sidebar_label: "What's New"
 
 ## 7.0.11
 
-
 <span class='release_date'>2020년 11월 11일. 버그 수정 릴리즈</span>
 
 ### 업데이트
@@ -758,7 +726,6 @@ sidebar_label: "What's New"
 
 ## 7.0.10
 
-
 <span class='release_date'>2020년 9월 22일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -774,7 +741,6 @@ sidebar_label: "What's New"
 - [Inline Editors](guides/inline-editing.md)에서 더블 클릭 시 에디터가 닫혀버리는 문제 수정
 
 ## 7.0.9
-
 
 <span class='release_date'>2020년 8월 27일. 버그 수정 릴리즈</span>
 
@@ -793,7 +759,6 @@ sidebar_label: "What's New"
 
 ## 7.0.8
 
-
 <span class='release_date'>2020년 7월 24일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -805,13 +770,11 @@ sidebar_label: "What's New"
 
 ## 7.0.7
 
-
 <span class='release_date'>2020년 7월 17일. 버그 수정 릴리즈</span>
 
 - [gantt.Promise](api/method/promise.md) 타입 정의의 문법 오류 수정
 
 ## 7.0.6
-
 
 <span class='release_date'>2020년 7월 16일. 버그 수정 릴리즈</span>
 
@@ -827,7 +790,6 @@ sidebar_label: "What's New"
 
 ## 7.0.5
 
-
 <span class='release_date'>2020년 6월 19일. 버그 수정 릴리즈</span>
 
 ### 업데이트
@@ -837,7 +799,6 @@ sidebar_label: "What's New"
 - [`Gantt.getGanttInstance`](guides/multiple-gantts.md#ganttinstanceconfiguration) 설정 객체에서 작업 캘린더 지정 기능 추가
 
 ## 7.0.4
-
 
 <span class='release_date'>2020년 6월 4일. 버그 수정 릴리즈</span>
 
@@ -859,7 +820,6 @@ sidebar_label: "What's New"
 
 ## 7.0.3
 
-
 <span class='release_date'>2020년 5월 14일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -868,7 +828,6 @@ sidebar_label: "What's New"
 - Gantt가 [SalesForce Lightning Web Component](https://github.com/DHTMLX/salesforce-gantt-demo) 내에서 사용될 때 [Keyboard Navigation](guides/keyboard-navigation.md) 확장 기능 동작 오류 수정
 
 ## 7.0.2
-
 
 <span class='release_date'>2020년 4월 30일. 버그 수정 릴리즈</span>
 
@@ -880,7 +839,6 @@ sidebar_label: "What's New"
 - Shadow DOM 내 [inline editors](guides/inline-editing.md) 동작 오류 수정
 
 ## 7.0.1
-
 
 <span class='release_date'>2020년 4월 16일. 버그 수정 릴리즈</span>
 
@@ -899,7 +857,6 @@ sidebar_label: "What's New"
 - [RTL 모드](guides/rtl-mode.md)에서 [인라인 에디터](guides/inline-editing.md)를 열었을 때 플레이스홀더의 잘못된 위치 문제 수정
 
 ## <b>7.0</b>
-
 
 <span class='release_date'>2020년 4월 7일. 주요 업데이트</span>
 
@@ -940,7 +897,6 @@ sidebar_label: "What's New"
 
 ## 6.3.7
 
-
 <span class='release_date'>2020년 2월 12일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -948,7 +904,6 @@ sidebar_label: "What's New"
 - 차트 및 리소스 패널의 스마트 렌더링 성능 대폭 개선
 
 ## 6.3.6
-
 
 <span class='release_date'>2020년 2월 10일. 버그 수정 릴리즈</span>
 
@@ -962,7 +917,6 @@ sidebar_label: "What's New"
 - [가로 스크롤바](https://docs.dhtmlx.com/gantt/desktop__specifying_columns.html#horizontalscrollbar)가 [visibility groups](https://docs.dhtmlx.com/gantt/desktop__layout_config.html#visibilitygroups)가 일부 레이아웃에서 지정될 때 표시되지 않던 문제 수정
 
 ## 6.3.5
-
 
 <span class='release_date'>2020년 1월 31일. 버그 수정 릴리즈</span>
 
@@ -980,7 +934,6 @@ sidebar_label: "What's New"
 
 ## 6.3.4
 
-
 <span class='release_date'>2019년 12월 27일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -993,7 +946,6 @@ sidebar_label: "What's New"
 - [auto scheduling 확장](guides/auto-scheduling.md)에서 [제약 조건 타입(SNET/FNET/SNLT/FNLT)](guides/auto-scheduling.md#timeconstraintsfortasks)이 날짜 없이 지정되거나 잘못된 날짜가 지정된 경우 Gantt가 멈추던 버그 수정
 
 ## 6.3.3
-
 
 <span class='release_date'>2019년 12월 18일. 버그 수정 릴리즈</span>
 
@@ -1010,7 +962,6 @@ sidebar_label: "What's New"
 
 ## 6.3.2
 
-
 <span class='release_date'>2019년 12월 10일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -1026,7 +977,6 @@ sidebar_label: "What's New"
 
 ## 6.3.1
 
-
 <span class='release_date'>2019년 11월 29일. 버그 수정 릴리즈</span>
 
 ### 수정 사항
@@ -1037,7 +987,6 @@ sidebar_label: "What's New"
 - [drag-timeline 확장](guides/extensions-list.md#dragtimeline)에서 [readonly 설정](guides/readonly-mode.md) 값을 초기화하던 버그 수정
 
 ## 6.3
-
 
 <span class='release_date'>2019년 11월 14일. 마이너 업데이트</span>
 
@@ -1074,7 +1023,6 @@ sidebar_label: "What's New"
 
 ## 6.2.7
 
-
 <span class='release_date'>2019년 10월 11일. 버그 수정 릴리즈</span>
 
 ### 버그 수정
@@ -1085,7 +1033,6 @@ sidebar_label: "What's New"
 
 ## 6.2.6
 
-
 <span class='release_date'>2019년 9월 19일. 버그 수정 릴리즈</span>
 
 ### 버그 수정
@@ -1095,7 +1042,6 @@ sidebar_label: "What's New"
 - Ultimate 빌드에서 확장 파일이 올바르게 동작하지 않던 문제 수정
 
 ## 6.2.5
-
 
 <span class='release_date'>2019년 9월 12일. 버그 수정 릴리즈</span>
 
@@ -1108,7 +1054,6 @@ sidebar_label: "What's New"
 
 ## 6.2.4
 
-
 <span class='release_date'>2019년 9월 5일. 버그 수정 릴리즈</span>
 
 ### 버그 수정
@@ -1118,7 +1063,6 @@ sidebar_label: "What's New"
 - [Zoom 모듈](guides/zooming.md)이 [Gantt 재초기화](api/method/init.md) 시 불필요한 DOM 이벤트 핸들러를 계속 추가하는 문제 수정
 
 ## 6.2.3
-
 
 <span class='release_date'>2019년 8월 29일. 버그 수정 릴리즈</span>
 
@@ -1136,7 +1080,6 @@ sidebar_label: "What's New"
 - [Material 스킨](guides/skins.md#materialskin)에서 [static_background](api/config/static_background.md)가 올바르지 않게 표시되는 문제 수정
 
 ## 6.2.2
-
 
 <span class='release_date'>2019년 8월 13일. 버그 수정 릴리즈</span>
 
@@ -1156,7 +1099,6 @@ sidebar_label: "What's New"
 
 ## 6.2.1
 
-
 <span class='release_date'>2019년 8월 7일. 버그 수정 릴리즈</span>
 
 ### 버그 수정
@@ -1170,7 +1112,6 @@ sidebar_label: "What's New"
 - [스케줄되지 않은 작업](guides/unscheduled-tasks.md) 저장 후 발생하는 스크립트 오류 수정
 
 ## 6.2
-
 
 <span class='release_date'>2019년 7월 16일. 마이너 업데이트</span>
 
@@ -1200,7 +1141,6 @@ sidebar_label: "What's New"
 
 ## 6.1.7
 
-
 <span class='release_date'>2019년 6월 27일. 버그 수정 릴리즈</span>
 
 ### 버그 수정
@@ -1214,7 +1154,6 @@ sidebar_label: "What's New"
 
 ## 6.1.6
 
-
 <span class='release_date'>2019년 5월 14일. 버그 수정 릴리즈</span>
 
 ### 버그 수정
@@ -1226,7 +1165,6 @@ sidebar_label: "What's New"
 
 ## 6.1.5
 
-
 <span class='release_date'>2019년 4월 25일. 버그 수정 릴리즈</span>
 
 ### 버그 수정
@@ -1235,7 +1173,6 @@ sidebar_label: "What's New"
 - [마커 모드](guides/reordering-tasks.md#improvingperformancewithlargedatasets)에서 [수직 드래그 앤 드롭](guides/reordering-tasks.md) 플레이스홀더 위치가 올바르지 않은 문제 수정
 
 ## 6.1.4
-
 
 <span class='release_date'>2019년 4월 18일. 버그 수정 릴리즈</span>
 
@@ -1248,7 +1185,6 @@ sidebar_label: "What's New"
 - GPL 빌드에서 두 번째 [gantt.init](api/method/init.md) 호출 시 스크립트 오류가 발생하는 회귀 문제 수정
 
 ## 6.1.3
-
 
 <span class='release_date'>2019년 4월 15일. 버그 수정 릴리즈</span>
 
@@ -1276,7 +1212,6 @@ sidebar_label: "What's New"
 
 ## 6.1.2
 
-
 <span class='release_date'>2019년 3월 26일. 버그 수정 릴리스</span>
 
 ### 업데이트
@@ -1294,7 +1229,6 @@ sidebar_label: "What's New"
 
 ## 6.1.1
 
-
 <span class='release_date'>2019년 3월 5일. 버그 수정 릴리스</span>
 
 ### 수정 사항
@@ -1308,7 +1242,6 @@ sidebar_label: "What's New"
 - [lightbox](api/config/lightbox.md) 및 [tooltip extension](guides/tooltips.md)이 [전체 화면 모드](guides/fullscreen-mode.md)에서 올바르게 동작하지 않는 문제 수정
 
 ## 6.1
-
 
 <span class='release_date'>2019년 2월 21일. 소규모 업데이트</span>
 
@@ -1330,7 +1263,6 @@ sidebar_label: "What's New"
 
 ## 6.0.7
 
-
 <span class='release_date'>2019년 1월 16일. 버그 수정 릴리스</span>
 
 ### 수정 사항
@@ -1344,7 +1276,6 @@ sidebar_label: "What's New"
 
 ## 6.0.4
 
-
 <span class='release_date'>2018년 12월 27일. 버그 수정 릴리스</span>
 
 ### 수정 사항
@@ -1354,7 +1285,6 @@ sidebar_label: "What's New"
 - 리소스 필터가 포함된 lightbox에서 저장/취소 시 발생하는 스크립트 오류 수정
 
 ## 6.0.2
-
 
 <span class='release_date'>2018년 12월 6일. 버그 수정 릴리스</span>
 
@@ -1367,7 +1297,6 @@ sidebar_label: "What's New"
 - 작업 트리에 순환 참조가 있을 때 `gantt.parse` 호출 시 페이지가 멈추던 문제를 스크립트 오류로 대체
 
 ## <b>6.0</b>
-
 
 <span class='release_date'>2018년 11월 5일. 주요 업데이트</span>
 
@@ -1399,7 +1328,6 @@ sidebar_label: "What's New"
 
 ## 5.2
 
-
 <span class='release_date'>2018년 7월 6일. 소규모 업데이트</span>
 
 [블로그의 릴리스 리뷰](https://dhtmlx.com/blog/dhtmlxgantt-5-2/)
@@ -1423,7 +1351,6 @@ sidebar_label: "What's New"
 - [undo](guides/undo-redo.md) 및 [autoscheduling](guides/auto-scheduling.md) 확장용 신규 메서드 및 이벤트
 
 ## 5.1
-
 
 <span class='release_date'>2018년 2월 27일. 소규모 업데이트</span>
 
@@ -1452,7 +1379,6 @@ sidebar_label: "What's New"
 
 ## <b>5.0</b>
 
-
 <span class='release_date'>2017년 12월 12일. 주요 업데이트</span>
 
 [블로그의 릴리스 리뷰](https://dhtmlx.com/blog/large-scale-update-dhtmlxgantt-version-5-0/)
@@ -1467,7 +1393,6 @@ sidebar_label: "What's New"
 - 새로운 ["Material" 스킨](guides/skins.md#materialskin)
 
 ## 4.2
-
 
 <span class='release_date'>2017년 8월 17일. 소규모 업데이트</span>
 
@@ -1491,7 +1416,6 @@ sidebar_label: "What's New"
 
 ## 4.1
 
-
 <span class='release_date'>2016년 9월 1일. 마이너 업데이트</span>
 
 [블로그에서 릴리스 리뷰 보기](https://dhtmlx.com/blog/dhtmlxgantt-4-1-full-accessibility-support/)
@@ -1514,7 +1438,6 @@ sidebar_label: "What's New"
 
 ## <b>4.0</b>
 
-
 <span class='release_date'>2015년 12월 1일. 주요 업데이트</span>
 
 ### 기능
@@ -1535,7 +1458,6 @@ sidebar_label: "What's New"
 
 
 ## 3.3
-
 
 <span class='release_date'>2015년 7월 21일. 마이너 업데이트</span>
 
@@ -1558,7 +1480,6 @@ sidebar_label: "What's New"
 
 
 ## 3.2
-
 
 <span class='release_date'>2015년 3월 18일. 마이너 업데이트</span>
 
@@ -1584,7 +1505,6 @@ sidebar_label: "What's New"
 
 ## 3.1
 
-
 <span class='release_date'>2014년 10월 25일. 마이너 업데이트</span>
 
 ### 기능
@@ -1603,7 +1523,6 @@ sidebar_label: "What's New"
 
 
 ## <b>3.0</b>
-
 
 <span class='release_date'>2014년 9월 11일. 주요 업데이트</span>
 
@@ -1631,7 +1550,6 @@ sidebar_label: "What's New"
 
 ## 2.1
 
-
 <span class='release_date'>2014년 3월 28일. 마이너 업데이트</span>
 
 ### 글로벌
@@ -1656,7 +1574,6 @@ sidebar_label: "What's New"
 
 
 ## <b>2.0</b>
-
 
 <span class='release_date'>2013년 10월 18일. 주요 업데이트</span>
 

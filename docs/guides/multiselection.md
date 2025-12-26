@@ -5,7 +5,6 @@ sidebar_label: "Multi-Task Selection"
 
 # Multi-Task Selection 
 
-
 Starting from version 3.2, the library provides the **multiselect** extension that allows you to select multiple tasks at once.
 
 <div style="text-align:center;">![multiselection](/img/multiselection.png)</div>
@@ -151,7 +150,6 @@ gantt.config.drag_multiple = true;
 
 
 ## Opening editor with one click
-
 
 In the single selection mode, Gantt opens the inline editor after you click on a task. 
 

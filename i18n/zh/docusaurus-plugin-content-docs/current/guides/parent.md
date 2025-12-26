@@ -5,7 +5,6 @@ sidebar_label: "父任务控件"
 
 # 父任务控件
 
-
 该控件提供一个下拉选择框，用于更改任务的父任务。它会加载甘特图中展示的所有任务，并支持应用过滤规则以及自定义选项的显示方式。除此之外，其使用方式与 [Select Control](guides/select.md) 控件相同。
 
 ![parent_control](/img/parent_control.png)
@@ -23,7 +22,6 @@ gantt.config.lightbox.sections = [
 
 
 ## 初始化 
-
 
 要在 lightbox 中包含 **parent** 控件，需完成以下步骤:
 
@@ -50,7 +48,6 @@ gantt.locale.labels["section_parent"] = "Parent task";
 
 ## 属性
 
-
 以下是 **parent** 控件常用的一些主要属性（完整列表请参见 [这里](api/config/lightbox.md)）:
 
 - **name** - (*string*) section 的名称
@@ -66,7 +63,6 @@ gantt.locale.labels["section_parent"] = "Parent task";
   
 
 ## 选项过滤
-
 
 如需控制 **parent** 控件中显示哪些选项，可使用 **filter** 属性:
 
@@ -101,7 +97,6 @@ gantt.config.lightbox.sections = [
 
 ## 选项排序
 
-
 如需对 **parent** 控件中的选项进行排序，可使用 **sort** 属性:
 
 **按标题长度对任务排序**
@@ -125,7 +120,6 @@ gantt.config.lightbox.sections = [
 - 0 - 两个选项顺序不变
 
 ## 选项模板
-
 
 如需自定义 **parent** 控件中选项的显示方式，可使用 **template** 属性:
 

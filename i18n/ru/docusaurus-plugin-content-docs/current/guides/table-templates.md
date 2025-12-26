@@ -5,7 +5,6 @@ sidebar_label: "Шаблоны грида"
 
 # Шаблоны грида
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

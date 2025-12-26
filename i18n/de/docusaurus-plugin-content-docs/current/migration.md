@@ -5,10 +5,7 @@ sidebar_label: "Migration von älteren Versionen"
 
 # Migration von älteren Versionen
 
-
-
 ## 8.0 -> 9.0
-
 
 Das Update auf v9.0 bringt mehrere Breaking Changes mit sich.
 
@@ -174,7 +171,6 @@ Beachten Sie, dass Sie die Methode **resizeLightbox()** aus Ihrer Konfiguration 
 
 ## 7.1 -> 8.0
 
-
 ### Ressourcen-Zuweisungen
 
 In früheren Versionen von DHTMLX Gantt wurden Änderungen an Ressourcen-Zuweisungen als Eigenschaften von Aufgabenobjekten an das Backend gesendet, was die Integration mit Backend-APIs in manchen Fällen unnötig erschwerte.
@@ -217,7 +213,6 @@ Seit v8.0 wurden die folgenden veralteten Klassennamen entfernt und durch neue e
 - ".dhtmlx_" + btn.label.toLowerCase() + "_button" -> **".gantt_" + btn.label.toLowerCase() + "_button"**
 
 ## 7.0 -> 7.1
-
 
 Version 7.1 bringt keine Breaking Changes mit sich, die eine Anpassung des bestehenden Codes erfordern würden.
 
@@ -282,7 +277,6 @@ gantt.config.bar_height = 50;
 
 
 ## 6.3 -> 7.0
-
 
 ### Erweiterungen und Sprachdateien
 
@@ -378,7 +372,6 @@ In Version 6.2 veraltete Konfigurationen und Templates wurden in Version 7.0 ent
 Falls Sie die alten Namen bereits in Ihrem Code definiert haben, funktionieren diese weiterhin. Andernfalls verwenden Sie bitte die neuere Version der API.
 
 ## 6.2 -> 6.3
-
 
 ### Multi-Task-Auswahl
 
@@ -485,7 +478,6 @@ const dateEditor = {type: "date", map_to: "start_date",
 
 ## 6.1 -> 6.2
 
-
 Das Update auf Version 6.2 ist im Allgemeinen kompatibel mit Version 6.1 und sollte keine Codeänderungen erfordern.
 Allerdings wurde das Verhalten einiger Komponenten geändert (das alte Verhalten kann über die Konfiguration wiederhergestellt werden) und einige APIs wurden als veraltet markiert.
 
@@ -588,7 +580,6 @@ gantt.templates.api_date = gantt.date.date_to_str(gantt.config.api_date);
 
 ## 6.0 -> 6.1 
 
-
 ### Zeitliche Einschränkungen und automatisches Scheduling
 
 Die **dhtmlxgantt_auto_scheduling.js**-Erweiterung wurde um die [tasks constraints](guides/auto-scheduling.md#timeconstraintsfortasks)-Funktionalität erweitert. Da diese Funktion das Standardverhalten des automatischen Schedulings ändert,
@@ -618,7 +609,6 @@ gantt.parse(demo_tasks);
 
 ## 5.2 -> 6.0
 
-
 In Version 6.0 ist die Methode **getSlack()** veraltet. Stattdessen wurden zwei Methoden hinzugefügt:
 
 - [getFreeSlack](api/method/getfreeslack.md) - gibt den freien Puffer (free slack) einer Aufgabe zurück
@@ -646,7 +636,6 @@ Falls Sie eine der veralteten Methoden verwenden, müssen Sie diese gemäß der 
 
 
 ## 3.x -> 4.0
-
 
 Version 4.0 bringt einige Änderungen in der öffentlichen API mit sich, insbesondere:
 
@@ -762,7 +751,6 @@ Alte Konfigurationen ("dhx_save_btn", "dhx_cancel_btn", "gantt_delete_btn") funk
 - Projekte, Meilensteine und andere benutzerdefinierte Typen
 
 ## 1.0 -> 2.0
-
 
 1) Verschiedene Objekte (**GanttProjectInfo**, **GanttTaskInfo**, **GanttChart**, **GanttProject**, **GanttTask**) wurden durch ein statisches Objekt ersetzt - **gantt**. 
 

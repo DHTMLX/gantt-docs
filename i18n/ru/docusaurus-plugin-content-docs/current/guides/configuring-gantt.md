@@ -5,7 +5,6 @@ sidebar_label: "Настройка Gantt Chart"
 
 # Настройка Gantt Chart
 
-
 ![gantt_basic](/img/gantt_basic.png)
 
 ((index

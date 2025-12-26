@@ -5,7 +5,6 @@ sidebar_label: "Svelte Gantt"
 
 # Svelte Gantt
 
-
 :::note
 В настоящее время не существует отдельного Svelte-компонента для DHTMLX Gantt.
 Тем не менее, вы всё равно можете легко добавить DHTMLX Gantt в свои Svelte-приложения, используя перечисленные ниже ресурсы.

@@ -5,7 +5,6 @@ sidebar_label: "Vue Gantt"
 
 # Vue Gantt
 
-
 :::note
 Im Moment gibt es keine native Vue-Komponente für DHTMLX Gantt. 
 Dennoch können Sie DHTMLX Gantt problemlos in Ihre Vue-Anwendungen integrieren, indem Sie die folgenden Ressourcen nutzen.

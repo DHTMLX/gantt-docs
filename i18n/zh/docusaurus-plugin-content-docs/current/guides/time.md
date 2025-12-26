@@ -5,7 +5,6 @@ sidebar_label: "时间控件"
 
 # 时间控件
 
-
 该控件通过两个选择器设置任务的持续时间，可定义任务的开始和结束日期。
 
 ![time_control](/img/time_control.png)
@@ -22,7 +21,6 @@ gantt.config.lightbox.sections="["
 
 
 ## 初始化
-
 
 要在 lightbox 中包含 **time** 控件，请按如下操作:
 
@@ -44,7 +42,6 @@ gantt.locale.labels.section_period = "Time period";
 
 ## 属性
 
-
 以下是与 'time' 控件常用的一些关键属性（完整列表见 [这里](api/config/lightbox.md)）:
 
 - **name** - (*string*) section 的名称 
@@ -61,7 +58,6 @@ gantt.locale.labels.section_period = "Time period";
 - **autofix_end** - (*boolean*) 当开始日期超过结束日期时，是否自动调整结束日期。默认值为 *true*。禁用后可进行日期校验，但如果启用且未校验，若 *start_date* 晚于 *end_date*，任务可能会变为零持续时间。
  
 ## 配置日期时间选择器 
-
 
 要自定义 "duration" 或 "time" section 中的选择器，请使用 [time_format](api/config/lightbox.md) 属性（详见 [날짜 형식 지정](guides/date-format.md)）:
 
@@ -98,7 +94,6 @@ time_format:["%H:%i", "%M", "%d", "%Y"] // "%m" 被 "%M" 替换
 
 ## 映射到自定义开始/结束日期时间属性
 
-
 ### 默认映射
 
 默认情况下，time 和 duration 控件通过将 **map_to** 设为 "auto"（**map_to:"auto"**），映射到必需的 'start_date' 和 'end_date' 属性。
@@ -132,7 +127,6 @@ gantt.config.lightbox.sections = [
 
 
 ## 切换 section 可见性
-
 
 你可以通过在 lightbox section 配置中设置 **type:"time_optional"** 并加上 **button: true** 来控制 time section 的可见性:
 

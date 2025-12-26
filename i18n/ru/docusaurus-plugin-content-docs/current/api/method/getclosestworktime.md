@@ -44,7 +44,6 @@ gantt.getClosestWorkTime({ date: new Date(2019,04,26), task:task });
 
 ## Свойства объекта конфигурации {#configurationobjectproperties}
 
-
 Объект конфигурации может содержать следующие свойства:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">

@@ -43,7 +43,6 @@ gantt.attachEvent("onGanttReady", function () {
 
 ### Details
 
-
 인수는 다음 두 가지 유형 중 하나일 수 있습니다:
 
 - **linkLayerRender (link, timeline, config, viewport): HTMLElement|boolean|void** - 링크 객체를 받아 레이어에 표시할 DOM 요소를 반환하는 함수입니다.

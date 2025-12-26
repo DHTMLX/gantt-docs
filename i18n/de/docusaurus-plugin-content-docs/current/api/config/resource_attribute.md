@@ -24,7 +24,6 @@ gantt.config.resource_attribute = "data-resource-id";
 
 ### Details
 
-
 :::note
  Jedes Resource-Element enthält das Attribut *data-resource-id*, das das DOM-Element mit der entsprechenden Resource verknüpft. 
 :::

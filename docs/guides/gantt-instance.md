@@ -5,7 +5,6 @@ sidebar_label: "Peculiarities of Gantt Instance"
 
 # Peculiarities of Gantt Instance
 
-
 This article highlights the main features of using Gantt Instance. 
 
 Let's consider the most common case - building an application with several pages/tabs/views. 

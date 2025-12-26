@@ -5,7 +5,6 @@ sidebar_label: "Ressourcenmanagement"
 
 # Ressourcenmanagement
 
-
 :::info
 Diese Funktion ist nur in der Gantt PRO Edition enthalten.
 :::
@@ -19,7 +18,6 @@ Gantt berechnet die Ressourcenauslastung selbst nicht und bietet dafür keine in
 :::
 
 ## Ressourcenansicht-Panel
-
 
 dhtmlxGantt stellt zwei vordefinierte Layout-Ansichten zur Anzeige der Ressourcenauslastung bereit: das Ressourcen-Auslastungsdiagramm und das Ressourcen-Histogramm.
 
@@ -721,7 +719,6 @@ Weitere Hinweise zur Konfiguration des Ressourcen-Controls im Lightbox finden Si
 
 ## Ressourcen und Ressourcenzuweisungen laden
 
-
 Ab Version 8.0 können Ressourcen und Ressourcenzuweisungen mit den Methoden [gantt.parse()](api/method/parse.md) oder [gantt.load()](api/method/load.md) in das Gantt geladen werden:
 
 ~~~js
@@ -794,7 +791,6 @@ gantt.parse({
 
 ## Verwaltung von Ressourcenzuweisungen
 
-
 ### Parsen von Ressourcenzuweisungen
 
 Ab Version 7.1 können Ressourcenzuweisungen als Objekte im Data Store verwaltet werden.
@@ -849,7 +845,6 @@ gantt.updateTaskAssignments(taskId);
 
 ## Anzeige der Ressourcen einer Aufgabe
 
-
 Ressourcennamen können als Teil der Aufgabenbeschreibung oder als Labels in den Rasterzellen angezeigt werden. Da Gantt keine eingebaute Methode zum Abrufen eines Elements aus der Serverliste per ID bietet, kann eine einfache Hilfsfunktion verwendet werden:
 
 ~~~js
@@ -883,7 +878,6 @@ gantt.templates.rightside_text = function(start, end, task){
 
 ## Editierbares Ressourcen-Diagramm
 
-
 Um das Bearbeiten von Ressourcenzuweisungen direkt im Ressourcen-Diagramm zu ermöglichen, setzen Sie folgende Konfiguration:
 
 ~~~js
@@ -915,7 +909,6 @@ Unten ein Beispiel für ein Template mit editierbaren Zellen, das nach Bedarf an
 
 ## Individuelle Gestaltung von Ressourcen
 
-
 Für die Farbgebung werden häufig folgende Templates verwendet:
 
 - [gantt.templates.grid_row_class](api/template/grid_row_class.md) - CSS-Klasse für Zeilen im linken Raster
@@ -932,7 +925,6 @@ Je nach Szenario können Sie entweder:
 
 
 ## Ressourcenkalender
-
 
 Gantt unterstützt individuelle Arbeitszeit-Kalender, die bestimmten Ressourcen zugeordnet werden können.
 
@@ -962,7 +954,6 @@ Wenn mehreren Ressourcen eine Aufgabe zugewiesen ist, kann Gantt [automatisch ei
 Weitere Details finden Sie im zugehörigen Artikel [Zuweisen von Kalendern zu Ressourcen](guides/working-time.md#assigningcalendartoresource).
 
 ## Auslastung von Ressourcen ausgleichen
-
 
 Die [Grouping-Erweiterung](guides/extensions-list.md#grouping) ermöglicht die Aufschlüsselung des gesamten Projekts nach der **resource**-Property.
 

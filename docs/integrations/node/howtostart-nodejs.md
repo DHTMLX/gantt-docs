@@ -5,7 +5,6 @@ sidebar_label: "Node.js"
 
 # dhtmlxGantt with Node.js 
 
-
 The current tutorial is intended for creating Gantt with Node.js and REST API on the server side. 
 If you use some other technology, check the list of available integration variants below:
 
@@ -30,7 +29,6 @@ You can have a look at the video guide that shows how to create a Gantt chart us
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Step 1. Creating a project
-
 
 To begin with, we'll create a project folder and then add the required dependencies. We'll make use of the following modules:
 
@@ -133,7 +131,6 @@ This folder is also the right place to put js/css files of dhtmlxGantt. However,
 
 ## Step 2. Adding Gantt to the page
 
-
 Let's create the *public* folder and add an *index.html* file into it. Then open the *index.html* file and fill it with the following content:
 
 
@@ -173,7 +170,6 @@ Then open http://127.0.0.1:1337 in a browser. You should see a page with an empt
 ![gantt_init](/img/gantt_init.png)
 
 ## Step 3. Preparing a database
-
 
 The next step is to create a database. We'll make a simple database with two tables for tasks and links:
 
@@ -220,7 +216,6 @@ Check a detailed example [here](guides/loading.md#databasestructure).
 
 
 ## Step 4. Loading data
-
 
 Now we need to implement data loading. 
 
@@ -338,7 +333,6 @@ Let's run the application now by opening http://127.0.0.1:1337. The gantt will b
 ![load_data_nodejs](/img/load_data_nodejs.png)
 
 ## Step 5. Saving changes
-
 
 The last thing that we should implement is data saving. 
 For this we need a code that will send updates happening on the client side back to the server.
@@ -655,18 +649,15 @@ You can check [a ready demo](https://github.com/DHTMLX/gantt-howto-node) on GitH
 
 ## Application security
 
-
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](guides/app-security.md).
 
 ## Trouble shooting
-
 
 In case you've completed the above steps to implement Gantt integration with Node.js, but Gantt doesn't render tasks and links on a page, have a look at the [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) article. It describes 
 the ways of identifying the roots of the problems.
 
 
 ## What's next
-
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-node), clone or download it and use it for your projects.
 

@@ -5,7 +5,6 @@ sidebar_label: "Integration mit JQuery"
 
 # Integration mit JQuery
 
-
 Bei der Arbeit mit der JQuery-Bibliothek kann das Gantt-Diagramm mit einer vertrauten Syntax zu einer Seite hinzugefügt werden.
 
 So sieht eine grundlegende Gantt-Diagramm-Initialisierung mit JQuery aus:

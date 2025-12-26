@@ -5,7 +5,6 @@ sidebar_label: "Exporting and Importing Data"
 
 # Exporting and Importing Data
 
-
 - [Export to PDF and PNG](guides/export.md)
 - [Export/Import for Excel, Export to iCal](guides/excel.md)
 - [Export and Import from MS Project](guides/export-msproject.md)

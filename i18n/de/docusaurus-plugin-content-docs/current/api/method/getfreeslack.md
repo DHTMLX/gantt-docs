@@ -33,7 +33,6 @@ gantt.getFreeSlack(task);
 
 ### Details
 
-
 :::note
  Diese Methode ist Teil der **critical_path**-Erweiterung. Stellen Sie daher sicher, dass Sie das [critical_path](guides/extensions-list.md#criticalpath) Plugin über die Methode [gantt.plugins](api/method/plugins.md) aktivieren. Weitere Informationen finden Sie im Artikel ["Kritischer Pfad"](guides/critical-path.md). 
 :::

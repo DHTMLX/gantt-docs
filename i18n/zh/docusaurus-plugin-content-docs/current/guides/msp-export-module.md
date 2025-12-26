@@ -5,7 +5,6 @@ sidebar_label: "MS Project 导出模块"
 
 # MS Project 导出模块
 
-
 该导出模块用于导入和导出 MS Project 及 Primavera 文件。它是一个 .NET Core 应用程序，可以在 dotnet 环境下运行，也可以在 docker 镜像中运行。
 
 它不支持 PDF、PNG、Excel 或 iCal 文件的导入/导出。如果需要这些格式，请考虑使用[对应的导出模块](guides/pdf-export-module.md)或我们的在线服务器。

@@ -5,7 +5,6 @@ sidebar_label: "JQuery와의 통합"
 
 # JQuery와의 통합
 
-
 JQuery 라이브러리를 사용할 때, Gantt 차트는 익숙한 문법을 사용하여 페이지에 추가할 수 있습니다.
 
 아래는 JQuery로 Gantt 차트를 기본적으로 설정하는 방법입니다:

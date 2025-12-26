@@ -5,7 +5,6 @@ sidebar_label: "키보드 내비게이션"
 
 # 키보드 내비게이션
 
-
 Gantt 차트와 그 요소들은 키 또는 키 조합을 사용하여 접근할 수 있습니다. 이 문서에서는 Gantt에서의 키보드 내비게이션의 기본 사항, 포커스 동작 방식, 내장 단축키 사용법, 그리고 직접 단축키를 만드는 방법을 다룹니다.
 
 ## 기능 활성화 {#enablingthefunctionality}
@@ -183,7 +182,6 @@ Gantt 차트 내비게이션을 위한 여러 내장 단축키가 제공됩니�
 
 
 ## 수평 타임라인 스크롤을 위한 내장 단축키 {#builtinshortcutforhorizontaltimelinescrolling}
-
 
 버전 4.2부터, Gantt 차트는 다음을 이용한 수평 타임라인 스크롤을 지원합니다:
 

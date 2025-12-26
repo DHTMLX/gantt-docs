@@ -5,7 +5,6 @@ sidebar_label: "依赖关系链接的模板"
 
 # 依赖关系链接的模板
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

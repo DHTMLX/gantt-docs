@@ -5,7 +5,6 @@ sidebar_label: "PHP: Slim"
 
 # dhtmlxGantt 与 PHP:Slim
 
-
 本教程将为您提供所有必要步骤，使用 Slim 4 框架和服务器端的 RESTful API 构建基于 PHP 的甘特图。
 
 :::note
@@ -29,7 +28,6 @@ sidebar_label: "PHP: Slim"
 :::
 
 ## 步骤 1. 初始化项目
-
 
 ### 创建项目
 
@@ -57,7 +55,6 @@ php -S 0.0.0.0:8080 -t public public/index.php
 然后，在浏览器中打开 [http://127.0.0.1:8080](http://127.0.0.1:8080)，即可看到 Slim 的默认欢迎页面。
 
 ## 步骤 2. 在页面中添加 Gantt
-
 
 下一步是创建一个显示甘特图的页面。这将分为两个简单的步骤完成。
 
@@ -123,7 +120,6 @@ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## 步骤 3. 配置数据库
 
-
 甘特图页面显示后，下一步是创建数据库并将其连接到应用程序。
 
 ### 创建数据库
@@ -177,7 +173,6 @@ INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2020-04-05 00:00:00',
 项目配置完成后，下一步是加载数据。
 
 ## 步骤 4. 加载数据
-
 
 现在需要配置从数据库加载数据。在客户端，数据将通过 [gantt.load](api/method/load.md) 方法请求:
 
@@ -288,7 +283,6 @@ return function (App $app) {
 ![slim_load](/img/slim_load.png)
 
 ## 步骤 5. 保存更改
-
 
 下一步是在客户端将所做更改保存回服务器。通常，这通过 gantt 内置的 [dataProcessor](guides/server-side.md#jishushuoming) 库实现。
 
@@ -707,21 +701,17 @@ function updateOrder($taskId, $target, $db){
 
 ## 使用 dhtmlxConnector
 
-
 实现 PHP 后端的另一种方式是使用 [dhtmlxConnector 库](https://docs.dhtmlx.com/connector__php__index.html)。详细教程可见 [这里](integrations/php/howtostart-connector.md)。
 
 ## 应用安全性
-
 
 Gantt 本身不提供针对 SQL 注入、XSS 或 CSRF 等常见安全威胁的防护。确保应用安全是后端开发者的责任。更多信息请参阅[本文](guides/app-security.md)。
 
 ## 故障排查
 
-
 如果按照上述步骤操作后，Gantt 图未能显示任务和链接，请参考 [백엔드 통합 문제 해결](guides/troubleshooting.md) 中的故障排查指南。该指南提供了识别和解决常见问题的方法。
 
 ## 后续步骤
-
 
 至此，gantt 已经可以正常运行。完整源码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-php) 获取，你可以克隆或下载以供使用。
 

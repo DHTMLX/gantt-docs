@@ -6,7 +6,6 @@ description: You can explore a methods overview in the documentation of the DHTM
 
 # Events overview
 
-
 | Name                                                    | Description                                                    |
 |---------------------------------------------------------|----------------------------------------------------------------|
 | [](../event/onafterautoschedule.md)                      | @getshort(../event/onafterautoschedule.md)        |

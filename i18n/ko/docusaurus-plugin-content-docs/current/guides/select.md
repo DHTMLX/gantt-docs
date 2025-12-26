@@ -5,7 +5,6 @@ sidebar_label: "Select Control"
 
 # Select Control
 
-
 드롭다운 리스트 박스입니다.
 
 ![select_control](/img/select_control.png)
@@ -29,7 +28,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 
 ## 초기화
-
 
 **select** 컨트롤을 lightbox에 포함하려면 다음과 같이 진행합니다:
 
@@ -63,7 +61,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 ## 속성
 
-
 아래는 **select** 컨트롤에서 자주 설정되는 주요 속성입니다 (전체 목록은 [여기](api/config/lightbox.md)에서 확인하세요):
 
 - **name** - (*string*) 섹션의 이름
@@ -79,7 +76,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 
 ## 컨트롤에 데이터 채우기
-
 
 **select** 컨트롤의 값을 설정하려면 [options](api/config/lightbox.md) 파라미터를 사용하세요:
 
@@ -101,7 +97,6 @@ gantt.config.lightbox.sections = [
 
 
 ## 서버 데이터로 컨트롤 채우기
-
 
 서버 데이터로 컨트롤을 채우려면 [options](api/config/lightbox.md) 파라미터에 [serverList](api/method/serverlist.md) 메서드에서 반환된 값을 할당하세요:
 

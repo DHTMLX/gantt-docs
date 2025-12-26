@@ -5,7 +5,6 @@ sidebar_label: "PDF 내보내기 모듈"
 
 # PDF 내보내기 모듈
 
-
 이 내보내기 모듈을 사용하면 데이터를 PDF, PNG, Excel, iCal 형식으로 내보낼 수 있습니다. Node.js 앱으로 또는 Docker 이미지를 통해 모든 플랫폼에서 설정할 수 있습니다.
 
 참고: MS Project 및 Primavera 파일에 대한 가져오기/내보내기는 지원하지 않습니다. 해당 파일의 경우 [전용 내보내기 모듈](guides/msp-export-module.md) 또는 온라인 서비스를 사용해야 합니다.

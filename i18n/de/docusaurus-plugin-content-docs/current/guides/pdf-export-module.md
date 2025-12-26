@@ -5,7 +5,6 @@ sidebar_label: "Exportmodul für PDF"
 
 # Exportmodul für PDF
 
-
 Dieses Exportmodul ermöglicht das Exportieren von Daten in PDF-, PNG-, Excel- und iCal-Formate. Es kann auf jeder Plattform entweder als Node.js-Anwendung oder über ein Docker-Image eingerichtet werden.
 
 Bitte beachten Sie, dass kein Import/Export für MS Project- und Primavera-Dateien unterstützt wird. Für diese sollten Sie das [dedizierte Exportmodul](guides/msp-export-module.md) oder unseren Online-Service verwenden.

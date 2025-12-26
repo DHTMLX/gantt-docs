@@ -36,7 +36,6 @@ Ein Gantt-Diagramm ist eine der beliebtesten Methoden, um Aktivitäten über ein
 
 ## Verwalten von Abhängigkeitsverknüpfungen
 
-
 ### Neue Verknüpfungen hinzufügen
 
 - Um eine neue Verknüpfung für eine Aufgabe hinzuzufügen, bewegen Sie den Cursor über die Aufgabe und ziehen Sie das runde Handle am Anfang (oder Ende) der Aufgabe zu einem runden Handle einer anderen Aufgabe.

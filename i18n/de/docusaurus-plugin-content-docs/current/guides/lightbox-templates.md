@@ -5,7 +5,6 @@ sidebar_label: "Vorlagen des Lightbox"
 
 # Vorlagen des Lightbox
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

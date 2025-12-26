@@ -5,7 +5,6 @@ sidebar_label: "Konfiguration des Rasters"
 
 # Konfiguration des Rasters 
 
-
 ![gantt_left](/img/gantt_left.png)
 
 

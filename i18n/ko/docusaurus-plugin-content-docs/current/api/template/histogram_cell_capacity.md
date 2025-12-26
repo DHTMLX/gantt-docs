@@ -41,7 +41,6 @@ gantt.templates.histogram_cell_capacity=function(start_date,end_date,resource,ta
 
 ### Details
 
-
 :::note
  "assignments" 파라미터는 [process_resource_assignments](api/config/process_resource_assignments.md) 설정이 활성화된 경우에만 접근 가능합니다. 
 :::

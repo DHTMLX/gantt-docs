@@ -5,13 +5,11 @@ sidebar_label: "日期操作"
 
 # 日期操作
 
-
 dhtmlxGantt 提供了 [date](api/other/date.md) 对象，该对象包含多种日期格式化方法。这些方法在处理日期对象时非常实用。
 
 本文介绍了一些主要且常用的方法。完整方法列表可参见 [date object page](api/other/date.md)。
 
 ## 将 Date 对象转换为字符串
-
 
 要将 Date 对象转换为字符串，可以使用 [date_to_str](api/other/date.md) 方法:
 

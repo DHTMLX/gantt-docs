@@ -5,7 +5,6 @@ sidebar_label: "Select Control"
 
 # Select Control
 
-
 Ein Dropdown-Auswahlfeld.
 
 ![select_control](/img/select_control.png)
@@ -29,7 +28,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 
 ## Initialisierung
-
 
 Um das **select**-Steuerelement im Lightbox-Formular einzubinden, gehen Sie wie folgt vor:
 
@@ -62,7 +60,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 ## Eigenschaften
 
-
 Hier sind einige wichtige Eigenschaften, die üblicherweise für das **select**-Steuerelement gesetzt werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 
 - **name** - (*string*) Der Name der Sektion 
@@ -78,7 +75,6 @@ Hier sind einige wichtige Eigenschaften, die üblicherweise für das **select**-
 
 
 ## Befüllen des Steuerelements mit Daten
-
 
 Um Werte für das **select**-Steuerelement zu setzen, verwenden Sie den [options](api/config/lightbox.md)-Parameter:
 
@@ -100,7 +96,6 @@ Jedes Element im [options](api/config/lightbox.md)-Array muss diese zwei Eigensc
 
 
 ## Befüllen des Steuerelements mit Daten vom Server
-
 
 Um das Steuerelement mit Daten vom Server zu befüllen, weisen Sie dem [options](api/config/lightbox.md)-Parameter den Wert zu, der von der Methode [serverList](api/method/serverlist.md) zurückgegeben wird:
 

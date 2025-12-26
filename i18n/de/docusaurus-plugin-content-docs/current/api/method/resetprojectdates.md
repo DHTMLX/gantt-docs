@@ -26,7 +26,6 @@ gantt.resetProjectDates(gantt.getTask(3));
 
 ### Details
 
-
 Diese Methode aktualisiert die Eigenschaften **start_date**, **end_date** und **duration** des angegebenen Aufgabenobjekts basierend auf den Terminen seiner untergeordneten Aufgaben.
 
 ### Related API

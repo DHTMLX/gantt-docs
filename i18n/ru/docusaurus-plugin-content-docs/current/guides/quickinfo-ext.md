@@ -5,14 +5,12 @@ sidebar_label: "Расширение quickInfo"
 
 # Расширение quickInfo
 
-
 Более подробная информация о расширении quickInfo доступна в статье [Быстрая информация (Поддержка касаний)](guides/quick-info.md).
 
 
 Объект *quickInfo* предоставляет следующий API:
 
 ## Методы
-
 
 - <span class="submethod">**show (id): void**</span> - открывает тултип quick info для указанного элемента
     - **_id_** - (*number | string*) - ID задачи

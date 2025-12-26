@@ -5,7 +5,6 @@ sidebar_label: "Baselines-Steuerung"
 
 # Baselines-Steuerung
 
-
 :::info
 Dieses Feature ist nur in der PRO Edition enthalten.
 :::
@@ -25,7 +24,6 @@ gantt.config.lightbox.sections = [
 
 
 ## Initialisierung
-
 
 Um das **baselines**-Steuerelement in der Lightbox zu verwenden, gehen Sie wie folgt vor:
 
@@ -47,7 +45,6 @@ gantt.locale.labels.section_baselines = "Baselines";
 
 ## Eigenschaften
 
-
 Hier sind die wichtigsten Eigenschaften, die häufig mit dem **baselines**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 
 - **name** - (*string*) der Bezeichner der Sektion
@@ -64,7 +61,6 @@ Hier sind die wichtigsten Eigenschaften, die häufig mit dem **baselines**-Steue
 - **time_format** - (*string*) legt die Reihenfolge der Datums-/Zeit-Selektoren fest
 
 ## Lokalisierung
-
 
 Sie können die Beschriftungen für diese Teile des **baselines**-Steuerelements anpassen:
 

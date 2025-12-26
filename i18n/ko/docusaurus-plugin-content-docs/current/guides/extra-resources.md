@@ -5,7 +5,6 @@ sidebar_label: "공통 기능"
 
 # 공통 기능
 
-
 ((index
 - [로컬라이제이션](guides/localization.md)
 - [전체 화면 모드](guides/fullscreen-mode.md)

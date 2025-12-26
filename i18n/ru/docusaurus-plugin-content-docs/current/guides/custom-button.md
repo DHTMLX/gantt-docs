@@ -71,7 +71,6 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 
 ## Изменение подписей кнопок
 
-
 Подписи кнопок можно переопределить до инициализации Gantt следующим образом:
 
 ~~~js

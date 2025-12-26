@@ -5,13 +5,11 @@ sidebar_label: "Установка"
 
 # Как установить dhtmlxGantt
 
-
 dhtmlxGantt можно добавить в ваш проект с помощью менеджеров пакетов, таких как [NuGet](https://www.nuget.org/), [Bower](https://bower.io/) или [npm](https://www.npmjs.com/).
 
 Кроме того, вы можете подключить необходимые JS и CSS файлы напрямую с CDN.
 
 ## npm - Оценочная и PRO версии {#npmevaluationandproversions}
-
 
 **Оценочная версия Professional**
 
@@ -22,7 +20,6 @@ dhtmlxGantt можно добавить в ваш проект с помощью
 Доступ к приватному npm-репозиторию DHTMLX предоставляется через [Client's Area](https://dhtmlx.com/clients/) после генерации логина и пароля для npm. Подробная инструкция по установке доступна там же. Обратите внимание, что доступ к приватному npm предоставляется только при активной лицензии на проприетарную версию Gantt.
 
 ## npm - стандартная бесплатная версия {#npmstandardfreeversion}
-
 
 Стандартную версию dhtmlxGantt можно установить с сайта [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt) с помощью команды:
 
@@ -35,7 +32,6 @@ npm install dhtmlx-gantt
 :::
 
 ## NuGet {#nuget}
-
 
 Чтобы добавить dhtmlxGantt с помощью [NuGet](https://www.nuget.org/), выполните следующую команду:
 
@@ -51,7 +47,6 @@ install-package DHTMLX.Gantt
 
 ## Bower {#bower}
 
-
 Вы можете установить dhtmlxGantt через [Bower](https://bower.io/), выполнив команду:
 
 ~~~html
@@ -59,7 +54,6 @@ bower install gantt
 ~~~
 
 ## CDN {#cdn}
-
 
 Для подключения dhtmlxGantt через CDN добавьте ссылки на файлы **dhtmlxgantt.js** и **dhtmlxgantt.css**:
 
@@ -72,7 +66,6 @@ bower install gantt
 Полный список CDN-ссылок для разных версий dhtmlxGantt смотрите в [отдельной статье](guides/cdn-links-list.md).
 
 ## Скачивание пакета {#downloadthepackage}
-
 
 ### GPL версия
 
@@ -90,7 +83,6 @@ bower install gantt
 ~~~
 
 ## Добавление PRO-редакции в проект {#addingproeditionintoproject}
-
 
 ### **Установка Pro версии**
 

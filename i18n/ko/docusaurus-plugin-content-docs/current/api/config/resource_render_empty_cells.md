@@ -24,7 +24,6 @@ gantt.config.resource_render_empty_cells = true;
 
 ### Details
 
-
 일반적으로 리소스 타임라인은 작업이 할당되지 않은 셀에 대해 [resource_cell_value](api/template/resource_cell_value.md) 및 [resource_cell_class](api/template/resource_cell_class.md) 템플릿을 호출하지 않습니다.
 
 이 옵션을 켜면 작업 할당 여부와 관계없이 리소스 타임라인의 모든 셀에 템플릿이 적용됩니다.

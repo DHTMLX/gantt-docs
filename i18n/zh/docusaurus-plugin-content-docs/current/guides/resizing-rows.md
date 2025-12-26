@@ -5,7 +5,6 @@ sidebar_label: "调整网格中的行高"
 
 # 调整网格中的行高
 
-
 可以调整网格中单独某一行的高度。
 
 
@@ -19,7 +18,6 @@ dhtmlxGantt 库提供了两种方式来控制行高:
 :::
 
 ## 设置行高
-
 
 你可以根据需要自定义某一行的高度。
 
@@ -58,7 +56,6 @@ gantt.render();
 如果 **row_height** 和 **bar_height** 属性未设置或为空（默认情况），将会使用 [gantt.config.row_height](api/config/row_height.md) 和 [gantt.config.bar_height](api/config/bar_height.md) 的配置值。
 
 ## 通过拖拽调整行高
-
 
 ![resize_row](/img/resize_row.png)
 

@@ -41,7 +41,6 @@ gantt.config.type_renderers[gantt.config.types.project] = function(task,defaultR
 
 ### Details
 
-
 Dieses Feature ermöglicht es Ihnen, die Darstellung verschiedener Aufgabentypen anzupassen, indem Sie eigene Rendering-Funktionen definieren.
 
 Eine Rendering-Funktion erhält zwei Argumente:

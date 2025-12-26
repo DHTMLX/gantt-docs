@@ -5,7 +5,6 @@ sidebar_label: "空状态屏幕"
 
 # 空状态屏幕
 
-
 自 8.0 版本起，该库支持在甘特图未加载任何数据时，在网格中显示一个占位元素的空屏幕（"空状态"）。
 
 ![empty screen tip](/img/empty_screen.png)

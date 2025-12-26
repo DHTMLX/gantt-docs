@@ -5,7 +5,6 @@ sidebar_label: "Server-Side Integration"
 
 # Server-Side Integration
 
-
 <style>
 .dp_table td (
   width: 100%;
@@ -23,11 +22,10 @@ You can take a look at the video guide that shows how to create a Gantt chart on
 
 ## Technique
 
-
 Generally, to load data from the server side using REST API, you need to:
 
 ### Client side
-  
+
 1) Call the [](api/method/load.md) method, where as a parameter specify the URL that returns Gantt data in the [JSON](/guides/supported-data-formats/) format.
 
 2) Create a DataProcessor instance using one of the two ways: 
@@ -462,7 +460,6 @@ You can have a look at the detailed examples on how to implement storing the tas
 
 ## Custom Request Headers and Parameters 
 
-
 ### Adding custom request headers
 
 You can send additional headers to your backend. For example, let's suppose that you need to add an authorization token to your requests:
@@ -539,7 +536,6 @@ dp.attachEvent("onBeforeUpdate", (id, state, data) => {
 
 
 ## Triggering Data Saving from Script
-
 
 If you have dataProcessor initialized, any change made by the user or programmatically will be automatically saved in the data source.
 
@@ -708,7 +704,6 @@ gantt.createDataProcessor((entity, action, data, id) => {
 
 ## Error Handling
 
-
 A server can inform Gantt that an action has failed by returning the "action":"error" response:
 
 ~~~js
@@ -761,7 +756,6 @@ gantt.render();
 
 ## Cascade Deletion
 
-
 By default, deletion of a task invokes a chain deletion of its nested task and related links. Gantt will send a *delete* request for each removed task and link.
 Thus, you don't have to maintain data integrity on a backend, it can be handled by the Gantt reasonably well.
 
@@ -773,7 +767,6 @@ Thus, when a project branch is deleted, the client will send a delete request on
 
 
 ## XSS, CSRF and SQL Injection Attacks
-
 
 Pay attention that Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. 
 It is important that responsibility for keeping an application safe is on the developers implementing the backend. 

@@ -5,13 +5,11 @@ sidebar_label: "링크 속성"
 
 # 링크 속성  
 
-
 이 페이지에서는 링크 객체가 가질 수 있는 모든 속성에 대해 설명합니다.
 
 작업 객체의 속성에 대한 전체 개요는 [Task Properties](guides/task-properties.md) 문서를 참고하세요.
 
 ## 필수 속성  
-
 
 <table>
     <tbody>
@@ -50,7 +48,6 @@ gantt.config.links.start_to_start = "start2start";
 이 변경은 의존성 유형이 저장되는 방식에만 영향을 주며, 표시 방식에는 영향을 주지 않습니다.
 
 ## 선택적 속성  
-
 
 <table>
     <tbody>

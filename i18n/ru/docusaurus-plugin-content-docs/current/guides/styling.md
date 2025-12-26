@@ -5,8 +5,6 @@ sidebar_label: "Стилизация"
 
 # Стилизация
 
-
-
 - [Документация по CSS](guides/css-overview.md)
 - [Скины](guides/skins.md)
 - [Кастомизация скинов](guides/custom-skins.md)

@@ -21,7 +21,6 @@ description: "작업 calendar 객체를 위한 인터페이스"
 
 ## 메서드
 
-
 - **setWorkTime (config): boolean** - Gantt 차트의 작업 시간을 정의합니다
     - **_config_** - (*object*) - 시간 범위를 설명하는 [구성 객체](api/method/setworktime.md#configurationobjectproperties):
         - **_day?_** - (*string | number*) - 선택 사항, 주중 요일 번호 [0 (일요일) - 6 (토요일)]. 한 번에 하나의 요일만 설정할 수 있습니다

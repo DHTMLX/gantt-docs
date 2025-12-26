@@ -47,7 +47,6 @@ gantt.addTaskLayer(function draw_deadline(task) {
 
 ### Details
 
-
 Das Argument kann einer der folgenden Typen sein:
 
 

@@ -40,7 +40,6 @@ gantt.unsetWorkTime({ hours:["9:00-18:00"] });
 
 ## Свойства объекта конфигурации {#configurationobjectproperties}
 
-
 Объект конфигурации может включать следующие свойства:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">

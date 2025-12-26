@@ -5,7 +5,6 @@ sidebar_label: "数据加载"
 
 # 数据加载
 
-
 dhtmlxGantt 支持两种数据格式用于加载信息:
 
 - [XML](guides/supported-data-formats.md#xmldhtmlxgantt20)；
@@ -27,7 +26,6 @@ gantt.load("tasks.json");
 :::
 
 ## 从对象加载
-
 
 如果你希望直接从对象加载数据，可以使用 [parse](api/method/parse.md) 方法:
 
@@ -53,7 +51,6 @@ gantt.parse(data); /*!*/
 :::
 
 ## 从服务器加载
-
 
 ### 客户端
 
@@ -129,7 +126,6 @@ app.get("/data", function(req, res){
 
 
 ## 任务日期的加载
-
 
 ### 定义任务计划
 
@@ -387,7 +383,6 @@ gantt.templates.grid_date_format = function(date, column){
 
 ## 数据属性
 
-
 甘特图的数据源对象包含两类主要信息:
 
 - **tasks** - 任务项。
@@ -426,7 +421,6 @@ gantt.init("gantt_here");
 带有自定义属性的数据示例请见 [这里](guides/supported-data-formats.md)。
 
 ## 数据库结构
-
 
 如果要与数据库配合使用，建议将任务和链接分别存储在两张表中。
 
@@ -483,7 +477,6 @@ CREATE TABLE `gantt_tasks` (
 
 
 ## 事件流程
-
 
 以下是与加载方法相关的事件流程:
 

@@ -5,7 +5,6 @@ sidebar_label: "Skins"
 
 # Skins
 
-
 dhtmlxGantt bietet eine Vielzahl vordefinierter Skins, mit denen Sie das Gesamtbild des Gantt-Diagramms einfach anpassen können:
 
 1. [Terrace (Standard)](guides/skins.md#terraceskin)
@@ -45,7 +44,6 @@ Bei Bedarf können Sie den Font-Import direkt aus den **.less**-Dateien im Ordne
 
 ## 'Skin Terrace' {#terraceskin}
 
-
 Um den Standard-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**
@@ -57,7 +55,6 @@ Um den Standard-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
 
 
 ## 'Skin Dark' {#darkskin}
-
 
 Um den 'Dark'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
 
@@ -76,7 +73,6 @@ gantt.skin = "dark";
 
 
 ## 'Skin Material' {#materialskin}
-
 
 Um den 'Material'-Skin zu nutzen, binden Sie die Standard-CSS-Datei ein:
 
@@ -153,7 +149,6 @@ gantt.skin = "skyblue";
 
 
 ## 'Skin Meadow' {#meadowskin}
-
 
 Um den 'Meadow'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
 

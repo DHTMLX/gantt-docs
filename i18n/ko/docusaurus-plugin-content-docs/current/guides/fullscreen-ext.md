@@ -5,7 +5,6 @@ sidebar_label: "Fullscreen Extension"
 
 # Fullscreen Extension
 
-
 Fullscreen 확장에 대한 자세한 정보는 [전체 화면 모드](guides/fullscreen-mode.md#fullscreenapi) 문서에서 확인할 수 있습니다. 
 
  *fullscreen* 객체는 다음과 같은 API를 포함합니다:
