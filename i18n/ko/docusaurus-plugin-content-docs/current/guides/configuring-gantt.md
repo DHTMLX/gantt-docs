@@ -5,7 +5,6 @@ sidebar_label: "간트 차트 구성하기"
 
 # 간트 차트 구성하기
 
-
 ![gantt_basic](/img/gantt_basic.png)
 
 ((index

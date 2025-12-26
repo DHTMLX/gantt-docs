@@ -5,8 +5,6 @@ sidebar_label: "Styling"
 
 # Styling
 
-
-
 - [CSS Documentation](guides/css-overview.md)
 - [Skins](guides/skins.md)
 - [Skins Customization](guides/custom-skins.md)

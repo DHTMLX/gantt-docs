@@ -5,7 +5,6 @@ sidebar_label: "Ressourcen-Steuerung"
 
 # Ressourcen-Steuerung
 
-
 :::info
 Dieses Feature ist nur in der PRO Edition verfügbar.
 :::
@@ -55,7 +54,6 @@ Es ist auch möglich, [ein benutzerdefiniertes Steuerelement zu erstellen, um me
 
 ## Initialisierung
 
-
 Um das **resources**-Steuerelement im Lightbox-Dialog einzubinden, gehen Sie wie folgt vor:
 
 1. Fügen Sie eine Sektion zur Lightbox-Konfiguration hinzu:
@@ -80,7 +78,6 @@ gantt.locale.labels.section_resources = "Rooms";
 
 ## Eigenschaften
 
-
 Hier sind die wichtigsten Eigenschaften, die häufig für das **resources**-Steuerelement festgelegt werden (vollständige Details finden Sie [hier](api/config/lightbox.md)):
 
 - **name** - (*string*) der Name der Sektion
@@ -101,7 +98,6 @@ Standardmäßig werden die Optionen des Ressourcen-Steuerelements automatisch au
 :::
 
 ## Befüllen des Steuerelements mit Daten
-
 
 Seit Version 8.0 erhält das Ressourcen-Steuerelement die Optionen automatisch aus dem [Resource Datastore](guides/resource-management.md#workingwithresourceviewpanel).
 
@@ -164,7 +160,6 @@ Jedes Element im [options](api/config/lightbox.md) Array muss enthalten:
 
 
 ## Befüllen des Steuerelements mit Daten vom Server
-
 
 Um das Steuerelement mit Daten vom Server zu befüllen, setzen Sie die [options](api/config/lightbox.md) Eigenschaft auf den Wert, der von der [serverList](api/method/serverlist.md) Methode zurückgegeben wird:
 

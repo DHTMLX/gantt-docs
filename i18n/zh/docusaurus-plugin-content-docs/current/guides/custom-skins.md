@@ -5,7 +5,6 @@ sidebar_label: "皮肤自定义"
 
 # 皮肤自定义
 
-
 从 9.0 版本开始，Gantt 皮肤采用了 CSS 变量，使您可以轻松地自定义和美化组件的样式。
 
 
@@ -97,7 +96,6 @@ sidebar_label: "皮肤自定义"
 
 ## 如何自定义皮肤
 
-
 最简单的更改 Gantt 外观的方法是在您的样式表中覆盖 CSS 变量。例如:
 
 ~~~html
@@ -166,7 +164,6 @@ sidebar_label: "皮肤自定义"
 
 ## 如何使用源码
 
-
 dhtmlxGantt 提供了多种格式的样式文件:
 
 - **codebase/dhtmlxgantt.css** - 适用于生产环境的压缩皮肤 CSS 文件；
@@ -177,14 +174,12 @@ dhtmlxGantt 提供了多种格式的样式文件:
 
 ## 如何开始
 
-
 您可以将 **codebase/sources/less** 视为一个 NPM 包。该目录包含两类文件:
 
 - 样式表；
 - 用于微调 Gantt 视图或构建新皮肤的变量声明文件。
 
 ## 如何构建皮肤
-
 
 在 **codebase/sources/less/** 目录下运行:
 
@@ -207,7 +202,6 @@ dhtmlxGantt 提供了多种格式的样式文件:
 这些脚本会从源码编译 CSS 文件，并将其放入 Gantt 包的 *codebase* 文件夹，覆盖原有文件。
 
 ## 结构说明
-
 
 以下是 9.0 版本 **less** 文件夹的目录结构（未来版本可能会有变动）:
 
@@ -234,7 +228,6 @@ dhtmlxGantt 提供了多种格式的样式文件:
 - package.json
 
 ## 创建自定义皮肤
-
 
 要创建新皮肤，可以从 **sources/less/src/themes** 复制并重命名一个现有皮肤。步骤如下:
 
@@ -282,7 +275,6 @@ npm run build
 :::
 
 ## JS 样式设置
-
 
 Gantt 的某些样式方面是通过 JavaScript 配置控制的，而不是 CSS。例如:
 

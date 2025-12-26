@@ -5,7 +5,6 @@ sidebar_label: "Application Security"
 
 # Application Security
 
-
 DHTMLX Gantt is a client-side JavaScript library designed for smooth integration of the Gantt functionality into various web apps.
 Therefore, we do not limit the functional capabilities of our Gantt, which could enhance the security of the app, but decrease the available possibilities at the same time. 
 Thus, you can customize most of the Gantt features according to your project requirements.

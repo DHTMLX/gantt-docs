@@ -5,7 +5,6 @@ sidebar_label: "Quick Info (Touch-Unterstützung)"
 
 # Quick Info (Touch-Unterstützung)
 
-
 Die Bibliothek enthält die **Quick Info**-Erweiterung, die ein Popup mit Aufgabendetails anzeigt, wenn ein Benutzer auf eine Aufgabe auf dem Bildschirm tippt.
 
 ![quick_info](/img/quick_info.png)
@@ -30,7 +29,6 @@ gantt.init("gantt_here");
 ~~~
 
 ## API-Übersicht
-
 
 Die Quick Info-Erweiterung bietet eine Reihe von APIs, um ihre Einstellungen anzupassen, ihr Verhalten zu steuern oder das Aussehen des Popups zu individualisieren. 
 

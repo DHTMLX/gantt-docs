@@ -21,7 +21,6 @@ The **calendar** object possesses the following methods and properties:
 
 ### Methods
 
-
 - **setWorkTime (config): boolean** - sets the working time for the Gantt chart
     - **_config_** - (*object*) - the [configuration object](api/method/setworktime.md#configuration-object-properties) of a time span:
         - **_day?_** - (*string | number*) - optional, a number of a week day [0 (Sunday) - 6 (Saturday)]. Note, you can set only 1 day at once

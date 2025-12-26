@@ -5,7 +5,6 @@ sidebar_label: "여러 개의 차트를 한 페이지에 표시하기"
 
 # 여러 개의 차트를 한 페이지에 표시하기
 
-
 :::info
 이 기능은 Gantt PRO 버전에 포함되어 있으며, Commercial(2021년 10월 6일부터), Enterprise, Ultimate 라이선스에서 제공됩니다.
 :::
@@ -143,7 +142,6 @@ window.addEventListener("DOMContentLoaded", function(){
 
 ## dhtmlxLayout과의 통합 {#integrationwithdhtmlxlayout}
 
-
 여러 개의 Gantt 차트를 한 페이지에 깔끔하게 배치하는 효과적인 방법 중 하나는 [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html)을 사용하는 것입니다. dhtmlxLayout은 레이아웃 프레임워크를 제공하며, 다른 페이지 요소와의 상호작용 및 크기 조정 이벤트도 잘 처리합니다.
 
 :::note
@@ -174,7 +172,6 @@ function init() {
 ~~~
 
 ## Gantt와 DataProcessor 인스턴스의 소멸자 {#destructorofganttanddataprocessorinstances}
-
 
 버전 5.1부터 dhtmlxGantt 객체는 불필요한 gantt 인스턴스를 정리할 수 있는 [destructor](api/method/destructor.md)를 제공합니다.
 

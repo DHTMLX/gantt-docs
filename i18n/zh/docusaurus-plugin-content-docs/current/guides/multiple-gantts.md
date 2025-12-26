@@ -5,7 +5,6 @@ sidebar_label: "页面上的多个甘特图"
 
 # 页面上的多个甘特图
 
-
 :::info
 此功能包含在 Gantt PRO 版本中，可通过 Commercial（自 2021 年 10 月 6 日起）、Enterprise 和 Ultimate 许可证获得。
 :::
@@ -143,7 +142,6 @@ window.addEventListener("DOMContentLoaded", function(){
 
 ## 与 dhtmlxLayout 的集成
 
-
 在页面上组织多个甘特图的一个有效方法是使用 [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html)。它提供了整洁的布局框架，并能正确处理与其他页面元素的交互以及大小调整事件。
 
 :::note
@@ -173,7 +171,6 @@ function init() {
 ~~~
 
 ## Gantt 和 DataProcessor 实例的析构函数
-
 
 从 5.1 版本开始，dhtmlxGantt 对象提供了 [destructor](api/method/destructor.md)，用于清理不再需要的 gantt 实例。
 

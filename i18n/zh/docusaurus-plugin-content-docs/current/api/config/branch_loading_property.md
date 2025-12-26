@@ -30,7 +30,6 @@ gantt.init("gantt_here");
 
 ### Details
 
-
 此选项仅在与 [branch_loading](api/config/branch_loading.md) 配置结合使用时生效。
 
 ### Related API

@@ -5,7 +5,6 @@ sidebar_label: "Svelte"
 
 # dhtmlxGantt mit Svelte
 
-
 Diese Anleitung setzt grundlegende Kenntnisse der Svelte-Konzepte und -Muster voraus. Falls nicht, findest du ein hilfreiches Einstiegs-Tutorial in der [Svelte-Dokumentation](https://svelte.dev/).
 
 DHTMLX Gantt funktioniert gut mit Svelte. Ein funktionierendes Beispiel findest du auf GitHub: [DHTMLX Gantt mit Svelte Demo](https://github.com/DHTMLX/svelte-gantt-demo).

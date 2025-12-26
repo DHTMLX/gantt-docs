@@ -5,7 +5,6 @@ sidebar_label: "Angular"
 
 # dhtmlxGantt with Angular
 
-
 You should be familiar with the basic concepts and patterns of Angular to use this documentation. If 
 you are not, please refer to the [Angular documentation](https://angular.dev/overview) for a getting-started tutorial.
 

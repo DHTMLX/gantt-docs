@@ -5,7 +5,6 @@ sidebar_label: "Milestones"
 
 # Milestones
 
-
 :::info
 此功能仅在 PRO 版本中可用
 :::
@@ -58,7 +57,6 @@ gantt.config.order_branch = true;
 
 
 ## 在数据集中指定里程碑
-
 
 在初始数据中指定里程碑时，需要将项目的 [type](guides/loading.md#dataproperties) 属性设置为 **'milestone'**（具体值存储在 [types](api/config/types.md) 对象中）:
 ~~~js
@@ -117,7 +115,6 @@ gantt.config.lightbox.milestone_sections = [
 
 
 ## 隐藏任务和里程碑
-
 
 自 v7.1 起，可以通过在数据项中设置 **hide_bar: true** 属性来在时间线上隐藏[任务条](guides/task-types.md#changguirenwu)和[里程碑](guides/task-types.md#lichengbei):
 

@@ -27,7 +27,6 @@ gantt.config.drag_project = true;
 
 ### Details
 
-
 此功能允许用户拖放整个项目及其子任务。
 
 ### Related Guides

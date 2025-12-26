@@ -5,7 +5,6 @@ sidebar_label: "Export and Import Data on Node.js"
 
 # Export and Import Data on Node.js
 
-
 You can export and import data of DHTMLX Gantt which is built with Node.js. 
 
 :::note
@@ -23,7 +22,6 @@ Read the information below for more details.
 
 ## Exporting data
 
-
 The export functionality should work the same way as it works in the web version, with some exceptions:
 
 - Export to Excel needs the timeline to be shown on the page if the tasks are loaded into the gantt. Since the DOM element of the timeline isn't rendered on Node.js at all, export to Excel won't work by itself because the gantt won't be able to implement internal calculations related to the tasks' positioning in the timeline. As a workaround, you need to specify the loaded tasks as a value of the **data** parameter in the export settings:
@@ -35,7 +33,6 @@ data: gantt.serialize().data
 - When configuring export, specify the **callback** parameter to define the endpoint of the output file, otherwise, the file will be printed to the console.
 
 ## Importing data
-
 
 The import functionality needs the additional *formData* component to be installed:
 

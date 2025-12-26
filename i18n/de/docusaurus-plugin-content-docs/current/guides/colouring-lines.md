@@ -5,7 +5,6 @@ sidebar_label: "Links-Färbung und -Stil"
 
 # Links-Färbung und -Stil
 
-
 Es ist möglich, das Aussehen der Verbindungen zwischen Aufgaben individuell anzupassen, um das gewünschte Erscheinungsbild für Ihr Gantt-Diagramm zu erzielen. Die Verwendung verschiedener Farben für Abhängigkeitsverbindungen hilft den Nutzern, diese leichter zu unterscheiden.
 
 ![coloring_links](/img/coloring_links.png)
@@ -18,7 +17,6 @@ Es gibt mehrere Möglichkeiten, benutzerdefinierte Stile für Links festzulegen:
 Schauen wir uns zunächst die DOM-Struktur eines Links an, um zu verstehen, wie die einzelnen Teile positioniert, dimensioniert, verwendet und standardmäßig gestylt werden.
 
 ## Struktur des Link-DOM-Elements {#structureofthelinkdomelement}
-
 
 Das DOM-Element eines Links ist wie folgt aufgebaut:
 
@@ -104,7 +102,6 @@ Wenn **gantt.config.link_radius = 1** gesetzt wird, werden die abgerundeten Ecke
 
 ## Neudefinition der Link-Vorlage {#redefiningthelinkstemplate}
 
-
 Zur Anpassung von Abhängigkeitsverbindungen wird die [link_class](api/template/link_class.md) Vorlage verwendet. Um beispielsweise Links basierend auf der Priorität einer Aufgabe zu färben, können Sie folgenden Code nutzen:
 
 **Links je nach Abhängigkeitstyp einfärben**
@@ -139,7 +136,6 @@ Informationen zum Styling weiterer Teile von Abhängigkeitsverbindungen finden S
 Die gleiche Methode kann auch auf Aufgaben angewendet werden. Weitere Details finden Sie [hier](guides/colouring-tasks.md#redefiningthetaskstemplate).
 
 ## Festlegen der Farbe in der Eigenschaft des Link-Objekts {#specifyingcolorinthepropertiesofthelinkobject}
-
 
 Sie können einer Abhängigkeitsverbindung auch eine benutzerdefinierte Farbe zuweisen, indem Sie eine Eigenschaft zum Datenobjekt hinzufügen:
 

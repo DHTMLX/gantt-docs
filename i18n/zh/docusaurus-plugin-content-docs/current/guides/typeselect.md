@@ -5,7 +5,6 @@ sidebar_label: "Typeselect 控件"
 
 # Typeselect 控件
 
-
 :::info
 此功能仅在 PRO 版本中提供。
 :::
@@ -29,7 +28,6 @@ gantt.config.lightbox.sections = [
 
 
 ## 初始化
-
 
 要在 lightbox 中包含 **typeselect** 控件，只需像下面这样在 lightbox 配置中添加一个 section:
 
@@ -55,7 +53,6 @@ gantt.locale.labels.section_type = "New label for the section";
 ~~~
 
 ## 属性
-
 
 以下是 **typeselect** 控件常用的主要属性（完整列表见[此处](api/config/lightbox.md)）:
 

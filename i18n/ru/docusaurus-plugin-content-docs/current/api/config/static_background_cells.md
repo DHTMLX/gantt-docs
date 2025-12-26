@@ -24,7 +24,6 @@ gantt.config.static_background_cells = false;
 
 ### Details
 
-
 Этот параметр работает совместно с конфигурацией из [static_background](api/config/static_background.md).
 Когда одновременно включены **static background** и **static_background_cells**, 
 и при этом gantt.config.static_background_cells установлен в true (значение по умолчанию), gantt отрисовывает как PNG сетку, так и выделенные ячейки (те, которым назначен CSS класс из шаблона timeline_cell_class).

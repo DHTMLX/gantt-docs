@@ -5,7 +5,6 @@ sidebar_label: "Vue.js"
 
 # dhtmlxGantt with Vue.js
 
-
 You should be familiar with the basic concepts and patterns of [Vue](https://vuejs.org/) to use this documentation. If you 
 are not, please refer to the [Vue 3 documentation](https://vuejs.org/guide/introduction.html) for a getting-started tutorial.
 

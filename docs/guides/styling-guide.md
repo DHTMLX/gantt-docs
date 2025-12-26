@@ -5,7 +5,6 @@ sidebar_label: "Work with Gantt Styles"
 
 # Work with Gantt Styles
 
-
 dhtmlxGantt provides you with a wide set of options for modifying its appearance. You can both [change the general look of the Gantt chart by using one of the predefined skins](guides/skins.md)
 and adjust the styles of separate elements (tasks, links, scale, grid, etc.) of the component. 
 
@@ -14,7 +13,6 @@ Detailed information for each particular element is provided in the related arti
 
 
 ## Styling Grid
-
 
 You can change the style of the grid area via the related [Templates of the Grid](guides/table-templates.md).
 
@@ -239,7 +237,6 @@ Follow the examples shown in the [How to display several lines in the grid cell/
 
 ## Styling Scale
 
-
 The scale styling is defined by the related [templates of the timeline area](guides/timeline-templates.md).
 
 ### Scale row
@@ -308,7 +305,6 @@ gantt.config.scales = [
 
 
 ## Styling Tasks
-
 
 You can change the styling of tasks via the corresponding [templates of the timeline area](guides/timeline-templates.md).
 
@@ -525,7 +521,6 @@ More information about tooltips in Gantt is given in the article [Tooltips for G
 
 ## Styling Links
 
-
 You can change the style of the dependency links via the related [Templates of Dependency Links](guides/dependency-templates.md).
 
 ### Lines of dependency links
@@ -622,7 +617,6 @@ While there are lightboxes for editing and styling tasks bars, there is no built
 **Related sample**: [Custom UI for Editing Link Values](https://snippet.dhtmlx.com/2208ic0t)
 
 ## Styling Quick Info Popup
-
 
 The styling of the Quick Info popup is defined via the [Templates of the 'Quick Info' Extension (Touch Support)](guides/touch-templates.md) templates.
 

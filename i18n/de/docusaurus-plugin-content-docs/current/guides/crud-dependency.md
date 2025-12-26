@@ -69,7 +69,6 @@ gantt.clearAll();
 
 ## Bearbeiten von Verknüpfungswerten über die Benutzeroberfläche {#editinglinkvaluesfromui}
 
-
 Es gibt keine integrierte Benutzeroberfläche zum Bearbeiten von Verzögerungen (Lag) oder anderen Verknüpfungseigenschaften. Wenn Sie eine solche Oberfläche benötigen, müssen Sie diese selbst erstellen.
 
 Eine typische Vorgehensweise umfasst folgende Schritte:

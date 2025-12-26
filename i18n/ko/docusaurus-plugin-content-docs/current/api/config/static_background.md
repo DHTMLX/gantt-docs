@@ -29,7 +29,6 @@ gantt.init("gantt_here");
 
 ### Details
 
-
 v6.2 버전부터 이 설정은 [timeline_cell_class](api/template/timeline_cell_class.md) 템플릿 함수로 지정된 CSS 클래스가 적용된 셀들과 함께 PNG 배경 이미지를 생성합니다.
 
 v6.1 버전의 동작(배경 이미지만 렌더링)을 원할 경우, [static_background_cells](api/config/static_background_cells.md) 설정을 사용하면 됩니다:

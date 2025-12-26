@@ -5,7 +5,6 @@ sidebar_label: "베이스라인 컨트롤"
 
 # 베이스라인 컨트롤
 
-
 :::info
 이 기능은 PRO 에디션에만 포함되어 있습니다.
 :::
@@ -27,7 +26,6 @@ gantt.config.lightbox.sections = [
 
 ## 초기화
 
-
 **baselines** 컨트롤을 라이트박스에 포함시키려면 다음 단계를 따라주세요:
 
 1) 라이트박스 설정에 섹션을 추가합니다:
@@ -48,7 +46,6 @@ gantt.locale.labels.section_baselines = "Baselines";
 
 ## 속성
 
-
 **baselines** 컨트롤에서 주로 사용되는 주요 속성들은 다음과 같습니다 (전체 목록은 [여기](api/config/lightbox.md)에서 확인할 수 있습니다):
 
 - **name** - (*string*) 섹션의 식별자
@@ -65,7 +62,6 @@ gantt.locale.labels.section_baselines = "Baselines";
 - **time_format** - (*string*) 날짜-시간 선택기의 순서를 지정
 
 ## 지역화
-
 
 **baselines** 컨트롤의 다음 부분에 대한 라벨을 사용자 지정할 수 있습니다:
 

@@ -5,7 +5,6 @@ sidebar_label: "Creating/Selecting Tasks with DnD"
 
 # Creating/Selecting Tasks with DnD
 
-
 dhtmlxGantt library provides an extension that includes advanced drag-n-drop functionality while working with tasks in the timeline. 
 
 All in all the **click_drag** extension allows:
@@ -89,7 +88,6 @@ the elements won't have been created yet.
 
 ## Creating tasks with drag-n-drop
 
-
 You can create tasks with drag-n-drop right on the timeline by clicking in an empty place to set the start date of a task and dragging to the right to set its duration.
 
 ~~~js
@@ -124,11 +122,9 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 
 ## Setting time for unscheduled tasks
 
-
 The **click_drag** extension allows setting time for [unscheduled tasks](guides/unscheduled-tasks.md) with drag-n-drop.
 
 ## Selecting tasks with drag-n-drop
-
 
 It is possible to select tasks with drag-n-drop in several modes: in dates, rows, or in bounds.
 

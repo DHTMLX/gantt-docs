@@ -5,7 +5,6 @@ sidebar_label: "Шаблоны расширения 'Quick Info' (Поддерж
 
 # Шаблоны расширения 'Quick Info' (Поддержка Touch)
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

@@ -5,7 +5,6 @@ sidebar_label: "Svelte"
 
 # dhtmlxGantt와 Svelte 연동
 
-
 이 가이드는 Svelte의 기본 개념과 패턴에 대한 이해를 전제로 합니다. 아직 익숙하지 않다면 [Svelte 공식 문서](https://svelte.dev/)에서 시작 가이드를 참고하세요.
 
 DHTMLX Gantt는 Svelte와 잘 호환됩니다. 동작하는 예제는 GitHub에서 확인할 수 있습니다: [DHTMLX Gantt with Svelte Demo](https://github.com/DHTMLX/svelte-gantt-demo).

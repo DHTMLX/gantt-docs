@@ -5,7 +5,6 @@ sidebar_label: "Angular Gantt"
 
 # Angular Gantt
 
-
 :::note
 현재 DHTMLX Gantt에 대한 네이티브 Angular 컴포넌트는 제공되지 않습니다.
 하지만 아래 자료를 활용하면 Angular 애플리케이션에 DHTMLX Gantt를 쉽게 통합할 수 있습니다.

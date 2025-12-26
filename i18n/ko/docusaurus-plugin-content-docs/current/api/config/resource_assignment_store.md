@@ -27,7 +27,6 @@ var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store)
 
 ### Details
 
-
 데이터스토어는 자동으로 설정됩니다.
 
 [process_resource_assignments](api/config/process_resource_assignments.md) 설정이 활성화된 경우에만 생성됩니다.

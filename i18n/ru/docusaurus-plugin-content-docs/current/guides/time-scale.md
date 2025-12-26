@@ -5,7 +5,6 @@ sidebar_label: "Настройка шкал"
 
 # Настройка шкал
 
-
 ![gantt_right](/img/gantt_right.png)
 
 ((index

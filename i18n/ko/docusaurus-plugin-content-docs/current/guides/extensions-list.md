@@ -5,13 +5,11 @@ sidebar_label: "확장 기능 전체 목록"
 
 # 확장 기능 전체 목록
 
-
 dhtmlxGantt는 기본 기능을 확장하는 다양한 확장 기능(Extensions)을 제공합니다.
 
 확장 기능을 활성화하려면 [gantt.plugins](api/method/plugins.md) 메서드를 사용하여 플러그인을 활성화하면 됩니다.
 
 ## 고급 드래그 앤 드롭 {#advanceddragndrop}
-
 
 이 확장 기능을 사용하면 드래그 앤 드롭을 통해 작업을 생성하고 선택할 수 있습니다.
 
@@ -35,7 +33,6 @@ API: [click_drag](api/config/click_drag.md)
 
 
 ## 자동 스케줄링 {#autoscheduling}
-
 
 :::info
 이 확장 기능은 PRO 버전에서만 사용할 수 있습니다
@@ -65,7 +62,6 @@ API: [auto_scheduling](api/config/auto_scheduling.md)
 
 ## 주요 경로(Critical path) {#criticalpath}
 
-
 :::info
 이 확장 기능은 PRO 버전에서만 사용할 수 있습니다
 :::
@@ -94,7 +90,6 @@ API: [highlight_critical_path](api/config/highlight_critical_path.md)
 
 ## 타임라인 드래그 {#dragtimeline}
 
-
 마우스를 드래그하여 타임라인 뷰를 스크롤할 수 있게 해줍니다.
 
 ~~~js
@@ -115,7 +110,6 @@ API: [drag_timeline](api/config/drag_timeline.md)
 
 
 ## 추가 오버레이 {#extraoverlay}
-
 
 :::info
 이 확장 기능은 PRO 버전에서만 사용할 수 있습니다.
@@ -139,7 +133,6 @@ Article: [타임라인 영역의 커스텀 요소](guides/baselines.md#extraover
 
 ## 내보내기 서비스 {#exportservice}
 
-
 온라인 내보내기(export) 서비스를 사용할 수 있습니다.
 
 ~~~js
@@ -153,7 +146,6 @@ gantt.plugins({
 Article: [데이터 내보내기 및 가져오기](guides/export-common.md)
 
 ## 전체 화면 {#fullscreen}
-
 
 Gantt 차트를 전체 화면 모드로 표시합니다.
 
@@ -174,7 +166,6 @@ Article: [전체 화면 모드](guides/fullscreen-mode.md)
 
 
 ## 그룹화 {#grouping}
-
 
 :::info
 이 확장 기능은 PRO 버전에서만 사용할 수 있습니다
@@ -224,7 +215,6 @@ API: [keyboard_navigation](api/config/keyboard_navigation.md),[keyboard_navigati
 
 ## 다중 작업 선택 {#multitaskselection}
 
-
 Gantt 차트에서 여러 작업을 동시에 선택할 수 있습니다.
 
 ~~~js
@@ -248,7 +238,6 @@ API: [multiselect](api/config/multiselect.md)
 
 
 ## 빠른 정보(Quick info) {#quickinfo}
-
 
 작업의 세부 정보를 팝업으로 표시합니다.
 
@@ -292,7 +281,6 @@ Article: [Gantt 요소의 툴팁](guides/tooltips.md)
 
 ## 실행 취소(Undo) {#undo}
 
-
 변경 사항에 대한 실행 취소 및 다시 실행 기능을 제공합니다.
 
 ~~~js
@@ -315,7 +303,6 @@ API: [undo](api/config/undo.md), [redo](api/config/redo.md)
 
 
 ## 수직 마커 {#verticalmarker}
-
 
 특정 날짜 또는 날짜 범위를 강조 표시합니다.
 

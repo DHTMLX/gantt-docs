@@ -5,7 +5,6 @@ sidebar_label: "PDF Export Module의 새로운 기능"
 
 # PDF Export Module의 새로운 기능
 
-
 ## 0.6.6
 
 • 'visual' 설정을 사용하여 Excel로 내보낼 때, 일정이 없는 작업이 무시됩니다.

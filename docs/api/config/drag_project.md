@@ -29,7 +29,6 @@ gantt.config.drag_project = true;
 
 ### Details
 
-
 Allows a user to drag and drop projects together with their subtasks.
 
 ### Related Guides

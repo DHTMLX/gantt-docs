@@ -5,7 +5,6 @@ sidebar_label: "Незапланированные задачи"
 
 # Незапланированные задачи
 
-
 В Gantt можно добавить задачи без указанных дат.
 
 ![unscheduled_tasks](/img/unscheduled_tasks.png)

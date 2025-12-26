@@ -5,13 +5,11 @@ sidebar_label: "本地化（Localization）"
 
 # 本地化（Localization）
 
-
 本地化功能允许您将 Gantt 图界面显示为您偏好的语言，如英语、西班牙语、法语等。默认情况下，dhtmlxGantt 使用 [English locale](api/other/locale.md)。
 
 ![gantt_localized](/img/gantt_localized.png)
 
 ## 启用语言环境
-
 
 若需将 Gantt 图切换为英语以外的其他语言，只需通过 [gantt.i18n](api/other/i18n.md) 对象的 **setLocale** 方法激活所需的语言环境。
 
@@ -35,7 +33,6 @@ gantt.i18n.setLocale("fr");
 
 
 ## 预定义语言环境
-
 
 <table>
 <tr><td>语言</td><td>语言代码</td><td>翻译状态</td></tr>
@@ -74,7 +71,6 @@ gantt.i18n.setLocale("fr");
 </table>
 
 ## 创建自定义语言环境 
-
 
 :::note
 [gantt.i18n](api/other/i18n.md) 对象从 v7.0 版本引入。早期版本使用 [gantt.locale](api/other/locale.md) 对象。详情请参阅 [迁移指南](migration.md#63---70)。

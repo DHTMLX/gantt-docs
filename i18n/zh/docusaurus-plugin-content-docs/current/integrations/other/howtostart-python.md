@@ -5,7 +5,6 @@ sidebar_label: "Python"
 
 # dhtmlxGantt 与 Python 集成
 
-
 本指南将介绍如何使用 Django 4 框架和 RESTful API 后端创建基于 Python 的甘特图。
 
 如果你在其他平台开发，也可以参考以下服务端集成教程:
@@ -24,14 +23,12 @@ sidebar_label: "Python"
 
 ## 前置条件
 
-
 如果还未安装 Django，可参考以下安装指南:
 
 - [Windows 安装](https://docs.djangoproject.com/en/4.0/howto/windows/)
 - [Linux 安装](https://linuxhint.com/install_django_ubuntu/)
 
 ## 步骤 1. 初始化项目
-
 
 首先，打开你的项目文件夹，并通过以下命令创建一个新的 Django 项目:
 
@@ -56,7 +53,6 @@ python manage.py runserver
 ![start_page](/img/howtostart_django_startpage.png)
 
 ## 步骤 2. 在页面中添加 Gantt
-
 
 首先为 Gantt 组件创建一个新的应用:
 
@@ -176,7 +172,6 @@ python manage.py runserver
 ![init_gantt](/img/howtostart_django_initpage.png)
 
 ## 步骤 3. 加载数据
-
 
 在 *gantt_rest_python/settings.py* 中，将 `'rest_framework'` 和 `'gantt.apps.GanttConfig'` 添加到 `INSTALLED_APPS` 列表，并配置 REST 框架选项:
 
@@ -369,7 +364,6 @@ gantt.load("/data/", "json");
 ![gantt](/img/howtostart_django_gantt.png)
 
 ## 步骤 4. 保存更改
-
 
 如需支持保存更改，需要在 *gantt/views.py* 中添加对 `POST`、`PUT` 和 `DELETE` 方法的支持:
 
@@ -616,16 +610,13 @@ dp.setTransactionMode("REST");
 
 ## 应用安全
 
-
 DHTMLX Gantt 本身不包含防御 SQL 注入、XSS 或 CSRF 等威胁的机制。后端安全需由开发者负责。详见 [安全性相关文档](guides/app-security.md)。
 
 ## 故障排查
 
-
 如果集成完成后任务和链接未显示，请参考 [백엔드 통합 문제 해결](guides/troubleshooting.md) 中的故障排查指南，获取常见问题的定位和解决建议。
 
 ## 后续步骤
-
 
 至此，你已拥有可用的甘特图应用。完整源码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-django) 克隆或下载，用于你的项目。
 

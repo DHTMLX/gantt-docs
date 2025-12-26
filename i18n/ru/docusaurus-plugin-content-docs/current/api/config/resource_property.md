@@ -79,7 +79,6 @@ resourcesStore.parse([
 
 ### Details
 
-
 Определяет свойство в объекте задачи, которое содержит id ресурса, связанного с resourceGrid/Timeline/Histogram/Calendar. Эта настройка может быть изменена во время выполнения.
 
 ### Related API

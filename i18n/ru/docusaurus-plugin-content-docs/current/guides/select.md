@@ -5,7 +5,6 @@ sidebar_label: "Select Control"
 
 # Select Control
 
-
 Выпадающий список.
 
 ![select_control](/img/select_control.png)
@@ -29,7 +28,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 
 ## Инициализация
-
 
 Чтобы добавить контрол **select** в lightbox, выполните следующие шаги:
 
@@ -62,7 +60,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 ## Свойства
 
-
 Ниже перечислены основные свойства, которые обычно задаются для контрола **select** (полный список смотрите [здесь](api/config/lightbox.md)):
 
 - **name** - (*string*) имя секции
@@ -78,7 +75,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 
 ## Заполнение контрола данными
-
 
 Чтобы указать значения для контрола **select**, используйте параметр [options](api/config/lightbox.md):
 
@@ -100,7 +96,6 @@ gantt.config.lightbox.sections = [
 
 
 ## Заполнение контрола данными с сервера
-
 
 Чтобы заполнить контрол данными с сервера, присвойте параметру [options](api/config/lightbox.md) значение, возвращаемое методом [serverList](api/method/serverlist.md):
 

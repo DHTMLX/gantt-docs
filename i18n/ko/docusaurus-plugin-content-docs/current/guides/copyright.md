@@ -5,7 +5,6 @@ sidebar_label: "서드파티 라이선스"
 
 # 서드파티 라이선스
 
-
 이 문서에서는 DHTMLX Gantt 라이브러리에 포함된 서드파티 소프트웨어 구성요소에 대한 고지 및 추가 약관을 제공합니다.
 
 MIT 라이선스로 라이선스된 컴파일된 **Bluebird** 라이브러리가 Gantt 차트의 JS 파일에 포함되어 있습니다. 해당 JS 파일의 주석에서 이를 참조할 수 있습니다. Gantt와의 통합 방식에 대한 자세한 내용은 [Promise](api/method/promise.md)를 참조하세요.
@@ -15,7 +14,6 @@ Material 스킨에서 사용되는 **Roboto Google 폰트**는 기본적으로 �
 또한 샘플 애플리케이션에서는 **Node.js Express 모듈, body_parser, strip_tags** 등 일부 오픈소스 라이브러리를 사용합니다(샘플의 패키지 backend/package.json에 명시). 이들은 Gantt 라이브러리 자체의 일부가 아니며, 데모 목적으로만 포함되어 있습니다.
 
 ## Gantt 핵심 라이브러리에 사용된 구성요소
-
 
 ### Bluebird Promise 라이브러리
 
@@ -42,7 +40,6 @@ Licensed under the Apache License, Version 2.0 (the "License"); use of this file
 Unless required by law or agreed to in writing, software distributed under this License is provided "AS IS", without warranties or conditions of any kind, either express or implied. Please refer to the License for specific language governing permissions and limitations.
 
 ## 샘플 애플리케이션에 사용된 구성요소
-
 
 ### body-parser
 

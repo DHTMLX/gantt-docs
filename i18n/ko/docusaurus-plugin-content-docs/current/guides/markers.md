@@ -5,7 +5,6 @@ sidebar_label: "수직 마커 추가하기"
 
 # 수직 마커 추가하기
 
-
 이 라이브러리는 **marker** 확장 기능을 포함하고 있어, 타임라인에 특정 날짜나 날짜 범위를 강조 표시할 수 있습니다.
 
 <div style="text-align:center;">![today_marker](/img/today_marker.png)</div>
@@ -129,7 +128,6 @@ gantt.renderMarkers(); /*!*/
 
 ## 마커 스타일링 
 
-
 마커는 [gantt.templates.marker_class](api/template/marker_class.md) 템플릿을 사용하여 스타일을 지정할 수 있습니다:
 
 ~~~js
@@ -142,7 +140,6 @@ gantt.templates.marker_class = function(marker){
 ~~~
 
 ## 오늘의 마커
-
 
 간트 차트에 오늘 날짜를 표시하는 마커를 추가하려면, 마커를 추가하고 시간이 지남에 따라 위치를 업데이트하는 함수도 제공해야 합니다. 다음 코드를 참고하세요:
 

@@ -5,9 +5,7 @@ sidebar_label: "Сериализация данных в XML и JSON"
 
 # Сериализация данных в XML и JSON
 
-
 ## Формат JSON
-
 
 Для преобразования данных из диаграммы Gantt в объект JSON можно использовать метод [serialize](api/method/serialize.md) следующим образом:
 
@@ -25,7 +23,6 @@ var json = gantt.serialize();
 ~~~
 
 ## Формат XML
-
 
 Для преобразования данных из диаграммы Gantt в строку XML используется метод [serialize](api/method/serialize.md) следующим образом:
 

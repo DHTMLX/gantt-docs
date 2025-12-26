@@ -5,7 +5,6 @@ sidebar_label: "Export to PDF and PNG"
 
 # Export to PDF and PNG
 
-
 dhtmlxGantt provides an online export service that will allow you to export the Gantt chart into the [PDF](guides/export.md#export-to-pdf) or 
 [PNG](guides/export.md#export-to-png) format.
 
@@ -20,7 +19,6 @@ Note that export services are not included into the Gantt package,
 read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
 ## Online export service restrictions
-
 
 :::note
 The export service has time and request size restrictions.
@@ -46,7 +44,6 @@ export/import services (*exportToMSProject* / *importFromMSProject* / *exportToP
 
 ## Using export modules
 
-
 :::note
 If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
 The export module is provided free of charge if you've obtained Gantt under [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) or [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) license, or you can [buy the module separately](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
@@ -55,7 +52,6 @@ The export module is provided free of charge if you've obtained Gantt under [Com
 [Read more on the usage of the export module for PDF](guides/pdf-export-module.md).
 
 ## Export to PDF
-
 
 To export Gantt chart as a PDF document, do the following steps:
 
@@ -95,7 +91,6 @@ If you use the Gantt version older than 8.0, you need to include the `https://ex
 
 ## Export to PNG
 
-
 To export Gantt chart as a PNG image, do the following steps:
 
 - To use the online export service, enable the <b>export_api</b> plugin via the [plugins](api/method/plugins.md) method:
@@ -131,7 +126,6 @@ If you use the Gantt version older than 8.0, you need to include the `https://ex
 
 
 ## Parameters of the export methods
-
 
 The [exportToPDF](api/method/exporttopdf.md) and [exportToPNG](api/method/exporttopng.md) methods take as a parameter the same object with a number of properties (all of the properties are optional):
 
@@ -252,7 +246,6 @@ gantt.exportToPDF({
 
 
 ## Data to export
-
 
 To set the tasks that should be presented in the output PDF or PNG file, use one of the following ways:
 
@@ -486,7 +479,7 @@ In such a case you need to have an [export service](https://dhtmlx.com/docs/prod
 Check [system requirements](guides/export-requirements.md) to install export services locally.
 
 ## Exporting HTML elements
- 
+
 While exporting the Gantt chart to the PNG and PDF formats, you should note that export of HTML elements is limited due to their possible insecurity. 
 
 There are HTML elements which are not entirely allowed for export, such as `<canvas>`, `<svg>`, `<script>` and images with the *src* attribute that contains a Base64 image. However, there are safe ways of exporting images in the SVG and Base64 formats:

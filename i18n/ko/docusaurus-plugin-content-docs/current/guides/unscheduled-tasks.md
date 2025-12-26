@@ -5,7 +5,6 @@ sidebar_label: "예정되지 않은 작업"
 
 # 예정되지 않은 작업
 
-
 특정 날짜 없이 작업을 Gantt 차트에 추가할 수 있습니다.
 
 ![unscheduled_tasks](/img/unscheduled_tasks.png)

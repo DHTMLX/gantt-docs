@@ -5,7 +5,6 @@ sidebar_label: "dhtmlxGantt와 dhtmlxConnector 사용하기"
 
 # dhtmlxGantt와 dhtmlxConnector 사용하기
 
-
 이 튜토리얼은 웹페이지에 간단한 Gantt 차트를 설정하고, 해당 차트에서 작업을 데이터베이스(서버)에 저장 및 업데이트하는 방법을 설명합니다.
 
 
@@ -29,7 +28,6 @@ sidebar_label: "dhtmlxGantt와 dhtmlxConnector 사용하기"
 
 ## 1단계. dhtmlxGantt 패키지 다운로드
 
-
 <div>
 <p>
 
@@ -45,7 +43,6 @@ sidebar_label: "dhtmlxGantt와 dhtmlxConnector 사용하기"
 </div>
 
 ## 2단계. dhtmlxGantt 코드 파일 포함하기 
-
 
 <div>
 <p>
@@ -85,7 +82,6 @@ sidebar_label: "dhtmlxGantt와 dhtmlxConnector 사용하기"
 </div>
 
 ## 3단계. dhtmlxGantt 초기화하기
-
 
 <div>
 <p>
@@ -391,7 +387,6 @@ $gantt->render_table("gantt_tasks","id",
 
 ## 7단계. 데이터베이스에 데이터 업데이트하기
 
-
 <div>
 
 <p>
@@ -421,7 +416,6 @@ dp.init(gantt); /*!*/
 </div>
 
 ## 오류 로깅
-
 
 모든 설정이 완료되었는데도 문제가 발생한다면, Gantt에서 로깅을 활성화하여 문제를 진단할 수 있습니다.
 

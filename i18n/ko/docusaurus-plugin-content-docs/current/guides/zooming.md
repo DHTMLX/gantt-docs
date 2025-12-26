@@ -5,11 +5,9 @@ sidebar_label: "줌(Zooming)"
 
 # 줌(Zooming)
 
-
 dhtmlxGantt는 타임 스케일 줌 관리를 간편하게 해주는 내장 모듈을 제공합니다. 기본 줌 동작을 조정하고 싶다면, 타임 스케일 설정을 동적으로 변경할 수 있는 [유연한 API](guides/zoom.md)도 사용할 수 있습니다.
 
 ## 내장 줌 모듈
-
 
 통합된 [줌 모듈](guides/zoom.md)은 **gantt.ext.zoom** 확장에 포함되어 있습니다. 활성화하려면 **gantt.ext.zoom.init(zoomConfig)**를 호출하고, 다양한 줌 레벨 배열을 포함하는 **zoomConfig** 객체를 전달합니다. 예시는 다음과 같습니다:
 
@@ -83,7 +81,6 @@ gantt.ext.zoom.init(zoomConfig);
 
 
 ## 커스텀 줌 설정
-
 
 줌 모듈을 사용하지 않고 직접 스케일 설정을 제어하고 싶다면, 관련 구성 옵션을 조정하여 구현할 수 있습니다.
 

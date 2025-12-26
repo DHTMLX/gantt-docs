@@ -5,7 +5,6 @@ sidebar_label: "操作指南"
 
 # 操作指南
 
-
 ## 如何切换网格/图表
 
 在使用默认布局配置时，可以通过更改 [show_grid](api/config/show_grid.md) 或 [show_chart](api/config/show_chart.md) 参数，并调用 [render()](api/method/render.md) 方法来切换网格或图表的显示状态，从而更新界面。

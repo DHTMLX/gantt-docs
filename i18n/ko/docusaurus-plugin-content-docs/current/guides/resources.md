@@ -5,7 +5,6 @@ sidebar_label: "리소스 컨트롤"
 
 # 리소스 컨트롤
 
-
 :::info
 이 기능은 PRO Edition에만 포함되어 있습니다.
 :::
@@ -55,7 +54,6 @@ gantt.locale.labels.section_rooms = "Rooms";
 
 ## 초기화
 
-
 **resources** 컨트롤을 lightbox에 포함하려면 다음 단계를 따르세요:
 
 1. lightbox 설정에 섹션을 추가합니다:
@@ -81,7 +79,6 @@ gantt.locale.labels.section_resources = "Rooms";
 
 ## 속성
 
-
 **resources** 컨트롤에 일반적으로 설정되는 주요 속성은 다음과 같습니다 (전체 목록은 [여기](api/config/lightbox.md)에서 확인할 수 있습니다):
 
 - **name** - (*string*) 섹션의 이름
@@ -102,7 +99,6 @@ gantt.locale.labels.section_resources = "Rooms";
 :::
 
 ## 컨트롤에 데이터 채우기
-
 
 v8.0부터 리소스 컨트롤은 [리소스 데이터스토어](guides/resource-management.md#workingwithresourceviewpanel)에서 자동으로 옵션을 가져옵니다.
 
@@ -165,7 +161,6 @@ gantt.config.lightbox.sections = [
 
 
 ## 서버에서 데이터로 컨트롤 채우기
-
 
 서버에서 데이터를 받아 컨트롤을 채우려면 [options](api/config/lightbox.md) 속성을 [serverList](api/method/serverlist.md) 메서드가 반환하는 값으로 설정하세요:
 

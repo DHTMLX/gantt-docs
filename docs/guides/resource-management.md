@@ -5,7 +5,6 @@ sidebar_label: "Resource Management"
 
 # Resource Management
 
-
 :::info
 This functionality is available only in the PRO edition.
 :::
@@ -661,7 +660,6 @@ The return object contains the same list of properties as the return object of t
 
 ### Setting connection via lightbox
 
-
 Resources can be assigned to any property of the task object using the built-in lightbox.
 
 ~~~js
@@ -721,7 +719,6 @@ If you define resources via the *serverList* collection, they can be [loaded tog
 Read about how to configure the resource control of the lightbox in the [Resources control](guides/resources.md) and [Resource Assignments control](guides/resource-assignments.md) articles.
 
 ## Loading resources and resource assignments
-
 
 From v8.0, resources and resource assignments can be loaded into the gantt using [gantt.parse()](api/method/parse.md) or [gantt.load()](api/method/load.md) methods:
 
@@ -876,7 +873,6 @@ gantt.attachEvent("onTaskDrag", (id, mode, task, original) => {
 
 ## Showing task resource
 
-
 The resource name can be displayed as a part of task description or a label of one of the grid cells.
 Gantt doesn't provide a ready method for getting an item specified in the server list by its id, so you'll need to implement a small helper for this:
 
@@ -906,7 +902,6 @@ gantt.templates.rightside_text =
 
 
 ## Editable resource diagram
-
 
 In order to make resource assignments editable in the resource diagram, you can use the following configuration:
 
@@ -939,7 +934,6 @@ In the example below, a template with editable cells is provided. You can custom
 
 ## Custom styling of resources
 
-
 For coloring you'll usually need the following templates:
 
 - [gantt.templates.grid_row_class](api/template/grid_row_class.md) - the CSS of a row in the left hand grid
@@ -957,7 +951,6 @@ Depending on your context, you can
 
 
 ## Resource calendars
-
 
 Gantt supports the custom work-time calendars feature. Work-time calendars can be associated with specific resources.
 

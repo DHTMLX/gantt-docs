@@ -5,14 +5,12 @@ sidebar_label: "Undo Extension"
 
 # Undo Extension
 
-
 *Undo* 객체는 이미 적용된 변경 사항을 실행 취소(undo)하거나 다시 실행(redo)할 수 있는 다양한 메서드를 제공합니다. 
 
 
 Undo 확장에 대한 자세한 내용은 [Undo/Redo 기능](guides/undo-redo.md) 문서를 참고하세요.
 
 ## 메서드
-
 
 **gantt.ext.undo** 객체는 다음과 같은 메서드를 제공합니다:
 

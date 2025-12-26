@@ -26,7 +26,6 @@ gantt.resetProjectDates(gantt.getTask(3));
 
 ### Details
 
-
 Этот метод обновляет свойства **start_date**, **end_date** и **duration** переданного объекта задачи на основе дат его дочерних задач.
 
 ### Related API

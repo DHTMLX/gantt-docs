@@ -5,7 +5,6 @@ sidebar_label: "Highlighting Time Slots"
 
 # Highlighting Time Slots
 
-
 To pay user's attention to specific time slot(s), you may highlight them. 
 
 - To highlight a cell of the timeline area, use the [timeline_cell_class](api/template/timeline_cell_class.md) template.

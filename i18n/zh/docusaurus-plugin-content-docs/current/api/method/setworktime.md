@@ -65,7 +65,6 @@ gantt.setWorkTime({hours : ["8:30-12:00", "13:00-17:00"]})
 
 ## 配置对象属性
 
-
 配置对象可以包含以下属性:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">

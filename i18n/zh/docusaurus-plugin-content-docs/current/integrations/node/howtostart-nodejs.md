@@ -5,7 +5,6 @@ sidebar_label: "Node.js"
 
 # dhtmlxGantt 与 Node.js 集成指南
 
-
 本教程将指导你如何在服务端使用 Node.js 和 REST API 搭建 dhtmlxGantt。如果你使用的是其他技术栈，可以参考以下其它集成选项:
 
 - [dhtmlxGantt와 ASP.NET Core 사용하기](integrations/dotnet/howtostart-dotnet-core.md)
@@ -27,7 +26,6 @@ sidebar_label: "Node.js"
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 步骤 1. 创建项目
-
 
 首先，创建一个项目文件夹并添加必要的依赖。我们将使用以下模块:
 
@@ -125,7 +123,6 @@ app.listen(port, () =>{
 
 ## 步骤 2. 在页面中添加 Gantt
 
-
 创建 *public* 文件夹，并在其中添加 *index.html* 文件。打开 *index.html*，添加如下内容:
 
 **index.html**
@@ -165,7 +162,6 @@ node server.js
 ![gantt_init](/img/gantt_init.png)
 
 ## 步骤 3. 准备数据库
-
 
 接下来配置数据库。我们将创建一个简单的数据库，包含两个表:一个用于 tasks，一个用于 links:
 
@@ -212,7 +208,6 @@ INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00',
 更多细节请参考 [此处示例](guides/loading.md#standarddatabasestructure)。
 
 ## 步骤 4. 加载数据
-
 
 现在开始设置数据加载。
 
@@ -331,7 +326,6 @@ gantt.load("/data");/*!*/
 ![load_data_nodejs](/img/load_data_nodejs.png)
 
 ## 步骤 5. 保存更改
-
 
 最后，设置数据保存功能。
 即将客户端的更改发送回服务端。
@@ -638,17 +632,14 @@ function updateOrder(taskId, target) {
 
 ## 应用安全
 
-
 Gantt 本身不提供防护 SQL 注入、XSS 或 CSRF 攻击等威胁的机制。确保应用安全是后端开发者的责任。更多细节可参见[本文](guides/app-security.md)。
 
 ## 故障排查
-
 
 如果你已按照所有步骤将 Gantt 集成到 Node.js，但页面上未显示任务和链接，请参阅 [백엔드 통합 문제 해결](guides/troubleshooting.md) 文章。该文档提供了识别和解决常见问题的指导。
 
 
 ## 后续内容
-
 
 此时，甘特图已具备完整功能。完整代码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-node) 获取，你可以克隆或下载用于项目开发。
 

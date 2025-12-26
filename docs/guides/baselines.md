@@ -5,7 +5,6 @@ sidebar_label: "Custom Elements in Timeline Area"
 
 # Custom Elements in Timeline Area
 
-
 :::info
 This functionality is available only in the PRO edition
 :::
@@ -47,7 +46,6 @@ If you need to show the custom content in all cells of the timeline, place HTML 
 :::
 
 ## Example of usage
-
 
 To understand how to apply this functionality, let's consider an example: you have a planned and an actual time for tasks and need to display both of times.
 
@@ -170,7 +168,6 @@ The full code of the considered example you can see in the related sample.
 
 ## Samples of custom content
 
-
 The following samples show you different ways of applying the [addTaskLayer()](api/method/addtasklayer.md) method to enrich the timeline of the Gantt chart with different custom elements:
 
 - <a href="https://snippet.dhtmlx.com/wv23be05" target="_blank">Custom baselines</a>
@@ -186,7 +183,6 @@ The following samples show you different ways of applying the [addTaskLayer()](a
 
 
 ## Drag-and-drop for custom elements
-
 
 It may be useful for you if we explore the question of enabling drag-and-drop for custom elements. The thing is that there is no built-in function for the implementation of a custom drag-and-drop in DHTMLX Gantt. But it can be done manually in a rather simple way.
 
@@ -281,7 +277,6 @@ gantt.event(window, 'mouseup', function(e) {
 ~~~
 
 ## Extra overlay for the chart
-
 
 dhtmlxGantt provides the possibility to add an extra layer over the Gantt Chart for placing some custom content into it. As an overlay you can use a div container, an HTML canvas, etc. To draw the overlay content, any 
 third-party library can be used. 

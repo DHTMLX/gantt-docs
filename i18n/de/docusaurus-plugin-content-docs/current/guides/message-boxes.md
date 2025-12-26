@@ -5,7 +5,6 @@ sidebar_label: "Popup-Nachrichten und Modale Boxen"
 
 # Popup-Nachrichten und Modale Boxen
 
-
 Nachrichten im Gantt-Diagramm informieren Benutzer über Fehler, bestätigen oder verweigern Aktionen, ermöglichen die Auswahl von Optionen und mehr. Diese Nachrichten basieren auf [einem Fork des dhtmlxMessage-Repositories](https://github.com/DHTMLX/message), sodass alle Features von dhtmlxMessage auch für dhtmlxGantt-Nachrichten gelten.
 
 Es gibt zwei Haupttypen von Nachrichten: eine [einfache Popup-Nachricht](guides/message-boxes.md#basicpopupmessage) und eine [modale Nachrichtenbox](guides/message-boxes.md#modalmessageboxes) mit Schaltflächen, die die Interaktion mit der Anwendung blockieren.

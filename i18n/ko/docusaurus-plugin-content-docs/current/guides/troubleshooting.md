@@ -5,7 +5,6 @@ sidebar_label: "백엔드 통합 문제 해결"
 
 # 백엔드 통합 문제 해결
 
-
 ## 증상
 
 1. 백엔드 API를 직접 구현하거나 [튜토리얼](integrations/howtostart-guides.md)을 따라 구현했지만, Gantt 차트에 작업이나 링크가 표시되지 않습니다.

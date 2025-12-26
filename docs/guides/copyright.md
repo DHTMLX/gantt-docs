@@ -5,7 +5,6 @@ sidebar_label: "Third Party Licenses"
 
 # Third Party Licenses
 
-
 This article contains Third Party Software Notices and/or Additional Terms and Conditions for licensed third party software components included within the DHTMLX Gantt library.
 
 A compiled library **Bluebird** comes under the MIT license and is used in the JS files of our Gantt chart; we've included it in the notes of the code inside the JS file. Here is how it's applied in Gantt: [Promise](api/method/promise.md). 
@@ -16,9 +15,7 @@ Additionally, we use some open source libraries such as **Node.js Express module
 
 ## Components used in the core library of Gantt
 
-
 ### Bluebird Promise Library
-
 
 The MIT License (MIT)
 
@@ -46,7 +43,6 @@ DEALINGS IN THE SOFTWARE.
 
 ### Roboto Google Font
 
-
 Copyright 2020 DHTMLX
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -63,7 +59,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ## Components used in the samples application
-
 
 ### body-parser
 

@@ -5,7 +5,6 @@ sidebar_label: "Экспорт/Импорт в Excel, экспорт в iCal"
 
 # Экспорт/Импорт в Excel, экспорт в iCal
 
-
 Библиотека dhtmlxGantt поддерживает экспорт данных из диаграммы Gantt в форматы Excel и iCal. Также доступен импорт данных в диаграмму Gantt из файла Excel.
 
 :::note
@@ -18,7 +17,6 @@ sidebar_label: "Экспорт/Импорт в Excel, экспорт в iCal"
 Подробнее ознакомиться с условиями использования можно в [связанной статье](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
 
 ## Ограничения онлайн-сервиса экспорта
-
 
 :::note
 Сервис экспорта имеет ограничения по времени обработки и размеру запроса.
@@ -44,7 +42,6 @@ Error: Timeout trigger 20 seconds
 
 ## Использование модулей экспорта
 
-
 :::note
 Для экспорта больших диаграмм рекомендуется использовать [отдельный модуль экспорта](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
 Этот модуль бесплатен, если у вас есть лицензия [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) или [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing). В противном случае его можно приобрести отдельно [здесь](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
@@ -53,7 +50,6 @@ Error: Timeout trigger 20 seconds
 Более подробную информацию о работе с модулем экспорта в PDF можно найти в этом руководстве: [Модуль экспорта в PDF](guides/pdf-export-module.md). Модуль поддерживает экспорт в PDF, PNG, Excel и iCal.
 
 ## Экспорт в Excel
-
 
 Чтобы экспортировать данные из диаграммы Gantt в файл Excel, выполните следующие шаги:
 
@@ -192,7 +188,6 @@ gantt.exportToExcel({
 
 ## Импорт из Excel
 
-
 Поскольку автоматическое сопоставление произвольных колонок Excel с моделью данных Gantt не поддерживается, сервис экспорта преобразует документ Excel в массив строк, возвращаемый в формате JSON. 
 Преобразование этих данных в формат Gantt остаётся на стороне разработчика.
 
@@ -276,7 +271,6 @@ gantt.importFromExcel({
 
 
 ## Экспорт в iCal
-
 
 Чтобы экспортировать данные диаграммы Gantt в строку iCal, выполните следующие шаги:
 

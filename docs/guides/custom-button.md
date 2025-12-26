@@ -72,7 +72,6 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 
 ## Changing button labels
 
-
 You can redefine labels of buttons by using the following syntax before initialization of Gantt:
 
 ~~~js

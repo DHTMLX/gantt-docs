@@ -5,11 +5,9 @@ sidebar_label: "작업의 기본 작업"
 
 # 작업의 기본 작업
 
-
 이 장에서는 작업의 기본적인 작업, 즉 작업 생성, 삭제, 속성 동적 업데이트 방법을 다룹니다.
 
 ## 새 작업 추가하기
-
 
 Gantt 차트에 새 작업을 추가하려면 [addTask](api/method/addtask.md) 메서드를 사용하세요:
 
@@ -50,7 +48,6 @@ gantt.templates.grid_row_class = function( start, end, task ){
 
 ## 작업 속성 업데이트하기
 
-
 작업 객체의 속성을 즉시 업데이트하려면 [updateTask](api/method/updatetask.md) 메서드를 사용하세요:
 
 ~~~js
@@ -75,7 +72,6 @@ gantt.refreshTask(10);
 
 ## 작업 다시 그리기
 
-
 Gantt 차트의 모든 작업을 다시 그리려면 [refreshData](api/method/refreshdata.md) 메서드를 사용하세요:
 
 ~~~js
@@ -89,7 +85,6 @@ gantt.refreshData(); /*!*/
 
 ## 작업 삭제하기
 
-
 작업을 제거하려면 [deleteTask](api/method/deletetask.md) 메서드를 사용하세요:
 
 ~~~js
@@ -97,7 +92,6 @@ gantt.deleteTask(taskId);
 ~~~
 
 ## 중첩된 작업의 연쇄 삭제
-
 
 [cascade_delete](api/config/cascade_delete.md) 설정은 작업 삭제가 어떻게 처리되는지 제어합니다. 기본값은 *true*로, 작업을 삭제하면 해당 작업과 연결된 모든 하위 작업 및 링크에 대해 서버에 요청이 전송됩니다.
 
@@ -113,7 +107,6 @@ gantt.config.cascade_delete = false;
 [Server-side Integration 문서의 관련 섹션](guides/server-side.md#cascadedeletion)에서 확인할 수 있습니다.
 
 ## Gantt 차트에서 모든 작업 제거하기
-
 
 Gantt 차트에서 모든 작업을 삭제하려면 [clearAll](api/method/clearall.md) 메서드를 호출하세요:
 

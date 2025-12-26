@@ -5,7 +5,6 @@ sidebar_label: "PDF 导出模块"
 
 # PDF 导出模块
 
-
 该导出模块支持将数据导出为 PDF、PNG、Excel 和 iCal 格式。可以在任何平台上部署，既可以作为 Node.js 应用运行，也可以通过 Docker 镜像部署。
 
 请注意，该模块不支持 MS Project 和 Primavera 文件的导入/导出。如需处理这些文件，请使用[专用导出模块](guides/msp-export-module.md)或我们的在线服务。

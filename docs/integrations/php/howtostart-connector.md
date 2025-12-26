@@ -5,7 +5,6 @@ sidebar_label: "dhtmlxGantt with dhtmlxConnector"
 
 # dhtmlxGantt with dhtmlxConnector 
 
-
 This tutorial will teach you how to create a basic Gantt chart on a page that will be able to save and update tasks in the database (i.e. on the server).
 
 

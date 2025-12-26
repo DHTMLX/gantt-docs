@@ -5,7 +5,6 @@ sidebar_label: "配置时间轴"
 
 # 配置时间轴
 
-
 ![gantt_right](/img/gantt_right.png)
 
 

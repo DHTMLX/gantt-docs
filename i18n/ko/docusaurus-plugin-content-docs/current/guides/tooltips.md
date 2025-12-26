@@ -5,7 +5,6 @@ sidebar_label: "Gantt 요소의 툴팁"
 
 # Gantt 요소의 툴팁
 
-
 툴팁은 화면에 너무 많은 텍스트를 표시하지 않고도 추가 정보를 보여주는 방법을 제공합니다. 기본적으로 툴팁은 Gantt 작업(task)에 표시됩니다.
 
 ![task_tooltip](/img/task_tooltip.png)
@@ -15,7 +14,6 @@ sidebar_label: "Gantt 요소의 툴팁"
 
 
 ## 활성화
-
 
 작업에 대한 툴팁을 활성화하려면, [gantt.plugins](api/method/plugins.md) 메서드를 사용하여 **tooltip** 플러그인을 켜기만 하면 됩니다:
 
@@ -39,7 +37,6 @@ sidebar_label: "Gantt 요소의 툴팁"
 
 ## 사용자 정의 텍스트 
 
-
 기본적으로 툴팁에는 작업의 세 가지 속성이 표시됩니다:
 
 1. 작업의 시작 날짜
@@ -58,7 +55,6 @@ gantt.templates.tooltip_text = (start, end, task) =>
 
 
 ## 툴팁 API {#tooltipapi}
-
 
 ### Tooltip 객체
 
@@ -119,7 +115,6 @@ DOM 요소 위에 마우스를 올렸을 때 툴팁 동작을 제어하는 여�
 
 
 ## 다양한 요소에 툴팁 추가
-
 
 기본적으로 툴팁은 Gantt 작업에만 추가되지만, 리소스 마커와 같은 다른 Gantt 요소에도 적용할 수 있습니다:
 
@@ -189,7 +184,6 @@ gantt.ext.tooltips.tooltipFor({
 
 ## 툴팁 동작 커스터마이징
 
-
 기본 툴팁 동작을 제거하고 직접 정의할 수 있습니다:
 
 - [**gantt.ext.tooltips.detach**](#detach)로 작업에 대한 기본 툴팁 핸들러를 제거합니다:
@@ -225,7 +219,6 @@ gantt.ext.tooltips.tooltipFor({
 
 ## 타임아웃
 
-
 툴팁 표시 및 숨김 타이밍은 관련 설정을 통해 조정할 수 있습니다.
 
 작업에 대한 툴팁이 나타나기까지의 시간(밀리초 단위)을 설정하려면 [tooltip_timeout](api/config/tooltip_timeout.md)를 사용하세요:
@@ -247,7 +240,6 @@ gantt.init("gantt_here");
 
 ## 위치
 
-
 툴팁의 위치는 다음 설정을 통해 수평/수직 오프셋을 조정할 수 있습니다:
 
 - [tooltip_offset_x](api/config/tooltip_offset_x.md) - 수평 오프셋 설정
@@ -263,7 +255,6 @@ gantt.init("gantt_here");
 
 
 ## 표시 영역
-
 
 버전 6.1 이전에는 툴팁이 타임라인 영역 내에서만 표시되었습니다. v6.1부터는 툴팁이 어디서든 나타나며 마우스 포인터를 따라갑니다.
 

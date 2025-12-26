@@ -5,7 +5,6 @@ sidebar_label: "时间线区域中的自定义元素"
 
 # 时间线区域中的自定义元素
 
-
 :::info
 此功能仅在 PRO 版本中可用
 :::
@@ -45,7 +44,6 @@ gantt.addTaskLayer(function myNewElement(task) {
 :::
 
 ## 使用示例
-
 
 以下是一个使用该功能的示例:假设你希望同时展示任务的计划时间和实际时间。
 
@@ -163,7 +161,6 @@ gantt.locale.labels.section_baseline = "Planned";
 
 ## 自定义内容示例
 
-
 以下是一些示例，展示了如何使用 [addTaskLayer()](api/method/addtasklayer.md) 方法，为 Gantt 图时间线增强多种自定义元素:
 
 - [自定义基线](https://snippet.dhtmlx.com/wv23be05)
@@ -179,7 +176,6 @@ gantt.locale.labels.section_baseline = "Planned";
 
 
 ## 自定义元素的拖放
-
 
 如果你希望为自定义元素启用拖放功能，需要了解 DHTMLX Gantt 并未内置该功能，但你可以通过一些简单的步骤手动实现。
 
@@ -272,7 +268,6 @@ gantt.event(window, 'mouseup', function(e) {
 ~~~
 
 ## 为图表添加额外覆盖层
-
 
 dhtmlxGantt 允许你在图表上添加额外图层，以放置自定义内容。该覆盖层可以是 div 容器、HTML canvas 或其他元素。你可以使用任何第三方库在其中渲染内容。
 

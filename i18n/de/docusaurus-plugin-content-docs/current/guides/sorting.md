@@ -5,7 +5,6 @@ sidebar_label: "Sortieren von Spalten"
 
 # Sortieren von Spalten
 
-
 dhtmlxGantt bietet die Möglichkeit, Daten innerhalb der Gitterspalten direkt auf der Client-Seite zu sortieren.
 
 
@@ -19,7 +18,6 @@ Beachten Sie, dass Gantt Aufgaben nur auf Basis der tatsächlichen Datenwerte so
 :::
 
 ## Sortieren durch Klicken auf den Spaltenkopf
-
 
 Wenn ein Spaltenkopf angeklickt wird, zeigt das Gantt-Diagramm einen visuellen Indikator an, der hervorhebt, welche Spalte aktuell sortiert ist und in welcher Sortierreihenfolge (aufsteigend oder absteigend). Jeder weitere Klick auf denselben Spaltenkopf wechselt die Sortierrichtung.
 
@@ -38,7 +36,6 @@ gantt.init("gantt_here");
 
 ## Sortieren per Programmierung
 
-
 Um das Gitter basierend auf einem bestimmten Ereignis oder einer Aktion zu sortieren (z.B. beim Klicken eines Buttons oder beim Laden der Seite), verwenden Sie die Methode [sort](api/method/sort.md).
 
 **Sortieren per Button-Klick**
@@ -56,7 +53,6 @@ Um das Gitter basierend auf einem bestimmten Ereignis oder einer Aktion zu sorti
 
 
 ## Eigene Sortierfunktionen
-
 
 Eigene Sortierfunktionen können angewendet werden, indem Sie den Namen Ihrer Funktion als ersten (und einzigen) Parameter an die Methode [sort](api/method/sort.md) übergeben.
 
@@ -96,7 +92,6 @@ Diese Funktion wird für jedes Paar benachbarter Werte aufgerufen und sollte 1, 
 
 
 ## Sortieren pro Spalte im Gitter
-
 
 Es ist möglich, für jede Spalte individuelle Sortierregeln festzulegen. Hier sind drei gängige Methoden, das Sortieren pro Spalte zu steuern:
 

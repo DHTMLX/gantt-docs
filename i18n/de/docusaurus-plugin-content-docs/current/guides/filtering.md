@@ -5,7 +5,6 @@ sidebar_label: "Aufgaben filtern"
 
 # Aufgaben filtern
 
-
 Das Filtern hilft dabei, zu steuern, welche Aufgaben im Gantt-Diagramm angezeigt werden, indem deren Anzahl und Typ eingeschränkt werden. So kann beispielsweise festgelegt werden, dass nur Aufgaben angezeigt werden, die einem bestimmten Mitarbeiter zugewiesen sind oder als dringend markiert wurden.
 
 Beachten Sie, dass dhtmlxGantt die Filterung auf der Client-Seite unterstützt.

@@ -5,7 +5,6 @@ sidebar_label: "Data Loading"
 
 # Data Loading 
 
-
 dhtmlxGantt can take data of 2 formats:
 
 
@@ -28,7 +27,6 @@ If you pass incorrect data to the Gantt, its tree-like structure becomes cyclic 
 :::
 
 ## Loading from Object
-
 
 To load data from an object, use the [parse](api/method/parse.md) method:
 
@@ -54,7 +52,6 @@ If your data objects contain both "start_date" and "end_date" values and date va
 :::
 
 ## Loading from Server
-
 
 ### Client side
 

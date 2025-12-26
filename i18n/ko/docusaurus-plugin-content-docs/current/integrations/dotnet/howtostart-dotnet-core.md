@@ -5,7 +5,6 @@ sidebar_label: "ASP.NET Core"
 
 # dhtmlxGantt와 ASP.NET Core 사용하기
 
-
 이 가이드는 서버 측에서 [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) Core를 사용하여 Gantt 차트를 설정하는 과정을 안내합니다.
 
 다른 서버사이드 플랫폼에 대한 튜토리얼도 제공됩니다:
@@ -574,7 +573,6 @@ namespace DHX.Gantt.Models
 
 ## Step 4. Web API 구현
 
-
 이제 REST API를 구현할 차례입니다.
 
 ### 컨트롤러 추가
@@ -1085,7 +1083,6 @@ private void _UpdateOrders(Models.Task updatedTask, string orderTarget)
 
 ## 애플리케이션 보안
 
-
 Gantt 자체는 SQL 인젝션, XSS, CSRF와 같은 위협으로부터의 보호를 처리하지 않습니다. 백엔드를 관리하는 개발자가 애플리케이션의 보안을 책임져야 합니다. 자세한 내용은 [관련 문서](guides/app-security.md)를 참고하세요.
 
 ### XSS 보호
@@ -1117,12 +1114,10 @@ public static explicit operator WebApiTask(Task task)
 
 ## 문제 해결
 
-
 Gantt를 ASP.NET Core와 통합하는 모든 단계를 따라 했지만 작업과 링크가 페이지에 표시되지 않는 경우, [백엔드 통합 문제 해결](guides/troubleshooting.md) 문서를 확인하세요. 일반적인 문제와 해결 방법이 안내되어 있습니다.
 
 
 ## 다음 단계는?
-
 
 이제 동작하는 간트 구현을 완성했습니다. 전체 소스 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core)에서 복제하거나 다운로드하여 프로젝트에 사용할 수 있습니다.
 

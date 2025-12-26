@@ -5,7 +5,6 @@ sidebar_label: "Select 控件"
 
 # Select 控件
 
-
 一个下拉列表框。
 
 ![select_control](/img/select_control.png)
@@ -29,7 +28,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 
 ## 初始化
-
 
 要在 lightbox 中包含 **select** 控件，操作步骤如下:
 
@@ -62,7 +60,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 ## 属性
 
-
 以下是 **select** 控件常用的一些关键属性（完整列表请参见 [这里](api/config/lightbox.md)）:
 
 - **name** - (*string*) section 的名称 
@@ -78,7 +75,6 @@ gantt.locale.labels.section_priority = "Priority";
 
 
 ## 为控件填充数据
-
 
 要为 **select** 控件设置选项值，请使用 [options](api/config/lightbox.md) 参数:
 
@@ -100,7 +96,6 @@ gantt.config.lightbox.sections = [
 
 
 ## 通过服务器数据填充控件
-
 
 如需通过服务器数据为控件填充值，将 [options](api/config/lightbox.md) 参数赋值为 [serverList](api/method/serverlist.md) 方法返回的值:
 

@@ -5,7 +5,6 @@ sidebar_label: "Tooltips for Gantt Elements"
 
 # Tooltips for Gantt Elements
 
-
 Tooltips allow you to add extra information for users without overflowing the screen with text. By default, tooltips are added to Gantt tasks.
 
 ![task_tooltip](/img/task_tooltip.png)
@@ -14,7 +13,6 @@ You can [add tooltips to any Gantt element](#tooltipsfordifferentelements) via t
 
 
 ## Activation
-
 
 To activate tooltips for tasks, enable the **tooltip** plugin using the [gantt.plugins](api/method/plugins.md) method:
 
@@ -36,7 +34,6 @@ Once the extension is activated, tooltips will be automatically displayed with t
 
 
 ## Custom text 
-
 
 By default, tooltips display 3 properties of a task:
 
@@ -194,7 +191,6 @@ This method allows adding a tooltip with an extended configuration to adjust too
 
 ## Customization of tooltip behavior
 
-
 There is a possibility to modify the default behavior of tooltip. It can be achieved by removing the default tooltip handler and adding a custom one:
 
 - Remove the built-in tooltip handler from tasks with the [**gantt.ext.tooltips.detach**](#detach) method:
@@ -229,7 +225,6 @@ gantt.ext.tooltips.tooltipFor({
 
 ## Timeout
 
-
 You can configure the time of tooltips showing and hiding via the related settings.
 
 To specify the time period in milliseconds before a tooltip for a task will appear, use the [tooltip_timeout](api/config/tooltip_timeout.md):
@@ -250,7 +245,6 @@ gantt.init("gantt_here");
 
 ## Position
 
-
 The position of a tooltip can be configured by changing offsets of its default position via the two configuration properties:
 
 - [tooltip_offset_x](api/config/tooltip_offset_x.md) - sets the horizontal offset of the tooltip position
@@ -265,7 +259,6 @@ gantt.init("gantt_here");
 
 
 ## Displaying area
-
 
 Before version 6.1 tooltips have been displayed only inside the timeline area. After v6.1 release tooltips displaying isn't limited, and a tooltip follows the movement of the mouse pointer.
 

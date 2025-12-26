@@ -26,7 +26,6 @@ description: "사용할 수 있는 모든 제약 조건 유형을 보유합니�
 
 ### Details
 
-
 객체에는 다음 항목들이 포함되어 있습니다:
 
 - **ASAP** - (*string*) - 가능한 한 빨리 (As Soon As Possible)

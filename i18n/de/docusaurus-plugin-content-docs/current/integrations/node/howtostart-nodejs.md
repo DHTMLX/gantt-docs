@@ -5,7 +5,6 @@ sidebar_label: "Node.js"
 
 # dhtmlxGantt mit Node.js 
 
-
 Dieses Tutorial zeigt Schritt für Schritt, wie man dhtmlxGantt mit Node.js und einer REST-API auf der Serverseite einrichtet. 
 Wenn Sie mit einer anderen Technologie arbeiten, finden Sie unten weitere Integrationsoptionen:
 
@@ -29,7 +28,6 @@ Sie können sich auch ein Video-Tutorial ansehen, das zeigt, wie man ein Gantt-D
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Schritt 1. Erstellen eines Projekts
-
 
 Zuerst erstellen Sie einen Projektordner und fügen die notwendigen Abhängigkeiten hinzu. Wir verwenden diese Module:
 
@@ -128,7 +126,6 @@ In diesem Ordner würden Sie normalerweise auch die js- und css-Dateien von dhtm
 
 ## Schritt 2. Gantt zur Seite hinzufügen
 
-
 Erstellen Sie den *public*-Ordner und fügen Sie darin eine *index.html*-Datei hinzu. Öffnen Sie *index.html* und fügen Sie folgenden Inhalt ein:
 
 **index.html**
@@ -168,7 +165,6 @@ node server.js
 ![gantt_init](/img/gantt_init.png)
 
 ## Schritt 3. Datenbank vorbereiten
-
 
 Als Nächstes richten Sie die Datenbank ein. Wir erstellen eine einfache Datenbank mit zwei Tabellen: eine für Aufgaben (tasks) und eine für Verknüpfungen (links):
 
@@ -215,7 +211,6 @@ INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00',
 Weitere Details finden Sie im Beispiel [hier](guides/loading.md#standarddatabasestructure).
 
 ## Schritt 4. Daten laden
-
 
 Nun ist es Zeit, das Laden der Daten einzurichten.
 
@@ -334,7 +329,6 @@ Starten Sie die App erneut und öffnen Sie http://127.0.0.1:1337. Das Gantt-Diag
 ![load_data_nodejs](/img/load_data_nodejs.png)
 
 ## Schritt 5. Änderungen speichern
-
 
 Abschließend richten wir das Speichern von Änderungen ein. 
 Das bedeutet, dass Aktualisierungen, die im Client vorgenommen werden, an den Server gesendet werden.
@@ -641,17 +635,14 @@ Eine fertige Demo finden Sie auf GitHub: [https://github.com/DHTMLX/gantt-howto-
 
 ## Anwendungssicherheit
 
-
 Gantt selbst bietet keinen Schutz vor Bedrohungen wie SQL-Injections, XSS oder CSRF-Angriffen. Die Sicherstellung der Anwendungssicherheit liegt in der Verantwortung der Backend-Entwickler. Weitere Informationen finden Sie [in diesem Artikel](guides/app-security.md).
 
 ## Fehlerbehebung
-
 
 Wenn Sie alle Schritte zur Integration von Gantt mit Node.js befolgt haben, aber Aufgaben und Verknüpfungen nicht angezeigt werden, lesen Sie den Artikel [Troubleshooting Backend Integration Issues](guides/troubleshooting.md). Dieser bietet Hinweise zur Identifizierung und Lösung häufiger Probleme.
 
 
 ## Wie geht es weiter?
-
 
 An diesem Punkt ist das Gantt-Diagramm voll funktionsfähig. Der vollständige Code ist auf [GitHub](https://github.com/DHTMLX/gantt-howto-node) verfügbar und kann für eigene Projekte geklont oder heruntergeladen werden.
 

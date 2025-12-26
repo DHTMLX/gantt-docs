@@ -5,7 +5,6 @@ sidebar_label: "在 Lightbox 中更改按钮"
 
 # 在 Lightbox 中更改按钮
 
-
 您可以自定义 Lightbox 中的默认按钮。例如，可以为只需查看任务的用户隐藏"Edit"按钮，或添加一个新的"Print"按钮以允许打印任务描述。
 
 ![complete_button](/img/complete_button.png)
@@ -71,7 +70,6 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 
 
 ## 更改按钮标签
-
 
 可以在初始化 Gantt 之前重新定义按钮标签，语法如下:
 

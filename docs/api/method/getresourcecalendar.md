@@ -31,7 +31,6 @@ var calendar = gantt.getResourceCalendar(mikeCalendarId);
 
 ### Details
 
-
 ### Related API
 - [resource_calendars](api/config/resource_calendars.md)
 

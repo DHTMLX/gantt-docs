@@ -5,7 +5,6 @@ sidebar_label: "Шаблоны области временной шкалы"
 
 # Шаблоны области временной шкалы
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

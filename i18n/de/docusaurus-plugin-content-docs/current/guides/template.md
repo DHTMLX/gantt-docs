@@ -5,7 +5,6 @@ sidebar_label: "Template Control"
 
 # Template Control
 
-
 Dies ist ein Container, der HTML-Inhalt enthält.
 
 ![template_control](/img/template_control.png)
@@ -31,7 +30,6 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 
 ## Initialisierung
-
 
 Um das **template**-Steuerelement im Lightbox-Dialog einzubinden, gehen Sie wie folgt vor:
 
@@ -64,7 +62,6 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 
 ## Eigenschaften
-
 
 Hier sind einige wichtige Eigenschaften, die häufig mit dem **template**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 

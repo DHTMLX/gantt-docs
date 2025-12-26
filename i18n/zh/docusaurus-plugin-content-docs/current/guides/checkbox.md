@@ -5,7 +5,6 @@ sidebar_label: "复选框控件"
 
 # 复选框控件
 
-
 这是一个简单的双状态复选框控件，用于切换某个选项或多个值的开启和关闭。
 
 它在以下场景中非常有用:
@@ -39,7 +38,6 @@ gantt.config.lightbox.project_sections = [
 
 ## 初始化
 
-
 要在 lightbox 中包含 **checkbox** 控件，需要:
 
 1) 在 lightbox 配置中添加一个 section:
@@ -68,7 +66,6 @@ gantt.locale.labels.section_split = "Display";
 
 ## 属性
 
-
 以下是 **checkbox** 控件常用的一些关键属性（完整列表请参见[此处](api/config/lightbox.md)）:
 
 - **name** - (*string*) section 的名称 
@@ -83,7 +80,6 @@ gantt.locale.labels.section_split = "Display";
 
 
 ## 为控件填充数据
-
 
 要为 **checkbox** 控件设置值，通常使用 [options](api/config/lightbox.md) 参数:
 

@@ -5,7 +5,6 @@ sidebar_label: "팝업 메시지 및 모달 박스"
 
 # 팝업 메시지 및 모달 박스
 
-
 Gantt 차트의 메시지는 사용자에게 오류를 알리거나, 작업을 확인/취소하거나, 옵션을 선택하는 등 다양한 정보를 제공합니다. 이 메시지들은 [dhtmlxMessage 저장소의 포크](https://github.com/DHTMLX/message)를 기반으로 하므로, dhtmlxMessage의 모든 기능이 dhtmlxGantt 메시지에도 적용됩니다.
 
 주요 메시지 유형은 두 가지입니다: [간단한 팝업 메시지 박스](guides/message-boxes.md#basicpopupmessage)와, 버튼이 있어 애플리케이션과의 상호작용을 차단하는 [모달 메시지 박스](guides/message-boxes.md#modalmessageboxes)입니다.

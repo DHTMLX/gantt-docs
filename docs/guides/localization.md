@@ -5,7 +5,6 @@ sidebar_label: "Localization"
 
 # Localization
 
-
 Localization allows you to present the interface of the Gantt chart in the language you'd like: English, Spanish, French, etc.
 By default, dhtmlxGantt uses [English locale](api/other/locale.md).
 
@@ -13,7 +12,6 @@ By default, dhtmlxGantt uses [English locale](api/other/locale.md).
 
 
 ## Activating a locale
-
 
 To implement the Gantt chart in non-English language, you need to activate the necessary locale via the **setLocale** method of the [gantt.i18n](api/other/i18n.md) object. 
 
@@ -74,7 +72,6 @@ gantt.init("gantt_here");
 </table>
 
 ## Creating a custom locale 
-
 
 :::note
 The [gantt.i18n](api/other/i18n.md) object is added in v7.0. In previous versions, the [gantt.locale](api/other/locale.md) object was used. For more information, see the [Migration article](migration.md#63---70).

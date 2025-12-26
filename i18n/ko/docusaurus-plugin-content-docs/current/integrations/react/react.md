@@ -5,14 +5,12 @@ sidebar_label: "개요"
 
 # React Gantt
 
-
 :::note
 React Gantt는 [Commercial, Enterprise, Ultimate 라이선스](https://dhtmlx.com/docs/products/licenses.shtml)에서 제공됩니다.
 Individual 또는 GPL 에디션 Gantt 사용자는 React용 [How to Start](integrations/react/quick-start.md) 가이드를 참고해 주세요.
 :::
 
 ## 개요
-
 
 DHTMLX Gantt는 모든 브라우저 환경에서 호환되는 순수 JavaScript 컴포넌트입니다. Commercial 및 그 이상 에디션에는 DHTMLX Gantt를 감싸는 **React Gantt** 컴포넌트가 포함되어 있어 React 애플리케이션에 쉽게 통합할 수 있습니다.
 
@@ -29,7 +27,6 @@ DHTMLX Gantt가 처음이라면 [DHTMLX Gantt 문서](guides.md)에서 [작업 �
 
 ## 설치 및 NPM 접근
 
-
 **React Gantt 컴포넌트 평가판 설치**
 
 :::note
@@ -45,11 +42,9 @@ DHTMLX 프라이빗 npm 접근은 [Client's Area](https://dhtmlx.com/clients/)�
 
 ## 버전 요구사항
 
-
 - React `v18.0.0` 이상
 
 ## 기본 사용법
-
 
 아래는 Gantt 차트를 import 및 렌더링하는 간단한 예시입니다:
 
@@ -107,7 +102,6 @@ export demoData;
 ~~~
 
 ## 데이터 바인딩
-
 
 **ReactGantt** 래퍼는 데이터 로딩 및 저장을 위한 유연한 옵션을 제공합니다. Gantt 데이터 변경을 처리하는 주요 방법은 두 가지입니다:
 
@@ -302,7 +296,6 @@ interface DataCallbackChange<T> {
 
 ## 설정 & Props
 
-
 React 래퍼는 `config` prop([gantt.config](api/overview/properties-overview.md)로 매핑)과 `templates` prop([gantt.templates](api/overview/templates-overview.md)로 매핑)을 지원합니다.
 
 
@@ -371,7 +364,6 @@ React Gantt에서 지원하는 모든 props 목록은 [](integrations/react/conf
 
 ## 테마 & 스타일링
 
-
 Gantt에는 **theme** prop을 사용하여 설정하고 동적으로 전환할 수 있는 여러 내장 테마가 포함되어 있습니다:
 
 ~~~js
@@ -419,7 +411,6 @@ export default function BasicInitDemo() {
 더 많은 구성 옵션은 [스킨 커스터마이제이션](guides/custom-skins.md) 가이드에서 확인하세요.
 
 ## Lightbox 교체하기
-
 
 DHTMLX Gantt에는 [Lightbox](guides/default-edit-form.md)라는 내장형 작업 에디터가 제공됩니다.
 
@@ -550,7 +541,6 @@ export default function BasicInitDemo() {
 
 ## 내장 모달 교체하기
 
-
 기본 UI에는 두 개의 모달 다이얼로그가 포함되어 있습니다:
 
 - 작업 삭제 전 확인 다이얼로그
@@ -590,7 +580,6 @@ export default function BasicInitDemo() {
 제공된 `callback()`을 호출하면 작업 또는 링크 삭제가 완료됩니다. 취소하려면 콜백을 호출하지 않고 모달을 닫으면 됩니다.
 
 ## 그리드에서 React 컴포넌트 사용하기
-
 
 ### 헤더에서
 
@@ -768,7 +757,6 @@ function Demo() {
 
 ## 필터링
 
-
 `filter` prop을 사용하면 어떤 태스크가 표시될지 제어하는 함수를 지정할 수 있습니다:
 
 ~~~js
@@ -821,7 +809,6 @@ return (
 ~~~
 
 ## 작업 캘린더
-
 
 **ReactGantt**에서 작업 시간 계산을 활성화하려면 설정에서 work time 기능을 켜세요:
 
@@ -925,7 +912,6 @@ export default function GanttTemplatesDemo() {
 
 ## 태스크 그룹화
 
-
 `groupTasks` prop을 사용하여 태스크를 어떤 속성으로든 그룹화할 수 있습니다:
 
 ~~~js
@@ -958,7 +944,6 @@ setGrouping(false);
 
 
 ## 타임라인 영역의 수직 마커
-
 
 수직 마커는 `markers` 속성을 통해 **ReactGantt**에 추가할 수 있습니다:
 
@@ -997,7 +982,6 @@ setGrouping(false);
 :::
 
 ## 내부 Gantt API 접근
-
 
 ReactGantt의 props만으로 대부분의 설정이 가능하지만, 작업 시간 계산, gantt.showDate, gantt.unselectTask, 커스텀 줌 등 고급 기능을 위해 DHTMLX Gantt API에 직접 접근해야 할 때가 있습니다.
 
@@ -1044,7 +1028,6 @@ export function DirectRefExample({ tasks, links }) {
 
 
 ## SSR 프레임워크(Next.js, Remix)와의 호환성
-
 
 :::note
 DHTMLX Gantt는 브라우저 전용 위젯으로 DOM과 직접 상호작용하기 때문에 Node/SSR 환경에서는 렌더링할 수 없습니다. 따라서 ReactGantt를 사용하는 라우트나 컴포넌트에서는 서버사이드 렌더링을 비활성화하거나 지연시켜야 합니다.
@@ -1097,7 +1080,6 @@ export default function GanttPage() {
 이 패턴은 컴포넌트가 브라우저에서 하이드레이션될 때까지 렌더링을 지연시켜 SSR 문제를 방지합니다.
 
 ## 다음 단계
-
 
 - ReactGantt 구성에 대한 자세한 내용은 [이 문서](integrations/react/configuration-props.md)를 참조하세요.
 - 고급 사용법은 [DHTMLX Gantt 문서](guides.md)를 참고하세요.

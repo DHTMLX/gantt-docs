@@ -5,7 +5,6 @@ sidebar_label: "Что нового"
 
 # Что нового
 
-
 Если ваша текущая версия dhtmlxGantt старше 2.0, ознакомьтесь с [](migration.md) для получения информации об обновлении.
 
 ## 9.0.11
@@ -164,7 +163,6 @@ sidebar_label: "Что нового"
 
 ## 9.0.1
 
-
 <span class='release_date'>21 октября 2024. Релиз с исправлением ошибок</span>
 
 ### Исправления
@@ -178,7 +176,6 @@ sidebar_label: "Что нового"
 - Предотвращено создание дублирующихся связей редактором предшественников ([predecessor editor](guides/inline-editing.md#typesofeditors))
 
 ## <b>9.0</b>
-
 
 <span class='release_date'>17 октября 2024. Крупное обновление</span>
 
@@ -221,7 +218,6 @@ sidebar_label: "Что нового"
 
 ## 8.0.11
 
-
 <span class='release_date'>8 октября 2024. Релиз с исправлением ошибок</span>
 
 ### Исправления
@@ -243,7 +239,6 @@ sidebar_label: "Что нового"
 
 ## 8.0.10
 
-
 <span class='release_date'>23 августа 2024. Релиз с исправлением ошибок</span>
 
 ### Исправления
@@ -260,7 +255,6 @@ sidebar_label: "Что нового"
 - Исправлена проблема, при которой [назначения ресурсов](guides/resource-management.md) не обновлялись после [перетаскивания проекта с подзадачами](api/config/drag_project.md)
 
 ## 8.0.9
-
 
 <span class='release_date'>18 июня 2024. Релиз с исправлением ошибок</span>
 
@@ -279,7 +273,6 @@ sidebar_label: "Что нового"
 
 ## 8.0.8
 
-
 <span class='release_date'>31 мая 2024. Релиз с исправлением ошибок</span>
 
 ### Исправления
@@ -292,7 +285,6 @@ sidebar_label: "Что нового"
 - Исправлена проблема, из-за которой [тултип](guides/tooltips.md) исчезал в некоторых браузерах
 
 ## 8.0.7
-
 
 <span class='release_date'>16 мая 2024. Релиз с исправлением ошибок</span>
 
@@ -313,7 +305,6 @@ sidebar_label: "Что нового"
 
 ## 8.0.6
 
-
 <span class='release_date'>25 сентября 2023. Релиз с исправлениями</span>
 
 ### Исправления
@@ -326,7 +317,6 @@ sidebar_label: "Что нового"
 
 ## 8.0.5
 
-
 <span class='release_date'>1 сентября 2023. Релиз с исправлениями</span>
 
 ### Исправления
@@ -336,7 +326,6 @@ sidebar_label: "Что нового"
 - Улучшения для [Samples Viewer](https://docs.dhtmlx.com/gantt/samples/)
 
 ## 8.0.4
-
 
 <span class='release_date'>31 июля 2023. Релиз с исправлениями</span>
 
@@ -349,7 +338,6 @@ sidebar_label: "Что нового"
 
 ## 8.0.3
 
-
 <span class='release_date'>14 июня 2023. Релиз с исправлениями</span>
 
 ### Исправления
@@ -359,7 +347,6 @@ sidebar_label: "Что нового"
 - Исправлен некорректный расчёт [Critical Path](guides/critical-path.md) для задач с прогрессом 100%
 
 ## 8.0.2
-
 
 <span class='release_date'>31 мая 2023. Релиз с исправлениями</span>
 
@@ -374,7 +361,6 @@ sidebar_label: "Что нового"
 
 ## 8.0.1
 
-
 <span class='release_date'>30 марта 2023. Релиз с исправлениями</span>
 
 ### Исправления
@@ -386,7 +372,6 @@ sidebar_label: "Что нового"
 - Исправлена работа события [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) при прокрутке
 
 ## <b>8.0</b>
-
 
 <span class='release_date'>20 марта 2023. Крупное обновление</span>
 
@@ -454,7 +439,6 @@ sidebar_label: "Что нового"
 
 ## 7.1.13
 
-
 <span class='release_date'>4 ноября 2022. Релиз с исправлениями</span>
 
 ### Исправления
@@ -475,7 +459,6 @@ sidebar_label: "Что нового"
 
 ## 7.1.12
 
-
 <span class='release_date'>16 июня 2022. Релиз исправлений</span>
 
 ### Исправления
@@ -492,7 +475,6 @@ sidebar_label: "Что нового"
 
 ## 7.1.11
 
-
 <span class='release_date'>27 апреля 2022. Релиз исправлений</span>
 
 ### Исправления
@@ -508,7 +490,6 @@ sidebar_label: "Что нового"
 - [Разделённые задачи](guides/split-tasks.md) теперь получают класс 'gantt_selected' при [выделении](api/config/select_task.md), как и обычные задачи
 
 ## 7.1.10
-
 
 <span class='release_date'>16 марта 2022. Релиз исправлений</span>
 
@@ -528,7 +509,6 @@ sidebar_label: "Что нового"
 `visual: true` и установкой конфигурации [duration_unit](api/config/duration_unit.md) в 'hour'
 
 ## 7.1.9
-
 
 <span class='release_date'>10 января 2022. Релиз исправлений</span>
 
@@ -552,7 +532,6 @@ sidebar_label: "Что нового"
 
 ## 7.1.8
 
-
 <span class='release_date'>30 ноября 2021. Релиз исправлений</span>
 
 ### Исправления
@@ -566,7 +545,6 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа [gantt.changeTaskId](api/method/changetaskid.md) в случаях, когда затронутые задачи имели вложенные элементы, что приводило к некорректному вычислению уровня вложенности
 
 ## 7.1.7
-
 
 <span class='release_date'>5 октября 2021. Релиз исправлений</span>
 
@@ -584,7 +562,6 @@ sidebar_label: "Что нового"
 
 ## 7.1.6
 
-
 <span class='release_date'>23 августа 2021. Исправление ошибок</span>
 
 ### Исправления
@@ -596,7 +573,6 @@ sidebar_label: "Что нового"
 - Улучшено отображение грида при рендеринге Gantt в маленьком контейнере
 
 ## 7.1.5
-
 
 <span class='release_date'>22 июля 2021. Исправление ошибок</span>
 
@@ -610,7 +586,6 @@ sidebar_label: "Что нового"
 - Добавлена возможность изменять конфигурацию [панели ресурсов](guides/resource-management.md#resourceviewpanel) на лету путём изменения объекта конфигурации, передаваемого в [resource layout](guides/layout-config.md#configsandtemplatesofviews)
 
 ## 7.1.4
-
 
 <span class='release_date'>30 июня 2021. Исправление ошибок</span>
 
@@ -628,7 +603,6 @@ sidebar_label: "Что нового"
 
 ## 7.1.3
 
-
 <span class='release_date'>25 мая 2021. Исправление ошибок</span>
 
 ### Исправления
@@ -638,7 +612,6 @@ sidebar_label: "Что нового"
 - Улучшена производительность [расчётов рабочего времени](guides/working-time.md)
 
 ## 7.1.2
-
 
 <span class='release_date'>26 апреля 2021. Исправление ошибок</span>
 
@@ -650,7 +623,6 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа прокрутки с помощью колёсика мыши в Angular
 
 ## 7.1.1
-
 
 <span class='release_date'>19 апреля 2021. Исправление ошибок</span>
 
@@ -666,7 +638,6 @@ sidebar_label: "Что нового"
 - Улучшена производительность [расчёта назначений ресурсов](guides/resource-management.md#managingresourceassignments) во время [batchUpdate](api/method/batchupdate.md) и [autoScheduling](guides/auto-scheduling.md)
 
 ## 7.1
-
 
 <span class='release_date'>8 апреля 2021. Минорное обновление</span>
 
@@ -703,7 +674,6 @@ sidebar_label: "Что нового"
 
 ## 7.0.13
 
-
 <span class='release_date'>15 февраля 2021. Исправление ошибок</span>
 
 ### Исправления
@@ -716,7 +686,6 @@ sidebar_label: "Что нового"
 - Улучшена производительность [расчёта рабочего времени](guides/working-time.md), когда [duration_unit](api/config/duration_unit.md) установлен в "day"
 
 ## 7.0.12
-
 
 <span class='release_date'>14 января 2021. Исправление ошибок</span>
 
@@ -739,7 +708,6 @@ sidebar_label: "Что нового"
 
 ## 7.0.11
 
-
 <span class='release_date'>11 ноября 2020. Bugfix release</span>
 
 ### Обновления
@@ -757,7 +725,6 @@ sidebar_label: "Что нового"
 
 ## 7.0.10
 
-
 <span class='release_date'>22 сентября 2020. Bugfix release</span>
 
 ### Исправления
@@ -773,7 +740,6 @@ sidebar_label: "Что нового"
 - Исправлена ошибка, из-за которой [Inline Editors](guides/inline-editing.md) закрывались при двойном клике
 
 ## 7.0.9
-
 
 <span class='release_date'>27 августа 2020. Bugfix release</span>
 
@@ -792,7 +758,6 @@ sidebar_label: "Что нового"
 
 ## 7.0.8
 
-
 <span class='release_date'>24 июля 2020. Bugfix release</span>
 
 ### Исправления
@@ -804,13 +769,11 @@ sidebar_label: "Что нового"
 
 ## 7.0.7
 
-
 <span class='release_date'>17 июля 2020. Bugfix release</span>
 
 - Исправлена синтаксическая ошибка в type definition для [gantt.Promise](api/method/promise.md)
 
 ## 7.0.6
-
 
 <span class='release_date'>16 июля 2020. Bugfix release</span>
 
@@ -826,7 +789,6 @@ sidebar_label: "Что нового"
 
 ## 7.0.5
 
-
 <span class='release_date'>19 июня 2020. Bugfix release</span>
 
 ### Обновления
@@ -836,7 +798,6 @@ sidebar_label: "Что нового"
 - Добавлена возможность указывать рабочие календари в объекте конфигурации [`Gantt.getGanttInstance`](guides/multiple-gantts.md#ganttinstanceconfiguration)
 
 ## 7.0.4
-
 
 <span class='release_date'>4 июня 2020. Bugfix release</span>
 
@@ -858,7 +819,6 @@ sidebar_label: "Что нового"
 
 ## 7.0.3
 
-
 <span class='release_date'>14 мая 2020. Bugfix release</span>
 
 ### Исправления
@@ -867,7 +827,6 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа расширения [Keyboard Navigation](guides/keyboard-navigation.md), когда Gantt используется внутри [SalesForce Lightning Web Component](https://github.com/DHTMLX/salesforce-gantt-demo)
 
 ## 7.0.2
-
 
 <span class='release_date'>30 апреля 2020. Bugfix release</span>
 
@@ -879,7 +838,6 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа [inline editors](guides/inline-editing.md) внутри Shadow DOM
 
 ## 7.0.1
-
 
 <span class='release_date'>16 апреля 2020. Bugfix release</span>
 
@@ -898,7 +856,6 @@ sidebar_label: "Что нового"
 
 
 ## <b>7.0</b>
-
 
 <span class='release_date'>7 апреля 2020. Крупное обновление</span>
 
@@ -940,7 +897,6 @@ sidebar_label: "Что нового"
 
 ## 6.3.7
 
-
 <span class='release_date'>12 февраля 2020. Исправление ошибок</span>
 
 ### Исправления
@@ -948,7 +904,6 @@ sidebar_label: "Что нового"
 - Значительное повышение производительности при умном рендеринге диаграммы и панели ресурсов
 
 ## 6.3.6
-
 
 <span class='release_date'>10 февраля 2020. Исправление ошибок</span>
 
@@ -962,7 +917,6 @@ sidebar_label: "Что нового"
 - Исправлена проблема с [горизонтальными полосами прокрутки](https://docs.dhtmlx.com/gantt/desktop__specifying_columns.html#horizontalscrollbar), не отображавшимися при наличии [visibility groups](https://docs.dhtmlx.com/gantt/desktop__layout_config.html#visibilitygroups) в некоторых конфигурациях layout
 
 ## 6.3.5
-
 
 <span class='release_date'>31 января 2020. Исправление ошибок</span>
 
@@ -980,7 +934,6 @@ sidebar_label: "Что нового"
 
 ## 6.3.4
 
-
 <span class='release_date'>27 декабря 2019. Исправление ошибок</span>
 
 ### Исправления
@@ -993,7 +946,6 @@ sidebar_label: "Что нового"
 - Исправлена ошибка в [расширении авто-планирования](guides/auto-scheduling.md), которая приводила к зависанию Gantt при наличии у задачи [типа ограничения (SNET/FNET/SNLT/FNLT)](guides/auto-scheduling.md#timeconstraintsfortasks) без даты или с некорректной датой
 
 ## 6.3.3
-
 
 <span class='release_date'>18 декабря 2019. Исправление ошибок</span>
 
@@ -1010,7 +962,6 @@ sidebar_label: "Что нового"
 
 ## 6.3.2
 
-
 <span class='release_date'>10 декабря 2019. Исправление ошибок</span>
 
 ### Исправления
@@ -1026,7 +977,6 @@ sidebar_label: "Что нового"
 
 ## 6.3.1
 
-
 <span class='release_date'>29 ноября 2019. Исправление ошибок</span>
 
 ### Исправления
@@ -1037,7 +987,6 @@ sidebar_label: "Что нового"
 - Исправлена ошибка, при которой [расширение drag-timeline](guides/extensions-list.md#dragtimeline) сбрасывало значение config [readonly](guides/readonly-mode.md)
 
 ## 6.3
-
 
 <span class='release_date'>14 ноября 2019. Минорное обновление</span>
 
@@ -1075,7 +1024,6 @@ sidebar_label: "Что нового"
 
 ## 6.2.7
 
-
 <span class='release_date'>11 октября 2019. Релиз с исправлениями ошибок</span>
 
 ### Исправления
@@ -1086,7 +1034,6 @@ sidebar_label: "Что нового"
 
 ## 6.2.6
 
-
 <span class='release_date'>19 сентября 2019. Релиз с исправлениями ошибок</span>
 
 ### Исправления
@@ -1096,7 +1043,6 @@ sidebar_label: "Что нового"
 - Исправлена некорректная работа файлов расширения с Ultimate-сборкой Gantt
 
 ## 6.2.5
-
 
 <span class='release_date'>12 сентября 2019. Релиз с исправлениями ошибок</span>
 
@@ -1109,7 +1055,6 @@ sidebar_label: "Что нового"
 
 ## 6.2.4
 
-
 <span class='release_date'>5 сентября 2019. Релиз с исправлениями ошибок</span>
 
 ### Исправления
@@ -1119,7 +1064,6 @@ sidebar_label: "Что нового"
 - Исправлена проблема, из-за которой [Zoom-модуль](guides/zooming.md) добавлял лишние обработчики DOM-событий при каждой [повторной инициализации](api/method/init.md) Gantt
 
 ## 6.2.3
-
 
 <span class='release_date'>29 августа 2019. Релиз с исправлениями ошибок</span>
 
@@ -1137,7 +1081,6 @@ sidebar_label: "Что нового"
 - Исправлено некорректное отображение [static_background](api/config/static_background.md) в [Material skin](guides/skins.md#materialskin)
 
 ## 6.2.2
-
 
 <span class='release_date'>13 августа 2019. Релиз с исправлениями ошибок</span>
 
@@ -1157,7 +1100,6 @@ sidebar_label: "Что нового"
 
 ## 6.2.1
 
-
 <span class='release_date'>7 августа 2019. Релиз с исправлениями ошибок</span>
 
 ### Исправления
@@ -1171,7 +1113,6 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта, возникавшая после сохранения [незапланированной задачи](guides/unscheduled-tasks.md)
 
 ## 6.2
-
 
 <span class='release_date'>16 июля 2019. Минорное обновление</span>
 
@@ -1201,7 +1142,6 @@ sidebar_label: "Что нового"
 
 ## 6.1.7
 
-
 <span class='release_date'>27 июня 2019. Релиз с исправлениями ошибок</span>
 
 ### Исправления
@@ -1215,7 +1155,6 @@ sidebar_label: "Что нового"
 
 ## 6.1.6
 
-
 <span class='release_date'>14 мая 2019. Релиз с исправлениями ошибок</span>
 
 ### Исправления
@@ -1227,7 +1166,6 @@ sidebar_label: "Что нового"
 
 ## 6.1.5
 
-
 <span class='release_date'>25 апреля 2019. Релиз с исправлениями ошибок</span>
 
 ### Исправления
@@ -1236,7 +1174,6 @@ sidebar_label: "Что нового"
 - Исправлено некорректное положение плейсхолдера [вертикального drag-and-drop](guides/reordering-tasks.md) в [режиме маркера](guides/reordering-tasks.md#improvingperformancewithlargedatasets)
 
 ## 6.1.4
-
 
 <span class='release_date'>18 апреля 2019. Релиз с исправлениями ошибок</span>
 
@@ -1249,7 +1186,6 @@ sidebar_label: "Что нового"
 - Исправлен регресс в GPL-сборке, вызывавший ошибку скрипта при втором вызове [gantt.init](api/method/init.md)
 
 ## 6.1.3
-
 
 <span class='release_date'>15 апреля 2019. Релиз с исправлениями ошибок</span>
 
@@ -1278,7 +1214,6 @@ sidebar_label: "Что нового"
 
 ## 6.1.2
 
-
 <span class='release_date'>26 марта 2019. Релиз исправлений</span>
 
 ### Обновления
@@ -1297,7 +1232,6 @@ sidebar_label: "Что нового"
 
 ## 6.1.1
 
-
 <span class='release_date'>5 марта 2019. Релиз исправлений</span>
 
 ### Исправления
@@ -1312,7 +1246,6 @@ sidebar_label: "Что нового"
 
 
 ## 6.1
-
 
 <span class='release_date'>21 февраля 2019. Минорное обновление</span>
 
@@ -1334,7 +1267,6 @@ sidebar_label: "Что нового"
 
 ## 6.0.7
 
-
 <span class='release_date'>16 января 2019. Релиз исправлений</span>
 
 ### Исправления
@@ -1348,7 +1280,6 @@ sidebar_label: "Что нового"
 
 ## 6.0.4
 
-
 <span class='release_date'>27 декабря 2018. Релиз исправлений</span>
 
 ### Исправления
@@ -1358,7 +1289,6 @@ sidebar_label: "Что нового"
 - Исправлена ошибка скрипта при сохранении/отмене lightbox, содержащего фильтры ресурсов
 
 ## 6.0.2
-
 
 <span class='release_date'>6 декабря 2018. Релиз исправлений</span>
 
@@ -1372,7 +1302,6 @@ sidebar_label: "Что нового"
 
 
 ## <b>6.0</b>
-
 
 <span class='release_date'>5 ноября 2018. Крупное обновление</span>
 
@@ -1405,7 +1334,6 @@ sidebar_label: "Что нового"
 
 ## 5.2
 
-
 <span class='release_date'>6 июля 2018. Минорное обновление</span>
 
 [Обзор релиза в блоге](https://dhtmlx.com/blog/dhtmlxgantt-5-2/)
@@ -1429,7 +1357,6 @@ sidebar_label: "Что нового"
 - Новые методы и события для расширений [undo](guides/undo-redo.md) и [autoscheduling](guides/auto-scheduling.md).
 
 ## 5.1
-
 
 <span class='release_date'>27 февраля 2018. Минорное обновление</span>
 
@@ -1462,7 +1389,6 @@ sidebar_label: "Что нового"
 
 ## <b>5.0</b>
 
-
 <span class='release_date'>12 декабря 2017. Крупное обновление</span>
 
 [Обзор релиза в блоге](https://dhtmlx.com/blog/large-scale-update-dhtmlxgantt-version-5-0/)
@@ -1479,7 +1405,6 @@ sidebar_label: "Что нового"
 
 
 ## 4.2
-
 
 <span class='release_date'>17 августа 2017. Минорное обновление</span>
 
@@ -1503,7 +1428,6 @@ sidebar_label: "Что нового"
 
 ## 4.1
 
-
 <span class='release_date'>1 сентября 2016. Минорное обновление</span>
 
 [Обзор релиза в блоге](https://dhtmlx.com/blog/dhtmlxgantt-4-1-full-accessibility-support/)
@@ -1526,7 +1450,6 @@ sidebar_label: "Что нового"
 
 ## <b>4.0</b>
 
-
 <span class='release_date'>1 декабря 2015. Крупное обновление</span>
 
 ### Функциональность
@@ -1547,7 +1470,6 @@ sidebar_label: "Что нового"
 
 
 ## 3.3
-
 
 <span class='release_date'>21 июля 2015. Минорное обновление</span>
 
@@ -1570,7 +1492,6 @@ sidebar_label: "Что нового"
 
 
 ## 3.2
-
 
 <span class='release_date'>18 марта 2015. Минорное обновление</span>
 
@@ -1596,7 +1517,6 @@ sidebar_label: "Что нового"
 
 ## 3.1
 
-
 <span class='release_date'>25 октября 2014. Минорное обновление</span>
 
 ### Функциональность
@@ -1615,7 +1535,6 @@ sidebar_label: "Что нового"
 
 
 ## <b>3.0</b>
-
 
 <span class='release_date'>11 сентября 2014. Крупное обновление</span>
 
@@ -1643,7 +1562,6 @@ sidebar_label: "Что нового"
 
 ## 2.1
 
-
 <span class='release_date'>28 марта 2014. Минорное обновление</span>
 
 ### Глобально
@@ -1668,7 +1586,6 @@ sidebar_label: "Что нового"
 
 
 ## <b>2.0</b>
-
 
 <span class='release_date'>18 октября 2013. Крупное обновление</span>
 

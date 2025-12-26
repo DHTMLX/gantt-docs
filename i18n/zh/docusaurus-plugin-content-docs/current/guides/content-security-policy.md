@@ -5,7 +5,6 @@ sidebar_label: "内容安全策略（Content Security Policy）合规性"
 
 # 内容安全策略（Content Security Policy）合规性
 
-
 内容安全策略（CSP）是一项Web标准，旨在阻止未经授权的JavaScript运行，并提升[应用程序的安全性](guides/app-security.md)。
 
 **从7.0版本开始，Gantt包内置了CSP支持**。该库提供了一个[专用配置](api/config/csp.md)，帮助您调整基于dhtmlxGantt的应用程序以满足CSP（内容安全策略）的要求。

@@ -6,7 +6,6 @@ sidebar_label: Remix
 
 # React Gantt with Remix
 
-
 **Remix Quick Start**
 
 You should be familiar with the basic concepts of [React](https://react.dev/) and [Remix](https://remix.run/). If not, refer to their official documentation before starting this guide.
@@ -43,7 +42,6 @@ npm run dev
 Your application will be available at `http://localhost:5173`.
 
 ## Step 1. Installing the React Gantt package
-
 
 Install React Gantt as described in [](integrations/react/installation.md).
 
@@ -145,7 +143,6 @@ The `save` function inside the `data` prop is used to track updates made to task
 
 
 ## Step 4. Rendering Gantt on a Remix route
-
 
 Open the main page route - `app/routes/home.tsx`.
 Replace its content with the following:

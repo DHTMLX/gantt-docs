@@ -5,7 +5,6 @@ sidebar_label: "Inline Editors Extension"
 
 # Inline Editors Extension
 
-
 Более подробную информацию о расширении Inline editors вы можете найти в статье [Редактирование 'на месте' в гриде](guides/inline-editing.md). 
 
  Объект *inlineEditors* предоставляет следующий API:

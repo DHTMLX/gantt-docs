@@ -5,7 +5,6 @@ sidebar_label: "emptyStateElement Erweiterung"
 
 # emptyStateElement Erweiterung
 
-
 Weitere Informationen zur emptyStateElement-Erweiterung finden Sie im Artikel [Empty State Screen](guides/empty-state-screen.md).
 
 ## Methoden

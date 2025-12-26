@@ -5,7 +5,6 @@ sidebar_label: "Resources Control"
 
 # Resources Control
 
-
 :::info
 This functionality is available in the PRO Edition only.
 :::
@@ -55,7 +54,6 @@ You can also create [a custom control to assign multiple resources to a task](gu
 
 ## Initialization
 
-
 To add the **resources** control to the lightbox, follow the steps below:
 
 1. Add a section to the lightbox configuration:
@@ -80,7 +78,6 @@ gantt.locale.labels.section_resources = "Rooms";
 
 ## Properties
 
-
 The following properties are mostly important and commonly set for the **resources** control (see the full list [here](api/config/lightbox.md)):
 
 - **name** - (*string*) the section name 
@@ -102,8 +99,6 @@ By default the resource control is automatically populated from the [resource da
 :::
 
 ## Populating control with data
-
-
 
 Starting from v8.0, the resource control gets options from the [resource Datastore](guides/resource-management.md#working-with-resource-view-panel) by default.
 
@@ -166,7 +161,6 @@ Items in the [options](api/config/lightbox.md) parameter have 3 mandatory proper
 
 
 ## Populating control with data from the server
-
 
 To populate the control from the server, set the [options](api/config/lightbox.md) option to the value returned by the [serverList](api/method/serverlist.md) method:
 

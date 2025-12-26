@@ -5,7 +5,6 @@ sidebar_label: "Task Properties"
 
 # Task Properties 
 
-
 이 페이지에서는 task 객체에 포함될 수 있는 모든 속성의 전체 목록을 제공합니다.
 
 link 객체의 전체 속성 목록은 [Link Properties](guides/link-properties.md) 문서를 참조하세요.
@@ -13,7 +12,6 @@ link 객체의 전체 속성 목록은 [Link Properties](guides/link-properties.
 
 
 ## 필수 속성
-
 
 이 속성들은 항상 클라이언트 측에 정의되어 있습니다. Gantt는 데이터를 로드할 때 이 속성들이 task 객체에 존재하기를 기대합니다. 만약 누락된 경우, Gantt가 자동으로 추가합니다. 로드된 task에서 이러한 속성 중 하나라도 제거하면 오류가 발생합니다.
 
@@ -48,7 +46,6 @@ link 객체의 전체 속성 목록은 [Link Properties](guides/link-properties.
 
 
 ## 선택 속성
-
 
 이 속성들은 존재할 수도 있고, 없을 수도 있습니다. Gantt의 기본 로직과 템플릿은 이 속성들이 있을 때 이를 활용합니다.
 
@@ -198,7 +195,6 @@ link 객체의 전체 속성 목록은 [Link Properties](guides/link-properties.
 
 
 ## 동적 속성
-
 
 동적 속성은 task 또는 link의 현재 상태를 나타내기 위해 클라이언트 측에서 생성됩니다. 이 속성들은 데이터베이스에 저장하기 위한 것이 아니며, Gantt는 JSON 또는 XML에 포함되어 있어도 무시합니다.
 

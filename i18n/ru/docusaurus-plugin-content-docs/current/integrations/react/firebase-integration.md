@@ -5,7 +5,6 @@ sidebar_label: "Быстрый старт с Firebase"
 
 # dhtmlxReactGantt and Firebase Integration
 
-
 This tutorial describes how to build a [React Gantt](integrations/react.md) chart that synchronizes task and link data across multiple clients 
 in real time using Firebase Firestore. This functionality is especially useful for:
 

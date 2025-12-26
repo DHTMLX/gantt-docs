@@ -5,7 +5,6 @@ sidebar_label: "Checkbox Control"
 
 # Checkbox Control  
 
-
 이것은 옵션이나 여러 값을 켜고 끄는 데 사용되는 간단한 2-상태 체크박스 컨트롤입니다.
 
 다음과 같은 상황에서 유용하게 사용할 수 있습니다:
@@ -38,7 +37,6 @@ gantt.config.lightbox.project_sections = [
 
 ## 초기화  
 
-
 **checkbox** 컨트롤을 lightbox에 포함하려면 다음 단계를 따라야 합니다:
 
 1) lightbox 설정에 섹션을 추가합니다:
@@ -67,7 +65,6 @@ gantt.locale.labels.section_split = "Display";
 
 ## 속성  
 
-
 **checkbox** 컨트롤과 함께 자주 사용되는 주요 속성은 다음과 같습니다 (전체 목록은 [여기](api/config/lightbox.md)에서 확인할 수 있습니다):
 
 - **name** - (*string*) 섹션의 이름
@@ -81,7 +78,6 @@ gantt.locale.labels.section_split = "Display";
             
 
 ## 데이터로 컨트롤 채우기  
-
 
 **checkbox** 컨트롤의 값을 설정하려면 일반적으로 [options](api/config/lightbox.md) 파라미터를 사용합니다:
 

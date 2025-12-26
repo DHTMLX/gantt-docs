@@ -5,7 +5,6 @@ sidebar_label: "Datumsformat-Spezifikation"
 
 # Datumsformat-Spezifikation
 
-
 Beim Festlegen von Datumsformaten können Sie die folgenden Zeichen verwenden:
 
 - **%y** - zweistellige Jahreszahl ( _00 bis 99_ );

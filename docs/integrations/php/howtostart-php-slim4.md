@@ -5,7 +5,6 @@ sidebar_label: "PHP: Slim"
 
 # dhtmlxGantt with PHP:Slim
 
-
 In this tutorial you will find necessary information on how to create a PHP-based Gantt Chart using Slim 4 Framework and RESTful API on the server.
 
 :::note
@@ -29,7 +28,6 @@ The complete source code is [available on GitHub](https://github.com/DHTMLX/gant
 :::
 
 ## Step 1. Initializing a project
-
 
 ### Creating a project
 
@@ -120,7 +118,6 @@ Now you can open [http://127.0.0.1:8080/](http://127.0.0.1:8080/) in a browser a
 
 ## Step 3. Configuring a database
 
-
 So, you've got an empty gantt. It's time to create a database and connect it to our app.
 
 ### Creating database
@@ -175,7 +172,6 @@ Check a detailed example [here](guides/loading.md#databasestructure).
 So, we've finished preparing our project. Now we can proceed with data loading.
 
 ## Step 4. Loading data
-
 
 Now it's time to implement loading from the database. 
 On the client side we'll request data using the [gantt.load](api/method/load.md) method:
@@ -291,7 +287,6 @@ Open [http://127.0.0.1:8080/ ](http://127.0.0.1:8080/) and you will see that the
 ![slim_load](/img/slim_load.png)
 
 ## Step 5. Saving changes
-
 
 Our next step is to implement saving of the changes made on the client side to the server. It is usually done using the [dataProcessor](guides/server-side.md#technique) library, which is embedded into the gantt.
 Open *basic.html* and add the following lines of code:
@@ -714,24 +709,20 @@ You can check [a ready demo](https://github.com/DHTMLX/gantt-howto-php) on GitHu
 
 ## Using dhtmlxConnector
 
-
 Alternatively, a PHP backend can also be implemented using the [dhtmlxConnector library](https://docs.dhtmlx.com/connector__php__index.html). 
 You can find a detailed tutorial [here](integrations/php/howtostart-connector.md). 
 
 
 ## Application security
 
-
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](guides/app-security.md).
 
 ## Trouble shooting
-
 
 In case you've completed the above steps to implement Gantt integration with PHP but Gantt doesn't render tasks and links on a page, have a look at the [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) article. It describes 
 the ways of identifying the roots of the problems.
 
 ## What's next
-
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/gantt-howto-php), clone or download it and use it for your projects.
 

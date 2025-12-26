@@ -5,7 +5,6 @@ sidebar_label: "时间线区域的模板"
 
 # 时间线区域的模板
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

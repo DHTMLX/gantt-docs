@@ -25,7 +25,6 @@ gantt.config.project_start = new Date(2019, 2, 1);
 
 ### Details
 
-
 이 설정은 자동 스케줄링이 켜져 있을 때 새 작업의 기본 시작 날짜를 정의합니다.
 
 ### Related Guides

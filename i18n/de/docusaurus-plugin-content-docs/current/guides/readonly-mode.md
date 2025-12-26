@@ -5,7 +5,6 @@ sidebar_label: "Schreibgeschützter Modus"
 
 # Schreibgeschützter Modus
 
-
 In diesem Artikel betrachten wir den schreibgeschützten Modus in zwei Szenarien:
 
 1. [Schreibgeschützter Modus für das gesamte Gantt-Diagramm](guides/readonly-mode.md#readonlymodefortheentiregantt)
@@ -100,7 +99,6 @@ gantt.config.readonly_property = "property_name";
 
 ## Details zur "editable_property" Konfigurationsoption
 
-
 Die 'editable_property' verweist auf eine Eigenschaft direkt im Aufgaben-Datenobjekt, nicht auf einen Lightbox-Abschnitt oder eine Spalte im linken Gitter:
 
 ~~~js
@@ -135,7 +133,6 @@ gantt.config.editable_property = "some_property";
 
 
 ## Setzen von schreibgeschützt/bearbeitbar auf Basis mehrerer Eigenschaften
-
 
 Um die Bearbeitbarkeit von Ereignissen auf Grundlage mehrerer Bedingungen zu steuern, können Sie:
 

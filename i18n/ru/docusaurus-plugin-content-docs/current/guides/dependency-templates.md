@@ -5,7 +5,6 @@ sidebar_label: "Шаблоны связей зависимостей"
 
 # Шаблоны связей зависимостей
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

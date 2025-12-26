@@ -5,7 +5,6 @@ sidebar_label: "dhtmlxConnector"
 
 # dhtmlxGantt mit dhtmlxConnector
 
-
 Dieses Tutorial erklärt, wie Sie ein einfaches Gantt-Diagramm auf einer Webseite einrichten, das Aufgaben in einer Datenbank (auf dem Server) speichern und aktualisieren kann.
 
 
@@ -28,7 +27,6 @@ Wenn Sie eine andere serverseitige Technologie bevorzugen, finden Sie unten Tuto
 
 ## Schritt 1. Herunterladen des dhtmlxGantt-Pakets
 
-
 <div>
 
 
@@ -41,7 +39,6 @@ Laden Sie zunächst das Bibliothekspaket auf Ihren Computer herunter.
 </div>
 
 ## Schritt 2. Einbinden der dhtmlxGantt-Code-Dateien
-
 
 <div>
 
@@ -77,7 +74,6 @@ Die benötigten dhtmlxGantt-Dateien sind:
 </div>
 
 ## Schritt 3. Initialisieren von dhtmlxGantt
-
 
 <div>
 
@@ -361,7 +357,6 @@ $gantt->render_table("gantt_tasks","id",
 
 ## Schritt 7. Aktualisierung der Datenbankdaten
 
-
 <div>
 Als nächstes ist es wichtig, das Speichern von Änderungen, die im Gantt-Diagramm vorgenommen wurden, zurück in die Datenbank zu ermöglichen. Hierzu wird die Hilfsbibliothek [dataProcessor](api/method/dataprocessor.md) verwendet. Der Vorgang umfasst die Initialisierung des DataProcessor und die Verknüpfung mit der dhtmlxGantt-Instanz.
 
@@ -385,7 +380,6 @@ dp.init(gantt); /*!*/
 </div>
 
 ## Protokollierung von Fehlern
-
 
 Wenn alles eingerichtet ist, aber weiterhin Probleme auftreten, kann das Aktivieren der Protokollierung in Gantt bei der Fehlersuche helfen.
 

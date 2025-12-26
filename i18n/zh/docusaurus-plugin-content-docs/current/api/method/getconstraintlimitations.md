@@ -71,7 +71,6 @@ function renderDiv(task, date, className) {
 
 ### Details
 
-
 返回的对象包含以下属性:
 
 ~~~js

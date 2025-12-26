@@ -5,7 +5,6 @@ sidebar_label: "Низкоуровневая интеграция"
 
 # dhtmlxGantt с React
 
-
 :::note
 Этот учебник демонстрирует, как использовать JS DHTMLX Gantt в React-приложениях. Для официального компонента React Gantt, пожалуйста, смотрите статью [React Gantt](integrations/react.md).
 :::

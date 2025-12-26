@@ -5,7 +5,6 @@ sidebar_label: "在时间轴中拖动任务"
 
 # 在时间轴中拖动任务
 
-
 拖动功能可以轻松调整任务的开始或结束日期，以及任务的持续时间。
 
 
@@ -27,7 +26,6 @@ sidebar_label: "在时间轴中拖动任务"
 6. [拖动任务时启用自动滚动](#autoscrollduringtasksdragging)。
 
 ## 阻止特定任务被拖动
-
 
 要禁用某些任务的拖动，可以使用 [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) 事件:
 
@@ -98,7 +96,6 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 
 ## 拖动父任务时同时拖动子任务
 
-
 如需在父任务被移动时同时拖动其所有子任务，可以使用 [onTaskDrag](api/event/ontaskdrag.md) 事件（该事件的详细说明见[上文](guides/dnd.md#fangzhirenwubeituodongdaotedingriqifanweizhiwai)）:
 
 ~~~js
@@ -134,7 +131,6 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 
 ## 拖动项目时同时拖动其子任务
 
-
 :::info
 此功能仅在 Gantt PRO 版本中可用。
 :::
@@ -152,12 +148,10 @@ gantt.config.drag_project = true;
 
 ## 与独立任务一起拖动依赖任务
 
-
 有多种方法可以将任务与其依赖任务一起移动。
 详细信息请参见专门的文章:[종속 작업과 함께 작업 드래그하기](guides/dragging-dependent-tasks.md)。
 
 ## 设置任务的最小持续时间
-
 
 可以通过 [min_duration](api/config/min_duration.md) 设置来指定任务的最小持续时间。
 
@@ -175,7 +169,6 @@ gantt.config.min_duration = 60*60*1000;
 ~~~
 
 ## 拖动任务时自动滚动
-
 
 在处理大型甘特图时，拖动任务到较远的位置或在相距较远的任务之间创建链接可能会比较困难。
 
@@ -196,7 +189,6 @@ gantt.init("gantt_here");
 ~~~
 
 ## 禁止特定任务调整大小
-
 
 如需防止某些任务被调整大小，有两种方法:
 
@@ -233,7 +225,6 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 
 ## 识别任务被调整的是哪一端
 
-
 在拖拽中，"resize" 模式表示用户正在更改任务的开始或结束日期。
 
 要检测正在修改哪一端，可以检查 **gantt.getState().drag_from_start** 标志:
@@ -252,7 +243,6 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 ~~~
 
 ## 禁用任务开始或结束日期的调整大小
-
 
 调整大小手柄可通过以下选择器定位:
 

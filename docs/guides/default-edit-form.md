@@ -5,7 +5,6 @@ sidebar_label: "Configuring Lightbox Elements"
 
 # Configuring Lightbox Elements 
 
-
 Lightbox is an edit form used to change the task's details. 
 
  The default lightbox is presented in the image below.
@@ -34,7 +33,6 @@ From v7.1.13, if either [gantt.config.csp](api/config/csp.md) is set to *true* o
 :::
 
 ## Lightbox structure
-
 
 ### Sections
 

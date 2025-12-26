@@ -5,13 +5,11 @@ sidebar_label: "Full List of Extensions"
 
 # Full List of Extensions
 
-
 dhtmlxGantt includes a set of extensions which add extra functionality to the standard behavior.
 
 To use an extension, you should activate the plugin with the help of the [gantt.plugins](api/method/plugins.md) method. 
 
 ## Advanced drag-n-drop
-
 
 Provides the possibility to create and select tasks with drag-n-drop.
 
@@ -59,7 +57,6 @@ API: [auto_scheduling](api/config/auto_scheduling.md)
 
 ## Critical path
 
-
 :::note
 This extension is available in PRO version only
 :::
@@ -86,7 +83,6 @@ API: [highlight_critical_path](api/config/highlight_critical_path.md)
 
 ## Drag Timeline
 
-
 Allows scrolling timeline views by mouse-drag.
 
 ~~~js
@@ -104,7 +100,6 @@ API: [drag_timeline](api/config/drag_timeline.md)
 
 
 ## Extra overlay
-
 
 :::note
 This extension is available in the PRO version only.
@@ -127,7 +122,6 @@ Article: [Custom Elements in Timeline Area](guides/baselines.md#extra-overlay-fo
 
 
 ## Export service
-
 
 Provides the possibility to enable the online export service.
 
@@ -160,7 +154,6 @@ Article: [Full Screen Mode](guides/fullscreen-mode.md)
 
 
 ## Grouping
-
 
 :::note
 This extension is available in PRO version only
@@ -226,7 +219,6 @@ API: [multiselect](api/config/multiselect.md)
 
 ## Quick info
 
-
 Provides a popup with a task details.
 
 ~~~js
@@ -266,7 +258,6 @@ Article: [Tooltips for Gantt Elements](guides/tooltips.md)
 
 ## Undo
 
-
 Allows you to undo/redo the made changes.
 
 ~~~js
@@ -287,7 +278,6 @@ API: [undo](api/config/undo.md), [redo](api/config/redo.md)
 
 
 ## Vertical marker
-
 
 Highlights certain dates or date ranges.
 

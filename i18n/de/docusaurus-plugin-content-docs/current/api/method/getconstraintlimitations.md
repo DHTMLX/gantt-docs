@@ -71,7 +71,6 @@ function renderDiv(task, date, className) {
 
 ### Details
 
-
 Das zurückgegebene Objekt enthält die folgenden Eigenschaften: 
 
 ~~~js

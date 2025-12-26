@@ -5,9 +5,7 @@ sidebar_label: "FAQ"
 
 # FAQ
 
-
 ## Wie öffnet man Beispiele
-
 
 Das Distributionspaket der Komponente enthält eine Demo-Backend-App, mit der Sie Beispiele lokal ausführen können.
 Die App benötigt [Node.js](https://nodejs.org/en/) und verwendet einen In-Memory-Speicher für Demos, bei denen die Daten eigentlich im Backend gespeichert werden sollten (d. h. es ist keine Datenbankeinrichtung erforderlich).
@@ -59,7 +57,6 @@ Wenn Sie ein Beispiel von einem Webserver aus öffnen, sieht die URL so aus (*ht
 
 ## Das Gantt-Diagramm wird nicht korrekt angezeigt
 
-
 Wenn das Gantt-Diagramm nicht korrekt auf der Seite dargestellt wird, überprüfen Sie bitte das CSS-Style für den Container des Diagramms - dieser muss eine gültige Größe in Pixeln oder Prozent haben.
 
 
@@ -78,7 +75,6 @@ html, body{
 
 ## Das Gantt-Diagramm wird im Internet Explorer nicht korrekt angezeigt
 
-
 Wenn das Gantt-Diagramm nur im Internet Explorer nicht korrekt dargestellt wird, stellen Sie bitte sicher, dass Ihre Seite eine vollständige DOCTYPE-Deklaration verwendet.
 dhtmlxGantt funktioniert korrekt im Standardmodus von IE6, IE7 und IE8, ist jedoch nicht für den Einsatz im Quirks-Modus von IE vorgesehen.
 
@@ -89,7 +85,6 @@ Zum Beispiel, der HTML5 DOCTYPE ist:
 ~~~
 
 ## Eine Fehlermeldung erscheint oben rechts
-
 
 ![error_alert](/img/error_alert.png)
 
@@ -107,7 +102,6 @@ gantt.config.show_errors = false;
 
 ## Gantt zeigt nichts an
 
-
 Es gibt zwei offensichtliche Szenarien:
 
 1. Sie versuchen, die Backend-API entweder manuell oder nach unseren [Anleitungen](integrations/howtostart-guides.md) zu implementieren, aber Gantt zeigt beim Öffnen der Seite keine Aufgaben oder Verknüpfungen an.
@@ -119,7 +113,6 @@ oder
 Lesen Sie den Artikel [Fehlerbehebung bei Backend-Integrationsproblemen](guides/troubleshooting.md), der Anweisungen zur Identifizierung der Ursachen gibt.
 
 ## Wie man den letzten Tag einer Aufgabe in die Dauer einbezieht
- 
 
 Sie werden feststellen, dass wenn das Datum in Tagen ohne Stunden-Minuten-Teil angegeben ist und Start- und Enddatum gleich sind, die Dauer der Aufgabe als 0 Tage und nicht als 1 Tag berechnet wird.
 
@@ -146,7 +139,6 @@ Standardmäßig wird der letzte Tag der Aufgabe bei der Berechnung der Dauer aus
 
 ## Fehler zyklischer Referenz
 
-
 Wenn Sie fehlerhafte Daten an Gantt übergeben, wird die baumartige Struktur zyklisch, was zu einem Fehler durch zyklische Referenz führt.
 
 ![cyclic_error](/img/cyclic_error.png)
@@ -166,7 +158,6 @@ Aufgabe #2 kann nicht ihr eigenes übergeordnetes Element sein.
 "Task #4" ist als übergeordnetes Element für "Task #1" angegeben. Gleichzeitig ist "Task #4" aber auch ein Kind von "Task #1".
 
 ## Evaluierungszeitraum ist abgelaufen
-
 
 Wenn Sie eine lizenzierte PRO-Version des Gantt-Diagramms installiert haben, aber dennoch die Meldung sehen, dass der Evaluierungszeitraum abgelaufen ist, bedeutet dies, dass sich irgendwo in Ihrer Anwendung noch die Trial-Version befindet. Nur die Trial-Version besitzt die Funktion, das Popup zur abgelaufenen Testphase anzuzeigen.
 

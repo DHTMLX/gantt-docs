@@ -41,7 +41,6 @@ gantt.attachEvent("onColumnResizeEnd", function(index, column, new_width){
 
 ### Details
 
-
 이 이벤트는 차단할 수 있습니다. *false*를 반환하면 열 크기 조정이 중단됩니다.
 
 ### Related API

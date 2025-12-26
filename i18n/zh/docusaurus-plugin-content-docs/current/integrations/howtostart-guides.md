@@ -5,7 +5,6 @@ sidebar_label: "dhtmlxGantt 入门"
 
 # 如何开始使用 dhtmlxGantt
 
-
 <h2>如何开始在前端使用 Gantt</h2>
 
 以下是一些关于如何在流行前端框架中初始化 Gantt 图表的基础指南摘要。

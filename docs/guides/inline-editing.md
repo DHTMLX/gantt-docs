@@ -5,7 +5,6 @@ sidebar_label: "Inline Editing in Grid"
 
 # Inline Editing in Grid
 
-
 dhtmlxGantt provides two options for editing the content:
 
 - with the help of the [Lightbox](guides/default-edit-form.md) edit form
@@ -50,7 +49,6 @@ You can take a look at the video guide that shows how to implement inline editin
 <iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Types of editors
-
 
 The inline editors are stored in the [editor_types](api/config/editor_types.md) configuration object.
 
@@ -444,7 +442,6 @@ A good example of such a control is a built-in predecessor editor. You can find 
 
 ## Inline editing modes
 
-
 ### Basic inline editing 
 
 This mode presupposes the use of a mouse pointer for setting focus on cells and hotkeys that allow navigating the cells: 
@@ -551,7 +548,6 @@ Custom mapping will help you to deal with the problems described above. You just
 **Related sample** [Gantt. Custom mapping for placeholder task](https://snippet.dhtmlx.com/xcgiommu)
 
 ## Validation of input values
-
 
 You can make mistakes while editing a cell in Grid. 
 
@@ -689,7 +685,6 @@ gantt.init("gantt_here");
 **Related sample** [Validation for inline editors via custom mapping](https://snippet.dhtmlx.com/efsftrq1)
 
 ## Opening editor with one click
-
 
 In the single selection mode, Gantt opens the inline editor after you click on a task. 
 

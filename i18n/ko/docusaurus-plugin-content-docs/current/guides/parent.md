@@ -5,7 +5,6 @@ sidebar_label: "Parent Control"
 
 # Parent Control  
 
-
 이 컨트롤은 작업의 상위 항목을 변경할 수 있는 선택 박스를 제공합니다. 간트 차트에 표시된 모든 작업을 불러오며, 필터링 규칙을 적용하거나 값 표시 방식을 사용자화할 수 있습니다. 이러한 기능 외에는 [Select Control](guides/select.md) 컨트롤과 동일하게 동작합니다.
 
 ![parent_control](/img/parent_control.png)
@@ -25,7 +24,6 @@ gantt.config.lightbox.sections = [
 
 
 ## 초기화  
-
 
 **parent** 컨트롤을 라이트박스에 포함하려면 다음과 같이 하세요:
 
@@ -52,7 +50,6 @@ gantt.locale.labels["section_parent"] = "Parent task";
 
 ## 속성  
 
-
 **parent** 컨트롤에서 자주 사용되는 주요 속성은 다음과 같습니다(전체 목록은 [여기](api/config/lightbox.md)에서 확인하세요):
 
 - **name** - (*string*) 섹션의 이름
@@ -68,7 +65,6 @@ gantt.locale.labels["section_parent"] = "Parent task";
    
 
 ## 옵션 필터링  
-
 
 **parent** 컨트롤에 표시되는 옵션을 제어하려면 **filter** 속성을 사용하세요:
 
@@ -103,7 +99,6 @@ gantt.config.lightbox.sections = [
 
 ## 옵션 정렬  
 
-
 **parent** 컨트롤의 옵션 순서를 지정하려면 **sort** 속성을 사용하세요:
 
 **Sorting tasks by the title's length**
@@ -127,7 +122,6 @@ gantt.config.lightbox.sections = [
 - 0 - 두 항목의 순서는 변경되지 않음
 
 ## 옵션 템플릿  
-
 
 **parent** 컨트롤에서 옵션의 표시 방식을 사용자화하려면 **template** 속성을 사용하세요:
 

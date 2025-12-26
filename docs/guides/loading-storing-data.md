@@ -5,7 +5,6 @@ sidebar_label: "Loading and Saving Tasks"
 
 # Loading and Saving Tasks
 
-
 ![gantt_basic](/img/gantt_basic.png)
 
 - [Data Loading](guides/loading.md)

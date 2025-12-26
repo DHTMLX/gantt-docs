@@ -5,7 +5,6 @@ sidebar_label: "Konfiguration von Aufgaben"
 
 # Konfiguration von Aufgaben
 
-
 ![gantt_tasks](/img/gantt_tasks.png)
 
 ((index

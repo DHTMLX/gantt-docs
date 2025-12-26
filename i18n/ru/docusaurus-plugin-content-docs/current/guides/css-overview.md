@@ -5,11 +5,9 @@ sidebar_label: "Документация по CSS"
 
 # Документация по CSS
 
-
 В этой статье объясняется, как переопределить стандартные цветовые настройки элементов диаграммы Gantt с помощью собственных стилей. Описаны основные CSS-селекторы и шаблоны для стилизации различных частей диаграммы Gantt: [Грид](guides/css-overview.md#stylinggrid), [Таймлайн](guides/css-overview.md#stylingtimeline) и [Панель ресурсов](guides/css-overview.md#resourcepanel).
 
 ## Стилизация грида {#stylinggrid}
-
 
 Здесь приведены CSS-селекторы, используемые для стилизации основных элементов [грида](guides/table.md).
 
@@ -244,7 +242,6 @@ gantt.config.row_height = 40;
 
 ## Стилизация таймлайна {#stylingtimeline}
 
-
 В этом разделе описаны CSS-селекторы для изменения стандартных стилей элементов [таймлайна](guides/time-scale.md).
 
 ![timeline](/img/timeline.png)
@@ -432,7 +429,6 @@ DOM-структура области данных:
 ~~~
 
 ### Задача {#task}
-
 
 #### Панель задачи
 
@@ -820,7 +816,6 @@ gantt.templates.timeline_cell_class = function (task, date) {
 
 
 ## Панель ресурсов {#resourcepanel}
-
 
 [Панель ресурсов](guides/resource-management.md#resourceviewpanel) включает гриды и временные шкалы, аналогичные тем, что используются в основной области Gantt.
 

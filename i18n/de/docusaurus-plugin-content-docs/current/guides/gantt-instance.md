@@ -5,7 +5,6 @@ sidebar_label: "Besonderheiten der Gantt-Instanz"
 
 # Besonderheiten der Gantt-Instanz
 
-
 Dieser Artikel behandelt die wichtigsten Aspekte bei der Arbeit mit einer Gantt-Instanz.
 
 Betrachten wir ein häufiges Szenario: Der Aufbau einer Anwendung mit mehreren Seiten, Tabs oder Ansichten.

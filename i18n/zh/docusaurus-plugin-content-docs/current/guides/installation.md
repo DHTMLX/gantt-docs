@@ -5,13 +5,11 @@ sidebar_label: "安装"
 
 # 如何安装 dhtmlxGantt
 
-
 您可以通过包管理器如 [NuGet](https://www.nuget.org/)、[Bower](https://bower.io/) 或 [npm](https://www.npmjs.com/) 将 dhtmlxGantt 添加到您的项目中。
 
 另外，您也可以直接从 CDN 引入所需的 JS 和 CSS 文件。
 
 ## npm - 评估版与专业版
-
 
 **专业评估版**
 
@@ -22,7 +20,6 @@ sidebar_label: "安装"
 您可以通过 [Client's Area](https://dhtmlx.com/clients/) 获取 DHTMLX 私有 npm 注册表的访问权限，并生成您的 npm 登录名和密码。详细的安装指南也在该区域提供。请注意，只有在您的专有 Gantt 许可证有效期间，才能访问私有 npm。
 
 ## npm - 标准免费版
-
 
 dhtmlxGantt 的标准版可以通过在命令行中运行以下命令，从 [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt) 安装:
 
@@ -35,7 +32,6 @@ npm install dhtmlx-gantt
 :::
 
 ## NuGet
-
 
 要通过 [NuGet](https://www.nuget.org/) 添加 dhtmlxGantt，请运行以下命令:
 
@@ -51,7 +47,6 @@ install-package DHTMLX.Gantt
 
 ## Bower
 
-
 您可以通过 [Bower](https://bower.io/) 安装 dhtmlxGantt，执行以下命令:
 
 ~~~html
@@ -59,7 +54,6 @@ bower install gantt
 ~~~
 
 ## CDN
-
 
 通过 CDN 引入 dhtmlxGantt，需直接链接 **dhtmlxgantt.js** 和 **dhtmlxgantt.css** 文件:
 
@@ -72,7 +66,6 @@ bower install gantt
 如需根据 dhtmlxGantt 版本获取完整的 CDN 链接列表，请参阅 [单独的文章](guides/cdn-links-list.md)。
 
 ## 下载软件包
-
 
 ### GPL 版本
 
@@ -90,7 +83,6 @@ bower install gantt
 ~~~
 
 ## 将 PRO 版本添加到项目中
-
 
 ### **安装 Pro 版本**
 

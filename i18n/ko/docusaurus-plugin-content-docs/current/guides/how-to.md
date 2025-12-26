@@ -5,7 +5,6 @@ sidebar_label: "How-tos"
 
 # How-tos
 
-
 ## 그리드/차트 토글하는 방법 {#howtotogglegridchart}
 
 기본 레이아웃 구성을 사용할 때, 그리드 또는 차트 토글은 [show_grid](api/config/show_grid.md) 또는 [show_chart](api/config/show_chart.md) 파라미터를 변경한 후 [render()](api/method/render.md) 메서드를 호출하여 화면을 갱신하면 됩니다.

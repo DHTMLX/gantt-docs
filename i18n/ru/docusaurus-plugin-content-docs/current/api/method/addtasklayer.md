@@ -47,7 +47,6 @@ gantt.addTaskLayer(function draw_deadline(task) {
 
 ### Details
 
-
 Аргумент может быть одного из следующих типов:
 
 

@@ -5,7 +5,6 @@ sidebar_label: "Node.js Gantt"
 
 # dhtmlxGantt를 Plain JS/HTML에서 사용하기
 
-
 dhtmlxGantt로 앱을 개발할 때, 가장 먼저 해야 할 일은 Gantt 차트를 페이지에 설정(렌더링)하는 것입니다.
 
 이 가이드에서는 순수 JavaScript와 HTML을 사용하여 dhtmlxGantt를 초기화하는 방법을 다룹니다. 프론트엔드 프레임워크와 통합하는 방법은 아래 가이드를 참고하세요:
@@ -31,7 +30,6 @@ dhtmlxGantt로 앱을 개발할 때, 가장 먼저 해야 할 일은 Gantt 차�
 </table>
 
 ## 기본 Gantt 차트 생성하기
-
 
 페이지에 간단한 Gantt 차트를 표시하려면 다음 세 단계를 따라야 합니다:
 
@@ -64,7 +62,6 @@ dhtmlxGantt로 앱을 개발할 때, 가장 먼저 해야 할 일은 Gantt 차�
  
 ## Gantt 소스 파일을 프로젝트에 추가하는 방법
 
-
 앱의 유형에 따라 Gantt 소스 파일을 프로젝트에 추가하는 방법에는 여러 가지가 있습니다:
 
 - [&#60;script&#62; 태그를 사용하여 파일 포함하기](#scripttag)
@@ -73,7 +70,6 @@ dhtmlxGantt로 앱을 개발할 때, 가장 먼저 해야 할 일은 Gantt 차�
 
 
 ## &#60;script&#62; 태그로 파일 포함하기
-
 
 dhtmlxGantt를 사용하려면 두 개의 파일을 페이지에 추가해야 합니다:
 
@@ -95,7 +91,6 @@ dhtmlxGantt 패키지의 주요 폴더 및 파일:
 
 ## ES6/7 및 TypeScript 앱에 파일 임포트하기
 
-
 다음 명령어로 파일을 임포트할 수 있습니다:
 
 ~~~js
@@ -109,7 +104,6 @@ import { gantt, Gantt } from 'dhtmlx-gantt';
 ~~~
 
 ## Vite에서 Gantt 사용하기
-
 
 프로젝트가 Vite를 사용한다면, **vite.config.js** 파일에 아래 설정을 추가하여 Gantt가 제대로 포함되도록 해야 합니다:
 
@@ -139,7 +133,6 @@ build: {
 ~~~
 
 ## RequireJS 기반 앱에 파일 포함하기
- 
 
 RequireJS 기반 앱에 dhtmlxGantt 파일을 추가하려면 다음과 같이 작성합니다:
 
@@ -223,7 +216,6 @@ function (dhx) {
 - "dhtmlxgantt": "./vendor/dhtmlxgantt/dhtmlxgantt"
 
 ## 전체화면 모드
-
 
 브라우저별로 Gantt 차트가 전체화면에서 올바르게 표시되도록 하려면, 페이지에 아래 스타일을 추가하세요:
 

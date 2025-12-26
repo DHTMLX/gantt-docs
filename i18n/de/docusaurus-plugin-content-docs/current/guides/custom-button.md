@@ -71,7 +71,6 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 
 ## Schaltflächenbeschriftungen ändern
 
-
 Die Beschriftungen der Schaltflächen können vor der Initialisierung von Gantt mit folgender Syntax geändert werden:
 
 ~~~js

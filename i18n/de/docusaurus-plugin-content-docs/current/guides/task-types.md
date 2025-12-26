@@ -5,7 +5,6 @@ sidebar_label: "Aufgabentypen"
 
 # Aufgabentypen
 
-
 :::info
 Dieses Feature ist ausschließlich in der PRO-Edition verfügbar.
 :::
@@ -40,7 +39,6 @@ var data = {
 
 ## Reguläre Aufgaben {#regulartasks}
 
-
 Standardmäßig erstellt dhtmlxGantt reguläre Aufgaben (Tasks mit **type="task"**).
 
 ![type_task](/img/type_task.png)
@@ -72,7 +70,6 @@ Mit **type="task"** markierte Aufgaben besitzen folgende Eigenschaften:
 
 
 ## Projektaufgaben {#projecttasks}
-
 
 Eine Projektaufgabe erstreckt sich vom Beginn der frühesten Kindaufgabe bis zum Ende der letzten Kindaufgabe.
 
@@ -114,7 +111,6 @@ Wie Sie das Hinzufügen von Projektaufgaben ermöglichen, erfahren Sie unter [Mi
 
 ## Meilensteine {#milestones}
 
-
 Ein [Meilenstein](guides/milestones.md) ist eine Aufgabe mit einer Dauer von null, die verwendet wird, um wichtige Termine in einem Projekt hervorzuheben ([mehr Infos](guides/milestones.md)).
 
 ![type_milestone](/img/type_milestone.png)
@@ -149,7 +145,6 @@ Wie Sie die Erstellung von Meilensteinen ermöglichen, erfahren Sie unter [Miles
 :::
 
 ## Spezifisches Lightbox-Formular pro Aufgabentyp {#specificlightboxpertasktype}
-
 
 Jeder Aufgabentyp hat eigene Eigenschaften, daher kann das Detailformular (Lightbox) individuell pro Typ konfiguriert werden.
 Die Konfigurationen werden im Objekt [lightbox](api/config/lightbox.md) gespeichert.
@@ -187,7 +182,6 @@ Weitere Informationen zur Lightbox-Konfiguration finden Sie im Kapitel [Configur
 
 
 ## Einen benutzerdefinierten Typ erstellen {#creatingacustomtype}
-
 
 Alle Aufgabentypen sind im Objekt [types](api/config/types.md) definiert. 
 
@@ -267,7 +261,6 @@ gantt.templates.task_text = function(start, end, task){
 
 
 ## Individuelle Darstellung von Aufgabentypen {#customdisplayoftasktypes}
-
 
 Um das Aussehen vorhandener Aufgabentypen zu ändern, verwenden Sie die Option [type_renderers](api/config/type_renderers.md). Damit können Sie die Funktionen überschreiben, die steuern, wie Aufgabentypen auf der Seite gerendert werden.
 

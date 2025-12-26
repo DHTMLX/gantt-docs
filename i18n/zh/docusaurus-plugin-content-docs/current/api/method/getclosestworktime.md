@@ -42,7 +42,6 @@ gantt.getClosestWorkTime({ date: new Date(2019,04,26), task:task });
 
 ## 配置对象属性
 
-
 配置对象可以包含以下属性:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">

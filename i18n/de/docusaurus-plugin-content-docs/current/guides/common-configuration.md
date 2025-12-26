@@ -5,7 +5,6 @@ sidebar_label: "Konfiguration"
 
 # Konfiguration
 
-
 Um das gewünschte Erscheinungsbild für das Gantt-Diagramm zu erreichen, bietet dhtmlxGantt zwei Hauptobjekte:
 
 - [gantt.config](api/overview/properties-overview.md) - enthält Konfigurationsoptionen zu Datumsangaben, Skalen, Steuerelementen und mehr.
@@ -34,7 +33,6 @@ Eine vollständige Liste der in **gantt.config** verfügbaren Eigenschaften find
 
 
 ## 'gantt.templates'-Objekt
-
 
 Mit Vorlagen lässt sich anpassen, wie Datumsangaben und Beschriftungen dargestellt werden.
 

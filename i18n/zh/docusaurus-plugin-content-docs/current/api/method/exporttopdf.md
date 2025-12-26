@@ -117,7 +117,6 @@ gantt.exportToPDF({
 
 ## 时间限制
 
-
 :::note
  导出服务有时间限制。 
 :::
@@ -135,7 +134,6 @@ Error: Timeout trigger 20 seconds
 :::
 
 ## 多页导出
-
 
 请注意，导出模块无法:
 

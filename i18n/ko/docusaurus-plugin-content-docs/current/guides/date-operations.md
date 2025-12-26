@@ -5,14 +5,12 @@ sidebar_label: "날짜 작업"
 
 # 날짜 작업
 
-
 dhtmlxGantt는 다양한 날짜 포매팅 메서드를 제공하는 [date](api/other/date.md) 객체를 기본으로 제공합니다. 이 메서드들은 날짜 객체를 다룰 때 유용하게 사용할 수 있습니다.
 
 이 문서에서는 주요하고 자주 사용되는 메서드들을 소개합니다. 전체 메서드 목록은 [date object page](api/other/date.md)에서 확인하실 수 있습니다.
 
 
 ## Date 객체를 문자열로 변환하기
-
 
 Date 객체를 문자열로 변환하려면 [date_to_str](api/other/date.md) 메서드를 사용할 수 있습니다: 
 

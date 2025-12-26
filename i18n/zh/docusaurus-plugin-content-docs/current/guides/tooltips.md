@@ -5,7 +5,6 @@ sidebar_label: "Gantt 元素的工具提示"
 
 # Gantt 元素的工具提示
 
-
 工具提示可以在不让屏幕充满过多文本的情况下，显示额外的信息。默认情况下，工具提示会显示在 Gantt 任务上。
 
 ![task_tooltip](/img/task_tooltip.png)
@@ -13,7 +12,6 @@ sidebar_label: "Gantt 元素的工具提示"
 你可以通过相应的 API [为任意 Gantt 元素添加工具提示](#tooltipsfordifferentelements)。
 
 ## 激活方式
-
 
 要为任务启用工具提示，只需通过 [gantt.plugins](api/method/plugins.md) 方法开启 **tooltip** 插件:
 
@@ -34,7 +32,6 @@ sidebar_label: "Gantt 元素的工具提示"
 当该扩展被激活后，工具提示会以默认设置自动显示。
 
 ## 自定义文本 
-
 
 默认情况下，工具提示会显示任务的三个属性:
 
@@ -109,7 +106,6 @@ gantt.templates.tooltip_text = (start, end, task) =>
 
 ## 为不同元素添加工具提示
 
-
 默认情况下，工具提示只会添加到 Gantt 任务上，但你也可以将其应用到其他 Gantt 元素，例如资源标记:
 
 ![Resource marker tooltip](/img/resource_marker_tooltip.png)
@@ -175,7 +171,6 @@ gantt.ext.tooltips.tooltipFor({
 
 ## 自定义工具提示行为
 
-
 你可以通过移除内置处理器并添加自定义处理器来更改默认的工具提示行为:
 
 - 使用 [**gantt.ext.tooltips.detach**](#detach) 从任务中移除默认的工具提示处理器:
@@ -209,7 +204,6 @@ gantt.ext.tooltips.tooltipFor({
 
 ## 延时设置
 
-
 显示和隐藏工具提示的时间可以通过相关设置进行调整。
 
 要设置任务工具提示出现前的延时时间（毫秒），请使用 [tooltip_timeout](api/config/tooltip_timeout.md):
@@ -228,7 +222,6 @@ gantt.init("gantt_here");
 
 ## 位置设置
 
-
 你可以通过以下配置属性调整工具提示的位置偏移:
 
 - [tooltip_offset_x](api/config/tooltip_offset_x.md) - 设置水平偏移
@@ -242,7 +235,6 @@ gantt.init("gantt_here");
 ~~~
 
 ## 显示区域
-
 
 6.1 之前，工具提示只会在时间轴区域内显示。从 v6.1 起，工具提示可以出现在任意位置并跟随鼠标指针。
 

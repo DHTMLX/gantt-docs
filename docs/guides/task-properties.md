@@ -5,14 +5,12 @@ sidebar_label: "Task Properties"
 
 # Task Properties 
 
-
 On this page you'll find the full list of properties that the task object may include.
 
 The full list of properties of the link object is given in the [Link Properties](guides/link-properties.md) article.
 
 
 ## Required properties
-
 
 These properties will always be defined on the client. Gantt expects the properties to be specified in the task object on data loading but if they are not specified, Gantt will add them by itself.
 If you remove one of these properties for the loaded tasks, Gantt will start throwing errors.
@@ -47,7 +45,6 @@ If you remove one of these properties for the loaded tasks, Gantt will start thr
 
 
 ## Optional properties
-
 
 These properties may or may not be defined. The default logic and templates of gantt will use these properties if they are defined.
 
@@ -196,7 +193,6 @@ These properties may or may not be defined. The default logic and templates of g
 
 
 ## Dynamic properties
-
 
 Dynamic properties are created on the client and represent the current state of a task or a link. They shouldn't be saved to the database, gantt will ignore these properties if they are specified in your JSON/XML.
 

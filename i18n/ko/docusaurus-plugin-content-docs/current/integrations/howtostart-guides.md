@@ -5,7 +5,6 @@ sidebar_label: "dhtmlxGantt 시작하기"
 
 # dhtmlxGantt 시작하기
 
-
 <h2>Gantt와 프론트엔드에서 시작하는 방법</h2>
 
 아래는 인기 있는 프론트엔드 프레임워크에서 Gantt 차트를 초기화하는 기본 과정을 다루는 가이드 요약입니다.

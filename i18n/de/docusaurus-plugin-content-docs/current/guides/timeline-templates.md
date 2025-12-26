@@ -5,7 +5,6 @@ sidebar_label: "Vorlagen für den Timeline-Bereich"
 
 # Vorlagen für den Timeline-Bereich
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

@@ -5,7 +5,6 @@ sidebar_label: "Расширение Formatters"
 
 # Расширение Formatters
 
-
 :::info
 Эта функция доступна только в редакции PRO.
 :::
@@ -18,7 +17,6 @@ sidebar_label: "Расширение Formatters"
 Вы также можете создать [пользовательский форматтер](#customformatter), используя существующие в качестве основы.
 
 ## Форматтер длительности {#durationformatter}
-
 
 Метод **gantt.ext.formatters.durationFormatter(config)** создает новый экземпляр *DurationFormatter*.
 
@@ -202,7 +200,6 @@ console.log(formatter.parse("1 day"));
 
 ## Форматтер связей {#linkformatter}
 
-
 Метод **gantt.ext.formatters.linkFormatter(config)** создает новый экземпляр *LinkFormatter*. Он имеет схожие методы и параметры конфигурации с форматтером длительности.
 
 ### **Конфигурация**
@@ -332,7 +329,6 @@ console.log(formatter.format({id:1, type:"1", source: 2, target: 3, lag: 1}));
 
 
 ## Пользовательский форматтер {#customformatter}
-
 
 В Gantt можно создавать пользовательские форматтеры на основе встроенных. Эти пользовательские форматтеры можно подключать к редактору inline. Внутри грид Gantt хранит данные в своем ожидаемом формате, но при открытии редактора пользователю отображается значение в нужном формате.
 

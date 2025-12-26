@@ -5,9 +5,7 @@ sidebar_label: "Eigenschaften für den Import aus Primavera"
 
 # Eigenschaften für den Import aus Primavera
 
-
 ## Projekteigenschaften
-
 
 <style>
 .myblock(
@@ -77,7 +75,6 @@ sidebar_label: "Eigenschaften für den Import aus Primavera"
 </div>
 
 ## Aufgabeneigenschaften
-
 
 <div class="myblock">
   <li>ActualCost</li>

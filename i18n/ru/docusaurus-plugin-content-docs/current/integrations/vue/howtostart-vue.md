@@ -5,7 +5,6 @@ sidebar_label: "Vue.js"
 
 # dhtmlxGantt с Vue.js
 
-
 Это руководство предполагает, что вы обладаете базовыми знаниями о [Vue](https://vuejs.org/) и его паттернах. Если вы только начинаете работать с Vue, рекомендуем ознакомиться с [документацией по Vue 3](https://vuejs.org/guide/introduction.html) для быстрого старта.
 
 DHTMLX Gantt хорошо работает с Vue. Пример интеграции доступен на GitHub: [DHTMLX Gantt with Vue Demo](https://github.com/DHTMLX/vue-gantt-demo).

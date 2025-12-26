@@ -5,9 +5,7 @@ sidebar_label: "FAQ"
 
 # FAQ
 
-
 ## 샘플을 여는 방법
-
 
 컴포넌트의 배포본에는 샘플을 로컬에서 실행할 수 있는 데모 백엔드 앱이 포함되어 있습니다. 
 이 앱은 [Node.js](https://nodejs.org/en/)가 필요하며, 데모를 위해 백엔드에 데이터를 저장해야 하는 경우 메모리 내 저장소를 사용합니다(즉, 별도의 데이터베이스 설정이 필요하지 않습니다).
@@ -58,7 +56,6 @@ sidebar_label: "FAQ"
 
 ## Gantt 차트가 올바르게 표시되지 않음
 
-
 Gantt 차트가 페이지에 올바르게 표시되지 않는 경우, 차트 컨테이너의 CSS 스타일을 확인하세요. 컨테이너에는 픽셀 또는 퍼센트 단위의 올바른 크기가 지정되어야 합니다.
 
 
@@ -76,7 +73,6 @@ html, body{
 
 ## Internet Explorer에서 Gantt 차트가 올바르게 표시되지 않음
 
-
 Gantt 차트가 Internet Explorer에서만 올바르게 표시되지 않는 경우, 페이지에 전체 DOCTYPE 선언이 사용되고 있는지 확인하세요. 
 dhtmlxGantt는 IE6, IE7, IE8의 표준 모드에서 정상 작동하지만, IE의 쿼크 모드에서는 사용할 수 없습니다.
 
@@ -87,7 +83,6 @@ dhtmlxGantt는 IE6, IE7, IE8의 표준 모드에서 정상 작동하지만, IE�
 ~~~
 
 ## 오른쪽 상단에 에러 알림이 표시됨
-
 
 ![error_alert](/img/error_alert.png)
 
@@ -104,7 +99,6 @@ gantt.config.show_errors = false;
 
 ## Gantt가 아무것도 표시하지 않음
 
-
 가장 일반적인 두 가지 시나리오가 있습니다:
 
 1. 백엔드 API를 직접 구현하거나 [튜토리얼](integrations/howtostart-guides.md)을 따라 구현했지만, 페이지를 열었을 때 Gantt에 작업이나 링크가 표시되지 않습니다.
@@ -116,7 +110,6 @@ gantt.config.show_errors = false;
 문제의 원인을 파악하는 방법은 [백엔드 통합 문제 해결](guides/troubleshooting.md) 문서를 참고하세요.
 
 ## 작업의 마지막 날을 기간에 포함시키는 방법
- 
 
 날짜를 시간-분 없이 "일" 단위로 지정하고 시작일과 종료일이 같을 경우, 작업 기간이 1일이 아니라 0일로 계산되는 것을 볼 수 있습니다.
 
@@ -144,7 +137,6 @@ console.log(gantt.getTask(1).duration);
 
 ## 순환 참조 오류
 
-
 잘못된 데이터를 Gantt에 전달하면 트리 구조가 순환 구조가 되어 순환 참조 오류가 발생할 수 있습니다.
 
 ![cyclic_error](/img/cyclic_error.png)
@@ -165,7 +157,6 @@ console.log(gantt.getTask(1).duration);
 하지만 동시에 "Task #4"는 "Task #1"의 자식이기도 합니다.
 
 ## 평가 기간이 만료됨
-
 
 Gantt 차트의 라이선스 PRO 버전을 설치했는데도 평가 기간 만료 메시지가 계속 나타난다면, 애플리케이션 어딘가에 Trial 버전이 남아있다는 의미입니다. 
 평가 기간 만료 팝업은 Trial 버전에서만 표시됩니다.

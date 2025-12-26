@@ -24,7 +24,6 @@ gantt.config.auto_scheduling_compatibility = true;
 
 ### Details
 
-
 :::note
  Эта настройка является частью расширения **auto_scheduling**, поэтому убедитесь, что плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) включен. Для получения дополнительной информации смотрите статью [Автоматическое планирование](guides/auto-scheduling.md). 
 :::

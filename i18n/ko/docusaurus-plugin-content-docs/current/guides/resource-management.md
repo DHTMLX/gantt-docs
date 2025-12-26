@@ -5,7 +5,6 @@ sidebar_label: "리소스 관리"
 
 # 리소스 관리
 
-
 :::info
 이 기능은 Gantt PRO 에디션에만 포함되어 있습니다.
 :::
@@ -19,7 +18,6 @@ Gantt 자체적으로 리소스 부하를 계산하거나 내장된 방법을 �
 :::
 
 ## 리소스 뷰 패널 {#resourceviewpanel}
-
 
 dhtmlxGantt는 리소스 부하를 표시하기 위해 두 가지 사전 정의된 레이아웃 뷰를 제공합니다: 리소스 부하 다이어그램과 리소스 히스토그램입니다.
 
@@ -381,7 +379,6 @@ gantt.getResourceAssignments("6");
 
 ##  리소스 할당 {#assigningresources}
 
-
 ### 작업에 리소스 연결하기
 
 리소스와 작업 간의 연결은 [resource_property](api/config/resource_property.md) 설정으로 제어됩니다:
@@ -729,7 +726,6 @@ gantt.updateCollection("people", [
 
 ## 리소스 및 리소스 할당 불러오기 {#loadingresourcesandresourceassignments}
 
-
 v8.0부터는 [gantt.parse()](api/method/parse.md) 또는 [gantt.load()](api/method/load.md) 메서드를 사용해 리소스와 리소스 할당을 gantt에 불러올 수 있습니다:
 
 ~~~js
@@ -802,7 +798,6 @@ gantt.parse({
 
 ## 리소스 할당 관리 {#managingresourceassignments}
 
-
 ### 리소스 할당 파싱
 
 v7.1부터 리소스 할당은 데이터 스토어 내 객체로 처리할 수 있습니다.
@@ -859,7 +854,6 @@ gantt.updateTaskAssignments(taskId);
 
 ## 작업 리소스 표시 {#showingtaskresource}
 
-
 리소스 이름은 작업 설명이나 그리드 셀의 라벨로 표시할 수 있습니다. gantt는 id로 서버 리스트에서 항목을 가져오는 내장 메서드를 제공하지 않으므로, 간단한 헬퍼 함수를 사용할 수 있습니다:
 
 ~~~js
@@ -892,7 +886,6 @@ gantt.templates.rightside_text = function(start, end, task){
 
 
 ## 편집 가능한 리소스 다이어그램 {#editableresourcediagram}
- 
 
 리소스 다이어그램에서 직접 리소스 할당을 편집하려면 다음 설정을 사용하세요:
 
@@ -927,7 +920,6 @@ gantt.templates.resource_cell_class = gantt.ext.resources.editableResourceCellCl
  
 ## 리소스의 커스텀 스타일 적용 {#customstylingofresources}
 
-
 색상을 적용하려면 다음과 같은 템플릿을 주로 사용합니다:
 
 - [gantt.templates.grid_row_class](api/template/grid_row_class.md) - 왼쪽 그리드의 행에 대한 CSS 클래스
@@ -944,7 +936,6 @@ gantt.templates.resource_cell_class = gantt.ext.resources.editableResourceCellCl
 
 
 ## 리소스 캘린더 {#resourcecalendars}
-
 
 Gantt는 특정 리소스에 연결할 수 있는 커스텀 근무 시간 캘린더를 지원합니다.
 
@@ -974,7 +965,6 @@ gantt.config.resource_calendars = {
 자세한 내용은 [리소스에 캘린더 할당](guides/working-time.md#assigningcalendartoresource) 관련 문서를 참고하세요.
 
 ## 리소스 부하 균형 맞추기 {#balancingresourceload}
-
 
 [grouping extension](guides/extensions-list.md#grouping)을 사용하면 **resource** 속성별로 전체 프로젝트를 분류할 수 있습니다.
 

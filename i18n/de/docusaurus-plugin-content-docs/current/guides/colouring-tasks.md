@@ -5,7 +5,6 @@ sidebar_label: "Tasks Coloring"
 
 # Tasks Coloring 
 
-
 Das Einfärben von Aufgaben hilft dabei, bestimmte Aufgaben hervorzuheben und die Aufmerksamkeit gezielt darauf zu lenken.
 
 ![coloring_tasks](/img/coloring_tasks.png)
@@ -17,7 +16,6 @@ Es gibt mehrere Möglichkeiten, den Stil von Aufgaben anzupassen:
 3. [Stile dynamisch aus Daten generieren](guides/colouring-tasks.md#loadingcolorswithdata)
 
 ## Umdefinieren der Aufgabenvorlage {#redefiningthetaskstemplate}
-
 
 Um den Stil einer Aufgabe mit einer Vorlage anzupassen, wird die [task_class](api/template/task_class.md) Vorlage verwendet. Beispielsweise können Sie Aufgaben je nach Priorität einfärben, indem Sie folgenden Code verwenden:
 
@@ -72,7 +70,6 @@ Um andere Teile der Aufgaben zu stylen, siehe die in [Templates of the Timeline 
 Eine ähnliche Methode kann auch für Verknüpfungen verwendet werden. Weitere Details finden Sie [hier](guides/colouring-lines.md#redefiningthelinkstemplate).
 
 ## Festlegen des Stils in den Eigenschaften eines Aufgabenobjekts {#specifyingstyleinthepropertiesofataskobject}
-
 
 Sie können das Erscheinungsbild einer Aufgabe anpassen, indem Sie dem Aufgaben-Datenobjekt bis zu drei spezielle Eigenschaften hinzufügen:
 
@@ -144,7 +141,6 @@ task.color = "rgb(255,0,0)";
 Ein ähnliches Vorgehen gilt für Verknüpfungen. Mehr Informationen finden Sie [hier](guides/colouring-lines.md#specifyingcolorinthepropertiesofthelinkobject).
 
 ## Laden von Farben mit Daten {#loadingcolorswithdata}
-
 
 Wenn Aufgabenfarben aus Backend-Daten stammen - zum Beispiel, wenn Farben an Phasen oder Ressourcen gebunden sind, die Aufgaben zugewiesen werden, und nicht fest im Code stehen - ist es sinnvoll, Stile dynamisch aus Ihren Daten zu generieren.
 

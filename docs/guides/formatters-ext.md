@@ -5,7 +5,6 @@ sidebar_label: "Formatters Extension"
 
 # Formatters Extension
 
-
 :::note
 This functionality is available in the PRO edition only.
 :::

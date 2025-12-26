@@ -25,7 +25,6 @@ gantt.config.project_start = new Date(2019, 2, 1);
 
 ### Details
 
-
 此设置定义了在启用自动排程时，新任务的默认开始日期。
 
 ### Related Guides

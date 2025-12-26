@@ -5,9 +5,7 @@ sidebar_label: "Custom Lightbox"
 
 # Custom Lightbox
 
-
 ## 커스텀 라이트박스 생성 방법
-
 
 gantt에서 완전히 커스텀한 라이트박스를 만들고 기본 라이트박스를 대체하는 것이 가능합니다. 주요 방식은 두 가지가 있습니다:
 
@@ -129,7 +127,6 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 ~~~
 
 ## 커스텀 폼에서의 액션 처리
-
 
 폼이 저장될 때, 폼 값을 직접 가져와서 [addTask](api/method/addtask.md), [updateTask](api/method/updatetask.md), [deleteTask](api/method/deletetask.md)와 같은 공개 API를 이용해 해당 태스크를 업데이트해야 합니다.
 

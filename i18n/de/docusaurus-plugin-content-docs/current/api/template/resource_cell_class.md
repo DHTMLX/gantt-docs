@@ -46,7 +46,6 @@ gantt.templates.resource_cell_class = function(start_date, end_date, resource, t
 
 ### Details
 
-
 :::note
  Der Parameter "assignments" ist nur verfügbar, wenn die Konfiguration [process_resource_assignments](api/config/process_resource_assignments.md) aktiviert ist. 
 :::

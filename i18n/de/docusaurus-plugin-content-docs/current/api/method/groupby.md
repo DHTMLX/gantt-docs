@@ -72,7 +72,6 @@ gantt.groupBy(false);
 
 ### Details
 
-
 :::note
  Diese Methode ist Teil der **grouping**-Erweiterung, daher muss das [grouping](guides/extensions-list.md#grouping) Plugin aktiviert sein. Weitere Details finden Sie im Artikel ["Gruppierung von Aufgaben"](guides/grouping.md). 
 :::
