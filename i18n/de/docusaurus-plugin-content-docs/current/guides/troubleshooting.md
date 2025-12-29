@@ -5,7 +5,6 @@ sidebar_label: "Fehlerbehebung bei Backend-Integrationsproblemen"
 
 # Fehlerbehebung bei Backend-Integrationsproblemen
 
-
 ## Symptome
 
 1. Sie versuchen, die Backend-API entweder manuell oder anhand unserer [Anleitungen](integrations/howtostart-guides.md) zu implementieren, aber das Gantt-Diagramm zeigt beim Öffnen der Seite keine Aufgaben oder Verknüpfungen an.

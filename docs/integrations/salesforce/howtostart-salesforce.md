@@ -5,7 +5,6 @@ sidebar_label: "Salesforce"
 
 # dhtmlxGantt with Salesforce LWC
 
-
 This tutorial describes how to add dhtmlxGantt into a [Salesforce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide).
 
 Check the [online demo](https://dhtmlx-dev-ed.develop.lightning.force.com/) on integrating DHTMLX components with Salesforce LWC (Login: *user*, Password: *demo*).
@@ -34,11 +33,9 @@ You can have a look at the video guide that shows how to create a Gantt chart wi
 
 ## Prerequisites
 
-
 Install [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) if you don't have it. See [this article](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm) for installation guidance.
 
 ## Step 1. Creating a project
-
 
 [Sign up](https://developer.salesforce.com/) for a free developer account if you don't have one. See [this article](https://webkul.com/blog/create-free-developer-account-in-salesforce/) for installation guidance.
 
@@ -91,7 +88,6 @@ $ cd gantt-salesforce-app
 
 ## Step 2. Authorization
 
-
 [Authorize an Org](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm) using the Web Server Flow:
 
 ~~~js
@@ -132,7 +128,6 @@ Your scratch org is ready.
 
 ## Step 3. Adding Gantt to Salesforce
 
-
 In order to start using the library, we need to upload it inside Salesforce as a Static
 Resource. Thus, open your scratch org:
 
@@ -153,7 +148,6 @@ Now we have dhtmlxGantt inside Salesforce.
 ![sf_gantt_in_sf](/img/sf_gantt_in_sf.png)
 
 ## Step 4. Creating Data Model
-
 
 The core dhtmlxGantt entities are Tasks and Links. A good approach is to store all properties of dhtmlxGantt entities as plain JSON inside Salesforce. Let's create Tasks and Links objects. Open the Object Manager and select "Create" then "Custom Object":
 
@@ -221,7 +215,6 @@ In the end it should look like this:
 
 ### **Link object**
 
-
 Open the Object Manager and select "Create" then "Custom Object":
 
 Give the name for the link object, let it be *GanttLink/GanttLinks*.
@@ -266,7 +259,6 @@ In the end it should look like this:
 
 
 ## Step 5. Creating a Lightning Web Component
-
 
 To create a Lightning Web Component, run the command:
 
@@ -469,7 +461,6 @@ export default class GanttView extends LightningElement {
 
 ## Step 6. Creating an Apex class
 
-
 The next step is to create a class that will enable interactions between the Lighting Component and our data model.
 
 ~~~js
@@ -520,7 +511,6 @@ $ sfdx project deploy start
 
 ## Step 7. Creating Lightning Page
 
-
 Open the "Lightning App Builder", create a new Lightning Page.
 
 ![sf_lightning_app](/img/sf_lightning_app.png)
@@ -560,17 +550,14 @@ If everything went well, you should see a simple gantt demo running in the Light
 
 ## Application security
 
-
 Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the application. Read the details [in the corresponding article](guides/app-security.md). Salesforce is built with security to protect your data and applications. You can also implement your own security scheme to reflect the structure and needs of your organization. For more information, please see the [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm). [Here](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm) you can find out what do you need to be secure.
 
 ## Trouble shooting
-
 
 In case you've completed the above steps to implement Gantt integration with Salesforce, but Gantt doesn't render tasks and links on a page, have a look at the [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) article. It describes the ways of identifying the roots of the problems.
 
 
 ## What's next
-
 
 Now you have a fully functioning gantt. You can view the full code on [GitHub](https://github.com/DHTMLX/salesforce-gantt-demo), clone or download it and use it for your projects.
 

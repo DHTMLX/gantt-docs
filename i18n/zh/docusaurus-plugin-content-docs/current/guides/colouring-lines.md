@@ -5,7 +5,6 @@ sidebar_label: "链接的颜色和样式自定义"
 
 # 链接的颜色和样式自定义 
 
-
 您可以自定义任务之间连接线（链接）的外观，从而实现所需的甘特图效果。为依赖关系链接设置不同的颜色，有助于用户更容易地区分它们。
 
 ![coloring_links](/img/coloring_links.png)
@@ -18,7 +17,6 @@ sidebar_label: "链接的颜色和样式自定义"
 首先，让我们了解一下链接 DOM 结构，以便明白各部分的定位、尺寸、功能及默认样式。
 
 ## 链接 DOM 元素结构
-
 
 链接的 DOM 元素结构如下:
 
@@ -138,7 +136,6 @@ gantt.templates.link_class = function(link){
 同样的方法也适用于任务。详细内容请参见[此处](guides/colouring-tasks.md#chongdingyirenwumoban)。
 
 ## 在链接对象属性中指定颜色
-
 
 您也可以通过在数据对象中添加属性，为依赖关系链接指定自定义颜色:
 

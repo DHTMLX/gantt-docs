@@ -5,7 +5,6 @@ sidebar_label: "从 MS Project 导出与导入"
 
 # 从 MS Project 导出与导入
 
-
 dhtmlxGantt 库支持将甘特图数据导出到 MS Project，以及将 MS Project 的数据导入到甘特图中。
 
 :::note
@@ -18,7 +17,6 @@ dhtmlxGantt 库支持将甘特图数据导出到 MS Project，以及将 MS Proje
 各服务的使用条款详情请参阅[相关文章](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
 
 ## 在线导出服务的限制
-
 
 :::note
 导出服务对处理时间和请求大小有限制。
@@ -43,7 +41,6 @@ Error: Timeout trigger 20 seconds
 
 ## 使用导出模块
 
-
 :::note
 如果需要导出大型甘特图，建议使用[独立导出模块](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
 如果您拥有 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)、[Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 或 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 许可证，则该模块免费；也可单独购买 [这里](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210)。
@@ -52,7 +49,6 @@ Error: Timeout trigger 20 seconds
 [了解更多关于 MS Project 导出模块的使用方法](guides/msp-export-module.md)。
 
 ## 导出到 MS Project
-
 
 Gantt 组件可以将链接、任务和资源导出到 MS Project。
 
@@ -287,7 +283,6 @@ gantt.exportToMSProject({
 ~~~
 
 ## 从 MS Project 导入
-
 
 要转换 XML 或 MPP MS Project 文件，请向导出服务发送如下请求:
 
@@ -547,7 +542,6 @@ gantt.importFromMSProject({
 其他方法，例如 *gantt.exportToPDF((server:"https://export.dhtmlx.com/gantt/project"))*，将导致服务器错误。
 
 ## dhtmlxGantt 与 MS Project 时间计算差异
-
 
 dhtmlxGantt 和 MS Project 在日期计算方式上存在一些关键差异，这有时会导致结果不同。
 

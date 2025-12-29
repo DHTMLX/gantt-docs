@@ -35,7 +35,6 @@ if (constraintType != types.ASAP &&
 
 ### Details
 
-
 返回值对应于任务的 **constraint_type**，如果已设置。
 
 如果未设置 **constraint_type**，则返回值将基于当前的调度方式--当从项目结束进行调度时，返回 "asap" 或 "alap"。

@@ -5,7 +5,6 @@ sidebar_label: "Salesforce"
 
 # dhtmlxGantt mit Salesforce LWC
 
-
 Dieses Tutorial erklärt, wie Sie dhtmlxGantt in eine [Salesforce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide) integrieren.
 
 Wenn Sie mit einer anderen Technologie arbeiten, finden Sie unten weitere Integrationsmöglichkeiten:
@@ -30,11 +29,9 @@ Es gibt außerdem ein Video-Tutorial, das zeigt, wie Sie ein Gantt-Diagramm mit 
 
 ## Voraussetzungen
 
-
 Stellen Sie sicher, dass die [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) installiert ist, falls dies noch nicht geschehen ist. Eine Anleitung zur Installation finden Sie in [diesem Leitfaden](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm).
 
 ## Schritt 1. Projekt erstellen
-
 
 Falls Sie noch keinen Account haben, erstellen Sie ein kostenloses Entwicklerkonto durch [Registrierung](https://developer.salesforce.com/). Hilfe dazu finden Sie in [diesem Leitfaden](https://webkul.com/blog/create-free-developer-account-in-salesforce/).
 
@@ -86,7 +83,6 @@ $ cd gantt-salesforce-app
 
 ## Schritt 2. Autorisierung
 
-
 Verwenden Sie den Web Server Flow, um eine Organisation zu [autorisieren](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm):
 
 ~~~js
@@ -127,7 +123,6 @@ Your scratch org is ready.
 
 ## Schritt 3. Gantt zu Salesforce hinzufügen
 
-
 Um die Bibliothek zu verwenden, muss sie als Statische Ressource in Salesforce hochgeladen werden. Öffnen Sie Ihre Scratch-Org:
 
 ~~~js
@@ -147,7 +142,6 @@ Nun steht die dhtmlxGantt-Bibliothek innerhalb von Salesforce zur Verfügung.
 ![](/img/sf_gantt_in_sf.png)
 
 ## Schritt 4. Datenmodell erstellen
-
 
 Die wichtigsten Komponenten von dhtmlxGantt sind Tasks und Links. Eine praktikable Methode zur Verwaltung ist es, deren Eigenschaften als JSON in Salesforce zu speichern. Beginnen Sie mit der Erstellung benutzerdefinierter Objekte für Tasks und Links. Gehen Sie dazu in den Object Manager, wählen Sie "Erstellen" und dann "Custom Object":
 
@@ -213,7 +207,6 @@ Am Ende sollten Ihre Objektfelder wie folgt aussehen:
 
 ### **Link-Objekt**
 
-
 Öffnen Sie zunächst den Objekt-Manager und wählen Sie „Erstellen" gefolgt von „Benutzerdefiniertes Objekt":
 
 Benennen Sie das Link-Objekt als *GanttLink/GanttLinks*.
@@ -258,7 +251,6 @@ Am Ende sollte es wie folgt aussehen:
 
 
 ## Schritt 5. Erstellen einer Lightning Web-Komponente
-
 
 Um eine Lightning Web-Komponente zu generieren, führen Sie diesen Befehl aus:
 
@@ -461,7 +453,6 @@ export default class GanttView extends LightningElement {
 
 ## Schritt 6. Erstellen einer Apex-Klasse
 
-
 Erstellen Sie als Nächstes eine Klasse, die die Kommunikation zwischen der Lightning-Komponente und dem Datenmodell übernimmt.
 
 ~~~js
@@ -512,7 +503,6 @@ $ sfdx project deploy start
 
 ## Schritt 7. Erstellen einer Lightning-Seite
 
-
 Starten Sie den „Lightning App Builder" und erstellen Sie eine neue Lightning-Seite.
 
 ![](/img/sf_lightning_app.png)
@@ -552,17 +542,14 @@ Wenn alles korrekt eingerichtet ist, erscheint eine einfache Gantt-Demo auf der 
 
 ## Anwendungssicherheit
 
-
 Gantt selbst bietet keinen integrierten Schutz gegen Bedrohungen wie SQL-Injection, XSS oder CSRF-Angriffe. Die Gewährleistung der Anwendungssicherheit liegt in der Verantwortung der Entwickler, die Gantt implementieren. Weitere Details finden Sie [im zugehörigen Artikel](guides/app-security.md). Salesforce bietet leistungsstarke Sicherheitsfunktionen zum Schutz Ihrer Daten und Anwendungen. Sie können Ihre Sicherheitsstrategie auch an die Struktur und Anforderungen Ihrer Organisation anpassen. Weitere Hinweise finden Sie im [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm). Zusätzliche Informationen zur Absicherung von Lightning-Komponenten finden Sie [hier](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm).
 
 ## Fehlerbehebung
-
 
 Wenn Sie alle Schritte durchgeführt haben, aber das Gantt-Diagramm keine Aufgaben und Verknüpfungen auf der Seite anzeigt, lesen Sie den Artikel [Fehlerbehebung bei Backend-Integrationsproblemen](guides/troubleshooting.md). Dort finden Sie Methoden zur Diagnose und Behebung häufiger Probleme.
 
 
 ## Wie geht es weiter?
-
 
 Mit dem vollständig eingerichteten Gantt können Sie den vollständigen Code auf [GitHub](https://github.com/DHTMLX/salesforce-gantt-demo) einsehen, wo er zum Klonen oder Herunterladen für Ihre Projekte bereitsteht.
 

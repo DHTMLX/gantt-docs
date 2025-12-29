@@ -5,7 +5,6 @@ sidebar_label: "Spalten festlegen"
 
 # Spalten festlegen
 
-
 Die Spalten des Grids werden über den Parameter [columns](api/config/columns.md) konfiguriert.
 
 ![gantt_left](/img/gantt_left.png)
@@ -25,7 +24,6 @@ Es gibt auch eine Videoanleitung, die zeigt, wie man die Spalten des Grids konfi
 <iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Überblick
-
 
 Standardmäßig zeigt das Grid 4 Spalten an:
 
@@ -57,11 +55,9 @@ Hier entsprechen 'text', 'holder', 'start_date', 'end_date' und 'progress' [den 
 
 ## Anzeige des Enddatums von Aufgaben
 
-
 Wenn die Aufgabenobjekte sowohl Start- als auch Enddaten im Format "%Y-%m-%d" oder "%d-%m-%Y" (ohne Stunden und Minuten) enthalten, kann das angezeigte Enddatum im Standardformat von den Erwartungen abweichen. Weitere Informationen zur Formatierung von Enddaten finden Sie im Artikel [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
 
 ## Das "Add"-Button für bestimmte Aufgaben ausblenden {#hidingtheaddbuttonforcertaintasks}
-
 
 Eine einfache Möglichkeit, das Hinzufügen von Unteraufgaben für bestimmte Aufgaben zu verhindern, ist das Ausblenden des "Add"-Buttons per CSS.
 
@@ -88,7 +84,6 @@ gantt.templates.grid_row_class = ( start, end, task ) => {
 
 
 ## Breite
-
 
 Um die Breite einer Spalte zu steuern, verwenden Sie das [width](api/config/columns.md)-Attribut im Konfigurationsobjekt der Spalte:
 
@@ -166,7 +161,6 @@ Beachten Sie außerdem, dass die minimale Grid-Breite beim Verkleinern von der m
 
 ## Datenzuordnung und Templates {#datamappingandtemplates}
 
-
 Standardmäßig füllt dhtmlxGantt das Grid mit Daten-Properties, deren Namen mit den Spaltennamen übereinstimmen. Wenn eine Spalte z.B. **name:"holder"** hat, sucht dhtmlxGantt nach einer 'holder'-Eigenschaft im JSON-Datensatz und zeigt deren Wert in dieser Spalte an.
 
 #### Verwendung von Templates für Spaltendaten 
@@ -189,7 +183,6 @@ gantt.init("gantt_here");
 
 ## Textausrichtung 
 
-
 Um den Text in einer Spalte horizontal auszurichten, verwenden Sie das [align](api/config/columns.md)-Attribut in der Spaltenkonfiguration:
 
 ~~~js
@@ -203,7 +196,6 @@ gantt.init("gantt_here");
 ~~~
 
 ### WBS-Code {#wbscode}
-
 
 Sie können eine Spalte hinzufügen, um die Gliederungsnummern (WBS-Codes) der Aufgaben anzuzeigen. Verwenden Sie dazu die Methode [getWBSCode](api/method/getwbscode.md) im Template der Spalte.
 
@@ -254,7 +246,6 @@ const task = gantt.getTaskByWBSCode("1.2");
 
 ## Zeitliche Einschränkungen für Aufgaben
 
-
 :::info
 Diese Funktionalität ist nur in der PRO-Edition verfügbar
 :::
@@ -302,7 +293,6 @@ const constraintDateEditor = {
 
 
 ## Größenänderung {#resizing}
-
 
 :::info
 Diese Funktionalität ist nur in der PRO-Edition verfügbar
@@ -382,7 +372,6 @@ dhtmlxGantt bietet 6 Events im Zusammenhang mit der Größenänderung:
 
 ## Sichtbarkeit
 
-
 Um die Sichtbarkeit einer Spalte zu steuern, verwenden Sie das Attribut [hide](api/config/columns.md) in der Spaltenkonfiguration.
 
  
@@ -433,7 +422,6 @@ Es gibt auch ein Video-Tutorial, das zeigt, wie die Sichtbarkeit von Spalten im 
 
 
 ## Zellen nach dem Rendern modifizieren
-
 
 Manchmal ist es notwendig, das Aussehen oder Verhalten einer Zelle im Grid nach dem Rendern anzupassen.
 
@@ -495,7 +483,6 @@ Der Ablauf ist wie folgt:
 
 
 ## Horizontaler Scrollbalken
-
 
 Das Grid kann scrollbar gemacht werden, indem die Eigenschaft **scrollable** in der [layout](guides/layout-config.md) Konfiguration aktiviert wird. 
 [Mehr erfahren über das Binden von Layout-Ansichten an einen Scrollbalken](guides/layout-config.md#scrollbar).
@@ -575,7 +562,6 @@ Wenn einer der Scrollbalken in der Gruppe sichtbar ist, werden alle Scrollbalken
 
 
 ## Styling
-
 
 Weitere Informationen zum Styling von Grid-Zellen finden Sie unter [Work with Gantt Styles](guides/styling-guide.md#stylinggrid).
 

@@ -75,7 +75,6 @@ gantt.attachEvent("onLightboxButton", function(button_id, node, e){
 
 ## 버튼 레이블 변경하기
 
-
 버튼 레이블은 Gantt를 초기화하기 전에 아래와 같은 구문으로 재정의할 수 있습니다:
 
 ~~~js

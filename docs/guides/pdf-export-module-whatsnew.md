@@ -5,9 +5,8 @@ sidebar_label: "What's new in PDF Export Module"
 
 # What's new in PDF Export Module
 
-
 ## 0.7.0
-  
+
 * Updated Electron version to 29
 
 * Added custom margin support for PDF export

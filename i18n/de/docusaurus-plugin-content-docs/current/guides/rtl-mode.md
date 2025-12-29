@@ -5,7 +5,6 @@ sidebar_label: "RTL (Rechts-nach-links) Modus"
 
 # RTL (Rechts-nach-links) Modus
 
-
 ![rtl_mode](/img/rtl_mode.png)
 
 Das Gantt-Diagramm unterstützt einen Rechts-nach-links-Modus (RTL), der über die Konfigurationsoption [rtl](api/config/rtl.md) aktiviert werden kann. 

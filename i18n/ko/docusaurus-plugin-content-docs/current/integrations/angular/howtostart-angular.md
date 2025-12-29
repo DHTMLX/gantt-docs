@@ -5,7 +5,6 @@ sidebar_label: "Angular"
 
 # dhtmlxGantt와 Angular 연동하기
 
-
 이 가이드는 Angular의 기본 개념과 패턴에 대한 이해를 전제로 합니다. 복습이 필요하다면 [Angular 공식 문서](https://angular.io/docs)에서 시작 가이드를 참고하세요.
 
 DHTMLX Gantt는 Angular와 원활하게 연동됩니다. 관련 예제는 GitHub에서 확인할 수 있습니다: [DHTMLX Gantt with Angular Demo](https://github.com/DHTMLX/angular-gantt-demo).

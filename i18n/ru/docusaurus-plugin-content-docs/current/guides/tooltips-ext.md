@@ -5,7 +5,6 @@ sidebar_label: "Расширение Tooltips"
 
 # Расширение Tooltips
 
-
 Более подробная информация о расширении Tooltips доступна в статье [Тултипы для элементов Gantt](guides/tooltips.md).
 
 ## Объект tooltip

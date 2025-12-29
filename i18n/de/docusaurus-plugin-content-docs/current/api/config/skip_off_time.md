@@ -29,7 +29,6 @@ gantt.init("gantt_here");
 
 ### Details
 
-
 Beachte, dass die Einstellung **skip_off_time** die Skala selbst nicht verändert, sondern nur die Zellen ausblendet, die keinerlei Arbeitszeit enthalten.
 
 Beispiel 1

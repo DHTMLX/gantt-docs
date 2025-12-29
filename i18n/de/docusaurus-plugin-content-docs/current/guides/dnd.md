@@ -5,7 +5,6 @@ sidebar_label: "Verschieben von Aufgaben innerhalb der Zeitleiste"
 
 # Verschieben von Aufgaben innerhalb der Zeitleiste
 
-
 Das Ziehen ermöglicht es, Start- oder Enddaten sowie die Dauer von Aufgaben einfach anzupassen. 
 
 
@@ -29,7 +28,6 @@ Hier sind einige typische Szenarien, in denen die Anpassung des Standard-Drag-Ve
 
 
 ## Blockieren des Verschiebens für bestimmte Aufgaben {#denyingdraggingofspecifictasks}
-
 
 Um das Verschieben bestimmter Aufgaben zu deaktivieren, nutzen Sie das Event [onBeforeTaskDrag](api/event/onbeforetaskdrag.md):
 
@@ -101,7 +99,6 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 
 ## Verschieben von untergeordneten Aufgaben zusammen mit der übergeordneten Aufgabe {#draggingchildrentogetherwiththeparent}
 
-
 Um das Verschieben von untergeordneten Aufgaben zu ermöglichen, wenn die übergeordnete Aufgabe verschoben wird, verwenden Sie das Event [onTaskDrag](api/event/ontaskdrag.md) (weitere Details zu diesem Event finden Sie [oben](guides/dnd.md#preventingdraggingtasksoutsidecertaindates)):
 
 ~~~js
@@ -137,7 +134,6 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 
 ## Verschieben von Projekten zusammen mit deren Unteraufgaben
 
-
 :::note
 Dieses Feature ist nur in der Gantt PRO Edition verfügbar.
 :::
@@ -155,13 +151,11 @@ gantt.config.drag_project = true;
 
 ## Verschieben von abhängigen Aufgaben zusammen mit unabhängigen Aufgaben
 
-
 Es gibt verschiedene Ansätze, um Aufgaben gemeinsam mit ihren abhängigen Aufgaben zu verschieben.
 Detaillierte Informationen finden Sie in einem eigenen Artikel: [Dragging Tasks Together with Their Dependent Tasks](guides/dragging-dependent-tasks.md).
 
 
 ## Festlegen einer minimalen Aufgabendauer 
-
 
 Die minimale Aufgabendauer kann über die Einstellung [min_duration](api/config/min_duration.md) festgelegt werden.
 
@@ -179,7 +173,6 @@ gantt.config.min_duration = 60*60*1000;
 ~~~
 
 ## Automatischer Bildlauf beim Ziehen von Aufgaben
-
 
 Beim Arbeiten mit großen Gantt-Diagrammen kann das Ziehen einer Aufgabe über eine große Entfernung oder das Erstellen von Verbindungen zwischen weit entfernten Aufgaben schwierig sein.
 
@@ -200,7 +193,6 @@ gantt.init("gantt_here");
 ~~~
 
 ## Deaktivieren der Größenänderung bestimmter Aufgaben {#disablingresizingofspecifictasks}
-
 
 Um zu verhindern, dass bestimmte Aufgaben in der Größe verändert werden, gibt es zwei Ansätze:
 
@@ -237,7 +229,6 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 
 ## Erkennen, welche Seite einer Aufgabe in der Größe verändert wird {#identifyingwhichsideofataskisbeingresized}
 
-
 Der "resize"-Modus beim Drag-and-Drop bedeutet, dass der Benutzer entweder das Start- oder das Enddatum einer Aufgabe ändert.
 
 Um zu erkennen, welches Datum geändert wird, prüfen Sie das Flag **gantt.getState().drag_from_start**:
@@ -256,7 +247,6 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 ~~~
 
 ## Deaktivieren der Größenänderung des Start- oder Enddatums einer Aufgabe {#disablingresizingofthestartorenddateofatask}
-
 
 Die Anfasser zur Größenänderung können mit folgenden Selektoren angesprochen werden:
 

@@ -5,7 +5,6 @@ sidebar_label: "使用 Lightbox 元素"
 
 # 使用 Lightbox 元素
 
-
 ## 获取/设置控件的值
 
 要获取或更新 lightbox 控件的值，可以像这样使用 [getLightboxSection](api/method/getlightboxsection.md) 方法:

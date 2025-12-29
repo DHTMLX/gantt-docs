@@ -26,7 +26,6 @@ gantt.init("gantt_here");
 
 ### Details
 
-
 :::note
 Эта настройка является частью расширений **auto_scheduling** или **critical_path**. Для её использования необходимо включить плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) или [critical_path](guides/extensions-list.md#criticalpath). Дополнительную информацию можно найти в документах [Автоматическое планирование](guides/auto-scheduling.md) и [Критический путь](guides/critical-path.md). 
 :::

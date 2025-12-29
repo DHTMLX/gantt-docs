@@ -5,7 +5,6 @@ sidebar_label: "dhtmlxGantt와 PHP:Slim 연동하기"
 
 # dhtmlxGantt와 PHP:Slim 연동하기
 
-
 이 튜토리얼은 Slim 4 프레임워크와 서버 측 RESTful API를 활용하여 PHP 기반 Gantt 차트를 만드는 모든 과정을 안내합니다.
 
 :::note
@@ -29,7 +28,6 @@ sidebar_label: "dhtmlxGantt와 PHP:Slim 연동하기"
 :::
 
 ## 1단계. 프로젝트 초기화
-
 
 ### 프로젝트 생성
 
@@ -121,7 +119,6 @@ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## 3단계. 데이터베이스 설정
 
-
 Gantt 차트가 표시되었으니, 다음 단계는 데이터베이스를 생성하고 애플리케이션과 연결하는 것입니다.
 
 ### 데이터베이스 생성
@@ -175,7 +172,6 @@ INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2020-04-05 00:00:00',
 프로젝트 설정이 완료되면, 다음 단계로 데이터를 로드하는 작업을 진행합니다.
 
 ## 4단계. 데이터 로딩
-
 
 이제 데이터베이스에서 데이터를 로드하는 설정을 할 차례입니다. 클라이언트 측에서는 [gantt.load](api/method/load.md) 메서드를 사용하여 데이터를 요청합니다:
 
@@ -286,7 +282,6 @@ return function (App $app) {
 ![slim_load](/img/slim_load.png)
 
 ## 5단계. 변경사항 저장
-
 
 다음 단계는 클라이언트에서 변경된 내용을 서버에 저장하는 것입니다. 일반적으로 이는 gantt에 내장된 [dataProcessor](guides/server-side.md#technique) 라이브러리를 통해 처리됩니다.
 
@@ -705,21 +700,17 @@ function updateOrder($taskId, $target, $db){
 
 ## dhtmlxConnector 사용하기
 
-
 PHP 백엔드 구현의 또 다른 방법으로 [dhtmlxConnector 라이브러리](https://docs.dhtmlx.com/connector__php__index.html)를 사용할 수 있습니다. 자세한 튜토리얼은 [여기](integrations/php/howtostart-connector.md)에서 확인하세요.
 
 ## 애플리케이션 보안
-
 
 Gantt 자체는 SQL 인젝션, XSS, CSRF와 같은 일반적인 보안 위협에 대한 보호 기능을 제공하지 않습니다. 애플리케이션의 보안은 백엔드 개발자의 책임입니다. 자세한 내용은 [이 글](guides/app-security.md)을 참고하세요.
 
 ## 문제 해결
 
-
 이 단계를 모두 따라 했음에도 Gantt 차트에 작업이나 링크가 표시되지 않는다면, [백엔드 통합 문제 해결](guides/troubleshooting.md)의 문제 해결 가이드를 참고하세요. 일반적인 문제를 진단하고 해결하는 방법을 안내합니다.
 
 ## 다음 단계
-
 
 이제 gantt가 완전히 동작합니다. 전체 소스 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-php)에서 복제하거나 다운로드할 수 있습니다.
 

@@ -110,7 +110,6 @@ gantt.config.auto_scheduling = {
 
 #### descendant_links
 
-
 **Type**: boolean
 
 **Default**: `false`
@@ -129,7 +128,6 @@ gantt.config.auto_scheduling = {
 
 
 #### schedule_on_parse
-
 
 **Type**: boolean
 

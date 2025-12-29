@@ -5,7 +5,6 @@ sidebar_label: "任务分组"
 
 # 任务分组
 
-
 :::info
 此功能仅在 PRO 版本中提供
 :::
@@ -131,7 +130,6 @@ gantt.templates.task_class="function(start," end, task){
 
 ## 取消任务分组
 
-
 要清除分组，调用 [groupBy](api/method/groupby.md) 方法并传入 *false* 作为参数:
 
 **重置当前分组**
@@ -140,7 +138,6 @@ gantt.groupBy(false);
 ~~~
 
 ## 使用集合指定分组
-
 
 分组通常会在页面的多个组件间共享。为避免重复，可以将分组定义为命名集合。
 
@@ -160,7 +157,6 @@ gantt.groupBy({
 
 
 ## 在分组中保留原始任务层级结构
-
 
 默认情况下，启用分组后，Gantt 树的原始层级结构不会显示，所有任务都作为分组的直接子项。
 

@@ -5,9 +5,7 @@ sidebar_label: "从Primavera导入的属性"
 
 # 从Primavera导入的属性
 
-
 ## 项目属性
-
 
 <div class="myblock">
   <li>ActualsInSync</li>
@@ -68,7 +66,6 @@ sidebar_label: "从Primavera导入的属性"
 </div>
 
 ## 任务属性
-
 
 <div class="myblock">
   <li>ActualCost</li>

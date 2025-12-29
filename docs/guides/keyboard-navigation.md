@@ -5,7 +5,6 @@ sidebar_label: "Keyboard Navigation"
 
 # Keyboard Navigation
 
-
 You can get access to Gantt and its elements via keys or keys' combinations. This article will give you all the necessary information 
 on the peculiarities of keyboard navigation with Gantt, including focus behavior, usage of ready shortcuts and creation of custom ones.
 

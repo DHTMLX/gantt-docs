@@ -29,7 +29,6 @@ gantt.init("gantt_here");
 
 ### Details
 
-
 :::note
  이 설정은 **auto_scheduling** 확장의 일부이므로, [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인을 반드시 활성화해야 합니다. 자세한 내용은 [자동 스케줄링](guides/auto-scheduling.md) 문서를 참조하세요. 
 :::

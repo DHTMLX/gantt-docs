@@ -5,7 +5,6 @@ sidebar_label: "Wie man mit dhtmlxGantt startet"
 
 # Wie man mit dhtmlxGantt startet
 
-
 <h2>Erste Schritte mit Gantt und Front-End</h2>
 
 Im Folgenden finden Sie eine Zusammenfassung von Anleitungen, die die Grundlagen zur Initialisierung eines Gantt-Diagramms mit beliebten Front-End-Frameworks abdecken.

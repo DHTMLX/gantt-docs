@@ -5,7 +5,6 @@ sidebar_label: "Типы задач"
 
 # Типы задач
 
-
 :::info
 Эта функция доступна только в PRO-версии.
 :::
@@ -38,7 +37,6 @@ var data = {
 
 ## Обычные задачи {#regulartasks}
 
-
 По умолчанию dhtmlxGantt создаёт обычные задачи (tasks с **type="task"**).
 
 ![type_task](/img/type_task.png)
@@ -69,7 +67,6 @@ var data = {
 - Могут быть скрыты на временной шкале. См. [подробнее](guides/milestones.md#hidingtasksandmilestones).
 
 ## Проектные задачи {#projecttasks}
-
 
 Проектная задача охватывает период от начала самой ранней дочерней задачи до завершения самой поздней дочерней задачи.
 
@@ -110,7 +107,6 @@ var data = {
 
 ## Вехи {#milestones}
 
-
 [Веха](guides/milestones.md) - это задача с нулевой длительностью, предназначенная для выделения ключевых дат проекта ([подробнее](guides/milestones.md)).
 
 ![type_milestone](/img/type_milestone.png)
@@ -144,7 +140,6 @@ var data = {
 :::
 
 ## Отдельная форма lightbox для каждого типа задачи {#specificlightboxpertasktype}
-
 
 Каждый тип задачи обладает уникальными свойствами, поэтому форма редактирования (lightbox) может быть настроена индивидуально для каждого типа. Конфигурации хранятся в объекте [lightbox](api/config/lightbox.md).
 
@@ -180,7 +175,6 @@ gantt.config.lightbox.milestone_sections= [
 Подробнее о настройке lightbox см. в разделе [Настройка формы редактирования](guides/edit-form.md).
 
 ## Создание пользовательского типа {#creatingacustomtype}
-
 
 Все типы задач определяются в объекте [types](api/config/types.md). 
 
@@ -261,7 +255,6 @@ gantt.templates.task_text = function(start, end, task){
 
 
 ## Пользовательское отображение типов задач {#customdisplayoftasktypes}
-
 
 Чтобы изменить внешний вид существующих типов задач, используйте опцию [type_renderers](api/config/type_renderers.md). Это позволяет переопределить функции, управляющие отрисовкой типов задач на странице.
 

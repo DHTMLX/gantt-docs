@@ -5,7 +5,6 @@ sidebar_label: "Tooltips für Gantt-Elemente"
 
 # Tooltips für Gantt-Elemente
 
-
 Tooltips bieten eine Möglichkeit, zusätzliche Informationen anzuzeigen, ohne den Bildschirm mit zu viel Text zu überladen. Standardmäßig erscheinen Tooltips auf Gantt-Aufgaben.
 
 ![task_tooltip](/img/task_tooltip.png)
@@ -14,7 +13,6 @@ Es ist möglich, [Tooltips für jedes Gantt-Element hinzuzufügen](#tooltipsford
 
 
 ## Aktivierung
-
 
 Um Tooltips für Aufgaben zu aktivieren, schalten Sie einfach das **tooltip**-Plugin mit der [gantt.plugins](api/method/plugins.md)-Methode ein:
 
@@ -36,7 +34,6 @@ Sobald die Erweiterung aktiviert ist, werden Tooltips automatisch mit den Standa
 
 
 ## Eigener Text
-
 
 Standardmäßig zeigen Tooltips drei Eigenschaften einer Aufgabe an:
 
@@ -114,7 +111,6 @@ Entfernt einen Tooltip. Erwartet:
 
 ## Tooltips für verschiedene Elemente
 
-
 Standardmäßig werden Tooltips nur zu Gantt-Aufgaben hinzugefügt, sie können aber auch auf andere Gantt-Elemente angewendet werden, wie z. B. einen Ressourcenmarker:
 
 ![Resource marker tooltip](/img/resource_marker_tooltip.png)
@@ -180,7 +176,6 @@ Mit dieser Methode können Sie Tooltips mit detaillierterer Konfiguration hinzuf
 
 ## Anpassung des Tooltip-Verhaltens
 
-
 Sie können das Standardverhalten des Tooltips ändern, indem Sie den eingebauten Handler entfernen und Ihren eigenen hinzufügen:
 
 - Entfernen Sie den Standard-Tooltip-Handler von Aufgaben mit [**gantt.ext.tooltips.detach**](#detach):
@@ -215,7 +210,6 @@ gantt.ext.tooltips.tooltipFor({
 
 ## Timeout
 
-
 Die Zeitspanne für das Anzeigen und Ausblenden von Tooltips kann über die entsprechenden Einstellungen angepasst werden.
 
 Um festzulegen, wie lange (in Millisekunden) es dauert, bis ein Tooltip für eine Aufgabe erscheint, verwenden Sie [tooltip_timeout](api/config/tooltip_timeout.md):
@@ -236,7 +230,6 @@ gantt.init("gantt_here");
 
 ## Position
 
-
 Sie können die Position des Tooltips anpassen, indem Sie die horizontalen und vertikalen Offsets über diese Konfigurationseigenschaften ändern:
 
 - [tooltip_offset_x](api/config/tooltip_offset_x.md) - legt den horizontalen Offset fest
@@ -251,7 +244,6 @@ gantt.init("gantt_here");
 
 
 ## Anzeigebereich
-
 
 Vor Version 6.1 wurden Tooltips nur im Bereich der Zeitleiste angezeigt. Seit v6.1 können Tooltips überall erscheinen und folgen dem Mauszeiger.
 

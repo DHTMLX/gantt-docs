@@ -5,7 +5,6 @@ sidebar_label: "样式"
 
 # 样式
 
-
 - [CSS 문서](guides/css-overview.md)
 - [스킨(Skins)](guides/skins.md)
 - [스킨 커스터마이제이션](guides/custom-skins.md)

@@ -5,7 +5,6 @@ sidebar_label: "지원되는 데이터 형식"
 
 # 지원되는 데이터 형식
 
-
 dhtmlxGantt는 여러 가지 데이터 형식으로 데이터를 불러오는 것을 지원합니다:
 
 1. [JSON](guides/supported-data-formats.md#json);
@@ -17,7 +16,6 @@ dhtmlxGantt는 여러 가지 데이터 형식으로 데이터를 불러오는 �
 
 
 ## JSON {#json}
-
 
 ### 작업 및 링크
 
@@ -112,7 +110,6 @@ dhtmlxGantt는 여러 가지 데이터 형식으로 데이터를 불러오는 �
 
 ## XML (dhtmlxGantt 2.0+) {#xmldhtmlxgantt20}
 
-
 ~~~xml
 <data>
     <task id='1' parent='' start_date='01-04-2020' duration='18' open='true'
@@ -137,7 +134,6 @@ dhtmlxGantt는 여러 가지 데이터 형식으로 데이터를 불러오는 �
 ~~~
 
 ## 데이터 내 사용자 정의 속성 {#custompropertiesindata}
-
 
 다음 예제에는 두 가지 사용자 정의 속성이 포함되어 있습니다:
 
@@ -200,7 +196,6 @@ dhtmlxGantt는 여러 가지 데이터 형식으로 데이터를 불러오는 �
 
 ## JSON with Collections {#jsonwithcollections}
 
-
 JSON 데이터는 *data* 객체의 "collections" 속성 내에 여러 추가 배열을 포함할 수 있습니다.
 
 ~~~js
@@ -232,7 +227,6 @@ JSON 데이터는 *data* 객체의 "collections" 속성 내에 여러 추가 배
 이러한 컬렉션은 [gantt.serverList](api/method/serverlist.md) 메서드를 사용하여 이름으로 접근할 수 있습니다.
 
 ## XML (dhtmlxGantt < 2.0) {#xmldhtmlxganttlt20}
-
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>

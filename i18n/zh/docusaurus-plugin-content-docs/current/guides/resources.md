@@ -5,7 +5,6 @@ sidebar_label: "资源控制"
 
 # 资源控制
 
-
 :::info
 此功能仅包含在 PRO 版本中。
 :::
@@ -55,7 +54,6 @@ gantt.locale.labels.section_rooms = "Rooms";
 
 ## 初始化
 
-
 要在 lightbox 中包含 **resources** 控件，请按照以下步骤操作:
 
 1. 向 lightbox 配置中添加一个 section:
@@ -80,7 +78,6 @@ gantt.locale.labels.section_resources = "Rooms";
 
 ## 属性
 
-
 以下是 **resources** 控件常用的主要属性（完整细节见[此处](api/config/lightbox.md)）:
 
 - **name** - (*string*) section 名称 
@@ -101,7 +98,6 @@ gantt.locale.labels.section_resources = "Rooms";
 :::
 
 ## 为控件填充数据
-
 
 自 v8.0 起，资源控件会自动从[资源数据存储](guides/resource-management.md#shiyongziyuanshitumianban)获取选项。
 
@@ -164,7 +160,6 @@ gantt.config.lightbox.sections = [
 
 
 ## 通过服务器为控件填充数据
-
 
 若要通过服务器为控件填充数据，将 [options](api/config/lightbox.md) 属性设置为 [serverList](api/method/serverlist.md) 方法返回的值:
 

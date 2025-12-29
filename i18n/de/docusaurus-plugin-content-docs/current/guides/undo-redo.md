@@ -5,7 +5,6 @@ sidebar_label: "Undo/Redo-Funktionalität"
 
 # Undo/Redo-Funktionalität
 
-
 Das dhtmlxGantt Chart unterstützt das Rückgängigmachen und Wiederherstellen von Änderungen innerhalb des Diagramms. Um diese Funktion zu aktivieren, aktivieren Sie das **undo**-Plugin mit der [gantt.plugins](api/method/plugins.md)-Methode.
 
 ~~~js
@@ -30,7 +29,6 @@ gantt.config.redo = true;
 
 ## Undo/Redo API
 
-
 Um Änderungen im Gantt Chart rückgängig zu machen, verwenden Sie die [undo](api/method/undo.md)-Methode:
 
 ~~~js
@@ -46,7 +44,6 @@ gantt.redo();
 Ab Version 6.3 sind die Methoden **undo()/redo()** auch über das **gantt.ext.undo**-Objekt zugänglich. Weitere Informationen finden Sie im Artikel [Undo Extension](guides/undo-ext.md).
 
 ## Abrufen des Stapels gespeicherter Undo/Redo-Aktionen
-
 
 Benutzeraktionen im Gantt Chart werden als Arrays von Befehlsobjekten gespeichert. Gantt führt einen Stapel der zuletzt ausgeführten Befehle. Die **undo**-Erweiterung verarbeitet diese Befehle, um Rückgängig-Operationen auszuführen.
 
@@ -87,7 +84,6 @@ Ab Version 6.3 sind die Methoden **getUndoStack()/getRedoStack()** ebenfalls üb
 
 ## Löschen des Stapels gespeicherter Undo/Redo-Befehle
 
-
 Sie können die Undo/Redo-Befehlsstapel mit den entsprechenden Gantt-API-Methoden leeren.
 
 Um den Undo-Stapel zu leeren, verwenden Sie die [clearUndoStack](api/method/clearundostack.md)-Methode:
@@ -105,7 +101,6 @@ gantt.clearRedoStack();
 Ab Version 6.3 sind die Methoden **clearUndoStack()/clearRedoStack()** ebenfalls über das **gantt.ext.undo**-Objekt zugänglich. Weitere Details finden Sie im Artikel [Undo Extension](guides/undo-ext.md).
 
 ## Rückgängigmachen/Wiederherstellen von Änderungen aus dem Code
-
 
 Das Rückgängigmachen oder Wiederherstellen von programmatisch vorgenommenen Änderungen ist möglich, indem Sie die Methoden **undo()/redo()** mit der **saveState()**-Methode aus dem **gantt.ext.undo**-Objekt kombinieren.
 
@@ -142,7 +137,6 @@ Weitere Informationen zu **saveState()** finden Sie im Artikel [Undo Extension](
 
 ## Konfiguration der Undo-Funktionalität
 
-
 Mehrere Einstellungen ermöglichen die Anpassung der Undo-Operation.
 
 Verwenden Sie den [undo_actions](api/config/undo_actions.md)-Parameter, um festzulegen, welche Aktionen durch Undo abgedeckt werden:
@@ -174,7 +168,6 @@ gantt.config.undo_types = {
 
 
 ## Liste der API-Events
-
 
 Es gibt mehrere Events, die sich auf die Undo/Redo-Funktionalität beziehen:
 

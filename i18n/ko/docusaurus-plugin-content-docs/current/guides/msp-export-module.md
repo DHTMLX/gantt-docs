@@ -5,7 +5,6 @@ sidebar_label: "MS Project용 내보내기 모듈"
 
 # MS Project용 내보내기 모듈
 
-
 이 내보내기 모듈은 MS Project 및 Primavera 파일의 가져오기와 내보내기를 처리합니다. 이 모듈은 .NET Core 애플리케이션으로, dotnet 환경 또는 도커 이미지 내에서 실행할 수 있습니다.
 
 PDF, PNG, Excel 또는 iCal 파일의 가져오기/내보내기는 지원하지 않습니다. 해당 형식이 필요하다면 [해당 내보내기 모듈](guides/pdf-export-module.md)이나 온라인 서버를 사용하시기 바랍니다.

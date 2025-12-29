@@ -5,7 +5,6 @@ sidebar_label: "Настройка шкалы"
 
 # Настройка шкалы
 
-
 ![gantt_dates](/img/gantt_dates.png)
 
 Вы можете настраивать шкалы с помощью свойства [scales](api/config/scales.md). Можно определить несколько шкал, добавив объекты шкалы в массив **scales** в конфиге:
@@ -37,7 +36,6 @@ gantt.config.scales = [
 
 ## Единицы времени {#timeunits}
 
-
 ![month_day_scale_units](/img/month_day_scale_units.png)
 
 Чтобы задать единицу измерения для шкалы, используйте свойство **unit** в объекте шкалы:
@@ -58,7 +56,6 @@ gantt.init("gantt_here");
 
 
 ## Диапазон {#range}
-
 
 ![day_scale_unit](/img/day_scale_unit.png)
 
@@ -268,7 +265,6 @@ gantt.init("gantt_here", new Date(2020, 1, 1), new Date(2020, 2, 1));
 
 ## Шаг времени {#timestep}
 
-
 ![scale_step](/img/scale_step.png)
 
 Чтобы задать размер шага временной шкалы, используйте свойство **step** в объекте конфигурации шкалы:
@@ -295,7 +291,6 @@ gantt.init("gantt_here");
 
 ## Высота {#height}
 
-
 ![scale_height](/img/scale_height.png)
 
 Чтобы настроить высоту шкалы, используйте свойство [scale_height](api/config/scale_height.md):
@@ -313,7 +308,6 @@ gantt.init("gantt_here");
 Если используется несколько шкал, заданная высота будет разделена между ними равномерно. Например, если **scale_height** равен 60 пикселям и есть 3 шкалы, каждая получит по 20 пикселей высоты.
 
 ## Формат даты {#dateformat}
-
 
 :::note
 См. статью [Спецификация формата даты](guides/date-format.md) для ознакомления с доступными символами формата
@@ -356,7 +350,6 @@ gantt.config.scales = [
 ![scale_template](/img/scale_template.png)
 
 ## Стилизация {#styling}
-
 
 ![css_styling](/img/css_styling.png)
 
@@ -452,7 +445,6 @@ gantt.templates.scale_cell_class = function(date){
 Больше информации о кастомизации стиля области временной шкалы смотрите в статье [Выделение временных слотов](guides/highlighting-time-slots.md).
 
 ## Пользовательские единицы времени {#customtimeunits}
-
 
 dhtmlxGantt позволяет создавать собственные единицы времени и задавать шаблоны подписей в настройках шкалы.
 
@@ -591,7 +583,6 @@ if (nextDate.getHours() % 8 != 0) {
 Больше примеров смотрите в статье [Решения: добавление пользовательской шкалы](guides/how-to.md#howtoaddacustomscale).
 
 ## Пользовательские временные интервалы {#customtimespans}
-
 
 В этом разделе приведены примеры настройки временной шкалы для отображения или скрытия нерабочих периодов времени. Также приведён пример скрытия ячеек с нерабочими часами в начале шкалы даже при активном режиме **skip_off_time**.
 

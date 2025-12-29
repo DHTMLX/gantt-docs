@@ -5,7 +5,6 @@ sidebar_label: "Barrierefreiheit"
 
 # Barrierefreiheit
 
-
 [Barrierefreiheit](https://www.w3.org/WAI/fundamentals/accessibility-intro/) ist ein wichtiger Standard für moderne Webanwendungen.
 Es gibt verschiedene Techniken, die darauf abzielen, eine Anwendung oder Website benutzerfreundlicher und zugänglicher zu machen.
 
@@ -16,7 +15,6 @@ Um den Zugang und die Interaktion mit DHTMLX Gantt für Nutzer mit Behinderungen
 - Hochkontrast-Thema
 
 ## WAI-ARIA-Attribute
-
 
 DHTMLXGantt unterstützt WAI-ARIA, indem spezielle Attribute in das Markup der Komponente integriert werden.
 Diese zusätzlichen Attribute helfen Screenreadern, die Komponente korrekt zu interpretieren.
@@ -31,14 +29,12 @@ gantt.config.wai_aria_attributes = true;
 
 ## Tastaturnavigation
 
-
 Mit dieser Methode wird sichergestellt, dass alle Funktionen der Anwendung über Tasten und Tastenkombinationen zugänglich sind,
 sodass die Navigation mit der Maus nicht erforderlich ist.
 
 Weitere Informationen finden Sie im Artikel [Keyboard Navigation](guides/keyboard-navigation.md).
 
 ## Hochkontrast-Themen
-
 
 DHTMLXGantt bietet ein Thema mit kontrastreichen Farben, die die Benutzeroberfläche klarer und besser sichtbar machen.
 Dieses Hochkontrast-Thema ist besonders hilfreich für Nutzer mit speziellen Sehbedürfnissen.

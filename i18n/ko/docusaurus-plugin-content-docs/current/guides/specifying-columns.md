@@ -5,7 +5,6 @@ sidebar_label: "컬럼 지정하기"
 
 # 컬럼 지정하기
 
-
 그리드 컬럼은 [columns](api/config/columns.md) 파라미터를 사용하여 설정합니다.
 
 ![gantt_left](/img/gantt_left.png)
@@ -25,7 +24,6 @@ gantt.config.columns = [
 <iframe width="676" height="400" src="https://www.youtube.com/embed/-BoznxJmJIo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 개요 {#overview}
-
 
 기본적으로 그리드는 4개의 컬럼을 보여줍니다:
 
@@ -57,11 +55,9 @@ gantt.init("gantt_here");
 
 ## 작업의 종료일 표시 {#displayingenddateoftasks}
 
-
 작업 데이터 객체에 시작일과 종료일이 "%Y-%m-%d" 또는 "%d-%m-%Y" (시, 분 없이) 형식으로 포함된 경우, 기본 포맷으로 표시되는 종료일이 예상과 다를 수 있습니다. 종료일 포맷에 대한 자세한 내용은 [작업 종료일 표시 및 종료일 포함](guides/loading.md#taskenddatedisplayampinclusiveenddates) 문서를 참고하세요.
 
 ## 특정 작업에서 "Add" 버튼 숨기기 {#hidingtheaddbuttonforcertaintasks}
- 
 
 특정 작업에 하위 작업 추가를 막으려면 CSS를 이용해 'Add' 버튼을 숨길 수 있습니다.
 
@@ -88,7 +84,6 @@ gantt.templates.grid_row_class = ( start, end, task ) => {
 
 
 ## 컬럼 너비 설정 {#width}
-
 
 컬럼의 너비는 해당 컬럼의 설정 객체에서 [width](api/config/columns.md) 속성으로 지정합니다:
 
@@ -174,7 +169,6 @@ gantt.init("gantt_here");
 
 ## 데이터 매핑과 템플릿 {#datamappingandtemplates}
 
-
 기본적으로 dhtmlxGantt는 컬럼 이름과 일치하는 데이터 속성을 사용하여 그리드를 채웁니다. 예를 들어, 컬럼에 **name:"holder"**가 있으면 dhtmlxGantt는 JSON 데이터에서 'holder' 속성을 찾아 해당 컬럼에 표시합니다.
 
 #### 컬럼 데이터에 템플릿 사용
@@ -197,7 +191,6 @@ gantt.init("gantt_here");
 
 ## 텍스트 정렬  {#textalignment}
 
-
 컬럼 내 텍스트를 수평 정렬하려면 해당 컬럼의 설정에서 [align](api/config/columns.md) 속성을 사용하세요:
 
 ~~~js
@@ -211,7 +204,6 @@ gantt.init("gantt_here");
 ~~~
 
 ## WBS 코드  {#wbscode}
-
 
 작업의 개요 번호(WBS 코드)를 표시하는 컬럼을 추가할 수 있습니다. 이를 위해 해당 컬럼의 템플릿에 [getWBSCode](api/method/getwbscode.md) 메서드를 사용하세요.
 
@@ -263,7 +255,6 @@ const task = gantt.getTaskByWBSCode("1.2");
 
 ## 작업의 시간 제약 조건 {#timeconstraintsfortasks}
 
-
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다
 :::
@@ -313,7 +304,6 @@ const constraintDateEditor = {
 
 
 ## 크기 조정 {#resizing}
-
 
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다
@@ -396,7 +386,6 @@ dhtmlxGantt는 크기 조정과 관련된 6개의 이벤트를 제공합니다:
 
 ## 컬럼 가시성 {#visibility}
 
-
 컬럼의 가시성을 제어하려면 컬럼 설정의 [hide](api/config/columns.md) 속성을 사용하세요.
 
  
@@ -448,7 +437,6 @@ gantt.init("gantt_here");
 
 
 ## 렌더링 후 셀 수정 {#modifyingcellsafterrendering}
-
 
 때때로 그리드 셀이 렌더링된 후 셀의 모양이나 동작을 조정해야 할 수 있습니다.
 
@@ -513,7 +501,6 @@ gantt.config.external_render = {
 
 
 ## 수평 스크롤바 {#horizontalscrollbar}
-
 
 그리드를 스크롤 가능하게 하려면 [layout](guides/layout-config.md) 설정에서 **scrollable** 속성을 활성화하면 됩니다. 
 [레이아웃 뷰를 스크롤바에 바인딩하는 방법 자세히 알아보기](guides/layout-config.md#scrollbar).
@@ -594,7 +581,6 @@ gantt.config.layout = {
 
 
 ## 스타일링 {#styling}
-
 
 그리드 셀 스타일링에 대한 자세한 내용은 [Gantt 스타일 작업하기](guides/styling-guide.md#stylinggrid)를 참고하세요.
 

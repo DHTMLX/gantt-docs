@@ -5,8 +5,6 @@ sidebar_label: "Server-Side Integration"
 
 # Server-Side Integration
 
-
-
 dhtmlxGantt를 백엔드와 연결하는 가장 좋은 방법은 서버에 RESTful API를 설정하고 클라이언트 측에서 [dataprocessor](api/other/dataprocessor.md) 모듈을 사용하는 것입니다.
 
 DataProcessor는 Gantt 데이터의 변경 사항을 추적하고 필요한 형식으로 REST API에 업데이트를 전송하는 내장 기능입니다. 이를 통해 [서버 사이드 플랫폼과의 통합](integrations/howtostart-guides.md)이 간편해집니다. 객체 데이터 소스를 사용할 때, DataProcessor를 설정하여 데이터 변경에 대한 콜백을 제공할 수 있으며, 이는 데이터 바인딩에 유용합니다.
@@ -16,7 +14,6 @@ Node.js를 예시로 Gantt 차트를 생성하고 데이터를 로드하는 방�
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Technique {#technique}
-
 
 일반적으로 REST API를 사용하여 서버에서 데이터를 로드하려면 다음과 같은 절차가 필요합니다:
 
@@ -371,7 +368,6 @@ Gantt 백엔드 통합을 위해 준비된 서버 사이드 구현 예시는 다
 
 ## 작업 순서 저장하기 {#storingtheorderoftasks}
 
-
 Gantt는 데이터 소스에서 전달받은 순서대로 작업을 표시합니다. 사용자가 [작업을 수동으로 재정렬](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure)할 수 있다면,
 이 순서를 데이터베이스에 저장하고, 데이터 피드가 해당 순서로 정렬된 작업을 반환하도록 해야 합니다.
 
@@ -462,9 +458,6 @@ tasks.save(currentTask);
 
 ## 커스텀 요청 헤더 및 파라미터 {#customrequestheadersandparameters}
 
-
-
-
 ### 커스텀 요청 헤더 추가하기
 
 백엔드로 전송되는 요청에 추가 헤더를 포함할 수 있습니다. 예를 들어, 요청에 인증 토큰을 추가하고자 할 수 있습니다:
@@ -544,7 +537,6 @@ dp.attachEvent("onBeforeUpdate", (id, state, data) => {
 
 ## 스크립트에서 데이터 저장 트리거하기 {#triggeringdatasavingfromscript}
 
-
 dataProcessor가 초기화되면, 사용자 또는 코드로 변경된 데이터가 자동으로 데이터 소스에 저장됩니다.
 
 특정 작업(task)이나 의존성(link)을 코드로 업데이트하려면 [updateTask](api/method/updatetask.md) 및 [updateLink](api/method/updatelink.md) 메서드를 사용합니다:
@@ -572,7 +564,6 @@ gantt.updateTask(1); // 수정된 작업을 다시 렌더링
 
 
 ## 커스텀 라우팅 {#customrouting}
- 
 
 RESTful AJAX API가 백엔드 요구사항에 맞지 않거나, 서버로 전송되는 내용을 직접 제어하고 싶을 때 커스텀 라우팅을 사용할 수 있습니다.
 
@@ -721,7 +712,6 @@ gantt.createDataProcessor((entity, action, data, id) => {
 
 ## 에러 처리 {#errorhandling}
 
-
 서버가 작업 실패를 보고하면, `"action":"error"`가 포함된 응답을 반환할 수 있습니다:
 
 ~~~js
@@ -775,7 +765,6 @@ gantt.render();
 
 ## 계단식 삭제(Cascade Deletion) {#cascadedeletion}
 
-
 기본적으로 작업을 삭제하면 해당 하위 작업 및 관련 링크가 계단식으로 삭제됩니다. Gantt는 삭제된 각 작업과 링크에 대해 *delete* 요청을 전송합니다.  
 따라서 백엔드에서 데이터 무결성을 수동으로 관리할 필요 없이, Gantt가 이를 효과적으로 처리합니다.
 
@@ -787,7 +776,6 @@ gantt.render();
 
 
 ## XSS, CSRF 및 SQL 인젝션 공격 {#xsscsrfandsqlinjectionattacks}
-
 
 Gantt는 SQL 인젝션, XSS, CSRF와 같은 공격에 대한 내장 보호 기능을 제공하지 않습니다.  
 애플리케이션 보안은 백엔드 개발자가 책임지고 구현해야 합니다.

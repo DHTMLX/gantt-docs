@@ -30,7 +30,6 @@ gantt.init("gantt_here");
 
 ### Details
 
-
 :::note
  该设置是**critical_path**扩展的一部分，因此请确保启用[critical_path](guides/extensions-list.md)插件。更多详情请参见[关键路径](guides/critical-path.md)文章。 
 :::

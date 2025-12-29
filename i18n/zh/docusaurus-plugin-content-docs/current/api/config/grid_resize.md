@@ -33,7 +33,6 @@ gantt.init("gantt_here");
 
 ### Details
 
-
 :::note
  此属性现已废弃。请改用 [gantt.config.layout](api/config/layout.md) 并根据需要配置 grid 和 resizer 对象。更多详情请参见 [这里](guides/layout-config.md#morenbuju)。 
 :::

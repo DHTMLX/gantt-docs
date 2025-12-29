@@ -5,7 +5,6 @@ sidebar_label: "Arbeiten mit Lightbox-Elementen"
 
 # Arbeiten mit Lightbox-Elementen
 
-
 ## Abrufen/Setzen des Kontrollwerts
 
 Um den Wert eines Lightbox-Controls abzurufen oder zu aktualisieren, verwenden Sie die Methode [getLightboxSection](api/method/getlightboxsection.md) wie folgt:

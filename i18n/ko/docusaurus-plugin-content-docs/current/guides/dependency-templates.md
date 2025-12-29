@@ -5,7 +5,6 @@ sidebar_label: "의존성 링크 템플릿"
 
 # 의존성 링크 템플릿
 
-
 <table class="webixdoc_links">
     <tbody>
         <tr>

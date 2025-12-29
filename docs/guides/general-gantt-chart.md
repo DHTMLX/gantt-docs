@@ -5,7 +5,6 @@ sidebar_label: "Creating Gantt Chart on a Page"
 
 # Creating Gantt Chart on a Page
 
-
 ![gantt_basic](/img/gantt_basic.png)
 
 - [How to Install dhtmlxGantt](guides/installation.md)

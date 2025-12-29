@@ -5,7 +5,6 @@ sidebar_label: "Export and Import from MS Project"
 
 # Export and Import from MS Project
 
-
 The dhtmlxGantt library allows you to export data from the Gantt chart into MS Project. You can also import data into Gantt from MS Project.
 
 :::note
@@ -19,7 +18,6 @@ Note that export services are not included into the Gantt package,
 read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
 ## Online export service restrictions
-
 
 :::note
 The export service has time and request size restrictions.
@@ -44,7 +42,6 @@ There is also a separate API endpoint `https://export.dhtmlx.com/gantt/project` 
 export/import services (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* only). **Max request size: 40 MB**.
 
 ## Using export modules
-
 
 :::note
 If you need to export large charts, you can use a [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 

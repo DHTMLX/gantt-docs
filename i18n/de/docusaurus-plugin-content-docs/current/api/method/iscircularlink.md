@@ -32,7 +32,6 @@ var isCircular = gantt.isCircularLink(link);
 
 ### Details
 
-
 :::note
  Die Methode erfordert, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. 
 :::

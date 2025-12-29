@@ -5,7 +5,6 @@ sidebar_label: "Шаблоны тултипов"
 
 # Шаблоны тултипов
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

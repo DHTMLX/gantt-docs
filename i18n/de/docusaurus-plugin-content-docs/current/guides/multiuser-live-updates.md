@@ -5,7 +5,6 @@ sidebar_label: "Multi-User Live Updates"
 
 # Multi-User Live Updates
 
-
 This article describes how to implement server-side support for the real-time updates module of DHTMLX Gantt.
 
 ## Principle
@@ -335,7 +334,6 @@ app.delete("/data/link/:id", (req, res) => {
 ## Advanced Customization
 
 ### Custom Handlers
-
 
 In the described format, the `RemoteEvents` helper is responsible for initial handshake of establishing a websocket connection with the server and receiving messages.
 The second part of this module is the `remoteUpdates` helper that is responsible for parsing messages received via a websocket and applying appropriate changes to Gantt.

@@ -5,7 +5,6 @@ sidebar_label: "Dynamic Change of Scale Settings"
 
 # Dynamic Change of Scale Settings 
 
-
 Changing the scale on-the-fly helps you to make a Gantt chart flexible - able to fit to the user's needs. 
 
 For example, a manager has a 1-year project. To get the whole picture of the project, it's better for him to see the project in months. But to know the details of a specific task, 

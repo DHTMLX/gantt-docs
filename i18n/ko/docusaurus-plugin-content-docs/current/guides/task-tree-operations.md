@@ -5,7 +5,6 @@ sidebar_label: "Task Parent/Child"
 
 # Task Parent/Child  
 
-
 이 문서에서는 Gantt 차트에서 작업의 계층 구조를 다루는 메서드들을 설명합니다.
 
 *작업 객체나 ID를 조회하는 기본적인 작업에 대해서는 [Task Object/Id](guides/task-object-operations.md) 문서를 참고하세요.*

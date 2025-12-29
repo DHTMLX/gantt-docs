@@ -5,7 +5,6 @@ sidebar_label: "Fullscreen-Erweiterung"
 
 # Fullscreen-Erweiterung
 
-
 Weitere Informationen über die Fullscreen-Erweiterung finden Sie im Artikel [Full Screen Mode](guides/fullscreen-mode.md#fullscreenapi). 
 
  Das *fullscreen*-Objekt beinhaltet die folgende API:

@@ -5,7 +5,6 @@ sidebar_label: "타임라인 영역의 템플릿"
 
 # 타임라인 영역의 템플릿
 
-
 <table class="webixdoc_links">
     <tbody>
         <tr>

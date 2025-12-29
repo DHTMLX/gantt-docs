@@ -5,7 +5,6 @@ sidebar_label: "配置"
 
 # 配置
 
-
 为了实现所需的甘特图外观，dhtmlxGantt 提供了两个主要对象:
 
 - [gantt.config](api/overview/properties-overview.md) - 包含与日期、刻度、控件等相关的配置选项。
@@ -34,7 +33,6 @@ gantt.init("gantt_here");
 
 
 ## 'gantt.templates' 对象
-
 
 模板允许自定义日期和标签的显示方式。
 

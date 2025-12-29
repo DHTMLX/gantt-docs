@@ -5,7 +5,6 @@ sidebar_label: "配置 Lightbox 元素"
 
 # 配置 Lightbox 元素
 
-
 Lightbox 作为用于更新任务详情的编辑表单。
 
  下方展示了默认的 lightbox 布局。
@@ -33,7 +32,6 @@ Lightbox 可以根据任务类型及其特定特性有所不同。每种任务�
 :::
 
 ## Lightbox 结构
-
 
 ### Sections
 

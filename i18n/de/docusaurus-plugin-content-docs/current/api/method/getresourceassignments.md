@@ -35,7 +35,6 @@ gantt.getResourceAssignments("6"); // -> Details werden angezeigt
 
 ### Details
 
-
 Diese Methode liefert ein Array von Objekten, die folgendermaßen strukturiert sind:
 
 ~~~js

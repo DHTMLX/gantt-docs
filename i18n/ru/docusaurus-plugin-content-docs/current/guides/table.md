@@ -5,7 +5,6 @@ sidebar_label: "Настройка грида"
 
 # Настройка грида
 
-
 ![gantt_left](/img/gantt_left.png)
 
 ((index

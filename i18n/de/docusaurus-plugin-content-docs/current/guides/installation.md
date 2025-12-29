@@ -5,13 +5,11 @@ sidebar_label: "Installation"
 
 # So installieren Sie dhtmlxGantt
 
-
 dhtmlxGantt kann Ihrem Projekt über Paketmanager wie [NuGet](https://www.nuget.org/), [Bower](https://bower.io/) oder [npm](https://www.npmjs.com/) hinzugefügt werden.
 
 Alternativ können Sie die benötigten JS- und CSS-Dateien direkt von einem CDN einbinden.
 
 ## npm - Evaluierungs- und PRO-Versionen {#npmevaluationandproversions}
-
 
 **Professional Evaluation Version**
 
@@ -22,7 +20,6 @@ Sie können das [Testpaket von Gantt](https://dhtmlx.com/docs/products/dhtmlxGan
 Der Zugang zum privaten npm-Registry von DHTMLX ist über den [Kundenbereich](https://dhtmlx.com/clients/) möglich, indem Sie Ihren npm-Login und Ihr Passwort generieren. Dort finden Sie auch eine ausführliche Installationsanleitung. Beachten Sie, dass der Zugriff auf das private npm nur solange gewährt wird, wie Ihre proprietäre Gantt-Lizenz aktiv ist.
 
 ## npm - Standard Free Version {#npmstandardfreeversion}
-
 
 Die Standardversion von dhtmlxGantt kann von [npmjs.com](https://www.npmjs.com/package/dhtmlx-gantt) mit folgendem Befehl installiert werden:
 
@@ -35,7 +32,6 @@ Nur die Standardversion von Gantt ist unter [npmjs.com](https://www.npmjs.com/pa
 :::
 
 ## NuGet {#nuget}
-
 
 Um dhtmlxGantt mit [NuGet](https://www.nuget.org/) hinzuzufügen, führen Sie folgenden Befehl aus:
 
@@ -51,7 +47,6 @@ install-package DHTMLX.Gantt
 
 ## Bower
 
-
 Sie können dhtmlxGantt über [Bower](https://bower.io/) installieren, indem Sie folgenden Befehl ausführen:
 
 ~~~html
@@ -59,7 +54,6 @@ bower install gantt
 ~~~
 
 ## CDN
-
 
 Um dhtmlxGantt über ein CDN einzubinden, verlinken Sie direkt die Dateien **dhtmlxgantt.js** und **dhtmlxgantt.css**:
 
@@ -72,7 +66,6 @@ Um dhtmlxGantt über ein CDN einzubinden, verlinken Sie direkt die Dateien **dht
 Eine vollständige Liste der CDN-Links, abhängig von der dhtmlxGantt-Version, finden Sie im [separaten Artikel](guides/cdn-links-list.md).
 
 ## Paket herunterladen {#downloadthepackage}
-
 
 ### GPL-Version
 
@@ -90,7 +83,6 @@ Nach dem Herunterladen entpacken Sie das Paket in einen Ordner innerhalb Ihres P
 ~~~
 
 ## PRO Edition zum Projekt hinzufügen {#addingproeditionintoproject}
-
 
 ### **Pro-Version installieren**
 

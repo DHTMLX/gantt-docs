@@ -5,7 +5,6 @@ sidebar_label: "Экспорт и импорт из Primavera P6"
 
 # Экспорт и импорт из Primavera P6
 
-
 Библиотека dhtmlxGantt поддерживает экспорт данных из Gantt-диаграммы в Primavera P6, а также импорт данных из Primavera P6 в Gantt-диаграмму.
 
 :::note
@@ -18,7 +17,6 @@ sidebar_label: "Экспорт и импорт из Primavera P6"
 Подробную информацию об условиях использования смотрите в [соответствующей статье](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
 
 ## Ограничения онлайн-сервиса экспорта
-
 
 :::note
 Сервис экспорта имеет ограничения по времени обработки и размеру запроса.
@@ -44,7 +42,6 @@ Error: Timeout trigger 20 seconds
 
 ## Использование экспортных модулей
 
-
 :::note
 Для экспорта больших диаграмм доступен [отдельный экспортный модуль](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
 Этот модуль бесплатен, если у вас есть лицензия [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) или [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), либо может быть приобретён отдельно по [этой ссылке](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
@@ -53,7 +50,6 @@ Error: Timeout trigger 20 seconds
 Более подробную информацию об использовании экспортного модуля с MS Project можно найти в [этом руководстве](guides/msp-export-module.md). Модуль поддерживает экспорт/импорт для MS Project и Primavera P6.
 
 ## Экспорт в Primavera P6 {#exporttoprimaverap6}
-
 
 Компонент Gantt может экспортировать связи, задачи и ресурсы в Primavera P6.
 
@@ -309,7 +305,6 @@ gantt.exportToPrimaveraP6({
 ~~~
 
 ## Импорт из Primavera P6
-
 
 Для преобразования XML или XER-файла отправьте POST-запрос к сервису экспорта со следующими параметрами:
 

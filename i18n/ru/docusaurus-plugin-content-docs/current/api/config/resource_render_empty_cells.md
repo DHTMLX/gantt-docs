@@ -24,7 +24,6 @@ gantt.config.resource_render_empty_cells = true;
 
 ### Details
 
-
 Обычно resource timeline пропускает вызов шаблонов [resource_cell_value](api/template/resource_cell_value.md) и [resource_cell_class](api/template/resource_cell_class.md) для ячеек, в которых нет назначенных задач.
 
 Когда эта опция включена, шаблоны будут применяться к каждой ячейке в resource timeline, независимо от наличия задач.

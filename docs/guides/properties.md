@@ -5,9 +5,7 @@ sidebar_label: "Properties for importing from Primavera"
 
 # Properties for importing from Primavera
 
-
 ## Project properties
-
 
 <div class="myblock">
   <li>ActualsInSync</li>
@@ -68,7 +66,6 @@ sidebar_label: "Properties for importing from Primavera"
 </div>
 
 ## Tasks properties
-
 
 <div class="myblock">
   <li>ActualCost</li>

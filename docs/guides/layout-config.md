@@ -5,7 +5,6 @@ sidebar_label: "Gantt Layout"
 
 # Gantt Layout
 
-
 Starting from version 5.0, Gantt provides the possibility to specify a configurable layout and arrange the elements of the component as inner views of a layout.
 It allows you to use additional timelines and grids to make a flexible gantt chart structure and define various schemes of arranging elements.
 
@@ -26,7 +25,6 @@ or add another grid and a timeline below the default ones.
 
 
 ## Default layout
-
 
 The layout is set through the [gantt.config.layout](api/config/layout.md) configuration option. The default configuration of the layout is the following:
 
@@ -81,7 +79,6 @@ Note that you should specify the configuration of layout before Gantt initializa
 :::
 
 ## Scrollbar
-
 
 Layout scrollbars are specified by the **"scrollbar"** view. You can set both a horizontal and vertical scrollbar. 
 
@@ -182,7 +179,6 @@ Follow the examples below:
 - [Gantt. Universal Layout configuration](https://snippet.dhtmlx.com/uqejdyqc)
 
 ## Layout customization
-
 
 You can change the default layout configuration and specify the necessary scheme of arranging the elements of Gantt chart on a page, using additional layout views.
 
@@ -309,7 +305,6 @@ gantt.$container.classList.remove("no_resizers");
 
 ## HTML as Inner View
 
-
 You can also use some custom HTML as inner views of the Gantt layout. For example:
 
 ~~~js
@@ -336,7 +331,6 @@ gantt.config.layout = {
 
 
 ## Required views and settings
-
 
 The public API of the gantt object contains methods that are derived from specific layout views, e.g. [getTaskPosition](api/method/gettaskposition.md), [getTaskNode](api/method/gettasknode.md), [getScrollState](api/method/getscrollstate.md). 
 
@@ -392,7 +386,6 @@ gantt.config.layout = {
 The layout can contain any additional number of views.
 
 ## Configs and templates of views
-
 
 Grid and Timeline views reuse the templates and configs from the global [gantt.config/gantt.templates](guides/common-configuration.md). However, these settings can be overridden for the specific views at the layout level.
 
@@ -484,7 +477,6 @@ Check the [Resource Management](guides/resource-management.md) article.
 
 ## Visibility groups
 
-
 Sometimes you need to synchronize visibility of some elements in the layout. For example, if you have horizontal scrollbars in the adjacent cells, you may want both of them to be displayed or hidden at the same time.
 
 ![scrollable_grid](/img/scrollable_grid.png)
@@ -573,7 +565,6 @@ gantt.config.layout = {
 
 ## Sizing of Gantt layout parts
 
-
 You can regulate relative sizes of the Gantt layout cells via the **gravity** property set in the configuration of each cell. The parameter defines the size of cells in relation to each other. 
 
 ~~~js
@@ -642,7 +633,6 @@ gantt.config.layout = {
 
 ## Hiding parent layout views
 
-
 If you need to hide a layout view when all its child items are invisible, specify **hide_empty:true** in the configuration of the related layout cell, for example: 
 
 ~~~js
@@ -670,11 +660,9 @@ gantt.config.layout = {
 
 ## Switching between views
 
-
 If you need to switch between different layout views, check the [How to toggle grid/chart](guides/how-to.md#how-to-toggle-gridchart) and [How to toggle the resource view](guides/how-to.md#how-to-toggle-the-resource-view) sections for more details.
 
 ## Freezing columns in the grid view
-
 
 You may initialize a Gantt chart in which one or more columns will be frozen. To implement this, follow the instructions given in the [How to freeze/fix columns in the grid](guides/how-to.md#how-to-freezefix-columns-in-the-grid) section.
 

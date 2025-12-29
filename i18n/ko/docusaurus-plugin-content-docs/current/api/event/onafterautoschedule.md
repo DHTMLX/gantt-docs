@@ -32,7 +32,6 @@ gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
 
 ### Details
 
-
 :::note
  이 이벤트는 **auto_scheduling** 확장의 일부이므로 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인을 활성화해야 합니다. 자세한 내용은 [자동 스케줄링](guides/auto-scheduling.md) 가이드를 참조하세요. 
 :::

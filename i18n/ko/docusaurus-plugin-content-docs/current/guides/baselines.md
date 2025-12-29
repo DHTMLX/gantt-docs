@@ -5,7 +5,6 @@ sidebar_label: "타임라인 영역의 커스텀 요소"
 
 # 타임라인 영역의 커스텀 요소
 
-
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다
 :::
@@ -45,7 +44,6 @@ gantt.addTaskLayer(function myNewElement(task) {
 :::
 
 ## 사용 예시
-
 
 이 기능의 사용 예시를 살펴보겠습니다. 예를 들어, 각 작업에 대해 계획 시간과 실제 시간이 모두 있고, 이를 모두 표시하고 싶다고 가정합니다.
 
@@ -163,7 +161,6 @@ gantt.locale.labels.section_baseline = "Planned";
 
 ## 커스텀 콘텐츠 샘플
 
-
 다음은 [addTaskLayer()](api/method/addtasklayer.md) 메서드를 사용하여 Gantt 차트 타임라인에 다양한 커스텀 요소를 추가하는 예시입니다:
 
 - [커스텀 기준선](https://snippet.dhtmlx.com/wv23be05)
@@ -179,7 +176,6 @@ gantt.locale.labels.section_baseline = "Planned";
 
 
 ## 커스텀 요소의 드래그 앤 드롭
-
 
 커스텀 요소에 대해 드래그 앤 드롭을 활성화하려면, DHTMLX Gantt에서 기본적으로 제공하는 기능은 없지만 간단한 단계로 직접 구현할 수 있습니다.
 
@@ -272,7 +268,6 @@ gantt.event(window, 'mouseup', function(e) {
 ~~~
 
 ## 차트용 추가 오버레이
-
 
 dhtmlxGantt는 차트 위에 커스텀 콘텐츠를 배치할 수 있도록 추가 레이어(오버레이)를 추가할 수 있습니다. 이 오버레이는 div 컨테이너, HTML canvas, 기타 요소가 될 수 있습니다. 서드파티 라이브러리를 사용해 오버레이 내부에 콘텐츠를 렌더링할 수 있습니다.
 

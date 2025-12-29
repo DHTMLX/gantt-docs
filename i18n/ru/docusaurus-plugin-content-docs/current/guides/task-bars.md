@@ -5,7 +5,6 @@ sidebar_label: "Настройка задач"
 
 # Настройка задач
 
-
 ![gantt_tasks](/img/gantt_tasks.png)
 
 ((index

@@ -43,7 +43,6 @@ If the [work_time](api/config/work_time.md) option is disabled, the method retur
 
 ## Configuration object properties
 
-
 The configuration object can contain the following properties:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">

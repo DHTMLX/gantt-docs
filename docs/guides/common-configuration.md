@@ -5,7 +5,6 @@ sidebar_label: "Configuration"
 
 # Configuration
 
-
 To gain the desired look for the Gantt chart, dhtmlxGantt provides 2 objects: 
 
 - [gantt.config](api/overview/properties-overview.md) - configuration options for dates, scale, controls etc.

@@ -28,7 +28,6 @@ gantt.config.project_end = new Date(2019, 4, 1);
 
 ### Details
 
-
 이 옵션을 `true`로 설정하면 자동 스케줄링 모드가 '가능한 한 늦게(as late as possible)'로 전환됩니다.
 
 이 설정은 [project_end](api/config/project_end.md)가 함께 지정된 경우에만 적용됩니다.

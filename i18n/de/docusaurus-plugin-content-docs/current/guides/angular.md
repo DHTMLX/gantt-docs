@@ -5,7 +5,6 @@ sidebar_label: "Angular Gantt"
 
 # Angular Gantt
 
-
 :::note
 Aktuell gibt es keine native Angular-Komponente für DHTMLX Gantt.
 Sie können DHTMLX Gantt jedoch dennoch problemlos in Ihre Angular-Anwendungen integrieren, indem Sie die untenstehenden Materialien nutzen.

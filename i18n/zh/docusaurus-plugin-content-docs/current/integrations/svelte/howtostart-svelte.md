@@ -5,7 +5,6 @@ sidebar_label: "Svelte"
 
 # dhtmlxGantt 与 Svelte 集成
 
-
 本指南假设你已具备 Svelte 的基本概念和使用模式。如果还不熟悉，可以参考 [Svelte 官方文档](https://svelte.dev/) 的入门教程。
 
 DHTMLX Gantt 与 Svelte 配合良好。你可以在 GitHub 上查看完整示例:[DHTMLX Gantt with Svelte Demo](https://github.com/DHTMLX/svelte-gantt-demo)。

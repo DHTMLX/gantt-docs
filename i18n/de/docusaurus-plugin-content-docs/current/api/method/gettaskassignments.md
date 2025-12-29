@@ -32,7 +32,6 @@ gantt.getTaskAssignments(5); // -> siehe Details
 
 ### Details
 
-
 :::note
  Die **getTaskAssignments** Methode funktioniert nicht, wenn [process_resource_assignments](api/config/process_resource_assignments.md) deaktiviert ist. 
 :::

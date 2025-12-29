@@ -5,7 +5,6 @@ sidebar_label: "Vorlagen des Grids"
 
 # Vorlagen des Grids
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

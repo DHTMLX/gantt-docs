@@ -5,7 +5,6 @@ sidebar_label: "Configuration"
 
 # Configuration
 
-
 원하는 Gantt 차트의 외관을 얻기 위해 dhtmlxGantt는 두 가지 주요 객체를 제공합니다:
 
 - [gantt.config](api/overview/properties-overview.md) - 날짜, 스케일, 컨트롤 등과 관련된 구성 옵션을 포함합니다.
@@ -34,7 +33,6 @@ gantt.init("gantt_here");
 
 
 ## 'gantt.templates' 객체
-
 
 템플릿을 사용하면 날짜와 레이블이 표시되는 방식을 사용자 정의할 수 있습니다.
 

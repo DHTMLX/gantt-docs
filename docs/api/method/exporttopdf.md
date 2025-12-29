@@ -137,7 +137,6 @@ If you need to export large charts, you can use a [standalone export module](htt
 
 ### Multi-page export
 
-
 Please note that the export module doesn't have technical possibilities to do the following:
 
 - control the cutoff position (so the tasks may be sliced in the middle between the pages)

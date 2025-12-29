@@ -5,7 +5,6 @@ sidebar_label: "ASP.NET Core"
 
 # dhtmlxGantt mit ASP.NET Core
 
-
 Diese Anleitung führt Sie durch die Einrichtung eines Gantt-Diagramms mit [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) Core auf der Serverseite.
 
 Es sind auch Tutorials für andere serverseitige Plattformen verfügbar:
@@ -571,7 +570,6 @@ An diesem Punkt empfiehlt es sich, die Anwendung zu starten, um zu überprüfen,
 
 ## Schritt 4. Implementierung der Web API
 
-
 Jetzt ist es Zeit, die REST API zu implementieren.
 
 ### Hinzufügen von Controllern
@@ -1083,7 +1081,6 @@ private void _UpdateOrders(Models.Task updatedTask, string orderTarget)
 
 ## Anwendungssicherheit
 
-
 Gantt selbst bietet keinen Schutz vor Bedrohungen wie SQL-Injection, XSS oder CSRF. Die Absicherung der Anwendung liegt in der Verantwortung der Backend-Entwickler. Weitere Informationen finden Sie im [zugehörigen Artikel](guides/app-security.md).
 
 ### XSS-Schutz
@@ -1115,12 +1112,10 @@ Alternativ kann eine spezialisierte Bibliothek wie [HtmlAgilityPack](https://www
 
 ## Fehlerbehebung
 
-
 Falls Sie alle Schritte zur Integration von Gantt mit ASP.NET Core befolgt haben, aber Aufgaben und Links nicht auf der Seite angezeigt werden, lesen Sie den Artikel [Troubleshooting Backend Integration Issues](guides/troubleshooting.md). Dort werden häufige Probleme und deren Lösungen beschrieben.
 
 
 ## Wie geht es weiter?
-
 
 An diesem Punkt haben Sie eine funktionierende Gantt-Implementierung. Der vollständige Quellcode steht auf [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet-core) zum Klonen oder Herunterladen für Ihre Projekte bereit.
 

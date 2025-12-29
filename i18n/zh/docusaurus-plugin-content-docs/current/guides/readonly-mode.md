@@ -5,7 +5,6 @@ sidebar_label: "只读模式"
 
 # 只读模式
 
-
 本文将介绍在两种场景下使用只读模式:
 
 1. [整个甘特图的只读模式](guides/readonly-mode.md#zhenggegantetudezhidumoshi)
@@ -96,7 +95,6 @@ gantt.config.readonly_property = "property_name";
 
 ## "editable_property" 配置选项详情
 
-
 'editable_property' 指向任务数据对象本身的某个属性，而不是 lightbox 的 section 或左侧网格中的列:
 
 ~~~js
@@ -130,7 +128,6 @@ gantt.config.editable_property = "some_property";
 ~~~
 
 ## 基于多个属性设置事件只读
-
 
 如需根据多种条件设置事件可编辑性，你可以:
 

@@ -5,7 +5,6 @@ sidebar_label: "Hinzufügen von vertikalen Markierungen"
 
 # Hinzufügen von vertikalen Markierungen
 
-
 Die Bibliothek enthält die **marker**-Erweiterung, mit der Sie bestimmte Daten oder Datumsbereiche auf der Zeitleiste hervorheben können.
 
 <div style="text-align:center;">![today_marker](/img/today_marker.png)</div>
@@ -128,7 +127,6 @@ gantt.renderMarkers(); /*!*/
 
 ## Markierungen gestalten 
 
-
 Markierungen können mit der Vorlage [gantt.templates.marker_class](api/template/marker_class.md) gestaltet werden:
 
 ~~~js
@@ -141,7 +139,6 @@ gantt.templates.marker_class = function(marker){
 ~~~
 
 ## Markierung für den heutigen Tag
-
 
 Wenn Sie eine Markierung für den aktuellen Tag in Ihrem Gantt-Diagramm anzeigen möchten, müssen Sie sowohl die Markierung hinzufügen als auch eine Funktion bereitstellen, die ihre Position mit fortschreitender Zeit aktualisiert. Dies kann mit folgendem Code erreicht werden:
 

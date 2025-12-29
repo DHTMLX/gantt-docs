@@ -5,7 +5,6 @@ sidebar_label: "Node.js Gantt"
 
 # 在服务器端使用 Gantt
 
-
 有时，您可能需要单独使用 dhtmlxGantt 的专用逻辑，而不依赖于甘特图本身，例如:
 
 - 从其他来源（如移动应用）接收任务更新，并运行自动调度以调整相关任务时间
@@ -18,13 +17,11 @@ DHTMLX Gantt for Node.js 提供与 Commercial/Enterprise/Ultimate 套餐相同�
 
 ## 使用条款
 
-
 DHTMLX Gantt 的 Node.js 服务器端模块是客户端版本的附加组件。您可以在购买任何商业授权（[Individual](https://dhtmlx.com/docs/products/dhtmlxGantt/individual/)、[Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/commercial/)、[Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/enterprise/)）时，额外付费添加该模块。[Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/ultimate/) 授权默认包含此模块。
 
 如果您已拥有主 dhtmlxGantt 库，可以[单独购买](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=58429) Node.js 模块，并获取服务器端版本的下载链接。
 
 ## 版本管理
-
 
 dhtmlxGantt 的 Node.js 包采用与浏览器端相同的版本号规则（例如，v7.0.0 是 Node.js 的首个版本）。
 
@@ -33,7 +30,6 @@ dhtmlxGantt 的 Node.js 包采用与浏览器端相同的版本号规则（例�
 :::
 
 ## 将库添加到项目中
-
 
 可以在本地安装 dhtmlxGantt for Node.js 包:
 
@@ -106,7 +102,6 @@ console.table(gantt.serialize());
 ~~~
 
 ## 限制
-
 
 dhtmlxGantt 的 Node.js 版本提供与浏览器端相同的核心 API。
 

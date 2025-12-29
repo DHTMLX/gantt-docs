@@ -5,14 +5,12 @@ sidebar_label: "概览"
 
 # React Gantt
 
-
 :::note
 React Gantt 适用于 [Commercial, Enterprise 和 Ultimate 许可证](https://dhtmlx.com/docs/products/licenses.shtml)。
 对于 Gantt 的 Individual 或 GPL 版本用户，请参考 React 的 [快速开始指南](integrations/react/quick-start.md)。
 :::
 
 ## 概述
-
 
 DHTMLX Gantt 是一个纯 JavaScript 组件，兼容所有主流浏览器环境。Commercial 及更高版本包含了一个 **React Gantt** 组件，该组件对 DHTMLX Gantt 进行了封装，使其能够更方便地原生集成到 React 应用中。
 
@@ -29,7 +27,6 @@ DHTMLX Gantt 是一个纯 JavaScript 组件，兼容所有主流浏览器环境�
 
 ## 安装与 NPM 获取
 
-
 **安装 React Gantt 试用版组件**
 
 :::note
@@ -45,11 +42,9 @@ DHTMLX Gantt 是一个纯 JavaScript 组件，兼容所有主流浏览器环境�
 
 ## 版本要求
 
-
 - React `v18.0.0` 或更高
 
 ## 基础用法
-
 
 下面是一个导入并渲染甘特图的简单示例:
 
@@ -107,7 +102,6 @@ export demoData;
 ~~~
 
 ## 数据绑定
-
 
 **ReactGantt** 封装组件支持灵活的数据加载和保存方式。主要有两种处理 Gantt 数据变更的方法:
 
@@ -302,7 +296,6 @@ interface DataCallbackChange<T> {
 
 ## 配置与 Props
 
-
 React 封装组件支持一个 `config` prop（映射到 [gantt.config](api/overview/properties-overview.md)）和一个 `templates` prop（映射到 [gantt.templates](api/overview/templates-overview.md)）。
 
 ~~~js
@@ -370,7 +363,6 @@ React Gantt 支持的所有 props 列表详见:[](integrations/react/configurati
 
 ## 主题与样式
 
-
 Gantt 提供了多种内置主题，可通过 **theme** prop 设置，并支持动态切换:
 
 ~~~js
@@ -418,7 +410,6 @@ export default function BasicInitDemo() {
 更多配置选项请参考 [스킨 커스터마이제이션](guides/custom-skins.md) 指南。
 
 ## 替换 Lightbox
-
 
 DHTMLX Gantt 内置了一个可配置的任务编辑器 [Lightbox](guides/default-edit-form.md)。
 
@@ -549,7 +540,6 @@ export default function BasicInitDemo() {
 
 ## 替换内置弹窗
 
-
 默认界面包含两个弹窗对话框:
 
 - 删除任务前的确认对话框
@@ -589,7 +579,6 @@ export default function BasicInitDemo() {
 调用提供的 `callback()` 将完成任务或链接的删除。若要取消，只需关闭模态框且不调用 callback 即可。
 
 ## 在网格中使用 React 组件
-
 
 ### 用于表头
 
@@ -767,7 +756,6 @@ function Demo() {
 
 ## 过滤
 
-
 `filter` 属性允许你指定一个函数来控制哪些任务可见:
 
 ~~~js
@@ -820,7 +808,6 @@ return (
 ~~~
 
 ## 工作日历
-
 
 要在 **ReactGantt** 中启用工时计算，请在配置中激活工时功能:
 
@@ -924,7 +911,6 @@ export default function GanttTemplatesDemo() {
 
 ## 任务分组
 
-
 可以通过 `groupTasks` 属性按任意任务属性对任务进行分组:
 
 ~~~js
@@ -957,7 +943,6 @@ setGrouping(false);
 
 
 ## 时间线区域中的垂直标记
-
 
 可以通过 `markers` 属性为 **ReactGantt** 添加垂直标记:
 
@@ -996,7 +981,6 @@ setGrouping(false);
 :::
 
 ## 访问底层 Gantt API
-
 
 虽然 ReactGantt 的属性覆盖了大多数配置需求，但对于如工时计算、gantt.showDate、gantt.unselectTask 或自定义缩放等高级功能，有时需要直接访问 DHTMLX Gantt API。
 
@@ -1044,7 +1028,6 @@ export function DirectRefExample({ tasks, links }) {
 
 
 ## 与 SSR 框架（Next.js、Remix）兼容性
-
 
 :::note
 由于 DHTMLX Gantt 仅为浏览器端小部件，直接操作 DOM，无法在 Node/SSR 环境下渲染。因此，任何使用 ReactGantt 的路由或组件都必须禁用或延迟服务端渲染。
@@ -1097,7 +1080,6 @@ export default function GanttPage() {
 这种模式会延迟渲染，直到组件在浏览器端被 hydrate，从而避免 SSR 问题。
 
 ## 下一步
-
 
 - 有关 ReactGantt 配置的更多细节，请参见[本文](integrations/react/configuration-props.md)
 - 有关高级用法，请参考 [DHTMLX Gantt 文档](guides.md) 

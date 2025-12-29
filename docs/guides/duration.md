@@ -5,7 +5,6 @@ sidebar_label: "Duration Control"
 
 # Duration Control
 
-
 A set of selectors for setting the task duration by specifying the start date of a task and the number of days.
 
 ![duration_control](/img/duration_control.png)
@@ -22,7 +21,6 @@ gantt.config.lightbox.sections="["
 
 
 ## Initialization
-
 
 One **duration** control is added to the lightbox by default. To add another one, follow the steps below:
 
@@ -45,7 +43,6 @@ gantt.locale.labels.section_time2 = "Actual duration";
 
 ## Properties
 
-
 The following properties are mostly important and commonly set for the **time** control (see the full list [here](api/config/lightbox.md)):
 
 - **name** - (*string*) the section name 
@@ -65,7 +62,6 @@ Edited tasks will be specified only by the start date and have a zero duration. 
   
 
 ## Configuring date-time selectors 
-
 
 To configure the selectors in the "Time period" section, use the [time_format](api/config/lightbox.md) property (see [Date Format Specification](guides/date-format.md)):
 
@@ -101,7 +97,6 @@ time_format:["%H:%i", "%M", "%d", "%Y"] //"%m" was changed to "%M"
 
 ## Mapping to custom start/end date-time properties
 
-
 ### Default mapping
 
 Generally, the time and duration controls are mapped to the mandatory 'start_date', 'end_date' data properties by setting the **map_to** property to the "auto" value (**map_to:"auto"**).
@@ -135,7 +130,6 @@ If some property is not specified, the control takes the value of the related ma
 
 
 ## Switching section visibility
-
 
 It is possible to manipulate the visibility of the duration section if you specify **type:"duration_optional"** and **button: true** while configuring the section for the lightbox:
 

@@ -27,7 +27,6 @@ gantt.config.process_resource_assignments = false;
 
 ### Details
 
-
 При назначении ресурсов на конкретное время в задаче требуется включить свойство **process_resource_assignments**.
 Это необходимо, поскольку данное свойство отвечает за разбор значений из [gantt.config.resource_property](api/config/resource_property.md) задач в внутренние объекты назначений ресурсов.
 

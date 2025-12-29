@@ -5,11 +5,9 @@ sidebar_label: "구성"
 
 # DHTMLX Gantt 속성의 ReactGantt 사용법
 
-
 이 페이지에서는 React Gantt에서 지원하는 props와 이들이 DHTMLX Gantt 기능과 어떻게 연결되는지에 대해 설명합니다.
 
 ## 사용 가능한 Props
-
 
 <table>
   <thead>
@@ -115,7 +113,6 @@ sidebar_label: "구성"
 
 ## 사용 예시
 
-
 ~~~js
 <ReactGantt
   tasks="{tasks}"
@@ -147,7 +144,6 @@ sidebar_label: "구성"
 
 ## 이벤트 Props 사용하기
 
-
 모든 DHTMLX Gantt 이벤트는 prop으로 전달할 수 있습니다. 예시:
 
 ~~~js
@@ -164,7 +160,6 @@ sidebar_label: "구성"
 
 
 ## Props와 DHTMLX API의 결합 사용
-
 
 `@dhx/react-gantt` 라이브러리는 일상적인 사용에서 최대한 선언적으로 동작하도록 설계되었으며, tasks, links, resources, templates 등과 같은 표준 props로 대부분의 요구사항을 충족합니다. 하지만, 다음과 같은 더 깊은 Gantt 엔진 접근이 필요한 상황도 있습니다:
 

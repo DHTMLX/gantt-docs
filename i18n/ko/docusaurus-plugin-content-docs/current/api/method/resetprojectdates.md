@@ -26,7 +26,6 @@ gantt.resetProjectDates(gantt.getTask(3));
 
 ### Details
 
-
 이 메서드는 지정된 작업 객체의 **start_date**, **end_date**, 그리고 **duration** 속성을 하위 작업들의 날짜를 기준으로 업데이트합니다.
 
 ### Related API

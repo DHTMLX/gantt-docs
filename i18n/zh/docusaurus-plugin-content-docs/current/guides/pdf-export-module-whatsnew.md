@@ -5,7 +5,6 @@ sidebar_label: "PDF 导出模块更新日志"
 
 # PDF 导出模块更新日志
 
-
 ## 0.6.6
 
 * 使用 'visual' 配置导出到 Excel 时，现在会忽略未排程的任务。

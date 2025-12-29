@@ -5,13 +5,11 @@ sidebar_label: "Textarea Control"
 
 # Textarea Control
 
-
 Это многострочное текстовое поле.
 
 ![textarea_control](/img/textarea_control.png)
 
 ## Инициализация
-
 
 По умолчанию в лайтбоксе уже присутствует один контрол **textarea**. Чтобы добавить дополнительный контрол, выполните следующие шаги:
 
@@ -32,7 +30,6 @@ gantt.locale.labels.section_details = "Details";
 ~~~
 
 ## Свойства
-
 
 Ниже приведены основные свойства, которые обычно используются с контролом **textarea** (полный список смотрите [здесь](api/config/lightbox.md)):
 

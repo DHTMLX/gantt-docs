@@ -44,7 +44,6 @@ time.setValue(null,{
 
 ## Свойства
 
-
 - **section** - (*object*) - объект конфигурации секции
     - **_id_** - (*string*) - идентификатор секции
     - **_name_** - (*string*) - имя секции. По этому имени gantt получает label для секции из коллекции **locale.labels**. Например, для секции 'description' label берётся из **gantt.locale.labels.section_description**

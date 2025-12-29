@@ -71,7 +71,6 @@ function renderDiv(task, date, className) {
 
 ### Details
 
-
 Возвращаемый объект включает следующие свойства:
 
 ~~~js

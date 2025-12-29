@@ -5,7 +5,6 @@ sidebar_label: "Mehrere Diagramme auf einer Seite"
 
 # Mehrere Diagramme auf einer Seite
 
-
 :::info
 Diese Funktion ist in der Gantt PRO-Version enthalten, verfügbar mit der Commercial-Lizenz (seit dem 6. Oktober 2021), Enterprise- und Ultimate-Lizenzen.
 :::
@@ -143,7 +142,6 @@ window.addEventListener("DOMContentLoaded", function(){
 
 ## Integration mit dhtmlxLayout
 
-
 Eine effektive Möglichkeit, mehrere Gantt-Diagramme auf einer Seite zu organisieren, ist die Verwendung von [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html). Es bietet ein übersichtliches Layout-Framework und handhabt Interaktionen mit anderen Seitenelementen sowie Größenänderungen korrekt.
 
 :::note
@@ -174,7 +172,6 @@ function init() {
 ~~~
 
 ## Destruktor für Gantt- und DataProcessor-Instanzen
-
 
 Ab Version 5.1 stellt das dhtmlxGantt-Objekt eine [destructor](api/method/destructor.md) bereit, um nicht mehr benötigte gantt-Instanzen zu bereinigen.
 

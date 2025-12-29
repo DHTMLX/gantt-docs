@@ -72,7 +72,6 @@ gantt.clearAll();
 
 ## Editing link values from UI
 
-
 There is no built-in UI for the user to edit lag or any other properties of the link. So if you need some UI, you have to implement it manually.
 
 A common approach presupposes following the steps below:

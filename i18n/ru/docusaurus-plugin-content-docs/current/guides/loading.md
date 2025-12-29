@@ -5,7 +5,6 @@ sidebar_label: "Загрузка данных"
 
 # Загрузка данных
 
-
 dhtmlxGantt поддерживает два формата данных для загрузки информации:
 
 - [XML](guides/supported-data-formats.md#xmldhtmlxgantt20);
@@ -27,7 +26,6 @@ gantt.load("tasks.json");
 :::
 
 ## Загрузка из объекта {#loadingfromobject}
-
 
 Если вы хотите загрузить данные напрямую из объекта, используйте метод [parse](api/method/parse.md):
 
@@ -53,7 +51,6 @@ gantt.parse(data); /*!*/
 :::
 
 ## Загрузка с сервера {#loadingfromserver}
-
 
 ### На стороне клиента
 
@@ -129,7 +126,6 @@ app.get("/data", function(req, res){
 
 
 ## Загрузка дат задач {#loadingtaskdates}
-
 
 ### Определение расписания задачи
 
@@ -387,7 +383,6 @@ gantt.templates.grid_date_format = function(date, column){
 
 ## Свойства данных {#dataproperties}
 
-
 Источник данных для диаграммы Gantt - это объект, содержащий два основных типа информации:
 
 - **tasks** - элементы задач.
@@ -426,7 +421,6 @@ gantt.init("gantt_here");
 Примеры данных с пользовательскими свойствами смотрите [здесь](guides/supported-data-formats.md#custompropertiesindata).
 
 ## Структура базы данных {#databasestructure}
-
 
 Для работы с базой данных рекомендуется использовать две отдельные таблицы: одну для задач, другую - для связей.
 
@@ -475,7 +469,6 @@ CREATE TABLE `gantt_tasks` (
 
 
 ## Поток событий {#eventsflow}
-
 
 Ниже представлен поток событий, связанных с методами загрузки:
 

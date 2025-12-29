@@ -5,14 +5,12 @@ sidebar_label: "Link-Eigenschaften"
 
 # Link-Eigenschaften 
 
-
 Auf dieser Seite sind alle Eigenschaften aufgeführt, die ein Link-Objekt haben kann.
 
 Für einen vollständigen Überblick über die Eigenschaften von Aufgabenobjekten lesen Sie den Artikel [Task Properties](guides/task-properties.md).
 
 
 ## Erforderliche Eigenschaften
-
 
 <table>
   <tbody>
@@ -52,7 +50,6 @@ Beachten Sie, dass diese Änderung nur die Speicherung des Abhängigkeitstyps be
 
 
 ## Optionale Eigenschaften
-
 
 <table>
   <tbody>

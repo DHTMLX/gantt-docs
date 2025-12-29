@@ -5,7 +5,6 @@ sidebar_label: "Несколько диаграмм Gantt на одной стр
 
 # Несколько диаграмм Gantt на одной странице
 
-
 :::info
 Эта функция включена в Gantt PRO версии, доступной с лицензиями Commercial (начиная с 6 октября 2021), Enterprise и Ultimate
 :::
@@ -143,7 +142,6 @@ window.addEventListener("DOMContentLoaded", function(){
 
 ## Интеграция с dhtmlxLayout {#integrationwithdhtmlxlayout}
 
-
 Один из эффективных способов организации нескольких диаграмм Gantt на странице - использование [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html). Он предоставляет удобный фреймворк для компоновки и корректно обрабатывает взаимодействие с другими элементами страницы и события изменения размеров.
 
 :::note
@@ -174,7 +172,6 @@ function init() {
 ~~~
 
 ## Деструктор экземпляров Gantt и DataProcessor {#destructorofganttanddataprocessorinstances}
-
 
 Начиная с версии 5.1, объект dhtmlxGantt предоставляет [destructor](api/method/destructor.md) для очистки ненужных экземпляров gantt.
 

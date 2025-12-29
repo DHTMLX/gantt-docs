@@ -5,7 +5,6 @@ sidebar_label: "Inline-Bearbeitung im Grid"
 
 # Inline-Bearbeitung im Grid
 
-
 dhtmlxGantt bietet zwei Möglichkeiten zur Bearbeitung von Inhalten:
 
 - mit dem [Lightbox](guides/default-edit-form.md) Bearbeitungsformular
@@ -50,7 +49,6 @@ Es gibt auch eine Videoanleitung, die zeigt, wie die Inline-Bearbeitung im Grid 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Editor-Typen
-
 
 Die Inline-Editoren werden im Konfigurationsobjekt [editor_types](api/config/editor_types.md) definiert.
 
@@ -217,7 +215,6 @@ Nachfolgend finden Sie Codebeispiele für benutzerdefinierte Editoren wie:
 - [JQuery Datepicker-Eingabefeld](guides/inline-editing.md#jquery_datepicker)
 
 ## Benutzerdefinierter Inline-Editor
-
 
 Es ist möglich, einen eigenen Inline-Editor zu erstellen, indem Sie ein neues Editor-Objekt wie folgt definieren:
 
@@ -458,7 +455,6 @@ Ein gutes Beispiel hierfür ist der eingebaute Vorgänger-Editor. Eine vereinfac
 
 ## Inline-Bearbeitungsmodi
 
-
 ### Grundlegende Inline-Bearbeitung
 
 Dieser Modus geht davon aus, dass Sie mit der Maus Zellen fokussieren und mit Tastenkombinationen zwischen ihnen navigieren:
@@ -566,7 +562,6 @@ Mit einer benutzerdefinierten Zuordnung können Sie festlegen, wie der Inline-Ed
 
 ## Validierung von Eingabewerten
 
-
 Beim Bearbeiten von Zellen im Grid können Fehler auftreten.
 
 Um das Speichern ungültiger Werte zu verhindern, sollten Sie die Eingaben vor dem Schließen des Editors validieren. Dies kann auf zwei Arten erfolgen:
@@ -670,7 +665,6 @@ gantt.init("gantt_here");
 **Related example:** [Custom keyboard mapping](https://snippet.dhtmlx.com/5/5da351260)
 
 ## Editor mit einem Klick öffnen
-
 
 Im Einzel-Auswahlmodus öffnet ein Klick auf eine Aufgabe sofort den Inline-Editor.
 

@@ -5,7 +5,6 @@ sidebar_label: "应用程序安全"
 
 # 应用程序安全
 
-
 DHTMLX Gantt 是一个客户端 JavaScript 库，可无缝集成 Gantt 功能到各种 Web 应用程序中。 
 我们不会通过限制 Gantt 的功能来提升安全性，但这也意味着不会限制其能力。 
 这样，您可以根据项目需求自定义大部分 Gantt 功能。

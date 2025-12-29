@@ -27,7 +27,6 @@ gantt.config.process_resource_assignments = false;
 
 ### Details
 
-
 Wenn Ressourcen einem bestimmten Zeitpunkt innerhalb einer Aufgabe zugewiesen werden, muss die Eigenschaft **process_resource_assignments** aktiviert sein.
 Dies liegt daran, dass diese Eigenschaft das Parsen der Werte aus [gantt.config.resource_property](api/config/resource_property.md) der Aufgaben in interne Ressourcen-Zuweisungsobjekte übernimmt.
 

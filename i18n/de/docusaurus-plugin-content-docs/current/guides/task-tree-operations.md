@@ -5,7 +5,6 @@ sidebar_label: "Task Parent/Child"
 
 # Task Parent/Child
 
-
 Dieser Artikel behandelt Methoden, die mit der hierarchischen Struktur von Aufgaben im Gantt-Diagramm arbeiten.
 
 *Für grundlegende Operationen wie das Abrufen des Aufgabenobjekts oder der ID siehe den Artikel [Task Object/Id](guides/task-object-operations.md).*

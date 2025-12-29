@@ -5,7 +5,6 @@ sidebar_label: "Erstellen/Auswählen von Aufgaben mit Drag-and-Drop"
 
 # Erstellen/Auswählen von Aufgaben mit Drag-and-Drop
 
-
 Die dhtmlxGantt-Bibliothek bietet eine Erweiterung, die erweiterte Drag-and-Drop-Funktionen zur Verwaltung von Aufgaben auf der Zeitleiste bereitstellt.
 
 Zusammengefasst unterstützt die **click_drag**-Erweiterung:
@@ -76,7 +75,6 @@ Beachten Sie, dass Ereignis-Handler nur an bereits existierende Elemente angehä
 
 ## Aufgaben mit Drag-and-Drop erstellen
 
-
 Aufgaben können direkt auf der Zeitleiste erstellt werden, indem Sie auf eine freie Stelle klicken, um das Startdatum festzulegen, und dann nach rechts ziehen, um die Dauer zu bestimmen.
 
 ~~~js
@@ -111,11 +109,9 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 
 ## Zeiträume für nicht geplante Aufgaben festlegen
 
-
 Die **click_drag**-Erweiterung ermöglicht es außerdem, Zeitintervalle für [nicht geplante Aufgaben](guides/unscheduled-tasks.md) per Drag-and-Drop festzulegen.
 
 ## Aufgaben mit Drag-and-Drop auswählen
-
 
 Das Auswählen von Aufgaben per Drag-and-Drop wird in mehreren Modi unterstützt: nach Datum, nach Zeilen oder innerhalb von Begrenzungen.
 
@@ -164,7 +160,6 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 
 
 ## Teile von gesplitteten Aufgaben erstellen
-
 
 Mit Drag-and-Drop können auch Teile von [gesplitteten Aufgaben](guides/split-tasks.md) erstellt werden.
 

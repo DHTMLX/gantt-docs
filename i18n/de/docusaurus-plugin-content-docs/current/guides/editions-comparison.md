@@ -5,7 +5,6 @@ sidebar_label: "Standard- vs PRO-Bibliotheksversionen"
 
 # Standard- vs PRO-Bibliotheksversionen
 
-
 Wenn Sie sich für die Unterschiede zwischen der Standard- und der PRO-Version der dhtmlxGantt-Bibliothek interessieren und wissen möchten, welche zusätzlichen Funktionen die PRO-Edition bietet, hilft Ihnen dieser Leitfaden dabei, Klarheit zu gewinnen.
 
 Die PRO-Edition enthält alle Funktionen der Standard-Version sowie eine Reihe zusätzlicher, nützlicher Features. In der folgenden Tabelle sind diese Funktionen aufgelistet, sodass Sie beide Versionen einfach vergleichen können.

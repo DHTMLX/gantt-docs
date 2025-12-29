@@ -5,7 +5,6 @@ sidebar_label: "Dauersteuerung"
 
 # Dauersteuerung
 
-
 In diesem Abschnitt wird eine Gruppe von Selektoren vorgestellt, mit denen Sie die Dauer einer Aufgabe festlegen können, indem Sie das Startdatum und die Anzahl der Tage angeben.
 
 ![duration_control](/img/duration_control.png)
@@ -22,7 +21,6 @@ gantt.config.lightbox.sections="["
 
 
 ## Initialisierung
-
 
 Standardmäßig enthält das Lightbox-Formular ein **duration**-Steuerelement. Um weitere hinzuzufügen, gehen Sie wie folgt vor:
 
@@ -45,7 +43,6 @@ gantt.locale.labels.section_time2 = "Tatsächliche Dauer";
 
 ## Eigenschaften
 
-
 Hier sind die wichtigsten Eigenschaften, die häufig mit dem **time**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
 
 - **name** - (*string*) der Bezeichner der Section
@@ -64,7 +61,6 @@ Hier sind die wichtigsten Eigenschaften, die häufig mit dem **time**-Steuerelem
   
 
 ## Konfiguration der Datums-/Zeitselektoren
-
 
 Die Selektoren im Abschnitt "Zeitspanne" können mit der Eigenschaft [time_format](api/config/lightbox.md) angepasst werden (siehe auch [Date Format Specification](guides/date-format.md)):
 
@@ -100,7 +96,6 @@ time_format:["%H:%i", "%M", "%d", "%Y"] // "%m" durch "%M" ersetzt
 
 ## Zuordnung zu benutzerdefinierten Start-/Enddatumseigenschaften
 
-
 ### Standardzuordnung
 
 Normalerweise sind die Zeit- und Dauer-Steuerelemente mit den erforderlichen 'start_date'- und 'end_date'-Eigenschaften verbunden, indem **map_to** auf "auto" gesetzt wird (**map_to:"auto"**).
@@ -134,7 +129,6 @@ Wenn eine Eigenschaft ausgelassen wird, verwendet das Steuerelement die zugehör
 
 
 ## Sichtbarkeit der Section umschalten
-
 
 Sie können die Sichtbarkeit der Dauer-Section umschalten, indem Sie **type:"duration_optional"** und **button: true** in der Lightbox-Section-Konfiguration setzen:
 

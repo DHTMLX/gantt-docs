@@ -5,7 +5,6 @@ sidebar_label: "링크 색상 및 스타일링"
 
 # 링크 색상 및 스타일링
 
-
 Gantt 차트에서 작업을 연결하는 링크의 외관을 원하는 대로 커스터마이즈할 수 있습니다. 종속성 링크에 다양한 색상을 사용하면 사용자가 각 링크를 쉽게 구분할 수 있습니다.
 
 ![coloring_links](/img/coloring_links.png)
@@ -18,7 +17,6 @@ Gantt 차트에서 작업을 연결하는 링크의 외관을 원하는 대로 �
 먼저, 링크 DOM 구조를 살펴보고 각 부분이 어떻게 배치되고 크기가 지정되며, 기본적으로 어떻게 동작하고 스타일링되는지 이해해 보겠습니다.
 
 ## 링크 DOM 요소의 구조 {#structureofthelinkdomelement}
-
 
 링크의 DOM 요소는 다음과 같이 구성됩니다:
 
@@ -104,7 +102,6 @@ gantt.config.link_radius = 2;
 
 ## 링크 템플릿 재정의하기 {#redefiningthelinkstemplate}
 
-
 종속성 링크를 커스터마이즈하려면 [link_class](api/template/link_class.md) 템플릿을 사용합니다. 예를 들어, 작업 우선순위에 따라 링크 색상을 지정하려면 다음과 같이 코드를 작성할 수 있습니다:
 
 **의존성 타입에 따라 링크 색상 지정하기**
@@ -139,7 +136,6 @@ gantt.templates.link_class = function(link){
 동일한 방법을 작업에도 적용할 수 있습니다. 자세한 내용은 [여기](guides/colouring-tasks.md#redefiningthetaskstemplate)에서 확인할 수 있습니다.
 
 ## 링크 객체 속성에 색상 지정하기 {#specifyingcolorinthepropertiesofthelinkobject}
-
 
 데이터 객체에 속성을 추가하여 종속성 링크에 사용자 정의 색상을 지정할 수도 있습니다:
 

@@ -5,11 +5,9 @@ sidebar_label: "CSS 文档"
 
 # CSS 文档
 
-
 本文介绍如何通过自定义样式覆盖 Gantt 图元素的默认颜色设置。内容涵盖了用于为 Gantt 图各部分设置样式的主要类选择器和模板，包括 [表格区域（Grid area）](guides/css-overview.md#biaogequyuyangshistylinggrid)、[时间轴区域（Timeline area）](guides/css-overview.md#shijianzhouquyuyangshistylingtimeline) 和 [资源面板（Resource panel）](guides/css-overview.md#ziyuanmianban)。
 
 ## 表格区域样式（Styling Grid）
-
 
 本节介绍用于为 [表格区域](guides/table.md) 主要元素设置样式的 CSS 选择器。
 
@@ -244,7 +242,6 @@ gantt.config.row_height = 40;
 
 ## 时间轴区域样式（Styling Timeline）
 
-
 本节介绍可用于自定义 [时间轴区域](guides/time-scale.md) 元素默认样式的 CSS 选择器。
 
 ![timeline](/img/timeline.png)
@@ -432,7 +429,6 @@ gantt.config.scales = [
 ~~~
 
 ### 任务（Task） {#task}
-
 
 #### 任务条
 
@@ -820,7 +816,6 @@ gantt.templates.timeline_cell_class = function (task, date) {
 
 
 ## 资源面板
-
 
 [资源面板](guides/resource-management.md#ziyuanshitumianban) 包含与主甘特区域类似的表格和时间线。
 

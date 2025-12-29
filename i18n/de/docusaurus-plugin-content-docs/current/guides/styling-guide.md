@@ -5,13 +5,11 @@ sidebar_label: "Mit Gantt-Stilen arbeiten"
 
 # Mit Gantt-Stilen arbeiten
 
-
 dhtmlxGantt bietet eine Vielzahl von Optionen, um das Erscheinungsbild individuell anzupassen. Sie können entweder [eine der vordefinierten Skins anwenden, um das Gesamterscheinungsbild des Gantt-Diagramms zu ändern](guides/skins.md), oder das Styling einzelner Elemente wie Aufgaben, Verbindungen, Zeitskala, Raster und mehr anpassen.
 
 Dieser Leitfaden fasst allgemeine Anweisungen zum Styling verschiedener Teile des Gantt-Diagramms zusammen, um Ihnen die Navigation in der Dokumentation zu erleichtern. Ausführliche Informationen zu jedem spezifischen Element finden Sie in den entsprechenden Artikeln.
 
 ## Styling des Rasters
-
 
 Das Styling des Rasterbereichs kann über die entsprechende [Templates of the Grid](guides/table-templates.md) angepasst werden.
 
@@ -249,7 +247,6 @@ Siehe die Beispiele im Abschnitt [Wie mehrere Zeilen in der Rasterzelle/Kopfzeil
 
 ## Styling der Zeitskala
 
-
 Das Styling der Zeitskala wird über die entsprechenden [Vorlagen des Zeitachsenbereichs](guides/timeline-templates.md) gesteuert.
 
 ### Skalenzeile
@@ -324,7 +321,6 @@ gantt.config.scales = [
 
 
 ## Styling von Aufgaben
-
 
 Das Styling von Aufgaben kann über die entsprechenden [Vorlagen des Zeitachsenbereichs](guides/timeline-templates.md) angepasst werden.
 
@@ -549,7 +545,6 @@ Mehr zu Tooltips finden Sie im Artikel [Tooltips for Gantt Elements](guides/tool
 
 ## Links stylen
 
-
 Sie können das Aussehen von Abhängigkeitslinien mit den Ressourcen aus [Templates of Dependency Links](guides/dependency-templates.md) anpassen.
 
 ### Linien der Abhängigkeitslinks
@@ -648,7 +643,6 @@ Während es Lightboxes zum Bearbeiten und Stylen von Taskleisten gibt, existiert
 **Related example:** [Custom UI for Editing Link Values](https://snippet.dhtmlx.com/2208ic0t)
 
 ## Styling des Quick Info Popups
-
 
 Das Styling des Quick Info Popups wird über die [Templates of the 'Quick Info' Extension (Touch Support)](guides/touch-templates.md) Templates gesteuert.
 

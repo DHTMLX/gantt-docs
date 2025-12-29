@@ -5,7 +5,6 @@ sidebar_label: "Соответствие политике Content Security Polic
 
 # Соответствие политике Content Security Policy (CSP)
 
-
 Content Security Policy (CSP) - это веб-стандарт, предназначенный для предотвращения несанкционированного выполнения JavaScript и повышения [безопасности создаваемых приложений](guides/app-security.md).
 
 **Начиная с версии 7.0, поддержка CSP встроена в пакет Gantt**. Библиотека предлагает [специальную конфигурацию](api/config/csp.md), которая помогает адаптировать ваше приложение на dhtmlxGantt для соответствия требованиям CSP (Content Security Policy).

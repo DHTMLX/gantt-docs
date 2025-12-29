@@ -5,9 +5,7 @@ sidebar_label: "MS Project에서 가져오기 위한 속성"
 
 # MS Project에서 가져오기 위한 속성
 
-
 ## 프로젝트 속성
-
 
 <style>
 .myblock(
@@ -90,7 +88,6 @@ sidebar_label: "MS Project에서 가져오기 위한 속성"
 </div>
 
 ## 작업(Task) 속성
-
 
 <div class="myblock">
     <li>ActualCost</li>

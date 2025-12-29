@@ -5,7 +5,6 @@ sidebar_label: "Редактирование 'на месте' в гриде"
 
 # Редактирование "на месте" в гриде
 
-
 dhtmlxGantt предлагает два способа редактирования содержимого:
 
 - с помощью формы редактирования [Lightbox](guides/default-edit-form.md)
@@ -50,7 +49,6 @@ gantt.config.columns = [
 <iframe width="704" height="400" src="https://www.youtube.com/embed/0rIPrC0GtME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Типы редакторов {#typesofeditors}
-
 
 Встроенные редакторы определяются в объекте конфигурации [editor_types](api/config/editor_types.md).
 
@@ -218,7 +216,6 @@ gantt.config.columns = [
 - [JQuery Datepicker input](guides/inline-editing.md#jquery_datepicker)
 
 ## Пользовательский редактор "на месте" {#custominlineeditor}
-
 
 Вы можете создать собственный редактор "на месте", определив новый объект редактора следующим образом:
 
@@ -462,7 +459,6 @@ var editors = {
 
 ## Режимы инлайн-редактирования {#inlineeditingmodes}
 
-
 ### Базовое инлайн-редактирование
 
 В этом режиме используется мышь для фокусировки на ячейках и горячие клавиши для навигации между ними:
@@ -572,7 +568,6 @@ gantt.ext.inlineEditors.setMapping(mapping);
 
 ## Валидация вводимых значений {#validationofinputvalues}
 
-
 При редактировании ячеек в гриде могут возникать ошибки.
 
 Чтобы предотвратить сохранение некорректных значений, необходимо валидировать ввод перед закрытием редактора. Это можно сделать двумя способами:
@@ -678,7 +673,6 @@ gantt.init("gantt_here");
 
 
 ## Открытие редактора по одному клику {#openingeditorwithoneclick}
-
 
 В режиме одиночного выбора клик по задаче сразу открывает инлайн-редактор.
 

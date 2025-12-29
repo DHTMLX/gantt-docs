@@ -5,7 +5,6 @@ sidebar_label: "Templates of Dependency Links"
 
 # Templates of Dependency Links
 
-
 <table class="webixdoc_links">
   <tbody>
   <tr>

@@ -37,8 +37,6 @@ grid is a tree that presents the hierarchy of the tasks. You can close, open a b
 
 ## Managing dependency links
 
-
-
 ### Adding new links
 
 - To add a new link for a task, hover the cursor over the task and drag the round handle at the start (end) of the task to a round handle of the other task.

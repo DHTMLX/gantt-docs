@@ -44,7 +44,6 @@ Wenn die Option [work_time](api/config/work_time.md) deaktiviert ist, gibt die M
 
 ## Eigenschaften des Konfigurationsobjekts {#configurationobjectproperties}
 
-
 Das Konfigurationsobjekt kann folgende Eigenschaften enthalten:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">

@@ -5,7 +5,6 @@ sidebar_label: "Kritischer Pfad"
 
 # Kritischer Pfad
 
-
 :::info
 Diese Funktion ist nur in der PRO-Edition verfügbar. 
 :::
@@ -58,7 +57,6 @@ Jedes Mal, wenn eine Aufgabe aktualisiert wird, zeichnet dhtmlxGantt die Daten v
 Dieser Vorgang kann gelegentlich die Leistung beeinträchtigen. Um dem entgegenzuwirken, stellt die Komponente öffentliche Methoden zur Verfügung, mit denen gezielt bestimmte Aufgaben oder Verbindungen überprüft werden können, um den kritischen Pfad ressourcenschonender anzuzeigen.
 
 ## Logik des kritischen Pfads
-
 
 Gantt markiert eine Aufgabe unter folgenden Bedingungen als kritisch:
 
@@ -151,7 +149,6 @@ gantt.isCriticalTask(gantt.getTask("task3"));// ->'true' /*!*/
 
 ## Überprüfen, ob eine Verbindung kritisch ist 
 
-
 Um zu prüfen, ob eine Verbindung zwei kritische Aufgaben verbindet, verwenden Sie die Methode [isCriticalLink](api/method/iscriticallink.md):
 
 ~~~js
@@ -163,7 +160,6 @@ gantt.isCriticalLink(gantt.getLink("link1"));
 
 
 ## Freien und gesamten Puffer ermitteln
-
 
 **Freier Puffer** ist die Zeitspanne, um die eine Aufgabe oder ein Meilenstein verlängert oder verschoben werden kann, ohne die nächste verbundene Aufgabe zu verzögern.
 
@@ -264,11 +260,9 @@ Sie können Aufgaben und Verbindungen auch manuell hervorheben:
 
 ## Festlegen von Lag- und Leadzeiten zwischen Aufgaben
 
-
 Lag- und Leadzeiten zwischen Aufgaben des kritischen Pfads können konfiguriert werden. Details finden Sie [hier](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks).
 
 ## Planung abgeschlossener Aufgaben
-
 
 Standardmäßig behandelt der Algorithmus des kritischen Pfads abgeschlossene Aufgaben (mit Fortschrittswert 1) genauso wie unvollständige Aufgaben.
 

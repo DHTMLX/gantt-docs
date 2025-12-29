@@ -5,7 +5,6 @@ sidebar_label: "Skins Customization"
 
 # Skins Customization
 
-
 Starting from v9.0 Gantt skins use CSS variables that you can use for customization and styling.
 
 
@@ -100,7 +99,6 @@ All variables can be found in the **codebase/sources/less/src/themes/variables.l
 
 ## How to customize skins
 
-
 The easiest method to customize the Gantt's appearance is by overriding the relevant CSS variables in your stylesheet. Here's an example:
 
 ~~~html
@@ -172,7 +170,6 @@ For instance, the variable `--dhx-gantt-scale-color` inherits from the primary t
 
 ## How to use source codes
 
-
 dhtmlxGantt is shipped with style files in the following forms:
 
 - **codebase/dhtmlxgantt.css** - a prebuilt compressed CSS file for skins, ready for production use;
@@ -183,7 +180,6 @@ The latter can be used for deep customization of existing skins or for creating 
 
 ## How to start
 
-
 You can initialize **codebase/sources/less** as an NPM package. 
 The sources will contain two types of files: 
 
@@ -191,7 +187,6 @@ The sources will contain two types of files:
 - files with micro variables declaration which you can use for fine-tuning the gantt view or for creating a new skin.
 
 ## How to build skins
-
 
 In **codebase/sources/less/** run:
 
@@ -214,7 +209,6 @@ Or
 The script will rebuild CSS files from sources and put them into the *codebase* folder of the gantt package, replacing the existing ones.
 
 ## Structure
-
 
 The structure of the **less** folder for version 9.0 (may be changed in future versions) is given below:
 
@@ -242,7 +236,6 @@ The default set of variables is defined in the `terrace` skin, other skins redef
 
 
 ## Creating custom skin
-
 
 In order to create a new skin, you can copy and rename one of the existing skins from the **sources/less/src/themes** folder. Follow the steps below:
 
@@ -292,7 +285,6 @@ When you create a new skin by copying an existing one, you may need to apply the
 
 
 ## JS styling settings
-
 
 Note that not all aspects of Gantt styling are controlled from CSS, some parameters are defined from the JavaScript configuration, for example the following properties:
 

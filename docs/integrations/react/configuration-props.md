@@ -6,12 +6,9 @@ description: "Full reference of wrapper props mapped to Gantt config, templates,
 
 # Using DHTMLX Gantt Properties in ReactGantt
 
-
 This page describes the props accepted by React Gantt and how they map to DHTMLX Gantt features.
 
 ## Available Props
-
-
 
 <table>
   <thead>
@@ -117,7 +114,6 @@ This page describes the props accepted by React Gantt and how they map to DHTMLX
 
 ## Example Usage
 
-
 ~~~jsx
 <ReactGantt
   tasks={tasks}
@@ -149,8 +145,6 @@ This page describes the props accepted by React Gantt and how they map to DHTMLX
 
 ## Using Event Props
 
-
-
 You can pass any DHTMLX Gantt event as a prop. For example:
 
 ~~~js
@@ -167,7 +161,6 @@ Internally, the wrapper calls [gantt.attachEvent("onBeforeTaskAdd", handler)](ap
 
 
 ## Combining Props and the DHTMLX API
-
 
 The `@dhx/react-gantt` library is designed to be as declarative as possible for day-to-day usage - most use cases can be addressed through the standard props (such as tasks, links, resources, templates, etc.). However, there may be scenarios where you need a deeper access to the Gantt engine. For example, for:
 

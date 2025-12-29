@@ -5,7 +5,6 @@ sidebar_label: "皮肤（Skins）"
 
 # 皮肤（Skins）
 
-
 dhtmlxGantt 提供了多种预设皮肤，可轻松更改甘特图的整体外观:
 
 1. [Terrace（默认）](guides/skins.md#terracepifu)
@@ -45,7 +44,6 @@ gantt.setSkin("dark");
 
 ## Terrace 皮肤 
 
-
 要使用默认皮肤，只需引入默认 CSS 文件:
 
 - **dhtmlxgantt.css**
@@ -57,7 +55,6 @@ gantt.setSkin("dark");
 
 
 ## Dark 皮肤 
-
 
 要应用 Dark 皮肤，同样引入默认 CSS 文件:
 
@@ -76,7 +73,6 @@ gantt.skin = "dark";
 
 
 ## Material 皮肤
-
 
 要使用 Material 皮肤，依然需要引入默认 CSS 文件:
 
@@ -153,7 +149,6 @@ gantt.skin = "skyblue";
 
 
 ## Meadow 皮肤
-
 
 要应用 Meadow 皮肤，引入默认 CSS 文件:
 

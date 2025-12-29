@@ -5,7 +5,6 @@ sidebar_label: "基线控件"
 
 # 基线控件
 
-
 :::info
 此功能仅包含在 PRO 版本中。
 :::
@@ -25,7 +24,6 @@ gantt.config.lightbox.sections = [
 
 
 ## 初始化
-
 
 要在 lightbox 中包含 **baselines** 控件，请按照以下步骤操作:
 
@@ -47,7 +45,6 @@ gantt.locale.labels.section_baselines = "Baselines";
 
 ## 属性
 
-
 以下是 **baselines** 控件常用的主要属性（完整列表请参见[这里](api/config/lightbox.md)）:
 
 - **name** - (*string*) section 的标识符
@@ -64,7 +61,6 @@ gantt.locale.labels.section_baselines = "Baselines";
 - **time_format** - (*string*) 设置日期时间选择器的顺序
 
 ## 本地化
-
 
 你可以自定义 **baselines** 控件这些部分的标签:
 

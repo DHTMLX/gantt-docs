@@ -5,7 +5,6 @@ sidebar_label: "Изменение порядка задач"
 
 # Изменение порядка задач
 
-
 dhtmlxGantt предоставляет два способа изменения порядка задач в гриде:
 
 1. Перетаскивание (drag-and-drop).
@@ -30,7 +29,6 @@ gantt.init("gantt_here");
 
 ## Перетаскивание по всей структуре Gantt {#dragndropwithinthewholeganttstructure}
 
-
 Опция @[order_branch](api/config/order_branch.md) ограничивает перетаскивание задачами внутри одного уровня дерева.
 
 Однако можно включить режим, в котором задачи можно перемещать в любое место Gantt, позволяя задаче заменять другую на любом уровне дерева. Для этого используйте опцию @[order_branch_free](api/config/order_branch_free.md):
@@ -48,7 +46,6 @@ gantt.init("gantt_here");
 
 
 ## Ограничение позиций для перемещения {#denyingdroppingtospecificpositions}
-
 
 Чтобы запретить сброс задач в определённые позиции, используйте события @[onBeforeTaskMove](api/event/onbeforetaskmove.md) или @[onBeforeRowDragEnd](api/event/onbeforerowdragend.md):
 
@@ -72,7 +69,6 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 
 ## Повышение производительности при больших наборах данных {#improvingperformanceforlargedatasets}
 
-
 При работе с большим количеством задач стандартный режим изменения порядка веток может замедлять работу. Для улучшения производительности можно использовать режим "marker".
 
 ~~~js
@@ -88,7 +84,6 @@ gantt.config.order_branch = "marker";
 Чтобы ограничить сброс задач в определённые позиции в этом режиме, используйте событие @[onBeforeRowDragMove](api/event/onbeforerowdragmove.md) (работает только в режиме "marker").
 
 ## Подсветка доступных позиций для сброса при перетаскивании {#highlightingavailabledropplaceswhiledragampdrop}
-
 
 Чтобы визуально выделять допустимые позиции для сброса во время перетаскивания (например, чтобы не позволить перетаскивать корневой узел под другой корневой), используйте события @[onRowDragStart](api/event/onrowdragstart.md) и @[onRowDragEnd](api/event/onrowdragend.md):
 
@@ -117,7 +112,6 @@ gantt.templates.grid_row_class = function(start, end, task){
 ~~~
 
 ## Вертикальное изменение порядка задач на временной шкале {#reorderingtasksverticallyinthetimeline}
-
 
 См. примеры в разделе [Решения: Как вертикально изменить порядок задач на временной шкале](guides/how-to.md#howtoverticallyreordertasksinthetimeline).
 

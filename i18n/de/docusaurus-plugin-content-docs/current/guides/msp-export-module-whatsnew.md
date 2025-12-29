@@ -5,7 +5,6 @@ sidebar_label: "Was ist neu im MSP Project Export Modul"
 
 # Was ist neu im MSP Project Export Modul
 
-
 ## 2.1.0.0
 
 * Unterstützung für benutzerdefinierte Kalender wurde sowohl für importierte als auch exportierte MSP- und Primavera-Dateien hinzugefügt, einschließlich Ressourcenkalender.

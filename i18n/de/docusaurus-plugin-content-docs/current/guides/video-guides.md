@@ -5,7 +5,6 @@ sidebar_label: "Videoanleitungen"
 
 # Videoanleitungen
 
-
 Dieser Artikel bietet einen kurzen Überblick über Videoanleitungen, die Ihnen helfen, Gantt besser zu verstehen. 
 
 Durch das Ansehen dieser Tutorials lernen Sie, wie Sie Gitterspalten konfigurieren, Gitterzellen und -köpfe anpassen und ein Standard-Gantt-Diagramm auf verschiedenen serverseitigen Plattformen erstellen.

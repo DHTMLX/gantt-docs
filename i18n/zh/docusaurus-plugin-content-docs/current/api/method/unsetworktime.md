@@ -39,7 +39,6 @@ gantt.unsetWorkTime({ hours:["9:00-18:00"] });
 
 ## 配置对象属性
 
-
 配置对象可能包含以下属性:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">

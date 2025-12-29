@@ -5,7 +5,6 @@ sidebar_label: "v.3.0에서 변경된 CSS 클래스명"
 
 # v.3.0에서 변경된 CSS 클래스명
 
-
 <table class="list" cellspacing="0" cellpadding="5" border="0">
     <thead>
     <tr>

@@ -6,7 +6,6 @@ sidebar_label: Next.js
 
 # React Gantt with Next.js
 
-
 **Next.js Quick Start**
 
 You should be familiar with the basic concepts of [React](https://react.dev/) and [Next.js](https://nextjs.org/docs). If not, refer to their official documentation before starting this guide.

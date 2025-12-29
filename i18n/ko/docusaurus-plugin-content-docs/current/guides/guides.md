@@ -5,7 +5,6 @@ sidebar_label: "가이드"
 
 # 가이드
 
-
 이 섹션은 dhtmlxGantt 사용에 대한 실질적인 안내를 제공하는 문서의 핵심 부분입니다. 다양한 복잡도의 작업을 돕기 위해 작업 중심의 매뉴얼로 구성되어 있습니다. 각 문서에서는 필수 절차와 문제 해결 방법을 다룹니다.
 
 또한 dhtmlxGantt 라이브러리의 [Standard 및 PRO 버전에서 제공되는 기능](guides/editions-comparison.md)도 확인할 수 있습니다.

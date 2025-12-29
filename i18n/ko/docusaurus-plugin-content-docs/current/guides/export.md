@@ -5,7 +5,6 @@ sidebar_label: "Export to PDF and PNG"
 
 # Export to PDF and PNG  
 
-
 dhtmlxGantt는 Gantt 차트를 [PDF](guides/export.md#exporttopdf) 또는 [PNG](guides/export.md#exporttopng) 파일로 저장할 수 있는 온라인 내보내기 서비스를 제공합니다.
 
 :::note
@@ -15,7 +14,6 @@ dhtmlxGantt는 Gantt 차트를 [PDF](guides/export.md#exporttopdf) 또는 [PNG](
 Gantt 차트를 PDF 또는 PNG로 로컬에서 내보내기 위해 직접 설정할 수 있는 다양한 내보내기 서비스가 있습니다. 내보내기 서비스는 Gantt 패키지에 포함되어 있지 않으므로 각 서비스의 사용 조건에 대해서는 [관련 문서](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)를 참고하세요.
 
 ## 온라인 내보내기 서비스 제한 사항  {#onlineexportservicerestrictions}
-
 
 :::note
 내보내기 서비스는 처리 시간과 요청 크기에 제한이 있습니다.
@@ -39,7 +37,6 @@ Error: Timeout trigger 20 seconds
 
 ## 내보내기 모듈 사용   {#usingexportmodules}
 
-
 :::note
 대용량 차트 내보내기에는 [독립형 내보내기 모듈](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)을 사용할 수 있습니다.  
 이 모듈은 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), 또는 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 라이선스를 보유하고 있으면 무료로 사용할 수 있으며, [별도로 구매](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210)할 수도 있습니다.
@@ -48,7 +45,6 @@ Error: Timeout trigger 20 seconds
 [PDF 내보내기 모듈 사용에 대한 자세한 내용은 여기를 참고하세요.](guides/pdf-export-module.md)
 
 ## Export to PDF   {#exporttopdf}
-
 
 Gantt 차트를 PDF로 내보내려면 다음 단계를 따르세요:
 
@@ -86,7 +82,6 @@ Gantt 8.0 미만 버전을 사용하는 경우, 온라인 내보내기 서비스
 
 ## Export to PNG   {#exporttopng}
 
-
 Gantt 차트를 PNG 이미지로 내보내려면 다음 단계를 따르세요:
 
 - <b>export_api</b> 플러그인을 [plugins](api/method/plugins.md) 방식으로 활성화합니다:
@@ -122,7 +117,6 @@ Gantt 8.0 미만 버전을 사용하는 경우, 온라인 내보내기 서비스
 
 
 ## 내보내기 메서드의 파라미터   {#parametersoftheexportmethods}
-
 
 [exportToPDF](api/method/exporttopdf.md) 및 [exportToPNG](api/method/exporttopng.md) 메서드는 다양한 선택적 속성을 가진 객체를 인자로 받을 수 있습니다:
 
@@ -244,7 +238,6 @@ gantt.exportToPDF({
 ~~~
 
 ## 내보낼 데이터 지정  {#datatoexport}
-
 
 PDF 또는 PNG로 내보낼 작업을 지정하는 방법은 두 가지가 있습니다:
 
@@ -416,7 +409,7 @@ gantt.exportToPDF({
 로컬 내보내기 서비스 설정 방법은 [system requirements](guides/export-requirements.md)를 참고하세요.
 
 ## HTML 요소 내보내기 {#exportingcustommarkupandstyles}
- 
+
 Gantt 차트를 PNG 또는 PDF로 내보낼 때, 보안상의 이유로 HTML 요소 내보내기에는 제한이 있습니다.
 
 `<canvas>`, `<svg>`, `<script>`와 같이 특정 HTML 요소 및 *src* 속성에 Base64 데이터가 포함된 이미지 등은 제한됩니다. 하지만 SVG 및 Base64 형식의 이미지를 안전하게 내보내는 방법이 있습니다.

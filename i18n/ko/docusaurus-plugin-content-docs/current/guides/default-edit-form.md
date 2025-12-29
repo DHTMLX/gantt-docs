@@ -5,7 +5,6 @@ sidebar_label: "Lightbox 요소 구성하기"
 
 # Lightbox 요소 구성하기
 
-
 Lightbox는 작업 세부 정보를 수정하는 편집 폼 역할을 합니다. 
 
  아래는 기본 Lightbox 레이아웃입니다.
@@ -34,7 +33,6 @@ v7.1.13부터 [gantt.config.csp](api/config/csp.md)가 *true*로 설정되어 �
 :::
 
 ## Lightbox 구조
-
 
 ### 섹션(Sections)
 

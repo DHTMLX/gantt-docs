@@ -5,7 +5,6 @@ sidebar_label: "Configuring Tasks"
 
 # Configuring Tasks
 
-
 ![gantt_tasks](/img/gantt_tasks.png)
 
 - [Task Types](guides/task-types.md)

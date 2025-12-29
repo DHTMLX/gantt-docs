@@ -5,7 +5,6 @@ sidebar_label: "Overlay Extension"
 
 # Overlay Extension
 
-
 :::note
 Эта функция доступна только в редакции PRO
 :::
@@ -13,7 +12,6 @@ sidebar_label: "Overlay Extension"
 Расширение **overlay** предоставляет набор API-методов, которые упрощают работу с оверлеями. Для получения более подробной информации обратитесь к статье [Пользовательские элементы в области временной шкалы](guides/baselines.md#extraoverlayforthechart).
 
 ## Методы
-
 
 Следующие методы доступны через объект **gantt.ext.overlay**:
 

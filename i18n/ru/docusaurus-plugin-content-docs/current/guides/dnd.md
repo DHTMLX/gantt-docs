@@ -5,7 +5,6 @@ sidebar_label: "Перетаскивание задач на временной 
 
 # Перетаскивание задач на временной шкале
 
-
 Перетаскивание облегчает изменение дат начала и окончания задач, а также их длительности. 
 
 
@@ -29,7 +28,6 @@ sidebar_label: "Перетаскивание задач на временной 
 
 
 ## Блокировка перетаскивания для определённых задач {#denyingdraggingofspecifictasks}
-
 
 Чтобы отключить перетаскивание для некоторых задач, используйте событие [onBeforeTaskDrag](api/event/onbeforetaskdrag.md):
 
@@ -101,7 +99,6 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 
 ## Перетаскивание дочерних задач вместе с родительской {#draggingchildrentogetherwiththeparent}
 
-
 Чтобы при перемещении родительской задачи перетаскивались и её дочерние задачи, используйте событие [onTaskDrag](api/event/ontaskdrag.md) (подробнее об этом событии см. [выше](guides/dnd.md#preventingdraggingtasksoutsidecertaindates)):
 
 ~~~js
@@ -137,7 +134,6 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 
 ## Перетаскивание проектов вместе с подзадачами {#draggingprojectswithsubtasks}
 
-
 :::info
 Эта возможность доступна только в редакции Gantt PRO.
 :::
@@ -155,13 +151,11 @@ gantt.config.drag_project = true;
 
 ## Перетаскивание зависимых задач вместе с независимыми {#draggingdependenttaskstogetherwithindependenttasks}
 
-
 Существует несколько способов перемещения задач вместе с их зависимыми задачами.
 Подробную информацию вы найдёте в отдельной статье: [Перетаскивание задач вместе с их зависимыми задачами](guides/dragging-dependent-tasks.md).
 
 
 ## Установка минимальной длительности задачи {#settingminimaltaskduration}
-
 
 Вы можете задать минимальную длительность задачи с помощью настройки [min_duration](api/config/min_duration.md).
 
@@ -179,7 +173,6 @@ gantt.config.min_duration = 60*60*1000;
 ~~~
 
 ## Автопрокрутка при перетаскивании задач {#autoscrollduringtasksdragging}
-
 
 При работе с крупными Gantt-диаграммами перетаскивание задачи на большое расстояние или создание связей между удалёнными задачами может быть затруднено.
 
@@ -200,7 +193,6 @@ gantt.init("gantt_here");
 ~~~
 
 ## Отключение изменения размера для определённых задач {#disablingresizeofspecifictasks}
-
 
 Чтобы запретить изменение размера некоторых задач, есть два подхода:
 
@@ -237,7 +229,6 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 
 ## Определение, какая сторона задачи изменяется по размеру {#whichsideofataskisbeingresized}
 
-
 Режим "resize" в drag-and-drop означает, что пользователь изменяет либо дату начала, либо дату окончания задачи.
 
 Чтобы определить, какая дата изменяется, проверьте флаг **gantt.getState().drag_from_start**:
@@ -256,7 +247,6 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 ~~~
 
 ## Отключение изменения даты начала или окончания задачи {#disablingresizeofthestartortheenddateofatask}
-
 
 Ручки изменения размера можно выбрать с помощью следующих селекторов:
 
