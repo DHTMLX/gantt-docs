@@ -5,7 +5,6 @@ sidebar_label: "Общие возможности"
 
 # Общие возможности
 
-((index
 - [Локализация](guides/localization.md)
 - [Полноэкранный режим](guides/fullscreen-mode.md)
 - [Экран пустого состояния](guides/empty-state-screen.md)
@@ -16,4 +15,3 @@ sidebar_label: "Общие возможности"
 - [Навигация с клавиатуры](guides/keyboard-navigation.md)
 - [Соответствие политике Content Security Policy (CSP)](guides/content-security-policy.md)
 - [Интеграция с JQuery](guides/jquery-integration.md)
-))

@@ -7,7 +7,6 @@ sidebar_label: "Настройка грида"
 
 ![gantt_left](/img/gantt_left.png)
 
-((index
 - [Указание колонок](guides/specifying-columns.md)
 - [Изменение размера строк в гриде](guides/resizing-rows.md)
 - [Настройка древовидной колонки](guides/tree-column.md)
@@ -16,5 +15,3 @@ sidebar_label: "Настройка грида"
 - [Группировка задач](guides/grouping.md)
 - [Фильтрация задач](guides/filtering.md)
 - [Редактирование 'на месте' в гриде](guides/inline-editing.md)
-
-))
