@@ -7,7 +7,6 @@ sidebar_label: "Konfiguration von Aufgaben"
 
 ![gantt_tasks](/img/gantt_tasks.png)
 
-((index
 - [Task Types](guides/task-types.md)
 - [Task Properties](guides/task-properties.md)
 - [Task Object/Id](guides/task-object-operations.md)
@@ -28,4 +27,3 @@ sidebar_label: "Konfiguration von Aufgaben"
 - [Dragging Tasks within the Timeline](guides/dnd.md)
 - [Creating/Selecting Tasks with DnD](guides/advanced-dnd.md)
 - [Manually Scheduled Summary Tasks](guides/custom-projects-dates.md)
-))

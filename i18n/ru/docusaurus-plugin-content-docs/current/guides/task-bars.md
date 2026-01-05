@@ -7,7 +7,6 @@ sidebar_label: "Настройка задач"
 
 ![gantt_tasks](/img/gantt_tasks.png)
 
-((index
 - [Типы задач](guides/task-types.md)
 - [Свойства задачи](guides/task-properties.md)
 - [Task Object/Id](guides/task-object-operations.md)
@@ -28,4 +27,3 @@ sidebar_label: "Настройка задач"
 - [Перетаскивание задач на временной шкале](guides/dnd.md)
 - [Создание/Выделение задач с помощью DnD](guides/advanced-dnd.md)
 - [Вручную запланированные сводные задачи](guides/custom-projects-dates.md)
-))

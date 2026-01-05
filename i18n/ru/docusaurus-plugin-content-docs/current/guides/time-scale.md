@@ -7,7 +7,6 @@ sidebar_label: "Настройка шкал"
 
 ![gantt_right](/img/gantt_right.png)
 
-((index
 - [Настройка шкалы](guides/configuring-time-scale.md) 
 - [Масштабирование](guides/zooming.md)
 - [Выделение временных слотов](guides/highlighting-time-slots.md)
@@ -15,4 +14,3 @@ sidebar_label: "Настройка шкал"
 - [Скрытие временных единиц на шкале](guides/custom-scale.md)
 - [Добавление вертикальных маркеров](guides/markers.md)
 - [RTL (Right-to-left) режим](guides/rtl-mode.md)
-))
