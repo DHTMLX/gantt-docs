@@ -579,7 +579,7 @@ A complete working project that follows this tutorial is [provided on GitHub](ht
 To go further:
 
 - Revisit the concepts behind this example in [](integrations/react/state/state-management-basics.md)
-- Combine XState machine with advanced configuration and templating in the [React Gantt overview](integrations/react/installation.md)
+- Combine XState machine with advanced configuration and templating in the [React Gantt overview](integrations/react/overview.md)
 - Compare this XState-driven architecture with other state managers:
   - [Using React Gantt with Redux Toolkit](integrations/react/state/redux-toolkit.md)
   - [Using React Gantt with MobX](integrations/react/state/mobx.md)
