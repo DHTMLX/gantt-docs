@@ -110,7 +110,12 @@ module.exports = {
                             items: [
                                 "integrations/react/js-gantt-react",
                             ],
-                        }
+                        },
+
+                        {
+                            type: 'doc',
+                            id: "integrations/react/copyright"
+                        },
                     ]
                 },
                 "integrations/vue/howtostart-vue",
