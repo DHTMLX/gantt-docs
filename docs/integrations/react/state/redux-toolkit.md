@@ -42,7 +42,7 @@ Then we need to install the React Gantt package.
 
 ### Installing React Gantt
 
-Install React Gantt as described in [](integrations/react/installation.md).
+Install React Gantt as described in the [React Gantt installation guide](integrations/react/installation.md).
 
 In this tutorial we use the evaluation package:
 
@@ -588,7 +588,7 @@ A complete working project that follows this tutorial is [provided on GitHub](ht
 To go further:
 
 - Revisit the concepts behind this example in [](integrations/react/state/state-management-basics.md)
-- Combine Redux-driven state with advanced configuration and templating in [](integrations/react/overview.md)
+- Combine Redux-driven state with advanced configuration and templating in the [React Gantt overview](integrations/react/overview.md)
 - Explore the same pattern with other state managers:
   - [Using React Gantt with Zustand](integrations/react/state/zustand.md)
   - [Using React Gantt with MobX](integrations/react/state/mobx.md)

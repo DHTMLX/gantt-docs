@@ -43,7 +43,7 @@ Your application will be available at `http://localhost:5173`.
 
 ## Step 1. Installing the React Gantt package
 
-Install React Gantt as described in [](integrations/react/installation.md).
+Install React Gantt as described in the [React Gantt installation guide](integrations/react/installation.md).
 
 In this tutorial we use the evaluation package:
 

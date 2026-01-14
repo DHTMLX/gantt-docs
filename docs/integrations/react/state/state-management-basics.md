@@ -494,5 +494,5 @@ State managers:
 
 Or learn more about usage of imperative API and server-side communication:
 
-- [](integrations/react/configuration-props.md)
+- [React Gantt Configuration](integrations/react/configuration-props.md)
 - [Server-Side Integration](guides/server-side.md)
