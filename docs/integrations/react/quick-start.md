@@ -32,7 +32,7 @@ cd react-gantt-quick-start
 
 ### Installing React Gantt
 
-Install React Gantt as described in [](integrations/react/installation.md).
+Install React Gantt as described in the [React Gantt installation guide](integrations/react/installation.md).
 
 In this tutorial we use the evaluation package:
 
