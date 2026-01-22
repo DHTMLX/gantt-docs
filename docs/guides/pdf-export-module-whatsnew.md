@@ -34,7 +34,7 @@ What's new in PDF Export Module
 
 - Excel export: Added support for split tasks in the rendered timeline representation (`visual: true`)
 - Excel export: Fixed task rendering when `end_date` is earlier than `start_date` in the rendered timeline representation
-- Excel export: Not showing dates of unscheduled tasks
+- Excel export: Don't show dates of unscheduled tasks
 
 ## 0.7.0
   
