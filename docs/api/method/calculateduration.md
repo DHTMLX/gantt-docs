@@ -18,7 +18,7 @@ description: "calculates the duration of a task"
 - `end_date` - (optional) *Date* -  the end date of the task. The parameter is required when the first parameter is specified as start_date.
 
 ### Returns
-- ` duration` - (number) - the duration of a task in units specified by the <a href="[duration_unit](api/config/duration_unit.md)">duration_unit</a> option
+- ` duration` - (number) - the duration of a task in units specified by the [duration_unit](api/config/duration_unit.md) option
 
 ### Example
 

@@ -101,7 +101,7 @@ const status = dp.getState(id);
 	});
 	~~~
 <p>You can place data adding and deleting operations here when you don't want to save that changes on the server side.</p>
-<i>The dp.ignore() method works similarly to <a href="api/method/silent.md">gantt.silent()</a>.</i>
+<i>The dp.ignore() method works similarly to [gantt.silent()](api/method/silent.md).</i>
 </ul>
 
 <ul id="setTransactionMode">

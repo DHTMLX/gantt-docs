@@ -63,7 +63,7 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 ## Properties
 
-The following properties are mostly important and commonly set for the **template** control (see the full list <a href="[lightbox](api/config/lightbox.md)">here</a>):
+The following properties are mostly important and commonly set for the **template** control (see the full list [here](api/config/lightbox.md)):
 
 - **name** - (*string*) the section name 
 - **height** - (*number*) the section height
