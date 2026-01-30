@@ -1,71 +1,94 @@
 ---
 title: "CDN 链接完整列表"
-sidebar_label: "CDN 链接完整列表"
+sidebar_label: "CDN 链接"
 ---
 
 # CDN 链接完整列表
 
-本文为您提供了通过 CDN 添加 Gantt 功能的完整链接集合。
-每个部分对应特定的 Gantt 版本:
+本文列出了在您的应用中引入 **dhtmlxGantt** 所需的 CDN 链接。
 
-- 核心文件 -- 包含主要功能的 *dhtmlxgantt.js* 和 *dhtmlxgantt.css* 文件
-- 皮肤 -- 所有可用[皮肤](guides/skins.md)的链接
+Gantt 由两个核心文件组成：
 
-## 最新 Gantt 版本
+- **JavaScript：** `dhtmlxgantt.js`
+- **样式：** `dhtmlxgantt.css`
 
-如需使用最新版本库，请将资源路径设置为 **https://cdn.dhtmlx.com/gantt/edge/...**
 
-核心文件:[JS](https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js)，[CSS](https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css)
+## 最新版本的 Gantt（edge）
 
-皮肤:[Terrace](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_terrace.css)，
-[Meadow](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_meadow.css)，
-[Skyblue](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_skyblue.css)，
-[Broadway](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_broadway.css)，
-[Contrast Black](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_contrast_black.css)，
-[Contrast White](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_contrast_white.css)，
-[Material](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_material.css)。
+使用：
 
-## 最新 Gantt 版本，未压缩版
+`https://cdn.dhtmlx.com/gantt/edge/...`
 
-如需使用最新库的未压缩版本，请将路径设置为 **https://cdn.dhtmlx.com/gantt/edge/sources/...**
+### 核心文件
 
-核心文件:[JS](https://cdn.dhtmlx.com/gantt/edge/sources/dhtmlxgantt.js)，
-[CSS](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_terrace.css)
+- JS: https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js
+- CSS: https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css
 
-皮肤:[Terrace](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_terrace.css)，
-[Meadow](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_meadow.css)，
-[Skyblue](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_skyblue.css)，
-[Broadway](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_broadway.css)，
-[Contrast Black](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_contrast_black.css)，
-[Contrast White](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_contrast_white.css)，
-[Material](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_material.css)。
 
-## 指定 Gantt 版本
 
-如需使用特定版本库，请将资源路径设置为 **https://cdn.dhtmlx.com/gantt/[version_number]/...**
+## 最新版本的 Gantt（edge），未压缩版本
 
-核心文件:[JS](https://cdn.dhtmlx.com/gantt/4.0/dhtmlxgantt.js)，
-[CSS](https://cdn.dhtmlx.com/gantt/4.0/dhtmlxgantt.css)
+使用：
 
-皮肤:[Terrace](https://cdn.dhtmlx.com/gantt/4.0/skins/dhtmlxgantt_terrace.css)，
-[Meadow](https://cdn.dhtmlx.com/gantt/4.0/skins/dhtmlxgantt_meadow.css)，
-[Skyblue](https://cdn.dhtmlx.com/gantt/4.0/skins/dhtmlxgantt_skyblue.css)，
-[Broadway](https://cdn.dhtmlx.com/gantt/4.0/skins/dhtmlxgantt_broadway.css)，
-[Contrast Black](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_contrast_black.css)，
-[Contrast White](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_contrast_white.css)，
-[Material](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_material.css)。
+`https://cdn.dhtmlx.com/gantt/edge/sources/...`
 
-## 指定 Gantt 版本，未压缩版
+### 核心文件
 
-如需使用特定版本的未压缩文件，请将路径设置为 **https://cdn.dhtmlx.com/gantt/[version_number]/sources/...**
+- JS: https://cdn.dhtmlx.com/gantt/edge/sources/dhtmlxgantt.js
+- CSS: https://cdn.dhtmlx.com/gantt/edge/sources/dhtmlxgantt.css
 
-核心文件:[JS](https://cdn.dhtmlx.com/gantt/4.0/sources/dhtmlxgantt.js)，
-[CSS](https://cdn.dhtmlx.com/gantt/4.0/sources/skins/dhtmlxgantt_terrace.css)
 
-皮肤:[Terrace](https://cdn.dhtmlx.com/gantt/4.0/sources/skins/dhtmlxgantt_terrace.css)，
-[Meadow](https://cdn.dhtmlx.com/gantt/4.0/sources/skins/dhtmlxgantt_meadow.css)，
-[Skyblue](https://cdn.dhtmlx.com/gantt/4.0/sources/skins/dhtmlxgantt_skyblue.css)，
-[Broadway](https://cdn.dhtmlx.com/gantt/4.0/sources/skins/dhtmlxgantt_broadway.css)，
-[Contrast Black](https://cdn.dhtmlx.com/gantt/5.1/sources/skins/dhtmlxgantt_contrast_black.css)，
-[Contrast White](https://cdn.dhtmlx.com/gantt/5.1/sources/skins/dhtmlxgantt_contrast_white.css)，
-[Material](https://cdn.dhtmlx.com/gantt/5.1/sources/skins/dhtmlxgantt_material.css)。
+## 指定版本的 Gantt
+
+使用：
+
+`https://cdn.dhtmlx.com/gantt/[version_number]/...`
+
+其中 `[version_number]` 表示包的 `major.minor` 版本号，例如 **9.0**、**8.0**、**7.1** 等。我们的 CDN 会为每个 major/minor 版本始终提供最新的 patch 版本。
+
+### 核心文件
+
+- JS: https://cdn.dhtmlx.com/gantt/9.0/dhtmlxgantt.js
+- CSS: https://cdn.dhtmlx.com/gantt/9.0/dhtmlxgantt.css
+
+### 皮肤（仅适用于 v8.0 及更早版本）
+
+在 v8.0 及更早版本中，皮肤（skin）以独立的 CSS 文件形式提供。  
+从 v9.0 开始，所有皮肤都包含在 `dhtmlxgantt.css` 中，并通过 `gantt.skin`/`gantt.setSkin()` 进行选择。更多信息请参阅 [迁移指南](migration.md#single-css-file)。
+
+- Terrace: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_terrace.css
+- Meadow: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_meadow.css
+- Skyblue: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_skyblue.css
+- Broadway: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_broadway.css
+- Contrast Black: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_contrast_black.css
+- Contrast White: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_contrast_white.css
+- Material: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_material.css
+
+## 指定版本的 Gantt，未压缩版本
+
+使用：
+
+`https://cdn.dhtmlx.com/gantt/[version_number]/sources/...`
+
+其中 `[version_number]` 表示包的 `major.minor` 版本号，例如 **9.0**、**8.0**、**7.1** 等。我们的 CDN 会为每个 major/minor 版本始终提供最新的 patch 版本。
+
+### 核心文件
+
+- JS: https://cdn.dhtmlx.com/gantt/9.0/sources/dhtmlxgantt.js
+- CSS: https://cdn.dhtmlx.com/gantt/9.0/sources/dhtmlxgantt.css
+
+
+### 皮肤（仅适用于 v8.0 及更早版本）
+
+在 v8.0 及更早版本中，皮肤（skin）以独立的 CSS 文件形式提供。  
+从 v9.0 开始，所有皮肤都包含在 `dhtmlxgantt.css` 中，并通过 `gantt.skin`/`gantt.setSkin()` 进行选择。更多信息请参阅 [迁移指南](migration.md#single-css-file)。
+
+未压缩的皮肤文件：
+
+- Terrace: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_terrace.css
+- Meadow: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_meadow.css
+- Skyblue: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_skyblue.css
+- Broadway: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_broadway.css
+- Contrast Black: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_contrast_black.css
+- Contrast White: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_contrast_white.css
+- Material: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_material.css
