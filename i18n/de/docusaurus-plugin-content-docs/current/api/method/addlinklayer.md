@@ -82,7 +82,7 @@ Das Argument kann einer der folgenden Typen sein:
         - **_link_** - (*Link*) - das Link-Objekt
 
 
-- Beachten Sie, dass benutzerdefinierte Layer nach erneutem Aufruf von <a href="[init](api/method/init.md)">gantt.init</a> gelöscht werden  
+- Beachten Sie, dass benutzerdefinierte Layer nach erneutem Aufruf von [init](api/method/init.md) gelöscht werden  
 - Außerdem setzt ein Aufruf von [gantt.resetLayout()](api/method/resetlayout.md) benutzerdefinierte Layer zurück. Um sie sichtbar zu halten, müssen Sie **gantt.addLinkLayer** nach dem Aufruf von [resetLayout](api/method/resetlayout.md) erneut anwenden.
 
 :::note

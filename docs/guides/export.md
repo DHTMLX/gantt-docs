@@ -137,7 +137,7 @@ The [exportToPDF](api/method/exporttopdf.md) and [exportToPNG](api/method/export
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>skin</b></td>
-  <td>(<i>string</i>) the <a href="[Skins](guides/skins.md)">skin</a> of the output Gantt chart</td>
+  <td>(<i>string</i>) the [skin](guides/skins.md) of the output Gantt chart</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>locale</b></td>
