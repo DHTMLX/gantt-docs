@@ -1,78 +1,94 @@
 ---
 title: "Полный список CDN-ссылок"
-sidebar_label: "Полный список CDN-ссылок"
+sidebar_label: "CDN-ссылки"
 ---
 
 # Полный список CDN-ссылок
 
-В этой статье представлен полный набор ссылок для добавления функциональности Gantt через CDN.
-Каждый раздел относится к определённой версии Gantt:
+В этой статье приведены CDN-ссылки для подключения **dhtmlxGantt** в вашем приложении.
 
-- Основные файлы - *dhtmlxgantt.js* и *dhtmlxgantt.css*, включающие основные возможности
-- Скины - ссылки на все доступные [скины](guides/skins.md)
+Gantt состоит из двух основных файлов:
 
-
-## Последняя версия Gantt
-
-Чтобы использовать самую свежую версию библиотеки, укажите путь к исходнику **https://cdn.dhtmlx.com/gantt/edge/...**
-
-Основные файлы: [JS](https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js), [CSS](https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css)
-
-Скины: [Terrace](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_terrace.css), 
-[Meadow](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_meadow.css), 
-[Skyblue](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_skyblue.css), 
-[Broadway](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_broadway.css),
-[Contrast Black](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_contrast_black.css),
-[Contrast White](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_contrast_white.css),
-[Material](https://cdn.dhtmlx.com/gantt/edge/skins/dhtmlxgantt_material.css).
+- **JavaScript:** `dhtmlxgantt.js`
+- **Стили:** `dhtmlxgantt.css`
 
 
-## Последняя версия Gantt, не сжатая
+## Последняя версия Gantt (edge)
 
-Для не сжатой версии последней библиотеки используйте путь **https://cdn.dhtmlx.com/gantt/edge/sources/...**
+Используйте:
 
-Основные файлы: [JS](https://cdn.dhtmlx.com/gantt/edge/sources/dhtmlxgantt.js), 
-[CSS](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_terrace.css)
+`https://cdn.dhtmlx.com/gantt/edge/...`
+
+### Основные файлы
+
+- JS: https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js
+- CSS: https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css
 
 
-Скины: [Terrace](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_terrace.css), 
-[Meadow](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_meadow.css), 
-[Skyblue](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_skyblue.css), 
-[Broadway](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_broadway.css),
-[Contrast Black](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_contrast_black.css),
-[Contrast White](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_contrast_white.css),
-[Material](https://cdn.dhtmlx.com/gantt/edge/sources/skins/dhtmlxgantt_material.css).
+
+## Последняя версия Gantt (edge), исходники (uncompressed)
+
+Используйте:
+
+`https://cdn.dhtmlx.com/gantt/edge/sources/...`
+
+### Основные файлы
+
+- JS: https://cdn.dhtmlx.com/gantt/edge/sources/dhtmlxgantt.js
+- CSS: https://cdn.dhtmlx.com/gantt/edge/sources/dhtmlxgantt.css
 
 
 ## Конкретная версия Gantt
 
-Чтобы использовать определённую версию библиотеки, укажите путь к исходнику как **https://cdn.dhtmlx.com/gantt/[version_number]/...**.
+Используйте:
 
-Основные файлы: [JS](https://cdn.dhtmlx.com/gantt/4.0/dhtmlxgantt.js), 
-[CSS](https://cdn.dhtmlx.com/gantt/4.0/dhtmlxgantt.css)
+`https://cdn.dhtmlx.com/gantt/[version_number]/...`
+
+`[version_number]` задаёт `major.minor` версию пакета, например **9.0**, **8.0**, **7.1** и т.д. Наш CDN всегда отдаёт последнюю patch-версию для каждого major/minor релиза.
+
+### Основные файлы
+
+- JS: https://cdn.dhtmlx.com/gantt/9.0/dhtmlxgantt.js
+- CSS: https://cdn.dhtmlx.com/gantt/9.0/dhtmlxgantt.css
+
+### Скины (только для v8.0 и ниже)
+
+Отдельные файлы скинов доступны в v8.0 и более ранних версиях.  
+Начиная с v9.0, все скины включены в `dhtmlxgantt.css` и выбираются через `gantt.skin`/`gantt.setSkin()`. Подробнее см. в [гайде по миграции](migration.md#single-css-file).
+
+- Terrace: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_terrace.css
+- Meadow: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_meadow.css
+- Skyblue: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_skyblue.css
+- Broadway: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_broadway.css
+- Contrast Black: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_contrast_black.css
+- Contrast White: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_contrast_white.css
+- Material: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_material.css
+
+## Конкретная версия Gantt, исходники (uncompressed)
+
+Используйте:
+
+`https://cdn.dhtmlx.com/gantt/[version_number]/sources/...`
+
+`[version_number]` задаёт `major.minor` версию пакета, например **9.0**, **8.0**, **7.1** и т.д. Наш CDN всегда отдаёт последнюю patch-версию для каждого major/minor релиза.
+
+### Основные файлы
+
+- JS: https://cdn.dhtmlx.com/gantt/9.0/sources/dhtmlxgantt.js
+- CSS: https://cdn.dhtmlx.com/gantt/9.0/sources/dhtmlxgantt.css
 
 
-Скины: [Terrace](https://cdn.dhtmlx.com/gantt/4.0/skins/dhtmlxgantt_terrace.css), 
-[Meadow](https://cdn.dhtmlx.com/gantt/4.0/skins/dhtmlxgantt_meadow.css), 
-[Skyblue](https://cdn.dhtmlx.com/gantt/4.0/skins/dhtmlxgantt_skyblue.css), 
-[Broadway](https://cdn.dhtmlx.com/gantt/4.0/skins/dhtmlxgantt_broadway.css),
-[Contrast Black](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_contrast_black.css),
-[Contrast White](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_contrast_white.css),
-[Material](https://cdn.dhtmlx.com/gantt/5.1/skins/dhtmlxgantt_material.css).
- 
+### Скины (только для v8.0 и ниже)
 
-## Конкретная версия Gantt, не сжатая
+Отдельные файлы скинов доступны в v8.0 и более ранних версиях.  
+Начиная с v9.0, все скины включены в `dhtmlxgantt.css` и выбираются через `gantt.skin`/`gantt.setSkin()`. Подробнее см. в [гайде по миграции](migration.md#single-css-file).
 
-Для не сжатых файлов выбранной версии укажите путь как **https://cdn.dhtmlx.com/gantt/[version_number]/sources/...**.
+Исходники (uncompressed) файлов скинов:
 
-Основные файлы: [JS](https://cdn.dhtmlx.com/gantt/4.0/sources/dhtmlxgantt.js), 
-[CSS](https://cdn.dhtmlx.com/gantt/4.0/sources/skins/dhtmlxgantt_terrace.css)
-
-
-Скины: [Terrace](https://cdn.dhtmlx.com/gantt/4.0/sources/skins/dhtmlxgantt_terrace.css), 
-[Meadow](https://cdn.dhtmlx.com/gantt/4.0/sources/skins/dhtmlxgantt_meadow.css), 
-[Skyblue](https://cdn.dhtmlx.com/gantt/4.0/sources/skins/dhtmlxgantt_skyblue.css), 
-[Broadway](https://cdn.dhtmlx.com/gantt/4.0/sources/skins/dhtmlxgantt_broadway.css),
-[Contrast Black](https://cdn.dhtmlx.com/gantt/5.1/sources/skins/dhtmlxgantt_contrast_black.css),
-[Contrast White](https://cdn.dhtmlx.com/gantt/5.1/sources/skins/dhtmlxgantt_contrast_white.css),
-[Material](https://cdn.dhtmlx.com/gantt/5.1/sources/skins/dhtmlxgantt_material.css).
+- Terrace: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_terrace.css
+- Meadow: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_meadow.css
+- Skyblue: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_skyblue.css
+- Broadway: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_broadway.css
+- Contrast Black: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_contrast_black.css
+- Contrast White: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_contrast_white.css
+- Material: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_material.css
