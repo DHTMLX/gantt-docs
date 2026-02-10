@@ -40,6 +40,11 @@ This page describes the props accepted by React Gantt and how they map to DHTMLX
   <td>Merged into [gantt.config](api/overview/properties-overview.md), for example: [scales_config](api/config/scales.md), [columns_config](api/config/columns.md), [autosize_config](api/config/autosize.md).</td>
   </tr>
   <tr>
+  <td>calendars</td>
+  <td>Calendar[]</td>
+  <td>An array of work calendars. Example: [Working Calendars](integrations/react/overview.md#working-calendars).</td>
+  </tr>
+  <tr>
   <td>resources</td>
   <td>Resource[]</td>
   <td>An array of [resource objects](/guides/resource-management#manual-creation-of-data-store).</td>
