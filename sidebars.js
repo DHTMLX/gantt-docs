@@ -119,7 +119,45 @@ module.exports = {
                         },
                     ]
                 },
-                "integrations/vue/howtostart-vue",
+               {
+                    type: "category",
+                    label: "Vue",
+                    link: {
+                        type: "doc",
+                        id: "integrations/vue/index"
+                    },
+                    items: [
+                        "integrations/vue/overview",
+                        "integrations/vue/installation",
+                        "integrations/vue/quick-start",
+                        "integrations/vue/configuration-props",
+                        "integrations/vue/customization-patterns",
+                        {
+                            type: "category",
+                            label: "Data & State Management",
+                            key: "vue-data-&-state",
+                            link: {
+                                type: "doc",
+                                id: "integrations/vue/state/index"
+                            },
+                            items: [
+                                "integrations/vue/state/state-management-basics",
+                                "integrations/vue/state/pinia",
+                            ],
+                        },
+                        {
+                            type: "category",
+                            label: "Using JS Gantt in Vue",
+                            link: {
+                                type: "generated-index",
+                                title: "Using dhtmlxGantt JS in Vue",
+                            },
+                            items: [
+                                "integrations/vue/howtostart-vue",
+                            ],
+                        },
+                    ]
+                }, 
                 "integrations/angular/howtostart-angular",
                 "integrations/svelte/howtostart-svelte",
                 "integrations/salesforce/howtostart-salesforce",

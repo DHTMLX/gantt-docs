@@ -50,11 +50,11 @@ You can use DHTMLX Gantt as a vanilla JavaScript widget or integrate it into a m
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/vue/howtostart-vue/">
+  <a className="framework-card" href="integrations/vue/quick-start/">
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">
-    Add a Gantt chart to Vue apps with a small wrapper and reactive props.
+    Use the ready-made <code>VueGantt</code> component with props and events.
     </div>
   </a>
 

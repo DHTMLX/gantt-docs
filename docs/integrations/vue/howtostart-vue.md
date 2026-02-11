@@ -1,9 +1,17 @@
 ---
 title: "dhtmlxGantt with Vue.js"
-sidebar_label: "Vue.js"
+sidebar_label: "Low-Level Integration"
 ---
 
 # dhtmlxGantt with Vue.js
+
+:::note
+This page covers low-level integration of the JS Gantt package (`@dhx/trial-gantt` / `dhtmlx-gantt`) in a Vue app.
+It does not describe the official Vue wrapper package.
+For wrapper-based integration, start with [Vue Gantt](integrations/vue/index.md).
+:::
+
+Choose low-level integration when you explicitly need manual control over instance lifecycle and direct JS API orchestration without wrapper abstractions.
 
 You should be familiar with the basic concepts and patterns of [Vue](https://vuejs.org/) to use this documentation. If you 
 are not, please refer to the [Vue 3 documentation](https://vuejs.org/guide/introduction.html) for a getting-started tutorial.
