@@ -85,7 +85,7 @@ Use [Data Binding and State Management Basics](integrations/angular/state/state-
 
 ## `events` Map vs `(ready)`
 
-Angular Gantt uses an `events` map for Gantt event handlers and a separate `(ready)` output for one-time lifecycle access.
+Angular Gantt uses an `events` map for [Gantt event handlers](api/overview/events-overview.md) and a separate `(ready)` output for one-time lifecycle access.
 
 ~~~ts
 import { Component } from '@angular/core';

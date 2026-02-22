@@ -1,19 +1,20 @@
-﻿---
+---
 title: "Vue Gantt"
 sidebar_label: Vue Gantt
 description: "Install, configure, and use DHTMLX Gantt in Vue with the official wrapper."
 image: /img/frameworks/vue.png
 ---
 
-Vue Gantt is the official Vue wrapper for DHTMLX Gantt. It is built for Vue 3 applications that want Vue-friendly composition patterns while preserving full access to the underlying Gantt API.
+Vue Gantt is the official Vue wrapper for DHTMLX Gantt. It targets Vue 3 and keeps full access to the Gantt API while adding Vue-friendly props, events, and composables.
 
 ## What You Get With The Wrapper
 
-- Declarative configuration via props (`config`, `templates`, `plugins`, `theme`, `locale`).
-- Data synchronization for tasks/links and advanced datasets.
-- Event registration through the `events` map.
-- Vue lifecycle signal through `@ready` and direct access to `instance` through component refs.
-- Public composables and helper factories for typed Vue integration.
+- Declarative setup through props (`config`, `templates`, `plugins`, `theme`, `locale`)
+- Data sync for tasks/links and advanced datasets
+- Gantt event wiring through the `events` map
+- Vue lifecycle entry point through `@ready`
+- Component ref access to the underlying `instance`
+- Typed helper factories and composables for common wrapper workflows
 
 ~~~vue
 <script setup lang="ts">
@@ -28,32 +29,32 @@ import "@dhtmlx/trial-vue-gantt/dist/vue-gantt.css";
 </template>
 ~~~
 
-If you want the complete capability and behavior breakdown first, read [Vue Gantt Overview](integrations/vue/overview.md).
+If you want the architecture and capability map first, read [Vue Gantt Overview](integrations/vue/overview.md).
 
 ## Recommended Learning Path
 
-Follow this order if you are new to the wrapper:
+Use this order if you are new to the wrapper:
 
-1. [Installation](integrations/vue/installation.md): pick the correct package channel (trial vs professional) and import format.
-2. [Quick Start](integrations/vue/quick-start.md): render your first chart in a Vue 3 + Vite project.
-3. [Configuration Reference](integrations/vue/configuration-props.md): understand every prop and lifecycle/data callback contract.
-4. [Data Binding and State Management Basics](integrations/vue/state/state-management-basics.md): choose and implement the right data ownership model.
-5. [Pinia Integration Tutorial](integrations/vue/state/pinia.md): apply the model with a real Vue store.
-6. [Customization Patterns](integrations/vue/customization-patterns.md): implement custom UI (templates, lightbox, inline editors, modals).
+1. [Installation](integrations/vue/installation.md) for package channel selection and imports
+2. [Quick Start](integrations/vue/quick-start.md) to render your first chart
+3. [Configuration Reference](integrations/vue/configuration-props.md) for prop and callback details
+4. [Data Binding and State Management Basics](integrations/vue/state/state-management-basics.md) to choose a data ownership model
+5. [Pinia Integration Tutorial](integrations/vue/state/pinia.md) for a store-driven implementation
+6. [Customization Patterns](integrations/vue/customization-patterns.md) for templates, lightbox, inline editors, and modals
 
-## Wrapper vs Low-Level JS Integration
+## Wrapper Vs Low-Level JS Integration
 
-Choose the integration path based on your project constraints:
+Pick the integration path based on how much lifecycle and sync logic you want to manage yourself.
 
-- Choose the **official wrapper** (`@dhtmlx/trial-vue-gantt` or `@dhx/vue-gantt`) when you want Vue-centric patterns, typed props/composables, and built-in sync behavior.
-- Choose **low-level JS integration** only when you explicitly need direct manual lifecycle control and no wrapper abstractions.
+- Use the **official wrapper** (`@dhtmlx/trial-vue-gantt` or `@dhx/vue-gantt`) for Vue props/events, wrapper-managed synchronization, and typed helper APIs.
+- Use **low-level JS integration** only when you want direct control over instance lifecycle and manual API orchestration.
 
-Use [dhtmlxGantt with Vue.js (Low-Level Integration)](integrations/vue/howtostart-vue.md) for the low-level path.
+For the low-level path, use [dhtmlxGantt with Vue.js (Low-Level Integration)](integrations/vue/howtostart-vue.md).
 
 ## Data And State Management Entry Point
 
-Start state architecture from the Vue state section:
+Start with the state section if you already know you need store/backend synchronization:
 
-- [Data and State Management Section](integrations/vue/state/index.md)
+- [Data & State Management](integrations/vue/state/index.md)
 - [Data Binding and State Management Basics](integrations/vue/state/state-management-basics.md)
 - [Using Vue Gantt with Pinia](integrations/vue/state/pinia.md)

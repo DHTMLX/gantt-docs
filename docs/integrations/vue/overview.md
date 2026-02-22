@@ -1,27 +1,41 @@
 ﻿---
 title: Vue Gantt Overview
 sidebar_label: Overview
-description: "Architecture-level overview of Vue Gantt: capabilities, data flow, events, lifecycle, and advanced customization patterns."
+description: "Architecture-level overview of Vue Gantt: capabilities, data flow, events, lifecycle, and customization extension points."
 ---
 
 # Vue Gantt Overview
 
 Vue Gantt is the official Vue wrapper for DHTMLX Gantt. It combines Vue-friendly composition patterns with full access to the underlying Gantt engine.
 
-If you are new to installation and project bootstrapping, start with [Quick Start with Vue Gantt](integrations/vue/quick-start.md).
+If you need setup instructions first, start with [Quick Start with Vue Gantt](integrations/vue/quick-start.md).
+
+## Mental Model
+
+Vue Gantt is a wrapper around the DHTMLX Gantt engine. The wrapper gives you a Vue component API, but the underlying engine is still the source of chart behavior and low-level methods.
+
+The wrapper layer does three main jobs:
+
+- initializes and destroys the Gantt instance with Vue lifecycle
+- syncs selected Vue props into the current Gantt instance
+- exposes wrapper-specific extension points (`events`, `@ready`, `customLightbox`, `inlineEditors`, composables)
+
+That means you can stay declarative for most integration work and still drop to `instance` when needed.
 
 ## Core Capabilities
 
-The wrapper is designed to cover both straightforward and advanced integration scenarios:
+The wrapper covers both basic and advanced integration scenarios:
 
-- Declarative setup with props (`config`, `templates`, `plugins`, `theme`, `locale`).
-- Data synchronization for tasks/links and advanced stores (`resources`, `resourceAssignments`, `baselines`).
-- Dynamic event wiring through the `events` map.
-- Vue lifecycle signal through `@ready`.
-- Advanced customization via `customLightbox`, `inlineEditors`, `modals`, `templateWrapper`, and filtering/grouping props.
-- Public composables/helpers for imperative and typed workflows.
+- Declarative setup with props (`config`, `templates`, `plugins`, `theme`, `locale`)
+- Data synchronization for `tasks`, `links`, and advanced stores (`resources`, `resourceAssignments`, `baselines`)
+- Event wiring through the `events` map
+- One-time lifecycle hook through `@ready`
+- Vue-based customization hooks (`customLightbox`, `inlineEditors`, `modals`)
+- Typed helpers and composables for reusable patterns
 
-## Basic Wrapper Usage
+## Scenario: Basic Wrapper Setup
+
+Use props for chart configuration and template customization.
 
 ~~~vue
 <script setup lang="ts">
@@ -65,19 +79,26 @@ const templates = defineGanttTemplates({
 </template>
 ~~~
 
-## Prop-Driven Sync Model And Tradeoffs
+For the full prop list, use [Configuration Reference](integrations/vue/configuration-props.md).
 
-The wrapper watches incoming props and syncs them into the current gantt instance.
+## Choose A Data Ownership Model
 
-- `tasks` and `links` are updated incrementally (diff-based add/update/remove).
-- For larger change volumes, the wrapper may switch to reset/re-parse behavior.
-- `resources`, `resourceAssignments`, and `baselines` are synchronized through their datastores.
+The wrapper syncs incoming props into the current instance. The main decision is where your app treats data as authoritative.
 
-See [Data Binding and State Management Basics](integrations/vue/state/state-management-basics.md) for full model selection guidance.
+- **Vue state/store as source of truth**: wrapper callbacks (`data.save` / `data.batchSave`) update your state, then updated props flow back into the wrapper.
+- **Gantt as source of truth**: Gantt and backend own the main data lifecycle; Vue props are used less often for live chart state.
 
-## Events Map vs `@ready`
+Sync behavior summary:
 
-Vue wrapper uses an `events` map for Gantt events and a separate `@ready` lifecycle emit.
+- task/link updates are usually diff-based
+- the wrapper can switch to reset/re-parse for larger changes
+- advanced stores (`resources`, `resourceAssignments`, `baselines`) are synced through their datastores
+
+Use [Data Binding and State Management Basics](integrations/vue/state/state-management-basics.md) for the tradeoffs and callback contracts.
+
+## Handle Events And Startup Logic
+
+Use the `events` map for [Gantt events](api/overview/events-overview.md) and `@ready` for one-time setup after initialization.
 
 ~~~vue
 <script setup lang="ts">
@@ -104,11 +125,11 @@ const onReady = (instance: GanttStatic) => {
 </template>
 ~~~
 
-Use `events` for user interaction behavior. Use `@ready` for one-time setup that needs an initialized instance.
+Use `events` for interaction behavior. Use `@ready` for initialization logic that needs a live instance.
 
 ## Ref Access And Imperative Boundaries
 
-When declarative props are not enough, use a component ref and access `instance`.
+Use a component ref when you need methods that are not practical to model through props.
 
 ~~~vue
 <script setup lang="ts">
@@ -129,13 +150,13 @@ onMounted(() => {
 </template>
 ~~~
 
-Boundary rule: if you mutate task/link data directly through `instance`, keep your external state/props in sync to avoid accidental overwrite on the next reactive update.
+If you mutate task/link data through `instance`, keep external state in sync. Otherwise the next prop update can overwrite those changes.
 
 ## Advanced Extension Points
 
 ### Custom lightbox component
 
-Use `customLightbox` for Vue-based task form replacement:
+Replace the built-in task form with a Vue component:
 
 ~~~vue
 <VueGantt :tasks="tasks" :links="links" :customLightbox="CustomLightbox" :data="data" />
@@ -143,7 +164,7 @@ Use `customLightbox` for Vue-based task form replacement:
 
 ### Custom inline editors
 
-Map editor names to Vue components with `inlineEditors`:
+Map Gantt inline editor names to Vue components:
 
 ~~~vue
 <VueGantt :config="config" :inlineEditors="inlineEditors" :data="data" />
@@ -151,7 +172,7 @@ Map editor names to Vue components with `inlineEditors`:
 
 ### Custom delete confirmation flow
 
-Override task/link delete confirmations with `modals`:
+Override delete confirmations with `modals`:
 
 ~~~ts
 const modals = {
@@ -161,25 +182,21 @@ const modals = {
 };
 ~~~
 
-### Template wrapping and VNode rendering
+### Task and resource filtering
 
-Use `templateWrapper` when you need a common wrapper around VNodes returned by templates.
-
-### Resource and panel filtering
-
-Use `filter` (tasks) and `resourceFilter` (resources) for focused views.
+Use `filter` for task filtering and `resourceFilter` for resource-panel filtering.
 
 ## Public Sample Scenario Map
 
-These wrapper capabilities are exercised in public sample routes:
+These wrapper features are covered in public sample routes:
 
-- `basic-init`: baseline props/config/templates.
-- `custom-form`: `customLightbox`.
-- `custom-edit-view`: event-driven external editor routing.
-- `inline-editors`: Vue inline editor mapping.
-- `resource-panel`: resources + `resourceFilter`.
-- `state-management`: Pinia store-driven updates.
-- `export-data`: imperative actions with export plugin.
+- `basic-init`: baseline props, config, and templates
+- `custom-form`: `customLightbox`
+- `custom-edit-view`: event-driven external editor flow
+- `inline-editors`: Vue inline editor mapping
+- `resource-panel`: resources + `resourceFilter`
+- `state-management`: Pinia store-driven updates
+- `export-data`: imperative actions with export plugin
 
 ## Related Articles
 

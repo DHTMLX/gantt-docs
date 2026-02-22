@@ -1,12 +1,14 @@
-﻿---
+---
 title: Using DHTMLX Gantt Properties in VueGantt
 sidebar_label: Configuration
-description: "Full reference of VueGantt props, data/lifecycle contracts, and exported Vue helper/composable APIs."
+description: "Reference for VueGantt props, data/lifecycle contracts, and exported Vue helpers/composables."
 ---
 
 # Using DHTMLX Gantt Properties in VueGantt
 
-This page documents the public wrapper surface of `@dhtmlx/trial-vue-gantt` and `@dhx/vue-gantt`.
+This page documents the public Vue wrapper surface for `@dhtmlx/trial-vue-gantt` and `@dhx/vue-gantt`.
+
+Use it as a reference after [Overview](integrations/vue/overview.md) or [Quick Start](integrations/vue/quick-start.md).
 
 ## Available Props
 
@@ -22,7 +24,7 @@ This page documents the public wrapper surface of `@dhtmlx/trial-vue-gantt` and 
     <tr>
       <td>tasks</td>
       <td>Task[]</td>
-      <td>Task collection rendered in chart/grid.</td>
+      <td>Task collection rendered in the chart/grid.</td>
     </tr>
     <tr>
       <td>links</td>
@@ -32,7 +34,7 @@ This page documents the public wrapper surface of `@dhtmlx/trial-vue-gantt` and 
     <tr>
       <td>resources</td>
       <td>any[] | null</td>
-      <td>Resource dataset for resource-related layouts and methods.</td>
+      <td>Resource dataset for resource layouts and resource-related API methods.</td>
     </tr>
     <tr>
       <td>resourceAssignments</td>
@@ -52,12 +54,12 @@ This page documents the public wrapper surface of `@dhtmlx/trial-vue-gantt` and 
     <tr>
       <td>calendars</td>
       <td>(WrapperCalendar | CalendarConfig)[] | null</td>
-      <td>Working calendar definitions (wrapper format or native config).</td>
+      <td>Working calendar definitions (wrapper format or native Gantt config).</td>
     </tr>
     <tr>
       <td>data</td>
       <td>VueGanttDataConfig | null</td>
-      <td>Transport callbacks: <code>load</code>, <code>save</code>, <code>batchSave</code>.</td>
+      <td>Data transport callbacks: <code>load</code>, <code>save</code>, <code>batchSave</code>.</td>
     </tr>
     <tr>
       <td>config</td>
@@ -115,11 +117,6 @@ This page documents the public wrapper surface of `@dhtmlx/trial-vue-gantt` and 
       <td>Custom Vue task editor component.</td>
     </tr>
     <tr>
-      <td>templateWrapper</td>
-      <td>((node: VNode) =&gt; VNode) | null</td>
-      <td>Wrapper callback for VNodes rendered through wrapper template bridge.</td>
-    </tr>
-    <tr>
       <td>events</td>
       <td>VueGanttEvents</td>
       <td>Event-name to handler map.</td>
@@ -129,10 +126,10 @@ This page documents the public wrapper surface of `@dhtmlx/trial-vue-gantt` and 
 
 ## Data Collections And Synchronization
 
-Use these props when external Vue state is your source of truth:
+Use these props when Vue state is your source of truth:
 
 - `tasks`, `links`
-- optional advanced stores: `resources`, `resourceAssignments`, `baselines`
+- optional advanced datasets: `resources`, `resourceAssignments`, `baselines`
 
 ~~~vue
 <VueGantt
@@ -144,17 +141,17 @@ Use these props when external Vue state is your source of truth:
 />
 ~~~
 
-Synchronization behavior summary:
+Sync behavior summary:
 
-- task/link updates are diff-based for routine changes,
-- wrapper can switch to reset/re-parse for large changes,
-- advanced stores are re-parsed through corresponding datastores.
+- task/link updates are usually diff-based
+- the wrapper can switch to reset/re-parse for large changes
+- advanced datasets are re-parsed through their datastores
 
-Use [Data Binding and State Management Basics](integrations/vue/state/state-management-basics.md) for model tradeoffs.
+For model selection and callback strategy, see [Data Binding and State Management Basics](integrations/vue/state/state-management-basics.md).
 
 ## Config, Templates, Plugins, Theme, Locale
 
-These props control core Gantt behavior without imperative API calls.
+Use these props for day-to-day chart setup without imperative API calls.
 
 ~~~vue
 <script setup lang="ts">
@@ -187,13 +184,11 @@ const templates = {
 </template>
 ~~~
 
-When to prefer this path: day-to-day chart setup where declarative props are enough.
-
 ## Events, Lifecycle, And Instance Access
 
 ### `events`
 
-Use one event map instead of per-event wrapper props:
+Use one `events` map instead of wrapper-specific props for each Gantt event:
 
 ~~~ts
 const events = {
@@ -210,13 +205,13 @@ const events = {
 
 ### `@ready`
 
-`ready(instance)` fires once after initialization and first sync:
+`ready(instance)` fires once after initialization and the first sync:
 
 ~~~vue
 <VueGantt :events="events" @ready="onReady" />
 ~~~
 
-### `instance` via ref
+### `instance` Via Component Ref
 
 ~~~ts
 import { ref } from "vue";
@@ -229,7 +224,7 @@ function showToday() {
 }
 ~~~
 
-When to prefer this path: advanced imperative operations not covered by props.
+Use this for advanced operations that are not practical through props.
 
 ## Data Transport: `load`, `save`, `batchSave`
 
@@ -245,16 +240,16 @@ interface VueGanttDataConfig {
 
 ### `load`
 
-- URL string -> `gantt.load(url)`.
-- Function -> returns sync/async dataset.
+- URL string -> `gantt.load(url)`
+- Function -> returns a sync or async dataset
 
 ### `save`
 
-Per-change callback/transport through dataProcessor.
+Per-change callback or router transport via dataProcessor.
 
 ### `batchSave`
 
-Grouped callback with buckets:
+Grouped callback for high-volume updates:
 
 - `tasks`
 - `links`
@@ -271,21 +266,21 @@ const data = {
 };
 ~~~
 
-When to prefer `batchSave`: high-volume edit scenarios (auto-scheduling, bulk updates).
+Use `batchSave` when one chart action can trigger many updates (for example auto-scheduling or bulk edits).
 
 ## Customization Hooks
 
 ### `customLightbox`
 
-Replace built-in task form UI with a Vue component.
+Replace the built-in task form UI with a Vue component.
 
 ### `inlineEditors`
 
-Map inline editor type names to Vue editor components.
+Map Gantt inline editor type names to Vue components.
 
 ### `templateWrapper`
 
-Wrap VNodes produced by template interception bridge.
+Wrap VNodes produced by the wrapper template bridge.
 
 ### `modals`
 
@@ -299,11 +294,11 @@ const modals = {
 };
 ~~~
 
-For complete practical patterns, read [Customization Patterns](integrations/vue/customization-patterns.md).
+For practical examples, see [Customization Patterns](integrations/vue/customization-patterns.md).
 
 ## Grouping, Filtering, Resources, Calendars, Markers
 
-These props are commonly used together in advanced timelines:
+These props are often used together in advanced timeline views:
 
 ~~~vue
 <VueGantt
@@ -317,30 +312,32 @@ These props are commonly used together in advanced timelines:
 />
 ~~~
 
-When to use:
+Common usage:
 
-- `groupTasks`: grouped board-style views,
-- `filter` and `resourceFilter`: focused workload slices,
-- `calendars` and `markers`: schedule rules and timeline highlighting.
+- `groupTasks` for grouped views
+- `filter` and `resourceFilter` for focused slices
+- `calendars` and `markers` for schedule rules and timeline highlighting
 
 ## Exported Helpers And Composables
 
+The package exports both a default `VueGantt` component export and named exports.
+
 From `@dhtmlx/trial-vue-gantt` or `@dhx/vue-gantt`:
 
-### Helper factories
+### Helper Factories
 
-- `defineGanttConfig(config)`: use when you want typed config identity helper.
-- `defineGanttTemplates(templates)`: use for typed template maps.
-- `defineGanttEvents(events)`: use for typed event map authoring.
-- `defineInlineEditors(inlineEditors)`: use for typed inline editor maps.
+- `defineGanttConfig(config)` for typed config authoring
+- `defineGanttTemplates(templates)` for typed template maps
+- `defineGanttEvents(events)` for typed event map authoring
+- `defineInlineEditors(inlineEditors)` for typed inline editor maps
 
 ### Composables
 
-- `useWorkTime(ganttRef)`: work-time checks and work-time date calculations.
-- `useResourceAssignments(ganttRef)`: read task-resource and resource-assignment links.
-- `useGanttDatastore(ganttRef, storeName)`: access raw datastore reads.
-- `useGanttActions(ganttRef)`: safe wrappers for undo/redo/render/export calls.
-- `useGanttEvent(ganttRef, eventName, handler)`: lifecycle-safe attach/detach for one event.
+- `useWorkTime(ganttRef)` for work-time checks and date calculations
+- `useResourceAssignments(ganttRef)` for task-resource/assignment reads
+- `useGanttDatastore(ganttRef, storeName)` for raw datastore access
+- `useGanttActions(ganttRef)` for wrapper-safe imperative actions (undo/redo/export/render)
+- `useGanttEvent(ganttRef, eventName, handler)` for lifecycle-safe attach/detach of a single event
 
 ~~~ts
 import { ref } from "vue";
@@ -354,7 +351,7 @@ function exportPdf() {
 }
 ~~~
 
-## Continue With
+## What To Read Next
 
 - [Vue Gantt Overview](integrations/vue/overview.md)
 - [Customization Patterns](integrations/vue/customization-patterns.md)
