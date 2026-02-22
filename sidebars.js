@@ -158,7 +158,44 @@ module.exports = {
                         },
                     ]
                 }, 
-                "integrations/angular/howtostart-angular",
+                {
+                    type: "category",
+                    label: "Angular",
+                    link: {
+                        type: "doc",
+                        id: "integrations/angular/index"
+                    },
+                    items: [
+                        "integrations/angular/overview",
+                        "integrations/angular/installation",
+                        "integrations/angular/quick-start",
+                        "integrations/angular/configuration-props",
+                        {
+                            type: "category",
+                            label: "Data & State Management",
+                            key: "angular-data-&-state",
+                            link: {
+                                type: "doc",
+                                id: "integrations/angular/state/index"
+                            },
+                            items: [
+                                "integrations/angular/state/state-management-basics",
+                                "integrations/angular/state/rxjs",
+                            ],
+                        },
+                        {
+                            type: "category",
+                            label: "Using JS Gantt in Angular",
+                            link: {
+                                type: "generated-index",
+                                title: "Using dhtmlxGantt JS in Angular",
+                            },
+                            items: [
+                                "integrations/angular/js-gantt-angular",
+                            ],
+                        },
+                    ]
+                },
                 "integrations/svelte/howtostart-svelte",
                 "integrations/salesforce/howtostart-salesforce",
                 "guides/using-gantt-on-server",
