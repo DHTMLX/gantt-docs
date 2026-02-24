@@ -6,7 +6,7 @@ description: "Step-by-step guide to render the official Vue Gantt wrapper in a V
 
 # Quick Start with Vue Gantt
 
-This quick start uses Vue 3 + Vite and the official wrapper package. It gives you a minimal setup that already includes `data.save` callback wiring.
+Use this quick start to render Vue Gantt in a Vue 3 + Vite app with a dedicated Gantt component and `data.save` callback wiring.
 
 ## Prerequisites
 
@@ -66,11 +66,11 @@ export const tasks: Task[] = [
 export const links: Link[] = [{ id: 1, source: 1, target: 2, type: "0" }];
 ~~~
 
-## 4. Render The Wrapper Component
+## 4. Create A Gantt Component
 
-Replace `src/App.vue`:
+Create `src/components/GanttChart.vue`:
 
-~~~vue title="src/App.vue"
+~~~vue title="src/components/GanttChart.vue"
 <script setup lang="ts">
 import { ref } from "vue";
 import VueGantt, {
@@ -80,7 +80,7 @@ import VueGantt, {
 } from "@dhtmlx/trial-vue-gantt";
 import "@dhtmlx/trial-vue-gantt/dist/vue-gantt.css";
 
-import { links as initialLinks, tasks as initialTasks } from "./demoData";
+import { links as initialLinks, tasks as initialTasks } from "../demoData";
 
 const tasks = ref<Task[]>(initialTasks);
 const links = ref<Link[]>(initialLinks);
@@ -93,7 +93,7 @@ const data: VueGanttDataConfig = {
 </script>
 
 <template>
-  <div style="height: 100vh; width: 100vw;">
+  <div style="height: 100%; width: 100%;">
     <VueGantt :tasks="tasks" :links="links" :data="data" />
   </div>
 </template>
@@ -104,7 +104,23 @@ If you use the professional package, replace both imports:
 - `@dhtmlx/trial-vue-gantt` -> `@dhx/vue-gantt`
 - `@dhtmlx/trial-vue-gantt/dist/vue-gantt.css` -> `@dhx/vue-gantt/dist/vue-gantt.css`
 
-## 5. Start The App
+## 5. Render Gantt In The App Shell
+
+Replace `src/App.vue`:
+
+~~~vue title="src/App.vue"
+<script setup lang="ts">
+import GanttChart from "./components/GanttChart.vue";
+</script>
+
+<template>
+  <div style="height: 100vh; width: 100vw;">
+    <GanttChart />
+  </div>
+</template>
+~~~
+
+## 6. Start The App
 
 ~~~bash
 npm run dev
@@ -112,9 +128,11 @@ npm run dev
 
 Open the local Vite URL. You should see a working Gantt chart and console logs when you edit tasks or links.
 
-## 6. (Optional) Replace Logging With Local Save Handling
+If you are adding Gantt to an existing app, keep your current `App.vue` layout and render `<GanttChart />` in the target page/component. Make sure the parent layout provides a height to the Gantt area.
 
-Use this when you want Vue state to stay in sync with chart edits before adding a backend or store.
+## 7. (Optional) Replace Logging With Local Save Handling
+
+Use this when you want Vue state to stay in sync with chart edits before adding a backend or store. Update `src/components/GanttChart.vue`.
 
 ~~~ts
 const data: VueGanttDataConfig = {
