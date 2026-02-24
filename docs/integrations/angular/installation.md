@@ -63,8 +63,8 @@ Use imports that match the package channel you installed.
 
 | Package | Wrapper import | CSS import |
 | --- | --- | --- |
-| `@dhtmlx/trial-angular-gantt` | `import { DhxGanttComponent } from "@dhtmlx/trial-angular-gantt";` | `@import "@dhtmlx/trial-angular-gantt/src/lib/dhtmlxgantt.css";` |
-| `@dhx/angular-gantt` | `import { DhxGanttComponent } from "@dhx/angular-gantt";` | `@import "@dhx/angular-gantt/src/lib/dhtmlxgantt.css";` |
+| `@dhtmlx/trial-angular-gantt` | `import { DhxGanttComponent } from "@dhtmlx/trial-angular-gantt";` | `@import "@dhtmlx/trial-angular-gantt/dist/angular-gantt.css";` |
+| `@dhx/angular-gantt` | `import { DhxGanttComponent } from "@dhx/angular-gantt";` | `@import "@dhx/angular-gantt/dist/angular-gantt.css";` |
 
 Add the CSS import in your global Angular styles (for example `src/styles.css`).
 
