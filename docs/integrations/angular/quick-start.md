@@ -21,19 +21,27 @@ If Angular CLI is not installed yet, install it first (`npm install -g @angular/
 
 ## 2. Install Angular Gantt
 
-Install the evaluation package:
+Install React Gantt as described in the [Angular Gantt installation guide](integrations/angular/installation.md).
+
+In this tutorial we use the evaluation package:
 
 ~~~bash
 npm install @dhtmlx/trial-angular-gantt
 ~~~
 
-If you use the professional package, replace `@dhtmlx/trial-angular-gantt` with `@dhx/angular-gantt` in commands and imports.
+or
+
+~~~bash
+yarn add @dhtmlx/trial-angular-gantt
+~~~
+
+If you already use the Professional package, replace `@dhtmlx/trial-angular-gantt` with `@dhx/angular-gantt` in the commands and imports.
 
 ## 3. Add Global Styles
 
 Open `src/styles.css` and add the Gantt styles:
 
-~~~css
+~~~css title='src/styles.css'
 @import "@dhtmlx/trial-angular-gantt/dist/angular-gantt.css";
 
 html,

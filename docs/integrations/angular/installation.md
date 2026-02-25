@@ -68,6 +68,27 @@ Use imports that match the package channel you installed.
 
 Add the CSS import in your global Angular styles (for example `src/styles.css`).
 
+This is the recommended default for Angular apps because Gantt styles are library-wide styles and do not need Angular component scoping.
+
+## Global vs Component CSS Import
+
+- **Global import:** import the wrapper CSS path from the matrix above in `src/styles.css` (or register it in `angular.json` `styles`). No special component encapsulation settings are required.
+- **Component stylesheet import:** you can import the same CSS in a component `styleUrl`, but then Angular's default `ViewEncapsulation.Emulated` may scope selectors and prevent Gantt internal `.dhx-*` styles/overrides from applying as expected.
+
+If you import Gantt CSS in a component stylesheet or define overrides for internal Gantt classes (for example `.dhx-gantt-root`) in that stylesheet, set:
+
+~~~ts
+import { Component, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  // ...
+  encapsulation: ViewEncapsulation.None,
+})
+export class GanttPageComponent {}
+~~~
+
+Use the component import pattern mainly for self-contained demos/examples. For production apps, prefer the global import.
+
 ## Standalone vs NgModule Projects
 
 The wrapper supports both Angular styles:
