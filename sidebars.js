@@ -123,6 +123,15 @@ module.exports = {
                 "integrations/angular/howtostart-angular",
                 "integrations/svelte/howtostart-svelte",
                 "integrations/salesforce/howtostart-salesforce",
+                {
+                    type: "category",
+                    label: "AI Tools",
+                    link: {
+                        type: "doc",
+                        id: "integrations/ai-tools/index"
+                    },
+                    items: []
+                },
                 "guides/using-gantt-on-server",
                 {
                     type: "category",
@@ -1556,4 +1565,3 @@ module.exports = {
         }
     ]
 };
-
