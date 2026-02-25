@@ -130,7 +130,9 @@ module.exports = {
                         type: "doc",
                         id: "integrations/ai-tools/index"
                     },
-                    items: []
+                    items: [
+                        "integrations/ai-tools/lovable-ai"
+                    ]
                 },
                 "guides/using-gantt-on-server",
                 {
