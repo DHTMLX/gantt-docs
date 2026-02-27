@@ -131,7 +131,8 @@ module.exports = {
                         id: "integrations/ai-tools/index"
                     },
                     items: [
-                        "integrations/ai-tools/lovable-ai"
+                        "integrations/ai-tools/lovable-ai",
+                        "integrations/ai-tools/mcp-server"
                     ]
                 },
                 "guides/using-gantt-on-server",
