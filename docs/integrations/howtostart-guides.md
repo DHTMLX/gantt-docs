@@ -16,7 +16,7 @@ Here's the overview of guides which tell you about basic Gantt initialization wi
   <td>[![gantt_plainjs](/img/gantt_plainjs.png)](../../guides/initializing-gantt-chart.md)</td>
   </tr> 
   <tr>
-  <td><span >[dhtmlxGantt with Angular](integrations/angular/howtostart-angular.md)</span><br/> An elaborated tutorial that explores the specificity of implementing a Gantt chart with Angular.</td>
+  <td><span >[dhtmlxGantt with Angular](integrations/angular/quick-start.md)</span><br/> An elaborated tutorial that explores the specificity of implementing a Gantt chart with Angular.</td>
   <td>[![gantt_angular](/img/gantt_angular.png)](../angular/howtostart-angular.md)</td>
   </tr>
   <tr>

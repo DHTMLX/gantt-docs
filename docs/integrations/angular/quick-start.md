@@ -1,0 +1,213 @@
+---
+title: Quick Start with Angular Gantt
+sidebar_label: Quick Start
+description: "Step-by-step guide to render the official Angular Gantt wrapper in a standalone Angular app."
+---
+
+# Quick Start with Angular Gantt
+
+This quick start uses a standalone Angular application and the official wrapper package. It creates Gantt inside a dedicated Angular component and mounts that component in `AppComponent`, so the example stays minimal while matching a more realistic app structure.
+
+## 1. Create An Angular Project
+
+Create a standalone Angular app (Angular CLI):
+
+~~~bash
+ng new angular-gantt-quick-start --standalone --routing=false --style=css
+cd angular-gantt-quick-start
+~~~
+
+If Angular CLI is not installed yet, install it first (`npm install -g @angular/cli`).
+
+## 2. Install Angular Gantt
+
+Install React Gantt as described in the [Angular Gantt installation guide](integrations/angular/installation.md).
+
+In this tutorial we use the evaluation package:
+
+~~~bash
+npm install @dhtmlx/trial-angular-gantt
+~~~
+
+or
+
+~~~bash
+yarn add @dhtmlx/trial-angular-gantt
+~~~
+
+If you already use the Professional package, replace `@dhtmlx/trial-angular-gantt` with `@dhx/angular-gantt` in the commands and imports.
+
+## 3. Add Global Styles
+
+Open `src/styles.css` and add the Gantt styles:
+
+~~~css title='src/styles.css'
+@import "@dhtmlx/trial-angular-gantt/dist/angular-gantt.css";
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+app-root {
+  display: block;
+  height: 100vh;
+}
+~~~
+
+This quick start uses a **global** CSS import (`src/styles.css`), so you do **not** need `ViewEncapsulation.None` in `AppComponent`.
+
+If you later move the Gantt CSS import (or overrides for internal Gantt classes such as `.dhx-gantt-root`) into a component stylesheet, Angular's default style encapsulation may scope those selectors. In that case, set `encapsulation: ViewEncapsulation.None` on that component, or keep the styles global.
+
+## 4. Add Demo Data
+
+Create `src/app/demo-data.ts`:
+
+~~~ts
+export const tasks = [
+  {
+    id: 1,
+    text: 'Office itinerancy',
+    type: 'project',
+    start_date: '2026-02-02 00:00',
+    duration: 10,
+    progress: 0.4,
+    open: true,
+    parent: 0,
+  },
+  {
+    id: 2,
+    text: 'Planning',
+    start_date: '2026-02-02 00:00',
+    duration: 4,
+    progress: 0.6,
+    parent: 1,
+  },
+  {
+    id: 3,
+    text: 'Implementation',
+    start_date: '2026-02-06 00:00',
+    duration: 5,
+    progress: 0.2,
+    parent: 1,
+  },
+];
+
+export const links = [{ id: 1, source: 2, target: 3, type: '0' }];
+~~~
+
+## 5. Create A Gantt Component
+
+Create `src/app/gantt-chart.component.ts`:
+
+~~~ts title='src/app/gantt-chart.component.ts'
+import { Component } from '@angular/core';
+import {
+  DhxGanttComponent,
+  type AngularGanttDataConfig,
+} from '@dhtmlx/trial-angular-gantt';
+
+import { links, tasks } from './demo-data';
+
+@Component({
+  selector: 'app-gantt-chart',
+  standalone: true,
+  imports: [DhxGanttComponent],
+  host: { style: 'display:block;height:100%;' },
+  template: `
+    <dhx-gantt
+      style="display:block;height:100%;"
+      [tasks]="tasks"
+      [links]="links"
+      [config]="config"
+      [data]="dataConfig">
+    </dhx-gantt>
+  `,
+})
+export class GanttChartComponent {
+  tasks = tasks;
+  links = links;
+
+  config = {
+    date_format: '%Y-%m-%d %H:%i',
+    columns: [
+      { name: 'text', tree: true, width: '*' },
+      { name: 'start_date', label: 'Start', align: 'center' },
+      { name: 'duration', label: 'Duration', align: 'center' },
+      { name: 'add', width: 44 },
+    ],
+  };
+
+  dataConfig: AngularGanttDataConfig = {
+    save: (entity, action, item, id) => {
+      console.log('save', { entity, action, item, id });
+    },
+  };
+}
+~~~
+
+## 6. Render Gantt In The App Shell
+
+Replace `src/app/app.component.ts`:
+
+~~~ts title='src/app/app.component.ts'
+import { Component } from '@angular/core';
+import { GanttChartComponent } from './gantt-chart.component';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [GanttChartComponent],
+  template: `<app-gantt-chart></app-gantt-chart>`,
+})
+export class AppComponent {}
+~~~
+
+## 7. Start The App
+
+~~~bash
+ng serve
+~~~
+
+Open `http://localhost:4200`. You should see a working Gantt chart that logs edits through `data.save`.
+
+If you are adding Gantt to an existing app, keep your current `AppComponent` and place `<app-gantt-chart>` in the target page/component instead. Make sure the parent layout provides a height to the Gantt area.
+
+## Optional: Minimal Local Save Handling
+
+As a next step, replace logging with local array synchronization in `src/app/gantt-chart.component.ts`:
+
+~~~ts title='src/app/gantt-chart.component.ts'
+dataConfig: AngularGanttDataConfig = {
+  save: (entity, action, item, id) => {
+    if (entity === 'task') {
+      if (action === 'create') this.tasks = [...this.tasks, item];
+      if (action === 'update') {
+        this.tasks = this.tasks.map((task) => String(task.id) === String(id) ? { ...task, ...item } : task);
+      }
+      if (action === 'delete') {
+        this.tasks = this.tasks.filter((task) => String(task.id) !== String(id));
+      }
+    }
+
+    if (entity === 'link') {
+      if (action === 'create') this.links = [...this.links, item];
+      if (action === 'update') {
+        this.links = this.links.map((link) => String(link.id) === String(id) ? { ...link, ...item } : link);
+      }
+      if (action === 'delete') {
+        this.links = this.links.filter((link) => String(link.id) !== String(id));
+      }
+    }
+  },
+};
+~~~
+
+For multi-change operations (for example auto-scheduling), prefer `data.batchSave` and handle grouped updates instead of one-by-one callbacks.
+
+## Continue With
+
+- [Angular Gantt Overview](integrations/angular/overview.md)
+- [Configuration Reference](integrations/angular/configuration-props.md)
+- [Data Binding and State Management Basics](integrations/angular/state/state-management-basics.md)

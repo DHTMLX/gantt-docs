@@ -42,7 +42,7 @@ You can use DHTMLX Gantt as a vanilla JavaScript widget or integrate it into a m
   </a>
 
 
-  <a className="framework-card" href="integrations/angular/howtostart-angular/">
+  <a className="framework-card" href="integrations/angular/quick-start/">
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
     <div className="framework-desc">
@@ -50,11 +50,11 @@ You can use DHTMLX Gantt as a vanilla JavaScript widget or integrate it into a m
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/vue/howtostart-vue/">
+  <a className="framework-card" href="integrations/vue/quick-start/">
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">
-    Add a Gantt chart to Vue apps with a small wrapper and reactive props.
+    Use the ready-made <code>VueGantt</code> component with props and events.
     </div>
   </a>
 
@@ -155,7 +155,7 @@ DHTMLX Gantt integrates with external tools and output formats ensuring great ex
 DHTMLX Gantt is a framework-agnostic, vanilla JavaScript component that works in all modern browsers. It can be used:
 
 - As a standalone JS widget on any page.
-- Wrapped into [React](integrations/react), [Angular](integrations/angular/howtostart-angular), [Vue](integrations/vue/howtostart-vue), or [Svelte](integrations/svelte/howtostart-svelte) components. 
+- Wrapped into [React](integrations/react), [Angular](integrations/angular/quick-start), [Vue](integrations/vue/quick-start), or [Svelte](integrations/svelte/howtostart-svelte) components. 
 
 For **React** you have two options:
 
