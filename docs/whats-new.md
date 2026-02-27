@@ -9,6 +9,18 @@ sidebar_label: "What's New"
 Updating from an earlier version? Check the [migration guide](migration.md) for required changes and update steps.
 :::
 
+## 9.1.2
+
+<span class='release_date'>February 27, 2026. Bugfix release</span>
+
+- Fix the issue where Gantt could disappear after reordering tasks or creating links when the `touch` mode is enabled and Gantt is rendered inside Shadow DOM
+- Fix the `initial_scroll` option in [React Gantt](integrations/react.md) so the chart scrolls to the first task on initialization
+- Fix the issue where task assignments were not updated correctly after drag-and-drop when changes were made inside [gantt.batchUpdate()](api/method/batchupdate.md)
+- Fix a memory leak in the task background row renderer
+- Fix scale projection not working in [React Gantt](integrations/react.md)
+- Fix missing rendering of [baselines](guides/inbuilt-baselines.md) added via a datastore
+- Fix the issue where Gantt stopped working after providing an invalid [layout configuration](guides/layout-config.md)
+
 ## 9.1.1
 
 <span class='release_date'>December 15, 2025. Bugfix release</span>
