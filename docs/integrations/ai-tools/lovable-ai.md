@@ -1,71 +1,72 @@
 ---
 title: "Integration with Lovable AI"
 sidebar_label: "Lovable AI"
+description: "Guide on integrating DHTMLX React Gantt into a Lovable AI-generated application"
 ---
 
 # Integration with Lovable AI
 
-This guide describes how to integrate DHTMLX React Gantt into a Lovable-generated application.  
-It also explains how to improve generation quality using prompt context, Knowledge Base, and MCP.
+This article describes how to add DHTMLX React Gantt to a Lovable project and get accurate generated code.
+
+## How Lovable handles DHTMLX Gantt
+
+Lovable generates React apps from natural-language prompts. It handles common UI patterns well - layouts, routes, standard components - because the model has seen enough examples during training. DHTMLX Gantt is a specialized component with its own configuration API, property names, and data formats. The model has less to draw on here, so it guesses. Sometimes correctly, often not.
+
+The fix is context. Three mechanisms let you feed Lovable accurate API information, each at a different scale:
+
+| Method | Best for | Scope |
+|---|---|---|
+| **Inline prompts** | One-off tweaks where you know the exact property | Single prompt |
+| **Knowledge Base** | Reusable rules across multiple prompts | Project-level |
+| **MCP** | Full API coverage without copy-pasting | External server connection |
+
+These aren't mutually exclusive. Knowledge Base and MCP work well together - use the Knowledge Base for project-specific conventions, MCP for general API accuracy.
+
+The sections below walk through the full workflow: scaffold an app, add Gantt, then improve output quality with each method.
 
 ## Prerequisites
 
 - A Lovable account
-- A GitHub repository connected to Lovable
+
+For local development (optional):
+
 - Node.js 18+
 - npm
 
-For platform-specific details, refer to the official Lovable documentation:
-https://docs.lovable.dev/
+For platform-specific details, see the [Lovable documentation](https://docs.lovable.dev/).
 
-## Generate a Base App in Lovable
+## Generating a base app
 
-Start with a standard admin-style layout and routes in Lovable using prompts.
-
-For example, a prompt may look like this:
+Start with a standard admin layout. This prompt produces a dashboard with navigation, KPI cards, and a chart area:
 
 > Create an admin application.
 > Requirements:
 > - Each navigation item opens a separate route
 > - The Dashboard includes KPI cards and a main content block with a Sales chart.
 
-This results in a basic dashboard layout that can be used as a starting point for further integration.
-
 ![Lovable-generated admin dashboard layout](/img/lovable_admin_dashboard_layout.png)
 
-You can work on the project directly in Lovable or locally via the connected Git repository, with changes synchronized in both directions.
+Once generated, continue editing in Lovable or clone the Git repository and work locally. Changes sync in both directions.
 
-## Adding DHX React Gantt component (Trial Version)
+Keep the first prompt focused on structure and navigation - component-specific configuration comes next.
 
-Add a DHTMLX React Gantt component to the application using a prompt.
+## Adding DHTMLX React Gantt
 
-For example:
+Reference the trial package in a prompt:
 
 > Replace the Sales chart with a DHTMLX React Gantt chart using @dhtmlx/trial-react-gantt.
 
 ![DHTMLX Gantt chart in Lovable dashboard](/img/lovable_gantt_dashboard.png)
 
-## Ensuring Reliable AI Integration
+Lovable generates React apps, so the React wrapper is the natural fit. The guide uses `@dhtmlx/trial-react-gantt` - the evaluation build of [DHTMLX React Gantt](../../react/overview/). It's publicly available on npm, which means Lovable can install it without extra setup.
 
-When working with AI-generated code, the result depends on how well the model understands the target library.
+The trial build is fully functional but includes an evaluation watermark. For production, switch to `@dhx/react-gantt`, which requires authentication with the [DHTMLX private npm registry](../../react/installation/). Alternatively, add the package files to your project locally.
 
-For common frameworks, the model usually has enough prior knowledge to produce correct results. However, for more specialized components such as DHTMLX Gantt, the model may lack sufficient context about the API and expected data structures.
+Lovable installs the package, creates an import, and renders a basic Gantt with sample tasks and a timeline. The output often doesn't match the API exactly - column configuration, scale setup, and data formats get guessed. The sections below show how to close that gap.
 
-To ensure a more reliable integration, it is important to provide additional context instead of relying on default assumptions.
+## Improving output with inline prompts
 
-There are several practical ways to do this:
-
-- **Prompts**
-- **Knowledge Base**
-- **MCP server**  
-
-## Improve Lovable Output with Better Context
-
-### Prompt-only context
-
-Prompt-only guidance works well for small, targeted adjustments.
-
-For example, you can explicitly instruct Lovable to configure the Gantt appearance through its config object:
+When you know the exact API call, include the property name and a code snippet so Lovable doesn't guess:
 
 > Update the DHTMLX React Gantt configuration:
 > - Set row height to `40px` using `config.row_height`
@@ -80,13 +81,11 @@ For example, you can explicitly instruct Lovable to configure the Gantt appearan
 > <ReactGantt config={config} />
 > ```
 
-However, it is difficult to determine which configuration details are required for correct behavior, and missing small but important parts of the API can lead to incomplete or inconsistent results.
+Works well for isolated changes. Breaks down as configuration grows - you end up pasting the same API details into every prompt.
 
-### Knowledge Base context
+## Storing rules in the Knowledge Base
 
-Knowledge Base allows you to define reusable rules instead of repeating API details in every prompt.
-
-For example, you can define Gantt configuration:
+The Knowledge Base stores reusable rules that apply across all prompts in a project. Define API specifics once instead of repeating them:
 
 > Theme:
 > - Gantt supports theming via the "theme" prop.
@@ -109,39 +108,37 @@ For example, you can define Gantt configuration:
 
 ![Lovable Knowledge Base with Gantt configuration rules](/img/lovable_knowledge_base_gantt_rules.png)
 
-After adding this to the project Knowledge Base, Lovable can rely on it in future requests.
-
-A prompt can then be much shorter and reference this shared context:
+With rules in place, prompts can be short:
 
 > Use the project Knowledge Base. Set the Gantt grid row height to 60.
 
 ![Gantt after applying Knowledge Base configuration in Lovable](/img/lovable_gantt_after_kb_update.png)
 
-At the same time, the Knowledge Base has practical limits. Its total size is capped (around 100k characters), which makes it impossible to add full documentation for a large library like DHTMLX Gantt https://github.com/DHTMLX/gantt-docs
+The Knowledge Base caps at ~100k characters - enough for a focused config reference, but not the full [DHTMLX Gantt API](https://github.com/DHTMLX/gantt-docs). For broader coverage, connect MCP.
 
-### MCP context
+## Connecting MCP for full API access
 
-MCP is the most scalable option for larger integrations.
+MCP (Model Context Protocol) connects Lovable to an external documentation server. It gives Lovable access to the complete, current API without manual copy-pasting.
 
-Instead of maintaining prompts or a limited Knowledge Base, Lovable can query an external documentation source and use it as the source of truth during code generation.
-
-The most direct approach is to connect the official DHTMLX MCP server, which exposes the full and up-to-date Gantt API:
-https://docs.dhtmlx.com/suite/guides/ai/
-
-After connecting MCP in the project settings, Lovable can request documentation on demand when processing prompts.
+Connect the [DHTMLX MCP Server](../mcp-server/) in your Lovable project settings:
 
 ![Adding DHTMLX MCP server in Lovable](/img/lovable_mcp_server_setup.png)
 
-When a prompt explicitly references MCP, Lovable uses it to resolve configuration details more accurately. For example:
+Then reference it in prompts so Lovable fetches the relevant docs before generating code:
 
-> Use the DHTMLX MCP server as the source of truth. Set the Gantt grid row height to 60 pixels.
+> Use the DHTMLX MCP server. Set the Gantt grid row height to 60 pixels.
 
-With MCP-backed context, Lovable applies API-driven configuration instead of relying on assumptions or partial patterns.
+Lovable resolves property names, data formats, and configuration patterns from the actual API reference instead of guessing.
 
-This approach is especially useful for complex or evolving setups, where prompt-only instructions or a small Knowledge Base are not sufficient.
+## Practical tips
 
-## Practical Usage
+- **One change per prompt.** Smaller prompts make it easier to isolate problems when the output isn't right.
+- **Check imports.** Lovable sometimes imports from the wrong package path or mixes up named and default exports. Verify the import line after each change.
+- **Combine Knowledge Base and MCP.** Knowledge Base for project-specific conventions (theme mapping, column layout), MCP for general API accuracy. They complement each other.
+- **Inspect the config object.** When the Gantt doesn't render as expected, log the config object passed to `<ReactGantt />` and compare it against the [configuration props reference](../../react/configuration-props/). Most issues come down to a missing or misnamed property.
 
-When working with Lovable, focus on small, targeted changes and validate results incrementally.
+## What to read next
 
-If the generated output is incomplete or inconsistent, provide additional context using Knowledge Base or MCP to guide the model toward correct API usage.
+- [DHTMLX React Gantt overview](../../react/overview/) - component API and features
+- [Installation guide](../../react/installation/) - setting up the professional package
+- [DHTMLX MCP Server](../mcp-server/) - connecting MCP to other AI tools
