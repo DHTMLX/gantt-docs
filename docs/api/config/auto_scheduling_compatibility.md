@@ -1,7 +1,7 @@
 ---
 sidebar_label: auto_scheduling_compatibility
-title: auto_scheduling_compatibility config
-description: "disables usage of time contraints for tasks"
+title: Auto_scheduling_compatibility config
+description: "Disables usage of time contraints for tasks"
 ---
 
 # auto_scheduling_compatibility

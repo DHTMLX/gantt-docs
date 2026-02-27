@@ -198,6 +198,18 @@ module.exports = {
                 },
                 "integrations/svelte/howtostart-svelte",
                 "integrations/salesforce/howtostart-salesforce",
+                {
+                    type: "category",
+                    label: "AI Tools",
+                    link: {
+                        type: "doc",
+                        id: "integrations/ai-tools/index"
+                    },
+                    items: [
+                        "integrations/ai-tools/lovable-ai",
+                        "integrations/ai-tools/mcp-server"
+                    ]
+                },
                 "guides/using-gantt-on-server",
                 {
                     type: "category",
@@ -1631,4 +1643,3 @@ module.exports = {
         }
     ]
 };
-

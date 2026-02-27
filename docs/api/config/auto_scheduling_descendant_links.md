@@ -1,7 +1,7 @@
 ---
 sidebar_label: auto_scheduling_descendant_links
 title: auto_scheduling_descendant_links config
-description: "allows or forbids creating links from parent tasks (projects) to their children"
+description: "Allows or forbids creating links from parent tasks (projects) to their children"
 ---
 
 # auto_scheduling_descendant_links
