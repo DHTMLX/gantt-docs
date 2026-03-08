@@ -27,7 +27,7 @@ Article: [Creating/Selecting Tasks with DnD](guides/advanced-dnd.md)
 API: [click_drag](api/config/click_drag.md)
 
 
-[Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
+Sample: [Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
 
 ## Auto scheduling {#autoscheduling}
@@ -52,7 +52,7 @@ Article: [Auto Scheduling](guides/auto-scheduling.md)
 API: [auto_scheduling](api/config/auto_scheduling.md)
 
 
-[Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+Sample: [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 
 ## Critical path
@@ -78,7 +78,7 @@ Article: [Critical Path](guides/critical-path.md)
 API: [highlight_critical_path](api/config/highlight_critical_path.md)
 
 
-[Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
+Sample: [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
 ## Drag Timeline
@@ -96,7 +96,7 @@ gantt.plugins({
 API: [drag_timeline](api/config/drag_timeline.md)
 
 
-[Drag timeline](https://docs.dhtmlx.com/gantt/samples/02_extensions/27_drag_timeline.html)
+Sample: [Drag timeline](https://docs.dhtmlx.com/gantt/samples/02_extensions/27_drag_timeline.html)
 
 
 ## Extra overlay
@@ -118,7 +118,7 @@ gantt.plugins({
 Article: [Custom Elements in Timeline Area](guides/baselines.md#extra-overlay-for-the-chart)
 
 
-[Gantt chart with overlay and zoom (S-Curve)](https://docs.dhtmlx.com/gantt/samples/02_extensions/21_overlay.html)
+Sample: [Gantt chart with overlay and zoom (S-Curve)](https://docs.dhtmlx.com/gantt/samples/02_extensions/21_overlay.html)
 
 
 ## Export service
@@ -150,7 +150,7 @@ gantt.plugins({
 Article: [Full Screen Mode](guides/fullscreen-mode.md) 
 
 
-[Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
+Sample: [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 
 ## Grouping
@@ -175,7 +175,7 @@ Article: [Grouping Tasks](guides/grouping.md)
 API: [groupBy](api/method/groupby.md)
 
 
-[Tasks grouping](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
+Sample: [Tasks grouping](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
 
 
 ## Keyboard navigation {#keyboardnavigation}
@@ -214,7 +214,7 @@ Article: [Multi-Task Selection](guides/multiselection.md)
 API: [multiselect](api/config/multiselect.md)
 
 
-[Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+Sample: [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
 ## Quick info
@@ -235,7 +235,7 @@ Article: [Templates of the 'Quick Info' Extension (Touch Support)](guides/touch-
 [Quick Info (Touch Support)](guides/quick-info.md)
 
 
-[QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
+Sample: [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
 
 ## Tooltip
@@ -253,7 +253,7 @@ gantt.plugins({
 Article: [Tooltips for Gantt Elements](guides/tooltips.md)
 
 
-[Tooltip](https://docs.dhtmlx.com/gantt/samples/02_extensions/02_tooltip.html)
+Sample: [Tooltip](https://docs.dhtmlx.com/gantt/samples/02_extensions/02_tooltip.html)
 
 
 ## Undo
@@ -274,7 +274,7 @@ Article: [Undo/Redo Functionality](guides/undo-redo.md)
 API: [undo](api/config/undo.md), [redo](api/config/redo.md)
 
 
-[Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+Sample: [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 
 ## Vertical marker
@@ -295,5 +295,4 @@ Article: [Adding Vertical Markers](guides/markers.md)
 API: [addMarker](api/method/addmarker.md),[show_markers](api/config/show_markers.md)
 
 
-[Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
-
+Sample: [Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
