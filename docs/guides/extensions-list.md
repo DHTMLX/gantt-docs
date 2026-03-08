@@ -127,7 +127,7 @@ Provides the possibility to enable the online export service.
 
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
@@ -159,7 +159,7 @@ Article: [Full Screen Mode](guides/fullscreen-mode.md)
 This extension is available in PRO version only
 :::
 
-Allows you to group tasks by any of task attributes.
+Allows you to group tasks by any task attributes.
 
 ~~~js
 gantt.plugins({
@@ -219,7 +219,7 @@ API: [multiselect](api/config/multiselect.md)
 
 ## Quick info
 
-Provides a popup with a task details.
+Provides a popup with task details.
 
 ~~~js
 gantt.plugins({
