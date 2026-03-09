@@ -178,7 +178,7 @@ span.token.comment {
 
   /* specify the comment background color */
 span.token-line.theme-code-block-highlighted-line {
-  background-color: rgba(225, 212, 212, 0.075);
+  background-color: rgba(253, 253, 227);
 }
 
 /* end styles for block of code */
