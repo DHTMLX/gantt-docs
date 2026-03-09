@@ -22,17 +22,19 @@ description: "adds a marker to the timeline area"
 ### Example
 
 ~~~jsx
-var todayMarker = gantt.addMarker({
+const dateToString = gantt.date.date_to_str(gantt.config.task_date);
+const markerId = gantt.addMarker({
     start_date: new Date(),
     css: "today",
-    title:date_to_str( new Date())
+    title: dateToString(new Date())
 });
-setInterval(function(){
-    var today = gantt.getMarker(todayMarker);
-    today.start_date = new Date();
-    today.title = date_to_str(today.start_date);
-    gantt.updateMarker(todayMarker);
-}, 1000*60);
+
+setInterval(() => {
+    const marker = gantt.getMarker(markerId);
+    marker.start_date = new Date();
+    marker.title = dateToString(marker.start_date);
+    gantt.updateMarker(markerId);
+}, 1000 * 60);
 ~~~
 
 ### Related samples
@@ -41,9 +43,8 @@ setInterval(function(){
 ### Details
 
 :::note
-This method is defined in the **marker** extension, so you need to enable the [marker](guides/extensions-list.md#vertical-marker) plugin. Read the details in the [Adding Vertical Markers](guides/markers.md) article. 
+This method is defined in the **marker** extension, so you need to enable the [marker](guides/extensions-list.md#vertical-marker) plugin. Read the details in the [Adding Vertical Markers](guides/markers.md) article.
 :::
-
 
 The configuration object has the following properties:
 
@@ -63,4 +64,3 @@ The configuration object has the following properties:
 
 ### Related Guides
 - [Adding Vertical Markers](guides/markers.md)
-
