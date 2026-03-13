@@ -164,7 +164,39 @@ The **end_date** has a higher priority than the **duration** parameter. If there
 
 ## Loading dates in ISO format
 
-You can use ISO date format in Gantt. For this, you need to redefine functions that parse and serialize dates in Gantt:
+Since v9.1.3, Gantt automatically detects and parses ISO 8601 date strings. No configuration is needed.
+
+Supported formats:
+
+- `2026-01-06` - date only
+- `2026-01-06T10:30:45` - date and time
+- `2026-01-06T10:30:45.123` - date and time with milliseconds
+- `2026-01-06T10:30:45.000Z` - UTC
+- `2026-01-06T10:30:45+02:00` - with timezone offset
+
+~~~js
+gantt.parse({
+    tasks: [
+        { id: 1, text: "Task #1", start_date: "2026-01-06", duration: 5 },
+        { id: 2, text: "Task #2", start_date: "2026-01-06T10:30:45Z", duration: 3 }
+    ],
+    links: []
+});
+// ISO dates are parsed automatically - no template overrides needed
+~~~
+
+When ISO dates are detected on input, they are serialized back as ISO strings automatically (round-trip: ISO in → ISO out). Date-only strings (e.g., `"2026-01-06"`) are serialized back as date-only strings, preserving the original format. If the input contains a mix of date-only and full datetime strings, all dates are serialized as full datetime.
+
+:::note
+Date-only strings (e.g., `"2026-01-06"`) are parsed as local midnight when `server_utc` is set to `false` (the default).
+:::
+
+:::note
+If you explicitly override `gantt.templates.parse_date` or `gantt.templates.format_date`, your functions take priority over ISO auto-detection and auto-serialization.
+:::
+
+:::tip Gantt v9.1.2 and earlier
+In versions before v9.1.3, ISO dates were not detected automatically. If you are using an older version, you need to override `parse_date` and `format_date` templates to handle ISO strings:
 
 ~~~js
 gantt.templates.parse_date = (date) => {
@@ -175,6 +207,9 @@ gantt.templates.format_date = (date) => {
     return date.toISOString();
 };
 ~~~
+
+In v9.1.3+, these templates are still used as the fallback for **non-ISO** date strings. See [gantt.date.parseDate()](api/other/date.md#parsedatedate-format) for the full parsing pipeline.
+:::
 
 ## Changing the date format dynamically
 

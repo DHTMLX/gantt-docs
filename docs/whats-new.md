@@ -9,6 +9,28 @@ sidebar_label: "What's New"
 Updating from an earlier version? Check the [migration guide](migration.md) for required changes and update steps.
 :::
 
+## 9.1.3
+
+<span class='release_date'>March 16, 2026. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where the [zoom](guides/zooming.md) functionality did not work when the main grid and timeline were not initially displayed in the [layout](guides/layout-config.md)
+- Fix the issue where scale cells disappeared in the [resource timeline](guides/resource-management.md#resourceviewpanel) after changing the zoom level
+- Fix the issue where timeline cells disappeared after scrolling the timeline to the right and changing the [zoom level](guides/zooming.md) during export
+- Fix the issue where scale cells disappeared after window resize when the timeline was scrolled to the right and the [Zoom extension](guides/zooming.md) was enabled
+- Fix the issue where tasks disappeared after changing the [zoom level](guides/zooming.md) when [open_split_tasks](api/config/open_split_tasks.md) was enabled
+- Fix the issue where [rollup](guides/milestones.md#rolluptasksandmilestones) tasks were not displayed correctly with large datasets until the parent task was interacted with
+- Fix the issue where [unscheduled tasks](guides/unscheduled-tasks.md) were not displayed when [show_unscheduled](api/config/show_unscheduled.md) was set to `false` and a date range was configured
+- Fix the issue where the [resource grid](guides/resource-management.md#resourceviewpanel) disappeared when [keyboard navigation](guides/keyboard-navigation.md) was enabled and the resource datastore was initialized without tree structure
+- Fix overflow styles of the [Quick Info](guides/quick-info.md) popup for long content
+
+### Updates
+
+- Add auto-detection and support for [ISO date format](guides/date-format.md) strings in task data.
+  ISO 8601 dates (e.g., `"2026-01-06"`, `"2026-01-06T10:30:45Z"`) are now parsed and serialized
+  automatically without requiring manual template overrides
+
 ## 9.1.2
 
 <span class='release_date'>February 27, 2026. Bugfix release</span>

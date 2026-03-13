@@ -448,17 +448,21 @@ const handleZoomIn = useCallback(
 - `handleUndo` and `handleRedo` dispatch the `undo`/`redo` actions from the slice, which restore the previous snapshot from `past` or `future`
 - These functions are passed to the Toolbar component as callbacks
 
-Now we configure the Gantt chart using `useMemo` to cache configuration objects: 
+Now we configure the Gantt chart using `useMemo` to cache configuration objects:
+
+:::note
+Since v9.1.3, Gantt automatically detects ISO date strings and these template overrides are no longer needed. They are shown here for compatibility with earlier Gantt versions. See [Loading dates in ISO format](guides/loading.md#loading-dates-in-iso-format).
+:::
 
 ~~~tsx
 const ganttConfig: GanttConfig = useMemo(() => ({ ...config }), [config]);
 
-const templates: ReactGanttProps['templates'] = useMemo(  
-  () => ({  
-    format_date: (date: Date) => date.toISOString(),  
-    parse_date: (date: string) => new Date(date),  
-  }),  
-  []  
+const templates: ReactGanttProps['templates'] = useMemo(
+  () => ({
+    format_date: (date: Date) => date.toISOString(),
+    parse_date: (date: string) => new Date(date),
+  }),
+  []
 );
 ~~~
 

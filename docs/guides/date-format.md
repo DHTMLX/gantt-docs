@@ -37,3 +37,19 @@ While specifying the format for dates you can use any character from the followi
 
 For example, if you want to present 1st June 2019 as 01/06/2019, you should specify "%d/%m/%Y".
 
+## ISO 8601 Date Format
+
+Since v9.1.3, Gantt automatically recognizes and parses ISO 8601 date strings in task data without any additional configuration.
+
+Supported ISO 8601 patterns:
+
+- `2026-01-06` - date only
+- `2026-01-06T10:30:45` - date and time
+- `2026-01-06T10:30:45.123` - date and time with milliseconds
+- `2026-01-06T10:30:45.000Z` - UTC
+- `2026-01-06T10:30:45+02:00` - with timezone offset
+
+When ISO dates are detected, the [date_format](api/config/date_format.md) config is bypassed for those values - they are parsed directly without using the format string. Non-ISO date strings continue to use `date_format` as usual.
+
+For more details on loading ISO dates, see [Loading dates in ISO format](guides/loading.md#loading-dates-in-iso-format).
+

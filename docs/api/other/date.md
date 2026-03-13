@@ -197,17 +197,34 @@ var firstDay = gantt.date.month_start(new Date(2019, 05, 29, 14, 30));
 ---
 
 #### parseDate(date, format)
-Converts a string of the specified format to a Date object
+Converts a date string to a Date object. This method is called during [gantt.load()](api/method/load.md) and [gantt.parse()](api/method/parse.md) to parse task and link date properties.
 
 **Parameters**:
-- `date` - (string) - The date string
-- `format` - (string) - The date format (see guides/date-format.md)
+- `date` - (string) - The date string to parse
+- `format` - (string | function, optional) - A date format string (see [Date Format Specification](guides/date-format.md)) or a custom parser function `(dateStr) => Date`
 
 **Returns**: Date - The parsed date object
 
-**Example**:
+**Parsing logic** (since v9.1.3):
+
+1. **ISO 8601 check** - if the string matches an ISO 8601 pattern (e.g. `"2026-01-06"`, `"2026-01-06T10:30:00Z"`), it is parsed directly and `format` is not consulted. Date-only strings are serialized back as `"YYYY-MM-DD"` (preserving the original format); full datetime strings round-trip as full ISO datetime. If the user has explicitly overridden `gantt.templates.parse_date`, ISO auto-detection is skipped and the user's function handles all parsing.
+2. **`format` argument** - if provided as a string, it is converted to a parser function via `gantt.date.str_to_date(format)`; if provided as a function, it is called directly
+3. **Fallback** - if no `format` is provided, the [parse_date](api/template/parse_date.md) template is used
+
+**Examples**:
 ~~~js
-var date = gantt.date.parseDate("29/06/2019","%d/%m/%Y"); //-> 29 June, 2019 00:00:00
+// with an explicit format string
+var date = gantt.date.parseDate("29/06/2019", "%d/%m/%Y");
+// -> 29 June, 2019 00:00:00
+
+// ISO string - parsed automatically, format is ignored
+var date2 = gantt.date.parseDate("2026-01-06T10:30:00Z");
+// -> 6 January, 2026 10:30:00 UTC
+
+// with a custom parser function
+var date3 = gantt.date.parseDate("Jan 6, 2026", function(str) {
+    return new Date(str);
+});
 ~~~
 
 ---
