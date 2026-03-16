@@ -32,13 +32,7 @@ gantt.templates.parse_date = function(date){
 
 ### Details
 
-This template is the **default fallback** in the [gantt.date.parseDate()](api/other/date.md#parsedatedate-format) pipeline. If you override this template with a custom function, it handles **all** date strings - including ISO 8601 strings.
-
-The full parsing order inside `gantt.date.parseDate()` is:
-
-1. **ISO 8601 check** - if the string matches an ISO pattern and `parse_date` has not been overridden by the user, it is parsed directly and this template is **not called**. If `parse_date` has been explicitly overridden, ISO auto-detection is skipped and the flow falls through to step 3
-2. **Explicit `format`** - if a format string or function was passed, it is used instead of this template
-3. **`parse_date` template** - used when ISO auto-detection does not apply, or when the user has explicitly overridden this template
+This function can be called from **gantt.load()** or **gantt.parse()** call to parse date properties of tasks, if they are provided in the string format. 
 
 This function can be redefined if you use a custom date format that the default method can't parse. Check [Date Format Specification](guides/date-format.md).
 
@@ -60,7 +54,7 @@ gantt.templates.format_date = function(date) {
 };
 ~~~
 
-In v9.1.3+, these overrides are unnecessary for ISO dates. See [gantt.date.parseDate()](api/other/date.md#parsedatedate-format) for the full parsing pipeline.
+In v9.1.3+, these overrides are unnecessary for ISO dates.
 :::
 
 For more details, see [Loading dates in ISO format](guides/loading.md#loading-dates-in-iso-format).

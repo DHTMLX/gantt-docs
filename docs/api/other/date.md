@@ -197,6 +197,7 @@ var firstDay = gantt.date.month_start(new Date(2019, 05, 29, 14, 30));
 ---
 
 #### parseDate(date, format)
+
 Converts a date string to a Date object. This method is called during [gantt.load()](api/method/load.md) and [gantt.parse()](api/method/parse.md) to parse task and link date properties.
 
 **Parameters**:
@@ -207,7 +208,7 @@ Converts a date string to a Date object. This method is called during [gantt.loa
 
 **Parsing logic** (since v9.1.3):
 
-1. **ISO 8601 check** - if the string matches an ISO 8601 pattern (e.g. `"2026-01-06"`, `"2026-01-06T10:30:00Z"`), it is parsed directly and `format` is not consulted. Date-only strings are serialized back as `"YYYY-MM-DD"` (preserving the original format); full datetime strings round-trip as full ISO datetime. If the user has explicitly overridden `gantt.templates.parse_date`, ISO auto-detection is skipped and the user's function handles all parsing.
+1. **ISO 8601 check** - if the string matches an ISO 8601 pattern (e.g. `"2026-01-06"`, `"2026-01-06T10:30:00Z"`), it is parsed directly and `format` is not consulted. If the user has explicitly overridden `gantt.templates.parse_date`, ISO auto-detection is skipped and the user's function handles all parsing.
 2. **`format` argument** - if provided as a string, it is converted to a parser function via `gantt.date.str_to_date(format)`; if provided as a function, it is called directly
 3. **Fallback** - if no `format` is provided, the [parse_date](api/template/parse_date.md) template is used
 

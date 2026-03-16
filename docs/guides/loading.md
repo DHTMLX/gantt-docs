@@ -169,23 +169,22 @@ Since v9.1.3, Gantt automatically detects and parses ISO 8601 date strings. No c
 Supported formats:
 
 - `2026-01-06` - date only
-- `2026-01-06T10:30:45` - date and time
-- `2026-01-06T10:30:45.123` - date and time with milliseconds
-- `2026-01-06T10:30:45.000Z` - UTC
-- `2026-01-06T10:30:45+02:00` - with timezone offset
+- `2026-01-06T10:30:00` - date and time
+- `2026-01-06T10:30:00.000` - date and time with milliseconds
+- `2026-01-06T10:30:00.000Z` - UTC
+- `2026-01-06T10:30:00+02:00` - with timezone offset
 
 ~~~js
 gantt.parse({
     tasks: [
-        { id: 1, text: "Task #1", start_date: "2026-01-06", duration: 5 },
-        { id: 2, text: "Task #2", start_date: "2026-01-06T10:30:45Z", duration: 3 }
+        { id: 2, text: "Task #1", start_date: "2026-01-06T10:30:00Z", duration: 3 }
     ],
     links: []
 });
 // ISO dates are parsed automatically - no template overrides needed
 ~~~
 
-When ISO dates are detected on input, they are serialized back as ISO strings automatically (round-trip: ISO in → ISO out). Date-only strings (e.g., `"2026-01-06"`) are serialized back as date-only strings, preserving the original format. If the input contains a mix of date-only and full datetime strings, all dates are serialized as full datetime.
+When ISO dates are detected on input, they are serialized back as ISO strings automatically when passed to the [DataProcessor](guides/server-side.md). Date-only strings (e.g., `"2026-01-06"`) are serialized back as date-only strings, preserving the original format. If the input contains a mix of date-only and full datetime strings, all dates are serialized as full datetime.
 
 :::note
 Date-only strings (e.g., `"2026-01-06"`) are parsed as local midnight when `server_utc` is set to `false` (the default).
