@@ -30,15 +30,9 @@ If you want to use a custom format, you can either change this config, or redefi
 
 ## Loading dates in ISO format
 
-Since v9.1.3, Gantt automatically detects and parses ISO 8601 date strings. The `date_format` config is not needed for ISO strings - they are recognized and parsed directly.
+Since v9.1.3, Gantt automatically detects and parses ISO 8601 date strings. The `date_format` config is not needed for ISO strings - they are recognized and parsed directly. 
 
-Supported ISO 8601 patterns:
-
-- `2026-01-06` - date only
-- `2026-01-06T10:30:45` - date and time
-- `2026-01-06T10:30:45.123` - date and time with milliseconds
-- `2026-01-06T10:30:45.000Z` - UTC
-- `2026-01-06T10:30:45+02:00` - with timezone offset
+When ISO dates are detected on input, they are serialized back as ISO strings automatically when passed to the [DataProcessor](guides/server-side.md). Date-only strings (e.g., `"2026-01-06"`) are serialized back as date-only strings, preserving the original format.
 
 The `date_format` config still applies to non-ISO date strings.
 
@@ -63,8 +57,8 @@ For more details, see [Loading dates in ISO format](guides/loading.md#loading-da
 If you need to change the date format dynamically, it is necessary to modify the [parse_date](api/template/parse_date.md) template in the following way:
 
 ~~~js
-var cfg = gantt.config;
-var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
+const cfg = gantt.config;
+const strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
 
 gantt.templates.parse_date = function(date){
     return strToDate (date);
