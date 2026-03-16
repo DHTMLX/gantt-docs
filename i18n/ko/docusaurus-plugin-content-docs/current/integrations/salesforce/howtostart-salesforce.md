@@ -17,7 +17,7 @@ sidebar_label: "Salesforce"
 - [dhtmlxGantt와 PHP:Slim 연동하기](integrations/php/howtostart-php-slim4.md)
 - [dhtmlxGantt와 Ruby on Rails 연동하기](integrations/other/howtostart-ruby.md)
 
-이 과정은 [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli)를 사용하여 Lightning Web Component를 생성하고 이를 Salesforce org에 배포하는 것을 포함합니다. 개발을 좀 더 편리하게 진행하려면, Visual Studio Code에서 [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)을" 설치하는 것이 좋습니다.
+이 과정은 [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli)를 사용하여 Lightning Web Component를 생성하고 이를 Salesforce org에 배포하는 것을 포함합니다. 개발을 좀 더 편리하게 진행하려면, Visual Studio Code에서 [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode)을 설치하는 것이 좋습니다.
 
 :::note
 전체 소스 코드는 [GitHub에 호스팅되어 있습니다](https://github.com/DHTMLX/salesforce-gantt-demo).

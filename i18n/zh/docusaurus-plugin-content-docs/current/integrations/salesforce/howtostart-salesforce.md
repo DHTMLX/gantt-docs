@@ -17,7 +17,7 @@ sidebar_label: "Salesforce LWC"
 - [dhtmlxGantt와 PHP:Slim 연동하기](integrations/php/howtostart-php-slim4.md)
 - [dhtmlxGantt와 Ruby on Rails 연동하기](integrations/other/howtostart-ruby.md)
 
-集成过程涉及使用 [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) 创建 Lightning Web Component 并将其部署到 Salesforce 组织。为了获得更流畅的开发体验，建议在 Visual Studio Code 中安装 [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)。"
+集成过程涉及使用 [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) 创建 Lightning Web Component 并将其部署到 Salesforce 组织。为了获得更流畅的开发体验，建议在 Visual Studio Code 中安装 [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode)。
 
 :::note
 完整源码已[托管在 GitHub](https://github.com/DHTMLX/salesforce-gantt-demo)。

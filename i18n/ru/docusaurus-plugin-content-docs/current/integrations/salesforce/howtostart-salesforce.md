@@ -17,7 +17,7 @@ sidebar_label: "Salesforce"
 - [dhtmlxGantt с PHP:Slim](integrations/php/howtostart-php-slim4.md)
 - [dhtmlxGantt с Ruby on Rails](integrations/other/howtostart-ruby.md)
 
-Процесс включает использование [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) для создания Lightning Web Component и его деплоя в организацию Salesforce. Для более удобной разработки рекомендуется установить [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)" в Visual Studio Code.
+Процесс включает использование [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) для создания Lightning Web Component и его деплоя в организацию Salesforce. Для более удобной разработки рекомендуется установить [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) в Visual Studio Code.
 
 :::note
 Полный исходный код размещён на [GitHub](https://github.com/DHTMLX/salesforce-gantt-demo).

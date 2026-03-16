@@ -165,7 +165,7 @@ The [exportToPDF](api/method/exporttopdf.md) and [exportToPNG](api/method/export
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/gantt</strong></td>
+  <td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>`https://export.dhtmlx.com/gantt`</strong></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>raw</b></td>

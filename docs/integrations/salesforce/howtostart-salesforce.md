@@ -21,7 +21,7 @@ If you use some other technology, check the list of available integration varian
 - [dhtmlxGantt with Ruby on Rails](integrations/other/howtostart-ruby.md)
 
 We will use [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) to create Lightning Web Component and upload it to an organization. 
-You can also install [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)" to Visual Studio Code for working with development orgs. 
+You can also install [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) to Visual Studio Code for working with development orgs. 
 
 :::note
 The complete source code of the demo created in this tutorial is [available on GitHub](https://github.com/DHTMLX/salesforce-gantt-demo).

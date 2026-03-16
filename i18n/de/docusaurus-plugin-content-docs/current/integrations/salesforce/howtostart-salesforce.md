@@ -17,7 +17,7 @@ Wenn Sie mit einer anderen Technologie arbeiten, finden Sie unten weitere Integr
 - [dhtmlxGantt with PHP:Slim](integrations/php/howtostart-php-slim4.md)
 - [dhtmlxGantt with Ruby on Rails](integrations/other/howtostart-ruby.md)
 
-Der Prozess beinhaltet die Verwendung der [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli), um eine Lightning Web Component zu erstellen und in eine Salesforce-Organisation zu deployen. Für eine reibungslosere Entwicklungserfahrung empfiehlt sich die Installation des [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)" in Visual Studio Code.
+Der Prozess beinhaltet die Verwendung der [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli), um eine Lightning Web Component zu erstellen und in eine Salesforce-Organisation zu deployen. Für eine reibungslosere Entwicklungserfahrung empfiehlt sich die Installation des [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) in Visual Studio Code.
 
 :::note
 Der vollständige Quellcode ist auf [GitHub verfügbar](https://github.com/DHTMLX/salesforce-gantt-demo).
