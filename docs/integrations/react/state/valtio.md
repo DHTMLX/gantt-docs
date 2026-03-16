@@ -218,13 +218,17 @@ export default function DemoValtio() {
 
 Let's configure the Gantt chart's templates which define date formatting and parsing for consistent data handling:
 
+:::note
+Since v9.1.3, Gantt automatically detects ISO date strings and these template overrides are no longer needed. They are shown here for compatibility with earlier Gantt versions. See [Loading dates in ISO format](guides/loading.md#loading-dates-in-iso-format).
+:::
+
 ~~~tsx
-const templates: ReactGanttProps['templates'] = useMemo(  
-  () => ({  
-    format_date: (date: Date) => date.toISOString(),  
-    parse_date: (date: string) => new Date(date),  
-  }),  
-  []  
+const templates: ReactGanttProps['templates'] = useMemo(
+  () => ({
+    format_date: (date: Date) => date.toISOString(),
+    parse_date: (date: string) => new Date(date),
+  }),
+  []
 );
 ~~~
 

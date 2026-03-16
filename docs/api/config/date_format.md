@@ -30,24 +30,35 @@ If you want to use a custom format, you can either change this config, or redefi
 
 ## Loading dates in ISO format
 
-You can use ISO date format in Gantt. For this, you need to redefine functions that parse and serialize dates in Gantt:
+Since v9.1.3, Gantt automatically detects and parses ISO 8601 date strings. The `date_format` config is not needed for ISO strings - they are recognized and parsed directly. 
+
+When ISO dates are detected on input, they are serialized back as ISO strings automatically when passed to the [DataProcessor](guides/server-side.md). Date-only strings (e.g., `"2026-01-06"`) are serialized back as date-only strings, preserving the original format.
+
+The `date_format` config still applies to non-ISO date strings.
+
+:::tip Gantt v9.1.2 and earlier
+In versions before v9.1.3, ISO dates were not detected automatically. If you are using an older version, you need to override `parse_date` and `format_date` templates to handle ISO strings:
 
 ~~~js
-gantt.templates.parse_date = function(date) { 
+gantt.templates.parse_date = function(date) {
     return new Date(date);
 };
-gantt.templates.format_date = function(date) { 
+gantt.templates.format_date = function(date) {
     return date.toISOString();
 };
 ~~~
+
+:::
+
+For more details, see [Loading dates in ISO format](guides/loading.md#loading-dates-in-iso-format).
 
 ## Changing the date format dynamically
 
 If you need to change the date format dynamically, it is necessary to modify the [parse_date](api/template/parse_date.md) template in the following way:
 
 ~~~js
-var cfg = gantt.config;
-var strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
+const cfg = gantt.config;
+const strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
 
 gantt.templates.parse_date = function(date){
     return strToDate (date);
