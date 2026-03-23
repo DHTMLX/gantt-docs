@@ -13,6 +13,8 @@ dhtmlxGantt can take data of 2 formats:
 
 To populate a Gantt chart with data, use either the [parse](api/method/parse.md) or the [load](api/method/load.md) method.
 
+For the serialized JSON shape of tasks and links used in data loading and server round-trips, see [Data Model](guides/data-model.md).
+
 ~~~js
 gantt.init("gantt_here");
 gantt.load("tasks.json"); 
@@ -33,9 +35,9 @@ To load data from an object, use the [parse](api/method/parse.md) method:
 ~~~jsx title="Loading from an inline data source"
 const data = {
     tasks: [
-        { id: 1, text: "Project #1", start_date: "01-12-2025", duration: 18 },
-        { id: 2, text: "Task #1",    start_date: "02-12-2025", duration: 8, parent: 1 },
-        { id: 3, text: "Task #2",    start_date: "11-12-2025", duration: 8, parent: 1 }
+        { id: 1, text: "Project #1", start_date: "2026-04-01", duration: 18 },
+        { id: 2, text: "Task #1",    start_date: "2026-04-02", duration: 8, parent: 1 },
+        { id: 3, text: "Task #2",    start_date: "2026-04-11", duration: 8, parent: 1 }
     ]
 };
 
@@ -43,12 +45,14 @@ gantt.init("gantt_here");
 gantt.parse(data); /*!*/ 
 ~~~
 
+The `data` object above contains serialized tasks. If you build the object directly in JavaScript, `gantt.parse()` can also accept `Date` objects in date fields. After loading, Gantt stores task dates in runtime objects as `Date`. See [Data Model](guides/data-model.md) for the loadable data shape and [Task Properties](guides/task-properties.md) for the client-side runtime object.
+
 
 **Related sample**: [Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
 :::note
-If your data objects contain both "start_date" and "end_date" values and date values contain only date part (i.e. 01-12-2025 and not 01-12-2025 00:00) - you may need extra configuration. Be sure to check this article [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
+If your data objects contain both "start_date" and "end_date" values and date values contain only the date part (i.e. `2026-04-01` and not `2026-04-01T00:00:00`) - you may need extra configuration. Be sure to check this article [Task end date display & Inclusive end dates](guides/loading.md#taskenddatedisplayampinclusiveenddates).
 :::
 
 ## Loading from Server
@@ -68,9 +72,9 @@ For example:
 ~~~jsx title="data.json"
 {
     "tasks": [
-        { "id": 1, "text": "Project #1", "start_date": "01-12-2025", "duration": 18 },
-        { "id": 2, "text": "Task #1", "start_date": "02-12-2025", "duration": 8,"parent": 1 },
-        { "id": 3, "text": "Task #2", "start_date": "11-12-2025", "duration": 8, "parent": 1 }
+        { "id": 1, "text": "Project #1", "start_date": "2026-04-01", "duration": 18 },
+        { "id": 2, "text": "Task #1", "start_date": "2026-04-02", "duration": 8, "parent": 1 },
+        { "id": 3, "text": "Task #2", "start_date": "2026-04-11", "duration": 8, "parent": 1 }
     ],
     "links": [
         { "id": 1, "source": 1, "target": 2, "type": "1" },
@@ -78,6 +82,8 @@ For example:
     ]
 }
 ~~~
+
+This response contains serialized task and link objects. Runtime-only `$...` properties are not part of the server response format.
 
 The format is specified in the second argument of the method: "json", "xml" or "oldxml".
 
@@ -144,21 +150,21 @@ The property that is not specified will be calculated based on the ones that are
 
 The **end_date** has a higher priority than the **duration** parameter. If there are 3 parameters specified in the task object, Gantt will ignore the **duration** parameter and the task will be loaded with a different duration value. For example:
 
-~~~js {4,13}
+~~~js
 {
     "id": "20", "text": "Project #2",
-    "start_date": "01-12-2025",
+    "start_date": "2026-04-01",
     "duration": 3, 
-    "end_date": "05-12-2025",
+    "end_date": "2026-04-05",
 }
 
 // the task above will be loaded with the duration value calculated in accordance
 // with the specified 'start_date' and 'end_date'
 {
     "id": "20", "text": "Project #2",
-    "start_date": "01-12-2025",
+    "start_date": "2026-04-01",
     "duration": 4, 
-    "end_date": "05-12-2025",
+    "end_date": "2026-04-05",
 }
 ~~~
 
