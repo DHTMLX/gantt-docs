@@ -22,9 +22,6 @@ Data flows through two transformations:
 1. **Loading**: serialized task and link data is passed to `gantt.parse()` or `gantt.load()`. Gantt parses date strings into `Date` objects and adds computed `$`-prefixed properties, producing runtime `Task` and `Link` objects.
 2. **Saving**: when changes are sent to the server via DataProcessor, dates are serialized back to strings and temporary `$`-prefixed fields are stripped.
 
-- On load, date strings are parsed into `Date` objects. Computed properties such as `$index`, `$level`, `$source`, and `$target` are added.
-- On save, DataProcessor serializes dates back to strings. Temporary `$`-prefixed fields are not sent to the server.
-
 See [Data Loading](guides/loading.md) and [Server-Side Integration](guides/server-side.md) for behavior details.
 
 ## SerializedTask
@@ -130,7 +127,7 @@ interface Baseline {
     task_id: string | number;
     start_date: Date;
     duration: number;
-    end_date: Date | number;
+    end_date: Date;
     [customProperty: string]: any;
 }
 

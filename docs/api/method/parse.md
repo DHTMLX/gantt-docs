@@ -157,4 +157,3 @@ gantt.parse({
 - [Data Model](guides/data-model.md)
 - [Data Loading](guides/loading.md)
 - [Supported Data Formats](guides/supported-data-formats.md)
-- [Supported Data Formats](guides/supported-data-formats.md#jsonwithcollections)
