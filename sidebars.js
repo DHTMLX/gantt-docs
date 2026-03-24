@@ -85,6 +85,7 @@ module.exports = {
                                 "integrations/react/state/jotai",
                                 "integrations/react/state/valtio",
                                 "integrations/react/firebase-integration",
+                                "integrations/react/state/tanstack-query",
                             ],
                         },
                         // Frameworks
