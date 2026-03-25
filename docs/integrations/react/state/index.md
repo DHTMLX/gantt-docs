@@ -23,6 +23,7 @@ Each tutorial below applies the same core pattern (state -> props -> Gantt, chan
 - [XState](integrations/react/state/xstate.md)
 - [Jotai](integrations/react/state/jotai.md)
 - [Valtio](integrations/react/state/valtio.md)
+- [TanStack Query](integrations/react/state/tanstack-query.md)
 
 ## Real-time sync
 
