@@ -8,6 +8,8 @@ description: 'Learn how to manage Gantt server state with TanStack Query, wire m
 
 This tutorial will guide you through creating a React TypeScript application with Vite, integrating the DHTMLX React Gantt component, and managing server state with TanStack Query. A small Zustand store handles local UI state - undo/redo history and zoom configuration.
 
+The focus of this tutorial is the **client-side integration**: how TanStack Query fetches data, how mutations wire up to the Gantt's `data.save` callback, and how the query cache is used as the single source of truth for Gantt data. The backend included in the demo is intentionally minimal - it uses a local JSON file as storage instead of a real database. This is enough to demonstrate a working REST API without adding unrelated infrastructure. In a production application you would replace it with any persistent storage solution of your choice.
+
 ## Prerequisites
 
 - Basic knowledge of React, TypeScript, Vite, and TanStack Query
@@ -237,6 +239,10 @@ Also create `src/seed/data.json` with the initial tasks and links that the backe
 ```
 
 ## Building the Backend Server
+
+:::note
+The server below is a demo convenience, not a production recommendation. It stores all data in a single JSON file so you can run the full tutorial without setting up a database. Replace it with any real persistence layer - PostgreSQL, MongoDB, a cloud API, etc. - when building a production application. The client-side TanStack Query integration remains the same regardless of what the backend uses.
+:::
 
 Create `src/server.ts`. This is a lightweight Express server that reads and writes a JSON file to simulate a real REST API:
 
