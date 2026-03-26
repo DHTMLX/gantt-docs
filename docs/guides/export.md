@@ -5,7 +5,7 @@ sidebar_label: "Export to PDF and PNG"
 
 # Export to PDF and PNG
 
-dhtmlxGantt provides an online export service that will allow you to export the Gantt chart into the [PDF](guides/export.md#export-to-pdf) or 
+dhtmlxGantt provides an online export service that allows you to export the Gantt chart into the [PDF](guides/export.md#export-to-pdf) or 
 [PNG](guides/export.md#export-to-png) format.
 
 :::note
@@ -26,7 +26,7 @@ The export service has time and request size restrictions.
 
 ### Time limits
 
-If the process takes over than 20 seconds, the export will be canceled and the following error will occur:
+If the process takes more than 20 seconds, the export will be canceled and the following error will occur:
 
 ~~~html
 Error: Timeout trigger 20 seconds
@@ -74,7 +74,7 @@ If you use the Gantt version older than 8.0, you need to include the `https://ex
 ~~~
 :::
 
-- Call the [exportToPDF ](guides/export.md#parameters-of-the-export-methods) method to export the Gantt chart: 
+- Call the [exportToPDF](api/method/exporttopdf.md) method to export the Gantt chart:
 
 ~~~html
 <input value="Export to PDF" type="button" onclick='gantt.exportToPDF()'>
@@ -110,7 +110,7 @@ If you use the Gantt version older than 8.0, you need to include the `https://ex
 ~~~
 :::
 
-- Call the [Export to PDF and PNG](guides/export.md#parameters-of-the-export-methods) method to export the Gantt chart: 
+- Call the [exportToPNG](api/method/exporttopng.md) method to export the Gantt chart:
 
 ~~~html
 <input value="Export to PNG" type="button" onclick='gantt.exportToPNG()'>
@@ -196,7 +196,7 @@ gantt.exportToPDF({
     start: "01-04-2026",
     end: "11-04-2026",
     skin: "terrace",
-    data: { },
+    data: {},
     server: "https://myapp.com/myexport/gantt",
     raw: true,
     callback: (res) => {
@@ -212,7 +212,7 @@ gantt.exportToPNG({
     start: "01-04-2026",
     end: "11-04-2026",
     skin: "terrace",
-    data: { },
+    data: {},
     server: "https://myapp.com/myexport/gantt",
     raw: true,
     callback: (res) => {
@@ -240,7 +240,7 @@ To set a custom language for the output file, use the **locale** property in the
 ~~~js
 gantt.exportToPDF({
     name: "mygantt.pdf",
-    locale: "de" 
+    locale: "de"
 });
 ~~~
 
@@ -277,13 +277,13 @@ To export the Gantt chart with a custom data set (i.e. not with the data present
 
 ~~~js {2}
 gantt.exportToPDF({
-    data:{
-        data:[
+    data: {
+        tasks: [
             { id: 1, text: "Project #1", start_date: "01-04-2026", duration: 18 },
             { id: 2, text: "Task #1", start_date: "02-04-2026", duration: 8, parent: 1 },
             { id: 3, text: "Task #2", start_date: "11-04-2026", duration: 8, parent: 1 }
         ],
-        links:[
+        links: [
             { id: 1, source: 1, target: 2, type: "1" },
             { id: 2, source: 2, target: 3, type: "0" },
             { id: 3, source: 3, target: 4, type: "0" },
@@ -338,18 +338,18 @@ element with `class="totalPages"` in the **header**/**footer** properties:
 
 ~~~js
 gantt.exportToPDF({
-  additional_settings: {
-      format: "A4",
-      // correct margins are obligatory to render headers/footers
-      margins: {
-         top: 10,
-         bottom: 10,
-         left: 0.1,
-         right: 1
-      },
-      header: "Each page header",
-      footer: 'Page: <span class="pageNumber"></span>/<span class="totalPages"></span>',
-  },
+    additional_settings: {
+        format: "A4",
+        // correct margins are obligatory to render headers/footers
+        margins: {
+            top: 10,
+            bottom: 10,
+            left: 0.1,
+            right: 1
+        },
+        header: "Each page header",
+        footer: 'Page: <span class="pageNumber"></span>/<span class="totalPages"></span>'
+    }
 });
 ~~~
 
@@ -377,9 +377,9 @@ gantt.exportToPDF({
 });
 ~~~
 
-If some of the margin settings isn't specified, it will be ignored. 
+If some of the margin settings isn't specified, it will be ignored.
 
-The values are set in millimeters by default, but you can specify the values of margins in inches by setting the <b>unit: "inch"</b> property: 
+The values are set in millimeters by default, but you can specify the values of margins in inches by setting the <b>unit: "inch"</b> property:
 
 ~~~js {8}
 gantt.exportToPDF({
@@ -404,7 +404,7 @@ To apply a custom style for the gantt, provide the stylesheet with your custom C
 ~~~js
 gantt.exportToPDF({
     name: "calendar.pdf",
-    header: '<link rel="stylesheet" href="http://mysite.com/custom.css">' 
+    header: '<link rel="stylesheet" href="http://mysite.com/custom.css">'
 });
 ~~~
 
@@ -413,7 +413,7 @@ gantt.exportToPDF({
 ~~~js
 gantt.exportToPDF({
     name: "calendar.pdf",
-    header: '<style>... custom css classes here ...</style>' 
+    header: '<style>... custom css classes here ...</style>'
 });
 ~~~
 
@@ -432,27 +432,30 @@ For more examples, check the [How to add resource chart or custom styles in the 
 
 ### Collecting all styles for the export function
 
-Sometimes styles are specified in different files unavailable for public access, and it is unhandy to include styles from each of them separately. There is a way to collect all styles together for export. 
+Sometimes styles are specified in different files unavailable for public access, and it is unhandy to include styles from each of them separately. There is a way to collect all styles together for export.
 
 All styles are stored in the **document.styleSheets** object on an HTML page. If the *style* or *link* element included from the same site is used, you can collect all of them and then specify in the **header**. Check the example below:
 
 ~~~js
-const styles = []
-for (el in document.styleSheets) {
+const styles = [];
+
+for (const styleSheet of document.styleSheets) {
     try {
-        const rules = (document.styleSheets[el]).cssRules;
-        for (rule in rules) {
-            styles.push(rules[rule].cssText)
+        const rules = styleSheet.cssRules;
+
+        for (const rule of rules) {
+            styles.push(rule.cssText);
         }
+    } catch (error) {
+        // Ignore stylesheets that cannot be read
     }
-    catch (e) { }
 }
 
 gantt.exportToPDF({
     raw: true,
     header: "<style>" + styles.join(" ") + "</style>"
 });
-~~~ 
+~~~
 
 **Related sample**: [Export Gantt with custom icons to PDF](https://snippet.dhtmlx.com/osbscj62)
 
@@ -462,7 +465,7 @@ gantt.exportToPDF({
 ## Exporting custom markup and styles {#exportingcustommarkupandstyles}
 
 By default the Gantt chart is exported based on the specified configuration and loaded data, while [custom elements](guides/baselines.md) and some templates are not exported.
-To export the whole gantt markup as it is, with all custom elements, you can set the **raw:true** property in the parameter of the [exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods) methods.
+To export the whole gantt markup as it is, with all custom elements, you can set the **raw: true** property in the parameter of the [exportToPDF/exportToPNG](guides/export.md#parameters-of-the-export-methods) methods.
 
 ~~~js
 gantt.exportToPDF({
@@ -473,14 +476,14 @@ gantt.exportToPDF({
 Note that custom elements will require providing [custom styles](guides/export.md#customstylefortheoutputfile) in order to be displayed correctly.
 
 Pay attention that the use of this mode increases the size of the API request. Large charts can exceed limit of the online export of 10MB and may not be exported that way.
-In such a case you need to have an [export service](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) installed locally and increase the request size. 
+In such a case you need to have an [export service](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) installed locally and increase the request size.
 
 
 Check [system requirements](guides/export-requirements.md) to install export services locally.
 
 ## Exporting HTML elements
 
-While exporting the Gantt chart to the PNG and PDF formats, you should note that export of HTML elements is limited due to their possible insecurity. 
+While exporting the Gantt chart to the PNG and PDF formats, you should note that export of HTML elements is limited due to their possible insecurity.
 
 There are HTML elements which are not entirely allowed for export, such as `<canvas>`, `<svg>`, `<script>` and images with the *src* attribute that contains a Base64 image. However, there are safe ways of exporting images in the SVG and Base64 formats:
 
@@ -504,4 +507,3 @@ There are HTML elements which are not entirely allowed for export, such as `<can
 **Related sample**: [Exporting safe and insecure HTML elements to PDF](https://snippet.dhtmlx.com/hj6w4dk3?text="gantt")
 
 If you have an export module and you need to export HTML elements that are not supported by our online export server, you can submit a support request to get instructions on the changes you need to make in your module to remove restrictions. However, you should take into account that your server will be vulnerable to XSS-attacks.
-

@@ -6,6 +6,20 @@ sidebar_label: "What's new in PDF Export Module"
 What's new in PDF Export Module
 ================================
 
+## 0.7.7
+
+- Fixed `width` and `height` parameters not being ignored in multipage PDF export when the `format` parameter is specified
+- Fixed blank page add in the single page export when `merge_pages` is enabled
+- Fixed temporary files deletion after export is finished
+- Fixed HTML misalignment in complex layouts
+- Improved the the page size calculation for Gantt PDF export
+- Added automated tests to compare PDF and PNG export for Gantt and Scheduler
+
+## 0.7.6
+
+- Improved sanitizing HTML content for PDF and PNG export for Gantt and Scheduler
+- Fixed Remote Code Execution and File Read vulnerabilities
+
 ## 0.7.4
 
 - Fixed background color in the multipage PDF headers and footers
