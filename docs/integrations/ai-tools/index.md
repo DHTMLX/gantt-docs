@@ -26,7 +26,12 @@ If you're using an AI app builder to generate or modify your UI, start here:
 
 If you're adding AI capabilities to your application (OpenAI-compatible APIs, assistants, smart suggestions), see:
 
+Guides:
+
+- [Semantic Search](./semantic-search/) - add meaning-based task discovery to your Gantt chart using embeddings and cosine similarity.
+
 Demo apps:
 
+- [Gantt Semantic Search AI Demo](https://github.com/DHTMLX/gantt-semantic-search-ai-demo)
 - [Gantt Maker AI Demo](https://github.com/DHTMLX/gantt-maker-ai-demo)
 - [Gantt Theme Builder AI Demo](https://github.com/DHTMLX/gantt-theme-builder-ai-demo)
