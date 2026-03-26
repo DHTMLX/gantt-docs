@@ -63,11 +63,12 @@ Response:
 ]
 ```
 
-Here is a minimal FastAPI implementation. The `get_embedding()` function is a placeholder - replace it with your embedding provider.
+Here is a minimal FastAPI implementation. It uses [Ollama](https://ollama.com/) with the [all-minilm](https://ollama.com/library/all-minilm) model, so the whole setup runs locally without external API calls. To use a different provider, replace the `get_embedding()` function - see [Embedding provider examples](#embedding-provider-examples) below.
 
 ```python
 from fastapi import FastAPI
 from pydantic import BaseModel
+import ollama
 
 app = FastAPI()
 
@@ -88,8 +89,8 @@ class SearchResult(BaseModel):
 
 
 def get_embedding(text: str) -> list[float]:
-    """Replace with your embedding provider."""
-    raise NotImplementedError
+    response = ollama.embed(model="all-minilm", input=text, truncate=True)
+    return response.embeddings[0]
 
 
 def cosine_similarity(a: list[float], b: list[float]) -> float:
@@ -115,21 +116,9 @@ async def search(request: SearchRequest):
     return [item.model_dump() for item in results]
 ```
 
-### Embedding provider examples
+### Embedding provider examples {#embedding-provider-examples}
 
-Here are `get_embedding()` implementations for two common providers:
-
-**Ollama** (local, uses the `ollama` Python package):
-
-```python
-import ollama
-
-def get_embedding(text: str) -> list[float]:
-    response = ollama.embed(model="all-minilm", input=text, truncate=True)
-    return response.embeddings[0]
-```
-
-**OpenAI** (hosted, uses the `openai` Python SDK):
+To use a hosted API instead, replace `get_embedding()`. Here is an example using OpenAI:
 
 ```python
 from openai import OpenAI
