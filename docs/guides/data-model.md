@@ -60,6 +60,7 @@ interface SerializedTask {
     render?: string;
     resource?: string[];
     rollup?: boolean;
+    target?: string;
 
     [customProperty: string]: any;
 }
@@ -269,3 +270,20 @@ gantt.parse({
 const task = gantt.getTask(1);
 console.log(task.priority); // "high"
 ~~~
+
+## Task Order
+
+Gantt displays tasks in the order they appear in the `tasks` array. The position of each item in the array - together with the `parent` hierarchy - is the only thing that determines the visual order on the client. The runtime `$index` property is calculated from this array position and is not persisted.
+
+This means the data source controls the display order. If users can [reorder tasks via drag-and-drop](guides/reordering-tasks.md), the data source needs a way to remember the new order so that subsequent loads return tasks in the correct sequence.
+
+The standard approach is a numeric `sortorder` column in the backend storage. The data source sorts tasks by this column before returning them. `sortorder` is a backend-only concept - Gantt does not read or interpret it on the client. It travels as a [custom property](#custom-properties) if included in the payload, but has no built-in effect.
+
+When a user reorders a task on the UI, Gantt populates the `target` property on the task object sent to the server via DataProcessor. The value indicates where the task was moved relative to its siblings:
+
+- `target="taskId"` - place this task **before** the task with the given id
+- `target="next:taskId"` - place this task **after** the task with the given id
+
+The backend uses this value to recalculate `sortorder` for the affected tasks.
+
+For the full implementation pattern - database schema, initial values, and reorder logic - see [Storing the Order of Tasks](guides/server-side.md#storingtheorderoftasks) in the Server-Side Integration guide. For client-side drag-and-drop configuration, see [Reordering Tasks](guides/reordering-tasks.md).

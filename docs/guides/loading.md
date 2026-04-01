@@ -517,6 +517,8 @@ CREATE TABLE `gantt_tasks` (
 )
 ~~~
 
+The `sortorder` column stores the display position of each task. Gantt renders tasks in the order they arrive in the data array, so the backend should sort by this column when serving data. When users [reorder tasks](guides/reordering-tasks.md) via drag-and-drop, the updated position is sent to the server for persistence. See [Storing the Order of Tasks](guides/server-side.md#storingtheorderoftasks) for the full implementation pattern.
+
 
 ## Events Flow {#eventsflow}
 
