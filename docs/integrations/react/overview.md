@@ -348,6 +348,7 @@ import React, { useState } from 'react';
 
 export interface CustomLightboxProps {
   data: any;
+  gantt: any;
   onSave: (task: any) => void;
   onCancel: () => void;
   onDelete: () => void;
@@ -355,6 +356,7 @@ export interface CustomLightboxProps {
 
 const CustomLightbox: React.FC<CustomLightboxProps> = ({
   data,
+  gantt,
   onSave,
   onCancel,
   onDelete
