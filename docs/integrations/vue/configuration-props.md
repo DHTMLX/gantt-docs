@@ -121,6 +121,11 @@ Use it as a reference after [Overview](integrations/vue/overview.md) or [Quick S
       <td>VueGanttEvents</td>
       <td>Event-name to handler map.</td>
     </tr>
+    <tr>
+      <td>allowRawHTML</td>
+      <td>boolean</td>
+      <td>When <code>false</code> (default), string values returned from template functions are HTML-escaped to prevent XSS. Set to <code>true</code> to allow raw HTML in all templates. For per-template control, wrap individual template functions with the exported <code>allowRawHTML()</code> helper. See <a href="/migration#91---92">Migration notes</a>.</td>
+    </tr>
   </tbody>
 </table>
 

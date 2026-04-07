@@ -110,6 +110,11 @@ This page describes the props accepted by React Gantt and how they map to DHTMLX
   <td>Allows replacing <code>onBeforeTaskDelete</code> and <code>onBeforeLinkDelete</code> modals with custom components.</td>
   </tr>
   <tr>
+  <td>allowRawHTML</td>
+  <td>boolean</td>
+  <td>When <code>false</code> (default), string values returned from template functions are HTML-escaped to prevent XSS. Set to <code>true</code> to allow raw HTML in all templates. For per-template control, wrap individual template functions with the exported <code>allowRawHTML()</code> helper. See <a href="/migration#91---92">Migration notes</a>.</td>
+  </tr>
+  <tr>
   <td>(Event Props)</td>
   <td>Function</td>
   <td>The wrapper also supports passing event handler props that correspond to DHTMLX Gantt events. For example, onTaskClick, onAfterTaskAdd, etc. If the prop name matches the event name, it's attached automatically.</td>

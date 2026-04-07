@@ -383,4 +383,41 @@ It helps preventing various code injection attacks and improve the safety of app
 
 [Read more about applying the CSP standard to a dhtmlxGantt application](api/config/csp.md).
 
+## Framework Wrapper XSS Protection
+
+Starting from v9.2, the [React](integrations/react.md), [Vue](integrations/vue.md), and [Angular](integrations/angular.md) wrappers automatically HTML-escape string values returned by user-provided template functions. This covers:
+
+- Functions passed via the `templates` prop
+- `config.columns[].template` functions
+- `config.scales[].format` functions
+
+This means that if a template returns a string containing HTML tags, those tags will be rendered as text rather than as markup, preventing XSS through unsanitized data.
+
+### Per-template opt-out
+
+If a specific template needs to return raw HTML, wrap it with the `allowRawHTML` helper exported from the wrapper package:
+
+~~~js
+import { allowRawHTML, escapeHTML } from "@dhx/react-gantt";
+
+const templates = {
+  task_text: allowRawHTML((start, end, task) => {
+    return `<b>${escapeHTML(task.text)}</b>`;
+  })
+};
+~~~
+
+:::note
+When using `allowRawHTML`, you are responsible for sanitizing any user-provided data inside that template. Use the exported `escapeHTML` utility for values that come from user input.
+:::
+
+### Global opt-out
+
+Set the `allowRawHTML` component prop to `true` to disable escaping for all templates:
+
+~~~jsx
+<ReactGantt allowRawHTML={true} />
+~~~
+
+See [Migration notes](migration.md#91---92) for more details.
 

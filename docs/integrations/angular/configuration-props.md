@@ -104,6 +104,11 @@ This page documents the public wrapper surface of `@dhtmlx/trial-angular-gantt` 
       <td>ResourceFilter</td>
       <td>Predicate for filtering rows in the configured resource datastore.</td>
     </tr>
+    <tr>
+      <td>allowRawHTML</td>
+      <td>boolean</td>
+      <td>When <code>false</code> (default), string values returned from template functions are HTML-escaped to prevent XSS. Set to <code>true</code> to allow raw HTML in all templates. For per-template control, wrap individual template functions with the exported <code>allowRawHTML()</code> helper. See <a href="/migration#91---92">Migration notes</a>.</td>
+    </tr>
   </tbody>
 </table>
 
