@@ -80,6 +80,7 @@ module.exports = {
                                 "integrations/react/state/state-management-basics",
                                 "integrations/react/state/redux-toolkit",
                                 "integrations/react/state/zustand",
+                                "integrations/react/state/tanstack-query",
                                 "integrations/react/state/mobx",
                                 "integrations/react/state/xstate",
                                 "integrations/react/state/jotai",
@@ -207,7 +208,8 @@ module.exports = {
                     },
                     items: [
                         "integrations/ai-tools/lovable-ai",
-                        "integrations/ai-tools/mcp-server"
+                        "integrations/ai-tools/mcp-server",
+                        "integrations/ai-tools/semantic-search"
                     ]
                 },
                 "guides/using-gantt-on-server",
