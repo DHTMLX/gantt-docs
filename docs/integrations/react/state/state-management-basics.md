@@ -479,6 +479,40 @@ gantt.changeTaskId(tempId, realId);
 gantt.changeLinkId(tempId, realId);
 ~~~
 
+## Storing Task Order {#storingtaskorder}
+
+Gantt displays tasks in the order they arrive in the `tasks` array. If your application allows users to reorder tasks by dragging rows, you need to persist that order so subsequent loads return tasks in the right sequence.
+
+The standard approach is to keep a numeric `sortorder` column in your backend storage and sort tasks by it when serving data. On the client side, enable reordering:
+
+~~~js
+gantt.config.order_branch = true;
+gantt.config.order_branch_free = true;
+~~~
+
+When a user drags a task to a new position, Gantt adds a `target` property to the task object passed to your `data.save` (or `data.batchSave`) callback. The value tells the backend where the task was dropped:
+
+- `target="taskId"` - place this task **before** the specified task
+- `target="next:taskId"` - place this task **after** the specified task
+
+Your save handler should forward this value to the backend so it can recalculate `sortorder` for the affected rows:
+
+~~~ts
+save: (entity, action, item, id) => {
+  if (entity === "task" && action === "update") {
+    // item.target contains the drop position, e.g. "14" or "next:14"
+    await fetch(`/api/task/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(item), // includes target
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+  // ...
+}
+~~~
+
+For the full backend implementation pattern (database schema, initial values, reorder logic), see [Storing the Order of Tasks](guides/server-side.md#storingtheorderoftasks) in the Server-Side Integration guide.
+
 ## What's next
 
 Once you're clear on the two data models you can move on to the specific tutorials.

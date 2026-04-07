@@ -1261,6 +1261,7 @@ module.exports = {
                     },
                     items: [
                         "guides/loading",
+                        "guides/data-model",
                         {
                             type: "doc",
                             id: "guides/dynamic-loading",
