@@ -9,6 +9,19 @@ sidebar_label: "What's New"
 Updating from an earlier version? Check the [migration guide](migration.md) for required changes and update steps.
 :::
 
+## 9.2
+
+<span class='release_date'>Minor update</span>
+
+### Breaking Changes
+
+This update brings some changes in the behavior of framework wrappers. Make sure to check the
+[Migration notes](migration.md#91---92) to be on the safe side.
+
+### New Functionality
+
+- [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), and [Angular Gantt](integrations/angular.md) wrappers now **HTML-escape string values returned from template functions** by default to prevent XSS attacks. This applies to `templates`, `config.columns[].template`, and `config.scales[].format` functions
+
 ## 9.1.3
 
 <span class='release_date'>March 16, 2026. Bugfix release</span>

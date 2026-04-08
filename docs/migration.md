@@ -5,6 +5,58 @@ sidebar_label: "Migration from Older Versions"
 
 # Migration from Older Versions
 
+## 9.1 -> 9.2 {#91---92}
+
+### XSS protection in framework wrappers
+
+Starting from v9.2, [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), and [Angular Gantt](integrations/angular.md) wrappers automatically HTML-escape string values returned from user-provided template functions. This prevents XSS vulnerabilities caused by unsanitized user data rendered through templates.
+
+The escaping applies to:
+
+- Functions passed via the `templates` prop
+- `config.columns[].template` functions
+- `config.scales[].format` functions
+
+If your templates intentionally return HTML markup (e.g. `<b>`, `<span>`, `<div>`), the markup will now be escaped and rendered as plain text by default.
+
+#### Per-template opt-out (recommended)
+
+Wrap specific templates that need to output raw HTML with the `allowRawHTML` helper:
+
+~~~jsx
+import { allowRawHTML } from "@dhx/react-gantt";
+// or "@dhx/vue-gantt" / "@dhx/angular-gantt"
+
+<ReactGantt
+  templates={{
+    task_text: allowRawHTML((start, end, task) => {
+      return `<b>${escapeHTML(task.text)}</b>`;
+    }),
+    task_class: (start, end, task) => task.priority // still escaped
+  }}
+/>
+~~~
+
+:::note
+When using `allowRawHTML`, you are responsible for sanitizing any user-provided data inside that template. Use the exported `escapeHTML` utility for values that come from user input.
+:::
+
+#### Full opt-out
+
+Set the `allowRawHTML` component prop to `true` to restore pre-9.2 behavior and disable escaping for all templates:
+
+~~~jsx
+<ReactGantt allowRawHTML={true} /* ... */ />
+~~~
+
+~~~vue
+<VueGantt :allowRawHTML="true" /* ... */ />
+~~~
+
+~~~html
+<dhx-gantt [allowRawHTML]="true" /* ... */></dhx-gantt>
+~~~
+
 ## 9.0 -> 9.1
 
 The v9.1 does not introduce breaking changes but several configuration options have been **deprecated** and 
