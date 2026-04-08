@@ -21,6 +21,11 @@ This update brings some changes in the behavior of framework wrappers. Make sure
 ### New Functionality
 
 - [React Gantt](integrations/react.md), [Vue Gantt](integrations/vue.md), and [Angular Gantt](integrations/angular.md) wrappers now **HTML-escape string values returned from template functions** by default to prevent XSS attacks. This applies to `templates`, `config.columns[].template`, and `config.scales[].format` functions
+- [React Gantt](integrations/react.md) now passes the **gantt instance** to the [customLightbox](integrations/react/overview.md#by-providing-a-custom-component-via-the-customlightbox-prop) component, allowing direct access to the Gantt API from the custom editor
+
+### Updates
+
+- Updated TypeScript typings: added `SerializedTask`, `SerializedLink`, `SerializedBaseline`, `SerializedResourceAssignment`, and `GanttData` types. See the [Data Model](guides/data-model.md) overview for details
 
 ## 9.1.3
 
