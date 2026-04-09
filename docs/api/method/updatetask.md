@@ -50,7 +50,7 @@ If you're using the [DataProcessor](api/method/dataprocessor.md), invoking this 
 
 For making visual changes that don't require saving, **use the [`refreshTask()`](api/method/refreshtask.md) method instead**. This will repaint the task without invoking extra calculations.
 
-~~~js
+~~~js {5}
 gantt.templates.task_class = (startDate, endDate, task) => task.$active ? "active_task" : "";
 
 gantt.attachEvent("onTaskClick", (taskId, event) => {
