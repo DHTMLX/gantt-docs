@@ -81,6 +81,7 @@ module.exports = {
                                 "integrations/react/state/redux-toolkit",
                                 "integrations/react/state/zustand",
                                 "integrations/react/state/tanstack-query",
+                                "integrations/react/state/tanstack-supabase",
                                 "integrations/react/state/mobx",
                                 "integrations/react/state/xstate",
                                 "integrations/react/state/jotai",
