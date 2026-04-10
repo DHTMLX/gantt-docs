@@ -20,7 +20,7 @@ Large language models are trained on data up to a certain date and do not automa
 The DHTMLX MCP server is a shared service that covers all major DHTMLX products, not only Gantt. Configuration instructions in this section apply regardless of which DHTMLX component you are working with.
 :::
 
-If you use [React Gantt](integrations/react/index.md), pair MCP with the [React Gantt agent skill](integrations/ai-tools/agent-skills.md#available-skills).
+If you use [React Gantt](integrations/react.md), pair MCP with the [React Gantt agent skill](integrations/ai-tools/agent-skills.md#available-skills).
 
 ## Supported Products
 
