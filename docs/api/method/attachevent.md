@@ -24,8 +24,8 @@ description: "attaches the handler to an inner event of dhtmlxGantt"
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onTaskClick", function(id, e) {
-    alert("You've just clicked an item with id="+id);
+gantt.attachEvent("onTaskClick", (id, e) => {
+    alert(`You've just clicked an item with id=${id}`);
 });
 ~~~
 
@@ -35,42 +35,42 @@ gantt.attachEvent("onTaskClick", function(id, e) {
 ### Details
 
 You can attach several handlers to the same event and all of them will be executed.
-If some of handlers will return *false* - the related operation will be blocked.
+If some of the handlers return *false*, the related operation will be blocked.
 Event handlers are processed in the same order that they were attached.
 
-
-## Properties of settings object 
+## Properties of settings object
 
 The settings object can contain the following properties:
 
-- **id?** - (*string | number*) - the id of the event handler.
+- `id?` - (*string | number*) - the id of the event handler.
 For example, you can easily detach a handler from the specified event:
 
-~~~js
-gantt.attachEvent("onTaskClick", function(){
+~~~js {3}
+gantt.attachEvent("onTaskClick", () => {
     console.log("task click");
-}, {id: "my-click"}); /*!*/
-... //after a while:
+}, { id: "my-click" });
+
+// after a while
 gantt.detachEvent("my-click");
 ~~~
 
-- **once?** - (*boolean*) - defines whether the event will be executed only once.
+- `once?` - (*boolean*) - defines whether the event will be executed only once.
 Set the property to *true* if you want to capture the first triggering of the event, as in:
 
-~~~js
-gantt.attachEvent("onTaskClick", function(){
+~~~js {4}
+gantt.attachEvent("onTaskClick", () => {
     console.log("capture next task click");
     return true;
-}, {once: true}); /*!*/
+}, { once: true });
 ~~~
 
-- **thisObject?** - (*any*) - specifies the `this` object for the listener.
+- `thisObject?` - (*any*) - specifies the `this` object for the listener.
 
-~~~js
-gantt.attachEvent("onTaskClick", function(){
+~~~js {4}
+gantt.attachEvent("onTaskClick", function() {
     // ...
     return true;
-}, {thisObject: this}); /*!*/
+}, { thisObject: this });
 ~~~
 
 ### Related API
@@ -78,4 +78,3 @@ gantt.attachEvent("onTaskClick", function(){
 
 ### Related Guides
 - [Event Handling](guides/handling-events.md)
-
