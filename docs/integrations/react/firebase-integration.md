@@ -122,7 +122,7 @@ export { db, tasksQuery, linksQuery, tasksCollection, linksCollection };
 
 ## Step 3: Create the Gantt component
 
-To begin with, set up the core Gantt component with [**React state** for tasks and links](integrations/react.md#bindingdata) with the following configuration: 
+To begin with, set up the core Gantt component with [**React state** for tasks and links](integrations/react/overview.md#bindingdata) with the following configuration: 
 
 ~~~js
 const [tasks, setTasks] = useState<Task[]>([]);

@@ -169,7 +169,7 @@ based on actual working hours instead of the fixed 24-hour period
 ### Updates
 
 - Add the `isSalesforce` flag to [gantt.env](api/other/env.md)
-- Add the `groupTasks` prop to [React Gantt](integrations/react.md#groupingtasks)
+- Add the `groupTasks` prop to [React Gantt](integrations/react/overview.md#groupingtasks)
 
 ## 9.0.10
 
