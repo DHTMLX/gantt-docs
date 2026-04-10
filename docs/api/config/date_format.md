@@ -25,14 +25,14 @@ gantt.load("/data/tasks");
 
 ### Details
 
-This config value is used to generate [parse_date](api/template/parse_date.md) and [format_date](api/template/format_date.md) template functions. 
-If you want to use a custom format, you can either change this config, or redefine **parse_date** and **format_date** templates directly.
+This config value is used to generate [`parse_date`](api/template/parse_date.md) and [`format_date`](api/template/format_date.md) template functions.
+If you want to use a custom format, you can either change this config, or redefine `parse_date` and `format_date` templates directly.
 
 ## Loading dates in ISO format
 
-Since v9.1.3, Gantt automatically detects and parses ISO 8601 date strings. The `date_format` config is not needed for ISO strings - they are recognized and parsed directly. 
+Since v9.1.3, Gantt automatically detects and parses ISO 8601 date strings. The `date_format` config is not needed for ISO strings - they are recognized and parsed directly.
 
-When ISO dates are detected on input, they are serialized back as ISO strings automatically when passed to the [DataProcessor](guides/server-side.md). Date-only strings (e.g., `"2026-01-06"`) are serialized back as date-only strings, preserving the original format.
+When ISO dates are detected on input, they are serialized back as ISO strings automatically when passed to the [DataProcessor](api/method/dataprocessor.md). Date-only strings (e.g., `"2026-01-06"`) are serialized back as date-only strings, preserving the original format.
 
 The `date_format` config still applies to non-ISO date strings.
 
@@ -40,12 +40,8 @@ The `date_format` config still applies to non-ISO date strings.
 In versions before v9.1.3, ISO dates were not detected automatically. If you are using an older version, you need to override `parse_date` and `format_date` templates to handle ISO strings:
 
 ~~~js
-gantt.templates.parse_date = function(date) {
-    return new Date(date);
-};
-gantt.templates.format_date = function(date) {
-    return date.toISOString();
-};
+gantt.templates.parse_date = (date) => new Date(date);
+gantt.templates.format_date = (date) => date.toISOString();
 ~~~
 
 :::
@@ -54,15 +50,13 @@ For more details, see [Loading dates in ISO format](guides/loading.md#loading-da
 
 ## Changing the date format dynamically
 
-If you need to change the date format dynamically, it is necessary to modify the [parse_date](api/template/parse_date.md) template in the following way:
+If you need to change the date format dynamically, it is necessary to modify the [`parse_date`](api/template/parse_date.md) template in the following way:
 
 ~~~js
-const cfg = gantt.config;
-const strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
+const config = gantt.config;
+const parseDate = gantt.date.str_to_date(config.date_format, config.server_utc);
 
-gantt.templates.parse_date = function(date){
-    return strToDate (date);
-};
+gantt.templates.parse_date = (date) => parseDate(date);
 ~~~
 
 ### Related API
@@ -71,4 +65,3 @@ gantt.templates.parse_date = function(date){
 
 ### Related Guides
 - [Date Format Specification](guides/date-format.md)
-
