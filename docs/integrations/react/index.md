@@ -11,6 +11,10 @@ If you want a complete description of how React Gantt works and what features it
 
 ## Get started
 
+:::tip AI-assisted development
+If you use an AI coding assistant, the [DHTMLX React Gantt agent skill](integrations/ai-tools/agent-skills.md#available-skills) can help it follow correct integration patterns and avoid common mistakes. For real-time API reference, connect the [DHTMLX MCP server](integrations/ai-tools/mcp-server.md).
+:::
+
 If you're new to the wrapper, follow this order:
 
 1. [Installation](integrations/react/installation.md) - choose Evaluation (public npm) or Professional (private npm) version of React Gantt.
