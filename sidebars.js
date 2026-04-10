@@ -122,8 +122,6 @@ module.exports = {
                 },
                 "integrations/vue/howtostart-vue",
                 "integrations/angular/howtostart-angular",
-                "integrations/svelte/howtostart-svelte",
-                "integrations/salesforce/howtostart-salesforce",
                 {
                     type: "category",
                     label: "AI Tools",
@@ -132,11 +130,14 @@ module.exports = {
                         id: "integrations/ai-tools/index"
                     },
                     items: [
-                        "integrations/ai-tools/lovable-ai",
                         "integrations/ai-tools/mcp-server",
+                        "integrations/ai-tools/agent-skills",
+                        "integrations/ai-tools/lovable-ai",
                         "integrations/ai-tools/semantic-search"
                     ]
                 },
+                "integrations/svelte/howtostart-svelte",
+                "integrations/salesforce/howtostart-salesforce",
                 "guides/using-gantt-on-server",
                 {
                     type: "category",
