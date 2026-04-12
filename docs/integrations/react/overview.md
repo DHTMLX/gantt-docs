@@ -918,7 +918,7 @@ In most cases, ReactGantt props are enough to configure your chart. However, som
 
 ### Using built-in hooks
 
-ReactGantt provides ready to use hooks that expose some methods of Gantt API. Please check the related article [](integrations/react/configuration-props.md).
+ReactGantt provides hooks for event subscriptions, resource management, undo/redo, zoom, selection, datastore access, and work time calculations. See the **[Hooks reference](integrations/react/hooks.md)** for the complete API.
 
 ### Using a Ref
 
