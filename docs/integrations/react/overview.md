@@ -27,6 +27,12 @@ The wrapper lets you create a fully functional Gantt chart in your React applica
 
 If you're new to DHTMLX Gantt, see the [DHTMLX Gantt documentation](guides.md) for an overview of features like [Work Time Calculation](guides/working-time.md), [Auto Scheduling](guides/auto-scheduling.md), [Resource Management](guides/resource-management.md), and more.
 
+
+:::tip AI-assisted development
+If you use an AI coding assistant, the [DHTMLX React Gantt agent skill](integrations/ai-tools/agent-skills.md#available-skills) can help it follow correct integration patterns and avoid common mistakes. For real-time API reference, connect the [DHTMLX MCP server](integrations/ai-tools/mcp-server.md).
+:::
+
+
 ## Installation and NPM Access
 
 For up-to-date installation instructions for both the Evaluation and Professional builds, including npm registry configuration and offline examples, see the [Installation Guide](integrations/react/installation.md).
@@ -111,7 +117,6 @@ export const demoData = {
 export {demoData};
 ~~~
 
-**Related article**: [dhtmlxReactGantt and Firebase Integration](integrations/react/firebase-integration.md)
 
 ## Binding Data {#bindingdata}
 
@@ -1049,4 +1054,4 @@ export default function GanttPage() {
 ## Next Steps
 
 - For additional info on how to configure ReactGantt, see [this article](integrations/react/configuration-props.md)
-- For advanced use see [DHTMLX Gantt documentation](guides.md) 
+- For advanced use see [DHTMLX Gantt documentation](guides.md)

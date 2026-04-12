@@ -338,5 +338,5 @@ info Be mindful that if you alter tasks/links in the direct Gantt instance while
 you should keep them in sync or re-parse the data. Otherwise, the next React re-rendering may overwrite your manual changes.
 :::
 
-If you want to do something not exposed by a prop, you can still call gantt methods directly. See [Accessing the Underlying Gantt API](integrations/react.md#accessingtheunderlyingganttapi) for more details.
+If you want to do something not exposed by a prop, you can still call gantt methods directly. See [Accessing the Underlying Gantt API](integrations/react/overview.md#accessingtheunderlyingganttapi) for more details.
 
