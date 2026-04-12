@@ -67,6 +67,7 @@ module.exports = {
                         "integrations/react/installation",
                         "integrations/react/quick-start",
                         "integrations/react/configuration-props",
+                        "integrations/react/hooks",
 
                         // Data & State Management
                         {
