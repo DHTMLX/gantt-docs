@@ -66,7 +66,7 @@ sidebar_label: "Properties for importing from MS Project"
 
 There are also the following supported task properties:
 
-<div class="msp-task-properties">
+<div class="msp-ext-properties">
 | Text | Number | Flag | Cost | Date | Start | Finish | Duration | OutlineCode |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|
 | Text1 | Number1 | Flag1 | Cost1 | Date1 | Start1 | Finish1 | Duration1 | OutlineCode1 |
@@ -162,6 +162,7 @@ Some of the properties are calculated based on other properties, so if some of t
 
 There are more supported resource properties:
 
+<div class="msp-ext-properties">
 
 | Text | Number | Flag | Cost | Date | Start | Finish | Duration | OutlineCode | OutlineCodeIndex |
 |---|---|---|---|---|---|---|---|---|---|
@@ -195,3 +196,5 @@ There are more supported resource properties:
 | Text28 | | | | | | | | | |
 | Text29 | | | | | | | | | |
 | Text30 | | | | | | | | | |
+
+</div>
