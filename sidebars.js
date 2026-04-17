@@ -38,9 +38,8 @@ module.exports = {
             items: [
                 "guides/installation",
                 "guides/cdn-links-list",
-                "guides/initializing-gantt-chart"
-                
-               
+                "guides/initializing-gantt-chart",
+                "guides/responsive-ui"
             ]
         },
 
