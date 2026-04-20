@@ -17,22 +17,22 @@ description: "adds a new dependency link"
 - `link` - (required) *object* - the link object
 
 ### Returns
-- ` id` - (string | number) - the link's id
+- `id` - (string | number) - the link's ID
 
 ### Example
 
 ~~~jsx
-var linkId = gantt.addLink({
-    id:1,
-    source:1,
-    target:2,
-    type:gantt.config.links.finish_to_start
+const linkId = gantt.addLink({
+    id: 1,
+    source: 1,
+    target: 2,
+    type: gantt.config.links.finish_to_start
 });
 ~~~
 
 ### Details
 
-The method invokes the [onBeforeLinkAdd](api/event/onbeforelinkadd.md) and [onAfterLinkAdd](api/event/onafterlinkadd.md) events.
+The method invokes the [`onBeforeLinkAdd`](api/event/onbeforelinkadd.md) and [`onAfterLinkAdd`](api/event/onafterlinkadd.md) events.
 
 ### Related API
 - [updateLink](api/method/updatelink.md)
@@ -41,4 +41,3 @@ The method invokes the [onBeforeLinkAdd](api/event/onbeforelinkadd.md) and [onAf
 
 ### Related Guides
 - [Adding/Updating/Deleting Links](guides/crud-dependency.md)
-
