@@ -15,25 +15,25 @@ description: "A set of date formatting methods"
 
 ### Methods
 
-#### add(date, number, unit)
+#### `add(date, number, unit)`
 Adds/subtracts the specified time interval to/from the date
 
 **Parameters**:
 - `date` - (Date) - The date object
 - `number` - (number) - Number of units to add (positive) or subtract (negative)
-- `unit` - (string) - Time unit: 'minute', 'hour', 'day', 'week', 'month', 'year'
+- `unit` - (string) - Time unit: `minute`, `hour`, `day`, `week`, `month`, `year`
 
 **Returns**: Date - The new date object
 
 **Example**:
 ~~~js
-// adds 1 year to the specified date: 29 June, 2019 -> 29 June, 2020
-var newDate = gantt.date.add(new Date(2019, 05, 29), 1, 'year');
+// adds 1 year to the specified date: 29 June, 2027 -> 29 June, 2028
+const newDate = gantt.date.add(new Date(2027, 5, 29), 1, 'year');
 ~~~
 
 ---
 
-#### add_quarter(date, number)
+#### `add_quarter(date, number)`
 Adds/subtracts the specified number of quarters to/from the date
 
 **Parameters**:
@@ -45,13 +45,13 @@ Adds/subtracts the specified number of quarters to/from the date
 **Example**:
 ~~~js
 // adds 1 quarter (3 months) to the specified date: 
-// 29 June, 2019 -> 29 September, 2020
-var newDate = gantt.date.add_quarter(new Date(2019, 05, 29), 1);
+// 29 June, 2027 -> 29 September, 2027
+const newDate = gantt.date.add_quarter(new Date(2027, 5, 29), 1);
 ~~~
 
 ---
 
-#### convert_to_utc(date)
+#### `convert_to_utc(date)`
 Converts local time to UTC
 
 **Parameters**:
@@ -61,13 +61,13 @@ Converts local time to UTC
 
 **Example**:
 ~~~js
-// 29 June, 2019 14:00 (local time) -> 29 June, 2019 12:00 (utc)
-var time = gantt.date.convert_to_utc(new Date(2019, 05, 29, 14, 00));
+// 29 June, 2027 14:00 (local time) -> 29 June, 2027 12:00 (utc)
+const utcTime = gantt.date.convert_to_utc(new Date(2027, 5, 29, 14, 0));
 ~~~
 
 ---
 
-#### copy(date)
+#### `copy(date)`
 Makes a copy of a Date object
 
 **Parameters**:
@@ -77,12 +77,12 @@ Makes a copy of a Date object
 
 **Example**:
 ~~~js
-var copy = gantt.date.copy(new Date(2019, 05, 29)); // -> 29 June, 2019
+const copiedDate = gantt.date.copy(new Date(2027, 5, 29)); // -> 29 June, 2027
 ~~~
 
 ---
 
-#### date_part(date)
+#### `date_part(date)`
 Resets the time part of the provided date to 00:00:00
 
 **Parameters**:
@@ -92,31 +92,31 @@ Resets the time part of the provided date to 00:00:00
 
 **Example**:
 ~~~js
-// 29 June, 2019 14:30:10 -> 29 June, 2019 00:00:00
-var date = gantt.date.date_part(new Date(2019, 05, 29, 14, 30, 10));
+// 29 June, 2027 14:30:10 -> 29 June, 2027 00:00:00
+const dateWithoutTime = gantt.date.date_part(new Date(2027, 5, 29, 14, 30, 10));
 ~~~
 
 ---
 
-#### date_to_str(format, utc)
+#### `date_to_str(format, utc)`
 Returns a function that converts a Date object to a string of the specified format
 
 **Parameters**:
-- `format` - (string) - The date format (see guides/date-format.md)
+- `format` - (string) - The date format (see [Date Format Specification](guides/date-format.md))
 - `utc` - (boolean, optional) - Whether to convert to UTC
 
 **Returns**: Function - The formatting function
 
 **Example**:
 ~~~js
-var formatFunc = gantt.date.date_to_str("%d/%m/%Y");
-var date = formatFunc(new Date(2019, 05, 29)); // -> "29/06/2019"
+const formatDate = gantt.date.date_to_str("%d/%m/%Y");
+const formattedDate = formatDate(new Date(2027, 5, 29)); // -> "29/06/2027"
 ~~~
 
 ---
 
-#### day_start(date)
-Resets the time part of the provided date to 00:00:00 (alias of date_part)
+#### `day_start(date)`
+Resets the time part of the provided date to 00:00:00 (alias of `date_part()`)
 
 **Parameters**:
 - `date` - (Date) - The date object to format
@@ -125,13 +125,13 @@ Resets the time part of the provided date to 00:00:00 (alias of date_part)
 
 **Example**:
 ~~~js
-// 29 June, 2019 14:30:10 -> 29 June, 2019 00:00:00
-var date = gantt.date.day_start(new Date(2019, 05, 29, 14, 30, 10));
+// 29 June, 2027 14:30:10 -> 29 June, 2027 00:00:00
+const dayStart = gantt.date.day_start(new Date(2027, 5, 29, 14, 30, 10));
 ~~~
 
 ---
 
-#### getISOWeek(date)
+#### `getISOWeek(date)`
 Returns the ISO-8601 week number of the date (weeks start on Monday)
 
 **Parameters**:
@@ -141,12 +141,12 @@ Returns the ISO-8601 week number of the date (weeks start on Monday)
 
 **Example**:
 ~~~js
-var week = gantt.date.getISOWeek(new Date(2019, 05, 29)); // ->26
+const isoWeek = gantt.date.getISOWeek(new Date(2027, 5, 29)); // ->26
 ~~~
 
 ---
 
-#### getUTCISOWeek(date)
+#### `getUTCISOWeek(date)`
 Returns the week number of the date after converting to UTC
 
 **Parameters**:
@@ -156,13 +156,13 @@ Returns the week number of the date after converting to UTC
 
 **Example**:
 ~~~js
-var week = gantt.date.getUTCISOWeek(new Date(2019, 05, 29)); // ->26
+const utcIsoWeek = gantt.date.getUTCISOWeek(new Date(2027, 5, 29)); // ->26
 ~~~
 
 ---
 
-#### getWeek(date)
-Returns the week number of the date (week start depends on gantt.config.start_on_monday)
+#### `getWeek(date)`
+Returns the week number of the date (week start depends on `gantt.config.start_on_monday`)
 
 **Parameters**:
 - `date` - (Date) - The date object
@@ -174,13 +174,13 @@ Returns the week number of the date (week start depends on gantt.config.start_on
 // weeks start on Sunday
 gantt.config.start_on_monday = false;
 
-var isoWeek = gantt.date.getISOWeek(new Date(2019, 2, 25)); // ->12
-var week = gantt.date.getWeek(new Date(2019, 2, 25)); // ->13
+const isoWeek = gantt.date.getISOWeek(new Date(2027, 2, 25)); // ->12
+const week = gantt.date.getWeek(new Date(2027, 2, 25)); // ->13
 ~~~
 
 ---
 
-#### month_start(date)
+#### `month_start(date)`
 Returns the first day of the month with time reset to 00:00:00
 
 **Parameters**:
@@ -190,15 +190,15 @@ Returns the first day of the month with time reset to 00:00:00
 
 **Example**:
 ~~~js
-// 29 June, 2019 14:30 -> 01 June, 2019 00:00
-var firstDay = gantt.date.month_start(new Date(2019, 05, 29, 14, 30));
+// 29 June, 2027 14:30 -> 01 June, 2027 00:00
+const firstDayOfMonth = gantt.date.month_start(new Date(2027, 5, 29, 14, 30));
 ~~~
 
 ---
 
-#### parseDate(date, format)
+#### `parseDate(date, format)`
 
-Converts a date string to a Date object. This method is called during [gantt.load()](api/method/load.md) and [gantt.parse()](api/method/parse.md) to parse task and link date properties.
+Converts a date string to a Date object. This method is called during [`load()`](api/method/load.md) and [`parse()`](api/method/parse.md) to parse task and link date properties.
 
 **Parameters**:
 - `date` - (string) - The date string to parse
@@ -208,46 +208,46 @@ Converts a date string to a Date object. This method is called during [gantt.loa
 
 **Parsing logic** (since v9.1.3):
 
-1. **ISO 8601 check** - if the string matches an ISO 8601 pattern (e.g. `"2026-01-06"`, `"2026-01-06T10:30:00Z"`), it is parsed directly and `format` is not consulted. If the user has explicitly overridden `gantt.templates.parse_date`, ISO auto-detection is skipped and the user's function handles all parsing.
-2. **`format` argument** - if provided as a string, it is converted to a parser function via `gantt.date.str_to_date(format)`; if provided as a function, it is called directly
-3. **Fallback** - if no `format` is provided, the [parse_date](api/template/parse_date.md) template is used
+1. **ISO 8601 check** - if the string matches an ISO 8601 pattern (e.g. `"2027-01-06"`, `"2027-01-06T10:30:00Z"`), it is parsed directly and `format` is not consulted. If the user has explicitly overridden the `parse_date` template, ISO auto-detection is skipped and the user's function handles all parsing.
+2. **`format` argument** - if provided as a string, it is converted to a parser function via `str_to_date()`; if provided as a function, it is called directly
+3. **Fallback** - if no `format` is provided, the [`parse_date`](api/template/parse_date.md) template is used
 
 **Examples**:
 ~~~js
 // with an explicit format string
-var date = gantt.date.parseDate("29/06/2019", "%d/%m/%Y");
-// -> 29 June, 2019 00:00:00
+const parsedDate = gantt.date.parseDate("29/06/2027", "%d/%m/%Y");
+// -> 29 June, 2027 00:00:00
 
 // ISO string - parsed automatically, format is ignored
-var date2 = gantt.date.parseDate("2026-01-06T10:30:00Z");
-// -> 6 January, 2026 10:30:00 UTC
+const parsedIsoDate = gantt.date.parseDate("2027-01-06T10:30:00Z");
+// -> 6 January, 2027 10:30:00 UTC
 
 // with a custom parser function
-var date3 = gantt.date.parseDate("Jan 6, 2026", function(str) {
+const parsedCustomDate = gantt.date.parseDate("Jan 6, 2027", (str) => {
     return new Date(str);
 });
 ~~~
 
 ---
 
-#### str_to_date(format, utc)
+#### `str_to_date(format, utc)`
 Returns a function that converts a string to a Date object
 
 **Parameters**:
-- `format` - (string) - The date format (see guides/date-format.md)
+- `format` - (string) - The date format (see [Date Format Specification](guides/date-format.md))
 - `utc` - (boolean, optional) - Whether to convert to UTC
 
 **Returns**: Function - The parsing function
 
 **Example**:
 ~~~js
-var formatFunc = gantt.date.str_to_date("%d/%m/%Y");
-var date = formatFunc("29/06/2019"); // -> 29 June, 2019 00:00:00
+const parseDate = gantt.date.str_to_date("%d/%m/%Y");
+const parsedDate = parseDate("29/06/2027"); // -> 29 June, 2027 00:00:00
 ~~~
 
 ---
 
-#### time_part(date)
+#### `time_part(date)`
 Returns the time as seconds since midnight
 
 **Parameters**:
@@ -257,12 +257,12 @@ Returns the time as seconds since midnight
 
 **Example**:
 ~~~js
-var time = gantt.date.time_part(new Date(2019, 05, 29, 14, 30, 10));
+const secondsSinceMidnight = gantt.date.time_part(new Date(2027, 5, 29, 14, 30, 10));
 ~~~
 
 ---
 
-#### to_fixed(num)
+#### `to_fixed(num)`
 Adds leading zero to numbers < 10
 
 **Parameters**:
@@ -272,13 +272,13 @@ Adds leading zero to numbers < 10
 
 **Example**:
 ~~~js
-var num1 = gantt.date.to_fixed(2); // ->"02"
-var num2 = gantt.date.to_fixed(10); // ->10
+const paddedNumber = gantt.date.to_fixed(2); // ->"02"
+const unchangedNumber = gantt.date.to_fixed(10); // ->10
 ~~~
 
 ---
 
-#### minute_start(date)
+#### `minute_start(date)`
 Resets seconds to 00
 
 **Parameters**:
@@ -288,13 +288,13 @@ Resets seconds to 00
 
 **Example**:
 ~~~js
-// 29 June, 2019 14:30:10 -> 29 June, 2019 14:30:00
-var date = gantt.date.minute_start(new Date(2019, 05, 29, 14, 30, 10));
+// 29 June, 2027 14:30:10 -> 29 June, 2027 14:30:00
+const minuteStart = gantt.date.minute_start(new Date(2027, 5, 29, 14, 30, 10));
 ~~~
 
 ---
 
-#### hour_start(date)
+#### `hour_start(date)`
 Resets minutes and seconds to 00
 
 **Parameters**:
@@ -304,13 +304,13 @@ Resets minutes and seconds to 00
 
 **Example**:
 ~~~js
-// 29 June, 2019 14:30:10 -> 29 June, 2019 14:00:00
-var date = gantt.date.hour_start(new Date(2019, 05, 29, 14, 30, 10));
+// 29 June, 2027 14:30:10 -> 29 June, 2027 14:00:00
+const hourStart = gantt.date.hour_start(new Date(2027, 5, 29, 14, 30, 10));
 ~~~
 
 ---
 
-#### week_start(date)
+#### `week_start(date)`
 Returns the first day of the week with time reset to 00:00:00
 
 **Parameters**:
@@ -320,13 +320,13 @@ Returns the first day of the week with time reset to 00:00:00
 
 **Example**:
 ~~~js
-// 29 June, 2019 14:30 -> 24 June, 2019 00:00
-var weekStart = gantt.date.week_start(new Date(2019, 05, 29, 14, 30));
+// 29 June, 2027 14:30 -> 28 June, 2027 00:00
+const weekStart = gantt.date.week_start(new Date(2027, 5, 29, 14, 30));
 ~~~
 
 ---
 
-#### quarter_start(date)
+#### `quarter_start(date)`
 Returns the first month of the quarter with time reset to 00:00:00
 
 **Parameters**:
@@ -336,13 +336,13 @@ Returns the first month of the quarter with time reset to 00:00:00
 
 **Example**:
 ~~~js
-// 29 June, 2019 14:30:10 -> 01 April, 2019 00:00:00
-var date = gantt.date.quarter_start(new Date(2019, 05, 29, 14, 30, 10));
+// 29 June, 2027 14:30:10 -> 01 April, 2027 00:00:00
+const quarterStart = gantt.date.quarter_start(new Date(2027, 5, 29, 14, 30, 10));
 ~~~
 
 ---
 
-#### year_start(date)
+#### `year_start(date)`
 Returns the first day of the year with time reset to 00:00:00
 
 **Parameters**:
@@ -352,6 +352,6 @@ Returns the first day of the year with time reset to 00:00:00
 
 **Example**:
 ~~~js
-// 29 June, 2019 14:30 -> 01 January, 2019 00:00
-var yearStart = gantt.date.year_start(new Date(2019, 05, 29, 14, 30));
+// 29 June, 2027 14:30 -> 01 January, 2027 00:00
+const yearStart = gantt.date.year_start(new Date(2027, 5, 29, 14, 30));
 ~~~
