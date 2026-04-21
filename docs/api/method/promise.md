@@ -17,17 +17,18 @@ description: "Promise object constructor"
 - `executor` - (required) *function* - a callback used to initialize the promise
 
 ### Returns
-- ` promise` - (object) - the promise object
+
+- `promise` - (object) - the promise object
 
 ### Example
 
 ~~~jsx
-new gantt.Promise(function(resolve, reject) {
-    setTimeout(function(){
+new gantt.Promise((resolve, reject) => {
+    setTimeout(() => {
         resolve();
     }, 5000);
-}).then(function(){
-    alert("Resolved")
+}).then(() => {
+    alert("Resolved");
 });
 ~~~
 
