@@ -35,22 +35,20 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
-This config is defined in the **auto_scheduling** extension, so you need to activate the [auto_scheduling](guides/extensions-list.md#autoscheduling) plugin. Read the details in the [Auto Scheduling](guides/auto-scheduling.md) article. 
+이 구성은 **auto_scheduling** 확장에 정의되어 있으므로 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인을 활성화해야 합니다. 자세한 내용은 [Auto Scheduling](guides/auto-scheduling.md) 문서를 참조하십시오.
 :::
 
-While `auto_scheduling` config can be set as a boolean, usage of the object definition is the recommended approach for configuring the auto-scheduling behavior. 
+`auto_scheduling` 구성을 불리언으로 설정하는 것도 가능하지만, 객체 정의를 사용하는 것이 자동 스케줄링 동작을 구성하는 권장 방법입니다.
 
-
-When set as an object, the following options are available:
-
+객체로 설정할 때 사용 가능한 옵션은 다음과 같습니다:
 
 #### enabled
 
-**Type**: boolean
+**타입**: boolean
 
-**Default**: `false`
+**기본값**: `false`
 
-Turns auto-scheduling on or off (same as using a boolean value directly).
+자동 스케줄링을 켜거나 끕니다(직접 불리언 값을 사용하는 것과 동일합니다).
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -60,11 +58,11 @@ gantt.config.auto_scheduling = {
 
 #### apply_constraints
 
-**Type**: boolean
+**타입**: boolean
 
-**Default**: `true`
+**기본값**: `true`
 
-Enables or disables usage of time constraints for auto scheduling.
+자동 스케줄링에서 시간 제약의 사용 여부를 활성화하거나 비활성화합니다.
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -73,30 +71,29 @@ gantt.config.auto_scheduling = {
 };
 ~~~
 
-Setting the value to `false` switches auto scheduling to the mode that ignores constraints associated with tasks (e.g. ASAP, ALAP, SNET, etc.) and scheduling depends solely on task dependencies.
+값을 `false`로 설정하면 제약 조건을 무시하는 모드로 자동 스케줄링이 전환되고, 작업 간의 의존성에만 스케줄링이 의존하게 됩니다.
 
-This property replaces the deprecated [](api/config/auto_scheduling_compatibility.md) setting.
+이 속성은 더 이상 사용되지 않는 [](api/config/auto_scheduling_compatibility.md) 설정을 대체합니다.
 
-- [Basic Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
-- [Constraint Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+- Basic Scheduling
+- Constraint Scheduling
 
 <span id="gapbehavior"></span>
 
 #### gap_behavior
 
-**Type**: String
+**타입**: 문자열
 
-**Allowed values**: `"preserve"`|`"compress"`
+**허용 값**: `"preserve"`|`"compress"`
 
-**Default**: `"preserve"`
+**기본값**: `"preserve"`
 
+스케줄링 중 의존 관계가 있는 작업들 간의 간격을 Gantt가 처리하는 방식을 정의합니다.
 
-Defines how Gantt handles gaps between dependent tasks during scheduling.
+- **"preserve"** - 충돌이 없으면 현재 위치에 작업을 유지
+- **"compress"** - 제약 가능 시점에 가장 이른 날짜로(또는 `schedule_from_end`가 활성화된 경우 가장 늦은 날짜로) 이동
 
-- **"preserve"** - keeps tasks in their current positions if there are no conflicts
-- **"compress"** - moves tasks to the earliest allowed date (or latest if `schedule_from_end` is enabled)
-
-By default, tasks are only rescheduled when their current date violates a constraint or dependency. 
+기본적으로 현재 날짜가 제약 조건이나 의존성을 위반할 때만 재스케줄됩니다.
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -110,13 +107,13 @@ gantt.config.auto_scheduling = {
 
 #### descendant_links
 
-**Type**: boolean
+**타입**: boolean
 
-**Default**: `false`
+**기본값**: `false`
 
-Allows or forbids creating links between parent tasks (projects) and their subtasks.
+상위 작업(프로젝트)과 하위 작업 간의 링크 생성을 허용하거나 금지합니다.
 
-By default, such links can't be created.
+기본적으로 이러한 링크는 생성될 수 없습니다.
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -126,14 +123,13 @@ gantt.config.auto_scheduling = {
 };
 ~~~
 
-
 #### schedule_on_parse
 
-**Type**: boolean
+**타입**: boolean
 
-**Default**: `true`
+**기본값**: `true`
 
-Defines whether Gantt will do auto-scheduling on data loading/parsing.
+데이터 로딩/파싱 시 자동 스케줄링을 수행할지 여부를 정의합니다.
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -144,24 +140,20 @@ gantt.config.auto_scheduling = {
 
 #### move_projects
 
-**Type**: boolean
+**타입**: boolean
 
-**Default**: `true`
+**기본값**: `true`
 
-By default (when the property is set to *true*), the whole project is moved during auto scheduling. It means that all tasks in the project remain on their places
-relative to each other and the beginning of the project.
+기본적으로(속성이 *true*로 설정된 경우), 자동 스케줄링 중 전체 프로젝트가 이동합니다. 이는 프로젝트 내 모든 작업이 서로의 위치와 프로젝트 시작 위치를 기준으로 제자리에 남아 있음을 의미합니다.
 
 ![moving_project_true](/img/moving_project_true.png)
 
-
-If the *move_projects* property is set to *false*, auto scheduling will move separate tasks inside of the project. Thus, some tasks will be moved, others will
-remain on their places.
+*move_projects* 속성이 *false*로 설정되면, 자동 스케줄링은 프로젝트 내부의 개별 작업을 이동시킵니다. 이로 인해 일부 작업은 이동하고 다른 작업은 제자리에 남아 있습니다.
 
 ![moving_project_false](/img/moving_project_false.png)
 
-
 :::note
-If you use the constraint scheduling (*apply_constraints: true*), the *move_projects* config will be active only when the `gap_behavior` property is set to "preserve"`:
+제약 조건 스케줄링(*apply_constraints: true*)을 사용하는 경우, `gap_behavior` 속성이 "preserve"로 설정될 때에만 *move_projects* 구성이 활성화됩니다:
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -175,11 +167,11 @@ gantt.config.auto_scheduling = {
 
 #### use_progress
 
-**Type**: boolean
+**타입**: boolean
 
-**Default**: `false`
+**기본값**: `false`
 
-Specifies whether completed tasks should affect scheduling and critical path calculations.
+완료된 작업이 스케줄링 및 중요 경로 계산에 영향을 미치도록 할지 여부를 지정합니다.
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -188,27 +180,27 @@ gantt.config.auto_scheduling = {
 };
 ~~~
 
-When the property is enabled, the critical path, slack, and auto scheduling algorithms will take the value of the task progress into account, similar to how these methods work in MS Project, namely:
+해당 속성이 활성화되면, MS Project에서와 유사하게 작업 진행률 값을 고려하여 임계 경로, 여유 시간, 자동 스케줄링 알고리즘이 동작합니다. 구체적으로는:
 
-1) Completed tasks (completed tasks - the tasks with 100% progress) always have zero slack;
+1) 완료된 작업(진행률이 100%인 작업)은 항상 여유 시간이 0입니다.
 
-2) Completed tasks are excluded from the auto scheduling calculations. Relations that connect predecessors to completed tasks are ignored;
+2) 완료된 작업은 자동 스케줄링 계산에서 제외되며, 선행 작업에서 완료된 작업으로 연결되는 관계는 무시됩니다.
 
-3) Completed tasks can't be critical.
+3) 완료된 작업은 중요 경로의 구성요소가 될 수 없습니다.
 
 - [Use progress for auto-scheduling, critical path and slack calculations](https://snippet.dhtmlx.com/ju3km1uy)
 
 #### schedule_from_end
 
-**Type**: boolean
+**타입**: boolean
 
-**Default**: `false`
+**기본값**: `false`
 
-Enables backward scheduling.
+역방향 스케줄링을 활성화합니다.
 
-Setting this config to `true` will switch auto scheduling to the `as late as possible` mode.
+이 구성을 `true`로 설정하면 auto scheduling이 `as late as possible` 모드로 전환됩니다.
 
-The value will be only applied if [](api/config/project_end.md) is specified as well. 
+해당 값은 [](api/config/project_end.md)도 함께 지정된 경우에만 적용됩니다.
 
 ~~~jsx
 gantt.config.project_end = new Date(2025, 10, 1);
@@ -222,11 +214,11 @@ gantt.config.auto_scheduling = {
 
 #### project_constraint
 
-**Type**: boolean
+**타입**: boolean
 
-**Default**: `false`
+**기본값**: `false`
 
-Defines whether tasks should inherit the constraint type from their parent project.
+작업이 상위 프로젝트의 제약 유형을 상속받을지 여부를 정의합니다.
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -235,22 +227,21 @@ gantt.config.auto_scheduling = {
 };
 ~~~
 
-By default, the constraint type of the parent project doesn't affect the constraint type of its nested tasks.
+기본적으로 상위 프로젝트의 제약 유형은 하위 작업의 제약 유형에 영향을 주지 않습니다.
 
-If you set the config to *true*, the child tasks (except for tasks with their own constraint type) will have the same constraint type as their parent project (for example, **finish no later than**).
+구성을 *true*로 설정하면(자체 제약 유형이 있는 작업은 예외), 자식 작업은 상위 프로젝트와 같은 제약 유형을 갖게 됩니다(예: **finish no later than**).
 
 - [Constraint Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 #### show_constraints
 
-**Type**: boolean
+**타입**: boolean
 
-**Default**: `false`
+**기본값**: `false`
 
-Controls the display of task constraints on the Gantt chart.
-Set to `true` to display constraints or `false` to hide them.
+Gantt 차트에서 작업 제약 조건의 표시를 제어합니다. 제약 조건을 표시하려면 `true`, 숨기려면 `false`를 설정합니다.
 
-For example, to enable auto-scheduling but disable the display of task constraints:
+예를 들어 자동 스케줄링을 활성화하되 작업 제약 조건의 표시를 비활성화하려면:
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -285,5 +276,5 @@ gantt.init("gantt_here");
 - [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
-- since v9.1, using the object configuration for `auto_scheduling` is the recommended approach
-- Can be set as an object since v9.0
+- 버전 9.1부터 `auto_scheduling`에 객체 설정을 사용하는 것이 권장됩니다.
+- 버전 9.0부터 객체로 설정할 수 있습니다.
