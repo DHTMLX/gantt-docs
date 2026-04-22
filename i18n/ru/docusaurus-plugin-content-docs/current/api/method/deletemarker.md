@@ -1,6 +1,6 @@
 ---
 sidebar_label: deleteMarker
-title: deleteMarker method
+title: deleteMarker метод
 description: "удаляет указанный маркер"
 ---
 
@@ -14,7 +14,7 @@ description: "удаляет указанный маркер"
 
 ### Parameters
 
-- `markerId` - (required) *string | number* -    идентификатор маркера
+- `markerId` - (required) *string | number* - идентификатор маркера
 
 ### Example
 
@@ -33,7 +33,7 @@ gantt.deleteMarker(todayMarker);/*!*/
 ### Details
 
 :::note
- Этот метод является частью расширения **marker**, поэтому убедитесь, что плагин [marker](guides/extensions-list.md#verticalmarker) включён. Подробнее об этом можно узнать в статье [Добавление вертикальных маркеров](guides/markers.md). 
+Этот метод определён в расширении **marker**, поэтому нужно включить плагин [marker](guides/extensions-list.md#vertical-marker). Подробности см. в статье [Adding Vertical Markers](guides/markers.md).
 :::
 
 ### Related API
@@ -44,5 +44,4 @@ gantt.deleteMarker(todayMarker);/*!*/
 - [show_markers](api/config/show_markers.md)
 
 ### Related Guides
-- [Добавление вертикальных маркеров](guides/markers.md)
-
+- [Adding Vertical Markers](guides/markers.md)

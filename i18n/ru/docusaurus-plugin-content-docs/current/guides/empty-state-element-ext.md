@@ -1,27 +1,27 @@
 ---
-title: "emptyStateElement Extension"
-sidebar_label: "emptyStateElement Extension"
+title: "Расширение emptyStateElement"
+sidebar_label: "Расширение emptyStateElement"
 ---
 
-# emptyStateElement Extension
+# Расширение emptyStateElement
 
-Более подробную информацию об расширении emptyStateElement вы можете найти в статье [Экран пустого состояния](guides/empty-state-screen.md).
+Подробнее об расширении emptyStateElement в статье [Экран пустого состояния](guides/empty-state-screen.md).
 
 ## Методы
 
-Объект **gantt.ext.emptyStateElement** предоставляет следующие методы:
+Следующие методы доступны через объект **gantt.ext.emptyStateElement**:
 
-- <span class="submethod">**isGanttEmpty (): boolean**</span> - возвращает *true*, если в диаграмму Gantt не загружены данные, и *false* в противном случае. Этот метод помогает определить, нужно ли отображать "пустое состояние" на странице. Его можно переопределить, если требуется изменить стандартное поведение.
-- <span class="submethod">**isEnabled (): boolean**</span> - возвращает *true*, если свойство [show_empty_state](api/config/show_empty_state.md) включено; иначе возвращает *false*.
-- <span class="submethod">**renderContent (container): void**</span> - вставляет HTML-контент в элемент пустого состояния. При необходимости этот метод можно переопределить.
-    - **_container_** - (*HTMLElement*) - элемент, в который будет добавлен контент
-- <span class="submethod">**getContainer (): HTMLElement | null**</span> - возвращает DOM-элемент, в который будет добавлено пустое состояние. По умолчанию возвращает элемент грида (поэтому "пустое состояние" появляется в гриде). Если грид недоступен, возвращает элемент временной шкалы (тогда "пустое состояние" отображается на временной шкале). Этот метод можно переопределить.
-- <span class="submethod">**getNode (): HTMLElement | null**</span> - возвращает DOM-узел, представляющий элемент пустого состояния.
-- <span class="submethod">**show (): null | void**</span> - отображает "пустое состояние". Возвращает *null*, если контейнер для Empty State Element отсутствует. Этот метод вызывается автоматически расширением.
-- <span class="submethod">**hide (): boolean | void**</span> - скрывает "пустое состояние". Возвращает *false*, если узел Empty State Element не существует, то есть нечего скрывать. Этот метод также вызывается автоматически расширением.
-- <span class="subproperty">**clickEvents?**</span> -  (*Array&lt;string&gt;*) - содержит идентификаторы присоединённых обработчиков событий. Обновляется методами *attachAddTaskEvent* и *detachAddTaskEvents*.
-- <span class="submethod">**attachAddTaskEvent (): void**</span> - добавляет обработчик, который срабатывает при клике по Empty State Element. По умолчанию используется для добавления новой задачи.
-- <span class="submethod">**detachAddTaskEvents (): void**</span> - удаляет обработчики, которые были назначены для добавления задачи при клике по Empty State Element.
+- <span class="submethod">**isGanttEmpty (): boolean**</span> - возвращает *true*, если данные не загружены в диаграмму Gantt, иначе - возвращает *false*. Расширение использует этот метод для определения того, следует ли отображать на странице пустое состояние. Вы можете переопределить метод, если нужно изменить поведение по умолчанию.
+- <span class="submethod">**isEnabled (): boolean**</span> - возвращает *true*, если свойство [show_empty_state](api/config/show_empty_state.md) включено, иначе - возвращает *false*
+- <span class="submethod">**renderContent (container): void**</span> - помещает HTML-контент в элемент пустого состояния. Метод может быть переопределён.
+    - **_container_** - (*HTMLElement*) - элемент контейнера
+- <span class="submethod">**getContainer (): HTMLElement | null**</span> - возвращает DOM-элемент, к которому будет прикреплено пустое состояние. По умолчанию возвращает элемент грида (пустое состояние будет отображаться в гриде). Если грида нет, возвращает элемент таймлайна (пустое состояние будет отображаться в таймлайне). Метод может быть переопределён.
+- <span class="submethod">**getNode (): HTMLElement | null**</span> - возвращает DOM-узел элемента пустого состояния
+- <span class="submethod">**show (): null | void**</span> - отображает «пустое состояние». Возвращает *null*, если для Элемента пустого состояния нет контейнера. Расширение вызывает метод самостоятельно
+- <span class="submethod">**hide (): boolean | void**</span> - скрывает «пустое состояние». Возвращает *false*, если узла элемента пустого состояния нет, поэтому скрывать нечего. Расширение вызывает метод самостоятельно
+- <span class="subproperty">**clickEvents?**</span> -  (*Array&lt;string&gt;*) - массив с идентификаторами подключённых обработчиков. Он изменяется методами *attachAddTaskEvent* и *detachAddTaskEvents*
+- <span class="submethod">**attachAddTaskEvent (): void**</span> - добавляет обработчик, который будет срабатывать после клика по Элементу пустого состояния. По умолчанию используется для добавления новой задачи.
+- <span class="submethod">**detachAddTaskEvents (): void**</span> - удаляет обработчики, которые использовались для добавления задачи после клика по Элементу пустого состояния
 
 ## Пример
 

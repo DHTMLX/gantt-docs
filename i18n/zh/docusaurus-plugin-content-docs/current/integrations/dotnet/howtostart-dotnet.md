@@ -3,58 +3,61 @@ title: "dhtmlxGantt 与 ASP.NET MVC"
 sidebar_label: "ASP.NET MVC"
 ---
 
-# dhtmlxGantt 与 ASP.NET MVC 
+# dhtmlxGantt 与 ASP.NET MVC
 
-本教程将为您提供一个清晰、循序渐进的指南，介绍如何使用 [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) 和服务器端 REST API 创建甘特图。
+本教程将逐步引导您在服务器端使用 ASP.NET 和 REST API 构建甘特图应用。
 
-如果您需要其他服务器端集成方案，可以参考以下教程:
+您也可以通过下列教程之一，了解 Gantt 的其他服务器端集成方式：
 
-- [dhtmlxGantt와 ASP.NET Core 사용하기](integrations/dotnet/howtostart-dotnet-core.md)
-- [dhtmlxGantt와 Node.js 연동하기](integrations/node/howtostart-nodejs.md)
-- [dhtmlxGantt와 Python](integrations/other/howtostart-python.md)
-- [dhtmlxGantt와 PHP: Laravel 연동](integrations/php/howtostart-php-laravel.md)
-- [dhtmlxGantt와 PHP:Slim 연동하기](integrations/php/howtostart-php-slim4.md)
-- [dhtmlxGantt와 Salesforce LWC 연동하기](integrations/salesforce/howtostart-salesforce.md)
-- [dhtmlxGantt와 Ruby on Rails 연동하기](integrations/other/howtostart-ruby.md)
+- [dhtmlxGantt 与 ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
+- [dhtmlxGantt 与 Node.js](integrations/node/howtostart-nodejs.md)
+- [dhtmlxGantt 与 Python](integrations/other/howtostart-python.md)
+- [dhtmlxGantt 与 PHP: Laravel](integrations/php/howtostart-php-laravel.md)
+- [dhtmlxGantt 与 PHP:Slim](integrations/php/howtostart-php-slim4.md)
+- [dhtmlxGantt 与 Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
+- [dhtmlxGantt 与 Ruby on Rails](integrations/other/howtostart-ruby.md)
 
-本示例使用 ASP.NET MVC 5 框架及 Web API 2 控制器来构建甘特图应用的 REST API。[Entity Framework](https://learn.microsoft.com/en-us/aspnet/entity-framework) 用于管理数据库交互。开发工作将在 Visual Studio IDE 中进行。
+我们将使用 ASP.NET MVC 5 Web 平台和 Web API 2 控制器来实现一个 REST API，以创建一个 Gantt 应用程序。
+
+为了与数据库进行通信的组织，我们将使用 [Entity Framework](https://learn.microsoft.com/en-us/aspnet/entity-framework)。我们将借助 Visual Studio IDE 构建我们的应用程序。
 
 :::note
-完整源代码已[发布在 GitHub](https://github.com/DHTMLX/gantt-howto-dotnet)。
+完整的源代码可以在 [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet) 上获取。
 :::
 
-## 步骤 1. 创建项目
+## Step 1. 创建一个项目
 
-### 创建新的 Visual Studio 项目
+### 创建一个新的 Visual Studio 项目
 
 启动 Visual Studio 2022，选择 *Create a new project*。
 
 ![how_to_start_net_create_project](/img/how_to_start_net_create_project.png)
 
-然后选择 "ASP.NET Web Application"，并命名为 *DHX.Gantt.Web*。如果未找到该模板，请参考 [Troubleshooting](#troubleshooting) 部分。
+接着选择 "ASP.NET Web Application" 并将其命名为 *DHX.Gantt.Web*。如果找不到所需的模板，请参阅 [故障排除](#trouble-shooting) 章节。
 
 ![how_to_start_net_project_template](/img/how_to_start_net_project_template.png)
 
 ![how_to_start_net_configure_project](/img/how_to_start_net_configure_project.png)
 
-选择 *Empty* 项目模板，并确保勾选 MVC 和 Web API 选项。
+在可用模板中选择一个 *Empty*，并勾选模板列表旁的 MVC 和 Web API 复选框。
 
 ![how_to_start_net_app](/img/how_to_start_net_app.png)
 
-## 步骤 2. 将 Gantt 添加到页面
+## Step 2. 将 Gantt 添加到页面
 
 ### 创建控制器
 
-项目创建完成后，下一步是添加一个 MVC 控制器，用于显示甘特图页面。
+现在我们有一个空项目，一切就绪，可以实现我们的 gantt。
 
-右键点击 Controllers 文件夹，选择 Add->Controller，然后选择 MVC 5 Controller -> Empty。将新控制器命名为 "HomeController"。
+首先，我们将添加一个 MVC 控制器，用于显示带有甘特图的页面。
+
+要创建它，请为 Controllers 文件夹调用上下文菜单，选择 Add->Controller。在打开的窗口中选择 MVC 5 Controller -> Empty，并将新添加的控制器命名为 "HomeController"。
 
 ![how_to_start_net_controller](/img/how_to_start_net_controller.png)
 
-HomeController 默认包含 *Index()* 方法（继承自 *ActionResult* 类），因此无需添加额外逻辑。接下来将为该方法添加视图。
+HomeController 默认具有 *Index()* 方法（返回 ActionResult 类），因此不需要额外的逻辑。我们只需要为它添加一个视图。
 
-**Controllers/HomeController.cs**
-~~~js
+~~~js title="Controllers/HomeController.cs"
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,13 +79,13 @@ namespace DHX.Gantt.Web.Controllers
 
 ### 创建视图
 
-接下来创建首页。进入 Views/Home 文件夹，添加一个名为 Index 的空视图:
+现在是时候创建我们的索引页了。进入 Views/Home 并添加一个名为 Index 的空视图：
 
 ![how_to_start_net_view](/img/how_to_start_net_view.png)
 
-打开该视图，插入以下代码:
-**Views/Home/Index.cshtml**
-~~~html
+打开新创建的视图，在其中放入以下代码：
+
+~~~html title="Views/Home/Index.cshtml"
 @{
     Layout = null;
 }
@@ -98,18 +101,18 @@ namespace DHX.Gantt.Web.Controllers
     <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
-            // specifying the date format
+            // 指定日期格式
             gantt.config.date_format = "%Y-%m-%d %H:%i";
-            // initializing gantt
+            // 初始化 gantt
             gantt.init("gantt_here");
     
-            // initiating data loading
+            // 开始数据加载
             gantt.load("/api/data");
-            // initializing dataProcessor
+            // 初始化 dataProcessor
             var dp = new gantt.dataProcessor("/api/");
-            // and attaching it to gantt
+            // 将其附加到 gantt
             dp.init(gantt);
-            // setting the REST mode for dataProcessor
+            // 为 dataProcessor 设置 REST 模式
             dp.setTransactionMode("REST");
         });
     </script>
@@ -120,25 +123,23 @@ namespace DHX.Gantt.Web.Controllers
 </html>
 ~~~
 
-上述代码实现了以下功能:
+我们在这里完成了以下工作：
 
-- 为甘特图应用设置了简单的页面布局
-- 通过 [CDN 链接](guides/cdn-links-list.md) 引入了 dhtmlxGantt 的 JavaScript 和 CSS
-- 在页面上初始化了甘特图
+- 为我们的 gantt 应用定义了一个简单的页面标记
+- 使用 [CDN 链接](guides/cdn-links-list.md) 添加了 dhtmlx gantt 的 js/css 资源
+- 在页面上创建了 gantt
 
-需要注意的是日期格式的配置:
+请注意配置：我们指定了来自数据源的日期格式 [format of dates](api/config/date_format.md)。
 
-**Views/Home/Index.cshtml**
-~~~js
+~~~js title="Views/Home/Index.cshtml"
 gantt.config.date_format = "%Y-%m-%d %H:%i";
 ~~~
 
-这样可以确保客户端能够正确解析从服务器接收到的日期。
+这对于客户端能够解析来自服务器的日期是必需的。
 
-此外，Gantt 配置为与后端 RESTful API 协同工作，使用 ["/api/"](guides/server-side.md#jishushuoming) 作为基础路由:
+另外，我们还告知 gantt 将使用后端的 RESTful API，并将 ["/api/"](guides/server-side.md#technique) 设为默认路由：
 
-**Views/Home/Index.cshtml**
-~~~js
+~~~js title="Views/Home/Index.cshtml"
 gantt.load("/api/data");
 // initializing dataProcessor
 var dp = new gantt.dataProcessor("/api/");
@@ -148,29 +149,27 @@ dp.init(gantt);
 dp.setTransactionMode("REST");
 ~~~
 
-服务器端的实现将在后续介绍。此时，您可以运行应用并看到甘特图出现在页面上。
+服务器端本身将在稍后实现。目前，您可以运行应用程序，查看页面上是否成功渲染了 gantt。
 
 ![adding_gantt](/img/adding_gantt.png)
 
-
-## 步骤 3. 创建模型和数据库
+## Step 3. 创建模型和数据库
 
 ### 创建模型
 
-接下来需要为甘特图定义模型类。数据模型由 [Links 和 Tasks](guides/loading.md#standarddatabasestructure) 组成。
+现在我们应为甘特图定义模型类。一个甘特图数据模型由 [Links 和 Tasks](guides/loading.md#databasestructure) 组成。
 
-dhtmlxGantt 的数据模型命名规范与常规 C# 命名有所不同。有些客户端属性无需存储在数据库中，但会在客户端或后端逻辑中使用。
+正如您所看到的，dhtmlxGantt 使用与 C# 中传统用法不同的命名约定的数据模型。客户端模型也可能包含某些您不需要存储在数据库中的属性，但这些属性将会在客户端或后端逻辑中使用。
 
-为此，将采用 [数据传输对象（DTO）](https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) 模式:领域模型类用于 EF 和内部逻辑，DTO 类用于与 Web API 通信。模型之间将实现映射。
+因此，我们将采用 [Data Transfer Object](https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) 模式：定义将与 EF 与应用程序一起使用的领域模型类，以及用于与 Web API 进行通信的 DTO 类。然后实现两者之间的某种映射。
 
-让我们开始吧！
+让我们开始！
 
 #### Task 模型
 
-首先为 Task 创建一个类，示例如下:
+首先，我们将为 Task 创建一个类。其内容可以类似于下面这样：
 
-**Models/Task.cs**
-~~~js
+~~~js title="Models/Task.cs"
 using System;
 
 namespace DHX.Gantt.Web.Models
@@ -188,15 +187,13 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-Task 对象的全部属性（包括必需和可选项）请参见
-[相关文档](guides/loading.md#task_properties)。
+您可以在文档的 [corresponding article](guides/loading.md#task_properties) 中找到 Task 对象可用的属性的完整列表（包含必需属性和可选属性）。
 
 #### Link 模型
 
-接下来创建 Link 类，如下所示:
+现在是 Link 类的时机，它可能如下所示：
 
-**Models/Link.cs**
-~~~js
+~~~js title="Models/Link.cs"
 namespace DHX.Gantt.Web.Models
 {
     public class Link
@@ -213,9 +210,9 @@ namespace DHX.Gantt.Web.Models
 
 #### 安装 Entity Framework
 
-如前所述，数据库操作将通过 [Entity Framework](https://learn.microsoft.com/en-us/aspnet/entity-framework) 管理。
+如前所述，我们将借助 [Entity Framework](https://learn.microsoft.com/en-us/aspnet/entity-framework) 来与数据库打交道。
 
-在包管理器控制台中运行以下命令进行安装:
+因此，首先需要安装该框架。要执行此操作，需在 Package Manager Console 中运行以下命令：
 
 ~~~js
 Install-Package EntityFramework
@@ -223,12 +220,11 @@ Install-Package EntityFramework
 
 #### 创建数据库上下文
 
-接下来创建数据库上下文。上下文代表与数据库的会话，并负责数据的检索和保存。
+下一步是创建 Context。Context 表示与数据库的一个会话。它允许获取和保存数据。
 
-右键点击 *Models* 文件夹，选择 Add->Class，命名为 "GanttContext"，内容如下:
+为 *Models* 文件夹的上下文菜单调用并选择 Add->Class。新类将被命名为 "GanttContext"，并具有以下内容：
 
-**Models/GanttContext.cs**
-~~~js
+~~~js title="Models/GanttContext.cs"
 using System.Data.Entity;
 
 namespace DHX.Gantt.Web.Models
@@ -243,18 +239,17 @@ namespace DHX.Gantt.Web.Models
 
 #### 向数据库添加初始记录
 
-现在可以向数据库添加一些初始数据。
+现在我们可以向数据库添加一些记录。
 
-Entity Framework 可以在应用首次运行时自动创建数据库。为了确保模型变更时数据库能自动更新，需要配置其在模型更改时删除并重建数据库。
+当应用程序运行时，Entity Framework 可以自动创建数据库。我们应指定在模型更改时应删除并重新创建数据库。
 
-首先创建数据库初始化器。在 *App_Start* 文件夹下添加一个继承自 *DropCreateDatabaseIfModelChanges* 的新类，命名为 "GanttInitializer"。
+首先，我们应创建一个数据库初始化程序。为此，需要在 *App_Start* 文件夹中添加一个新的类，该类将继承自 *DropCreateDatabaseIfModelChanges* 类。将其命名为 "GanttInitializer"。
 
-在该类中重写 *Seed()* 方法以插入测试数据。使用 *Add()* 方法将实体添加到上下文中。
+在该类中，我们将重新定义 *Seed()* 方法以用测试数据填充它。然后我们将使用 *Add()* 方法将实体集合添加到上下文中。
 
-以下为完整的 *GanttInitializer* 类:
+下面给出 *GanttInitializer* 类的完整代码：
 
-**App_Start/GanttInitializer.cs**
-~~~js
+~~~js title="App_Start/GanttInitializer.cs"
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -313,10 +308,9 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-打开 *Global.asax* 文件，该文件包含应用启动时执行的代码。添加所需命名空间，并在 *Application_Start()* 方法中插入以下代码，为上下文设置初始化器:
+打开 *Global.asax* 文件。它包含应用程序启动时运行的代码。为我们的上下文在 *Application_Start()* 方法中添加必要的命名空间与代码行，以设置 Initializer：
 
-**Global.asax.cs**
-~~~js
+~~~js title="Global.asax.cs"
 using System;
 using System.Web;
 using System.Web.Mvc;
@@ -343,15 +337,13 @@ namespace DHX.Gantt.Web
 }
 ~~~
 
+### 定义 DTO 与映射
 
-### 定义 DTO 和映射
+现在是声明将用于 Web API 的 DTO 类的时候。至于模型与 DTO 之间的映射，我们将采用最简单的方式：为这些类定义显式转换运算符。
 
-接下来，将声明用于 Web API 的 DTO 类。为简化操作，将为 Model 和 DTO 类之间的映射定义显式转换操作符。
+TaskDto 类将如下所示：
 
-TaskDto 类的结构如下:
-
-**Models/TaskDto.cs**
-~~~js
+~~~js title="Models/TaskDto.cs"
 using System;
 
 namespace DHX.Gantt.Web.Models
@@ -404,10 +396,9 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-类似地，LinkDto 类的定义如下:
+下面给出 LinkDto 类的代码：
 
-**Models/LinkDto.cs**
-~~~js
+~~~js title="Models/LinkDto.cs"
 namespace DHX.Gantt.Web.Models
 {
     public class LinkDto
@@ -442,10 +433,9 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-为了完成 [数据源](guides/supported-data-formats.md#json) 的数据模型，添加如下类:
+最后，我们再为数据源添加一个模型：
 
-**Models/GanttDto.cs**
-~~~js
+~~~js title="Models/GanttDto.cs"
 using System.Collections.Generic;
 
 namespace DHX.Gantt.Web.Models
@@ -458,25 +448,24 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-## 第 4 步:实现 Web API
+## Step 4. 实现 Web API
 
-### 使用 REST API 加载数据的一般方法
+### 通过 REST API 加载数据的一般技术
 
-下一步是实现 API。
+终于来到实现 API 的阶段。
 
-根据 [API 详情](guides/server-side.md#requestresponsedetails)，需要两个控制器:一个用于任务，一个用于链接。此外，还需要一个单独的控制器来处理"加载数据"操作，因为在这种情况下 gantt 期望 [混合结果](guides/supported-data-formats.md#json)。
+从 [API 的详细信息](guides/server-side.md#requestresponsedetails) 可以看到，我们将需要两个控制器：一个处理任务（Task），一个处理连线（Link）。此外，我们还需要再有一个控制器来实现“加载数据”这一动作，因为 gantt 需要在那里返回一个 [混合结果](guides/supported-data-formats.md)。
+ 
+### Task 控制器
 
-### 任务控制器
+要创建一个新的控制器：
 
-添加新控制器的方法:
+- 为 Controllers 文件夹激活上下文菜单，选择 Add -> Controller。
+- 选择 Web API 2 Controller -> Empty。新控制器将被命名为 "TaskController"。
 
-- 右键点击 Controllers 文件夹，选择 Add -> Controller。
-- 选择 Web API 2 Controller -> Empty，并将新控制器命名为 "TaskController"。
+现在我们需要为任务条目实现基本的 CRUD 操作：
 
-任务条目的基本 CRUD 操作实现如下:
-
-**Controllers/TaskController.cs**
-~~~js
+~~~js title="Controllers/TaskController.cs"
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -566,22 +555,20 @@ namespace DHX.Gantt.Web.Controllers
         }
     }
 }
-
 ~~~
 
-其逻辑如下:
+这里一切都非常直观：
 
-- GET 方法从数据库检索任务，并将其转换为 DTO 表示。
-- PUT 和 POST 方法接收 DTO，将其转换回 Task 模型，并将更改应用到数据库上下文。
+- 在 GET 操作中，我们从数据库加载任务并输出它们的数据传输对象
+- 在 PUT/POST 操作中，我们接收 DTO 作为输入，将其转换为 Task 模型并将更改保存到数据库上下文
 
-对于链接，也采用相同的方法。
+现在让我们对链接（links）做同样的处理。
 
-### 链接控制器
+### Link 控制器
 
-为链接创建一个空的 Web API 控制器，如下所示:
+我们将为链接创建一个空的 Web API 控制器，如下所示：
 
-**Controllers/LinkController.cs**
-~~~js
+~~~js title="Controllers/LinkController.cs"
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -675,10 +662,9 @@ namespace DHX.Gantt.Web.Controllers
 
 ### 数据控制器
 
-最后，添加用于数据操作的控制器:
+最后，我们将为数据操作添加一个控制器：
 
-**Controllers/DataController.cs**
-~~~js
+~~~js title="Controllers/DataController.cs"
 using System.Web.Http;
 
 using DHX.Gantt.Web.Models;
@@ -701,22 +687,21 @@ namespace DHX.Gantt.Web.Controllers
 }
 ~~~
 
-完成上述步骤后，运行应用程序将在页面上显示一个完整可用的甘特图:
+现在一切就绪。运行应用程序，一个功能完整的 Gantt 应用应该会出现在页面上：
 
 ![ready_gantt_dotnet](/img/ready_gantt_dotnet.png)
 
-[已准备好的演示可在 GitHub 查看](https://github.com/DHTMLX/gantt-howto-dotnet)。
+[您可以在 github 上找到现成的示例](https://github.com/DHTMLX/gantt-howto-dotnet)。
 
 ## 错误处理
 
-[异常过滤器](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98))" 提供了一种在 CRUD 处理程序中捕获异常并发送响应的方法，客户端 gantt 可以[解析](guides/server-side.md#cuowuchuli)这些响应。
+[异常筛选器](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v="vs.98))" 可用于在 CRUD 处理程序中捕获异常，并返回客户端可以 [识别](guides/server-side.md#error-handling) 的响应，供前端 gantt 使用。
 
-要在 gantt API 中启用错误处理，请按如下操作:
+要为 gantt 提供错误处理，请按以下步骤操作：
 
-在 *App_Start* 文件夹下添加新类 *GanttAPIExceptionFilterAttribute*:
+进入 *App_Start*，添加一个新类，名为 *GanttAPIExceptionFilterAttribute*：
 
-**App_Start/GanttAPIExceptionFilterAttribute.cs**
-~~~js
+~~~js title="App_Start/GanttAPIExceptionFilterAttribute.cs"
 using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
@@ -740,53 +725,53 @@ namespace DHX.Gantt.Web
 }
 ~~~
 
-然后，将此过滤器应用于 WebAPI 控制器:
+然后我们将把这一类添加到我们的 WebAPI 控制器中：
 
-- 在 Data 控制器中:
-**Controllers/DataController.cs**
-~~~js
+- Data 控制器：
+
+~~~js title="Controllers/DataController.cs"
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]/*!*/
     public class DataController : ApiController
 ~~~
 
-- 在 Link 控制器中:
-**Controllers/LinkController.cs**
-~~~js
+- Link 控制器：
+
+~~~js title="Controllers/LinkController.cs"
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]/*!*/
     public class LinkController : ApiController
 ~~~
 
-- 以及在 Task 控制器中:
-**Controllers/TaskController.cs**
-~~~js
+- 以及 Task 控制器：
+
+~~~js title="Controllers/TaskController.cs"
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]/*!*/
     public class TaskController : ApiController
 ~~~
 
-这样配置后，Web API 处理过程中抛出的任何异常都会导致客户端收到错误状态和消息，可以根据需要进行处理或显示。
+现在如果任何 Web API 控制器在处理请求时抛出异常，
+客户端将收到错误状态以及可被处理或显示给用户的错误信息。
 
-请注意，直接向客户端暴露异常消息在生产环境中可能并不合适。
+请注意，将异常信息返回给客户端在生产环境中可能并非最佳做法。
 
 ## 存储任务顺序 {#storingtheorderoftasks}
 
-客户端 gantt 支持通过拖放方式[重新排序任务](guides/reordering-tasks.md)。使用此功能时，需要将任务顺序保存到数据库。更多细节可参考[此处总述](guides/server-side.md#renwushunxudecunchu)。
+客户端的 gantt 允许使用拖放重新排序任务。因此如果您使用此功能，您需要将此顺序存储在数据库中。您可以在此处查看通用描述（guides/server-side.md#storingtheorderoftasks）。
 
-下一步将是将此功能集成到应用程序中。
+现在让我们将此功能添加到我们的应用中。
 
-### 在客户端启用任务排序
+### 在客户端启用任务重新排序
 
-首先，用户应能够直接在界面中对任务进行排序。
+首先，我们需要允许用户在 UI 中修改任务的顺序。
 
-打开 *Index* 视图，并按如下方式调整 gantt 配置:
+打开 *Index* 视图并更新 gantt 的配置：
 
-**Views/Home/Index.cshtml**
-~~~js
+~~~js title="Views/Home/Index.cshtml"
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
@@ -796,14 +781,13 @@ gantt.config.date_format = "%Y-%m-%d %H:%i";
 gantt.init("gantt_here");
 ~~~
 
-### 将任务顺序添加到模型中
+### 将任务顺序添加到模型
 
-接下来，让我们更新后端以支持这些更改。
+现在，让我们在后端实现这些更改。
 
-任务顺序将存储在名为 SortOrder 的属性中，因此需要相应地更新 *Task* 类:
+我们将把排序存储在名为 SortOrder 的属性中，因此请相应地更新 *Task* 类：
 
-**Models/Task.cs**
-~~~js
+~~~js title="Models/Task.cs"
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -824,12 +808,11 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-*TaskController* 也需要进行一些更新:
+现在需要更新 TaskController，具体如下：
 
-- 发送给客户端的任务应按 SortOrder 值排序:
+- 客户端在接收任务时应按 SortOrder 值排序：
 
-**Controllers/TaskController.cs**
-~~~js
+~~~js title="Controllers/TaskController.cs"
 namespace DHX.Gantt.Web.Controllers
 {
     [GanttAPIExceptionFilter]
@@ -847,10 +830,9 @@ namespace DHX.Gantt.Web.Controllers
         }
 ~~~
 
-- 创建新任务时，分配一个默认的 SortOrder 值:
+- 新任务在创建时应接收默认值 SortOrder： 
 
-**Controllers/TaskController.cs**
-~~~js
+~~~js title="Controllers/TaskController.cs"
 namespace DHX.Gantt.Web.Controllers
 {
     [System.Web.Http.HttpPost]
@@ -871,14 +853,11 @@ namespace DHX.Gantt.Web.Controllers
     }
 ~~~
 
-- 当客户端任务顺序发生变化时，需要更新 SortOrder。
+- 当在客户端修改任务顺序时，SortOrder 应被更新。
 
-当任务被重新排序时，gantt 会触发一个包含新位置的 PUT 请求，其中新位置包含在 ['target'](guides/server-side.md#renwushunxudecunchu) 属性中以及其他任务详情。
+当用户改变任务顺序时，gantt 将调用一个 PUT 操作，并在请求的属性中提供新的任务位置（在 ['target'](guides/server-side.md#storingtheorderoftasks) 属性中），以及其他任务属性。因此，我们需要在任务 DTO 类中添加一个额外的属性：
 
-为此，需要在任务 DTO 类中添加一个新属性:
-
-**Models/TaskDto.cs**
-~~~js
+~~~js title="Models/TaskDto.cs"
 namespace DHX.Gantt.Web.Models
 {
   public class TaskDto
@@ -889,7 +868,7 @@ namespace DHX.Gantt.Web.Models
     public int duration { get; set; }
     public decimal progress { get; set; }
     public int? parent { get; set; }
-    public string type { get; set; }
+    public string type { get;; }
     public bool open{ get { return true; } set { } }
     public string target { get; set; }/*!*/
     
@@ -898,10 +877,9 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-现在，在 PUT (EditTask) 操作中实现重新排序逻辑:
+现在我们将在 PUT（EditTask）操作中实现重新排序：
 
-**Controllers/TaskController.cs**
-~~~js
+~~~js title="Controllers/TaskController.cs"
     // PUT api/Task/5
     [System.Web.Http.HttpPut]
     public IHttpActionResult EditTask(int id, TaskDto taskDto)
@@ -911,7 +889,7 @@ namespace DHX.Gantt.Web.Models
 
       if (!string.IsNullOrEmpty(taskDto.target))
       {
-        // 发生了重新排序
+        // 重新排序发生了
         this._UpdateOrders(updatedTask, taskDto.target);/*!*/
       }
 
@@ -931,7 +909,7 @@ namespace DHX.Gantt.Web.Models
 
       var targetId = orderTarget;
 
-      // 相邻任务 id 通过 '{id}' 或 'next:{id}' 发送，取决于是下一个还是上一个兄弟节点
+      // 相邻任务 ID 以 '{id}' 或 'next:{id}' 形式传递，取决于它是下一个还是前一个兄弟
       if (targetId.StartsWith("next:"))
       {
         targetId = targetId.Replace("next:", "");
@@ -960,49 +938,45 @@ namespace DHX.Gantt.Web.Models
 
        taskList.ForEach(t => t.SortOrder++);
     }
-
 ~~~
 
 ## 已知问题
 
-在 IIS 上运行应用时，HTTP PUT 和 DELETE 请求可能返回 405 或 401 错误。这可能是由于 **WebDAV** 模块与 RESTful 处理程序冲突导致的。
+HTTP PUT 和 DELETE 请求在 IIS 上运行时可能返回 405 或 401 错误。问题可能由 WebDAV 模块引起，与 RESTful 处理程序可能会冲突。 
 
-常见的解决方法是在 **web.config** 文件中禁用 WebDAV 模块。更多细节可参见 [这里](https://forums.iis.net/t/1166025.aspx)。
+作为常见解决方案，可以从 web.config 文件中禁用该模块。更多细节请参阅 [此处](https://learn.microsoft.com/en-us/answers/tags/828/developer-technologies)。
 
-## 应用安全
+## 应用程序安全
 
-Gantt 本身不负责防护 SQL 注入、XSS 或 CSRF 等威胁。在实现后端时，确保应用安全是开发者的责任。更多信息可参见 [相关文章](guides/app-security.md)。
+Gantt 不提供任何防护措施来防止应用程序遭受各种威胁（如 SQL 注入、XSS 与 CSRF 攻击）。确保应用程序安全的责任在于实现后端的开发人员。请在对应文章中查看详细信息 [在此处](guides/app-security.md)。
 
 ## 故障排除
 
-### 缺少 ASP.NET Web Application 模板
+### 找不到 ASP.NET Web 应用模板
 
-如果在 Visual Studio 2022 中找不到 "ASP.NET Web Application" 项目模板，请尝试以下操作:
+如果在 Visual Studio 2022 中找不到所需的 "ASP.NET Web Application" 项目模板，请按以下步骤操作：
 
 1. 关闭 Visual Studio 2022
-
-2. 打开开始菜单并启动 Visual Studio Installer
-
-3. 找到 *Visual Studio Community 2022* 并点击 *Modify*
+2. 打开开始菜单 -> Visual Studio Installer
+3. 找到 Visual Studio Community 2022 -> 点击 “修改”
 
 ![vsinstaller](/img/vsinstaller.png)
 
-4. 在弹窗中，进入 *Individual components*，勾选 *".NET Framework Project and item templates"*，然后点击 *Modify*
+4. 在打开的窗口中，选择 *Individual components*，勾选列表中的 *".NET Framework Project and item templates"*，然后点击修改
 
 ![components](/img/components.png)
 
-之后，重新打开 Visual Studio 2022，模板应该就可用了。
+之后，您就可以重新打开 Visual Studio 2022，找到所需的模板。
 
-### 初始化数据库时发生异常
+### 初始化数据库时出现异常
 
-有时，DropCreateDatabaseIfModelChanges 初始化器可能会删除现有数据库，但未能创建新数据库。
+有时，您可能会遇到使用 DropCreateDatabaseIfModelChanges 初始化程序时，会在应用程序运行时删除现有数据库但未创建新数据库的问题。
 
 ![exception_error](/img/exception_error.png)
 
-如果出现此问题，请打开 *GanttInitializer.cs*，将 *DropCreateDatabaseIfModelChanges* 替换为 *DropCreateDatabaseAlways*:
+在这种情况下，打开 *GanttInitializer.cs*，将 *DropCreateDatabaseIfModelChanges* 替换为 *DropCreateDatabaseAlways*：
 
-**App_Start/GanttInitializer.cs**
-~~~js
+~~~js title="App_Start/GanttInitializer.cs"
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -1016,14 +990,14 @@ namespace DHX.Gantt.Web.Models
 }
 ~~~
 
-然后重新运行应用。
+然后再次运行应用程序。
 
-### 渲染任务和链接时出现问题
+### 渲染任务和链接的问题
 
-如果在将 Gantt 集成到 ASP.NET MVC 后任务和链接未能渲染，请参考 [백엔드 통합 문제 해결](guides/troubleshooting.md) 文章。该文档提供了排查潜在原因的指导。
+如果您已经完成上述步骤以实现 ASP.NET MVC 的 Gantt 集成，但页面上没有渲染任务和链接，请查看 [后端集成故障排除](guides/troubleshooting.md) 文章。它描述了识别问题根源的方法。
 
-## 后续步骤
+## 下一步
 
-此时，gantt 已经完全可用。完整代码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet) 获取，可克隆或下载用于项目开发。
+现在您已经拥有一个功能完备的甘特图。您可以在 [GitHub](https://github.com/DHTMLX/gantt-howto-dotnet) 上查看完整代码，克隆或下载并用于您的项目。
 
-此外，还可以查阅 [各种 gantt 功能指南](guides.md) 或 [与其他后端框架集成的教程](integrations/howtostart-guides.md)。
+您还可以查看 [有关甘特图众多功能的指南](guides.md) 或者关于 [将 Gantt 与其他后端框架集成的教程](integrations/howtostart-guides.md)。

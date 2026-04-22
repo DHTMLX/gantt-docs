@@ -1,12 +1,12 @@
 ---
 sidebar_label: onTaskSelected
-title: onTaskSelected event
-description: "срабатывает, когда пользователь выбирает задачу"
+title: onTaskSelected событие
+description: "Срабатывает, когда пользователь выбирает задачу"
 ---
 
 # onTaskSelected
 
-### Description
+### Descriptionion
 
 @short: Срабатывает, когда пользователь выбирает задачу
 
@@ -14,21 +14,20 @@ description: "срабатывает, когда пользователь выб
 
 ### Parameters
 
-- `id` - (required) *string | number* - идентификатор задачи
+- `id` - (обязательный) *string,number* - идентификатор задачи
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskSelected", function(id){
-    //любая ваша логика здесь
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Details
 
-Это событие вызывается для каждой задачи, включённой в диапазон мультивыделения.
+Событие вызывается для каждой задачи в диапазоне множественного выделения.
 
 ### Related API
 - [onBeforeTaskSelected](api/event/onbeforetaskselected.md)
 - [onTaskUnselected](api/event/ontaskunselected.md)
-

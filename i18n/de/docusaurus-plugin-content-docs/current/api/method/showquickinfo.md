@@ -1,20 +1,20 @@
 ---
 sidebar_label: showQuickInfo
-title: showQuickInfo method
-description: "öffnet das Pop-up Task-Formular für eine bestimmte Aufgabe"
+title: showQuickInfo Methode
+description: "Zeigt das Pop-up-Aufgabenformular für die angegebene Aufgabe an"
 ---
 
 # showQuickInfo
 
 ### Description
 
-@short: Öffnet das Pop-up Task-Formular für eine bestimmte Aufgabe
+@short: Zeigt das Pop-up-Aufgabenformular für die angegebene Aufgabe an
 
 @signature: showQuickInfo: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -     die eindeutige Kennung der Aufgabe
+- `id` - (erforderlich) *string | number* - die Aufgaben-ID
 
 ### Example
 
@@ -32,12 +32,12 @@ window.setTimeout(function(){
 ~~~
 
 ### Related samples
-- [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
+- [QuickInfo-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
 ### Details
 
 :::note
- Diese Methode stammt aus der **Quick Info**-Erweiterung, daher stellen Sie sicher, dass das [quick_info](guides/extensions-list.md#quickinfo) Plugin aktiviert ist. 
+Hinweis: Diese Methode ist in der **Quick Info**-Erweiterung definiert, daher müssen Sie das [quick_info](guides/extensions-list.md#quick-info) Plugin aktivieren.
 :::
 
 ### Related API
@@ -48,5 +48,4 @@ window.setTimeout(function(){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- ["Vollständige Liste der Erweiterungen"](guides/extensions-list.md#quickinfo)
-
+- [Vollständige Liste der Erweiterungen](guides/extensions-list.md#quick-info)

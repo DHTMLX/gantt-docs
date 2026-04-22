@@ -1,25 +1,27 @@
 ---
 sidebar_label: isSplitTask
-title: isSplitTask method
-description: "Bestimmt, ob die angegebene Aufgabe eine Split-Task ist"
+title: isSplitTask Methode
+description: "prüft, ob die angegebene Aufgabe aufgeteilt ist"
 ---
 
 # isSplitTask
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Bestimmt, ob die angegebene Aufgabe eine Split-Task ist
+@short: Prüft, ob die angegebene Aufgabe aufgeteilt ist
 
 @signature: isSplitTask: (task: Task) =\> boolean
 
 ### Parameters
 
-- `task` - (required) *Task* - das zu prüfende Aufgabenobjekt
+- `task` - (erforderlich) *Task* - das Objekt einer Aufgabe
 
 ### Returns
-- ` isSplit` - (boolean) - gibt true zurück, wenn die Aufgabe eine Split-Task ist, sonst false
+- ` isSplit` - (boolean) - true, falls die Aufgabe aufgeteilt ist, andernfalls false
 
 ### Example
 
@@ -32,6 +34,5 @@ if(gantt.isSplitTask(task)){
 }
 ~~~
 
-
 ### Related Guides
-- ["Aufgaben aufteilen"](guides/split-tasks.md)
+- [Split Tasks](guides/split-tasks.md)

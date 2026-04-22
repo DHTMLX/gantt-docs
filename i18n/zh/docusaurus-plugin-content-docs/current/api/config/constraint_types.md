@@ -5,20 +5,16 @@ description: "包含所有可用的约束类型"
 ---
 
 # constraint_types
+
 :::info
- 此功能仅在PRO版本中可用。 
+ 此功能仅在 PRO 版本中可用。 
 :::
+
 ### Description
 
 @short: 包含所有可用的约束类型
 
 @signature: constraint_types: \{ ASAP?: string; ALAP?: string; SNET?: string; SNLT?: string; FNET?: string; FNLT?: string; MSO?: string; MFO?: string; \}
-
-### Example
-
-~~~jsx
-
-~~~
 
 ### Related samples
 - [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
@@ -26,16 +22,16 @@ description: "包含所有可用的约束类型"
 
 ### Details
 
-该对象包含以下内容:
+对象定义：
 
-- **ASAP** - (*string*) - 尽快开始 (As Soon As Possible)
-- **ALAP** - (*string*) - 尽晚开始 (As Late As Possible)
-- **SNET** - (*string*) - 不早于开始 (Start No Earlier Than)
-- **SNLT** - (*string*) - 不晚于开始 (Start No Later Than)
-- **FNET** - (*string*) - 不早于完成 (Finish No Earlier Than)
-- **FNLT** - (*string*) - 不晚于完成 (Finish No Later Than)
-- **MSO** - (*string*) - 必须在指定时间开始 (Must Start On)
-- **MFO** - (*string*) - 必须在指定时间完成 (Must Finish On)
+- **ASAP** - (*string*) - 尽快
+- **ALAP** - (*string*) - 尽可能晚
+- **SNET** - (*string*) - 开始不得早于
+- **SNLT** - (*string*) - 开始不得晚于
+- **FNET** - (*string*) - 结束不得早于
+- **FNLT** - (*string*) - 结束不得晚于
+- **MSO** - (*string*) - 必须在指定日期开始
+- **MFO** - (*string*) - 必须在指定日期完成
 
 ~~~js
 gantt.config.constraint_types = {
@@ -58,7 +54,7 @@ gantt.config.constraint_types = {
 };
 ~~~
 
-该配置有助于避免在代码中硬编码约束值:
+它的添加是为了避免在代码中对约束值进行硬编码：
 
 ~~~js
 gantt.addTaskLayer(function draw_deadline(task) {

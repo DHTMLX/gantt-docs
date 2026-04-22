@@ -1,18 +1,19 @@
 ---
-title: "Angular Gantt"
-sidebar_label: "Angular Gantt"
+title: "Angular 甘特图"
+sidebar_label: "Angular 甘特图"
 ---
 
-# Angular Gantt
+# Angular 甘特图
 
 :::note
-目前，DHTMLX Gantt 尚未提供原生的 Angular 组件。 但是，您仍然可以通过以下资料，轻松地将 DHTMLX Gantt 集成到您的 Angular 应用程序中。
+目前，DHTMLX Gantt 没有原生的 Angular 组件。
+不过，您仍然可以使用下面的资料轻松将 DHTMLX Gantt 集成到您的 Angular 应用中。
 :::
 
-以下是一些将 DHTMLX Gantt 集成到 Angular 项目的实用资源:
+以下是将 DHTMLX Gantt 与 Angular 集成的推荐资源：
 
-- [关于如何将 Gantt 集成到 Angular 的分步教程](integrations/angular/howtostart-angular.md)
-- [GitHub 上的 Angular Gantt 演示](https://github.com/DHTMLX/angular-gantt-demo)
-- [关于如何将 DHTMLX Gantt 集成到 Angular 的视频教程](https://www.youtube.com/watch?v=LNVgNVfwzPE&t=3s)
+- [在 Angular 中集成 Gantt 的逐步教程](integrations/angular/howtostart-angular.md)
+- [GitHub 上的 Angular 甘特图演示](https://github.com/DHTMLX/angular-gantt-demo)
+- [将 DHTMLX Gantt 与 Angular 集成的视频教程](https://www.youtube.com/watch?v=LNVgNVfwzPE&t=3s)
 
-这些资料将指导您在 Angular 中使用 DHTMLX Gantt，帮助您充分利用其全部功能。
+通过遵循这些指南，您可以在 Angular 项目中有效使用 DHTMLX Gantt，并充分发挥其全部功能。

@@ -1,11 +1,11 @@
 ---
-title: "Quick Info (Touch-Unterstützung)"
-sidebar_label: "Quick Info (Touch-Unterstützung)"
+title: "Schnellinfo (Berührung-Unterstützung)"
+sidebar_label: "Schnellinfo (Berührung-Unterstützung)"
 ---
 
-# Quick Info (Touch-Unterstützung)
+# Schnellinfo (Berührung-Unterstützung)
 
-Die Bibliothek enthält die **Quick Info**-Erweiterung, die ein Popup mit Aufgabendetails anzeigt, wenn ein Benutzer auf eine Aufgabe auf dem Bildschirm tippt.
+Die Bibliothek enthält die **Quick Info**-Erweiterung, die das Anzeigen eines Pop-up mit Details zur Aufgabe ermöglicht, wenn ein Benutzer die Aufgabe auf dem Bildschirm berührt. 
 
 ![quick_info](/img/quick_info.png)
 
@@ -13,7 +13,7 @@ Die Bibliothek enthält die **Quick Info**-Erweiterung, die ein Popup mit Aufgab
 [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
 
-Um mit der Erweiterung zu starten, aktivieren Sie einfach das ["Quick Info"](guides/extensions-list.md#quickinfo) Plugin mit der [gantt.plugins](api/method/plugins.md) Methode.
+Um die Erweiterung zu verwenden, aktivieren Sie das ["Quick Info"](guides/extensions-list.md#quick-info)-Plugin über die [gantt.plugins](api/method/plugins.md)-Methode.
 
 ~~~js
 gantt.plugins({
@@ -21,7 +21,7 @@ gantt.plugins({
 });
 ~~~
 
-Wenn Sie die **quick_info**-Erweiterung deaktivieren möchten, setzen Sie die Eigenschaft [show_quick_info](api/config/show_quick_info.md) auf *false*:
+Um die **quick_info**-Erweiterung zu deaktivieren, setzen Sie die [show_quick_info](api/config/show_quick_info.md)-Eigenschaft auf *false*:
 
 ~~~js
 gantt.config.show_quick_info = false;
@@ -30,76 +30,77 @@ gantt.init("gantt_here");
 
 ## API-Übersicht
 
-Die Quick Info-Erweiterung bietet eine Reihe von APIs, um ihre Einstellungen anzupassen, ihr Verhalten zu steuern oder das Aussehen des Popups zu individualisieren. 
+Die Quick Info-Erweiterung bietet eine API-Malette, die es Ihnen ermöglicht, die Einstellungen von Quick Info zu manipulieren, ihr Verhalten zu steuern oder das Erscheinungsbild eines Pop-ups zu ändern. 
 
-
-Sie können entweder [die API des gantt.ext.quickInfo Objekts](guides/quick-info.md#quickinfoobject) oder die unten aufgeführte öffentliche dhtmlxGantt API verwenden:
+Sie können entweder [die API des Objekts gantt.ext.quickInfo](guides/quick-info.md #quickinfoobject) verwenden oder die öffentliche API von dhtmlxGantt, die unten aufgeführt ist:
 
 **Methoden**
 
-- [showQuickInfo](api/method/showquickinfo.md) - öffnet das Pop-up-Formular für eine bestimmte Aufgabe
-- [hideQuickInfo](api/method/hidequickinfo.md) - schließt das Pop-up-Formular (falls es geöffnet ist)
+- [showQuickInfo](api/method/showquickinfo.md) - zeigt das Pop-up-Formular für die angegebene Aufgabe an
+- [hideQuickInfo](api/method/hidequickinfo.md) - blend das Pop-up-Formular aus (falls es aktuell aktiv ist)
 
-**Events**
+**Ereignisse**
 
 - [onQuickInfo](api/event/onquickinfo.md) - wird ausgelöst, wenn das Pop-up-Bearbeitungsformular erscheint
 - [onAfterQuickInfo](api/event/onafterquickinfo.md) - wird ausgelöst, nachdem das Pop-up-Bearbeitungsformular geschlossen wurde
 
 **Eigenschaften**
 
-- [quick_info_detached](api/config/quick_info_detached.md) - steuert, ob das Aufgabenformular in der Nähe der ausgewählten Aufgabe oder an der linken/rechten Seite des Bildschirms erscheint
-- [quickinfo_buttons](api/config/quickinfo_buttons.md) - enthält die Sammlung von Buttons im Pop-up-Formular mit Aufgabendetails
+- [quick_info_detached](api/config/quick_info_detached.md) - definiert, ob das Aufgabenformular links/rechts vom Bildschirm erscheint oder in der Nähe der ausgewählten Aufgabe
+- [quickinfo_buttons](api/config/quickinfo_buttons.md) - speichert eine Sammlung von Buttons, die im Pop-up-Detailsformular platziert sind
 
-**Templates**
+**Vorlagen**
 
-- [quick_info_class](api/template/quick_info_class.md) - definiert die CSS-Klasse, die auf das Pop-up-Bearbeitungsformular angewendet wird
-- [quick_info_content](api/template/quick_info_content.md) - definiert den Inhalt im Pop-up-Bearbeitungsformular
-- [quick_info_date](api/template/quick_info_date.md) - definiert das Datum im Pop-up-Bearbeitungsformular
-- [quick_info_title](api/template/quick_info_title.md) - definiert den Titel des Pop-up-Bearbeitungsformulars
+- [quick_info_class](api/template/quick_info_class.md) - gibt die CSS-Klasse an, die dem Pop-up-Bearbeitungsformular zugewiesen wird
+- [quick_info_content](api/template/quick_info_content.md) - gibt den Inhalt des Pop-up-Bearbeitungsformulars an
+- [quick_info_date](api/template/quick_info_date.md) - gibt das Datum des Pop-up-Bearbeitungsformulars an
+- [quick_info_title](api/template/quick_info_title.md) - gibt den Titel des Pop-up-Bearbeitungsformulars an
 
 ## QuickInfo-Objekt {#quickinfoobject}
 
-Standardmäßig zeigt die **Quick Info**-Erweiterung automatisch ein Popup über der ausgewählten Aufgabe an.
+Das Standardverhalten der **Quick Info**-Erweiterung setzt voraus, dass das Pop-up automatisch über einer ausgewählten Aufgabe erscheint.
 
-Ab Version 7.0 wurde die Quick Info-Funktionalität mit dem [gantt.ext.quickInfo](guides/quickinfo-ext.md) Objekt erweitert, das Methoden zur manuellen Steuerung des Popups bereitstellt.
+Seit Version v7.0 wird die Funktionalität von Quick Info erweitert; das [gantt.ext.quickInfo](guides/quickinfo-ext.md)-Objekt, das Methoden zur manuellen Steuerung des Popups bereitstellt, wird hinzugefügt. 
 
-Das **gantt.ext.quickInfo** Objekt bietet folgende Methoden:
+Die über das **gantt.ext.quickInfo**-Objekt verfügbaren Methoden sind:
 
-- **show()** - öffnet das Quick Info-Popup für eine bestimmte Aufgabe. Akzeptiert einen Parameter:
+- **show()** - zeigt das QuickInfo-Pop-up für eine angegebene Aufgabe an. Es hat einen Parameter:
     - **id** - (*string|number*) die ID einer Aufgabe/Verknüpfung/Ressource
-- **show()** - öffnet das Quick Info-Popup an bestimmten Koordinaten. Parameter:
+- **show()**  - zeigt das QuickInfo-Pop-up an einer bestimmten Position an. Die Parameter sind:
     - **top** - (*number*) die X-Koordinate
     - **left** - (*number*) die Y-Koordinate
-- **hide()** - schließt das Quick Info-Popup. Akzeptiert einen optionalen Parameter:
-    - **[ force ]** - (*boolean*) bestimmt, ob das Popup sofort geschlossen wird, wenn [gantt.config.quick_info_detached](api/config/quick_info_detached.md) *false* ist. Wenn *true* übergeben wird, wird das Popup sofort entfernt, andernfalls verschwindet es mit einer kurzen Animation.
-- **setContainer()** - legt den Container fest, in dem das Quick Info angezeigt wird.
-    - **container** - (*string|HTMLElement*) der QuickInfo-Container. Falls keiner angegeben ist, wird QuickInfo in den ersten gefundenen Node unter **gantt.$task, gantt.$grid, gantt.$layout** eingefügt
-- **getNode()** - gibt das HTMLElement des Quick Info-Popups zurück oder *null*, falls es nicht initialisiert ist
-- **setContent(config)** - (*object*) befüllt das Quick Info mit Inhalt. Akzeptiert ein Konfigurationsobjekt mit folgender Struktur:
-    - **taskId** - (*string|number*) optional, verknüpft die Aktionsbuttons mit einer bestimmten Aufgabe
-    - **header** - optional, der Popup-Kopfbereich, der enthalten kann:
-        - **title** - (*string*) optional, der Popup-Titel
-        - **date** - (*string*) optional, das Popup-Datum
-    - **content** - (*string*) optional, der Popup-Inhalt
-    - **buttons** - (*string[]*) optional, Buttons, die im Popup angezeigt werden
+- **hide()** - blend das QuickInfo-Pop-up aus. Die Methode kann einen optionalen Parameter haben:
+    - **[ force ]** - (*boolean*) gibt an, ob das QuickInfo sofort verschwindet, wenn [gantt.config.quick_info_detached](api/config/quick_info_detached.md) auf *false* gesetzt ist. Wird *true* als Parameter der **hide**-Methode übergeben, wird das Pop-up sofort entfernt, andernfalls verschwindet es nach einer kurzen Animation.
+- **setContainer()** - legt einen Container fest, in dem QuickInfo angezeigt wird. 
+    - **container** - (*string|HTMLElement*) ein QuickInfo-Container. Wenn kein benutzerdefinierter Container angegeben ist, wird QuickInfo in dem ersten der gefundenen Knoten platziert: **gantt.$task, gantt.$grid, gantt.$layout**
+- **getNode()** - gibt das HTMLElement des QuickInfo-Popups zurück. Gibt *null* zurück, wenn QuickInfo nicht initialisiert ist
+- **setContent(config)** - (*object*) setzt den Inhalt von QuickInfo. Es nimmt ein Konfigurationsobjekt von QuickInfo als Parameter. 
+
+Das *Konfigurationsobjekt* hat folgende Struktur:
+    - **taskId** - (*string|number*) optional, die ID der Aufgabe, an die die Aktionsbuttons des QuickInfo gebunden werden
+    - **header** - optional, der Header des Pop-up-Bearbeitungsformulars, der Folgendes enthalten kann:
+        - **title** - (*string*) optional, der Titel des Pop-up-Bearbeitungsformulars
+        - **date** - (*string*) optional, das Datum des Pop-up-Bearbeitungsformulars
+    - **content** - (*string*) optional, der Inhalt des Pop-up-Bearbeitungsformulars
+    - **buttons** - (*string[]*) optional, Buttons, die im Pop-up-Bearbeitungsformular platziert werden
 
 
-Wenn weder header noch buttons angegeben werden, werden diese Bereiche im Popup ausgeblendet.
+Wenn weder Header noch Buttons angegeben sind, werden die entsprechenden Bereiche des QuickInfo-Popups ausgeblendet.
 
-#### **Quick Info anzeigen**
+#### **Schnellinfo anzeigen**
 
-Das Popup kann für eine bestimmte Aufgabe, Verknüpfung, Ressourcenpanel oder an einer benutzerdefinierten Position auf dem Bildschirm mit der **gantt.ext.quickInfo.show()** Methode angezeigt werden:
+Sie können das Pop-up für eine angegebene Aufgabe, Verknüpfung, Ressourcen-Panel anzeigen oder eine andere Position auf dem Bildschirm definieren, an der das Pop-up angezeigt wird, über die Methode **gantt.ext.quickInfo.show()**:
 
 ~~~js
-// Popup für eine bestimmte Aufgabe anzeigen
+// show the popup for the specified task
 var task = gantt.getTask(10);
 gantt.ext.quickInfo.show(task.id);
 
-// Popup an bestimmten Koordinaten anzeigen
+// show the popup at specific coordinates
 gantt.ext.quickInfo.show(100, 200);
 ~~~
 
-Hier ein Beispiel, wie das Popup für eine Ressource angezeigt wird:
+Ein Beispiel dafür, wie das Pop-up für eine Ressource angezeigt wird, finden Sie unten:
 
 ~~~js
 const quickInfo = gantt.ext.quickInfo;
@@ -132,12 +133,12 @@ gantt.attachEvent("onEmptyClick", function (e) {
 });
 ~~~
 
-Und so zeigen Sie das Popup für eine bestimmte Verknüpfung an:
+Und hier ein Beispiel, das das Pop-up für einen bestimmten Link zeigt:
 
 ~~~js
 const quickInfo = gantt.ext.quickInfo;
 gantt.attachEvent("onLinkClick", function(id,e){
-    // individuelle Logik hier
+    //any custom logic here
     const link = gantt.getLink(id);
     const linksFormatter = gantt.ext.formatters.linkFormatter();
 
@@ -151,13 +152,13 @@ gantt.attachEvent("onLinkClick", function(id,e){
     let linkDescr = "";
 
     if (link.type === gantt.config.links.start_to_start){
-        linkDescr = "Start zu Start";
+        linkDescr = "Start to start";
     } else if (link.type === gantt.config.links.start_to_finish){
-        linkDescr = "Start zu Ende";
+        linkDescr = "Start to finish";
     } else if (link.type === gantt.config.links.finish_to_finish){
-        linkDescr = "Ende zu Ende";
+        linkDescr = "Finish to Finish";
     } else {
-        linkDescr = "Ende zu Start";
+        linkDescr = "Finish to start";
     }
 
     quickInfo.setContent({
@@ -174,92 +175,91 @@ gantt.attachEvent("onLinkClick", function(id,e){
 });
 ~~~
 
-#### **Quick Info ausblenden**
+#### **Schnellinfo ausblenden**
 
-Um das Popup zu schließen, verwenden Sie die **gantt.ext.quickInfo.hide()** Methode. Das Verhalten hängt von der Einstellung **gantt.config.quick_info_detached** ab, mit zwei Möglichkeiten:
+Um ein Pop-up-Bearbeitungsformular auszublenden, verwenden Sie die Methode **gantt.ext.quickInfo.hide()**. Die Methode hängt von der Konfiguration **gantt.config.quick_info_detached** ab und sieht zwei mögliche Optionen vor:
 
-- Ohne Parameter aufgerufen, wird das Popup nach einer kurzen Animation geschlossen
+- wird ohne Parameter aufgerufen, wird das Pop-up-Bearbeitungsformular nach einer kurzen Animation vom Bildschirm ausgeblendet 
 
 ~~~js
 gantt.config.quick_info_detached = false;
 gantt.init("gantt_here");
 
-// Popup mit Animation ausblenden
+// hide the popup after a short animation
 gantt.ext.quickInfo.hide();
 ~~~
 
-- Um das Popup sofort zu schließen, übergeben Sie *true* als Argument:
+- wenn Sie die Quick Info sofort ausblenden möchten, übergeben Sie *true* als Parameter an die **hide**-Methode:
 
 ~~~js
 gantt.config.quick_info_detached = false;
 gantt.init("gantt_here");
 
-// Popup sofort ausblenden
+// hide the popup immediately
 gantt.ext.quickInfo.hide(true);
 ~~~
 
-Beachten Sie, dass wenn **gantt.config.quick_info_detached** auf *true* gesetzt ist, das Popup immer sofort geschlossen wird.
+Beachten Sie, dass, wenn die **gantt.config.quick_info_detached**-Konfiguration auf *true* gesetzt ist, die Methode das Pop-up immer sofort ausblendet.
 
-#### **Eigenes QuickInfo erstellen**
+#### **Erstellung eines benutzerdefinierten QuickInfo**
 
-Standardmäßig enthält das Quick Info-Popup einen Titel, ein Datum, Inhalt und Buttons und sieht so aus:
+Standardmäßig enthält ein Quick Info-Popup einen Titel, ein Datum, Inhalt, Buttons und sieht so aus:
 
 ![quick_default](/img/quick_default.png)
 
-Wenn Sie das Aussehen des Popups anpassen oder Ihr eigenes erstellen möchten, können Sie den HTML-Inhalt mit **gantt.ext.quickInfo.setContent()** definieren:
+Falls Sie das Erscheinungsbild des Pop-up-Bearbeitungsformulars ändern oder ein benutzerdefiniertes erstellen möchten, können Sie den gewünschten HTML-Inhalt über die **gantt.ext.quickInfo.setContent()**-Methode definieren:
 
 ~~~js
-gantt.locale.labels.custom_button = "Mein Button"
+gantt.locale.labels.custom_button = "My button"
 gantt.ext.quickInfo.setContent({
     header:{
-        title: "Mein benutzerdefinierter Header",
-        date: "18. Februar 2020"
+        title: "My custom header",
+        date: "18th of February, 2020"
     },
-    content: "Hier steht ein Inhalt",
+    content: "some content here",
     buttons: ["custom_button"]
 })
 ~~~
 
-Dies erzeugt ein Quick Info-Popup wie dieses:
+Als Ergebnis erscheint auf der Seite folgendes QuickInfo-Popup:
 
 ![quick_custom](/img/quick_custom.png)
 
 
-#### **Eigene Buttons mit individuellem Verhalten hinzufügen**
+#### **Benutzerdefinierte Buttons mit benutzerdefiniertem Verhalten hinzufügen**
 
-Mit dem [$click](api/other/click.md) Objekt können Sie benutzerdefinierte Aktionen für Buttons im Popup hinzufügen:
+Das [$click](api/other/click.md) Objekt ermöglicht es Ihnen, benutzerdefiniertes Verhalten für benutzerdefinierte Buttons zu definieren, die im Pop-up-Bearbeitungsformular platziert sind:
 
 ~~~js
 gantt.config.quickinfo_buttons="[""icon_delete","icon_edit","advanced_details_button"];
-gantt.locale.labels["advanced_details_button"] = "Erweiterte Infos";
+gantt.locale.labels["advanced_details_button"] = "Advanced Info";
 gantt.init("gantt_here");
  
 gantt.$click.buttons.advanced_details_button="function(id){"
-    gantt.message("Dies sind erweiterte Informationen");
-    return false; // blockiert das Standardverhalten
+    gantt.message("These are advanced details");
+    return false; //blocks the default behavior
 };
 ~~~
 
-#### **Einen Container für QuickInfo festlegen** 
+#### **Festlegen eines Containers für QuickInfo** 
 
-Verwenden Sie **gantt.ext.quickInfo.setContainer()**, um das Quick Info-Popup in einem benutzerdefinierten Container anzuzeigen:
+Sie können die Methode **gantt.ext.quickInfo.setContainer()** verwenden, um das QuickInfo-Popup in einem benutzerdefinierten Container anzuzeigen:
 
 ~~~js
 const quickInfo = gantt.ext.quickInfo;
 quickInfo.setContainer(document.body); /*!*/
 gantt.ext.quickInfo.show(1300,100);
-gantt.locale.labels.custom_button = "Mein Button"
+gantt.locale.labels.custom_button = "My button"
 gantt.ext.quickInfo.setContent({
     header:{
-        title: "Mein benutzerdefinierter Header",
-        date: "18. Februar 2020"
+        title: "My custom header",
+        date: "18th of February, 2020"
     },
-    content: "Hier steht ein Inhalt",
+    content: "some content here",
     buttons: ["custom_button"]
 });
 ~~~
 
-Jetzt erscheint das Popup mit benutzerdefiniertem Inhalt im **document.body**, außerhalb des Gantt-Containers:
+Jetzt wird das Pop-up mit benutzerdefiniertem Inhalt außerhalb des Containers von Gantt in **document.body** gerendert:
 
 ![quick_container](/img/quick_container.png)
-

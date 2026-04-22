@@ -1,16 +1,16 @@
 ---
 sidebar_label: histogram_cell_label
-title: histogram_cell_label template
-description: "определяет label, отображаемый внутри ячейки"
+title: шаблон histogram_cell_label
+description: "определяет метку внутри ячейки"
 ---
 
 # histogram_cell_label
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в версии PRO.
 :::
 ### Description
 
-@short: Определяет label, отображаемый внутри ячейки
+@short: Определяет метку внутри ячейки
 
 @signature: histogram_cell_label: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) =\> string | number | void;
 
@@ -18,12 +18,12 @@ description: "определяет label, отображаемый внутри 
 
 - `start_date` - (required) *Date* - начальная дата ячейки шкалы  
 - `end_date` - (required) *Date* - конечная дата ячейки шкалы
-- `resource` - (required) *object* - объект ресурса, связанный с ячейкой
-- `tasks` - (required) *Array* - &lt;Task&gt;        задачи, назначенные указанному ресурсу, которые пересекаются с начальной и конечной датами ячейки
-- `assignments` - (required) *array* - назначения ресурса, связанные с указанными датами начала/окончания задач
+- `resource` - (required) *object* - объект ресурса
+- `tasks` - (required) *Array* - &lt;Task&gt;        задачи, назначенные указанному ресурсу и пересекающиеся с датами начала и конца ячейки
+- `assignments` - (required) *array* - назначения ресурса, которые назначены на указанные даты начала и конца задачи
 
 ### Returns
-- ` label` - (string | number | void) - HTML-строка или число, используемые как label внутри ячейки гистограммы
+- ` label` - (string | number | void) - HTML-текст для метки внутри ячейки гистограммы
 
 ### Example
 
@@ -40,9 +40,8 @@ gantt.templates.histogram_cell_label = function(start_date,end_date,resource,tas
 - [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
-
 :::note
- Параметр "assignments" передается только при включенной конфигурации [process_resource_assignments](api/config/process_resource_assignments.md). 
+Аргумент "assignments" доступен только при включенной конфигурации [process_resource_assignments](api/config/process_resource_assignments.md). 
 :::
 
 ### Related API
@@ -53,8 +52,7 @@ gantt.templates.histogram_cell_label = function(start_date,end_date,resource,tas
 - [resource_property](api/config/resource_property.md)
 
 ### Related Guides
-- [Управление ресурсами](guides/resource-management.md#resourceviewpanel)
+- [Resource Management](guides/resource-management.md#resourceviewpanel)
 
 ### Change log
-- параметр **assignments** был добавлен в версии 7.1
-
+- параметр **assignments** добавлен в v7.1

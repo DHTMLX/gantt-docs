@@ -8,13 +8,13 @@ description: "Gantt 차트의 데이터를 Primavera P6로 내보냅니다."
 
 ### Description
 
-@short: Gantt 차트의 데이터를 Primavera P6로 내보냅니다.
+@short: 간트 차트의 데이터를 Primavera P6로 내보냅니다
 
-@signature: exportToPrimaveraP6: (_export_?: any) =\> void
+@signature: exportToPrimaveraP6: (_export_?: any) => void
 
 ### Parameters
 
-- `export` - (optional) *object* - 선택 사항, 내보내기 설정을 포함하는 객체 (자세한 내용 참고)
+- `export` - object - optional, an object with export settings (see the details)
 
 ### Example
 
@@ -24,56 +24,39 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-### Related samples
-- [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
+### Related Samples
+- [데이터 내보내기: MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
 ### Details
 
 :::note
-note 이 메서드는 **export** 확장 기능의 일부이므로, [export_api](guides/extensions-list.md#exportservice) 플러그인을 활성화해야 합니다. 자세한 내용은 [Primavera P6로 내보내기 및 가져오기](guides/export-primavera.md#exporttoprimaverap6) 문서에서 확인할 수 있습니다.
- 
+이 메서드는 **export** 확장에 정의되어 있으므로 [export_api](guides/extensions-list.md#export-service) 플러그인을 활성화해야 합니다. Primavera P6에서의 내보내기 및 가져오기 문서의 세부 정보를 확인하십시오. [Primavera P6에서의 내보내기 및 가져오기](guides/export-primavera.md#exporttoprimaverap6) 문서를 참조하십시오.
+
 :::
 
 :::note
-note Gantt 버전 8.0 이전에서는 온라인 내보내기 서비스를 사용하기 위해 페이지에 **https://export.dhtmlx.com/gantt/api.js**를 포함해야 합니다. 예시는 다음과 같습니다:
+Gantt 버전이 8.0 미만인 경우 온라인 내보내기 서비스를 활성화하려면 페이지에 `https://export.dhtmlx.com/gantt/api.js`를 포함해야 합니다. 예:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
- 
+
 :::
 
+The **exportToPrimaveraP6()** method takes as a parameter an object with a number of properties (all of the properties are optional):
 
-**exportToPrimaveraP6()** 메서드는 여러 선택적 속성을 포함하는 객체를 인수로 받습니다:
+- **name** - (*string*) 얻은 파일의 이름 ('gantt.xml' 기본값).
+- **auto_scheduling** - (*boolean*) 내보낸 프로젝트의 작업 스케줄링 모드를 나타냅니다. **true**는 작업을 자동 스케줄링으로 표시하고, **false**는 수동으로 스케줄링된 상태로 표시합니다(기본값).
+- **skip_circular_links** - (*boolean*) 순환 연결이 제거될지 여부를 나타냅니다(참고: true일 경우 제거됨(기본 모드), false일 경우 제거되지 않음).
+- **project** - (*object*) 내보낸 프로젝트 엔티티에 사용자 정의 속성을 설정합니다.
+- **tasks** - (*object*) 내보낸 작업 항목에 사용자 정의 속성을 설정합니다.
+- **data** - (*object*) 출력 Gantt 차트에 표시될 사용자 정의 데이터 소스를 설정합니다. start_date와 end_date 속성이 날짜와 시간을 모두 포함하는 형식(*%d-%m-%Y %H:%i*)으로 지정될 것으로 기대됩니다.
+- **callback** - (*function*) 생성된 XML의 다운로드 URL을 받으려면 이 속성을 사용할 수 있습니다. 반환되는 값은 *url* 속성을 가진 JSON 객체입니다.
+- **resources** - (*array*) Primavera P6 파일에 자원 목록을 내보낼 수 있습니다. 자원 달력이 사용되는 경우 내보내기 중에 **tasks** 객체의 *CalendarUID* 속성에 -1을 지정해야 합니다. 그러면 작업은 자원 달력을 사용하게 됩니다.
+- **server** - (*string*) 요청의 API 엔드포인트입니다. 로컬에 설치된 내보내기 서비스를 함께 사용할 수 있습니다. 기본값은 `https://export.dhtmlx.com/gantt`입니다.
 
-- **name** - (*string*) 내보내기 파일의 이름 (기본값은 'gantt.xml').
-- **auto_scheduling** - (boolean) 내보낸 프로젝트에서 작업의 스케줄링 모드를 정의합니다. **true**로 설정하면 작업이 자동 스케줄링되고, **false**는 수동 스케줄링(기본값)을 의미합니다.
-- **skip_circular_links** - (boolean) 순환 링크를 제거할지 여부를 결정합니다. **true**면 제거(기본값), **false**면 유지합니다.
-- **project** - (object) 내보낼 프로젝트 엔티티에 대한 사용자 지정 속성을 지정할 수 있습니다.
-- **tasks** - (object) 내보낼 작업 항목에 대한 사용자 지정 속성을 설정할 수 있습니다.
-- **data** - (object) 출력되는 Gantt 차트의 사용자 지정 데이터 소스를 제공할 수 있습니다. **start_date**와 **end_date**는 날짜와 시간이 모두 포함된 형식이어야 합니다 (*%d-%m-%Y %H:%i*).
-- **callback** - (function) 생성된 XML 파일을 다운로드할 수 있는 URL을 받고 싶을 때 사용합니다. 이 함수는 *url*을 포함한 JSON 객체를 인수로 받습니다.
-- **resources** - (array) Primavera P6 파일로 내보낼 리소스 목록을 지정할 수 있습니다.
-- **server** - (string) 내보내기 요청을 위한 API 엔드포인트를 지정합니다. 로컬에 내보내기 서비스를 설치한 경우 사용할 수 있으며, 기본값은 **https://export.dhtmlx.com/gantt**입니다.
-
-## 응답
-
-응답은 다음과 같은 구조의 JSON 객체를 반환합니다:
-
-~~~js
-{
-   data: {},
-   config: {},
-   resources: [],
-   worktime: {}
-}
-~~~
-
-- **data** - gantt [데이터 객체](guides/supported-data-formats.md#json)입니다. 각 작업에는 *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource* 등의 속성이 포함됩니다. 날짜는 "%Y-%m-%d %H:%i" 형식의 문자열입니다.
-- **config** - 프로젝트 파일에서 추출한 설정을 포함하는 gantt [구성](api/overview/properties-overview.md) 객체입니다.
-- **resources** - 프로젝트 파일의 리소스를 나타내는 객체 배열로, 각 객체는 *id*, *name*, *type* 속성을 가집니다.
-- **worktime** - 프로젝트 캘린더의 작업 시간 설정을 포함하는 객체입니다.
+내보내기 설정에 대한 자세한 설명은 [관련 섹션](guides/export-primavera.md#export-settings)을 참조하십시오.
 
 ### Related API
 - [importFromPrimaveraP6](api/method/importfromprimaverap6.md)
@@ -87,5 +70,4 @@ note Gantt 버전 8.0 이전에서는 온라인 내보내기 서비스를 사용
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [Export and Import from Primavera P6](guides/export-primavera.md#exporttoprimaverap6)
-
+- [Primavera P6에서의 내보내기 및 가져오기](guides/export-primavera.md#exporttoprimaverap6)

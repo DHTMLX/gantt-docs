@@ -1,14 +1,14 @@
 ---
 sidebar_label: types
 title: types config
-description: "speichert die Namen der Lightbox-Strukturen (verwendet für verschiedene types von Aufgaben)"
+description: "Speichert die Namen der Lightbox-Strukturen (verwendet für verschiedene Aufgabentypen)"
 ---
 
 # types
 
 ### Description
 
-@short: Speichert die Namen der Lightbox-Strukturen (verwendet für verschiedene types von Aufgaben)
+@short: Speichert die Namen der Lightbox-Strukturen (verwendet für verschiedene Aufgabentypen)
 
 @signature: types: \{ task?: string | number; project?: string | number; milestone?: string | number; placeholder?: string | number; [typeName: string]: string | number | undefined; \}
 
@@ -21,40 +21,43 @@ var type1 = gantt.config.types.task;
 **Default value:** types : \{task:'task',project:'project',milestone:'milestone', placeholder: "placeholder"\}
 
 ### Related samples
-- [Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+- [Projekte und Meilensteine](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 ### Details
 
 :::note
- Diese Funktionalität ist nur in der PRO Edition verfügbar. 
+ Diese Funktionalität ist in der PRO-Edition verfügbar.
 :::
 
-Das 'types' Objekt besteht aus Paaren von **"programmatischem Typnamen"** und **"Typ-Identifier"**:
+Das 'types'-Objekt besteht aus den Paaren des **"type programmatic name"**: **"type identifier"**-Paaren:
 
 
-- Der programmatische Name dient hauptsächlich der Übersichtlichkeit und erleichtert die Arbeit mit types.
-- Der Typ-Identifier wird in der Datenbank gespeichert. Er muss innerhalb des types Objekts eindeutig sein. Falls nötig, kann der Identifier auf einen beliebigen Wert geändert werden:
+  Der Typ-Programmiername beeinflusst nichts. Der einzige Zweck davon ist, die Arbeit mit Typen lesbarer zu machen.
+  Der Typ-Identifier wird in der Datenbank gespeichert. Er muss innerhalb des Typs-Objekts eindeutig sein. Falls erforderlich, kann der Typ-Identifier auf jeden gewünschten Wert geändert werden:
 ~~~js
-    {"task":0,"project":1,"milestone":2}
+{"task":0,"project":1,"milestone":2}
 ~~~
+  
 
-Hier sind die üblichen types:
 
-- **task** - (*string | number*) - der Identifier für den Typ Aufgabe.
-- **project** - (*string | number*) - der Identifier für den Typ Projekt.
-- **milestone** - (*string | number*) - der Identifier für den Typ Meilenstein.
-- **placeholder** - (*string | number*) - der Identifier für den Typ Platzhalter.
-- **[typeName: string]** - (*string | number | undefined*) - Identifier für beliebige benutzerdefinierte types.
+Die erwarteten Typen sind:
 
-Gantt wählt die Lightbox basierend auf dem Aufgabentyp aus:
+- **task** - (*string | number*) - der Name des Task-Typs.
+- **project** - (*string | number*) - der Name des Projekt-Typs.
+- **milestone** - (*string | number*) - der Name des Meilenstein-Typs.
+- **placeholder** - (*string | number*) - der Name des Platzhalter-Typs.
+- **[typeName: string]** - (*string | number | undefined*) - der Name des benutzerdefinierten Typs.
+
+
+Gantt wird die Lightbox abhängig vom Task-Typ verwenden:
 
 ~~~js
 types: {
-    'task':'task',            // Lightbox für reguläre Aufgaben
-    'project':'project',      // Lightbox für Projektaufgaben
-    'milestone':'milestone'   // Lightbox für Meilensteine
+    'task':'task',            // eine Lightbox für reguläre Tasks
+    'project':'project',      // eine Lightbox für Projekttasks
+    'milestone':'milestone'   // eine Lightbox für Meilensteine
 }
 ~~~
 
 ### Related Guides
-- [Task Types](guides/task-types.md)
+- [Aufgabentypen](guides/task-types.md)

@@ -1,23 +1,23 @@
 ---
 sidebar_label: getPrev
-title: getPrev method
-description: "Ruft die ID des vorherigen Elements ab, unabhängig von dessen Verschachtelungsebene - egal ob es sich auf derselben Ebene oder einer anderen befindet."
+title: getPrev Methode
+description: "gibt die ID des vorherigen Elements zurück, unabhängig davon, auf welcher Verschachtelungsebene es sich befindet: dieselbe oder eine andere"
 ---
 
 # getPrev
 
 ### Description
 
-@short: Ruft die ID des vorherigen Elements ab, unabhängig von dessen Verschachtelungsebene - egal ob es sich auf derselben Ebene oder einer anderen befindet.
+@short: Gibt die ID des vorherigen Elements zurück (unabhängig von der Verschachtelungsebene: dieselbe oder eine andere)
 
 @signature: getPrev: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    die Task-ID
+- `id` - (erforderlich) *string | number* -    die Aufgaben-ID
 
 ### Returns
-- ` id` - (string, number) - die ID der Task, die vor der angegebenen kommt
+- ` id` - (string, number) - die ID der vorherigen Aufgabe
 
 ### Example
 
@@ -50,5 +50,4 @@ gantt.getPrev("t_2"); -> "t_1"  /*!*/
 - [getPrevSibling](api/method/getprevsibling.md)
 
 ### Related Guides
-- ["Task Parent/Child"](guides/task-tree-operations.md)
-
+- [Task Parent/Child](guides/task-tree-operations.md)

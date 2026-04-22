@@ -5,23 +5,24 @@ sidebar_label: "emptyStateElement 扩展"
 
 # emptyStateElement 扩展
 
-关于 emptyStateElement 扩展的更多信息，请参阅 [Empty State Screen](guides/empty-state-screen.md) 文章。
+在 [空状态屏幕](guides/empty-state-screen.md) 文章中了解有关 emptyStateElement 扩展的详细信息。
 
 ## 方法
 
-**gantt.ext.emptyStateElement** 对象提供以下方法:
+以下方法可通过 **gantt.ext.emptyStateElement** 对象使用：
 
-- <span class="submethod">**isGanttEmpty (): boolean**</span> - 当 Gantt 图中没有加载任何数据时返回 *true*，否则返回 *false*。此方法可帮助判断是否在页面上显示"空状态"。如果需要更改默认行为，可以自定义此方法。
-- <span class="submethod">**isEnabled (): boolean**</span> - 如果 [show_empty_state](api/config/show_empty_state.md) 属性已启用，则返回 *true*；否则返回 *false*。
-- <span class="submethod">**renderContent (container): void**</span> - 向空状态元素插入 HTML 内容。如有需要，可以重写此方法。
-    - **_container_** - (*HTMLElement*) - 用于承载内容的元素
-- <span class="submethod">**getContainer (): HTMLElement | null**</span> - 返回将附加空状态的 DOM 元素。默认情况下，返回网格元素（因此"空状态"会显示在网格中）。如果网格不可用，则返回时间轴元素（在时间轴中显示"空状态"）。该方法可以自定义。
-- <span class="submethod">**getNode (): HTMLElement | null**</span> - 返回表示空状态元素的 DOM 节点。
-- <span class="submethod">**show (): null | void**</span> - 显示"空状态"。如果没有可用的容器用于 Empty State Element，则返回 *null*。此方法由扩展自动调用。
-- <span class="submethod">**hide (): boolean | void**</span> - 隐藏"空状态"。如果 Empty State Element 节点不存在，则返回 *false*，表示没有需要隐藏的内容。此方法同样由扩展自动调用。
-- <span class="subproperty">**clickEvents?**</span> -  (*Array&lt;string&gt;*) - 存储已绑定事件处理器的 ID。由 *attachAddTaskEvent* 和 *detachAddTaskEvents* 方法进行更新。
-- <span class="submethod">**attachAddTaskEvent (): void**</span> - 添加在点击 Empty State Element 时触发的处理器。默认情况下，用于添加新任务。
-- <span class="submethod">**detachAddTaskEvents (): void**</span> - 移除点击 Empty State Element 时用于添加任务的处理器。
+- <span class="submethod">**isGanttEmpty (): boolean**</span> - 当甘特图中没有加载数据时返回 true，否则返回 false。扩展使用该方法来定义是否在页面上显示“空状态”。如果需要更改默认行为，可以重新定义该方法。
+- <span class="submethod">**isEnabled (): boolean**</span> - 当 [show_empty_state](api/config/show_empty_state.md) 属性被启用时返回 true，否则返回 false
+- <span class="submethod">**renderContent (container): void**</span> - 将 HTML 内容放入空状态元素。该方法可以被重新定义。
+    - **_container_** - (*HTMLElement*) - 容器元素
+- <span class="submethod">**getContainer (): HTMLElement | null**</span> - 返回将附着空状态的 DOM 元素。默认情况下，返回网格元素（“空状态”将显示在网格中）。如果没有网格，则返回时间线元素（“空状态”将显示在时间线中）。该方法可以被重新定义。
+- <span class="submethod">**getNode (): HTMLElement | null**</span> - 返回空状态元素的 DOM 节点
+- <span class="submethod">**show (): null | void**</span> - 显示“空状态”。如果没有空状态元素的容器，则返回 null。扩展会自动调用该方法
+- <span class="submethod">**hide (): boolean | void**</span> - 隐藏“空状态”。如果没有空状态元素节点，则返回 false，因此没有要隐藏的内容。扩展会自动调用该方法
+- <span class="subproperty">**clickEvents?**</span> -  (*Array&lt;string&gt;*) - 一个包含已附加处理程序 ID 的数组。它会被 *attachAddTaskEvent* 与 *detachAddTaskEvents* 方法修改。
+- <span class="submethod">**attachAddTaskEvent (): void**</span> - 添加在单击空状态元素后将触发的处理程序。默认情况下，用于添加一个新任务。
+- <span class="submethod">**detachAddTaskEvents (): void**</span> - 移除用于在单击空状态元素后添加任务的处理程序
+
 
 ## 示例
 
@@ -145,4 +146,3 @@ gantt.ext.emptyStateElement = {
     }
   });
 ~~~
-

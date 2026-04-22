@@ -1,25 +1,27 @@
 ---
 sidebar_label: isSummaryTask
 title: isSummaryTask method
-description: "验证给定的任务是否为汇总任务"
+description: "检查指定任务是否为汇总"
 ---
 
 # isSummaryTask
+
 :::info
- 此功能仅在 PRO 版本中可用。 
+此方法仅在 PRO 版本中可用，因为在该版本中才可以指定任务的类型。否则，该方法将返回 false。
 :::
+
 ### Description
 
-@short: 验证给定的任务是否为汇总任务
+@short: 检查指定任务是否为汇总
 
 @signature: isSummaryTask: (task: Task) =\> boolean
 
 ### Parameters
 
-- `task` - (required) *Task* - 要检查的任务对象
+- `task` - (required) *Task* - 任务对象
 
 ### Returns
-- ` mode` - (boolean) - <i>true</i> 如果该任务是汇总任务，否则为 <i>false</i>
+- ` mode` - (boolean) - <i>true</i>，如果任务是汇总任务。否则，<i>false</i>
 
 ### Example
 
@@ -27,11 +29,6 @@ description: "验证给定的任务是否为汇总任务"
 const task = gantt.getTask(10);
 gantt.isSummaryTask(task); // ->false
 ~~~
-
-### Details
-:::note
-此方法仅在PRO版本中可用，因为定义任务类型的功能仅限于该版本。在其他版本中，该方法将始终返回false。
-:::
 
 ### Related Guides
 - [任务类型](guides/task-types.md)

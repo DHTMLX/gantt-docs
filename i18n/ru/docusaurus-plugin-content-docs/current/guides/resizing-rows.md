@@ -3,31 +3,30 @@ title: "Изменение размера строк в гриде"
 sidebar_label: "Изменение размера строк в гриде"
 ---
 
-# Изменение размера строк в гриде
+# Изменение размера строк в грид
 
-Вы можете настраивать высоту отдельных строк в гриде.
+Существует возможность изменить высоту отдельных строк в грид.
 
+Библиотека dhtmlxGantt предоставляет 2 способа управления высотой строк:
 
-Библиотека dhtmlxGantt предоставляет два способа управления высотой строки:
-
-- Установить высоту строки и высоту полосы задачи для конкретного объекта задачи;
-- Изменять размер строки, перетаскивая нижнюю границу строки грида.
-
-:::info
-Эта функция доступна начиная с версии 7.1.
-:::
-
-## Установка высоты строки {#settingtherowheight}
-
-Вы можете настроить высоту конкретной строки по необходимости.
+- Установка одновременно высоты строки и высоты панели задач для необходимого объекта задачи;
+- Перетаскиванием нижнего края строки грид.
 
 :::note
-В настоящее время индивидуальная высота строки не работает с [static background rendering](api/config/static_background.md).
+Функциональность доступна в версиях 7.1 и выше.
+:::
+
+## Установка высоты строки
+
+Вы можете настроить высоту конкретной строки в соответствии с вашими потребностями.
+
+:::note
+Индивидуальная высота строки в настоящее время не совместима с [static background rendering](api/config/static_background.md).
 :::
 
 ![row_height](/img/row_height.png)
 
-Для этого переопределите свойства **row_height** и **bar_height** в объекте задачи внутри вашего набора данных: 
+Для этого нужно переопределить свойства **row_height** и **bar_height** объекта задачи в наборе данных: 
 
 **Указание типа задачи в наборе данных**
 ~~~js
@@ -44,22 +43,22 @@ gantt.parse({
 });
 ~~~
 
-Кроме того, вы можете задать эти свойства динамически:
+или можно реализовать это динамически:
 
 ~~~js
 gantt.getTask(11).row_height = 50;
 gantt.getTask(11).bar_height = 25;
-// повторно отрисовать Gantt для применения изменений
+// перерасчет Gantt для применения изменений
 gantt.render();
 ~~~
 
-Если атрибуты **row_height** и **bar_height** отсутствуют или пусты (что является значением по умолчанию), будут использованы значения из [gantt.config.row_height](api/config/row_height.md) и [gantt.config.bar_height](api/config/bar_height.md).
+В случае, если атрибуты **row_height** и **bar_height** объекта задачи не указаны или пусты (состояние по умолчанию), будут использоваться значения [gantt.config.row_height](api/config/row_height.md) и [gantt.config.bar_height](api/config/bar_height.md).
 
-## Изменение размера строк с помощью drag and drop {#resizingrowsbydraganddrop}
+## Изменение размера строк перетаскиванием
 
 ![resize_row](/img/resize_row.png)
 
-Чтобы пользователи могли изменять размер строки, перетаскивая её нижнюю границу, включите опцию [gantt.config.resize_rows](api/config/resize_rows.md):
+Чтобы предоставить пользователю возможность изменять размер строки в гриде путем перетаскивания нижнего края строки, установите параметр [gantt.config.resize_rows](api/config/resize_rows.md) в значение *true*:
 
 ~~~js
 gantt.config.resize_rows = true;
@@ -69,7 +68,7 @@ gantt.config.resize_rows = true;
 [Resizable rows in grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
 
 
-Опция [gantt.config.min_task_grid_row_height](api/config/min_task_grid_row_height.md) позволяет задать минимальную высоту строки при изменении размера:
+Опция [gantt.config.min_task_grid_row_height](api/config/min_task_grid_row_height.md) позволяет определить минимальную высоту строки, которая может быть задана для задачи во время изменения размера:
 
 ~~~js
 gantt.config.min_task_grid_row_height = 45;
@@ -77,10 +76,9 @@ gantt.config.min_task_grid_row_height = 45;
 
 ### События
 
-Для управления изменением размера строки с помощью drag-and-drop доступны четыре события:
+Существует 4 события, которые можно использовать для управления поведением изменения размера строки при перетаскивании:
 
-- [onBeforeRowResize](api/event/onbeforerowresize.md) - вызывается перед началом изменения размера строки пользователем
-- [onRowResize](api/event/onrowresize.md) - вызывается во время перетаскивания границы строки для изменения размера
-- [onBeforeRowResizeEnd](api/event/onbeforerowresizeend.md) - вызывается непосредственно перед завершением изменения размера строки
-- [onAfterRowResize](api/event/onafterrowresize.md) - вызывается после завершения изменения размера строки
-
+- [onBeforeRowResize](api/event/onbeforerowresize.md) - срабатывает перед тем, как пользователь начнет изменять высоту строки перетаскиванием
+- [onRowResize](api/event/onrowresize.md) - срабатывает во время перетаскивания границы строки для изменения высоты
+- [onBeforeRowResizeEnd](api/event/onbeforerowresizeend.md) - срабатывает перед завершением изменения высоты строки
+- [onAfterRowResize](api/event/onafterrowresize.md) - срабатывает после завершения изменения высоты строки

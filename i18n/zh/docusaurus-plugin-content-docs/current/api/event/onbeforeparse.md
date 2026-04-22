@@ -1,14 +1,14 @@
 ---
 sidebar_label: onBeforeParse
-title: onBeforeParse event
-description: "在数据解析开始之前触发"
+title: onBeforeParse 事件
+description: "在数据开始被解析之前触发"
 ---
 
 # onBeforeParse
 
 ### Description
 
-@short: 在数据解析开始之前触发
+@short: 在数据开始被解析之前触发
 
 @signature: onBeforeParse: () =\> void;
 
@@ -17,7 +17,7 @@ description: "在数据解析开始之前触发"
 ~~~jsx
 gantt.init("gantt_here");
 gantt.attachEvent("onBeforeParse", function(){ 
-    // 在此处放置任何自定义逻辑
+    // 在这里插入您的自定义逻辑 
 });
 
 gantt.parse(demo_tasks);
@@ -32,4 +32,3 @@ gantt.parse(demo_tasks);
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

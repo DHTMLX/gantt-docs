@@ -1,25 +1,25 @@
 ---
 sidebar_label: moveTask
-title: moveTask method
-description: "작업을 다른 위치로 이동합니다."
+title: moveTask 메서드
+description: "작업을 새로운 위치로 이동"
 ---
 
 # moveTask
 
 ### Description
 
-@short: 작업을 다른 위치로 이동합니다.
+@short: 작업을 새로운 위치로 이동
 
 @signature: moveTask: (sid: string | number, tindex: number, parent?: string | number) =\> boolean | void
 
 ### Parameters
 
-- `sid` - (required) *string | number* -            이동할 작업의 식별자
-- `tindex` - (required) *number* - 작업이 배치될 대상 위치 인덱스 <br> (브랜치 내의 인덱스)
-- `parent` - (optional) *string | number* -            부모 ID. 제공되는 경우 <b>tindex</b>는 <br> <b>'parent'</b> 브랜치 내의 인덱스를 의미합니다.
+- `sid` - (required) *string | number* - 이동할 작업의 ID
+- `tindex` - (required) *number* - 이동될 위치의 인덱스 <br/> (브랜치 내의 인덱스)
+- `parent`	- (optional) *string | number*		- 부모 ID. 지정되면, <b>tindex</b>는 <br/> <b>'parent'</b> 분기의 인덱스를 참조합니다
 
 ### Returns
-- ` result` - (boolean | void) - [onBeforeTaskMove](api/event/onbeforetaskmove.md)에서 이동이 취소되면 `false`를 반환하며, 그렇지 않으면 `undefined`를 반환합니다.
+- `result` - (boolean | void) - 동작이 [onBeforeTaskMove](api/event/onbeforetaskmove.md)에 의해 취소된 경우 `false`를 반환하고, 그렇지 않으면 `undefined`를 반환합니다
 
 ### Example
 
@@ -38,11 +38,10 @@ gantt.init("gantt_here");
 gantt.parse(tasks);
  
 gantt.moveTask("t_1", 1); /*!*/
-//-> 이 코드는 "t_1" 작업을 루트 레벨로 이동합니다.
+//-> 이러한 이동 후에, 태스크 "t_1"은 루트 레벨을 가집니다
 ~~~
 
 ### Related API
 - [getTaskIndex](api/method/gettaskindex.md)
 - [onBeforeTaskMove](api/event/onbeforetaskmove.md)
 - [onAfterTaskMove](api/event/onaftertaskmove.md)
-

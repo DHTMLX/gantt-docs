@@ -1,14 +1,14 @@
 ---
 sidebar_label: row_height
-title: row_height config
-description: "устанавливает высоту строк по умолчанию в таблице"
+title: row_height конфигурация
+description: "устанавливает высоту строк таблицы по умолчанию"
 ---
 
 # row_height
 
 ### Description
 
-@short: Устанавливает высоту строк по умолчанию в таблице
+@short: Устанавливает высоту строк таблицы по умолчанию
 
 @signature: row_height: number
 
@@ -20,7 +20,7 @@ gantt.config.row_height = 40;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 35
+**Значение по умолчанию:** 35
 
 ### Related Guides
-- [Изменение размера строк в гриде](guides/resizing-rows.md)
+- [Изменение размера строк в Grid](guides/resizing-rows.md)

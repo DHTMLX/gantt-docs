@@ -1,22 +1,22 @@
 ---
 sidebar_label: onRowResize
-title: onRowResize event
-description: "срабатывает, когда пользователь перетаскивает границу строки для изменения её высоты"
+title: onRowResize событие
+description: "срабатывает, когда пользователь перетаскивает границу строки для изменения высоты строки"
 ---
 
 # onRowResize
 
 ### Description
 
-@short: Срабатывает, когда пользователь перетаскивает границу строки для изменения её высоты
+@short: Срабатывает, когда пользователь перетаскивает границу строки для изменения высоты строки
 
 @signature: onRowResize: (id: string | number, task: Task, currentHeight: number) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - идентификатор задачи
-- `task` - (required) *Task* - объект задачи
-- `currentHeight` - (required) *number* - текущая высота строки
+- `id` - (обязателен) *string | number* - идентификатор задачи
+- `task` - (обязателен) *Task* - объект задачи
+- `currentHeight` - (обязателен) *number* - текущая высота строки
 
 ### Example
 
@@ -24,13 +24,13 @@ description: "срабатывает, когда пользователь пер
 gantt.attachEvent("onRowResize", function (id, task, currentHeight) {
     gantt.message({
         expire: -1,
-        text: `<b>${task.text}</b> теперь имеет высоту <b>${currentHeight}px</b>`
+        text: `<b>${task.text}</b> is now <b>${currentHeight}px</b> height`
     });
 });
 ~~~
 
 ### Related samples
-- [Resizable rows in grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
+- [Изменяемые строки в grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
 
 ### Related API
 - [resize_rows](api/config/resize_rows.md)
@@ -39,5 +39,4 @@ gantt.attachEvent("onRowResize", function (id, task, currentHeight) {
 - [onAfterRowResize](api/event/onafterrowresize.md)
 
 ### Change log
-- добавлено в версии v7.1
-
+- добавлено в v7.1

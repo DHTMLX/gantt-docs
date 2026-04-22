@@ -1,19 +1,20 @@
 ---
 sidebar_label: createCalendar
-title: createCalendar method
-description: "erstellt einen funktionalen Kalender"
+title: createCalendar Methode
+description: "erstellt einen Arbeitskalender"
 ---
 
 # createCalendar
 
 ### Description
 
-@short: Erstellt einen funktionalen Kalender
+@short: Erstellt einen Arbeitskalender
 
 @signature: createCalendar: (parentCalendar?: Calendar) =\> Calendar
 
 ### Parameters
-- `parentCalendar` - (optional) *Calendar* - ein bestehender Kalender, auf dem der neue basieren soll
+
+- `parentCalendar`	- (optional) *Calendar* - ein vorhandener Kalender, der als Grundlage für die Erstellung eines neuen Kalenders verwendet wird			
 
 ### Returns
 - ` calendar` - (Calendar) - das Calendar-Objekt
@@ -30,9 +31,9 @@ var calendar2 = gantt.createCalendar(parentCalendar);
 
 ### Details
 
-hinzugefügt in Version 4.2
+Hinzugefügt in Version 4.2
 
-Nachdem ein Kalender erstellt wurde, sollte er mit der [addCalendar](api/method/addcalendar.md) Methode zu Gantt hinzugefügt werden:
+Nachdem Sie einen Kalender erstellt haben, müssen Sie ihn in Gantt über die [addCalendar](api/method/addcalendar.md) Methode hinzufügen:
 
 ~~~js
 gantt.addCalendar(calendar1);
@@ -44,5 +45,4 @@ gantt.addCalendar(calendar1);
 - [calendar](api/other/calendar.md)
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md#multipleworktimecalendars)
-
+- [Work Time Calculation](guides/working-time.md#multipleworktimecalendars)

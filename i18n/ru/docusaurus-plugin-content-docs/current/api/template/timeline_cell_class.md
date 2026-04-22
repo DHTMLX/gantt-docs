@@ -1,24 +1,24 @@
 ---
 sidebar_label: timeline_cell_class
 title: timeline_cell_class template
-description: "определяет CSS класс, который применяется к ячейкам внутри области timeline"
+description: "указывается CSS-класс, который будет применяться к ячейкам области временной шкалы"
 ---
 
 # timeline_cell_class
 
 ### Description
 
-@short: Определяет CSS класс, который применяется к ячейкам внутри области timeline
+@short: Указывает CSS-класс, который будет применяться к ячейкам области временной шкалы
 
 @signature: timeline_cell_class: (item: any, date: Date) =\> string | void;
 
 ### Parameters
 
-- `item` - (required) *Task | object* -        задача или объект ресурса, связанный со строкой
-- `date` - (required) *Date* - конкретная дата ячейки
+- `item` - (required) *Task | object* - либо объект задачи или ресурса, привязанный к строке
+- `date` - (required) *Date* - дата ячейки
 
 ### Returns
-- ` text` - (string | void) - имя CSS класса для данного элемента
+- ` text` - (string | void) - CSS-класс для соответствующего элемента
 
 ### Example
 
@@ -35,11 +35,11 @@ gantt.templates.timeline_cell_class = function(task,date){
 ~~~
 
 ### Related samples
-- [Highlighting weekends](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
+- [Выделение выходных](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
 
 ### Details
 
-При работе с [расчетами рабочего времени](guides/working-time.md) лучше использовать [isWorkTime](api/method/isworktime.md) вместо фиксированных значений:
+Note that while using [work time calculations](guides/working-time.md), you can use [isWorkTime](api/method/isworktime.md) instead of hardcoded values:
 
 ~~~js
 gantt.config.work_time = true;
@@ -57,7 +57,6 @@ gantt.templates.timeline_cell_class = function(task,date){
 - [timeline_placeholder](api/config/timeline_placeholder.md)
 
 ### Related Guides
-- [Шаблоны области временной шкалы](guides/timeline-templates.md)
-- [Выделение временных слотов](guides/highlighting-time-slots.md)
-- [Расчёт рабочего времени](guides/working-time.md)
-
+- [Шаблоны области Timeline](guides/timeline-templates.md)
+- [Выделение временных интервалов](guides/highlighting-time-slots.md)
+- [Расчет рабочего времени](guides/working-time.md)

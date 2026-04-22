@@ -1,6 +1,6 @@
 ---
 sidebar_label: serverList
-title: serverList method
+title: serverList 方法
 description: "返回一个选项列表"
 ---
 
@@ -14,11 +14,11 @@ description: "返回一个选项列表"
 
 ### Parameters
 
-- `list_name` - (required) *string | number* -         列表的名称
-- `options` - (optional) *array* - 包含选项的数组
+- `list_name` - （必填）*string | number* - 列表的名称
+-  `options` - （可选）*array* - 选项数组
 
 ### Returns
-- ` list` - (array) - 一个选项数组
+- ` list` - (array) - 一个选项的列表
 
 ### Example
 
@@ -55,4 +55,3 @@ gantt.config.lightbox.sections=[
 
 ### Related API
 - [updateCollection](api/method/updatecollection.md)
-

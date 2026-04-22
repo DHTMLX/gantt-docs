@@ -1,287 +1,287 @@
 ---
-title: "Перетаскивание задач на временной шкале"
-sidebar_label: "Перетаскивание задач на временной шкале"
+title: "Перетаскивание задач вдоль временной шкалы"
+sidebar_label: "Перетаскивание задач вдоль временной шкалы"
 ---
 
-# Перетаскивание задач на временной шкале
+# Перетаскивание задач вдоль временной шкалы
 
-Перетаскивание облегчает изменение дат начала и окончания задач, а также их длительности. 
+Перетаскивание позволяет пользователям быстро изменять даты начала (окончания) задач, а также их продолжительность.
+По умолчанию поддержка перетаскивания включена, и пользователь может перетаскивать задачу вдоль её строки на временной шкале.
 
+Чтобы настроить поведение перетаскивания, используйте следующие события:
 
-По умолчанию функция drag-and-drop включена, что позволяет пользователям перемещать задачи по своим строкам на временной шкале.
+- [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) - запретить перетаскивание конкретных задач
+- [onTaskDrag](api/event/ontaskdrag.md) - ограничить область перетаскивания или применить другую логику при перетаскивании задачи
+- [onAfterTaskDrag](api/event/onaftertaskdrag.md) - постобработать задачи после того, как они были перетащены на новое место
 
-Для настройки поведения drag-and-drop можно использовать следующие события:
+Рассмотрим типичные случаи, когда поведение перетаскивания по умолчанию требует настройки:
 
-- [onBeforeTaskDrag](api/event/onbeforetaskdrag.md) - для блокировки перетаскивания отдельных задач
-- [onTaskDrag](api/event/ontaskdrag.md) - для ограничения области перетаскивания или применения пользовательской логики во время перетаскивания задачи
-- [onAfterTaskDrag](api/event/onaftertaskdrag.md) - для обработки задач после их перемещения
+1. [Запрет перетаскивания отдельных задач](#denying-dragging-of-specific-tasks).
+2. [Запрет перетаскивания задач за пределами конкретных дат](#denying-dragging-tasks-out-of-specific-dates).
+3. [Перетаскивание дочерних задач вместе с родителем](#dragging-children-together-with-the-parent).
+4. [Перетаскивание проектов с подзадачами](#draggingprojectswithsubtasks).
+5. [Установка минимальной продолжительности задачи](#setting-minimal-task-duration).
+6. [Автоскроллинг во время перетаскивания задач](#autoscrollduringtasksdragging).
 
-Вот несколько распространённых сценариев, когда настройка поведения перетаскивания может быть полезна:
+## Запрет перетаскивания отдельных задач
 
-
-1. [Блокировка перетаскивания для определённых задач](#denyingdraggingofspecifictasks).
-2. [Запрет перетаскивания задач за пределы определённых дат](#denyingdraggingtasksoutofspecificdates).
-3. [Перетаскивание дочерних задач вместе с родительской](#draggingchildrentogetherwiththeparent).
-4. [Перетаскивание проектов вместе с подзадачами](#draggingprojectswithsubtasks).
-5. [Установка минимальной длительности задачи](#settingminimaltaskduration).
-6. [Включение автопрокрутки при перетаскивании задач](#autoscrollduringtasksdragging).
-
-
-## Блокировка перетаскивания для определённых задач {#denyingdraggingofspecifictasks}
-
-Чтобы отключить перетаскивание для некоторых задач, используйте событие [onBeforeTaskDrag](api/event/onbeforetaskdrag.md):
+Чтобы запретить перетаскивание конкретных задач, используйте событие [onBeforeTaskDrag](api/event/onbeforetaskdrag.md):
 
 ~~~js
-gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    if(gantt.getGlobalTaskIndex(id)%2==0){
-        return false;      // блокирует перетаскивание, если глобальный индекс задачи нечётный
+gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
+    if (gantt.getGlobalTaskIndex(taskId) % 2 === 0) {
+        return false; // запрещает перетаскивание, если глобальный индекс задачи чётный
     }
-    return true;           // разрешает перетаскивание, если глобальный индекс задачи чётный
+    return true; // разрешает перетаскивание, если глобальный индекс задачи нечётный
 });
 ~~~
 
+## Запрет перетаскивания задач за пределами конкретных дат
 
-## Запрет перетаскивания задач за пределы определённых дат {#denyingdraggingtasksoutofspecificdates}
+Чтобы запретить перетаскивание задач за пределы конкретных дат, используйте событие [onTaskDrag](api/event/ontaskdrag.md).
 
-Чтобы ограничить возможность перетаскивания задач за пределы определённых дат, используйте событие [onTaskDrag](api/event/ontaskdrag.md).
+<p style="margin-top: 20px; font-weight: bold;"> The onTaskDrag event: </p>
 
-<p> Событие onTaskDrag: </p>
-
-<ul>
-  <li>Вызывается каждый раз, когда пользователь перемещает мышь при перетаскивании, изменении размера или обновлении прогресса задачи на временной шкале.</li>
-  <li>Тип действия перетаскивания передаётся вторым аргументом - <b>mode</b>.</li> 
-  <li>Все возможные режимы перетаскивания перечислены в свойстве [drag_mode](api/config/drag_mode.md).</li>
+<ul style="margin-top:5px;">
+  <li>Срабатывает каждый раз, когда пользователь выполняет перемещение мыши на территории временной шкалы: перемещает, изменяет размер задачи или изменяет прогресс задачи.</li>
+  <li>Тип движения перетаскивания передаётся как второй аргумент - <b>mode</b>.</li>
+  <li>Все доступные значения типа движения перетаскивания хранятся в свойстве [drag_mode](api/config/drag_mode.md).</li>
 </ul>
 
-<p>Вкратце, процесс выглядит так:</p>
+<p style="margin-top: 20px; font-weight: bold;">Коротко, всё происходит в следующем порядке:</p>
 
-<ol>
-  <li>Пользователь перетаскивает задачу.</li>
-  <li>dhtmlxGantt пересчитывает дату задачи на основе нового положения.</li>
-  <li>dhtmlxGantt вызывает событие [onTaskDrag](api/event/ontaskdrag.md).</li>
-  <li>dhtmlxGantt перерисовывает задачу на диаграмме. <i>Поскольку событие [onTaskDrag](api/event/ontaskdrag.md) вызывается после пересчёта, вы можете безопасно задать пользовательские значения для перетаскиваемой задачи внутри обработчика события - они не будут перезаписаны. Это гарантирует, что задача отобразится именно там, где вы хотите.</i></li>
+<ol style="margin-top:5px;">
+    <li>Пользователь выполняет движение.</li>
+    <li>dhtmlxGantt пересчитывает дату задачи в соответствии с новым положением.</li>
+    <li>dhtmlxGantt вызывает событие [onTaskDrag](api/event/ontaskdrag.md).</li>
+    <li>dhtmlxGantt повторно отрисовывает задачу на диаграмме Ганта.<br><i>Так как событие [onTaskDrag](api/event/ontaskdrag.md) срабатывает после того, как dhtmlxGantt выполнит перерасчёт, вы можете задать любые пользовательские значения для перетаскиваемой задачи в обработчике события, не боясь, что эти значения будут перезаписаны. В результате задача будет отрисована в нужной позиции.</i></li>
 </ol>
 
-
-Например, чтобы запретить пользователям перетаскивать задачи за пределы диапазона **"31 марта 2020 - 11 апреля 2020"**:
+Предположим, что вы хотите запретить пользователям перетаскивать задачи за пределы интервала **"31 марта, 2028 - 11 апреля, 2028"**.
 
 ![custom_dnd](/img/custom_dnd.png)
 
-Используйте следующий код:
+ then, you can use the code as in:
 
-[Запрет перетаскивания задач за пределы интервала - [31.03.2020, 11.04.2020]](Запрет перетаскивания задач за пределы интервала - [31.03.2020, 11.04.2020])
 ~~~js
-var leftLimit = new Date(2020, 2 ,31), rightLimit = new Date(2020, 3 ,12);
+const leftLimit = new Date(2028, 2, 31);
+const rightLimit = new Date(2028, 3, 12);
+const millisecondsInDay = 24 * 60 * 60 * 1000;
 
-gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
-    var modes = gantt.config.drag_mode;
-    if(mode == modes.move || mode == modes.resize){
-    
-        var diff = original.duration*(1000*60*60*24);
-       
-        if(+task.end_date > +rightLimit){
+gantt.attachEvent("onTaskDrag", (taskId, dragMode, task, originalTask) => {
+    const dragModes = gantt.config.drag_mode;
+
+    if (dragMode === dragModes.move || dragMode === dragModes.resize) {
+        const taskDuration = originalTask.duration * millisecondsInDay;
+
+        if (+task.end_date > +rightLimit) {
             task.end_date = new Date(rightLimit);
-            if(mode == modes.move)
-                task.start_date = new Date(task.end_date - diff);
+            if (dragMode === dragModes.move) {
+                task.start_date = new Date(task.end_date - taskDuration);
             }
-        if(+task.start_date < +leftLimit){
+        }
+
+        if (+task.start_date < +leftLimit) {
             task.start_date = new Date(leftLimit);
-            if(mode == modes.move)
-                task.end_date = new Date(+task.start_date + diff);
+            if (dragMode === dragModes.move) {
+                task.end_date = new Date(+task.start_date + taskDuration);
+            }
         }
     }
 });
 ~~~
 
+## Перетаскивание дочерних задач вместе с родителем
 
-[Drag parent task with its children](https://docs.dhtmlx.com/gantt/samples/08_api/05_limit_drag_dates.html)
-
-
-## Перетаскивание дочерних задач вместе с родительской {#draggingchildrentogetherwiththeparent}
-
-Чтобы при перемещении родительской задачи перетаскивались и её дочерние задачи, используйте событие [onTaskDrag](api/event/ontaskdrag.md) (подробнее об этом событии см. [выше](guides/dnd.md#preventingdraggingtasksoutsidecertaindates)):
+Чтобы позволить перетаскивать дочерние задачи, когда пользователь перетаскивает задачу родителя, используйте событие [onTaskDrag](api/event/ontaskdrag.md) (см. выше в разделе denyding-dragging-tasks-out-of-specific-dates):
 
 ~~~js
-gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
-    var modes = gantt.config.drag_mode;
-    if(mode == modes.move){
-        var diff = task.start_date - original.start_date;
-        gantt.eachTask(function(child){
-            child.start_date = new Date(+child.start_date + diff);
-            child.end_date = new Date(+child.end_date + diff);
+gantt.attachEvent("onTaskDrag", (taskId, dragMode, task, originalTask) => {
+    const dragModes = gantt.config.drag_mode;
+
+    if (dragMode === dragModes.move) {
+        const dateShift = task.start_date - originalTask.start_date;
+        gantt.eachTask((child) => {
+            child.start_date = new Date(+child.start_date + dateShift);
+            child.end_date = new Date(+child.end_date + dateShift);
             gantt.refreshTask(child.id, true);
-        },id );
+        }, taskId);
     }
 });
-// округляет позиции дочерних задач по текущему масштабу
-gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
-    var modes = gantt.config.drag_mode;
-    if(mode == modes.move ){
-        var state = gantt.getState();
-        gantt.eachTask(function(child){          
+
+// округление позиций дочерних элементов к масштабу
+gantt.attachEvent("onAfterTaskDrag", (taskId, dragMode, event) => {
+    const dragModes = gantt.config.drag_mode;
+
+    if (dragMode === dragModes.move) {
+        const ganttState = gantt.getState();
+        gantt.eachTask((child) => {
             child.start_date = gantt.roundDate({
-                date:child.start_date, 
-                unit:state.scale_unit, 
-                step:state.scale_step
-              });            
-              child.end_date = gantt.calculateEndDate(child.start_date, 
-                child.duration, gantt.config.duration_unit);
-              gantt.updateTask(child.id);
-        },id );
+                date: child.start_date,
+                unit: ganttState.scale_unit,
+                step: ganttState.scale_step
+            });
+            child.end_date = gantt.calculateEndDate(
+                child.start_date,
+                child.duration,
+                gantt.config.duration_unit
+            );
+            gantt.updateTask(child.id);
+        }, taskId);
     }
 });
 ~~~
 
-## Перетаскивание проектов вместе с подзадачами {#draggingprojectswithsubtasks}
+**Связанный пример**: [Перетащить родительскую задачу вместе с её дочерними](https://docs.dhtmlx.com/gantt/samples/08_api/05_limit_drag_dates.html)
+
+## Перетаскивание проектов с подзадачами {#draggingprojectswithsubtasks}
 
 :::info
-Эта возможность доступна только в редакции Gantt PRO.
+Эта функциональность доступна только в редакции Gantt PRO.
 :::
 
-По умолчанию задачи, помеченные как [тип project](api/config/types.md), не могут быть перетаскиваемыми.
-Вы можете включить перетаскивание проектов с помощью опции [drag_project](api/config/drag_project.md):
+Задачи типа [project type](api/config/types.md) по умолчанию не перетаскиваются.
+Вы можете включить перетаскивание проектов с помощью конфигурации [drag_project](api/config/drag_project.md):
 
 ~~~js
 gantt.config.drag_project = true;
 ~~~
 
+**Связанный пример**: [Перетаскиваемые проекты](https://docs.dhtmlx.com/gantt/samples/08_api/19_draggable_projects.html)
 
-[Draggable projects](https://docs.dhtmlx.com/gantt/samples/08_api/19_draggable_projects.html)
+## Перетаскивание зависимых задач совместно с независимыми задачами
 
+Существует несколько способов реализации перемещения задач вместе с их зависимыми задачами.
+О них можно узнать в отдельной статье [Перетаскивание задач вместе с зависимыми задачами](guides/dragging-dependent-tasks.md).
 
-## Перетаскивание зависимых задач вместе с независимыми {#draggingdependenttaskstogetherwithindependenttasks}
+## Установка минимальной продолжительности задачи
 
-Существует несколько способов перемещения задач вместе с их зависимыми задачами.
-Подробную информацию вы найдёте в отдельной статье: [Перетаскивание задач вместе с их зависимыми задачами](guides/dragging-dependent-tasks.md).
+Минимальная продолжительность задачи может быть задана с помощью настройки [min_duration](api/config/min_duration.md).
 
+Эта опция задаёт минимальный размер задачи, который можно задать при изменении размера, и может использоваться для предотвращения установки нулевой продолжительности.
 
-## Установка минимальной длительности задачи {#settingminimaltaskduration}
-
-Вы можете задать минимальную длительность задачи с помощью настройки [min_duration](api/config/min_duration.md).
-
-Этот параметр определяет минимальный размер задачи при изменении её длительности и предотвращает появление задач с нулевой длительностью.
-
-Значение указывается в миллисекундах:
+Значение устанавливается в миллисекундах:
 ~~~js
 // 1 день
-gantt.config.min_duration = 24*60*60*1000;
+gantt.config.min_duration = 24 * 60 * 60 * 1000;
 
-//ИЛИ
+// ИЛИ
 
 // 1 час
-gantt.config.min_duration = 60*60*1000;
+gantt.config.min_duration = 60 * 60 * 1000;
 ~~~
 
-## Автопрокрутка при перетаскивании задач {#autoscrollduringtasksdragging}
+## Автоскроллинг во время перетаскивания задач {#autoscrollduringtasksdragging}
 
-При работе с крупными Gantt-диаграммами перетаскивание задачи на большое расстояние или создание связей между удалёнными задачами может быть затруднено.
+Если у вас большой набор данных в диаграмме Ганта, часто возникает необходимость перетащить задачу на новое дальнее место или связать задачи, расположенные на значительном расстоянии.
 
-Функция **autoscroll** помогает автоматически прокручивать диаграмму во время перетаскивания. Она включена по умолчанию, но может быть управляемой через опцию [autoscroll](api/config/autoscroll.md).
+В этом случае функция автоскроллинга очень полезна. По умолчанию она включена, но управлять этим поведением можно через настройку
+[autoscroll](api/config/autoscroll.md).
 
 ~~~js
 gantt.config.autoscroll = false;
 gantt.init("gantt_here");
 ~~~
 
-Также вы можете настроить скорость автопрокрутки (в миллисекундах) с помощью свойства [autoscroll_speed](api/config/autoscroll_speed.md):
+Кроме того, вы можете настроить скорость автоскроллинга в миллисекундах с помощью соответствующей настройки - [autoscroll_speed](api/config/autoscroll_speed.md):
 
 ~~~js
 gantt.config.autoscroll = true;
 gantt.config.autoscroll_speed = 50;
- 
+
 gantt.init("gantt_here");
 ~~~
 
-## Отключение изменения размера для определённых задач {#disablingresizeofspecifictasks}
+## Отключение изменения размера конкретных задач
 
-Чтобы запретить изменение размера некоторых задач, есть два подхода:
+Если вы хотите запретить изменение размера для некоторых задач, можно сделать две вещи:
 
-1. Скрыть ручки изменения размера в интерфейсе с помощью CSS.
-Используйте шаблон **task_class**, чтобы добавить пользовательский CSS-класс для определённых задач:
+1. Удалить маркеры изменения размера задачи из интерфейса с помощью CSS.
+Для этого нужно использовать шаблон **task_class**, чтобы добавить дополнительный CSS-класс нужным элементам и можно было определить их по селектору:
 
 ~~~js
-gantt.templates.task_class = function(start, end, task){
-    if(task.no_resize) { // no_resize - это пользовательское свойство для примера
+gantt.templates.task_class = (startDate, endDate, task) => {
+    if (task.no_resize) { // no_resize — это пользовательское свойство, используемое для демонстрации
         return "no_resize";
     }
     return "";
+};
 ~~~
 
-Затем скройте ручки изменения размера с помощью CSS:
+Затем можно скрыть маркеры изменения размера, используя следующий CSS:
 
 ~~~css
-.no_resize .gantt_task_drag{
-   display: none !important;
+.no_resize .gantt_task_drag {
+    display: none !important;
 }
 ~~~
 
-2. Заблокировать изменение размера программно с помощью события [onBeforeTaskDrag](api/event/onbeforetaskdrag.md).
-Если обработчик возвращает *false*, изменение размера будет запрещено:
+2. Предотвращение перетаскивания через код с использованием события [onBeforeTaskDrag](api/event/onbeforetaskdrag.md).
+Возврат *false* из обработчика предотвратит изменение размера:
 
 ~~~js
-gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    if(mode === "resize" && gantt.getTask(id).no_resize){
+gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
+    if (dragMode === "resize" && gantt.getTask(taskId).no_resize) {
         return false;
     }
     return true;
 });
 ~~~
 
-## Определение, какая сторона задачи изменяется по размеру {#whichsideofataskisbeingresized}
+## Какая сторона задачи изменяется при изменении размера
 
-Режим "resize" в drag-and-drop означает, что пользователь изменяет либо дату начала, либо дату окончания задачи.
+Режим ["resize"](api/event/onbeforetaskdrag.md) перетаскивания означает, что пользователь изменяет размер задачи либо с даты начала, либо с даты окончания.
 
-Чтобы определить, какая дата изменяется, проверьте флаг **gantt.getState().drag_from_start**:
+Если нужно узнать, какая дата изменяется при изменении размера, можно использовать флаг **gantt.getState().drag_from_start**:
 
 ~~~js
-gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    if(mode === "resize"){
-        if(gantt.getState().drag_from_start === true) {
-            // изменяется дата начала
+gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
+    if (dragMode === "resize") {
+        if (gantt.getState().drag_from_start === true) {
+            // изменение даты начала задачи
         } else {
-            // изменяется дата окончания
+            // изменение даты окончания задачи
         }
     }
     return true;
 });
 ~~~
 
-## Отключение изменения даты начала или окончания задачи {#disablingresizeofthestartortheenddateofatask}
+## Отключение изменения размера начала или конца даты задачи
 
-Ручки изменения размера можно выбрать с помощью следующих селекторов:
+Вы можете локализовать маркеры изменения размера с использованием следующих селекторов:
 
-- .gantt_task_drag[data-bind-property="start_date"]
-- .gantt_task_drag[data-bind-property="end_date"]
+- `.gantt_task_drag[data-bind-property="start_date"]`
+- `.gantt_task_drag[data-bind-property="end_date"]`
 
-Чтобы отключить изменение даты начала, используйте такой CSS:
+Следующий CSS можно использовать для отключения изменения размера начала задач:
 
 ~~~css
-.gantt_task_drag[data-bind-property="start_date"]{
-   display: none !important;
+.gantt_task_drag[data-bind-property="start_date"] {
+    display: none !important;
 }
 ~~~
 
-Аналогично, чтобы отключить изменение даты окончания:
+Аналогично, чтобы запретить изменение размера конца дат, сделайте так:
 
 ~~~css
-.gantt_task_drag[data-bind-property="end_date"]{
-   display: none !important;
+.gantt_task_drag[data-bind-property="end_date"] {
+    display: none !important;
 }
 ~~~
 
-В качестве альтернативы, вы можете запретить изменение размера через событие [onBeforeTaskDrag](api/event/onbeforetaskdrag.md).
-Если обработчик возвращает *false*, изменение размера будет запрещено:
+Другой способ — использовать событие [onBeforeTaskDrag](api/event/onbeforetaskdrag.md).
+Возврат *false* из обработчика предотвратит изменение размера:
 
 ~~~js
-gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    if(mode === "resize"){
-        if(gantt.getState().drag_from_start === true) {
-             return false;
+gantt.attachEvent("onBeforeTaskDrag", (taskId, dragMode, event) => {
+    if (dragMode === "resize") {
+        if (gantt.getState().drag_from_start === true) {
+            return false;
         } else {
-             // изменение даты окончания разрешено
+            // изменение конца даты задачи
         }
     }
     return true;
 });
 ~~~
-

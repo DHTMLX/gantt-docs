@@ -1,7 +1,7 @@
 ---
 sidebar_label: resource_store
 title: resource_store config
-description: "resourceGrid/resourceTimeline/resourceHistogram 뷰와 연결된 dataStore의 이름을 지정합니다."
+description: "resourceGrid/resourceTimeline/resourceHistogram 뷰에 연결된 dataStore의 이름을 지정합니다"
 ---
 
 # resource_store
@@ -10,7 +10,7 @@ description: "resourceGrid/resourceTimeline/resourceHistogram 뷰와 연결된 d
 :::
 ### Description
 
-@short: ResourceGrid/resourceTimeline/resourceHistogram 뷰와 연결된 dataStore의 이름을 지정합니다.
+@short: resourceGrid/resourceTimeline/resourceHistogram 뷰에 연결된 dataStore의 이름을 지정합니다
 
 @signature: resource_store: string
 
@@ -79,7 +79,7 @@ resourcesStore.parse([
 
 ### Details
 
-"resourceGrid"와 "resourceTimeline" 뷰에 연결되는 datastore를 정의합니다. 또는 뷰의 "bind" 속성을 설정할 수도 있습니다.
+resourceGrid 뷰와 resourceTimeline 뷰에 바인딩될 datastore를 지정합니다. 대안으로 뷰의 "bind" 속성을 지정할 수도 있습니다.
 
 ### Related API
 - [resource_property](api/config/resource_property.md)

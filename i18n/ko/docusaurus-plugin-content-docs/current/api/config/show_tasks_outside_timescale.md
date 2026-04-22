@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_tasks_outside_timescale
-title: show_tasks_outside_timescale config
-description: "간트 차트에서 정의된 날짜 범위 밖에 있는 작업들을 표시할 수 있게 합니다."
+title: show_tasks_outside_timescale 구성
+description: "지정된 날짜 범위를 벗어난 작업을 Gantt 차트에 표시하도록 설정합니다"
 ---
 
 # show_tasks_outside_timescale
 
 ### Description
 
-@short: 간트 차트에서 정의된 날짜 범위 밖에 있는 작업들을 표시할 수 있게 합니다.
+@short: 지정된 날짜 범위를 벗어난 작업을 Gantt 차트에 표시합니다
 
 @signature: show_tasks_outside_timescale: boolean
 
@@ -22,18 +22,17 @@ gantt.config.show_tasks_outside_timescale = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**기본값:** false
 
 ### Related samples
-- [Tasks outside timescale](https://docs.dhtmlx.com/gantt/samples/01_initialization/20_tasks_outside_timescale.html)
+- [타임스케일 밖의 작업](https://docs.dhtmlx.com/gantt/samples/01_initialization/20_tasks_outside_timescale.html)
 
 ### Related API
 - [start_date](api/config/start_date.md)
 - [end_date](api/config/end_date.md)
 
 ### Related Guides
-- [스케일 설정하기](guides/configuring-time-scale.md#tasksoutsidetimescale)
+- [스케일 설정하기](guides/configuring-time-scale.md)
 
 ### Change log
-- v6.3 버전에 추가됨
-
+- v6.3에서 추가됨

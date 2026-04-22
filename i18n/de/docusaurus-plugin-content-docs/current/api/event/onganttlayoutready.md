@@ -1,14 +1,14 @@
 ---
 sidebar_label: onGanttLayoutReady
-title: onGanttLayoutReady event
-description: "wird ausgelöst, sobald das Gantt-Layout eingerichtet ist, jedoch unmittelbar bevor es gerendert wird"
+title: onGanttLayoutReady-Ereignis
+description: "Löst ein Ereignis aus, nachdem das Gantt-Layout bereit ist, aber bevor es gerendert wird"
 ---
 
 # onGanttLayoutReady
 
 ### Description
 
-@short: Wird ausgelöst, sobald das Gantt-Layout eingerichtet ist, jedoch unmittelbar bevor es gerendert wird
+@short: Wird ausgelöst, nachdem das Gantt-Layout bereit ist, aber bevor es gerendert wird
 
 @signature: onGanttLayoutReady: () =\> void;
 
@@ -16,6 +16,6 @@ description: "wird ausgelöst, sobald das Gantt-Layout eingerichtet ist, jedoch 
 
 ~~~jsx
 gantt.attachEvent("onGanttLayoutReady",function(){
-    // hier kann benutzerdefinierte Logik eingefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~

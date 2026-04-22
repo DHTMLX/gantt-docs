@@ -1,14 +1,14 @@
 ---
 sidebar_label: grid_width
 title: grid_width config
-description: "设置 grid 的宽度"
+description: "设置网格宽度"
 ---
 
 # grid_width
 
 ### Description
 
-@short: 设置 grid 的宽度
+@short: 设置网格的宽度
 
 @signature: grid_width: number
 
@@ -24,15 +24,17 @@ gantt.init("gantt_here");
 
 ### Details
 
-grid 列的宽度取决于两个因素:每列的 [width](api/config/columns.md) 和 grid 的整体宽度。如果列宽总和与 grid_width 不匹配，Gantt 会调整其中一个值。
+Grid 列的宽度取决于两个属性：列的 [width](api/config/columns.md) 与网格的宽度之和。如果列宽之和不等于网格宽度，Gantt 将修改其中一个参数。
 
-- 当使用 [gantt.init()](api/method/init.md) 初始化 gantt 时，列的 [width](api/config/columns.md) 优先。
-- 当使用 [gantt.render()](api/method/render.md) 渲染 gantt 时，**grid_width** 优先。<br>
+- 当通过 [gantt.init()](api/method/init.md) 初始化 Gantt 时，列的 [width](api/config/columns.md) 是优先的。
+- 当通过 [gantt.render()](api/method/render.md) 渲染 Gantt 时，**grid_width** 是优先的。
+
 :::note
-Sample: [Adjustment of column width ](https://snippet.dhtmlx.com/5/36b6baa89) 
-:::
-- 当使用 [gantt.init()](api/method/init.md) 初始化 gantt 且列宽未指定或设置为 **'*'** 时，**grid_width** 会被优先考虑。<br>
-:::note
-Sample: [Adjusting column width](https://snippet.dhtmlx.com/5/a35378204) 
+示例：[列宽调整](https://snippet.dhtmlx.com/5/36b6baa89)
 :::
 
+- 当通过 [gantt.init()](api/method/init.md) 初始化 Gantt，且列宽未指定或设为 **'*'** 时，**grid_width** 是优先的。
+
+:::note
+示例：[调整列宽](https://snippet.dhtmlx.com/5/a35378204)
+:::

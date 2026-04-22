@@ -1,23 +1,23 @@
 ---
 sidebar_label: Promise
-title: Promise method
-description: "Promise 对象的构造函数"
+title: Promise 方法
+description: "Promise 对象构造函数"
 ---
 
 # Promise
 
 ### Description
 
-@short: Promise 对象的构造函数
+@short: Promise 对象构造函数
 
 @signature: Promise: new (executor: (resolve: (value?: any) =\> void, reject: (reason?: any) =\> void) =\> void) =\> Promise\<unknown\>
 
 ### Parameters
 
-- `executor` - (required) *function* - 用于设置 promise 的回调函数
+- `executor` - (required) *function* - 一个用于初始化 Promise 的回调函数
 
 ### Returns
-- ` promise` - (object) - 返回生成的 promise 对象
+- ` promise` - (object) - 这个 Promise 对象
 
 ### Example
 
@@ -33,4 +33,4 @@ new gantt.Promise(function(resolve, reject) {
 
 ### Details
 
-这是来自 [Bluebird](http://bluebirdjs.com/docs/why-bluebird.html) 的 Promise 对象构造函数，已包含在 Gantt 库中。
+[Bluebird](http://bluebirdjs.com/docs/why-bluebird.html) Promise 对象构造函数，与 Gantt 库一起打包。

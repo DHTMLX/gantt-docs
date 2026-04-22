@@ -1,18 +1,18 @@
 ---
 sidebar_label: $click
-title: $click config
-description: "изменяет действия по умолчанию при клике на кнопки в диаграмме Ганта"
+title: Конфигурация $click
+description: "переопределяет поведение клика по умолчанию для кнопок диаграммы Ганта"
 ---
 
 # $click
 
-### Description
+### Описание
 
-@short: Изменяет действия по умолчанию при клике на кнопки в диаграмме Ганта
+@short: Переопределяет поведение клика по умолчанию для кнопок диаграммы Ганта
 
 @signature: $click: any
 
-### Example
+### Пример
 
 ~~~jsx
 gantt.config.quickinfo_icons=["icon_delete","icon_edit","advanced_details_button"]; 
@@ -21,17 +21,17 @@ gantt.init("gantt_here");
 
 gantt.$click.advanced_details_button=function(e, id, trg){
     gantt.message("These are advanced details"); 
-    return false; // предотвращает стандартное поведение
+    return false; //blocks the default behavior
 };
 ~~~
 
 ### Details
 
 :::note
- Поведение кнопки будет обновлено как для lightbox, так и для всплывающей подсказки quick info. 
+Поведение кнопки будет переопределено как для lightbox, так и для quick info popup.
 :::
 
-Объект $click в стандартной диаграмме Ганта выглядит так:
+Объект $click диаграммы Ганта по умолчанию:
 
 ~~~js
 {

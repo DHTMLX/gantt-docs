@@ -20,7 +20,7 @@ const obj = gantt.xml; // -> { parse(text,loader){...}, serialize(){... }}
 
 ### Details
 
-XML 对象包含两个主要方法:
+The XML object contains 2 members:
 
-- **parse()** 方法 - 负责 dhtmlxGantt 如何读取和解析 XML 格式的数据。
-- **serialize()** 方法 - 负责 dhtmlxGantt 如何将数据转换回 XML 格式。
+- **parse()** 方法 - 定义 dhtmlxGantt 将如何解析 XML 格式的数据。
+- **serialize()** 方法 - 定义 dhtmlxGantt 将数据序列化为 XML 格式的方式。

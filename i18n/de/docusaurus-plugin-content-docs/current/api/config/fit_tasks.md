@@ -1,14 +1,14 @@
 ---
 sidebar_label: fit_tasks
-title: fit_tasks config
-description: "'weist' das Gantt-Diagramm an, die Zeitskala automatisch anzupassen, um alle angezeigten Aufgaben darzustellen"
+title: fit_tasks Konfiguration
+description: "'says' der Gantt-Diagramm veranlasst, die Zeitachse automatisch zu erweitern, um alle dargestellten Aufgaben unterzubringen"
 ---
 
 # fit_tasks
 
 ### Description
 
-@short: 'weist' das Gantt-Diagramm an, die Zeitskala automatisch anzupassen, um alle angezeigten Aufgaben darzustellen
+@short: "'says' der Gantt-Diagramm veranlasst, die Zeitachse automatisch zu erweitern, um alle dargestellten Aufgaben unterzubringen"
 
 @signature: fit_tasks: boolean
 
@@ -19,10 +19,10 @@ gantt.config.fit_tasks = true; /*!*/
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
-- [Auto resize scale](https://docs.dhtmlx.com/gantt/samples/03_scales/08_scale_autoconfig.html)
+- [Automatische Skalierung der Skala](https://docs.dhtmlx.com/gantt/samples/03_scales/08_scale_autoconfig.html)
 
 ### Details
 
@@ -35,10 +35,7 @@ Beachten Sie, dass dieses Verhalten durch die Einstellungen [start_date](api/con
 
 Wenn Sie möchten, dass sich die Zeitskala dynamisch basierend auf dem Datumsbereich anpasst, können Sie entweder die Einstellungen [start_date](api/config/start_date.md) und [end_date](api/config/end_date.md) weglassen oder [den Zeitbereich dynamisch verwalten](guides/configuring-time-scale.md#range).
 
-<br>
-
-**Zum Beispiel beträgt die Anfangsdauer der Aufgabe "Project #2" 6 Tage.**
-
+**Beispiel:** Die anfängliche Dauer der Aufgabe "Project #2" beträgt 6 Tage.
 
 ![property_fit_tasks_01](/img/property_fit_tasks_01.png)
 
@@ -49,13 +46,12 @@ Wenn die Dauer auf 8 Tage verlängert wird, reagiert das Gantt-Diagramm je nach 
 
 ![property_fit_tasks_02](/img/property_fit_tasks_02.png)
 
-- **gantt.config.fit_tasks = true;** 
-
+- **gantt.config.fit_tasks = true;**
 ![property_fit_tasks_03](/img/property_fit_tasks_03.png)
+
 
 ### Related API
 - [onScaleAdjusted](api/event/onscaleadjusted.md)
 - [end_date](api/config/end_date.md)
 - [start_date](api/config/start_date.md)
 - [init](api/method/init.md)
-

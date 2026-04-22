@@ -1,13 +1,13 @@
 ---
-title: "Konfiguration von Abhängigkeitsverbindungen"
-sidebar_label: "Konfiguration von Abhängigkeitsverbindungen"
+title: "Konfiguration von Abhängigkeitsverknüpfungen"
+sidebar_label: "Konfiguration von Abhängigkeitsverknüpfungen"
 ---
 
-# Konfiguration von Abhängigkeitsverbindungen
+# Konfiguration von Abhängigkeitsverknüpfungen
 
 ![gantt_arrows](/img/gantt_arrows.png)
 
-- [Link Properties](guides/link-properties.md)
-- [Getting the Link Object/Id](guides/link-object-operations.md)
-- [Adding/Updating/Deleting Links](guides/crud-dependency.md)
-- [Auto Scheduling](guides/auto-scheduling.md)
+- [Link-Eigenschaften](guides/link-properties.md)
+- [Abrufen des Link-Objekts/der ID](guides/link-object-operations.md)
+- [Hinzufügen/Aktualisieren/Löschen von Links](guides/crud-dependency.md)
+- [Automatische Terminplanung](guides/auto-scheduling.md)

@@ -1,16 +1,16 @@
 ---
 sidebar_label: onParse
 title: onParse event
-description: "데이터가 파싱되어 API 준비가 완료된 시점에 트리거되며, Gantt 차트에 표시되기 전 이벤트입니다."
+description: "데이터가 파싱된 직후(API에서 사용할 수 있게 된 상태이지만) Gantt 차트에 렌더링되기 전"
 ---
 
 # onParse
 
 ### Description
 
-@short: 데이터가 파싱되어 API 준비가 완료된 시점에 트리거되며, Gantt 차트에 표시되기 전 이벤트입니다.
+@short: 데이터를 파싱한 직후(API에서 사용할 수 있게 된 상태이지만) Gantt 차트에 렌더링되기 전
 
-@signature: onParse: () =\> void;
+@signature: onParse: () => void;
 
 ### Example
 
@@ -30,4 +30,3 @@ gantt.parse(demo_tasks);
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

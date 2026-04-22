@@ -1,53 +1,54 @@
 ---
-title: "获取 Link 对象/ID"
-sidebar_label: "获取 Link 对象/ID"
+title: "获取链接对象/Id"
+sidebar_label: "获取链接对象/Id"
 ---
 
-# 获取 Link 对象/ID
+# 获取链接对象/Id
 
-在 Gantt 图中处理链接时，了解如何访问链接的对象或 id 非常重要。大多数方法都需要将链接对象（或 id）作为输入参数。此外，自定义与链接相关的场景也需要引用链接对象或 id 才能正常工作。
+要在甘特图中处理链接，您需要了解如何获取链接的对象或 id。首先，
+大多数方法将链接的对象(id)作为参数。其次，若要实现链接的自定义场景，必须引用链接的对象(id)。
 
 ## 获取链接对象
 
-要获取一个链接对象，请使用 [getLink](api/method/getlink.md) 方法:
+要获取链接对象，请使用 [getLink](api/method/getlink.md) 方法：
 
 ~~~js
 gantt.getLink("link1");                //-> {id:"link1", source:1, target:2, type:1}
 ~~~
 
-## 获取 Gantt 图中的所有链接 
+## 从甘特图获取所有链接
 
-要获取当前图表中显示的所有链接，请使用 [getLinks](api/method/getlinks.md) 方法，如下所示:
+要获取图表中显示的所有链接，请使用 [getLinks](api/method/getlinks.md) 方法，如下：
 
 ~~~js
 var links = gantt.getLinks(); 
 ~~~
 
-这将返回一个包含所有链接对象的数组。
+它将返回一个链接对象的数组。
 
 ## 获取与某个任务相关的链接
 
-要查找与特定任务相关的链接，请检查任务对象的 **$source** 和 **$target** 属性。
+要获取与任务相关的链接，请使用任务对象的 **$source**、**$target** 属性。
 
-这些属性是自动生成的，包含相关链接的 id:
+ 这些属性是自动生成的，用于存储相关链接的 ID：
 
-- **$source** - 从该任务出发的链接。
-- **$target** - 指向该任务的链接。
+- **$source** - 从该任务发出的链接。
+- **$target** - 进入该任务的链接。
 
 ~~~js
 var taskObj = gantt.getTask("t1");
 
-var sourceLinks = taskObj.$source;        //-> ["l1","l4"] - 出发链接的 id  /*!*/
-var targetLinks = taskObj.$target;       //-> ["l5","l8"] - 指向链接的 id  /*!*/
+var sourceLinks = taskObj.$source;        //-> ["l1","l4"] - 来自任务的链接的 ID  /*!*/
+var targetLinks = taskObj.$target;       //-> ["l5","l8"] - 进入该任务的链接的 ID  /*!*/
 ~~~
 
-**task.$source** 和 **task.$target** 是[任务对象的动态属性](guides/loading.md#shujushuxing)，包含与该任务连接的链接 id。这些属性不会存储在数据库中，而是在数据加载后动态添加到任务对象中。
+**task.$source** 与 **task.$target** 是 [任务对象的动态属性](guides/loading.md#dataproperties) 并包含与任务连接的链接的 ID。 这些属性并未存储在数据库中，而是在数据加载完成后动态添加到任务对象中。
 
 ~~~js
 const task = gantt.getTask(1);
 const source = task.$source;
-// 从该任务出发的链接，
-// `task #1` 在这些关系中作为前置任务
+// 来自任务的链接，
+// `task #1` 在这些关系中是一个前驱
 
 source.forEach(function(linkId) {
    const link = gantt.getLink(linkId);
@@ -56,8 +57,8 @@ source.forEach(function(linkId) {
 });
 
 const target = task.$target;
-// 指向该任务的链接，
-// `task #1` 在这些关系中作为后继任务
+// 进入任务的链接，
+// `task #1` 在这些关系中是一个后继
 
 target.forEach(function(linkId) {
    const link = gantt.getLink(linkId);
@@ -66,9 +67,9 @@ target.forEach(function(linkId) {
 });
 ~~~
 
-## 获取链接 id
+## 获取链接的 ID
 
-通常，链接的 id 可以在数据集的 *links* 对象中找到。
+通常，您可以从数据集的 *links* 对象获取链接的 ID。 
 
 ~~~js
 {
@@ -81,23 +82,20 @@ target.forEach(function(linkId) {
 }
 ~~~
 
-
-如果需要查找具有特定 "*target*"、"*source*" 或 "*type*" 值的链接 id，可以使用如下方法:
+如果您想获取具有特定 "*target*", "*source*" 或 "*type*" 值的链接的 ID，请使用如下方法：
 
 ~~~js
-// 查找从 id="1" 的任务到 id="2" 的任务的链接
-var links = gantt.serialize().links;                             // 返回所有链接
-for(var i="0;" i < links.length; i++){                             // 遍历所有链接
+//搜索从任务 id="1" 到任务 id="2" 的链接
+var links = gantt.serialize().links;                             //returns all links
+for(var i="0;i<links.length;" i++){                              //遍历所有链接
    if ( (links[i].source == 1) && (links[i].target == 2) )
        var linkId = links[i].id;
 };
 ~~~
 
-## 更改链接 id
+## 更改链接 ID
 
-要更新已有链接的 id，请使用 [changeLinkId](api/method/changelinkid.md) 方法:
-
+要更改链接的当前 ID，请使用 [changeLinkId](api/method/changelinkid.md) 方法：
 ~~~js
-gantt.changeLinkId(1274, "link14");          // 将链接 id 从 1274 更改为 "link14"
+gantt.changeLinkId(1274, "link14");          //changes the link id: 1274 -> "link14"
 ~~~
-

@@ -1,11 +1,151 @@
 ---
-title: "Was ist neu"
-sidebar_label: "Was ist neu"
+title: "Was gibt es Neues"
+sidebar_label: "Was gibt es Neues"
 ---
 
-# Was ist neu
+# Was gibt es Neues
 
-Wenn Ihre aktuelle Version von dhtmlxGantt älter als 2.0 ist, lesen Sie die [Migration von älteren Versionen](migration.md) für Details zum Update.
+:::note
+Aktualisieren Sie von einer früheren Version? Prüfen Sie die [Migrationsanleitung](migration.md) auf erforderliche Änderungen und Schritte zur Aktualisierung.
+:::
+
+## 9.1.3
+
+<span class='release_date'>16. März 2026. Fehlerbehebungs-Release</span>
+
+### Fehlerbehebungen
+
+- Beheben Sie das Problem, dass die [Zoom-Funktionalität](guides/zooming.md) nicht funktionierte, wenn das Hauptgitter und die Timeline beim initialen Anzeigen nicht im [Layout](guides/layout-config.md) angezeigt wurden
+- Beheben Sie das Problem, dass Skalenzellen in der [Ressourcen-Timeline](guides/resource-management.md#resourceviewpanel) nach dem Ändern des Zoom-Levels verschwanden
+- Beheben Sie das Problem, dass Timeline-Zellen nach dem Scrollen der Timeline nach rechts und dem Ändern des [Zoom-Levels](guides/zooming.md) während des Exports verschwanden
+- Beheben Sie das Problem, dass Skalenzellen nach der Fenstergröße verschwanden, wenn die Timeline nach rechts gescrollt war und die [Zoom-Erweiterung](guides/zooming.md) aktiviert war
+- Beheben Sie das Problem, dass Aufgaben verschwanden, nachdem das [Zoom-Level](guides/zooming.md) geändert wurde, wenn [open_split_tasks](api/config/open_split_tasks.md) aktiviert war
+- Beheben Sie das Problem, dass [Rollup]-Aufgaben nicht korrekt angezeigt wurden bei großen Datensätzen, bis die übergeordnete Aufgabe interagiert wurde
+- Beheben Sie das Problem, dass [nicht geplante Aufgaben](guides/unscheduled-tasks.md) nicht angezeigt wurden, wenn [show_unscheduled](api/config/show_unscheduled.md) auf `false` gesetzt war und ein Datumsbereich konfiguriert war
+- Beheben Sie das Problem, dass das [Ressourcen-Gitter](guides/resource-management.md#resourceviewpanel) verschwand, wenn [Tastaturnavigation](guides/keyboard-navigation.md) aktiviert war und der Ressourcen-Datenspeicher ohne Baumstruktur initialisiert wurde
+- Beheben Sie die Overflow-Stile des [Schnellinfo-Popups](guides/quick-info.md) bei langen Inhalten
+
+### Aktualisierungen
+
+- Automatische Erkennung und Unterstützung für [ISO-Datumsformat](guides/date-format.md) Zeichenketten in Aufgaben-Daten hinzufügen. ISO 8601-Daten (z. B. `"2026-01-06"`, `"2026-01-06T10:30:45Z"`) werden nun automatisch analysiert und serialisiert, ohne manuelle Vorlagenüberschreibungen zu benötigen
+
+## 9.1.2
+
+<span class='release_date'>27. Februar 2026. Fehlerbehebungs-Release</span>
+
+- Beheben Sie das Problem, dass Gantt nach dem Umordnen von Aufgaben oder dem Erstellen von Verknüpfungen verschwinden konnte, wenn der `touch`-Modus aktiviert war und Gantt im Shadow DOM gerendert wurde
+- Beheben Sie die Option `initial_scroll` in [React Gantt](integrations/react.md), sodass das Diagramm beim Initialisieren zum ersten Task scrollt
+- Beheben Sie das Problem, dass Aufgaben-Zuweisungen nach Drag-and-Drop nicht korrekt aktualisiert wurden, wenn Änderungen innerhalb von [gantt.batchUpdate()](api/method/batchupdate.md) vorgenommen wurden
+- Beheben Sie ein Speicherleck im Renderer der Hintergrundzeilen-Aufgabe
+- Beheben Sie, dass die Skalprojektion in [React Gantt](integrations/react.md) nicht funktionierte
+- Beheben Sie das Fehlen der Darstellung von [baselines](guides/inbuilt-baselines.md), die über einen Datenspeicher hinzugefügt wurden
+- Beheben Sie das Problem, dass Gantt nach der Angabe einer ungültigen [Layout-Konfiguration](guides/layout-config.md) nicht mehr funktionierte
+
+## 9.1.1
+
+<span class='release_date'>15. Dezember 2025. Fehlerbehebungs-Release</span>
+
+### Fehlerbehebungen
+
+- Beheben Sie den Fehler, der in [React Gantt](integrations/react.md) auftrat, wenn der Benutzer die `links`-Eigenschaft ohne die `tasks`-Eigenschaft übergab
+- Beheben Sie das Problem in [React Gantt](integrations/react.md), bei dem nach dem Neuladen Aufgaben keine Link-IDs in ihren `$source`- und `$target`-Eigenschaften hatten
+- Beheben Sie das Problem, dass Gantt den Inline-Editor nach dem Drücken der **Meta**-Taste öffnete
+- Beheben Sie das `%w`-Datumsformat, das in CSP-Produktionsumgebungen nicht korrekt funktionierte
+- Beheben Sie das Problem, das verhinderte, dass [Gruppenaufgaben](api/method/groupby.md) als [Split-Aufgaben](guides/split-tasks.md) angezeigt wurden, wenn sie `render="split"` angegeben hatten
+- Beheben Sie das Problem, dass das Ressourcen-Gitter verschwand, wenn nach dem Bearbeiten einer Ressourcen-Zelle die **Tab**-Taste gedrückt wurde
+
+### Aktualisierungen 
+
+- Ermöglicht das Konfigurieren von Höhe von Zeilen- und Balken in [virtuellen Aufgaben](api/method/groupby.md)
+
+## 9.1
+
+<span class='release_date'>5. November 2025. Kleinupdate</span>
+
+### Breaking Changes
+
+Dieses Update führt einige Änderungen in der Struktur des Gantt-Pakets und dem Verhalten der Funktionalität ein. Stellen Sie sicher, dass Sie die 
+[Hinweise zur Migration](migration.md#90---91) prüfen, um auf der sicheren Seite zu bleiben.
+
+### Neue Funktionalität
+
+- [Multi-user backend](guides/multiuser-live-updates.md) Modul für Echtzeit-Updates ist hinzugefügt
+- [Remote updates API](guides/multiuser-live-updates.md#remote-updates-api) zur Verwaltung der Synchronisierung von Daten in Echtzeit ist hinzugefügt
+- Neue [Resource Assignments control](guides/resource-assignments.md) wurde eingeführt, um die Funktionalität der [Resources](guides/resources.md) Steuerung zu erweitern
+- Die Möglichkeit, Aufgaben in Day/Week-Skala basierend auf tatsächlichen Arbeitsstunden statt dem festen 24-Stunden-Zeitraum anzuzeigen
+- Die Fähigkeit, Split-Subtasks abhängig vom Zustand der übergeordneten Zeile zu rendern
+
+
+### Aktualisierungen
+
+- Die Möglichkeit, die Größe von [Timeline-Zellen](guides/configuring-time-scale.md#fixed-column-width) festzulegen, wurde hinzugefügt
+- Unterstützung zum Spezifizieren von [Datumsangaben in der Kalenderkonfiguration](api/method/addcalendar.md) wurde hinzugefügt
+- Ein [Konfigurationsobjekt](api/config/auto_scheduling.md) für [Auto Scheduling](guides/auto-scheduling.md) zur Vereinfachung der Einrichtung wurde hinzugefügt
+- Verbesserte Touchscreen-Unterstützung für Windows-Geräte wurde hinzugefügt
+- Die veraltete **subscales** API wurde entfernt
+
+### Fehlerbehebungen
+
+- Beheben Sie das Problem, bei dem [exporttoexcel](api/method/exporttoexcel.md) mit `visual:true` und benutzerdefinierten Daten fehlschlug, wenn die Timeline versteckt war
+- Beheben Sie das Problem, bei dem [exporttopdf](api/method/exporttopdf.md) mit der Einstellung `additional_settings.slice_archive` eine unvollständige Anzeige von Gantt verursachte
+- Verhindern Sie, dass [unscheduled tasks](guides/unscheduled-tasks.md) in Excel-Exports enthalten sind
+- Fügen Sie Unterstützung zum Exportieren von [split tasks](guides/split-tasks.md) in der Excel-Ausgabe hinzu
+- Beheben Sie die fehlerhafte Anzeige des [Resource Histogram](guides/resource-management.md#resourceviewpanel) nach dem Resize
+- Beheben Sie das Problem mit Überschneidungen von Aufgaben beim Ändern des Zoom-Levels
+
+
+## 9.0.15
+
+<span class='release_date'>19. September 2025. Fehlerbehebungs-Release</span>
+
+### Fehlerbehebungen
+
+- Beheben Sie das Problem, bei dem Gantt die Wochentage-Konfiguration von `customWeeks` ignorierte, wenn sie über die [setWorkTime](api/method/setworktime.md) Methode gesetzt wurde
+- Verbessern Sie die Unterstützung für [Shadow DOM](https://html.spec.whatwg.org/multipage/custom-elements.html) innerhalb von Elementen von Gantt
+- Beheben Sie das Problem in [React Gantt](integrations/react.md), bei dem mehrere Komponenteninstanzen zu duplizierten Vorlagen führten
+
+## 9.0.14
+
+<span class='release_date'>31. Juli 2025. Fehlerbehebungs-Release</span>
+
+### Fehlerbehebungen
+
+- Beheben Sie den Script-Fehler, der nach dem Schließen von [Modalbox](guides/message-boxes.md) ausgelöst wurde
+- Verhindern Sie die Erstellung einer leeren Zeile im Baum nach dem erneuten Parsen von Daten im Modus [grouped](api/method/groupby.md)
+- Stellen Sie sicher, dass die Methode [setWorkTime](api/method/setworktime.md) **customWeeks** in Firefox korrekt anwendet
+- Beheben Sie das Problem, dass das Aufrufen von [setTasks](integrations/react.md) mit einem leeren Datensatz die React Gantt-Komponente beeinträchtigte
+
+
+## 9.0.13
+
+<span class='release_date'>26. Juni 2025. Fehlerbehebungs-Release</span>
+
+### Fehlerbehebungen
+
+- Beheben Sie das Problem, dass Gantt nach dem Erstellen und Löschen eines doppelten Links unbrauchbar wurde
+- Sicherstellen, dass Link-Platzhalter auf Touch-Geräten korrekt angezeigt werden
+- Beheben Sie das Problem, dass das `end_date` eines Projekts nicht aktualisiert wird, wenn es ein einzelnes Meilenstein-Untergeordnetes hat
+- Verhindern unnötiger Neuzeichnungen von Ressourcenobjekten bei der Verwendung eines benutzerdefinierten Datastore
+- Beheben Sie das Problem, dass beim stillen Aufruf von [gantt.addLink](api/method/addlink.md) ein falscher Zustand des internen Datenspeichers resultierte
+- Verhindern Sie, dass [DataProcessor](guides/server-side.md) die Eigenschaft `!nativeeditor_status` an Argumente des [custom router](guides/server-side.md#customrouting) anhängt
+- Beheben Sie falsche Behandlung von Änderungen der Props `tasks` und `links` im [React Gantt](integrations/react.md) Component
+
+
+## 9.0.12
+
+<span class='release_date'>19. Juni 2025. Fehlerbehebungs-Release</span>
+
+### Fehlerbehebungen
+
+- Stellen Sie sicher, dass der Skin [contrast-white](guides/skins.md#contrastwhiteskin) Farbkontrast-Tests besteht
+- Beheben Sie das Problem, dass [dynamic loading](guides/dynamic-loading.md) nach dem Aufruf von [gantt.clearAll()](api/method/clearall.md) nicht mehr funktioniert
+- Verhindern Sie, dass der [Tooltip](guides/tooltips.md) außerhalb des Gantt-Containers gerendert wird, wenn langer Text angezeigt wird
+- Beheben Sie das Problem, dass [Server-Updates](guides/server-side.md) nicht abgeschlossen wurden, wenn [keyboard navigation](guides/keyboard-navigation.md) aktiv war
+- Beheben Sie das falsche Verhalten benutzerdefinierter Klassennamen, die auf [Meilenstein-Grundlagen](guides/inbuilt-baselines.md) angewendet wurden
+
+### Aktualisierungen
+
+- [React Gantt](integrations/react.md) ist jetzt kompatibel mit den SSR-Frameworks **Next.js** und **Remix** ohne zusätzliche Konfiguration
 
 ## 9.0.11
 

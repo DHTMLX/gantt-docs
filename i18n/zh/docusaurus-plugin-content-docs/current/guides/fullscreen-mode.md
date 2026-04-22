@@ -5,15 +5,15 @@ sidebar_label: "全屏模式"
 
 # 全屏模式
 
-从 3.3 版本开始，库提供了 **fullscreen** 扩展。
+从版本 3.3 开始，库中包含了 **fullscreen** 扩展。
 
-该扩展允许组件在支持 FullScreen API 的情况下切换到全屏模式（[支持的浏览器列表](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)）。
+此扩展提供一个 API，通过尽可能使用 FullScreen API 将组件扩展到全屏模式（[受支持的浏览器列表](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)）。
 
 <div style="text-align:center;">![full_screen](/img/full_screen.png)</div>
 
-对于旧版浏览器，则会将甘特图拉伸以填满窗口的 100%。
+对于较旧的浏览器，它只允许将 Gantt 扩展到窗口大小的 100%。
 
-要启用全屏支持，请通过 [gantt.plugins](api/method/plugins.md) 方法激活 **fullscreen** 插件:
+要启用全屏支持，请通过 [gantt.plugins](api/method/plugins.md) 方法启用 **fullscreen** 插件：
 
 ~~~js
 gantt.plugins({
@@ -21,7 +21,7 @@ gantt.plugins({
 });
 ~~~
 
-组件本身不包含内置的 UI 控件用于切换全屏模式，因此你需要自行添加，或者使用以下示例:
+组件本身没有切换此模式的 UI 控件，您需要在页面上某处添加它，或从示例中复制一个：
 
 ~~~js
 <input id="fullscreen_button" type="button" value="Toggle Fullscreen"/>
@@ -41,7 +41,7 @@ var button = document.getElementById("fullscreen_button");
 </script>
 ~~~
 
-点击按钮即可在原始大小和全屏模式之间切换甘特图。
+点击就绪图标将把 Gantt 的大小从原始尺寸切换到“全屏”，反之亦然。
 
 
 [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
@@ -49,96 +49,96 @@ var button = document.getElementById("fullscreen_button");
 
 ## API 概览
 
-有两个主要方法用于控制甘特图的显示模式:
+有两种方法用于操作 Gantt 的显示模式：
 
-- [expand](api/method/expand.md) - 将甘特图切换为全屏模式
+- [expand](api/method/expand.md) - 将 gantt 展开到全屏模式
 
 ~~~js
 gantt.expand();
 ~~~
 
-- [collapse](api/method/collapse.md) - 将甘特图从全屏恢复为正常模式
+- [collapse](api/method/collapse.md) - 将 gantt 从全屏模式折叠到正常模式
 
 ~~~js
 gantt.collapse();
 ~~~
 
-## 支持的事件
+## 事件列表
 
-以下事件可用于处理全屏状态的变化:
+支持的事件如下列出：
 
-- [onBeforeExpand](api/event/onbeforeexpand.md)
+- [on BeforeExpand](api/event/onbeforeexpand.md)
 - [onBeforeCollapse](api/event/onbeforecollapse.md)
 - [onExpand](api/event/onexpand.md)
 - [onCollapse](api/event/oncollapse.md)
 
 ~~~js
-// 在甘特图切换到全屏之前
+// 在 gantt 被扩展到全屏之前
 gantt.attachEvent("onBeforeExpand",function(){
-    // 此处可添加自定义逻辑    
+    // 任何自定义逻辑在此处    
     return true;
 });
 
-// 在退出全屏模式之前
+// 在 gantt 退出全屏模式之前
 gantt.attachEvent("onBeforeCollapse",function(){
-    // 此处可添加自定义逻辑    
+    // 任何自定义逻辑在此处    
     return true;
 });
 
-// 甘特图已切换到全屏后
+// 当 gantt 被扩展到全屏时
 gantt.attachEvent("onExpand", function (){
-    // 此处可添加自定义逻辑
+    // 任何自定义逻辑在此处
 });
 
-// 甘特图已退出全屏后
+// 当 gantt 退出全屏模式时
 gantt.attachEvent("onCollapse", function (){
-    // 此处可添加自定义逻辑
+    // 任何自定义逻辑在此处
 });
 ~~~
 
 ## Fullscreen API
 
-[fullscreen](guides/fullscreen-ext.md) 对象提供四个方法，用于管理甘特图及其他元素的全屏行为:
+有四个来自 [fullscreen](guides/fullscreen-ext.md) 对象的方法，用于在与附加元素一起控制 Gantt 的显示模式：
 
-- **expand()** - 将甘特图切换为全屏
+- **expand()** - 将 gantt 展开到全屏模式
 
 ~~~js
 gantt.ext.fullscreen.expand();
 ~~~
 
-- **collapse()** - 退出全屏并恢复甘特图为正常大小
+- **collapse()** - 将 gantt 从全屏模式折叠到正常模式
 
 ~~~js
 gantt.ext.fullscreen.collapse();
 ~~~
 
-- **toggle()** - 在全屏与正常模式之间切换
+- **toggle()** - 如果 gantt 已展开到全屏，则调用 **collapse()**，否则调用 **expand()**
 
 ~~~js
 gantt.ext.fullscreen.toggle();
 ~~~
 
-- **getFullscreenElement()** - 返回调用 **expand()** 时将被扩展为全屏的 DOM 元素
+- **getFullscreenElement()** - 返回一个 DOM 元素，该元素将被 **expand()** 方法扩展到全屏。 
 
 ~~~js
 gantt.ext.fullscreen.getFullscreenElement();
 ~~~
 
-默认情况下，**getFullscreenElement()** 返回甘特图的 HTML 容器。你可以重写此方法以在全屏模式下包含其他元素，具体说明见 [此处](guides/fullscreen-mode.md#gantetudaitoubugongjulandequanpingmoshi)。
+默认情况下，**getFullscreenElement()** 方法返回 Gantt 图的 HTML 容器。您可以重新定义此方法 [将 gannt 与附加元素扩展到全屏模式](guides/fullscreen-mode.md#gantt-with-the-headertoolbar-in-the-fullscreen)。
 
-## 甘特图带头部/工具栏的全屏模式
+## Gantt 在全屏中的头部/工具栏
 
-通过 *fullscreen* 对象的 **getFullscreenElement()** 方法，Gantt API 允许将全屏模式扩展到其他元素:
+Gantt API 提供一个通过 *fullscreen* 对象的 getFullscreenElement() 方法将 gantt 扩展到全屏模式的可能性：
 
 ~~~js
 gantt.ext.fullscreen.getFullscreenElement();
 ~~~
 
 :::note
-默认情况下，该方法返回甘特图的 HTML 容器，因此只有甘特图会进入全屏。
+默认情况下，此方法返回 Gantt 图的 HTML 容器。这意味着只有 Gantt 将被扩展到全屏。
 :::
 
-如果你希望在全屏时显示甘特图及额外元素（如头部或工具栏），可在页面上创建自定义容器，例如:
+如果您希望在全屏中显示带有附加元素（如头部或工具栏）的 gantt，需要在页面上添加一个自定义容器，如下所示：
 
 ~~~html
 <div id="myCover">
@@ -150,7 +150,8 @@ gantt.ext.fullscreen.getFullscreenElement();
 </div>
 ~~~
 
-然后重写 **getFullscreenElement()** 方法，使其返回你希望全屏显示的自定义容器:
+
+之后，您需要重新定义 **getFullscreenElement()** 方法，以返回一个自定义根节点，该节点将被扩展到全屏：
 
 ~~~js
 gantt.ext.fullscreen.getFullscreenElement = function() {
@@ -163,33 +164,32 @@ gantt.init("gantt_here");
 [Full Screen with additional elements](https://docs.dhtmlx.com/gantt/samples/02_extensions/26_full_screen_with_additional_elements.html)
 
 
-## 为什么全屏模式可能无法使用？
+## 为什么全屏模式不起作用？
 
-fullscreen 扩展仅在甘特图允许切换到全屏时工作。
+全屏扩展只有在不禁止 Gantt 扩展到全屏模式时才会工作。
 
-如果甘特图位于 iframe 中，且:
+在将 Gantt 放置在一个框架内的情况下，例如：
 
-- 缺少 **allowfullscreen** 属性或 **allow="fullscreen"** 权限
-- 或 **allow** 属性未包含 "fullscreen"
+- 缺少 **allowfullscreen** 属性或缺少 **allow="fullscreen"**
+- 或对 **allow** 属性未指定 "fullscreen" 值
 
-则甘特图将无法进入全屏模式（可在我们的代码片段工具中尝试:[Example 1](https://snippet.dhtmlx.com/k72wjyzl), [Example 2](https://snippet.dhtmlx.com/7jdrk6q5)）。
+Gantt 将无法扩展到全屏模式（在我们的片段工具中试试：[示例 1](https://snippet.dhtmlx.com/k72wjyzl), [示例 2](https://snippet.dhtmlx.com/7jdrk6q5)）。
 
 ### Salesforce 中的全屏模式
 
-在使用 [Locker Service](https://developer.salesforce.com/docs/atlas.en-us.238.0.lightning.meta/lightning/security_code.htm) 的 Salesforce 应用中，Fullscreen 扩展无法使用，因为 Locker 会阻止元素切换为全屏。
+Fullscreen 扩展在使用 Locker Service 的 Salesforce 应用中不起作用，因为 Locker 阻止将元素切换到全屏模式的能力。
 
-具体来说，该扩展不支持 **Lightning Aura** 或 **Lightning Web Components**，但可能在 **Visualforce** 框架下可用。
+更具体地说，Fullscreen 扩展在 **Lightning Aura** 框架和 **Lightning Web Components** 上可能不起作用，但可能适用于 **Visualforce** 框架。
 
-你可以通过在配置中添加如下代码片段来测试应用是否支持全屏:
+您可以通过在配置代码中添加以下代码片段来检查应用中对全屏的可用性：
 
 ~~~js
 console.log("document.body.requestFullscreen", document.body.requestFullscreen)
 ~~~
 
-如果输出为 `undefined`，则表示全屏被禁用，甘特图无法切换为全屏模式。
+如果输出中看到 `undefined`，则表示该功能被禁用，无法将 Gantt 扩展到全屏。
 
 
 :::note
-如果在不支持全屏的环境中启用了全屏支持，可能会出现错误，但甘特图会照常运行。
+如果在不支持此功能的环境中激活 [fullscreen 支持](guides/extensions-list.md#fullscreen)，可能会出现错误，但 Gantt 将继续工作。
 :::
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: container_resize_method
-title: container_resize_method config
-description: "Gibt an, ob der Gantt die Größenänderung des Containers in regelmäßigen Zeitintervallen überwachen soll."
+title: container_resize_method Konfiguration
+description: "Definiert, ob der Gantt die Größenänderung des Containers in Zeitabständen verfolgen soll"
 ---
 
 # container_resize_method
 
 ### Description
 
-@short: Gibt an, ob der Gantt die Größenänderung des Containers in regelmäßigen Zeitintervallen überwachen soll.
+@short: Legt fest, ob der Gantt die Größenänderung des Containers in Zeitabständen verfolgen soll
 
 @signature: container_resize_method: string | undefined
 
@@ -22,9 +22,9 @@ gantt.config.container_resize_method = "timeout";
 
 ### Details
 
-Standardmäßig reagiert der Gantt auf das "resize"-Event des Fensters und des iframes innerhalb des Gantt. Diese Events werden jedoch nicht immer ausgelöst (zum Beispiel in Salesforce-Umgebungen).
+By default, Gantt listens to the "resize" event for the window and for the iframe element placed inside the gantt. Sometimes these events can't be fired (for example, in Salesforce).
 
-Um dem Gantt zu ermöglichen, die Containergröße in regelmäßigen Abständen zu überprüfen, setzen Sie **container_resize_method** auf *"timeout"*:
+Wenn Sie möchten, dass Gantt die Größenänderung des Containers in Zeitabständen verfolgt, setzen Sie **container_resize_method** auf *"timeout"*:
 
 ~~~js
 gantt.config.container_resize_method = "timeout";
@@ -35,4 +35,3 @@ gantt.config.container_resize_method = "timeout";
 
 ### Change log
 - Hinzugefügt in v7.1
-

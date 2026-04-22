@@ -1,13 +1,12 @@
 ---
-title: "Erstellen eines Gantt-Diagramms auf einer Seite"
-sidebar_label: "Erstellen eines Gantt-Diagramms auf einer Seite"
+title: "Gantt-Diagramm auf einer Seite erstellen"
+sidebar_label: "Gantt-Diagramm auf einer Seite erstellen"
 ---
 
-# Erstellen eines Gantt-Diagramms auf einer Seite
+# Gantt-Diagramm auf einer Seite erstellen
 
 ![gantt_basic](/img/gantt_basic.png)
 
-
-- [How to Install dhtmlxGantt](guides/installation.md)
-- [dhtmlxGantt in Plain JS/HTML](guides/initializing-gantt-chart.md)
-- [Full List of Extensions](guides/extensions-list.md)
+- [Wie man dhtmlxGantt installiert](guides/installation.md)
+- [dhtmlxGantt in reinem JS/HTML](guides/initializing-gantt-chart.md)
+- [Vollständige Liste der Erweiterungen](guides/extensions-list.md)

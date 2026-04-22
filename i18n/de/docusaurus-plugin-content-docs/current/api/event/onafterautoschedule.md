@@ -10,14 +10,14 @@ description: "Löst aus, sobald der Autoscheduling-Prozess abgeschlossen ist."
 :::
 ### Description
 
-@short: Löst aus, sobald der Autoscheduling-Prozess abgeschlossen ist.
+@short: Wird ausgelöst, sobald die automatische Terminplanung abgeschlossen ist
 
 @signature: onAfterAutoSchedule: (taskId: string | number, updatedTasks: any[]): void;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - die ID der Wurzelaufgabe
-- `updatedTasks` - (required) *array* - ein Array, das die IDs der neu geplanten Aufgaben enthält
+- `taskId` - (erforderlich) *string | number* - die Stammaufgabe-ID
+- `updatedTasks` - (erforderlich) *array* - ein Array mit den IDs der neu terminierten Aufgaben
 
 ### Example
 
@@ -31,9 +31,8 @@ gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
 - [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
-
 :::note
- Dieses Event ist Teil der **auto_scheduling**-Erweiterung, stellen Sie daher sicher, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. Weitere Details finden Sie im ["Auto Scheduling"](guides/auto-scheduling.md) Leitfaden. 
+Dieser Event ist in der **auto_scheduling** Erweiterung definiert, daher müssen Sie das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktivieren. Lesen Sie die Details im [Auto Scheduling](guides/auto-scheduling.md) Artikel. 
 :::
 
 ### Related API
@@ -53,5 +52,4 @@ gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
-
+- [Auto Scheduling](guides/auto-scheduling.md)

@@ -1,68 +1,62 @@
+--- 
+title: "Leistung: Wege zur Verbesserung"
+sidebar_label: "Leistung: Wege zur Verbesserung"
 ---
-title: "Performance: Möglichkeiten zur Verbesserung"
-sidebar_label: "Performance: Möglichkeiten zur Verbesserung"
----
 
-# Performance: Möglichkeiten zur Verbesserung
+# Leistung: Wege zur Verbesserung
 
-## Allgemeine Techniken
+## Gängige Techniken
 
-Bei der Verarbeitung von 10.000 bis 20.000 Aufgaben kann es - abhängig von Ihrer Konfiguration und den verwendeten Plugins - zu Verzögerungen beim Rendern des Gantt-Diagramms auf der Seite kommen.
+Ab 10.000–20.000 Aufgaben, abhängig von den verwendeten Konfigurationsoptionen und Plugins, kann es zu Verzögerungen bei der Darstellung des Gantt-Diagramms auf der Seite kommen.
 
-Hier sind verschiedene Ansätze, um dieses Problem zu beheben:
+Es gibt folgende Möglichkeiten, dieses Problem zu lösen:
 
-1. Deaktivieren Sie das Rendern einzelner Zellen und rendern Sie nur die Zeilen (setzen Sie die Option [show_task_cells](api/config/show_task_cells.md) auf 'false').
-2. Verwenden Sie ein Hintergrundbild für den Zeitachsenbereich, anstatt die tatsächlichen Linien zu rendern (setzen Sie die Option [static_background](api/config/static_background.md) auf 'true') (**PRO**-Feature, für Versionen vor v6.3, [siehe Details unten](#static_background)).
-3. Aktivieren Sie das dynamische Laden (setzen Sie die Option [branch_loading](api/config/branch_loading.md) auf 'true').
-4. Erhöhen Sie die Schrittweite der Zeitskala, indem Sie die **unit**-Eigenschaft der Option [scales](api/config/scales.md) auf "month" oder "year" setzen.
-5. Begrenzen Sie den darstellbaren Datumsbereich (verwenden Sie die Optionen [start_date](api/config/start_date.md) und [end_date](api/config/end_date.md)).
-6. Entfernen Sie Fortschrittsbalken aus Aufgaben (setzen Sie die Option [show_progress](api/config/show_progress.md) auf 'false').
-7. Beschleunigen Sie das Rendern der Skala, indem Sie die Option [smart_scales](api/config/smart_scales.md) aktivieren, falls sie nicht bereits aktiviert ist.
-8. Wenn Sie [Arbeitszeitkalender](guides/working-time.md) verwenden, konfigurieren Sie die Arbeitszeiteinstellungen, bevor Sie Daten in das Gantt laden. Andernfalls werden die Aufgabendauern zweimal neu berechnet - einmal beim Laden der Aufgaben und erneut beim Anwenden des neuen Kalenders. Dies führt zwar nicht zu Fehlern, kann aber die Initialisierungszeit Ihrer Anwendung erhöhen.
-9. Wenn Sie die Konfiguration [duration_unit](api/config/duration_unit.md) auf "hour" oder "minute" setzen, stellen Sie sicher, dass [duration_step](api/config/duration_step.md) auf 1 gesetzt ist. Diese Kombination aktiviert bestimmte Optimierungen für Arbeitszeitberechnungen, die nur funktionieren, wenn der Schritt 1 beträgt. Beachten Sie, dass es einen erheblichen Leistungsunterschied zwischen dem "optimierten" und "nicht-optimierten" Modus gibt.
+1. Um das Rendern einzelner Zellen zu deaktivieren und nur das Rendern von Zeilen zu belassen (setzen Sie die [show_task_cells](api/config/show_task_cells.md) Option auf 'false') 
+2. Um das Hintergrundbild für den Timeline-Bereich statt der tatsächlichen Linien zu setzen (setzen Sie die [static_background](api/config/static_background.md) Option auf 'true') (**PRO**-Funktionalität, für Versionen vor v6.3, [lesen Sie die Details unten](#working-with-a-large-date-range))
+3. Um das dynamische Laden zu aktivieren (setzen Sie die [branch_loading](api/config/branch_loading.md) Option auf 'true')
+4. Um den Schritt der Skala zu erhöhen (setzen Sie die **unit**-Eigenschaft der [scales](api/config/scales.md) Option auf "month" oder "year")
+5. Um den Bereich der anzeigbaren Daten zu verkleinern (verwenden Sie die [start_date](api/config/start_date.md) und [end_date](api/config/end_date.md) Optionen)
+6. Um Fortschrittsbalken aus den Aufgaben zu entfernen (setzen Sie die [show_progress](api/config/show_progress.md) Option auf 'false')
+7. Um die Geschwindigkeit der Skalen-Darstellung zu erhöhen (aktivieren Sie die [smart_scales](api/config/smart_scales.md) Option, falls sie deaktiviert ist)
+8. Wenn Sie [Arbeitszeitkalender](guides/working-time.md) verwenden, stellen Sie sicher, dass die Arbeitszeiteinstellungen vor dem Laden der Daten in den Gantt festgelegt werden. Andernfalls werden die Dauern aller Aufgaben zweimal neu berechnet – zuerst, wenn die Aufgaben geladen werden, und dann, wenn der neue Kalender angewendet wird. In jedem Fall sollte alles korrekt funktionieren, aber solche Neuberechnungen können die Initialisierungszeit Ihrer Anwendung erhöhen.
+9. Wenn Sie die [duration_unit](api/config/duration_unit.md) Konfiguration auf "hour" oder "minute" festlegen, setzen Sie außerdem [duration_step](api/config/duration_step.md) auf 1. Eine solche Kombination aktiviert bestimmte Optimierungen bei der Berechnung der Arbeitszeit, die nur funktionieren, wenn der Schritt auf 1 gesetzt ist. Beachten Sie, dass es wesentliche Leistungsunterschiede zwischen "optimized" und "non-optimized" Modi gibt.
 
 
-[Performance tweaks](https://docs.dhtmlx.com/gantt/samples/08_api/10_performance_tweaks.html)
+**Zugehöriges Beispiel**: [Leistungsoptimierungen](https://docs.dhtmlx.com/gantt/samples/08_api/10_performance_tweaks.html)
 
 
-## Smart Rendering {#smartrendering}
+## Smart Rendering
 
-Smart Rendering steigert die Geschwindigkeit der Datenanzeige erheblich, wenn Sie mit großen Datenmengen arbeiten. In diesem Modus werden nur die Aufgaben und Verknüpfungen gerendert, die aktuell im sichtbaren Bereich sind.
+Die Smart Rendering-Technik ermöglicht eine deutlich schnellere Darstellung von Daten, wenn mit großen Datenmengen gearbeitet wird. In diesem Modus werden nur die Eigenschaften und Verknüpfungen gerendert, die zum aktu­ellen Zeitpunkt auf dem Bildschirm sichtbar sind.
 
-Seit v6.2 ist Smart Rendering standardmäßig im Kern der *dhtmlxgantt.js*-Datei aktiviert, sodass das Einbinden der *dhtmlxgantt_smart_rendering.js*-Datei nicht mehr notwendig ist.
+Ab Version v6.2 ist das Smart Rendering standardmäßig aktiviert, da es in die Kern-Datei *dhtmlxgantt.js* eingebettet ist. Daher müssen Sie die Datei *dhtmlxgantt_smart_rendering.js* nicht mehr in die Seite einbinden, damit Smart Rendering funktioniert.
 
 :::note
-Wenn Sie die alte *dhtmlxgantt_smart_rendering.js*-Datei einbinden, überschreibt diese die Verbesserungen der neuen integrierten **smart_rendering**-Erweiterung.
+Wenn Sie die Datei *dhtmlxgantt_smart_rendering.js*, die aus der alten Version stammt, einbinden, wird sie die Verbesserungen der neuen integrierten **smart_rendering**-Erweiterung überschreiben.
 :::
-
-Um Smart Rendering zu deaktivieren, setzen Sie den Konfigurationsparameter auf false:
 
 ~~~js
 gantt.config.smart_rendering = false;
 ~~~
 
+**Zugehöriges Beispiel**: [Arbeiten mit 30000 Aufgaben](https://docs.dhtmlx.com/gantt/samples/02_extensions/13_smart_rendering.html)
 
-[Working with 30000 tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/13_smart_rendering.html)
+Der Prozess des üblichen Smart Renderings besteht darin zu prüfen, ob die Position eines Gantt-Elements in den Bereich fällt, der auf dem Bildschirm sichtbar ist, und festzulegen, ob es angezeigt wird oder nicht.
 
+Allerdings ermöglicht das Smart Rendering von [custom layers](guides/baselines.md) standardmäßig nur das vertikale Smart Rendering. Das bedeutet, dass die benutzerdefinierten Ebenen gerendert werden, wenn die Zeile der angegebenen Aufgabe im Viewport sichtbar ist. Aber die genauen Koordinaten eines benutzerdefinierten Elements können nicht berechnet werden, und die gesamte Zeile der Aufgabe in der Timeline wird als deren Position genommen.
 
-Der normale Smart Rendering-Prozess prüft, ob sich die Position eines Gantt-Elements im sichtbaren Bereich befindet, und entscheidet, ob es angezeigt wird.
+ *Siehe den Artikel [addTaskLayer](api/method/addtasklayer.md#smart-rendering-for-custom-layers), um zu erfahren, wie Sie das horizontale Smart Rendering für benutzerdefinierte Ebenen aktivieren.*
 
-Allerdings unterstützt Smart Rendering für [benutzerdefinierte Layer](guides/baselines.md) standardmäßig nur vertikales Smart Rendering. Das bedeutet, dass benutzerdefinierte Layer gerendert werden, wenn die Zeile der Aufgabe sichtbar ist. Die genaue horizontale Position eines benutzerdefinierten Elements kann jedoch nicht berechnet werden, sodass die gesamte Aufgabenzeile als Position betrachtet wird.
-
- *Weitere Informationen zur Aktivierung des horizontalen Smart Renderings für benutzerdefinierte Layer finden Sie im Artikel [addTaskLayer](api/method/addtasklayer.md).*
-
-
-### Arbeiten mit einem großen Datumsbereich {#static_background}
+### Arbeiten mit einem großen Datumsbereich
 
 :::note
-Diese Funktion ist nur in der PRO-Version verfügbar
+Diese Funktionalität ist nur in der PRO-Version verfügbar
 :::
 
-Wenn Ihr Projekt einen großen Datumsbereich verwendet und Sie eine Gantt-Version vor v6.3 einsetzen, können Sie die Option [static_background](api/config/static_background.md) zusammen mit Smart Rendering aktivieren, um ein Hintergrundbild für den Zeitachsenbereich zu verwenden, anstatt die tatsächlichen Linien zu rendern.
+Wenn Sie in Ihrem Projekt einen großen Datumsbereich verwenden und die Gantt-Version vor v6.3 liegt, können Sie zusätzlich zum Smart Rendering den [static_background](api/config/static_background.md) Parameter aktivieren, um das Hintergrundbild für den Zeitleistenbereich statt der tatsächlichen Linien zu rendern. 
 
 ~~~js
 gantt.config.static_background = true;
 ~~~
 
-Für Gantt-Versionen ab v6.3 hilft diese Option hauptsächlich dabei, die Größe der beim Datenexport an den Exportserver gesendeten Anfragen zu reduzieren.
-
+Für Gantt-Versionen über v6.3 ist diese Konfigurationsoption nur dann nützlich, wenn Sie die Größe der Anfragen an den Export-Server beim Exportieren von Daten verringern möchten.

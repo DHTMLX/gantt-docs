@@ -5,20 +5,20 @@ sidebar_label: "Erstellen/Auswählen von Aufgaben mit Drag-and-Drop"
 
 # Erstellen/Auswählen von Aufgaben mit Drag-and-Drop
 
-Die dhtmlxGantt-Bibliothek bietet eine Erweiterung, die erweiterte Drag-and-Drop-Funktionen zur Verwaltung von Aufgaben auf der Zeitleiste bereitstellt.
+Die dhtmlxGantt-Bibliothek bietet eine Erweiterung, die fortschrittliche Drag-and-Drop-Funktionalität bei der Arbeit mit Aufgaben in der Timeline umfasst.
 
-Zusammengefasst unterstützt die **click_drag**-Erweiterung:
+Insgesamt ermöglicht die **click_drag**-Erweiterung Folgendes:
 
-- [Erstellen von Aufgaben per Drag-and-Drop](#creatingtaskswithdragndrop)
-- [Festlegen von Zeiträumen für nicht geplante Aufgaben per Ziehen](#settingtimeforunscheduledtasks)
-- [Auswählen von Aufgaben per Drag-and-Drop](#selectingtaskswithdragndrop)
-- [Erstellen von Teilen gesplitteter Aufgaben per Drag-and-Drop](#creatingpartsofsplittasks) (PRO-Version)
+- [Aufgaben mit Drag-and-Drop erstellen](#creating-tasks-with-drag-n-drop)
+- [Zeiten für ungeplante Aufgaben mit Drag-and-Drop festlegen](#setting-time-for-unscheduled-tasks)
+- [Aufgaben per Drag-and-Drop auswählen](#selecting-tasks-with-drag-n-drop)
+- [Teile von gesplitteten Aufgaben per Drag-and-Drop erstellen](#creating-parts-of-split-tasks) (PRO-Version)
 
 :::note
-Um die Erweiterung zu verwenden, aktivieren Sie das [click_drag](guides/extensions-list.md#advanceddragndrop) Plugin mit der [gantt.plugins](api/method/plugins.md) Methode.
+Um die Erweiterung zu verwenden, aktivieren Sie das Plugin [click_drag] mithilfe der [gantt.plugins]-Methode.
 :::
 
-Um Drag-and-Drop zu aktivieren, setzen Sie die [click_drag](api/config/click_drag.md) Konfigurationsoption und fügen Sie die benötigten Eigenschaften aus der untenstehenden Liste in das Objekt ein:
+Um fortgeschrittenes Drag-and-Drop zu aktivieren, geben Sie die [click_drag]-Konfigurationsoption an und legen Sie die erforderlichen Eigenschaften aus der untenstehenden Liste innerhalb ihres Objekts fest:
 
 ~~~js
 gantt.config.click_drag = {
@@ -27,39 +27,51 @@ gantt.config.click_drag = {
 };
 ~~~
 
-- **className** -  (*string*) wendet eine benutzerdefinierte CSS-Klasse auf das ausgewählte Element an
-- **render** - (*function*) eine Funktion, die das während des Ziehens angezeigte Element erstellt. Sie erhält zwei Parameter:
-    - **startPoint** - (*object*) - ein Objekt mit folgender Struktur:
+- **className** - (*string*) legt eine benutzerdefinierte CSS-Klasse für ein ausgewähltes Element fest
+- **render** - (*function*) eine Funktion, die ein während des Draggens gerendertes Element erstellt. Nimmt zwei Parameter entgegen: 
+    - **startPoint** - (*object*) - ein Objekt des Typs:
 
 
     `(absolute: (left: number, top: number), relative: (left: number, top: number) )`, 
 
 
-  wobei absolute die Koordinaten der oberen linken Ecke des Dokuments und relative die Koordinaten der oberen linken Ecke des viewPort-Elements darstellt
-    - **endPoint** - (*object*) ähnlich wie startPoint:
+  wobei absolute die Koordinaten der linken oberen Ecke des Dokuments sind und relative die Koordinaten des linken oberen Elements, das als ViewPort verwendet wird 
+    - **endPoint** - (*object*) ein Objekt des Typs: 
 
 
     `(absolute: (left: number, top: number), relative: (left: number, top: number) )`, 
 
 
-  mit absoluten und relativen Koordinaten wie oben beschrieben
-- **viewPort** - (*HTMLElement*) das Element, an dem Ereignisse angehängt werden und Auswahlen erfolgen
-- **useRequestAnimationFrame** - (*boolean*) gibt an, ob requestAnimationFrame beim Rendern verwendet werden soll
-- **callback** - (*function*) wird ausgelöst, wenn die Maustaste losgelassen wird. Erhält 6 Parameter:
-    - **startPoint** - (*object*) mit der oben beschriebenen Struktur
-    - **endPoint** - (*object*) mit der oben beschriebenen Struktur
-     - **startDate** - (*Date*) das Datum, das dem Beginn des Ziehvorgangs entspricht
-    - **endDate** - (*Date*) das Datum, das dem Ende des Ziehvorgangs entspricht
-    - **tasksBetweenDates** - (*array*) Aufgaben, die zwischen dem Start- und Enddatum liegen
-    - **tasksInRows** - (*array*) Aufgaben, die vertikal zwischen den Start- und Endkoordinaten ausgewählt wurden
-- **singleRow** - (*boolean*) wenn true, ist die Auswahl auf eine Zeile begrenzt, die der Höhe einer Aufgabe entspricht
+  wobei absolute die Koordinaten der linken oberen Ecke des Dokuments sind und relative die Koordinaten des linken oberen Elements, das als ViewPort verwendet wird 
+- **viewPort** - (*HTMLElement*) das Element, an das ein Ereignis angehängt wird und das ausgewählt wird
+- **useRequestAnimationFrame** - (*boolean*) definiert, ob während des Renderings requestAnimationFrame verwendet wird
+- **callback** - (*function*) - eine Funktion, die aufgerufen wird, wenn die Maustaste losgelassen wird. Nimmt 6 Parameter entgegen:
+    - **startPoint** - (*object*) - ein Objekt des Typs: 
 
-Sie können diese Ereignisse an das Timeline-Viewport-Element anhängen (standardmäßig gantt.$task_data, das die Aufgabenbalken enthält):
 
-- **onBeforeDrag** - wird nach dem Drücken der Maustaste ausgelöst, bevor das Ziehen beginnt
-- **onDrag** - wird wiederholt ausgelöst, nachdem das Ziehen begonnen hat, aber bevor die Maustaste losgelassen wird
-- **onBeforeDragEnd** - wird nach dem Loslassen der Maustaste ausgelöst, aber bevor das gezogene Element entfernt und die ausgewählten Aufgaben ermittelt werden
-- **onDragEnd** - wird ausgelöst, nachdem das gezogene Element entfernt und die ausgewählten Aufgaben gefunden wurden, aber bevor die Callback-Funktion aufgerufen wird (falls gesetzt)
+    `(absolute: (left: number, top: number), relative: (left: number, top: number) )`, 
+
+
+  wobei absolute die Koordinaten der linken oberen Ecke des Dokuments sind und relative die Koordinaten des linken oberen Elements, das als ViewPort verwendet wird 
+    - **endPoint** - (*object*) ein Objekt des Typs: 
+
+
+    `(absolute: (left: number, top: number), relative: (left: number, top: number) )`, 
+
+
+  wobei absolute die Koordinaten der linken oberen Ecke des Dokuments sind und relative die Koordinaten des linken oberen Elements, das als ViewPort verwendet wird 
+     - **startDate** - (*Date*) das Datum, das dem Startpunkt entspricht
+    - **endDate** - (*Date*) das Datum, das dem Endpunkt entspricht
+    - **tasksBetweenDates** - (*array*) ein Array von Aufgaben zwischen dem Start- und Enddatum
+    - **tasksInRows** - (*array*) ein Array von Aufgaben, die vertikal zwischen den Start- und Endkoordinaten ausgewählt sind
+- **singleRow** - (*boolean*) true, um die Auswahl nur in einer Zeile in der Höhe einer Aufgabe vorzunehmen
+
+Sie können die folgenden Ereignisse dem Element des Timeline-Viewports (gantt.$task_data ist standardmäßig ein Teil der Timeline mit Aufgabenleisten) anhängen:
+
+- **onBeforeDrag** - löst sich aus, nachdem die Maustaste gedrückt wurde, bevor das Ziehen beginnt
+- **onDrag** - löst sich jedes Mal aus, nachdem das Ziehen gestartet wurde, bevor die Maustaste losgelassen wird
+- **onBeforeDragEnd** - löst sich nach dem Loslassen der Maustaste, aber bevor das gerenderte Element gelöscht wird und Aufgaben, die unter die Auswahl fallen, gesucht werden
+- **onDragEnd** - löst sich nach dem Entfernen eines gerenderten Elements und dem Finden von Aufgaben, die unter die Auswahl fallen, bevor der Callback aufgerufen wird (falls angegeben)
 
 ~~~js
 gantt.$task_data.attachEvent("onBeforeDrag", function (coords) {
@@ -67,15 +79,15 @@ gantt.$task_data.attachEvent("onBeforeDrag", function (coords) {
 });
 ~~~
 
-**Related example:** [Attaching event handlers for the "click_drag" extension](https://snippet.dhtmlx.com/l13f1cxl)
+**Zugehöriges Beispiel** [Anbinden von Ereignishandling für die "click_drag"-Erweiterung](https://snippet.dhtmlx.com/l13f1cxl)
 
 :::note
-Beachten Sie, dass Ereignis-Handler nur an bereits existierende Elemente angehängt werden können. Fügen Sie daher die Ereignis-Handler nach der Initialisierung von Gantt hinzu, da die Elemente sonst noch nicht erstellt wurden und die Handler nicht funktionieren.
+Beachten Sie, dass die Ereignishandler auch nur für ein bereits vorhandenes Element hinzugefügt werden können. Daher sollten Sie Ereignishandler nach der Initialisierung von Gantt hinzufügen, andernfalls funktionieren sie nicht, da die Elemente noch nicht erstellt wurden.
 :::
 
 ## Aufgaben mit Drag-and-Drop erstellen
 
-Aufgaben können direkt auf der Zeitleiste erstellt werden, indem Sie auf eine freie Stelle klicken, um das Startdatum festzulegen, und dann nach rechts ziehen, um die Dauer zu bestimmen.
+Sie können Aufgaben direkt auf der Timeline mit Drag-and-Drop erstellen, indem Sie an einer leeren Stelle klicken, um das Startdatum einer Aufgabe festzulegen, und nach rechts ziehen, um deren Dauer festzulegen.
 
 ~~~js
 gantt.config.click_drag = {
@@ -104,16 +116,16 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 ~~~
 
 
-[Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
+[Neue Aufgaben per Drag-and-Drop erstellen](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
 
-## Zeiträume für nicht geplante Aufgaben festlegen
+## Festlegen der Zeit für ungeplante Aufgaben
 
-Die **click_drag**-Erweiterung ermöglicht es außerdem, Zeitintervalle für [nicht geplante Aufgaben](guides/unscheduled-tasks.md) per Drag-and-Drop festzulegen.
+Die **click_drag**-Erweiterung ermöglicht das Festlegen von Zeiten für [ungeplante Aufgaben](guides/unscheduled-tasks.md) mit Drag-and-Drop.
 
-## Aufgaben mit Drag-and-Drop auswählen
+## Aufgaben per Drag-and-Drop auswählen
 
-Das Auswählen von Aufgaben per Drag-and-Drop wird in mehreren Modi unterstützt: nach Datum, nach Zeilen oder innerhalb von Begrenzungen.
+Es ist möglich, Aufgaben mit Drag-and-Drop in mehreren Modi auszuwählen: nach Datum, nach Zeilen oder innerhalb von Begrenzungen.
 
 ~~~js
 gantt.config.multiselect = true;
@@ -156,12 +168,15 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 ~~~
 
 
-[Select multiple tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/25_click_drag_select_by_drag.html)
+[Mehrere Aufgaben per Drag-and-Drop auswählen](https://docs.dhtmlx.com/gantt/samples/02_extensions/25_click_drag_select_by_drag.html)
 
 
-## Teile von gesplitteten Aufgaben erstellen
+## Erstellen von Teilen gesplitteter Aufgaben
 
-Mit Drag-and-Drop können auch Teile von [gesplitteten Aufgaben](guides/split-tasks.md) erstellt werden.
+:::info
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
+:::
+Sie können ebenfalls Teile von [Split-Aufgaben](guides/split-tasks.md) per Drag-and-Drop erstellen. 
 
 ~~~js
 gantt.config.click_drag = {
@@ -214,5 +229,4 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 ~~~
 
 
-[Create split tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/23_click_drag_splittask.html)
-
+[Split-Aufgaben per Drag-and-Drop erstellen](https://docs.dhtmlx.com/gantt/samples/02_extensions/23_click_drag_splittask.html)

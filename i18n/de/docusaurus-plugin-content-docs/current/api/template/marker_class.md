@@ -29,4 +29,4 @@ gantt.templates.marker_class = function(marker){
 ~~~
 
 ### Related Guides
-- ["Hinzufügen von vertikalen Markierungen"](guides/markers.md#stylingmarkers)
+- [Hinzufügen von vertikalen Markierungen](guides/markers.md#stylingmarkers)

@@ -5,299 +5,292 @@ sidebar_label: "Gantt-Layout"
 
 # Gantt-Layout
 
-Ab Version 5.0 unterstützt Gantt die Definition eines anpassbaren Layouts, das es Ihnen ermöglicht, die Elemente der Komponente als innere Ansichten innerhalb eines Layouts anzuordnen. Diese Funktion ermöglicht das Hinzufügen zusätzlicher Zeitachsen und Grids und schafft so eine flexible Gantt-Diagrammstruktur mit verschiedenen Möglichkeiten zur Organisation der einzelnen Bereiche.
+Ab Version 5.0 bietet Gantt die Möglichkeit, ein konfigurierbares Layout festzulegen und die Elemente der Komponente als innere Ansichten eines Layouts anzuordnen.  
+Es ermöglicht die Verwendung zusätzlicher Timelines und Grids, um eine flexible Struktur eines Gantt-Diagramms zu schaffen und verschiedene Anordnungs-Schemata der Elemente zu definieren.
 
-Zum Beispiel können Sie ein zusätzliches Grid auf der rechten Seite der Zeitachse hinzufügen:
+Beispiel: Sie können eine weitere Grid-Ansicht rechts neben der Timeline platzieren:
 
 ![gantt_two_grids](/img/gantt_two_grids.png)
 
 
-[Grid columns rightside of gantt](https://docs.dhtmlx.com/gantt/samples/10_layout/01_rightside_columns.html)
+**Verwandtes Beispiel**: [Grid-Spalten rechts vom Gantt](https://docs.dhtmlx.com/gantt/samples/10_layout/01_rightside_columns.html)
 
 
-Oder ein weiteres Grid und eine zusätzliche Zeitachse unterhalb der Standardansichten einfügen.
+oder eine weitere Grid- und Timeline-Ansicht unterhalb der Standardansichten hinzufügen.
 
 ![gantt_resource_panel](/img/gantt_resource_panel.png)
 
 
-[Gantt chart with resource panel](https://docs.dhtmlx.com/gantt/samples/10_layout/02_resource_panel.html)
+**Verwandtes Beispiel**: [Gantt-Diagramm mit Ressourcen-Panel](https://docs.dhtmlx.com/gantt/samples/10_layout/02_resource_panel.html)
 
 
-## Standardlayout
+## Default layout
 
-Das Layout wird über die Einstellung [gantt.config.layout](api/config/layout.md) gesteuert. Hier ist die Standardkonfiguration des Layouts:
+Das Layout wird über die Konfigurationsoption [gantt.config.layout](api/config/layout.md) festgelegt. Die Standardkonfiguration des Layouts ist wie folgt:
 
 ~~~js
 gantt.config.layout = {
-    css: "gantt_container",
-      rows:[
-           {
-           cols: [
-             {
-              // die Standard-Grid-Ansicht    
-              view: "grid",  
-              scrollX:"scrollHor", 
-              scrollY:"scrollVer"
-             },
-             { resizer: true, width: 1 },
-             {
-              // die Standard-Timeline-Ansicht
-              view: "timeline", 
-              scrollX:"scrollHor", 
-              scrollY:"scrollVer"
-            },
-             {
-              view: "scrollbar", 
-              id:"scrollVer"
-               }
-        ]},
-            {
-            view: "scrollbar", 
-            id:"scrollHor"
+  css: "gantt_container",
+  rows: [
+    {
+      cols: [
+        {
+          // die default Grid-Ansicht
+          view: "grid",
+          scrollX: "scrollHor",
+          scrollY: "scrollVer"
+        },
+        { resizer: true, width: 1 },
+        {
+          // die default Timeline-Ansicht
+          view: "timeline",
+          scrollX: "scrollHor",
+          scrollY: "scrollVer"
+        },
+        {
+          view: "scrollbar",
+          id: "scrollVer"
         }
       ]
+    },
+    {
+      view: "scrollbar",
+      id: "scrollHor"
+    }
+  ]
 }
 ~~~
 
-Das Gantt-Layout besteht aus Zellen, die mit Ansichten gefüllt werden. Diese Ansichten repräsentieren die Haupt- und Hilfselemente von Gantt, wie zum Beispiel:
+Das Layout von Gantt besteht aus Zellen, die von Ansichten belegt werden. Die Haupt- und Hilfselemente des Gantt werden durch **Views** dargestellt, die Folgendes sind:
 
-- **grid** - der Grid-Bereich des Gantt-Diagramms. Das Hauptgrid zur Anzeige von Aufgaben hat die *id:"grid"*;
-- **timeline** - der Zeitachsenbereich des Gantt-Diagramms. Die Hauptzeitachse für Aufgaben hat die *id:"timeline"*;
-- **resizer** - eine Trennlinie (Resizer). Um sie zu aktivieren, setzen Sie die **resizer**-Eigenschaft auf *true*. **Dies ist ein Feature der PRO-Edition**;
-- **scrollbar** - Scrollbalken, die im Gantt-Diagramm verwendet werden. Grid- und Timeline-Ansichten können mit bestimmten Scrollbalken verknüpft werden (Details siehe unten).
-- **resourceGrid** - ein vorkonfiguriertes Grid für ein Ressourcen-Panel. **Nur in der PRO-Edition verfügbar**. Weitere Informationen [hier](guides/resource-management.md).
-- **resourceTimeline** - eine vorkonfigurierte Zeitachse für ein Ressourcen-Panel. **Nur in der PRO-Edition verfügbar**. Weitere Informationen [hier](guides/resource-management.md).
+- **grid** - definiert den Grid-Teil des Gantt-Diagramms. Der Haupt-Grid, der zum Anzeigen von Aufgaben vordefiniert ist, hat die *id:"grid"*
+- **timeline** - definiert den Timeline-Teil des Gantt-Diagramms. Die Haupt-Timeline, die zum Anzeigen von Aufgaben vorgesehen ist, hat die *id:"timeline"*
+- **resizer** - definiert die Trennlinie. Um einen Resizer zu aktivieren, muss die **resizer**-Eigenschaft auf *true* gesetzt werden. **Nur in der PRO-Edition**
+- **scrollbar** - definiert Scrollleisten, die im Gantt-Diagramm verwendet werden. Grid- und Timeline-Ansichten können an bestimmte Scrollleisten gebunden werden. DetailsFurther unten.
+- **resourceGrid** - vorkonfiguriertes Grid für ein Ressourcen-Panel. **Nur in der PRO-Edition**. Siehe mehr Details [hier](guides/resource-management.md).
+- **resourceTimeline** - vorkonfiguriertes Timeline für ein Ressourcen-Panel. **Nur in der PRO-Edition**. Siehe mehr Details [hier](guides/resource-management.md).
 
-Jede Ansicht wird über ein Objekt mit entsprechenden Eigenschaften konfiguriert. 
-Sie können [Einstellungen anpassen](#configsandtemplatesofviews) für die **grid**- und **timeline**-Ansichten. 
-Standardmäßig werden die Optionen aus dem globalen [gantt.config](guides/common-configuration.md#ganttconfigobject)-Objekt übernommen.
+Die Ansichtskonfiguration wird als Objekt mit den entsprechenden Eigenschaften angegeben. 
+Sie können [benutzerdefinierte Konfigurationsoptionen](#configs-and-templates-of-views) für die **grid**- und **timeline**-Views festlegen. 
+Die Standardoptionen stammen vom globalen [gantt.config](guides/common-configuration.md#ganttconfigobject) Objekt.
 
 :::note
-Beachten Sie, dass die Layout-Konfiguration vor der Initialisierung von Gantt festgelegt werden sollte. Wenn Sie das Layout später ändern, aktualisieren Sie es mit [resetLayout](api/method/resetlayout.md).
+Beachten Sie, dass Sie die Layout-Konfiguration vor der Initialisierung von Gantt angeben sollten. Wenn Sie Änderungen am Layout vornehmen, müssen Sie es mithilfe von [resetLayout](api/method/resetlayout.md) aktualisieren.
 :::
 
-## Scrollbalken
+## Scrollbar
 
-Scrollbalken im Layout werden durch die Ansicht **"scrollbar"** definiert. Es können sowohl horizontale als auch vertikale Scrollbalken verwendet werden.
+Layout-Scrollbars werden durch die **"scrollbar"**-View festgelegt. Sie können sowohl eine horizontale als auch eine vertikale Scrollbar festlegen. 
 
-Um einen Scrollbalken einzubinden, verknüpfen Sie ihn mit der entsprechenden Ansicht, indem Sie die Eigenschaften **scrollX** oder **scrollY** mit der ID des Scrollbalkens festlegen.
+Um eine Scrollbar im Layout zu verwenden, müssen Sie sie mit Hilfe der **scrollX**- bzw. **scrollY**-Eigenschaften über die ID der erforderlichen Scrollbar an die entsprechende View binden.
 
-### Einen Scrollbalken mit einer Ansicht verknüpfen
+### Eine Scrollbar für eine View
 
-Mehrere Ansichten können denselben Scrollbalken gemeinsam nutzen. Um eine Ansicht mit einem Scrollbalken zu verbinden:
+Es ist möglich, mehrere View-Objekte derselben Scrollbar zuzuordnen. Um eine View mit einer Scrollbar zu verbinden:
 
-- Definieren Sie einen Scrollbalken mit der gewünschten Scrollrichtung und vergeben Sie eine ID
-- Verweisen Sie in der Ansicht über die Eigenschaft **scrollX** oder **scrollY** auf diese Scrollbalken-ID
+- definieren Sie eine Scrollbar mit der notwendigen Scrollrichtung und weisen Sie ihr eine ID zu
+- verwenden Sie die ID der Scrollbar als Wert der Eigenschaft **scrollX/scrollY** innerhalb des View-Konfigurationsobjekts
 
-Das Platzieren eines Scrollbalkens im `cols`-Array erzeugt einen vertikalen Scrollbalken, während das Platzieren im `rows`-Array einen horizontalen Scrollbalken erzeugt. Alternativ können Sie die Scrollrichtung explizit mit der Eigenschaft **scroll** angeben:
+Eine Scrollbar innerhalb des `cols`-Arrays erstellt eine vertikale Scrollbar, eine Scrollbar innerhalb des `rows`-Arrays erzeugt eine horizontale Scrollbar.
+Alternativ können Sie den Scroll-Modus explizit mit dem **scroll**-Parameter festlegen:
 
 ~~~js
-{ view: "scrollbar", id:"scroller", scroll: "x"    } // horizontal
+{ view: "scrollbar", id: "scroller", scroll: "x" } // horizontal
 ~~~
 oder:
 ~~~js
-{ view: "scrollbar", id:"scroller", scroll: "y"    } // vertikal
+{ view: "scrollbar", id: "scroller", scroll: "y" } // vertical
 ~~~
 
-Hier ein Beispiel, wie benutzerdefinierte Grid- und Timeline-Ansichten an einen vertikalen Scrollbalken gebunden werden:
+Lassen Sie uns benutzerdefinierte Grid- und Timeline-Views der vertikalen Scrollleiste zuordnen:
 
 ~~~js
 gantt.config.layout = {
-    css: "gantt_container",
-      rows:[
-           {
-           cols: [
-             {             
-              view: "grid", 
-              scrollY:"scrollVer"
-             },
-             { resizer: true, width: 1 },
-             {
-              view: "timeline", 
-              scrollY:"scrollVer"
-            },
-             {
-              view: "scrollbar", 
-              id:"scrollVer"
-               }
-        ]}
+  css: "gantt_container",
+  rows: [
+    {
+      cols: [
+        { view: "grid", scrollY: "scrollVer" },
+        { resizer: true, width: 1 },
+        { view: "timeline", scrollY: "scrollVer" },
+        { view: "scrollbar", id: "scrollVer" }
       ]
+    }
+  ]
 }
 ~~~
 
-Durch das Scrollen des vertikalen Scrollbalkens werden sowohl Grid als auch Timeline gemeinsam verschoben.
-Im Standardlayout sind Grid- und Timeline-Ansichten sowohl mit horizontalen als auch mit vertikalen Scrollbalken verbunden.
+Beim Scrollen der vertikalen Scrollleiste werden das Grid und die Timeline zusammen gescrollt.
+Im Standard-Layout sind Grid- und Timeline-Views sowohl an die horizontale als auch an die vertikale Scrollleiste gebunden.
 
-Sie können auch einen separaten horizontalen Scrollbalken nur für die Grid-Ansicht festlegen. [Details dazu](guides/specifying-columns.md#horizontalscrollbar) finden Sie im entsprechenden Abschnitt.
+Es ist auch möglich, eine separate horizontale Scrollbar für die Grid-View zu spezifizieren. [Lesen Sie die Details](guides/specifying-columns.md#horizontal-scrollbar) im entsprechenden Abschnitt.
 
-### Scrollbalken für eine Ansicht
+### Scrollbars für eine View
 
-Wie bereits gezeigt, können Sie einer Ansicht einen einzelnen Scrollbalken mit einer einfachen Layout-Konfiguration zuweisen, zum Beispiel:
+In dem oben genannten Unterabschnitt haben wir betrachtet, wie man einer erforderlichen View eine bestimmte Scrollbar hinzufügt. Dazu genügte es, eine einfache Layout-Konfiguration wie folgt zu erstellen:
 
 ~~~js
-{cols: [ {rows: [{}, {}]}, {rows: [{}, {}]}]}
+{ cols: [ { rows: [ {}, {} ] }, { rows: [ {}, {} ] } ] }
 ~~~
 
 oder
-
 ~~~js
-{rows: [ {cols: [{}, {}]}, {cols: [{}, {}]}]}
+{ rows: [ { cols: [ {}, {} ] }, { cols: [ {}, {} ] } ] }
 ~~~
 
-Wenn Sie eine Ansicht sowohl mit vertikalen als auch mit horizontalen Scrollbalken verbinden möchten, benötigen Sie ein komplexeres Layout, in dem `cols`- und `rows`-Arrays mehrfach verschachtelt sind, zum Beispiel:
+Falls Sie eine View sowohl vertical als auch horizontal scrollbars zuordnen müssen, erstellen Sie eine komplexe Layout-Konfiguration, bei der `cols`- und `rows`-Arrays mehrfach verschachtelt sind, zum Beispiel:
 
 ~~~js
-{cols: [ 
-    {
-        rows: [
-            {
-                cols: [{}, {}]
-            }, 
-            {
-                cols: [{}, {}]
-            }
+{ cols: [
+  {
+    rows: [
+      {
+        cols: [ {}, {} ]
+      }, 
+      {
+        cols: [ {}, {} ]
+      }
+    ]
+  },
+  {
+    rows: [
+      {
+        cols: [ {}, {} ]
+      }, 
+      {
+        cols: [
+          {
+            rows: [ {}, {} ]
+          }, 
+          {	
+            rows: [ {}, {} ]
+          }
         ]
-    }, 
-    {
-        rows: [
-            {
-                cols: [{}, {}]
-            }, 
-            {
-                cols: [
-                    {
-                        rows: [{}, {}]
-                    }, 
-                    {    
-                        rows: [{}, {}]
-                    }
-                ]
-            }
-        ]
-    }
+      }
+    ]
+  }
 ]}
 ~~~
 
-Sehen Sie sich diese Beispiele an:
+Folgen Sie den Beispielen unten:
 
-- [Gantt. Layout views with own scrollbars](https://snippet.dhtmlx.com/cv9w37tu)
-- [Gantt. Universal Layout configuration](https://snippet.dhtmlx.com/uqejdyqc)
+- [Gantt. Layout-Views mit eigenen Scrollbars](https://snippet.dhtmlx.com/cv9w37tu)
+- [Gantt. Universale Layout-Konfiguration](https://snippet.dhtmlx.com/uqejdyqc)
 
 ## Layout-Anpassung
 
-Sie können das Standardlayout anpassen und ein Layout-Schema definieren, das Ihren Anforderungen entspricht, indem Sie dem Gantt-Diagramm zusätzliche Ansichten hinzufügen.
+Sie können die Standardlayout-Konfiguration ändern und das gewünschte Schema zur Anordnung der Elemente im Gantt-Diagramm auf einer Seite mithilfe zusätzlicher Layout-Views festlegen.
 
-Um beispielsweise ein Ressourcen-Panel unterhalb des Haupt-Gantt-Diagramms mit zusätzlichen Grid- und Timeline-Ansichten zu erstellen, gehen Sie wie folgt vor:
+Beispiel: Sie können zusätzliche Grid- und Timeline-Views erstellen, die eine untere Ressourcen-Leiste für das Haupt-Gantt-Diagramm bilden. Die Schritte zur Implementierung eines solchen
+Benutzerlayout sind:
 
-- Erstellen Sie ein mehrzeiliges Layout
-- Platzieren Sie das Standard-Grid und die Standard-Timeline in der ersten Zeile
-- Fügen Sie in der zweiten Zeile ein zusätzliches Grid und eine Timeline hinzu und binden Sie sie an eine eigene Datenquelle
-- Fügen Sie einen Resizer zwischen die Zeilen ein
-- Fügen Sie einen Scrollbalken für die letzte Zeile hinzu und verknüpfen Sie ihn sowohl mit der Standard- als auch mit der Ressourcen-Timeline
-
-So könnte die Konfiguration aussehen:
+- Erstellen Sie ein Multi-Row-Layout
+- Fügen Sie dem ersten Row des Layouts eine Default-Grid- und eine Timeline-View hinzu
+- Fügen Sie dem nächsten Row eine zusätzliche Grid- und Timeline-View hinzu und binden Sie sie an eine benutzerdefinierte Datenquelle
+- Fügen Sie zwischen diesen Rows einen Resizer ein
+- Fügen Sie der letzten Row eine Scrollbar hinzu und binden Sie sie sowohl an die Default- als auch an die Ressourcen-Timeline
 
 ~~~js
 gantt.config.layout = {
-    css: "gantt_container",
-    rows:[
-        {
-          // das Standardlayout
-          cols: [
-            {view: "grid",
-                config: mainGridConfig, scrollY:"scrollVer"},
-            {resizer: true, width: 1},
-            {view: "timeline", 
-                scrollX:"scrollHor", scrollY:"scrollVer"},
-            {view: "scrollbar", id:"scrollVer"}
-          ]
+  css: "gantt_container",
+  rows: [
+    {
+      // das Standardlayout
+      cols: [
+        { view: "grid", config: mainGridConfig, scrollY: "scrollVer" },
+        { resizer: true, width: 1 },
+        { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+        { view: "scrollbar", id: "scrollVer" }
+      ]
+    },
+    { resizer: true, width: 1 },
+    {
+      // ein benutzerdefiniertes Layout
+      cols: [
+        { view: "grid", id: "resourceGrid", bind: "resource",
+          config: resourceGridConfig, scrollY: "resourceVScroll"
         },
-        {resizer: true, width: 1},
-        {
-          // ein benutzerdefiniertes Layout
-          cols: [
-            {view: "grid", id: "resourceGrid", bind:"resource", 
-                config:resourceGridConfig, scrollY:"resourceVScroll"},
-            {resizer: true, width: 1},
-            {view:"timeline", id:"resourceTimeline", scrollX:"scrollHor", 
-                bind:"resource", bindLinks: null, layers: resourceLayers, 
-                scrollY:"resourceVScroll"},
-            {view: "scrollbar", id:"resourceVScroll"}
-          ]
+        { resizer: true, width: 1 },
+        { view: "timeline", id: "resourceTimeline", scrollX: "scrollHor",
+          bind: "resource", bindLinks: null, layers: resourceLayers,
+          scrollY: "resourceVScroll"
         },
-        {view: "scrollbar", id:"scrollHor"}
-    ]
+        { view: "scrollbar", id: "resourceVScroll" }
+      ]
+    },
+    { view: "scrollbar", id: "scrollHor" }
+  ]
 };
 ~~~
 
-In diesem Beispiel zeigt eine zusätzliche Grid-Ansicht Ressourcen und deren Arbeitslast an, während die zusätzliche Timeline die Verteilung der Arbeitsstunden über den Monat darstellt und dabei Standard- und Überstunden hervorhebt.
+Im obigen Beispiel wurde eine zusätzliche Grid-View hinzugefügt. Sie enthält die Liste der Ressourcen und deren Auslastung. Es gibt außerdem eine zusätzliche
+Timeline-View, die die Verteilung der Arbeitsstunden im Monat anzeigt und Standard- bzw. Überstunden kennzeichnet.
 
-### Eigenschaften von benutzerdefinierten Grid- und Timeline-Ansichten
+### Eigenschaften der benutzerdefinierten Grid- und Timeline-Views
 
-Benutzerdefinierte Grid- und Timeline-Ansichten umfassen einige zusätzliche Eigenschaften:
+Benutzerdefinierte Grid- und Timeline-Views besitzen zusätzliche Eigenschaften:
 
-#### Für Grid- und Timeline-Ansichten
+#### Für die Grid- und Timeline-Views
 
-- **bind** - (*string*) gibt die ID des Datenspeichers an, aus dem die Daten abgerufen werden (z. B. "resource" im Beispiel)
+- **bind** - (*string*) gibt die ID eines Datenspeichers an, aus dem Daten genommen werden (im Beispiel „resource“);
 
-#### Für die Timeline-Ansicht
+#### Für die Timeline-View
 
-- **bindLinks** - (*string*) verweist auf die Quelle der Verknüpfungen; auf *null* setzen, wenn keine zugehörigen Verknüpfungen existieren
-- **layers** - (*array*) eine Reihe von **addLayer()**-Funktionen, die die Darstellung der Daten definieren
+- **bindLinks** - (*string*) verweist auf die Quelle der Verknüpfungen. *null*, wenn keine verknüpften Links vorhanden sind;
+- **layers** - (*array*) eine Konfigurationsoption, definiert als Satz von **addLayer()**-Funktionen, die die Gestaltung der Daten beschreiben.
 
-### Hinzufügen eines Datenspeichers für benutzerdefinierte Ansichten
+### Hinzufügen eines Datenspeichers für benutzerdefinierte Views
 
-Um benutzerdefinierte Ansichten mit den richtigen Daten zu füllen, muss ein separater Datenspeicher hinzugefügt werden. Die Erstellung eines neuen Datenspeichers erfolgt über die Methode 
-[createDatastore](api/method/createdatastore.md), bei der Sie die Konfiguration des Datenspeichers angeben:
+Um benutzerdefinierte Views mit entsprechenden Daten zu füllen, müssen Sie einen separaten Datenspeicher hinzufügen. Um einen neuen Datenspeicher zu erstellen, verwenden Sie die Methode [createDatastore](api/method/createdatastore.md) und geben die Konfiguration des Datenspeichers an:
 
 ~~~js
-var resourcesStore = gantt.createDatastore({
-    name:"resource",
-    initItem: function(item){
-        item.id = item.key || gantt.uid();
-        return item;
-    }
+const resourcesStore = gantt.createDatastore({
+  name: "resource",
+  initItem: (item) => {
+    item.id = item.key || gantt.uid();
+    return item;
+  }
 });
 ~~~
 
-In diesem Beispiel wird ein Datenspeicher mit dem Namen "resource" erstellt.
+Im obigen Beispiel wird ein Datenspeicher mit dem Namen "resource" hinzugefügt.
 
-Um Daten aus dem Datenspeicher in benutzerdefinierte Ansichten zu laden, wird die Methode [parse](api/method/parse.md) verwendet:
+Um Daten in benutzerdefinierte Views aus dem Datenspeicher zu laden, verwenden Sie die [parse](api/method/parse.md) Methode:
 
 ~~~js
-resourcesStore.parse([// resources
-    {key:'0', label: "N/A"},
-    {key:'1', label: "John"},
-    {key:'2', label: "Mike"},
-    {key:'3', label: "Anna"}
+resourcesStore.parse([ // resources
+  { key: '0', label: "N/A" },
+  { key: '1', label: "John" },
+  { key: '2', label: "Mike" },
+  { key: '3', label: "Anna" }
 ]);
 ~~~
 
-Um ein Konfigurationsobjekt für einen bestimmten Datenspeicher zu erhalten, verwenden Sie die Methode [getDatastore](api/method/getdatastore.md):
+Um eine Konfigurationsobjekt des erforderlichen Datenspeichers zurückzugeben, verwenden Sie die [getDatastore](api/method/getdatastore.md) Methode:
 
 ~~~js
-var tasksStore = gantt.getDatastore("task");
+const tasksStore = gantt.getDatastore("task");
 ~~~
 
-Diese Methode erwartet den Namen des Datenspeichers als Parameter.
+Die Methode nimmt den Namen des Datenspeichers als Parameter.
 
 :::note
-Bei der Verwendung von integrierten Ressourcenansichten kann der gantt den Datenspeicher automatisch erstellen. [Weitere Details hier](guides/resource-management.md#workingwithresourceviewpanel).
+Wenn Sie integrierte Ressourcen-Views verwenden, kann Gantt automatisch den Datenspeicher für sie erstellen. [Details lesen](guides/resource-management.md#working-with-resource-view-panel).
 :::
 
-### Resizer dynamisch deaktivieren/aktivieren {#enable_disable_resizers}
+### Deaktivieren/aktivieren von Resizern dynamisch {#enable_disable_resizers}
 
-Manchmal ist es notwendig, die Resizer zwischen den gantt-Zellen dynamisch zu deaktivieren. Der einfachste Weg ist, sie per CSS auszublenden.
+In einigen Fällen müssen Sie Resizer zwischen den Zellen des Gantt-Diagramms dynamisch deaktivieren. Die einfachste Lösung besteht darin, sie über CSS auszublenden.
 
-Sie können dazu folgende CSS-Regel verwenden:
+Dazu benötigen Sie eine Regel wie die folgende:
 
 ~~~css
-.no_resizers .gantt_resizer{
-    display:none;
+.no_resizers .gantt_resizer {
+  display: none;
 }
 ~~~
 
-Fügen Sie anschließend die Klasse dem gantt-Container hinzu, um die Resizer auszublenden:
+Dann können Sie die Resizer aus dem Container des Gantt ausblenden, indem Sie die Klasse hinzufügen:
 
 ~~~js
 gantt.$container.classList.add("no_resizers");
@@ -309,102 +302,109 @@ Um die Resizer wieder anzuzeigen, entfernen Sie einfach die Klasse:
 gantt.$container.classList.remove("no_resizers");
 ~~~
 
-## HTML als innere Ansicht
+## HTML als Innere Ansicht
 
-Benutzerdefiniertes HTML kann ebenfalls als innere Ansicht innerhalb des Gantt-Layouts verwendet werden. Hier ein Beispiel:
+Sie können auch benutzerdefiniertes HTML als innere Ansichten des Gantt-Layouts verwenden. Zum Beispiel:
 
 ~~~js
 gantt.config.layout = {
- css: "gantt_container",
+  css: "gantt_container",
   rows: [
-      {
-         cols: [
-        {view: "grid",scrollX: "scrollHor", scrollY: "scrollVer"},
-        { html:"<div class='custom-content'>custom content</div>", 
-            css:"custom-content", width:50},
-        {view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-        { html:"<div class='custom-content'>custom content</div>", 
-            css:"custom-content", width:50},
-        {view: "scrollbar", id: "scrollVer"}
-         ]
+    {
+      cols: [
+        { view: "grid", scrollX: "scrollHor", scrollY: "scrollVer" },
+        { html: "<div class='custom-content'>custom content</div>",
+          css: "custom-content", width: 50
+        },
+        { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+        { html: "<div class='custom-content'>custom content</div>",
+          css: "custom-content", width: 50
+        },
+        { view: "scrollbar", id: "scrollVer" }
+      ]
     },
-    {view: "scrollbar", scroll: "x", id: "scrollHor"}
- ]
+    { view: "scrollbar", scroll: "x", id: "scrollHor" }
+  ]
 }
 ~~~
 
 
-## Erforderliche Ansichten und Einstellungen {#requiredviewsandsettings}
+## Erforderliche Views und Einstellungen
 
-Die öffentliche API des gantt-Objekts umfasst Methoden, die an bestimmte Layout-Ansichten gebunden sind, wie [getTaskPosition](api/method/gettaskposition.md), [getTaskNode](api/method/gettasknode.md) und [getScrollState](api/method/getscrollstate.md).
+Die öffentliche API des gantt-Objekts enthält Methoden, die sich aus bestimmten Layout-Views ableiten, z. B. [getTaskPosition](api/method/gettaskposition.md), [getTaskNode](api/method/gettasknode.md), [getScrollState](api/method/getscrollstate.md). 
 
-Damit diese Methoden korrekt funktionieren, muss das Layout das Standard-Grid, die Zeitleiste, die Scrollleisten enthalten und der gantt muss diese finden können. Dies wird erreicht, indem bestimmten Ansichten spezifische IDs zugewiesen werden:
+Damit diese Methoden wie erwartet funktionieren, muss das Layout die Standard-Grids, Timelines, Scrollbars enthalten und der Gantt muss in der Lage sein, sie zu finden. 
+Dies wird erreicht, indem den Standard-Views spezifische IDs zugewiesen werden:
 
 ~~~js
 gantt.config.layout = {
- css: "gantt_container",
+  css: "gantt_container",
   rows: [
-  {
-   cols: [
-    {view: "grid", id: "grid", scrollX: "scrollHor", scrollY: "scrollVer"},
-    {view: "timeline", id: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-    {view: "scrollbar", id: "scrollVer"}
-   ]
-  },
-  {view: "scrollbar", id: "scrollHor"}
- ]
+    {
+      cols: [
+        { view: "grid", id: "grid", scrollX: "scrollHor",
+          scrollY: "scrollVer"
+        },
+        { view: "timeline", id: "timeline", scrollX: "scrollHor",
+          scrollY: "scrollVer"
+        },
+        { view: "scrollbar", id: "scrollVer" }
+      ]
+    },
+    { view: "scrollbar", id: "scrollHor" }
+  ]
 };
 ~~~
 
-Die erforderlichen Ansichten und ihre IDs sind:
+Die erforderlichen Views und ihre IDs sind:
 
 - view: "grid", id: "grid"
 - view: "timeline", id: "timeline"
 - view: "scrollbar", id: "scrollHor"
 - view: "scrollbar", id: "scrollVer"
 
-Falls keine ID gesetzt ist, verwendet gantt entweder den View-Namen als Standard-ID oder generiert automatisch eine eindeutige ID. Für das Standard-Grid und die Zeitleiste kann der "id"-Parameter also weggelassen werden:
+Beachten Sie, dass, wenn die ID nicht angegeben wird, Gantt entweder den View-Namen als Standard-View-ID verwendet oder eine eindeutige ID automatisch generiert wird.  
+Damit ist im Fall des Standard-Grid und der Timeline der Parameter **id** optional:
 
 ~~~js
 gantt.config.layout = {
- css: "gantt_container",
+  css: "gantt_container",
   rows: [
-  {
-   cols: [
-    {view: "grid", scrollX: "scrollHor", scrollY: "scrollVer"},
-    {view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-    {view: "scrollbar", id: "scrollVer"}
-   ]
-  },
-  {view: "scrollbar", id: "scrollHor"}
- ]
+    {
+      cols: [
+        { view: "grid", scrollX: "scrollHor", scrollY: "scrollVer" },
+        { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+        { view: "scrollbar", id: "scrollVer" }
+      ]
+    },
+    { view: "scrollbar", id: "scrollHor" }
+  ]
 };
 ~~~
 
-Sie können beliebig viele zusätzliche Ansichten zum Layout hinzufügen.
+Das Layout kann eine beliebige Anzahl weiterer Views enthalten.
 
-## Konfigurationen und Templates von Ansichten
+## Configs und Templates der Views
 
-Grid- und Timeline-Ansichten verwenden Templates und Konfigurationen aus den globalen [gantt.config/gantt.templates](guides/common-configuration.md). Diese können jedoch für bestimmte Ansichten auf Layout-Ebene überschrieben werden.
+Grid- und Timeline-Views verwenden die Templates und Configs aus dem globalen [gantt.config/gantt.templates](guides/common-configuration.md). Allerdings können diese Einstellungen auf View-Ebene im Layout überschrieben werden.
 
 Beispiel: 
 
 ~~~js
-var secondGridColumns = {
+const secondGridColumns = {
   columns: [
-    {
-        name: "status", label: "Status", width: 60, align: "center", 
-        template: function (task) {
-            var progress = task.progress || 0;
-            return Math.floor(progress * 100) + "";
-        }
+    { name: "status", label: "Status", width: 60, align: "center", 
+      template: (task) => {
+        const progress = task.progress || 0;
+        return Math.floor(progress * 100) + "";
+      }
     },
-    {
-        name: "impact", width: 80, label: "Impact", template: function (task) {
-            return (task.duration * 1000).toLocaleString("en-US", {
-              style: 'currency', currency: 'USD'
-          });
-        }
+    { name: "impact", width: 80, label: "Impact",
+      template: (task) => {
+        return (task.duration * 1000).toLocaleString("en-US", {
+          style: 'currency', currency: 'USD'
+        });
+      }
     }
   ]
 };
@@ -414,110 +414,119 @@ gantt.config.layout = {
   rows: [
     {
       cols: [
-        {view: "grid", id: "grid", width: 320, scrollY: "scrollVer"},
-        {resizer: true, width: 1},
-        {view: "timeline", id: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-        {resizer: true, width: 1},
-        {view: "grid", width: 120, bind:"task", 
-            scrollY:"scrollVer", config:secondGridColumns},   /*!*/
-        {view: "scrollbar", scroll: "y", id: "scrollVer"}
+        { view: "grid", id: "grid", width: 320, scrollY: "scrollVer" },
+        { resizer: true, width: 1 },
+        { view: "timeline", id: "timeline", scrollX: "scrollHor",
+          scrollY: "scrollVer"
+        },
+        { resizer: true, width: 1 },
+        { view: "grid", width: 120, bind: "task", scrollY: "scrollVer",
+          config: secondGridColumns /*!*/
+        },
+        { view: "scrollbar", scroll: "y", id: "scrollVer" }
       ]
     },
-    {view: "scrollbar", id: "scrollHor", height: 20}
+    { view: "scrollbar", id: "scrollHor", height: 20 }
   ]
 };
 ~~~
 
 
-Ansichten können auch Konfigurationen und Templates vom übergeordneten Layout erben:
+Views können Templates und Configs von der Eltern-Layout erben:
 
 ~~~js
-var resourceConfig = {    /*!*/
-    scale_height: 30      /*!*/
-};                          /*!*/
+const resourceConfig = {  /*!*/
+  scale_height: 30      /*!*/
+};                        /*!*/
 
 gantt.config.layout = {
   css: "gantt_container",
   rows: [
     {
       cols: [
-        {view: "grid", group:"grids", scrollY: "scrollVer"},
-        {resizer: true, width: 1},
-        {view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-        {view: "scrollbar", id: "scrollVer", group:"vertical"}
+        { view: "grid", group: "grids", scrollY: "scrollVer" },
+        { resizer: true, width: 1 },
+        { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+        { view: "scrollbar", id: "scrollVer", group: "vertical" }
       ],
-      gravity:2
+      gravity: 2
     },
-    {resizer: true, width: 1},
+    { resizer: true, width: 1 },
     {
       config: resourceConfig,   /*!*/
       cols: [
-        {view: "resourceGrid", group:"grids", width: 435, scrollY: "resourceVScroll" },
-        {resizer: true, width: 1},
-        {view: "resourceTimeline", scrollX: "scrollHor", scrollY: "resourceVScroll"},
-        {view: "scrollbar", id: "resourceVScroll", group:"vertical"}
+        { view: "resourceGrid", group: "grids", width: 435,
+          scrollY: "resourceVScroll"
+        },
+        { resizer: true, width: 1 },
+        { view: "resourceTimeline", scrollX: "scrollHor",
+          scrollY: "resourceVScroll"
+        },
+        { view: "scrollbar", id: "resourceVScroll", group: "vertical" }
       ],
-      gravity:1
+      gravity: 1
     },
-    {view: "scrollbar", id: "scrollHor"}
+    { view: "scrollbar", id: "scrollHor" }
   ]
 };
 ~~~
 
-Weitere Informationen finden Sie im Artikel [Resource Management](guides/resource-management.md).
+Schauen Sie sich den Artikel Resource Management an. (guides/resource-management.md)
 
+## Sichtbarkeits-Gruppen
 
-## Sichtbarkeitsgruppen
-
-Manchmal ist es nützlich, die Sichtbarkeit bestimmter Layout-Elemente zu synchronisieren. Wenn sich beispielsweise horizontale Scrollleisten in benachbarten Zellen befinden, möchten Sie vielleicht, dass beide gleichzeitig angezeigt oder ausgeblendet werden.
+Manchmal müssen Sie die Sichtbarkeit einiger Elemente im Layout synchronisieren. Zum Beispiel möchten Sie möglicherweise, dass horizontale Scrollbars in benachbarten Zellen gleichzeitig angezeigt oder versteckt werden.
 
 ![scrollable_grid](/img/scrollable_grid.png)
 
 
-[Horizontal scroll inside Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/10_scrollable_grid.html)
+**Verwandtes Beispiel**: [Horizontal Scrollbar innerhalb von Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/10_scrollable_grid.html)
 
 
-Ein weiteres Beispiel ist, wenn mehrere Grids in unterschiedlichen Zeitleisten-Zeilen die gleiche Breite teilen sollen. Wenn ein Grid in der Breite angepasst wird, sollen sich die anderen entsprechend anpassen.
+Betrachten wir ein weiteres Beispiel. Sie haben mehrere Grids in verschiedenen Reihen der Timeline und möchten, dass sie dieselbe Breite haben. Wird eines der Grids geändert, soll ein anderes dessen Größe übernehmen.
 
 ![grid_group_width](/img/grid_group_width.png)
 
 
-[Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
+**Verwandtes Beispiel**: [Ressourcen-Laufdiagramm](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
 
 
-Beide Szenarien lassen sich mit der **group**-Eigenschaft einer Ansicht lösen. Diese Eigenschaft akzeptiert einen beliebigen String, und Ansichten mit demselben group-Wert werden synchronisiert.
+Beide Probleme lassen sich mit der **group**-Eigenschaft der View lösen. Die Eigenschaft akzeptiert einen beliebigen String-Wert; Views mit dem gleichen Gruppenwert werden synchronisiert. 
 
-- Bei Scrollleisten bedeutet dies, dass ihre Sichtbarkeit gekoppelt ist. Ist eine Scrollleiste der Gruppe sichtbar, werden alle sichtbar.
-- Bei anderen Zellen sorgt es dafür, dass sie die gleiche Breite oder Höhe teilen - je nach Layout.
+- Für Scrollbars bedeutet dies, dass ihre Sichtbarkeit synchronisiert wird. Wenn mindestens eine Scrollbar der Gruppe sichtbar ist, sind alle Scrollbars der Gruppe sichtbar. 
 
-Beispiel für die Synchronisation der Sichtbarkeit von Scrollleisten:
+- Für andere Zellen bedeutet es, dass sie dieselbe Breite/Höhe haben, abhängig vom Layout.
+
+Synchronisieren der Sichtbarkeit von Scrollleisten:
 
 ~~~js
 gantt.config.layout = {
   css: "gantt_container",
   cols: [
     {
-       width:400,
-       minWidth: 200,
-       maxWidth: 600,
-       rows:[
-         {view: "grid", scrollX: "gridScroll", scrollable: true, scrollY: "scrollVer"},
-         {view: "scrollbar", id: "gridScroll", group:"horizontal"}    /*!*/
-        ]
-    },
-    {resizer: true, width: 1},
-    {
-      rows:[
-        {view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-        {view: "scrollbar", id: "scrollHor", group:"horizontal"}      /*!*/
+      width: 400,
+      minWidth: 200,
+      maxWidth: 600,
+      rows: [
+        { view: "grid", scrollX: "gridScroll", scrollable: true,
+          scrollY: "scrollVer"
+        },
+        { view: "scrollbar", id: "gridScroll", group: "horizontal" }    /*!*/
       ]
     },
-    {view: "scrollbar", id: "scrollVer"}
+    { resizer: true, width: 1 },
+    {
+      rows: [
+        { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+        { view: "scrollbar", id: "scrollHor", group: "horizontal" }      /*!*/
+      ]
+    },
+    { view: "scrollbar", id: "scrollVer" }
   ]
 };
 ~~~
 
-Beispiel für die Synchronisation der Grid-Breiten:
+Synchronisieren der Breite von Grids:
 
 ~~~js
 gantt.config.layout = {
@@ -525,63 +534,68 @@ gantt.config.layout = {
   rows: [
     {
       cols: [
-        {view: "grid", group:"grids", scrollY: "scrollVer"},
-        {resizer: true, width: 1},
-        {view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-        {view: "scrollbar", id: "scrollVer", group:"vertical"}    /*!*/
+        { view: "grid", group: "grids", scrollY: "scrollVer" },
+        { resizer: true, width: 1 },
+        { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+        { view: "scrollbar", id: "scrollVer", group: "vertical" }    /*!*/
       ],
-      gravity:2
+      gravity: 2
     },
-    {resizer: true, width: 1},
+    { resizer: true, width: 1 },
     {
       config: resourceConfig,
       cols: [
-        {view: "resourceGrid", group:"grids", width: 435, scrollY: "resourceVScroll" },
-        {resizer: true, width: 1},
-        {view: "resourceTimeline", scrollX: "scrollHor", scrollY: "resourceVScroll"},
-        {view: "scrollbar", id: "resourceVScroll", group:"vertical"}   /*!*/
+        { view: "resourceGrid", group: "grids", width: 435,
+          scrollY: "resourceVScroll"
+        },
+        { resizer: true, width: 1 },
+        { view: "resourceTimeline", scrollX: "scrollHor",
+          scrollY: "resourceVScroll"
+        },
+        { view: "scrollbar", id: "resourceVScroll", group: "vertical" }   /*!*/
       ],
-      gravity:1
+      gravity: 1
     },
-    {view: "scrollbar", id: "scrollHor"}
+    { view: "scrollbar", id: "scrollHor" }
   ]
 };
 ~~~
 
-## Größenanpassung der Gantt-Layout-Teile
+## Größen der Gantt-Layout-Teile
 
-Die relativen Größen der Gantt-Layout-Zellen können mit der **gravity**-Eigenschaft in der Konfiguration jeder Zelle gesteuert werden. Dieser Wert legt das Größenverhältnis zwischen den Zellen fest.
+Sie können die relativen Größen der Zellen des Gantt-Layouts über die in der Konfiguration jeder Zelle gesetzte **gravity**-Eigenschaft regeln. Der Parameter definiert die Größe der Zellen zueinander.
 
 ~~~js
 gantt.config.layout = {
-      css: "gantt_container",
-      rows: [
-        {
-              cols: [
-                // columns config
-            ],
-              gravity:2     /*!*/
-        },
-        { resizer: true, width: 1 },
-        {
-            config: resourceConfig,
-              cols: [
-                // columns config
-              ],
-              gravity:1       /*!*/
-        },
-    {view: "scrollbar", id: "scrollHor"}
-      ]
+  css: "gantt_container",
+  rows: [
+    {
+      cols: [
+        // Spaltenkonfiguration
+      ],
+      gravity: 2     /*!*/
+    },
+    { resizer: true, width: 1 },
+    {
+      config: resourceConfig,
+      cols: [
+        // Spaltenkonfiguration
+      ],
+      gravity: 1       /*!*/
+    },
+    { view: "scrollbar", id: "scrollHor" }
+  ]
 };
 ~~~
 
-In diesem Beispiel teilen sich das Gantt-Diagramm und das Ressourcen-Diagramm den Platz im Verhältnis 2:1. Das bedeutet, das Gantt-Diagramm nimmt etwa 66% ein, das Ressourcen-Diagramm etwa 33%. Mit einem Verhältnis von 1:1 wird der Platz gleichmäßig aufgeteilt.
+Im obigen Beispiel ergeben sich Größen des Gantt-Diagramms und des Ressourcen-Diagramms im Verhältnis 2:1. Das bedeutet, dass das Gantt-Diagramm 66% einnimmt, während das Ressourcen-Diagramm 33% einnimmt. 
+Durch die Verwendung des Verhältnisses 1:1 erhalten beide Diagramme jeweils 50%.
 
-### Min/max Zellbreite/-höhe
+### Min-/Max-Breite und -Höhe der Zellen
 
-Um die Größe von Layout-Teilen beim Resizing zu begrenzen, verwenden Sie die Eigenschaften **minWidth/maxWidth** für Zellen innerhalb des **cols**-Arrays. Entsprechend können **minHeight/maxHeight** für Zellen im **rows**-Array gesetzt werden, um die Höhenbegrenzung zu steuern.
+Die Eigenschaften **minWidth/maxWidth** können verwendet werden, um die Breite des Layout-Teils bei Größenänderungen zu begrenzen. Beachten Sie, dass diese Einstellungen nur auf Zellen innerhalb des **cols**-Arrays angewendet werden können. Sie können auch die Eigenschaften **minHeight/maxHeight** auf die Zellen im **rows**-Array anwenden, um die minimale/maximale Höhe der Layout-Zellen festzulegen.
 
-Hier ein Beispiel, wie **minWidth/maxWidth** in Spaltenkonfigurationen genutzt werden:
+Nachstehend sehen Sie, wie die Eigenschaften **minWidth/maxWidth** in die Spalten-Konfiguration aufgenommen werden können:
 
 ~~~js
 gantt.config.grid_elastic_columns = true;
@@ -594,65 +608,57 @@ gantt.config.layout = {
       minWidth: 200, /*!*/
       maxWidth: 600, /*!*/
       rows: [
-        {
-          view: "grid", scrollable: true, scrollX: "scrollHor1", scrollY: "scrollVer"
+        { view: "grid", scrollable: true, scrollX: "scrollHor1",
+          scrollY: "scrollVer"
         },
-        {
-          view: "scrollbar", id: "scrollHor1", scroll: 'x', group: 'hor'
-        },
+        { view: "scrollbar", id: "scrollHor1", scroll: 'x', group: 'hor' }
       ]
     },
     { resizer: true, width: 1 },
     {
       rows: [
-        {
-          view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"
-        },
-        {
-          view: "scrollbar", id: "scrollHor", scroll: 'x', group: 'hor'
-        },
+        { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+        { view: "scrollbar", id: "scrollHor", scroll: 'x', group: 'hor' }
       ]
     },
     {
       view: "scrollbar", id: "scrollVer"
     }
   ]
-}
-~~~
-
-
-## Eltern-Layout-Ansichten ausblenden
-
-Wenn eine Layout-Ansicht ausgeblendet werden soll, sobald alle untergeordneten Ansichten unsichtbar sind, setzen Sie **hide_empty:true** in der Konfiguration dieser Layout-Zelle, wie folgt:
-
-~~~js
-gantt.config.layout = {
-    css: "gantt_container",
-    cols: [
-          {
-            hide_empty: true, /*!*/
-            rows:[
-                  {view: "grid"}
-            ]
-          },
-          {resizer: true},
-          {
-            hide_empty: true, /*!*/
-            rows:[
-                  {view: "timeline"}
-            ]
-          }
-    ]
 };
 ~~~
 
-**Related example:** [Hiding grid/timeline views](https://snippet.dhtmlx.com/5/157c0db66)
+## Verstecken von übergeordneten Layout-Views
 
-## Wechseln zwischen Ansichten
+Wenn Sie eine Layout-View verstecken müssen, wenn alle darunterliegenden Elemente unsichtbar sind, geben Sie **hide_empty:true** in der Konfiguration der zugehörigen Layout-Zelle an, zum Beispiel: 
 
-Um zwischen verschiedenen Layout-Ansichten zu wechseln, lesen Sie die Abschnitte [How to toggle grid/chart](guides/how-to.md#howtotogglegridchart) und [How to toggle the resource view](guides/how-to.md#howtotoggletheresourceview) für detaillierte Anweisungen.
+~~~js
+gantt.config.layout = {
+  css: "gantt_container",
+  cols: [
+    {
+      hide_empty: true, /*!*/
+      rows: [
+        { view: "grid" }
+      ]
+    },
+    { resizer: true },
+    {
+      hide_empty: true, /*!*/
+      rows: [
+        { view: "timeline" }
+      ]
+    }
+  ]
+};
+~~~
 
-## Spalten im Grid einfrieren
+**Verwandtes Beispiel**: [Grid-/Timeline-Ansichten ausblenden](https://snippet.dhtmlx.com/5/157c0db66)
 
-Es ist möglich, ein Gantt-Diagramm mit einer oder mehreren eingefrorenen Spalten zu initialisieren. Anleitungen dazu finden Sie im Abschnitt [How to freeze/fix columns in the grid](guides/how-to.md#howtofreezefixcolumnsinthegrid).
+## Wechseln zwischen Views
 
+Wenn Sie zwischen verschiedenen Layout-Views wechseln müssen, lesen Sie die Abschnitte [How to toggle grid/chart](guides/how-to.md#how-to-toggle-gridchart) und [How to toggle the resource view](guides/how-to.md#how-to-toggle-the-resource-view) für weitere Details.
+
+## Spalten in der Grid-View einfrieren
+
+Sie können ein Gantt-Diagramm initialisieren, in dem eine oder mehrere Spalten eingefroren werden. Um dies zu implementieren, folgen Sie den Anweisungen im Abschnitt [How to freeze/fix columns in the grid](guides/how-to.md#how-to-freezefix-columns-in-the-grid).

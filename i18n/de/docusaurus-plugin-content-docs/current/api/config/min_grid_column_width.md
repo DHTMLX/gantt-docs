@@ -1,14 +1,14 @@
 ---
 sidebar_label: min_grid_column_width
-title: min_grid_column_width config
-description: "definiert die minimale Breite jeder Grid-Spalte (in Pixel) beim Ändern der Größe des Grids"
+title: min_grid_column_width Konfiguration
+description: "legt die minimale Breite jeder Grid-Spalte (in Pixeln) fest, während das Grid angepasst wird"
 ---
 
 # min_grid_column_width
 
 ### Description
 
-@short: Definiert die minimale Breite jeder Grid-Spalte (in Pixel) beim Ändern der Größe des Grids
+@short: Setzt die minimale Breite jeder Grid-Spalte (in Pixeln) während der Größenänderung des Grids
 
 @signature: min_grid_column_width: number
 
@@ -20,11 +20,11 @@ gantt.config.min_grid_column_width = 100;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 70
+**Standardwert:** 70
 
 ### Details
 
-Die Einstellung **min_width** für eine Spalte hat Vorrang vor der **min_grid_column_width** Einstellung des Gantts.
+Die **min_width**-Eigenschaft einer Spalte hat Vorrang vor der **min_grid_column_width**-Eigenschaft des Gantt.
 
 ### Related Guides
-- ["Spalten festlegen"](guides/specifying-columns.md#resizing)
+- [Spalten festlegen](guides/specifying-columns.md#resizing)

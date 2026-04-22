@@ -1,14 +1,14 @@
 ---
 sidebar_label: end_date
-title: end_date config
-description: "定义时间刻度的结束点"
+title: end_date 配置
+description: "设置时间刻度的结束值"
 ---
 
 # end_date
 
 ### Description
 
-@short: 定义时间刻度的结束点
+@short: 设置时间刻度的结束值
 
 @signature: end_date: Date | undefined
 
@@ -17,7 +17,7 @@ description: "定义时间刻度的结束点"
 ~~~jsx
 gantt.config.start_date = new Date(2018, 08, 10);
 gantt.config.end_date = new Date(2018, 08, 20);
-
+ 
 gantt.init("gantt_here");
 ~~~
 
@@ -27,11 +27,11 @@ gantt.init("gantt_here");
  **end_date** 选项应与 [start_date](api/config/start_date.md) 选项一起使用才能生效。 
 :::
 
-- 当同时设置了 **start_date** 和 **end_date** 时，超出该范围的任务将不会显示在图表上。
-- [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 的初始值可以通过 [init](api/method/init.md) 方法的可选参数提供。
-- [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 中的设置优先于 [fit_tasks](api/config/fit_tasks.md)。若要结合这些配置，您需要[通过编程控制时间刻度](guides/configuring-time-scale.md#fanwei)。
+- 当同时指定了 **start_date** 与 **end_date** 选项，且你创建的任务超出时间范围时，该任务将不会在图表中显示。
+- [init](api/method/init.md) 方法的可选参数可用作 [start_date](api/config/start_date.md) 与 [end_date](api/config/end_date.md) 配置的初始值。
+- [start_date](api/config/start_date.md) 与 [end_date](api/config/end_date.md) 会覆盖 [fit_tasks](api/config/fit_tasks.md)。如果要将这些设置一起使用，您需要 [从代码中管理时间刻度](guides/configuring-time-scale.md#range)。
 
-以下示例展示了如何动态扩展时间范围:
+在这种情况下，我们可以扩展时间范围：
 
 ~~~js
 gantt.attachEvent("onLightboxSave", function(id, task, is_new){
@@ -74,11 +74,12 @@ gantt.attachEvent("onLightboxSave", function(id, task, is_new){
 ~~~
 
 ### Related API
+
 - [start_date](api/config/start_date.md)
 - [fit_tasks](api/config/fit_tasks.md)
 - [init](api/method/init.md)
 - [show_tasks_outside_timescale](api/config/show_tasks_outside_timescale.md)
 
 ### Related Guides
-- [设置时间刻度](guides/configuring-time-scale.md)
 
+- [Setting up Scale](guides/configuring-time-scale.md)

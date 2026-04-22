@@ -3,121 +3,122 @@ title: "Контрол ресурсов"
 sidebar_label: "Контрол ресурсов"
 ---
 
-# Контрол ресурсов
+# Управление ресурсами
 
 :::info
-Эта функция доступна только в PRO-версии.
+Эта функциональность доступна только в PRO-версии.
 :::
 
-Это многофункциональный контрол, предназначенный для [назначения нескольким ресурсам и их количествам задачи](guides/resource-management.md#assigningresources).
+Сложный элемент управления, используемый для [назначения нескольких ресурсов и их количества для задачи](guides/resource-management.md#assigningresources).
 
-![Опции контрола ресурсов на сервере](/img/resources_control.png)
+![Параметры сервера управления ресурсами](/img/resources_control.png)
 
 ~~~js
 gantt.config.lightbox.sections = [
- {name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
- {name:"owner",height:60, type:"resources", default_value:8},   /*!*/
- {name: "time", type: "duration", map_to: "auto"}
+ { name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
+ { name: "owner", height: 60, type: "resources", default_value: 8},   /*!*/
+ { name: "time", type: "duration", map_to: "auto"}
 ];
 ~~~
 
 
-[Assign multiple resources](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
+[Назначить несколько ресурсов](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
 
 
-Альтернативный вариант:
+или
 
-![Опции контрола ресурсов](/img/resources_control2.png)
+![Параметры управления ресурсами](/img/resources_control2.png)
 
 ~~~js
 gantt.config.lightbox.sections = [
-  { name:"description",height:38,map_to:"text",type:"textarea",focus:true },
-  { name:"time",type:"duration",map_to:"auto" },
-  { name:"rooms",type:"resources",map_to:"rooms", options:[  /*!*/
-        { key: 1, label: "room 1", unit: "hours" },    /*!*/
-      { key: 2, label: "room 2", unit: "hours" },   /*!*/
-      { key: 3, label: "room 3", unit: "hours" }   /*!*/
+  { name: "description", height: 38, map_to:"text", type: "textarea", focus: true },
+  { name: "time", type: "duration", map_to: "auto" },
+  { name: "rooms", type: "resources", map_to: "rooms", options: [  /*!*/
+  	  { key: 1, label: "room 1", unit: "hours" },    /*!*/
+	  { key: 2, label: "room 2", unit: "hours" },   /*!*/
+	  { key: 3, label: "room 3", unit: "hours" }   /*!*/
     ]  /*!*/
-  }       /*!*/
+  }	   /*!*/
 ];
 
 gantt.locale.labels.section_rooms = "Rooms";
 ~~~
 
 
-[Resources control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/13_resources.html)
+[Управление ресурсами](https://docs.dhtmlx.com/gantt/samples/05_lightbox/13_resources.html)
 
 
 :::note
-Также возможно создать [кастомный контрол для назначения нескольких ресурсов задаче](guides/custom-editor.md#customthirdpartyeditor).
+Вы также можете создать [пользовательский элемент управления для назначения несколькими ресурсами задачи](guides/custom-editor.md#customthirdpartyeditor).
 :::
 
 ## Инициализация
 
-Чтобы добавить контрол **resources** в lightbox, выполните следующие шаги:
+Чтобы добавить контроль **ресурсов** в lightbox, выполните следующие шаги:
 
 1. Добавьте секцию в конфигурацию lightbox:
 
 ~~~js
 gantt.config.lightbox.sections = [
-  { name:"description",height:38,map_to:"text",type:"textarea",focus:true },
-  { name:"time",type:"duration",map_to:"auto" },
-  { name:"rooms",type:"resources" }       /*!*/
+  { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+  { name: "time", type: "duration", map_to: "auto" },
+  { name: "rooms", type:"resources" }	   /*!*/
 ];
 ~~~
 
-2. Задайте метку для секции:
+2. Установите подпись для секции:
 
 ~~~js
 gantt.locale.labels.section_resources = "Rooms";
 ~~~
 
 
-[Resources control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/13_resources.html)
+[Управление ресурсами](https://docs.dhtmlx.com/gantt/samples/05_lightbox/13_resources.html)
 
 
 ## Свойства
 
-Ниже приведены основные свойства, которые обычно задаются для контрола **resources** (полный список доступен [здесь](api/config/lightbox.md)):
+Следующие свойства в основном важны и обычно задаются для элемента управления **ресурсы** (см. полный список [здесь](api/config/lightbox.md)):
 
 - **name** - (*string*) имя секции 
-- **map_to** - (*string*) имя свойства данных, связанного с секцией
-- **type** - (*string*) тип контрола для [секции](guides/default-edit-form.md#lightboxcontrols)
-- **options** - (*array*) массив объектов, определяющих варианты выбора контрола (*используется с контролами **select**, **checkbox**, **radio** и **resources***). Каждый объект включает:
-    - **key** - (*string*) id опции, сопоставляется со свойством данных задачи
-    - **label** - (*string*) подпись опции
+- **map_to** - (*string*) имя свойства данных, которое будет сопоставлено с секцией
+- **type** - (*string*) тип [контрола секции](guides/default-edit-form.md#lightboxcontrols)
+- **options** - (*array*) массив объектов. Определяет варианты выбора элемента управления (*используется для контролов **select**, **checkbox**,**radio** и **resources**  контролов*). 
+Каждый объект в массиве задаёт один вариант и включает следующие свойства:
+    - **key** - (*string*) идентификатор варианта. Этот атрибут сравнивается с свойством данных задачи для назначения вариантов
+    - **label** - (*string*) метка варианта
     - **unit** - (*number*) единица измерения ресурса
-- **focus** - (*boolean*) если true, секция получает фокус при открытии lightbox
-- **default_value** - (*any*) значение по умолчанию для контрола, используется если значение ресурса не определено. Для каждой опции может быть задано своё значение по умолчанию.
+- **focus** - (*boolean*) если установлено в *true*, секция получит фокус при открытии lightbox
+- **default_value** - (*any*) значение по умолчанию для управления секцией. Применяется, если значение ресурса неопределено. Каждый вариант из массива **options** может иметь своё собственное значение по умолчанию.
 
 :::note
-По умолчанию контрол ресурсов связывается со свойством, определённым в [resource_property](api/config/resource_property.md), поэтому указывать **map_to** необязательно.
+По умолчанию управление ресурсами сопоставляется со свойством, указанным в конфигурации [resource_property](api/config/resource_property.md), поэтому опцию **map_to** можно опустить.
 :::
 :::note
-По умолчанию контрол ресурсов автоматически заполняется из [хранилища ресурсов](guides/resource-management.md#workingwithresourceviewpanel) через коллекцию `gantt.serverList("resourceOptions")` ([подробнее](api/method/serverlist.md)). Необходимо задавать опции вручную только для переопределения этого поведения.
+По умолчанию управление ресурсами автоматически заполняется из [хранилища ресурсов](guides/resource-management.md#working-with-resource-view-panel) через коллекцию `gantt.serverList("resourceOptions")` [collection](api/method/serverlist.md). Нужно явно задавать список опций вручную только в том случае, если вы хотите изменить поведение по умолчанию.
 :::
 
-## Заполнение контрола данными
+## Заполнение контроля данными
 
-Начиная с версии 8.0, контрол ресурсов автоматически получает опции из [хранилища ресурсов](guides/resource-management.md#workingwithresourceviewpanel).
+Начиная с версии v8.0, контроль ресурсов по умолчанию получает опции из [хранилища ресурсов](guides/resource-management.md#working-with-resource-view-panel).
 
-Если вы используете стандартное хранилище ресурсов Gantt, [контрол ресурсов](guides/resources.md), инициализированный без параметра **options**, будет связан с коллекцией **gantt.serverList("resourceOptions")**, которая наполняется ресурсами из хранилища. Получить опции в коде можно так:
+Если вы используете стандартное хранилище ресурсов, созданное Gantt, управление ресурсами, инициализированное без параметра **options**, будет подключено к коллекции **gantt.serverList("resourceOptions")**. Эта коллекция будет заполнена ресурсами из хранилища ресурсов. Вы можете получить доступ к опциям с помощью кода:
 
 ~~~js
 const options = gantt.serverList("resourceOptions");
 ~~~
 
-Имейте в виду, что массив опций будет пустым, пока ресурсы не будут загружены в хранилище.
+Обратите внимание, массив опций будет пуст до загрузки ресурсов в хранилище.
 
-Также вы можете обновить эту коллекцию своим списком опций:
+Вы также можете обновить эту коллекцию, используя произвольный список опций:
 
 ~~~js
 gantt.updateCollection("resourceOptions", [...]);
 ~~~
 
-Обратите внимание, что если вы загрузите ресурсы в Gantt после обновления этой коллекции, ваши изменения будут перезаписаны.
+Обратите внимание, что если вы загрузите ресурсы в gantt после этого, gantt обновит эту коллекцию и перезапишет ваши изменения.
 
-Чтобы управлять тем, какие ресурсы отображаются в lightbox, переопределите конфиг **gantt.config.resources.lightbox_resources**:
+Если вы хотите контролировать, какие ресурсы попадают в lightbox, вы можете переопределить конфигурацию **gantt.config.resources.lightbox_resources**:
 
 ~~~js
 gantt.config.resources = {
@@ -136,9 +137,9 @@ gantt.config.resources = {
 };
 ~~~
 
-Если вы создаёте хранилище ресурсов вручную, необходимо самостоятельно заполнить опции для контрола ресурсов.
+Если вы создаёте хранилище ресурсов вручную, вам нужно заполнить управление ресурсами опциями самостоятельно.
 
-Обычно для задания значений для контрола **resources** используется параметр [options](api/config/lightbox.md):
+Обычно для задания значений для управления **ресурсами** используйте параметр [options](api/config/lightbox.md):
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -152,16 +153,16 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-Каждый элемент массива [options](api/config/lightbox.md) должен содержать:
+Элементы в параметре [options](api/config/lightbox.md) имеют 3 обязательных свойства:
 
-- **key** - id опции
-- **label** - подпись опции
+- **key** - идентификатор варианта
+- **label** - метка варианта
 - **unit** - единица измерения ресурса
 
 
-## Заполнение контрола данными с сервера
+## Заполнение данных с сервера
 
-Чтобы заполнить контрол данными с сервера, установите свойство [options](api/config/lightbox.md) в значение, возвращаемое методом [serverList](api/method/serverlist.md):
+Чтобы заполнить контроль данными с сервера, задайте параметр [options](api/config/lightbox.md) значением, возвращаемым методом [serverList](api/method/serverlist.md):
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -176,7 +177,7 @@ gantt.load("/data");
 ~~~
 
 
-Содержимое `gantt.serverList("resourceOptions")` можно задать, когда опции станут доступны, с помощью метода [updateCollection](api/method/updatecollection.md):
+Содержимое `gantt.serverList("resourceOptions")` может быть определено, когда опции становятся доступными, с использованием метода [updateCollection](api/method/updatecollection.md):
 
 ~~~js
 gantt.updateCollection("resourceOptions", [
@@ -187,5 +188,4 @@ gantt.updateCollection("resourceOptions", [
 ~~~
 
 
-[Assign multiple resources](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
-
+[Назначить несколько ресурсов](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)

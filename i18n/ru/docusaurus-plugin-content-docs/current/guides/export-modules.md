@@ -1,12 +1,12 @@
 ---
-title: "Модули экспорта"
-sidebar_label: "Модули экспорта"
+title: "Экспорт модулей"
+sidebar_label: "Экспорт модулей"
 ---
 
-# Модули экспорта
+# Экспорт модулей
 
-- [Сервис экспорта - системные требования для самостоятельной установки](guides/export-requirements.md)
+- [Сервис экспорта — системные требования для автономной установки](guides/export-requirements.md)
 - [Что нового в модуле экспорта PDF](guides/pdf-export-module-whatsnew.md)
-- [Что нового в модуле экспорта проектов MSP](guides/msp-export-module-whatsnew.md)
-- [Модуль экспорта в PDF](guides/pdf-export-module.md)
+- [Что нового в модуле экспорта MSP Project](guides/msp-export-module-whatsnew.md)
+- [Модуль экспорта для PDF](guides/pdf-export-module.md)
 - [Модуль экспорта для MS Project](guides/msp-export-module.md)

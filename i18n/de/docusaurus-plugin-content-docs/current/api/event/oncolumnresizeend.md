@@ -1,27 +1,27 @@
 ---
 sidebar_label: onColumnResizeEnd
-title: onColumnResizeEnd event
-description: "wird ausgelöst, sobald der Benutzer das Ziehen der Spaltengrenze beendet hat, um die Breite anzupassen"
+title: onColumnResizeEnd-Ereignis
+description: "Wird ausgelöst, nachdem der Benutzer den Rand der Spalte zum Ändern der Spaltenbreite gezogen hat"
 ---
 
 # onColumnResizeEnd
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO Edition verfügbar.
 :::
 ### Description
 
-@short: Wird ausgelöst, sobald der Benutzer das Ziehen der Spaltengrenze beendet hat, um die Breite anzupassen
+@short: Wird ausgelöst, nachdem der Benutzer den Rand der Spalte zum Ändern der Spaltenbreite gezogen hat
 
 @signature: onColumnResizeEnd: (index: number, column: GridColumn, new_width: number) =\> boolean;
 
 ### Parameters
 
-- `index` - (required) *number* - der Index der Spalte
-- `column` - (required) *GridColumn* - das Spaltenobjekt selbst
-- `new_width` - (required) *number* - die aktualisierte Breite der Spalte
+- `index` - (required) *number* - der Spaltenindex
+- `column` - (required) *GridColumn* - das Spaltenobjekt
+- `new_width` - (required) *number* - die neue Spaltenbreite
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
@@ -41,7 +41,7 @@ gantt.attachEvent("onColumnResizeEnd", function(index, column, new_width){
 
 ### Details
 
-Dieses Event kann blockiert werden. Die Rückgabe von *false* verhindert die Größenänderung der Spalte.
+Das Ereignis kann blockiert werden. Wenn *false* zurückgegeben wird, wird das Spalten-Resizing abgebrochen.
 
 ### Related API
 - [onColumnResize](api/event/oncolumnresize.md)
@@ -49,5 +49,4 @@ Dieses Event kann blockiert werden. Die Rückgabe von *false* verhindert die Gr�
 - [onGridResizeEnd](api/event/ongridresizeend.md)
 
 ### Related Guides
-- ["Spalten festlegen"](guides/specifying-columns.md#resizing)
-
+- [Specifying Columns](guides/specifying-columns.md#resizing)

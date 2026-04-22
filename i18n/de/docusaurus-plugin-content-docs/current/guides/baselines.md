@@ -6,126 +6,126 @@ sidebar_label: "Benutzerdefinierte Elemente im Timeline-Bereich"
 # Benutzerdefinierte Elemente im Timeline-Bereich
 
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar
 :::
 
-dhtmlxGantt enthält [eingebaute Funktionen](guides/inbuilt-baselines.md) zur standardmäßigen Anzeige zusätzlicher Elemente wie Baselines, Deadlines und Task-Constraints. Wenn Sie diese Funktionen erweitern oder anpassen möchten, können Sie benutzerdefinierte Elemente manuell zum Timeline-Bereich hinzufügen, wie unten beschrieben.
+dhtmlxGantt bietet die [eingebaute Funktionalität](guides/inbuilt-baselines.md), die das standardmäßige Rendern solcher zusätzlicher Elemente wie Baselines, Deadlines und Aufgabenkonstellationen ermöglicht. Falls Sie die Standardfunktionen erweitern oder ändern müssen, können Sie benutzerdefinierte Elemente manuell in die Zeitachse einfügen, wie unten beschrieben.
 
-Das Hinzufügen zusätzlicher Elemente beinhaltet in der Regel das Erstellen einer eigenen Darstellungsschicht (Layer) und das Positionieren der benutzerdefinierten Elemente dort mittels absoluter Positionierung, um sie mit der jeweiligen Aufgabe auszurichten.
+Das Anzeigen zusätzlicher Elemente erfolgt üblicherweise durch das Erstellen einer anzeigbaren Ebene und das Platzieren benutzerdefinierter Elemente dort
+(unter Verwendung der absoluten Positionierung, um benutzerdefinierte Elemente neben der zugehörigen Aufgabe zu positionieren).
 
-**Um dem Timeline-Bereich eine zusätzliche Ebene hinzuzufügen**, verwenden Sie die Methode [addTaskLayer](api/method/addtasklayer.md). Diese Methode erwartet eine Funktion als Parameter, die:
+**Um der Timeline einen weiteren Layer hinzuzufügen**, verwenden Sie die [`addTaskLayer()`](api/method/addtasklayer.md)-Methode. Als Parameter nimmt die Methode eine Funktion, die:
 
-- Ein Task-Objekt erhält;
-- Entweder ein anzuzeigendes DOM-Element zurückgibt oder *false*, wenn das Element für eine Aufgabe ausgeblendet werden soll.
+- ein Task-Objekt erhält;
+- entweder ein DOM-Element zurückgibt, das angezeigt wird, oder *false* (das Element für eine Aufgabe soll versteckt werden).
 
 ~~~js
-gantt.addTaskLayer(function myNewElement(task) {
-    var el = document.createElement('div');
-    // Ihr Code
-    return el;
+gantt.addTaskLayer((task) => {
+    const layerElement = document.createElement('div');
+    // dein Code
+    return layerElement;
 });
 ~~~
 
-[Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
+**Verwandte Beispiel**: [Deadlines anzeigen](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
 
+Hinweis:
 
-Hinweise:
+1. Nachdem Sie die Methode aufgerufen haben, fügt dhtmlxGantt einen Container in die Zeitachse ein.
+2. Wenn dhtmlxGantt Daten rendert, wird die [`addTaskLayer()`](api/method/addtasklayer.md) Methode für jede Aufgabe aufgerufen und das zurückgegebene DOM-Element wird dem Container angehängt.
+3. Für die Anordnung von Elementen können Sie eine normale absolute Position verwenden.
+4. Wenn eine Gantt-Aufgabe aktualisiert wird, wird sie in allen Layern, einschließlich der benutzerdefinierten, aktualisiert (die Funktion wird für die aktualisierte Aufgabe aufgerufen und das zugehörige DOM-Element wird ersetzt).
+5. dhtmlxGantt bietet eine Methode zur Berechnung der Position und Größe einer Aufgabe - [`getTaskPosition()`](api/method/gettaskposition.md). Sie können sie auch verwenden, um die Position und Größe für Ihre benutzerdefinierten Elemente zu berechnen.
 
-1. Sobald Sie die Methode aufrufen, fügt dhtmlxGantt dem Timeline-Bereich einen Container hinzu.
-2. Beim Rendern der Daten wird die Methode [addTaskLayer](api/method/addtasklayer.md) für jede Aufgabe aufgerufen und das zurückgegebene DOM-Element dem Container hinzugefügt.
-3. Sie können Standard-Absolute-Positionierung verwenden, um die Elemente zu platzieren.
-4. Wenn eine Gantt-Aufgabe aktualisiert wird, werden alle Layer, einschließlich der benutzerdefinierten, aktualisiert (die Funktion wird für die aktualisierte Aufgabe erneut aufgerufen und das zugehörige DOM-Element ersetzt).
-5. dhtmlxGantt bietet eine Methode zur Berechnung der Position und Größe einer Aufgabe - [getTaskPosition](api/method/gettaskposition.md). Diese kann verwendet werden, um Position und Größe Ihrer eigenen Elemente zu bestimmen.
-
-*Tipps zur Verbesserung der Rendering-Performance von benutzerdefinierten Elementen finden Sie im Artikel [addTaskLayer](api/method/addtasklayer.md).*
+*Um zu erfahren, wie die Renderleistung beim Anzeigen benutzerdefinierter Elemente erhöht werden kann, lesen Sie den [`addTaskLayer()`](api/method/addtasklayer.md#smart-rendering-for-custom-layers) Artikel.*
 
 :::note
-Wenn Sie in jeder Timeline-Zelle eigenen Inhalt anzeigen möchten, ist es einfacher und schneller, HTML direkt mit der Vorlage [timeline_cell_content](api/template/timeline_cell_content.md) in die Zellen einzufügen.
+Wenn Sie den benutzerdefinierten Inhalt in allen Zellen der Timeline anzeigen möchten, legen Sie HTML direkt in die Zellen mithilfe der Vorlage [`timeline_cell_content`](api/template/timeline_cell_content.md) ein. Dieser Ansatz ist leichter umzusetzen und performanter.
 :::
 
-## Beispiel für die Verwendung
+## Anwendungsbeispiel
 
-Hier ein Beispiel zur Verdeutlichung der Funktionsweise: Angenommen, Sie haben sowohl geplante als auch tatsächliche Zeiten für Aufgaben und möchten beide anzeigen.
+Um zu verstehen, wie man diese Funktionalität anwendet, betrachten wir ein Beispiel: Sie haben eine geplante und eine tatsächlich verstrichene Zeit für Aufgaben und möchten beide Zeiten anzeigen.
 
 ![baselines](/img/baselines.png)
 
-### Schritt 1. Task-Höhe reduzieren und Task-Linien nach oben verschieben
+### Schritt 1. Reduzieren Sie die Aufgabenhöhe und verschieben Sie die Aufgabenlinien nach oben
 
-Anfangs sehen die Aufgaben so aus:
+Im Ausgangszustand sehen die Aufgaben so aus:
 
 ![baselines_start](/img/baselines_start.png)
 
-Um unter den Aufgaben Platz für Baselines zu schaffen, reduzieren Sie die Höhe der Task-Bar auf etwa die Hälfte der Zeilenhöhe:
+Zunächst müssen Sie etwas Platz für Baselines unter den Aufgaben schaffen.
+Dazu ist es notwendig, die Höhe der Aufgabenleiste mit `gantt.config.bar_height` zu verringern und sie annähernd auf die Hälfte der Zeilenhöhe zu setzen, die durch `gantt.config.row_height` definiert ist:
 
 ~~~js
 gantt.config.bar_height = 16;
 gantt.config.row_height = 40;
 ~~~
 
-Verschieben Sie dann die Task-Linie mit folgendem CSS an den oberen Rand der Zeile:
+Und bewegen Sie die Aufgabenlinie nach oben innerhalb der Zeile, indem Sie folgenden CSS-Code anwenden:
 
 ~~~css
-.gantt_task_line, .gantt_line_wrapper {
+.gantt_task_line,
+.gantt_line_wrapper {
     margin-top: -9px;
 }
-.gantt_side_content {
-    margin-bottom: 7px;
-}
+
 .gantt_task_link .gantt_link_arrow {
-    margin-top: -12px
+    margin-top: -10px;
 }
-.gantt_side_content.gantt_right {
-    bottom: 0;
+
+.gantt_task_link .gantt_link_corner {
+    margin-top: -9px;
 }
 ~~~
 
-Das Ergebnis sieht folgendermaßen aus:
+Das Ergebnis wird folgendes sein:
 
 ![baselines_task_height](/img/baselines_task_height.png)
 
-### Schritt 2. Zusätzliche Datenfelder hinzufügen
+### Schritt 2. Zusätzliche Daten-Eigenschaften hinzufügen
 
-Fügen Sie als Nächstes zusätzliche Datenfelder zum Task-Objekt hinzu, z.B. 'planned_start' und 'planned_end'.
+Anschließend müssen Sie dem Task-Objekt zusätzliche Daten-Eigenschaften hinzufügen. Nennen wir sie: `planned_start` und `planned_end`.
 
 ![baseline_task_object](/img/baseline_task_object.png)
 
-### Schritt 3. Hinzugefügte Datenfelder in Date-Objekte umwandeln
+### Schritt 3. Hinzugefügte Dateneigenschaften in Date-Objekte umwandeln
 
-dhtmlxGantt erkennt und konvertiert 'start_date' und 'end_date' automatisch in Date-Objekte. Andere Datumsfelder müssen manuell konvertiert werden. 
-
-
-Damit 'planned_start' und 'planned_end' von dhtmlxGantt genutzt werden können, parsen Sie diese mit der Methode parseDate() im Handler des [onTaskLoading](api/event/ontaskloading.md) Events zu Date-Objekten.
+dhtmlxGantt kennt nur die Daten-Eigenschaften `start_date` und `end_date` und wandelt diese automatisch in Date-Objekte um.
+Andere Datums-Eigenschaften benötigen zusätzliche Verarbeitung.
+Um die hinzugefügten Eigenschaften `planned_start` und `planned_end` von dhtmlxGantt erkennbar zu machen, parsen Sie sie mithilfe der Methode `parseDate()` im [`onTaskLoading`](api/event/ontaskloading.md) Ereignishandler.
 
 ~~~js
-gantt.attachEvent("onTaskLoading", function(task){
-    task.planned_start = gantt.date.parseDate(task.planned_start, "xml_date");
-    task.planned_end = gantt.date.parseDate(task.planned_end, "xml_date");
+gantt.attachEvent("onTaskLoading", (task) => {
+    task.planned_start = gantt.date.parseDate(task.planned_start, gantt.config.date_format);
+    task.planned_end = gantt.date.parseDate(task.planned_end, gantt.config.date_format);
     return true;
 });
 ~~~
 
-### Schritt 4. Benutzerdefinierte Elemente für die geplante Zeit anzeigen
+### Schritt 4. Benutzdefinierte Elemente für die geplante Zeit anzeigen
 
-Verwenden Sie dann die Methode [addTaskLayer](api/method/addtasklayer.md), um die geplante Zeit für jede Aufgabe (von 'planned_start' bis 'planned_end') darzustellen.
+Dann rufen Sie die [`addTaskLayer()`](api/method/addtasklayer.md) Methode auf, um die geplante Zeit für eine Aufgabe anzuzeigen, definiert durch die Eigenschaften `planned_start` und `planned_end`.
 
 ~~~js
-gantt.addTaskLayer(function draw_planned(task) {
+gantt.addTaskLayer((task) => {
     if (task.planned_start && task.planned_end) {
-        var sizes = gantt.getTaskPosition(task, task.planned_start, task.planned_end);
-        var el = document.createElement('div');
-        el.className = 'baseline';
-        el.style.left = sizes.left + 'px';
-        el.style.width = sizes.width + 'px';
-        el.style.top = sizes.top + gantt.config.task_height  + 13 + 'px';
-        return el;
+        const taskPosition = gantt.getTaskPosition(task, task.planned_start, task.planned_end);
+        const baselineElement = document.createElement('div');
+        baselineElement.className = 'baseline';
+        baselineElement.style.left = taskPosition.left + 'px';
+        baselineElement.style.width = taskPosition.width + 'px';
+        baselineElement.style.top = taskPosition.top + gantt.config.task_height + 13 + 'px';
+        return baselineElement;
     }
     return false;
 });
 ~~~
 
-### Schritt 5. CSS-Regeln für die hinzugefügten Elemente festlegen
+### Schritt 5. Legen Sie die CSS-Regeln für die hinzugefügten Elemente fest
 
-Fügen Sie abschließend CSS-Stile für Ihre neuen Elemente hinzu:
+Als nächstes fügen Sie einen Stil für Ihre neuen Elemente hinzu:
 
 ~~~css
 .baseline {
@@ -135,149 +135,150 @@ Fügen Sie abschließend CSS-Stile für Ihre neuen Elemente hinzu:
     margin-top: -7px;
     height: 12px;
     background: #ffd180;
-    border: 1px solid rgb(255,153,0);
+    border: 1px solid rgb(255, 153, 0);
 }
 ~~~
 
-### Schritt 6. Bearbeiten der hinzugefügten Datenfelder im Lightbox ermöglichen
+### Schritt 6. Ermöglichen Sie das Bearbeiten der hinzugefügten Dateneigenschaften im Lightbox
 
-Um Benutzern das Bearbeiten der neu hinzugefügten Eigenschaften über die Benutzeroberfläche zu ermöglichen, müssen Sie die Struktur des Lightbox entsprechend anpassen.
+Schließlich definieren Sie die Struktur der `lightbox` neu, wenn Sie eine Möglichkeit bieten möchten, die neu hinzugefügten Eigenschaften aus der Benutzeroberfläche zu bearbeiten.
 
 ~~~js
 gantt.config.lightbox.sections = [
-    {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-    {name: "time", height: 72, map_to: "auto", type: "duration"},
-    {name: "baseline", height: 72, map_to: { 
-        start_date: "planned_start", end_date: "planned_end"}, type: "duration"}
+    { name: "description", height: 70, map_to: "text", type: "textarea", focus: true },
+    { name: "time", height: 72, map_to: "auto", type: "duration" },
+    {
+        name: "baseline",
+        height: 72,
+        map_to: {
+            start_date: "planned_start",
+            end_date: "planned_end"
+        },
+        type: "duration"
+    }
 ];
-gantt.locale.labels.section_baseline = "Planned";
+gantt.locale.labels.section_baseline = "Geplant";
 ~~~
 
-Den vollständigen Beispielcode finden Sie im zugehörigen Beispiel.
+Der vollständige Code des betrachteten Beispiels ist im entsprechenden Sample zu sehen.
 
-
-[Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
-
+**Verwandte Beispiel**: [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 ## Beispiele für benutzerdefinierte Inhalte
 
-Hier sind einige Beispiele, wie Sie die Methode [addTaskLayer()](api/method/addtasklayer.md) verwenden können, um die Gantt-Diagramm-Zeitleiste mit verschiedenen benutzerdefinierten Elementen zu erweitern:
+Die folgenden Beispiele zeigen Ihnen verschiedene Wege, den [`addTaskLayer()`](api/method/addtasklayer.md)-Weg zu verwenden, um die Timeline des Gantt-Diagramms mit unterschiedlichen benutzerdefinierten Elementen anzureichern:
 
-- [Benutzerdefinierte Baselines](https://snippet.dhtmlx.com/wv23be05)
-- [Hervorhebung von Zellen mit überfälliger Zeit](https://snippet.dhtmlx.com/bk5m6his) 
-- [Hervorhebung überfälliger Aufgaben](https://snippet.dhtmlx.com/p74m3du2)
-- [Anzeige des verpassten Endtermins für das gesamte Projekt](https://snippet.dhtmlx.com/cuc7d4vn)
-- [Anzeige des Aufgabenfortschrittswertes](https://snippet.dhtmlx.com/bpupkrce)
-- [Hinzufügen benutzerdefinierter Elemente für Aufgaben](https://snippet.dhtmlx.com/quqe9s2o)
-- [Verschiebbare Baselines](https://snippet.dhtmlx.com/pmuy0lj8)
-- [Baselines mit verschiebbarem Fortschrittsregler](https://snippet.dhtmlx.com/38h66bni)
-- [Benutzerdefinierte Meilensteine](https://snippet.dhtmlx.com/70kqo4do)
-- [Wiederkehrende Aufgaben](https://snippet.dhtmlx.com/5/7faa7b03a) 
-
+- <a href="https://snippet.dhtmlx.com/wv23be05" target="_blank">Benutzerdefinierte Baselines</a>
+- <a href="https://snippet.dhtmlx.com/bk5m6his" target="_blank">Zellen mit überfälliger Zeit hervorheben</a>
+- <a href="https://snippet.dhtmlx.com/p74m3du2" target="_blank">Überfällige Aufgaben hervorheben</a>
+- <a href="https://snippet.dhtmlx.com/cuc7d4vn" target="_blank">Verpasstes Enddatum für das gesamte Projekt anzeigen</a>
+- <a href="https://snippet.dhtmlx.com/bpupkrce" target="_blank">Fortschrittswert der Aufgabe anzeigen</a>
+- <a href="https://snippet.dhtmlx.com/quqe9s2o" target="_blank">Benutzerdefinierte Elemente für Aufgaben hinzufügen</a>
+- <a href="https://snippet.dhtmlx.com/pmuy0lj8" target="_blank">Draggable baselines</a>
+- <a href="https://snippet.dhtmlx.com/38h66bni" target="_blank">Baselines mit einem verschiebbaren Fortschrittsknopf</a>
+- <a href="https://snippet.dhtmlx.com/3oy6052q" target="_blank">Benutzerdefinierte Meilensteine</a>
+- <a href="" target="_blank">Wiederkehrende Aufgaben</a>
 
 ## Drag-and-drop für benutzerdefinierte Elemente
 
-Wenn Sie Drag-and-drop für benutzerdefinierte Elemente ermöglichen möchten, sollten Sie wissen, dass DHTMLX Gantt hierfür keine eingebaute Funktion bietet. Sie können dies jedoch mit einigen einfachen Schritten manuell umsetzen.
+Es könnte hilfreich sein, wenn wir die Frage der Aktivierung von Drag-and-Drop für benutzerdefinierte Elemente untersuchen. Die Sache ist, dass es keine eingebaute Funktion zur Implementierung eines benutzerdefinierten Drag-and-Drop in DHTMLX Gantt gibt. Aber es lässt sich auf einfache Weise manuell realisieren.
 
-Die Idee ist, auf drei DOM-Events (**mousedown**, **mousemove**, **mouseup**) zu hören und einige Flags zu verwenden, um den Status von Drag-and-drop zwischen diesen Events zu verfolgen.
+Dabei müssen Sie drei DOM-Ereignisse erfassen: `mousedown`, `mousemove` und `mouseup`, und ein paar Flaggen definieren, um den Zustand von Drag-and-Drop zwischen diesen Ereignissen zu speichern.
 
-1. Das **mousedown**-Event signalisiert den Beginn eines möglichen Drag-and-drop-Vorgangs. Es könnte aber auch nur der Beginn eines normalen Klicks sein, der kein Dragging auslösen sollte. An diesem Punkt setzen Sie ein Flag, um Drag-and-drop anzufordern, und speichern die anfängliche Mausposition sowie weitere relevante Daten.
+1. Das `mousedown`-Ereignis signalisiert, dass Drag-and-Drop beginnt. Allerdings kann dies auch die erste Phase eines normalen `click`-Ereignisses sein, welches Drag-and-Drop nicht aktivieren sollte. An diesem Schritt müssen Sie eine Flagge setzen, die angibt, dass Drag-and-Drop angefordert wurde, und die anfängliche Mausposition sowie alle weiteren Daten speichern, die später benötigt werden.
 
 ~~~js
-var dndRequested = false;
-var dndActivated = false;
-var startPosition = null;
-var startTimestamp = null
-var taskId = null;
-var domUtils = gantt.utils.dom;
-// In diesem Beispiel werden `.baseline`-Elemente innerhalb des Containers `gantt.$task_data` gezogen
-gantt.event(gantt.$task_data, 'mousedown', function(e) {
-  // Verwenden Sie element.closest oder gantt.utils.dom.closest, um das ziehbare Element zu finden
-  var draggableElement = domUtils.closest(e.target, '.baseline');
- 
-  if (draggableElement) {
-    // Es ist noch nicht klar, ob der Benutzer das Element ziehen oder nur klicken möchte
-    // Speichern Sie die Event-Informationen, wir prüfen dies beim 'mousemove'
-    dndRequested = true;
-    startTimestamp = Date.now();
-    startPosition = domUtils.getRelativeEventPosition(e, gantt.$task_data);
-    taskId = draggableElement.getAttribute("data-task");
-  }
+let dndRequested = false;
+let dndActivated = false;
+let startPosition = null;
+let startTimestamp = null;
+let taskId = null;
+const domUtils = gantt.utils.dom;
+// in diesem Beispiel ziehen wir `.baseline`-Elemente innerhalb des Containers `gantt.$task_data`
+gantt.event(gantt.$task_data, 'mousedown', (event) => {
+    // nutze element.closest oder gantt.utils.dom.closest, um das verschiebbare Element zu finden
+    const draggableElement = domUtils.closest(event.target, '.baseline');
+
+    if (draggableElement) {
+        // wir wissen noch nicht, ob der Benutzer das Element tatsächlich ziehen wird
+        // speichern Sie die Ereignis-Info, wir prüfen sie später bei 'mousemove'
+        dndRequested = true;
+        startTimestamp = Date.now();
+        startPosition = domUtils.getRelativeEventPosition(event, gantt.$task_data);
+        taskId = draggableElement.getAttribute("data-task");
+    }
 });
 ~~~
 
-Beachten Sie, dass der Event-Handler mit [gantt.event](api/method/event.md) anstelle des nativen [Element.addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) angebunden wird. Der Grund: Wenn die Gantt-Instanz mit **gantt.destructor** zerstört wird, werden alle so angehängten Handler automatisch entfernt. Bei nativen Event-Listenern müssten Sie die Aufräumarbeiten selbst durchführen, um Speicherlecks zu vermeiden.
+Beachten Sie, dass der Ereignishandler über [`gantt.event()`](api/method/event.md) statt über native [Element.addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) hinzugefügt wird. Das ist sinnvoll, weil Gantt mit der Methode `gantt.destructor()` zerstört werden kann und alle über `gantt.event()` angehängten Events automatisch bereinigt werden. Wenn Sie die native Methode verwenden und `gantt.destructor()` aufrufen, müssen Sie Event-Handler eventuell manuell bereinigen, um Speicherlecks zu vermeiden.
 
-2. Der eigentliche Drag-and-drop-Vorgang beginnt beim **mousemove**-Event. Statt das Ziehen sofort beim Mouse-Down zu starten, vergleichen Sie die aktuelle Mausposition mit der zuvor gespeicherten. So beginnt das Ziehen erst, wenn sich der Cursor deutlich bewegt hat. Alternativ können Sie prüfen, ob die Maustaste länger als ein typischer Klick gehalten wurde.
+2. Die eigentliche Drag-and-Drop-Aktion beginnt im `mousemove`-Handler. Anstatt Drag-and-Drop direkt beim Mausklick zu starten, vergleichen Sie die aktuelle Mausposition mit der im `mousedown` gespeicherten Anfangsposition. So kann Drag-and-Drop erst gestartet werden, wenn sich die Position signifikant geändert hat. Falls Sie keine Mindestschwelle festlegen möchten, können Sie auch die seit dem `mousedown` vergangene Zeit schätzen.
 
-Sobald das Ziehen beginnt, aktualisiert der **mousemove**-Handler die Position des gezogenen Elements. Für Elemente, die mit `gantt.addTaskLayer` hinzugefügt wurden, sollten Sie besser die zugehörigen Aufgabendaten anpassen und die Aufgabe mit [gantt.refreshTask](api/method/refreshtask.md) aktualisieren, statt das DOM direkt zu manipulieren.
+Sobald Sie festgestellt haben, dass Drag-and-Drop begonnen hat, können Sie den `mousemove`-Handler verwenden, um die Position des gezogenen Elements auf dem Bildschirm zu aktualisieren. Wenn Sie ein benutzerdefiniertes Layer-Element ziehen, ist der übliche Ansatz zur Aktualisierung, das zugrunde liegende Objekt zu ändern und es mithilfe der Gantt-API neu zu zeichnen (`[gantt.refreshTask()](api/method/refreshtask.md)`), anstatt das DOM-Element direkt zu verändern.
 
 ~~~js
-gantt.event(window, 'mousemove', function(e) {
-  if (dndRequested && gantt.isTaskExists(taskId)) {
-    // 'mousemove' nach 'mousedown' erkannt
-    var currentPosition = domUtils.getRelativeEventPosition(e, gantt.$task_data);
-    if (!dndActivated) {
-      // 'mousemove' kann auch zu einem normalen Klick gehören,
-      // Drag-and-drop soll nicht bei jedem Klick ausgelöst werden
-      // Prüfen, ob sich die Mausposition deutlich geändert hat
-      // oder ob die Maustaste ungewöhnlich lange gehalten wurde
-      if(Math.abs(
-          currentPosition.x - startPosition.x) > 5 || (Date.now() - startTimestamp
-        ) > 500) {
-          // Dann nehmen wir an, dass Drag-and-drop gestartet wurde
-          dndActivated = true;
-      }
+gantt.event(window, 'mousemove', (event) => {
+    if (dndRequested && gantt.isTaskExists(taskId)) {
+        // wir haben 'mousemove' nach dem 'mousedown'-Ereignis erfasst
+        const currentPosition = domUtils.getRelativeEventPosition(event, gantt.$task_data);
+        if (!dndActivated) {
+            // 'mousemove' könnte Teil des normalen Klick-Prozesses sein,
+            // wir möchten kein DND bei normalem Klick auslösen
+            // prüfen, ob sich die Mausposition signifikant geändert hat,
+            // oder ob der Benutzer die Maustaste länger gedrückt hält als üblich beim normalen Klick
+            if (Math.abs(currentPosition.x - startPosition.x) > 5 || (Date.now() - startTimestamp) > 500) {
+                // falls ja - gehen wir davon aus, dass DND gestartet ist
+                dndActivated = true;
+            }
+        }
+        if (dndActivated) {
+            // hier können wir die Position des gezogenen Elements aktualisieren.
+            // wenn wir ein Element hinzugefügt über `gantt.addTaskLayer` ziehen,
+            // ist es besser, das zugehörige Task-Objekt zu aktualisieren
+            // und es über `gantt.refreshTask` neu zu zeichnen
+            // Sie können auch das entsprechende Datum der Zeitskala erhalten:
+            const pointerDate = gantt.dateFromPos(currentPosition.x);
+            gantt.getTask(taskId).baseline_date = pointerDate;
+            gantt.refreshTask(taskId);
+        }
     }
+});
+~~~
+
+3. Schließlich sollten Sie das `mouseup`-Ereignis erfassen. Wenn Drag-and-Drop gestartet wurde, wenden Sie Änderungen am verschobenen Objekt an, rufen ggf. die [`gantt.updateTask()`](api/method/updatetask.md) Methode auf und löschen alle temporären Flaggen.
+
+~~~js
+gantt.event(window, 'mouseup', (event) => {
+    // wende Änderungen an, falls Drag-and-Drop im Gange war
     if (dndActivated) {
-      // Hier kann die Position des gezogenen Elements aktualisiert werden.
-      // Bei Elementen, die mit `gantt.addTaskLayer` hinzugefügt wurden,
-      // sollten Sie das Aufgabenobjekt aktualisieren
-      // und mit `gantt.refreshTask` neu zeichnen
-      // Sie können auch das entsprechende Datum der Zeitskala ermitteln:
-      var pointerDate = gantt.dateFromPos(currentPosition.x);
-      gantt.getTask(taskId).baseline_date = pointerDate;
-      gantt.refreshTask(taskId);
+        // validieren und bei Bedarf abschließen
+        const task = gantt.getTask(taskId);
+        task.baseline_date = gantt.roundDate({
+            date: task.baseline_date,
+            unit: "hour",
+            step: 1
+        });
+        // rufe gantt.updateTask auf, um das Update der Daten zu erzwingen
+        gantt.updateTask(taskId);
     }
-  }
- 
+    // lösche alle Flaggen, die wir zuvor gesetzt haben
+    dndRequested = false;
+    dndActivated = false;
+    startPosition = null;
+    startTimestamp = null;
+    taskId = null;
 });
 ~~~
 
-3. Hören Sie schließlich auf das **mouseup**-Event. Falls ein Drag-and-drop stattgefunden hat, schließen Sie die Änderungen ab, indem Sie das Datum runden, ggf. [gantt.updateTask](api/method/updatetask.md) aufrufen und alle temporären Flags zurücksetzen.
+## Extra Overlay für das Diagramm
 
-~~~js
-gantt.event(window, 'mouseup', function(e) {
-  // Änderungen übernehmen, falls Drag-and-drop aktiv war
-  if (dndActivated) {
-    // Änderungen validieren und abschließen, falls nötig
-    var task = gantt.getTask(taskId);
-    task.baseline_date = gantt.roundDate({
-      date: task.baseline_date,
-      unit: "hour",
-      step: 1    
-    });
-    // gantt.updateTask aufrufen, um die Daten zu aktualisieren    
-    gantt.updateTask(taskId);
-  }
-  // Alle gesetzten Flags zurücksetzen
-  dndRequested = false;
-  dndActivated = false;
-  startPosition = null;
-  startTimestamp = null;
-  taskId = null;
-});
-~~~
+dhtmlxGantt bietet die Möglichkeit, eine zusätzliche Ebene über dem Gantt-Diagramm zu legen, um benutzerdefinierten Inhalt darin zu platzieren. Als Overlay können Sie einen Div-Container, ein HTML-Canvas usw. verwenden. Um den Overlay-Inhalt zu zeichnen, kann jede Drittanbieter-Bibliothek genutzt werden.
 
-## Zusätzliche Overlay-Schicht für das Diagramm
+Beispielsweise können Sie eine S-Kurve in das zusätzliche Overlay einfügen. Allgemein zeigen S-Kurven das Wachstum von Ausgaben, die Reduzierung von Materiallieferungen usw. und ermöglichen das Verfolgen des gemeinsamen Fortschritts der Implementierung von Aufgaben eines Projekts.
 
-Mit dhtmlxGantt können Sie eine zusätzliche Ebene über dem Diagramm hinzufügen, um benutzerdefinierte Inhalte zu platzieren. Dieses Overlay kann ein div-Container, ein HTML-Canvas oder ein anderes Element sein. Sie können jede beliebige Drittanbieter-Bibliothek verwenden, um Inhalte darin darzustellen.
+Um ein Overlay in Gantt hinzuzufügen, müssen Sie zwei Schritte durchführen:
 
-Beispielsweise können Sie ein S-Kurven-Overlay hinzufügen, das häufig zur Visualisierung von Kostenanstieg, Materialverbrauch oder Gesamtfortschritt eines Projekts genutzt wird.
-
-Um ein Overlay hinzuzufügen, gehen Sie wie folgt vor:
-
-- Aktivieren Sie die **overlay**-Erweiterung über die Methode [gantt.plugins](api/method/plugins.md):
+- Aktivieren Sie die `overlay`-Erweiterung mit der [`gantt.plugins()`](api/method/plugins.md)-Methode
 
 ~~~js
 gantt.plugins({
@@ -285,46 +286,45 @@ gantt.plugins({
 });
 ~~~
 
-- Verwenden Sie die Methode **addOverlay()** des Objekts **gantt.ext.overlay** und übergeben Sie eine Funktion, die für das Hinzufügen Ihrer benutzerdefinierten Inhalte zum Overlay-Container verantwortlich ist. Diese Funktion erhält das Container-Element als Parameter. Siehe Beispiel unten.
+- Verwenden Sie die `addOverlay()`-Methode des `gantt.ext.overlay` Objekts und übergeben Sie eine Funktion, die die Logik zum Hinzufügen von Overlay-Inhalten enthält.
+Diese Funktion erhält einen Container mit benutzerdefiniertem Inhalt als Parameter. Siehe Beispiele unten.
 
-Hier ein Beispiel, wie Sie ein Canvas-Overlay mit S-Kurven für geplanten und tatsächlichen Projektfortschritt unter Verwendung der [ChartJS](https://www.chartjs.org/) Bibliothek hinzufügen:
+Das folgende Beispiel zeigt, wie Sie ein Canvas-Overlay mit S-Kurven hinzufügen können, um den Ziel- und Ist-Fortschritt des Projekts anzuzeigen (implementiert mit der Hilfe der [ChartJS](https://www.chartjs.org/) Bibliothek):
 
-![Overlay mit S-Kurve](/img/overlay_scurve.png)
+![Overlay with S-curve](/img/overlay_scurve.png)
 
 ~~~js
-var overlay = gantt.ext.overlay.addOverlay(function(container){
-    var canvas = document.createElement("canvas");
+const overlayId = gantt.ext.overlay.addOverlay((container) => {
+    const canvas = document.createElement("canvas");
     container.appendChild(canvas);
     canvas.style.height = container.offsetHeight + "px";
     canvas.style.width = container.offsetWidth + "px";
 
-    var ctx = canvas.getContext("2d");
-    var myChart = new Chart(ctx, {
+    const chartContext = canvas.getContext("2d");
+    const progressChart = new Chart(chartContext, {
         type: "line",
-        // vollständige Konfiguration des Diagramms
+        // vollständige Diagramm-Konfiguration
     });
 });
 ~~~
 
-Die Methode **gantt.ext.overlay.addOverlay()** gibt die numerische ID des neuen Overlays zurück.
+Die Methode `gantt.ext.overlay.addOverlay()` gibt die ID eines neuen Overlays als Zahl zurück.
 
+**Verwandte Beispiel**: [Gantt chart with overlay and zoom (S-Curve)](https://docs.dhtmlx.com/gantt/samples/02_extensions/21_overlay.html)
 
-[Gantt chart with overlay and zoom (S-Curve)](https://docs.dhtmlx.com/gantt/samples/02_extensions/21_overlay.html)
+### Overlay-Erweiterungs-API
 
+Die Erweiterung **dhtmlxgantt_overlay** enthält eine Reihe von API-Methoden zur Arbeit mit Overlays. Diese Methoden sind über das `gantt.ext.overlay`-Objekt verfügbar.
 
-### Overlay-Extension API
+#### `addOverlay()`
 
-Die **dhtmlxgantt_overlay**-Erweiterung stellt eine Reihe von API-Methoden zur Arbeit mit Overlays bereit, die über das Objekt **gantt.ext.overlay** zugänglich sind.
-
-#### addOverlay
-
-Fügt dem Gantt-Diagramm ein neues Overlay hinzu und gibt dessen ID zurück. Sie übergeben eine Funktion, die einen Container für Ihre eigenen Inhalte erhält.
+Fügt der Gantt-Grafik ein neues Overlay hinzu und gibt dessen ID zurück. Als Parameter wird ein Container mit benutzerdefiniertem Inhalt übergeben.
 
 ~~~js
-var overlay = gantt.ext.overlay.addOverlay(function(container){});
+const overlayId = gantt.ext.overlay.addOverlay((container) => {});
 ~~~
 
-#### deleteOverlay
+#### `deleteOverlay()`
 
 Entfernt ein Overlay anhand seiner ID.
 
@@ -332,43 +332,42 @@ Entfernt ein Overlay anhand seiner ID.
 gantt.ext.overlay.deleteOverlay(id);
 ~~~
 
-#### getOverlaysIds 
+#### `getOverlaysIds()`
 
-Gibt ein Array mit den IDs aller dem Diagramm hinzugefügten Overlays zurück.
+Gibt ein Array mit den IDs der dem Diagramm hinzugefügten Overlays zurück.
 
 ~~~js
-var ids = gantt.ext.overlay.getOverlaysIds();
+const overlayIds = gantt.ext.overlay.getOverlaysIds();
 ~~~
 
-#### refreshOverlay
+#### `refreshOverlay()`
 
-Zeichnet das angegebene Overlay anhand seiner ID neu.
+Lackiert das angegebene Overlay neu. Als Parameter wird die ID eines Overlays übergeben.
 
 ~~~js
 gantt.ext.overlay.refreshOverlay(id);
 ~~~
 
-#### showOverlay
+#### `showOverlay()`
 
-Macht ein Overlay anhand seiner ID sichtbar.
+Zeigt ein Overlay anhand seiner ID an. Als Parameter wird die ID eines Overlays übergeben.
 
 ~~~js
 gantt.ext.overlay.showOverlay(id);
 ~~~
 
-#### hideOverlay
+#### `hideOverlay()`
 
-Blendet ein Overlay anhand seiner ID aus.
+Versteckt ein Overlay anhand seiner ID.
 
 ~~~js
 gantt.ext.overlay.hideOverlay(id);
 ~~~
 
-#### isOverlayVisible
+#### `isOverlayVisible()`
 
-Prüft, ob das angegebene Overlay sichtbar ist. Gibt *true* zurück, falls ja.
+Prüft, ob das angegebene Overlay sichtbar ist. Gibt `true` zurück, wenn das Overlay sichtbar ist.
 
 ~~~js
-var isVisible = gantt.ext.overlay.isOverlayVisible(id);
+const isVisible = gantt.ext.overlay.isOverlayVisible(id);
 ~~~
-

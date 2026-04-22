@@ -1,39 +1,38 @@
 ---
 sidebar_label: onTaskMultiSelect
-title: onTaskMultiSelect event
-description: "wird ausgelöst, sobald sich der Auswahlstatus einer Aufgabe ändert (wenn eine Aufgabe ausgewählt oder abgewählt wird)"
+title: onTaskMultiSelect Ereignis
+description: "Wird ausgelöst, nachdem der Auswahlstatus der Aufgabe geändert wurde (die Aufgabe wurde ausgewählt bzw. abgewählt)"
 ---
 
 # onTaskMultiSelect
 
 ### Description
 
-@short: Wird ausgelöst, sobald sich der Auswahlstatus einer Aufgabe ändert (wenn eine Aufgabe ausgewählt oder abgewählt wird)
+@short: Wird ausgelöst, nachdem der Auswahlstatus der Aufgabe geändert wurde (die Aufgabe wurde ausgewählt bzw. abgewählt)
 
 @signature: onTaskMultiSelect: (id: string | number, state: boolean, e: Event) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die Kennung der Aufgabe
-- `state` - (required) *boolean* - true, wenn die Aufgabe ausgewählt ist, false, wenn sie abgewählt ist
-- `e` - (required) *Event* - das native Event-Objekt
+- `id` - (erforderlich) *string | number* - die ID einer Aufgabe
+- `state` - (erforderlich) *boolean* - true, falls die Aufgabe ausgewählt wurde, false - falls sie abgewählt wurde
+- `e` - (erforderlich) *Event* - ein natives Event-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskMultiSelect", function(id, state, e){
-    // some logic here
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Details
 
 :::note
- Dieses Event gehört zur **multiselect** Erweiterung, daher stellen Sie sicher, dass das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktiviert ist. Weitere Informationen finden Sie im Artikel ["Multi-Task-Auswahl"](guides/multiselection.md). 
+Dieses Event ist in der **Multiselect-Erweiterung** definiert, daher müssen Sie das [Multiselect]-Plugin aktivieren. Lesen Sie die Details im Artikel [Multi-Task Selection](guides/multiselection.md).
 :::
 
-
-Dieses Event wird für jede Aufgabe im ausgewählten Bereich ausgelöst.
+Das Event wird für jede Aufgabe im Bereich aufgerufen.
 
 ### Related API
 - [onBeforeMultiSelect](api/event/onbeforemultiselect.md)
@@ -41,5 +40,4 @@ Dieses Event wird für jede Aufgabe im ausgewählten Bereich ausgelöst.
 - [onMultiSelect](api/event/onmultiselect.md)
 
 ### Related Guides
-- ["Multi-Task-Auswahl"](guides/multiselection.md#apievents)
-
+- [Multi-Task Selection](guides/multiselection.md#apievents)

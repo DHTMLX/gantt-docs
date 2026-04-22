@@ -1,13 +1,14 @@
 ---
-title: "Использование свойств DHTMLX Gantt в ReactGantt"
-sidebar_label: "Конфигурация"
+title: Использование свойств DHTMLX Gantt в ReactGantt
+sidebar_label: Конфигурация
+description: "Полное руководство по пропсам-обертке, сопоставленным с конфигурацией Gantt, шаблонами, событиями и хранилищами данных"
 ---
 
 # Использование свойств DHTMLX Gantt в ReactGantt
 
-На этой странице представлен обзор поддерживаемых свойств (props) React Gantt и объясняется, как они соответствуют возможностям DHTMLX Gantt.
+Эта страница описывает принимаемые React Gantt свойства и то, как они сопоставляются с возможностями DHTMLX Gantt.
 
-## Доступные свойства (Props)
+## Доступные свойства
 
 <table>
   <thead>
@@ -61,65 +62,65 @@ sidebar_label: "Конфигурация"
   <tr>
   <td>data</td>
   <td>( load?: string, save?: string|RouterFunction, batchSave?: BatchChanges)</td>
-  <td>Поддерживает загрузку данных через встроенный транспорт Gantt и предоставляет колбэки для обработки изменений данных Gantt.</td>
+  <td>Позволяет загружать данные через встроенный транспорт Gantt и предоставляет колбэки для изменений в данных Gantt.</td>
   </tr>
   <tr>
   <td>locale</td>
   <td>string</td>
-  <td>Устанавливает [gantt.i18n.setLocale(locale)](guides/localization.md). По умолчанию "en".</td>
+  <td>Устанавливает [gantt.i18n.setLocale(locale)](/guides/localization/). По умолчанию — "en".</td>
   </tr>
   <tr>
   <td>theme</td>
   <td>string</td>
-  <td>Применяет [gantt.setSkin(theme)](guides/skins.md). По умолчанию "terrace".</td>
+  <td>Применяет [gantt.setSkin(theme)](/guides/skins/). По умолчанию — "terrace".</td>
   </tr>
   <tr>
   <td>customLightbox</td>
   <td>ReactElement | null</td>
-  <td>React-компонент, заменяющий стандартный Lightbox (см. [Custom Lightbox](guides/custom-edit-form.md)).</td>
+  <td>Компонент React, который заменяет встроенный Lightbox (см. [Custom Lightbox](/guides/custom-edit-form/).)</td>
   </tr>
   <tr>
   <td>inlineEditors</td>
   <td>( [editorType: string]: React.ComponentType )</td>
-  <td>Позволяет сопоставлять React-редакторы с интерфейсом встроенных редакторов DHTMLX.</td>
+  <td>Позволяет сопоставлять ваши React-базированные inline-редакторы с интерфейсом встроенного inline редактора DHTMLX.</td>
   </tr>
   <tr>
   <td>groupTasks</td>
   <td>GroupConfig | boolean | null</td>
-  <td>Задает конфигурацию группировки или отключает группировку при значении false или null (см. [Группировка задач](api/method/groupby.md)).</td>
+  <td>Объект конфигурации группировки или false/null для отключения группировки (см. [Grouping Tasks ](api/method/groupby.md)).</td>
   </tr>
   <tr>
   <td>filter</td>
   <td>((task: Task) =&gt; boolean) | null</td>
-  <td>Функция для фильтрации отображаемых задач Gantt.</td>
+  <td>Функция, используемая для фильтрации задач Gantt.</td>
   </tr>
   <tr>
   <td>resourceFilter</td>
   <td>((resource: Resource) =&gt; boolean) | null</td>
-  <td>Фильтрует ресурсы, отображаемые в [панели ресурсов](guides/resource-management.md).</td>
+  <td>Функция, используемая для фильтрации ресурсов для [Resource Panel](/guides/resource-management/).</td>
   </tr>
   <tr>
   <td>modals</td>
   <td>GanttModals</td>
-  <td>Позволяет заменить модальные окна <code>onBeforeTaskDelete</code> и <code>onBeforeLinkDelete</code> своими компонентами.</td>
+  <td>Позволяет заменить <code>onBeforeTaskDelete</code> и <code>onBeforeLinkDelete</code> модальные окна на пользовательские компоненты.</td>
   </tr>
   <tr>
   <td>(Event Props)</td>
   <td>Function</td>
-  <td>Обертка поддерживает свойства-обработчики событий, соответствующие событиям DHTMLX Gantt, таким как onTaskClick, onAfterTaskAdd и др. Свойства с совпадающими именами подключаются автоматически.</td>
+  <td>Обертка также поддерживает передачу пропсов-обработчиков событий, соответствующих событиям DHTMLX Gantt. Например, onTaskClick, onAfterTaskAdd и т. д. Если имя пропса совпадает с именем события, он прикрепляется автоматически.</td>
   </tr>
   </tbody>
 </table>
 
 ## Пример использования
 
-~~~js
+~~~jsx
 <ReactGantt
-  tasks="{tasks}"
-  links="{links}"
+  tasks={tasks}
+  links={links}
   theme="material"
   locale="en"
-  config="{" {
+  config={{
     scales: [
       { unit: "year", step: 1, format: "%Y" },
       { unit: "month", step: 1, format: "%M" }
@@ -130,66 +131,67 @@ sidebar_label: "Конфигурация"
       { name: "duration", align: "center" },
       { name: "add" }
     ],
-    // любые другие свойства gantt.config
-  } }
-  onTaskClick="{(id," e) => {
+    // любой другой gantt.config, который вы хотите
+  }}
+  onTaskClick={(id, e) => {
     console.log('Task clicked:', id);
     return true; 
   }}
-  templates="{" {
+  templates={{
     task_text: (start, end, task) => `#${task.id}: ${task.text}`,
-  } }
+  }}
 />
 ~~~
 
-## Использование событийных свойств (Event Props)
+## Использование пропсов-ивентов (Event Props)
 
 Любое событие DHTMLX Gantt может быть передано как свойство. Например:
 
 ~~~js
 <ReactGantt
 
-  onTaskClick="{(id," e) => {
+  onTaskClick={(id, e) => {
     console.log('Task clicked:', id);
     return true; 
   }}
 
 />
 ~~~
-Если вы указываете свойство, например, `onBeforeTaskAdd`, обертка внутренне вызывает [gantt.attachEvent("onBeforeTaskAdd", handler)](api/method/attachevent.md). Полный список событий смотрите в [DHTMLX Gantt API](api/overview/events-overview.md).
+Внутренне обертка вызывает [gantt.attachEvent("onBeforeTaskAdd", handler)](api/method/attachevent.md), если вы передаете проп с именем `onBeforeTaskAdd`. Для полного списка событий смотрите [DHTMLX Gantt API](api/overview/events-overview.md).
 
 
-## Комбинирование свойств и DHTMLX API
+## Сочетание пропсов и DHTMLX API
 
-Библиотека `@dhx/react-gantt` стремится быть максимально декларативной для повседневного использования, покрывая большинство потребностей через стандартные свойства, такие как tasks, links, resources, templates и другие. Однако бывают ситуации, когда требуется более глубокий доступ к ядру Gantt, например:
+Библиотека `@dhx/react-gantt` спроектирована как можно более декларативной для повседневного использования — большинство сценариев можно решить с помощью стандартных пропсов (таких как tasks, links, resources, templates и т. д.). Однако могут быть ситуации, когда нужен более глубокий доступ к движку Gantt. Например, для:
 
-- [Расчет рабочего времени](guides/working-time.md)
-- [Автоматическое планирование](guides/auto-scheduling.md) или расширенные возможности, такие как [работа с ресурсами](guides/resource-management.md)
-- Использование отдельных методов из [Gantt API](api/api-overview.md)
+- Расчётов рабочего времени
+- Логики автопланирования или продвинутых функций, таких как [resource computations]
+- Вызова любых специализированных методов из [Gantt API]
 
-В таких случаях доступны два подхода для взаимодействия с внутренней функциональностью DHTMLX Gantt:
+В таких случаях вы можете использовать два дополнительных способа доступа к функциональности DHTMLX Gantt:
 
-- **React-хуки**, предоставляемые оберткой, которые подключаются к хранилищам данных и логике планирования Gantt
+- **React хуки**, специально предоставляемые оберткой, чтобы связать данные хранилищ и логику планирования Gantt
 
-- **Прямой доступ** к экземпляру Gantt через `ref`, если хуки не покрывают все ваши требования
+- **Прямой доступ** к экземпляру Gantt через `ref`, если встроенные хуки не покрывают все ваши потребности
 
 ### Использование встроенных хуков
 
-Библиотека `@dhx/react-gantt` предоставляет несколько опциональных хуков, связывающих React-компоненты с внутренними API Gantt. Эти хуки служат мостом к методам и хранилищам данных Gantt. Их можно использовать напрямую в компонентах или объединять в собственные хуки для специфических задач, например, построения гистограмм ресурсов.
+Библиотека `@dhx/react-gantt` предоставляет набор опциональных хуков, которые соединяют React-компоненты с внутренними API Gantt. Эти хуки служат «мостом» к базовым методам и хранилищам Gantt. Вы можете вызывать эти хуки напрямую в своих компонентах или композировать их в собственные кастомные хуки для специализированных возможностей, например, для построения гистограмм ресурсов.
 
-#### useGanttDatastore\<T\>(ganttRef, storeName)
+#### useGanttDatastore&lt;T&gt;(ganttRef, storeName)
 
-Хук `useGanttDatastore` предоставляет только для чтения доступ к определенному хранилищу данных Gantt. Обычно используется для доступа к хранилищу ресурсов, базовым планам или другим встроенным/кастомным хранилищам.
+Хук `useGanttDatastore` обеспечивает доступ только для чтения к конкретному хранилищу Gantt.  
+Распространённое использование — доступ к хранилищу ресурсов, baseline или любому другому встроенному или пользовательскому хранилищу.
 
-Включает следующие функции:
+Он предоставляет следующие функции:
 
-- `getItem(id)` - получение конкретного элемента из хранилища
+- `getItem(id)` - возвращает указанный элемент из хранилища
 
-- `getItems()` - возвращает все элементы из хранилища
+- `getItems()` - возвращает все элементы в указанном хранилище
 
-- `hasChild(id: string | number)` - проверяет, есть ли у элемента дочерние
+- `hasChild(id: string | number)` - проверяет, имеет ли элемент дочерние элементы
 
-- `getChildren(id: string | number)` - получение дочерних элементов
+- `getChildren(id: string | number)` - получает дочерние элементы
 
 ~~~js
 import { useMemo } from 'react';
@@ -200,7 +202,7 @@ function MyResourceList({ ganttRef }) {
 
   const resourceIds = resourceStore.getItems().map(item => item.id);
 
-  // для примера, просто логируем данные
+  // для демонстрации — просто выводим данные
   useMemo(() => {
     console.log('Resource IDs:', resourceIds);
   }, [resourceIds]);
@@ -209,17 +211,16 @@ function MyResourceList({ ganttRef }) {
 }
 ~~~
 
-Этот хук полезен, когда нужен прямой доступ к низкоуровневым данным из конкретного хранилища, например, чтобы определить, является ли ресурс группой или отдельным элементом.
+Вы можете использовать этот хук, когда вам нужны прямые низкоуровневые данные из конкретного хранилища. Например, чтобы проверить, является ли ресурс группой по сравнению с отдельным элементом.
 
 #### useResourceAssignments(ganttRef)
 
-Хук `useResourceAssignments` предоставляет методы, связанные с ресурсами, включая получение назначений для ресурса или список ресурсов, назначенных задаче.
+Хук `useResourceAssignments` обеспечивает доступ к методам Gantt, связанным с ресурсами, таким как получение назначений для ресурса или перечисление ресурсов, назначенных на данную задачу.
 
-Доступные функции:
+Он предоставляет следующие функции:
 
-- `getResourceAssignments(resourceId, taskId?)` - соответствует [getResourceAssignments](api/method/getresourceassignments.md)
-
-- `getTaskResources(taskId)` - соответствует [getTaskResources](api/method/gettaskresources.md)
+- `getResourceAssignments(resourceId, taskId?)` - мост к [](api/method/getresourceassignments.md)
+- `getTaskResources(taskId)` - мост к [](api/method/gettaskresources.md)
 
 ~~~js
 import React from 'react';
@@ -231,30 +232,28 @@ export function ResourceUsage({ ganttRef, taskId }) {
   const resources = getTaskResources(taskId);
   return (
     <div>
-      Task {taskId} assigned to: 
+      Задаче {taskId} назначены ресурсы: 
       {resources.map(r => r.text).join(', ')}
     </div>
   );
 }
 ~~~
 
-Этот хук удобен для реализации собственной логики по использованию ресурсов, например, вычисления выделенных часов или группировки задач по владельцу.
+Вам может понадобиться этот хук для любой пользовательской логики вокруг использования ресурсов, например, расчета отведённых часов или группировки задач по владельцу.
 
 #### useWorkTime(ganttRef)
 
-Этот хук предоставляет доступ к встроенным функциям рабочего времени DHTMLX Gantt, таким как [isWorkTime](api/method/isworktime.md), [calculateEndDate](api/method/calculateenddate.md) и [calculateDuration](api/method/calculateduration.md).
+Обеспечивает прямой мост к встроенным функциям DHTMLX Gantt worktime, таким как [](api/method/isworktime.md), [](api/method/calculateenddate.md), [](api/method/calculateduration.md).
 
-Полезен для выделения рабочих и нерабочих периодов на основе календаря работы Gantt и для вычислений дат с учетом рабочего времени.
+Вам понадобится этот хук для подсветки рабочего/нерабочего времени в соответствии с настройками календаря work calendar и для операций с датами.
 
-Доступные функции:
+Он предоставляет следующие функции:
 
-- `isWorkTime(( date:Date, unit?: string, task?:Task ))` - соответствует [isWorkTime](api/method/isworktime.md)
+- `isWorkTime({ date:Date, unit?: string, task?:Task })` - мост к [](api/method/isworktime.md)
+- `calculateEndDate({start:Date, duration:number, unit?: string, task?: Task})` - мост к [](api/method/calculateenddate.md)
+- `calculateDuration({start:Date, end:Date, task?: Task})` - мост к [](api/method/calculateduration.md)
+- `getClosestWorkTime({ date:Date, unit?: string, task?: Task, dir?: "past"|"future" })` - мост к [](api/method/getclosestworktime.md)
 
-- `calculateEndDate((start:Date, duration:number, unit?: string, task?: Task))` - соответствует [calculateEndDate](api/method/calculateenddate.md)
-
-- `calculateDuration((start:Date, end:Date, task?: Task))` - соответствует [calculateDuration](api/method/calculateduration.md)
-
-- `getClosestWorkTime(( date:Date, unit?: string, task?: Task, dir?: "past"|"future" ))` - соответствует [getClosestWorkTime](api/method/getclosestworktime.md)
 
 ~~~js
 import { useEffect, useRef, useState } from 'react';
@@ -274,9 +273,9 @@ export default function GanttTemplatesDemo() {
   ...
 ~~~
 
-#### Композиция хуков в собственные кастомные хуки
+#### Соединение хуков в ваши собственные кастомные хуки
 
-Рекомендуется создавать свои доменные или проектные хуки, комбинируя эти базовые хуки. Например, для построения гистограммы ресурсов можно создать кастомный хук, который кэширует значения емкости и суммирует использование ресурсов:
+Отличная практика — создавать собственные доменные или проектно-специфические хуки, используя эти фундаментальные мостовые хуки. Например, если вы хотите создать гистограмму ресурсов, можно сделать кастомный хук, который кэширует значения ёмкости, суммирует использование ресурсов и т. п.:
 
 ~~~js
 import { useMemo } from 'react';
@@ -286,19 +285,19 @@ export function useResourceHistogram(ganttRef) {
   const resourceStore = useGanttDatastore(ganttRef, 'resource');
   const { getResourceAssignments } = useResourceAssignments(ganttRef);
 
-  // Кастомная логика: кэширование емкости, определение групп и др.
+  // Пользовательская логика: кэширование ёмкости, детекция групп и т. д.
   // ...
   return {
-    // например, getCapacity, getAllocatedValue
+    // напр. getCapacity, getAllocatedValue
   };
 }
 ~~~
 
 ### Прямой доступ к экземпляру Gantt через ref
 
-Хотя хуки покрывают большинство продвинутых сценариев, остается возможность прямого доступа ко всему экземпляру Gantt через `ref`:
+Хотя эти хуки покрывают большинство продвинутых потребностей, вам может понадобиться прямой доступ ко всему экземпляру Gantt. Для этого остается доступным подход через ref:
 
-~~~js
+~~~jsx
 import React, { useRef, useEffect } from 'react';
 import ReactGantt, { ReactGanttRef } from '@dhx/react-gantt';
 
@@ -309,22 +308,23 @@ export function DirectRefExample({ tasks, links }) {
     const gantt = ganttRef.current?.instance;
     if (!gantt) return;
 
-    // здесь можно вызвать ЛЮБОЙ метод Gantt API
+    // здесь можно вызывать ЛЮБОЙ метод API Gantt
     console.log('All tasks:', gantt.getTaskByTime());
     gantt.showDate(new Date());
   }, []);
 
   return (
     <ReactGantt
-      ref="{ganttRef}"
-      tasks="{tasks}"
-      links="{links}"
+      ref={ganttRef}
+      tasks={tasks}
+      links={links}
     />
   );
 }
 ~~~
 
-((info Учтите, что если вы изменяете tasks или links напрямую через экземпляр Gantt, одновременно передавая их как props в React, необходимо синхронизировать данные или повторно парсить их. В противном случае следующий рендер React может перезаписать ваши изменения. ))
+:::note
+Примечание: имейте в виду, что если вы изменяете tasks/links во встроенном экземпляре Gantt и одновременно передаете их как props в React, синхронизируйте данные или повторно разберите их. Иначе при следующем перерендеривании React ваши ручные изменения могут быть перезаписаны.
+:::
 
-Если необходимо выполнить действия, не реализованные через props, всегда можно вызвать методы gantt напрямую. Подробнее см. в разделе [Accessing the Underlying Gantt API](integrations/react.md#accessingtheunderlyingganttapi).
-
+Если вы хотите выполнить что-то, что не доступно через проп, вы всё равно можете вызывать методы gantt напрямую. См. [Accessing the Underlying Gantt API](integrations/react/overview.md#accessingtheunderlyingganttapi) для получения дополнительной информации.

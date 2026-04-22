@@ -1,41 +1,41 @@
 ---
 sidebar_label: onBeforeTaskMultiSelect
-title: onBeforeTaskMultiSelect event
-description: "Срабатывает непосредственно перед изменением состояния выбора задачи (когда задача собирается быть выбрана или снята с выбора)."
+title: onBeforeTaskMultiSelect событие
+description: "срабатывает до изменения состояния выбора задачи (задача будет выбрана или снята с выбора)"
 ---
 
 # onBeforeTaskMultiSelect
 
 ### Description
 
-@short: Срабатывает непосредственно перед изменением состояния выбора задачи (когда задача собирается быть выбрана или снята с выбора).
+@short: Срабатывает до изменения состояния выбора задачи (задача будет выбрана или снята с выбора)
 
 @signature: onBeforeTaskMultiSelect: (id: string | number, state: boolean, e: Event | null) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - уникальный идентификатор задачи  
-- `state` - (required) *boolean* - true, если задача будет выбрана, false - если будет снята с выбора  
-- `e` - (required) *Event | null* - нативный объект события, если доступен
+- `id` - (required) *string | number* - идентификатор задачи
+- `state` - (required) *boolean* - true, если задача будет выбрана, false - если снята с выбора
+- `e` - (required) *Event | null* - объект нативного события
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onBeforeTaskMultiSelect", function(id, state, e){  
-    // добавьте вашу логику здесь  
-    return true;  
+gantt.attachEvent("onBeforeTaskMultiSelect", function(id, state, e){
+    // любая ваша логика здесь
+     return true;
 });
 ~~~
 
 ### Details
 
 :::note
-note Это событие является частью расширения **multiselect**, поэтому убедитесь, что плагин [multiselect](guides/extensions-list.md#multitaskselection) включён. Для подробностей смотрите статью [Множественный выбор задач](guides/multiselection.md). 
-::: 
+Это событие определяется в расширении **multiselect**, поэтому вам нужно активировать плагин [multiselect](guides/extensions-list.md#multitaskselection). Подробности читайте в статье [Multi-Task Selection](guides/multiselection.md). 
+:::
 
-Это событие вызывается для каждой задачи в диапазоне выбора. 
+Событие вызывается для каждой задачи диапазона.
 
-Изменение состояния выбора задачи можно заблокировать, вернув false, что предотвратит изменение состояния выбора задачи.
+Событие можно блокировать: возвращение false отменяет изменение состояния выбора задачи.
 
 ### Related API
 - [onBeforeMultiSelect](api/event/onbeforemultiselect.md)
@@ -43,5 +43,4 @@ note Это событие является частью расширения **
 - [onMultiSelect](api/event/onmultiselect.md)
 
 ### Related Guides
-- [Множественный выбор задач](guides/multiselection.md#apievents)
-
+- [Multi-Task Selection](guides/multiselection.md#apievents)

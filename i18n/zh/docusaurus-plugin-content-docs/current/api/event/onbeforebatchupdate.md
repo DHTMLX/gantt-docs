@@ -1,14 +1,14 @@
 ---
 sidebar_label: onBeforeBatchUpdate
-title: onBeforeBatchUpdate event
-description: "在 [batchUpdate](api/method/batchupdate.md) 方法执行之前触发"
+title: onBeforeBatchUpdate 事件
+description: "在调用 [batchUpdate](api/method/batchupdate.md) 方法之前触发"
 ---
 
 # onBeforeBatchUpdate
 
 ### Description
 
-@short: 在 [batchUpdate](api/method/batchupdate.md) 方法执行之前触发
+@short: 在调用 [batchUpdate](api/method/batchupdate.md) 方法之前触发
 
 @signature: onBeforeBatchUpdate: () =\> void;
 
@@ -16,7 +16,7 @@ description: "在 [batchUpdate](api/method/batchupdate.md) 方法执行之前触
 
 ~~~jsx
 gantt.attachEvent("onBeforeBatchUpdate", function(){
-    // 在这里编写你的代码
+    // 在这里插入您的自定义逻辑
 });
 ~~~
 
@@ -25,5 +25,4 @@ gantt.attachEvent("onBeforeBatchUpdate", function(){
 - [onAfterBatchUpdate](api/event/onafterbatchupdate.md)
 
 ### Change log
-- 4.0 版本新增
-
+- 在 4.0 版本中新增

@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_quick_info
-title: show_quick_info config
-description: "开启或关闭 'quick_info' 扩展（显示任务详情的弹出窗口）"
+title: show_quick_info 配置
+description: "激活/禁用 'quick_info' 扩展（弹出任务详情表单）"
 ---
 
 # show_quick_info
 
 ### Description
 
-@short: 开启或关闭 'quick_info' 扩展（显示任务详情的弹出窗口）
+@short: 激活/禁用 'quick_info' 扩展（弹出任务详情表单）
 
 @signature: show_quick_info: boolean
 
@@ -19,13 +19,13 @@ gantt.config.show_quick_info = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**默认值：** true
 
 ### Details
 
 :::note
- 该选项是 **Quick Info** 扩展的一部分，因此请确保先启用 [quick_info](guides/extensions-list.md) 插件。 
+此选项在 **Quick Info** 扩展中定义，因此您需要激活 [quick_info](guides/extensions-list.md#quick-info) 插件。
 :::
 
 ### Related Guides
-- ['Quick Info' 扩展的模板（触控支持）](guides/touch-templates.md)
+- [“Quick Info” 扩展的模板（触控支持）](guides/touch-templates.md)

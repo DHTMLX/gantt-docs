@@ -1,14 +1,14 @@
 ---
 sidebar_label: tooltip_offset_x
 title: tooltip_offset_x config
-description: "регулирует горизонтальное смещение позиции tooltip вправо при установке положительного значения"
+description: "устанавливает правый (если положительный) отступ позиции тултипа"
 ---
 
 # tooltip_offset_x
 
 ### Description
 
-@short: Регулирует горизонтальное смещение позиции tooltip вправо при установке положительного значения
+@short: Устанавливает правый (если положительный) отступ позиции тултипа
 
 @signature: tooltip_offset_x: number
 
@@ -20,17 +20,16 @@ gantt.config.tooltip_offset_x = 30;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 10
+**Значение по умолчанию:** 10
 
 ### Details
 
 :::note
- Эта опция является частью расширения **tooltip**, поэтому убедитесь, что плагин [tooltip](guides/extensions-list.md#tooltip) включен. Подробнее можно узнать в статье [Тултипы для элементов Gantt](guides/tooltips.md). 
+Эта опция определяется в расширении **tooltip**, поэтому вам нужно активировать плагин [tooltip](guides/extensions-list.md#tooltip). Ознакомьтесь с подробностями в статье [Подсказки для элементов диаграммы Ганта](guides/tooltips.md). 
 :::
 
 ### Related API
 - [tooltip_offset_y](api/config/tooltip_offset_y.md)
 
 ### Related Guides
-- [Тултипы для элементов Gantt](guides/tooltips.md)
-
+- [Подсказки для элементов диаграммы Ганта](guides/tooltips.md)

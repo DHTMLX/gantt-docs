@@ -1,20 +1,20 @@
 ---
 sidebar_label: rtl
 title: rtl config
-description: "переключает gantt в режим справа налево"
+description: "Переключает Gantt в режим справа налево"
 ---
 
 # rtl
 
 ### Description
 
-@short: Переключает gantt в режим справа налево
+@short: Переключает Gantt в режим справа налево
 
 @signature: rtl: boolean
 
 ### Example
 
-~~~jsx
+~~~ jsx
 gantt.config.rtl = true;
 gantt.config.layout = {
     css: "gantt_container",
@@ -33,18 +33,18 @@ gantt.config.layout = {
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Related samples
-- [Right to left gantt](https://docs.dhtmlx.com/gantt/samples/10_layout/04_rtl.html)
+- [Gantt справа налево](https://docs.dhtmlx.com/gantt/samples/10_layout/04_rtl.html)
 
 ### Details
 
-Включение этой опции установкой значения **true** переключит направление временной шкалы timeline и порядок строк в grid на режим справа налево.
+Установка этой опции конфигурации в значение **true** изменит направление временной шкалы во timeline и порядок строк в grid на справа налево.
 
-Данная настройка не обновляет автоматически конфигурацию layout gantt, поэтому необходимо самостоятельно скорректировать layout, чтобы поменять местами позиции grid и timeline.
+Это не влияет на [layout](api/config/layout.md) диаграммы Gantt, поэтому вам нужно заново определить макет, чтобы поменять местами позиции grid и timeline.
 
-Также может потребоваться [настроить направление текста для подписей в gantt](https://developer.mozilla.org/en-US/docs/Web/CSS/direction).
+Возможно, вам также захочется [установить направление текста для меток, используемых в gantt](https://developer.mozilla.org/en-US/docs/Web/CSS/direction).
 
 ### Related Guides
 - [RTL (Right-to-left) режим](guides/rtl-mode.md)

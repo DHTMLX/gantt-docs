@@ -1,14 +1,14 @@
 ---
 sidebar_label: clearRedoStack
-title: clearRedoStack method
-description: "redo 명령을 저장하는 스택을 초기화합니다."
+title: clearRedoStack 메서드
+description: "저장된 redo 명령의 스택을 지웁니다"
 ---
 
 # clearRedoStack
 
 ### Description
 
-@short: Redo 명령을 저장하는 스택을 초기화합니다.
+@short: 저장된 redo 명령의 스택을 지웁니다
 
 @signature: clearRedoStack: () =\> void
 
@@ -19,12 +19,12 @@ gantt.clearRedoStack();
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Gantt에서 Undo/Redo 변경 사항](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
 :::note
- 이 메서드는 **undo** 확장의 일부이므로, 먼저 [undo](guides/extensions-list.md#undo) 플러그인을 활성화해야 합니다. 자세한 내용은 [Undo/Redo 기능](guides/undo-redo.md) 문서를 참조하세요. 
+이 메서드는 **undo** 확장에 정의되어 있으므로 [undo](guides/extensions-list.md#undo) 플러그인을 활성화해야 합니다. 자세한 내용은 [Undo/Redo Functionality](guides/undo-redo.md) 문서를 참조하십시오.
 :::
 
 ### Related API
@@ -36,5 +36,4 @@ gantt.clearRedoStack();
 - [Undo/Redo 기능](guides/undo-redo.md)
 
 ### Change log
-- 버전 5.2에 추가됨
-
+- 버전 5.2에 추가되었습니다

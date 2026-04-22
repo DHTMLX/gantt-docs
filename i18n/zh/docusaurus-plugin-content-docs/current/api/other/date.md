@@ -1,118 +1,175 @@
 ---
 sidebar_label: date
-title: date config
-description: "一组日期格式化工具集合"
+title: 日期格式化方法
+description: "一组日期格式化方法"
 ---
 
 # date
 
 ### Description
 
-@short: 一组日期格式化工具集合
+@short: 一组日期格式化方法
 
 @signature: date: DateHelpers
 
-### Details
 
-**date** 对象提供了多种操作日期的方法:
+### Methods
 
-<ul>
-  <li>
-  <b>add (date, number, unit): Date</b> - 通过增加或减少指定时间单位来调整给定的日期
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要修改的日期 </li>
-  <li><b><i>number</i></b> - (<i>number</i>) 要添加（正数）或减去（负数）的单位数量 </li>
-  <li><b><i>unit</i></b> - (<i>string</i>) 时间单位:'minute', 'hour', 'day', 'week', 'month', 'year'。 </li>
+#### add(date, number, unit)
+在日期上添加/减少指定的时间间隔
+
+**Parameters**:
+- `date` - (Date) - 日期对象
+- `number` - (number) - 要添加的单位数量（正数）或要减去的单位数量（负数）
+- `unit` - (string) - 时间单位：'minute', 'hour', 'day', 'week', 'month', 'year'
+
+**Returns**: Date - 新的日期对象
+
+**Example**:
 ~~~js
-//给指定日期加1年：2019年6月29日 -> 2020年6月29日
+// 给指定日期增加 1 年: 2019-06-29 -> 2020-06-29
 var newDate = gantt.date.add(new Date(2019, 05, 29), 1, 'year');
 ~~~
-</ul>
-  </li>
-  <li>
-  <b>add_quarter (date, number): Date</b> - 给日期添加或减少若干季度（每季度3个月）
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要调整的日期 </li>
-  <li><b><i>number</i></b> - (<i>number</i>) 要添加（正数）或减去（负数）的季度数 </li> 
+
+---
+
+#### add_quarter(date, number)
+对日期进行添加/减少指定数量的季度
+
+**Parameters**:
+- `date` - (Date) - 日期对象
+- `number` - (number) - 要添加的季度数量（正数）或要减去的数量（负数）
+
+**Returns**: Date - 新的日期对象
+
+**Example**:
 ~~~js
-//给指定日期加1个季度（3个月）：
-//2019年6月29日 -> 2019年9月29日
+// 给指定日期增加 1 个季度（3 个月）:
+// 2019-06-29 -> 2020-09-29
 var newDate = gantt.date.add_quarter(new Date(2019, 05, 29), 1);
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>convert_to_utc (date): Date</b> - 将本地时间转换为UTC时间
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要转换的日期 </li>
+
+---
+
+#### convert_to_utc(date)
+将本地时间转换为 UTC
+
+**Parameters**:
+- `date` - (Date) - 需要转换的日期对象
+
+**Returns**: Date - UTC 日期对象
+
+**Example**:
 ~~~js
-//2019年6月29日14:00（本地时间） -> 2019年6月29日12:00（UTC时间）
+// 2019-06-29 14:00（本地时间） -> 2019-06-29 12:00（UTC）
 var time = gantt.date.convert_to_utc(new Date(2019, 05, 29, 14, 00));
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>copy (date): Date</b> - 复制一个Date对象的副本
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要复制的日期 </li>
+
+---
+
+#### copy(date)
+复制一个 Date 对象
+
+**Parameters**:
+- `date` - (Date) - 需要复制的日期对象
+
+**Returns**: Date - 复制后的日期对象
+
+**Example**:
 ~~~js
-var copy = gantt.date.copy(new Date(2019, 05, 29));// -> 2019年6月29日
+var copy = gantt.date.copy(new Date(2019, 05, 29)); // -> 2019-06-29
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>date_part (date): Date</b> - 将日期的时间部分重置为午夜（00:00:00）
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要调整的日期 </li>
+
+---
+
+#### date_part(date)
+将提供日期的时间部分重置为 00:00:00
+
+**Parameters**:
+- `date` - (Date) - 要格式化的日期对象
+
+**Returns**: Date - 时间重置为 00:00:00 的日期
+
+**Example**:
 ~~~js
-//2019年6月29日14:30:10 -> 2019年6月29日00:00:00
+// 2019-06-29 14:30:10 -> 2019-06-29 00:00:00
 var date = gantt.date.date_part(new Date(2019, 05, 29, 14, 30, 10));
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>date_to_str (format, utc): Function</b> - 生成一个函数，将Date对象转换为格式化字符串
-  <ul>
-  <li><b><i>format</i></b> - (<i>string</i>) 期望的日期格式（参见 [日期格式规范](guides/date-format.md)） </li>
-  <li><b><i>utc?</i></b> - (<i>boolean</i>) 是否将本地时间转换为UTC </li>
+
+---
+
+#### date_to_str(format, utc)
+返回一个将 Date 对象转换为指定格式字符串的函数
+
+**Parameters**:
+- `format` - (string) - 日期格式（见 guides/date-format.md）
+- `utc` - (boolean, optional) - 是否转换为 UTC
+
+**Returns**: Function - 格式化函数
+
+**Example**:
 ~~~js
 var formatFunc = gantt.date.date_to_str("%d/%m/%Y");
 var date = formatFunc(new Date(2019, 05, 29)); // -> "29/06/2019"
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>day_start (date): Date</b> - 将日期时间设置为午夜，与 <b>date_part</b> 相同。此方法用于Day视图确定显示日期，且可自定义
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要调整的日期 </li>
+
+---
+
+#### day_start(date)
+将提供日期的时间部分重置为 00:00:00（date_part 的别名）
+
+**Parameters**:
+- `date` - (Date) - 要格式化的日期对象
+
+**Returns**: Date - 时间重置为 00:00:00 的日期
+
+**Example**:
 ~~~js
-//2019年6月29日14:30:10 -> 2019年6月29日00:00:00
+// 2019-06-29 14:30:10 -> 2019-06-29 00:00:00
 var date = gantt.date.day_start(new Date(2019, 05, 29, 14, 30, 10));
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>getISOWeek (date): number</b> - 返回日期对应的ISO-8601周数，周一为一周的第一天
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要计算的日期 </li>
+
+---
+
+#### getISOWeek(date)
+返回日期的 ISO-8601 周数（周从周一开始）
+
+**Parameters**:
+- `date` - (Date) - 日期对象
+
+**Returns**: number - 周数
+
+**Example**:
 ~~~js
-var week = gantt.date.getISOWeek(new Date(2019, 05, 29));// ->26
+var week = gantt.date.getISOWeek(new Date(2019, 05, 29)); // ->26
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>getUTCISOWeek (date): number</b> - 将本地时间转换为UTC后，返回该日期的周数
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要计算的日期 </li>
+
+---
+
+#### getUTCISOWeek(date)
+将日期转换为 UTC 后返回周数
+
+**Parameters**:
+- `date` - (Date) - 日期对象
+
+**Returns**: number - 周数
+
+**Example**:
 ~~~js
-var week = gantt.date.getUTCISOWeek(new Date(2019, 05, 29));// ->26
+var week = gantt.date.getUTCISOWeek(new Date(2019, 05, 29)); // ->26
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>getWeek (date): number</b> - 返回日期的周数，周起始日根据 [start_on_monday](api/config/start_on_monday.md) 中配置可为周一或周日
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要计算的日期 </li>
+
+---
+
+#### getWeek(date)
+返回日期的周数（周起始取决于 gantt.config.start_on_monday）
+
+**Parameters**:
+- `date` - (Date) - 日期对象
+
+**Returns**: number - 周数
+
+**Example**:
 ~~~js
 // 周从周日开始
 gantt.config.start_on_monday = false;
@@ -120,107 +177,181 @@ gantt.config.start_on_monday = false;
 var isoWeek = gantt.date.getISOWeek(new Date(2019, 2, 25)); // ->12
 var week = gantt.date.getWeek(new Date(2019, 2, 25)); // ->13
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>month_start (date): Date</b> - 返回给定日期所在月份的第一天，时间重置为午夜
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要调整的日期 </li>
+
+---
+
+#### month_start(date)
+返回该月的第一天，时间重置为 00:00:00
+
+**Parameters**:
+- `date` - (Date) - 日期对象
+
+**Returns**: Date - 当月第一天
+
+**Example**:
 ~~~js
-//2019年6月29日14:30 -> 2019年6月1日00:00
+// 2019-06-29 14:30 -> 2019-06-01 00:00
 var firstDay = gantt.date.month_start(new Date(2019, 05, 29, 14, 30));
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>parseDate (date, format): Date</b> - 将指定格式的字符串转换为Date对象
-  <ul>
-  <li><b><i>date</i></b> - (<i>string</i>) 日期字符串 </li>
-  <li><b><i>format</i></b> - (<i>string</i>) 日期字符串的格式（参见 [日期格式规范](guides/date-format.md)） </li>
+
+---
+
+#### parseDate(date, format)
+
+将日期字符串转换为 Date 对象。此方法在 [gantt.load()](api/method/load.md) 和 [gantt.parse()](api/method/parse.md) 期间用于解析任务和链接的日期属性。
+
+**Parameters**:
+- `date` - (string) - 要解析的日期字符串
+- `format` - (string | function, optional) - 日期格式字符串（见 [Date Format Specification](guides/date-format.md)）或自定义解析函数 `(dateStr) => Date`
+
+**Returns**: Date - 解析后的日期对象
+
+**Parsing logic**（自 v9.1.3 起）：
+
+1. **ISO 8601 检查** - 如果字符串匹配 ISO 8601 模式（例如 `"2026-01-06"`、`"2026-01-06T10:30:00Z"`），将直接解析，不会查阅 `format`。如果用户明确覆盖了 `gantt.templates.parse_date`，则跳过 ISO 自动检测，由用户函数处理所有解析。
+2. **`format` 参数** - 如果以字符串提供，则通过 `gantt.date.str_to_date(format)` 将其转换为解析函数；如果以函数提供，则直接调用
+3. **回退** - 如果未提供 `format`，则使用 [parse_date](api/template/parse_date.md) 模板
+
+**Examples**:
 ~~~js
-var date = gantt.date.parseDate("29/06/2019","%d/%m/%Y");//-> 2019年6月29日00:00:00
+// 使用显式格式字符串
+var date = gantt.date.parseDate("29/06/2019", "%d/%m/%Y");
+// -> 2019-06-29 00:00:00
+
+// ISO 字符串 - 自动解析，格式被忽略
+var date2 = gantt.date.parseDate("2026-01-06T10:30:00Z");
+// -> 2026-01-06 10:30:00 UTC
+
+// 使用自定义解析函数
+var date3 = gantt.date.parseDate("Jan 6, 2026", function(str) {
+    return new Date(str);
+});
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>str_to_date (format, utc): Function</b> - 创建一个函数，将指定格式的字符串转换为Date对象
-  <ul>
-  <li><b><i>format</i></b> - (<i>string</i>) 预期的日期格式（参见 [日期格式规范](guides/date-format.md)） </li>
-  <li><b><i>utc?</i></b> - (<i>boolean</i>) 是否将本地时间转换为UTC </li>
+
+---
+
+#### str_to_date(format, utc)
+返回一个将字符串转换为 Date 对象的函数
+
+**Parameters**:
+- `format` - (string) - 日期格式（见 guides/date-format.md）
+- `utc` - (boolean, optional) - 是否转换为 UTC
+
+**Returns**: Function - 解析函数
+
+**Example**:
 ~~~js
 var formatFunc = gantt.date.str_to_date("%d/%m/%Y");
-var date = formatFunc("29/06/2019"); // -> 2019年6月29日00:00:00
+var date = formatFunc("29/06/2019"); // -> 2019-06-29 00:00:00
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>time_part (date): number</b> - 返回Date对象的时间部分，以午夜起算的秒数表示
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要计算的日期 </li>
+
+---
+
+#### time_part(date)
+返回自午夜以来的秒数
+
+**Parameters**:
+- `date` - (Date) - 日期对象
+
+**Returns**: number - 自午夜以来的秒数
+
+**Example**:
 ~~~js
 var time = gantt.date.time_part(new Date(2019, 05, 29, 14, 30, 10));
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>to_fixed (num): string</b> - 格式化小于10的数字，前面补零；10及以上数字保持不变，返回字符串
-  <ul>
-  <li><b><i>num</i></b> - (<i>number</i>) 需要格式化的数字 </li>
+
+---
+
+#### to_fixed(num)
+为小于 10 的数字添加前导零
+
+**Parameters**:
+- `num` - (number) - 要格式化的数字
+
+**Returns**: string - 格式化后的字符串
+
+**Example**:
 ~~~js
-var num1 = gantt.date.to_fixed(2);// ->"02"
-var num2 = gantt.date.to_fixed(10);// ->10
+var num1 = gantt.date.to_fixed(2); // ->"02"
+var num2 = gantt.date.to_fixed(10); // ->10
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>minute_start (date): Date</b> - 返回秒数置零的日期，保留年、月、日、小时和分钟
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要调整的日期 </li>
+
+---
+
+#### minute_start(date)
+将秒重置为 00
+
+**Parameters**:
+- `date` - (Date) - 日期对象
+
+**Returns**: Date - 格式化后的日期
+
+**Example**:
 ~~~js
-//2019年6月29日14:30:10 -> 2019年6月29日14:30:00
+// 2019-06-29 14:30:10 -> 2019-06-29 14:30:00
 var date = gantt.date.minute_start(new Date(2019, 05, 29, 14, 30, 10));
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>hour_start (date): Date</b> - 返回分钟和秒数均置零的日期，保留年、月、日和小时
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要调整的日期 </li>
+
+---
+
+#### hour_start(date)
+将分和秒重置为 00
+
+**Parameters**:
+- `date` - (Date) - 日期对象
+
+**Returns**: Date - 格式化后的日期
+
+**Example**:
 ~~~js
-//2019年6月29日14:30:10 -> 2019年6月29日14:00:00
+// 2019-06-29 14:30:10 -> 2019-06-29 14:00:00
 var date = gantt.date.hour_start(new Date(2019, 05, 29, 14, 30, 10));
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>week_start (date): Date</b> - 返回给定日期所在周的第一天，时间重置为午夜
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要调整的日期 </li>
+
+---
+
+#### week_start(date)
+返回该周的第一天，时间重置为 00:00:00
+
+**Parameters**:
+- `date` - (Date) - 日期对象
+
+**Returns**: Date - 本周的第一天
+
+**Example**:
 ~~~js
-//2019年6月29日14:30 -> 2019年6月24日00:00
+// 2019-06-29 14:30 -> 2019-06-24 00:00
 var weekStart = gantt.date.week_start(new Date(2019, 05, 29, 14, 30));
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>quarter_start (date): Date</b> - 返回给定日期所在季度的首月，时间重置为午夜
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要调整的日期 </li>
+
+---
+
+#### quarter_start(date)
+返回该季度的第一月，时间重置为 00:00:00
+
+**Parameters**:
+- `date` - (Date) - 日期对象
+
+**Returns**: Date - 该季度的第一天
+
+**Example**:
 ~~~js
-//2019年6月29日14:30:10 -> 2019年4月1日00:00:00
+// 2019-06-29 14:30:10 -> 2019-04-01 00:00:00
 var date = gantt.date.quarter_start(new Date(2019, 05, 29, 14, 30, 10));
 ~~~
-  </ul>
-  </li>
-  <li>
-  <b>year_start (date): Date</b> - 返回给定日期所在年的第一天，时间设置为午夜
-  <ul>
-  <li><b><i>date</i></b> - (<i>Date</i>) 需要调整的日期 </li>
+
+---
+
+#### year_start(date)
+返回当年的第一天，时间重置为 00:00:00
+
+**Parameters**:
+- `date` - (Date) - 日期对象
+
+**Returns**: Date - 当年的第一天
+
+**Example**:
 ~~~js
-//2019年6月29日14:30 -> 2019年1月1日00:00
+// 2019-06-29 14:30 -> 2019-01-01 00:00
 var yearStart = gantt.date.year_start(new Date(2019, 05, 29, 14, 30));
 ~~~
-  </ul>
-  </li>
-</ul>
-

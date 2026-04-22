@@ -1,17 +1,18 @@
 ---
-title: "종속 작업과 함께 작업 드래그하기"
-sidebar_label: "종속 작업과 함께 작업 드래그하기"
+title: "의존 태스크와 함께 태스크를 이동하기"
+sidebar_label: "의존 태스크와 함께 태스크를 이동하기"
 ---
 
-# 종속 작업과 함께 작업 드래그하기
+# 의존 태스크와 함께 태스크를 이동하기
 
-작업을 종속 작업과 함께 이동하는 방법에는 여러 가지가 있습니다.
+의존 태스크와 함께 태스크를 이동시키는 여러 가지 방법이 있습니다.
 
-## Auto Scheduling 확장 기능 사용하기
+## 자동 스케줄링 확장 사용하기
 
-한 가지 방법은 [자동 스케줄링](guides/auto-scheduling.md) 확장 기능을 사용하는 것입니다. 이 확장 기능은 작업 간의 관계를 기반으로 자동으로 일정을 조정합니다.
+먼저 [자동 스케줄링](guides/auto-scheduling.md) 확장을 사용할 수 있습니다.
+이 기능은 태스크 간의 관계에 따라 자동으로 태스크를 스케줄링합니다.
 
-Auto scheduling을 활성화하려면 [gantt.plugins](api/method/plugins.md) 메서드를 사용하세요:
+자동 스케줄링 기능을 사용하려면 [gantt.plugins](api/method/plugins.md) 메서드를 사용하여 활성화해야 합니다:
 
 ~~~js
 gantt.plugins({
@@ -19,60 +20,61 @@ gantt.plugins({
 });
 ~~~
 
-그리고 **auto_scheduling** 속성을 true로 설정하세요:
+그리고 **auto_scheduling** 속성을 true로 설정합니다:
 
 ~~~js
 gantt.config.auto_scheduling = true;
 ~~~
 
-## 작업을 수동으로 이동하기
+## 태스크를 수동으로 이동하기
 
-### 챕터 목차
+### 챕터 내용
 
-- [모든 연결된 작업 가져오기](#linked_tasks)
-- [주 작업과 하위 작업을 동시에 이동하기](#sync)
-- [주 작업 이동 후 하위 작업 이동하기](#after)
-
-
-### 주요 아이디어
-종속 작업을 드래그하는 일반적인 방법은 다음과 같습니다:
-
-- 작업이 이동 중임을 감지합니다.
-- 모든 종속 작업을 찾아 동일한(또는 조정된) 양만큼 이동시킵니다.
-
-다음 두 가지 접근법 중 하나를 선택할 수 있습니다:
-
-- [주 작업과 하위 작업을 동시에 이동하기](#sync)
-- [주 작업 이동 후 하위 작업 이동하기](#after)
-
-어느 경우든, 첫 번째 단계는 모든 연결된 작업을 가져오는 것입니다.
+- [연결된 모든 태스크 가져오기](#linked_tasks)
+- [메인 태스크와 함께 자손 태스크를 동기적으로 이동하기](#sync)
+- [메인 태스크 이동이 끝난 후 자손 태스크를 이동하기](#after)
 
 
-### 모든 연결된 작업 가져오기 {#linked_tasks}
+### 핵심 아이디어
+종속 태스크를 드래그해 이동시키는 일반적인 방법은 다음과 같습니다:
 
-작업에 연결된 링크를 찾으려면, 작업 객체의 **$source** 및 **$target** 속성을 사용하세요.
-이 속성들은 자동으로 생성되며 관련 링크의 ID를 포함합니다:
+- 태스크가 이동 중인지 감지합니다
+- 모든 종속 태스크를 순회하며 동일한(또는 필요에 따라 다른) 기준으로 이동합니다
 
-- $source - 해당 작업에서 시작하는 링크
-- $target - 해당 작업을 가리키는 링크
+따라서 아래의 두 가지 방법 중 하나를 선택할 수 있습니다:
+
+- [메인 태스크와 함께 자손 태스크를 동기적으로 이동하기](#sync)
+- [메인 태스크 이동이 끝난 후 자손 태스크를 이동하기](#after)
+
+두 경우 모두 먼저 모든 연결된 태스크를 가져와야 합니다.
+
+
+### 모든 연결된 태스크 가져오기 {#linked_tasks}
+
+관련 링크를 검색하려면 태스크 객체의 **$source** 및 **$target** 속성을 사용합니다.
+속성은 자동으로 생성되며 관련 링크의 아이디를 저장합니다:
+
+- $source - 태스크에서 나오는 링크;
+- $target - 태스크로 들어오는 링크
 
 ~~~js
 var taskObj = gantt.getTask("t1");
  
-var sourceLinks = taskObj.$source;        //-> ["l1","l4"] - 아웃고잉 링크의 id  
-var targetLinks = taskObj.$target;       //-> ["l5","l8"] - 인커밍 링크의 id
+var sourceLinks = taskObj.$source;        //-> ["l1","l4"] - 나오는 링크들의 아이디  
+var targetLinks = taskObj.$target;       //-> ["l5","l8"] - 들어오는 링크들의 아이디
 ~~~
 
-이 링크들로부터 종속 작업을 찾을 수 있습니다.
 
-모든 연결된 작업을 수집하려면 다음과 같이 이터레이터를 정의하세요:
+그리고 링크에서 종속 태스크를 얻을 수 있습니다.
+
+따라서 연결된 태스크를 가져오려면 이터레이터를 선언해야 합니다:
 
 ~~~js
 gantt.eachSuccessor = function(callback, root){
   if(!this.isTaskExists(root))
     return;
   
-  // 무한 루프를 방지하기 위해 방문한 작업을 추적합니다
+  // 무한 루프를 방지하기 위해 이미 순회한 태스크를 기억합니다
   var traversedTasks = arguments[2] || {};
   if(traversedTasks[root])
     return;
@@ -86,7 +88,7 @@ gantt.eachSuccessor = function(callback, root){
       if(this.isTaskExists(link.target) && !traversedTasks[link.target]){
         callback.call(this, this.getTask(link.target));
         
-        // 1단계뿐 아니라 전체 종속 분기를 순회합니다
+        // 첫 번째 레벨 의존성뿐만 아니라 가지 전체를 순회합니다
         this.eachSuccessor(callback, link.target, traversedTasks);
       }
     }
@@ -95,17 +97,20 @@ gantt.eachSuccessor = function(callback, root){
 ~~~
 
 
-### 주 작업과 하위 작업을 동시에 이동하기 {#sync}
+### 메인 태스크와 함께 자손 태스크를 동기적으로 이동하기 {#sync}
 
-하위 작업은 주 작업을 드래그하는 동안 함께 이동할 수 있습니다. 즉, 사용자가 주 작업을 이동할 때 모든 종속 작업도 동시에 이동합니다. 이 방식은 부드럽게 보이지만, 작업이 많을 경우 성능이 저하될 수 있습니다.
+자손 태스크는 메인 태스크의 이동과 함께 동기적으로 이동할 수 있습니다. 즉, 사용자가 태스크를 이동하기 시작하면 모든 종속 가지가 함께 이동합니다. 
+이 방식은 보기에는 좋지만, 한꺼번에 많은 태스크를 이동하면 성능 저하가 발생할 수 있습니다.
+
 
 #### 1단계
 
-먼저, [모든 연결된 작업 가져오기](#linked_tasks)에서 보여준 대로 이터레이터를 선언하세요.
+먼저 앞서 보인 이터레이터를 선언합니다 [위의](#linked_tasks).
+
 
 #### 2단계
 
-다음으로, [onTaskDrag](api/event/ontaskdrag.md) 이벤트에 핸들러를 연결하세요. 이 이벤트는 드래그 프레임마다 발생하며, 여기서 연결된 모든 작업을 이동할 수 있습니다.
+그런 다음 [onTaskDrag](api/event/ontaskdrag.md) 이벤트에 핸들러를 연결해야 합니다. 이 핸들러는 드래그-앤-드롭의 매 프레임마다 호출되며, 여기에서 모든 연결된 태스크를 이동시킵니다.
 
 ~~~js
 gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
@@ -122,9 +127,10 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 });
 ~~~
 
+
 #### 3단계
 
-마지막으로, 드래그가 끝나고 사용자가 마우스를 놓았을 때 하위 작업의 위치를 스케일에 맞게 반올림하세요. 이는 [onAfterTaskDrag](api/event/onaftertaskdrag.md) 이벤트를 사용하여 할 수 있습니다:
+마지막으로 사용자가 마우스 버튼을 놓고 드래그-앤-드롭이 끝나면 자식 아이템의 위치를 스케일에 맞게 반올림해야 합니다. [onAfterTaskDrag](api/event/onaftertaskdrag.md) 이벤트를 사용하면 됩니다:
 
 ~~~js
 gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
@@ -139,28 +145,32 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 });
 ~~~
 
-이 방법은 연결된 작업이 많지 않은 경우에 적합합니다.
+
+이 방법은 연결된 태스크가 너무 많지 않을 때 잘 작동합니다.
 
 
-### 주 작업 이동 후 하위 작업 이동하기 {#after}
+### 메인 태스크 이동이 끝난 후 자손 태스크를 이동하기 {#after}
 
-또 다른 방법으로, 하위 작업을 주 작업이 이동된 후에만 업데이트할 수 있습니다. 이 방식은 시각적으로 더 간단하며 성능도 더 좋습니다.
+메인 태스크 이동이 끝난 후 자손 태스크를 업데이트할 수 있습니다. 결과는 더 단순하게 보이지만 성능은 더 좋습니다.
 
-아이디어는 드래그 앤 드롭이 끝날 때까지 기다렸다가, 주 작업이 얼마나 이동했는지 계산한 후 모든 연결된 작업을 그만큼 이동시키는 것입니다.
+다음과 같은 방식으로 동작합니다: 드래그 앤 드롭이 끝나면 태스크가 얼마나 이동되었는지 확인하고 모든 연결된 태스크를 같은 값으로 이동합니다.
 
 #### 1단계
 
-먼저, 앞서 [모든 연결된 작업 가져오기](#linked_tasks)에서 설명한 대로 이터레이터를 선언하세요.
+먼저 위에서 보여준 [연결된 태스크 가져오기](#linked_tasks)와 같이 이터레이터를 선언합니다.
+
 
 #### 2단계
 
-사용자가 드래그를 끝냈을 때 [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) 이벤트를 캡처하세요. 이 이벤트는 이동된 작업의 원본과 수정본을 모두 제공하므로 날짜 차이를 계산할 수 있습니다.
+사용자가 마우스 버튼을 놓고 드래그 앤 드롭이 끝나면 [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) 이벤트를 캡처할 수 있으며,
+여기서는 수정된 태스크와 원래 태스크의 두 인스턴스가 이용 가능하고 이들 간의 날짜 차이를 계산합니다.
 
 :::note
-이 시점에서는 드래그 앤 드롭이 여전히 취소될 수 있다는 점에 유의하세요( onBeforeTaskChanged는 취소를 지원하며, 앱에 이를 수행하는 핸들러가 있을 수 있음). 따라서 이 단계에서는 종속 작업을 업데이트하지 않습니다.
+주: 이 단계에서 drag-and-drop은 취소될 수 있습니다(onBeforeTaskChanged가 이를 취소하도록 허용하고, 귀하의 앱에 이를 처리하는 핸들러가 있을 수 있습니다),
+따라서 이곳에서는 종속 태스크를 수정하지 않습니다.
 :::
 
-대신, 계산된 차이를 나중에 접근 가능한 변수에 저장하세요.
+대신 같은 클로저 안에 계산된 diff 값을 변수에 저장하여 나중에 접근할 수 있도록 합니다.
 
 ~~~js
 var diff = 0;
@@ -175,12 +185,13 @@ gantt.attachEvent("onBeforeTaskChanged", function(id, mode, originalTask){
 });
 ~~~
 
+
 #### 3단계
 
-마지막으로, [onAfterTaskDrag](api/event/onaftertaskdrag.md) 이벤트를 사용하여 이전에 계산한 *diff* 만큼 모든 종속 작업을 업데이트하세요:
+마지막으로 drag-and-drop가 수행되었음을 나타내는 [onAfterTaskDrag](api/event/onaftertaskdrag.md) 이벤트를 캡처합니다. 이 시점에서 이전 단계에서 계산한 *diff*를 사용하여 모든 의존 태스크를 업데이트할 수 있습니다:
 
 ~~~js
-// 하위 항목의 위치를 스케일에 맞게 반올림합니다
+//자식 아이템의 위치를 스케일에 맞게 반올림
 gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
     var modes = gantt.config.drag_mode;
     if(mode == modes.move ){
@@ -193,7 +204,8 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 });
 ~~~
 
-전체 코드는 다음과 같습니다:
+
+전체 코드는 아래와 같습니다:
 
 ~~~js
 (function(){
@@ -209,7 +221,7 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
     return true;
   });
   
-  // 하위 항목의 위치를 스케일에 맞게 반올림합니다
+  //자식 아이템의 위치를 스케일에 맞게 반올림
   gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
     var modes = gantt.config.drag_mode;
     if(mode == modes.move ){
@@ -222,6 +234,3 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
   });
 })();
 ~~~
-
-@linkclass:hidden
-

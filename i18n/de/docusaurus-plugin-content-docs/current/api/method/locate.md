@@ -1,23 +1,23 @@
 ---
 sidebar_label: locate
-title: locate method
-description: "rufen Sie die ID einer Aufgabe basierend auf dem übergebenen HTML-Event ab"
+title: Locate-Methode
+description: "Erhält die ID einer Aufgabe aus dem angegebenen HTML-Ereignis"
 ---
 
 # locate
 
 ### Description
 
-@short: Rufen Sie die ID einer Aufgabe basierend auf dem übergebenen HTML-Event ab
+@short: Erhält die ID einer Aufgabe aus dem angegebenen HTML-Ereignis
 
 @signature: locate: (e: Event) =\> string | number
 
 ### Parameters
 
-- `e` - (required) *Event* - das native Event-Objekt
+- `e` - (erforderlich) *Event* - ein natives Event
 
 ### Returns
-- ` id` - (string | number) - die Kennung der Aufgabe
+- ` id` - (string | number) - die ID der Aufgabe
 
 ### Example
 
@@ -34,4 +34,3 @@ gantt.$container.addEventListener("mouseover", function(event){
 
 ### Related API
 - [task_attribute](api/config/task_attribute.md)
-

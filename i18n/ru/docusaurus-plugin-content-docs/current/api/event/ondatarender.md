@@ -1,14 +1,14 @@
 ---
 sidebar_label: onDataRender
-title: onDataRender event
-description: "срабатывает сразу после того, как данные были отображены на странице"
+title: событие onDataRender
+description: "срабатывает после отрисовки данных на странице"
 ---
 
 # onDataRender
 
 ### Description
 
-@short: Срабатывает сразу после того, как данные были отображены на странице
+@short: Срабатывает после того, как данные отрисованы на странице
 
 @signature: onDataRender: () =\> void;
 
@@ -16,7 +16,7 @@ description: "срабатывает сразу после того, как да
 
 ~~~jsx
 gantt.attachEvent("onDataRender", function(){
-    alert("Данные были отображены на странице")
+    alert("Data was rendered on the page")
 });
 
 gantt.init("gantt_here");
@@ -32,4 +32,3 @@ gantt.parse(demo_tasks);
 - [onBeforeDataRender](api/event/onbeforedatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

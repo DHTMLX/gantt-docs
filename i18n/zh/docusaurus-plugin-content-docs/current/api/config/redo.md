@@ -1,14 +1,14 @@
 ---
 sidebar_label: redo
 title: redo config
-description: "允许在甘特图中使用 Redo 功能"
+description: "为甘特图启用 Redo 功能"
 ---
 
 # redo
 
 ### Description
 
-@short: 允许在甘特图中使用 Redo 功能
+@short: 启用甘特图的 Redo 功能
 
 @signature: redo: boolean
 
@@ -18,7 +18,7 @@ description: "允许在甘特图中使用 Redo 功能"
 gantt.config.redo = true;
 ~~~
 
-**Default value:** true
+**默认值：** true
 
 ### Related samples
 - [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
@@ -26,7 +26,7 @@ gantt.config.redo = true;
 ### Details
 
 :::note
- 此设置是 **undo** 扩展的一部分，因此请确保已启用 [undo](guides/extensions-list.md) 插件。更多信息请参见 [撤销/重做功能](guides/undo-redo.md) 文章。 
+此选项在 **undo** 扩展中定义，因此您需要启用 [undo](guides/extensions-list.md#undo) 插件。请在 [Undo/Redo Functionality](guides/undo-redo.md) 文章中阅读详细信息。
 :::
 
 ### Related API

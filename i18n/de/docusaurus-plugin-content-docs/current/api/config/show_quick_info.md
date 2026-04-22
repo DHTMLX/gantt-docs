@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_quick_info
-title: show_quick_info config
-description: "Aktiviert oder deaktiviert die 'quick_info' Erweiterung (das Pop-up, das Details zur Aufgabe anzeigt)"
+title: show_quick_info Konfiguration
+description: "aktiviert/deaktiviert die 'quick_info' Erweiterung (Pop-up-Aufgaben-Detailsformular)"
 ---
 
 # show_quick_info
 
 ### Description
 
-@short: Aktiviert oder deaktiviert die 'quick_info' Erweiterung (das Pop-up, das Details zur Aufgabe anzeigt)
+@short: Aktiviert/deaktiviert die 'quick_info'-Erweiterung (Pop-up-Aufgaben-Detailsformular)
 
 @signature: show_quick_info: boolean
 
@@ -19,13 +19,13 @@ gantt.config.show_quick_info = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Details
 
 :::note
- Diese Option ist Teil der **Quick Info** Erweiterung. Stellen Sie daher sicher, dass das [quick_info](guides/extensions-list.md#quickinfo) Plugin zuerst aktiviert ist. 
+Diese Option ist in der **Quick Info**-Erweiterung definiert, daher müssen Sie das [quick_info](guides/extensions-list.md#quick-info) Plugin aktivieren.
 :::
 
 ### Related Guides
-- ["Vorlagen der 'Quick Info'-Erweiterung (Touch-Unterstützung)"](guides/touch-templates.md)
+- [Vorlagen der 'Quick Info'-Erweiterung (Touch-Unterstützung)](guides/touch-templates.md)

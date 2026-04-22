@@ -1,25 +1,24 @@
 ---
 sidebar_label: task_time
-title: task_time template
-description: "определяет диапазон дат, отображаемый в заголовке lightbox"
+title: task_time шаблон
+description: "задает диапазон дат в заголовке lightbox"
 ---
 
 # task_time
 
 ### Description
-
-@short: Определяет диапазон дат, отображаемый в заголовке lightbox
+@short: Задает диапазон дат в заголовке lightbox
 
 @signature: task_time: (start: Date, end: Date, task: Task) =\> string;
 
 ### Parameters
 
-- `start` - (required) *Date* - дата начала задачи  
-- `end` - (required) *Date* - дата, когда ожидается завершение задачи
-- `task` - (required) *Task* - объект самой задачи
+- `start` - (required) *Date* - дата начала запланированной задачи
+- `end` - (required) *Date* - дата окончания запланированной задачи
+- `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` text` - (string) - html-контент, который будет отображаться в gantt
+- ` text` - (string) - HTML текст, который будет отображаться в диаграмме Ганта
 
 ### Example
 
@@ -35,4 +34,3 @@ gantt.templates.task_time = function(start,end,task){
 
 ### Related Guides
 - [Шаблоны Lightbox](guides/lightbox-templates.md)
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: onGanttRender
-title: onGanttRender event
-description: "간트 차트가 페이지에 완전히 렌더링된 후 발생합니다."
+title: onGanttRender 이벤트
+description: "페이지에서 Gantt 차트가 렌더링된 후에 발생합니다"
 ---
 
 # onGanttRender
 
 ### Description
 
-@short: 간트 차트가 페이지에 완전히 렌더링된 후 발생합니다.
+@short: 페이지에서 Gantt 차트가 렌더링된 후에 발생합니다
 
 @signature: onGanttRender: () =\> void;
 
@@ -29,4 +29,3 @@ gantt.attachEvent("onGanttRender", function(){
 - [onBeforeDataRender](api/event/onbeforedatarender.md)
 - [onDataRender](api/event/ondatarender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: onDataRender
-title: onDataRender event
-description: "Wird ausgelöst, unmittelbar nachdem die Daten auf der Seite angezeigt wurden"
+title: onDataRender-Ereignis
+description: "Wird ausgelöst, nachdem die Daten auf der Seite gerendert wurden"
 ---
 
 # onDataRender
 
 ### Description
 
-@short: Wird ausgelöst, unmittelbar nachdem die Daten auf der Seite angezeigt wurden
+@short: Wird ausgelöst, nachdem die Daten auf der Seite gerendert wurden
 
 @signature: onDataRender: () =\> void;
 
@@ -32,4 +32,3 @@ gantt.parse(demo_tasks);
 - [onBeforeDataRender](api/event/onbeforedatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

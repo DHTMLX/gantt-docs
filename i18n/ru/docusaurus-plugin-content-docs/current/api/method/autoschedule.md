@@ -1,22 +1,23 @@
 ---
 sidebar_label: autoSchedule
-title: autoSchedule method
-description: "автоматически обновляет расписание проекта"
+title: Метод autoSchedule
+description: "Пересчитывает расписание проекта"
 ---
 
 # autoSchedule
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функция доступна только в PRO-издании.
 :::
+
 ### Description
 
-@short: Автоматически обновляет расписание проекта
+@short: Пересчитывает расписание проекта
 
-@signature: autoSchedule: (taskId?: string | number) =\> void
+@signature: autoSchedule: (taskId?: string | number) => void
 
 ### Parameters
-
-- `taskId` - (optional) *string | number* -        необязательно, идентификатор задачи
+- `taskId` - (необязательный) *string | number* - идентификатор задачи
 
 ### Example
 
@@ -26,15 +27,14 @@ gantt.autoSchedule();
 
 ### Details
 
-Чтобы обновить расписание, начиная с конкретной задачи, просто передайте id задачи в качестве аргумента методу **autoSchedule()**:
+Чтобы пересчитать расписание для группы связанных задач, передайте идентификатор одной из задач в этой группе в качестве аргумента методу **autoSchedule()**:
 
 ~~~js
 gantt.autoSchedule(taskId);
 ~~~
 
-
 :::note
- Убедитесь, что плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) подключен на странице, так как он необходим для работы этого метода. 
+Метод требует подключения плагина [auto_scheduling](guides/extensions-list.md#autoscheduling) к странице.
 :::
 
 ### Related Guides

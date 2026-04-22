@@ -1,14 +1,14 @@
 ---
 sidebar_label: scale_height
-title: scale_height config
-description: "регулирует высоту time scale и заголовка grid"
+title: scale_height конфигурация
+description: "устанавливает высоту временной шкалы и заголовка сетки"
 ---
 
 # scale_height
 
 ### Description
 
-@short: Регулирует высоту time scale и заголовка grid
+@short: Устанавливает высоту временной шкалы и заголовка сетки
 
 @signature: scale_height: number
 
@@ -19,4 +19,4 @@ gantt.config.scale_height = 50;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 35
+**Значение по умолчанию:** 35

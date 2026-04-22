@@ -1,14 +1,14 @@
 ---
 sidebar_label: autofit
-title: autofit config
-description: "自动调整 grid 的列宽以适应 grid 的宽度"
+title: autofit 配置
+description: "启用根据网格宽度自动调整网格列宽"
 ---
 
 # autofit
 
 ### Description
 
-@short: 自动调整 grid 的列宽以适应 grid 的宽度
+@short: 启用根据网格宽度自动调整网格列宽
 
 @signature: autofit: boolean
 
@@ -27,4 +27,3 @@ gantt.config.grid_width = 500;
 
 ### Related API
 - [grid_width](api/config/grid_width.md)
-

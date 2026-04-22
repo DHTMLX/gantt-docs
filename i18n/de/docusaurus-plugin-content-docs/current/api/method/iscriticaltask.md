@@ -1,25 +1,27 @@
 ---
 sidebar_label: isCriticalTask
-title: isCriticalTask method
+title: isCriticalTask Methode
 description: "prüft, ob die angegebene Aufgabe kritisch ist"
 ---
 
 # isCriticalTask
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
 @short: Prüft, ob die angegebene Aufgabe kritisch ist
 
-@signature: isCriticalTask: (task: Task) =\> boolean
+@signature: isCriticalTask: (task: Task) => boolean
 
 ### Parameters
 
-- `task` - (required) *Task* - das zu prüfende Aufgabenobjekt
+- `task` - (erforderlich) *Task* - das Objekt der Aufgabe
 
 ### Returns
-- ` value` - (boolean) - gibt 'true' zurück, wenn die Aufgabe kritisch ist, andernfalls 'false'
+- `value` - (boolean) - 'true' если die angegebene Aufgabe kritisch ist, 'false' ansonsten
 
 ### Example
 
@@ -40,8 +42,8 @@ gantt.config.highlight_critical_path = true; /*!*/
 gantt.init("gantt_here");
 gantt.parse(tasks);
 
-gantt.isCriticalTask(gantt.getTask(2)); // -> 'false' /*!*/
-gantt.isCriticalTask(gantt.getTask(3)); // -> 'true' /*!*/
+gantt.isCriticalTask(gantt.getTask(2));// ->'false' /*!*/
+gantt.isCriticalTask(gantt.getTask(3));// ->'true' /*!*/
 ~~~
 
 ### Related samples
@@ -50,10 +52,8 @@ gantt.isCriticalTask(gantt.getTask(3)); // -> 'true' /*!*/
 ### Details
 
 :::note
- Diese Methode ist Teil der **critical_path**-Erweiterung. Stellen Sie daher sicher, dass das [critical_path](guides/extensions-list.md#criticalpath) Plugin aktiviert ist. Weitere Informationen finden Sie im Artikel ["Kritischer Pfad"](guides/critical-path.md). 
+Diese Methode ist in der **critical_path**-Erweiterung definiert, daher müssen Sie das [critical_path](guides/extensions-list.md#critical-path) Plugin aktivieren. Lesen Sie die Details im Artikel [Critical Path](guides/critical-path.md).
 :::
-
-![iscritical_path](/img/iscritical_path.png)
 
 ### Related API
 - [highlight_critical_path](api/config/highlight_critical_path.md)
@@ -61,5 +61,4 @@ gantt.isCriticalTask(gantt.getTask(3)); // -> 'true' /*!*/
 - [getSlack](api/method/getslack.md)
 
 ### Related Guides
-- ["Kritischer Pfad"](guides/critical-path.md)
-
+- [Critical Path](guides/critical-path.md)

@@ -5,9 +5,9 @@ sidebar_label: "Skins"
 
 # Skins
 
-dhtmlxGantt bietet eine Vielzahl vordefinierter Skins, mit denen Sie das Gesamtbild des Gantt-Diagramms einfach anpassen können:
+dhtmlxGantt bietet mehrere vordefinierte Skins, die Sie verwenden können, um das Gesamterscheinungsbild des Gantt-Diagramms zu verändern:
 
-1. [Terrace (Standard)](guides/skins.md#terraceskin)
+1. [Terrace (default)](guides/skins.md#terraceskin)
 2. [Dark](guides/skins.md#darkskin)
 3. [Material](guides/skins.md#materialskin)
 4. [Contrast Black](guides/skins.md#contrastblackskin) 
@@ -16,23 +16,24 @@ dhtmlxGantt bietet eine Vielzahl vordefinierter Skins, mit denen Sie das Gesamtb
 7. [Meadow](guides/skins.md#meadowskin)
 8. [Broadway](guides/skins.md#broadwayskin)
 
-Ab Version 9.0 sind alle Skins in der Hauptdatei **dhtmlxgantt.css** enthalten. Sie können einen Skin aktivieren, indem Sie die Eigenschaft **gantt.skin** setzen:
+
+Ab Version 9.0 sind alle Skins in der Hauptdatei **dhtmlxgantt.css** gebündelt. Ein Skin kann aktiviert werden, indem die Eigenschaft **gantt.skin** gesetzt wird:
 
 ~~~js
 gantt.skin = "dark";
 ~~~
 
-Alternativ kann die Methode [gantt.setSkin()](api/method/setskin.md) verwendet werden:
+Oder durch Aufruf der [gantt.setSkin()](api/method/setskin.md) Methode:
 
 ~~~js
 gantt.setSkin("dark");
 ~~~
 
-In Version 8.0 und früher werden Skins als separate CSS-Dateien bereitgestellt.
+In Gantt v8.0 und früheren Versionen werden Skins in separaten CSS-Dateien definiert. 
 
 ### Verwendung von Schriftarten
 
-Standardmäßig laden die Skins die Schriftart `Inter` von `https://fonts.googleapis.com`. Weitere Informationen zu Google Fonts finden Sie [hier](https://developers.google.com/fonts).
+Standardmäßig importieren Skins die Schriftart `Inter` von `https://fonts.googleapis.com`. Erfahren Sie mehr über Google Fonts [hier](https://developers.google.com/fonts).
 
 ~~~js
 @import (css) url(
@@ -40,27 +41,27 @@ Standardmäßig laden die Skins die Schriftart `Inter` von `https://fonts.google
 );
 ~~~
 
-Bei Bedarf können Sie den Font-Import direkt aus den **.less**-Dateien im Ordner **codebase/sources/less/** entfernen und anschließend den Skin gemäß den Anweisungen im Artikel [Skins Customization](guides/custom-skins.md) neu erstellen.
+Falls erforderlich, können Sie die Schriftart direkt aus den **.less**-Dateien im Ordner **codebase/sources/less/** entfernen und anschließend den Skin wie im Artikel [Skins Customization](guides/custom-skins.md) beschrieben neu erstellen.
 
-## 'Skin Terrace' {#terraceskin}
+## 'Terrace' skin {#terraceskin}
 
-Um den Standard-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
+Um das Standard-Skin anzuwenden, fügen Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**
 
 ![gantt-default-skin](/img/gantt-default-skin.png)
 
 
-[Default skin](https://docs.dhtmlx.com/gantt/samples/06_skins/01_default.html)
+[Standard-Skin](https://docs.dhtmlx.com/gantt/samples/06_skins/01_default.html)
 
 
-## 'Skin Dark' {#darkskin}
+## 'Dark' skin {#darkskin}
 
-Um den 'Dark'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
+Um das 'Dark' Skin anzuwenden, fügen Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**
 
-Setzen Sie anschließend den Skin über die Eigenschaft **gantt.skin**:
+Und setzen Sie die Skin-Eigenschaft über **gantt.skin**:
 
 ~~~js
 gantt.skin = "dark";
@@ -72,13 +73,13 @@ gantt.skin = "dark";
 [Dark skin](https://docs.dhtmlx.com/gantt/samples/06_skins/10_dark.html)
 
 
-## 'Skin Material' {#materialskin}
+## 'Material' skin {#materialskin}
 
-Um den 'Material'-Skin zu nutzen, binden Sie die Standard-CSS-Datei ein:
+Um das 'Material' Skin anzuwenden, fügen Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**
 
-Setzen Sie den Skin über die Eigenschaft **gantt.skin**:
+Und setzen Sie die Skin-Eigenschaft über **gantt.skin**:
 
 ~~~js
 gantt.skin = "material";
@@ -90,20 +91,20 @@ gantt.skin = "material";
 [Material theme](https://docs.dhtmlx.com/gantt/samples/06_skins/09_material.html)
 
 
-Ab Version 6.3 importiert der Material-Skin die Schriftart `Roboto` nicht mehr automatisch. Falls erforderlich, können Sie die Schriftart `Roboto` manuell hinzufügen, wie folgt:
+Ab Version 6.3 wurde der Import der Schriftart `Roboto` aus dem Material Skin entfernt. Falls erforderlich, können Sie die Schriftart `Roboto` manuell hinzufügen, wie folgt:
 
 ~~~js
 <link rel="stylesheet" href="'https://fonts.googleapis.com/css?'+
     +'family="Open+Sans|Roboto:regular,medium,thin,bold"'">
 ~~~
 
-## 'Skin Contrast Black' {#contrastblackskin}
+## 'Contrast Black' skin {#contrastblackskin}
 
-Um den 'Contrast Black'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
+Um das 'Contrast Black' Skin anzuwenden, fügen Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**
 
-Setzen Sie anschließend den Skin über die Eigenschaft **gantt.skin**:
+Und setzen Sie die Skin-Eigenschaft über **gantt.skin**:
 
 ~~~js
 gantt.skin = "contrast-black";
@@ -114,13 +115,13 @@ gantt.skin = "contrast-black";
 [High contrast theme - Black](https://docs.dhtmlx.com/gantt/samples/06_skins/07_high_contrast_black.html)
 
 
-## 'Skin Contrast White' {#contrastwhiteskin}
+## 'Contrast White' skin {#contrastwhiteskin}
 
-Um den 'Contrast White'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
+Um das 'Contrast White' Skin anzuwenden, fügen Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**
 
-Setzen Sie den Skin über die Eigenschaft **gantt.skin**:
+Und setzen Sie die Skin-Eigenschaft über **gantt.skin**:
 
 ~~~js
 gantt.skin = "contrast-white";
@@ -131,13 +132,13 @@ gantt.skin = "contrast-white";
 [High contrast theme - White](https://docs.dhtmlx.com/gantt/samples/06_skins/08_high_contrast_white.html)
 
 
-## 'Skin Skyblue' {#skyblueskin}
+## 'Skyblue' skin {#skyblueskin}
 
-Um den 'Skyblue'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
+Um das 'Skyblue' Skin anzuwenden, fügen Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**
 
-Setzen Sie den Skin über die Eigenschaft **gantt.skin**:
+Und setzen Sie die Skin-Eigenschaft über **gantt.skin**:
 
 ~~~js
 gantt.skin = "skyblue";
@@ -148,36 +149,37 @@ gantt.skin = "skyblue";
 ['Skyblue' skin](https://docs.dhtmlx.com/gantt/samples/06_skins/03_skyblue.html)
 
 
-## 'Skin Meadow' {#meadowskin}
+## 'Meadow' skin {#meadowskin}
 
-Um den 'Meadow'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
+Um das 'Meadow' Skin anzuwenden, fügen Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**
 
-Setzen Sie den Skin über die Eigenschaft **gantt.skin**:
+Und setzen Sie die Skin-Eigenschaft über **gantt.skin**:
 
 ~~~js
 gantt.skin = "meadow";
 ~~~
+
 
 ![gantt-meadow-skin](/img/gantt-meadow-skin.png)
 
 ['Meadow' skin](https://docs.dhtmlx.com/gantt/samples/06_skins/04_meadow.html)
 
 
-## 'Skin Broadway' {#broadwayskin}
+## 'Broadway' skin {#broadwayskin}
 
-Um den 'Broadway'-Skin zu verwenden, binden Sie die Standard-CSS-Datei ein:
+Um das 'Broadway' Skin anzuwenden, fügen Sie die Standard-CSS-Datei ein:
 
 - **dhtmlxgantt.css**
 
-Setzen Sie den Skin über die Eigenschaft **gantt.skin**:
+Und setzen Sie die Skin-Eigenschaft über **gantt.skin**:
 
 ~~~js
 gantt.skin = "broadway";
 ~~~
 
+
 ![gantt-broadway-skin](/img/gantt-broadway-skin.png)
 
 ['Broadway' skin](https://docs.dhtmlx.com/gantt/samples/06_skins/05_broadway.html)
-

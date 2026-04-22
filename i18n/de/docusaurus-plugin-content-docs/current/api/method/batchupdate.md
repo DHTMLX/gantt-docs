@@ -1,21 +1,21 @@
 ---
 sidebar_label: batchUpdate
-title: batchUpdate method
-description: "aktualisiert mehrere Aufgaben/Links gleichzeitig"
+title: batchUpdate Methode
+description: "aktualisiert mehrere Aufgaben/Links auf einmal"
 ---
 
 # batchUpdate
 
 ### Description
 
-@short: Aktualisiert mehrere Aufgaben/Links gleichzeitig
+@short: aktualisiert mehrere Aufgaben/Links auf einmal
 
 @signature: batchUpdate: (callback: GanttCallback, noRedraw?: boolean) =\> void
 
 ### Parameters
 
-- `callback` - (required) *function* - die Callback-Funktion
-- `Diagramm` - (required) *nach* - der Callback-Funktion neu gezeichnet werden soll; <i>true</i> bedeutet kein Neuzeichnen, und <i>false</i> (Standard) löst ein Neuzeichnen aus
+- `callback` - (erforderlich) *Funktion* - die Callback-Funktion
+- `noRedraw` - (optional) *boolean* - gibt an, ob Gantt nach der Callback-Funktion die Grafik neu zeichnen soll; true - nicht neu zeichnen und false (Standard) - neu zeichnen
 
 ### Example
 
@@ -32,14 +32,13 @@ gantt.batchUpdate(function () {
 ~~~
 
 ### Related samples
-- [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+- [Mehrfachauswahl und Einrücken/Ausrücken von Aufgaben](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 ### Details
 
-Diese Methode ermöglicht es, mehrere Aufgaben oder Links gleichzeitig zu aktualisieren, mit nur einem einzigen Neuzeichnen, wodurch mehrere Updates vermieden werden, die jeweils ein separates Neuzeichnen auslösen.
+Sie können diese Methode verwenden, um mehrere Aufgaben/Verknüpfungen auf einmal mit einer einzigen Neuzeichnung zu aktualisieren, anstatt mehrere Aktualisierungen mit mehreren Neuzeichnungen durchzuführen.
 
 ### Related API
 - [eachSelectedTask](api/method/eachselectedtask.md)
 - [getLastSelectedTask](api/method/getlastselectedtask.md)
 - [getSelectedTasks](api/method/getselectedtasks.md)
-

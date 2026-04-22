@@ -1,14 +1,14 @@
 ---
 sidebar_label: link_radius
-title: link_radius config
-description: "steuert den Radius, der verwendet wird, um die Ecken der Link-Linien in der Timeline abzurunden"
+title: link_radius Konfiguration
+description: "setzt den Radius für das Abrunden der Ecken von Link-Linien in der Timeline"
 ---
 
 # link_radius
 
 ### Description
 
-@short: Steuert den Radius, der verwendet wird, um die Ecken der Link-Linien in der Timeline abzurunden
+@short: Setzt den Radius für das Abrunden der Ecken von Link-Linien in der Timeline
 
 @signature: link_radius: number
 
@@ -19,11 +19,11 @@ gantt.config.link_radius = 6;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 4
+**Standardwert:** 4
 
 ### Details
 
-Diese Eigenschaft legt fest, wie stark die Ecken der Link-Linien in der Timeline abgerundet werden. Bei einem Wert von 1 oder weniger ist die Abrundung deaktiviert. Wenn ein Link-Segment zu kurz ist, um den angegebenen Radius aufzunehmen, wird für dieses Segment keine Abrundung angewendet.
+Die Eigenschaft definiert den Radius zum Abrunden der Ecken der Link-Linien in der Timeline. Ist der Wert kleiner oder gleich 1, ist das Abrunden deaktiviert. Falls die Länge eines Link-Segments nicht ausreicht, um den angegebenen Radius zu verwenden, wird das Abrunden für dieses Segment nicht angewendet.
 
 ### Related API
 - [link_line_width](api/config/link_line_width.md)
@@ -31,4 +31,3 @@ Diese Eigenschaft legt fest, wie stark die Ecken der Link-Linien in der Timeline
 
 ### Change log
 - hinzugefügt in v9.0
-

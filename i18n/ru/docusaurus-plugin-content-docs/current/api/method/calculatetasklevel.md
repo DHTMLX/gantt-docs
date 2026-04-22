@@ -1,23 +1,23 @@
 ---
 sidebar_label: calculateTaskLevel
-title: calculateTaskLevel method
-description: "определяет, насколько глубоко задача вложена в иерархию"
+title: метод calculateTaskLevel
+description: "вычисляет уровень вложенности задачи"
 ---
 
 # calculateTaskLevel
 
 ### Description
 
-@short: Определяет, насколько глубоко задача вложена в иерархию
+@short: Вычисляет уровень вложенности задачи
 
 @signature: calculateTaskLevel: (task: Task) =\> number
 
 ### Parameters
 
-- `task` - (required) *Task* - объект задачи для оценки
+- `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` level` - (number) - уровень глубины задачи в древовидной структуре, начиная с нуля
+- ` level` - (number) - уровень задачи в древовидной иерархии (нумерация с нуля)
 
 ### Example
 
@@ -26,7 +26,7 @@ gantt.attachEvent("onTaskCreated", function(task){
  var level = gantt.calculateTaskLevel(task),
    types = gantt.config.types;
    
- //устанавливаем тип задачи в зависимости от уровня вложенности
+ //assign task type based on task level
  switch (level){
   case 0:
    task.type = types.project;
@@ -45,4 +45,3 @@ gantt.attachEvent("onTaskCreated", function(task){
 ### Related API
 - [calculateEndDate](api/method/calculateenddate.md)
 - [calculateDuration](api/method/calculateduration.md)
-

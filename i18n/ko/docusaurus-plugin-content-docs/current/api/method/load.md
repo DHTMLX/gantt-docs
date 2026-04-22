@@ -1,43 +1,43 @@
 ---
 sidebar_label: load
 title: load method
-description: "외부 소스에서 Gantt 차트로 데이터를 로드합니다."
+description: "외부 데이터 소스에서 간트 차트로 데이터를 로드합니다"
 ---
 
 # load
 
 ### Description
 
-@short: 외부 소스에서 Gantt 차트로 데이터를 로드합니다.
+@short: 외부 데이터 소스에서 간트 차트로 데이터를 로드합니다
 
 @signature: load: (url: string, type?: string, callback?: GanttCallback) =\> any
 
 ### Parameters
 
-- `url` - (required) *string* - 서버 측 URL (정적 파일 또는 데이터를 반환하는 서버 측 스크립트일 수 있습니다).
-- `type` - (optional) *string* - <i>('json', 'xml', 'oldxml')</i> 데이터 형식입니다. 기본값은 <i>'json'</i>입니다.
-- `callback` - (optional) *function* - 로딩이 완료된 후 호출할 함수입니다.
+- `url` - (required) *string* - 서버 측 URL(정적 파일 또는 데이터를 출력하는 서버 사이드 스크립트일 수 있습니다)
+- `type` -	(optionaL) *string*	<i>('json', 'xml', 'oldxml')</i> - 데이터 타입. 기본값 - <i>'json'</i>
+- `callback`	-	(optionaL) *function* 	- 콜백 함수
 
 ### Returns
-- ` resultPromise` - (object) - AJAX 요청이 완료되면 해결되는 Promise 객체입니다.
+- ` resultPromise` - (object) - AJAX 요청이 완료될 때 해결되는 프라미스 객체
 
 ### Example
 
 ~~~jsx
 gantt.load("/data",function(){
-    gantt.message("모든 준비가 완료되었습니다");
+    gantt.message("everything is ready");
 });
 //또는
 gantt.load("/data").then(function(xhr){
-    gantt.message("모든 준비가 완료되었습니다");
+    gantt.message("everything is ready");
 });
 //또는
-gantt.load("data.json"); // JSON 형식으로 데이터 로드
+gantt.load("data.json"); //JSON 포맷으로 데이터를 로딩
 //또는
-gantt.load("data.xml","xml"); // XML 형식(버전 2.0 이상)으로 데이터 로드
+gantt.load("data.xml","xml"); //XML 포맷으로 데이터를 로딩(버전 2.0+)
 //또는
-gantt.load("data.xml","xml", function(){ // 콜백 함수 제공
-    alert("데이터가 성공적으로 로드되었습니다");
+gantt.load("data.xml","xml", function(){ //콜백 함수를 지정
+    alert("Data has been successfully loaded");
 });
 ~~~
 
@@ -50,10 +50,8 @@ gantt.load("data.xml","xml", function(){ // 콜백 함수 제공
 이 메서드는 [onLoadStart](api/event/onloadstart.md) 및 [onLoadEnd](api/event/onloadend.md) 이벤트를 트리거합니다.
 
 :::note
-
-이 메서드는 Node.js용 Gantt 버전에서는 지원되지 않음을 유의하세요.
- 
-:::
+참고: 이 메서드는 Node.js용 Gantt 버전에서 작동하지 않습니다.
+ :::
 
 ### Related API
 - [parse](api/method/parse.md)

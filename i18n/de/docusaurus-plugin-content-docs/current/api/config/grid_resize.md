@@ -1,16 +1,22 @@
 ---
 sidebar_label: grid_resize
 title: grid_resize config
-description: "Ermöglicht das Ändern der Größe des Grids durch Ziehen seines rechten Randes"
+description: "macht das Grid durch Ziehen am rechten Gridrand größenverstellbar"
 ---
 
 # grid_resize
-:::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+
+:::warning
+Die Eigenschaft ist veraltet.
 :::
+
+:::info
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
+:::
+
 ### Description
 
-@short: Ermöglicht das Ändern der Größe des Grids durch Ziehen seines rechten Randes
+@short: Macht das Grid durch Ziehen am rechten Gridrand größenverstellbar
 
 ### Example
 
@@ -26,7 +32,7 @@ gantt.config.grid_resize = true; /*!*/
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
 - [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
@@ -34,7 +40,7 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- Diese Eigenschaft ist jetzt veraltet. Verwenden Sie stattdessen [gantt.config.layout](api/config/layout.md) und konfigurieren Sie die grid- und resizer-Objekte nach Bedarf. Weitere Details finden Sie [hier](guides/layout-config.md#defaultlayout). 
+Die Eigenschaft ist veraltet. Verwenden Sie stattdessen [gantt.config.layout](api/config/layout.md) und geben Sie Grid- und Resizer-Objekte mit der erforderlichen Konfiguration innerhalb an. Weitere Details finden Sie hier [guides/layout-config.md#default-layout].
 :::
 
 ~~~js
@@ -56,13 +62,13 @@ gantt.config.layout = {
 gantt.init("gantt_here");
 ~~~
 
+
 ### Related API
 - [keep_grid_width](api/config/keep_grid_width.md)
 - [min_grid_column_width](api/config/min_grid_column_width.md)
 
 ### Related Guides
-- ["Spalten festlegen"](guides/specifying-columns.md)
+- [Specifying Columns](guides/specifying-columns.md)
 
 ### Change log
-- Seit Version 5.0 als veraltet markiert
-
+- veraltet seit Version 5.0

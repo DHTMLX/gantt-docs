@@ -1,14 +1,14 @@
 ---
 sidebar_label: details_on_dblclick
-title: details_on_dblclick config
-description: "Ermöglicht das Öffnen der Lightbox durch Doppelklick auf eine Aufgabe"
+title: details_on_dblclick Konfiguration
+description: "'sagt' öffnet die Lightbox nach dem Doppelklick auf eine Aufgabe"
 ---
 
 # details_on_dblclick
 
 ### Description
 
-@short: Ermöglicht das Öffnen der Lightbox durch Doppelklick auf eine Aufgabe
+@short: 'sagt' öffnet die Lightbox nach dem Doppelklick auf eine Aufgabe
 
 @signature: details_on_dblclick: boolean
 
@@ -20,4 +20,4 @@ gantt.config.details_on_dblclick = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true

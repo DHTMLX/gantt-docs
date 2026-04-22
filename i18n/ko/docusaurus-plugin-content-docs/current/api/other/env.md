@@ -1,14 +1,14 @@
 ---
 sidebar_label: env
-title: env config
-description: "현재 환경을 나타내는 플래그들의 모음"
+title: env 구성
+description: "현재 환경을 설명하는 플래그들의 집합"
 ---
 
 # env
 
 ### Description
 
-@short: 현재 환경을 나타내는 플래그들의 모음
+@short: 현재 환경을 설명하는 플래그들의 집합
 
 @signature: env: any
 
@@ -16,23 +16,23 @@ description: "현재 환경을 나타내는 플래그들의 모음"
 
 ~~~jsx
 if (gantt.env.isEdge) {
-    // your code
+    // 여기에 코드 작성
 }
 ~~~
 
 ### Details
 
-다음은 자주 사용되는 플래그들입니다:
+The possible flags are:
 
-- isChrome    - 브라우저가 Chrome일 때 true
-- isSafari    - 브라우저가 Safari일 때 true
-- isEdge    - 브라우저가 Edge일 때 true
-- isSalesforce - Gantt가 SalesForce 앱 내에서 실행 중일 때 true
-- isFF        - 브라우저가 Firefox일 때 true
-- isIE        - 브라우저가 Internet Explorer일 때 true
-- isOpera    - 브라우저가 Opera일 때 true
-- isIPad    - 브라우저가 iPad의 Safari일 때 true
+- isChrome    - Chrome인 경우 true로 설정
+- isSafari    - Safari인 경우 true로 설정
+- isEdge      - Edge인 경우 true로 설정
+- isSalesforce - Gantt가 SalesForce 앱에서 실행 중인 경우 true로 설정
+- isFF        - Firefox인 경우 true로 설정
+- isIE        - Internet Explorer인 경우 true로 설정
+- isOpera     - Opera인 경우 true로 설정
+- isIPad      - iPad에서 Safari인 경우 true로 설정
 
 ### Change log
-- version 4.0에 추가됨
-- version 9.0.11에서 업데이트됨
+- 4.0 버전에 추가
+- 9.0.11 버전에 업데이트

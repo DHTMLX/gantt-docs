@@ -1,20 +1,20 @@
 ---
 sidebar_label: deleteCalendar
-title: deleteCalendar method
-description: "entfernt einen Task-Kalender anhand seiner ID"
+title: deleteCalendar Methode
+description: "löscht einen Aufgabenkalender anhand seiner ID"
 ---
 
 # deleteCalendar
 
 ### Description
 
-@short: Entfernt einen Task-Kalender anhand seiner ID
+@short: Löscht einen Aufgabenkalender anhand seiner ID
 
 @signature: deleteCalendar: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -         die ID des Kalenders
+- `id` - (erforderlich) *string | number* - die ID des Kalenders
 
 ### Example
 
@@ -34,12 +34,11 @@ gantt.deleteCalendar("custom");
 
 ### Details
 
-eingeführt in Version 4.2
+Hinzugefügt in Version 4.2
 
 ### Related API
 - [addCalendar](api/method/addcalendar.md)
 - [createCalendar](api/method/createcalendar.md)
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md#multipleworktimecalendars)
-
+- [Arbeitszeitberechnung](guides/working-time.md#multipleworktimecalendars)

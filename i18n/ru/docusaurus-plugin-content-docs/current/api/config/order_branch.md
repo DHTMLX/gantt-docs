@@ -1,14 +1,14 @@
 ---
 sidebar_label: order_branch
-title: order_branch config
-description: "включает режим 'branch' для вертикального переставления задач на одном уровне дерева"
+title: order_branch конфигурация
+description: "активирует режим 'branch', который позволяет вертикально переупорядочивать задачи на одном уровне дерева"
 ---
 
 # order_branch
 
 ### Description
 
-@short: Включает режим 'branch' для вертикального переставления задач на одном уровне дерева
+@short: Активирует режим 'branch', который позволяет вертикально переупорядочивать задачи на одном уровне дерева
 
 @signature: order_branch: string | boolean
 
@@ -23,29 +23,29 @@ gantt.init("gantt_here");
 **Default value:** false
 
 ### Related samples
-- [Branch ordering](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
+- [Упорядочивание по ветвям](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
 
 ### Details
 
-Этот параметр позволяет изменять порядок задач, сохраняя их на текущем уровне дерева. Например, подзадача останется подзадачей и не станет родительской задачей.
+Эта опция позволяет переупорядочивать задачи, сохраняя их положение на уровне дерева. Например, подзадача никогда не станет родительской задачей.
 
 ## Повышение производительности
 
-При работе с большим количеством задач стандартный способ перестановки веток может замедлять работу.
-Для улучшения производительности можно переключиться в режим **"marker"**.
+Если в Gantt-диаграмме много задач, режим переупорядочивания ветвей по умолчанию может замедлять производительность.
+Чтобы ускорить его, можно использовать режим **"marker"**.
 
 ~~~js
 gantt.config.order_branch = "marker";
 ~~~
 
 :::note
-sample [Branch ordering - highlighting mode](https://docs.dhtmlx.com/gantt/samples/07_grid/14_branch_ordering_highlight.html) 
+пример [Порядок ветвей - режим подсветки](https://docs.dhtmlx.com/gantt/samples/07_grid/14_branch_ordering_highlight.html) 
 :::
 
-В этом режиме при удерживании левой кнопки мыши перемещается только имя задачи, а обновление Gantt chart происходит только после того, как задача будет отпущена на новом месте.
-В отличие от стандартного режима, перемещение задач таким способом не вызывает события onBeforeTaskMove и onAfterTaskMove.
+В этом режиме переупорядочиваются только имя задачи (при удерживании левой кнопки мыши) и Gantt перерисовывается только тогда, когда задача отпускается в целевую позицию (при отпускании кнопки).
+В отличие от режима по умолчанию, изменение позиции задачи не вызывает срабатывание событий onBeforeTaskMove/onAfterTaskMove.
 
-Если нужно запретить сброс задачи в определённых позициях, используйте событие [onBeforeRowDragMove](api/event/onbeforerowdragmove.md) (работает только в режиме "marker").
+Чтобы запретить сброс задачи на конкретную позицию, используйте событие [onBeforeRowDragMove](api/event/onbeforerowdragmove.md) вместо этого (работает только в режиме "marker").
 
 ### Related API
 - [order_branch_free](api/config/order_branch_free.md)
@@ -54,5 +54,4 @@ sample [Branch ordering - highlighting mode](https://docs.dhtmlx.com/gantt/sampl
 - [onBeforeRowDragMove](api/event/onbeforerowdragmove.md)
 
 ### Related Guides
-- [Изменение порядка задач](guides/reordering-tasks.md)
-
+- [Переупорядочение задач](guides/reordering-tasks.md)

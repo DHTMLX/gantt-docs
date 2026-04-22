@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_mode
-title: drag_mode config
-description: "содержит различные типы режимов drag-and-drop, доступных в системе"
+title: конфигурация drag_mode
+description: "хранит типы доступных режимов перетаскивания"
 ---
 
 # drag_mode
 
 ### Description
 
-@short: Содержит различные типы режимов drag-and-drop, доступных в системе
+@short: Хранит типы доступных режимов перетаскивания
 
 @signature: drag_mode: \{ resize?: string; progress?: string; move?: string; ignore?: string; \}
 
@@ -33,20 +33,19 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 });
 ~~~
 
-**Default value:** \{
-  "resize":"resize",
-  "progress":"progress",
-  "move":"move",
-  "ignore":"ignore"
+**Значение по умолчанию:**\{
+	"resize":"resize",
+	"progress":"progress",
+	"move":"move",
+	"ignore":"ignore"
 \}
 
 ### Details
 
-Важно не изменять существующие названия режимов drag_mode, так как это приведёт к нарушению связанной функциональности. Однако вы можете добавить новые свойства, если хотите поддержать кастомное поведение.
-Если необходимо отключить конкретный режим drag, лучше использовать настройки [drag_move](api/config/drag_move.md), [drag_resize](api/config/drag_resize.md) или [drag_progress](api/config/drag_progress.md).
+Не следует менять существующие имена режимов перетаскивания. В противном случае соответствующая функциональность перестанет работать. Но вы можете добавлять новые свойства, если хотите реализовать пользовательское поведение.
+Если вы хотите отключить конкретный режим перетаскивания, лучше использовать конфигурации [drag_move](api/config/drag_move.md), [drag_resize](api/config/drag_resize.md), [drag_progress](api/config/drag_progress.md).
 
-- **resize** - (*string*) - этот режим позволяет пользователю перетаскивать task bar для изменения его длительности.
-- **progress** - (*string*) - этот режим даёт возможность перетаскивать progress handle на task bar.
-- **move** - (*string*) - этот режим позволяет перетаскивать task bar для его перемещения.
-- **ignore** - (*string*) - специальный режим, который отключает действия drag-and-drop.
-
+- **resize** - (*string*) - режим, при котором пользователь перетаскивает полосу задачи, чтобы изменить ее продолжительность.
+- **progress** - (*string*) - режим, при котором пользователь перетаскивает ползунок прогресса полосы задачи.
+- **move** - (*string*) - режим, при котором пользователь перетаскивает полосу задачи, чтобы переместить её.
+- **ignore** - (*string*) - режим игнорирования, который ограничивает выполнение действия перетаскивания.

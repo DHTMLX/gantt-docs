@@ -1,69 +1,71 @@
 ---
-title: "从 MS Project 导出与导入"
-sidebar_label: "从 MS Project 导出与导入"
+title: "从 MS Project 导出和导入"
+sidebar_label: "从 MS Project 导出和导入"
 ---
 
-# 从 MS Project 导出与导入
+# 从 MS Project 导出和导入
 
-dhtmlxGantt 库支持将甘特图数据导出到 MS Project，以及将 MS Project 的数据导入到甘特图中。
+dhtmlxGantt 库允许将甘特图中的数据导出到 MS Project。你也可以从 MS Project 将数据导入到甘特图。
 
 :::note
-导出服务可免费使用，但生成的文件会在 GPL 许可下包含库的水印。
-如果您购买了许可证，在有效的支持期内（所有 PRO 许可证为 12 个月），导出将不含水印。
+该服务是免费的，但输出文件在 GPL 许可下会包含库的水印。若你购买了许可证，在有效支持期内（所有 PRO 许可均为 12 个月）导出的结果将不带水印。
 :::
 
-有多种导出服务可用，您可以在本地计算机上安装这些服务来将甘特图导出到 MS Project。
-请注意，这些导出服务并未与 Gantt 包一起捆绑。
-各服务的使用条款详情请参阅[相关文章](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
+有若干导出服务可用。你可以在本地计算机上安装它们，并本地将甘特图导出为 MS Project。
+请注意，导出服务不包含在 Gantt 包中，
+请阅读 [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) 以了解每个服务的使用条款。
 
 ## 在线导出服务的限制
 
 :::note
-导出服务对处理时间和请求大小有限制。
+导出服务对时间和请求大小有一定限制。
 :::
 
 ### 时间限制
 
-如果导出过程超过 20 秒，将会中止，并显示如下错误:
+如果处理时间超过 20 秒，导出将被取消，出现如下错误：
 
 ~~~html
 Error: Timeout trigger 20 seconds
 ~~~
 
-当多个用户同时导出甘特图时，总体处理时间可能会更长。但每个用户的导出请求计时是单独计算的。
+如果多个人同时导出甘特图，过程可能比平时耗时更长。但这没关系，因为来自特定用户的导出请求所花费的时间是单独计数的。
 
 ### 请求大小限制
 
-通用 API 端点 **https://export.dhtmlx.com/gantt** 处理所有导出类型（*exportToPDF*、*exportToPNG*、*exportToMSProject* 等），最大请求大小为 **10 MB**。
+有一个通用 API 端点 `https://export.dhtmlx.com/gantt`，用于所有导出方法（*exportToPDF*、*exportToPNG*、*exportToMSProject* 等等）。**最大请求大小为 10 MB**。
 
-另有专用 API 端点 **https://export.dhtmlx.com/gantt/project**，专用于 [MSProject](#limitsonrequestsizeandimportoflargefiles) 和
-[Primavera P6](guides/export-primavera.md) 的导出/导入服务（*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。该端点允许最大请求大小为 **40 MB**。
+还有一个单独的 API 端点 `https://export.dhtmlx.com/gantt/project`，专用于 [MSProject](#limits-on-request-size-and-import-of-large-files) 与 
+[Primavera P6](guides/export-primavera.md) 的导出/导入服务（仅限 *exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。**最大请求大小：40 MB**。
 
 ## 使用导出模块
 
 :::note
-如果需要导出大型甘特图，建议使用[独立导出模块](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。
-如果您拥有 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)、[Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 或 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 许可证，则该模块免费；也可单独购买 [这里](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210)。
+如果你需要导出较大的图表，可以使用一个 [standalone export module](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml)。 
+若你在 [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing)、[Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 或 [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) 许可证下获得 Gantt，导出模块免费提供，或者你也可以 [单独购买该模块](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210)。
 :::
 
-[了解更多关于 MS Project 导出模块的使用方法](guides/msp-export-module.md)。
+[了解更多 MS Project 的导出模块用法](guides/msp-export-module.md). 
+
 
 ## 导出到 MS Project
 
-Gantt 组件可以将链接、任务和资源导出到 MS Project。
+Gantt 组件允许将链接、任务和资源导出到 MS Project。
 
-要将甘特图数据导出到 MS Project，请按照以下步骤操作:
+要将数据从 Gantt 图导出到 MS Project，请执行下列操作：
 
-- 通过 [plugins](api/method/plugins.md) 方法启用 <b>export_api</b> 插件，以使用在线导出服务:
+- 要使用导出/导入功能，请通过 [plugins](api/method/plugins.md) 方法启用 <b>export_api</b> 插件：
 
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
+它允许你使用在线导出服务或本地导出模块。
+
 :::note
-对于 8.0 之前的 Gantt 版本，您需要在页面上引入 **https://export.dhtmlx.com/gantt/api.js** 以启用在线导出服务，例如:
+如果你使用的 Gantt 版本低于 8.0，需要在页面中包含 `https://export.dhtmlx.com/gantt/api.js` 以启用导出功能，例如：
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -71,46 +73,23 @@ gantt.plugins({
 ~~~
 :::
 
-- 使用 [exportToMSProject](api/method/exporttomsproject.md) 方法导出您的甘特图数据。
+- 调用 [exportToMSProject](api/method/exporttomsproject.md) 方法以从 Gantt 图导出数据。
 
 ~~~js
 gantt.exportToMSProject();
 ~~~
 
-该方法会向远程服务发送请求，服务会生成 XML Project 文件或提供下载文件的 URL。
+该方法将向远程服务发送请求，远程服务要么输出一个 XML Project 文件，要么返回一个用于下载生成文件的 URL。
 
 
-[Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
+**相关示例**： [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
-
-### 响应
-
-响应为如下结构的 JSON 对象:
-
-~~~js
-{
-   data: {},
-   config: {},
-   resources: [],
-   worktimes: []
-}
-~~~
-
-- **data** - 一个 gantt [数据对象](guides/supported-data-formats.md#json)。每个任务包含 *id*、*open*、*parent*、*progress*、*start_date*、*text* 和 *resource* 等属性。日期格式为 "%Y-%m-%d %H:%i" 的字符串。
-- **config** - 一个 gantt [配置对象](api/overview/properties-overview.md)，包含从项目文件中提取的设置。
-- **resources** - 资源对象数组，每个对象包含 (*id: string, name:string, type:string*)，表示项目文件中的资源。
-- **worktimes** - 用于创建新日历的对象数组。每个日历对象可包含:
-    - **id** - （可选）日历标识符
-    - **hours** - （数组）定义任务开始和结束时间的全局工作时间
-    - **dates** - （数组），可能包括:
-        - 一周七天（0 = 周日到 6 = 周六），1/true 表示工作日，0/false 表示非工作日
-        - 指定日期
 
 ### 导出设置
 
-**exportToMSProject()** 方法可接收一个包含多种属性的可选对象:
+exportToMSProject() 方法的参数是一个包含若干属性的对象（所有属性均为可选）：
 
-- **name** - （字符串）导出文件的文件名（默认为 'gantt.xml'）。
+- **name** - (string) 获取的文件名（默认值为 'gantt.xml'）。
 
 ~~~js
 gantt.exportToMSProject({
@@ -118,23 +97,23 @@ gantt.exportToMSProject({
 });
 ~~~
 
-- **auto_scheduling** - （布尔值）设置导出任务的调度模式。**true** 表示自动调度，**false** 表示手动调度（默认）。
+- **auto_scheduling** - (boolean) 指示导出项目中任务的排程模式。**true** 表示任务自动排程，**false** 表示任务手动排程（默认状态）。
 
 ~~~js
 gantt.exportToMSProject({
-    auto_scheduling: false
+    auto_scheduling: false);
 });
 ~~~
 
-- **skip_circular_links** - （布尔值）是否移除循环链接（默认为 true）。
+- **skip_circular_links** - (boolean) 指示是否移除循环链接（true - 将被移除（默认模式），false - 不会被移除）。
 
 ~~~js
 gantt.exportToMSProject({
-    skip_circular_links: false
+    skip_circular_links: false);
 });
 ~~~
 
-- **project** - （对象）允许为导出的项目实体分配自定义属性。
+- **project** - (object) 允许为导出的项目信息设置自定义属性
 
 ~~~js
 gantt.exportToMSProject({
@@ -147,10 +126,10 @@ gantt.exportToMSProject({
 });
 ~~~
 
-这些属性对应于 [Project 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))" 的属性。
-支持的属性列表见[这里](guides/tags.md)。值可以是固定值或导出时执行的函数。
+该对象的属性对应 [Project 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的相应属性。
+可用属性列表可在 [此处](guides/tags.md) 找到。属性可以包含固定值或在导出调用时将执行的函数。
 
-- **tasks** - （对象）允许为导出的任务设置自定义属性。
+- **tasks** - (object) 允许为导出的任务项设置自定义属性
 
 ~~~js
 gantt.exportToMSProject({
@@ -172,13 +151,14 @@ gantt.exportToMSProject({
 });
 ~~~
 
-这些属性对应于 [Task 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))" 的属性，支持的属性列表见[这里](guides/tags.md#renwushuxing)。
-值可以是固定值，也可以为每个任务调用的函数。
+该对象的属性对应 [Task 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的相应属性，
+这里是支持的 [属性列表](guides/tags.md#tasks-properties)。
+属性可以包含固定值或在导出调用时对每个任务执行的函数。
 
-- **data** - （对象）允许为导出的甘特图提供自定义数据源。
+- **data** - (object) 允许设置一个自定义数据源，将在输出的甘特图中显示
 
 :::note
-**start_date** 和 **end_date** 应以包含日期和时间的格式（*%d-%m-%Y %H:%i*）指定。
+预计 start_date 和 end_date 属性将采用包含日期和时间的格式（%d-%m-%Y %H:%i）。
 :::
 
 ~~~js
@@ -207,10 +187,9 @@ gantt.exportToMSProject({
 });
 ~~~
 
+**相关示例**： [Gantt. Export custom data](https://snippet.dhtmlx.com/10ytgdxs)
 
-**Related example:** [Gantt. Export custom data](https://snippet.dhtmlx.com/10ytgdxs)
-
-- **callback** - （函数）用于接收生成的 XML 文件下载 URL。回调函数接收一个包含 *url* 属性的 JSON 对象:
+- **callback** - (function) 如果你想收到一个用于下载生成的 XML 的 URL，可以使用 callback 属性。它接收一个带有 *url* 属性的 JSON 对象：
 
 ~~~js
 gantt.exportToMSProject({
@@ -220,32 +199,32 @@ gantt.exportToMSProject({
 });
 ~~~
  
-- **resources** - （数组）在 MS Project 文件中包含资源列表。
+- **resources** - (array) 允许将资源列表导出到 MS Project 文件
 
 ~~~js
 gantt.exportToMSProject({
-  resources: [
-    {"id":"1","name":"John","type":"work"},
-    {"id":"2","name":"Mike","type":"work"},
-    {"id":"3","name":"Anna","type":"work"}
-  ]
+    resources: [
+        { "id": "1", "name": "John", "type": "work" },
+        { "id": "2", "name": "Mike", "type": "work" },
+        { "id": "3", "name": "Anna", "type": "work" }
+    ]
 });
 ~~~
 
-资源类型可以为 "work"、"cost" 或 "material"。资源分配通过任务配置中的 **ResourceAssignments** 属性指定:
+可用的资源类型有 "work"、"cost"、"material"。资源分配通过任务配置的 **ResourceAssignments** 属性来指定：
 
-~~~js
+~~~js {23-25}
 var users = [// resources
-  {key:'0', label: "N/A"},
-  {key:'1', label: "John"},
-  {key:'2', label: "Mike"},
-  {key:'3', label: "Anna"}
+    { key:'0', label: "N/A" },
+    { key:'1', label: "John" },
+    { key:'2', label: "Mike" },
+    { key:'3', label: "Anna" }
 ];
 
 gantt.exportToMSProject({
   resources: users
      .filter(function(u){
-        if(u.key === '0')//跳过默认选项 
+        if(u.key === '0')//skip the default option 
            return false;
         return true;
      })
@@ -254,17 +233,17 @@ gantt.exportToMSProject({
            id: u.key,
            name: u.label,
            type: "work"
-           };
-       }),
+        };
+     }),
   tasks: {
-     ResourceAssignments: function(task){  /*!*/
-        return task.user;                   /*!*/
-     }                                       /*!*/
+     ResourceAssignments: function(task){  
+        return task.user;                   
+     }                                       
   }
 });
 ~~~
 
-**ResourceAssignments** 属性是一个函数，接收任务对象并返回字符串/数字或字符串/数字数组:
+The **ResourceAssignments** 属性被设置为一个函数，该函数以任务对象作为参数并返回字符串/数字值，或返回字符串/数字值组成的数组：
 
 ~~~js
 tasks: {
@@ -274,29 +253,57 @@ tasks: {
 }
 ~~~
 
-- **server** - （字符串）指定导出请求的 API 端点。可在本地运行导出服务时使用。默认值为 **https://export.dhtmlx.com/gantt**。
+你还可以通过在 **ResourceAssignments** 属性中返回以下对象来指定 *units* 参数：
+
+~~~js
+{
+    resource_id: "id",
+    units: "units value"
+}
+~~~
+
+- **resource calendars**
+
+默认情况下，每个任务都会附加一个日历。如果使用资源日历，你需要在导出时在任务的 *CalendarUID* 属性中指定 -1（在 [tasks](#export-settings) 对象中）。这样任务就会使用资源日历。
+
+在导出 [resource calendars](api/config/resource_calendars.md) 时，可以在 [resources](#export-settings) 数组的对象中指定资源日历： 
 
 ~~~js
 gantt.exportToMSProject({
-   server:"https://myapp.com/myexport/gantt"
+  resources: [
+    {
+      id: "10",
+      name: "John",
+      type: "work",
+      calendar: gantt.config.resource_calendars[10]
+    }
+  ]
+});    
+~~~
+
+- **server** - (string) 请求的 API 端点。可与本地安装的导出服务一起使用。默认值为 `https://export.dhtmlx.com/gantt`。
+
+~~~js
+gantt.exportToMSProject({
+    server: "https://myapp.com/myexport/gantt"
 });
 ~~~
 
 ## 从 MS Project 导入
 
-要转换 XML 或 MPP MS Project 文件，请向导出服务发送如下请求:
+为了将 XML 或 MPP MS Project 文件转换为甘特图，你需要向导出服务发送以下请求：
 
- - 请求 URL: **https://export.dhtmlx.com/gantt**
- - 请求方法: **POST**
- - Content-Type: **multipart/form-data**
+ - 请求 URL - `https://export.dhtmlx.com/gantt`
+ - 请求方法 - **POST**
+ - Content-Type - **multipart/form-data**
 
-请求参数:
+请求参数为：
 
- - **file** - MPP 或 XML MS Project 文件
+ - **file** - 一个 MPP 或 XML MS Project 文件
  - **type** - "msproject-parse"
- - **data** - （可选）包含设置的 JSON 字符串
+ - **data** - (*可选*) 带有设置的 JSON 字符串
 
-示例表单:
+例如：
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -307,7 +314,7 @@ gantt.exportToMSProject({
 </form>
 ~~~
 
-或者，您可以使用如下 [客户端 API](api/method/importfrommsproject.md):
+或者，你也可以使用 [client-side API](api/method/importfrommsproject.md)，如下所示：
 
 ~~~js
 gantt.importFromMSProject({
@@ -325,35 +332,54 @@ gantt.importFromMSProject({
 });
 ~~~
 
-此处 *file* 应为包含 XML 或 MPP Project 文件的 [File](https://developer.mozilla.org/en-US/docs/Web/API/File) 实例。
+**相关示例**： [Gantt. Import MSP files. Get task type from properties](https://snippet.dhtmlx.com/sjka4br8)
+
+Where *file* is an instance of [File](https://developer.mozilla.org/en-US/docs/Web/API/File) which should contain either an XML or MPP Project file.
 
 :::note
-**gantt.importFromMSProject** 需要 HTML5 File API 的支持。
+**gantt.importFromMSProject** 需要 HTML5 File API 支持。
 :::
+
 
 ### 响应
 
-响应将包含如下结构的 JSON:
+响应将包含以下结构的 JSON：
 
 ~~~js
 {
    data: {},
    config: {},
    resources: [],
-   worktime: {}
+   worktime: {},
+   calendars: []
 }
 ~~~
 
-- **data** - 一个 gantt [数据对象](guides/supported-data-formats.md#json)。每个任务包含 *id*、*open*、*parent*、*progress*、*start_date*、*text*、*resource* 等属性。日期格式为 "%Y-%m-%d %H:%i"。
-- **config** - 一个 gantt [配置对象](api/overview/properties-overview.md)，包含从项目文件中提取的设置。
-- **resources** - 对象数组，每个对象包含 (*id:string, name:string, type:string*)，表示项目文件中的资源。
-- **worktime** - 包含从项目日历获取的工作时间设置的对象。
-
+ 
+- **data** - (*object*) 一个甘特图 [data object](guides/supported-data-formats.md)。每个任务有以下属性：*id*、*open*、*parent*、*progress*、*start_date*、*text*、*resource*。
+日期以字符串形式表示，格式为 "%Y-%m-%d %H:%i"。
+- **config** - (*object*) 一个甘特图 [configuration](api/overview/properties-overview.md) 对象，包含从项目文件中获取的设置。
+- **resources** - (*array*) 一个对象数组（每个对象具有以下属性：(*id: string, name: string, type: string, calendar: string*)），表示项目文件中的资源列表。
+- **worktime** - (*object*) 包含来自项目日历的工作时间设置的对象。可以包含以下属性：
+    - **id** - (*string | number*) 可选，日历的 id
+    - **hours** - (*array*) 全局工作时间数组，设定任务的起止时间
+    - **dates** - (*array*) 一个日期数组，可能包含：
+        - 一周中的 7 天（从 0 - 星期日 到 6 - 星期六），其中 1/true 代表工作日，0/false 代表非工作日
+        - 其他记录为日期
+- **calendars** - (*array*) 一个数组，包含用于创建新日历的日历配置对象。
+    - **calendarConfig** - (*object*) 一个日历配置对象，可能包含以下属性：
+        - **id** - (*string | number*) 可选，日历 id
+        - **name** - (*string*) 日历名称
+        - **hours** - (*array*) 全局工作时间数组，设定任务的起止时间
+        - **dates** - (*array*) 一个日期数组，可能包含：
+            - 一周中的 7 天（从 0 - 星期日 到 6 - 星期六），其中 1/true 代表工作日，0/false 代表非工作日
+            - 其他记录为日期
+  
 ### 导入设置
 
-#### 设置工期单位
+#### 设置持续时间单位
 
-为了指定期望的工期单位，可以在发送到服务器的数据中包含 **durationUnit** 字符串（"minute"、"hour"、"day"、"week"、"month"、"year"）。
+要设置期望的持续时间单位，可以将 durationUnit（"minute"、"hour"、"day"、"week"、"month"、"year"）字符串也发送给服务器。
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -378,9 +404,11 @@ gantt.importFromMSProject({
 
 #### 获取项目属性
 
-要提取项目字段，可以在发送到服务器的数据中通过 **projectProperties** 输入包含所需字段的数组。这样可以将 [Project 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))" 的任意属性提取到响应的 **config** 属性中。支持的 [属性](guides/tags.md#xiangmushuxing) 可供选择。
+要获取项目字段，可以向服务器发送带有所需字段数组的 **projectProperties** 输入。
+它将 [Project 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))
+的任意属性提取到输出的 config 属性中。下面是支持的 [属性列表](guides/tags.md#project-properties)。
 
-- **projectProperties** - 定义需要在响应中包含的项目属性数组。
+ - **projectProperties** - 指定应放入响应中的项目属性数组。
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -409,9 +437,11 @@ gantt.importFromMSProject({
 
 #### 获取任务属性
 
-要获取任务字段，可以在发送到服务器的数据中通过 **taskProperties** 输入包含所需字段的数组。这样可以提取 [Task 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))" 的任意属性。支持的 [属性](guides/tags.md#renwushuxing) 已列出。
+要获取任务字段，可以向服务器发送带有所需字段数组的 **taskProperties** 输入。
+它将 [Task 实体](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) 的任意属性提取出来。以下是支持的 [属性列表](guides/tags.md#tasks-properties)：
 
-- **taskProperties** - 指定需要导入的额外任务属性数组。
+ - **taskProperties** - 指定要导入的附加任务属性数组。
+
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -423,9 +453,7 @@ gantt.importFromMSProject({
     <button type="submit">Get</button>
 </form>
 ~~~
-
 或
-
 ~~~js
 gantt.importFromMSProject({
     data: file,
@@ -449,32 +477,32 @@ gantt.attachEvent("onTaskLoading", function(task) {
 
 #### 获取任务类型
 
-此方法有助于识别任务类型:被标记为 **Project** 的任务具有 `Summary: "1"` 属性，被标记为 **Milestone** 的任务具有 `Milestone: "1"` 属性。通过导入这些属性，可以相应地设置任务类型。
+以下逻辑允许你获取任务类型：类型为 Project 的任务具有属性 Summary: "1"，类型为 Milestone 的任务具有属性 Milestone: "1"。我们需要导入具有这些属性的数据，然后根据这些属性设置任务类型。
 
-导入调用如下:
+导入函数的调用如下所示：
 
 ~~~js
 gantt.importFromMSProject({
-        data: file,
-        taskProperties: [
-            "Summary",
-            "Milestone",
-        ],
-        callback: function (project) {
-            if (project) {
-                console.log(project)
-                gantt.clearAll();
-                if (project.config.duration_unit) {
-                    gantt.config.duration_unit = project.config.duration_unit;
-                }
-                console.log('import: ', project.data);
-                gantt.parse(project.data);
+    data: file,
+    taskProperties: [
+        "Summary",
+        "Milestone",
+    ],
+    callback: function (project) {
+        if (project) {
+            console.log(project)
+            gantt.clearAll();
+            if (project.config.duration_unit) {
+                gantt.config.duration_unit = project.config.duration_unit;
             }
+            console.log('import: ', project.data);
+            gantt.parse(project.data);
         }
-    });
+    }
+});
 ~~~
 
-然后，可以根据这些属性调整任务类型，如下所示:
+之后，你可以根据接收到的属性将任务类型进行如下转换：
 
 ~~~js
 gantt.attachEvent("onTaskLoading", function (task) {
@@ -491,65 +519,193 @@ gantt.attachEvent("onTaskLoading", function (task) {
 });
 ~~~
 
+**相关示例**： [Gantt. Import MSP files. Get task type from properties](https://snippet.dhtmlx.com/sjka4br8)
 
-**Related example:** [Gantt. Import MSP files. Get task type from properties](https://snippet.dhtmlx.com/sjka4br8)
+#### 添加和调整日历
 
-
-## 请求大小限制及导入大文件
-
-MSProject 导出/导入服务有两个 API 端点:
-
-- **https://export.dhtmlx.com/gantt** - 默认端点，处理所有导出方法（*exportToPDF*、*exportToPNG*、*exportToMSProject* 等）。**最大请求大小为 10 MB**。
-- **https://export.dhtmlx.com/gantt/project** - 专用于 [MSProject](guides/export-msproject.md) 和 [Primavera P6](guides/export-primavera.md) 导出/导入服务的端点（*exportToMSProject*、*importFromMSProject*、*exportToPrimaveraP6*、*importFromPrimaveraP6*）。**最大请求大小为 40 MB**。
-
-可以通过导出配置对象中的 **server** 属性设置端点:
-
-~~~js
-gantt.importFromMSProject({
-    server:"https://export.dhtmlx.com/gantt",
-    data: file,
-    callback: function(project){
-       // some logic
-    }
-}); 
-~~~
-
-如果未指定端点，默认使用 <b>*https://export.dhtmlx.com/gantt*</b>。如下调用等价:
+请注意，导入时不会自动添加日历。你需要使用 [addCalendar()](api/method/addcalendar.md) 方法来添加日历。
+之后，你应通过 [setWorkTime()](api/method/setworktime.md) 方法来指定日历设置。示例：
 
 ~~~js
 gantt.importFromMSProject({
     data: file,
-    callback: function(project){
-       // some logic
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // 为添加日历设置
+            project.calendars.forEach(function (calendar) {
+                let addedCalendar;
+                // 为全局日历添加工作时间设置
+                if (calendar.id == project.config.global_calendar_id) {
+                    addedCalendar = gantt.getCalendar("global");
+                }
+                else {
+                    // Gantt 不会添加日历
+                    // 如果 hours 参数为空数组
+                    let calendarHours = calendar.hours;
+                    if (!calendarHours.length) {
+                        calendarHours = undefined
+                    }
+                    gantt.addCalendar({
+                        id: calendar.id,
+                        hours: calendarHours,
+                        name: calendar.name
+                    });
+
+                    addedCalendar = gantt.getCalendar(calendar.id);
+                }
+                const worktimeDates = calendar.dates;
+                for (let element in worktimeDates) {
+                    const date = new Date(+element)
+                    if (element < 10) {
+                        addedCalendar.setWorkTime({ 
+                            day: element, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                    else {
+                        addedCalendar.setWorkTime({ 
+                            date: date, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                }
+            })
+        }
     }
 });
 ~~~
 
-对于超过 4MB 的大型项目导出或导入，请使用第二个端点:
+**相关示例**： [Gantt. Calendars settings for export/import in MSProject and Primavera6](https://snippet.dhtmlx.com/668xqts7)
+
+#### 资源日历
+
+如果存在资源日历，请通过 ganta.config.resource_calendars 属性进行指定：
 
 ~~~js
 gantt.importFromMSProject({
-    server:"https://export.dhtmlx.com/gantt/project",
+    data: file,
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // 日历设置
+            project.calendars.forEach(function (calendar) {
+                // 添加日历及其工作时间设置
+            })
+
+            // 资源日历设置
+            gantt.config.resource_calendars = {}
+
+            project.resources.forEach(function (resource) {
+                if (resource.calendar) {
+                    gantt.config.resource_calendars[resource.id] = resource.calendar;
+                }
+            })
+        }
+    }
+});
+~~~
+
+**相关示例**： [Gantt. Resource calendars settings for export/import in MSProject and Primavera6](https://snippet.dhtmlx.com/10czv54b)
+
+#### 资源与资源分配
+
+如果文件中有资源，它们在导入时会进入 resources 数组。 resources 属性的 calendar 参数指定资源日历：
+
+~~~js
+{
+    resources: [
+        { id: 6, name: "John", type: "work", calendar: "8" },
+        // 更多资源
+    ]
+}
+~~~
+
+如果存在资源分配，它们将导入到 assignments 数组中，其中分配对象包含 *resource_id: string* 和 *value: number* 参数。例如：
+
+~~~js
+{
+    tasks: [
+        {
+            id: 5,
+            text: "Interior office",
+            type: "task",
+            start_date: "03-04-2024 00:00",
+            duration: 7,
+            parent: "2",
+            priority: 1
+        },
+        // 更多任务
+    ],
+    links: [],
+    assignments: [
+        { id: 1, task_id: 5, resource_id: 6, value: 3},
+        // 更多分配
+    ],
+    resources: [
+        {id: 6, text: "John", unit: "hours/day" },
+        {id: 7, text: "Mike", unit: "hours/day" },
+        // 更多资源
+    ]
+}
+~~~
+
+## 对请求大小和大文件导入的限制
+
+MSProject 导出/导入服务共有两个 API 端点：
+
+- `https://export.dhtmlx.com/gantt` - 默认端点，服务所有导出方法（*exportToPDF*、*exportToPNG*、*exportToMSProject* 等）。**最大请求大小为 10 MB**。
+- `https://export.dhtmlx.com/gantt/project` - 专用于 MSProject 和
+[Primavera P6](guides/export-primavera.md) 导出/导入服务（仅限 *exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*）。**最大请求大小：40 MB**。
+
+该端点可通过导出配置对象的 server 属性进行指定：
+
+~~~js
+gantt.importFromMSProject({
+    server: "https://export.dhtmlx.com/gantt",
     data: file,
     callback: function(project){
-       // some logic
+       // 某些逻辑
     }
 }); 
 ~~~
 
-该端点支持最大 40MB 的请求，仅用于 MS Project 的导入导出。只能用于 MS Project 的导入导出。
+如果未指定端点，默认使用 `https://export.dhtmlx.com/gantt`。以下调用与上述等价：
 
-其他方法，例如 *gantt.exportToPDF((server:"https://export.dhtmlx.com/gantt/project"))*，将导致服务器错误。
+~~~js
+gantt.importFromMSProject({
+    data: file,
+    callback: function(project){
+       // 某些逻辑
+    }
+});
+~~~
 
-## dhtmlxGantt 与 MS Project 时间计算差异
+如要导出或导入超过 4MB 限制的大型项目，可以使用第二个端点：
 
-dhtmlxGantt 和 MS Project 在日期计算方式上存在一些关键差异，这有时会导致结果不同。
+~~~js
+gantt.importFromMSProject({
+    server: "https://export.dhtmlx.com/gantt/project",
+    data: file,
+    callback: function(project){
+       // 某些逻辑
+    }
+}); 
+~~~
 
-这些差异取决于所用 gantt 配置的组合。gantt 中的一些设置会影响计算结果:
+它允许发送高达 40MB 的请求，并支持 MS Project 的导出和导入。它仅用于 MS Project 的导出。 
 
-1. dhtmlxGantt 与 [MS Project](https://blog.epmainc.com/start-and-end-date-do-not-align-task-duration/) 之间的工期换算方式不同。
+其他任何方法，例如，`gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})`，都应返回服务器错误。
 
-可以在导出到 MS Project 时通过指定 *HoursPerDay* 和 *MinutesPerDay* 进行调整:
+## dhtmlxGantt 与 MS Project 的时间计算差异
+
+dhtmlxGantt 与 MS Project 在日期计算方面存在根本差异，在某些情况下会导致结果不同。 
+
+这些差异也取决于在甘特图中使用的配置组合。但你可以通过调整甘特图的设置来影响计算结果：
+
+1. 首先，dhtmlxGantt 与 MS Project 在持续时间转换方面存在差异。
+
+在将甘特图导出到 MS Project 时，通过指定 HoursPerDay 和 MinutesPerDay 可以规避这一点：
 
 ~~~js
 gantt.exportToMSProject({
@@ -564,19 +720,18 @@ gantt.exportToMSProject({
 });
 ~~~
 
+**相关示例**： [Export to MSProject without the "work_time" settings](https://snippet.dhtmlx.com/92fje5jq)
 
-**Related example:** [Export to MSProject without the "work_time" settings](https://snippet.dhtmlx.com/92fje5jq)
-
-
-2. 项目可能已关闭 [work_time](guides/working-time.md) 设置:
+2. 其次，你的项目可能禁用了 [work_time](guides/working-time.md) 设置：
 
 ~~~js
 gantt.config.work_time = false;
 ~~~
 
-请注意，即使关闭了工作时间计算，gantt 仍然包含默认日历设置（每天 8 小时，周一至周五工作周）。导出客户端始终会将此默认日历发送到 MS Project，这会导致 MS Project 以不同方式计算任务工期。
+注意，即使工作时间计算被禁用，甘特图的配置中仍然有默认日历设置（每日 8 小时，周一至周五工作周）。
+而我们的导出客户端在将数据发送给 MS Project 时始终使用默认日历，即使在甘特图中禁用了工作时间。这就是 MS Project 以不同方式计算任务持续时间的原因。
 
-一种解决方法是清空默认日历，使 gantt 和 MS Project 的任务工期计算方式一致:
+作为一种变通做法，你可以清除默认日历，这样即使将其发送给 MS Project，任务持续时间的计算方式也会与甘特图中一致：
 
 ~~~js
 gantt.setWorkTime({day:0, hours:[0,24]});
@@ -588,20 +743,18 @@ gantt.setWorkTime({day:5, hours:[0,24]});
 gantt.setWorkTime({day:6, hours:[0,24]});
 ~~~
 
-3. 如果将 [gantt.config.duration_unit](api/config/duration_unit.md) 设置为 "day"，则可能会观察到汇总项日期的差异:
+3. 此外，如果你将 duration_unit 设置为 "day"，你可能会发现汇总项的日期与 MS Project 的日期不同步：
 
 ~~~js
 gantt.config.duration_unit = "day";
 ~~~
 
-在此设置下，gantt 会将工期四舍五入为整天，而 MS Project 会显示小数工期。例如，gantt 中项目工期为 439 天，而 MS Project 中为 438.58 天。
+在这种情况下，甘特图会将持续时间四舍五入为总天数。但 MS Project 不会这样处理，而是显示分数持续时间。例如，甘特图中的顶部项目持续时间为 439，而在 MS Project 中为 438.58。
 
-解决方法是将 [duration_unit](api/config/duration_unit.md) 切换为小时:
+唯一的解决方法是将 duration_unit 切换为小时单位：
 
 ~~~js
 gantt.config.duration_unit = "hour";
 ~~~
 
-
-**Related example:** [Export to MSProject without the "work_time" settings](https://snippet.dhtmlx.com/92fje5jq)
-
+**相关示例**： [Export to MSProject without the "work_time" settings](https://snippet.dhtmlx.com/92fje5jq)

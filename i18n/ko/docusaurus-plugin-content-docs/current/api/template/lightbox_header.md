@@ -1,25 +1,25 @@
 ---
 sidebar_label: lightbox_header
-title: lightbox_header template
-description: "라이트박스의 헤더를 지정합니다."
+title: lightbox_header 템플릿
+description: "라이트박스의 헤더를 지정합니다"
 ---
 
 # lightbox_header
 
 ### Description
 
-@short: 라이트박스의 헤더를 지정합니다.
+@short: 라이트박스의 헤더를 지정합니다
 
 @signature: lightbox_header: (start_date: Date, end_date: Date, task: Task) =\> string;
 
 ### Parameters
 
-- `start_date` - (required) *Date* - 작업이 시작되기로 예정된 날짜   
-- `end_date` - (required) *Date* - 작업이 완료되기로 예정된 날짜
-- `task` - (required) *Task* - 작업 객체
+- `start_date` - (필수) *Date* - 작업이 시작되도록 예약된 날짜
+- `end_date` - (필수) *Date* - 작업이 완료될 예정인 날짜
+- `task` - (필수) *Task* - 작업의 객체
 
 ### Returns
-- ` text` - (string) - 간트 차트에 렌더링할 HTML 텍스트
+- ` text` - (string) - 간트 차트에서 렌더링하기 위한 HTML 텍스트
 
 ### Example
 
@@ -31,4 +31,4 @@ gantt.templates.lightbox_header = function(start_date,end_date,task){
 ~~~
 
 ### Related Guides
-- [라이트박스의 템플릿](guides/lightbox-templates.md)
+- [Templates of the Lightbox](guides/lightbox-templates.md)

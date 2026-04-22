@@ -1,13 +1,13 @@
+--- 
+title: "Elternsteuerung" 
+sidebar_label: "Elternsteuerung" 
 ---
-title: "Parent Control"
-sidebar_label: "Parent Control"
----
 
-# Parent Control
+# Elternsteuerung
 
-Dieses Steuerelement stellt ein Auswahlfeld zur Verfügung, mit dem das übergeordnete Element (Parent) einer Aufgabe geändert werden kann. Es lädt alle Aufgaben, die im Gantt-Diagramm angezeigt werden, mit der Möglichkeit, Filterregeln anzuwenden und die Anzeige der Werte zu individualisieren. Abgesehen von diesen Funktionen verhält es sich wie das Steuerelement [Select Control](guides/select.md).
+Eine Auswahlliste zum Ändern des Elternteils einer Aufgabe. Das Steuerelement lädt alle im Gantt-Diagramm dargestellten Aufgaben, Sie können jedoch Filterregeln und die Vorlage für die darstellbaren Werte festlegen. Der Rest ist identisch mit [Select Control](guides/select.md).
 
-![parent_control](/img/parent_control.png)
+![elternsteuerung](/img/parent_control.png)
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -17,13 +17,12 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-
-[Parent selector](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
+[Elternauswahl](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
 
 
 ## Initialisierung
 
-Um das **parent**-Steuerelement im Lightbox-Dialog einzubinden, gehen Sie wie folgt vor:
+Um die **parent**-Steuerung in das Lightbox-Fenster hinzuzufügen, folgen Sie diesen Schritten:
 
 1) Fügen Sie einen Abschnitt zur Lightbox-Konfiguration hinzu:
 
@@ -35,38 +34,36 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
   
-2) Definieren Sie ein Label für den Abschnitt:
+2) Legen Sie eine Bezeichnung für den Abschnitt fest:
 
 ~~~js
 gantt.locale.labels["section_parent"] = "Parent task";
 ~~~
-  
 
-[Parent selector](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
-  
+[Elternauswahl](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
 
 
 ## Eigenschaften
 
-Hier sind einige wichtige Eigenschaften, die häufig mit dem **parent**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
+Die folgenden Eigenschaften sind für die **parent**-Steuerung (siehe die vollständige Liste [hier](api/config/lightbox.md)) am wichtigsten und werden häufig gesetzt:
 
-- **name** - (*string*) der Name des Abschnitts 
-- **height** - (*number*) die Höhe des Abschnitts
-- **map_to** - (*string*) der Name der Daten-Eigenschaft, die diesem Abschnitt zugeordnet ist
-- **type** - (*string*) der [Typ des Abschnitt-Steuerelements](guides/default-edit-form.md#lightboxcontrols)
-- **focus** - (*boolean*) wenn auf *true* gesetzt, erhält der Abschnitt beim Öffnen der Lightbox den Fokus
-- **allow_root** - (*boolean*) wenn "true", enthält die Optionsliste eine Option, um die Root-Ebene als übergeordnete Aufgabe zu setzen; wird zusammen mit **root_label** verwendet
-- **root_label** - (*string*) Bezeichnung für die Root-Level-Option; wird mit **allow_root** verwendet
-- **filter** - (*function*) eine [Filterfunktion für die Optionsauswahl](guides/parent.md#optionsfiltering). Sie erhält die task id und das task Objekt als Argumente
-- **sort** - (*function*) eine [Sortierfunktion für die Optionsauswahl](guides/parent.md#optionssorting)
-- **template** - (*function*) eine Template-Funktion zur individuellen Darstellung der Optionsauswahl
+- **name** - (*string*) der Abschnittsname 
+- **height** - (*number*) die Abschnittshöhe
+- **map_to** - (*string*) der Name einer Dateneigenschaft, die dem Abschnitt zugeordnet wird
+- **type** - (*string*) der Typ der Abschnittsteuerung
+- **focus** - (*boolean*) wenn auf *true* gesetzt, erhält der Abschnitt beim Öffnen des Lightboxes den Fokus
+- **allow_root** - (*boolean*) wenn auf "true" gesetzt, enthält die Optionsliste eine zusätzliche Option, die Benutzern erlaubt, die Root-Ebene als Elternteil für Aufgaben festzulegen. Wird in Verbindung mit der **root_label**-Eigenschaft verwendet 
+- **root_label** - (*string*) setzt eine Beschriftung für den Root-Ebene-Parent. Wird in Verbindung mit der **allow_root**-Eigenschaft verwendet 
+- **filter** - (*function*) legt eine [Filterfunktion für die Auswahloptionen](guides/parent.md#options-filtering) fest. Nimmt die Aufgaben-ID und das Aufgabenobjekt als Parameter
+- **sort** - (*function*) legt eine [Sortierfunktion für die Auswahloptionen](guides/parent.md#options-sorting) fest
+- **template** - (*function*) legt eine Vorlage für die Auswahloptionen fest
   
 
 ## Optionen filtern
 
-Um zu steuern, welche Optionen im **parent**-Steuerelement angezeigt werden, verwenden Sie die **filter**-Eigenschaft:
+Um Optionen im **parent**-Steuerung zu filtern, verwenden Sie die **filter**-Eigenschaft:
 
-**Filtern. Es werden nur Aufgaben der 1. Ebene angezeigt**
+**Filtern. Nur Aufgaben der 1. Ebene anzeigen**
 ~~~js
 gantt.config.lightbox.sections = [
     {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
@@ -81,23 +78,23 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-[Parent selector](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
+[Elternauswahl](https://docs.dhtmlx.com/gantt/samples/05_lightbox/08_parent_selector.html)
 
 
-Die **filter**-Funktion erhält zwei Parameter:
+Die **filter**-Eigenschaft legt eine Filterfunktion fest, die 2 Parameter annimmt:
 
 - **id**  - (*string, number*) die ID der Aufgabe
 - **task** - (*object*) das Aufgabenobjekt
 
-und gibt zurück:
+und zurückgibt:
 
-- *true*, um die Aufgabe in der Optionsliste anzuzeigen
-- *false*, um sie auszublenden
+- *true*, für eine Aufgabe, die angezeigt werden soll
+- *false*, für eine Aufgabe, die aus der Auswahlliste entfernt werden soll
 
 
 ## Optionen sortieren
 
-Um die Reihenfolge der Optionen im **parent**-Steuerelement zu bestimmen, verwenden Sie die **sort**-Eigenschaft:
+Um Optionen im **parent**-Steuerung zu sortieren, verwenden Sie die **sort**-Eigenschaft:
 
 **Sortieren der Aufgaben nach der Länge des Titels**
 ~~~js
@@ -113,15 +110,16 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-Die **sort**-Funktion vergleicht jeweils zwei benachbarte Elemente und gibt zurück:
+Die **sort**-Eigenschaft legt eine Sortierfunktion fest, die bei jedem benachbarten Wertepaar aufgerufen wird und 1, -1 oder 0 zurückgibt:
 
-- 1 - das erste Element soll vor dem zweiten erscheinen
-- -1 - das zweite Element soll vor dem ersten erscheinen
-- 0 - die Reihenfolge beider Elemente bleibt unverändert
+- 1 - das erste Objekt im Paar muss vor dem zweiten stehen
+- -1 - das zweite Objekt geht vor dem ersten
+- 0 - die Reihenfolge beider Objekte ändert sich nicht
 
-## Template für Optionen
 
-Um die Darstellung der Optionen im **parent**-Steuerelement zu individualisieren, verwenden Sie die **template**-Eigenschaft:
+## Vorlage für Optionen
+
+Um die Vorlage der Optionen im **parent**-Steuerung festzulegen, verwenden Sie die **template**-Eigenschaft:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -134,16 +132,15 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-Die **template**-Funktion erhält drei Parameter: 
+Die **template**-Eigenschaft legt eine Funktion fest, die 3 Parameter annimmt: 
 
-- **start** - (*Date*) das Startdatum eines Ereignisses
-- **end** - (*Date*) das Enddatum eines Ereignisses
-- **ev** - (*object*) das Ereignisobjekt
+- **start** - (*Date*) das Datum, an dem ein Ereignis beginnen soll
+- **end** - (*Date*) das Datum, an dem ein Ereignis beendet sein soll
+- **ev** - (*object*) das Ereignis-Objekt
 
-und gibt das formatierte Element für das Steuerelement zurück.
+und die Vorlage der Optionen im Steuerelement zurückgibt.
 
 
 :::note
-Wenn die 'template'-Eigenschaft nicht gesetzt ist, werden die Optionen entsprechend dem [task_text](api/template/task_text.md) Template formatiert.
+Wenn die 'template'-Eigenschaft nicht angegeben ist, wird das Format der Optionen durch die [task_text](api/template/task_text.md) Vorlage definiert.
 :::
-

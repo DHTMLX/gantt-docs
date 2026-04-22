@@ -1,14 +1,14 @@
 ---
 sidebar_label: $click
 title: $click config
-description: "更改甘特图中按钮的默认点击操作"
+description: "重新定义 Gantt 图中按钮的默认点击行为"
 ---
 
 # $click
 
 ### Description
 
-@short: 更改甘特图中按钮的默认点击操作
+@short: 重新定义 Gantt 图中按钮的默认点击行为
 
 @signature: $click: any
 
@@ -16,7 +16,7 @@ description: "更改甘特图中按钮的默认点击操作"
 
 ~~~jsx
 gantt.config.quickinfo_icons=["icon_delete","icon_edit","advanced_details_button"]; 
-gantt.locale.labels["advanced_details_button"] = "高级信息";
+gantt.locale.labels["advanced_details_button"] = "Advanced Info";
 gantt.init("gantt_here");
 
 gantt.$click.advanced_details_button=function(e, id, trg){
@@ -28,7 +28,7 @@ gantt.$click.advanced_details_button=function(e, id, trg){
 ### Details
 
 :::note
- 该按钮的行为将在lightbox和quick info弹出窗口中同时更新。 
+按钮的行为将针对 lightbox 和 quick info 弹出框重新定义。
 :::
 
 标准甘特图中的$click对象如下所示:

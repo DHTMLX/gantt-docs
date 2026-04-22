@@ -1,9 +1,9 @@
 ---
-title: "使用日期"
-sidebar_label: "使用日期"
+title: "日期处理"
+sidebar_label: "日期处理"
 ---
 
-# 使用日期
+# 日期处理
 
-- [날짜 형식 지정](guides/date-format.md)
-- [날짜 작업](guides/date-operations.md)
+- [日期格式规范](guides/date-format.md)
+- [日期操作](guides/date-operations.md)

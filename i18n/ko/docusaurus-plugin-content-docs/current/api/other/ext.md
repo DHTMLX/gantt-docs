@@ -1,14 +1,14 @@
 ---
 sidebar_label: ext
-title: ext config
-description: "다양한 확장 기능을 포함하는 객체"
+title: ext 구성
+description: "다양한 확장 기능을 저장하는 객체"
 ---
 
 # ext
 
 ### Description
 
-@short: 다양한 확장 기능을 포함하는 객체
+@short: 다양한 확장 기능을 저장하는 객체
 
 @signature: ext: Ext
 
@@ -20,7 +20,7 @@ gantt.ext.inlineEditors.init();
 
 ### Details
 
-**ext** 객체는 다음 확장 기능들을 하나로 모아 제공합니다:
+**ext** 객체에는 다음 확장 기능이 포함되어 있습니다:
 
 - [gantt.ext.clickDrag](guides/click-drag-ext.md)
 - [gantt.ext.emptyStateElement](guides/empty-state-element-ext.md)

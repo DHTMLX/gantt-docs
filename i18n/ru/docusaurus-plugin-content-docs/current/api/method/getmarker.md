@@ -1,6 +1,6 @@
 ---
 sidebar_label: getMarker
-title: getMarker method
+title: Метода getMarker
 description: "получает объект маркера"
 ---
 
@@ -14,7 +14,7 @@ description: "получает объект маркера"
 
 ### Parameters
 
-- `markerId` - (required) *string | number* -    идентификатор маркера
+- `markerId` - (обязательный) *string | number* - идентификатор маркера
 
 ### Returns
 - ` marker` - (object) - объект конфигурации маркера
@@ -37,7 +37,7 @@ gantt.getMarker(todayMarker); //->{css:"today", text:"Now", id:...}
 ### Details
 
 :::note
- Этот метод является частью расширения **marker**, поэтому убедитесь, что плагин [marker](guides/extensions-list.md#verticalmarker) включен. Подробнее можно узнать в статье [Добавление вертикальных маркеров](guides/markers.md). 
+Этот метод определяется в расширении **marker**, поэтому необходимо включить плагин [marker](guides/extensions-list.md#vertical-marker). Подробности см. в статье [Добавление вертикальных маркеров](guides/markers.md).
 :::
 
 ### Related API
@@ -49,4 +49,3 @@ gantt.getMarker(todayMarker); //->{css:"today", text:"Now", id:...}
 
 ### Related Guides
 - [Добавление вертикальных маркеров](guides/markers.md)
-

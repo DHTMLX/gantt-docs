@@ -1,11 +1,11 @@
 ---
-title: "Select Control"
-sidebar_label: "Select Control"
+title: "선택 컨트롤"
+sidebar_label: "선택 컨트롤"
 ---
 
-# Select Control
+# 선택 컨트롤
 
-드롭다운 리스트 박스입니다.
+드롭다운 목록 상자입니다.
 
 ![select_control](/img/select_control.png)
 
@@ -23,15 +23,14 @@ gantt.config.lightbox.sections = [
 gantt.locale.labels.section_priority = "Priority";
 ~~~
 
+[선택 컨트롤](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
-[Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
+## Initialization
 
-## 초기화
+다음 단계에 따라 라이트박스에 **select** 컨트롤을 추가합니다:
 
-**select** 컨트롤을 lightbox에 포함하려면 다음과 같이 진행합니다:
-
-1) lightbox 설정에 섹션을 추가합니다:
+1) 라이트박스 구성에 섹션을 추가합니다:
 
 ~~~js
 var opts = [
@@ -47,37 +46,37 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2) 섹션에 라벨을 지정합니다:
+2) 섹션에 대한 라벨을 설정합니다:
 
 ~~~js
 gantt.locale.labels.section_priority = "Priority";
 ~~~
-    
-        
 
-[Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
+  
+  
+
+[선택 컨트롤](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 
+## Properties
 
-## 속성
+다음 속성은 주로 **select** 컨트롤에 대해 중요하고 일반적으로 설정됩니다(전체 목록은 [여기](api/config/lightbox.md)를 참조하십시오):
 
-아래는 **select** 컨트롤에서 자주 설정되는 주요 속성입니다 (전체 목록은 [여기](api/config/lightbox.md)에서 확인하세요):
-
-- **name** - (*string*) 섹션의 이름
-- **height** - (*number*) 섹션의 높이
-- **map_to** - (*string*) 섹션에 매핑되는 데이터 속성명
-- **type** - (*string*) [section control](guides/default-edit-form.md#lightboxcontrols)의 타입
-- **focus** - (*boolean*) *true*일 때 lightbox가 열릴 때 해당 섹션에 포커스가 이동
-- **options** - (*array*) select 컨트롤 옵션을 정의하는 객체 배열 (**select**, **checkbox**, **radio** 컨트롤에서 사용). 각 객체는 하나의 옵션을 나타내며 다음을 포함:
-    - **key** - (*string*) 옵션 ID, 태스크 데이터 속성과 매칭되어 옵션을 할당
+- **name** - (*string*) 섹션 이름 
+- **height** - (*number*) 섹션 높이
+- **map_to** - (*string*) 섹션에 매핑될 데이터 속성의 이름
+- **type** - (*string*) [섹션 컨트롤](guides/default-edit-form.md#lightboxcontrols) 유형
+- **focus** - (*boolean*) true로 설정되면 라이트박스를 열 때 해당 섹션에 포커스가 적용됩니다
+- **options** - (*array*) 객체 배열. 컨트롤의 선택 옵션을 정의합니다 (*select*, **checkbox** 및 **radio** 컨트롤에 사용됩니다*). 배열의 각 객체는 단일 옵션을 지정하며 다음 속성을 가집니다:
+    - **key** - (*string*) 옵션 ID. 이 속성은 태스크 데이터 속성과 비교되어 옵션이 태스크에 할당됩니다
     - **label** - (*string*) 옵션 라벨
-- **default_value** - (*any*) 입력 값이 undefined일 때 적용되는 기본 값    
-- **onchange** - (*function*) 컨트롤의 ['onChange' 이벤트 핸들러 함수](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event)
+- **default_value** - (*any*) 섹션 컨트롤의 기본 값. 입력 값이 정의되지 않은 경우에만 적용됩니다    
+- **onchange** - (*function*) 섹션 컨트롤에 대한 ['onChange' 이벤트 핸들러 함수](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event)를 지정합니다 
 
 
-## 컨트롤에 데이터 채우기
+## 데이터를 사용하여 컨트롤 채우기
 
-**select** 컨트롤의 값을 설정하려면 [options](api/config/lightbox.md) 파라미터를 사용하세요:
+일반적으로 **select** 컨트롤의 값을 설정하려면 [options](api/config/lightbox.md) 매개변수를 사용합니다:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -90,15 +89,15 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-[options](api/config/lightbox.md) 배열의 각 항목은 다음 두 속성을 가져야 합니다:
+[options](api/config/lightbox.md) 매개변수의 항목은 2개의 필수 속성을 가집니다:
 
 - **key** - 옵션 ID
 - **label** - 옵션 라벨
 
 
-## 서버 데이터로 컨트롤 채우기
+## 서버에서 데이터를 사용하여 컨트롤 채우기
 
-서버 데이터로 컨트롤을 채우려면 [options](api/config/lightbox.md) 파라미터에 [serverList](api/method/serverlist.md) 메서드에서 반환된 값을 할당하세요:
+서버에서 컨트롤을 채우려면 [options](api/config/lightbox.md) 옵션을 [serverList](api/method/serverlist.md) 메서드가 반환하는 값으로 설정합니다:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -113,7 +112,7 @@ gantt.init("gantt_here");
 gantt.load("/data");
 ~~~
 
-**/data** 엔드포인트의 응답 예시는 아래와 같습니다:
+다음은 **/data** URL의 출력 예시입니다:
 
 ~~~js
 {
@@ -141,9 +140,9 @@ gantt.load("/data");
 }
 ~~~
 
-### dhtmlxConnector를 통한 옵션 로딩
+### Loading options via dhtmlxConnector
 
-아래는 [dhtmlxConnector](integrations/php/howtostart-connector.md) 초기화 예시입니다:
+다음은 [dhtmlxConnector](integrations/php/howtostart-connector.md) 초기화 예시입니다:
 
 ~~~php
 //data.php
@@ -163,4 +162,3 @@ gantt.load("/data");
                     sortorder,parent");
 ?>
 ~~~
-

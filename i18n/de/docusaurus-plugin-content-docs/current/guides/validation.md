@@ -5,23 +5,26 @@ sidebar_label: "Validierung"
 
 # Validierung
 
-Die Validierung stellt sicher, dass die von Benutzern eingegebenen Daten korrekt sind und verhindert das Speichern falscher Werte. Sie kann beispielsweise verhindern, dass zwei Aufgaben zur gleichen Zeit derselben Person zugewiesen werden.
+Die Validierung ermöglicht es Ihnen, die vom Benutzer eingegebenen Daten zu kontrollieren, um die Möglichkeit zu vermeiden, falsche Werte zu speichern. 
+Zum Beispiel können Sie mit der Validierung die Zuweisung von zwei gleichzeitigen Aufgaben an eine Person verweigern.
 
-In der Regel erfolgt die Datenvalidierung mithilfe von Ereignissen aus der [dhtmlxGantt API](api/overview/events-overview.md), um die eingegebenen Daten abzufangen und auf Korrektheit zu prüfen:
+Allgemein können Sie die vom Benutzer eingegebenen Daten validieren, indem Sie die Ereignisse der [dhtmlxGantt API](api/overview/events-overview.md) verwenden und die Eingabedaten entsprechend ihrer Richtigkeit verarbeiten:
 
 ## Clientseitige Validierung
 
-Die folgenden Ereignisse sind besonders wichtig und werden häufig zur Validierung von Daten verwendet:
 
-- [onLightboxSave](api/event/onlightboxsave.md) - wird ausgelöst, wenn der Benutzer im Lightbox-Dialog auf die Schaltfläche „Speichern" klickt
-- [onBeforeTaskAdd](api/event/onbeforetaskadd.md) - wird vor dem Hinzufügen einer neuen Aufgabe zum Gantt-Diagramm ausgelöst
-- [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) - wird vor der Aktualisierung einer Aufgabe ausgelöst
-- [onBeforeLinkAdd](api/event/onbeforelinkadd.md) - wird vor dem Hinzufügen einer neuen Verbindung zum Gantt-Diagramm ausgelöst
-- [onBeforeLinkUpdate](api/event/onbeforelinkupdate.md) - wird vor der Aktualisierung einer Verbindung ausgelöst
+Die folgenden Ereignisse sind für die Datenvalidierung am wichtigsten bzw. werden am häufigsten verwendet:
 
-Die einfachste Möglichkeit, eine Validierung zu implementieren, ist die Verwendung des Ereignisses [onLightboxSave](api/event/onlightboxsave.md). Dieses Ereignis wird ausgelöst, wenn der Benutzer im Formular auf „Speichern" klickt. Die Rückgabe von *true* erlaubt das Speichern der Änderungen, während die Rückgabe von *false* den Vorgang abbricht und das Lightbox-Fenster geöffnet lässt.
+- [onLightboxSave] - löst aus, wenn der Benutzer in der Lightbox auf die 'Speichern'-Schaltfläche klickt
+- [onBeforeTaskAdd] - löst aus, bevor eine neue Aufgabe dem Gantt-Diagramm hinzugefügt wird
+- [onBeforeTaskChanged] - löst aus, bevor eine Aufgabe aktualisiert wird
+- [onBeforeLinkAdd] - löst aus, bevor ein neuer Link dem Gantt-Diagramm hinzugefügt wird
+- [onBeforeLinkUpdate] - löst aus, bevor ein Link aktualisiert wird
 
-Um beispielsweise zu verhindern, dass eine Aufgabe gespeichert wird, wenn keine Benutzer zugewiesen sind, können Sie folgenden Code verwenden:
+Die einfachste Validierung lässt sich mithilfe des [onLightboxSave](api/event/onlightboxsave.md) Ereignisses erreichen. Das Ereignis wird aufgerufen, wenn der Benutzer auf die 'Speichern'-Schaltfläche im Formular klickt. 
+Die Rückgabe von *true* aus dem Ereignis speichert die Änderungen, die Rückgabe von *false* verhindert die weitere Verarbeitung und lässt die Lightbox geöffnet.
+
+Zum Beispiel, um das Speichern einer Aufgabe zu verhindern, wenn keine Benutzer dieser zugewiesen sind, verwenden Sie folgenden Code:
 
 ~~~js
 gantt.attachEvent("onLightboxSave", function(id, item){
@@ -37,14 +40,15 @@ gantt.attachEvent("onLightboxSave", function(id, item){
 });
 ~~~
 
-[Validate lightbox values](https://docs.dhtmlx.com/gantt/samples/05_lightbox/03_validation.html)
+[Lightbox-Werte validieren](https://docs.dhtmlx.com/gantt/samples/05_lightbox/03_validation.html)
 
 
 ## Serverseitige Validierung
 
-Eine Einschränkung des oben beschriebenen Ansatzes besteht darin, dass das Ereignis nicht ausgelöst wird, wenn Änderungen durch Inline-Bearbeitung oder durch das Verschieben von Aufgaben im Gantt-Diagramm vorgenommen werden.
 
-Um alle Änderungen abzudecken - einschließlich Bearbeiten, Erstellen und Löschen - verwenden Sie das [dataProcessor](guides/server-side.md) Objekt, insbesondere dessen [onBeforeUpdate](https://docs.dhtmlx.com/api__dataprocessor_onbeforeupdate_event.html) Ereignis. Dieses Ereignis wird vor dem Senden der Daten an den Server und nach jeder Änderung im Gantt-Diagramm ausgelöst, unabhängig davon, wie diese vorgenommen wurde.
+Die obige Lösung hat einen Nachteil – das Ereignis wird nicht ausgelöst, wenn die Daten in der Lightbox durch einen Inline-Editor geändert oder durch Drag & Drop über dem Gantt-Diagramm verändert wurden.
+
+Um dies zu beweisen und alle Änderungen im Gantt-Diagramm zu erfassen (Bearbeiten, Erstellen, Löschen usw.), verwenden Sie das [dataProcessor](guides/server-side.md)-Objekt bzw. genauer gesagt eines seiner Ereignisse - [onBeforeUpdate](https://docs.dhtmlx.com/api__dataprocessor_onbeforeupdate_event.html). Das Ereignis wird ausgelöst, bevor Daten an den Server gesendet werden und nach jeder Änderung, die im Gantt-Diagramm vorgenommen wird (nicht nur in der Lightbox).
 
 ~~~js
 gantt.init("gantt_here");
@@ -62,11 +66,10 @@ dp.attachEvent("onBeforeUpdate", function (id, status, data) {
 });
 ~~~
  
-Die Parameter bedeuten dabei:
+wo:
 
-- **id** - (*string*) die Kennung der Aufgabe.
-- **status** - (*'updated', 'inserted', 'deleted'*) der Status der Operation für die Aufgabe.
+- **id** - (*string*) die ID der Aufgabe.
+- **status** - (*'updated', 'inserted', deleted'*) der Status der Operation der Aufgabe.
 - **data** - (*object*) die zu sendenden Daten.
 
-Beachten Sie, dass bei einer fehlgeschlagenen Validierung die Änderungen nicht an den Server gesendet werden, sondern auf der Client-Seite verbleiben und dort weiterverarbeitet werden können.
-
+Hinweis: Wenn das Feld die Validierung nicht besteht, werden die Änderungen nicht an den Server gesendet, sondern bleiben auf dem Client und können für weitere Verarbeitung verwendet werden.

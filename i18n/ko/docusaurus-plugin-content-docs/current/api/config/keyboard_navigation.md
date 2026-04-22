@@ -1,14 +1,14 @@
 ---
 sidebar_label: keyboard_navigation
-title: keyboard_navigation config
-description: "간트에서 keyboard_navigation을 활성화합니다."
+title: keyboard_navigation 구성
+description: "Gantt에서 키보드 내비게이션을 활성화합니다."
 ---
 
 # keyboard_navigation
 
 ### Description
 
-@short: 간트에서 keyboard_navigation을 활성화합니다.
+@short: Gantt에서 키보드 내비게이션을 활성화합니다.
 
 @signature: keyboard_navigation: boolean
 
@@ -26,10 +26,10 @@ gantt.config.keyboard_navigation = true;
 ### Details
 
 :::note
- 이 설정은 **keyboard_navigation** 확장의 일부이므로, [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 플러그인이 활성화되어 있는지 확인하세요. 자세한 내용은 [키보드 내비게이션](guides/keyboard-navigation.md) 문서에서 확인할 수 있습니다. 
+이 옵션은 **keyboard_navigation** 확장에 정의되어 있으므로 [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 플러그인을 활성화해야 합니다. [Keyboard Navigation](guides/keyboard-navigation.md) 문서에서 자세한 내용을 확인하십시오.
 :::
 
-added in version 4.1
+버전 4.1에서 추가되었습니다.
 
 ### Related API
 - [keyboard_navigation_cells](api/config/keyboard_navigation_cells.md)
@@ -39,5 +39,4 @@ added in version 4.1
 - [removeShortcut](api/method/removeshortcut.md)
 
 ### Related Guides
-- [키보드 내비게이션](guides/keyboard-navigation.md)
-
+- [Keyboard Navigation](guides/keyboard-navigation.md)

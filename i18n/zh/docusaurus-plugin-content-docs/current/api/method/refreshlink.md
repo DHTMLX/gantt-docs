@@ -1,20 +1,20 @@
 ---
 sidebar_label: refreshLink
-title: refreshLink method
-description: "更新指定的 link"
+title: refreshLink 方法
+description: "刷新指定的链接"
 ---
 
 # refreshLink
 
 ### Description
 
-@short: 更新指定的 link
+@short: 刷新指定的链接
 
 @signature: refreshLink: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    link 的 id
+- `id` - (必填) *string | number* -     链接 ID
 
 ### Example
 
@@ -34,11 +34,10 @@ gantt.refreshLink(1);       /*!*/
 
 ### Details
 
-此方法用于在修改 link 属性后重新绘制该 link。与 [updateLink](api/method/updatelink.md) 不同，它不会激活 [DataProcessor](guides/server-side.md)，因此不会将更改发送到服务器。
+您可以在修改链接属性后使用此方法重新绘制链接。与 [updateLink](api/method/updatelink.md) 不同，此方法不会触发 [DataProcessor](guides/server-side.md)，也不会向服务器发送更新。
 
 ### Related API
 - [refreshTask](api/method/refreshtask.md)
 - [refreshData](api/method/refreshdata.md)
 - [updateTask](api/method/updatetask.md)
 - [updateLink](api/method/updatelink.md)
-

@@ -5,11 +5,11 @@ sidebar_label: "配置树形列"
 
 # 配置树形列
 
-有关可用的树相关方法的详细信息，请参阅 [Task Parent/Child](guides/task-tree-operations.md) 文章。
+若要了解可用的树相关方法，请参考 [Task Parent/Child](guides/task-tree-operations.md) 文章。
 
-## 展开/折叠任务分支
+## 展开/折叠一个任务分支
 
-- 要展开任务分支，请使用 [open](api/method/open.md) 方法:
+- 要打开一个任务分支，请使用 [open](api/method/open.md) 方法：
 
 ~~~js
 var data = {
@@ -21,7 +21,7 @@ var data = {
 gantt.open("p_1"); /*!*/
 ~~~
 
-- 要折叠任务分支，请使用 [close](api/method/close.md) 方法:
+- 要关闭一个任务分支，请使用 [close](api/method/close.md) 方法：
 
 ~~~js
 var data = {
@@ -33,11 +33,11 @@ var data = {
 gantt.close("p_1"); /*!*/
 ~~~ 
 
-## 展开/折叠多个分支
+## 展开/折叠若干分支
 
-当需要同时展开或折叠多个任务分支时，最快的方法是通过代码将相关任务的 *.$open* 属性赋值为布尔值（true 为展开，false 为折叠），然后刷新 gantt。
+如果你需要打开/关闭多个任务分支，最快的方法是在所需任务的 *.$open* 属性上以编程方式设置相应的布尔值（true 表示打开，false 表示关闭），然后重新绘制甘特图。
 
-- 展开所有任务:
+- 展开所有任务：
 
 ~~~js
 gantt.eachTask(function(task){
@@ -46,7 +46,7 @@ gantt.eachTask(function(task){
 gantt.render();
 ~~~
 
-- 折叠所有任务:
+- 折叠所有任务：
 
 ~~~js
 gantt.eachTask(function(task){
@@ -56,12 +56,12 @@ gantt.render();
 ~~~
 
 :::note
-如需添加一个按钮以一次性折叠或展开所有任务，请参见 [How to expand/collapse all tasks with a button](guides/how-to.md#ruhetongguoanniuzhankaishouqisuoyourenwu) 部分。
+如果你想通过按钮一次性折叠/展开所有任务，请前往 [How to expand/collapse all tasks with a button](guides/how-to.md#how-to-expandcollapse-all-tasks-with-a-button) 小节。
 :::
 
-## 获取任务的子节点
+## 获取一个任务的子节点
 
-要获取某个分支任务的子节点，请使用 [getChildren](api/method/getchildren.md) 方法:
+要获取分支任务的子节点，请使用 [getChildren](api/method/getchildren.md) 方法：
 
 ~~~js
 var data = {
@@ -73,12 +73,12 @@ var data = {
 gantt.getChildren("p_1");//->["t_1"] /*!*/
 ~~~
 
-*更多树相关方法，请参阅 [Task Parent/Child](guides/task-tree-operations.md) 文章。*
+*如需查看更多树相关方法，请阅读 [Task Parent/Child](guides/task-tree-operations.md) 文章。*
 
 ## 更改树的图标
 
-### 父节点
-如需自定义父节点的图标，请使用 [grid_folder](api/template/grid_folder.md) 模板:
+### 父项
+要为父项设置图标，请使用 [grid_folder](api/template/grid_folder.md) 模板：
 
 ~~~js
 gantt.templates.grid_folder = function(item) {
@@ -87,9 +87,8 @@ gantt.templates.grid_folder = function(item) {
 };
 ~~~
 
-
-### 子节点
-如需自定义子节点的图标，请使用 [grid_file](api/template/grid_file.md) 模板:
+### 子项
+要为子项设置图标，请使用 [grid_file](api/template/grid_file.md) 模板：
 
 ~~~js
 gantt.templates.grid_file = function(item) {
@@ -97,9 +96,8 @@ gantt.templates.grid_file = function(item) {
 };
 ~~~
 
-
-### 展开/折叠标识
-如需自定义展开/折叠标识的图标，请使用 [grid_open](api/template/grid_open.md) 模板:
+### 打开/关闭符号
+要为打开/关闭符号设置图标，请使用 [grid_open](api/template/grid_open.md) 模板：
 
 ~~~js
 gantt.templates.grid_open = function(item) {
@@ -108,10 +106,9 @@ gantt.templates.grid_open = function(item) {
 };
 ~~~
 
+## 设置分支中子任务的缩进
 
-## 设置分支中子节点的缩进
-
-要调整分支中子任务的缩进，请通过修改 **width** CSS 属性，使用 [grid_indent](api/template/grid_indent.md) 模板:
+要设置分支中子任务的缩进，请使用 [grid_indent](api/template/grid_indent.md) 模板（修改 CSS 属性中的 **width**）：
 
 ~~~js
 gantt.templates.grid_indent="function(task){"
@@ -119,10 +116,9 @@ gantt.templates.grid_indent="function(task){"
 };
 ~~~
 
+## 向树节点添加复选框
 
-## 为树节点添加复选框
-
-如需在树节点内添加复选框（或其他 HTML 内容），请使用 [grid_blank](api/template/grid_blank.md) 模板:
+要向树节点添加复选框（或任何其他 HTML 内容），请使用 [grid_blank](api/template/grid_blank.md) 模板：
 
 ~~~js
 gantt.templates.grid_blank="function(task){"
@@ -130,15 +126,14 @@ gantt.templates.grid_blank="function(task){"
 };
 ~~~
 
-
 ## 设置树节点的模板
 
 要为树节点设置模板，请在 [columns](api/config/columns.md) 属性中使用 **template** 属性。
 
- **template** 函数的返回值将作为 inner HTML 添加，因此该属性可包含任意 HTML 结构。
+ 模板函数的返回值将被添加为内部 HTML。因此，你可以在该属性中使用任何 HTML 结构。
 
 :::note
-请注意，如果你没有使用 [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) 进行 [server-side integration](guides/server-side.md)，加载到 Gantt 图的数据需要进行安全处理，以避免潜在的 XSS 漏洞（dhtmlxConnector 会自动处理此问题）。
+注意，如果你没有使用 [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) 将服务器端集成，请在将数据加载到 Gantt 图表时进行清洗，以防止潜在的 XSS 攻击（[dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) 会自动处理）。
 :::
 ~~~js
 gantt.config.columns="["
@@ -155,6 +150,4 @@ function myFunc(task){
 };
 ~~~
 
-
-[Template for tree nodes](https://docs.dhtmlx.com/gantt/samples/04_customization/05_tree_template.html)
-
+[树节点模板](https://docs.dhtmlx.com/gantt/samples/04_customization/05_tree_template.html)

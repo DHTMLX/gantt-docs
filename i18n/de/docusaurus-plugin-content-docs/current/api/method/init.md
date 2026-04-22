@@ -8,15 +8,13 @@ description: "richtet ein dhtmlxGantt in einem angegebenen Container ein"
 
 ### Description
 
-@short: Richtet ein dhtmlxGantt in einem angegebenen Container ein
+@short: Initialisiert ein dhtmlxGantt in einem Container
 
-@signature: init: (container: string | HTMLElement, from?: Date, to?: Date) =\> void
+@signature: init: (container: string | HTMLElement, from?: Date, to?: Date) => void
 
 ### Parameters
 
-- `container` - (required) *string | HTMLElement* -        Der HTML-Container (oder dessen ID), in dem das dhtmlxGantt erstellt wird
-- `from` - (optional) *Date* - Der Startpunkt der Zeitskala (X-Achse)
-- `to` - (optional) *Date* -   	Der Endpunkt der Zeitskala (X-Achse)
+- `container` - (erforderlich) *string* - | HTMLElement        ein HTML-Container (oder dessen ID), in dem ein dhtmlxGantt-Objekt initialisiert wird
 
 ### Example
 
@@ -30,14 +28,13 @@ gantt.load("tasks.json");
 
 ### Details
 
-Die Übergabe des 2. und 3. Arguments an diese Methode ist eine einfache Möglichkeit, die Grenzen der Zeitskala festzulegen:
+Die Verwendung der 2. und 3. Parameter der Methode ist eine gute Möglichkeit, die Grenzwerte des Zeitmaßstabs festzulegen:
 
 ~~~js
 gantt.init("gantt_here", new Date(2023, 08, 10), new Date(2023, 08, 20));
 ~~~
 
-Beachte, dass die Datumsparameter in `gantt.init` als Abkürzungen für die Konfigurationen [start_date](api/config/start_date.md) und [end_date](api/config/end_date.md) dienen.
-Die beiden folgenden Beispiele erzielen dasselbe Ergebnis:
+Hinweis: Die Datumsparameter der Methode `gantt.init` sind Abkürzungen für die Configs [start_date](api/config/start_date.md) und [end_date](api/config/end_date.md). Die beiden untenstehenden Code-Beispiele sind einander gleichwertig:
 
 ~~~js
 gantt.init("gantt_here", new Date(2023, 08, 10), new Date(2023, 08, 20));
@@ -51,14 +48,14 @@ gantt.config.end_date = new Date(2023, 08, 20);
 gantt.init("gantt_here");
 ~~~
 
-Diese Einstellungen definieren und beschränken den sichtbaren Datumsbereich. Aufgaben außerhalb dieses Bereichs werden nicht angezeigt.
+Was diese Configs bewirken, ist das Definieren und Begrenzen des dargestellten Datumsbereichs. Aufgaben, die außerhalb dieses angegebenen Bereichs liegen, werden nicht angezeigt.
 
-Die Verwendung der Datumsargumente in `gantt.init` oder der Konfigurationen [start_date](api/config/start_date.md) und [end_date](api/config/end_date.md) überschreibt die Option [fit_tasks](api/config/fit_tasks.md).
+Durch die Datumsparameter der Methode `gantt.init`, sowie die Configs [start_date] und [end_date], wird die Einstellung [fit_tasks] aufgehoben.
 
-Wenn die Zeitskala sich lieber automatisch basierend auf dem Datumsbereich anpassen soll, können diese Parameter weggelassen oder der Zeitbereich [dynamisch gehandhabt](guides/configuring-time-scale.md#range) werden.
+Wenn Sie möchten, dass der Zeitmaßstab dynamisch an den Datumsbereich angepasst wird, können Sie entweder diese Parameter weglassen oder den Zeitraum dynamisch verwalten (siehe guides/configuring-time-scale.md#range).
 
 :::note
- Diese Methode setzt alle benutzerdefinierten Layer zurück, die über die Methoden [addTaskLayer](api/method/addtasklayer.md) und [addLinkLayer](api/method/addlinklayer.md) im Timeline-Bereich hinzugefügt wurden. Deshalb müssen diese benutzerdefinierten Layer nach dem Aufruf von **gantt.init** erneut angewendet werden, damit sie auf der Seite erscheinen. 
+Diese Methode setzt benutzerdefinierte Layer zurück, die dem Timeline-Bereich über die Methoden [addTaskLayer] und [addLinkLayer] hinzugefügt wurden. Daher müssen Sie diese nach dem Aufruf der Methode **gantt.init** erneut definieren, damit benutzerdefinierte Layer auf der Seite angezeigt werden.
 :::
 
 ### Related API
@@ -67,5 +64,4 @@ Wenn die Zeitskala sich lieber automatisch basierend auf dem Datumsbereich anpas
 - [fit_tasks](api/config/fit_tasks.md)
 
 ### Related Guides
-- ["dhtmlxGantt in Plain JS/HTML"](guides/initializing-gantt-chart.md)
-
+- [dhtmlxGantt in Plain JS/HTML](guides/initializing-gantt-chart.md)

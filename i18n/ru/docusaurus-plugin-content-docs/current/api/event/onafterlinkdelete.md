@@ -1,21 +1,21 @@
 ---
 sidebar_label: onAfterLinkDelete
-title: onAfterLinkDelete event
-description: "срабатывает сразу после того, как пользователь удаляет связь"
+title: onAfterLinkDelete событие
+description: "срабатывает после того, как пользователь удаляет ссылку"
 ---
 
 # onAfterLinkDelete
 
 ### Description
 
-@short: Срабатывает сразу после того, как пользователь удаляет связь
+@short: Срабатывает после того, как пользователь удаляет ссылку
 
 @signature: onAfterLinkDelete: (id: string | number, link: Link) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - id связи
-- `link` - (required) *Link* - объект связи
+- `id` - (required) *string | number* - id ссылки
+- `link` - (required) *Link* - объект ссылки
 
 ### Example
 
@@ -27,4 +27,3 @@ gantt.attachEvent("onAfterLinkDelete", function(id,link){
 
 ### Related API
 - [deleteLink](api/method/deletelink.md)
-

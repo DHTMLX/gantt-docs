@@ -1,23 +1,23 @@
 ---
 sidebar_label: onLinkCreated
-title: onLinkCreated event
-description: "사용자가 작업 간에 새로운 연결을 생성할 때 트리거됩니다."
+title: onLinkCreated 이벤트
+description: "사용자가 작업 간에 새로운 링크를 생성할 때 발생합니다"
 ---
 
 # onLinkCreated
 
 ### Description
 
-@short: 사용자가 작업 간에 새로운 연결을 생성할 때 트리거됩니다.
+@short: 사용자가 작업 간에 새로운 링크를 생성할 때 발생합니다
 
 @signature: onLinkCreated: (link: Link) =\> boolean;
 
 ### Parameters
 
-- `link` - (required) *Link* - 새로 생성된 링크 객체
+- `link` - (required) *Link* - 새로운 링크의 객체
 
 ### Returns
-- ` result` - (boolean) - `false`를 반환하면 새로운 링크 생성이 중단되고, `true`를 반환하면 기본 동작이 계속 진행됩니다.
+- ` result` - (boolean) - 반환 `false`를 하면 새 링크의 생성이 취소되고, `true`를 반환하면 기본 처리가 계속됩니다
 
 ### Example
 
@@ -30,7 +30,7 @@ gantt.attachEvent("onLinkCreated", function(link){
 
 ### Details
 
-이 이벤트는 새 링크가 나타나기 직전에 발생하며, **링크 생성 방지** 옵션을 제공합니다.
+이벤트는 새 링크가 표시되기 전에 발생하며, 이를 통해 **링크 생성을 취소**할 수 있습니다.
 
 ### Change log
-- v6.2.2에 추가됨
+- v6.2.2에서 추가되었습니다

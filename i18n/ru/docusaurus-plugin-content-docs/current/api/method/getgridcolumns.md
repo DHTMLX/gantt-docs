@@ -1,19 +1,19 @@
 ---
 sidebar_label: getGridColumns
-title: getGridColumns method
-description: "получает колонки диаграммы Ганта"
+title: Метод getGridColumns
+description: "получает столбцы диаграммы Ганта"
 ---
 
 # getGridColumns
 
 ### Description
 
-@short: Получает колонки диаграммы Ганта
+@short: Получает столбцы диаграммы Ганта
 
 @signature: getGridColumns: () =\> GridColumn[]
 
 ### Returns
-- ` columns` - (GridColumn[]) - массив, содержащий колонки
+- ` columns` - (GridColumn[]) - массив столбцов
 
 ### Example
 
@@ -32,4 +32,3 @@ gantt.getGridColumns(); //-> [{ name:"text", tree:true, width:150}, {...}, {...}
 
 ### Related Guides
 - [getGridColumn](api/method/getgridcolumn.md)
-

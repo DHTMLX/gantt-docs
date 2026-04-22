@@ -1,14 +1,14 @@
 ---
 sidebar_label: quick_info_detached
 title: quick_info_detached config
-description: "작업 폼이 화면의 왼쪽 또는 오른쪽에서 슬라이드 인할지, 아니면 선택된 작업 바로 옆에 나타날지를 제어합니다."
+description: "작업 양식이 화면의 왼쪽 또는 오른쪽에서 나타날지, 또는 선택한 작업 근처에서 나타날지 정의합니다"
 ---
 
 # quick_info_detached
 
 ### Description
 
-@short: 작업 폼이 화면의 왼쪽 또는 오른쪽에서 슬라이드 인할지, 아니면 선택된 작업 바로 옆에 나타날지를 제어합니다.
+@short: 화면의 왼쪽/오른쪽에서 나타나거나 선택된 작업 근처에서 나타날지 정의합니다
 
 @signature: quick_info_detached: boolean
 
@@ -20,7 +20,7 @@ gantt.config.quick_info_detached = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true (<i>이벤트 폼이 선택된 이벤트 근처에 표시됩니다</i>)
+**기본 값:** true (선택된 이벤트 근처에 이벤트 양식이 표시됩니다)
 
 ### Related samples
 - [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)

@@ -1,14 +1,14 @@
 ---
 sidebar_label: ext
 title: ext config
-description: "объект, который содержит различные расширения"
+description: "объект, который хранит различные расширения"
 ---
 
 # ext
 
 ### Description
 
-@short: Объект, который содержит различные расширения
+@short: Объект, который хранит различные расширения
 
 @signature: ext: Ext
 
@@ -20,7 +20,7 @@ gantt.ext.inlineEditors.init();
 
 ### Details
 
-Объект **ext** объединяет следующие расширения:
+The **ext** object includes the following extensions:
 
 - [gantt.ext.clickDrag](guides/click-drag-ext.md)
 - [gantt.ext.emptyStateElement](guides/empty-state-element-ext.md)

@@ -1,14 +1,14 @@
 ---
 sidebar_label: autofit
-title: autofit config
-description: "그리드의 너비에 맞게 그리드의 열 크기를 자동으로 조정합니다"
+title: autofit 구성
+description: "그리드의 너비에 맞춰 그리드의 열을 자동으로 조정합니다"
 ---
 
 # autofit
 
 ### Description
 
-@short: 그리드의 너비에 맞게 그리드의 열 크기를 자동으로 조정합니다
+@short: 그리드의 너비에 맞춰 그리드의 열을 자동으로 조정합니다
 
 @signature: autofit: boolean
 
@@ -19,7 +19,7 @@ gantt.config.autofit = true;
 gantt.config.grid_width = 500;
 ~~~
 
-**Default value:** false
+**기본값:** false
 
 ### Details
 
@@ -27,4 +27,3 @@ gantt.config.grid_width = 500;
 
 ### Related API
 - [grid_width](api/config/grid_width.md)
-

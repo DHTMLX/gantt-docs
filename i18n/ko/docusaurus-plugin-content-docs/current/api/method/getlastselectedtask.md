@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLastSelectedTask
-title: getLastSelectedTask method
-description: "가장 최근에 선택된 작업의 ID를 제공합니다"
+title: getLastSelectedTask 메서드
+description: "마지막으로 선택된 작업의 id를 반환합니다"
 ---
 
 # getLastSelectedTask
 
 ### Description
 
-@short: 가장 최근에 선택된 작업의 ID를 제공합니다
+@short: 마지막으로 선택된 작업의 id를 반환합니다
 
 @signature: getLastSelectedTask: () =\> string | number
 
 ### Returns
-- ` id` - (string | number) - 가장 최근에 선택된 작업의 ID
+- ` id` - (string | number) - 마지막으로 선택된 작업의 id
 
 ### Example
 
@@ -24,7 +24,7 @@ gantt.getLastSelectedTask();
 ### Details
 
 :::note
- 이 메서드는 **multiselect** 확장의 일부이므로, [multiselect](guides/extensions-list.md#multitaskselection) 플러그인을 활성화해야 합니다. 자세한 내용은 [멀티 태스크 선택](guides/multiselection.md) 문서를 참조하세요. 
+이 메서드는 **multiselect** 확장에 정의되어 있으므로 [multiselect](guides/extensions-list.md#multitaskselection) 플러그인을 활성화해야 합니다. 자세한 내용은 [Multi-Task Selection](guides/multiselection.md) 기사에서 확인하십시오.
 :::
 
 ### Related API

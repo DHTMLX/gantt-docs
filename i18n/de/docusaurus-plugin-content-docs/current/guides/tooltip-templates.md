@@ -9,14 +9,13 @@ sidebar_label: "Vorlagen für Tooltips"
   <tbody>
   <tr>
   <td class="webixdoc_links0">[tooltip_date_format](api/template/tooltip_date_format.md)</td>
-  <td>definiert, wie das Start- und Enddatum im Tooltip angezeigt werden</td>
+  <td>legt das Format der im Tooltip angezeigten Start- und Enddaten fest</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[tooltip_text](api/template/tooltip_text.md)</td>
-  <td>steuert den Inhalt, der innerhalb der Tooltips angezeigt wird</td>
+  <td>legt den Text der Tooltips fest</td>
   </tr>
 </tbody>
 </table>
 
 ![templates_06](/img/templates_06.png)
-

@@ -1,14 +1,13 @@
 ---
 sidebar_label: isSelectedTask
 title: isSelectedTask method
-description: "prüft, ob die angegebene Aufgabe aktuell ausgewählt ist"
+description: "prüft, ob die angegebene Aufgabe derzeit ausgewählt ist"
 ---
 
 # isSelectedTask
 
 ### Description
-
-@short: Prüft, ob die angegebene Aufgabe aktuell ausgewählt ist
+@short: Prüft, ob die angegebene Aufgabe derzeit ausgewählt ist
 
 @signature: isSelectedTask: (task: string | number) =\> boolean
 
@@ -17,7 +16,7 @@ description: "prüft, ob die angegebene Aufgabe aktuell ausgewählt ist"
 - `task` - (required) *string | number* -    die ID der Aufgabe
 
 ### Returns
-- ` value` - (boolean) - gibt 'true' zurück, wenn die Aufgabe ausgewählt ist, andernfalls 'false'
+- ` value` - (boolean) - 'true' falls die angegebene Aufgabe derzeit ausgewählt ist, ansonsten - 'false'
 
 ### Example
 
@@ -48,5 +47,4 @@ gantt.templates.task_row_class = function (start, end, task) {
 - [toggleTaskSelection](api/method/toggletaskselection.md)
 
 ### Related Guides
-- ["Multi-Task-Auswahl"](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

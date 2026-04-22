@@ -1,30 +1,29 @@
 ---
 sidebar_label: onAfterLinkUpdate
 title: onAfterLinkUpdate event
-description: "Wird unmittelbar ausgelöst, nachdem ein Benutzer einen Link geändert hat"
+description: "wird ausgelöst, nachdem der Benutzer einen Link aktualisiert hat"
 ---
 
 # onAfterLinkUpdate
 
 ### Description
 
-@short: Wird unmittelbar ausgelöst, nachdem ein Benutzer einen Link geändert hat
+@short: Fires after the user updates a link
 
 @signature: onAfterLinkUpdate: (id: string | number, link: Link) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die eindeutige Kennung des Links
-- `link` - (required) *Link* - das aktualisierte Link-Objekt
+- `id` - (erforderlich) *string | number* - die Link-ID
+- `link` - (erforderlich) *Link* - das Link-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterLinkUpdate", function(id,link){
-    //benutzerdefinierte Logik kann hier eingefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related API
 - [updateLink](api/method/updatelink.md)
-

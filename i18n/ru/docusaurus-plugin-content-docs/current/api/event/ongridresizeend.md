@@ -1,7 +1,7 @@
 ---
 sidebar_label: onGridResizeEnd
 title: onGridResizeEnd event
-description: "срабатывает сразу после того, как пользователь завершает перетаскивание границы grid для изменения его размера"
+description: "срабатывает после того, как пользователь завершил перетаскивание границы grid для изменения размера grid"
 ---
 
 # onGridResizeEnd
@@ -10,17 +10,17 @@ description: "срабатывает сразу после того, как по
 :::
 ### Description
 
-@short: Срабатывает сразу после того, как пользователь завершает перетаскивание границы grid для изменения его размера
+@short: Срабатывает после того, как пользователь завершил перетаскивание границы grid для изменения размера grid
 
 @signature: onGridResizeEnd: (old_width: number, new_width: number) =\> boolean;
 
 ### Parameters
 
-- `old_width` - (required) *number* - ширина grid до изменения размера  
-- `new_width` - (required) *number* - обновлённая ширина grid
+- `old_width` - (required) *number* - начальная ширина grid
+- `new_width` - (required) *number* - новая ширина grid
 
 ### Returns
-- ` result` - (boolean) - определяет, должно ли выполняться стандартное поведение события (<b>true</b>) или быть отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию этого события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
@@ -35,11 +35,11 @@ gantt.attachEvent("onGridResizeEnd", function(old_width, new_width){
 ~~~
 
 ### Related samples
-- [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
+- [События изменения ширины столбцов grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* предотвращает изменение размера grid.
+Событие можно блокировать. Возврат *false* отменит изменение размера grid.
 
 ### Related API
 - [onGridResize](api/event/ongridresize.md)
@@ -47,5 +47,4 @@ gantt.attachEvent("onGridResizeEnd", function(old_width, new_width){
 - [onColumnResizeEnd](api/event/oncolumnresizeend.md)
 
 ### Related Guides
-- [Указание колонок](guides/specifying-columns.md#resizing)
-
+- [Указание столбцов](guides/specifying-columns.md#resizing)

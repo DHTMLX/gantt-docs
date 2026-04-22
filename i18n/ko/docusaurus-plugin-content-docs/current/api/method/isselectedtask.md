@@ -1,23 +1,23 @@
 ---
 sidebar_label: isSelectedTask
 title: isSelectedTask method
-description: "지정된 작업이 현재 선택되어 있는지 확인합니다."
+description: "지정된 작업이 현재 선택되어 있는지 확인합니다"
 ---
 
 # isSelectedTask
 
 ### Description
 
-@short: 지정된 작업이 현재 선택되어 있는지 확인합니다.
+@short: 지정된 작업이 현재 선택되어 있는지 확인합니다
 
 @signature: isSelectedTask: (task: string | number) =\> boolean
 
 ### Parameters
 
-- `task` - (required) *string | number* -   작업의 ID
+- `task` - (required) *string | number* - 작업의 ID
 
 ### Returns
-- ` value` - (boolean) - 작업이 선택되어 있으면 'true'를 반환하고, 그렇지 않으면 'false'를 반환합니다.
+- `value` - (boolean) - 'true'일 경우 지정된 작업이 현재 선택되어 있으며, 그렇지 않으면 'false'
 
 ### Example
 
@@ -36,7 +36,7 @@ gantt.templates.task_row_class = function (start, end, task) {
 ### Details
 
 :::note
-이 메서드는 **multiselect** 확장 기능에서 제공되므로, [multiselect](guides/extensions-list.md#multitaskselection) 플러그인이 활성화되어 있는지 확인하세요. 자세한 내용은 [멀티 태스크 선택](guides/multiselection.md) 문서를 참고하시기 바랍니다. 
+이드메서드는l 제공되므로, [multise확장e기능에서e제공되므로,nskselection) 플러그인이 활성화되어 있는지 확인하세요. 자세한 내용은 [멀티 태스크 선택](guid플러그인이i활성화되어c있는지n확인하세요.를자세한고내용은 바멀티 태스크선택 문서를 참고하시기바랍니다
 :::
 
 ### Related API
@@ -48,5 +48,4 @@ gantt.templates.task_row_class = function (start, end, task) {
 - [toggleTaskSelection](api/method/toggletaskselection.md)
 
 ### Related Guides
-- [멀티 태스크 선택](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

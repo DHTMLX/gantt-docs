@@ -1,7 +1,7 @@
 ---
 sidebar_label: onAfterAutoSchedule
-title: onAfterAutoSchedule event
-description: "자동 스케줄링 프로세스가 완료되면 한 번 트리거됩니다."
+title: onAfterAutoSchedule 이벤트
+description: "자동 일정이 완료되었을 때 실행됩니다"
 ---
 
 # onAfterAutoSchedule
@@ -10,14 +10,14 @@ description: "자동 스케줄링 프로세스가 완료되면 한 번 트리거
 :::
 ### Description
 
-@short: 자동 스케줄링 프로세스가 완료되면 한 번 트리거됩니다.
+@short: 자동 일정이 완료될 때 실행됩니다
 
 @signature: onAfterAutoSchedule: (taskId: string | number, updatedTasks: any[]): void;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - 루트 작업의 ID
-- `updatedTasks` - (required) *array* - 재스케줄된 작업들의 ID를 포함하는 배열
+- `taskId` - (required) *string | number* - 루트 작업 ID
+- `updatedTasks` - (required) *array* - 재스케줄된 작업의 ID를 담은 배열
 
 ### Example
 
@@ -31,7 +31,6 @@ gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
 - [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
-
 :::note
  이 이벤트는 **auto_scheduling** 확장의 일부이므로 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인을 활성화해야 합니다. 자세한 내용은 [자동 스케줄링](guides/auto-scheduling.md) 가이드를 참조하세요. 
 :::

@@ -1,25 +1,27 @@
 ---
 sidebar_label: isCircularLink
 title: isCircularLink method
-description: "验证链接是否为循环链接"
+description: "检查链接是否为循环"
 ---
 
 # isCircularLink
+
 :::info
  此功能仅包含在 PRO 版本中。 
 :::
+
 ### Description
 
-@short: 验证链接是否为循环链接
+@short: 检查链接是否为循环
 
-@signature: isCircularLink: (link: Link) =\> boolean
+@signature: isCircularLink: (link: Link) => boolean
 
 ### Parameters
 
-- `link` - (required) *Link* - 链接对象
+- `link` - (required) *Link* - 该链接对象
 
 ### Returns
-- ` state` - (boolean) - 如果链接是循环链接则返回 true，否则返回 false
+- ` state` - (boolean) - true，如果链接为循环，否则 false
 
 ### Example
 
@@ -31,6 +33,7 @@ var isCircular = gantt.isCircularLink(link);
 - [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
+
 :::note
  该方法需要启用 [auto_scheduling](guides/extensions-list.md) 插件。 
 :::
@@ -52,8 +55,7 @@ var isCircular = gantt.isCircularLink(link);
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 
 ### Related Guides
-- [自动调度](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
-- 版本 4.1 中新增
-
+- added in version 4.1

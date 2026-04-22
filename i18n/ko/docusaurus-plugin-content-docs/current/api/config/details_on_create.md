@@ -1,14 +1,14 @@
 ---
 sidebar_label: details_on_create
-title: details_on_create config
-description: "'+' 버튼을 클릭하여 새 이벤트를 생성할 때 라이트박스가 자동으로 열리도록 설정합니다."
+title: details_on_create 구성
+description: "'says'를 사용하여 '+' 버튼을 클릭하면 새 이벤트를 생성할 때 라이트박스가 열립니다"
 ---
 
 # details_on_create
 
 ### Description
 
-@short: '+' 버튼을 클릭하여 새 이벤트를 생성할 때 라이트박스가 자동으로 열리도록 설정합니다.
+@short: '+' 버튼을 클릭하여 새 이벤트를 생성할 때 라이트박스가 열리도록 하는 'says'
 
 @signature: details_on_create: boolean
 
@@ -19,4 +19,4 @@ gantt.config.details_on_create = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**기본값:** true

@@ -1,14 +1,14 @@
 ---
 sidebar_label: refreshData
-title: refreshData method
-description: "обновляет данные в диаграмме Ганта"
+title: refreshData метод
+description: "Обновляет данные в диаграмме Ганта"
 ---
 
 # refreshData
 
 ### Description
 
-@short: Обновляет данные в диаграмме Ганта
+@short: Обновляет данные на диаграмме Ганта
 
 @signature: refreshData: () =\> void
 
@@ -19,20 +19,20 @@ gantt.refreshData();
 ~~~
 
 ### Related samples
-- [Basic filtering](https://docs.dhtmlx.com/gantt/samples/07_grid/03_filtering.html)
+- [Базовая фильтрация](https://docs.dhtmlx.com/gantt/samples/07_grid/03_filtering.html)
 
 ### Details
 
-Этот метод предназначен для перерисовки данных, уже присутствующих в диаграмме Ганта, без их повторной загрузки. Вот пример для наглядности:
+The method is intended not to reload but to re-draw data in the Gantt chart. See the example:
 
 :::note
-Sample: [Gantt. Re-draw data](https://snippet.dhtmlx.com/ces4sfdh) 
+образец: [Gantt. Перерисовать данные](https://snippet.dhtmlx.com/ces4sfdh)
 :::
 
-Если необходимо получить данные с сервера, следует использовать методы [parse()](api/method/parse.md) или [load()](api/method/load.md).
+Если вам нужно загрузить данные с сервера, используйте либо метод [parse()](api/method/parse.md) или [load()](api/method/load.md) метод.
 
 :::note
-Sample: [Gantt. Load data from different data objects](https://snippet.dhtmlx.com/h9ob1hxr) 
+образец: [Gantt. Загрузка данных из разных объектов данных](https://snippet.dhtmlx.com/h9ob1hxr)
 :::
 
 ### Related API
@@ -40,5 +40,4 @@ Sample: [Gantt. Load data from different data objects](https://snippet.dhtmlx.co
 - [refreshTask](api/method/refreshtask.md)
 
 ### Related Guides
-- [Базовые операции с задачами](guides/crud-task.md)
-
+- [Основные операции с задачами](guides/crud-task.md)

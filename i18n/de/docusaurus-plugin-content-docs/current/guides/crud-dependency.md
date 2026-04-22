@@ -5,11 +5,11 @@ sidebar_label: "Hinzufügen/Aktualisieren/Löschen von Verknüpfungen"
 
 # Hinzufügen/Aktualisieren/Löschen von Verknüpfungen
 
-In diesem Abschnitt werden die Grundlagen für die Arbeit mit Abhängigkeitsverknüpfungen behandelt: das Erstellen, Löschen und das dynamische Aktualisieren von Verknüpfungseigenschaften.
+In diesem Kapitel erfahren Sie, wie Sie grundlegende Operationen mit Abhängigkeits-Verknüpfungen durchführen: eine Verknüpfung erstellen oder löschen und dynamisch eine Eigenschaft der Verknüpfung aktualisieren.
 
-## Eine neue Verknüpfung hinzufügen {##addinganewlink}
+## Eine neue Verknüpfung hinzufügen
 
-Um eine neue Verknüpfung im Gantt-Diagramm einzufügen, verwenden Sie die Methode [addLink](api/method/addlink.md):
+Um eine neue Verknüpfung zum Gantt-Diagramm hinzuzufügen, verwenden Sie die [addLink](api/method/addlink.md) Methode:
 
 ~~~js
 var linkId = gantt.addLink({
@@ -20,9 +20,9 @@ var linkId = gantt.addLink({
 });
 ~~~
 
-## Eigenschaft einer Verknüpfung aktualisieren {#updatingalinksproperty}
+## Aktualisieren einer Verknüpfungseigenschaft
 
-Um eine Eigenschaft einer Verknüpfung dynamisch zu ändern, ist die Methode [refreshLink](api/method/refreshlink.md) sehr hilfreich:
+Um eine Eigenschaft eines Verknüpfungsobjekts dynamisch zu aktualisieren, verwenden Sie die [refreshLink](api/method/refreshlink.md) Methode:
 
 ~~~js
 var links= gantt.config.links;
@@ -34,7 +34,7 @@ if (link.type == links.finish_to_start){/*!*/
 }/*!*/ 
 ~~~
 
-Wenn Sie alle Verknüpfungen im Gantt-Diagramm auf einmal aktualisieren möchten, verwenden Sie die Methode [refreshData](api/method/refreshdata.md):
+Hinweis: Um alle Verknüpfungen im Gantt-Diagramm auf einmal zu aktualisieren, verwenden Sie die [refreshData](api/method/refreshdata.md) Methode:
 
 ~~~js
 var links= gantt.config.links;
@@ -48,38 +48,39 @@ if (link1.type == links.finish_to_finish){/*!*/
 ~~~
 
 :::note
-Beachten Sie, dass alle Arten von Verknüpfungsabhängigkeiten im Objekt [links](api/config/links.md) definiert sind.
+Hinweis: Alle Typen der Abhängigkeiten von Verknüpfungen werden im [links](api/config/links.md) Objekt gespeichert.
 :::
 
-## Eine Verknüpfung löschen {#deletingalink}
+## Eine Verknüpfung löschen
 
-Um eine Verknüpfung zu entfernen, verwenden Sie die Methode [deleteLink](api/method/deletelink.md):
+Um eine Verknüpfung zu löschen, verwenden Sie die [deleteLink](api/method/deletelink.md) Methode:
 
 ~~~js
 gantt.deleteLink(linkId);
 ~~~
 
-## Alle Verknüpfungen aus dem Gantt-Diagramm entfernen {#removingalllinksfromtheganttchart}
+## Alle Verknüpfungen aus dem Gantt-Diagramm entfernen
 
-Um alle Aufgaben und Verknüpfungen aus dem Gantt-Diagramm zu löschen, rufen Sie einfach die Methode [clearAll](api/method/clearall.md) auf:
+Um das Gantt-Diagramm von allen Aufgaben und Verknüpfungen zu bereinigen, rufen Sie die [clearAll](api/method/clearall.md) Methode auf:
+
 
 ~~~js
 gantt.clearAll();
 ~~~
 
-## Bearbeiten von Verknüpfungswerten über die Benutzeroberfläche {#editinglinkvaluesfromui}
+## Bearbeiten von Verknüpfungswerten in der UI
 
-Es gibt keine integrierte Benutzeroberfläche zum Bearbeiten von Verzögerungen (Lag) oder anderen Verknüpfungseigenschaften. Wenn Sie eine solche Oberfläche benötigen, müssen Sie diese selbst erstellen.
+Es gibt kein integriertes UI, mit dem der Benutzer den lag-Wert oder andere Eigenschaften der Verknüpfung bearbeiten kann. Wenn Sie also eine UI benötigen, müssen Sie sie manuell implementieren.
 
-Eine typische Vorgehensweise umfasst folgende Schritte:
+Eine gängige Vorgehensweise setzt die folgenden Schritte voraus:
 
-- Lauschen auf das Ereignis [onLinkDblClick](api/event/onlinkdblclick.md); 
-- das Standardverhalten verhindern; 
-- ein Popup aus dem Ereignishandler heraus anzeigen.
+- Erfassen Sie das [onLinkDblClick](api/event/onlinkdblclick.md) Event;
+- den Standard-Handler abbrechen;
+- über den Ereignishandler ein Popup anzeigen.
 
-Für das Popup können Sie entweder die [integrierten Popups](guides/message-boxes.md) oder eine eigene Implementierung verwenden.
+Im letzten Schritt können Sie entweder integrierte Popups [eingebaute Popups] oder eine benutzerdefinierte Lösung implementieren.
 
-Nachfolgend finden Sie ein Beispiel, wie Sie ein Popup zum Bearbeiten der Verzögerung (Lag) implementieren können:
+Hier ist ein Beispielcode für die Implementierung des Edit-Lag-Popups:
 
 ~~~js
 (function(){
@@ -153,5 +154,4 @@ Nachfolgend finden Sie ein Beispiel, wie Sie ein Popup zum Bearbeiten der Verzö
 })();
 ~~~
 
-**Related example:** [Edit-lag Popup](https://snippet.dhtmlx.com/2208ic0t)
-
+**Verwandtes Beispiel** [Bearbeitungs-Lag-Popup](https://snippet.dhtmlx.com/2208ic0t)

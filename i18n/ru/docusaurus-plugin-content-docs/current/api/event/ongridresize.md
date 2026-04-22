@@ -1,23 +1,25 @@
 ---
 sidebar_label: onGridResize
 title: onGridResize event
-description: "срабатывает, когда пользователь перетаскивает границу grid для изменения его размера"
+description: "срабатывает, когда пользователь перетаскивает границу сетки для изменения её размера"
 ---
 
 # onGridResize
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
+
 ### Description
 
-@short: Срабатывает, когда пользователь перетаскивает границу grid для изменения его размера
+@short: Fires when the user is dragging the grid's border to resize the grid
 
 @signature: onGridResize: (old_width: number, new_width: number) =\> void;
 
 ### Parameters
 
-- `old_width` - (required) *number* - ширина grid до изменения размера
-- `new_width` - (required) *number* - ширина grid после изменения размера
+- `old_width` - (обязательный) *number* - начальная ширина сетки
+- `new_width` - (обязательный) *number* - новая ширина сетки
 
 ### Example
 
@@ -32,7 +34,7 @@ gantt.attachEvent("onGridResize", function(old_width, new_width){
 ~~~
 
 ### Related samples
-- [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
+- [События изменения размера столбцов Grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 
 ### Related API
@@ -41,5 +43,4 @@ gantt.attachEvent("onGridResize", function(old_width, new_width){
 - [onColumnResize](api/event/oncolumnresize.md)
 
 ### Related Guides
-- [Указание колонок](guides/specifying-columns.md#resizing)
-
+- [Определение столбцов](guides/specifying-columns.md#resizing)

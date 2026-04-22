@@ -3,17 +3,17 @@ title: "Resource Assignments Control"
 sidebar_label: "Resource Assignments Control"
 ---
 
-# Resource Assignments Control
+# Контроль назначений ресурсов
 
 :::info
-This functionality is available in the Gantt PRO edition only.
+Эта функциональность доступна только в версии Gantt PRO.
 :::
 
-An extended control used to [assign multiple resources and their quantity to a task](guides/resource-management.md#assigningresources).
+Расширенный элемент управления, предназначенный для назначения нескольким ресурсам и их количества к задаче (ссылка: [guides/resource-management.md#assigningresources]).
 
-Here is an example of the Resource Assignments control with the default configuration: 
+Ниже приведён пример Контрола назначений ресурсов с конфигурацией по умолчанию: 
 
-![Resource Assignments control](/img/resource_assignments_control.png)
+![Контроль назначений ресурсов](/img/resource_assignments_control.png)
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -23,11 +23,11 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-[Resource Assignments control](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
+[Контроль назначений ресурсов](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
 
-You can [configure the resource grid columns of the control](#configuring-resource-grid-columns-in-the-lightbox) and provide the necessary resource options:
+Вы можете [настроить столбцы грида ресурсов контрола](#configuring-resource-grid-columns-in-the-lightbox) и задать необходимые опции ресурсов:
 
-![Resource Assignments control options](/img/resource_assignments_control_options.png)
+![Опции контроля назначений ресурсов](/img/resource_assignments_control_options.png)
 
 ~~~js
 // resource options
@@ -73,17 +73,17 @@ gantt.config.lightbox.sections = [
 
 gantt.locale.labels.section_resource_selector = "Resources";
 ~~~
-[Resource Assignments control](https://snippet.dhtmlx.com/id54i1b3)
+[Контроль назначений ресурсов](https://snippet.dhtmlx.com/id54i1b3)
 
 :::note
- You can also create [a custom control to assign multiple resources to a task](guides/custom-editor.md#customthirdpartyeditor).
+ Вы также можете создать [пользовательский контрол для назначения нескольким ресурсам к задаче](guides/custom-editor.md#customthirdpartyeditor).
 :::
 
-## Initialization
+## Инициализация
 
-To add the **resource_selector** control to the lightbox, follow the steps below:
+Чтобы добавить контрол **resource_selector** в lightbox, выполните нижеуказанные шаги:
 
-1\. Add a section to the lightbox configuration:
+1\. Добавьте секцию в конфигурацию lightbox:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -94,33 +94,33 @@ gantt.config.lightbox.sections = [
 ~~~
 
 :::note
-By default the resource control is mapped to the property specified in the [](api/config/resource_property.md) config, so the **map_to** option can be omitted.
+По умолчанию управление ресурсами сопоставлено со свойством, указанным в конфигурации [](api/config/resource_property.md), поэтому опцию **map_to** можно опустить.
 :::
 
-2\. Set a label for the section:
+2\. Задайте подпись для секции:
 
 ~~~js
 gantt.locale.labels.section_resource_selector = "Resources";
 ~~~
 
-## Properties
+## Свойства
 
-The following properties are mostly important and commonly set for the **resource_selector** control:
+Следующие свойства наиболее важны и обычно задаются для контролa **resource_selector**:
 
-- **name** - (*string*) the section's name 
-- **map_to** - (*string*) the name of a data property that will be mapped to the section
-- **type** - (*string*) the type of the [section control](guides/default-edit-form.md#lightboxcontrols)
-- **label** - (*string*) the section's label
-- **config** - (*object*) the resource grid config in the lightbox to display required columns
-- **templates** - (*object*) templates for the resource grid in the lightbox
+- **name** - (*string*) имя секции
+- **map_to** - (*string*) имя свойства данных, которое будет сопоставлено секции
+- **type** - (*string*) тип [контрола секции](guides/default-edit-form.md#lightboxcontrols)
+- **label** - (*string*) подпись секции
+- **config** - (*object*) конфигурация грида ресурсов в lightbox для отображения нужных столбцов
+- **templates** - (*object*) шаблоны для грида ресурсов в lightbox
     
 :::note
-The initial *start_date*, *end_date*, and *duration* properties may have `null` values. If so, they will be initialized using the corresponding values from the task object.
+Начальные свойства *start_date*, *end_date* и *duration* могут иметь значение `null`. В таком случае они будут инициализированы значениями, соответствующими объекту задачи.
 :::
 
-## Configuring resource grid columns in the lightbox
+## Конфигурация столбцов грида ресурсов во lightbox
 
-The default configuration of columns of the resource table in the lightbox is given below:
+По умолчанию конфигурация столбцов таблицы ресурсов во lightbox приведена ниже:
 
 ~~~js
 // helper editors
@@ -196,70 +196,67 @@ const defaultResourceLightboxConfig = {
 };
 ~~~
 
-### Details
+### Подробности
 
-Each object in the **columns** array specifies a single column. An object can take the following attributes:
+Каждый объект в массиве **columns** задаёт один столбец. Объект может принимать следующие атрибуты:
 
-- **name?** - (*string | number*) - defines the column's id;
-- **align?** - (*string*) - sets the horizontal title alignment. Possible values: *'left'*, *'center'*, or *'right'*;
-- **hide?** - (*boolean*) - hides/shows a column (PRO);
-- **label?** - (*string | number | any*) - specifies the title of the column;
-- **max_width?** - (*number*) - sets the maximum column width;
-- **min_width?** - (*number*) - sets the minimum column width;
-- **width?** - (*number | string*) - defines the width of the column;
-- **template? (assignment): any** - sets a data template.
-    - **assignment** - (*Assignment*) - the Assignment object;
-- **onrender? (assignment, node): any** - optional, a callback function for rendering a cell into the DOM. 
-The function takes an assignment object and the DOM element of the grid cell as 
-parameters and may return a component of the framework. See details [here](guides/specifying-columns.md#modifyingcellsafterrendering);
-    - **assignment** - (*Assignment*) - the Assignment object;
-    - **_node_** - (*HTMLElement*) - the HTML element of the Grid cell;
-- **editor?** - (*object*) - the attached [inline editor](guides/inline-editing.md);
-    - **_type_** - (*string*) - the type of the inline editor;
-    - **_map_to_** - (*string*) - specifies which property of the assignment should be updated by the inline editor;
-    - **_min?_** - (*Date | number*) - the minimal value for the date and duration types;
-    - **_max?_** - (*Date | number*) - the maximal value for the date and duration types;
-    - **_options?_** - (*Array &lt;any&gt;*) - an array with the options for the select types;
-    - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - formatter for the date and predecessor types.
+- **name?** - (*string | number*) - определяет идентификатор столбца;
+- **align?** - (*string*) - устанавливает горизонтальное выравнивание заголовка. Возможные значения: *'left'*, *'center'*, или *'right'*;
+- **hide?** - (*boolean*) - скрывает/показывает столбец (PRO);
+- **label?** - (*string | number | any*) - задаёт заголовок столбца;
+- **max_width?** - (*number*) - устанавливает максимальную ширину столбца;
+- **min_width?** - (*number*) - устанавливает минимальную ширину столбца;
+- **width?** - (*number | string*) - определяет ширину столбца;
+- **template? (assignment): any** - устанавливает шаблон данных.
+    - **assignment** - (*Assignment*) - объект Assignment;
+- **onrender? (assignment, node): any** - необязательно, колбек для рендеринга ячейки в DOM. 
+Функция принимает объект assignment и HTML-элемент ячейки грида в качестве параметров и может вернуть компонент фреймворка. Подробности [здесь](guides/specifying-columns.md#modifyingcellsafterrendering);
+    - **assignment** - (*Assignment*) - объект Assignment;
+    - **_node_** - (*HTMLElement*) - HTML-элемент ячейки грида;
+- **editor?** - (*object*) - подключённый [inline editor](guides/inline-editing.md);
+    - **_type_** - (*string*) тип встроенного редактора;
+    - **_map_to_** - (*string*) указывает, какое свойство назначения обновлять встроенным редактором;
+    - **_min?_** - (*Date | number*) минимальное значение для типов даты и продолжительности;
+    - **_max?_** - (*Date | number*) максимальное значение для типов даты и продолжительности;
+    - **_options?_** - (*Array &lt;any&gt;*) массив опций для типов select;
+    - **_formatter?_** - (*DurationFormatter | LinkFormatter*) форматтер для типов даты и предшественников.
 
-You can change the default added assignment by specifying the following property in resource lightbox config:
+Вы можете изменить значение по умолчанию добавляемого назначения, указав следующее свойство в конфигурации lightbox для ресурса:
 
-- **resource_default_assignment** - (*object*) the configuration object of the default assignment (that will be added by the "Add Assignment" button)
-    - **start_date** - (*Date | string | null*) the date the assignment is scheduled to start
-    - **end_date** - (*Date | string | null*) the date the assignment is scheduled to be completed
-    - **value** - (*number | string*) the quantity of the resource assigned to a task
-    - **duration** - (*number | null*) the duration of the assignment
-    - **mode** - (*string*) the calculation mode of the time of the resource assignment: "default" | "fixedDates" | "fixedDuration"
+- **resource_default_assignment** - (*object*) конфигурационный объект для назначения по умолчанию (которое будет добавлено кнопкой "Add Assignment")
+    - **start_date** - (*Date | string | null*) дата начала назначения
+    - **end_date** - (*Date | string | null*) дата завершения назначения
+    - **value** - (*number | string*) количество ресурсов, назначаемых на задачу
+    - **duration** - (*number | null*) продолжительность назначения
+    - **mode** - (*string*) режим расчёта времени назначения ресурса: "default" | "fixedDates" | "fixedDuration"
 <br>
 
 :::note
-The **template** attribute is a function that takes a data item object as a parameter and returns the final data template. The function definition allows you to present almost any content.
+Атрибут **template** — это функция, которая принимает объект элемента данных в качестве параметра и возвращает итоговый шаблон данных. Определение функции позволяет отображать почти любой контент.
 :::
 
 
-## Populating control with data
+## Заполнение управления данными
 
-If you use the default resource Datastore created by Gantt, the **resource_selector** control 
-will be connected to the **gantt.serverList("resourceOptions")** collection. 
-This collection will be populated with the resources from the resource datastore. You can access options by using the following code line:
+Если вы используете стандартное ресурcное Datastore, созданное Gantt, контроль **resource_selector** будет подключён к коллекции **gantt.serverList("resourceOptions")**. Эта коллекция будет заполнена ресурсами из хранилища ресурсов. Вы можете получить доступ к опциям с помощью следующей строки кода:
 
 ~~~js
 const options = gantt.serverList("resourceOptions");
 ~~~
 
-Take notice that the options array will be empty before the resources are loaded into the datastore.
+Обратите внимание, что массив опций будет пуст до загрузки ресурсов в хранилище.
 
-You can also update this collection using the custom list of options as follows:
+Вы также можете обновлять эту коллекцию, используя произвольный список опций, следующим образом:
 
 ~~~js
 gantt.updateCollection("resourceOptions", [...]);
 ~~~
 
-Note that if you load resources into the gantt after that, the gantt will update this collection and overwrite your changes.
+Учитывайте, что если вы загрузите ресурсы в Gantt после этого, Gantt обновит эту коллекцию и перезапишет ваши изменения.
 
-## Populating control with data from the server
+## Заполнение управления данными с сервера
 
-To populate the control from the server, use the [serverList()](api/method/serverlist.md) method in the options of the resource editor:
+Чтобы заполнить управление данными с сервера, используйте метод [serverList()](api/method/serverlist.md) в опциях редактора ресурса:
 
 ~~~js
 const resourceEditor = { 
@@ -282,7 +279,7 @@ const defaultResourceLightboxConfig = {
 }
 ~~~
 
-The contents of `gantt.serverList("resourceOptions")` can be defined when the options become available using the [updateCollection()](api/method/updatecollection.md) method:
+Содержимое `gantt.serverList("resourceOptions")` может быть определено, когда опции становятся доступными, с использованием метода [updateCollection()](api/method/updatecollection.md):
 
 ~~~js
 gantt.updateCollection("resourceOptions", [
@@ -299,6 +296,3 @@ gantt.updateCollection("resourceOptions", [
     { id: 10, text: "Floe", parent: 3 }
 ]);
 ~~~
-
-
-

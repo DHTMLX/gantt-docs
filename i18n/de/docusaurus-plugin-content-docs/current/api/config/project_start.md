@@ -1,16 +1,18 @@
 ---
 sidebar_label: project_start
-title: project_start config
-description: "legt das Startdatum für ein Projekt fest"
+title: project_start Konfiguration
+description: "legt das Startdatum eines Projekts fest"
 ---
 
 # project_start
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Legt das Startdatum für ein Projekt fest
+@short: Legt das Startdatum eines Projekts fest
 
 @signature: project_start: Date | undefined
 
@@ -25,7 +27,7 @@ gantt.config.project_start = new Date(2019, 2, 1);
 
 ### Details
 
-Diese Einstellung definiert das Standard-Startdatum für neue Tasks, wenn die automatische Terminplanung aktiviert ist.
+Der Wert dieser Konfiguration kann als Standard-Startdatum neuer Aufgaben verwendet werden, wenn die automatische Planung aktiviert ist.
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)

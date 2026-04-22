@@ -5,12 +5,10 @@ description: "存储 lightbox 结构的名称（用于不同类型的任务）"
 ---
 
 # types
-:::info
- 此功能仅在 PRO 版本中可用。 
-::: 
+
 ### Description
 
-@short: 存储 lightbox 结构的名称（用于不同类型的任务）
+@short: Lightbox 的结构名称（用于不同类型的任务）
 
 @signature: types: \{ task?: string | number; project?: string | number; milestone?: string | number; placeholder?: string | number; [typeName: string]: string | number | undefined; \}
 
@@ -27,34 +25,35 @@ var type1 = gantt.config.types.task;
 
 ### Details
 
-'types' 对象由 **"类型编程名称"** 和 **"类型标识符"** 组成:
+:::note
+此功能仅在 PRO 版本中可用。 
+:::
 
+The 'types' object consists of the **"type programmatic name"**: **"type identifier"** pairs:
 
-- 编程名称主要用于提高代码的可读性，方便操作 types。
-- 类型标识符是保存到数据库中的值，在 types 对象中必须唯一。如果需要，可以将标识符更改为任意值:
-
+  The type programmatic name doesn't affect anything. The only purpose of it is to make the work with types more readable.
+  The type identifier is stored in the database. It must be unique within the types' object. If required, the type identifier can be changed to any desirable value:
 ~~~js
 {"task":0,"project":1,"milestone":2}
 ~~~
 
+The expected types are:
 
-常见的类型如下:
+- **task** - (*string | number*) - 任务类型的名称。
+- **project** - (*string | number*) - 项目类型的名称。
+- **milestone** - (*string | number*) - 里程碑类型的名称。
+- **placeholder** - (*string | number*) - 占位符类型的名称。
+- **[typeName: string]** - (*string | number | undefined*) - 自定义类型的名称。
 
-- **task** - (*string | number*) - 任务类型的标识符。
-- **project** - (*string | number*) - 项目类型的标识符。
-- **milestone** - (*string | number*) - 里程碑类型的标识符。
-- **placeholder** - (*string | number*) - 占位符类型的标识符。
-- **[typeName: string]** - (*string | number | undefined*) - 任意自定义类型的标识符。
-
-Gantt 会根据任务类型选择对应的 lightbox:
+Gantt 将根据任务类型使用相应的 lightbox：
 
 ~~~js
 types: {
-    'task':'task',            // 常规任务的 lightbox
-    'project':'project',      // 项目任务的 lightbox
-    'milestone':'milestone'   // 里程碑的 lightbox
+    'task':'task',            // a lightbox for reqular tasks
+    'project':'project',      // a lightbox for project tasks
+    'milestone':'milestone'   // a lightbox for milestones
 }
 ~~~
 
 ### Related Guides
-- [任务类型](guides/task-types.md)
+- [Task Types](guides/task-types.md)

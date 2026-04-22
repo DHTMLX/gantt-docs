@@ -1,14 +1,14 @@
 ---
 sidebar_label: version
 title: version config
-description: "提供当前 dhtmlxGantt 的版本信息"
+description: "返回 dhtmlxGantt 的 version"
 ---
 
 # version
 
 ### Description
 
-@short: 提供当前 dhtmlxGantt 的版本信息
+@short: 返回 dhtmlxGantt 的 version
 
 @signature: version: string
 

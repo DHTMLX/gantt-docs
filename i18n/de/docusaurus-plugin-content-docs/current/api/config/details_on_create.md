@@ -1,14 +1,14 @@
 ---
 sidebar_label: details_on_create
-title: details_on_create config
-description: "Ermöglicht, dass die Lightbox automatisch geöffnet wird, wenn neue Events durch Klicken auf die '+'-Schaltfläche erstellt werden."
+title: details_on_create Konfiguration
+description: "'says' öffnet das Lightbox-Fenster beim Erstellen neuer Ereignisse durch Klicken auf die '+'-Schaltfläche"
 ---
 
 # details_on_create
 
 ### Description
 
-@short: Ermöglicht, dass die Lightbox automatisch geöffnet wird, wenn neue Events durch Klicken auf die '+'-Schaltfläche erstellt werden.
+@short: 'says' öffnet das Lightbox-Fenster beim Erstellen neuer Ereignisse, indem man auf die '+'-Schaltfläche klickt
 
 @signature: details_on_create: boolean
 
@@ -19,4 +19,4 @@ gantt.config.details_on_create = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true

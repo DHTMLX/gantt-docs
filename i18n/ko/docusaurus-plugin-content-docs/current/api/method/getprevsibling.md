@@ -1,23 +1,23 @@
 ---
 sidebar_label: getPrevSibling
 title: getPrevSibling method
-description: "같은 레벨에 있는 이전 작업의 id를 가져옵니다"
+description: "동일 레벨의 이전 작업의 ID를 반환합니다"
 ---
 
 # getPrevSibling
 
 ### Description
 
-@short: 같은 레벨에 있는 이전 작업의 id를 가져옵니다
+@short: 같은 레벨의 이전 작업의 ID를 반환합니다
 
 @signature: getPrevSibling: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    작업의 id
+- `id` - (필수) *string | number* -  작업의 ID
 
 ### Returns
-- ` prevSibling` - (string, number) - 이전 형제 작업의 id
+- ` prevSibling` - (string, number) - 이전 형제의 ID
 
 ### Example
 
@@ -36,7 +36,7 @@ gantt.init("gantt_here");
 gantt.parse(tasks);
  
 gantt.getPrevSibling("t_2"); ->  "t_1" /*!*/
-gantt.getPrevSibling("t_1"); ->  null (이전 형제 작업이 없을 경우) /*!*/
+gantt.getPrevSibling("t_1"); ->  null (if no previous sibling) /*!*/
 ~~~
 
 ### Related API
@@ -48,4 +48,3 @@ gantt.getPrevSibling("t_1"); ->  null (이전 형제 작업이 없을 경우) /*
 
 ### Related Guides
 - [Task Parent/Child](guides/task-tree-operations.md)
-

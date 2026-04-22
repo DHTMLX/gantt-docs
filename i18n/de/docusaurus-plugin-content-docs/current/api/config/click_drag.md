@@ -1,14 +1,14 @@
 ---
 sidebar_label: click_drag
 title: click_drag config
-description: "ermöglicht erweitertes Drag-n-Drop"
+description: "Aktiviert fortgeschrittenes Drag-and-Drop"
 ---
 
 # click_drag
 
 ### Description
 
-@short: Ermöglicht erweitertes Drag-n-Drop
+@short: Aktiviert fortgeschrittenes Drag-and-Drop
 
 @signature: click_drag: undefined | ClickDrag
 
@@ -30,7 +30,7 @@ gantt.config.click_drag = {
         }
 
         gantt.createTask({
-            text: "Neue Aufgabe",
+            text: "New task",
             start_date: gantt.roundDate(startDate),
             end_date: gantt.roundDate(endDate)
         }, parentId);
@@ -40,38 +40,40 @@ gantt.config.click_drag = {
 };
 ~~~
 
-**Default value:** \{ useKey: false, ignore: ".gantt_task_line, .gantt_task_link" \}
+**Standardwert:** \{ useKey: false, ignore: ".gantt_task_line, .gantt_task_link" \}
 
 ### Details
 
 :::note
- Diese Konfiguration ist Teil der **click_drag** Erweiterung. Stelle daher sicher, dass das [click_drag](guides/extensions-list.md#advanceddragndrop) Plugin über die [gantt.plugins](api/method/plugins.md) Methode aktiviert ist. Für weitere Details siehe den Artikel ["Erstellen/Auswählen von Aufgaben mit Drag-and-Drop"](guides/advanced-dnd.md). 
+Diese Konfiguration ist in der **click_drag**-Erweiterung definiert, daher müssen Sie das [click_drag](guides/extensions-list.md#advanced-drag-n-drop) Plugin aktivieren, wie unter der [gantt.plugins](api/method/plugins.md) Methode beschrieben. Details finden Sie im Artikel [Erstellen/Auswählen von Tasks mit Drag-and-Drop](guides/advanced-dnd.md). 
 :::
 
-Die **click_drag** Erweiterung bietet folgende Funktionen:
+Die **click_drag**-Erweiterung ermöglicht:
 
-- Erstellen von Tasks durch Drag-and-Drop
-- Setzen von Zeiten für nicht geplante Tasks mittels Drag-and-Drop
-- Auswahl von Tasks via Drag-and-Drop
-- Erstellen von Teilen getrennter Tasks via Drag-and-Drop (PRO-Version)
+- Tasks per Drag-and-Drop erstellen
+- Zeitfenster für ungeplante Tasks per Drag-and-Drop festlegen
+- Tasks per Drag-and-Drop auswählen
+- Teile von geteilten Tasks per Drag-and-Drop erstellen (PRO-Version)
 
-Das **gantt.config.click_drag** Objekt besitzt diese Eigenschaften:
+Das Objekt **gantt.config.click_drag** enthält folgende Eigenschaften:
 
-- **className** -  (*string*) spezifiziert eine benutzerdefinierte CSS-Klasse für das ausgewählte Element
-- **viewPort** - (*HTMLElement*) definiert das Element, an dem Events angehängt werden und die Selektion stattfindet
-- **useRequestAnimationFrame** - (*boolean*) bestimmt, ob requestAnimationFrame beim Rendern verwendet wird
-- **callback** - (*function*) - wird aufgerufen, wenn die Maustaste losgelassen wird. Erhält 6 Parameter:
-    - **startPoint** - (*object*) - ein Objekt mit folgender Struktur: <br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
-  wobei absolute die Koordinaten relativ zur oberen linken Ecke des Dokuments darstellt und relative die Koordinaten relativ zum viewPort Element
-    - **endPoint** - (*object*) im gleichen Format wie startPoint
-     - **startDate** - (*Date*) das Datum, das der Startposition des Drag entspricht
-    - **endDate** - (*Date*) das Datum, das der Endposition des Drag entspricht
-    - **tasksBetweenDates** - (*array*) Tasks, die zwischen Start- und Enddatum liegen
-    - **tasksInRows** - (*array*) Tasks, die zwischen den vertikalen Start- und Endkoordinaten ausgewählt wurden
-- **singleRow** - (*boolean*) wenn true, ist die Auswahl auf eine einzelne Zeile begrenzt, die der Task-Höhe entspricht
-- **ignore** - (*string*) CSS-Selektor für Elemente, bei denen Drag-and-Drop deaktiviert ist
-- **useKey** - (*string|boolean*) wenn gesetzt, wird Drag-and-Drop nur aktiviert, wenn die angegebene Modifikatortaste gedrückt wird. Unterstützte Tasten sind "ctrlKey", "shiftKey", "metaKey" und "altKey"
+- **className** - (*string*) setzt eine benutzerdefinierte CSS-Klasse für ein ausgewähltes Element
+- **viewPort** - (*HTMLElement*) das Element, an das ein Ereignis angehängt wird und das zur Auswahl verwendet wird
+- **useRequestAnimationFrame** - (*boolean*) definiert, ob während des Renderings requestAnimationFrame verwendet wird
+- **callback** - (*function*) - eine Funktion, die aufgerufen wird, wenn die Maustaste losgelassen wird. Nimmt 6 Parameter entgegen:
+    - **startPoint** - (*object*) - ein Objekt des Typs: 
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, 
+  wobei absolute die Koordinaten der linken oberen Ecke des Dokuments sind, und relative die Koordinaten des linken oberen Elements, das als ViewPort verwendet wird 
+    - **endPoint** - (*object*) - ein Objekt des Typs: 
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, 
+  wobei absolute die Koordinaten der linken oberen Ecke des Dokuments sind, und relative die Koordinaten des linken oberen Elements, das als ViewPort verwendet wird 
+     - **startDate** - (*Date*) das Datum, das dem Startpunkt entspricht
+    - **endDate** - (*Date*) das Datum, das dem Endpunkt entspricht
+    - **tasksBetweenDates** - (*array*) ein Array von Tasks zwischen Start- und Enddatumspunkten
+    - **tasksInRows** - (*array*) ein Array von Tasks, die vertikal zwischen dem Start- und Endkoordinaten ausgewählt wurden
+- **singleRow** - (*boolean*) true, um die Auswahl nur in einer Zeile zu ermöglichen, die der Höhe einer Aufgabe entspricht
+- **ignore** - (*string*) CSS-Selektor. Drag-n-Drop wird für die Elemente, die dem Selektor entsprechen, nicht aktiviert
+- **useKey** - (*string|boolean*) Falls die Eigenschaft gesetzt ist, wird Drag-n-Drop nur aktiviert, wenn die angegebene Modifikatortaste gedrückt wird. Unterstützte Werte: "ctrlKey", "shiftKey", "metaKey", "altKey"
 
 ~~~js
 gantt.config.click_drag = {
@@ -81,13 +83,15 @@ gantt.config.click_drag = {
 };
 ~~~
 
-- **render** - (*function*) erzeugt ein Element, das während des Draggens angezeigt wird. Nimmt zwei Argumente entgegen:
-    - **startPoint** - (*object*) mit folgender Struktur:<br>
-    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, <br>
-  wobei absolute und relative Koordinaten wie oben beschrieben sind
-    - **endPoint** - (*object*) im gleichen Format wie startPoint
+- **render** - (*function*) eine Funktion, die ein während des Ziehens gerendertes Element erzeugt. Sie nimmt zwei Parameter entgegen:
+    - **startPoint** - (*object*) - ein Objekt des Typs:
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, 
+  wobei absolute die Koordinaten der linken oberen Ecke des Dokuments sind, und relative die Koordinaten des linken oberen Elements, das als ViewPort verwendet wird 
+    - **endPoint** - (*object*) - ein Objekt des Typs:
+    `{absolute: {left: number, top: number}, relative: {left: number, top: number} }`, 
+  wobei absolute die Koordinaten der linken oberen Ecke des Dokuments sind, und relative die Koordinaten des linken oberen Elements, das als ViewPort verwendet wird
 
-Ein Beispiel für die Implementierung der **render** Funktion:
+Hier ein Beispiel zur Nutzung der **render**-Funktion:
 
 ~~~js
 var node;
@@ -111,5 +115,4 @@ gantt.config.click_drag = {
 ~~~
 
 ### Related Guides
-- ["Erstellen/Auswählen von Aufgaben mit Drag-and-Drop"](guides/advanced-dnd.md)
-
+- [Erstellen/Auswählen von Aufgaben mit Drag-and-Drop](guides/advanced-dnd.md)

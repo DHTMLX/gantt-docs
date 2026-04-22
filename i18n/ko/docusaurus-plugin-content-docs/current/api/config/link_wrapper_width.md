@@ -1,14 +1,14 @@
 ---
 sidebar_label: link_wrapper_width
 title: link_wrapper_width config
-description: "링크 주변의 클릭 가능한 영역의 너비를 정의합니다."
+description: "링크 위의 클릭에 민감한 영역의 너비를 설정합니다"
 ---
 
 # link_wrapper_width
 
 ### Description
 
-@short: 링크 주변의 클릭 가능한 영역의 너비를 정의합니다.
+@short: 링크 위의 클릭에 민감한 영역의 너비를 설정합니다
 
 @signature: link_wrapper_width: number
 
@@ -19,7 +19,7 @@ gantt.config.link_wrapper_width = 30;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 20
+**기본값:** 20
 
 ### Details
 

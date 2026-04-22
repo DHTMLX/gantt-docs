@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLinks
 title: getLinks method
-description: "간트 차트에 표시된 모든 링크를 가져옵니다"
+description: "Gantt 차트에 표시된 모든 링크를 반환합니다"
 ---
 
 # getLinks
 
 ### Description
 
-@short: 간트 차트에 표시된 모든 링크를 가져옵니다
+@short: Gantt 차트에 표시된 모든 링크를 반환합니다
 
-@signature: getLinks: () =\> Array\<Link\>
+@signature: getLinks: () => Array&lt;Link&gt;
 
 ### Returns
-- `links` - (Array &lt;Link&gt;) - 링크 객체들을 포함하는 배열
+- `links` - (Array &lt;Link&gt;) - 링크 객체의 배열
 
 ### Example
 
@@ -23,5 +23,4 @@ const links = gantt.getLinks();
 
 ### Details
 
-특정 작업과 관련된 모든 링크를 가져오는 방법은 [링크 객체/ID 가져오기](guides/link-object-operations.md#gettingthelinksrelatedtoacertaintask) 및 [getLink](api/method/getlink.md) 문서를 참조하세요.
-
+특정 작업에 연결된 모든 링크를 얻는 방법에 대한 정보는 [Getting the Link Object/Id](guides/link-object-operations.md#getting-the-links-related-to-a-certain-task) 및 [getLink](api/method/getlink.md) 문서를 참조하십시오.

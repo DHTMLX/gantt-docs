@@ -1,18 +1,18 @@
 ---
 sidebar_label: readonly_property
-title: readonly_property config
-description: "Legt den Namen der Property fest, die den Read-Only-Status von Tasks und Links steuert"
+title: readonly_property Konfiguration
+description: "ändert den Namen einer Eigenschaft, die das Read-Only-Verhalten von Aufgaben/Links beeinflusst"
 ---
 
 # readonly_property
 
-### Description
+### Beschreibung
 
-@short: Legt den Namen der Property fest, die den Read-Only-Status von Tasks und Links steuert
+@short: Ändert den Namen einer Eigenschaft, die das Read-Only-Verhalten von Aufgaben/Links beeinflusst
 
 @signature: readonly_property: string
 
-### Example
+### Beispiel
 
 ~~~jsx
 gantt.config.readonly_property = "property_name";
@@ -20,11 +20,10 @@ gantt.config.readonly_property = "property_name";
 
 ### Details
 
-Standardmäßig ist diese Option auf "readonly" gesetzt.
+Der Standardwert der Option ist "readonly".
 
-### Related API
+### Verwandte API
 - [editable_property](api/config/editable_property.md)
 
-### Related Guides
-- ["Schreibgeschützter Modus"](guides/readonly-mode.md#readonlymodeforspecifictaskslinks)
-
+### Verwandte Guides
+- [Nur-Lese-Modus](guides/readonly-mode.md)

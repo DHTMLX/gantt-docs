@@ -45,8 +45,6 @@ xhr.post({
 
 ### Details
 
-## Справка по API
-
 Все методы принимают параметры одним из двух способов:
 
 1) RequestConfig - объект с опциями конфигурации запроса, структурированный так:
@@ -138,9 +136,9 @@ gantt.ajax.query({
 
 ~~~js
 gantt.ajax.get("some.php", function(){
-    // ваш код здесь
+    // your code here
 });
-// или
+// or
 gantt.ajax.get({
     url: "https://…",
     callback: function() {…},
@@ -154,9 +152,9 @@ gantt.ajax.get({
 
 ~~~js
 gantt.ajax.put("server.php", "keep_alive=1&version=std", function(){
-    // ваш код здесь
+    // your code here
 });
-// или
+// or
 gantt.ajax.put({
    url: "https://…",
    callback: function() {…},
@@ -171,9 +169,9 @@ gantt.ajax.put({
 
 ~~~js
 gantt.ajax.del("server.php", function(){
-    // ваш код здесь
+    // your code here
 });
-// или
+// or
 gantt.ajax.del({
    url: "https://…",
    callback: function() {…},
@@ -187,9 +185,9 @@ gantt.ajax.del({
 
 ~~~js
 gantt.ajax.post("server.php", "keep_alive=1&version=std", function(){
-    // ваш код здесь
+    // your code here
 });
-// или
+// or
 gantt.ajax.post({
       url: "https://…",
       callback: function() {…},
@@ -214,7 +212,7 @@ gantt.ajax.post({
 
 будет преобразован в строку вида `id=1&text=My%20Task&users=%5B1%2C2%2C3%5D`.
 
-### Promises {#promises}
+### Promises
 
 dhtmlxGantt поддерживает promises (включая IE8+). Внутри используется библиотека промисов [Bluebird](https://github.com/petkaantonov/bluebird). Для создания промиса используйте этот конструктор:
 

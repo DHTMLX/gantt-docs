@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_tasks_outside_timescale
-title: show_tasks_outside_timescale config
-description: "允许在甘特图上显示超出定义日期范围的任务"
+title: show_tasks_outside_timescale 配置
+description: "在甘特图中显示超出指定日期范围的任务"
 ---
 
 # show_tasks_outside_timescale
 
 ### Description
 
-@short: 允许在甘特图上显示超出定义日期范围的任务
+@short: 启用在甘特图中显示超出指定日期范围的任务
 
 @signature: show_tasks_outside_timescale: boolean
 
@@ -25,15 +25,14 @@ gantt.init("gantt_here");
 **Default value:** false
 
 ### Related samples
-- [Tasks outside timescale](https://docs.dhtmlx.com/gantt/samples/01_initialization/20_tasks_outside_timescale.html)
+- [时间刻度之外的任务](https://docs.dhtmlx.com/gantt/samples/01_initialization/20_tasks_outside_timescale.html)
 
 ### Related API
 - [start_date](api/config/start_date.md)
 - [end_date](api/config/end_date.md)
 
 ### Related Guides
-- [设置时间刻度](guides/configuring-time-scale.md)
+- [配置时间尺度](guides/configuring-time-scale.md)
 
 ### Change log
-- 在 v6.3 版本中添加
-
+- 在 v6.3 中新增

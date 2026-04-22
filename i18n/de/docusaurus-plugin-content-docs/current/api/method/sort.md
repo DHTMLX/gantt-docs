@@ -1,7 +1,7 @@
 ---
 sidebar_label: sort
-title: sort method
-description: "sortiert Aufgaben im Grid"
+title: Sortiermethode
+description: "Sortiert Aufgaben im Grid"
 ---
 
 # sort
@@ -10,15 +10,15 @@ description: "sortiert Aufgaben im Grid"
 
 @short: Sortiert Aufgaben im Grid
 
-@signature: sort: (field: string | Function, desc?: boolean, parent?: string | number, silent?: boolean) =\> void
+@signature: sort: (field: string | ((task1: Task, task2: Task) => 1 | 0 | -1), desc?: boolean, parent?: string | number, silent?: boolean) =\> void;
 
 ### Parameters
 
-- `field` - (required) *string | SortTasks* - der Spaltenname, nach dem das Grid sortiert werden soll, oder eine benutzerdefinierte Sortierfunktion
-- `desc` - (required) *boolean* - 	legt die Sortierreihenfolge fest: true für absteigend, false für aufsteigend
-Reihenfolge. Standard ist false
-- `parent` - (required) *string | number* - die ID der übergeordneten Aufgabe. Verwenden Sie dies, wenn Sie nur Aufgaben innerhalb des angegebenen Elternzweigs sortieren möchten.
-- `silent` - (required) *boolean* - 	bestimmt, ob nach dem Umordnen der Elemente ein Rendering ausgelöst wird
+- `field`	- (erforderlich) *string | SortTasks*	- der Name der Spalte, nach der das Grid sortiert wird, oder eine benutzerdefinierte Sortierfunktion
+- `desc`	- (optional) *boolean* - gibt die Sortierreihenfolge an: <i>true</i> – absteigend sortieren und <i>false</i> – aufsteigend sortieren. Standardmäßig <i>false</i>
+- `parent` -	(optional) *string | number*	- die ID der übergeordneten Aufgabe. Geben Sie den Parameter an, wenn Sie Aufgaben nur im Zweig des angegebenen Elternteils sortieren möchten.
+- `silent` -	(optional) *boolean*	- gibt an, ob das Rendering nach dem Neuordnen der Elemente aufgerufen werden soll
+
 ### Example
 
 ~~~jsx
@@ -38,20 +38,19 @@ Reihenfolge. Standard ist false
 ~~~
 
 ### Related samples
-- [Using sorting methods](https://docs.dhtmlx.com/gantt/samples/07_grid/05_sort_api.html)
+- [Verwendung von Sortiermethoden](https://docs.dhtmlx.com/gantt/samples/07_grid/05_sort_api.html)
 
 ### Details
 
-Die benutzerdefinierte Sortierfunktion erhält **Task**-Objekte als Argumente und sollte eine Zahl (1, 0 oder -1) zurückgeben.
+Die benutzerdefinierte Sortierfunktion verwendet die **Task**-Objekte als Argumente und sollte die Zahl (1, 0 oder -1) zurückgeben
 
-Beim Verwenden einer benutzerdefinierten Sortierfunktion wird der **parent**-Parameter ignoriert. [Siehe das Beispiel](https://snippet.dhtmlx.com/d8li6kq2).
+Der **parent**-Parameter wird bei der Anwendung einer benutzerdefinierten Sortierfunktion ignoriert. [Beispiel ansehen](https://snippet.dhtmlx.com/d8li6kq2).
 
-Beim Aufruf der **sort()**-Methode fügt Gantt kein Sortiersymbol (wie einen Pfeil zur Anzeige der Sortierrichtung) hinzu. Wenn Sie ein Sortiersymbol anzeigen möchten, können Sie es manuell hinzufügen. [Siehe das Beispiel](https://snippet.dhtmlx.com/5bjavofk).
+Wenn die **sort()**-Methode verwendet wird, fügt Gantt kein Sortier-Symbol hinzu (ein Pfeil, der die Sortierreihenfolge anzeigt). Falls Sie ein Sortier-Icon rendern müssen, können Sie es manuell hinzufügen. [Beispiel ansehen](https://snippet.dhtmlx.com/5bjavofk).
 
 ### Related API
 - [sort](api/config/sort.md)
 - [onAfterSort](api/event/onaftersort.md)
 
 ### Related Guides
-- ["Sortieren von Spalten"](guides/sorting.md)
-
+- [Spalten sortieren](guides/sorting.md)

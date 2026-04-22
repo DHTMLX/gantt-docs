@@ -1,23 +1,23 @@
 ---
 sidebar_label: getGridColumn
-title: getGridColumn method
-description: "Ruft das Konfigurationsobjekt für eine bestimmte Spalte ab"
+title: getGridColumn-Methode
+description: "Ermittelt das Konfigurationsobjekt einer Spalte"
 ---
 
 # getGridColumn
 
 ### Description
 
-@short: Ruft das Konfigurationsobjekt für eine bestimmte Spalte ab
+@short: Ermittelt das Konfigurationsobjekt einer Spalte
 
 @signature: getGridColumn: (name: string | number) =\> GridColumn
 
 ### Parameters
 
-- `name` - (required) *string | number* -     Die Kennung der Spalte
+- `name` - (erforderlich) *string | number* - der Spaltenname
 
 ### Returns
-- ` column` - (GridColumn) - Das entsprechende Spaltenobjekt
+- `column` - (GridColumn) - das Objekt der Spalte
 
 ### Example
 
@@ -32,8 +32,7 @@ gantt.getGridColumn("text");//->{ name:"text", tree:true, width:150}
 ~~~
 
 ### Related samples
-- [Hiding grid columns](https://docs.dhtmlx.com/gantt/samples/02_extensions/07_managing_grid_columns.html)
+- [Grid-Spalten ausblenden](https://docs.dhtmlx.com/gantt/samples/02_extensions/07_managing_grid_columns.html)
 
 ### Related Guides
 - [getGridColumns](api/method/getgridcolumns.md)
-

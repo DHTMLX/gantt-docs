@@ -1,14 +1,14 @@
 ---
 sidebar_label: smart_scales
-title: smart_scales config
-description: "gibt an, dass nur der sichtbare Teil der Zeitskala auf dem Bildschirm dargestellt wird"
+title: smart_scales Konfiguration
+description: "Bestimmt, dass nur der sichtbare Teil des Zeitrasters auf dem Bildschirm gerendert wird"
 ---
 
 # smart_scales
 
 ### Description
 
-@short: Gibt an, dass nur der sichtbare Teil der Zeitskala auf dem Bildschirm dargestellt wird
+@short: Bestimmt, dass nur der sichtbare Teil des Zeitrasters auf dem Bildschirm gerendert wird
 
 @signature: smart_scales: boolean
 
@@ -18,13 +18,13 @@ description: "gibt an, dass nur der sichtbare Teil der Zeitskala auf dem Bildsch
 gantt.config.smart_scales = true;
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Details
 
-eingeführt in Version 4.1
+Hinzugefügt in Version 4.1
 
-Das Aktivieren dieser Einstellung kann die Performance beim Rendern von Charts erheblich verbessern, insbesondere bei sehr langen Zeitskalen.
+Die Nutzung dieser Konfiguration beschleunigt das Rendern des Diagramms erheblich, wenn Sie eine sehr lange Zeitachse haben.
 
 ### Related Guides
-- ["Performance: Möglichkeiten zur Verbesserung"](guides/performance.md#commontechniques)
+- [Performance: Wege zur Verbesserung](guides/performance.md#common-techniques)

@@ -1,6 +1,6 @@
 ---
 sidebar_label: addMarker
-title: addMarker method
+title: addMarker-Methode
 description: "fügt einen Marker zum Timeline-Bereich hinzu"
 ---
 
@@ -14,45 +14,46 @@ description: "fügt einen Marker zum Timeline-Bereich hinzu"
 
 ### Parameters
 
-- `marker` - (required) *MarkerConfig* - die Konfigurationsobjekt des Markers
+- `marker` - (erforderlich) *MarkerConfig* - das Konfigurationsobjekt des Markers
 
 ### Returns
-- `markerId` - (number|string) - optionale ID des Markers
+- `markerId` - (number|string) - optional, die Marker-ID
 
 ### Example
 
 ~~~jsx
-var todayMarker = gantt.addMarker({
+const dateToString = gantt.date.date_to_str(gantt.config.task_date);
+const markerId = gantt.addMarker({
     start_date: new Date(),
     css: "today",
-    title:date_to_str( new Date())
+    title: dateToString(new Date())
 });
-setInterval(function(){
-    var today = gantt.getMarker(todayMarker);
-    today.start_date = new Date();
-    today.title = date_to_str(today.start_date);
-    gantt.updateMarker(todayMarker);
-}, 1000*60);
+
+setInterval(() => {
+    const marker = gantt.getMarker(markerId);
+    marker.start_date = new Date();
+    marker.title = dateToString(marker.start_date);
+    gantt.updateMarker(markerId);
+}, 1000 * 60);
 ~~~
 
 ### Related samples
-- [Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
+- [Heute- und Statuszeilen im Gantt (vertikale Marker)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 ### Details
 
 :::note
- Diese Methode ist Teil der **marker** Erweiterung, daher stellen Sie sicher, dass das [marker](guides/extensions-list.md#verticalmarker) Plugin aktiviert ist. Für weitere Details lesen Sie den Artikel ["Hinzufügen von vertikalen Markierungen"](guides/markers.md). 
+Diese Methode ist in der **Marker**-Erweiterung definiert, daher müssen Sie das Marker-Plugin aktivieren. Lesen Sie die Details im Artikel [Vertikale Marker hinzufügen](guides/markers.md).
 :::
 
+Das Konfigurationsobjekt hat die folgenden Eigenschaften:
 
-Das Konfigurationsobjekt enthält die folgenden Eigenschaften:
-
-- **id?** - (*string | number*) - die ID des Markers
-- **start_date** - (*Date*) - das Date-Objekt, das den Startzeitpunkt des Markers angibt
-- **end_date?** - (*Date*) - das Date-Objekt, das den Endzeitpunkt des Markers angibt
-- **css?** - (*string*) - CSS-Klasse zur Gestaltung des Markers
-- **text?** - (*string | number*) - der Titeltext des Markers
-- **title?** - (*string | number*) - Tooltip-Text für den Marker
+- **id?** - (*string | number*) - die Marker-ID
+- **start_date** - (*Date*) - ein Date-Objekt, das das Startdatum des Markers festlegt
+- **end_date?** - (*Date*) - ein Date-Objekt, das das Enddatum des Markers festlegt
+- **css?** - (*string*) - eine CSS-Klasse, die dem Marker zugewiesen wird
+- **text?** - (*string | number*) - der Marker-Titel
+- **title?** - (*string | number*) - der Marker-Tooltip
 
 ### Related API
 - [getMarker](api/method/getmarker.md)
@@ -62,5 +63,4 @@ Das Konfigurationsobjekt enthält die folgenden Eigenschaften:
 - [show_markers](api/config/show_markers.md)
 
 ### Related Guides
-- ["Hinzufügen von vertikalen Markierungen"](guides/markers.md)
-
+- [Vertikale Marker hinzufügen](guides/markers.md)

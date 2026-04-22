@@ -1,16 +1,18 @@
 ---
 sidebar_label: highlight_critical_path
-title: highlight_critical_path config
-description: "hebt den kritischen Pfad innerhalb des Charts hervor"
+title: highlight_critical_path Konfiguration
+description: "zeigt den kritischen Pfad im Diagramm an"
 ---
 
 # highlight_critical_path
+
 :::info
- Diese Funktion ist nur in der PRO Edition enthalten. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Hebt den kritischen Pfad innerhalb des Charts hervor
+@short: Zeigt den kritischen Pfad im Diagramm an
 
 @signature: highlight_critical_path: boolean
 
@@ -22,15 +24,15 @@ gantt.config.highlight_critical_path = true; /*!*/
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
-- [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
+- [Kritischer Pfad](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 ### Details
 
 :::note
- Diese Einstellung ist Teil der **critical_path** Erweiterung, daher stellen Sie sicher, dass das [critical_path](guides/extensions-list.md#criticalpath) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Kritischer Pfad"](guides/critical-path.md). 
+Diese Option ist in der **critical_path**-Erweiterung definiert, daher müssen Sie das [critical_path](guides/extensions-list.md#critical-path) Plugin aktivieren. Lesen Sie die Details im Artikel [Kritischer Pfad](guides/critical-path.md). 
 :::
 
 ### Related API
@@ -38,5 +40,4 @@ gantt.init("gantt_here");
 - [isCriticalLink](api/method/iscriticallink.md)
 
 ### Related Guides
-- ["Kritischer Pfad"](guides/critical-path.md)
-
+- [Kritischer Pfad](guides/critical-path.md)

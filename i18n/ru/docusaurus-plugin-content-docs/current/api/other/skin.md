@@ -8,7 +8,7 @@ description: "предоставляет текущий skin, применённ
 
 ### Description
 
-@short: Предоставляет текущий skin, применённый к Gantt chart
+@short: Возвращает текущий скин диаграммы Ганта
 
 @signature: skin: string
 
@@ -22,5 +22,4 @@ var currentSkin = gantt.skin;// -> "terrace"
 - [skins](api/other/skins.md)
 
 ### Related Guides
-- [Скины](guides/skins.md)
-
+- [Skins](guides/skins.md)

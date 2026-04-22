@@ -8,7 +8,7 @@ description: "保存各种常量，避免在代码中使用魔法数字"
 
 ### Description
 
-@short: 保存各种常量，避免在代码中使用魔法数字
+@short: 存储各种常量以减少代码中魔术数字的使用
 
 @signature: constants: any
 
@@ -25,4 +25,4 @@ document.addEventListener("keypress", function(e){
 
 ### Details
 
-保存各种常量，帮助减少代码中魔法数字的使用。目前主要包含 **KEY_CODES** 对象
+用于存储各种常量以减少代码中魔术数字的使用。目前仅存储 **KEY_CODES** 对象

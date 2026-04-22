@@ -1,21 +1,23 @@
 ---
 sidebar_label: xml_date
-title: xml_date template
-description: "Этот шаблон преобразует строку из XML-файла в объект даты на основе заданного формата."
+title: Шаблон xml_date
+description: "Строка из XML-файла приводится к объекту даты в соответствии с этим шаблоном"
 ---
 
 # xml_date
-
+:::warning
+The template is deprecated.
+:::
 ### Description
 
-@short: Этот шаблон преобразует строку из XML-файла в объект даты на основе заданного формата.
+@short: Строка из XML-файла приводится к объекту даты в соответствии с этим шаблоном
 
 ### Parameters
 
-- `date` - (required) *Date* - Дата, которую необходимо отформатировать.
+- `date` - (required) *Date* - дата, которую нужно отформатировать
 
 ### Returns
-- ` text` - (string) - HTML-текст, который будет отображаться на диаграмме Ганта.
+- ` text` - (string) - html-текст, который будет отрисован в диаграмме Ганта
 
 ### Example
 
@@ -28,7 +30,7 @@ gantt.templates.xml_date = function(date){
 ### Details
 
 :::note
- Этот шаблон устарел. Пожалуйста, используйте [parse_date](api/template/parse_date.md) вместо него: 
+Шаблон устарел. Используйте [parse_date](api/template/parse_date.md) вместо этого:
 :::
 
 ~~~js
@@ -36,16 +38,17 @@ const cfg = gantt.config;
 const strToDate = gantt.date.str_to_date(cfg.date_format, cfg.server_utc);
  
 gantt.templates.parse_date = function(date){
-    return strToDate(date);
+    return strToDate (date);
 };
 ~~~
 
-Этот шаблон генерируется автоматически из конфигурации [xml_date](api/config/xml_date.md) и может быть настроен после [инициализации Gantt](api/method/init.md).
+Этот шаблон автоматически генерируется из конфигурации [xml_date](api/config/xml_date.md) и может быть переопределен после [инициализации gantt](api/method/init.md).
 
-Вы можете создать собственную функцию шаблона, если формат даты сервера не поддерживается [Gantt date helper](api/other/date.md).
+Можно использовать настраиваемую функцию шаблона, если формат дат сервера не поддерживается [gantt date helper](api/other/date.md).
 
-Например, при использовании UNIX-времени для **start_date**: 
+Например, использование UNIX-времени для **start_date**: 
 
+фрагмент /data :
 ~~~js
 {
     "data":[
@@ -69,7 +72,7 @@ gantt.templates.parse_date = function(date){
 }
 ~~~
 
-Конфигурация Gantt должна быть настроена следующим образом:
+Установите конфигурацию Gantt следующим образом:
 
 ~~~js
 gantt.attachEvent("onTemplatesReady", function(){
@@ -88,8 +91,7 @@ gantt.load("/data");
 - [date](api/other/date.md)
 
 ### Related Guides
-- [Шаблоны для преобразования дат](guides/conversion-templates.md)
+- [Шаблоны конвертации дат](guides/conversion-templates.md)
 
 ### Change log
-- Устарел с версии v6.2, удалён в версии v7.0
-
+- устарел с версии v6.2, удален с версии v7.0

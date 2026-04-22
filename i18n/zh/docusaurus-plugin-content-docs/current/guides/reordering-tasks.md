@@ -1,56 +1,52 @@
 ---
-title: "任务重新排序"
-sidebar_label: "任务重新排序"
+title: "重新排序任务"
+sidebar_label: "重新排序任务"
 ---
 
-# 任务重新排序
+# 重新排序任务
 
-dhtmlxGantt 提供了两种在表格中重新排序任务的方法:
+dhtmlxGantt 提供在网格中重新排序任务的两种方式：
 
-1. 拖放操作。
-2. 排序（参见[详情](guides/sorting.md)）。
+1. 拖拽排序（Drag-and-drop）。
+2. 排序（详见 [details](guides/sorting.md)）。
 
-这两种方法互斥。默认情况下，两者均为关闭状态。
+这两种方式是互斥的。默认情况下，两个模式都处于禁用状态。
 
-要启用拖放重新排序功能，请设置 [order_branch](api/config/order_branch.md) 选项:
+要启用拖拽重新排序，请使用 [order_branch](api/config/order_branch.md) 选项：
 
 ~~~js
 gantt.config.order_branch = true;
 gantt.init("gantt_here");
 ~~~
 
-
 [Branch ordering](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
 
-
-此外，还有一个视频教程演示了如何在表格中排序和重新排序任务。
+你可以观看视频指南，了解如何在网格中对任务进行排序和重新排序。
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/srtb3nYOb-E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## 跨整个 Gantt 结构拖放
+## 在整个 Gantt 结构中的拖拽排序
 
-[order_branch](api/config/order_branch.md) 选项限制只能在同一树级别内拖动任务。
+[order_branch](api/config/order_branch.md) 选项允许在同一树级内拖动任务。
 
-不过，也可以启用一种模式，使任务可以在 Gantt 的任意位置重新排序，允许任务替换任何树级别的其他任务。要启用此功能，请使用 [order_branch_free](api/config/order_branch_free.md) 选项:
+也可以启用在整个 Gantt 中重新排序任务的模式。这意味着一个任务可以替换任何树级中的另一个任务。要使用这种类型的任务重新排序，请使用 [order_branch_free](api/config/order_branch_free.md) 选项：
 
 ~~~js
 // 在整个 gantt 内重新排序任务
 gantt.config.order_branch = true;
 gantt.config.order_branch_free = true;
-
+ 
 gantt.init("gantt_here");
 ~~~
 
-
 [Drag and drop rows in Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
 
+## 禁止在特定位置拖放 {#denyingdroppingtospecificpositions}
 
-## 限制拖放位置
-
-如需防止任务被拖放到某些位置，请使用 [onBeforeTaskMove](api/event/onbeforetaskmove.md) 或 [onBeforeRowDragEnd](api/event/onbeforerowdragend.md) 事件:
+要禁止将任务拖放到特定位置，请使用 [onBeforeTaskMove](api/event/onbeforetaskmove.md) 或 [onBeforeRowDragEnd](api/event/onbeforerowdragend.md) 事件：
 
 ~~~js
-// 防止移动到其他子分支：
+//防止移动到另一个子分支：
 gantt.attachEvent("onBeforeTaskMove", function(id, parent, tindex){
     var task = gantt.getTask(id);
     if(task.parent != parent)
@@ -58,37 +54,35 @@ gantt.attachEvent("onBeforeTaskMove", function(id, parent, tindex){
     return true;
 });
 
-// 或者
+//或
 gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
-    var task = gantt.getTask(id);
+      var task = gantt.getTask(id);
     if(task.parent != parent)
         return false;
     return true;
 });
 ~~~
 
-## 提升大数据集下的性能
+## 针对大型数据集的性能提升
 
-当处理大量任务时，默认的分支重排序模式可能会影响性能。为提升性能，可以使用"marker"模式。
+如果你的 Gantt 含有大量任务，默认的分支重新排序模式可能会降低性能。要提速，可以使用“marker”模式。
 
 ~~~js
 gantt.config.order_branch = "marker";
 ~~~
 
-
 [Branch ordering - highlighting mode](https://docs.dhtmlx.com/gantt/samples/07_grid/14_branch_ordering_highlight.html)
 
+在此模式下，只对任务的名称进行重新排序（在按住左键时），只有在任务被拖放到目标位置并释放按键时才重新渲染 Gantt。与默认模式不同，任务位置的變更不会触发 onBeforeTaskMove/onAfterTaskMove 事件。
 
-在该模式下，仅任务名称会随着鼠标左键按下而移动，只有在任务被释放后 Gantt 图才会重新渲染。与默认模式不同，改变任务位置不会触发 onBeforeTaskMove 或 onAfterTaskMove 事件。
+要防止将任务拖放到特定位置，请改用 [onBeforeRowDragMove](api/event/onbeforerowdragmove.md) 事件（仅在“marker”模式下工作）。
 
-如需在该模式下限制任务拖放位置，请使用 [onBeforeRowDragMove](api/event/onbeforerowdragmove.md) 事件（仅在 "marker" 模式下有效）。
+## 拖拽时高亮显示可用的放置位置
 
-## 拖放时高亮可用的放置目标
-
-如需在拖动过程中直观地显示有效的放置目标（例如，防止根节点被拖到另一个根节点下），请使用 [onRowDragStart](api/event/onrowdragstart.md) 和 [onRowDragEnd](api/event/onrowdragend.md) 事件:
+在拖拽过程中高亮显示可用的目标位置（例如，不可能把根节点拖到另一个根节点之下，你希望通过视觉效果通知用户这一点），请使用 [onRowDragStart](api/event/onrowdragstart.md) 和 [onRowDragEnd](api/event/onrowdragend.md) 事件：
 
 ~~~js
-gantt.config.order_branch = true; // 仅在分支内排序任务
+gantt.config.order_branch = true;// 仅在一个分支内对任务进行排序
 gantt.init("gantt_here");
 gantt.parse(demo_tasks);
 
@@ -106,12 +100,11 @@ gantt.templates.grid_row_class = function(start, end, task){
     if(drag_id && task.id != drag_id){
         if(task.$level != gantt.getTask(drag_id).$level)
             return "cant-drop";
-    }
+        }
     return "";
 };
 ~~~
 
-## 在时间轴中垂直重新排序任务
+## 在时间线中垂直重新排序任务
 
-请参考[如何在时间轴中垂直重新排序任务](guides/how-to.md#ruhezaishijianxianzhongchuizhichongxinpaixurenwu)部分中的示例。
-
+请按照 [How to vertically reorder tasks in the timeline](guides/how-to.md#how-to-vertically-reorder-tasks-in-the-timeline) 小节中的示例进行操作。

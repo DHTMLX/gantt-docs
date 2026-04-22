@@ -1,19 +1,19 @@
 ---
 sidebar_label: getSelectedId
 title: getSelectedId method
-description: "возвращает id текущей выбранной задачи"
+description: "возвращает идентификатор выбранной задачи"
 ---
 
 # getSelectedId
 
 ### Description
 
-@short: Возвращает id текущей выбранной задачи
+@short: Возвращает идентификатор выбранной задачи
 
 @signature: getSelectedId: () =\> string
 
 ### Returns
-- ` id` - (string) - id выбранной задачи, или <i>null</i>, если в Gantt chart не выбрана ни одна задача
+- ` id` - (string) - идентификатор выбранной задачи или <i>null</i>, если в диаграмме Ганта не выбрано ни одной задачи
 
 ### Example
 
@@ -36,4 +36,3 @@ gantt.getSelectedId(); // -> "t_1" /*!*/
 ### Related API
 - [selectTask](api/method/selecttask.md)
 - [unselectTask](api/method/unselecttask.md)
-

@@ -1,21 +1,23 @@
 ---
 sidebar_label: xml_format
-title: xml_format template
-description: "Wandelt ein Date-Objekt in einen String um, der diesem Template folgt. Dies wird verwendet, um Daten zurück an den Server zu senden."
+title: xml_format-Vorlage
+description: "Ein Datumsobjekt wird gemäß dieser Vorlage in eine Zeichenkette umgewandelt. Wird verwendet, um Daten an den Server zurückzusenden"
 ---
 
 # xml_format
-
+:::warning
+Die Vorlage ist veraltet.
+:::
 ### Description
 
-@short: Wandelt ein Date-Objekt in einen String um, der diesem Template folgt. Dies wird verwendet, um Daten zurück an den Server zu senden.
+@short: Ein Datumsobjekt wird gemäß dieser Vorlage in eine Zeichenkette umgewandelt. Wird verwendet, um Daten an den Server zurückzusenden
 
 ### Parameters
 
-- `date` - (required) *Date* - Das Datum, das formatiert werden soll.
+- `date` - (erforderlich) *Date* - das Datum, das formatiert werden muss
 
 ### Returns
-- ` text` - (string) - HTML-Text, der im Gantt-Chart angezeigt wird.
+- ` text` - (string) - HTML-Text, der im Gantt-Diagramm gerendert wird
 
 ### Example
 
@@ -28,29 +30,30 @@ gantt.templates.xml_format = function(date){
 ### Details
 
 :::note
- Dieses Template ist veraltet. Bitte verwenden Sie stattdessen [format_date](api/template/format_date.md): 
+Hinweis Die Vorlage ist veraltet. Verwenden Sie stattdessen [format_date](api/template/format_date.md):
 :::
 
 ~~~js
 var dateToStr = gantt.date.date_to_str("%Y-%m-%d %H:%i");
 gantt.templates.format_date = function(date){
-    return dateToStr(date);
+    return dateToStr (date);
 };
 ~~~
 
-Dieses Template wird automatisch aus der Konfiguration [xml_date](api/config/xml_date.md) generiert und kann nach der [Gantt-Initialisierung](api/method/init.md) neu definiert werden.
+Diese Vorlage wird automatisch aus der [xml_date](api/config/xml_date.md) Konfiguration generiert und kann nach der [Initialisierung von gantt](api/method/init.md) erneut definiert werden.
 
-Eine benutzerdefinierte Template-Funktion kann erstellt werden, wenn der Server ein Datumsformat verlangt, das vom [Gantt date helper](api/other/date.md) nicht unterstützt wird.
+Eine benutzerdefinierte Vorlagenfunktion kann verwendet werden, wenn die Serverseite ein Format erwartet, das vom [gantt date helper](api/other/date.md) nicht unterstützt wird.
 
-Beispielsweise, wenn der Server **start_date** als UNIX-Timestamp erwartet und die Anfrageparameter wie folgt sein sollen:
+Zum Beispiel nehmen wir an, die Serverseite erwartet **start_date** als UNIX-Zeitstempel und die Request-Parameter sollten wie folgt aussehen:
 
 - **start_date**:1503608400
 - **duration**:4
-- **text**:Task #2.2
+- **text**:Aufgabe #2.2
 - **parent**:3
 - **end_date**:1503694800
 
-kann die Gantt-Konfiguration so eingerichtet werden:
+
+Sie sollten die Gantt-Konfiguration wie folgt festlegen:
 
 ~~~js
 gantt.attachEvent("onTemplatesReady", function(){
@@ -65,7 +68,7 @@ gantt.load("/data");
 var dp = new gantt.dataProcessor("/data");
 dp.init(gantt);
 dp.setTransactionMode("REST");
-~~~
+~~~ 
 
 ### Related API
 - [xml_date](api/config/xml_date.md)
@@ -73,8 +76,8 @@ dp.setTransactionMode("REST");
 - [xml_date](api/template/xml_date.md)
 
 ### Related Guides
-- ["Vorlagen für die Datumskonvertierung"](guides/conversion-templates.md)
-- ["Serverseitige Integration"](guides/server-side.md)
+- [Templates for Date Conversion](guides/conversion-templates.md)
+- [Server-Side Integration](guides/server-side.md)
 
 ### Change log
 - Veraltet seit v6.2, entfernt seit v7.0

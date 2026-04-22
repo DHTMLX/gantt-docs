@@ -1,31 +1,31 @@
 ---
 sidebar_label: onBeforeTaskDrag
 title: onBeforeTaskDrag event
-description: "当用户按下鼠标按钮并开始拖动时立即触发，但在 dhtmlxGantt 开始拖放过程之前。"
+description: "在用户按下鼠标按钮并开始拖动，但在 dhtmlxGantt 开始拖放操作之前触发"
 ---
 
 # onBeforeTaskDrag
 
 ### Description
 
-@short: 当用户按下鼠标按钮并开始拖动时立即触发，但在 dhtmlxGantt 开始拖放过程之前。
+@short: 当用户按下鼠标按钮并开始拖动，但在 dhtmlxGantt 开始拖放操作之前触发
 
 @signature: onBeforeTaskDrag: (id: string | number, mode: string, e: Event) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 任务的 id
-- `mode` - (required) *string* - 拖放模式（"resize"、"progress"、"move"、"ignore"）
-- `e` - (required) *Event* - 原生事件对象
+- `id` - (required) *string | number* - 任务 ID
+- `mode` - (required) *string* - 拖拽模式（"resize", "progress", "move", "ignore"）
+- `e` - (required) *Event* - 一个原生事件对象
 
 ### Returns
-- ` result` - (boolean) - 决定是否允许默认事件动作继续执行（<b>true</b>）或阻止其执行（<b>false</b>）
+- ` result` - (boolean) - 定义事件的默认行为是否会被触发（<b>true</b>）或取消（<b>false</b>）
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
-    // 在这里添加自定义逻辑
+    // 在这里插入您的自定义逻辑 
     return true;
 });
 ~~~
@@ -35,9 +35,9 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 
 ### Details
 
-当任务在时间轴内被拖动时触发此事件。
+该事件在用户在时间线区域拖动任务时触发。
 
-返回 *false* 可阻止拖动操作，任务将重置回其原始位置。
+该事件是可阻塞的。返回 *false*，任务将回到初始位置。
 
 ### Related API
 - [drag_mode](api/config/drag_mode.md)
@@ -45,5 +45,4 @@ gantt.attachEvent("onBeforeTaskDrag", function(id, mode, e){
 - [onBeforeTaskChanged](api/event/onbeforetaskchanged.md)
 
 ### Related Guides
-- [在时间轴中拖动任务](guides/dnd.md)
-
+- [Dragging Tasks within the Timeline](guides/dnd.md)

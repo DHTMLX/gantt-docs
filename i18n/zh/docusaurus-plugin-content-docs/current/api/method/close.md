@@ -1,20 +1,20 @@
 ---
 sidebar_label: close
-title: close method
-description: "关闭由给定 id 标识的分支"
+title: close 方法
+description: "关闭具有指定 id 的分支"
 ---
 
 # close
 
 ### Description
 
-@short: 关闭由给定 id 标识的分支
+@short: 关闭具有指定 id 的分支
 
 @signature: close: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    分支的 id
+- `id` - (required) *string | number* - 分支 ID
 
 ### Example
 
@@ -37,12 +37,11 @@ gantt.close("p_1");/*!*/
 
 ### Details
 
-请注意，此方法会触发 [onTaskClosed](api/event/ontaskclosed.md) 事件。
+注：该方法会触发 [onTaskClosed](api/event/ontaskclosed.md) 事件。
 
 ### Related API
 - [open](api/method/open.md)
 - [onTaskClosed](api/event/ontaskclosed.md)
 
 ### Related Guides
-- [配置树形列](guides/tree-column.md)
-
+- [Configuring the Tree Column](guides/tree-column.md)

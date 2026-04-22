@@ -7,8 +7,7 @@ description: "настраивает форматирующие templates для
 # templates
 
 ### Description
-
-@short: Настраивает форматирующие templates для дат, заголовков и тултипов в диаграмме Ганта
+@short: Определяет форматы шаблонов для дат, заголовков и подсказок в диаграмме Ганта
 
 @signature: templates: GanttTemplates
 
@@ -23,5 +22,4 @@ gantt.templates.date_grid = function(date){
 
 ### Details
 
-Подробная информация об объекте **templates** доступна в отдельном разделе на <br>
-главной странице API ["Gantt API: Templates"](api/overview/properties-overview.md).
+Свойства объекта **templates** описаны в отдельной главе на главной странице API: «Gantt API: Templates».

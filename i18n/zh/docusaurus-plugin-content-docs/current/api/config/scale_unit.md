@@ -1,14 +1,18 @@
 ---
 sidebar_label: scale_unit
-title: scale_unit config
-description: "定义X轴时间刻度的单位"
+title: scale_unit 配置
+description: "设置时间刻度单位（X 轴）"
 ---
 
 # scale_unit
 
+:::warning
+該屬性已棄用。
+:::
+
 ### Description
 
-@short: 定义X轴时间刻度的单位
+@short: 设置时间刻度的单位（X 轴）
 
 ### Example
 
@@ -19,20 +23,19 @@ gantt.config.date_scale = "%F, %Y";
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 'day'
+**默认值：** 'day'
 
 ### Related samples
-- [Month view](https://docs.dhtmlx.com/gantt/samples/03_scales/02_month_days.html)
+- [月视图](https://docs.dhtmlx.com/gantt/samples/03_scales/02_month_days.html)
 
 ### Details
 
-可以自定义时间单位。更多详情请参考[此部分](guides/configuring-time-scale.md)。
-<br>
+可以设置自定义单位。有关该主题的更多信息，请参阅此处 [此处](guides/configuring-time-scale.md#customtimeunits)。
 
 :::note
- 此属性已被废弃。
-请改用 [scales](api/config/scales.md) 中的 **unit** 属性: 
-:::
+ 该属性已被弃用。
+ 请改用 [scales](api/config/scales.md) 的 **unit** 属性：
+ :::
 
 ~~~js
 gantt.config.scales = [
@@ -47,8 +50,7 @@ gantt.config.scales = [
 - [step](api/config/step.md)
 
 ### Related Guides
-- [设置时间刻度](guides/configuring-time-scale.md#settingtheunitofthescale)
+- [设置比例尺](guides/configuring-time-scale.md#timeunits)
 
 ### Change log
-- 自v6.2起废弃
-
+- 自从 v6.2 起已弃用

@@ -1,14 +1,14 @@
 ---
 sidebar_label: hideQuickInfo
-title: hideQuickInfo method
-description: "현재 열려 있는 경우 팝업 작업 폼을 숨깁니다"
+title: hideQuickInfo 메서드
+description: "팝업 작업 폼이 현재 활성화되어 있을 경우 숨깁니다"
 ---
 
 # hideQuickInfo
 
 ### Description
 
-@short: 현재 열려 있는 경우 팝업 작업 폼을 숨깁니다
+@short: 현재 활성화되어 있을 경우 팝업 작업 폼을 숨깁니다
 
 @signature: hideQuickInfo: () =\> void
 
@@ -26,7 +26,7 @@ gantt.hideQuickInfo();
 ### Details
 
 :::note
- 이 메서드는 **Quick Info** 확장 기능의 일부이므로, [quick_info](guides/extensions-list.md#quickinfo) 플러그인이 활성화되어 있는지 확인하세요. 
+이 메서드는 **Quick Info** 확장에 정의되어 있으므로 [quick_info](guides/extensions-list.md#quick-info) 플러그인을 활성화해야 합니다.
 :::
 
 ### Related API

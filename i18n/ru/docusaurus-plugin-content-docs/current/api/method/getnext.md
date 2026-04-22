@@ -1,23 +1,23 @@
 ---
 sidebar_label: getNext
-title: getNext method
-description: "возвращает id следующего элемента, независимо от уровня вложенности, независимо от того, находится ли он на том же уровне или другом"
+title: Метод getNext
+description: "возвращает идентификатор следующего элемента (независимо от уровня вложенности: того же уровня или другого)"
 ---
 
 # getNext
 
 ### Description
 
-@short: Возвращает id следующего элемента, независимо от уровня вложенности, независимо от того, находится ли он на том же уровне или другом
+@short: Возвращает идентификатор следующего элемента (независимо от уровня вложенности: того же уровня или другого)
 
-@signature: getNext: (id: string | number) =\> string | number
+@signature: getNext: (id: string | number) => string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    id задачи
+- `id` - (required) *string | number* - идентификатор задачи
 
 ### Returns
-- ` id` - (string | number) - id следующего элемента
+- ` id` - (string | number) - идентификатор следующего элемента
 
 ### Example
 
@@ -50,4 +50,3 @@ gantt.getNext("t_2"); -> null  /*!*/
 
 ### Related Guides
 - [Task Parent/Child](guides/task-tree-operations.md)
-

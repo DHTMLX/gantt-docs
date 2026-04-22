@@ -1,41 +1,44 @@
 ---
-title: "MS Project 导出模块"
-sidebar_label: "MS Project 导出模块"
+title: "用于 MS Project 的导出模块"
+sidebar_label: "用于 MS Project 的导出模块"
 ---
 
-# MS Project 导出模块
+# 用于 MS Project 的导出模块
 
-该导出模块用于导入和导出 MS Project 及 Primavera 文件。它是一个 .NET Core 应用程序，可以在 dotnet 环境下运行，也可以在 docker 镜像中运行。
+本导出模块可以导入/导出 MS Project 和 Primavera 文件。它是一个 .NET Core 应用程序，您可以在 dotnet 环境中运行，或在 Docker 镜像中运行。
 
-它不支持 PDF、PNG、Excel 或 iCal 文件的导入/导出。如果需要这些格式，请考虑使用[对应的导出模块](guides/pdf-export-module.md)或我们的在线服务器。
+它不包含 PDF、PNG、Excel 和 iCal 文件的导入/导出功能。如果您需要此类功能，请使用相应的导出模块或我们的在线服务器。
 
 ## 安装指南
 
-在运行应用程序之前，请确保已安装[.NET Core 7 环境](https://learn.microsoft.com/en-us/dotnet/core/install/)。完成安装后，您可以在客户区的下载标签下下载 MSP 导出模块。以下是参考截图:
+在运行应用程序之前，您需要安装 [.NET Core 7 环境](https://learn.microsoft.com/en-us/dotnet/core/install/)。
+准备就绪后，您可以在客户端区域的 Downloads 选项卡中下载 MSP 导出模块。请看下图：
 
 ![MS export module download](/img/msp_export_module_download.png)
 
-有两种方式运行源代码:
+有两种运行源代码的方式：
 
-1. 通过 Visual Studio 运行（仅限 Windows）
+1. 通过 Visual Studio 运行（仅 Windows）
 
-此方法需要 Visual Studio 2022，因为早期版本不支持 .NET Core 7。打开应用程序后，右键点击右侧面板中的 Solution，选择 Restore NuGet packages。然后可以运行 `http` 或 `https` 版本。
+对于此方法，您需要 Visual Studio 2022，因为较早版本不支持 .NET Core 7。
+打开应用程序时，您需要在右侧面板中对解决方案单击右键，然后点击 Restore NuGet packages 按钮。
+之后即可运行 http 或 https 版本。
 
-2. 通过命令行运行
+2. 使用命令行运行
 
-此方法适用于 Windows 和 Linux。进入应用程序的根文件夹，运行以下命令安装依赖包:
+此方法在 Windows 和 Linux 上的工作方式相同。您需要导航到应用程序的根文件夹，并运行以下命令来安装包：
 
 ~~~
 dotnet restore
 ~~~
 
-接着，进入 "GanttToMSProject" 文件夹，运行以下命令启动应用程序:
+之后，您需要导航到 **GanttToMSProject** 文件夹并运行以下命令以运行应用程序：
 
 ~~~
 dotnet run
 ~~~
 
-如需发布应用程序，请使用以下命令:
+您可以运行以下命令来发布应用程序：
 
 ~~~
 dotnet publish -c Release -o published
@@ -43,33 +46,33 @@ dotnet publish -c Release -o published
 
 ## 测试导出模块
 
-有两种方式测试导出模块:
+有两种方法可以测试导出模块的工作方式。
 
-1. 使用测试页面:
+1. 使用测试页面：
 
-- 打开 [https://export.dhtmlx.com/test](https://export.dhtmlx.com/test)
-- 在命令行输出中查找导出模块的 URL。例如:
+- 打开以下 URL: [https://export.dhtmlx.com/test](https://export.dhtmlx.com/test)
+- 在命令行输出中找到导出模块的 URL。例如：
 
 ~~~
 Now listening on: http://localhost:5128
 ~~~
 
-- 点击第一个带有 URL 的下拉框，选择 **custom**。
+- 点击带有 URL 的第一个下拉菜单并选择 **custom**。
 - 粘贴导出模块的 URL。
 
-现在可以通过按钮导出数据。
+现在即可使用按钮导出数据。
 
-2. 使用代码片段:
+2. 使用片段：
 
-- 打开 [https://snippet.dhtmlx.com/kf16k0if](https://snippet.dhtmlx.com/kf16k0if)
+- 打开以下 URL: [https://snippet.dhtmlx.com/kf16k0if](https://snippet.dhtmlx.com/kf16k0if)
 
-- 在命令行输出中找到导出模块的 URL，例如:
+- 在命令行输出中找到导出模块的 URL。例如：
 
 ~~~
 Now listening on: http://localhost:5128
 ~~~
 
-- 将该 URL 添加到导出函数的 server 参数中，如下所示:
+- 将 URL 添加到导出函数的 server 参数中，例如：
 
 ~~~
 gantt.exportToMSProject({
@@ -77,47 +80,47 @@ gantt.exportToMSProject({
 });
 ~~~
 
-现在可以通过按钮正常导出数据。
+现在即可使用按钮导出数据。
 
 ## 问题解决
 
-### 导出到 PDF/PNG/Excel 不起作用
+### 导出到 PDF/PNG/Excel 无法工作
 
-MSP 导出模块仅支持 `gantt.exportToMSProject` 和 `exportToPrimaveraP6` 方法。以下调用方式无法使用:
+MSP 导出模块对除了 gantt.exportToMSProject/exportToPrimaveraP6 之外的方法不工作，即如果您调用
 
 ~~~
 gantt.exportToPDF({server:"gantt-to-msproject-url"});
 ~~~
 
-此外，如果调用 `gantt.exportToMSProject()` 时未传递任何参数，则默认使用我们的在线服务 `export.dhtmlx.com`。
+此外，请注意，如果在没有参数的情况下调用 `gantt.exportToMSProject()`，它将默认调用我们在 `export.dhtmlx.com` 的在线服务。
 
-### MPP 文件的导出
+### MPP 文件导出
 
-MSP 导出模块和服务器依赖 MPXJ 库来导入和导出 MSP 及 Primavera 文件。目前，不支持导出 MPP 文件，但可以导入 XML 和 MPP 文件。更多详情请见[这里](https://www.mpxj.org/faq/)。
+MSP 导出模块和导出服务器使用 MPXJ 库来导入和导出 MSP 与 Primavera 文件。很不幸，目前无法导出 MPP 文件，但您可以 [导入 XML 和 MPP 文件](https://www.mpxj.org/faq/)。
 
-### 导入大文件
+### 处理大文件的导入
 
-如需导入大文件，需移除请求大小限制。打开文件 `GanttToMSProject/Controllers/MspConversionController.cs`，取消注释 `DisableRequestSizeLimit` 属性及其后面的那一行。
+如果您想导入大文件，您需要移除请求大小的限制。为此，请打开 `GanttToMSProject/Controllers/MspConversionController.cs` 文件。在该文件中，您需要取消注释 `DisableRequestSizeLimit` 及其后面的行。
 
-保存并重启服务器后，应可导入大文件。测试显示，导入一个 244Mb 的文件可能需要多达 4Gb 的内存。
+保存更改并重新启动服务器后，您应该能够导入大文件。经测试，导入一个 244Mb 的文件需要最多 4Gb RAM。
 
 ### 使用 Docker 镜像
 
-构建 docker 镜像，请运行:
+要构建一个 Docker 镜像，请运行以下命令：
 
 ~~~
 docker build -t msp_export_module 
 ~~~
 
-测试时，运行 docker 镜像:
+要为测试目的运行该 Docker 镜像，请使用以下命令：
 
 ~~~
 docker run -p 65163:80 msp_export_module 
 ~~~
 
-可以通过 `Ctrl+C` 停止容器。
+您可以使用 `Ctrl+C` 快捷键组合停止容器。
 
-以分离模式运行 docker 镜像可使其在后台运行:
+如果以“分离（detached）”模式运行 Docker 镜像，它将在后台运行：
 
 ~~~
 docker run -p 65163:80 msp_export_module 

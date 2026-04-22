@@ -1,16 +1,18 @@
 ---
 sidebar_label: inherit_calendar
-title: inherit_calendar config
-description: "작업이 상위 요약 작업의 작업 캘린더를 상속할지 여부를 정의합니다."
+title: inherit_calendar 구성
+description: "작업이 요약 부모로부터 근무 캘린더를 상속할지 여부를 정의합니다"
 ---
 
 # inherit_calendar
+
 :::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
 :::
+
 ### Description
 
-@short: 작업이 상위 요약 작업의 작업 캘린더를 상속할지 여부를 정의합니다.
+@short: 작업이 요약 상위 부모로부터 근무 캘린더를 상속받을지 여부를 정의합니다
 
 @signature: inherit_calendar: boolean
 
@@ -23,13 +25,17 @@ gantt.config.inherit_calendar = true;
 **Default value:** false
 
 ### Related samples
-- [Project level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/08_project_calendars.html)
+- [프로젝트 수준 캘린더](https://docs.dhtmlx.com/gantt/samples/09_worktime/08_project_calendars.html)
 
 ### Details
 
-기본적으로, 작업에 지정된 작업 캘린더가 없으면 전역 작업 캘린더를 사용합니다.
+:::note
+pronote 이 기능은 PRO 에디션에서만 사용할 수 있습니다.
+:::
 
-이 옵션을 `true`로 설정하면 해당 작업들은 상위 요약(프로젝트) 작업의 캘린더를 상속받게 됩니다.
+By default, tasks that don't have work calendar specified will use the global work calendar.
+
+After setting this config to `true`, such tasks will use a calendar of their summary (project) parent task.
 
 ### Related Guides
-- [작업 시간 계산](guides/working-time.md)
+- [근무 시간 계산](guides/working-time.md)

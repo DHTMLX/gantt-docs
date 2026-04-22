@@ -1,14 +1,14 @@
 ---
 sidebar_label: wheel_scroll_sensitivity
-title: wheel_scroll_sensitivity config
-description: "마우스 휠 사용 시 간트 차트의 스크롤 속도를 제어합니다."
+title: wheel_scroll_sensitivity 구성
+description: "마우스 휠로 간트 차트를 스크롤하는 속도를 지정합니다"
 ---
 
 # wheel_scroll_sensitivity
 
 ### Description
 
-@short: 마우스 휠 사용 시 간트 차트의 스크롤 속도를 제어합니다.
+@short: 마우스 휠로 간트 차트를 스크롤하는 속도를 지정합니다
 
 @signature: wheel_scroll_sensitivity: undefined | number | \{ x?: number; y?: number; \}
 
@@ -28,14 +28,14 @@ gantt.config.wheel_scroll_sensitivity = {
 };
 ~~~
 
-**Default value:** undefined
+**기본값:** undefined
 
 ### Details
 
-이 설정 객체는 다음과 같은 속성을 포함합니다:
+객체 구성에는 다음 속성이 있습니다:
 
-- **x** - (*number*) - 수평 스크롤 속도를 제어합니다.
-- **y** - (*number*) - 수직 스크롤 속도를 제어합니다.
+- **x** - (*number*) - 수평 속도
+- **y** - (*number*) - 수직 속도
 
 ### Change log
-- v7.0.11에서 추가됨
+- v7.0.11 버전에 추가됨

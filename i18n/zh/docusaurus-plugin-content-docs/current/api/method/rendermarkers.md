@@ -1,14 +1,14 @@
 ---
 sidebar_label: renderMarkers
-title: renderMarkers method
-description: "刷新页面上显示的所有标记"
+title: renderMarkers 方法
+description: "更新页面上的所有标记"
 ---
 
 # renderMarkers
 
 ### Description
 
-@short: 刷新页面上显示的所有标记
+@short: 更新页面上的所有标记
 
 @signature: renderMarkers: () =\> void
 
@@ -28,7 +28,7 @@ gantt.renderMarkers(); /*!*/
 ### Details
 
 :::note
- 该方法是 **marker** 扩展的一部分，请确保已启用 [marker](guides/extensions-list.md) 插件。更多信息请参考 [添加垂直标记](guides/markers.md) 文章。 
+此方法在 **marker** 扩展中定义，因此需要启用 [marker](guides/extensions-list.md#vertical-marker) 插件。请在 [Adding Vertical Markers](guides/markers.md) 文章中阅读详细信息。
 :::
 
 ### Related API

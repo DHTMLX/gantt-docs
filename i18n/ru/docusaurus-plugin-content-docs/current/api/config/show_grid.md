@@ -1,39 +1,39 @@
 ---
 sidebar_label: show_grid
-title: show_grid config
-description: "управляет видимостью области grid диаграммы Ганта"
+title: Конфигурация show_grid
+description: "отображает область сетки диаграммы Ганта"
 ---
 
 # show_grid
 
 ### Description
 
-@short: Управляет видимостью области grid диаграммы Ганта
+@short: Показывает область сетки диаграммы Ганта
 
 @signature: show_grid: boolean
 
 ### Example
 
 ~~~jsx
-//скрывает область grid диаграммы Ганта
+//hides the grid area of the Gantt chart
 gantt.config.show_grid = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true (grid отображается)
+**Значение по умолчанию:** true
 
 ### Details
 
-Установка *gantt.config.show_grid = false* позволяет быстро скрыть область grid диаграммы Ганта, в то время как *gantt.config.show_chart = false* скрывает область timeline. Если вы работаете с простым layout, лучше не использовать эти две опции одновременно, так как это может привести к непредсказуемому поведению. Вместо этого рассмотрите возможность настройки layout через [gantt.config.layout](api/config/layout.md).
+*gantt.config.show_grid = false* полезно, когда вам нужно быстро скрыть область сетки диаграммы Ганта, в то время как *gantt.config.show_chart = false* служит для скрытия области временной шкалы. Если вы работаете в простом макете, лучше не использовать эти две опции вместе, так как это может привести к непредсказуемому результату. Вместо этого следует изменить конфигурацию макета через [gantt.config.layout](api/config/layout.md).
 
-Опция **show_grid** работает только если вы не изменяли [стандартную конфигурацию layout](guides/layout-config.md#defaultlayout) через [gantt.config.layout](api/config/layout.md). Если вы используете кастомный layout, вам нужно создать несколько кастомных конфигураций и переключаться между ними, чтобы показывать или скрывать grid.<br> 
+Конфигурация **show_grid** будет работать только в том случае, если вы не изменили [типовую конфигурацию макета](guides/layout-config.md#default-layout) через [gantt.config.layout](api/config/layout.md). В случае, если вы настроили пользовательскую раскладку, вам придется создать несколько пользовательских конфигураций и переключаться между ними, чтобы скрывать/показывать сетку. 
+
 :::note
-Sample: [Gantt. Toggle grid (custom layout)](https://snippet.dhtmlx.com/omk98l0x) 
-:::
+sample: [Gantt. Toggle grid (custom layout) ](https://snippet.dhtmlx.com/omk98l0x)
+::: 
 
 ### Related API
 - [show_chart](api/config/show_chart.md)
 
 ### Related Guides
-- [Решения](guides/how-to.md#howtotogglegridchart)
-
+- [How-tos](guides/how-to.md#how-to-toggle-gridchart)

@@ -5,12 +5,14 @@ description: "定义存储资源分配信息的数据存储名称"
 ---
 
 # resource_assignment_store
+
 :::info
- 此功能仅在 PRO 版本中可用。 
+此功能仅在 PRO 版本中提供。
 :::
+
 ### Description
 
-@short: 定义存储资源分配信息的数据存储名称
+@short: 指定用于存储资源分配的 dataStore 的名称
 
 @signature: resource_assignment_store: string
 
@@ -20,7 +22,7 @@ description: "定义存储资源分配信息的数据存储名称"
 var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
 ~~~
 
-**Default value:** "resourceAssignments"
+**默认值：** "resourceAssignments"
 
 ### Related samples
 - [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
@@ -54,8 +56,7 @@ gantt.updateTaskAssignments(taskId);
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
 ### Related Guides
-- [资源管理](guides/resource-management.md)
+- [Resource Management](guides/resource-management.md)
 
 ### Change log
-- 版本 7.1 中新增
-
+- 在 v7.1 中新增

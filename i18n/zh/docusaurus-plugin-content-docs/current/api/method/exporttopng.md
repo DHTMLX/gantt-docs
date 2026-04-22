@@ -1,14 +1,14 @@
 ---
 sidebar_label: exportToPNG
 title: exportToPNG method
-description: "导出甘特图为 PNG 图片"
+description: "将甘特图导出为 PNG 格式"
 ---
 
 # exportToPNG
 
 ### Description
 
-@short: 导出甘特图为 PNG 图片
+@short: 将甘特图导出为 PNG 格式
 
 @signature: exportToPNG: (_export_?: any) =\> void
 

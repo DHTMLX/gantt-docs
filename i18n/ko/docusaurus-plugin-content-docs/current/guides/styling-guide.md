@@ -1,318 +1,277 @@
 ---
-title: "Gantt 스타일 작업하기"
-sidebar_label: "Gantt 스타일 작업하기"
+title: "Gantt 스타일 다루기"
+sidebar_label: "Gantt 스타일 다루기"
 ---
 
-# Gantt 스타일 작업하기
+# Gantt 스타일 다루기
 
-dhtmlxGantt는 외관을 사용자 정의할 수 있는 다양한 옵션을 제공합니다. 전체 Gantt 차트의 모양을 변경하려면 [미리 정의된 스킨을 적용](guides/skins.md)할 수 있고, 또는 작업, 링크, 스케일, 그리드 등 개별 요소들의 스타일을 세밀하게 조정할 수 있습니다.
+dhtmlxGantt는 모양을 수정하기 위한 다양한 옵션을 제공합니다. 미리 정의된 스킨 중 하나를 사용하여 간트 차트의 일반적인 모양을 변경하는 것과 구성 요소의 개별 요소(작업, 선, 축척, 격자 등)의 스타일을 조정하는 두 가지를 모두 수행할 수 있습니다.  
 
-이 가이드는 Gantt 차트의 다양한 부분을 스타일링하는 일반적인 방법을 모아, 관련 문서를 더 쉽게 탐색할 수 있도록 도와줍니다. 각 요소별 자세한 정보는 관련 문서를 참고하세요.
+이 가이드에서는 Gantt 구성 요소의 스타일 작업에 대한 일반 지침을 한데 모아 문서를 탐색하는 데 도움이 되도록 정리했습니다.  
+특정 각 요소에 대한 자세한 정보는 관련 문서에 제공됩니다.
 
 ## 그리드 스타일링
 
-그리드 영역의 스타일은 관련 [그리드의 템플릿](guides/table-templates.md)를 통해 수정할 수 있습니다.
+관련 [그리드 템플릿](guides/table-templates.md)을 통해 그리드 영역의 스타일을 변경할 수 있습니다.
 
-### 그리드 컬럼 헤더
+### 그리드 열의 헤더
 
-[grid_header_class](api/template/grid_header_class.md) 템플릿을 사용하면 그리드 컬럼 헤더에 사용자 지정 스타일을 적용할 수 있습니다. 예를 들어, 특정 헤더의 배경색을 변경하려면 다음과 같이 할 수 있습니다:
+그리드 열의 헤더에 사용자 정의 스타일을 적용할 수 있는 [grid_header_class] 템플릿이 있습니다. 예를 들어 다음과 같은 방법으로 특정 그리드 열의 헤더 배경 색상을 변경할 수 있습니다:
 
-~~~js
+~~~jsx
 <style>
-      .updColor{
-        background-color:#ffeb8a!important;
-      }
+    .gantt-grid__header--highlighted {
+        background-color: #ffeb8a !important;
+    }
 </style>
-~~~
 
-~~~js
-gantt.templates.grid_header_class = function(columnName, column){
-  if(columnName == 'duration' ||columnName == 'text')
-    return "updColor";
-};
+gantt.templates.grid_header_class = (columnName) =>
+    (columnName === 'duration' || columnName === 'text')
+        ? 'gantt-grid__header--highlighted'
+        : '';
 ~~~
 
 ![styling_columns_headers](/img/styling_columns_headers.png)
 
+**관련 예제**: [그리드 열 헤더 스타일링](https://snippet.dhtmlx.com/j01gqhtj)
 
-**Related example:** [Styling Headers of Grid Columns](https://snippet.dhtmlx.com/j01gqhtj)
+### 그리드 헤더의 커스텀 요소
 
+그리드 헤더에 버튼, 아이콘, 입력 창 등과 같은 커스텀 요소를 추가할 수 있습니다. 요소를 추가하려면 해당 HTML을 **label** 속성의 값으로 설정하면 됩니다. 내부 구성 옵션은 [**gantt.config.columns**](api/config/columns.md)에서 확인할 수 있습니다:
 
-### 그리드 헤더에 커스텀 요소 추가
-
-버튼, 아이콘, 입력창 등 커스텀 요소를 그리드 헤더에 추가할 수 있습니다. 이를 위해서는 [**gantt.config.columns**](api/config/columns.md) 설정 옵션의 **label** 속성에 해당 요소의 HTML을 지정하면 됩니다:
-
-~~~js
+~~~jsx
 gantt.config.columns = [
-  {name:"add", label:"", width:50, align:"left" },
-  {name:"text", label:"<div class='searchEl'>Task name <input id='search' type='text'"+   /*!*/
-      "placeholder='Search tasks...'></div>", width:250, tree:true},                          /*!*/
-    // other columns
+    {
+        name: "text",
+        label: `<div class="gantt-grid__header-search-wrapper">Task name
+                    <input id="task-search" type="text" placeholder="Search tasks...">
+                </div>`, 
+        width: 250, tree: true
+    },
+    // 다른 열들
 ];
 ~~~
 
-아래는 검색 기능이 구현된 예시입니다:
+검색 기능의 구현은 다음과 같습니다:
 
-~~~js 
-var inputEl = document.getElementById('search');
+~~~jsx 
+const taskSearchInput = document.getElementById('task-search');
 
-inputEl.oninput = function(){
-  gantt.refreshData();
+taskSearchInput.addEventListener('input', () => {
+    gantt.refreshData();
+});
+
+function hasSubstring(parentId, searchValue) {
+    const task = gantt.getTask(parentId);
+    if (!task) return false;
+
+    if (task.text.toLowerCase().includes(searchValue)) {
+        return true;
+    }
+
+    const children = gantt.getChildren(parentId);
+    for (let i = 0; i < children.length; i++) {
+        if (hasSubstring(children[i], searchValue)) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
-function hasSubstr(parentId){
-  var task = gantt.getTask(parentId);
-  if(task.text.toLowerCase().indexOf(inputEl.value.toLowerCase() ) !== -1)
-    return true;
-
-  var child = gantt.getChildren(parentId);
-  for (var i = 0; i < child.length; i++) {
-    if (hasSubstr(child[i]))
-      return true;
-  }
-  return false;
-}
-
-gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
-  if (hasSubstr(id))
-    return true;
-  
-      return false;
+gantt.attachEvent('onBeforeTaskDisplay', (id) => {
+    const searchValue = taskSearchInput.value.toLowerCase().trim();
+    if (!searchValue) return true;
+    return hasSubstring(id, searchValue);
 });
 ~~~
 
 ![custom_elements_grid_header](/img/custom_elements_grid_header.png)
 
+**관련 예제**: [그리드 헤더의 커스텀 요소](https://snippet.dhtmlx.com/8jilpcrg)
 
-**Related example:** [Custom Elements in Grid Header](https://snippet.dhtmlx.com/8jilpcrg)
+#### 그리드 헤더의 아이콘 및 이미지
 
+헤더에 이미지나 아이콘을 추가하려면 셀의 내부 HTML로도 넣을 수 있으며, 이는 **label** 속성에 설정합니다:
 
-#### 그리드 헤더에 아이콘 및 이미지 삽입
-
-헤더에 이미지나 아이콘을 넣으려면 **label** 속성에 해당 요소의 HTML을 추가하면 됩니다:
-
-~~~js
-var textLabel = [
-    "<div class='gantt-text-label'>"+
-    "<img src='http://docs.dhtmlx.com/scheduler/assets/index/icon1.png'>"+
-    "<span>Text</span>" +
-    "</div>"
-].join("");
+~~~jsx
+const textLabel = `
+    <div class="gantt-grid__header-label">
+        <img src="http://docs.dhtmlx.com/scheduler/assets/index/icon1.png" alt="icon">
+        <span>Text</span>
+    </div>
+`;
 
 gantt.config.columns = [
-    {name: "text", label:textLabel,tree: true, width: '*', resize: true},
-    {name: "start_date", align: "center", resize: true},
-    {name: "duration", align: "center"},
-    {name: "add", width: 44}
+    { name: "text", label: textLabel, tree: true, width: "*", resize: true },
+    { name: "start_date", align: "center", resize: true },
+    { name: "duration", align: "center" },
+    { name: "add", width: 44 }
 ];
 ~~~
 
+**관련 예제**: [이미지 in Grid Header: Columns Config](https://snippet.dhtmlx.com/10y58pbv)
 
-**Related example:** [Images in Grid Header: Columns Config](https://snippet.dhtmlx.com/5/55086fc42)
-
-
-또는, CSS의 **.gantt_grid_head_<columnName>** 선택자를 사용해 헤더 셀을 스타일링할 수 있습니다:
+또는 CSS의 셀 헤더를 CSS로 설정할 수도 있습니다. 이때는 **.gantt_grid_head_<columnName>** 선택자를 사용합니다:
 
 ~~~css
-.gantt_grid_head_text  {
-    background-image:url('http://docs.dhtmlx.com/scheduler/assets/index/icon1.png');
-    background-repeat:no-repeat;  
+.gantt_grid_head_text {
+    background-image: url("http://docs.dhtmlx.com/scheduler/assets/index/icon1.png");
+    background-repeat: no-repeat;
 }
 ~~~
 
 ![custom_elements_grid_header_image](/img/custom_elements_grid_header_image.png)
 
+**관련 예제**: [Images in Grid Header:CSS](https://snippet.dhtmlx.com/gvcsrpmb)
 
-**Related example:** [Images in Grid Header:CSS](https://snippet.dhtmlx.com/5/e13d18a10)
+### 그리드 헤더의 다중 행 텍스트
 
+다중 행 텍스트는 [How to display several lines in the grid cell/header](guides/how-to.md#how-to-display-several-lines-in-the-grid-cellheader) 섹션의 예제를 참고하십시오.
 
-### 그리드 헤더의 멀티라인 텍스트
+### 그리드 행의 배경 색
 
-[그리드 셀/헤더에 여러 줄을 표시하는 방법](guides/how-to.md#howtodisplayseverallinesinthegridcellheader) 섹션의 예제를 참고하세요.
+그리드의 모든 행 또는 작업이 포함된 특정 행의 배경 색을 커스텀 색으로 적용하려면 [grid_row_class] 템플릿을 사용합니다. 예를 들어 특정 행의 배경 색을 다음과 같이 바꿀 수 있습니다:
 
-### 그리드 행의 배경색
-
-[grid_row_class](api/template/grid_row_class.md) 템플릿을 사용해 모든 그리드 행 또는 특정 작업이 포함된 행의 배경색을 지정할 수 있습니다. 예를 들어, 특정 행의 배경색을 변경하려면:
-
-~~~js
+~~~jsx
 <style>
-  .updColor{
-      background-color:#ffeb8a!important;  
-  }
+    .gantt-grid__row--highlight {
+        background-color: #ffeb8a !important;
+    }
 </style>
-~~~
 
-~~~js
-gantt.templates.grid_row_class = function(start, end, task){
- if(task.id == 12)
-    return "updColor";
-};
+gantt.templates.grid_row_class = (start, end, task) =>
+    task.id === 3 ? "gantt-grid__row--highlight" : "";
 ~~~
 
 ![grid_row_bg](/img/grid_row_bg.png)
 
+**관련 예제**: [Coloring Grid Rows](https://snippet.dhtmlx.com/y0dbph4x)
 
-**Related example:** [Coloring Grid Rows](https://snippet.dhtmlx.com/y0dbph4x)
+### 마우스 올리기 시 그리드 행 색상
 
+마우스 오버 시 그리드 행을 하이라이트하려면 아래 스타일 규칙을 적용합니다:
 
-### 그리드 행 마우스오버 색상
-
-마우스를 올렸을 때 그리드 행을 강조하려면 다음 스타일을 적용하세요:
-
-~~~js
+~~~css
 .gantt_grid_data .gantt_row.odd:hover, .gantt_grid_data .gantt_row:hover,
 .gantt_grid_data .gantt_row.gantt_selected,
 .gantt_grid_data .gantt_row.odd.gantt_selected,
-.gantt_task_row.gantt_selected{
+.gantt_task_row.gantt_selected {
     background-color: cyan; 
 }
 ~~~
 
 ![grid_row_hover_color](/img/grid_row_hover_color.png)
 
+**관련 예제**: [Hover 시 그리드 행 색상 변경](https://snippet.dhtmlx.com/730ig4ck)
 
-**Related example:** [Coloring Grid Rows on Hover](https://snippet.dhtmlx.com/730ig4ck)
+### 그리드 열 맞춤화 {#customizationgridcolumns}
 
+dhtmlxGantt는 [gantt.config.columns](api/config/columns.md) 설정 옵션의 **template** 속성을 통해 기본 그리드 열의 모양을 수정할 수 있는 기능을 제공합니다.
 
-### 그리드 컬럼 커스터마이징 {#customizationgridcolumns}
+**template** 속성은 데이터 아이템 객체를 매개변수로 받아 최종 데이터 템플릿을 반환하는 함수입니다. 이 함수 정의를 통해 거의 모든 콘텐츠를 표현할 수 있습니다. 예를 들어, 그리드 행의 텍스트 기본 색상을 변경하거나 그리드 열에 커스텀 요소를 사용할 수 있습니다.
 
-dhtmlxGantt는 [**gantt.config.columns**](api/config/columns.md) 설정 옵션의 **template** 속성을 통해 그리드 컬럼의 기본 모양을 사용자 정의할 수 있습니다.
+#### 그리드 행의 텍스트 색
 
-**template** 속성은 데이터 항목 객체를 받아 최종 컨텐츠를 반환하는 함수입니다. 이를 통해 거의 모든 형태의 컨텐츠 커스터마이징이 가능합니다. 예를 들어, 그리드 행의 텍스트 색상을 변경하거나, 컬럼에 커스텀 요소를 삽입할 수 있습니다.
+작업의 우선순위에 따라 텍스트 색상을 정의할 수 있습니다:
 
-#### 그리드 행의 텍스트 색상
-
-작업의 우선순위에 따라 텍스트 색상을 지정하려면 다음과 같이 할 수 있습니다:
-
-~~~js
-gantt.config.columns="["
-    {name:"text",       label:"Task name",  tree:true, width:230, template:myFunc },   /*!*/
-    {name:"start_date", label:"Start time", align: "center" },
-    {name:"duration",   label:"Duration",   align: "center" }
+~~~jsx
+gantt.config.columns = [
+    { name: "text", label: "Task name", tree: true, width: 230,
+        template: gridTaskTextTemplate 
+    },
+    { name: "start_date", label: "Start time", align: "center" },
+    { name: "duration", label: "Duration", align: "center" }
 ];
 
-function myFunc(task){
-    if(task.priority ==1)
-        return "<div class='important'>"+task.text+" ("+task.users+") </div>";
-    return task.text+" ("+task.users+")";
-};
+function gridTaskTextTemplate (task) {
+    const text = `${task.text} (${task.users})`;
+    if (task.priority === 1) {
+        return `<div class="gantt-grid__text--important">${text}</div>`;
+    }
+    return text;
+}
 ~~~
 
 ![columns_text_color](/img/columns_text_color.png)
 
+**관련 예제**: [Template for tree nodes](https://docs.dhtmlx.com/gantt/samples/04_customization/05_tree_template.html)
 
-[Template for tree nodes](https://docs.dhtmlx.com/gantt/samples/04_customization/05_tree_template.html)
+#### 그리드 열에 커스텀 요소 추가
 
+그리드 열에 버튼, 입력 창 등과 같은 커스텀 요소를 추가하려면 열의 **template** 속성에 해당 요소의 HTML을 설정합니다:
 
-
-#### 그리드 컬럼의 커스텀 요소
-
-버튼이나 입력창 등 커스텀 요소를 그리드 컬럼에 추가하려면, 해당 컬럼의 **template** 속성에 요소의 HTML을 지정하세요:
-
-~~~js
-var colContent = function (task) {
-    return ('<i class="fa gantt_button_grid gantt_grid_edit fa-pencil"'+
-                'onclick="clickGridButton(' + task.id + ', 'edit')"></i>' +
-            '<i class="fa gantt_button_grid gantt_grid_add fa-plus"'+
-                'onclick="clickGridButton(' + task.id + ', 'add')"></i>' +
-            '<i class="fa gantt_button_grid gantt_grid_delete fa-times"'+
-                'onclick="clickGridButton(' + task.id + ', 'delete')"></i>');
-};
+~~~jsx
+function gridColumnTemplate (task) {
+    return `
+        <i class="fa fa-pencil" onclick="clickGridButton(${task.id}, 'edit')"></i>
+        <i class="fa fa-plus" onclick="clickGridButton(${task.id}, 'add')"></i>
+        <i class="fa fa-times" onclick="clickGridButton(${task.id}, 'delete')"></i>
+    `;
+}
 
 gantt.config.columns = [
-    {name: "text", tree: true, width: '*', resize: true},
-    {name: "start_date", align: "center", resize: true},
-    {name: "duration", align: "center"},
-    {name: "buttons", label: colHeader, width: 75, template: colContent}  /*!*/
+    { name: "text", tree: true, width: "*", resize: true },
+    { name: "start_date", align: "center", resize: true },
+    { name: "duration", align: "center" },
+    { name: "buttons", width: 75, label: gridColumnHeaderTemplate,
+        template: gridColumnTemplate /*!*/
+    }
 ];
 ~~~
 
 ![custom_elements_grid_columns](/img/custom_elements_grid_columns.png)
 
+**관련 예제**: [Custom Buttons in a Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/07_custom_buttons.html)
 
-[Custom Buttons in a Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/07_custom_buttons.html)
+#### 그리드 셀의 다중 행 텍스트
 
+다중 행 텍스트에 대한 예제는 [How to display several lines in the grid cell/header](guides/how-to.md#how-to-display-several-lines-in-the-grid-cellheader) 섹션의 예제를 참조하십시오.
 
-#### 긴 텍스트를 말줄임표로 표시
+## 축척 스타일링
 
-Gantt는 그리드 행에서 긴 텍스트를 자동으로 축약해 보여줍니다.
+축척 스타일링은 관련 [타임라인 영역 템플릿](guides/timeline-templates.md)으로 정의됩니다.
 
-버전 7.0부터는 **.gantt_tree_content** CSS 클래스를 재정의하여 말줄임표로 표시할 수 있습니다:
+### 축척 행
 
-~~~js
+축척 행의 스타일은 [scale_row_class] 템플릿으로 정의할 수 있습니다. 예를 들어 배경 색상을 정의하려면:
+
+~~~jsx
 <style>
-.gantt_tree_content {
-    overflow:hidden;
-    text-overflow: ellipsis;
-}
-</style>
-
-gantt.init("gantt_here");
-~~~
-
-![truncate_text](/img/truncate_text.png)
-
-
-**Related example:** [Truncate long text with ellipsis](https://snippet.dhtmlx.com/d82twxd8)
-
-
-#### 그리드 셀 내 멀티라인 텍스트
-
-[그리드 셀/헤더에 여러 줄을 표시하는 방법](guides/how-to.md#howtodisplayseverallinesinthegridcellheader) 섹션의 예제를 참고하세요.
-
-## 스케일 스타일링
-
-스케일의 스타일은 [타임라인 영역의 관련 템플릿](guides/timeline-templates.md)으로 제어합니다.
-
-### 스케일 행
-
-**scale_row_class** 템플릿을 사용해 스케일 행의 스타일을 지정할 수 있습니다. 예를 들어, 배경색을 지정하려면:
-
-~~~js
-<style>
-  .updColor{
-      background-color:#ffeb8a!important      
-  }
+    .gantt-scale__row--highlight {
+        background-color: #ffeb8a !important;
+    }
 </style>
 ~~~
 
-~~~js
-gantt.templates.scale_row_class = function(scale){           
-    return "updColor";
-}
+~~~jsx
+gantt.templates.scale_row_class = (scale) => "gantt-scale__row--highlight";
 ~~~
 
 ![color_scale_row](/img/color_scale_row.png)
  
+**관련 예제**: [Styling Row of the Scale](https://snippet.dhtmlx.com/7ngm6yzk)
 
-**Related example:** [Styling Row of the Scale](https://snippet.dhtmlx.com/7ngm6yzk)
+### 축척 셀
 
+축척의 특정 셀을 스타일링할 수 있도록 [scale_cell_class] 템플릿도 있습니다. 예를 들어 타임라인 영역의 특정 날짜를 색상으로 표시할 수 있습니다:
 
-### 스케일 셀
-
-**scale_cell_class** 템플릿을 사용해 특정 스케일 셀을 스타일링할 수 있습니다. 예를 들어, 주말을 강조하려면:
-
-~~~js
-gantt.templates.scale_cell_class = function(date){
-    if(date.getDay()==0||date.getDay()==6){
-        return "updColor";
-    }
-};
+~~~jsx
+gantt.templates.scale_cell_class = date =>
+    date.getDay() === 0 || date.getDay() === 6 ? "gantt-scale__cell--highlight" : "";
 ~~~
 
 ![styling_scale_cells](/img/styling_scale_cells.png)
 
+**관련 예제**: [Styling Separate Cells on the Scale](https://snippet.dhtmlx.com/emdjgwln)
 
-**Related example:** [Styling Separate Cells on the Scale](https://snippet.dhtmlx.com/emdjgwln)
+축척 설정에 대한 자세한 내용은 관련 기사 [Setting up Scale](guides/configuring-time-scale.md#styling) 및 [Highlighting Time Slots](guides/highlighting-time-slots.md)를 참조하십시오.
 
+### 서브 스케일
 
-자세한 내용은 [스케일 설정하기](guides/configuring-time-scale.md#settingthescalesstyle) 및 [타임 슬롯 하이라이트하기](guides/highlighting-time-slots.md)를 참고하세요.
+축척에 새로운 스타일을 지정하려면 [scales](api/config/scales.md) 속성의 css 속성을 사용할 수 있습니다. 예를 들어 주말에 특정 색상을 설정하려면 다음과 같이 합니다:
 
-### 서브스케일
-
-[scales](api/config/scales.md) 속성의 **css** 속성을 통해 스케일에 새로운 스타일을 지정할 수 있습니다. 예를 들어, 주말을 다른 색으로 표시하려면:
-
-~~~js
+~~~jsx
 <style type="text/css">
     .weekend{
         background: #F0DFE5 !important;
@@ -320,389 +279,335 @@ gantt.templates.scale_cell_class = function(date){
 </style>
 ~~~
 
-~~~js
-var daysStyle = function(date){
-    var dateToStr = gantt.date.date_to_str("%D");
-    if (dateToStr(date) == "Sun"||dateToStr(date) == "Sat")  return "weekend";
-
-    return "";
+~~~jsx
+const isWeekendStyle = (date) => {
+    const day = gantt.date.day_start(date).getDay();
+    return (day === 0 || day === 6) ? "gantt-scale__cell--weekend" : "";
 };
 
 gantt.config.scales = [
-    {unit:"day", format:"%D", css:daysStyle }
+    // 기타 축척
+    { unit: "day", format: "%D", css: isWeekendStyle }
 ];
 ~~~
 
 ![styling_subscale](/img/styling_subscale.png)
 
 
-[Multiple scales](https://docs.dhtmlx.com/gantt/samples/03_scales/01_multiple_scales.html)
+**관련 예제**: [Multiple scales](https://docs.dhtmlx.com/gantt/samples/03_scales/01_multiple_scales.html)
 
+## Styling Tasks
 
-## 작업(Task) 스타일링
+작업의 스타일은 타임라인 영역의 해당 [템플릿](guides/timeline-templates.md)을 통해 변경할 수 있습니다.
 
-작업 스타일링은 [타임라인 영역의 관련 템플릿](guides/timeline-templates.md)을 통해 커스터마이즈할 수 있습니다.
+### 작업 막대
 
-### 작업 바
+작업의 스타일을 업데이트하려면 [task_class] 템플릿을 재정의하세요.  
+자세한 내용은 [Tasks Coloring](guides/colouring-tasks.md#redefiningthetaskstemplate) 문서를 참고합니다.
 
-[task_class](api/template/task_class.md) 템플릿을 재정의하여 작업 스타일을 변경할 수 있습니다. 자세한 내용은 [Tasks Coloring](guides/colouring-tasks.md#redefiningthetaskstemplate)를 참고하세요.
-
-~~~js
-gantt.templates.task_class = function(start, end, task){return "";};
+~~~jsx
+gantt.templates.task_class = (start, end, task) => "";
 ~~~
 
 ![coloring_tasks](/img/coloring_tasks.png)
 
+**관련 예제**: [Task styles](https://docs.dhtmlx.com/gantt/samples/04_customization/04_task_styles.html)
 
-[Task styles](https://docs.dhtmlx.com/gantt/samples/04_customization/04_task_styles.html)
+템플릿은 스타일을 동적으로 적용할 수 있게 해줍니다. 예를 들어 작업의 진행 상태에 따라 색상을 변경할 수 있습니다:
 
-
-템플릿은 동적 스타일링을 지원합니다. 예를 들어, 작업 진행률에 따라 색상을 변경할 수 있습니다:
-
-~~~js
-gantt.templates.task_class = function(start,end,task){
-    if(task.progress > 0.5){
-        return "";
-    }else{
-        return "important";
-    }
-};
+~~~jsx
+gantt.templates.task_class = (start, end, task) =>
+    task.progress > 0.5 ? "" : "task--low-progress";
 ~~~
 
 ![dynamic_styling](/img/dynamic_styling.png)
 
 
-[Styling task bars with events](https://docs.dhtmlx.com/gantt/samples/04_customization/08_templates.html)
+**관련 예제**: [Styling task bars with events](https://docs.dhtmlx.com/gantt/samples/04_customization/08_templates.html)
 
+### 작업 막대의 텍스트
 
+[task_text](api/template/task_text.md) 템플릿은 작업 막대 텍스트의 스타일을 변경하기 위한 인라인 스타일 사용을 허용합니다:
 
-### 작업 바 텍스트
-
-[task_text](api/template/task_text.md) 템플릿을 사용하면 작업 바 텍스트에 인라인 스타일을 적용할 수 있습니다:
-
-~~~js
-gantt.templates.task_text = function(start, end, task){
-  if(task.id == 12)
-    return "<span style='color:red'>"+task.text+"</span>";
-  
-  return task.text;
-};
+~~~jsx
+gantt.templates.task_text = (start, end, task) =>
+    task.id === 12 ? `<span style="color:red">${task.text}</span>` : task.text;
 ~~~
 
 ![inline_styling_task_text](/img/inline_styling_task_text.png)
 
+**관련 예제**: [Inline Styling of the Task Text](https://snippet.dhtmlx.com/us1g45wg)
 
-**Related example:** [Inline Styling of the Task Text](https://snippet.dhtmlx.com/us1g45wg)
+#### 다중 행 텍스트
 
+[How to display several lines in the grid cell/header](guides/how-to.md#how-to-display-several-lines-in-the-grid-cellheader) 섹션의 예제를 참고하십시오.
 
-#### 멀티라인 텍스트
+### 작업 막대의 커스텀 요소
 
-[예제](https://snippet.dhtmlx.com/55uy7ibo)는 [그리드 셀/헤더에 여러 줄을 표시하는 방법](guides/how-to.md#howtodisplayseverallinesinthegridcellheader) 섹션을 참고하세요.
+작업 막대에도 [task_text](api/template/task_text.md) 템플릿을 통해 커스텀 요소를 삽입할 수 있습니다. 예를 들어 다음과 같은 방법으로 작업 막대에 버튼을 추가할 수 있습니다:
 
-### 작업 바 내 커스텀 요소
-
-[task_text](api/template/task_text.md) 템플릿을 사용해 작업 바 내부에 커스텀 요소를 추가할 수 있습니다. 예를 들어, 버튼을 삽입하려면 다음과 같이 할 수 있습니다:
-
-~~~js
-gantt.templates.task_text = function(start, end, task){  
-  return task.text+" <button>Text</button>";    
-};
+~~~jsx
+gantt.templates.task_text = (start, end, task) => `${task.text} <button>Text</button>`;  
 ~~~
 
 ![custom_elements_task_bars](/img/custom_elements_task_bars.png)
 
+**관련 예제**: [Custom Elements in Task Bars](https://snippet.dhtmlx.com/fahpyr58)
 
-**Related example:** [Custom Elements in Task Bars](https://snippet.dhtmlx.com/fahpyr58)
+### 작업 객체 속성으로 스타일 설정
 
+작업의 색상을 정의하기 위해 작업 객체 구성에 추가 속성을 설정할 수 있습니다. 이 속성은: color, textColor 및 progressColor 입니다.
 
-### 작업 객체 속성을 통한 스타일 지정
-
-작업 객체 설정에 추가 속성을 지정해 작업의 색상을 커스터마이즈할 수 있습니다. 사용 가능한 속성은 **color**, **textColor**, **progressColor** 입니다.
-
-~~~js
-var tasks = {
-  data:[
-     {id:1, text:"Project #1", start_date:"01-04-2013", duration:18, color:"red"},
-     {id:2, text:"Task #1", start_date:"02-04-2013", 
-        duration:8, color:"blue", parent:1}
-   ]
+~~~jsx
+const data = {
+    tasks: [
+        { id: 1, text: "Task #1", start_date: "01-04-2026", duration: 2, color:"red" },
+        { id: 2, text: "Task #2", start_date: "02-04-2026", duration: 3, color:"blue" }
+    ]
 };
+
 gantt.init("gantt_here");
-gantt.parse(tasks);
- 
-gantt.getTask(1).color = "red"
+gantt.parse(data);
+
+const task = gantt.getTask(2);
+task.color = "red";
 ~~~
 
-자세한 내용은 [Tasks Coloring](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject) 문서의 관련 섹션을 참고하세요.
+세부 내용은 [Tasks Coloring](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject) 문서를 참조하십시오.
 
-### 라이트박스를 통한 작업 바 스타일링
+### 라이트박스를 통한 작업 막대 스타일링
 
-미리 정의된 색상 목록을 설정하고 이를 라이트박스 설정의 옵션으로 포함할 수 있습니다. 이를 통해 작업에 텍스트 또는 배경색을 지정할 수 있습니다:
+사전에 정의된 색상 집합을 정의하고 라이트박스 구성에서 옵션으로 지정하여 작업의 텍스트 색상이나 배경 색상을 설정할 수 있습니다:
 
-~~~js
-var colors = [
-    {key:"", label:"Default"},
-    {key:"#4B0082",label:"Indigo"},
-    {key:"#FFFFF0",label:"Ivory"},
-    {key:"#F0E68C",label:"Khaki"}
-    // more colors
+~~~jsx
+const colors = [
+    { key: "", label: "Default" },
+    { key: "#4B0082", label: "Indigo" },
+    { key: "#FFFFF0", label: "Ivory" },
+    { key: "#F0E68C", label: "Khaki" }
+    // 더 많은 색상
 ];
 
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"priority", height:22, map_to:"color", type:"select", options:colors},
-    {name:"textColor", height:22, map_to:"textColor", type:"select", options:colors},
-    {name:"time", type:"duration", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "priority", height: 22, map_to: "color", type: "select", options: colors },
+    { name: "textColor", height: 22, map_to: "textColor", type: "select",
+        options: colors
+    },
+    { name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
 
 ![task_style_property](/img/task_style_property.png)
 
 
-[Specify inline colors for Tasks and Links](https://docs.dhtmlx.com/gantt/samples/04_customization/16_inline_task_colors.html)
-
+**관련 예제**: [Specify inline colors for Tasks and Links](https://docs.dhtmlx.com/gantt/samples/04_customization/16_inline_task_colors.html)
 
 ### 타임라인 영역의 행
 
-[task_row_class](api/template/task_row_class.md) 템플릿을 사용하면 Gantt 작업 뒤의 타임라인 행 색상을 변경할 수 있습니다.
+타임라인 영역의 행 색상을 바꾸려면 [task_row_class] 템플릿을 사용합니다. (Gantt 작업 뒤에 위치하는 타임라인 영역의 행)
 
-~~~js
-gantt.templates.task_row_class = function(start, end, task){
-  if(task.id == 12)
-      return "updColor";
-};
+~~~jsx
+<style>
+    .gantt-timeline__row--highlight {
+        background-color: #ffeb8a !important;
+    }
+</style>
+
+gantt.templates.task_row_class = (start, end, task) =>
+    task.id === 3 ? "gantt-timeline__row--highlight" : "";
 ~~~
 
 ![styling_timeline_row](/img/styling_timeline_row.png)
 
+**관련 예제**: [Styling Rows of the Timeline Area](https://snippet.dhtmlx.com/33jfmwsp)
 
-**Related example:** [Styling Rows of the Timeline Area](https://snippet.dhtmlx.com/33jfmwsp)
+**관련 예제**: [Custom tree formatting](https://docs.dhtmlx.com/gantt/samples/04_customization/02_custom_tree.html)
 
+### 타임라인 셀 하이라이트
 
+요일에 따라 필요한 타임라인 셀을 강조하려면 [timeline_cell_class] 템플릿을 사용합니다. 템플릿 함수는 셀들을 순회하며 지정된 셀에 원하는 CSS 클래스를 적용합니다. 예를 들어 주말을 강조하는 방법은 다음과 같습니다:
 
-[Custom tree formatting](https://docs.dhtmlx.com/gantt/samples/04_customization/02_custom_tree.html)
-
-
-### 타임라인 셀 강조 표시
-
-**timeline_cell_class** 템플릿을 사용하여 요일에 따라 특정 타임라인 셀을 강조 표시할 수 있습니다. 이 템플릿 함수는 셀을 반복하면서 선택된 셀에 CSS 클래스를 적용합니다. 예를 들어, 주말을 다음과 같이 강조할 수 있습니다:
-
-~~~js
+~~~jsx
 <style>
-    .weekend{
-        background: #f4f7f4;
-    }    
-</style>
-~~~
-
-~~~js
-gantt.templates.timeline_cell_class = function(item,date){
-    if(date.getDay()==0||date.getDay()==6){
-        return "weekend"
+    .gantt-timeline__cell--weekend {
+        background-color: #f4f7f4;
     }
-};
+</style>
+
+gantt.templates.timeline_cell_class = (task, date) =>
+    (date.getDay() === 0 || date.getDay() === 6) ? "gantt-timeline__cell--weekend" :"";
 ~~~
 
 ![styling_timeline_cells](/img/styling_timeline_cells.png)
 
+**관련 예제**: [Highlighting weekends](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
 
-[Highlighting weekends](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
+이 주제에 대한 자세한 내용은 [Highlighting Time Slots](guides/highlighting-time-slots.md) 문서를 참조하십시오.
 
-
-자세한 내용은 [타임 슬롯 하이라이트하기](guides/highlighting-time-slots.md) 문서를 참고하세요.
-
-### 외부 요소(베이스라인, 마감일 등) 표시
+### 외부 요소 표시(기준선, 마감일 등)
 
 :::note
-이 기능은 PRO 에디션에서만 사용할 수 있습니다.
+이 기능은 PRO 에디션에서만 제공됩니다.
 :::
 
-베이스라인이나 마감일 마커 등과 같은 추가 요소를 Gantt 차트에 표시할 수 있습니다. 이를 위해 [addTaskLayer](api/method/addtasklayer.md) 메서드를 사용하여 새로운 표시 레이어를 만들고, 여기에 사용자 정의 요소를 추가합니다. 이 메서드는 작업 객체를 받아서 표시할 DOM 요소를 반환하거나, 해당 작업에 요소를 숨기려면 *false*를 반환하는 함수를 인자로 받습니다:
+Gantt에 기준선이나 마감선 마커와 같은 추가 요소를 표시할 수 있습니다. 이를 위해서는 [addTaskLayer](api/method/addtasklayer.md) 메서드를 통해 새로 표시 가능한 레이어를 생성하고 그곳에 커스텀 요소를 배치합니다. 매개변수로는 작업 객체를 받아 표시될 DOM 요소를 반환하거나, false를 반환하는 함수가 전달됩니다(작업에 대한 요소를 숨겨야 하는 경우).
 
-~~~js
-gantt.addTaskLayer(function myNewElement(task) {
-    var el = document.createElement('div');
-    // your code
-    return el;
+~~~jsx
+gantt.addTaskLayer(function createTaskLayerElement(task) {
+    const layerElement = document.createElement('div');
+    // 여기에 코드 작성
+    return layerElement;
 });
 ~~~
 
-이런 외부 요소의 예시는 다음과 같습니다:
+외부 요소의 예시는 다음과 같습니다:
 
-- 베이스라인
+- baselines
 
 ![show_baselines](/img/show_baselines.png)
 
+**관련 예제**: [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
-[Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
-
-
-- 마감일
+- deadlines
 
 ![show_deadlines](/img/show_deadlines.png)
 
+**관련 예제**: [Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
 
-[Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
+외부 요소 표시 방법에 대한 자세한 내용은 [Custom Elements in Timeline Area](guides/baselines.md) 문서를 참조하십시오.
 
+### 작업 도구 설명(tooltips)
 
-더 자세한 내용은 [타임라인 영역의 커스텀 요소](guides/baselines.md) 문서를 참고하세요.
-
-### 작업 툴팁
-
-툴팁은 작업 세부 정보를 간결하게 보여주는 방법입니다.
+작업의 세부 정보를 간단하게 표시하기 위해 도구 팁을 제공할 수 있습니다.
 
 ![default_task_tooltip](/img/default_task_tooltip.png)
 
-기본적으로 [tooltip](guides/extensions-list.md#tooltip) 플러그인을 활성화하면 작업에 툴팁이 표시됩니다.
+도구 팁은 기본적으로 태스크에 대해 자동으로 표시되며 [tooltip](guides/extensions-list.md#tooltip) 플러그인을 활성화하면 사용 가능합니다. 
 
-#### 툴팁 텍스트 커스터마이징
+#### 도구팁의 사용자 정의 텍스트
 
-툴팁 텍스트를 커스터마이즈하려면 [tooltip_text](api/template/tooltip_text.md) 템플릿을 사용하세요:
+도구팁의 사용자 정의 텍스트를 설정하려면 [tooltip_text](api/template/tooltip_text.md) 템플릿을 사용하세요:
 
-~~~js
-gantt.templates.tooltip_text = function(start,end,task){
-    return "<b>Task:</b> "+task.text+"
-
-<b>Duration:</b> " + task.duration;
-};
+~~~jsx
+gantt.templates.tooltip_text = (start, end, task) =>
+    `<b>Task:</b> ${task.text}<br/><b>Duration:</b> ${task.duration}`;
 ~~~
 
-툴팁에 대한 자세한 내용은 [Gantt 요소의 툴팁](guides/tooltips.md) 문서를 참고하세요.
+간트의 도구팁에 대한 자세한 내용은 [Tooltips for Gantt Elements](guides/tooltips.md) 문서를 참조하십시오.
 
-## 링크 스타일링
+## Links 스타일링
 
-[의존성 링크 템플릿](guides/dependency-templates.md) 리소스를 사용하여 의존성 링크의 모양을 커스터마이즈할 수 있습니다.
+의존성 링크의 스타일은 관련 [Dependency Links 템플릿](guides/dependency-templates.md)을 통해 변경할 수 있습니다.
 
 ### 의존성 링크의 선
 
-[link_class](api/template/link_class.md) 템플릿을 사용하면 의존성 선의 색상을 변경할 수 있습니다.
+링크 선의 색상을 변경하려면 [link_class] 템플릿을 사용합니다.
 
-~~~js
-gantt.templates.link_class = function(link){
-    return "";
-};
+~~~jsx
+gantt.templates.link_class = (link) => "";
 ~~~
 
 ![coloring_links](/img/coloring_links.png)
 
+**관련 예제**: [Link styles](https://docs.dhtmlx.com/gantt/samples/04_customization/03_link_styles.html)
 
-[Link styles](https://docs.dhtmlx.com/gantt/samples/04_customization/03_link_styles.html)
+더 자세한 내용은 관련 문서 [Links Coloring and Styling](guides/colouring-lines.md)을 참조하십시오.
 
+### 링크 객체의 속성으로 색상 지정
 
-추가 정보는 [링크 색상 및 스타일링](guides/colouring-lines.md) 문서에서 확인할 수 있습니다.
+링크 객체의 color 속성을 지정하여 의존성 링크의 색상을 커스텀으로 설정할 수도 있습니다:
 
-### 링크 객체 속성을 통한 링크 색상 지정
-
-링크 객체에 **color** 속성을 추가하여 의존성 링크의 색상을 직접 지정할 수도 있습니다:
-
-~~~js
-var tasks = {
-  data:[
-     // tasks configuration
-  ],
-  links:[
-     {id:1, source:1, target:2, type:"1", color:"red"}, 
-     {id:2, source:2, target:3, type:"0", color:"blue"}
-  ]
+~~~jsx
+const data = {
+    tasks: [
+        // 작업 구성
+    ],
+    links: [
+        { id: 1, source: 1, target: 2, type: "1", color: "red" },
+        { id: 2, source: 2, target: 3, type: "0", color: "blue" }
+    ]
 };
- 
+
 gantt.init("gantt_here");
-gantt.parse(tasks);
- 
+gantt.parse(data);
+
 gantt.getLink(2).color = "blue";
 ~~~
 
-자세한 내용은 [링크 색상 및 스타일링](guides/colouring-lines.md#specifyingcolorinthepropertiesofthelinkobject) 섹션을 참고하세요.
+자세한 내용은 [Links Coloring and Styling](guides/colouring-lines.md#specifyingcolorinthepropertiesofthelinkobject) 문서를 참조하십시오.
 
-### 링크 호버 시 색상 변경
+### 마우스 오버 시 링크 색상
 
-CSS를 사용하여 링크에 마우스를 올렸을 때 색상을 변경할 수 있습니다:
+호버 시 링크 색상을 CSS로 수정할 수 있습니다:
 
-~~~js
-.gantt_task_link:hover .gantt_line_wrapper div{
+~~~css
+.gantt_task_link:hover .gantt_line_wrapper div {
     box-shadow: 0 0 5px 0 yellowgreen;
     background: yellowgreen
 }
-  
+
 .gantt_task_link:hover .gantt_link_arrow_left,
-.gantt_task_link:hover .gantt_link_arrow_right{
+.gantt_task_link:hover .gantt_link_arrow_right {
     border-left-color: yellowgreen !important;
     border-right-color: yellowgreen !important;
 }
 ~~~
 
-
-**Related example:** [Link color on hover](https://snippet.dhtmlx.com/z3friavt)
-
-
 ![link_hover_color](/img/link_hover_color.png)
 
-자세한 내용은 [링크 색상 및 스타일링](guides/colouring-lines.md) 문서를 참고하세요.
+더 자세한 내용은 [Links Coloring and Styling](guides/colouring-lines.md)을 참조하십시오.
 
-### 의존성 링크 팝업
+### 의존성 링크의 팝업
 
-[drag_link_class](api/template/drag_link_class.md) 템플릿을 사용하면 작업 간 의존성 선을 드래그할 때 표시되는 팝업의 스타일을 지정할 수 있습니다. 예를 들어, 팝업의 배경 및 텍스트 색상을 조정할 수 있습니다:
+[drag_link_class] 템플릿은 사용자가 작업 간 의존성 선을 드래그하기 시작할 때 나타나는 팝업의 스타일을 지정할 수 있습니다. 예를 들어 팝업의 배경색을 색칠하고 팝업 텍스트의 색상을 변경할 수 있습니다:
 
-~~~js
+~~~jsx
 <style>
-  .gantt_link_tooltip{color:red; background-color:yellow} 
-</style> 
-~~~
+    .gantt_link_tooltip {
+        color: red;
+        background-color: yellow;
+    }
+</style>
 
-~~~js
-gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
-    return "gantt_link_tooltip" ;
-};
+gantt.templates.drag_link_class = (from, from_start, to, to_start) =>
+    `gantt_link_tooltip`;
 ~~~
 
 ![styling_link_popup](/img/styling_link_popup.png)
 
+**관련 예제**: [Styling the Popup of Dependency Link](https://snippet.dhtmlx.com/7o5f261z)
 
-**Related example:** [Styling the Popup of Dependency Link](https://snippet.dhtmlx.com/7o5f261z)
-
-
-더 많은 정보는 [의존성 링크 템플릿](guides/dependency-templates.md) 문서에 있습니다.
+주제에 대한 더 자세한 내용은 [Templates of Dependency Links](guides/dependency-templates.md) 문서를 참고하십시오.
 
 ### UI에서 링크 값 편집
 
-작업 바를 편집하고 스타일링할 수 있는 라이트박스는 제공되지만, 링크를 편집할 수 있는 내장 UI는 없습니다. 그러나 
-[별도의 문서](guides/crud-dependency.md#editinglinkvaluesfromui)를 참고하여 직접 인터페이스를 구축할 수 있습니다.
+작업 막대에 대한 편집 및 스타일링을 위한 라이트박스가 있지만, 링크를 편집하기 위한 기본 UI는 제공되지 않습니다. 그래도 아래의 방법으로 직접 UI를 만들 수 있습니다. 자세한 내용은 [dedicated article](guides/crud-dependency.md#editing-link-values-from-ui)을 참조하십시오.
 
 ![link_edit_ui](/img/link_edit_ui.png)
 
+**관련 예제**: [Custom UI for Editing Link Values](https://snippet.dhtmlx.com/2208ic0t)
 
-**Related example:** [Custom UI for Editing Link Values](https://snippet.dhtmlx.com/2208ic0t)
+## Styling Quick Info Popup
 
+Quick Info 팝업의 스타일링은 ['Quick Info' Extension (Touch Support) 템플릿](guides/touch-templates.md)으로 정의됩니다.
 
-## 퀵 인포 팝업 스타일링
+필요한 스타일을 팝업 편집 양식에 적용하려면 [quick_info_class] 템플릿을 사용합니다. 예를 들어 특정 작업의 Quick Info 팝업을 다음과 같이 스타일링할 수 있습니다:
 
-퀵 인포(Quick Info) 팝업 스타일은 ['Quick Info' 확장(터치 지원)의 템플릿](guides/touch-templates.md) 템플릿을 통해 제어됩니다.
-
-[quick_info_class](api/template/quick_info_class.md) 템플릿을 사용하여 팝업 편집 폼에 스타일을 적용할 수 있습니다. 예를 들어, 특정 작업에 대해 퀵 인포 팝업을 스타일링하려면 다음과 같이 합니다:
-
-~~~js
+~~~jsx
 <style>
-  .updColor{
-      background-color:#ffeb8a!important;
-  }
-  .updColor .gantt_cal_qi_title{
-      background-color:#ffeb8a!important;
-  }
+    .quick-info-highlight {
+        background-color: #ffeb8a !important;
+    }
+    .quick-info-highlight .gantt_cal_qi_title {
+        background-color: #ffeb8a !important;
+    }
 </style>
-~~~
 
-~~~js
-gantt.templates.quick_info_class = function(start, end, task){ 
-  if(task.id == "12")
-    return "updColor";
-  
-      return ""
-};
+gantt.templates.quick_info_class = (start, end, task) =>
+    task.id === "2" ? "quick-info-highlight" : "";
 ~~~
 
 ![styling_quick_info](/img/styling_quick_info.png)
 
-
-**Related example:** [Styling Quick Info Popup](https://snippet.dhtmlx.com/b92gyqwu)
-
-
+**관련 예제**: [Styling Quick Info Popup](https://snippet.dhtmlx.com/b92gyqwu)

@@ -1,16 +1,18 @@
 ---
 sidebar_label: branch_loading
-title: branch_loading config
-description: "позволяет диаграмме Ганта загружать данные динамически"
+title: branch_loading конфигурация
+description: "Включение динамической загрузки в диаграмме Ганта"
 ---
 
 # branch_loading
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в версии PRO.
 :::
+
 ### Description
 
-@short: Позволяет диаграмме Ганта загружать данные динамически
+@short: Включение динамической загрузки в диаграмме Ганта
 
 @signature: branch_loading: boolean
 
@@ -24,11 +26,11 @@ gantt.init("gantt_here");
 gantt.load("/data"); /*!*/
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Related samples
-- [Loading subtasks on demand (branch loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
-- [Performance tweaks](https://docs.dhtmlx.com/gantt/samples/08_api/10_performance_tweaks.html)
+- [Загрузка подзадач по требованию (branch loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
+- [Оптимизация производительности](https://docs.dhtmlx.com/gantt/samples/08_api/10_performance_tweaks.html)
 
 
 ### Related API
@@ -37,4 +39,3 @@ gantt.load("/data"); /*!*/
 ### Related Guides
 - [Производительность: Способы улучшения](guides/performance.md)
 - [Динамическая загрузка (по требованию)](guides/dynamic-loading.md)
-

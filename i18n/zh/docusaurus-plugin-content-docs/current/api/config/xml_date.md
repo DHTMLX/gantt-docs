@@ -1,14 +1,18 @@
 ---
 sidebar_label: xml_date
 title: xml_date config
-description: "指定用于从数据集解析数据和向服务器发送数据的日期格式"
+description: "定义用于从数据集解析数据以及向服务器发送数据的日期格式"
 ---
 
 # xml_date
 
+:::warning
+该属性已被弃用。
+:::
+
 ### Description
 
-@short: 指定用于从数据集解析数据和向服务器发送数据的日期格式
+@short: 定义用于从数据集解析数据以及向服务器发送数据的日期格式
 
 ### Example
 
@@ -19,12 +23,12 @@ gantt.init("gantt_here");
 gantt.load("../data/tasks.json");
 ~~~
 
-**Default value:** "%d-%m-%Y %H:%i"
+**默认值：** "%d-%m-%Y %H:%i"
 
 ### Details
 
 :::note
- **xml_date** 属性已废弃。请改用 [date_format](api/config/date_format.md): 
+属性 **xml_date** 已弃用。请改用 [date_format](api/config/date_format.md) 代替：
 :::
 
 ~~~js
@@ -42,5 +46,4 @@ gantt.load("../data/tasks.json");
 - [日期格式规范](guides/date-format.md)
 
 ### Change log
-- 自 v6.2 起废弃，自 v7.0 起移除
-
+- 自 v6.2 版本起已弃用，自 v7.0 版本起已移除

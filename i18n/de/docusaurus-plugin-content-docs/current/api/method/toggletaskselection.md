@@ -1,20 +1,20 @@
 ---
 sidebar_label: toggleTaskSelection
 title: toggleTaskSelection method
-description: "wechselt den Auswahlstatus der angegebenen Aufgabe - wählt sie aus, wenn sie nicht ausgewählt ist, oder hebt die Auswahl auf, wenn sie bereits ausgewählt ist"
+description: "Wählt die angegebene Aufgabe aus, falls sie zuvor nicht ausgewählt war, und umgekehrt"
 ---
 
 # toggleTaskSelection
 
 ### Description
 
-@short: Wechselt den Auswahlstatus der angegebenen Aufgabe - wählt sie aus, wenn sie nicht ausgewählt ist, oder hebt die Auswahl auf, wenn sie bereits ausgewählt ist
+@short: Wählt die angegebene Aufgabe aus, falls sie zuvor nicht ausgewählt war, und umgekehrt
 
 @signature: toggleTaskSelection: (taskId: string | number) =\> void
 
 ### Parameters
 
-- `taskId` - (required) *string | number* -        die ID der Aufgabe
+- `taskId` - (erforderlich) *string | number* - die ID der Aufgabe
 
 ### Example
 
@@ -26,7 +26,7 @@ gantt.render();
 ### Details
 
 :::note
- Diese Methode ist Teil der **multiselect**-Erweiterung. Stellen Sie daher sicher, dass das [multiselect](guides/extensions-list.md#multitaskselection) Plugin zuerst aktiviert ist. Für weitere Details siehe den Artikel ["Multi-Task-Auswahl"](guides/multiselection.md). 
+Diese Methode ist in der **multiselect**-Erweiterung definiert, daher müssen Sie das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktivieren. Lesen Sie die Details im [Multi-Task Selection](guides/multiselection.md) Artikel.
 :::
 
 ### Related API
@@ -38,5 +38,4 @@ gantt.render();
 - [isSelectedTask](api/method/isselectedtask.md)
 
 ### Related Guides
-- ["Multi-Task-Auswahl"](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

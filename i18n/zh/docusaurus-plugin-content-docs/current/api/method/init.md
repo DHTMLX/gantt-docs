@@ -1,22 +1,20 @@
 ---
 sidebar_label: init
 title: init method
-description: "在指定的容器内设置一个 dhtmlxGantt"
+description: "在一个容器中初始化一个 dhtmlxGantt"
 ---
 
 # init
 
 ### Description
 
-@short: 在指定的容器内设置一个 dhtmlxGantt
+@short: 在一个容器中初始化一个 dhtmlxGantt
 
 @signature: init: (container: string | HTMLElement, from?: Date, to?: Date) =\> void
 
 ### Parameters
 
-- `container` - (required) *string | HTMLElement* -        用于创建 dhtmlxGantt 的 HTML 容器（或其 id）
-- `from` - (optional) *Date* - 时间刻度（X 轴）的起始点
-- `to` - (optional) *Date* - 时间刻度（X 轴）的结束点
+- `container` - (required) *string* - | HTMLElement        一个 HTML 容器（或其 id），将在其中初始化一个 dhtmlxGantt 对象
 
 ### Example
 
@@ -30,20 +28,20 @@ gantt.load("tasks.json");
 
 ### Details
 
-向此方法提供第 2 和第 3 个参数，是设置时间刻度范围的简便方式:
+使用该方法的第 2 个和第 3 个参数来设置时间尺度的边界值是一种很好的做法：
 
 ~~~js
 gantt.init("gantt_here", new Date(2023, 08, 10), new Date(2023, 08, 20));
 ~~~
 
-请注意，`gantt.init` 中的日期参数相当于对 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 配置的快捷设置。
-下面的两个示例效果相同:
+请注意，`gantt.init` 方法的日期参数只是 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 配置的简写。
+下面的两个代码片段彼此等价：
 
 ~~~js
 gantt.init("gantt_here", new Date(2023, 08, 10), new Date(2023, 08, 20));
 ~~~
 
-和
+以及
 
 ~~~js
 gantt.config.start_date = new Date(2023, 08, 10);
@@ -51,14 +49,14 @@ gantt.config.end_date = new Date(2023, 08, 20);
 gantt.init("gantt_here");
 ~~~
 
-这些设置定义并限制了可见的日期范围，超出此范围的任务将不会显示。
+这些配置的作用是定义并限制显示的日期范围。超出该范围的任务将不会被显示。
 
-在 `gantt.init` 中使用日期参数，或使用 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 配置，会覆盖 [fit_tasks](api/config/fit_tasks.md) 选项。
+使用 `gantt.init` 方法的日期参数，以及 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 配置，将取消 [fit_tasks](api/config/fit_tasks.md) 设置。
 
-如果你希望时间刻度根据日期范围自动调整，可以省略这些参数，或[动态处理时间范围](guides/configuring-time-scale.md)。
+如果你希望时间刻度根据日期范围动态调整，可以跳过这些参数，或 [动态管理时间范围](guides/configuring-time-scale.md#range)。
 
 :::note
- 此方法会重置通过 [addTaskLayer](api/method/addtasklayer.md) 和 [addLinkLayer](api/method/addlinklayer.md) 方法添加到时间线区域的任何自定义层。因此，在调用 **gantt.init** 后，需要重新应用这些自定义层，才能使它们在页面上显示。 
+本方法会通过 [addTaskLayer](api/method/addtasklayer.md) 和 [addLinkLayer](api/method/addlinklayer.md) 方法添加到时间线区域的自定义图层进行重置。因此，在调用 **gantt.init** 方法后，你需要重新定义这些自定义图层，以便它们在页面上显示。 
 :::
 
 ### Related API
@@ -67,5 +65,4 @@ gantt.init("gantt_here");
 - [fit_tasks](api/config/fit_tasks.md)
 
 ### Related Guides
-- [dhtmlxGantt 在纯 JS/HTML 中的使用](guides/initializing-gantt-chart.md)
-
+- [dhtmlxGantt in Plain JS/HTML](guides/initializing-gantt-chart.md)

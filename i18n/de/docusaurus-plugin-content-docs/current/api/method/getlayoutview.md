@@ -1,48 +1,47 @@
 ---
 sidebar_label: getLayoutView
-title: getLayoutView method
-description: "Ruft das Layout-View-Objekt anhand seines Namens ab"
+title: getLayoutView-Methode
+description: "liefert das Objekt der Layout-Ansicht anhand des Namens"
 ---
 
 # getLayoutView
 
 ### Description
 
-@short: Ruft das Layout-View-Objekt anhand seines Namens ab
+@short: Liefert das Objekt der Layout-Ansicht anhand seines Namens
 
 @signature: getLayoutView: (name: string) =\> any
 
 ### Parameters
 
-- `name` - (required) *string* - der Name des Layout-Views
+- `name` - (required) *string* - der Name der Layout-Ansicht
 
 ### Returns
-- ` view` - (object) - das Layout-View-Objekt
+- ` view` - (object) - das Objekt der Layout-Ansicht
 
 ### Example
 
 ~~~jsx
 gantt.getLayoutView("resourceTimeline").posFromDate(new Date(2025, 05, 08));
-// gibt 210 zurück
+ // returns 210
 
 gantt.getLayoutView("resourceTimeline").dateFromPos(210);
-// gibt 08. Juni 2025 zurück
+ // returns 08 June, 2025
 ~~~
 
 ### Details
 
-Diese Methode ermöglicht den Zugriff auf das Layout-View-Objekt und somit die Nutzung mehrerer nützlicher Methoden. Dazu gehören:
+Die Methode ermöglicht das Anwenden einiger Methoden auf das zurückgegebene Objekt der Layout-Ansicht. Die Methoden sind:
 
-- [dateFromPos](api/method/datefrompos.md) - ruft das Datum ab, das einer bestimmten horizontalen Position innerhalb des Views entspricht
-- [posFromDate](api/method/posfromdate.md) - ermittelt die relative horizontale Position für ein gegebenes Datum im View
-- [getScale](api/method/getscale.md) - holt die Konfigurationsdetails der Zeitskala des Views
+- [dateFromPos](api/method/datefrompos.md) - erhält das Datum der angegebenen horizontalen Position im View
+- [posFromDate](api/method/posfromdate.md) - erhält die relative horizontale Position des angegebenen Datums im View
+- [getScale](api/method/getscale.md) - gibt die Konfiguration der Zeitachse der View zurück
 
-Um den View zu einer bestimmten Position zu verschieben, kann die Methode [scrollLayoutCell](api/method/scrolllayoutcell.md) verwendet werden.
+Um die Ansicht an die angegebene Position zu scrollen, wende die Methode [scrollLayoutCell](api/method/scrolllayoutcell.md) an.
 
 :::note
-Sample: [Öffentliche Methoden zum Abrufen der Layout-Cell-Views und zum Scrollen derselben](https://snippet.dhtmlx.com/0v4mmoxu) 
+sample: [Öffentliche Methoden zum Abrufen der Layout-Zellenansichten und zum Scrollen dieser](https://snippet.dhtmlx.com/0v4mmoxu)
 :::
 
 ### Related Guides
-- ["Gantt-Layout"](guides/layout-config.md)
-
+- [Gantt-Layout](guides/layout-config.md)

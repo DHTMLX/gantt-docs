@@ -1,23 +1,23 @@
 ---
 sidebar_label: getGlobalTaskIndex
-title: getGlobalTaskIndex method
-description: "트리 전체에서 작업의 위치를 찾습니다."
+title: getGlobalTaskIndex 메서드
+description: "트리에 있는 태스크의 인덱스를 가져옵니다"
 ---
 
 # getGlobalTaskIndex
 
 ### Description
 
-@short: 트리 전체에서 작업의 위치를 찾습니다.
+@short: 트리에서 태스크의 인덱스를 가져옵니다
 
 @signature: getGlobalTaskIndex: (id: string | number) =\> number
 
 ### Parameters
 
-- `id` - (required) *string | number* -        작업의 고유 식별자
+- `id` - (필수) *string | number* - 태스크 아이디
 
 ### Returns
-- ` index` - (number) - 트리 내 작업의 0부터 시작하는 위치 인덱스
+- `index` - (number) - 트리에서의 태스크 인덱스(0부터 시작하는 번호)
 
 ### Example
 
@@ -42,4 +42,3 @@ var taskIndex = gantt.getTaskIndex("t_1"); // -> 0
 ### Related API
 - [getTaskIndex](api/method/gettaskindex.md)
 - [getTaskByIndex](api/method/gettaskbyindex.md)
-

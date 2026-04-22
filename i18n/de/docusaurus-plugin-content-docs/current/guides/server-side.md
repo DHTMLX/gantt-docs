@@ -1,35 +1,36 @@
 ---
-title: "Serverseitige Integration"
-sidebar_label: "Serverseitige Integration"
+title: "Server-seitige Integration"
+sidebar_label: "Server-seitige Integration"
 ---
 
-# Serverseitige Integration
+# Server-seitige Integration
 
-Die beste Methode, um dhtmlxGantt mit einem Backend zu verbinden, besteht darin, eine RESTful API auf dem Server einzurichten und das Modul [dataprocessor](api/other/dataprocessor.md) auf der Clientseite zu verwenden.
+Der empfohlene Ansatz, um dhtmlxGantt mit einem Backend zu verbinden, besteht darin, eine RESTful API auf dem Server zu implementieren und das [](api/other/dataprocessor.md) Modul auf dem Client zu verwenden.
 
-DataProcessor ist eine integrierte Funktion, die Änderungen an den Gantt-Daten überwacht und Aktualisierungen im benötigten Format an die REST API sendet. Dadurch wird die [Integration mit serverseitigen Plattformen](integrations/howtostart-guides.md) besonders einfach. Bei der Arbeit mit einer Objekt-Datenquelle kann DataProcessor so eingerichtet werden, dass Callbacks für Datenänderungen bereitgestellt werden, was für das Data Binding nützlich ist.
+DataProcessor ist ein integriertes Modul, das Datenänderungen in Gantt überwacht und Updates an die REST-API im angegebenen Format sendet, wodurch eine einfache Integration mit serverseitigen Plattformen ermöglicht wird. Wenn Sie eine Objekt-Datenquelle verwenden, kann DataProcessor so konfiguriert werden, dass Callback-Funktionen für Datenänderungen bereitgestellt werden, die Sie für die Datenbindung nutzen können.
 
-Es gibt auch ein Video-Tutorial, das zeigt, wie man ein Gantt-Diagramm erstellt und Daten darin lädt. Als Beispiel wird Node.js verwendet.
+Sie können sich das Video-Guide anschauen, der zeigt, wie man auf der Seite ein Gantt-Diagramm erstellt und die Daten am Beispiel einer Node.js-Plattform hineinlädt.
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Vorgehensweise {#technique}
 
-Im Allgemeinen müssen Sie folgende Schritte ausführen, um Daten mithilfe einer REST API vom Server zu laden:
+## Technik
 
-### Client-Seite
+Generell benötigen Sie, um Daten von der Serverseite über REST API zu laden, Folgendes:
 
-1) Verwenden Sie die Methode [load](api/method/load.md), um Gantt-Daten zu laden, indem Sie eine URL angeben, die Daten im [JSON](guides/supported-data-formats.md#json)-Format zurückgibt.
+### Clientseitig
 
-2) Erstellen Sie eine DataProcessor-Instanz auf eine der folgenden Arten:
+1) Rufen Sie die [](api/method/load.md) Methode auf, wobei als Parameter die URL spezifiziert wird, die Gantt-Daten im [JSON](/guides/supported-data-formats/) Format zurückgibt.
 
-- Initialisieren Sie DataProcessor und verknüpfen Sie ihn mit dem dhtmlxGantt-Objekt:
+2) Erstellen Sie eine DataProcessor-Instanz auf eine der beiden Arten: 
 
+- DataProcessor initialisieren und an das dhtmlxGantt-Objekt anhängen:
+  
 ~~~js
 gantt.init("gantt_here");
 gantt.load("apiUrl");
 
-// belassen Sie die Reihenfolge der folgenden Zeilen
+// Reihenfolge der Zeilen beibehalten
 const dp = new gantt.dataProcessor("apiUrl");
 dp.init(gantt);
 dp.setTransactionMode("REST");
@@ -40,7 +41,7 @@ dp.deleteAfterConfirmation = true;
 Es wird empfohlen, die zweite Methode zu verwenden.
 :::
 
-- Verwenden Sie die Methode [createDataProcessor](api/method/createdataprocessor.md), indem Sie ein Objekt mit Konfigurationsoptionen übergeben:
+- Die [](api/method/createdataprocessor.md) Methode aufrufen und ein Objekt mit Konfigurationsoptionen als Parameter übergeben:
 
 ~~~js
 const dp = gantt.createDataProcessor({
@@ -50,14 +51,14 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-Weitere Details finden Sie im folgenden Abschnitt.
+Details finden Sie im nächsten Abschnitt.
 
 
-###  DataProcessor erstellen {#createdp}
+###  Creating DataProcessor {#createdp}
 
-Beim Erstellen eines DataProcessor über die API-Methode [createDataProcessor](api/method/createdataprocessor.md) gibt es verschiedene Möglichkeiten, Parameter zu übergeben.
-
-1. Verwenden Sie einen der vordefinierten Request-Modi, wie folgt:
+Während der Erstellung eines DataProcessor über die API-Methode [](api/method/createdataprocessor.md) haben Sie mehrere Optionen, Parameter zu übergeben. 
+  
+1. Verwenden Sie eine der vordefinierten Request-Modi, wie z. B.:
 
 ~~~js
 const dp = gantt.createDataProcessor({
@@ -69,47 +70,47 @@ const dp = gantt.createDataProcessor({
 
 wobei:
 
-- **url** - das Endpoint auf der Serverseite
-- **mode** - die Methode zum Senden von Daten an den Server: "GET" | "POST" | "REST" | "JSON" | "REST-JSON"
-- **deleteAfterConfirmation** - bestimmt, ob eine Aufgabe erst nach Bestätigung der Löschung durch den Server aus dem Gantt entfernt werden soll. Abhängigkeiten und Unteraufgaben werden gelöscht, sobald das Löschen der übergeordneten Aufgabe bestätigt wurde.
+- **url** - die URL zur Serverseite
+- **mode** - der Modus zum Senden von Daten an den Server:  "GET" | "POST" | "REST" | "JSON" | "REST-JSON"
+- **deleteAfterConfirmation** - definiert, ob die Aufgabe aus dem gantt erst nach einer erfolgreichen Serverantwort gelöscht werden darf. Abhängigkeitsverknüpfungen und Unteraufgaben werden nach Bestätigung der Löschung des übergeordneten Elements gelöscht.
 
-2. Übergeben Sie ein benutzerdefiniertes **router**-Objekt:
+2. Ein benutzerdefiniertes **router**-Objekt bereitstellen:
 
 ~~~js
 const dp = gantt.createDataProcessor(router);
 ~~~
 
-- wobei **router** eine Funktion sein kann:
+- wobei **router** entweder eine Funktion ist:
 
 ~~~js
 // entity - "task"|"link"|"resource"|"assignment"
 // action - "create"|"update"|"delete"
 // data - ein Objekt mit Task- oder Link-Daten
-// id – die ID des verarbeiteten Objekts (Task oder Link)
+// id – die id eines verarbeiteten Objekts (Task oder Link)
 const dp = gantt.createDataProcessor((entity, action, data, id) => { 
     switch(action) {
         case "create":
-        return gantt.ajax.post(
+            return gantt.ajax.post(
                 server + "/" + entity,
                 data
-        );
+            );
         break;
         case "update":
-        return gantt.ajax.put(
+            return gantt.ajax.put(
                 server + "/" + entity + "/" + id,
                 data
             );
         break;
         case "delete":
-        return gantt.ajax.del(
+            return gantt.ajax.del(
                 server + "/" + entity + "/" + id
-        );
+            );
         break;
     }
 });
 ~~~
 
-- oder ein Objekt, das wie folgt aufgebaut ist:
+- oder ein Objekt der folgenden Struktur:
 
 ~~~js
 const dp = gantt.createDataProcessor({
@@ -126,7 +127,7 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-Alle Funktionen im **router**-Objekt sollten entweder ein Promise oder ein Data-Response-Objekt zurückgeben. Dadurch kann der dataProcessor die Datenbank-ID anwenden und das **onAfterUpdate**-Event auslösen.
+Alle Funktionen des **router**-Objekts sollten entweder eine Promise oder ein Datenantwort-Objekt zurückgeben. Dies wird benötigt, damit der dataProcessor die Datenbank-ID anwendet und das **onAfterUpdate**-Ereignis des Data Processor hooked.
 
 ~~~js
 const router = (entity, action, data, id) => {
@@ -137,107 +138,106 @@ const router = (entity, action, data, id) => {
 };
 ~~~
 
-Diese Flexibilität ermöglicht es, DataProcessor zum Speichern von Daten in localStorage oder jedem anderen Speicher zu verwenden, der nicht an eine bestimmte URL gebunden ist, oder wenn Erstellung und Löschung von verschiedenen Servern bearbeitet werden.
+So können Sie DataProcessor zum Speichern von Daten im LocalStorage verwenden oder in jedem anderen Speicher, der nicht mit einer bestimmten URL verknüpft ist, oder falls zwei verschiedene Server (URLs) für das Erstellen bzw. Löschen von Objekten verantwortlich sind.
+
+**Beispiel**: [Custom data api - using local storage](https://docs.dhtmlx.com/gantt/samples/08_api/22_data_processor.html)
 
 
-[Custom data api - using local storage](https://docs.dhtmlx.com/gantt/samples/08_api/22_data_processor.html)
+### Request and response details {#requestresponsedetails}
 
-
-### Details zu Requests und Responses {#requestresponsedetails}
-
-Die URLs folgen diesem Muster:
+Die URL ergibt sich aus folgender Regel:
 
 - api/link/id
 - api/task/id
 - api/resource/id
 - api/assignment/id
 
-wobei "api" die in der DataProcessor-Konfiguration gesetzte URL ist.
+wobei "api" die URL ist, die Sie in der dataProcessor-Konfiguration angegeben haben.
 
-Hier eine Liste möglicher Requests und Responses:
+Die Liste möglicher Anfragen und Antworten ist:
 
 <table class="dp_table">
   <tr>
-  <th><b>Aktion</b></th><th><b>HTTP-Methode</b></th><th><b>URL</b></th><th><b>Response</b></th>
+  <th><b>Aktion</b></th><th><b>HTTP-Methode</b></th><th><b>URL</b></th><th><b>Antwort</b></th>
   </tr>
   <tr>
-  <td>Daten laden</td>
+  <td>load data</td>
   <td>GET</td>
   <td>/apiUrl</td>
-  <td>[JSON-Format](guides/supported-data-formats.md#json)</td>
+  <td>[JSON format](/guides/supported-data-formats/)</td>
   </tr>
   <tr><td colspan="4" style="font-weight:bold">Tasks</td></tr>
   <tr>
-  <td>Neue Aufgabe hinzufügen</td>
+  <td>add a new task</td>
   <td>POST</td>
   <td>/apiUrl/task</td>
   <td>("action":"inserted","tid":"id")</td>
   </tr>
   <tr>
-  <td>Aufgabe aktualisieren</td>
+  <td>update a task</td>
   <td>PUT</td>
   <td>/apiUrl/task/id</td>
   <td>("action":"updated")</td>
   </tr>
   <tr>
-  <td>Aufgabe löschen</td>
+  <td>delete a task</td>
   <td>DELETE</td>
   <td>/apiUrl/task/id</td>
   <td>("action":"deleted")</td>
   </tr>
   <tr><td colspan="4" style="font-weight:bold">Links</td></tr>
   <tr>
-  <td>Neuen Link hinzufügen</td>
+  <td>add a new link</td>
   <td>POST</td>
   <td>/apiUrl/link</td>
   <td>("action":"inserted","tid":"id")</td>
   </tr>
   <tr>
-  <td>Link aktualisieren</td>
+  <td>update a link</td>
   <td>PUT</td>
   <td>/apiUrl/link/id</td>
   <td>("action":"updated")</td>
   </tr>
   <tr>
-  <td>Link löschen</td>
+  <td>delete a link</td>
   <td>DELETE</td>
   <td>/apiUrl/link/id</td>
   <td>("action":"deleted")</td>
   </tr>
-  <tr><td colspan="4" style="font-weight:bold">Ressourcen</td></tr>
+  <tr><td colspan="4" style="font-weight:bold">Resources</td></tr>
   <tr>
-  <td>Neue Ressource hinzufügen</td>
+  <td>add a new resource</td>
   <td>POST</td>
   <td>/apiUrl/resource</td>
   <td>("action":"inserted","tid":"id")</td>
   </tr>
   <tr>
-  <td>Ressource aktualisieren</td>
+  <td>update a resource</td>
   <td>PUT</td>
   <td>/apiUrl/resource/id</td>
   <td>("action":"updated")</td>
   </tr>
   <tr>
-  <td>Ressource löschen</td>
+  <td>delete a resource</td>
   <td>DELETE</td>
   <td>/apiUrl/resource/id</td>
   <td>("action":"deleted")</td>
   </tr>
-  <tr><td colspan="4" style="font-weight:bold">Ressourcenzuweisungen</td></tr>
+  <tr><td colspan="4" style="font-weight:bold">Resource Assignments</td></tr>
   <tr>
-  <td>Neue Zuweisung hinzufügen</td>
+  <td>add a new assignment</td>
   <td>POST</td>
   <td>/apiUrl/assignment</td>
   <td>("action":"inserted","tid":"id")</td>
   </tr>
   <tr>
-  <td>Zuweisung aktualisieren</td>
+  <td>update an assignment</td>
   <td>PUT</td>
   <td>/apiUrl/assignment/id</td>
   <td>("action":"updated")</td>
   </tr>
   <tr>
-  <td>Zuweisung löschen</td>
+  <td>delete an assignment</td>
   <td>DELETE</td>
   <td>/apiUrl/assignment/id</td>
   <td>("action":"deleted")</td>
@@ -245,14 +245,14 @@ Hier eine Liste möglicher Requests und Responses:
 </table>
 
 :::note
-Standardmäßig sind Ressourcen und Ressourcenzuweisungen nicht in DataProcessor-Requests enthalten. Um sie einzubeziehen, müssen Sie dies explizit aktivieren.
-Weitere Informationen finden Sie [hier](guides/server-side.md#resources_crud).
+Standardmäßig werden Resources und Resource Assignments nicht an den DataProcessor gesendet. Falls benötigt, müssen Sie dieses Verhalten explizit aktivieren.
+Lesen Sie mehr [hier](guides/server-side.md#resources_crud).
 :::
 
 
-### Request-Parameter {#requestparams}
+### Request parameters {#requestparams}
 
-Create-, Update- und Delete-Requests beinhalten alle öffentlichen Eigenschaften eines clientseitigen Task- oder Link-Objekts:
+Create/Update/Delete-Anfragen enthalten alle öffentlichen Eigenschaften eines clientseitigen Task- oder Link-Objekts:
 
 Task:
 
@@ -270,19 +270,18 @@ Link:
 
 Hinweis:
 
-- Das Format für **start_date** und **end_date** wird durch die [date_format](api/config/date_format.md)-Konfiguration festgelegt.
-- Der Client sendet alle öffentlichen Eigenschaften eines Tasks oder Links, daher können Requests zusätzliche Parameter enthalten.
-- Wenn Sie neue Spalten oder Eigenschaften zu Ihrem Datenmodell hinzufügen, sendet gantt diese automatisch an das Backend.
+- Das Format der Parameter **start_date** und **end_date** wird durch die Konfiguration [](api/config/date_format.md) festgelegt.
+- Der Client sendet alle öffentlichen Eigenschaften eines Task- oder Link-Objekts. Eine Anfrage kann daher eine Vielzahl zusätzlicher Parameter enthalten.
+- Wenn Sie das Datenmodell durch das Hinzufügen neuer Spalten/Eigenschaften erweitern, sind keine zusätzlichen Maßnahmen erforderlich, damit gantt sie an das Backend sendet.
 
 :::note
-Öffentliche Eigenschaften sind solche, deren Namen nicht mit einem Unterstrich (**_**) oder einem Dollarzeichen (**$**) beginnen,
-Eigenschaften wie **task._owner** oder **link.$state** werden also nicht an das Backend gesendet.
+Mit öffentlichen Eigenschaften meinen wir hier Eigenschaften, deren Namen nicht mit einem Unterstrich (_) oder einem Dollarzeichen ($) beginnen, z. B. Eigenschaften mit dem Namen task._owner oder link.$state werden nicht an das Backend gesendet.
 :::
 
 
 ### REST-JSON-Modus {#restjson}
 
-Neben den Modi "POST", "GET", "REST" und "JSON" unterstützt der Gantt DataProcessor auch den "REST-JSON"-Modus.
+Neben den Transaktionsmodi "POST","GET","REST" und "JSON" kann Gantt DataProcessor auch im Modus "REST-JSON" verwendet werden.
 
 ~~~js
 gantt.load("apiUrl");
@@ -293,28 +292,27 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-Er verwendet die gleichen [Request-URLs](#requestresponsedetails), aber die Übertragung der Parameter unterscheidet sich.
+Er verwendet dieselben [URLs für Anfragen](#requestresponsedetails), aber die [Request-Parameter](#requestparams) für Tasks und Links sowie deren Form zum Senden an den Server unterscheiden sich.
 
-Im REST-Modus werden Daten als Formulardaten gesendet:
+Im REST-Modus werden Daten als Formular gesendet:
 
-~~~
+~~~jsx
 Content-Type: application/x-www-form-urlencoded
 ~~~
 
-Im REST-JSON-Modus hingegen werden Daten als JSON gesendet:
+während im REST-JSON-Modus Daten im JSON-Format gesendet werden:
 
-**Headers**
-~~~
+~~~jsx title="Headers"
 Content-type: application/json
 ~~~
 
-Parameter werden als JSON-Objekt übertragen:
+Also werden Parameter als JSON-Objekt gesendet:
 
 **Request Payload**
 
 - Task
 
-~~~
+~~~jsx
 {
     "start_date": "20-09-2025 00:00",
     "text": "New task",
@@ -330,7 +328,7 @@ Parameter werden als JSON-Objekt übertragen:
 
 - Link
 
-~~~js
+~~~jsx
 {
     "source": 1,
     "target": 2,
@@ -338,18 +336,17 @@ Parameter werden als JSON-Objekt übertragen:
 }
 ~~~
 
-Dieses Format vereinfacht die Verarbeitung komplexer Datensätze auf der Serverseite.
+Dieses Format erleichtert die Verarbeitung komplexer Datensätze auf jedem serverseitigen Plattform.
 
+### Server-seitig {#loadserverside}
 
-### Server-Seite {#loadserverside}
+Bei jeder Aktion in Gantt (Hinzufügen, Aktualisieren oder Löschen von Tasks oder Links) reagiert dataProcessor, indem eine AJAX-Anfrage an den Server gesendet wird.
 
-Immer wenn sich im Gantt etwas ändert (Hinzufügen, Aktualisieren oder Löschen von Tasks oder Links), sendet der dataProcessor eine AJAX-Anfrage an den Server.
+Jede Anfrage enthält alle Daten, die zum Speichern der Änderungen in der Datenbank benötigt werden.
+Da wir dataProcessor im REST-Modus initialisiert haben, werden unterschiedliche HTTP-Verben für jeden Operationstyp verwendet.
 
-Jede Anfrage enthält alle notwendigen Daten, um die Datenbank zu aktualisieren.
-Da der dataProcessor auf REST-Modus eingestellt ist, werden je nach Operation unterschiedliche HTTP-Verben verwendet.
-
-Mit der REST-API kann die Serverseite mit verschiedenen Frameworks und Sprachen implementiert werden.
-Hier einige serverseitige Implementierungen, die für die Gantt-Backend-Integration bereit sind:
+Da wir die REST-API verwenden, ist es möglich, die Serverseite mit unterschiedlichen Frameworks und Programmiersprachen zu implementieren.
+Hier ist eine Liste verfügbarer serverseitiger Implementierungen, die Sie für die Backend-Integration von Gantt verwenden können:
 
 - [dhtmlxGantt mit ASP.NET Core 2](integrations/dotnet/howtostart-dotnet-core.md)
 - [dhtmlxGantt mit PHP: Slim](integrations/php/howtostart-php-slim4.md)
@@ -359,15 +356,14 @@ Hier einige serverseitige Implementierungen, die für die Gantt-Backend-Integrat
 - [dhtmlxGantt mit Ruby on Rails](integrations/other/howtostart-ruby.md)
 
 
-## Speichern der Aufgabenreihenfolge {#storingtheorderoftasks}
+### Speichern der Reihenfolge der Aufgaben {#storingtheorderoftasks}
 
-Gantt zeigt Aufgaben in der Reihenfolge an, in der sie aus der Datenquelle kommen. Falls Benutzer [Aufgaben manuell umsortieren](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure) können,
-sollten Sie diese Reihenfolge in Ihrer Datenbank speichern und sicherstellen, dass Ihr Datenfeed die Aufgaben entsprechend sortiert zurückgibt.
+Gantt zeigt Aufgaben in derselben Reihenfolge an, in der sie aus einer Datenquelle kommen. Wenn Sie es den Benutzern ermöglichen, Aufgaben manuell neu zu ordnen ([Drag&#39;n&#39;Drop innerhalb der gesamten Gantt-Struktur guidem](guides/reordering-tasks.md#drag-n-drop-within-the-whole-gantt-structure)), müssen Sie diese Reihenfolge auch in der Datenbank speichern und sicherstellen, dass Ihr Daten-Feed Daten in entsprechend sortierter Reihenfolge zurückgibt.
 
-Clientseitige Konfiguration:
+Client-seitige Konfiguration:
 
 ~~~js
-// Aufgabenreihenfolge im gesamten Gantt umsortieren
+// Neuordnung von Aufgaben innerhalb der gesamten gantt
 gantt.config.order_branch = true;
 gantt.config.order_branch_free = true;
  
@@ -380,33 +376,33 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-Es gibt verschiedene Möglichkeiten, die Reihenfolge zu speichern; hier ein Beispiel.
+Die Speicherrichtung kann auf verschiedene Arten implementiert werden; wir zeigen eine davon.
 
-- Fügen Sie Ihrer Tasks-Tabelle eine numerische Spalte hinzu, z.B. 'sortorder'.
-- Sortieren Sie beim Bearbeiten eines GET-Requests die Aufgaben aufsteigend nach dieser Spalte.
-- Weisen Sie beim Hinzufügen einer neuen Aufgabe den Wert `MAX(sortorder) + 1` zu.
-- Wenn sich die Reihenfolge clientseitig ändert, sendet gantt ein PUT (oder POST, falls kein REST-Modus verwendet wird) mit allen Task-Eigenschaften sowie Werten, die die Position der Aufgabe im Projektbaum beschreiben.
+- Sie fügen Ihrer Tasks-Tabelle eine numerische Spalte hinzu, nennen wir sie 'sortorder'.
+- Beim Ausführen der GET-Aktion sortieren Sie Aufgaben nach dieser Spalte aufsteigend.
+- Wenn eine neue Aufgabe hinzugefügt wird, sollte sie `MAX(sortorder) + 1` als sortorder erhalten.
+- Wenn die Reihenfolge auf der Clientseite geändert wird, sendet gantt PUT (POST, wenn Sie den REST-Modus nicht verwenden) mit allen Eigenschaften einer Aufgabe sowie Werten, die die Position der Aufgabe im Projektbaum beschreiben.
 
 <table class="dp_table">
   <tr>
-  <th><b>HTTP-Methode</b></th><th><b>URL</b></th><th><b>Parameter</b></th><th><b>Response</b></th>
+  <th><b>HTTP-Methode</b></th><th><b>URL</b></th><th><b>Parameter</b></th><th><b>Antwort</b></th>
   </tr>
   <tr>
   <td>PUT</td>
   <td>/apiUrl/task/taskId</td>
-  <td><b>target</b>= adjacentTaskId</td>
+  <td><b>target=</b>adjacentTaskId</td>
   <td>("action":"updated")</td>
   </tr>
 </table>
 
-Der <b>target</b>-Parameter enthält die ID der nächstgelegenen Aufgabe entweder unmittelbar vor oder nach der aktuellen Aufgabe.
+Das <b>target</b>-Parameter wird die ID der nächstliegenden Aufgabe enthalten, die rechts vor der aktuellen Aufgabe oder danach liegt.
 
-Sein Wert kann zwei Formate haben:
+Sein Wert kann in zwei Formaten vorliegen:
 
- - *target="targetId*"  - platziert die aktuelle Aufgabe direkt <b>vor</b> der Aufgabe mit targetId
- - *target="next:targetId*" - platziert die aktuelle Aufgabe direkt <b>nach</b> der Aufgabe mit targetId
+ - *target="targetId"*  - Die aktuelle Aufgabe soll direkt vor der Zielaufgabe mit der ID targetId stehen
+ - *target="next:targetId"* - Die aktuelle Aufgabe soll direkt nach der Zielaufgabe mit der ID targetId stehen
 
-Das Anwenden von Änderungen an der Reihenfolge erfordert in der Regel das Aktualisieren mehrerer Aufgaben. Hier ein Pseudocode-Beispiel:
+Die Anwendung von Positionsänderungen umfasst üblicherweise die Aktualisierung mehrerer Aufgaben. Hier ein Pseudo-Code-Beispiel, wie dies implementiert werden kann:
 
 ~~~js
 const target = request["target"];
@@ -414,7 +410,7 @@ const currentTaskId = request["id"];
 let nextTask;
 let targetTaskId;
 
-// Feststellen, ob die aktualisierte Aufgabe vor oder nach der benachbarten Aufgabe platziert wird
+// Hole die ID der angrenzenden Aufgabe und prüfe, ob die aktualisierte Aufgabe vor oder nach ihr platziert werden soll
 if (target.startsWith("next:")) {
   targetTaskId = target.substr("next:".length);
   nextTask = true;
@@ -428,33 +424,33 @@ const targetTask = tasks.getById(targetTaskId);
 
 if (!targetTaskId) return;
 
-// Weisen Sie der aktualisierten Aufgabe die sortorder der benachbarten Aufgabe zu
+// Die aktualisierte Aufgabe erhält den sortorder-Wert der angrenzenden Aufgabe
 let targetOrder = targetTask.sortorder;
 
-// Falls nach der benachbarten Aufgabe, sortorder inkrementieren
+// Falls sie nach der angrenzenden Aufgabe stehen soll, erhält sie einen größeren sortorder
 if (nextTask) targetOrder++;
 
-// Erhöhen Sie die sortorder-Werte der nachfolgenden Aufgaben
+// Erhöhen der sortorder von Aufgaben, die nach der aktualisierten Aufgabe stehen
 tasks.where(task => task.sortorder >= targetOrder)
     .update(task => task.sortorder++);
 
-// Aktualisieren Sie die Aufgabe mit ihrer neuen sortorder
+// Und aktualisiere die Aufgabe mit ihrer neuen sortorder
 currentTask.sortorder = targetOrder;
 
 tasks.save(currentTask);
 ~~~
 
-Detaillierte Beispiele für das Speichern der Aufgabenreihenfolge auf bestimmten Server-Plattformen finden Sie unter:
+Sie können sich die detaillierten Beispiele ansehen, wie die Speicherung der Aufgabenreihenfolge für bestimmte serverseitige Plattformen implementiert wird: 
 [plain PHP](integrations/php/howtostart-php.md#storingtheorderoftasks), [Laravel](integrations/php/howtostart-php-laravel.md#storingtheorderoftasks),
-[Node.js](integrations/node/howtostart-nodejs.md#storingtheorderoftasks), [ASP.NET Web API](integrations/dotnet/howtostart-dotnet.md#storingtheorderoftasks), und
+[Node.js](integrations/node/howtostart-nodejs.md#storingtheorderoftasks), [ASP.NET Web API](integrations/dotnet/howtostart-dotnet.md#storingtheorderoftasks) und 
 [Rails](integrations/other/howtostart-ruby.md#storingtheorderoftasks).
 
 
-## Eigene Request-Header und Parameter {#customrequestheadersandparameters}
+## Custom Request Headers and Parameters 
 
-### Hinzufügen benutzerdefinierter Request-Header
+### Adding custom request headers
 
-Es ist möglich, zusätzliche Header in Anfragen an Ihr Backend einzufügen. Beispielsweise möchten Sie vielleicht ein Autorisierungstoken zu Ihren Anfragen hinzufügen:
+Sie können Ihrem Backend zusätzliche Header senden. Zum Beispiel nehmen wir an, Sie müssen ein Autorisierungstoken in Ihre Anfragen aufnehmen:
 
 ~~~js
 gantt.init("gantt_here");
@@ -470,7 +466,7 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-Derzeit unterstützt [load](api/method/load.md) keine Header- oder Payload-Parameter für GET-Anfragen. Falls Sie diese hinzufügen müssen, senden Sie die XHR-Anfrage manuell und laden dann die Daten mit [parse](api/method/parse.md) in Gantt, wie folgt:
+Derzeit unterstützt [](api/method/load.md) keine Header-/Payload-Parameter, sodass Sie sie ggf. für GET-Anfragen manuell per xhr senden müssen und Daten mittels [](api/method/parse.md) in gantt laden müssen, zum Beispiel:
 
 ~~~js
 gantt.ajax.get({
@@ -484,11 +480,11 @@ gantt.ajax.get({
 ~~~
 
 
-### Hinzufügen benutzerdefinierter Parameter zur Anfrage
+### Adding custom parameters to the request
 
-Es gibt mehrere Möglichkeiten, zusätzliche Parameter zu Ihren Anfragen hinzuzufügen.
+Es gibt mehrere Möglichkeiten, zusätzliche Parameter an die Anfragen anzuhängen.
 
-Da gantt alle Eigenschaften des Datenobjekts an das Backend sendet, können Sie einfach eine zusätzliche Eigenschaft direkt zum Datenobjekt hinzufügen, die dann in die Anfrage aufgenommen wird:
+Wie Sie wissen, sendet gantt alle Eigenschaften des Datenobjekts zurück an das Backend. Sie können daher direkt eine zusätzliche Eigenschaft zum Datenobjekt hinzufügen und sie wird an das Backend gesendet:
 
 ~~~js
 gantt.attachEvent("onTaskCreated", (task) => {
@@ -497,7 +493,7 @@ gantt.attachEvent("onTaskCreated", (task) => {
 });
 ~~~
 
-Eine weitere Möglichkeit ist, benutzerdefinierte Parameter zu jeder vom DataProcessor gesendeten Anfrage über die **payload**-Eigenschaft hinzuzufügen:
+Alternativ können Sie benutzerdefinierte Parameter zu allen Anfragen hinzufügen, die vom Data Processor gesendet werden, indem Sie die payload-Eigenschaft verwenden:
 
 ~~~js
 gantt.init("gantt_here");
@@ -512,7 +508,7 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-Sie können benutzerdefinierte Parameter auch mithilfe des [onBeforeUpdate](api/other/dataprocessor.md#onbeforeupdate) Events von DataProcessor zu Anfragen hinzufügen:
+Eine weitere Möglichkeit, benutzerdefinierte Parameter zu einer Anfrage hinzuzufügen, besteht darin, das onBeforeUpdate-Ereignis von DataProcessor zu verwenden:
 
 ~~~js
 const dp = gantt.createDataProcessor({
@@ -527,11 +523,11 @@ dp.attachEvent("onBeforeUpdate", (id, state, data) => {
 ~~~
 
 
-## Auslösen der Datenspeicherung per Skript
+## Auslösen der Datenspeicherung aus Skript
 
-Wenn der DataProcessor initialisiert ist, werden alle Änderungen, die von Nutzern oder programmatisch vorgenommen werden, automatisch an die Datenquelle gespeichert.
+Wenn Sie DataProcessor initialisiert haben, werden Änderungen des Benutzers oder programmatisch vorgenommenen Änderungen automatisch in der Datenquelle gespeichert.
 
-Um eine bestimmte Aufgabe oder Abhängigkeit programmatisch zu aktualisieren, verwenden Sie in der Regel die Methoden [updateTask](api/method/updatetask.md) und [updateLink](api/method/updatelink.md):
+Generell verwenden Sie, um eine bestimmte Aufgabe oder Abhängigkeit programmatisch zu aktualisieren, die Methoden [](api/method/updatetask.md) und [](api/method/updatelink.md) bzw.:
 
 ~~~js
 gantt.parse([
@@ -540,11 +536,11 @@ gantt.parse([
 ]);
 
 const task = gantt.getTask(1);
-task.text = "Task 37"; // Aufgabendaten aktualisieren
-gantt.updateTask(1); // Aktualisierte Aufgabe neu rendern
+task.text = "Task 37"; //ändert Task-Daten
+gantt.updateTask(1); // rendert die aktualisierte Aufgabe
 ~~~
 
-Weitere Methoden, die das Senden von Updates an das Backend auslösen, sind:
+Weitere Methoden, die ein Update an das Backend senden, sind:
 
 - [addTask](api/method/addtask.md)
 - [updateTask](api/method/updatetask.md)
@@ -553,14 +549,13 @@ Weitere Methoden, die das Senden von Updates an das Backend auslösen, sind:
 - [updateLink](api/method/updatelink.md)
 - [deleteLink](api/method/deletelink.md)
 
-
 ## Custom Routing {#customrouting}
 
-Wenn die RESTful AJAX API nicht zu den Anforderungen Ihres Backends passt oder Sie genau steuern möchten, was an den Server gesendet wird, kann ein benutzerdefiniertes Routing verwendet werden.
+Falls die RESTful AJAX-API nicht das ist, was Sie im Backend benötigen, oder wenn Sie manuell steuern möchten, was an den Server gesendet wird, können Sie benutzerdefinierte Routing-Optionen nutzen.
 
-In Frameworks wie Angular oder React sendet eine Komponente Änderungen möglicherweise nicht direkt an den Server, sondern gibt sie an eine andere Komponente weiter, die für das Speichern der Daten zuständig ist.
+Zum Beispiel, wenn Sie Angular, React oder jedes andere Framework verwenden, bei dem eine Komponente auf einer Seite Änderungen nicht direkt an den Server sendet, sondern sie an eine andere Komponente weitergibt, die für das Speichern der Daten verantwortlich ist.
 
-Um ein benutzerdefiniertes Routing für den DataProcessor einzurichten, verwenden Sie die Methode [**createDataProcessor()**](#createdp):
+Um benutzerdefinierte Routing-Optionen für DataProcessor bereitzustellen, sollten Sie die Methode [**createDataProcessor()**](#createdp) verwenden:
 
 ~~~js
 gantt.createDataProcessor(function(entity, action, data, id) {
@@ -582,15 +577,15 @@ gantt.createDataProcessor(function(entity, action, data, id) {
 ~~~
 
 
-[Custom data api - using local storage](https://docs.dhtmlx.com/gantt/samples/08_api/22_data_processor.html)
+**Beispiel**: [Custom data api - using local storage](https://docs.dhtmlx.com/gantt/samples/08_api/22_data_processor.html)
 
 
-### AJAX zum Einrichten benutzerdefinierter Router verwenden
+### Verwendung von AJAX zum Festlegen benutzerdefinierter Router
 
-Das [Gantt AJAX Modul](api/other/ajax.md) kann beim Einrichten benutzerdefinierter Routen hilfreich sein. Gantt erwartet, dass der benutzerdefinierte Router ein Promise-Objekt von einer Operation zurückgibt, wodurch erkannt werden kann, wann die Aktion abgeschlossen ist. 
-Das AJAX-Modul unterstützt Promises und eignet sich daher für den Einsatz in benutzerdefinierten Routern. Gantt verarbeitet das Promise und dessen Inhalt, sobald es aufgelöst wurde.
+[Gantt AJAX-Modul](api/other/ajax.md) kann nützlich sein, um benutzerdefinierte Routen festzulegen. Gantt erwartet, dass ein benutzerdefinierter Router ein Promise-Objekt als Ergebnis einer Operation zurückgibt, wodurch das Ende einer Aktion erfasst werden kann. 
+Das AJAX-Modul unterstützt Promises und eignet sich zur Verwendung innerhalb benutzerdefinierter Router. Gantt erhält das Promise und verarbeitet dessen Inhalt, sobald es aufgelöst wird. 
 
-Im folgenden Beispiel wird eine neue Aufgabe erstellt. Wenn die Serverantwort die ID der neu erstellten Aufgabe enthält, wird diese von Gantt entsprechend übernommen.
+Im nachfolgenden Beispiel wird eine neue Aufgabe erstellt. Wenn die Serverantwort die ID einer neu erstellten Aufgabe enthält, kann Gantt diese anwenden.
 
 ~~~js
 gantt.createDataProcessor((entity, action, data, id) => {
@@ -609,13 +604,11 @@ gantt.createDataProcessor((entity, action, data, id) => {
 ~~~
 
 
-<span id="resources_crud"></span>
+## Routing von CRUD-Aktionen von Ressourcen und Ressourcen-Zuweisungen {#resources_crud}
 
-## Routing von CRUD-Aktionen für Ressourcen und Ressourcenzuweisungen {#resources_crud}
+Ab Version 8.0 können modifizierte Ressourcen-Zuweisungen dem DataProcessor als separate Einträge mit persistierenden IDs gesendet werden, was eine einfache Anbindung an die Backend-API ermöglicht. Änderungen an Ressourcenobjekten können ebenfalls an den DataProcessor gesendet werden.
 
-Ab Version 8.0 können Änderungen an Ressourcenzuweisungen als separate Einträge mit persistierenden IDs an den DataProcessor gesendet werden, was die Integration mit Backend-APIs vereinfacht. Änderungen an Ressourcenobjekten selbst können ebenfalls an den DataProcessor gesendet werden.
-
-Beachten Sie, dass diese Funktion standardmäßig deaktiviert ist. Standardmäßig empfängt der DataProcessor nur Änderungen an Aufgaben und Verknüpfungen. Um die Ressourcenverarbeitung zu aktivieren, stellen Sie Folgendes ein:
+Beachten Sie, dass dieses Feature standardmäßig deaktiviert ist. Standardmäßig erhält der DataProcessor nur Änderungen an Tasks und Links. Um das Feature zu aktivieren, verwenden Sie die folgenden Einstellungen:
 
 ~~~js
 gantt.config.resources = {
@@ -624,9 +617,9 @@ gantt.config.resources = {
 };
 ~~~
 
-Wenn der Ressourcenmodus aktiviert ist und der DataProcessor sich im REST-Modus befindet, werden Ressourcen und Ressourcenzuweisungen in separaten Anfragen an das Backend gesendet.
+Sobald der Ressourcen-Modus des DataProcessor aktiviert ist und der DataProcessor im REST-Modus konfiguriert ist, werden Ressourcen und Ressourcen-Zuweisungen in separaten Anfragen an das Backend gesendet.
 
-Wenn der DataProcessor im Custom Routing-Modus verwendet wird, können Sie Änderungen an Ressourcenzuweisungen und Ressourcen in Ihrem Handler erfassen:
+Verwenden Sie den DataProcessor im Custom Routing-Modus, können Sie Änderungen von Ressourcen-Zuweisungen und Ressourcen im Handler erfassen:
 
 ~~~js
 gantt.createDataProcessor({
@@ -679,7 +672,7 @@ gantt.createDataProcessor({
 });
 ~~~
 
-Alternativ mit einer Funktionsdeklaration:
+Oder, mittels Funktions-Deklaration:
 
 ~~~js
 gantt.createDataProcessor((entity, action, data, id) => {
@@ -697,15 +690,15 @@ gantt.createDataProcessor((entity, action, data, id) => {
 ~~~
 
 
-## Fehlerbehandlung {#errorhandling}
+## Fehlerbehandlung
 
-Wenn der Server meldet, dass eine Aktion fehlgeschlagen ist, kann er eine Antwort mit `"action":"error"` zurückgeben:
+Ein Server kann Gantt mitteilen, dass eine Aktion fehlgeschlagen ist, indem er die Antwort "action":"error" zurückgibt:
 
 ~~~js
 {"action":"error"}
 ~~~
 
-Solche Antworten können Sie auf der Clientseite mit gantt.dataProcessor abfangen:
+Eine solche Antwort kann auf dem Client mit Hilfe von gantt.dataProcessor erfasst werden:
 
 ~~~js
 const dp = gantt.createDataProcessor({
@@ -715,19 +708,19 @@ const dp = gantt.createDataProcessor({
 
 dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
     if (action === "error") {
-        // Fehler hier behandeln
+        // hier etwas tun
     }
 });
 ~~~
 
-Das Antwortobjekt kann zusätzliche Eigenschaften enthalten, die über das Argument `response` im onAfterUpdate-Handler zugänglich sind.
+Das Antwortobjekt kann beliebig viele zusätzliche Eigenschaften enthalten, auf die über das `response`-Argument des onAfterUpdate-Handlers zugegriffen werden kann.
 
 :::note
-Dieses Event wird nur für verwaltete Fehler ausgelöst, die JSON-Antworten wie oben gezeigt zurückgeben.
-Für die Behandlung von HTTP-Fehlern siehe das API-Event [onAjaxError](api/event/onajaxerror.md).
+Dieses Ereignis wird nur für verwaltete Fehler aufgerufen, die eine JSON-Antwort wie oben gezeigt zurückgeben.
+Wenn Sie HTTP-Fehler behandeln müssen, lesen Sie bitte die API-Event-Seite [](api/event/onajaxerror.md).
 :::
 
-Wenn der Server mit einem Fehler antwortet, aber die Änderungen auf dem Client gespeichert wurden, ist es am besten, den Client-Status zu löschen und die korrekten Daten erneut vom Server zu laden:
+Wenn der Server bei einer Ihrer Aktionen mit einem Fehler antwortete, die Änderungen jedoch auf dem Client gespeichert wurden, ist der beste Weg, deren Zustand zu synchronisieren, den Client-Zustand zu löschen und die korrekten Daten erneut vom Server zu laden:
 
 ~~~js
 dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
@@ -738,7 +731,7 @@ dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
 });
 ~~~
 
-Falls Sie den Status von Client und Server synchronisieren möchten, ohne Serveraufrufe auszuführen, verwenden Sie die Methode [silent()](api/method/silent.md), um interne Events oder Serveraufrufe während der Operation zu verhindern:
+Wenn Sie Client- und Server-Seiten synchronisieren möchten, aber keine Serveraufrufe durchführen möchten, können Sie die [silent()](api/method/silent.md) Methode verwenden, die dafür sorgt, dass der Code darin keine internen Ereignisse oder Serveraufrufe auslöst:
 
 ~~~js
 gantt.silent(() => {
@@ -749,21 +742,20 @@ gantt.render();
 ~~~
 
 
-## Kaskadierende Löschung {#cascadedeletion}
+## Kaskadierte Löschung
 
-Standardmäßig löst das Löschen einer Aufgabe eine kaskadierende Löschung ihrer verschachtelten Aufgaben und zugehörigen Verknüpfungen aus. Gantt sendet für jede entfernte Aufgabe und Verknüpfung eine *delete*-Anfrage. 
-Das bedeutet, dass die Datenintegrität im Backend nicht manuell verwaltet werden muss, da Gantt dies effektiv übernimmt.
+Standardmäßig löst das Löschen einer Aufgabe eine Kaskadenlöschung ihrer verschachtelten Aufgaben und der zugehörigen Links aus. Gantt sendet für jede entfernte Aufgabe und jeden entfernten Link eine *delete*-Anfrage.
+Daher müssen Sie die Datenintegrität auf dem Backend nicht separat sicherstellen; Gantt übernimmt dies relativ gut.
 
-Dieses Vorgehen kann jedoch zu vielen AJAX-Anfragen an das Backend führen, da dhtmlxGantt keine Batch-Anfragen unterstützt und die Anzahl der Aufgaben und Verknüpfungen groß sein kann.
+Auf der anderen Seite kann diese Strategie eine große Anzahl von AJAX-Anfragen an die Backend-API erzeugen, da dhtmlxGantt keine Batch-Request-Unterstützung für AJAX bietet und die Anzahl der Aufgaben und Links nicht begrenzt ist. 
 
-Falls erforderlich, kann die kaskadierende Löschung mit der [cascade_delete](api/config/cascade_delete.md) Konfiguration deaktiviert werden. 
-Ist dies deaktiviert, führt das Löschen eines Projektzweigs nur zu einer Löschanfrage für das oberste Element und das Backend ist für das Löschen der zugehörigen Verknüpfungen und Unteraufgaben verantwortlich.
-
+In diesem Fall kann die kaskadierte Löschung über die cascade_delete-Konfiguration deaktiviert werden. 
+Wenn also ein Projektzweig gelöscht wird, sendet der Client eine Löschanfrage nur für das oberste Element und erwartet, dass das Backend die zugehörigen Links und Unteraufgaben löscht.
 
 ## XSS-, CSRF- und SQL-Injection-Angriffe
 
-Es ist wichtig zu beachten, dass Gantt keinen eingebauten Schutz gegen Bedrohungen wie SQL-Injection, XSS oder CSRF-Angriffe bietet. 
-Die Sicherstellung der Anwendungssicherheit liegt in der Verantwortung der Entwickler, die das Backend implementieren.
+Beachten Sie, dass Gantt keinerlei Mechanismen bietet, um eine Anwendung gegen verschiedene Bedrohungen wie SQL-Injektionen oder XSS- und CSRF-Angriffe zu schützen. 
+Es liegt in der Verantwortung der Entwickler, die das Backend implementieren, dafür zu sorgen, dass eine Anwendung sicher bleibt.
 
 Weitere Informationen zu den verwundbarsten Punkten der Komponente und empfohlenen Maßnahmen zur Verbesserung der Sicherheit Ihrer Anwendung finden Sie im Artikel [Application Security](guides/app-security.md). 
 

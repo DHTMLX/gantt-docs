@@ -1,44 +1,44 @@
 ---
-title: "dhtmlxGantt 与 Vue.js 集成"
+title: "dhtmlxGantt 与 Vue.js"
 sidebar_label: "Vue.js"
 ---
 
-# dhtmlxGantt 与 Vue.js 集成
+# dhtmlxGantt 与 Vue.js
 
-本指南假设你已经具备了 [Vue](https://vuejs.org/) 的基本概念和使用模式。如果你是 Vue 新手，建议先查阅 [Vue 3 文档](https://vuejs.org/guide/introduction.html) 以快速入门。
+在使用本教程前，您应熟悉 [Vue] 的基本概念和模式。如果您还不熟悉，请参考 [Vue 3 文档](https://vuejs.org/guide/introduction.html) 获取入门教程。
 
-DHTMLX Gantt 能很好地与 Vue 集成。你可以在 GitHub 上找到相关示例:[DHTMLX Gantt with Vue Demo](https://github.com/DHTMLX/vue-gantt-demo)。
+DHTMLX Gantt 与 Vue 兼容。您可以在 GitHub 上查看对应的示例：[DHTMLX Gantt with Vue Demo](https://github.com/DHTMLX/vue-gantt-demo)。
 
-## 创建项目
+## 创建一个项目
 
-在开始新项目之前，请确保已经安装了 [Node.js](https://nodejs.org/en/)。
+在开始创建新项目之前，请先安装 [Node.js](https://nodejs.org/en/)。
 
-要创建一个 Vue 项目，请运行以下命令:
+要创建一个 Vue 项目，请运行以下命令：
 
 ~~~
 npm create vue@latest
 ~~~
 
-该命令会安装并运行 **create-vue**，这是 Vue 官方的项目脚手架工具。更多细节可参考 [Vue.js 快速开始](https://vuejs.org/guide/quick-start.html#creating-a-vue-application)。
+此命令将安装并执行 **create-vue**，官方的 Vue 项目脚手架工具。有关详细信息，请查看 [Vue.js Quick Start](https://vuejs.org/guide/quick-start.html#creating-a-vue-application)。
 
-### 安装依赖
+### 安装依赖项
 
-接下来，进入你的应用目录。假设项目名为 **gantt-vue**:
+接下来应进入应用目录。我们将项目命名为 **gantt-vue**，并执行：
 
 ~~~
 cd gantt-vue
 ~~~
 
-然后使用你的包管理器安装依赖并启动开发服务器:
+之后，您应安装依赖并启动开发服务器。为此，需要使用包管理器：
 
-- 对于 **yarn**，运行:
+- 如果使用 **yarn**，请执行以下命令：
 
 ~~~
 yarn install
 yarn dev
 ~~~
 
-- 对于 **npm**，运行:
+- 如果使用 **npm**，请执行以下命令：
 
 ~~~
 npm install
@@ -51,62 +51,59 @@ npm run dev
 
 ## 创建 Gantt
 
-要将 DHTMLX Gantt 添加到项目中，首先在终端中按 **Ctrl+C** 停止正在运行的应用。然后继续安装 Gantt 包。
+现在我们需要获取 DHTMLX Gantt 的代码。首先，通过在命令行中按下 **Ctrl+C** 停止应用程序。随后我们可以开始安装 Gantt 包。
 
-## 步骤 1. 安装包
+## 步骤 1. 包安装
 
-该库的 PRO 版本可以通过 **npm/yarn** 从我们的私有仓库安装。请按照
-[此说明](guides/installation.md#npmpinggubanyuzhuanyeban) 获取访问权限。
+Gantt 库的 PRO 版本可通过私有仓库进行 npm/yarn 安装，请按以下说明获取访问权限：
 
-获得 Evaluation 版本后，可使用以下命令安装:
+[this instruction](guides/installation.md#npmevaluationandproversions) 以获取访问权限。
 
-- 使用 npm:
+获得 Gantt 的评估版本后，您可以使用以下命令进行安装：
+
+- 对于 npm：
 
 ~~~
 npm install @dhx/trial-gantt
 ~~~
 
-- 使用 yarn:
+- 对于 yarn：
 
 ~~~
 yarn add @dhx/trial-gantt
 ~~~
 
-另外，由于该库的 zip 包结构为 **npm** 模块，你也可以
-[从本地文件夹安装](guides/installation.md#installfromlocalfolder)。
+另外，由于该库的 zip 包被构造成一个 **npm** 模块，您也可以 [从本地文件夹安装](guides/installation.md#installfromlocalfolder)。
 
-## 步骤 2. 创建组件
+## 步骤 2. 组件创建
 
-创建一个 Vue 组件，将 Gantt 嵌入到你的应用中。在 ***src/components/*** 目录下新建文件 ***Gantt.vue***。
+现在我们应该创建一个 Vue 组件，将 Gantt 添加到应用中。让我们在 ***src/components/*** 目录下创建一个新文件，命名为 ***Gantt.vue***。
 
 ### 导入源文件
 
-打开 ***Gantt.vue*** 并导入 Gantt 源文件。根据你的安装方式，导入方式有所不同:
+打开新创建的 ***Gantt.vue*** 文件并导入 Gantt 的源文件。请注意：
 
-- 如果你是从本地文件夹安装，使用:
+- 如果您是从本地文件夹安装的 Gantt 包，那么导入路径将类似于：
 
-**Gantt.vue**
-~~~
+~~~js title="Gantt.vue"
 import { Gantt} from "dhtmlx-gantt";
 import "dhtmlx-gantt/codebase/dhtmlxgantt.css";
 ~~~
 
-- 如果你安装的是 trial 版本，使用:
+- 如果您选择安装试用版本，导入路径应为：
 
-**Gantt.vue**
-~~~
+~~~js title="Gantt.vue"
 import { Gantt} from "@dhx/trial-gantt";
 import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
 ~~~
 
-本指南采用 **trial** 版本。
+在本教程中，我们将使用 Gantt 的 **trial** 版本。
 
 ### 设置容器并添加 Gantt
 
-为了在页面上渲染 Gantt，需要指定容器元素。如下所示:
+要在页面上显示 Gantt，我们需要将容器设置为在其中渲染组件。请看下面的代码：
 
-**Gantt.vue**
-~~~html
+~~~js title="Gantt.vue"
 <script>
 import { Gantt } from "@dhx/trial-gantt";
 import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
@@ -130,10 +127,9 @@ export default {
 </template>
 ~~~
 
-若需让 Gantt 容器填满整个 body，请移除 ***src/assets*** 下 ***main.css*** 的默认样式，并添加:
+要使 Gantt 容器占据 body 的整个空间，您需要移除位于 ***src/assets*** 文件夹中的 main.css 的默认样式，并添加以下样式：
 
-**src/assets/main.css**
-~~~
+~~~js title="src/assets/main.css"
 body, #app {
   margin: 0;
   padding: 0;
@@ -142,12 +138,11 @@ body, #app {
 }
 ~~~
 
-## 步骤 3. 将 Gantt 添加到应用
+## 步骤 3. 将 Gantt 添加到应用中
 
-接下来，将 Gantt 组件引入到应用中。打开 ***src/App.vue***，用以下内容替换默认内容:
+现在是将组件添加到应用中的时刻。打开 ***src/App.vue***，使用 Gantt 组件替换默认内容，并插入以下代码：
 
-**src/App.vue**
-~~~html
+~~~js title="Gantt.vue"
 <script>
 import Gantt from "./components/Gantt.vue";
 
@@ -161,16 +156,15 @@ export default {
 </template>
 ~~~
 
-启动应用后，你会看到一个空的 Gantt 显示:
+之后，当我们启动应用时，页面上应会看到一个空的 Gantt：
 
 ![Gantt Vue init](/img/gantt_init.png)
 
 ## 步骤 4. 提供数据
 
-要在 Gantt 中显示任务，需要提供数据集。在 ***src/*** 目录下创建 ***data.js*** 文件，并填入以下数据:
+要向 Gantt 添加数据，我们需要提供一个数据集。让我们在 ***src/*** 目录中创建 ***data.js*** 文件并添加一些数据：
 
-**src/data.js**
-~~~js
+~~~js title="src/data.js"
 export function getData() {
   const tasks = {
     data: [
@@ -208,10 +202,9 @@ export function getData() {
 }
 ~~~
 
-在 ***App.vue*** 中，将该数据作为 props 传递给 Gantt 组件:
+我们应该向 Gantt 组件传递 props（我们的数据），在 ***App.vue*** 文件中：
 
-**App.vue**
-~~~html
+~~~html title="Gantt.vue"
 <script>
 import Gantt from "./components/Gantt.vue";
 import { getData } from "./data";
@@ -231,10 +224,9 @@ export default {
 </template>
 ~~~
 
-然后在 Gantt 组件中，使用 **gantt.parse()** 处理这些 props:
+并在 Gantt 组件中在 **gantt.parse()** 方法中使用这些 props：
 
-**Gantt.vue**
-~~~html
+~~~html title="Gantt.vue"
 <script>
 import { Gantt } from "@dhx/trial-gantt";
 import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
@@ -261,15 +253,15 @@ export default {
 </template>
 ~~~
 
-重新加载应用页面，现在你会看到带有任务的 Gantt:
+现在，如果你重新打开应用页面，您应能看到带有任务的 Gantt：
 
 ![Gantt tasks](/img/gantt_tasks.png)
 
 ## 步骤 5. 保存数据
 
-要追踪在 Gantt 中的更改，可以使用 [dataProcessor](api/method/dataprocessor.md) 处理器来管理与后端的通信。该处理器可以是一个函数或路由对象。dhtmlxGantt 支持 handler 返回 Promise，以确保操作完成时得到正确处理。
+要捕捉 Gantt 中所做的更改，您可以使用一个 [dataProcessor](api/method/dataprocessor.md) 处理程序，让您能够与服务器端后端进行“通信”。处理程序既可以作为函数，也可以作为路由对象进行声明。dhtmlxGantt 接受来自处理程序的 Promise 响应，因此您的 Gantt 将正确处理操作的完成。
 
-通过 **createDataProcessor()** 创建 **DataProcessor** 并捕获更改，如下所示:
+您可以通过 **createDataProcessor()** API 方法创建 DataProcessor，并像这样捕获更改：
 
 ~~~
 gantt.createDataProcessor(function(entity, action, data, id) {​
@@ -279,10 +271,10 @@ gantt.createDataProcessor(function(entity, action, data, id) {​
 
 如果你的后端在创建新记录后会更改任务 ID（许多系统都这样），请确保你的 Promise 返回包含 **(id: databaseId)** 或 **(tid: databaseId)** 的对象。这样 Gantt 就能用新的数据库 ID 更新记录。更多详情请参阅 [服务端集成](guides/server-side.md)。
 
-至此，你的 Vue Gantt 集成已完成。你可以在 GitHub 上查看完整 demo:[https://github.com/DHTMLX/vue-gantt-demo](https://github.com/DHTMLX/vue-gantt-demo)。
+好吧，Vue Gantt 已经就绪，欢迎查看 GitHub 上的完整演示。
 
-## XSS、CSRF 和 SQL 注入攻击
+## XSS、CSRF 与 SQL 注入攻击
 
-需要注意的是，Gantt 本身并不提供针对 SQL 注入、XSS 或 CSRF 等威胁的保护。确保应用安全是后端开发者的责任。
+请注意，Gantt 并不提供任何防止应用程序受到各种威胁（例如 SQL 注入、XSS 和 CSRF 攻击）的机制。确保应用程序安全的责任在于实现后端的开发人员。
 
-你可以参阅 [应用安全](guides/app-security.md) 文章，了解常见漏洞及如何增强应用防御能力。
+请查看 [Application Security] 文章，了解组件最脆弱的点以及可以采取的措施来提升应用程序的安全性。

@@ -1,14 +1,14 @@
 ---
 sidebar_label: onTemplatesReady
 title: onTemplatesReady event
-description: "当 dhtmlxGantt 模板初始化完成时触发"
+description: "在 dhtmlxGantt 模板初始化时触发"
 ---
 
 # onTemplatesReady
 
 ### Description
 
-@short: 当 dhtmlxGantt 模板初始化完成时触发
+@short: 当 dhtmlxGantt 模板完成初始化时触发
 
 @signature: onTemplatesReady: () =\> void;
 
@@ -16,12 +16,12 @@ description: "当 dhtmlxGantt 模板初始化完成时触发"
 
 ~~~jsx
 gantt.attachEvent("onTemplatesReady", function(){
-    // 在这里放置任何自定义逻辑
+    // 在这里插入您的自定义逻辑 
 });
 ~~~
 
 ### Details
 
-该事件表示 dhtmlxGantt 的模板已经完全初始化。它为设置自定义视图提供了一个方便的时机。
+该事件表示 dhtmlxGantt 的模板已就绪。该事件是创建自定义视图的一个良好时机。
 
-将自定义视图创建代码放在 onTemplatesReady 事件处理函数中，可以确保视图的模板在 grid 初始化之前准备好，从而有助于自定义视图在页面上的正确显示。
+在 onTemplatesReady 事件的处理程序中编写自定义视图创建的代码是一种良好实践。它将确保自定义视图的模板在网格初始化之前就绪，并且自定义视图将在页面上正确呈现。

@@ -1,14 +1,14 @@
 ---
 sidebar_label: calendar_property
 title: calendar_property config
-description: "legt den Namen der Eigenschaft fest, die verwendet wird, um einen Kalender mit einer Aufgabe oder einer Gruppe von Aufgaben zu verknüpfen"
+description: "ändert den Namen der Eigenschaft, die die Bindung eines Kalenders an eine Aufgabe bzw. eine Gruppe von Aufgaben beeinflusst"
 ---
 
 # calendar_property
 
 ### Description
 
-@short: Legt den Namen der Eigenschaft fest, die verwendet wird, um einen Kalender mit einer Aufgabe oder einer Gruppe von Aufgaben zu verknüpfen
+@short: Ändert den Namen der Eigenschaft, die die Bindung eines Kalenders an eine Aufgabe bzw. eine Gruppe von Aufgaben beeinflusst
 
 @signature: calendar_property: string
 
@@ -20,9 +20,9 @@ gantt.config.calendar_property = "property_name";
 
 ### Details
 
-eingeführt in Version 4.2
+Neu hinzugefügt in Version 4.2
 
-Standardmäßig ist diese Option auf "calendar_id" gesetzt.
+Der Standardwert der Option ist "calendar_id".
 
 ~~~js
 {
@@ -43,5 +43,4 @@ Standardmäßig ist diese Option auf "calendar_id" gesetzt.
 - [isWorkTime](api/method/isworktime.md)
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md#unsettingtheworkingtime)
-
+- [Berechnung der Arbeitszeit](guides/working-time.md)

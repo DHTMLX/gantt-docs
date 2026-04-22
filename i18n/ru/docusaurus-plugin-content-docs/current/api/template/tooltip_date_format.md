@@ -1,23 +1,23 @@
 ---
 sidebar_label: tooltip_date_format
 title: tooltip_date_format template
-description: "определяет, как отображаются даты начала и окончания в tooltip"
+description: "задает формат дат начала и конца, отображаемых во всплывающей подсказке"
 ---
 
 # tooltip_date_format
 
 ### Description
 
-@short: Определяет, как отображаются даты начала и окончания в tooltip
+@short: Указывает формат дат начала и конца, отображаемых во всплывающей подсказке
 
 @signature: tooltip_date_format: (date: Date) =\> string;
 
 ### Parameters
 
-- `date` - (required) *Date* - дата, которую нужно отформатировать
+- `date` - (required) *Date* - дату, которую нужно отформатировать
 
 ### Returns
-- ` text` - (string) - html текст, отображаемый в tooltip диаграммы Ганта
+- ` text` - (string) - HTML-текст, который будет отображаться в диаграмме Ганта
 
 ### Example
 
@@ -31,13 +31,12 @@ gantt.templates.tooltip_date_format=function (date){
 ### Details
 
 :::note
- Этот шаблон является частью расширения **tooltip**, поэтому убедитесь, что плагин [tooltip](guides/extensions-list.md#tooltip) включен. Дополнительную информацию можно найти в статье [Тултипы для элементов Gantt](guides/tooltips.md). 
+Этот шаблон определяется в расширении **tooltip**, поэтому необходимо активировать плагин [tooltip](guides/extensions-list.md#tooltip). Подробности см. в статье [Tooltips for Gantt Elements](guides/tooltips.md). 
 :::
 
 ### Related API
 - [tooltip_text](api/template/tooltip_text.md)
 
 ### Related Guides
-- [Шаблоны тултипов](guides/tooltip-templates.md)
-- [Тултипы для элементов Gantt](guides/tooltips.md)
-
+- [Templates of Tooltips](guides/tooltip-templates.md)
+- [Tooltips for Gantt Elements](guides/tooltips.md)

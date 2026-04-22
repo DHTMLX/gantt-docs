@@ -5,38 +5,38 @@ sidebar_label: "Расширение Zoom"
 
 # Расширение Zoom
 
-Более подробную информацию о расширении Zoom можно найти в статье [Масштабирование](guides/zooming.md). Этот документ посвящён описанию API для объекта **zoom**:
+Вы можете узнать подробности об расширении Zoom в статье [Zooming](guides/zooming.md). Настоящая статья предоставляет API-справку по объекту **zoom**:
 
 ## Уровни масштабирования
 
-Расширение Zoom работает с набором настроек масштаба, что позволяет быстро переключаться между ними.
+Расширение Zoom использует набор настроек масштаба и позволяет быстро переключаться между ними.
 
-**ZoomLevel** - это объект, представляющий настройки масштаба, со следующими свойствами:
+**ZoomLevel** — это объект, который содержит настройки масштаба. Он имеет следующие свойства:
 
-- <span class="subproperty">**name**</span> - (*string*) - имя, присвоенное уровню
-- <span class="subproperty">**scale_height?**</span> - (*number*) - высота шкалы
-- <span class="subproperty">**height?**</span> - (*number*) - высота шкалы
-- <span class="subproperty">**min_column_width?**</span> - (*number*) - минимальная ширина колонки; имеет приоритет над minColumnWidth и maxColumnWidth
-- <span class="subproperty">**scales**</span> - (*Scales*) - массив шкал, между которыми можно переключаться при увеличении или уменьшении масштаба
+- <span class="subproperty">**name**</span> - (*string*) - название уровня
+- <span class="subproperty">**scale_height?**</span> - (*number*) - высота масштаба
+- <span class="subproperty">**height?**</span> - (*number*) - высота масштаба
+- <span class="subproperty">**min_column_width?**</span> - (*number*) - минимальная ширина столбца. У него выше приоритет, чем minColumnWidth и maxColumnWidth
+- <span class="subproperty">**scales**</span> - (*Scales*) - массив шкал, между которыми можно переключаться во время зума на этом уровне
 
 ## Методы
 
-- <span class="submethod">**init (zoomConfig): void**</span> - инициализирует расширение с использованием переданной конфигурации.
-    - **_zoomConfig_** - (*object*) - объект конфигурации, включающий массив *levels* с определением уровней масштабирования, а также ряд необязательных свойств:
-        - **_levels_** - (*ZoomLevel[]*) - обязательно, массив, определяющий уровни масштабирования
-        - **_handler?_** - (*Function*): void - позволяет определить пользовательский обработчик колесика мыши для ручного управления зумом
-            - **_e_** - (*Event*) - нативный объект события
-        - **_startDate?_** - (*Date*) - начальная точка для масштабирования временной шкалы
-        - **_endDate?_** - (*Date*) - конечная точка для масштабирования временной шкалы
-        - **_activeLevelIndex?_** - (*number*) - индекс уровня масштабирования, который будет активен по умолчанию
-        - **_widthStep?_** - (*number*) - шаг увеличения/уменьшения ширины шкалы при переключении уровней зума
-        - **_minColumnWidth?_** - (*number*) - минимальная ширина колонки, позволяющая перейти к предыдущему уровню зума
-        - **_maxColumnWidth?_** - (*number*) - максимальная ширина колонки, позволяющая перейти к следующему уровню зума
-        - **_useKey?_** - (*string*) - указывает, какая клавиша разрешает масштабирование с помощью прокрутки мыши: "ctrlKey" | "altKey" | "shiftKey"
-        - **_trigger?_** - (*string | null | undefined*) - определяет триггер масштабирования: "wheel" | null | undefined 
-        - **_element?_** - (*HTMLElement | Function*): HTMLElement - DOM-элемент, инициирующий масштабирование, либо функция, возвращающая такой элемент
+- <span class="submethod">**init (zoomConfig): void**</span> - инициализирует расширение с переданной конфигурацией.
+    - **_zoomConfig_** - (*object*) - объект конфигурации, который содержит массив *levels* зум‑уровней и ряд дополнительных свойств:
+        - **_levels_** - (*ZoomLevel[]*) - обязателен, массив зум‑уровней
+        - **_handler?_** - (*Function*): void - позволяет задать пользовательский обработчик прокрутки колесика мыши для управления зумом вручную
+            - **_e_** - (*Event*) - объект нативного события.
+        - **_startDate?_** - (*Date*) - начальное значение масштаба времени зумирования
+        - **_endDate?_** - (*Date*) - конечное значение масштаба времени зумирования
+        - **_activeLevelIndex?_** - (*number*) - номер уровня по умолчанию
+        - **_widthStep?_** - (*number*) - шаг увеличения/уменьшения ширины масштаба при переходе к следующему/предыдущему уровню зума
+        - **_minColumnWidth?_** - (*number*) - минимальная ширина столбца, позволяющая перейти к предыдущему уровню масштабирования
+        - **_maxColumnWidth?_** - (*number*) - максимальная ширина столбца, позволяющая перейти к следующему уровню масштабирования
+        - **_useKey?_** - (*string*) - клавиша, которая включает масштабирование при прокрутке колесика мыши: "ctrlKey" | "altKey" | "shiftKey"
+        - **_trigger?_** - (*string | null | undefined*) - триггер масштабирования: "wheel" | null | undefined 
+        - **_element?_** - (*HTMLElement | Function*): HTMLElement - DOM-элемент, над которым запускается зумирование, или функция, возвращающая DOM-элемент
 
-Ниже приведены два примера конфигурации расширения **zoom**:
+Эти два примера настройки конфигурации **zoom**:
 
 ~~~js
 var zoomConfig = {
@@ -99,7 +99,7 @@ var zoomConfig = {
 gantt.ext.zoom.init(zoomConfig);
 
 
-// альтернативно, уровни можно определить как массивы шкал
+// or, in a more simple way levels can be presented as scale arrays
 var hourToStr = gantt.date.date_to_str("%H:%i");
 var hourRangeFormat = function(step){
     return function(date){
@@ -134,76 +134,76 @@ var zoomConfig = {
 gantt.ext.zoom.init(zoomConfig);
 ~~~
 
-- <span class="submethod">**getCurrentLevel (): number**</span> - возвращает индекс текущего уровня масштабирования
+- <span class="submethod">**getCurrentLevel (): number**</span> - возвращает номер (индекс) текущего уровня масштабирования
 
 ~~~js
 gantt.ext.zoom.getCurrentLevel();
 ~~~
 
-- <span class="submethod">**setLevel (level): void**</span> - изменяет уровень масштабирования на указанный.
-    - **_level_** - (*number | string*) - может быть либо именем уровня (например, "year"), либо его индексом в массиве levels
+- <span class="submethod">**setLevel (level): void**</span> - переключает на указанный уровень масштабирования.
+    - **_level_** - (*number | string*) - Уровень определяется либо строкой (имя уровня из конфигурации, например, "year"), либо его номером в массиве уровней
 
 ~~~js
 gantt.ext.zoom.setLevel("year");
-// или 
+// or 
 gantt.ext.zoom.setLevel(5);
 ~~~
 
-- <span class="submethod">**getLevels (): ZoomLevel[]**</span> - возвращает все определённые уровни масштабирования
+- <span class="submethod">**getLevels (): ZoomLevel[]**</span> - позволяет получить все уровни масштабирования
 
 ~~~js
 gantt.ext.zoom.getLevels();
 ~~~
 
-Метод возвращает массив уровней масштабирования (*ZoomLevels[]*), который был передан в метод **init()**.
+Возвращает массив уровней масштабирования (*ZoomLevel[]*) переданных в метод **init()**, который инициализирует расширение.
 
-- <span class="submethod">**zoomIn (): void**</span> - переходит на более высокий уровень масштабирования
+- <span class="submethod">**zoomIn (): void**</span> - увеличивает текущий уровень масштабирования
 
 ~~~js
 gantt.ext.zoom.zoomIn();
 ~~~
 
-Также можно добиться того же с помощью:
+Для той же цели можно воспользоваться:
 
 ~~~js
 gantt.ext.zoom.setLevel(zoom.getCurrentLevel() - 1)
 ~~~
 
-- <span class="submethod">**zoomOut (): void**</span> - переходит на более низкий уровень масштабирования
+- <span class="submethod">**zoomOut (): void**</span> - уменьшает текущий уровень масштабирования
 
 ~~~js
 gantt.ext.zoom.zoomOut();
 ~~~
 
-Либо можно использовать:
+Для той же цели можно воспользоваться:
 
 ~~~js
 gantt.ext.zoom.setLevel(zoom.getCurrentLevel() + 1)
 ~~~
 
-- <span class="submethod">**attachEvent (name, handler): string**</span> - добавляет обработчик события
-    - **_name_** - (*string*) - имя события, на которое нужно подписаться
-    - **_handler_** - (*Function*) - функция, которая будет вызвана при возникновении события
+- <span class="submethod">**attachEvent (name, handler): string**</span> - прикрепляет обработчик события
+    - **_name_** - (*string*) - имя обработчика события
+    - **_handler_** - (*Function*) - функция, которая будет вызываться при срабатывании события
 
-- <span class="submethod">**detachEvent (id): void**</span> - удаляет ранее добавленный обработчик события
-    - **_id_** - (*string*) - идентификатор обработчика события для удаления
+- <span class="submethod">**detachEvent (id): void**</span> - открепляет обработчик от события
+    - **_id_** - (*string*) - идентификатор подключенного обработчика события
 
-- <span class="submethod">**callEvent (name, params): boolean**</span> - инициирует внутреннее событие
-    - **_name_** - (*string*) - имя события, не зависит от регистра
+- <span class="submethod">**callEvent (name, params): boolean**</span> - вызывает внутреннее событие
+    - **_name_** - (*string*) - имя события, без учёта регистра
     - **_params_** - (*Array&lt;any&gt;*) - необязательный массив данных, связанных с событием
 
-- <span class="submethod">**checkEvent (name): boolean**</span> - проверяет, есть ли зарегистрированные обработчики для указанного события
+- <span class="submethod">**checkEvent (name): boolean**</span> - проверяет, указан ли обработчик(-и) для события
     - **_name_** - (*string*) - имя события
 
-Возвращает <i>true</i>, если для события зарегистрирован хотя бы один обработчик.
+Returns <i>true</i>, если для события указан обработчик(-и).
 
 ## События
 
-- **<span class="eventname">onAfterZoom</span>** - возникает при изменении уровня масштабирования.
-Событие предоставляет следующие аргументы:
+- **<span class="eventname">onAfterZoom</span>** - срабатывает во время переключения уровня масштабирования.
+Аргументы: 
 <span class="eventarguments">
-    - **_level_** - (*number | string*) - индекс или имя уровня масштабирования
-    - **_config_** - (*ZoomLevel*) - объект конфигурации для уровня масштабирования
+    - **_level_** - (*number | string*) - номер уровня
+    - **_config_** - (*ZoomLevel*) - конфигурация уровня
 </span>
 
 ~~~js

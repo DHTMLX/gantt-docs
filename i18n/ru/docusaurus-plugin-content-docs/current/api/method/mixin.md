@@ -1,22 +1,22 @@
 ---
 sidebar_label: mixin
-title: mixin method
-description: "сливает свойства из объекта 'source' в объект 'target'"
+title: метод mixin
+description: "добавляет свойства объекта 'source' в объект 'target'"
 ---
 
 # mixin
 
 ### Description
 
-@short: Сливает свойства из объекта 'source' в объект 'target'
+@short: Добавляет свойства объекта 'source' в объект 'target'
 
 @signature: mixin: (target: CustomObject, source: CustomObject, force?: boolean) =\> void
 
 ### Parameters
 
-- `target` - (required) *CustomObject* - объект, который будет получать новые свойства
-- `source` - (required) *CustomObject* - объект, предоставляющий свойства для добавления
-- `force` - (optional) *boolean* - опционально, если true, свойства из 'source' заменят свойства в 'target' при совпадении ключей. По умолчанию false, поэтому существующие свойства в 'target' остаются без изменений
+- `target` - (required) *CustomObject* - целевой объект
+- `source` - (required) *CustomObject* - исходный объект
+- `force` -		(optional)	*boolean*	- необязательный параметр; если true, свойства 'source' перезапишут совпадающие свойства 'target', если таковые имеются. Если false (по умолчанию), свойства, которые уже существуют в 'target', будут пропущены	
 
 ### Example
 

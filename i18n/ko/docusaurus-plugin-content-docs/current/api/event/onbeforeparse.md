@@ -1,23 +1,23 @@
 ---
 sidebar_label: onBeforeParse
 title: onBeforeParse event
-description: "데이터 파싱이 시작되기 직전에 트리거됩니다"
+description: "데이터 구문 분석이 시작되기 전에 실행됩니다"
 ---
 
 # onBeforeParse
 
 ### Description
 
-@short: 데이터 파싱이 시작되기 직전에 트리거됩니다
+@short: 데이터 구문 분석이 시작되기 전에 실행됩니다
 
-@signature: onBeforeParse: () =\> void;
+@signature: onBeforeParse: () => void;
 
 ### Example
 
 ~~~jsx
 gantt.init("gantt_here");
 gantt.attachEvent("onBeforeParse", function(){ 
-    // 이곳에 사용자 정의 로직을 추가하세요
+    // 여기에 코드 작성
 });
 
 gantt.parse(demo_tasks);
@@ -32,4 +32,3 @@ gantt.parse(demo_tasks);
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

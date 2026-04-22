@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLightboxType
-title: getLightboxType method
-description: "현재 활성화된 라이트박스 구조의 이름을 제공합니다"
+title: getLightboxType 메서드
+description: "활성화된 라이트박스의 구조 이름을 반환합니다"
 ---
 
 # getLightboxType
 
 ### Description
 
-@short: 현재 활성화된 라이트박스 구조의 이름을 제공합니다
+@short: 활성화된 라이트박스의 구조 이름을 반환합니다
 
-@signature: getLightboxType: () =\> string
+@signature: getLightboxType: () => string
 
 ### Returns
-- ` name` - (string) - 라이트박스 구조의 식별자
+- ` name` - (string) - 라이트박스의 구조 이름
 
 ### Example
 

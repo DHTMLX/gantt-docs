@@ -1,7 +1,7 @@
 ---
 sidebar_label: work_time
-title: work_time config
-description: "根据工作时间而非日历时间计算任务持续时间"
+title: work_time 配置
+description: "在工作时间内计算任务的持续时间，而不是日历时间"
 ---
 
 # work_time
@@ -22,11 +22,11 @@ gantt.config.work_time = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**默认值：** false
 
 ### Related samples
-- [Duration includes only working days](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
-- [Calculate working hours](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
+- [仅包含工作日的持续时间](https://docs.dhtmlx.com/gantt/samples/09_worktime/02_working_days.html)
+- [计算工作时长](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
 
 ### Related API
 - [correct_work_time](api/config/correct_work_time.md)
@@ -34,4 +34,3 @@ gantt.init("gantt_here");
 
 ### Related Guides
 - [工作时间计算](guides/working-time.md)
-

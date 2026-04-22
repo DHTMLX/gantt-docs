@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLinks
 title: getLinks method
-description: "получает все ссылки, отображаемые на диаграмме Ганта"
+description: "возвращает все связи, представленные на диаграмме Ганта"
 ---
 
 # getLinks
 
 ### Description
 
-@short: Получает все ссылки, отображаемые на диаграмме Ганта
+@short: Возвращает все связи, представленные на диаграмме Ганта
 
-@signature: getLinks: () =\> Array\<Link\>
+@signature: getLinks: () => Array\<Link\>
 
 ### Returns
-- `links` - (Array &lt;Link&gt;) - массив, содержащий объекты ссылок
+- `links` - (Array &lt;Link&gt;) - массив объектов связей
 
 ### Example
 
@@ -23,5 +23,4 @@ const links = gantt.getLinks();
 
 ### Details
 
-Чтобы узнать, как получить все ссылки, связанные с конкретной задачей, обратитесь к статьям [Получение объекта/ID связи](guides/link-object-operations.md#gettingthelinksrelatedtoacertaintask) и [getLink](api/method/getlink.md).
-
+Для получения информации о том, как получить все связи, связанные с конкретной задачей, смотрите статьи [Getting the Link Object/Id](guides/link-object-operations.md#getting-the-links-related-to-a-certain-task) и [getLink](api/method/getlink.md).

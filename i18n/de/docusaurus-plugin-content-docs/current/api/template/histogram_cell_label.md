@@ -1,29 +1,29 @@
 ---
 sidebar_label: histogram_cell_label
-title: histogram_cell_label template
-description: "definiert das Label, das innerhalb einer Zelle angezeigt wird"
+title: histogram_cell_label Vorlage
+description: "definiert die Beschriftung in einer Zelle"
 ---
 
 # histogram_cell_label
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 ### Description
 
-@short: Definiert das Label, das innerhalb einer Zelle angezeigt wird
+@short: Definiert die Beschriftung in einer Zelle
 
 @signature: histogram_cell_label: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) =\> string | number | void;
 
 ### Parameters
 
-- `start_date` - (required) *Date* - das Startdatum der Skalierungszelle  
-- `end_date` - (required) *Date* - das Enddatum der Skalierungszelle
-- `resource` - (required) *object* - das Ressourcenobjekt, das mit der Zelle verknüpft ist
-- `tasks` - (required) *Array* - &lt;Task&gt;        den angegebenen Ressourcen zugewiesene Aufgaben, die sich mit den Start- und Enddaten der Zelle überschneiden
-- `assignments` - (required) *array* - Ressourcenzuweisungen, die mit den angegebenen Start-/Enddaten der Aufgaben verknüpft sind
+- `start_date` - (erforderlich) *Date* - Startdatum der Skalenzelle  
+- `end_date` - (erforderlich) *Date* - Enddatum der Skalenzelle
+- `resource` - (erforderlich) *object* - Das Ressourcenobjekt
+- `tasks` - (erforderlich) *Array* - &lt;Task&gt;        Aufgaben, die dem angegebenen Ressourcenobjekt zugewiesen sind und Start-/Enddaten der Zelle überlappen
+- `assignments` - (erforderlich) *array* - Ressourcenzuweisungen, die den angegebenen Start-/Enddaten der Aufgabe zugeordnet sind
 
 ### Returns
-- ` label` - (string | number | void) - ein HTML-String oder eine Zahl, die als Label innerhalb einer Histogramm-Zelle verwendet wird
+- ` label` - (string | number | void) - ein HTML-Text für die Beschriftung in einer Histogramm-Zelle
 
 ### Example
 
@@ -35,14 +35,13 @@ gantt.templates.histogram_cell_label = function(start_date,end_date,resource,tas
 ~~~
 
 ### Related samples
-- [Resource histogram](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
-- [Assign workload in percents](https://docs.dhtmlx.com/gantt/samples/11_resources/10_resource_histogram_workload_percents.html)
-- [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+- [Ressourcen-Histogramm](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
+- [Arbeitslast in Prozent zuweisen](https://docs.dhtmlx.com/gantt/samples/11_resources/10_resource_histogram_workload_percents.html)
+- [Ressourcenwerte bestimmten Tagen zuordnen](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
-
 :::note
- Der Parameter "assignments" wird nur bereitgestellt, wenn die Konfiguration [process_resource_assignments](api/config/process_resource_assignments.md) aktiviert ist. 
+Der Parameter "assignments" ist nur verfügbar, wenn die [process_resource_assignments](api/config/process_resource_assignments.md) Konfiguration aktiviert ist.
 :::
 
 ### Related API
@@ -53,7 +52,7 @@ gantt.templates.histogram_cell_label = function(start_date,end_date,resource,tas
 - [resource_property](api/config/resource_property.md)
 
 ### Related Guides
-- ["Ressourcenmanagement"](guides/resource-management.md#resourceviewpanel)
+- [Ressourcenverwaltung](guides/resource-management.md#resourceviewpanel)
 
 ### Change log
 - der **assignments**-Parameter wurde in Version 7.1 eingeführt

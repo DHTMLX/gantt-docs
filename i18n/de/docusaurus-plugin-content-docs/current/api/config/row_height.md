@@ -1,14 +1,14 @@
 ---
 sidebar_label: row_height
-title: row_height config
-description: "legt die Standardhöhe für die Zeilen in der Tabelle fest"
+title: row_height Konfiguration
+description: "legt die Standardhöhe für Zeilen der Tabelle fest"
 ---
 
 # row_height
 
 ### Description
 
-@short: Legt die Standardhöhe für die Zeilen in der Tabelle fest
+@short: Legt die Standardhöhe für Zeilen der Tabelle fest
 
 @signature: row_height: number
 
@@ -16,11 +16,11 @@ description: "legt die Standardhöhe für die Zeilen in der Tabelle fest"
 
 ~~~jsx
 gantt.config.row_height = 40;
-
+ 
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 35
+**Standardwert:** 35
 
 ### Related Guides
-- ["Größenänderung von Zeilen im Grid"](guides/resizing-rows.md)
+- [Zeilen im Grid anpassen](guides/resizing-rows.md)

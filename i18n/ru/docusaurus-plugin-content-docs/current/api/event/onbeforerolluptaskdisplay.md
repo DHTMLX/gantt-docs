@@ -1,31 +1,31 @@
 ---
 sidebar_label: onBeforeRollupTaskDisplay
 title: onBeforeRollupTaskDisplay event
-description: "срабатывает непосредственно перед отображением rollup задачи на её родительском проекте"
+description: "срабатывает перед тем, как роллап-задача будет отображена на её родительском проекте"
 ---
 
 # onBeforeRollupTaskDisplay
 
 ### Description
 
-@short: Срабатывает непосредственно перед отображением rollup задачи на её родительском проекте
+@short: Перед отображением роллап-задачи на её родительском проекте
 
 @signature: onBeforeRollupTaskDisplay: (taskId: number | string, task: Task, parentId: number | string) =\> boolean;
 
 ### Parameters
 
-- `taskId` - (required) *number|string* - ID rollup задачи
-- `task` - (required) *Task* - объект rollup задачи
-- `parentId` - (required) *number|string* - ID родительской (проектной) задачи
+- `taskId` - (required) *number | string* - идентификатор роллап-задачи
+- `task` - (required) *Task* - объект роллап-задачи
+- `parentId` - (required) *number | string* - идентификатор родительской (проектной) задачи
 
 ### Returns
-- ` result` - (boolean) - указывает, будет ли rollup задача видима на родительском проекте (<b>true</b>) или скрыта (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли отображаться роллап-задача на её родительском проекте (<b>true</b>) или нет (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeRollupTaskDisplay", function(taskId, task, parentId){
-    // здесь можно добавить свою логику
+    // любая пользовательская логика здесь
     return false;
 });
 ~~~
@@ -34,4 +34,4 @@ gantt.attachEvent("onBeforeRollupTaskDisplay", function(taskId, task, parentId){
 - [Вехи](guides/milestones.md#rolluptasksandmilestones)
 
 ### Change log
-- добавлено в версии v8.0
+- добавлено в версии 8.0

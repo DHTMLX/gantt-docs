@@ -1,29 +1,29 @@
 ---
 sidebar_label: onBeforeUndoStack
 title: onBeforeUndoStack event
-description: "Срабатывает непосредственно перед тем, как действие будет добавлено в undo стек."
+description: "срабатывает перед добавлением действия в стек отмены"
 ---
 
 # onBeforeUndoStack
 
 ### Description
 
-@short: Срабатывает непосредственно перед тем, как действие будет добавлено в undo стек.
+@short: Срабатывает перед добавлением действия в стек отмены
 
 @signature: onBeforeUndoStack: (action: UndoRedoAction) =\> boolean;
 
 ### Parameters
 
-- `action` - (required) *UndoRedoAction* - массив объектов команд, представляющих действие пользователя
+- `action` - (required) *UndoRedoAction* - пользовательское действие в виде массива объектов команд
 
 ### Returns
-- ` result` - (boolean) - определяет, должно ли выполняться стандартное поведение события (true) или оно должно быть остановлено (false)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию для события (true) или отменено (false)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeUndoStack",function(action){
-    // ваш код здесь
+    // любая ваша логика здесь
     return true;
 });
 ~~~
@@ -31,21 +31,20 @@ gantt.attachEvent("onBeforeUndoStack",function(action){
 ### Details
 
 :::note
- Это событие является частью расширения **undo**, поэтому убедитесь, что плагин [undo](guides/extensions-list.md#undo) включен. Для дополнительной информации ознакомьтесь со статьей [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Это событие определяется в расширении **undo**, поэтому нужно включить плагин [undo](guides/extensions-list.md#undo). Подробности смотрите в статье [Undo/Redo Functionality](guides/undo-redo.md). 
 :::
 
 
-- Это событие можно заблокировать; возврат false остановит дальнейшую обработку.
-- Блокировка события предотвращает захват undo действий из аргументов события.
-- Вы можете изменять действия события.
+- Это событие поддерживает блокировку, возвращение false отменит дальнейшую обработку.
+- Если событие заблокировано, undo не будет захватывать действия из аргументов события.
+- Действия события можно изменять.
 
 ### Related API
 - [onBeforeRedoStack](api/event/onbeforeredostack.md)
 - [onBeforeUndo](api/event/onbeforeundo.md)
 
 ### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
 - добавлено в версии 5.2
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_lightbox
 title: drag_lightbox config
-description: "允许通过 lightbox 的 header 来拖动 lightbox"
+description: "允许通过头部拖动 lightbox 的可能性"
 ---
 
 # drag_lightbox
 
 ### Description
 
-@short: 允许通过 lightbox 的 header 来拖动 lightbox
+@short: 通过头部实现对 lightbox 的拖动能力
 
 @signature: drag_lightbox: boolean
 
@@ -28,4 +28,3 @@ gantt.init("gantt_here");
 - [drag_mode](api/config/drag_mode.md)
 - [drag_progress](api/config/drag_progress.md)
 - [drag_resize](api/config/drag_resize.md)
-

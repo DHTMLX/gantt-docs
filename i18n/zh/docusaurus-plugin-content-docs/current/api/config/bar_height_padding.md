@@ -1,14 +1,14 @@
 ---
 sidebar_label: bar_height_padding
-title: bar_height_padding config
-description: "控制当 `bar_height` 设置为 'full' 时，时间轴中任务条周围的间距"
+title: bar_height_padding 配置
+description: "当 `bar_height` 设置为 'full' 时，调整时间线中任务条周围的填充"
 ---
 
 # bar_height_padding
 
 ### Description
 
-@short: 控制当 `bar_height` 设置为 "full" 时，时间轴中任务条周围的间距
+@short: 当 `bar_height` 设置为 "full" 时，调整时间线中任务条周围的填充
 
 @signature: bar_height_padding: number
 
@@ -49,5 +49,4 @@ gantt.config.bar_height_padding = 14;
 - [row_height](api/config/row_height.md)
 
 ### Change log
-- added in v9.0
-
+- 新增于 v9.0

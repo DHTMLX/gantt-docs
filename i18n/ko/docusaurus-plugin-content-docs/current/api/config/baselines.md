@@ -8,7 +8,7 @@ description: "간트 차트에서 baselines 작동 방식을 설정합니다."
 
 ### Description
 
-@short: 간트 차트에서 baselines 작동 방식을 설정합니다.
+@short: 간트 차트에서 기준선의 기능을 구성합니다
 
 @signature: baselines: BaselineConfig | boolean
 
@@ -30,17 +30,18 @@ gantt.init("gantt_here");
 
 ### Details
 
-이 설정은 간트 차트에서 baselines가 관리되고 표시되는 방식을 제어합니다. 상세한 커스터마이징을 위해 객체로 설정할 수 있으며, 기능을 켜거나 끌 때는 단순 boolean 값을 사용할 수 있습니다. 객체에는 다음과 같은 옵션이 포함됩니다:
+이 설정은 간트 차트에서 기준선이 처리되고 표시되는 방법을 정의합니다. 표시를 사용자 정의하기 위해 객체로 설정하거나 기능을 활성화/비활성화하기 위해 불리언으로 설정할 수 있습니다. 객체 구성에는 다음 속성이 포함됩니다:
 
--  **datastore** - (*string*) - baseline 항목이 저장되는 datastore의 이름입니다. 자세한 내용은 `getDatastore` 메서드를 참조하세요.
--  **render_mode** - (*boolean | string*) - baselines가 나타나는 방식을 정의합니다:
-  - **_false_** - baselines가 표시되지 않습니다.
-  - **_"taskRow"_** - baselines가 작업 바와 같은 행에 표시됩니다.
-  - **_"separateRow"_** - baselines가 별도의 서브행에 표시되어 작업 행이 더 높아집니다.
-  - **_"individualRow"_** - 각 baseline이 작업 아래에 개별 서브행으로 렌더링됩니다.
-- **dataprocessor_baselines** - (*boolean*) - baseline 변경 시 각 항목에 대해 DataProcessor가 작동할지 여부를 결정합니다.
-- **row_height** - (*number*) - baseline 서브행의 높이를 설정하며, `render_mode`가 `"separateRow"` 또는 `"individualRow"`일 때만 사용됩니다.
-- **bar_height** -  (*number*) - baseline 바의 높이를 제어합니다.
+-  **datastore** - (*string*) - 기준선 항목을 저장하는 데 사용되는 데이터스토어의 이름. 관련 기능에 대해서는
+`getDatastore` 메서드를 참조하십시오.
+-  **render_mode** - (*boolean | string*) - 기준선이 표시되는 방식을 결정합니다:
+  - **_false_** - 기준선이 표시되지 않습니다.
+  - **_"taskRow"_** - 태스크 바와 같은 행에 기준선이 표시됩니다.
+  - **_"separateRow"_** - 별도 서브 행으로, 태스크 행의 높이가 확장되며 기준선이 표시됩니다.
+  - **_"individualRow"_** - 각 기준선이 태스크 아래의 자체 서브 행에 표시됩니다.
+- **dataprocessor_baselines** - (*boolean*) - baseline 업데이트가 DataProcessor를 개별 항목으로 트리거하는지 여부를 지정합니다.
+- **row_height** - (*number*) - 기준선의 서브 행 높이를 정의합니다. `render_mode`가 `"separateRow"` 또는 `"individualRow"`로 설정된 경우에 한해 적용됩니다.
+- **bar_height** -  (*number*) - 기준선 바의 높이를 설정합니다.
 
 ### Related API
 - [getDatastore](api/method/getdatastore.md)
@@ -50,4 +51,3 @@ gantt.init("gantt_here");
 
 ### Change log
 - v9.0에 추가됨
-

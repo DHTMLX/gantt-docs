@@ -1,16 +1,16 @@
 ---
 sidebar_label: correctTaskWorkTime
-title: correctTaskWorkTime method
-description: "пересчитывает продолжительность задачи на основе рабочего времени"
+title: метод correctTaskWorkTime
+description: "пересчитывает длительность задачи в рамках рабочего времени"
 ---
 
 # correctTaskWorkTime
 
 ### Description
 
-@short: Пересчитывает продолжительность задачи на основе рабочего времени
+@short: Пересчитывает длительность задачи в рамках рабочего времени
 
-@signature: correctTaskWorkTime: (task: Task) =\> void
+@signature: correctTaskWorkTime: (task: Task) => void
 
 ### Parameters
 
@@ -26,7 +26,7 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 
 ### Details
 
-Этот метод работает при включённых следующих опциях конфигурации:
+Метод требует указания следующих параметров конфигурации:
 
 ~~~js
 gantt.config.work_time = true;
@@ -34,4 +34,4 @@ gantt.config.correct_work_time = true;
 ~~~
 
 ### Related Guides
-- [Расчёт рабочего времени](guides/working-time.md)
+- [Расчет рабочего времени](guides/working-time.md)

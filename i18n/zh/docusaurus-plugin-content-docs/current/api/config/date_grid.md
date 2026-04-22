@@ -1,14 +1,14 @@
 ---
 sidebar_label: date_grid
-title: date_grid config
-description: "设置表格中'开始时间'列所使用的日期格式"
+title: date_grid 配置
+description: "设置表格中“Start time”列日期的格式"
 ---
 
 # date_grid
 
 ### Description
 
-@short: 设置表格中"开始时间"列所使用的日期格式
+@short: 设置表格中“Start time”列日期的格式
 
 @signature: date_grid: string
 
@@ -24,7 +24,7 @@ gantt.init("gantt_here");
 
 ### Details
 
-要动态更新 **grid_date** 设置（例如，当用户更改语言环境时），可以重新定义 [grid_date_format](api/template/grid_date_format.md) 模板:
+要动态更改 **grid_date** 配置（例如，在用户更改区域设置语言后），你需要重新定义 [grid_date_format](api/template/grid_date_format.md) 模板：
 
 ~~~js
 function change_grid_date(){
@@ -40,4 +40,3 @@ gantt.templates.grid_date_format = function(date, column){
 
 ### Related API
 - [date_grid](api/template/date_grid.md)
-

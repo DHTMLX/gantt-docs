@@ -1,26 +1,26 @@
 ---
 sidebar_label: onBeforeMultiSelect
 title: onBeforeMultiSelect event
-description: "Срабатывает непосредственно перед выбором одной или нескольких задач"
+description: "срабатывает до выбора задачи или диапазона задач"
 ---
 
 # onBeforeMultiSelect
 
 ### Description
 
-@short: Срабатывает непосредственно перед выбором одной или нескольких задач
+@short: Срабатывает до выбора задачи или диапазона задач
 
 @signature: onBeforeMultiSelect: (e: Event) =\> void;
 
 ### Parameters
 
-- `e` - (required) *Event* - родной объект события
+- `e` - (обязателен) *Event* - нативный объект события
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeMultiSelect", function(e){
-    // логика здесь
+    // любая ваша логика здесь
     return true;
 });
 ~~~
@@ -28,11 +28,10 @@ gantt.attachEvent("onBeforeMultiSelect", function(e){
 ### Details
 
 :::note
- Это событие является частью расширения **multiselect**, поэтому убедитесь, что плагин [multiselect](guides/extensions-list.md#multitaskselection) включен. Для получения дополнительной информации ознакомьтесь со статьей [Множественный выбор задач](guides/multiselection.md). 
+Это событие определяется в расширении **multiselect**, поэтому вам нужно активировать плагин [multiselect](guides/extensions-list.md#multitaskselection). Подробности см. в статье [Multi-Task Selection](guides/multiselection.md).
 :::
 
-
-Это событие можно заблокировать - возвращение *false* предотвратит множественный выбор задач.
+Событие является блокируемым: возвращение *false* отменит множественный выбор задач.
 
 ### Related API
 - [onBeforeTaskMultiSelect](api/event/onbeforetaskmultiselect.md)
@@ -40,5 +39,4 @@ gantt.attachEvent("onBeforeMultiSelect", function(e){
 - [onMultiSelect](api/event/onmultiselect.md)
 
 ### Related Guides
-- [Множественный выбор задач](guides/multiselection.md#apievents)
-
+- [Выбор нескольких задач](guides/multiselection.md#apievents)

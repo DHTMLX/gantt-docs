@@ -1,16 +1,16 @@
 ---
 sidebar_label: render
-title: render method
-description: "рисует весь Gantt chart"
+title: метод render
+description: "отрисовывает всю диаграмму Ганта"
 ---
 
 # render
 
 ### Description
 
-@short: Рисует весь Gantt chart
+@short: Отрисовывает всю диаграмму Ганта
 
-@signature: render: () =\> void
+@signature: render: () => void
 
 ### Example
 
@@ -27,13 +27,13 @@ gantt.config.scales = [
 gantt.render();
 ~~~
 
+
 ### Related samples
-- [Dynamic scales](https://docs.dhtmlx.com/gantt/samples/03_scales/05_dynamic_scales.html)
+- [Динамические масштабы](https://docs.dhtmlx.com/gantt/samples/03_scales/05_dynamic_scales.html)
 
 ### Details
 
-Метод [batchUpdate](api/method/batchupdate.md) позволяет обновлять несколько задач или связей одновременно с одним вызовом render, избегая необходимости в множественных обновлениях и render-ах.
+Вы можете использовать метод [batchUpdate](api/method/batchupdate.md) для обновления сразу нескольких задач и связей за одну повторную перерисовку, вместо выполнения нескольких обновлений с несколькими повторными перерисовками.
 
 ### Related Guides
-- [Динамическое изменение настроек масштаба](guides/dynamic-scale.md)
-
+- [Динамическая настройка параметров масштаба](guides/dynamic-scale.md)

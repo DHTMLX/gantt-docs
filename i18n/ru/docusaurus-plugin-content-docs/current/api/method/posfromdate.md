@@ -1,23 +1,23 @@
 ---
 sidebar_label: posFromDate
-title: posFromDate method
-description: "получает относительную горизонтальную позицию заданной даты в области графика"
+title: метод posFromDate
+description: "получает относительную горизонтальную позицию указанной даты в области диаграммы"
 ---
 
 # posFromDate
 
 ### Description
 
-@short: Получает относительную горизонтальную позицию заданной даты в области графика
+@short: Получает относительную горизонтальную позицию указанной даты в области диаграммы
 
-@signature: posFromDate: (date: Date) =\> number
+@signature: posFromDate: (date: Date) => number
 
 ### Parameters
 
-- `date` - (required) *Date* - дата, для которой необходимо получить позицию
+- `date` - (required) *Date* - дата, положение которой вы хотите узнать
 
 ### Returns
-- ` position` - (number) - x-координата (в пикселях) указанной даты на временной шкале
+- ` position` - (number) - x-координата (в пикселях) указанной даты на шкале времени
 
 ### Example
 
@@ -28,14 +28,10 @@ gantt.posFromDate(new Date());
 ### Details
 
 :::note
-
-Этот метод возвращает позицию даты, которая в данный момент отображается на диаграмме Ганта. Если дата не видна на графике, возвращается 'null'.
- 
+Метод возвращает позицию даты, которая в данный момент отображается на диаграмме Gantt. Если дата не отображается на диаграмме - метод вернет 'null'.
 :::
 
-![gantt_localized](/img/gantt_localized.png)
-
-Для приведённой выше диаграммы Ганта метод возвращает такие значения:
+Например, для приведенной выше диаграммы Gantt метод вернет следующее:
 
 ~~~js
 gantt.posFromDate(new Date(2023,02,31)); // -> 0
@@ -45,4 +41,3 @@ gantt.posFromDate(new Date(2023,03,2));  // -> 148
 
 ### Related API
 - [getLayoutView](api/method/getlayoutview.md)
-

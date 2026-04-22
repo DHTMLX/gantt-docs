@@ -1,6 +1,6 @@
 ---
 sidebar_label: setWorkTime
-title: setWorkTime method
+title: setWorkTime-Methode
 description: "setzt die Arbeitszeit für das Gantt-Diagramm"
 ---
 
@@ -10,172 +10,175 @@ description: "setzt die Arbeitszeit für das Gantt-Diagramm"
 
 @short: Setzt die Arbeitszeit für das Gantt-Diagramm
 
-@signature: setWorkTime: (config: object) =\> boolean
+@signature: setWorkTime: Calendar['setWorkTime']
 
 ### Parameters
 
-- `config` - (required) *object* - das Konfigurationsobjekt für einen Zeitraum
+- `config` - (required) *object* - das Konfigurationsobjekt eines Zeitabschnitts
 
 ### Example
 
 ~~~jsx
 gantt.config.work_time = true;
 
-// aktualisiert die Arbeitszeiten für Arbeitstage von ["8:00-17:00"] auf ["9:00-18:00"]
+//ändert die Arbeitszeit der Arbeitstage von ["8:00-17:00"] zu ["9:00-18:00"]
 gantt.setWorkTime({ hours:["9:00-18:00"] });
  
-// markiert alle Freitage als arbeitsfreie Tage
+//macht alle Freitage zu freien Tagen
 gantt.setWorkTime({ day:5, hours:false });
  
-// passt die Arbeitszeiten für Freitage und Samstage an 
-// von ["8:00-17:00"] auf ["8:00-12:00"]
+//ändert die Arbeitszeit für Freitage und Samstage 
+// von ["8:00-17:00"] zu ["8:00-12:00"]
 gantt.setWorkTime({day : 5, hours : ["8:00-12:00"]});
 gantt.setWorkTime({day : 6, hours : ["8:00-12:00"]});
  
-// definiert den 31. März als Arbeitstag
+//macht den 31. März zu einem Arbeitstag 
 gantt.setWorkTime({date : new Date(2013, 2, 31)});
  
-// setzt den 1. Januar als arbeitsfreien Tag
+//macht den 1. Januar zu einem freien Tag
 gantt.setWorkTime({date:new Date(2013,0,1), hours:false})
 
-// definiert die Arbeitszeit als zwei Intervalle: 8:30-12:00, 13:00-17:00 (Pausenzeit inklusive)
+//legt die Arbeitszeit als 2 Perioden fest: 8:30-12:00, 13:00-17:00 (wegen Mittagspause)
 gantt.setWorkTime({hours : ["8:30-12:00", "13:00-17:00"]})
 ~~~
 
+
 ### Related samples
-- [Calculate working hours](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
+- [Berechnung der Arbeitsstunden](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
 
 ### Details
 
 :::note
-
-Diese Methode wirkt nur, wenn [work_time](api/config/work_time.md) aktiviert ist. Andernfalls wird sie ignoriert.
- 
+Die Methode macht nur Sinn, wenn [work_time](api/config/work_time.md) auf 'true' gesetzt ist. Andernfalls wird die Methode ignoriert.
 :::
 
-- Wenn keine Aufgabe angegeben ist, gilt die Methode für den [globalen Arbeitszeitkalender](guides/working-time.md#multipleworktimecalendars). <br>
-- Zusätzlich kann sie direkt von einem [Kalenderobjekt](api/other/calendar.md) aufgerufen werden.
+- Die Methode verwendet den [globalen Arbeitszeitkalender](guides/working-time.md#multipleworktimecalendars), wenn kein Task angegeben ist. 
+- Zusätzlich kann die Methode direkt von einem [Kalender-Objekt](api/other/calendar.md) aufgerufen werden.
 
-Standardmäßig sind die Arbeitszeiten wie folgt eingestellt:
 
-- **Arbeitstage**: Montag bis Freitag.
+Die Standard-Arbeitszeit ist Folgendes:
+
+- **Arbeitstage**: Montag - Freitag.
 - **Arbeitszeiten**: 08:00 - 17:00.
 
-Diese Methode ermöglicht es, diese Standardwerte anzupassen.
+Die Methode dient dazu, die Standard-Einstellungen zu ändern.
 
-## Eigenschaften des Konfigurationsobjekts {#configurationobjectproperties}
+## Konfigurationsobjekt-Eigenschaften
 
-Das Konfigurationsobjekt kann folgende Eigenschaften enthalten:
+
+Das Konfigurationsobjekt kann die folgenden Eigenschaften enthalten:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">
-  <thead>
-  <tr>
-  <th>
-  Eigenschaft 
-  </th>
-  <th>
-  Beschreibung
-  </th>
+	<thead>
+	<tr>
+		<th>
+			Eigenschaft 
+		</th>
+		<th>
+			Beschreibung
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td rowspan="2"><b id="day">day</b></td>
+  <td> eine Zahl des Wochentags [0 (<i>Sonntag</i>) - 6 (<i>Samstag</i>)]. Hinweis, Sie können jeweils nur einen Tag auf einmal festlegen</td>
   </tr>
-  </thead>
-  <tbody>
   <tr>
-  <td rowspan="2"><b id="day">day</b></td>
-  <td> die Zahl, die einen Wochentag repräsentiert [0 (<i>Sonntag</i>) - 6 (<i>Samstag</i>)]. Es kann jeweils nur ein Tag gesetzt werden.</td>
-  </tr>
-  <tr>
-  <td colspan="2">
+		<td colspan="2" style="text-align:left !important; ">
 ~~~js
-// markiert alle Montage als arbeitsfreie Tage
+//macht alle Montage zu freien Tagen
 gantt.setWorkTime({ day:1, hours:false }); 
 ~~~
-  </td>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="2"><b id="date">date</b></td>
+  <td> ein konkretes Datum, das als Arbeitstag oder Ruhetag festgelegt wird</td>
   </tr>
   <tr>
-  <td rowspan="2"><b id="date">date</b></td>
-  <td> ein bestimmtes Datum, das als Arbeitstag oder freier Tag definiert wird</td>
-  </tr>
-  <tr>
-  <td colspan="2">
+		<td colspan="2" style="text-align:left !important; ">
 ~~~js
-// markiert ein bestimmtes Datum als arbeitsfreien Tag
+//macht ein konkretes Datum zu einem Ruhetag
 gantt.setWorkTime({date:new Date(2013,0,1), hours:false})
 ~~~
-  </td>
+		</td>
+	</tr>
+  <tr>
+		<td rowspan="2"><b id="hours">hours</b></td>
+  <td> ein Array von Arbeitsstunden als 'von'-'bis'-Paaren. <br/><i>'false'</i> Wert setzt einen Ruhetag, <i>'true' (Standardwert)</i> wendet die Standardstunden an (["8:00-17:00"])</td>
   </tr>
   <tr>
-  <td rowspan="2"><b id="hours">hours</b></td>
-  <td> ein Array von Arbeitszeiten, angegeben als 'von'-'bis' Intervalle. <br><i>'false'</i> definiert den Tag als arbeitsfrei, während <i>'true' (Standard)</i> die Standardzeiten (["8:00-17:00"]) anwendet</td>
-  </tr>
-  <tr>
-  <td colspan="2">
+		<td colspan="2" style="text-align:left !important; ">
 ~~~js
-// setzt die Arbeitszeiten für Freitage von 8:00 bis 12:00
+//legt die Arbeitszeit für Freitage von 8:00 bis 12:00 fest
 gantt.setWorkTime({day : 5, hours : ["8:00-12:00"]});
 ~~~
-  </td>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="2"><b id="hours">customWeeks</b></td>
+  <td> ein Objekt mit unterschiedlichen Arbeitszeitregeln für verschiedene Zeiträume. <br/> Das Objekt kann eine Reihe von <i>key:value</i>-Paaren enthalten, wobei <i>key</i> der Name eines Zeitabschnitts ist und <i>value</i> ein Objekt, das folgende Attribute beinhaltet:<ul><li><b>from</b> - (<i>Date</i>) verpflichtend, das Datum, an dem der Zeitraum beginnen soll</li><li><b>to</b> - (<i>Date</i>) verpflichtend, das Datum, an dem der Zeitraum beendet sein soll</li><li><b>hours</b> - (<i>array</i>) ein Array von Arbeitsstunden als 'von'-'bis'-Paaren. <br/><i>'false'</i> Wert setzt einen Ruhetag, <i>'true' (Standardwert)</i> wendet die Standardstunden an (["8:00-17:00"])</li><li><b>days</b> - (<i>array</i>) ein Array von 7 Wochentagen (von 0 - Sonntag bis 6 - Samstag), wobei 1/true für einen Arbeitstag steht und 0/false - ein Nicht-Arbeitstag.</li></ul></td>
   </tr>
   <tr>
-  <td rowspan="2"><b id="hours">customWeeks</b></td>
-  <td> ein Objekt, das unterschiedliche Arbeitszeitregeln für verschiedene Zeiträume definiert.<br> Das Objekt kann Schlüssel-Wert-Paare enthalten, wobei <i>key</i> der Name eines Zeitraums ist und <i>value</i> ein Objekt mit folgenden Attributen:
-  <ul><li><b>from</b> - (<i>Date</i>) erforderlich, Startdatum des Zeitraums</li><li><b>to</b> - (<i>Date</i>) erforderlich, Enddatum des Zeitraums</li><li><b>hours</b> - (<i>array</i>) ein Array von Arbeitszeiten als 'von'-'bis' Intervalle. <br><i>'false'</i> bedeutet arbeitsfrei, <i>'true' (Standard)</i> setzt die Standardzeiten (["8:00-17:00"])</li><li><b>days</b> - (<i>array</i>) ein Array mit 7 Elementen, die die Wochentage repräsentieren (0 - Sonntag bis 6 - Samstag), wobei 1/true Arbeitstag und 0/false arbeitsfrei bedeutet.</li></ul></td>
-  </tr>
-  <tr>
-  <td colspan="2">
+		<td colspan="2" style="text-align:left !important; ">
 ~~~js
-// ändert die Arbeitszeiten für die Wintermonate
+//ändert die Arbeitszeit für Wintermonate
 gantt.setWorkTime({
-    customWeeks: {
-        winter: {
-            from: new Date(2018, 11, 1), // 1. Dezember 2018
-            to: new Date(2019, 2, 1), // 1. März 2019 00:00
-            hours: ["9:00-13:00", "14:00-16:00"],
-            days: [ 1, 1, 1, 1, 0, 0, 0]
-        }
-    }
+	customWeeks: {
+		winter: {
+			from: new Date(2018, 11, 1), // 1. Dezember 2018
+			to: new Date(2019, 2, 1), // 1. März 2019
+			hours: ["9:00-13:00", "14:00-16:00"],
+			days: [ 1, 1, 1, 1, 0, 0, 0]
+		}
+	}
 });
 ~~~
-  </td>
-  </tr>
-  </tbody>
+		</td>
+	</tr>
+	</tbody>
 </table>
 
-## Arbeitszeiten für Nachtschicht einstellen
+
+## Setting working time hours for the night shift
 
 Wenn Sie das Attribut **hours** im [setWorkTime](api/method/setworktime.md) Konfigurationsobjekt angeben, sollten die Intervalle von früh nach spät aufgelistet werden. Werden sie in absteigender Reihenfolge angegeben, können einige Intervalle ignoriert werden. Zum Beispiel werden Intervalle nach `18:00` im folgenden Fall ignoriert:
 
 ~~~js
-// falsches Einstellungsbeispiel
+// die untenstehenden Einstellungen sind falsch
 gantt.setWorkTime({day : 5, hours : ["16:00-18:00", "14:00-15:00",  "08:00-10:00"]});
 gantt.setWorkTime({day : 5, hours : ["16:00-18:00", "00:00-04:00",  "05:00-06:00"]});
 ~~~
 
-Um Nachtschichtzeiten korrekt anzugeben, sollten diese auf zwei Tage verteilt werden:
+Wenn Sie Arbeitszeiten für die Nachtschicht festlegen müssen, sollten Sie sie folgendermaßen angeben: 
 
 - innerhalb von 24 Stunden für den ersten Tag
 - innerhalb von 24 Stunden für den folgenden Tag
 
-Beispiel:
+Zum Beispiel:
 
 ~~~js
 gantt.setWorkTime({day : 5, hours : ["16:00-18:00"]});
 gantt.setWorkTime({day : 6, hours : ["00:00-04:00",  "05:00-06:00"]});
 ~~~
 
-## Überschreiben einer Arbeitszeitregel
 
-Jeder weitere Aufruf dieser Methode für dasselbe Datum überschreibt die vorherige Einstellung der Arbeitszeit:
+## Re-writing a working time rule
+
+Beachten Sie, dass jeder folgende Aufruf der Methode für dasselbe Datum die vorherige Arbeitszeitregel überschreibt:
 
 ~~~js
 gantt.setWorkTime({hours:["8:00-12:00"]});
 gantt.setWorkTime({hours:["13:00-17:00"]});
-// die endgültige Arbeitszeit ist 13:00-17:00,
-// nicht eine Kombination beider Intervalle
+//das Ergebnis der obigen Befehle ist Arbeitszeit 13:00-17:00
+//und kein Misch aus beiden Befehlen
 ~~~
 
-## Eigene Arbeitstage und freie Tage festlegen
 
-Es ist nicht möglich, Arbeitszeitregeln zu setzen, die alle Arbeitstage oder Arbeitsstunden ausschließen. Zum Beispiel funktionieren folgende Einstellungen nicht:
+## Setting custom working days/days-off
+
+Beachten Sie, dass es nicht möglich ist, Arbeitszeit-Einstellungen anzuwenden, die keine Arbeitstage/Arbeitsstunden enthalten. Zum Beispiel wie folgt:
 
 ~~~js
 gantt.setWorkTime({ day: 0, hours: [] });
@@ -187,16 +190,16 @@ gantt.setWorkTime({ day: 5, hours: [] });
 gantt.setWorkTime({ day: 6, hours: [] });
 ~~~
 
-In solchen Fällen ignoriert Gantt den Methodenaufruf für einen der Arbeitstage, sodass dieser weiterhin Arbeitszeiten hat.
+Infolgedessen wird Gantt die Anwendung der Methode auf einen der Arbeitstage ignorieren, und es wird dennoch Arbeitsstunden enthalten. 
 
-Wenn Sie versuchen, die nächste Arbeitszeit oder Dauer von einem Datum mit solchen Einstellungen zu berechnen, wird kein gültiges Datum oder Dauer gefunden. Im Grunde ist eine solche Kalenderkonfiguration wirkungslos. Selbst wenn bestimmte Daten Arbeitszeiten haben, funktionieren Berechnungen nur korrekt innerhalb von Bereichen mit Arbeitstagen und -zeiten. Berechnungen außerhalb dieser Bereiche können Fehler oder keine Ergebnisse liefern.
+Wenn Sie versuchen würden, die nächsten Arbeitszeiten oder eine Dauer von einem bestimmten Datum aus zu berechnen, gäbe es weder ein solches Datum noch eine Dauer. 
+Das bedeutet, dass das Festlegen eines solchen Kalenders keinen Sinn ergibt. Selbst wenn Sie bestimmte Daten mit Arbeitszeiten festlegen, würde es nicht korrekt funktionieren, da Gantt Daten nur innerhalb eines Datumsbereichs berechnen kann, der Arbeits- und Wochenstunden enthält. Das Berechnen von Daten außerhalb des Bereichs würde zur Abwesenheit des Datums und zu verschiedenen Fehlern führen. 
 
-Um einen Kalender zu erstellen, bei dem einige Monate oder Jahre vollständig arbeitsfrei sind, verwenden Sie die *customWeeks*-Option von **setWorkTime()**. Um Arbeitstage und -zeiten innerhalb des notwendigen Bereichs zu definieren, sollten Sie:
+Wenn Sie einen Kalender erstellen möchten, in dem einige Monate oder sogar Jahre ausschließlich Nicht-Arbeitstage enthalten, sollten Sie die *customWeeks*-Einstellung der **setWorkTime()**-Methode verwenden. 
+Um Arbeits- und Wochenstunden innerhalb des notwendigen Bereichs festzulegen, müssen Sie:
 
-- die Zeitachse in Perioden ohne Arbeitszeiten aufteilen
-- Arbeitszeiten explizit für benötigte Daten setzen
-
-Beispiel:
+- ihn in Perioden ohne Arbeitsstunden aufteilen
+- Arbeitsstunden für die erforderlichen Daten festlegen
 
 ~~~js
 gantt.setWorkTime({ date: new Date(2025, 3, 10), hours: ["8:00-12:00"] })
@@ -220,9 +223,11 @@ gantt.setWorkTime({
 });
 ~~~
 
+
 :::note
-Sample: [Verwendung von `customWeeks`, um alle Tage im Kalender als arbeitsfrei zu markieren ](https://snippet.dhtmlx.com/i0o74zg7)
+Beispiel: [Verwendung von `customWeeks`, um alle Tage im Kalender freizuhalten](https://snippet.dhtmlx.com/i0o74zg7)
 :::
+
 
 ### Related API
 - [work_time](api/config/work_time.md)
@@ -230,9 +235,8 @@ Sample: [Verwendung von `customWeeks`, um alle Tage im Kalender als arbeitsfrei 
 - [isWorkTime](api/method/isworktime.md)
 
 ### Related Guides
-- [Work Time Calculation](guides/working-time.md)
+- [Arbeitszeitberechnung](guides/working-time.md)
 
 ### Change log
-- Die Eigenschaft **customWeeks** wurde in Version 7.1 eingeführt;
-- Das Format der Eigenschaft **hours** im Konfigurationsobjekt wurde in Version 7.0 geändert.
-
+- die **customWeeks**-Eigenschaft wurde in v7.1 hinzugefügt;
+- das Format der **hours**-Eigenschaft der Config wurde in Version 7.0 geändert.

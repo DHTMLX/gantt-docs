@@ -1,6 +1,6 @@
 ---
 sidebar_label: dataProcessor
-title: dataProcessor method
+title: dataProcessor Methode
 description: "dataProcessor Konstruktor"
 ---
 
@@ -8,23 +8,23 @@ description: "dataProcessor Konstruktor"
 
 ### Description
 
-@short: DataProcessor Konstruktor
+@short: dataProcessor Konstruktor
 
 @signature: dataProcessor: (url: string) =\> void
 
 ### Parameters
 
-- `url` - (required) *string* - die URL für den Datenfeed
+- `url` - (erforderlich) *string* - URL zum Datenfeed
 
 ### Example
 
 ~~~jsx
 const dp = new gantt.dataProcessor("api/");
-~~~
+~~~ 
 
 ### Details
 
-Weitere Details zum dataProcessor und seiner API finden Sie [hier](guides/server-side.md#resources_crud).
+Weitere Informationen zu dataProcessor, einschließlich seiner API finden Sie [hier](guides/server-side.md#resources_crud).
 
 ### Change log
 - hinzugefügt in Version 4.0

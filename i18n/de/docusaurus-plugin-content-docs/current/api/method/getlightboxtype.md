@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLightboxType
-title: getLightboxType method
-description: "liefert den Namen der aktuell aktiven Lightbox-Struktur"
+title: getLightboxType Methode
+description: "gibt den Namen der Struktur des aktiven Lightboxes zurück"
 ---
 
 # getLightboxType
 
 ### Description
 
-@short: Liefert den Namen der aktuell aktiven Lightbox-Struktur
+@short: Gibt den Namen der Struktur des aktiven Lightboxes zurück
 
 @signature: getLightboxType: () =\> string
 
 ### Returns
-- ` name` - (string) - der Bezeichner der Lightbox-Struktur
+- `name` - (string) - der Name der Struktur der Lightbox
 
 ### Example
 

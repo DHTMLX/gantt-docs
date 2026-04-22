@@ -1,7 +1,7 @@
 ---
 sidebar_label: grid_indent
-title: grid_indent template
-description: "Steuert die Einrückung von untergeordneten Elementen innerhalb eines Branches in der Tree-Spalte"
+title: grid_indent Vorlage
+description: "legt den Einzug der untergeordneten Elemente in einer Verzweigung (in der Baumspalte)"
 ---
 
 # grid_indent
@@ -10,14 +10,14 @@ description: "Steuert die Einrückung von untergeordneten Elementen innerhalb ei
 
 @short: Steuert die Einrückung von untergeordneten Elementen innerhalb eines Branches in der Tree-Spalte
 
-@signature: grid_indent: (task: Task) =\> string;
+@signature: grid_indent: (task: Task) => string;
 
 ### Parameters
 
-- `task` - (required) *Task* - das Task-Objekt
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
-- ` text` - (string) - html-Text, der im Gantt angezeigt wird
+- ` text` - (string) - HTML-Text, der im Gantt-Diagramm gerendert wird
 
 ### Example
 
@@ -28,5 +28,5 @@ gantt.templates.grid_indent = function(item) {
 ~~~
 
 ### Related Guides
-- ["Konfiguration der Baumspalte"](guides/tree-column.md)
-- ["Vorlagen des Grids"](guides/table-templates.md)
+- [Konfigurieren der Baumspalte](guides/tree-column.md)
+- [Vorlagen des Grids](guides/table-templates.md)

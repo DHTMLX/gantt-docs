@@ -1,23 +1,23 @@
 ---
 sidebar_label: roundDate
-title: roundDate method
-description: "根据时间刻度将给定日期舍入到最接近的日期"
+title: roundDate 方法
+description: "将指定日期四舍五入到时间刻度上的最近日期"
 ---
 
 # roundDate
 
 ### Description
 
-@short: 根据时间刻度将给定日期舍入到最接近的日期
+@short: 将指定日期四舍五入到时间刻度上的最近日期
 
 @signature: roundDate: (date: Date | RoundDateConfig) =\> Date
 
 ### Parameters
 
-- `date` - (required) *Date | RoundDateConfig* -     要舍入的 Date 对象或包含配置选项的对象
+- `date` - (required) *Date | RoundDateConfig* - 将要进行四舍五入的 Date 对象，或带有设置的对象
 
 ### Returns
-- ` date` - (Date) - 舍入后的 Date 对象
+- `date` - (Date) - 四舍五入后的 Date 对象
 
 ### Example
 
@@ -27,18 +27,18 @@ var today = gantt.roundDate(new Date());
 
 ### Details
 
-要将特定日期舍入到最接近的日期，只需将 Date 对象传递给此方法:
+如果需要将指定日期四舍五入到最近日期，请将 Date 对象作为参数传递给该方法：
 
 ~~~js
 var today = gantt.roundDate(new Date());
 console.log(today);
 ~~~
 
-如果您想根据特定时间单位来舍入日期，可以使用带有设置的对象作为 **roundDate()** 方法的参数。该对象可以包含以下属性:
+如果要根据时间单位将指定日期四舍五入到最近日期，请传递一个带设置的对象给 **roundDate()** 方法。该对象可包含以下属性：
 
-- **date** - (*Date*) - 要舍入的 Date 对象；
-- **unit?** - (*string*) - 用于舍入的时间单位（"minute", "hour", "day", "week", "month", "year"）；
-- **step?** - (*number*) - 时间刻度（X轴）的间隔步长，默认值为 1。
+- **date** - (*Date*) - 要进行四舍五入的 Date 对象；
+- **unit?** - (*string*) - 时间单位（"minute", "hour", "day", "week", "month", "year"）；
+- **step?** - (*number*) - 时间刻度（X-Axis）的步长，默认值为 1。
 
 ~~~js
 var today = gantt.roundDate({
@@ -51,4 +51,3 @@ console.log(today);
 
 ### Related API
 - [roundTaskDates](api/method/roundtaskdates.md)
-

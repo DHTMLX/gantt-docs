@@ -1,14 +1,18 @@
 ---
 sidebar_label: step
-title: step config
-description: "시간 축(X축)의 증가 단위를 정의합니다."
+title: 단계 구성
+description: "시간 축의 눈금 간격을 설정합니다 (X축)"
 ---
 
 # step
 
+:::warning
+경고: 이 속성은 더 이상 권장되지 않습니다.
+:::
+
 ### Description
 
-@short: 시간 축(X축)의 증가 단위를 정의합니다.
+@short: 시간 축의 눈금 간격을 설정합니다 (X축)
 
 ### Example
 
@@ -20,15 +24,13 @@ gantt.config.date_scale = "%Y";
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 1
-
 ### Related samples
 - [Step config for the Quarter scale](https://docs.dhtmlx.com/gantt/samples/03_scales/03_full_year.html)
 
 ### Details
 
 :::note
- **step** 속성은 deprecated 되었습니다. 대신 [scales](api/config/scales.md)에서 **step**을 설정하세요: 
+**step** 속성은 더 이상 권장되지 않습니다. 대신 [scales](api/config/scales.md)의 **step** 속성을 사용하세요:
 :::
 
 ~~~js
@@ -39,13 +41,14 @@ gantt.config.scales = [
 ];
 ~~~
 
+**기본 값:** 1
+
 ### Related API
 - [scale_unit](api/config/scale_unit.md)
 - [date_scale](api/config/date_scale.md)
 
 ### Related Guides
-- [스케일 설정하기](guides/configuring-time-scale.md#timestep)
+- [Setting up Scale](guides/configuring-time-scale.md#timestep)
 
 ### Change log
-- v6.2부터 deprecated 되었습니다.
-
+- v6.2부터 더 이상 사용되지 않음

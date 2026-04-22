@@ -1,19 +1,19 @@
 ---
 sidebar_label: getUndoStack
-title: getUndoStack method
-description: "предоставляет стек сохранённых действий пользователя для отмены (undo)"
+title: метод getUndoStack
+description: "возвращает стек сохранённых действий Undo"
 ---
 
 # getUndoStack
 
 ### Description
 
-@short: Предоставляет стек сохранённых действий пользователя для отмены (undo)
+@short: Возвращает стек сохранённых действий Undo
 
 @signature: getUndoStack: () =\> UndoRedoAction[]
 
 ### Returns
-- ` stack` - (UndoRedoAction[]) - массив, содержащий действия пользователя для отмены
+- ` stack` - (UndoRedoAction[]) - массив действий Undo пользователя
 
 ### Example
 
@@ -22,27 +22,25 @@ var stack = gantt.getUndoStack();
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Изменения Undo/Redo в Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
 :::note
- Этот метод является частью расширения **undo**, поэтому плагин [undo](guides/extensions-list.md#undo) должен быть включён. Подробнее можно узнать в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Этот метод определён в расширении **undo**, поэтому необходимо включить плагин [undo](guides/extensions-list.md#undo). Подробности см. в статье [Undo/Redo Functionality](guides/undo-redo.md). 
 :::
 
-
-Возвращаемый стек состоит из действий пользователя для отмены, каждое из которых включает набор команд. Команда - это объект со следующими свойствами:
+Возвращаемый стек представляет собой массив действий Undo пользователя. Каждое действие Undo содержит набор команд. Команда — объект со следующими атрибутами:
  
-- **type** - (*string*) указывает тип команды: "add/remove/update"
-- **entity** - (*string*) указывает тип объекта, который был изменён: "task" или "link"
-- **value** - (*object*) объект задачи или связи после изменения
-- **oldValue** - (*object*) объект задачи или связи до изменения
+- **type** - (*string*) тип команды: "add/remove/update"
+- **entity** - (*string*) тип изменённого объекта: "task" или "link"
+- **value** - (*object*) изменённый объект задачи (task) или связи (link)
+- **oldValue** - (*object*) объект задачи (task) или связи (link) до изменений
 
-Пример иллюстрации:
-
+Посмотрите пример ниже:
 ![get_undo_stack](/img/get_undo_stack.png)
 
-Метод **getUndoStack()** возвращает стек, содержащий 2 действия пользователя для отмены. Первое действие включает 3 команды, второе - одну команду.
+Метод **getUndoStack()** возвращает стек из 2 действий Undo. Первое действие содержит 3 команды, а второе — 1 команда.
 
 ### Related API
 - [getRedoStack](api/method/getredostack.md)
@@ -50,8 +48,7 @@ var stack = gantt.getUndoStack();
 - [clearUndoStack](api/method/clearundostack.md)
 
 ### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md#gettingthestackofstoredundoredocommands)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
 - добавлено в версии 4.0
-

@@ -1,33 +1,33 @@
 ---
 sidebar_label: onLoadStart
 title: onLoadStart event
-description: "срабатывает непосредственно перед началом процесса загрузки данных из источника данных"
+description: "Срабатывает непосредственно перед началом загрузки данных из источника данных"
 ---
 
 # onLoadStart
 
 ### Description
 
-@short: Срабатывает непосредственно перед началом процесса загрузки данных из источника данных
+@short: Срабатывает непосредственно перед началом загрузки данных из источника данных
 
 @signature: onLoadStart: (url: string, type: string) =\> void;
 
 ### Parameters
 
-- `url` - (required) *string* - серверный URL (это может быть статический файл или серверный скрипт, возвращающий данные)
-- `type` - (required) *string* - ('json', 'xml', 'oldxml'), указывающий формат данных
+- `url` - (обязательный) *string* - URL сервера (может быть статическим файлом или серверным скриптом, который возвращает данные)
+- `type` - (обязательный) *string* - ('json', 'xml', 'oldxml') тип данных
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onLoadStart", function(url, type){
-    console.log("onLoadStart", url, type)
+    console.log("onLoadStart",url, type)
 });
 ~~~
 
 ### Details
 
-Это событие вызывается внутри метода [load](api/method/load.md).
+Событие срабатывает в методе [load](api/method/load.md).
 
 ### Related API
 - [onBeforeParse](api/event/onbeforeparse.md)
@@ -38,4 +38,3 @@ gantt.attachEvent("onLoadStart", function(url, type){
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

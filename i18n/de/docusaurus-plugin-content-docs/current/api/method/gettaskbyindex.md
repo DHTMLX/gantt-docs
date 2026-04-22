@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskByIndex
-title: getTaskByIndex method
-description: "gibt eine Aufgabe basierend auf ihrem globalen Aufgabenindex zurück"
+title: getTaskByIndex Methode
+description: "gibt eine Aufgabe anhand ihres globalen Aufgabenindex zurück"
 ---
 
 # getTaskByIndex
 
 ### Description
 
-@short: Gibt eine Aufgabe basierend auf ihrem globalen Aufgabenindex zurück
+@short: Liefert eine Aufgabe anhand ihres globalen Aufgabenindex
 
 @signature: getTaskByIndex: (index: number | string) =\> Task
 
 ### Parameters
 
-- `index` - (required) *number | string* -         die Position der Aufgabe in der gesamten Aufgabenliste (beginnend bei null)
+- `index` - (erforderlich) *number | string* -        der Aufgabenindex im Baum (nullbasierte Zählung)
 
 ### Returns
-- ` task` - (Task) - das Aufgabenobjekt, das dem angegebenen Index entspricht
+- ` task` - (Task) - ein Aufgabenobjekt
 
 ### Example
 
@@ -30,4 +30,3 @@ const task = gantt.getTaskByIndex(10);
 
 ### Related API
 - [getGlobalTaskIndex](api/method/getglobaltaskindex.md)
-

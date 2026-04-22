@@ -1,42 +1,41 @@
 ---
 sidebar_label: redo
-title: redo method
-description: "повторно применяет изменения, которые были ранее отменены на gantt"
+title: Метод redo
+description: "повторно применяет отменённые изменения к диаграмме Ганта"
 ---
 
 # redo
 
-### Description
+### Описание
 
-@short: Повторно применяет изменения, которые были ранее отменены на gantt
+@short: Повторно применяет отменённые изменения к диаграмме Ганта
 
 @signature: redo: () =\> void
 
-### Example
+### Пример
 
 ~~~jsx
 gantt.redo();
 ~~~
 
-### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+### Связанные примеры
+- [Изменения Undo/Redo в Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
-### Details
+### Детали
 
 :::note
- Этот метод является частью расширения **undo**, поэтому убедитесь, что плагин [undo](guides/extensions-list.md#undo) включен. Подробнее можно узнать в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Этот метод определяется в расширении **undo**, поэтому необходимо включить плагин [undo](guides/extensions-list.md#undo). Подробности читайте в статье [Undo/Redo Functionality](guides/undo-redo.md).
 :::
 
-### Related API
+### Связанные API
 - [undo](api/method/undo.md)
 - [getRedoStack](api/method/getredostack.md)
 - [clearRedoStack](api/method/clearredostack.md)
 - [onBeforeRedo](api/event/onbeforeredo.md)
 - [onAfterRedo](api/event/onafterredo.md)
 
-### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md)
+### Связанные руководства
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
-### Change log
+### Журнал изменений
 - добавлено в версии 4.0
-

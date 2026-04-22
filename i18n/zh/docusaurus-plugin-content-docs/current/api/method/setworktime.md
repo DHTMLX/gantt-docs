@@ -1,20 +1,20 @@
 ---
 sidebar_label: setWorkTime
-title: setWorkTime method
-description: "设置甘特图的工作时间"
+title: setWorkTime 方法
+description: "为甘特图设置工作时间"
 ---
 
 # setWorkTime
 
 ### Description
 
-@short: 设置甘特图的工作时间
+@short: 为甘特图设置工作时间
 
-@signature: setWorkTime: (config: object) =\> void
+@signature: setWorkTime: Calendar['setWorkTime']
 
 ### Parameters
 
-- `config` - (required) *object* - 时间段的配置对象
+- `config` - (required) *object* - 一个时间段的配置对象
 
 ### Example
 
@@ -43,7 +43,7 @@ gantt.setWorkTime({hours : ["8:30-12:00", "13:00-17:00"]})
 ~~~
 
 ### Related samples
-- [Calculate working hours](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
+- [计算工作时间](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
 
 ### Details
 
@@ -53,7 +53,7 @@ gantt.setWorkTime({hours : ["8:30-12:00", "13:00-17:00"]})
  
 :::
 
-- 如果未指定任务，该方法将应用于[全局工作时间日历](guides/working-time.md#multipleworktimecalendars)。<br>
+- 如果未指定任务，该方法将应用于[全局工作时间日历](guides/working-time.md#multipleworktimecalendars)。
 - 此外，也可以直接从[日历对象](api/other/calendar.md)调用。
 
 默认情况下，工作时间设置如下:
@@ -84,44 +84,43 @@ gantt.setWorkTime({hours : ["8:30-12:00", "13:00-17:00"]})
   <td> 表示星期几的数字 [0 (<i>星期日</i>) - 6 (<i>星期六</i>)]. 注意一次只能设置一天。</td>
   </tr>
   <tr>
-  <td colspan="2">
+		<td colspan="2" style="text-align:left !important; ">
 ~~~js
 // 将所有星期一标记为非工作日
 gantt.setWorkTime({ day:1, hours:false }); 
 ~~~
-  </td>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="2"><b id="date">date</b></td>
+  <td> 一个具体日期，用来设定为工作日或休息日</td>
   </tr>
   <tr>
-  <td rowspan="2"><b id="date">date</b></td>
-  <td> 指定某个具体日期作为工作日或休息日</td>
-  </tr>
-  <tr>
-  <td colspan="2">
+		<td colspan="2" style="text-align:left !important; ">
 ~~~js
 // 将某个具体日期标记为休息日
 gantt.setWorkTime({date:new Date(2013,0,1), hours:false})
 ~~~
-  </td>
+		</td>
+	</tr>
+  <tr>
+		<td rowspan="2"><b id="hours">hours</b></td>
+  <td> 将工作时段以 'from'-'to' 对表示的数组。<br/><i>'false'</i> 值表示休息日，<i>'true'（默认值）</i> 应用默认时段（["8:00-17:00"]）</td>
   </tr>
   <tr>
-  <td rowspan="2"><b id="hours">hours</b></td>
-  <td> 一个表示工作时间段的数组，格式为 '起始时间'-'结束时间'。<br><i>'false'</i> 表示该日为休息日，<i>'true'（默认）</i> 表示应用默认时间（["8:00-17:00"]）</td>
-  </tr>
-  <tr>
-  <td colspan="2">
+		<td colspan="2" style="text-align:left !important; ">
 ~~~js
 // 设置星期五的工作时间为 8:00 到 12:00
 gantt.setWorkTime({day : 5, hours : ["8:00-12:00"]});
 ~~~
-  </td>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="2"><b id="hours">customWeeks</b></td>
+  <td> 一个对象，包含针对不同时间段的不同工作时间规则。<br/> 该对象可以包含一组 <i>key:value</i> 对，其中 <i>key</i> 是时间段的名称，<i>value</i> 是一个包含以下属性的对象：<ul><li><b>from</b> - (<i>Date</i>) 强制性，时间段开始的日期</li><li><b>to</b> - (<i>Date</i>) 强制性，时间段结束的日期</li><li><b>hours</b> - (<i>array</i>) 以 'from'-'to' 对表示的工作时段数组。<br/><i>'false'</i> 值表示休息日，<i>'true'（默认值）</i> 应用默认时段（["8:00-17:00"]）</li><li><b>days</b> - (<i>array</i>) 一周七天的数组（从 0 - 周日，到 6 - 周六），其中 1/true 表示工作日，0/false 表示非工作日。</li></ul></td>
   </tr>
   <tr>
-  <td rowspan="2"><b id="hours">customWeeks</b></td>
-  <td> 一个定义不同时间段工作时间规则的对象。<br>该对象可以包含键值对，其中 <i>key</i> 是时间段名称，<i>value</i> 是包含以下属性的对象:
-  <ul><li><b>from</b> - (<i>Date</i>) 必需，时间段开始日期</li><li><b>to</b> - (<i>Date</i>) 必需，时间段结束日期</li><li><b>hours</b> - (<i>array</i>) 工作时间数组，格式为 '起始时间'-'结束时间'。<br><i>'false'</i> 表示休息日，<i>'true'（默认）</i> 应用默认时间（["8:00-17:00"]）</li><li><b>days</b> - (<i>array</i>) 长度为7的数组，表示一周七天（0 - 星期日到 6 - 星期六），1/true 表示工作日，0/false 表示非工作日。</li></ul></td>
-  </tr>
-  <tr>
-  <td colspan="2">
+		<td colspan="2" style="text-align:left !important; ">
 ~~~js
 // 修改冬季月份的工作时间
 gantt.setWorkTime({
@@ -135,9 +134,9 @@ gantt.setWorkTime({
     }
 });
 ~~~
-  </td>
-  </tr>
-  </tbody>
+		</td>
+	</tr>
+	</tbody>
 </table>
 
 ## 设置夜班工作时间
@@ -221,7 +220,7 @@ gantt.setWorkTime({
 ~~~
 
 :::note
-Sample: [使用 `customWeeks` 使日历中的所有天为休息日](https://snippet.dhtmlx.com/i0o74zg7)
+sample: [Using `customWeeks` to make all days in the calendar days-off ](https://snippet.dhtmlx.com/i0o74zg7)
 :::
 
 ### Related API
@@ -230,7 +229,7 @@ Sample: [使用 `customWeeks` 使日历中的所有天为休息日](https://snip
 - [isWorkTime](api/method/isworktime.md)
 
 ### Related Guides
-- [工作时间计算](guides/working-time.md)
+- [Work Time Calculation](guides/working-time.md)
 
 ### Change log
 - **customWeeks** 属性在 v7.1 中引入；

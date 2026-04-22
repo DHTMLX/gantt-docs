@@ -1,24 +1,24 @@
 ---
 sidebar_label: callEvent
 title: callEvent method
-description: "триггерит внутреннее событие"
+description: "Вызывает внутреннее событие"
 ---
 
 # callEvent
 
 ### Description
 
-@short: Триггерит внутреннее событие
+@short: Вызывает внутреннее событие
 
 @signature: callEvent: (name: string, params?: any[]) =\> boolean
 
 ### Parameters
 
-- `name` - (required) *string* - имя события, регистр не имеет значения
-- `params` - (optional) *array* - необязательно, массив с данными, связанными с событием
+- `name` - (required) *string* - имя события, регистронезависимо
+- `params` - (optional) *array* - массив связанных с событием данных
 
 ### Returns
-- ` result` - (boolean) - <i>false</i>, если любой из обработчиков события возвращает <i>false</i>. В противном случае <i>true</i>
+- ` result` - (boolean) - <i>false</i>, если некоторые обработчики событий вернут <i>false</i>. В противном случае, <i>true</i>
 
 ### Example
 
@@ -32,4 +32,4 @@ var res = gantt.callEvent("CustomEvent", [param1, param2]);
 
 ### Details
 
-Обычно события вызываются автоматически, поэтому нет необходимости вызывать этот метод вручную.
+Обычно, события вызываются автоматически, и вам не нужно использовать этот метод.

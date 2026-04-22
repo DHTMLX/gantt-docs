@@ -1,14 +1,14 @@
 ---
 sidebar_label: quickinfo_buttons
-title: quickinfo_buttons config
-description: "содержит набор кнопок, отображаемых в всплывающей форме с деталями задачи"
+title: quickinfo_buttons конфигурация
+description: "хранит коллекцию кнопок, размещённых во всплывающей форме деталей задачи"
 ---
 
 # quickinfo_buttons
 
 ### Description
 
-@short: Содержит набор кнопок, отображаемых в всплывающей форме с деталями задачи
+@short: Хранит коллекцию кнопок, размещённых во всплывающей форме деталей задачи
 
 @signature: quickinfo_buttons: any[]
 
@@ -16,24 +16,24 @@ description: "содержит набор кнопок, отображаемых
 
 ~~~jsx
 gantt.config.quickinfo_buttons=["icon_delete","icon_edit","advanced_details_button"];
-gantt.locale.labels["advanced_details_button"] = "Advanced Info";
+gantt.locale.labels["advanced_details_button"] = "Расширенная информация";
 gantt.init("gantt_here");
 
 gantt.$click.buttons.advanced_details_button=function(id){
-    gantt.message("These are advanced details");
-    return false; // блокирует стандартное поведение
+    gantt.message("Это дополнительные детали");
+    return false; //блокирует поведение по умолчанию
 };
 ~~~
 
 **Default value:** ["icon_delete","icon_edit"]
 
 ### Related samples
-- [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
+- [расширение QuickInfo](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
 ### Details
 
 :::note
- Эта опция является частью расширения **Quick Info**, поэтому убедитесь, что плагин [quick_info](guides/extensions-list.md#quickinfo) включён. 
+Эта опция определяется в расширении **Quick Info**, поэтому необходимо активировать плагин [quick_info](guides/extensions-list.md#quick-info). 
 :::
 
 ### Related API
@@ -45,5 +45,4 @@ gantt.$click.buttons.advanced_details_button=function(id){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [Полный список расширений](guides/extensions-list.md#quickinfo)
-
+- [Полный список расширений](guides/extensions-list.md#quick-info)

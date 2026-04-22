@@ -1,14 +1,14 @@
 ---
 sidebar_label: undo_types
-title: undo_types config
-description: "legt fest, welche Typen von Entitäten die Undo-Aktion beeinflussen"
+title: undo_types Konfiguration
+description: "Legt die Typen von Entitäten fest, für die der Undo-Vorgang angewendet wird"
 ---
 
 # undo_types
 
 ### Description
 
-@short: Legt fest, welche Typen von Entitäten die Undo-Aktion beeinflussen
+@short: Legt die Typen von Entitäten fest, für die der Undo-Vorgang angewendet wird
 
 @signature: undo_types: \{ link?: string; task?: string; \}
 
@@ -27,11 +27,11 @@ gantt.config.undo_types = {
 ### Details
 
 :::note
- Diese Option ist Teil der **undo**-Extension, daher stellen Sie sicher, dass das [undo](guides/extensions-list.md#undo) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Undo/Redo-Funktionalität"](guides/undo-redo.md). 
+Diese Option ist in der **undo**-Erweiterung definiert, daher müssen Sie das [undo](guides/extensions-list.md#undo) Plugin aktivieren. Lesen Sie die Details im Artikel [Undo/Redo Functionality](guides/undo-redo.md). 
 :::
 
-- **link** - (*string*) - der Bezeichner für die "link"-Entität
-- **task** - (*string*) - der Bezeichner für die "task"-Entität
+- **link** - (*string*) - der Name der 'link'-Entität
+- **task** - (*string*) - der Name der 'task'-Entität
 
 ### Related API
 - [undo](api/config/undo.md)
@@ -39,8 +39,7 @@ gantt.config.undo_types = {
 - [undo_steps](api/config/undo_steps.md)
 
 ### Related Guides
-- ["Undo/Redo-Funktionalität"](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
-- hinzugefügt in Version 4.0
-
+- in Version 4.0 hinzugefügt

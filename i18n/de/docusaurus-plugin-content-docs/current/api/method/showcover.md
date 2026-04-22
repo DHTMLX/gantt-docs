@@ -1,19 +1,19 @@
 ---
 sidebar_label: showCover
-title: showCover method
-description: "zeigt das Lightbox-Modal-Overlay an, das die Interaktion mit dem restlichen Bildschirm verhindert"
+title: showCover Methode
+description: "Zeigt das Lightbox-Modal-Overlay, das Interaktionen mit dem restlichen Bildschirm blockiert"
 ---
 
 # showCover
 
 ### Description
 
-@short: Zeigt das Lightbox-Modal-Overlay an, das die Interaktion mit dem restlichen Bildschirm verhindert
+@short: Zeigt das Lightbox-Modal-Overlay, das Interaktionen mit dem restlichen Bildschirm blockiert
 
-@signature: showCover: (box?: HTMLElement) =\> void
+@signature: showCover: (box?: HTMLElement) => void
 
 ### Parameters
-- `box` - (optional) *HTMLElement* - ein anzuzeigendes Element
+- `box` - (optional) *HTMLElement* - ein Element, das versteckt werden soll
 
 ### Example
 
@@ -23,8 +23,7 @@ gantt.showCover();
 
 ### Details
 
-Wenn ein Eingabeparameter übergeben wird, zeigt die Methode das angegebene HTML-Element an, indem sie dessen display-Eigenschaft auf "block" setzt und es auf dem Bildschirm zentriert.
+Wenn Sie den Eingabeparameter angeben, wird die Methode das angegebene HTML-Element (durch Setzen der Display-Eigenschaft auf \"block\") zentriert auf dem Bildschirm anzeigen.
 
 ### Related API
 - [hideCover](api/method/hidecover.md)
-

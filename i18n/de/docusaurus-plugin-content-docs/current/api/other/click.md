@@ -1,7 +1,7 @@
 ---
 sidebar_label: $click
-title: $click config
-description: "ändert die Standard-Klickaktionen für Buttons im Gantt-Diagramm"
+title: $click Konfiguration
+description: "Überschreibt das Standard-Klick-Verhalten für Buttons im Gantt-Diagramm"
 ---
 
 # $click
@@ -28,10 +28,10 @@ gantt.$click.advanced_details_button=function(e, id, trg){
 ### Details
 
 :::note
- Das Verhalten des Buttons wird sowohl für die Lightbox als auch für das Quickinfo-Popup aktualisiert. 
+Das Verhalten des Buttons wird sowohl für das Lightbox-Fenster als auch für das Quick-Info-Popup neu definiert.
 :::
 
-Das $click-Objekt im Standard-Gantt-Diagramm sieht folgendermaßen aus:
+Das $click-Objekt des Standard-Gantt-Diagramms ist:
 
 ~~~js
 {

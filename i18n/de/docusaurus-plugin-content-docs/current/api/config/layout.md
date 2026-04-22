@@ -1,14 +1,14 @@
 ---
 sidebar_label: layout
-title: layout config
-description: "definiert das layout-Objekt"
+title: Layout-Konfiguration
+description: "legt das Layout-Objekt fest"
 ---
 
-# layout
+# Layout
 
 ### Description
 
-@short: Definiert das layout-Objekt
+@short: Legt das Layout-Objekt fest
 
 @signature: layout: any
 
@@ -31,19 +31,18 @@ gantt.config.layout = {
 };
 
 gantt.init("gantt_here");
-~~~
+~~~ 
 
 ### Details
 
 :::note
- Die layout-Konfiguration sollte vor der Initialisierung des Gantt-Diagramms gesetzt werden. Wenn Sie das layout später aktualisieren, stellen Sie sicher, dass Sie es mit [resetLayout](api/method/resetlayout.md) neu laden. 
+Beachten Sie, dass Sie die Layout-Konfiguration vor der Gantt-Initialisierung festlegen sollten. Wenn Sie Änderungen am Layout vornehmen, müssen Sie es mit [resetLayout](api/method/resetlayout.md) aktualisieren.
 :::
 
 ### Related API
 - [resetLayout](api/method/resetlayout.md)
 
 ### Related Guides
-- ["Gantt-Layout"](guides/layout-config.md)
-- ["How-tos"](guides/how-to.md#howtotogglegridchart) (lesen Sie, wie man grid/chart umschaltet)
-- ["How-tos"](guides/how-to.md#howtotoggletheresourceview) (lesen Sie, wie man die Ressourcenansicht umschaltet)
-
+- [Gantt Layout](guides/layout-config.md)
+- [How-tos](guides/how-to.md#how-to-toggle-gridchart) (read how to toggle grid/chart)
+- [How-tos](guides/how-to.md#how-to-toggle-the-resource-view) (read how to toggle the resource view)

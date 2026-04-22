@@ -1,71 +1,79 @@
----
-title: "Zooming"
-sidebar_label: "Zooming"
+--- 
+title: "Zoomen"
+sidebar_label: "Zoomen"
 ---
 
-# Zooming
+# Zoomen
 
-dhtmlxGantt enthält ein integriertes Modul, das das Verwalten des Zooms der Zeitskala besonders einfach macht. Wenn Sie das Standardverhalten beim Zoomen anpassen möchten, steht Ihnen eine [flexible API](guides/zoom.md) zur Verfügung, mit der Sie die Einstellungen der Zeitskala dynamisch ändern können.
+dhtmlxGantt bietet ein integriertes Modul zur bequemen Verwaltung des Zooms der Zeitachse. Falls Sie das standardmäßige Zoom-Verhalten anpassen möchten, gibt es eine [flexible API](guides/zoom.md), die es Ihnen ermöglicht, die Einstellungen der Zeitachse dynamisch zu ändern.
 
 ## Eingebautes Zoom-Modul
 
-Das integrierte [Zoom-Modul](guides/zoom.md) ist Teil der **gantt.ext.zoom**-Erweiterung. Um es zu aktivieren, rufen Sie einfach **gantt.ext.zoom.init(zoomConfig)** auf und übergeben ein **zoomConfig**-Objekt, das ein Array von Zoomstufen enthält. Zum Beispiel:
+Das eingebundene [Zoom-Modul](guides/zoom.md) ist in der Erweiterung `gantt.ext.zoom` deklariert. Um das Modul zu aktivieren, müssen Sie `gantt.ext.zoom.init(zoomConfig)` aufrufen und ein `zoomConfig`-Objekt mit Konfigurationsparametern übergeben, das ein Array von Zoom-Stufen enthält. Zum Beispiel:
 
 ~~~js
-var zoomConfig = {
+const zoomConfig = {
     levels: [
-      {
-        name:"day",
-        scale_height: 27,
-        min_column_width:80,
-        scales:[
-            {unit: "day", step: 1, format: "%d %M"}
-        ]
-      },
-      {
-         name:"week",
-         scale_height: 50,
-         min_column_width:50,
-         scales:[
-          {unit: "week", step: 1, format: function (date) {
-           var dateToStr = gantt.date.date_to_str("%d %M");
-           var endDate = gantt.date.add(date, 6, "day");
-           var weekNum = gantt.date.date_to_str("%W")(date);
-           return "#" + weekNum + ", " + dateToStr(date) + " - " + dateToStr(endDate);
-           }},
-           {unit: "day", step: 1, format: "%j %D"}
-         ]
-       },
-       {
-         name:"month",
-         scale_height: 50,
-         min_column_width:120,
-         scales:[
-             {unit: "month", format: "%F, %Y"},
-             {unit: "week", format: "Week #%W"}
-         ]
+        {
+            name: "day",
+            scale_height: 27,
+            min_column_width: 80,
+            scales: [
+                { unit: "day", step: 1, format: "%d %M" }
+            ]
         },
         {
-         name:"quarter",
-         height: 50,
-         min_column_width:90,
-         scales:[
-          {unit: "month", step: 1, format: "%M"},
-          {
-           unit: "quarter", step: 1, format: function (date) {
-            var dateToStr = gantt.date.date_to_str("%M");
-            var endDate = gantt.date.add(gantt.date.add(date, 3, "month"), -1, "day");
-            return dateToStr(date) + " - " + dateToStr(endDate);
-           }
-         }
-          ]},
+            name: "week",
+            scale_height: 50,
+            min_column_width: 50,
+            scales: [
+                {
+                    unit: "week",
+                    step: 1,
+                    format: (date) => {
+                        const formatDate = gantt.date.date_to_str("%d %M");
+                        const endDate = gantt.date.add(date, 6, "day");
+                        const weekNumber = gantt.date.date_to_str("%W")(date);
+                        return `#${weekNumber}, ${formatDate(date)} - ${formatDate(endDate)}`;
+                    }
+                },
+                { unit: "day", step: 1, format: "%j %D" }
+            ]
+        },
         {
-          name:"year",
-          scale_height: 50,
-          min_column_width: 30,
-          scales:[
-              {unit: "year", step: 1, format: "%Y"}
-        ]}
+            name: "month",
+            scale_height: 50,
+            min_column_width: 120,
+            scales: [
+                { unit: "month", format: "%F, %Y" },
+                { unit: "week", format: "Week #%W" }
+            ]
+        },
+        {
+            name: "quarter",
+            height: 50,
+            min_column_width: 90,
+            scales: [
+                { unit: "month", step: 1, format: "%M" },
+                {
+                    unit: "quarter",
+                    step: 1,
+                    format: (date) => {
+                        const formatDate = gantt.date.date_to_str("%M");
+                        const endDate = gantt.date.add(gantt.date.add(date, 3, "month"), -1, "day");
+                        return `${formatDate(date)} - ${formatDate(endDate)}`;
+                    }
+                }
+            ]
+        },
+        {
+            name: "year",
+            scale_height: 50,
+            min_column_width: 30,
+            scales: [
+                { unit: "year", step: 1, format: "%Y" }
+            ]
+        }
     ]
 };
 
@@ -73,97 +81,93 @@ gantt.ext.zoom.init(zoomConfig);
 ~~~
 
 :::note
-Ausführliche Informationen über das Zoom-Modul und seine API finden Sie im Artikel [Zoom Extension](guides/zoom.md).
+Detaillierte Informationen zum Zoom-Modul und seiner API finden Sie im Artikel [Zoom Extension](guides/zoom.md).
 :::
 
-
-[Mouse wheel zoom](https://docs.dhtmlx.com/gantt/samples/03_scales/14_scale_zoom_by_wheelmouse.html)
-
+**Beispiel**: [Mouse wheel zoom](https://docs.dhtmlx.com/gantt/samples/03_scales/14_scale_zoom_by_wheelmouse.html)
 
 ## Benutzerdefinierte Zoom-Einstellungen
 
-Wenn Sie das Zoom-Modul nicht verwenden und die Einstellungen der Zeitskala selbst steuern möchten, können Sie dies tun, indem Sie die entsprechenden Konfigurationsoptionen anpassen.
+Falls Sie das Zoom-Modul nicht verwenden möchten und die Skaleneinstellungen manuell steuern möchten, können Sie dies über entsprechende Konfigurationsoptionen tun.
 
-Im Wesentlichen bedeutet das Hinzufügen von Zoomfunktionen, einige Voreinstellungen für die Zeitskala (Zoomstufen) zu definieren und dem Benutzer das Umschalten zwischen ihnen zu ermöglichen.
+Tatsächlich bedeutet die Implementierung einer Zoom-Funktion das Definieren mehrerer Voreinstellungen der Zeitachsen-Konfiguration (Zoom-Stufen) und dem Benutzer die Möglichkeit zu geben, zwischen ihnen zu wechseln.
 
-Hier sind die Einstellungen, die Sie für die Konfiguration der Zeitskala benötigen:
+Sie benötigen die folgenden Einstellungen, um die Zeitachse zu konfigurieren:
 
-- [gantt.config.scales](api/config/scales.md) - ermöglicht das Festlegen beliebig vieler Zeitskalen-Zeilen.
+- [`gantt.config.scales`](api/config/scales.md) - ermöglicht das Festlegen beliebiger Zeitachsenzeilen
+- [`gantt.config.min_column_width`](api/config/min_column_width.md), [`gantt.config.scale_height`](api/config/scale_height.md) - die Breite der Spalten der Zeitachse und die Gesamthöhe der Zeitachse
 
-- [gantt.config.min_column_width](api/config/min_column_width.md), [gantt.config.scale_height](api/config/scale_height.md) - steuern die Breite der Skalen-Spalten und die Gesamthöhe der Zeitskala.
-
-Schauen wir uns einige Beispiel-Voreinstellungen an:
+Betrachten wir die folgenden Voreinstellungen:
 
 ~~~js
 /* global gantt */
-function setScaleConfig(level) {
+const setScaleConfig = (level) => {
     switch (level) {
         case "day":
             gantt.config.scales = [
-                  {unit: "day", step: 1, format: "%d %M"}
+                { unit: "day", step: 1, format: "%d %M" }
             ];
             gantt.config.scale_height = 27;
             break;
-        case "week":
-            var weekScaleTemplate = function (date) {
-              var dateToStr = gantt.date.date_to_str("%d %M");
-              var endDate = gantt.date.add(gantt.date.add(date, 1, "week"), -1, "day");
-              return dateToStr(date) + " - " + dateToStr(endDate);
+        case "week": {
+            const formatWeekScale = (date) => {
+                const formatDate = gantt.date.date_to_str("%d %M");
+                const endDate = gantt.date.add(gantt.date.add(date, 1, "week"), -1, "day");
+                return `${formatDate(date)} - ${formatDate(endDate)}`;
             };
-             gantt.config.scales = [
-                {unit: "week", step: 1, format: weekScaleTemplate},
-                {unit: "day", step: 1, format: "%D"}
+
+            gantt.config.scales = [
+                { unit: "week", step: 1, format: formatWeekScale },
+                { unit: "day", step: 1, format: "%D" }
             ];
             gantt.config.scale_height = 50;
             break;
+        }
         case "month":
-             gantt.config.scales = [
-                {unit: "month", step: 1, format: "%F, %Y"},
-                {unit: "day", step: 1, format: "%j, %D"}
+            gantt.config.scales = [
+                { unit: "month", step: 1, format: "%F, %Y" },
+                { unit: "day", step: 1, format: "%j, %D" }
             ];
             gantt.config.scale_height = 50;
             break;
         case "year":
             gantt.config.scales = [
-                {unit: "year", step: 1, format: "%Y"},
-                {unit: "month", step: 1, format: "%M"}
+                { unit: "year", step: 1, format: "%Y" },
+                { unit: "month", step: 1, format: "%M" }
             ];
             gantt.config.scale_height = 90;
             break;
     }
-}
+};
 ~~~
 
-Diese Funktion richtet das gantt-Objekt mit einer von vier vordefinierten Konfigurationen ein, die von "day" bis "year" reichen. Um die Änderungen anzuwenden, muss das Gantt-Diagramm vollständig neu gezeichnet werden:
+Die beschriebene Funktion kann das gantt-Objekt mit einer der vier vordefinierten Konfigurationen konfigurieren, von der "day"-Zeitachse bis zur "year"-Zeitachse.
+Gantt wird eine vollständige Neuzeichnung benötigen, um die Änderung der Konfiguration anzuzeigen:
 
 ~~~js
 setScaleConfig("year");
 gantt.init("gantt_here");
 ~~~
 
-Sie können dann eine einfache Benutzeroberfläche erstellen, mit der Benutzer die Zoomstufe wechseln können:
-
+Dann können Sie eine Benutzeroberfläche implementieren, damit der Benutzer die Zoom-Stufe wechseln kann:
 
 ~~~html
-<label><input type="radio" name="scale" value="day" checked/>Day scale</label>
-<label><input type="radio" name="scale" value="week"/>Week scale</label>
-<label><input type="radio" name="scale" value="month"/>Month scale</label>
-<label><input type="radio" name="scale" value="year"/>Year scale</label> 
+<label><input type="radio" name="scale" value="day" checked/>Tag-Skala</label>
+<label><input type="radio" name="scale" value="week"/>Wochen-Skala</label>
+<label><input type="radio" name="scale" value="month"/>Monats-Skala</label>
+<label><input type="radio" name="scale" value="year"/>Jahres-Skala</label>
 ~~~
-
 
 ~~~js
-var els = document.querySelectorAll("input[name='scale']");
-for (var i = 0; i < els.length; i++) {
-    els[i].onclick = function(e){
-        var el = e.target;
-        var value = el.value;
-        setScaleConfig(value);
+const scaleInputs = document.querySelectorAll("input[name='scale']");
+
+scaleInputs.forEach((input) => {
+    input.onclick = (event) => {
+        const selectedScale = event.target.value;
+        setScaleConfig(selectedScale);
         gantt.render();
     };
-}
+});
 ~~~
 
-
-[Dynamic scales](https://docs.dhtmlx.com/gantt/samples/03_scales/05_dynamic_scales.html)
-
+**Beispiel:** [Dynamische Skalen](https://docs.dhtmlx.com/gantt/samples/03_scales/05_dynamic_scales.html)

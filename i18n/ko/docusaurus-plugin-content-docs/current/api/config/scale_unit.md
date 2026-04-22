@@ -1,14 +1,18 @@
 ---
 sidebar_label: scale_unit
 title: scale_unit config
-description: "X축 시간 스케일의 단위를 정의합니다."
+description: "시간 축의 단위를 설정합니다 (X축)"
 ---
 
 # scale_unit
 
+:::warning
+이 속성은 더 이상 사용되지 않습니다.
+:::
+
 ### Description
 
-@short: X축 시간 스케일의 단위를 정의합니다.
+@short: 시간 축의 단위를 설정합니다 (X축)
 
 ### Example
 
@@ -22,17 +26,17 @@ gantt.init("gantt_here");
 **Default value:** 'day'
 
 ### Related samples
-- [Month view](https://docs.dhtmlx.com/gantt/samples/03_scales/02_month_days.html)
+- [월 보기](https://docs.dhtmlx.com/gantt/samples/03_scales/02_month_days.html)
 
 ### Details
 
-시간 단위를 커스터마이징할 수 있습니다. 자세한 내용은 [이 섹션](guides/configuring-time-scale.md#customtimeunits)을 참고하세요.
-<br>
+사용자 정의 단위를 설정할 수 있습니다. 주제에 대한 자세한 내용은 [여기](guides/configuring-time-scale.md#customtimeunits)를 참고하세요.
+
 
 :::note
- 이 속성은 deprecated 되었습니다.
-대신, [scales](api/config/scales.md) 내의 **unit** 속성을 사용하세요: 
-:::
+ 이 속성은 더 이상 사용되지 않습니다.
+ [scales](api/config/scales.md)의 **unit** 속성을 대신 사용하세요:
+ :::
 
 ~~~js
 gantt.config.scales = [
@@ -47,8 +51,7 @@ gantt.config.scales = [
 - [step](api/config/step.md)
 
 ### Related Guides
-- [스케일 설정하기](guides/configuring-time-scale.md#settingtheunitofthescale)
+- [스케일 설정 구성](guides/configuring-time-scale.md#timeunits)
 
 ### Change log
-- v6.2부터 deprecated
-
+- v6.2부터 사용 중지되었습니다.

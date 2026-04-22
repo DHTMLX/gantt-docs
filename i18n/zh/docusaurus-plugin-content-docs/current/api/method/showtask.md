@@ -14,7 +14,7 @@ description: "使指定的任务在屏幕上可见"
 
 ### Parameters
 
-- `id` - (required) *string | number* -    任务的ID
+- `id` - (必需) *string | number* - 任务 ID
 
 ### Example
 
@@ -31,11 +31,12 @@ gantt.showTask(10);
 
 ### Details
 
-默认情况下，当调用 [showTask](api/method/showdate.md) 方法时，Gantt 会自动滚动自身以将任务滚动到视图中。但是，如果启用了 **autosize** 模式，Gantt 会扩展其容器大小以使任务在页面上可见，而不是滚动到该任务。有关如何处理此行为的更多详细信息，请参阅 [Scrolling to hidden elements](api/config/autosize.md) 指南。
+在默认模式下，当你使用 [showTask](api/method/showdate.md) 方法时，Gantt 会自行滚动。
+但如果启用了 **autosize** 模式，Gantt 会增大其容器的尺寸，以便在页面上显示自身，而不是显示指定的日期。
+请阅读 [Scrolling to hidden elements](api/config/autosize.md) 文章，以了解如何解决此问题。
 
 ### Related API
 - [showDate](api/method/showdate.md)
 - [scrollTo](api/method/scrollto.md)
 - [getScrollState](api/method/getscrollstate.md)
 - [onGanttScroll](api/event/onganttscroll.md)
-

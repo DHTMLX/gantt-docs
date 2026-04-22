@@ -8,7 +8,7 @@ description: "提供可用的 skin 对象"
 
 ### Description
 
-@short: 提供可用的 skin 对象
+@short: 返回可用皮肤的对象
 
 @signature: skins: any
 
@@ -22,5 +22,4 @@ gantt.skins; //->{skyblue: Object, meadow: Object, terrace: Object, broadway: Ob
 - [skin](api/other/skin.md)
 
 ### Related Guides
-- [皮肤（Skins）](guides/skins.md)
-
+- [Skins](guides/skins.md)

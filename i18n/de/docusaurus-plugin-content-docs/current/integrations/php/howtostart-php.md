@@ -1,71 +1,71 @@
 ---
-title: "dhtmlxGantt mit PHP: Slim3"
+title: "dhtmlxGantt mit PHP:Slim3"
 sidebar_label: "PHP: Slim3"
 ---
 
-# dhtmlxGantt mit PHP: Slim3
+# dhtmlxGantt mit PHP:Slim3
 
-Dieses Tutorial enthält alle wichtigen Details zur Erstellung eines Gantt-Diagramms mit PHP 5.6x-7.x in Kombination mit einer RESTful API auf der Serverseite.
-
-:::note
-Dieses Tutorial verwendet das ältere Slim Framework v3.x. Wenn Sie die aktuellste Version des Tutorials suchen, lesen Sie bitte die Anleitung für den [Slim Framework v4.x](integrations/php/howtostart-php-slim4.md).
-:::
-
-Es gibt außerdem Tutorials, die die Integration von serverseitiger Logik mit anderen Plattformen und Frameworks beschreiben:
-
-- [dhtmlxGantt with ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
-- [dhtmlxGantt with ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
-- [dhtmlxGantt with Node.js](integrations/node/howtostart-nodejs.md)
-- [dhtmlxGantt with Python](integrations/other/howtostart-python.md)
-- [dhtmlxGantt with PHP: Laravel](integrations/php/howtostart-php-laravel.md)
-- [dhtmlxGantt with PHP:Slim](integrations/php/howtostart-php-slim4.md)
-- [dhtmlxGantt with Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
-- [dhtmlxGantt with Ruby on Rails](integrations/other/howtostart-ruby.md)
-
-In diesem Beispiel wird das [Slim 3](https://www.slimframework.com/) Framework für das Routing verwendet und MySQL dient als Datenspeicher. Die CRUD-Operationen werden mit PDO umgesetzt, sodass sie leicht auf andere Frameworks übertragbar sind.
+In diesem Tutorial finden Sie notwendige Informationen dazu, wie Sie mit PHP 5.6x-7.x und einer RESTful API auf dem Server ein Gantt-Diagramm erstellen.
 
 :::note
-Der vollständige Quellcode ist [auf GitHub verfügbar](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x).
+Dieses Tutorial verwendet ein älteres Slim Framework v3.x. Wenn Sie die aktuellste Version des Tutorials suchen, lesen Sie die Anleitung [Slim Framework v4.x](integrations/php/howtostart-php-slim4.md).
 :::
 
-## Schritt 1. Initialisierung eines Projekts
+Es gibt Tutorials, die sich mit der serverseitigen Integration in Verbindung mit anderen Plattformen und Frameworks befassen:
+
+- [dhtmlxGantt mit ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
+- [dhtmlxGantt mit ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
+- [dhtmlxGantt mit Node.js](integrations/node/howtostart-nodejs.md)
+- [dhtmlxGantt mit Python](integrations/other/howtostart-python.md)
+- [dhtmlxGantt mit PHP: Laravel](integrations/php/howtostart-php-laravel.md)
+- [dhtmlxGantt mit PHP:Slim](integrations/php/howtostart-php-slim4.md)
+- [dhtmlxGantt mit Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
+- [dhtmlxGantt mit Ruby on Rails](integrations/other/howtostart-ruby.md)
+
+Wir verwenden das [Slim 3](https://www.slimframework.com/) Framework für das Routing und MySQL als Datenspeicher. Die CRUD-Logik wird auf PDO basieren und wird allgemein genug sein, um sie mit jedem anderen Framework verwenden zu können.
+
+:::note
+Der komplette Quellcode ist [auf GitHub verfügbar](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x).
+:::
+
+## Schritt 1. Ein Projekt initialisieren
 
 ### Ein Projekt erstellen
 
-Wir beginnen mit der Verwendung einer [Skelett-Anwendung](https://github.com/slimphp/Slim-Skeleton), die für das Slim 3 Framework entwickelt wurde.
+Wir verwenden eine [Skeleton-Anwendung](https://github.com/slimphp/Slim-Skeleton) für das Slim 3 Framework.
 
-Zuerst importieren und installieren wir das Projekt. Composer macht diesen Prozess unkompliziert:
+Zunächst müssen wir das Projekt importieren und installieren. Das geht ganz einfach mit Composer:
 
 ~~~php
 php composer.phar create-project slim/slim-skeleton gantt-rest-php
 ~~~
 
-Wenn Composer global auf Ihrem System installiert ist, können Sie folgenden Befehl ausführen:
+Wenn Composer global installiert ist, können Sie folgenden Befehl verwenden:
 
 ~~~php
 composer create-project slim/slim-skeleton gantt-rest-php
 ~~~
 
-Als Nächstes überprüfen Sie, ob die Einrichtung korrekt funktioniert. Wechseln Sie in das Anwendungsverzeichnis und starten Sie einen Webserver:
+Dann sollten Sie prüfen, ob alles einwandfrei funktioniert. Öffnen Sie dazu den Anwendungsordner und starten Sie einen Webserver:
 
 ~~~php
 cd gantt-rest-php
 php -S 0.0.0.0:8080 -t public public/index.php
 ~~~
 
-Öffnen Sie dann [http://127.0.0.1:8080](http://127.0.0.1:8080) in Ihrem Browser, um die Standard-Willkommensseite von Slim zu sehen.
+Danach können Sie [http://127.0.0.1:8080](http://127.0.0.1:8080/) in einem Browser öffnen und Sie sehen die Standard-Slim-Seite.
 
 ## Schritt 2. Gantt zur Seite hinzufügen
 
-Als nächstes erstellen wir eine Seite, die unser Gantt-Diagramm anzeigt. Die Standardseite finden Sie unter <b>templates/index.phtml</b>. Hier wird das Gantt-Diagramm eingebettet und die nötige Einrichtung für das Laden der Daten vorgenommen.
+Jetzt müssen wir eine Seite mit unserem Gantt-Diagramm erstellen.
+Suchen Sie eine Standardseite in <b>templates/index.phtml</b>. Wir möchten dort das Gantt-Diagramm platzieren und Voraussetzungen für das Laden der Daten festlegen.
 
-Hier ist der vollständige Code:
+Der vollständige Code sieht wie folgt aus:
 
-**/templates/index.phtml**
-~~~html
+~~~html title="/templates/index.phtml"
 <!DOCTYPE html>
 <head>
-  <meta http-equiv="Content-type" content="text/html; charset="utf-8"">
+  <meta http-equiv="Content-type" content="text/html; charset='utf-8'">
 
   <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
   <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet">
@@ -87,20 +87,19 @@ Hier ist der vollständige Code:
 </body>
 ~~~
 
-Damit wird ein leeres Gantt-Diagramm zur Seite hinzugefügt. Benutzer können Aufgaben und Verknüpfungen erstellen und bearbeiten, aber alle Änderungen gehen nach dem Aktualisieren der Seite verloren.
+Dieser Code fügt der Seite ein leeres Gantt-Diagramm hinzu. Ein Benutzer kann Aufgaben und Verknüpfungen erstellen und ändern, aber nach dem Neuladen der Seite werden keine Änderungen gespeichert.
 
-Sie können dies testen, indem Sie die Anwendung erneut ausführen:
+Wir können es testen, indem die App erneut gestartet wird:
 
-**command line**
 ~~~js
 php -S 0.0.0.0:8080 -t public public/index.php
 ~~~
 
-Öffnen Sie [http://127.0.0.1:8080/](http://127.0.0.1:8080/) in Ihrem Browser. Sie sollten das Gantt-Diagramm auf der Seite sehen.
+Öffnen Sie nun [http://127.0.0.1:8080/](http://127.0.0.1:8080/) in einem Browser und Sie sehen, dass ein Gantt-Diagramm auf der Seite gerendert wird.
 
 ## Schritt 3. Eine Datenbank konfigurieren
 
-Erstellen Sie nun eine einfache Datenbank mit zwei Tabellen.
+Der nächste Schritt besteht darin, eine Datenbank zu erstellen. Wir erstellen eine einfache Datenbank mit zwei Tabellen.
 
 ~~~js
 CREATE TABLE `gantt_links` (
@@ -121,7 +120,8 @@ CREATE TABLE `gantt_tasks` (
 );
 ~~~
 
-Sobald die Datenbank bereit ist, füllen Sie die Tabelle *gantt_tasks* mit Beispieldaten. Verwenden Sie dazu die folgenden SQL-Inserts:
+Wenn die Datenbank bereit ist, können wir weitergehen und die Tabelle *gantt_tasks* mit einigen Testdaten befüllen.
+Sie können folgendes SQL-Beispiel dafür verwenden:
 
 ~~~js
 INSERT INTO `gantt_tasks` VALUES ('1', 'Project #1', '2017-04-01 00:00:00', 
@@ -141,30 +141,30 @@ INSERT INTO `gantt_tasks` VALUES ('7', 'Task #2.1', '2017-04-07 00:00:00',
 INSERT INTO `gantt_tasks` VALUES ('8', 'Task #2.2', '2017-04-06 00:00:00', 
   '4', '0.9', '3');
 ~~~
-Weitere Details finden Sie im Beispiel [hier](guides/loading.md#standarddatabasestructure).
+Siehe hier für ein detailliertes Beispiel [hier](guides/loading.md#databasestructure).
 
-Nachdem das Projekt eingerichtet ist, geht es weiter mit dem Laden der Daten.
+Damit haben wir die Vorbereitung unseres Projekts abgeschlossen. Jetzt können wir mit dem Laden der Daten fortfahren.
 
-## Schritt 4. Daten laden
+## Schritt 4. Laden der Daten
 
-Jetzt implementieren wir das Laden der Daten aus der Datenbank. Auf der Clientseite werden die Daten mit der [gantt.load](api/method/load.md)-Methode angefordert:
+Nun ist es Zeit, das Laden aus der Datenbank zu implementieren. 
+Auf der Client-Seite werden wir Daten mit der [gantt.load](api/method/load.md) Methode anfordern:
 
-**/templates/index.phtml**
-~~~js
+~~~js title="/templates/index.phtml"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
 
 gantt.init("gantt_here");
 gantt.load("/data");/*!*/
 ~~~
 
-Dies löst eine AJAX-Anfrage an die angegebene URL aus, wobei die Antwort Gantt-Daten im [JSON-Format](guides/supported-data-formats.md#json) enthalten soll.
+Dieser Befehl sendet eine AJAX-Anfrage an die angegebene URL, die Antwort wird Gantt-Daten im [JSON-Format](guides/supported-data-formats.md) enthalten.
 
-Das Datumsformat wird außerdem über die [date_format](api/config/date_format.md)-Konfiguration festgelegt. So weiß Gantt, in welchem Format die Datenquelle das Datum bereitstellt, damit der Client die Daten korrekt parsen kann.
+Außerdem haben wir den [date_format]-Wert angegeben. Das ist die Art und Weise, wie wir Gantt mitteilen, in welchem Format die Datenquelle Datumswerte bereitstellt, damit die Client-Seite sie parsen kann.
 
-Als Nächstes fügen Sie einen Backend-Handler für diese Anfrage hinzu. Öffnen Sie *src/routes.php* und definieren Sie eine neue [Route](https://www.slimframework.com/docs/v3/objects/router.html):
+Daraus folgt, dass wir einen notwendigen Handler für eine solche Anfrage im Backend hinzufügen müssen.
+Öffnen Sie dazu die Datei *src/routes.php* und fügen Sie eine neue [Route](https://www.slimframework.com/docs/v3/objects/router.html) hinzu:
 
-**src/routes.php**
-~~~php
+~~~js title="src/routes.php"
 <?php
 // Routes
 
@@ -176,12 +176,12 @@ $app->get('/', function ($request, $response, $args) {
 $app->get('/data',  'getGanttData');/*!*/
 ~~~
 
-Nun implementieren Sie die Funktion *getGanttData*. Um *index.php* übersichtlich zu halten, fügen Sie allen Gantt-bezogenen Code in eine separate Datei ein.
+Anschließend müssen wir die Logik von *getGanttData* implementieren. Um index.php nicht zu verschmutzen, werden wir alle gantt-bezogenen Dinge in einer separaten Datei deklarieren.
 
-Erstellen Sie *src/gantt.php* und fügen Sie Folgendes hinzu:
+Lassen Sie uns eine neue Datei *src/gantt.php* erstellen und die erforderlichen Codes hinzufügen:
 
-**src/gantt.php**
-~~~php
+
+~~~js title="src/gantt.php"
 function getConnection()
 {
     return new PDO("mysql:host=localhost;dbname=gantt", "root", "root", [
@@ -210,10 +210,9 @@ function getGanttData($request, $response, $args) {
 };
 ~~~
 
-Binden Sie *src/gantt.php* in *public/index.php* ein:
+Und fügen Sie *src/gantt.php* in *public/index.php* ein:
 
-**public/index.php**
-~~~php
+~~~js title="public/index.php"
 <?php
 if (PHP_SAPI == 'cli-server') {
     // To help the built-in PHP dev server check if the request was actually for
@@ -249,24 +248,23 @@ require __DIR__ . '/../src/gantt.php'; /*!*/
 $app->run();
 ~~~
 
-Was macht der obenstehende Code?
+Lassen Sie uns den oben beschriebenen Code im Detail betrachten:
 
-- Definiert eine [Route](https://www.slimframework.com/docs/v3/objects/router.html) für den Datenendpunkt in *src/routes.php*.
-- Der Routen-Handler holt alle Aufgaben und Verknüpfungen aus der Datenbank und gibt sie als [JSON](guides/supported-data-formats.md#json) zurück.
-- Fügt jeder Aufgabe die Eigenschaft *open* hinzu, wodurch der Aufgabenbaum standardmäßig ausgeklappt ist.
+- Wir haben eine [Route] für unsere Datenaktion in *src/routes.php* definiert.
+- Im Handler dieser Route lesen wir alle Tasks und Links aus der Datenbank und senden sie dem Client als [JSON] zurück.
+- Wir haben außerdem die *open*-Eigenschaft zu den Task-Objekten hinzugefügt. Sie gibt an, dass der Aufgabenbaum standardmäßig geöffnet sein wird.
 
-Mit der implementierten Datenladefunktion können Sie [http://127.0.0.1:8080/](http://127.0.0.1:8080/) öffnen, um das Gantt-Diagramm mit den Beispieldaten aus dem vorherigen Schritt gefüllt zu sehen.
+Damit haben wir das Laden der Daten in Gantt implementiert.
+Öffnen Sie [http://127.0.0.1:8080/](http://127.0.0.1:8080/) und Sie sehen, dass das Gantt jetzt mit den Testdaten aus dem vorherigen Schritt gefüllt ist.
 
 ![load_data](/img/load_data.png)
 
 ## Schritt 5. Änderungen speichern
 
-Im nächsten Schritt speichern wir die auf dem Client vorgenommenen Änderungen wieder auf dem Server. Dies wird normalerweise von der [dataProcessor](guides/server-side.md#technique)-Bibliothek übernommen, die in Gantt integriert ist.
+Unser nächster Schritt besteht darin, das Speichern der im Client vorgenommenen Änderungen auf dem Server zu implementieren. Dies erfolgt in der Regel mit der [dataProcessor]-Bibliothek, die in das Gantt integriert ist.
+Öffnen Sie *index.phtml* und fügen Sie die folgenden Codezeilen ein:
 
-Aktualisieren Sie *index.phtml*, indem Sie diese Zeilen hinzufügen:
-
-**templates/index.phtml**
-~~~js
+~~~js title="templates/index.phtml"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
 
 gantt.init("gantt_here");
@@ -277,14 +275,13 @@ dp.init(gantt);/*!*/
 dp.setTransactionMode("REST");/*!*/
 ~~~
 
-DataProcessor überwacht Änderungen auf der Clientseite (Hinzufügen, Bearbeiten, Löschen) und sendet entsprechende AJAX-Anfragen an den Server.
+Der DataProcessor reagiert auf jede Aktion des Clients (d. h. das Hinzufügen von Daten in das Diagramm, Änderungen oder Löschen) durch das Senden einer AJAX-Anfrage an den Server.
+Der DataProcessor arbeitet im REST-Modus, was bedeutet, dass er je nach Aktion verschiedene HTTP-Methoden verwendet. Hier finden Sie [eine vollständige Liste der Routen](guides/server-side.md#requestresponsedetails).
 
-Im REST-Modus werden unterschiedliche HTTP-Methoden für verschiedene Operationen verwendet. Die [vollständige Liste der Routen finden Sie hier](guides/server-side.md#requestresponsedetails).
+Nun müssen wir diese Routen zu unserer Anwendung hinzufügen und die erforderliche Logik implementieren. Zuerst wechseln Sie zu *src/routes.php*:
 
-Fügen Sie nun diese Routen in Ihrer App in *src/routes.php* hinzu:
 
-**src/routes.php**
-~~~php
+~~~js title="src/routes.php"
 <?php
 // Routes
 
@@ -304,10 +301,9 @@ $app->put("/data/link/{id}", 'updateLink');
 $app->delete("/data/link/{id}", 'deleteLink');
 ~~~
 
-Mit den Routen implementieren Sie die entsprechenden Methoden in *src/gantt.php*:
+Routen wurden hinzugefügt, nun implementieren wir die mit ihnen verknüpften Methoden:
 
-**src/gantt.php**
-~~~php
+~~~js title="src/gantt.php"
 function getConnection()
 {
   return new PDO("mysql:host=localhost;dbname=gantt", "root", "", [
@@ -335,7 +331,7 @@ function getGanttData($request, $response, $args) {
   return $response->withJson($result);
 };
 
-// Extract task data from request
+// getting a task from the request data
 function getTask($data)
 {
   return [
@@ -347,7 +343,7 @@ function getTask($data)
   ];
 }
 
-// Extract link data from request
+// getting a link from the request data
 function getLink($data){
   return [
     ":source" => $data["source"],
@@ -356,7 +352,7 @@ function getLink($data){
   ];
 }
 
-// Add a new task
+// create a new task
 function addTask($request, $response, $args) {
   $task = getTask($request->getParsedBody());
   $db = getConnection();
@@ -370,7 +366,7 @@ function addTask($request, $response, $args) {
   ]);
 }
 
-// Update an existing task
+// update a task
 function updateTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $task = getTask($request->getParsedBody());
@@ -387,7 +383,7 @@ function updateTask($request, $response, $args) {
   ]);
 }
 
-// Delete a task
+// delete a task
 function deleteTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $db = getConnection();
@@ -399,7 +395,7 @@ function deleteTask($request, $response, $args) {
   ]);
 }
 
-// Add a new link
+// create a new link
 function addLink($request, $response, $args) {
   $link = getLink($request->getParsedBody());
   $db = getConnection();
@@ -413,7 +409,7 @@ function addLink($request, $response, $args) {
   ]);
 }
 
-// Update an existing link
+// update a link
 function updateLink($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $link = getLink($request->getParsedBody());
@@ -428,7 +424,7 @@ function updateLink($request, $response, $args) {
   ]);
 }
 
-// Delete a link
+// delete a link
 function deleteLink($request, $response, $args) {
   $sid = $request->getAttribute("id");
   $db = getConnection();
@@ -441,37 +437,36 @@ function deleteLink($request, $response, $args) {
 }
 ~~~
 
-Auch wenn der Code etwas umfangreich ist, ist jede Funktion einfach gehalten: Sie übernehmen das Erstellen, Aktualisieren und Löschen von Aufgaben und Verknüpfungen. Beim Einfügen wird die neue Datenbank-ID an den Client zurückgesendet.
+Wie Sie sehen, ist zwar relativ viel Code vorhanden, doch jede Methode ist simpel: Wir erstellen/aktualisieren/löschen Tasks und Links. 
+Die Insert-Aktion soll die Datenbank-ID eines neuen Elements an den Client zurückgeben.
 
-Beachten Sie, dass hier keine Datenbank-Relationen verwaltet werden - zum Beispiel wird beim Löschen einer Aufgabe nicht automatisch deren untergeordnete Aufgaben oder zugehörige Verknüpfungen entfernt. Der Client übernimmt dies, indem er für jedes abhängige Element eine eigene Löschanfrage sendet.
+Beachten Sie, dass wir hier keine Beziehungen in der Datenbank behandeln, d. h. wir löschen keine verschachtelten Tasks oder verknüpfte Links, wenn Tasks gelöscht werden. Das wird standardmäßig vom Client übernommen. Gantt wird eine separate Anfrage für jeden Kind-Task und jeden zu löschenden Link senden.
 
-Wenn Sie dies lieber im Backend verwalten möchten, können Sie die [cascade_delete](api/config/cascade_delete.md)-Konfiguration aktivieren.
+Wenn Sie es auf dem Backend handhaben möchten, müssen Sie die Konfiguration cascade_delete einschalten.
 
-Jetzt ist alles fertig. Starten Sie die Anwendung und besuchen Sie http://127.0.0.1:8080, um das voll funktionsfähige Gantt-Diagramm zu sehen.
+Nun ist alles bereit. Starten Sie unsere Anwendung. Öffnen Sie http://127.0.0.1:8080 und genießen Sie ein hübsches Gantt-Diagramm, das wir gerade erstellt haben.
 
 ![ready_gantt](/img/ready_gantt.png)
 
-## Speichern der Aufgabenreihenfolge {#storingtheorderoftasks}
+## Speichern der Reihenfolge der Aufgaben {#storingtheorderoftasks}
 
-Das Gantt-Diagramm unterstützt [Drag-and-Drop-Umsortierung](guides/reordering-tasks.md) von Aufgaben. Wenn Sie diese Funktion nutzen, sollten Sie die Reihenfolge in der Datenbank speichern.
+Der clientseitige Gantt ermöglicht es, Aufgaben per Drag & Drop neu zu ordnen. Wenn Sie diese Funktion verwenden, müssen Sie diese Reihenfolge in der Datenbank speichern. 
+Sie können [die allgemeine Beschreibung hier](guides/server-side.md#storingtheorderoftasks) einsehen.
 
-Eine allgemeine Übersicht finden Sie [hier](guides/server-side.md#storingtheorderoftasks).
+Fügen wir diese Funktion nun zu unserer App hinzu.
 
-Als nächstes werden wir diese Fähigkeit zur App hinzufügen.
+### Aufgaben-Neuanordnung auf dem Client aktivieren
 
-### Aufgaben-Umsortierung auf dem Client aktivieren
+Zunächst müssen wir es den Benutzern ermöglichen, die Aufgabenreihenfolge in der Benutzeroberfläche zu ändern. Öffnen Sie die *Index*-Ansicht und passen Sie die Konfiguration von gantt an:
 
-Zunächst sollten Benutzer Aufgaben direkt in der Benutzeroberfläche neu anordnen können. Öffnen Sie die *Index*-Ansicht und passen Sie die Gantt-Konfiguration wie folgt an:
-
-**/templates/index.phtml**
-~~~js
+~~~js title="/templates/index.phtml"
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
 gantt.init("gantt_here");
 ~~~
 
-Als Nächstes müssen diese Änderungen im Backend berücksichtigt werden. Die Aufgabenreihenfolge wird in einer Spalte namens "sortorder" gespeichert. Hier ist eine aktualisierte Version der *gantt_tasks*-Tabellendefinition:
+Nun spiegeln wir diese Änderungen auch im Backend wider. Wir speichern die Reihenfolge in der Spalte namens "sortorder". Die aktualisierte Deklaration der Tabelle *gantt_tasks* könnte wie folgt aussehen:
 
 ~~~js
 CREATE TABLE `gantt_tasks` (
@@ -485,18 +480,18 @@ CREATE TABLE `gantt_tasks` (
 );
 ~~~
 
-Falls Sie die Tabelle bereits haben, können Sie die neue Spalte einfach mit folgendem Befehl hinzufügen:
+Oder Sie fügen die erwähnte Spalte in die bereits vorhandene Tabelle ein:
 
 ~~~js
 ALTER TABLE `gantt_tasks` ADD COLUMN `sortorder` int(11) NOT NULL;
 ~~~
 
-Anschließend aktualisieren Sie die CRUD-Operationen in *src/gantt.php*.
+Nach diesem Schritt müssen wir CRUD in *src/gantt.php* aktualisieren.
 
-1. Der <b>GET /data</b>-Endpunkt sollte Aufgaben sortiert nach der Spalte `sortorder` zurückgeben:
+1 . <b>GET /data</b> muss Aufgaben liefern, die nach der Spalte `sortorder` sortiert sind: 
+  
 
-**src/gantt.php**
-~~~php
+~~~js title="src/gantt.php"
 function getGanttData($request, $response, $args) {
  $db = getConnection();
  $result = [
@@ -515,13 +510,12 @@ function getGanttData($request, $response, $args) {
 
  return $response->withJson($result);
 }
-
 ~~~
 
-2. Beim Hinzufügen neuer Aufgaben sollte ein initialer Wert für `sortorder` vergeben werden:
+2 . Neue Aufgaben müssen den anfänglichen Wert `sortorder` erhalten: 
 
-**src/gantt.php**
-~~~php
+
+~~~js title="src/gantt.php"
 // create a new task
 function addTask($request, $response, $args) {
  $task = getTask($request->getParsedBody());
@@ -535,7 +529,7 @@ function addTask($request, $response, $args) {
  if(!$maxOrder)
    $maxOrder = 0;
 
- $task[":sortorder"] = $maxOrder + 1;
+ $task[\":sortorder\"] = $maxOrder + 1;
 
  $query="INSERT INTO gantt_tasks(text,start_date,duration,progress,parent,sortorder)".
    "VALUES (:text,:start_date,:duration,:progress,:parent, :sortorder)";
@@ -548,10 +542,10 @@ function addTask($request, $response, $args) {
 }
 ~~~
 
-3. Schließlich sollte beim Umsortieren von Aufgaben deren Reihenfolge entsprechend aktualisiert werden:
+3 . Schließlich, wenn ein Benutzer Tasks neu anordnet, müssen die Aufgabenreihenfolgen aktualisiert werden:
 
-**src/gantt.php**
-~~~php
+
+~~~js title="src/gantt.php"
 // update a task
 function updateTask($request, $response, $args) {
   $sid = $request->getAttribute("id");
@@ -605,26 +599,25 @@ function updateOrder($taskId, $target, $db){
     ":taskId"=>$taskId
   ]);
 }
-
 ~~~
 
-Eine fertige Demo steht als Referenz auf GitHub zur Verfügung: [https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x).
+Sie können eine fertige Demo [hier](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x) auf GitHub finden.
 
 ## Verwendung von dhtmlxConnector
 
-Alternativ kann das PHP-Backend auch mit der [dhtmlxConnector-Bibliothek](https://docs.dhtmlx.com/connector__php__index.html) erstellt werden. Eine ausführliche Anleitung ist [hier](integrations/php/howtostart-connector.md) verfügbar.
+Alternativ kann ein PHP-Backend auch unter Verwendung der [dhtmlxConnector-Bibliothek](https://docs.dhtmlx.com/connector__php__index.html) implementiert werden. Eine detaillierte Anleitung finden Sie [hier](integrations/php/howtostart-connector.md). 
+
 
 ## Anwendungssicherheit
 
-Gantt selbst bietet keinen Schutz gegen Bedrohungen wie SQL-Injections, XSS oder CSRF-Angriffe. Entwickler sollten entsprechende Sicherheitsmaßnahmen in ihren Backend-Implementierungen berücksichtigen. Weitere Informationen finden Sie [im zugehörigen Artikel](guides/app-security.md).
+Gantt stellt keinerlei Mittel zur Verfügung, um eine Anwendung vor verschiedenen Bedrohungen zu schützen, z. B. vor SQL-Injektionen, XSS- oder CSRF-Angriffen. Es liegt in der Verantwortung der Backend-Entwickler, die Sicherheit der Anwendung sicherzustellen. Details finden Sie im entsprechenden Artikel [Guides/app-security.md](guides/app-security.md).
 
-## Fehlerbehebung
+## Troubleshooting
 
-Falls nach Abschluss der Integrationsschritte das Gantt-Diagramm keine Aufgaben oder Verknüpfungen anzeigt, bietet die Anleitung zur Fehlerbehebung in [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) hilfreiche Tipps zur Identifizierung und Lösung von Problemen.
+Falls Sie die oben beschriebenen Schritte zur Integration von Gantt mit PHP abgeschlossen haben, Gantt aber keine Tasks und Verknüpfungen auf einer Seite rendert, schauen Sie sich den Artikel [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) an. Er beschreibt die Möglichkeiten, die Ursachen der Probleme zu identifizieren.
 
-## Wie geht es weiter?
+## Was kommt als Nächstes
 
-Mit der abgeschlossenen Grundkonfiguration von Gantt ist der vollständige Code auf [GitHub](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x) verfügbar. Sie können ihn klonen oder herunterladen, um Ihre Projekte zu unterstützen.
+Jetzt haben Sie ein voll funktionsfähiges Gantt. Den vollständigen Code können Sie auf [GitHub](https://github.com/DHTMLX/gantt-howto-php/tree/slim-3.x) einsehen, klonen oder herunterladen und für Ihre Projekte verwenden.
 
-Weitere Ressourcen finden Sie in [Anleitungen zu verschiedenen Gantt-Funktionen](guides.md) sowie Tutorials zur [Integration von Gantt mit anderen Backend-Frameworks](integrations/howtostart-guides.md).
-
+Sie können auch [Guides zu den zahlreichen Features von Gantt](guides.md) oder Tutorials zur [Integration von Gantt mit anderen Backend-Frameworks](integrations/howtostart-guides.md) prüfen.

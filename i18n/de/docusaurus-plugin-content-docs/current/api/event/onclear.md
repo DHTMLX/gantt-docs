@@ -1,14 +1,14 @@
 ---
 sidebar_label: onClear
-title: onClear event
-description: "Wird ausgelöst, sobald alle Aufgaben mithilfe der clearAll Methode aus dem Gantt-Diagramm entfernt wurden."
+title: onClear-Ereignis
+description: "wird ausgelöst, nachdem alle Aufgaben aus dem Gantt-Diagramm durch die [clearAll](api/method/clearall.md) Methode entfernt wurden"
 ---
 
 # onClear
 
 ### Description
 
-@short: Wird ausgelöst, sobald alle Aufgaben mithilfe der [clearAll](api/method/clearall.md) Methode aus dem Gantt-Diagramm entfernt wurden.
+@short: Wird ausgelöst, nachdem alle Aufgaben aus dem Gantt-Diagramm durch die [clearAll](api/method/clearall.md) Methode entfernt wurden
 
 @signature: onClear: () =\> void;
 
@@ -16,10 +16,9 @@ description: "Wird ausgelöst, sobald alle Aufgaben mithilfe der clearAll Method
 
 ~~~jsx
 gantt.attachEvent("onClear", function (){
-    //beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related API
 - [clearAll](api/method/clearall.md)
-

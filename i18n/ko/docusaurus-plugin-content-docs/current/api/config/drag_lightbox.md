@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_lightbox
-title: drag_lightbox config
-description: "라이트박스의 헤더를 드래그하여 이동할 수 있도록 허용합니다."
+title: drag_lightbox 구성
+description: "헤더로 라이트박스를 드래그할 수 있도록 합니다"
 ---
 
 # drag_lightbox
 
 ### Description
 
-@short: 라이트박스의 헤더를 드래그하여 이동할 수 있도록 허용합니다.
+@short: 헤더로 라이트박스를 드래그할 수 있게 해줍니다
 
 @signature: drag_lightbox: boolean
 
@@ -20,7 +20,7 @@ gantt.config.drag_lightbox = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**기본값:** true
 
 ### Related Guides
 - [drag_links](api/config/drag_links.md)
@@ -28,4 +28,3 @@ gantt.init("gantt_here");
 - [drag_mode](api/config/drag_mode.md)
 - [drag_progress](api/config/drag_progress.md)
 - [drag_resize](api/config/drag_resize.md)
-

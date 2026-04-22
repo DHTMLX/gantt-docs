@@ -1,14 +1,14 @@
 ---
 sidebar_label: editable_property
-title: editable_property config
-description: "修改一个属性的名称，该属性控制在只读 Gantt 图中任务或链接是否可编辑"
+title: editable_property 配置
+description: "更改在只读甘特图中影响任务/链接编辑能力的属性名称"
 ---
 
 # editable_property
 
 ### Description
 
-@short: 修改一个属性的名称，该属性控制在只读 Gantt 图中任务或链接是否可编辑
+@short: 更改在只读甘特图中影响任务/链接编辑能力的属性名称
 
 @signature: editable_property: string
 
@@ -20,11 +20,10 @@ gantt.config.editable_property = "property_name";
 
 ### Details
 
-默认情况下，此选项设置为 "editable"。
+该选项的默认值为 "editable"。
 
 ### Related API
 - [readonly_property](api/config/readonly_property.md)
 
 ### Related Guides
-- [只读模式](guides/readonly-mode.md)
-
+- [只读模式](guides/readonly-mode.md#readonlymodefortheentiregantt)

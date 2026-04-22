@@ -1,14 +1,14 @@
 ---
 sidebar_label: onGanttLayoutReady
-title: onGanttLayoutReady event
-description: "当甘特图布局设置完成但尚未渲染时触发"
+title: onGanttLayoutReady 事件
+description: "在 Gantt 布局就绪后，但在渲染之前触发"
 ---
 
 # onGanttLayoutReady
 
 ### Description
 
-@short: 当甘特图布局设置完成但尚未渲染时触发
+@short: 在 Gantt 布局就绪后，但在渲染之前触发
 
 @signature: onGanttLayoutReady: () =\> void;
 
@@ -16,6 +16,6 @@ description: "当甘特图布局设置完成但尚未渲染时触发"
 
 ~~~jsx
 gantt.attachEvent("onGanttLayoutReady",function(){
-    // 在这里编写自定义逻辑
+    // 在这里插入您的自定义逻辑 
 });
 ~~~

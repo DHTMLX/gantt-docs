@@ -1,23 +1,23 @@
 ---
 sidebar_label: onAfterAutoSchedule
-title: onAfterAutoSchedule event
-description: "当自动排程过程完成时触发。"
+title: onAfterAutoSchedule 事件
+description: "在自动排程完成时触发"
 ---
 
 # onAfterAutoSchedule
 :::info
- 此功能仅在PRO版本中可用。 
+ 此功能仅在 PRO 版本中可用。 
 :::
 ### Description
 
-@short: 当自动排程过程完成时触发。
+@short: 当自动排程完成时触发
 
 @signature: onAfterAutoSchedule: (taskId: string | number, updatedTasks: any[]): void;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - 根任务的ID
-- `updatedTasks` - (required) *array* - 包含被重新排程任务ID的数组
+- `taskId` - (required) *string | number* - 根任务的 ID
+- `updatedTasks` - (required) *array* - 重新排程任务的 ID 数组
 
 ### Example
 
@@ -28,12 +28,11 @@ gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [自动排程扩展](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
-
 :::note
- 此事件属于**auto_scheduling**扩展的一部分，因此请确保启用[auto_scheduling](guides/extensions-list.md)插件。更多详情请参阅[自动调度](guides/auto-scheduling.md)指南。 
+此事件在 **auto_scheduling** 扩展中定义，因此您需要激活 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件。请在 [Auto Scheduling](guides/auto-scheduling.md) 文章中阅读详细信息。 
 :::
 
 ### Related API
@@ -53,5 +52,4 @@ gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [自动调度](guides/auto-scheduling.md)
-
+- [自动排程](guides/auto-scheduling.md)

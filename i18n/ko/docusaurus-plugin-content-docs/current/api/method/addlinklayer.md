@@ -1,16 +1,18 @@
----
+--- 
 sidebar_label: addLinkLayer
 title: addLinkLayer method
-description: "타임라인 영역에 링크를 위한 커스텀 요소를 포함하는 추가 레이어를 표시합니다"
+description: "타임라인 영역에서 링크를 위한 커스텀 요소를 포함하는 추가 레이어를 표시합니다"
 ---
 
 # addLinkLayer
+
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
 :::
+
 ### Description
 
-@short: 타임라인 영역에 링크를 위한 커스텀 요소를 포함하는 추가 레이어를 표시합니다
+@short: 타임라인 영역의 링크에 대해 커스텀 요소로 구성된 추가 레이어를 표시합니다
 
 @signature: addLinkLayer: (func: AdditionalLinkLayer['LinkLayerRender'] | AdditionalLinkLayer['LinkLayerConfig']) =\> string
 
@@ -90,10 +92,8 @@ gantt.attachEvent("onGanttReady", function () {
 
 **Related example:** [Gantt. 링크 타입을 가진 추가 레이어](https://snippet.dhtmlx.com/6mmt1nvw)
 
- 
 :::
 
 ### Related API
 - [removeLinkLayer](api/method/removelinklayer.md)
 - [addTaskLayer](api/method/addtasklayer.md)
-

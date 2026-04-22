@@ -1,62 +1,70 @@
 ---
-title: "dhtmlxGantt 与 PHP:Laravel 集成教程"
-sidebar_label: "PHP: Laravel"
+title: "dhtmlxGantt 与 PHP：Laravel"
+sidebar_label: "PHP：Laravel"
 ---
 
-# dhtmlxGantt 与 PHP:Laravel 集成教程
+# dhtmlxGantt 与 PHP：Laravel
 
-本教程介绍如何将 dhtmlxGantt 集成到 [Laravel](https://laravel.com/) 应用程序中。
+本教程描述如何将 dhtmlxGantt 集成到一个 [Laravel](https://laravel.com/) 应用中。
 
-此外，我们还提供了针对其他服务端平台的集成教程:
+还有一些教程是为了在其他平台的帮助下构建服务器端集成而编写的：
 
-- [dhtmlxGantt와 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
-- [dhtmlxGantt와 ASP.NET Core 사용하기](integrations/dotnet/howtostart-dotnet-core.md)
-- [dhtmlxGantt와 Python](integrations/other/howtostart-python.md)
-- [dhtmlxGantt와 Node.js 연동하기](integrations/node/howtostart-nodejs.md)
-- [dhtmlxGantt와 PHP:Slim 연동하기](integrations/php/howtostart-php-slim4.md)
-- [dhtmlxGantt와 Salesforce LWC 연동하기](integrations/salesforce/howtostart-salesforce.md)
-- [dhtmlxGantt와 Ruby on Rails 연동하기](integrations/other/howtostart-ruby.md)
+- [dhtmlxGantt 与 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
+- [dhtmlxGantt 与 ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
+- [dhtmlxGantt 与 Node.js](integrations/node/howtostart-nodejs.md)
+- [dhtmlxGantt 与 Python](integrations/other/howtostart-python.md)
+- [dhtmlxGantt 与 PHP:Slim](integrations/php/howtostart-php-slim4.md)
+- [dhtmlxGantt 与 Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
+- [dhtmlxGantt 与 Ruby on Rails](integrations/other/howtostart-ruby.md)
 
 :::note
-完整源码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel) 获取。
+完整的源代码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel) 找到。
 :::
 
-另外，我们还提供了一个视频指南，演示如何使用 PHP Laravel 构建甘特图。
+你也可以查看视频指南，了解如何使用 PHP Laravel 创建甘特图。
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/eu5R86a-9jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## 步骤 1. 初始化项目
+## 第一步。初始化项目
 
-### 创建项目
+### 创建一个项目
 
-首先，使用 [Composer](https://getcomposer.org/) 创建一个新的 Laravel 应用:
+使用 [Composer](https://getcomposer.org/) 创建一个新的应用：
 
 ~~~php
 composer create-project laravel/laravel gantt-laravel-app
 ~~~
 
-该过程会下载并配置所有所需文件。完成后，可以用以下命令验证一切是否正常:
+下载并创建所有必要文件大约需要一分钟。
+完成后，可以检查当前是否一切正常。进入项目文件夹并运行数据库迁移：
 
 ~~~php
 cd gantt-laravel-app
+php artisan migrate
+~~~
+
+现在，你可以运行服务器：
+
+~~~php
 php artisan serve
 ~~~
 
-此时，你应该能看到 Laravel 的默认欢迎页面:
+在这一步，你应该看到一个默认的 Laravel 页面：
 
 ![how_to_start_laravel_blank_page](/img/how_to_start_laravel_blank_page.png)
 
-## 步骤 2. 将 Gantt 添加到页面
+## 第2步。将 Gantt 添加到页面
 
-### 添加视图
+### 添加一个视图
 
-接下来，添加一个包含 dhtmlxGantt 的新页面。进入 *resources/views* 目录，创建一个名为 *gantt.blade.php* 的新视图文件:
+首先，我们将为应用添加一个带有 dhtmlxGantt 的新页面。
+进入 *resources/views* 文件夹，创建一个名为 *gantt.blade.php* 的新视图：
 
-**resources/views/gantt.blade.php**
-~~~html
+
+~~~html title="resources/views/gantt.blade.php"
 <!DOCTYPE html>
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset="utf-8"">
+    <meta http-equiv="Content-type" content="text/html; charset='utf-8'">
 
     <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
     <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet">
@@ -78,18 +86,18 @@ php artisan serve
 </body>
 ~~~
 
-该页面设置了基本的 HTML 布局，引入了来自 [CDN](guides/cdn-links-list.md) 的 dhtmlxGantt 资源，并通过 [init](api/method/init.md) 方法初始化了甘特图。
+在这里我们定义了一个简单的 HTML 布局，从 [CDN](guides/cdn-links-list.md) 加载 dhtmlxGantt 的资源，并使用 init 方法初始化 gantt。
 
-请注意，文档 body 和甘特图容器都设置为 **100% 高度**。由于甘特图会根据容器大小自适应，因此必须定义这些尺寸。
+请注意，我们还为文档主体和 gantt 容器指定了 **100% 高度**。Gantt 将使用其容器的大小，因此需要一些初始尺寸。
 
 ### 修改默认路由
 
-添加新页面后，需要使其能通过浏览器访问。本示例将 gantt 页面设置为应用的默认页面。
+在添加新页面后，我们需要让它能够从浏览器访问。对于本教程，我们将把 gantt 设为应用的默认页面。
 
-打开 *routes/web.php*，按照如下方式更新默认路由:
+进入 *routes/web.php* 并修改默认路由：
 
-**routes/web.php**
-~~~php
+
+~~~php title="routes/web.php"
 <?php
 
 Route::get('/', function () {
@@ -97,20 +105,20 @@ Route::get('/', function () {
 });
 ~~~
 
-重启应用并验证 gantt 页面是否显示:
+再次运行应用以确保已生效：
 
 ![how_to_start_laravel_empty_gantt](/img/how_to_start_laravel_empty_gantt.png)
 
-## 步骤 3. 创建模型和迁移
+## 第3步。创建模型与迁移
 
-甘特图已经显示，下一步是将其连接到数据库并填充数据。
+到目前为止，我们得到了一个空的甘特图。现在让它连接数据库并用数据填充。
 
 ### 创建数据库
 
-请确保在 *.env* 文件中更新你的数据库设置，例如:
+请确保在 *.env* 中更新数据库配置，例如：
 
-**.env**
-~~~php
+
+~~~php title=".env"
 DB_CONNECTION="mysql"
 DB_HOST="127.0.0.1"
 DB_PORT="3306"
@@ -119,30 +127,31 @@ DB_USERNAME="root"
 DB_PASSWORD=
 ~~~
 
-然后，使用 Artisan 命令创建 [模型类](https://laravel.com/docs/11.x/eloquent) 和 [迁移](https://laravel.com/docs/11.x/migrations):
+
+下一步是创建 [模型类](https://laravel.com/docs/12.x/eloquent) 与
+[migrations](https://laravel.com/docs/12.x/migrations)。可以使用 Artisan 命令生成类和迁移文件：
 
 ~~~js
 php artisan make:model Task --migration
 ~~~
 
-以及
+以及 
 
 ~~~js
 php artisan make:model Link --migration
 ~~~
 
-接下来，在 `database/migrations` 文件夹中找到迁移文件，并定义 [数据库结构](https://laravel.com/docs/8.x/migrations#migration-structure)。
-gantt 期望的数据库结构可参考 [此处](guides/loading.md#shujukujiegou)。
+之后在 `database/migrations` 文件夹中找到迁移文件并定义 [数据库架构](https://laravel.com/docs/12.x/migrations#migration-structure)。你可以在这里找到 gantt 期望的数据库架构。
 
-以下是 Tasks 表的迁移代码:
+Tasks 表的代码如下：
 
-**database/migrations/_create_tasks_table.php**
-~~~php
+
+~~~php title="database/migrations/_create_tasks_table.php"
 <?php
 
-use IlluminateSupportFacadesSchema;
-use IlluminateDatabaseSchemaBlueprint;
-use IlluminateDatabaseMigrationsMigration;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateTasksTable extends Migration
 {
@@ -166,15 +175,15 @@ class CreateTasksTable extends Migration
 }
 ~~~
 
-以下是 Links 表的迁移代码:
+下面是 Links 表的代码：
 
-**database/migrations/_create_links_table.php**
-~~~php
+
+~~~php title="database/migrations/_create_links_table.php"
 <?php
 
-use IlluminateSupportFacadesSchema;
-use IlluminateDatabaseSchemaBlueprint;
-use IlluminateDatabaseMigrationsMigration;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateLinksTable extends Migration
 {
@@ -196,64 +205,97 @@ class CreateLinksTable extends Migration
 }
 ~~~
 
-通过以下命令运行迁移:
+并运行迁移：
 
 ~~~php
 php artisan migrate
 ~~~
 
-在搭建过程中，建议生成一些测试用的示例数据。可以使用以下 Artisan 命令创建 Seeder 类:
+在此过程中，我们可以为应用生成一些测试数据。
+使用 artisan 命令生成一个 [seeder](https://laravel.com/docs/12.x/seeding) 类：
 
 ~~~php
 php artisan make:seeder TasksTableSeeder
 php artisan make:seeder LinksTableSeeder
 ~~~
 
-如果 *database/seeds* 文件夹不存在，请创建该文件夹，并在其中为 **TasksTableSeeder** 添加示例数据:
+现在，打开 *database/seeders* 文件夹，为 **TasksTableSeeder** 添加一些数据：
 
-**database/seeds/TasksTableSeeder.php**
-~~~php
+
+~~~php title="database/seeds/TasksTableSeeder.php"
 <?php
 
-use IlluminateDatabaseSeeder;
-
+namespace Database\Seeders;
+ 
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+ 
 class TasksTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
+        DB::table('tasks')->truncate();
         DB::table('tasks')->insert([
-            ['id'=>1, 'text'=>'Project #1', 'start_date'=>'2017-04-01 00:00:00', 
+            ['id'=>1, 'text'=>'Project #1', 'start_date'=>'2025-04-01 00:00:00', 
                 'duration'=>5, 'progress'=>0.8, 'parent'=>0],
-            ['id'=>2, 'text'=>'Task #1', 'start_date'=>'2017-04-06 00:00:00', 
+            ['id'=>2, 'text'=>'Task #1', 'start_date'=>'2025-04-06 00:00:00', 
                 'duration'=>4, 'progress'=>0.5, 'parent'=>1],
-            ['id'=>3, 'text'=>'Task #2', 'start_date'=>'2017-04-05 00:00:00', 
+            ['id'=>3, 'text'=>'Task #2', 'start_date'=>'2025-04-05 00:00:00', 
                 'duration'=>6, 'progress'=>0.7, 'parent'=>1],
-            ['id'=>4, 'text'=>'Task #3', 'start_date'=>'2017-04-07 00:00:00', 
+            ['id'=>4, 'text'=>'Task #3', 'start_date'=>'2025-04-07 00:00:00', 
                 'duration'=>2, 'progress'=>0, 'parent'=>1],
-            ['id'=>5, 'text'=>'Task #1.1', 'start_date'=>'2017-04-05 00:00:00', 
+            ['id'=>5, 'text'=>'Task #1.1', 'start_date'=>'2025-04-05 00:00:00', 
                 'duration'=>5, 'progress'=>0.34, 'parent'=>2],
-            ['id'=>6, 'text'=>'Task #1.2', 'start_date'=>'2017-04-11 00:00:00', 
+            ['id'=>6, 'text'=>'Task #1.2', 'start_date'=>'2025-04-11 00:00:00', 
                 'duration'=>4, 'progress'=>0.5, 'parent'=>2],
-            ['id'=>7, 'text'=>'Task #2.1', 'start_date'=>'2017-04-07 00:00:00', 
+            ['id'=>7, 'text'=>'Task #2.1', 'start_date'=>'2025-04-07 00:00:00', 
                 'duration'=>5, 'progress'=>0.2, 'parent'=>3],
-            ['id'=>8, 'text'=>'Task #2.2', 'start_date'=>'2017-04-06 00:00:00', 
+            ['id'=>8, 'text'=>'Task #2.2', 'start_date'=>'2025-04-06 00:00:00', 
                 'duration'=>4, 'progress'=>0.9, 'parent'=>3]
         ]);
     }
 }
 ~~~
+然后，对 **LinksTableSeeder** 做同样的事情：
 
-然后，更新 **DatabaseSeeder.php** 以调用这些 seeder:
 
-**database/seeds/DatabaseSeeder.php**
-~~~php
+~~~php title="database/seeders/LinksTableSeeder.php"
 <?php
 
-use IlluminateDatabaseSeeder;
+namespace Database\Seeders;
 
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class LinksTableSeeder extends Seeder
+{
+	public function run(): void
+	{
+		DB::table('links')->truncate();
+		DB::table('links')->insert([
+			['id' => 1, 'source' => 2, 'target' => 3, 'type' => 0],
+			['id' => 2, 'source' => 3, 'target' => 4, 'type' => 1]
+		]);
+	}
+}
+~~~
+并在 **DatabaseSeeder.php** 中调用表种子：
+
+
+~~~php title="database/seeds/DatabaseSeeder.php"
+<?php
+ 
+namespace Database\Seeders;
+ 
+use App\Models\Task;
+use App\Models\Link;
+use Database\Seeders\TasksTableSeeder;
+use Database\Seeders\LinksTableSeeder;
+use Illuminate\Database\Seeder;
+ 
 class DatabaseSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $this->call(TasksTableSeeder::class);
         $this->call(LinksTableSeeder::class);
@@ -261,7 +303,7 @@ class DatabaseSeeder extends Seeder
 }
 ~~~
 
-最后，通过命令行填充数据库:
+之后，我们可以在命令行进行数据库种子：
 
 ~~~php
 php artisan db:seed
@@ -269,462 +311,537 @@ php artisan db:seed
 
 ### 定义模型类
 
-数据通过 [Eloquent model](https://laravel.com/docs/11.x/eloquent) 类进行处理。之前创建的 task 和 link 类无需修改即可用于 gantt。
+数据通过 [Eloquent 模型](https://laravel.com/docs/12.x/eloquent) 类进行管理。我们在前一步已经为 tasks 和 links 生成了类。它们已经可以使用，并且不需要进行任何修改就可以与 gantt 一起工作。
 
-但如果希望任务加载到客户端时项目树默认展开，可以在 Task 类的 [JSON 响应](https://laravel.com/docs/11.x/eloquent-serialization) 中添加 **open** 属性。否则所有分支初始状态都是折叠的。
+不过，我们可以为 Task 类添加一个名为 **open** 的 [属性]，以在 [JSON 响应] 中返回。这样在客户端加载任务时，项目树就会展开。否则，初始时所有分支将处于关闭状态：
 
-Task 模型如下:
+Task 模型将如下所示：
 
-**/app/Task.php**
-~~~php
+
+~~~php title="/app/Models/Task.php"
 <?php
-
-namespace App;
-
-use IlluminateDatabaseEloquentModel;
-
+ 
+namespace App\Models;
+ 
+use Illuminate\Database\Eloquent\Model;
+ 
 class Task extends Model
 {
-    protected $appends = ["open"];/*!*/
-
-    public function getOpenAttribute(){/*!*/
-        return true;/*!*/
-    }/*!*/
+    protected $appends = ["open"];
+ 
+    public function getOpenAttribute(){
+        return true;
+    }
 }
 ~~~
 
-Link 模型无需更改:
+Link 模型不需要进行任何更改：
 
-**/app/Link.php**
-~~~php
+
+~~~php title="/app/Models/Link.php"
 <?php
 
-namespace App;
+namespace App\Models;
 
-use IlluminateDatabaseEloquentModel;
+use Illuminate\Database\Eloquent\Model;
 
 class Link extends Model
 {
 }
 ~~~
 
-## 步骤 4. 加载数据
+## 第4步。加载数据
 
-数据库和模型准备好后，可以将数据加载到甘特图中。
-由于客户端期望日期为特定 [格式](guides/supported-data-formats.md#json)，因此需要创建一个控制器方法以相应格式返回 JSON:
+一旦数据库创建且模型已定义，我们就可以向甘特图加载数据。客户端需要以下格式的日期，因此让我们创建一个控制器并实现一个生成此类 JSON 的动作：
 
-**app/Http/Controllers/GanttController.php**
-~~~php
+
+~~~php title="app/Http/Controllers/GanttController.php"
 <?php
-namespace AppHttpControllers;
-use AppTask;
-use AppLink;
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\JsonResponse;
+use App\Models\Task;
+use App\Models\Link;
 
 class GanttController extends Controller
 {
-    public function get(){
-        $tasks = new Task();
-        $links = new Link();
+	public function get(): JsonResponse
+	{
+		$tasks = Task::all();
+		$links = Link::all();
 
-        return response()->json([
-            "data" => $tasks->all(),
-            "links" => $links->all()
-        ]);
-    }
+		return response()->json([
+			"tasks" => $tasks,
+			"links" => $links
+		]);
+	}
 }
 ~~~
 
-为此方法添加路由，使客户端可以请求数据。该路由将添加到 [api.php 路由文件](https://laravel.com/docs/8.x/routing#basic-routing):
+并注册路由，以便客户端可以调用该动作。请注意，我们将把路由添加到 [api.php 路由文件](https://laravel.com/docs/12.x/routing#basic-routing)：
 
-**routes/api.php**
-~~~php
+
+~~~php title="routes/api.php"
 <?php
 
-use IlluminateHttpRequest;
-use AppHttpControllersGanttController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GanttController;
 
-Route::get('/data', 'GanttController@get');/*!*/
+Route::get('/data', [GanttController::class, 'get']); /*!*/
 ~~~
 
-最后，更新视图以调用该接口:
+现在，让我们将 Laravel 配置为正确加载 API 路由。
+通过以下命令创建 **RouteServiceProvider.php**：
 
-**resources/views/gantt.blade.php**
-~~~js
+
+~~~php
+php artisan make:provider RouteServiceProvider
+~~~
+然后用以下内容更新该文件：
+
+
+~~~php title="Providers/RouteServiceProvider.php"
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+	public function boot(): void
+	{
+		Route::prefix('api')
+		->middleware('api')
+		->group(base_path('routes/api.php'));
+	}
+}
+~~~
+
+最后，在视图中调用该动作：
+
+
+~~~js title="resources/views/gantt.blade.php"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
 
 gantt.init("gantt_here");
 
 gantt.load("/api/data");/*!*/
 ~~~
+[gantt.load](api/method/load.md) 向指定的 URL 发送一个 AJAX 请求，并将按照我们之前定义的方式期望得到一个 [JSON 响应](guides/supported-data-formats.md)。
 
-[gantt.load](api/method/load.md) 方法会向指定 URL 发送 AJAX 请求，并期望获得如定义的 [JSON 响应](guides/supported-data-formats.md#json)。
+另外，我们已经指定了 [date_format](api/config/date_format.md) 值。这就是告诉 gantt 数据源将使用哪种日期格式，以便客户端能够解析它们。
 
-同时，指定 [date_format](api/config/date_format.md) 让 gantt 能正确解析数据源的日期格式。
-
-现在，检查应用时，任务应会显示在甘特图中:
+如果你现在检查应用，你应该会看到甘特图中已经有任务了：
 
 ![how_to_start_laravel_complete](/img/how_to_start_laravel_complete.png)
 
-## 步骤 5. 保存更改
+## 第5步。保存更改
 
-目前，甘特图已能从后端读取数据。下一步是让其支持将更改保存回数据库。
+目前，我们的 gantt 可以从后端读取数据。现在让它将改动写回数据库。
 
-客户端以 REST 模式运行，对任务和链接的操作分别发送 POST/PUT/DELETE 请求。gantt 所用的请求格式和路由详见 [此处](guides/server-side.md#requestresponsedetails)。
+客户端将在 REST 模式下工作，意味着它将对任务和链接的操作发送 POST/PUT/DELETE 请求。你可以在 [这里](guides/server-side.md#requestresponsedetails) 找到请求的格式和 gantt 将使用的所有路由。
 
-为此，需要创建控制器以处理两个模型的 CRUD 操作，定义路由，并在客户端启用数据保存。
+现在我们需要定义处理两种模型操作的控制器、为它们创建路由以及在客户端启用数据保存。
 
 ### 添加控制器
 
-首先为两个模型创建 RESTful [资源控制器](https://laravel.com/docs/11.x/controllers)。
-这些控制器将包含添加、删除和更新数据的方法。
+从控制器开始。我们将为每个模型创建一个 RESTful 的 [resource controller](https://laravel.com/docs/12.x/controllers)。它将包含用于添加/删除和更新模型的方法。
 
-#### 任务控制器
+#### Task 的控制器
 
-**app/Http/Controllers/TaskController.php**
-~~~php
+~~~php title="app/Http/Controllers/TaskController.php"
 <?php
-namespace AppHttpControllers;
 
-use IlluminateHttpRequest;
-use AppTask;
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Task;
 
 class TaskController extends Controller
 {
-    public function store(Request $request){
+	public function store(Request $request)
+	{
+		$data = $request->only(['text', 'start_date', 'duration', 'parent']);
+		$data['progress'] = $request->input('progress', 0);
 
-        $task = new Task();
+		$task = Task::create($data);
 
-        $task->text = $request->text;
-        $task->start_date = $request->start_date;
-        $task->duration = $request->duration;
-        $task->progress = $request->has("progress") ? $request->progress : 0;
-        $task->parent = $request->parent;
+		return response()->json([
+			'action' => 'inserted',
+			'tid' => $task->id,
+		]);
+	}
 
-        $task->save();
+	public function update(Request $request, $id)
+	{
+		$task = Task::findOrFail($id);
 
-        return response()->json([
-            "action"=> "inserted",
-            "tid" => $task->id
-        ]);
-    }
+		$data = $request->only(['text', 'start_date', 'duration', 'parent']);
+		$data['progress'] = $request->input('progress', 0);
 
-    public function update($id, Request $request){
-        $task = Task::find($id);
+		$task->update($data);
 
-        $task->text = $request->text;
-        $task->start_date = $request->start_date;
-        $task->duration = $request->duration;
-        $task->progress = $request->has("progress") ? $request->progress : 0;
-        $task->parent = $request->parent;
+		return response()->json([
+			'action' => 'updated',
+		]);
+	}
 
-        $task->save();
+	public function destroy($id)
+	{
+		$task = Task::findOrFail($id);
+		$task->delete();
 
-        return response()->json([
-            "action"=> "updated"
-        ]);
-    }
+		return response()->json([
+			'action' => 'deleted',
+		]);
+	}
+}
+~~~
 
-    public function destroy($id){
-        $task = Task::find($id);
-        $task->delete();
 
-        return response()->json([
-            "action"=> "deleted"
-        ]);
+#### 配置 Task 模型
+
+在控制器方法工作之前，需要配置 `Task` 模型以允许批量赋值。 [Laravel 的批量赋值](https://laravel.com/docs/11.x/eloquent#mass-assignment) 保护要求你明确指定哪些属性可以通过 `create()` 和 `update()` 方法进行填充。
+将 Task 模型更新为包含 `$fillable` 属性：
+
+
+~~~php title="app/Models/Task.php"
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Task extends Model
+{
+    protected $fillable = ['text', 'start_date', 'duration', 'progress', 'parent']; /*!*/
+    protected $appends = ["open"];
+
+    public function getOpenAttribute(){
+        return true;
     }
 }
 ~~~
 
-以及为其设置的 [路由](https://laravel.com/docs/11.x/controllers#resource-controllers):
+`$fillable` 数组指定哪些字段可以进行批量赋值。这是一个安全特性，可以防止通过用户输入更新不需要的字段。
 
-**routes/api.php**
-~~~php
+
+
+并为它添加一个路由：
+
+
+~~~php title="routes/api.php"
 <?php
- 
-use IlluminateHttpRequest;
- 
-Route::get('/data', 'GanttController@get');
-Route::resource('task', 'TaskController');/*!*/
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GanttController;
+use App\Http\Controllers\TaskController;
+
+Route::get('/data', [GanttController::class, 'get']);
+Route::resource('task', TaskController::class); /*!*/
 ~~~
 
-关于这段代码有几点说明:
+关于这段代码有几点说明：
 
-- 当新任务被添加时，其 id 会通过响应的 **tid** 属性返回给客户端。
-- **progress** 参数被分配了默认值。由于许多请求参数是可选的，如果客户端任务未设置这些参数，则不会包含在服务器请求中。
-- 响应的 JSON 可以包含额外属性，这些属性都可以通过 [客户端处理函数](guides/server-side.md#cuowuchuli) 访问。
+- 当插入新任务时，我们在响应对象的 **tid** 属性中返回其 id
+- 为 **progress** 参数分配了默认值。
+  许多请求参数都是可选的，这意味着如果客户端任务没有为它们分配值，它们不会被发送到服务器动作。
+- 响应的 JSON 可以包含任意数量的附加属性，它们都可以从客户端处理程序访问
 
-接下来，我们为链接创建类似的控制器。
+现在让我们为 LinkController 实现同样的功能。
 
-#### 链接控制器
+#### Link 的控制器
 
-**app/Http/Controllers/LinkController.php**
-~~~php
+~~~php title="app/Http/Controllers/LinkController.php"
 <?php
-namespace AppHttpControllers;
 
-use IlluminateHttpRequest;
-use AppLink;
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Link;
 
 class LinkController extends Controller
 {
-    public function store(Request $request){
-        $link = new Link();
+	public function store(Request $request)
+	{
+		$link = Link::create($request->only(['type', 'source', 'target']));
 
-        $link->type = $request->type;
-        $link->source = $request->source;
-        $link->target = $request->target;
+		return response()->json([
+			'action' => 'inserted',
+			'tid' => $link->id,
+		]);
+	}
 
-        $link->save();
+	public function update(Request $request, $id)
+	{
+		$link = Link::findOrFail($id);
+		$link->update($request->only(['type', 'source', 'target']));
 
-        return response()->json([
-            "action"=> "inserted",
-            "tid" => $link->id
-        ]);
-    }
+		return response()->json([
+			'action' => 'updated',
+		]);
+	}
 
-    public function update($id, Request $request){
-        $link = Link::find($id);
+	public function destroy($id)
+	{
+		$link = Link::findOrFail($id);
+		$link->delete();
 
-        $link->type = $request->type;
-        $link->source = $request->source;
-        $link->target = $request->target;
-
-        $link->save();
-
-        return response()->json([
-            "action"=> "updated"
-        ]);
-    }
-
-    public function destroy($id){
-        $link = Link::find($id);
-        $link->delete();
-
-        return response()->json([
-            "action"=> "deleted"
-        ]);
-    }
+		return response()->json([
+			'action' => 'deleted',
+		]);
+	}
 }
 ~~~
 
-对应的路由如下:
+#### 配置 Link 模型
 
-**routes/api.php**
-~~~php
+同 Task 模型一样，我们需要为 Link 模型配置批量赋值：
+
+
+~~~php title="app/Models/Link.php"
 <?php
 
-use IlluminateHttpRequest;
+namespace App\Models;
 
-Route::get('/data', 'GanttController@get');
-Route::resource('task', 'TaskController');
-Route::resource('link', 'LinkController'); /*!*/
+use Illuminate\Database\Eloquent\Model;
+
+class Link extends Model
+{
+    protected $fillable = ['type', 'source', 'target']; /*!*/
+}
 ~~~
 
-### 启用客户端数据保存
 
-最后，需要在客户端进行配置，以便与我们刚刚搭建的 API 协同工作:
+以及它的路由：
 
-**resources/views/gantt.blade.php**
-~~~js
+
+~~~php title="routes/api.php"
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GanttController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\LinkController;
+
+Route::get('/data', [GanttController::class, 'get']);
+Route::resource('task', TaskController::class);
+Route::resource('link', LinkController::class); /*!*/
+~~~
+
+### 在客户端启用数据保存
+
+最后，我们将 [配置客户端] 以使用我们刚实现的 API：
+
+
+~~~js title="resources/views/gantt.blade.php"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
-    
 gantt.init("gantt_here");
-    
 gantt.load("/api/data");
-    
-var dp = new gantt.dataProcessor("/api");/*!*/
-dp.init(gantt);/*!*/
-dp.setTransactionMode("REST");/*!*/
+
+const dp = gantt.createDataProcessor({ /*!*/
+	url: "/api", /*!*/
+	mode: "REST" /*!*/
+}); /*!*/
 ~~~
 
-此时，Gantt 图已完全可交互，支持任务与链接的查看、添加、更新和删除。
+现在，你将获得一个完全交互式的甘特图，能够查看、添加、更新和删除任务与链接。
 
 ![how_to_start_laravel_crud](/img/how_to_start_laravel_crud.png)
 
-如需了解更多 dhtmlxGantt 的功能，可参考 [我们的指南](guides.md)。
+请查看更多 [我们的指南](guides.md)，了解 dhtmlxGantt 的更多功能，或查看关于 [将甘特与其他后端框架集成](integrations/howtostart-guides.md) 的教程。
 
-## 任务顺序的存储 {#storingtheorderoftasks}
+## 存储任务顺序 {#storingtheorderoftasks}
 
-客户端的 gantt 支持 [拖拽任务排序](guides/reordering-tasks.md)。如果启用了此功能，则需要将顺序保存到数据库。相关原理可参见 [此处说明](guides/server-side.md#renwushunxudecunchu)。
+客户端甘特图允许通过拖放来 [重新排序任务](guides/reordering-tasks.md)。因此如果你使用了此功能，需要将该顺序存储到数据库中。
+你可以在此处查看常见的 [描述](guides/server-side.md#storingtheorderoftasks)。
 
-下面为应用添加此功能。
+现在让我们为应用添加此功能。
 
-### 启用客户端任务排序
+### 在客户端启用任务重新排序
 
-要允许用户在界面中重新排序任务，需要在 *Index* 视图中更新 gantt 配置如下:
+首先，我们需要允许用户在 UI 中更改任务顺序。打开 *Index* 视图并更新 gantt 的配置：
 
-**resources/views/gantt.blade.php**
-~~~js
+
+~~~js title="resources/views/gantt.blade.php"
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
 gantt.init("gantt_here");
 ~~~
 
-### 启用服务端任务排序
+### 在服务器端启用任务重新排序
 
-在后端，将顺序存储在名为 "sortorder" 的字段中。完整任务表结构如下:
+现在，让我们在后端反映这些变化。我们将把顺序存储在名为 "sortorder" 的列中。一个完整的任务表架构可能如下所示：
 
-~~~php
+
+~~~php 
 Schema::create('tasks', function (Blueprint $table){
-    $table->increments('id');
-    $table->string('text');
-    $table->integer('duration');
-    $table->float('progress');
-    $table->dateTime('start_date');
-    $table->integer('parent');
-    $table->integer('sortorder')->default(0);
-    $table->timestamps();
+	$table->increments('id');
+	$table->string('text');
+	$table->integer('duration');
+	$table->float('progress');
+	$table->dateTime('start_date');
+	$table->integer('parent');
+	$table->integer('sortorder')->default(0);
+	$table->timestamps();
 });
 ~~~
 
-或者，也可以为现有表添加一次迁移:
+或者你可以为我们之前生成的架构添加一个迁移：
+
 
 ~~~js
-php artisan make:migration add_sortorder_to_tasks_table --table="tasks"
+php artisan make:migration add_sortorder_to_tasks_table --table=tasks
 ~~~
 
-迁移文件内容如下:
+Migration 文件的代码如下：
 
-**database/migrations/_add_sortorder_to_tasks_table.php**
-~~~php
+
+~~~php title="database/migrations/_add_sortorder_to_tasks_table.php"
 <?php
 
-use IlluminateSupportFacadesSchema;
-use IlluminateDatabaseSchemaBlueprint;
-use IlluminateDatabaseMigrationsMigration;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class AddSortorderToTasksTable extends Migration
 {
-    public function up()
-    {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->integer('sortorder')->default(0);
-        });
-    }
+	public function up()
+	{
+		Schema::table('tasks', function (Blueprint $table) {
+			$table->integer('sortorder')->default(0);
+		});
+	}
 
-    public function down()
-    {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->dropColumn('sortorder');
-        });
-    }
+	public function down()
+	{
+		Schema::table('tasks', function (Blueprint $table) {
+			$table->dropColumn('sortorder');
+		});
+	}
 }
 ~~~
 
-然后运行迁移:
+并应用迁移：
+
 
 ~~~
 php artisan migrate
 ~~~
 
-接下来，更新控制器中的 CRUD 操作。
+之后，我们需要更新在控制器中定义的 CRUD。
 
-1 . <b>GET /data</b> 路由应按 `sortorder` 排序返回任务: 
-  
-**app/Http/Controllers/GanttController.php**
-~~~php
+1 . <b>GET /data</b> 必须按 `sortorder` 列对任务进行排序后返回：
+
+
+~~~php title="app/Http/Controllers/GanttController.php"
 <?php
-namespace AppHttpControllers;
-use AppTask;
-use AppLink;
+namespace App\Http\Controllers;
+use Illuminate\Http\JsonResponse;
+use App\Models\Task;
+use App\Models\Link;
 
 class GanttController extends Controller
 {
-    public function get(){
-        $tasks = new Task();
-        $links = new Link();
+	public function get(): JsonResponse
+	{
+		$tasks = Task::orderBy('sortorder')->get(); /*!*/
+		$links = Link::all();
 
-        return response()->json([
-            "data" => $tasks->orderBy('sortorder')->get(),/*!*/
-            "links" => $links->all()
-        ]);
-    }
+		return response()->json([
+			"tasks" => $tasks,
+			"links" => $links
+		]);
+	}
 }
 ~~~
-2 . 新增任务时，应为其分配初始 `sortorder` 值: 
+2 . 新增任务必须接收初始值 `sortorder`：
 
-**app/Http/Controllers/TaskController.php**
-~~~php
-public function store(Request $request){
-    $task = new Task();
 
-    $task->text = $request->text;
-    $task->start_date = $request->start_date;
-    $task->duration = $request->duration;
-    $task->progress = $request->has("progress") ? $request->progress : 0;
-    $task->parent = $request->parent;
-    $task->sortorder = Task::max("sortorder") + 1;/*!*/
+~~~php title="app/Http/Controllers/TaskController.php"
+public function store(Request $request)
+{
+	$data = $request->only(['text', 'start_date', 'duration', 'parent']);
+	$data['progress'] = $request->input('progress', 0);
+	$data['sortorder'] = Task::max('sortorder') + 1;
 
-    $task->save();
+	$task = Task::create($data);
 
-    return response()->json([
-        "action"=> "inserted",
-        "tid" => $task->id
-    ]);
+	return response()->json([
+		'action' => 'inserted',
+		'tid' => $task->id,
+	]);
+}
+~~~
+3 . 最后，当用户重新排序任务时，任务顺序必须 [更新](guides/server-side.md#storingtheorderoftasks)：
+
+
+~~~php title="app/Http/Controllers/TaskController.php"
+public function update(Request $request, $id)
+{
+	$task = Task::findOrFail($id);
+
+	$data = $request->only(['text', 'start_date', 'duration', 'parent']);
+	$data['progress'] = $request->input('progress', 0);
+
+	$task->update($data);
+
+	if ($request->has('target')) {
+		$this->updateOrder($id, $request->input('target'));
+	}
+
+	return response()->json([
+		'action' => 'updated',
+	]);
+}
+
+private function updateOrder($taskId, $target)
+{
+	$nextTask = false;
+	$targetId = $target;
+
+	if (str_starts_with($target, 'next:')) {
+		$targetId = substr($target, strlen('next:'));
+		$nextTask = true;
+	}
+
+	if ($targetId === 'null') {
+		return;
+	}
+
+	$targetTask = Task::find($targetId);
+	if (!$targetTask) {
+		return;
+	}
+
+	$targetOrder = $targetTask->sortorder;
+	if ($nextTask) {
+		$targetOrder++;
+	}
+
+	Task::where('sortorder', '>=', $targetOrder)->increment('sortorder');
+
+	$updatedTask = Task::find($taskId);
+	$updatedTask->sortorder = $targetOrder;
+	$updatedTask->save();
 }
 ~~~
 
-3 . 最后，当任务被重新排序时，服务端需要相应更新其顺序:
-
-**app/Http/Controllers/TaskController.php**
-~~~php
-public function update($id, Request $request){
-    $task = Task::find($id);
-
-    $task->text = $request->text;
-    $task->start_date = $request->start_date;
-    $task->duration = $request->duration;
-    $task->progress = $request->has("progress") ? $request->progress : 0;
-    $task->parent = $request->parent;
-    
-    $task->save();
-    
-    if($request->has("target")){/*!*/
-        $this->updateOrder($id, $request->target);/*!*/
-    }/*!*/
-
-    return response()->json([
-        "action"=> "updated"
-    ]);
-}
-
-private function updateOrder($taskId, $target){
-    $nextTask = false;
-    $targetId = $target;
-
-    if(strpos($target, "next:") === 0){
-        $targetId = substr($target, strlen("next:"));
-        $nextTask = true;
-    }
-
-    if($targetId == "null")
-        return;
-
-    $targetOrder = Task::find($targetId)->sortorder;
-    if($nextTask)
-        $targetOrder++;
-
-    Task::where("sortorder", ">=", $targetOrder)->increment("sortorder");
-
-    $updatedTask = Task::find($taskId);
-    $updatedTask->sortorder = $targetOrder;
-    $updatedTask->save();
-}
-
-~~~
 
 ## 应用安全性
 
-Gantt 组件本身不包含针对 SQL 注入、XSS 或 CSRF 攻击等威胁的防护。保障应用安全性是后端开发者的职责。详情请参阅 [相关文档](guides/app-security.md)。
+Gantt 不提供防止各种威胁（如 SQL 注入、XSS、CSRF 攻击）的机制。确保应用安全的责任在实现后端的开发人员身上。请在相关文档中查看详细信息：[在相应的文章中](guides/app-security.md)。
 
-## 故障排查
+## 故障排除
 
-如果按照上述步骤操作后，Gantt 图未显示任务或链接，请参考 [백엔드 통합 문제 해결](guides/troubleshooting.md) 文章以查找和解决常见问题。
+如果你已经完成以上步骤，将 Gantt 与 PHP 集成，但 Gantt 未在页面上呈现任务和链接，可以查看 [](guides/troubleshooting.md) 文章。它描述了识别问题根源的方法。
 
-## 后续内容
+## 下一步
 
-Gantt 现已具备完整功能。完整源码可在 [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel) 获取，便于克隆或下载用于项目开发。
+现在你已经拥有一个功能完善的甘特图。你可以在 [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel) 查看完整代码，克隆或下载并用于你的项目。
 
-关于 gantt 更多功能的信息可参见 [我们的指南](guides.md)，以及在 [how-to guides](integrations/howtostart-guides.md) 中有关于将 Gantt 集成到其他后端框架的教程。
-
+你也可以查看 [对 gantt 的众多功能的指南](guides.md)，或了解 [将 Gantt 与其他后端框架集成的教程](integrations/howtostart-guides.md)。

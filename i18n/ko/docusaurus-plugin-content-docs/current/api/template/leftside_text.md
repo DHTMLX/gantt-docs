@@ -1,25 +1,25 @@
 ---
 sidebar_label: leftside_text
-title: leftside_text template
-description: "작업 막대의 왼쪽에 표시되는 텍스트를 정의합니다."
+title: leftside_text 템플릿
+description: "왼쪽 사이드에 있는 작업 바에 할당될 텍스트를 지정합니다"
 ---
 
 # leftside_text
 
 ### Description
 
-@short: 작업 막대의 왼쪽에 표시되는 텍스트를 정의합니다.
+@short: 왼쪽 사이드의 작업 바에 할당될 텍스트를 지정합니다
 
 @signature: leftside_text: (start: Date, end: Date, task: Task) =\> string | number | void;
 
 ### Parameters
 
-- `start` - (required) *Date* - 작업이 시작될 예정인 날짜
-- `end` - (required) *Date* - 작업이 완료될 것으로 예상되는 날짜
-- `task` - (required) *Task* - 작업 객체 자체
+- `start` - (필수) *Date* - 작업이 시작될 예정인 날짜
+- `end` - (필수) *Date* - 작업이 완료될 예정인 날짜
+- `task` - (필수) *Task* - 작업 객체
 
 ### Returns
-- ` text` - (string | number | void) - 간트 차트에 표시될 HTML 텍스트
+- ` text` - (string | number | void) - Gantt 차트에서 렌더링될 HTML 텍스트
 
 ### Example
 
@@ -40,7 +40,6 @@ gantt.templates.leftside_text = function(start, end, task){
 - [rightside_text](api/template/rightside_text.md)
 
 ### Related Guides
-- [타임라인 영역의 템플릿](guides/timeline-templates.md)
-- [작업 내용 표시](guides/text-block-for-task.md)
+- [Templates of the Timeline Area](guides/timeline-templates.md)
+- [Displaying Contents of Tasks](guides/text-block-for-task.md)
 - [Formatters Extension](guides/formatters-ext.md#durationformatter)
-

@@ -1,93 +1,94 @@
 ---
-title: "Fehlerbehebung bei Backend-Integrationsproblemen"
-sidebar_label: "Fehlerbehebung bei Backend-Integrationsproblemen"
+title: "Fehlersuche bei der Backend-Integration"
+sidebar_label: "Fehlersuche bei der Backend-Integration"
 ---
 
-# Fehlerbehebung bei Backend-Integrationsproblemen
+# Fehlersuche bei der Backend-Integration
 
-## Symptome
+## Symptome 
 
-1. Sie versuchen, die Backend-API entweder manuell oder anhand unserer [Anleitungen](integrations/howtostart-guides.md) zu implementieren, aber das Gantt-Diagramm zeigt beim Öffnen der Seite keine Aufgaben oder Verknüpfungen an.
+1. Sie versuchen, die Backend-API entweder manuell oder gemäß unseren [Tutorials](integrations/howtostart-guides.md) zu implementieren, aber Gantt zeigt beim Öffnen der Seite keine Aufgaben oder Verknüpfungen an.
 
 oder
 
-2. Sie haben Schwierigkeiten, Änderungen im Backend zu speichern.
+2. Sie haben Schwierigkeiten, Änderungen am Backend zu speichern.
 
-## Gründe
+## Ursachen
 
-Es gibt verschiedene mögliche Ursachen und Lösungen für fehlerhaftes Verhalten auf unterschiedlichen Plattformen, auf die wir hier nicht im Detail eingehen.
+Es kann viele Gründe und Lösungen für falsches Verhalten auf verschiedenen Plattformen geben, die wir in diesem Artikel nicht behandeln werden.
 
-Diese Anleitung soll Sie durch die gängigen Schritte zur Untersuchung solcher Probleme führen. Sobald Sie das Problem identifiziert und verstanden haben, warum die App nicht korrekt funktioniert, ist die Behebung in der Regel unkompliziert.
+Unser Ziel hier ist es, Sie durch die üblichen Schritte zur Untersuchung dieser Art von Problem zu führen. Sobald Sie das Problem lokalisieren und verstehen, warum die App nicht funktioniert, ist die Behebung in der Regel einfach.
 
-## Überprüfen Sie Fehlermeldungen auf der Seite
+## Prüfen Sie die Fehlermeldungen auf der Seite
 
-1. Öffnen Sie die Entwicklertools Ihres Browsers und laden Sie die Seite neu. Gibt es Fehlermeldungen in der Browser-Konsole?
+1. Öffnen Sie die Entwicklertools des Browsers und laden Sie die Seite neu. Sehen Sie Fehlermeldungen in der Browser-Konsole? 
 
-![Fehler überprüfen](/img/check_errors.png)
+![Fehler prüfen](/img/check_errors.png)
 
-2. Falls Fehler auftreten, bewerten Sie diese und prüfen Sie, ob Sie sie selbst beheben können. Wenn nicht, fahren Sie mit dem nächsten Schritt fort.
+2. Falls vorhanden, bewerten Sie die Fehler und entscheiden Sie, ob Sie diese selbst beheben können. Andernfalls fahren Sie mit dem nächsten Schritt fort. 
 
-## Überprüfen Sie, was der Client anfragt
+## Prüfen, was vom Client angefordert wird
 
-1. Öffnen Sie das **Netzwerk**-Panel und stellen Sie sicher, dass *XHR*-Anfragen sichtbar sind.
+1. Öffnen Sie das **Network**-Panel und stellen Sie sicher, dass *XHR*-Anfragen sichtbar sind. 
 
-2. Laden Sie die Seite neu und suchen Sie die Anfrage, die für das Laden der Daten aus dem Backend verantwortlich ist. Vergewissern Sie sich, dass sie die korrekte URL anspricht, und überprüfen Sie den Antwortstatus.
+2. Laden Sie die Seite neu und suchen Sie eine Anfrage, die Daten vom Backend laden sollte. Stellen Sie sicher, dass sie zur richtigen URL geht und überprüfen Sie den Antwortstatus.
 
-![Anfrage überprüfen](/img/request_check.png)
+![Anfrage prüfen](/img/request_check.png)
 
 Gibt es Fehler?
 
-Ein 404-Antwortstatus weist entweder auf eine falsche URL, die an die Methode `gantt.init` übergeben wurde, oder auf ein Problem mit den Routing-Einstellungen Ihrer Anwendung hin.
+Ein 404-Antwortstatus würde bedeuten, dass entweder eine falsche URL an die Methode `gantt.init` übergeben wurde oder ein Problem in den Routing-Einstellungen Ihrer Anwendung besteht. 
 
-## Überprüfen Sie, was der Server zurückliefert
+## Prüfen, was von dem Server zurückgegeben wird
 
-Wählen Sie die Anfrage aus und prüfen Sie die Vorschau der Antwort oder den Rohinhalt der Antwort.
+Wählen Sie die Anfrage aus und prüfen Sie die Antwortvorschau oder den rohen Antwortinhalt.
 
-![Antwort überprüfen](/img/check_response.png)
+![Antwort prüfen](/img/check_response.png)
 
-Entspricht die Antwort dem [erwarteten Datenformat](guides/loading.md#loadingfromserver)?
+Sieht die Antwort ähnlich dem [erwarteten Datenformat](guides/loading.md#loadingtaskdates) aus? 
 
-### Wenn Sie eine Fehlermeldung vom Webserver statt Gantt-Daten sehen
+### Wenn Sie eine Fehlermeldung des Webservers statt der Gantt-Daten sehen
 
-Das bedeutet meist, dass es ein Problem mit dem Backend-Code oder den Datenbankverbindungseinstellungen gibt.
+Sie können sicher sein, dass etwas mit dem Backend-Code oder den Datenbankverbindungs-Einstellungen nicht stimmt. 
 
-Typischerweise enthält die Fehlerantwort genügend Details, um die Ursache zu identifizieren. Wenn Sie eine allgemeine `500 server error`-Meldung erhalten, müssen Sie eventuell temporär benutzerdefinierte Fehlerseiten auf Ihrem Server deaktivieren, um die tatsächliche Fehlermeldung zu sehen. Dieser Vorgang hängt von der jeweiligen Plattform ab. Falls Sie unsicher sind, suchen Sie nach "disable custom error page in (your server or framework)".
+In der Regel enthält die Fehlermeldung genügend Informationen, um herauszufinden, was das Problem verursacht. Wenn Sie eine generische `500 server error`-Meldung sehen, müssen Sie möglicherweise vorübergehend benutzerdefinierte Fehlerseiten auf Ihrem Server deaktivieren, um den eigentlichen Fehler zu sehen. Das wird unterschiedlich auf verschiedenen Plattformen umgesetzt. Wenn Sie nicht sicher sind, wo Sie anfangen sollen, googeln Sie einfach "disable custom error page in (your server or framework)". 
 
-### Wenn die Daten größtenteils korrekt aussehen
+### Wenn die Daten mehr oder weniger ok aussehen 
 
-Überprüfen Sie die Eigenschaften `id`, `start_date`, `end_date`, `duration` und `parent`.
+Schauen Sie sich die Eigenschaften `id`, `start_date`, `end_date`, `duration`, `parent` an.
 
-- `id` - Aufgaben mit identischer id werden zusammengeführt. Wenn z.B. fünf Aufgaben die gleiche id haben, zeigt das Gantt-Diagramm nur eine davon an.
+- `id` - Elemente mit derselben `id` werden zusammengeführt. Wenn Sie fünf Aufgaben mit übereinstimmenden IDs haben, zeigt Gantt nur eine davon an.
 
-- `parent` - Einträge, bei denen der Wert von `parent` der [`root_id` Konfiguration](api/config/root_id.md) entspricht, erscheinen auf der Wurzelebene des Aufgabenbaums (standardmäßig jeder leere Wert einschließlich null oder 0). Wenn die Eigenschaft `parent` gesetzt ist, aber im Datensatz die entsprechende übergeordnete Aufgabe fehlt, wird dieses Element nicht angezeigt.
+- `parent` - Einträge, deren `parent`-Wert dem [`root_id`-Konfig](api/config/root_id.md) entspricht, werden auf der Root-Ebene des Aufgabenbaums angezeigt (standardmäßig - jeder leere Wert, einschließlich 0 oder null).
+Wenn die `parent`-Eigenschaft nicht leer ist und Ihr Dataset keine passende übergeordnete Aufgabe enthält, wird ein solcher Eintrag überhaupt nicht angezeigt.
 
-- `start_date`, `end_date`, `duration` - Stellen Sie sicher, dass jeder Eintrag mindestens zwei dieser Eigenschaften enthält, z.B. `start_date` plus `duration`. Weitere Details finden Sie im Artikel [Data Loading](guides/loading.md#loadingtaskdates).
+- `start_date`, `end_date`, `duration` - Vergewissern Sie sich, dass Ihre Einträge mindestens zwei dieser Eigenschaften enthalten, z. B. `start_date`+`duration`. Weitere Informationen finden Sie im [Datenladen](guides/loading.md#loadingtaskdates)-Artikel.
 
-Überprüfen Sie außerdem, ob die Formate von `start_date`/`end_date` mit dem in der [date_format](api/config/date_format.md) Konfiguration angegebenen Format übereinstimmen.
+Stellen Sie sicher, dass die Formate von `start_date`/`end_date` dem in der [date_format](api/config/date_format.md) Konfiguration von gantt angegebenen Format entsprechen.
 
-### Wenn Ihnen ungewöhnliche Werte bei den Eigenschaften auffallen
 
-Überprüfen Sie die Inhalte Ihrer Datenbank, da das Problem dort seinen Ursprung haben könnte. Stimmen die Datumsformate nicht überein, passen Sie entweder die `date_format` Konfiguration an oder ändern Sie den Code, der die Aufgabendaten vor dem Senden an den Client serialisiert.
+### Wenn Sie ungewöhnliche Werte in den Eigenschaften finden
 
-## Überprüfen Sie, was ins Gantt geladen wurde
+Prüfen Sie, was in Ihrer Datenbank gespeichert ist; vermutlich liegt dort das Problem. Falls Datumsformate nicht übereinstimmen, ändern Sie entweder die `date_format`-Konfiguration oder passen Sie den Code an, der die Aufgaben-Daten vor der Ausgabe an den Client serialisiert. 
+
+## Prüfen, was in das Gantt geladen wird
 
 1. Öffnen Sie die Browser-Konsole und führen Sie `gantt.getTaskByTime()` aus.
 
-2. Überprüfen Sie die Ausgabe in der Konsole, die ein Array von Aufgaben sein sollte.
+2. Untersuchen Sie die Konsolenausgabe. Wahrscheinlich sehen Sie ein Array von Aufgaben.
 
-![Daten überprüfen](/img/check_data.png)
+![Daten prüfen](/img/check_data.png)
 
-Überprüfen Sie erneut die Eigenschaften `start_date`, `end_date` und `parent` der Aufgaben.
+Auch hier können Sie die Eigenschaften `start_date`, `end_date` und `parent` der Aufgaben prüfen.
 
 ### Filter
 
-Wenn hier alles in Ordnung ist, prüfen Sie Ihren Code, da Aufgaben möglicherweise [durch einen Filter ausgeblendet](guides/filtering.md) werden.
+Wenn Sie dort keine offensichtlichen Probleme sehen, prüfen Sie möglicherweise Ihren Code; wahrscheinlich werden Aufgaben durch Filter versteckt. 
 
 ## Letzter Ausweg
 
-Sollte keiner der oben genannten Schritte das Problem lösen oder erscheinen weder Aufgaben noch Konsolenfehler, erwägen Sie, [Ihre Frage in unserem Forum zu stellen](https://forum.dhtmlx.com/c/gantt) oder unseren technischen Support zu kontaktieren.
+Falls keines der oben genannten Schritte hilft, oder wenn Sie weder Aufgaben noch Konsolenfehler sehen, versuchen Sie, Ihre Frage in unserem Forum zu posten: [forum.dhtmlx.com/c/gantt](https://forum.dhtmlx.com/c/gantt) oder wenden Sie sich an unseren technischen Support bezüglich Ihres Problems.
 
-Stellen Sie sicher, dass Sie alle während der Fehlersuche gesammelten Informationen beifügen.
+Bitte geben Sie unbedingt alle Informationen an, die Sie bei den obigen Schritten gesammelt haben.
 
-Zusätzlich benötigt unser Team ein minimal reproduzierbares Beispiel: entweder ein eigenständiges Paket mit einer vereinfachten App (die Gantt-Seite, alle benötigten Dateien, ein Datenbank-Dump mit Testdaten oder eine statische JSON-Datei mit den zu ladenden Daten) oder einen Online-Link, unter dem wir das Problem im Browser untersuchen können.
-
+Außerdem benötigt unser Team eine minimale reproduzierbare Demo: entweder ein eigenständiges Paket mit einer vereinfachten App (die Gantt-Seite, alle erforderlichen Dateien, ein Datenbank-Dump mit einigen Testdaten oder eine statische JSON-Datei mit Daten, die Sie laden möchten), oder einen Online-Link, über den wir das Problem im Browser prüfen könnten.

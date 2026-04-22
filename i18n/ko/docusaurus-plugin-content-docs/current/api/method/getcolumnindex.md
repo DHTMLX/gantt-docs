@@ -1,24 +1,24 @@
 ---
 sidebar_label: getColumnIndex
-title: getColumnIndex method
-description: "컬럼 이름을 기준으로 컬럼의 위치를 반환합니다."
+title: getColumnIndex 메서드
+description: "열의 이름으로 열의 인덱스를 반환합니다"
 ---
 
 # getColumnIndex
 
 ### Description
 
-@short: 컬럼 이름을 기준으로 컬럼의 위치를 반환합니다.
+@short: 열의 이름으로 열의 인덱스를 반환합니다
 
 @signature: getColumnIndex: (name: string | number, excludeHidden?: boolean) =\> number
 
 ### Parameters
 
-- `name` - (required) *string | number* -           컬럼의 이름
-- `excludeHidden` - (optional) *boolean* - 인덱스를 셀 때 숨겨진 컬럼을 무시합니다.
+- `name` - (필수) *string | number* - 열의 이름
+- `excludeHidden` - (선택적) *boolean* - 숨겨진 열의 인덱스를 건너뜁니다
 
 ### Returns
-- ` index` - (number) - 컬럼의 위치
+- ` index` - (숫자) - 열의 인덱스
 
 ### Example
 

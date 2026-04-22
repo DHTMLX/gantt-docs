@@ -1,14 +1,14 @@
----
+--- 
 sidebar_label: cascade_delete
-title: cascade_delete config
-description: "상위 작업이 삭제될 때 중첩된 작업과 링크를 자동으로 삭제할 수 있게 합니다."
+title: cascade_delete 설정
+description: "중첩된 작업 및 링크의 cascade 삭제를 활성화합니다"
 ---
 
 # cascade_delete
 
 ### Description
 
-@short: 상위 작업이 삭제될 때 중첩된 작업과 링크를 자동으로 삭제할 수 있게 합니다.
+@short: 중첩된 작업 및 링크의 연쇄 삭제를 활성화합니다
 
 @signature: cascade_delete: boolean
 
@@ -19,11 +19,11 @@ gantt.config.cascade_delete = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**기본값:** true
 
 ### Details
 
-버전 4.2에서 도입되었습니다.
+버전 4.2에서 추가됨
 
 ### Related Guides
-- [작업의 기본 작업](guides/crud-task.md#cascadedeletingofnestedtasks)
+- [Basic Operations with Tasks](guides/crud-task.md)

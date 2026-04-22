@@ -1,14 +1,14 @@
 ---
 sidebar_label: task_unscheduled_time
 title: task_unscheduled_time template
-description: "gibt die Daten von nicht geplanten Tasks an"
+description: "legt die Termine ungeplanter Aufgaben fest"
 ---
 
 # task_unscheduled_time
 
 ### Description
 
-@short: Gibt die Daten von nicht geplanten Tasks an
+@short: Gibt die Termine ungeplanter Aufgaben an
 
 @signature: task_unscheduled_time: (task: Task) =\> string | void;
 
@@ -17,7 +17,7 @@ description: "gibt die Daten von nicht geplanten Tasks an"
 - `task` - (required) *Task* - das Task-Objekt
 
 ### Returns
-- ` text` - (string | void) - einen HTML-Text, der im Grid für die Spalten mit Datumswerten gerendert wird
+- ` text` - (string | void) - ein HTML-Text, der im Gitter für die Spalten mit Datumswerten gerendert wird
 
 ### Example
 
@@ -28,24 +28,23 @@ gantt.templates.task_unscheduled_time = function(task){
 ~~~
 
 ### Related samples
-- [Show Unscheduled Tasks](https://docs.dhtmlx.com/gantt/samples/01_initialization/19_tasks_without_dates.html)
+- [Ungeplante Aufgaben anzeigen](https://docs.dhtmlx.com/gantt/samples/01_initialization/19_tasks_without_dates.html)
 
 ### Details
 
-Standardmäßig gibt die Funktion einen leeren String zurück.
+Standardmäßig wird ein leerer String zurückgegeben.
 
-Wenn ein Task als [unscheduled](guides/unscheduled-tasks.md) markiert ist, indem die Eigenschaft `unscheduled:true` im Konfigurationsobjekt gesetzt wird, erscheinen alle Datumsfelder als leere Zeilen. 
-Siehe das folgende Beispiel:
+Wenn eine Aufgabe [ungeplant](guides/unscheduled-tasks.md) ist, d. h. sie die `unscheduled:true`-Eigenschaft in ihrem Konfigurationsobjekt besitzt, werden alle ihre Termine mit leeren Zeilen gerendert.
+Siehe untenstehendes Beispiel:
 
 :::note
-Sample: [Rendering dates in unscheduled tasks](https://snippet.dhtmlx.com/t6skfgjx) 
+Beispiel: [Termine in ungeplanten Aufgaben rendern](https://snippet.dhtmlx.com/t6skfgjx)
 :::
 
-Falls es erforderlich ist, für einen nicht geplanten Task einige Daten anzuzeigen, kann dies mit der [date_grid](api/template/date_grid.md) Vorlage umgesetzt werden.
+Falls Sie einige Termine für eine ungeplante Aufgabe anzeigen müssen, können Sie dies mit Hilfe der [date_grid](api/template/date_grid.md) Vorlage tun.
 
 ### Related API
 - [show_unscheduled](api/config/show_unscheduled.md)
 
 ### Related Guides
-- ["Grundlegende Operationen mit Aufgaben"](guides/unscheduled-tasks.md)
-
+- [Grundlegende Operationen mit Aufgaben](guides/unscheduled-tasks.md)

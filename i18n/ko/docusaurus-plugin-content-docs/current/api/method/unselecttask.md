@@ -1,20 +1,20 @@
 ---
 sidebar_label: unselectTask
-title: unselectTask method
-description: "선택된 작업에서 선택을 제거합니다"
+title: unselectTask 메서드
+description: "선택된 작업에서 선택을 해제합니다"
 ---
 
 # unselectTask
 
 ### Description
 
-@short: 선택된 작업에서 선택을 제거합니다
+@short: 선택된 작업에서 선택을 해제합니다
 
-@signature: unselectTask: (id?: string | number) =\> void
+@signature: unselectTask: (id?: string | number) => void
 
 ### Parameters
 
-- `id` - (optional) *string | number* - 선택 사항, 선택 해제할 작업의 id, 자세한 내용은 아래 참조
+- `id`	-	(optional) *string | number*	-	선택적이며, 선택을 제거할 작업의 id를 나타냅니다. 자세한 내용은 아래 참조
 
 ### Example
 
@@ -43,4 +43,3 @@ gantt.unselectTask(); /*!*/
 ### Related API
 - [selectTask](api/method/selecttask.md)
 - [getSelectedId](api/method/getselectedid.md)
-

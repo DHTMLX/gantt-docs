@@ -1,25 +1,25 @@
 ---
 sidebar_label: onBeforeRowResizeEnd
 title: onBeforeRowResizeEnd event
-description: "在行高度调整过程完成之前触发"
+description: "在行高调整完成之前触发"
 ---
 
 # onBeforeRowResizeEnd
 
 ### Description
 
-@short: 在行高度调整过程完成之前触发
+@short: 在行高调整完成之前触发
 
 @signature: onBeforeRowResizeEnd: (id: number | string, task: Task, newHeight: number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *number|string* - 任务标识符
-- `task` - (required) *Task* - 任务对象本身
-- `newHeight` - (required) *number* - 更新后的行高度
+- `id` - (required) *number | string* - 任务 ID
+- `task` - (required) *Task* - 任务对象
+- `newHeight` - (required) *number* - 行的新高度
 
 ### Returns
-- ` result` - (boolean) - 指示是否继续执行默认事件操作（<b>true</b>）或停止（<b>false</b>）
+- `result` - (boolean) - 定义事件的默认操作是否会被触发（<b>true</b>）或取消（<b>false</b>）
 
 ### Example
 

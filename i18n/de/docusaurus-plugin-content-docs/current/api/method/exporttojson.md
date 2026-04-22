@@ -1,20 +1,20 @@
 ---
 sidebar_label: exportToJSON
 title: exportToJSON method
-description: "erstellt ein JSON-Objekt, das die Struktur und Daten eines Gantt-Diagramms enthält"
+description: "Exportiert die Struktur und Daten eines Gantt-Diagramms in ein JSON-Objekt"
 ---
 
 # exportToJSON
 
 ### Description
 
-@short: Erstellt ein JSON-Objekt, das die Struktur und Daten eines Gantt-Diagramms enthält
+@short: Exportiert die Struktur und Daten eines Gantt-Diagramms in ein JSON-Objekt
 
 @signature: exportToJSON: (config?: any) =\> void
 
 ### Parameters
-- `export` - (optional) *object* - optionale Konfiguration, ein Objekt mit Gantt-Einstellungen
 
+- `config` - Objekt - optional, ein Objekt mit Gantt-Konfiguration
 
 ### Example
 
@@ -27,12 +27,11 @@ gantt.exportToJSON({
 ### Details
 
 :::note
- Diese Methode ist Teil der **export** Erweiterung, daher stellen Sie sicher, dass das [export_api](guides/extensions-list.md#exportservice) Plugin aktiviert ist.
- 
+Diese Methode ist im **export**-Erweiterung definiert, daher müssen Sie das [export_api](guides/extensions-list.md#export-service) Plugin aktivieren.
 :::
 
 :::note
- Für Gantt-Versionen vor 8.0 müssen Sie **https://export.dhtmlx.com/gantt/api.js** zu Ihrer Seite hinzufügen, um den Online-Export-Service zu nutzen, zum Beispiel:
+note Wenn Sie eine Gantt-Version verwenden, die älter als 8.0 ist, müssen Sie die `https://export.dhtmlx.com/gantt/api.js` auf Ihrer Seite einbinden, um den Online-Export-Service zu aktivieren, z.B.:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -41,12 +40,12 @@ gantt.exportToJSON({
  
 :::
 
-Das **config** Objekt unterstützt folgende Optionen:
+Das **config**-Objekt kann folgende Optionen enthalten:
 
-- name - der Dateiname der exportierten JSON-Datei
-- data - (Array) eine Liste von Tasks, die exportiert werden sollen; wird dieser Parameter weggelassen, wird das gesamte Gantt-Diagramm exportiert
+- name - Der Name der exportierten JSON-Datei
+- data - (Array) Liste der Aufgaben, die exportiert werden sollen. Der gesamte Gantt wird exportiert, falls nichts angegeben ist
 
-### Related API
+### Verwandte API
 - [exportToMSProject](api/method/exporttomsproject.md)
 - [exportToPrimaveraP6](api/method/exporttoprimaverap6.md)
 - [exportToExcel](api/method/exporttoexcel.md)
@@ -56,4 +55,3 @@ Das **config** Objekt unterstützt folgende Optionen:
 - [importFromExcel](api/method/importfromexcel.md)
 - [importFromPrimaveraP6](api/method/importfromprimaverap6.md)
 - [importFromMSProject](api/method/importfrommsproject.md)
-

@@ -1,59 +1,60 @@
----
-title: "Arbeiten mit Lightbox-Elementen"
-sidebar_label: "Arbeiten mit Lightbox-Elementen"
+--- 
+title: "Arbeiten mit Lightbox-Elementen" 
+sidebar_label: "Arbeiten mit Lightbox-Elementen" 
 ---
 
 # Arbeiten mit Lightbox-Elementen
 
-## Abrufen/Setzen des Kontrollwerts
+## Abrufen/Setzen des Lightbox-Steuerelementwerts
 
-Um den Wert eines Lightbox-Controls abzurufen oder zu aktualisieren, verwenden Sie die Methode [getLightboxSection](api/method/getlightboxsection.md) wie folgt:
+Um den Wert eines Lightbox-Steuerelements abzurufen oder zu setzen, verwenden Sie die [getLightboxSection](api/method/getlightboxsection.md)-Methode wie folgt:
 
 ~~~js
-// Wert abrufen
+//zum Abrufen des Wertes
 var value = gantt.getLightboxSection('description').getValue();
 
-// Wert setzen
+//zum Setzen des Wertes
 gantt.getLightboxSection('description').setValue('abc');
 ~~~
 
-## Überprüfen, ob die Lightbox geöffnet ist
+## Prüfen, ob das Lightbox geöffnet ist
 
-Um herauszufinden, ob die Lightbox aktuell geöffnet oder geschlossen ist, prüfen Sie die **lightbox**-Eigenschaft des Statusobjekts, das von der Methode [getState](api/method/getstate.md) zurückgegeben wird.
+Um zu prüfen, ob das Lightbox aktuell geöffnet oder geschlossen ist, verwenden Sie die **lightbox**-Eigenschaft des Statusobjekts, das von der [getState](api/method/getstate.md) Methode zurückgegeben wird.
 
- Wenn die Lightbox geöffnet ist, gibt die Methode die ID der geöffneten Aufgabe zurück; andernfalls wird 'null' oder 'undefined' zurückgegeben.
+ Wenn das Lightbox geöffnet ist – gibt die Methode die ID der geöffneten Aufgabe zurück, andernfalls 'null' oder 'undefined'
 
 ~~~js
 if (gantt.getState().lightbox){
-    // Code, wenn die Lightbox geöffnet ist
+    //der Code für das geöffnete Lightbox
 } else {
-    // Code, wenn die Lightbox geschlossen ist
+    //der Code für das geschlossene Lightbox
 }
 ~~~
 
-## Datenattribute Lightbox-Abschnitten zuordnen
+## Zuordnung von Datenfeldern zu den Lightbox-Abschnitten
 
-Um ein Datenattribut einem Lightbox-Abschnitt zuzuordnen, verwenden Sie das Attribut **map_to** im Abschnittsobjekt:
+Um eine Daten-Eigenschaft einem Lightbox-Abschnitt zuzuordnen, verwenden Sie das **map_to**-Attribut des Abschnittsobjekts:
 
 ~~~js
-// weist den Abschnitt "holders" einem Datenattribut namens "holder" zu 
+//ordnet dem Abschnitt "holders" eine Daten-Eigenschaft mit dem Namen "holder" zu
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, type:"textarea", map_to:"text", focus:true},
+    {name:"description",height:38, type:"textarea", map_to:"text", focus:true},
     {name:"holders",     height:22, type:"textarea", map_to:"holder"},      /*!*/                                                                
     {name:"time",         height:72, type:"duration", map_to:"auto"}
 ];
 ~~~
 
-## Standardwert für ein Lightbox-Control festlegen
+## Festlegen des Standardwerts für einen Lightbox-Abschnitt
 
-Um einen Standardwert für einen Lightbox-Abschnitt anzugeben, verwenden Sie die Eigenschaft **default_value** im Abschnittsobjekt.
+Um den Standardwert für einen Lightbox-Abschnitt festzulegen, verwenden Sie die **default_value**-Eigenschaft des Abschnittsobjekts.
 
-Wenn Sie beispielsweise einen benutzerdefinierten "Priority"-Abschnitt zur Lightbox hinzufügen, der die Priorität einer Aufgabe anzeigt, bleibt das Feld beim Erstellen eines neuen Ereignisses leer. Um einen Standardwert wie z.B. niedrige Priorität festzulegen, konfigurieren Sie die Lightbox wie folgt:
+Zum Beispiel haben Sie dem Lightbox einen benutzerdefinierten Abschnitt - „Priority“ - hinzugefügt, der die Priorität der Aufgabe anzeigt. 
+Wenn der Benutzer ein neues Ereignis erstellt, ist das Feld zunächst leer. Um solches Verhalten zu korrigieren und standardmäßig z. B. die niedrige Priorität festzulegen, definieren Sie die Lightbox wie folgt:
 
 ~~~js
 var opts = [
     { key:1, label: "High" },                                            
-    { key:2, label: "Normal" },                                         
+    { key:2, label: "Normal" },                                          
     { key:3, label: "Low" }                                            
 ];
 
@@ -66,10 +67,10 @@ gantt.config.lightbox.sections = [
 ~~~
 
 :::note
-Die **default_value**-Eigenschaft legt nur den initialen Wert für den Lightbox-Abschnitt fest. Das bedeutet, dass ein neues Ereignis diesen Wert erst erhält, nachdem der Benutzer die Lightbox öffnet und das Ereignis speichert.
+Die **default_value**-Eigenschaft setzt den Standardwert für den Lightbox-Abschnitt, nicht für ein neues Ereignis, d. h. ein neues Ereignis erhält den angegebenen Wert erst, nachdem der Benutzer das Lightbox geöffnet und das Ereignis gespeichert hat.
 :::
 
-Wenn Sie den Standardwert direkt beim Erstellen neuer Ereignisse zuweisen möchten, verwenden Sie das Event [onTaskCreated](api/event/ontaskcreated.md):
+Um den Standardwert direkt für neue Ereignisse festzulegen, verwenden Sie das [onTaskCreated](api/event/ontaskcreated.md) Event:
 
 ~~~js
 gantt.attachEvent("onTaskCreated", function(id, task){
@@ -80,22 +81,21 @@ gantt.attachEvent("onTaskCreated", function(id, task){
 
 ## Einen Abschnitt für bestimmte Ereignisse ausblenden
 
-Um einen Abschnitt für bestimmte Ereignisse auszublenden, überschreiben Sie dessen **set_value**-Methode wie folgt:
-
+Um einen Abschnitt für bestimmte Ereignisse auszublenden, überschreiben Sie seine **set_value**-Methode wie folgt:
 
 ~~~js
-gantt.form_blocks.textarea.set_value = function(node, value, ev){
-    node.firstChild.value = value || "";
-    var style = ev.some_property ? "" : "none";
-    node.style.display = style; // Editorbereich
-    node.previousSibling.style.display = style; // Abschnittsüberschrift
-    gantt.resizeLightbox(); // Lightbox-Größe anpassen
+gantt.form_blocks.textarea.set_value="function(node,value,ev){"
+    node.firstChild.value="value||""";
+    var style = ev.some_property?"":"none";
+    node.style.display="style;" // Editor-Bereich
+    node.previousSibling.style.display="style;" // Abschnittskopf
+    gantt.resizeLightbox(); // korrekte Größe der Lightbox
 }
 ~~~
 
-## Abschnitt und Beschriftung in einer Zeile anordnen
+## Abschnitt und dessen Bezeichnung auf derselben Zeile setzen
 
-Abschnitte und deren Beschriftungen können in einer Zeile platziert werden, indem Sie die Option [wide_form](api/config/wide_form.md) aktivieren:
+Sie können Abschnitte der Lightbox in derselben Zeile wie ihre Bezeichnungen platzieren, indem Sie die Konfigurationsoption [wide_form](api/config/wide_form.md) auf *true* setzen:
 
 ~~~js
 gantt.config.wide_form = true; /*!*/
@@ -122,43 +122,43 @@ gantt.config.lightbox.sections = [
 gantt.init("gantt_here");
 ~~~
 
-**Related example:** [Ausrichtung der Lightbox](https://snippet.dhtmlx.com/hf45hvr3)
 
-## Button in der Abschnittsüberschrift
+**Zugehöriges Beispiel** [Aligning Lightbox](https://snippet.dhtmlx.com/hf45hvr3)
 
-Es ist möglich, einen benutzerdefinierten Button in der Abschnittsüberschrift hinzuzufügen. Gehen Sie dazu wie folgt vor:
+## Button im Abschnittskopf
 
-- Fügen Sie die **button**-Eigenschaft zum Abschnittsobjekt hinzu:
+Es ist möglich, einen benutzerdefinierten Button im Abschnittskopf zu haben. Um einen Button in die Kopfzeile eines Abschnitts einzufügen, führen Sie die folgenden Schritte aus:
+
+- Geben Sie die **button**-Eigenschaft im Abschnittsobjekt an:
 
 ~~~js
 {name:"description", height:130, map_to:"text", type:"textarea", button:"help"}
 ~~~
-- Definieren Sie die Beschriftung für den Button:
+- Legen Sie das Label für den Button fest:
 
 ~~~js
-//'help' entspricht dem Wert der 'button'-Eigenschaft
-gantt.locale.labels.button_help = "Help label";
+//'help' ist der Wert der Eigenschaft 'button'
+gantt.locale.labels.button_help="Help label";
 ~~~
 
-- Implementieren Sie den Click-Handler für den Button:
+- Geben Sie den Handler für Button-Klicks an:
 
 ~~~
-gantt.form_blocks.textarea.button_click = function(index, button, shead, sbody){
-    // eigene Logik hier
+gantt.form_blocks.textarea.button_click = function(index,button,shead,sbody){
+    // beliebige benutzerdefinierte Logik
 }
 ~~~
-Parameter:
+wo:
 
-- **index** - (*number*) der nullbasierte Index des Abschnitts
-- **button** - (*HTMLElement*) das Button-Element selbst
-- **shead** - (*HTMLElement*) das Abschnittsüberschrift-Element
-- **sbody** - (*HTMLElement*) das Abschnittsinhalt-Element
+- **index** - (*number*) der Abschnittsindex. Nullbasierte Nummerierung
+- **button** - (*HTMLElement*) das HTML-Element eines Buttons
+- **shead** - (*HTMLElement*) das HTML-Element der Abschnittskopfzeile
+- **sbody** - (*HTMLElement*) das HTML-Element des Abschnittsinhalts
 
-Um das Bild des Buttons festzulegen, verwenden Sie folgende CSS-Klasse:
+Sie können das Bild, das für den Button verwendet wird, über die folgende CSS-Klasse definieren:
 
 ~~~js
 .dhx_custom_button_help{
-    background-image: url(imgs/but_help.gif);
+    background-image:url(imgs/but_help.gif);
 }
 ~~~
-

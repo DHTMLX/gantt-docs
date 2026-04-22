@@ -1,14 +1,14 @@
 ---
 sidebar_label: inline_editors_multiselect_open
-title: inline_editors_multiselect_open config
-description: "управляет тем, открывается ли inline редактор по одному клику на задачу при активном режиме множественного выбора задач"
+title: inline_editors_multiselect_open конфигурация
+description: "определяет, следует ли открывать inline editor после одного клика по задаче при включенном множественном выделении"
 ---
 
 # inline_editors_multiselect_open
 
 ### Description
 
-@short: Управляет тем, открывается ли inline редактор по одному клику на задачу при активном режиме множественного выбора задач
+@short: Определяет, следует ли открывать inline editor после одного клика по задаче при включенном множественном выделении
 
 @signature: inline_editors_multiselect_open: boolean | undefined
 
@@ -20,18 +20,18 @@ gantt.config.inline_editors_multiselect_open = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** undefined
+**Значение по умолчанию:** undefined
 
 ### Details
 
-При использовании режима одиночного выбора inline редактор появляется сразу после клика по задаче.
+В режиме одиночного выделения Gantt открывает inline editor после клика по задаче. 
 
-При включённом множественном выборе первый клик по задаче, которая не выбрана, выделяет её, а второй клик открывает inline редактор.
-Чтобы inline редактор открывался с первого клика даже в режиме множественного выбора, установите опцию **inline_editors_multiselect_open** в true.
+В режиме множественного выделения первый клик по невыбранной задаче выделяет её, а второй клик по той же задаче откроет inline editor.
+Если вы хотите, чтобы Gantt открывал inline editor сразу после первого клика, включите конфигурацию **inline_editors_multiselect_open**.
 
 ### Related Guides
-- [Редактирование 'на месте' в гриде](guides/inline-editing.md)
+- [Редактирование прямо на месте в Grid](guides/inline-editing.md)
 - [Множественный выбор задач](guides/multiselection.md)
 
 ### Change log
-- добавлено в версии v7.1.13
+- добавлено в v7.1.13

@@ -1,23 +1,23 @@
 ---
 sidebar_label: onTaskCreated
-title: onTaskCreated event
-description: "当用户通过点击 grid 中的 '+' 按钮添加新任务，或调用 createTask 方法时触发"
+title: onTaskCreated 事件
+description: "当用户在网格(grid)中按下 '+' 按钮创建新任务，或调用 createTask 方法时触发"
 ---
 
 # onTaskCreated
 
 ### Description
 
-@short: 当用户通过点击 grid 中的 '+' 按钮添加新任务，或调用 [createTask](api/method/createtask.md) 方法时触发
+@short: 在网格(grid)中按下 '+' 按钮创建新任务，或调用 [createTask](api/method/createtask.md) 方法时触发
 
 @signature: onTaskCreated: (task: Task) =\> boolean;
 
 ### Parameters
 
-- `task` - (required) *Task* - 新任务对象
+- `task` - (required) *Task* - 新任务的对象
 
 ### Returns
-- ` result` - (boolean) - 返回 `false` 将阻止新任务的创建，返回 `true` 则允许默认流程继续执行
+- `result` - (boolean) - 返回 `false` 将取消新任务的创建，返回 `true` 将继续默认处理
 
 ### Example
 
@@ -30,13 +30,13 @@ gantt.attachEvent("onTaskCreated", function(task){
 
 ### Details
 
-此事件在新任务显示之前触发，允许您**设置默认值**或**取消任务创建**。
+事件在新任务显示之前触发，这使你能够设置默认值或取消创建任务。
 
-此时，新任务已存在于数据存储中，可以通过 [getTask](api/method/gettask.md) 方法访问。
+在该事件触发时，新任务已经可以通过 [getTask](api/method/gettask.md) 方法在数据存储中获取。
 
-如果事件处理函数返回 `false`，任务将从数据存储中移除，且不会触发 [onAfterTaskDelete](api/event/onaftertaskdelete.md) 事件。
+如果事件处理程序返回 `false`，该任务将从数据存储中移除，并且不会触发 [onAfterTaskDelete](api/event/onaftertaskdelete.md) 事件。
 
-当通过 [createTask](api/method/createtask.md) 方法创建任务时，事件触发顺序如下:
+使用 [createTask](api/method/createtask.md) 方法创建任务时触发的最终事件顺序为：
 
 1. [onTaskCreated](api/event/ontaskcreated.md)
 2. [onBeforeLightbox](api/event/onbeforelightbox.md)
@@ -48,4 +48,3 @@ gantt.attachEvent("onTaskCreated", function(task){
 ### Related API
 - [createTask](api/method/createtask.md)
 - [columns](api/config/columns.md)
-

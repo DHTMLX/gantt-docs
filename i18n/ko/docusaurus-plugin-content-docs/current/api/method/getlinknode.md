@@ -1,23 +1,23 @@
 ---
 sidebar_label: getLinkNode
-title: getLinkNode method
-description: "지정된 의존성 링크에 해당하는 HTML 요소를 가져옵니다."
+title: getLinkNode 메서드
+description: "지정된 의존성 링크의 HTML 요소를 반환합니다"
 ---
 
 # getLinkNode
 
 ### Description
 
-@short: 지정된 의존성 링크에 해당하는 HTML 요소를 가져옵니다.
+@short: 지정된 의존성 링크의 HTML 요소를 반환합니다
 
 @signature: getLinkNode: (id: string | number) =\> HTMLElement
 
 ### Parameters
 
-- `id` - (required) *string | number* -    링크의 id
+- `id` - (필수) *string | number* - 링크 ID
 
 ### Returns
-- `node` - (HTMLElement) - 링크를 나타내는 HTML 요소
+- `node` - (HTMLElement) - 링크의 HTML 요소
 
 ### Example
 

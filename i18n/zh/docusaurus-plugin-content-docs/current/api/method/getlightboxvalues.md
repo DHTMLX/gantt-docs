@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLightboxValues
 title: getLightboxValues method
-description: "从lightbox的各个section中获取值"
+description: "返回 lightbox 的各个分区的值"
 ---
 
 # getLightboxValues
 
 ### Description
 
-@short: 从lightbox的各个section中获取值
+@short: 从值的各个中获取值
 
 @signature: getLightboxValues: () =\> any
 
 ### Returns
-- ` obj` - (object) - 一个包含各个值的对象
+- ` obj` - (object) - 值的对象
 
 ### Example
 
@@ -39,5 +39,5 @@ values = {
 ~~~
 
 ### Related Guides
-- [getLightboxSection](api/method/getlightboxsection.md)
 
+- [getLightboxSection](api/method/getlightboxsection.md)

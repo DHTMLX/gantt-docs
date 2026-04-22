@@ -1,20 +1,20 @@
 ---
 sidebar_label: roundTaskDates
-title: roundTaskDates method
-description: "passt die Start- und Enddaten einer Aufgabe so an, dass sie mit den nächstgelegenen Daten auf der Timeline-Skala übereinstimmen"
+title: roundTaskDates Methode
+description: "Rundet die Start- und Enddaten der Aufgabe auf die nächstgelegenen Daten im Zeitmaßstab"
 ---
 
 # roundTaskDates
 
 ### Description
 
-@short: Passt die Start- und Enddaten einer Aufgabe so an, dass sie mit den nächstgelegenen Daten auf der Timeline-Skala übereinstimmen
+@short: Rundet die Start- und Enddaten der Aufgabe auf die nächstgelegenen Daten im Zeitmaßstab
 
-@signature: roundTaskDates: (task: Task) =\> void
+@signature: roundTaskDates: (task: Task) => void
 
 ### Parameters
 
-- `task` - (required) *Task* - das Aufgabenobjekt
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Example
 
@@ -48,6 +48,6 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 
 ### Details
 
-- Diese Methode berücksichtigt die konfigurierten Arbeitszeit-Einstellungen.
-- Sie kann die Dauer der Aufgabe im Rahmen der Anpassung verändern.
-- Wenn sie innerhalb des onbeforedragend-Events verwendet wird, passt sich das Rundungsverhalten basierend auf der Drag-and-Drop-Aktion an: Zum Beispiel passt die "move"-Aktion die Aufgabendaten an, ohne die Dauer zu ändern, während die "resize"-Aktion sowohl die Dauer als auch das Start- oder Enddatum ändert, abhängig von der Richtung der Größenänderung.
+- Die Methode berücksichtigt die festgelegte Arbeitszeit.
+- Die Methode kann die Dauer der Aufgabe ändern.
+- Wenn die Methode aus dem onbeforedragend-Aufruf aufgerufen wird, werden die Daten unter Berücksichtigung der Art der Drag-&-Drop-Operation gerundet (z.B. die "move"-Operation wird die Start- und Enddaten der Aufgabe ändern, ohne die Dauer zu beeinflussen; die "resize"-Operation wird die Dauer der Aufgabe ändern und eines der Datumswerte der Aufgabe: Start oder Ende, je nach Richtung der Resize).

@@ -1,34 +1,33 @@
 ---
 sidebar_label: onTaskSelected
 title: onTaskSelected event
-description: "Wird ausgelöst, wenn ein Benutzer eine Aufgabe auswählt"
+description: "wird ausgelöst, wenn der Benutzer eine Aufgabe auswählt"
 ---
 
 # onTaskSelected
 
 ### Description
 
-@short: Wird ausgelöst, wenn ein Benutzer eine Aufgabe auswählt
+@short: Wird ausgelöst, wenn der Benutzer eine Aufgabe auswählt
 
 @signature: onTaskSelected: (id: string | number) =\> void;
 
-### Parameters
+### Parameter
 
-- `id` - (required) *string | number* - die ID der Aufgabe
+- `id` - (erforderlich) *string,number* - die Aufgaben-ID
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskSelected", function(id){
-    //beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Details
 
-Dieses Event wird für jede Aufgabe ausgelöst, die im Multiselectionsbereich enthalten ist.
+Das Ereignis wird für jede Aufgabe im Bereich der Mehrfachauswahl ausgelöst.
 
 ### Related API
 - [onBeforeTaskSelected](api/event/onbeforetaskselected.md)
 - [onTaskUnselected](api/event/ontaskunselected.md)
-

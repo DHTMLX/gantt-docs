@@ -1,16 +1,18 @@
 ---
 sidebar_label: resource_assignment_store
 title: resource_assignment_store config
-description: "definiert den Namen des Datastores, der Resource Assignments hält"
+description: "gibt den Namen des Datastore an, der Ressourcenzuordnungen speichert"
 ---
 
 # resource_assignment_store
+
 :::info
  Diese Funktion ist nur in der PRO-Edition verfügbar. 
 :::
+
 ### Description
 
-@short: Definiert den Namen des Datastores, der Resource Assignments hält
+@short: Gibt den Namen des Datastore an, der Ressourcenzuordnungen speichert
 
 @signature: resource_assignment_store: string
 
@@ -20,18 +22,18 @@ description: "definiert den Namen des Datastores, der Resource Assignments hält
 var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
 ~~~
 
-**Default value:** "resourceAssignments"
+**Standardwert:** "resourceAssignments"
 
 ### Related samples
-- [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+- [Ressourcenzuweisungen bestimmten Tagen zuweisen](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
 
-Der Datastore wird automatisch eingerichtet.
+Der Datastore wird automatisch erstellt.
 
-Er wird nur erstellt, wenn die [process_resource_assignments](api/config/process_resource_assignments.md) Konfiguration aktiviert ist.
+Der Datastore wird nur erstellt, wenn die [process_resource_assignments](api/config/process_resource_assignments.md) Konfiguration aktiviert ist.
 
-Sie können diesen Datastore verwenden, um Resource Assignments programmatisch zu verwalten:
+Der Datastore kann verwendet werden, um Ressourcenzuordnungen aus dem Code zu ändern:
 
 ~~~js
 var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
@@ -44,8 +46,8 @@ assignmentStore.addItem({
 assignmentStore.removeItem(assignment.id);
 assignmentStore.updateItem(assignment.id);
 
-// sobald Sie Assignments im Datastore aktualisieren, 
-// rufen Sie `updateTaskAssignments` auf, um die Änderungen auf das Task-Objekt anzuwenden:
+// nachdem Zuordnungen im Datastore aktualisiert wurden, müssen Sie 
+// `updateTaskAssignments` aufrufen, um die Änderungen am Task-Objekt zu schreiben:
 gantt.updateTaskAssignments(taskId);
 ~~~
 
@@ -54,8 +56,7 @@ gantt.updateTaskAssignments(taskId);
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
 ### Related Guides
-- ["Ressourcenmanagement"](guides/resource-management.md)
+- [Ressourcenverwaltung](guides/resource-management.md)
 
 ### Change log
 - hinzugefügt in v7.1
-

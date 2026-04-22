@@ -1,23 +1,23 @@
 ---
 sidebar_label: calculateTaskLevel
-title: calculateTaskLevel method
-description: "ermittelt, wie tief eine Aufgabe innerhalb der Hierarchie verschachtelt ist"
+title: calculateTaskLevel Methode
+description: "Berechnet die Verschachtelungstiefe einer Aufgabe"
 ---
 
 # calculateTaskLevel
 
 ### Description
 
-@short: Ermittelt, wie tief eine Aufgabe innerhalb der Hierarchie verschachtelt ist
+@short: Berechnet die Verschachtelungstiefe einer Aufgabe
 
 @signature: calculateTaskLevel: (task: Task) =\> number
 
 ### Parameters
 
-- `task` - (required) *Task* - das zu bewertende Aufgabenobjekt
+- `task` - (required) *Task* - das Objekt der Aufgabe
 
 ### Returns
-- ` level` - (number) - die Verschachtelungstiefe der Aufgabe in der Baumstruktur, beginnend bei null
+- `level` - (number) - die Ebene einer Aufgabe in der Baumhierarchie (nullbasierte Nummerierung)
 
 ### Example
 
@@ -45,4 +45,3 @@ gantt.attachEvent("onTaskCreated", function(task){
 ### Related API
 - [calculateEndDate](api/method/calculateenddate.md)
 - [calculateDuration](api/method/calculateduration.md)
-

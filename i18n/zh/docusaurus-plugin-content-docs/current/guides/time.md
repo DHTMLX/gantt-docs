@@ -1,11 +1,11 @@
----
-title: "时间控件"
-sidebar_label: "时间控件"
+--- 
+title: "时间控制" 
+sidebar_label: "时间控制" 
 ---
 
-# 时间控件
+# 时间控制
 
-该控件通过两个选择器设置任务的持续时间，可定义任务的开始和结束日期。
+一对选择器，用于通过指定任务的开始日期和结束日期来设置任务的持续时间。
 
 ![time_control](/img/time_control.png)
 
@@ -16,15 +16,13 @@ gantt.config.lightbox.sections="["
 ];
 ~~~
 
-
-[Time control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/07_time.html)
-
+[时间控制](https://docs.dhtmlx.com/gantt/samples/05_lightbox/07_time.html)
 
 ## 初始化
 
-要在 lightbox 中包含 **time** 控件，请按如下操作:
+要向 lightbox 添加 **time** 控件，请按下列步骤操作：
 
-1) 在 lightbox 配置中添加一个 section:
+1) 在 lightbox 配置中添加一个节：
 
 ~~~js
 gantt.config.lightbox.sections="["
@@ -33,35 +31,36 @@ gantt.config.lightbox.sections="["
 ];
 ~~~
 
-2) 为该 section 分配一个标签:
+2) 为该节设置标签：
 
 ~~~js
 gantt.locale.labels.section_period = "Time period";
 ~~~
 
+（注：此处的字符串如 Time period 保留为原文，若需要，可以改为中文。）
 
 ## 属性
 
-以下是与 'time' 控件常用的一些关键属性（完整列表见 [这里](api/config/lightbox.md)）:
+以下属性对 'time' 控件最为重要且常被设置（参见完整列表 [此处](api/config/lightbox.md)）：
 
-- **name** - (*string*) section 的名称 
-- **height** - (*number*) section 的高度
-- **map_to** - (*string,object*) 可以为 "auto" 或对象，指定与 section 关联的数据属性
-- **type** - (*string*) [section 控件](guides/default-edit-form.md#lightboxcontrols) 的类型
-- **focus** - (*boolean*) 若设置为 *true*，lightbox 打开时该 section 会获得焦点
-- **readonly** - (*boolean*) 若设置为 *true*，该 section 变为只读
-- **year_range** - (*array,number*) 指定年份选择器的范围。可通过两种方式定义: 
-    - *year_range: [2005, 2025]* - 从 2005 到 2025
-    - *year_range: 10*  - 从（当前年份 - 10）到（当前年份 + 10）
-- **single_date** - (*boolean*) 若设置为 *true*，只显示 *start Date* 选择器。编辑的任务仅有开始日期且持续时间为零，适用于 [里程碑](guides/task-types.md#lichengbei)
-- **time_format** - (*string*) 控制日期时间选择器的顺序
-- **autofix_end** - (*boolean*) 当开始日期超过结束日期时，是否自动调整结束日期。默认值为 *true*。禁用后可进行日期校验，但如果启用且未校验，若 *start_date* 晚于 *end_date*，任务可能会变为零持续时间。
- 
-## 配置日期时间选择器 
+- **name** - (*string*) 该节的名称
+- **height** - (*number*) 该节的高度
+- **map_to** - (*string,object*) "auto" 或对象，定义将映射到该节的数据属性
+- **type** - (*string*) [section control] 的类型（参见 guides/default-edit-form.md#lightboxcontrols）
+- **focus** - (*boolean*) 如果设置为 *true*，打开 lightbox 时该节将获得焦点
+- **readonly** - (*boolean*) 如果设置为 "true"，该节将只读
+- **year_range** - (*array,number*) 为年份选择器设置范围。范围可以通过两种方式设置： 
+  - *year_range: [2005, 2025]* - 从 2005 年到 2025 年的一个区间
+  - *year_range: 10*  - [当前年份 - 10 年；当前年份 + 10 年] 的区间
+- **single_date** - (*boolean*) 如果设置为 "true"，此节将仅显示 *start Date* 选择器。被修改的任务将仅以开始日期指定，持续时间为 0。仅对 [milestones](guides/task-types.md#milestones) 有意义
+- **time_format** - (*string*) 设置日期时间选择器的顺序
+- **autofix_end** - (*boolean*) 定义若所选开始日期大于结束日期时，是否自动修正结束日期，默认为 true。禁用模式允许校验日期，但若开启模式后不进行校验，可能会得到持续时间为 0 的任务（当 *start_date* 大于 *end_date* 时）。 
 
-要自定义 "duration" 或 "time" section 中的选择器，请使用 [time_format](api/config/lightbox.md) 属性（详见 [날짜 형식 지정](guides/date-format.md)）:
+## 配置日期时间选择器
 
-**向 'Time period' section 添加时间选择器**
+要配置 "duration" 或 "time" 节的选择器，请使用 [time_format](api/config/lightbox.md) 属性（参见 [Date Format Specification](guides/date-format.md)）：
+
+**将时间选择器添加到 'Time period' 部分**
 ~~~js
 gantt.config.lightbox.sections = [
     {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
@@ -69,38 +68,37 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-[time_format](api/config/lightbox.md) 数组允许的成员包括:
+注意，time_format 的数组成员允许值为：
 
-- *"%d"* - 天选择器 
-- *"%m"* - 月选择器
+- *"%d"* - 日选择器
+- *"%m"* - 月份选择器
 - *"%Y"* - 年选择器
-- *"%H:%i"* - 时间选择器（格式根据 [time_picker](api/template/time_picker.md) 模板）
+- *"%H:%i"* - 时间选择器（格式由 [time_picker](api/template/time_picker.md) 模板设置）
 
-你可以在数组中重新排列或省略这些成员，但不能更改格式本身。
+你可以仅改变这些成员在数组中的顺序和数量，但不能改变数据呈现格式。
 
- 例如:
+ 例如，可以将格式改为：
 
 ~~~js
-// 时间优先
+// time goes first
 time_format:["%H:%i", "%m", "%d", "%Y"] 
-// 月份优先
+// month goes first
 time_format:["%m","%d", "%Y", "%H:%i"]
-// 无年份选择器
+// the year selector is removed
 time_format:["%H:%i", "%m", "%d"]
-// 错误示例
-time_format:["%H:%i", "%M", "%d", "%Y"] // "%m" 被 "%M" 替换
+// incorrect
+time_format:["%H:%i", "%M", "%d", "%Y"] // "%m" 被改为 "%M"
 ~~~
 
-
-## 映射到自定义开始/结束日期时间属性
+## 映射到自定义开始/结束日期时间属性 {#mapping}
 
 ### 默认映射
 
-默认情况下，time 和 duration 控件通过将 **map_to** 设为 "auto"（**map_to:"auto"**），映射到必需的 'start_date' 和 'end_date' 属性。
+通常，time 和 duration 控件通过将 **map_to** 属性设为 "auto" 值来映射到强制的数据属性 'start_date', 'end_date'。
 
 ### 自定义映射
 
-要将控件连接到自定义日期属性（而非 'start_date' 和 'end_date'），请为 **map_to** 使用对象:
+要将控件映射到自定义日期属性（而不是 'start_date', 'end_date'），请使用 **map_to** 属性的对象表示法：
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -111,24 +109,21 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-
 [Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
 
+作为对象，**map_to** 具有 3 个属性：
 
-**map_to** 的对象形式支持:
-
-1. **start_date** - 输入的开始日期存储的数据属性
-2. **end_date** - （可选）输入的结束日期存储的数据属性 
-3. **duration** - （可选）输入的持续时间存储的数据属性 
+1. **start_date** - 将存储在输入中设定的开始日期的数据属性的名称
+2. **end_date** - 可选，输入中设定的结束日期将存储到的数据属性的名称
+3. **duration** - 可选，存储由输入定义的持续时间的数据属性的名称
 
 :::note
-如果某个属性被省略，控件将使用对应的必需日期属性。
+如果未指定某个属性，控件将采用相关的强制日期属性的值。
 :::
 
+## 切换节的可见性
 
-## 切换 section 可见性
-
-你可以通过在 lightbox section 配置中设置 **type:"time_optional"** 并加上 **button: true** 来控制 time section 的可见性:
+在为 lightbox 配置该节时，指定 **type:"time_optional"** 和 **button: true** 即可切换该节的可见性：
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -137,18 +132,18 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-同时，为切换按钮的不同状态定义标签:
+并为两种状态的按钮设置标签：
 
 ~~~js
 gantt.locale.labels.time_enable_button = 'Schedule';
 gantt.locale.labels.time_disable_button = 'Unschedule';
 ~~~
 
-section 旁边会出现一个切换按钮，可用来显示或隐藏该 section。当可见时，其行为与 **type:"time"** 相同。
+用于切换该节可见性的切换按钮将出现在该节附近。如果该节可见，则行为就像指定了 **type:"time"**。
 
 ![](/img/time_optional.png)
 
-如果按钮被切换关闭，section 会隐藏，但不会立即发生变化。点击 "Save" 后，通过 **map_to** 与 time 控件关联的任务属性会被设为 `null`。
+如果你把按钮关掉，该节将变得不可见，但不会发生其他变化。在你点击“保存”按钮后，通过该节的 **map_to** 属性映射到时间控件的任务属性的值将变为 `null`。
 
 ~~~js
 gantt.getTask(1);
@@ -162,8 +157,6 @@ gantt.getTask(1);
 }
 ~~~
 
-此功能可用于标记任务为未计划状态。参见相关示例:
+如果你需要让任务处于未排程状态，这一功能会很有帮助。请查看相关示例：
 
-
-**Related example:** [Unscheduled tasks](https://snippet.dhtmlx.com/5/81f51a96d)
-
+**相关示例** [未排程的任务](https://snippet.dhtmlx.com/5/81f51a96d)

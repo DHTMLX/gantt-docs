@@ -1,23 +1,23 @@
 ---
 sidebar_label: onAjaxError
-title: onAjaxError event
-description: "срабатывает, когда сервер возвращает ошибку"
+title: onAjaxError событие
+description: "срабатывает, если сервер возвращает ошибку"
 ---
 
 # onAjaxError
 
 ### Description
 
-@short: Срабатывает, когда сервер возвращает ошибку
+@short: Срабатывает, если сервер возвращает ошибку
 
 @signature: onAjaxError: (request: any) =\> boolean;
 
 ### Parameters
 
-- `request` - (required) *object* - объект XML HTTP запроса
+- `request` - (required) *object* - объект XML HTTP-запроса
 
 ### Returns
-- ` result` - (boolean) - указывает, должно ли выполняться действие по умолчанию события (<b>true</b>) или оно должно быть предотвращено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
@@ -30,11 +30,11 @@ gantt.attachEvent("onAjaxError", function(request){
 ~~~
 
 ### Related samples
-- [Ошибка от сервера](https://snippet.dhtmlx.com/5/9596ea969)   
+- [Ошибка сервера](https://snippet.dhtmlx.com/5/9596ea969)
 
 ### Details
 
-Это событие можно заблокировать. Возврат false остановит дальнейшую обработку AJAX запроса.
+Событие можно блокировать. Возврат значения false остановит дальнейшую обработку AJAX-запроса
 
 ### Related Guides
-- [Интеграция с серверной стороной](guides/server-side.md)
+- [Серверная интеграция](guides/server-side.md)

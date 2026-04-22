@@ -1,15 +1,16 @@
----
-title: "添加/更新/删除链接"
-sidebar_label: "添加/更新/删除链接"
+--- 
+title: "添加/更新/删除链接" 
+sidebar_label: "添加/更新/删除链接" 
 ---
 
 # 添加/更新/删除链接
 
-本节介绍如何操作依赖链接，包括创建、删除和动态更新链接属性。
+在本章中，您将学习如何对依赖链接执行基本操作：创建或删除链接，以及动态更新链接的属性。
+
 
 ## 添加新链接
 
-要在甘特图中插入新链接，请使用 [addLink](api/method/addlink.md) 方法:
+要向甘特图添加新链接，请使用 [addLink](api/method/addlink.md) 方法：
 
 ~~~js
 var linkId = gantt.addLink({
@@ -20,9 +21,9 @@ var linkId = gantt.addLink({
 });
 ~~~
 
-## 更新链接属性
+## 动态更新链接的属性
 
-若需动态更改链接的属性，可以使用 [refreshLink](api/method/refreshlink.md) 方法:
+要动态更新一个链接对象的某个属性，请使用 [refreshLink](api/method/refreshlink.md) 方法：
 
 ~~~js
 var links= gantt.config.links;
@@ -34,7 +35,7 @@ if (link.type == links.finish_to_start){/*!*/
 }/*!*/ 
 ~~~
 
-如果你希望一次性刷新甘特图上的所有链接，应使用 [refreshData](api/method/refreshdata.md) 方法:
+注意，要一次性更新甘特图中的所有链接，请使用 [refreshData](api/method/refreshdata.md) 方法：
 
 ~~~js
 var links= gantt.config.links;
@@ -48,12 +49,12 @@ if (link1.type == links.finish_to_finish){/*!*/
 ~~~
 
 :::note
-请注意，所有类型的链接依赖均在 [links](api/config/links.md) 对象中定义
+注：所有类型的链接依赖关系都存储在 [links](api/config/links.md) 对象中
 :::
 
-## 删除链接
+## 删除一个链接
 
-要删除链接，请使用 [deleteLink](api/method/deletelink.md) 方法:
+要删除链接，请使用 [deleteLink](api/method/deletelink.md) 方法：
 
 ~~~js
 gantt.deleteLink(linkId);
@@ -61,25 +62,26 @@ gantt.deleteLink(linkId);
 
 ## 从甘特图中移除所有链接
 
-若需清除甘特图中的所有任务和链接，只需调用 [clearAll](api/method/clearall.md) 方法:
+要从甘特图清除所有任务和链接，请调用 [clearAll](api/method/clearall.md) 方法：
+
 
 ~~~js
 gantt.clearAll();
 ~~~
 
-## 通过界面编辑链接值
+## 从 UI 编辑链接的值
 
-目前没有内置的界面用于编辑延迟或其他链接属性。如果需要此类界面，需要自行实现。
+没有内置的界面供用户编辑链接的延迟（lag）或其他属性。因此如果你需要这样的界面，必须手动实现。
 
-常见的实现步骤如下:
+一种常见方法如下所示：
 
-- 监听 [onLinkDblClick](api/event/onlinkdblclick.md) 事件；
-- 阻止默认行为；
-- 在事件处理函数中弹出窗口。
+- 捕捉 [onLinkDblClick](api/event/onlinkdblclick.md) 事件； 
+- 取消默认处理程序； 
+- 从事件处理程序中显示一个弹出窗口。
 
-弹出窗口可以使用 [内置弹窗](guides/message-boxes.md) 或自定义实现。
+在最后一步，您可以使用 [built-in popups ](guides/message-boxes.md) 或实现自定义解决方案。
 
-下面是一个实现编辑延迟弹窗的示例:
+下面是一个编辑 lag 弹出窗口实现的示例代码：
 
 ~~~js
 (function(){

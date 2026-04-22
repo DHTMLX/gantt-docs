@@ -1,9 +1,9 @@
----
-title: "从Primavera导入的属性"
-sidebar_label: "从Primavera导入的属性"
+--- 
+title: "从 Primavera 导入的属性"
+sidebar_label: "从 Primavera 导入的属性"
 ---
 
-# 从Primavera导入的属性
+# 从 Primavera 导入的属性
 
 ## 项目属性
 
@@ -86,6 +86,7 @@ sidebar_label: "从Primavera导入的属性"
   <li>ExternalTask</li>
 </div>
 
+
 <div class="myblock">
   <li>Finish</li>
   <li>FinishVariance</li>
@@ -104,6 +105,7 @@ sidebar_label: "从Primavera导入的属性"
   <li>OutlineNumber</li>
   <li>OverAllocated</li>
 </div>
+
 
 <div class="myblock">
   <li>PercentComplete</li>

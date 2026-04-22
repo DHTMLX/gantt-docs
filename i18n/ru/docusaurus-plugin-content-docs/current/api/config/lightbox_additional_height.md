@@ -1,14 +1,18 @@
 ---
 sidebar_label: lightbox_additional_height
 title: lightbox_additional_height config
-description: "добавляет дополнительную высоту к лайтбоксу"
+description: "увеличивает высоту lightbox"
 ---
 
 # lightbox_additional_height
 
+:::warning
+Свойство устарело.
+:::
+
 ### Description
 
-@short: Добавляет дополнительную высоту к лайтбоксу
+@short: Увеличивает высоту lightbox
 
 @signature: lightbox_additional_height: number
 
@@ -18,11 +22,11 @@ description: "добавляет дополнительную высоту к л
 gantt.config.lightbox_additional_height = 90;
 ~~~
 
-**Default value:** 75
+**Значение по умолчанию:** 75
 
 ### Details
 
-**lightbox_additional_height** представляет собой суммарную высоту областей header и footer лайтбокса.
+Свойство **lightbox_additional_height** суммирует 2 значения: высоту заголовка lightbox и высоту lighbox's footer.
 
 ### Change log
-- Устарело начиная с версии v9.0
+- Устарело с версии v9.0

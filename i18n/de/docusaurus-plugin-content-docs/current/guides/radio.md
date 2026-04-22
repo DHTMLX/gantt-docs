@@ -1,23 +1,23 @@
----
-title: "Radio Button-Steuerelement"
-sidebar_label: "Radio Button-Steuerelement"
+--- 
+title: "Radiobutton-Steuerung"
+sidebar_label: "Radiobutton-Steuerung"
 ---
 
-# Radio Button-Steuerelement
+# Radiobutton-Steuerung
 
-Dieses Steuerelement präsentiert eine Auswahl von Optionen, bei der jeweils nur eine ausgewählt werden kann.
+Ein Block von Optionen, der es ermöglicht, jeweils nur eine davon auszuwählen.
 
 ![Radio Button](/img/radiobutton_control.png)
 
 
-[Radio control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
+[Radiobutton-Steuerung](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
 
 
 ## Initialisierung
 
-Um das **Radio Button**-Steuerelement in die Lightbox einzubinden, gehen Sie wie folgt vor:
+Um die **Radiobutton**-Steuerung dem Lightbox hinzuzufügen, befolgen Sie diese Schritte:
 
-1) Fügen Sie einen Abschnitt in der Lightbox-Konfiguration hinzu:
+1) Fügen Sie dem Lightbox-Konfigurationsblock einen Abschnitt hinzu:
 
 ~~~js
 var opts = [
@@ -33,33 +33,34 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2) Definieren Sie eine Beschriftung für diesen Abschnitt:
+
+2) Legen Sie ein Label für den Abschnitt fest:
 
 ~~~js
 gantt.locale.labels.section_priority = "Priority";
 ~~~
-  
 
-[Radio control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
+
+[Radiobutton-Steuerung](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_radio.html)
 
 
 ## Eigenschaften
 
-Hier sind einige der wichtigsten Eigenschaften, die häufig mit dem **Radio Button**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
+Die folgenden Eigenschaften sind größtenteils wichtig und werden häufig für die **Radiobutton**-Steuerung festgelegt (siehe die vollständige Liste [hier](api/config/lightbox.md)):
 
-- **name** - (*string*) der Name des Abschnitts
-- **map_to** - (*string*) die Daten-Eigenschaft, der der Abschnitt entspricht
-- **type** - (*string*) der [Typ des Abschnitts-Steuerelements](guides/default-edit-form.md#lightboxcontrols)
-- **options** - (*array*) ein Array von Objekten, das die auswählbaren Optionen definiert (*wird mit **select**, **checkbox** und **radio** Steuerelementen verwendet*). Jedes Objekt stellt eine Option dar und enthält:
-    - **key** - (*string*) der Bezeichner der Option, der mit den Aufgabendaten abgeglichen wird, um die Option zuzuweisen
-    - **label** - (*string*) der angezeigte Text für die Option
-- **focus** - (*boolean*) wenn auf *true* gesetzt, erhält der Abschnitt automatisch den Fokus, sobald die Lightbox geöffnet wird
-- **default_value** - (*any*) der Standardwert für das Steuerelement, der nur angewendet wird, wenn der Eingabewert nicht definiert ist            
+- **name** - (*string*) der Abschnittsname 
+- **map_to** - (*string*) der Name einer Dateneigenschaft, die dem Abschnitt zugeordnet wird
+- **type** - (*string*) der [Typ der Abschnittssteuerung](guides/default-edit-form.md#lightboxcontrols)
+- **options** - (*array*) ein Array von Objekten. Definiert die Auswahloptionen der Steuerung (*verwendet für die **Auswahl**, **Checkbox**- und **Radiobutton**-Steuerungen*). Jedes Objekt im Array gibt eine einzelne Option an und besitzt die folgenden Eigenschaften:
+    - **key** - (*string*) die Option-ID. Dieses Attribut wird mit der Task-Daten-Eigenschaft verglichen, um Optionen Aufgaben zuzuordnen
+    - **label** - (*string*) die Bezeichnung der Option
+- **focus** - (*boolean*) wird, wenn auf *true* gesetzt, der Abschnitt beim Öffnen des Lightboxes den Fokus erhalten
+- **default_value** - (*any*) der Standardwert der Steuerung des Abschnitts. Wird nur angewendet, wenn der Eingabewert undefiniert ist
 
 
-## Befüllen des Steuerelements mit Daten
+## Befüllen der Steuerung mit Daten
 
-Um die Optionen für das **Radio Button**-Steuerelement festzulegen, verwenden Sie den [options](api/config/lightbox.md)-Parameter:
+Im Allgemeinen, um Werte für die **Radiobutton**-Steuerung festzulegen, verwenden Sie da [options](api/config/lightbox.md)-Parameter:
 
 ~~~js
 gantt.config.lightbox.sections = [        
@@ -71,8 +72,8 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-Jedes Element im [options](api/config/lightbox.md)-Array benötigt zwei Eigenschaften:
 
-- **key** - der Bezeichner der Option
-- **label** - der angezeigte Text für die Option
+Elemente im [options](api/config/lightbox.md)-Parameter haben 2 Pflicht-Eigenschaften:
 
+- **key** - (*string*) die Option-ID
+- **label** - (*string*) die Bezeichnung der Option

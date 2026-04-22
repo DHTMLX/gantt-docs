@@ -1,19 +1,19 @@
 ---
 sidebar_label: getScale
-title: getScale method
-description: "返回当前时间刻度的设置"
+title: getScale 方法
+description: "返回时间刻度的配置"
 ---
 
 # getScale
 
 ### Description
 
-@short: 返回当前时间刻度的设置
+@short: 返回时间刻度的配置
 
-@signature: getScale: () =\> any
+@signature: getScale: () => any
 
 ### Returns
-- ` scale` - (object) - 当前时间刻度的配置对象
+- ` scale` - (object) - 时间刻度的配置
 
 ### Example
 
@@ -23,4 +23,3 @@ gantt.getScale();
 
 ### Related API
 - [getLayoutView](api/method/getlayoutview.md)
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: tooltip_offset_x
-title: tooltip_offset_x config
-description: "当设置为正值时，调整tooltip水平偏移量，使其向右移动"
+title: tooltip_offset_x 配置
+description: "设置工具提示位置的右偏移量（正数时向右偏移）"
 ---
 
 # tooltip_offset_x
 
 ### Description
 
-@short: 当设置为正值时，调整tooltip水平偏移量，使其向右移动
+@short: 设置工具提示位置的右偏移量（正数时为右偏）
 
 @signature: tooltip_offset_x: number
 
@@ -32,5 +32,4 @@ gantt.init("gantt_here");
 - [tooltip_offset_y](api/config/tooltip_offset_y.md)
 
 ### Related Guides
-- [Gantt 元素的工具提示](guides/tooltips.md)
-
+- [Tooltips for Gantt Elements](guides/tooltips.md)

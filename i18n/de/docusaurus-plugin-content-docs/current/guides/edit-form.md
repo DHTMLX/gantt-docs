@@ -1,14 +1,14 @@
 ---
-title: "Konfiguration des Bearbeitungsformulars"
-sidebar_label: "Konfiguration des Bearbeitungsformulars"
+title: "Konfigurieren des Bearbeitungsformulars"
+sidebar_label: "Konfigurieren des Bearbeitungsformulars"
 ---
 
-# Konfiguration des Bearbeitungsformulars
+# Konfigurieren des Bearbeitungsformulars
 
-![lightbox](/img/lightbox.png)
+![Lightbox](/img/lightbox.png)
 
-- [Configuring Lightbox Elements](guides/default-edit-form.md)
-- [Working with Lightbox Elements](guides/lightbox-manipulations.md)
-- [Creating Custom Element](guides/custom-editor.md)
-- [Custom Lightbox](guides/custom-edit-form.md)
-- [Changing Buttons in the Lightbox](guides/custom-button.md)
+- [Lightbox-Elemente konfigurieren](guides/default-edit-form.md)
+- [Mit Lightbox-Elementen arbeiten](guides/lightbox-manipulations.md)
+- [Eigenes Element erstellen](guides/custom-editor.md)
+- [Benutzerdefinierte Lightbox](guides/custom-edit-form.md)
+- [Schaltflächen in der Lightbox ändern](guides/custom-button.md)

@@ -1,14 +1,14 @@
 ---
 sidebar_label: details_on_dblclick
 title: details_on_dblclick config
-description: "작업을 더블 클릭하여 라이트박스를 열 수 있도록 설정합니다."
+description: "'says'가 작업을 더블 클릭한 후 라이트박스가 열리도록 합니다"
 ---
 
 # details_on_dblclick
 
 ### Description
 
-@short: 작업을 더블 클릭하여 라이트박스를 열 수 있도록 설정합니다.
+@short: "'says'가 작업을 더블 클릭한 후 라이트박스가 열리도록 합니다"
 
 @signature: details_on_dblclick: boolean
 
@@ -20,4 +20,5 @@ gantt.config.details_on_dblclick = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**기본값:** true
+s

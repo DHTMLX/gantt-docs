@@ -1,23 +1,23 @@
 ---
 sidebar_label: modalbox
-title: modalbox method
-description: "öffnet eine modalbox"
+title: modalbox Methode
+description: "ruft ein modalbox auf"
 ---
 
 # modalbox
 
 ### Description
 
-@short: Öffnet eine modalbox
+@short: Ruft eine modalbox auf
 
 @signature: modalbox: (config: ModalBoxConfig) =\> HTMLElement
 
 ### Parameters
 
-- `config` - (required) *ModalBoxConfig* - die Konfigurationseinstellungen für die modalbox
+- `config` - (erforderlich) *ModalBoxConfig* - die Konfiguration des Modalbox-Fensters
 
 ### Returns
-- ` div` - (HTMLElement) - das div-Element, das die modalbox enthält
+- ` div` - (HTMLElement) - der Div-Container des Modalbox-Fensters
 
 ### Example
 
@@ -30,27 +30,27 @@ let box = gantt.modalbox({
 
 ### Details
 
-Das Konfigurationsobjekt umfasst folgende Eigenschaften:
+Das Konfigurationsobjekt verwendet die folgenden Eigenschaften:
 
-- **id?** - (*number | string*) - optional, die eindeutige Kennung für die modalbox
-- **text** - (*number | string*) - der Inhaltstext, der in der modalbox angezeigt wird
-- **title?** - (*number | string*) - optional, der Header-Text der modalbox
-- **position?** - (*string*) - optional, steuert die Position der modalbox; unterstützt derzeit nur "top", jeder andere Wert führt zur Standardposition "center-align"
-- **buttons** - (*string[] | number[] | ModalboxButton[]*) - ein Array, das die anzuzeigenden Buttons spezifiziert
-- **width?** - (*string*) - optional, legt die Breite der modalbox mit CSS [&#60;length&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/length) oder [&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) Werten fest, z.B. "100px" oder "50%"
-- **height?** - (*string*) - optional, legt die Höhe der modalbox mit CSS [&#60;length&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/length) oder [&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) Einheiten fest, z.B. "100px" oder "50%"
-- **callback? (result): void** - optional, eine Funktion, die ausgelöst wird, wenn ein Button angeklickt wird. Die Funktion erhält *true* oder *false* abhängig vom angeklickten Button
-    - **_result_** - (*string | number | boolean*) - der Callback erhält den stringifizierten Index des gedrückten Buttons aus dem Array ("0", "1", "2", ...)
-
-
-Der Typ ModalboxButton umfasst folgende Eigenschaften:
-
-- **label** - (*string | number*) - der Beschriftungstext des Buttons
-- **value?** - (*string | number | boolean*) - optional, der Wert, der als *result* in der *callback*-Funktion zurückgegeben wird
-- **css?** - (*string | number*) - optional, eine benutzerdefinierte CSS-Klasse für den Button, die mit dem Präfix "gantt_" beginnen sollte
+- **id?** - (*number | string*) - optional, die ID des Modalbox-Fensters
+- **text** - (*number | string*) - der Text des Inhalts des Modalbox-Fensters
+- **title?** - (*number | string*) - optional, der Text der Kopfzeile
+- **position?** - (*string*) - optional, die Position des Modalbox-Fensters; derzeit wird nur ein Wert unterstützt - "top", jeder andere Wert führt zu "center-align"
+- **buttons** - (*string[] | number[] | ModalboxButton[]*) - das Array der Buttons
+- **width?** - (*string*) - optional, die Breite des Modalbox-Fensters (als CSS [\<length\>](https://developer.mozilla.org/en-US/docs/Web/CSS/length) oder [\<percentage\>](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) Werte, z.B. "100px", "50%")
+- **height?** - (*string*) - optional, die Höhe des Modalbox-Fensters (als CSS [\<length\>](https://developer.mozilla.org/en-US/docs/Web/CSS/length) oder [\<percentage\>](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) Werte, z.B. "100px", "50%")
+- **callback? (result): void** - optional, die Funktion, die beim Klicken eines Buttons aufgerufen wird. Nimmt *true* oder *false* als Parameter (abhängig vom geklickten Button)
+    - **_result_** - (*string | number | boolean*) - Das Ergebnis der Callback-Funktion entspricht dem stringifizierten Index des gedrückten Buttons aus dem Array ("0", "1", "2",...)
 
 
-Für weitere Informationen zu den Konfigurationsoptionen der modalbox siehe den Artikel ["Popup-Nachrichten und Modale Boxen"](guides/message-boxes.md).
+Die ModalboxButton hat folgende Typen:
+
+- **label** - (*string | number*) - der Text des Buttons
+- **value?** - (*string | number | boolean*) - optional, der Wert, der im *result*-Argument der *callback*-Funktion zurückgegeben wird
+- **css?** - (*string | number*) - optional, ein benutzerdefinierter Klassenname für den Button, mit dem Präfix "gantt_"
+
+
+Für zusätzliche Details zu unterstützten Konfigurationsoptionen eines Modalbox siehe den Artikel [Popup Messages and Modal Boxes](guides/message-boxes.md).
 
 ### Related API
 - [alert](api/method/alert.md)
@@ -58,8 +58,7 @@ Für weitere Informationen zu den Konfigurationsoptionen der modalbox siehe den 
 - [message](api/method/message.md)
 
 ### Related Guides
-- ["Popup-Nachrichten und Modale Boxen"](guides/message-boxes.md)
+- [Popup Messages and Modal Boxes](guides/message-boxes.md)
 
 ### Change log
 - hinzugefügt in Version 4.0
-

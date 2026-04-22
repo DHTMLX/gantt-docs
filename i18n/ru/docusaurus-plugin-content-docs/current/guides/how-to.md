@@ -5,9 +5,9 @@ sidebar_label: "Решения"
 
 # Решения
 
-## Как переключать грид/диаграмму {#howtotogglegridchart}
+## Как переключать грид и чарт
 
-При использовании стандартной конфигурации макета, переключение грида или диаграммы выполняется изменением параметров [show_grid](api/config/show_grid.md) или [show_chart](api/config/show_chart.md), после чего необходимо вызвать метод [render()](api/method/render.md) для обновления отображения.
+Если вы используете конфигурацию макета по умолчанию, вы можете изменить параметры [show_grid](api/config/show_grid.md) или [show_chart](api/config/show_chart.md) и использовать метод [render()](api/method/render.md) для перерисовки изменений.
 
 ~~~js
 function toggleGrid(){
@@ -16,9 +16,7 @@ function toggleGrid(){
 }
 ~~~
 
-
-**Related example:** [Gantt. Переключение грида (стандартный макет)](https://snippet.dhtmlx.com/gnloz505)
-
+**Связанный пример** [Gantt. Переключение грид (макет по умолчанию)](https://snippet.dhtmlx.com/gnloz505)
 
 ~~~js
 function toggleChart(){
@@ -27,37 +25,35 @@ function toggleChart(){
 }
 ~~~
 
+**Связанный пример** [Gantt. Переключение таймлайна (макет по умолчанию)](https://snippet.dhtmlx.com/kqe1hqp2)
 
-**Related example:** [Gantt. Переключение временной шкалы (стандартный макет)](https://snippet.dhtmlx.com/kqe1hqp2)
-
- 
-Для пользовательских макетов необходимо создать отдельные макеты с гридом и без него или с временной шкалой и без неё. Переключение между ними осуществляется обновлением параметра [gantt.config.layout](api/config/layout.md) и инициализацией через метод [init()](api/method/init.md):
+Если вы используете пользовательскую конфигурацию макета, вам нужно создать несколько конфигураций макета — с гридом/таймлайном и без них. Чтобы переключаться между ними, необходимо изменить параметр [gantt.config.layout](api/config/layout.md) и применить метод [init()](api/method/init.md), чтобы увидеть изменения:
 
 ~~~js
 let showGrid = true;
+
 function toggleGrid() {
     showGrid = !showGrid;
     if (showGrid) {
-        gantt.config.layout = gridAndChart; // макет с гридом и временной шкалой
+        gantt.config.layout = gridAndChart; // макет с гридом и таймлайном
     }
     else {
-        gantt.config.layout = onlyChart; // макет только с временной шкалой
+        gantt.config.layout = onlyChart; // макет только с таймлайном
 
     }
     gantt.init("gantt_here");
 }
 ~~~
 
-
-**Related example:** [Gantt. Переключение грида (пользовательский макет)](https://snippet.dhtmlx.com/omk98l0x)
-
+**Связанный пример** [Gantt. Переключение грид (пользовательский макет)](https://snippet.dhtmlx.com/omk98l0x)
 
 ~~~js
 let showChart = true;
+
 function toggleChart() {
     showChart = !showChart;
     if (showChart) {
-        gantt.config.layout = gridAndChart; // макет с гридом и временной шкалой
+        gantt.config.layout = gridAndChart; // макет с гридом и таймлайном
     }
     else {
         gantt.config.layout = onlyGrid; // макет только с гридом
@@ -67,13 +63,11 @@ function toggleChart() {
 }
 ~~~
 
+**Связанный пример** [Gantt. Переключение таймлайна (пользовательский макет)](https://snippet.dhtmlx.com/aukjyqc8)
 
-**Related example:** [Gantt. Переключение временной шкалы (пользовательский макет)](https://snippet.dhtmlx.com/aukjyqc8)
+## Как переключать представление ресурсов
 
-
-## Как переключать представление ресурсов {#howtotoggletheresourceview}
-
-Аналогично переключению грида или временной шкалы, необходимо подготовить несколько макетов с ресурсами и без них. Для переключения между ними обновите параметр [gantt.config.layout](api/config/layout.md) и вызовите метод [init()](api/method/init.md) для применения изменений:
+Как и в предыдущем случае использования, нужно создать несколько конфигураций макета — с представлениями ресурсов и без них. Чтобы переключаться между ними, необходимо изменить параметр [gantt.config.layout](api/config/layout.md) и применить метод [init()](api/method/init.md) для просмотра изменений:
 
 ~~~js
 let resourceChart = true;
@@ -90,9 +84,7 @@ function layoutChange() {
 };
 ~~~
 
-
-**Related example:** [Gantt. Переключение диаграммы загрузки ресурсов](https://snippet.dhtmlx.com/vbaczl07)
-
+**Связанный пример** [Gantt. Переключение диаграммы загрузки ресурсов](https://snippet.dhtmlx.com/vbaczl07)
 
 ~~~js
 let histogramView = true;
@@ -109,23 +101,19 @@ function layoutChange() {
 };
 ~~~
 
+**Связанный пример** [Gantt. Переключение гистограммы ресурсов](https://snippet.dhtmlx.com/isn2ger4)
 
-**Related example:** [Gantt. Переключение гистограммы ресурсов](https://snippet.dhtmlx.com/isn2ger4)
+Либо можно формировать макет, используя представления макета и повторно инициализировать Gantt, чтобы увидеть изменения:
 
+**Связанный пример** [Gantt. Создание макета](https://snippet.dhtmlx.com/3dnzfhit)
 
-Другой подход - динамическое формирование макета с использованием layout views и повторная инициализация Gantt для обновления отображения:
+## Как обеспечить бесконечную прокрутку в таймлайне
 
-
-**Related example:** [Gantt. Генерация макета](https://snippet.dhtmlx.com/3dnzfhit)
-
-
-## Как реализовать бесконечную прокрутку временной шкалы {#howtohaveaninfinitescrollinthetimeline}
-
-Бесконечная прокрутка может быть реализована разными способами, но обычно это связано с изменением отображаемого диапазона дат через параметры [gantt.config.start_date](api/config/start_date.md) и [gantt.config.end_date](api/config/end_date.md):
+Существует несколько способов реализации бесконечной прокрутки. Но в большинстве случаев нужно изменить отображаемый диапазон дат ([gantt.config.start_date](api/config/start_date.md) и [gantt.config.end_date](api/config/end_date.md) параметры):
 
 ### При использовании полосы прокрутки
 
-Отслеживая [позицию прокрутки](api/event/onganttscroll.md), можно расширять диапазон дат при приближении пользователя к краям шкалы. Чтобы избежать проблем с производительностью, перерисовку Gantt рекомендуется выполнять с задержкой через timeout:
+Необходимо получить положение прокрутки ([scroll position](api/event/onganttscroll.md)) и увеличить диапазон дат. Заметьте, что слишком частая переработка перерисовки Gantt может повлиять на производительность, поэтому её стоит выполнять после тайм-аута:
 
 ~~~js
 gantt.init("gantt_here");
@@ -160,13 +148,11 @@ gantt.attachEvent("onGanttScroll", function (left, top) {
 });
 ~~~
 
+**Связанный пример** [Gantt. Бесконечная прокрутка при использовании полосы прокрутки]
 
-**Related example:** [Gantt. Бесконечная прокрутка с полосой прокрутки](https://snippet.dhtmlx.com/4u52p5g3)
+### При перетаскивании таймлайна
 
-
-### При перетаскивании временной шкалы
-
-Определяя текущую позицию прокрутки при перетаскивании временной шкалы, можно расширять диапазон дат, если прокрутка приближается к началу или концу шкалы:
+Необходимо получить текущую позицию прокрутки и, если она близка к началу или концу таймлайна, увеличить отображаемый диапазон дат:
 
 ~~~js
 gantt.attachEvent("onMouseMove", function (id, e) {
@@ -187,13 +173,11 @@ gantt.attachEvent("onMouseMove", function (id, e) {
 });
 ~~~
 
-
-**Related example:** [Gantt. Бесконечная прокрутка при перетаскивании временной шкалы](https://snippet.dhtmlx.com/zqob7lz5)
-
+**Связанный пример** [Gantt. Бесконечная прокрутка при перетаскивании таймлайна]
 
 ### При перетаскивании задачи
 
-Если диапазон дат не задан явно, вызов метода [render()](api/method/render.md) при перетаскивании задачи к краям временной шкалы позволяет сохранять видимость диапазона:
+Если диапазон дат не установлен, можно вызывать метод [render()](api/method/render.md) каждый раз, когда задача перетаскивается ближе к началу или концу таймлайна:
 
 ~~~js
 gantt.init("gantt_here");
@@ -207,11 +191,9 @@ gantt.attachEvent("onTaskDrag", function (id, mode, task, original) {
 });
 ~~~
 
+**Связанный пример** [Gantt. Бесконечная прокрутка при перетаскивании задачи (значения диапазона по умолчанию)](https://snippet.dhtmlx.com/44qcunjc)
 
-**Related example:** [Gantt. Бесконечная прокрутка при перетаскивании задачи (стандартные настройки диапазона)](https://snippet.dhtmlx.com/44qcunjc)
-
-
-Если [диапазон дат](api/config/start_date.md) задан явно, его необходимо обновлять при перетаскивании задач к краям:
+Если [date range](api/config/start_date.md) установлен, необходимо будет изменить его:
 
 ~~~js
 gantt.init("gantt_here");
@@ -235,15 +217,13 @@ gantt.attachEvent("onTaskDrag", function (id, mode, task, original) {
         gantt.render()
     }
 });
-~~~
+~~~  
 
+**Связанный пример** [Gantt. Бесконечная прокрутка при перетаскивании задачи (явный диапазон)](https://snippet.dhtmlx.com/3lrm0wyp)
 
-**Related example:** [Gantt. Бесконечная прокрутка при перетаскивании задачи (явные настройки диапазона)](https://snippet.dhtmlx.com/3lrm0wyp)
+## Как динамически загружать задачи
 
-
-## Как загружать задачи динамически {#howtoloadtasksdynamically}
-
-Определяя момент, когда прокрутка достигает последней видимой задачи с помощью события [onGanttScroll](api/event/onganttscroll.md), можно динамически загружать дополнительные задачи методом [parse()](api/method/parse.md):
+Вы можете определить, что прокрутили до последней видимой задачи в событии [onGanttScroll](api/event/onganttscroll.md), и использовать метод [parse()](api/method/parse.md) для загрузки новых задач:
 
 ~~~js
 gantt.attachEvent("onGanttScroll", function (left, top) {
@@ -257,13 +237,11 @@ gantt.attachEvent("onGanttScroll", function (left, top) {
 });
 ~~~
 
+**Связанный пример** [Gantt. Динамическая загрузка данных](https://snippet.dhtmlx.com/39l7o0rm)
 
-**Related example:** [Gantt. Динамическая загрузка данных](https://snippet.dhtmlx.com/39l7o0rm)
+## Как добавить/развернуть все задачи при помощи кнопки
 
-
-## Как развернуть/свернуть все задачи по кнопке {#howtoexpandcollapsealltaskswithabutton}
-
-Методы [open()](api/method/open.md) и [close()](api/method/close.md) позволяют разворачивать или сворачивать отдельные задачи. Для применения ко всем задачам можно использовать их совместно с функцией [eachTask()](api/method/eachtask.md). Обертывание операции в [batchUpdate()](api/method/batchupdate.md) гарантирует, что диаграмма будет перерисована только один раз:
+Можно использовать методы [open()](api/method/open.md) и [close()](api/method/close.md) для открытия и закрытия задачи. Чтобы выполнить это для всех задач на диаграмме, нужно использовать метод внутри функции [eachTask()](api/method/eachtask.md). Чтобы переработать изменения только один раз, можно обернуть функцию в метод [batchUpdate()](api/method/batchupdate.md):
 
 ~~~js
 function collapseAll() {
@@ -283,16 +261,13 @@ function expandAll() {
 }
 ~~~
 
+**Связанный пример** [Gantt. Добавить кнопки сворачивания/разворачивания в заголовке Gantt](https://snippet.dhtmlx.com/z7o5qt9s)
 
-**Related example:** [Gantt. Кнопки свернуть/развернуть в заголовке Gantt](https://snippet.dhtmlx.com/z7o5qt9s)
+**Связанный пример** [Gantt. Сворачивать/разворачивать все задачи](https://snippet.dhtmlx.com/72zahagy)
 
+## Как отображать несколько строк в ячейке/заголовке грид
 
-**Related example:** [Gantt. Свернуть/развернуть все задачи](https://snippet.dhtmlx.com/72zahagy)
-
-
-## Как отобразить несколько строк в ячейке/заголовке грида {#howtodisplayseverallinesinthegridcellheader}
-
-Для отображения многострочного текста в заголовках или ячейках грида необходимо применить специальные CSS-стили.
+Это можно добиться добавлением некоторых правил стилей.
 
 Для заголовка грида:
 
@@ -301,11 +276,9 @@ function expandAll() {
     line-height: 12px;
     white-space:normal;
 }
-~~~
+~~~  
 
-
-**Related example:** [Gantt. Многострочный текст в заголовке грида](https://snippet.dhtmlx.com/lx70v5hw)
-
+**Связанный пример** [Gantt. Многострочный текст в заголовке грида](https://snippet.dhtmlx.com/lx70v5hw)
 
 Для ячеек грида:
 
@@ -315,18 +288,15 @@ function expandAll() {
     white-space:normal;
     overflow-wrap: break-word; 
 }
-~~~
+~~~  
 
+**Связанный пример** [Gantt. Многострочный текст в ячейках грид и таймлайна](https://snippet.dhtmlx.com/55uy7ibo)
 
-**Related example:** [Gantt. Многострочный текст в ячейках грида и временной шкале](https://snippet.dhtmlx.com/55uy7ibo)
+**Связанный пример** [Gantt. Многострочный текст в ячейках столбца Grid](https://snippet.dhtmlx.com/bwil9sxs)
 
+## Как добавить пользовательский столбец в грид
 
-**Related example:** [Gantt. Многострочный текст в ячейках столбца грида](https://snippet.dhtmlx.com/bwil9sxs)
-
-
-## Как добавить пользовательский столбец в грид {#howtoaddacustomcolumninthegrid}
-
-Чтобы добавить пользовательский столбец, измените параметр [gantt.config.columns](api/config/columns.md). Если указать свойство **name**, Gantt отобразит соответствующее значение свойства задачи. Также можно использовать функцию [template()](guides/specifying-columns.md#datamappingandtemplates), чтобы возвращать кастомные данные или HTML-элементы.
+Чтобы добавить пользовательский столбец, нужно изменить параметр [gantt.config.columns](api/config/columns.md). Если вы указываете параметр **name**, Gantt вернет значение свойства задачи с тем же именем. Также можно использовать функцию [template()](guides/specifying-columns.md#datamappingandtemplates), чтобы вернуть любое пользовательское значение даты или HTML-элементы.
 
 ~~~js
 gantt.config.columns = [
@@ -343,18 +313,15 @@ gantt.config.columns = [
     другие столбцы
     */
 ];
-~~~
+~~~  
 
+**Связанный пример** [Gantt. Пользовательский столбец с шаблоном для прогресса задачи](https://snippet.dhtmlx.com/t5ba0gzu)
 
-**Related example:** [Gantt. Пользовательский столбец с шаблоном для прогресса задачи](https://snippet.dhtmlx.com/t5ba0gzu)
+**Связанный пример** [Gantt. Пользовательский столбец с шаблоном для кнопок действий](https://snippet.dhtmlx.com/gfsdp121)
 
+## Как добавить пользовательскую кнопку добавления (+)
 
-**Related example:** [Gantt. Пользовательский столбец с шаблоном для кнопок действий](https://snippet.dhtmlx.com/gfsdp121)
-
-
-## Как добавить пользовательскую кнопку добавления (+) {#howtoaddacustomaddbutton}
-
-Создать пользовательскую кнопку добавления можно через определение пользовательского столбца в параметре [gantt.config.columns](api/config/columns.md). Имя столбца не должно быть *add*, чтобы не активировать стандартный столбец добавления. С помощью функции [template](guides/specifying-columns.md#datamappingandtemplates) можно вернуть любой HTML-контент, например, кнопку, и назначить обработчик события для добавления задачи.
+Необходимо создать пользовательский столбец через параметр [gantt.config.columns](api/config/columns.md). Вы можете задать любое имя для этого столбца, кроме *add*. В противном случае Gantt автоматически добавит столбец по умолчанию *add*. Возможно вернуть любые HTML-элементы в столбец грида с помощью функции [template](guides/specifying-columns.md#datamappingandtemplates). Это означает, что вы можете вернуть кнопку и привязать к ней обработчик клика с вашей собственной функцией для добавления задач.
 
 ~~~js
 gantt.config.columns = [
@@ -368,17 +335,15 @@ gantt.config.columns = [
         }
     },
 ];
-~~~
+~~~  
 
+**Связанный пример**  [Gantt. Пользовательские столбцы с шаблонами для кнопок добавления (+)](https://snippet.dhtmlx.com/o36jnko3)
 
-**Related example:** [Gantt. Пользовательские столбцы с шаблонами для кнопок добавления (+)](https://snippet.dhtmlx.com/o36jnko3)
+## Как добавить пользовательскую шкалу
 
+Необходимо создать [пользовательскую единицу шкалы](guides/configuring-time-scale.md#customtimeunits) и добавить логику для расчета дат.
 
-## Как добавить пользовательскую шкалу {#howtoaddacustomscale}
-
-Чтобы добавить пользовательскую шкалу, начните с создания [пользовательской единицы шкалы времени](guides/configuring-time-scale.md#customtimeunits) и реализуйте логику вычисления дат.
-
-Пример пользовательской шкалы, отображающей рабочие смены (06:30, 18:30):
+Пример пользовательской шкалы с часами рабочей смены (06:30, 18:30):
 
 ~~~js
 gantt.date.custom_scale_start = function (date) {
@@ -402,13 +367,11 @@ gantt.config.scales = [
     { unit: "day", step: 1, date: "%d" },
     { unit: "custom_scale", step: 1, date: "%H:%i" },
 ];
-~~~
+~~~  
 
+**Связанный пример** [Gantt. Пользовательские часы рабочей смены на шкале](https://snippet.dhtmlx.com/0l49yvp2)
 
-**Related example:** [Gantt. Custom work shift hours on the scale](https://snippet.dhtmlx.com/0l49yvp2)
-
-
-Еще один пример - пользовательская шкала, где вместо дней используются числа:
+Пример пользовательской шкалы с числами вместо дней:
 
 ~~~js
 gantt.config.scales = [
@@ -418,13 +381,11 @@ gantt.config.scales = [
         }
     }
 ]
-~~~
+~~~  
 
+**Связанный пример** [Gantt. Числа дней на шкале](https://snippet.dhtmlx.com/06bp4wdl)
 
-**Related example:** [Gantt. Numbers of days on the scale](https://snippet.dhtmlx.com/06bp4wdl)
-
-
-Пример пользовательской шкалы для 5-дневных рабочих недель:
+Пример пользовательской шкалы с пятидневной рабочей неделей:
 
 ~~~js
 const weekScaleTemplate = function (date) {
@@ -454,13 +415,11 @@ gantt.config.scales = [
 gantt.ignore_time = function (date) {
     return date.getDay() == 0 || date.getDay() == 6;
 };
-~~~
+~~~  
 
+**Связанный пример** [5-дневная рабочая неделя на шкале](https://snippet.dhtmlx.com/eq70o558)
 
-**Related example:** [5-day work weeks on the scale](https://snippet.dhtmlx.com/eq70o558)
-
-
-Пример пользовательской шкалы, отображающей недели года, где номер недели начинается с первого дня года:
+Пример пользовательской шкалы с неделями года (номер недели начинается с первого дня года):
 
 ~~~js
 gantt.date.custom_week_start = function (date) {
@@ -491,17 +450,15 @@ gantt.config.scales = [
     { unit: 'custom_week', step: 1, template: custom_week_template },
     { unit: 'day', step: 1, format: "%d, %M" },
 ];
-~~~
+~~~  
 
+**Связанный пример** [Gantt. Недели года на шкале](https://snippet.dhtmlx.com/gbowxpmr)
 
-**Related example:** [Gantt. Weeks of the year on the scale](https://snippet.dhtmlx.com/gbowxpmr)
+## Как копировать и вставлять задачи
 
+Можно использовать метод [copy()](api/method/copy.md) для создания глубокой копии объекта задачи. Затем можно изменить ID клонированной задачи. После этого можно добавить клонированную задачу с помощью методов [addTask()](api/method/addtask.md) или [createTask()](api/method/createtask.md).
 
-## Как копировать и вставлять задачи {#howtocopyandpastetasks}
-
-Метод [copy()](api/method/copy.md) можно использовать для создания глубокой копии объекта задачи. После копирования вы можете назначить склонированной задаче новый ID и добавить ее с помощью методов [addTask()](api/method/addtask.md) или [createTask()](api/method/createtask.md).
-
-Ниже приведен пример добавления кнопки для клонирования задачи:
+Так можно добавить кнопку для клонирования задачи:
 
 ~~~js
 function clone_task(id) {
@@ -513,7 +470,7 @@ function clone_task(id) {
 
 gantt.config.columns = [
     /*
-    other columns
+    другие столбцы
     */
     {
         name: "clone", label: "clone", width: 44, template: function (task) {
@@ -521,13 +478,11 @@ gantt.config.columns = [
         }
     }
 ];
-~~~
+~~~  
 
+**Связанный пример**  [Gantt. Клонирование задачи](https://snippet.dhtmlx.com/ii9u6wbe)
 
-**Related example:** [Gantt. Clone a task](https://snippet.dhtmlx.com/ii9u6wbe)
-
-
-Следующий пример иллюстрирует клонирование задачи вместе со всеми ее подзадачами и связями:
+Следующий пример демонстрирует, как клонировать задачу со всеми её подзадачами и связями:
 
 ~~~js
 let child_links;
@@ -601,7 +556,7 @@ gantt.config.order_branch_free = true;
 
 gantt.config.columns = [
   /*
-  other columns
+  другие столбцы
   */
   {
     name: "clone", label: "clone", width: 44, template: function (task) {
@@ -609,13 +564,11 @@ gantt.config.columns = [
     }
   }
 ];
-~~~
+~~~  
 
+**Связанный пример** [Gantt. Клон задачи и все её подзадачи и связи](https://snippet.dhtmlx.com/b33jfmws)
 
-**Related example:** [Gantt. Clone a task with all its subtasks and links](https://snippet.dhtmlx.com/b33jfmws)
-
-
-Еще один пример показывает, как реализовать копирование через горячие клавиши: выберите задачи, нажмите *Ctrl + C* для копирования и *Ctrl + V* для вставки в качестве подзадач выбранной задачи:
+Еще один пример демонстрирует, как реализовать копирование через навигацию клавишами (выберите задачи, используйте сочетание клавиш Ctrl + C для копирования и Ctrl + V для вставки в качестве дочерних к выбранной задаче):
 
 ~~~js
 gantt.plugins({
@@ -641,17 +594,15 @@ gantt.ext.keyboardNavigation.addShortcut("ctrl+v", function (e) {
     gantt.getTask(new_parent).$open = true;
     gantt.render()
 }, "taskRow");
-~~~
+~~~  
 
+**Связанный пример** [Gantt. Копирование и вставка задач через Ctrl+C, Ctrl+V](https://snippet.dhtmlx.com/kck3pnmh)
 
-**Related example:** [Gantt. Copy and paste tasks via Ctrl+C, Ctrl+V](https://snippet.dhtmlx.com/kck3pnmh)
+## Как добавить диаграмму ресурсов или пользовательские стили в экспортируемый PDF
 
+Необходимо экспортировать данные в режиме [raw](guides/export.md#exportingcustommarkupandstyles) и включить стили в параметры экспорта [header](guides/export.md#customstylefortheoutputfile) или [footer](guides/export.md#customstylefortheoutputfile) экспортной функции.
 
-## Как добавить диаграмму ресурсов или пользовательские стили в экспортируемый PDF-файл {#howtoaddresourcechartorcustomstylesintheexportedpdffile}
-
-Чтобы добавить пользовательские стили или диаграммы ресурсов в экспортируемый PDF, экспортируйте данные в [raw](guides/export.md#exportingcustommarkupandstyles) режиме и добавьте стили через параметры [header](guides/export.md#customstylefortheoutputfile) или [footer](guides/export.md#customstylefortheoutputfile) функции экспорта.
-
-Например, вы можете сохранить стили в переменной и включить эту переменную в параметр [header](guides/export.md#customstylefortheoutputfile):
+Например, можно сохранить пользовательские стили в переменную, а затем добавить переменную в параметр [header](guides/export.md#customstylefortheoutputfile)
 
 ~~~js
 const header = `
@@ -667,13 +618,11 @@ const header = `
 gantt.exportToPDF({
        header: "<style>" + header + "</style>"
 });
-~~~
+~~~  
 
+**Связанный пример** [Gantt. Экспорт Gantt в PDF (стили из переменной)](https://snippet.dhtmlx.com/51ds6zwa)
 
-**Related example:** [Gantt. Export Gantt to PDF (styles from a variable)](https://snippet.dhtmlx.com/51ds6zwa)
-
-
-Или получить содержимое элемента &lt;style&gt; на странице и добавить его так:
+Или можно найти элемент &lt;style&gt; на странице и добавить его содержимое, как в примере:
 
 ~~~js
 gantt.exportToPDF({
@@ -690,35 +639,27 @@ gantt.exportToPDF({
         background-color: rgba(33, 33, 33, 0.17);
     }
 </style>
-~~~
+~~~  
 
+**Связанный пример** [Gantt. Экспорт Gantt в PDF (стили из элемента &lt;style&gt;)](https://snippet.dhtmlx.com/6qwzclr2)
 
-**Related example:** [Gantt. Export Gantt to PDF (styles from &lt;style&gt; element)](https://snippet.dhtmlx.com/6qwzclr2)
+**Связанный пример** [Gantt. Экспорт Gantt с пользовательскими иконками в PDF](https://snippet.dhtmlx.com/2lqhkfhh)
 
+Пример экспорта Gantt с легендой:
 
-**Related example:** [Gantt. Export Gantt with custom icons to PDF](https://snippet.dhtmlx.com/2lqhkfhh)
-
-
-Пример экспорта диаграммы Gantt с легендой:
-
-
-**Related example:** [Gantt. Export Gantt with legend to PDF](https://snippet.dhtmlx.com/gz4ddlnl)
-
+**Связанный пример** [Gantt. Экспорт Gantt с легендой в PDF](https://snippet.dhtmlx.com/gz4ddlnl)
 
 Примеры экспорта диаграммы загрузки ресурсов и гистограммы:
 
+**Связанный пример** [Gantt. Экспорт Gantt с диаграммой загрузки ресурсов в PDF](https://snippet.dhtmlx.com/lw5xcm31)
 
-**Related example:** [Gantt. Export Gantt with resource load diagram to PDF](https://snippet.dhtmlx.com/lw5xcm31)
+**Связанный пример** [Gantt. Экспорт Gantt с ресурсной гистограммой в PDF](https://snippet.dhtmlx.com/i9me4oxl)
 
+## Как рассчитывать прогресс задачи в зависимости от дочерних задач
 
-**Related example:** [Gantt. Export Gantt with resource histogram to PDF](https://snippet.dhtmlx.com/i9me4oxl)
+Простой способ реализации — вычислять прогресс родительской задачи после обновления дочерней задачи. Чтобы пройтись по родительским задачам, можно использовать метод [eachParent()](api/method/eachparent.md).
 
-
-## Как рассчитать прогресс задачи в зависимости от дочерних задач {#howtocalculatetaskprogressdependingonchildtasks}
-
-Один из простых способов - обновлять прогресс родительской задачи сразу после изменения дочерней задачи. Для обхода родительских задач удобно использовать метод [eachParent()](api/method/eachparent.md).
-
-В примере ниже прогресс родительских задач рассчитывается только на основе прогресса их дочерних задач:
+В следующем примере прогресс родительских задач зависит только от прогресса дочерних задач:
 
 ~~~js
 gantt.config.auto_types = true;
@@ -767,37 +708,35 @@ function parentProgress(id) {
     }, id)
     gantt.render();
 }
-~~~
+~~~  
 
+**Связанный пример** [Gantt. Рассчитать прогресс родительской задачи динамически](https://snippet.dhtmlx.com/xuicd1q7)
 
-**Related example:** [Gantt. Calculate progress of a parent task dynamically](https://snippet.dhtmlx.com/xuicd1q7)
-
-
-В следующем примере прогресс родительских задач рассчитывается с учетом как прогресса, так и длительности дочерних задач:
+В следующем примере прогресс родительских задач зависит от прогресса дочерних задач и их продолжительности:
 
 ~~~js
 function calculateSummaryProgress(task) {
-    if (task.type != gantt.config.types.project)
-        return task.progress;
-    var totalToDo = 0;
-    var totalDone = 0;
-    gantt.eachTask(function (child) {
-        if (child.type != gantt.config.types.project) {
+    if (task.type !== gantt.config.types.project) return task.progress;
+
+    let totalToDo = 0;
+    let totalDone = 0;
+
+    gantt.eachTask(child => {
+        if (child.type !== gantt.config.types.project) {
             totalToDo += child.duration;
             totalDone += (child.progress || 0) * child.duration;
         }
     }, task.id);
-    if (!totalToDo) return 0;
-    else return totalDone / totalToDo;
+
+    return totalToDo ? totalDone / totalToDo : 0;
 }
 
 function refreshSummaryProgress(id, submit) {
-    if (!gantt.isTaskExists(id))
-        return;
+    if (!gantt.isTaskExists(id)) return;
 
-    var task = gantt.getTask(id);
-    var newProgress = calculateSummaryProgress(task);
-    
+    const task = gantt.getTask(id);
+    const newProgress = calculateSummaryProgress(task);
+
     if (newProgress !== task.progress) {
         task.progress = newProgress;
 
@@ -813,108 +752,94 @@ function refreshSummaryProgress(id, submit) {
     }
 }
 
-
-gantt.attachEvent("onParse", function () {
-    gantt.eachTask(function (task) {
+gantt.attachEvent("onParse", () => {
+    gantt.eachTask(task => {
         task.progress = calculateSummaryProgress(task);
     });
 });
 
-gantt.attachEvent("onAfterTaskUpdate", function (id) {
+gantt.attachEvent("onAfterTaskUpdate", id => {
     refreshSummaryProgress(gantt.getParent(id), true);
 });
 
-gantt.attachEvent("onTaskDrag", function (id) {
+gantt.attachEvent("onTaskDrag", id => {
     refreshSummaryProgress(gantt.getParent(id), false);
 });
-gantt.attachEvent("onAfterTaskAdd", function (id) {
+
+gantt.attachEvent("onAfterTaskAdd", id => {
     refreshSummaryProgress(gantt.getParent(id), true);
 });
 
+(() => {
+    let idParentBeforeDeleteTask = 0;
 
-(function () {
-    var idParentBeforeDeleteTask = 0;
-    gantt.attachEvent("onBeforeTaskDelete", function (id) {
+    gantt.attachEvent("onBeforeTaskDelete", id => {
         idParentBeforeDeleteTask = gantt.getParent(id);
     });
-    gantt.attachEvent("onAfterTaskDelete", function () {
+
+    gantt.attachEvent("onAfterTaskDelete", () => {
         refreshSummaryProgress(idParentBeforeDeleteTask, true);
     });
 })();
 
-...
-
 gantt.config.auto_types = true;
 
-gantt.templates.progress_text = function (start, end, task) {
-    return "<span style='text-align:left;'>" + Math.round(task.progress * 100) 
-          + "% </span>";
-};
+gantt.templates.progress_text = (start, end, task) =>
+    `<span style='text-align:left;'>${Math.round(task.progress * 100)}% </span>`;
 
-gantt.templates.task_class = function (start, end, task) {
-    if (task.type == gantt.config.types.project)
-        return "hide_project_progress_drag";
-};
+gantt.templates.task_class = (start, end, task) =>
+    task.type === gantt.config.types.project ? "hide_project_progress_drag" : "";
 ~~~
 
 
 [Calculate Progress of Summary Tasks](https://docs.dhtmlx.com/gantt/samples/08_api/16_dynamic_progress.html)
 
 
-## Как вертикально менять порядок задач на временной шкале {#howtoverticallyreordertasksinthetimeline}
+## КакVertically reorder tasks in the timeline
 
-Метод [addTaskLayer()](api/method/addtasklayer.md) позволяет добавлять пользовательские HTML-элементы на временную шкалу и поддерживает их вертикальное и горизонтальное перемещение.
+You can use the [addTaskLayer()](api/method/addtasklayer.md) method to display custom HTML elements in the timeline and add functions to drag them vertically and horizontally.
 
-В примере ниже показано, как можно менять порядок задач по вертикали на временной шкале, аналогично тому, как задачи можно менять местами в гриде:
+В следующем примере это будет работать как обычная переработка задач в гриде:
 
+**Связанный пример** [Gantt. Перемещение задач по вертикали в таймлайне](https://snippet.dhtmlx.com/fla78m0y)
 
-**Related example:** [Gantt. Reorder tasks vertically in timeline](https://snippet.dhtmlx.com/fla78m0y)
+В следующем примере можно переразместить разделенные задачи и разместить задачи на одной строке:
 
+**Связанный пример** [Gantt. Перемещение разделённых задач по вертикали в таймлайне](https://snippet.dhtmlx.com/usfulweq)
 
-В другом примере показано, как менять порядок разделённых задач и размещать задачи на одной строке:
+## Как зафиксировать колонки в гриде
 
-
-**Related example:** [Gantt. Reorder split tasks vertically in timeline](https://snippet.dhtmlx.com/usfulweq)
-
-
-## Как зафиксировать столбцы в гриде {#howtofreezefixcolumnsinthegrid}
-
-Такого эффекта можно добиться с помощью CSS. Столбец, который нужно зафиксировать, должен иметь позицию 'relative'. Свойство 'left' должно соответствовать текущей позиции скроллбара. Для актуализации значения можно добавить обработчик события на скроллбар и изменять CSS-переменную:
+Это можно сделать с помощью CSS. Необходимо задать элементу с позицией 'relative' фиксируемую колонку. Параметр 'left' должен иметь такое же значение, как и положение полосы прокрутки, чтобы можно было повесить обработчик на прокрутку и обновлять CSS-переменную:
 
 ~~~js
-gantt.attachEvent("onGanttReady", function () {
+gantt.attachEvent("onGanttReady", () => {
     const el = document.querySelector(".gantt_hor_scroll");
     if (el) {
-        el.addEventListener('scroll', function () {
+        el.addEventListener("scroll", () => {
             document.documentElement.style.setProperty(
-              '--gantt-frozen-column-scroll-left', el.scrollLeft + "px"
+                "--gantt-frozen-column-scroll-left",
+                `${el.scrollLeft}px`
             );
         });
     }
 });
 
 const textEditor = { type: "text", map_to: "text" };
-const start_dateEditor = { type: "date", map_to: "start_date" };
-const end_dateEditor = { type: "date", map_to: "end_date" };
+const startDateEditor = { type: "date", map_to: "start_date" };
+const endDateEditor = { type: "date", map_to: "end_date" };
 const durationEditor = { type: "number", map_to: "duration", min: 0, max: 100 };
-
 
 gantt.config.columns = [
     { name: "text", tree: true, width: 150, resize: true, editor: textEditor },
-    { name: "start_date", align: "center", width: 120, resize: true, 
-      editor: start_dateEditor },
-    { name: "end_date", label: "End Time", align: "center", width: 120, 
-      resize: true, editor: end_dateEditor },
-    { name: "duration", align: "center", width: 80, resize: true, 
-      editor: durationEditor },
-    { name: "progress", label: "Progress", width: 80, align: "center", 
-      resize: true },
-    {
-        name: "custom", label: "Custom", width: 180, align: "center", 
-        resize: true, template: function (task) {
-            return Math.round(Math.random() * 100)
-        }
-    },
+    { name: "start_date", align: "center", width: 120, resize: true,
+        editor: startDateEditor },
+    { name: "end_date", label: "End Time", align: "center", width: 120, resize: true,
+        editor: endDateEditor },
+    { name: "duration", align: "center", width: 80, resize: true,
+        editor: durationEditor },
+    { name: "progress", label: "Progress", width: 80, align: "center", resize: true },
+    { name: "custom", label: "Custom", width: 180, align: "center", resize: true,
+        template: task => Math.round(Math.random() * 100) },
     { name: "add", width: 44 }
 ];
 
@@ -923,34 +848,24 @@ gantt.config.layout = {
     cols: [
         {
             rows: [
-                {
-                    view: "grid", scrollable: true, 
-                    scrollX: "scrollHor1", scrollY: "scrollVer"
-                },
-                {
-                    view: "scrollbar", id: "scrollHor1",
-                    scroll: 'x', group: 'hor'
-                },
+                { view: "grid", scrollable: true, scrollX: "scrollHor1",
+                    scrollY: "scrollVer" },
+                { view: "scrollbar", id: "scrollHor1", croll: "x", group: "hor" }
             ]
         },
         { resizer: true, width: 1 },
         {
             rows: [
-                {
-                    view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"
-                },
-                {
-                    view: "scrollbar", id: "scrollHor",
-                    scroll: 'x', group: 'hor'
-                },
+                { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+                { view: "scrollbar", id: "scrollHor", scroll: "x", group: "hor" }
             ]
         },
         { view: "scrollbar", id: "scrollVer" }
     ]
-}
-~~~
+};
+~~~  
 
-Дополнительно добавьте следующие CSS-стили:
+И добавить CSS-стили:
 
 ~~~css
 :root {
@@ -971,13 +886,11 @@ gantt.config.layout = {
 .gantt_grid_head_cell:nth-child(1) {
     z-index: 1;
 }
-~~~
+~~~  
 
+**Связанный пример** [Gantt. Зафиксированная колонка в Grid (несколько видов grid)](https://snippet.dhtmlx.com/jbiplpjz)
 
-**Related example:** [Gantt. Frozen column in Grid (via CSS)](https://snippet.dhtmlx.com/jbiplpjz)
-
-
-В качестве альтернативы можно настроить [несколько представлений грида](guides/layout-config.md), однако такой подход не очень хорошо работает с встроенными редакторами:
+Другой подход — добавить несколько представлений грид, но это не очень хорошо работает с встроенными редакторами:
 
 ~~~js
 gantt.config.columns = [
@@ -988,7 +901,6 @@ gantt.config.columns = [
     { name: "add", width: 44 }
 ];
 
-
 const fixedColumn = {
     columns: [
         { name: "text", tree: true, width: 200, resize: true },
@@ -996,83 +908,77 @@ const fixedColumn = {
 };
 
 gantt.config.layout = {
-  css: "gantt_container",
-  cols: [
-    {
-      width: 400,
-      //min_width: 100,
-      rows: [
+    css: "gantt_container",
+    cols: [
         {
-          group: "gantt",
-          cols: [
-            {
-              rows: [
-                { view: 'grid', config: fixedColumn, bind: "task", 
-                  scrollY: 'gridScrollY' }
-              ]
-            },
-            {
-              rows: [
-                { view: 'grid', bind: "task", scrollX: 'gridScrollX', 
-                  scrollable: true, scrollY: 'gridScrollY' },
-                { view: 'scrollbar', id: 'gridScrollX' }
-              ]
-            },
-            { view: 'scrollbar', id: 'gridScrollY' }
-          ]
-        }
-      ]
-    },
-    { resizer: true, width: 1 },
-    {
-      rows: [
+            width: 400,
+            rows: [
+                {
+                    group: "gantt",
+                    cols: [
+                        {
+                            rows: [
+                                { view: "grid", config: fixedColumn, bind: "task",
+                                    scrollY: "gridScrollY" }
+                            ]
+                        },
+                        {
+                            rows: [
+                                { view: "grid", bind: "task", scrollX: "gridScrollX",
+                                    scrollable: true, scrollY: "gridScrollY" },
+                                { view: "scrollbar", id: "gridScrollX" }
+                            ]
+                        },
+                        { view: "scrollbar", id: "gridScrollY" }
+                    ]
+                }
+            ]
+        },
+        { resizer: true, width: 1 },
         {
-          group: "gantt",
-          cols: [
-            {
-              rows: [
-                { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
-                { view: "scrollbar", id: "scrollHor" }
-              ]
-            },
-            { view: 'scrollbar', id: 'scrollVer' }
-          ]
+            rows: [
+                {
+                    group: "gantt",
+                    cols: [
+                        {
+                            rows: [
+                                { view: "timeline", scrollX: "scrollHor",
+                                    scrollY: "scrollVer" },
+                                { view: "scrollbar", id: "scrollHor" }
+                            ]
+                        },
+                        { view: "scrollbar", id: "scrollVer" }
+                    ]
+                }
+            ]
         }
-      ]
-    }
-  ]
-}
-~~~
+    ]
+};
+~~~  
 
+**Связанный пример** [Gantt. Зафиксированная колонка в Grid (несколько видов grid)](https://snippet.dhtmlx.com/8dg2r8m9)
 
-**Related example:** [Gantt. Fixed column in Grid (several grid views)](https://snippet.dhtmlx.com/8dg2r8m9)
+## Как добавить легенду к Gantt
 
+В Gantt нет встроенного метода отображения легенды, ближайшим к этому является расширение Overlay, но оно не совсем то же самое и не настраивается так же просто.
 
-## Как добавить легенду в Gantt {#howtoaddlegendtothegantt}
-
-В Gantt нет встроенной функции для добавления легенды. Ближайший вариант - [Overlay extension](guides/baselines.md#extraoverlayforthechart), но это не совсем то же самое и возможности настройки ограничены.
-
-Тем не менее, добавить легенду достаточно просто. Можно создать элемент легенды в HTML и вставить его в контейнер Gantt следующим образом:
+Однако легенды можно реализовать достаточно просто. Вы можете закодировать элемент легенды в HTML и затем просто внедрить его в узел gantt:
 
 ~~~js
 gantt.$root.appendChild(legend);
-~~~
+~~~  
 
-Ниже приведён живой пример, где легенда появляется после нажатия кнопки "Toggle legend" над Gantt:
+Вот работающий пример: чтобы показать легенду, нажмите кнопку "Toggle legend" над Gantt.
 
+**Связанный пример** [Gantt. Добавить информационную легенду](https://snippet.dhtmlx.com/1ui0lim5)
 
-**Related example:** [Gantt. Add information legend](https://snippet.dhtmlx.com/1ui0lim5)
-
-))
-
-Чтобы добавить интерактивность, можно навешивать обработчики событий прямо на элемент легенды или обрабатывать события на корневом элементе Gantt с помощью делегирования:
+Чтобы сделать легенду интерактивной, можно добавить слушателей DOM-событий непосредственно к элементу легенды, либо слушать DOM-события на уровне корня Gantt (делегирование событий):
 
 ~~~js
 gantt.event(gantt.$root, "click", function(e){
-    var closest = gantt.utils.dom.closest;
+    const closest = gantt.utils.dom.closest;
     if(closest(e.target, ".gantt-legend")) {
         gantt.message("Mouse click inside the legend element");
     }
 });
 ~~~
-

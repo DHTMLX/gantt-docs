@@ -1,38 +1,36 @@
 ---
 sidebar_label: onTaskDblClick
 title: onTaskDblClick event
-description: "작업을 더블 클릭할 때 트리거됩니다"
+description: "사용자가 작업을 더블 클릭할 때 발생합니다"
 ---
 
 # onTaskDblClick
 
 ### Description
 
-@short: 작업을 더블 클릭할 때 트리거됩니다
+@short: 사용자 작업을 더블 클릭할 때 발생합니다
 
 @signature: onTaskDblClick: (id: string, e?: Event) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string* - 더블 클릭된 작업의 ID
-- `e` - (required) *Event* - 네이티브 이벤트 객체
+- `id` - (필수) *string* - 더블 클릭된 작업의 ID
 
 ### Returns
-- ` result` - (boolean) - 기본 이벤트 동작을 진행할지(<b>true</b>) 차단할지(<b>false</b>) 여부를 나타냅니다
+- ` result` - (boolean) - 이벤트의 기본 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소됩니다 (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskDblClick", function(id,e){
-    //여기에 커스텀 로직을 추가할 수 있습니다
+    // 여기에 코드 작성
     return true;
 });
 ~~~
 
 ### Details
 
-이 이벤트는 차단할 수 있습니다. false를 반환하면 기본 동작인 작업 상세 열기가 중지됩니다.
+이벤트는 차단 가능합니다. false를 반환하면 기본 핸들러(작업 세부 정보 열기)가 취소됩니다
 
 ### Related API
 - [onTaskClick](api/event/ontaskclick.md)
-

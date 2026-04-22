@@ -1,21 +1,23 @@
 ---
-title: "任务分组"
-sidebar_label: "任务分组"
+title: "分组任务"
+sidebar_label: "分组任务"
 ---
 
-# 任务分组
+# 分组任务
 
 :::info
-此功能仅在 PRO 版本中提供
+此功能仅在 PRO 版中可用
 :::
 
-该库包含一个**分组**扩展，可以让你根据任务的任意属性对任务进行组织。
+库提供了 **grouping** 扩展，允许你按任务的任意属性对任务进行分组。
 
 <div style="text-align:center;">![grouping_tasks](/img/grouping_tasks.png)</div>
 
+
 :::note
-要开始使用此扩展，请通过 [gantt.plugins](api/method/plugins.md) 方法激活它。
+要开始使用此扩展，请使用 [gantt.plugins](api/method/plugins.md) 方法启用它。
 :::
+
 
 ~~~html
 <!DOCTYPE html>
@@ -36,9 +38,9 @@ sidebar_label: "任务分组"
 [Tasks grouping](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
 
 
-## 任务分组 {#groupingtasks}
+## Grouping tasks {#groupingtasks}
 
-要根据特定条件对任务进行分组，请使用 [groupBy](api/method/groupby.md) 方法:
+要按某个条件对任务进行分组，请使用 [groupBy](api/method/groupby.md) 方法： 
 
 ~~~js
 var data =  {
@@ -53,9 +55,9 @@ gantt.groupBy({
 });
 ~~~
 
-详细说明:
+其中： 
 
-- **relation_property** - （*必填*）用于分组的任务对象属性。例如:
+- **relation_property** - (*mandatory*) 将用于分组项的任务对象属性。例如：
 
 ~~~js
 var data =  {
@@ -67,7 +69,7 @@ gantt.groupBy({
 });
 ~~~
 
-该属性也可用于创建多级分组结构:
+该属性也可用于在多级结构中组织分组：
 
 ~~~js
 gantt.groupBy({
@@ -86,7 +88,7 @@ gantt.groupBy({
 });
 ~~~  
 
-- **groups** - （*必填*）分组（汇总）项的数组。
+- **groups** - (*mandatory*) 一个分组（汇总）项的数组。 
 
 ~~~js
 gantt.groupBy({
@@ -100,14 +102,14 @@ gantt.groupBy({
 });
 ~~~   
 
-重要说明:
+请注意：
 
-1. 每个分组对象必须至少包含两个属性（以及任何其他附加属性）:一个 id 和一个文本描述，分别由 'group_id' 和 'group_text' 参数定义。它们默认值分别是 *key* 和 *label*。你可以为这些参数选择其他值（**不能为 "id"**），只要这些属性在分组对象中存在即可。 
+1. 每个 'group' 对象至少必须包含 2 个属性（但还可以包含任意数量的附加属性）：由 'group_id'、'group_text' 参数分别指定的 id 与文本描述。默认情况下，这些参数分别具有 *key* 与 *label* 的值。你可以对这些参数使用其他值（**但不能是 "id"**），前提是它们在分组数组中有所指定。 
 :::note
-不允许使用 "id" 属性，因为在分组时 Gantt 会创建虚拟分组任务，并为其分配 'group_id' 和 'group_text' 属性。这意味着分组任务默认将拥有 'key' 和 'label' 属性。由于每个任务已经有 'id'，更改此项会破坏树结构。
+当 Gantt 进行分组时，会创建虚拟的分组任务并向这些任务中添加 'group_id' 与 'group_text' 参数，因此默认分组任务将具有 'key' 与 'value' 属性。同时，每个任务已经具备 'id' 属性，改变默认的任务 id 将破坏树形结构。
 :::
 
-2. 分组项会作为类型为 'project' 且启用 'readonly' 标志的项添加到数据集中。这些项可以通过 '$virtual' 属性识别，并可像普通数据项一样处理:
+2. 将组项作为类型为 'project'、且开启了 'readonly' 属性的数据项添加到数据集中。它们可通过 '$virtual' 属性进行检测，并按常规数据项处理：
 
 ~~~js
 gantt.templates.task_class="function(start," end, task){
@@ -116,30 +118,31 @@ gantt.templates.task_class="function(start," end, task){
 };
 ~~~
 
-3. 数据集中的原始 'project' 任务在分组模式下不会显示，但仍可通过 API 访问。
+3. 原始数据集中的 'project' 任务在分组模式下不会显示，但仍可通过 API 获取。
 
-- **group_id** - （*可选*）用于分组 id 的属性，默认为 'key'。  
-- **group_text** - （*可选*）用于分组标签的属性，默认为 'label'。  
-- **delimiter** - （*可选*）用于为拥有多个资源的任务自动创建分组，默认为 ","。  
-- **default_group_label** - (<i>string</i>) 默认分组的标签。可选，默认为 'None'。  
-- **save_tree_structure** - (<i>boolean</i>) 控制 Gantt 是否在分组内保留原始树结构。如果省略或设为 *false*，任务将以平铺列表显示。
 
-请注意，默认分组包含未属于任何其他分组的任务。指定为 <i>string|number</i> 类型的 **relation_property** 的任务不会被包含在默认分组中。
+- **group_id** - (*optional*) 分组的 id。默认值为 'key'。 
+- **group_text** - (*optional*) 分组的标签。默认值为 'label'。  
+- **delimiter** - (*optional*) 用于为具有多资源的任务自动创建分组的分隔符。默认是 ","。
+- **default_group_label** - (<i>string</i>) 默认分组的名称。可选。默认值为 'None'。
+- **save_tree_structure** - (<i>boolean</i>) 定义 Gantt 是否在分组内保存其树结构。如果未指定或设为 *false*，任务将以扁平列表形式显示。
+
+请注意，默认分组包含未包含在其他分组中的任务。若某些任务的 **relation_property** 指定为一个 <i>string|number</i> 值，则默认分组不包含这些任务。
 
  
 
-## 取消任务分组
+## Ungrouping tasks
 
-要清除分组，调用 [groupBy](api/method/groupby.md) 方法并传入 *false* 作为参数:
+要重置分组，请调用 [groupBy](api/method/groupby.md) 方法并传入 *false* 作为参数：
 
 **重置当前分组**
 ~~~js
 gantt.groupBy(false);
 ~~~
 
-## 使用集合指定分组
+## Using collections for specifying groups
 
-分组通常会在页面的多个组件间共享。为避免重复，可以将分组定义为命名集合。
+通常，分组会被页面上的多个元素使用，为避免重复，可以将分组作为一个具名集合进行表示。
 
 ~~~js
 gantt.serverList("priority", [
@@ -156,11 +159,11 @@ gantt.groupBy({
 ~~~
 
 
-## 在分组中保留原始任务层级结构
+## Keeping original task hierarchy in groups
 
-默认情况下，启用分组后，Gantt 树的原始层级结构不会显示，所有任务都作为分组的直接子项。
+在分组模式下，默认不会显示 Gantt 树的原始结构，所有任务都作为各自分组的一级子项出现。
 
-如需在分组内保留原有的子任务结构，请将 **save_tree_structure** 设置为 true:
+若要在分组中保持原始子任务结构，请使用 **save_tree_structure** 设置：
 
 ~~~js
 gantt.groupBy({
@@ -177,5 +180,5 @@ gantt.groupBy({
 });
 ~~~
 
-[Save tree structure when grouping tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_save_tree_structure.html)
 
+[Save tree structure when grouping tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_save_tree_structure.html)

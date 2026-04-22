@@ -8,27 +8,27 @@ description: "주어진 타입의 message 박스를 엽니다."
 
 ### Description
 
-@short: 주어진 타입의 message 박스를 엽니다.
+@short: 지정된 유형의 메시지 상자를 호출합니다
 
 @signature: message: MessagePopupObject
 
 ### Parameters
 
-- `config` - (required) *object | string | number* -            message 박스의 설정 객체이거나 표시할 텍스트일 수 있습니다.
+- `config` - (required) *object | string | number* -  메시지 상자의 구성 객체 또는 표시할 텍스트
 
 ### Returns
-- ` id` - (string | number) - message 박스의 식별자입니다.
+- ` id` - (string | number) - 메시지 박스의 ID
 
 ### Example
 
 ~~~jsx
 let box = gantt.message({ 
     type:"warning", 
-    text:"정말 실행하시겠습니까?"
+    text:"Are you sure you want to do it?"
 });
 
 // 또는
-box = gantt.message("이것은 message입니다.");
+box = gantt.message("This is the message");
 ~~~
 
 ### Details
@@ -70,5 +70,4 @@ message 박스의 설정 옵션에 대한 자세한 내용은 [팝업 메시지 
 - [팝업 메시지 및 모달 박스](guides/message-boxes.md)
 
 ### Change log
-- 버전 4.0에 추가됨
-
+- 버전 4.0에서 추가됨

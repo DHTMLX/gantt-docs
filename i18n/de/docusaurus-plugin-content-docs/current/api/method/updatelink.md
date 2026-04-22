@@ -1,20 +1,20 @@
 ---
 sidebar_label: updateLink
-title: updateLink method
-description: "aktualisiert den angegebenen Abhängigkeits-Link"
+title: updateLink Methode
+description: "aktualisiert den angegebenen Abhängigkeitslink"
 ---
 
 # updateLink
 
 ### Description
 
-@short: Aktualisiert den angegebenen Abhängigkeits-Link
+@short: Aktualisiert den angegebenen Abhängigkeitslink
 
 @signature: updateLink: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    die Task-ID
+- `id` - (required) *string | number* -    die Aufgaben-ID
 
 ### Example
 
@@ -26,26 +26,27 @@ gantt.addLink({
     type:1
 });
 
-gantt.getLink(5).type = 2; // ändert die Daten des Links
-gantt.updateLink(5); // wendet die aktualisierten Link-Daten visuell und funktional an
+gantt.getLink(5).type = 2; //ändert die Link-Daten
+gantt.updateLink(5); //rendert den aktualisierten Link
 ~~~
 
 ### Details
 
 :::note
-note Die Methode löst das [onAfterLinkUpdate](api/event/onafterlinkupdate.md) Event aus. 
+Die Methode ruft das [onAfterLinkUpdate](api/event/onafterlinkupdate.md) Event auf. 
 :::
+
 :::note
-note Wenn dataProcessor aktiviert ist, wird diese Methode den [DataProcessor](guides/server-side.md) aktivieren. 
+Die Methode löst den [DataProcessor](guides/server-side.md) aus, falls der DataProcessor aktiviert ist. 
 :::
 
-Diese Methode sollte nach jeder Änderung an einem Link-Objekt verwendet werden, um den internen Zustand des Gantt zu aktualisieren, die zugehörigen UI-Komponenten zu aktualisieren und die Änderungen an das Backend zu senden.
+Diese Methode sollte nach der Modifizierung des Link-Objekts aufgerufen werden, um den Zustand des Gantt zu aktualisieren, relevante UI-Elemente neu zu zeichnen und die Änderungen an das Backend zu senden.
 
-Das Aufrufen dieser Funktion löst das [onAfterLinkUpdate](api/event/onafterlinkupdate.md) Event aus, was zu weiteren Neuberechnungen führen kann.
+Durch Aufruf dieser Methode wird das [onAfterLinkUpdate](api/event/onafterlinkupdate.md) Event ausgelöst, welches möglicherweise zusätzliche Neuberechnungen auslösen kann.
 
-Bei Verwendung des [DataProcessor](guides/server-side.md) initiiert diese Methode eine **update**-Anfrage an den Server.
+Wenn Sie den [DataProcessor](guides/server-side.md) verwenden, löst der Aufruf dieser Methode eine Update-Anforderung an den Server aus.
 
-Für visuelle Aktualisierungen, die nicht gespeichert werden müssen, ist es besser, die [refreshLink](api/method/refreshlink.md) Methode zu verwenden. Diese malt den Link einfach im Gantt neu, ohne zusätzliche Berechnungen oder Serverkommunikation auszulösen.
+Für visuelle Änderungen, die kein Speichern erfordern, verwenden Sie stattdessen die [refreshLink](api/method/refreshlink.md) Methode. Dadurch wird der Datensatz im Gantt neu gezeichnet, ohne zusätzliche Berechnungen oder Serveranfragen.
 
 ~~~js
 let selectedLink = null;
@@ -68,5 +69,4 @@ gantt.attachEvent("onLinkClick", function(id,e){
 - [onAfterLinkUpdate](api/event/onafterlinkupdate.md)
 
 ### Related Guides
-- ["Serverseitige Integration"](guides/server-side.md#updatingdataontheserver)
-
+- [Server-Side Integration](guides/server-side.md)

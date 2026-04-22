@@ -1,23 +1,23 @@
 ---
 sidebar_label: task_end_date
 title: task_end_date template
-description: "라이트박스에서 작업(task)의 종료 날짜가 어떻게 표시될지 제어합니다."
+description: "라이트박스에서 작업 종료 날짜의 형식을 지정합니다"
 ---
 
 # task_end_date
 
 ### Description
 
-@short: 라이트박스에서 작업(task)의 종료 날짜가 어떻게 표시될지 제어합니다.
+@short: 라이트박스에서 작업 종료 날짜의 형식을 지정합니다
 
 @signature: task_end_date: (date: Date) =\> string;
 
 ### Parameters
 
-- `date` - (required) *Date* - 포맷팅이 필요한 날짜
+- `date` - (필수) *Date* - 형식을 적용해야 하는 날짜
 
 ### Returns
-- ` text` - (string) - gantt에서 표시될 html 텍스트
+- ` text` - (string) - Gantt에 렌더링될 HTML 텍스트
 
 ### Example
 
@@ -31,23 +31,24 @@ gantt.templates.task_end_date = function(date){
 
 ## 종료 날짜를 포함하는 형식 조정하기
 
-이 템플릿을 재정의하여 gantt에서 작업 종료 날짜가 어떻게 표시될지 수정할 수 있습니다. 예를 들어, 작업 기간에 종료 날짜를 포함시키는 방식으로 변경할 수 있습니다.
+템플릿은 간트 차트에서 작업의 종료 날짜 형식을 바꾸기 위해 재정의될 수 있습니다(예: 작업 기간에 종료 날짜를 포함시키기 위해).
 
-예를 들어, 2020년 4월 2일에 시작하여 하루 동안 지속되는 작업이 있다고 가정해 봅시다.
+예를 들어 2020년 4월 2일에 시작하여 하루 동안 지속되는 작업을 생각해 봅시다.
 
-기본적으로 종료 날짜는 2020년 4월 3일(`03-04-2020 00:00:00`)로 표시됩니다:
+기본적으로 이 작업의 종료 날짜는 2020년 4월 3일로 표시됩니다 (`03-04-2020 00:00:00`):
 
-- [라이브 데모: 기본 형식](https://snippet.dhtmlx.com/5/24f73d6ec)
+- [Live demo: Default format](https://snippet.dhtmlx.com/5/24f73d6ec)
 
 ![task_end_date_template_default](/img/task_end_date_template_default.png)
 
-종료 날짜 표시를 2020년 4월 2일로 변경할 수도 있습니다:
+종료 날짜의 형식을 2020년 4월 2일로 바꿀 수 있습니다:
 
-- [라이브 데모: 종료 날짜 포함 형식](https://snippet.dhtmlx.com/t1k1rwo7)
+- [Live demo: Inclusive end date format](https://snippet.dhtmlx.com/t1k1rwo7)
 
 ![task_end_date_template](/img/task_end_date_template.png)
 
-이를 위해 **columns** 설정을 다음과 같이 오버라이드합니다:
+
+이를 수행하려면 아래와 같이 **columns** 설정을 재정의해야 합니다:
 
 ~~~js
 

@@ -1,23 +1,23 @@
 ---
 sidebar_label: isLinkExists
-title: isLinkExists method
-description: "验证给定的链接是否存在"
+title: isLinkExists 方法
+description: "检查指定链接是否存在"
 ---
 
 # isLinkExists
 
 ### Description
 
-@short: 验证给定的链接是否存在
+@short: 检查指定链接是否存在
 
 @signature: isLinkExists: (id: string | number) =\> boolean
 
 ### Parameters
 
-- `id` - (required) *string | number* -    链接的id
+- `id` - (required) *string | number* - 链接的 ID
 
 ### Returns
-- ` link` - (boolean) - <i>true</i> 如果链接存在，否则为 <i>false</i>
+- ` link` - (boolean) - <i>true</i>，如果存在这样的链接。否则，<i>false</i>
 
 ### Example
 

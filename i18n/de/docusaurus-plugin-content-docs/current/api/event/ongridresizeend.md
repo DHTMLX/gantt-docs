@@ -1,7 +1,7 @@
 ---
 sidebar_label: onGridResizeEnd
 title: onGridResizeEnd event
-description: "Wird unmittelbar ausgelöst, nachdem der Benutzer die Grenze des Grids gezogen hat, um dessen Größe anzupassen"
+description: "wird ausgelöst, nachdem der Benutzer den Rand des Grids gezogen hat, um die Größe des Grids zu ändern"
 ---
 
 # onGridResizeEnd
@@ -10,17 +10,17 @@ description: "Wird unmittelbar ausgelöst, nachdem der Benutzer die Grenze des G
 :::
 ### Description
 
-@short: Wird unmittelbar ausgelöst, nachdem der Benutzer die Grenze des Grids gezogen hat, um dessen Größe anzupassen
+@short: Wird ausgelöst, nachdem der Benutzer den Rand des Grids gezogen hat, um die Größe des Grids zu verändern
 
 @signature: onGridResizeEnd: (old_width: number, new_width: number) =\> boolean;
 
 ### Parameters
 
-- `old_width` - (required) *number* - die Breite des Grids vor der Größenänderung
-- `new_width` - (required) *number* - die aktualisierte Breite des Grids
+- `old_width` - (required) *number* - die anfängliche Breite des Grids
+- `new_width` - (required) *number* - die neue Breite des Grids
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob das Standardverhalten des Events fortgesetzt werden soll (<b>true</b>) oder gestoppt wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
@@ -47,5 +47,4 @@ Dieses Event kann blockiert werden. Die Rückgabe von *false* verhindert, dass d
 - [onColumnResizeEnd](api/event/oncolumnresizeend.md)
 
 ### Related Guides
-- ["Spalten festlegen"](guides/specifying-columns.md#resizing)
-
+- [Specifying Columns](guides/specifying-columns.md#resizing)

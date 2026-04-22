@@ -9,47 +9,46 @@ sidebar_label: "Шаблоны области временной шкалы"
   <tbody>
   <tr>
   <td class="webixdoc_links0">[leftside_text](api/template/leftside_text.md)</td>
-  <td>определяет текст, отображаемый слева от полос задач</td>
+  <td>задает текст, присвоенный полоскам задач на левой стороне</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[progress_text](api/template/progress_text.md)</td>
-  <td>определяет текст, отображаемый внутри завершённой части полосы задачи</td>
+  <td>задает текст в завершенной части полосы задач</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[rightside_text](api/template/rightside_text.md)</td>
-  <td>определяет текст, отображаемый справа от полос задач</td>
+  <td>задает текст, присвоенный полоскам задач на правой стороне</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[scale_cell_class](api/template/scale_cell_class.md)</td>
-  <td>задаёт CSS-класс, применяемый к отдельным ячейкам временной шкалы</td>
+  <td>задает CSS‑класс, применяемый к ячейкам шкалы времени</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[scale_row_class](api/template/scale_row_class.md)</td>
-  <td>задаёт CSS-класс, применяемый ко всей строке временной шкалы</td>
+  <td>задает CSS‑класс, который будет применяться ко всей шкале времени</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[timeline_cell_class](api/template/timeline_cell_class.md)</td>
-  <td>задаёт CSS-класс, применяемый к ячейкам внутри области временной шкалы</td>
+  <td>задает CSS‑класс, применяемый к ячейкам области временной шкалы</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[timeline_cell_content](api/template/timeline_cell_content.md)</td>
-  <td>определяет HTML-содержимое, отображаемое внутри ячеек временной шкалы</td>
+  <td>задает HTML‑содержимое в ячейках области временной шкалы</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[task_class](api/template/task_class.md)</td>
-  <td>задаёт CSS-класс, применяемый к полосам задач</td>
+  <td>задает CSS‑класс, применяемый к полоскам задач</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[task_row_class](api/template/task_row_class.md)</td>
-  <td>задаёт CSS-класс, применяемый к строке области временной шкалы для задач</td>
+  <td>задает CSS‑класс, применяемый к строке области временной шкалы</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[task_text](api/template/task_text.md)</td>
-  <td>определяет текст, отображаемый внутри полос задач и в заголовке lightbox</td>
+  <td>задает текст в полосках задач и заголовке лайтбокса</td>
   </tr>
 </tbody>
 </table>
 
 
 ![templates_01](/img/templates_01.png)
-

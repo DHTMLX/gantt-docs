@@ -1,31 +1,31 @@
 ---
 sidebar_label: attachEvent
-title: attachEvent method
-description: "подключает обработчик к внутреннему событию dhtmlxGantt"
+title: attachEvent метод
+description: "прикрепляет обработчик к внутреннему событию dhtmlxGantt"
 ---
 
 # attachEvent
 
 ### Description
 
-@short: Подключает обработчик к внутреннему событию dhtmlxGantt
+@short: Прикрепляет обработчик к внутреннему событию dhtmlxGantt
 
 @signature: attachEvent: \<T extends keyof GanttEventCallback\>(event: T, handler: GanttEventCallback[T], settings?: HandlerSettings) =\> string
 
 ### Parameters
 
-- `name` - (required) *string* - имя события, регистронезависимое
-- `handler` - (required) *function* - функция-обработчик
-- `settings` - (optional) *HandlerSettings* - необязательный параметр, [объект с настройками](#propertiesofsettingsobject) для обработчика события
+- `name` - (required) *string* - имя события, регистронезависимо
+- `handler` - (required) *function* - функция обработчика
+- `settings` - (optional) *HandlerSettings* - необязательный, объект с настройками для обработчика события
 
 ### Returns
-- `event_id` - (string) - идентификатор подключенного обработчика события
+- `event_id` - (string) - идентификатор прикрепленного обработчика события
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onTaskClick", function(id, e) {
-    alert("Вы только что кликнули по элементу с id="+id);
+gantt.attachEvent("onTaskClick", (id, e) => {
+    alert(`Вы кликнули элемент с id=${id}`);
 });
 ~~~
 
@@ -34,47 +34,47 @@ gantt.attachEvent("onTaskClick", function(id, e) {
 
 ### Details
 
-К одному событию можно подключить несколько обработчиков, и все они будут выполнены.
-Если какой-либо обработчик возвращает *false*, соответствующая операция будет отменена.
-Обработчики выполняются в том порядке, в котором они были подключены.
+Вы можете привязать несколько обработчиков к одному и тому же событию, и все они будут выполняться.
+Если некоторые обработчики вернут *false*, соответствующая операция будет заблокирована.
+Обработчики событий выполняются в том же порядке, в котором они были подключены.
 
-## Свойства объекта settings
+## Свойства объекта настроек
 
-Объект settings может включать следующие свойства:
+Объект настроек может содержать следующие свойства:
 
-- **id?** - (*string | number*) - идентификатор обработчика события.
-Это позволяет легко отключить конкретный обработчик от события:
+- `id?` - (*string | number*) - идентификатор обработчика события.
+Например, можно легко открепить обработчик от указанного события:
 
-~~~js
-gantt.attachEvent("onTaskClick", function(){
-    console.log("task click");
-}, {id: "my-click"}); /*!*/
-... //позже:
+~~~js {3}
+gantt.attachEvent("onTaskClick", () => {
+    console.log("клик задачи");
+}, { id: "my-click" });
+
+ // спустя некоторое время
 gantt.detachEvent("my-click");
 ~~~
 
-- **once?** - (*boolean*) - указывает, должно ли событие сработать только один раз.
-Установите это в *true*, чтобы отловить только первое срабатывание события, например:
+- `once?` - (*boolean*) - определяет, будет ли событие выполнено только один раз.
+Установите свойство в *true*, если хотите зафиксировать первое срабатывание события, как в:
 
-~~~js
-gantt.attachEvent("onTaskClick", function(){
-    console.log("capture next task click");
+~~~js {4}
+gantt.attachEvent("onTaskClick", () => {
+    console.log("зафиксировать следующий клик по задаче");
     return true;
-}, {once: true}); /*!*/
+}, { once: true });
 ~~~
 
-- **thisObject?** - (*any*) - задаёт контекст `this` для слушателя события.
+- `thisObject?` - (*any*) - задаёт объект `this` для обработчика.
 
-~~~js
-gantt.attachEvent("onTaskClick", function(){
+~~~js {4}
+gantt.attachEvent("onTaskClick", function() {
     // ...
     return true;
-}, {thisObject: this}); /*!*/
+}, { thisObject: this });
 ~~~
 
 ### Related API
 - [detachEvent](api/method/detachevent.md)
 
 ### Related Guides
-- [Обработка событий](guides/handling-events.md)
-
+- [Event Handling](guides/handling-events.md)

@@ -1,20 +1,19 @@
 ---
 sidebar_label: updateMarker
 title: updateMarker method
-description: "обновляет указанный маркер"
+description: "Обновляет указанный маркер"
 ---
 
 # updateMarker
 
 ### Description
-
 @short: Обновляет указанный маркер
 
 @signature: updateMarker: (markerId: string | number) =\> void
 
 ### Parameters
 
-- `markerId` - (required) *string | number* -    идентификатор маркера
+- `markerId` - (required) *string | number* - идентификатор маркера
 
 ### Example
 
@@ -34,7 +33,7 @@ gantt.updateMarker(todayMarker); /*!*/
 ### Details
 
 :::note
- Этот метод принадлежит расширению **marker**, поэтому убедитесь, что плагин [marker](guides/extensions-list.md#verticalmarker) включён. Более подробная информация доступна в статье [Добавление вертикальных маркеров](guides/markers.md). 
+Этот метод определён в расширении **marker**, поэтому необходимо включить плагин [marker](guides/extensions-list.md#vertical-marker). Подробнее читайте в статье [Adding Vertical Markers](guides/markers.md).
 :::
 
 ### Related API
@@ -45,5 +44,4 @@ gantt.updateMarker(todayMarker); /*!*/
 - [show_markers](api/config/show_markers.md)
 
 ### Related Guides
-- [Добавление вертикальных маркеров](guides/markers.md)
-
+- [Adding Vertical Markers](guides/markers.md)

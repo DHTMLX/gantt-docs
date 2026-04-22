@@ -5,18 +5,20 @@ description: "移除与链接相关的指定图层"
 ---
 
 # removeLinkLayer
+
 :::info
- 此功能仅包含在PRO版本中。
+此功能仅在 PRO 版本中可用。
 :::
+
 ### Description
 
-@short: 移除与链接相关的指定图层
+@short: 删除与链接相关的指定层
 
 @signature: removeLinkLayer: (layerId: string | number) =\> void
 
 ### Parameters
 
-- `layerId` - (required) *string | number* -        将显示在该图层中的DOM元素
+- `layerId` - (必填) *string | number* -      将在该层中显示的 DOM 元素
 
 ### Example
 
@@ -41,7 +43,5 @@ gantt.attachEvent("onGanttReady", function () {
 gantt.removeLinkLayer(linkLayer);
 ~~~
 
-
 ### Related API
 - [addLinkLayer](api/method/addlinklayer.md)
-

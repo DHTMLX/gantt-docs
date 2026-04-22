@@ -1,7 +1,7 @@
 ---
 sidebar_label: tooltip_date_format
-title: tooltip_date_format template
-description: "definiert, wie Start- und Enddaten im Tooltip angezeigt werden"
+title: tooltip_date_format Vorlage
+description: "definiert das Format der Start- und Enddaten, die im Tooltip angezeigt werden"
 ---
 
 # tooltip_date_format
@@ -14,10 +14,10 @@ description: "definiert, wie Start- und Enddaten im Tooltip angezeigt werden"
 
 ### Parameters
 
-- `date` - (required) *Date* - das zu formatierende Datum
+- `date` - (erforderlich) *Date* - das Datum, das formatiert werden muss
 
 ### Returns
-- ` text` - (string) - html-Text, der im Gantt-Tooltip angezeigt wird
+- ` text` - (string) - HTML-Text, der im Gantt gerendert wird
 
 ### Example
 
@@ -31,13 +31,12 @@ gantt.templates.tooltip_date_format=function (date){
 ### Details
 
 :::note
- Diese Vorlage ist Teil der **tooltip**-Extension. Stellen Sie daher sicher, dass das [tooltip](guides/extensions-list.md#tooltip) Plugin aktiviert ist. Weitere Informationen finden Sie im Artikel ["Tooltips für Gantt-Elemente"](guides/tooltips.md). 
+Diese Vorlage ist in der **Tooltip-Erweiterung** definiert, daher müssen Sie das [tooltip](guides/extensions-list.md#tooltip) Plugin aktivieren. Lesen Sie die Details im Artikel [Tooltips for Gantt Elements](guides/tooltips.md). 
 :::
 
 ### Related API
 - [tooltip_text](api/template/tooltip_text.md)
 
 ### Related Guides
-- ["Vorlagen für Tooltips"](guides/tooltip-templates.md)
-- ["Tooltips für Gantt-Elemente"](guides/tooltips.md)
-
+- [Tooltips-Vorlagen](guides/tooltip-templates.md)
+- [Tooltips for Gantt Elements](guides/tooltips.md)

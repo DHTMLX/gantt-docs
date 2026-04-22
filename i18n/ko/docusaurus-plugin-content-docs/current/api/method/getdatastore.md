@@ -1,23 +1,23 @@
 ---
 sidebar_label: getDatastore
-title: getDatastore method
-description: "데이터스토어의 구성 객체를 반환합니다."
+title: getDatastore 메서드
+description: "데이터스토어의 구성 객체를 반환합니다"
 ---
 
 # getDatastore
 
 ### Description
 
-@short: 데이터스토어의 구성 객체를 반환합니다.
+@short: 데이터스토어의 구성 객체를 반환합니다
 
-@signature: getDatastore: (name: string) =\> DatastoreMethods & TreeDatastoreMethods
+@signature: getDatastore: (name: string) => DatastoreMethods & TreeDatastoreMethods
 
 ### Parameters
 
 - `name` - (required) *string* - 데이터스토어의 이름
 
 ### Returns
-- ` datastore` - (datastore & treedatastore) - 지정된 데이터스토어의 구성 객체
+- ` datastore` - (datastore & treedatastore) - 데이터스토어의 구성 객체
 
 ### Example
 
@@ -31,4 +31,3 @@ var tasksStore = gantt.getDatastore("task");
 ### Related API
 - [datastore](api/other/datastore.md)
 - [treeDatastore](api/other/treedatastore.md)
-

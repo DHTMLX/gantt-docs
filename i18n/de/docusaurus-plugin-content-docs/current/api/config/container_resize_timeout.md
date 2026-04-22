@@ -1,14 +1,14 @@
 ---
 sidebar_label: container_resize_timeout
-title: container_resize_timeout config
-description: "Legt die Verzögerungszeit (in Millisekunden) fest, bevor das Gantt nach einer Größenänderung des Containers neu gezeichnet wird."
+title: container_resize_timeout Konfiguration
+description: "Gibt die Verzögerung (in Millisekunden) an, bevor das Gantt-Diagramm neu gezeichnet wird, beim Ändern der Containergröße"
 ---
 
 # container_resize_timeout
 
 ### Description
 
-@short: Legt die Verzögerungszeit (in Millisekunden) fest, bevor das Gantt nach einer Größenänderung des Containers neu gezeichnet wird.
+@short: Gibt die Verzögerung (in Millisekunden) an, bevor das Gantt-Diagramm neu gezeichnet wird, beim Ändern der Containergröße
 
 @signature: container_resize_timeout: number
 
@@ -18,7 +18,7 @@ description: "Legt die Verzögerungszeit (in Millisekunden) fest, bevor das Gant
 gantt.config.container_resize_timeout = 300;
 ~~~
 
-**Default value:** 20
+**Standardwert:** 20
 
 ### Change log
-- added in v7.0.11
+- in v7.0.11 hinzugefügt

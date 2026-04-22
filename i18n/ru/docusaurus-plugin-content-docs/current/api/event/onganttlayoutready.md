@@ -1,14 +1,14 @@
 ---
 sidebar_label: onGanttLayoutReady
-title: onGanttLayoutReady event
-description: "срабатывает один раз, когда layout диаграммы Ганта настроен, но перед его отрисовкой"
+title: onGanttLayoutReady событие
+description: "срабатывает после того, как макет диаграммы Ганта готов, но до его отрисовки"
 ---
 
 # onGanttLayoutReady
 
 ### Description
 
-@short: Срабатывает один раз, когда layout диаграммы Ганта настроен, но перед его отрисовкой
+@short: Срабатывает после того, как макет диаграммы Ганта готов, но до его отрисовки
 
 @signature: onGanttLayoutReady: () =\> void;
 
@@ -16,6 +16,6 @@ description: "срабатывает один раз, когда layout диаг
 
 ~~~jsx
 gantt.attachEvent("onGanttLayoutReady",function(){
-    // здесь можно добавить любую пользовательскую логику
+    // любая ваша логика здесь
 });
 ~~~

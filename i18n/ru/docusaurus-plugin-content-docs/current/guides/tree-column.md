@@ -3,13 +3,13 @@ title: "Настройка древовидной колонки"
 sidebar_label: "Настройка древовидной колонки"
 ---
 
-# Настройка древовидной колонки
+# Настройка столбца дерева
 
-Для получения информации о доступных методах, связанных с деревом, ознакомьтесь со статьёй [Task Parent/Child](guides/task-tree-operations.md).
+Чтобы узнать о доступных методах, связанных с деревом, пожалуйста, ознакомьтесь со статьей [«Родитель/Дочерний элемент задачи»](guides/task-tree-operations.md).
 
-## Разворачивание/сворачивание ветки задачи
+## Раскрытие/сворачивание ветви задачи
 
-- Чтобы развернуть ветку задачи, используйте метод [open](api/method/open.md):
+- Чтобы открыть ветку задачи, используйте метод [open](api/method/open.md):
 
 ~~~js
 var data = {
@@ -21,7 +21,7 @@ var data = {
 gantt.open("p_1"); /*!*/
 ~~~
 
-- Чтобы свернуть ветку задачи, используйте метод [close](api/method/close.md):
+- Чтобы закрыть ветку задачи, используйте метод [close](api/method/close.md):
 
 ~~~js
 var data = {
@@ -33,35 +33,35 @@ var data = {
 gantt.close("p_1"); /*!*/
 ~~~ 
 
-## Разворачивание/сворачивание нескольких веток
+## Раскрытие/сворачивание нескольких ветвей
 
-Если необходимо открыть или закрыть сразу несколько веток задач, самый быстрый способ - программно присвоить булево значение (true для открытия, false для закрытия) свойству *.$open* нужных задач, а затем обновить Gantt.
+Если вам нужно открыть/закрыть несколько ветвей задач, fastest способ — программно задать соответствующее логическое значение (true — открыть, false — закрыть) в свойство *.$open* нужных задач и затем перерисовать Gantt.
 
-- разворачивание всех задач:
+- раскрытие всех задач:
 
 ~~~js
-gantt.eachTask(function(task){
+Gantt.eachTask(function(task){
     task.$open = true;
 });
-gantt.render();
+Gantt.render();
 ~~~
 
 - сворачивание всех задач:
 
 ~~~js
-gantt.eachTask(function(task){
+Gantt.eachTask(function(task){
     task.$open = false;
 });
-gantt.render();
+Gantt.render();
 ~~~
 
 :::note
-Чтобы добавить кнопку, которая будет сворачивать или разворачивать все задачи сразу, смотрите раздел [Решения: Как развернуть/свернуть все задачи кнопкой](guides/how-to.md#howtoexpandcollapsealltaskswithabutton).
+Если вы хотите сворачивать/разворачивать все задачи одновременно при помощи кнопки, перейдите к разделу [Как расширить/свернуть все задачи с кнопкой](guides/how-to.md#how-to-expandcollapse-all-tasks-with-a-button).
 :::
 
-## Получение дочерних задач
+## Получение детей задачи
 
-Чтобы получить дочерние элементы ветки, используйте метод [getChildren](api/method/getchildren.md):
+Чтобы получить дочерние элементы ветви задачи, используйте метод [getChildren](api/method/getchildren.md):
 
 ~~~js
 var data = {
@@ -73,12 +73,12 @@ var data = {
 gantt.getChildren("p_1");//->["t_1"] /*!*/
 ~~~
 
-*Дополнительные методы для работы с деревом описаны в статье [Task Parent/Child](guides/task-tree-operations.md).*
+*Чтобы увидеть больше методов, связанных с деревом, пожалуйста, прочитайте статью [«Родитель/Дочерний элемент задачи»](guides/task-tree-operations.md).*
 
 ## Изменение иконок дерева
 
-### Родительские элементы
-Чтобы изменить иконку для родительских элементов, используйте шаблон [grid_folder](api/template/grid_folder.md):
+### Элементы-родители
+Чтобы задать иконку для элементов-родителей, используйте шаблон [grid_folder](api/template/grid_folder.md):
 
 ~~~js
 gantt.templates.grid_folder = function(item) {
@@ -87,9 +87,8 @@ gantt.templates.grid_folder = function(item) {
 };
 ~~~
 
-
 ### Дочерние элементы
-Чтобы изменить иконку для дочерних элементов, используйте шаблон [grid_file](api/template/grid_file.md):
+Чтобы задать иконку для дочерних элементов, используйте шаблон [grid_file](api/template/grid_file.md):
 
 ~~~js
 gantt.templates.grid_file = function(item) {
@@ -97,9 +96,8 @@ gantt.templates.grid_file = function(item) {
 };
 ~~~
 
-
 ### Знак открытия/закрытия
-Чтобы изменить иконку для знака открытия/закрытия, используйте шаблон [grid_open](api/template/grid_open.md):
+Чтобы задать иконку для знака открытия/закрытия, используйте шаблон [grid_open](api/template/grid_open.md):
 
 ~~~js
 gantt.templates.grid_open = function(item) {
@@ -108,10 +106,9 @@ gantt.templates.grid_open = function(item) {
 };
 ~~~
 
+## Настройка отступа детей в ветви
 
-## Настройка отступа дочерних задач в ветке
-
-Чтобы изменить отступ дочерних задач внутри ветки, используйте шаблон [grid_indent](api/template/grid_indent.md), изменяя CSS-свойство **width**:
+Чтобы задать отступ дочерних задач в ветви, используйте шаблон [grid_indent](api/template/grid_indent.md) (измените свойство CSS **width**):
 
 ~~~js
 gantt.templates.grid_indent="function(task){"
@@ -119,10 +116,9 @@ gantt.templates.grid_indent="function(task){"
 };
 ~~~
 
+## Добавление флажков к узлам дерева
 
-## Добавление чекбоксов в узлы дерева
-
-Чтобы добавить чекбоксы (или любой другой HTML-контент) в узлы дерева, используйте шаблон [grid_blank](api/template/grid_blank.md):
+Чтобы добавить флажки (или любой другой HTML-контент) к узлам дерева, используйте шаблон [grid_blank](api/template/grid_blank.md):
 
 ~~~js
 gantt.templates.grid_blank="function(task){"
@@ -130,15 +126,14 @@ gantt.templates.grid_blank="function(task){"
 };
 ~~~
 
-
-## Настройка шаблона узлов дерева
+## Задание шаблона узлов дерева
 
 Чтобы задать шаблон для узлов дерева, используйте атрибут **template** в свойстве [columns](api/config/columns.md). 
 
- Возвращаемое значение функции **template** будет добавлено как inner HTML, поэтому вы можете использовать любую HTML-разметку.
+ Возвращаемое значение функции шаблона будет добавлено в качестве внутреннего HTML. Поэтому вы можете использовать любые HTML-структуры в этом атрибуте.
 
 :::note
-Обратите внимание: если вы не используете [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) для [серверной интеграции](guides/server-side.md), важно очищать данные, загружаемые в диаграмму Gantt, чтобы избежать возможных XSS-уязвимостей (dhtmlxConnector делает это автоматически).
+Примечание: если вы не используете [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) для интеграции с серверной стороной, вам нужно очистить данные, которые вы загружаете в диаграмму Gantt, чтобы предотвратить возможные XSS-атаки ([dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) делает это автоматически).
 :::
 ~~~js
 gantt.config.columns="["
@@ -155,6 +150,4 @@ function myFunc(task){
 };
 ~~~
 
-
-[Template for tree nodes](https://docs.dhtmlx.com/gantt/samples/04_customization/05_tree_template.html)
-
+[Шаблон узлов дерева](https://docs.dhtmlx.com/gantt/samples/04_customization/05_tree_template.html)

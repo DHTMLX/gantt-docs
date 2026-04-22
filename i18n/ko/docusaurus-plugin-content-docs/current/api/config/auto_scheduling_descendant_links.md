@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_descendant_links
 title: auto_scheduling_descendant_links config
-description: "상위 작업(프로젝트)에서 하위 작업으로 링크를 생성할 수 있는지 여부를 제어합니다."
+description: "Allows or forbids creating links from parent tasks (projects) to their children"
 ---
 
 # auto_scheduling_descendant_links
+
 :::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
 :::
+
+:::warning
+이 속성은 v9.1에서 더 이상 사용되지 않습니다. 대신 [gantt.config.auto_scheduling](api/config/auto_scheduling.md#descendant_links)의 `descendant_links` 속성을 사용하세요.
+:::
+
 ### Description
 
-@short: 상위 작업(프로젝트)에서 하위 작업으로 링크를 생성할 수 있는지 여부를 제어합니다.
+@short: 부모 작업(프로젝트)에서 자식 작업으로의 링크 생성을 허용하거나 금지합니다
 
 @signature: auto_scheduling_descendant_links: boolean
 
@@ -22,7 +28,7 @@ gantt.config.auto_scheduling_descendant_links = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**기본값:** false
 
 ### Related samples
 - [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
@@ -30,11 +36,10 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- 이 설정은 **auto_scheduling** 확장의 일부이므로, [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인을 반드시 활성화해야 합니다. 자세한 내용은 [자동 스케줄링](guides/auto-scheduling.md) 문서를 참조하세요. 
+이 구성은 **auto_scheduling** 확장에 정의되어 있으므로 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인을 활성화해야 합니다. 자세한 내용은 [Auto Scheduling](guides/auto-scheduling.md) 문서를 참조하십시오.
 :::
 
-
-기본적으로 상위 작업(프로젝트)에서 하위 작업으로 링크를 생성하는 것은 허용되지 않습니다.
+기본적으로 부모 작업(프로젝트)에서 자식으로의 링크를 생성할 수 없습니다.
 
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
@@ -53,8 +58,8 @@ gantt.init("gantt_here");
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [자동 스케줄링](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
-- 버전 4.0에 추가됨
-
+- 이 속성은 v9.1에서 더 이상 사용되지 않습니다.
+- 버전 4.0에서 추가되었습니다.

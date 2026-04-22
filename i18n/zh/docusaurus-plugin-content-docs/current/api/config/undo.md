@@ -8,7 +8,7 @@ description: "启用 gantt 的 Undo 功能"
 
 ### Description
 
-@short: 启用 gantt 的 Undo 功能
+@short: 启用甘特图的 Undo 功能
 
 @signature: undo: boolean
 
@@ -18,15 +18,15 @@ description: "启用 gantt 的 Undo 功能"
 gantt.config.undo = true;
 ~~~
 
-**Default value:** true
+**默认值:** true
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [甘特图中的撤销/重做变更](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
 :::note
- 此选项是 **undo** 扩展的一部分，因此请确保激活 [undo](guides/extensions-list.md) 插件。更多详情请参见 [撤销/重做功能](guides/undo-redo.md) 文章。 
+此选项在 **undo** 扩展中定义，因此需要启用 [undo](guides/extensions-list.md#undo) 插件。有关详细信息，请参阅 [Undo/Redo Functionality](guides/undo-redo.md) 文章。
 :::
 
 ### Related API
@@ -36,8 +36,7 @@ gantt.config.undo = true;
 - [undo_types](api/config/undo_types.md)
 
 ### Related Guides
-- [撤销/重做功能](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
-- 版本 4.0 中新增
-
+- 已在版本 4.0 中添加

@@ -1,14 +1,14 @@
 ---
 sidebar_label: grid_width
-title: grid_width config
-description: "задаёт ширину grid"
+title: grid_width конфигурация
+description: "устанавливает ширину Grid"
 ---
 
 # grid_width
 
 ### Description
 
-@short: Задаёт ширину grid
+@short: Устанавливает ширину Grid
 
 @signature: grid_width: number
 
@@ -20,21 +20,22 @@ gantt.config.grid_width = 400;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 360
+**Значение по умолчанию:** 360
 
 ### Details
 
-Ширина колонок grid зависит от двух факторов: [width](api/config/columns.md) каждой колонки и общей ширины grid. Если суммарная ширина колонок не совпадает с шириной grid, Gantt скорректирует одно из этих значений.
+The width of Grid columns depends on two attributes: the [width](api/config/columns.md) of the column and the width of the grid. If the sum of the width of columns is not equal to the width of the grid, Gantt changes one of the parameters.
 
-- При инициализации gantt с помощью [gantt.init()](api/method/init.md) приоритет имеет ширина колонок ([width](api/config/columns.md)).
-- При отрисовке gantt с помощью [gantt.render()](api/method/render.md) приоритет отдается **grid_width**. <br> 
+- При инициализации gantt через [gantt.init()](api/method/init.md), приоритет имеет ширина столбца [width](api/config/columns.md).
 
-:::note
-Sample: [Adjustment of column width](https://snippet.dhtmlx.com/5/36b6baa89) 
-:::
-- При инициализации gantt через [gantt.init()](api/method/init.md), если ширина колонки не указана или задана как **'*'**, приоритет будет у **grid_width**. <br>
+- При отрисовке gantt через [gantt.render()](api/method/render.md), приоритет имеет **grid_width**.
 
 :::note
-Sample: [Adjusting column width](https://snippet.dhtmlx.com/5/a35378204) 
+sample: [Настройка ширины столбца](https://snippet.dhtmlx.com/5/36b6baa89)
 :::
 
+- При инициализации gantt через [gantt.init()](api/method/init.md) и если ширина столбца не указана или установлена как **'*'**, приоритет имеет **grid_width**.
+
+:::note
+sample: [Регулировка ширины столбца](https://snippet.dhtmlx.com/5/a35378204)
+:::

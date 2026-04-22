@@ -1,16 +1,16 @@
 ---
 sidebar_label: clearRedoStack
-title: clearRedoStack method
-description: "setzt den Stack zurück, der die Redo-Befehle enthält"
+title: clearRedoStack Methode
+description: "löscht den Stapel der gespeicherten Redo-Befehle"
 ---
 
 # clearRedoStack
 
 ### Description
 
-@short: Setzt den Stack zurück, der die Redo-Befehle enthält
+@short: Löscht den Stapel der gespeicherten Redo-Befehle
 
-@signature: clearRedoStack: () =\> void
+@signature: clearRedoStack: () => void
 
 ### Example
 
@@ -24,7 +24,7 @@ gantt.clearRedoStack();
 ### Details
 
 :::note
- Diese Methode ist Teil der **undo**-Erweiterung, daher stellen Sie sicher, dass das [undo](guides/extensions-list.md#undo) Plugin zuerst aktiviert ist. Weitere Details finden Sie im Artikel ["Undo/Redo-Funktionalität"](guides/undo-redo.md). 
+Diese Methode ist in der **undo**-Erweiterung definiert, daher müssen Sie das [undo](guides/extensions-list.md#undo) Plugin aktivieren. Lesen Sie die Details im [Undo/Redo Functionality](guides/undo-redo.md) Artikel.
 :::
 
 ### Related API
@@ -33,8 +33,7 @@ gantt.clearRedoStack();
 - [getRedoStack](api/method/getredostack.md)
 
 ### Related Guides
-- ["Undo/Redo-Funktionalität"](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
-- hinzugefügt in Version 5.2
-
+- in Version 5.2 hinzugefügt

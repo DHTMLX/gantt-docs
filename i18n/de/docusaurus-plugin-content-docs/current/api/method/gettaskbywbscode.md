@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskByWBSCode
-title: getTaskByWBSCode method
-description: "gibt eine Aufgabe basierend auf ihrem WBS-Code zurück"
+title: getTaskByWBSCode-Methode
+description: "gibt eine Aufgabe anhand ihres WBS-Codes zurück"
 ---
 
 # getTaskByWBSCode
 
 ### Description
 
-@short: Gibt eine Aufgabe basierend auf ihrem WBS-Code zurück
+@short: Gibt eine Aufgabe anhand ihres WBS-Codes zurück
 
 @signature: getTaskByWBSCode: (code: string) =\> Task
 
 ### Parameters
 
-- `code` - (required) *string* - der WBS-Code, der die Aufgabe identifiziert
+- `code` - (required) *string* - der WBS-Code der Aufgabe
 
 ### Returns
-- ` task` - (Task) - das entsprechende Aufgabenobjekt
+- ` task` - (Task) - ein Task-Objekt
 
 ### Example
 
@@ -27,11 +27,10 @@ const task = gantt.getTaskByWBSCode("1.2");
 ~~~
 
 ### Related samples
-- [Show Task WBS Codes (Outline Numbers)](https://docs.dhtmlx.com/gantt/samples/07_grid/09_wbs_column.html)
+- [Task-WBS-Codes anzeigen (Outline-Nummern)](https://docs.dhtmlx.com/gantt/samples/07_grid/09_wbs_column.html)
 
 ### Related API
 - [getWBSCode](api/method/getwbscode.md)
 
 ### Related Guides
-- ["Spalten festlegen"](guides/specifying-columns.md#wbscode)
-
+- [Spalten festlegen](guides/specifying-columns.md#wbscode)

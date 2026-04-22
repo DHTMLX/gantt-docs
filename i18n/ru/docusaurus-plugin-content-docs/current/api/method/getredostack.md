@@ -1,19 +1,19 @@
 ---
 sidebar_label: getRedoStack
-title: getRedoStack method
-description: "предоставляет стек сохранённых действий пользователя для повтора (redo)"
+title: getRedoStack метод
+description: "возвращает стек сохранённых redo действий пользователя"
 ---
 
 # getRedoStack
 
 ### Description
 
-@short: Предоставляет стек сохранённых действий пользователя для повтора (redo)
+@short: Возвращает стек сохранённых redo действий пользователя
 
-@signature: getRedoStack: () =\> UndoRedoAction[]
+@signature: getRedoStack: () => UndoRedoAction[]
 
 ### Returns
-- ` stack` - (UndoRedoAction[]) - массив, содержащий действия пользователя для повтора (redo)
+- `стек` - (UndoRedoAction[]) - массив повторных действий пользователя
 
 ### Example
 
@@ -27,22 +27,19 @@ var stack = gantt.getRedoStack();
 ### Details
 
 :::note
- Этот метод принадлежит расширению **undo**, поэтому убедитесь, что плагин [undo](guides/extensions-list.md#undo) включён. Подробнее об этом можно прочитать в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Этот метод определён в расширении **undo**, поэтому нужно включить плагин [undo](guides/extensions-list.md#undo). Подробности читайте в статье [Undo/Redo Functionality](guides/undo-redo.md).
 :::
 
-
-Возвращаемый стек состоит из действий пользователя для повтора (redo). Каждое действие включает набор команд. Команда - это объект со следующими свойствами:
+The returned stack is an array of the redo user actions. Each user action contains a set of commands. A command is an object with the following attributes:
  
 - **type** - (*string*) тип команды: "add/remove/update"
 - **entity** - (*string*) тип изменённого объекта: "task" или "link"
-- **value** - (*object*) обновлённый объект задачи/ссылки
-- **oldValue** - (*object*) объект задачи/ссылки до изменения
+- **value** - (*object*) изменённый объект задачи/ссылки
+- **oldValue** - (*object*) объект задачи/ссылки до изменений
 
-Пример приведён ниже:
+Посмотрите приведённый ниже пример:
 
-![get_redo_stack](/img/get_redo_stack.png)
-
-Метод **getRedoStack()** возвращает стек из 3 действий для повтора. Первое и второе действия содержат по 1 команде, третье - 3 команды.
+Метод **getRedoStack()** возвращает стек из 3 действий повторного выполнения. Первое и второе действия содержат по 1 команде, а третье содержит 3 команды.
 
 ### Related API
 - [getUndoStack](api/method/getundostack.md)
@@ -50,8 +47,7 @@ var stack = gantt.getRedoStack();
 - [clearRedoStack](api/method/clearredostack.md)
 
 ### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md#gettingthestackofstoredundoredocommands)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
 - добавлено в версии 4.0
-

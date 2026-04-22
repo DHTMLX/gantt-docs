@@ -1,7 +1,7 @@
 ---
 sidebar_label: skin
-title: skin config
-description: "stellt die aktuell auf das Gantt-Diagramm angewendete skin bereit"
+title: skin-Konfiguration
+description: "gibt die aktuelle Skin des Gantt-Diagramms zurück"
 ---
 
 # skin
@@ -22,5 +22,5 @@ var currentSkin = gantt.skin;// -> "terrace"
 - [skins](api/other/skins.md)
 
 ### Related Guides
-- ["Skins"](guides/skins.md)
+- [Skins](guides/skins.md)
 

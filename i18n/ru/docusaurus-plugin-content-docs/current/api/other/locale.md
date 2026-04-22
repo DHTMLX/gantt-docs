@@ -8,7 +8,7 @@ description: "объект locale, используемый в данный мо
 
 ### Description
 
-@short: Объект locale, используемый в данный момент, содержащий регионально-специфичные подписи для Gantt chart
+@short: Объект текущей локали (региональные подписи) диаграммы Ганта
 
 @signature: locale: GanttLocale
 
@@ -26,91 +26,93 @@ gantt.i18n.setLocale({
         day_short: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     },
     labels: {
-        new_task: "Новая задача",
-        icon_save: "Сохранить",
-        icon_cancel: "Отмена",
-        icon_details: "Детали",
-        icon_edit: "Редактировать",
-        icon_delete: "Удалить",
-        gantt_save_btn: "Новая метка",
-          gantt_cancel_btn: "Новая метка",
-          gantt_delete_btn: "Новая метка",
-        confirm_closing: "",// Ваши изменения будут потеряны, вы уверены?
-        confirm_deleting: "Задача будет удалена навсегда, вы уверены?",
-        section_description: "Описание",
-        section_time: "Период времени",
-        section_type: "Тип",
+        new_task: "New task",
+        icon_save: "Save",
+        icon_cancel: "Cancel",
+        icon_details: "Details",
+        icon_edit: "Edit",
+        icon_delete: "Delete",
+        gantt_save_btn: "New Label",
+          gantt_cancel_btn: "New Label",
+          gantt_delete_btn: "New Label",
+        confirm_closing: "",// Your changes will be lost, are you sure?
+        confirm_deleting: "Task will be deleted permanently, are you sure?",
+        section_description: "Description",
+        section_time: "Time period",
+        section_type: "Type",
 
         /* grid columns */
         column_wbs: "WBS",
-        column_text: "Название задачи",
-        column_start_date: "Время начала",
-        column_duration: "Длительность",
+        column_text: "Task name",
+        column_start_date: "Start time",
+        column_duration: "Duration",
         column_add: "",
 
         /* link confirmation */
-        link: "Связь",
-        confirm_link_deleting: "будет удалена",
-        link_start: " (начало)",
-        link_end: " (конец)",
+        link: "Link",
+        confirm_link_deleting: "will be deleted",
+        link_start: " (start)",
+        link_end: " (end)",
 
-        type_task: "Задача",
-        type_project: "Проект",
-        type_milestone: "Веха",
+        type_task: "Task",
+        type_project: "Project",
+        type_milestone: "Milestone",
 
-        minutes: "Минуты",
-        hours: "Часы",
-        days: "Дни",
-        weeks: "Неделя",
-        months: "Месяцы",
-        years: "Годы",
+        minutes: "Minutes",
+        hours: "Hours",
+        days: "Days",
+        weeks: "Week",
+        months: "Months",
+        years: "Years",
 
         /* message popup */
         message_ok: "OK",
-        message_cancel: "Отмена",
+        message_cancel: "Cancel",
 
         /* constraints */
-        section_constraint: "Ограничение",
-        constraint_type: "Тип ограничения",
-        constraint_date: "Дата ограничения",
-        asap: "Как можно скорее",
-        alap: "Как можно позже",
-        snet: "Начать не раньше",
-        snlt: "Начать не позже",
-        fnet: "Закончить не раньше",
-        fnlt: "Закончить не позже",
-        mso: "Должен начаться",
-        mfo: "Должен закончиться",
+        section_constraint: "Constraint",
+        constraint_type: "Constraint type",
+        constraint_date: "Constraint date",
+        asap: "As Soon As Possible",
+        alap: "As Late As Possible",
+        snet: "Start No Earlier Than",
+        snlt: "Start No Later Than",
+        fnet: "Finish No Earlier Than",
+        fnlt: "Finish No Later Than",
+        mso: "Must Start On",
+        mfo: "Must Finish On",
 
         /* resource control */
-        resources_filter_placeholder: "введите для фильтра",
-        resources_filter_label: "скрыть пустые"
+        resources_filter_placeholder: "type to filter",
+        resources_filter_label: "hide empty"
     }
 });
 
 console.log(gantt.locale);
 ~~~
 
+
 ### Details
 
-Текущие настройки locale хранятся в объекте **gantt.locale** и могут быть обновлены напрямую, например:
+Текущая локаль доступна в объекте **gantt.locale** и может быть изменена напрямую, как показано ниже:
 
 ~~~js
-gantt.locale.labels.new_task = "Новая задача";
+gantt.locale.labels.new_task = "New task";
 ~~~
 
-Это эквивалентно:
+
+К этому эквивалентно:
 
 ~~~js
 gantt.i18n.setLocale({
     labels: {
-        new_task: "Новая задача"
+        new_task: "New task"
     }
 });    
 ~~~
 
-Оба метода поддерживаются и работают корректно. Однако рекомендуется использовать API объекта [gantt.i18n](api/other/i18n.md).
+
+Оба подхода являются допустимыми и поддерживаются. Рекомендуем использовать API объекта [gantt.i18n](api/other/i18n.md).
 
 ### Related Guides
 - [Локализация](guides/localization.md)
-

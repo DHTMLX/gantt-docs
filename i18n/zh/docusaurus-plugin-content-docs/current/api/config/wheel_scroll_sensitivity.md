@@ -1,14 +1,14 @@
 ---
 sidebar_label: wheel_scroll_sensitivity
-title: wheel_scroll_sensitivity config
-description: "控制使用鼠标滚轮时甘特图滚动的速度"
+title: wheel_scroll_sensitivity 配置
+description: "指定通过鼠标滚轮滚动甘特图的速度"
 ---
 
 # wheel_scroll_sensitivity
 
 ### Description
 
-@short: 控制使用鼠标滚轮时甘特图滚动的速度
+@short: 指定通过鼠标滚轮滚动甘特图的速度
 
 @signature: wheel_scroll_sensitivity: undefined | number | \{ x?: number; y?: number; \}
 
@@ -28,14 +28,14 @@ gantt.config.wheel_scroll_sensitivity = {
 };
 ~~~
 
-**Default value:** undefined
+**默认值:** undefined
 
 ### Details
 
-该配置对象包含以下属性:
+该对象配置具有以下属性：
 
-- **x** - (*number*) - 控制水平滚动速度
-- **y** - (*number*) - 控制垂直滚动速度
+- **x** - (*number*) - 水平方向的速度
+- **y** - (*number*) - 垂直方向的速度
 
 ### Change log
-- 在 v7.0.11 中新增
+- 新增于 v7.0.11

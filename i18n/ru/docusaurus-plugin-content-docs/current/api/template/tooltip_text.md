@@ -1,25 +1,25 @@
 ---
 sidebar_label: tooltip_text
 title: tooltip_text template
-description: "задаёт текст, отображаемый в tooltip'ах"
+description: "задает текст подсказок"
 ---
 
 # tooltip_text
 
 ### Description
 
-@short: Задаёт текст, отображаемый в tooltip'ах
+@short: Определяет текст подсказок
 
 @signature: tooltip_text: (start: Date, end: Date, task: Task) =\> string | void;
 
 ### Parameters
 
-- `start` - (required) *Date* - дата, когда задача планируется к началу
-- `end` - (required) *Date* - дата, когда задача планируется к завершению
-- `task` - (required) *Task* - объект задачи
+- `start` - (обязательно) *Date* - дата начала запланированной задачи
+- `end` - (обязательно) *Date* - дата завершения запланированной задачи
+- `task` - (обязательно) *Task* - объект задачи
 
 ### Returns
-- ` text` - (string | void) - HTML-строка, которая будет отображаться в tooltip'е диаграммы Ганта
+- ` text` - (string | void) - HTML-текст, который будет отображаться на диаграмме Ганта
 
 ### Example
 
@@ -34,13 +34,12 @@ gantt.templates.tooltip_text = function(start,end,task){
 ### Details
 
 :::note
- Этот шаблон является частью расширения **tooltip**, поэтому плагин [tooltip](guides/extensions-list.md#tooltip) должен быть включён. Более подробную информацию можно найти в статье [Тултипы для элементов Gantt](guides/tooltips.md). 
+Этот шаблон определяется в расширении **tooltip**, поэтому необходимо активировать плагин [tooltip](guides/extensions-list.md#tooltip). Подробности читайте в статье [Tooltips for Gantt Elements](guides/tooltips.md).
 :::
 
 ### Related API
 - [tooltip_date_format](api/template/tooltip_date_format.md)
 
 ### Related Guides
-- [Шаблоны тултипов](guides/tooltip-templates.md)
-- [Тултипы для элементов Gantt](guides/tooltips.md)
-
+- [Шаблоны подсказок](guides/tooltip-templates.md)
+- [Подсказки для элементов диаграммы Ганта](guides/tooltips.md)

@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskByIndex
-title: getTaskByIndex method
-description: "根据全局任务索引返回对应的任务"
+title: getTaskByIndex 方法
+description: "根据其全局任务索引返回一个任务"
 ---
 
 # getTaskByIndex
 
 ### Description
 
-@short: 根据全局任务索引返回对应的任务
+@short: 根据其全局任务索引返回一个任务
 
 @signature: getTaskByIndex: (index: number | string) =\> Task
 
 ### Parameters
 
-- `index` - (required) *number | string* -        任务在整体任务列表中的位置（从零开始）
+- `index` - (必填) *number | string* -        树中的任务索引（从 0 开始编号）
 
 ### Returns
-- ` task` - (Task) - 对应指定索引的任务对象
+- ` task` - (Task) - 一个任务对象
 
 ### Example
 
@@ -30,4 +30,3 @@ const task = gantt.getTaskByIndex(10);
 
 ### Related API
 - [getGlobalTaskIndex](api/method/getglobaltaskindex.md)
-

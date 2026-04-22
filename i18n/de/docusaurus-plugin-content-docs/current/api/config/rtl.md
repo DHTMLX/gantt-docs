@@ -1,14 +1,14 @@
 ---
 sidebar_label: rtl
-title: rtl config
-description: "wechselt Gantt in den Rechts-nach-Links-Modus"
+title: RTL-Konfiguration
+description: "Schaltet Gantt in den Rechts-nach-Links-Modus um"
 ---
 
-# rtl
+# RTL
 
 ### Description
 
-@short: Wechselt Gantt in den Rechts-nach-Links-Modus
+@short: Umschaltet Gantt in den Rechts-nach-Links-Modus
 
 @signature: rtl: boolean
 
@@ -33,18 +33,19 @@ gantt.config.layout = {
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+
+**Standardwert:** false
 
 ### Related samples
-- [Right to left gantt](https://docs.dhtmlx.com/gantt/samples/10_layout/04_rtl.html)
+- [Gantt rechts-nach-links](https://docs.dhtmlx.com/gantt/samples/10_layout/04_rtl.html)
 
 ### Details
 
-Wenn diese Option durch Setzen auf **true** aktiviert wird, ändert sich die Richtung der Zeitskala der timeline und die Reihenfolge der Zeilen im grid auf rechts-nach-links.
+Wenn die Konfigurationsoption auf **true** gesetzt wird, ändert sich die Richtung der Zeitachse in der Timeline und die Reihenfolge der Zeilen im Grid zu Rechts-nach-Links.
 
-Diese Einstellung aktualisiert die Gantt-Layout-Konfiguration nicht automatisch, daher müssen Sie das Layout selbst anpassen, um die Positionen von grid und timeline zu tauschen.
+Es wirkt sich nicht auf das [Layout](api/config/layout.md) des Gantt aus, daher müssen Sie das Layout neu definieren, um die Positionen von Grid und Timeline zu tauschen.
 
-Sie sollten auch die [Textausrichtung für Labels im Gantt anpassen](https://developer.mozilla.org/en-US/docs/Web/CSS/direction).
+Vielleicht möchten Sie auch [die Richtung des Textes für Labels, die im Gantt verwendet werden, festlegen](https://developer.mozilla.org/en-US/docs/Web/CSS/direction).
 
 ### Related Guides
-- ["RTL (Rechts-nach-links) Modus"](guides/rtl-mode.md)
+- [RTL (Right-to-left) Modus](guides/rtl-mode.md)

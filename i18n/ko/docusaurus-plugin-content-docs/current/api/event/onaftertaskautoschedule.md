@@ -1,7 +1,7 @@
 ---
 sidebar_label: onAfterTaskAutoSchedule
 title: onAfterTaskAutoSchedule event
-description: "자동 스케줄링된 모든 작업에 대해 트리거됩니다."
+description: "자동으로 일정이 잡힌 각 태스크에 대해 발생합니다"
 ---
 
 # onAfterTaskAutoSchedule
@@ -16,16 +16,16 @@ description: "자동 스케줄링된 모든 작업에 대해 트리거됩니다.
 
 ### Parameters
 
-- `task` - (required) *Task* - 작업 객체
-- `start` - (required) *Date* - 업데이트된 시작 날짜
-- `link` - (required) *Link* - 제약 조건을 담당하는 링크 객체
+- `task` - (required) *Task* - 태스크 객체
+- `start` - (required) *Date* - 새로운 시작 날짜
+- `link` - (required) *Link* - 제약 조건을 생성하는 링크 객체
 - `predecessor` - (required) *Task* - 선행 작업 객체
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterTaskAutoSchedule",function(task, start, link, predecessor){
-    // 여기에 커스텀 로직을 작성하세요
+    // 여기에 커스텀 로직 작성
 });
 ~~~
 
@@ -35,7 +35,7 @@ gantt.attachEvent("onAfterTaskAutoSchedule",function(task, start, link, predeces
 ### Details
 
 :::note
-이 이벤트는 **auto_scheduling** 확장의 일부이므로, [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인을 반드시 활성화해야 합니다. 자세한 내용은 [자동 스케줄링](guides/auto-scheduling.md) 문서를 참고하세요. 
+이 이벤트는 **auto_scheduling** 확장에 정의되어 있으므로 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인을 활성화해야 합니다. 자세한 내용은 [Auto Scheduling](guides/auto-scheduling.md) 문서를 참조하십시오. 
 :::
 
 ### Related API

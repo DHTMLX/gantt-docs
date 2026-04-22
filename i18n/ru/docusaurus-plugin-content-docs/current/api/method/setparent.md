@@ -1,21 +1,21 @@
 ---
 sidebar_label: setParent
 title: setParent method
-description: "назначить родительскую задачу для задачи"
+description: "Назначение родителя для задачи"
 ---
 
 # setParent
 
 ### Description
 
-@short: Назначить родительскую задачу для задачи
+@short: Установить родителя для задачи
 
-@signature: setParent: (task: Task, pid: number | string) =\> void
+@signature: setParent: (task: Task, pid: number | string) => void
 
 ### Parameters
 
-- `task` - (required) *Task* - объект задачи
-- `pid` - (required) *number | string* -                id родительской задачи
+- `task` - (обязательно) *Task* - объект задачи
+- `pid` - (обязательно) *number | string* - идентификатор родительской задачи
 
 ### Example
 

@@ -3,15 +3,16 @@ title: "Множественный выбор задач"
 sidebar_label: "Множественный выбор задач"
 ---
 
-# Множественный выбор задач
+# Множественный выбор задач 
 
-Начиная с версии 3.2, библиотека включает расширение **multiselect**, которое позволяет выбирать несколько задач одновременно.
+Начиная с версии 3.2, библиотека предоставляет расширение **multiselect**, которое позволяет выбрать несколько задач одновременно.
 
 <div style="text-align:center;">![multiselection](/img/multiselection.png)</div>
 
+
 ## Активация множественного выбора задач
 
-Чтобы включить множественный выбор задач, активируйте его с помощью метода [gantt.plugins](api/method/plugins.md):
+Чтобы активировать множественный выбор задач для задач, включите его с помощью метода [gantt.plugins](api/method/plugins.md):
 
 ~~~js
 <!DOCTYPE html>
@@ -24,26 +25,28 @@ sidebar_label: "Множественный выбор задач"
     gantt.plugins({ /*!*/
         multiselect: true /*!*/
     }); /*!*/
-    //ваш код будет здесь
+    //your code will be here
 </body>
 </html>
 ~~~
 
-[Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+[Множественный выбор и увеличение/уменьшение отступа задач](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-После включения множественный выбор задач становится активным автоматически.
+После активации расширения множественный выбор задач будет автоматически включен.
 
 
 Чтобы отключить расширение, используйте опцию [multiselect](api/config/multiselect.md):
-**Disabling multi-task selection**
+
+**Отключение множественного выбора задач**
 ~~~js
 gantt.config.multiselect = false; 
 ~~~
 
-## Одновременное обновление нескольких задач
 
-Чтобы изменить несколько задач или связей одновременно, используйте метод [batchUpdate](api/method/batchupdate.md):
+## Одноразовое обновление для нескольких задач
+
+Чтобы обновлять сразу несколько задач/ссылок, используйте метод [batchUpdate](api/method/batchupdate.md):
 
 ~~~js
 gantt.batchUpdate(function () {
@@ -56,40 +59,40 @@ gantt.batchUpdate(function () {
     }
 });
 ~~~
-Этот метод позволяет обновлять сразу несколько задач или связей за одно повторное отображение, вместо нескольких обновлений и рендеров.
+Метод позволяет обновлять сразу несколько задач/ссылок одним повторным рендерингом, вместо выполнения множества обновлений с несколькими рендерингами.
 
 
-[Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+[Множественный выбор и увеличение/уменьшение отступа задач](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
 ## Итератор
 
-Чтобы перебрать все выбранные задачи в Gantt, используйте метод [eachSelectedTask](api/method/eachselectedtask.md):
+Чтобы пройтись по всем выбранным задачам на диаграмме Gantt, используйте метод [eachSelectedTask](api/method/eachselectedtask.md):
 
 ~~~js
 gantt.batchUpdate(function () {
     gantt.eachSelectedTask(function(task_id){
-        if(gantt.isTaskExists(task_id))
+        if (gantt.isTaskExists(task_id))
             gantt.deleteTask(task_id);
     });
 });
 ~~~
 
 
-[Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+[Множественный выбор и увеличение/уменьшение отступа задач](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
 ## Одновременное увеличение/уменьшение отступа
 
-С помощью множественного выбора можно применять операции сразу к нескольким задачам. Например, вы можете сдвигать задачи вправо или влево, превращая их в подзадачи или возвращая обратно на основной уровень.
+Множественный выбор задач позволяет применять различные операции к нескольким задачам одновременно. Например, можно выполнить увеличение/уменьшение отступа, тем самым преобразуя задачи в подзадачи и наоборот.
 
 
-[Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+[Множественный выбор и увеличение/уменьшение отступа задач](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
 ## Проверка, выбрана ли задача
 
-Чтобы узнать, выбрана ли задача в данный момент, используйте метод [isSelectedTask](api/method/isselectedtask.md):
+Чтобы проверить, выбрана ли задача в данный момент, используйте метод [isSelectedTask](api/method/isselectedtask.md):
 
 ~~~js
 gantt.templates.task_class = 
@@ -100,19 +103,19 @@ gantt.templates.task_row_class = function (start, end, task) {
 };
 ~~~
 
-[Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+[Множественный выбор и увеличение/уменьшение отступа задач](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-Чтобы переключить задачу между выбранным и невыбранным состоянием, используйте метод [toggleTaskSelection](api/method/toggletaskselection.md):
+Чтобы переключаться между выбранным и невыбранным состояниями, используйте метод [toggleTaskSelection](api/method/toggletaskselection.md):
 
 ~~~js
-gantt.toggleTaskSelection("t_1"); //"t_1" - идентификатор задачи
+gantt.toggleTaskSelection("t_1"); //"t_1" is the task's id
 gantt.render();
 ~~~
 
 ## Получение всех выбранных задач
 
-Чтобы получить все выбранные в данный момент задачи, используйте метод [getSelectedTasks](api/method/getselectedtasks.md):
+Чтобы получить все задачи, которые в данный момент выбраны, используйте метод [getSelectedTasks](api/method/getselectedtasks.md):
 
 ~~~js
 gantt.getSelectedTasks();
@@ -124,35 +127,35 @@ gantt.getSelectedTasks();
 gantt.getLastSelectedTask();
 ~~~
 
-## Ограничение выбора задач одним уровнем
+## Ограничение множественного выбора внутри одного уровня
 
-Если вы хотите ограничить выбор задачами только на одном уровне, используйте опцию [multiselect_one_level](api/config/multiselect_one_level.md):
+Чтобы запретить выбор задач с разных уровней, используйте опцию [multiselect_one_level](api/config/multiselect_one_level.md):
 
 ~~~js
 gantt.config.multiselect_one_level = true; 
 gantt.init('gantt_here');
 ~~~
 
-## Множественный выбор задач и drag-n-drop {#multitaskselectionanddragndrop}
+## Множественный выбор и перетаскивание {#multitaskselectionanddragndrop}
 
-С включённым расширением **multiselect.js** при удерживании Ctrl или Shift можно выбрать несколько задач и перетаскивать их горизонтально вместе.
+Когда активировано расширение **multiselect.js**, можно выбрать несколько задач, удерживая клавишу Ctrl или Shift и перетаскивая выбранные задачи горизонтально сразу.
 
-Чтобы отключить эту возможность, установите опцию [drag_multiple](api/config/drag_multiple.md) в *false*:
+Чтобы отключить эту функциональность, установите метод [drag_multiple](api/config/drag_multiple.md) в *false*:
 
 ~~~js
 gantt.config.drag_multiple = true; 
 ~~~
 
 
-[Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+[Множественный выбор и увеличение/уменьшение отступа задач](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 
-## Открытие редактора в один клик
+## Открытие редактора одним кликом
 
-В режиме одиночного выбора клик по задаче сразу открывает встроенный редактор.
+В режиме одиночного выбора Gantt открывает встроенный inline-редактор после клика по задаче. 
 
-В режиме **множественного выбора** клик по невыбранной задаче выделяет её, а редактор откроется только после второго клика. 
-Чтобы редактор открывался при первом клике даже в режиме множественного выбора, включите настройку [inline_editors_multiselect_open](api/config/inline_editors_multiselect_open.md).
+В режиме **множественного выбора** после клика по невыбранной задаче Gantt выберет её и откроет [inline editor](guides/inline-editing.md) только после второго клика. 
+Если вы хотите, чтобы Gantt открывал inline-editor после первого клика, включите конфигурацию [inline_editors_multiselect_open](api/config/inline_editors_multiselect_open.md).
 
 ~~~js
 gantt.plugins({
@@ -164,16 +167,15 @@ gantt.plugins({
 gantt.config.inline_editors_multiselect_open = true;
 ~~~
 
-## События API
+## События API {#apievents}
 
-Когда активен множественный выбор задач, выделение одной или нескольких задач вызывает как общие события [onTaskSelected](api/event/ontaskselected.md) / [onTaskUnselected](api/event/ontaskunselected.md), так и события, специфичные для расширения multiselect.
+Когда включен множественный выбор задач, выбор задачи или диапазона задач будет вызывать как общие события [onTaskSelected] / [onTaskUnselected], так и события, специфичные для расширения multiselect.
 
-Множественный выбор задач вызывает следующий поток событий:
+У множественного выбора задач есть следующий поток событий:
 
-- [onBeforeMultiSelect](api/event/onbeforemultiselect.md) - срабатывает перед выбором задачи или диапазона задач; событие можно заблокировать
-- [onBeforeTaskMultiSelect](api/event/onbeforetaskmultiselect.md) - срабатывает перед изменением состояния выбора отдельной задачи (выделение или снятие выделения); событие можно заблокировать
-- [onTaskMultiSelect](api/event/ontaskmultiselect.md) - срабатывает после изменения состояния выбора задачи
-- [onTaskUnselected](api/event/ontaskunselected.md) - вызывается для каждой задачи, с которой снято выделение в диапазоне
-- [onTaskSelected](api/event/ontaskselected.md) - вызывается для каждой задачи, которая была выбрана в диапазоне
-- [onMultiSelect](api/event/onmultiselect.md) - срабатывает после завершения выбора задачи или диапазона задач
-
+- [onBeforeMultiSelect] - срабатывает до выбора задачи или диапазона задач, блокируемое
+- [onBeforeTaskMultiSelect] - срабатывает до изменения состояния выбора задачи (задача будет выбрана или снята с выбора), блокируемое
+- [onTaskMultiSelect] - срабатывает после изменения состояния выбора задачи (задача выбрана/снята с выбора)
+- [onTaskUnselected] - вызывается для каждой задачи диапазона множественного выбора
+- [onTaskSelected] - вызывается для каждой задачи диапазона множественного выбора
+- [onMultiSelect] - срабатывает после завершения выбора задачи или диапазона задач

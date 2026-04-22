@@ -1,20 +1,22 @@
 ---
 sidebar_label: exportToPNG
-title: exportToPNG method
-description: "Gantt 차트를 PNG 이미지로 내보냅니다."
+title: exportToPNG 메서드
+description: "PNG 형식으로 간트 차트를 내보냅니다"
 ---
 
 # exportToPNG
 
 ### Description
 
-@short: Gantt 차트를 PNG 이미지로 내보냅니다.
+@short: PNG 형식으로 간트 차트를 내보냅니다
 
-@signature: exportToPNG: (_export_?: any) =\> void
+@signature: exportToPNG: (_export_?: any) => void
 
 ### Parameters
 
-- `export` - (optional) *object* - 선택 사항, 내보내기 옵션을 포함하는 객체 (아래 세부 정보 참조)
+- `export` - object - optional, an object with export settings (see the details)
+
+- `export` - 객체 - 선택적, 내보내기 설정이 담긴 객체(세부 내용 참조)
 
 ### Example
 
@@ -28,17 +30,17 @@ gantt.exportToPNG({
 
 //또는
 gantt.exportToPNG({
-    name:"mygantt.png",
-    header:"<h1>My company</h1>",
-    footer:"<h4>Bottom line</h4>",
-    locale:"en",
-    start:"01-04-2013",
-    end:"11-04-2013",
-    skin:'terrace',
-    data:{ },
-    server:"https://myapp.com/myexport/gantt",
-    raw:true,
-    callback: function(res){
+    name: "mygantt.png",
+    header: "<h1>My company</h1>",
+    footer: "<h4>Bottom line</h4>",
+    locale: "en",
+    start: "01-04-2026",
+    end: "11-04-2026",
+    skin: "terrace",
+    data: { },
+    server: "https://myapp.com/myexport/gantt",
+    raw: true,
+    callback: (res) => {
         alert(res.url);
     }
 });
@@ -47,104 +49,104 @@ gantt.exportToPNG({
 ### Details
 
 :::note
-이 메서드는 **export** 확장의 일부이므로, [export_api](guides/extensions-list.md#exportservice) 플러그인이 활성화되어 있는지 확인하세요. 자세한 내용은 [Export to PDF and PNG](guides/export.md) 문서를 참고하시기 바랍니다. 
+이 메서드는 export 확장에 정의되어 있으므로 export_api 플러그인을 활성화해야 합니다. 자세한 내용은 [](guides/export.md) 문서를 참조하십시오.
 :::
 
 :::note
-Gantt 버전이 8.0 미만인 경우, 온라인 내보내기 서비스를 사용하려면 페이지에 **https://export.dhtmlx.com/gantt/api.js** 스크립트를 포함해야 합니다. 예:
+Gantt 버전이 8.0 미만인 경우 온라인 내보내기 서비스를 활성화하려면 페이지에 `https://export.dhtmlx.com/gantt/api.js`를 포함해야 합니다. 예:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
- 
+
 :::
 
 [exportToPNG](api/method/exporttopng.md) 메서드는 여러 선택적 속성을 포함하는 객체를 파라미터로 받습니다:
 
 <table class="webixdoc_links">
-  <tbody>
+	<tbody>
+  	<tr>
+			<td class="webixdoc_links0"><b>name</b></td>
+			<td>(<i>string</i>) 출력 파일의 이름</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) 내보낸 PNG 파일의 이름</td>
-  </tr>
+			<td class="webixdoc_links0"><b>skin</b></td>
+			<td>(<i>'terrace', 'skyblue', 'meadow', 'broadway'</i>) 출력 Gantt 차트의 스킨</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>skin</b></td>
-  <td>(<i>'terrace', 'skyblue', 'meadow', 'broadway'</i>) 내보낸 Gantt 차트의 시각적 테마</td>
-  </tr>
+			<td class="webixdoc_links0"><b>locale</b></td>
+			<td>(<i>string</i>) 출력 Gantt 차트에서 사용할 언어를 설정합니다</td>
+		</tr> 
   <tr>
-  <td class="webixdoc_links0"><b>locale</b></td>
-  <td>(<i>string</i>) 내보낸 Gantt 차트의 언어 설정</td>
-  </tr> 
+			<td class="webixdoc_links0"><b>start</b></td>
+			<td>(<i>string</i>) 출력 Gantt 차트에 표시될 데이터 범위의 시작 날짜를 설정합니다. 날짜 형식은 [](api/config/date_format.md) 구성에서 정의됩니다</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>start</b></td>
-  <td>(<i>string</i>) 내보낸 차트에 표시할 데이터 범위의 시작 날짜. 날짜 형식은 [date_format](api/config/date_format.md) 설정을 따릅니다.</td>
-  </tr>
+			<td class="webixdoc_links0"><b>end</b></td>
+			<td>(<i>string</i>) 출력 Gantt 차트에 표시될 데이터 범위의 종료 날짜를 설정합니다. 날짜 형식은 [](api/config/date_format.md) 구성에서 정의됩니다</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>end</b></td>
-  <td>(<i>string</i>) 내보낸 차트에 표시할 데이터 범위의 종료 날짜. 날짜 형식은 [date_format](api/config/date_format.md) 설정을 따릅니다.</td>
-  </tr>
+			<td class="webixdoc_links0"><b>data</b></td>
+			<td>(<i>object</i>) 출력 Gantt 차트에 표시될 사용자 정의 데이터 소스를 설정합니다</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>data</b></td>
-  <td>(<i>object</i>) 내보내기에 사용할 커스텀 데이터 소스</td>
-  </tr>
+			<td class="webixdoc_links0"><b>header</b></td>
+			<td>(<i>string</i>) 출력 PNG 이미지에 추가될 헤더를 지정합니다. 주의: HTML을 사용할 수 있습니다</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>header</b></td>
-  <td>(<i>string</i>) 내보낸 PNG에 추가할 헤더 HTML 콘텐츠</td>
-  </tr>
+			<td class="webixdoc_links0"><b>footer</b></td>
+			<td>(<i>string</i>) 출력 PNG 이미지에 추가될 푸터를 지정합니다. 주의: HTML을 사용할 수 있습니다</td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>footer</b></td>
-  <td>(<i>string</i>) 내보낸 PNG에 추가할 푸터 HTML 콘텐츠</td>
-  </tr>
+			<td class="webixdoc_links0"><b>server</b></td>
+			<td>(<i>string</i>) 요청의 API 엔드포인트를 설정합니다. 로컬 설치의 export 서비스와 함께 사용할 수 있습니다. 기본값은 <strong>https://export.dhtmlx.com/gantt</strong></td>
+		</tr>
   <tr>
-  <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) 내보내기 요청에 사용할 API 엔드포인트 URL. 로컬 내보내기 서비스를 사용하는 경우 유용합니다. 기본값은 <strong>https://export.dhtmlx.com/gantt</strong>입니다.</td>
-  </tr>
-  <tr>
-  <td class="webixdoc_links0"><b>raw</b></td>
-  <td>(<i>boolean</i>) true로 설정하면 커스텀 요소를 포함하여 Gantt 마크업을 그대로 내보냅니다. 기본값은 <em>false</em>입니다. [자세한 내용](guides/export.md#exportingcustommarkupandstyles)</td>
-  </tr>
-  <tr>
-  <td class="webixdoc_links0"><b>callback</b></td>
-  <td>(<i>function</i>) 생성된 PNG를 다운로드할 수 있는 URL이 포함된 JSON 객체를 받는 콜백 함수</td>
-  </tr>
-  <tr>
-  <td class="webixdoc_links0"><b>additional_settings</b></td>
-  <td>(<i>object</i>) 추가 설정, 포함 항목:
-  <ul><li><b>width</b> - (<i>number|string</i>) 출력 페이지의 너비</li><li><b>height</b> - (<i>number|string</i>) 출력 페이지의 높이</li><b>width</b>와 <b>height</b>는 <b>slice_archive</b>가 설정된 경우 무시됩니다.<li><b>slice_archive</b> - (<i>boolean|object</i>) 큰 차트를 조각별로 내보내고 아카이브로 패키징하는 기능. 객체인 경우 <b>width</b>와 <b>height</b> 옵션을 받습니다. true로 설정하면 기본 조각 크기는 1000×1000입니다.</li><li><b>slice_check</b> - (<i>boolean</i>) 아카이브 내에 모든 조각이 올바르게 내보내졌는지 확인하는 HTML 페이지를 추가합니다.</li></ul></td>
-  </tr>
+			<td class="webixdoc_links0"><b>raw</b></td>
+			<td>(<i>boolean</i>) 모든 Gantt 마크업을 그대로, 모든 커스텀 요소와 함께 내보낼지 여부를 정의합니다. 기본값은 <em>false</em>입니다. [자세한 내용](guides/export.md#exportingcustommarkupandstyles) </td>
+		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>callback</b></td>
+			<td>(<i>function</i>) 생성된 PNG 파일의 다운로드 URL을 받으려면 callback 속성을 사용할 수 있습니다. 이 콜백은 url 속성을 가진 JSON 객체를 수신합니다</td>
+		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>additional_settings</b></td>
+			<td>(<i>object</i>) 추가 설정이 담긴 객체입니다. 이 객체에는 다음 속성들이 포함될 수 있습니다:
+			<ul><li><b>width</b> - (<i>number|string</i>) 출력 페이지의 너비</li><li><b>height</b> - (<i>number|string</i>) 출력 페이지의 높이</li><li>width와 height 매개변수는 <b>slice_archive</b>가 지정되면 무시됩니다.</li><li><b>slice_archive</b> - (<i>boolean|object</i>) 조각으로 큰 차트를 저장하고 아카이브에서 얻을 수 있도록 합니다. 객체로 사용할 때는 <b>width</b>와 <b>height</b> 옵션을 취합니다. 조각 크기가 정의되지 않은 경우(예: <i>slice_archive: true</i>) 기본 크기는 1000×1000입니다.</li><li><b>slice_check</b> - (<i>boolean</i>) 아카이브에 HTML 페이지를 추가합니다. 이 페이지를 통해 모든 조각이 올바르게 내보내졌는지 확인할 수 있습니다.</li></ul></td>
+		</tr>
   </tbody>
 </table>
 
 ## 큰 Gantt 차트를 조각별로 내보내기
 
-최대 내보내기 크기는 10000×10000 픽셀입니다.
+대용량 파일의 최대 크기는 10000х10000입니다.
 
-**additional_settings**의 **width**와 **height** 속성으로 크기를 조절할 수 있지만, 너비와 높이의 곱이 100000000 (10000×10000)을 초과하면 내보낸 PNG가 잘립니다.
+한 쪽의 크기를 키우고 다른 한 쪽을 이에 맞춰 줄일 수 있지만, width와 height의 곱이 100000000(10000×10000)을 넘으면 출력 PNG 이미지가 잘립니다.
 
-더 큰 차트를 처리하려면 **additional_settings**의 **slice_archive** 옵션을 사용하여 차트를 여러 조각으로 내보내고 아카이브로 묶을 수 있습니다:
+또한 additional_settings의 slice_archive 속성을 사용하여 조각으로 Gantt를 내보내고 아카이브로 얻는 기능이 있습니다:
 
 ~~~js
 gantt.exportToPNG({
     server: "https://export.dhtmlx.com/beta/gantt",
-    additional_settings:{
+    additional_settings: {
         //width: 2000,
         //height: 2000,
-          slice_archive: {width: 2000, height: 2000},
-          slice_check: true,
+        slice_archive: { width: 2000, height: 2000 },
+        slice_check: true,
     }
 });
 ~~~
 
 **예제:** [PNG 이미지로 내보내기](https://snippet.dhtmlx.com/2mprehlx)
 
-**slice_archive**를 객체로 설정하여 조각 크기를 지정할 수 있습니다:
+You can either define the sizes of the output PNG images via setting the attribute as an object with the *width* and *height* options:
 
 ~~~js
-slice_archive: {width: 2000, height: 2000}
+slice_archive: { width: 2000, height: 2000 }
 ~~~
 
-또는 단순히 true로 설정하여 기본 조각 크기 1000×1000을 사용할 수도 있습니다:
+or you can set the attribute to *true*. In this case, the exported pieces of the gantt will have default sizes: 1000×1000.
 
 ~~~js
 slice_archive: true
@@ -169,6 +171,7 @@ note 큰 차트를 내보낼 때는 [standalone export module](https://dhtmlx.co
 :::
 
 ### Related API
+
 - [exportToMSProject](api/method/exporttomsproject.md)
 - [exportToPrimaveraP6](api/method/exporttoprimaverap6.md)
 - [exportToExcel](api/method/exporttoexcel.md)
@@ -180,5 +183,6 @@ note 큰 차트를 내보낼 때는 [standalone export module](https://dhtmlx.co
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
+
 - [Export to PDF and PNG](guides/export.md)
 

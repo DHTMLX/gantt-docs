@@ -1,37 +1,37 @@
 ---
 sidebar_label: onTaskClick
 title: onTaskClick event
-description: "Wird ausgelöst, wenn ein Benutzer auf eine Aufgabenzeile im Grid-Bereich klickt (einschließlich der 'expand/collapse' und 'add task' Buttons) oder auf eine Aufgabenleiste innerhalb des Timeline-Bereichs."
+description: "ruft auf, wenn der Benutzer im Grid-Bereich auf eine Aufgabenzeile klickt (einschließlich der 'Ausklappen/Einblenden'-Schaltflächen und 'Aufgabe hinzufügen') oder auf eine Aufgabenleiste im Timeline-Bereich"
 ---
 
 # onTaskClick
 
 ### Description
 
-@short: Wird ausgelöst, wenn ein Benutzer auf eine Aufgabenzeile im Grid-Bereich klickt (einschließlich der 'expand/collapse' und 'add task' Buttons) oder auf eine Aufgabenleiste innerhalb des Timeline-Bereichs.
+@short: Ruft auf, wenn der Benutzer im Grid-Bereich auf eine Aufgabenzeile klickt (einschließlich der 'Ausklappen/Einblenden'-Schaltflächen und 'Aufgabe hinzufügen') oder auf eine Aufgabenleiste im Timeline-Bereich
 
 @signature: onTaskClick: (id: string | number, e?: Event) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID der angeklickten Aufgabe
+- `id` - (erforderlich) *string | number* - die ID der angeklickten Aufgabe
+- `e` - (optional) *Event* - ein natives Event-Objekt
 
 ### Returns
-- ` result` - (boolean) - gibt an, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder verhindert wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskClick", function(id,e){
-    //beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
 
 ### Details
 
-Dieses Event kann blockiert werden. Die Rückgabe von false verhindert das Standardverhalten (welches das Auswählen einer Aufgabe ist).
+Das Event ist blockierbar. Gibt man false zurück, wird der Standard-Handler abgebrochen (Auswahl einer Aufgabe)
 
 ### Related API
 - [onTaskDblClick](api/event/ontaskdblclick.md)
-

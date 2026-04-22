@@ -1,59 +1,59 @@
 ---
-title: "Lightbox 요소 작업하기"
-sidebar_label: "Lightbox 요소 작업하기"
+title: "라이트박스 요소 다루기"
+sidebar_label: "라이트박스 요소 다루기"
 ---
 
-# Lightbox 요소 작업하기
+# 라이트박스 요소 다루기
 
-## 컨트롤 값 가져오기/설정하기
+## 제어 값 가져오기/설정하기
 
-Lightbox 컨트롤의 값을 가져오거나 업데이트하려면 다음과 같이 [getLightboxSection](api/method/getlightboxsection.md) 메서드를 사용하세요:
+라이트박스 컨트롤의 값을 가져오거나 설정하려면 [getLightboxSection](api/method/getlightboxsection.md) 메서드를 아래와 같이 사용합니다:
 
 ~~~js
-// 값을 가져오기
+//값을 가져오려면
 var value = gantt.getLightboxSection('description').getValue();
 
-// 값을 설정하기
+//값을 설정하려면
 gantt.getLightboxSection('description').setValue('abc');
 ~~~
 
-## Lightbox가 열려있는지 확인하기
+## 라이트박스가 열려 있는지 확인하기
 
-현재 lightbox가 열려있는지 또는 닫혀있는지 확인하려면 [getState](api/method/getstate.md) 메서드가 반환하는 state 객체의 **lightbox** 속성을 확인하세요.
+라이트박스가 현재 열려 있는지 닫혀 있는지 확인하려면, [getState](api/method/getstate.md) 메서드가 반환하는 상태 객체의 **lightbox** 속성을 사용합니다.
 
- lightbox가 열려 있다면, 이 메서드는 열려있는 태스크의 id를 반환합니다. 그렇지 않으면 'null' 또는 'undefined'를 반환합니다.
+ 라이트박스가 열려 있다면 - 메서드는 열린 작업의 ID를 반환하고, 그렇지 않으면 'null' 또는 'undefined'가 반환됩니다.
 
 ~~~js
 if (gantt.getState().lightbox){
-    // lightbox가 열려있을 때의 코드
+    //열린 lighbox에 대한 코드
 } else {
-    // lightbox가 닫혀있을 때의 코드
+    //닫힌 lighbox에 대한 코드
 }
 ~~~
 
-## 데이터 속성을 lightbox 섹션에 매핑하기
+## 데이터 속성을 라이트박스 섹션에 매핑하기
 
-데이터 속성을 lightbox 섹션에 연결하려면, 섹션 객체의 **map_to** 속성을 사용하세요:
+데이터 속성을 라이트박스 섹션에 매핑하려면 섹션 객체의 **map_to** 속성을 사용합니다:
 
 ~~~js
-// "holders" 섹션을 "holder"라는 데이터 속성에 할당
+//"holders" 섹션을 "holder"라는 이름의 데이터 속성에 매핑
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, type:"textarea", map_to:"text", focus:true},
+    {name:"description",height:38, type:"textarea", map_to:"text", focus:true},
     {name:"holders",     height:22, type:"textarea", map_to:"holder"},      /*!*/                                                                
     {name:"time",         height:72, type:"duration", map_to:"auto"}
 ];
 ~~~
 
-## Lightbox 컨트롤의 기본값 설정하기
+## 라이트박스의 컨트롤 기본값 설정
 
-Lightbox 섹션에 기본값을 지정하려면, 섹션 객체의 **default_value** 속성을 사용하세요.
+라이트박스 섹션의 기본값을 설정하려면 섹션 객체의 **default_value** 속성을 사용합니다.
 
-예를 들어, 작업의 우선순위를 표시하는 커스텀 "Priority" 섹션을 lightbox에 추가하면, 새 이벤트를 생성할 때 해당 필드는 비어 있습니다. 낮은 우선순위와 같은 기본값을 설정하려면 아래와 같이 lightbox를 구성하세요:
+예를 들어, 라이트박스에 우선순위를 표시하는 사용자 정의 섹션인 "Priority"를 추가했다고 가정합니다. 사용자가 새 이벤트를 만들 때 해당 필드는 비어 있습니다. 이러한 동작을 수정하고 기본값으로 예를 들어 낮은 우선순위를 설정하려면, 아래와 같이 라이트박스를 지정합니다:
 
 ~~~js
 var opts = [
     { key:1, label: "High" },                                            
-    { key:2, label: "Normal" },                                         
+    { key:2, label: "Normal" },                                          
     { key:3, label: "Low" }                                            
 ];
 
@@ -66,10 +66,10 @@ gantt.config.lightbox.sections = [
 ~~~
 
 :::note
-**default_value** 속성은 lightbox 섹션의 초기값만 설정합니다. 즉, 새 이벤트는 사용자가 lightbox를 열고 이벤트를 저장한 후에만 이 값을 받습니다.
+**default_value** 속성은 새 이벤트의 기본값이 아니라 라이트박스 섹션의 기본값을 설정합니다. 즉, 새 이벤트는 사용자가 라이트박스를 열고 이벤트를 저장한 후에야 지정된 값을 받습니다.
 :::
 
-새 이벤트가 생성될 때 바로 기본값을 할당하고 싶다면, [onTaskCreated](api/event/ontaskcreated.md) 이벤트를 사용하세요:
+새 이벤트에 직접 기본값을 설정하려면 [onTaskCreated](api/event/ontaskcreated.md) 이벤트를 사용합니다:
 
 ~~~js
 gantt.attachEvent("onTaskCreated", function(id, task){
@@ -78,25 +78,23 @@ gantt.attachEvent("onTaskCreated", function(id, task){
 });
 ~~~
 
-## 일부 이벤트에 대해 섹션 숨기기
+## 특정 이벤트에서 섹션 숨기기
 
-특정 이벤트에 대해 섹션을 숨기려면, 다음과 같이 **set_value** 메서드를 오버라이드하세요:
-
-
+특정 이벤트에서 섹션을 숨기려면 아래와 같이 **set_value** 메서드를 재정의합니다:
 
 ~~~js
-gantt.form_blocks.textarea.set_value = function(node, value, ev){
-    node.firstChild.value = value || "";
-    var style = ev.some_property ? "" : "none";
-    node.style.display = style; // 에디터 영역
-    node.previousSibling.style.display = style; // 섹션 헤더
-    gantt.resizeLightbox(); // lightbox 크기 조정
+gantt.form_blocks.textarea.set_value="function(node,value,ev){"
+    node.firstChild.value="value||""";
+    var style = ev.some_property?"":"none";
+    node.style.display="style;" // 에디터 영역
+    node.previousSibling.style.display="style;" //섹션 헤더
+    gantt.resizeLightbox(); // 라이트박스의 올바른 크기 조정
 }
 ~~~
 
-## 섹션과 라벨을 한 줄에 표시하기
+## 섹션과 레이블을 같은 줄에 배치하기
 
-[wide_form](api/config/wide_form.md) 옵션을 활성화하면 섹션과 해당 라벨을 한 줄에 배치할 수 있습니다:
+섹션의 레이블과 같은 줄에 배치하려면 [wide_form](api/config/wide_form.md) 구성 옵션을 *true*로 설정합니다:
 
 ~~~js
 gantt.config.wide_form = true; /*!*/
@@ -123,45 +121,42 @@ gantt.config.lightbox.sections = [
 gantt.init("gantt_here");
 ~~~
 
+관련 샘플 [Aligning Lightbox](https://snippet.dhtmlx.com/hf45hvr3)
 
-**Related example:** [Aligning Lightbox](https://snippet.dhtmlx.com/hf45hvr3)
+## 섹션 헤더의 버튼
 
+섹션 헤더에 커스텀 버튼을 넣는 것이 가능합니다. 헤더에 버튼을 추가하려면 아래 단계를 수행합니다:
 
-## 섹션 헤더에 버튼 추가하기
-
-다음 단계를 따르면 섹션 헤더에 커스텀 버튼을 추가할 수 있습니다:
-
-- 섹션 객체에 **button** 속성을 추가하세요:
+- 섹션 객체에서 **button** 속성을 지정합니다:
 
 ~~~js
 {name:"description", height:130, map_to:"text", type:"textarea", button:"help"}
 ~~~
-- 버튼의 라벨을 정의하세요:
+- 버튼의 레이블을 설정합니다:
 
 ~~~js
-//'help'는 'button' 속성 값과 일치해야 합니다.
-gantt.locale.labels.button_help = "Help label";
+//'help'는 button 속성의 값입니다
+gantt.locale.labels.button_help="Help label";
 ~~~
 
-- 버튼 클릭 핸들러를 구현하세요:
+- 버튼 클릭 처리기를 지정합니다:
 
 ~~~
-gantt.form_blocks.textarea.button_click = function(index, button, shead, sbody){
-    // 커스텀 로직 작성
+gantt.form_blocks.textarea.button_click = function(index,button,shead,sbody){
+    // 사용자 정의 로직
 }
 ~~~
-파라미터:
+다음과 같이 정의됩니다:
 
-- **index** - (*number*) 섹션의 0부터 시작하는 인덱스
-- **button** - (*HTMLElement*) 버튼 엘리먼트 자체
-- **shead** - (*HTMLElement*) 섹션 헤더 엘리먼트
-- **sbody** - (*HTMLElement*) 섹션 바디 엘리먼트
+- **index** - (*number*) 섹션 인덱스. 0부터 시작하는 번호 매김
+- **button** - (*HTMLElement*) 버튼의 HTML 요소
+- **shead** - (*HTMLElement*) 섹션 헤더의 HTML 요소
+- **sbody** - (*HTMLElement*) 섹션 본문의 HTML 요소
 
-버튼의 이미지를 지정하려면 다음 CSS 클래스를 사용하세요:
+버튼에 사용할 이미지는 아래 CSS 클래스로 정의할 수 있습니다:
 
 ~~~js
 .dhx_custom_button_help{
-    background-image: url(imgs/but_help.gif);
+    background-image:url(imgs/but_help.gif);
 }
 ~~~
-

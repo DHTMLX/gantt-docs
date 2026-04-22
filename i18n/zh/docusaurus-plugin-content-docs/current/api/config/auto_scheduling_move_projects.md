@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_move_projects
-title: auto_scheduling_move_projects config
-description: "定义在调度过程中是否整个项目都会被移动（详情见下文）"
+title: auto_scheduling_move_projects 配置
+description: "定义是否会移动整个项目（请参见下方的详细信息）"
 ---
 
 # auto_scheduling_move_projects
+
 :::info
- 此功能仅在PRO版本中可用。 
+本功能仅在 PRO 版中可用。
 :::
+
+:::warning
+该属性在 v9.1 版本中已废弃，请改用 [gantt.config.auto_scheduling](api/config/auto_scheduling.md#move_projects) 的 `move_projects` 属性。
+:::
+
 ### Description
 
-@short: 定义在调度过程中是否整个项目都会被移动（详情见下文）
+@short: 定义是否会移动整个项目（请参见下方的详细信息）
 
 @signature: auto_scheduling_move_projects: boolean
 
@@ -22,7 +28,7 @@ gantt.config.auto_scheduling_move_projects = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**默认值：** true
 
 ### Related samples
 - [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
@@ -30,22 +36,20 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- 此设置是**auto_scheduling** 扩展的一部分，因此请确保启用 [auto_scheduling](guides/extensions-list.md) 插件。更多信息请参见 [自动调度](guides/auto-scheduling.md) 文章。 
+此配置在 **auto_scheduling** 扩展中定义，因此需要启用 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件。请在 [Auto Scheduling](guides/auto-scheduling.md) 文章中阅读更多细节。 
 :::
 
-
-4.1版本新增
-
-默认情况下（当此属性设置为 *true* 时），整个项目会在自动调度时整体移动。这意味着所有任务相对于彼此以及项目开始时间的顺序保持不变。
+默认情况下（属性设置为 *true* 时），在自动调度期间将移动整个项目。这意味着项目中的所有任务相对于彼此以及项目的起始位置仍然保持在原位。
 
 ![moving_project_true](/img/moving_project_true.png)
 
-如果 *auto_scheduling_move_projects* 设置为 *false*，自动调度将调整项目内的各个任务。结果是某些任务会移动，而其他任务保持不动。
+如果将 *auto_scheduling_move_projects* 设置为 *false*，自动调度将移动项目内部的单独任务。因此，一些任务会被移动，其他任务将保持在原位。
 
 ![moving_project_false](/img/moving_project_false.png)
 
-<br>
-**注意**，在使用约束调度（*gantt.config.auto_scheduling_compatibility = false*）时，*auto_scheduling_move_projects* 设置仅当严格模式关闭时才生效:
+:::note
+如果使用约束调度（*gantt.config.auto_scheduling_compatibility = false*），*auto_scheduling_move_projects* 配置将只有在禁用严格模式时才会生效：
+:::
 
 ~~~js
 gantt.config.auto_scheduling_compatibility = false;
@@ -69,5 +73,8 @@ gantt.config.auto_scheduling_strict = false;
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [自动调度](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
+### Change log
+- 该属性在 v9.1 中已被弃用
+- 在版本 4.1 中新增

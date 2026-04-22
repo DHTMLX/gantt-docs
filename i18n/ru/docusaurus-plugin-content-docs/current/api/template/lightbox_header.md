@@ -1,22 +1,22 @@
 ---
 sidebar_label: lightbox_header
-title: lightbox_header template
-description: "задаёт header для lightbox"
+title: lightbox_header шаблон
+description: "задает заголовок lightbox"
 ---
 
 # lightbox_header
 
 ### Description
 
-@short: Задаёт header для lightbox
+@short: Задает заголовок lightbox
 
 @signature: lightbox_header: (start_date: Date, end_date: Date, task: Task) =\> string;
 
 ### Parameters
 
-- `start_date` - (required) *Date* - дата начала запланированной задачи  
-- `end_date` - (required) *Date* - дата завершения запланированной задачи
-- `task` - (required) *Task* - объект задачи
+- `start_date` - (обязательно) *Date* - дата начала выполнения задачи
+- `end_date` - (обязательно) *Date* - дата, к которой задача должна быть завершена
+- `task` - (обязательно) *Task* - объект задачи
 
 ### Returns
 - ` text` - (string) - HTML-текст для отображения в gantt
@@ -31,4 +31,4 @@ gantt.templates.lightbox_header = function(start_date,end_date,task){
 ~~~
 
 ### Related Guides
-- [Шаблоны Lightbox](guides/lightbox-templates.md)
+- [Шаблоны лайтбокса](guides/lightbox-templates.md)

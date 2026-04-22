@@ -1,24 +1,24 @@
 ---
 sidebar_label: grid_date_format
-title: grid_date_format template
-description: "날짜 값을 표시하는 열에서 날짜가 어떻게 표시되는지 정의합니다 (반환값은 `Date` 값입니다)"
+title: grid_date_format 템플릿
+description: "날짜를 표시하는 열의 날짜 형식을 지정합니다( `Date` 값을 반환합니다)"
 ---
 
 # grid_date_format
 
 ### Description
 
-@short: 날짜 값을 표시하는 열에서 날짜가 어떻게 표시되는지 정의합니다 (반환값은 `Date` 값입니다)
+@short: 날짜를 표시하는 열의 날짜 형식을 지정합니다( `Date` 값을 반환합니다)
 
-@signature: grid_date_format: (date: Date, column?: string) =\> string;
+@signature: grid_date_format: (date: Date, column?: string) => string;
 
 ### Parameters
 
-- `date` - (required) *Date* - 포맷팅이 필요한 날짜
-- `column` - (optional) *string* - 템플릿을 호출한 열의 이름
+- `date` - (required) *Date* - 형식이 필요한 날짜
+- `column` - (선택적) *string* - 템플릿을 호출한 열의 이름
 
 ### Returns
-- ` text` - (string) - gantt에 표시될 html 텍스트
+- `text` - (string) - 간트 차트에 렌더링될 HTML 텍스트
 
 ### Example
 
@@ -30,10 +30,10 @@ gantt.templates.grid_date_format = function(date, column){
 
 ### Details
 
-이 템플릿 함수는 일정이 잡히지 않은 작업을 제외한 모든 작업에 대해 호출됩니다.
+템플릿 함수는 모든 작업에 대해 호출되며, 일정되지 않은 작업은 제외됩니다.
 
 :::note
- **grid_date_format** 템플릿은 [date_grid](api/template/date_grid.md) 템플릿에서만 사용되므로, 여기서 변경한 내용은 **grid_date_format**에도 영향을 미칩니다. 
+**grid_date_format** 템플릿은 오직 [date_grid](api/template/date_grid.md) 템플릿에서만 사용되므로, 변경하면 **grid_date_format** 도 영향을 받습니다.
 :::
 
 ### Related API

@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskIndex
 title: getTaskIndex method
-description: "ruft die Position einer Aufgabe innerhalb ihres Zweigs ab"
+description: "Ermittelt den Index einer Aufgabe im Zweig"
 ---
 
 # getTaskIndex
 
 ### Description
 
-@short: Ruft die Position einer Aufgabe innerhalb ihres Zweigs ab
+@short: Ermittelt den Index einer Aufgabe im Zweig
 
 @signature: getTaskIndex: (id: string | number) =\> number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    die Kennung der Aufgabe
+- `id` - (required) *string | number* - die Aufgaben-ID
 
 ### Returns
-- ` index` - (number) - die nullbasierte Position der Aufgabe im Zweig
+- `index` - (number) - der Task-Index im Zweig (Nullbasierte Nummerierung)
 
 ### Example
 
@@ -44,4 +44,3 @@ const globalTaskIndex = gantt.getGlobalTaskIndex("t_1"); // -> 1
 
 ### Related API
 - [getGlobalTaskIndex](api/method/getglobaltaskindex.md)
-

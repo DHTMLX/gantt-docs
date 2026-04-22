@@ -1,7 +1,7 @@
 ---
 sidebar_label: grid_row_class
-title: grid_row_class template
-description: "definiert die CSS-Klasse, die einer grid-Zeile zugewiesen wird"
+title: grid_row_class Vorlage
+description: "bestimmt die CSS-Klasse, die auf eine Grid-Zeile angewendet wird"
 ---
 
 # grid_row_class
@@ -14,12 +14,12 @@ description: "definiert die CSS-Klasse, die einer grid-Zeile zugewiesen wird"
 
 ### Parameters
 
-- `start` - (required) *Date* - das Datum, an dem eine Aufgabe beginnt
-- `end` - (required) *Date* - das Datum, an dem eine Aufgabe voraussichtlich abgeschlossen wird
-- `task` - (required) *Task* - das Aufgabenobjekt selbst
+- `start` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe voraussichtlich beginnt
+- `end` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe voraussichtlich abgeschlossen wird
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
-- ` text` - (string | void) - eine CSS-Klasse für das entsprechende Element
+- `text` - (string | void) - eine CSS-Klasse für das betroffene Element
 
 ### Example
 
@@ -31,7 +31,7 @@ gantt.templates.grid_row_class = function(start, end, task){
 
 ### Details
 
-Jede zweite Zeile sowohl im Grid als auch im Timeline-Bereich erhält eine zusätzliche CSS-Klasse namens **odd**, die verwendet werden kann, um abwechselnde Zeilenfarben zu erzeugen:
+Jede zweite Zeile des Grids und des Timeline-Bereichs enthält eine zusätzliche CSS-Klasse namens **odd**, die verwendet werden kann, um die Farben der Zeilen abwechseln:
 
 ~~~css
 .gantt_row.odd, .gantt_task_row.odd{
@@ -43,24 +43,23 @@ Jede zweite Zeile sowohl im Grid als auch im Timeline-Bereich erhält eine zusä
 }
 ~~~
 
-Standardmäßig gelten diese Styles nur für gerade Zeilen. Um ungerade Zeilen zu stylen, muss die Klasse **odd** in den Selektoren Ihrer CSS-Regeln hinzugefügt werden. Wenn Sie also möchten, dass alle Zeilen dieselbe Farbe haben, müssen Sie normalerweise Regeln für beide Selektoren (mit und ohne die Klasse '.odd') einbeziehen, da die Standard-CSS-Regeln [eine höhere Spezifität besitzen und Vorrang haben](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity).
+Durch Standardwerte werden die Stile nur auf gerade Zeilen angewendet. Um ungerade Zeilen zu stylen, müssen Sie der Style-Regel die Klasse **odd** hinzufügen. Daher, wenn Sie allen Zeilen dieselbe Farbe zuweisen möchten, müssen Sie in der Regel eine CSS-Regel für beide Selektoren (mit und ohne '.odd'-Klasse) angeben; andernfalls werden die Standard-CSS-Regeln [spezieller und erhalten eine höhere Priorität](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity).
 
 ~~~css
 .gantt_row.odd, .gantt_task_row.odd,
 .gantt_row, .gantt_task_row {
+{
     background: white;
 }
 ~~~
 
-Dieser Ansatz gilt auch für benutzerdefinierte CSS-Klassen, die über die Templates [grid_row_class](api/template/grid_row_class.md) und [task_row_class](api/template/task_row_class.md) zugewiesen werden:
-
+Dasselbe gilt auch für die benutzerdefinierten CSS-Klassen, die Sie über die [grid_row_class](api/template/grid_row_class.md) und [task_row_class](api/template/task_row_class.md) Vorlagen anwenden können:
 
 ~~~js
 gantt.templates.grid_row_class = function(start, end, task){
     return "wheat_color";
 };
 ~~~
-<br>
 
 ~~~css
 .wheat_color,
@@ -69,8 +68,7 @@ gantt.templates.grid_row_class = function(start, end, task){
 }
 ~~~
 
-Es kann sein, dass auf dem Bildschirm die geraden Zeilen hervorgehoben erscheinen und nicht die ungeraden. Wenn Sie jedoch die [Zeilenindizes](api/method/gettaskindex.md) überprüfen, stellen Sie fest, dass die Styles auf Zeilen mit ungeraden Indizes (1, 3, 5 usw.) angewendet werden.
+Sie werden feststellen, dass die geraden Zeilen auf dem Bildschirm hervorgehoben sind statt der ungeraden. Wenn Sie jedoch die [Indizes der Zeilen](api/method/gettaskindex.md) überprüfen, werden Sie sehen, dass der Stil auf die Zeilen angewendet wird, die ungerade Indizes haben (1, 3, 5 usw.).
 
 ### Related Guides
-- ["Vorlagen des Grids"](guides/table-templates.md)
-
+- [Vorlagen des Grids](guides/table-templates.md)

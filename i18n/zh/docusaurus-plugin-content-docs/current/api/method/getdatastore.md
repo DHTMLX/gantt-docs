@@ -1,23 +1,23 @@
 ---
 sidebar_label: getDatastore
-title: getDatastore method
-description: "返回数据存储的配置对象"
+title: getDatastore 方法
+description: "返回 datastore 的配置对象"
 ---
 
 # getDatastore
 
 ### Description
 
-@short: 返回数据存储的配置对象
+@short: 返回 datastore 的配置对象
 
 @signature: getDatastore: (name: string) =\> DatastoreMethods & TreeDatastoreMethods
 
 ### Parameters
 
-- `name` - (required) *string* - 数据存储的名称
+- `name` - (required) *string* - datastore 的名称
 
 ### Returns
-- ` datastore` - (datastore & treedatastore) - 指定数据存储的配置对象
+- ` datastore` - (datastore & treedatastore) - datastore 的配置对象
 
 ### Example
 
@@ -26,9 +26,8 @@ var tasksStore = gantt.getDatastore("task");
 ~~~
 
 ### Related samples
-- [Gantt chart with resource panel](https://docs.dhtmlx.com/gantt/samples/10_layout/02_resource_panel.html)
+- [带资源面板的甘特图](https://docs.dhtmlx.com/gantt/samples/10_layout/02_resource_panel.html)
 
 ### Related API
 - [datastore](api/other/datastore.md)
 - [treeDatastore](api/other/treedatastore.md)
-

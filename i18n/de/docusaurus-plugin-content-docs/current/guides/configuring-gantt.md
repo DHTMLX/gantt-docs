@@ -7,10 +7,10 @@ sidebar_label: "Gantt-Diagramm konfigurieren"
 
 ![gantt_basic](/img/gantt_basic.png)
 
-- [Configuration](guides/common-configuration.md)
-- [Gantt Layout](guides/layout-config.md)
-- [Resource Management](guides/resource-management.md)
-- [Event Handling](guides/handling-events.md)
-- [Multiple Charts on a Page](guides/multiple-gantts.md)
-- [Peculiarities of Gantt Instance](guides/gantt-instance.md)
-- [Using Gantt on the server](guides/using-gantt-on-server.md)
+- [Konfiguration](guides/common-configuration.md)
+- [Gantt-Layout](guides/layout-config.md)
+- [Ressourcenverwaltung](guides/resource-management.md)
+- [Ereignisbehandlung](guides/handling-events.md)
+- [Mehrere Gantt-Diagramme auf einer Seite](guides/multiple-gantts.md)
+- [Besonderheiten der Gantt-Instanz](guides/gantt-instance.md)
+- [Gantt auf dem Server verwenden](guides/using-gantt-on-server.md)

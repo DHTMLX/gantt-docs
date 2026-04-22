@@ -3,26 +3,26 @@ title: "Multi-User Live Updates"
 sidebar_label: "Multi-User Live Updates"
 ---
 
-# Multi-User Live Updates
+# Обновления в реальном времени для нескольких пользователей
 
-This article describes how to implement server-side support for the real-time updates module of DHTMLX Gantt.
+Эта статья описывает, как реализовать поддержку на стороне сервера для модуля обновлений в реальном времени DHTMLX Gantt.
 
-## Principle
+## Принцип
 
-DHTMLX Gantt provides the `RemoteEvents` helper to synchronize changes among multiple users in real time.
+DHTMLX Gantt предоставляет вспомогательный элемент `RemoteEvents` для синхронизации изменений между несколькими пользователями в реальном времени.
 
-### Key Workflow
+### Основной рабочий процесс
 
-- The `RemoteEvents` client opens a WebSocket connection when Gantt is initialized.
-- The User changes (the "create", "edit", or "delete" events) are sent to the server via `DataProcessor` using the REST API.
-- The server broadcasts updates to all connected clients via WebSocket after processing them.
-- The `RemoteEvents` client receives the updates and applies them to Gantt, ensuring synchronization across users.
+- Клиент `RemoteEvents` открывает соединение WebSocket при инициализации Gantt.
+- Изменения пользователей (события "create", "edit" или "delete") отправляются на сервер через `DataProcessor` с использованием REST API.
+- Сервер рассылает обновления всем подключенным клиентам через WebSocket после обработки.
+- Клиент `RemoteEvents` принимает обновления и применяет их к Gantt, обеспечивая синхронизацию между пользователями.
 
-The design allows this backend module to support multiple DHTMLX widgets (e.g., Kanban, Gantt, Scheduler) within the same application. The shared format streamlines data synchronization without needing separate backends for each widget.
+Дизайн позволяет этому бэкенд-модулю поддерживать несколько виджетов DHTMLX (например, Kanban, Gantt, Scheduler) в рамках одного приложения. Общий формат упрощает синхронизацию данных без необходимости иметь отдельные бекенды для каждого виджета.
 
-## Front-End Integration
+## Интеграция на клиентской стороне
 
-Initialize `RemoteEvents` and set up `DataProcessor` in the same section of code where Gantt data is loaded.
+Инициализируйте `RemoteEvents` и настройте `DataProcessor` в той же секции кода, где загружаются данные Gantt.
 
 ~~~js
 const AUTH_TOKEN = "token";
@@ -43,63 +43,61 @@ remoteEvents.on(remoteUpdates);
 ~~~
 
 
-### Key Details
+### Ключевые детали
 
-- The `RemoteEvents` constructor requires an authorization token, which is sent in the **"Remote-Token"** header for server validation.
-- The first argument specifies the `WebSocket` endpoint (e.g., **/api/v1**).
-- The `remoteUpdates` helper handles incoming `WebSocket` messages and synchronizes Gantt data.
+- Конструктор `RemoteEvents` требует авторизационный токен, который отправляется в заголовке **"Remote-Token"** для проверки на сервере.
+- Первый аргумент задаёт конечную точку `WebSocket` (например, **/api/v1**).
+- Хелпер `remoteUpdates` обрабатывает входящие сообщения `WebSocket` и синхронизирует данные Gantt.
 
+## Реализация на стороне сервера
 
-## Backend Implementation
+Этот раздел описывает, как построить бекенд, поддерживающий обновления в реальном времени.
 
-This section describes how to build a backend supporting live updates.
+### Упрощённый пример
 
-### Simplified Example
+- [См. пример на GitHub](https://github.com/DHTMLX/gantt-multiuser-backend-demo)
 
-- [Check the example on GitHub](https://github.com/DHTMLX/gantt-multiuser-backend-demo)
+Чтобы протестировать реализацию:
 
-To test the implementation:
+- Распакуйте и запустите проект бекенд, выполнив команды `npm install` и `npm run start`.
+- Откройте фронтенд-пример в двух отдельных вкладках браузера.
+- Измените задачу в одной вкладке; изменения должны отображаться во второй вкладке.
 
-- Extract and run the backend project using `npm install` and `npm run start` commands.
-- Open the frontend example in two separate browser tabs.
-- Modify a task in one tab; the changes should appear in the second tab.
+### Серверный рабочий процесс
 
+#### 1. Запрос рукопожатия
 
-### Server-Side Workflow
+При инициализации `RemoteEvents` отправляет на сервер **GET**-запрос для установления соединения.
 
-#### 1. Handshake Request
-
-When instantiated, `RemoteEvents` sends a **GET** request to the server to initialize the connection.
-
-Example:
+Пример:
 ~~~
 GET /api/v1
 Remote-Token: AUTH_TOKEN
 ~~~
 
-Response:
+Ответ:
 
 ~~~js
 {"api":{},"data":{},"websocket":true}
 ~~~
 
-#### 2. WebSocket Connection
+#### 2. Подключение WebSocket
 
-After receiving a response, `RemoteEvents` establishes the websocket connection with the provided endpoint.
+После получения ответа `RemoteEvents` устанавливает соединение `websocket` по предоставленной конечной точке.
 
-Example:
+Пример:
 
 ~~~
 ws://${URL}?token=${token}&ws=1
 ~~~
 
-The server verifies the token and responds with a message:
+Сервер проверяет токен и отвечает сообщением:
 
 ~~~js
 {"action":"start","body":"connectionId"}
 ~~~
 
-Example implementation:
+Пример реализации:
 
 ~~~js
 app.get('/api/v1', (req, res) => {
@@ -121,41 +119,41 @@ wss.on('connection', (ws, req) => {
 });
 ~~~
 
-#### 3. Subscription
+#### 3. Подписка
 
-After the connection is established, the `RemoteEvents` subscribes to updates for specific entities, `tasks` and `links` in case of Gantt:
+После установления соединения `RemoteEvents` подписывается на обновления для конкретных сущностей, `tasks` и `links` в случае Gantt:
 
-- for tasks
+- для задач
 
 ~~~js
 {"action":"subscribe","name":"tasks"}
 ~~~
 
-- for links
+- для связей
 
 ~~~js
 {"action":"subscribe","name":"links"}
 ~~~
 
-To unsubscribe:
+Чтобы отписаться:
 
-- for tasks
+- для задач
 
 ~~~js
 {"action":"unsubscribe","name":"tasks"}
 ~~~
 
-- for links
+- для связей
 
 ~~~js
 {"action":"unsubscribe","name":"links"}
 ~~~
 
 :::note
- This format supports scenarios where an application uses multiple DHTMLX widgets simultaneously. Each widget subscribes only to the updates relevant to its data.
+ Этот формат поддерживает сценарии, когда приложение использует несколько виджетов DHTMLX одновременно. Каждый виджет подписывается только на обновления, относящиеся к его данным.
 :::
 
-Example:
+Пример:
 
 ~~~js
 ws.on('message', function(message) {
@@ -176,11 +174,11 @@ ws.on('message', function(message) {
 });
 ~~~
 
-#### 4. Broadcasting Updates
+#### 4. Рассылка обновлений
 
-The server sends updates via WebSocket for changes like creating, updating, or deleting tasks and links in the format described below.
+Сервер отправляет обновления через WebSocket для изменений, таких как создание, обновление или удаление задач и связей в формате, описанном ниже.
 
-Upon receiving these messages, Gantt automatically synchronizes its data using the `remoteUpdates` helper.
+При получении этих сообщений Gantt автоматически синхронизирует данные с использованием хелпера `remoteUpdates`.
 
 
 **Task Created**
@@ -190,7 +188,7 @@ Upon receiving these messages, Gantt automatically synchronizes its data using t
    "value":{"type":"add-task","task":TASK_OBJECT}}}
 ~~~
 
-Example:
+Пример реализации:
 
 ~~~js
 app.post("/data/task", (req, res) => {
@@ -214,7 +212,7 @@ app.post("/data/task", (req, res) => {
    "value":{"type":"update-task","task":TASK_OBJECT}}}
 ~~~
 
-Example:
+Пример реализации:
 
 ~~~js
 app.put("/data/task/:id", (req, res) => {
@@ -240,7 +238,7 @@ app.put("/data/task/:id", (req, res) => {
    "value":{"type":"delete-task","task":{"id":ID}}}}
 ~~~
 
-Example:
+Пример реализации:
 
 ~~~js
 app.delete("/data/task/:id", (req, res) => {
@@ -264,7 +262,7 @@ app.delete("/data/task/:id", (req, res) => {
    "value":{"type":"add-link","link":LINK_OBJECT}}}
 ~~~
 
-Example:
+Пример реализации:
 
 ~~~js
 app.post("/data/link", (req, res) => {
@@ -288,7 +286,7 @@ app.post("/data/link", (req, res) => {
    "value":{"type":"update-link","link":LINK_OBJECT}}}
 ~~~
 
-Example:
+Пример реализации:
 
 ~~~js
 app.put("/data/link/:id", (req, res) => {
@@ -314,7 +312,7 @@ app.put("/data/link/:id", (req, res) => {
    "value":{"type":"delete-link","link":{"id":ID}}}}
 ~~~
 
-Example:
+Пример реализации:
 
 ~~~js
 app.delete("/data/link/:id", (req, res) => {
@@ -331,12 +329,11 @@ app.delete("/data/link/:id", (req, res) => {
 });
 ~~~
 
-## Advanced Customization
+## Расширенная настройка
 
-### Custom Handlers
+### Пользовательские обработчики
 
-In the described format, the `RemoteEvents` helper is responsible for initial handshake of establishing a websocket connection with the server and receiving messages.
-The second part of this module is the `remoteUpdates` helper that is responsible for parsing messages received via a websocket and applying appropriate changes to Gantt.
+В описанном формате помощник `RemoteEvents` отвечает за начальный handshake для установления соединения WebSocket с сервером и получение сообщений. Вторая часть этого модуля — обработчик `remoteUpdates`, который отвечает за разбор сообщений, получаемых через websocket и применение соответствующих изменений к Gantt.
 
 ~~~js
 const { RemoteEvents, remoteUpdates } = gantt.ext.liveUpdates;
@@ -344,9 +341,9 @@ const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
 remoteEvents.on(remoteUpdates);
 ~~~
 
-Normally, you can use these helpers without any extra configuration. But it is possible to extend the existing protocol by adding a custom helper or to implement a custom handler for remote updates.
+Обычно эти помощники можно использовать без дополнительной конфигурации. Но возможно расширить существующий протокол, добавив пользовательский помощник или реализовав пользовательский обработчик удалённых обновлений.
 
-The `RemoteEvents.on` method expects the object argument which can specify handlers for one or multiple entities:
+Метод `RemoteEvents.on` принимает объект-аргумент, который может определить обработчики для одной или нескольких сущностей:
 
 ~~~js
 const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
@@ -355,13 +352,13 @@ remoteEvents.on({
         const { type, task } = message;
         switch (type) {
             case "add-task":
-                // handle the add event
+                // обработать событие добавления
                 break;
             case "update-task":
-                // handle the update event
+                // обработать событие обновления
                 break;
             case "delete-task":
-                // handle the delete event
+                // обработать событие удаления
                 break;
         }
     }
@@ -369,7 +366,7 @@ remoteEvents.on({
 ~~~
 
 
-If you need to add a custom action, you can do it by adding an additional handler for `remoteEvents`:
+Если нужно добавить настраиваемое действие, можно сделать это, добавив дополнительный обработчик для `remoteEvents`:
 
 ~~~js
 const { RemoteEvents, remoteUpdates } = gantt.ext.liveUpdates;
@@ -380,34 +377,34 @@ remoteEvents.on({
         const { type, task } = message;
         switch (type) {
             case "custom-action":
-                // handle custom action
+                // обработать пользовательское действие
                 break;
         }
     }
 });
 ~~~
 
-The handler will be invoked by the following message:
+Обработчик будет вызываться по следующему сообщению:
 
 ~~~js
 {"action":"event","body":{"name":"tasks",
    "value":{"type":"custom-action","task":value}}}
 ~~~
 
-If you want to use `RemoteEvents` to receive updates for custom entities, you can achieve it by adding a handler:
+Если хотите использовать `RemoteEvents` для получения обновлений для настраиваемых сущностей, вы можете сделать это, добавив обработчик:
 
 ~~~js
 const { RemoteEvents, remoteUpdates } = gantt.ext.liveUpdates;
 const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
 remoteEvents.on(remoteUpdates);
 
-// subscribing to custom entities
+// подписка на настраиваемые сущности
 remoteEvents.on({ 
     resources: function(message) {
         const { type, value } = message;
         switch (type) {
             case "custom-action":
-                // handle custom action
+                // обработать пользовательское действие
                 break;
         }
     }
@@ -415,42 +412,42 @@ remoteEvents.on({
 
 ~~~
 
-When initialized that way, the `remoteEvents` object will send the websocket a subscription message formatted in the following way:
+При инициализации таким образом объект `remoteEvents` будет отправлять через WebSocket сообщение подписки в следующем формате:
 
 ~~~js
 {"action":"subscribe","name":"resources"}
 ~~~
 
-And the handler will be called whenever a message directed to the specified entity is received:
+А обработчик будет вызываться каждый раз, когда будет получено сообщение, адресованное указанной сущности:
 
 ~~~js
 {"action":"event","body":{"name":"resources",
    "value":{"type":"custom-action","value":value}}}
 ~~~
 
-This guide provides the foundation for implementing and customizing live updates in DHTMLX Gantt. For a complete example, 
-[refer to the GitHub repository](https://github.com/DHTMLX/gantt-multiuser-backend-demo).
+Данное руководство закладывает основу для реализации и настройки обновлений в реальном времени в DHTMLX Gantt. Для полного примера, 
+[обратитесь к репозиторию GitHub](https://github.com/DHTMLX/gantt-multiuser-backend-demo).
 
-## Remote Updates API
+## API удалённых обновлений
 
-The `RemoteUpdates` module can be used to connect Gantt to any source of external changes allowing easy integration of remote changes.
+Модуль `RemoteUpdates` можно использовать для подключения Gantt к любому источнику внешних изменений, что позволяет легко интегрировать удалённые обновления.
 
 ~~~js
 const { remoteUpdates } = gantt.ext.liveUpdates;
 
-// inserts task into gantt without invoking update hooks
+// вставить задачу в Gantt без вызова хуков обновления
 remoteUpdates.tasks({ type: "add-task", task: TASK_OBJECT });
 
-// updates task in gantt without invoking update hooks
+// обновить задачу в Gantt без вызова хуков обновления
 remoteUpdates.tasks({ type: "update-task", task: TASK_OBJECT });
 
-// deletes task from gantt without invoking update hooks
+// удалить задачу из Gantt без вызова хуков обновления
 remoteUpdates.tasks({ type: "delete-task", task: {id: TASK_ID}});
 
-// link operations
+// операции со связями
 remoteUpdates.links({ type: "add-link", link: LINK_OBJECT });
 remoteUpdates.links({ type: "update-link", link: LINK_OBJECT });
 remoteUpdates.links({ type: "delete-link", link: {id: LINK_ID}});
 ~~~
 
-Check the example of how Gantt can be connected to the Firestore updates in the [GitHub repository](https://github.com/DHTMLX/firebase-gantt-demo/).
+См. пример того, как Gantt может быть подключен к обновлениям Firestore в [репозитории GitHub](https://github.com/DHTMLX/firebase-gantt-demo/).

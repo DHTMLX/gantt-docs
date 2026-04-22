@@ -1,14 +1,14 @@
 ---
 sidebar_label: silent
-title: silent method
-description: "предотвращает любые внутренние события или вызовы на стороне сервера, которые могут быть вызваны кодом внутри него"
+title: silent метод
+description: "делает весь код внутри него таким образом, чтобы он не инициировал внутренние события и вызовы на стороне сервера"
 ---
 
 # silent
 
 ### Description
 
-@short: Предотвращает любые внутренние события или вызовы на стороне сервера, которые могут быть вызваны кодом внутри него
+@short: Делает весь код внутри него так, чтобы он не инициировал внутренние события или вызовы на стороне сервера
 
 @signature: silent: (callback: GanttCallback) =\> void
 
@@ -25,9 +25,9 @@ gantt.silent(function () {
     gantt.deleteTask(id);
 });
 
-// вручную перерисовать gantt, когда будет готово
+// repaint the gantt manually when ready
 gantt.render();
 ~~~
 
 ### Related Guides
-- [Интеграция с серверной стороной](guides/server-side.md#errorhandling)
+- [Интеграция на стороне сервера](guides/server-side.md#error-handling)

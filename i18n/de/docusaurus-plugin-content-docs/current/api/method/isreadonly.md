@@ -1,22 +1,23 @@
 ---
 sidebar_label: isReadonly
-title: isReadonly method
-description: "bestimmt, ob eine bestimmte Aufgabe, ein Link oder das gesamte Gantt-Diagramm auf read-only gesetzt ist"
+title: isReadonly Methode
+description: "prüft, ob der angegebene Task/Link oder der gesamte Gantt schreibgeschützt ist"
 ---
 
 # isReadonly
 
 ### Description
 
-@short: Bestimmt, ob eine bestimmte Aufgabe, ein Link oder das gesamte Gantt-Diagramm auf read-only gesetzt ist
+@short: Prüft, ob der angegebene Task/Link oder der gesamte Gantt schreibgeschützt ist
 
 @signature: isReadonly: (item?: number | string | Task | Link) =\> boolean
 
 ### Parameters
-- `item` - (optional) *	number | string | Task | Link* -  optional, die ID oder das Objekt, das die Aufgabe/den Link repräsentiert. Wenn ausgelassen, prüft die Methode, ob das gesamte Gantt read-only ist
+
+- `item` -	(optional) *number | string | Task | Link*	- optional, die ID oder ein Objekt des Tasks/Links. Falls nicht angegeben, prüft die Methode, ob der Gantt schreibgeschützt ist
 
 ### Returns
-- ` mode` - (boolean) - <i>true</i>, wenn die angegebene Aufgabe/der Link oder das gesamte Gantt read-only ist; andernfalls <i>false</i>
+- ` mode` - (boolean) - <i>true</i>, wenn ein Task/Link oder der Gantt schreibgeschützt ist. Andernfalls <i>false</i>
 
 ### Example
 
@@ -35,4 +36,4 @@ gantt.isReadonly(gantt.getTask(10)); // -> false
 ~~~
 
 ### Related Guides
-- ["Schreibgeschützter Modus"](guides/readonly-mode.md#readonlymodeforspecifictaskslinks)
+- [Schreibschutz-Modus](guides/readonly-mode.md#readonlymodeforspecifictaskslinks)

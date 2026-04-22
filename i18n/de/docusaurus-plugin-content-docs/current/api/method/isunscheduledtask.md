@@ -1,23 +1,23 @@
 ---
 sidebar_label: isUnscheduledTask
-title: isUnscheduledTask method
-description: "prüft, ob die Aufgabe unscheduled ist"
+title: isUnscheduledTask Methode
+description: "prüft, ob die Aufgabe ungeplant ist"
 ---
 
 # isUnscheduledTask
 
 ### Description
 
-@short: Prüft, ob die Aufgabe unscheduled ist
+@short: Prüft, ob die Aufgabe ungeplant ist
 
-@signature: isUnscheduledTask: (task: Task) =\> boolean
+@signature: isUnscheduledTask: (task: Task) => boolean
 
 ### Parameters
 
-- `task` - (required) *Task* - das zu überprüfende Task-Objekt
+- `task` - (erforderlich) *Task* - das Objekt der Aufgabe
 
 ### Returns
-- ` value` - (boolean) - gibt 'true' zurück, wenn die Aufgabe unscheduled ist, andernfalls 'false'
+- `Wert` - (boolean) - 'true', wenn die angegebene Aufgabe ungeplant ist, 'false' ansonsten
 
 ### Example
 
@@ -26,5 +26,5 @@ var isUnscheduled = gantt.isUnscheduledTask(task);
 ~~~
 
 ### Related Guides
-- ["Nicht terminierte Aufgaben"](guides/unscheduled-tasks.md)
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [ungeplante Aufgaben](guides/unscheduled-tasks.md)
+- [Automatische Planung](guides/auto-scheduling.md)

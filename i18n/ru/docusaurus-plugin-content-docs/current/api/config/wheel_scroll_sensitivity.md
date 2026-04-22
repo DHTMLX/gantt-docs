@@ -1,41 +1,41 @@
 ---
 sidebar_label: wheel_scroll_sensitivity
-title: wheel_scroll_sensitivity config
-description: "управляет скоростью прокрутки gantt при использовании колесика мыши"
+title: wheel_scroll_sensitivity конфигурация
+description: "задает скорость прокрутки диаграммы Ганта колесиком мыши"
 ---
 
 # wheel_scroll_sensitivity
 
 ### Description
 
-@short: Управляет скоростью прокрутки gantt при использовании колесика мыши
+@short: Указывает скорость прокрутки диаграммы Ганта колесиком мыши
 
 @signature: wheel_scroll_sensitivity: undefined | number | \{ x?: number; y?: number; \}
 
 ### Example
 
 ~~~jsx
-// прокрутка с двойной скоростью
+// scroll at double-speed
 gantt.config.wheel_scroll_sensitivity = 2;
 
-// прокрутка с половинной скоростью
+// scroll at half-speed 
 gantt.config.wheel_scroll_sensitivity = 0.5;
 
-// или прокрутка с разной скоростью по разным осям
+// or scroll at different speeds on different axes
 gantt.config.wheel_scroll_sensitivity = {
       x: 1,
       y: 0.5
 };
 ~~~
 
-**Default value:** undefined
+- **Значение по умолчанию:** undefined
 
 ### Details
 
-Этот объект конфигурации включает следующие свойства:
+Объектная конфигурация имеет следующие свойства:
 
-- **x** - (*number*) - управляет скоростью горизонтальной прокрутки
-- **y** - (*number*) - управляет скоростью вертикальной прокрутки
+- **x** - (*number*) - горизонтальная скорость
+- **y** - (*number*) - вертикальная скорость
 
 ### Change log
 - добавлено в v7.0.11

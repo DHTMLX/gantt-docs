@@ -1,56 +1,55 @@
 ---
 sidebar_label: static_background_cells
 title: static_background_cells config
-description: "позволяет отображать выделенные ячейки при использовании режима static_background"
+description: "включает отрисовку выделенных ячеек в режиме static_background"
 ---
 
 # static_background_cells
 :::info
- Эта функция доступна только в PRO-версии. 
+This functionality is available in the PRO edition only. 
 :::
 ### Description
 
-@short: Позволяет отображать выделенные ячейки при использовании режима static_background
+@short: Включает отрисовку выделенных ячеек в режиме static_background
 
 @signature: static_background_cells: boolean
 
 ### Example
 
 ~~~jsx
-gantt.config.static_background_cells = false;
+gantt.config.static_background = false;
 ~~~
 
 **Default value:** true
 
 ### Details
 
-Этот параметр работает совместно с конфигурацией из [static_background](api/config/static_background.md).
-Когда одновременно включены **static background** и **static_background_cells**, 
-и при этом gantt.config.static_background_cells установлен в true (значение по умолчанию), gantt отрисовывает как PNG сетку, так и выделенные ячейки (те, которым назначен CSS класс из шаблона timeline_cell_class).
+This config is used in conjunction with the [static_background](api/config/static_background.md) config.
+Когда оба **static background** и **static_background_cells** включены, 
+gantt.config.static_background_cells = true(default), gantt will render both PNG grid and highlighted cells (ones that have CSS class assigned to them from timeline_cell_class template)
 
 ~~~js
 gantt.config.static_background = true;
-gantt.config.static_background_cells = true; // включено по умолчанию
+gantt.config.static_background_cells = true;// enabled by default
 ~~~
 
-Если **static_background** включён, а **static_background_cells** выключен, gantt отрисует только PNG сетку, как это было до версии 6.2.
+If **static_background** is enabled and **static_background_cells** is disabled, gantt will render only PNG grid, as it worked in versions before 6.2.
 
 ~~~js
 gantt.config.static_background = true;
 gantt.config.static_background_cells = false;
 ~~~
 
-Если **static_background** выключен, настройка **static_background_cells** не влияет на отображение.
+If **static_background** is disabled, **static_background_cells** has no effect at all.
 
 ~~~js
 gantt.config.static_background = false;
 ~~~
 
-Эта опция позволяет вернуть поведение **static_background** к тому, как оно было в версии 6.1.
+This config can be used to revert **static_background** to v6.1.
 
 ### Related API
 - [static_background](api/config/static_background.md)
 
 ### Change log
-- добавлено в версии 6.2 для сохранения совместимости с версией 6.1
-
+- added in v6.2 for compatibility with v6.1

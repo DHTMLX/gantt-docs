@@ -1,20 +1,20 @@
 ---
 sidebar_label: updateLink
 title: updateLink method
-description: "更新指定的依赖链接"
+description: "更新指定的依赖关系链接"
 ---
 
 # updateLink
 
 ### Description
 
-@short: 更新指定的依赖链接
+@short: 更新指定的依赖关系链接
 
 @signature: updateLink: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    任务的 id
+- `id` - (required) *string | number* -    任务 ID
 
 ### Example
 
@@ -33,20 +33,20 @@ gantt.updateLink(5); // 视觉和功能上应用更新后的链接
 ### Details
 
 :::note
- 此方法会触发 [onAfterLinkUpdate](api/event/onafterlinkupdate.md) 事件。 
-:::
+该方法将触发 [onAfterLinkUpdate](api/event/onafterlinkupdate.md) 事件。 
+:::  
 
 :::note
- 如果启用了 dataProcessor，该方法会激活 [DataProcessor](guides/server-side.md)。 
+如果启用 dataProcessor，该方法会触发 [DataProcessor](guides/server-side.md)。
 :::
 
-在对链接对象进行任何修改后，应使用此方法来刷新甘特图的内部状态，更新相关的 UI 组件，并将更改发送到后台。
+应在修改链接对象以更新 Gantt 的状态、重新绘制相关 UI 元素并将变更发送到后端后调用此方法。
 
-调用此函数会触发 [onAfterLinkUpdate](api/event/onafterlinkupdate.md) 事件，可能导致进一步的重新计算。
+调用此方法将触发 [onAfterLinkUpdate](api/event/onafterlinkupdate.md) 事件，可能会导致额外的重新计算。
 
-当使用 [DataProcessor](guides/server-side.md) 时，此方法会向服务器发起 **update** 请求。
+如果你正在使用 [DataProcessor](guides/server-side.md)，调用此方法将向服务器发送一个 **update** 请求。
 
-如果只是需要视觉上的更新且不需要保存，建议使用 [refreshLink](api/method/refreshlink.md) 方法。该方法仅会重新绘制甘特图中的链接，不会触发额外的计算或服务器通信。
+若要进行不需要保存的可视化修改，请改用 [refreshLink](api/method/refreshlink.md) 方法。这样将重新绘制 Gantt 中的记录，而不进行额外的计算或服务器请求。
 
 ~~~js
 let selectedLink = null;
@@ -69,5 +69,4 @@ gantt.attachEvent("onLinkClick", function(id,e){
 - [onAfterLinkUpdate](api/event/onafterlinkupdate.md)
 
 ### Related Guides
-- [服务器端集成](guides/server-side.md#updatingdataontheserver)
-
+- [服务器端集成](guides/server-side.md)

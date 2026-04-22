@@ -1,14 +1,14 @@
 ---
 sidebar_label: multiselect_one_level
-title: multiselect_one_level config
-description: "Steuert, ob die Mehrfachauswahl von Aufgaben auf eine Ebene beschränkt ist oder mehrere Ebenen umfassen kann"
+title: multiselect_one_level Konfiguration
+description: "gibt an, ob Mehrfachauswahl innerhalb einer Ebene oder über alle Ebenen verfügbar ist"
 ---
 
 # multiselect_one_level
 
 ### Description
 
-@short: Steuert, ob die Mehrfachauswahl von Aufgaben auf eine Ebene beschränkt ist oder mehrere Ebenen umfassen kann
+@short: Gibt an, ob die Mehrfachauswahl innerhalb einer Ebene oder auf jeder Ebene verfügbar ist
 
 @signature: multiselect_one_level: boolean
 
@@ -18,20 +18,18 @@ description: "Steuert, ob die Mehrfachauswahl von Aufgaben auf eine Ebene beschr
 gantt.config.multiselect_one_level = true; 
 gantt.init('gantt_here');
 
-//FALSCH
-gantt.config.multiselect = false;  /*!*/ //Mehrfachauswahl ist deaktiviert
+//INCORRECT
+gantt.config.multiselect = false;  /*!*/ //multiselection is disabled
 gantt.config.multiselect_one_level = true; 
 gantt.init('gantt_here');
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Details
 
 :::note
-
-Diese Einstellung gilt nur, wenn die Option [multiselect](api/config/multiselect.md) aktiviert ist.
- 
+Die Option ist nur sinnvoll, wenn die [multiselect](api/config/multiselect.md) Option aktiviert ist. 
 :::
 
 ### Related API
@@ -43,5 +41,4 @@ Diese Einstellung gilt nur, wenn die Option [multiselect](api/config/multiselect
 - [toggleTaskSelection](api/method/toggletaskselection.md)
 
 ### Related Guides
-- ["Multi-Task-Auswahl"](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)
