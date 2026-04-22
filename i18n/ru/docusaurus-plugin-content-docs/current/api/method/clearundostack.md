@@ -8,8 +8,7 @@ description: "очищает стек сохранённых команд отм
 
 ### Description
 
-@short: Очищает стек сохранённых команд отмены
-
+@short: Очистка стека сохранённых команд отмены
 @signature: clearUndoStack: () =\> void
 
 ### Example
@@ -19,12 +18,12 @@ gantt.clearUndoStack();
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Изменения Undo/Redo в Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
 :::note
- Этот метод является частью расширения **undo**, поэтому убедитесь, что плагин [undo](guides/extensions-list.md#undo) включён. Подробнее можно узнать в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Этот метод определяется в расширении **undo**, поэтому необходимо включить плагин [undo](guides/extensions-list.md#undo). Ознакомьтесь с подробностями в статье [Функциональность Undo/Redo](guides/undo-redo.md).
 :::
 
 ### Related API
@@ -33,8 +32,7 @@ gantt.clearUndoStack();
 - [getUndoStack](api/method/getundostack.md)
 
 ### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md)
+- [Функциональность Undo/Redo](guides/undo-redo.md)
 
 ### Change log
 - добавлено в версии 5.2
-

@@ -1,23 +1,23 @@
 ---
 sidebar_label: getLinkNode
-title: getLinkNode method
-description: "holt das HTML-Element, das dem angegebenen Abhängigkeitslink entspricht"
+title: getLinkNode Methode
+description: "gibt das HTML-Element des angegebenen Dependency-Links zurück"
 ---
 
 # getLinkNode
 
 ### Description
 
-@short: Holt das HTML-Element, das dem angegebenen Abhängigkeitslink entspricht
+@short: Gibt das HTML-Element des angegebenen Dependency-Links zurück
 
 @signature: getLinkNode: (id: string | number) =\> HTMLElement
 
 ### Parameters
 
-- `id` - (required) *string | number* -     die ID des Links
+- `id` - (erforderlich) *string | number* - die Link-ID
 
 ### Returns
-- `node` - (HTMLElement) - das HTML-Element, das den Link repräsentiert
+- `node` - (HTMLElement) - das HTML-Element des Links
 
 ### Example
 

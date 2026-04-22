@@ -1,23 +1,23 @@
 ---
 sidebar_label: confirm
-title: confirm method
-description: "显示一个 confirm 消息框"
+title: confirm 方法
+description: "调用一个确认消息框"
 ---
 
 # confirm
 
 ### Description
 
-@short: 显示一个 confirm 消息框
+@short: 调用一个确认消息框
 
 @signature: confirm: (config: ConfirmBoxConfig | string | number) =\> HTMLElement
 
 ### Parameters
 
-- `config` - (required) *ConfirmBoxConfig | string | number* -            可以是 confirm 消息框的配置对象，也可以只是要显示的文本内容
+- `config` - (required) *ConfirmBoxConfig | string | number* -            要么是包含确认框配置的对象，要么是要显示的文本
 
 ### Returns
-- ` div` - (HTMLElement) - 包含 confirm 消息框的 div 元素
+- `div` - (HTMLElement) - 确认框的 div 容器
 
 ### Example
 
@@ -43,16 +43,16 @@ var box = gantt.confirm("Do you want to continue?");
 
 配置对象包括以下属性:
 
-- **id?** - (*number | string*) - confirm 消息框的可选标识符
-- **text** - (*number | string*) - confirm 消息框内显示的主要文本
-- **title?** - (*number | string*) - 可选的头部文本
-- **ok?** - (*number | string*) - "确定"按钮的可选标签
-- **cancel?** - (*number | string*) - "取消"按钮的可选标签
-- **position?** - (*string*) - confirm 消息框的可选位置；当前仅支持 "top"，否则默认为"居中对齐"
-- **width?** - (*string*) - confirm 消息框的可选宽度，使用 CSS [&#60;length&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/length) 或 [&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) 值，例如 "100px"、"50%"
-- **height?** - (*string*) - confirm 消息框的可选高度，使用 CSS [&#60;length&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/length) 或 [&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) 值，例如 "100px"、"50%"
-- **callback? (result): void** - 可选的回调函数，在按钮被点击时触发。根据按下的按钮接收 *true* 或 *false*
-    - **_result_** - (*boolean*) - 表示点击的按钮:点击"确定"为 **true**，点击"取消"为 **false**。
+- **id?** - (*number | string*) - 可选，确认框的 ID
+- **text** - (*number | string*) - 确认框主体的文本
+- **title?** - (*number | string*) - 可选，头部文本
+- **ok?** - (*number | string*) - 可选，"OK" 按钮的文本
+- **cancel?** - (*number | string*) - 可选，"Cancel" 按钮的文本
+- **position?** - (*string*) - 可选，目前仅支持一个值 - "top"，其他值将导致显示为 "center-align"
+- **width?** - (*string*) - 可选，确认框的宽度（以 CSS \<length\> 或 \<percentage\> 值设置，例如 "100px"、"50%"）
+- **height?** - (*string*) - 可选，确认框的高度（以 CSS \<length\> 或 \<percentage\> 值设置，例如 "100px"、"50%"）
+- **callback? (result): void** - 可选，在按钮点击时调用的函数。参数为 *true* 或 *false*，取决于所点击的按钮
+    - **_result_** - (*boolean*) - 点击按钮的结果：**true** 表示 "OK"，**false** 表示 "Cancel"。
 
 有关 confirm 消息框可用配置选项的更多详细信息，请参阅 [弹出消息与模态框](guides/message-boxes.md) 文章。
 
@@ -62,8 +62,7 @@ var box = gantt.confirm("Do you want to continue?");
 - [modalbox](api/method/modalbox.md)
 
 ### Related Guides
-- [弹出消息与模态框](guides/message-boxes.md)
+- [弹出消息和模态框](guides/message-boxes.md)
 
 ### Change log
-- 版本 4.0 中新增
-
+- 新增于 4.0 版本

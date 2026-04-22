@@ -1,23 +1,23 @@
 ---
 sidebar_label: modalbox
-title: modalbox method
-description: "打开一个 modalbox"
+title: modalbox 方法
+description: "调用一个 modalbox"
 ---
 
 # modalbox
 
 ### Description
 
-@short: 打开一个 modalbox
+@short: 调用一个 modalbox
 
 @signature: modalbox: (config: ModalBoxConfig) =\> HTMLElement
 
 ### Parameters
 
-- `config` - (required) *ModalBoxConfig* - modal box 的配置设置
+- `config` - (required) *ModalBoxConfig* - 模态框的配置
 
 ### Returns
-- ` div` - (HTMLElement) - 包含 modalbox 的 div 元素
+- ` div` - (HTMLElement) - 模态框容器的 div
 
 ### Example
 
@@ -56,8 +56,7 @@ ModalboxButton 类型包含以下属性:
 - [message](api/method/message.md)
 
 ### Related Guides
-- [弹出消息与模态框](guides/message-boxes.md)
+- [Popup Messages and Modal Boxes](guides/message-boxes.md)
 
 ### Change log
-- 4.0 版本新增
-
+- 在 4.0 版本中新增

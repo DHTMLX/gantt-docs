@@ -1,24 +1,24 @@
 ---
 sidebar_label: getLabel
-title: getLabel method
-description: "获取 lightbox 中 select 控件的标签"
+title: getLabel 方法
+description: "在 lightbox 中获取 select 控件的标签"
 ---
 
 # getLabel
 
 ### Description
 
-@short: 获取 lightbox 中 select 控件的标签
+@short: 在 lightbox 中获取 select 控件的标签
 
 @signature: getLabel: (property: string, key: string | number) =\> string
 
 ### Parameters
 
-- `property` - (required) *string* - 控件对应的数据属性名称  
-- `key` - (required) *string | number* -    选项的标识符。该值会与任务的数据属性匹配，<br>将 select 的选项与任务关联
+- `property` - (required) *string* - 控件映射到的数据属性的名称
+- `key` - (required) *string | number* - 选项的 id。此参数与任务的数据属性进行比较，以将该下拉选项分配给任务
 
 ### Returns
-- ` label` - (string) - 与 lightbox 中 select 控件关联的标签
+- ` label` - (string) - lightbox 中 select 控件的标签
 
 ### Example
 
@@ -35,7 +35,5 @@ const holder2 = gantt.getLabel("unit_id", 2);// ->"John Williams"
 ### Details
 
 :::note
-  
-此方法专门用于 lightbox 中的 'select' 控件，用于获取指定选项的标签。 
- 
+该方法仅应用于 lightbox 中的 'select' 控件，以获取特定选项的标签。
 :::

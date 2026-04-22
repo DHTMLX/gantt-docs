@@ -5,12 +5,10 @@ description: "控制任务的 deadline 元素显示开关"
 ---
 
 # deadlines
-:::info
- 此功能仅在PRO版本中可用。 
-:::
+
 ### Description
 
-@short: 控制任务的 deadline 元素显示开关
+@short: 启用或禁用任务截止日期元素的显示
 
 @signature: deadlines: boolean
 
@@ -24,14 +22,14 @@ gantt.init("gantt_here");
 **Default value:** true
 
 ### Related samples
-- [Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
+- [显示截止日期](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
 
 ### Details
 
-此设置用于控制是否显示任务的 deadline 元素。启用后，Gantt 会检查 `task.deadline` 属性，如果该属性包含有效日期，deadline 将显示在时间轴上。
+此配置用于启用或禁用任务截止日期元素的显示。若启用，Gantt 将检查 `task.deadline` 属性；若该属性包含有效日期，则在时间线中显示截止日期元素。
 
 ### Related Guides
 - [时间线中的额外元素](guides/inbuilt-baselines.md)
 
 ### Change log
-- v9.0 新增
+- 在 v9.0 中新增

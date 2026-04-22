@@ -1,32 +1,37 @@
 ---
 sidebar_label: grid_resize
-title: grid_resize config
-description: "允许通过拖动右侧边框来调整 grid 的大小"
+title: grid_resize 配置
+description: "通过拖动右侧网格的边框使网格可调整大小"
 ---
 
 # grid_resize
+
+:::warning
+该属性已弃用。
+:::
+
 :::info
- 此功能仅在 PRO 版本中可用。 
+该功能仅在 PRO 版本中提供。 
 :::
 ### Description
 
-@short: 允许通过拖动右侧边框来调整 grid 的大小
+@short: 通过拖动右侧网格的边框使网格可调整大小
 
 ### Example
 
 ~~~jsx
-gantt.config.columns = [  
-    { name:"text", tree:true, width:"*", resize:true },  
-    { name:"start_date", align: "center"},  
-    { name:"duration", align: "center", width:70 },  
-    { name:"add", width:44 }  
-];  
+gantt.config.columns = [
+    { name:"text", tree:true, width:"*", resize:true },
+    { name:"start_date", align: "center"},
+    { name:"duration", align: "center", width:70 },
+    { name:"add", width:44 }
+];
 
-gantt.config.grid_resize = true; /*!*/  
+gantt.config.grid_resize = true; /*!*/
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**默认值:** false
 
 ### Related samples
 - [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
@@ -34,7 +39,7 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- 此属性现已废弃。请改用 [gantt.config.layout](api/config/layout.md) 并根据需要配置 grid 和 resizer 对象。更多详情请参见 [这里](guides/layout-config.md#morenbuju)。 
+该属性已弃用。请改用 [gantt.config.layout](api/config/layout.md)，在其中指定 grid 和 resizer 对象及所需配置。详细信息见 [这里](guides/layout-config.md#default-layout)。 
 :::
 
 ~~~js

@@ -1,23 +1,23 @@
 ---
 sidebar_label: grid_blank
-title: grid_blank template
-description: "트리 컬럼의 자식 항목 라벨 앞에 표시되는 사용자 정의 콘텐츠를 정의합니다."
+title: grid_blank 템플릿
+description: "트리 열의 자식 아이템의 레이블 앞에 삽입되는 사용자 정의 컨텐츠를 지정합니다"
 ---
 
 # grid_blank
 
 ### Description
 
-@short: 트리 컬럼의 자식 항목 라벨 앞에 표시되는 사용자 정의 콘텐츠를 정의합니다.
+@short: 트리 열의 자식 아이템의 레이블 앞에 삽입되는 사용자 정의 컨텐츠를 지정합니다
 
-@signature: grid_blank: (task: Task) =\> string;
+@signature: grid_blank: (task: Task) => string;
 
 ### Parameters
 
-- `task` - (required) *Task* - 작업 객체
+- `task` - (필수) *Task* - 작업 객체
 
 ### Returns
-- ` text` - (string) - gantt에 렌더링될 HTML 텍스트
+- ` text` - (string) - gantt에서 렌더링될 HTML 텍스트
 
 ### Example
 

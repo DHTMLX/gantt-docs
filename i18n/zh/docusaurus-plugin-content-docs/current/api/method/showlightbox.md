@@ -1,20 +1,20 @@
 ---
 sidebar_label: showLightbox
-title: showLightbox method
-description: "打开指定任务的lightbox"
+title: showLightbox 方法
+description: "打开指定任务的 lightbox"
 ---
 
 # showLightbox
 
 ### Description
 
-@short: 打开指定任务的lightbox
+@short: 打开指定任务的 lightbox
 
 @signature: showLightbox: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -        任务ID
+- `id` - (required) *string | number* -        任务 ID
 
 ### Example
 
@@ -26,8 +26,7 @@ gantt.hideLightbox();
 
 ### Details
 
-此方法会触发 [onBeforeLightbox](api/event/onbeforelightbox.md) 和 [onLightbox](api/event/onlightbox.md) 事件。
+该方法会触发 [onBeforeLightbox](api/event/onbeforelightbox.md) 与 [onLightbox](api/event/onlightbox.md) 事件。
 
 ### Related API
 - [hideLightbox](api/method/hidelightbox.md)
-

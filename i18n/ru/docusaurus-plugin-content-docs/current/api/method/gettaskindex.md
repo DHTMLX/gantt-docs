@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskIndex
 title: getTaskIndex method
-description: "получает позицию задачи внутри её ветки"
+description: "получает индекс задачи в ветке"
 ---
 
 # getTaskIndex
 
 ### Description
 
-@short: Получает позицию задачи внутри её ветки
+@short: Получает индекс задачи в ветке
 
 @signature: getTaskIndex: (id: string | number) =\> number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    идентификатор задачи
+- `id` - (required) *string | number* - идентификатор задачи
 
 ### Returns
-- ` index` - (number) - позиция задачи в ветке, начиная с нуля
+- `index` - (number) - индекс задачи в ветке (нумерация с нуля)
 
 ### Example
 
@@ -44,4 +44,3 @@ const globalTaskIndex = gantt.getGlobalTaskIndex("t_1"); // -> 1
 
 ### Related API
 - [getGlobalTaskIndex](api/method/getglobaltaskindex.md)
-

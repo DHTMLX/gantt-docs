@@ -1,34 +1,34 @@
 ---
 sidebar_label: onBeforeTaskAutoSchedule
-title: onBeforeTaskAutoSchedule event
-description: "触发于每个被重新安排时间的任务"
+title: onBeforeTaskAutoSchedule 事件
+description: "在每个被重新排程的任务上触发"
 ---
 
 # onBeforeTaskAutoSchedule
 :::info
- 该功能仅在PRO版本中可用。 
+ 该功能仅在 PRO 版本中可用。 
 :::
 ### Description
 
-@short: 触发于每个被重新安排时间的任务
+@short: 对于每个被重新排程的任务触发
 
 @signature: onBeforeTaskAutoSchedule: (task: Task, start: Date, link: Link, predecessor: Task) =\> boolean;
 
 ### Parameters
 
 - `task` - (required) *Task* - 任务对象
-- `start` - (required) *Date* - 新的开始日期
-- `link` - (required) *Link* - 导致约束的链接对象
+- `start` - (required) *Date* - 一个新的开始日期
+- `link` - (required) *Link* - 创建约束的链接对象
 - `predecessor` - (required) *Task* - 前置任务对象
 
 ### Returns
-- ` result` - (boolean) - 表示事件的默认动作是否继续执行（<b>true</b>）或被阻止（<b>false</b>）
+- ` result` - (boolean) - 定义事件的默认操作是否会触发 (<b>true</b>) 还是取消 (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predecessor){
-    // 在此处添加自定义逻辑
+    // 在这里插入您的自定义逻辑 
     return true;
 });
 ~~~
@@ -39,10 +39,10 @@ gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predece
 ### Details
 
 :::note
- 该事件属于**auto_scheduling**扩展的一部分，请确保启用了[auto_scheduling](guides/extensions-list.md)插件。更多详情请参见 [自动调度](guides/auto-scheduling.md) 文章。 
+此事件在 **auto_scheduling** 扩展中定义，因此你需要激活 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件。请在 [Auto Scheduling](guides/auto-scheduling.md) 文章中了解详细信息。 
 :::
 
-此事件可以被阻止。返回*false*将停止任何后续处理。
+该事件是可阻塞的。返回 *false* 将取消后续处理。
 
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
@@ -61,5 +61,4 @@ gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predece
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [自动调度](guides/auto-scheduling.md)
-
+- [Auto Scheduling](guides/auto-scheduling.md)

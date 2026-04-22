@@ -1,21 +1,21 @@
 ---
 sidebar_label: assert
 title: assert method
-description: "如果给定的表达式为假，则在屏幕右上角以红色弹出框显示错误信息"
+description: "如果指定的表达式为假，将在屏幕右上角的红色弹出框中显示 errorMessage"
 ---
 
 # assert
 
 ### Description
 
-@short: 如果给定的表达式为假，则在屏幕右上角以红色弹出框显示错误信息
+@short: 如果指定的表达式为假，则在屏幕右上角的红色弹出框中显示 errorMessage
 
-@signature: assert: (expression: any, errorMessage: string) =\> void
+@signature: assert: (expression: any, errorMessage: string) => void
 
 ### Parameters
 
-- `expression` - (required) *any* - 用于确认表达式的真值，断言失败时为假值
-- `errorMessage` - (required) *string* - 将在红色弹出框中显示的消息
+- `expression` - (required) *any* - 用于断言表达式的 truthy 值，若为 falsy 值则断言失败
+- `errorMessage` - (required) *string* - 将在红色弹出框中显示的错误信息
 
 ### Example
 
@@ -27,7 +27,7 @@ gantt.attachEvent("onLoadEnd", function(){
 
 ### Details
 
-dhtmlxGantt 代码库使用 gantt.assert 来识别组件处于无效状态的情况。
+dhtmlxGantt 代码库使用 gantt.assert 来检测组件的无效状态
 
 错误显示方式可以通过 [show_errors](api/config/show_errors.md) 配置进行调整。
 

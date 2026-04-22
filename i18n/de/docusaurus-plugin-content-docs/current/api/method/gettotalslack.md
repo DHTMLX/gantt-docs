@@ -1,25 +1,27 @@
 ---
 sidebar_label: getTotalSlack
-title: getTotalSlack method
-description: "gibt den Gesamtslack für eine Aufgabe zurück"
+title: getTotalSlack Methode
+description: "liefert die Gesamtpufferzeit einer Aufgabe"
 ---
 
 # getTotalSlack
+
 :::info
- Diese Funktion ist nur in der PRO-Version verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Gibt den Gesamtslack für eine Aufgabe zurück
+@short: Gibt die Gesamtpufferzeit einer Aufgabe zurück
 
 @signature: getTotalSlack: (task?: Task | string | number) =\> any
 
 ### Parameters
-- `task` - (optional) *Task | string | number* - Angabe, das Aufgabenobjekt oder dessen ID
 
+- `task`-	(optional) *Task | string | number*	-	optional, das Objekt einer Aufgabe oder deren ID
 
 ### Returns
-- ` total_slack` - (number | object) - gibt den Gesamtslack einer Aufgabe zurück oder, falls der Parameter <i>task</i> nicht angegeben ist, ein Objekt, das Aufgaben-IDs ihren Gesamtslackwerten zuordnet
+- ` total_slack` - (number | object) - entweder die Gesamtpufferzeit einer Aufgabe oder, falls der <i>task</i>-Parameter nicht angegeben ist, ein Objekt mit Schlüssel-Wert-Paaren, wobei der Schlüssel die ID einer Aufgabe ist und der Wert die Gesamtpufferzeit der Aufgabe
 
 ### Example
 
@@ -31,20 +33,19 @@ gantt.getTotalSlack(7);
 ~~~
 
 ### Related samples
-- [Show Slack time](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
+- [Slack-Zeit anzeigen](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
 
 ### Details
 
 :::note
- Diese Methode ist Teil der **critical_path** Erweiterung. Stellen Sie daher sicher, dass das [critical_path](guides/extensions-list.md#criticalpath) Plugin über die [gantt.plugins](api/method/plugins.md) Methode aktiviert ist. Weitere Informationen finden Sie im Artikel ["Kritischer Pfad"](guides/critical-path.md). 
+Diese Methode ist in der **critical_path** Erweiterung definiert, daher müssen Sie das [critical_path](guides/extensions-list.md#critical-path) Plugin über die [gantt.plugins](api/method/plugins.md) Methode aktivieren. Lesen Sie die Details im Artikel [Critical Path](guides/critical-path.md) .
 :::
 
 
-Der Gesamtslack gibt an, um wie viel die Dauer einer Aufgabe verlängert oder zeitlich verschoben werden kann, ohne den Abschluss des gesamten Projekts zu verzögern.
+Total slack ist ein Zeitraum, der verwendet werden kann, um die Dauer einer Aufgabe zu erhöhen oder sie auf der Timeline zu verschieben, ohne die Endzeit des gesamten Projekts zu beeinflussen.
 
 ### Related API
 - [getFreeSlack](api/method/getfreeslack.md)
 
 ### Related Guides
-- ["Kritischer Pfad"](guides/critical-path.md#gettingfreeandtotalslack)
-
+- [Critical Path](guides/critical-path.md#gettingfreeandtotalslack)

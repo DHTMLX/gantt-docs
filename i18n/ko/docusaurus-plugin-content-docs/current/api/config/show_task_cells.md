@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_task_cells
 title: show_task_cells config
-description: "차트 영역에서 열 경계선을 켜거나 끕니다"
+description: "차트 영역에서 열 경계 표시를 활성화/비활성화합니다"
 ---
 
 # show_task_cells
 
 ### Description
 
-@short: 차트 영역에서 열 경계선을 켜거나 끕니다
+@short: 차트 영역에서 열 경계 표시를 활성화/비활성화합니다
 
 @signature: show_task_cells: boolean
 
@@ -21,8 +21,8 @@ gantt.config.show_task_cells = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**기본값:** true
 
 ### Details
 
-이 속성을 *'false'* 로 설정하면 개별 셀을 그리지 않고 행만 표시합니다.<br> 이는 특히 차트에 많은 작업이 있을 때 성능 향상에 도움이 될 수 있습니다.
+속성이 *'false'*로 설정되면 개별 셀의 렌더링이 비활성화되어 행만 렌더링됩니다. 차트에 많은 작업을 표시하는 경우 성능을 높이는 데 사용할 수 있습니다.

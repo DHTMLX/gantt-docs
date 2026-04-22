@@ -1,14 +1,14 @@
 ---
 sidebar_label: rtl
-title: rtl config
-description: "간트를 오른쪽에서 왼쪽으로 표시하는 모드로 전환합니다."
+title: rtl 설정
+description: "간트 차트를 RTL 모드로 전환합니다"
 ---
 
 # rtl
 
 ### Description
 
-@short: 간트를 오른쪽에서 왼쪽으로 표시하는 모드로 전환합니다.
+@short: 간트 차트를 오른쪽에서 왼쪽(RTL) 모드로 전환합니다
 
 @signature: rtl: boolean
 
@@ -40,11 +40,11 @@ gantt.init("gantt_here");
 
 ### Details
 
-이 옵션을 **true**로 설정하면 타임라인의 시간 스케일 방향과 그리드의 행 순서가 오른쪽에서 왼쪽으로 변경됩니다.
+구성 옵션을 **true**로 설정하면 타임라인의 시간 눈금 방향과 그리드의 행 순서가 오른쪽에서 왼쪽으로 변경됩니다.
 
-이 설정은 간트 레이아웃 구성을 자동으로 업데이트하지 않으므로, 그리드와 타임라인 위치를 교환하려면 레이아웃을 직접 조정해야 합니다.
+간트 차트의 [layout](api/config/layout.md)에는 영향을 주지 않으므로 그리드와 타임라인의 위치를 바꾸려면 레이아웃을 다시 정의해야 합니다.
 
-또한 [간트의 레이블 텍스트 방향을 조정하는 것](https://developer.mozilla.org/en-US/docs/Web/CSS/direction)도 고려할 수 있습니다.
+또한 간트 차트에서 사용되는 레이블의 텍스트 방향을 설정하고 싶을 수 있습니다 [to set the direction of text for labels used in the gantt](https://developer.mozilla.org/en-US/docs/Web/CSS/direction).
 
 ### Related Guides
-- [RTL (오른쪽-왼쪽) 모드](guides/rtl-mode.md)
+- [RTL (Right-to-left) Mode](guides/rtl-mode.md)

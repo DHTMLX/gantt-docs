@@ -5,17 +5,16 @@ sidebar_label: "Grundlegende Operationen mit Aufgaben"
 
 # Grundlegende Operationen mit Aufgaben
 
-In diesem Kapitel erfahren Sie, wie Sie grundlegende Aufgabenoperationen ausführen: Aufgaben erstellen, löschen und Eigenschaften dynamisch aktualisieren.
+In diesem Kapitel lernen Sie, wie man grundlegende Operationen mit Aufgaben durchführt: eine Aufgabe erstellen oder löschen, sowie eine Eigenschaft einer Aufgabe dynamisch aktualisieren.
 
+## Eine neue Aufgabe hinzufügen
 
-## Hinzufügen einer neuen Aufgabe
-
-Um eine neue Aufgabe zum Gantt-Diagramm hinzuzufügen, verwenden Sie die Methode [addTask](api/method/addtask.md):
+Um eine neue Aufgabe zum Gantt-Diagramm hinzuzufügen, verwenden Sie die [addTask](api/method/addtask.md) Methode:
 
 ~~~js
 var taskId = gantt.addTask({
     id:10,
-    text:"Project #1",
+    text:"Projekt #1",
     start_date:"02-09-2020",
     duration:28
 });
@@ -23,9 +22,9 @@ var taskId = gantt.addTask({
 
 ### Verhindern des Hinzufügens von Aufgaben auf bestimmten Ebenen
 
-Eine einfache Möglichkeit, Benutzer daran zu hindern, Unteraufgaben zu Aufgaben einer bestimmten Ebene (oder nach anderen Kriterien) hinzuzufügen, besteht darin, die Schaltfläche "Hinzufügen" per CSS auszublenden.
+Eine recht einfache Möglichkeit, zu verhindern, dass Benutzer Teilaufgaben zu einer Aufgabe einer bestimmten Ebene hinzufügen (oder basierend auf einer anderen Bedingung), besteht darin, den „Add“-Button mithilfe von CSS auszublenden.
 
-Sie können jeder Aufgabenzeile mit dem Template [grid_row_class](api/template/grid_row_class.md) eine CSS-Klasse zuweisen:
+Sie können jeder Aufgabenzeile eine CSS-Klasse zuweisen, indem Sie die Vorlage [grid_row_class](api/template/grid_row_class.md) verwenden:
 
 ~~~js
 gantt.templates.grid_row_class = function( start, end, task ){
@@ -36,7 +35,7 @@ gantt.templates.grid_row_class = function( start, end, task ){
 };
 ~~~
 
-Blenden Sie anschließend die "Add"-Schaltfläche für diese Zeilen aus:
+und den „Add“-Button für solche Zeilen ausblenden:
 
 ~~~css
 .nested_task .gantt_add{
@@ -46,10 +45,9 @@ Blenden Sie anschließend die "Add"-Schaltfläche für diese Zeilen aus:
 
 [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
+## Eine Eigenschaft einer Aufgabe aktualisieren
 
-## Aktualisieren einer Aufgabeneigenschaft
-
-Um eine Eigenschaft eines Aufgabenobjekts dynamisch zu aktualisieren, verwenden Sie die Methode [updateTask](api/method/updatetask.md):
+Um eine Eigenschaft eines Aufgabenobjekts dynamisch zu aktualisieren, verwenden Sie die [updateTask](api/method/updatetask.md) Methode:
 
 ~~~js
 var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2020",...}
@@ -58,11 +56,11 @@ task.text = "Task #10_1";/*!*/
 gantt.updateTask(10); /*!*/
 ~~~
 
-Wenn der Data Processor aktiviert ist, sendet ein Aufruf von [updateTask()](api/method/updatetask.md) die Änderungen an den Server.
+Wenn Data Processor aktiviert ist, wird die [updateTask()](api/method/updatetask.md) Methode die Änderungen an den Server senden.
 
-Nach der Aktualisierung der Aufgabe wird das Ereignis [onAfterTaskUpdate](api/event/onaftertaskupdate.md) ausgelöst. Dies kann weitere Aktualisierungen bewirken, wie z. B. das automatische Planen der Aufgabe und ihrer Nachfolger, falls diese Funktion aktiviert ist.
+Nach der Aktualisierung der Aufgabe wird das [onAfterTaskUpdate](api/event/onaftertaskupdate.md) Ereignis ausgelöst. Es kann weitere Änderungen verursachen, zum Beispiel, wenn die automatische Terminplanung aktiviert ist, wird Gantt die Aufgabe und alle ihre Nachfolger automatisch terminiert.
 
-Wenn lediglich eine visuelle Aktualisierung ohne Senden der Daten an den Server erforderlich ist, verwenden Sie stattdessen die Methode [refreshTask()](api/method/refreshtask.md) anstelle von [updateTask()](api/method/updatetask.md):
+Wenn Sie lediglich die Änderungen neu rendern möchten, rufen Sie stattdessen die [refreshTask()](api/method/refreshtask.md) Methode auf und verwenden Sie nicht [updateTask()](api/method/updatetask.md).
 
 ~~~js
 var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2020",...}
@@ -71,9 +69,9 @@ task.text = "Task #10_1";
 gantt.refreshTask(10);
 ~~~
 
-## Neuzeichnen von Aufgaben
+## Neuzeichnen der Aufgaben
 
-Um alle Aufgaben im Gantt-Diagramm neu zu zeichnen, verwenden Sie die Methode [refreshData](api/method/refreshdata.md):
+Um alle Aufgaben im Gantt-Diagramm neu zu zeichnen, verwenden Sie die [refreshData](api/method/refreshdata.md) Methode:
 
 ~~~js
 var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2020",...}
@@ -84,34 +82,34 @@ task2.text = "Task #11_1";/*!*/
 gantt.refreshData(); /*!*/ 
 ~~~
 
-## Löschen von Aufgaben
+## Aufgaben löschen
 
-Um eine Aufgabe zu entfernen, verwenden Sie die Methode [deleteTask](api/method/deletetask.md):
+Um eine Aufgabe zu löschen, verwenden Sie die [deleteTask](api/method/deletetask.md) Methode:
 
 ~~~js
 gantt.deleteTask(taskId);
 ~~~
 
-## Kaskadierendes Löschen von verschachtelten Aufgaben
+## Kaskadierendes Löschen verschachtelter Aufgaben
 
-Die Einstellung [cascade_delete](api/config/cascade_delete.md) steuert, wie Aufgabenlöschungen gehandhabt werden. Standardmäßig ist sie auf *true* gesetzt, was bedeutet, dass das Löschen einer Aufgabe Anfragen an den Server für jede verschachtelte Aufgabe und jede damit verknüpfte Verbindung auslöst.
+Es gibt eine [cascade_delete](api/config/cascade_delete.md) Konfiguration, die den Prozess des Löschens von Aufgaben aus dem Gantt regelt. Standardmäßig ist sie auf true gesetzt,
+was bedeutet, dass beim Löschen einer Aufgabe eine Anfrage an den Server für jede verschachtelte Aufgabe und jeden Link der gelöschten Aufgabe gesendet wird.
 
-Wenn Sie nicht möchten, dass mehrere Anfragen gesendet werden, deaktivieren Sie die Option [cascade_delete](api/config/cascade_delete.md):
+Wenn Sie nicht mehrere Anfragen an den Server senden müssen, können Sie die [cascade_delete](api/config/cascade_delete.md) Konfiguration einfach deaktivieren:
 
 ~~~js
 gantt.config.cascade_delete = false;
 ~~~
 
-Mit dieser Einstellung sendet Gantt nur eine Anfrage zum Löschen der übergeordneten Aufgabe, während der Server das Entfernen der verschachtelten Aufgaben und Verbindungen übernimmt.
+In diesem Fall sendet Gantt nur eine einzige Anfrage an den Server – zum Löschen der übergeordneten Aufgabe, während deren verschachtelte Aufgaben und Links vom Server gelöscht werden.
 
-Diese Option beeinflusst die Backend-Implementierung. Weitere Informationen finden Sie im 
-[entsprechenden Abschnitt des Artikels Server-side Integration](guides/server-side.md#cascadedeletion).
+Die [cascade_delete](api/config/cascade_delete.md) Option beeinflusst die Art und Weise der Implementierung eines Backends. Lesen Sie mehr im entsprechenden Abschnitt des Server-seitigen Integrations-Artikels
+(guides/server-side.md#cascade-deletion).
 
 ## Entfernen aller Aufgaben aus dem Gantt-Diagramm
 
-Um alle Aufgaben aus dem Gantt-Diagramm zu löschen, verwenden Sie die Methode [clearAll](api/method/clearall.md):
+Um das Gantt-Diagramm von Aufgaben zu bereinigen, rufen Sie die [clearAll](api/method/clearall.md) Methode auf:
 
 ~~~js
 gantt.clearAll();
 ~~~
-

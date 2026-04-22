@@ -1,14 +1,18 @@
 ---
 sidebar_label: grid_resizer_attribute
-title: grid_resizer_attribute config
-description: "指定用于 grid resizer 的 DOM 元素的属性名称"
+title: grid_resizer_attribute 配置
+description: "设置 grid resizer 的 DOM 元元素属性名称"
 ---
 
 # grid_resizer_attribute
 
+:::warning
+该属性已废弃。
+:::
+
 ### Description
 
-@short: 指定用于 grid resizer 的 DOM 元素的属性名称
+@short: 设置 grid resizer 的 DOM 元素属性名称
 
 ### Example
 
@@ -16,12 +20,12 @@ description: "指定用于 grid resizer 的 DOM 元素的属性名称"
 gantt.config.grid_resizer_attribute = "gridresizer";
 ~~~
 
-**Default value:** "grid_resizer"
+**默认值：** "grid_resizer"
 
 ### Details
 
 :::note
- 此属性已被弃用。建议改用 [grid_resizer_column_attribute](api/config/grid_resizer_column_attribute.md): 
+请使用 [grid_resizer_column_attribute](api/config/grid_resizer_column_attribute.md) 代替：
 :::
 
 ~~~js
@@ -31,4 +35,3 @@ gantt.config.grid_resizer_column_attribute = "data-column-index";
 ### Related API
 - [grid_resizer_column_attribute](api/config/grid_resizer_column_attribute.md)
 - [grid_resize](api/config/grid_resize.md)
-

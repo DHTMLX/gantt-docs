@@ -1,19 +1,19 @@
 ---
 sidebar_label: getRedoStack
-title: getRedoStack method
-description: "liefert den Stapel der gespeicherten Redo-Benutzeraktionen"
+title: getRedoStack-Methode
+description: "liefert den Stack der gespeicherten Redo-Benutzeraktionen"
 ---
 
 # getRedoStack
 
 ### Description
 
-@short: Liefert den Stapel der gespeicherten Redo-Benutzeraktionen
+@short: Gibt den Stack der gespeicherten Redo-Benutzeraktionen zurück
 
 @signature: getRedoStack: () =\> UndoRedoAction[]
 
 ### Returns
-- ` stack` - (UndoRedoAction[]) - ein Array, das Redo-Benutzeraktionen enthält
+- ` stack` - (UndoRedoAction[]) - ein Array der Redo-Benutzeraktionen
 
 ### Example
 
@@ -22,27 +22,24 @@ var stack = gantt.getRedoStack();
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Undo/Redo Änderungen in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
 :::note
- Diese Methode gehört zur **undo**-Erweiterung, daher stellen Sie sicher, dass das [undo](guides/extensions-list.md#undo) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Undo/Redo-Funktionalität"](guides/undo-redo.md). 
+Diese Methode ist in der **undo**-Erweiterung definiert, daher müssen Sie das [undo](guides/extensions-list.md#undo) Plugin aktivieren. Lesen Sie die Details im Artikel [Undo/Redo Functionality](guides/undo-redo.md).
 :::
 
-
-Der zurückgegebene Stapel besteht aus Redo-Benutzeraktionen. Jede Aktion umfasst eine Reihe von Befehlen. Ein Befehl ist ein Objekt mit folgenden Eigenschaften:
+Der zurückgegebene Stack ist ein Array der Redo-Benutzeraktionen. Jede Benutzeraktion enthält eine Gruppe von Befehlen. Ein Befehl ist ein Objekt mit den folgenden Attributen:
  
-- **type** - (*string*) gibt den Befehlstyp an: "add/remove/update"
-- **entity** - (*string*) gibt die Art des geänderten Objekts an: "task" oder "link"
-- **value** - (*object*) das aktualisierte Task-/Link-Objekt 
-- **oldValue** - (*object*) das Task-/Link-Objekt vor der Änderung
+- **type** - (*string*) der Typ eines Befehls: "add/remove/update"
+- **entity** - (*string*) der Typ des Objekts, das geändert wurde: "task" oder "link"
+- **value** - (*object*) das geänderte Task-/Link-Objekt 
+- **oldValue** - (*object*) das Task-/Link-Objekt vor den Änderungen
 
-Siehe das folgende Beispiel:
+Schauen Sie sich das untenstehende Beispiel an:
 
-![get_redo_stack](/img/get_redo_stack.png)
-
-Die Methode **getRedoStack()** gibt einen Stapel mit 3 Redo-Benutzeraktionen zurück. Die erste und zweite Aktion enthalten jeweils 1 Befehl, die dritte enthält 3 Befehle.
+Die Methode **getRedoStack()** gibt einen Stack mit 3 Redo-Benutzeraktionen zurück. Die erste und zweite Aktion enthalten jeweils 1 Befehl, während die dritte 3 Befehle enthält.
 
 ### Related API
 - [getUndoStack](api/method/getundostack.md)
@@ -50,8 +47,7 @@ Die Methode **getRedoStack()** gibt einen Stapel mit 3 Redo-Benutzeraktionen zur
 - [clearRedoStack](api/method/clearredostack.md)
 
 ### Related Guides
-- ["Undo/Redo-Funktionalität"](guides/undo-redo.md#gettingthestackofstoredundoredocommands)
+- [Undo/Redo-Funktionalität](guides/undo-redo.md)
 
 ### Change log
 - hinzugefügt in Version 4.0
-

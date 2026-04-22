@@ -1,23 +1,23 @@
----
+--- 
 sidebar_label: createCalendar
-title: createCalendar method
-description: "设置一个功能完整的日历"
+title: createCalendar 方法
+description: "创建一个工作日历"
 ---
 
 # createCalendar
 
 ### Description
 
-@short: 设置一个功能完整的日历
+@short: 创建一个工作日历
 
 @signature: createCalendar: (parentCalendar?: Calendar) =\> Calendar
 
 ### Parameters
 
-- `parentCalendar` - (optional) *Calendar* - （可选）基于已有日历创建新日历
+- `parentCalendar` - (optional) *Calendar* - 一个用于在其基础上创建新日历的现有日历
 
 ### Returns
-- ` calendar` - (Calendar) - 返回 Calendar 对象
+- `calendar` - (Calendar) - 日历对象
 
 ### Example
 
@@ -31,7 +31,7 @@ var calendar2 = gantt.createCalendar(parentCalendar);
 
 ### Details
 
-版本4.2新增
+在版本 4.2 中新增
 
 创建日历后，应通过 [addCalendar](api/method/addcalendar.md) 方法将其添加到 Gantt 中:
 
@@ -45,5 +45,4 @@ gantt.addCalendar(calendar1);
 - [calendar](api/other/calendar.md)
 
 ### Related Guides
-- [工作时间计算](guides/working-time.md)
-
+- [Work Time Calculation](guides/working-time.md#multipleworktimecalendars)

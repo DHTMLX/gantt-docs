@@ -1,7 +1,7 @@
 ---
 sidebar_label: progress_text
-title: progress_text template
-description: "definiert den Text, der im abgeschlossenen Bereich der Task-Leiste angezeigt wird"
+title: progress_text Vorlage
+description: "gibt den Text im abgeschlossenen Teil des Fortschrittbalkens der Aufgabe an"
 ---
 
 # progress_text
@@ -14,9 +14,9 @@ description: "definiert den Text, der im abgeschlossenen Bereich der Task-Leiste
 
 ### Parameters
 
-- `start` - (required) *Date* - das Datum, an dem die Aufgabe geplant ist zu starten  
-- `end` - (required) *Date* - das Datum, an dem die Aufgabe voraussichtlich endet
-- `task` - (required) *Task* - das Task-Objekt
+- `start` - (erforderlich) *Date* - Das Datum, an dem eine Aufgabe voraussichtlich beginnt
+- `end` - (erforderlich) *Date* - Das Datum, an dem eine Aufgabe voraussichtlich abgeschlossen wird
+- `task` - (erforderlich) *Task* - Das Task-Objekt
 
 ### Returns
 - ` text` - (string | number | void) - ein HTML-Text, der innerhalb des gantt angezeigt wird
@@ -31,4 +31,4 @@ gantt.templates.progress_text=function(start, end, task){return "";};
 - [Text in the Progress bar](https://docs.dhtmlx.com/gantt/samples/04_customization/07_progress_text.html)
 
 ### Related Guides
-- ["Vorlagen für den Timeline-Bereich"](guides/timeline-templates.md)
+- [Vorlagen für den Timeline-Bereich](guides/timeline-templates.md)

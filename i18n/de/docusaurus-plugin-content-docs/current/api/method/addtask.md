@@ -14,12 +14,12 @@ description: "fügt eine neue Aufgabe hinzu"
 
 ### Parameters
 
-- `task` - (required) *NewTask* - das Aufgabenobjekt
-- `parent` - (optional) *string | number* - die ID des übergeordneten Elements
-- `index` - (optional) *number* - die Position, an der die Aufgabe eingefügt wird (0 oder höher)
+- `task` - (required) *NewTask* - das Task-Objekt
+- `parent` - (optional) *string | number* - die ID des Elternteils
+- `task` - (optional) *number* - die Position, in die die Aufgabe hinzugefügt wird (0 oder größer)
 
 ### Returns
-- ` id` - (string | number) - die ID der Aufgabe
+- ` id` - (string, number) - die ID der Aufgabe
 
 ### Example
 
@@ -34,13 +34,15 @@ const taskId = gantt.addTask({
 
 ### Details
 
-Wenn Sie den Parameter *index* mit einem Wert von 0 oder höher angeben, wird die Aufgabe an dieser bestimmten Stelle innerhalb des Zweigs eingefügt. 
-Lassen Sie ihn weg, wird die Aufgabe einfach am Ende des Zweigs hinzugefügt.
+Wenn Sie den *index*-Parameter mit dem Wert von 0 oder größer setzen, wird eine Aufgabe an der angegebenen Position im Zweig hinzugefügt. 
+Andernfalls wird die Aufgabe am Ende des Aufgaben-Zweigs hinzugefügt.
 
-Diese Methode löst die Events [onBeforeTaskAdd](api/event/onbeforetaskadd.md) und [onAfterTaskAdd](api/event/onaftertaskadd.md) aus.
+Die Methode löst die Ereignisse [onBeforeTaskAdd](api/event/onbeforetaskadd.md) und [onAfterTaskAdd](api/event/onaftertaskadd.md) aus.
 
-Beachten Sie, dass wenn Sie das Speichern einer Aufgabe vermeiden möchten - zum Beispiel wenn ein Benutzer im Lightbox-Dialog abbricht - Sie stattdessen die Methode [createTask](api/method/createtask.md) verwenden sollten, welche das Event [onTaskCreated](api/event/ontaskcreated.md) auslöst.
+Hinweis: Falls Sie die Aufgabe in dem Fall, z. B. falls der Benutzer im Lightbox-Dialog auf 'Abbrechen' klickt, nicht speichern möchten, verwenden Sie die [createTask](api/method/createtask.md) Methode und das [onTaskCreated](api/event/ontaskcreated.md) Ereignis, das von dieser Methode ausgelöst wird.
 
+### Preventing from adding tasks to certain levels
+Eine einfache Möglichkeit, Benutzer daran zu hindern, Unteraufgaben zu bestimmten Aufgaben hinzuzufügen, besteht darin, die 'Add'-Schaltfläche per CSS auszublenden.
 
 ## Verhindern, dass Aufgaben auf bestimmten Ebenen hinzugefügt werden
 Eine einfache Möglichkeit, Benutzern das Hinzufügen von Unteraufgaben unter bestimmten Aufgaben zu verwehren, besteht darin, den 'Add'-Button per CSS auszublenden.
@@ -63,9 +65,7 @@ gantt.templates.grid_row_class = (start, end, task) => {
 ~~~
 
 :::note
-sample
-  [Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
- 
+Beispiel [Vordefinierte Projektstruktur](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 :::
 
 ### Related API
@@ -76,4 +76,3 @@ sample
 
 ### Related Guides
 - [Grundlegende Operationen mit Aufgaben](guides/crud-task.md)
-

@@ -1,30 +1,31 @@
 ---
 sidebar_label: onAfterSort
-title: onAfterSort event
-description: "wird ausgelöst, sobald die Aufgaben im Grid sortiert wurden"
+title: onAfterSort-Ereignis
+description: "Wird ausgelöst, nachdem Aufgaben im Grid sortiert wurden"
 ---
 
 # onAfterSort
 
 ### Description
 
-@short: Wird ausgelöst, sobald die Aufgaben im Grid sortiert wurden
+@short: Wird ausgelöst, nachdem Aufgaben im Grid sortiert wurden
 
 @signature: onAfterSort: (field: string | GanttCallback, desc?: boolean, parent?: string | number) =\> void;
 
 ### Parameters
 
-- `field` - (required) *string | function* - der für die Sortierung verwendete Spaltenname oder eine benutzerdefinierte Sortierfunktion
+- `field` - (erforderlich) *string | function* - der Name der Spalte, nach der das Grid sortiert wurde, oder eine benutzerdefinierte Sortierfunktion
+- `desc`	- (optional)	*boolean*	 	-		optional, die Sortierrichtung: <i>true</i> - absteigend, <i>false</i> - aufsteigend<br/>
+- `parent`	- (optional) *string | number*	-	optional, die ID der übergeordneten Aufgabe, falls die Aufgaben nur im Zweig des angegebenen Elternteils sortiert wurden
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterSort",function(field, direction, parent){
-    // your code here
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related API
 - [sort](api/method/sort.md)
 - [sort](api/config/sort.md)
-

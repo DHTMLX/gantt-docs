@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_links
-title: drag_links config
-description: "ermöglicht das Erstellen von Abhängigkeits-Links durch Drag-and-Drop"
+title: drag_links Konfiguration
+description: "ermöglicht das Erstellen von Abhängigkeitsverknüpfungen per Drag-and-Drop"
 ---
 
 # drag_links
 
 ### Description
 
-@short: Ermöglicht das Erstellen von Abhängigkeits-Links durch Drag-and-Drop
+@short: Ermöglicht das Erstellen von Abhängigkeitsverknüpfungen per Drag-and-Drop
 
 @signature: drag_links: boolean
 
@@ -19,4 +19,4 @@ gantt.config.drag_links = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true

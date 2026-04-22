@@ -1,18 +1,17 @@
 ---
-title: "Konfiguration des Rasters"
-sidebar_label: "Konfiguration des Rasters"
+title: "Grid konfigurieren"
+sidebar_label: "Grid konfigurieren"
 ---
 
-# Konfiguration des Rasters 
+# Grid konfigurieren
 
 ![gantt_left](/img/gantt_left.png)
 
-
-- [Specifying Columns](guides/specifying-columns.md)
-- [Resizing Rows in Grid](guides/resizing-rows.md)
-- [Configuring the Tree Column](guides/tree-column.md)
-- [Reordering Tasks](guides/reordering-tasks.md)
-- [Sorting Columns](guides/sorting.md)
-- [Grouping Tasks](guides/grouping.md)
-- [Filtering Tasks](guides/filtering.md)
-- [Inline Editing in Grid](guides/inline-editing.md)
+- [Spalten festlegen](guides/specifying-columns.md)
+- [Zeilen im Grid anpassen](guides/resizing-rows.md)
+- [Baum-Spalte konfigurieren](guides/tree-column.md)
+- [Aufgaben neu anordnen](guides/reordering-tasks.md)
+- [Spalten sortieren](guides/sorting.md)
+- [Aufgaben gruppieren](guides/grouping.md)
+- [Aufgaben filtern](guides/filtering.md)
+- [Inline-Bearbeitung im Grid](guides/inline-editing.md)

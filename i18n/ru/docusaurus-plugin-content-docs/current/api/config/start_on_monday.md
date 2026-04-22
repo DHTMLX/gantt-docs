@@ -1,27 +1,27 @@
 ---
 sidebar_label: start_on_monday
 title: start_on_monday config
-description: "устанавливает первый день недели"
+description: "устанавливает начальный день недели"
 ---
 
 # start_on_monday
 
 ### Description
 
-@short: Устанавливает первый день недели
+@short: Задает начальный день недели
 
 @signature: start_on_monday: boolean
 
 ### Example
 
 ~~~jsx
-// недели начинаются с воскресенья
+// weeks start from Sunday
 gantt.config.start_on_monday = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 
-Когда эта опция включена (<i>true</i>), неделя начинается с понедельника. Если опция отключена, неделя будет начинаться с воскресенья.
+Если параметр установлен в true, неделя будет начинаться с понедельника (в противном случае — с воскресенья).

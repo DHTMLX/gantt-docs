@@ -1,22 +1,22 @@
 ---
 sidebar_label: scrollLayoutCell
 title: scrollLayoutCell method
-description: "перемещает вид layout в указанную позицию"
+description: "Прокручивает представление макета до указанной позиции"
 ---
 
 # scrollLayoutCell
 
 ### Description
 
-@short: Перемещает вид layout в указанную позицию
+@short: Прокручивает представление макета до указанной позиции
 
-@signature: scrollLayoutCell: (name: string, x: number | null, y: number | null) =\> void
+@signature: scrollLayoutCell: (name: string, x: number | null, y: number | null) => void
 
 ### Parameters
 
-- `name` - (required) *string* - имя вида layout
-- `x` - (required) *number | null* -    необязательно, значение горизонтальной прокрутки или 'null' (если не нужно менять горизонтальную позицию)
-- `y` - (required) *number | null* -     необязательно, значение вертикальной прокрутки или 'null' (если не нужно менять вертикальную позицию)
+- `name` - (обязательный) *string* - имя представления макета
+- `x` - (обязательный) *number | null* -    необязательное, значение горизонтального прокручивания или 'null' (если положение прокрутки не должно изменяться)
+- `y` - (обязательный) *number | null* -     необязательное, значение вертикального прокручивания или 'null' (если положение прокрутки не должно изменяться)
 
 ### Example
 
@@ -34,9 +34,8 @@ gantt.scrollLayoutCell("resourceTimeline", 100, 100);
 ### Details
 
 :::note
-Sample: [Публичные методы для доступа к видам ячеек layout и управления их прокруткой](https://snippet.dhtmlx.com/0v4mmoxu) 
+пример: [Публичные методы получения представлений ячеек макета и их прокрутки](https://snippet.dhtmlx.com/0v4mmoxu)
 :::
 
 ### Related API
 - [scrollTo](api/method/scrollto.md)
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: link_attribute
-title: link_attribute config
-description: "定义用于指定链接 HTML 元素 id 的属性名称"
+title: link_attribute 配置
+description: "设置将用于指定链接的 HTML 元素的 id 的属性名"
 ---
 
 # link_attribute
 
 ### Description
 
-@short: 定义用于指定链接 HTML 元素 id 的属性名称
+@short: 设置将用于指定链接的 HTML 元素的 id 的属性名
 
 @signature: link_attribute: string
 

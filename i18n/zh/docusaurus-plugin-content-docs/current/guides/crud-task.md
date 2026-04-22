@@ -5,11 +5,11 @@ sidebar_label: "任务的基本操作"
 
 # 任务的基本操作
 
-本章介绍如何处理任务的基本操作:动态创建、删除和更新任务属性。
+在本章中，您将学习如何对任务执行基本操作：创建或删除任务，动态更新任务的属性。
 
-## 添加新任务
+## 新增一个任务
 
-要向甘特图添加新任务，请使用 [addTask](api/method/addtask.md) 方法:
+要向甘特图中添加新任务，请使用 [addTask] 方法：
 
 ~~~js
 var taskId = gantt.addTask({
@@ -20,11 +20,11 @@ var taskId = gantt.addTask({
 });
 ~~~
 
-### 限制在特定层级添加任务
+### 防止在某些级别添加任务
 
-如果你想阻止用户在某些层级的任务下添加子任务（或基于其他条件），一种简单的方法是通过 CSS 隐藏"添加"按钮。
+一种简单的方法是在某个级别的任务上阻止用户添加子任务（或基于某些其他条件），方法是通过 CSS 隐藏 'Add' 按钮。
 
-你可以通过 [grid_row_class](api/template/grid_row_class.md) 模板为每一行任务分配一个 CSS 类:
+您可以使用 [grid_row_class] 模板为每个任务行分配一个 CSS 类：
 
 ~~~js
 gantt.templates.grid_row_class = function( start, end, task ){
@@ -35,7 +35,7 @@ gantt.templates.grid_row_class = function( start, end, task ){
 };
 ~~~
 
-然后为这些行隐藏"添加"按钮:
+并对这样的行隐藏 'Add' 按钮：
 
 ~~~css
 .nested_task .gantt_add{
@@ -43,12 +43,11 @@ gantt.templates.grid_row_class = function( start, end, task ){
 }
 ~~~
 
-[Predefined Project Structure](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
+[预定义项目结构](https://docs.dhtmlx.com/gantt/samples/08_api/11_project_structure.html)
 
+## 更新一个任务的属性
 
-## 更新任务属性
-
-要动态更新任务对象的属性，请使用 [updateTask](api/method/updatetask.md) 方法:
+要动态更新任务对象的某个属性，请使用 [updateTask] 方法：
 
 ~~~js
 var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2020",...}
@@ -57,11 +56,11 @@ task.text = "Task #10_1";/*!*/
 gantt.updateTask(10); /*!*/
 ~~~
 
-当启用 Data Processor 时，调用 [updateTask()](api/method/updatetask.md) 会将更改发送到服务器。
+如果 Data Processor 启用， [updateTask()](api/method/updatetask.md) 方法将把更改发送到服务器。
 
-任务更新后，会触发 [onAfterTaskUpdate](api/event/onaftertaskupdate.md) 事件。这可能会引发其他更新，例如如果启用了该功能，则自动调度任务及其后续任务。
+在任务更新后，将触发 [onAfterTaskUpdate](api/event/onaftertaskupdate.md) 事件。它可能引发其他更改，例如当启用自动调度时，Gantt 将自动调度该任务及其所有后继任务。
 
-如果只需要进行界面刷新而不需要将数据发送到服务器，可以使用 [refreshTask()](api/method/refreshtask.md) 方法替代 [updateTask()](api/method/updatetask.md):
+如果您只需要重新渲染更改，请使用 [refreshTask()](api/method/refreshtask.md) 方法，而不是 [updateTask()](api/method/updatetask.md)。
 
 ~~~js
 var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2020",...}
@@ -70,9 +69,9 @@ task.text = "Task #10_1";
 gantt.refreshTask(10);
 ~~~
 
-## 重绘任务
+## 重新绘制任务
 
-要重绘甘特图中的所有任务，请使用 [refreshData](api/method/refreshdata.md) 方法:
+要重新绘制甘特图中的所有任务，请使用 [refreshData](api/method/refreshdata.md) 方法：
 
 ~~~js
 var task = gantt.getTask(10);//->{id:10,text:"Task #10",start_date:"02-09-2020",...}
@@ -85,32 +84,30 @@ gantt.refreshData(); /*!*/
 
 ## 删除任务
 
-要移除一个任务，请使用 [deleteTask](api/method/deletetask.md) 方法:
+要删除一个任务，请使用 [deleteTask](api/method/deletetask.md) 方法：
 
 ~~~js
 gantt.deleteTask(taskId);
 ~~~
 
-## 级联删除嵌套任务
+## 嵌套任务的级联删除
 
-[cascade_delete](api/config/cascade_delete.md) 设置控制任务删除的处理方式。默认情况下，它设置为 *true*，意味着删除一个任务会为每个相关的嵌套任务和关联的链接向服务器发起请求。
+存在一个 [cascade_delete](api/config/cascade_delete.md) 配置，用于规范从甘特图删除任务的过程。默认设置为 *true*，这意味着在删除一个任务时，Gantt 会对被删除任务的每个嵌套任务和链接发送一个服务器请求。
 
-如果不希望发送多个请求，可以禁用 [cascade_delete](api/config/cascade_delete.md) 选项:
+如果您不需要向服务器发送多个请求，可以简单地禁用 [cascade_delete](api/config/cascade_delete.md) 配置：
 
 ~~~js
 gantt.config.cascade_delete = false;
 ~~~
 
-关闭该设置后，Gantt 只会发送一个请求删除父任务，服务器端负责移除嵌套任务和链接。
+在这种情况下，Gantt 只会向服务器发送一个请求——仅删除父任务，而其嵌套任务和链接将由服务器删除。
 
-此选项会影响后端的实现。更多细节请参见
-[Server-side Integration 文章的相关部分](guides/server-side.md#jilianshanchu)。
+[cascade_delete](api/config/cascade_delete.md) 选项会影响后端实现的方式。有关更多信息，请参阅 Server-side Integration 文章的相关部分的 [cascade-deletion](guides/server-side.md#cascade-deletion)。
 
-## 从甘特图中移除所有任务
+## 从甘特图移除所有任务
 
-要清空甘特图中的所有任务，请调用 [clearAll](api/method/clearall.md) 方法:
+要清空甘特图中的任务，请调用 [clearAll](api/method/clearall.md) 方法：
 
 ~~~js
 gantt.clearAll();
 ~~~
-

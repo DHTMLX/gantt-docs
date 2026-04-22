@@ -8,7 +8,7 @@ description: "wendet die Änderungen erneut an, die zuvor im Gantt rückgängig 
 
 ### Description
 
-@short: Wendet die Änderungen erneut an, die zuvor im Gantt rückgängig gemacht wurden
+@short: Wendet die rückgängig gemachten Änderungen am Gantt-Diagramm erneut an
 
 @signature: redo: () =\> void
 
@@ -24,7 +24,7 @@ gantt.redo();
 ### Details
 
 :::note
- Diese Methode ist Teil der **undo**-Erweiterung, daher stellen Sie sicher, dass das [undo](guides/extensions-list.md#undo) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Undo/Redo-Funktionalität"](guides/undo-redo.md). 
+Diese Methode ist in der **undo**-Erweiterung definiert, daher müssen Sie das [undo](guides/extensions-list.md#undo)-Plugin aktivieren. Lesen Sie die Details im Artikel [Undo/Redo Functionality](guides/undo-redo.md). 
 :::
 
 ### Related API
@@ -35,8 +35,7 @@ gantt.redo();
 - [onAfterRedo](api/event/onafterredo.md)
 
 ### Related Guides
-- ["Undo/Redo-Funktionalität"](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
 - hinzugefügt in Version 4.0
-

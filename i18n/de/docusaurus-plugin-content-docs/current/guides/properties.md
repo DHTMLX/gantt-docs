@@ -5,16 +5,7 @@ sidebar_label: "Eigenschaften für den Import aus Primavera"
 
 # Eigenschaften für den Import aus Primavera
 
-## Projekteigenschaften
-
-<style>
-.myblock(
-  display:inline-block;
-  width:235px;
-  vertical-align:top;
-)
-</style>
-
+## Projekt-Eigenschaften
 
 <div class="myblock">
   <li>ActualsInSync</li>
@@ -28,7 +19,7 @@ sidebar_label: "Eigenschaften für den Import aus Primavera"
   <li>CurrencySymbol</li>
   <li>CurrencySymbolPosition</li>
   <li>CurrentDate</li>
-  <li>TageProMonat</li>
+  <li>DaysPerMonth</li>
   <li>DefaultFixedCostAccrual</li>
   <li>DefaultOvertimeRate</li>
   <li>DefaultStandardRate</li>
@@ -68,13 +59,13 @@ sidebar_label: "Eigenschaften für den Import aus Primavera"
   <li>StartDate</li>
   <li>StatusDate</li>
   <li>TaskUpdatesResource</li>
-  <li>Titel</li>
+  <li>Title</li>
   <li>UID</li>
   <li>WeekStartDay</li>
   <li>WorkFormat</li>
 </div>
 
-## Aufgabeneigenschaften
+## Aufgaben-Eigenschaften
 
 <div class="myblock">
   <li>ActualCost</li>
@@ -88,7 +79,7 @@ sidebar_label: "Eigenschaften für den Import aus Primavera"
   <li>ConstraintType</li>
   <li>Critical</li>
   <li>CV</li>
-  <li>Dauer</li>
+  <li>Duration</li>
   <li>DurationFormat</li>
   <li>EffortDriven</li>
   <li>Estimated</li>
@@ -109,7 +100,7 @@ sidebar_label: "Eigenschaften für den Import aus Primavera"
   <li>LevelingCanSplit</li>
   <li>Milestone</li>
   <li>Name</li>
-  <li>Notizen</li>
+  <li>Notes</li>
   <li>OutlineLevel</li>
   <li>OutlineNumber</li>
   <li>OverAllocated</li>

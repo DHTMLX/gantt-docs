@@ -1,7 +1,7 @@
 ---
 sidebar_label: onAfterQuickInfo
-title: onAfterQuickInfo event
-description: "wird ausgelöst, nachdem das Pop-up-Bearbeitungsformular geschlossen wurde"
+title: onAfterQuickInfo Ereignis
+description: "Wird ausgelöst, nachdem das Pop-up-Bearbeitungsformular geschlossen wurde"
 ---
 
 # onAfterQuickInfo
@@ -14,27 +14,26 @@ description: "wird ausgelöst, nachdem das Pop-up-Bearbeitungsformular geschloss
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - die ID der Aufgabe
+- `taskId` - (required) *string | number* - die Aufgaben-ID
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterQuickInfo",function(taskId){
-    // Ihr Code hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related samples
-- [QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
+- [QuickInfo-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
 ### Details
 
 :::note
-note Dieses Event ist Teil der **Quick Info**-Erweiterung, stellen Sie daher sicher, dass das [quick_info](guides/extensions-list.md#quickinfo) Plugin aktiviert ist. 
+Dieses Ereignis ist in der **Quick Info**-Erweiterung definiert, daher müssen Sie das [quick_info](guides/extensions-list.md#quick-info) Plugin aktivieren.
 :::
 
-
-hinzugefügt in Version 4.1
+Hinzugefügt in Version 4.1
 
 ### Related API
 - [showQuickInfo](api/method/showquickinfo.md)
@@ -44,5 +43,4 @@ hinzugefügt in Version 4.1
 - [onQuickInfo](api/event/onquickinfo.md)
 
 ### Related Guides
-- ["Vollständige Liste der Erweiterungen"](guides/extensions-list.md#quickinfo)
-
+- [Full List of Extensions](guides/extensions-list.md#quick-info)

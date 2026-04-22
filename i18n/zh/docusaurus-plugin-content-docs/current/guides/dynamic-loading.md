@@ -1,39 +1,39 @@
 ---
-title: "动态加载（按需加载）"
-sidebar_label: "动态加载（按需加载）"
+title: "按需加载（动态加载）"
+sidebar_label: "按需加载（动态加载）"
 ---
 
-# 动态加载（按需加载）
+# 按需加载（动态加载）
 
 :::info
-此功能仅在 PRO 版本中提供
+此功能仅在 PRO 版中可用
 :::
 
-默认情况下，dhtmlxGantt 会一次性加载所有数据，这在处理大量任务时可能会带来挑战。
+默认情况下，dhtmlxGantt 一次性加载所有数据。当任务数量较多时，可能会带来问题。
 
-在这种情况下，可以使用动态加载模式，按分支（子项目）逐级加载数据，随着用户的展开操作逐步显示。
+在这种情况下，您可以使用动态加载模式，按分支（子项目）逐级加载数据，随着用户打开它们。
 
-## 工作原理 {#enablingdynamicloading}
+## 工作原理
 
-当[启用](#enablingdynamicloading)动态加载后，调用 [gantt.load("url")](api/method/load.md) 会向指定的 URL 发送 GET 请求，期望响应中仅包含顶层任务，所有嵌套分支初始均为关闭状态。
+当启用动态加载时， [gantt.load("url")](api/method/load.md) 调用将向指定的 URL 发送一个 GET 请求，期望响应仅包含顶层任务，且所有嵌套分支以关闭状态显示。
 
-当用户点击展开图标时，gantt 会自动调用 [load](api/method/load.md) 方法，并将被点击任务的 id 发送给服务器:
+当用户单击“展开”图标时，gantt 会自动调用 [load](api/method/load.md) 方法，向服务器发送被单击任务的 id：
 
 ~~~js
 gantt.load("url?parent_id="123"");
 ~~~
 
-服务器需返回被展开项的子任务数据。
+并期望响应中包含被展开项目的子任务。
 
 :::note
-可以使用 [onBeforeBranchLoading](api/event/onbeforebranchloading.md) 事件来修改请求的 URL 或添加额外参数。
+您可以使用 [onBeforeBranchLoading](api/event/onbeforebranchloading.md) 事件来修改请求的 URL，或向其中添加一些额外的参数。
 :::
 
-## 启用动态加载
+## 启用动态加载 {#enablingdynamicloading}
 
-<span id="enabledynload">要在 Gantt 图中启用动态加载</span>，需要进行客户端和服务器端的配置。
+要在 Gantt 图中启用动态加载，您需要同时处理客户端和服务器端。
 
-- 客户端（使用 [branch_loading](api/config/branch_loading.md) 选项）:
+- 客户端端（使用 [branch_loading](api/config/branch_loading.md) 选项）：
 
 ~~~js
 gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
@@ -44,7 +44,7 @@ gantt.init("gantt_here");
 gantt.load("/dynamic_loading");
 ~~~
 
-- 服务器端:
+- 服务器端：
 
 ~~~php
 <?php
@@ -68,13 +68,11 @@ $gantt->render_table(
 );
 ~~~
   
+**相关示例**: [按需加载子任务（分支加载）](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
 
-[Loading subtasks on demand (branch loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
+通常，客户端对显示的数据项的子项没有信息（因为这些子项并未从服务器端加载）。
 
-
-通常，客户端并不知道已显示数据项的子项信息，因为这些子项最初并未从服务器加载。
-
-为了解决这个问题，可以使用特殊的数据属性 `$has_child`（可通过 [branch_loading_property](api/config/branch_loading_property.md) 自定义），用于指示某个任务的子元素数量。
+若要传递此信息，您可以使用一个特殊的数据属性 '$has_child'（可通过 [branch_loading_property](api/config/branch_loading_property.md) 修改）来指示任务的子项数量。
 
 ~~~php
 function check_children($row){
@@ -91,13 +89,12 @@ function check_children($row){
 $gantt->event->attach("beforeRender","check_children");
 ~~~
 
-
-[Loading subtasks on demand (branch loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
+**相关示例**: [按需加载子任务（分支加载）](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
 
 
 ## 动态加载的数据格式 
 
-动态加载的数据格式如下所示:
+动态加载的数据格式如下：
 
 ~~~js
 {
@@ -106,7 +103,7 @@ $gantt->event->attach("beforeRender","check_children");
         "id":13,
         "start_date":"2020-04-02 00:00:00",
         "duration":10,
-        "text":"Task #1",
+        "text":"任务 #1",
         "progress":0.2,
         "parent":12,
         "open":0,
@@ -116,7 +113,7 @@ $gantt->event->attach("beforeRender","check_children");
         "id":14,
         "start_date":"2020-04-04 00:00:00",
         "duration":4,
-        "text":"Task #2",
+        "text":"任务 #2",
         "progress":0.9,
         "parent":12,
         "open":0,
@@ -132,35 +129,41 @@ $gantt->event->attach("beforeRender","check_children");
 }
 ~~~
 
-这与常规数据加载所用的 JSON 格式一致，详细对比请参见 [지원되는 데이터 형식](guides/supported-data-formats.md) 文章。
+如同常规数据加载所使用的 JSON 一样，这是相同的格式。若要对比，请参阅 [Supported Data Formats](guides/supported-data-formats.md) 文章。
 
-主要区别在于 **$has_child** 属性，它决定任务是否作为"叶子"项（没有"展开"切换按钮）或可展开节点显示:
+唯一的差异是 **$has_child** 属性，它指示任务是以“叶子”项显示（没有“展开”切换）还是作为可展开的节点显示：
 
-- 如果 *$has_child* 属性存在且为['truthy'](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) 值（如非零数字、true 或非空字符串），该项会显示展开/收起切换按钮。展开时会触发 Ajax 请求到服务器；
-- 如果 *$has_child* 属性不存在或为['falsy'](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) 值（如 0、false、NaN、undefined、空字符串或 null），该项不会显示切换按钮，表示其没有子任务。
+- 如果 *$has_child* 属性被指定且包含一个 ['truthy'](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) 值（非零数字、true、非空字符串等），该项将显示为带有展开/折叠切换的项。展开切换时，将向服务器发送 Ajax 请求；
+- 如果 *$has_child* 未指定或包含一个 ['falsy'](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) 值（为零、false、NaN、undefined、空字符串、null），则该项将不带切换按钮，显示为没有子项的任务。
 
-如果请求中包含 *parent_id* 参数，响应应包含该 id 任务的子任务；如果未包含 *parent_id*，则响应应包含根级任务:
+如果请求带有 *parent_id* 参数，响应必须包含该指定 id 的任务的子项；如果未指定 *parent_id*，请求必须包含根级任务：
 
 <table class="dp_table">
   <tr>
   <th><b>操作</b></th><th><b>HTTP 方法</b></th><th><b>URL</b></th><th><b>响应</b></th>
   </tr>
   <tr>
-  <td>加载根级任务</td>
+  <td>load root level</td>
   <td>GET</td>
   <td>/loadUrl</td>
-  <td>[动态加载数据格式](#dynamicloadingformatofdata)</td>
+  <td>动态加载格式</td>
   </tr>
   <tr>
-  <td>加载任务的子任务</td>
+  <td>load children on the task</td>
   <td>GET</td>
   <td>/loadUrl?parent_id=id</td>
-  <td>[动态加载数据格式](#dynamicloadingformatofdata)</td>
+  <td>动态加载格式</td>
   </tr>
 
 </table>
 
-## 动态加载任务
+### 动态加载任务
 
-任务的动态加载也可以通过滚动到最后一个可见任务时自动加载新任务来实现。更多详情请参见 [How to load tasks dynamically](guides/how-to.md) 文章。
+您可以实现任务的动态加载，以便在滚动到最后一个可见任务后加载新的任务。有关更多详细信息，请参阅 [How to load tasks dynamically](guides/how-to.md#how-to-load-tasks-dynamically) 文章。
 
+### 相关 API
+
+- [branch_loading](api/config/branch_loading.md)
+- [branch_loading_property](api/config/branch_loading_property.md)
+- [onBeforeBranchLoading](api/event/onbeforebranchloading.md)
+- [onAfterBranchLoading](api/event/onafterbranchloading.md)

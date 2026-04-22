@@ -1,34 +1,34 @@
 ---
 sidebar_label: onGridHeaderClick
 title: onGridHeaderClick event
-description: "사용자가 그리드 헤더를 클릭할 때 트리거됩니다."
+description: "사용자가 그리드의 헤더를 클릭할 때 발생합니다"
 ---
 
 # onGridHeaderClick
 
 ### Description
 
-@short: 사용자가 그리드 헤더를 클릭할 때 트리거됩니다.
+@short: 사용자가 그리드의 헤더를 클릭할 때 발생합니다
 
 @signature: onGridHeaderClick: (name: string, e: Event) =\> boolean;
 
 ### Parameters
 
-- `name` - (required) *string* - 클릭된 컬럼 헤더의 name 속성
+- `name` - (required) *string* - 사용자가 클릭한 열의 헤더에 해당하는 name 속성
 - `e` - (required) *Event* - 네이티브 이벤트 객체
 
 ### Returns
-- ` result` - (boolean) - 이벤트의 기본 동작이 진행될지(<b>true</b>) 아니면 방지될지(<b>false</b>)를 결정합니다.
+- ` result` - (boolean) - 이벤트의 기본 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소될지(<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onGridHeaderClick", function(name, e){
-    //여기에 커스텀 로직을 추가할 수 있습니다.
+    // 여기에 코드 작성
     return true;
 });
 ~~~
 
 ### Details
 
-false를 반환하면 "플러스" 버튼을 통한 새 작업 추가나 컬럼 정렬과 같은 기본 동작이 중지됩니다.
+false를 반환하면 기본 핸들러가 취소됩니다(“+” 버튼 클릭 시 새 작업 추가하거나 열을 정렬하는 기본 동작).

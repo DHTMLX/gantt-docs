@@ -1,21 +1,21 @@
 ---
 sidebar_label: batchUpdate
-title: batchUpdate method
-description: "обновляет несколько задач/связей одновременно"
+title: batchUpdate метод
+description: "обновляет сразу несколько задач/ссылок"
 ---
 
 # batchUpdate
 
 ### Description
 
-@short: Обновляет несколько задач/связей одновременно
+@short: Обновляет сразу несколько задач/ссылок
 
 @signature: batchUpdate: (callback: GanttCallback, noRedraw?: boolean) =\> void
 
 ### Parameters
 
 - `callback` - (required) *function* - функция обратного вызова
-- `noRedraw` - (optional) *boolean* - необязательный параметр, определяет, должен ли Gantt перерисовывать диаграмму после выполнения функции обратного вызова; <i>true</i> означает без перерисовки, а <i>false</i> (по умолчанию) вызывает перерисовку
+- `noRedraw` - (optional) *boolean* - указывает, следует ли Gantt перерисовывать диаграмму после выполнения функции обратного вызова; true - не перерисовывать, а false (по умолчанию) - перерисовывать
 
 ### Example
 
@@ -32,14 +32,13 @@ gantt.batchUpdate(function () {
 ~~~
 
 ### Related samples
-- [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+- [Множественный выбор и Indent/Outdent задач](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 ### Details
 
-Этот метод позволяет обновлять несколько задач или связей одновременно с одной перерисовкой, избегая множественных обновлений, каждое из которых вызывает отдельную перерисовку.
+Вы можете использовать этот метод для обновления сразу нескольких задач/ссылок за одну перерисовку, вместо выполнения нескольких обновлений с несколькими перерисовками.
 
 ### Related API
 - [eachSelectedTask](api/method/eachselectedtask.md)
 - [getLastSelectedTask](api/method/getlastselectedtask.md)
 - [getSelectedTasks](api/method/getselectedtasks.md)
-

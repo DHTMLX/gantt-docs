@@ -1,21 +1,23 @@
 ---
 sidebar_label: xml_format
-title: xml_format template
-description: "날짜 객체를 이 템플릿에 따라 문자열로 변환합니다. 이 문자열은 서버에 데이터를 전송할 때 사용됩니다."
+title: xml_format 템플릿
+description: "이 템플릿에 따라 날짜 객체가 문자열로 변환되며, 서버로 데이터를 전송하는 데 사용됩니다"
 ---
 
 # xml_format
-
+:::warning
+이 템플릿은 더 이상 사용되지 않습니다.
+:::
 ### Description
 
-@short: 날짜 객체를 이 템플릿에 따라 문자열로 변환합니다. 이 문자열은 서버에 데이터를 전송할 때 사용됩니다.
+@short: 이 템플릿에 따라 날짜 객체가 문자열로 변환되며, 서버로 데이터를 전송하는 데 사용됩니다
 
 ### Parameters
 
-- `date` - (required) *Date* - 포맷팅이 필요한 날짜 객체입니다.
+- `date` - (필수) *Date* - 포맷이 필요한 날짜
 
 ### Returns
-- ` text` - (string) - Gantt 차트에 표시될 HTML 텍스트입니다.
+- `text` - (string) - gantt에서 렌더링될 HTML 텍스트
 
 ### Example
 
@@ -28,21 +30,21 @@ gantt.templates.xml_format = function(date){
 ### Details
 
 :::note
- 이 템플릿은 더 이상 권장되지 않습니다. 대신 [format_date](api/template/format_date.md)를 사용하세요: 
+참고: 이 템플릿은 더 이상 사용되지 않습니다. 대신 [format_date](api/template/format_date.md)를 사용하세요:
 :::
 
 ~~~js
 var dateToStr = gantt.date.date_to_str("%Y-%m-%d %H:%i");
 gantt.templates.format_date = function(date){
-    return dateToStr(date);
+    return dateToStr (date);
 };
 ~~~
 
-이 템플릿은 [xml_date](api/config/xml_date.md) 구성에서 자동으로 생성되며 [Gantt 초기화](api/method/init.md) 이후에 재정의할 수 있습니다.
+이 템플릿은 [xml_date](api/config/xml_date.md) 구성에서 자동으로 생성되며, gantt 초기화 후에 재정의할 수 있습니다.
 
-서버에서 [Gantt 날짜 헬퍼](api/other/date.md)에서 지원하지 않는 날짜 형식을 요구하는 경우, 사용자 정의 템플릿 함수를 생성할 수 있습니다.
+서버 측에서 [gantt date helper](api/other/date.md)가 지원하지 않는 형식을 기대하는 경우 커스텀 템플릿 함수를 사용할 수 있습니다.
 
-예를 들어, 서버가 **start_date**를 UNIX 타임스탬프로 기대하고 요청 파라미터가 다음과 같아야 한다면:
+예를 들어 서버 측에서 **start_date**를 UNIX 타임스탬프로 기대하고, 요청 매개변수가 아래와 같이 보이길 원한다고 가정해 봅시다:
 
 - **start_date**:1503608400
 - **duration**:4
@@ -50,7 +52,8 @@ gantt.templates.format_date = function(date){
 - **parent**:3
 - **end_date**:1503694800
 
-Gantt 구성은 다음과 같이 설정할 수 있습니다:
+
+다음과 같이 Gantt 구성을 설정해야 합니다:
 
 ~~~js
 gantt.attachEvent("onTemplatesReady", function(){
@@ -67,15 +70,15 @@ dp.init(gantt);
 dp.setTransactionMode("REST");
 ~~~
 
+
 ### Related API
 - [xml_date](api/config/xml_date.md)
 - [date](api/other/date.md)
 - [xml_date](api/template/xml_date.md)
 
 ### Related Guides
-- [날짜 변환을 위한 템플릿](guides/conversion-templates.md)
-- [Server-Side Integration](guides/server-side.md)
+- [날짜 변환 템플릿](guides/conversion-templates.md)
+- [서버 사이드 통합](guides/server-side.md)
 
 ### Change log
-- v6.2부터 deprecated 되었으며, v7.0에서 제거되었습니다.
-
+- v6.2부터 더 이상 사용되지 않으며, v7.0에서 제거되었습니다

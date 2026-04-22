@@ -1,15 +1,15 @@
+--- 
+title: "Integration mit jQuery"
+sidebar_label: "Integration mit jQuery"
 ---
-title: "Integration mit JQuery"
-sidebar_label: "Integration mit JQuery"
----
 
-# Integration mit JQuery
+# Integration mit jQuery
 
-Bei der Arbeit mit der JQuery-Bibliothek kann das Gantt-Diagramm mit einer vertrauten Syntax zu einer Seite hinzugefügt werden.
+Wenn Sie die jQuery-Bibliothek verwenden, können Sie das Gantt-Diagramm auf einer Seite mit der üblichen Syntax darstellen.
 
-So sieht eine grundlegende Gantt-Diagramm-Initialisierung mit JQuery aus:
+Ein standardmäßiges Gantt-Diagramm mit jQuery kann wie folgt initialisiert werden:
 
-**Ein mit JQuery initialisiertes Gantt-Diagramm**
+**Ein Gantt-Diagramm wird mit jQuery initialisiert**
 ~~~js
 $(".mygantt").dhx_gantt({
     data:demo_tasks,
@@ -24,21 +24,17 @@ $("#gantt1").dhx_gantt().parse(tasksA);
 <div class="mygantt" id='gantt1' style='width:100%; height:30%;'></div>
 ~~~
 
+[jQuery-Integration](https://docs.dhtmlx.com/gantt/samples/01_initialization/07_jquery.html)
 
-[jQuery integration](https://docs.dhtmlx.com/gantt/samples/01_initialization/07_jquery.html)
+where:
 
-
-Details:
-
-- **".mygantt"** - ein mit jQuery kompatibler CSS-Selektor, der den Container identifiziert, in dem das Gantt-Diagramm gerendert wird
-- Die **dhx_gantt()**-Methode erstellt eine Instanz von dhtmlxGantt. Sie akzeptiert ein Konfigurationsobjekt als Parameter:
-  - **data** - (*object*) der Datensatz, der in das Gantt-Diagramm geladen wird
-  - **[scales](api/config/scales.md)** - (*array*) eine Liste von Einstellungen, die die Zeitskala definieren
+- **".mygantt"** - ein jQuery-kompatibler CSS-Selektor des Containers, in dem das Gantt-Diagramm erstellt wird 
+- **dhx_gantt()**-Methode instanziiert dhtmlxGantt. Als Parameter akzeptiert die Methode ein Konfigurationsobjekt:
+  - **data** - (*Objekt*) Ein Datensatz, der in das Gantt-Diagramm geladen wird
+  - **[scales](api/config/scales.md)** - (*Array*) Ein Array mit Konfigurationseinstellungen der Zeitachse
   
 :::note
-Ein über jQuery initialisiertes Gantt-Diagramm verwendet die gleichen Konfigurationsoptionen und die gleiche API wie eines, das direkt mit JavaScript erstellt wurde.
+Ein über den jQuery-Aufruf inicialisiertes Gantt-Diagramm verwendet dieselbe Konfiguration und API wie das standardmäßig (über JavaScript initialisierte) Gantt-Diagramm.
 :::
 
-
-[jQuery integration](https://docs.dhtmlx.com/gantt/samples/01_initialization/07_jquery.html)
-
+[jQuery-Integration](https://docs.dhtmlx.com/gantt/samples/01_initialization/07_jquery.html)

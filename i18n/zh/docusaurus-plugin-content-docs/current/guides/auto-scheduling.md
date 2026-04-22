@@ -1,23 +1,25 @@
 ---
-title: "自动调度"
-sidebar_label: "自动调度"
+title: "自动排程"
+sidebar_label: "自动排程"
 ---
 
-# 自动调度
+# 自动排程
 
 :::info
-此功能仅在 PRO 版中提供。
+该功能仅在 PRO 版本中提供。
 :::
 
-该库包含 **auto_scheduling** 扩展，它使 Gantt 能够根据任务之间的关系自动安排任务。
+该库提供了 **auto_scheduling** 扩展，使 Gantt 能够根据任务之间的关系自动安排任务的开始时间和结束时间。
 
 ![auto_scheduling](/img/auto_scheduling.png)
 
-例如，假设有两个通过依赖关系连接的任务，其中第二个任务在第一个任务结束后立即开始。如果第一个任务的计划发生变化，自动调度会相应地更新第二个任务的开始日期。通过定义任务之间的关系，而无需手动调整每个任务的日期，这有助于维护项目进度。
+例如，假设你有两个通过依赖关系连接的任务，第二个任务在第一个任务结束时开始，并且你需要通过将第一个任务移动到新日期来改变其时间表。
+
+自动排程会在第一任务结束日期每次更改时，自动更新第二任务的开始日期。该特性允许你通过指定任务之间的关系来生成和维护项目进度，而无需手动为每个任务设置日期。
 
 ## 如何使用
 
-要启用自动调度，请通过 [gantt.plugins](api/method/plugins.md) 方法开启 [auto_scheduling](guides/extensions-list.md#zidongpaicheng) 插件:
+要使用自动排程功能，请通过 [gantt.plugins](api/method/plugins.md) 方法启用 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件：
 
 ~~~js
 gantt.plugins({
@@ -25,93 +27,101 @@ gantt.plugins({
 });
 ~~~
 
-然后，将 **auto_scheduling** 属性设置为 *true*:
+并将 **auto_scheduling** 配置中的 **enabled** 属性设置为 *true*：
 
 ~~~js
-gantt.config.auto_scheduling = true;
+gantt.config.auto_scheduling = {
+    enabled: true
+};
 ~~~
 
 
 [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 
-即使开启了自动调度，仍然可以根据需要手动安排任务。
+启用自动排程后，单个任务仍然可以手动进行排程。 
 
-## 前向/后向计划
+## Forward/backward planning {#forwardbackwardplanning}
 
 ### 项目计划策略
 
-任务规划可以遵循两种方法:前向计划和后向计划。这取决于以下配置设置:
+项目中有两种任务规划策略：正向规划和逆向规划。它们由以下配置设置的组合来定义：
 
-- [schedule_from_end](api/config/schedule_from_end.md) - (*boolean*) 决定计划策略类型
-- [project_start](api/config/project_start.md) - (*Date*) 设置项目开始日期；在应用前向计划时作为默认任务开始日期，默认为 *null*
-- [project_end](api/config/project_end.md) - (*Date*) 设置项目结束日期；在应用后向计划时作为默认任务时间，默认为 *null*
+- [gantt.config.auto_scheduling.schedule_from_end](api/config/auto_scheduling.md#schedule_from_end) - (*boolean*) 定义规划策略的类型
+- [project_start](api/config/project_start.md) - (*Date*) 项目的开始日期；若应用正向规划，默认作为任务的开始日期，默认值为 *null*
+- [project_end](api/config/project_end.md) - (*Date*) 项目的结束日期；若应用逆向规划，用作任务的默认结束时间，默认值为 *null*
 
-### 前向计划
+### 正向规划
 
-前向计划是默认模式，此时 **gantt.config.schedule_from_end** 设置为 *false*。
+默认使用正向规划，即 **gantt.config.auto_scheduling.schedule_from_end** 设置为 *false*。
 
 ~~~js
-// 前向计划已激活
-gantt.config.schedule_from_end = false;
+// 正向规划将被使用
+gantt.config.auto_scheduling = {
+    enabled: true,
+    schedule_from_end: false
+};
 ~~~
 
-在此模式下，任务从项目开始日期或最早的任务日期开始调度，目标是在没有其他约束的情况下尽早开始任务。
+在这种情况下，任务的排程从开始日期或最早任务的日期开始实现。若没有其他约束，任务将尽快排程。
 
-你可以选择使用 **gantt.config.project_start** 定义项目开始日期:
+项目开始日期可以通过 **gantt.config.project_start** 配置进行可选设置：
 
 ~~~js
-gantt.config.project_start = new Date(2019, 2, 1);
+gantt.config.project_start = new Date(2025, 2, 1);
 ~~~
 
 
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-### 后向计划
+### 逆向规划 {#backwardscheduling}
 
-后向计划根据项目结束日期来安排任务。要使用后向计划，请将 **gantt.config.schedule_from_end** 设置为 *true*，并通过 **gantt.config.project_end** 指定项目结束日期:
+同样也可以从项目结束日期开始对任务进行排程，即应用逆向规划。为此，需要将 **gantt.config.auto_scheduling.schedule_from_end** 属性设置为 *true*，并通过 **gantt.config.project_end** 配置项指定项目结束日期：
 
 ~~~js
-gantt.config.schedule_from_end = true;
-gantt.config.project_end = new Date(2019, 4, 1);
+gantt.config.project_end = new Date(2025, 10, 1);
+gantt.config.auto_scheduling = {
+    enabled: true,
+    schedule_from_end: true
+};
 ~~~
 
-此时，任务会尽可能晚地安排，最后一个任务在项目结束日期结束。
+在这种情况下，任务将尽可能晚地被排程。最后一个任务应在项目结束日期结束。
 
 
 [Auto-Schedule From Project End (backward)](https://docs.dhtmlx.com/gantt/samples/02_extensions/20_backwards_scheduling.html)
 
 
-## 任务的时间约束
+## 任务的时间约束 {#timeconstraintsfortasks}
 
-dhtmlxGantt 允许你为任务应用额外的时间约束。
+dhtmlxGantt 提供为任务设置额外时间约束的能力。
 
 :::note
-时间约束仅适用于任务和 [里程碑](guides/milestones.md)。项目本身不受影响。
+时间约束仅适用于任务和 [milestones](guides/milestones.md)。项目不受其影响。
 :::
 
-### 通过弹窗设置约束
+### 通过弹出层设置约束
 
-可以通过任务弹窗中的 [**Constraint** 控件](guides/constraint.md) 设置约束。
+你可以通过任务弹出层中的 [**Constraint** 控件](guides/constraint.md) 指定任务的约束。
 
-![内置约束日期选择器](/img/inbuilt_constraint_datepicker.png)
+![Inbuilt datepicker for constraints](/img/inbuilt_constraint_datepicker.png)
 
 ~~~js
 gantt.config.lightbox.sections = [
-    { name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    { name:"constraint", type:"constraint" }, /*!*/
-    { name:"time", type:"duration", map_to:"auto" }
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
+    { name: "constraint", type: "constraint" }, /*!*/
+    { name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
 
 ### 通过内联编辑器设置约束
 
-也可以通过为约束类型和日期分别设置网格列，并使用内联编辑器来指定约束。
+还可以在网格中 [为约束类型及其日期指定独立的列](guides/specifying-columns.md#timeconstraintsfortasks)，并使用内联编辑器为任务定义约束。
 
-![约束列](/img/constraints_columns.png)
+![Constraints columns](/img/constraints_columns.png)
 
-请分别使用 **constraint_type** 和 **constraint_date** 作为列名。
+分别使用列名 **constraint_type** 和 **constraint_date**。
 
 ~~~js
 const constraintTypeEditor = {
@@ -119,27 +129,27 @@ const constraintTypeEditor = {
         { key: "asap", label: gantt.locale.labels.asap },
         { key: "alap", label: gantt.locale.labels.alap },
         { key: "snet", label: gantt.locale.labels.snet },
-        // 更多选项
+        // more options
     ]
 };
 
 const constraintDateEditor = {
     type: "date",
     map_to: "constraint_date",
-    min: new Date(2019, 0, 1),
-    max: new Date(2020, 0, 1)
+    min: new Date(2025, 0, 1),
+    max: new Date(2026, 0, 1)
 };
 
 gantt.config.columns = [
-    { // 前一列},
+    { /* previous column */ },
     {
-        name:"constraint_type", align:"center", width:100, template:function (task){
-            return gantt.locale.labels[gantt.getConstraintType(task)];
-        }, resize: true, editor: constraintTypeEditor
+        name: "constraint_type", align: "center", width: 100,
+        template: task => gantt.locale.labels[gantt.getConstraintType(task)],
+        resize: true, editor: constraintTypeEditor
     },
     {
-        name:"constraint_date", align:"center", width:120, template:function (task) {
-        // 模板逻辑
+        name: "constraint_date", align: "center", width: 120, template: (task) => {
+            // template logic
         },
         resize: true, editor: constraintDateEditor
     },
@@ -153,102 +163,103 @@ gantt.config.columns = [
 
 ### 约束类型
 
-可用的时间约束类型有:
+时间约束有多种类型：
 
-1. **尽早开始** - 对于独立任务，若启用 **strict** 模式，任务会在项目开始时启动。若未启用 **strict** 模式，则在指定日期启动。对于有依赖的任务，任务会在所有前置任务完成后尽早开始。
+1. **As soon as possible** - 如果此约束设为独立任务且开启了严格模式，则任务在与项目相同的时间开始。如果严格模式被禁用，任务在指定日期开始。
 
-2. **尽晚完成** - 独立任务会在项目结束时完成。有依赖的任务会在其紧接的后续任务开始时完成。
+若此约束设为依赖任务，任务将在其前驱任务结束后立即开始。
 
-其他约束类型适用于所有任务类型:
+2. **As late as possible** - 如果此约束设为独立任务，则任务在与项目相同的时间结束。如果此约束设为依赖任务，则任务结束与其直接后续任务的开始时间相同。
 
-3. **不早于...开始** - 任务在指定日期或之后开始。
+其他约束类型无论任务的类型为依赖还是独立，均会影响任务：
 
-4. **不晚于...开始** - 任务在指定日期或之前开始。
+3. **Start no earlier than** - 任务应在指定日期或之后开始。
 
-5. **不早于...完成** - 任务在指定日期或之后完成。
+4. **Start no later than** - 任务应在指定日期或之前开始。
 
-6. **不晚于...完成** - 任务在指定日期或之前完成。
+5. **Finish no earlier than** - 任务应在指定日期或之后结束。
 
-7. **必须在...开始** - 任务必须在指定日期开始。
+6. **Finish no later than** - 任务应在指定日期或之前结束。
 
-8. **必须在...完成** - 任务必须在指定日期完成。
+7. **Must start on** - 任务应在指定日期开始。
+
+8. **Must finish on** - 任务应在指定日期结束。
 
 :::note
-独立任务是指没有任何前置或后续任务的任务--既没有链接，也没有与其他任务或父任务的关系。
+在这里所说的独立任务，是指没有任何后继或前驱的任务。换言之，这些任务之间没有相互连接的链接/关系，且它们的父任务也没有与其他任务建立链接。
 :::
 
-## 设置任务之间的滞后和提前时间 {#settinglagandleadtimesbetweentasks}
+## 设定任务之间的滞后与提前时间 {#settinglagandleadtimesbetweentasks}
 
-滞后和提前时间有助于定义更复杂的任务依赖关系。
+滞后和提前时间是用于在任务之间创建复杂关系的特殊数值。
 
-滞后指的是前置任务完成后，后续任务开始前的延迟。提前指的是后续任务在前置任务完成前就开始的重叠时间。
+Lag 是由一个依赖关系连接的任务之间的延迟。Lead 是由依赖关系连接的任务之间的重叠。
 
-后续任务有两种类型:
+后继任务可能有两种类型：
 
-- 在前置任务结束前开始的任务（提前）。例如，1 天提前表示后续任务在前置任务结束前一天开始。
+- 可以在前驱任务结束前开始的任务（任务 B 在任务 A 结束前开始）
 
-- 在前置任务结束后延迟一段时间才开始的任务（滞后）。例如，1 天滞后表示后续任务在前置任务结束后一天开始。
+例如：如果我们为依赖链接设置一个提前时间 lead 为 1 天，任务 B 将在任务 A 结束前一天开始；
 
-滞后和提前的数值通过链接对象的 **link.lag** 属性设置:
+- 不能在前驱任务结束后的一段延迟才开始的任务（任务 B 在任务 A 结束后的一段时间才开始）
 
-- 滞后:正整数
-- 提前:负的滞后值
+例如：如果我们为依赖链接设置一个滞后时间 lag 为 1 天，任务 B 将在任务 A 结束后一日开始。
 
-默认情况下，依赖链接的滞后为 0。
+Lag 和 Lead 值在链接对象的附加属性 - **link.lag** 中设置：
+
+- lag - 任何正整数值，
+- lead - 滞后值的负值。
+
+默认情况下，假设每条依赖链接的 lag 值为 0。
 
 ### 从 UI 编辑链接值
 
-Gantt 没有内置的 UI 用于编辑滞后或其他链接属性，但你可以按照
-[相关章节](guides/crud-dependency.md#tongguojiemianbianjilianjiezhi) 的指导自行实现。
+Gantt 不提供用于编辑滞后或链接其他属性的内置 UI。不过，你可以按照 [相关章节](guides/crud-dependency.md#editing-link-values-from-ui) 中的建议手动实现。
 
+**相关示例** [Edit-lag Popup](https://snippet.dhtmlx.com/2208ic0t)
 
-**Related example:** [Edit-lag Popup](https://snippet.dhtmlx.com/2208ic0t)
+## 禁用特定任务的自动排程
 
-
-## 为特定任务禁用自动调度
-
-要关闭某个任务的自动调度并手动安排它，请将该任务的 **auto_scheduling** 属性设置为 *false*:
+若要为特定任务禁用自动排程并使其手动排程，请将任务对象的 **auto_scheduling** 属性设置为 *false*：
 
 ~~~js
-var task = gantt.getTask(id);
+const task = gantt.getTask(id);
 task.auto_scheduling = false;
 ~~~
 
-或者，你可以通过 [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md) 事件处理器为任务阻止自动调度:
+你也可以使用 [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md) 处理程序来阻止特定任务的自动排程：
 
 ~~~js
-gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predecessor){
-    if(task.completed) {
-        return false;
-    }
-    return true;
+gantt.attachEvent("onBeforeTaskAutoSchedule", (task, start, link, predecessor) => {
+    return !task.completed;
 });
 ~~~
 
-## 已完成任务的调度
+## 已排程完成的任务的排程
 
-默认情况下，自动调度会将已完成的任务（progress 值为 1）与未完成任务同等处理。
-
-你可以通过启用 [auto_scheduling_use_progress](api/config/auto_scheduling_use_progress.md) 选项来更改此行为:
+默认情况下，自动排程算法对已完成的任务（进度值为 1 的任务）与未完成的任务处理没有区别。你也可以选择启用 [auto_scheduling.use_progress](api/config/auto_scheduling.md#use_progress) 配置来改变这一行为：
 
 ~~~js
-gantt.config.auto_scheduling_use_progress = true;
+gantt.config.auto_scheduling = {
+    enabled: true,
+    use_progress: true
+};
  
 gantt.init("gantt_here");
 ~~~
 
-启用后，已完成的任务将不再计入关键路径及自动调度。
+启用该配置后，已完成的任务将不再进入关键路径和自动排程。
 
-更多详情请参阅 [API 页面](api/config/auto_scheduling_use_progress.md)。
+你可以在 [API 页面](api/config/auto_scheduling_use_progress.md) 找到更多细节。
+
 
 ## API 概览
 
-可用的方法和属性如下:
+可用的方法和属性列表：
 
 - [auto_scheduling](api/config/auto_scheduling.md)
-- [auto_scheduling_strict](api/config/auto_scheduling_strict.md)
-- [auto_scheduling_initial](api/config/auto_scheduling_initial.md)
-- [auto_scheduling_project_constraint](api/config/auto_scheduling_project_constraint.md)
+- [project_start](api/config/project_start.md)
+- [project_end](api/config/project_end.md)
 - [autoSchedule](api/method/autoschedule.md)
 - [isUnscheduledTask](api/method/isunscheduledtask.md)
 - [findCycles](api/method/findcycles.md)
@@ -257,81 +268,93 @@ gantt.init("gantt_here");
 
 ### 启用
 
-通过将 [auto_scheduling](api/config/auto_scheduling.md) 属性设置为 true 启用自动调度:
+要在 Gantt 图中启用自动排程，请将 **auto_scheduling** 配置的 **enabled** 属性设置为 *true*：
 
 ~~~js
-gantt.config.auto_scheduling = true;
+gantt.config.auto_scheduling = {
+    enabled: true
+};
 ~~~
 
 ### 严格模式
 
-默认情况下，只有当新日期违反约束时才会重新安排任务。要始终将任务安排到最早可能日期，请启用 [auto_scheduling_strict](api/config/auto_scheduling_strict.md) 属性:
+默认情况下，任务仅在新的日期违反约束时才重新排程。若要始终将任务排程到最早的日期，请使用属性 [auto_scheduling.gap_behavior](api/config/auto_scheduling.md#gap_behavior)：
 
 ~~~js
-gantt.config.auto_scheduling_strict = true;
+gantt.config.auto_scheduling = {
+    enabled: true,
+    apply_constraints: false,
+    gap_behavior: "compress"
+};
 ~~~
 
 :::note
-注意，在 6.1.0 - 7.1.3 版本中，此设置仅在启用 [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) 选项时有效。
+请注意，在版本 6.1.0 - 7.1.3 中，该配置仅在启用 [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) 选项时才生效。
 :::
 
-### 初始自动调度
+### 初始自动排程
 
-[auto_scheduling_initial](api/config/auto_scheduling_initial.md) 属性控制数据加载时是否运行自动调度。其默认值为 true:
+[auto_scheduling.schedule_on_parse](api/config/auto_scheduling.md#schedule_on_parse) 属性指定在数据加载时 Gantt 是否执行自动排程。默认设置为 *true*：
 
 ~~~js
-gantt.config.auto_scheduling_initial = true;
+gantt.config.auto_scheduling = {
+    enabled: true,
+    schedule_on_parse: true
+};
 ~~~
 
-### 继承项目约束
+### 项目约束的继承
 
-[auto_scheduling_project_constraint](api/config/auto_scheduling_project_constraint.md) 属性决定无指定约束的任务是否继承其父项目的约束:
+[auto_scheduling.project_constraint](api/config/auto_scheduling.md#project_constraint) 属性定义没有指定约束类型的任务是否应从其父项目继承约束类型：
 
 ~~~js
-gantt.config.auto_scheduling_project_constraint = true;
+gantt.config.auto_scheduling = {
+    enabled: true,
+    project_constraint: true
+};
 ~~~
 
 ### 重新计算项目
 
-要重新计算整个项目进度，请使用 [autoSchedule](api/method/autoschedule.md) 方法:
+要重新计算整个项目的排程，请使用 [autoSchedule](api/method/autoschedule.md) 方法：
 
 ~~~js
 gantt.autoSchedule();
 ~~~
 
-要从特定任务开始重新计算，请将任务 id 作为参数传递给同一方法:
+如果需要从某个特定任务开始重新计算排程，请将该任务的 id 作为参数传递给 [autoSchedule](api/method/autoschedule.md) 方法：
 
 ~~~js
 gantt.autoSchedule(taskId);
 ~~~
 
-### 检查任务是否未调度
+### 检查任务是否未排程
 
-要检查某个任务是否未调度，请使用 [isUnscheduledTask](api/method/isunscheduledtask.md) 方法，并传入任务对象:
+若需要检查任务是否未排程，请将任务对象作为参数调用 [isUnscheduledTask](api/method/isunscheduledtask.md) 方法：
 
 ~~~js
-var isUnscheduled = gantt.isUnscheduledTask(task);
+const isUnscheduled = gantt.isUnscheduledTask(task);
 ~~~
 
-### 检测循环引用
+### 查找循环引用
 
-要查找图表中的所有循环引用，请使用 [findCycles](api/method/findcycles.md) 方法:
+要在图表中查找所有循环引用，请使用 [findCycles](api/method/findcycles.md) 方法：
 
 ~~~js
 gantt.findCycles();
 ~~~
 
-### 检查链接是否为循环
+### 检查链接是否循环
 
-要验证某个链接是否为循环链接，请使用 [isCircularLink](api/method/iscircularlink.md) 方法:
+若需要检查链接是否循环，可以应用 [isCircularLink](api/method/iscircularlink.md) 方法：
 
 ~~~js
-var isCircular = gantt.isCircularLink(link);
+const isCircular = gantt.isCircularLink(link);
 ~~~
 
-### 获取相关任务和链接
+### 获取连接的任务和链接
 
-要获取与特定任务相关的任务和链接列表，可以使用 [getConnectedGroup](api/method/getconnectedgroup.md) 方法:
+要获取一个任务连接的任务和链接的列表，请使用 [getConnectedGroup](api/method/getconnectedgroup.md) 方法：
 
 ~~~js
 gantt.getConnectedGroup(18);
@@ -341,7 +364,7 @@ gantt.getConnectedGroup(18);
 
 ## 事件列表
 
-以下是可用事件的列表:
+可用的事件如下所示：
 
 - [onBeforeAutoSchedule](api/event/onbeforeautoschedule.md)
 - [onAfterAutoSchedule](api/event/onafterautoschedule.md)
@@ -351,60 +374,61 @@ gantt.getConnectedGroup(18);
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ~~~js
-// 自动调度开始前
-gantt.attachEvent("onBeforeAutoSchedule",function(taskId){
-    // 此处可添加自定义逻辑
+// 自动排程开始之前
+gantt.attachEvent("onBeforeAutoSchedule", (taskId) => {
+    // 这里可以放置自定义逻辑
     return true;
 });
 
-// 自动调度结束后
-gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
-    // 此处可添加自定义逻辑
+// 自动排程完成之后
+gantt.attachEvent("onAfterAutoSchedule", (taskId, updatedTasks) => {
+    // 这里可以放置自定义逻辑
 });
 
-// 某个任务重新调度前
-gantt.attachEvent("onBeforeTaskAutoSchedule",function(task,start,link,predecessor){
-    // 此处可添加自定义逻辑
+// 特定任务被重新排程之前
+gantt.attachEvent("onBeforeTaskAutoSchedule", (task, start, link, predecessor) => {
+    // 这里可以放置自定义逻辑
     return true;
 });
 
-// 某个任务重新调度后
-gantt.attachEvent("onAfterTaskAutoSchedule",function(task,start,link,predecessor){
-    // 此处可添加自定义逻辑
+// 特定任务被重新排程之后
+gantt.attachEvent("onAfterTaskAutoSchedule", (task, start, link, predecessor) => {
+    // 这里可以放置自定义逻辑
 });
 
-// 检测到循环引用且无法继续自动调度时
-gantt.attachEvent("onCircularLinkError",function(link, group){
-    // 此处可添加自定义逻辑
+// 若检测到循环引用且无法进行自动排程
+gantt.attachEvent("onCircularLinkError", (link, group) => {
+    // 这里可以放置自定义逻辑
 });
 
-// 自动调度过程中发现循环链接时
-gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
-    // 此处可添加自定义逻辑
+// 若在自动排程过程中发现了循环链接
+gantt.attachEvent("onAutoScheduleCircularLink", (groups) => {
+    // 这里可以放置自定义逻辑
 });
 ~~~
 
-
 ## 版本兼容性
 
-当通过鼠标拖动任务或通过 lightbox 更改任务日期时，任务会自动获得两种约束类型之一:根据所选的计划方式，分别为 **start no earlier than+%start date%** 或 **finish no later than+%end date%**。
+当用户通过鼠标拖动任务日期或通过弹出层修改日期时，任务会自动获得两种约束类型之一：要么是 **start no earlier than+%start date%**，要么是
+**finish no later than+%end date%**，具体取决于所选的规划策略。
 
-这意味着任务不会被安排在通过 UI 设置的较晚日期之前。这一行为对于不熟悉约束的用户来说可能会感到意外，尤其是因为约束默认不会在图表上显示。
+因此，如果 UI 设置了较晚的日期，任务不会被排程到最早日期。这对于未做好准备的用户可能会造成困惑，尤其是约束默认不会在图表中显示时。
 
-如需显示约束，可以通过 [addTaskLayer](api/method/addtasklayer.md) 方法启用约束的显示。
-
+从 **v9.1** 开始，你可以通过 [auto_scheduling.show_constraints](api/config/auto_scheduling.md#show_constraints) 属性启用显示约束。较旧的版本则需要使用 [addTasklayer](api/method/addtasklayer.md) 方法将约束添加到图表中。
 
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-这种行为与 gantt **v6.1** 之前版本的自动排程逻辑不同，并且被认为是正确的，因为它与 MS Project 的自动规划方式一致。
+此行为与 Gantt 在 **v6.1** 之前的自动排程逻辑不同，但被认为是正确的，因为它与 MS Project 的自动计划工作方式相同。
 
-如果你更喜欢之前的行为，可以通过禁用约束恢复到 6.1 之前的自动排程方式:
+如果这不是你想要的，可以通过以下方式切换回 6.1 之前的自动排程，禁用约束：
 
 ~~~js
-gantt.config.auto_scheduling_compatibility = true;
+gantt.config.auto_scheduling = {
+    enabled: true,
+    apply_constraints: false
+};
 ~~~
 
-### Related API
+### 相关 API
 - [auto_scheduling](api/config/auto_scheduling.md)
-

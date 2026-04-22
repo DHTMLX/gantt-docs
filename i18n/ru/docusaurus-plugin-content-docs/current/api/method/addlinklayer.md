@@ -1,25 +1,27 @@
 ---
 sidebar_label: addLinkLayer
-title: addLinkLayer method
-description: "отображает дополнительный слой с кастомными элементами для связей в области timeline"
+title: метод addLinkLayer
+description: "отображает дополнительный слой с пользовательскими элементами для ссылки в области временной шкалы"
 ---
 
 # addLinkLayer
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
+
 ### Description
 
-@short: Отображает дополнительный слой с кастомными элементами для связей в области timeline
+@short: Отображает дополнительный слой с пользовательскими элементами для ссылки в области временной шкалы
 
-@signature: addLinkLayer: (func: AdditionalLinkLayer['LinkLayerRender'] | AdditionalLinkLayer['LinkLayerConfig']) =\> string
+@signature: addLinkLayer: (func: AdditionalLinkLayer['LinkLayerRender'] | AdditionalLinkLayer['LinkLayerConfig']) => string
 
 ### Parameters
 
-- `func` - (required) *LinkLayerRender | LinkLayerConfig* -        функция рендера или объект конфигурации
+- `func` - (required) *LinkLayerRender | LinkLayerConfig* -        a render function or a config object
 
 ### Returns
-- ` layerId` - (string) - DOM-элемент, представляющий слой, который будет отображён
+- ` layerId` - (string) - DOM-элемент, который будет отображаться в слое
 
 ### Example
 
@@ -43,54 +45,53 @@ gantt.attachEvent("onGanttReady", function () {
 
 ### Details
 
-Аргумент может иметь один из следующих типов:
+The argument can have these types:
 
-- **linkLayerRender (link, timeline, config, viewport): HTMLElement|boolean|void** - функция, которая принимает объект связи и возвращает DOM-элемент для отображения в слое.
-    - **_link_** - (*Link*) - объект связи
-    - **_timeline?_** - (*any*) - необязательно, представление timeline
-    - **_config?_** - (*GanttConfigOptions*) - необязательно, объект конфигурации Gantt
-    - **_viewport?_** - (*LayerViewport*) - необязательно, объект viewport
-
-
-- **linkLayerConfig** - (*object*) - объект конфигурации для дополнительного слоя связей, со следующими свойствами:
-    - **_id?_** - (*string | number*) - необязательно, ID слоя
-    - **_renderer_** - (*object*) - обязательно, объект, отвечающий за рендеринг элементов слоя
-        - **_render_** - (*LinkLayerRender*) - функция, возвращающая HTML-элемент для рендера
-        - **_update?_** - (*Function*): void - необязательно, функция для обновления отрендеренных HTML-элементов
-            - **_link_** - (*Link*) - объект связи
-            - **_node_** - (*HTMLElement*) - контейнер отрендеренного узла
-            - **_timeline?_** - (*any*) - необязательно, представление timeline
-            - **_config?_** - (*GanttConfigOptions*) - необязательно, объект конфигурации Gantt
-            - **_viewport?_** - (*LayerViewport*) - необязательно, объект viewport
-        - **_onrender?_** - (*Function*): void - необязательно, вызывается после завершения рендера, полезно для рендера нативных компонентов (например, с помощью `ReactDOM.render`)
-            - **_link_** - (*Link*) - объект связи
-            - **_node_** - (*HTMLElement*) - контейнер отрендеренного узла
-            - **_view?_** - (*any*) - необязательно, ячейка layout, куда добавлен слой (по умолчанию: timeline)
-        - **_getRectangle?_** - (*Function*): \{ left: number, top: number, height: number, width: number \} | void - необязательно, возвращает координаты прямоугольника viewport
-            - **_link_** - (*Link*) - объект связи
-            - **_view?_** - (*any*) - необязательно, ячейка layout, куда добавлен слой (по умолчанию: timeline)
-            - **_config?_** - (*GanttConfigOptions*) - необязательно, объект конфигурации Gantt
-            - **_gantt?_** - (*GanttStatic*) - необязательно, экземпляр Gantt
-        - **_getVisibleRange_** - (*Function*): \{start: number, end: number\} | undefined | void - необязательно, возвращает объект видимого диапазона
-            - **_gantt?_** - (*GanttStatic*) - необязательно, экземпляр Gantt
-            - **_view?_** - (*any*) - необязательно, ячейка layout, куда добавлен слой (по умолчанию: timeline)
-            - **_config?_** - (*GanttConfigOptions*) - необязательно, объект конфигурации Gantt
-            - **_datastore?_** - (*any*) - необязательно, объект хранилища связей
-            - **_viewport?_** - (*LayerViewport*) - необязательно, объект viewport
-    - **_container?_** - (*HTMLElement*) - необязательно, контейнер для слоя
-    - **_topmost?_** - (*boolean*) - необязательно, если true, элемент слоя будет отображаться поверх связи
-    - **_filter?_** - (*Function*): boolean - необязательно, функция, которая принимает объект связи и возвращает false, чтобы пропустить рендеринг для этой связи
-        - **_link_** - (*Link*) - объект связи
+- **linkLayerRender (link, timeline, config, viewport): HTMLElement|boolean|void** - функция отрисовки принимает объект ссылки в качестве параметра и должна возвращать DOM-элемент, который будет отображаться в слое.
+    - **_link_** - (*Link*) - объект ссылки
+    - **_timeline?_** - (*any*) - необязательный, представление временной шкалы
+    - **_config?_** - (*GanttConfigOptions*) - необязательный, объект конфигурации Gantt
+    - **_viewport?_** - (*LayerViewport*) - необязательный, объект viewport
 
 
-- Имейте в виду, что кастомные слои будут очищены после повторного вызова [gantt.init](api/method/init.md)  
-- Также вызов [gantt.resetLayout()](api/method/resetlayout.md) сбросит кастомные слои. Чтобы они оставались видимыми, необходимо повторно применить **gantt.addLinkLayer** после вызова [resetLayout](api/method/resetlayout.md).
+- **linkLayerConfig** - (*object*) - конфигурационный объект для дополнительного слоя ссылки. Содержит следующие свойства:
+    - **_id?_** - (*string | number*) - необязательный, идентификатор слоя
+    - **_renderer_** - (*object*) - обязательный, функция, отвечающая за отрисовку элементов слоя
+        - **_render_** - (*LinkLayerRender*) - функция, возвращающая HTML-элемент, который должен быть отрисован
+        - **_update?_** - (*Function*): void - необязательная функция, в которой можно обновлять отрисованные HTML-элементы
+            - **_link_** - (*Link*) - объект ссылки
+            - **_node_** - (*HTMLElement*) - контейнер отрисованного узла
+            - **_timeline?_** - (*any*) - необязательный, представление временной шкалы
+            - **_config?_** - (*GanttConfigOptions*) - необязательный, объект конфигурации Gantt
+            - **_viewport?_** - (*LayerViewport*) - необязательный, объект viewport
+        - **_onrender?_** - (*Function*): void - необязательная функция, вызываемая после завершения отрисовки. Можно использовать для внедрения нативных компонентов (например, через ReactDOM.render)
+            - **_link_** - (*Link*) - объект ссылки
+            - **_node_** - (*HTMLElement*) - контейнер отрисованного узла
+            - **_view?_** - (*any*) - необязательный, область макета, куда добавлен слой (timeline, по умолчанию)
+        - **_getRectangle?_** - (*Function*): \{ left: number, top: number, height: number, width: number \} | void - необязательная функция, возвращающая координаты прямоугольника области просмотра
+            - **_link_** - (*Link*) - объект ссылки
+            - **_view?_** - (*any*) - необязательный, область макета, куда добавлен слой (timeline, по умолчанию)
+            - **_config?_** - (*GanttConfigOptions*) - необязательный, объект конфигурации Gantt
+            - **_gantt?_** - (*GanttStatic*) - необязательный, объект Gantt
+        - **_getVisibleRange_** - (*Function*): \{start: number, end: number\} | undefined | void - функция, возвращающая видимый диапазон
+            - **_gantt?_** - (*GanttStatic*) - необязательный, объект Gantt
+            - **_view?_** - (*any*) - необязательная область макета, куда добавлен слой (timeline, по умолчанию)
+            - **_config?_** - (*GanttConfigOptions*) - необязательный, объект конфигурации Gantt
+            - **_datastore?_** - (*any*) - необязательный, объект хранилища ссылок
+            - **_viewport?_** - (*LayerViewport*) - необязательный, объект viewport
+    - **_container?_** - (*HTMLElement*) - необязательный, контейнер слоя
+    - **_topmost?_** - (*boolean*) - необязательный, если true, элемент будет отображаться поверх ссылки
+    - **_filter?_** - (*Function*): boolean - необязательная функция, которая принимает объект ссылки в качестве параметра. Если возвращает 'false', функция 'renderer' не будет вызываться для ссылки
+        - **_link_** - (*Link*) - объект ссылки
+
+
+- Будьте осторожны: пользовательские слои будут сброшены после следующего вызова gantt.init
+- Вызов метода [gantt.resetLayout()](api/method/resetlayout.md) также сбрасывает пользовательские слои. Чтобы пользовательские слои отображались на странице, необходимо заново определить метод **gantt.addLinkLayer** после вызова [gantt.resetLayout()](api/method/resetlayout.md).
 
 :::note
-Sample: [ Gantt. Дополнительный слой с типами связей](https://snippet.dhtmlx.com/6mmt1nvw) 
-:::
+пример: [Gantt. Дополнительный слой с типами ссылок](https://snippet.dhtmlx.com/6mmt1nvw) 
+ :::
 
 ### Related API
 - [removeLinkLayer](api/method/removelinklayer.md)
 - [addTaskLayer](api/method/addtasklayer.md)
-

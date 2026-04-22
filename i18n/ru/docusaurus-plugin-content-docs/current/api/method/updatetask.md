@@ -1,6 +1,6 @@
 ---
 sidebar_label: updateTask
-title: updateTask method
+title: updateTask метод
 description: "обновляет указанную задачу"
 ---
 
@@ -10,74 +10,72 @@ description: "обновляет указанную задачу"
 
 @short: Обновляет указанную задачу
 
-@signature: updateTask: (id: string | number, newState?: Task) =\> void
+@signature: updateTask: (id: string | number, newState?: Task) => void
 
 ### Parameters
 
-- `id` - (required) *string | number* - идентификатор задачи
-- `newState` - (optional) *Task* - необязательный параметр, новые значения задачи
+- `id` - (обязательный) *string | number* - идентификатор задачи
+- `newState` - (необязательный) *Task* - новые значения задачи
 
 ### Example
 
 ~~~jsx
-var taskId = gantt.addTask({
-    id:10,
-    text:"Task #10",
-    start_date:"02-04-2013",
-    duration:8,
-    parent:1
+const taskId = gantt.addTask({
+    id: 10,
+    text: "Task #10",
+    start_date: "2027-04-02",
+    duration: 8,
+    parent: 1
 });
 
-gantt.getTask(taskId).text = "Task #13"; // изменяет данные задачи
-gantt.updateTask(taskId); // применяет изменения и обновляет задачу
+gantt.getTask(taskId).text = "Task #13"; // changes task data
+gantt.updateTask(taskId); // renders the updated task
 ~~~
 
 ### Details
 
 :::note
- Метод вызывает событие [onAfterTaskUpdate](api/event/onaftertaskupdate.md). 
+The method invokes the [`onAfterTaskUpdate`](api/event/onaftertaskupdate.md) event.
 :::
+
 :::note
- Если включён dataProcessor, этот метод также его активирует. 
+The method triggers the [DataProcessor](api/method/dataprocessor.md) if the dataProcessor is enabled.
 :::
 
-Этот метод следует вызывать после внесения изменений в объект задачи. Он обновляет внутреннее состояние Gantt, обновляет соответствующие части UI и отправляет обновлённую информацию на сервер.
+This method should be called after modifying the task object to update the Gantt's state, repaint related UI elements, and send the changes to the backend.
 
-При вызове срабатывает событие [onAfterTaskUpdate](api/event/onaftertaskupdate.md), которое может инициировать дополнительные перерасчёты.
+Calling this method will fire the [`onAfterTaskUpdate`](api/event/onaftertaskupdate.md) event, which may trigger additional recalculations.
 
-Если вы работаете с [DataProcessor](guides/server-side.md), вызов этого метода отправит запрос **update** на сервер.
+If you're using the [DataProcessor](api/method/dataprocessor.md), invoking this method will prompt an **update** request to the server.
 
-Для визуального обновления, которое не требует сохранения, **используйте метод [refreshTask](api/method/refreshtask.md)**. Он обновит внешний вид задачи без запуска дополнительных вычислений.
+For making visual changes that don't require saving, **use the [`refreshTask()`](api/method/refreshtask.md) method instead**. This will repaint the task without invoking extra calculations.
 
-~~~js
-gantt.templates.task_class = function(start, end, task){
-    if(task.$active) {
-        return "active_task";
-    }
-};
+~~~js {5}
+gantt.templates.task_class = (startDate, endDate, task) => task.$active ? "active_task" : "";
 
-gantt.attachEvent("onTaskClick", function(id,e){
-    gantt.getTask(id).$active = true;
-    gantt.refreshTask(id); /*!*/
+gantt.attachEvent("onTaskClick", (taskId, event) => {
+    gantt.getTask(taskId).$active = true;
+    gantt.refreshTask(taskId);
 });
 ~~~
 
-
-В качестве альтернативы, можно обновить задачу, передав новый объект задачи вторым аргументом в метод **updateTask**:
+You can also replace the existing task with new values by setting a new task object as the second parameter of the `updateTask()` method:
 
 ~~~js
-var task = {
-    id: 2, text: 'New task text', 
-    start_date: new Date(2025,03,02), 
-    end_date: new Date(2025,03,04), 
-    $source: [1], 
+const updatedTask = {
+    id: 2,
+    text: 'New task text',
+    start_date: new Date(2025, 3, 2),
+    end_date: new Date(2025, 3, 4),
+    $source: [1],
     $target: [2]
-}
-gantt.updateTask(2,task);
+};
+
+gantt.updateTask(2, updatedTask);
 ~~~
 
 :::note
-Sample: [Updating task](https://snippet.dhtmlx.com/fnfpoiik) 
+Sample: [Обновление задачи](https://snippet.dhtmlx.com/fnfpoiik)
 :::
 
 ### Related API
@@ -86,5 +84,4 @@ Sample: [Updating task](https://snippet.dhtmlx.com/fnfpoiik)
 - [refreshTask](api/method/refreshtask.md)
 
 ### Related Guides
-- [Интеграция с серверной стороной](guides/server-side.md#updatingdataontheserver)
-
+- [Server-Side Integration](guides/server-side.md)

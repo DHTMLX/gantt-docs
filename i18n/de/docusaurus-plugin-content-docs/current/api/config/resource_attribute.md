@@ -1,16 +1,16 @@
 ---
 sidebar_label: resource_attribute
-title: resource_attribute config
-description: "definiert den Attributnamen, den Gantt verwendet, um zu erkennen, welcher Resource eine Aufgabenzeile im Resource Grid oder in der Timeline zugeordnet ist."
+title: resource_attribute Konfiguration
+description: "Ändert den Namen des Attributs, das Gantt verwendet, um herauszufinden, auf welche Ressource sich die Aufgabenzeile in der Ressourcen-Gitter-/Timeline bezieht"
 ---
 
 # resource_attribute
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 ### Description
 
-@short: Definiert den Attributnamen, den Gantt verwendet, um zu erkennen, welcher Resource eine Aufgabenzeile im Resource Grid oder in der Timeline zugeordnet ist.
+@short: Ändert den Namen des Attributs, das Gantt verwendet, um herauszufinden, auf welche Ressource sich die Aufgabenzeile in der Ressourcen-Gitter-/Timeline bezieht
 
 @signature: resource_attribute: string
 
@@ -20,16 +20,19 @@ description: "definiert den Attributnamen, den Gantt verwendet, um zu erkennen, 
 gantt.config.resource_attribute = "data-resource-id";
 ~~~
 
-**Default value:** data-resource-id
+**Standardwert:** data-resource-id
 
 ### Details
 
+![resource_attribute](/img/resource_attribute.png)
+
 :::note
- Jedes Resource-Element enthält das Attribut *data-resource-id*, das das DOM-Element mit der entsprechenden Resource verknüpft. 
+Jedes Ressourcen-Element besitzt das Attribut *data-resource-id*, das verwendet wird, um herauszufinden, zu welcher Ressource das DOM-Element gehört.
 :::
 
 
-![resource_attribute](/img/resource_attribute.png)<br>
+![resource_attribute](/img/resource_attribute.png)
+
 :::note
 Sample: [Resourse_attribute](https://snippet.dhtmlx.com/5/66401acf0) 
 :::

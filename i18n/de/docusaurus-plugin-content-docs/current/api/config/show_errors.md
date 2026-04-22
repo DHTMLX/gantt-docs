@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_errors
-title: show_errors config
-description: "aktiviert Fehlermeldungen, wenn unerwartet etwas schiefgeht"
+title: show_errors Konfiguration
+description: "Aktiviert das Anzeigen von Fehlermeldungen bei unerwartetem Verhalten"
 ---
 
 # show_errors
 
 ### Description
 
-@short: Aktiviert Fehlermeldungen, wenn unerwartet etwas schiefgeht
+@short: Aktiviert das Anzeigen von Fehlermeldungen bei unerwartetem Verhalten
 
 @signature: show_errors: boolean
 
@@ -18,7 +18,7 @@ description: "aktiviert Fehlermeldungen, wenn unerwartet etwas schiefgeht"
 gantt.config.show_errors = false;
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Related Guides
-- [FAQ](faq.md#anerroralertappearsintherighttopcorner)
+- [FAQ](faq.md#an-error-alert-appears-in-the-right-top-corner)

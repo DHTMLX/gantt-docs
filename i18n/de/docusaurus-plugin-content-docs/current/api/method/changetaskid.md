@@ -1,21 +1,21 @@
 ---
 sidebar_label: changeTaskId
-title: changeTaskId method
-description: "aktualisiert die ID der Aufgabe"
+title: changeTaskId Methode
+description: "ändert die ID der Aufgabe"
 ---
 
 # changeTaskId
 
 ### Description
 
-@short: Aktualisiert die ID der Aufgabe
+@short: Ändert die ID der Aufgabe
 
 @signature: changeTaskId: (id: string | number, new_id: string | number) =\> void
 
 ### Parameters
 
 - `id` - (required) *string | number* -    die aktuelle ID der Aufgabe
-- `new_id` - (required) *string | number* -     die neue ID der Aufgabe
+- `new_id` - (required) *string | number* -    die neue ID der Aufgabe
 
 ### Example
 
@@ -27,14 +27,13 @@ gantt.addTask({
     duration:28
 }, "project_2");
 
-gantt.changeTaskId(10, 15); //aktualisiert die ID der Aufgabe von '10' auf '15' /*!*/
+gantt.changeTaskId(10, 15); //changes the task's id '10 -> 15' /*!*/
 ~~~
 
 ### Details
 
-Diese Methode löst das Event [onTaskIdChange](api/event/ontaskidchange.md) aus.
+Die Methode löst das Event [onTaskIdChange](api/event/ontaskidchange.md) aus.
 
 ### Related API
 - [onTaskIdChange](api/event/ontaskidchange.md)
 - [changeLinkId](api/method/changelinkid.md)
-

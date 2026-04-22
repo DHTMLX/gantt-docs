@@ -1,16 +1,18 @@
 ---
 sidebar_label: isCircularLink
 title: isCircularLink method
-description: "링크가 순환하는지 확인합니다."
+description: "링크가 순환하는지 여부를 확인합니다"
 ---
 
 # isCircularLink
+
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
 :::
+
 ### Description
 
-@short: 링크가 순환하는지 확인합니다.
+@short: 링크가 순환하는지 여부를 확인합니다
 
 @signature: isCircularLink: (link: Link) =\> boolean
 
@@ -19,7 +21,7 @@ description: "링크가 순환하는지 확인합니다."
 - `link` - (required) *Link* - 링크 객체
 
 ### Returns
-- ` state` - (boolean) - 링크가 순환하면 true, 그렇지 않으면 false를 반환합니다.
+- `state` - (boolean) - 링크가 순환하는 경우 true, 그렇지 않으면 false
 
 ### Example
 
@@ -33,7 +35,7 @@ var isCircular = gantt.isCircularLink(link);
 ### Details
 
 :::note
- 이 메서드는 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인이 활성화되어 있어야 합니다. 
+메서드는 활성화된 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인이 필요합니다.
 :::
 
 ### Related API
@@ -53,8 +55,7 @@ var isCircular = gantt.isCircularLink(link);
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 
 ### Related Guides
-- [자동 스케줄링](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
-- 버전 4.1에 추가됨
-
+- 버전 4.1에 추가되었습니다.

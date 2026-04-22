@@ -1,14 +1,14 @@
 ---
 sidebar_label: onBeforeGanttRender
 title: onBeforeGanttRender event
-description: "在甘特图渲染到页面之前触发"
+description: "在页面上呈现甘特图之前触发"
 ---
 
 # onBeforeGanttRender
 
 ### Description
 
-@short: 在甘特图渲染到页面之前触发
+@short: 在页面上呈现甘特图之前触发
 
 @signature: onBeforeGanttRender: () =\> void;
 
@@ -16,7 +16,7 @@ description: "在甘特图渲染到页面之前触发"
 
 ~~~jsx
 gantt.attachEvent("onBeforeGanttRender", function(){
-    // 在这里放置任何自定义逻辑
+    // 在这里插入您的自定义逻辑 
 });
 ~~~
 
@@ -29,4 +29,3 @@ gantt.attachEvent("onBeforeGanttRender", function(){
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

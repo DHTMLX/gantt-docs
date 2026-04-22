@@ -1,14 +1,14 @@
 ---
 sidebar_label: onGanttReady
-title: onGanttReady event
-description: "Wird ausgelöst, sobald dhtmlxGantt die Initialisierung abgeschlossen hat, obwohl das Gantt-Diagramm selbst noch nicht auf der Seite angezeigt wird."
+title: onGanttReady-Ereignis
+description: "Löst aus, nachdem die dhtmlxGantt-Initialisierung abgeschlossen ist, aber das Gantt-Diagramm ist noch nicht auf der Seite gerendert"
 ---
 
 # onGanttReady
 
 ### Description
 
-@short: Wird ausgelöst, sobald dhtmlxGantt die Initialisierung abgeschlossen hat, obwohl das Gantt-Diagramm selbst noch nicht auf der Seite angezeigt wird.
+@short: Wird ausgelöst, nachdem die dhtmlxGantt-Initialisierung abgeschlossen ist, das Gantt-Diagramm jedoch noch nicht auf der Seite gerendert wird
 
 @signature: onGanttReady: () =\> void;
 
@@ -16,10 +16,9 @@ description: "Wird ausgelöst, sobald dhtmlxGantt die Initialisierung abgeschlos
 
 ~~~jsx
 gantt.attachEvent("onGanttReady", function(){
-    // Benutzerdefinierte Logik kann hier eingefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related API
 - [onBeforeGanttReady](api/event/onbeforeganttready.md)
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: scroll_size
-title: scroll_size config
-description: "수직(너비) 및 수평(높이) 스크롤바의 크기를 지정합니다."
+title: scroll_size 설정
+description: "세로(너비) 및 가로(높이) 스크롤의 크기를 설정합니다"
 ---
 
 # scroll_size
 
 ### Description
 
-@short: 수직(너비) 및 수평(높이) 스크롤바의 크기를 지정합니다.
+@short: 세로(너비) 및 가로(높이) 스크롤의 크기를 설정합니다
 
 @signature: scroll_size: number
 
@@ -20,8 +20,8 @@ gantt.config.scroll_size = 20;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 15
+**기본값:** 15
 
 ### Details
 
-이 설정을 정의하지 않으면, Gantt는 브라우저 기본 스크롤바 너비를 사용합니다. 스크롤바 스타일은 브라우저마다 다를 수 있기 때문입니다.
+지정하지 않으면 Gantt는 브라우저마다 스크롤바 요소의 스타일이 다르기 때문에 기본 스크롤바 너비를 사용합니다.

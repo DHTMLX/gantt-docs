@@ -1,23 +1,23 @@
 ---
 sidebar_label: onBeforeBranchLoading
 title: onBeforeBranchLoading event
-description: "동적 로딩이 활성화된 경우, 사용자가 작업 브랜치를 확장한 직후 로딩 프로세스가 시작되기 전에 이 이벤트가 발생합니다."
+description: "동적 로딩이 활성화된 경우, 사용자가 작업 분기를 확장한 후 로딩이 시작되기 전에 발생합니다"
 ---
 
 # onBeforeBranchLoading
 
 ### Description
 
-@short: 동적 로딩이 활성화된 경우, 사용자가 작업 브랜치를 확장한 직후 로딩 프로세스가 시작되기 전에 이 이벤트가 발생합니다.
+@short: 동적 로딩이 활성화된 경우, 사용자가 작업 분기를 확장한 후 로딩이 시작되기 전에 발생합니다
 
 @signature: onBeforeBranchLoading: (settings: any) =\> boolean;
 
 ### Parameters
 
-- `settings` - (required) *object* - 작업 ID와 요청 URL을 포함합니다.
+- `settings` - (required) *object* - 태스크 ID와 요청 URL을 포함하는 객체
 
 ### Returns
-- ` result` - (boolean) - `false`를 반환하면 동적 로딩이 중단되고 서버로의 요청이 전송되지 않습니다.
+- ` result` - (boolean) - 반환 값이 `false`인 경우 동적 로딩이 취소되고 데이터 요청은 서버로 전송되지 않습니다
 
 ### Example
 

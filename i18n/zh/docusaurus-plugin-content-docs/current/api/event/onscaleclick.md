@@ -14,14 +14,14 @@ description: "当用户点击时间刻度中的单元格时触发"
 
 ### Parameters
 
-- `e` - (required) *Event* - 一个原生事件对象
-- `date` - (required) *Date* - 对应于被点击单元格的日期
+- `e` - (必填) 事件对象 - 原生事件对象
+- `date` - (必填) 日期 - 被点击单元格的日期
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onScaleClick", function (e, date) {
-    //你的自定义代码
+    // 在这里插入您的自定义逻辑 
 });
 ~~~
 

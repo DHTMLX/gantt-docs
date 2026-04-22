@@ -1,39 +1,38 @@
 ---
 sidebar_label: onTaskMultiSelect
 title: onTaskMultiSelect event
-description: "срабатывает при изменении статуса выбора задачи (когда задача выбирается или снимается выбор)"
+description: "срабатывает после изменения состояния выделения задачи (задача была выбрана/снята с выделения)"
 ---
 
 # onTaskMultiSelect
 
 ### Description
 
-@short: Срабатывает при изменении статуса выбора задачи (когда задача выбирается или снимается выбор)
+@short: Срабатывает после изменения состояния выделения задачи (задача была выбрана или снята с выделения)
 
 @signature: onTaskMultiSelect: (id: string | number, state: boolean, e: Event) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - идентификатор задачи
-- `state` - (required) *boolean* - true, если задача выбрана, false, если выбор снят
-- `e` - (required) *Event* - объект нативного события
+- `id` - (обязательный) *string | number* - идентификатор задачи
+- `state` - (обязательный) *boolean* - true, если задача выбрана; false — если снята с выбора
+- `e` - (обязательный) *Event* - объект нативного события
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskMultiSelect", function(id, state, e){
-    // некоторая логика здесь
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Details
 
 :::note
- Это событие относится к расширению **multiselect**, поэтому убедитесь, что плагин [multiselect](guides/extensions-list.md#multitaskselection) включен. Дополнительную информацию можно найти в статье [Множественный выбор задач](guides/multiselection.md). 
+Это событие определено в расширении **multiselect**, поэтому необходимо активировать плагин [multiselect](guides/extensions-list.md#multitaskselection). Подробности читайте в статье [Multi-Task Selection](guides/multiselection.md).
 :::
 
-
-Это событие срабатывает для каждой задачи в пределах выбранного диапазона.
+Событие вызывается для каждой задачи в диапазоне.
 
 ### Related API
 - [onBeforeMultiSelect](api/event/onbeforemultiselect.md)
@@ -41,5 +40,4 @@ gantt.attachEvent("onTaskMultiSelect", function(id, state, e){
 - [onMultiSelect](api/event/onmultiselect.md)
 
 ### Related Guides
-- [Множественный выбор задач](guides/multiselection.md#apievents)
-
+- [Multi-Task Selection](guides/multiselection.md#apievents)

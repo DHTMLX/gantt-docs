@@ -1,23 +1,23 @@
 ---
 sidebar_label: getGridColumn
 title: getGridColumn method
-description: "получает объект конфигурации для конкретного столбца"
+description: "получает объект конфигурации столбца"
 ---
 
 # getGridColumn
 
 ### Description
 
-@short: Получает объект конфигурации для конкретного столбца
+@short: Получает конфигурационный объект столбца
 
 @signature: getGridColumn: (name: string | number) =\> GridColumn
 
 ### Parameters
 
-- `name` - (required) *string | number* -    идентификатор столбца
+- `name` - (required) *string | number* - имя столбца
 
 ### Returns
-- ` column` - (GridColumn) - соответствующий объект столбца
+- `column` - (GridColumn) - объект столбца
 
 ### Example
 
@@ -36,4 +36,3 @@ gantt.getGridColumn("text");//->{ name:"text", tree:true, width:150}
 
 ### Related Guides
 - [getGridColumns](api/method/getgridcolumns.md)
-

@@ -1,20 +1,20 @@
 ---
 sidebar_label: onBeforeSplitTaskDisplay
-title: onBeforeSplitTaskDisplay event
-description: "在拆分任务的某个分段出现在甘特图上之前触发"
+title: onBeforeSplitTaskDisplay 事件
+description: "在甘特图上显示拆分任务的一部分之前触发"
 ---
 
 # onBeforeSplitTaskDisplay
 
 ### Description
 
-@short: 在拆分任务的某个分段出现在甘特图上之前触发
+@short: 在甘特图上显示拆分任务的一部分之前触发
 
 @signature: onBeforeSplitTaskDisplay: (id: number | string, task: Task, parent: any) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *number|string* - 子任务的标识符
+- `id` - (required) *number | string* - 子任务的 ID
 - `task` - (required) *Task* - 子任务对象
 - `parent` - (required) *object* - 父任务对象
 
@@ -36,10 +36,10 @@ gantt.attachEvent("onBeforeSplitTaskDisplay", function (id, task, parent) {
 
 ![split tasks](/img/split_tasks.png)
 
-在渲染拆分任务时，首先会为父任务（带有 *render:"split"* 的任务）触发 [onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md) 事件。紧接着，"onBeforeSplitTaskDisplay" 会为其每个子任务触发。若 "onBeforeSplitTaskDisplay" 返回 *false*，则该特定子任务将不会被显示。
+当拆分任务被渲染时，首先对父项触发 [onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md) 事件（对于一个带有 *render:"split"* 的任务）。随后对它的每个子任务触发 "onBeforeSplitTaskDisplay"。从 "onBeforeSplitTaskDisplay" 返回 *false*，将阻止子任务被显示。
 
 :::note
-Sample: [筛选拆分任务](https://snippet.dhtmlx.com/3q1yd7iz) 
+示例: [Filter split tasks ](https://snippet.dhtmlx.com/3q1yd7iz)
 :::
 
 ### Related Guides

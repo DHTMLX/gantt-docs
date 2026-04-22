@@ -1,14 +1,14 @@
 ---
 sidebar_label: wide_form
-title: wide_form config
-description: "platziert den Abschnitt und sein Label nebeneinander in derselben Zeile"
+title: wide_form Konfiguration
+description: "legt sowohl den Abschnitt als auch sein Label in derselben Zeile fest"
 ---
 
 # wide_form
 
 ### Description
 
-@short: Platziert den Abschnitt und sein Label nebeneinander in derselben Zeile
+@short: Legt sowohl den Abschnitt als auch sein Label in derselben Zeile fest
 
 @signature: wide_form: boolean
 
@@ -24,8 +24,9 @@ gantt.config.wide_form = true;
 
 ![normal_form](/img/normal_form.png)
 
+
 :::note
-Sample: [Lightbox in der wide_form](https://snippet.dhtmlx.com/hf45hvr3) 
+Beispiel: [Lightbox im breiten Formular](https://snippet.dhtmlx.com/hf45hvr3)
 :::
 
 ### Related API
@@ -33,5 +34,4 @@ Sample: [Lightbox in der wide_form](https://snippet.dhtmlx.com/hf45hvr3)
 - [resizeLightbox](api/method/resizelightbox.md)
 
 ### Related Guides
-- ["Arbeiten mit Lightbox-Elementen"](guides/lightbox-manipulations.md#settingsectionanditslabelonthesameline)
-
+- [Arbeiten mit Lightbox-Elementen](guides/lightbox-manipulations.md#setting-the-default-value-for-a-lightboxs-control)

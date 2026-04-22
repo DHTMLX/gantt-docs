@@ -1,19 +1,19 @@
 ---
 sidebar_label: getVisibleTaskCount
-title: getVisibleTaskCount method
-description: "gibt die Anzahl der aktuell auf dem Bildschirm sichtbaren Tasks zurück (ausgenommen der zusammengeklappten)"
+title: getVisibleTaskCount Methode
+description: "Ermittelt die Anzahl der Aufgaben, die auf dem Bildschirm sichtbar sind (die nicht eingeklappt sind)"
 ---
 
 # getVisibleTaskCount
 
 ### Description
 
-@short: Gibt die Anzahl der aktuell auf dem Bildschirm sichtbaren Tasks zurück (ausgenommen der zusammengeklappten)
+@short: Ermittelt die Anzahl der Aufgaben, die auf dem Bildschirm sichtbar sind (die nicht eingeklappt sind)
 
 @signature: getVisibleTaskCount: () =\> number
 
 ### Returns
-- ` count` - (number) - die Gesamtanzahl der sichtbaren Tasks
+- ` count` - (number) - die Anzahl der sichtbaren Aufgaben
 
 ### Example
 
@@ -23,4 +23,3 @@ gantt.getVisibleTaskCount();
 
 ### Related API
 - [getTaskCount](api/method/gettaskcount.md)
-

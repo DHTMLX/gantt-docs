@@ -1,14 +1,14 @@
 ---
 sidebar_label: autofit
-title: autofit config
-description: "Passt die Spalten des Grids automatisch an die Breite des Grids an"
+title: autofit Konfiguration
+description: "ermöglicht die automatische Anpassung der Grid-Spalten an die Breite des Grids"
 ---
 
 # autofit
 
 ### Description
 
-@short: Passt die Spalten des Grids automatisch an die Breite des Grids an
+@short: Ermöglicht die automatische Anpassung der Grid-Spalten an die Breite des Grids
 
 @signature: autofit: boolean
 
@@ -27,4 +27,3 @@ gantt.config.grid_width = 500;
 
 ### Related API
 - [grid_width](api/config/grid_width.md)
-

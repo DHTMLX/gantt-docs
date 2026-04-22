@@ -5,40 +5,39 @@ sidebar_label: "Lokalisierung"
 
 # Lokalisierung
 
-Mit der Lokalisierung können Sie die Benutzeroberfläche des Gantt-Diagramms in Ihrer bevorzugten Sprache anzeigen lassen, beispielsweise auf Englisch, Spanisch, Französisch und anderen. Standardmäßig verwendet dhtmlxGantt die [englische Spracheinstellung](api/other/locale.md).
+Die Lokalisierung ermöglicht es Ihnen, die Benutzeroberfläche des Gantt-Diagramms in der gewünschten Sprache anzuzeigen: Englisch, Spanisch, Französisch usw. Standardmäßig verwendet dhtmlxGantt [English locale](api/other/locale.md).
 
 ![gantt_localized](/img/gantt_localized.png)
 
 
-## Aktivieren einer Spracheinstellung
+## Aktivieren einer Lokalisierung
 
-Um das Gantt-Diagramm in einer anderen Sprache als Englisch zu nutzen, müssen Sie lediglich die gewünschte Sprache mit der **setLocale**-Methode des [gantt.i18n](api/other/i18n.md)-Objekts aktivieren.
+Um das Gantt-Diagramm in einer nicht-englischen Sprache zu implementieren, müssen Sie die benötigte Lokalisierung über die Methode **setLocale** des [gantt.i18n](api/other/i18n.md)-Objekts aktivieren. 
 
 ~~~js
 gantt.i18n.setLocale("fr");    
 ~~~
 
-Sie können eine der [vordefinierten Spracheinstellungen](#predefinedlocales) aus der dhtmlxgantt.js-Datei verwenden oder eine eigene Spracheinstellung anlegen.
+Sie können eine der [vordefinierten Lokalisierungen](#predefinedlocales) verwenden und aktualisieren, die in der Datei dhtmlxgantt.js enthalten sind, oder eine benutzerdefinierte Lokalisierung definieren.
 
 :::note
-Die Spracheinstellung kann während der Laufzeit geändert werden, aber die Änderung wird erst nach einer vollständigen Neuzeichnung des Gantt-Diagramms wirksam, indem entweder **gantt.render()** oder **gantt.init()** aufgerufen wird.
+Die Lokalisierung kann dynamisch gewechselt werden, aber die Änderungen werden erst nach einer vollständigen Neuzeichnung des Gantt-Diagramms angewendet, entweder durch den Aufruf von **gantt.render()** oder **gantt.init()**.
 :::
 
 ~~~js
-    gantt.i18n.setLocale("fr");
-    gantt.init("gantt_here");
+gantt.i18n.setLocale("fr");
+gantt.init("gantt_here");
 ~~~
 
+**Verwandtes Beispiel**: [Localization](https://docs.dhtmlx.com/gantt/samples/01_initialization/12_localization.html)
 
-[Localization](https://docs.dhtmlx.com/gantt/samples/01_initialization/12_localization.html)
 
+## Vordefinierte Lokalisierungen {#predefinedlocales}
 
-## Vordefinierte Spracheinstellungen
-
-<table >
+<table>
 <tr><td>Sprache</td><td>Sprachcode</td><td>Übersetzungsstatus</td></tr>
 <tr><td>Arabisch</td><td>ar</td><td>teilweise</td></tr>
-<tr><td>Weißrussisch</td><td>be</td><td>vollständig</td></tr>
+<tr><td>Belarussisch</td><td>be</td><td>vollständig</td></tr>
 <tr><td>Englisch</td><td>en</td><td>vollständig</td></tr>
 <tr><td>Katalanisch</td><td>ca</td><td>teilweise</td></tr>
 <tr><td>Chinesisch</td><td>cn</td><td>teilweise</td></tr>
@@ -71,33 +70,34 @@ Die Spracheinstellung kann während der Laufzeit geändert werden, aber die Änd
 <tr><td>Ukrainisch</td><td>ua</td><td>teilweise</td></tr>
 </table>
 
-## Erstellen einer eigenen Spracheinstellung 
+
+## Eine benutzerdefinierte Lokalisierung erstellen
 
 :::note
-Das [gantt.i18n](api/other/i18n.md)-Objekt wurde in Version 7.0 eingeführt. Ältere Versionen nutzten das [gantt.locale](api/other/locale.md)-Objekt. Weitere Informationen finden Sie im [Migrationsartikel](migration.md#63---70).
+Das [gantt.i18n](api/other/i18n.md)-Objekt wurde in v7.0 hinzugefügt. In früheren Versionen wurde das [gantt.locale](api/other/locale.md)-Objekt verwendet. Weitere Informationen finden Sie im [Migration article](migration.md#63---70).
 :::
 
-Die einfachste Möglichkeit, eine eigene Spracheinstellung zu erstellen, besteht darin, die untenstehende englische Standard-Spracheinstellung zu kopieren und alle Zeichenketten in die gewünschte Sprache zu übersetzen.
+Der einfachste Weg, eine benutzerdefinierte Lokalisierung zu erstellen, besteht darin, eine Kopie der Standard-Lokalisierung (Englisch) aus dem untenstehenden Beispiel zu erstellen und alle Strings daraus in die gewünschte Sprache zu übersetzen.
 
-Sie können Ihre eigene Spracheinstellung auf zwei Arten auf das Gantt-Diagramm anwenden:
+Die benutzerdefinierte Lokalisierung kann auf zwei Arten auf das Gantt-Diagramm angewendet werden:
 
-- Überschreiben Sie die aktuelle Spracheinstellung, indem Sie Ihr Sprachobjekt an die **setLocale**-Methode übergeben:
+- entweder übersteuern Sie die aktuelle Lokalisierung, indem Sie ein Objekt der Lokalisierung als Parameter an die Methode **setLocale** übergeben:
 
 ~~~js
 gantt.i18n.setLocale(localeObject);    
 ~~~
 
-Wenn Sie ein teilweises Sprachobjekt bereitstellen, werden Ihre Bezeichnungen mit der bestehenden Spracheinstellung zusammengeführt:
+Hinweis, falls Sie ein partielles Lokalisierungsobjekt angeben, wird gantt Ihre Bezeichner in die aktuelle Lokalisierung hinzufügen:
 
 ~~~js
 gantt.i18n.setLocale({
     labels: {
-        new_task: "New task"
+        new_task: "Neue Aufgabe"
     }
 });    
 ~~~
 
-- Oder, wenn Sie zwischen mehreren Spracheinstellungen wechseln möchten, definieren Sie eine neue Spracheinstellung mit einem eigenen Sprachcode und wechseln später zu dieser:
+- oder, wenn Sie zwischen mehreren Lokalisierungen wechseln müssen, definieren Sie die Lokalisierung mit einem benutzerdefinierten Sprachcode und wechseln Sie später zum Gantt darauf um:
 
 ~~~js
 gantt.i18n.addLocale("lang", localeObject);    
@@ -106,15 +106,14 @@ gantt.i18n.setLocale("lang");
 
 **Hinweis**, 
 
-- Sie können Ihre eigene Sprachdatei an **support@dhtmlx.com** senden, damit sie in zukünftige Versionen aufgenommen wird.
-- Die aktuell aktive Spracheinstellung ist über das **gantt.locale**-Objekt zugänglich.
-- **monthFull** enthält die vollständigen Monatsnamen, beginnend mit Januar;
-- **monthShort** enthält die abgekürzten Monatsnamen, beginnend mit Januar;
-- **dayFull** enthält die vollständigen Wochentagsnamen, beginnend mit Sonntag;
-- **dayShort** enthält die abgekürzten Wochentagsnamen, beginnend mit Sonntag.
+- Sie können Ihre benutzerdefinierte Lokalisierungsdatei an **support@dhtmlx.com** senden – wir werden sie in der nächsten Veröffentlichung berücksichtigen.
+- Die aktuell aktive Lokalisierung ist auch im **gantt.locale**-Objekt verfügbar
+- **monthFull** – die vollständigen Monatsnamen, beginnend mit Januar;
+- **monthShort** – die kurzen Monatsnamen, beginnend mit Januar;
+- **dayFull** – die vollständigen Wochentagsnamen, beginnend mit Sonntag;
+- **dayShort** – die kurzen Wochentagsnamen, beginnend mit Sonntag.
 
-**English locale definition**
-~~~js
+~~~js title="Englische Locale-Definition"
 gantt.i18n.setLocale({
     date: {
         month_full: ["January", "February", "March", "April", "May", "June", 
@@ -188,8 +187,3 @@ gantt.i18n.setLocale({
     }
 });
 ~~~
-
-- Wenn die **confirm_closing**- oder **confirm_deleting**-Bezeichnungen fehlen, erscheinen die entsprechenden Bestätigungsdialoge nicht (automatisch bestätigt).
-- Die **section_(name)**-Bezeichnungen entsprechen den Lightbox-Abschnitten mit den entsprechenden Namen.
-- Die **new_task**-Bezeichnung legt den Standardtext für neue Aufgaben fest.
-

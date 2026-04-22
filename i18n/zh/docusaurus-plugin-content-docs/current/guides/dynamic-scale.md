@@ -1,29 +1,29 @@
+--- 
+title: "刻度设置的动态更改"
+sidebar_label: "刻度设置的动态更改"
 ---
-title: "动态更改刻度设置"
-sidebar_label: "动态更改刻度设置"
----
 
-# 动态更改刻度设置
+# 刻度设置的动态更改
 
-动态调整刻度可以让 Gantt 图更具适应性，从而满足不同用户的需求。
+在运行时动态更改刻度可以使甘特图更加灵活，能够满足用户的需求。
 
-例如，负责一年期项目的经理可能更喜欢按月份查看计划，以获得整体概览。然而，当聚焦于某项具体任务时，切换到按周或按天的刻度则能提供更详细的信息。
+例如，某位经理有一个为期一年的项目。为了全面了解项目，最好让他以月为单位查看项目的进度。但要了解某个具体任务的细节时，按周或按日来排程会更合适。
 
-为什么只选择一种方式？最好是提供所有选项，让用户自行选择最适合他们的刻度视图。
+应该选择哪一个单位呢？全部都用！并为用户提供自行选择要应用哪一个的可能。
 
 ## 配置设置
 
-要在 dhtmlxGantt 初始化后动态更新刻度设置，请按照以下步骤操作:
+要在动态地更改刻度的设置（例如 step、sub-scale）在 dhtmlxGantt 初始化后，请使用以下方法：
 
-1. 为相关配置选项赋予新值。
+1. 为相关配置选项设置新的值。
 
- *例如，要将刻度单位从 "month" 切换为 "day"，请更新 [scales](api/config/scales.md) 配置中的 **unit** 属性*。
-2. 如有需要，更新相关模板。
+ *例如，要将刻度的 unit 从 "month" 改为 "day"，请使用 [scales](api/config/scales.md) 属性中的 **unit** 属性*。
+2. 如有需要，重新定义相关模板。
 
- *例如，要[高亮显示刻度中的周末](guides/highlighting-time-slots.md)，请修改 [scale_cell_class](api/template/scale_cell_class.md) 模板*。
-3. 使用 [render](api/method/render.md) 方法重绘 Gantt 图。
+ *例如，要在刻度中 [highlight weekends in the scale](guides/highlighting-time-slots.md)，请使用 [scale_cell_class](api/template/scale_cell_class.md) 模板*。
+2. 使用 [render](api/method/render.md) 方法重新绘制甘特图。
 
-动态更改刻度配置
+**刻度配置的动态更改**
 ~~~js
 gantt.config.scales = [
     {unit: "month", step: 1, format: "%F, %Y"},
@@ -42,4 +42,3 @@ gantt.templates.scale_cell_class = function(date){/*!*/
 };/*!*/
 gantt.render(); /*!*/
 ~~~
-

@@ -8,7 +8,7 @@ description: "定义 layout 对象"
 
 ### Description
 
-@short: 定义 layout 对象
+@short: 指定布局对象
 
 @signature: layout: any
 
@@ -33,10 +33,11 @@ gantt.config.layout = {
 gantt.init("gantt_here");
 ~~~
 
+
 ### Details
 
 :::note
- layout 配置应在初始化甘特图之前设置。如果您之后更新了 layout，务必使用 [resetLayout](api/method/resetlayout.md) 进行刷新。 
+请在 Gantt 初始化之前指定布局配置。若对布局进行修改，需要使用 [resetLayout](api/method/resetlayout.md) 进行刷新。
 :::
 
 ### Related API
@@ -44,6 +45,5 @@ gantt.init("gantt_here");
 
 ### Related Guides
 - [Gantt 布局](guides/layout-config.md)
-- [操作指南](guides/how-to.md) (阅读如何切换 grid/chart)
-- [操作指南](guides/how-to.md) (阅读如何切换 resource 视图)
-
+- [How-tos](guides/how-to.md#how-to-toggle-gridchart) (了解如何切换网格/图表)
+- [How-tos](guides/how-to.md#how-to-toggle-the-resource-view) (了解如何切换资源视图)

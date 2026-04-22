@@ -1,14 +1,14 @@
 ---
 sidebar_label: start_date
 title: start_date config
-description: "시간 축이 시작되는 지점을 정의합니다"
+description: "타임 스케일의 시작 값을 설정합니다"
 ---
 
 # start_date
 
 ### Description
 
-@short: 시간 축이 시작되는 지점을 정의합니다
+@short: 타임 스케일의 시작 값을 설정합니다
 
 @signature: start_date: Date | undefined
 
@@ -17,21 +17,21 @@ description: "시간 축이 시작되는 지점을 정의합니다"
 ~~~jsx
 gantt.config.start_date = new Date(2018, 08, 10);
 gantt.config.end_date = new Date(2018, 08, 20);
-
+ 
 gantt.init("gantt_here");
 ~~~
 
 ### Details
 
 :::note
- **start_date** 옵션을 제대로 사용하려면 [end_date](api/config/end_date.md) 옵션과 함께 설정해야 합니다. 
+**start_date** 옵션을 적용하려면 [end_date](api/config/end_date.md)와 함께 사용해야 합니다.
 :::
 
-- **start_date**와 **end_date**가 모두 설정되면, 이 범위를 벗어나는 작업은 차트에 표시되지 않습니다.
-- [init](api/method/init.md) 메서드의 선택적 파라미터를 [start_date](api/config/start_date.md)와 [end_date](api/config/end_date.md)의 초기 값으로 사용할 수 있습니다.
-- [start_date](api/config/start_date.md)와 [end_date](api/config/end_date.md)는 [fit_tasks](api/config/fit_tasks.md)보다 우선 적용됩니다. 두 옵션을 함께 사용하려면 [시간 축을 프로그래밍적으로 제어](guides/configuring-time-scale.md#range)해야 합니다.
+- 두 옵션 **start_date**와 **end_date**가 모두 지정되고 범위를 벗어난 작업을 생성하면 차트에서 해당 작업이 사라집니다.
+- [init](api/method/init.md) 메서드의 선택적 매개변수는 [start_date](api/config/start_date.md) 및 [end_date](api/config/end_date.md)의 초기 값으로 사용할 수 있습니다.
+- [start_date](api/config/start_date.md) 및 [end_date](api/config/end_date.md)가 [fit_tasks](api/config/fit_tasks.md)을 덮어씁니다. 이러한 설정을 함께 사용하려면 [타임 스케일을 코드에서 관리하십시오](guides/configuring-time-scale.md#range).
 
-시간 범위를 동적으로 확장하는 방법은 다음과 같습니다:
+In this case we can extend the range:
 
 ~~~js
 gantt.attachEvent("onLightboxSave", function(id, task, is_new){
@@ -64,7 +64,7 @@ gantt.attachEvent("onLightboxSave", function(id, task, is_new){
     if(scaleStart > taskEnd || scaleEnd < taskStart ){
         gantt.message({
             type:"warning", 
-            text:"경고! 작업이 날짜 범위를 벗어났습니다!",
+            text:"Warning! The task is outside the date range!",
             expire:5000
         });
           return false;
@@ -80,5 +80,4 @@ gantt.attachEvent("onLightboxSave", function(id, task, is_new){
 - [show_tasks_outside_timescale](api/config/show_tasks_outside_timescale.md)
 
 ### Related Guides
-- [스케일 설정하기](guides/configuring-time-scale.md#settingtheminmasvaluesofthescale)
-
+- [Setting up Scale](guides/configuring-time-scale.md)

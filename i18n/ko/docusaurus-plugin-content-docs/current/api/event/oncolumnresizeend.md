@@ -1,7 +1,7 @@
 ---
 sidebar_label: onColumnResizeEnd
-title: onColumnResizeEnd event
-description: "사용자가 열 경계선을 드래그하여 너비를 조정한 후에 한 번 트리거됩니다."
+title: onColumnResizeEnd 이벤트
+description: "사용자가 열의 경계선을 드래그하여 열의 크기를 조정한 후 발생합니다"
 ---
 
 # onColumnResizeEnd
@@ -10,18 +10,18 @@ description: "사용자가 열 경계선을 드래그하여 너비를 조정한 
 :::
 ### Description
 
-@short: 사용자가 열 경계선을 드래그하여 너비를 조정한 후에 한 번 트리거됩니다.
+@short: 사용자가 열의 경계선을 드래그하여 열의 크기를 조정한 후 발생합니다
 
 @signature: onColumnResizeEnd: (index: number, column: GridColumn, new_width: number) =\> boolean;
 
 ### Parameters
 
-- `index` - (required) *number* - 열의 인덱스
-- `column` - (required) *GridColumn* - 열 객체 자체
-- `new_width` - (required) *number* - 업데이트된 열의 너비
+- `index` - (required) *number* - 열 인덱스
+- `column` - (required) *GridColumn* - 열 객체
+- `new_width` - (required) *number* - 새 열 너비
 
 ### Returns
-- ` result` - (boolean) - 기본 이벤트 동작이 계속 진행될지(<b>true</b>) 또는 중단될지(<b>false</b>) 결정합니다.
+- ` result` - (boolean) - 기본 이벤트 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소됩니다 (<b>false</b>)
 
 ### Example
 
@@ -30,8 +30,8 @@ description: "사용자가 열 경계선을 드래그하여 너비를 조정한 
 gantt.attachEvent("onColumnResizeEnd", function(index, column, new_width){
     gantt.message.hide(message);
     message = null;
-    gantt.message(`열 <b>${gantt.locale.labels["column_"+column.name]}
-    </b>의 크기가 ${new_width}px로 조정되었습니다.`);
+    gantt.message(`Column <b>${gantt.locale.labels["column_"+column.name]}
+    </b> is now ${new_width}px width`);
     return true;
 });
 ~~~
@@ -41,7 +41,7 @@ gantt.attachEvent("onColumnResizeEnd", function(index, column, new_width){
 
 ### Details
 
-이 이벤트는 차단할 수 있습니다. *false*를 반환하면 열 크기 조정이 중단됩니다.
+이벤트는 차단 가능합니다. false를 반환하면 열 크기 조정이 취소됩니다.
 
 ### Related API
 - [onColumnResize](api/event/oncolumnresize.md)
@@ -49,5 +49,4 @@ gantt.attachEvent("onColumnResizeEnd", function(index, column, new_width){
 - [onGridResizeEnd](api/event/ongridresizeend.md)
 
 ### Related Guides
-- [컬럼 지정하기](guides/specifying-columns.md#resizing)
-
+- [Specifying Columns](guides/specifying-columns.md#resizing)

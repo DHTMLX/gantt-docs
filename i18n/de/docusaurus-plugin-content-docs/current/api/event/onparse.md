@@ -1,14 +1,14 @@
 ---
 sidebar_label: onParse
 title: onParse event
-description: "Wird ausgelöst, sobald die Daten geparst wurden (und für die API bereitstehen), jedoch bevor sie im Gantt-Chart angezeigt werden."
+description: "Wird ausgelöst, nachdem die Daten geparst wurden (für die API verfügbar geworden sind), aber bevor sie im Gantt-Diagramm gerendert werden"
 ---
 
 # onParse
 
 ### Description
 
-@short: Wird ausgelöst, sobald die Daten geparst wurden (und für die API bereitstehen), jedoch bevor sie im Gantt-Chart angezeigt werden.
+@short: Wird ausgelöst, nachdem die Daten geparst wurden (für die API verfügbar geworden sind), aber bevor sie im Gantt-Diagramm gerendert werden
 
 @signature: onParse: () =\> void;
 
@@ -30,4 +30,3 @@ gantt.parse(demo_tasks);
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

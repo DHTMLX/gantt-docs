@@ -1,20 +1,20 @@
 ---
 sidebar_label: importFromPrimaveraP6
 title: importFromPrimaveraP6 method
-description: "конвертирует XML или XER файл Primavera P6 в формат JSON"
+description: "конвертирует XML или XER Primavera P6 файл в JSON"
 ---
 
 # importFromPrimaveraP6
 
 ### Description
 
-@short: Конвертирует XML или XER файл Primavera P6 в формат JSON
+@short: Конвертирует XML или XER файл Primavera P6 в JSON
 
 @signature: importFromPrimaveraP6: (config: any) =\> void
 
 ### Parameters
 
-- `config` - (required) *object* - объект, содержащий параметры конфигурации для импортируемого файла
+- `config` - (required) *object* - объект с конфигурационными свойствами импортированного файла
 
 ### Example
 
@@ -34,54 +34,67 @@ gantt.importFromPrimaveraP6({
 });
 ~~~
 
-### Related samples
-- [Import Primavera P6 file](https://docs.dhtmlx.com/gantt/samples/08_api/18_load_from_primaverap6.html)
-
 ### Details
 
 :::note
- Метод требует поддержки HTML5 File API. 
+Требуется поддержка HTML5 File API.
 :::
 
 :::note
- Этот метод является частью расширения **export**, поэтому плагин [export_api](guides/extensions-list.md#exportservice) должен быть включен. Подробнее можно узнать в статье [Экспорт и импорт из Primavera P6](guides/export-primavera.md#importfromprimaverap6). 
+Этот метод определяется в расширении **export**, поэтому вам нужно активировать плагин [export_api](guides/extensions-list.md#export-service). Подробности смотрите в статье [Export/Import for Excel, Export to iCal](guides/excel.md#importfromexcel).
 :::
 
 :::note
- Для версий Gantt ниже 8.0 необходимо подключить **https://export.dhtmlx.com/gantt/api.js** на вашей странице для включения онлайн-сервиса экспорта, например:
+Если у вас версия Gantt старше 8.0, необходимо подключить на страницу файл **https://export.dhtmlx.com/gantt/api.js**, чтобы включить онлайн-сервис экспорта, например:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
- 
+
 :::
 
-Метод принимает объект с параметрами конфигурации для импортируемого файла:
+Метод принимает в качестве параметра объект с конфигурационными свойствами импортированного файла:
 
-- **data** - экземпляр [File](https://developer.mozilla.org/en-US/docs/Web/API/File), содержащий файл проекта в формате XER или XML.
-- **callback** - функция, вызываемая после завершения импорта.
-- **durationUnit** - задает ожидаемую единицу измерения длительности ("minute", "hour", "day", "week", "month", "year").
-- **projectProperties** - массив свойств проекта, которые нужно включить в ответ.
-- **taskProperties** - массив дополнительных свойств задач для импорта.
+- **data** - экземпляр [File](https://developer.mozilla.org/en-US/docs/Web/API/File), который должен содержать либо XER, либо XML-файл проекта.
+- **callback** - функция обратного вызова.
+- **durationUnit** - устанавливает единицу продолжительности (("minute", "hour", "day", "week", "month", "year")).
+- **projectProperties** - задаёт массив свойств проекта, которые должны быть включены в ответ.
+- **taskProperties** - задаёт массив дополнительных свойств задач для импорта.
+
+См. подробные описания настроек импорта в соответствующем разделе guides/export-primavera.md#import-settings.
 
 ## Response
 
-Ответ будет JSON-объектом со следующей структурой:
+Ответ будет содержать JSON следующей структуры:
 
 ~~~js
 {
     data: {},
     config: {},
     resources: [],
-    worktime: {}
+    worktime: {},
+    calendars: []
 }
 ~~~
 
-- **data** - объект данных gantt [data object](guides/supported-data-formats.md#json), в котором каждая задача содержит свойства, такие как *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. Даты представлены строками в формате "%Y-%m-%d %H:%i".
-- **config** - объект [конфигурации](api/overview/properties-overview.md) gantt с настройками, извлеченными из файла проекта.
-- **resources** - массив объектов, представляющих ресурсы из файла проекта, каждый содержит *id*, *name* и *type*.
-- **worktime** - объект с настройками рабочего времени из календаря проекта.
+- **data** - (*object*) объект данных gantt [data object](guides/supported-data-formats.md). У задачи есть следующие свойства: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. Даты приводятся к строковому представлению в формате "%Y-%m-%d %H:%i".
+- **config** - (*object*) объект [configuration](api/overview/properties-overview.md) для gantt с настройками, полученными из файла проекта.
+- **resources** - (*array*) массив объектов (каждый имеет следующие свойства: \{*id: string, name: string, type: string, calendar: string*\}) представляющих список ресурсов из файла проекта.
+- **worktime** - (*object*) объект, содержащий настройки рабочего времени из календаря проекта. Он может содержать следующие атрибуты:
+    - **id** - (*string | number*) необязательный идентификатор календаря
+    - **hours** - (*array*) массив глобальных рабочих часов, устанавливает начальные и конечные часы задачи
+    - **dates** - (*array*) массив дат, который может содержать:
+        - 7 дней недели (от 0 - Воскресенье, до 6 - Суббота), где 1/true обозначает рабочий день, а 0/false — нерабочий день
+        - другие записи — даты
+- **calendars** - (*array*) массив, содержащий конфигурационные объекты календаря для создания нового календаря.
+    - **calendarConfig** - (*object*) конфигурационный объект календаря, который может содержать следующие атрибуты:
+      - **id** - (*string | number*) необязательный идентификатор календаря
+      - **name** - (*string*) имя календаря
+      - **hours** - (*array*) массив глобальных рабочих часов, устанавливает начальные и конечные часы задачи
+      - **dates** - (*array*) массив дат, который может содержать:
+            - 7 дней недели (от 0 - Воскресенье, до 6 - Суббота), где 1/true обозначает рабочий день и 0/false — нерабочий день
+            - другие записи — даты
 
 ### Related API
 - [exportToMSProject](api/method/exporttomsproject.md)
@@ -91,9 +104,8 @@ gantt.importFromPrimaveraP6({
 - [exportToPDF](api/method/exporttopdf.md)
 - [exportToPNG](api/method/exporttopng.md)
 - [exportToJSON](api/method/exporttojson.md)
-- [importFromExcel](api/method/importfromexcel.md)
 - [importFromMSProject](api/method/importfrommsproject.md)
+- [importFromExcel](api/method/importfromexcel.md)
 
 ### Related Guides
-- [Экспорт и импорт из Primavera P6](guides/export-primavera.md#importfromprimaverap6)
-
+- [Export and Import from Primavera P6](guides/export-primavera.md#import-from-primavera-p6)

@@ -1,22 +1,22 @@
 ---
 sidebar_label: task_text
-title: task_text template
-description: "작업 바와 라이트박스 헤더에 표시되는 텍스트를 설정합니다."
+title: task_text 템플릿
+description: "작업 바의 텍스트와 라이트박스의 헤더를 지정합니다"
 ---
 
 # task_text
 
 ### Description
 
-@short: 작업 바와 라이트박스 헤더에 표시되는 텍스트를 설정합니다.
+@short: 작업 바의 텍스트와 라이트박스의 헤더를 지정합니다
 
 @signature: task_text: (start: Date, end: Date, task: Task) =\> string | number | void;
 
 ### Parameters
 
-- `start` - (required) *Date* - 작업이 시작될 예정일  
-- `end` - (required) *Date* - 작업이 완료될 예정일
-- `task` - (required) *Task* - 작업 객체 자체
+- `start` - (required) *Date* - 작업이 시작될 예정인 날짜  
+- `end` - (required) *Date* - 작업이 완료될 예정인 날짜
+- `task` - (required) *Task* - 작업 객체
 
 ### Returns
 - ` text` - (string | number | void) - gantt 내부에 표시될 HTML 콘텐츠

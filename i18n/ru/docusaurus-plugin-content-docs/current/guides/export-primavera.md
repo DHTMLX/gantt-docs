@@ -1,70 +1,71 @@
 ---
-title: "Экспорт и импорт из Primavera P6"
-sidebar_label: "Экспорт и импорт из Primavera P6"
+title: "Экспорт и импорт из Primavera P6" 
+sidebar_label: "Экспорт и импорт из Primavera P6" 
 ---
 
 # Экспорт и импорт из Primavera P6
 
-Библиотека dhtmlxGantt поддерживает экспорт данных из Gantt-диаграммы в Primavera P6, а также импорт данных из Primavera P6 в Gantt-диаграмму.
+Библиотека dhtmlxGantt позволяет экспортировать данные из диаграммы Ганта в Primavera P6. Также вы можете импортировать данные в Gantt из Primavera P6.
 
 :::note
-Этот сервис предоставляется бесплатно, однако экспортируемый файл будет содержать водяной знак библиотеки по лицензии GPL.
-Покупка лицензии удаляет водяной знак на период действия поддержки (12 месяцев для всех PRO-лицензий).
+Сервис бесплатный, но выходной файл будет содержать водяной знак библиотеки в соответствии с лицензией GPL. 
+Если вы приобретете лицензию, результат экспорта будет доступен без водяного знака в течение действующего срока поддержки (12 месяцев для всех PRO лицензий).
 :::
 
-Доступно несколько экспортных сервисов для локальной установки на вашем компьютере, что позволяет экспортировать Gantt-диаграмму напрямую в Primavera P6.
-Обратите внимание, что экспортные сервисы не входят в комплект поставки Gantt.
-Подробную информацию об условиях использования смотрите в [соответствующей статье](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
+Существует несколько сервисов экспорта. Их можно установить на ваш компьютер и локально экспортировать диаграмму Ганта в Primavera P6. Обратите внимание, что сервисы экспорта не входят в пакет Gantt; прочитайте [соответствующую статью](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml), чтобы узнать условия использования каждого из них.
 
 ## Ограничения онлайн-сервиса экспорта
 
 :::note
-Сервис экспорта имеет ограничения по времени обработки и размеру запроса.
+У онлайн-сервиса экспорта существуют ограничения по времени и размеру запроса.
 :::
 
 ### Ограничения по времени
 
-Если процесс экспорта занимает более 20 секунд, он будет отменён и появится следующая ошибка:
+Если процесс занимает более 20 секунд, экспорт будет отменен и произойдет следующая ошибка:
 
 ~~~html
 Error: Timeout trigger 20 seconds
 ~~~
 
-Когда несколько пользователей одновременно экспортируют Gantt-диаграммы, обработка может занять больше времени, чем обычно. Однако время обработки каждого запроса считается отдельно для каждого пользователя - это ожидаемое поведение.
+Если несколько человек экспортируют Gantt одновременно, процесс может занять больше обычного. Но это нормально, потому что время, затраченное на запрос экспорта от конкретного пользователя, считается отдельно.
 
-### Ограничения по размеру запроса
+### Ограничения на размер запроса
 
-Общий API-эндпоинт **https://export.dhtmlx.com/gantt** обрабатывает все методы экспорта (*exportToPDF*, *exportToPNG*, *exportToMSProject* и др.) с **максимальным размером запроса 10 МБ**.
+Существует общий API-эндпойнт `https://export.dhtmlx.com/gantt`, который обслуживает все методы экспорта (*exportToPDF*, *exportToPNG*, *exportToMSProject* и т. д.). **Максимальный размер запроса — 10 МБ**.
 
-Существует также отдельный API-эндпоинт **https://export.dhtmlx.com/gantt/project** для сервисов экспорта/импорта [MSProject](guides/export-msproject.md) и
-[Primavera P6](#limitsonrequestsizeandimportoflargefiles)
-(*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*). Этот эндпоинт поддерживает **максимальный размер запроса 40 МБ**.
+Также существует отдельный API-эндпойнт `https://export.dhtmlx.com/gantt/project`, специфический для [MSProject](guides/export-msproject.md) и 
+[Primavera P6](#limits-on-request-size-and-import-of-large-files) 
+экспорта/импорта (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* только). **Максимальный размер запроса: 40 МБ**.
 
-## Использование экспортных модулей
+## Использование модулей экспорта
 
 :::note
-Для экспорта больших диаграмм доступен [отдельный экспортный модуль](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
-Этот модуль бесплатен, если у вас есть лицензия [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) или [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), либо может быть приобретён отдельно по [этой ссылке](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
+Если вам нужен экспорт больших диаграмм, вы можете использовать [независимый экспортный модуль](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
+Модуль экспорта предоставляется бесплатно, если у вас лицензия на Gantt по [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) или [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), или вы можете [приобрести модуль отдельно](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
 :::
 
-Более подробную информацию об использовании экспортного модуля с MS Project можно найти в [этом руководстве](guides/msp-export-module.md). Модуль поддерживает экспорт/импорт для MS Project и Primavera P6.
+[Подробнее об использовании экспортного модуля для MS Project](guides/msp-export-module.md). Этот экспортный модуль предоставляет функциональность экспорта/импорта для MS Project и 
+Primavera P6.
 
 ## Экспорт в Primavera P6 {#exporttoprimaverap6}
 
-Компонент Gantt может экспортировать связи, задачи и ресурсы в Primavera P6.
+Компонент Gantt позволяет экспортировать связи, задачи и ресурсы в Primavera P6.
 
-Чтобы экспортировать данные из Gantt-диаграммы в Primavera P6, выполните следующие шаги:
+Чтобы экспортировать данные из диаграммы Ганта в Primavera P6, выполните следующее:
 
-- Включите плагин <b>export_api</b>, как описано в документации [plugins](api/method/plugins.md):
+- Чтобы использовать функциональность экспорта/импорта, включите плагин <b>export_api</b> через метод [plugins](api/method/plugins.md):
 
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
+Это позволяет использовать либо онлайн-сервис экспорта, либо локальный экспортный модуль.
+
 :::note
-Для версий Gantt ниже 8.0 необходимо подключить **https://export.dhtmlx.com/gantt/api.js** на вашей странице для активации онлайн-сервиса экспорта, например:
+Если вы используете версию Gantt старше 8.0, вам нужно включить на вашей странице `https://export.dhtmlx.com/gantt/api.js`, чтобы включить функциональность экспорта, например:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -72,19 +73,18 @@ gantt.plugins({
 ~~~
 :::
 
-- Используйте метод [exportToPrimaveraP6()](api/method/exporttoprimaverap6.md) для экспорта данных из Gantt-диаграммы:
+- Вызовите метод [exportToPrimaveraP6()](api/method/exporttoprimaverap6.md) для экспорта данных из диаграммы Gantt.
 
 ~~~js
 gantt.exportToPrimaveraP6();
 ~~~
 
-Этот метод отправляет запрос на удалённый сервис, который либо сгенерирует и вернёт XML-файл проекта, либо предоставит ссылку для его скачивания.
+Метод отправит запрос на удаленный сервис, который либо создаст XML-файл проекта, либо вернет URL для загрузки сгенерированного файла.
 
 
-[Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
+**Связанный пример**: [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
-
-При экспорте данных в Primavera важно, чтобы свойство **Summary** для проектных задач возвращало *true*, чтобы обеспечить корректную работу:
+Обратите внимание, что при экспорте данных в Primavera необходимо вернуть *true* для свойства **Summary** у задач проекта, чтобы эта функция работала корректно:
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -102,33 +102,13 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-
-**Related example:** [Custom properties for WBS tasks (PrimaveraP6's Summary tasks)](https://snippet.dhtmlx.com/r90hjlvo?tag="gantt")
-
-
-### Ответ
-
-Ответ от сервиса экспорта будет JSON-объектом следующей структуры:
-
-~~~js
-{
-    data: {},
-    config: {},
-    resources: [],
-    worktime: {}
-}
-~~~
-
-- **data** - [объект данных](guides/supported-data-formats.md#json) Gantt, содержащий задачи со свойствами *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. Даты представлены строками в формате "%Y-%m-%d %H:%i".
-- **config** - [объект конфигурации](api/overview/properties-overview.md) Gantt с настройками, извлечёнными из файла проекта.
-- **resources** - массив объектов ресурсов, каждый из которых содержит (*id: string, name:string, type:string*), соответствующих ресурсам из файла проекта.
-- **worktime** - объект с настройками рабочего времени из календаря проекта.
+**Связанный пример**: [Custom properties for WBS tasks (PrimaveraP6's Summary tasks)](https://snippet.dhtmlx.com/r90hjlvo?tag="gantt")
 
 ### Настройки экспорта
 
-Метод **exportToPrimaveraP6()** принимает объект с несколькими необязательными свойствами:
+Метод **exportToPrimaveraP6()** принимает в качестве параметра объект с рядом свойств (все свойства являются необязательными):
 
-- **name** - (string) задаёт имя файла для экспорта (по умолчанию 'gantt.xml').
+- **name** - (string) имя полученного файла ('gantt.xml' по умолчанию).
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -136,7 +116,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-- **auto_scheduling** - (boolean) определяет режим планирования задач в экспортируемом проекте. Значение **true** помечает задачи как автоматически планируемые, **false** - вручную (по умолчанию).
+- **auto_scheduling** - (boolean) указывает режим планирования задач в экспортируемом проекте. **true** пометит задачи как автоматически запланированные, **false** — как вручную запланированные (состояние по умолчанию).
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -144,7 +124,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-- **skip_circular_links** - (boolean) определяет, будут ли удаляться циклические связи. **true** (по умолчанию) удаляет их, **false** - сохраняет.
+- **skip_circular_links** - (boolean) указывает, будут ли удаляться циклические связи (true — будут удалены (режим по умолчанию), false — не будут удалены).
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -152,7 +132,7 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-- **project** - (object) позволяет назначить пользовательские свойства экспортируемой сущности проекта.
+- **project** - (object) позволяет задать дополнительные свойства экспортируемого проекта
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -165,9 +145,9 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-Эти свойства соответствуют [свойствам проекта](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))." Список поддерживаемых свойств доступен [здесь](guides/properties.md). Значения могут быть как фиксированными, так и функциями, выполняемыми во время экспорта.
+Свойства этого объекта соответствуют соответствующим свойствам [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Список поддерживаемых свойств можно найти [здесь](guides/properties.md). Свойства могут содержать либо фиксированные значения, либо функции, которые будут выполняться при вызове экспорта.
 
-- **tasks** - (object) позволяет определить пользовательские свойства экспортируемых задач.
+- **tasks** - (object) позволяет задать дополнительные свойства экспортируемых элементов задач
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -189,28 +169,28 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-Эти свойства относятся к [сущности задачи](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12));" список поддерживаемых [свойств](guides/properties.md#tasksproperties) доступен. Значения могут быть фиксированными или функциями, вызываемыми для каждой задачи при экспорте.
+Свойства этого объекта соответствуют соответствующим свойствам [Task entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)), ниже приведен список поддерживаемых [properties](guides/properties.md#tasks-properties). Свойства могут содержать либо фиксированные значения, либо функции, которые будут вызываться для каждой задачи в наборе данных при вызове экспорта.
 
-- **data** - (object) позволяет указать собственный источник данных для выводимой Gantt-диаграммы.
+- **data** - (object) позволяет задать пользовательский источник данных, который будет представлен в выходной диаграмме Gantt. 
 
 :::note
-Ожидается, что **start_date** и **end_date** будут содержать дату и время (*%d-%m-%Y %H:%i*).
+Ожидается, что свойства **start_date** и **end_date** будут указаны в формате, который включает дату и время (*%d-%m-%Y %H:%i*).
 :::
 
 ~~~js
 const customData = {
     "data": [
-        { "id": "10", "text": "Project #5", "start_date": "01-04-2025 00:00",
-            "duration": 3, "order": 10, "progress": 0.4, "open": true,
-            "end_date": "04-04-2025 00:00", "parent": 0
+        { "id": "10", "text": "Project #5", "start_date": "01-04-2025 00:00", 
+            "duration": 3, "order": 10, "progress": 0.4, "open": true, 
+            "end_date": "04-04-2025 00:00", "parent": 0 
         },
-        { "id": "1", "text": "Task #67", "start_date": "02-04-2025 00:00",
-            "duration": 2, "order": 10, "progress": 0.6, "parent": "10",
-            "end_date": "04-04-2025 00:00"
+        { "id": "1", "text": "Task #67", "start_date": "02-04-2025 00:00", 
+            "duration": 2, "order": 10, "progress": 0.6, "parent": "10", 
+            "end_date": "04-04-2025 00:00" 
         },
-        { "id": "2", "text": "Task #89", "start_date": "01-04-2025 00:00",
-            "duration": 2, "order": 20, "progress": 0.6, "parent": "10",
-            "end_date": "03-04-2025 00:00"
+        { "id": "2", "text": "Task #89", "start_date": "01-04-2025 00:00", 
+            "duration": 2, "order": 20, "progress": 0.6, "parent": "10", 
+            "end_date": "03-04-2025 00:00" 
         },
     ],
     "links": [
@@ -223,12 +203,9 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
+**Связанный пример**: [Gantt. Export custom data](https://snippet.dhtmlx.com/10ytgdxs)
 
-**Related example:** [Gantt. Export custom data](https://snippet.dhtmlx.com/10ytgdxs)
-
-))
-
-- **callback** - (function) позволяет получить URL для скачивания сгенерированного XML-файла. Функция обратного вызова получает JSON-объект с полем *url*:
+- **callback** - (function) Если вы хотите получить URL для загрузки сгенерированного XML, можно использовать свойство *callback*. Он принимает JSON-объект с свойством *url*:
 
 ~~~js
 gantt.exportToPrimaveraP6({
@@ -237,33 +214,33 @@ gantt.exportToPrimaveraP6({
     }
 });
 ~~~
-
-- **resources** - (array) позволяет экспортировать список ресурсов в файл Primavera P6.
+ 
+- **resources** - (array) позволяет экспортировать список ресурсов в файл Primavera P6
 
 ~~~js
 gantt.exportToPrimaveraP6({
     resources: [
-        {"id":"1","name":"John","type":"work"},
-        {"id":"2","name":"Mike","type":"work"},
-        {"id":"3","name":"Anna","type":"work"}
+        { "id": "1", "name": "John", "type": "work" },
+        { "id": "2", "name": "Mike", "type": "work" },
+        { "id": "3", "name": "Anna", "type": "work" }
     ]
 });
 ~~~
 
-Типы ресурсов могут быть "work", "cost" или "material". Назначения ресурсов указываются через свойство **ResourceAssignments** в конфигурации задач:
+Возможные типы ресурсов — "work", "cost", "material". Назначения ресурсов задаются с помощью свойства **ResourceAssignments** конфигурации задач:
 
-~~~js
-var users = [// ресурсы
-    {key:'0', label: "N/A"},
-    {key:'1', label: "John"},
-    {key:'2', label: "Mike"},
-    {key:'3', label: "Anna"}
+~~~js {23-25}
+var users = [// resources
+    { key: '0', label: "N/A" },
+    { key: '1', label: "John" },
+    { key: '2', label: "Mike" },
+    { key: '3', label: "Anna" }
 ];
 
 gantt.exportToPrimaveraP6({
     resources: users
         .filter(function(u){
-            if(u.key === '0')//пропустить вариант по умолчанию
+            if(u.key === '0')//skip the default option 
                 return false;
             return true;
         })
@@ -275,14 +252,14 @@ gantt.exportToPrimaveraP6({
                };
           }),
     tasks: {
-        ResourceAssignments: function(task){  /*!*/
-            return task.user;                   /*!*/
-        }                                       /*!*/
+        ResourceAssignments: function(task){  
+            return task.user;                   
+        }                                       
     }
 });
 ~~~
 
-Свойство **ResourceAssignments** может быть функцией, получающей объект задачи и возвращающей строку/число или массив строк/чисел:
+Свойство **ResourceAssignments** устанавливается как функция, которая принимает объект задачи в качестве параметра и возвращает либо строковое/числовое значение, либо массив значений строк/чисел:
 
 ~~~js
 tasks: {
@@ -292,44 +269,74 @@ tasks: {
 }
 ~~~
 
+**Связанный пример**: [Export Gantt with resources to Primavera P6](https://snippet.dhtmlx.com/6bfbwp8g)
 
-**Related example:** [Export Gantt with resources to Primavera P6](https://snippet.dhtmlx.com/6bfbwp8g)
+Можно указать параметр *units* для назначений ресурсов, возвращая следующий объект в свойстве **ResourceAssignments**:
 
+~~~js
+{
+    resource_id: "id",
+    units: "units value"
+}
+~~~
 
-- **server** - (string) задаёт API-эндпоинт для запроса экспорта. Это может быть полезно, если у вас установлен локальный сервис экспорта. По умолчанию - **https://export.dhtmlx.com/gantt**.
+- **resource calendars**
+
+По умолчанию каждому заданию добавляется некоторый календарь. Если используются календари ресурсов, необходимо указать -1 для задачи в свойстве 
+CalendarUID во время экспорта (в объекте [tasks](#export-settings)). Затем задача будет использовать календарь ресурса.
+
+При экспорте [resource calendars](api/config/resource_calendars.md) можно указать календарь ресурса в объекте массива [resources](#export-settings):
 
 ~~~js
 gantt.exportToPrimaveraP6({
-    server:"https://myapp.com/myexport/gantt"
+    resources: [
+        {
+            id: "10",
+            name: "John",
+            type: "work",
+            calendar: gantt.config.resource_calendars[10]
+        }
+    ]
+});    
+~~~
+
+
+- **server** - (string) конечная точка API для запроса. Может использоваться с локальной установкой сервиса экспорта. Значение по умолчанию: `https://export.dhtmlx.com/gantt`.
+
+~~~js
+gantt.exportToPrimaveraP6({
+    server: "https://myapp.com/myexport/gantt"
 });
 ~~~
 
 ## Импорт из Primavera P6
 
-Для преобразования XML или XER-файла отправьте POST-запрос к сервису экспорта со следующими параметрами:
+Чтобы преобразовать XML или XER файл, необходимо отправить следующий запрос на сервис экспорта:
 
- - URL запроса: **https://export.dhtmlx.com/gantt**
- - Метод: **POST**
- - Content-Type: **multipart/form-data**
+ - URL запроса - `https://export.dhtmlx.com/gantt`
+ - Метод запроса - **POST**
+ - Content-Type - **multipart/form-data**
 
 Параметры запроса:
 
  - **file** - файл Primavera P6 в формате XER или XML
- - **type** - значение "primaveraP6-parse"
- - **data** - (*необязательно*) JSON-строка с настройками импорта
+ - **type** - "primaveraP6-parse"
+ - **data** - (*опционально*) строка JSON с настройками
 
-Пример:
+Например:
 
 ~~~html
-<form action="https://export.dhtmlx.com/gantt" method="POST"
+<form action="https://export.dhtmlx.com/gantt" method="POST" 
     enctype="multipart/form-data">
     <input type="file" name="file" />
     <input type="hidden" name="type" value="primaveraP6-parse">
+    <input type="hidden" name="data" 
+        value="{ "durationUnit": "hour" }" />
     <button type="submit">Get</button>
 </form>
-~~~
+~~~ 
 
-Кроме того, можно использовать [клиентский API](api/method/importfromprimaverap6.md) следующим образом:
+Либо можно использовать [клиентское API](api/method/importfromprimaverap6.md), например так:
 
 ~~~js
 gantt.importFromPrimaveraP6({
@@ -340,18 +347,18 @@ gantt.importFromPrimaveraP6({
             gantt.clearAll();
             if (project.config.duration_unit) {
                 gantt.config.duration_unit = project.config.duration_unit;
-            }
+            }                    
             gantt.parse(project.data);
         }
-     }
+    }
 });
 ~~~
 
 
-[Import Primavera P6 file](https://docs.dhtmlx.com/gantt/samples/08_api/18_load_from_primaverap6.html)
+**Связанный пример**: [Import Primavera P6 file](https://docs.dhtmlx.com/gantt/samples/08_api/18_load_from_primaverap6.html)
 
 
-Здесь *file* должен быть объектом [File](https://developer.mozilla.org/en-US/docs/Web/API/File), содержащим XML или XER-файл проекта.
+Где *file* — это экземпляр [File](https://developer.mozilla.org/en-US/docs/Web/API/File), который должен содержать либо XML- или XER-проект.
 
 :::note
 **gantt.importFromPrimaveraP6** требует поддержки HTML5 File API.
@@ -359,28 +366,42 @@ gantt.importFromPrimaveraP6({
 
 ### Ответ
 
-Ответ возвращает JSON-объект со следующей структурой:
+Ответ будет содержать JSON следующей структуры:
 
 ~~~js
 {
     data: {},
     config: {},
     resources: [],
-    worktime: {}
+    worktime: {},
+    calendars: []
 }
 ~~~
 
-- **data** - [объект данных](guides/supported-data-formats.md#json) Gantt. Каждая задача содержит такие свойства, как *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. Даты представлены в формате "%Y-%m-%d %H:%i".
-- **config** - объект [конфигурации](api/overview/properties-overview.md) Gantt с настройками, извлечёнными из проектного файла.
-- **resources** - массив объектов ресурсов (каждый с *id*, *name* и *type*), представляющих ресурсы из проектного файла.
-- **worktime** - объект, содержащий настройки рабочего времени из календаря проекта.
-
+- **data** - (*object*) gantt [data object](guides/supported-data-formats.md). У каждой задачи есть следующие свойства: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. Даты сериализованы в формате "%Y-%m-%d %H:%i". 
+- **config** - (*object*) объект [configuration](api/overview/properties-overview.md) Gantt со настройками, полученными из файла проекта.
+- **resources** - (*array*) массив объектов (у каждого из которых следующие свойства: 
+(*id: string, name: string, type: string, calendar: string*)), представляющих список ресурсов из файла проекта.
+- **worktime** - (*object*) объект, содержащий настройки рабочего времени из календаря проекта. Может содержать следующие атрибуты:
+   - **id** - (*string | number*) необязательно, идентификатор календаря
+   - **hours** - (*array*) массив с глобальными рабочими часами, задает начало и конец часов задачи
+    - **dates** - (*array*) массив дат, который может содержать:
+        - 7 дней недели (от 0 — воскресенье до 6 — суббота), где 1/true означает рабочий день, 0/false — нерабочий день
+        - другие записи — даты 
+- **calendars** - (*array*) массив объектов конфигурации календаря для создания нового календаря. 
+    - **calendarConfig** - (*object*) объект конфигурации календаря, который может содержать следующие атрибуты:
+      - **id** - (*string | number*) необязательно, идентификатор календаря
+      - **name** - (*string*) имя календаря
+      - **hours** - (*array*) массив с глобальными рабочими часами, задает начало и конец часов задачи
+      - **dates** - (*array*) массив дат, который может содержать:
+            - 7 дней недели (от 0 — воскресенье до 6 — суббота), где 1/true означает рабочий день и 0/false — нерабочий день
+            - другие записи — даты
 
 ### Настройки импорта
 
-#### Указание единицы измерения длительности
+#### Настройка единицы продолжительности
 
-Ожидаемую единицу измерения длительности можно указать, отправив строку **durationUnit** ("minute", "hour", "day", "week", "month", "year") на сервер.
+Чтобы задать ожидаемую единицу продолжительности, строка **durationUnit** ("minute", "hour", "day", "week", "month", "year") может также быть отправлена на сервер.
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -405,9 +426,9 @@ gantt.importFromPrimaveraP6({
 
 #### Получение свойств проекта
 
-Чтобы получить определённые поля проекта, отправьте на сервер параметр **projectProperties** с массивом нужных полей. Это извлечёт свойства из [Project entity](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))" в свойство **config** ответа. Список поддерживаемых [свойств](guides/properties.md#projectproperties) приведён в документации.
+Чтобы получить поля проекта, на сервер можно отправить входной параметр **projectProperties** с массивом необходимых полей. Он извлекает произвольные свойства сущности [Project](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)) в свойство config выходного файла. Ниже приведен список поддерживаемых [свойств](guides/properties.md#project-properties).
 
- - **projectProperties** - массив, определяющий, какие свойства проекта включить в ответ.
+ - **projectProperties** - задает массив свойств проекта, которые должны попасть в ответ.
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -436,9 +457,10 @@ gantt.importFromPrimaveraP6({
 
 #### Получение свойств задач
 
-Чтобы импортировать определённые поля задач, отправьте на сервер параметр **taskProperties** с массивом нужных полей. Это позволит извлечь свойства из [Task entities](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12))." Доступные [свойства](guides/properties.md#tasksproperties) перечислены в документации.
+Чтобы получить поля задач, можно отправить на сервер входной параметр **taskProperties** с массивом необходимых полей. Он извлекает произвольные свойства сущностей [Task](https://learn.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb968652(v=office.12)). Ниже приведен список поддерживаемых [свойств](guides/properties.md#tasks-properties):
 
- - **taskProperties** - массив, определяющий дополнительные свойства задач для импорта.
+ - **taskProperties** - указывает массив дополнительных свойств задач для импорта.
+
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -472,12 +494,11 @@ gantt.attachEvent("onTaskLoading", function(task) {
 });
 ~~~
 
-
 #### Получение типов задач
 
-Определить тип задачи можно следующим образом: задачи с пометкой **Project** имеют свойство `Summary: "1"`, а задачи с пометкой **Milestone** - свойство `Milestone: "1"`. При импорте данных эти свойства позволяют определить тип задачи.
+Следующая логика позволяет получить тип задачи: задачи типа Project имеют свойство Summary: "1", а задачи типа Milestone — свойство Milestone: "1". Нужно импортировать данные с этими свойствами и затем установить тип задачи в зависимости от этих свойств.
 
-Вызов функции импорта выглядит так:
+Вызов функции импорта будет выглядеть так:
 
 ~~~js
 gantt.importFromPrimaveraP6({
@@ -500,7 +521,7 @@ gantt.importFromPrimaveraP6({
 });
 ~~~
 
-После импорта вы можете задать типы задач на основе этих свойств, как показано ниже:
+После этого можно привести типы задач в соответствие с полученными свойствами следующим образом:
 
 ~~~js
 gantt.attachEvent("onTaskLoading", function (task) {
@@ -517,54 +538,184 @@ gantt.attachEvent("onTaskLoading", function (task) {
 });
 ~~~
 
+**Связанный пример**: [Gantt. Import Primavera P6 files. Get task type from properties](https://snippet.dhtmlx.com/y95rsxor)
 
-**Related example:** [Gantt. Import Primavera P6 files. Get task type from properties](https://snippet.dhtmlx.com/y95rsxor)
+#### Добавление и настройка календарей
 
-))
-
-## Ограничения на размер запроса и импорт больших файлов
-
-Существует два API-эндпойнта для сервисов экспорта/импорта Primavera P6:
-
-- **https://export.dhtmlx.com/gantt** - основной эндпойнт, используемый для всех методов экспорта (*exportToPDF*, *exportToPNG*, *exportToPrimaveraP6*, *importFromPrimaveraP6* и др.). Максимальный размер запроса - **10 МБ**.
-- **https://export.dhtmlx.com/gantt/project** - эндпойнт, предназначенный для сервисов экспорта/импорта [MSProject](guides/export-msproject.md) и [Primavera P6](guides/export-primavera.md) (*exportToMSProject*, *importFromMSProject*, *exportToPrimaveraP6*, *importFromPrimaveraP6*). Этот эндпойнт поддерживает запросы до **40 МБ**.
-
-Указать эндпойнт можно через свойство **server** в объекте конфигурации экспорта:
-
-~~~js
-gantt.importFromPrimaveraP6({
-    server:"https://export.dhtmlx.com/gantt",
-    data: file,
-    callback: function(project){
-       // some logic
-    }
-}); 
-~~~
-
-Если эндпойнт не указан, по умолчанию используется <b>https://export.dhtmlx.com/gantt</b>. Следующий вызов работает аналогично:
+Обратите внимание, что календари не добавляются автоматически во время импорта. Их нужно добавить с помощью метода [addCalendar()](api/method/addcalendar.md). 
+После этого следует задать настройки календаря через метод [setWorkTime()](api/method/setworktime.md). Например:
 
 ~~~js
 gantt.importFromPrimaveraP6({
     data: file,
-    callback: function(project){
-       // some logic
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // настройки для добавления календарей
+            project.calendars.forEach(function (calendar) {
+                let addedCalendar;
+                // добавление настроек рабочего времени для глобального календаря
+                if (calendar.id == project.config.global_calendar_id) {
+                    addedCalendar = gantt.getCalendar("global");
+                }
+                else {
+                    // Gantt не добавляет календарь, 
+                    // если параметр `hours` пустой массив
+                    let calendarHours = calendar.hours;
+                    if (!calendarHours.length) {
+                        calendarHours = undefined
+                    }
+                    gantt.addCalendar({
+                        id: calendar.id,
+                        hours: calendarHours,
+                        name: calendar.name
+                    });
+
+                    addedCalendar = gantt.getCalendar(calendar.id);
+                }
+                const worktimeDates = calendar.dates;
+                for (let element in worktimeDates) {
+                    const date = new Date(+element)
+                    if (element < 10) {
+                        addedCalendar.setWorkTime({ 
+                            day: element, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                    else {
+                        addedCalendar.setWorkTime({ 
+                            date: date, 
+                            hours: worktimeDates[element] 
+                        })
+                    }
+                }
+            })
+        }
     }
 });
 ~~~
 
-Для обработки больших проектов, превышающих лимит в 4 МБ, используйте второй эндпойнт:
+**Связанный пример**: [Gantt. Calendars settings for export/import in MSProject and Primavera P6](https://snippet.dhtmlx.com/668xqts7)
+
+#### Календари ресурсов
+
+Если есть календари ресурсов, их нужно задать через свойство gantt.config.resource_calendars:
 
 ~~~js
 gantt.importFromPrimaveraP6({
-    server:"https://export.dhtmlx.com/gantt/project",
+    data: file,
+    taskProperties: ["Notes", "Name"],
+    callback: function (project) {
+        if (project) {
+            // настройки календарей
+            project.calendars.forEach(function (calendar) {
+                // добавление календарей и настроек рабочего времени для них 
+            })
+
+            // настройки календарей ресурсов
+            gantt.config.resource_calendars = {}
+
+            project.resources.forEach(function (resource) {
+                if (resource.calendar) {
+                    gantt.config.resource_calendars[resource.id] = resource.calendar;
+                }
+            })
+        }
+    }
+});
+~~~
+
+**Связанный пример**: [Gantt. Resource calendars settings for export/import in MSProject and Primavera P6](https://snippet.dhtmlx.com/10czv54b)
+
+#### Ресурсы и назначения ресурсов
+
+Если в файле есть ресурсы, они приходят в массиве **resources** во время импорта. параметр *calendar* свойства 
+**resources** задает календарь ресурса:
+
+~~~js
+{
+    resources: [
+        { id: 6, name: "John", type: "work", calendar: "8" },
+        // more resources
+    ]
+}
+~~~
+
+Если есть назначения ресурсов, они будут импортированы в массиве **assignments**, где объект назначения содержит параметры *resource_id: string* и *value: number*. Например:
+
+~~~js
+{
+    tasks: [
+        {
+            id: 5,
+            text: "Interior office",
+            type: "task",
+            start_date: "03-04-2024 00:00",
+            duration: 7,
+            parent: "2",
+            priority: 1
+        },
+        // more tasks
+    ],
+    links: [],
+    assignments: [
+        { id: 1, task_id: 5, resource_id: 6, value: 3},
+        // more assignments
+    ],
+    resources: [
+        { id: 6, text: "John", unit: "hours/day" },
+        { id: 7, text: "Mike", unit: "hours/day" },
+        // more resources
+    ]
+}
+~~~
+
+
+
+## Ограничения на размер запроса и импорт больших файлов
+
+Существуют два API-эндпойнта для сервисов экспорта/импорта Primavera P6:
+
+- `https://export.dhtmlx.com/gantt` - дефолтный эндпойнт, обслуживающий все методы экспорта (*exportToPDF*, *exportToPNG*, *exportToPrimaveraP6*, и т.д.). **Максимальный размер запроса — 10 МБ**.
+- `https://export.dhtmlx.com/gantt/project` - эндпойнт, специфичный для [MSProject](guides/export-msproject.md) и 
+[Primavera P6](guides/export-primavera.md) 
+экспорта/импорта (*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6* только). **Максимальный размер запроса: 40 МБ**.
+
+Эндпойнт можно задать через свойство **server** конфигурационного объекта экспорта:
+
+~~~js
+gantt.importFromPrimaveraP6({
+    server: "https://export.dhtmlx.com/gantt",
     data: file,
     callback: function(project){
-       // some logic
+       // какая-то логика
     }
 }); 
 ~~~
 
-Этот эндпойнт принимает запросы до 40 МБ и поддерживает как экспорт, так и импорт для Primavera P6. Он предназначен специально для экспорта и импорта Primavera P6.
+Если эндпойнт не указан, по умолчанию используется `https://export.dhtmlx.com/gantt`. Следующий вызов эквивалентен приведённому выше:
 
-Обратите внимание, что другие методы, например *gantt.exportToPDF((server:"https://export.dhtmlx.com/gantt/project"))*, приведут к ошибке сервера.
+~~~js
+gantt.importFromPrimaveraP6({
+    data: file,
+    callback: function(project){
+       // какая-то логика
+    }
+});
+~~~
 
+Чтобы экспортировать или импортировать крупные проекты, превышающие лимит 4 МБ, можно использовать второй эндпойнт:
+
+~~~js
+gantt.importFromPrimaveraP6({
+    server: "https://export.dhtmlx.com/gantt/project",
+    data: file,
+    callback: function(project){
+       // какая-то логика
+    }
+}); 
+~~~
+
+Он позволяет отправлять запросы размером до 40 МБ и поддерживает экспорты и импорты Primavera P6. Его можно использовать только для экспорта Primavera P6.
+
+Любые другие методы, например, `gantt.exportToPDF({server:"https://export.dhtmlx.com/gantt/project"})` должны возвращать ошибку сервера.

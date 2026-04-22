@@ -1,23 +1,23 @@
 ---
 sidebar_label: isTaskVisible
-title: isTaskVisible method
-description: "определяет, отображается ли указанная задача в данный момент на диаграмме Ганта"
+title: isTaskVisible метод
+description: "проверяет, отображается ли указанная задача в текущей диаграмме Ганта"
 ---
 
 # isTaskVisible
 
 ### Description
 
-@short: Определяет, отображается ли указанная задача в данный момент на диаграмме Ганта
+@short: Проверяет, отображается ли указанная задача в диаграмме Ганта в данный момент
 
 @signature: isTaskVisible: (id: string | number) =\> boolean
 
 ### Parameters
 
-- `id` - (required) *string | number* -        уникальный идентификатор задачи
+- `id` - (required) *string | number* - идентификатор задачи
 
 ### Returns
-- ` isvisible` - (boolean) - <i>true</i>, если задача в данный момент показана на диаграмме Ганта; иначе <i>false</i>
+- ` isvisible` - (boolean) - <i>true</i>, если задача в данный момент отображается на диаграмме Ганта. В противном случае, <i>false</i>
 
 ### Example
 

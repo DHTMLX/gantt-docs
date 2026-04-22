@@ -1,14 +1,14 @@
 ---
 sidebar_label: open_tree_initially
-title: open_tree_initially config
-description: "öffnet standardmäßig alle Zweige"
+title: open_tree_initially Konfiguration
+description: "öffnet zu Beginn alle Verzweigungen"
 ---
 
 # open_tree_initially
 
 ### Description
 
-@short: Öffnet standardmäßig alle Zweige
+@short: Öffnet zu Beginn alle Verzweigungen
 
 @signature: open_tree_initially: boolean
 
@@ -20,4 +20,4 @@ gantt.config.open_tree_initially = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false

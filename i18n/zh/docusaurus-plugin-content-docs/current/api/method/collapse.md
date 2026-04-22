@@ -1,16 +1,16 @@
 ---
 sidebar_label: collapse
-title: collapse method
-description: "将甘特图视图从全屏模式切换回常规模式"
+title: collapse 方法
+description: "将甘特图从全屏模式折叠回普通模式"
 ---
 
 # collapse
 
 ### Description
 
-@short: 将甘特图视图从全屏模式切换回常规模式
+@short: 将甘特图从全屏模式折叠回普通模式
 
-@signature: collapse: () =\> void
+@signature: collapse: () => void
 
 ### Example
 
@@ -24,7 +24,7 @@ gantt.collapse();
 ### Details
 
 :::note
- 此方法来自 **fullscreen** 扩展，因此请确保通过 [gantt.plugins](api/method/plugins.md) 方法启用 [fullscreen](guides/extensions-list.md) 插件。更多详情请参见 [全屏模式](guides/fullscreen-mode.md) 文章。 
+此方法在 **fullscreen** 扩展中定义，因此您需要使用 [gantt.plugins](api/method/plugins.md) 方法来激活 [fullscreen](guides/extensions-list.md#fullscreen) 插件。有关详细信息，请阅读 [Full Screen Mode](guides/fullscreen-mode.md) 文章。 
 :::
 
 ### Related API
@@ -35,5 +35,4 @@ gantt.collapse();
 - [onCollapse](api/event/oncollapse.md)
 
 ### Related Guides
-- [全屏模式](guides/fullscreen-mode.md)
-
+- [Full Screen Mode](guides/fullscreen-mode.md)

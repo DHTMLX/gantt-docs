@@ -1,6 +1,6 @@
 ---
 sidebar_label: eachSelectedTask
-title: eachSelectedTask method
+title: eachSelectedTask 方法
 description: "遍历甘特图中所有被选中的任务"
 ---
 
@@ -14,7 +14,7 @@ description: "遍历甘特图中所有被选中的任务"
 
 ### Parameters
 
-- `code` - (required) *function* - 一个将对每个被选中任务执行的函数。该函数接收任务ID作为参数
+- `code` - (required) *function* - 一个将遍历任务的函数。该函数接收一个任务 ID 作为参数
 
 ### Example
 
@@ -28,12 +28,12 @@ gantt.batchUpdate(function () {
 ~~~
 
 ### Related samples
-- [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+- [多选和缩进/取消缩进任务](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 ### Details
 
 :::note
- 此方法是 **multiselect** 扩展的一部分，因此请确保启用 [multiselect](guides/extensions-list.md#duorenwuxuanze) 插件。更多详情请参阅 [多任务选择](guides/multiselection.md) 文章。 
+此方法在 **multiselect** 扩展中定义，因此你需要启用 [multiselect](guides/extensions-list.md#multitaskselection) 插件。请在 [Multi-Task Selection](guides/multiselection.md) 文章中了解详细信息。
 :::
 
 ### Related API
@@ -48,4 +48,3 @@ gantt.batchUpdate(function () {
 
 ### Related Guides
 - [多任务选择](guides/multiselection.md)
-

@@ -1,23 +1,23 @@
 ---
 sidebar_label: onBeforeRowResize
 title: onBeforeRowResize event
-description: "Wird ausgelöst, kurz bevor der Benutzer beginnt, die Zeilenhöhe per Drag-and-Drop zu ändern."
+description: "Wird ausgelöst, bevor der Benutzer beginnt, die Zeilenhöhe per Drag-and-Drop anzupassen"
 ---
 
 # onBeforeRowResize
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor der Benutzer beginnt, die Zeilenhöhe per Drag-and-Drop zu ändern.
+@short: Wird ausgelöst, bevor der Benutzer beginnt, die Zeilenhöhe per Drag-and-Drop anzupassen
 
 @signature: onBeforeRowResize: (task: Task) =\> boolean;
 
 ### Parameters
 
-- `task` - (required) *Task* - Das Task-Objekt
+- `task` - (required) *Task* - das Task-Objekt
 
 ### Returns
-- ` param` - (boolean) - Gibt an, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- ` param` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
@@ -33,7 +33,7 @@ gantt.attachEvent("onBeforeRowResize", function (task) {
 
 ### Details
 
-Dieses Event kann blockiert werden. Wird *false* zurückgegeben, wird die Änderung der Zeilenhöhe verhindert.
+Das Event kann blockiert werden. Die Rückgabe von *false* verhindert, dass die Zeilenhöhe angepasst wird.
 
 ### Related API
 - [resize_rows](api/config/resize_rows.md)
@@ -42,5 +42,4 @@ Dieses Event kann blockiert werden. Wird *false* zurückgegeben, wird die Änder
 - [onAfterRowResize](api/event/onafterrowresize.md)
 
 ### Change log
-- hinzugefügt in v7.1
-
+- in Version 7.1 hinzugefügt

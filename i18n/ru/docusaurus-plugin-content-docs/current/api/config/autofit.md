@@ -1,14 +1,14 @@
 ---
 sidebar_label: autofit
-title: autofit config
-description: "Автоматически подгоняет ширину колонок grid под ширину grid"
+title: конфигурация autofit
+description: "включает автоматическую подстройку столбцов grid под ширину grid"
 ---
 
 # autofit
 
 ### Description
 
-@short: Автоматически подгоняет ширину колонок grid под ширину grid
+@short: Включает автоматическую подстройку столбцов grid под ширину grid
 
 @signature: autofit: boolean
 
@@ -19,7 +19,7 @@ gantt.config.autofit = true;
 gantt.config.grid_width = 500;
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Details
 
@@ -27,4 +27,3 @@ gantt.config.grid_width = 500;
 
 ### Related API
 - [grid_width](api/config/grid_width.md)
-

@@ -1,16 +1,16 @@
 ---
 sidebar_label: onAfterLightbox
-title: onAfterLightbox event
-description: "срабатывает один раз, когда пользователь закрывает лайтбокс (форму редактирования)"
+title: onAfterLightbox событие
+description: "срабатывает после того, как пользователь закрыл lightbox (форма редактирования)"
 ---
 
 # onAfterLightbox
 
 ### Description
 
-@short: Срабатывает один раз, когда пользователь закрывает лайтбокс (форму редактирования)
+@short: Срабатывает после того, как пользователь закрыл lightbox (форма редактирования)
 
-@signature: onAfterLightbox: () =\> void;
+@signature: onAfterLightbox: () => void;
 
 ### Example
 

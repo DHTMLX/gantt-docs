@@ -1,39 +1,38 @@
 ---
 sidebar_label: onTaskMultiSelect
-title: onTaskMultiSelect event
-description: "当任务的选中状态发生变化时触发（任务被选中或取消选中时）"
+title: onTaskMultiSelect 事件
+description: "当任务选择状态发生变化后触发（任务已被选中/取消选中）"
 ---
 
 # onTaskMultiSelect
 
 ### Description
 
-@short: 当任务的选中状态发生变化时触发（任务被选中或取消选中时）
+@short: 任务选择状态已更改后触发（任务已被选中/取消选中）
 
 @signature: onTaskMultiSelect: (id: string | number, state: boolean, e: Event) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 任务的标识符
-- `state` - (required) *boolean* - 如果任务被选中则为 true，取消选中则为 false
-- `e` - (required) *Event* - 原生事件对象
+- `id` - (required) *string | number* - 任务的 ID
+- `state` - (required) *boolean* - true 表示任务已被选中，false 表示未选中
+- `e` - (required) *Event* - 一个原生事件对象
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskMultiSelect", function(id, state, e){
-    // 一些逻辑处理
+    // 在这里插入您的自定义逻辑 
 });
 ~~~
 
 ### Details
 
 :::note
- 该事件属于**multiselect**扩展，因此请确保启用了[multiselect](guides/extensions-list.md)插件。更多信息请参见[多任务选择](guides/multiselection.md)文章。 
+此事件在 **multiselect** 扩展中定义，因此需要启用 [multiselect](guides/extensions-list.md#multitaskselection) 插件。请在 [Multi-Task Selection](guides/multiselection.md) 文章中阅读详情。
 :::
 
-
-此事件会针对选中范围内的每个任务触发。
+该事件会对范围内的每个任务进行调用。
 
 ### Related API
 - [onBeforeMultiSelect](api/event/onbeforemultiselect.md)
@@ -41,5 +40,4 @@ gantt.attachEvent("onTaskMultiSelect", function(id, state, e){
 - [onMultiSelect](api/event/onmultiselect.md)
 
 ### Related Guides
-- [多任务选择](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md#apievents)

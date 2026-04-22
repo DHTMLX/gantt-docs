@@ -1,6 +1,6 @@
 ---
 sidebar_label: onBeforeTaskDelete
-title: onBeforeTaskDelete event
+title: onBeforeTaskDelete 事件
 description: "在用户删除任务之前触发"
 ---
 
@@ -14,25 +14,24 @@ description: "在用户删除任务之前触发"
 
 ### Parameters
 
-- `id` - (required) *string | number* - 任务ID
-- `task` - (required) *Task* - 任务对象
+- `id` - (必填) *string | number* - 任务 id
+- `task` - (必填) *Task* - 任务对象
 
 ### Returns
-- ` result` - (boolean) - 决定默认事件动作是否继续执行（<b>true</b>）或被阻止（<b>false</b>）
+- `result` - (boolean) - 定义事件的默认行为是否会被触发（<b>true</b>）还是被取消（<b>false</b>）
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskDelete", function(id,task){
-    // 可以在这里添加自定义逻辑
+    //在此处执行任意自定义逻辑
     return true;
 });
 ~~~
 
 ### Details
 
-此事件可以被阻止。返回false将防止任务被删除。
+该事件是可阻塞的。返回 false 以取消删除该任务。
 
 ### Related API
 - [deleteTask](api/method/deletetask.md)
-

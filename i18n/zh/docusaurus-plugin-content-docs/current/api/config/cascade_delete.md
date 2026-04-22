@@ -1,14 +1,14 @@
 ---
 sidebar_label: cascade_delete
 title: cascade_delete config
-description: "允许在删除父任务时自动删除嵌套的子任务和链接"
+description: "启用嵌套任务和链接的级联删除"
 ---
 
 # cascade_delete
 
 ### Description
 
-@short: 允许在删除父任务时自动删除嵌套的子任务和链接
+@short: 启用嵌套任务和链接的级联删除
 
 @signature: cascade_delete: boolean
 
@@ -19,11 +19,11 @@ gantt.config.cascade_delete = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**默认值：** true
 
 ### Details
 
-在版本 4.2 中引入
+在 4.2 版本中新增
 
 ### Related Guides
 - [任务的基本操作](guides/crud-task.md)

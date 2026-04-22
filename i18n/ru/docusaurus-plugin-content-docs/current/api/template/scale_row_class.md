@@ -1,23 +1,23 @@
 ---
 sidebar_label: scale_row_class
-title: scale_row_class template
-description: "определяет CSS-класс, применяемый к шкале времени"
+title: шаблон scale_row_class
+description: "указывает CSS класс, который будет применяться к временной шкале"
 ---
 
 # scale_row_class
 
 ### Description
 
-@short: Определяет CSS-класс, применяемый к шкале времени
+@short: Указывает CSS класс, который будет применяться к временной шкале
 
-@signature: scale_row_class: (scale: Scale) =\> string | void;
+@signature: scale_row_class: (scale: Scale) => string | void;
 
 ### Parameters
 
-- `scale` - (required) *Scale* - объект конфигурации для шкалы
+- `scale` - (required) *Scale* - объект конфигурации шкалы
 
 ### Returns
-- ` text` - (string | void) - CSS-класс, назначенный соответствующему элементу
+- `text` - (string | void) - CSS-класс для данного элемента
 
 ### Example
 
@@ -47,5 +47,4 @@ gantt.templates.scale_row_class = function(scale){
 - [scale_cell_class](api/template/scale_cell_class.md)
 
 ### Related Guides
-- [Шаблоны области временной шкалы](guides/timeline-templates.md)
-
+- [Templates of the Timeline Area](guides/timeline-templates.md)

@@ -1,14 +1,18 @@
 ---
 sidebar_label: prevent_default_scroll
-title: prevent_default_scroll config
-description: "控制 gantt 容器是否阻止 mousewheel 事件，或允许其传播到 window 元素"
+title: prevent_default_scroll 配置
+description: "指定甘特图容器应阻止鼠标滚轮事件，还是应将该事件向上传递至 window 元素"
 ---
 
 # prevent_default_scroll
 
+:::warning
+該屬性已棄用。
+:::
+
 ### Description
 
-@short: 控制 gantt 容器是否阻止 mousewheel 事件，或允许其传播到 window 元素
+@short: 指定甘特图容器是否应阻止鼠标滚轮事件，还是应将该事件向上传递至 window 元素
 
 ### Example
 
@@ -17,17 +21,14 @@ gantt.config.prevent_default_scroll = false;
 gantt.init('gantt_here');
 ~~~
 
-**Default value:** false
+**默认值：** false
 
 ### Details
 
-:::note
- 此属性已被废弃。 
-:::
+该选项在以下情景中非常有用：当甘特图被插入到页面中间，并且页面外部还有其他内容时。
 
-当 gantt 放置在页面中间且周围有其他内容时，此设置非常实用。
-
-禁用时，gantt 内部的滚动条将保持可见。若要滚动页面的其他部分，用户需要点击 gantt 区域外部。
+如果禁用此选项，甘特图中出现的滚轮滚动将停留在那儿。
+要滚动页面的其他部分，用户需要在甘特图外部单击一下。
 
 ### Change log
-- 从 v5.0 起废弃
+- 自 v5.0 起已弃用

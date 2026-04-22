@@ -15,8 +15,7 @@ description: "specifies JSON serialization and parsing"
 ### Example
 
 ~~~jsx
-var obj = gantt.json; // -> { parse(data){... 
-:::
+const obj = gantt.json; // -> { parse(data){... }}
 ~~~
 
 ### Details

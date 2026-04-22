@@ -1,23 +1,27 @@
 ---
 sidebar_label: getResourceCalendar
-title: getResourceCalendar method
-description: "ruft den Kalender ab, der einem bestimmten Resource zugewiesen ist"
+title: getResourceCalendar Methode
+description: "gibt einen Kalender zurück, dem die Ressource zugewiesen ist"
 ---
 
 # getResourceCalendar
 
+:::info
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
+:::
+
 ### Description
 
-@short: Ruft den Kalender ab, der einem bestimmten Resource zugewiesen ist
+@short: Gibt einen Kalender zurück, dem die Ressource zugewiesen ist
 
-@signature: getResourceCalendar: (resource: any) =\> any
+@signature: getResourceCalendar: (resource: string | number | object) =\> any
 
 ### Parameters
 
-- `resource` - (required) *string | number | object* -        die ID der Resource oder das Resource-Objekt selbst
+- `resource` - (erforderlich) *string | number | object* -        die ID oder das Objekt der Ressource
 
 ### Returns
-- ` param` - (object) - das Kalenderobjekt, das mit der Resource verknüpft ist
+- ` param` - (object) - das Kalender-Objekt
 
 ### Example
 
@@ -27,16 +31,11 @@ var calendar = gantt.getResourceCalendar(mikeCalendarId);
 
 ### Details
 
-:::note
- Dieses Feature ist nur in der PRO Edition verfügbar. 
-:::
-
 ### Related API
 - [resource_calendars](api/config/resource_calendars.md)
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md#assigningcalendartoresource)
+- [Work Time Calculation](guides/working-time.md#assigningcalendartoresource)
 
 ### Change log
 - hinzugefügt in v7.0
-

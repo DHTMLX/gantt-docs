@@ -5,21 +5,20 @@ sidebar_label: "quickInfo 扩展"
 
 # quickInfo 扩展
 
-关于 quickInfo 扩展的更多信息，请参见 [퀵 인포 (터치 지원)](guides/quick-info.md) 文章。
+请阅读关于 quickInfo 扩展的详细信息，参见 [Quick Info (Touch Support)](guides/quick-info.md) 文章。
 
-
-*quickInfo* 对象提供以下 API:
+The *quickInfo* 对象具有以下 API：
 
 ## 方法
 
-- <span class="submethod">**show (id): void**</span> - 为指定元素打开 quick info 弹窗
+- <span class="submethod">**show (id): void**</span> - 显示指定元素的快速信息弹出框
     - **_id_** - (*number | string*) - 任务 ID
-
+ 
 ~~~js
 gantt.ext.quickInfo.show("1");
 ~~~
 
-- <span class="submethod">**show (x, y): void**</span> - 在指定坐标处打开 quick info 弹窗
+- <span class="submethod">**show (x, y): void**</span>  - 在特定坐标显示快速信息弹出框
     - **_x_** - (*number | string*) - 水平坐标
     - **_y_** - (*number | string*) - 垂直坐标
 
@@ -27,21 +26,22 @@ gantt.ext.quickInfo.show("1");
 gantt.ext.quickInfo.show(10,30);
 ~~~
 
-- <span class="submethod">**hide (force): HTMLElement**</span> - 关闭 quick info 弹窗。如果 **gantt.config.quick_info_detached** 设置为 *false*，弹窗将在短暂动画后消失。传递 *true* 作为参数则会跳过动画，立即移除弹窗。
-    - **_force?_** - (*boolean*) - 是否立即隐藏弹窗（无动画）
+- <span class="submethod">**hide (force): HTMLElement**</span> - 隐藏快速信息弹出框。当 **gantt.config.quick_info_detached** 设置为 *false* 时，快速信息不会立即消失，而是在短暂动画后消失。提供 *true* 作为参数将取消动画并立即移除弹出框。
+    - **_force?_** - (*boolean*) - 定义是否在没有动画的情况下立即隐藏快速信息弹出框
+
 
 ~~~js
 gantt.config.quick_info_detached = false;
 gantt.init("gantt_here");
  
-// 通过短暂动画隐藏弹窗
+// 在短暂动画后隐藏弹出框
 gantt.ext.quickInfo.hide();
  
-// 立即隐藏弹窗
+// 立即隐藏弹出框
 gantt.ext.quickInfo.hide(true);
 ~~~
 
-- <span class="submethod">**setContainer (container): void**</span> - 指定 quick info 显示的容器。如果未提供容器，QuickInfo 会插入到以下节点中的第一个可用节点:**gantt.$task, gantt.$grid, gantt.$root**
+- <span class="submethod">**setContainer (container): void**</span> - 设置将显示快速信息的容器。如果未指定自定义容器，QuickInfo 将被放置在找到的节点中的第一个节点：**gantt.$task, gantt.$grid, gantt.$root**
     - **_container_** - (*HTMLElement | string*) - 容器元素或其 ID
 
 ~~~js
@@ -50,30 +50,30 @@ gantt.ext.quickInfo.show(1300,100);
 
 ~~~
 
-- <span class="submethod">**getNode (): HTMLElement | null**</span> - 获取 quick info 弹窗的 HTMLElement。如果 quick info 尚未初始化，则返回 *null*
+- <span class="submethod">**getNode (): HTMLElement | null**</span> - 返回快速信息弹出框的 HTMLElement。若快速信息未初始化，则返回 *null*
 
 ~~~js
 const node = gantt.ext.quickInfo.getNode();
 ~~~
 
-显示的 quick info 的 DOM 元素如下所示:
+显示的快速信息返回的 DOM 元素看起来像：
 
 ![quick_node](/img/quick_node.png)
 
-- <span class="submethod">**setContent (config): void**</span> - 填充 quick info 的内容
-    - **_config?_** - (*object*) - quick info 的可选配置对象，可能包含:
-        - **_taskId?_** - (*string | number*) - 可选，与 quick info 操作按钮关联的任务 id
-        - **_header?_** - (*object*) - 可选，弹窗编辑表单的头部，可以包含:
-            - **_title?_** - (*string*) - 可选，弹窗编辑表单的标题
-            - **_date?_** - (*string*) - 可选，弹窗编辑表单的日期
-        - **_content?_** - (*string*) - 可选，弹窗编辑表单的内容
-        - **_buttons?_** - (*string[]*) - 可选，弹窗编辑表单中显示的按钮
+- <span class="submethod">**setContent (config): void**</span> - 将内容放入快速信息中
+    - **_config?_** - (*object*) - 可选，快速信息的配置对象，可以包含下列属性:
+        - **_taskId?_** - (*string | number*) - 可选，快速信息操作按钮所连接的任务的 ID
+        - **_header?_** - (*object*) - 可选，弹出式编辑表单的头部，可能包含:
+            - **_title?_** - (*string*) - 可选，弹出式编辑表单的标题
+            - **_date?_** - (*string*) - 可选，弹出式编辑表单的日期
+        - **_content?_** - (*string*) - 可选，弹出式编辑表单的内容
+        - **_buttons?_** - (*string[]*) - 可选，放置在弹出式编辑表单中的按钮
   
 
 
-如果 header 和 buttons 都未设置，quick info 弹窗对应的部分将被隐藏。
+如果未指定 header 也未指定 buttons，快速信息弹出框的相关区域将被隐藏。
 
-**setContent** 方法的配置对象示例:
+以下是 **setContent** 方法的配置对象可以如何书写：
 
 ~~~js
 const quickInfo = gantt.ext.quickInfo;
@@ -90,9 +90,9 @@ quickInfo.setContent({
 });
 ~~~
 
-另外，
+或
 
-可以创建不带 header 和按钮的自定义弹窗:
+你也可以创建一个没有 header 和 buttons 的自定义弹出框：
 
 ~~~js
 const quickInfo = gantt.ext.quickInfo;

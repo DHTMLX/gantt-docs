@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLightbox
 title: getLightbox method
-description: "возвращает HTML-элемент лайтбокса"
+description: "получает HTML-элемент объекта lightbox"
 ---
 
 # getLightbox
 
 ### Description
 
-@short: Возвращает HTML-элемент лайтбокса
+@short: Получает HTML-элемент объекта lightbox
 
 @signature: getLightbox: () =\> HTMLElement
 
 ### Returns
-- `box` - (HTMLElement) - HTML-элемент, представляющий лайтбокс
+- `box` - (HTMLElement) - HTML-элемент светового окна
 
 ### Example
 

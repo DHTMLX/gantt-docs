@@ -1,42 +1,46 @@
----
-title: "Zoom-Erweiterung"
-sidebar_label: "Zoom-Erweiterung"
----
+--- 
+title: "Zoom-Erweiterung" 
+sidebar_label: "Zoom-Erweiterung" 
+--- 
 
 # Zoom-Erweiterung
 
-Weitere Details zur Zoom-Erweiterung finden Sie im Artikel [Zooming](guides/zooming.md). Dieses Dokument konzentriert sich auf die API-Referenz für das **zoom**-Objekt:
+Details zur Zoom-Erweiterung finden Sie im Artikel [Zooming](guides/zooming.md).
+
+Der vorliegende Artikel enthält die API-Referenz des **zoom**-Objekts:
+
 
 ## Zoom-Stufen
 
-Die Zoom-Erweiterung arbeitet mit einer Reihe von Skaleneinstellungen, die ein schnelles Umschalten zwischen diesen ermöglichen.
+Die Zoom-Erweiterung verwendet eine Reihe von Skalen-Einstellungen und ermöglicht das schnelle Wechseln zwischen ihnen.
 
-**ZoomLevel** ist ein Objekt, das die Skaleneinstellungen repräsentiert und folgende Eigenschaften besitzt:
+**ZoomLevel** ist ein Objekt, das die Skalen-Einstellungen enthält. Es hat folgende Eigenschaften:
 
-- <span class="subproperty">**name**</span> - (*string*) - der Name, der der Stufe zugeordnet ist
+- <span class="subproperty">**name**</span> - (*string*) - der Name der Stufe
 - <span class="subproperty">**scale_height?**</span> - (*number*) - die Höhe der Skala
 - <span class="subproperty">**height?**</span> - (*number*) - die Höhe der Skala
-- <span class="subproperty">**min_column_width?**</span> - (*number*) - die minimale Spaltenbreite; hat Vorrang vor minColumnWidth und maxColumnWidth
-- <span class="subproperty">**scales**</span> - (*Scales*) - ein Array von Skalen, zwischen denen beim Hinein- oder Herauszoomen auf dieser Stufe gewechselt werden kann
+- <span class="subproperty">**min_column_width?**</span> - (*number*) - die minimale Breite einer Spalte. Sie hat eine höhere Priorität als minColumnWidth und maxColumnWidth
+- <span class="subproperty">**scales**</span> - (*Scales*) - ein Array von Skalen, zwischen denen beim Zoomen hinein/heraus auf dieser Ebene gewechselt wird
+
 
 ## Methoden
 
-- <span class="submethod">**init (zoomConfig): void**</span> - initialisiert die Erweiterung mit der angegebenen Konfiguration.
-    - **_zoomConfig_** - (*object*) - Konfigurationsobjekt, das das *levels*-Array mit den Zoom-Stufen enthält sowie mehrere optionale Eigenschaften:
-        - **_levels_** - (*ZoomLevel[]*) - erforderlich, ein Array, das die Zoom-Stufen definiert
-        - **_handler?_** - (*Function*): void - ermöglicht die Definition eines eigenen Mausrad-Handlers für die manuelle Zoom-Steuerung
-            - **_e_** - (*Event*) - das native Event-Objekt
-        - **_startDate?_** - (*Date*) - Startpunkt für das Zoomen auf der Zeitskala
-        - **_endDate?_** - (*Date*) - Endpunkt für das Zoomen auf der Zeitskala
-        - **_activeLevelIndex?_** - (*number*) - Index der standardmäßig aktiven Zoom-Stufe
-        - **_widthStep?_** - (*number*) - Schrittweite für die Breitenänderung bei Wechsel der Zoom-Stufe
-        - **_minColumnWidth?_** - (*number*) - minimale Spaltenbreite, die das Umschalten auf eine vorherige Zoom-Stufe erlaubt
-        - **_maxColumnWidth?_** - (*number*) - maximale Spaltenbreite, die das Umschalten auf die nächste Zoom-Stufe erlaubt
-        - **_useKey?_** - (*string*) - bestimmt, mit welcher Taste das Zoomen per Mausrad aktiviert wird: "ctrlKey" | "altKey" | "shiftKey"
-        - **_trigger?_** - (*string | null | undefined*) - definiert den Zoom-Auslöser: "wheel" | null | undefined 
-        - **_element?_** - (*HTMLElement | Function*): HTMLElement - das DOM-Element, das das Zoomen auslöst, oder eine Funktion, die ein solches Element zurückgibt
+- <span class="submethod">**init (zoomConfig): void**</span> - initialisiert die Erweiterung mit der übergebenen Konfiguration.
+    - **_zoomConfig_** - (*object*) - ein Objekt mit Konfigurationseinstellungen, das das *levels*-Array von Zoom-Leveln und eine Reihe zusätzlicher Eigenschaften enthält:
+        - **_levels_** - (*ZoomLevel[]*) - erforderlich, ein Array von ZoomLevel-Objekten
+        - **_handler?_** - (*Function*): void - ermöglicht das Festlegen eines benutzerdefinierten Mausrad-Handlers zur manuellen Steuerung des Zoomings
+            - **_e_** - (*Event*) - ein natives Event-Objekt.
+        - **_startDate?_** - (*Date*) - der Startwert der Zeit-Skala-Zoomung
+        - **_endDate?_** - (*Date*) - der Endwert der Zeit-Skala-Zoomung
+        - **_activeLevelIndex?_** - (*number*) - die Nummer des standardmäßig aktiven Levels
+        - **_widthStep?_** - (*number*) - der Schritt zum Erhöhen/Verringern der Breite der Skala beim Wechsel zum nächsten/vorherigen Zoom-Level
+        - **_minColumnWidth?_** - (*number*) - die minimale Breite einer Spalte, die einen Wechsel zum vorherigen Zoom-Level ermöglicht
+        - **_maxColumnWidth?_** - (*number*) - die maximale Breite einer Spalte, die einen Wechsel zum nächsten Zoom-Level ermöglicht
+        - **_useKey?_** - (*string*) - die Taste, die das Zoomen durch Scrollen mit dem Mausrad aktiviert: "ctrlKey" | "altKey" | "shiftKey"
+        - **_trigger?_** - (*string | null | undefined*) - der Auslöser des Zoomens: "wheel" | null | undefined 
+        - **_element?_** - (*HTMLElement | Function*): HTMLElement - ein DOM-Element, über dem Zoomen ausgelöst wird oder eine Funktion, die ein DOM-Element zurückgibt
 
-Hier sind zwei Beispiele, wie die **zoom**-Erweiterung konfiguriert werden kann:
+Dies sind zwei Beispiele zur Einstellung der **zoom**-Konfiguration:
 
 ~~~js
 var zoomConfig = {
@@ -99,7 +103,7 @@ var zoomConfig = {
 gantt.ext.zoom.init(zoomConfig);
 
 
-// alternativ können die Stufen auch einfach als Arrays von Skalen definiert werden
+// oder, in einer einfacheren Weise können Ebenen auch als Skalen-Arrays dargestellt werden
 var hourToStr = gantt.date.date_to_str("%H:%i");
 var hourRangeFormat = function(step){
     return function(date){
@@ -134,14 +138,14 @@ var zoomConfig = {
 gantt.ext.zoom.init(zoomConfig);
 ~~~
 
-- <span class="submethod">**getCurrentLevel (): number**</span> - gibt den Index der aktuellen Zoom-Stufe zurück
+- <span class="submethod">**getCurrentLevel (): number**</span> - Gibt die Nummer (Index) des aktuellen Zoom-Level zurück
 
 ~~~js
 gantt.ext.zoom.getCurrentLevel();
 ~~~
 
-- <span class="submethod">**setLevel (level): void**</span> - wechselt zur angegebenen Zoom-Stufe.
-    - **_level_** - (*number | string*) - kann entweder der Name der Stufe als String (z.B. "year") oder ihr Index im Levels-Array sein
+- <span class="submethod">**setLevel (level): void**</span> - wechselt zum angegebenen Zoom-Level.
+    - **_level_** - (*number | string*) - Das Level wird entweder durch einen String definiert (den Namen des Levels aus der Konfiguration, z. B. "year"), oder durch seine Nummer im Array der Levels
 
 ~~~js
 gantt.ext.zoom.setLevel("year");
@@ -149,61 +153,62 @@ gantt.ext.zoom.setLevel("year");
 gantt.ext.zoom.setLevel(5);
 ~~~
 
-- <span class="submethod">**getLevels (): ZoomLevel[]**</span> - gibt alle definierten Zoom-Stufen zurück
+- <span class="submethod">**getLevels (): ZoomLevel[]**</span> - ermöglicht das Abrufen aller Zoom-Level
 
 ~~~js
 gantt.ext.zoom.getLevels();
 ~~~
 
-Dies gibt das Array der Zoom-Stufen (*ZoomLevels[]*) zurück, das an die **init()**-Methode übergeben wurde.
+Gibt ein Array von Zoom-Leveln (*ZoomLevel[]*) zurück, das an die Methode **init()** übergeben wurde, die die Erweiterung initialisiert.
 
-- <span class="submethod">**zoomIn (): void**</span> - wechselt zu einer höheren Zoom-Stufe
+- <span class="submethod">**zoomIn (): void**</span> - erhöht das aktuelle Zoom-Level
 
 ~~~js
 gantt.ext.zoom.zoomIn();
 ~~~
 
-Alternativ ist dies auch möglich mit:
+Für denselben Zweck können Sie auch Folgendes verwenden:
 
 ~~~js
 gantt.ext.zoom.setLevel(zoom.getCurrentLevel() - 1)
 ~~~
 
-- <span class="submethod">**zoomOut (): void**</span> - wechselt zu einer niedrigeren Zoom-Stufe
+- <span class="submethod">**zoomOut (): void**</span> - verringert das aktuelle Zoom-Level
 
 ~~~js
 gantt.ext.zoom.zoomOut();
 ~~~
 
-Alternativ können Sie verwenden:
+Für denselben Zweck können Sie auch Folgendes verwenden:
 
 ~~~js
 gantt.ext.zoom.setLevel(zoom.getCurrentLevel() + 1)
 ~~~
 
-- <span class="submethod">**attachEvent (name, handler): string**</span> - fügt einen Ereignis-Handler hinzu
-    - **_name_** - (*string*) - Name des Ereignisses, das überwacht werden soll
-    - **_handler_** - (*Function*) - Funktion, die beim Eintreten des Ereignisses ausgeführt wird
+- <span class="submethod">**attachEvent (name, handler): string**</span> - hängt einen Ereignis-Handler an
+    - **_name_** - (*string*) - der Name des Ereignis-Handlers
+    - **_handler_** - (*Function*) - die Funktion, die aufgerufen wird, wenn das Ereignis ausgelöst wird
 
-- <span class="submethod">**detachEvent (id): void**</span> - entfernt einen zuvor hinzugefügten Ereignis-Handler
-    - **_id_** - (*string*) - die Kennung des zu entfernenden Ereignis-Handlers
+- <span class="submethod">**detachEvent (id): void**</span> - trennt einen Handler von einem Ereignis
+    - **_id_** - (*string*) - die ID des angehängten Ereignis-Handlers
 
-- <span class="submethod">**callEvent (name, params): boolean**</span> - löst ein internes Ereignis aus
-    - **_name_** - (*string*) - Name des Ereignisses, Groß-/Kleinschreibung wird ignoriert
-    - **_params_** - (*Array&lt;any&gt;*) - optionales Array mit Daten zum Ereignis
+- <span class="submethod">**callEvent (name, params): boolean**</span> - ruft ein internes Ereignis auf
+    - **_name_** - (*string*) - der Name des Ereignisses, case-insensitive
+    - **_params_** - (*Array&lt;any&gt;*) - optional, ein Array von ereignisbezogenen Daten
 
-- <span class="submethod">**checkEvent (name): boolean**</span> - prüft, ob für ein bestimmtes Ereignis Handler registriert sind
-    - **_name_** - (*string*) - Name des Ereignisses
+- <span class="submethod">**checkEvent (name): boolean**</span> - prüft, ob für ein Ereignis irgendein Handler angegeben ist
+    - **_name_** - (*string*) - der Name des Ereignisses
 
-Gibt <i>true</i> zurück, wenn mindestens ein Handler für das Ereignis registriert ist.
+Gibt <i>true</i> zurück, wenn für das Ereignis ein Handler angegeben ist.
+
 
 ## Ereignisse
 
-- **<span class="eventname">onAfterZoom</span>** - wird ausgelöst, wenn sich die Zoom-Stufe ändert.
-Das Ereignis liefert folgende Argumente: 
+- **<span class="eventname">onAfterZoom</span>** - löst während des Wechsels des Zoom-Levels aus.
+Die Argumente sind: 
 <span class="eventarguments">
-    - **_level_** - (*number | string*) - der Index oder Name der Zoom-Stufe
-    - **_config_** - (*ZoomLevel*) - das Konfigurationsobjekt für die Zoom-Stufe
+    - **_level_** - (*number | string*) - die Nummer des Levels
+    - **_config_** - (*ZoomLevel*) - die Konfiguration des Levels
 </span>
 
 ~~~js

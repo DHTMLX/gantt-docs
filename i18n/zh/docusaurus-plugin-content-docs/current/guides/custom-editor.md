@@ -1,11 +1,11 @@
 ---
-title: "创建自定义元素"
-sidebar_label: "创建自定义元素"
+title: "创建自定义控件"
+sidebar_label: "创建自定义控件"
 ---
 
-# 创建自定义元素
+# 创建自定义控件
 
-要向 lightbox 添加自定义控件，你可以如下定义一个新对象:
+为了在灯箱（lightbox）中创建一个自定义控件，请按以下方式定义一个新的对象：
 
 ~~~js
 gantt.form_blocks["my_editor"]={
@@ -32,7 +32,7 @@ gantt.form_blocks["my_editor"]={
 }
 ~~~
 
-请注意，在 "render" 函数返回的 HTML 代码中**不要**使用自闭合标签，否则可能会在部分浏览器中导致解析问题:
+请确保不要在 render 函数返回的 HTML 代码中使用短闭合标签语法，因为这可能在浏览器中导致解析问题：
 
 ~~~js
 //这是错误的写法
@@ -46,30 +46,28 @@ render:function(){
 }
 ~~~
 
+[灯箱中的自定义控件](https://docs.dhtmlx.com/gantt/samples/05_lightbox/04_custom_editor.html)
 
-[Custom control in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/04_custom_editor.html)
+灯箱控件具有以下类型：
 
-
-lightbox 控件包含以下方法:
-
-- <span class="submethod">**render (sns): string**</span> - 返回包含该区块 HTML 元素的字符串
-    - **_sns_** - (*LightboxSection*) - 区块的配置对象
-- <span class="submethod">**set_value (node, value, task, section): any**</span> - 从 **Task** 对象获取值并应用到区块
-    - **_node_** - (*HTMLElement*) - 与区块 HTML 相关的元素
+- <span class="submethod">**render (sns): string**</span> - 返回包含该部分 HTML 元素的字符串的函数
+    - **_sns_** - (*LightboxSection*) - 该部分的配置对象
+- <span class="submethod">**set_value (node, value, task, section): any**</span> - 从 **Task** 对象获取值并将其设置到该部分的函数
+    - **_node_** - (*HTMLElement*) - 与上述 HTML 相关的 HTML 对象
     - **_value_** - (*any*) - 由 **map_to** 属性定义的值
     - **_task_** - (*Task*) - 任务对象
-    - **_section_** - (*LightboxSection*) - 区块的配置对象
-- <span class="submethod">**get_value (node, task, section): any**</span> - 从区块获取值并保存回 **Task** 对象
-    - **_node_** - (*HTMLElement*) - 与区块 HTML 相关的元素
+    - **_section_** - (*LightboxSection*) - 该部分的配置对象
+- <span class="submethod">**get_value (node, task, section): any**</span> - 从该部分获取值并保存到 **Task** 对象中的函数
+    - **_node_** - (*HTMLElement*) - 与上述 HTML 相关的 HTML 对象
     - **_task_** - (*Task*) - 任务对象
-    - **_section_** - (*LightboxSection*) - 区块的配置对象
-- <span class="submethod">**focus (node): void**</span> - 设置区块的焦点
-    - **_node_** - (*HTMLElement*) - 与区块 HTML 相关的元素
+    - **_section_** - (*LightboxSection*) - 该部分的配置对象
+- <span class="submethod">**focus (node): void**</span> - 将焦点设置到该部分的函数
+    - **_node_** - (*HTMLElement*) - 与上述 HTML 相关的 HTML 对象
 
 
-## 自定义含有两个输入框的编辑器
+## 带两个输入框的自定义编辑器
 
-以下是创建一个含有两个输入框的自定义编辑器的示例:
+让我们来考虑如何创建如下自定义编辑器：
 
 ![custom_lightbox_editor](/img/custom_lightbox_editor.png)
   
@@ -105,24 +103,24 @@ gantt.config.lightbox.sections = [
 ~~~
 
 
-[Custom control in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/04_custom_editor.html)
+[灯箱中的自定义控件](https://docs.dhtmlx.com/gantt/samples/05_lightbox/04_custom_editor.html)
 
 
 ## 自定义第三方编辑器 {#customthirdpartyeditor}
 
-你也可以创建一个自定义多选控件，用于选择多个值。
+你可以创建一个自定义多选控件，以便选择多个值。 
 
-例如，可以基于 [jQuery Chosen 插件](https://harvesthq.github.io/chosen/) 的控件，用于为任务分配多个资源。与默认的 Gantt [resource control](guides/resources.md) 不同，这个控件仅用于分配资源，不涉及数量。当你只需简单功能时，这是一个直接的选择。
+例如，你可以基于 [jQuery Chosen 插件](https://harvesthq.github.io/chosen/) 来将多个资源分配给一个任务。与默认的 Gantt [资源控件](guides/resources.md)不同，它仅允许将资源分配给任务而不设置其数量。然而，如果你希望得到一个相对简单的控件，这也可能很有用。
 
-![Custom resources control](/img/custom_resources_control.png)
+![自定义资源控件](/img/custom_resources_control.png)
 
 
 [3rd party multiselect control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/14_jquery_multiselect.html)
 
 
-要在 Gantt 图中集成基于 jQuery Chosen 的控件:
+要在甘特图中使用基于 jQuery Chosen 的控件：
 
-- 在页面中引入所需的源文件
+- 在页面中包含其源文件
 
 ~~~html
 <script
@@ -135,7 +133,7 @@ gantt.config.lightbox.sections = [
     href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css?v="5.2.4"">
 ~~~
 
-- 定义控件逻辑
+- 描述控件逻辑
 
 ~~~js
 gantt.form_blocks["multiselect"] = {
@@ -192,7 +190,7 @@ focus: function (node) {
 };
 ~~~
 
-- 以 *type:"multiselect"* 的方式将控件添加为 lightbox 区块
+- 将控件用作具有 type:"multiselect" 的灯箱部分
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -203,26 +201,25 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-*unassigned_value* 属性可以隐藏不应被选择的资源。将其设置为你希望排除的资源 ID。在上述示例中，id="5" 的资源不会出现在控件中。
+
+控件对象中的 *unassigned_value* 属性用于隐藏在控件中不应可选的资源。你需要将对应资源的 id 设为此属性的值。
+在上面的示例中，id="5" 的资源不会作为选项显示在控件中。
 
 ## 自定义第三方日期选择器
 
-你也可以向 lightbox 添加自定义日期选择器控件，通过指定开始和结束日期来设置任务时长。
+你可以向灯箱中添加一个自定义日期选择控件，用来设置任务的持续时间，通过指定任务的开始和结束日期来实现。
 
+### 在灯箱中的 jQuery Datepicker
 
-### 在 lightbox 中使用 jQuery Datepicker
+例如，你可以基于 jQuery UI Datepicker 创建一个 Datepicker 控件。
 
-例如，可以使用 jQuery UI Datepicker 构建一个日期选择控件。
+![自定义 Datepicker 控件](/img/custom_datepicker.png)
 
-![Custom Datepicker control](/img/custom_datepicker.png)
+**相关示例** [3rd party Datepicker control](https://snippet.dhtmlx.com/ux7u9fqp)
 
+要在甘特图中使用 jQuery Datepicker 控件：
 
-**Related example:** [3rd party Datepicker control](https://snippet.dhtmlx.com/ux7u9fqp)
-
-
-在 Gantt 图中使用 jQuery Datepicker 控件:
-
-- 在页面中引入 jQuery 库文件:
+- 在页面中包含 jQuery 库的源文件：
 
 ~~~html
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -231,7 +228,8 @@ gantt.config.lightbox.sections = [
     href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 ~~~
 
-- 实现控件逻辑:
+
+- 描述控件逻辑：
 
 ~~~js
 (function () {
@@ -243,7 +241,7 @@ gantt.config.lightbox.sections = [
     }
           
     gantt.form_blocks["datepicker"] = {
-        render: function (sns) { //sns - 区块的配置对象
+        render: function (sns) { //sns - the section's configuration object
             return "<div class='gantt-lb-datepicker'>"+
                 "<input type='text' name='start'>"+
                 "<input type='text' name='end'>"+
@@ -307,7 +305,8 @@ gantt.config.lightbox.sections = [
 })();
 ~~~
 
-- 然后以 *type:"datepicker"* 的方式将控件作为 lightbox 区块使用:
+
+- 将控件用作具有 type:"datepicker" 的灯箱部分
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -316,21 +315,20 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-### 在灯箱中使用 Bootstrap Datepicker
 
-在灯箱中添加 Bootstrap Datepicker 与集成 jQuery Datepicker 的方式类似。
+### Bootstrap Datepicker 在灯箱中的实现
+
+可以像 jQuery Datepicker 一样，将 Bootstrap Datepicker 添加到灯箱中。
 
 ![Bootstrap Datepicker 控件](/img/bootstrap_datepicker.png)
 
+**相关示例** [Bootstrap Datepicker control](https://snippet.dhtmlx.com/azx7vhli)
 
-**Related example:** [Bootstrap Datepicker control](https://snippet.dhtmlx.com/azx7vhli)
+要在 Gantt 图中使用 Bootstrap Datepicker 控件：
 
+- 在页面中包含 Bootstrap 库的源文件；
 
-要在 Gantt 图中集成 Bootstrap Datepicker 控件:
-
-- 在页面中引入 Bootstrap 库的源文件；
-
-- 定义控件逻辑:
+- 描述控件逻辑：
 
 ~~~js
 (function () {
@@ -406,7 +404,8 @@ gantt.config.lightbox.sections = [
 })();
 ~~~
 
-- 然后，通过指定 type:"datepicker" 将此控件作为灯箱的一个 section 使用:
+
+- 将控件用作具有 type:"datepicker" 的灯箱部分
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -415,19 +414,19 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-## 自定义第三方 Duration 控件
 
-你也可以在灯箱中添加自定义的 Duration 控件，用于设置任务的开始日期以及持续天数。
+## 自定义第三方持续时间控制
+
+你还可能需要在灯箱中添加一个自定义持续时间（Duration）控件，用于指定任务的开始日期以及持续的天数。
 
 ![自定义 Duration 控件](/img/custom_duration_control.png)
 
+**相关示例** [3rd party Duration control](https://snippet.dhtmlx.com/snb64bz6)
 
-**Related example:** [3rd party Duration control](https://snippet.dhtmlx.com/snb64bz6)
 
+让我们来考虑如何基于 jQuery 添加一个自定义 Duration 控件：
 
-以下是基于 jQuery 添加自定义 Duration 控件的方法:
-
-- 首先，在页面中引入 jQuery 库的源文件:
+- 在页面中包含 jQuery 库的源文件：
 
 ~~~html
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -436,7 +435,7 @@ gantt.config.lightbox.sections = [
     href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 ~~~
 
-- 然后，定义控件的逻辑:
+- 描述控件逻辑：
 
 ~~~js
 (function () {
@@ -526,7 +525,7 @@ gantt.config.lightbox.sections = [
 })();
 ~~~
 
-- 最后，通过 type:"datepicker_duration" 将此控件作为灯箱的一个 section 使用:
+- 将控件用作具有 type:"datepicker_duration" 的灯箱部分
 
 ~~~js
 gantt.config.lightbox.sections = [

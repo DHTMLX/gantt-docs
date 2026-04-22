@@ -1,25 +1,25 @@
 ---
 sidebar_label: onGridResizeStart
-title: onGridResizeStart event
-description: "Wird ausgelöst, kurz bevor der Benutzer beginnt, den Rand des Grids zu ziehen, um dessen Größe zu ändern"
+title: onGridResizeStart-Ereignis
+description: "Wird ausgelöst, bevor der Benutzer beginnt, den Rand des Grids zu ziehen, um die Größe des Grids zu ändern"
 ---
 
 # onGridResizeStart
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO Edition verfügbar.
 :::
 ### Description
 
-@short: Wird ausgelöst, kurz bevor der Benutzer beginnt, den Rand des Grids zu ziehen, um dessen Größe zu ändern
+@short: Wird ausgelöst, bevor der Benutzer beginnt, den Rand des Grids zu ziehen, um die Größe des Grids zu ändern
 
 @signature: onGridResizeStart: (old_width: number) =\> boolean;
 
 ### Parameters
 
-- `old_width` - (required) *number* - die Anfangsbreite des Grids
+- `old_width` - (erforderlich) *number* - die anfängliche Breite des Grids
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events fortgesetzt wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
@@ -36,7 +36,7 @@ gantt.attachEvent("onGridResizeStart", function(old_width){
 
 ### Details
 
-Dieses Event kann blockiert werden. Wenn *false* zurückgegeben wird, wird verhindert, dass das Grid in der Größe verändert wird.
+Das Event ist blockierbar. Die Rückgabe von *false* verhindert das Größenändern des Grids.
 
 ### Related API
 - [onGridResize](api/event/ongridresize.md)
@@ -44,5 +44,4 @@ Dieses Event kann blockiert werden. Wenn *false* zurückgegeben wird, wird verhi
 - [onColumnResizeStart](api/event/oncolumnresizestart.md)
 
 ### Related Guides
-- ["Spalten festlegen"](guides/specifying-columns.md#resizing)
-
+- [Specifying Columns](guides/specifying-columns.md#resizing)

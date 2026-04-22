@@ -1,25 +1,27 @@
 ---
 sidebar_label: isSplitTask
-title: isSplitTask method
-description: "Определяет, является ли указанная задача разделённой"
+title: isSplitTask метод
+description: "проверяет, разбита ли указанная задача"
 ---
 
 # isSplitTask
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
+
 ### Description
 
-@short: Определяет, является ли указанная задача разделённой
+@short: Проверяет, разбита ли указанная задача
 
 @signature: isSplitTask: (task: Task) =\> boolean
 
 ### Parameters
 
-- `task` - (required) *Task* - объект задачи для проверки
+- `task` - (обязательный) *Task* - объект задачи
 
 ### Returns
-- ` isSplit` - (boolean) - возвращает true, если задача разделена, иначе false
+- ` isSplit` - (boolean) - true, если задача разделена, иначе false
 
 ### Example
 
@@ -28,10 +30,9 @@ const task = gantt.getTask(13);
 // --> { id: 13, render:"split", text: "Task #2", ...}
 
 if(gantt.isSplitTask(task)){
-  // выполнить действие
+  // do something
 }
 ~~~
 
-
 ### Related Guides
-- [Разделение задач](guides/split-tasks.md)
+- [Разделённые задачи](guides/split-tasks.md)

@@ -5,13 +5,13 @@ sidebar_label: "확장 기능 전체 목록"
 
 # 확장 기능 전체 목록
 
-dhtmlxGantt는 기본 기능을 확장하는 다양한 확장 기능(Extensions)을 제공합니다.
+dhtmlxGantt는 표준 동작에 추가 기능을 제공하는 확장 기능 세트를 포함합니다.
 
-확장 기능을 활성화하려면 [gantt.plugins](api/method/plugins.md) 메서드를 사용하여 플러그인을 활성화하면 됩니다.
+확장 기능을 사용하려면 [gantt.plugins](api/method/plugins.md) 메서드를 통해 플러그인을 활성화해야 합니다.
 
-## 고급 드래그 앤 드롭 {#advanceddragndrop}
+## 고급 드래그 앤 드롭
 
-이 확장 기능을 사용하면 드래그 앤 드롭을 통해 작업을 생성하고 선택할 수 있습니다.
+드래그 앤 드롭으로 작업을 생성하고 선택할 수 있는 기능을 제공합니다.
 
 ~~~js
 gantt.plugins({
@@ -21,24 +21,19 @@ gantt.plugins({
 
 #### 관련 자료
 
-Article: [DnD로 작업 생성/선택하기](guides/advanced-dnd.md)
-
+문서: [DnD로 작업 생성/선택하기](guides/advanced-dnd.md)
 
 API: [click_drag](api/config/click_drag.md)
 
-
-
-
-[Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
-
+샘플: [Drag and Drop으로 새 작업 만들기](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
 ## 자동 스케줄링 {#autoscheduling}
 
-:::info
-이 확장 기능은 PRO 버전에서만 사용할 수 있습니다
+:::note
+이 확장 기능은 PRO 버전에서만 사용 가능합니다
 :::
 
-이 기능은 작업 간의 관계를 기반으로 작업을 자동으로 스케줄링합니다.
+작업 간 관계에 따라 자동으로 작업을 스케줄링할 수 있습니다.
 
 ~~~js
 gantt.plugins({
@@ -48,25 +43,20 @@ gantt.plugins({
 
 #### 관련 자료
 
-Article: [자동 스케줄링](guides/auto-scheduling.md)
-
+문서: [자동 스케줄링](guides/auto-scheduling.md)
 
 API: [auto_scheduling](api/config/auto_scheduling.md)
 
+샘플: [자동 스케줄링 확장 기능](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
+## 크리티컬 패스
 
-
-[Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
-
-
-
-## 주요 경로(Critical path) {#criticalpath}
-
-:::info
-이 확장 기능은 PRO 버전에서만 사용할 수 있습니다
+:::note
+이 확장 기능은 PRO 버전에서만 사용 가능합니다
 :::
 
-프로젝트 전체가 지연되지 않으려면 반드시 제시간에 완료되어야 하는 작업의 순서를 표시합니다. 또한 프로젝트의 최단 소요 기간도 보여줍니다.
+지연 없이 전체 프로젝트의 마감일에 영향을 주지 않는 작업들의 연속을 나타냅니다.
+크리티컬 패스는 또한 프로젝트가 걸릴 수 있는 최단 시간도 결정합니다.
 
 ~~~js
 gantt.plugins({
@@ -76,21 +66,15 @@ gantt.plugins({
 
 #### 관련 자료
 
-Article: [Critical Path](guides/critical-path.md)
-
+문서: [크리티컬 패스](guides/critical-path.md)
 
 API: [highlight_critical_path](api/config/highlight_critical_path.md)
 
+샘플: [크리티컬 패스](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
+## Drag Timeline
 
-
-[Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
-
-
-
-## 타임라인 드래그 {#dragtimeline}
-
-마우스를 드래그하여 타임라인 뷰를 스크롤할 수 있게 해줍니다.
+마우스 드래그로 타임라인 뷰를 스크롤할 수 있습니다.
 
 ~~~js
 gantt.plugins({
@@ -102,20 +86,15 @@ gantt.plugins({
 
 API: [drag_timeline](api/config/drag_timeline.md)
 
+샘플: [드래그 타임라인](https://docs.dhtmlx.com/gantt/samples/02_extensions/27_drag_timeline.html)
 
+## 추가 오버레이
 
-
-[Drag timeline](https://docs.dhtmlx.com/gantt/samples/02_extensions/27_drag_timeline.html)
-
-
-
-## 추가 오버레이 {#extraoverlay}
-
-:::info
+:::note
 이 확장 기능은 PRO 버전에서만 사용할 수 있습니다.
 :::
 
-Gantt 차트 위에 추가 레이어를 추가하여 사용자 지정 콘텐츠를 배치할 수 있습니다.
+Gantt 차트 위에 추가 레이어를 추가하여 맞춤 콘텐츠를 배치할 수 있는 기능을 제공합니다.
 
 ~~~js
 gantt.plugins({
@@ -125,29 +104,27 @@ gantt.plugins({
 
 #### 관련 자료
 
-Article: [타임라인 영역의 커스텀 요소](guides/baselines.md#extraoverlayforthechart)
+문서: [타임라인 영역의 커스텀 요소](guides/baselines.md#extra-overlay-for-the-chart)
 
+샘플: [Overlay가 있는 Gantt 차트 및 확대/축소 (S-커브)](https://docs.dhtmlx.com/gantt/samples/02_extensions/21_overlay.html)
 
-[Gantt chart with overlay and zoom (S-Curve)](https://docs.dhtmlx.com/gantt/samples/02_extensions/21_overlay.html)
+## 내보내기 서비스
 
-
-## 내보내기 서비스 {#exportservice}
-
-온라인 내보내기(export) 서비스를 사용할 수 있습니다.
+온라인 내보내기 서비스를 활성화할 수 있는 기능을 제공합니다.
 
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
 #### 관련 자료
 
-Article: [데이터 내보내기 및 가져오기](guides/export-common.md)
+문서: [데이터 내보내기 및 가져오기](guides/export-common.md)
 
 ## 전체 화면 {#fullscreen}
 
-Gantt 차트를 전체 화면 모드로 표시합니다.
+Gantt를 전체 화면 모드로 표시합니다.
 
 ~~~js
 gantt.plugins({
@@ -157,21 +134,17 @@ gantt.plugins({
 
 #### 관련 자료
 
-Article: [전체 화면 모드](guides/fullscreen-mode.md) 
+문서: [전체 화면 모드](guides/fullscreen-mode.md)
 
+샘플: [전체 화면](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
+## 그룹화
 
-
-[Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
-
-
-## 그룹화 {#grouping}
-
-:::info
-이 확장 기능은 PRO 버전에서만 사용할 수 있습니다
+:::note
+이 확장 기능은 PRO 버전에서만 사용 가능합니다
 :::
 
-작업 속성에 따라 작업을 그룹화할 수 있습니다.
+작업을 임의의 작업 속성으로 그룹화할 수 있습니다.
 
 ~~~js
 gantt.plugins({
@@ -181,20 +154,15 @@ gantt.plugins({
 
 #### 관련 자료
 
-Article: [작업 그룹화](guides/grouping.md)
-
+문서: [작업 그룹화](guides/grouping.md)
 
 API: [groupBy](api/method/groupby.md)
 
+샘플: [작업 그룹화](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
 
+## 키보드 탐색 {#keyboardnavigation}
 
-
-[Tasks grouping](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
-
-
-## 키보드 내비게이션 {#keyboardnavigation}
-
-Gantt 차트 내에서 키보드를 사용해 이동할 수 있습니다.
+키보드 도움으로 간트 차트를 탐색할 수 있습니다.
 
 ~~~js
 gantt.plugins({
@@ -204,18 +172,13 @@ gantt.plugins({
 
 #### 관련 자료
 
-Article: [접근성](guides/accessibility.md#keyboardnavigation), [키보드 내비게이션](guides/keyboard-navigation.md)
-
+문서: [접근성](guides/accessibility.md), [키보드 탐색](guides/keyboard-navigation.md)
 
 API: [keyboard_navigation](api/config/keyboard_navigation.md),[keyboard_navigation_cells](api/config/keyboard_navigation_cells.md)
 
-
-
-
-
 ## 다중 작업 선택 {#multitaskselection}
 
-Gantt 차트에서 여러 작업을 동시에 선택할 수 있습니다.
+한 번에 여러 작업을 간트 차트에서 선택할 수 있습니다.
 
 ~~~js
 gantt.plugins({
@@ -225,21 +188,15 @@ gantt.plugins({
 
 #### 관련 자료
 
-Article: [멀티 태스크 선택](guides/multiselection.md)
-
+문서: [다중 작업 선택](guides/multiselection.md)
 
 API: [multiselect](api/config/multiselect.md)
 
+샘플: [다중 선택 및 들여쓰기/내어쓰기 작업](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
+## 빠른 정보
 
-
-[Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
-
-
-
-## 빠른 정보(Quick info) {#quickinfo}
-
-작업의 세부 정보를 팝업으로 표시합니다.
+작업 자세한 정보가 담긴 팝업을 제공합니다.
 
 ~~~js
 gantt.plugins({
@@ -249,19 +206,15 @@ gantt.plugins({
 
 #### 관련 자료
 
-Article: ['Quick Info' 확장(터치 지원)의 템플릿](guides/touch-templates.md), 
+문서: [빠른 정보 확장의 템플릿(터치 지원)](guides/touch-templates.md), 
 
+[빠른 정보(터치 지원)](guides/quick-info.md)
 
-[퀵 인포 (터치 지원)](guides/quick-info.md)
+샘플: [QuickInfo 확장 기능](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
 
+## 도구 설명(툴팁)
 
-[QuickInfo extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/01_quickinfo.html)
-
-
-
-## 툴팁 {#tooltip}
-
-화면을 복잡하게 만들지 않고도 사용자에게 추가 정보를 제공합니다.
+화면을 넘치지 않게 사용자를 위해 추가 정보를 제공할 수 있습니다.
 
 ~~~js
 gantt.plugins({
@@ -271,17 +224,13 @@ gantt.plugins({
 
 #### 관련 자료
 
-Article: [Gantt 요소의 툴팁](guides/tooltips.md)
+문서: [간트 요소에 대한 도구 설명(툴팁)](guides/tooltips.md)
 
+샘플: [툴팁](https://docs.dhtmlx.com/gantt/samples/02_extensions/02_tooltip.html)
 
+## 실행 취소
 
-
-[Tooltip](https://docs.dhtmlx.com/gantt/samples/02_extensions/02_tooltip.html)
-
-
-## 실행 취소(Undo) {#undo}
-
-변경 사항에 대한 실행 취소 및 다시 실행 기능을 제공합니다.
+수정된 변경사항을 실행 취소/다시 실행할 수 있습니다.
 
 ~~~js
 gantt.plugins({
@@ -291,20 +240,15 @@ gantt.plugins({
 
 #### 관련 자료
 
-Article: [Undo/Redo 기능](guides/undo-redo.md)
-
+문서: [실행 취소/다시 실행 기능](guides/undo-redo.md)
 
 API: [undo](api/config/undo.md), [redo](api/config/redo.md)
 
+샘플: [Gantt의 실행 취소/다시 실행 변경사항](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
+## 수직 마커
 
-
-[Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
-
-
-## 수직 마커 {#verticalmarker}
-
-특정 날짜 또는 날짜 범위를 강조 표시합니다.
+특정 날짜나 날짜 범위를 강조합니다.
 
 ~~~js
 gantt.plugins({
@@ -314,13 +258,8 @@ gantt.plugins({
 
 #### 관련 자료
 
-Article: [수직 마커 추가하기](guides/markers.md)
-
+문서: [수직 마커 추가](guides/markers.md)
 
 API: [addMarker](api/method/addmarker.md),[show_markers](api/config/show_markers.md)
 
-
-
-
-[Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
-
+샘플: [오늘 날짜와 상태 선(수직 마커) in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)

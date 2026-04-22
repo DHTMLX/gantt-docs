@@ -1,20 +1,20 @@
 ---
 sidebar_label: getSubtaskDuration
-title: getSubtaskDuration method
-description: "计算嵌套在项目或其他任务中的所有子任务的总持续时间。"
+title: getSubtaskDuration 方法
+description: "计算嵌套在项目或其他任务中的任务的总持续时间。"
 ---
 
 # getSubtaskDuration
 
 ### Description
 
-@short: 计算嵌套在项目或其他任务中的所有子任务的总持续时间。
+@short: 计算嵌套在项目或其他任务中的任务的总持续时间。
 
 @signature: getSubtaskDuration: (task_id?: string | number) =\> number
 
 ### Parameters
 
-- `task_id` - (optional) *string | number* -       任务的ID；如果省略，则默认使用 [root_id](api/config/root_id.md) 中的值
+- `task_id` - (optional) *string | number* - 任务的 id，若未指定，将使用 [root_id](api/config/root_id.md)
 
 ### Returns
 - ` duration` - (number) - 嵌套任务的总持续时间
@@ -36,16 +36,15 @@ console.log(formatter.format(duration));
 
 ### Details
 
-此方法计算嵌套在项目或其他任务内部的所有任务的总持续时间。
+计算嵌套在项目或其他任务中的任务的总持续时间。
 
-请注意，属于[项目类型](api/config/types.md)的任务不计入此总持续时间。
+属于 [项目类型](api/config/types.md) 的任务不会计入总持续时间。
 
-返回的值以配置中定义的[持续时间单位](api/config/duration_unit.md)表示。
+返回值基于配置中的 [持续单位](api/config/duration_unit.md) 单位进行计算。
 
 ### Related API
 - [getSubtaskDates](api/method/getsubtaskdates.md)
 - [getTaskBy](api/method/gettaskby.md)
 
 ### Related Guides
-- [格式化器扩展](guides/formatters-ext.md)
-
+- [格式化器扩展](guides/formatters-ext.md#durationformatter)

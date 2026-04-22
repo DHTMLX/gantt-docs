@@ -1,25 +1,25 @@
 ---
 sidebar_label: onBeforeTaskMove
 title: onBeforeTaskMove event
-description: "срабатывает непосредственно перед изменением вертикального положения задачи"
+description: "срабатывает перед тем, как задача будет перемещена на новую вертикальную позицию"
 ---
 
 # onBeforeTaskMove
 
 ### Description
 
-@short: Срабатывает непосредственно перед изменением вертикального положения задачи
+@short: Срабатывает перед тем, как задача будет перемещена на новую вертикальную позицию
 
-@signature: onBeforeTaskMove: (id: string | number, parent: string | number, tindex: number) =\> boolean;
+@signature: onBeforeTaskMove: (id: string | number, parent: string | number, tindex: number) => boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - id перемещаемой задачи
-- `parent` - (required) *string | number* - id нового родителя
-- `tindex` - (required) *number* - новый индекс позиции внутри родительской ветки
+- `id` - (required) *string | number* - идентификатор задачи, которую нужно переместить
+- `parent` - (required) *string | number* - идентификатор родителя
+- `tindex` - (required) *number* - индекс позиции в ветке родителя, куда задача будет перемещена
 
 ### Returns
-- ` result` - (boolean) - указывает, должно ли стандартное действие события выполниться (<b>true</b>) или быть отменено (<b>false</b>)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
@@ -35,14 +35,13 @@ gantt.attachEvent("onBeforeTaskMove", function(id, parent, tindex){
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* предотвратит перемещение задачи.
+Событие можно блокировать. Возвратите *false*, чтобы отменить перемещение задачи.
 
-Учтите, что это событие вызывается в двух случаях:
+Note, the event fires in 2 cases:
 
-1. Когда вызывается метод [moveTask](api/method/movetask.md) 
-2. Когда активна опция [order_branch](api/config/order_branch.md) с настройкой по умолчанию (*gantt.config.order_branch = true;*), и пользователь перетаскивает задачи
+1. При вызове метода [moveTask](api/method/movetask.md)
+2. Когда опция [order_branch](api/config/order_branch.md) включена по умолчанию (*gantt.config.order_branch = true;*) и пользователь перетаскивает задачи
 
 ### Related API
 - [moveTask](api/method/movetask.md)
 - [onAfterTaskMove](api/event/onaftertaskmove.md)
-

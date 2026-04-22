@@ -1,19 +1,19 @@
 ---
-title: "Resource Assignments Control"
-sidebar_label: "Resource Assignments Control"
+title: "Ressourcen-Zuweisungssteuerung"
+sidebar_label: "Ressourcen-Zuweisungssteuerung"
 ---
 
-# Resource Assignments Control
+# Ressourcen-Zuweisungssteuerung
 
 :::info
-This functionality is available in the Gantt PRO edition only.
+Diese Funktionalität ist nur in der Gantt PRO-Edition verfügbar.
 :::
 
-An extended control used to [assign multiple resources and their quantity to a task](guides/resource-management.md#assigningresources).
+Eine erweiterte Steuerung, mit der mehrere Ressourcen und deren Menge einer Aufgabe zugewiesen werden können ([mehrere Ressourcen und deren Menge einer Aufgabe zuweisen](guides/resource-management.md#assigningresources)).
 
-Here is an example of the Resource Assignments control with the default configuration: 
+Hier ist ein Beispiel für die Ressourcenzuweisungssteuerung mit der Standardkonfiguration:
 
-![Resource Assignments control](/img/resource_assignments_control.png)
+![Ressourcen-Zuweisungssteuerung](/img/resource_assignments_control.png)
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -23,11 +23,11 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-[Resource Assignments control](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
+[Ressourcen-Zuweisungssteuerung](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
 
-You can [configure the resource grid columns of the control](#configuring-resource-grid-columns-in-the-lightbox) and provide the necessary resource options:
+Sie können [die Spalten des Ressourcenrasters der Steuerung konfigurieren](#configuring-resource-grid-columns-in-the-lightbox) und die benötigten Ressourcenoptionen bereitstellen:
 
-![Resource Assignments control options](/img/resource_assignments_control_options.png)
+![Ressourcen-Zuweisungssteuerung Optionen](/img/resource_assignments_control_options.png)
 
 ~~~js
 // resource options
@@ -72,18 +72,18 @@ gantt.config.lightbox.sections = [
 ];
 
 gantt.locale.labels.section_resource_selector = "Resources";
-~~~
-[Resource Assignments control](https://snippet.dhtmlx.com/id54i1b3)
+~~~  
+[Ressourcen-Zuweisungssteuerung](https://snippet.dhtmlx.com/id54i1b3)
 
 :::note
- You can also create [a custom control to assign multiple resources to a task](guides/custom-editor.md#customthirdpartyeditor).
+ Sie können auch eine benutzerdefinierte Steuerung erstellen, um mehreren Ressourcen eine Aufgabe zuweisen zu können. ([custom editor](guides/custom-editor.md#customthirdpartyeditor))
 :::
 
-## Initialization
+## Initialisierung
 
-To add the **resource_selector** control to the lightbox, follow the steps below:
+Um die **resource_selector**-Steuerung dem Lightbox hinzuzufügen, führen Sie die folgenden Schritte aus:
 
-1\. Add a section to the lightbox configuration:
+1\. Fügen Sie eine Sektion zur Lightbox-Konfiguration hinzu:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -91,36 +91,36 @@ gantt.config.lightbox.sections = [
     { name: "resource_selector", type: "resource_selector", map_to: "auto" },
     { name: "time", type: "duration", map_to: "auto" }
 ];
-~~~
+~~~  
 
 :::note
-By default the resource control is mapped to the property specified in the [](api/config/resource_property.md) config, so the **map_to** option can be omitted.
+Standardmäßig wird die Resource-Steuerung der Eigenschaft gemappt, die in der [api/config/resource_property.md] Konfiguration angegeben ist, sodass die **map_to**-Option weggelassen werden kann.
 :::
 
-2\. Set a label for the section:
+2\. Legen Sie eine Bezeichnung für die Sektion fest:
 
 ~~~js
 gantt.locale.labels.section_resource_selector = "Resources";
 ~~~
 
-## Properties
+## Eigenschaften
 
-The following properties are mostly important and commonly set for the **resource_selector** control:
+Die folgenden Eigenschaften sind überwiegend wichtig und werden typischerweise für die **resource_selector**-Steuerung gesetzt:
 
-- **name** - (*string*) the section's name 
-- **map_to** - (*string*) the name of a data property that will be mapped to the section
-- **type** - (*string*) the type of the [section control](guides/default-edit-form.md#lightboxcontrols)
-- **label** - (*string*) the section's label
-- **config** - (*object*) the resource grid config in the lightbox to display required columns
-- **templates** - (*object*) templates for the resource grid in the lightbox
+- **name** - (*string*) der Name der Sektion 
+- **map_to** - (*string*) der Name einer Dateneigenschaft, die der Sektion zugeordnet wird
+- **type** - (*string*) der Typ der [Section-Control](guides/default-edit-form.md#lightboxcontrols)
+- **label** - (*string | number | any*) die Beschriftung der Sektion
+- **config** - (*object*) die Ressourcenraster-Konfiguration in der Lightbox, um die erforderlichen Spalten anzuzeigen
+- **templates** - (*object*) Vorlagen für das Ressourcenraster in der Lightbox
     
 :::note
-The initial *start_date*, *end_date*, and *duration* properties may have `null` values. If so, they will be initialized using the corresponding values from the task object.
-:::
+ Die initialen *start_date*, *end_date* und *duration*-Eigenschaften können `null`-Werte haben. Falls ja, werden sie mit den entsprechenden Werten aus dem Aufgabenobjekt initialisiert.
+ :::
 
 ## Configuring resource grid columns in the lightbox
 
-The default configuration of columns of the resource table in the lightbox is given below:
+Die Standardkonfiguration der Spalten des Ressourcenrasters in der Lightbox ist unten angegeben:
 
 ~~~js
 // helper editors
@@ -198,68 +198,64 @@ const defaultResourceLightboxConfig = {
 
 ### Details
 
-Each object in the **columns** array specifies a single column. An object can take the following attributes:
+Jedes Objekt im Array **columns** definiert eine einzelne Spalte. Ein Objekt kann die folgenden Attribute besitzen:
 
-- **name?** - (*string | number*) - defines the column's id;
-- **align?** - (*string*) - sets the horizontal title alignment. Possible values: *'left'*, *'center'*, or *'right'*;
-- **hide?** - (*boolean*) - hides/shows a column (PRO);
-- **label?** - (*string | number | any*) - specifies the title of the column;
-- **max_width?** - (*number*) - sets the maximum column width;
-- **min_width?** - (*number*) - sets the minimum column width;
-- **width?** - (*number | string*) - defines the width of the column;
-- **template? (assignment): any** - sets a data template.
-    - **assignment** - (*Assignment*) - the Assignment object;
-- **onrender? (assignment, node): any** - optional, a callback function for rendering a cell into the DOM. 
-The function takes an assignment object and the DOM element of the grid cell as 
-parameters and may return a component of the framework. See details [here](guides/specifying-columns.md#modifyingcellsafterrendering);
-    - **assignment** - (*Assignment*) - the Assignment object;
-    - **_node_** - (*HTMLElement*) - the HTML element of the Grid cell;
-- **editor?** - (*object*) - the attached [inline editor](guides/inline-editing.md);
-    - **_type_** - (*string*) - the type of the inline editor;
-    - **_map_to_** - (*string*) - specifies which property of the assignment should be updated by the inline editor;
-    - **_min?_** - (*Date | number*) - the minimal value for the date and duration types;
-    - **_max?_** - (*Date | number*) - the maximal value for the date and duration types;
-    - **_options?_** - (*Array &lt;any&gt;*) - an array with the options for the select types;
-    - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - formatter for the date and predecessor types.
+- **name?** - (*string | number*) - definiert die Spalten-ID;
+- **align?** - (*string*) - legt die horizontale Ausrichtung des Titels fest. Mögliche Werte: *'left'*, *'center'* oder *'right'*;
+- **hide?** - (*boolean*) - versteckt/zeigt eine Spalte (PRO);
+- **label?** - (*string | number | any*) - legt den Titel der Spalte fest;
+- **max_width?** - (*number*) - setzt die maximale Spaltenbreite;
+- **min_width?** - (*number*) - setzt die minimale Spaltenbreite;
+- **width?** - (*number | string*) - definiert die Breite der Spalte;
+- **template? (assignment): any** - setzt eine Datenvorlage.
+    - **assignment** - (*Assignment*) - das Assignment-Objekt;
+- **onrender? (assignment, node): any** - optional, eine Callback-Funktion zum Rendern einer Zelle ins DOM. 
+Die Funktion nimmt ein Assignment-Objekt und das DOM-Element der Rasterzelle als Parameter entgegen und kann eine Komponente des Frameworks zurückgeben. Siehe Details [hier](guides/specifying-columns.md#modifyingcellsafterrendering);
+    - **assignment** - (*Assignment*) - das Assignment-Objekt;
+    - **_node_** - (*HTMLElement*) - das HTML-Element der Rasterzelle;
+- **editor?** - (*object*) - der angehängte [Inline-Editor](guides/inline-editing.md);
+    - **_type_** - (*string*) - der Typ des Inline-Editors;
+    - **_map_to_** - (*string*) - gibt an, welche Eigenschaft des Assignments vom Inline-Editor aktualisiert werden soll;
+    - **_min?_** - (*Date | number*) - der minimale Wert für die Typen Datum und Dauer;
+    - **_max?_** - (*Date | number*) - der maximale Wert für die Typen Datum und Dauer;
+    - **_options?_** - (*Array &lt;any&gt;*) - ein Array mit Optionen für die Selekt-Typen;
+    - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - Formatter für Datums- und Vorgänger-Typen.
 
-You can change the default added assignment by specifying the following property in resource lightbox config:
+Sie können das standardmäßig hinzugefügte Assignment ändern, indem Sie die folgende Eigenschaft in der Resource-Lightbox-Konfiguration angeben:
 
-- **resource_default_assignment** - (*object*) the configuration object of the default assignment (that will be added by the "Add Assignment" button)
-    - **start_date** - (*Date | string | null*) the date the assignment is scheduled to start
-    - **end_date** - (*Date | string | null*) the date the assignment is scheduled to be completed
-    - **value** - (*number | string*) the quantity of the resource assigned to a task
-    - **duration** - (*number | null*) the duration of the assignment
-    - **mode** - (*string*) the calculation mode of the time of the resource assignment: "default" | "fixedDates" | "fixedDuration"
+- **resource_default_assignment** - (*object*) das Konfigurationsobjekt der Standardzuweisung (die durch den Button "Add Assignment" hinzugefügt wird)
+    - **start_date** - (*Date | string | null*) das Datum, an dem die Zuweisung beginnen soll
+    - **end_date** - (*Date | string | null*) das Datum, an dem die Zuweisung abgeschlossen sein soll
+    - **value** - (*number | string*) die Menge der Ressource, die einer Aufgabe zugewiesen ist
+    - **duration** - (*number | null*) die Dauer der Zuweisung
+    - **mode** - (*string*) der Berechnungsmodus der Zeit der Ressourcenzuweisung: "default" | "fixedDates" | "fixedDuration"
 <br>
 
 :::note
-The **template** attribute is a function that takes a data item object as a parameter and returns the final data template. The function definition allows you to present almost any content.
+Das **template**-Attribut ist eine Funktion, die ein Data-Item-Objekt als Parameter entgegennimmt und die endgültige Datenvorlage zurückgibt. Die Funktionsdefinition ermöglicht es, nahezu jeden Inhalt darzustellen.
 :::
 
+## Befüllung der Steuerung mit Daten
 
-## Populating control with data
-
-If you use the default resource Datastore created by Gantt, the **resource_selector** control 
-will be connected to the **gantt.serverList("resourceOptions")** collection. 
-This collection will be populated with the resources from the resource datastore. You can access options by using the following code line:
+Wenn Sie den standardmäßigen Resource-Datastore verwenden, der von Gantt erstellt wird, ist die **resource_selector**-Steuerung mit der Sammlung **gantt.serverList("resourceOptions")** verbunden. Diese Sammlung wird mit den Ressourcen aus dem Resource-Datastore befüllt. Sie können auf die Optionen zugreifen, indem Sie folgende Codezeile verwenden:
 
 ~~~js
 const options = gantt.serverList("resourceOptions");
 ~~~
 
-Take notice that the options array will be empty before the resources are loaded into the datastore.
+Beachten Sie, dass das Optionen-Array leer sein wird, bevor die Ressourcen in den Datastore geladen werden.
 
-You can also update this collection using the custom list of options as follows:
+Sie können diese Sammlung auch mit der benutzerdefinierten Liste von Optionen wie folgt aktualisieren:
 
 ~~~js
 gantt.updateCollection("resourceOptions", [...]);
 ~~~
 
-Note that if you load resources into the gantt after that, the gantt will update this collection and overwrite your changes.
+Beachten Sie, dass, falls Sie danach Ressourcen in den Gantt laden, der Gantt diese Sammlung aktualisiert und Ihre Änderungen überschreibt.
 
-## Populating control with data from the server
+## Befüllung der Steuerung mit Daten vom Server
 
-To populate the control from the server, use the [serverList()](api/method/serverlist.md) method in the options of the resource editor:
+Um die Steuerung vom Server zu befüllen, verwenden Sie die Methode [serverList()](api/method/serverlist.md) in den Optionen des Resource-Editors:
 
 ~~~js
 const resourceEditor = { 
@@ -282,7 +278,7 @@ const defaultResourceLightboxConfig = {
 }
 ~~~
 
-The contents of `gantt.serverList("resourceOptions")` can be defined when the options become available using the [updateCollection()](api/method/updatecollection.md) method:
+Der Inhalt von `gantt.serverList("resourceOptions")` kann definiert werden, sobald die Optionen verfügbar werden, mithilfe der Methode [updateCollection()](api/method/updatecollection.md):
 
 ~~~js
 gantt.updateCollection("resourceOptions", [
@@ -299,6 +295,3 @@ gantt.updateCollection("resourceOptions", [
     { id: 10, text: "Floe", parent: 3 }
 ]);
 ~~~
-
-
-

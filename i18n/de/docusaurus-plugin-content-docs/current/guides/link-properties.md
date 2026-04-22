@@ -3,11 +3,11 @@ title: "Link-Eigenschaften"
 sidebar_label: "Link-Eigenschaften"
 ---
 
-# Link-Eigenschaften 
+# Link-Eigenschaften
 
-Auf dieser Seite sind alle Eigenschaften aufgeführt, die ein Link-Objekt haben kann.
+Auf dieser Seite finden Sie die vollständige Liste der Eigenschaften, die das Link-Objekt enthalten kann.
 
-Für einen vollständigen Überblick über die Eigenschaften von Aufgabenobjekten lesen Sie den Artikel [Task Properties](guides/task-properties.md).
+Die vollständige Liste der Eigenschaften des Task-Objekts finden Sie im Artikel [Aufgaben-Eigenschaften](guides/task-properties.md).
 
 
 ## Erforderliche Eigenschaften
@@ -20,34 +20,33 @@ Für einen vollständigen Überblick über die Eigenschaften von Aufgabenobjekte
   <tr>
   <td><b class="subproperty">id</b></td>
   <td><i>string | number</i></td>
-  <td>die eindeutige Kennung des Links</td>
+  <td>die Link-ID</td>
   </tr>
   <tr>
   <td><b class="subproperty">source</b></td>
   <td><i>string | number</i></td>
-  <td>die ID der Aufgabe, bei der die Abhängigkeit beginnt</td>
+  <td>die ID einer Aufgabe, von der die Abhängigkeit beginnt</td>
   </tr>
   <tr>
   <td><b class="subproperty">target</b></td>
   <td><i>string | number</i></td>
-  <td>die ID der Aufgabe, bei der die Abhängigkeit endet</td>
+  <td>die ID einer Aufgabe, zu der die Abhängigkeit endet.</td>
   </tr>
   <tr>
   <td><b class="subproperty">type</b></td>
   <td><i>string</i></td>
-  <td>der Abhängigkeitstyp. Die verfügbaren Optionen sind im Objekt [links](api/config/links.md) definiert. Standardmäßig sind diese Werte: <ul> <li><b>"0"</b> - 'finish_to_start'.</li> <li><b>"1"</b> - 'start_to_start'.</li> <li><b>"2"</b> - 'finish_to_finish'.</li> <li><b>"3"</b> - 'start_to_finish'.</li> </ul></td>
+  <td>der Abhängigkeitstyp. Die verfügbaren Werte sind im [links](api/config/links.md) Objekt gespeichert. Standardmäßig lauten sie: <ul> <li><b>"0"</b> - 'finish_to_start'.</li> <li><b>"1"</b> - 'start_to_start'.</li> <li><b>"2"</b> - 'finish_to_finish'.</li> <li><b>"3"</b> - 'start_to_finish'.</li> </ul></td>
   </tr>
   </tbody>
 </table>
 
-Wenn Sie anstelle der Standardwerte ('0','1','2') andere Werte für Abhängigkeitstypen verwenden möchten, können Sie diese anpassen, indem Sie die entsprechenden Eigenschaften im Objekt [links](api/config/links.md) ändern. Zum Beispiel:
+Wenn Sie die Abhängigkeitstypen auf andere Weise als die Standardwerte ('0','1','2') speichern möchten, können Sie die Werte der entsprechenden Eigenschaften des Objekts [links](api/config/links.md) ändern. Zum Beispiel:
 
 ~~~js
 gantt.config.links.start_to_start = "start2start";
 ~~~
 
-Beachten Sie, dass diese Änderung nur die Speicherung des Abhängigkeitstyps betrifft, nicht aber dessen Anzeige.
-
+Hinweis: Diese Werte beeinflussen nur die Art und Weise, wie der Abhängigkeitstyp gespeichert wird, nicht das Verhalten der Visualisierung. 
 
 ## Optionale Eigenschaften
 
@@ -59,17 +58,17 @@ Beachten Sie, dass diese Änderung nur die Speicherung des Abhängigkeitstyps be
   <tr>
   <td><b class="subproperty">lag</b></td>
   <td><i>number</i></td>
-  <td>[die Verzögerungszeit zwischen Aufgaben](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks)</td>
+  <td>[die Verzögerung der Aufgabe](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks)</td>
   </tr>
   <tr>
   <td><b class="subproperty">readonly</b></td>
   <td><i>boolean</i></td>
-  <td>markiert den Link als [schreibgeschützt](guides/readonly-mode.md)</td>
+  <td>kann den Link als [readonly](guides/readonly-mode.md)</td>
   </tr>
   <tr>
   <td><b class="subproperty">editable</b></td>
   <td><i>boolean</i></td>
-  <td>markiert den Link als [bearbeitbar](guides/readonly-mode.md)</td>
+  <td>kann den Link als [editable](guides/readonly-mode.md#details-of-the-editable_property-config-option) kennzeichnen</td>
   </tr>
   </tbody>
 </table>
@@ -89,4 +88,3 @@ var data = {
     ]
 };
 ~~~
-

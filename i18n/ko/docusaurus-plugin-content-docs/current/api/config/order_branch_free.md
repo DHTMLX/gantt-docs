@@ -1,14 +1,14 @@
 ---
 sidebar_label: order_branch_free
-title: order_branch_free config
-description: "'gantt 차트 전체에서 작업을 자유롭게 재배치할 수 있는 'branch' 모드를 활성화합니다."
+title: order_branch_free 설정
+description: "전체 간트 차트에서 작업을 재정렬할 수 있도록 하는 'branch' 모드 활성화"
 ---
 
 # order_branch_free
 
 ### Description
 
-@short: 'gantt 차트 전체에서 작업을 자유롭게 재배치할 수 있는 'branch' 모드를 활성화합니다.
+@short: 전체 간트 차트에서 작업을 재정렬할 수 있도록 하는 'branch' 모드 활성화
 
 @signature: order_branch_free: boolean
 
@@ -32,5 +32,4 @@ gantt.init("gantt_here");
 - [order_branch](api/config/order_branch.md)
 
 ### Related Guides
-- [작업 순서 변경하기](guides/reordering-tasks.md)
-
+- [Reordering Tasks](guides/reordering-tasks.md)

@@ -1,14 +1,14 @@
 ---
 sidebar_label: onBeforeTaskDisplay
 title: onBeforeTaskDisplay event
-description: "срабатывает сразу после загрузки задач в Gantt chart, но непосредственно перед их отображением"
+description: "срабатывает после загрузки задач на диаграмму Ганта, но до их отображения"
 ---
 
 # onBeforeTaskDisplay
 
 ### Description
 
-@short: Срабатывает сразу после загрузки задач в Gantt chart, но непосредственно перед их отображением
+@short: Срабатывает после загрузки задач на диаграмму Ганта, но до их отображения
 
 @signature: onBeforeTaskDisplay: (id: string | number, task: Task) =\> boolean;
 
@@ -18,7 +18,7 @@ description: "срабатывает сразу после загрузки за
 - `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` result` - (boolean) - управляет выполнением действия по умолчанию события: <b>true</b> - действие выполняется, <b>false</b> - действие отменяется
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
@@ -33,11 +33,10 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 
 ### Details
 
-Это событие можно заблокировать. Возврат false предотвратит отображение задачи на диаграмме.
+Событие можно блокировать. Возврат false предотвратит отображение задачи
 
 ### Related API
 - [onBeforeLinkDisplay](api/event/onbeforelinkdisplay.md)
 
 ### Related Guides
-- [Фильтрация задач](guides/filtering.md)
-
+- [Filtering Tasks](guides/filtering.md)

@@ -1,14 +1,14 @@
 ---
 sidebar_label: duration_step
-title: duration_step config
-description: "定义多少个单位的 'gantt.config.duration_unit' 组成 'duration' 数据属性的一个单位。"
+title: duration_step 配置
+description: "设置与一个 'duration' 数据属性单位相对应的 'gantt.config.duration_unit' 单位数量。"
 ---
 
 # duration_step
 
 ### Description
 
-@short: 定义多少个单位的 'gantt.config.duration_unit' 组成 'duration' 数据属性的一个单位。
+@short: 设置与一个 'duration' 数据属性单位相对应的 'gantt.config.duration_unit' 单位数量。
 
 @signature: duration_step: number
 
@@ -17,15 +17,15 @@ description: "定义多少个单位的 'gantt.config.duration_unit' 组成 'dura
 ~~~jsx
 gantt.config.duration_unit = "hour";
 gantt.config.duration_step = 3; 
-//所以如果 task.duration = 2，任务将持续 6 小时（3*2）
+//所以如果如ask.duration = 2，，任务将持续 小时（）
 ~~~
 
-**Default value:** 1
+**默认值：**1
 
 ### Details
 
-当将 duration_unit 设置为 "hour" 或 "minute" 时，建议将 [duration_step](api/config/duration_step.md) 保持为 1。此设置使得针对工作时间计算的某些优化得以启用，而这些优化只有在 step 设置为 1 时才能正常工作。请注意，"优化" 模式与 "非优化" 模式之间存在显著的性能差异。
+如果将 duration_unit 指定为 "hour" 或 "minute" ，我们建议将 [duration_step](api/config/duration_step.md) 设置为 1。
+这样的组合在工作时间计算中会激活某些优化，只有当步长设置为 1 时才会起作用。请注意，"optimized" 与 "non-optimized" 模式之间存在显著的性能差异。
 
 ### Related API
 - [duration_unit](api/config/duration_unit.md)
-

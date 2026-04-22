@@ -1,25 +1,25 @@
 ---
 sidebar_label: onBeforeRowDragEnd
 title: onBeforeRowDragEnd event
-description: "当用户在grid中拖放一行时触发。"
+description: "当用户在网格中放下（拖拽）一行时触发"
 ---
 
 # onBeforeRowDragEnd
 
 ### Description
 
-@short: 当用户在grid中拖放一行时触发。
+@short: 当用户在网格中放下某一行时触发
 
 @signature: onBeforeRowDragEnd: (sid: string | number, parent: string | number, tindex: number) =\> boolean;
 
 ### Parameters
 
-- `sid` - (required) *string | number* - 被移动任务的ID
-- `parent` - (required) *string | number* - 父节点ID。详细说明见下文
-- `tindex` - (required) *number* - 任务被移动前的位置索引 <br>（整个树中的索引）。如果指定，<b>tindex</b>对应于"parent"分支中的索引。详见下文
+- `sid` - (required) *string | number* - 要移动的任务的 ID
+- `parent` - (required) *string | number* - 父级 ID。详见下文
+- `tindex` - (required) *number* - 将要移动的起始位置的索引 <br/>（整棵树中的索引）。如果指定，<b>tindex</b> 将引用 'parent' 分支中的索引。详见下文
 
 ### Returns
-- ` result` - (boolean) - 决定默认事件动作是否继续执行（<b>true</b>）或被取消（<b>false</b>）
+- ` result` - (boolean) - 定义事件默认操作是否将被触发（<b>true</b>）还是取消（<b>false</b>）
 
 ### Example
 
@@ -33,27 +33,25 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 ~~~
 
 ### Related samples
-- [Branch ordering](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
+- [分支排序](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
 
 ### Details
 
 :::note
-
-当使用鼠标在左侧grid中移动任务时触发此事件，前提是启用了[order_branch](api/config/order_branch.md)设置。如果关闭了分支重新排序功能，则不会触发此事件。
- 
+事件在左侧网格中通过鼠标指针移动任务时触发，且启用了 [order_branch](api/config/order_branch.md) 设置。如果禁用分支重新排序，将永远不会调用该事件。
 :::
 
-- 事件触发时，任务已经被移动到新位置，但更改仍可撤销
-- 事件可以被阻止。返回*false*会取消操作并将任务返回到原始位置
-- 处理函数会接收到任务的原始位置（父节点和索引）作为参数
-- 目标位置可以通过任务对象的[task.parent](guides/task-tree-operations.md#renwudefurenwu)和[gantt.getGlobalTaskIndex(taskId)](api/method/getglobaltaskindex.md)访问
-- **parent**和**tindex**参数根据[order_branch](api/config/order_branch.md)模式不同而不同:
-    - 在标准模式（"true"）下:
-        - **parent**参数指任务的*原始*父节点（移动前）
-        - **tindex**参数指*原始*局部索引
-    - 在"marker"模式下:
-        - **parent**参数指任务的新父节点
-        - **tindex**参数指新局部索引
+- 当事件被触发时，任务已经被移动到新位置，但仍可撤销更改
+- 该事件是可中断的。返回 *false* 将取消操作并将任务移回原始位置
+- 原始位置（parent 和 index）可从处理程序参数中获取
+- 目标位置可以通过任务对象 [task.parent](guides/task-tree-operations.md#parent-of-a-task) 和 [gantt.getGlobalTaskIndex(taskId)](api/method/getglobaltaskindex.md) 获取
+- The **parent** 与 **tindex** 参数的取值取决于所设置的 [order_branch](api/config/order_branch.md) 模式：
+    - 在常规模式（"true"）：
+        - **parent** 参数指向原始任务的父级（任务移动到新位置之前的父级）
+        - **tindex** 参数指向原始本地索引
+    - 在 "marker" 模式：
+        - **parent** 参数指向新任务的父级
+        - **tindex** 参数指向新本地索引
 
 ### Related API
 - [onRowDragEnd](api/event/onrowdragend.md)
@@ -61,5 +59,4 @@ gantt.attachEvent("onBeforeRowDragEnd", function(id, parent, tindex){
 - [order_branch](api/config/order_branch.md)
 
 ### Related Guides
-- [任务重新排序](guides/reordering-tasks.md)
-
+- [重新排序任务](guides/reordering-tasks.md)

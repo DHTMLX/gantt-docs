@@ -1,7 +1,7 @@
 ---
 sidebar_label: onBeforeAutoSchedule
 title: onBeforeAutoSchedule event
-description: "자동 스케줄링이 시작되기 직전에 트리거됩니다."
+description: "자동 스케줄링 이전에 발생"
 ---
 
 # onBeforeAutoSchedule
@@ -10,36 +10,36 @@ description: "자동 스케줄링이 시작되기 직전에 트리거됩니다."
 :::
 ### Description
 
-@short: 자동 스케줄링이 시작되기 직전에 트리거됩니다.
+@short: 자동 스케줄링 이전에 트리거됩니다
 
-@signature: onBeforeAutoSchedule: (taskId: string | number) =\> boolean;
+@signature: onBeforeAutoSchedule: (taskId: string | number) => boolean;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - 루트 작업의 ID
+- `taskId` - (required) *string | number* - 루트 태스크 ID
 
 ### Returns
-- ` result` - (boolean) - 이벤트의 기본 동작이 진행될지(<b>true</b>) 취소될지(<b>false</b>) 결정합니다.
+- ` result` - (boolean) - 이 이벤트의 기본 동작이 트리거될지(<b>true</b>) 또는 취소될지(<b>false</b>)를 정의합니다.
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeAutoSchedule",function(taskId){
-    // 여기에 사용자 정의 로직을 작성하세요
+    // 여기에 코드 작성
     return true;
 });
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [자동 스케줄링 확장](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
- 이 이벤트는 **auto_scheduling** 확장의 일부이므로, [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인이 활성화되어 있는지 확인하세요. 자세한 내용은 [자동 스케줄링](guides/auto-scheduling.md) 문서를 참고하세요. 
+이벤트는 **auto_scheduling** 확장에 정의되어 있으므로 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인을 활성화해야 합니다. 자세한 내용은 [자동 스케줄링](guides/auto-scheduling.md) 문서를 참조하세요.
 :::
 
-이 이벤트는 차단할 수 있습니다. *false*를 반환하면 추가 처리가 중단됩니다.
+이벤트은 차단 가능합니다. *false*를 반환하면 추가 처리가 취소됩니다.
 
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
@@ -59,4 +59,3 @@ gantt.attachEvent("onBeforeAutoSchedule",function(taskId){
 
 ### Related Guides
 - [자동 스케줄링](guides/auto-scheduling.md)
-

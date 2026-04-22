@@ -5,16 +5,16 @@ sidebar_label: "Aufgaben filtern"
 
 # Aufgaben filtern
 
-Das Filtern hilft dabei, zu steuern, welche Aufgaben im Gantt-Diagramm angezeigt werden, indem deren Anzahl und Typ eingeschränkt werden. So kann beispielsweise festgelegt werden, dass nur Aufgaben angezeigt werden, die einem bestimmten Mitarbeiter zugewiesen sind oder als dringend markiert wurden.
+Die Filterung ermöglicht es Ihnen, die Anzahl und die Eigenschaften der im Gantt-Diagramm dargestellten Aufgaben zu steuern. Beispielsweise können Sie die Filterung verwenden, um die Aufgaben anzuzeigen, die einem bestimmten Mitarbeiter zugewiesen sind, oder die Aufgaben mit dringender Priorität.
 
-Beachten Sie, dass dhtmlxGantt die Filterung auf der Client-Seite unterstützt.
+Hinweis: dhtmlxGantt unterstützt clientseitiges Filtern.
 
-![filtering](/img/filtering.png)
+![Filterung](/img/filtering.png)
 
-Um eine Filterung anzuwenden, verwenden Sie das @[onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md)-Ereignis und geben Sie zurück:
+Um Daten zu filtern, verwenden Sie das [onBeforeTaskDisplay] Ereignis und geben Sie Folgendes zurück:
 
-- *true*, um eine Aufgabe anzuzeigen
-- *false*, um eine Aufgabe auszublenden
+- *true*, für eine Aufgabe, die Sie anzeigen möchten
+- *false*, für eine Aufgabe, die Sie nicht anzeigen möchten
 
 **Nur Aufgaben mit hoher Priorität anzeigen**
 ~~~js
@@ -26,13 +26,10 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 });
 ~~~
 
+[Grundlegende Filterung](https://docs.dhtmlx.com/gantt/samples/07_grid/03_filtering.html)
 
-[Basic filtering](https://docs.dhtmlx.com/gantt/samples/07_grid/03_filtering.html)
+Um Daten einer aufgeteilten Aufgabe zu filtern, wenden Sie das [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) Ereignis an.
 
-
-Um Teile einer geteilten Aufgabe zu filtern, verwenden Sie das @[onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md)-Ereignis.
-
-Es gibt außerdem eine Videoanleitung, die zeigt, wie Sie die Aufgabenfilterung einrichten können.
+Sie können sich die Videoanleitung ansehen, die zeigt, wie Sie das Filtern von Aufgaben implementieren.
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/LyJ3zKSrmH4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-

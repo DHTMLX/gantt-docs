@@ -6,29 +6,26 @@ sidebar_label: "Kritischer Pfad"
 # Kritischer Pfad
 
 :::info
-Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar
 :::
 
-Der kritische Pfad stellt eine Abfolge von Aufgaben dar, die nicht verschoben werden können, ohne das gesamte Projekt zu verzögern.
+Ein kritischer Pfad ist eine Abfolge von Aufgaben, die nicht verzögert werden kann. Andernfalls würde das gesamte Projekt verzögert werden.
 
+Der kritische Pfad bestimmt auch die kürzeste Zeit, die das Projekt benötigen kann.
 
-Er definiert außerdem die minimale Dauer, die zur Fertigstellung des Projekts erforderlich ist.
+Eine Aufgabe gilt als kritisch, wenn sie keinen Puffer (Slack) hat und jede Verzögerung sich direkt auf das Fertigstellungsdatum des Projekts auswirken würde. Die detaillierte Erklärung, wie die Berechnung des kritischen Pfads funktioniert, finden Sie im Abschnitt [Critical path logic](#critical-path-logic).
 
+Slack-Zeit ist die Zeit, um die eine Aufgabe verschoben werden kann, ohne andere Aufgaben oder den Abschluss des Projekts zu beeinflussen.
 
-Eine Aufgabe gilt als kritisch, wenn sie keinen Puffer (Slack Time) hat, d.h. jede Verzögerung dieser Aufgabe wirkt sich direkt auf das Projekt-Enddatum aus. Weitere Details zur Berechnung des kritischen Pfads finden Sie im Abschnitt [Logik des kritischen Pfads](#criticalpathlogic).
-
-
-Pufferzeit bezeichnet die Zeitspanne, um die eine Aufgabe verzögert werden kann, ohne nachfolgende Aufgaben oder den gesamten Projekttermin zu beeinflussen.
-
-<div style="text-align:center;">![critical_path](/img/critical_path.png)</div>
+<div style="text-align:center;">![kritischer_pfad](/img/critical_path.png)</div>
 
 :::note
-Um diese Erweiterung zu nutzen, aktivieren Sie sie über die Methode [gantt.plugins](api/method/plugins.md).
+Um die Erweiterung zu verwenden, aktivieren Sie sie mit der Methode [gantt.plugins](api/method/plugins.md).
 :::
 
 Um den kritischen Pfad im Gantt-Diagramm anzuzeigen, setzen Sie die Eigenschaft [highlight_critical_path](api/config/highlight_critical_path.md) auf 'true':
 
-**Aktivierung der Anzeige des kritischen Pfads im Gantt-Diagramm**
+(Damit das Gantt-Diagramm den kritischen Pfad anzeigt)
 ~~~js
 <!DOCTYPE html>
 <html>
@@ -41,7 +38,7 @@ Um den kritischen Pfad im Gantt-Diagramm anzuzeigen, setzen Sie die Eigenschaft 
         critical_path: true /*!*/
     }); /*!*/
     gantt.config.highlight_critical_path = true;
-    //Ihr Code kommt hier hin
+    //your code will be here
 </body>
 </html>
 ~~~
@@ -50,30 +47,31 @@ Um den kritischen Pfad im Gantt-Diagramm anzuzeigen, setzen Sie die Eigenschaft 
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-Wenn diese Eigenschaft aktiviert ist, überwacht dhtmlxGantt automatisch den Aufgabenstatus und aktualisiert entsprechend den kritischen Pfad. 
-Kritische Aufgaben und Verbindungen erhalten zusätzliche CSS-Klassen mit den Namen *'critical_task'* bzw. *'critical_link'*. 
+Beachten Sie, dass dhtmlxGantt automatisch den Status der Aufgaben prüft und den kritischen Pfad aktualisiert, wenn die Eigenschaft aktiviert ist. 
+Kritische Aufgaben und Verknüpfungen erhalten entsprechend die zusätzlichen CSS-Klassen *'critical_task'* und *'critical_link'*.
 
-Jedes Mal, wenn eine Aufgabe aktualisiert wird, zeichnet dhtmlxGantt die Daten vollständig neu, um den kritischen Pfad neu zu berechnen. 
-Dieser Vorgang kann gelegentlich die Leistung beeinträchtigen. Um dem entgegenzuwirken, stellt die Komponente öffentliche Methoden zur Verfügung, mit denen gezielt bestimmte Aufgaben oder Verbindungen überprüft werden können, um den kritischen Pfad ressourcenschonender anzuzeigen.
+Jedes Mal, wenn eine Aufgabe geändert wird, wird dhtmlxGantt die Daten vollständig neu zeichnen, um den kritischen Pfad neu zu berechnen. 
+Manchmal kann dies zu Leistungsproblemen führen. Für diesen Fall stellt die Komponente öffentliche Methoden bereit, mit denen Sie eine bestimmte Aufgabe oder eine Verknüpfung überprüfen und eine leistungsschonendere Strategie zur Darstellung des kritischen Pfads implementieren können.
+
 
 ## Logik des kritischen Pfads
 
-Gantt markiert eine Aufgabe unter folgenden Bedingungen als kritisch:
+Gantt betrachtet eine Aufgabe in den folgenden Fällen als kritisch:
 
-1. Die Aufgabe hat das späteste Enddatum im gesamten Diagramm.
+1. Die Aufgabe hat das späteste Enddatum im gesamten Gantt-Diagramm.
 
-![](/img/critical_tasks.png)
+![critical_tasks](/img/critical_tasks.png)
 
-2. Die Aufgabe ist mit einer kritischen Aufgabe ohne Verzögerung (Lag) verbunden.
+2. Die Aufgabe ist mit einer kritischen Aufgabe verbunden, und der Lag zwischen ihnen beträgt 0.
 
-Die Verzögerung (Lag) hängt von der Einstellung **gantt.config.duration_unit** ab. Wenn **duration_unit** auf *'day'* gesetzt ist und die Aufgabendauer mehrere Stunden umfasst, rundet Gantt die Dauer wie folgt:
+Der Lag hängt vom Wert des Parameters **gantt.config.duration_unit** ab. Wenn der **duration_unit** auf *'day'* gesetzt ist und die Dauer zwischen Aufgaben mehrere Stunden beträgt, rundet Gantt die Dauer nach den folgenden Regeln:
 
-- ab, wenn die Dauer 12 Stunden oder mehr beträgt
-- auf, wenn sie weniger als 12 Stunden beträgt
+- Rundet die Dauer ab, wenn sie größer oder gleich 12 Stunden ist
+- Rundet die Dauer auf, wenn sie weniger als 12 Stunden beträgt
 
-Wenn ein Verbindungsobjekt einen Lag-Parameter enthält, modifiziert dieser die Dauer zwischen Aufgaben. Beispielsweise bedeutet ein *Lag* von 1, dass die Aufgabe dann kritisch wird, wenn die Dauer zwischen Aufgaben 1 beträgt.
-
-Hier Beispiele mit unterschiedlichen **link.lag**-Werten:
+Wenn das Link-Objekt den Lag-Parameter enthält, ermöglicht er das Ändern der Dauer zwischen den Aufgaben. Zum Beispiel wird eine Lag von 1 kritisch, wenn die Dauer zwischen Aufgaben 1 beträgt. 
+  
+Hier sind einige Beispiele mit unterschiedlichen Werten von **link.lag**:
 
 - link.lag ist 0
 
@@ -90,7 +88,7 @@ const tasks = {
 }
 ~~~
 
-![](/img/lag0.png)
+![Verzögerung0](/img/lag0.png)
 
 - link.lag ist 1
 
@@ -107,7 +105,7 @@ const tasks = {
 }
 ~~~
 
-![](/img/lag1.png)
+![Verzögerung1](/img/lag1.png)
 
 - link.lag ist -1
 
@@ -124,16 +122,17 @@ const tasks = {
 }
 ~~~
 
-![](/img/lag_1.png)
+![Lag_-1](/img/lag_1.png)
 
-3. Der Parameter **gantt.config.project_end** ist gesetzt und die Aufgabendaten gehen über dieses Datum hinaus.
+3. Der Parameter **gantt.config.project_end** ist festgelegt und die Aufgaben-Daten liegen größer als das Datum **gantt.config.project_end**.
 
-Die eingebaute Logik des kritischen Pfads kann derzeit nicht angepasst werden.
-Sie können jedoch das [Verhalten des kritischen Pfads anpassen](#customizingthecriticalpathbehaviour).
+Leider gibt es keine Möglichkeit, die integrierte Logik zu ändern, die den kritischen Pfad definiert.
+Sie können jedoch das Verhalten des kritischen Pfads anpassen, siehe unten.
 
-## Überprüfen, ob eine Aufgabe kritisch ist 
 
-Um zu bestimmen, ob eine Aufgabe kritisch ist, verwenden Sie die Methode [isCriticalTask](api/method/iscriticaltask.md):
+## Prüfen, ob eine Aufgabe kritisch ist 
+
+Um zu prüfen, ob eine bestimmte Aufgabe kritisch ist, verwenden Sie die Methode [isCriticalTask](api/method/iscriticaltask.md):
 
 ~~~js
 gantt.config.highlight_critical_path = true; /*!*/
@@ -147,9 +146,9 @@ gantt.isCriticalTask(gantt.getTask("task3"));// ->'true' /*!*/
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-## Überprüfen, ob eine Verbindung kritisch ist 
+## Prüfen, ob ein Link kritisch ist 
 
-Um zu prüfen, ob eine Verbindung zwei kritische Aufgaben verbindet, verwenden Sie die Methode [isCriticalLink](api/method/iscriticallink.md):
+Um zu prüfen, ob ein Link kritisch ist (verbindet zwei kritische Aufgaben), verwenden Sie die Methode [isCriticalLink](api/method/iscriticallink.md):
 
 ~~~js
 gantt.isCriticalLink(gantt.getLink("link1"));
@@ -159,13 +158,13 @@ gantt.isCriticalLink(gantt.getLink("link1"));
 [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 
-## Freien und gesamten Puffer ermitteln
+## Freier und Gesamter Puffer {#gettingfreeandtotalslack}
 
-**Freier Puffer** ist die Zeitspanne, um die eine Aufgabe oder ein Meilenstein verlängert oder verschoben werden kann, ohne die nächste verbundene Aufgabe zu verzögern.
+**Freier Puffer** - ein Zeitraum, der verwendet werden kann, um die Dauer einer Aufgabe zu erhöhen oder sie im Zeitplan zu verschieben, ohne die nächste damit verbundene Aufgabe zu beeinflussen.
 
-Freier Puffer gilt für die Typen 'task' und 'milestone'.
+Freier Puffer kann für die Typen **'task'** und **'milestone'** von Aufgaben berechnet werden.
 
-Um den freien Puffer einer Aufgabe zu ermitteln, verwenden Sie die Methode [getFreeSlack](api/method/getfreeslack.md) und übergeben das Aufgabenobjekt:
+Um den freien Puffer einer Aufgabe zu erhalten, verwenden Sie die Methode [getFreeSlack](api/method/getfreeslack.md). Sie nimmt das Aufgaben-Objekt als Parameter:
 
 ~~~js
 var task = gantt.getTask(7);
@@ -173,14 +172,14 @@ gantt.getFreeSlack(task);
 ~~~
 
 
-[Show Slack time](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
+[Zeige Pufferzeit](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
 
 
-**Gesamter Puffer** bezeichnet die Zeit, um die eine Aufgabe verzögert werden kann, ohne das gesamte Projektende zu beeinflussen.
+**Gesamter Puffer** - ein Zeitraum, der genutzt werden kann, um die Dauer einer Aufgabe zu erhöhen oder sie im Zeitplan zu verschieben, ohne die Endzeit des gesamten Projekts zu beeinflussen.
 
-Der gesamte Puffer kann für alle Aufgabentypen, einschließlich Projekte, berechnet werden.
+Der Gesamte Puffer kann für alle Aufgabentypen berechnet werden, einschließlich Projekten.
 
-Um den gesamten Puffer einer Aufgabe zu erhalten, verwenden Sie die Methode [getTotalSlack](api/method/gettotalslack.md) mit dem Aufgabenobjekt:
+Um den Gesamten Puffer einer Aufgabe zu erhalten, verwenden Sie die Methode [getTotalSlack](api/method/gettotalslack.md). Sie nimmt ebenfalls das Aufgaben-Objekt als Parameter:
 
 ~~~js
 var task = gantt.getTask(7);
@@ -188,16 +187,17 @@ gantt.getTotalSlack(task);
 ~~~
 
 
-[Show Slack time](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
+[Zeige Pufferzeit](https://docs.dhtmlx.com/gantt/samples/08_api/17_show_task_slack.html)
 
 
 ![Slack](/img/show_slack.png)
 
-## Anpassen des Verhaltens des kritischen Pfads
 
-Standardmäßig verwendet gantt das Standardverhalten für den kritischen Pfad, einschließlich der Standard-Hervorhebungsstile und der Neuberechnung des Pfads bei jeder Datenänderung.
+## Anpassung des Verhaltens des kritischen Pfads
 
-Um die Sichtbarkeit des kritischen Pfads zu steuern, können Sie diese Methode verwenden:
+Standardmäßig wendet der Gantt-Plot das Default-Verhalten auf den kritischen Pfad an, z. B. den Standardstil für die Hervorhebung, sowie die Neuberechnung des kritischen Pfads bei jeder Datenaktualisierung.
+
+Um die Sichtbarkeit des kritischen Pfads zu steuern, verwenden Sie den folgenden Ansatz:
 
 ~~~js
 var isEnabled = false
@@ -210,9 +210,9 @@ function updateCriticalPath(){
 }
 ~~~
 
-Dieser Ansatz ist hilfreich, wenn viele Aufgaben verwaltet werden, da das häufige Neuberechnen des kritischen Pfads die Leistung beeinträchtigen kann.
+Es kann nützlich sein, wenn Sie eine große Anzahl von Aufgaben haben und die Neuberechnung des kritischen Pfads die Leistung beeinträchtigen könnte.
 
-Um den kritischen Pfad und die Hervorhebung manuell zu aktualisieren, verwenden Sie folgenden Ansatz:
+Um den kritischen Pfad manuell neu zu berechnen und die zugehörige Formatierung anzuwenden, verwenden Sie den folgenden Ansatz:
 
 ~~~js
 gantt.templates.task_class = function(start, end, task){
@@ -251,20 +251,22 @@ gantt.parse(data);
 ~~~
 
 
-Sie können Aufgaben und Verbindungen auch manuell hervorheben:
+Es ist auch möglich, Aufgaben und Verknüpfungen manuell hervorzuheben:
 
-- Die Rückgabe von "gantt_critical_task" im [task_class](api/template/task_class.md)-Template hebt die Aufgabe als kritisch hervor.
-- Die Rückgabe von "gantt_critical_link" im [link_class](api/template/link_class.md)-Template hebt die Verbindung als kritisch hervor.
+- Wenn Sie in der [task_class](api/template/task_class.md) Vorlage **gantt_critical_task** zurückgeben, wird die Aufgabe als kritisch hervorgehoben.
+- Wenn Sie in der [link_class](api/template/link_class.md) Vorlage **gantt_critical_link** zurückgeben, wird der Link als kritisch hervorgehoben.
 
-**Beispiel:** [Custom critical path per project](https://snippet.dhtmlx.com/jd4dyc5p)
+**Zugehöriges Beispiel:** [Custom critical path per project](https://snippet.dhtmlx.com/jd4dyc5p)
 
-## Festlegen von Lag- und Leadzeiten zwischen Aufgaben
 
-Lag- und Leadzeiten zwischen Aufgaben des kritischen Pfads können konfiguriert werden. Details finden Sie [hier](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks).
+## Festlegung von Lag- und Lead-Zeiten zwischen Aufgaben
+
+Es ist möglich, Lag- und Lead-Zeiten zwischen Aufgaben des kritischen Pfads festzulegen. Die Details finden Sie [hier](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks).
+
 
 ## Planung abgeschlossener Aufgaben
 
-Standardmäßig behandelt der Algorithmus des kritischen Pfads abgeschlossene Aufgaben (mit Fortschrittswert 1) genauso wie unvollständige Aufgaben.
+Standardmäßig gibt es keinen Unterschied darin, wie der kritische Pfad-Algorithmus abgeschlossene Aufgaben (Aufgaben mit einem Fortschritt von 1) und unvollständige Aufgaben verarbeitet.
 
 Optional können Sie die Konfiguration [auto_scheduling_use_progress](api/config/auto_scheduling_use_progress.md) aktivieren, um dieses Verhalten zu ändern:
 
@@ -274,7 +276,6 @@ gantt.config.auto_scheduling_use_progress = true;
 gantt.init("gantt_here");
 ~~~
 
-Mit dieser Einstellung werden abgeschlossene Aufgaben vom kritischen Pfad und der automatischen Planung ausgeschlossen.
+Wenn die Konfiguration aktiviert ist, werden abgeschlossene Aufgaben aus dem kritischen Pfad und der automatischen Planung ausgeschlossen.
 
-Weitere Informationen finden Sie auf der [API-Seite](api/config/auto_scheduling_use_progress.md).
-
+Weitere Details finden Sie auf der [API-Seite](api/config/auto_scheduling_use_progress.md).

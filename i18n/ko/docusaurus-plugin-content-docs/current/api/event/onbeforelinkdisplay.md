@@ -1,24 +1,24 @@
 ---
 sidebar_label: onBeforeLinkDisplay
 title: onBeforeLinkDisplay event
-description: "링크가 간트 차트에 로드된 후, 화면에 표시되기 직전에 트리거됩니다."
+description: "링크가 간트 차트에 로드된 후 표시되기 전에 발생합니다"
 ---
 
 # onBeforeLinkDisplay
 
 ### Description
 
-@short: 링크가 간트 차트에 로드된 후, 화면에 표시되기 직전에 트리거됩니다.
+@short: 링크가 간트 차트에 로드된 후 표시되기 전에 발생합니다
 
 @signature: onBeforeLinkDisplay: (id: string | number, link: Link) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 링크의 고유 식별자
-- `link` - (required) *Link* - 링크 객체 자체
+- `id` - (필수) *string | number* - 링크 ID
+- `link` - (필수) *Link* - 링크 객체
 
 ### Returns
-- ` result` - (boolean) - 이벤트의 기본 동작이 진행될지(<b>true</b>) 취소될지(<b>false</b>) 결정합니다.
+- ` result` - (boolean) - 기본 이벤트의 기본 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소될 때 (<b>false</b>)
 
 ### Example
 
@@ -33,8 +33,7 @@ gantt.attachEvent("onBeforeLinkDisplay", function(id, link){
 
 ### Details
 
-이 이벤트는 차단할 수 있습니다. false를 반환하면 링크가 표시되지 않습니다.
+이벤트는 차단 가능합니다. false를 반환하면 링크가 표시되지 않습니다
 
 ### Related API
 - [onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md)
-

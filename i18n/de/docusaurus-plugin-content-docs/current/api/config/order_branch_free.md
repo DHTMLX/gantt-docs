@@ -1,14 +1,14 @@
 ---
 sidebar_label: order_branch_free
-title: order_branch_free config
-description: "ermöglicht den 'branch'-Modus, der es erlaubt, Tasks überall innerhalb des gesamten Gantt-Diagramms neu anzuordnen"
+title: order_branch_free Konfiguration
+description: "aktiviert den 'branch'-Modus, der das Neuordnen von Aufgaben im gesamten Gantt-Diagramm ermöglicht"
 ---
 
 # order_branch_free
 
 ### Description
 
-@short: Ermöglicht den 'branch'-Modus, der es erlaubt, Tasks überall innerhalb des gesamten Gantt-Diagramms neu anzuordnen
+@short: Aktiviert den 'branch'-Modus, der das Neuordnen von Aufgaben im gesamten Gantt ermöglicht
 
 @signature: order_branch_free: boolean
 
@@ -23,14 +23,13 @@ gantt.config.order_branch_free = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
-- [Drag and drop rows in Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
+- [Ziehen und Ablegen von Zeilen im Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
 
 ### Related API
 - [order_branch](api/config/order_branch.md)
 
 ### Related Guides
-- ["Aufgaben neu anordnen"](guides/reordering-tasks.md)
-
+- [Aufgaben neu ordnen](guides/reordering-tasks.md)

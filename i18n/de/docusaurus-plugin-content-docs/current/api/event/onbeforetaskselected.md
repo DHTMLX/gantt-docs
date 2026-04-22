@@ -1,38 +1,37 @@
 ---
 sidebar_label: onBeforeTaskSelected
-title: onBeforeTaskSelected event
-description: "Wird unmittelbar ausgelöst, bevor eine Aufgabe ausgewählt wird"
+title: onBeforeTaskSelected Ereignis
+description: "Wird ausgelöst, bevor der Benutzer eine Aufgabe auswählt"
 ---
 
 # onBeforeTaskSelected
 
 ### Description
 
-@short: Wird unmittelbar ausgelöst, bevor eine Aufgabe ausgewählt wird
+@short: Wird ausgelöst, bevor der Benutzer eine Aufgabe auswählt
 
 @signature: onBeforeTaskSelected: (id: string | number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID der Aufgabe
+- `id` - (required) *string | number* - die Aufgaben-ID
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- `result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (true) oder abgebrochen wird (false)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskSelected", function(id){
-    //Hier kann benutzerdefinierte Logik hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
 
 ### Details
 
-Dieses Event kann blockiert werden. Die Rückgabe von *false* verhindert, dass die Standardaktion ausgeführt wird.
+Das Event kann blockiert werden. Geben Sie *false* zurück, um die Standardverarbeitung abzubrechen.
 
 ### Related API
 - [onTaskSelected](api/event/ontaskselected.md)
 - [onTaskUnselected](api/event/ontaskunselected.md)
-

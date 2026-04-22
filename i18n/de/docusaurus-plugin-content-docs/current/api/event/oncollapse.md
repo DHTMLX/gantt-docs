@@ -1,14 +1,14 @@
 ---
 sidebar_label: onCollapse
 title: onCollapse event
-description: "Löst aus, wenn die Gantt-Ansicht vom Vollbildmodus zurück in den Normalmodus wechselt."
+description: "Wird ausgelöst, wenn das Gantt-Diagramm vom Vollbildmodus wieder in den Normalmodus wechselt"
 ---
 
 # onCollapse
 
 ### Description
 
-@short: Löst aus, wenn die Gantt-Ansicht vom Vollbildmodus zurück in den Normalmodus wechselt.
+@short: Wird ausgelöst, wenn das Gantt-Diagramm vom Vollbildmodus wieder in den Normalmodus wechselt
 
 @signature: onCollapse: () =\> void;
 
@@ -16,7 +16,7 @@ description: "Löst aus, wenn die Gantt-Ansicht vom Vollbildmodus zurück in den
 
 ~~~jsx
 gantt.attachEvent("onCollapse", function (){
-    // beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
@@ -26,7 +26,7 @@ gantt.attachEvent("onCollapse", function (){
 ### Details
 
 :::note
- Dieses Event ist Teil der **fullscreen**-Erweiterung. Stellen Sie daher sicher, dass Sie das [fullscreen](guides/extensions-list.md#fullscreen) Plugin über die Methode [gantt.plugins](api/method/plugins.md) aktivieren. Weitere Details finden Sie im Artikel ["Vollbildmodus"](guides/fullscreen-mode.md). 
+Dieses Ereignis ist in der **Vollbild-Erweiterung** definiert, daher müssen Sie das Vollbild-Plugin mithilfe der [gantt.plugins](api/method/plugins.md) Methode aktivieren. Lesen Sie die Details im Artikel [Full Screen Mode](guides/fullscreen-mode.md). 
 :::
 
 ### Related API
@@ -37,5 +37,4 @@ gantt.attachEvent("onCollapse", function (){
 - [expand](api/method/expand.md)
 
 ### Related Guides
-- ["Vollbildmodus"](guides/fullscreen-mode.md)
-
+- [Full Screen Mode](guides/fullscreen-mode.md)

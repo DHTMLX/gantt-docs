@@ -43,7 +43,7 @@ sample: [Filter split tasks ](https://snippet.dhtmlx.com/3q1yd7iz)
 :::
 
 ### Related Guides
-- [Split Tasks](/guides/split-tasks/)
+- [Split Tasks](guides/split-tasks.md)
 
 ### Change log
 - added in v8.0

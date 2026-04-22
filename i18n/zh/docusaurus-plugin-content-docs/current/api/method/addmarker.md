@@ -1,58 +1,59 @@
 ---
 sidebar_label: addMarker
-title: addMarker method
-description: "向时间轴区域添加一个marker"
+title: addMarker 方法
+description: "向时间线区域添加一个标记"
 ---
 
 # addMarker
 
 ### Description
 
-@short: 向时间轴区域添加一个marker
+@short: 向时间线区域添加一个标记
 
 @signature: addMarker: (marker: MarkerConfig) =\> number | string
 
 ### Parameters
 
-- `marker` - (required) *MarkerConfig* - marker的配置对象
+- `marker` - (required) *MarkerConfig* - 标记的配置对象
 
 ### Returns
-- `markerId` - (number|string) - 可选，marker的id
+- `markerId` - (number|string) - 可选，标记的 id
 
 ### Example
 
 ~~~jsx
-var todayMarker = gantt.addMarker({
+const dateToString = gantt.date.date_to_str(gantt.config.task_date);
+const markerId = gantt.addMarker({
     start_date: new Date(),
     css: "today",
-    title:date_to_str( new Date())
+    title: dateToString(new Date())
 });
-setInterval(function(){
-    var today = gantt.getMarker(todayMarker);
-    today.start_date = new Date();
-    today.title = date_to_str(today.start_date);
-    gantt.updateMarker(todayMarker);
-}, 1000*60);
+
+setInterval(() => {
+    const marker = gantt.getMarker(markerId);
+    marker.start_date = new Date();
+    marker.title = dateToString(marker.start_date);
+    gantt.updateMarker(markerId);
+}, 1000 * 60);
 ~~~
 
 ### Related samples
-- [Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
+- [Gantt 中的 Today 与 Status 线（竖直标记）](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 ### Details
 
 :::note
-该方法属于**marker**扩展的一部分，请确保启用了[marker](guides/extensions-list.md#chuizhibiaoji)插件。更多详情请参阅[添加垂直标记](guides/markers.md)文章。 
+此方法在 **marker** 扩展中定义，因此需要启用该 [marker](guides/extensions-list.md#vertical-marker) 插件。请阅读 [Adding Vertical Markers](guides/markers.md) 文章中的详细信息。
 :::
 
+配置对象具有以下属性：
 
-配置对象包括以下属性:
-
-- **id?** - (*string | number*) - marker的id
-- **start_date** - (*Date*) - 指定marker开始时间的Date对象
-- **end_date?** - (*Date*) - 指定marker结束时间的Date对象
-- **css?** - (*string*) - 用于样式化marker的CSS类
-- **text?** - (*string | number*) - marker的标题文本
-- **title?** - (*string | number*) - marker的tooltip文本
+- **id?** - (*string | number*) - 标记的 id
+- **start_date** - (*Date*) - 设置标记起始日期的 Date 对象
+- **end_date?** - (*Date*) - 设置标记结束日期的 Date 对象
+- **css?** - (*string*) - 应用于标记的 CSS 类
+- **text?** - (*string | number*) - 标记标题
+- **title?** - (*string | number*) - 标记的 tooltip
 
 ### Related API
 - [getMarker](api/method/getmarker.md)
@@ -62,5 +63,4 @@ setInterval(function(){
 - [show_markers](api/config/show_markers.md)
 
 ### Related Guides
-- [添加垂直标记](guides/markers.md)
-
+- [Adding Vertical Markers](guides/markers.md)

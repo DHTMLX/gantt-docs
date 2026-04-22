@@ -1,17 +1,16 @@
 ---
-title: "配置甘特图"
-sidebar_label: "配置甘特图"
+title: "甘特图配置"
+sidebar_label: "甘特图配置"
 ---
 
-# 配置甘特图
+# 甘特图配置
 
 ![gantt_basic](/img/gantt_basic.png)
 
-
-- [Configuration](guides/common-configuration.md)
-- [간트 레이아웃](guides/layout-config.md)
-- [리소스 관리](guides/resource-management.md)
-- [이벤트 처리](guides/handling-events.md)
-- [여러 개의 차트를 한 페이지에 표시하기](guides/multiple-gantts.md)
-- [Gantt 인스턴스의 특이점](guides/gantt-instance.md)
-- [서버에서 Gantt 사용하기](guides/using-gantt-on-server.md)
+- [配置](guides/common-configuration.md)
+- [甘特图布局](guides/layout-config.md)
+- [资源管理](guides/resource-management.md)
+- [事件处理](guides/handling-events.md)
+- [同一页面的多个甘特图](guides/multiple-gantts.md)
+- [甘特图实例的特点](guides/gantt-instance.md)
+- [在服务器上使用甘特图](guides/using-gantt-on-server.md)

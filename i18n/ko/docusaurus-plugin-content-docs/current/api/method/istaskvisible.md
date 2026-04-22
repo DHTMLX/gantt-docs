@@ -1,23 +1,23 @@
 ---
 sidebar_label: isTaskVisible
-title: isTaskVisible method
-description: "지정된 작업이 현재 간트 차트에 표시되고 있는지 여부를 결정합니다."
+title: isTaskVisible 메서드
+description: "지정된 작업이 현재 Gantt 차트에 렌더링되어 있는지 확인합니다"
 ---
 
 # isTaskVisible
 
 ### Description
 
-@short: 지정된 작업이 현재 간트 차트에 표시되고 있는지 여부를 결정합니다.
+@short: 지정된 작업이 현재 Gantt 차트에 렌더링되어 있는지 확인합니다
 
-@signature: isTaskVisible: (id: string | number) =\> boolean
+@signature: isTaskVisible: (id: string | number) => boolean
 
 ### Parameters
 
-- `id` - (required) *string | number* -       작업의 고유 식별자
+- `id` - (required) *string | number* -        작업의 ID
 
 ### Returns
-- ` isvisible` - (boolean) - <i>true</i> 작업이 현재 간트 차트에 표시되고 있으면; 그렇지 않으면 <i>false</i>
+- ` isvisible` - (boolean) - <i>true</i>, if the task is currently rendered in the Gantt chart. Otherwise, <i>false</i>
 
 ### Example
 
@@ -35,5 +35,5 @@ const tasks = {
 gantt.init("gantt_here");
 gantt.parse(tasks);
  
-gantt.isTaskVisible("t_1"); // ->true  /*!*/
+gantt.isTaskVisible("t_1"); // ->참  /*!*/
 ~~~

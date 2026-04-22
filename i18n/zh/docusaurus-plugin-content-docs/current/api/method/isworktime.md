@@ -1,23 +1,23 @@
 ---
 sidebar_label: isWorkTime
-title: isWorkTime method
-description: "判断给定日期是否处于工作时间内"
+title: isWorkTime 方法
+description: "检查指定日期是否在工作时间内"
 ---
 
-# isWorkTime
+# isWorkTime 方法
 
 ### Description
 
-@short: 判断给定日期是否处于工作时间内
+@short: 检查指定日期是否在工作时间内
 
-@signature: isWorkTime: (config: Date | object) =\> boolean
+@signature: isWorkTime: Calendar['isWorkTime']
 
 ### Parameters
 
-- `config` - (required) *object | Date* -        可以是描述时间段的配置对象，也可以是具体的日期
+- `config` - (required) *object | Date* - 要么是时间段的配置对象，要么是一个具体日期
 
 ### Returns
-- ` isWorkTime` - (boolean) - <i>true</i> 表示给定日期处于工作时间内；否则为 <i>false</i>
+- ` isWorkTime` - (boolean) - <i>true</i>，如果指定日期是工作时间；否则，<i>false</i>
 
 ### Example
 
@@ -34,21 +34,18 @@ gantt.isWorkTime({date: new Date(2023,3,5), task: task});
 ### Details
 
 :::note
-
-如果 [work_time](api/config/work_time.md) 选项被关闭，该方法将始终返回 `true`。
- 
+如果 [work_time](api/config/work_time.md) 选项被禁用，该方法始终返回 `true`。
 :::
 
-- 当未提供任务时，该方法参考[全局工作时间日历](guides/working-time.md#multipleworktimecalendars)。<br>
-- 该方法也可以直接从[calendar对象](api/other/calendar.md)调用。
+- 如果未指定任务，该方法将使用全局工作时间日历（ [global work time calendar](guides/working-time.md#multipleworktimecalendars) ）
+- 此外，可以直接从 [calendar object](api/other/calendar.md) 调用该方法。
 
+让我们假设您为图表设置了以下工作时间：
 
-以下是甘特图的工作时间设置示例:
+- **工作日**：周一至周五
+- **工作时段**：6:00 - 15:00
 
-- **工作日**:周一至周五
-- **工作时间**:上午6:00至下午3:00
-
-如果检查2023年4月3日星期一，如下所示，结果为:
+那么，如果按如下方式检查 2023 年 4 月 3 日（星期一），您将得到：
 
 ~~~js
 gantt.isWorkTime({date: new Date(2023,3,3,17,00), unit: "hour"}); 
@@ -63,8 +60,8 @@ gantt.isWorkTime({date: new Date(2023,3,3,17,00), unit:  "day"});
 配置对象可以包含以下属性:
 
 - **date** - (*Date*) 要检查的日期
-- **unit** - (string)    可选，指定时间单位:"minute"、"hour"、"day"、"week"、"month"、"year"
-- **task** - (*object*)    可选，指定需要确定工作时长的任务对象
+- **unit** - (string) 可选，一个时间单位： "minute", "hour", "day", "week", "month", "year"
+- **task** - (*object*) 可选，要计算持续时间的任务对象
 
 ~~~js
 if (gantt.isWorkTime({date: date, task: task})){
@@ -79,4 +76,3 @@ if (gantt.isWorkTime({date: date, task: task})){
 
 ### Related Guides
 - [工作时间计算](guides/working-time.md)
-

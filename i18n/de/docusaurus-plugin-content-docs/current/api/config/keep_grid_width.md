@@ -1,16 +1,18 @@
 ---
 sidebar_label: keep_grid_width
 title: keep_grid_width config
-description: "Behält die ursprüngliche Grid-Breite bei, wenn die Spaltengrößen angepasst werden"
+description: "bewahrt die anfängliche Breite des Grids, während Spalten angepasst werden"
 ---
 
 # keep_grid_width
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Behält die ursprüngliche Grid-Breite bei, wenn die Spaltengrößen angepasst werden
+@short: 'bewahrt' die anfängliche Breite des Grids, während Spalten angepasst werden
 
 @signature: keep_grid_width: boolean
 
@@ -28,11 +30,10 @@ gantt.config.keep_grid_width = true; /*!*/
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
-- [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
-
+- [Grid-Spaltengrößenänderungs-Ereignisse](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 ### Related Guides
-- ["Spalten festlegen"](guides/specifying-columns.md)
+- [Spalten festlegen](guides/specifying-columns.md)

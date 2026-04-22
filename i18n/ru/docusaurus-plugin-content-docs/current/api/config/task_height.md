@@ -1,14 +1,18 @@
 ---
 sidebar_label: task_height
-title: task_height config
-description: "управляет высотой task bar в области timeline"
+title: конфигурация task_height
+description: "устанавливает высоту полос задач на области таймлайна"
 ---
 
 # task_height
 
+:::warning
+Свойство устарело.
+:::
+
 ### Description
 
-@short: Управляет высотой task bar в области timeline
+@short: Устанавливает высоту полос задач на области таймлайна
 
 ### Example
 
@@ -22,7 +26,7 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- Свойство **task_height** устарело. Рекомендуется использовать конфигурационное свойство [bar_height](api/config/bar_height.md) вместо него: 
+Свойство **task_height** устарело. Вместо него можно использовать конфигурационное свойство [bar_height](api/config/bar_height.md):
 :::
 
 ~~~
@@ -31,5 +35,4 @@ gantt.init("gantt_here");
 ~~~
 
 ### Change log
-- свойство **task_height** было объявлено устаревшим в версии v7.1
-
+- свойство **task_height** устарело в версии v7.1

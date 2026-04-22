@@ -8,23 +8,23 @@ description: "Gantt 차트에서 여러 작업을 동시에 선택할 수 있는
 
 ### Description
 
-@short: Gantt 차트에서 여러 작업을 동시에 선택할 수 있는지 여부를 제어합니다.
+@short: 간트 차트에서 다중 작업 선택을 활성화/비활성화합니다
 
 @signature: multiselect: boolean
 
 ### Example
 
 ~~~jsx
-gantt.config.multiselect = false; // 다중 작업 선택 기능을 끕니다.
+gantt.config.multiselect = false; //disables multi-task selection
 gantt.init('gantt_here');
 ~~~
 
-**Default value:** true
+**기본값:** true
 
 ### Details
 
 :::note
-note 이 설정은 **multiselect** 확장 기능의 일부이므로, [multiselect](guides/extensions-list.md#multitaskselection) 플러그인을 활성화해야 합니다. 자세한 내용은 [멀티 태스크 선택](guides/multiselection.md) 문서를 참고하세요. 
+이 옵션은 **multiselect** 확장으로 정의되어 있으므로 [multiselect](guides/extensions-list.md#multitaskselection) 플러그인을 활성화해야 합니다. 자세한 내용은 [Multi-Task Selection](guides/multiselection.md) 문서를 참조하세요. 
 :::
 
 ### Related API
@@ -36,5 +36,4 @@ note 이 설정은 **multiselect** 확장 기능의 일부이므로, [multiselec
 - [toggleTaskSelection](api/method/toggletaskselection.md)
 
 ### Related Guides
-- [멀티 태스크 선택](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

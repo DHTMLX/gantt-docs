@@ -1,14 +1,18 @@
 ---
 sidebar_label: scale_unit
-title: scale_unit config
-description: "определяет единицу измерения временной шкалы на оси X"
+title: конфигурация scale_unit
+description: "устанавливает единицу шкалы времени (ось X)"
 ---
 
 # scale_unit
 
+:::warning
+Свойство устарело.
+:::
+
 ### Description
 
-@short: Определяет единицу измерения временной шкалы на оси X
+@short: Устанавливает единицу шкалы времени (ось X)
 
 ### Example
 
@@ -22,17 +26,17 @@ gantt.init("gantt_here");
 **Default value:** 'day'
 
 ### Related samples
-- [Month view](https://docs.dhtmlx.com/gantt/samples/03_scales/02_month_days.html)
+- [Вид месяца](https://docs.dhtmlx.com/gantt/samples/03_scales/02_month_days.html)
 
 ### Details
 
-Можно настроить единицу времени. Для получения подробной информации смотрите [этот раздел](guides/configuring-time-scale.md#customtimeunits).
-<br>
+Есть возможность задать пользовательскую единицу. Подробнее по теме [здесь](guides/configuring-time-scale.md#customtimeunits).
+
 
 :::note
- Это свойство устарело.
-Вместо него используйте свойство **unit** в [scales](api/config/scales.md): 
-:::
+ Своёство устарело.
+Используйте свойство **unit** из [scales](api/config/scales.md) вместо этого: 
+::: 
 
 ~~~js
 gantt.config.scales = [
@@ -47,8 +51,7 @@ gantt.config.scales = [
 - [step](api/config/step.md)
 
 ### Related Guides
-- [Настройка шкалы](guides/configuring-time-scale.md#settingtheunitofthescale)
+- [Настройка шкалы](guides/configuring-time-scale.md#timeunits)
 
 ### Change log
 - устарело с версии v6.2
-

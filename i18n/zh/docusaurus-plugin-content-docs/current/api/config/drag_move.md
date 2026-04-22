@@ -1,7 +1,7 @@
 ---
 sidebar_label: drag_move
-title: drag_move config
-description: "允许通过拖放操作重新定位任务"
+title: drag_move 配置
+description: "启用通过拖放移动任务的功能"
 ---
 
 # drag_move
@@ -19,7 +19,7 @@ gantt.config.drag_move = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**默认值：** true
 
 ### Related API
 - [drag_lightbox](api/config/drag_lightbox.md)
@@ -27,4 +27,3 @@ gantt.init("gantt_here");
 - [drag_mode](api/config/drag_mode.md)
 - [drag_progress](api/config/drag_progress.md)
 - [drag_resize](api/config/drag_resize.md)
-

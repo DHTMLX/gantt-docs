@@ -1,23 +1,23 @@
 ---
 sidebar_label: grid_file
-title: grid_file template
-description: "определяет иконку для дочерних элементов в колонке дерева"
+title: grid_file шаблон
+description: "задает иконку дочерних элементов в столбце дерева"
 ---
 
 # grid_file
 
 ### Description
 
-@short: Определяет иконку для дочерних элементов в колонке дерева
+@short: Задает иконку дочерних элементов в столбце дерева
 
 @signature: grid_file: (task: Task) =\> string;
 
 ### Parameters
 
-- `task` - (required) *Task* - объект задачи
+- `task` - (обязательно) *Task* - объект задачи
 
 ### Returns
-- ` text` - (string) - html-текст, который будет отображён в диаграмме Ганта
+- ` text` - (string) - HTML-текст, который будет отрисован в диаграмме Ганта
 
 ### Example
 
@@ -28,5 +28,5 @@ gantt.templates.grid_file = function(item) {
 ~~~
 
 ### Related Guides
-- [Шаблоны грида](guides/table-templates.md)
-- [Настройка древовидной колонки](guides/tree-column.md)
+- [Шаблоны Grid](guides/table-templates.md)
+- [Настройка столбца дерева](guides/tree-column.md)

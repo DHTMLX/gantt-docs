@@ -3,25 +3,24 @@ title: "Выделение временных слотов"
 sidebar_label: "Выделение временных слотов"
 ---
 
-# Выделение временных слотов
+# Подсветка временных интервалов
 
-Чтобы привлечь внимание к определённым временным слотам, вы можете их выделить.
+Чтобы привлечь внимание пользователя к конкретным временным интервалам, можно их подсветить.
 
-- Для выделения ячейки внутри области временной шкалы используйте шаблон [timeline_cell_class](api/template/timeline_cell_class.md).
-- Для выделения ячейки в шкале времени используйте шаблон [scale_cell_class](api/template/scale_cell_class.md).
+- Чтобы подсветить ячейку области таймлайна, используйте шаблон [timeline_cell_class](api/template/timeline_cell_class.md).
+- Чтобы подсветить ячейку масштаба времени на таймлайне, используйте шаблон [scale_cell_class](api/template/scale_cell_class.md).
 
-Эти шаблоны представляют собой функции, которые перебирают все даты и назначают указанную CSS-класс соответствующим ячейкам.
+Шаблон — это функция, которая перебирает все даты и применяет указанный CSS-класс к соответствующим ячейкам.
 
 ![highlighting_weekends](/img/highlighting_weekends.png)
 
-Например, выделение выходных дней помогает визуально разделить шкалу на недели:
+Например, можно подсветить выходные, чтобы визуально разделить масштаб на недели:
 
 ~~~js
 <style>
 .weekend{ background: #f4f7f4 !important;}
 </style>
 ~~~
-
 
 ~~~js
 gantt.templates.scale_cell_class = function(date){
@@ -37,7 +36,7 @@ gantt.templates.timeline_cell_class = function(task,date){
 gantt.init("gantt_here");
 ~~~
 
-При использовании [расчёта рабочего времени](guides/working-time.md) рекомендуется применять [isWorkTime](api/method/isworktime.md) вместо жёстко заданных значений:
+Обратите внимание, что при использовании расчётов рабочего времени вы можете использовать [isWorkTime](api/method/isworktime.md) вместо жестко заданных значений:
 
 ~~~js
 gantt.config.work_time = true;
@@ -55,11 +54,9 @@ gantt.templates.timeline_cell_class = function(task,date){
 gantt.init("gantt_here");
 ~~~
 
-
-[Highlighting weekends](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
+[Подсветка выходных](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
 
 
 :::note
-Использование ключевого слова 'important' гарантирует, что CSS-свойство будет применено к ячейке как задумано.
+Используйте ключевое слово 'important', чтобы гарантировать, что указанное CSS-свойство будет применено к ячейке.
 :::
-

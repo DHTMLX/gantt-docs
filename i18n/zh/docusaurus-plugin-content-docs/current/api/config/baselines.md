@@ -5,12 +5,10 @@ description: "设置甘特图中 baselines 的工作方式"
 ---
 
 # baselines
-:::info
- 此功能仅在PRO版本中可用。 
-:::
+
 ### Description
 
-@short: 设置甘特图中 baselines 的工作方式
+@short: 配置 baselines 在甘特图中的功能
 
 @signature: baselines: BaselineConfig | boolean
 
@@ -28,28 +26,27 @@ gantt.init("gantt_here");
 ~~~
 
 ### Related samples
-- [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
+- [显示基线](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 ### Details
 
-此设置控制 baselines 在甘特图中的管理和显示方式。它可以是一个用于详细自定义的对象，也可以是一个简单的布尔值，用于开启或关闭该功能。该对象包含以下选项:
+该配置定义了甘特图中基线的处理和显示方式。它可以被设置为对象以自定义显示，或设置为布尔值以启用或禁用该特性。对象配置包含以下属性：
 
--  **datastore** - (*string*) - 存储 baseline 条目的 datastore 名称。更多详情请参考 `getDatastore` 方法。
--  **render_mode** - (*boolean | string*) - 定义 baselines 的显示方式:
-  - **_false_** - 不显示 baselines。
-  - **_"taskRow"_** - baselines 显示在任务条所在的同一行。
-  - **_"separateRow"_** - baselines 占用独立的子行，使任务行变高。
-  - **_"individualRow"_** - 每个 baseline 在任务下方各自独立的子行中渲染。
-- **dataprocessor_baselines** - (*boolean*) - 决定 baseline 的变更是否触发每条条目的 DataProcessor。
-- **row_height** - (*number*) - 设定 baseline 子行的高度，仅在 `render_mode` 为 `"separateRow"` 或 `"individualRow"` 时生效。
-- **bar_height** -  (*number*) - 控制 baseline 条的高度。
+-  **datastore** - (*string*) - 用于存储基线条目的数据存储名。有关相关功能，请参阅 `getDatastore` 方法。
+-  **render_mode** - (*boolean | string*) - 确定基线的显示方式：
+  - **_false_** - 不显示基线。
+  - **_"taskRow"_** - 基线与任务条在同一行显示。
+  - **_"separateRow"_** - 基线显示在单独的子行中，扩展任务行高度。
+  - **_"individualRow"_** - 每条基线在任务下方的独立子行中显示。
+- **dataprocessor_baselines** - (*boolean*) - 指定是否将基线更新作为单独条目触发 DataProcessor。
+- **row_height** - (*number*) - 定义基线子行的高度，仅在 render_mode 设置为 `"separateRow"` 或 `"individualRow"` 时适用。
+- **bar_height** -  (*number*) - 设置基线条的高度。
 
 ### Related API
 - [getDatastore](api/method/getdatastore.md)
 
 ### Related Guides
-- [时间线中的额外元素](guides/inbuilt-baselines.md)
+- [Timeline 中的额外元素](guides/inbuilt-baselines.md)
 
 ### Change log
-- v9.0 中新增
-
+- added in v9.0

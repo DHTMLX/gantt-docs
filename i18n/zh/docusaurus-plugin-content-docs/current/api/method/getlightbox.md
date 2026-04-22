@@ -1,19 +1,19 @@
 ---
 sidebar_label: getLightbox
-title: getLightbox method
-description: "获取 lightbox 的 HTML 元素"
+title: getLightbox 方法
+description: "获取灯箱的 HTML 对象元素"
 ---
 
 # getLightbox
 
 ### Description
 
-@short: 获取 lightbox 的 HTML 元素
+@short: 获取灯箱的 HTML 对象元素
 
 @signature: getLightbox: () =\> HTMLElement
 
 ### Returns
-- `box` - (HTMLElement) - 表示 lightbox 的 HTML 元素
+- `box` - (HTMLElement) - 灯箱的 HTML 元素
 
 ### Example
 

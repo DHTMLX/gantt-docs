@@ -3,11 +3,13 @@ title: "dhtmlxGantt с Ruby on Rails"
 sidebar_label: "Ruby on Rails"
 ---
 
-# dhtmlxGantt с Ruby on Rails 
+# dhtmlxGantt с Ruby on Rails
 
-В этой статье описывается процесс создания диаграммы Gantt с использованием backend на [Ruby on Rails](https://rubyonrails.org/). В примере используются Ruby 2.4.1, Rails 5.1.3 и MySQL. Предполагается, что у вас уже установлены все необходимые компоненты. Если нет, рекомендуем ознакомиться с [официальными учебниками](https://guides.rubyonrails.org/index.html).
+В этой статье вы узнаете, как создать диаграмму Gantt с бэкендом на [Ruby on Rails](https://rubyonrails.org/).
+Для реализации этого приложения мы будем использовать Ruby 2.4.1, Rails 5.1.3 и MySQL. Этот учебник предполагает, что все предварительные условия уже установлены.
+В противном случае сначала, пожалуйста, посетите [официальные руководства](https://guides.rubyonrails.org/index.html).
 
-Если вы работаете с другим технологическим стеком, другие варианты интеграции можно найти здесь:
+Если вы используете другую технологию, ознакомьтесь со списком доступных вариантов интеграции ниже:
 
 - [dhtmlxGantt с ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
 - [dhtmlxGantt с ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
@@ -17,58 +19,62 @@ sidebar_label: "Ruby on Rails"
 - [dhtmlxGantt с PHP:Slim](integrations/php/howtostart-php-slim4.md)
 - [dhtmlxGantt с Salesforce LWC](integrations/salesforce/howtostart-salesforce.md)
 
-Демо-проект также доступен на GitHub: [https://github.com/DHTMLX/gantt-howto-rails](https://github.com/DHTMLX/gantt-howto-rails).
+
+Ознакомьтесь с демонстрацией на GitHub:
+
+[demo на GitHub](https://github.com/DHTMLX/gantt-howto-rails)
 
 ## Шаг 1. Создание проекта
 
-Чтобы создать новый проект, выполните в терминале следующую команду:
+Чтобы добавить новый проект, просто выполните следующую команду в терминале:
 
 ~~~js
 rails new gantt-app -d mysql
 ~~~
 
+
 ## Шаг 2. Добавление Gantt на страницу
 
-Начнем с создания контроллера и главной страницы приложения. Перейдите в папку приложения и создайте новый контроллер с действием *index*:
+Начнем с создания контроллера и страницы по умолчанию для нашего приложения. 
+Перейдите в папку приложения и сгенерируйте новый контроллер с действием *index*:
 
 ~~~js
 cd gantt-app
 rails generate controller gantt index
 ~~~
 
-Вы увидите подтверждение о создании новых файлов.
+Вывод должен подтвердить, что новые файлы созданы.
 
 ### Установка маршрута по умолчанию
 
-Для настройки маршрутизации откройте файл *config/routes.rb* и измените маршрут по умолчанию, чтобы он указывал на действие "index" нового контроллера:
+Чтобы настроить маршрутизацию, откройте файл *config/routes.rb*. Измените маршрут по умолчанию на действие "index" нашего нового контроллера:
 
-**config/routes.rb**
-~~~js
+
+~~~js title="config/routes.rb"
 Rails.application.routes.draw do
   root :to => "gantt#index"
 end
 ~~~
 
-Теперь проверьте работу сервера, выполнив команду:
+После этого мы можем протестировать наш сервер, запустив его в командной строке: 
 
 ~~~js
 rails server
 ~~~
 
-Затем откройте в браузере *http://localhost:3000/*. Вы увидите пустую страницу, как показано ниже:
+Откройте *http://localhost:3000/* в вашем браузере. Результат должен быть примерно таким:
 
 ![how_to_start_rails_blank_page](/img/how_to_start_rails_blank_page.png)
 
-Когда приложение работает и главная страница готова, следующим шагом будет добавление диаграммы Gantt.
+Итак, приложение работает и у нас есть страница по умолчанию, теперь можно переходить к добавлению диаграммы Gantt.
 
 ### Добавление Gantt во View
 
-Теперь нужно встроить диаграмму Gantt на страницу.
+Теперь мы готовы добавить диаграмму Gantt на страницу. 
 
-Откройте файл layout и вставьте yield внутрь тега *head*. Это позволит подключать файлы dhtmlxGantt:
+Откройте файл макета и добавьте yield в тег *head*. Мы используем его для добавления файлов dhtmlxgantt на страницу:
 
-**app/views/layouts/application.html.erb**
-~~~html
+~~~html title="app/views/layouts/application.html.erb"
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,10 +92,10 @@ rails server
 </html>
 ~~~
 
-Далее откройте view *gantt/index* и добавьте на страницу Gantt:
+После этого перейдите на представление *gantt/index* и добавьте там диаграмму Gantt:
 
-**app/views/gantt/index.html.erb**
-~~~js
+
+~~~js title="app/views/gantt/index.html.erb"
 ( content_for :head do )
     (= stylesheet_link_tag 'https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css' )
     (= javascript_include_tag 'https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js' )
@@ -102,20 +108,19 @@ rails server
 </script>
 ~~~
 
-Здесь файлы dhtmlxGantt загружаются с [CDN](guides/cdn-links-list.md), а не локально. Для разработки вы можете использовать исходные файлы из дистрибутива.
+Обратите внимание, что мы добавили файлы dhtmlx Gantt с [CDN](guides/cdn-links-list.md), а не локально. 
+Для разработки будет полезна читаемая версия исходного кода, поставляемая в пакетe загрузки.
 
-Теперь снова откройте *http://localhost:3000/* в браузере. Вы увидите:
-
-![how_to_start_rails_empty_gantt](/img/how_to_start_rails_empty_gantt.png)
-
-У вас появилась диаграмма Gantt, в которой можно добавлять и редактировать задачи, но функционал сохранения пока отсутствует. Это будет реализовано на следующем этапе с помощью моделей.
+После этого можно посмотреть текущий результат. Откройте *http://localhost:3000/* (сервер Rails) в браузере.
+Вы должны увидеть диаграмму Gantt, заполненную задачами и связями из базы данных.
+Однако изменения не будут отправляться обратно в базу данных. Мы исправим это на следующем шаге.
 
 ## Шаг 3. Создание моделей
 
-Поскольку используется MySQL, убедитесь, что настройки подключения в *config/database.yml* указаны верно, например:
+Поскольку мы используем MySQL, убедитесь, что настройки подключения в *config/database.yml* верны, например:
 
-**config/database.yml**
-~~~js
+
+~~~js title="config/database.yml"
 development:
   adapter: mysql2
   encoding: utf8
@@ -125,9 +130,9 @@ development:
   password: 
 ~~~
 
-Далее необходимо создать модели для [задач и связей](guides/loading.md#standarddatabasestructure).
+Теперь нужно создать модели для [задач и связей](guides/loading.md#databasestructure).
 
-Для создания модели Task с нужными свойствами выполните команду:
+Чтобы создать модель для задач, нужно выполнить команду, которая включает свойства задачи:
 
 ~~~js
 rails generate model Task 
@@ -138,7 +143,7 @@ rails generate model Task
     progress:decimal
 ~~~
 
-Аналогично создайте модель Link:
+А аналогичная, но более короткая команда используется для создания модели для связей:
 
 ~~~js
 rails generate model Link 
@@ -147,27 +152,29 @@ rails generate model Link
     link_type:string:limit1
 ~~~
 
-Обратите внимание, что объект связи в dhtmlxGantt требует свойства <b>[type](guides/loading.md#standarddatabasestructure)</b> для указания типа связи (начало-к-началу, конец-к-концу и т.д.).
+Обратите внимание, что объект связи dhtmlxGantt должен иметь свойство с именем <b>[type](guides/loading.md#databasestructure)</b>, 
+которое хранит тип отношения (start-to-start, finish-to-finish и т. п.).
 
-Поскольку имя "<b>type</b>" зарезервировано в ActiveRecord, здесь используется свойство <b>link_type</b>, а необходимое сопоставление будет реализовано в контроллере.
+Мы не можем добавить такое свойство в нашу модель, так как имя <b>type</b> уже зарезервировано ActiveRecord. 
+В качестве обходного решения мы назовем это свойство <b>link_type</b> и сделаем соответствующее отображение в контроллере. 
 
-Полный список обязательных и дополнительных свойств смотрите в документации по [объекту Task](guides/loading.md#task_properties) и [объекту Link](guides/loading.md#link_properties).
+Вы можете ознакомиться с полным списком свойств как обязательных, так и опциональных, доступных для [объекта Task](guides/loading.md#task_properties) и
+[объекта Link](guides/loading.md#link_properties).
 
-Затем выполните миграцию для обновления базы данных:
+После этого нам нужно выполнить миграцию, чтобы обновить нашу базу данных:
 
 ~~~js
 rake db:migrate
 ~~~
 
-Добавим тестовые данные:
+Давайте добавим тестовые данные, пока мы здесь:
 
-1. Откройте консоль Rails:
-
+1. Откройте консоль Rails, выполнив:
 ~~~js
 rails c
 ~~~
 
-2. Добавьте пару задач и связей:
+2. Добавьте пару задач и связей следующим образом:
 
 ~~~js
 Task.create :text=>"Task 1", :start_date=>"2015-10-25",  :duration=>2, :progress=>0;
@@ -175,19 +182,19 @@ Task.create :text=>"Task 2", :start_date=>"2015-10-27",  :duration=>3, :progress
 Link.create :source=>1, :target=>2, :link_type=>"0";
 ~~~
 
-3. Введите "exit" для выхода из консоли.
+3. Введите "exit", чтобы закрыть консоль.
 
-Далее реализуем загрузку и сохранение данных в контроллере.
+Далее нам нужно реализовать загрузку данных и сохранение в диаграмме с помощью контроллеров.
 
 ## Шаг 4. Загрузка данных
 
-Когда модели и миграции готовы, можно загрузить данные из базы в диаграмму Gantt.
+После того как мы создали классы моделей и выполнили миграцию, мы можем загрузить данные из базы данных в нашу диаграмму Gantt. 
 
-Поскольку dhtmlxGantt ожидает данные в [формате JSON](guides/supported-data-formats.md), добавьте новое действие в *GanttController*, которое будет читать, форматировать и выдавать данные:
+dhtmlxGantt ожидает данные в формате JSON, поэтому прежде всего мы добавим новое действие в наш *GanttController*, в котором будем читать, форматировать и выводить данные диаграммы:
 
 
-**app/controllers/gantt_controller.rb**
-~~~js
+
+~~~js title="app/controllers/gantt_controller.rb"
 class GanttController < ApplicationController
   def index
   end
@@ -219,8 +226,8 @@ end
 
 Добавьте маршрут для этого действия в *routes.rb*:
 
-**config/routes.rb**
-~~~js
+
+~~~js title="config/routes.rb"
 Rails.application.routes.draw do
   root :to => "gantt#index"
 
@@ -230,28 +237,33 @@ Rails.application.routes.draw do
 end
 ~~~
 
-На клиенте вызовите это действие с помощью метода [gantt.load](api/method/load.md):
+И вызовите это действие на клиентской стороне с помощью метода [gantt.load](api/method/load.md):
 
-**app/views/gantt/index.html.erb**
-~~~js
+
+~~~js title="app/views/gantt/index.html.erb"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
 
 gantt.init("gantt_here");
 gantt.load("/api/data");/*!*/
 ~~~
 
-Конфигурация [date_format](api/config/date_format.md) определяет формат дат (например, <b>start_date</b> задачи), получаемых с сервера, и соответствует форматированию дат в Rails.
+Обратите внимание, что конфигурация [date_format](api/config/date_format.md) задает формат дат
+(<b>start_date</b> задачи), приходящих с сервера.
 
-Если вы запустите сервер и откроете *http://localhost:3000/*, вы увидите диаграмму Gantt с задачами и связями из базы данных. Однако изменения пока не сохраняются - это будет реализовано далее.
+Если запустить сервер сейчас и открыть *http://localhost:3000/* в браузере, вы увидите диаграмму Gantt, заполненную задачами и связями из базы данных.
+Однако изменения пока не будут отправлены обратно в базу данных. Мы исправим это на следующем шаге.
 
 ## Шаг 5. Сохранение изменений
 
-dhtmlxGantt может отправлять все изменения пользователя на RESTful API backend, где они сохраняются в базе данных. Подробнее о протоколе читайте [здесь](guides/server-side.md#technique).
+dhtmlxGantt может передавать все изменения, сделанные пользователем, в RESTful API на бэкенде, где всё можно сохранить в базу данных. 
+Вы можете ознакомиться с деталями протокола [здесь](guides/server-side.md#technique). 
 
-Чтобы включить сохранение, сначала активируйте отправку изменений на клиенте:
+Так мы и реализуем сохранение данных сейчас:
 
-**app/views/gantt/index.html.erb**
-~~~js
+Во-первых, включим отправку изменений на клиенте:
+
+
+~~~js title="app/views/gantt/index.html.erb"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
 
 gantt.init("gantt_here");
@@ -262,22 +274,22 @@ dp.init(gantt);/*!*/
 dp.setTransactionMode("REST");/*!*/
 ~~~
 
-Далее потребуется добавить два контроллера: для задач и для связей, каждый с необходимыми действиями.
+Затем необходимо добавить два контроллера: один для Задач (Tasks) и другой для Связей (Links) и реализовать все необходимые действия.
 
 ### Создание контроллера Task
 
-Создайте контроллер для задач:
+Начнем с контроллера для задач:
 
 ~~~js
 rails generate controller task --no-helper --no-assets --no-view-specs
 ~~~
 
-Поскольку у этого контроллера не будет представлений, опции *--no-* предотвращают создание лишних файлов.
+Так как этот контроллер не будет иметь представлений, мы использовали флаги *--no-* чтобы не создавать ненужные файлы. 
 
-Реализуйте действия для создания, обновления и удаления:
+Далее реализуем действия для создания, обновления и удаления задач:
 
-**app/controllers/task_controller.rb**
-~~~js
+
+~~~js title="app/controllers/task_controller.rb"
 class TaskController < ApplicationController
     protect_from_forgery
  
@@ -312,16 +324,16 @@ class TaskController < ApplicationController
 end
 ~~~
 
-Несколько замечаний по коду:
+Некоторые замечания по этому коду:
 
-- Действие get здесь не требуется, так как все данные загружаются через *gantt#data*.
-- Свойство *progress* по умолчанию может не быть инициализировано на клиенте, поэтому здесь ему присваивается значение по умолчанию. Альтернативно, значение по умолчанию можно задать в классе модели (например, через [миграцию](https://api.rubyonrails.org/classes/ActiveRecord/Migration.html)).
-- При создании новой записи в ответе возвращается ID новой записи в базе данных.
+- нам не нужен action get, так как все данные уже загружены из *gantt#data*
+- свойство *progress* может быть не инициализировано на клиенте по умолчанию, поэтому здесь нужно задать значение по умолчанию. В качестве альтернативы можно было бы задать значение по умолчанию в классе модели (это можно сделать, например, с помощью миграции)
+- действие, создающее новый элемент, должно вернуть клиенту идентификатор записи в базе данных
 
-Наконец, добавьте маршруты для этих действий, чтобы пользователи могли просматривать, создавать, обновлять и удалять задачи в диаграмме Gantt:
+После этого нужно добавить новые маршруты в конфигурацию, и пользователи смогут просматривать, создавать, обновлять и удалять задачи в нашей диаграмме Gantt:
 
-**config/routes.rb**
-~~~js
+
+~~~js title="config/routes.rb"
 Rails.application.routes.draw do
   root :to => "gantt#index"
 
@@ -335,20 +347,21 @@ Rails.application.routes.draw do
 end
 ~~~
 
-Следующим шагом будет настройка аналогичного функционала для связей.
+Теперь сделаем то же самое для связей.
 
 ### Создание контроллера Link
 
-Создайте контроллер Link с помощью следующей команды:
+Сгенерируйте контроллер Link:
+
 
 ~~~js
 rails generate controller link --no-helper --no-assets --no-view-specs
 ~~~
 
-Вот пример возможной реализации:
+Реализация может выглядеть так:
 
-**app/controllers/link_controller.rb**
-~~~js
+
+~~~js title="app/controllers/link_controller.rb"
 class LinkController < ApplicationController
     protect_from_forgery
  
@@ -379,10 +392,10 @@ class LinkController < ApplicationController
 end
 ~~~
 
-Далее добавьте маршруты для новых действий:
+Затем добавьте маршруты для новых действий: 
 
-**config/routes.rb**
-~~~js
+
+~~~js title="config/routes.rb"
 Rails.application.routes.draw do
   root :to => "gantt#index"
 
@@ -400,32 +413,34 @@ Rails.application.routes.draw do
 end
 ~~~
 
-Вот и всё. После запуска приложения у вас будет интерактивная диаграмма Gantt на базе Rails и MySQL:
+И вот и всё. Если запустить приложение сейчас, вы получите интерактивную диаграмму Gantt с бэкендом на Rails и MySql:
 
 ![how_to_start_rails_complete](/img/how_to_start_rails_complete.png)
 
-Чтобы узнать больше о возможностях dhtmlxGantt, ознакомьтесь с [нашими руководствами](guides.md).
+Пожалуйста, ознакомьтесь с [нашими руководствами](guides.md) для получения дополнительных возможностей dhtmlxGantt.
 
 ## Сохранение порядка задач {#storingtheorderoftasks}
 
-Клиентская часть Gantt поддерживает [изменение порядка задач](guides/reordering-tasks.md) с помощью drag and drop. Если вы используете эту функцию, порядок задач потребуется сохранять в базе данных.
-Общий обзор доступен [здесь](guides/server-side.md#storingtheorderoftasks).
+Клиентская диаграмма Gantt позволяет [переставлять задачи](guides/reordering-tasks.md) путём перетаскивания. Поэтому, если вы используете эту функцию, вам придётся хранить этот порядок в базе данных. 
+Вы можете [посмотреть общее описание здесь](guides/server-side.md#storingtheorderoftasks). 
 
-Давайте добавим эту возможность в приложение.
 
-### Включение изменения порядка задач на клиенте
+Теперь давайте добавим эту функциональность в наше приложение.
 
-Сначала включите изменение порядка задач в интерфейсе, обновив конфигурацию Gantt во *вьюхе Index*:
+### Включение перестановки задач на клиенте
 
-**app/views/gantt/index.html.erb**
-~~~js
+Во-первых, нужно позволить пользователям менять порядок задач в интерфейсе. Откройте представление *Index* и обновите конфигурацию Gantt:
+
+
+~~~js title="app/views/gantt/index.html.erb"
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
 gantt.init("gantt_here");
 ~~~
 
-Теперь обновите серверную часть, чтобы учесть эти изменения. Необходимо добавить в модель поле для порядка, которое мы назовём *sortorder*. Обновлённое объявление модели может выглядеть так:
+Теперь отразим эти изменения на бэкенде. Нужно добавить информацию о порядке в нашу модель, назовём её *sortorder*. Обновлённое объявление модели может выглядеть так:
+
 
 ~~~js
 rails generate model Task 
@@ -437,16 +452,14 @@ rails generate model Task
     sortorder:integer  /*!*/
 ~~~
 
-Либо вы можете добавить это свойство в существующую модель:
+Или добавьте новое свойство к существующей модели:
 
-1. Создайте миграцию:
-
+1. создайте миграцию:
 ~~~js
 rails generate migration add_sortorder_to_tasks sortorder:integer
 ~~~
 
-2. Отредактируйте сгенерированную миграцию, чтобы задать значение по умолчанию для столбца "sortorder":
-
+2. Откройте сгенерированную миграцию и добавьте значение по умолчанию в столбец "sortorder":
 ~~~js
 class AddSortorderToTasks < ActiveRecord::Migration[5.1]
   def change
@@ -455,18 +468,18 @@ class AddSortorderToTasks < ActiveRecord::Migration[5.1]
 end
 ~~~
 
-Затем примените миграцию:
+И выполните миграцию:
 
 ~~~js
 rake db:migrate
 ~~~
 
-Далее обновите CRUD-операции в контроллерах:
+После этого нам нужно обновить CRUD в контроллерах:
 
-- Действие *data* должно возвращать задачи, отсортированные по столбцу `sortorder`:
+- действие *data* должно возвращать задачи, отсортированные по столбцу `sortorder`: 
 
-**app/controllers/gantt_controller.rb**
-~~~js
+
+~~~js title="app/controllers/gantt_controller.rb"
 class GanttController < ApplicationController
   def index
   end
@@ -496,10 +509,10 @@ class GanttController < ApplicationController
 end
 ~~~
 
-- При добавлении новых задач устанавливайте начальное значение `sortorder`:
+- вновь добавляемые задачи должны получать начальное значение `sortorder`: 
 
-**app/controllers/task_controller.rb**
-~~~js
+
+~~~js title="app/controllers/task_controller.rb"
 class TaskController < ApplicationController
     ...
     def add
@@ -521,10 +534,9 @@ class TaskController < ApplicationController
 end
 ~~~
 
-- Наконец, когда пользователь меняет порядок задач, обновляйте их порядок соответствующим образом:
+- наконец, когда пользователь меняет порядок задач, порядок задач должен обновляться [обновление порядка](guides/server-side.md#storingtheorderoftasks):
 
-**app/controllers/task_controller.rb**
-~~~js
+~~~js title="app/controllers/task_controller.rb"
 class TaskController < ApplicationController
     protect_from_forgery
  
@@ -548,10 +560,10 @@ class TaskController < ApplicationController
 end
 ~~~
 
-Вот реализация Task.updateOrder:
+Реализация Task.updateOrder:
 
-**app/models/task.rb**
-~~~js
+
+~~~js title="app/models/task.rb"
 class Task < ApplicationRecord
     def self.updateOrder(taskId, target)
         nextTask = false
@@ -586,15 +598,14 @@ end
 
 ## Безопасность приложения
 
-Сам Gantt не содержит встроенной защиты от распространённых угроз, таких как SQL-инъекции, XSS или CSRF-атаки. Разработчики должны самостоятельно обеспечивать защиту серверной части своих приложений. Подробнее об этом читайте [в этой статье](guides/app-security.md).
+Gantt не предоставляет никаких средств защиты от различных угроз, таких как SQL-инъекции или XSS и CSRF-атак. Важно, чтобы ответственность за безопасность приложения лежала на разработчиках, реализующих бэкенд. Прочитайте детали [в соответствующей статье](guides/app-security.md).
 
 ## Устранение неполадок
 
-Если вы выполнили шаги по интеграции Gantt с Ruby on Rails, но задачи и связи не отображаются на странице, обратитесь к руководству по устранению неполадок: [Устранение проблем интеграции с backend](guides/troubleshooting.md). Там вы найдёте рекомендации по диагностике частых проблем.
+Если вы выполнили вышеуказанные шаги по интеграции Gantt с Ruby on Rails, но диаграмма Gantt не отображает задачи и связи на странице, ознакомьтесь со статьей [Troubleshooting Backend Integration Issues](guides/troubleshooting.md). Она описывает способы выявления корней проблем.
 
 ## Что дальше
 
-Теперь, когда ваша диаграмма Gantt полностью функционирует, вы можете ознакомиться с полным кодом на [GitHub](https://github.com/DHTMLX/gantt-howto-rails), где его можно клонировать или скачать для использования в своих проектах.
+Теперь у вас полноценная диаграмма Gantt. Вы можете просмотреть полный код на [GitHub](https://github.com/DHTMLX/gantt-howto-rails), клонировать или скачать его и использовать в своих проектах.
 
-Дополнительно изучите [руководства по различным возможностям Gantt](guides.md) или обучающие материалы по [интеграции Gantt с другими серверными фреймворками](integrations/howtostart-guides.md).
-
+Вы также можете ознакомиться с [guides на многочисленные возможности Gantt] или учебниками по [интеграции Gantt с другими бэкенд-фреймворками](integrations/howtostart-guides.md).

@@ -1,14 +1,14 @@
 ---
 sidebar_label: tooltip_hide_timeout
-title: tooltip_hide_timeout config
-description: "Legt fest, wie lange die Tooltip in Millisekunden sichtbar bleiben, bevor sie verschwinden"
+title: tooltip_hide_timeout Konfiguration
+description: "Legt die Länge der Zeit in Millisekunden fest, bevor der Tooltip ausgeblendet wird"
 ---
 
 # tooltip_hide_timeout
 
 ### Description
 
-@short: Legt fest, wie lange die Tooltip in Millisekunden sichtbar bleiben, bevor sie verschwinden
+@short: Legt die Länge der Zeit in Millisekunden fest, bevor der Tooltip ausgeblendet wird
 
 @signature: tooltip_hide_timeout: number
 
@@ -22,12 +22,11 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- Diese Option ist Teil der **tooltip** Erweiterung. Stelle daher sicher, dass das [tooltip](guides/extensions-list.md#tooltip) Plugin aktiviert ist. Für weitere Details siehe den Artikel ["Tooltips für Gantt-Elemente"](guides/tooltips.md). 
+Diese Option ist in der **tooltip**-Erweiterung definiert, daher müssen Sie das [tooltip](guides/extensions-list.md#tooltip) Plugin aktivieren. Lesen Sie die Details im [Tooltips für Gantt-Elemente](guides/tooltips.md) Artikel.
 :::
 
 ### Related API
 - [tooltip_timeout](api/config/tooltip_timeout.md)
 
 ### Related Guides
-- ["Tooltips für Gantt-Elemente"](guides/tooltips.md)
-
+- [Tooltips für Gantt-Elemente](guides/tooltips.md)

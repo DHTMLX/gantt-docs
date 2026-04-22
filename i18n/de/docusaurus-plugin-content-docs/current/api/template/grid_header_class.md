@@ -1,7 +1,7 @@
 ---
 sidebar_label: grid_header_class
-title: grid_header_class template
-description: "definiert die CSS-Klasse, die den Headern der Tabellenspalten zugewiesen wird"
+title: grid_header_class Vorlage
+description: "gibt die CSS-Klasse an, die auf die Überschriften der Tabellenspalten angewendet wird"
 ---
 
 # grid_header_class
@@ -14,11 +14,11 @@ description: "definiert die CSS-Klasse, die den Headern der Tabellenspalten zuge
 
 ### Parameters
 
-- `columnName` - (required) *string* - der Name der Spalte (entsprechend der "name"-Eigenschaft im Spaltenobjekt)
-- `column` - (required) *object* - das Spaltenobjekt selbst (aus der <i>gantt.config.columns</i>-Konfiguration)
+- `columnName` - (erforderlich) *string* - der Spaltenname (wie in der "name"-Eigenschaft des Spaltenobjekts angegeben)
+- `column` - (erforderlich) *object* - Spaltenobjekt (wie in der <i>gantt.config.columns</i> Konfiguration angegeben)
 
 ### Returns
-- ` text` - (string | void) - die CSS-Klasse, die auf den angegebenen Header angewendet wird
+- ` text` - (string | void) - eine CSS-Klasse für das betreffende Element
 
 ### Example
 
@@ -29,4 +29,4 @@ gantt.templates.grid_header_class = function(columnName, column){
 ~~~
 
 ### Related Guides
-- ["Vorlagen des Grids"](guides/table-templates.md)
+- [Grid-Vorlagen](guides/table-templates.md)

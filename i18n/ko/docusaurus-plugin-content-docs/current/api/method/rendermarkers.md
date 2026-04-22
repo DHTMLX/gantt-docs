@@ -1,14 +1,14 @@
 ---
 sidebar_label: renderMarkers
-title: renderMarkers method
-description: "페이지에 표시된 모든 마커를 새로 고칩니다"
+title: renderMarkers 메서드
+description: "페이지의 모든 마커를 업데이트합니다"
 ---
 
 # renderMarkers
 
 ### Description
 
-@short: 페이지에 표시된 모든 마커를 새로 고칩니다
+@short: 페이지의 모든 마커를 업데이트합니다
 
 @signature: renderMarkers: () =\> void
 
@@ -28,7 +28,7 @@ gantt.renderMarkers(); /*!*/
 ### Details
 
 :::note
- 이 메서드는 **marker** 확장의 일부이므로, [marker](guides/extensions-list.md#verticalmarker) 플러그인이 활성화되어 있는지 확인하세요. 자세한 내용은 [수직 마커 추가하기](guides/markers.md) 문서를 참고하시기 바랍니다. 
+이 메서드는 **marker** 확장에 정의되어 있으므로 [marker](guides/extensions-list.md#vertical-marker) 플러그인을 활성화해야 합니다. 자세한 내용은 [Adding Vertical Markers](guides/markers.md) 문서를 참조하세요.
 :::
 
 ### Related API

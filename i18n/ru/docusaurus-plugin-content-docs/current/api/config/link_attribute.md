@@ -1,14 +1,14 @@
 ---
 sidebar_label: link_attribute
-title: link_attribute config
-description: "определяет имя атрибута, используемого для указания id HTML-элемента ссылки"
+title: конфигурация link_attribute
+description: "задает имя атрибута, который будет указывать идентификатор HTML-элемента ссылки"
 ---
 
 # link_attribute
 
 ### Description
 
-@short: Определяет имя атрибута, используемого для указания id HTML-элемента ссылки
+@short: Sets the name of the attribute that will specify the id of the link's HTML element
 
 @signature: link_attribute: string
 
@@ -18,10 +18,10 @@ description: "определяет имя атрибута, используем
 gantt.config.link_attribute = "data-link-id"
 ~~~
 
-**Default value:** "data-link-id"
+**Значение по умолчанию:** "data-link-id"
 
 ### Details
 
 ![data_link_id](/img/data_link_id.png)
 
-Атрибут *link_id* сохраняется для обратной совместимости с предыдущими версиями.
+Атрибут *link_id* включён для сохранения обратной совместимости с предыдущими версиями.

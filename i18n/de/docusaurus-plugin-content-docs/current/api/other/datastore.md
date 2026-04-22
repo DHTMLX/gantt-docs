@@ -1,6 +1,6 @@
 ---
 sidebar_label: datastore
-title: datastore config
+title: Datastore-Konfiguration
 description: "eine Sammlung von datastore-Methoden"
 ---
 
@@ -14,300 +14,268 @@ description: "eine Sammlung von datastore-Methoden"
 
 ### Details
 
-**_Hinweis_**, Tasks und Links sollten über die Standard-[API von Gantt](api/api-overview.md) verwaltet werden. Direkte Änderungen an Tasks oder Links innerhalb des datastore können unvorhergesehene Probleme verursachen. Datastores sind hauptsächlich für Ressourcen oder andere benutzerdefinierte Objekte vorgesehen.
+**_Hinweis_**, dass Tasks und Links über die gemeinsame [API von Gantt](api/api-overview.md) geändert werden sollten. Das Ändern von Tasks oder Links direkt im datastore kann zu unerwarteten Ergebnissen führen. Datastores sollten für Ressourcen oder andere benutzerdefinierte Objekte verwendet werden.
 
-Sie können einen neuen datastore mit der Methode [createDatastore](api/method/createdatastore.md) erstellen. <br/>
-Das **datastore**-Objekt bietet die folgenden [Methoden](#methods) und [Events](#events):
+Eine neue Datastore kann mithilfe der Methode [createDatastore](api/method/createdatastore.md) erstellt werden. 
+Das **datastore**-Objekt besitzt die folgenden [Methoden](#methods) und [Events](#events):
 
-### Methoden {#methods}
+## Methoden
 
-<ul id="parse"><li>
-  <b>parse (data): void</b> - lädt Daten aus einem Array
-  <ul>
-  <li><b><i>data</i></b> - (<i>Array&lt;object&gt;</i>) - die zu ladenden Daten</li>
-  </ul></li>
-</ul>
+### parse (data): void 
+Lädt Daten aus einem Array
 
-<ul>
+**Parametere**:
+- `data` - (Array\<object\>) - die zu ladenden Daten
+
+**Beispiel**:
 ~~~js
 gantt.$resourcesStore.parse([
-    {id: 1, text: "QA", parent:null},
-    {id: 2, text: "Development", parent:null},
-    {id: 3, text: "Sales", parent:null},
-    {id: 4, text: "Other", parent:null},
-    {id: 5, text: "Unassigned", parent:4},
-    {id: 6, text: "John", parent:1},
-    {id: 7, text: "Mike", parent:2},
-    {id: 8, text: "Anna", parent:2},
-    {id: 9, text: "Bill", parent:3},
-    {id: 10, text: "Floe", parent:3}
+    { id: 1, text: "QA", parent: null },
+    { id: 2, text: "Development", parent: null },
+    { id: 3, text: "Sales", parent: null },
+    { id: 4, text: "Other", parent: null },
+    { id: 5, text: "Unassigned", parent: 4 },
+    { id: 6, text: "John", parent: 1 },
+    { id: 7, text: "Mike", parent: 2 },
+    { id: 8, text: "Anna", parent: 2 },
+    { id: 9, text: "Bill", parent: 3 },
+    { id: 10, text: "Floe", parent: 3 }
 ]);
 ~~~
-<br/>
+
 :::note
 sample
-[Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
- 
+[Ressourcen-Lade-Diagramm](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
 :::
-<br/>
 
-<br/>
- <i>datastore.parse() ergänzt [gantt.parse()](api/method/parse.md).</i>
-  <br/>
- <i>Löst die Events <a href="#onBeforeParse">onBeforeParse</a>, <a href="#onItemLoading">onItemLoading</a>, <a href="#onParse">onParse</a> und <a href="#onStoreUpdated">onStoreUpdated</a> aus.</i>
-</ul>
+Der Zwilling von datastore.parse() ist [gantt.parse()](api/method/parse.md).
+  
+Ruft die Events [onBeforeParse](#onbeforeparse-data) , [onItemLoading](#onitemloading-item), [onParse](#onparse-data), und [onStoreUpdated](#onstoreupdated-id-item-action) auf.
 
+---
 
-<ul id="getItem">
-  <li>
-  <b>getItem (id): object | void</b> - ruft das Element anhand seiner id ab
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  </ul>
-  </li>
-</ul>
+### getItem (id)
+Gibt den Eintrag anhand seiner id zurück
 
-<ul>
+**Parameter**:
+- `id` - (string | number) - die ID des Elements
+
+**Rückgabe**: Objekt | void - das Element-Objekt
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var resource = store.getItem(resourceId);
+const store = gantt.getDatastore(gantt.config.resource_store);
+const resource = store.getItem(resourceId);
 ~~~
-<br/>
+
 :::note
 sample
-[Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
- 
+[Ressourcen-Lade-Diagramm](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
 :::
-<br/>
-<br/>
- <i>datastore.getItem() entspricht [gantt.getTask()](api/method/gettask.md) und [gantt.getLink()](api/method/getlink.md).</i>
-</ul>
 
-<ul id="updateItem">
-  <li>
-  <b>updateItem (id, item): void</b> - aktualisiert das angegebene Element
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  <li><b><i>item?</i></b> - (<i>object</i>) - ein Objekt mit aktualisierten Eigenschaften</li>
-  </ul>
-  </li>
-</ul>
+Die Zwillinge von datastore.getItem() sind [gantt.getTask()](api/method/gettask.md) und [gantt.getLink()](api/method/getlink.md).
 
-<ul>
+---
+
+### updateItem (id, item)
+Aktualisiert den angegebenen Eintrag
+
+**Parametere**:
+- `id` - (string | number) - die ID des Elements
+- `item` - (object) - das Objekt des Elements
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var resource = store.getItem(resourceId);
+const store = gantt.getDatastore(gantt.config.resource_store);
+const resource = store.getItem(resourceId);
 resource.text = "modified";
 store.updateItem(resourceId);
 // oder
 store.updateItem(resourceId, { text: "modified" });
 ~~~
-<br/>
-<br/>
- <i>datastore.updateItem() ist ähnlich zu [gantt.updateTask()](api/method/updatetask.md) und [gantt.updateLink()](api/method/updatelink.md).</i>
-<br/>
- <i>Löst die Events <a href="#onBeforeUpdate">onBeforeUpdate</a>, <a href="#onAfterUpdate">onAfterUpdate</a> und <a href="#onStoreUpdated">onStoreUpdated</a> aus.</i>
 
-</ul>
+Die Zwillinge von datastore.updateItem() sind [gantt.updateTask()](api/method/updatetask.md) und [gantt.updateLink()](api/method/updatelink.md).
 
-<ul id="removeItem">
-  <li>
-  <b>removeItem (id): void</b> - löscht das angegebene Element
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  </ul>
-  </li>
-</ul>
+Ruft die Events [onBeforeUpdate](#onbeforeupdate-id-item), [onAfterUpdate](#onafterupdate-id-item) und [onStoreUpdated](#onstoreupdated-id-item-action) auf.
 
-<ul>
+---
+
+### removeItem (id)
+Löscht den angegebenen Eintrag
+
+**Parametere**:
+- `id` - (string | number) - die ID des Elements
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.removeItem(resourceId);
 ~~~
-<br/>
-<br/>
- <i>datastore.removeItem() entspricht [gantt.deleteTask()](api/method/deletetask.md) und [gantt.deleteLink()](api/method/deletelink.md).</i>
-<br/>
- <i>Löst die Events <a href="#onBeforeDelete">onBeforeDelete</a>, <a href="#onAfterDelete">onAfterDelete</a> und <a href="#onStoreUpdated">onStoreUpdated</a> aus.</i>
-</ul>
 
-<ul id="isVisible">
-  <li>
-  <b>isVisible (id): boolean</b> - bestimmt, ob das angegebene Element sichtbar oder durch Filter ausgeblendet ist
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  </ul>
-  Gibt <i>true</i> zurück, wenn das Element sichtbar ist, sonst <i>false</i>.
-  </li>
-</ul>
+Die Zwillinge von datastore.removeItem() sind [gantt.deleteTask()](api/method/deletetask.md) und [gantt.deleteLink()](api/method/deletelink.md).
 
-<ul>
+Ruft die Events [onBeforeDelete](#onbeforedelete-id-item), [onAfterDelete](#onafterdelete-id-item) und [onStoreUpdated](#onstoreupdated-id-item-action) auf.
+
+---
+
+### isVisible (id)
+Prüft, ob der angegebene Eintrag sichtbar ist oder durch Filter verborgen wurde
+
+**Parametere**:
+- `id` - (string | number) - die ID des Elements
+
+**Rückgabe**: boolean - true, wenn sichtbar, andernfalls false
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 if(store.isVisible(resourceId)){
     console.log(resourceId);
 }
 ~~~
-<br/>
-<br/>
- <i>datastore.isVisible() ist vergleichbar mit [gantt.isTaskVisible()](api/method/istaskvisible.md).</i>
-</ul>
 
-<ul id="getVisibleItems">
-  <li>
-  <b>getVisibleItems (): Array&lt;object&gt;</b> - gibt ein Array der sichtbaren Elemente zurück
-</li>
-</ul>
+Die Zwillinge von datastore.isVisible() sind [gantt.isTaskVisible()](api/method/istaskvisible.md).
 
-<ul>
+---
+
+### getVisibleItems ()
+Gibt das Array der sichtbaren Einträge zurück
+
+**Rückgabe**: Array\<object\> - Array der sichtbaren Items
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var items = store.getVisibleItems();
+const store = gantt.getDatastore(gantt.config.resource_store);
+const items = store.getVisibleItems();
 ~~~
-<br/>
-</ul>
 
+---
 
-<ul id="addItem">
-  <li>
-  <b>addItem (item, index): number | string</b> - fügt dem datastore ein neues Element hinzu
-  <ul><li><b><i>item</i></b> - (<i>object</i>) - das Element-Objekt</li><li><b><i>index?</i></b> - (<i>number</i>) - die Position, an der das Element eingefügt wird (0 oder größer)</li></ul>
-  Gibt die id des hinzugefügten Elements zurück.
-</li>
-</ul>
+### addItem (item, index)
+Fügt der datastore einen neuen Eintrag hinzu
 
-<ul>
+**Parametere**:
+- `item` - (object) - das Item-Objekt
+- `index` - (number) - die Position, an der das Item eingefügt wird (0 oder größer)
+
+**Rückgabe**: number | string - die ID des Elements
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var itemId = store.addItem({
+const store = gantt.getDatastore(gantt.config.resource_store);
+const itemId = store.addItem({
     text: "Unassigned",
     parent:4
 });
 ~~~
-<br/>
-<br/>
- <i>datastore.addItem() entspricht [gantt.addTask()](api/method/addtask.md) und [gantt.addLink()](api/method/addlink.md).</i>
-<br/>
- <i>Löst die Events <a href="#onBeforeAdd">onBeforeAdd</a>, <a href="#onAfterAdd">onAfterAdd</a> und <a href="#onStoreUpdated">onStoreUpdated</a> aus.</i>
-</ul>
 
-<ul id="changeId">
-  <li>
-  <b>changeId (oldId, newId): void</b> - aktualisiert die id eines Elements
-  <ul><li><b><i>oldId</i></b> - (<i>string | number</i>) - die aktuelle id des Elements</li><li><b><i>newId</i></b> - (<i>string | number</i>) - die neue zuzuweisende id</li></ul>
-</li>
-</ul>
+Die Zwillinge von datastore.addItem() sind [gantt.addTask()](api/method/addtask.md) und [gantt.addLink()](api/method/addlink.md).
 
-<ul>
+Ruft die Events [onBeforeAdd](#onbeforeadd-id-item), [onAfterAdd](#onafteradd-id-item) und [onStoreUpdated](#onstoreupdated-id-item-action) auf.
 
+---
+
+### changeId (oldId, newId)
+Ändert die ID des Elements
+
+**Parametere**:
+- `oldId` - (string | number) - die aktuelle ID des Elements
+- `newId` - (string | number) - die neue ID des Elements
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 
-var itemId = store.addItem({
+const itemId = store.addItem({
     text: "Unassigned",
     parent:4
 });
 
-// itemId ist eine temporäre clientseitige id für das neue Element
-// aktualisieren Sie den Client mit der neuen id, sobald sie in der Datenbank gespeichert ist:
+// itemId - temporäre Client-seitige ID des neuen Elements
+// sobald das Item in der Datenbank gespeichert ist - aktualisieren Sie den Client mit der neuen ID:
 
 store.changeId(itemId, "databaseId");
 ~~~
-<br/>
-<br/>
- <i>datastore.changeId() ist ähnlich zu [gantt.changeTaskId()](api/method/changetaskid.md) und [gantt.changeLinkId()](api/method/changelinkid.md).</i>
- <br/>
- <i>Löst das Event <a href="#onIdChange">onIdChange</a> aus.</i>
-</ul>
 
+Die Zwillinge von datastore.changeId() sind [gantt.changeTaskId()](api/method/changetaskid.md) und [gantt.changeLinkId()](api/method/changelinkid.md).
+ 
+Ruft das Event [onIdChange](#onidchange-id-newid) auf.
 
-<ul id="exists">
-  <li>
-  <b>exists (id): boolean</b> - prüft, ob das angegebene Element im datastore existiert
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  </ul>
-  Gibt <i>true</i> zurück, wenn das Element existiert, sonst <i>false</i>.
-</li>
-</ul>
+---
 
-<ul>
+### exists (id)
+Prüft, ob das angegebene Element im datastore existiert
 
+**Parametere**:
+- `id` - (string | number) - die ID des Elements
+
+**Rückgabe**: boolean - true, wenn vorhanden, sonst false
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 
 if(store.exists(resourceId)){
     console.log(resourceId);
 }
 ~~~
-<br/>
-<br/>
- <i>datastore.exists() entspricht [gantt.isTaskExists()](api/method/istaskexists.md) und [gantt.isLinkExists()](api/method/islinkexists.md).</i>
-</ul>
 
+Die Zwillinge von datastore.exists() sind [gantt.isTaskExists()](api/method/istaskexists.md) und [gantt.isLinkExists()](api/method/islinkexists.md).
 
-<ul id="move">
-  <li>
-  <b>move (sindex, tindex): void</b> - verschiebt ein Element an eine neue Position
-  <ul>
-  <li><b><i>sindex</i></b> - (<i>number</i>) - der aktuelle Index des Elements</li>
-  <li><b><i>tindex</i></b> - (<i>number</i>) - der Zielindex, an den das Element verschoben wird</li>
-  </ul>
-</li>
-</ul>
+---
 
-<ul>
+### move (sindex, tindex)
+Verschiebt ein Item an eine neue Position
+
+**Parametere**:
+- `sindex` - (number) - der Index der aktuellen Position der Aufgabe
+- `tindex` - (number) - der Index der Position, in die das Element verschoben wird
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 
-// tausche zwei Elemente
-var idA = 1;
-var idB = 5;
-var indexA = store.getIndexById(idA);
-var indexB = store.getIndexById(idB);
+// vertausche zwei Items
+const idA = 1;
+const idB = 5;
+const indexA = store.getIndexById(idA);
+const indexB = store.getIndexById(idB);
 store.move(indexB, indexA);
 
 indexA = store.getIndexById(idA);
 store.move(indexA, indexB);
 ~~~
-<br/>
-<br/>
-  <i>datastore.move() ergänzt [gantt.moveTask()](api/method/movetask.md).</i>
-  <br/>
-  <i>Löst das Event <a href="#onStoreUpdated">onStoreUpdated</a> aus.</i>
-</ul>
 
-<ul>
-  <li>
-  <b>clearAll (): void</b> - leert den datastore
-</li>
-</ul>
+Der Zwilling von datastore.move() ist [gantt.moveTask()](api/method/movetask.md).
+  
+Ruft das Event [onStoreUpdated](#onstoreupdated-id-item-action) auf.
 
-<ul>
+---
+
+### clearAll ()
+Löscht die datastore
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.clearAll();
 ~~~
-<br/>
-<br/>
- <i>datastore.clearAll() entspricht [gantt.clearAll()](api/method/clearall.md).</i>
-  <br/>
- <i>Löst die Events <a href="#onClearAll">onClearAll</a>, <a href="#onBeforeStoreUpdate">onBeforeStoreUpdate</a> und <a href="#onStoreUpdated">onStoreUpdated</a> aus.</i>
 
-</ul>
+Der Zwilling von datastore.clearAll() ist [gantt.clearAll()](api/method/clearall.md).
+  
+Ruft die Events [onClearAll](#onclearall-), [onBeforeStoreUpdate](#onbeforestoreupdate-id-item-action) und [onStoreUpdated](#onstoreupdated-id-item-action) auf.
 
-<ul id="silent">
-  <li>
-  <b>silent (callback): void</b> - führt Code aus, ohne datastore API-Events auszulösen
-  <ul>
-  <li><b><i>callback</i></b> - (<i>Function</i>) - die Callback-Funktion</li>
-  </ul>
-</li>
-</ul>
+---
 
-<ul>
+### silent (callback)
+Führt den Code aus, ohne API-Ereignisse des datastore auszulösen
+
+**Parametere**:
+- `callback` - (Function) - die Callback-Funktion
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.silent(function(){
     store.eachItem(function(item){
         item.text += " modified";
@@ -316,148 +284,137 @@ store.silent(function(){
 });
 store.refresh();
 ~~~
-<br/>
-<br/>
- <i>datastore.silent() ergänzt [gantt.silent()](api/method/silent.md).</i>
-</ul>
 
-<ul id="refresh">
-  <li>
-  <b>refresh (id): void</b> - löst das Neuzeichnen der Events des angegebenen Datensatzes aus und wendet Filter an
-  <ul>
-  <li><b><i>id?</i></b> - (<i>string | number</i>) - optional, die id des Datensatzes</li>
-  </ul>
-</li>
-</ul>
+Der Zwilling von datastore.silent() ist [gantt.silent()](api/method/silent.md).
 
-<ul>
+---
+
+### refresh (id)
+Löst das Neuteuern der Ereignisse des angegebenen Datensatzes aus und führt Filter aus
+
+**Parametere**:
+- `id` - (string | number) - optional, die ID des Datensatzes
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-store.refresh(itemId); // zeichnet ein bestimmtes Element neu
-store.refresh(); // zeichnet alle Elemente neu
+const store = gantt.getDatastore(gantt.config.resource_store);
+store.refresh(itemId); // malt ein Item neu
+store.refresh(); // malt alle Items neu
 ~~~
-<br/>
-<br/>
- <i>datastore.refresh() entspricht [gantt.refreshTask()](api/method/refreshtask.md) und [gantt.refreshLink()](api/method/refreshlink.md).</i>
-  <br/>
- <i>Löst die Events <a href="#onBeforeStoreUpdate">onBeforeStoreUpdate</a>, <a href="#onBeforeFilter">onBeforeFilter</a>, <a href="#onFilterItem">onFilterItem</a>, <a href="#onFilter">onFilter</a> und <a href="#onStoreUpdated">onStoreUpdated</a> aus.</i>
 
-</ul>
+Die Zwillinge von datastore.refresh() sind [gantt.refreshTask()](api/method/refreshtask.md) und [gantt.refreshLink()](api/method/refreshlink.md).
+  
+Ruft die Events [onBeforeStoreUpdate](#onbeforestoreupdate-id-item-action), [onBeforeFilter](#onbeforefilter-), [onFilterItem](#onfilteritem-id-item), [onFilter](#onfilter-) und [onStoreUpdated](#onstoreupdated-id-item-action) auf.
 
-<ul id="count">
-  <li>
-  <b>count (): number</b> - gibt die Gesamtanzahl der aktuell im datastore geladenen Elemente zurück
-</li>
-</ul>
+---
 
-<ul>
+### count ()
+Gibt die Anzahl der aktuell in den datastore geladenen Items zurück
+
+**Rückgabe**: number - Anzahl der Items
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onParse", function(){
     alert(store.count() + " items loaded");
 });
 ~~~
-<br/>
-<br/>
- <i>datastore.count() entspricht [gantt.getTaskCount()](api/method/gettaskcount.md) und [gantt.getLinkCount()](api/method/getlinkcount.md).</i>
-</ul>
 
-<ul id="countVisible">
-  <li>
-  <b>countVisible (): number</b> - gibt die Anzahl der aktuell sichtbaren Elemente zurück
-</li>
-</ul>
+Die Zwillinge von datastore.count() sind [gantt.getTaskCount()](api/method/gettaskcount.md) und [gantt.getLinkCount()](api/method/getlinkcount.md).
 
-<ul>
+---
+
+### countVisible ()
+Gibt die Anzahl der aktuell sichtbaren Items zurück
+
+**Rückgabe**: number - Anzahl der sichtbaren Items
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 alert(store.countVisible() + " items are visible");
 ~~~
-<br/>
-<br/>
- <i>datastore.countVisible() entspricht [gantt.getVisibleTaskCount()](api/method/getvisibletaskcount.md).</i>
-</ul>
 
-<ul id="eachItem">
-  <li>
-  <b>eachItem (callback): void</b> - iteriert über alle Elemente im datastore
-  <ul>
-  <li><b><i>callback</i></b> - (<i>Function</i>) - die Callback-Funktion</li>
-  </ul>
-</li>
-</ul>
+Die Zwilling von datastore.countVisible() ist [gantt.getVisibleTaskCount()](api/method/getvisibletaskcount.md).
 
-<ul>
+---
+
+### eachItem (callback)
+Iteriert über alle Items des datastore
+
+**Parametere**:
+- `callback` - (Function) - Die Callback-Funktion
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 
-var searchItems = [];
+let searchItems = [];
 store.eachItem(function(item){
     if(!item.value){
         searchItems.push(item);
     }
 });
 ~~~
-<br/>
-<br/>
- <i>datastore.eachItem() entspricht [gantt.eachTask()](api/method/eachtask.md).</i>
-</ul>
 
-<ul id="filter">
-  <li>
-  <b>filter (): void</b> - wendet Filter an und aktualisiert die Liste der sichtbaren Elemente
-</li>
-Normalerweise wird diese Methode automatisch von <b>store.refresh()</b> aufgerufen.
-</ul>
+Die Zwilling von datastore.eachItem() ist [gantt.eachTask()](api/method/eachtask.md).
 
-<ul>
+---
+
+### filter ()
+Führt die Filter aus und aktualisiert das sichtbare Array der Items
+
+Normalerweise müssen Sie diese Methode nicht aufrufen, sie wird automatisch von der store.refresh() Methode aufgerufen.
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.filter();
 ~~~
-<br/>
-</ul>
 
-<ul id="sort"><li>
-  <b>sort (field, desc, parent, silent): void</b> - sortiert Elemente im resource grid
-  <ul>
-  <li><b><i>field</i></b> - (<i>string | Function</i>) - der Spaltenname zum Sortieren oder eine benutzerdefinierte Sortierfunktion</li>
-  <li><b><i>desc?</i></b> - (<i>boolean</i>) - Sortierrichtung: <i>true</i> für absteigend, <i>false</i> für aufsteigend (Standard ist <i>false</i>)</li>
-  <li><b><i>parent?</i></b> - (<i>string | number</i>) - id des übergeordneten Elements, um die Sortierung auf dessen Zweig zu beschränken</li>
-  <li><b><i>silent?</i></b> - (<i>boolean</i>) - ob das Rendering nach dem Sortieren übersprungen werden soll</li>
-  </ul>
-</li></ul>
+---
 
-<ul>
+### sort (field, desc, parent, silent)
+Sortiert Items im Ressourcen-Gitter
+
+**Parametere**:
+- `field` - (string | Function) - der Name der Spalte oder eine benutzerdefinierte Sortierfunktion
+- `desc` - (boolean) - gibt die Sortierreihenfolge an: true - absteigend, false - aufsteigend
+- `parent` - (string | number) - die ID des übergeordneten Elements
+- `silent` - (boolean) - gibt an, ob nach dem Neuanordnen das Rendering ausgelöst werden soll
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.parse([
-    {id: 1, text: "QA", parent:null},
-    {id: 2, text: "Development", parent:null},
-    {id: 3, text: "Sales", parent:null},
-    {id: 4, text: "Other", parent:null},
-    {id: 5, text: "Unassigned", parent:4},
-    {id: 6, text: "John", parent:1},
-    {id: 7, text: "Mike", parent:2},
-    {id: 8, text: "Anna", parent:2},
-    {id: 9, text: "Bill", parent:3},
-    {id: 10, text: "Floe", parent:3}
+    { id: 1, text: "QA", parent: null },
+    { id: 2, text: "Development", parent: null },
+    { id: 3, text: "Sales", parent: null },
+    { id: 4, text: "Other", parent: null },
+    { id: 5, text: "Unassigned", parent: 4 },
+    { id: 6, text: "John", parent: 1 },
+    { id: 7, text: "Mike", parent: 2 },
+    { id: 8, text: "Anna", parent: 2 },
+    { id: 9, text: "Bill", parent: 3 },
+    { id: 10, text: "Floe", parent: 3 }
 ]);
 
-// Sortierrichtung nach Spalte umschalten
-var resourceSortDirection = false;
+// sortiere das Ressourcen-Gitter nach der Spalte
+let resourceSortDirection = false;
+
 function sortResources(){
     resourceSortDirection = !resourceSortDirection;
     gantt.getDatastore("resource").sort("text", resourceSortDirection)
     gantt.render();
 }
 ~~~
-<br/>
 
-Alternativ können Sie eine benutzerdefinierte Sortierfunktion bereitstellen:
+oder Sie können eine benutzerdefinierte Funktion zum Sortieren verwenden:
 
 ~~~js
-var resourceSortDirection = false;
+let resourceSortDirection = false;
+
 function sortResources(){
     resourceSortDirection = !resourceSortDirection;
     gantt.getDatastore("resource").sort(function (resource1, resource2){
@@ -466,275 +423,251 @@ function sortResources(){
     gantt.render();
 }
 ~~~
-<br/>
- <i>datastore.sort() ergänzt [gantt.sort()](api/method/sort.md).</i>
-</ul>
 
-<ul id="getIndexRange">
-  <li>
-  <b>getIndexRange (from, to): Array&lt;object&gt;</b> - gibt Elemente zwischen den angegebenen Indizes zurück
-  <ul>
-  <li><b><i>from</i></b> - (<i>number</i>) - Startposition</li>
-  <li><b><i>to</i></b> - (<i>number</i>) - Endposition</li>
-  </ul>
-</li>
-</ul>
+Der Zwilling von datastore.sort() ist [gantt.sort()](api/method/sort.md).
 
-<ul>
+---
+
+### getIndexRange (from, to)
+Gibt Datensätze zwischen den angegebenen Indizes zurück
+
+**Parametere**:
+- `from` - (number) - die Startposition
+- `to` - (number) - die Endposition
+
+**Rückgabe**: Array\<object\> - Array der Elemente
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var itemsInViewPort = store.getIndexRange(5, 10); // Elemente vom 5. bis 10.
+const store = gantt.getDatastore(gantt.config.resource_store);
+const itemsInViewPort = store.getIndexRange(5, 10);// holt Items von 5. bis 10. Position
 ~~~
-<br/>
-</ul>
 
-<ul id="getItems">
-  <li>
-  <b>getItems (): Array&lt;object&gt;</b> - gibt alle Elemente im datastore zurück
-</li>
-</ul>
+---
 
-<ul>
+### getItems ()
+Gibt alle Einträge des datastore zurück
+
+**Rückgabe**: Array\<object\> - Array aller Items
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var items = store.getItems();
+const store = gantt.getDatastore(gantt.config.resource_store);
+const items = store.getItems();
 ~~~
-<br/>
-<br/>
- <i>datastore.getItems() entspricht [getTasgantt.getTaskByTime()kByTime](api/method/gettaskbytime.md) und [gantt.getLinks()](api/method/getlinks.md).</i>
-</ul>
 
-<ul id="getIdByIndex">
-  <li>
-        <b>getIdByIndex (index): string | number | void</b> - gibt die id des Elements am angegebenen Index zurück oder `undefined`, wenn keines vorhanden ist
-  <ul>
-  <li><b><i>index</i></b> - (<i>number</i>) - die Position des Elements</li>
-  </ul>
-</li>
-</ul>
+Die Zwillinge von datastore.getItems() sind [gantt.getTaskByTime()](api/method/gettaskbytime.md) und [gantt.getLinks()](api/method/getlinks.md).
 
-<ul>
+---
+
+### getIdByIndex (index)
+Gibt die ID des Elements anhand seines Index zurück
+
+**Parametere**:
+- `index` - (number) - die Position des Elements
+
+**Rückgabe**: string | number | void - Item-ID oder undefined
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var firstItem = store.getIdByIndex(0);
+const store = gantt.getDatastore(gantt.config.resource_store);
+const firstItem = store.getIdByIndex(0);
 ~~~
-<br/>
-<br/>
- <i>datastore.getIdByIndex() entspricht [gantt.getTaskByIndex()](api/method/gettaskbyindex.md).</i>
-</ul>
 
-<ul id="getIndexById">
-  <li>
-        <b>getIndexById (id): number</b> - gibt den Index des Elements anhand seiner id zurück oder `-1`, wenn nicht gefunden
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  </ul>
-</li>
-</ul>
+Der Zwilling von datastore.getIdByIndex() ist [gantt.getTaskByIndex()](api/method/gettaskbyindex.md).
 
-<ul>
+---
+
+### getIndexById (id)
+Gibt den Index des Elements anhand seiner ID zurück
+
+**Parametere**:
+- `id` - (string | number) - die ID des Elements
+
+**Rückgabe**: number - Element-Index oder -1, wenn nicht gefunden
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var itemIndex = store.getIndexById(5);
+const store = gantt.getDatastore(gantt.config.resource_store);
+const itemIndex = store.getIndexById(5);
 ~~~
-<br/>
-<br/>
- <i>datastore.getIndexById() entspricht [gantt.getTaskIndex()](api/method/gettaskindex.md).</i>
-</ul>
 
-<ul id="getFirst">
-  <li>
-  <b>getFirst (): string | number | null</b> - gibt die id des ersten Elements im datastore zurück
-</li>
-</ul>
+Der Zwilling von datastore.getIndexById() ist [gantt.getTaskIndex()](api/method/gettaskindex.md).
 
-<ul>
+---
+
+### getFirst ()
+Gibt die ID des ersten Elements des datastore zurück
+
+**Rückgabe**: string | number | null - ID des ersten Elements
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var firstId = store.getFirst();
+const store = gantt.getDatastore(gantt.config.resource_store);
+const firstId = store.getFirst();
 ~~~
-<br/>
-<br/>
-</ul>
 
-<ul id="getLast">
-  <li>
-  <b>getLast (): string | number | null</b> - gibt die id des letzten Elements im datastore zurück
-</li>
-</ul>
+---
 
-<ul>
+### getLast ()
+Gibt die ID des letzten Elements des datastore zurück
+
+**Rückgabe**: string | number | null - ID des letzten Elements
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var lastId = store.getLast();
+const store = gantt.getDatastore(gantt.config.resource_store);
+const lastId = store.getLast();
 ~~~
-<br/>
-</ul>
 
-<ul id="getNext">
-  <li>
-  <b>getNext (id): string | number | null</b> - gibt die id des Elements zurück, das dem angegebenen folgt
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des aktuellen Elements</li>
-  </ul>
-</li>
-</ul>
+---
 
-<ul>
+### getNext (id)
+Gibt die ID des nächsten Elements des datastore zurück
+
+**Parametere**:
+- `id` - (string | number) - die ID des Elements
+
+**Rückgabe**: string | number | null - ID des nächsten Elements
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var firstId = store.getFirst();
-var secondId = store.getNext(firstId);
+const store = gantt.getDatastore(gantt.config.resource_store);
+const firstId = store.getFirst();
+const secondId = store.getNext(firstId);
 ~~~
-<br/>
-<br/>
- <i>datastore.getNext() entspricht [gantt.getNext()](api/method/getnext.md).</i>
-</ul>
 
-<ul id="getPrev">
-  <li>
-  <b>getPrev (id): string | number | null</b> - gibt die id des Elements zurück, das dem angegebenen vorausgeht
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des aktuellen Elements</li>
-  </ul>
-</li>
-</ul>
+Der Zwilling von datastore.getNext() ist [gantt.getNext()](api/method/getnext.md).
 
-<ul>
+---
+
+### getPrev (id)
+Gibt die ID des vorherigen Elements des datastore zurück
+
+**Parametere**:
+- `id` - (string | number) - die ID des Elements
+
+**Rückgabe**: string | number | null - ID des vorherigen Elements
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var prevId = store.getPrev(itemId);
+const store = gantt.getDatastore(gantt.config.resource_store);
+const prevId = store.getPrev(itemId);
 ~~~
-<br/>
-<br/>
- <i>datastore.getPrev() entspricht [gantt.getPrev()](api/method/getprev.md).</i>
-</ul>
 
-<ul id="destructor">
-  <li>
-  <b>destructor (): void</b> - leert den datastore und entfernt alle Event-Handler; der datastore ist danach nicht mehr verwendbar
-</li>
-</ul>
+Der Zwilling von datastore.getPrev() ist [gantt.getPrev()](api/method/getprev.md).
 
-<ul>
+---
+
+### destructor ()
+Löscht den datastore und entfernt alle angehängten Event-Handler
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.destructor();
 ~~~
-<br/>
-<br/>
- <i>datastore.destructor() entspricht [gantt.destructor()](api/method/destructor.md).</i>
-</ul>
 
+Der Zwilling von datastore.destructor() ist [gantt.destructor()](api/method/destructor.md).
 
-<ul id="attachEvent">
-  <li>
-  <b>attachEvent (name, handler, settings): string</b> - hängt einen Handler an ein internes datastore-Event an
-  <ul>
-  <li><b><i>name</i></b> - (<i>string</i>) - Event-Name, case-insensitive</li>
-  <li><b><i>handler</i></b> - (<i>Function</i>) - die Handler-Funktion</li>
-  <li><b><i>settings?</i></b> - (<i>object</i>) - optionales Einstellungsobjekt für den Event-Handler</li>
-  </ul>
-</li>
-</ul>
+---
 
-<ul>
+### attachEvent (name, handler, settings)
+Befestigt den Handler an einem internen Event des DataStore
+
+**Parametere**:
+- `name` - (string) - der Name des Events, case-insensitive
+- `handler` - (Function) - die Handler-Funktion
+- `settings` - (object) - optional, ein Objekt mit Einstellungen für den Event-Handler
+
+**Rückgabe**: string - Event-ID
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onAfterSelect", function(id){
     gantt.refreshData();
 });
 ~~~
-<br/>
-<br/>
- <i>datastore.attachEvent() entspricht [gantt.attachEvent()](api/method/attachevent.md).</i>
-</ul>
 
-<ul id="callEvent">
-  <li>
-  <b>callEvent (name, params): boolean</b> - löst ein internes Event aus
-  <ul>
-  <li><b><i>name</i></b> - (<i>string</i>) - Event-Name, case-insensitive</li>
-  <li><b><i>params</i></b> - (<i>Array&lt;any&gt;</i>) - Array mit Event-bezogenen Daten</li>
-  </ul>
-</li>
-</ul>
+Der Zwilling von datastore.attachEvent() ist [gantt.attachEvent()](api/method/attachevent.md).
 
-<ul>
+---
+
+### callEvent (name, params)
+Ruft ein internes Event auf
+
+**Parametere**:
+- `name` - (string) - der Name des Events, case-insensitive
+- `params` - (Array\<any\>) - ein Array der Event-bezogenen Daten
+
+**Rückgabe**: boolean - true, wenn das Event erfolgreich abgeschlossen wurde
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.callEvent("CustomEvent", [param1, param2]);
 ~~~
-<br/>
-<br/>
- <i>datastore.callEvent() entspricht [gantt.callEvent()](api/method/callevent.md).</i>
-</ul>
 
-<ul id="detachEvent">
-  <li>
-  <b>detachEvent (id): void</b> - entfernt einen zuvor angehängten Event-Handler
-  <ul>
-  <li><b><i>id</i></b> - (<i>string</i>) - die id des Event-Handlers</li>
-  </ul>
-</li>
-</ul>
+Der Zwilling von datastore.callEvent() ist [gantt.callEvent()](api/method/callevent.md).
 
-<ul>
+---
 
+### detachEvent (id)
+Löst einen Handler von einem Event
+
+**Parametere**:
+- `id` - (string) - die Event-ID
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
-var handlerId = store.attachEvent("onAfterSelect", function(id){
+const store = gantt.getDatastore(gantt.config.resource_store);
+const handlerId = store.attachEvent("onAfterSelect", function(id){
     gantt.refreshData();
 });
 
-// entferne den Event-Handler
+// Listener lösen
 store.detachEvent(handlerId);
 ~~~
-<br/>
-<br/>
- <i>datastore.detachEvent() entspricht [gantt.detachEvent()](api/method/detachevent.md).</i>
-</ul>
 
+Der Zwilling von datastore.detachEvent() ist [gantt.detachEvent()](api/method/detachevent.md).
 
-### Events {#events} 
+---
 
-<ul id="onItemLoading">
-  <li>
-  <b>onItemLoading (item)</b> - wird ausgelöst, wenn ein Element aus der Datenquelle geladen wird
-  <ul>
-  <li><b><i>item</i></b> - (<i>object</i>) - das Element-Objekt</li>
-  </ul>
-  Rückgabe von <i>false</i> verhindert das Standardverhalten des Events, ansonsten <i>true</i>.
-</li>
-</ul>
+## Events
 
-<ul>
+### onItemLoading (item)
+Löst aus, wenn ein Item aus der Datenquelle geladen wird
+
+**Parametere**:
+- `item` - (object) - das Objekt eines Items
+
+**Rückgabe**: boolean - Rückgabe false, um die Standardaktion zu verhindern
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onItemLoading", function(item){
-    if(item.valid){ // filtert Elemente während des Ladens basierend auf einer benutzerdefinierten Eigenschaft
+    if(item.valid){ // filter Items beim Laden nach eigener Eigenschaft
         return true;
     }
     return false;
 });
 ~~~
-<br/>
-<br/>
- <i>datastore's onItemLoading-Event entspricht dem Gantt-Event [onTaskLoading](api/event/ontaskloading.md).</i>
-</ul>
 
-<ul id="onBeforeParse">
-  <li>
-  <b>onBeforeParse (data)</b> - wird vor Beginn des Datenparsens ausgelöst
-  <ul>
-  <li><b><i>data</i></b> - (<i>Array &lt;any&gt;</i>) - das geladene Datenarray</li>
-  </ul>
-</li>
-</ul>
+Der Zwilling des onItemLoading-Ereignisses des datastore ist das [onTaskLoading](api/event/ontaskloading.md) Ereignis von Gantt.
 
-<ul>
+---
+
+### onBeforeParse (data)
+Löst aus, bevor Daten geparst werden
+
+**Parametere**:
+- `data` - (Array\<any\>) - das Array mit den geladenen Daten
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onBeforeParse", function(item){
     console.time("StoreParse");
 });
@@ -742,23 +675,20 @@ store.attachEvent("onParse", function(item){
     console.timeEnd("StoreParse");
 });
 ~~~
-<br/>
-<br/>
- <i>datastore's onBeforeParse-Event entspricht dem Gantt-Event [onBeforeParse](api/event/onbeforeparse.md).</i>
-</ul>
 
-<ul id="onParse">
-  <li>
-  <b>onParse (data)</b> - wird nach Abschluss des Parsens, aber vor dem Rendern im Gantt-Diagramm ausgelöst
-  <ul>
-  <li><b><i>data</i></b> - (<i>Array &lt;any&gt;</i>) - das geladene Datenarray</li>
-  </ul>
-</li>
-</ul>
+Der Zwilling des onBeforeParse-Ereignisses des datastore ist das [onBeforeParse](api/event/onbeforeparse.md) Ereignis von Gantt.
 
-<ul>
+---
+
+### onParse (data)
+Löst aus, nachdem die Daten geparst wurden, aber bevor sie gerendert wurden
+
+**Parametere**:
+- `data` - (Array\<any\>) - das Array mit den geladenen Daten
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onBeforeParse", function(item){
     console.time("StoreParse");
 });
@@ -766,248 +696,213 @@ store.attachEvent("onParse", function(item){
     console.timeEnd("StoreParse");
 });
 ~~~
-<br/>
-<br/>
- <i>datastore's onParse-Event entspricht dem Gantt-Event [onParse](api/event/onparse.md).</i>
-</ul>
 
-<ul id="onBeforeUpdate">
-  <li>
-  <b>onBeforeUpdate (id, item)</b> - wird ausgelöst, bevor ein Element aktualisiert wird
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  <li><b><i>item</i></b> - (<i>object</i>) - das aktualisierte Element-Objekt</li>
-  </ul>
-  Rückgabe von <i>false</i> verhindert die Standardaktion des Events, ansonsten <i>true</i>.
-</li>
-</ul>
+Das Zwilling-Ereignis onParse des datastore entspricht dem onParse-Ereignis von Gantt.
 
-<ul>
+---
+
+### onBeforeUpdate (id, item)
+Tritt auf, bevor ein Item aktualisiert wird
+
+**Parametere**:
+- `id` - (string | number) - die ID des Items
+- `item` - (object) - das neue (aktualisierte) Objekt des Items
+
+**Rückgabe**: boolean - Return false, um die Standardaktion zu verhindern
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onBeforeUpdate", function(id, item){
-    // eigener Code hier
+    // your code here
     return true;
 });
 ~~~
-<br/>
-<br/>
- <i>datastore's onBeforeUpdate-Event entspricht den Gantt-Events [onBeforeTaskUpdate](api/event/onbeforetaskupdate.md) und [onBeforeLinkUpdate](api/event/onbeforelinkupdate.md).</i>
-</ul>
 
-<ul id="onAfterUpdate">
-  <li>
-  <b>onAfterUpdate (id, item)</b> - wird ausgelöst, nachdem ein Element aktualisiert wurde
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  <li><b><i>item</i></b> - (<i>object</i>) - das aktualisierte Element-Objekt</li>
-  </ul>
-</li>
-</ul>
+Die Zwillinge des onBeforeUpdate-Ereignisses des datastore sind die [onBeforeTaskUpdate](api/event/onbeforetaskupdate.md) und [onBeforeLinkUpdate](api/event/onbeforelinkupdate.md) Ereignisse von Gantt.
 
-<ul>
+---
+
+### onAfterUpdate (id, item)
+Löst aus, nachdem ein Item aktualisiert wurde
+
+**Parametere**:
+- `id` - (string | number) - die ID des Items
+- `item` - (object) - das Objekt des Items
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onAfterUpdate", function(id, item){
-    // eigener Code hier
+    // your code here
 });
 ~~~
-<br/>
-<br/>
- <i>datastore's onAfterUpdate-Event entspricht den Gantt-Events [onAfterTaskUpdate](api/event/onaftertaskupdate.md) und [onAfterLinkUpdate](api/event/onafterlinkupdate.md).</i>
-</ul>
 
-<ul id="onBeforeDelete">
-  <li>
-  <b>onBeforeDelete (id, item)</b> - wird ausgelöst, bevor ein Element gelöscht wird
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  <li><b><i>item</i></b> - (<i>object</i>) - das Element-Objekt</li>
-  </ul>
-  Rückgabe von <i>false</i> verhindert die Standardaktion des Events, ansonsten <i>true</i>.
-</li>
-</ul>
+Die Zwillinge des onAfterUpdate-Ereignisses des datastore sind die [onAfterTaskUpdate](api/event/onaftertaskupdate.md) und [onAfterLinkUpdate](api/event/onafterlinkupdate.md) Ereignisse von Gantt.
 
-<ul>
+---
+
+### onBeforeDelete (id, item)
+Löst aus vor der Löschung eines Items
+
+**Parametere**:
+- `id` - (string | number) - die ID des Items
+- `item` - (object) - das Objekt des Items
+
+**Rückgabe**: boolean - Return false, um die Standardaktion zu verhindern
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onBeforeDelete", function(id, item){
-    // eigener Code hier
+    // your code here
     return true;
 });
 ~~~
-<br/>
-<br/>
- <i>datastore's onBeforeDelete-Event entspricht den Gantt-Events [onBeforeTaskDelete](api/event/onbeforetaskdelete.md) und [onBeforeLinkDelete](api/event/onbeforelinkdelete.md).</i>
-</ul>
 
-<ul id="onAfterDelete">
-  <li>
-  <b>onAfterDelete (id, item)</b> - wird ausgelöst, nachdem ein Element gelöscht wurde
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  <li><b><i>item</i></b> - (<i>object</i>) - das Element-Objekt</li>
-  </ul>
-</li>
-</ul>
+Die Zwillinge des onBeforeDelete-Ereignisses des datastore sind die [onBeforeTaskDelete](api/event/onbeforetaskdelete.md) und [onBeforeLinkDelete](api/event/onbeforelinkdelete.md) Ereignisse von Gantt.
 
-<ul>
+---
+
+### onAfterDelete (id, item)
+Löst aus, nachdem ein Item gelöscht wurde
+
+**Parametere**:
+- `id` - (string | number) - die ID des Items
+- `item` - (object) - das Objekt des Items
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onAfterDelete", function(id, item){
-    // eigener Code hier
+    // your code here
 });
 ~~~
-<br/>
-<br/>
- <i>datastore's onAfterDelete-Event entspricht den Gantt-Events [onAfterTaskDelete](api/event/onaftertaskdelete.md) und [onAfterLinkDelete](api/event/onafterlinkdelete.md).</i>
-</ul>
 
-<ul id="onBeforeAdd">
-  <li>
-  <b>onBeforeAdd (id, item)</b> - wird ausgelöst, bevor ein neues Element zum datastore hinzugefügt wird
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  <li><b><i>item</i></b> - (<i>object</i>) - das Element-Objekt</li>
-  </ul>
-  Rückgabe von <i>false</i> verhindert die Standardaktion des Events, ansonsten <i>true</i>.
-</li>
-</ul>
+Die Zwillinge des onAfterDelete-Ereignisses des datastore sind die [onAfterTaskDelete](api/event/onaftertaskdelete.md) und [onAfterLinkDelete](api/event/onafterlinkdelete.md) Ereignisse von Gantt.
 
-<ul>
+---
+
+### onBeforeAdd (id, item)
+Löst aus, bevor ein neuer Eintrag zum datastore hinzugefügt wird
+
+**Parametere**:
+- `id` - (string | number) - die ID des Items
+- `item` - (object) - das Objekt des Items
+
+**Rückgabe**: boolean - Return false, um die Standardaktion zu verhindern
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onBeforeAdd", function(id, item){
-    // eigener Code hier
+    // your code here
     return true;
 });
 ~~~
-<br/>
-<br/>
- <i>datastore's onBeforeAdd-Event entspricht den Gantt-Events [onBeforeTaskAdd](api/event/onbeforetaskadd.md) und [onBeforeLinkAdd](api/event/onbeforelinkadd.md).</i>
-</ul>
 
-<ul id="onAfterAdd">
-  <li>
-  <b>onAfterAdd (id, item)</b> - wird ausgelöst, nachdem ein neues Element zum datastore hinzugefügt wurde
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  <li><b><i>item</i></b> - (<i>object</i>) - das Element-Objekt</li>
-  </ul>
-</li>
-</ul>
+Die Zwillinge des onBeforeAdd-Ereignisses des datastore sind die [onBeforeTaskAdd](api/event/onbeforetaskadd.md) und [onBeforeLinkAdd](api/event/onbeforelinkadd.md) Ereignisse von Gantt.
 
-<ul>
+---
+
+### onAfterAdd (id, item)
+Löst aus, nachdem ein Item zum datastore hinzugefügt wurde
+
+**Parametere**:
+- `id` - (string | number) - die ID des Items
+- `item` - (object) - das Objekt des Items
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onAfterAdd", function(id, item){
-    // eigener Code hier
+    // your code here
 });
 ~~~
-<br/>
-<br/>
- <i>datastore's onAfterAdd-Event entspricht den Gantt-Events [onAfterTaskAdd](api/event/onaftertaskadd.md) und [onAfterLinkAdd](api/event/onafterlinkadd.md).</i>
-</ul>
 
-<ul id="onIdChange">
-  <li>
-  <b>onIdChange (id, newId)</b> - wird ausgelöst, wenn sich die id eines Elements ändert
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die alte id</li>
-  <li><b><i>newId</i></b> - (<i>string | number</i>) - die neue id</li>
-  </ul>
-</li>
-</ul>
+Die Zwillinge des onAfterAdd-Ereignisses des datastore sind die [onAfterTaskAdd](api/event/onaftertaskadd.md) und [onAfterLinkAdd](api/event/onafterlinkadd.md) Ereignisse von Gantt.
 
-<ul>
+---
+
+### onIdChange (id, newId)
+Löst aus, wenn die ID eines Items geändert wird
+
+**Parametere**:
+- `id` - (string | number) - die ID des Items
+- `newId` - (string | number) - die neue ID des Items
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onIdChange", function(oldId, newId){
-    // eigener Code hier
+    // your code here
 });
 ~~~
-<br/>
-<br/>
- <i>datastore's onIdChange-Event entspricht dem Gantt-Event [onTaskIdChange](api/event/ontaskidchange.md).</i>
-</ul>
 
-<ul id="onClearAll">
-  <li>
-  <b>onClearAll ()</b> - wird ausgelöst, nachdem alle Elemente aus dem datastore entfernt wurden
-</li>
-</ul>
+Der Zwilling des onIdChange-Ereignisses des datastore ist das [onTaskIdChange](api/event/ontaskidchange.md) Ereignis von Gantt.
 
-<ul>
+---
+
+### onClearAll ()
+Löst aus, nachdem alle Items aus dem datastore entfernt wurden
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onClearAll", function(){
-    // eigener Code hier
+    // your code here
 });
 ~~~
-<br/>
- <i>datastore's onClearAll-Event entspricht dem Gantt-Event [onClear](api/event/onclear.md).</i>
-</ul>
 
+Der Zwilling des onClearAll-Ereignisses des datastore ist das [onClear](api/event/onclear.md) Ereignis von Gantt.
 
-<ul id="onBeforeStoreUpdate">
-  <li>
-  <b>onBeforeStoreUpdate (id, item, action)</b> - wird ausgelöst, bevor der datastore aktualisiert wird
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number | null</i>) - die id des Elements oder null</li>
-  <li><b><i>item</i></b> - (<i>object | null</i>) - das Element-Objekt oder null</li>
-  <li><b><i>action</i></b> - (<i>string | null</i>) - der Aktionstyp ("paint", "move", "add", "delete", null)</li>
-  </ul>
-  Rückgabe von <i>false</i> verhindert die Standardaktion des Events, ansonsten <i>true</i>.
-  <br/>
-        Dieses Event signalisiert, dass datastore-Elemente neu gezeichnet werden müssen. Ein `null`-Wert bedeutet, dass der gesamte datastore aktualisiert wird.
+---
 
-</li>
-</ul>
+### onBeforeStoreUpdate (id, item, action)
+Löst aus, bevor der datastore aktualisiert wird
 
-<ul>
+**Parametere**:
+- `id` - (string | number | null) - die ID eines Items oder null
+- `item` - (object | null) - das Item-Objekt oder null
+- `action` - (string | null) - der Aktionstyp ("paint", "move", "add", "delete", null)
+
+**Rückgabe**: boolean - Return false, um die Standardaktion zu verhindern
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onBeforeStoreUpdate", function(id, item, action){
-    // eigener Code hier
+    // your code here
     return true;
 });
 ~~~
-<br/>
-</ul>
 
+---
 
-<ul id="onStoreUpdated">
-  <li>
-  <b>onStoreUpdated (id, item, action)</b> - wird ausgelöst, nachdem der datastore aktualisiert wurde
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number | null</i>) - die id des Elements oder null</li>
-  <li><b><i>item</i></b> - (<i>object | null</i>) - das Element-Objekt oder null</li>
-  <li><b><i>action</i></b> - (<i>string | null</i>) - der Aktionstyp ("paint", "move", "add", "delete", null)</li>
-  </ul>
-        Dieses Event signalisiert, dass datastore-Elemente neu gezeichnet werden müssen. Ein `null`-Wert bedeutet, dass der gesamte datastore aktualisiert wird.
-</li>
-</ul>
+### onStoreUpdated (id, item, action)
+Löst aus, nachdem der datastore aktualisiert wurde
 
-<ul>
+**Parametere**:
+- `id` - (string | number | null) - die ID eines Items oder null
+- `item` - (object | null) - das Item-Objekt oder null
+- `action` - (string | null) - der Aktionstyp ("paint", "move", "add", "delete", null)
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onStoreUpdated", function(id, item, action){
-    // eigener Code hier
+    // your code here
 });
 ~~~
-<br/>
-</ul>
 
+---
 
-<ul id="onBeforeFilter">
-  <li>
-  <b>onBeforeFilter ()</b> - wird ausgelöst, bevor Filter angewendet werden
-  </li>
-</ul>
+### onBeforeFilter ()
+Löst aus, bevor Filter angewendet werden
 
-<ul>
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onBeforeFilter", function(){
     console.time("filtering");
 });
@@ -1015,18 +910,15 @@ store.attachEvent("onFilter", function(){
     console.timeEnd("filtering");
 });
 ~~~
-<br/>
-</ul>
 
-<ul id="onFilter">
-  <li>
-  <b>onFilter ()</b> - wird ausgelöst, nachdem Filter die sichtbaren Elemente aktualisiert haben
-  </li>
-</ul>
+---
 
-<ul>
+### onFilter ()
+Löst aus, nachdem der datastore den Filterstatus aktualisiert hat
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onBeforeFilter", function(){
     console.time("filtering");
 });
@@ -1034,40 +926,37 @@ store.attachEvent("onFilter", function(){
     console.timeEnd("filtering");
 });
 ~~~
-<br/>
-</ul>
 
-<ul id="onFilterItem">
-  <li>
-        <b>onFilterItem (id, item)</b> - wird für jedes Element während des Filtervorgangs ausgelöst; Rückgabe von `false` blendet das Element aus
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die id des Elements</li>
-  <li><b><i>item</i></b> - (<i>object</i>) - das Element-Objekt</li>
-  </ul>
-  Rückgabe von <i>false</i> blendet das Element aus, ansonsten <i>true</i>.
-</li>
-</ul>
+---
 
-<ul>
+### onFilterItem (id, item)
+Löst für jedes Item während des Filtervorgangs aus
+
+**Parametere**:
+- `id` - (string | number) - die ID des Items
+- `item` - (object) - das Item-Objekt
+
+**Rückgabe**: boolean - Return false, um das Item als nicht sichtbar zu markieren
+
+**Beispiel**:
 ~~~js
-var store = gantt.getDatastore(gantt.config.resource_store);
+const store = gantt.getDatastore(gantt.config.resource_store);
 store.attachEvent("onFilterItem", function(id, item){
-    // eigener Code hier
+    // your code here
     return true;
 });
 ~~~
-<br/>
- <i>datastore's onFilterItem-Event entspricht dem Gantt-Event [onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md).</i>
-</ul>
 
-<ul id="ondestroy">
-  <li>
-  <b>onDestroy ()</b> - wird ausgelöst, nachdem die destructor()-Methode des datastore aufgerufen wurde
-</li>
-</ul>
-<ul>
+Der Zwilling des onFilterItem-Ereignisses des datastore ist das [onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md) Ereignis von Gantt.
+
+---
+
+### onDestroy () {#ondestroy}
+Löst aus, nachdem die destructor() Methode aufgerufen wurde
+
+**Beispiel**:
 ~~~js
-var datastore = gantt.createDatastore({
+const datastore = gantt.createDatastore({
     name: gantt.config.resource_store,
     type: "treeDatastore",
     initItem: function (item) {
@@ -1084,14 +973,11 @@ datastore.attachEvent("onDestroy", function(){
 
 datastore.destructor();
 ~~~
-<br/>
-</ul>
 
-### Related API
+## Verwandte API
 - [createDatastore](api/method/createdatastore.md)
 - [getDatastore](api/method/getdatastore.md)
 - [treeDatastore](api/other/treedatastore.md)
 
-### Related Guides
-- [Ressourcenmanagement](guides/resource-management.md)
-
+## Relevante Guides
+- [Resource Management](guides/resource-management.md)

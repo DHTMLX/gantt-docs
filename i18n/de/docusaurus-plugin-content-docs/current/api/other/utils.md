@@ -1,7 +1,7 @@
 ---
 sidebar_label: utils
-title: utils config
-description: "verschiedene Hilfsmodule"
+title: Utils-Konfiguration
+description: "Verschiedene Hilfsfunktionen"
 ---
 
 # utils
@@ -28,21 +28,22 @@ tooltips.tooltipFor({
 
 ### Details
 
-Derzeit bietet dieses Modul hauptsächlich Helfer für DOM-Operationen über **gantt.utils.dom** an.
+Derzeit enthält das Modul nur den Helfer für DOM-Operationen, verfügbar unter **gantt.utils.dom**
 
 
 ~~~js
 var domHelpers = gantt.utils.dom;
 ~~~
 
-Es stellt folgende Methoden bereit:
 
-- **getNodePosition (node): object** - ermittelt die Position eines Elements auf dem Bildschirm und gibt ein Objekt wie `{x:number, y:number,width:number, height:number}` zurück
-  - **_node_** - (*HTMLElement*) - das zu prüfende DOM-Element
+Welche folgenden Methoden besitzt:
 
-- **getRelativeEventPosition (e, node): object** - ermittelt die Mauskoordinaten relativ zu einem angegebenen DOM-Element, zurückgegeben als `{x:number, y:number}`
-  - **_e_** - (*Event*) - das ausgelöste Event
-  - **_node_** - (*HTMLElement*) - das Referenz-DOM-Element
+- **getNodePosition (node): object** - gibt die Position des Elements auf dem Bildschirm im Format `{x:number, y:number,width:number, height:number}`-Objekt zurück
+  - **_node_** - (*HTMLElement*) - DOM-Element, das überprüft wird
+
+- **getRelativeEventPosition (e, node): object** - gibt die Mauskoordinaten relativ zum DOM-Element im Format von `{x:number, y:number}`-Objekt zurück
+  - **_e_** - (*Event*) - Ereignis, das aufgetreten ist
+  - **_node_** - (*HTMLElement*) - DOM-Element, das überprüft wird
 
 
 ~~~js
@@ -63,17 +64,18 @@ gantt.attachEvent("onMouseMove", function (id, e){
 });
 ~~~
 
-- **isChildOf (child, parent): boolean** - prüft, ob der erste Knoten ein DOM-Kind des zweiten Knotens ist, gibt `true` zurück, wenn ja
-  - **_child_** - (*HTMLElement*) - das zu überprüfende Kind-Element
-  - **_parent_** - (*HTMLElement*) - das zu überprüfende Eltern-Element
 
-- **hasClass (node, className): boolean** - bestimmt, ob das angegebene `node` eine bestimmte CSS-Klasse enthält, gibt `true` zurück, wenn dies der Fall ist
-  - **_node_** - (*HTMLElement*) - das zu überprüfende DOM-Element
-  - **_className_** - (*string*) - der zu suchende CSS-Klassenname
+- **isChildOf (child, parent): boolean** - gibt `true` zurück, wenn der als erstes Argument übergebene Knoten ein DOM-Kind des Knotens ist, der als zweites Argument übergeben wird
+  - **_child_** - (*HTMLElement*) - Kindknoten, der geprüft wird
+  - **_parent_** - (*HTMLElement*) - Elternknoten, der geprüft wird
 
-- **closest (node, cssSelector): HTMLElement** - findet den nächsten Vorfahrenknoten (einschließlich des Knotens selbst), der dem angegebenen CSS-Selektor entspricht
-  - **_node_** - (*HTMLElement*) - das Start-DOM-Element
-  - **_cssSelector_** - (*string*) - der CSS-Selektor zum Abgleich
+- **hasClass (node, className): boolean** - gibt `true` zurück, wenn die Klassenliste des übergebenen `node` eine angegebene CSS-Klasse enthält 
+  - **_node_** - (*HTMLElement*) - DOM-Element, das geprüft wird
+  - **_className_** - (*string*) - Klassenname, der geprüft wird
+
+- **closest (node, cssSelector): HTMLElement** - gibt den ersten Knoten zurück, der dem angegebenen CSS-Selektor entspricht, beginnend beim `node`-Element bis zum Zweig der DOM-Elternteile
+  - **_node_** - (*HTMLElement*) - DOM-Element, das geprüft wird
+  - **_cssSelector_** - (*string*) - CSS-Selektor für das Zielknoten
 
 ~~~js
 gantt.attachEvent("onEmptyClick", function (e) {
@@ -86,5 +88,6 @@ gantt.attachEvent("onEmptyClick", function (e) {
 });
 ~~~
 
+
 ### Related samples
-- [Custom Tooltips](https://docs.dhtmlx.com/gantt/samples/02_extensions/22_tooltip_api.html)
+- [Benutzerdefinierte Tooltips](https://docs.dhtmlx.com/gantt/samples/02_extensions/22_tooltip_api.html)

@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_initial
-title: auto_scheduling_initial config
-description: "데이터가 로드되거나 파싱될 때 간트가 자동 스케줄링을 수행할지 여부를 정의합니다."
+title: auto_scheduling_initial 구성
+description: "Gantt가 데이터 로딩/파싱 시 자동 스케줄링을 수행할지 여부를 정의합니다"
 ---
 
 # auto_scheduling_initial
+
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
 :::
+
+:::warning
+The property has been deprecated in v9.1, use the `schedule_on_parse` property of [gantt.config.auto_scheduling](api/config/auto_scheduling.md#schedule_on_parse) instead.
+:::
+
 ### Description
 
-@short: 데이터가 로드되거나 파싱될 때 간트가 자동 스케줄링을 수행할지 여부를 정의합니다.
+@short: Gantt가 데이터 로딩/파싱 시 자동 스케줄링을 수행할지 여부를 정의합니다
 
 @signature: auto_scheduling_initial: boolean
 
@@ -24,13 +30,14 @@ gantt.init("gantt_here");
 
 **Default value:** true
 
+
 ### Related samples
 - [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
- 이 설정은 **auto_scheduling** 확장의 일부이므로, [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인이 활성화되어 있는지 확인하세요. 자세한 내용은 [자동 스케줄링](guides/auto-scheduling.md) 문서를 참고하시기 바랍니다. 
+이 구성은 **auto_scheduling** 확장에 정의되어 있으므로 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인을 활성화해야 합니다. 자세한 내용은 [Auto Scheduling](guides/auto-scheduling.md) 문서를 참조하십시오.
 :::
 
 ### Related API
@@ -50,5 +57,8 @@ gantt.init("gantt_here");
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [자동 스케줄링](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
+### Change log
+- 이 속성은 v9.1에서 더 이상 사용되지 않음
+- 버전 4.0에서 추가되었습니다

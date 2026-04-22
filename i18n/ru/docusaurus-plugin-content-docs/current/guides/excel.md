@@ -1,67 +1,68 @@
 ---
-title: "Экспорт/Импорт в Excel, экспорт в iCal"
-sidebar_label: "Экспорт/Импорт в Excel, экспорт в iCal"
+title: "Экспорт/Импорт для Excel, Экспорт в iCal"
+sidebar_label: "Экспорт/Импорт для Excel, Экспорт в iCal"
 ---
 
-# Экспорт/Импорт в Excel, экспорт в iCal
+# Экспорт/Импорт для Excel, Экспорт в iCal
 
-Библиотека dhtmlxGantt поддерживает экспорт данных из диаграммы Gantt в форматы Excel и iCal. Также доступен импорт данных в диаграмму Gantt из файла Excel.
+Библиотека dhtmlxGantt позволяет экспортировать данные из диаграммы Gantt в форматы Excel и iCal. Вы также можете импортировать данные в Gantt из Excel-файла.
 
 :::note
-Сервис экспорта предоставляется бесплатно, однако экспортируемые файлы Excel/iCal будут содержать водяной знак библиотеки при использовании лицензии GPL. 
-При покупке лицензии экспортируемые файлы не будут содержать водяных знаков в течение активного периода поддержки (12 месяцев для всех PRO-лицензий).
+Сервис бесплатный, но итоговый файл Excel/iCal будет содержать водяной знак библиотеки в рамках лицензии GPL. 
+При покупке лицензии результат экспорта будет доступен без водяного знака
+на протяжении действующего срока поддержки (12 месяцев для всех PRO лицензий).
 :::
 
-Существует несколько сервисов экспорта, которые вы можете установить на свой компьютер для локального экспорта диаграмм Gantt в Excel или iCal.
-Обратите внимание, что эти сервисы экспорта не входят в комплект поставки пакета Gantt.
-Подробнее ознакомиться с условиями использования можно в [связанной статье](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml).
+Существует несколько сервисов экспорта. Их можно установить на вашем компьютере и локально экспортировать диаграмму Gantt в Excel или iCal. Обратите внимание, что сервисы экспорта не входят в пакет Gantt; 
+прочитайте соответствующую статью, чтобы узнать условия использования каждого из них.
 
 ## Ограничения онлайн-сервиса экспорта
 
 :::note
-Сервис экспорта имеет ограничения по времени обработки и размеру запроса.
+У онлайн-сервиса экспорта существуют ограничения по времени и размеру запроса.
 :::
 
 ### Ограничения по времени
 
-Если процесс экспорта занимает более 20 секунд, он будет остановлен, и вы увидите следующую ошибку:
+Если процесс занимает более чем 20 секунд, экспорт будет прерван и произойдёт следующая ошибка:
 
 ~~~html
 Error: Timeout trigger 20 seconds
 ~~~
 
-Если несколько пользователей экспортируют диаграммы Gantt одновременно, процесс может занять больше времени обычного. Однако время, затраченное на каждый экспортный запрос пользователя, учитывается отдельно.
+Если несколько пользователей одновременно экспортируют Gantt, процесс может занимать больше времени, чем обычно. Но это нормально, поскольку время, затраченное на запрос экспорта от конкретного пользователя, считается отдельно.
 
-### Ограничения по размеру запроса
+### Ограничения размера запроса
 
-Основная конечная точка API **https://export.dhtmlx.com/gantt** обрабатывает все методы экспорта (*exportToPDF*, *exportToPNG*, *exportToMSProject* и др.). Максимальный размер запроса - **10 МБ**.
+Существует общий конечный пункт API `https://export.dhtmlx.com/gantt`, который обслуживает все методы экспорта (*exportToPDF*, *exportToPNG*, *exportToMSProject* и т. п.). **Максимальный размер запроса — 10 МБ**.
 
-Также есть отдельная конечная точка API **https://export.dhtmlx.com/gantt/project** для сервисов экспорта/импорта [MSProject](guides/export-msproject.md) и 
-[Primavera P6](guides/export-primavera.md) 
-(*exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*). Для этой конечной точки максимальный размер запроса - **40 МБ**.
+Есть также отдельный конечный пункт API `https://export.dhtmlx.com/gantt/project`, специфичный для сервисов экспорта/импорта [MSProject] и
+[Primavera P6] (только для *exportToMSProject* / *importFromMSProject* / *exportToPrimaveraP6* / *importFromPrimaveraP6*). **Максимальный размер запроса: 40 МБ**.
 
 ## Использование модулей экспорта
 
 :::note
-Для экспорта больших диаграмм рекомендуется использовать [отдельный модуль экспорта](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
-Этот модуль бесплатен, если у вас есть лицензия [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) или [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing). В противном случае его можно приобрести отдельно [здесь](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
+Если вам необходимо экспортировать большие диаграммы, можно воспользоваться [самостоятельным модулем экспорта](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml). 
+Модуль экспорта предоставляется бесплатно, если вы получили Gantt по лицензии [Commercial](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), [Enterprise](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing) или [Ultimate](https://dhtmlx.com/docs/products/dhtmlxGantt/#licensing), или вы можете [купить модуль отдельно](https://store.payproglobal.com/checkout?currency=USD&products[1][id]=55210).
 :::
 
-Более подробную информацию о работе с модулем экспорта в PDF можно найти в этом руководстве: [Модуль экспорта в PDF](guides/pdf-export-module.md). Модуль поддерживает экспорт в PDF, PNG, Excel и iCal.
+[Узнать больше об использовании экспортного модуля для PDF](guides/pdf-export-module.md). Dieser экспортный модуль может экспортировать данные в PDF, PNG, Excel и iCal файлы.
 
 ## Экспорт в Excel
 
-Чтобы экспортировать данные из диаграммы Gantt в файл Excel, выполните следующие шаги:
+Чтобы экспортировать данные из диаграммы Gantt в документ Excel, выполните следующее:
 
-- Включите плагин <b>export_api</b> с помощью метода [plugins](api/method/plugins.md):
+- Чтобы использовать функциональность экспорта/импорта, включите плагин <b>export_api</b> через метод [plugins]:
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
+Это позволяет использовать либо онлайн-сервис экспорта, либо локальный модуль экспорта.
+
 :::note
-Для версий Gantt ниже 8.0 добавьте скрипт **https://export.dhtmlx.com/gantt/api.js** на страницу для активации онлайн-сервиса экспорта, например:
+Если вы используете версию Gantt старше 8.0, вам нужно подключить `https://export.dhtmlx.com/gantt/api.js` на вашей странице, чтобы включить функциональность экспорта, например:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -69,10 +70,10 @@ gantt.plugins({
 ~~~
 :::
 
-- Используйте метод [exportToExcel](api/method/exporttoexcel.md) для экспорта данных диаграммы Gantt: 
+- Вызовите метод [exportToExcel](api/method/exporttoexcel.md) для экспорта данных из диаграммы Gantt: 
 
 ~~~html
-<input value="Export to Excel" type="button" onclick='gantt.exportToExcel()'>/*!*/
+<input value="Export to Excel" type="button" onclick='gantt.exportToExcel()'>
 
 <script>
     gantt.init("gantt_here");
@@ -81,129 +82,124 @@ gantt.plugins({
 ~~~
 
 
-[Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
+**Связанный пример**: [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
 
-[Export data: store online](https://docs.dhtmlx.com/gantt/samples/08_api/09_export_store.html)
+**Связанный пример**: [Export data: store online](https://docs.dhtmlx.com/gantt/samples/08_api/09_export_store.html)
   
   
 
 #### Параметры метода экспорта
 
-Метод **exportToExcel()** принимает необязательный объект с несколькими свойствами:
+Метод **exportToExcel()** принимает в качестве параметра объект с несколькими свойствами (все свойства являются необязательными):
 
-- **name** - (*string*) задаёт имя экспортируемого файла, включая расширение '.xlsx'
-- **columns** - (*array*) настраивает колонки в листе Excel. Каждый объект колонки может содержать:
-    - **'id'** - (*string,number*) свойство события, отображаемое в колонке
-    - **'header'** - (*string*) текст заголовка колонки
-    - **'width'** - (*number*) ширина колонки в пикселях
-    - **'type'** - (*string*) тип данных колонки
-- **server** - (*string*) указывает конечную точку API для запроса экспорта. Полезно при наличии локального сервиса экспорта. По умолчанию **https://export.dhtmlx.com/gantt**
-- **callback** - (*function*) функция обратного вызова, получающая JSON-объект со свойством *url* для загрузки сгенерированного XLSX-файла
-- **visual** - (*boolean*) включает экспорт диаграммы во временной шкале в файл Excel. По умолчанию *false*
-- **cellColors** - (*boolean*) если *true*, ячейки в экспортируемом файле будут иметь цвета, определённые шаблоном [timeline_cell_class](api/template/timeline_cell_class.md), экспортируя стили *color* и *background-color*
-- **data** - (*object*) позволяет указать собственный источник данных для экспорта вместо текущих данных диаграммы Gantt
-- **date_format** - (*string*) определяет формат даты, используемый в экспортируемом файле Excel. Полный список поддерживаемых форматов смотрите [здесь](api/method/exporttoexcel.md).        
+- **name** - (*string*) задаёт имя выходного файла с расширением '.xlsx' 
+- **columns** - (*array*) позволяет настраивать столбцы выходной таблицы Excel. Свойства объектов столбцов:
+    - **'id'** - (*string,number*) свойство события, которое будет сопоставлено столбцу
+    - **'header'** - (*string*) заголовок столбца
+    - **'width'** - (*number*) ширина столбца в пикселях
+    - **'type'** - (*string*) тип столбца
+- **server** - (*string*) задаёт конечную точку API для запроса. Может использоваться с локальной установкой сервиса экспорта. Значение по умолчанию: `https://export.dhtmlx.com/gantt`
+- **callback** - (*function*) если вы хотите получить URL для загрузки сгенерированного файла XLSX, можно использовать свойство callback. Оно получает JSON-объект с полем url
+- **visual** - (*boolean*) добавляет на экспортируемый документ Excel шкалу времени. По умолчанию false
+- **cellColors** - (*boolean*) если установить в *true*, ячейки экспортируемого документа будут иметь цвета, определённые шаблоном [timeline_cell_class], экспортируются свойства *color* и *background-color*
+- **data** - (*object*) задаёт произвольный источник данных, который будет представлен в экспортируемой диаграмме Gantt
+- **date_format** - (*string*) задаёт формат отображения даты в экспортируемом документе Excel. Полный список доступных кодов формата можно посмотреть [здесь](api/method/exporttoexcel.md).        
 
-**Пример вызова метода экспорта с дополнительными свойствами**
-~~~js
+~~~jsx title="Вызов метода экспорта с необязательными свойствами"
 gantt.exportToExcel({
-    name:"document.xlsx", 
+    name: "document.xlsx", 
     columns:[
-        { id:"text",  header:"Title", width:150 },
-        { id:"start_date",  header:"Start date", width:250, type:"date" }
+        { id: "text",  header: "Title", width: 150 },
+        { id: "start_date",  header: "Start date", width: 250, type: "date" }
     ],
-    server:"https://myapp.com/myexport/gantt",
-    callback: function(res){
+    server: "https://myapp.com/myexport/gantt",
+    callback: (res) => {
         alert(res.url);
     },
-    visual:true,
-    cellColors:true,
-    data:{},
+    visual: true,
+    cellColors: true,
+    data: { },
     date_format: "dddd d, mmmm yyyy"
 });
 ~~~
 
-#### Параметры даты по умолчанию
+#### Значения даты по умолчанию
 
-Модуль экспорта ожидает, что колонки **start_date** и **end_date** будут типа *Date*, а колонка **duration** - типа *number*. 
+Модуль экспорта ожидает, что столбцы **start_date** и **end_date** будут иметь тип *Date*, а столбец **duration** — тип *number*. 
 
-При использовании [кастомных шаблонов](guides/specifying-columns.md#datamappingandtemplates) убедитесь, что возвращаемое значение соответствует ожидаемому типу, либо укажите другое имя свойства в поле **name** конфигурации колонки. Например:
+В случае применения [пользовательских шаблонов](guides/specifying-columns.md#datamappingandtemplates), необходимо либо вернуть значение нужного типа, либо определить другое значение в свойстве **name** конфигурации столбца. Например:
 
-~~~js
-
+~~~jsx {7,10-12}
 gantt.config.columns = [
     ...
-    {name: "start_date", align: "center", width: 100, resize: true, 
-        editor: start_dateEditor},
-    {name: "end_date", align: "center", width: 100, resize: true, 
-        editor: end_dateEditor},
-    {name: "duration_formatted", /*!*/
+    { name: "start_date", align: "center", width: 100, resize: true, 
+        editor: start_dateEditor },
+    { name: "end_date", align: "center", width: 100, resize: true, 
+        editor: end_dateEditor },
+    { name: "duration_formatted", 
         align: "center", width: 40, resize: true, 
         editor: durationEditor, 
-        template: function(task){ /*!*/
-            return formatter.format(task.duration_formatted); /*!*/
+        template: (task) => { 
+            return formatter.format(task.duration_formatted); 
         }
     },
     ...
 ];
 ~~~
 
-Если этого не сделать, данные Gantt не будут экспортированы корректно. [Пример здесь](https://snippet.dhtmlx.com/q1lhyvt3).
+Иначе данные Gantt не будут экспортированы. [Посмотрите соответствующий пример](https://snippet.dhtmlx.com/q1lhyvt3).
 
-### Экспорт с использованием собственного источника данных
+### Установка пользовательского источника данных для экспорта
 
-Чтобы экспортировать диаграмму Gantt на основе собственного набора данных (отличного от текущих данных в гриде), используйте свойство **data** в объекте параметров метода 
-[exportToExcel](api/method/exporttoexcel.md):
+Чтобы экспортировать диаграмму Gantt с набором пользовательских данных (то есть не теми данными, что отображаются в исходной диаграмме Gantt), используйте свойство **data** в параметре метода [exportToExcel](api/method/exporttoexcel.md):
 
 ~~~js
 gantt.exportToExcel({   
-    name:"document.xlsx", 
-    data:[
-        {id:1, text:"Project #1", start_date:"01-04-2020", duration:18},
-        {id:2, text:"Task #1", start_date:"02-04-2020",duration:8, parent:1},
-        {id:3, text:"Task #2", start_date:"11-04-2020",duration:8, parent:1}
+    name: "document.xlsx", 
+    data: [
+        { id: 1, text: "Project #1", start_date: "01-04-2026", duration: 18},
+        { id: 2, text: "Task #1", start_date: "02-04-2026", duration: 8, parent: 1},
+        { id: 3, text: "Task #2", start_date: "11-04-2026", duration: 8, parent: 1}
     ]      
 });
 ~~~
 
 :::note
-Обратите внимание, что параметр **data** должен быть объектом данных, а не строкой-URL.
+Обратите внимание, что нельзя указать в качестве значения параметра **data** какой-либо URL, допускается только объект данных.
 :::
 
-### Экспорт цветов задач
+### Добавление цветов задач в экспорт
 
-Чтобы добавить цвета задач в экспортируемый файл Excel, установите свойство **visual** в значение *"base-colors"*:
+Вы можете добавить цвета задач в экспортируемый файл Excel диаграммы Gantt, установив значение свойства **visual** в *"base-colors"*:
 
 ~~~js
 gantt.exportToExcel({
-    visual: "base-colors", /*!*/
+    visual: "base-colors", 
     cellColors: true
 })
 ~~~
 
+**Связанный пример**: [Export colors of tasks](https://snippet.dhtmlx.com/t2znjrfj)
 
-**Related example:** [Export colors of tasks](https://snippet.dhtmlx.com/t2znjrfj)
+## Импорт из Excel {#importfromexcel}
 
+Поскольку автоматическое сопоставление произвольных столбцов Excel-документа с моделью данных Gantt невозможно, сервис экспорта преобразует документ в массив строк, который возвращается в JSON. 
+Преобразование полученного документа в данные Gantt — задача конечного разработчика.
 
-## Импорт из Excel
+Чтобы преобразовать Excel-файл, необходимо отправить следующий запрос в сервис экспорта:
 
-Поскольку автоматическое сопоставление произвольных колонок Excel с моделью данных Gantt не поддерживается, сервис экспорта преобразует документ Excel в массив строк, возвращаемый в формате JSON. 
-Преобразование этих данных в формат Gantt остаётся на стороне разработчика.
-
-Для преобразования файла Excel отправьте запрос на сервис экспорта со следующими параметрами:
-
-- URL запроса - **https://export.dhtmlx.com/gantt**
-- Метод запроса - **POST**
+- Request URL - `https://export.dhtmlx.com/gantt`
+- Request Method - **POST**
 - Content-Type - **multipart/form-data**
 
 Параметры запроса:
 
-- **file** - файл Excel для загрузки
-- **type** - значение "excel-parse"
-- **data** - (*необязательно*) строка JSON с дополнительными настройками
+- **file** - Excel-файл
+- **type** - "excel-parse"
+- **data** - (*optional*) JSON-строка с настройками
 
-Пример формы:
+Например:
 
 ~~~html
 <form action="https://export.dhtmlx.com/gantt" method="POST" 
@@ -218,19 +214,19 @@ gantt.exportToExcel({
 
 ~~~js
 gantt.importFromExcel({
-    server:"https://export.dhtmlx.com/gantt",
+    server: "https://export.dhtmlx.com/gantt",
     data: file,
-    callback: function(project){
+    callback: (project) => {
         console.log(project)
     }
 });
 ~~~
 
 
-[Import Excel file](https://docs.dhtmlx.com/gantt/samples/08_api/21_load_from_excel.html)
+**Связанный пример**: [Импорт Excel файла](https://docs.dhtmlx.com/gantt/samples/08_api/21_load_from_excel.html)
 
 
-Здесь *file* - объект [File](https://developer.mozilla.org/en-US/docs/Web/API/File), представляющий Excel (xlsx) файл.
+Где *file* — экземпляр [File](https://developer.mozilla.org/en-US/docs/Web/API/File), который должен содержать Excel (xlsx) файл.
 
 :::note
 **gantt.importFromExcel** требует поддержки HTML5 File API.
@@ -239,52 +235,53 @@ gantt.importFromExcel({
 
 ### Ответ
 
-Ответ будет представлять собой JSON-массив объектов:
+Ответ будет содержать JSON-массива объектов:
 
 ~~~js
 [
-   { "Name": "Task Name", "Start": "2018-08-11 10:00", "Duration": 8 },
+   { "Name": "Task Name", "Start": "2026-04-11 10:00", "Duration": 8 },
    ...
 ]
 ~~~
 
-Подробности:
+где:
 
 - Значения первой строки используются как имена свойств импортируемых объектов.
-- Каждая последующая строка преобразуется в отдельный объект.
-- Даты форматируются как "%Y-%m-%d %H:%i". 
+- Каждая строка сериализуется как отдельный объект.
+- Даты сериализуются в формате "%Y-%m-%d %H:%i". 
 
 
 ### Настройки импорта
 
-- Сервис импорта ожидает, что первая строка будет заголовком с именами колонок.
-- По умолчанию обрабатывается первый лист в файле Excel. Чтобы указать другой лист, используйте параметр **sheet** (нумерация с нуля):
+- Сервис импорта ожидает, что первая строка импортируемого листа будет заголовочной строкой, содержащей имена столбцов.
+- По умолчанию сервис возвращает первый лист документа. Чтобы вернуть другой лист, используйте параметр **sheet** (нумерация с нуля)
 
 ~~~js
 gantt.importFromExcel({
-    server:"https://export.dhtmlx.com/gantt",
+    server: "https://export.dhtmlx.com/gantt",
     data: file,
-    sheet:2, // обработка третьего листа
-    callback: function (rows) {}
+    sheet: 2, // вывозя третий лист
+    callback: (rows) => {}
 });
 ~~~
 
 
 ## Экспорт в iCal
 
-Чтобы экспортировать данные диаграммы Gantt в строку iCal, выполните следующие шаги:
+Чтобы экспортировать данные из диаграммы Gantt в строку iCal, выполните следующее:
 
-- Включите плагин <b>export_api</b> с помощью метода [plugins](api/method/plugins.md):
+- Чтобы использовать онлайн-сервис экспорта, включите плагин <b>export_api</b> через метод [plugins]:
+
 ~~~js
 gantt.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
-- Вызовите метод [exportToICal](api/method/exporttoical.md) для экспорта данных:
+- Вызовите метод [exportToICal](api/method/exporttoical.md) для экспорта данных из диаграммы Gantt: 
 
 ~~~html
-<input value="Export to iCal" type="button" onclick='gantt.exportToICal()'>/*!*/
+<input value="Export to iCal" type="button" onclick='gantt.exportToICal()'>
 
 <script>
     gantt.init("gantt_here");
@@ -293,23 +290,21 @@ gantt.plugins({
 ~~~
 
 
-[Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
+**Связанный пример**: [Export data: MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
 
-[Export data: store online](https://docs.dhtmlx.com/gantt/samples/08_api/09_export_store.html)
+**Связанный пример**: [Export data: store online](https://docs.dhtmlx.com/gantt/samples/08_api/09_export_store.html)
 
 
 #### Параметры метода экспорта
 
-Метод [exportToICal()](api/method/exporttoical.md) принимает необязательный объект со следующими свойствами:
+Метод [exportToICal()](api/method/exporttoical.md) принимает в качестве параметра объект со следующими свойствами (необязательно):
 
-- **server** - (*string*) указывает конечную точку API для запроса. Полезно для локальных установок сервиса экспорта. По умолчанию **https://export.dhtmlx.com/gantt**.
-- **name** - (*string*) позволяет задать собственное имя файла и расширение, однако формат файла остаётся iCal.
+- **server** - (*string*) задаёт конечную точку API для запроса. Может использоваться с локальной установкой сервиса экспорта. Значение по умолчанию: `https://export.dhtmlx.com/gantt`;
+- **name** - (*string*) позволяет задать произвольное имя и расширение файла, но экспорт будет выполнен в формате iCal.
   
-**Пример вызова метода экспорта с дополнительными свойствами**
-~~~js
+~~~jsx title="Вызов метода экспорта с необязательными свойствами"
 gantt.exportToICal({
     server:"https://myapp.com/myexport/gantt"
 });
 ~~~
-

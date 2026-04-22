@@ -1,23 +1,23 @@
 ---
 sidebar_label: copy
-title: copy method
-description: "создаёт глубокую копию переданного объекта"
+title: метод copy
+description: "Создает глубокую копию переданного объекта"
 ---
 
 # copy
 
 ### Description
 
-@short: Создаёт глубокую копию переданного объекта
+@short: Создает глубокую копию переданного объекта
 
 @signature: copy: (initialObject: any) =\> any
 
 ### Parameters
 
-- `initialObject` - (required) *object* - объект, который необходимо скопировать
+- `initialObject` - (required) *объект* - объект, который нужно скопировать
 
 ### Returns
-- ` clonedObject` - (object) - глубокая копия переданного объекта
+- ` clonedObject` - (объект) - глубокая копия переданного объекта
 
 ### Example
 
@@ -26,4 +26,4 @@ var backupTask = gantt.copy(gantt.getTask(id));
 ~~~
 
 ### Change log
-- added in version 4.0
+- добавлено в версии 4.0

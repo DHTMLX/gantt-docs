@@ -1,14 +1,18 @@
 ---
 sidebar_label: xml_date
-title: xml_date config
-description: "определяет форматы даты, используемые для парсинга данных из набора данных и отправки данных на сервер"
+title: xml_date конфигурация
+description: "определяет форматы дат, которые используются для разбора данных из набора данных и отправки данных на сервер"
 ---
 
 # xml_date
 
+:::warning
+Свойство устарело.
+:::
+
 ### Description
 
-@short: Определяет форматы даты, используемые для парсинга данных из набора данных и отправки данных на сервер
+@short: Определяет форматы дат, которые используются для разбора данных из набора данных и отправки данных на сервер
 
 ### Example
 
@@ -19,12 +23,12 @@ gantt.init("gantt_here");
 gantt.load("../data/tasks.json");
 ~~~
 
-**Default value:** "%d-%m-%Y %H:%i"
+**Значение по умолчанию:** "%d-%m-%Y %H:%i"
 
 ### Details
 
 :::note
- Свойство **xml_date** устарело. Пожалуйста, используйте вместо него [date_format](api/config/date_format.md): 
+Свойство **xml_date** устарело. Используйте [date_format](api/config/date_format.md) вместо него:
 :::
 
 ~~~js
@@ -39,8 +43,7 @@ gantt.load("../data/tasks.json");
 - [xml_format](api/template/xml_format.md)
 
 ### Related Guides
-- [Спецификация формата даты](guides/date-format.md)
+- [Date Format Specification](guides/date-format.md)
 
 ### Change log
 - устарело с версии v6.2, удалено с версии v7.0
-

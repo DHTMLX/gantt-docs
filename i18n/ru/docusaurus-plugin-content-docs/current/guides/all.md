@@ -1,9 +1,9 @@
 ---
-title: "Gantt for Frameworks"
-sidebar_label: "Gantt for Frameworks"
+title: "Gantt для фреймворков"
+sidebar_label: "Gantt для фреймворков"
 ---
 
-# Gantt for Frameworks
+# Gantt для фреймворков
 
 - [React Gantt](integrations/react.md)
 - [Angular Gantt](guides/angular.md)

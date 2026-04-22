@@ -1,17 +1,16 @@
 ---
-title: "甘特图的模板"
-sidebar_label: "甘特图的模板"
+title: "甘特图模板"
+sidebar_label: "甘特图模板"
 ---
 
-# 甘特图的模板
+# 甘特图模板
 
-模板为自定义日期和标签的显示方式提供了灵活性。它们还支持为甘特图的不同部分应用 CSS 类，以实现个性化样式。
+模板允许你更改显示日期和标签的格式。它们也允许你为甘特图的元素应用 CSS 类以进行样式化。
 
-
-- [그리드의 템플릿](guides/table-templates.md)
-- [타임라인 영역의 템플릿](guides/timeline-templates.md)
-- [의존성 링크 템플릿](guides/dependency-templates.md)
-- [라이트박스의 템플릿](guides/lightbox-templates.md)
-- ['Quick Info' 확장(터치 지원)의 템플릿](guides/touch-templates.md)
-- [툴팁 템플릿](guides/tooltip-templates.md)
-- [날짜 변환을 위한 템플릿](guides/conversion-templates.md)
+- [网格模板](guides/table-templates.md)
+- [时间线区域模板](guides/timeline-templates.md)
+- [依赖链接模板](guides/dependency-templates.md)
+- [灯箱模板](guides/lightbox-templates.md)
+- [“Quick Info” 扩展（触控支持）模板](guides/touch-templates.md)
+- [工具提示模板](guides/tooltip-templates.md)
+- [日期转换模板](guides/conversion-templates.md)

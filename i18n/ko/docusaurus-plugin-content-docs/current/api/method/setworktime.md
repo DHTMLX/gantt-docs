@@ -1,20 +1,20 @@
 ---
 sidebar_label: setWorkTime
-title: setWorkTime method
-description: "간트 차트의 작업 시간을 설정합니다."
+title: setWorkTime 메서드
+description: "간트 차트의 근무 시간을 설정합니다"
 ---
 
 # setWorkTime
 
 ### Description
 
-@short: 간트 차트의 작업 시간을 설정합니다.
+@short: 간트 차트의 근무 시간을 설정합니다
 
-@signature: setWorkTime: (config: object) =\> void
+@signature: setWorkTime: Calendar['setWorkTime']
 
 ### Parameters
 
-- `config` - (required) *object* - 시간 범위의 구성 객체
+- `config` - (필수) *object* - 시간 구간의 구성 객체
 
 ### Example
 
@@ -42,6 +42,8 @@ gantt.setWorkTime({date:new Date(2013,0,1), hours:false})
 gantt.setWorkTime({hours : ["8:30-12:00", "13:00-17:00"]})
 ~~~
 
+
+
 ### Related samples
 - [Calculate working hours](https://docs.dhtmlx.com/gantt/samples/09_worktime/01_working_hours_per_day.html)
 
@@ -64,7 +66,6 @@ gantt.setWorkTime({hours : ["8:30-12:00", "13:00-17:00"]})
 
 이 메서드를 사용하여 이러한 기본 설정을 사용자 정의할 수 있습니다.
 
-## 구성 객체 속성 {#configurationobjectproperties}
 
 구성 객체는 다음 속성을 포함할 수 있습니다:
 
@@ -85,33 +86,33 @@ gantt.setWorkTime({hours : ["8:30-12:00", "13:00-17:00"]})
   <td> 요일을 나타내는 숫자 [0 (<i>일요일</i>) - 6 (<i>토요일</i>)]. 한 번에 하나의 요일만 설정할 수 있습니다.</td>
   </tr>
   <tr>
-  <td colspan="2">
+		<td colspan="2" style="text-align:left !important; ">
 ~~~js
-//모든 월요일을 비근무일로 표시합니다.
+//모든 월요일을 휴무로 설정
 gantt.setWorkTime({ day:1, hours:false }); 
 ~~~
-  </td>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="2"><b id="date">date</b></td>
+  <td> a specific date to set as a working day or day off</td>
   </tr>
   <tr>
-  <td rowspan="2"><b id="date">date</b></td>
-  <td> 특정 날짜를 근무일 또는 휴일로 설정합니다.</td>
-  </tr>
-  <tr>
-  <td colspan="2">
+		<td colspan="2" style="text-align:left !important; ">
 ~~~js
-//특정 날짜를 휴일로 지정합니다.
+//특정 날짜를 휴무로 설정
 gantt.setWorkTime({date:new Date(2013,0,1), hours:false})
 ~~~
-  </td>
-  </tr>
+		</td>
+	</tr>
   <tr>
   <td rowspan="2"><b id="hours">hours</b></td>
   <td> 'from'-'to' 구간으로 지정된 근무 시간 배열. <br><i>'false'</i>는 휴일 설정, <i>'true' (기본값)</i>는 기본 근무 시간 (["8:00-17:00"])을 적용합니다.</td>
   </tr>
   <tr>
-  <td colspan="2">
+		<td colspan="2" style="text-align:left !important; ">
 ~~~js
-//금요일의 근무 시간을 8:00부터 12:00까지 설정합니다.
+//금요일의 근무 시간을 8:00-12:00로 설정
 gantt.setWorkTime({day : 5, hours : ["8:00-12:00"]});
 ~~~
   </td>
@@ -122,23 +123,23 @@ gantt.setWorkTime({day : 5, hours : ["8:00-12:00"]});
   <ul><li><b>from</b> - (<i>Date</i>) 필수, 시간 범위 시작 날짜</li><li><b>to</b> - (<i>Date</i>) 필수, 시간 범위 종료 날짜</li><li><b>hours</b> - (<i>array</i>) 'from'-'to' 구간으로 된 근무 시간 배열. <br><i>'false'</i>는 휴일, <i>'true' (기본값)</i>는 기본 근무 시간 (["8:00-17:00"])</li><li><b>days</b> - (<i>array</i>) 0(일요일)부터 6(토요일)까지 7요소 배열로, 1/true는 근무일, 0/false는 비근무일을 나타냅니다.</li></ul></td>
   </tr>
   <tr>
-  <td colspan="2">
+		<td colspan="2" style="text-align:left !important; ">
 ~~~js
-//겨울철 근무 시간을 수정합니다.
+//겨울 달의 근무 시간을 변경
 gantt.setWorkTime({
-    customWeeks: {
-        winter: {
-            from: new Date(2018, 11, 1), // 2018년 12월 1일
-            to: new Date(2019, 2, 1), // 2019년 3월 1일 00:00
-            hours: ["9:00-13:00", "14:00-16:00"],
-            days: [ 1, 1, 1, 1, 0, 0, 0]
-        }
-    }
+	customWeeks: {
+		winter: {
+			from: new Date(2018, 11, 1), // December 1st, 2018
+			to: new Date(2019, 2, 1), // March 1st 00:00, 2019
+			hours: ["9:00-13:00", "14:00-16:00"],
+			days: [ 1, 1, 1, 1, 0, 0, 0]
+		}
+	}
 });
 ~~~
-  </td>
-  </tr>
-  </tbody>
+		</td>
+	</tr>
+	</tbody>
 </table>
 
 ## 야간 근무 시간 설정하기
@@ -221,11 +222,14 @@ gantt.setWorkTime({
 });
 ~~~
 
+
 :::note
 
 **Related example:** [`customWeeks`를 사용해 캘린더의 모든 날을 휴일로 만드는 예](https://snippet.dhtmlx.com/i0o74zg7)
 
 :::
+
+
 
 ### Related API
 - [work_time](api/config/work_time.md)

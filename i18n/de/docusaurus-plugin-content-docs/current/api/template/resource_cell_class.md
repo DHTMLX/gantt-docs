@@ -1,29 +1,29 @@
 ---
 sidebar_label: resource_cell_class
-title: resource_cell_class template
-description: "definiert die CSS-Klassennamen für Zellen in der Resource-Timeline-Ansicht"
+title: resource_cell_class Vorlage
+description: "definiert die CSS-Klassenamen der Zellen in der Ressourcen-Zeitleiste"
 ---
 
 # resource_cell_class
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+This functionality is available in the PRO edition only. 
 :::
 ### Description
 
-@short: Definiert die CSS-Klassennamen für Zellen in der Resource-Timeline-Ansicht
+@short: Definiert die CSS-Klassenamen der Zellen in der Ressourcen-Zeitleiste
 
-@signature: resource_cell_class: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) =\> string | void;
+@signature: resource_cell_class: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) => string | void;
 
 ### Parameters
 
-- `start_date` - (required) *Date* - Startdatum der Skalen-Zelle  
-- `end_date` - (required) *Date* - Enddatum der Skalen-Zelle
-- `resource` - (required) *object* - das Resource-Objekt
-- `tasks` - (required) *Array* - &lt;Task&gt;        Tasks, die der angegebenen Resource zugewiesen sind und sich mit den Start- und Enddaten der Zelle überschneiden
-- `assignments` - (required) *array* - Resource-Zuweisungen, die mit den angegebenen Start- und Enddaten der Task verknüpft sind
+- `start_date` - (required) *Date* - Anfangsdatum der Skalenzelle  
+- `end_date` - (required) *Date* - Enddatum der Skalenzelle
+- `resource` - (required) *object* - das Ressourcenobjekt
+- `tasks` - (required) *Array* - &lt;Task&gt; Aufgaben, die dem angegebenen Ressourcenobjekt zugewiesen sind und die Start- bzw. Enddaten der Zelle überlappen
+- `assignments` - (required) *array* - Ressourcenzuweisungen, die den angegebenen Start- bzw. Enddaten der Aufgabe zugewiesen sind
 
 ### Returns
-- ` className` - (string | void) - ein String, der dem className-Attribut des Zellen-Elements hinzugefügt wird
+- ` className` - (string | void) - eine Zeichenkette, die dem className-Attribut des Zellen-Elements angehängt wird
 
 ### Example
 
@@ -38,22 +38,22 @@ gantt.templates.resource_cell_class = function(start_date, end_date, resource, t
 };
 ~~~
 
-### Related samples
-- [Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
-- [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
-- [Assign multiple owners to a task](https://docs.dhtmlx.com/gantt/samples/11_resources/06_assign_multiple_owners.html)
-- [Work and material resources](https://docs.dhtmlx.com/gantt/samples/11_resources/12_work_and_material_resources.html)
+### Related Examples
+- [Ressourcen-Auslastungsdiagramm](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
+- [Vorlagen des Ressourcen-Diagramms](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
+- [Mehrere Eigentümer einer Aufgabe zuweisen](https://docs.dhtmlx.com/gantt/samples/11_resources/06_assign_multiple_owners.html)
+- [Arbeits- und Materialressourcen](https://docs.dhtmlx.com/gantt/samples/11_resources/12_work_and_material_resources.html)
 
 ### Details
 
 :::note
- Der Parameter "assignments" ist nur verfügbar, wenn die Konfiguration [process_resource_assignments](api/config/process_resource_assignments.md) aktiviert ist. 
+Das "assignments"-Argument ist nur verfügbar, wenn die [process_resource_assignments](api/config/process_resource_assignments.md) Konfiguration aktiviert ist.
 :::
 
-- Steuert die CSS-Klassennamen, die auf Zellen in der Resource-Timeline angewendet werden.
-- Die Resource-Timeline verbindet Tasks mit Resources basierend auf der Eigenschaft, die in [resource_property](api/config/resource_property.md) definiert ist.
-- Diese Template-Funktion wird nicht für Zellen ohne Tasks ausgelöst, es sei denn, [resource_render_empty_cells](api/config/resource_render_empty_cells.md) ist aktiviert.
-- Tasks des [Projekt-Typs](api/config/types.md) sind ausgeschlossen und werden nicht im Parameter `tasks` enthalten sein.
+- Definiert die CSS-Klassenamen der Zellen in der Ressourcen-Zeitleisten-Ansicht.
+- Die Ressourcen-Zeitleiste verknüpft Aufgaben mit einer Ressource über die Eigenschaft [resource_property](api/config/resource_property.md) des Aufgabenobjekts.
+- Die Vorlage wird nicht für Zellen aufgerufen, in denen sich keine Aufgaben befinden, es sei denn, [resource_render_empty_cells](api/config/resource_render_empty_cells.md) ist aktiviert.
+- Aufgaben des [project type](api/config/types.md) werden nicht gezählt und nicht an das `tasks`-Argument übergeben.
 
 ### Related API
 - [resource_property](api/config/resource_property.md)
@@ -62,7 +62,7 @@ gantt.templates.resource_cell_class = function(start_date, end_date, resource, t
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
 ### Related Guides
-- ["Ressourcenmanagement"](guides/resource-management.md)
+- [Ressourcenverwaltung](guides/resource-management.md)
 
 ### Change log
 - Der Parameter **assignments** wurde in Version 7.1 eingeführt

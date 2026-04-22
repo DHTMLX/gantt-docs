@@ -1,16 +1,16 @@
 ---
 sidebar_label: clearRedoStack
-title: clearRedoStack method
-description: "重置保存重做命令的栈"
+title: clearRedoStack 方法
+description: "清空存储的重做命令堆栈"
 ---
 
 # clearRedoStack
 
 ### Description
 
-@short: 重置保存重做命令的栈
+@short: 清空存储的重做命令堆栈
 
-@signature: clearRedoStack: () =\> void
+@signature: clearRedoStack: () => void
 
 ### Example
 
@@ -19,12 +19,12 @@ gantt.clearRedoStack();
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Gantt 撤销/重做变更](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
 :::note
- 此方法属于 **undo** 扩展的一部分，因此请确保先启用 [undo](guides/extensions-list.md) 插件。更多详情请参见 [撤销/重做功能](guides/undo-redo.md) 文章。 
+此方法定义在 **undo** 扩展中，因此你需要启用 [undo](guides/extensions-list.md#undo) 插件。请在 [Undo/Redo Functionality](guides/undo-redo.md) 文章中了解详细信息。
 :::
 
 ### Related API
@@ -33,8 +33,7 @@ gantt.clearRedoStack();
 - [getRedoStack](api/method/getredostack.md)
 
 ### Related Guides
-- [撤销/重做功能](guides/undo-redo.md)
+- [Undo/Redo 功能](guides/undo-redo.md)
 
 ### Change log
-- 在版本 5.2 中添加
-
+- 在 5.2 版本中新增

@@ -1,23 +1,23 @@
 ---
 sidebar_label: task_date
-title: task_date template
-description: "определяет формат даты, используемый для метки в разделе «Time period» в лайтбоксе"
+title: task_date шаблон
+description: "задаёт формат даты метки в разделе 'Time period' lightbox"
 ---
 
 # task_date
 
 ### Description
 
-@short: Определяет формат даты, используемый для метки в разделе «Time period» в лайтбоксе
+@short: Указывает формат даты метки в разделе 'Time period' lightbox
 
-@signature: task_date: (date: Date) =\> string
+@signature: task_date: (date: Date) => string;
 
 ### Parameters
 
-- `date` - (required) *Date* - значение даты, которое будет отформатировано
+- `date` - (required) *Date* - дата, которая подлежит форматированию
 
 ### Returns
-- ` text` - (string) - html контент, который будет отображён в gantt
+- `text` - (string) - HTML-текст, который будет отрисован в gantt
 
 ### Example
 
@@ -31,5 +31,4 @@ gantt.templates.task_date= function(date){
 - [task_date](api/config/task_date.md)
 
 ### Related Guides
-- [Шаблоны Lightbox](guides/lightbox-templates.md)
-
+- [Шаблоны lightbox](guides/lightbox-templates.md)

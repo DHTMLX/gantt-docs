@@ -1,20 +1,20 @@
 ---
 sidebar_label: getGridColumn
-title: getGridColumn method
-description: "获取特定列的配置对象"
+title: getGridColumn 方法
+description: "获取列的配置对象"
 ---
 
 # getGridColumn
 
 ### Description
 
-@short: 获取特定列的配置对象
+@short: 获取列的配置对象
 
 @signature: getGridColumn: (name: string | number) =\> GridColumn
 
 ### Parameters
 
-- `name` - (required) *string | number* -    列的标识符
+- `name` - (必填) *string | number* - 该列的名称
 
 ### Returns
 - ` column` - (GridColumn) - 对应的列对象
@@ -36,4 +36,3 @@ gantt.getGridColumn("text");//->{ name:"text", tree:true, width:150}
 
 ### Related Guides
 - [getGridColumns](api/method/getgridcolumns.md)
-

@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskCalendar
-title: getTaskCalendar method
-description: "получает календарь, связанный с конкретной задачей (календарь, установленный на уровне задачи)"
+title: метод getTaskCalendar
+description: "получает календарь, назначенный указанной задаче (календарь уровня задачи)"
 ---
 
 # getTaskCalendar
 
 ### Description
 
-@short: Получает календарь, связанный с конкретной задачей (календарь, установленный на уровне задачи)
+@short: Получает календарь, назначенный указанной задаче (календарь уровня задачи)
 
-@signature: getTaskCalendar: (task: any) =\> any
+@signature: getTaskCalendar: (task: *string | number | object) =\> any
 
 ### Parameters
 
-- `task` - (required) *string | number | object* -        id задачи или сам объект задачи
+- `task` - (required) *string | number | object* - идентификатор или объект задачи
 
 ### Returns
-- ` task_calendar` - (object) - объект календаря, связанный с задачей
+- ` task_calendar` - (object) - объект календаря задачи
 
 ### Example
 
@@ -40,14 +40,13 @@ gantt.getTaskCalendar(2);
 
 ### Details
 
-добавлено в версии 4.2
+added in version 4.2
 
-Объект, возвращаемый в примере выше, соответствует [объекту календаря](api/other/calendar.md). Когда опция [work_time](api/config/work_time.md) отключена, метод по умолчанию возвращает календарь с рабочим временем 24/7.
+Возвращаемый объект для приведенного выше примера — это [объект календаря](api/other/calendar.md). Если опция [work_time](api/config/work_time.md) отключена, метод возвращает календарь с включенным рабочим временем 24/7.
 
 ### Related API
 - [getCalendar](api/method/getcalendar.md)
 - [getCalendars](api/method/getcalendars.md)
 
 ### Related Guides
-- [Расчёт рабочего времени](guides/working-time.md#multipleworktimecalendars)
-
+- [Work Time Calculation](guides/working-time.md)

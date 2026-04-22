@@ -1,17 +1,19 @@
----
+--- 
 title: "任务属性"
 sidebar_label: "任务属性"
 ---
 
 # 任务属性
 
-本页面提供了任务对象可包含的所有属性的完整列表。
+在本页你将找到任务对象可能包含的全部属性的完整列表。
 
-关于 link 对象的全部属性，请参阅 [Link Properties](guides/link-properties.md) 文章。
+链接对象的完整属性列表请参阅 [Link Properties](guides/link-properties.md) 文章。
+
 
 ## 必需属性
 
-这些属性在客户端始终定义。当加载数据时，Gantt 期望任务对象中包含这些属性。如果缺失，Gantt 会自动添加它们。从已加载任务中移除这些属性会导致错误。
+这些属性在客户端总是会被定义。Gantt 期望在数据加载时在任务对象中指定这些属性，但如果未指定，Gantt 将自动添加它们。
+如果在已加载的任务中移除了其中一个属性，Gantt 将开始抛出错误。
 
 <table>
   <tbody>
@@ -21,29 +23,30 @@ sidebar_label: "任务属性"
   <tr>
   <td><b class="subproperty">id</b></td>
   <td><i>string | number</i></td>
-  <td>任务的 id，如果未提供则自动生成</td>
+  <td>任务的唯一标识符；若未设置则自动生成</td>
   </tr>
   <tr>
   <td><b class="subproperty">start_date</b></td>
   <td><i>Date</i></td>
-  <td>任务的计划开始日期。[如果省略，Gantt 会根据 end_date 和 duration 计算。](guides/loading.md) 当设置 <b>unscheduled: true</b> 时，该属性变为可选。</td>
+  <td>任务计划开始的日期。[数据加载](guides/loading.md#loadingtaskdates) 如果未指定，Gantt 将基于 <b>end_date</b> 与 <b>duration</b> 属性来计算。当设置 <b>unscheduled: true</b> 时，该属性将变为可选。</td>
   </tr>
   <tr>
   <td><b class="subproperty">end_date</b></td>
   <td><i>Date</i></td>
-  <td>任务的计划完成日期。[如果省略，Gantt 会根据 start_date 和 duration 计算。](guides/loading.md) 当设置 <b>unscheduled: true</b> 时，该属性变为可选。</td>
+  <td>任务计划完成的日期。[数据加载](guides/loading.md#loadingtaskdates) 如果未指定，Gantt 将基于 <b>start_date</b> 与 <b>duration</b> 属性来计算。当设置 <b>unscheduled: true</b> 时，该属性将变为可选。</td>
   </tr>
   <tr>
   <td><b class="subproperty">duration</b></td>
   <td><i>number</i></td>
-  <td>任务的持续时间。[如果省略，Gantt 会根据 start_date 和 end_date 计算。](guides/loading.md)</td>
+  <td>任务持续时间。[数据加载](guides/loading.md#loadingtaskdates) 如果未指定，Gantt 将基于 <b>start_date</b> 与 <b>end_date</b> 属性进行计算。</td>
   </tr>
   </tbody>
 </table>
 
+
 ## 可选属性
 
-这些属性可以存在也可以不存在。当这些属性可用时，Gantt 的默认逻辑和模板会使用它们。
+这些属性可能定义也可能不定义。如果定义了这些属性，Gantt 的默认逻辑和模板将使用它们。
 
 <table>
   <tbody>
@@ -53,12 +56,12 @@ sidebar_label: "任务属性"
   <tr>
   <td><b class="subproperty">auto_scheduling</b></td>
   <td><i>boolean</i></td>
-  <td>指定 Gantt 是否对任务执行自动排程（<i>true</i> 或未指定）或不执行（<i>false</i>）</td>
+  <td>定义 Gantt 是否应对任务进行自动排程（为 <i>true</i> 或未指定）还是不进行（为 <i>false</i>）</td>
   </tr>
   <tr>
   <td><b class="subproperty">bar_height</b></td>
   <td><i>number</i></td>
-  <td>指定任务在时间轴中 DOM 元素的高度</td>
+  <td>设置时间线区域中任务的 DOM 元素高度</td>
   </tr>
   <tr>
   <td><b class="subproperty">baselines</b></td>
@@ -68,129 +71,131 @@ sidebar_label: "任务属性"
   <tr>
   <td><b class="subproperty">calendar_id</b></td>
   <td><i>number | string</i></td>
-  <td>为任务分配自定义日历的 id。属性名取决于 [calendar_property](https://docs.dhtmlx.com/gantt/api/config/calendar_property) 选项</td>
+  <td>设置分配给任务的自定义日历的 ID。属性的名称取决于 [calendar_property](api/config/calendar_property.md) 选项的值</td>
   </tr>
   <tr>
   <td><b class="subproperty">color</b></td>
   <td><i>string</i></td>
-  <td>设置任务在时间轴中的颜色（应用于 <b>gantt_task_line</b> 元素的 <b>background-color</b>）</td>
+  <td>设置任务在时间线区域中的颜色（即为任务的 <b>gantt_task_line</b> 元素设置背景颜色）</td>
   </tr>
   <tr>
   <td><b class="subproperty">constraint_date</b></td>
   <td><i>Date</i></td>
-  <td>任务约束的日期，在启用 [带有时间约束的自动排程](https://docs.dhtmlx.com/gantt/desktop__auto_scheduling.html) 时添加。如果启用 [auto_scheduling_compatibility](https://docs.dhtmlx.com/gantt/api/config/auto_scheduling_compatibility)，则不使用。</td>
+  <td>任务约束日期。当启用带时间约束的自动排程时，该属性会添加到任务对象中。若启用 <i>auto_scheduling_compatibility</i>，则此属性不被使用。</td>
   </tr>
   <tr>
   <td><b class="subproperty">constraint_type</b></td>
   <td><i>string</i></td>
-  <td>[指定任务约束类型（"asap"、"alap"、"snet"、"snlt"、"fnet"、"fnlt"、"mso"、"mfo"）](https://docs.dhtmlx.com/gantt/desktop__auto_scheduling.html#timeconstraintsfortasks)。在启用 [带有时间约束的自动排程](https://docs.dhtmlx.com/gantt/desktop__auto_scheduling.html) 时添加。如果启用 [auto_scheduling_compatibility](https://docs.dhtmlx.com/gantt/api/config/auto_scheduling_compatibility)，则不使用。</td>
+  <td>[任务约束类型（"asap", "alap", "snet", "snlt", "fnet", "fnlt", "mso", "mfo"）](guides/auto-scheduling.md#timeconstraintsfortasks)。在启用带时间约束的自动排程时会将其添加到任务对象。若启用 <i>auto_scheduling_compatibility</i>，则此属性不被使用。</td>
   </tr>
   <tr>
   <td><b class="subproperty">deadline</b></td>
   <td><i>Date</i></td>
-  <td>设置任务的截止日期。设置后，时间轴中会出现[可视指示器](guides/inbuilt-baselines.md#jiezhiriqiyuyueshu)。</td>
+  <td>为任务指定截止日期。在设置此属性时，时间线中会显示一个可视化指示器。</td>
   </tr>
   <tr>
   <td><b class="subproperty">editable</b></td>
   <td><i>boolean</i></td>
-  <td>指定任务是否可以在[只读 Gantt 图](guides/readonly-mode.md)中编辑。属性名取决于 [editable_property](https://docs.dhtmlx.com/gantt/api/config/editable_property) 选项</td>
+  <td>定义在只读甘特图中任务是否可以 [editable](guides/readonly-mode.md#readonlymodefortheentiregantt)。属性名称取决于 [editable_property](api/config/editable_property.md) 选项的值</td>
   </tr>
   <tr>
   <td><b class="subproperty">group_id</b></td>
   <td><i>string | number</i></td>
-  <td>任务所属分组的 id。当任务通过 [relation_property](guides/grouping.md) 在 groupBy() 方法中按对象属性分组时添加。</td>
+  <td>分组的组标识符。当用于分组任务的属性（在 groupBy() 的 [relation_property](guides/grouping.md#groupingtasks) 中）被指定为对象时，任务将按某个标准分组并附加该值。</td>
   </tr>
   <tr>
   <td><b class="subproperty">hide_bar</b></td>
   <td><i>boolean</i></td>
-  <td>指定任务（type:"task"）或里程碑（type:"milestone") [是否在时间轴中隐藏](guides/milestones.md)</td>
+  <td>定义任务（type:"task"）或里程碑（type:"milestone"）是否应在时间线区域隐藏</td>
   </tr>
   <tr>
   <td><b class="subproperty">key</b></td>
   <td><i>string | number</i></td>
-  <td>分组键，当任务通过 [relation_property](guides/grouping.md) 在 groupBy() 中按数组属性分组时添加。 也会添加到带有分组名称的任务（如按优先级分组时为 "High"、"Normal"、"Low"）。[查看示例](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_save_tree_structure.html)。</td>
+  <td>分组的键。当用于分组任务的属性（在 groupBy() 方法中的 [relation_property]）被指定为数组时，将该键添加到按某标准分组的任务中。也会添加到带有分组名称的任务上（例如，当你按优先级分组任务时，对应“High”、“Normal”、“Low”这类任务将带有该键）。[查看示例](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_save_tree_structure.html)。</td>
   </tr>
   <tr>
   <td><b class="subproperty">label</b></td>
   <td><i>string</i></td>
-  <td>分组标签，添加到带有分组名称的任务（如按优先级分组时为 "High"、"Normal"、"Low"）。[查看示例](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_save_tree_structure.html)。</td>
+  <td>分组的标签。它被添加到具有分组名称的任务上（例如，如果你按优先级分组任务，带有 "High"、"Normal"、"Low" 名称的任务将带有该属性。 [查看示例](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_save_tree_structure.html)）。</td>
   </tr>
   <tr>
   <td><b class="subproperty">open</b></td>
   <td><i>boolean</i></td>
-  <td>指示任务分支是否初始为展开状态以显示子任务。初始化后可通过 [close()](api/method/close.md) 和 [open()](api/method/open.md) 方法切换分支。</td>
+  <td>指定任务分支是否初始展开（显示子任务）。要在 Gantt 初始化后关闭/打开该分支，请使用相关方法：[close()](api/method/close.md) 和 [open()](api/method/open.md)</td>
   </tr>
   <tr>
   <td><b class="subproperty">parent</b></td>
   <td><i>number | string</i></td>
-  <td>父任务的 id。父任务不存在的任务不会被渲染。根任务 id 通过 [root_id](api/config/root_id.md) 配置设置。</td>
+  <td>父任务的 ID。如果指定的父不存在，则该任务不会在 Gantt 中渲染。根任务的 ID 由 root_id 配置指定。</td>
   </tr>
   <tr>
   <td><b class="subproperty">progress</b></td>
   <td><i>number</i></td>
-  <td>任务的进度值（0 到 1 之间）</td>
+  <td>任务的进度（0 到 1 之间）</td>
   </tr>
   <tr>
   <td><b class="subproperty">progressColor</b></td>
   <td><i>string</i></td>
-  <td>设置任务进度条在时间轴中的颜色（应用于 <b>gantt_task_progress</b> 元素的 <b>background-color</b>）</td>
+  <td>时间线区域中任务进度的颜色（即为任务进度的 <b>gantt_task_progress</b> 元素设置背景颜色）</td>
   </tr>
   <tr>
   <td><b class="subproperty">readonly</b></td>
   <td><i>boolean</i></td>
-  <td>指示任务是否应为[只读](guides/readonly-mode.md)。属性名取决于 [readonly_property](api/config/readonly_property.md) 选项</td>
+  <td>定义在只读模式下任务是否必须处于 [readonly](guides/readonly-mode.md#readonlymodeforspecifictaskslinks)。属性名称取决于 [readonly_property](api/config/readonly_property.md) 选项的值</td>
   </tr>
   <tr>
   <td><b class="subproperty">render</b></td>
   <td><i>string</i></td>
-  <td>控制子任务的显示方式。 值:<i>"split" | ""</i>。 如果设置为 ["split"](guides/split-tasks.md)，子任务会显示在同一行。当启用 [open_split_tasks](api/config/open_split_tasks.md) 属性时，仅当任务折叠时子任务才渲染为同一行。</td>
+  <td>定义子任务的显示方式。取值：<i>"split" | ""</i>。若设置为 ["split"]，子任务将显示在一行中。此外，如果启用 [open_split_tasks](api/config/open_split_tasks.md) 属性，只有当任务处于折叠状态时，子任务才会在一行中呈现。</td>
   </tr>
   <tr>
   <td><b class="subproperty">resource</b></td>
   <td><i>Array &lt;string&gt;</i></td>
-  <td>分配给任务的资源数组。在从 MS Project 或 Primavera 导入数据时添加</td>
+  <td>分配给任务的资源 ID 的数组。导入 MS Project/Primavera 数据时会将其添加到任务对象中</td>
   </tr>
   <tr>
   <td><b class="subproperty">rollup</b></td>
   <td><i>boolean</i></td>
-  <td>指示任务（type:"task"）或里程碑（type:"milestone") [是否应显示在父项目上](guides/milestones.md)。</td>
+  <td>定义任务（type:"task"）或里程碑（type:"milestone"）是否应出现在父级项目中</td>
   </tr>
   <tr>
   <td><b class="subproperty">row_height</b></td>
   <td><i>number</i></td>
-  <td>设置任务所在行的高度</td>
+  <td>设置任务行的高度</td>
   </tr>
   <tr>
   <td><b class="subproperty">target</b></td>
   <td><i>string</i></td>
-  <td>目标任务 id。该属性与 <b>$drop_target</b> 属性一致。 仅在启用 Data Processor 且任务更新并与服务器通信后，才会添加到任务对象中。</td>
+  <td>目标任务的 ID。该属性显示与 <b>$drop_target</b> 属性相同的值。仅在启用 Data Processor、任务更新后并将数据发送到服务器时才将该属性添加到任务对象中。</td>
   </tr>
   <tr>
   <td><b class="subproperty">text</b></td>
   <td><i>any</i></td>
-  <td>任务名称。可根据需要使用不同的属性名。 该属性用于 Gantt 的默认配置。</td>
+  <td>任务的名称。如有需要，你可以为此属性使用任何其他名称。该属性在 Gantt 的不同部分的默认配置中使用。</td>
   </tr>
   <tr>
   <td><b class="subproperty">textColor</b></td>
   <td><i>string</i></td>
-  <td>设置任务文本在时间轴中的颜色（应用于 <b>gantt_task_line</b> 元素的 <b>color</b>）</td>
+  <td>时间线区域中任务文本的颜色（即为任务的 <b>gantt_task_line</b> 元素设置文本颜色）</td>
   </tr>
   <tr>
   <td><b class="subproperty">type</b></td>
   <td><i>string</i></td>
-  <td>任务类型。可用值在 [types](api/config/types.md) 对象中定义: <ul> <li>["task"](guides/task-types.md) - 常规任务（<i>默认</i>）。</li> <li>["project"](guides/task-types.md) - 以最早的子任务开始、最晚的子任务结束的任务。 <i>该类型会忽略 <b>start_date</b>、<b>end_date</b> 和 <b>duration</b> 属性。</i> </li> <li>["milestone"](guides/task-types.md) - 标记重要项目日期的零时长任务。 <i>该类型会忽略 <b>duration</b>、<b>progress</b> 和 <b>end_date</b> 属性。</i></li> </ul></td>
+  <td>任务类型。可用值存储在 types 对象中：<ul> <li>["task"](guides/task-types.md#regular-tasks) - 常规任务（<i>默认值</i>）。</li> <li>["project"](guides/task-types.md#project-tasks) - 当其最早子任务开始时开始、当其最近的子任务结束时结束的任务。对于此类任务，<b>start_date</b>、<b>end_date</b>、<b>duration</b> 属性将被忽略。</li> <li>["milestone"](guides/task-types.md#milestones) - 用于标记项目重要日期的零持续时间任务。<i>对于此类任务，<b>duration</b>、<b>progress</b>、<b>end_date</b> 属性将被忽略。</i></li> </ul></td>
   </tr>
   <tr>
   <td><b class="subproperty">unscheduled</b></td>
   <td><i>boolean</i></td>
-  <td>指示任务是否为[未排程](guides/unscheduled-tasks.md)。默认情况下，未排程任务不会显示在时间轴中；而在网格中开始和结束日期会显示为空值。</td>
+  <td>定义任务是否必须为 [unscheduled](guides/unscheduled-tasks.md)。默认情况下，未排程的任务不会在时间线区域显示，网格中将显示空值而非开始和结束日期。</td>
   </tr>
   </tbody>
 </table>
 
+
 ## 动态属性
 
-动态属性由客户端创建，用于表示任务或 link 的当前状态。它们不应保存到数据库中，Gantt 在你的 JSON 或 XML 中包含时会忽略这些属性。
+动态属性在客户端创建，表示任务或链接的当前状态。若在 JSON/XML 中定义，它们不应保存到数据库，Gantt 将忽略这些属性。
+
 
 <table>
   <tbody>
@@ -200,147 +205,147 @@ sidebar_label: "任务属性"
   <tr>
   <td><b class="subproperty">[resource_property]</b></td>
   <td><i>string | Array &lt;any&gt;</i></td>
-  <td>[该属性可以为任意名称](api/config/resource_property.md)。用于存储与 <i>resourceGrid/Timeline/Histogram/Calendar</i> 相关的资源 id。</td>
+  <td>[resource_property](api/config/resource_property.md) 该属性可以具有任意其他名称。该属性用于存储与 <i>resourceGrid/Timeline/Histogram/Calendar</i> 相关联的资源 ID。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$auto_end_date</b></td>
   <td><i>Date</i></td>
-  <td>基于其子任务计算的项目任务结束日期。当 "auto_scheduling" 关闭时添加和更新。</td>
+  <td>来自子任务的项目任务的自动计算结束日期。当 <i>"auto_scheduling"</i> 被禁用时，新增并更新。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$auto_start_date</b></td>
   <td><i>Date</i></td>
-  <td>基于其子任务计算的项目任务开始日期。当 "auto_scheduling" 关闭时添加和更新。</td>
+  <td>来自子任务的项目任务的自动计算开始日期。当 <i>"auto_scheduling"</i> 被禁用时，新增并更新。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$calculate_duration</b></td>
   <td><i>boolean</i></td>
-  <td>用于内部计算的系统属性。</td>
+  <td>在内部计算中使用的系统属性。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$custom_data</b></td>
   <td><i>object</i></td>
-  <td>包含在 [importFromMSProject()](api/method/importfrommsproject.md) 和 [importFromPrimaveraP6()](api/method/importfromprimaverap6.md) 导入期间定义的自定义任务属性</td>
+  <td>包含在 [importFromMSProject()](api/method/importfrommsproject.md) 与 [importFromPrimaveraP6()](api/method/importfromprimaverap6.md) 方法中定义的自定义任务属性的对象</td>
   </tr>
   <tr>
   <td><b class="subproperty">$dataprocessor_class</b></td>
   <td><i>string</i></td>
-  <td>指示任务是否已更新的系统属性。启用 Data Processor 时添加。如果值为 <i>"updated"</i>，任务文本会以粗体显示在网格中，也可应用自定义 CSS 样式。</td>
+  <td>一个系统属性，定义任务是否已更新。当启用 Data Processor 时将其添加到任务对象中。如果该属性值为 <i>"updated"</i>，任务的文本将在网格中加粗，但你可以通过 CSS 自定义样式。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$drop_target</b></td>
   <td><i>string</i></td>
-  <td>垂直拖拽任务时的目标任务 id。拖拽期间会临时添加该属性。</td>
+  <td>目标任务的 ID。拖动任务垂直移动时添加到任务对象中的临时属性。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$effective_calendar</b></td>
   <td><i>string</i></td>
-  <td>分配给任务的日历（或资源日历）id。用于内部计算。</td>
+  <td>分配给任务的日历（或资源日历）的 ID。一个在内部计算中使用的系统属性。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$expanded_branch</b></td>
   <td><i>boolean</i></td>
-  <td>指示任务是否可见，依据其父分支是否展开。如果有任一父级被折叠，该任务会被隐藏（分割任务/子任务除外）。</td>
+  <td>显示任务是否可见的系统属性，取决于其父级是否展开。若至少一个父级是折叠的，任务将不可见。只有拆分任务（子任务）除外。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$has_child</b></td>
   <td><i>boolean</i></td>
-  <td>指示 Gantt 是否应请求从服务器加载一级子任务。用于启用 [branch_loading](api/config/branch_loading.md) 时。属性名取决于 [branch_loading_property](api/config/branch_loading_property.md) 选项。</td>
+  <td>定义 Gantt 是否应向服务器发送请求以加载任务的第一层子任务。当启用 [branch_loading](api/config/branch_loading.md) 属性时使用。属性名称取决于 [branch_loading_property](api/config/branch_loading_property.md) 选项的值。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$index</b></td>
   <td><i>number</i></td>
-  <td>任务的全局垂直位置。上下任务被打开或关闭时该值会更新。如果父级被折叠，则该值不代表实际位置。</td>
+  <td>任务的全局垂直位置。它绑定到任务并在下面或上面的任务展开/收起时改变。如果任务的父级被折叠，该属性不会显示任务的实际位置。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$level</b></td>
   <td><i>number</i></td>
-  <td>任务在层级结构中的深度（从零开始）</td>
+  <td>任务在任务层级中的级别（从零开始编号）</td>
   </tr>
   <tr>
   <td><b class="subproperty">$local_index</b></td>
   <td><i>number</i></td>
-  <td>任务在其父分支中的垂直位置。该值不会因全局的展开/折叠变化而更新。如果父级被折叠，则该值不代表实际位置。</td>
+  <td>分支中的任务的垂直位置（在父级之下）。它不绑定到任务本身，且在分支内向上/向下展开时不会像全局那样改变。若任务的父级被折叠，该属性不会显示任务的实际位置。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$new</b></td>
   <td><i>boolean</i></td>
-  <td>通过 [createTask()](api/method/createtask.md) 或 "+" 按钮创建新任务时添加。在 lightbox 打开期间存在，保存后移除。</td>
+  <td>通过 [createTask](api/method/createtask.md) 方法或通过“+”按钮创建的新任务将添加此属性。打开灯箱时会将该属性添加到任务对象中，保存任务后移除。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$no_end</b></td>
   <td><i>boolean</i></td>
-  <td><b>必需</b>系统属性，当无法计算 <b>end_date</b>（只设置了 start_date，未设置 duration 或 end_date）时添加。在此情况下，任务无法移动或调整大小。<b>end_date</b> 取决于子任务的结束日期，<b>start_date</b> 保持固定。自动排程关闭。如果同时设置 <b>$no_start</b>，则任务完全依赖于子任务或首个任务的日期。</td>
+  <td><b>必需</b>，一个系统属性，添加到任务对象。如果无法计算 <b>end_date</b>（在加载了 <b>start_date</b> 但没有 <b>duration</b> 或 <b>end_date</b> 时），其值为 <i>True</i>。在这种情况下，你不能移动或调整任务大小。<b>end_date</b> 属性将取决于子任务的 <b>end_date</b>（如有）。<b>start_date</b> 属性将固定不变。对这类任务，自动排程将不起作用。如果启用 <b>$no_start</b> 属性，该任务将完全依赖于其子任务的日期或第一个任务的日期。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$no_start</b></td>
   <td><i>boolean</i></td>
-  <td><b>必需</b>系统属性，当无法计算 <b>start_date</b>（只设置了 end_date，未设置 duration 或 start_date）时添加。<b>start_date</b> 取决于子任务或首个任务的开始日期。<b>end_date</b> 保持固定，除非子任务/首个任务的开始日期超过它。自动排程关闭。如果同时设置 <b>$no_end</b>，则任务完全依赖于子任务或首个任务的日期。</td>
+  <td><b>必需</b>，一个系统属性，添加到任务对象。当无法计算 <b>start_date</b>（加载了 <b>end_date</b> 但没有 <b>duration</b> 或 <b>start_date</b> 时）时，其值为 <i>True</i>。<b>start_date</b> 属性将取决于子任务（如有）或第一个任务的开始日期。<b>end_date</b> 属性将固定且只有当子任务/第一任务的开始日期大于任务的结束日期时才会改变。对这类任务，自动排程将不起作用。如果启用 <b>$no_end</b> 属性，该任务将完全依赖于其子任务的日期或第一个任务的日期。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$open</b></td>
   <td><i>boolean</i></td>
-  <td>系统属性，反映任务当前是否处于展开状态（<i>true</i>）。修改该属性并重绘 Gantt 可展开或折叠任务。也可使用 [open()](api/method/open.md) 或 [close()](api/method/close.md)。</td>
+  <td>一个系统属性，指示任务当前是否已打开（<i>true</i>）。如果你更改此属性的值并重新绘制 Gantt，它将打开或关闭该任务。要更改任务状态，也可以应用 [open](api/method/open.md) 或 [close](api/method/close.md) 方法。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$raw</b></td>
   <td><i>object</i></td>
-  <td>包含从 [MS Project](guides/export-msproject.md) 或 [Primavera](guides/export-primavera.md) 导出处理期间导入的原始任务属性名。这些属性在转换为 Gantt 期望的格式之前出现。</td>
+  <td>一个包含从 [MS Project](guides/export-msproject.md) / [Primavera](guides/export-primavera.md) 导出到导出模块（导出服务器）时的原始任务属性名称的对象。该属性在文件转换为 JSON 格式但在转换为 Gantt 期望的名称和格式之前出现在 <b>$raw</b> 对象中。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$rendered_at</b></td>
   <td><i>string | number</i></td>
-  <td>渲染[rollup 项](https://docs.dhtmlx.com/gantt/desktop__milestones.html#rolluptasksandmilestones)或[分割任务](https://docs.dhtmlx.com/gantt/desktop__split_tasks.html)的行 id。该临时属性仅在 rollup/分割任务显示期间存在。</td>
+  <td>在页面上渲染的 rollup 项 / split 任务所处行的 ID。只有在任务正在页面上渲染时，该对象中才会出现此临时属性。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$rendered_parent</b></td>
   <td><i>number | string</i></td>
-  <td>任务渲染时的父级 id（非实际父级）。用于内部及任务分组。</td>
+  <td>在其下方渲染任务的父级的 ID（不是任务的真实父级的 ID）。此属性在内部计算和任务分组中使用。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$rendered_type</b></td>
   <td><i>string</i></td>
-  <td>指示渲染任务类型的临时属性。</td>
+  <td>已渲染任务的类型（一个临时属性）。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$resourceAssignments</b></td>
   <td><i>Array &lt;any&gt;</i></td>
-  <td>分配给任务的资源 id 数组（临时）。最准确的数据存储在资源分配存储中。</td>
+  <td>分配给任务的资源ID数组（临时属性）。但真正的数据存储在资源分配的存储中，而不在此属性中。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$rollup</b></td>
   <td><i>Array &lt;string | number&gt;</i></td>
-  <td>[出现在此任务上的任务和里程碑的 id 数组](guides/milestones.md)</td>
+  <td>在当前任务上出现的任务和里程碑的 ID 数组</td>
   </tr>
   <tr>
   <td><b class="subproperty">$source</b></td>
   <td><i>Array &lt;string | number&gt;</i></td>
-  <td><b>必需</b>--[所有从该任务出发的 link id 数组](guides/link-object-operations.md)</td>
+  <td><b>必需</b>，一个包含来自任务的所有链接的 ID 的数组（参见 guides/link-object-operations.md#getting-the-links-related-to-a-certain-task）。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$split_subtask</b></td>
   <td><i>boolean</i></td>
-  <td>如果任务是分割任务的子任务（与其他子任务显示在一行），则存在该属性</td>
+  <td>若任务是拆分任务的子任务，将出现（与其他子任务排在同一行）</td>
   </tr>
   <tr>
   <td><b class="subproperty">$target</b></td>
   <td><i>Array &lt;string | number&gt;</i></td>
-  <td><b>必需</b>--[指向该任务的 link id 数组](guides/link-object-operations.md)</td>
+  <td><b>必需</b>，一个包含进入任务的链接的目标 ID 的数组（参见 guides/link-object-operations.md#getting-the-links-related-to-a-certain-task）。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$transparent</b></td>
   <td><i>boolean</i></td>
-  <td>垂直拖拽期间添加的临时属性，使任务在网格中略带透明效果。</td>
+  <td>在垂直拖拽时添加到任务对象的临时属性。由于该属性，任务在网格中垂直拖拽时会显得略微透明。</td>
   </tr>
   <tr>
   <td><b class="subproperty">$virtual</b></td>
   <td><i>boolean</i></td>
-  <td>对按某些条件分组的任务添加。带有 <b>$virtual: true</b> 的任务在重置分组时会被移除。</td>
+  <td>将其添加到按某些标准分组的任务中。重设分组后，带有 <b>$virtual: true</b> 的任务将被移除</td>
   </tr>
   <tr>
   <td><b class="subproperty">$wbs</b></td>
   <td><i>string</i></td>
-  <td>任务的 WBS 代码（临时）。在调用 [getWBSCode()](api/method/getwbscode.md) 后添加。如果由于父级或位置变化导致代码变动，请再次调用 [getWBSCode()](api/method/getwbscode.md) 以更新。</td>
+  <td>任务的 WBS 代码（一个临时属性）。应用 [getWBSCode](api/method/getwbscode.md) 方法后，它会被添加到任务对象中。如果代码的值发生变化（父级或位置变化），需要再次调用 [getWBSCode](api/method/getwbscode.md) 以获取更新后的代码值。</td>
   </tr>
   </tbody>
 </table>
@@ -357,4 +362,3 @@ const data = {
   links: []
 };
 ~~~
-

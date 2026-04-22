@@ -1,21 +1,21 @@
 ---
 sidebar_label: assert
-title: assert method
-description: "Falls der gegebene Ausdruck falsch ist, erscheint eine Fehlermeldung in einem roten Popup oben rechts auf dem Bildschirm."
+title: assert Methode
+description: "Wenn der angegebene Ausdruck falsch ist, wird eine errorMessage im roten Pop-up oben rechts auf dem Bildschirm angezeigt"
 ---
 
 # assert
 
 ### Description
 
-@short: Falls der gegebene Ausdruck falsch ist, erscheint eine Fehlermeldung in einem roten Popup oben rechts auf dem Bildschirm.
+@short: Wenn der angegebene Ausdruck falsch ist, wird eine errorMessage im roten Pop-up oben rechts auf dem Bildschirm angezeigt
 
 @signature: assert: (expression: any, errorMessage: string) =\> void
 
 ### Parameters
 
-- `expression` - (required) *any* - ein wahrheitswertiger Wert zur Bestätigung des Ausdrucks, falsch (falsy), wenn die Assertion fehlschlägt
-- `errorMessage` - (required) *string* - die Nachricht, die im roten Popup angezeigt wird
+- `expression` - (erforderlich) *any* - truthy-Wert, der Ausdruck wird bestätigt; falsy - wenn die Behauptung fehlschlägt
+- `errorMessage` - (erforderlich) *string* - eine Fehlermeldung, die im roten Pop-up angezeigt wird
 
 ### Example
 
@@ -27,9 +27,8 @@ gantt.attachEvent("onLoadEnd", function(){
 
 ### Details
 
-Der dhtmlxGantt-Code verwendet gantt.assert, um festzustellen, wenn die Komponente sich in einem ungültigen Zustand befindet.
+Die dhtmlxGantt-Codebasis verwendet gantt.assert, um einen ungültigen Zustand der Komponente zu erkennen
 
-Die Art und Weise, wie Fehler angezeigt werden, kann über die [show_errors](api/config/show_errors.md)-Konfiguration angepasst werden.
+Die Anzeige von Fehlern kann über die Konfiguration [show_errors](api/config/show_errors.md) geändert werden.
 
-Fehler können auch programmgesteuert über das [onError](api/event/onerror.md)-Event behandelt werden.
-
+Fehler können programmgesteuert nachverfolgt werden, mithilfe des Events [onError](api/event/onerror.md).

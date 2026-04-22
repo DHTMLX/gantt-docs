@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_progress
-title: drag_progress config
-description: "Ermöglicht die Anpassung des Task-Fortschritts durch Ziehen des Fortschritts-Knopfs"
+title: drag_progress Konfiguration
+description: "ermöglicht es, den Aufgabenfortschritt durch Ziehen des Fortschrittsknopfs zu ändern"
 ---
 
 # drag_progress
 
 ### Description
 
-@short: Ermöglicht die Anpassung des Task-Fortschritts durch Ziehen des Fortschritts-Knopfs
+@short: Ermöglicht es, den Aufgabenfortschritt durch Ziehen des Fortschrittsknopfs zu ändern
 
 @signature: drag_progress: boolean
 
@@ -19,4 +19,4 @@ gantt.config.drag_progress = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true

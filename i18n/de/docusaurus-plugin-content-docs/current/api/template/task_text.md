@@ -1,7 +1,7 @@
 ---
 sidebar_label: task_text
-title: task_text template
-description: "Legt den Text fest, der in den Task-Balken und im Lightbox-Header angezeigt wird"
+title: task_text Vorlage
+description: "legt den Text in den Aufgabenbalken und der Überschrift der Lightbox fest"
 ---
 
 # task_text
@@ -14,12 +14,12 @@ description: "Legt den Text fest, der in den Task-Balken und im Lightbox-Header 
 
 ### Parameters
 
-- `start` - (required) *Date* - Das Datum, an dem die Aufgabe geplant ist zu starten  
-- `end` - (required) *Date* - Das Datum, an dem die Aufgabe voraussichtlich beendet wird
-- `task` - (required) *Task* - Das Task-Objekt selbst
+- `start` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe voraussichtlich beginnt
+- `end` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe voraussichtlich abgeschlossen wird
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
-- ` text` - (string | number | void) - Der HTML-Inhalt, der innerhalb des Gantt angezeigt wird
+- ` text` - (string | number | void) - ein HTML-Text, der im Gantt-Diagramm gerendert wird
 
 ### Example
 
@@ -30,4 +30,4 @@ gantt.templates.task_text=function(start, end, task){
 ~~~
 
 ### Related Guides
-- ["Vorlagen für den Timeline-Bereich"](guides/timeline-templates.md)
+- [Vorlagen des Timeline-Bereichs](guides/timeline-templates.md)

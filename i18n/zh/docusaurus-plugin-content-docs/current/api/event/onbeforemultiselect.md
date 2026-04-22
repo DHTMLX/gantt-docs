@@ -1,26 +1,26 @@
 ---
 sidebar_label: onBeforeMultiSelect
 title: onBeforeMultiSelect event
-description: "在选择一个或多个任务之前触发"
+description: "在选择一个任务或一组任务之前触发"
 ---
 
 # onBeforeMultiSelect
 
 ### Description
 
-@short: 在选择一个或多个任务之前触发
+@short: 在选择一个任务或一组任务之前触发
 
 @signature: onBeforeMultiSelect: (e: Event) =\> void;
 
 ### Parameters
 
-- `e` - (required) *Event* - 原生事件对象
+- `e` - (必填) *Event* - 原生事件对象
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeMultiSelect", function(e){
-    // 在这里编写一些逻辑
+    // 在这里插入您的自定义逻辑 
     return true;
 });
 ~~~
@@ -28,11 +28,10 @@ gantt.attachEvent("onBeforeMultiSelect", function(e){
 ### Details
 
 :::note
- 此事件是 **multiselect** 扩展的一部分，因此请确保已启用 [multiselect](guides/extensions-list.md#duorenwuxuanze) 插件。更多详情请参阅 [多任务选择](guides/multiselection.md) 文章。 
+此事件定义在 **multiselect** 扩展中，因此你需要激活 [multiselect](guides/extensions-list.md#multitaskselection) 插件。详见 [多任务选择](guides/multiselection.md#apievents) 文章。
 :::
 
-
-此事件可以被阻止--返回 *false* 将阻止多任务选择的发生。
+此事件是可阻塞的，返回 *false* 将取消对任务的多选。
 
 ### Related API
 - [onBeforeTaskMultiSelect](api/event/onbeforetaskmultiselect.md)
@@ -40,5 +39,4 @@ gantt.attachEvent("onBeforeMultiSelect", function(e){
 - [onMultiSelect](api/event/onmultiselect.md)
 
 ### Related Guides
-- [多任务选择](guides/multiselection.md#apishijian)
-
+- [多任务选择](guides/multiselection.md#apievents)

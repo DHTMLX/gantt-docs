@@ -1,14 +1,14 @@
 ---
 sidebar_label: keyboard_navigation_cells
 title: keyboard_navigation_cells config
-description: "ermöglicht die Tastaturnavigation durch einzelne Zellen"
+description: "Aktiviert die Tastaturnavigation durch Zellen"
 ---
 
 # keyboard_navigation_cells
 
 ### Description
 
-@short: Ermöglicht die Tastaturnavigation durch einzelne Zellen
+@short: Aktiviert die Tastaturnavigation durch Zellen
 
 @signature: keyboard_navigation_cells: boolean
 
@@ -18,18 +18,18 @@ description: "ermöglicht die Tastaturnavigation durch einzelne Zellen"
 gantt.config.keyboard_navigation_cells = true;
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
-- [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
+- [Tastaturnavigation - Zellen navigieren](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
 
 ### Details
 
 :::note
- Diese Einstellung ist Teil der **keyboard_navigation** Erweiterung, daher stellen Sie sicher, dass das [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) Plugin zuerst aktiviert ist. Weitere Details finden Sie im ["Tastaturnavigation"](guides/keyboard-navigation.md) Leitfaden. 
+Diese Option ist in der **keyboard_navigation**-Erweiterung definiert, daher müssen Sie das [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) Plugin aktivieren. Lesen Sie die Details im [Tastaturnavigation](guides/keyboard-navigation.md) Artikel.
 :::
 
-hinzugefügt in Version 4.1
+Hinzugefügt in Version 4.1
 
 ### Related API
 - [keyboard_navigation](api/config/keyboard_navigation.md)
@@ -39,5 +39,4 @@ hinzugefügt in Version 4.1
 - [removeShortcut](api/method/removeshortcut.md)
 
 ### Related Guides
-- ["Tastaturnavigation"](guides/keyboard-navigation.md)
-
+- [Tastaturnavigation](guides/keyboard-navigation.md)

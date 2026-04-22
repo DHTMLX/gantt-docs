@@ -1,14 +1,14 @@
 ---
 sidebar_label: onAfterBatchUpdate
 title: onAfterBatchUpdate event
-description: "batchUpdate 메서드가 완료된 직후에 트리거됩니다."
+description: "batchUpdate 메서드가 호출된 직후에 발생합니다"
 ---
 
 # onAfterBatchUpdate
 
 ### Description
 
-@short: [batchUpdate](api/method/batchupdate.md) 메서드가 완료된 직후에 트리거됩니다.
+@short: batchUpdate 메서드가 호출된 직후에 발생합니다 [batchUpdate](api/method/batchupdate.md) 참조
 
 @signature: onAfterBatchUpdate: () =\> void;
 
@@ -26,4 +26,3 @@ gantt.attachEvent("onAfterBatchUpdate", function(){
 
 ### Change log
 - 버전 4.0에서 추가됨
-

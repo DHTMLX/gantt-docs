@@ -1,25 +1,27 @@
 ---
 sidebar_label: onGridResize
 title: onGridResize event
-description: "wird ausgelöst, wenn der Benutzer die Grenze des Grids zieht, um dessen Größe anzupassen"
+description: "feuert, wenn der Benutzer den Rand des Grids zieht, um das Grid zu skalieren"
 ---
 
 # onGridResize
-:::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
-:::
-### Description
 
-@short: Wird ausgelöst, wenn der Benutzer die Grenze des Grids zieht, um dessen Größe anzupassen
+:::info
+Diese Funktionalität ist nur in der PRO-Edition verfügbar. 
+:::
+
+### Beschreibung
+
+@short: Wird ausgelöst, wenn der Benutzer den Rand des Grids zieht, um das Grid zu skalieren
 
 @signature: onGridResize: (old_width: number, new_width: number) =\> void;
 
-### Parameters
+### Parameter
 
-- `old_width` - (required) *number* - die Breite des Grids vor der Größenänderung
-- `new_width` - (required) *number* - die Breite des Grids nach der Größenänderung
+- `old_width` - (erforderlich) *number* - die anfängliche Breite des Grids
+- `new_width` - (erforderlich) *number* - die neue Breite des Grids
 
-### Example
+### Beispiel
 
 ~~~jsx
 gantt.attachEvent("onGridResize", function(old_width, new_width){

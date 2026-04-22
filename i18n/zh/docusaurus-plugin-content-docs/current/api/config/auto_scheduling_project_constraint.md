@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_project_constraint
 title: auto_scheduling_project_constraint config
-description: "控制任务是否继承其父项目的约束类型"
+description: "定义任务是否应从其父项目继承约束类型"
 ---
 
 # auto_scheduling_project_constraint
+
 :::info
- 此功能仅在PRO版本中可用。 
+此功能仅在 PRO 版本中可用。
 :::
+
+:::warning
+该属性在 v9.1 已被弃用，请改用 [gantt.config.auto_scheduling](api/config/auto_scheduling.md#project_constraint) 的 `project_constraint` 属性。
+:::
+
 ### Description
 
-@short: 控制任务是否继承其父项目的约束类型
+@short: 定义任务是否应从其父项目继承约束类型
 
 @signature: auto_scheduling_project_constraint: boolean
 
@@ -20,20 +26,20 @@ description: "控制任务是否继承其父项目的约束类型"
 gantt.config.auto_scheduling_project_constraint = true;
 ~~~
 
-**Default value:** false
+**默认值：** false
 
 ### Related samples
-- [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+- [从项目起始与约束的自动排程](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 ### Details
 
 :::note
- 此配置属于 **auto_scheduling** 扩展的一部分，因此请确保启用了 [auto_scheduling](guides/extensions-list.md) 插件。更多信息请参见 [自动调度](guides/auto-scheduling.md) 文章。 
+该配置在 **auto_scheduling** 扩展中定义，因此需要激活 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件。有关详细信息，请参阅 [Auto Scheduling](guides/auto-scheduling.md) 文章。
 :::
 
-默认情况下，分配给父项目的约束类型不会影响其子任务的约束类型。
+默认情况下，父项目的约束类型不会影响其嵌套任务的约束类型。
 
-当此选项设置为 *true* 时，子任务（除非它们自身已指定约束类型）将继承其父项目的约束类型，例如 **finish no later than**。
+如果将配置设置为 *true*，则子任务（不包括具有自己约束类型的任务）将具有与父项目相同的约束类型（例如，**finish no later than**）。
 
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
@@ -51,8 +57,8 @@ gantt.config.auto_scheduling_project_constraint = true;
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [自动调度](guides/auto-scheduling.md)
+- [自动排程](guides/auto-scheduling.md)
 
 ### Change log
-- v8.0中新增
-
+- 该属性在 v9.1 已弃用
+- 在 v8.0 新增

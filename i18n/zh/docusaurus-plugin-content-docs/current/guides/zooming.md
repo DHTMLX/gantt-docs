@@ -1,71 +1,79 @@
----
-title: "缩放功能"
-sidebar_label: "缩放功能"
+--- 
+title: "缩放"
+sidebar_label: "缩放"
 ---
 
-# 缩放功能
+# 缩放
 
-dhtmlxGantt 内置了一个模块，使时间轴缩放的管理变得简单。如果你希望调整默认的缩放行为，可以使用[灵活的 API](guides/zoom.md)，动态更改时间轴设置。
+dhtmlxGantt 提供一个内置模块，方便管理时间刻度的缩放。如果你想自定义默认的缩放行为，可以使用 [灵活的 API](guides/zoom.md)，它允许你实现动态更改时间刻度设置的能力。
 
 ## 内置缩放模块
 
-集成的[缩放模块](guides/zoom.md)属于 **gantt.ext.zoom** 扩展。要启用它，只需调用 **gantt.ext.zoom.init(zoomConfig)** 并传入包含缩放级别数组的 **zoomConfig** 对象。例如:
+嵌入的 [zooming module](guides/zoom.md) 在 `gantt.ext.zoom` 扩展中声明。要启用此模块，你需要调用 `gantt.ext.zoom.init(zoomConfig)`，并传入一个包含缩放层级数组的配置对象 `zoomConfig`。例如：
 
 ~~~js
-var zoomConfig = {
+const zoomConfig = {
     levels: [
-      {
-        name:"day",
-        scale_height: 27,
-        min_column_width:80,
-        scales:[
-            {unit: "day", step: 1, format: "%d %M"}
-        ]
-      },
-      {
-         name:"week",
-         scale_height: 50,
-         min_column_width:50,
-         scales:[
-          {unit: "week", step: 1, format: function (date) {
-           var dateToStr = gantt.date.date_to_str("%d %M");
-           var endDate = gantt.date.add(date, 6, "day");
-           var weekNum = gantt.date.date_to_str("%W")(date);
-           return "#" + weekNum + ", " + dateToStr(date) + " - " + dateToStr(endDate);
-           }},
-           {unit: "day", step: 1, format: "%j %D"}
-         ]
-       },
-       {
-         name:"month",
-         scale_height: 50,
-         min_column_width:120,
-         scales:[
-             {unit: "month", format: "%F, %Y"},
-             {unit: "week", format: "Week #%W"}
-         ]
+        {
+            name: "day",
+            scale_height: 27,
+            min_column_width: 80,
+            scales: [
+                { unit: "day", step: 1, format: "%d %M" }
+            ]
         },
         {
-         name:"quarter",
-         height: 50,
-         min_column_width:90,
-         scales:[
-          {unit: "month", step: 1, format: "%M"},
-          {
-           unit: "quarter", step: 1, format: function (date) {
-            var dateToStr = gantt.date.date_to_str("%M");
-            var endDate = gantt.date.add(gantt.date.add(date, 3, "month"), -1, "day");
-            return dateToStr(date) + " - " + dateToStr(endDate);
-           }
-         }
-          ]},
+            name: "week",
+            scale_height: 50,
+            min_column_width: 50,
+            scales: [
+                {
+                    unit: "week",
+                    step: 1,
+                    format: (date) => {
+                        const formatDate = gantt.date.date_to_str("%d %M");
+                        const endDate = gantt.date.add(date, 6, "day");
+                        const weekNumber = gantt.date.date_to_str("%W")(date);
+                        return `#${weekNumber}, ${formatDate(date)} - ${formatDate(endDate)}`;
+                    }
+                },
+                { unit: "day", step: 1, format: "%j %D" }
+            ]
+        },
         {
-          name:"year",
-          scale_height: 50,
-          min_column_width: 30,
-          scales:[
-              {unit: "year", step: 1, format: "%Y"}
-        ]}
+            name: "month",
+            scale_height: 50,
+            min_column_width: 120,
+            scales: [
+                { unit: "month", format: "%F, %Y" },
+                { unit: "week", format: "Week #%W" }
+            ]
+        },
+        {
+            name: "quarter",
+            height: 50,
+            min_column_width: 90,
+            scales: [
+                { unit: "month", step: 1, format: "%M" },
+                {
+                    unit: "quarter",
+                    step: 1,
+                    format: (date) => {
+                        const formatDate = gantt.date.date_to_str("%M");
+                        const endDate = gantt.date.add(gantt.date.add(date, 3, "month"), -1, "day");
+                        return `${formatDate(date)} - ${formatDate(endDate)}`;
+                    }
+                }
+            ]
+        },
+        {
+            name: "year",
+            scale_height: 50,
+            min_column_width: 30,
+            scales: [
+                { unit: "year", step: 1, format: "%Y" }
+            ]
+        }
     ]
 };
 
@@ -73,97 +81,92 @@ gantt.ext.zoom.init(zoomConfig);
 ~~~
 
 :::note
-有关缩放模块及其 API 的详细信息，请参阅文章 [Zoom Extension](guides/zoom.md)。
+关于缩放模块及其 API 的详细信息，请参阅文章 [Zoom Extension](guides/zoom.md)。
 :::
 
-
-[Mouse wheel zoom](https://docs.dhtmlx.com/gantt/samples/03_scales/14_scale_zoom_by_wheelmouse.html)
-
+**相关示例**: [鼠标滚轮缩放](https://docs.dhtmlx.com/gantt/samples/03_scales/14_scale_zoom_by_wheelmouse.html)
 
 ## 自定义缩放设置
 
-如果你不想使用缩放模块，而是希望自行控制时间轴设置，只需调整相关的配置项即可。
+如果你不想使用缩放模块、而更愿意手动控制刻度设置，可以通过相应的配置选项实现。
 
-通常，实现缩放功能意味着为时间轴定义几个预设（缩放级别），并允许用户在它们之间切换。
+事实上，实现缩放功能意味着定义若干时间刻度配置的预设（缩放级别），并为用户提供在它们之间切换的能力。
 
-以下是配置时间轴所需的设置:
+你将需要以下设置来配置时间刻度：
 
-- [gantt.config.scales](api/config/scales.md) - 允许你设置任意数量的时间轴行。
+- [`gantt.config.scales`](api/config/scales.md) - 允许设置任意数量的时间刻度行
+- [`gantt.config.min_column_width`](api/config/min_column_width.md), [`gantt.config.scale_height`](api/config/scale_height.md) - 刻度列宽和时间刻度的整体高度
 
-- [gantt.config.min_column_width](api/config/min_column_width.md)、[gantt.config.scale_height](api/config/scale_height.md) - 控制时间轴列的宽度和总高度。
-
-下面是一些预设的示例:
+让我们考虑以下预设：
 
 ~~~js
 /* global gantt */
-function setScaleConfig(level) {
+const setScaleConfig = (level) => {
     switch (level) {
         case "day":
             gantt.config.scales = [
-                  {unit: "day", step: 1, format: "%d %M"}
+                { unit: "day", step: 1, format: "%d %M" }
             ];
             gantt.config.scale_height = 27;
             break;
-        case "week":
-            var weekScaleTemplate = function (date) {
-              var dateToStr = gantt.date.date_to_str("%d %M");
-              var endDate = gantt.date.add(gantt.date.add(date, 1, "week"), -1, "day");
-              return dateToStr(date) + " - " + dateToStr(endDate);
+        case "week": {
+            const formatWeekScale = (date) => {
+                const formatDate = gantt.date.date_to_str("%d %M");
+                const endDate = gantt.date.add(gantt.date.add(date, 1, "week"), -1, "day");
+                return `${formatDate(date)} - ${formatDate(endDate)}`;
             };
-             gantt.config.scales = [
-                {unit: "week", step: 1, format: weekScaleTemplate},
-                {unit: "day", step: 1, format: "%D"}
+
+            gantt.config.scales = [
+                { unit: "week", step: 1, format: formatWeekScale },
+                { unit: "day", step: 1, format: "%D" }
             ];
             gantt.config.scale_height = 50;
             break;
+        }
         case "month":
-             gantt.config.scales = [
-                {unit: "month", step: 1, format: "%F, %Y"},
-                {unit: "day", step: 1, format: "%j, %D"}
+            gantt.config.scales = [
+                { unit: "month", step: 1, format: "%F, %Y" },
+                { unit: "day", step: 1, format: "%j, %D" }
             ];
             gantt.config.scale_height = 50;
             break;
         case "year":
             gantt.config.scales = [
-                {unit: "year", step: 1, format: "%Y"},
-                {unit: "month", step: 1, format: "%M"}
+                { unit: "year", step: 1, format: "%Y" },
+                { unit: "month", step: 1, format: "%M" }
             ];
             gantt.config.scale_height = 90;
             break;
     }
-}
+};
 ~~~
 
-该函数为 gantt 对象设置了四种预定义配置之一，从"天"到"年"级别。要应用更改，需要完全重绘甘特图:
+上述函数可以通过四个预定义配置中的一个来配置 gantt 对象，从 "day" 到 "year" 时间刻度。Gantt 将需要重新绘制以显示配置的更改：
 
 ~~~js
 setScaleConfig("year");
 gantt.init("gantt_here");
 ~~~
 
-你可以创建一个简单的界面，让用户切换缩放级别:
-
+然后你可以实现一个 UI 让用户切换缩放级别：
 
 ~~~html
-<label><input type="radio" name="scale" value="day" checked/>Day scale</label>
-<label><input type="radio" name="scale" value="week"/>Week scale</label>
-<label><input type="radio" name="scale" value="month"/>Month scale</label>
-<label><input type="radio" name="scale" value="year"/>Year scale</label> 
+<label><input type="radio" name="scale" value="day" checked/>日刻度</label>
+<label><input type="radio" name="scale" value="week"/>周刻度</label>
+<label><input type="radio" name="scale" value="month"/>月刻度</label>
+<label><input type="radio" name="scale" value="year"/>年刻度</label>
 ~~~
-
 
 ~~~js
-var els = document.querySelectorAll("input[name='scale']");
-for (var i = 0; i < els.length; i++) {
-    els[i].onclick = function(e){
-        var el = e.target;
-        var value = el.value;
-        setScaleConfig(value);
+const scaleInputs = document.querySelectorAll("input[name='scale']");
+
+scaleInputs.forEach((input) => {
+    input.onclick = (event) => {
+        const selectedScale = event.target.value;
+        setScaleConfig(selectedScale);
         gantt.render();
     };
-}
+});
 ~~~
 
-
-[Dynamic scales](https://docs.dhtmlx.com/gantt/samples/03_scales/05_dynamic_scales.html)
-
+**相关示例**: [动态刻度](https://docs.dhtmlx.com/gantt/samples/03_scales/05_dynamic_scales.html)

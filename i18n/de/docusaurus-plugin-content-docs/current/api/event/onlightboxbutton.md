@@ -1,31 +1,31 @@
 ---
 sidebar_label: onLightboxButton
-title: onLightboxButton event
-description: "wird ausgelöst, wenn ein Benutzer auf einen benutzerdefinierten Button innerhalb der Lightbox klickt"
+title: onLightboxButton Event
+description: "wird ausgelöst, wenn der Benutzer auf einen benutzerdefinierten Button in der Lightbox klickt"
 ---
 
 # onLightboxButton
 
 ### Description
 
-@short: Wird ausgelöst, wenn ein Benutzer auf einen benutzerdefinierten Button innerhalb der Lightbox klickt
+@short: Fires when the user clicks on a custom button in the lightbox
 
-@signature: onLightboxButton: (css: string, node: HTMLElement, e: Event) =\> void;
+@signature: onLightboxButton: (css: string, node: HTMLElement, e: Event) => void;
 
-### Parameters
+### Parameter
 
-- `css` - (required) *string* - der CSS-Klassenname, der dem Button zugewiesen ist
-- `node` - (required) *HTMLElement* - das HTML-Element, das den geklickten Button repräsentiert
-- `e` - (required) *Event* - das native 'click' Event-Objekt
+- `css` - (erforderlich) *string* - der Name der CSS-Klasse, die dem Button zugewiesen wird
+- `node` - (erforderlich) *HTMLElement* - ein HTML-Element des angeklickten Buttons
+- `e` - (erforderlich) *Event* - ein natives 'click'-Ereignisobjekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onLightboxButton", function (css, node, e){
-    //platziere hier deine benutzerdefinierte Logik
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Details
 
-Dieses Event wird nur von benutzerdefinierten Buttons ausgelöst, die sich am unteren Rand der Lightbox befinden, und gilt nicht für die Standard-Buttons.
+Das Event wird nur für benutzerdefinierte Buttons am unteren Rand der Lightbox ausgelöst und nicht für die Standardbuttons.

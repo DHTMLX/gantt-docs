@@ -1,25 +1,25 @@
 ---
 sidebar_label: onLightbox
-title: onLightbox event
-description: "срабатывает один раз, когда пользователь открывает lightbox (форму редактирования)"
+title: Событие onLightbox
+description: "срабатывает после того, как пользователь открыл lightbox (форма редактирования)"
 ---
 
 # onLightbox
 
 ### Description
 
-@short: Срабатывает один раз, когда пользователь открывает lightbox (форму редактирования)
+@short: Срабатывает после того, как пользователь открыл lightbox (форма редактирования)
 
 @signature: onLightbox: (task_id: string | number) =\> void;
 
 ### Parameters
 
-- `task_id` - (required) *string | number* - ID задачи, которая была открыта в lightbox
+- `task_id` - (required) *string,number* - идентификатор задачи, открытой в lightbox
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onLightbox", function (task_id){
-    // здесь можно добавить кастомную логику
+    // здесь любая пользовательская логика
 });
 ~~~

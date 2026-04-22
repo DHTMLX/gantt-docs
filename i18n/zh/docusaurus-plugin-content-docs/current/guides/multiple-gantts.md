@@ -1,30 +1,30 @@
 ---
-title: "页面上的多个甘特图"
-sidebar_label: "页面上的多个甘特图"
+title: "在一个页面上显示多个甘特图"
+sidebar_label: "一个页面上的多个甘特图"
 ---
 
-# 页面上的多个甘特图
+# 在一个页面上显示多个甘特图
 
 :::info
-此功能包含在 Gantt PRO 版本中，可通过 Commercial（自 2021 年 10 月 6 日起）、Enterprise 和 Ultimate 许可证获得。
+此功能在 Gantt PRO 版本的商业许可（自 2021 年 10 月 6 日起）、Enterprise 和 Ultimate 许可下可用。
 :::
 
-本质上，dhtmlxGantt 作为一个静态对象存在，其默认实例始终存在于页面上。你可以随时通过全局 **gantt** 对象访问它。不过，如果有需要，你也可以创建一个新的 gantt 实例。
+基本上，DHTMLX Gantt 是一个静态对象，其默认实例会持续存在于页面上。你可以随时通过全局对象 `gantt` 访问它。但如果需要，也可以创建一个新的 gantt 对象。
+ 
+## Gantt 实例配置
 
-## 甘特实例配置
-
-要创建一个新的 dhtmlxGantt 实例，请使用 **Gantt.getGanttInstance()** 方法:
+要创建一个新的 DHTMLX Gantt 实例，请使用 `Gantt.getGanttInstance()` 方法：
 
 ~~~js
-// 注意 "Gantt" 首字母为大写
+// 注意，命令中的 "Gantt" 首字母要大写
 const ganttChart = Gantt.getGanttInstance();
 ~~~
 
-该方法可以接收一个配置对象作为参数:
+该方法可以接收一个配置对象作为参数：
 
 ~~~js
-const gantt = Gantt.getGanttInstance({
-    plugins:{
+const ganttInstance = Gantt.getGanttInstance({
+    plugins: {
         auto_scheduling: true,
     },
     container: "gantt_here",
@@ -35,27 +35,27 @@ const gantt = Gantt.getGanttInstance({
         auto_scheduling: true,
         auto_scheduling_strict: true,
         auto_scheduling_initial: true,
-        start_date: new Date(2020, 0, 1),
-        end_date: new Date(2021, 0, 1),
+        start_date: new Date(2027, 0, 1),
+        end_date: new Date(2028, 0, 1),
     },
     calendars: [
         {
-            id:"global",
+            id: "global",
             worktime: {
                 hours: ["8:00-17:00"],
-                days: [ 0, 1, 1, 1, 1, 0 ,0],
+                days: [0, 1, 1, 1, 1, 0, 0],
                 customWeeks: {
                     lastMonthOfYear: {
-                        from: new Date(2020, 11, 1),// 2020年12月1日
-                        to: new Date(2021, 0, 1),// 2021年1月1日 00:00,
+                        from: new Date(2027, 11, 1),
+                        to: new Date(2028, 0, 1),
                         hours: ["9:00-13:00"],
-                        days: [ 0, 1, 1, 1, 1, 1, 0]
+                        days: [0, 1, 1, 1, 1, 1, 0]
                     },
-                    firstMonthOfNextYear:{
-                        from: new Date(2021, 0, 1),// 2021年1月1日
-                        to: new Date(2021, 1, 1),// 2021年2月1日 00:00,
+                    firstMonthOfNextYear: {
+                        from: new Date(2028, 0, 1),
+                        to: new Date(2028, 1, 1),
                         hours: ["14:00-16:00"],
-                        days: [ 1, 1, 1, 1, 1, 0, 1]
+                        days: [1, 1, 1, 1, 1, 0, 1]
                     }
                 }
             }
@@ -64,17 +64,12 @@ const gantt = Gantt.getGanttInstance({
     data: {
         tasks: [
             { id: 11, text: "Project #1", type: "project", "open": true, "parent": 0 },
-            { id: 1, start_date: "05-04-2020", text: "1", duration: 1, parent: "11", 
-            type: "task" },
-            { id: 2, start_date: "05-04-2020", text: "2", duration: 3, parent: "11", 
-            type: "task" },
-            { id: 3, start_date: "05-04-2020", text: "3", duration: 3, parent: "11", 
-            type: "task" },
-            { id: 4, start_date: "05-04-2020", text: "4", duration: 3, parent: "11", 
-            type: "task" },
-            { id: 5, start_date: "05-04-2020", text: "5", duration: 1, parent: "11", 
-            type: "task" }
-        ], 
+            { id: 1, text: "1", start_date: "2027-04-05", duration: 1, parent: "11" },
+            { id: 2, text: "2", start_date: "2027-04-05", duration: 3, parent: "11" },
+            { id: 3, text: "3", start_date: "2027-04-05", duration: 3, parent: "11" },
+            { id: 4, text: "4", start_date: "2027-04-05", duration: 3, parent: "11" },
+            { id: 5, text: "5", start_date: "2027-04-05", duration: 1, parent: "11" }
+        ],
         links: [
             { source: "1", target: "2", type: "0", id: 1 },
             { source: "1", target: "3", type: "0", id: 2 },
@@ -87,157 +82,170 @@ const gantt = Gantt.getGanttInstance({
 });
 ~~~
 
-这将创建一个使用指定选项初始化的甘特图。
+结果，你将获得一个具有指定设置的初始化 Gantt 图表。
 
-config 对象支持以下属性:
+config 对象可以包含以下属性：
 
-- **container** - (*string|HTMLElement*) 甘特图渲染的 HTML 容器或其 id。如果省略，甘特图将在没有容器的情况下初始化。
-- **config** - (*object*) 甘特图的配置设置
-- **calendars** - (*array*) 要加载到 gantt 的工作日历数组。日历格式应符合 [gantt.addCalendar](api/method/addcalendar.md) 方法的要求。
-- **templates** - (*object*) 包含模板的对象
-- **events** - (*object*) 包含事件处理程序的对象。
+- `container` - (*string|HTMLElement*) 将显示 Gantt 图的 HTML 容器或其 ID。如果未指定，Gantt 将在没有容器的情况下初始化。
+- `config` - (*object*) 包含 Gantt 图配置设置的对象
+- `calendars` - (*array*) 要加载到 gantt 实例中的工作时间日历数组。日历必须采用 [`gantt.addCalendar()`](api/method/addcalendar.md) 方法所支持的格式指定
+- `templates` - (*object*) 包含模板的对象
+- `events` - (*object*) 包含事件处理程序的对象
 
-
-为新 Gantt 实例指定事件处理程序时，使用如下格式:
+在为新的 Gantt 实例指定事件处理程序时，需要使用以下格式：
 
 ~~~js
-const gantt = Gantt.getGanttInstance({
-     events: {
-          onTaskCreated: function(task){
-               task.owner = null;
-               return true;
-          },
-          onTaskClick: function(id){
-               alert(gantt.getTask(id).text);
-               return true;
-          }
-     }
-})
+const ganttInstance = Gantt.getGanttInstance({
+    events: {
+        onTaskCreated: (task) => {
+            task.owner = null;
+            return true;
+        },
+        onTaskClick: (taskId) => {
+            alert(ganttInstance.getTask(taskId).text);
+            return true;
+        }
+    }
+});
 ~~~
 
-- **data** - (*object|string*) 要加载的数据或用于获取数据的 URL
-- **plugins** - (*object*) 需要激活的插件
-- **locale** - (*string|object*) 两位语言代码或要激活的本地化对象
+- `data` - (*object|string*) 要加载的数据对象，或用于加载数据的 URL
+- `plugins` - (*object*) 需要激活的扩展
+- `locale` - (*string|object*) 两字母语言代码，或需要激活的区域设置对象
 
-**注意**，如果不传递参数调用 **Gantt.getGanttInstance()**，则返回带有默认设置的 gantt 对象。在这种情况下，你需要像往常一样为新实例配置、初始化并加载数据。
+请注意，不带参数调用 `Gantt.getGanttInstance()` 方法将返回带有默认配置设置的 gantt 对象。因此，你需要像往常一样配置新实例、初始化它并用数据填充它。
 
-下面是一个简单示例，展示了两个垂直堆叠的甘特图:
+让我们举一个简单的例子：两个 Gantt 图并排显示，一个在另一个下面：
 
 ~~~js
-window.addEventListener("DOMContentLoaded", function(){
-    var gantt1 = Gantt.getGanttInstance();
-    gantt1.init("gantt_here");
-    gantt1.parse(tasksA);
+window.addEventListener("DOMContentLoaded", () => {
+    const firstGantt = Gantt.getGanttInstance();
+    firstGantt.init("gantt_here");
+    firstGantt.parse(tasksA);
 
-    var gantt2 = Gantt.getGanttInstance();
-    gantt2.init("gantt_here_2");
-    gantt2.parse(tasksB);
+    const secondGantt = Gantt.getGanttInstance();
+    secondGantt.init("gantt_here_2");
+    secondGantt.parse(tasksB);
 });
+~~~
 
+~~~html
 <body>
-<div id="gantt_here" style="width:100%; height: 50%;"></div>
-<div id="gantt_here_2" style="width:100%; height: 50%;"></div>
+    <div id="gantt_here" style="width: 100%; height: 50%;"></div>
+    <div id="gantt_here_2" style="width: 100%; height: 50%;"></div>
 </body>
 ~~~
 
-## 与 dhtmlxLayout 的集成
+## 与 DHTMLX Layout 的集成
 
-在页面上组织多个甘特图的一个有效方法是使用 [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html)。它提供了整洁的布局框架，并能正确处理与其他页面元素的交互以及大小调整事件。
+在页面上放置多个 Gantt 图的一个好方法是使用 [DHTMLX Layout](https://docs.dhtmlx.com/suite/layout/)。
+它不仅提供了一个方便的布局框架，还能确保与页面上其他元素的正确交互，并对页面大小变化做出响应。
 
 :::note
-请注意，dhtmlxLayout 是一个独立产品，不包含在 dhtmlxGantt 库中。要在项目中使用 dhtmlxLayout，需要单独购买许可证。请[查看许可选项](https://dhtmlx.com/docs/products/dhtmlxLayout/#editions-licenses)。
+请注意，DHTMLX Layout 是一个单独的产品，不属于 DHTMLX Gantt 库的一部分。如果你想在应用程序中使用 DHTMLX Layout，请购买相应许可。
+请 [查看许可选项](https://dhtmlx.com/docs/products/licenses.shtml)。
 :::
 
-**要将 dhtmlxGantt 实例附加到布局单元格**，请使用 **attachGantt()** 方法。
-
-**注意**，将 dhtmlxGantt 附加到单元格会自动初始化它。因此，请确保在附加到布局之前对 gantt 实例进行配置。
+可以通过在单元格中定义一个容器并在其中初始化 Gantt 来将 DHTMLX Gantt 实例放置到布局单元格中。
 
 ~~~js
-function init() {
-    var dhxLayout = new dhtmlXLayoutObject(document.body, "2U");
+new dhx.Layout("layout_container", {
+    rows: [
+        {
+            id: "top",
+            height: "50%",
+            html: '<div id="gantt_here" style="width: 100%; height: 100%;"></div>'
+        },
+        {
+            id: "bottom",
+            height: "50%",
+            html: '<div id="gantt_here_2" style="width: 100%; height: 100%;"></div>'
+        }
+    ]
+});
 
-    gantt1 = Gantt.getGanttInstance();
-    gantt1.config.min_column_width = 50;
-    gantt1.config.scale_height = 90;
-    dhxLayout.cells("a").attachGantt(null, null, gantt1); /*!*/
-    gantt1.parse(tasksA);
-        
-    gantt2 = Gantt.getGanttInstance();
-    gantt2.config.date_grid = "%Y-%m-%d %H:%i";
-    gantt2.config.xml_date = "%Y-%m-%d %H:%i:%s";
-    dhxLayout.cells("b").attachGantt(null, null, gantt2);/*!*/
-    gantt2.parse(tasksB);
-}
+const firstGantt = Gantt.getGanttInstance();
+firstGantt.init("gantt_here");
+firstGantt.parse(tasksA);
+
+const secondGantt = Gantt.getGanttInstance();
+secondGantt.init("gantt_here_2");
+secondGantt.parse(tasksB);
 ~~~
 
-## Gantt 和 DataProcessor 实例的析构函数
+## Gantt 与 DataProcessor 实例的析构器 {#destructorofganttanddataprocessorinstances}
 
-从 5.1 版本开始，dhtmlxGantt 对象提供了 [destructor](api/method/destructor.md)，用于清理不再需要的 gantt 实例。
+从版本 5.1 开始，DHTMLX Gantt 对象提供了 [`destructor()`](api/method/destructor.md) 方法，可用于处置不再需要的 Gantt 实例。
 
-以下是如何为 gantt 实例使用析构函数的方法:
+gantt 实例的 `destructor()` 方法可以按如下方式使用：
 
 ~~~js
-var gantt = Gantt.getGanttInstance();
-gantt.destructor();
+const ganttInstance = Gantt.getGanttInstance();
+ganttInstance.destructor();
 ~~~
 
-该析构函数会执行以下操作:
+析构器将执行以下任务：
 
 - 清除加载到 gantt 实例中的数据
-- 销毁已附加的数据处理器（dataProcessor）
-- 将甘特图从 DOM 中移除
-- 移除通过 [gantt.event()](api/method/event.md) 方法附加的所有 DOM 事件
+- 如果已将数据处理器附加到 gantt，则销毁数据处理器
+- 将 gantt 从 DOM 中分离
+- 分离通过 [`gantt.event()`](api/method/event.md) 方法附加的所有 DOM 事件
 
-请注意，析构函数不会移除通过 [gantt.createDatastore()](api/method/createdatastore.md) 方法创建的数据存储。你需要手动销毁这些数据存储，如下所示:
+请注意，析构器不会销毁通过 [`gantt.createDatastore()`](api/method/createdatastore.md) 方法创建的数据存储。你必须手动销毁它们，如下所示：
 
 ~~~js
-// 创建数据存储
-var resourcesStore = gantt.createDatastore({
-    name:"resource",
-    initItem: function(item){
-        item.id = item.key || gantt.uid();
+// 创建一个数据存储
+const ganttInstance = Gantt.getGanttInstance();
+const resourcesStore = ganttInstance.createDatastore({
+    name: "resource",
+    initItem: (item) => {
+        item.id = item.key || ganttInstance.uid();
         return item;
     }
 });
 
-// 之后销毁数据存储
+// 稍后销毁该数据存储
 resourcesStore.destructor();
 ~~~
 
-### 在 Angular 中使用析构函数
+### 在 Angular 中使用析构器
 
-以下是在 Angular 中销毁 gantt 实例的示例:
+下面是使用析构器在使用 Angular 框架时处置一个 gantt 实例的示例：
 
-~~~js
-@Component({selector: 'app-gantt', template: `...`})
-class MyGanttComponent implements OnDestroy {
-  ngOnInit() {
-     this.$gantt = Gantt.getGanttInstance();
+~~~ts
+@Component({ template: '...' })
+class MyGanttComponent implements OnInit, OnDestroy {
+    private ganttInstance;
 
-     // 配置和初始化
-  }
-  
-  ngOnDestroy() {
-     this.$gantt.destructor();
-     this.$gantt = null;
-  }
+    ngOnInit() {
+        this.ganttInstance = Gantt.getGanttInstance();
+
+        // 配置并初始化
+    }
+
+    ngOnDestroy() {
+        if (this.ganttInstance) {
+            this.ganttInstance.destructor();
+        }
+    }
 }
 ~~~
 
 ### 分离 dataProcessor
 
-对 dataProcessor 调用析构函数会清除其实例并将其从 gantt 分离。例如:
+调用数据处理器的析构器将清除数据处理器实例并将其从 gantt 中分离。例如：
 
 ~~~js
-var gantt = Gantt.getGanttInstance();
-var dp = new gantt.dataProcessor("url");
-dp.init(gantt);
+const ganttInstance = Gantt.getGanttInstance();
+const dataProcessor = ganttInstance.createDataProcessor({
+    url: "url",
+    mode: "REST"
+});
 
-// 销毁 dataProcessor 并从 gantt 分离
-dp.destructor();
+// 销毁数据处理器并将其从 gantt 分离
+dataProcessor.destructor();
 ~~~
 
 :::note
-如果你使用的包不支持多个 gantt 实例（如 GPL 或 Commercial 版本），调用 gantt 的析构函数后，gantt 将不可用，直到页面重新加载。
+如果你使用的包不允许创建同一个 gantt 对象的多个实例（GPL 或商业版），调用 gantt 的析构器将使 gantt 在页面重新加载之前不可访问。
 :::
-

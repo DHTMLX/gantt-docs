@@ -1,20 +1,20 @@
 ---
 sidebar_label: createDataProcessor
 title: createDataProcessor method
-description: "Erstellt eine neue dataProcessor-Instanz und verknüpft sie mit dem Gantt-Diagramm"
+description: "erstellt eine neue dataProcessor-Instanz und hängt sie an gantt"
 ---
 
 # createDataProcessor
 
-### Description
+### Beschreibung
 
-@short: Erstellt eine neue dataProcessor-Instanz und verknüpft sie mit dem Gantt-Diagramm
+@short: Erstellt eine neue dataProcessor-Instanz und hängt sie an gantt
 
 @signature: createDataProcessor: (config: DataProcessorConfig | RouterFunction | RouterConfig) =\> any
 
 ### Parameters
 
-- `config` - (required) *DataProcessorConfig | RouterFunction | RouterConfig* -         Konfigurationsobjekt für den dataProcessor
+- `config` - (erforderlich) *DataProcessorConfig | RouterFunction | RouterConfig* -         DataProcessor-Konfigurationsobjekt
 
 ### Returns
 - ` dataProcessor` - (object) - die erstellte dataProcessor-Instanz
@@ -34,12 +34,12 @@ var dp = gantt.createDataProcessor({
 
 ### Details
 
-Diese Methode akzeptiert einen der folgenden Parametertypen:
+Die Methode kann einen der folgenden Parametertypen akzeptieren:
 
-- **DataProcessorConfig** - (*object*) - ein Objekt, das einen der vordefinierten Datenübertragungsmodi definiert
-    - **_url_** - (*string*) - die Server-URL
-    - **_mode?_** - (*string*) - optional, gibt an, wie Daten gesendet werden: "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
-    - **_deleteAfterConfirmation?_** - (*boolean*) - optional, bestimmt, ob eine Aufgabe erst nach Bestätigung der Löschung durch den Server aus dem Gantt entfernt wird. Abhängigkeitslinks und Unteraufgaben werden gelöscht, sobald die Löschung der übergeordneten Aufgabe bestätigt ist.
+- **DataProcessorConfig** - (*Objekt*) - Objekt, das einen der vordefinierten Modi zum Senden der Daten angibt
+    - **_url_** - (*string*) - die URL zur Serverseite
+    - **_mode?_** - (*string*) - optional, der Modus zum Senden von Daten an den Server: "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
+    - **_deleteAfterConfirmation?_** - (*boolean*) - optional, definiert, ob die Aufgabe aus dem gantt erst nach einer erfolgreichen Serverantwort gelöscht wird. Abhängigkeitsverknüpfungen und Unteraufgaben werden nach Bestätigung der Löschung der übergeordneten Aufgabe gelöscht.
 
 
 ~~~js
@@ -51,17 +51,17 @@ var dp = gantt.createDataProcessor({
 ~~~
 
 
-- **RouterFunction (entity, action, data, id): Promise | object | void** - eine Router-Funktion zur Verarbeitung von Änderungen im Gantt-Diagramm
-    - **_entity_** - (*string*) - der relevante Entitätsname, z. B. "task", "link", "resource" oder "assignment"
-    - **_action_** - (*string*) - der Aktionstyp: "create", "update" oder "delete"
-    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - das zu verarbeitende Objekt
-    - **_id_** - (*string | number*) - die ID des zu verarbeitenden Objekts
+- **RouterFunction (entity, action, data, id): Promise | object | void** - die Router-Funktion zur Verarbeitung von Änderungen im Gantt
+    - **_entity_** - (*string*) - der Name der relevanten Entität. Mögliche Werte sind: "task"|"link"|"resource"|"assignment"
+    - **_action_** - (*string*) - der Name der relevanten Aktion. Mögliche Werte sind:  "create"|"update"|"delete"
+    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - das verarbeitete Objekt
+    - **_id_** - (*string | number*) - die ID eines verarbeiteten Objekts
 
 
 ~~~js
 // entity - "task"|"link"|"resource"|"assignment"
 // action - "create"|"update"|"delete"
-// data - ein Objekt mit Task- oder Linkdaten
+// data - ein Objekt mit Task- oder Link-Daten
 // id – die ID eines verarbeiteten Objekts (Task oder Link)
 var dp = gantt.createDataProcessor(function(entity, action, data, id) { 
     switch(action) {
@@ -87,22 +87,22 @@ var dp = gantt.createDataProcessor(function(entity, action, data, id) {
 ~~~
 
 
-- **RouterConfig** - (*object*) - ein Objekt zur Konfiguration von Routern für verschiedene Entitäten
-    - **_task?_** - (*RouterForEntity*) - Router für Tasks
-    - **_link?_** - (*RouterForEntity*) - Router für Links
-    - **_resource?_** - (*RouterForEntity*) - Router für Ressourcen
-    - **_assignment?_** - (*RouterForEntity*) - Router für Assignments
+- **RouterConfig** - (*Objekt*) - die Router-Konfiguration für verschiedene Entitäten
+    - **_task?_** - (*RouterForEntity*) - das Router-Objekt für Tasks
+    - **_link?_** - (*RouterForEntity*) - das Router-Objekt für Links
+    - **_resource?_** - (*RouterForEntity*) - das Router-Objekt für Ressourcen
+    - **_assignment?_** - (*RouterForEntity*) - das Router-Objekt für Zuweisungen
 
 
-Das **RouterForEntity**-Objekt umfasst folgende Methoden:
+Das **RouterForEntity**-Objekt hat die folgenden Eigenschaften:
 
-- **create (data): Promise** - Funktion zum Hinzufügen von Elementen
-    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - das hinzuzufügende Element
-- **update (data, id): Promise** - Funktion zum Aktualisieren von Elementen
-    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - das zu aktualisierende Element
-    - **_id_** - (*string | number*) - die ID des Elements
-- **delete (id): Promise** - Funktion zum Löschen von Elementen
-    - **_id_** - (*string | number*) - die ID des Elements
+- **create (data): Promise** - eine Funktion zur Verarbeitung des Hinzufügens von Items
+    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - das verarbeitete Item
+- **update (data, id): Promise** - eine Funktion zur Verarbeitung der Aktualisierung von Items
+    - **_data_** - (*Task | Link | ResourceAssignment | CustomObject*) - das verarbeitete Item
+    - **_id_** - (*string | number*) - die ID eines verarbeiteten Items
+- **delete (id): Promise** - eine Funktion zur Verarbeitung der Löschung von Items
+    - **_id_** - (*string | number*) - die ID eines verarbeiteten Items
 
 
 ~~~js
@@ -120,27 +120,27 @@ var dp = gantt.createDataProcessor({
 });
 ~~~
 
-Alle Router-Funktionen sollten entweder ein Promise oder ein Datenantwortobjekt zurückgeben. Dadurch kann der dataProcessor die Datenbank-ID aktualisieren und das **onAfterUpdate**-Event auslösen.
+Alle Funktionen des Router-Objekts sollten entweder eine Promise oder ein Daten-Antwort-Objekt zurückgeben. Dies ist notwendig, damit der DataProcessor die Datenbank-ID anwenden kann und um das **onAfterUpdate**-Ereignis des DataProcessors auszulösen.
 
 ~~~js
 router = function(entity, action, data, id) {
     return new gantt.Promise(function(resolve, reject) {
-        // … Logik
+        // … some logic
         return resolve({tid: databaseId});
      });
 }
 ~~~
 
-Dieser Ansatz ermöglicht es, DataProcessor für das Speichern von Daten in localStorage oder anderen Speichern zu verwenden, die nicht an eine bestimmte URL gebunden sind, oder wenn verschiedene Server die Erstellung und Löschung von Objekten übernehmen.
+Auf diese Weise können Sie DataProcessor verwenden, um Daten im LocalStorage zu speichern, oder in irgendeinem anderen Speicher, der nicht an eine bestimmte URL gebunden ist, oder falls zwei verschiedene Server (URLs) für die Erstellung und Löschung von Objekten verantwortlich sind.
 
 
-## Speichern von Ressourcen und Resource Assignments
+## Speichern von Ressourcen und Ressourcen-Zuweisungen
 
-Standardmäßig verarbeitet der DataProcessor keine Updates für Ressourcen und Resource Assignments. 
-Diese Funktion kann mit einer [separaten Konfiguration](guides/server-side.md#resources_crud) aktiviert werden.
+Standardmäßig erhält der DataProcessor keine Updates zu Ressourcen und Ressourcen-Zuweisungen. 
+Sie können diese Funktion jedoch über eine [separate Konfiguration](guides/server-side.md#resources_crud) aktivieren.
 
-### Related Guides
-- ["Serverseitige Integration"](guides/server-side.md)
+### Verwandte Anleitungen
+- [Serverseitige Integration](guides/server-side.md)
 
-### Change log
-- die Option **deleteAfterConfirmation** wurde in Version 8.0 hinzugefügt
+### Änderungsprotokoll
+- der Parameter **deleteAfterConfirmation** wurde in v8.0 hinzugefügt

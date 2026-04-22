@@ -1,7 +1,7 @@
 ---
 sidebar_label: scale_row_class
-title: scale_row_class template
-description: "definiert die CSS-Klasse, die auf die Zeitskala angewendet wird"
+title: scale_row_class Vorlage
+description: "gibt die CSS-Klasse an, die auf die Zeitachse angewendet wird"
 ---
 
 # scale_row_class
@@ -14,10 +14,10 @@ description: "definiert die CSS-Klasse, die auf die Zeitskala angewendet wird"
 
 ### Parameters
 
-- `scale` - (required) *Scale* - das Konfigurationsobjekt für die Skala
+- `scale` - (erforderlich) *Scale* - das Konfigurationsobjekt der Skala
 
 ### Returns
-- ` text` - (string | void) - die CSS-Klasse, die dem entsprechenden Element zugewiesen wird
+- ` text` - (string | void) - eine CSS-Klasse für das betreffende Element
 
 ### Example
 
@@ -47,5 +47,4 @@ gantt.templates.scale_row_class = function(scale){
 - [scale_cell_class](api/template/scale_cell_class.md)
 
 ### Related Guides
-- ["Vorlagen für den Timeline-Bereich"](guides/timeline-templates.md)
-
+- [Vorlagen des Timeline-Bereichs](guides/timeline-templates.md)

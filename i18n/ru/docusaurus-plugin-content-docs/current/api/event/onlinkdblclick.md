@@ -1,38 +1,36 @@
 ---
 sidebar_label: onLinkDblClick
 title: onLinkDblClick event
-description: "срабатывает при двойном клике на ссылку"
+description: "срабатывает при двойном клике по ссылке"
 ---
 
 # onLinkDblClick
 
 ### Description
 
-@short: Срабатывает при двойном клике на ссылку
+@short: Срабатывает при двойном клике по ссылке
 
 @signature: onLinkDblClick: (id: string | number, e?: Event) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - идентификатор кликнутой ссылки
-- `e` - (required) *Event* - необязательный, нативный объект события
+- `id` - (обязательный) *string | number* - идентификатор кликаемой ссылки
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию (<b>true</b>) или оно будет предотвращено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onLinkDblClick", function(id,e){
-    // здесь можно добавить кастомную логику
+    //любая собственная логика здесь
     return true;
 });
 ~~~
 
 ### Details
 
-Это событие можно блокировать. Возврат false останавливает действие по умолчанию, которым является удаление ссылки.
+Событие можно заблокировать. Возврат false отменит обработчик по умолчанию (удаление ссылки)
 
 ### Related API
 - [onLinkClick](api/event/onlinkclick.md)
-

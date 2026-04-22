@@ -6,10 +6,10 @@ sidebar_label: "Baselines-Steuerung"
 # Baselines-Steuerung
 
 :::info
-Dieses Feature ist nur in der PRO Edition enthalten.
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 
-Dies ist eine Sammlung von Selektoren, die dazu dienen, die [Baselines](guides/inbuilt-baselines.md) für eine Aufgabe festzulegen, indem das Startdatum und die Dauer in Tagen definiert werden.
+Eine Reihe von Selektoren zur Festlegung der [baselines](guides/inbuilt-baselines.md) für eine Aufgabe, indem das Startdatum der Aufgabe und die Anzahl der Tage angegeben werden.
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -19,15 +19,13 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-
 [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
+## Initialization
 
-## Initialisierung
+Um die **baselines**-Steuerung dem Lightbox hinzuzufügen, folgen Sie den untenstehenden Schritten:
 
-Um das **baselines**-Steuerelement in der Lightbox zu verwenden, gehen Sie wie folgt vor:
-
-1) Fügen Sie eine Sektion zur Lightbox-Konfiguration hinzu:
+1) Fügen Sie dem Lightbox-Konfiguration eine Sektion hinzu:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -37,7 +35,7 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
   
-2) Definieren Sie ein Label für diese Sektion:
+2) Legen Sie eine Bezeichnung für den Abschnitt fest:
 
 ~~~js
 gantt.locale.labels.section_baselines = "Baselines";
@@ -45,27 +43,26 @@ gantt.locale.labels.section_baselines = "Baselines";
 
 ## Eigenschaften
 
-Hier sind die wichtigsten Eigenschaften, die häufig mit dem **baselines**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
+Die folgenden Eigenschaften sind hauptsächlich wichtig und werden häufig für die **baselines**-Steuerung gesetzt (siehe die vollständige Liste [hier](api/config/lightbox.md)):
 
-- **name** - (*string*) der Bezeichner der Sektion
-- **height** - (*number*) die Höhe der Sektion
-- **map_to** - (*string*) sollte auf "baselines" gesetzt werden
+- **name** - (*string*) der Abschnittsname 
+- **height** - (*number*) die Abschnittshöhe
+- **map_to** - (*string*) setzen Sie es auf "baselines"
 - **formatter** - (object) eine Instanz des [durationFormatter](guides/working-time.md#taskdurationindecimalformat)-Objekts
-- **type** - (*string*) der Typ des [Sektions-Steuerelements](guides/default-edit-form.md#lightboxcontrols)
-- **focus** - (*boolean*) wenn true, wird diese Sektion beim Öffnen der Lightbox fokussiert
-- **readonly** - (*boolean*) wenn true, ist die Sektion schreibgeschützt
-- **year_range** - (*array,number*) definiert den Bereich für den Jahres-Selektor. Es gibt zwei Möglichkeiten:
-    - *year_range: [2005, 2025]* - von 2005 bis 2025 
-    - *year_range: 10*  - von (aktuelles Jahr - 10) bis (aktuelles Jahr + 10)
-- **single_date** - (*boolean*) wenn true, wird nur der *Startdatum*-Selektor angezeigt. Aufgaben, die auf diese Weise bearbeitet werden, haben eine Dauer von null, was hauptsächlich für [Meilensteine](guides/task-types.md#milestones) nützlich ist
-- **time_format** - (*string*) legt die Reihenfolge der Datums-/Zeit-Selektoren fest
+- **type** - (*string*) der Typ des [section control](guides/default-edit-form.md#lightboxcontrols)
+- **focus** - (*boolean*) wenn auf *true* gesetzt, erhält der Abschnitt beim Öffnen der Lightbox den Fokus
+- **readonly** - (*boolean*) wenn Sie den Wert "true" setzen, ist der Abschnitt schreibgeschützt
+- **year_range** - (*array,number*) legt einen Bereich für den Jahresauswahl fest. Der Bereich kann auf zwei Arten festgelegt werden: 
+    - *year_range: [2005, 2025]* - ein Zeitraum von 2005 bis 2025 
+    - *year_range: 10*  - ein Zeitraum [aktuelles Jahr - 10 Jahre; aktuelles Jahr + 10 Jahre]
+- **single_date** - (*boolean*) wenn Sie den Wert "true" setzen, wird im Abschnitt nur der *Startdatum*-Auswahl angezeigt. Bearbeitete Aufgaben werden nur durch das Startdatum festgelegt und haben eine Nulldauer. Sinnvoll nur für [milestones](guides/task-types.md#milestones)
+- **time_format** - (*string*) legt die Reihenfolge der Datum-Uhrzeit-Auswahlen fest
 
 ## Lokalisierung
 
-Sie können die Beschriftungen für diese Teile des **baselines**-Steuerelements anpassen:
+Sie können die Bezeichnungen der folgenden Elemente der **baselines**-Steuerung lokalisieren:
 
-- **gantt.locale.labels.baselines_section_placeholder** - Text, der angezeigt wird, wenn keine Baselines hinzugefügt wurden
-- **gantt.locale.labels.baselines_remove_button** - Beschriftung für den Button, der eine Baseline entfernt (Standard: *"Remove"*)
-- **gantt.locale.labels.baselines_add_button** - Beschriftung für den Button, der eine neue Baseline hinzufügt (Standard: *"Add Baseline"*)
-- **gantt.locale.labels.baselines_remove_all_button** - Beschriftung für den Button, der alle Baselines entfernt (Standard: *"Remove All"*)
-
+- **gantt.locale.labels.baselines_section_placeholder** - der Text, der angezeigt wird, wenn keine Baselines hinzugefügt wurden
+- **gantt.locale.labels.baselines_remove_button** - der Text des Buttons zum Entfernen einer Baseline (*"Remove"* standardmäßig)
+- **gantt.locale.labels.baselines_add_button** - der Text des Buttons zum Hinzufügen einer neuen Baseline (*"Add Baseline"* standardmäßig)
+- **gantt.locale.labels.baselines_remove_all_button** - der Text des Buttons zum Entfernen aller Baselines (*"Remove All"* standardmäßig)

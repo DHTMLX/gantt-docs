@@ -1,14 +1,14 @@
 ---
 sidebar_label: renderMarkers
-title: renderMarkers method
-description: "обновляет все маркеры, отображаемые на странице"
+title: renderMarkers метод
+description: "обновляет все маркеры на странице"
 ---
 
 # renderMarkers
 
 ### Description
 
-@short: Обновляет все маркеры, отображаемые на странице
+@short: Обновляет все маркеры на странице
 
 @signature: renderMarkers: () =\> void
 
@@ -28,7 +28,7 @@ gantt.renderMarkers(); /*!*/
 ### Details
 
 :::note
-note Этот метод является частью расширения **marker**, поэтому убедитесь, что плагин [marker](guides/extensions-list.md#verticalmarker) включен. Для получения дополнительной информации ознакомьтесь со статьей [Добавление вертикальных маркеров](guides/markers.md). 
+Этот метод определён в расширении **marker**, поэтому необходимо включить плагин [marker](guides/extensions-list.md#vertical-marker). Подробности см. в статье [Добавление вертикальных маркеров](guides/markers.md).
 :::
 
 ### Related API
@@ -40,4 +40,3 @@ note Этот метод является частью расширения **ma
 
 ### Related Guides
 - [Добавление вертикальных маркеров](guides/markers.md)
-

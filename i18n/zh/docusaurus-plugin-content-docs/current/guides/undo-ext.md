@@ -5,61 +5,61 @@ sidebar_label: "撤销扩展"
 
 # 撤销扩展
 
-*Undo* 对象提供了一组用于撤销或重做已进行更改的方法。
+The *Undo* 对象拥有一组方法，允许你撤销/重做所做的修改。
 
 
 有关撤销扩展的更多信息，请参阅 [Undo/Redo 기능](guides/undo-redo.md) 文章。
 
 ## 方法
 
-**gantt.ext.undo** 对象提供以下方法:
+可以通过 **gantt.ext.undo** 对象使用以下方法：
 
-### Undo() / Redo() 
+### Undo() / Redo()
 
-- <span class="submethod">**undo (): void**</span> - 撤销在 gantt 中应用的更改
+- <span class="submethod">**undo (): void**</span> - 撤销在甘特图中所做的修改
 
 ~~~js
 gantt.ext.undo.undo();
 ~~~
 
-- <span class="submethod">**redo (): void**</span> - 重新应用之前已撤销的更改
+- <span class="submethod">**redo (): void**</span> - 将已还原的修改再次应用到甘特图中
 
 ~~~js
 gantt.ext.undo.redo();
 ~~~
 
-### getUndoStack() / getRedoStack() 
+### getUndoStack() / getRedoStack()
 
-- <span class="submethod">**getUndoStack (): UndoRedoAction[]**</span> - 获取用户执行的撤销操作栈
+- <span class="submethod">**getUndoStack (): UndoRedoAction[]**</span> - 返回存储的撤销用户操作的栈
 
 ~~~js
 var stack = gantt.ext.undo.getUndoStack();
 ~~~
 
-- <span class="submethod">**getRedoStack (): UndoRedoAction[]**</span> - 获取可用的重做操作栈
+- <span class="submethod">**getRedoStack (): UndoRedoAction[]**</span> - 返回存储的重做用户操作的栈
 
 ~~~js
 var stack = gantt.ext.undo.getRedoStack();
 ~~~
 
-返回的栈是撤销用户操作的数组。每个操作包含多个命令。命令是一个包含以下属性的对象:
+返回的栈是撤销用户操作的数组。每个用户操作包含一组命令。一个命令是具有以下属性的对象：
 
-- **_type_** - (*string*) 指定命令类型:"add"、"remove" 或 "update"
-- **_entity_** - (*string*) 表示被更改对象的类型:"task" 或 "link"
-- **_value_** - (*object*) 更改后的任务或链接对象
-- **_oldValue_** - (*object*) 更改前的任务或链接对象
+- **_type_** - (*string*) 命令的类型: "add/remove/update"
+- **_entity_** - (*string*) 被修改对象的类型: "task" 或 "link"
+- **_value_** - (*object*) 被修改的 task/link 对象
+- **_oldValue_** - (*object*) 修改前的 task/link 对象
 
 ### setUndoStack() / setRedoStack()
 
-- <span class="submethod">**setUndoStack (stack): void**</span> - 设置撤销用户操作的栈
-  - **_stack_** - (*UndoRedoAction[]*) - 要设置的撤销栈
+- <span class="submethod">**setUndoStack (stack): void**</span> - 设置存储的撤销用户操作的栈
+  - **_stack_** - (*UndoRedoAction[]*) - 撤销栈
 
 ~~~js
 gantt.ext.undo.setUndoStack(stack);
 ~~~
 
-- <span class="submethod">**setRedoStack (stack): void**</span> - 设置重做用户操作的栈
-  - **_stack_** - (*UndoRedoAction[]*) - 要设置的重做栈
+- <span class="submethod">**setRedoStack (stack): void**</span> - 设置存储的重做用户操作的栈
+  - **_stack_** - (*UndoRedoAction[]*) - 重做栈
 
 ~~~js
 gantt.ext.undo.setRedoStack(stack);
@@ -67,13 +67,13 @@ gantt.ext.undo.setRedoStack(stack);
 
 ### clearUndoStack() / clearRedoStack()
 
-- <span class="submethod">**clearUndoStack (): void**</span> - 清空撤销命令栈
+- <span class="submethod">**clearUndoStack (): void**</span> - 清空存储的撤销命令栈
 
 ~~~js
 gantt.ext.undo.clearUndoStack();
 ~~~
 
-- <span class="submethod">**clearRedoStack (): void**</span> - 清空重做命令栈
+- <span class="submethod">**clearRedoStack (): void**</span> - 清空存储的重做命令栈
 
 ~~~js
 gantt.ext.undo.clearRedoStack();
@@ -81,13 +81,15 @@ gantt.ext.undo.clearRedoStack();
 
 ### saveState()
 
-- <span class="submethod">**saveState (id, entityType): boolean**</span> - 在更改发生前记录任务或链接的当前状态
-    - **_id_** - (*string | number*) - 任务或链接的标识符
-    - **_type_** - (*string*) - 指定与 id 对应的条目类型，支持的值为 "task" 或 "link"
+- <span class="submethod">**saveState (id, entityType): boolean**</span> - 在进行修改之前保存任务/链接的当前状态
+    - **_id_** - (*string | number*) - 任务/链接的 id
+    - **_type_** - (*string*) - 提供第一参数的条目类型。
+
+支持的值："task"、"link"。
 
 ~~~js
 gantt.ext.undo.saveState(1, "task");
 gantt.ext.undo.saveState(1, "link");
 ~~~
 
-更多详情请参见 [Undoing/Redoing changes made from code](guides/undo-redo.md#chexiaochongzuodaimazhongjinxingdegenggai) 文章。
+Read the details in the [Undoing/Redoing changes made from code](guides/undo-redo.md#undoingredoingchangesmadefromcode) article.

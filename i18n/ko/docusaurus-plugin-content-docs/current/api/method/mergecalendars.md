@@ -1,21 +1,21 @@
 ---
 sidebar_label: mergeCalendars
 title: mergeCalendars method
-description: "여러 작업 캘린더를 하나의 캘린더로 결합합니다."
+description: "여러 근무 달력을 하나로 병합합니다"
 ---
 
 # mergeCalendars
 
 ### Description
 
-@short: 여러 작업 캘린더를 하나의 캘린더로 결합합니다.
+@short: 여러 근무 달력을 하나로 병합합니다
 
-@signature: mergeCalendars: (calendars: Calendar[] | Calendar, calendar2?: Calendar) =\> void
+@signature: mergeCalendars: (calendars: Calendar[] | Calendar, calendar2?: Calendar) => void
 
 ### Parameters
 
-- `calendars` - (required) *Calendar[] | Calendar* -       캘린더 객체 배열 또는 단일 캘린더 객체
-- `calendar2` - (optional) *Calendar* - 선택 사항, 두 번째 캘린더 객체
+- `calendars` - (required) *Calendar[] | Calendar* -    -    달력 객체의 배열이나 첫 번째 달력 객체
+-  `calendar2` -    (optional) *Calendar*   -     선택적, 두 번째 달력 객체
 
 ### Example
 
@@ -116,10 +116,10 @@ const joinedCalendar = gantt.mergeCalendars([
 // days: [ 0, 1, 0, 0, 0, 0, 0 ]
 ~~~
 
-**관련 샘플:** [Gantt. Merge work calendars (via mergeCalendars() method)](https://snippet.dhtmlx.com/56vubu7a)
+**Related sample:** [Gantt. Merge work calendars (via mergeCalendars() method)](https://snippet.dhtmlx.com/56vubu7a)
 
 :::note
-병합 로직은 [customWeeks](api/method/addcalendar.md)를 고려하지 않습니다. 
+로직은 [customWeeks](api/method/addcalendar.md)를 고려하지 않습니다. 
 :::
 
 ### Related API
@@ -128,8 +128,7 @@ const joinedCalendar = gantt.mergeCalendars([
 - [getResourceCalendar](api/method/getresourcecalendar.md)
 
 ### Related Guides
-- [작업 시간 계산](guides/working-time.md#assigningcalendartoresource)
+- [근무 시간 계산](guides/working-time.md#assigningcalendartoresource)
 
 ### Change log
 - v7.0에 추가됨
-

@@ -8,7 +8,7 @@ description: "aktiviert den Fokus auf dem Gantt"
 
 ### Description
 
-@short: Aktiviert den Fokus auf dem Gantt
+@short: Setzt den Fokus auf das Gantt-Diagramm
 
 @signature: focus: () =\> void
 
@@ -19,17 +19,16 @@ gantt.focus();
 ~~~
 
 ### Related samples
-- [Keyboard Navigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
-- [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
+- [Tastatur-Navigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
+- [Tastatur-Navigation - Zellen navigieren](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
 
 ### Details
 
 :::note
- Diese Methode gehört zur **keyboard_navigation** Erweiterung, daher stellen Sie sicher, dass das [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) Plugin zuerst aktiviert ist. Weitere Details finden Sie im Artikel ["Tastaturnavigation"](guides/keyboard-navigation.md). 
+Diese Methode ist in der **keyboard_navigation**-Erweiterung definiert, daher müssen Sie das [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) Plugin aktivieren. Lesen Sie die Details im Artikel [Tastatur-Navigation](guides/keyboard-navigation.md). 
 :::
 
-
-hinzugefügt in Version 4.1
+Hinzugefügt in Version 4.1
 
 ### Related API
 - [keyboard_navigation](api/config/keyboard_navigation.md)
@@ -39,5 +38,4 @@ hinzugefügt in Version 4.1
 - [removeShortcut](api/method/removeshortcut.md)
 
 ### Related Guides
-- ["Tastaturnavigation"](guides/keyboard-navigation.md)
-
+- [Tastatur-Navigation](guides/keyboard-navigation.md)

@@ -8,7 +8,7 @@ description: "允许在表格中进行排序"
 
 ### Description
 
-@short: 允许在表格中进行排序
+@short: 启用表格中的排序
 
 @signature: sort: boolean
 
@@ -21,7 +21,7 @@ gantt.init("gantt_here");
 gantt.parse("tasks.json");
 ~~~
 
-**Default value:** false
+**默认值：** false
 
 ### Related samples
 - [Built-in sorting](https://docs.dhtmlx.com/gantt/samples/07_grid/01_builtin_sorting.html)
@@ -31,5 +31,4 @@ gantt.parse("tasks.json");
 - [onAfterSort](api/event/onaftersort.md)
 
 ### Related Guides
-- [排序列](guides/sorting.md)
-
+- [Sorting Columns](guides/sorting.md)

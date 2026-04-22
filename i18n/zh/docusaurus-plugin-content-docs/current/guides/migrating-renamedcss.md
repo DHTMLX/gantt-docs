@@ -1,9 +1,9 @@
 ---
-title: "v.3.0 中 CSS 类名重命名"
-sidebar_label: "v.3.0 中 CSS 类名重命名"
+title: "v.3.0 中重命名的 CSS 类"
+sidebar_label: "v.3.0 中重命名的 CSS 类"
 ---
 
-# v.3.0 中 CSS 类名重命名
+# v.3.0 中重命名的 CSS 类
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">
   <thead>

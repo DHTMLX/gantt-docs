@@ -1,24 +1,24 @@
 ---
 sidebar_label: timeline_cell_class
-title: timeline_cell_class template
-description: "definiert die CSS-Klasse, die auf die Zellen im Timeline-Bereich angewendet wird"
+title: timeline_cell_class Vorlage
+description: "gibt die CSS-Klasse an, die auf die Zellen des Timeline-Bereichs angewendet wird"
 ---
 
 # timeline_cell_class
 
 ### Description
 
-@short: Definiert die CSS-Klasse, die auf die Zellen im Timeline-Bereich angewendet wird
+@short: Gibt die CSS-Klasse an, die auf die Zellen des Timeline-Bereichs angewendet wird
 
 @signature: timeline_cell_class: (item: any, date: Date) =\> string | void;
 
 ### Parameters
 
-- `item` - (required) *Task* - | object        die Aufgabe oder das Ressourcenobjekt, das mit der Zeile verknüpft ist
-- `date` - (required) *Date* - das spezifische Datum der Zelle
+- `item` - (erforderlich) *Task | object* - entweder das Objekt der Aufgabe oder der Ressource, das der Zeile zugewiesen ist
+- `date` - (erforderlich) *Date* - das Datum der Zelle
 
 ### Returns
-- ` text` - (string | void) - einen CSS-Klassennamen für das gegebene Element
+- ` text` - (string | void) - eine CSS-Klasse für das betreffende Element
 
 ### Example
 
@@ -35,11 +35,11 @@ gantt.templates.timeline_cell_class = function(task,date){
 ~~~
 
 ### Related samples
-- [Highlighting weekends](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
+- [Wochenenden hervorheben](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
 
 ### Details
 
-Beim Arbeiten mit [work time calculations](guides/working-time.md) ist es besser, [isWorkTime](api/method/isworktime.md) anstelle von festen Werten zu verwenden:
+Beachten Sie, dass Sie beim Verwenden von [Arbeitszeitberechnungen](guides/working-time.md) [isWorkTime](api/method/isworktime.md) anstelle fest codierter Werte verwenden können:
 
 ~~~js
 gantt.config.work_time = true;
@@ -57,7 +57,6 @@ gantt.templates.timeline_cell_class = function(task,date){
 - [timeline_placeholder](api/config/timeline_placeholder.md)
 
 ### Related Guides
-- ["Vorlagen für den Timeline-Bereich"](guides/timeline-templates.md)
-- ["Hervorheben von Zeitfenstern"](guides/highlighting-time-slots.md)
-- ["Arbeitszeitberechnung"](guides/working-time.md)
-
+- [Vorlagen des Timeline-Bereichs](guides/timeline-templates.md)
+- [Hervorheben von Zeitfenstern](guides/highlighting-time-slots.md)
+- [Berechnung der Arbeitszeit](guides/working-time.md)

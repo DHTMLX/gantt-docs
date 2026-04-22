@@ -1,25 +1,25 @@
 ---
 sidebar_label: quick_info_title
-title: quick_info_title template
-description: "Legt den Titel für das Pop-up-Bearbeitungsformular fest"
+title: quick_info_title Vorlage
+description: "legt den Titel des Pop-up-Bearbeitungsformulars fest"
 ---
 
 # quick_info_title
 
 ### Description
 
-@short: Legt den Titel für das Pop-up-Bearbeitungsformular fest
+@short: Legt den Titel des Pop-up-Bearbeitungsformulars fest
 
 @signature: quick_info_title: (start: Date, end: Date, task: Task) =\> string | number | void;
 
 ### Parameters
 
-- `start` - (required) *Date* - Das Datum, an dem die Aufgabe geplant ist zu starten
-- `end` - (required) *Date* - Das Datum, an dem die Aufgabe voraussichtlich abgeschlossen wird
-- `task` - (required) *Task* - Das Aufgabenobjekt selbst
+- `start` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe voraussichtlich beginnt
+- `end` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe voraussichtlich abgeschlossen wird
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
-- ` text` - (string | number | void) - einen HTML-String, der im Gantt angezeigt wird
+- ` text` - (string | number | void) - ein HTML-Text, der im Gantt-Diagramm gerendert wird
 
 ### Example
 
@@ -35,8 +35,8 @@ gantt.templates.quick_info_title = function(start, end, task){
 ### Details
 
 :::note
- Diese Vorlage ist Teil der **Quick Info**-Erweiterung, daher stellen Sie sicher, dass das [quick_info](guides/extensions-list.md#quickinfo) Plugin aktiviert ist. 
+Diese Vorlage ist in der **Quick Info**-Erweiterung definiert, daher muss das [quick_info](guides/extensions-list.md#quick-info)-Plugin aktiviert werden.
 :::
 
 ### Related Guides
-- ["Vorlagen der 'Quick Info'-Erweiterung (Touch-Unterstützung)"](guides/touch-templates.md)
+- [Vorlagen der 'Quick Info' Erweiterung (Touch-Unterstützung)](guides/touch-templates.md)

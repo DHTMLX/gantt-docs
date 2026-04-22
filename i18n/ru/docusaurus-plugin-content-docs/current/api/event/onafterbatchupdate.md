@@ -1,16 +1,16 @@
 ---
 sidebar_label: onAfterBatchUpdate
-title: onAfterBatchUpdate event
-description: "вызывается сразу после завершения метода batchUpdate"
+title: onAfterBatchUpdate событие
+description: "Срабатывает после вызова метода batchUpdate"
 ---
 
 # onAfterBatchUpdate
 
 ### Description
 
-@short: Вызывается сразу после завершения метода [batchUpdate](api/method/batchupdate.md)
+@short: Срабатывает после вызова метода [batchUpdate](api/method/batchupdate.md)
 
-@signature: onAfterBatchUpdate: () =\> void;
+@signature: onAfterBatchUpdate: () => void;
 
 ### Example
 
@@ -26,4 +26,3 @@ gantt.attachEvent("onAfterBatchUpdate", function(){
 
 ### Change log
 - добавлено в версии 4.0
-

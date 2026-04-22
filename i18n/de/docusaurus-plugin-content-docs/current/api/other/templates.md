@@ -23,5 +23,4 @@ gantt.templates.date_grid = function(date){
 
 ### Details
 
-Details zum **templates**-Objekt finden Sie in einem eigenen Abschnitt auf der <br> 
-Haupt-API-Seite ["Gantt API: Templates"](api/overview/templates-overview.md).
+Die Eigenschaften des **templates**-Objekts werden in einem separaten Kapitel der Haupt-API-Seite "Gantt API: Templates" beschrieben.

@@ -1,16 +1,18 @@
 ---
 sidebar_label: process_resource_assignments
-title: process_resource_assignments config
-description: "включает или отключает разбор назначений ресурсов"
+title: конфигурация process_resource_assignments
+description: "включает/выключает разбор назначений ресурсов"
 ---
 
 # process_resource_assignments
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
+
 ### Description
 
-@short: Включает или отключает разбор назначений ресурсов
+@short: Включает/выключает парсинг назначений ресурсов
 
 @signature: process_resource_assignments: boolean
 
@@ -20,28 +22,26 @@ description: "включает или отключает разбор назна
 gantt.config.process_resource_assignments = false;
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related samples
-- [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+- [Назначение значений ресурсов на конкретные дни](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
 
-При назначении ресурсов на конкретное время в задаче требуется включить свойство **process_resource_assignments**.
-Это необходимо, поскольку данное свойство отвечает за разбор значений из [gantt.config.resource_property](api/config/resource_property.md) задач в внутренние объекты назначений ресурсов.
+Когда вы [назначаете ресурсы на конкретное время выполнения задачи](guides/resource-management.md#resourceassignmenttime), эта функциональность требует включения свойства **process_resource_assignments**.
+Это связано с тем, что свойство обеспечивает парсинг значений из [gantt.config.resource_property](api/config/resource_property.md) задач во внутренние объекты назначений ресурсов. 
 
-Это позволяет работать с назначениями ресурсов через объект DataStore, например, получать или обновлять объекты назначений.
+В результате вы сможете манипулировать назначениями ресурсов через объект DataStore, например получить нужный объект назначения или обновить его.
 
-
-Если ваша задача - просто назначить ресурсы задачам без установки конкретного времени или длительности для назначений, вы можете отключить разбор назначений с помощью этой настройки:
+Но если вам нужно просто назначать ресурсы задачам без указания времени или длительности назначения, можно отключить парсинг назначений, установив конфигурацию:
 
 ~~~js
 gantt.config.process_resource_assignments = false;
 ~~~
 
 ### Related Guides
-- [Управление ресурсами](guides/resource-management.md#managingresourceassignments)
+- [Управление ресурсами](guides/resource-management.md)
 
 ### Change log
-- добавлено в версии v7.1
-
+- добавлено в v7.1

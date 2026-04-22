@@ -1,16 +1,16 @@
 ---
-title: "Настройка шкал"
-sidebar_label: "Настройка шкал"
+title: "Настройка шкал времени"
+sidebar_label: "Настройка шкал времени"
 ---
 
-# Настройка шкал
+# Настройка шкал времени
 
-![gantt_right](/img/gantt_right.png)
+![Gantt_right](/img/gantt_right.png)
 
-- [Настройка шкалы](guides/configuring-time-scale.md) 
+- [Настройка шкалы времени](guides/configuring-time-scale.md)
 - [Масштабирование](guides/zooming.md)
-- [Выделение временных слотов](guides/highlighting-time-slots.md)
-- [Динамическое изменение настроек масштаба](guides/dynamic-scale.md)
-- [Скрытие временных единиц на шкале](guides/custom-scale.md)
+- [Выделение временных интервалов](guides/highlighting-time-slots.md)
+- [Динамическое изменение настроек шкалы](guides/dynamic-scale.md)
+- [Скрытие единиц времени на шкале](guides/custom-scale.md)
 - [Добавление вертикальных маркеров](guides/markers.md)
-- [RTL (Right-to-left) режим](guides/rtl-mode.md)
+- [Режим RTL (справа налево)](guides/rtl-mode.md)

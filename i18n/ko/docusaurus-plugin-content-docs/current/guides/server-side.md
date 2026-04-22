@@ -1,35 +1,42 @@
 ---
-title: "Server-Side Integration"
-sidebar_label: "Server-Side Integration"
+title: "서버 측 통합" 
+sidebar_label: "서버 측 통합" 
 ---
 
-# Server-Side Integration
+# 서버 측 통합
 
-dhtmlxGantt를 백엔드와 연결하는 가장 좋은 방법은 서버에 RESTful API를 설정하고 클라이언트 측에서 [dataprocessor](api/other/dataprocessor.md) 모듈을 사용하는 것입니다.
+<style>
+.dp_table td (
+  width: 100%;
+)
+</style>
 
-DataProcessor는 Gantt 데이터의 변경 사항을 추적하고 필요한 형식으로 REST API에 업데이트를 전송하는 내장 기능입니다. 이를 통해 [서버 사이드 플랫폼과의 통합](integrations/howtostart-guides.md)이 간편해집니다. 객체 데이터 소스를 사용할 때, DataProcessor를 설정하여 데이터 변경에 대한 콜백을 제공할 수 있으며, 이는 데이터 바인딩에 유용합니다.
+서버와의 연결을 권장하는 방법은 서버 측에 RESTful API를 구현하고 클라이언트에서 [](api/other/dataprocessor.md) 모듈을 사용하는 것입니다.
 
-Node.js를 예시로 Gantt 차트를 생성하고 데이터를 로드하는 방법을 보여주는 동영상 튜토리얼도 준비되어 있습니다.
+DataProcessor는 Gantt의 데이터 변경을 모니터링하고 지정된 형식으로 REST API에 업데이트를 전송하는 내장 모듈로, 서버 측 플랫폼과의 손쉬운 [통합](integrations/howtostart-guides.md)을 가능하게 합니다. 객체 데이터 소스를 사용할 때 DataProcessor를 구성하여 데이터 변경에 대한 콜백을 제공하도록 설정하면 데이터 바인딩에 활용할 수 있습니다.
+
+페이지에 Gantt 차트를 만들고 데이터를 로드하는 방법을 Node.js 플랫폼의 예로 보여주는 비디오 가이드를 확인해 보실 수 있습니다.
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/D8YzyzBfyP8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Technique {#technique}
 
-일반적으로 REST API를 사용하여 서버에서 데이터를 로드하려면 다음과 같은 절차가 필요합니다:
+## 기법
 
-### 클라이언트 사이드
+일반적으로 REST API를 사용하여 서버 측에서 데이터를 로드하려면 다음이 필요합니다:
 
-1) [[load](api/method/load.md)](api/method/load.md) 메서드를 사용하여 Gantt 데이터를 로드하세요. 이때 [JSON](guides/supported-data-formats.md#json) 형식의 데이터를 반환하는 URL을 제공해야 합니다.
+### 클라이언트 측
 
-2) DataProcessor 인스턴스를 생성하는 방법은 두 가지가 있습니다:
+1) 데이터를 반환하는 URL을 [JSON](/guides/supported-data-formats/) 형식으로 지정하여 [](api/method/load.md) 메서드를 호출합니다.
 
-- DataProcessor를 초기화하고 dhtmlxGantt 객체에 연결하기:
+2) 두 가지 방법 중 하나를 사용하여 DataProcessor 인스턴스를 생성합니다:
+
+- DataProcessor를 초기화하고 dhtmlxGantt 객체에 연결:
 
 ~~~js
 gantt.init("gantt_here");
 gantt.load("apiUrl");
 
-// 아래 코드의 순서를 유지하세요
+// 아래 줄의 순서를 유지합니다
 const dp = new gantt.dataProcessor("apiUrl");
 dp.init(gantt);
 dp.setTransactionMode("REST");
@@ -37,10 +44,10 @@ dp.deleteAfterConfirmation = true;
 ~~~
 
 :::note
-두 번째 방법을 사용하는 것이 권장됩니다.
+두 번째 방법을 사용하는 것이 좋습니다.
 :::
 
-- 설정 옵션 객체를 전달하여 [[createDataProcessor](api/method/createdataprocessor.md)](api/method/createdataprocessor.md) 메서드를 사용하는 방법:
+- [](api/method/createdataprocessor.md) 메서드를 호출하고 구성 옵션을 담은 객체를 매개변수로 전달합니다:
 
 ~~~js
 const dp = gantt.createDataProcessor({
@@ -50,15 +57,14 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-자세한 내용은 아래 섹션에서 확인할 수 있습니다.
+다음 섹션의 자세한 정보를 확인하세요.
 
 
+###  DataProcessor 생성 {#createdp}
 
-### DataProcessor 생성하기 {#createdp}
-
-API 메서드 [[createDataProcessor](api/method/createdataprocessor.md)](api/method/createdataprocessor.md)를 통해 DataProcessor를 생성할 때 여러 방식으로 파라미터를 전달할 수 있습니다.
-
-1. 미리 정의된 요청 모드 중 하나를 사용하는 방법:
+API 메서드 [](api/method/createdataprocessor.md)로 DataProcessor를 생성할 때 매개변수를 전달하는 방법에는 여러 가지 옵션이 있습니다. 
+  
+1. 미리 정의된 요청 모드 중 하나를 사용합니다. 예:
 
 ~~~js
 const dp = gantt.createDataProcessor({
@@ -68,49 +74,47 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-설명:
+- **url** - 서버 측의 URL
+- **mode** - 서버로 데이터를 전송하는 모드:  "GET" | "POST" | "REST" | "JSON" | "REST-JSON"
+- **deleteAfterConfirmation** - 서버의 응답이 성공적일 때만 간트의 작업을 삭제하도록 할지 여부를 정의합니다. 상위 작업이 삭제가 확인된 후에 의존성 링크와 하위 작업이 삭제됩니다.
 
-- **url** - 서버 측 엔드포인트
-- **mode** - 서버로 데이터를 전송하는 방식:  "GET" | "POST" | "REST" | "JSON" | "REST-JSON"
-- **deleteAfterConfirmation** - 서버에서 삭제가 확인된 후에만 gantt에서 작업이 제거될지 여부를 결정합니다. 부모 작업 삭제가 확정되면 종속 링크와 하위 작업도 함께 삭제됩니다.
-
-2. 커스텀 **router** 객체를 제공하는 방법:
+2. 사용자 정의 **router** 객체를 제공합니다:
 
 ~~~js
 const dp = gantt.createDataProcessor(router);
 ~~~
 
-- **router**는 함수일 수 있습니다:
+- 여기서 **router**은 함수일 수도 있습니다:
 
 ~~~js
 // entity - "task"|"link"|"resource"|"assignment"
 // action - "create"|"update"|"delete"
 // data - 작업 또는 링크 데이터 객체
-// id – 처리 중인 객체(작업 또는 링크)의 id
+// id – 처리 중인 객체의 id(작업 또는 링크)
 const dp = gantt.createDataProcessor((entity, action, data, id) => { 
     switch(action) {
         case "create":
-        return gantt.ajax.post(
+            return gantt.ajax.post(
                 server + "/" + entity,
                 data
-        );
+            );
         break;
         case "update":
-        return gantt.ajax.put(
+            return gantt.ajax.put(
                 server + "/" + entity + "/" + id,
                 data
             );
         break;
         case "delete":
-        return gantt.ajax.del(
+            return gantt.ajax.del(
                 server + "/" + entity + "/" + id
-        );
+            );
         break;
     }
 });
 ~~~
 
-- 또는 다음과 같은 구조의 객체일 수 있습니다:
+- 또는 아래 구조의 객체를 사용할 수 있습니다:
 
 ~~~js
 const dp = gantt.createDataProcessor({
@@ -127,7 +131,7 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-**router** 객체 내의 모든 함수는 Promise 또는 데이터 응답 객체를 반환해야 합니다. 이를 통해 dataProcessor가 데이터베이스 id를 적용하고 **onAfterUpdate** 이벤트를 트리거할 수 있습니다.
+**router** 객체의 모든 함수는 Promise 또는 데이터 응답 객체를 반환해야 합니다. 이는 데이터 프로세서가 데이터베이스 id를 적용하고 데이터 프로세서의 onAfterUpdate 이벤트를 연결하는 데 필요합니다.
 
 ~~~js
 const router = (entity, action, data, id) => {
@@ -138,125 +142,122 @@ const router = (entity, action, data, id) => {
 };
 ~~~
 
-이와 같은 유연성을 통해 DataProcessor를 localStorage 또는 특정 URL에 연결되지 않은 저장소, 혹은 생성 및 삭제가 서로 다른 서버에서 처리되는 경우에도 사용할 수 있습니다.
+따라서 로컬 스토리지나 특정 URL에 연결되지 않은 저장소(예: 생성과 삭제를 서로 다른 두 서버(URL)에서 처리하는 경우)에서도 DataProcessor를 사용해 데이터를 저장할 수 있습니다.
 
 
-[Custom data api - using local storage](https://docs.dhtmlx.com/gantt/samples/08_api/22_data_processor.html)
+**관련 샘플**: [로컬 스토리지 사용 데이터 API 샘플](https://docs.dhtmlx.com/gantt/samples/08_api/22_data_processor.html)
 
 
+### 요청과 응답 세부 정보 {#requestresponsedetails}
 
-
-### 요청 및 응답 세부 정보 {#requestresponsedetails}
-
-URL 패턴은 다음과 같습니다:
+URL은 다음 규칙으로 형성됩니다:
 
 - api/link/id
 - api/task/id
 - api/resource/id
 - api/assignment/id
 
-여기서 "api"는 dataProcessor 설정에 지정된 URL입니다.
+여기서 "api"는 DataProcessor 구성에서 지정한 URL입니다.
 
-다음은 가능한 요청 및 응답 목록입니다:
+가능한 요청과 응답의 목록은 다음과 같습니다:
 
 <table class="dp_table">
-    <tr>
-        <th><b>동작</b></th><th><b>HTTP 메서드</b></th><th><b>URL</b></th><th><b>응답</b></th>
-    </tr>
-    <tr>
-        <td>데이터 로드</td>
-        <td>GET</td>
-        <td>/apiUrl</td>
-        <td>[JSON format](guides/supported-data-formats.md#json)</td>
-    </tr>
-    <tr><td colspan="4" style="font-weight:bold">작업 (Tasks)</td></tr>
-    <tr>
-        <td>새 작업 추가</td>
-        <td>POST</td>
-        <td>/apiUrl/task</td>
-        <td>("action":"inserted","tid":"id")</td>
-    </tr>
-    <tr>
-        <td>작업 수정</td>
-        <td>PUT</td>
-        <td>/apiUrl/task/id</td>
-        <td>("action":"updated")</td>
-    </tr>
-    <tr>
-        <td>작업 삭제</td>
-        <td>DELETE</td>
-        <td>/apiUrl/task/id</td>
-        <td>("action":"deleted")</td>
-    </tr>
-    <tr><td colspan="4" style="font-weight:bold">링크 (Links)</td></tr>
-    <tr>
-        <td>새 링크 추가</td>
-        <td>POST</td>
-        <td>/apiUrl/link</td>
-        <td>("action":"inserted","tid":"id")</td>
-    </tr>
-    <tr>
-        <td>링크 수정</td>
-        <td>PUT</td>
-        <td>/apiUrl/link/id</td>
-        <td>("action":"updated")</td>
-    </tr>
-    <tr>
-        <td>링크 삭제</td>
-        <td>DELETE</td>
-        <td>/apiUrl/link/id</td>
-        <td>("action":"deleted")</td>
-    </tr>
-    <tr><td colspan="4" style="font-weight:bold">리소스 (Resources)</td></tr>
-    <tr>
-        <td>새 리소스 추가</td>
-        <td>POST</td>
-        <td>/apiUrl/resource</td>
-        <td>("action":"inserted","tid":"id")</td>
-    </tr>
-    <tr>
-        <td>리소스 수정</td>
-        <td>PUT</td>
-        <td>/apiUrl/resource/id</td>
-        <td>("action":"updated")</td>
-    </tr>
-    <tr>
-        <td>리소스 삭제</td>
-        <td>DELETE</td>
-        <td>/apiUrl/resource/id</td>
-        <td>("action":"deleted")</td>
-    </tr>
-    <tr><td colspan="4" style="font-weight:bold">리소스 할당 (Resource Assignments)</td></tr>
-    <tr>
-        <td>새 할당 추가</td>
-        <td>POST</td>
-        <td>/apiUrl/assignment</td>
-        <td>("action":"inserted","tid":"id")</td>
-    </tr>
-    <tr>
-        <td>할당 수정</td>
-        <td>PUT</td>
-        <td>/apiUrl/assignment/id</td>
-        <td>("action":"updated")</td>
-    </tr>
-    <tr>
-        <td>할당 삭제</td>
-        <td>DELETE</td>
-        <td>/apiUrl/assignment/id</td>
-        <td>("action":"deleted")</td>
-    </tr>
+  <tr>
+  <th><b>Action</b></th><th><b>HTTP Method</b></th><th><b>URL</b></th><th><b>Response</b></th>
+  </tr>
+  <tr>
+  <td>load data</td>
+  <td>GET</td>
+  <td>/apiUrl</td>
+  <td>[JSON format](/guides/supported-data-formats/)</td>
+  </tr>
+  <tr><td colspan="4" style="font-weight:bold">Tasks</td></tr>
+  <tr>
+  <td>add a new task</td>
+  <td>POST</td>
+  <td>/apiUrl/task</td>
+  <td>("action":"inserted","tid":"id")</td>
+  </tr>
+  <tr>
+  <td>update a task</td>
+  <td>PUT</td>
+  <td>/apiUrl/task/id</td>
+  <td>("action":"updated")</td>
+  </tr>
+  <tr>
+  <td>delete a task</td>
+  <td>DELETE</td>
+  <td>/apiUrl/task/id</td>
+  <td>("action":"deleted")</td>
+  </tr>
+  <tr><td colspan="4" style="font-weight:bold">Links</td></tr>
+  <tr>
+  <td>add a new link</td>
+  <td>POST</td>
+  <td>/apiUrl/link</td>
+  <td>("action":"inserted","tid":"id")</td>
+  </tr>
+  <tr>
+  <td>update a link</td>
+  <td>PUT</td>
+  <td>/apiUrl/link/id</td>
+  <td>("action":"updated")</td>
+  </tr>
+  <tr>
+  <td>delete a link</td>
+  <td>DELETE</td>
+  <td>/apiUrl/link/id</td>
+  <td>("action":"deleted")</td>
+  </tr>
+  <tr><td colspan="4" style="font-weight:bold">Resources</td></tr>
+  <tr>
+  <td>add a new resource</td>
+  <td>POST</td>
+  <td>/apiUrl/resource</td>
+  <td>("action":"inserted","tid":"id")</td>
+  </tr>
+  <tr>
+  <td>update a resource</td>
+  <td>PUT</td>
+  <td>/apiUrl/resource/id</td>
+  <td>("action":"updated")</td>
+  </tr>
+  <tr>
+  <td>delete a resource</td>
+  <td>DELETE</td>
+  <td>/apiUrl/resource/id</td>
+  <td>("action":"deleted")</td>
+  </tr>
+  <tr><td colspan="4" style="font-weight:bold">Resource Assignments</td></tr>
+  <tr>
+  <td>add a new assignment</td>
+  <td>POST</td>
+  <td>/apiUrl/assignment</td>
+  <td>("action":"inserted","tid":"id")</td>
+  </tr>
+  <tr>
+  <td>update an assignment</td>
+  <td>PUT</td>
+  <td>/apiUrl/assignment/id</td>
+  <td>("action":"updated")</td>
+  </tr>
+  <tr>
+  <td>delete an assignment</td>
+  <td>DELETE</td>
+  <td>/apiUrl/assignment/id</td>
+  <td>("action":"deleted")</td>
+  </tr>
 </table>
 
 :::note
-기본적으로 리소스와 리소스 할당은 DataProcessor 요청에 포함되지 않습니다. 이를 포함하려면 명시적으로 활성화해야 합니다.
-자세한 내용은 [여기](guides/server-side.md#resources_crud)에서 확인하세요.
+기본적으로 Resources와 Resource Assignments는 DataProcessor로 전송되지 않습니다. 필요하다면 이 동작을 명시적으로 활성화해야 합니다.
+자세한 내용은 [여기](guides/server-side.md#resources_crud)을 참고하세요.
 :::
 
 
+### 요청 매개변수 {#requestparams}
 
-### 요청 파라미터 {#requestparams}
-
-생성(Create), 수정(Update), 삭제(Delete) 요청에는 클라이언트 측 작업 또는 링크 객체의 모든 public 속성이 포함됩니다:
+생성/수정/삭제 요청에는 클라이언트 측 작업 또는 링크 객체의 모든 공개 속성이 포함됩니다:
 
 작업(Task):
 
@@ -274,20 +275,18 @@ URL 패턴은 다음과 같습니다:
 
 참고:
 
-- **start_date** 및 **end_date**의 형식은 [[date_format](api/config/date_format.md)](api/config/date_format.md) 설정에 의해 결정됩니다.
-- 클라이언트는 작업 또는 링크의 모든 public 속성을 전송하므로, 요청에 추가 파라미터가 포함될 수 있습니다.
-- 데이터 모델에 새로운 컬럼이나 속성을 추가하면 gantt가 이를 자동으로 백엔드로 전송합니다.
+- **start_date** 및 **end_date** 매개변수의 형식은 [](api/config/date_format.md) 구성에 의해 정의됩니다.
+- 클라이언트 측은 작업 또는 링크 객체의 모든 공개 속성을 보냅니다. 따라서 요청에는 임의의 추가 매개변수가 포함될 수 있습니다.
+- 데이터 모델을 확장하여 새로운 열/속성을 추가하더라도 백엔드로 이를 보내기 위해 추가 작업은 필요하지 않습니다.
 
 :::note
-public 속성은 이름이 언더스코어(**_**)나 달러 기호(**$**)로 시작하지 않는 속성을 의미합니다.
-따라서 **task._owner**나 **link.$state**와 같은 속성은 백엔드로 전송되지 않습니다.
+여기서의 공개 속성은 밑줄 문자(_)이나 달러 기호($)로 시작하지 않는 속성 이름을 의미합니다. 예를 들어 **task._owner**나 **link.$state**와 같은 속성은 백엔드로 전송되지 않습니다.
 :::
-
 
 
 ### REST-JSON 모드 {#restjson}
 
-"POST", "GET", "REST", "JSON" 모드 외에도 Gantt DataProcessor는 "REST-JSON" 모드를 지원합니다.
+"POST", "GET", "REST" 및 "JSON" 트랜잭션 모드 외에도 Gantt DataProcessor는 "REST-JSON" 모드에서도 사용할 수 있습니다.
 
 ~~~js
 gantt.load("apiUrl");
@@ -298,31 +297,30 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-[요청 URL](#requestresponsedetails)은 동일하지만, 파라미터 전송 방식이 다릅니다.
+이는 요청에 사용되는 동일한 [URL](#requestresponsedetails)을 사용하지만, 작업 및 링크에 대한 [요청 매개변수](#requestparams)와 이를 서버로 전송하는 형식은 다릅니다.
 
-REST 모드에서는 데이터가 폼 데이터로 전송됩니다:
+REST 모드에서는 데이터가 폼으로 전송됩니다:
 
-~~~
+~~~jsx
 Content-Type: application/x-www-form-urlencoded
 ~~~
 
-REST-JSON 모드에서는 데이터가 JSON으로 전송됩니다:
+반면 REST-JSON 모드에서는 데이터가 JSON 형식으로 전송됩니다:
 
-**Headers**
-~~~
+~~~jsx title="Headers"
 Content-type: application/json
 ~~~
 
-파라미터는 JSON 객체로 전송됩니다:
+따라서 매개변수는 JSON 객체로 전송됩니다:
 
-**요청 페이로드 예시**
+요청 페이로드
 
 - 작업(Task)
 
-~~~
+~~~jsx
 {
     "start_date": "20-09-2025 00:00",
-    "text": "New task",
+    "text": "새로운 작업",
     "duration": 1,
     "end_date": "21-09-2025 00:00",
     "parent": 0,
@@ -335,7 +333,7 @@ Content-type: application/json
 
 - 링크(Link)
 
-~~~js
+~~~jsx
 {
     "source": 1,
     "target": 2,
@@ -343,38 +341,36 @@ Content-type: application/json
 }
 ~~~
 
-이 형식은 서버 측에서 복잡한 레코드를 더 쉽게 처리할 수 있도록 도와줍니다.
+이 형식은 서버 측 플랫폼에서 복잡한 레코드를 처리하는 데 더 편리합니다.
 
 
+### 서버 측 {#loadserverside}
 
-### 서버 사이드 {#loadserverside}
+Gantt에서 작업(추가, 업데이트 또는 삭제)마다 dataProcessor는 서버로 AJAX 요청을 보내 반응합니다.
 
-Gantt에서 작업 또는 링크의 추가, 수정, 삭제와 같은 변경이 발생할 때마다 dataProcessor는 서버로 AJAX 요청을 보냅니다.
+각 요청은 데이터베이스에 변경 사항을 저장하는 데 필요한 모든 데이터를 포함합니다.
+REST 모드로 DataProcessor를 초기화했으므로 작업 유형마다 서로 다른 HTTP 동사를 사용합니다.
 
-각 요청에는 데이터베이스를 갱신하는 데 필요한 모든 데이터가 포함됩니다.
-dataProcessor가 REST 모드로 설정되어 있으면, 작업에 따라 서로 다른 HTTP 메서드를 사용합니다.
+REST API를 사용하므로, 백엔드 측은 다양한 프레임워크와 프로그래밍 언어로 구현할 수 있습니다.
+다음은 Gantt 백엔드 통합에 사용할 수 있는 서버 측 구현 목록입니다:
 
-REST API를 사용하면 다양한 프레임워크와 언어로 서버 사이드를 구현할 수 있습니다.
-Gantt 백엔드 통합을 위해 준비된 서버 사이드 구현 예시는 다음과 같습니다:
-
-- [dhtmlxGantt와 ASP.NET Core 2](integrations/dotnet/howtostart-dotnet-core.md)
-- [dhtmlxGantt와 PHP: Slim](integrations/php/howtostart-php-slim4.md)
-- [dhtmlxGantt와 PHP: Laravel](integrations/php/howtostart-php-laravel.md)
-- [dhtmlxGantt와 Node.js](integrations/node/howtostart-nodejs.md)
-- [dhtmlxGantt와 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
-- [dhtmlxGantt와 Ruby on Rails](integrations/other/howtostart-ruby.md)
-
+- [ASP.NET Core 2와 함께하는 dhtmlxGantt](integrations/dotnet/howtostart-dotnet-core.md)
+- [PHP: Slim과 함께하는 dhtmlxGantt](integrations/php/howtostart-php-slim4.md)
+- [PHP: Laravel과 함께하는 dhtmlxGantt](integrations/php/howtostart-php-laravel.md)
+- [Node.js와 함께하는 dhtmlxGantt](integrations/node/howtostart-nodejs.md)
+- [ASP.NET MVC와 함께하는 dhtmlxGantt](integrations/dotnet/howtostart-dotnet.md)
+- [Ruby on Rails와 함께하는 dhtmlxGantt](integrations/other/howtostart-ruby.md)
 
 
-## 작업 순서 저장하기 {#storingtheorderoftasks}
+### 작업 순서 저장 {#storingtheorderoftasks}
 
-Gantt는 데이터 소스에서 전달받은 순서대로 작업을 표시합니다. 사용자가 [작업을 수동으로 재정렬](guides/reordering-tasks.md#draganddropacrosstheentireganttstructure)할 수 있다면,
-이 순서를 데이터베이스에 저장하고, 데이터 피드가 해당 순서로 정렬된 작업을 반환하도록 해야 합니다.
+Gantt는 데이터 소스에서 오는 순서대로 작업을 표시합니다. 사용자가 [작업 재정렬을 수동으로 수행하도록 허용하는 경우](guides/reordering-tasks.md#drag-n-drop-within-the-whole-gantt-structure),
+데이터 피드에서도 이 순서가 적절하게 정렬되어 반환되도록 데이터베이스에 저장해야 합니다.
 
-클라이언트 측 설정 예시:
+클라이언트 측 구성:
 
 ~~~js
-// 전체 gantt에서 작업 재정렬 허용
+// 전체 간트 내에서 작업 재정렬
 gantt.config.order_branch = true;
 gantt.config.order_branch_free = true;
  
@@ -387,33 +383,33 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-작업 순서를 저장하는 방법은 여러 가지가 있지만, 다음은 한 가지 예시입니다.
+저장 순서는 여러 가지 방식으로 구현할 수 있으며, 그 중 하나를 예시로 보여드립니다.
 
-- 작업 테이블에 'sortorder'와 같은 숫자 컬럼을 추가합니다.
-- GET 요청을 처리할 때, 이 컬럼을 기준으로 오름차순 정렬하여 작업을 반환합니다.
-- 새 작업을 추가할 때는 `MAX(sortorder) + 1` 값을 할당합니다.
-- 클라이언트 측에서 순서가 변경되면, gantt는 작업의 모든 속성과 함께 프로젝트 트리 내에서 작업의 위치를 설명하는 값을 포함하여 PUT(REST 모드가 아닐 경우 POST) 요청을 보냅니다.
+- 작업 테이블에 숫자 열을 추가하고 이를 'sortorder'라고 부릅니다.
+- GET 동작을 서비스할 때 이 열로 오름차순 정렬합니다.
+- 새 작업이 추가될 때는 sortorder를 `MAX(sortorder) + 1`로 설정합니다.
+- 클라이언트에서 순서를 변경하면, gantt는 UPDATE를 전송하며(REST 모드를 사용하지 않는 경우는 POST), 작업의 모든 속성과 프로젝트 트리 내 위치를 나타내는 값을 함께 전송합니다.
 
 <table class="dp_table">
-    <tr>
-        <th><b>HTTP 메서드</b></th><th><b>URL</b></th><th><b>파라미터</b></th><th><b>응답</b></th>
-    </tr>
-    <tr>
-        <td>PUT</td>
-        <td>/apiUrl/task/taskId</td>
-        <td><b>target=</b>adjacentTaskId</td>
-        <td>("action":"updated")</td>
-    </tr>
+  <tr>
+  <th><b>HTTP Method</b></th><th><b>URL</b></th><th><b>Parameters</b></th><th><b>Response</b></th>
+  </tr>
+  <tr>
+  <td>PUT</td>
+  <td>/apiUrl/task/taskId</td>
+  <td><b>target=</b>adjacentTaskId</td>
+  <td>("action":"updated")</td>
+  </tr>
 </table>
 
-<b>target</b> 파라미터는 현재 작업 바로 앞 또는 뒤에 위치한 인접 작업의 id를 담고 있습니다.
+<b>target</b> 매개변수에는 현재 작업 앞뒤로 가장 가까운 작업의 id가 포함됩니다.
 
-값은 두 가지 형식이 될 수 있습니다:
+그 값은 두 가지 형식 중 하나일 수 있습니다:
 
- - *target="targetId*"  - 현재 작업을 targetId 작업 바로 <b>앞</b>에 배치
- - *target="next:targetId*" - 현재 작업을 targetId 작업 바로 <b>뒤</b>에 배치
+ - *target="targetId"*  - 현재 작업은 targetId 작업보다 바로 앞에 위치해야 합니다
+ - *target="next:targetId"* - 현재 작업은 targetId 작업보다 바로 뒤에 위치해야 합니다
 
-순서 변경을 적용하려면 여러 작업을 업데이트해야 할 수 있습니다. 다음은 의사 코드 예시입니다:
+정렬 변경의 적용은 일반적으로 여러 작업의 업데이트를 수반합니다. 아래는 이를 구현하는 의사 코드 예시입니다:
 
 ~~~js
 const target = request["target"];
@@ -421,7 +417,7 @@ const currentTaskId = request["id"];
 let nextTask;
 let targetTaskId;
 
-// 업데이트된 작업이 인접 작업의 앞/뒤 어디에 배치되는지 결정
+// 인접한 작업의 id를 가져와 업데이트된 작업이 앞에 와야 하는지 뒤에 와야 하는지 확인
 if (target.startsWith("next:")) {
   targetTaskId = target.substr("next:".length);
   nextTask = true;
@@ -435,32 +431,34 @@ const targetTask = tasks.getById(targetTaskId);
 
 if (!targetTaskId) return;
 
-// 인접 작업의 sortorder를 업데이트된 작업에 할당
+// 업데이트될 작업은 인접 작업의 sortorder 값을 받습니다
 let targetOrder = targetTask.sortorder;
 
-// 인접 작업 뒤에 배치할 경우 sortorder 증가
+// 만약 인접 작업 뒤에 와야 한다면 더 큰 sortorder를 받게 됩니다
 if (nextTask) targetOrder++;
 
-// 업데이트된 작업 뒤에 오는 작업들의 sortorder 증가
+// 업데이트된 작업보다 뒤에 오는 작업들의 sortorder를 증가시킵니다
 tasks.where(task => task.sortorder >= targetOrder)
     .update(task => task.sortorder++);
 
-// 작업에 새로운 sortorder 적용
+// 그리고 작업의 새로운 sortorder를 업데이트합니다
 currentTask.sortorder = targetOrder;
 
 tasks.save(currentTask);
 ~~~
 
-특정 서버 플랫폼에서 작업 순서 저장에 대한 자세한 예시는 [plain PHP](integrations/php/howtostart-php.md#storingtheorderoftasks), [Laravel](integrations/php/howtostart-php-laravel.md#storingtheorderoftasks),
-[Node.js](integrations/node/howtostart-nodejs.md#storingtheorderoftasks), [ASP.NET Web API](integrations/dotnet/howtostart-dotnet.md#storingtheorderoftasks), [Rails](integrations/other/howtostart-ruby.md#storingtheorderoftasks)에서 확인할 수 있습니다.
+
+특정 서버 측 플랫폼에 대해 작업 순서를 저장하는 방법의 자세한 예시는 아래에서 확인할 수 있습니다:
+[plain PHP](integrations/php/howtostart-php.md#storingtheorderoftasks), [Laravel](integrations/php/howtostart-php-laravel.md#storingtheorderoftasks),
+[Node.js](integrations/node/howtostart-nodejs.md#storingtheorderoftasks), [ASP.NET Web API](integrations/dotnet/howtostart-dotnet.md#storingtheorderoftasks) 및 
+[Rails](integrations/other/howtostart-ruby.md#storingtheorderoftasks).
 
 
+## 커스텀 요청 헤더 및 매개변수 
 
-## 커스텀 요청 헤더 및 파라미터 {#customrequestheadersandparameters}
+### 커스텀 요청 헤더 추가
 
-### 커스텀 요청 헤더 추가하기
-
-백엔드로 전송되는 요청에 추가 헤더를 포함할 수 있습니다. 예를 들어, 요청에 인증 토큰을 추가하고자 할 수 있습니다:
+백엔드로 추가 헤더를 보낼 수 있습니다. 예를 들어 요청에 권한 토큰을 추가해야 한다고 가정해 봅시다:
 
 ~~~js
 gantt.init("gantt_here");
@@ -476,7 +474,7 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-현재 [load](api/method/load.md)는 GET 요청에 대해 header나 payload 파라미터를 지원하지 않습니다. 만약 이를 포함해야 한다면, xhr을 수동으로 전송한 후 [parse](api/method/parse.md)를 사용해 데이터를 gantt에 로드해야 합니다. 예시는 다음과 같습니다:
+현재 [](api/method/load.md)는 헤더/페이로드 매개변수를 지원하지 않으므로 GET 요청에 필요한 경우 수동으로 xhr을 보내고 [](api/method/parse.md)를 사용해 gantt에 데이터를 로드해야 합니다. 예:
 
 ~~~js
 gantt.ajax.get({
@@ -490,12 +488,11 @@ gantt.ajax.get({
 ~~~
 
 
+### 요청에 커스텀 매개변수 추가
 
-### 요청에 커스텀 파라미터 추가하기
+요청에 추가 매개변수를 전송하는 방법은 여러 가지가 있습니다.
 
-요청에 추가 파라미터를 포함하는 방법에는 여러 가지가 있습니다.
-
-gantt는 데이터 객체의 모든 속성을 백엔드로 다시 전송하므로, 데이터 객체에 속성을 직접 추가하면 해당 속성이 요청에 포함됩니다:
+알다시피, gantt는 데이터 객체의 모든 속성을 백엔드로 보냅니다. 따라서 데이터 객체에 추가 속성을 직접 추가하면 백엔드로 전송됩니다:
 
 ~~~js
 gantt.attachEvent("onTaskCreated", (task) => {
@@ -504,7 +501,7 @@ gantt.attachEvent("onTaskCreated", (task) => {
 });
 ~~~
 
-또 다른 방법은 **payload** 속성을 사용해 데이터 프로세서가 보내는 모든 요청에 커스텀 파라미터를 추가하는 것입니다:
+또 다른 방법으로는 DataProcessor가 보내는 모든 요청에 대해 **payload** 속성을 사용해 커스텀 매개변수를 추가하는 것입니다:
 
 ~~~js
 gantt.init("gantt_here");
@@ -519,7 +516,7 @@ const dp = gantt.createDataProcessor({
 });
 ~~~
 
-또한 DataProcessor의 [onBeforeUpdate](api/other/dataprocessor.md#onbeforeupdate) 이벤트를 이용해 요청에 커스텀 파라미터를 추가할 수도 있습니다:
+요청에 커스텀 매개변수를 추가하는 또 하나의 방법은 DataProcessor의 [onBeforeUpdate](api/other/dataprocessor.md) 이벤트를 사용하는 것입니다:
 
 ~~~js
 const dp = gantt.createDataProcessor({
@@ -534,12 +531,11 @@ dp.attachEvent("onBeforeUpdate", (id, state, data) => {
 ~~~
 
 
+## 스크립트에서 데이터 저장 트리거
 
-## 스크립트에서 데이터 저장 트리거하기 {#triggeringdatasavingfromscript}
+DataProcessor가 초기화되어 있다면 사용자가 수행한 변경이나 프로그래밍 방식의 변경은 자동으로 데이터 소스에 저장됩니다.
 
-dataProcessor가 초기화되면, 사용자 또는 코드로 변경된 데이터가 자동으로 데이터 소스에 저장됩니다.
-
-특정 작업(task)이나 의존성(link)을 코드로 업데이트하려면 [updateTask](api/method/updatetask.md) 및 [updateLink](api/method/updatelink.md) 메서드를 사용합니다:
+일반적으로 특정 작업이나 의존성을 프로그래밍 방식으로 업데이트하려면 각각 [](api/method/updatetask.md) 및 [](api/method/updatelink.md) 메서드를 사용합니다:
 
 ~~~js
 gantt.parse([
@@ -549,10 +545,10 @@ gantt.parse([
 
 const task = gantt.getTask(1);
 task.text = "Task 37"; // 작업 데이터 수정
-gantt.updateTask(1); // 수정된 작업을 다시 렌더링
+gantt.updateTask(1); // 수정된 작업 렌더링
 ~~~
 
-백엔드에 업데이트를 전송하는 다른 메서드로는 다음이 있습니다:
+백엔드로 업데이트를 트리거하는 다른 메서드들:
 
 - [addTask](api/method/addtask.md)
 - [updateTask](api/method/updatetask.md)
@@ -562,14 +558,13 @@ gantt.updateTask(1); // 수정된 작업을 다시 렌더링
 - [deleteLink](api/method/deletelink.md)
 
 
-
 ## 커스텀 라우팅 {#customrouting}
 
-RESTful AJAX API가 백엔드 요구사항에 맞지 않거나, 서버로 전송되는 내용을 직접 제어하고 싶을 때 커스텀 라우팅을 사용할 수 있습니다.
+RESTful AJAX API가 백엔드에서 필요하지 않거나 서버로 전송되는 내용을 직접 제어하고 싶다면 커스텀 라우팅을 사용할 수 있습니다.
 
-예를 들어, Angular나 React 같은 프레임워크에서는 컴포넌트가 변경 사항을 서버로 직접 전송하지 않고, 데이터를 저장하는 다른 컴포넌트에 전달할 수 있습니다.
+예를 들어 Angular, React 등에서 페이지의 컴포넌트가 변경 내용을 직접 서버로 보내지 않고 데이터를 저장하는 다른 컴포넌트로 전달하는 경우가 있을 때 유용합니다.
 
-DataProcessor에서 커스텀 라우팅을 설정하려면 [**createDataProcessor()**](#createdp) 메서드를 사용하세요:
+DataProcessor에 맞춤 라우팅 옵션을 제공하려면 [**createDataProcessor()**](#createdp) 메서드를 사용합니다:
 
 ~~~js
 gantt.createDataProcessor(function(entity, action, data, id) {
@@ -591,17 +586,15 @@ gantt.createDataProcessor(function(entity, action, data, id) {
 ~~~
 
 
-[Custom data api - using local storage](https://docs.dhtmlx.com/gantt/samples/08_api/22_data_processor.html)
+**관련 샘플**: [로컬 스토리지 사용 데이터 API 샘플](https://docs.dhtmlx.com/gantt/samples/08_api/22_data_processor.html)
 
 
+### AJAX를 사용한 커스텀 루트 설정
 
+[Gantt AJAX 모듈](api/other/ajax.md)은 커스텀 루트를 설정하는 데 유용합니다. Gantt는 작업의 끝을 확인할 수 있도록 Promise 객체를 반환하는 결과를 기대하는 커스텀 라우터를 필요로 합니다.  
+AJAX 모듈은 프로미스를 지원하며 커스텀 라우터 내부에서 사용하기에 적합합니다. 프로미스를 받고 해결될 때 프로미스의 내용을 처리합니다.
 
-### 커스텀 라우터 설정을 위한 AJAX 사용
-
-[Gantt AJAX 모듈](api/other/ajax.md)은 커스텀 라우트 설정 시 유용하게 사용할 수 있습니다. Gantt는 커스텀 라우터가 작업에서 Promise 객체를 반환하기를 기대하며, 이를 통해 작업이 완료되었는지 감지할 수 있습니다.  
-AJAX 모듈은 Promise를 지원하므로 커스텀 라우터 내에서 사용하기 적합합니다. Gantt는 Promise가 해결되면 그 내용을 처리합니다.
-
-아래 예제에서는 새로운 작업이 생성됩니다. 서버 응답에 새로 생성된 작업의 id가 포함되어 있으면, Gantt가 이를 적용합니다.
+아래 예시에서는 새 작업이 생성됩니다. 서버 응답에 새로 생성된 작업의 id가 포함되어 있으면 Gantt가 이를 적용할 수 있습니다.
 
 ~~~js
 gantt.createDataProcessor((entity, action, data, id) => {
@@ -620,14 +613,11 @@ gantt.createDataProcessor((entity, action, data, id) => {
 ~~~
 
 
+## 리소스 및 리소스 할당의 CRUD 작업 라우팅 {#resources_crud}
 
-<span id="resources_crud"></span>
+v8.0부터 수정된 리소스 할당은 지속 가능한 ID를 가진 별도 엔트리로 DataProcessor에 전송될 수 있어 백엔드 API와의 연결이 쉬워졌습니다. 리소스 객체의 변경도 DataProcessor로 전송될 수 있습니다.
 
-## 리소스 및 리소스 할당의 CRUD 액션 라우팅 {#resources_crud}
-
-v8.0부터 리소스 할당 변경 사항을 영구 ID와 함께 별도의 항목으로 DataProcessor에 전송할 수 있어, 백엔드 API 통합이 더 간단해졌습니다. 리소스 객체 자체의 변경도 DataProcessor에 전송할 수 있습니다.
-
-이 기능은 기본적으로 비활성화되어 있습니다. 기본 설정에서는 DataProcessor가 작업(task)과 링크(link)의 변경만 수신합니다. 리소스 처리를 활성화하려면 다음과 같이 설정하세요:
+참고로 이 기능은 기본적으로 비활성화되어 있습니다. 기본적으로 DataProcessor는 작업과 링크에 대한 변경만 받습니다. 이 기능을 활성화하려면 다음 설정을 사용하세요:
 
 ~~~js
 gantt.config.resources = {
@@ -636,9 +626,9 @@ gantt.config.resources = {
 };
 ~~~
 
-리소스 모드가 활성화되고 DataProcessor가 REST 모드일 때, 리소스 및 리소스 할당이 별도의 요청으로 백엔드에 전송됩니다.
+리소스 모드가 활성화되면 REST 모드로 DataProcessor를 구성한 경우 리소스와 리소스 할당이 백엔드로 별도의 요청으로 전송됩니다.
 
-DataProcessor가 커스텀 라우팅 모드를 사용한다면, 핸들러에서 리소스 할당과 리소스 변경을 처리할 수 있습니다:
+Custom Routing 모드에서 DataProcessor를 사용하는 경우 핸들러에서 리소스 할당과 리소스의 변경을 포착할 수 있습니다:
 
 ~~~js
 gantt.createDataProcessor({
@@ -691,7 +681,7 @@ gantt.createDataProcessor({
 });
 ~~~
 
-또는 함수 선언을 사용할 수도 있습니다:
+또는 함수 선언을 사용하는 경우:
 
 ~~~js
 gantt.createDataProcessor((entity, action, data, id) => {
@@ -709,16 +699,15 @@ gantt.createDataProcessor((entity, action, data, id) => {
 ~~~
 
 
+## 오류 처리
 
-## 에러 처리 {#errorhandling}
-
-서버가 작업 실패를 보고하면, `"action":"error"`가 포함된 응답을 반환할 수 있습니다:
+서버가 작업 실패를 알리는 응답으로 "action":"error"를 반환할 수 있습니다:
 
 ~~~js
 {"action":"error"}
 ~~~
 
-클라이언트에서는 gantt.dataProcessor를 사용해 이런 응답을 감지할 수 있습니다:
+이러한 응답은 클라이언트에서 gantt.dataProcessor를 통해 캡처할 수 있습니다:
 
 ~~~js
 const dp = gantt.createDataProcessor({
@@ -728,19 +717,19 @@ const dp = gantt.createDataProcessor({
 
 dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
     if (action === "error") {
-        // 여기서 에러 처리
+        // 여기서 무언가를 수행합니다
     }
 });
 ~~~
 
-응답 객체에는 onAfterUpdate 핸들러의 `response` 인자를 통해 접근 가능한 추가 속성이 포함될 수 있습니다.
+응답 객체는 추가 속성을 임의로 포함할 수 있으며, onAfterUpdate 핸들러의 `response` 인자를 통해 접근할 수 있습니다.
 
 :::note
-이 이벤트는 위와 같이 JSON 응답으로 반환되는 관리되는 에러에만 트리거됩니다.
-HTTP 에러 처리는 [onAjaxError](api/event/onajaxerror.md) API 이벤트를 참고하세요.
+이 이벤트는 JSON 응답으로 위와 같이 반환되는 관리되는 오류에 대해서만 호출됩니다.
+HTTP 오류를 처리해야 하는 경우 API 이벤트를 확인해 주세요: [](api/event/onajaxerror.md)
 :::
 
-서버에서 에러를 반환했지만 클라이언트 변경이 저장된 경우, 상태 동기화의 최선 방법은 클라이언트 상태를 초기화하고 서버에서 올바른 데이터를 다시 로드하는 것입니다:
+서버가 특정 작업에서 오류를 응답했지만 클라이언트의 변경 내용은 저장되었을 경우, 상태를 동기화하는 가장 좋은 방법은 클라이언트의 상태를 지우고 서버 측에서 올바른 데이터를 다시 로드하는 것입니다:
 
 ~~~js
 dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
@@ -751,7 +740,7 @@ dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
 });
 ~~~
 
-서버 호출 없이 클라이언트와 서버 상태를 동기화하려면 [silent()](api/method/silent.md) 메서드를 사용해 해당 작업 동안 내부 이벤트나 서버 호출을 방지할 수 있습니다:
+클라이언트-서버 측을 동기화하되 서버 호출을 전혀 하지 않으려면 [silent()](api/method/silent.md) 메서드를 사용할 수 있습니다. 이 메서드는 내부 이벤트나 서버 호출을 트리거하지 않도록 코드 전체를 감쌉니다:
 
 ~~~js
 gantt.silent(() => {
@@ -762,24 +751,18 @@ gantt.render();
 ~~~
 
 
+## 캐스케이드 삭제
 
-## 계단식 삭제(Cascade Deletion) {#cascadedeletion}
+기본적으로 작업 삭제 시 해당 작업의 중첩 작업과 관련 링크의 연쇄 삭제가 발생합니다. 간트는 제거된 각 작업과 링크에 대해 삭제 요청을 보냅니다.
+따라서 백엔드에서 데이터 무결성을 유지할 필요가 없으며, 간트가 이를 합리적으로 처리합니다.
 
-기본적으로 작업을 삭제하면 해당 하위 작업 및 관련 링크가 계단식으로 삭제됩니다. Gantt는 삭제된 각 작업과 링크에 대해 *delete* 요청을 전송합니다.  
-따라서 백엔드에서 데이터 무결성을 수동으로 관리할 필요 없이, Gantt가 이를 효과적으로 처리합니다.
+반면 이 전략은 AJAX 호출을 백엔드 API로 대량으로 생성할 수 있으므로, dhtmlxGantt는 AJAX용 배치 요청을 지원하지 않으며 작업과 링크의 수는 제한되지 않습니다.
 
-하지만 이 방식은 dhtmlxGantt가 배치 요청을 지원하지 않으므로, 작업 및 링크 수가 많을 경우 백엔드로 많은 AJAX 호출이 발생할 수 있습니다.
-
-필요하다면 [cascade_delete](api/config/cascade_delete.md) 설정을 사용해 계단식 삭제를 비활성화할 수 있습니다.  
-비활성화 시, 프로젝트 브랜치를 삭제하면 최상위 항목에 대해서만 delete 요청이 전송되고, 하위 링크 및 작업 삭제는 백엔드가 처리해야 합니다.
+이 경우 캐스케이드 삭제를 [](api/config/cascade_delete.md) 구성으로 비활성화할 수 있습니다. 따라서 프로젝트 브랜치가 삭제될 때 최상위 항목에 대한 삭제 요청만 전송되며 백엔드가 관련 링크와 하위 작업을 삭제하도록 기대합니다.
 
 
+## XSS, CSRF 및 SQL Injection 공격
 
-## XSS, CSRF 및 SQL 인젝션 공격 {#xsscsrfandsqlinjectionattacks}
+Gantt가 SQL 인젝션이나 XSS, CSRF 공격과 같은 다양한 위협으로부터 애플리케이션을 방지하는 수단을 제공하지 않는다는 점에 유의하십시오. 애플리케이션의 안전성 유지 책임은 백엔드를 구현하는 개발자에게 있습니다.
 
-Gantt는 SQL 인젝션, XSS, CSRF와 같은 공격에 대한 내장 보호 기능을 제공하지 않습니다.  
-애플리케이션 보안은 백엔드 개발자가 책임지고 구현해야 합니다.
-
-컴포넌트의 취약점 및 애플리케이션 보안을 강화하는 권장 조치에 대해서는 [애플리케이션 보안](guides/app-security.md) 문서를 참고하세요. 
-
-
+구성 요소의 취약한 지점과 애플리케이션 보안을 강화하기 위한 조치를 알아보려면 [ guides/app-security.md ](guides/app-security.md) 문서를 참조하세요.

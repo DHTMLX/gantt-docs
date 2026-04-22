@@ -1,14 +1,14 @@
 ---
 sidebar_label: autosize_min_width
-title: autosize_min_width config
-description: "definiert die minimale Breite (in Pixel), die das Gantt-Diagramm im horizontalen 'autosize'-Modus haben wird"
+title: autosize_min_width Konfiguration
+description: "Legt die minimale Breite (in Pixeln) fest, die das Gantt-Diagramm im horizontalen 'autosize'-Modus erreichen kann"
 ---
 
 # autosize_min_width
 
 ### Description
 
-@short: Definiert die minimale Breite (in Pixel), die das Gantt-Diagramm im horizontalen 'autosize'-Modus haben wird
+@short: Legt die minimale Breite (in Pixeln) fest, die das Gantt-Diagramm im horizontalen 'autosize'-Modus erreichen kann
 
 @signature: autosize_min_width: number
 
@@ -21,12 +21,11 @@ gantt.config.autosize_min_width = 800;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** null (0)
+**Standardwert:** Null (0)
 
 ### Details
 
-Der horizontale 'autosize'-Modus kann über die Option in [autosize](api/config/autosize.md) aktiviert werden.
+Der horizontale 'autosize'-Modus wird durch die Option [autosize](api/config/autosize.md) aktiviert.
 
 ### Related API
 - [autosize](api/config/autosize.md)
-

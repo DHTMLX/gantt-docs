@@ -1,38 +1,37 @@
 ---
 sidebar_label: onBeforeTaskDelete
-title: onBeforeTaskDelete event
-description: "Wird ausgelöst, kurz bevor eine Aufgabe vom Benutzer gelöscht wird."
+title: onBeforeTaskDelete Event
+description: "wird ausgelöst, bevor der Benutzer eine Aufgabe löscht"
 ---
 
 # onBeforeTaskDelete
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor eine Aufgabe vom Benutzer gelöscht wird.
+@short: Wird ausgelöst, bevor der Benutzer eine Aufgabe löscht
 
 @signature: onBeforeTaskDelete: (id: string | number, task: Task) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID der Aufgabe
-- `task` - (required) *Task* - das Aufgabenobjekt
+- `id` - (required) *string | number* - die Task-ID
+- `task` - (required) *Task* - das Task-Objekt
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeTaskDelete", function(id,task){
-    // benutzerdefinierte Logik kann hier hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
 
 ### Details
 
-Dieses Event kann blockiert werden. Ein Rückgabewert von false verhindert, dass die Aufgabe gelöscht wird.
+Das Event kann blockiert werden. Gib false zurück, um das Löschen der Aufgabe abzubrechen.
 
 ### Related API
 - [deleteTask](api/method/deletetask.md)
-

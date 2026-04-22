@@ -1,18 +1,17 @@
 ---
-title: "配置网格"
-sidebar_label: "配置网格"
+title: "网格配置"
+sidebar_label: "网格配置"
 ---
 
-# 配置网格 
+# 网格配置
 
 ![gantt_left](/img/gantt_left.png)
 
-
-- [컬럼 지정하기](guides/specifying-columns.md)
-- [그리드에서 행 크기 조정하기](guides/resizing-rows.md)
-- [트리 컬럼 구성하기](guides/tree-column.md)
-- [작업 순서 변경하기](guides/reordering-tasks.md)
-- [컬럼 정렬](guides/sorting.md)
-- [작업 그룹화](guides/grouping.md)
-- [작업 필터링](guides/filtering.md)
-- [그리드에서 인라인 편집](guides/inline-editing.md)
+- [指定列](guides/specifying-columns.md)
+- [调整网格中的行高](guides/resizing-rows.md)
+- [配置树形列](guides/tree-column.md)
+- [重新排序任务](guides/reordering-tasks.md)
+- [列排序](guides/sorting.md)
+- [任务分组](guides/grouping.md)
+- [任务筛选](guides/filtering.md)
+- [网格中的行内编辑](guides/inline-editing.md)

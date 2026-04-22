@@ -1,23 +1,23 @@
 ---
 sidebar_label: calculateTaskLevel
-title: calculateTaskLevel method
-description: "작업이 계층 구조 내에서 얼마나 깊게 중첩되어 있는지 계산합니다."
+title: calculateTaskLevel 메서드
+description: "작업의 중첩 수준을 계산합니다"
 ---
 
 # calculateTaskLevel
 
 ### Description
 
-@short: 작업이 계층 구조 내에서 얼마나 깊게 중첩되어 있는지 계산합니다.
+@short: 작업의 중첩 수준을 계산합니다
 
-@signature: calculateTaskLevel: (task: Task) =\> number
+@signature: calculateTaskLevel: (task: Task) => number
 
 ### Parameters
 
-- `task` - (required) *Task* - 평가할 작업 객체
+- `task` - (required) *Task* - 작업의 객체
 
 ### Returns
-- ` level` - (number) - 트리 구조에서 작업의 깊이 수준, 0부터 시작합니다.
+- `level` - (number) - 트리 계층 구조에서의 작업 레벨(0부터 시작하는 번호 매김)
 
 ### Example
 
@@ -26,7 +26,7 @@ gantt.attachEvent("onTaskCreated", function(task){
  var level = gantt.calculateTaskLevel(task),
    types = gantt.config.types;
    
- //작업의 중첩 수준에 따라 작업 유형 설정
+ //작업 수준에 따라 task 유형 할당
  switch (level){
   case 0:
    task.type = types.project;
@@ -45,4 +45,3 @@ gantt.attachEvent("onTaskCreated", function(task){
 ### Related API
 - [calculateEndDate](api/method/calculateenddate.md)
 - [calculateDuration](api/method/calculateduration.md)
-

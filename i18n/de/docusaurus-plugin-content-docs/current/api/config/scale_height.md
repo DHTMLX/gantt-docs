@@ -1,14 +1,14 @@
 ---
 sidebar_label: scale_height
-title: scale_height config
-description: "passt die Höhe der Zeitskala und des Grid-Headers an"
+title: scale_height Konfiguration
+description: "Legt die Höhe der Zeitachse und der Kopfzeile des Grids fest"
 ---
 
 # scale_height
 
 ### Description
 
-@short: Passt die Höhe der Zeitskala und des Grid-Headers an
+@short: Legt die Höhe der Zeitachse und der Kopfzeile des Grids fest
 
 @signature: scale_height: number
 
@@ -19,4 +19,4 @@ gantt.config.scale_height = 50;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 35
+**Standardwert:** 35

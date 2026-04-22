@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskRowNode
-title: getTaskRowNode method
-description: "возвращает HTML-элемент, представляющий строку задачи в таблице"
+title: метод getTaskRowNode
+description: "возвращает HTML-элемент строки задачи в таблице"
 ---
 
 # getTaskRowNode
 
 ### Description
 
-@short: Возвращает HTML-элемент, представляющий строку задачи в таблице
+@short: Returns the HTML element of the task row in the table
 
-@signature: getTaskRowNode: (id: string | number) =\> HTMLElement
+@signature: getTaskRowNode: (id: string | number) => HTMLElement
 
 ### Parameters
 
-- `id` - (required) *string | number* -    идентификатор задачи
+- `id` - (required) *string | number* - идентификатор задачи
 
 ### Returns
-- `node` - (HTMLElement) - HTML-элемент, соответствующий строке задачи
+- `node` - (HTMLElement) - HTML-элемент строки задачи
 
 ### Example
 
@@ -34,9 +34,9 @@ gantt.getTaskRowNode(10);//-><div class=​"gantt_row" task_id=​"2">​…​<
 
 ### Details
 
-Имейте в виду, что при обновлении и перерисовке задачи предыдущий DOM-элемент удаляется и заменяется новым. В результате любые изменения, внесённые напрямую в элемент, будут потеряны после следующей перерисовки.
+Обратите внимание: при повторной перерисовке задачи старый DOM-элемент будет удалён и заменён новым элементом. Это означает, что любые изменения, которые вы вносите в элемент, будут сброшены после следующей перерисовки.
 
-Для кастомизации внешнего вида элементов рекомендуется использовать шаблоны, так как это рекомендуемый способ настройки внешнего вида компонентов Gantt.
+Если вам нужно изменить внешний вид элемента, рекомендуется использовать шаблоны, ведь они являются предпочтительным способом настройки внешнего вида элементов Gantt.
 
 ### Related API
 - [getTaskNode](api/method/gettasknode.md)
@@ -46,5 +46,4 @@ gantt.getTaskRowNode(10);//-><div class=​"gantt_row" task_id=​"2">​…​<
 - [grid_row_class](api/template/grid_row_class.md)
 
 ### Related Guides
-- [Указание колонок](guides/specifying-columns.md#datamappingandtemplates)
-
+- [Specifying Columns](guides/specifying-columns.md#datamappingandtemplates)

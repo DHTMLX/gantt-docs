@@ -1,14 +1,14 @@
 ---
 sidebar_label: external_render
 title: external_render config
-description: "вставляет внешний компонент в DOM"
+description: "Отрисовывает внешний компонент в DOM"
 ---
 
 # external_render
 
 ### Description
 
-@short: Вставляет внешний компонент в DOM
+@short: Отрисовывает внешний компонент в DOM
 
 @signature: external_render: \{ isElement(element: any): boolean; renderElement(element: any, container: HTMLElement): void; \}
 
@@ -34,26 +34,27 @@ gantt.config.columns = [
 ];
 
 gantt.config.external_render = { 
-    // проверяет, является ли элемент React элементом
+    // checks the element is a React element
     isElement: (element) => {
         return React.isValidElement(element);
     },
-    // рендерит React элемент в DOM
+    // renders the React element into the DOM
     renderElement: (element, container) => {
         ReactDOM.render(element, container);
     }
 };
 ~~~
 
+
 ### Details
 
-Объект **external_render** включает в себя следующие свойства:
+Объект **external_render** имеет следующие свойства:
 
-- **isElement (element): boolean** - функция для проверки переданного элемента. Принимает следующий аргумент:
+- **isElement (element): boolean** - функция, которая используется для проверки предоставленного элемента. Использует следующий аргумент:
     - **_element_** - (*any*) - объект, возвращаемый функцией **onrender**.
-- **renderElement (element, container): void** - функция, использующая нативные методы для рендера компонентов. Принимает следующие аргументы:
+- **renderElement (element, container): void** - функция, используемая для применения нативных методов по рендерингу нативных компонентов. Использует следующие аргументы:
     - **_element_** - (*any*) - объект, возвращаемый функцией **onrender**.
-    - **_container_** - (*HTMLElement*) - DOM-элемент, в который будет вставлен нативный компонент.
+    - **_container_** - (*HTMLElement*) - DOM-элемент, к которому будет присоединён нативный компонент.
 
 ### Change log
-- добавлено в v7.1
+- Добавлено в v7.1

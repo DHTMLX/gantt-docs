@@ -1,20 +1,20 @@
 ---
 sidebar_label: silent
 title: silent method
-description: "Verhindert, dass durch den darin enthaltenen Code interne Events oder serverseitige Aufrufe ausgelöst werden."
+description: "bewirkt, dass sämtlicher Code darin keine internen Ereignisse auslöst oder serverseitige Aufrufe tätigt"
 ---
 
 # silent
 
 ### Description
 
-@short: Verhindert, dass durch den darin enthaltenen Code interne Events oder serverseitige Aufrufe ausgelöst werden.
+@short: Stellt sicher, dass der gesamte Code darin keine internen Ereignisse auslöst oder serverseitige Aufrufe tätigt
 
 @signature: silent: (callback: GanttCallback) =\> void
 
 ### Parameters
 
-- `callback` - (required) *function* - Die Callback-Funktion
+- `callback` - (erforderlich) *Funktion* - die Callback-Funktion
 
 ### Example
 
@@ -30,4 +30,4 @@ gantt.render();
 ~~~
 
 ### Related Guides
-- ["Serverseitige Integration"](guides/server-side.md#errorhandling)
+- [Serverseitige Integration](guides/server-side.md#error-handling)

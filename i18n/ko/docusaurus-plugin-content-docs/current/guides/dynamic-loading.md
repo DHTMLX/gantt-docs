@@ -1,39 +1,39 @@
 ---
-title: "동적 로딩 (온디맨드)"
-sidebar_label: "동적 로딩 (온디맨드)"
+title: "동적 로딩(수요에 따라)"
+sidebar_label: "동적 로딩(수요에 따라)"
 ---
 
-# 동적 로딩 (온디맨드)
+# 동적 로딩(수요에 따라)
 
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다
 :::
 
-기본적으로 dhtmlxGantt는 모든 데이터를 한 번에 로드합니다. 이는 많은 수의 작업을 다루는 경우에는 부담이 될 수 있습니다.
+기본적으로 dhtmlxGantt는 데이터를 한 번에 모두 로드합니다. 작업 수가 많아지면 문제가 될 수 있습니다.
 
-이런 경우에는 동적 로딩 모드를 사용하여 데이터를 브랜치(하위 프로젝트)별로, 단계별로 사용자가 확장할 때마다 로드할 수 있습니다.
+이러한 상황에서 동적 로딩 모드를 사용하여 분기(하위 프로젝트)별로, 사용자가 열 때마다 단계별로 데이터를 로드할 수 있습니다. 
 
-## 작동 방식
+## 작동 원리
 
-동적 로딩이 [활성화](#enablingdynamicloading)되면, [gantt.load("url")](api/method/load.md) 호출은 지정된 URL로 GET 요청을 보내며, 응답에는 최상위 작업만 포함되어 있고 모든 하위 브랜치는 처음에는 닫혀 있어야 합니다.
+동적 로딩이 [활성화되면](#enablingdynamicloading), [gantt.load("url")](api/method/load.md) 호출은 지정된 URL로 GET 요청을 보내며, 응답에는 최상위 작업만 포함되고 중첩 분기는 닫힌 상태로 표시될 것으로 예상됩니다.
 
-사용자가 확장 아이콘을 클릭하면, gantt는 자동으로 [load](api/method/load.md) 메서드를 호출하며, 클릭된 작업의 id를 서버로 전송합니다:
+사용자가 확장 아이콘을 클릭하면, gantt는 자동으로 [load](api/method/load.md) 메서드를 호출하고 클릭된 작업의 id를 서버로 보냅니다:
 
 ~~~js
 gantt.load("url?parent_id="123"");
 ~~~
 
-서버는 확장된 항목의 하위 작업 목록을 응답으로 보내야 합니다.
+그리고 응답에는 확장된 항목의 하위 작업이 포함될 것으로 예상됩니다.
 
 :::note
-[onBeforeBranchLoading](api/event/onbeforebranchloading.md) 이벤트를 사용하여 요청 URL을 수정하거나 추가 파라미터를 전달할 수 있습니다.
+요청 URL을 수정하거나 여기에 일부 추가 매개변수를 추가하려면 [onBeforeBranchLoading](api/event/onbeforebranchloading.md) 이벤트를 사용할 수 있습니다.
 :::
 
-## 동적 로딩 활성화하기 {#enablingdynamicloading}
+## 동적 로딩 활성화 {#enablingdynamicloading}
 
-<span id="enabledynload">Gantt 차트에서 동적 로딩을 활성화하려면</span>, 클라이언트와 서버 모두에서 설정이 필요합니다.
+Gantt 차트에서 동적 로딩을 활성화하려면 클라이언트 측과 서버 측 모두를 다루어야 합니다.
 
-- 클라이언트 측 ([branch_loading](api/config/branch_loading.md) 옵션 사용):
+- 클라이언트 측(브랜치 로딩 옵션 사용):
 
 ~~~js
 gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
@@ -67,18 +67,12 @@ $gantt->render_table(
     "parent"
 );
 ~~~
-    
 
-[Loading subtasks on demand (branch loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
+**관련 샘플**: [요청 시 하위 작업 로딩(브랜치 로딩)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
 
+일반적으로 클라이언트 측은 표시된 데이터 항목의 자식에 대한 정보를 가지고 있지 않습니다(이러한 자식은 서버 측에서 로드되지 않았습니다).
 
-
-
-
-
-일반적으로 클라이언트 측에서는 표시된 데이터 항목의 자식 정보를 가지고 있지 않습니다. 이는 자식 항목이 처음에는 서버에서 로드되지 않기 때문입니다.
-
-이 정보를 제공하기 위해, 특별한 데이터 속성 '$has_child'([branch_loading_property](api/config/branch_loading_property.md)에서 커스터마이즈 가능)를 사용하여 작업의 자식 요소 개수를 표시할 수 있습니다.
+이 정보를 전달하려면 작업의 자식 수를 나타내는 특별한 데이터 속성 '$has_child'를 사용할 수 있습니다( [branch_loading_property](api/config/branch_loading_property.md)로 변경 가능). 
 
 ~~~php
 function check_children($row){
@@ -95,14 +89,12 @@ function check_children($row){
 $gantt->event->attach("beforeRender","check_children");
 ~~~
 
-
-[Loading subtasks on demand (branch loading)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
-
+**관련 샘플**: [요청 시 하위 작업 로딩(브랜치 로딩)](https://docs.dhtmlx.com/gantt/samples/02_extensions/06_dynamic_loading.html)
 
 
-## 동적 로딩을 위한 데이터 포맷
+## 데이터 형식 for 동적 로딩
 
-동적 로딩을 위한 데이터 포맷은 다음과 같습니다:
+동적 로딩에 대한 데이터 형식은 다음과 같습니다:
 
 ~~~js
 {
@@ -111,7 +103,7 @@ $gantt->event->attach("beforeRender","check_children");
         "id":13,
         "start_date":"2020-04-02 00:00:00",
         "duration":10,
-        "text":"Task #1",
+        "text":"작업 #1",
         "progress":0.2,
         "parent":12,
         "open":0,
@@ -121,12 +113,12 @@ $gantt->event->attach("beforeRender","check_children");
         "id":14,
         "start_date":"2020-04-04 00:00:00",
         "duration":4,
-        "text":"Task #2",
+        "text":"작업 #2",
         "progress":0.9,
         "parent":12,
         "open":0,
         "$has_child":4
-    }],
+    }], 
 
     "links":[
         {"id":1,"source":1,"target":2,"type":"0"},
@@ -137,35 +129,41 @@ $gantt->event->attach("beforeRender","check_children");
 }
 ~~~
 
-이 포맷은 일반 데이터 로딩에 사용되는 JSON 포맷과 동일합니다. 비교를 위해 [지원되는 데이터 형식](guides/supported-data-formats.md) 문서를 참고하세요.
+보시다시피 일반 데이터 로딩에 사용되는 JSON과 동일합니다. 비교하려면 [지원되는 데이터 형식](guides/supported-data-formats.md) 문서를 확인하세요.
 
-주요 차이점은 **$has_child** 속성입니다. 이 속성은 해당 작업이 'leaf'(확장 토글이 없는 항목)인지, 확장 가능한 노드인지 결정합니다:
+주요 차이점은 **$has_child** 속성으로, 작업이 확장 가능한지 여부를 나타냅니다.
 
-- *$has_child* 속성이 존재하고 ['truthy'](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) 값(0이 아닌 숫자, true, 비어있지 않은 문자열 등)을 가지면, 해당 항목에 확장/축소 토글이 표시됩니다. 확장 시 서버로 Ajax 요청이 전송됩니다.
-- *$has_child* 속성이 없거나 ['falsy'](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) 값(0, false, NaN, undefined, 빈 문자열, null 등)이면, 토글 없이 표시되어 자식 작업이 없음을 나타냅니다.
+- 만약 *$has_child* 속성이 특정되고 ['truthy'](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) 값(0이 아닌 숫자, true, 비어 있지 않은 문자열 등)을 포함하면, 항목은 확장/축소 토글로 표시됩니다. 토글을 확장하면 서버로 Ajax 요청이 전송됩니다.
+- 만약 *$has_child*가 지정되지 않았거나 ['falsy'](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) 값을 포함하면(0, false, NaN, undefined, 빈 문자열, null), 항목은 토글 없이 표시되어 자식 항목이 없는 작업으로 표시됩니다.
 
-요청에 *parent_id* 파라미터가 포함되어 있으면, 응답에는 해당 id를 가진 작업의 자식들이 포함되어야 합니다. *parent_id*가 없으면, 응답에는 루트 레벨 작업들이 포함되어야 합니다:
+만약 요청에 *parent_id* 매개변수가 있으면 응답은 지정된 ID의 작업의 자식을 포함해야 합니다. *parent_id*가 지정되지 않으면 요청은 루트 수준의 작업을 포함해야 합니다:
 
 <table class="dp_table">
-    <tr>
-        <th><b>동작</b></th><th><b>HTTP 메서드</b></th><th><b>URL</b></th><th><b>응답</b></th>
-    </tr>
-    <tr>
-        <td>루트 레벨 로드</td>
-        <td>GET</td>
-        <td>/loadUrl</td>
-        <td>[동적 로딩 데이터 포맷](#dynamicloadingformatofdata)</td>
-    </tr>
-    <tr>
-        <td>작업의 자식 로드</td>
-        <td>GET</td>
-        <td>/loadUrl?parent_id=id</td>
-        <td>[동적 로딩 데이터 포맷](#dynamicloadingformatofdata)</td>
-    </tr>
+  <tr>
+  <th><b>동작</b></th><th><b>HTTP 메서드</b></th><th><b>URL</b></th><th><b>응답</b></th>
+  </tr>
+  <tr>
+  <td>루트 수준 로드</td>
+  <td>GET</td>
+  <td>/loadUrl</td>
+  <td>동적 로딩 형식</td>
+  </tr>
+  <tr>
+  <td>작업의 자식 로드</td>
+  <td>GET</td>
+  <td>/loadUrl?parent_id=id</td>
+  <td>동적 로딩 형식</td>
+  </tr>
 
 </table>
 
-## 작업을 동적으로 로드하기
+### 작업을 동적으로 로드하기
 
-작업의 동적 로딩은 마지막으로 표시된 작업까지 스크롤할 때마다 새로운 작업을 불러오는 방식으로도 구현할 수 있습니다. 자세한 내용은 [How to load tasks dynamically](guides/how-to.md#howtoloadtasksdynamically) 문서를 참고하세요.
+스크롤을 맨 끝으로 내린 후에도 새 작업을 로드할 수 있도록 작업의 동적 로딩을 구현할 수 있습니다. 자세한 내용은 [작업을 동적으로 로드하는 방법](guides/how-to.md#how-to-load-tasks-dynamically) 문서를 참고하세요.
 
+### 관련 API
+
+- [branch_loading](api/config/branch_loading.md)
+- [branch_loading_property](api/config/branch_loading_property.md)
+- [onBeforeBranchLoading](api/event/onbeforebranchloading.md)
+- [onAfterBranchLoading](api/event/onafterbranchloading.md)

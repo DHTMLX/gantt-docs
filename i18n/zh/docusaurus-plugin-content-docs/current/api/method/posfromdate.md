@@ -1,23 +1,23 @@
 ---
 sidebar_label: posFromDate
-title: posFromDate method
-description: "获取图表区域内指定日期的相对水平位置"
+title: posFromDate 方法
+description: "获取图表区域中指定日期的相对水平位置"
 ---
 
 # posFromDate
 
 ### Description
 
-@short: 获取图表区域内指定日期的相对水平位置
+@short: 在图表区域中获取指定日期的相对水平位置
 
 @signature: posFromDate: (date: Date) =\> number
 
 ### Parameters
 
-- `date` - (required) *Date* - 需要获取位置的日期
+- `date` - (required) *Date* - 你想要知道位置的日期
 
 ### Returns
-- ` position` - (number) - 指定日期在时间轴上的x坐标（以像素为单位）
+- ` position` - (number) - 时间线中指定日期的 x 坐标（以像素为单位）
 
 ### Example
 
@@ -28,14 +28,10 @@ gantt.posFromDate(new Date());
 ### Details
 
 :::note
-
-此方法返回当前甘特图中显示日期的位置。如果该日期未在图表中显示，则返回 'null'。
- 
+该方法返回当前在 Gantt 图中呈现的日期的位置。如果在图表中未呈现某日期，该方法将返回 'null'。
 :::
 
-![gantt_localized](/img/gantt_localized.png)
-
-对于上图所示的甘特图，该方法返回如下结果:
+例如，对于上面的甘特图，该方法将返回以下值：
 
 ~~~js
 gantt.posFromDate(new Date(2023,02,31)); // -> 0
@@ -45,4 +41,3 @@ gantt.posFromDate(new Date(2023,03,2));  // -> 148
 
 ### Related API
 - [getLayoutView](api/method/getlayoutview.md)
-

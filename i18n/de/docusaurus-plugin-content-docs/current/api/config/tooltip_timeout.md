@@ -1,14 +1,14 @@
 ---
 sidebar_label: tooltip_timeout
 title: tooltip_timeout config
-description: "Gibt die Verzögerung in Millisekunden an, bevor ein Tooltip für eine Aufgabe erscheint"
+description: "Setzt den Timeout in Millisekunden, bevor der Tooltip für eine Aufgabe angezeigt wird"
 ---
 
 # tooltip_timeout
 
 ### Description
 
-@short: Gibt die Verzögerung in Millisekunden an, bevor ein Tooltip für eine Aufgabe erscheint
+@short: Legt den Timeout in Millisekunden fest, bevor der Tooltip für eine Aufgabe angezeigt wird
 
 @signature: tooltip_timeout: number
 
@@ -19,17 +19,16 @@ gantt.config.tooltip_timeout = 50;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 30
+**Standardwert:** 30
 
 ### Details
 
 :::note
- Diese Einstellung gehört zur **tooltip** Erweiterung, daher stellen Sie sicher, dass das [tooltip](guides/extensions-list.md#tooltip) Plugin aktiviert ist. Weitere Informationen finden Sie im Artikel ["Tooltips für Gantt-Elemente"](guides/tooltips.md). 
+Diese Option ist in der **tooltip**-Erweiterung definiert, daher müssen Sie das [tooltip]-Plugin aktivieren. Lesen Sie die Details im Artikel [Tooltips für Gantt-Elemente](guides/tooltips.md). 
 :::
 
 ### Related API
 - [tooltip_hide_timeout](api/config/tooltip_hide_timeout.md)
 
 ### Related Guides
-- ["Tooltips für Gantt-Elemente"](guides/tooltips.md)
-
+- [Tooltips für Gantt-Elemente](guides/tooltips.md)

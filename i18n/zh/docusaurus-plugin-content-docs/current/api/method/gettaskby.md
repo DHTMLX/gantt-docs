@@ -1,25 +1,25 @@
 ---
 sidebar_label: getTaskBy
 title: getTaskBy method
-description: "根据给定的条件查找任务"
+description: "按指定条件查找任务"
 ---
 
 # getTaskBy
 
 ### Description
 
-@short: 根据给定的条件查找任务
+@short: 根据指定条件查找任务
 
 @signature: getTaskBy: (propertyName: string | GanttCallback, propertyValue?: string | number | boolean | any[], types?: any) =\> Array\<Task\>
 
 ### Parameters
 
-- `propertyName` - (required) *string | function* -            要匹配的属性名或过滤函数
-- `propertyValue` - (optional) *string | number | boolean | array* -        属性对应的匹配值
-- `types` - (optional) *object* - 指定要包含在结果中的任务类型的对象
+- `propertyName` - (required) *string | function*      -      要匹配的属性名称，或过滤函数
+- `propertyValue`	-	(optional) 	*string | number | boolean | array*	-	属性值
+- `types`		-	(optional)	*object*			-	返回的任务类型对象
 
 ### Returns
-- ` tasks` - (Array &lt;Task&gt;) - 符合条件的任务对象数组
+- ` tasks` - (Array &lt;Task&gt;) - 任务对象数组
 
 ### Example
 
@@ -36,23 +36,23 @@ userTasks = gantt.getTaskBy(task => task.user_id == 5);
 ~~~
 
 ### Related samples
-- [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
+- [资源图模板](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
 
 ### Details
 
-- 此方法允许你根据属性值选择任务，例如查找分配给特定用户的任务或已完成的任务。
-- 调用 `gantt.getTaskBy(propertyName, propertyValue)` 时，使用的是宽松相等比较（"双等号"，==）。
-- `gantt.getTaskBy(propertyName, propertyValue)` 的结果可能会被 gantt 缓存，因此这种形式可能比使用过滤函数版本 `gantt.getTaskBy((task: object) => boolean)` 更快。
+- 此方法可用于按属性值选择任务，例如查找特定用户的任务、查找已完成的任务等。
+- `gantt.getTaskBy(propertyName, propertyValue)` 使用宽松相等比较（"double equals", ==）
+- `gantt.getTaskBy(propertyName, propertyValue)` 的结果可以被 gantt 缓存，因此该重载可能比 `gantt.getTaskBy((task: object) => boolean)` 更快
 
-默认情况下，**gantt.getTaskBy()** 只返回匹配条件的任务和里程碑，排除项目项。
+默认情况下 **gantt.getTaskBy()** 返回仅匹配条件的 task 和 milestone 项，而 project 项将被省略。
 
-如果要包含所有类型的记录，可以使用第三个参数:
+要选择所有类型的记录，请使用第三个参数的以下值：
 
 ~~~js
 gantt.getTaskBy("progress", 1, { task: true, project: true, milestone: true });
 ~~~
 
-如果只想获取特定类型的项目，可以在第三个参数中指定:
+要仅返回特定类型的项，请在第三个参数中指定类型值：
 
 ~~~js
 gantt.getTaskBy("progress", 1, { project: true})
@@ -63,5 +63,4 @@ gantt.getTaskBy("progress", 1, { project: true})
 - [getSubtaskDates](api/method/getsubtaskdates.md)
 
 ### Change log
-- **types** 参数在 v8.0 中引入
-
+- 新增了 **types** 参数，起自 v8.0

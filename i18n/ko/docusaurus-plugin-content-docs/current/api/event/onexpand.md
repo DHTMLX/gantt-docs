@@ -1,14 +1,14 @@
 ---
 sidebar_label: onExpand
 title: onExpand event
-description: "간트가 전체 화면 모드로 전환될 때 트리거됩니다."
+description: "간트가 전체 화면으로 확장될 때 발생합니다"
 ---
 
 # onExpand
 
 ### Description
 
-@short: 간트가 전체 화면 모드로 전환될 때 트리거됩니다.
+@short: 간트가 전체 화면으로 확장될 때 발생합니다
 
 @signature: onExpand: () =\> void;
 
@@ -16,7 +16,7 @@ description: "간트가 전체 화면 모드로 전환될 때 트리거됩니다
 
 ~~~jsx
 gantt.attachEvent("onExpand", function (){
-    // 여기에 사용자 정의 로직을 작성하세요
+    // 여기에 코드 작성
 });
 ~~~
 
@@ -26,7 +26,7 @@ gantt.attachEvent("onExpand", function (){
 ### Details
 
 :::note
- 이 이벤트는 **fullscreen** 확장 기능에서 제공되므로, [gantt.plugins](api/method/plugins.md) 메서드를 통해 [fullscreen](guides/extensions-list.md#fullscreen) 플러그인을 활성화해야 합니다. 자세한 내용은 [전체 화면 모드](guides/fullscreen-mode.md) 문서를 참고하세요. 
+이 이벤트는 **fullscreen** 확장 기능에서 정의되므로 [fullscreen](guides/extensions-list.md#fullscreen) 플러그인을 [gantt.plugins](api/method/plugins.md) 메서드를 사용하여 활성화해야 합니다. 자세한 내용은 [Full Screen Mode](guides/fullscreen-mode.md) 문서를 참조하십시오.
 :::
 
 ### Related API
@@ -37,5 +37,4 @@ gantt.attachEvent("onExpand", function (){
 - [expand](api/method/expand.md)
 
 ### Related Guides
-- [전체 화면 모드](guides/fullscreen-mode.md)
-
+- [Full Screen Mode](guides/fullscreen-mode.md)

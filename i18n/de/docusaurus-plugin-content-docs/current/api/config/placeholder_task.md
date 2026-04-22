@@ -1,14 +1,14 @@
 ---
 sidebar_label: placeholder_task
 title: placeholder_task config
-description: "Fügt am Ende der Aufgabenliste eine leere Zeile hinzu, um das Bearbeiten von Aufgaben mit der Tastatur zu erleichtern"
+description: "fügt eine leere Zeile am Ende der Aufgabenliste hinzu, um die Bearbeitung von Aufgaben über die Tastatur zu erleichtern"
 ---
 
 # placeholder_task
 
 ### Description
 
-@short: Fügt am Ende der Aufgabenliste eine leere Zeile hinzu, um das Bearbeiten von Aufgaben mit der Tastatur zu erleichtern
+@short: Fügt am Ende der Aufgabenliste eine leere Zeile hinzu, um die Bearbeitung von Aufgaben über die Tastatur zu erleichtern
 
 @signature: placeholder_task: any
 
@@ -24,16 +24,16 @@ gantt.config.placeholder_task = {
 };
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
-- [Inline editing - keyboard navigation mode](https://docs.dhtmlx.com/gantt/samples/07_grid/12_inline_edit_key_nav.html)
+- [Inline-Bearbeitung - Tastatur-Navigationsmodus](https://docs.dhtmlx.com/gantt/samples/07_grid/12_inline_edit_key_nav.html)
 
 ### Details
 
-- Am Ende der Aufgabenliste wird automatisch eine leere placeholder task hinzugefügt.
-- Wenn die placeholder task über die UI bearbeitet wird und **gantt.updateTask()** aufgerufen wird, wird eine neue Aufgabe am Ende hinzugefügt.
-- Eine placeholder task kann durch Überprüfung der Eigenschaft type identifiziert werden:
+- Eine Platzhalter-Aufgabe wird automatisch am Ende der Aufgabenliste hinzugefügt.
+- Sobald sie über die UI bearbeitet wird und der Aufruf gantt.updateTask() empfangen wird, wird am Ende der Liste eine neue Aufgabe hinzugefügt.
+- Eine Platzhalter-Aufgabe kann anhand ihres Typswerts erkannt werden:
 
 ~~~js
 if(task.type == gantt.config.types.placeholder){
@@ -41,9 +41,8 @@ if(task.type == gantt.config.types.placeholder){
 }
 ~~~
 
-- Gantt löst die Events [onTaskCreated](api/event/ontaskcreated.md) und [onAfterTaskAdd](api/event/onaftertaskadd.md) aus, wenn eine placeholder task hinzugefügt wird.
-- Der [gantt.dataProcessor](guides/server-side.md) feuert das **onBeforeUpdate** Event für die placeholder task, sendet jedoch keine Backend-Anfragen.
+- Gantt feuert die [onTaskCreated](api/event/ontaskcreated.md) und [onAfterTaskAdd](api/event/onaftertaskadd.md) Ereignisse, wenn der Platzhalter eingefügt wird.
+- [gantt.dataProcessor](guides/server-side.md) wird das **onBeforeUpdate**-Ereignis für das Platzhalter-Item auslösen, produziert aber keine Backend-Anfragen.
 
 ### Related Guides
-- ["Inline-Bearbeitung im Grid"](guides/inline-editing.md#inlineeditingmodes)
-
+- [Inline-Bearbeitung im Grid](guides/inline-editing.md#inline-editing-modes)

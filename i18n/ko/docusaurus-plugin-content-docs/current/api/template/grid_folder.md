@@ -1,25 +1,25 @@
 ---
 sidebar_label: grid_folder
-title: grid_folder template
-description: "트리 컬럼의 상위 항목에 사용되는 아이콘을 정의합니다"
+title: grid_folder 템플릿
+description: "트리 열에서 상위 항목의 아이콘을 지정합니다"
 ---
 
 # grid_folder
 
-### Description
+### 설명
 
-@short: 트리 컬럼의 상위 항목에 사용되는 아이콘을 정의합니다
+@short: 트리 열의 상위 아이콘을 지정합니다
 
-@signature: grid_folder: (task: Task) =\> string;
+@signature: grid_folder: (task: Task) => string;
 
-### Parameters
+### 매개변수
 
-- `task` - (required) *Task* - 작업 객체
+- `task` - (필수) *Task* - 태스크 객체
 
-### Returns
-- ` text` - (string) - gantt에 렌더링될 html 텍스트
+### 반환값
+- ` text` - (string) - gantt에 렌더링될 HTML 텍스트
 
-### Example
+### 예제
 
 ~~~jsx
 gantt.templates.grid_folder = function(item) {

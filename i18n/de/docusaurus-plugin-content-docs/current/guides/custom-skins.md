@@ -5,19 +5,20 @@ sidebar_label: "Skins-Anpassung"
 
 # Skins-Anpassung
 
-Ab Version 9.0 verwenden Gantt-Skins CSS-Variablen, wodurch Sie die Komponente einfach anpassen und gestalten können.
+Ab Version 9.0 verwenden Gantt-Skins CSS-Variablen, die Sie zur Anpassung und Gestaltung nutzen können.
 
 
-[Change skin dynamically](https://docs.dhtmlx.com/gantt/samples/06_skins/06_dynamic_skin.html)
+[Skin dynamisch ändern](https://docs.dhtmlx.com/gantt/samples/06_skins/06_dynamic_skin.html)
 
 
-Wichtige CSS-Variablen:
+Key CSS Variables:
 
 ~~~css
 :root {
     --dhx-gantt-theme: terrace;
     --dhx-gantt-font-family: Inter, Helvetica, Arial, sans-serif;
     --dhx-gantt-font-size: 14px;
+
 
     --dhx-gantt-base-colors-white: #FFFFFF;
     --dhx-gantt-base-colors-select: #EFF3FF;
@@ -59,6 +60,7 @@ Wichtige CSS-Variablen:
 
     /* tasks */
 
+
     --dhx-gantt-task-blue: linear-gradient(180deg, #527CFF 0%, #9751FC 100%);
     --dhx-gantt-task-green: linear-gradient(180deg, #12D979 0%, #1ECDEB 100%);
     --dhx-gantt-task-violet: linear-gradient(180deg, #D071EF 0%, #EE71D5 100%);
@@ -90,31 +92,32 @@ Wichtige CSS-Variablen:
     --dhx-gantt-link-critical-background: var(--dhx-gantt-base-colors-error);
 
 }
+
 ~~~
 
-Alle diese Variablen befinden sich in der Datei **codebase/sources/less/src/themes/variables.less** innerhalb des Pakets.
+All variables can be found in the **codebase/sources/less/src/themes/variables.less** file of the package.
 
-## Wie man Skins anpasst
+## How to customize skins
 
-Die einfachste Möglichkeit, das Aussehen des Gantt-Diagramms zu verändern, besteht darin, die CSS-Variablen in Ihrem Stylesheet zu überschreiben. Zum Beispiel:
+Die einfachste Methode, das Erscheinungsbild des Gantt anzupassen, besteht darin, die relevanten CSS-Variablen in Ihrem Stylesheet zu überschreiben. Hier ist ein Beispiel:
 
 ~~~html
 <style>
 :root {
- /* Skalen */
+ /* scales */
   --dhx-gantt-scale-background: #8E8E8E;
   --dhx-gantt-base-colors-border-light: #C5C5C5;
   --dhx-gantt-base-colors-border: #DFE0E1;
   --dhx-gantt-scale-color: #FFF;
   --dhx-gantt-base-colors-icons: #00000099;
   
-  /* Aufgaben */
+  /* tasks */
   --dhx-gantt-task-background: #3db9d3;
   --dhx-gantt-task-color: #FFFFFF;
   --dhx-gantt-project-background: #6AA84F;
   --dhx-gantt-project-color: #FFFFFF;
 
-  /* Verbindungen */
+  /* links */
   --dhx-gantt-link-background: #ffa011;
   --dhx-gantt-link-background-hover: #ffa011;
 
@@ -123,27 +126,27 @@ Die einfachste Möglichkeit, das Aussehen des Gantt-Diagramms zu verändern, bes
 ~~~
 
 
-[Change skin dynamically](https://docs.dhtmlx.com/gantt/samples/06_skins/06_dynamic_skin.html)
+[Skin dynamisch ändern](https://docs.dhtmlx.com/gantt/samples/06_skins/06_dynamic_skin.html)
 
 
-Wenn Sie Variablen auf diese Weise setzen, werden die Standardstile durch Ihre eigenen ersetzt, sodass das Gantt-Diagramm Ihr bevorzugtes Aussehen verwendet.
+Durch die eindeutige Definition von Variablen auf diese Weise können Sie die Standardstile neu definieren, sodass Ihre benutzerdefinierten Stile auf den Gantt angewendet werden.
 
 :::note
-Um eine korrekte Vererbung der Werte im gesamten Theme zu gewährleisten, definieren Sie die Variablen auf dem :root-Element.
+Für eine korrekte Vererbung der Werte über das gesamte Theme hinweg definieren Sie Variablen im **:root**-Element.
 :::
 
-Wenn Sie diese Styles auf **:root**-Ebene definieren, ist sichergestellt, dass sie im gesamten Komponentenbaum korrekt vererbt werden. So werden alle abhängigen Styles automatisch aktualisiert, wenn Sie eine Variable ändern, von der andere abhängen.
+Es ist wichtig, diese Stile im **:root**-Element zu definieren, um eine ordnungsgemäße Vererbung und Anwendung im gesamten Baustein sicherzustellen. Dieser Ansatz stellt sicher, dass, wenn eine von anderen Variablen verwendete Variable neu definiert wird, sie die entsprechenden Stile im gesamten Baustein korrekt beeinflusst.
 
-Beispielsweise erbt die Variable `--dhx-gantt-scale-color` vom Haupt-Textfarben-Variable `--dhx-gantt-container-color`.
+Zum Beispiel erbt die Variable `--dhx-gantt-scale-color` von der primären Textfarb-Variablen `--dhx-gantt-container-color`.
 
-- Wenn Sie `--dhx-gantt-container-color` auf **:root**-Ebene neu definieren, wird `--dhx-gantt-scale-color` entsprechend angepasst.
+- Wenn Sie `--dhx-gantt-container-color` auf der **:root**-Ebene neu definieren, stellen Sie sicher, dass sich `--dhx-gantt-scale-color` entsprechend ändert. 
 
 ~~~html
 <style>
 :root {
     /* --dhx-gantt-scale-color und andere
-  Variablen, die von `--dhx-gantt-container-color` erben,
-  werden beeinflusst
+  Variablen, die `--dhx-gantt-container-color` erben,
+  werden betroffen sein
   */
   --dhx-gantt-container-color: #222;
 
@@ -151,105 +154,108 @@ Beispielsweise erbt die Variable `--dhx-gantt-scale-color` vom Haupt-Textfarben-
 </style>
 ~~~
 
-- Wenn Sie jedoch `--dhx-gantt-container-color` weiter unten im DOM, zum Beispiel innerhalb von **.gantt_container**, neu definieren, hat dies keinen Einfluss auf `--dhx-gantt-scale-color`.
+- Wenn Sie `--dhx-gantt-container-color` auf einer unteren Ebene im DOM-Baum neu definieren, z. B. innerhalb von **.gantt_container**, wirkt sich dies nicht auf die Variable `--dhx-gantt-scale-color` aus.
 
 ~~~html
 <style>
 .gantt_container {
-    /* Nur Elemente, die direkt 
-  --dhx-gantt-container-color verwenden, werden beeinflusst
+    /* nur Elemente, die direkt 
+  `use --dhx-gantt-container-color` betroffen sind
   */
   --dhx-gantt-container-color: #222;
 }
 </style>
 ~~~
 
-## Wie man den Quellcode verwendet
 
-dhtmlxGantt enthält Style-Dateien in verschiedenen Formaten:
+## How to use source codes
 
-- **codebase/dhtmlxgantt.css** - eine komprimierte CSS-Datei für Skins, bereit für die Produktion;
-- **codebase/sources/dhtmlxgantt.css** - eine lesbare, vorgefertigte CSS-Datei;
-- **codebase/sources/less/** - die originalen Less-Dateien für die Gantt-Skins.
+dhtmlxGantt wird mit Stil-Dateien in den folgenden Formen geliefert:
 
-Die Less-Dateien sind nützlich, wenn Sie bestehende Skins umfassend anpassen oder einen neuen Skin von Grund auf erstellen möchten.
+- **codebase/dhtmlxgantt.css** - eine vorkompilierte komprimierte CSS-Datei für Skins, einsatzbereit für die Produktion;
+- **codebase/sources/dhtmlxgantt.css** - vorkompilierte lesbare CSS-Dateien;
+- **codebase/sources/less/** - Quell-Less-Dateien der Gantt-Skins.
 
-## Wie man startet
+Letzteres kann für eine tiefe Anpassung vorhandener Skins oder zum Erstellen eines neuen Skins verwendet werden.
 
-Sie können **codebase/sources/less** wie ein NPM-Paket behandeln. Es enthält zwei Arten von Dateien:
+## How to start
 
-- Stylesheets;
-- Dateien mit Mikrovariablen-Deklarationen zur Feinabstimmung der Gantt-Ansicht oder zum Erstellen eines neuen Skins.
+Sie können **codebase/sources/less** als NPM-Paket initialisieren. 
+Die Quellen enthalten zwei Arten von Dateien: 
 
-## Wie man Skins baut
+- Stylesheets; 
+- Dateien mit der Deklaration von Mikro-Variablen, die Sie zum Feinabstimmen der Gantt-Ansicht oder zum Erstellen eines neuen Skins verwenden können.
 
-Führen Sie in **codebase/sources/less/** folgenden Befehl aus:
+## How to build skins
+
+In **codebase/sources/less/** ausführen:
 
 ~~~
 > npm install
 ~~~
 
-Nach Abschluss der Installation können Sie die CSS-Dateien neu erstellen mit:
+Nach Abschluss der Installation können Sie die CSS-Dateien mit den folgenden Befehlen neu bauen:
 
 ~~~
 > npm run build
 ~~~
 
-Oder um Änderungen zu überwachen und automatisch neu zu bauen:
+Oder 
 
 ~~~
 > npm run watch
 ~~~
 
-Diese Skripte kompilieren die CSS-Dateien aus den Quellen und legen sie im *codebase*-Ordner des Gantt-Pakets ab, wobei die bestehenden Dateien überschrieben werden.
+Das Skript baut CSS-Dateien aus den Quellen neu und legt sie in den *codebase*-Ordner des Gantt-Pakets ab, wobei die bestehenden Dateien ersetzt werden.
 
-## Struktur
+## Structure
 
-Hier ist die Ordnerstruktur für **less** in Version 9.0 (kann sich in zukünftigen Versionen ändern):
+Die Struktur des **less**-Ordners für Version 9.0 (kann sich in künftigen Versionen ändern) ist unten angegeben:
 
-### Bilder
+### Images
 
 - **./src/imgs** - SVG-Icons, die von allen Skins verwendet werden
-- **./src/iconfont** - Icons, die als Webfont vorliegen
+- **./src/iconfont** - Icons vorinstalliert in der Webschrift
 
-### Skin-Definitionen
+### Skin definitions
 
-Die Standardvariablen sind im Skin `terrace` gesetzt, während andere Skins diese Variablen überschreiben und zusätzliche Styles hinzufügen.
+Die Standard-Variablenmenge ist in der `terrace`-Skin definiert; andere Skins definieren die entsprechenden Variablen neu und fügen Stile hinzu.
 
 - **./src/themes**
-  - *./src/themes/variables.less* - gemeinsame Variablen für alle Skins, einschließlich `terrace`
-  - *./src/themes/contrast_black* - Variablen für den Kontrast-Schwarz-Skin
-  - *./src/themes/contrast_white* - Variablen für den Kontrast-Weiß-Skin
-  - *./src/themes/material* - Variablen für den Material-Skin
-  - *./src/themes/dark* - Variablen für den Dark-Skin
-  - *./src/themes/flat* - Variablen für den Flat-Skin
+  - *./src/themes/variables.less* - Gemeinsame Variablen, die von allen Skins verwendet werden, Skin `terrace`
+  - *./src/themes/contrast_black* - Kontrast-Schwarz-Skin-Variablen
+  - *./src/themes/contrast_white* - Kontrast-Weiß-Skin-Variablen
+  - *./src/themes/material* - Material-Skin-Variablen
+  - *./src/themes/dark* - Dunkel-Skin-Variablen
+  - *./src/themes/flat* - Flach-Skin-Variablen
 
-### Einstiegspunkte für den Skin-Bau
+### Entry points for building skins
 
 - theme.less
 - package.json
 
-## Eigenen Skin erstellen
 
-Um einen neuen Skin zu erstellen, kopieren und benennen Sie einen bestehenden Skin aus **sources/less/src/themes** um. Gehen Sie folgendermaßen vor:
+## Creating custom skin
 
-1) Kopieren und benennen Sie eine bestehende Datei um, zum Beispiel:
+Um eine neue Skin zu erstellen, können Sie eine der bestehenden Skins aus dem Ordner **sources/less/src/themes** kopieren und umbenennen. Folgen Sie den Schritten unten:
+
+1) Eine der bestehenden Dateien aus dem Ordner **sources/less/src/themes** kopieren und umbenennen, z. B.:
 
 ~~~
--> kopieren:
+-> copy:
 codebase/sources/less/src/themes/material.less
 
--> umbenennen in:
+-> rename to:
 codebase/sources/less/src/themes/custom.less
 ~~~
 
-2) Importieren Sie Ihre neue Datei in **sources/less/src/themes/index.less** wie folgt:
+2) Die neue Datei in **sources/less/src/themes/index.less** importieren, so:
 
 ~~~
 @import "./custom";
 ~~~
 
-Fügen Sie dann folgenden Inhalt hinzu:
+Und den Inhalt wie folgt hinzufügen, zum Beispiel:
 
 ~~~css
 :root[data-gantt-theme='custom'] {
@@ -261,11 +267,11 @@ Fügen Sie dann folgenden Inhalt hinzu:
 }
 ~~~
 
-Beachten Sie, dass Skin-Variablen unter `:root` mit dem Attributselektor `data-gantt-theme` definiert werden sollten.
+Beachten Sie, dass die Skin-Variablen unter den `:root`-Elementen definiert werden sollten, wobei der Selector `data-gantt-there` verwendet wird.
 
-Jedes neue Theme muss die Variable **--dhx-gantt-theme** mit dem Namen des Themes enthalten.
+Eine neue Theme muss die Variable **--dhx-gantt-theme** mit dem Theme-Namen enthalten.
 
-3) Bauen Sie die Skins neu mit:
+3) Skins neu bauen durch Ausführen von: 
 
 ~~~
 npm run build
@@ -273,16 +279,17 @@ npm run build
 
 
 :::note
-Beachten Sie, dass Gantt je nach verwendetem Skin einige Voreinstellungen für den Kalender anwenden kann. Wenn Sie einen neuen Skin durch Kopieren eines bestehenden erstellen, müssen Sie diese Einstellungen möglicherweise manuell im Gantt anpassen.
+Beachten Sie, dass Gantt möglicherweise einige vordefinierte Einstellungen am Kalender basierend auf dem angewendeten Skin vornimmt.
+Wenn Sie eine neue Skin durch Kopieren einer bestehenden erstellen, müssen Sie die entsprechenden Einstellungen für den Gantt möglicherweise manuell anwenden.
 :::
 
-## JS-Styling-Einstellungen
 
-Einige Stil-Aspekte des Gantt-Diagramms werden über JavaScript-Konfigurationen und nicht über CSS gesteuert. Beispiele sind:
+## JS styling settings
+
+Beachten Sie, dass nicht alle Aspekte des Gantt-Stylings über CSS gesteuert werden; einige Parameter werden aus der JavaScript-Konfiguration definiert, zum Beispiel die folgenden Eigenschaften:
 
 - [link_line_width](api/config/link_line_width.md)
 - [link_radius](api/config/link_radius.md)
 - [link_arrow_size](api/config/link_arrow_size.md)
 - [scale_height](api/config/scale_height.md)
 - [row_height](api/config/row_height.md)
-

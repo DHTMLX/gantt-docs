@@ -1,14 +1,14 @@
 ---
 sidebar_label: external_render
 title: external_render config
-description: "Fügt eine externe Komponente in das DOM ein"
+description: "rendert eine externe Komponente in das DOM"
 ---
 
 # external_render
 
 ### Description
 
-@short: Fügt eine externe Komponente in das DOM ein
+@short: Rendert eine externe Komponente in das DOM
 
 @signature: external_render: \{ isElement(element: any): boolean; renderElement(element: any, container: HTMLElement): void; \}
 
@@ -45,15 +45,16 @@ gantt.config.external_render = {
 };
 ~~~
 
+
 ### Details
 
-Das **external_render** Objekt enthält folgende Eigenschaften:
+Das **external_render** ist ein Objekt mit den folgenden Eigenschaften:
 
-- **isElement (element): boolean** - eine Funktion zur Überprüfung des übergebenen Elements. Sie erhält folgendes Argument:
-    - **_element_** - (*any*) - das von der **onrender** Funktion zurückgegebene Objekt.
-- **renderElement (element, container): void** - eine Funktion, die native Methoden verwendet, um Komponenten zu rendern. Sie akzeptiert folgende Argumente:
-    - **_element_** - (*any*) - das von der **onrender** Funktion zurückgegebene Objekt.
-    - **_container_** - (*HTMLElement*) - das DOM-Element, in das die native Komponente eingefügt wird.
+- **isElement (element): boolean** - Eine Funktion, die verwendet wird, um das bereitgestellte Element zu validieren. Verwendet folgendes Argument:
+    - **_element_** - (*any*) - ein Objekt, das von der **onrender**-Funktion zurückgegeben wird.
+- **renderElement (element, container): void** - Eine Funktion, die verwendet wird, um die nativen Methoden anzuwenden, um native Komponenten zu rendern. Verwendet die folgenden Argumente:
+    - **_element_** - (*any*) - ein Objekt, das von der **onrender**-Funktion zurückgegeben wird.
+    - **_container_** - (*HTMLElement*) - ein DOM-Element, an das die native Komponente angehängt wird.
 
 ### Change log
 - hinzugefügt in v7.1

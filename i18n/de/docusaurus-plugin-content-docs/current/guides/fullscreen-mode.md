@@ -5,15 +5,15 @@ sidebar_label: "Vollbildmodus"
 
 # Vollbildmodus
 
-Ab Version 3.3 bietet die Bibliothek die **fullscreen**-Erweiterung an.
+Ab der Version 3.3 enthält die Bibliothek die **fullscreen**-Erweiterung. 
 
-Mit dieser Erweiterung kann die Komponente mithilfe der FullScreen API in den Vollbildmodus wechseln, sofern dieser unterstützt wird ([Liste unterstützter Browser](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)).
+Diese Erweiterung bietet eine API, die die Komponente in den Vollbildmodus erweitert, indem sie nach Möglichkeit die FullScreen API verwendet ( [die Liste der unterstützten Browser](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API) ). 
 
 <div style="text-align:center;">![full_screen](/img/full_screen.png)</div>
 
-Für ältere Browser wird das Gantt-Diagramm einfach so gestreckt, dass es die Fenstergröße zu 100% ausfüllt.
+Für ältere Browser ermöglicht es einfach, Gantt auf 100 % der Fenstergröße zu erweitern.
 
-Um die Vollbildunterstützung zu aktivieren, schalten Sie das **fullscreen**-Plugin über die [gantt.plugins](api/method/plugins.md)-Methode ein:
+Um die Vollbild-Unterstützung zu aktivieren, aktiviere das **fullscreen**-Plugin über die [gantt.plugins](api/method/plugins.md) Methode:
 
 ~~~js
 gantt.plugins({
@@ -21,7 +21,7 @@ gantt.plugins({
 });
 ~~~
 
-Die Komponente selbst enthält keine eingebaute UI-Steuerung zum Umschalten des Vollbildmodus. Sie müssen also entweder selbst eine hinzufügen oder das folgende Beispiel verwenden:
+Die Komponente selbst hat keine UI-Steuerung, die diesen Modus umschaltet; Sie müssen ihn irgendwo auf Ihrer Seite hinzufügen oder den aus dem Beispiel übernehmen:
 
 ~~~js
 <input id="fullscreen_button" type="button" value="Toggle Fullscreen"/>
@@ -41,31 +41,29 @@ var button = document.getElementById("fullscreen_button");
 </script>
 ~~~
 
-Durch Klicken auf den Button wird das Gantt-Diagramm zwischen seiner Originalgröße und dem Vollbildmodus umgeschaltet.
+Ein Klick auf das Vollbild-Symbol verändert die Größe des Gantt vom Originalzustand in den Vollbildmodus und umgekehrt.
 
+[Vollbild](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
-[Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
+## API-Übersicht
 
+Es gibt zwei Methoden, die verwendet werden, um den Anzeigemodus des Gantt zu steuern:
 
-## API-Überblick
-
-Es gibt zwei Hauptmethoden, um den Anzeigemodus des Gantt-Diagramms zu steuern:
-
-- [expand](api/method/expand.md) - schaltet das Gantt-Diagramm in den Vollbildmodus
+- [expand](api/method/expand.md) - erweitert Gantt in den Vollbildmodus
 
 ~~~js
 gantt.expand();
 ~~~
 
-- [collapse](api/method/collapse.md) - stellt das Gantt-Diagramm vom Vollbildmodus wieder auf die normale Größe zurück
+- [collapse](api/method/collapse.md) - kehrt Gantt vom Vollbildmodus in den Normalmodus zurück
 
 ~~~js
 gantt.collapse();
 ~~~
 
-## Unterstützte Events
+## Die Liste der Ereignisse
 
-Die folgenden Events stehen zur Verfügung, um Änderungen am Vollbildmodus zu behandeln:
+Die unterstützten Ereignisse sind unten aufgeführt:
 
 - [onBeforeExpand](api/event/onbeforeexpand.md)
 - [onBeforeCollapse](api/event/onbeforecollapse.md)
@@ -73,72 +71,72 @@ Die folgenden Events stehen zur Verfügung, um Änderungen am Vollbildmodus zu b
 - [onCollapse](api/event/oncollapse.md)
 
 ~~~js
-// bevor Gantt auf Vollbild erweitert wird
+// bevor Gantt in den Vollbildmodus erweitert wird
 gantt.attachEvent("onBeforeExpand",function(){
-    // eigene Logik hier    
+    // beliebige eigene Logik hier    
     return true;
 });
 
-// bevor der Vollbildmodus verlassen wird
+// bevor Gantt den Vollbildmodus verlässt
 gantt.attachEvent("onBeforeCollapse",function(){
-    // eigene Logik hier    
+    // beliebige eigene Logik hier    
     return true;
 });
 
-// nachdem Gantt auf Vollbild erweitert wurde
+// wenn Gantt in den Vollbildmodus erweitert wird
 gantt.attachEvent("onExpand", function (){
-    // eigene Logik hier
+    // beliebige eigene Logik hier
 });
 
-// nachdem Gantt den Vollbildmodus verlassen hat
+// wenn Gantt den Vollbildmodus verlässt
 gantt.attachEvent("onCollapse", function (){
-    // eigene Logik hier
+    // beliebige eigene Logik hier
 });
 ~~~
 
-## Fullscreen API
+## Vollbild-API
 
-Das [fullscreen](guides/fullscreen-ext.md)-Objekt stellt vier Methoden zur Verfügung, um das Vollbildverhalten des Gantt-Diagramms (einschließlich anderer Elemente) zu steuern:
+Es gibt vier Methoden des [fullscreen](guides/fullscreen-ext.md) Objekts, die verwendet werden, um den Anzeigemodus des Gantt zusammen mit zusätzlichen Elementen zu steuern:
 
-- **expand()** - schaltet das Gantt-Diagramm in den Vollbildmodus
+- **expand()** - erweitert Gantt in den Vollbildmodus
 
 ~~~js
 gantt.ext.fullscreen.expand();
 ~~~
 
-- **collapse()** - verlässt den Vollbildmodus und stellt die normale Größe wieder her
+- **collapse()** - kehrt Gantt vom Vollbildmodus in den Normalmodus zurück
 
 ~~~js
 gantt.ext.fullscreen.collapse();
 ~~~
 
-- **toggle()** - wechselt zwischen Vollbild- und Normalmodus
+- **toggle()** - ruft die Methode **collapse()** auf, wenn Gantt in den Vollbildmodus erweitert ist, und die Methode **expand()** ansonsten
 
 ~~~js
 gantt.ext.fullscreen.toggle();
 ~~~
 
-- **getFullscreenElement()** - gibt das DOM-Element zurück, das beim Aufruf von **expand()** in den Vollbildmodus erweitert wird
+- **getFullscreenElement()** - gibt ein DOM-Element zurück, das durch die **expand()**-Methode in den Vollbildmodus erweitert wird. 
 
 ~~~js
 gantt.ext.fullscreen.getFullscreenElement();
 ~~~
 
-Standardmäßig gibt **getFullscreenElement()** den HTML-Container des Gantt-Diagramms zurück. Sie können diese Methode überschreiben, um im Vollbildmodus weitere Elemente einzubeziehen, wie [hier](guides/fullscreen-mode.md#ganttwithheadertoolbarinfullscreen) beschrieben.
+Standardmäßig gibt die Methode **getFullscreenElement()** ein HTML-Container des Gantt-Diagramms zurück. Sie können diese Methode neu definieren [um das Gantt mit zusätzlichen Elementen zum Vollbildmodus zu erweitern](guides/fullscreen-mode.md#gantt-with-the-headertoolbar-in-the-fullscreen).
 
-## Gantt mit Header/Toolbar im Vollbild
+## Gantt mit Kopfzeile/Symbolleiste im Vollbild
 
-Die Gantt-API ermöglicht es, den Vollbildmodus mithilfe der **getFullscreenElement()**-Methode des *fullscreen*-Objekts auf andere Elemente auszuweiten:
+Die Gantt-API bietet die Möglichkeit, das Gantt durch die **getFullscreenElement()**-Methode des *fullscreen*-Objekts in den Vollbildmodus zu erweitern:
 
 ~~~js
 gantt.ext.fullscreen.getFullscreenElement();
 ~~~
 
 :::note
-Standardmäßig gibt diese Methode den HTML-Container des Gantt-Diagramms zurück, sodass nur das Gantt-Diagramm in den Vollbildmodus wechselt.
+Standardmäßig gibt diese Methode ein HTML-Container des Gantt-Diagramms zurück. Das bedeutet, dass nur Gantt in den Vollbildmodus erweitert wird.
 :::
 
-Wenn Sie das Gantt-Diagramm zusammen mit zusätzlichen Elementen wie einem Header oder einer Toolbar im Vollbild anzeigen möchten, erstellen Sie einen eigenen Container auf Ihrer Seite, zum Beispiel:
+Falls Sie das Gantt im Vollbildmodus mit zusätzlichen Elementen (wie einer Kopfzeile oder Toolbar) darstellen möchten, müssen Sie der Seite einen benutzerdefinierten Container hinzufügen, wie folgt:
 
 ~~~html
 <div id="myCover">
@@ -150,7 +148,8 @@ Wenn Sie das Gantt-Diagramm zusammen mit zusätzlichen Elementen wie einem Heade
 </div>
 ~~~
 
-Überschreiben Sie dann die **getFullscreenElement()**-Methode, sodass Ihr eigener Container in den Vollbildmodus erweitert wird:
+
+Nachher müssen Sie die Methode **getFullscreenElement()** neu definieren, damit sie einen benutzerdefinierten Wurzelknoten zurückgibt, der in den Vollbildmodus erweitert wird:
 
 ~~~js
 gantt.ext.fullscreen.getFullscreenElement = function() {
@@ -159,37 +158,33 @@ gantt.ext.fullscreen.getFullscreenElement = function() {
 gantt.init("gantt_here");
 ~~~
 
-
 [Full Screen with additional elements](https://docs.dhtmlx.com/gantt/samples/02_extensions/26_full_screen_with_additional_elements.html)
 
+## Warum der Vollbildmodus nicht funktioniert?
 
-## Warum funktioniert der Vollbildmodus möglicherweise nicht?
+Die Vollbild-Erweiterung funktioniert nur, wenn Sie Gantt nicht daran hindern, in den Vollbildmodus zu wechseln.
 
-Die Vollbild-Erweiterung funktioniert nur, wenn Gantt in den Vollbildmodus wechseln darf.
+In Fällen, in denen der Gantt in einen Frame eingefügt wird, wo:
 
-Wenn sich das Gantt-Diagramm in einem iframe befindet, in dem:
+- die Eigenschaft **allowfullscreen** oder der Wert **allow="fullscreen"** fehlt
+- oder der Wert für die Eigenschaft **allow** nicht angegeben ist,
 
-- das **allowfullscreen**-Attribut oder die Berechtigung **allow="fullscreen"** fehlt
-- oder das **allow**-Attribut nicht "fullscreen" enthält
+der Gantt nicht in den Vollbildmodus wechseln kann (probieren Sie es in unserem Snippet-Tool ([Beispiel 1](https://snippet.dhtmlx.com/k72wjyzl), [Beispiel 2](https://snippet.dhtmlx.com/7jdrk6q5))). 
 
-kann Gantt nicht in den Vollbildmodus wechseln (testen Sie es in unserem Snippet-Tool: [Example 1](https://snippet.dhtmlx.com/k72wjyzl), [Example 2](https://snippet.dhtmlx.com/7jdrk6q5)).
+### Vollbild-Modus in Salesforce
 
-### Vollbildmodus in Salesforce
+Die Fullscreen-Erweiterung funktioniert nicht in Salesforce-Anwendungen, die Locker Service verwenden, da Locker die Fähigkeit blockiert, das Element in den Vollbildmodus zu wechseln.
 
-Die Fullscreen-Erweiterung funktioniert nicht in Salesforce-Anwendungen, die den [Locker Service](https://developer.salesforce.com/docs/atlas.en-us.238.0.lightning.meta/lightning/security_code.htm) verwenden, da Locker das Umschalten von Elementen in den Vollbildmodus blockiert.
+Genauer gesagt funktioniert die Fullscreen-Erweiterung nicht mit dem Lightning Aura Framework und mit Lightning Web Components, könnte aber mit dem Visualforce-Framework funktionieren.
 
-Konkret funktioniert die Erweiterung nicht mit **Lightning Aura** oder **Lightning Web Components**, könnte aber mit dem **Visualforce**-Framework funktionieren.
-
-Sie können testen, ob der Vollbildmodus in Ihrer App verfügbar ist, indem Sie dieses Snippet zu Ihrer Konfiguration hinzufügen:
+Sie können die Verfügbarkeit des Vollbildmodus in Ihrer App prüfen, indem Sie den folgenden Code-Schnipsel in den Konfigurationscode einfügen:
 
 ~~~js
 console.log("document.body.requestFullscreen", document.body.requestFullscreen)
 ~~~
 
-Wenn die Ausgabe `undefined` anzeigt, ist der Vollbildmodus deaktiviert und Gantt kann nicht in den Vollbildmodus wechseln.
-
+Wenn Sie im Output den Wert `undefined` sehen, bedeutet dies, dass die Funktion deaktiviert ist und es keine Möglichkeit gibt, Gantt zu erweitern.
 
 :::note
-Wenn die Vollbildunterstützung in einer Umgebung aktiviert ist, die diese nicht unterstützt, können Fehler auftreten, aber Gantt funktioniert weiterhin wie gewohnt.
+Wenn Sie die [Vollbild-Unterstützung](guides/extensions-list.md#fullscreen) in einer Umgebung aktivieren, die diese Funktion nicht unterstützt, können Fehler auftreten, aber Gantt wird weiter funktionieren.
 :::
-

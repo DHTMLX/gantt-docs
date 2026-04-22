@@ -1,31 +1,31 @@
 ---
 sidebar_label: onRowDragStart
-title: onRowDragStart event
-description: "Wird unmittelbar ausgelöst, bevor eine Zeile im Grid für die vertikale Neuordnung gezogen wird."
+title: onRowDragStart-Ereignis
+description: "Wird ausgelöst, bevor der Benutzer eine Zeile im Grid zieht, um sie vertikal neu anzuordnen"
 ---
 
 # onRowDragStart
 
 ### Description
 
-@short: Wird unmittelbar ausgelöst, bevor eine Zeile im Grid für die vertikale Neuordnung gezogen wird.
+@short: Führt aus, bevor der Benutzer eine Zeile des Grids zieht, um sie vertikal neu anzuordnen
 
 @signature: onRowDragStart: (id: string | number, target: HTMLElement, e: Event) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID der Aufgabe, die innerhalb des Grids gezogen wird
-- `target` - (required) *HTMLElement* - das HTML-Element, das die gezogene Aufgabe repräsentiert
-- `e` - (required) *Event* - das native Event-Objekt, das mit der Drag-Aktion verbunden ist
+- `id` - (erforderlich) *string | number* - die ID der Aufgabe, die der Benutzer im Grid zieht
+- `target` - (erforderlich) *HTMLElement* - ein HTML-Element der Aufgabe, die der Benutzer zieht
+- `e` - (erforderlich) *Event* - ein natives Event-Objekt
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder gestoppt wird (<b>false</b>)
+- `result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onRowDragStart", function(id, target, e) {
-    //benutzerdefinierte Logik kann hier hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
@@ -36,17 +36,14 @@ gantt.attachEvent("onRowDragStart", function(id, target, e) {
 ### Details
 
 :::note
-
-Dieses Event wird ausgelöst, wenn eine Aufgabe mit der Maus innerhalb des linken Grid-Bereichs gezogen wird. Es ist nur anwendbar, wenn die Option [order_branch](api/config/order_branch.md) aktiviert ist. Wenn die Zweig-Neuordnung deaktiviert ist, tritt dieses Event nicht auf.
- 
+Das Ereignis wird ausgelöst, wenn eine Aufgabe mit der Maus im linken Grid verschoben wird, während die Einstellung [order_branch](api/config/order_branch.md) aktiviert ist. Wenn die Branch-Reihenfolge deaktiviert ist, wird das Ereignis niemals aufgerufen.
 :::
 
-Dieses Event kann durch Rückgabe von *false* blockiert werden, wodurch das Starten des Ziehvorgangs verhindert wird.
+Das Ereignis ist blockierbar. Geben Sie *false* zurück, um das Ziehen abzubrechen.
 
 ### Related API
 - [onRowDragEnd](api/event/onrowdragend.md)
 - [order_branch](api/config/order_branch.md)
 
 ### Related Guides
-- ["Aufgaben neu anordnen"](guides/reordering-tasks.md)
-
+- [Aufgaben neu ordnen](guides/reordering-tasks.md)

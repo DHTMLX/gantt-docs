@@ -1,25 +1,27 @@
 ---
 sidebar_label: isSplitTask
-title: isSplitTask method
-description: "判断指定任务是否为拆分任务"
+title: isSplitTask 方法
+description: "检查指定任务是否已拆分"
 ---
 
 # isSplitTask
+
 :::info
- 此功能仅在 PRO 版本中可用。 
+此功能仅在 PRO 版中提供。
 :::
+
 ### Description
 
-@short: 判断指定任务是否为拆分任务
+@short: 检查指定任务是否已拆分
 
 @signature: isSplitTask: (task: Task) =\> boolean
 
 ### Parameters
 
-- `task` - (required) *Task* - 要检查的任务对象
+- `task` - (必填) *Task* - 任务对象
 
 ### Returns
-- ` isSplit` - (boolean) - 如果任务是拆分任务返回 true，否则返回 false
+- ` isSplit` - (boolean) - 当任务被拆分时为 true，否则为 false
 
 ### Example
 
@@ -31,7 +33,6 @@ if(gantt.isSplitTask(task)){
   // 执行相应操作
 }
 ~~~
-
 
 ### Related Guides
 - [拆分任务](guides/split-tasks.md)

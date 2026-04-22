@@ -1,14 +1,14 @@
 ---
 sidebar_label: autosize
-title: autosize config
-description: "Автоматически подстраивает размер диаграммы Ганта для отображения всех задач без прокрутки"
+title: Конфигурация autosize
+description: "заставляет диаграмму Ганта автоматически изменять размер, чтобы отображать все задачи без прокрутки"
 ---
 
 # autosize
 
 ### Description
 
-@short: Автоматически подстраивает размер диаграммы Ганта для отображения всех задач без прокрутки
+@short: Диаграмма Ганта автоматически изменяет размер, чтобы показывать все задачи без прокрутки
 
 @signature: autosize: boolean | string
 
@@ -24,69 +24,66 @@ gantt.init("gantt_here");
 
 ### Details
 
-Настройка 'autosize' управляет тем, будет ли диаграмма Ганта подстраиваться под данные внутри контейнера с использованием внутренних скроллбаров или изменять размер контейнера для отображения всех данных без внутренней прокрутки:
+Параметр конфигурации `autosize` определяет, будет ли Gantt подгонять данные под размер контейнера, в котором она инициализирована, и показывать внутренние полосы прокрутки, или изменять размер самого контейнера, чтобы показать все данные без внутренних прокруток:
 
-- [пример с размерами div диаграммы Ганта, заданными через CSS](https://snippet.dhtmlx.com/5/b4d4d1b80) - внутренние скроллбары появляются при необходимости
-- [пример, где размеры div диаграммы Ганта рассчитываются компонентом](https://snippet.dhtmlx.com/5/c278b3859) - внутренние скроллбары отключены
+- [пример с размерами div Gantt, заданными в CSS](https://snippet.dhtmlx.com/2m48u5oz) - внутренние полосы прокрутки активны при необходимости
+- [пример с размерами div Gantt, рассчитанными компонентом](https://snippet.dhtmlx.com/syzmiqwt) - внутренние полосы прокрутки отключены
 
-Если диаграмма Ганта должна вписываться в определённую область на странице, размер контейнера должен управляться вручную:
+В случае, если диаграмма Ганта должна вписаться в заданную область на странице, размер контейнера диаграммы должен управляться вручную:
 
-- autosize должен быть отключен
-- ширина и высота div должны задаваться либо через HTML-верстку при использовании адаптивного решения, либо с помощью кастомного кода.
+- отключено авторазмерирование
+- ширина/высота div должны вычисляться либо HTML-разметкой, если используется готовое решение для адаптивной верстки, либо вручную кодом
 
-## Прокрутка к скрытым элементам
+## Scrolling to hidden elements
 
-По умолчанию, Gantt автоматически прокручивается при использовании методов [showTask](api/method/showtask.md) или [showDate](api/method/showdate.md).
-Однако, когда **autosize** активен, Gantt расширяет размер контейнера, чтобы сделать элемент видимым на странице, вместо прокрутки к нему.
+В режиме по умолчанию диаграмма Ганта прокручивается автоматически, когда вы используете методы [`showTask()`](api/method/showtask.md) или [`showDate()`](api/method/showdate.md). Но если включено значение `autosize`, диаграмма Ганта увеличивает размер своего контейнера, чтобы отобразиться на странице вместо того, чтобы показывать скрытый элемент.
 
-Универсального решения для этого нет, так как на странице могут быть и другие элементы, требующие прокрутки. Поэтому решение зависит от конкретной страницы или настройки приложения.
+Нет универсального способа избавиться от проблемы, потому что на странице могут быть другие элементы помимо Gantt, и некоторые элементы тоже требуют прокрутки. Поэтому проблему следует решать в зависимости от конфигурации страницы/приложения.
 
-В *простом* варианте Gantt может располагаться до или после других элементов, и прокрутка страницы работает корректно.
+В простой конфигурации диаграмма Ганта может располагаться перед некоторыми элементами вашего приложения или после них. Она может работать корректно, если прокручивать страницу.
 
-В *сложном* варианте контейнер Gantt может находиться внутри других контейнеров, которые сами вложены друг в друга. 
-В таких случаях необходимо вручную прокручивать только нужные элементы.
+В сложной конфигурации контейнер Gantt может быть размещен внутри других контейнеров, которые также могут находиться внутри других контейнеров. В этом случае нужно прокручивать только те элементы, которые вам необходимы.
 
-Один из способов прокрутить страницу к нужному элементу - использовать метод **element.scrollIntoView**:
+Один из способов прокрутки страницы к нужному элементу — использовать метод `element.scrollIntoView()`:
 
 ~~~js
-var attr = gantt.config.task_attribute;
-var timelineElement = document.querySelector(".gantt_task_line["+attr+"='"+id+"']");
-if(timelineElement)
-    timelineElement.scrollIntoView({block:"center"});
+const taskAttribute = gantt.config.task_attribute;
+const timelineElement = document.querySelector(`.gantt_task_line[${taskAttribute}='${id}']`);
+
+timelineElement?.scrollIntoView({ block: "center" });
 ~~~
 
-Здесь `id` - это ID задачи, которую нужно показать.
+где id — идентификатор задачи, которую нужно показать.
 
-Другой вариант - переопределить метод [showTask](api/method/showtask.md) или [showDate](api/method/showdate.md) Gantt:
+Другой способ — изменить метод [`showTask()`] или [`showDate()`] диаграммы Ганта:
 
 ~~~js
-var showTask = gantt.showTask;
+const defaultShowTask = gantt.showTask;
 
-gantt.showTask = function(id){
-  showTask.apply(this, [id]);
-  var attr = gantt.config.task_attribute;
-  var timelineElement = document.querySelector(".gantt_task_line["+attr+"='"+id+"']");
-  if(timelineElement)
-    timelineElement.scrollIntoView({block:"center"});
+gantt.showTask = function(id) {
+    defaultShowTask.apply(this, [id]);
+    const taskAttribute = gantt.config.task_attribute;
+    const timelineElement = document.querySelector(`.gantt_task_line[${taskAttribute}='${id}']`);
+
+    timelineElement?.scrollIntoView({ block: "center" });
 };
 ~~~
 
-Также можно создать кастомную функцию для показа задачи:
+или создать пользовательскую функцию показа задачи:
 
 ~~~js
-function showTask(id){
-  gantt.showTask(id);
-  var attr = gantt.config.task_attribute;
-  var timelineElement = document.querySelector(".gantt_task_line["+attr+"='"+id+"']");
-    if(timelineElement)
-      timelineElement.scrollIntoView({block:"center"});
-}
+const showTask = (id) => {
+    gantt.showTask(id);
+    const taskAttribute = gantt.config.task_attribute;
+    const timelineElement = document.querySelector(`.gantt_task_line[${taskAttribute}='${id}']`);
+
+    timelineElement?.scrollIntoView({ block: "center" });
+};
 ~~~
 
 :::note
-Sample: [Прокрутка к указанному элементу](https://snippet.dhtmlx.com/or73u6a5) 
+Пример: [Scrolling to the specified element](https://snippet.dhtmlx.com/or73u6a5)
 :::
 
 ### Related API
 - [autosize_min_width](api/config/autosize_min_width.md)
-

@@ -1,23 +1,23 @@
 ---
 sidebar_label: getLightboxSection
-title: getLightboxSection method
-description: "返回 lightbox 中某个 section 的对象"
+title: getLightboxSection 方法
+description: "返回光箱分区的对象"
 ---
 
 # getLightboxSection
 
 ### Description
 
-@short: 返回 lightbox 中某个 section 的对象
+@short: 返回光箱分区的对象
 
 @signature: getLightboxSection: (name: string | number) =\> LightboxSectionState
 
 ### Parameters
 
-- `name` - (required) *string | number* -    section 的名称
+- `name` - (required) *string | number* - 该分区的名称
 
 ### Returns
-- ` obj` - (LightboxSectionState) - section 对象
+- ` obj` - (LightboxSectionState) - 该分区对象
 
 ### Example
 
@@ -42,22 +42,24 @@ time.setValue(null,{
 
 该 section 对象包含以下成员:
 
-## 属性
+## Properties
 
-- **section** - (*object*) - section 的配置对象
-    - **_id_** - (*string*) - section 的 id
-    - **_name_** - (*string*) - section 的名称。gantt 会基于此名称从 **locale.labels** 集合中获取对应的标签。例如，对于 'description' section，标签取自 **gantt.locale.labels.section_description**
-    - **_height_** - (*number*) - section 的高度
-    - **_map_to_** - (*string*) - 绑定到编辑器的属性名
-    - **_type_** - (*string*) - 编辑器的类型
-    - **_focus_** - (*boolean*) - 若为 true，当 lightbox 打开时该字段将获得焦点
-- **node** - (*HTMLElement*) - 包含 section 内容的 div 元素
-- **header** - (*HTMLElement*) - 包含 section 头部的 div 元素
-- **control** - (*HTMLCollection*) - section 中使用的控件集合
+- **section** - (*object*) - 该分区的配置对象
+    - **_id_** - (*string*) - 该分区的 id
+    - **_name_** - (*string*) - 该分区的名称。根据名称，gantt 会从 **locale.labels** 集合中获取该分区的标签。例如，对于 'description' 分区，标签将被取为 **gantt.locale.labels.section_description**
+    - **_height_** - (*number*) - 该分区的高度
+    - **_map_to_** - (*string*) - 映射到编辑器的属性名称
+    - **_type_** - (*string*) - 编辑器类型
+    - **_focus_** - (*boolean*) - 如果设置为 *true*，在打开光箱时相关字段将获得焦点
+- **node** - (*HTMLElement*) - 一个包含分区主体的 div
+- **header** - (*HTMLElement*) - 一个包含分区头部的 div
+- **control** - (*HTMLCollection*) - 分区中使用的控件集合
 
-## 方法
 
-- **getValue (): any** - 返回 section 的数据对象
-- **setValue (value, valueObject): any** - 给 section 赋值。参数可以是单个值，也可以是包含多个值的对象（当 section 包含多个控件时）
-    - **_value_** - (*any*) - 要设置的值
-    - **_valueObject?_** - (*CustomObject*) - 可选，包含额外属性的对象
+  
+## Methods
+
+- **getValue (): any** - 返回该分区的数据对象
+- **setValue (value, valueObject): any** - 为该分区设置值。作为参数，该方法接收一个值（如果分区有多个控件，则为包含各值的对象），需要被设置
+    - **_value_** - (*any*) - 该分区的一个值
+    - **_valueObject?_** - (*CustomObject*) - 可选，是一个具有任意属性的对象

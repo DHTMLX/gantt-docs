@@ -1,22 +1,26 @@
 ---
 sidebar_label: getSlack
-title: getSlack method
-description: "确定一个任务在当前持续时间单位内，在影响其他任务之前还有多少时间余量"
+title: getSlack 方法
+description: "检查在当前持续时间单位内，一个任务在开始影响其他任务之前还能剩余多少时间"
 ---
 
 # getSlack
 
+:::info
+The **getSlack** 方法仅在 PRO 版中可用。
+:::
+
 ### Description
 
-@short: 确定一个任务在当前持续时间单位内，在影响其他任务之前还有多少时间余量
+@short: 检查在当前持续时间单位内，一个任务在开始影响其他任务之前还能剩余多少时间
 
 ### Parameters
 
-- `task1` - (required) *object* - 第一个要检查余量的任务对象
-- `task2` - (required) *object* - 第二个要检查余量的任务对象
+- `task1` - (required) *object* - 要检查 slack 的第 1 个任务对象
+- `task2` - (required) *object* - 要检查 slack 的第 2 个任务对象
 
 ### Returns
-- ` slack` - (number,string) - 两个任务之间的余量，单位为当前持续时间单位；如果任务之间没有链接，则返回 'Infinity'
+- ` slack` - (number,string) - 两个任务之间的 slack，单位为当前持续时间单位，或 'Infinity'，如果任务未链接
 
 ### Example
 
@@ -41,12 +45,12 @@ gantt.getSlack(gantt.getTask(2), gantt.getTask(3)); // -> 1  /*!*/
 ~~~
 
 ### Related samples
-- [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
+- [关键路径](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 ### Details
 
-:::note
- **getSlack** 方法已被弃用。请改用以下方法获取任务的自由余量或总余量: 
+:::warning
+The **getSlack** 方法已弃用。请使用以下方法获取任务的自由缓冲时间和总缓冲时间：
 :::
 
 ~~~js
@@ -55,16 +59,9 @@ gantt.getFreeSlack(task);
 gantt.getTotalSlack(task);
 ~~~
 
-<br>
-:::info
- **getSlack** 方法仅在 PRO 版本中可用。 
-:::
-
 :::note
- 该方法属于 **critical_path** 扩展的一部分，请确保在页面中包含此扩展。更多细节请参阅 [关键路径](guides/critical-path.md) 文章。 
+该方法在 **critical_path** 扩展中定义，因此您需要在页面中引入它。请在 [关键路径](guides/critical-path.md) 文章中了解详细信息。
 :::
-
-![iscritical_path](/img/iscritical_path.png)
 
 ### Related API
 - [highlight_critical_path](api/config/highlight_critical_path.md)
@@ -73,4 +70,3 @@ gantt.getTotalSlack(task);
 
 ### Related Guides
 - [关键路径](guides/critical-path.md)
-

@@ -1,7 +1,7 @@
 ---
 sidebar_label: scroll_on_click
-title: scroll_on_click config
-description: "Bestimmt, ob die Timeline beim Klicken auf eine Aufgabe automatisch scrollen soll, um die ausgewählte Aufgabe anzuzeigen"
+title: scroll_on_click Konfiguration
+description: "gibt an, ob der Timeline-Bereich beim Auswählen gescrollt werden soll, um die ausgewählte Aufgabe anzuzeigen"
 ---
 
 # scroll_on_click
@@ -19,4 +19,4 @@ gantt.config.scroll_on_click= false;
 gantt.init('gantt_here');
 ~~~
 
-**Default value:** true
+**Standardwert:** true

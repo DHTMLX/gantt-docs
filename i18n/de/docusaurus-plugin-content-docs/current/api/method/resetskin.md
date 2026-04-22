@@ -1,14 +1,14 @@
 ---
 sidebar_label: resetSkin
-title: resetSkin method
-description: "Berechnet die Einstellungen des Skins basierend auf der verknüpften Skin-CSS-Datei neu"
+title: resetSkin Methode
+description: "Berechnet die Skin-Einstellungen aus der zugehörigen Skin-CSS-Datei neu"
 ---
 
 # resetSkin
 
 ### Description
 
-@short: Berechnet die Einstellungen des Skins basierend auf der verknüpften Skin-CSS-Datei neu
+@short: Berechnet die Skin-Einstellungen aus der zugehörigen Skin-CSS-Datei neu
 
 @signature: resetSkin: () =\> void
 
@@ -38,7 +38,5 @@ changeSkin('meadow');
 ### Details
 
 :::note
-
-Diese Methode ist dafür vorgesehen, wenn der Skin dynamisch geändert wird
- 
+Nur verwendet, wenn der Skin dynamisch geändert wird
 :::

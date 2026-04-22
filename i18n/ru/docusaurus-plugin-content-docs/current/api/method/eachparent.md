@@ -1,22 +1,21 @@
 ---
 sidebar_label: eachParent
-title: eachParent method
-description: "перебирает всех родительских задач для заданной задачи на диаграмме Ганта"
+title: Метод eachParent
+description: "перебирает все родительские задачи указанной задачи на диаграмме Гантта"
 ---
 
 # eachParent
 
 ### Description
 
-@short: Перебирает всех родительских задач для заданной задачи на диаграмме Ганта
+@short: Перебирает все родительские задачи указанной задачи на диаграмме Гантта
 
-@signature: eachParent: (code: GanttCallback, startTask: string | number, master?: any) =\> void
+@signature: eachParent: (code: GanttCallback, startTask: string | number, master?: any) => void
 
 ### Parameters
 
-- `code` - (required) *function* - функция обратного вызова, которая обрабатывает каждый объект задачи
-- `startTask` - (required) *string | number* -             ID задачи, для которой будут перебраны родительские задачи
-- `master` - (optional) *object* - контекстный объект, используемый как 'this' внутри функции обратного вызова
+- `code` - (обязательно) *function* - функция, которая будет перебирать задачи. Принимает объект задачи в качестве параметра
+- `startTask` - (обязательно) *string | number* - id элемента, родительские задачи которого следует перебирать
 
 ### Example
 
@@ -28,4 +27,3 @@ gantt.eachParent(function(task){
 
 ### Related API
 - [calculateTaskLevel](api/method/calculatetasklevel.md)
-

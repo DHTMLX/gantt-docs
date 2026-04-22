@@ -1,23 +1,23 @@
 ---
 sidebar_label: isTaskExists
-title: isTaskExists method
-description: "주어진 ID를 가진 태스크가 존재하는지 확인합니다."
+title: isTaskExists 메서드
+description: "지정된 작업이 존재하는지 확인합니다"
 ---
 
 # isTaskExists
 
 ### Description
 
-@short: 주어진 ID를 가진 태스크가 존재하는지 확인합니다.
+@short: 지정된 작업이 존재하는지 확인합니다
 
 @signature: isTaskExists: (id: string | number) =\> boolean
 
 ### Parameters
 
-- `id` - (required) *string | number* -    태스크 ID
+- `id` - (필수) *string | number* -    작업 아이디
 
 ### Returns
-- ` task` - (boolean) - <i>true</i> 태스크가 존재할 경우, 그렇지 않으면 <i>false</i>
+- ` task` - (boolean) - <i>true</i>, 해당 작업이 존재하면. 그렇지 않으면, <i>false</i>
 
 ### Example
 

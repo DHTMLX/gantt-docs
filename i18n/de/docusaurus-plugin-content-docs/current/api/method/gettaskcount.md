@@ -1,19 +1,19 @@
 ---
 sidebar_label: getTaskCount
 title: getTaskCount method
-description: "gibt die Gesamtanzahl der aktuell im Gantt-Chart geladenen Aufgaben zurück"
+description: "liefert die Anzahl der aktuell im Gantt geladenen Aufgaben"
 ---
 
 # getTaskCount
 
 ### Description
 
-@short: Gibt die Gesamtanzahl der aktuell im Gantt-Chart geladenen Aufgaben zurück
+@short: Liefert die Anzahl der aktuell im Gantt geladenen Aufgaben
 
 @signature: getTaskCount: () =\> number
 
 ### Returns
-- ` count` - (number) - die Gesamtanzahl der Aufgaben im Zeitplan
+- `count` - (number) - die Anzahl der Aufgaben im Zeitplan
 
 ### Example
 
@@ -23,4 +23,3 @@ gantt.getTaskCount();
 
 ### Related API
 - [getVisibleTaskCount](api/method/getvisibletaskcount.md)
-

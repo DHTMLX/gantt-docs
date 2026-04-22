@@ -1,38 +1,36 @@
 ---
 sidebar_label: onTaskDblClick
-title: onTaskDblClick event
-description: "Wird ausgelöst, wenn eine Aufgabe doppelt angeklickt wird"
+title: onTaskDblClick-Ereignis
+description: "Wird ausgelöst, wenn der Benutzer eine Aufgabe doppelt anklickt"
 ---
 
 # onTaskDblClick
 
 ### Description
 
-@short: Wird ausgelöst, wenn eine Aufgabe doppelt angeklickt wird
+@short: Wird ausgelöst, wenn der Benutzer eine Aufgabe doppelt anklickt
 
 @signature: onTaskDblClick: (id: string, e?: Event) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string* - die ID der Aufgabe, die doppelt angeklickt wurde
-- `e` - (optional) *Event* - das native Event-Objekt
+- `id` - (erforderlich) *string* - die ID der doppelt geklickten Aufgabe
 
 ### Returns
-- ` result` - (boolean) - gibt an, ob die Standardaktion des Events ausgeführt werden soll (<b>true</b>) oder verhindert wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskDblClick", function(id,e){
-    // Hier kann benutzerdefinierte Logik hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
 
 ### Details
 
-Dieses Event kann blockiert werden. Wenn false zurückgegeben wird, wird das Standardverhalten - das Öffnen der Aufgabendetails - verhindert.
+Das Ereignis ist blockierbar. Die Rückgabe von false wird den Standard-Handler abbrechen (das Öffnen der Aufgabendetails)
 
 ### Related API
 - [onTaskClick](api/event/ontaskclick.md)
-

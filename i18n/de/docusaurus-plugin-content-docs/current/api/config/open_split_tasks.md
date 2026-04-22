@@ -1,14 +1,14 @@
 ---
 sidebar_label: open_split_tasks
-title: open_split_tasks config
-description: "Ermöglicht das Erweitern oder Zusammenklappen von Split-Tasks durch Klicken auf die +/- Schaltfläche"
+title: open_split_tasks Konfiguration
+description: "Ermöglicht das Erweitern bzw. das Einklappen von Split-Tasks durch Klicken auf den +/- Button"
 ---
 
 # open_split_tasks
 
 ### Description
 
-@short: Ermöglicht das Erweitern oder Zusammenklappen von Split-Tasks durch Klicken auf die +/- Schaltfläche
+@short: Ermöglicht das Erweitern bzw. das Einklappen von Split-Tasks durch Klicken auf den +/- Button
 
 @signature: open_split_tasks: boolean
 
@@ -19,11 +19,11 @@ gantt.config.open_split_tasks = true;
 ~~~
 
 ### Related samples
-- [Expand and collapse split tasks](https://docs.dhtmlx.com/gantt/samples/04_customization/21_open_split_task.html)
+- [Split-Tasks erweitern und einklappen](https://docs.dhtmlx.com/gantt/samples/04_customization/21_open_split_task.html)
 
 ### Details
 
-![Erweitern eines Split-Tasks](/img/expand_split_task.png)
+![Split-Task erweitern](/img/expand_split_task.png)
 
 ### Related Guides
-- [Split Tasks](guides/split-tasks.md)
+- [Split-Aufgaben](guides/split-tasks.md#expandingcollapsingsplittasks)

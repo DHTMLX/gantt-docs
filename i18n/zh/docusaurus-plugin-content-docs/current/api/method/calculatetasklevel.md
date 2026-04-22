@@ -1,23 +1,23 @@
 ---
 sidebar_label: calculateTaskLevel
 title: calculateTaskLevel method
-description: "计算任务在层级结构中的嵌套深度"
+description: "计算任务的嵌套级别"
 ---
 
 # calculateTaskLevel
 
 ### Description
 
-@short: 计算任务在层级结构中的嵌套深度
+@short: 计算任务的嵌套级别
 
-@signature: calculateTaskLevel: (task: Task) =\> number
+@signature: calculateTaskLevel: (task: Task) => number
 
 ### Parameters
 
-- `task` - (required) *Task* - 需要评估的任务对象
+- `task` - (required) *Task* - 任务对象
 
 ### Returns
-- ` level` - (number) - 任务在树状结构中的深度级别，起始值为零
+- ` level` - (number) - 树层级中的任务等级（从零开始编号）
 
 ### Example
 
@@ -45,4 +45,3 @@ gantt.attachEvent("onTaskCreated", function(task){
 ### Related API
 - [calculateEndDate](api/method/calculateenddate.md)
 - [calculateDuration](api/method/calculateduration.md)
-

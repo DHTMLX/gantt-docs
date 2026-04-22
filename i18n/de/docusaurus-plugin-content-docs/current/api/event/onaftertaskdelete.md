@@ -1,30 +1,29 @@
 ---
 sidebar_label: onAfterTaskDelete
-title: onAfterTaskDelete event
-description: "Wird unmittelbar ausgelöst, nachdem ein Task vom Benutzer gelöscht wurde"
+title: onAfterTaskDelete Event
+description: "Wird ausgelöst, nachdem der Benutzer eine Aufgabe gelöscht hat"
 ---
 
 # onAfterTaskDelete
 
 ### Description
 
-@short: Wird unmittelbar ausgelöst, nachdem ein Task vom Benutzer gelöscht wurde
+@short: Wird ausgelöst, nachdem der Benutzer eine Aufgabe gelöscht hat
 
 @signature: onAfterTaskDelete: (id: string | number, task: Task) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID des Tasks
+- `id` - (required) *string | number* - die Task-ID
 - `task` - (required) *Task* - das Task-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterTaskDelete", function(id,task){
-    //hier kann benutzerdefinierte Logik hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related API
 - [deleteTask](api/method/deletetask.md)
-

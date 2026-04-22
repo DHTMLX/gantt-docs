@@ -1,22 +1,23 @@
 ---
 sidebar_label: serialize
 title: serialize method
-description: "wandelt die Daten in JSON- oder XML-Format um"
+description: "Serialisiert die Daten in JSON- oder XML-Format"
 ---
 
 # serialize
 
 ### Description
 
-@short: Wandelt die Daten in JSON- oder XML-Format um
+@short: Serializes the data into JSON or XML format
 
 @signature: serialize: (type?: string) =\> any
 
 ### Parameters
-- `type` - (optional) *string* -  	gibt das Format für die Serialization an. Mögliche Werte: 'json' (Standard ), 'xml'.
+
+- `type` - (optional) *string* - das Format, in das die Daten serialisiert werden. <br/> Mögliche Werte: 'json' (<i>Standard</i> ), 'xml'. 
 
 ### Returns
-- ` data` - (object) - gibt ein Gantt-Datenobjekt zurück
+- ` data` - (object) - ein Gantt-Datenobjekt
 
 ### Example
 
@@ -28,6 +29,5 @@ gantt.serialize('xml');
 - [parse](api/method/parse.md)
 
 ### Related Guides
-- ["Serialisierung von Daten in XML und JSON"](guides/serialization.md)
-- ["Unterstützte Datenformate"](guides/supported-data-formats.md)
-
+- [Serializing Data into XML and JSON](guides/serialization.md)
+- [Supported Data Formats](guides/supported-data-formats.md)

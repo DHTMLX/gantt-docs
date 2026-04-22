@@ -1,14 +1,14 @@
 ---
 sidebar_label: open_split_tasks
 title: open_split_tasks config
-description: "позволяет разворачивать или сворачивать split задачи при клике на кнопку +/-"
+description: "Позволяет разворачивать/сворачивать разделённые задачи кликом по кнопке +/-"
 ---
 
 # open_split_tasks
 
 ### Description
 
-@short: Позволяет разворачивать или сворачивать split задачи при клике на кнопку +/-
+@short: Позволяет разворачивать/свертывать разделённые задачи кликом по кнопке +/-
 
 @signature: open_split_tasks: boolean
 
@@ -19,11 +19,11 @@ gantt.config.open_split_tasks = true;
 ~~~
 
 ### Related samples
-- [Expand and collapse split tasks](https://docs.dhtmlx.com/gantt/samples/04_customization/21_open_split_task.html)
+- [Развернуть и свернуть разделённые задачи](https://docs.dhtmlx.com/gantt/samples/04_customization/21_open_split_task.html)
 
 ### Details
 
-![Разворачивание split задачи](/img/expand_split_task.png)
+![Развёртывание разделённых задач](/img/expand_split_task.png)
 
 ### Related Guides
-- [Разделение задач](guides/split-tasks.md#expandingandcollapsingsplittasks)
+- [Разделение задач](guides/split-tasks.md#expandingcollapsingsplittasks)

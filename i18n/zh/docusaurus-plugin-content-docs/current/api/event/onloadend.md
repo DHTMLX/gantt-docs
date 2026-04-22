@@ -1,21 +1,21 @@
 ---
 sidebar_label: onLoadEnd
-title: onLoadEnd event
-description: "当数据从源完全加载完成时触发"
+title: onLoadEnd 事件
+description: "在数据源加载完成后触发"
 ---
 
 # onLoadEnd
 
 ### Description
 
-@short: 当数据从源完全加载完成时触发
+@short: 数据源加载完成后触发
 
 @signature: onLoadEnd: (url: string, type: string) =\> void;
 
 ### Parameters
 
-- `url` - (required) *string* - 服务器的URL（可以是静态文件或返回数据的服务器端脚本）
-- `type` - (required) *string* - ('json', 'xml', 'oldxml') 指定加载的数据类型
+- `url` - (required) *string* - 服务器端 url（可能是静态文件或输出数据的服务器端脚本）
+- `type` - (required) *string* - ('json', 'xml', 'oldxml') 数据类型
 
 ### Example
 
@@ -34,4 +34,3 @@ gantt.attachEvent("onLoadEnd", function(url, type){
 - [onBeforeDataRender](api/event/onbeforedatarender.md)
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
-

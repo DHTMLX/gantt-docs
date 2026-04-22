@@ -1,7 +1,7 @@
 ---
 sidebar_label: onAutoScheduleCircularLink
-title: onAutoScheduleCircularLink event
-description: "在自动排程过程中检测到依赖循环时触发"
+title: onAutoScheduleCircularLink 事件
+description: "在自动调度过程中发现某些依赖循环时触发"
 ---
 
 # onAutoScheduleCircularLink
@@ -10,29 +10,29 @@ description: "在自动排程过程中检测到依赖循环时触发"
 :::
 ### Description
 
-@short: 在自动排程过程中检测到依赖循环时触发
+@short: 在自动调度过程中发现某些依赖循环时触发
 
 @signature: onAutoScheduleCircularLink: (groups: any[]) =\> void;
 
 ### Parameters
 
-- `groups` - (required) *array* - 包含甘特图中识别出的依赖循环的数组
+- `groups` - (required) *array* - 在甘特图中发现的依赖循环的数组
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
-    // 在此处编写任何自定义逻辑
+    // 在这里插入您的自定义逻辑
 });
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [- [Auto Scheduling 扩展](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)]
 
 ### Details
 
 :::note
- 此方法需要启用[auto_scheduling](guides/extensions-list.md#zidongpaicheng)插件。 
+该方法需要激活 [auto_scheduling](guides/extensions-list.md#autoscheduling) 插件。
 :::
 
 当此事件发生时，任务保持不变。
@@ -43,13 +43,8 @@ gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
 ~~~js
 [ 
     { 
-        tasks: [// 循环中涉及的任务ID], 
-        links: [// 循环中涉及的链接ID]
-    },
-    {
-        
-        tasks: [...], 
-        links: [...]
+        tasks: ["10", "12"], 
+        links: ["1", "2"]
     }
 ]
 ~~~
@@ -95,5 +90,4 @@ gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
 - [自动调度](guides/auto-scheduling.md)
 
 ### Change log
-- 4.1版本新增
-
+- 已在版本 4.1 中添加

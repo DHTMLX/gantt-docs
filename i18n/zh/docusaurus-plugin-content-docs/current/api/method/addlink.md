@@ -1,23 +1,23 @@
 ---
 sidebar_label: addLink
-title: addLink method
-description: "添加一个新的依赖链接"
+title: addLink 方法
+description: "添加一个新的依赖关系链接"
 ---
 
-# addLink
+# addLink 方法
 
 ### Description
 
-@short: 添加一个新的依赖链接
+@short: 添加一个新的依赖关系链接
 
 @signature: addLink: (link: any) =\> string | number
 
 ### Parameters
 
-- `link` - (required) *object* - 链接对象
+- `link` - (必需) *object* - 链接对象
 
 ### Returns
-- ` id` - (string | number) - 链接的ID
+- ` id` - (string | number) - 该链接的 id
 
 ### Example
 
@@ -32,7 +32,7 @@ var linkId = gantt.addLink({
 
 ### Details
 
-此方法会触发 [onBeforeLinkAdd](api/event/onbeforelinkadd.md) 和 [onAfterLinkAdd](api/event/onafterlinkadd.md) 事件。
+该方法会触发 [onBeforeLinkAdd](api/event/onbeforelinkadd.md) 和 [onAfterLinkAdd](api/event/onafterlinkadd.md) 事件。
 
 ### Related API
 - [updateLink](api/method/updatelink.md)
@@ -40,5 +40,4 @@ var linkId = gantt.addLink({
 - [addTask](api/method/addtask.md)
 
 ### Related Guides
-- [添加/更新/删除链接](guides/crud-dependency.md)
-
+- [Adding/Updating/Deleting Links](guides/crud-dependency.md)

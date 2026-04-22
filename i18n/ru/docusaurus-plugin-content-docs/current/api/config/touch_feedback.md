@@ -1,14 +1,14 @@
 ---
 sidebar_label: touch_feedback
-title: touch_feedback config
-description: "включает вибрационную отдачу до или после действий drag and drop на touch-устройствах"
+title: touch_feedback конфигурация
+description: "возвращает вибрационную обратную связь до/после перетаскивания на сенсорных устройствах"
 ---
 
 # touch_feedback
 
 ### Description
 
-@short: Включает вибрационную отдачу до или после действий drag and drop на touch-устройствах
+@short: Возвращает вибрационную обратную связь до/после перетаскивания на сенсорных устройствах
 
 @signature: touch_feedback: boolean
 
@@ -20,17 +20,16 @@ gantt.config.touch_feedback = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 
-Имейте в виду, что эта настройка не будет работать, если:
+Note, the config will have no effect if: 
 
-1. Поддержка touch отключена через опцию [touch](api/config/touch.md).
+1. Поддержка сенсорного ввода отключена конфигурационной опцией [touch](api/config/touch.md).
 2. Браузер не поддерживает [Vibration API](https://caniuse.com/vibration).
 
 ### Related API
 - [touch](api/config/touch.md)
 - [touch_drag](api/config/touch_drag.md)
 - [touch_feedback_duration](api/config/touch_feedback_duration.md)
-

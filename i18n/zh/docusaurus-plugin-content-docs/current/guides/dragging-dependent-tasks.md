@@ -1,17 +1,18 @@
 ---
-title: "拖动任务及其依赖任务"
-sidebar_label: "拖动任务及其依赖任务"
+title: "将任务及其依赖任务一起拖动"
+sidebar_label: "将任务及其依赖任务一起拖动"
 ---
 
-# 拖动任务及其依赖任务
+# 将任务及其依赖任务一起拖动
 
-有几种方式可以处理将任务与其依赖任务一起移动的情况。
+有多种实现将任务与其依赖任务一起移动的方法。
 
-## 使用自动调度扩展
+## 使用 Auto Scheduling 扩展
 
-一种选择是使用 [자동 스케줄링](guides/auto-scheduling.md) 扩展。它会根据任务之间的关系自动调度任务。
+首先，可以使用 [Auto Scheduling](guides/auto-scheduling.md) 扩展。
+它根据任务之间的关系自动为任务排程。
 
-要启用自动调度，请使用 [gantt.plugins](api/method/plugins.md) 方法:
+要使用自动排程功能，应通过 [gantt.plugins](api/method/plugins.md) 方法启用它：
 
 ~~~js
 gantt.plugins({
@@ -19,7 +20,7 @@ gantt.plugins({
 });
 ~~~
 
-同时，将 **auto_scheduling** 属性设置为 true:
+并将 **auto_scheduling** 属性设置为 true：
 
 ~~~js
 gantt.config.auto_scheduling = true;
@@ -27,52 +28,52 @@ gantt.config.auto_scheduling = true;
 
 ## 手动移动任务
 
-### 章节目录
+### 章节内容
 
-- [获取所有关联任务](#linked_tasks)
+- [获取所有链接的任务](#linked_tasks)
 - [与主任务同步移动后代任务](#sync)
-- [在主任务移动完成后再移动后代任务](#after)
+- [在主任务移动完成后移动后代任务](#after)
 
 
 ### 核心思路
-一种常见的拖动依赖任务的方式是:
+拖动带有依赖关系的任务的常见做法如下：
 
-- 检测任务正在被移动
-- 找到所有依赖任务，并以相同（或调整后）的幅度移动它们
+- 你在检测到任务正在移动时
+- 遍历所有依赖任务，并将它们移动到相同的（或不同的，取决于你的需求）距离。
 
-你可以选择以下两种方法之一:
+因此，你可以选择以下两种方式之一：
 
 - [与主任务同步移动后代任务](#sync)
-- [在主任务移动完成后再移动后代任务](#after)
+- [在主任务移动完成后移动后代任务](#after)
 
-无论哪种方式，第一步都是获取所有关联任务。
+在这两种情况下，首先需要获取所有链接的任务。
 
 
-### 获取所有关联任务 {#linked_tasks}
+### 获取所有链接的任务 {#linked_tasks}
 
-要查找与任务相关的链接，可以使用任务对象上的 **$source** 和 **$target** 属性。
-这些属性是自动生成的，包含相关链接的 ID:
+要检索与任务相关的链接，请使用任务对象的 **$source** 与 **$target** 属性。
+这些属性是自动生成的，存储相关链接的 id：
 
-- $source - 从该任务出发的链接
-- $target - 指向该任务的链接
+- $source - 从该任务引出的链接；
+- $target - 进入该任务的链接。
 
 ~~~js
 var taskObj = gantt.getTask("t1");
  
-var sourceLinks = taskObj.$source;        //-> ["l1","l4"] - 外发链接的ID  
-var targetLinks = taskObj.$target;       //-> ["l5","l8"] - 入链的ID
+var sourceLinks = taskObj.$source;        //-> ["l1","l4"] - 由该任务引出的链接的 id
+var targetLinks = taskObj.$target;       //-> ["l5","l8"] - 进入该任务的链接的 id
 ~~~
 
-通过这些链接，可以找到依赖的任务。
+并且可以通过链接获取依赖任务。
 
-要收集所有关联任务，可以定义如下迭代器:
+因此，要获取链接的任务，我们需要声明一个迭代器：
 
 ~~~js
 gantt.eachSuccessor = function(callback, root){
   if(!this.isTaskExists(root))
     return;
   
-  // 跟踪已访问的任务，避免死循环
+  // 记住我们已经遍历过的任务，以避免无限循环
   var traversedTasks = arguments[2] || {};
   if(traversedTasks[root])
     return;
@@ -86,7 +87,7 @@ gantt.eachSuccessor = function(callback, root){
       if(this.isTaskExists(link.target) && !traversedTasks[link.target]){
         callback.call(this, this.getTask(link.target));
         
-        // 遍历整个依赖分支，不仅仅是第一层
+        // 迭代整条分支，而不仅仅是第一层依赖
         this.eachSuccessor(callback, link.target, traversedTasks);
       }
     }
@@ -97,15 +98,18 @@ gantt.eachSuccessor = function(callback, root){
 
 ### 与主任务同步移动后代任务 {#sync}
 
-在拖动主任务时，可以将其后代任务一起移动。也就是说，用户移动主任务时，所有依赖任务会同步移动。这种方式视觉上流畅，但如果涉及任务较多，可能会影响性能。
+后代任务可以在与主任务移动的同步过程中一起移动，即当用户开始移动任务时，所有依赖分支将一起移动。  
+这看起来很合适，但缺点是如果同时移动大量任务，可能会出现性能下降。
 
-#### 第1步
 
-首先，按照[获取所有关联任务](#linked_tasks)中的方法声明迭代器。
+#### 步骤 1
 
-#### 第2步
+首先，我们将按照上文所示声明迭代器。
 
-接下来，绑定 [onTaskDrag](api/event/ontaskdrag.md) 事件的处理器。该事件会在每一帧拖动时触发，在此可以移动所有关联任务。
+
+#### 步骤 2
+
+然后，你需要将处理程序附加到 [onTaskDrag](api/event/ontaskdrag.md) 事件。它将在拖放的每一帧调用，我们将在这里移动所有链接的任务。
 
 ~~~js
 gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
@@ -122,9 +126,9 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 });
 ~~~
 
-#### 第3步
+#### 步骤 3
 
-最后，当拖动结束，用户释放鼠标时，将子任务的位置对齐到时间刻度。这可以通过 [onAfterTaskDrag](api/event/onaftertaskdrag.md) 事件完成:
+最后，当用户释放鼠标并完成拖放时，我们需要将子项的位置四舍五入以缩放对齐。我们可以使用 [onAfterTaskDrag](api/event/onaftertaskdrag.md) 事件来实现：
 
 ~~~js
 gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
@@ -139,28 +143,28 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 });
 ~~~
 
-除非关联任务数量非常多，否则这种方法效果良好。
+如果链接的任务不太多，这种方式工作得很好。
 
 
-### 在主任务移动完成后再移动后代任务 {#after}
+### 在主任务移动完成后移动后代任务 {#after}
 
-另一种方式是，仅在主任务移动完成后才更新其后代任务。这种方式视觉上更简单，性能也更好。
+后代任务可以在用户完成主任务移动后再进行更新。这样结果看起来会更简单，但性能会更好。
 
-思路是等待拖拽操作完成后，再计算主任务移动了多少天，然后将所有关联任务按此幅度移动。
+实现思路如下：当拖放完成后，检查任务移动了多少距离，并将所有链接的任务移动到相同的数值。
 
-#### 第1步
+#### 步骤 1
 
-首先，按照前文[获取所有关联任务](#linked_tasks)的方法声明迭代器。
+首先，我们将按照上文所示声明迭代器。
 
-#### 第2步
+#### 步骤 2
 
-当用户完成拖动时，捕获 [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) 事件。该事件会同时提供被移动任务的原始版本和修改后的版本，可以用来计算日期差。
+当用户释放鼠标并完成拖放时，我们可以捕获 [onBeforeTaskChanged](api/event/onbeforetaskchanged.md) 事件，其中移动任务的修改实例和原始实例都可用，并计算它们之间的日期差值。
 
 :::note
 注意，此时拖拽操作仍有可能被取消（因为 onBeforeTaskChanged 支持取消，并且你的应用可能有相关处理器），因此此处不会更新依赖任务。
 :::
 
-相反，可以将计算出的差值保存在稍后可访问的变量中。
+相反，我们将把计算得到的 diff 值放在同一闭包中的一个变量里，以便稍后访问。
 
 ~~~js
 var diff = 0;
@@ -175,12 +179,12 @@ gantt.attachEvent("onBeforeTaskChanged", function(id, mode, originalTask){
 });
 ~~~
 
-#### 第3步
+#### 步骤 3
 
-最后，使用 [onAfterTaskDrag](api/event/onaftertaskdrag.md) 事件，利用之前计算的 *diff* 更新所有依赖任务:
+最后，我们捕获 [onAfterTaskDrag](api/event/onaftertaskdrag.md) 事件，表明拖放已完成。此时我们可以使用在上一步骤中计算得到的 *diff* 来更新所有依赖任务：
 
 ~~~js
-//将子任务位置对齐到时间刻度
+//将子项的位置四舍五入以缩放
 gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
     var modes = gantt.config.drag_mode;
     if(mode == modes.move ){
@@ -193,7 +197,7 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 });
 ~~~
 
-完整代码如下:
+完整代码如下：
 
 ~~~js
 (function(){
@@ -209,7 +213,7 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
     return true;
   });
   
-  //将子任务位置对齐到时间刻度
+  //将子项的位置四舍五入以缩放
   gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
     var modes = gantt.config.drag_mode;
     if(mode == modes.move ){
@@ -222,6 +226,3 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
   });
 })();
 ~~~
-
-@linkclass:hidden
-

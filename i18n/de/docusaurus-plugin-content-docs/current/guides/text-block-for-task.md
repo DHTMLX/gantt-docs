@@ -1,18 +1,17 @@
 ---
-title: "Anzeigen von Aufgabeninhalten"
-sidebar_label: "Anzeigen von Aufgabeninhalten"
+title: "Inhalte von Aufgaben anzeigen"
+sidebar_label: "Inhalte von Aufgaben anzeigen"
 ---
 
-# Anzeigen von Aufgabeninhalten
+# Inhalte von Aufgaben anzeigen
 
-Ein Label neben einer Aufgabenleiste kann verwendet werden, um zusätzliche Details zur Aufgabe anzuzeigen. 
-In der Regel beinhaltet dies Informationen wie zugewiesene Ressourcen, zum Beispiel Personen, Materialien usw.
+Ein Text in der Nähe des Aufgabenbalkens ermöglicht es, zusätzliche Informationen zur Aufgabe anzuzeigen. In den meisten Fällen handelt es sich um eine zugewiesene Ressource – Personen, Materialien usw. 
 
 ![assigned_text](/img/assigned_text.png)
 
-## Anpassen des Formats von Aufgabenleisten
+## Anpassung des Formats der Aufgabenbalken
 
-Um das Standardaussehen der Aufgabenleisten zu ändern, können Sie die Vorlage [task_text](api/template/task_text.md) verwenden:
+Um das Standardformat der Aufgabenbalken zu ändern, können Sie die [task_text](api/template/task_text.md)-Vorlage verwenden:
 
 ~~~js
 gantt.templates.task_text="function(start,end,task){"
@@ -20,17 +19,17 @@ gantt.templates.task_text="function(start,end,task){"
 };
 ~~~
 
-Diese Vorlage kann beliebigen HTML-Inhalt enthalten, den Sie innerhalb der Aufgabenleiste anzeigen möchten.
+Es kann jeden HTML-Inhalt enthalten, der innerhalb des Aufgabenbalkens angezeigt werden soll.
 
 
-[Styling task bars with events](https://docs.dhtmlx.com/gantt/samples/04_customization/08_templates.html)
+[Styling der Aufgabenbalken mit Ereignissen](https://docs.dhtmlx.com/gantt/samples/04_customization/08_templates.html)
 
 
 ![task_text](/img/task_text.png)
 
-## Text auf der linken Seite einer Leiste zuweisen
+## Text links vom Balken zuweisen
 
-Um einen Textblock auf der linken Seite einer Aufgabenleiste hinzuzufügen, verwenden Sie die Vorlage [leftside_text](api/template/leftside_text.md):
+Um einen Texblock auf der linken Seite eines Aufgabenbalkens zu platzieren, verwenden Sie die [leftside_text](api/template/leftside_text.md) Vorlage:
 
 ~~~js
 gantt.templates.leftside_text = function(start, end, task){
@@ -38,12 +37,12 @@ gantt.templates.leftside_text = function(start, end, task){
 };
 ~~~
 
-[Define side content](https://docs.dhtmlx.com/gantt/samples/04_customization/01_outer_content.html)
+[Seiteninhalt definieren](https://docs.dhtmlx.com/gantt/samples/04_customization/01_outer_content.html)
 
 
-## Text auf der rechten Seite einer Leiste zuweisen
+## Text rechts vom Balken zuweisen
 
-Um einen Textblock auf der rechten Seite einer Aufgabenleiste hinzuzufügen, verwenden Sie die Vorlage [rightside_text](api/template/rightside_text.md):
+Um einen Texblock rechts neben dem Aufgabenbalken zu platzieren, verwenden Sie die [rightside_text](api/template/rightside_text.md) Vorlage:
 
 ~~~js
 gantt.templates.rightside_text = function(start, end, task){
@@ -51,6 +50,4 @@ gantt.templates.rightside_text = function(start, end, task){
 };
 ~~~
 
-
-[Define side content](https://docs.dhtmlx.com/gantt/samples/04_customization/01_outer_content.html)
-
+[Seiteninhalt definieren](https://docs.dhtmlx.com/gantt/samples/04_customization/01_outer_content.html)

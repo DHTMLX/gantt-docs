@@ -8,21 +8,21 @@ description: "그리드 내 작업을 정렬합니다"
 
 ### Description
 
-@short: 그리드 내 작업을 정렬합니다
+@short: 그리드에서 작업을 정렬합니다
 
-@signature: sort: (field: string | Function, desc?: boolean, parent?: string | number, silent?: boolean) =\> void,
+@signature: sort: (field: string | ((task1: Task, task2: Task) => 1 | 0 | -1), desc?: boolean, parent?: string | number, silent?: boolean) => void;
 
 ### Parameters
 
-- `field` - (required) *string | SortTasks* -        그리드를 정렬할 열 이름 또는 사용자 정의 정렬 함수
-- `desc` - (optional) *boolean* - 정렬 순서를 설정합니다: <i>true</i>는 내림차순, <i>false</i>는 오름차순<br> 기본값은 <i>false</i>입니다
-- `parent` - (optional) *string | number* - 부모 작업의 ID입니다. 지정한 부모의 하위 작업만 정렬하려면 이 값을 사용하세요.
-- `silent` - (optional) *boolean* - 항목 재정렬 후 렌더링을 트리거할지 여부를 결정합니다
+- `field`	- (required) *string | SortTasks*	-	그리드가 정렬될 열의 이름 또는 커스텀 정렬 함수
+- `desc`	-	(optional) *boolean* -	정렬 방향을 지정합니다: <i>true</i> - 내림차순 및 <i>false</i> - 오름차순<br/> 정렬. 기본값은 <i>false</i>
+- `parent` -	(optional) *string | number*	-	상위 작업의 ID. 지정하면 지정된 상위의 브랜치에 속한 작업들만 정렬합니다.
+- `silent` -	(optional) *boolean*	-	재정렬 후 렌더링이 호출되어야 하는지 여부를 지정합니다.
 
 ### Example
 
 ~~~jsx
-<input type='button'  value='작업 이름으로 정렬' onclick='sortByName()'>
+<input type='button'  value='Sort by task name' onclick='sortByName()'>
 <script>
     var n_direction = false;
     function sortByName(){
@@ -38,7 +38,7 @@ description: "그리드 내 작업을 정렬합니다"
 ~~~
 
 ### Related samples
-- [Using sorting methods](https://docs.dhtmlx.com/gantt/samples/07_grid/05_sort_api.html)
+- [정렬 메서드 사용](https://docs.dhtmlx.com/gantt/samples/07_grid/05_sort_api.html)
 
 ### Details
 
@@ -54,4 +54,3 @@ description: "그리드 내 작업을 정렬합니다"
 
 ### Related Guides
 - [컬럼 정렬](guides/sorting.md)
-

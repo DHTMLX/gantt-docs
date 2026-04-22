@@ -1,7 +1,7 @@
 ---
 sidebar_label: onDataProcessorReady
 title: onDataProcessorReady event
-description: "срабатывает при вызове `dp.init(gantt)`"
+description: "fires on the `dp.init(gantt)` call"
 ---
 
 # onDataProcessorReady
@@ -10,23 +10,23 @@ description: "срабатывает при вызове `dp.init(gantt)`"
 
 @short: Срабатывает при вызове `dp.init(gantt)`
 
-@signature: onDataProcessorReady: (DataProcessor: any) =\> void;
+@signature: onDataProcessorReady: (DataProcessor: any) => void;
 
 ### Parameters
 
-- `DataProcessor` - (required) *object* - экземпляр DataProcessor
+- `DataProcessor` - (обязательный) *объект* - объект DataProcessor
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onDataProcessorReady",function(DataProcessor){
-    // разместите здесь вашу пользовательскую логику
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Details
 
-Это событие позволяет вам прикреплять обработчики к DataProcessor непосредственно из кода вашего приложения.
+Вы можете использовать это событие для добавления обработчиков DataProcessor из кода приложения.
 
 ### Related Guides
-- [Интеграция с серверной стороной](guides/server-side.md)
+- [Серверная интеграция](guides/server-side.md)

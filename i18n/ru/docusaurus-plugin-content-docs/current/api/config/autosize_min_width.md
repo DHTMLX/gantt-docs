@@ -1,14 +1,14 @@
 ---
 sidebar_label: autosize_min_width
 title: autosize_min_width config
-description: "определяет минимальную ширину (в пикселях), которую будет иметь диаграмма Ганта при использовании горизонтального режима 'autosize'"
+description: "sets the minimum width (in pixels) that the Gantt chart can take in the horizontal 'autosize' mode"
 ---
 
 # autosize_min_width
 
 ### Description
 
-@short: Определяет минимальную ширину (в пикселях), которую будет иметь диаграмма Ганта при использовании горизонтального режима 'autosize'
+@short: Устанавливает минимальную ширину (в пикселях), которую может занимать диаграмма Ганта в горизонтальном режиме 'autosize'
 
 @signature: autosize_min_width: number
 
@@ -21,12 +21,11 @@ gantt.config.autosize_min_width = 800;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** ноль (0)
+**Значение по умолчанию:** ноль (0)
 
 ### Details
 
-Горизонтальный режим 'autosize' можно включить через опцию, описанную в [autosize](api/config/autosize.md).
+Горизонтальный режим 'autosize' включается опцией [autosize](api/config/autosize.md)
 
 ### Related API
 - [autosize](api/config/autosize.md)
-

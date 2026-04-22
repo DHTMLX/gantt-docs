@@ -1,30 +1,30 @@
 ---
 sidebar_label: getTaskPosition
 title: getTaskPosition method
-description: "타임라인 영역 내에서 작업의 DOM 요소 위치와 크기를 계산합니다."
+description: "타임라인 영역에서 태스크의 DOM 요소의 위치와 크기를 계산합니다"
 ---
 
 # getTaskPosition
 
 ### Description
 
-@short: 타임라인 영역 내에서 작업의 DOM 요소 위치와 크기를 계산합니다.
+@short: 타임라인 영역에서 태스크의 DOM 요소의 위치와 크기를 계산합니다
 
 @signature: getTaskPosition: (task: Task, from?: Date, to?: Date) =\> any
 
 ### Parameters
 
-- `task` - (required) *Task* - 작업 객체
-- `from` - (optional) *Date* - 선택 사항, 항목의 시작 날짜
-- `to` - (optional) *Date* - 선택 사항, 항목의 종료 날짜
+- `task` - (required) *Task* - 태스크 객체
+- `from` - (optional) *Date* -  항목의 시작 날짜
+- `to`- (optional) *Date* - 항목의 종료 날짜
 
 ### Returns
-- ` object` - (object) - 크기와 위치를 설명하는 객체를 반환합니다.
+- ` object` - (object) - 크기 객체
 
 ### Example
 
 ~~~jsx
-// 기준선 표시 추가
+// 베이스라인 디스플레이 추가
 gantt.addTaskLayer(function draw_planned(task) {
     if (task.planned_start && task.planned_end) {
         const sizes = gantt.getTaskPosition(task, task.planned_start, task.planned_end); /*!*/
@@ -60,7 +60,7 @@ gantt.addTaskLayer(function draw_planned(task) {
 
 ~~~js
 gantt.getTaskPosition(task, new Date(2019, 3, 19, 1, 0), new Date(2019, 3, 19, 1, 0)); 
-// 그리고
+// and
 gantt.getTaskPosition(task, new Date(2019, 3, 19, 1, 0), new Date(2019, 3, 19, 5, 0)); 
 ~~~
 

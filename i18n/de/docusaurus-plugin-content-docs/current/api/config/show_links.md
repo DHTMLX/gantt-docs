@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_links
-title: show_links config
-description: "Schaltet die Anzeige von Links im Gantt-Diagramm ein oder aus"
+title: show_links Konfiguration
+description: "Aktiviert/deaktiviert die Anzeige von Verbindungen im Gantt-Diagramm"
 ---
 
 # show_links
 
 ### Description
 
-@short: Schaltet die Anzeige von Links im Gantt-Diagramm ein oder aus
+@short: Aktiviert/deaktiviert die Anzeige von Verbindungen im Gantt-Diagramm
 
 @signature: show_links: boolean
 
@@ -21,4 +21,4 @@ gantt.config.show_links = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true

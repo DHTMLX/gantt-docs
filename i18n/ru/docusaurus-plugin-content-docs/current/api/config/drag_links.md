@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_links
 title: drag_links config
-description: "позволяет создавать зависимые ссылки с помощью drag-and-drop"
+description: "позволяет создавать зависимости между задачами через перетаскивание"
 ---
 
 # drag_links
 
 ### Description
 
-@short: Позволяет создавать зависимые ссылки с помощью drag-and-drop
+@short: Позволяет создавать зависимости между задачами через перетаскивание
 
 @signature: drag_links: boolean
 
@@ -19,4 +19,4 @@ gantt.config.drag_links = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true

@@ -1,20 +1,21 @@
 ---
 sidebar_label: mergeCalendars
 title: mergeCalendars method
-description: "kombiniert mehrere Arbeitskalender zu einem einzigen Kalender"
+description: "vereinigt mehrere Arbeitskalender zu einem"
 ---
 
 # mergeCalendars
 
 ### Description
 
-@short: Kombiniert mehrere Arbeitskalender zu einem einzigen Kalender
+@short: Führt mehrere Arbeitskalender zu einem zusammen
 
 @signature: mergeCalendars: (calendars: Calendar[] | Calendar, calendar2?: Calendar) =\> void
 
 ### Parameters
-- `calendars` - (required) *Calendar[] | Calendar* -       entweder ein Array von Kalenderobjekten oder ein einzelnes Kalenderobjekt
-- `calendar2` - (optional) *Calendar* - optional, ein zweites Kalenderobjekt
+
+- `calendars` - (erforderlich) *Calendar[] | Calendar* -    -    ein Array von Kalenderobjekten oder das erste Kalenderobjekt
+-  `calendar2` -    (optional) *Calendar*   -     Optional, das zweite Kalenderobjekt
 
 ### Example
 
@@ -41,19 +42,19 @@ const joinedCalendar = gantt.mergeCalendars([
 
 ### Details
 
-Sie können auch mehrere Kalenderobjekte als separate Parameter an die Methode **mergeCalendars** übergeben:
+Sie können auch eine Menge von [Kalender-Objekten](api/other/calendar.md) als Parameter der **mergeCalendars**-Methode angeben:
 
 ~~~js
-// Kalender als separate Argumente übergeben
+// verwenden von Kalendern als Argumente
 const joinedCalendar = gantt.mergeCalendars(
     gantt.getCalendar(mikeCalendarId),
     gantt.getCalendar(johnCalendarId)
 );
 ~~~
 
-## Funktionsweise des Zusammenführens von Kalendern
+## Logic for merging calendars
 
-Beim Zusammenführen von Kalendern werden die Arbeitstage des resultierenden Kalenders ermittelt, indem geprüft wird, ob jeder Tag in allen zusammengeführten Kalendern ein Arbeitstag ist (unter Verwendung einer logischen UND-Operation (&&)):
+Beim Zusammenführen von Kalendern gilt folgende Logik: Der Wochentag im neuen Kalender wird nur dann als Arbeitstag (1/wahr) gezählt, wenn er in allen zusammengeführten Kalendern ein Arbeitstag ist (Logical AND (&&)):
 
 ~~~html
 // kalender 1 + kalender 2 = zusammengeführter kalender;
@@ -115,10 +116,10 @@ ergibt einen Kalender, bei dem nur Montag ein Arbeitstag ist:
 // Tage: [ 0, 1, 0, 0, 0, 0, 0 ]
 ~~~
 
-**Verwandtes Beispiel:** [Gantt. Merge work calendars (via mergeCalendars() method)](https://snippet.dhtmlx.com/56vubu7a)
+**Related sample:** [Gantt. Merge work calendars (via mergeCalendars() method)](https://snippet.dhtmlx.com/56vubu7a)
 
 :::note
- Die Zusammenführungslogik berücksichtigt keine [customWeeks](api/method/addcalendar.md). 
+Die Logik berücksichtigt keine [customWeeks](api/method/addcalendar.md).
 :::
 
 ### Related API
@@ -127,8 +128,7 @@ ergibt einen Kalender, bei dem nur Montag ein Arbeitstag ist:
 - [getResourceCalendar](api/method/getresourcecalendar.md)
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md#assigningcalendartoresource)
+- [Work Time Calculation](guides/working-time.md#assigningcalendartoresource)
 
 ### Change log
 - hinzugefügt in v7.0
-

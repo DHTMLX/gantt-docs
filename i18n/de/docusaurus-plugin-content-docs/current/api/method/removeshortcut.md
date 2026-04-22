@@ -1,7 +1,7 @@
 ---
 sidebar_label: removeShortcut
-title: removeShortcut method
-description: "entfernt eine Tastenkombination"
+title: removeShortcut Methode
+description: "Entfernt eine Tastenkombination"
 ---
 
 # removeShortcut
@@ -14,35 +14,34 @@ description: "entfernt eine Tastenkombination"
 
 ### Parameters
 
-- `shortcut` - (required) *string* - der Name der Taste oder der Tastenkombination für das Shortcut ([Shortcut-Syntax](guides/keyboard-navigation.md#shortcutsyntax))
-- `scope` - (required) *string* - das Element, dem das Shortcut zugewiesen ist ([Liste der Scopes](guides/keyboard-navigation.md#scopes))
+- `shortcut` - (required) *string* - der Schlüsselname oder der Name einer Tastenkombination für einen Shortcut [(Shortcut-Syntax)](guides/keyboard-navigation.md#shortcutsyntax)
+- `scope` - (required) *string* - das Element, an das der Shortcut gebunden ist [(Liste der Geltungsbereiche)](guides/keyboard-navigation.md#scopes) 
 
 ### Example
 
 ~~~jsx
-// Hinzufügen eines Shortcuts
+// Tastenkombination hinzufügen
 gantt.addShortcut("shift+w", function(e){ 
     var task = gantt.locate(e); 
     if(task) 
         gantt.showQuickInfo(task)
 }, "taskRow");
 
-// Entfernen eines Shortcuts
+// Tastenkombination entfernen
 gantt.removeShortcut("shift+w", "taskRow");
 ~~~
 
 ### Related samples
-- [Keyboard Navigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
-- [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
+- [Tastaturnavigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
+- [Tastaturnavigation - Zellen navigieren](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
 
 ### Details
 
 :::note
- Diese Methode ist Teil der **keyboard_navigation** Erweiterung, daher stellen Sie sicher, dass das [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Tastaturnavigation"](guides/keyboard-navigation.md). 
+Diese Methode ist in der **keyboard_navigation**-Erweiterung definiert, daher müssen Sie das [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) Plugin aktivieren. Lesen Sie die Details im Artikel [Keyboard Navigation](guides/keyboard-navigation.md). 
 :::
 
-
-hinzugefügt in Version 4.1
+Hinzugefügt in Version 4.1
 
 ### Related API
 - [addShortcut](api/method/addshortcut.md)
@@ -52,5 +51,4 @@ hinzugefügt in Version 4.1
 - [focus](api/method/focus.md)
 
 ### Related Guides
-- ["Tastaturnavigation"](guides/keyboard-navigation.md)
-
+- [Tastaturnavigation](guides/keyboard-navigation.md)

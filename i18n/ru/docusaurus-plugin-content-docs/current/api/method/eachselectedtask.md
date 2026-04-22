@@ -1,20 +1,20 @@
 ---
 sidebar_label: eachSelectedTask
-title: eachSelectedTask method
-description: "проходит по всем выбранным задачам на диаграмме Ганта"
+title: метод eachSelectedTask
+description: "перебирает все выбранные задачи на диаграмме Ганта"
 ---
 
 # eachSelectedTask
 
 ### Description
 
-@short: Проходит по всем выбранным задачам на диаграмме Ганта
+@short: Перебирает все выбранные задачи на диаграмме Ганта
 
 @signature: eachSelectedTask: (code: GanttCallback) =\> void
 
 ### Parameters
 
-- `code` - (required) *function* - функция, которая будет выполнена для каждой выбранной задачи. В качестве аргумента она получает id задачи
+- `code` - (required) *function* - функция, которая будет перебирать задачи. Принимает идентификатор задачи в качестве параметра
 
 ### Example
 
@@ -28,12 +28,12 @@ gantt.batchUpdate(function () {
 ~~~
 
 ### Related samples
-- [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+- [Множественный выбор и Indent/Outdent задач](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 ### Details
 
 :::note
- Этот метод является частью расширения **multiselect**, поэтому убедитесь, что плагин [multiselect](guides/extensions-list.md#multitaskselection) включен. Более подробную информацию можно найти в статье [Множественный выбор задач](guides/multiselection.md). 
+Этот метод определяется в расширении **multiselect**, поэтому нужно активировать плагин [multiselect](guides/extensions-list.md#multitaskselection). Подробности читайте в статье [Multi-Task Selection](guides/multiselection.md).
 :::
 
 ### Related API
@@ -47,5 +47,4 @@ gantt.batchUpdate(function () {
 - [batchUpdate](api/method/batchupdate.md)
 
 ### Related Guides
-- [Множественный выбор задач](guides/multiselection.md)
-
+- [Выбор нескольких задач](guides/multiselection.md)

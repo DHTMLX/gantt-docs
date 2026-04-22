@@ -1,14 +1,14 @@
 ---
-title: "Styling"
-sidebar_label: "Styling"
+title: "Gestaltung"
+sidebar_label: "Gestaltung"
 ---
 
-# Styling
+# Gestaltung
 
-- [CSS Documentation](guides/css-overview.md)
+- [CSS-Dokumentation](guides/css-overview.md)
 - [Skins](guides/skins.md)
-- [Skins Customization](guides/custom-skins.md)
-- [Templates of the Gantt Chart](guides/templates.md)
-- [Tasks Coloring](guides/colouring-tasks.md)
-- [Links Coloring and Styling](guides/colouring-lines.md)
-- [Work with Gantt Styles](guides/styling-guide.md)
+- [Skins-Anpassung](guides/custom-skins.md)
+- [Vorlagen des Gantt-Diagramms](guides/templates.md)
+- [Aufgabenfärbung](guides/colouring-tasks.md)
+- [Linksfärbung und Gestaltung](guides/colouring-lines.md)
+- [Arbeiten mit Gantt-Stilen](guides/styling-guide.md)

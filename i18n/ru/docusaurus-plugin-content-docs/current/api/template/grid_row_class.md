@@ -1,7 +1,7 @@
 ---
 sidebar_label: grid_row_class
-title: grid_row_class template
-description: "определяет CSS-класс, который присваивается строке grid"
+title: grid_row_class шаблон
+description: "указывается CSS-класс, который будет применяться к строке грида"
 ---
 
 # grid_row_class
@@ -14,12 +14,12 @@ description: "определяет CSS-класс, который присваи
 
 ### Parameters
 
-- `start` - (required) *Date* - дата начала задачи
-- `end` - (required) *Date* - ожидаемая дата окончания задачи
+- `start` - (required) *Date* - дата начала запланированной задачи
+- `end` - (required) *Date* - дата завершения запланированной задачи
 - `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` text` - (string | void) - CSS-класс для соответствующего элемента
+- ` text` - (string | void) - CSS-класс для данного элемента
 
 ### Example
 
@@ -31,7 +31,7 @@ gantt.templates.grid_row_class = function(start, end, task){
 
 ### Details
 
-Каждая вторая строка как в grid, так и в области timeline содержит дополнительный CSS-класс **odd**, который можно использовать для создания чередующихся цветов строк:
+Каждая вторая строка грида и область таймлайна содержит дополнительный CSS-класс с именем **odd**, который можно использовать для чередования цветов строк:
 
 ~~~css
 .gantt_row.odd, .gantt_task_row.odd{
@@ -43,24 +43,23 @@ gantt.templates.grid_row_class = function(start, end, task){
 }
 ~~~
 
-По умолчанию эти стили применяются только к четным строкам. Чтобы стилизовать нечетные строки, класс **odd** должен быть добавлен в селекторы ваших CSS-правил. Поэтому, если вы хотите, чтобы все строки имели одинаковый цвет, обычно нужно включить правила для обоих селекторов (с классом '.odd' и без), так как стандартные CSS-правила [имеют более высокий приоритет и перекрывают остальные](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity).
+По умолчанию стили применяются только к четным строкам. Чтобы стилизовать нечетные строки, необходимо добавить имя класса **odd** к селекторам правил стилей. Поэтому, если вы хотите задать один и тот же цвет всем строкам, обычно нужно прописать CSS-правило для обоих селекторов (с классом '.odd' и без него); иначе существующие CSS-правила станут более специфичными и получат более высокий приоритет (см. https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity).
 
 ~~~css
 .gantt_row.odd, .gantt_task_row.odd,
 .gantt_row, .gantt_task_row {
+{
     background: white;
 }
 ~~~
 
-Этот подход также применяется к пользовательским CSS-классам, назначаемым через шаблоны [grid_row_class](api/template/grid_row_class.md) и [task_row_class](api/template/task_row_class.md):
-
+То же самое работает и для пользовательских CSS-классов, которые можно применить через шаблоны [grid_row_class](api/template/grid_row_class.md) и [task_row_class](api/template/task_row_class.md):
 
 ~~~js
 gantt.templates.grid_row_class = function(start, end, task){
     return "wheat_color";
 };
 ~~~
-<br>
 
 ~~~css
 .wheat_color,
@@ -69,8 +68,7 @@ gantt.templates.grid_row_class = function(start, end, task){
 }
 ~~~
 
-Вы можете заметить, что на экране подсвечиваются четные строки, а не нечетные. Однако, если проверить [индексы строк](api/method/gettaskindex.md), вы увидите, что стили применяются к строкам с нечетными индексами (1, 3, 5 и так далее).
+Вы можете заметить, что на экране выделяются нечетные строки, а не четные. Но если вы посмотрите на [indexes of rows](api/method/gettaskindex.md), вы увидите, что стиль применяется к строкам с нечетными индексами (1, 3, 5 и т. д.).
 
 ### Related Guides
-- [Шаблоны грида](guides/table-templates.md)
-
+- [Templates of the Grid](guides/table-templates.md)

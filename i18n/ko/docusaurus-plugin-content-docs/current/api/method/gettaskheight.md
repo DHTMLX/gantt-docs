@@ -1,26 +1,25 @@
 ---
 sidebar_label: getTaskHeight
 title: getTaskHeight method
-description: "작업의 보이는 높이를 제공합니다."
+description: "returns the visible height of a task"
 ---
 
 # getTaskHeight
 
 ### Description
 
-@short: 작업의 보이는 높이를 제공합니다.
+@short: 태스크의 화면에 보이는 높이를 반환합니다
 
 @signature: getTaskHeight: (id?: string | number) =\> number
 
 ### Parameters
-
-- `id` - (optional) *string | number* -    작업의 ID
+- `task` - (optional) *string | number* -  태스크의 ID
 
 ### Returns
-- ` height` - (number) - 지정된 작업의 높이 또는 <i>id</i> 파라미터가 제공되지 않은 경우 작업들의 높이
+- ` height` - (number) - 지정된 태스크의 높이 또는 id 매개 변수가 지정되지 않은 경우 태스크들의 높이
 
 ### Example
 
 ~~~jsx
-const height = gantt.getTaskHeight(); // -> 30
+const height = gantt.getTaskHeight(); // 결과: 30
 ~~~

@@ -1,14 +1,14 @@
----
+--- 
 sidebar_label: link_wrapper_width
-title: link_wrapper_width config
-description: "определяет ширину кликабельной области вокруг ссылки"
+title: конфигурация link_wrapper_width
+description: "устанавливает ширину области над ссылкой, чувствительной к кликам"
 ---
 
 # link_wrapper_width
 
 ### Description
 
-@short: Определяет ширину кликабельной области вокруг ссылки
+@short: Устанавливает ширину области над ссылкой, чувствительной к кликам
 
 @signature: link_wrapper_width: number
 
@@ -19,7 +19,7 @@ gantt.config.link_wrapper_width = 30;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 20
+**Значение по умолчанию:** 20
 
 ### Details
 

@@ -1,51 +1,55 @@
 ---
 sidebar_label: getTaskBaselines
-title: getTaskBaselines method
-description: "получает массив базовых линий, связанных с конкретной задачей, из хранилища данных"
+title: getTaskBaselines метод
+description: "возвращает массив базовых линий конкретной задачи из хранилища данных"
 ---
 
 # getTaskBaselines
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в редакции PRO.
 :::
+
 ### Description
 
-@short: Получает массив базовых линий, связанных с конкретной задачей, из хранилища данных
+@short: Возвращает массив базовых линий конкретной задачи из хранилища данных
 
 @signature: getTaskBaselines: (taskId: string | number) =\> Baseline[]
 
 ### Parameters
 
-- `taskId` - (required) *string | number* -    уникальный идентификатор задачи
+- `taskId` - (required) *string | number* - идентификатор задачи
 
 ### Returns
-- ` param` - (Baseline[]) - массив объектов baseline
+- ` param` - (Baseline[]) - массив объектов базовых линий
 
 ### Example
 
 ~~~jsx
-gantt.getTaskBaselines(5); // -> см. детали
+gantt.getTaskBaselines(5); // -> see details
 ~~~
 
 ### Related samples
-- [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
+- [Отображение базовых линий](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 ### Details
 
 :::note
- Метод **getTaskBaselines** не будет работать, если отключена конфигурация [baselines](api/config/baselines.md). 
+Метод **getTaskBaselines** недоступен, если конфигурация [baselines](api/config/baselines.md) отключена.
 :::
 
-Этот метод возвращает массив объектов **baseline**, каждый из которых содержит следующие свойства:
+Метод возвращает массив объектов **baseline**, которые имеют следующие свойства:
 
-- **id** - (*string | number*) - уникальный идентификатор базовой линии
-- **task_id** - (*string | number*) - идентификатор задачи, к которой привязана базовая линия
-- **start_date** - (*Date*) - дата начала базовой линии
+- **id** - (*string | number*) - идентификатор базовой линии
+- **task_id** - (*string | number*) - идентификатор задачи, к которой принадлежит базовая линия
+- **start_date** - (*Date*) - начальная дата базовой линии
 - **duration** - (*number*) - продолжительность базовой линии
-- **end_date** - (*Date | number*) - дата окончания базовой линии
-- **[customProperty: string]** - (*any*) - любые дополнительные пользовательские свойства
+- **end_date** - (*Date | number*) - конечная дата базовой линии
+- **[customProperty: string]** - (*any*) - произвольное свойство
+- **className** - (*string | number*) - значение этого свойства используется Gantt как пользовательский класс для HTML-элемента
 
-Пример:
+
+Например:
 
 ~~~js
 [
@@ -71,4 +75,3 @@ gantt.getTaskBaselines(5); // -> см. детали
 
 ### Change log
 - добавлено в версии 9.0
-

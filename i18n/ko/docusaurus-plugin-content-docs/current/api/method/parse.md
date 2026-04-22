@@ -1,21 +1,21 @@
 ---
 sidebar_label: parse
-title: parse method
-description: "클라이언트 측 리소스에서 데이터를 로드합니다"
+title: parse 메서드
+description: "클라이언트 측 리소스에서 데이터를 로드합니다."
 ---
 
 # parse
 
 ### Description
 
-@short: 클라이언트 측 리소스에서 데이터를 로드합니다
+@short: 클라이언트 측 리소스에서 데이터를 로드합니다.
 
 @signature: parse: (data: string | DataToLoad1 | DataToLoad2, type?: string) =\> void
 
 ### Parameters
 
-- `data` - (required) *string | DataToLoad* -     문자열 또는 [데이터](https://docs.dhtmlx.com/gantt/desktop__loading.html#dataproperties)를 나타내는 객체
-- `type` - (optional) *string* - 선택 사항, (<i>'json', 'xml'</i>) 데이터 타입 지정. 기본값은 <i>'json'</i>
+- `data` - (required) *string | DataToLoad* - 문자열 또는 [data](guides/loading.md#dataproperties)를 나타내는 객체
+- `type`	-	(optional) *string*	- (<i>'json', 'xml'</i>) 데이터 타입. 기본값은 <i>'json'</i>
 
 ### Example
 
@@ -40,15 +40,15 @@ gantt.parse({
 
 ### Details
 
-Gantt는 tasks 배열이 **data** 또는 **tasks**로 명명되어야 하며, 링크 배열은 **links**로 명명되어야 합니다.
+Gantt는 *작업 배열*의 이름이 반드시 **data** 또는 **tasks** 중 하나로 지정되고, *링크 배열*의 이름은 **links**로 지정되기를 기대합니다.
 
-데이터 구조는 다음과 같습니다:
+다음은 예상되는 속성의 목록입니다:
 
-- **data** - (*[] | NewTask[]*) - 작업 데이터가 포함된 배열
-- **links?** - (*Link[]*) - 링크 데이터가 포함된 배열
-- **resources?** - (*NewResourceItem[]*) - 리소스 데이터가 포함된 배열
-- **assignments?** - (*NewAssignmentItem[]*) - 할당 데이터가 포함된 배열
-- **collections?** - (*Сollections*) - 사용자 정의 데이터를 담는 배열을 포함하는 객체
+- **data** - (*[] | NewTask[]*) - 작업 데이터 배열
+- **links?** - (*Link[]*) - 링크 데이터 배열
+- **resources?** - (*NewResourceItem[]*) - 리소스 데이터 배열
+- **assignments?** - (*NewAssignmentItem[]*) - 배정 데이터 배열
+- **collections?** - (*Сollections*) - 커스텀 데이터를 담는 배열들을 가지는 객체
 
 ~~~js
 gantt.parse({
@@ -77,22 +77,21 @@ gantt.parse({
 })
 ~~~
 
-**data** 또는 **tasks** 배열은 **NewTask** 객체들을 포함해야 하며, 이는 **Task** 객체와 다릅니다. NewTask는 문자열이나 빈 객체일 수 있습니다. 이 객체들은 [**Task** 객체](guides/task-properties.md)와 동일한 속성을 가질 수 있으며, 사용자 정의 속성도 추가할 수 있습니다. **Task** 객체와 달리 *$*로 시작하는 속성은 무시되며, 날짜는 문자열일 수 있습니다.
 
-속성 설명:
+데이터의 **data** 또는 **tasks** 배열은 **NewTask** 객체를 기대합니다. 이 객체는 **Task** 객체와 다를 수 있습니다. 문자열이나 빈 객체일 수 있습니다. [**Task** 객체](guides/task-properties.md)와 동일한 속성을 가질 수 있으며, 여기에 임의의 커스텀 속성을 추가할 수 있습니다. 차이점은 **Task** 객체의 일부 속성이 *\$* 기호로 시작하는 경우 무시되고 날짜는 문자열 타입으로 허용될 수 있다는 점입니다. 타입 설명은 다음과 같습니다:
 
-- **NewTask** - (*string | {} | object*) - Gantt에 추가되는 작업 객체. 가능한 속성:
-    - **_id?_** - (*string | number*) - 선택 사항, 작업 ID, 없으면 자동 생성됨
-    - **_start_date?_** - (*string | Date*) - 선택 사항, 작업 시작일
-    - **_duration?_** - (*number*) - 선택 사항, 작업 기간
-    - **_end_date?_** - (*string | Date*) - 선택 사항, 작업 종료일
-    - **_text?_** - (*string*) - 선택 사항, 작업 이름
-    - **_open?_** - (*boolean*) - 선택 사항, 로드 시 작업이 확장되어 있는지 여부
-    - **_parent?_** - (*string | number*) - 선택 사항, 상위 작업 ID
-    - **_constraint_date?_** - (*string | Date*) - 선택 사항, 제약 날짜
-    - **_[customProperty: string]_** - (*any*) - 기타 모든 속성, [**Task** 객체](guides/task-properties.md)의 속성 포함
+- **NewTask** - (*string | {} | object*) - Gantt에 추가될 작업 객체. 아래 속성을 포함할 수 있습니다:
+    - **_id?_** - (*string | number*) - 선택적, 작업 ID. 설정되지 않으면 자동 생성됩니다.
+    - **_start_date?_** - (*string | Date*) - 선택적, 작업 시작 예정일.
+    - **_duration?_** - (*number*) - 선택적, 작업 지속 기간.
+    - **_end_date?_** - (*string | Date*) - 선택적, 작업 완료 예정일.
+    - **_text?_** - (*string*) - 선택적, 작업 이름.
+    - **_open?_** - (*boolean*) - 선택적, 로드 시에 자식 작업을 표시할지 여부.
+    - **_parent?_** - (*string | number*) - 선택적, 상위 작업의 ID.
+    - **_constraint_date?_** - (*string | Date*) - 선택적, 작업 제약 날짜.
+    - **_[customProperty: string]_** - (*any*) - 추가하고 싶은 임의의 속성, [**Task** 객체](guides/task-properties.md)의 속성도 포함 가능
 
-전체 작업 속성 목록은 [이 문서](guides/task-properties.md)를 참고하세요.
+다음은 가능한 작업 속성의 전체 목록이 아닙니다. 자세한 내용은 [이 기사](guides/task-properties.md)를 참조하십시오.
 
 ~~~js
 gantt.parse({
@@ -103,9 +102,10 @@ gantt.parse({
 })
 ~~~
 
+
 ---
 
-**links** 배열은 [**Link** 객체](guides/link-properties.md)를 포함해야 합니다.
+**The** **links** 배열은 [**Link** 객체](guides/link-properties.md)를 기대합니다.
 
 ~~~js
 gantt.parse({
@@ -118,16 +118,16 @@ gantt.parse({
 
 ---
 
-**resources** 배열은 **NewResourceItem** 객체들을 포함해야 하며, 주요 속성은 다음과 같습니다:
+다음은 **resources** 배열이 아래 속성들을 가질 수 있는 **NewResourceItem** 객체를 기대합니다:
 
-- **NewResourceItem** - (*object*) - Gantt에 추가되는 리소스 항목. 포함할 수 있는 속성:
-    - **_id?_** - (*string | number*) - 선택 사항, 리소스 ID, 없으면 자동 생성됨
-    - **_parent?_** - (*string | number*) - 선택 사항, 상위 리소스 ID
-    - **_text?_** - (*string*) - 선택 사항, 리소스 이름
-    - **_open?_** - (*boolean*) - 선택 사항, 로드 시 리소스가 확장되어 있는지 여부
-    - **_unit?_** - (*string | number*) - 선택 사항, 리소스 할당 단위
-    - **_default_value?_** - (*string | number*) - 선택 사항, 라이트박스에 표시되는 기본 할당 값
-    - **_[customProperty: string]_** - (*any*) - 기타 모든 속성
+- **NewResourceItem** - (*object*) - Gantt에 추가될 리소스 아이템 객체. 아래 속성을 가질 수 있습니다:
+    - **_id?_** - (*string | number*) - 선택적, 리소스 ID. 설정되지 않으면 자동 생성됩니다
+    - **_parent?_** - (*string | number*) - 선택적, 상위 리소스의 ID
+    - **_text?_** - (*string*) - 선택적, 리소스 이름
+    - **_open?_** - (*boolean*) - 선택적, 로드 시 리소스를 펼칠지 여부
+    - **_unit?_** - (*string | number*) - 선택적, 리소스 할당의 단위
+    - **_default_value?_** - (*string | number*) - 선택적, 라이트박스 섹션의 배정 기본값
+    - **_[customProperty: string]_** - (*any*) - 추가하고 싶은 임의의 속성
 
 ~~~js
 gantt.parse({
@@ -141,19 +141,19 @@ gantt.parse({
 
 ---
 
-**assignments** 배열은 **NewAssignmentItem** 객체들을 포함해야 하며, 주요 속성은 다음과 같습니다:
+The **assignments** 배열은 아래 속성들을 가질 수 있는 **NewAssignmentItem** 객체를 기대합니다:
 
-- **NewAssignmentItem** - (*object*) - Gantt에 추가되는 할당 항목. 포함할 수 있는 속성:
-    - **_id?_** - (*string | number*) - 선택 사항, 할당 ID, 없으면 자동 생성됨
-    - **_task_id_** - (*string | number*) - 할당된 작업 ID
-    - **_resource_id_** - (*string | number*) - 할당된 리소스 ID
-    - **_value_** - (*number | string*) - 선택 사항, 할당 값
-    - **_mode?_** - (*string*) - 선택 사항, 계산 모드: "default"|"fixedDates"|"fixedDuration"
-    - **_delay?_** - (*number*) - 선택 사항, 할당 시작과 작업 시작 간 차이
-    - **_start_date?_** - (*string | Date*) - 선택 사항, 할당 시작일
-    - **_duration?_** - (*number*) - 선택 사항, 할당 기간
-    - **_end_date?_** - (*string | Date*) - 선택 사항, 할당 종료일
-    - **_[customProperty: string]_** - (*any*) - 기타 모든 사용자 정의 속성
+- **NewAssignmentItem** - (*object*) - Gantt에 추가될 배정 아이템 객체. 아래 속성을 가질 수 있습니다:
+    - **_id?_** - (*string | number*) - 선택적, 배정 ID. 설정되지 않으면 자동 생성됩니다
+    - **_task_id_** - (*string | number*) - 리소스가 배정된 작업의 ID
+    - **_resource_id_** - (*string | number*) - 작업에 배정된 리소스의 ID
+    - **_value_** - (*number | string*) - 선택적, 배정 값
+    - **_mode?_** - (*string*) - 선택적, 리소스 배정 시점의 계산 모드: "default"|"fixedDates"|"fixedDuration"
+    - **_delay?_** - (*number*) - 선택적, 배정 시작일과 작업 시작일의 차이
+    - **_start_date?_** - (*string | Date*) - 선택적, 배정 시작일
+    - **_duration?_** - (*number*) - 선택적, 배정 지속 기간
+    - **_end_date?_** - (*string | Date*) - 선택적, 배정 종료일
+    - **_[customProperty: string]_** - (*any*) - 추가하고 싶은 임의의 속성
 
 ~~~js
 gantt.parse({
@@ -166,13 +166,13 @@ gantt.parse({
 
 ---
 
-**collections** 객체는 사용자 정의 데이터를 로드할 때 사용됩니다. 속성 이름은 자유롭고, 값은 컬렉션 아이템을 담은 배열입니다:
+The **collections** 객체는 임의의 커스텀 데이터를 로드할 수 있습니다. 속성의 이름은 임의로 지을 수 있으며, 값은 컬렉션 아이템들을 담은 배열이어야 합니다:
 
-- **[collectionName: string]** - (*[] | СollectionItem[]*) - 컬렉션 아이템 배열
+- **[collectionName: string]** - (*[] | СollectionItem[]*) - 커스텀 데이터 아이템 배열
 
-각 **СollectionItem**은 임의의 속성을 가진 객체입니다:
+The **СollectionItem**은 임의의 속성을 가질 수 있는 객체입니다. 속성의 타입은 아래와 같습니다:
 
-- **[itemProperty: string]** - (*any*) - 임의의 사용자 정의 속성
+- **[itemProperty: string]** - (*any*) - 커스텀 컬렉션 아이템 속성
 
 ~~~js
 gantt.parse({
@@ -211,7 +211,6 @@ gantt.parse({
 });
 ~~~
 
-<br>
 v8.0부터는 **parse()** 메서드를 사용해 작업과 링크뿐 아니라 리소스 및 리소스 할당도 함께 로드할 수 있습니다:
 
 ~~~js

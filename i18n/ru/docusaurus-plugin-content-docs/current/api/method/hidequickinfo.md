@@ -1,16 +1,16 @@
 ---
 sidebar_label: hideQuickInfo
-title: hideQuickInfo method
-description: "скрывает всплывающую форму задачи, если она в данный момент открыта"
+title: Метод hideQuickInfo
+description: "скрывает всплывающее окно формы задачи (если она в данный момент активна)"
 ---
 
 # hideQuickInfo
 
 ### Description
 
-@short: Скрывает всплывающую форму задачи, если она в данный момент открыта
+@short: Скрывает всплывающее окно формы задачи (если оно в данный момент активно)
 
-@signature: hideQuickInfo: () =\> void
+@signature: hideQuickInfo: () => void
 
 ### Example
 
@@ -26,7 +26,7 @@ gantt.hideQuickInfo();
 ### Details
 
 :::note
- Этот метод является частью расширения **Quick Info**, поэтому убедитесь, что плагин [quick_info](guides/extensions-list.md#quickinfo) включен. 
+Этот метод определён в расширении **Quick Info**, поэтому необходимо активировать плагин [quick_info](guides/extensions-list.md#quick-info). 
 :::
 
 ### Related API
@@ -37,5 +37,4 @@ gantt.hideQuickInfo();
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [Полный список расширений](guides/extensions-list.md#quickinfo)
-
+- [Full List of Extensions](guides/extensions-list.md#quick-info)

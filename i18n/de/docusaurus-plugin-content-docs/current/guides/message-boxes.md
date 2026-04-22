@@ -1,47 +1,49 @@
+--- 
+title: "Popup-Nachrichten und Modalfenster"
+sidebar_label: "Popup-Nachrichten und Modalfenster"
 ---
-title: "Popup-Nachrichten und Modale Boxen"
-sidebar_label: "Popup-Nachrichten und Modale Boxen"
----
 
-# Popup-Nachrichten und Modale Boxen
+# Popup-Nachrichten und Modalfenster
 
-Nachrichten im Gantt-Diagramm informieren Benutzer über Fehler, bestätigen oder verweigern Aktionen, ermöglichen die Auswahl von Optionen und mehr. Diese Nachrichten basieren auf [einem Fork des dhtmlxMessage-Repositories](https://github.com/DHTMLX/message), sodass alle Features von dhtmlxMessage auch für dhtmlxGantt-Nachrichten gelten.
+Nachrichten werden im Gantt-Diagramm verwendet, um den Benutzer über einen Fehler zu informieren, eine Aktion zu bestätigen oder abzulehnen, eine von mehreren Optionen auszuwählen und so weiter.  
+Gantt-Diagramm-Nachrichten basieren auf einem Fork des Repositories dhtmlxMessage als Grundlage.  
+Daher ist die gesamte Funktionalität von dhtmlxMessage auch für dhtmlxGantt-Nachrichten relevant.
 
-Es gibt zwei Haupttypen von Nachrichten: eine [einfache Popup-Nachricht](guides/message-boxes.md#basicpopupmessage) und eine [modale Nachrichtenbox](guides/message-boxes.md#modalmessageboxes) mit Schaltflächen, die die Interaktion mit der Anwendung blockieren.
+Es gibt zwei Haupttypen von Nachrichten: eine [einfaches Popup-Nachrichtenfeld](guides/message-boxes.md#basic-popup-message) und eine [modale Meldungsbox](guides/message-boxes.md#modal-message-boxes) mit Buttons, die die Arbeit einer Anwendung blockieren.
 
-Modale Nachrichtenboxen gibt es in drei Varianten:
+Eine modale Meldungsbox kann zu einem von drei möglichen Typen gehören:
 
-- [Alert-Nachrichtenbox](#alert)
-- [Confirm-Nachrichtenbox](#confirm)
+- [Warnungs-Meldungsbox](#alert)
+- [Bestätigungs-Meldungsbox](#confirm)
 - [Modalbox](#modal)
 
 
-## Einfache Popup-Nachricht
+## Basic Popup Message 
 
-Um eine einfache modale Nachrichtenbox anzuzeigen, verwenden Sie die Methode [gantt.message](api/method/message.md). Der erforderliche Parameter ist der Nachrichtentext:
+Um eine grundlegende modale Meldungsbox zu erstellen, verwenden Sie die [gantt.message](api/method/message.md) Methode. Der obligatorische Parameter der Methode ist der Text der Nachricht:
 
 ~~~js
 gantt.message("The task is updated");
 ~~~
 
-Es gibt drei Stile für Nachrichtenboxen:
-
-- Standard-Nachrichtenbox (**type:"info"**)
+Es gibt drei Typen von Nachrichtenboxen:
+  
+- eine Standard-Meldungsbox (**type:"info"**)
 
 ![default_message](/img/default_message.png)
   
-- Fehler-Nachrichtenbox (**type:"error"**)
+- eine Fehlermeldungsbox (**type:"error"**)
 
 ![error_message](/img/error_message.png)
 
-- Warnungs-Nachrichtenbox (**type:"warning"**)
+- eine Warnmeldungsbox (**type:"warning"**)
 
 ![warning_message](/img/warning_message.png)
 
-Um die gewünschte Nachrichtenbox zu erstellen, setzen Sie die Eigenschaft *type* mit dem entsprechenden Wert: 
+Um eine notwendige Meldungsbox zu erstellen, müssen Sie die *type*-Eigenschaft mit dem entsprechenden Wert definieren: 
 
 ~~~js
-// Erstellung einer Fehler-Nachrichtenbox
+// Erstellen einer Fehlermeldungsbox
 gantt.message({type:"error", text:"Invalid data format"});
 ~~~
 
@@ -49,33 +51,34 @@ gantt.message({type:"error", text:"Invalid data format"});
 [Gantt message types](https://docs.dhtmlx.com/gantt/samples/04_customization/20_message_types.html)
 
 
-Um eine Nachrichtenbox anders zu gestalten, geben Sie eine CSS-Klasse über den type-Parameter an, wie [hier](guides/message-boxes.md#styling) beschrieben.
+Um verschiedene Stile auf eine Meldungsbox anzuwenden, müssen Sie eine CSS-Klasse über den type-Parameter angeben, wie hier beschrieben [hier](guides/message-boxes.md#styling).
 
-### Positionierung der Nachrichtenboxen
+### Positionierung von Meldungsboxen
 
-Standardmäßig erscheinen Popup-Nachrichtenboxen in der oberen rechten Ecke des Fensters. Anders als [modale Nachrichtenboxen](guides/message-boxes.md#modalmessageboxes) blockieren sie nicht die Interaktion mit der übergeordneten Anwendung. Die Position kann durch Setzen der Eigenschaft **gantt.message.position** geändert werden:
+Standardmäßig erscheint eine Popup-Nachrichtenbox in der rechten oberen Ecke des Fensters. Sie blockiert nicht die Arbeit der übergeordneten Anwendung, im Gegensatz zu [modalen Meldungsboxen](guides/message-boxes.md#modal-message-boxes), die die übergeordnete Anwendung überlagern und deren Arbeit blockieren. Sie können die Position einer Meldungsbox ändern, indem Sie die Eigenschaft **gantt.message.position** verwenden:
 
 ~~~js
 gantt.message.position = 'bottom';
 ~~~
 
-**Related example:** [Message position](https://snippet.dhtmlx.com/tte3rx78)
+**Verwandtes Beispiel** [Message position](https://snippet.dhtmlx.com/tte3rx78)
 
-Verfügbare Positionswerte sind:
+Es gibt vier mögliche Werte für die Position der Meldung:
 
-- **top** - zeigt die Nachrichtenbox in der oberen rechten Ecke an (Standard)
+- **top** - zeigt eine Meldungsbox in der rechten oberen Ecke des Fensters, standardmäßig festgelegt
 
-- **bottom** - zeigt die Nachrichtenbox in der unteren rechten Ecke an
+- **bottom** - zeigt eine Meldungsbox in der rechten unteren Ecke des Fensters
 
-- **left** - zeigt die Nachrichtenbox auf der linken Seite unterhalb des Gantt an
+- **left** -  zeigt eine Meldungsbox auf der linken Seite des Fensters unter Gantt
 
-- **right** - zeigt die Nachrichtenbox auf der rechten Seite unterhalb des Gantt an
+- **right** - zeigt eine Meldungsbox auf der rechten Seite des Fensters unter Gantt
 
-### Ablaufintervall
+### Expire Interval
 
-Sie können einstellen, wie lange eine Nachrichtenbox sichtbar bleibt, indem Sie den Parameter *expire* verwenden. Dieser gibt die Zeit in Millisekunden an, bevor die Box verschwindet. Standardwert ist 4000 Millisekunden.
+Es ist möglich, das Ablauf-Intervall für eine Meldungsbox mithilfe des *expire*-Parameters anzupassen. Es handelt sich dabei um den Zeitraum nach dem das Meldungsfeld verschwindet (in Millisekunden).  
+Standardmäßig ist das Ablauf-Intervall auf 4000 Millisekunden gesetzt. 
 
-Um diese Dauer zu ändern oder das automatische Ausblenden zu deaktivieren, setzen Sie den expire-Parameter auf einen anderen Wert oder auf -1. Bei -1 verschwindet die Nachrichtenbox nur, wenn sie angeklickt wird.
+Sie können diesen Wert entweder ändern oder das Ablaufzeit-Fenster ganz deaktivieren, indem Sie den expire-Parameter auf "-1" setzen. In diesem Fall verschwindet eine Meldungsbox erst nach einem Mausklick.
 
 ~~~js
 gantt.message({
@@ -85,11 +88,11 @@ gantt.message({
 });
 ~~~
 
-### Ausblenden einer Nachrichtenbox per API
+### Verstecken einer Message Box über die API
 
-Um eine bestimmte Nachrichtenbox manuell auszublenden, bevor sie automatisch verschwindet, verwenden Sie die Methode **gantt.message.hide(boxId)**. Sie akzeptiert einen Parameter:
+Um die angegebene Meldungsbox manuell zu verstecken und nicht darauf zu warten, bis sie automatisch verschwindet, können Sie die Methode **gantt.message.hide(boxId)** verwenden. Sie nimmt einen Parameter:
 
-- **boxId** - die ID, die der Box bei der Erstellung zugewiesen wurde
+- **boxId** - die Box-ID, die im Konstruktor der Box angegeben ist
 
 ~~~js
 gantt.message({
@@ -98,44 +101,46 @@ gantt.message({
 });
 
 gantt.message.hide("myBox");
-~~~
+~~~ 
 
-## Modale Nachrichtenboxen
+## Modal Message Boxes
 
-Modale Nachrichtenboxen blockieren die Interaktion mit der Anwendung, bis eine Aktion ausgeführt wird, meist durch Klicken auf eine Schaltfläche. Sie schließen sich beim Klicken auf eine Schaltfläche und führen ggf. eine Callback-Funktion aus.
+Modalmeldungsboxen verhindern die Arbeit der übergeordneten App, bis eine notwendige Aktion ausgeführt wird (in der Regel durch Klicken auf einen Button). Sie schließen sich durch einen Button-Klick und eine Callback-Funktion, falls vorhanden.
 
-Es gibt drei Typen modaler Nachrichtenboxen:
+Es gibt drei Typen von modalem Meldungsboxen:
 
-- [Alert-Nachrichtenbox](#alert) - eine Meldung mit einer einzelnen Schaltfläche;
-- [Confirm-Nachrichtenbox](#confirm) - eine Bestätigungsbox mit "OK" und "Abbrechen"-Schaltflächen;
-- [Modalbox](#modal) - eine modale Box, die beliebig viele Schaltflächen haben kann.
+- [Warnungs-Meldungsbox](#alert) - eine Warnbox mit einem Button;
+- [Bestätigungs-Meldungsbox](#confirm) - eine Bestätigungsbox mit zwei Buttons (um zu bestätigen oder abzubrechen); 
+- [Modalbox](#modal) - eine modale Meldungsbox mit einer unbegrenzten Anzahl von Buttons. 
 
-Gemeinsame Eigenschaften sind:
+Gemeinsame Eigenschaften der Boxen sind:
 
-- **id** - die Kennung der Nachrichtenbox;
-- **title** - Kopfzeilentext;
-- **type** - Typ der Nachrichtenbox (z.B. warning oder error);
-- **text** - Nachrichteninhalt;
-- **ok** - Text für die "OK"-Schaltfläche;
-- **cancel** - Text für die "Abbrechen"-Schaltfläche (nur bei Confirm-Box);
-- **callback** - Funktion, die beim Klicken auf eine Schaltfläche aufgerufen wird und *true* oder *false* erhält, je nachdem, welche Schaltfläche gewählt wurde;
-- **position** - unterstützt derzeit nur "top"; andere Werte zentrieren die Box;
-- **width** - Breite der Modalbox, festgelegt mit CSS-[Längenangaben](https://developer.mozilla.org/en-US/docs/Web/CSS/length) oder [Prozentangaben](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) wie "100px" oder "50%";
-- **height** - Höhe der Modalbox, analog zur Breite festgelegt.
+- **id** – die ID der Meldungsbox;
+- **title** – der Text des Headers;
+- **type** – der Typ der Meldungsbox (eine Warnung oder ein Fehler);
+- **text** – der Text des Textbereichs der Meldungsbox; 
+- **ok** – der Text der "OK"-Schaltfläche;
+- **cancel** – der Text der "Cancel"-Schaltfläche (für die Bestätigungsbox);
+- **callback** – die bei Klick auf eine Schaltfläche aufgerufene Funktion. Nimmt *true* oder *false* als Parameter an (je nach gedrückter Schaltfläche);
+- **position** – aktuell wird nur ein Wert - "top" - unterstützt; jeder andere Wert ergibt eine zentrierte Ausrichtung;
+- **width**    - die Breite der Modalbox (gesetzt als CSS [&#60;length&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/length) oder
+  [&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) Werte, z. B. "100px", "50%");
+- **height** - die Höhe der Modalbox (gesetzt als CSS [&#60;length&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/length) oder
+  [&#60;percentage&#62;](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) Werte, z. B. "100px", "50%").
 
-## Alert-Nachrichtenbox (#alert)
+## Warnungs-Meldungsbox {#alert}
 
 ![alert](/img/alert.png)
 
-Eine Alert-Nachrichtenbox enthält eine "OK"-Schaltfläche. Der Text der Schaltfläche kann mit dem *ok*-Parameter gesetzt werden:
+Eine Warnungs-Meldungsbox enthält den "OK"-Button. Um den Text des "OK"-Buttons festzulegen, verwenden Sie den *ok*-Parameter mit dem Textwert:
 
-- Kurzform (nur Nachrichtentext, andere Parameter werden auf Standardwerte gesetzt):
+- eine kurze Form (enthält nur den Text der Meldung – implizite Nutzung des Parameters 'text'. Die anderen Parameter haben Standardwerte):
 
 ~~~js
 gantt.alert("Text");
 ~~~
 
-- Vollständige Form (mehrere Optionen angeben, nicht angegebene Parameter nutzen Standardwerte):
+- eine vollständige Form (enthält mehrere verfügbare Parameter. Nicht angegebene Parameter erhalten Standardwerte)
 
 ~~~js
 gantt.alert({
@@ -147,19 +152,20 @@ gantt.alert({
 ~~~
 
 
-## Confirm-Nachrichtenbox (#confirm)
+## Bestätigungs-Meldungsbox {#confirm}
 
 ![confirm](/img/confirm.png)
 
-Confirm-Nachrichtenboxen haben zwei Schaltflächen: "OK" und "Abbrechen". Die Texte werden über die jeweiligen Eigenschaften gesetzt.
+Eine Bestätigungs-Meldungsbox hat zwei Buttons: den "OK"-Button und den "Cancel"-Button. Der Text der Buttons wird in den Eigenschaften mit den entsprechenden Namen festgelegt. 
 
-- Kurzform:
+
+- eine kurze Form
 
 ~~~js
 gantt.confirm("ConfirmText");
 ~~~
 
-- Vollständige Form:
+- eine vollständige Form
 
 ~~~js
 gantt.confirm({
@@ -173,15 +179,15 @@ gantt.confirm({
 ~~~
 
 
-## Modalbox (#modal)
+## Modalbox {#modal}
 
 ![modalbox](/img/modalbox.png)
 
-Modalboxen bieten einige besondere Funktionen:
+Eine Modalbox besitzt einige besondere Merkmale: 
 
-- Ihr *text* kann beliebigen *HTML*-Inhalt enthalten;
-- Sie können mehrere Schaltflächen im *buttons*-Array definieren, das die Beschriftungen enthält;
-- Die *callback*-Funktion erhält den *Index* der geklickten Schaltfläche.
+- ihr *Text* kann beliebigen *HTML*-Inhalt enthalten;
+- sie kann viele Buttons enthalten, die im *buttons*-Array angegeben sind und die Textwerte der Buttons enthalten;
+- die *callback*-Funktion nimmt den *Index* des gewählten Buttons als Parameter.
 
 ~~~js
 gantt.modalbox({
@@ -195,15 +201,15 @@ gantt.modalbox({
 ~~~
 
 
-### Konfiguration der Modalbox-Schaltflächen (#configuringmodalboxbuttons)
+### Configuring modalbox buttons 
 
-Es gibt zwei Hauptwege, Modalbox-Schaltflächen zu konfigurieren:
+Es gibt zwei Hauptwege, die Konfiguration der modalbox Buttons zu definieren:
 
-- Kurzform:
+- eine kurze Form: 
 
 ~~~js
 gantt.modalbox({
-    // weitere Einstellungen
+    // other settings
     buttons:["Save", "Delete", "Cancel"],
     callback: function(result){
            switch(result){
@@ -219,43 +225,43 @@ gantt.modalbox({
         }    
     }
 });
-~~~
+~~~ 
 
-In dieser Form erhält die Callback-Funktion den als String dargestellten Index der geklickten Schaltfläche ("0", "1", "2" usw.). Jede Schaltfläche bekommt eine CSS-Klasse, die auf ihrem Label in Kleinbuchstaben basiert, z.B. *gantt_**save**_button*, *gantt_**delete**_button*, *gantt_**cancel**_button*.
+Das Ergebnis der Callback-Funktion wird dem stringifizierten Index eines gedrückten Buttons aus dem Array entsprechen ("0", "1", "2",...). Jeder Button erhält eine CSS-Klasse aus seinem Label, das in Kleinbuchstaben umgewandelt wird, z. B. *gantt_**save**_button*, *gantt_**delete**_button*, *gantt_**cancel**_button*. 
 
-Sie können die Schaltflächen mit diesen Klassen gestalten:
+Diese Klassen können verwendet werden, um Buttons zu stylen:
 
 ~~~js
 .gantt_delete_button div{
     background:red;
 }
-~~~
+~~~ 
 
-Falls mehrere Popups denselben Schaltflächennamen haben, aber unterschiedliche Gestaltung benötigen, kann die **type**-Konfiguration verwendet werden:
+Falls derselbe Button-Name von mehreren Popups verwendet wird, die unterschiedlich gestylt werden sollen, kann die **type**-Konfiguration verwendet werden:
 
 ~~~js
 gantt.modalbox({
-    // weitere Einstellungen
+    // other settings
     type:"special_popup",
     buttons:["Save", "Delete", "Cancel"]
 });
-~~~
+~~~ 
 
-Der **type** wird mit "gantt_" vorangestellt und als Klasse dem Popup-Element hinzugefügt:
+Der **type** wird mit dem Präfix "gantt_" versehen und als Klassenname zum Popup-Element hinzugefügt:
 
 ~~~js
 .gantt_special_popup .gantt_delete_button div{
       background:red;
 }
-~~~
+~~~ 
 
-- Vollständige Form:
+- eine vollständige Form:
 
-Sie können CSS-Klassen und Rückgabewerte der Schaltflächen explizit mit einer detaillierten Konfiguration festlegen:
+Die CSS-Klassen der Buttons und Callback-Werte können explizit über eine längere Konfigurationsform definiert werden:
 
 ~~~js
 gantt.modalbox({
-    // weitere Einstellungen
+    // other settings
     buttons: [
         { label:"Save",   css:"link_save_btn",   value:"save" },
         { label:"Cancel", css:"link_cancel_btn", value:"cancel" },
@@ -275,22 +281,22 @@ gantt.modalbox({
         }
     }
 });
-~~~
+~~~ 
 
-**label** ist erforderlich, während **css** und **value** optional sind. Wenn sie weggelassen werden, werden CSS-Klassen und Werte wie in der Kurzform aus dem Label und dem Schaltflächenindex abgeleitet.
+Das **label**-Parameter ist verpflichtend, während **css**- und **value**-Optionen weggelassen werden können. Fehlende Parameter werden wie in der kurzen Form der Button-Konfiguration berechnet: CSS wird aus dem kleingeschriebenen Button-Label vererbt und der Button-Index wird als Wert verwendet.
 
-Die **css**-Klasse wird mit "gantt_" vorangestellt und dem Schaltflächenelement hinzugefügt:
+
+Der **css**-Wert wird mit dem String "gantt_" vorangestellt und dem Button-Element als Klassenname hinzugefügt:
 
 ~~~js
 .gantt_link_delete_btn div{
       background:red;
 }
-~~~
+~~~ 
 
+## Ausblenden von Modal Message Boxes
 
-## Modale Nachrichtenboxen ausblenden
-
-Um eine modale Nachrichtenbox manuell zu schließen, verwenden Sie die Methode **gantt.modalbox.hide()** und übergeben das Modalbox-Container-Element:
+Um eine Modal-Meldungsbox manuell auszublenden, können Sie die Methode **gantt.modalbox.hide()** verwenden. Als Parameter nimmt sie den div-Container der Modalbox:
 
 ~~~js
 var box = gantt.modalbox({    
@@ -303,9 +309,9 @@ var box = gantt.modalbox({
 });
 
 gantt.modalbox.hide(box);
-~~~
+~~~ 
 
-Für **alert**- und **confirm**-Modale Boxen gilt die gleiche Methode **gantt.modalbox.hide()**:
+Für die **alert**- und **confirm**-Modalboxen müssen Sie ebenfalls die Methode **gantt.modalbox.hide()** verwenden:
 
 ~~~js
 var box = gantt.confirm({
@@ -318,22 +324,25 @@ var box = gantt.confirm({
 });
 
 gantt.modalbox.hide(box);
-~~~
+~~~ 
 
-## Wie Gantt mit Modalbox-Schaltflächen arbeitet
+## How Gantt Works with Modalbox Buttons
 
-Standardmäßig sind Schaltflächennamen einfacher Text. Wenn ein Schaltflächenname als HTML-Element gesetzt wird (z.B. fettgedruckte Schrift oder ein Material-Icon), gibt die Callback-Funktion beim Klick *null* zurück.
+Standardmäßig sind die Button-Namen als Text gesetzt. Wird der Name eines Buttons als HTML-Element gesetzt (z. B. um die Schrift fett darzustellen oder ein Material-Icon hinzuzufügen),
+wird das Ergebnis der Callback-Funktion beim Klicken auf den Button *null* sein. 
 
-Das liegt daran, dass Gantt bestimmte Attribute am Elternelement des geklickten Elements erwartet. Fehlen diese, gibt Gantt *null* zurück. Außerdem werden alle Elemente, die Sie für Schaltflächen angeben, von Gantt in `<div>`-Tags eingeschlossen.
+Dies passiert, weil Gantt bestimmte Attribute des Eltern-Elements des geklickten Elements überwacht. Fehlen die erwarteten Attribute, gibt Gantt *null* zurück. 
+Außerdem wickelt Gantt alle Elemente, die Sie für die Buttons angeben, in die `<div>`-Tags ein. 
 
-Wenn Sie also ein String-Element beim Klick auf den Text zurückgeben, ist dessen Elternelement ein leerer `<div>`, was zu einem `null`-Ergebnis führt. Wenn Sie aber außerhalb des Textes auf eine Schaltfläche klicken, hat das Elternelement die erforderlichen Attribute, sodass die Callback-Funktion die erwarteten Ergebnisse zurückgibt:
+Wenn Sie also einen String als Button-Namen zurückgeben, wird dessen Elternteil ein leeres `<div>`-Element sein und Sie erhalten `null`. 
+Wenn jedoch ein Button außerhalb des Textes angeklickt wird, ist sein Elternteil ein Element mit allen erforderlichen Attributen, sodass Sie ein etwas genaueres Ergebnis erhalten:
 
-- *true/false* für Confirm-Boxen
-- für Modalboxen:
-  - der Index des Elements im Array (bei der [Kurzform](#configuringmodalboxbuttons))
-  - der Wert des `value`-Parameters (bei der [Vollständigen Form](#configuringmodalboxbuttons))
+- *true/false* für die Bestätigungsbox
+- für die Modalbox:
+    - die Nummer des Elements in einem Array (für die [kurze Form](#configuring-modalbox-buttons))
+    - der Wert des `value`-Parameters (für die [vollständige Form](#configuring-modalbox-buttons))
   
-Das bedeutet: Wenn Sie ein HTML-Element als Schaltflächennamen verwenden möchten, sollten Sie es in zwei `<div>`-Elemente einschließen, die beide das Attribut `data-result` besitzen. Zum Beispiel:
+Das bedeutet, dass wenn Sie ein HTML-Element als Button-Namen verwenden möchten, Sie alles in zwei div-Elemente einschließen müssen, die das `data-result`-Attribut besitzen. Zum Beispiel:
 
 ~~~js
 gantt.confirm({
@@ -357,9 +366,9 @@ gantt.modalbox({
      css:"link_cancel_btn", value:"cancel" },
   ],
 });
-~~~
+~~~ 
 
-Wenn Sie andere Elemente als Schaltfläche verwenden möchten, stellen Sie sicher, dass alle Elternelemente ebenfalls das Attribut `data-result` besitzen. Im folgenden Beispiel werden `<u>`-Tags für den Schaltflächennamen verwendet, und sie sowie die beiden Elternelemente besitzen das Attribut `data-result`:
+Wenn Sie andere Elemente für einen Button verwenden müssen, sollten alle Elternelemente ebenfalls das `data-result`-Attribut haben. Im untenstehenden Beispiel werden die `<u>`-Tags als Button-Namen verwendet. Sie tragen daher dasselbe `data-result`-Attribut wie die beiden anderen `<div>`-Elternteile des Buttons: 
 
 ~~~js
 gantt.confirm({
@@ -393,18 +402,19 @@ gantt.modalbox({
       css:"link_cancel_btn", value:"cancel" },
   ],
 });
-~~~
+~~~ 
 
 ## Styling
 
-Sie können das Erscheinungsbild jeder Message-Box anpassen, indem Sie eigene Styles definieren. In der Regel geben Sie eine CSS-Klasse über den *type*-Parameter an, indem Sie eine CSS-Klasse erstellen und deren Namen diesem Parameter zuweisen.
+Für jede Art von Meldungsbox können Sie einen benutzerdefinierten Stil definieren, um das gewünschte Erscheinungsbild zu erreichen.
+Im Allgemeinen wird die passende CSS-Klasse über den *type*-Parameter festgelegt: Sie definieren eine CSS-Klasse und setzen den Parameter auf deren Namen.
 
-Beachten Sie beim Setzen des 'type'-Parameters folgende wichtige Punkte:
+Es gibt einige Regeln im Umgang mit dem 'type'-Parameter, die Sie beachten sollten:
 
-- Um eine CSS-Klasse auf Alert- und Confirm-Boxen anzuwenden, initialisieren Sie die Box mit der 'window-related'-Methode.
-- Um eine CSS-Klasse auf Message-Boxen anzuwenden, initialisieren Sie die Box mit der 'common'-Methode.
-- CSS-Klassennamen sollten mit dem Präfix 'gantt-' beginnen.
-- Damit der Style korrekt angewendet wird, verwenden Sie einen Selektor wie **.gantt-some div**, um Elemente innerhalb einer Gantt-Nachricht gezielt anzusprechen.
+- Um eine CSS-Klasse für die Alert- und Bestätigungsboxen festzulegen, müssen Sie eine solche Box auf die 'window-bezogene' Weise initialisieren.
+- Um eine CSS-Klasse für die Meldungsboxen festzulegen, müssen Sie eine Box auf die 'allgemeine' Weise initialisieren.
+- Der Name einer CSS-Klasse sollte mit dem Prefix 'gantt-' beginnen.
+- Um den Stil korrekt anzuwenden, ist es notwendig, den Klassennamen als **.gantt-some div** zu verwenden, um anzugeben, dass er für das Element innerhalb einer gantt-Nachricht bestimmt ist. 
 
 ~~~js
 <style type="text/css">
@@ -417,25 +427,23 @@ Beachten Sie beim Setzen des 'type'-Parameters folgende wichtige Punkte:
 
 
 gantt.message({ type:"myCss", text:"some text" });
-~~~
+~~~ 
 
-**Related example:** [Styling message boxes](https://snippet.dhtmlx.com/p950vym3)
+**Related sample**  [Styling message boxes](https://snippet.dhtmlx.com/p950vym3)
+## Modal Windows and Keyboard Interaction
 
-## Modale Fenster und Tastatur-Interaktion
+Die Tastaturfunktionalität für Modalboxen wird durch die Eigenschaft **gantt.message.keyboard** gesteuert. Anfänglich ist sie auf *true* gesetzt. 
 
-Die Tastaturunterstützung für modale Boxen wird über die Eigenschaft **gantt.message.keyboard** gesteuert, die standardmäßig auf *true* gesetzt ist.
+Standardmäßig blockieren Modalboxen Tastatur-Ereignisse der Seite. Die einzigen Tasten, die verwendet werden können, sind: 
 
-Standardmäßig blockieren modale Boxen die Tastaturereignisse der Seite, mit Ausnahme bestimmter Tasten:
+- "space" und "enter" - setzt den *true*-Wert als Ergebnis einer Modalbox;
+- "escape" - setzt den *false*-Wert als Ergebnis einer Modalbox.
 
-- "space" und "enter" setzen das Ergebnis der modalen Box auf *true*
-- "escape" setzt das Ergebnis der modalen Box auf *false*
-
-Wenn Sie **gantt.message.keyboard** auf *false* setzen, werden Tastaturereignisse nicht mehr blockiert und diese Tasten lösen keine modalen Ergebnisse mehr aus:
+Indem Sie die Eigenschaft **keyboard** auf *false* setzen, aktivieren Sie Tastatur-Ereignisse (und deaktivieren die oben genannten Tasten):
 
 ~~~js
 gantt.message.keyboard = false; 
 gantt.modalbox({...});
 ~~~
 
-Dies ermöglicht die uneingeschränkte Nutzung der Tastatur, z. B. um Eingaben in Felder innerhalb modaler Boxen zu machen.
-
+Dies ermöglicht die vollständige Nutzung der Tastatur, z. B. zum Eingeben von Werten in Eingabefelder innerhalb von Modalboxen.

@@ -1,20 +1,20 @@
 ---
 sidebar_label: createCalendar
-title: createCalendar method
-description: "создаёт функциональный календарь"
+title: Метод createCalendar
+description: "создает рабочий календарь"
 ---
 
 # createCalendar
 
 ### Description
 
-@short: Создаёт функциональный календарь
+@short: Создает рабочий календарь
 
 @signature: createCalendar: (parentCalendar?: Calendar) =\> Calendar
 
 ### Parameters
 
-- `parentCalendar` - (optional) *Calendar* - (необязательно) существующий календарь, на основе которого будет создан новый
+- `parentCalendar`	- (optional) *Calendar* - существующий календарь, который используется для создания нового на его основе		
 
 ### Returns
 - ` calendar` - (Calendar) - объект Calendar
@@ -22,10 +22,10 @@ description: "создаёт функциональный календарь"
 ### Example
 
 ~~~jsx
-// создание календаря с полным рабочим временем (7 рабочих дней в неделю, 24 часа в сутки)
+// creating a full-time calendar (7 working days per week, 24 hours per day)
 var calendar1 = gantt.createCalendar();
 
-// создание нового календаря путём копирования существующего
+// creating a new calendar on the base of an existing one (copying it)
 var calendar2 = gantt.createCalendar(parentCalendar);
 ~~~
 
@@ -33,7 +33,7 @@ var calendar2 = gantt.createCalendar(parentCalendar);
 
 добавлено в версии 4.2
 
-После создания календарь необходимо добавить в Gantt с помощью метода [addCalendar](api/method/addcalendar.md):
+После того как вы создали календарь, вам нужно добавить его в Gantt через метод [addCalendar](api/method/addcalendar.md):
 
 ~~~js
 gantt.addCalendar(calendar1);
@@ -45,5 +45,4 @@ gantt.addCalendar(calendar1);
 - [calendar](api/other/calendar.md)
 
 ### Related Guides
-- [Расчёт рабочего времени](guides/working-time.md#multipleworktimecalendars)
-
+- [Расчет рабочего времени](guides/working-time.md#multipleworktimecalendars)

@@ -1,22 +1,22 @@
 ---
 sidebar_label: onGanttRender
-title: onGanttRender event
-description: "当甘特图在页面上完成渲染时触发"
+title: onGanttRender 事件
+description: "在页面上渲染完成甘特图后触发"
 ---
 
 # onGanttRender
 
 ### Description
 
-@short: 当甘特图在页面上完成渲染时触发
+@short: 在页面上甘特图渲染完成后触发
 
-@signature: onGanttRender: () =\> void;
+@signature: onGanttRender: () => void;
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onGanttRender", function(){
-    alert("甘特图已在页面上完全渲染。")
+    alert("甘特图已在页面上完全渲染完成...")
 });
 ~~~
 
@@ -29,4 +29,3 @@ gantt.attachEvent("onGanttRender", function(){
 - [onBeforeDataRender](api/event/onbeforedatarender.md)
 - [onDataRender](api/event/ondatarender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

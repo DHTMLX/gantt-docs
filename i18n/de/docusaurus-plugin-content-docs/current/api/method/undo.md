@@ -8,7 +8,7 @@ description: "macht die im Gantt vorgenommenen Änderungen rückgängig"
 
 ### Description
 
-@short: Macht die im Gantt vorgenommenen Änderungen rückgängig
+@short: Stellt die im Gantt vorgenommenen Änderungen wieder her
 
 @signature: undo: () =\> void
 
@@ -24,7 +24,7 @@ gantt.undo();
 ### Details
 
 :::note
- Diese Methode ist Teil der **undo**-Erweiterung, daher stellen Sie sicher, dass das [undo](guides/extensions-list.md#undo) Plugin aktiviert ist. Weitere Informationen finden Sie im Artikel ["Undo/Redo-Funktionalität"](guides/undo-redo.md). 
+Diese Methode ist in der **undo** Erweiterung definiert, daher müssen Sie das [undo](guides/extensions-list.md#undo) Plugin aktivieren. Lesen Sie die Details im Artikel [Undo/Redo Functionality](guides/undo-redo.md).
 :::
 
 ### Related API
@@ -35,8 +35,7 @@ gantt.undo();
 - [onAfterUndo](api/event/onafterundo.md)
 
 ### Related Guides
-- ["Undo/Redo-Funktionalität"](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
-- hinzugefügt in Version 4.0
-
+- in Version 4.0 hinzugefügt

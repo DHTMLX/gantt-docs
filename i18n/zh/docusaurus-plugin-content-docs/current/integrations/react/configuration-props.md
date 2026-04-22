@@ -1,82 +1,88 @@
 ---
-title: "使用 ReactGantt 中的 DHTMLX Gantt 属性"
-sidebar_label: "配置"
+title: 在 ReactGantt 中使用 DHTMLX Gantt 属性
+sidebar_label: 配置
+description: "包装属性对 Gantt 配置、模板、事件和数据存储的完整参考"
 ---
 
-# 使用 ReactGantt 中的 DHTMLX Gantt 属性
+# 在 ReactGantt 中使用 DHTMLX Gantt 属性
 
-本页概述了 React Gantt 支持的 props，并解释了它们与 DHTMLX Gantt 功能的对应关系。
+本页描述 React Gantt 接受的属性，以及它们如何映射到 DHTMLX Gantt 的功能。
 
-## 可用 Props
+## 可用属性
 
 <table>
   <thead>
   <tr>
-  <th>Prop</th>
+  <th>属性</th>
   <th>类型</th>
-  <th>说明</th>
+  <th>描述</th>
   </tr>
   </thead>
   <tbody>
   <tr>
   <td>tasks</td>
   <td>Task[]</td>
-  <td>一个 [任务对象](guides/supported-data-formats.md#json)数组。</td>
+  <td>一个包含 [task objects](guides/supported-data-formats.md) 的数组。</td>
   </tr>
   <tr>
   <td>links</td>
   <td>Link[]</td>
-  <td>一个 [链接对象](guides/supported-data-formats.md#json)数组。</td>
+  <td>一个包含 [link objects](guides/supported-data-formats.md) 的数组。</td>
   </tr>
   <tr>
   <td>templates</td>
   <td>GanttTemplates</td>
-  <td>重写 [gantt.templates](api/overview/templates-overview.md)，如 [task_text](api/template/task_text.md)、[task_class](api/template/task_class.md)、[scale_cell_class](api/template/scale_cell_class.md)。</td>
+  <td>覆盖 [gantt.templates](api/other/templates.md)，例如: [task_text](api/template/task_text.md)、[task_class](api/template/task_class.md)、[scale_cell_class](api/template/scale_cell_class.md)。</td>
   </tr>
   <tr>
   <td>config</td>
   <td>GanttConfig</td>
-  <td>合并到 [gantt.config](api/overview/properties-overview.md)，包含如 [scales](api/config/scales.md)、[columns](api/config/columns.md)、[autosize](api/config/autosize.md) 等选项。</td>
+  <td>合并到 [gantt.config](api/overview/properties-overview.md)，例如: [scales_config](api/config/scales.md)、[columns_config](api/config/columns.md)、[autosize_config](api/config/autosize.md)。</td>
+  </tr>
+  <tr>
+  <td>calendars</td>
+  <td>Calendar[]</td>
+  <td>一个工作日历数组。示例: [Working Calendars](integrations/react/overview.md#working-calendars)。</td>
   </tr>
   <tr>
   <td>resources</td>
   <td>Resource[]</td>
-  <td>一个 [资源对象](guides/resource-management.md)数组。</td>
+  <td>一个包含 [resource objects](/guides/resource-management#manual-creation-of-data-store) 的数组。</td>
   </tr>
   <tr>
   <td>baselines</td>
   <td>Baseline[]</td>
-  <td>一个 [基线对象](guides/inbuilt-baselines.md)数组。</td>
+  <td>一个包含 [baseline objects](/guides/inbuilt-baselines#loading-baselines-with-tasks) 的数组。</td>
   </tr>
   <tr>
   <td>markers</td>
   <td>Marker[]</td>
-  <td>用于 [时间线标记](guides/markers.md)的标记对象数组。</td>
+  <td>用于 [timeline markers](/guides/markers) 的标记对象数组。</td>
   </tr>
   <tr>
   <td>plugins</td>
   <td>GanttPlugins</td>
-  <td>需启用的 [Gantt 扩展](guides/extensions-list.md)（如 [critical_path](guides/critical-path.md)、[auto_scheduling](guides/auto-scheduling.md) 等）。</td>
+  <td>[Gantt extensions](/guides/extensions-list/) 需要被激活（例如: [critical_path](/guides/critical-path/)，[auto_scheduling](/guides/auto-scheduling/)）。</td>
   </tr>
   <tr>
   <td>data</td>
   <td>( load?: string, save?: string|RouterFunction, batchSave?: BatchChanges)</td>
-  <td>支持通过内置 Gantt 传输加载数据，并提供回调以处理 Gantt 数据的更改。</td>
+  <td>允许通过内置的 Gantt 传输加载数据，并提供对对 Gantt 数据所做更改的回调。</td>
   </tr>
   <tr>
   <td>locale</td>
   <td>string</td>
-  <td>设置 [gantt.i18n.setLocale(locale)](guides/localization.md)。默认值为 "en"。</td>
+  <td>设置 [gantt.i18n.setLocale(locale)](/guides/localization/)。默认值为 "en"。</td>
   </tr>
   <tr>
   <td>theme</td>
   <td>string</td>
-  <td>应用 [gantt.setSkin(theme)](guides/skins.md)。默认值为 "terrace"。</td>
+  <td>应用 [gantt.setSkin(theme)](/guides/skins/)。默认值为 "terrace"。</td>
   </tr>
   <tr>
   <td>customLightbox</td>
   <td>ReactElement | null</td>
-  <td>用于替换默认 Lightbox 的 React 组件（参见 [自定义 Lightbox](guides/custom-edit-form.md)）。</td>
+  <td>一个替代内置 Lightbox 的 React 组件（参见 [Custom Lightbox](/guides/custom-edit-form/)）。</td>
   </tr>
   <tr>
   <td>inlineEditors</td>
@@ -86,40 +92,40 @@ sidebar_label: "配置"
   <tr>
   <td>groupTasks</td>
   <td>GroupConfig | boolean | null</td>
-  <td>指定分组配置，或设置为 false 或 null 以禁用分组（参见 [任务分组](api/method/groupby.md)）。</td>
+  <td>分组配置对象，或设为 false/null 以禁用分组（参见 [Grouping Tasks ](api/method/groupby.md)。）。</td>
   </tr>
   <tr>
   <td>filter</td>
   <td>((task: Task) =&gt; boolean) | null</td>
-  <td>用于过滤显示的 Gantt 任务的函数。</td>
+  <td>用于筛选 Gantt 任务的函数。</td>
   </tr>
   <tr>
   <td>resourceFilter</td>
   <td>((resource: Resource) =&gt; boolean) | null</td>
-  <td>过滤 [资源面板](guides/resource-management.md)中显示的资源。</td>
+  <td>用于筛选资源以展示在 [Resource Panel](/guides/resource-management/)。</td>
   </tr>
   <tr>
   <td>modals</td>
   <td>GanttModals</td>
-  <td>允许自定义组件替换 <code>onBeforeTaskDelete</code> 和 <code>onBeforeLinkDelete</code> 弹窗。</td>
+  <td>允许用自定义组件替换 <code>onBeforeTaskDelete</code> 与 <code>onBeforeLinkDelete</code> 模态框。</td>
   </tr>
   <tr>
   <td>(Event Props)</td>
   <td>Function</td>
-  <td>支持与 DHTMLX Gantt 事件同名的事件处理 props，例如 onTaskClick、onAfterTaskAdd 等。名称匹配的 props 会自动绑定。</td>
+  <td>包装器同样支持传递对应 DHTMLX Gantt 事件的事件处理属性。例如 onTaskClick、onAfterTaskAdd 等。如果属性名与事件名相符，则会自动挂载。</td>
   </tr>
   </tbody>
 </table>
 
-## 使用示例
+## 示例用法
 
-~~~js
+~~~jsx
 <ReactGantt
-  tasks="{tasks}"
-  links="{links}"
+  tasks={tasks}
+  links={links}
   theme="material"
   locale="en"
-  config="{" {
+  config={{
     scales: [
       { unit: "year", step: 1, format: "%Y" },
       { unit: "month", step: 1, format: "%M" }
@@ -131,64 +137,65 @@ sidebar_label: "配置"
       { name: "add" }
     ],
     // 你想要的其他 gantt.config
-  } }
-  onTaskClick="{(id," e) => {
+  }}
+  onTaskClick={(id, e) => {
     console.log('Task clicked:', id);
     return true; 
   }}
-  templates="{" {
+  templates={{
     task_text: (start, end, task) => `#${task.id}: ${task.text}`,
-  } }
+  }}
 />
 ~~~
 
-## 事件 Props 的使用
+## 使用事件属性
 
-任何 DHTMLX Gantt 事件都可以作为 prop 传递。例如:
+你可以将任意 DHTMLX Gantt 事件作为属性传递。例如：
 
 ~~~js
 <ReactGantt
 
-  onTaskClick="{(id," e) => {
+  onTaskClick={(id, e) => {
     console.log('Task clicked:', id);
     return true; 
   }}
 
 />
 ~~~
-当你传递如 `onBeforeTaskAdd` 这样的 prop 时，封装组件会在内部调用 [gantt.attachEvent("onBeforeTaskAdd", handler)](api/method/attachevent.md)。完整事件列表请参考 [DHTMLX Gantt API](api/overview/events-overview.md)。
 
-## 组合 Props 与 DHTMLX API
+内部实现中，包装器会在你传递名为 `onBeforeTaskAdd` 的属性时调用 [gantt.attachEvent("onBeforeTaskAdd", handler)](api/method/attachevent.md)。若要查看完整的事件列表，请参阅 [DHTMLX Gantt API](api/overview/events-overview.md)。
 
-`@dhx/react-gantt` 库旨在通过声明式 props（如 tasks、links、resources、templates 等）覆盖大多数日常需求。但在某些情况下，您可能需要更深入地访问 Gantt 引擎，例如:
+## 将 Props 与 DHTMLX API 结合使用
 
-- [工作时间计算](guides/working-time.md)
-- [自动调度](guides/auto-scheduling.md) 或更高级的功能如 [资源计算](guides/resource-management.md)
-- 使用 [Gantt API](api/api-overview.md) 的特定方法
+`@dhx/react-gantt` 库旨在尽可能做到日常使用的声明式——大多数用例可以通过标准属性（例如 tasks、links、resources、templates 等）来解决。然而，某些场景可能需要对 Gantt 引擎进行更深入的访问。例如：
 
-针对这些场景，有两种方式可以直接与底层 DHTMLX Gantt 功能交互:
+- [Worktime 计算](guides/working-time.md)
+- [Auto scheduling] 的逻辑或诸如 [resource computations](guides/resource-management.md) 等高级功能
+- 调用 [Gantt API] 的任意专用方法（参见 [Gantt API 概览](api/api-overview.md)）
 
-- **React hooks**:由封装库提供，连接到 Gantt 的数据存储和调度逻辑
+在这些场景中，你可以使用两种额外的方法来访问底层的 DHTMLX Gantt 功能：
 
-- **通过 ref 直接访问** Gantt 实例（如果 hooks 无法满足所有需求）
+- **React 钩子（hooks）**，由包装器专门提供，用于将 Gantt 的数据存储和排程逻辑连接起来
 
-### 使用内置 hooks 
+- **通过 `\ref` 直接访问 Gantt 实例**，如果内置钩子无法覆盖你所有的需求
 
-`@dhx/react-gantt` 提供若干可选 hooks，将 React 组件与内部 Gantt API 连接。这些 hooks 是 Gantt 方法和数据存储的桥梁。你可以在组件中直接使用它们，也可以组合成自定义 hooks，用于如资源直方图等特定功能。
+### 使用内置钩子
 
-#### useGanttDatastore\<T\>(ganttRef, storeName)
+库 `@dhx/react-gantt` 提供了一组可选的钩子，用于将 React 组件连接到内部 Gantt API。这些钩子为 Gantt 的底层方法和数据存储提供了“桥梁”。你可以直接在组件中调用这些钩子，或将它们组合成你自己的自定义钩子，以实现诸如资源直方图等的专门特性。
 
-`useGanttDatastore` hook 提供对特定 Gantt 数据存储的只读访问。常用于访问资源存储、基线或其他内置/自定义存储。
+#### useGanttDatastore&lt;T&gt;(ganttRef, storeName)
 
-包含以下函数:
+`useGanttDatastore` 钩子提供对特定 Gantt 数据存储的只读访问。常见用途包括访问资源数据存储、基线，或任何内置或自定义的存储。
 
-- `getItem(id)` - 从数据存储中获取指定项
+它提供以下函数：
 
-- `getItems()` - 获取数据存储中的所有项
+- `getItem(id)` - 从数据存储中返回指定项
+
+- `getItems()` - 从指定的数据存储中返回所有项
 
 - `hasChild(id: string | number)` - 检查某项是否有子项
 
-- `getChildren(id: string | number)` - 获取子项
+- `getChildren(id: string | number)` - 检索子项
 
 ~~~js
 import { useMemo } from 'react';
@@ -199,7 +206,7 @@ function MyResourceList({ ganttRef }) {
 
   const resourceIds = resourceStore.getItems().map(item => item.id);
 
-  // 示例，仅用于打印数据
+  // 示例：只是在控制台打印数据
   useMemo(() => {
     console.log('Resource IDs:', resourceIds);
   }, [resourceIds]);
@@ -208,17 +215,17 @@ function MyResourceList({ ganttRef }) {
 }
 ~~~
 
-当你需要直接访问某个数据存储中的底层数据时（例如判断资源是组还是个人），该 hook 很有用。
+你可以在需要直接获取特定数据存储底层数据时使用此钩子。例如，检查某个资源是分组还是个人资源。
 
 #### useResourceAssignments(ganttRef)
 
-`useResourceAssignments` hook 提供与资源相关的方法，包括获取资源的分配信息或列出分配给任务的资源。
+`useResourceAssignments` 钩子暴露 Gantt 与资源相关的方法，例如检索某资源的分配或列举哪些资源被分配到某个任务。
 
-包含以下函数:
+它提供以下函数：
 
-- `getResourceAssignments(resourceId, taskId?)` - 对应 [getResourceAssignments](api/method/getresourceassignments.md)
+- `getResourceAssignments(resourceId, taskId?)` - 连接到 [](api/method/getresourceassignments.md)
 
-- `getTaskResources(taskId)` - 对应 [getTaskResources](api/method/gettaskresources.md)
+- `getTaskResources(taskId)` - 连接到 [](api/method/gettaskresources.md)
 
 ~~~js
 import React from 'react';
@@ -237,23 +244,24 @@ export function ResourceUsage({ ganttRef, taskId }) {
 }
 ~~~
 
-该 hook 便于实现自定义的资源使用逻辑，例如计算分配工时或按负责人分组任务。
+你可能需要这个钩子来实现关于资源使用的自定义逻辑，例如计算分配的小时数或按所有者对任务进行分组。
 
 #### useWorkTime(ganttRef)
 
-此 hook 提供对 DHTMLX Gantt 内置工作时间函数的访问，如 [isWorkTime](api/method/isworktime.md)、[calculateEndDate](api/method/calculateenddate.md) 和 [calculateDuration](api/method/calculateduration.md)。
+提供对内置的 DHTMLX Gantt 工作时间函数的直接桥接，例如 [](api/method/isworktime.md)、[](api/method/calculateenddate.md)、[](api/method/calculateduration.md)。
 
-它适合根据 Gantt 工作日历设置高亮工作/非工作时间，并进行符合工作日历的日期计算。
+你将需要这个钩子来根据 Gantt 工作日历设置高亮显示工作/非工作时间，以及在与工作日历一致的日期运算中使用。
 
-提供的函数包括:
+它提供以下函数：
 
-- `isWorkTime(( date:Date, unit?: string, task?:Task ))` - 对应 [isWorkTime](api/method/isworktime.md)
+- `isWorkTime({ date:Date, unit?: string, task?:Task })` - 桥接到 [](api/method/isworktime.md)
 
-- `calculateEndDate((start:Date, duration:number, unit?: string, task?: Task))` - 对应 [calculateEndDate](api/method/calculateenddate.md)
+- `calculateEndDate({start:Date, duration:number, unit?: string, task?: Task})` - 桥接到 [](api/method/calculateenddate.md)
 
-- `calculateDuration((start:Date, end:Date, task?: Task))` - 对应 [calculateDuration](api/method/calculateduration.md)
+- `calculateDuration({start:Date, end:Date, task?: Task})` - 桥接到 [](api/method/calculateduration.md)
 
-- `getClosestWorkTime(( date:Date, unit?: string, task?: Task, dir?: "past"|"future" ))` - 对应 [getClosestWorkTime](api/method/getclosestworktime.md)
+- `getClosestWorkTime({ date:Date, unit?: string, task?: Task, dir?: "past"|"future" })` - 桥接到 [](api/method/getclosestworktime.md)
+
 
 ~~~js
 import { useEffect, useRef, useState } from 'react';
@@ -273,9 +281,9 @@ export default function GanttTemplatesDemo() {
   ...
 ~~~
 
-#### 组合 hooks 构建自定义 hooks
+#### 将钩子组合成你自己的自定义钩子
 
-推荐将这些基础 hooks 组合，构建你自己的领域或项目专用 hooks。例如，为实现资源直方图，你可以开发一个自定义 hook 用于缓存容量值并汇总资源使用情况:
+一个很好的实践是使用这些基础桥接钩子来构建你自己的领域或项目特定的钩子。例如，如果你想创建一个资源直方图，你可能会创建一个自定义钩子来缓存容量值、汇总资源使用等。  
 
 ~~~js
 import { useMemo } from 'react';
@@ -285,19 +293,19 @@ export function useResourceHistogram(ganttRef) {
   const resourceStore = useGanttDatastore(ganttRef, 'resource');
   const { getResourceAssignments } = useResourceAssignments(ganttRef);
 
-  // 自定义逻辑：容量缓存、组检测等
+  // 自定义逻辑：容量缓存、分组检测等
   // ...
   return {
-    // 例如 getCapacity、getAllocatedValue
+    // 例如：getCapacity、getAllocatedValue
   };
 }
 ~~~
 
 ### 通过 ref 直接访问 Gantt 实例
 
-虽然 hooks 能覆盖大多数高级需求，但你仍可以通过 `ref` 直接访问整个 Gantt 实例:
+尽管这些钩子涵盖了大多数高级需求，但你可能仍然希望直接访问整个 Gantt 实例。对此，ref 的方式仍然可用：
 
-~~~js
+~~~jsx
 import React, { useRef, useEffect } from 'react';
 import ReactGantt, { ReactGanttRef } from '@dhx/react-gantt';
 
@@ -308,24 +316,23 @@ export function DirectRefExample({ tasks, links }) {
     const gantt = ganttRef.current?.instance;
     if (!gantt) return;
 
-    // 你可以在这里调用任何 Gantt API 方法
+    // 在这里你可以调用任意 Gantt API 方法
     console.log('All tasks:', gantt.getTaskByTime());
     gantt.showDate(new Date());
   }, []);
 
   return (
     <ReactGantt
-      ref="{ganttRef}"
-      tasks="{tasks}"
-      links="{links}"
+      ref={ganttRef}
+      tasks={tasks}
+      links={links}
     />
   );
 }
 ~~~
 
-:::info
- 如果你直接在 Gantt 实例上修改 tasks 或 links，同时又作为 React props 提供它们，请确保同步或重新解析数据。否则 React 下次渲染时可能会覆盖你手动的更改。
+:::note
+info 请注意，如果在直接修改 Gantt 实例中的 tasks/links 的同时也通过 React 属性提供它们，请保持同步或重新解析数据。否则，下一次 React 重新渲染可能会覆盖你手动的修改。
 :::
 
-如果你需要执行 props 未覆盖的操作，依然可以直接调用 gantt 方法。更多细节参见 [Accessing the Underlying Gantt API](integrations/react.md)。
-
+如果你想执行某些属性未暴露的操作，仍然可以直接调用 gantt 方法。有关更多细节，请参阅 [Accessing the Underlying Gantt API](integrations/react/overview.md#accessingtheunderlyingganttapi)。

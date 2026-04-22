@@ -1,6 +1,6 @@
 ---
 sidebar_label: addShortcut
-title: addShortcut method
+title: addShortcut-Methode
 description: "fügt eine neue Tastenkombination hinzu"
 ---
 
@@ -14,9 +14,8 @@ description: "fügt eine neue Tastenkombination hinzu"
 
 ### Parameters
 
-- `shortcut` - (required) *string* - die Taste oder Tastenkombination, die für die Tastenkombination verwendet wird (["Tastaturnavigation"](guides/keyboard-navigation.md))
-- `handler` - (required) *function* - die Funktion, die ausgeführt wird, wenn die Tastenkombination ausgelöst wird
-- `Element` - (required) *an,* - an das der Handler gebunden wird (["Liste der Scopes"](guides/keyboard-navigation.md#scopes)) standardmäßig "gantt"
+- `shortcut` - (required) *string* - der Tastenname oder der Name der Tastenkombination für einen Shortcut [shortcut syntax](guides/keyboard-navigation.md#shortcutsyntax)
+- `handler` - (required) *function* - der Handler des Shortcuts-Aufrufs
 
 ### Example
 
@@ -35,12 +34,12 @@ gantt.addShortcut("shift+w", function(e){
 ### Details
 
 :::note
- Diese Methode ist Teil der **keyboard_navigation** Erweiterung, daher muss das [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) Plugin aktiviert sein. Für weitere Details siehe den Artikel ["Tastaturnavigation"](guides/keyboard-navigation.md). 
+Diese Methode ist in der Erweiterung **keyboard_navigation** definiert, daher müssen Sie das [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) Plugin aktivieren. Lesen Sie die Details im Artikel [Keyboard Navigation](guides/keyboard-navigation.md). 
 :::
 
 Hinzugefügt in Version 4.1
 
-Wenn der dritte Parameter weggelassen wird, wird der Handler standardmäßig an den gantt Scope gebunden.
+Falls der dritte Parameter nicht gesetzt ist, wird der Handler dem Gantt-Scope zugeordnet.
 
 ### Related API
 - [getShortcutHandler](api/method/getshortcuthandler.md)
@@ -50,5 +49,4 @@ Wenn der dritte Parameter weggelassen wird, wird der Handler standardmäßig an 
 - [focus](api/method/focus.md)
 
 ### Related Guides
-- ["Tastaturnavigation"](guides/keyboard-navigation.md)
-
+- [Keyboard Navigation](guides/keyboard-navigation.md)

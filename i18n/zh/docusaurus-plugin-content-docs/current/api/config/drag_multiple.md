@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_multiple
-title: drag_multiple config
-description: "允许同时拖动多个选中的任务"
+title: drag_multiple 配置
+description: "允许一次拖动多个已选任务"
 ---
 
 # drag_multiple
 
 ### Description
 
-@short: 允许同时拖动多个选中的任务
+@short: 允许一次拖动多个已选任务
 
 @signature: drag_multiple: boolean
 
@@ -26,9 +26,9 @@ gantt.init("gantt_here");
 
 ### Details
 
-当选中了多个任务时，拖动未包含在选中范围内的任务只会移动该单个任务。
+如果你选中了多个任务，但拖动一个未被选中的任务 - 只有未被选中的该任务会被移动。
 
-若要启用项目的拖放功能，请将 [drag_project](api/config/drag_project.md) 配置设置为 *true*。
+你也可以通过将 [drag_project](api/config/drag_project.md) 配置设置为 *true* 来启用项目的拖放。
 
 ~~~js
 gantt.config.drag_project = true;
@@ -38,5 +38,4 @@ gantt.config.drag_project = true;
 - [drag_project](api/config/drag_project.md)
 
 ### Related Guides
-- [多任务选择](guides/multiselection.md#duorenwuxuanzeyutuozhuai)
-
+- [Multi-Task Selection](guides/multiselection.md#multitaskselectionanddragndrop)

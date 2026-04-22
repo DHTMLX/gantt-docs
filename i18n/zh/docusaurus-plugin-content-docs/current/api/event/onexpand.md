@@ -1,14 +1,14 @@
 ---
 sidebar_label: onExpand
-title: onExpand event
-description: "当甘特图切换到全屏模式时触发"
+title: onExpand 事件
+description: "在甘特图扩展为全屏时触发"
 ---
 
 # onExpand
 
 ### Description
 
-@short: 当甘特图切换到全屏模式时触发
+@short: 在甘特图扩展为全屏时触发
 
 @signature: onExpand: () =\> void;
 
@@ -16,17 +16,17 @@ description: "当甘特图切换到全屏模式时触发"
 
 ~~~jsx
 gantt.attachEvent("onExpand", function (){
-    // 在这里编写您的自定义逻辑
+    // 在这里插入您的自定义逻辑 
 });
 ~~~
 
 ### Related samples
-- [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
+- [全屏](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 ### Details
 
 :::note
- 该事件来自**fullscreen**扩展，因此请确保通过[gantt.plugins](api/method/plugins.md)方法启用[fullscreen](guides/extensions-list.md)插件。欲了解更多信息，请参阅[全屏模式](guides/fullscreen-mode.md)文章。 
+该事件在 **fullscreen** 扩展中定义，因此需要使用 [gantt.plugins](api/method/plugins.md) 方法来激活 [fullscreen] 插件。请在 [全屏模式](guides/fullscreen-mode.md) 文章中了解详细信息。 
 :::
 
 ### Related API
@@ -38,4 +38,3 @@ gantt.attachEvent("onExpand", function (){
 
 ### Related Guides
 - [全屏模式](guides/fullscreen-mode.md)
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: resize_rows
-title: resize_rows config
-description: "允许通过拖动来调整行的高度"
+title: resize_rows 配置
+description: "通过拖拽实现调整行高的功能"
 ---
 
 # resize_rows
 
 ### Description
 
-@short: 允许通过拖动来调整行的高度
+@short: 通过拖拽调整行高的能力
 
 @signature: resize_rows: boolean
 
@@ -21,7 +21,7 @@ gantt.config.resize_rows = true;
 **Default value:** false
 
 ### Related samples
-- [Resizable rows in grid](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
+- [网格中的可调整行高](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_row_resize.html)
 
 ### Details
 
@@ -34,5 +34,4 @@ gantt.config.resize_rows = true;
 - [onAfterRowResize](api/event/onafterrowresize.md)
 
 ### Change log
-- 在 v7.1 中添加
-
+- 在 v7.1 中新增

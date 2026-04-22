@@ -1,41 +1,74 @@
 ---
 sidebar_label: addCalendar
 title: addCalendar method
-description: "Gantt 차트에 캘린더를 삽입합니다."
+description: "Gantt에 캘린더를 추가합니다"
 ---
 
 # addCalendar
 
 ### Description
 
-@short: Gantt 차트에 캘린더를 삽입합니다.
+@short: Gantt에 캘린더를 추가합니다
 
-@signature: addCalendar: (calendar: CalendarConfig) =\> string
+@signature: addCalendar: (calendar: CalendarConfig) => string
 
 ### Parameters
 
-- `calendar` - (required) *CalendarConfig* - 캘린더 구성 정보를 담고 있는 객체
+- `calendar` - (필수) *CalendarConfig* - 캘린더 구성을 담은 객체
 
 ### Returns
-- ` calendarId` - (string) - 캘린더의 식별자
+- ` calendarId` - (string) - 캘린더의 ID
 
 ### Example
 
 ~~~jsx
-// 기존 캘린더 추가
-var calendarId = gantt.addCalendar(calendar);
+// 이미 생성된 캘린더를 추가합니다
+const calendarId = gantt.addCalendar(calendar);
 
-// 새로운 구성으로 캘린더 추가
-var calendarId = gantt.addCalendar({
-    id:"custom", // 선택 사항
+// 새로운 구성으로 캘린더를 추가합니다( "days" 속성이 배열로 설정됩니다)
+const calendarId = gantt.addCalendar({
+    id: "custom", // 선택적
     worktime: {
         hours: ["8:00-17:00"],
-        days: [ 1, 1, 1, 1, 1, 1 ,1]
+        days: [1, 1, 1, 1, 1, 1, 1]
     }
 });
 
-var calendar = gantt.getCalendar(calendarId);
+// 새로운 구성으로 캘린더를 추가합니다( "days" 속성이 객체로 설정됩니다)
+const calendarId = gantt.addCalendar({
+    id: "global", // 캘린더 ID는 선택사항
+    worktime: {
+      hours: ["8:00-12:00", "13:00-17:00"], // 평일의 전역 근무 시간
+      days: {
+        weekdays: [0, 1, 1, 1, 1, 1, 0],
+        dates: {
+          "2025-04-06": true,  // 특정 날짜의 근무 시간을 재정의
+          "2025-04-08": false,
+          "2025-04-09":  ["9:00-15:00"]
+        }
+      },
+      customWeeks: {
+        lastMonthOfTheYear: {
+          from: new Date(2025, 11, 1),
+          to: new Date(2026, 0, 1),
+          hours: ["9:00-13:00"],
+          days: {
+            weekdays: [0, 1, 1, 1, 1, 0, 0],
+            dates: {
+              "2025-12-08": true,
+              "2025-12-09":  false,
+              "2025-12-10":  ["9:00-15:00"]
+            }
+          }
+        }
+      }
+    }
+});
+
+const calendar = gantt.getCalendar(calendarId);
 ~~~
+
+
 
 ### Related samples
 - [Task level calendars](https://docs.dhtmlx.com/gantt/samples/09_worktime/06_task_calendars.html)
@@ -44,57 +77,94 @@ var calendar = gantt.getCalendar(calendarId);
 
 ### Details
 
-캘린더 구성 객체는 다음과 같은 속성을 포함할 수 있습니다:
+The calendar configuration object can contain the following attributes:
 
-- **id?** - (*string | number*) - 선택 사항, 캘린더 식별자
-- **worktime?** - (*object*) - 근무일과 근무 시간을 정의합니다. 다음을 포함할 수 있습니다:
-    - **_hours?_** - (*string[] | number[] | boolean*) - 선택 사항, 작업 시작 및 종료 시간을 정의하는 전역 근무 시간 배열
-    - **_days?_** - (*WorkDaysTuple*) - 선택 사항, 요일을 나타내는 7요소 배열 (0 - 일요일부터 6 - 토요일까지), 1/true는 근무일, 0/false는 비근무일을 의미
-    - **_customWeeks?_** - (*object*) - 선택 사항, 다양한 기간에 대해 서로 다른 근무 시간 규칙을 정의하는 객체. 키:값 쌍으로 기간 이름과 해당 기간의 속성 객체로 구성됩니다.
-        - **_[timespan: string]_** - (*object*) - 근무 시간 설정이 포함된 기간. 키는 기간 이름입니다.
-            - **_from_** - (*Date*) - 기간 시작 날짜
-            - **_to_** - (*Date*) - 기간 종료 날짜
-            - **_hours?_** - (*Array&lt;string | number&gt;*) - 선택 사항, 'from'-'to' 쌍으로 된 근무 시간 간격 배열. false는 휴무일, true(기본값)는 기본 근무 시간(["8:00-17:00"]) 적용
-            - **_days?_** - (*WorkDaysTuple | boolean*) - 선택 사항, 7요소 배열로 요일을 나타내며, 1/true는 근무일, 0/false는 비근무일
+- **id?** - (*string | number*) - 선택 사항, 캘린더 ID
+- **worktime?** - (*object*) - 일과 시간을 일(day) 및 시(hour)로 설정하는 객체입니다. 아래를 포함할 수 있습니다:
+- **_hours?_** - (*string[] | number[] | boolean*) - 선택 사항, 전역 근무 시간을 포함하는 배열로 작업의 시작 시간과 종료 시간을 설정합니다
+- **_days?_** - (*WorkDaysTuple* | *object*) - 선택 사항이며 아래 중 하나일 수 있습니다:
+    -  일주일의 7일 배열로 (0은 일요일, 6은 토요일). 1/true는 근무일, 0/false는 비근무일을 나타냅니다
+    -  또는 주중과 날짜를 포함하는 객체입니다. 아래를 포함할 수 있습니다:
+        - **_weekdays?_** - (*WorkDaysTuple*) 선택 사항, 주의 7일 배열 (0은 일요일, 6은 토요일). 1/true는 근무일, 0/false는 비근무일
+        - **_dates?_** - (*object*) 선택 사항, 특정 날짜에 대한 근무 시간 설정을 담은 객체입니다. 이 객체는 여러 개의 key: value 쌍을 포함할 수 있습니다. 각각의 key는 문자열로 설정된 날짜이고, 값은 근무 시간 배열('from'-'to' 쌍)이나 불리언입니다. ('false' 값은 휴일을 설정하고, 'true'는 기본 시간(["8:00-17:00"])를 적용합니다)
+- **_customWeeks?_** - (*object*) - 선택 사항, 서로 다른 기간에 대한 근무 시간 규칙을 담은 객체입니다. 이 객체는 시간 구간의 이름을 키로 하고, 값은 속성 목록이 있는 객체입니다.
+    - **_[timespan: string]_** - (*object*) - 해당 시간 구간의 근무 시간 설정을 담고 있는 객체. 이 객체의 이름이 시간 구간의 이름으로 사용됩니다
+        - **_from_** - (*Date*) - 시간 구간이 시작될 예정인 날짜
+        - **_to_** - (*Date*) - 시간 구간이 완료될 예정인 날짜
+        - **_hours?_** - (*Array&lt;string | number&gt;*) - 선택 사항, 'from'-'to' 쌍으로 된 근무 시간 배열. 'false' 값은 휴일, 'true' (기본값) 은 기본 시간으로 적용(["8:00-17:00"])
+        - **_days?_** - (*WorkDaysTuple* | *object*) - 선택 사항, 아래 중 하나일 수 있습니다:
+            -  일주일의 7일 배열로 (0은 일요일, 6은 토요일). 1/true는 근무일, 0/false는 비근무일
+            -  또는 주중과 날짜를 포함하는 객체입니다. 아래를 포함할 수 있습니다:
+                - **_weekdays?_** - (*WorkDaysTuple*) 선택 사항, 주의 7일 배열 (0은 일요일, 6은 토요일). 1/true는 근무일, 0/false는 비근무일
+                - **_dates?_** - (*object*) 선택 사항, 특정 날짜에 대한 근무 시간 설정을 담은 객체입니다. 이 객체는 여러 개의 key: value 쌍을 포함할 수 있습니다. 각각의 key는 문자열로 설정된 날짜이고, 값은 근무 시간 배열('from'-'to' 쌍)이나 불리언입니다. ('false' 값은 휴일을 설정하고, 'true'는 기본 시간( ["8:00-17:00"] )을 적용합니다)
 
-## 특정 요일에 대한 맞춤 근무 시간 설정
 
-요일 번호만 지정하는 대신, 해당 요일에 대해 맞춤 근무 시간을 설정할 수 있습니다.<br>
-예를 들어: 
+### Setting individual working hours for a day
+
+주 요일 번호 대신 이 날짜에 대해 커스텀 근무 시간을 설정할 수도 있습니다. 예를 들면:
 
 ~~~js
-var calendar = {
-    id:"calendar1", // 선택 사항
+const calendar = {
+    id: "calendar1", // 선택적
     worktime: {
         hours: ["8:00-17:00"],
-        days: [ 0, 1, 1, 1, ["12:00-17:00"], 1, 0]
+        days: [0, 1, 1, 1, ["12:00-17:00"], 1, 0]
     }
 }
 ~~~
 
-여기서 ["12:00-17:00"]는 목요일에 오후 12시부터 5시까지 근무 시간을 설정합니다.
+여기서 ["12:00-17:00"]은 목요일에 해당하는 12:00부터 17:00까지의 근무 시간을 나타냅니다.
 
-## 기간별 근무 시간 정의
+### Setting worktime for different time intervals
 
-**customWeeks** 속성을 사용하여 다양한 기간에 대해 서로 다른 근무 시간 규칙을 지정할 수 있습니다:
+다른 기간을 위해 서로 다른 근무 시간 규칙을 구성할 수 있는 기능이 있습니다. 이를 위해 **customWeeks** 속성을 사용합니다:
 
 ~~~js
-// 새로운 구성으로 캘린더 추가
 gantt.addCalendar({
-    id:"default", // 선택 사항
+    id: "global", // 선택적
     worktime: {
         hours: ["8:00-17:00"],
-        days: [ 1, 1, 1, 1, 1, 1 ,1],
+        days: [1, 1, 1, 1, 1, 1, 1],
         customWeeks: {
             winter: {
-                from: new Date(2020, 11, 1),// 2020년 12월 1일
-                to: new Date(2021, 2, 1),// 2021년 3월 1일 00:00
+                from: new Date(2025, 11, 1), // 2025년 12월 1일
+                to: new Date(2026, 2, 1), // 2026년 3월 1일 00:00
                 hours: ["9:00-13:00", "14:00-16:00"],
-                days: [ 1, 1, 1, 1, 0, 0, 0]
+                days: [1, 1, 1, 1, 0, 0, 0]
             }
         }
     }
 });
+~~~
+
+### Setting worktime for certain dates
+
+특정 날짜에 대한 근무 시간을 지정하려면 **_days_** 객체의 **_dates_** 속성에 설정하면 됩니다(또는 **worktime** 속성과 **customWeeks** 속성 모두에 해당). 예를 들면:
+
+~~~js
+const calendar = {
+    id: "calendar1", // 선택적
+    worktime: {
+        hours: ["8:00-17:00"],
+        days: { 
+            dates: { 
+                "2025-04-09":  ["9:00-15:00"] 
+            } 
+        },
+        customWeeks: {
+            winter: {
+                from: new Date(2025, 11, 1), // 2025년 12월 1일
+                to: new Date(2026, 2, 1), // 2026년 3월 1일 00:00
+                hours: ["9:00-13:00", "14:00-16:00"],
+                days: { 
+                    dates: { 
+                        "2026-01-02":  ["9:00-15:00"] 
+                    } 
+                }
+            }
+        }
+    }
+}
 ~~~
 
 ### Related API
@@ -107,6 +177,6 @@ gantt.addCalendar({
 - [작업 시간 계산](guides/working-time.md#multipleworktimecalendars)
 
 ### Change log
-- **customWeeks** 속성은 v7.1에서 도입됨
-- 4.2 버전에 추가됨
-
+- 요일과 날짜를 포함하는 형태로 **_days_** 속성을 *object*로 지정하는 기능이 v9.1에 추가되었습니다
+- **customWeeks** 속성이 v7.1에 추가되었습니다;
+- 버전 4.2에 추가되었습니다

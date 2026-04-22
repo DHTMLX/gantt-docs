@@ -1,7 +1,7 @@
 ---
 sidebar_label: ext
 title: ext config
-description: "ein Objekt, das eine Vielzahl von Extensions enthält"
+description: "Ein Objekt, das verschiedene Erweiterungen speichert"
 ---
 
 # ext
@@ -20,7 +20,7 @@ gantt.ext.inlineEditors.init();
 
 ### Details
 
-Das **ext**-Objekt fasst die folgenden Extensions zusammen:
+Das **ext**-Objekt umfasst die folgenden Erweiterungen:
 
 - [gantt.ext.clickDrag](guides/click-drag-ext.md)
 - [gantt.ext.emptyStateElement](guides/empty-state-element-ext.md)

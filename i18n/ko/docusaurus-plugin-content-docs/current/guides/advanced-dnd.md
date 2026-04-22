@@ -1,24 +1,24 @@
 ---
-title: "DnD로 작업 생성/선택하기"
-sidebar_label: "DnD로 작업 생성/선택하기"
+title: "드래그 앤 드롭으로 작업 만들기/선택하기"
+sidebar_label: "드래그 앤 드롭으로 작업 만들기/선택하기"
 ---
 
-# DnD로 작업 생성/선택하기
+# 드래그 앤 드롭으로 작업 만들기/선택하기
 
-dhtmlxGantt 라이브러리는 타임라인에서 작업을 관리할 수 있도록 향상된 드래그 앤 드롭 기능을 제공하는 확장 기능을 지원합니다.
+dhtmlxGantt 라이브러리는 타임라인에서 작업을 다룰 때 고급 드래그 앤 드롭 기능을 포함하는 확장 기능을 제공합니다. 
 
-요약하면, **click_drag** 확장은 다음을 지원합니다:
+모든 면에서, **click_drag** 확장은 다음을 가능하게 합니다:
 
-- [드래그 앤 드롭으로 작업 생성](#creatingtaskswithdragndrop)
-- [드래그하여 스케줄되지 않은 작업의 시간 지정](#settingtimeforunscheduledtasks)
-- [드래그 앤 드롭으로 작업 선택](#selectingtaskswithdragndrop)
-- [드래그 앤 드롭으로 분할 작업의 일부 생성](#creatingpartsofsplittasks) (PRO 버전)
+- [드래그 앤 드롭으로 작업 만들기](#creating-tasks-with-drag-n-drop)
+- [미정렬된 작업의 시간을 드래그 앤 드롭으로 설정하기](#setting-time-for-unscheduled-tasks)
+- [드래그 앤 드롭으로 작업 선택하기](#selecting-tasks-with-drag-n-drop)
+- [드래그 앤 드롭으로 분할 작업의 일부 만들기](#creating-parts-of-split-tasks) (PRO 버전)
 
 :::note
-이 확장을 사용하려면 [gantt.plugins](api/method/plugins.md) 메서드를 이용해 [click_drag](guides/extensions-list.md#advanceddragndrop) 플러그인을 활성화하세요.
+확장을 사용하려면 [gantt.plugins] 메서드를 사용해 [click_drag] 플러그인을 활성화하세요.
 :::
 
-고급 드래그 앤 드롭을 활성화하려면 [click_drag](api/config/click_drag.md) 구성 옵션을 설정하고 아래 목록에서 필요한 속성을 객체에 포함하세요:
+고급 드래그 앤 드롭을 활성화하려면 [click_drag](api/config/click_drag.md) 구성 옵션을 지정하고 아래 목록의 필요한 속성들을 해당 객체 안에 설정합니다: 
 
 ~~~js
 gantt.config.click_drag = {
@@ -27,39 +27,51 @@ gantt.config.click_drag = {
 };
 ~~~
 
-- **className** -  (*string*) 선택된 요소에 커스텀 CSS 클래스를 적용합니다
-- **render** - (*function*) 드래그 중에 표시되는 요소를 생성하는 함수입니다. 두 개의 파라미터를 받습니다: 
-    - **startPoint** - (*object*) - 다음과 같은 구조의 객체:
+- **className** -  (*string*) 선택된 요소에 대한 사용자 정의 CSS 클래스를 설정합니다
+- **render** - (*function*) 드래그 중에 렌더링되는 요소를 생성하는 함수입니다. 두 개의 매개변수를 받습니다: 
+    - **startPoint** - (*object*) - 다음 형식의 객체:
 
 
     `(absolute: (left: number, top: number), relative: (left: number, top: number) )`, 
 
 
-    absolute는 문서 좌상단 기준 좌표, relative는 viewPort 요소 기준 좌상단 좌표를 나타냅니다 
-    - **endPoint** - (*object*) startPoint와 동일한 구조:
+  여기서 absolute - 문서의 좌상단 모서리의 좌표이고, relative - 뷰포트로 사용되는 왼쪽 상단 요소의 좌표를 나타냅니다 
+    - **endPoint** - (*object*) - 다음 형식의 객체:
 
 
     `(absolute: (left: number, top: number), relative: (left: number, top: number) )`, 
 
 
-    absolute와 relative 좌표는 위와 같습니다 
-- **viewPort** - (*HTMLElement*) 이벤트가 연결되고 선택이 일어나는 요소
-- **useRequestAnimationFrame** - (*boolean*) 렌더링 중 requestAnimationFrame 사용 여부
-- **callback** - (*function*) 마우스 버튼을 놓았을 때 호출됩니다. 6개의 파라미터를 받습니다:
-    - **startPoint** - (*object*) 위와 동일한 구조
-    - **endPoint** - (*object*) 위와 동일한 구조
-     - **startDate** - (*Date*) 드래그 시작 시점의 날짜
-    - **endDate** - (*Date*) 드래그 종료 시점의 날짜
-    - **tasksBetweenDates** - (*array*) 시작과 종료 날짜 사이에 위치한 작업들
-    - **tasksInRows** - (*array*) 세로로 드래그한 영역에 포함된 작업들
-- **singleRow** - (*boolean*) true일 경우 선택 영역이 작업 한 행의 높이로 제한됩니다
+  여기서 absolute - 문서의 좌상단 모서리의 좌표이고, relative - 뷰포트로 사용되는 왼쪽 상단 요소의 좌표를 나타냅니다 
+- **viewPort** - (*HTMLElement*) 이벤트를 연결하고 선택할 요소
+- **useRequestAnimationFrame** - (*boolean*) 렌더링 중에 requestAnimationFrame을 사용할지 여부를 정의합니다
+- **callback** - (*function*) - 마우스 버튼을 놓을 때 호출되는 함수입니다. 6개의 매개변수를 받습니다:
+    - **startPoint** - (*object*) - 다음 형식의 객체:
 
-다음 이벤트를 타임라인 뷰포트 요소(기본적으로 gantt.$task_data, 작업 바를 포함)에 연결할 수 있습니다:
 
-- **onBeforeDrag** - 마우스 버튼을 누른 직후, 드래그 시작 전에 발생
-- **onDrag** - 드래그가 시작된 후 마우스 버튼을 놓기 전까지 반복적으로 발생
-- **onBeforeDragEnd** - 마우스 버튼을 놓은 후, 드래그된 요소가 제거되고 선택된 작업이 식별되기 전에 발생
-- **onDragEnd** - 드래그된 요소가 제거되고 선택된 작업이 식별된 후, 콜백 함수가 호출되기 전에 발생 (설정된 경우)
+    `(absolute: (left: number, top: number), relative: (left: number, top: number) )`, 
+
+
+  여기서 absolute - 문서의 좌상단 모서리의 좌표이고, relative - 뷰포트로 사용되는 왼쪽 상단 요소의 좌표를 나타냅니다 
+    - **endPoint** - (*object*) - 다음 형식의 객체:
+
+
+    `(absolute: (left: number, top: number), relative: (left: number, top: number) )`, 
+
+
+  여기서 absolute - 문서의 좌상단 모서리의 좌표이고, relative - 뷰포트로 사용되는 왼쪽 상단 요소의 좌표를 나타냅니다 
+     - **startDate** - (*Date*) 시작 지점에 해당하는 날짜
+    - **endDate** - (*Date*) 종료 지점에 해당하는 날짜
+    - **tasksBetweenDates** - (*array*) 시작일과 종료일 사이의 작업 배열
+    - **tasksInRows** - (*array*) 시작 좌표와 종료 좌표 사이에 수직으로 선택된 작업 배열
+- **singleRow** - (*boolean*) 선택을 작업의 높이와 같은 한 행에만 추가하려면 true
+
+다음 이벤트를 타임라인 뷰포트의 요소에 연결할 수 있습니다(기본적으로 gantt.$task_data - 타임라인의 작업 막대가 있는 영역의 일부):
+
+- **onBeforeDrag** - 마우스 버튼을 누른 직후 드래그를 시작하기 전에 발생
+- **onDrag** - 드래그를 시작한 후 마우스 버튼을 놓기 전 매번 발생
+- **onBeforeDragEnd** - 마우스 버튼을 놓은 후 렌더링된 요소가 삭제되기 전과 선택 영역에 들어오는 작업들을 검색하기 전에 발생
+- **onDragEnd** - 렌더링된 요소를 제거하고 선택 영역에 들어오는 작업들을 찾은 후, 콜백 함수를 호출하기 전에 발생합니다(지정된 경우)
 
 ~~~js
 gantt.$task_data.attachEvent("onBeforeDrag", function (coords) {
@@ -67,17 +79,15 @@ gantt.$task_data.attachEvent("onBeforeDrag", function (coords) {
 });
 ~~~
 
-
-**Related example:** ["click_drag" 확장에 이벤트 핸들러 연결하기](https://snippet.dhtmlx.com/l13f1cxl)
-
+**관련 샘플**  [Attaching event handlers for the "click_drag" extension](https://snippet.dhtmlx.com/l13f1cxl)
 
 :::note
-이벤트 핸들러는 반드시 이미 생성된 요소에만 추가할 수 있습니다. 따라서 Gantt를 초기화한 후에 이벤트 핸들러를 추가해야 하며, 그렇지 않으면 요소가 아직 생성되지 않아 동작하지 않습니다.
+참고로 이벤트 핸들러는 기존 요소에 대해서만 추가될 수 있습니다. 따라서 Gantt 초기화 후에 이벤트 핸들러를 추가해야 하며, 그렇지 않으면 작동하지 않습니다. 왜냐하면 요소가 아직 생성되지 않았기 때문입니다.
 :::
 
-## 드래그 앤 드롭으로 작업 생성하기
+## 드래그 앤 드롭으로 작업 만들기
 
-타임라인의 빈 공간을 클릭하여 시작 날짜를 지정한 후, 오른쪽으로 드래그하여 작업의 기간을 설정할 수 있습니다.
+타임라인에서 비어 있는 위치를 클릭하여 작업의 시작 날짜를 설정하고 오른쪽으로 드래그하여 기간을 설정하면 드래그 앤 드롭으로 작업을 만들 수 있습니다.
 
 ~~~js
 gantt.config.click_drag = {
@@ -109,13 +119,13 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Create new tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/24_click_drag.html)
 
 
-## 스케줄되지 않은 작업의 시간 지정하기
+## 미정렬된 작업의 시간 설정
 
-**click_drag** 확장을 사용하면 [스케줄되지 않은 작업](guides/unscheduled-tasks.md)의 시간 구간도 드래그 앤 드롭으로 지정할 수 있습니다.
+The **click_drag** extension allows setting time for [unscheduled tasks](guides/unscheduled-tasks.md) with drag-n-drop.
 
 ## 드래그 앤 드롭으로 작업 선택하기
 
-드래그 앤 드롭을 통해 여러 방식(날짜, 행, 경계 내)으로 작업을 선택할 수 있습니다.
+다양한 모드에서 드래그 앤 드롭으로 작업을 선택하는 것이 가능합니다: 날짜 안에서, 행 안에서, 또는 경계 안에서.
 
 ~~~js
 gantt.config.multiselect = true;
@@ -161,9 +171,12 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 [Select multiple tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/25_click_drag_select_by_drag.html)
 
 
-## 분할 작업의 일부 생성하기
+## 드래그 앤 드롭으로 분할 작업의 일부 만들기
 
-드래그 앤 드롭을 사용하여 [분할 작업](guides/split-tasks.md)의 일부를 생성할 수도 있습니다.
+:::info
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
+:::
+또한 드래그 앤 드롭으로 [split tasks](guides/split-tasks.md)의 일부를 만들 수 있습니다. 
 
 ~~~js
 gantt.config.click_drag = {
@@ -217,4 +230,3 @@ function onDragEnd(startPoint,endPoint,startDate,endDate,tasksBetweenDates,tasks
 
 
 [Create split tasks by Drag and Drop](https://docs.dhtmlx.com/gantt/samples/02_extensions/23_click_drag_splittask.html)
-

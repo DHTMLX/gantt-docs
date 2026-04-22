@@ -1,14 +1,14 @@
 ---
 sidebar_label: fit_tasks
-title: fit_tasks config
-description: "告诉甘特图自动调整时间刻度以适应所有显示的任务"
+title: fit_tasks 配置
+description: "'says' 的 Gantt 图表会自动扩展时间刻度以适应显示的所有任务"
 ---
 
 # fit_tasks
 
 ### Description
 
-@short: 告诉甘特图自动调整时间刻度以适应所有显示的任务
+@short: "'says' 的 Gantt 图表会自动扩展时间刻度以适应显示的所有任务"
 
 @signature: fit_tasks: boolean
 
@@ -19,31 +19,28 @@ gantt.config.fit_tasks = true; /*!*/
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**默认值：** false
 
 ### Related samples
-- [Auto resize scale](https://docs.dhtmlx.com/gantt/samples/03_scales/08_scale_autoconfig.html)
+- [自动调整刻度](https://docs.dhtmlx.com/gantt/samples/03_scales/08_scale_autoconfig.html)
 
 ### Details
 
-默认情况下，dhtmlxGantt 不会自动扩展时间刻度，即使有任务的时间超出了当前的时间区间。这种情况可能发生在用户更改任务日期或自动排程之后。 
-因此，任务条可能会被截断或变得不可见。
+默认情况下，dhtmlxGantt 不会在某个任务不再适配当前区间时自动扩展时间刻度。这可能在用户设置任务日期或进行自动排程后发生。在这种情况下，任务条可能会被裁剪或完全不可见。
 
-为了确保每当任务超出当前刻度区间时，时间刻度都会自动更新，可以将 [fit_tasks](api/config/fit_tasks.md) 属性设置为 *true*。
+要在每次任务不再适配现有时间区间时“强制”重新渲染刻度，请将 [fit_tasks](api/config/fit_tasks.md) 属性设为 *true*。
 
-请注意，这种行为可能会被 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 设置所覆盖，这两个设置会将时间刻度限制在特定范围内。
+此设置可以通过 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 配置取消，它们将时间刻度限定在指定边界内。
 
-如果希望时间刻度根据日期范围动态调整，可以省略 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 设置，或者[动态处理时间范围](guides/configuring-time-scale.md#fanwei)。
+如果你希望时间刻度根据日期范围动态调整，可以选择跳过 [start_date](api/config/start_date.md) 和 [end_date](api/config/end_date.md) 配置，或 [动态管理时间范围](guides/configuring-time-scale.md#range)。
 
-<br>
-
-**例如，任务"Project #2"的初始持续时间为6天。**
+**例如，任务 "Project #2" 的初始持续时间为 6 天。**
 
 ![property_fit_tasks_01](/img/property_fit_tasks_01.png)
 
-如果将持续时间延长到8天，甘特图的响应会根据 [fit_tasks](api/config/fit_tasks.md) 属性的值不同而有所不同:
+如果用户通过将持续时间设为 8 天来延长持续时间，甘特图的行为将取决于 [fit_tasks](api/config/fit_tasks.md) 属性的值：
 
-- **gantt.config.fit_tasks = false;** （默认值）
+- **gantt.config.fit_tasks = false;**（默认值）
 
 ![property_fit_tasks_02](/img/property_fit_tasks_02.png)
 
@@ -56,4 +53,3 @@ gantt.init("gantt_here");
 - [end_date](api/config/end_date.md)
 - [start_date](api/config/start_date.md)
 - [init](api/method/init.md)
-

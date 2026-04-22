@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_resize
-title: drag_resize config
-description: "позволяет изменять размер задач с помощью drag-and-drop"
+title: конфигурация drag_resize
+description: "позволяет изменять размер задач с помощью перетаскивания"
 ---
 
 # drag_resize
 
 ### Description
 
-@short: Позволяет изменять размер задач с помощью drag-and-drop
+@short: Позволяет изменять размер задач с помощью перетаскивания
 
 @signature: drag_resize: boolean
 
@@ -19,19 +19,19 @@ gantt.config.drag_resize = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 
 ![property_drag_resize](/img/property_drag_resize.png)
 
-Для инструкций по удалению ручек изменения размера у всех задач смотрите [соответствующий раздел в CSS документации](guides/css-overview.md#resizer).
+Посмотрите соответствующий раздел в [CSS-документации](guides/css-overview.md#resizer) статье, чтобы узнать, как отключить ручки изменения размера для всех задач.
 
-Для более детального управления изменением размера задач обратитесь к статье [Dragging Tasks within the Timeline](guides/dnd.md), которая охватывает:
+Посмотрите статью [Перетаскивание задач во временной шкале](guides/dnd.md) для подробностей более точного управления операциями изменения размера, а именно:
 
-- [Отключение изменения размера для конкретных задач](guides/dnd.md#disablingresizingofspecifictasks)
-- [Определение, с какой стороны задачи происходит изменение размера](guides/dnd.md#identifyingwhichsideofataskisbeingresized)
-- [Отключение изменения размера начальной или конечной даты задачи](guides/dnd.md#disablingresizingofthestartorenddateofatask)
+- [Отключение изменения размера конкретных задач](guides/dnd.md#disabling-resize-of-specific-tasks)
+- [С какой стороны задачи выполняется изменение размера](guides/dnd.md#which-side-of-a-task-is-being-resized)
+- [Отключение изменения размера начала или конца даты задачи](guides/dnd.md#disabling-resize-of-the-start-or-the-end-date-of-a-task)
 
 ### Related Guides
 - [drag_lightbox](api/config/drag_lightbox.md)
@@ -39,4 +39,3 @@ gantt.init("gantt_here");
 - [drag_mode](api/config/drag_mode.md)
 - [drag_move](api/config/drag_move.md)
 - [drag_progress](api/config/drag_progress.md)
-

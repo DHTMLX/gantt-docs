@@ -1,36 +1,35 @@
 ---
 sidebar_label: showDate
 title: showDate method
-description: "scrollt den Chart-Bereich, um das angegebene Datum sichtbar zu machen"
+description: "verschiebt den Diagrammbereich so, dass das angegebene Datum sichtbar wird"
 ---
 
 # showDate
 
 ### Description
 
-@short: Scrollt den Chart-Bereich, um das angegebene Datum sichtbar zu machen
+@short: Verschiebt den Diagrammbereich so, dass das angegebene Datum sichtbar wird
 
 @signature: showDate: (date: Date) =\> void
 
 ### Parameters
 
-- `date` - (required) *Date* - das Datum, das im Chart sichtbar gemacht werden soll
+- `date` - (required) *Date* - das Datum, das im Diagramm angezeigt werden soll
 
 ### Example
 
 ~~~jsx
-gantt.showDate(new Date()); //scrollt zum aktuellen Datum
+gantt.showDate(new Date()); //shows the current date
 ~~~
 
 ### Details
 
-Standardmäßig bewirkt der Aufruf der Methode [showDate](api/method/showdate.md), dass der Gantt sich selbst zum angegebenen Datum scrollt. 
-Wenn jedoch der **autosize**-Modus aktiv ist, vergrößert Gantt statt zu scrollen die Größe seines Containers, um das Datum auf der Seite anzuzeigen. 
-Weitere Details zur Handhabung dieses Verhaltens finden Sie im Artikel [Scrolling to hidden elements](api/config/autosize.md).
+Im Standardmodus scrollt Gantt automatisch, wenn Sie die [showDate](api/method/showdate.md) Methode verwenden.
+Wenn der **autosize**-Modus aktiviert ist, vergrößert Gantt die Größe seines Containers, um sich auf der Seite sichtbar zu machen, statt das angegebene Datum anzuzeigen. 
+Lesen Sie den Artikel [Scrolling to hidden elements](api/config/autosize.md), um zu erfahren, wie dieses Problem gelöst wird.
 
 ### Related API
 - [showTask](api/method/showtask.md)
 - [scrollTo](api/method/scrollto.md)
 - [getScrollState](api/method/getscrollstate.md)
 - [onGanttScroll](api/event/onganttscroll.md)
-

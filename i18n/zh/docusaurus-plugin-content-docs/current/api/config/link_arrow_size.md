@@ -19,15 +19,15 @@ gantt.config.link_arrow_size = 8;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 6
+**默认值:** 6
 
 ### Details
 
-此属性设置链接箭头的HTML元素的大小，但实际上并不会改变箭头的真实尺寸。<br>
-要修改箭头的外观，需要通过CSS进行调整。
+该属性指定 HTML 元素的大小，但不会改变链接箭头的实际大小。
+要修改它，需要使用 CSS。
 
-请查看示例，了解不同皮肤下应用的样式:
+请查看示例以获取不同皮肤的样式：
 
 :::note
-Sample: [Skins](https://snippet.dhtmlx.com/hb0be53m) 
+sample: [皮肤样式](https://snippet.dhtmlx.com/hb0be53m)
 :::

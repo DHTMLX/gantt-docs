@@ -1,21 +1,21 @@
 ---
 sidebar_label: setParent
-title: setParent method
-description: "为任务分配一个父任务"
+title: setParent 方法
+description: "为任务设置父任务"
 ---
 
 # setParent
 
 ### Description
 
-@short: 为任务分配一个父任务
+@short: 为任务设置父任务
 
 @signature: setParent: (task: Task, pid: number | string) =\> void
 
 ### Parameters
 
 - `task` - (required) *Task* - 任务对象
-- `pid` - (required) *number | string* -                父任务的ID
+- `pid` - (required) *number | string* - 父任务 ID
 
 ### Example
 

@@ -1,23 +1,23 @@
 ---
 sidebar_label: getWBSCode
-title: getWBSCode method
-description: "작업의 WBS 코드(개요 번호)를 반환합니다."
+title: getWBSCode 메서드
+description: "작업의 WBS 코드(개요 번호)를 반환합니다"
 ---
 
 # getWBSCode
 
 ### Description
 
-@short: 작업의 WBS 코드(개요 번호)를 반환합니다.
+@short: 작업의 WBS 코드(개요 번호)를 반환합니다
 
-@signature: getWBSCode: (task: Task) =\> string
+@signature: getWBSCode: (task: Task) => string
 
 ### Parameters
 
-- `task` - (required) *Task* - 작업 객체
+- `task` - (필수) *Task* - 작업의 객체
 
 ### Returns
-- ` wbs_code` - (string) - 간트 차트 내 작업의 WBS 코드
+- ` wbs_code` - (string) - 간트 차트에서 작업의 WBS 코드
 
 ### Example
 
@@ -34,19 +34,18 @@ gantt.parse({
  "links":[]
 });
 
-const wbs_code = gantt.getWBSCode(gantt.getTask(3)) // -> "1.2" 반환
+const wbs_code = gantt.getWBSCode(gantt.getTask(3)) // -> "1.2"를 반환합니다
 ~~~
 
 ### Related samples
-- [Show Task WBS Codes (Outline Numbers)](https://docs.dhtmlx.com/gantt/samples/07_grid/09_wbs_column.html)
+- [작업 WBS 코드(개요 번호) 보기](https://docs.dhtmlx.com/gantt/samples/07_grid/09_wbs_column.html)
 
 ### Details
 
-버전 4.2에 추가됨
+added in version 4.2
 
 ### Related API
 - [getTaskByWBSCode](api/method/gettaskbywbscode.md)
 
 ### Related Guides
-- [컬럼 지정하기](guides/specifying-columns.md#wbscode)
-
+- [열 지정](guides/specifying-columns.md#wbscode)

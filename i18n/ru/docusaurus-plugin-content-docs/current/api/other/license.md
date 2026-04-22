@@ -8,12 +8,12 @@ description: "возвращает название license dhtmlxGantt"
 
 ### Description
 
-@short: Возвращает название license dhtmlxGantt
+@short: Возвращает имя лицензии dhtmlxGantt
 
 @signature: license: string
 
 ### Returns
-- ` license` - (string) - название license
+- ` license` - (string) - название лицензии
 
 ### Example
 
@@ -24,7 +24,7 @@ console.log(gantt.license);
 
 ### Details
 
-Этот метод возвращает краткое название license, полезное для диагностических целей.
+Этот метод возвращает краткое имя лицензии, которое можно использовать для диагностики. 
 
 Возможные значения включают:
 

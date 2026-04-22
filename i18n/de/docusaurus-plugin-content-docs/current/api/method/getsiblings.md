@@ -1,46 +1,46 @@
 ---
 sidebar_label: getSiblings
-title: getSiblings method
-description: "bietet die Geschwister einer gegebenen Aufgabe, einschließlich der Aufgabe selbst"
+title: getSiblings Methode
+description: "liefert die Geschwister der angegebenen Aufgabe zurück (einschließlich der aktuellen)"
 ---
 
 # getSiblings
 
 ### Description
 
-@short: Bietet die Geschwister einer gegebenen Aufgabe, einschließlich der Aufgabe selbst
+@short: Liefert die Geschwister der angegebenen Aufgabe (einschließlich der aktuellen)
 
 @signature: getSiblings: (id: string | number) =\> any[]
 
 ### Parameters
 
-- `id` - (required) *string | number* -    die ID der Aufgabe
+- `id` - (required) *string | number* -    die Aufgaben-ID
 
 ### Returns
-- ` siblings` - (array) - ein Array, das die IDs der Geschwister der Aufgabe enthält
+- ` siblings` - (array) - die IDs der Geschwister der Aufgabe
 
 ### Example
 
 ~~~jsx
 const tasks = {
   data:[
-     {id:"p_1", text:"Projekt #1", start_date:"01-04-2013", duration:18, 
+     {id:"p_1", text:"Project #1", start_date:"01-04-2013", duration:18, 
      open:true},
-     {id:"t_1", text:"Aufgabe #1", start_date:"02-04-2013", duration:8,
+     {id:"t_1", text:"Task #1", start_date:"02-04-2013", duration:8,
      parent:"p_1"},
-     {id:"t_2", text:"Aufgabe #2", start_date:"11-04-2013", duration:8,
+     {id:"t_2", text:"Task #2", start_date:"11-04-2013", duration:8,
      parent:"p_1"}
    ]
 };
 gantt.init("gantt_here");
 gantt.parse(tasks);
  
-gantt.getSiblings("t_1"); ->  ["t_1", "t_2"] /*!*/
-~~~
+gantt.getSiblings("t_1"); ->  ["t_1", "t_2] /*!*/
+~~~ 
 
 ### Details
 
-Geschwister sind Aufgaben, die sich auf derselben Ebene in der Aufgaben-Hierarchie befinden
+Geschwister sind Aufgaben der gleichen Baum-Ebene
 
 ### Related API
 - [getNextSibling](api/method/getnextsibling.md)
@@ -48,4 +48,3 @@ Geschwister sind Aufgaben, die sich auf derselben Ebene in der Aufgaben-Hierarch
 - [getParent](api/method/getparent.md)
 - [hasChild](api/method/haschild.md)
 - [getChildren](api/method/getchildren.md)
-

@@ -1,24 +1,24 @@
 ---
 sidebar_label: getColumnIndex
 title: getColumnIndex method
-description: "根据列名返回该列的位置"
+description: "通过名称返回列的索引"
 ---
 
 # getColumnIndex
 
 ### Description
 
-@short: 根据列名返回该列的位置
+@short: 返回通过名称获取列的索引
 
 @signature: getColumnIndex: (name: string | number, excludeHidden?: boolean) =\> number
 
 ### Parameters
 
-- `name` - (required) *string | number* -           列的名称
-- `excludeHidden` - (optional) *boolean* - 在计算索引时忽略隐藏的列
+- `name` - (required) *string | number* - 列的名称
+- `excludeHidden` - (optional) *boolean* - 跳过隐藏列的索引
 
 ### Returns
-- ` index` - (number) - 列的位置索引
+- ` index` - (number) - 列的索引
 
 ### Example
 
@@ -28,7 +28,7 @@ var index = gantt.getColumnIndex("start_date"); // => 1
 
 ### Details
 
-当参数 `excludeHidden` 设置为 *true* 时，该方法会跳过通过配置中 *hide:true* 设置为[隐藏](guides/specifying-columns.md)的列:
+如果将 `excludeHidden` 参数设置为 *true*，该方法将不统计通过配置中的 *hide:true* 选项隐藏的列的索引：
 
 ~~~js
 gantt.config.columns = [

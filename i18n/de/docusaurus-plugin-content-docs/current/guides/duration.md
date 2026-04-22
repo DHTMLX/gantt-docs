@@ -1,70 +1,70 @@
----
-title: "Dauersteuerung"
-sidebar_label: "Dauersteuerung"
+--- 
+title: "Dauersteuerung" 
+sidebar_label: "Dauersteuerung" 
 ---
 
 # Dauersteuerung
 
-In diesem Abschnitt wird eine Gruppe von Selektoren vorgestellt, mit denen Sie die Dauer einer Aufgabe festlegen können, indem Sie das Startdatum und die Anzahl der Tage angeben.
+Eine Sammlung von Selektoren zur Festlegung der Aufgabendauer, indem das Startdatum einer Aufgabe und die Anzahl der Tage angegeben wird.
 
 ![duration_control](/img/duration_control.png)
 
 ~~~js
-gantt.config.lightbox.sections="["
-    {name:"description", height:70, map_to:"text", type:"textarea", focus:true},
-    {name:"time",        height:72, map_to:"auto", type:"duration"} /*!*/
+gantt.config.lightbox.sections="[" 
+    {name:"description", height:70, map_to:"text", type:"textarea", focus:true}, 
+    {name:"time",        height:72, map_to:"auto", type:"duration"} /*!*/ 
 ];
 ~~~
 
 
-[Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
+[Grundlegende Initialisierung](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
 
 
 ## Initialisierung
 
-Standardmäßig enthält das Lightbox-Formular ein **duration**-Steuerelement. Um weitere hinzuzufügen, gehen Sie wie folgt vor:
+Standardmäßig wird eine einzelne **duration**-Steuerung dem Lightbox hinzugefügt. Um eine weitere hinzuzufügen, folgen Sie den untenstehenden Schritten:
 
-1) Fügen Sie eine neue Section zur Lightbox-Konfiguration hinzu:
+1) Fügen Sie der Lightbox-Konfiguration einen Abschnitt hinzu:
 
 ~~~js
-gantt.config.lightbox.sections="["
-    {name:"description", height:70, map_to:"text", type:"textarea",focus:true},
+gantt.config.lightbox.sections="[" 
+    {name:"description", height:70, map_to:"text", type:"textarea",focus:true}, 
     {name:"time2",       height:72, map_to:"auto", type:"duration"}, /*!*/
-    {name:"time",        height:72, map_to:"auto", type:"duration"}
+    {name:"time",        height:72, map_to:"auto", type:"duration"} 
 ];
-~~~
-  
-2) Definieren Sie ein Label für die neue Section:
+~~~  
+
+2) Legen Sie eine Bezeichnung für den Abschnitt fest:
 
 ~~~js
-gantt.locale.labels.section_time2 = "Tatsächliche Dauer";
+gantt.locale.labels.section_time2 = "Actual duration";
 ~~~
 
 
 ## Eigenschaften
 
-Hier sind die wichtigsten Eigenschaften, die häufig mit dem **time**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
+Die folgenden Eigenschaften sind größtenteils wichtig und werden üblicherweise für die **time**-Steuerung festgelegt (siehe die vollständige Liste [hier](api/config/lightbox.md)):
 
-- **name** - (*string*) der Bezeichner der Section
-- **height** - (*number*) die Höhe der Section
-- **map_to** - (*string,object*) entweder "auto" oder ein Objekt, das die zugeordnete(n) Dateneigenschaft(en) angibt
-- **formatter** - (object) eine Instanz des [durationFormatter](guides/working-time.md#taskdurationindecimalformat)
-- **type** - (*string*) der Typ des [Section-Steuerelements](guides/default-edit-form.md#lightboxcontrols)
-- **focus** - (*boolean*) wenn auf *true* gesetzt, erhält die Section den Fokus beim Öffnen des Lightbox-Formulars
-- **readonly** - (*boolean*) wenn auf *true* gesetzt, ist die Section nur lesbar
-- **year_range** - (*array,number*) definiert den Bereich des Jahresauswahlfeldes, möglich sind:
-    - *year_range: [2005, 2025]* - von 2005 bis 2025
-    - *year_range: 10*  - von aktuellem Jahr minus 10 bis aktuellem Jahr plus 10
-- **single_date** - (*boolean*) wenn auf *true* gesetzt, wird nur der *Startdatum*-Selektor angezeigt. Bearbeitete Aufgaben werden ausschließlich durch das Startdatum definiert und haben eine Dauer von null. Dies ist hauptsächlich für [Meilensteine](guides/task-types.md#milestones) nützlich.
-- **time_format** - (*string*) bestimmt die Anordnung der Datums-/Zeitselektoren
+- **name** - (*string*) der Abschnittsname 
+- **height** - (*number*) die Abschnittshöhe
+- **map_to** - (*string,object*) "auto" oder Objekt, definiert die(n) Daten-Eigenschaft(en), die dem Abschnitt zugeordnet werden
+- **formatter** - (Objekt) eine Instanz des [durationFormatter](guides/working-time.md#taskdurationindecimalformat) Objekts
+- **type** - (*string*) der Typ der [Abschnittsteuerung](guides/default-edit-form.md#lightboxcontrols)
+- **focus** - (*boolean*) wenn auf *true* gesetzt, erhält der Abschnitt beim Öffnen der Lightbox den Fokus
+- **readonly** - (*boolean*) wenn Sie den Wert "true" setzen, wird der Abschnitt schreibgeschützt
+- **year_range** - (*array,number*) legt einen Bereich für den Jahr-Auswahl fest. Der Bereich kann auf zwei Arten festgelegt werden: 
+    - *year_range: [2005, 2025]* - Zeitraum von 2005 bis 2025
+    - *year_range: 10*  - Zeitraum [aktuelles Jahr - 10 Jahre; aktuelles Jahr + 10 Jahre]
+- **single_date** - (*boolean*) wenn Sie den Wert "true" setzen, wird im Abschnitt nur der *Startdatum*-Selektor angezeigt. Bearbeitete Aufgaben werden nur durch das Startdatum angegeben und haben eine Dauer von Null. Sinnvoll nur für [Milestones](guides/task-types.md#milestones)
+- **time_format** - (*string*) legt die Reihenfolge der Datum-Uhrzeit-Auswahlen fest
 
   
 
-## Konfiguration der Datums-/Zeitselektoren
+## Konfiguration der Datum-Uhrzeit-Auswahlen 
 
-Die Selektoren im Abschnitt "Zeitspanne" können mit der Eigenschaft [time_format](api/config/lightbox.md) angepasst werden (siehe auch [Date Format Specification](guides/date-format.md)):
+Um die Selektoren im Abschnitt "Time period" zu konfigurieren, verwenden Sie die Eigenschaft **time_format** (siehe [Date Format Specification](guides/date-format.md)):
 
-**Adding the time selector to the 'Time period' section**
+**Hinzufügen des Zeit-Auswahlfelds zum Abschnitt 'Time period'**
 ~~~js
 gantt.config.lightbox.sections = [
     {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
@@ -72,37 +72,37 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-Die erlaubten Elemente im [time_format](api/config/lightbox.md)-Array sind:
+Beachten Sie, dass die zulässigen Elemente des [time_format](api/config/lightbox.md) Arrays Folgendes umfassen:
 
-- *"%d"* - Tagesauswahl 
-- *"%m"* - Monatsauswahl
-- *"%Y"* - Jahresauswahl
-- *"%H:%i"* - Zeitauswahl (Format wird durch die [time_picker](api/template/time_picker.md)-Vorlage gesteuert)
+- *"%d"* - die Tagesauswahl 
+- *"%m"* - die Monatsauswahl
+- *"%Y"* - die Jahresauswahl
+- *"%H:%i"* - die Zeit-Auswahl (das Format wird mit der Vorlage [time_picker](api/template/time_picker.md) festgelegt)
 
-Sie können diese Elemente im Array neu anordnen oder weglassen, das Datenformat selbst kann jedoch nicht verändert werden.
+Sie können lediglich die Reihenfolge und die Anzahl dieser Elemente im Array ändern, aber nicht das Darstellungsformat der Daten.
 
- Hier sind einige Varianten:
+ Zum Beispiel können Sie das Format wie folgt ändern:
 
 ~~~js
-// Zeit zuerst
+// time geht zuerst
 time_format:["%H:%i", "%m", "%d", "%Y"] 
-// Monat zuerst
+// Monat geht zuerst
 time_format:["%m","%d", "%Y", "%H:%i"]
-// Jahresauswahl weggelassen
+// der Jahresauswahl wird entfernt
 time_format:["%H:%i", "%m", "%d"]
-// Falsche Verwendung
-time_format:["%H:%i", "%M", "%d", "%Y"] // "%m" durch "%M" ersetzt
+// falsch
+time_format:["%H:%i", "%M", "%d", "%Y"] //"%m" wurde zu "%M" geändert
 ~~~
 
-## Zuordnung zu benutzerdefinierten Start-/Enddatumseigenschaften
+## Zuordnung zu benutzerdefinierten Start-/Ende-Datum-Zeit-Eigenschaften
 
 ### Standardzuordnung
 
-Normalerweise sind die Zeit- und Dauer-Steuerelemente mit den erforderlichen 'start_date'- und 'end_date'-Eigenschaften verbunden, indem **map_to** auf "auto" gesetzt wird (**map_to:"auto"**).
+Im Allgemeinen werden die Zeit- und Dauer-Kontrollen auf die obligatorischen Eigenschaften 'start_date', 'end_date' abgebildet, indem die **map_to**-Eigenschaft auf den Wert "auto" gesetzt wird (**map_to:"auto"**).
 
 ### Benutzerdefinierte Zuordnung
 
-Um die Steuerelemente mit benutzerdefinierten Datumseigenschaften anstelle von 'start_date' und 'end_date' zu verknüpfen, verwenden Sie ein Objekt für die **map_to**-Eigenschaft:
+Um Steuerelemente auf benutzerdefinierte Datumseigenschaften abzubilden (anstatt von 'start_date', 'end_date'), verwenden Sie die Objekt-Notation der **map_to**-Eigenschaft:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -117,20 +117,19 @@ gantt.config.lightbox.sections = [
 [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 
-Das **map_to**-Objekt unterstützt diese Eigenschaften: 
+Als Objekt hat **map_to** 3 Eigenschaften: 
 
-1. **start_date** - die Dateneigenschaft, die das Startdatum aus der Eingabe speichert
-2. **end_date** - optional, die Dateneigenschaft, die das Enddatum aus der Eingabe speichert 
-3. **duration** - optional, die Dateneigenschaft, die die durch die Eingabe definierte Dauer speichert
+1. **start_date**- der Name einer Daten-Eigenschaft, in der das im Eingabefeld festgelegte Startdatum gespeichert wird
+2. **end_date** - optional, der Name einer Daten-Eigenschaft, in der das im Eingabefeld festgelegte Enddatum gespeichert wird 
+3. **duration** - optional, der Name einer Daten-Eigenschaft, in der die durch die Eingabe definierte Dauer gespeichert wird
 
 :::note
-Wenn eine Eigenschaft ausgelassen wird, verwendet das Steuerelement die zugehörige obligatorische Datumseigenschaft.
+Wenn eine Eigenschaft nicht angegeben ist, übernimmt das Steuerelement den Wert der entsprechenden obligatorischen Datumseigenschaft.
 :::
 
+## Sichtbarkeit des Abschnitts umschalten
 
-## Sichtbarkeit der Section umschalten
-
-Sie können die Sichtbarkeit der Dauer-Section umschalten, indem Sie **type:"duration_optional"** und **button: true** in der Lightbox-Section-Konfiguration setzen:
+Es ist möglich, die Sichtbarkeit des Dauer-Abschnitts zu steuern, wenn Sie beim Konfigurieren des Abschnitts für die Lightbox den Typ auf **type:"duration_optional"** und **button: true** setzen:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -139,23 +138,23 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-Definieren Sie außerdem die Labels für die beiden Zustände des Umschaltknopfes:
+und legen Sie Bezeichnungen für zwei Zustände des Buttons fest:
 
 ~~~js
 gantt.locale.labels.time_enable_button = 'Planen';
 gantt.locale.labels.time_disable_button = 'Nicht planen';
 ~~~
 
-Ein Umschaltknopf erscheint neben der Section und ermöglicht das Umschalten der Sichtbarkeit. Ist die Section sichtbar, verhält sie sich wie eine mit **type:"duration"**.
+Der Umschaltknopf, der Ihnen erlaubt, die Sichtbarkeit des Abschnitts zu wechseln, erscheint in der Nähe des Abschnitts. Wenn der Abschnitt sichtbar ist, verhält es sich, als wäre **type:"duration"** angegeben.
 
-![](/img/duration_optional.png)
+![duration_optional](/img/duration_optional.png)
 
-Wenn Sie den Knopf deaktivieren, verschwindet die Section ohne sofortige Auswirkung. Nach dem Speichern werden die über **map_to** zugeordneten Eigenschaften der Aufgabe auf `null` gesetzt.
+Wenn Sie den Knopf ausschalten, wird der Abschnitt unsichtbar, aber es passiert nichts. Nachdem Sie auf die Schaltfläche „Speichern“ klicken, werden die Werte der durch die **map_to**-Eigenschaft des Abschnitts auf das Dauer-Steuerelement abgebildeten Aufgaben-Eigenschaften auf `null` gesetzt.
 
 ~~~js
 gantt.getTask(1);
 
-// Beispiel Rückgabewert
+// Rückgabewert
 {
     id: '1', text: 'Task #1', unscheduled: true, 
     duration: 0, parent: '10',
@@ -164,9 +163,8 @@ gantt.getTask(1);
 }
 ~~~
 
-Diese Funktion ist nützlich, um Aufgaben als nicht geplant zu markieren oder Aufgaben ohne Baselines direkt über die Benutzeroberfläche zu verwalten. Siehe dazu die folgenden Beispiele:
+Diese Funktionalität kann hilfreich sein, wenn Sie eine Aufgabe als ungeplant kennzeichnen oder Aufgaben definieren müssen, bei denen Baselines direkt aus der Benutzeroberfläche nicht angezeigt werden sollen. Prüfen Sie die verwandten Beispiele:
 
-**Related example:** [Nicht geplante Aufgaben](https://snippet.dhtmlx.com/5/81f51a96d)
+**Verwandtes Beispiel** [Ungeplante Aufgaben](https://snippet.dhtmlx.com/5/81f51a96d)
 
-**Related example:** [Baselines](https://snippet.dhtmlx.com/6qvjoa7i)
-
+**Verwandtes Beispiel** [Baselines](https://snippet.dhtmlx.com/6qvjoa7i)

@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskByIndex
-title: getTaskByIndex method
-description: "글로벌 작업 인덱스를 기준으로 작업을 반환합니다."
+title: getTaskByIndex 메서드
+description: "전역 태스크 인덱스로 태스크를 반환합니다"
 ---
 
 # getTaskByIndex
 
 ### Description
 
-@short: 글로벌 작업 인덱스를 기준으로 작업을 반환합니다.
+@short: 전역 태스크 인덱스로 태스크를 반환합니다
 
 @signature: getTaskByIndex: (index: number | string) =\> Task
 
 ### Parameters
 
-- `index` - (required) *number | string* -        전체 작업 목록에서 작업의 위치 (0부터 시작)
+- `index` - (required) *number | string* - 트리에서의 태스크 인덱스(제로 기반, 0부터 시작)
 
 ### Returns
-- ` task` - (Task) - 주어진 인덱스에 해당하는 작업 객체
+- ` task` - (Task) - 태스크 객체
 
 ### Example
 
@@ -30,4 +30,3 @@ const task = gantt.getTaskByIndex(10);
 
 ### Related API
 - [getGlobalTaskIndex](api/method/getglobaltaskindex.md)
-

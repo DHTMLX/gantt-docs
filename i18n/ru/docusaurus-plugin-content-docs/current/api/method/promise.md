@@ -1,23 +1,23 @@
 ---
 sidebar_label: Promise
-title: Promise method
-description: "Конструктор для объектов Promise"
+title: Метод Promise
+description: "Конструктор объекта Promise"
 ---
 
 # Promise
 
 ### Description
 
-@short: Конструктор для объектов Promise
+@short: Конструктор объекта Promise
 
 @signature: Promise: new (executor: (resolve: (value?: any) =\> void, reject: (reason?: any) =\> void) =\> void) =\> Promise\<unknown\>
 
 ### Parameters
 
-- `executor` - (required) *function* - функция обратного вызова для настройки promise
+- `executor` - (обязательный) *function* - обратный вызов, используемый для инициализации promise
 
 ### Returns
-- ` promise` - (object) - возвращаемый объект promise
+- ` promise` - (object) - сам объект promise
 
 ### Example
 
@@ -33,4 +33,4 @@ new gantt.Promise(function(resolve, reject) {
 
 ### Details
 
-Это конструктор объекта Promise из библиотеки [Bluebird](http://bluebirdjs.com/docs/why-bluebird.html), включённой в состав библиотеки Gantt.
+[Bluebird](http://bluebirdjs.com/docs/why-bluebird.html) конструктор объекта Promise от Bluebird, поставляемый вместе с библиотекой Gantt.

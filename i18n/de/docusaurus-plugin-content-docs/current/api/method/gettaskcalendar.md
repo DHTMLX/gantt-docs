@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskCalendar
-title: getTaskCalendar method
-description: "rufen Sie den mit einer bestimmten Aufgabe verknüpften Kalender ab (ein auf Aufgabenebene festgelegter Kalender)"
+title: getTaskCalendar Methode
+description: "holt einen Kalender, der dem angegebenen Task zugewiesen ist (ein Kalender auf Aufgaben-Ebene)"
 ---
 
 # getTaskCalendar
 
 ### Description
 
-@short: Rufen Sie den mit einer bestimmten Aufgabe verknüpften Kalender ab (ein auf Aufgabenebene festgelegter Kalender)
+@short: Holt einen Kalender, der dem angegebenen Task zugewiesen ist (ein Kalender auf Aufgaben-Ebene)
 
-@signature: getTaskCalendar: (task: any) =\> any
+@signature: getTaskCalendar: (task: *string | number | object) =\> any
 
 ### Parameters
 
-- `task` - (required) *string | number | object* -        die ID der Aufgabe oder das Aufgabenobjekt selbst
+- `task` - (required) *string | number | object* -        die ID oder das Objekt einer Aufgabe
 
 ### Returns
-- ` task_calendar` - (object) - das mit der Aufgabe verknüpfte Kalenderobjekt
+- `  task_calendar` - (object) - das Objekt des Kalenders der Aufgabe
 
 ### Example
 
@@ -42,12 +42,11 @@ gantt.getTaskCalendar(2);
 
 Hinzugefügt in Version 4.2
 
-Das im obigen Beispiel zurückgegebene Objekt entspricht einem [calendar object](api/other/calendar.md). Wenn die Option [work_time](api/config/work_time.md) deaktiviert ist, gibt die Methode standardmäßig einen Kalender mit 24/7 Arbeitszeiten zurück.
+Das zurückgegebene Objekt des obigen Beispiels ist ein [Kalender-Objekt](api/other/calendar.md). Wenn die [work_time](api/config/work_time.md) Option deaktiviert ist, gibt die Methode einen Kalender mit 24/7-Arbeitszeit zurück.
 
 ### Related API
 - [getCalendar](api/method/getcalendar.md)
 - [getCalendars](api/method/getcalendars.md)
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md#multipleworktimecalendars)
-
+- [Work Time Calculation](guides/working-time.md)

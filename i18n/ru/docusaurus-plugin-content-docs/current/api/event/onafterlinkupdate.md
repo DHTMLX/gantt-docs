@@ -1,21 +1,21 @@
 ---
 sidebar_label: onAfterLinkUpdate
-title: onAfterLinkUpdate event
-description: "срабатывает сразу после того, как пользователь изменяет ссылку"
+title: Событие onAfterLinkUpdate
+description: "Срабатывает после того, как пользователь обновляет ссылку"
 ---
 
 # onAfterLinkUpdate
 
 ### Description
 
-@short: Срабатывает сразу после того, как пользователь изменяет ссылку
+@short: Срабатывает после того, как пользователь обновляет ссылку
 
-@signature: onAfterLinkUpdate: (id: string | number, link: Link) =\> void;
+@signature: onAfterLinkUpdate: (id: string | number, link: Link) => void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - уникальный идентификатор ссылки
-- `link` - (required) *Link* - обновлённый объект ссылки
+- `id` - (required) *string | number* - идентификатор ссылки
+- `link` - (required) *Link* - объект ссылки
 
 ### Example
 
@@ -27,4 +27,3 @@ gantt.attachEvent("onAfterLinkUpdate", function(id,link){
 
 ### Related API
 - [updateLink](api/method/updatelink.md)
-

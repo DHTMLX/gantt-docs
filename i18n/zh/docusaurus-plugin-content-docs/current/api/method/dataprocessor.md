@@ -1,6 +1,6 @@
 ---
 sidebar_label: dataProcessor
-title: dataProcessor method
+title: dataProcessor 方法
 description: "dataProcessor 构造函数"
 ---
 
@@ -8,13 +8,13 @@ description: "dataProcessor 构造函数"
 
 ### Description
 
-@short: DataProcessor 构造函数
+@short: dataProcessor 构造函数
 
 @signature: dataProcessor: (url: string) =\> void
 
 ### Parameters
 
-- `url` - (required) *string* - 数据源的 URL 地址
+- `url` - (必填) *字符串* - 指向数据源的 URL
 
 ### Example
 
@@ -24,7 +24,7 @@ const dp = new gantt.dataProcessor("api/");
 
 ### Details
 
-有关 dataProcessor 及其 API 的更多详细信息，请参见[此处](guides/server-side.md)。
+有关 dataProcessor 的更多信息，包括其 API，请参阅 [此处](guides/server-side.md#resources_crud)。
 
 ### Change log
-- 版本 4.0 中新增
+- 已在版本 4.0 中新增

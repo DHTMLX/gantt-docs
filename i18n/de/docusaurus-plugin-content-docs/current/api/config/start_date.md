@@ -1,14 +1,14 @@
 ---
 sidebar_label: start_date
-title: start_date config
-description: "definiert, wo die Zeitskala beginnt"
+title: start_date Konfiguration
+description: "Legt den Startwert der Zeitachse fest"
 ---
 
 # start_date
 
 ### Description
 
-@short: Definiert, wo die Zeitskala beginnt
+@short: Legt den Startwert der Zeitachse fest
 
 @signature: start_date: Date | undefined
 
@@ -24,14 +24,14 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- Um die **start_date**-Option korrekt zu verwenden, sollte sie mit der [end_date](api/config/end_date.md)-Option kombiniert werden. 
+Um die Option **start_date** anzuwenden, müssen Sie sie zusammen mit der [end_date](api/config/end_date.md) verwenden.
 :::
 
-- Wenn sowohl **start_date** als auch **end_date** gesetzt sind, werden Aufgaben, die außerhalb dieses Bereichs liegen, im Diagramm nicht angezeigt.
-- Sie können optionale Parameter der [init](api/method/init.md)-Methode als Anfangswerte für [start_date](api/config/start_date.md) und [end_date](api/config/end_date.md) verwenden.
-- Beachten Sie, dass [start_date](api/config/start_date.md) und [end_date](api/config/end_date.md) Vorrang vor [fit_tasks](api/config/fit_tasks.md) haben. Wenn Sie diese zusammen verwenden möchten, müssen Sie die Zeitskala [programmgesteuert steuern](guides/configuring-time-scale.md#range).
+- Wenn sowohl die Optionen **start_date** und **end_date** angegeben sind und Sie eine Aufgabe erstellen, die außerhalb des Bereichs liegt, verschwindet die Aufgabe aus dem Diagramm.
+- Optionale Parameter der Methode [init](api/method/init.md) können als Startwerte von [start_date](api/config/start_date.md) und [end_date](api/config/end_date.md) verwendet werden.
+- [start_date](api/config/start_date.md) und [end_date](api/config/end_date.md) überschreiben [fit_tasks](api/config/fit_tasks.md). Wenn Sie diese Einstellungen gemeinsam verwenden möchten, müssen Sie die Zeitachse vom Code aus verwalten (guides/configuring-time-scale.md#range).
 
-So können Sie den Zeitbereich dynamisch erweitern:
+In diesem Fall können wir den Bereich erweitern:
 
 ~~~js
 gantt.attachEvent("onLightboxSave", function(id, task, is_new){
@@ -73,6 +73,8 @@ gantt.attachEvent("onLightboxSave", function(id, task, is_new){
 });
 ~~~
 
+
+
 ### Related API
 - [end_date](api/config/end_date.md)
 - [fit_tasks](api/config/fit_tasks.md)
@@ -80,5 +82,4 @@ gantt.attachEvent("onLightboxSave", function(id, task, is_new){
 - [show_tasks_outside_timescale](api/config/show_tasks_outside_timescale.md)
 
 ### Related Guides
-- ["Einrichten der Skala"](guides/configuring-time-scale.md#settingtheminmasvaluesofthescale)
-
+- [Skala einrichten](guides/configuring-time-scale.md)

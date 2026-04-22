@@ -1,23 +1,23 @@
 ---
 sidebar_label: format_date
-title: format_date template
-description: "날짜 객체를 날짜 문자열로 변환합니다. 이는 서버로 데이터를 전송할 때 유용합니다."
+title: format_date 템플릿
+description: "날짜 객체를 날짜 문자열로 변환합니다. 서버로 데이터를 다시 보내는 데 사용됩니다"
 ---
 
 # format_date
 
 ### Description
 
-@short: 날짜 객체를 날짜 문자열로 변환합니다. 이는 서버로 데이터를 전송할 때 유용합니다.
+@short: 날짜 객체를 날짜 문자열로 변환합니다. 서버로 데이터를 다시 보내는 데 사용됩니다
 
 @signature: format_date: (date: Date) =\> string;
 
 ### Parameters
 
-- `date` - (required) *Date* - 포맷팅이 필요한 날짜 객체
+- `date` - (required) *Date* - 형식화가 필요한 날짜
 
 ### Returns
-- ` text` - (string) - 날짜를 문자열로 표현한 값
+- ` text` - (string) - 날짜의 텍스트 표현
 
 ### Example
 
@@ -32,22 +32,28 @@ gantt.templates.format_date = function(date){
 
 자세한 내용은 [날짜 형식 지정](guides/date-format.md)를 참고하세요.
 
-## ISO 형식 날짜 로딩
+ISO 8601 날짜가 입력에서 감지되면, ISO 문자열로 자동으로 직렬화됩니다 - 이 템플릿을 명시적으로 재정의하지 않는 한. 커스텀 `format_date` 함수를 정의하면 우선 순위를 가지며 ISO를 포함한 모든 날짜에 적용됩니다.
 
-Gantt는 ISO 날짜 형식을 지원합니다. 이를 사용하려면, 날짜 파싱과 포맷팅을 담당하는 함수를 재정의하면 됩니다:
+:::tip Gantt v9.1.2 및 이전 버전
+버전 9.1.3 이전에서는 ISO 날짜가 자동으로 감지되지 않았습니다. 더 오래된 버전을 사용 중인 경우 ISO 문자열을 처리하도록 템플릿을 재정의해야 합니다:
 
 ~~~js
-gantt.templates.parse_date = function(date) { 
+gantt.templates.parse_date = function(date) {
     return new Date(date);
 };
-gantt.templates.format_date = function(date) { 
+gantt.templates.format_date = function(date) {
     return date.toISOString();
 };
 ~~~
 
-## 날짜 형식을 동적으로 변경하기
+버전 9.1.3 이상에서는 ISO 날짜에 대해 이러한 재정의가 필요하지 않습니다.
+:::
 
-실시간으로 [날짜 형식](api/config/date_format.md)을 변경하려면, [parse_date](api/template/parse_date.md) 템플릿도 다음과 같이 업데이트해야 합니다:
+자세한 내용은 [Loading dates in ISO format](guides/loading.md#loading-dates-in-iso-format)을 참조하십시오.
+
+## Changing the date format dynamically
+
+날짜 형식([date format](api/config/date_format.md))을 동적으로 변경해야 하는 경우, 아래와 같이 [parse_date](api/template/parse_date.md) 템플릿을 수정해야 합니다:
 
 ~~~js
 var cfg = gantt.config;
@@ -59,8 +65,7 @@ gantt.templates.parse_date = function(date){
 ~~~
 
 ### Related Guides
-- [데이터 로딩](guides/loading.md)
-- [날짜 작업](guides/date-operations.md)
+- [Data Loading](guides/loading.md)
+- [Operations with Dates](guides/date-operations.md)
 - [Server-Side Integration](guides/server-side.md)
-- [날짜 형식 지정](guides/date-format.md)
-
+- [Date Format Specification](guides/date-format.md)

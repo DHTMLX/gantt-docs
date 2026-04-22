@@ -1,16 +1,15 @@
 ---
-title: "加载与保存任务"
-sidebar_label: "加载与保存任务"
+title: "加载和保存任务"
+sidebar_label: "加载和保存任务"
 ---
 
-# 加载与保存任务
+# 加载和保存任务
 
 ![gantt_basic](/img/gantt_basic.png)
 
-
-- [데이터 로딩](guides/loading.md)
-- [동적 로딩 (온디맨드)](guides/dynamic-loading.md)
-- [지원되는 데이터 형식](guides/supported-data-formats.md)
-- [Server-Side Integration](guides/server-side.md)
-- [성능: 개선 방법](guides/performance.md)
-- [백엔드 통합 문제 해결](guides/troubleshooting.md)
+- [数据加载](guides/loading.md)
+- [按需动态加载（on demand）](guides/dynamic-loading.md)
+- [支持的数据格式](guides/supported-data-formats.md)
+- [服务器端集成](guides/server-side.md)
+- [性能：提升方法](guides/performance.md)
+- [后端集成问题排查](guides/troubleshooting.md)

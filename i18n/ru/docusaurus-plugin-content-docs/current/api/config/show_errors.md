@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_errors
-title: show_errors config
-description: "включает оповещения об ошибках при неожиданном возникновении проблем"
+title: конфигурация show_errors
+description: "включает отображение предупреждений об ошибках в случае непредвиденного поведения"
 ---
 
 # show_errors
 
 ### Description
 
-@short: Включает оповещения об ошибках при неожиданном возникновении проблем
+@short: Включает отображение предупреждений об ошибках в случае непредвиденного поведения
 
 @signature: show_errors: boolean
 
@@ -21,4 +21,4 @@ gantt.config.show_errors = false;
 **Default value:** true
 
 ### Related Guides
-- [FAQ](faq.md#anerroralertappearsintherighttopcorner)
+- [FAQ](faq.md#an-error-alert-appears-in-the-right-top-corner)

@@ -1,20 +1,20 @@
 ---
 sidebar_label: buttons_left
-title: buttons_left config
-description: "Enthält eine Reihe von Buttons, die sich in der unteren linken Ecke des Lightbox befinden"
+title: buttons_left Konfiguration
+description: "Speichert eine Sammlung von Buttons, die sich in der linken unteren Ecke des Lightboxes befinden"
 ---
 
 # buttons_left
 
 ### Description
 
-@short: Enthält eine Reihe von Buttons, die sich in der unteren linken Ecke des Lightbox befinden
+@short: Speichert eine Sammlung von Buttons, die sich in der linken unteren Ecke des Lightboxes befinden
 
 @signature: buttons_left: string[]
 
 ### Example
 
-~~~jsx
+~~~html
 <style>
     .complete_button{
         margin-top: 2px;
@@ -24,12 +24,12 @@ description: "Enthält eine Reihe von Buttons, die sich in der unteren linken Ec
 </style>
 <script>
     gantt.locale.labels["complete_button"] = "Complete";
-    gantt.attachEvent("onGanttReady", function(){                               /*!*/ 
-          gantt.config.buttons_left = ["gantt_save_btn","gantt_cancel_btn",        /*!*/      
-            "complete_button"];                                                /*!*/ 
-    });                                                                           /*!*/ 
+    gantt.attachEvent("onGanttReady", function(){                               /*!*/
+          gantt.config.buttons_left = ["gantt_save_btn","gantt_cancel_btn",        /*!*/
+            "complete_button"];                                                /*!*/
+    });                                                                           /*!*/
     gantt.init("gantt_here");
-    
+
     gantt.attachEvent("onLightboxButton", function(button_id, node, e){
         if(button_id == "complete_button"){
             var id = gantt.getState().lightbox;
@@ -41,48 +41,45 @@ description: "Enthält eine Reihe von Buttons, die sich in der unteren linken Ec
 </script>
 ~~~
 
-**Default value:** ["gantt_save_btn", "gantt_cancel_btn"]
+**Standardwert:** ["gantt_save_btn", "gantt_cancel_btn"]
 
 ### Related samples
-- [Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
+- [Benutzerdefinierter Button im Lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
 
 ### Details
 
 :::note
-
-Beachte, dass die Verwendung des [Material skin](guides/skins.md#materialskin) die Button-Konfiguration überschreibt. 
-Um dies zu vermeiden, definiere die Button-Konfiguration innerhalb des [onGanttReady](api/event/onganttready.md) Event-Handlers.
- 
+Bitte beachten Sie, dass bei Verwendung des [Material skin](guides/skins.md#materialskin) die Buttons-Konfiguration neu definiert wird. 
+Um dies zu verhindern, müssen Sie die Konfiguration der Buttons im Event-Handler [onGanttReady](api/event/onganttready.md) festlegen.
 :::
 
-<br>
 ![property_buttons_left](/img/property_buttons_left.png)
 
-Die Beschriftungen der linken Buttons können vor der Initialisierung von Gantt mit folgender Syntax angepasst werden:
+Sie können die Beschriftungen der linken Buttons vor der Initialisierung von Gantt neu definieren, indem Sie folgendes verwenden:
 
 ~~~js
-gantt.locale.labels.icon_save = "Neue Beschriftung";
-gantt.locale.labels.icon_cancel = "Neue Beschriftung";
+gantt.locale.labels.icon_save = "New Label";
+gantt.locale.labels.icon_cancel = "New Label";
 
 gantt.init("gantt_here");
 ~~~
 
-Alternativ können die Beschriftungen auch nach der Initialisierung von Gantt wie folgt aktualisiert werden:
+Sie können die Beschriftungen auch nach der Initialisierung von Gantt mit einer anderen Syntax ändern, wie folgt:
 
 ~~~js
 gantt.attachEvent("onGanttReady", function(){
-  gantt.locale.labels.gantt_save_btn = "Neue Beschriftung";
-  gantt.locale.labels.gantt_cancel_btn = "Neue Beschriftung";
+  gantt.locale.labels.gantt_save_btn = "New Label";
+  gantt.locale.labels.gantt_cancel_btn = "New Label";
 });
 ~~~
 
-Ab Version 7.0 können die Beschriftungen auch über das [i18n](api/other/i18n.md) Objekt geändert werden:
+Ab Version 7.0 können die Labels auch über das [i18n](api/other/i18n.md) Objekt geändert werden:
 
 ~~~js
 gantt.i18n.setLocale({
    labels: {
-      gantt_save_btn: "Neue Beschriftung",
-      gantt_cancel_btn: "Neue Beschriftung"
+      gantt_save_btn: "New Label",
+      gantt_cancel_btn: "New Label"
    }
 });
 ~~~
@@ -93,5 +90,4 @@ gantt.i18n.setLocale({
 - [i18n](api/other/i18n.md)
 
 ### Related Guides
-- ["Ändern der Schaltflächen im Lightbox"](guides/custom-button.md)
-
+- [Schaltflächen im Lightbox ändern](guides/custom-button.md)

@@ -1,23 +1,23 @@
 ---
 sidebar_label: addLink
-title: addLink method
-description: "добавляет новую зависимость (link)"
+title: метод addLink
+description: "добавляет новую зависимую связь"
 ---
 
 # addLink
 
 ### Description
 
-@short: Добавляет новую зависимость (link)
+@short: Добавляет новую зависимую связь
 
-@signature: addLink: (link: any) =\> string | number
+@signature: addLink: (link: any) => string | number
 
 ### Parameters
 
-- `link` - (required) *object* - объект ссылки (link)
+- `link` - (required) *объект* - объект ссылки
 
 ### Returns
-- ` id` - (string | number) - идентификатор (id) ссылки
+- ` id` - (string | number) - идентификатор ссылки
 
 ### Example
 
@@ -32,7 +32,7 @@ var linkId = gantt.addLink({
 
 ### Details
 
-Этот метод вызывает события [onBeforeLinkAdd](api/event/onbeforelinkadd.md) и [onAfterLinkAdd](api/event/onafterlinkadd.md).
+Метод вызывает события [onBeforeLinkAdd](api/event/onbeforelinkadd.md) и [onAfterLinkAdd](api/event/onafterlinkadd.md).
 
 ### Related API
 - [updateLink](api/method/updatelink.md)
@@ -40,5 +40,4 @@ var linkId = gantt.addLink({
 - [addTask](api/method/addtask.md)
 
 ### Related Guides
-- [Добавление, обновление и удаление связей](guides/crud-dependency.md)
-
+- [Adding/Updating/Deleting Links](guides/crud-dependency.md)

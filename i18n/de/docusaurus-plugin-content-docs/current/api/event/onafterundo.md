@@ -1,26 +1,26 @@
 ---
 sidebar_label: onAfterUndo
-title: onAfterUndo event
-description: "Löst unmittelbar nach der Ausführung der Methode undo() aus"
+title: onAfterUndo Ereignis
+description: "löst aus, nachdem die undo()-Methode aufgerufen wurde"
 ---
 
 # onAfterUndo
 
 ### Description
 
-@short: Löst unmittelbar nach der Ausführung der Methode undo() aus
+@short: Löst aus, nachdem die undo()-Methode aufgerufen wurde
 
 @signature: onAfterUndo: (action: any[]) =\> void;
 
 ### Parameters
 
-- `action` - (required) *array* - ein Array, das Kommandoobjekte enthält
+- `action` - (erforderlich) *Array* - ein Array von Befehlsobjekten
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterUndo",function(action){
-    // Ihr Code hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
@@ -30,25 +30,23 @@ gantt.attachEvent("onAfterUndo",function(action){
 ### Details
 
 :::note
- Dieses Event ist Teil der **undo**-Erweiterung, stellen Sie daher sicher, dass das [undo](guides/extensions-list.md#undo) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Undo/Redo-Funktionalität"](guides/undo-redo.md). 
+Dieses Event ist in der **undo**-Erweiterung definiert, daher müssen Sie das [undo](guides/extensions-list.md#undo) Plugin aktivieren. Lesen Sie die Details im Artikel [Undo/Redo Functionality](guides/undo-redo.md).
 :::
 
-
-Der **action** Parameter ist ein Array von Kommandoobjekten, die jeweils folgende Eigenschaften besitzen:
+Der **action**-Parameter ist ein Array von Befehlsobjekten, von denen jedes folgende Attribute enthält:
  
-- **type** - (*string*) beschreibt den Kommando-Typ: "add", "remove" oder "update"
-- **entity** - (*string*) gibt den Objekttyp an, der geändert wurde: "task" oder "link"
-- **value** - (*object*) das Task- oder Link-Objekt nach der Änderung 
-- **oldValue** - (*object*) das Task- oder Link-Objekt vor der Änderung
+- **type** - (*string*) der Typ eines Befehls: "add/remove/update"
+- **entity** - (*string*) der Typ des geänderten Objekts: "task" oder "link"
+- **value** - (*object*) das geänderte Task-/Link-Objekt 
+- **oldValue** - (*object*) das Task-/Link-Objekt vor den Änderungen
 
 
-Wenn keine Änderungen vorgenommen wurden, ist der **action** Parameter === null. Dies kann passieren, wenn [gantt.undo()](api/method/undo.md) aufgerufen wurde, die Aktion jedoch durch [onBeforeUndo](api/event/onbeforeundo.md) abgebrochen wurde oder wenn der Undo-Stack leer war.
+Wenn keine Änderungen angewendet wurden, wird das **action**-Argument === null sein. Das kann passieren, wenn [gantt.undo()](api/method/undo.md) aufgerufen wurde, Änderungen jedoch durch [onBeforeUndo](api/event/onbeforeundo.md) abgebrochen oder der Stapel leer war.
 
 ### Related API
 - [undo](api/method/undo.md)
 - [onBeforeUndo](api/event/onbeforeundo.md)
 
 ### Change log
-- hinzugefügt in Version 4.0
-- der **action** Parameter wurde in Version 5.2 eingeführt
-
+- Hinzugefügt in Version 4.0
+- das **action**-Argument wurde in Version 5.2 hinzugefügt

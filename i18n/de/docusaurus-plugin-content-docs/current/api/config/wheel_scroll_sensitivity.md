@@ -1,14 +1,14 @@
 ---
 sidebar_label: wheel_scroll_sensitivity
-title: wheel_scroll_sensitivity config
-description: "steuert, wie schnell das Gantt mit dem Mausrad scrollt"
+title: wheel_scroll_sensitivity Konfiguration
+description: "Bestimmt die Geschwindigkeit des Scrollens des Gantt-Diagramms mit dem Mausrad"
 ---
 
 # wheel_scroll_sensitivity
 
 ### Description
 
-@short: Steuert, wie schnell das Gantt mit dem Mausrad scrollt
+@short: Bestimmt die Geschwindigkeit des Scrollens des Gantt-Diagramms mit dem Mausrad
 
 @signature: wheel_scroll_sensitivity: undefined | number | \{ x?: number; y?: number; \}
 
@@ -32,10 +32,10 @@ gantt.config.wheel_scroll_sensitivity = {
 
 ### Details
 
-Dieses Konfigurationsobjekt enthält folgende Eigenschaften:
+Die Objektkonfiguration hat folgende Eigenschaften:
 
-- **x** - (*number*) - steuert die horizontale Scrollgeschwindigkeit
-- **y** - (*number*) - steuert die vertikale Scrollgeschwindigkeit
+- **x** - (*number*) - die horizontale Geschwindigkeit
+- **y** - (*number*) - die vertikale Geschwindigkeit
 
 ### Change log
 - hinzugefügt in v7.0.11

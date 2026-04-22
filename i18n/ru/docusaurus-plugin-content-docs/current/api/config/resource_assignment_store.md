@@ -1,16 +1,18 @@
 ---
 sidebar_label: resource_assignment_store
-title: resource_assignment_store config
-description: "определяет имя datastore, который хранит назначения ресурсов"
+title: конфигурация resource_assignment_store
+description: "указывается имя хранилища данных, которое хранит назначения ресурсов"
 ---
 
 # resource_assignment_store
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-издании.
 :::
+
 ### Description
 
-@short: Определяет имя datastore, который хранит назначения ресурсов
+@short: Указывает имя хранилища данных, которое хранит назначения ресурсов
 
 @signature: resource_assignment_store: string
 
@@ -20,18 +22,18 @@ description: "определяет имя datastore, который хранит
 var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
 ~~~
 
-**Default value:** "resourceAssignments"
+**Значение по умолчанию:** "resourceAssignments"
 
 ### Related samples
-- [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+- [Назначение значений ресурсов на конкретные дни](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
 
-Datastore настраивается автоматически.
+Хранилище данных создается автоматически.
 
-Он создаётся только при включённой конфигурации [process_resource_assignments](api/config/process_resource_assignments.md).
+Хранилище создается только если включена конфигурация [process_resource_assignments](api/config/process_resource_assignments.md).
 
-Вы можете использовать этот datastore для программного управления назначениями ресурсов:
+Хранилище можно использовать для изменения назначений ресурсов из кода:
 
 ~~~js
 var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
@@ -44,8 +46,8 @@ assignmentStore.addItem({
 assignmentStore.removeItem(assignment.id);
 assignmentStore.updateItem(assignment.id);
 
-// после обновления назначений в datastore, 
-// вызовите `updateTaskAssignments` для применения изменений к объекту задачи:
+// after assignments are updated in the datastore, you need 
+// to call `updateTaskAssignments` to write changes to the task object:
 gantt.updateTaskAssignments(taskId);
 ~~~
 
@@ -57,5 +59,4 @@ gantt.updateTaskAssignments(taskId);
 - [Управление ресурсами](guides/resource-management.md)
 
 ### Change log
-- добавлено в версии v7.1
-
+- added in v7.1

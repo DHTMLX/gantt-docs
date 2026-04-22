@@ -1,70 +1,68 @@
 ---
 sidebar_label: isWorkTime
 title: isWorkTime method
-description: "определяет, попадает ли заданная дата в рабочее время"
+description: "проверяет, является ли указанная дата рабочей или нет"
 ---
 
 # isWorkTime
 
 ### Description
 
-@short: Определяет, попадает ли заданная дата в рабочее время
+@short: Проверяет, является ли указанная дата рабочей
 
-@signature: (config: Date | object) =\> boolean
+@signature: isWorkTime: Calendar['isWorkTime']
 
 ### Parameters
 
-- `config` - (required) *object | Date* -        может быть либо объектом конфигурации, описывающим временной интервал, либо конкретной датой
+- `config` - (required) *object | Date* - либо конфигурационный объект временного диапазона, либо конкретная дата
 
 ### Returns
-- ` isWorkTime` - (boolean) - <i>true</i>, если заданная дата находится в пределах рабочего времени; иначе <i>false</i>
+- `isWorkTime` - (boolean) - <i>true</i>, если указанная дата относится к рабочему времени. В противном случае <i>false</i>
 
 ### Example
 
 ~~~jsx
-//проверка, является ли указанная дата рабочим днем согласно глобальным настройкам
+//проверяет, является ли указанная дата рабочим днем в глобальных настройках
 gantt.isWorkTime({ date: new Date(2023,3,5) });
 // или
 gantt.isWorkTime(new Date(2023,3,5));
 
-//проверка, является ли указанная дата рабочим днем для конкретной задачи
+//проверяет, является ли указанная дата рабочим днем для конкретной задачи
 gantt.isWorkTime({date: new Date(2023,3,5), task: task});
 ~~~
 
 ### Details
 
 :::note
-
-Если опция [work_time](api/config/work_time.md) отключена, этот метод всегда будет возвращать `true`. 
- 
+If the [work_time](api/config/work_time.md) option is disabled, the method always returns `true`. 
 :::
 
-- Если задача не указана, метод использует [глобальный календарь рабочего времени](guides/working-time.md#multipleworktimecalendars). <br>
-- Этот метод также можно вызвать напрямую из [объекта календаря](api/other/calendar.md).
+- The method will use the [global work time calendar](guides/working-time.md#multipleworktimecalendars) if no task is specified. 
+- Besides, the method can be called directly from a [calendar object](api/other/calendar.md).
 
 
-Рассмотрим следующую настройку рабочего времени для диаграммы:
+Let's assume that you set the following working time for the chart:
 
-- **Рабочие дни**: понедельник по пятницу
-- **Рабочие часы**: с 6:00 до 15:00
+- **Working days**: Monday - Friday
+- **Working hours**: 6:00 - 15:00
 
-Если проверить понедельник, 3 апреля 2023 года, как показано ниже, результаты будут:
+Then, if you check Monday April,3 2023 as in, you will get: 
 
 ~~~js
 gantt.isWorkTime({date: new Date(2023,3,3,17,00), unit: "hour"}); 
-//->false, так как время с 17:00 до 18:00 находится вне рабочего времени
+//->false, потому что 17:00-18:00 не является рабочим временем
 
 gantt.isWorkTime({date: new Date(2023,3,3,17,00), unit:  "day"}); 
-//-> true, поскольку понедельник - рабочий день
+//-> true, потому что понедельник является рабочим днем
 ~~~
 
-## Свойства объекта конфигурации {#configurationobjectproperties}
+## Configuration object properties
 
-Объект конфигурации может включать следующие свойства:
+The configuration object can contain the following properties:
 
-- **date** - (*Date*) дата для проверки
-- **unit** - (string)    необязательно, указывает единицу времени: "minute", "hour", "day", "week", "month", "year"
-- **task** - (*object*)    необязательно, объект задачи, для которой нужно определить рабочее время
+- **date** - (*Date*) дата для проверки 
+* **unit** - (string)    optional, единица времени: "minute", "hour", "day", "week", "month", "year"
+- **task** - (*object*)    optional, объект задачи, длительность которой должна быть рассчитана
 
 ~~~js
 if (gantt.isWorkTime({date: date, task: task})){
@@ -78,5 +76,4 @@ if (gantt.isWorkTime({date: date, task: task})){
 - [getWorkHours](api/method/getworkhours.md)
 
 ### Related Guides
-- [Расчёт рабочего времени](guides/working-time.md)
-
+- [Work Time Calculation](guides/working-time.md)

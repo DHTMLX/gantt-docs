@@ -1,24 +1,24 @@
 ---
 sidebar_label: show_links
-title: show_links config
-description: "включает или отключает отображение ссылок в Gantt chart"
+title: конфигурация show_links
+description: "включает/выключает отображение связей в диаграмме Ганта"
 ---
 
 # show_links
 
-### Description
+### Описание
 
-@short: Включает или отключает отображение ссылок в Gantt chart
+@short: Включает/выключает отображение связей в диаграмме Ганта
 
 @signature: show_links: boolean
 
-### Example
+### Пример
 
 ~~~jsx
-//скрывает все ссылки в Gantt chart
+//hides all links in the Gantt chart
 gantt.config.show_links = false;
  
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true

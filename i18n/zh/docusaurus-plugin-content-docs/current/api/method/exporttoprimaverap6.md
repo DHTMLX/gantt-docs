@@ -1,6 +1,6 @@
 ---
 sidebar_label: exportToPrimaveraP6
-title: exportToPrimaveraP6 method
+title: exportToPrimaveraP6 方法
 description: "将甘特图中的数据导出到 Primavera P6"
 ---
 
@@ -24,56 +24,40 @@ gantt.exportToPrimaveraP6({
 });
 ~~~
 
-### Related samples
-- [Export data : MS Project, PrimaveraP6, Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
+### Related Samples
+- [导出数据：MS Project、PrimaveraP6、Excel & iCal](https://docs.dhtmlx.com/gantt/samples/08_api/08_export_other.html)
 
 ### Details
 
 :::note
- 此方法属于 **export** 扩展，因此请确保启用了 [export_api](guides/extensions-list.md#daochufuwu) 插件。更多详情请参阅 [从 Primavera P6 导出和导入](guides/export-primavera.md#daochudaoprimaverap6) 文章。
+此方法在 **export** 扩展中定义，因此您需要激活 [export_api](guides/extensions-list.md#export-service) 插件。请在 [从 Primavera P6 导出与导入](guides/export-primavera.md#exporttoprimaverap6) 文章中查看详细信息。
  
 :::
 
 :::note
- 对于 8.0 之前的 Gantt 版本，您需要在页面中引入 **https://export.dhtmlx.com/gantt/api.js** 来使用在线导出服务，如下所示:
+如果您使用的 Gantt 版本低于 8.0，请在页面中包含 `https://export.dhtmlx.com/gantt/api.js` 以启用在线导出服务，例如：
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
- 
+
 :::
 
 
-**exportToPrimaveraP6()** 方法接受一个包含多个可选属性的对象:
+**exportToPrimaveraP6()** 方法接收一个包含若干属性的对象作为参数（所有属性均为可选）：
 
-- **name** - (*string*) 导出文件的文件名（默认值为 'gantt.xml'）。
-- **auto_scheduling** - (boolean) 定义导出项目中任务的调度模式。设置为 **true** 表示任务为自动调度，**false** 则表示任务为手动调度（默认）。
-- **skip_circular_links** - (boolean) 是否移除循环链接。**true** 表示移除（默认），**false** 表示保留。
-- **project** - (object) 用于指定导出项目实体的自定义属性。
-- **tasks** - (object) 用于设置导出任务项的自定义属性。
-- **data** - (object) 允许提供用于输出甘特图的自定义数据源。**start_date** 和 **end_date** 应采用包含日期和时间的格式（*%d-%m-%Y %H:%i*）。
-- **callback** - (function) 如果希望获取生成的 XML 文件下载链接，可以使用此属性。回调函数接收一个包含 *url* 的 JSON 对象。
-- **resources** - (array) 允许将资源列表导出到 Primavera P6 文件中。
-- **server** - (string) 指定导出请求的 API 端点。如果您有本地安装的导出服务，可以使用此属性。默认值为 **https://export.dhtmlx.com/gantt**。
+- **name** - (*string*) 获取的文件名（默认为 'gantt.xml'）。
+- **auto_scheduling** - (*boolean*) 指示导出项目中任务的排程模式。**true** 将任务标记为自动排程，**false** 将任务标记为手动排程（默认状态）。
+- **skip_circular_links** - (*boolean*) 指示是否删除循环链接（true - 将被删除（默认模式），false - 不会被删除）。
+- **project** - (*object*) 允许为导出的项目信息设置自定义属性。
+- **tasks** - (*object*) 允许为导出的任务项设置自定义属性。
+- **data** - (*object*) 允许设置一个自定义数据源，该数据源将显示在输出的甘特图中。期望在格式中指定 **start_date** 和 **end_date** 属性，格式包含日期和时间 (*%d-%m-%Y %H:%i*)。
+- **callback** - (*function*) 如果你想接收下载生成的 XML 的 URL，可以使用 *callback* 属性。它会接收一个包含 *url* 属性的 JSON 对象。
+- **resources** - (*array*) 允许将资源列表导出到 Primavera P6 文件中。如果在导出期间使用资源日历，需要在导出的任务对象（在 **tasks** 对象中）中的 **CalendarUID** 属性为任务指定 -1。这样该任务将使用资源日历。
+- **server** - (*string*) 请求的 API 端点。可用于带本地安装的导出服务。默认值为 `https://export.dhtmlx.com/gantt`。
 
-## 响应
-
-响应返回一个结构如下的 JSON 对象:
-
-~~~js
-{
-   data: {},
-   config: {},
-   resources: [],
-   worktime: {}
-}
-~~~
-
-- **data** - 一个甘特图的 [数据对象](guides/supported-data-formats.md#json)。每个任务包含 *id*、*open*、*parent*、*progress*、*start_date*、*text* 和 *resource* 等属性。日期格式为字符串，格式为 "%Y-%m-%d %H:%i"。
-- **config** - 一个甘特图的 [配置](api/overview/properties-overview.md) 对象，包含从项目文件中提取的设置。
-- **resources** - 一个对象数组，表示项目文件中的资源，每个对象包含 *id*、*name* 和 *type* 属性。
-- **worktime** - 一个对象，保存项目日历中的工作时间设置。
+请检查在 [相关部分](guides/export-primavera.md#export-settings) 中对导出设置的详细描述。
 
 ### Related API
 - [importFromPrimaveraP6](api/method/importfromprimaverap6.md)
@@ -87,5 +71,4 @@ gantt.exportToPrimaveraP6({
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [从 Primavera P6 导出和导入](guides/export-primavera.md)
-
+- [从 Primavera P6 导出与导入](guides/export-primavera.md#exporttoprimaverap6)

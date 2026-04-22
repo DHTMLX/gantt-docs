@@ -1,44 +1,44 @@
 ---
-title: "Ressourcen-Steuerung"
-sidebar_label: "Ressourcen-Steuerung"
+title: "Ressourcensteuerung"
+sidebar_label: "Ressourcensteuerung"
 ---
 
-# Ressourcen-Steuerung
+# Ressourcensteuerung
 
 :::info
-Dieses Feature ist nur in der PRO Edition verfügbar.
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 
-Dies ist ein vielseitiges Steuerelement, das dazu dient, [mehreren Ressourcen und deren Mengen einer Aufgabe zuzuweisen](guides/resource-management.md#assigningresources).
+Eine komplexe Steuerung, die verwendet wird, um mehreren Ressourcen und deren Menge einer Aufgabe zuzuweisen (Link: [assigningresources](guides/resource-management.md#assigningresources)).
 
-![Ressourcen-Steuerung Serveroptionen](/img/resources_control.png)
+![Ressourcensteuerung Serveroptionen](/img/resources_control.png)
 
 ~~~js
 gantt.config.lightbox.sections = [
- {name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
- {name:"owner",height:60, type:"resources", default_value:8},   /*!*/
- {name: "time", type: "duration", map_to: "auto"}
+ { name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
+ { name: "owner", height: 60, type: "resources", default_value: 8},   /*!*/
+ { name: "time", type: "duration", map_to: "auto"}
 ];
 ~~~
 
 
-[Assign multiple resources](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
+[Mehrere Ressourcen zuweisen](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
 
 
-Alternativ:
+oder
 
-![Ressourcen-Steuerung Optionen](/img/resources_control2.png)
+![Ressourcensteuerung Optionen](/img/resources_control2.png)
 
 ~~~js
 gantt.config.lightbox.sections = [
-  { name:"description",height:38,map_to:"text",type:"textarea",focus:true },
-  { name:"time",type:"duration",map_to:"auto" },
-  { name:"rooms",type:"resources",map_to:"rooms", options:[  /*!*/
-        { key: 1, label: "room 1", unit: "hours" },    /*!*/
-      { key: 2, label: "room 2", unit: "hours" },   /*!*/
-      { key: 3, label: "room 3", unit: "hours" }   /*!*/
+  { name: "description", height: 38, map_to:"text", type: "textarea", focus: true },
+  { name: "time", type: "duration", map_to: "auto" },
+  { name: "rooms", type: "resources", map_to: "rooms", options: [  /*!*/
+  	  { key: 1, label: "room 1", unit: "hours" },    /*!*/
+	  { key: 2, label: "room 2", unit: "hours" },   /*!*/
+	  { key: 3, label: "room 3", unit: "hours" }   /*!*/
     ]  /*!*/
-  }       /*!*/
+  }	   /*!*/
 ];
 
 gantt.locale.labels.section_rooms = "Rooms";
@@ -49,24 +49,24 @@ gantt.locale.labels.section_rooms = "Rooms";
 
 
 :::note
-Es ist auch möglich, [ein benutzerdefiniertes Steuerelement zu erstellen, um mehreren Ressourcen einer Aufgabe zuzuweisen](guides/custom-editor.md#customthirdpartyeditor).
+Sie können auch eine benutzerdefinierte Steuerung erstellen, um einer Aufgabe mehrere Ressourcen zuzuweisen (Link: guides/custom-editor.md#customthirdpartyeditor).
 :::
 
-## Initialisierung
+## Initialization
 
-Um das **resources**-Steuerelement im Lightbox-Dialog einzubinden, gehen Sie wie folgt vor:
+Um die **Ressourcen**-Steuerung dem Lightbox hinzuzufügen, befolgen Sie die folgenden Schritte:
 
 1. Fügen Sie eine Sektion zur Lightbox-Konfiguration hinzu:
 
 ~~~js
 gantt.config.lightbox.sections = [
-  { name:"description",height:38,map_to:"text",type:"textarea",focus:true },
-  { name:"time",type:"duration",map_to:"auto" },
-  { name:"rooms",type:"resources" }       /*!*/
+  { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+  { name: "time", type: "duration", map_to: "auto" },
+  { name: "rooms", type:"resources" }	   /*!*/
 ];
 ~~~
 
-2. Definieren Sie ein Label für die Sektion:
+2. Legen Sie ein Label für den Abschnitt fest:
 
 ~~~js
 gantt.locale.labels.section_resources = "Rooms";
@@ -78,46 +78,47 @@ gantt.locale.labels.section_resources = "Rooms";
 
 ## Eigenschaften
 
-Hier sind die wichtigsten Eigenschaften, die häufig für das **resources**-Steuerelement festgelegt werden (vollständige Details finden Sie [hier](api/config/lightbox.md)):
+Die folgenden Eigenschaften sind größtenteils wichtig und werden häufig für die **Ressourcen**-Steuerung festgelegt (siehe die vollständige Liste [hier](api/config/lightbox.md)):
 
-- **name** - (*string*) der Name der Sektion
-- **map_to** - (*string*) der Name der Daten-Eigenschaft, die der Sektion zugeordnet ist
-- **type** - (*string*) der Typ des Steuerelements für die [Sektion](guides/default-edit-form.md#lightboxcontrols)
-- **options** - (*array*) ein Array von Objekten, das die Auswahlmöglichkeiten des Steuerelements definiert (*wird verwendet mit **select**, **checkbox**, **radio** und **resources** Steuerelementen*). Jedes Objekt enthält:
-    - **key** - (*string*) die Options-ID, die mit der Daten-Eigenschaft der Aufgabe abgeglichen wird
-    - **label** - (*string*) die Bezeichnung der Option
-    - **unit** - (*number*) die Einheit der Ressource
-- **focus** - (*boolean*) wenn true, erhält die Sektion den Fokus, wenn die Lightbox geöffnet wird
-- **default_value** - (*any*) Standardwert für das Steuerelement, der verwendet wird, wenn kein Ressourcenwert definiert ist. Jede Option kann ihren eigenen Standardwert haben.
+- **name** - (*string*) der Abschnittsname 
+- **map_to** - (*string*) der Name einer Daten-Eigenschaft, die dem Abschnitt zugeordnet wird
+- **type** - (*string*) der Typ der [Abschnittskontrolle](guides/default-edit-form.md#lightboxcontrols)
+- **options** - (*array*) ein Array von Objekten. Definiert Auswahloptionen der Steuerung (*verwendet für die **select**, **checkbox**,**radio** und **resources**  Steuerelemente*). 
+Jedes Objekt im Array spezifiziert eine einzelne Option und enthält die folgenden Eigenschaften:
+    - **key** - (*string*) die Options-ID. Dieses Attribut wird mit der Task-Daten-Eigenschaft verglichen, um Optionen Tasks zuzuweisen
+    - **label** - (*string*) die Optionsbeschriftung
+    - **unit** - (*number*) die Einheit der Messung der Ressource
+- **focus** - (*boolean*) wird auf *true* gesetzt, erhält der Abschnitt beim Öffnen des Lightbox den Fokus
+- **default_value** - (*any*) der Standardwert des Abschnitts-Steuerelements. Wird angewendet, wenn der Wert der Ressource undefiniert ist. Jeder Eintrag aus dem **options**-Array kann seinen eigenen Standardwert haben.
 
 :::note
-Standardmäßig wird das Ressourcen-Steuerelement der in [resource_property](api/config/resource_property.md) definierten Eigenschaft zugeordnet, daher ist die Angabe von **map_to** optional.
+Standardmäßig ist die Ressourcen-Steuerung dem in der [resource_property](api/config/resource_property.md) Konfiguration angegebenen Eigenschaft zugeordnet, sodass die **map_to**-Option entfallen kann.
 :::
 :::note
-Standardmäßig werden die Optionen des Ressourcen-Steuerelements automatisch aus dem [Resource Datastore](guides/resource-management.md#workingwithresourceviewpanel) über die `gantt.serverList("resourceOptions")` [Collection](api/method/serverlist.md) übernommen. Sie müssen die Optionen nur manuell setzen, wenn Sie dieses Verhalten überschreiben möchten.
+Standardmäßig wird die Ressourcen-Steuerung automatisch aus dem [Resource-Datenspeicher](guides/resource-management.md#working-with-resource-view-panel) über die `gantt.serverList("resourceOptions")` [Collection](api/method/serverlist.md) befüllt. Man muss die Optionsliste nur manuell angeben, wenn man das Standardverhalten ändern möchte.
 :::
 
-## Befüllen des Steuerelements mit Daten
+## Populate-Steuerung mit Daten
 
-Seit Version 8.0 erhält das Ressourcen-Steuerelement die Optionen automatisch aus dem [Resource Datastore](guides/resource-management.md#workingwithresourceviewpanel).
+Ab Version 8.0 bezieht die Ressourcen-Steuerung standardmäßig Optionen aus dem [Resource-Datenspeicher](guides/resource-management.md#working-with-resource-view-panel).
 
-Wenn Sie den von Gantt bereitgestellten Standard-Resource Datastore verwenden, wird das [Ressourcen-Steuerelement](guides/resources.md), das ohne den **options**-Parameter initialisiert wird, mit der **gantt.serverList("resourceOptions")** Collection verknüpft, die mit Ressourcen aus dem Datastore gefüllt wird. Sie können im Code wie folgt auf die Optionen zugreifen:
+Verwendest du den Standard-Resource-Datenspeicher, der von Gantt erzeugt wird, und die [Ressourcensteuerung](guides/resources.md) wird ohne den Parameter **options** initialisiert, wird sie mit der **gantt.serverList("resourceOptions")**-Sammlung verbunden. Diese Sammlung wird mit den Ressourcen aus dem Resource-Datenspeicher befüllt. Du kannst Optionen per Code abrufen:
 
 ~~~js
 const options = gantt.serverList("resourceOptions");
 ~~~
 
-Beachten Sie, dass das Options-Array leer ist, bis Ressourcen in den Datastore geladen wurden.
+Hinweis: Das Options-Array bleibt leer, bevor die Ressourcen in den Datenspeicher geladen werden.
 
-Sie können diese Collection auch mit einer eigenen Liste von Optionen aktualisieren:
+Du kannst diese Sammlung auch mit benutzerdefinierter Optionsliste aktualisieren:
 
 ~~~js
 gantt.updateCollection("resourceOptions", [...]);
 ~~~
 
-Beachten Sie, dass, wenn Sie nach dem Aktualisieren dieser Collection Ressourcen in das Gantt laden, Ihre Änderungen überschrieben werden.
+Hinweis: Falls du Ressourcen danach in den Gantt lädst, wird diese Sammlung aktualisiert und deine Änderungen überschrieben.
 
-Um zu steuern, welche Ressourcen in der Lightbox erscheinen, definieren Sie die **gantt.config.resources.lightbox_resources** Konfiguration neu:
+Wenn du festlegen möchtest, welche Ressourcen in das Lightbox-Fenster gelangen, kannst du die Konfiguration von `gantt.config.resources.lightbox_resources` neu definieren:
 
 ~~~js
 gantt.config.resources = {
@@ -136,9 +137,9 @@ gantt.config.resources = {
 };
 ~~~
 
-Wenn Sie den Resource Datastore manuell erstellen, müssen Sie die Optionen des Ressourcen-Steuerelements selbst befüllen.
+Wenn du den Resource-Datenspeicher manuell erstellst, musst du die Ressourcensteuerung mit den Optionen selbst befüllen.
 
-Typischerweise setzen Sie Werte für das **resources**-Steuerelement über den [options](api/config/lightbox.md) Parameter:
+Generell gilt: Um Werte für die **resources**-Steuerung festzulegen, verwende den [options](api/config/lightbox.md)-Parameter:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -152,16 +153,16 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-Jedes Element im [options](api/config/lightbox.md) Array muss enthalten:
+Elemente im [options](api/config/lightbox.md)-Parameter haben 3 verpflichtende Eigenschaften:
 
 - **key** - die Options-ID
-- **label** - die Bezeichnung der Option
-- **unit** - die Einheit der Ressource
+- **label** - die Options-Beschriftung
+- **unit** - die Einheit der Messung der Ressource
 
 
-## Befüllen des Steuerelements mit Daten vom Server
+## Populate-Steuerung mit Daten vom Server
 
-Um das Steuerelement mit Daten vom Server zu befüllen, setzen Sie die [options](api/config/lightbox.md) Eigenschaft auf den Wert, der von der [serverList](api/method/serverlist.md) Methode zurückgegeben wird:
+Um die Steuerung vom Server aus zu befüllen, setzen Sie die [options](api/config/lightbox.md)-Option auf den von der [serverList](api/method/serverlist.md) Methode zurückgegebenen Wert:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -176,7 +177,7 @@ gantt.load("/data");
 ~~~
 
 
-Der Inhalt von `gantt.serverList("resourceOptions")` kann gesetzt werden, sobald die Optionen verfügbar sind, indem Sie die [updateCollection](api/method/updatecollection.md) Methode verwenden:
+Der Inhalt von `gantt.serverList("resourceOptions")` kann definiert werden, wenn die Optionen verfügbar werden, mittels der [updateCollection](api/method/updatecollection.md)-Methode:
 
 ~~~js
 gantt.updateCollection("resourceOptions", [
@@ -186,5 +187,5 @@ gantt.updateCollection("resourceOptions", [
 ])
 ~~~
 
-[Assign multiple resources](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
 
+[Mehrere Ressourcen zuweisen](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)

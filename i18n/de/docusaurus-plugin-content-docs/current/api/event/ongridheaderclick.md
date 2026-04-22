@@ -1,34 +1,34 @@
 ---
 sidebar_label: onGridHeaderClick
 title: onGridHeaderClick event
-description: "Wird ausgelöst, wenn der Benutzer auf einen Grid-Header klickt"
+description: "Wird ausgelöst, wenn der Benutzer auf die Kopfzeile des Grids klickt"
 ---
 
 # onGridHeaderClick
 
 ### Description
 
-@short: Wird ausgelöst, wenn der Benutzer auf einen Grid-Header klickt
+@short: Wird ausgelöst, wenn der Benutzer auf die Kopfzeile des Grids klickt
 
 @signature: onGridHeaderClick: (name: string, e: Event) =\> boolean;
 
 ### Parameters
 
-- `name` - (required) *string* - der Name-Attribut des angeklickten Spaltenheaders
-- `e` - (required) *Event* - das native Event-Objekt
+- `name` - (erforderlich) *string* - der Name des Attributs der Spalte, deren Header der Benutzer anklickt
+- `e` - (erforderlich) *Event* - ein natives Event-Objekt
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder verhindert wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onGridHeaderClick", function(name, e){
-    //benutzerdefinierte Logik kann hier hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
 
 ### Details
 
-Das Zurückgeben von false verhindert das Standardverhalten, wie z.B. das Hinzufügen einer neuen Aufgabe über den "Plus"-Button oder das Sortieren der Spalte.
+Wenn false zurückgegeben wird, wird der Standard-Handler abgebrochen (das Hinzufügen einer neuen Aufgabe beim Klicken auf den 'Plus'-Button oder das Sortieren einer Spalte)

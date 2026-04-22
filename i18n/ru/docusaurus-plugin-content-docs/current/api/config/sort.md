@@ -1,14 +1,14 @@
 ---
 sidebar_label: sort
 title: sort config
-description: "позволяет выполнять сортировку внутри таблицы"
+description: "позпозяят выполняеьт выполнять снутриортировыу внутри таблицы"
 ---
 
 # sort
 
 ### Description
 
-@short: Позволяет выполнять сортировку внутри таблицы
+@short: Включает сортировку в таблице
 
 @signature: sort: boolean
 
@@ -21,7 +21,7 @@ gantt.init("gantt_here");
 gantt.parse("tasks.json");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Related samples
 - [Built-in sorting](https://docs.dhtmlx.com/gantt/samples/07_grid/01_builtin_sorting.html)
@@ -31,5 +31,4 @@ gantt.parse("tasks.json");
 - [onAfterSort](api/event/onaftersort.md)
 
 ### Related Guides
-- [Сортировка столбцов](guides/sorting.md)
-
+- [Sorting Columns](guides/sorting.md)

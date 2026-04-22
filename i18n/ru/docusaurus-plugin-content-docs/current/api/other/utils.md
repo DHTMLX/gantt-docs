@@ -1,10 +1,10 @@
 ---
 sidebar_label: utils
-title: utils config
+title: конфигурация utils
 description: "различные вспомогательные модули"
 ---
 
-# utils
+# Утилиты
 
 ### Description
 
@@ -26,23 +26,25 @@ tooltips.tooltipFor({
 });
 ~~~
 
+
 ### Details
 
-В настоящее время этот модуль в основном предоставляет помощники для работы с DOM через **gantt.utils.dom**.
+В данный момент модуль содержит только помощник для операций с DOM, доступный как **gantt.utils.dom**
 
 
 ~~~js
 var domHelpers = gantt.utils.dom;
 ~~~
 
-Он включает в себя следующие методы:
 
-- **getNodePosition (node): object** - возвращает позицию элемента на экране в виде объекта `{x:number, y:number,width:number, height:number}`
-  - **_node_** - (*HTMLElement*) - DOM-элемент для проверки
+Который имеет следующие методы:
 
-- **getRelativeEventPosition (e, node): object** - получает координаты мыши относительно указанного DOM-элемента, возвращает объект `{x:number, y:number}`
+- **getNodePosition (node): object** - возвращает положение элемента на экране в формате объекта `{x:number, y:number, width:number, height:number}`
+  - **_node_** - (*HTMLElement*) - DOM-элемент, который будет проверяться
+
+- **getRelativeEventPosition (e, node): object** - возвращает координаты мыши относительно DOM-элемента в формате объекта `{x:number, y:number}`
   - **_e_** - (*Event*) - событие, которое произошло
-  - **_node_** - (*HTMLElement*) - DOM-элемент, относительно которого нужно получить координаты
+  - **_node_** - (*HTMLElement*) - DOM-элемент, который будет проверяться
 
 
 ~~~js
@@ -63,17 +65,17 @@ gantt.attachEvent("onMouseMove", function (id, e){
 });
 ~~~
 
-- **isChildOf (child, parent): boolean** - проверяет, является ли первый узел DOM-потомком второго, возвращает `true`, если да
-  - **_child_** - (*HTMLElement*) - дочерний узел для проверки
-  - **_parent_** - (*HTMLElement*) - родительский узел для проверки
+- **isChildOf (child, parent): boolean** - возвращает `true`, если узел, переданный в качестве первого аргумента, является DOM-элементом-потомком узла, переданного как второй аргумент
+  - **_child_** - (*HTMLElement*) - дочерний узел, который будет проверяться
+  - **_parent_** - (*HTMLElement*) - родительский узел, который будет проверяться
 
-- **hasClass (node, className): boolean** - определяет, содержит ли указанный `node` заданный CSS класс, возвращает `true`, если содержит
-  - **_node_** - (*HTMLElement*) - DOM-элемент для проверки
-  - **_className_** - (*string*) - имя CSS класса для поиска
+- **hasClass (node, className): boolean** - возвращает `true`, если список классов переданного `node` содержит указанный CSS-класс
+  - **_node_** - (*HTMLElement*) - DOM-элемент, который будет проверяться
+  - **_className_** - (*string*) - имя CSS-класса, которое будет проверяться
 
-- **closest (node, cssSelector): HTMLElement** - находит ближайший предок (включая сам узел), соответствующий заданному CSS селектору
-  - **_node_** - (*HTMLElement*) - начальный DOM-элемент
-  - **_cssSelector_** - (*string*) - CSS селектор для поиска
+- **closest (node, cssSelector): HTMLElement**> - возвращает первый узел, который соответствует заданному CSS-селектору, начиная с указанного узла и поднимаясь вверх по дереву DOM к родительским узлам
+  - **_node_** - (*HTMLElement*) - DOM-элемент, который будет проверяться
+  - **_cssSelector_** - (*string*) - CSS-селектор для целевого узла
 
 ~~~js
 gantt.attachEvent("onEmptyClick", function (e) {
@@ -86,5 +88,6 @@ gantt.attachEvent("onEmptyClick", function (e) {
 });
 ~~~
 
+
 ### Related samples
-- [Custom Tooltips](https://docs.dhtmlx.com/gantt/samples/02_extensions/22_tooltip_api.html)
+- [Пользовательские подсказки](https://docs.dhtmlx.com/gantt/samples/02_extensions/22_tooltip_api.html)

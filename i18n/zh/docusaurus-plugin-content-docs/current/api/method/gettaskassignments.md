@@ -1,25 +1,27 @@
 ---
 sidebar_label: getTaskAssignments
-title: getTaskAssignments method
-description: "从数据存储中获取特定任务的解析资源分配信息"
+title: getTaskAssignments 方法
+description: "从数据存储中返回特定任务的解析资源分配"
 ---
 
 # getTaskAssignments
+
 :::info
- 此功能仅在PRO版本中可用。 
+ 此功能仅在 PRO 版本中可用。 
 :::
+
 ### Description
 
-@short: 从数据存储中获取特定任务的解析资源分配信息
+@short: 从数据存储中返回特定任务的解析资源分配
 
-@signature: getTaskAssignments: (taskId: string | number) =\> ResourceAssignment[]
+@signature: getTaskAssignments: (taskId: string | number) => ResourceAssignment[]
 
 ### Parameters
 
-- `taskId` - (required) *string | number* -    任务的ID
+- `taskId` - (required) *string | number* -    任务ID
 
 ### Returns
-- ` param` - (ResourceAssignment[]) - 表示任务资源分配的对象数组
+- ` param` - (ResourceAssignment[]) - 一个包含该任务资源分配的对象数组
 
 ### Example
 
@@ -28,15 +30,15 @@ gantt.getTaskAssignments(5); // -> 查看详情
 ~~~
 
 ### Related samples
-- [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+- [为特定日期分配资源值](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
 
 :::note
- 如果 [process_resource_assignments](api/config/process_resource_assignments.md) 被禁用，**getTaskAssignments** 方法将无法工作。 
+如果禁用 [process_resource_assignments](api/config/process_resource_assignments.md)，则 **getTaskAssignments** 方法不可用。
 :::
 
-该方法返回一个对象数组，结构如下:
+该方法返回一个包含对象的数组，形式如下：
 
 ~~~js
 [
@@ -63,21 +65,22 @@ gantt.getTaskAssignments(5); // -> 查看详情
 ]
 ~~~
 
-每个对象包含以下属性:
+每个对象包含以下属性：
 
-- **id** - (*string | number*) - 该分配的唯一ID
-- **task_id** - (*string | number*) - 资源被分配的任务ID
-- **resource_id** - (*string | number*) - 分配给任务的资源ID
-- **value** - (*number | string*) - 分配给任务的资源数量
-- **delay** - (*number*) - 分配开始日期与任务开始日期的偏移量
-- **start_date** - (*Date*) - 分配计划开始时间
-- **end_date** - (*Date*) - 分配计划结束时间
-- **duration** - (*number*) - 分配持续时间
-- **mode** - (*string*) - 计算资源分配时间的方法:"default"|"fixedDates"|"fixedDuration"
-- **[customProperty: string]** - (*any*) - 任何额外的自定义属性
+- **id** - (*string | number*) - 分配的 ID
+- **task_id** - (*string | number*) - 分配到该资源的任务的 ID
+- **resource_id** - (*string | number*) - 分配到该任务的资源的 ID
+- **value** - (*number* | *string*) - 分配给任务的资源数量
+- **delay** - (*number*) - 分配开始日期与任务开始日期之间的差值
+- **start_date** - (*Date*) - 分配应开始的日期
+- **end_date** - (*Date*) - 分配应结束的日期
+- **duration** - (*number*) - 分配的持续时间
+- **mode** - (*string*) - 资源分配时间的计算模式: "default"|"fixedDates"|"fixedDuration"
+- **[customProperty: string]** - (*any*) - 任何自定义属性
+
 
 :::note
- 仅当 [process_resource_assignments](api/config/process_resource_assignments.md) 启用时，属性 *delay*, *duration*, *start_date*, *end_date*, *id*, 和 *mode* 会被自动填充。 
+ *delay*, *duration*, *start_date*, *end_date*, *id*, *mode* 将在启用 [process_resource_assignments](api/config/process_resource_assignments.md) 时自动填充。
 :::
 
 ### Related API
@@ -85,8 +88,7 @@ gantt.getTaskAssignments(5); // -> 查看详情
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
 ### Related Guides
-- [资源管理](guides/resource-management.md)
+- [资源管理](guides/resource-management.md#assigningresources)
 
 ### Change log
-- v7.1版本新增
-
+- added in v7.1

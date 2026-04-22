@@ -8,7 +8,7 @@ description: "Gantt 차트에 적용된 현재 skin을 제공합니다."
 
 ### Description
 
-@short: Gantt 차트에 적용된 현재 skin을 제공합니다.
+@short: 현재 간트 차트의 스킨을 반환합니다
 
 @signature: skin: string
 
@@ -22,5 +22,4 @@ var currentSkin = gantt.skin;// -> "terrace"
 - [skins](api/other/skins.md)
 
 ### Related Guides
-- [스킨(Skins)](guides/skins.md)
-
+- [Skins](guides/skins.md)

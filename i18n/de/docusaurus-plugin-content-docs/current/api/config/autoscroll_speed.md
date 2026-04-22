@@ -1,14 +1,14 @@
 ---
 sidebar_label: autoscroll_speed
-title: autoscroll_speed config
-description: "definiert, wie schnell das Autoscroll (in ms) erfolgt, wenn eine Aufgabe oder ein Link über die aktuelle Browseransicht hinaus gezogen wird"
+title: autoscroll_speed Konfiguration
+description: "definiert die Geschwindigkeit des Autoscrollings (in ms), während eine Aufgabe oder ein Link außerhalb des aktuellen Browserfensters gezogen wird"
 ---
 
 # autoscroll_speed
 
 ### Description
 
-@short: Definiert, wie schnell das Autoscroll (in ms) erfolgt, wenn eine Aufgabe oder ein Link über die aktuelle Browseransicht hinaus gezogen wird
+@short: Definiert die Geschwindigkeit des Autoscrollings (in ms), während das Ziehen einer Aufgabe oder eines Links außerhalb des aktuellen Browserfensters erfolgt
 
 @signature: autoscroll_speed: number
 
@@ -21,14 +21,14 @@ gantt.config.autoscroll_speed = 50;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 30
+**Standardwert:** 30
+
 
 ### Details
 
 eingeführt in Version 4.2
 
-Die "autoscroll"-Funktion wird über die Option in [autoscroll](api/config/autoscroll.md) gesteuert.
+Die Autoscroll-Funktionalität ist durch die Option autoscroll aktiviert.
 
 ### Related API
 - [autoscroll](api/config/autoscroll.md)
-

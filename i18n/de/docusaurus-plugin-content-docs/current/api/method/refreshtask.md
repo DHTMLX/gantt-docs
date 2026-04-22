@@ -1,6 +1,6 @@
 ---
 sidebar_label: refreshTask
-title: refreshTask method
+title: refreshTask Methode
 description: "aktualisiert die Aufgabe und ihre zugehörigen Links"
 ---
 
@@ -14,8 +14,7 @@ description: "aktualisiert die Aufgabe und ihre zugehörigen Links"
 
 ### Parameters
 
-- `id` - (required) *string | number* - die Aufgaben-ID
-- `irefresh_linksd` - (optional) *boolean* - bestimmt, ob die zugehörigen Links der Aufgabe aktualisiert werden sollen, standardmäßig true
+- `id` - (erforderlich) *string | number* - die Aufgaben-ID
 
 ### Example
 
@@ -35,7 +34,7 @@ gantt.refreshTask(10);       /*!*/
 
 ### Details
 
-Diese Methode kann verwendet werden, um eine Aufgabe nach der Änderung ihrer Eigenschaften neu zu zeichnen. Im Gegensatz zu [updateTask](api/method/updatetask.md) löst sie keinen [DataProcessor](guides/server-side.md) aus, daher werden keine Aktualisierungen an den Server gesendet.
+Sie können diese Methode verwenden, um eine Aufgabe nach dem Ändern ihrer Eigenschaften neu zu zeichnen. Im Gegensatz zu [updateTask](api/method/updatetask.md) löst diese Methode den [DataProcessor](guides/server-side.md) nicht aus, und es werden keine Updates an den Server gesendet.
 
 ### Related API
 - [refreshLink](api/method/refreshlink.md)
@@ -44,5 +43,4 @@ Diese Methode kann verwendet werden, um eine Aufgabe nach der Änderung ihrer Ei
 - [updateLink](api/method/updatelink.md)
 
 ### Related Guides
-- ["Grundlegende Operationen mit Aufgaben"](guides/crud-task.md)
-
+- [Basic Operations with Tasks](guides/crud-task.md)

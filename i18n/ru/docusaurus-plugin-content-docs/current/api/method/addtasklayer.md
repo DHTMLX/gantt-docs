@@ -1,248 +1,254 @@
 ---
 sidebar_label: addTaskLayer
 title: addTaskLayer method
-description: "отображает дополнительный слой с пользовательскими элементами для задач в области timeline"
+description: "отображает дополнительный слой с настраиваемыми элементами для задачи в области временной шкалы"
 ---
 
 # addTaskLayer
+
 :::info
- Эта функция доступна только в PRO-версии. 
-:::
+This functionality is available in the PRO edition only. 
+::: 
+
 ### Description
 
-@short: Отображает дополнительный слой с пользовательскими элементами для задач в области timeline
+@short: Отображает дополнительный слой с настраиваемыми элементами для задачи в области временной шкалы
 
 @signature: addTaskLayer: (func: AdditionalTaskLayer['TaskLayerRender'] | AdditionalTaskLayer['TaskLayerConfig']) =\> string
 
 ### Parameters
 
-- `func` - (required) *TaskLayerRender | TaskLayerConfig* -        функция рендеринга или объект конфигурации
+- `func` - (required) *TaskLayerRender | TaskLayerConfig* -        a render function or a config object
 
 ### Returns
-- ` layerId` - (string) - DOM-элемент, который будет отображён в слое
+- ` layerId` - (string) - a DOM element that will be displayed in the layer
 
 ### Example
 
 ~~~jsx
 gantt.init("gantt_here");
-gantt.addTaskLayer(function draw_deadline(task) {
-    if (task.deadline) {
-        var el = document.createElement('div');
-        el.className = 'deadline';
-        var sizes = gantt.getTaskPosition(task, task.deadline);
 
-        el.style.left = sizes.left + 'px';
-        el.style.top = sizes.top + 'px';
+gantt.addTaskLayer((task) => {
+  if (task.deadline) {
+    const el = document.createElement("div");
+    el.className = "deadline";
 
-        el.setAttribute('title', gantt.templates.task_date(task.deadline));
-        return el;
-    }
-    return false;
+    const sizes = gantt.getTaskPosition(task, task.deadline);
+    el.style.left = `${sizes.left}px`;
+    el.style.top = `${sizes.top}px`;
+
+    el.setAttribute("title", gantt.templates.task_date(task.deadline));
+    return el;
+  }
+  return false;
 });
 ~~~
-
-### Related samples
-- [Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
-- [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 ### Details
 
-Аргумент может быть одного из следующих типов:
+The argument can have these types:
 
 
-- **taskLayerRender (task, timeline, config, viewport): HTMLElement|boolean|void** - функция, которая получает объект задачи и возвращает DOM-элемент для отображения в слое.
-    - **_task_** - (*Task*) - объект задачи
-    - **_timeline?_** - (*any*) - вид timeline
-    - **_config?_** - (*GanttConfigOptions*) - объект конфигурации Gantt
-    - **_viewport?_** - (*LayerViewport*) - объект viewport слоя
+- **taskLayerRender (task, timeline, config, viewport): HTMLElement|boolean|void** - a function takes a task's object as a parameter and must return a DOM element that will be displayed in the layer.
+    - **_task_** - (*Task*) - the task object
+    - **_timeline?_** - (*any*) - the timeline view
+    - **_config?_** - (*GanttConfigOptions*) - the Gantt configuration object
+    - **_viewport?_** - (*LayerViewport*) - the viewport object
 
-- **taskLayerConfig** - (*object*) - объект конфигурации дополнительного слоя задач, который включает:
-    - **_id?_** - (*string | number*) - необязательный ID слоя
-    - **_renderer_** - (*object*) - обязательный объект, отвечающий за рендеринг элементов слоя
-        - **_render_** - (*TaskLayerRender*) - функция, возвращающая HTML-элемент для рендеринга
-        - **_update?_** - (*Function*): void - необязательная функция для обновления отрендеренных HTML-элементов
-            - **_task_** - (*Task*) - объект задачи
-            - **_node_** - (*HTMLElement*) - контейнер отрендеренного узла
-            - **_timeline?_** - (*any*) - вид timeline
-            - **_config?_** - (*GanttConfigOptions*) - объект конфигурации Gantt
-            - **_viewport?_** - (*LayerViewport*) - объект viewport слоя
-        - **_onrender?_** - (*Function*): void - необязательный коллбек, вызываемый после завершения рендеринга, полезен для рендеринга нативных компонентов (например, с использованием `ReactDOM.render`)
-            - **_task_** - (*Task*) - объект задачи
-            - **_node_** - (*HTMLElement*) - контейнер отрендеренного узла
-            - **_view?_** - (*any*) - ячейка layout, куда добавлен слой (по умолчанию timeline)
-        - **_getRectangle?_** - (*Function*): \{ left: number, top: number, height: number, width: number \} | void - необязательная функция, возвращающая координаты прямоугольника viewport
-            - **_task_** - (*Task*) - объект задачи
-            - **_view?_** - (*any*) - ячейка layout, куда добавлен слой (по умолчанию timeline)
-            - **_config?_** - (*GanttConfigOptions*) - объект конфигурации Gantt
-            - **_gantt?_** - (*GanttStatic*) - объект Gantt
-        - **_getVisibleRange_** - (*Function*): \{start: number, end: number\} | undefined | void - необязательная функция, возвращающая объект видимого диапазона
-            - **_gantt?_** - (*GanttStatic*) - объект Gantt
-            - **_view?_** - (*any*) - ячейка layout, куда добавлен слой (по умолчанию timeline)
-            - **_config?_** - (*GanttConfigOptions*) - объект конфигурации Gantt
-            - **_datastore?_** - (*any*) - объект хранилища задач
-            - **_viewport?_** - (*LayerViewport*) - объект viewport слоя
-    - **_container?_** - (*HTMLElement*) - необязательный контейнер для слоя
-    - **_topmost?_** - (*boolean*) - необязательный флаг, если true, элемент будет отображаться поверх задачи
-    - **_filter?_** - (*Function*): boolean - необязательная функция, принимающая объект задачи и возвращающая false для пропуска рендеринга этой задачи
-        - **_task_** - (*Task*) - объект задачи
+- **taskLayerConfig** - (*object*) - the configuration object for the additional task layer. Has the following properties:
+    - **_id?_** - (*string | number*) - optional, the layer ID
+    - **_renderer_** - (*object*) - mandatory, a function that answers for rendering the layer's elements
+        - **_render_** - (*TaskLayerRender*) - the function that returns HTML element that should be rendered
+        - **_update?_** - (*Function*): void - optional, a function where you can update the rendered HTML elements
+            - **_task_** - (*Task*) - the task object
+            - **_node_** - (*HTMLElement*) - the container of the rendered node
+            - **_timeline?_** - (*any*) - the timeline view
+            - **_config?_** - (*GanttConfigOptions*) - the Gantt configuration object
+            - **_viewport?_** - (*LayerViewport*) - the viewport object
+        - **_onrender?_** - (*Function*): void - optional, this function is called after rendering is complete. You can use it to render native components (for example, using the `ReactDOM.render` method)
+            - **_task_** - (*Task*) - the task object
+            - **_node_** - (*HTMLElement*) - the container of the rendered node
+            - **_view?_** - (*any*) - the layout cell where the layer is added (timeline, by default)
+        - **_getRectangle?_** - (*Function*): \{ left: number, top: number, height: number, width: number \} | void - optional, a function that returns the coordinates of the viewport rectangle
+            - **_task_** - (*Task*) - the task object
+            - **_view?_** - (*any*) - the layout cell where the layer is added (timeline, by default)
+            - **_config?_** - (*GanttConfigOptions*) - the Gantt configuration object
+            - **_gantt?_** - (*GanttStatic*) - the Gantt object
+        - **_getVisibleRange_** - (*Function*): \{start: number, end: number\} | undefined | void - a function that returns the object with of the visible range
+            - **_gantt?_** - (*GanttStatic*) - the Gantt object
+            - **_view?_** - (*any*) - the layout cell where the layer is added (timeline, by default)
+            - **_config?_** - (*GanttConfigOptions*) - the Gantt configuration object
+            - **_datastore?_** - (*any*) - the task datastore object
+            - **_viewport?_** - (*LayerViewport*) - the viewport object
+    - **_container?_** - (*HTMLElement*) - optional, a layer's container
+    - **_topmost?_** - (*boolean*) - optional, if true, the element will be displayed over the task
+    - **_filter?_** - (*Function*): boolean - optional, a function that takes a task object as a parameter. If returns 'false', the 'renderer' function won't be called for a task
+        - **_task_** - (*Task*) - the task object
 
   
-Viewport слоя включает следующие свойства:
+The layer viewport has these properties:
 
-- **viewport** -  (*object*) - объект viewport для слоя
-    - **_x_** - (*number*) - левая позиция прямоугольника
-    - **_x_end_** - (*number*) - правая позиция прямоугольника
-    - **_y_** - (*number*) - верхняя позиция прямоугольника
-    - **_y_end_** - (*number*) - нижняя позиция прямоугольника
-    - **_width_** - (*number*) - ширина прямоугольника
-    - **_height_** - (*number*) - высота прямоугольника
-
-
-- Учтите, что пользовательские слои будут очищены после следующего вызова [gantt.init](api/method/init.md)
-- Также вызов [gantt.resetLayout()](api/method/resetlayout.md) сбрасывает пользовательские слои. Чтобы пользовательские слои оставались видимыми, нужно переопределять **gantt.addTaskLayer** после вызова [resetLayout](api/method/resetlayout.md).
-
-## Умный рендеринг для пользовательских слоёв
-
-[Умный рендеринг](guides/performance.md#smartrendering) направлен на отображение только тех HTML-элементов, которые видны пользователю, избегая отрисовки скрытых за скроллбаром.
-
-Однако с [пользовательскими слоями](guides/baselines.md) Gantt не знает, где именно размещены пользовательские элементы, так как логика их рендеринга полностью контролируется пользователем.
-
-Для решения этой задачи умный рендеринг предполагает, что пользовательский элемент расположен в той же строке, что и связанная с ним задача. Пользовательские элементы добавляются в DOM только когда строки их задач видимы на экране. При этом Gantt игнорирует положение горизонтального скроллбара, поэтому элемент может присутствовать в разметке, но быть невидимым на странице, если он прокручен по горизонтали.
-
-Это обычно работает хорошо, но если у вас много слоёв, вы можете дополнительно оптимизировать рендеринг, предоставив Gantt точные координаты пользовательских элементов.
+- **viewport** -  (*object*) - the layer viewport object
+    - **_x_** - (*number*) - the left rectangle position
+    - **_x_end_** - (*number*) - the right rectangle position
+    - **_y_** - (*number*) - the top rectangle position
+    - **_y_end_** - (*number*) - the bottom rectangle position
+    - **_width_** - (*number*) - the rectangle width
+    - **_height_** - (*number*) - the rectangle height
 
 
-Для этого используйте параметр *object* метода *addTaskLayer()* и передайте объект **renderer** с такими методами:
+- Beware, custom layers will be reset after the next call of gantt.init
+- Calling the [gantt.resetLayout()](api/method/resetlayout.md) method will also reset custom layers. In order for custom layers to be displayed on a page, you need to redefine the **gantt.addTaskLayer**  method after calling [](api/method/resetlayout.md).
 
-- **render** - функция рендеринга
-- **getRectangle** - функция, возвращающая координаты пользовательских элементов
+## Smart rendering for custom layers
+
+[Smart rendering](guides/performance.md#smart-rendering) tries to display only those HTML elements that are currently visible to the user and not hidden under horizontal and vertical scroll bars.
+
+However, in the case of [custom layers](guides/baselines.md), Gantt doesn't know where custom elements are located, since it's completely up to the implementation of the custom rendering function.
+
+As a solution, smart rendering assumes that a custom element is located in the same row where its related task is. Custom elements are added to the page markup when rows of their related tasks are rendered on the screen. In this mode Gantt doesn't take the position of horizontal scrollbar into consideration, a custom element will be rendered in the markup but won't be visible on the page because of the horizontal scroll.
+
+Most of the time it's good enough, but if you have many layers, you may want to optimize the rendering a bit further by providing Gantt with information on position of custom elements.
+
+
+To do that, you need to use the *object* parameter of the *addTaskLayer()* method, and provide the **renderer** object with the following methods:
+
+- **render** - a rendering function
+- **getRectangle** - a function that returns an object with the coordinates of custom elements
 
 ~~~js
 gantt.addTaskLayer({
-    renderer: {
-        render: function(task, timeline, viewport){
-            ...
-            return  HTMLElement
-        },
-        getRectangle: function(task, view){
-            ....
-            return {left, top, height, width};
-        }
+  renderer: {
+    render: (task, timeline, viewport) => {
+      // ...
+      return /* HTMLElement */;
+    },
+    getRectangle: (task, view) => {
+      // ...
+      return { left, top, height, width };
     }
+  }
 });
 ~~~
 
-Процесс рендеринга пользовательских элементов работает так:
+The logic of rendering custom elements is the following:
 
-1\. При изменении положения горизонтального скролла умный рендеринг получает координаты текущей видимой области. <br>
-2\. dhtmlxGantt вызывает **getRectangle** для каждой задачи/связи, чтобы получить точные координаты пользовательского элемента. <br>
-3\. Если **getRectangle** возвращает null, функция **render** пропускается, и пользовательский элемент не отображается.<br>
-4\. Если **getRectangle** возвращает координаты, пересекающиеся с текущим viewport, вызывается функция **render** для отображения пользовательского элемента.<br>
+1\. When the position of horizontal scroll is changed, the smart render gets new coordinates of the area visible on the screen at the moment. 
+2\. dhtmlxGantt calls the **getRectangle** function for each task/link to get the exact coordinates of a custom element. 
+3\. If the **getRectangle** function returns null value, the **render** function won't be called and the custom element won't be displayed.
+4\. If the **getRectangle** function returns an object with the coordinates of a task/link and the received coordinates fall in the current viewport, then the **render** function will be called to display a task/link.
 
 ~~~js
 gantt.addTaskLayer({
-    renderer: {
-      render: function draw_planned(task) {
-        if (task.planned_start && task.planned_end) {
-          var sizes = gantt.getTaskPosition(task,task.planned_start,task.planned_end);
-          var el = document.createElement('div');
-          el.className = 'baseline';
-          el.style.left = sizes.left + 'px';
-          el.style.width = sizes.width + 'px';
-          el.style.top = sizes.top + gantt.config.task_height + 13 + 'px';
-          return el;
-        }
-        return false;
-      },
-      // определение getRectangle подключает слой к умному рендерингу
-      getRectangle: function(task, view){
-        return gantt.getTaskPosition(task, task.planned_start, task.planned_end);
+  renderer: {
+    render: (task) => {
+      if (task.planned_start && task.planned_end) {
+        const sizes = gantt.getTaskPosition(
+          task,
+          task.planned_start,
+          task.planned_end
+        );
+        const el = document.createElement('div');
+        el.className = 'baseline';
+        el.style.left = sizes.left + 'px';
+        el.style.width = sizes.width + 'px';
+        el.style.top = (sizes.top + gantt.config.task_height + 13) + 'px';
+        return el;
       }
-    }
+      return false;
+    },
+    // define getRectangle in order to hook layer with the smart rendering
+    getRectangle: (task, view) =>
+      gantt.getTaskPosition(
+        task,
+        task.planned_start,
+        task.planned_end
+      )
+  }
 });
 ~~~
 
-## Рендеринг видимых частей пользовательских элементов
+### Rendering visible parts of custom elements
 
-Объект **renderer** в *addTaskLayer()* также поддерживает обновление разметки узла, чтобы показывать только видимую часть пользовательского элемента через метод **update**:
+The **renderer** object of the *addTaskLayer()* method provides a possibility to update the node markup of a custom element and display the visible content in the current viewport via the **update** method:
 
 ~~~js
 gantt.addTaskLayer({
-    renderer: {
-        render: function(task, timeline, viewport){
-            ...
-            return  HTMLElement
-        },
-        update: function(task, node, timeline, viewport){
-            ...
-            // обновить внутренний HTML узла, чтобы показывать только видимые части
-        },
-        getRectangle: function(task, view){
-            ....
-            return {left, top, height, width};
-        }
+  renderer: {
+    render: (task, timeline, viewport) => {
+      // ...
+      return /* HTMLElement */;
+    },
+    update: (task, node, timeline, viewport) => {
+      // ...
+      // put the currently visible part of the element into node inner html
+    },
+    getRectangle: (task, view) => {
+      // ...
+      return { left, top, height, width };
     }
+  }
 });
 ~~~
 
-- **update** - позволяет обновлять внутренний HTML пользовательского элемента, например, скрывая части вне видимости и показывая видимые
+- **update** - allows updating an inner html of a custom element, i.e. hiding cells that are not visible and displaying the visible ones
 
-Метод **update** вызывается после события [onGanttScroll](api/event/onganttscroll.md), предоставляя узел задачи, созданный функцией **render**, и текущий viewport.
+The **update** method is called after the [onGanttScroll](api/event/onganttscroll.md) event is fired. It provides a task node (created by the **render** method initially) and a current viewport.
 
-## Рендеринг видимых строк задач
+## Rendering visible tasks rows
 
-Начиная с версии v7.1.8 объект **renderer** поддерживает функцию **getVisibleRange** для указания видимого диапазона строк задач:
+Since v7.1.8 the **renderer** object of the *addTaskLayer()* method allows getting a visible range of tasks rows with the **getVisibleRange** function: 
 
 ~~~js
 gantt.addTaskLayer({
-    renderer: {
-        render: function(task, timeline, viewport){
-            ...
-            return  HTMLElement
-        },
-        getVisibleRange: function(){
-            ...
-            return { 
-                  start: indexStart,
-                  end: indexEnd
-            }
-        }
+  renderer: {
+    render: (task, timeline, viewport) => {
+      // ...
+      return /* HTMLElement */;
+    },
+    getVisibleRange: () => {
+      // ...
+      return {
+        start: indexStart,
+        end: indexEnd
+      };
     }
+  }
 });     
 ~~~
 
-- **getVisibleRange** - возвращает объект с индексами начала и конца видимых строк задач. Задачи вне этого диапазона не будут иметь дополнительных слоёв.
+- **getVisibleRange** - a function that returns an object with the start and end indexes of visible tasks rows. 
+If a task is out of the specified range, an additional layer is not rendered for it. 
 
-Если **getVisibleRange** возвращает *false* вместо объекта, Gantt считает, что все задачи видимы и рендерит дополнительные слои для всех.
+If the **getVisibleRange** function returns *false* instead of an object, Gantt supposes that all the range of tasks is used and an additional layer will be rendered even if a task is not visible on the screen.
 
-## Коллбек рендеринга элемента
+## Element render callback
 
-Объект **renderer** также включает коллбек **onrender**:
+The **renderer** object of the *addTaskLayer()* method provides the **onrender** callback:
 
 ~~~js
 gantt.addTaskLayer({
-    renderer: {
-        render: function(task, timeline, viewport){
-            ...
-            return  HTMLElement
-        },
-        onrender: function(item, node, view){
-            console.log("render", item, node)
-        }
+  renderer: {
+    render: (task, timeline, viewport) => {
+      // ...
+      return /* HTMLElement */;
+    },
+    onrender: (item, node, view) => {
+      console.log("render", item, node);
     }
+  }
 });
 ~~~
 
-Функция **onrender** вызывается каждый раз, когда элемент данных отрисовывается в DOM. Она предоставляет доступ к элементу данных, результату DOM-элементу и виду, который вызвал рендер (grid или timeline).
+The **onrender** function is called whenever the data item of the layer is rendered to DOM. The arguments give you access to the data item that has been rendered, the result DOM element and the view object which called the render (grid or timeline). 
 
-Этот коллбек можно использовать для модификации DOM-элементов после рендеринга или для инициализации сторонних виджетов внутри отрисованных элементов.
+The callback can be used either to modify DOM elements after they are rendered to DOM, or to initialize the 3rd party widgets inside the rendered elements.
 
 ### Related API
-- [getTaskPosition](api/method/gettaskposition.md)
-- [removeTaskLayer](api/method/removetasklayer.md)
-- [layer_attribute](api/config/layer_attribute.md)
+- [](api/method/gettaskposition.md)
+- [](api/method/removetasklayer.md)
+- [](api/config/layer_attribute.md)
 
 ### Related Guides
-- [Пользовательские элементы в области временной шкалы](guides/baselines.md)
-- [Решения](guides/how-to.md#howtoverticallyreordertasksinthetimeline) (объясняет, как вертикально переупорядочить задачи в timeline)
-
+- [Custom Elements in Timeline Area](guides/baselines.md)
+- [How-tos (read how to vertically reorder tasks in the timeline)](guides/how-to.md#how-to-vertically-reorder-tasks-in-the-timeline)

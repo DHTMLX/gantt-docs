@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_move_projects
 title: auto_scheduling_move_projects config
-description: "определяет, будет ли весь проект сдвигаться при планировании (подробности ниже)"
+description: "Определяет, будет ли перемещён весь проект (см. подробности ниже)"
 ---
 
 # auto_scheduling_move_projects
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в версии PRO.
 :::
+
+:::warning
+Свойство было устаревшим в версии v9.1, используйте свойство `move_projects` из [gantt.config.auto_scheduling](api/config/auto_scheduling.md#move_projects) вместо этого.
+:::
+
 ### Description
 
-@short: Определяет, будет ли весь проект сдвигаться при планировании (подробности ниже)
+@short: Определяет, будет ли перемещён весь проект (см. детали ниже)
 
 @signature: auto_scheduling_move_projects: boolean
 
@@ -22,7 +28,8 @@ gantt.config.auto_scheduling_move_projects = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
+
 
 ### Related samples
 - [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
@@ -30,22 +37,21 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- Эта настройка является частью расширения **auto_scheduling**, поэтому убедитесь, что плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) включен. Дополнительную информацию можно найти в статье [Автоматическое планирование](guides/auto-scheduling.md). 
+Эта конфигурация определяется в расширении **auto_scheduling**, поэтому вам нужно активировать плагин [auto_scheduling](guides/extensions-list.md#autoscheduling). Прочтите детали в статье [Auto Scheduling](guides/auto-scheduling.md).
 :::
 
 
-добавлено в версии 4.1
-
-По умолчанию (когда это свойство установлено в *true*), весь проект сдвигается при автоматическом планировании. Это означает, что все задачи сохраняют тот же порядок относительно друг друга и даты начала проекта.
+По умолчанию (когда свойство установлено в *true*), весь проект перемещается во время авто-распределения. Это означает, что все задачи в проекте сохраняют относительное положение друг к другу и начала проекта.
 
 ![moving_project_true](/img/moving_project_true.png)
 
-Если *auto_scheduling_move_projects* установлено в *false*, автоматическое планирование будет корректировать отдельные задачи внутри проекта. В результате некоторые задачи сдвинутся, а другие останутся на месте.
+Если *auto_scheduling_move_projects* установлен в *false*, авто-распределение перемещает отдельные задачи внутри проекта. Таким образом, некоторые задачи будут перемещены, другие останутся на своих местах.
 
 ![moving_project_false](/img/moving_project_false.png)
 
-<br>
-**Примечание**, при использовании constraint scheduling (*gantt.config.auto_scheduling_compatibility = false*), настройка *auto_scheduling_move_projects* вступает в силу только если выключен строгий режим:
+:::note
+если вы используете constraint scheduling (*gantt.config.auto_scheduling_compatibility = false*), конфигурация *auto_scheduling_move_projects* будет активна только при отключенном строгом режиме:
+:::
 
 ~~~js
 gantt.config.auto_scheduling_compatibility = false;
@@ -69,5 +75,8 @@ gantt.config.auto_scheduling_strict = false;
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [Автоматическое планирование](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
+### Change log
+- свойство устарело в версии v9.1
+- добавлено в версии 4.1

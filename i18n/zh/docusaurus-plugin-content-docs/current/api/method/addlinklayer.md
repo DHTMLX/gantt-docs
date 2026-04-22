@@ -1,25 +1,27 @@
 ---
 sidebar_label: addLinkLayer
 title: addLinkLayer method
-description: "在时间轴区域显示带有自定义元素的额外链接层"
+description: "在时间轴区域为链接显示一个带有自定义元素的附加层"
 ---
 
 # addLinkLayer
+
 :::info
-此功能仅在PRO版中可用。 
+此功能仅在 PRO 版中可用。 
 :::
+
 ### Description
 
-@short: 在时间轴区域显示带有自定义元素的额外链接层
+@short: 在时间轴区域为链接显示一个带有自定义元素的附加层
 
 @signature: addLinkLayer: (func: AdditionalLinkLayer['LinkLayerRender'] | AdditionalLinkLayer['LinkLayerConfig']) =\> string
 
 ### Parameters
 
-- `func` - (required) *LinkLayerRender | LinkLayerConfig* -        一个渲染函数或配置对象
+- `func` - (required) *LinkLayerRender | LinkLayerConfig* -        渲染函数或配置对象
 
 ### Returns
-- ` layerId` - (string) - 表示将显示的层的DOM元素
+- ` layerId` - (string) - 将在该层显示的 DOM 元素
 
 ### Example
 
@@ -93,4 +95,3 @@ Sample: [Gantt. 带有链接类型的额外层](https://snippet.dhtmlx.com/6mmt1
 ### Related API
 - [removeLinkLayer](api/method/removelinklayer.md)
 - [addTaskLayer](api/method/addtasklayer.md)
-

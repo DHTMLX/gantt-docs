@@ -1,14 +1,14 @@
 ---
 sidebar_label: initial_scroll
-title: initial_scroll config
-description: "управляет тем, будет ли область timeline изначально прокручена для отображения самой ранней задачи"
+title: Конфигурация initial_scroll
+description: "Устанавливает, будет ли область таймлайна изначально прокручена, чтобы отобразить самую раннюю задачу"
 ---
 
 # initial_scroll
 
 ### Description
 
-@short: Управляет тем, будет ли область timeline изначально прокручена для отображения самой ранней задачи
+@short: Устанавливает, будет ли область таймлайна изначально прокручена, чтобы отобразить самую раннюю задачу
 
 @signature: initial_scroll: boolean
 
@@ -19,4 +19,4 @@ gantt.config.initial_scroll = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true

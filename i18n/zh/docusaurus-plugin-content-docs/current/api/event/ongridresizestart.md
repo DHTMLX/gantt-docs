@@ -1,7 +1,7 @@
 ---
 sidebar_label: onGridResizeStart
-title: onGridResizeStart event
-description: "在用户开始拖动grid边界调整大小之前触发"
+title: onGridResizeStart 事件
+description: "在用户开始拖动网格边框以调整网格大小之前触发"
 ---
 
 # onGridResizeStart
@@ -10,23 +10,23 @@ description: "在用户开始拖动grid边界调整大小之前触发"
 :::
 ### Description
 
-@short: 在用户开始拖动grid边界调整大小之前触发
+@short: 在用户开始拖动网格边框以调整网格大小之前触发
 
 @signature: onGridResizeStart: (old_width: number) =\> boolean;
 
 ### Parameters
 
-- `old_width` - (required) *number* - grid的初始宽度
+- `old_width` - (required) *number* - 初始网格宽度
 
 ### Returns
-- ` result` - (boolean) - 决定默认事件动作是否继续执行（<b>true</b>）或被阻止（<b>false</b>）
+- ` result` - (boolean) - 定义事件的默认操作是否将被触发（<b>true</b>）或取消（<b>false</b>）
 
 ### Example
 
 ~~~jsx
 // 返回false以取消调整大小操作
 gantt.attachEvent("onGridResizeStart", function(old_width){
-    gantt.message("开始调整grid大小");
+    gantt.message("Start grid resizing");
     return true;
 });
 ~~~
@@ -36,7 +36,7 @@ gantt.attachEvent("onGridResizeStart", function(old_width){
 
 ### Details
 
-此事件可以被阻止。返回*false*将阻止grid的大小调整。
+该事件是可阻塞的。返回 *false* 将不允许网格调整大小。
 
 ### Related API
 - [onGridResize](api/event/ongridresize.md)
@@ -44,5 +44,4 @@ gantt.attachEvent("onGridResizeStart", function(old_width){
 - [onColumnResizeStart](api/event/oncolumnresizestart.md)
 
 ### Related Guides
-- [指定列](guides/specifying-columns.md#resizing)
-
+- [Specifying Columns](guides/specifying-columns.md#resizing)

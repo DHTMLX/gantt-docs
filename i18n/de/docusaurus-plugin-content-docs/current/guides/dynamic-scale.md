@@ -1,30 +1,29 @@
 ---
-title: "Dynamische Änderung der Skalierungseinstellungen"
-sidebar_label: "Dynamische Änderung der Skalierungseinstellungen"
+title: "Dynamische Änderung der Skaleneinstellungen"
+sidebar_label: "Dynamische Änderung der Skaleneinstellungen"
 ---
 
-# Dynamische Änderung der Skalierungseinstellungen 
+# Dynamische Änderung der Skaleneinstellungen
 
-Die Möglichkeit, die Skalierung einer Gantt-Diagramm-Ansicht dynamisch anzupassen, macht das Diagramm flexibel und ermöglicht es, auf unterschiedliche Benutzeranforderungen einzugehen.
+Die Änderung der Skala im laufenden Betrieb hilft Ihnen, ein Gantt-Diagramm flexibel zu gestalten – es an die Bedürfnisse des Benutzers anzupassen.
 
-Ein Manager, der beispielsweise ein einjähriges Projekt betreut, bevorzugt möglicherweise die Anzeige des Zeitplans nach Monaten, um einen Überblick zu erhalten. Beim Fokussieren auf die Details einer Aufgabe kann jedoch das Umschalten auf eine Wochen- oder Tagesansicht hilfreich sein, um präzisere Informationen zu erhalten.
+Beispielsweise hat ein Manager ein einjähriges Projekt. Um das Gesamtbild des Projekts zu erfassen, ist es besser, das Projekt in Monaten anzuzeigen. Um jedoch die Details einer bestimmten Aufgabe zu kennen, ist es sinnvoller, das Projekt nach Wochen oder Tagen zu planen.
 
-Warum sich auf nur eine Option beschränken? Es ist am besten, alle Optionen anzubieten und dem Benutzer die Wahl der passenden Skalierung zu überlassen.
-
+Welche Einheit soll gewählt werden? Alle! Und geben Sie den Benutzern die Möglichkeit, selbst zu entscheiden, welche Einheit sie anwenden möchten.
 
 ## Konfigurationseinstellungen
 
-Um die Einstellungen der Skalierung dynamisch zu ändern (nachdem dhtmlxGantt initialisiert wurde), gehen Sie wie folgt vor:
+Um eine Skaleneinstellung (z. B. Schritt, Unter-Skala) dynamisch zu ändern (nach der Initialisierung von dhtmlxGantt), verwenden Sie die folgende Vorgehensweise:
 
-1. Weisen Sie den entsprechenden Konfigurationsoptionen neue Werte zu.
+1. Weisen Sie neue Werte für die entsprechenden Konfigurationsoptionen zu.
 
- *Um beispielsweise die Einheit der Skalierung von "month" auf "day" zu ändern, passen Sie die **unit**-Eigenschaft in der [scales](api/config/scales.md)-Konfiguration an*.
-2. Aktualisieren Sie gegebenenfalls das zugehörige Template.
+ *Zum Beispiel, um die Skaleneinheit von "month" nach "day" zu ändern, verwenden Sie die **unit**-Eigenschaft der [scales](api/config/scales.md) Eigenschaft*.
+2. Definieren Sie ggf. das zugehörige Template neu.
 
- *Um beispielsweise [Wochenenden in der Skala hervorzuheben](guides/highlighting-time-slots.md), passen Sie das Template [scale_cell_class](api/template/scale_cell_class.md) an*.
-2. Zeichnen Sie das Gantt-Diagramm mit der Methode [render](api/method/render.md) neu.
+ *Beispielweise, um [Wochenenden im Maßstab hervorzuheben](guides/highlighting-time-slots.md), verwenden Sie das Template [scale_cell_class](api/template/scale_cell_class.md).*.
+2. Zeichnen Sie das Gantt-Diagramm mit der [render](api/method/render.md) Methode neu.
 
-**Dynamische Änderung der Skalierungskonfiguration**
+**Dynamische Änderung der Skaleneinstellungen**
 ~~~js
 gantt.config.scales = [
     {unit: "month", step: 1, format: "%F, %Y"},
@@ -43,4 +42,3 @@ gantt.templates.scale_cell_class = function(date){/*!*/
 };/*!*/
 gantt.render(); /*!*/
 ~~~
-

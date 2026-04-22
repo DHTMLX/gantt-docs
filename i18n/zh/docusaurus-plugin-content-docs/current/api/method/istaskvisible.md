@@ -1,23 +1,23 @@
 ---
 sidebar_label: isTaskVisible
-title: isTaskVisible method
-description: "确定指定任务当前是否显示在甘特图中"
+title: isTaskVisible 方法
+description: "检查当前在甘特图中是否呈现指定的任务"
 ---
 
 # isTaskVisible
 
 ### Description
 
-@short: 确定指定任务当前是否显示在甘特图中
+@short: 检查指定任务当前是否在甘特图中呈现
 
 @signature: isTaskVisible: (id: string | number) =\> boolean
 
 ### Parameters
 
-- `id` - (required) *string | number* -        任务的唯一标识符
+- `id` - (required) *string | number* -        任务的 ID
 
 ### Returns
-- ` isvisible` - (boolean) - <i>true</i> 表示任务当前显示在甘特图中；否则为 <i>false</i>
+- ` isvisible` - (boolean) - <i>true</i>，若任务当前在甘特图中呈现。否则，<i>false</i>
 
 ### Example
 

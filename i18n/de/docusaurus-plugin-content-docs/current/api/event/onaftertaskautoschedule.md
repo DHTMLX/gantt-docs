@@ -1,42 +1,41 @@
 ---
 sidebar_label: onAfterTaskAutoSchedule
 title: onAfterTaskAutoSchedule event
-description: "Löst für jede Aufgabe aus, die automatisch geplant wird"
----
+description: "Wird für jede Aufgabe ausgelöst, die automatisch geplant wurde"
+--- 
 
 # onAfterTaskAutoSchedule
-
 :::info
  Diese Funktion ist nur in der PRO-Edition verfügbar. 
 :::
 ### Description
 
-@short: Löst für jede Aufgabe aus, die automatisch geplant wird
+@short: Wird für jede Aufgabe ausgelöst, die automatisch geplant wurde
 
 @signature: onAfterTaskAutoSchedule: (task: Task, start: Date, link: Link, predecessor: Task) =\> void;
 
 ### Parameters
 
-- `task` - (required) *Task* - das Aufgabenobjekt
-- `start` - (required) *Date* - das aktualisierte Startdatum
-- `link` - (required) *Link* - das Link-Objekt, das die Einschränkung verursacht
-- `predecessor` - (required) *Task* - das Vorgänger-Aufgabenobjekt
+- `task` - (erforderlich) *Task* - das Task-Objekt
+- `start` - (erforderlich) *Date* - ein neues Startdatum
+- `link` - (erforderlich) *Link* - das Link-Objekt, das die Constraint erzeugt 
+- `predecessor` - (erforderlich) *Task* - das Vorgänger-Task-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterTaskAutoSchedule",function(task, start, link, predecessor){
-    // hier Ihre benutzerdefinierte Logik einfügen
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [Auto Scheduling-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
- Dieses Event ist Teil der **auto_scheduling** Erweiterung, daher stellen Sie sicher, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. Weitere Informationen finden Sie im Artikel ["Auto Scheduling"](guides/auto-scheduling.md). 
+Dieses Ereignis ist in der **auto_scheduling**-Erweiterung definiert, daher müssen Sie das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktivieren. Lesen Sie die Details im [Auto Scheduling](guides/auto-scheduling.md) Artikel.
 :::
 
 ### Related API
@@ -56,5 +55,4 @@ gantt.attachEvent("onAfterTaskAutoSchedule",function(task, start, link, predeces
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
-
+- [Auto Scheduling](guides/auto-scheduling.md)

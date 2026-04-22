@@ -1,16 +1,18 @@
 ---
 sidebar_label: grid_resizer_column_attribute
-title: grid_resizer_column_attribute config
-description: "Gibt den Attributnamen an, der am DOM-Element des Spalten-Resizers verwendet wird. Dieses Attribut kennzeichnet den Index der Spalte."
+title: grid_resizer_column_attribute Konfiguration
+description: "legt den Namen des Attributs des DOM-Elements des Spalten-Resizers fest. Das Attribut repräsentiert den Spaltenindex"
 ---
 
 # grid_resizer_column_attribute
+
 :::info
- Dieses Feature ist ausschließlich in der PRO Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Gibt den Attributnamen an, der am DOM-Element des Spalten-Resizers verwendet wird. Dieses Attribut kennzeichnet den Index der Spalte.
+@short: Legt den Namen des Attributs des DOM-Elements des Spalten-Resizers fest. Das Attribut repräsentiert den Spaltenindex
 
 @signature: grid_resizer_column_attribute: string
 
@@ -20,9 +22,7 @@ description: "Gibt den Attributnamen an, der am DOM-Element des Spalten-Resizers
 gantt.config.grid_resizer_column_attribute = "data-column-index";
 ~~~
 
-**Default value:** "data-column-index"
-
+**Standardwert:** "data-column-index"
 
 ### Related API
 - [grid_resize](api/config/grid_resize.md)
-

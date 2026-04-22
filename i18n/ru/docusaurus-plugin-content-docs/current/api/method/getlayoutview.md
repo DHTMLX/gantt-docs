@@ -1,23 +1,23 @@
----
+--- 
 sidebar_label: getLayoutView
 title: getLayoutView method
-description: "получает объект layout view по его имени"
+description: "возвращает объект представления раскладки по его имени"
 ---
 
 # getLayoutView
 
 ### Description
 
-@short: Получает объект layout view по его имени
+@short: Возвращает объект представления раскладки по его имени
 
 @signature: getLayoutView: (name: string) =\> any
 
 ### Parameters
 
-- `name` - (required) *string* - имя layout view
+- `name` - (required) *string* - имя представления раскладки
 
 ### Returns
-- ` view` - (object) - объект layout view
+- ` view` - (object) - объект представления раскладки
 
 ### Example
 
@@ -26,23 +26,22 @@ gantt.getLayoutView("resourceTimeline").posFromDate(new Date(2025, 05, 08));
 // возвращает 210
 
 gantt.getLayoutView("resourceTimeline").dateFromPos(210);
-// возвращает 08 июня 2025
+// возвращает 08 июня, 2025
 ~~~
 
 ### Details
 
-Этот метод предоставляет доступ к объекту layout view, позволяя использовать несколько удобных методов. К ним относятся:
+Метод позволяет применять некоторые методы к возвращённому объекту представления раскладки. Эти методы:
 
-- [dateFromPos](api/method/datefrompos.md) - получает дату, соответствующую определённой горизонтальной позиции внутри view
-- [posFromDate](api/method/posfromdate.md) - находит относительную горизонтальную позицию для заданной даты в view
-- [getScale](api/method/getscale.md) - получает конфигурацию временной шкалы view
+- [dateFromPos](api/method/datefrompos.md) - возвращает дату указанной горизонтальной позиции во представлении раскладки
+- [posFromDate](api/method/posfromdate.md) - возвращает относительную горизонтальную позицию указанной даты во представлении раскладки
+- [getScale](api/method/getscale.md) - возвращает конфигурацию шкалы времени представления раскладки
 
-Для перемещения view к определённой позиции можно использовать метод [scrollLayoutCell](api/method/scrolllayoutcell.md).
+Чтобы прокрутить представление к указанной позиции, применяйте метод [scrollLayoutCell](api/method/scrolllayoutcell.md).
 
 :::note
-Sample: [Публичные методы для получения layout cell views и их скроллинга ](https://snippet.dhtmlx.com/0v4mmoxu) 
+пример: [Публичные методы получения представлений ячеек раскладки и их прокрутки](https://snippet.dhtmlx.com/0v4mmoxu)
 :::
 
 ### Related Guides
-- [Макет Gantt](guides/layout-config.md)
-
+- [Gantt Layout](guides/layout-config.md)

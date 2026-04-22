@@ -1,20 +1,20 @@
 ---
 sidebar_label: updateMarker
-title: updateMarker method
-description: "刷新指定的 marker"
+title: updateMarker 方法
+description: "更新指定的标记"
 ---
 
 # updateMarker
 
 ### Description
 
-@short: 刷新指定的 marker
+@short: 更新指定的标记
 
 @signature: updateMarker: (markerId: string | number) =\> void
 
 ### Parameters
 
-- `markerId` - (required) *string | number* -    marker 的 ID
+- `markerId` - (required) *string | number* - 该标记的 ID
 
 ### Example
 
@@ -29,12 +29,12 @@ gantt.updateMarker(todayMarker); /*!*/
 ~~~
 
 ### Related samples
-- [Today and Status lines in Gantt (vertical markers)](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
+- [甘特图中的今日线和状态线（垂直标记）](https://docs.dhtmlx.com/gantt/samples/02_extensions/05_today_line.html)
 
 ### Details
 
 :::note
- 该方法属于 **marker** 扩展，因此请确保已启用 [marker](guides/extensions-list.md) 插件。更多信息请参见 [添加垂直标记](guides/markers.md) 文章。 
+此方法在 **marker** 扩展中定义，因此您需要启用 [marker](guides/extensions-list.md#vertical-marker) 插件。请参阅 [添加垂直标记](guides/markers.md) 文章中的详细信息。
 :::
 
 ### Related API
@@ -46,4 +46,3 @@ gantt.updateMarker(todayMarker); /*!*/
 
 ### Related Guides
 - [添加垂直标记](guides/markers.md)
-

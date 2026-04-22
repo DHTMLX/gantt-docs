@@ -1,14 +1,14 @@
 ---
 sidebar_label: resetLightbox
-title: resetLightbox method
-description: "entfernt das aktuelle HTML-Objektelement der Lightbox"
+title: resetLightbox Methode
+description: "entfernt das HTML-Objekt der aktuellen Lightbox"
 ---
 
 # resetLightbox
 
 ### Description
 
-@short: Entfernt das aktuelle HTML-Objektelement der Lightbox
+@short: Entfernt das HTML-Objekt der aktuellen Lightbox
 
 @signature: resetLightbox: () =\> void
 
@@ -35,6 +35,7 @@ gantt.attachEvent("onBeforeLightbox", function(task_id) {
 });
 ~~~
 
+
 ### Details
 
-Diese Methode ist nützlich, um die Konfiguration der Lightbox dynamisch zu aktualisieren. Sie entfernt das bestehende HTML-Element der Lightbox, sodass ein neues entsprechend der aktuellen Konfiguration erstellt werden kann.
+Die Methode kann verwendet werden, um die Konfiguration der Lightbox dynamisch zu ändern: Sie rufen die Methode auf, um das aktuelle Lightbox-Objekt zu löschen und basierend auf der Lightbox-Konfiguration ein neues zu erzeugen.

@@ -1,16 +1,18 @@
 ---
 sidebar_label: drag_project
-title: drag_project config
-description: "ermöglicht das Drag & Drop von Projekttyp-Elementen"
+title: drag_project Konfiguration
+description: "ermöglicht Drag-and-Drop von Elementen des Projekttyps"
 ---
 
 # drag_project
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Ermöglicht das Drag & Drop von Projekttyp-Elementen
+@short: Ermöglicht Drag-and-Drop von Elementen des Projekttyps
 
 @signature: drag_project: boolean
 
@@ -20,14 +22,14 @@ description: "ermöglicht das Drag & Drop von Projekttyp-Elementen"
 gantt.config.drag_project = true;
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
-- [Draggable projects](https://docs.dhtmlx.com/gantt/samples/08_api/19_draggable_projects.html)
+- [Drag-and-Drop-Projekte](https://docs.dhtmlx.com/gantt/samples/08_api/19_draggable_projects.html)
 
 ### Details
 
-Damit können Benutzer ganze Projekte zusammen mit ihren Unteraufgaben per Drag & Drop verschieben.
+Ermöglicht dem Benutzer, Projekte zusammen mit ihren Unteraufgaben per Drag-and-Drop zu ziehen und abzulegen.
 
 ### Related Guides
-- ["Verschieben von Aufgaben innerhalb der Zeitleiste"](guides/dnd.md#draggingprojectsalongwiththeirsubtasks)
+- [Aufgaben innerhalb der Timeline ziehen](guides/dnd.md#draggingprojectswithsubtasks)

@@ -1,4 +1,4 @@
----
+--- 
 title: "Aufgabentypen"
 sidebar_label: "Aufgabentypen"
 ---
@@ -6,224 +6,225 @@ sidebar_label: "Aufgabentypen"
 # Aufgabentypen
 
 :::info
-Dieses Feature ist ausschließlich in der PRO-Edition verfügbar.
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 
-Es gibt drei vordefinierte Aufgabentypen, die Sie in einem Gantt-Diagramm anzeigen können ([Sie können auch einen benutzerdefinierten Typ erstellen](guides/task-types.md#creatingacustomtype)):
+Es gibt drei vordefinierte Aufgabentypen, die Sie in einem Gantt-Diagramm darstellen können (Sie können auch einen benutzerdefinierten Typ hinzufügen):
 
-1. [Eine reguläre Aufgabe (Standard)](guides/task-types.md#regulartasks).
-2. [Eine Projektaufgabe](guides/task-types.md#projecttasks).
+1. [Eine reguläre Aufgabe (Standard)](guides/task-types.md#regular-tasks).
+2. [Eine Projektaufgabe](guides/task-types.md#project-tasks).
 3. [Ein Meilenstein](guides/task-types.md#milestones).
-
 
 ![task_types](/img/task_types.png)
 
+Um den Typ einer Aufgabe festzulegen, verwenden Sie die [type](guides/loading.md#dataproperties) Eigenschaft eines Datenelements (*Werte werden im [`types`](api/config/types.md) Objekt gespeichert*):
 
-Um einen Aufgabentyp zuzuweisen, verwenden Sie die [type](guides/loading.md#dataproperties)-Eigenschaft innerhalb eines Datenobjekts (*die Werte entsprechen dem Objekt [types](api/config/types.md)*):
-
-**Typ einer Aufgabe im Datensatz angeben**
-~~~js
-var data = {
-    task:[
-        {id:1, text:"Project #1",    type:"project",    open:true},   /*!*/
-        {id:2, text:"Task #1",          start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:"milestone",   parent:1, /*!*/
-            start_date:"14-04-2020"},                                                /*!*/
-        {id:4, text:"Task #2",          start_date:"17-04-2020", duration:3, parent:1}],
-    links:[]
+~~~jsx title="Specifying the type of a task in the data set"
+const data = {
+    tasks: [
+        { id: 1, text: "Project #1", type: "project", open: true },
+        { id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1 },
+        { id: 3, text: "Alpha release", start_date: "16-04-2025", type: "milestone", parent: 1 },
+        { id: 4, text: "Task #2", start_date: "17-04-2025", duration: 3, parent: 1 },
+    ],
+    links: [
+        { id: 1, source: "1", target: "2", type: "1" },
+        { id: 2, source: "2", target: "3", type: "0" },
+        { id: 3, source: "3", target: "4", type: "0" },
+    ],
 };
 ~~~
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**Related sample**: [Projekte und Meilensteine](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-## Reguläre Aufgaben {#regulartasks}
+## Reguläre Aufgaben
 
-Standardmäßig erstellt dhtmlxGantt reguläre Aufgaben (Tasks mit **type="task"**).
+Standardmäßig bietet dhtmlxGantt die Erstellung regulärer Aufgaben (Aufgaben mit **type="task"**).
 
 ![type_task](/img/type_task.png)
 
-**Reguläre Aufgaben angeben**
-~~~js
-var data = {
-    tasks:[{id:2, text:"Task #1", start_date:"12-04-2020", duration:3}],  /*!*/
-    links:[]
+~~~jsx title="Specifying regular tasks"
+const data = { 
+    tasks: [
+        { id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1 }, 
+    ],
+    links: [],
 };
-//oder
-var data = {
-     tasks:[{id:2, text:"Task #1", start_date:"12-04-2020", duration:3, /*!*/
-            type:"task"}],  /*!*/
-    links:[]
+//or
+const data = {
+    tasks: [
+        { id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1, type: "task" }, 
+    ],
+    links: [],
 };
 ~~~
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**Related sample**: [Projekte und Meilensteine](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-Mit **type="task"** markierte Aufgaben besitzen folgende Eigenschaften:
+Aufgaben mit **type="task"** können wie folgt charakterisiert werden:
 
-- Können einen Elternknoten und mehrere Kindaufgaben haben.
-- Sind verschiebbar und in der Größe veränderbar.
-- Passen sich nicht automatisch an Kindaufgaben an; das Verschieben einer Kindaufgabe beeinflusst nicht die Dauer oder den Fortschritt der Elternaufgabe.
-- Können in übergeordneten Projekten angezeigt werden. Siehe [Details](guides/milestones.md#rolluptasksandmilestones).
-- Können in der Zeitleiste ausgeblendet werden. Siehe [Details](guides/milestones.md#hidingtasksandmilestones).
+- Können 1 Elternteil und beliebig viele Unteraufgaben haben.
+- Können gezogen und in der Größe verändert werden. 
+- Hängen nicht von Unteraufgaben ab, d. h. wenn der Benutzer eine Unteraufgabe einer regulären Aufgabe zieht, ändert sich die Dauer bzw. der Fortschritt der Hauptaufgabe entsprechend nicht.
+- Können auf den übergeordneten Projekten erscheinen. Siehe Details.
+- Können in der Timeline ausgeblendet werden.
 
 
-## Projektaufgaben {#projecttasks}
+## Projektaufgaben
 
-Eine Projektaufgabe erstreckt sich vom Beginn der frühesten Kindaufgabe bis zum Ende der letzten Kindaufgabe.
+Projektaufgabe ist eine Aufgabe, die beginnt, wenn ihre früheste Unteraufgabe beginnt, und endet, wenn ihre späteste Unteraufgabe endet.
 
 :::note
-Der Hauptunterschied zwischen Projekt- und regulären Aufgaben besteht darin, dass sich die Dauer einer Projektaufgabe nach ihren Kindaufgaben richtet und entsprechend aktualisiert wird.
+Der Unterschied zwischen Projekt- und Regulären Aufgaben besteht darin, dass die Dauer einer Projektaufgabe von ihren Kindern abhängt und entsprechend angepasst wird.
 :::
 
 ![type_project](/img/type_project.png)
 
-
-**Projektaufgaben angeben**
-~~~js
-var data = {
-    tasks:[
-        {id:1, text:"Project #1",    type:"project",    open:true}, /*!*/
-        {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:"milestone",   parent:1,
-            start_date:"14-04-2020"}],
-    links:[]
+~~~jsx title="Specifying project tasks"
+const data = {
+    tasks: [
+        { id: 1, text: "Project #1", type: "project", open: true }, 
+        { id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1 },
+        { id: 3, text: "Alpha release", start_date: "16-04-2025", type: "milestone", parent: 1 },
+        { id: 4, text: "Task #2", start_date: "17-04-2025", duration: 3, parent: 1 },
+    ],
+    links: [],
 };
 ~~~
 
+**Related sample**: [Projekte und Meilensteine](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
+Aufgaben mit **type="project"** können wie folgt charakterisiert werden:
 
-Aufgaben mit **type="project"** besitzen folgende Eigenschaften:
-
-- Können einen Elternknoten und mehrere Kindaufgaben haben.
-- Sind nicht verschiebbar oder in der Größe veränderbar, es sei denn, Drag&Drop wird explizit über die [drag_project](api/config/drag_project.md) aktiviert.
-- Hängen von ihren Kindaufgaben ab; das Verschieben einer Kindaufgabe aktualisiert die Dauer der Projektaufgabe.
-- Ignorieren die Eigenschaften **start_date**, **end_date** und **duration**.
-- Können nicht verschoben werden, wenn sie keine Kindaufgaben besitzen.
-- Der **progress**-Wert eines Projekts wird standardmäßig manuell gesetzt und spiegelt nicht automatisch den Fortschritt der Unteraufgaben wider. Um den Fortschritt automatisch zu berechnen, ist eigener Code nötig. [Siehe Beispiele](guides/how-to.md#howtocalculatetaskprogressdependingonchildtasks).
+- Können 1 Elternteil und beliebig viele Unteraufgaben haben.
+- Können nicht gezogen und in der Größe verändert werden, es sei denn Drag-and-Drop ist explizit über die Konfiguration [drag_project](api/config/drag_project.md) aktiviert.
+- Hängen von Unteraufgaben ab, d. h. wenn der Benutzer eine Unteraufgabe einer Projektaufgabe verschiebt, ändert sich deren Dauer.
+- Ignorieren die Eigenschaften **start_date**, **end_date**, **duration**.
+- Können nicht gezogen werden, wenn sie keine Unteraufgaben haben.
+- Der Fortschritt des Projekts wird standardmäßig explizit festgelegt und hängt nicht von Unteraufgaben ab. Wenn Sie möchten, dass er automatisch berechnet wird, müssen Sie Code dafür schreiben. [Siehe Beispiele](guides/how-to.md#how-to-calculate-task-progress-depending-on-child-tasks).
 
 :::note
-Wie Sie das Hinzufügen von Projektaufgaben ermöglichen, erfahren Sie unter [Milestones](guides/milestones.md). Die Aktivierung der Meilenstein-Erstellung sorgt auch dafür, dass Nutzer Projektaufgaben hinzufügen können.
+Um die Möglichkeit zu bieten, Projektaufgaben hinzuzufügen, lesen Sie den Artikel [Milestone](guides/milestones.md). Eine Möglichkeit, Meilensteine hinzuzufügen, garantiert, dass Ihre Endbenutzer auch Projektaufgaben hinzufügen können.
 :::
 
 ## Meilensteine {#milestones}
 
-Ein [Meilenstein](guides/milestones.md) ist eine Aufgabe mit einer Dauer von null, die verwendet wird, um wichtige Termine in einem Projekt hervorzuheben ([mehr Infos](guides/milestones.md)).
+[Meilenstein](guides/milestones.md) ist eine Aufgabe mit null Dauer, die verwendet wird, um wichtige Termine des Projekts zu markieren ([mehr Details](guides/milestones.md)).
 
 ![type_milestone](/img/type_milestone.png)
 
-
-**Meilensteine angeben**
-~~~js
-var data = {
-    tasks:[
-        {id:1, text:"Project #1",    type:"project",    open:true},
-        {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:"milestone",   parent:1, /*!*/
-            start_date:"14-04-2020"}],/*!*/
-    links:[]
+~~~jsx title="Specifying milestones"
+const data = {
+    tasks: [
+        { id: 3, text: "Alpha release", start_date: "16-04-2025", type: "milestone", parent: 1 }, 
+    ],
+    links: [],
 };
 ~~~
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**Related sample**: [Projekte und Meilensteine](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-Aufgaben mit **type="milestone"** besitzen folgende Eigenschaften:
+Aufgaben mit **type="milestone"** können wie folgt charakterisiert werden:
 
-- Können einen Elternknoten und mehrere Kindaufgaben haben.
-- Sind nicht verschiebbar oder in der Größe veränderbar.
-- Haben immer eine Dauer von null.
-- Ignorieren die Eigenschaften **end_date**, **duration** und **progress**.
-- Können in übergeordneten Projekten angezeigt werden. Siehe [Details](guides/milestones.md#rolluptasksandmilestones).
-- Können in der Zeitleiste ausgeblendet werden. Siehe [Details](guides/milestones.md#hidingtasksandmilestones).
+- Können 1 Elternteil und beliebig viele Unteraufgaben haben.
+- Können nicht gezogen oder in der Größe verändert werden.
+- Haben null Dauer und behalten diese die ganze Zeit bei.
+- Ignorieren die Eigenschaften **end_date**, **duration**, **progress**.
+- Können auf den übergeordneten Projekten erscheinen. Siehe Details.
+- Können in der Timeline ausgeblendet werden.
 
 :::note
-Wie Sie die Erstellung von Meilensteinen ermöglichen, erfahren Sie unter [Milestones](guides/milestones.md).
+Um die Möglichkeit zu bieten, Meilensteine hinzuzufügen, lesen Sie den Artikel [Milestone](guides/milestones.md).
 :::
 
-## Spezifisches Lightbox-Formular pro Aufgabentyp {#specificlightboxpertasktype}
+## Spezifische Lightbox pro Aufgabentyp {#specificlightboxpertasktype}
 
-Jeder Aufgabentyp hat eigene Eigenschaften, daher kann das Detailformular (Lightbox) individuell pro Typ konfiguriert werden.
-Die Konfigurationen werden im Objekt [lightbox](api/config/lightbox.md) gespeichert.
+Jeder Aufgabentyp hat seine eigenen Eigenschaften. Deshalb kann eine individuelle Konfiguration des Detailformulars (Lightbox) für jeden Typ definiert werden.
+Alle Konfigurationen werden im [Lightbox-Objekt](api/config/lightbox.md) gespeichert.
 
-Sie umfassen:
+Sie sind:
 
 - **gantt.config.lightbox.sections** - für reguläre Aufgaben.
 - **gantt.config.lightbox.project_sections** - für Projektaufgaben.
 - **gantt.config.lightbox.milestone_sections** - für Meilensteine.
 
-Die Standard-Konfigurationen sehen so aus:
+Die Standardkonfiguration lautet:
 
-~~~js
+~~~jsx
 gantt.config.lightbox.sections = [
-    {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-    {name: "time", type: "duration", map_to: "auto"}
+    { name: "description", type: "textarea", map_to: "text", height: 70, focus: true },
+    { name: "time", type: "duration", map_to: "auto" }
 ];
-gantt.config.lightbox.project_sections= [
-    {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-    {name: "type", type: "typeselect", map_to: "type"},
-    {name: "time", type: "duration", readonly: true, map_to: "auto"}
+
+gantt.config.lightbox.project_sections = [
+    { name: "description", type: "textarea", map_to: "text", height: 70, focus: true },
+    { name: "type", type: "typeselect", map_to: "type" },
+    { name: "time", type: "duration", map_to: "auto", readonly: true }
 ];
-gantt.config.lightbox.milestone_sections= [
-    {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-    {name: "type", type: "typeselect", map_to: "type"},
-    {name: "time", type: "duration", single_date: true, map_to: "auto"}
+
+gantt.config.lightbox.milestone_sections = [
+    { name: "description", type: "textarea", map_to: "text", height: 70, focus: true },
+    { name: "type", type: "typeselect", map_to: "type" },
+    { name: "time", type: "duration", map_to: "auto", single_date: true }
 ];
 ~~~
 
-Wenn der Aufgabentyp im Auswahlfeld geändert wird, passt sich die Lightbox dynamisch an die neue Konfiguration an.
+Wenn der Benutzer den Typ einer Aufgabe in der zugehörigen Auswahl ändert, wird die entsprechende Konfiguration auf das Lightbox-Popup angewendet und dynamisch aktualisiert.
 
-Sie können [einen benutzerdefinierten Aufgabentyp erstellen](guides/task-types.md#creatingacustomtype) und ebenfalls dessen Lightbox-Struktur definieren.
+Sie können auch [einen benutzerdefinierten Typ hinzufügen](guides/task-types.md#creating-a-custom-type) und ebenfalls eine entsprechende Struktur der Lightbox dafür festlegen.
 
-Weitere Informationen zur Lightbox-Konfiguration finden Sie im Kapitel [Configuring Edit Form](guides/edit-form.md).
+Um ins Detail über eine Lightbox-Konfiguration zu gehen, können Sie das Kapitel [Configuring Edit Form](guides/edit-form.md) lesen.
 
+## Erstellen eines benutzerdefinierten Typs
 
-## Einen benutzerdefinierten Typ erstellen {#creatingacustomtype}
+Alle Aufgabentypen werden im [types](api/config/types.md) Objekt definiert.
 
-Alle Aufgabentypen sind im Objekt [types](api/config/types.md) definiert. 
+Im Allgemeinen müssen Sie, um einen benutzerdefinierten Aufgabentyp hinzuzufügen, Folgendes tun:
 
-Um einen benutzerdefinierten Aufgabentyp hinzuzufügen, gehen Sie im Allgemeinen wie folgt vor:
+1. Einen neuen Wert zum [types](api/config/types.md) Objekt hinzufügen.
+2. Einzelne Einstellungen für den neuen Typ definieren.
 
-1. Fügen Sie einen neuen Eintrag zum Objekt [types](api/config/types.md) hinzu.
-2. Definieren Sie die Einstellungen, die für den neuen Typ spezifisch sind.
-
-
-Beispiel: Um einen neuen Typ namens **meeting** hinzuzufügen, der sich wie eine reguläre Aufgabe verhält, aber eine eigene Farbe und eigene Lightbox-Felder besitzt:
+Nehmen wir an, Sie möchten einen neuen Aufgabentyp - **meeting** - hinzufügen.
+**Meeting** wird eine gewöhnliche Aufgabe sein, aber in einer anderen Farbe und mit anderen Eingaben im Lightbox.
 
 ![custom_task_type](/img/custom_task_type.png)
 
+Um einen neuen Typ mit dem Namen **meeting** zu definieren und eine individuelle Lightbox dafür anzugeben, verwenden Sie die folgende Technik:
 
-Definieren Sie den neuen Typ **meeting** und seine Lightbox wie folgt:
+Fügen Sie einen neuen Typ zum [types](api/config/types.md) Objekt hinzu:
 
-1. Fügen Sie den neuen Typ dem Objekt [types](api/config/types.md) hinzu:
-
-~~~js
+~~~jsx
 gantt.config.types.meeting = "type_id";
 ~~~
-<i>Hier steht "meeting" als programmatischer Name für Klarheit und Lesbarkeit."type_id" ist die eindeutige Kennung, die in der Datenbank und im [types](api/config/types.md)-Objekt gespeichert wird.</i>
 
-2. Legen Sie die Bezeichnung für den neuen Typ im "typeselect"-Control fest:
+wobei "meeting" der programmatische Name des Typs ist. Das hat keinerlei Auswirkungen. Der einzige Zweck des programmatischen Typs ist es, die Arbeit mit Typen lesbarer zu machen.
+"type_id" ist der Typ-Bezeichner, der in der Datenbank gespeichert wird. Der Typ-Bezeichner muss innerhalb des [types](api/config/types.md) Objekts eindeutig sein.
 
-~~~js
+Setzen Sie das Label für den neuen Typ im "typeselect" Steuerelement:
+
+~~~jsx
 gantt.locale.labels.type_meeting = "Meeting";
 ~~~
 
-3. Definieren Sie die Lightbox-Struktur für den neuen Typ:
+Geben Sie eine neue Struktur der Lightbox für den neu-erstellten Typ an:
 
-~~~js
+~~~jsx
 gantt.config.lightbox.meeting_sections = [
-    {name:"title", height:20, map_to:"text", type:"textarea", focus:true},
-    {name:"details", height:70, map_to: "details", type: "textarea"},
-    {name:"type", type:"typeselect", map_to:"type"},
-    {name:"time", height:72, type:"time", map_to:"auto"}
+    { name: "title", type: "textarea", map_to: "text", height: 20, focus: true },
+    { name: "details", type: "textarea", map_to: "details", height: 70 },
+    { name: "type", type: "typeselect", map_to: "type" },
+    { name: "time", type: "time", map_to: "auto", height: 72 }
 ];
-gantt.locale.labels.section_title = "Betreff";
+
+gantt.locale.labels.section_title = "Subject";
 gantt.locale.labels.section_details = "Details";
 ~~~
-4. Definieren Sie Styles für den neuen Typ und wenden Sie diese mit der [task_class](api/template/task_class.md)-Vorlage an:
+
+Geben Sie einen Stil für den neuen Typ an und wenden Sie ihn über das [task_class](api/template/task_class.md) Template an:
 
 ~~~css
 .meeting_task{
@@ -231,59 +232,56 @@ gantt.locale.labels.section_details = "Details";
     color:#6ba8e3;
     background: #F2F67E;
 }
+
 .meeting_task .gantt_task_progress{
     background:#D9DF29;
 }
 ~~~
 
-~~~js
-gantt.templates.task_class = function(start, end, task){
-    if(task.type == gantt.config.types.meeting){
-        return "meeting_task";
-    }
-    return "";
+~~~jsx
+gantt.templates.task_class = (start, end, task) => {
+    return task.type === gantt.config.types.meeting 
+        ? "meeting_task" 
+        : "";
 };
 ~~~
 
-5. Passen Sie den Aufgabentext für "meeting"-Aufgaben mit der [task_text](api/template/task_text.md)-Vorlage an: 
+Setzen Sie das Template für den Text der "meeting" Aufgaben mit dem [task_text](api/template/task_text.md) Template:
 
-
-~~~js
-gantt.templates.task_text = function(start, end, task){
-    if(task.type == gantt.config.types.meeting){
-        return "Meeting: <b>" + task.text + "</b>";
-    }
-    return task.text;
-};
+~~~jsx
+gantt.templates.task_text = (start, end, task) =>
+    task.type === gantt.config.types.meeting
+        ? `Meeting: <b>${task.text}</b>`
+        : task.text;
 ~~~
 
-[Custom task type](https://docs.dhtmlx.com/gantt/samples/04_customization/12_custom_task_type.html)
+**Related sample**: [Custom task type](https://docs.dhtmlx.com/gantt/samples/04_customization/12_custom_task_type.html)
 
 
-## Individuelle Darstellung von Aufgabentypen {#customdisplayoftasktypes}
+## Benutzerdefinierte Darstellung von Aufgabentypen
 
-Um das Aussehen vorhandener Aufgabentypen zu ändern, verwenden Sie die Option [type_renderers](api/config/type_renderers.md). Damit können Sie die Funktionen überschreiben, die steuern, wie Aufgabentypen auf der Seite gerendert werden.
+Um das Aussehen vorhandener Aufgabentypen anzupassen, verwenden Sie die [type_renderers](api/config/type_renderers.md) Option. Die Optionen ermöglichen es, Funktionen neu zu definieren, die für die Anzeige verschiedener Aufgabentypen auf der Seite verantwortlich sind.
 
 ![custom_look](/img/custom_look.png)
 
-~~~js
-gantt.config.type_renderers["project"]=function(task, defaultRender){
-    var main_el = document.createElement("div");
-    main_el.setAttribute(gantt.config.task_attribute, task.id);
-    var size = gantt.getTaskPosition(task);
-    main_el.innerHTML = [
+~~~jsx
+gantt.config.type_renderers["project"] = (task, defaultRender) => {
+    const taskBar = document.createElement("div");
+    taskBar.setAttribute(gantt.config.task_attribute, task.id);
+    taskBar.className = "custom-project";
+
+    const taskSize = gantt.getTaskPosition(task);
+    taskBar.innerHTML = [
         "<div class='project-left'></div>",
         "<div class='project-right'></div>"
     ].join('');
-    main_el.className = "custom-project";
 
-    main_el.style.left = size.left + "px";
-    main_el.style.top = size.top + 7 + "px";
-    main_el.style.width = size.width + "px";
+    taskBar.style.left = `${taskSize.left}px`;
+    taskBar.style.top = `${taskSize.top + 7}px`;
+    taskBar.style.width = `${taskSize.width}px`;
 
-    return main_el;
+    return taskBar;
 };
 ~~~
 
-[Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
-
+**Related sample**: [Klassischer Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)

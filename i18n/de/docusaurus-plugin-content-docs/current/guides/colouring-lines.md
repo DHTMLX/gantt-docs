@@ -1,30 +1,30 @@
----
-title: "Links-Färbung und -Stil"
-sidebar_label: "Links-Färbung und -Stil"
+--- 
+title: "Link-Färbung und Styling"
+sidebar_label: "Link-Färbung und Styling"
 ---
 
-# Links-Färbung und -Stil
+# Link-Färbung und Styling
 
-Es ist möglich, das Aussehen der Verbindungen zwischen Aufgaben individuell anzupassen, um das gewünschte Erscheinungsbild für Ihr Gantt-Diagramm zu erzielen. Die Verwendung verschiedener Farben für Abhängigkeitsverbindungen hilft den Nutzern, diese leichter zu unterscheiden.
+Sie können das Styling von Verknüpfungen zwischen Aufgaben ändern, um das gewünschte Aussehen und Gefühl Ihres Gantt-Diagramms zu erreichen. Das Färben von Abhängigkeitsverbindungen in verschiedenen Farben ermöglicht es, sie visuell zu unterscheiden.
 
 ![coloring_links](/img/coloring_links.png)
 
-Es gibt mehrere Möglichkeiten, benutzerdefinierte Stile für Links festzulegen:
+Um einen benutzerdefinierten Stil für Verknüpfungen festzulegen, können Sie eine der folgenden Vorgehensweisen verwenden:
 
-1. [Neudefinition der Standard-Link-Vorlage](guides/colouring-lines.md#redefiningthelinkstemplate)
-2. [Festlegen von Stilwerten innerhalb der Eigenschaften des Link-Objekts](guides/colouring-lines.md#specifyingcolorinthepropertiesofthelinkobject)
+1. [Die Standardvorlage des Links neu definieren](guides/colouring-lines.md#redefiningthelinkstemplate)
+2. [Stilwerte in den Eigenschaften des Link-Objekts festlegen](guides/colouring-lines.md#specifyingcolorinthepropertiesofthelinkobject)
 
-Schauen wir uns zunächst die DOM-Struktur eines Links an, um zu verstehen, wie die einzelnen Teile positioniert, dimensioniert, verwendet und standardmäßig gestylt werden.
+Zunächst werfen wir einen Blick auf die Elemente der Link-Struktur, um die Logik ihrer Positionierung, Größe, Funktionalität und Standardgestaltung zu verstehen.
 
 ## Struktur des Link-DOM-Elements {#structureofthelinkdomelement}
 
-Das DOM-Element eines Links ist wie folgt aufgebaut:
+Das DOM-Element des Links hat folgende Struktur:
 
-- **.gantt_task_link**  - besitzt statische Positionierung und keine Größe
-    - **.gantt_line_wrapper/gantt_link_arrow/gantt_link_corner** - absolut positioniert
-        - **.gantt_link_line_down(/up/right/left)** - statisch innerhalb des Wrappers positioniert
+- **.gantt_task_link**  - statische Positionierung, Nullgröße
+    - **.gantt_line_wrapper/gantt_link_arrow/gantt_link_corner** - absolute Positionierung
+        - **.gantt_link_line_down(/up/right/left)** - statische Positionierung innerhalb des Wrapper-Elements
   
-Das DOM sieht folgendermaßen aus:
+Das DOM sieht wie folgt aus:
 
 ~~~html
 <div class="gantt_task_link" link_id="3">
@@ -46,65 +46,67 @@ Das DOM sieht folgendermaßen aus:
 </div>
 ~~~
 
-Die Bedeutung der einzelnen Teile:
+wobei: 
 
-- **gantt_task_link** - Dieses Element hat keine Größe und eine statische Positionierung. Es dient als gemeinsamer Elternelement für alle Link-Teile, was das Anwenden von Stilen erleichtert:
+- **gantt_task_link** - das Element mit nuller Größe und statischer Positionierung. Es wird als gemeinsamer Elternteil für alle Teile des Links verwendet, zum Beispiel, um Stile anzuwenden:
 
 ~~~css
 .gantt_task_link{
    --dhx-gantt-link-background:red;
 } 
-~~~
+~~~ 
 
-Sie können auf dieses Element auch Klassen aus der [link_class](api/template/link_class.md) Vorlage anwenden.
+Sie können Klassen aus der [link_class](api/template/link_class.md) Vorlage auf dieses Element anwenden. 
 
-#### Kritische Verbindungen
+#### Kritische Links
 
-Kritische Verbindungen erhalten ihren Stil durch Hinzufügen der **gantt_critical_link** Klasse zum **gantt_task_link** Element.
+Die Gestaltung kritischer Links wird definiert, indem die Klasse **gantt_critical_link** dem **gantt_task_link**-Element hinzugefügt wird.
 
-- **gantt_line_wrapper** steuert die Position und Größe eines Links. Er ist transparent, absolut positioniert und etwas größer als die eigentliche Link-Linie, was die Genauigkeit bei der Auswahl mit der Maus verbessert.
+- **gantt_line_wrapper** ist verantwortlich für Position und Größe eines Links. Es ist transparent, absolut positioniert und etwas größer als die Link-Linie, was die Link-Auswahl mit dem Mauszeiger erleichtert. 
 
-Die Breite dieses Elements wird durch die [link_wrapper_width](api/config/link_wrapper_width.md) Eigenschaft gesteuert:
+Die Breite dieses Elements wird durch die [link_wrapper_width](api/config/link_wrapper_width.md) Konfigurationseigenschaft festgelegt.
 
 ~~~js
 gantt.config.link_wrapper_width = 30;
 ~~~
 
-- **gantt_link_arrow** stellt den Pfeil am Link dar. Er ist absolut positioniert und kann je nach Richtung eine der folgenden zusätzlichen Klassen haben: 
+- **gantt_link_arrow** - der Link-Pfeil. Er ist absolut positioniert. Je nach Richtung, in die der Pfeil zeigt, kann das Element eine entsprechende zusätzliche Klasse haben: 
     - **gantt_link_arrow_right**,
     - **gantt_link_arrow_left**,
-    - **gantt_link_arrow_up** oder
+    - **gantt_link_arrow_up**, oder
     - **gantt_link_arrow_down**.
 
-Aktuell werden nur **gantt_link_arrow_right** und **gantt_link_arrow_down** verwendet.
+Derzeit werden nur **gantt_link_arrow_right** und **gantt_link_arrow_down** verwendet.
 
-Die Größe des Pfeils wird durch die [link_arrow_size](api/config/link_arrow_size.md) Eigenschaft festgelegt:
+Die Größe des Elements **gantt_link_arrow** wird durch die [link_arrow_size](api/config/link_arrow_size.md) Konfigurationseigenschaft festgelegt.
 
 ~~~js
 gantt.config.link_arrow_size = 8;
 ~~~
 
-- **gantt_link_line_(dir)** ist der sichtbare Teil der Link-Linie. Ersetzen Sie **dir** entsprechend durch **left**, **right**, **up** oder **down**.
 
-Die Breite dieser Linie kann mit der [link_line_width](api/config/link_line_width.md) Eigenschaft angepasst werden:
+- **gantt_link_line_(dir)** -  das sichtbare Element eines Links. Verwenden Sie **left/right/up/down** statt des **dir**-Teils des Elementnamens.
+
+Die Breite dieses Elements kann über die [link_line_width](api/config/link_line_width.md) Konfigurationseigenschaft geändert werden:
 
 ~~~js
 gantt.config.link_line_width = 3;
-~~~
+~~~ 
 
-- **gantt_link_corner** ist die abgerundete Ecke der Link-Linie. Der Radius der Ecke wird durch [link_radius](api/config/link_radius.md) festgelegt:
+- **gantt_link_corner** -  die abgerundete Ecke einer Link-Linie. Der Radius der Ecke wird von [link_radius](api/config/link_radius.md) festgelegt:
 
 ~~~js
 gantt.config.link_radius = 2;
 ~~~
 
-Wenn **gantt.config.link_radius = 1** gesetzt wird, werden die abgerundeten Ecken entfernt.
+Das Festlegen von **gantt.config.link_radius = 1** entfernt abgerundete Ecken. 
+
 
 ## Neudefinition der Link-Vorlage {#redefiningthelinkstemplate}
 
-Zur Anpassung von Abhängigkeitsverbindungen wird die [link_class](api/template/link_class.md) Vorlage verwendet. Um beispielsweise Links basierend auf der Priorität einer Aufgabe zu färben, können Sie folgenden Code nutzen:
+Um Abhängigkeitsverbindungen zu stylen, verwenden Sie die [link_class](api/template/link_class.md) Vorlage. Beispielsweise, um Verbindungen abhängig von der Priorität der Aufgaben zu färben, verwenden Sie den Code wie folgt:
 
-**Links je nach Abhängigkeitstyp einfärben**
+**Coloring links depending on the dependency type**
 ~~~js
 gantt.templates.link_class = function(link){
     var types = gantt.config.links;
@@ -130,30 +132,31 @@ gantt.templates.link_class = function(link){
 
 
 :::note
-Informationen zum Styling weiterer Teile von Abhängigkeitsverbindungen finden Sie in den Vorlagen im Artikel [Templates of Dependency Links](guides/dependency-templates.md).
-:::
+Um andere Elemente von Abhängigkeitsverbindungen zu stylen, verwenden Sie die Vorlagen aus dem Artikel [Templates of Dependency Links](guides/dependency-templates.md).
+::: 
 
-Die gleiche Methode kann auch auf Aufgaben angewendet werden. Weitere Details finden Sie [hier](guides/colouring-tasks.md#redefiningthetaskstemplate).
+Eine ähnliche Vorgehensweise kann auch auf Aufgaben angewendet werden. Lesen Sie mehr darüber [hier](guides/colouring-tasks.md#redefiningthetaskstemplate).
+
 
 ## Festlegen der Farbe in der Eigenschaft des Link-Objekts {#specifyingcolorinthepropertiesofthelinkobject}
 
-Sie können einer Abhängigkeitsverbindung auch eine benutzerdefinierte Farbe zuweisen, indem Sie eine Eigenschaft zum Datenobjekt hinzufügen:
+Um eine benutzerdefinierte Farbe für einen Abhängigkeits-Link festzulegen, können Sie dem Datenobjekt eine zusätzliche Eigenschaft hinzufügen:
 
-- **color** - definiert die Farbe des Links
+- **color** - Die Farbe des Links 
 
 ![link_color_property](/img/link_color_property.png)
 
 :::note
-Dies ist eine spezielle Eigenschaft. Gantt prüft, ob ein Link diese Eigenschaft besitzt, und wendet deren Wert auf den Link an. Fehlt sie, wird die Standardfarbe verwendet.
+Hinweis, dies ist eine spezielle Eigenschaft. Standardmäßig prüft Gantt, ob ein Link diese Eigenschaft besitzt, und wendet den entsprechenden Wert auf den Link an. Andernfalls wird die vordefinierte Farbe angewendet.
 :::
 
-**Die Farbe des Links im Datenobjekt festlegen**
+**Festlegen der Link-Farbe im Datenobjekt**
 ~~~js
 var tasks = {
   data:[
-     {id:1, text:"Project #1", start_date:"01-04-2013", duration:18},
-     {id:2, text:"Task #1",    start_date:"02-04-2013", duration:8, parent:1},
-     {id:3, text:"Task #2",    start_date:"11-04-2013", duration:8, parent:1}
+     {id:1, text:"Projekt #1", start_date:"01-04-2013", duration:18},
+     {id:2, text:"Aufgabe #1",    start_date:"02-04-2013", duration:8, parent:1},
+     {id:3, text:"Aufgabe #2",    start_date:"11-04-2013", duration:8, parent:1}
   ],
   links:[
      {id:1, source:1, target:2, type:"1", color:"red"}, /*!*/
@@ -167,15 +170,15 @@ gantt.init("gantt_here");
 gantt.parse(tasks);
 
 gantt.getLink(4).color = "green";
-~~~
+~~~ 
 
-**Related example:** [Link colors from the "color" property](https://snippet.dhtmlx.com/e5utei5g)
+**Beispiel** [Linkfarben aus der "color"-Eigenschaft](https://snippet.dhtmlx.com/e5utei5g)
 
 :::note
-Wenn Sie eine benutzerdefinierte Farbe über die **color**-Eigenschaft hinzufügen, wird ein Inline-Stil gesetzt, der andere Stile überschreibt. Das bedeutet, dass der kritische Pfad nicht hervorgehoben wird und benutzerdefinierte Stile zur Änderung der Link-Farbe keine Wirkung zeigen.
+Das Hinzufügen einer benutzerdefinierten Farbe über die **color**-Eigenschaft wird von dem Hinzufügen eines Inline-Stils gefolgt, der die höchste Priorität unter anderen Stilen hat. Folglich wird der kritische Pfad nicht hervorgehoben, und jeder benutzerdefinierte Stil, den Sie hinzugefügt haben, um die Link-Farbe zu ändern, wird nicht angewendet.
 :::
 
-Um Links als kritisch anzuzeigen, können Sie dieses CSS verwenden:
+Um die Verbindungen kritisch aussehen zu lassen, können Sie folgenden Code verwenden:
 
 ~~~css
 .gantt_critical_link {
@@ -183,9 +186,9 @@ Um Links als kritisch anzuzeigen, können Sie dieses CSS verwenden:
 }
 ~~~
 
-**Related example:** [Kritische Aufgaben und Links einfärben](https://snippet.dhtmlx.com/xipdml7a)
+Beispiel [Beispiel](https://snippet.dhtmlx.com/xipdml7a) 
 
-Wenn eine Eigenschaft eines Link-Objekts gesetzt ist, erhält der Link eine zusätzliche Klasse **"gantt_link_inline_color"**. Diese Klasse kann verwendet werden, um andere Stile für diesen Link zu überschreiben:
+Wenn mindestens eine Eigenschaft eines Link-Objekts festgelegt ist, erhält der Link zusätzlich die Klasse **"gantt_link_inline_color"**. Sie können diese Klasse verwenden, um andere Stile für den Link zu überschreiben:
 
 ~~~css
 .gantt_link_inline_color {
@@ -193,7 +196,7 @@ Wenn eine Eigenschaft eines Link-Objekts gesetzt ist, erhält der Link eine zus�
 }
 ~~~
 
-Die color-Eigenschaft akzeptiert jedes gültige CSS-Farbformat, zum Beispiel:
+Die Eigenschaften können jeden gültigen CSS-Farbwert haben, z.B. alle folgenden Notationen sind gültig:
 
 ~~~js
 link.color = "#FF0000";
@@ -201,5 +204,4 @@ link.color = "red";
 link.color = "rgb(255,0,0)";
 ~~~
 
-Das gleiche Vorgehen kann auch für Aufgaben verwendet werden. Weitere Informationen finden Sie [hier](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject).
-
+Eine ähnliche Vorgehensweise kann auch auf Aufgaben angewendet werden. Lesen Sie mehr darüber [hier](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject).
