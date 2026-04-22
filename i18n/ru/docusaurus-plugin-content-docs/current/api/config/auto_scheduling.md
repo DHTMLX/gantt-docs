@@ -7,7 +7,7 @@ description: "включает автопланирование"
 # auto_scheduling
 
 :::info
-Эта функциональность доступна только в PRO-издании.
+Эта функциональность доступна только в версии PRO. 
 :::
 
 ### Description
@@ -27,7 +27,7 @@ gantt.config.auto_scheduling = {
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Default value:** `false`
 
 ### Related samples
 - [Расширение Auto Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
@@ -35,20 +35,19 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
-Эта конфигурация определяется в расширении **auto_scheduling**, поэтому вам нужно активировать плагин [auto_scheduling](guides/extensions-list.md#autoscheduling). Подробности читайте в статье [Auto Scheduling](guides/auto-scheduling.md).
+Эта конфигурация определяется в расширении **auto_scheduling**, поэтому необходимо активировать плагин [auto_scheduling](guides/extensions-list.md#autoscheduling). Подробности читайте в статье [Auto Scheduling](guides/auto-scheduling.md). 
 :::
 
 Хотя конфигурацию `auto_scheduling` можно задать как булево значение, предпочтительным является использование объектного определения для настройки автопланирования.
 
-When set as an object, the following options are available:
 
 #### enabled
 
-**Type**: boolean
+**Тип**: boolean
 
-**Default**: `false`
+**По умолчанию**: `false`
 
-Turns auto-scheduling on or off (same as using a boolean value directly).
+Включает или выключает автоматическое планирование (то же самое, что и прямое использование булевого значения).
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -58,11 +57,11 @@ gantt.config.auto_scheduling = {
 
 #### apply_constraints
 
-**Type**: boolean
+**Тип**: boolean
 
-**Default**: `true`
+**По умолчанию**: `true`
 
-Enables or disables usage of time constraints for auto scheduling.
+Включает или отключает использование временных ограничений для авто планирования.
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -71,30 +70,30 @@ gantt.config.auto_scheduling = {
 };
 ~~~
 
-Setting the value to `false` switches auto scheduling to the mode that ignores constraints associated with tasks (e.g. ASAP, ALAP, SNET, etc.) and scheduling depends solely on task dependencies.
+Установка значения в `false` переводит автоматическое планирование в режим, который игнорирует ограничения, связанные с задачами (например, ASAP, ALAP, SNET и т. д.), и расписание зависит исключительно от зависимостей между задачами.
 
-This property replaces the deprecated [](api/config/auto_scheduling_compatibility.md) setting.
+Это свойство заменяет устаревшую настройку [](api/config/auto_scheduling_compatibility.md).
 
-- [Basic Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
-- [Constraint Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
+- [Базовое планирование](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [Планирование с ограничениями](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 <span id="gapbehavior"></span>
 
 #### gap_behavior
 
-**Type**: String
+**Тип**: String
 
-**Allowed values**: `"preserve"`|`"compress"`
+**Разрешённые значения**: `"preserve"`|`"compress"`
 
-**Default**: `"preserve"`
+**По умолчанию**: `"preserve"`
 
 
-Defines how Gantt handles gaps between dependent tasks during scheduling.
+Определяет, как Gantt обрабатывает пропуски между зависимыми задачами во время планирования.
 
-- **"preserve"** - keeps tasks in their current positions if there are no conflicts
-- **"compress"** - moves tasks to the earliest allowed date (or latest if `schedule_from_end` is enabled)
+- **"preserve"** — сохраняет задачи на их текущих позициях, если конфликтов нет
+- **"compress"** — перемещает задачи к самой ранней допустимой дате (или к поздней, если включено `schedule_from_end`)
 
-By default, tasks are only rescheduled when their current date violates a constraint or dependency. 
+По умолчанию задачи перепланируются только если их текущая дата нарушает ограничение или зависимость. 
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -108,13 +107,13 @@ gantt.config.auto_scheduling = {
 
 #### descendant_links
 
-**Type**: boolean
+**Тип**: boolean
 
-**Default**: `false`
+**По умолчанию**: `false`
 
-Allows or forbids creating links between parent tasks (projects) and their subtasks.
+Разрешает или запрещает создание связей между родительскими задачами (проектами) и их подзадачами.
 
-By default, such links can't be created.
+По умолчанию такие связи создавать нельзя.
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -126,11 +125,11 @@ gantt.config.auto_scheduling = {
 
 #### schedule_on_parse
 
-**Type**: boolean
+**Тип**: boolean
 
-**Default**: `true`
+**По умолчанию**: `true`
 
-Defines whether Gantt will do auto-scheduling on data loading/parsing.
+Определяет, будет ли Gantt выполнять авто планирование при загрузке/разборе данных.
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -141,24 +140,22 @@ gantt.config.auto_scheduling = {
 
 #### move_projects
 
-**Type**: boolean
+**Тип**: boolean
 
-**Default**: `true`
+**По умолчанию**: `true`
 
-By default (when the property is set to *true*), the whole project is moved during auto scheduling. It means that all tasks in the project remain on their places
-relative to each other and the beginning of the project.
+По умолчанию (когда свойство установлено в *true*) всё 프로젝트 перемещается во время авто планирования. Это означает, что все задачи проекта сохраняют свои позиции относительно друг друга и начала проекта.
 
 ![moving_project_true](/img/moving_project_true.png)
 
 
-If the *move_projects* property is set to *false*, auto scheduling will move separate tasks inside of the project. Thus, some tasks will be moved, others will
-remain on their places.
+Если свойство *move_projects* установлено в *false*, авто планирование будет перемещать отдельные задачи внутри проекта. Таким образом, часть задач будет перемещена, другие останутся на своих местах.
 
 ![moving_project_false](/img/moving_project_false.png)
 
 
 :::note
-If you use the constraint scheduling (*apply_constraints: true*), the *move_projects* config will be active only when the `gap_behavior` property is set to "preserve":
+Если вы используете планирование с ограничениями (apply_constraints: true), конфигурация *move_projects* будет активна только когда свойство `gap_behavior` задано в значение "preserve":
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -172,11 +169,11 @@ gantt.config.auto_scheduling = {
 
 #### use_progress
 
-**Type**: boolean
+**Тип**: boolean
 
-**Default**: `false`
+**По умолчанию**: `false`
 
-Specifies whether completed tasks should affect scheduling and critical path calculations.
+Указывает, должны ли завершённые задачи влиять на планирование и расчеты критического пути.
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -185,27 +182,27 @@ gantt.config.auto_scheduling = {
 };
 ~~~
 
-When the property is enabled, the critical path, slack, and auto scheduling algorithms will take the value of the task progress into account, similar to how these methods work in MS Project, namely:
+Когда данное свойство включено, критический путь, запас и алгоритмы авто планирования учитывают значение прогресса задачи, подобно тому, как эти методы работают в MS Project, а именно:
 
-1) Completed tasks (completed tasks - the tasks with 100% progress) always have zero slack;
+1) Завершённые задачи (задачи с 100% прогресса) всегда имеют нулевой запас;
 
-2) Completed tasks are excluded from the auto scheduling calculations. Relations that connect predecessors to completed tasks are ignored;
+2) Завершённые задачи исключаются из расчётов авто планирования. Связи, которые соединяют предшественники с завершёнными задачами, игнорируются;
 
-3) Completed tasks can't be critical.
+3) Завершённые задачи не могут быть критическими.
 
 - [Use progress for auto-scheduling, critical path and slack calculations](https://snippet.dhtmlx.com/ju3km1uy)
 
 #### schedule_from_end
 
-**Type**: boolean
+**Тип**: boolean
 
-**Default**: `false`
+**По умолчанию**: `false`
 
-Enables backward scheduling.
+Включает обратное планирование.
 
-Setting this config to `true` will switch auto scheduling to the `as late as possible` mode.
+Установка этого параметра в `true` переведёт авто планирование в режим «как можно позднее».
 
-The value will be only applied if [](api/config/project_end.md) is specified as well. 
+Значение будет применяться только если также указан `project_end` (см. [](api/config/project_end.md)).
 
 ~~~jsx
 gantt.config.project_end = new Date(2025, 10, 1);
@@ -219,11 +216,11 @@ gantt.config.auto_scheduling = {
 
 #### project_constraint
 
-**Type**: boolean
+**Тип**: boolean
 
-**Default**: `false`
+**По умолчанию**: `false`
 
-Defines whether tasks should inherit the constraint type from their parent project.
+Определяет, должны ли задачи наследовать тип ограничения от родительского проекта.
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -232,22 +229,22 @@ gantt.config.auto_scheduling = {
 };
 ~~~
 
-By default, the constraint type of the parent project doesn't affect the constraint type of its nested tasks.
+По умолчанию тип ограничения родительского проекта не влияет на тип ограничения вложенных задач.
 
-If you set the config to *true*, the child tasks (except for tasks with their own constraint type) will have the same constraint type as their parent project (for example, **finish no later than**).
+Если установить конфигурацию в *true*, дочерние задачи (за исключением задач со своим собственным типом ограничения) будут иметь тот же тип ограничения, что и их родительский проект (например, **finish no later than**).
 
 - [Constraint Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 #### show_constraints
 
-**Type**: boolean
+**Тип**: boolean
 
-**Default**: `false`
+**По умолчанию**: `false`
 
-Controls the display of task constraints on the Gantt chart.
-Set to `true` to display constraints or `false` to hide them.
+Контролирует отображение ограничений задач на диаграмме Ганта.
+Установите значение `true`, чтобы отображать ограничения, или `false`, чтобы скрыть их.
 
-For example, to enable auto-scheduling but disable the display of task constraints:
+Например, чтобы включить авто планирование, но отключить отображение ограничений задач:
 
 ~~~jsx
 gantt.config.auto_scheduling = {
@@ -282,5 +279,5 @@ gantt.init("gantt_here");
 - [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
-- since v9.1, using the object configuration for `auto_scheduling` is the recommended approach
-- Can be set as an object since v9.0
+- начиная с v9.1 рекомендуется использование объектной конфигурации для `auto_scheduling`
+- может быть задан как объект начиная с v9.0
