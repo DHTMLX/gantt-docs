@@ -52,8 +52,8 @@ yarn add @dhx/angular-gantt
 
 Wrapper peer dependencies currently require:
 
-- `@angular/common >= 14.0.0`
-- `@angular/core >= 14.0.0`
+- `@angular/common >= 19.0.0`
+- `@angular/core >= 19.0.0`
 - `rxjs >= 6.0.0`
 
 

@@ -140,7 +140,6 @@ function cloneLink(link: any) {
 
 function createConfig(zoomLevel: ZoomLevel) {
   return {
-    date_format: '%Y-%m-%d %H:%i',
     zoom: {
       current: zoomLevel,
       levels: zoomLevels,
@@ -154,9 +153,9 @@ export class GanttRxStoreService {
 
   private readonly stateSubject = new BehaviorSubject<StoreState>({
     tasks: [
-      { id: 1, text: 'Project', type: 'project', open: true, start_date: '2026-02-02 00:00', duration: 8, parent: 0 },
-      { id: 2, text: 'Planning', start_date: '2026-02-02 00:00', duration: 3, parent: 1 },
-      { id: 3, text: 'Implementation', start_date: '2026-02-05 00:00', duration: 4, parent: 1 },
+      { id: 1, text: 'Project', type: 'project', open: true, start_date: new Date(2026, 1, 2).toISOString(), duration: 8, parent: 0 },
+      { id: 2, text: 'Planning', start_date: new Date(2026, 1, 2).toISOString(), duration: 3, parent: 1 },
+      { id: 3, text: 'Implementation', start_date: new Date(2026, 1, 5).toISOString(), duration: 4, parent: 1 },
     ],
     links: [{ id: 1, source: 2, target: 3, type: '0' }],
     zoomLevel: 'day',
@@ -175,6 +174,11 @@ export class GanttRxStoreService {
       config: state.config,
     }))
   );
+
+  readonly templates = {
+    format_date: (d: Date) => d.toISOString(),
+    parse_date: (s: string) => new Date(s),
+  };
 
   readonly dataConfig: AngularGanttDataConfig = {
     batchSave: (changes: BatchChanges) => this.applyBatch(changes),
@@ -278,7 +282,12 @@ Why this shape works:
 
 - `vm$` exposes a render-ready view model for the component.
 - `dataConfig.batchSave` keeps chart edits inside one store boundary.
+- `templates` hands Gantt ISO-safe `format_date`/`parse_date` callbacks so date formatting is consistent across the chart and the store.
 - snapshots make undo/redo independent from Gantt internals.
+
+:::note
+Since v9.1.3, Gantt automatically detects ISO date strings and these `format_date`/`parse_date` overrides are no longer needed. They are shown here for compatibility with earlier Gantt versions. See [Loading dates in ISO format](guides/loading.md#loading-dates-in-iso-format).
+:::
 
 ## 3. Bind The Component To The Store With `AsyncPipe`
 
@@ -301,6 +310,7 @@ export class GanttRxPageComponent {
   private readonly store = inject(GanttRxStoreService);
 
   readonly vm$ = this.store.vm$;
+  readonly templates = this.store.templates;
   readonly dataConfig = this.store.dataConfig;
 
   setZoom(level: ZoomLevel): void {
@@ -330,7 +340,7 @@ Create `src/app/gantt-state/gantt-rx-page.component.html`.
   </div>
 
   <div style="height: 600px;">
-    <dhx-gantt [tasks]="vm.tasks" [links]="vm.links" [config]="vm.config" [data]="dataConfig"></dhx-gantt>
+    <dhx-gantt [tasks]="vm.tasks" [links]="vm.links" [config]="vm.config" [templates]="templates" [data]="dataConfig"></dhx-gantt>
   </div>
 </section>
 ~~~

@@ -74,7 +74,7 @@ export const tasks: SerializedTask[] = [
     id: 1,
     text: 'Office itinerancy',
     type: 'project',
-    start_date: '2026-02-02 00:00',
+    start_date: new Date(2026, 1, 2).toISOString(),
     duration: 10,
     progress: 0.4,
     open: true,
@@ -83,7 +83,7 @@ export const tasks: SerializedTask[] = [
   {
     id: 2,
     text: 'Planning',
-    start_date: '2026-02-02 00:00',
+    start_date: new Date(2026, 1, 2).toISOString(),
     duration: 4,
     progress: 0.6,
     parent: 1,
@@ -91,7 +91,7 @@ export const tasks: SerializedTask[] = [
   {
     id: 3,
     text: 'Implementation',
-    start_date: '2026-02-06 00:00',
+    start_date: new Date(2026, 1, 6).toISOString(),
     duration: 5,
     progress: 0.2,
     parent: 1,
@@ -134,7 +134,6 @@ export class GanttChartComponent {
   links = links;
 
   config = {
-    date_format: '%Y-%m-%d %H:%i',
     columns: [
       { name: 'text', tree: true, width: '*' },
       { name: 'start_date', label: 'Start', align: 'center' },

@@ -47,14 +47,13 @@ import {
 })
 export class AppComponent {
   tasks = [
-    { id: 1, text: 'Project', type: 'project', open: true, start_date: '2026-02-02 00:00', duration: 5, parent: 0 },
-    { id: 2, text: 'Planning', start_date: '2026-02-02 00:00', duration: 2, parent: 1 },
+    { id: 1, text: 'Project', type: 'project', open: true, start_date: new Date(2026, 1, 2).toISOString(), duration: 5, parent: 0 },
+    { id: 2, text: 'Planning', start_date: new Date(2026, 1, 2).toISOString(), duration: 2, parent: 1 },
   ];
 
   links = [{ id: 1, source: 1, target: 2, type: '0' }];
 
   config = {
-    date_format: '%Y-%m-%d %H:%i',
     columns: [
       { name: 'text', tree: true, width: '*' },
       { name: 'start_date', align: 'center' },
