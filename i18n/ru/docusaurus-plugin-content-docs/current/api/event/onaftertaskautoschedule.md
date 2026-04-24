@@ -1,31 +1,31 @@
 ---
 sidebar_label: onAfterTaskAutoSchedule
-title: onAfterTaskAutoSchedule event
-description: "Срабатывает для каждой задачи, которая была автоматически запланирована"
+title: событие onAfterTaskAutoSchedule
+description: "вызывает для каждой задачи, которая была автоматически запланирована"
 ---
 
 # onAfterTaskAutoSchedule
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в версии PRO.
 :::
 ### Description
 
-@short: Срабатывает для каждой задачи, которая была автоматически запланирована
+@short: Вызывает для каждой задачи, которая была автоматически запланирована
 
 @signature: onAfterTaskAutoSchedule: (task: Task, start: Date, link: Link, predecessor: Task) =\> void;
 
 ### Parameters
 
 - `task` - (required) *Task* - объект задачи
-- `start` - (required) *Date* - обновленная дата начала
-- `link` - (required) *Link* - объект связи, ответственный за ограничение
+- `start` - (required) *Date* - новая дата начала
+- `link` - (required) *Link* - объект связи, который создает ограничение 
 - `predecessor` - (required) *Task* - объект предшествующей задачи
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterTaskAutoSchedule",function(task, start, link, predecessor){
-    // разместите здесь вашу пользовательскую логику
+    // разместитемздесь вашу пользовательскую логику пользовательскую логику
 });
 ~~~
 
@@ -35,7 +35,7 @@ gantt.attachEvent("onAfterTaskAutoSchedule",function(task, start, link, predeces
 ### Details
 
 :::note
- Это событие является частью расширения **auto_scheduling**, поэтому убедитесь, что плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) включен. Подробнее можно узнать в статье [Автоматическое планирование](guides/auto-scheduling.md). 
+Это событие определяется в расширении **auto_scheduling**, поэтому вам необходимо активировать плагин [auto_scheduling](guides/extensions-list.md#autoscheduling). Подробности читайте в статье [Auto Scheduling](guides/auto-scheduling.md). 
 :::
 
 ### Related API
@@ -55,5 +55,4 @@ gantt.attachEvent("onAfterTaskAutoSchedule",function(task, start, link, predeces
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [Автоматическое планирование](guides/auto-scheduling.md)
-
+- [Auto Scheduling](guides/auto-scheduling.md)

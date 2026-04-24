@@ -1,23 +1,23 @@
 ---
 sidebar_label: getLink
 title: getLink method
-description: "получает объект зависимости (link) по заданному id"
+description: "возвращает объект зависимости связи по указанному id"
 ---
 
 # getLink
 
 ### Description
 
-@short: Получает объект зависимости (link) по заданному id
+@short: Возвращает объект зависимости связи по указанному id
 
 @signature: getLink: (id: string | number) =\> Link
 
 ### Parameters
 
-- `id` - (required) *string | number* -    id ссылки
+- `id` - (required) *string | number* - идентификатор связи
 
 ### Returns
-- `link` - (Link) - объект ссылки
+- `link` - (Link) - объект связи
 
 ### Example
 
@@ -33,4 +33,4 @@ gantt.getLink(1);// -> {id:1, source:1, target:2, type:1}
 
 ### Details
 
-Чтобы узнать, как получить все ссылки, связанные с конкретной задачей, обратитесь к статье [Получение объекта/ID связи](guides/link-object-operations.md#gettingthelinksrelatedtoacertaintask).
+Для получения информации о том, как получить все связи, связанные с конкретной задачей, см. статью [Получение объекта связи/идентификатора](guides/link-object-operations.md#getting-the-links-related-to-a-certain-task).

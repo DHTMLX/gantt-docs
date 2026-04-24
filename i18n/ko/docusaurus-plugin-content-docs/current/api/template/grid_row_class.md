@@ -1,25 +1,25 @@
 ---
 sidebar_label: grid_row_class
-title: grid_row_class template
-description: "그리드 행에 할당되는 CSS 클래스를 정의합니다."
+title: grid_row_class 템플릿
+description: "그리드 행에 적용될 CSS 클래스를 지정합니다"
 ---
 
 # grid_row_class
 
 ### Description
 
-@short: 그리드 행에 할당되는 CSS 클래스를 정의합니다.
+@short: 그리드 행에 적용될 CSS 클래스를 지정합니다
 
-@signature: grid_row_class: (start: Date, end: Date, task: Task) =\> string | void;
+@signature: grid_row_class: (start: Date, end: Date, task: Task) => string | void;
 
 ### Parameters
 
-- `start` - (required) *Date* - 작업이 시작되도록 설정된 날짜
-- `end` - (required) *Date* - 작업이 완료될 것으로 예상되는 날짜
-- `task` - (required) *Task* - 작업 객체 자체
+- `start` - (required) *Date* - 작업이 시작될 예정인 날짜
+- `end` - (required) *Date* - 작업이 완료될 예정인 날짜
+- `task` - (required) *Task* - 작업 객체
 
 ### Returns
-- ` text` - (string | void) - 해당 항목에 적용할 CSS 클래스
+- `text` - (string | void) - 대상 항목에 대한 CSS 클래스
 
 ### Example
 
@@ -48,6 +48,7 @@ gantt.templates.grid_row_class = function(start, end, task){
 ~~~css
 .gantt_row.odd, .gantt_task_row.odd,
 .gantt_row, .gantt_task_row {
+{
     background: white;
 }
 ~~~
@@ -60,7 +61,6 @@ gantt.templates.grid_row_class = function(start, end, task){
     return "wheat_color";
 };
 ~~~
-<br>
 
 ~~~css
 .wheat_color,
@@ -72,5 +72,4 @@ gantt.templates.grid_row_class = function(start, end, task){
 화면에서 홀수 행 대신 짝수 행이 강조 표시되는 것처럼 보일 수 있습니다. 하지만 [row indexes](api/method/gettaskindex.md)를 확인하면 스타일이 홀수 인덱스(1, 3, 5 등)를 가진 행에 적용된 것을 알 수 있습니다.
 
 ### Related Guides
-- [그리드의 템플릿](guides/table-templates.md)
-
+- [그리드 템플릿](guides/table-templates.md)

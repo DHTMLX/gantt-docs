@@ -1,23 +1,23 @@
 ---
 sidebar_label: onBeforeLightbox
-title: onBeforeLightbox event
-description: "라이트박스(편집 폼)가 열리기 직전에 트리거됩니다."
+title: onBeforeLightbox 이벤트
+description: "사용자가 lightbox(편집 양식)를 열기 직전에 바로 발생합니다"
 ---
 
 # onBeforeLightbox
 
 ### Description
 
-@short: 라이트박스(편집 폼)가 열리기 직전에 트리거됩니다.
+@short: 사용자가 lightbox(편집 양식)를 열기 직전에 바로 발생합니다
 
-@signature: onBeforeLightbox: (id: string | number) =\> boolean;
+@signature: onBeforeLightbox: (id: string | number) => boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 작업(task) ID
+- `id` - (필수) *string | number* - 작업 ID
 
 ### Returns
-- ` result` - (boolean) - 기본 이벤트 동작을 진행할지(<b>true</b>) 중단할지(<b>false</b>) 결정합니다.
+- ` result` - (boolean) - 이벤트의 기본 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소될지 여부 (<b>false</b>)
 
 ### Example
 
@@ -36,5 +36,5 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 ### Details
 
-- 이 이벤트는 차단할 수 있습니다. *false*를 반환하면 라이트박스가 열리는 것을 막습니다.
-- 라이트박스가 나타나기 전에 커스텀 조정을 할 수 있는 편리한 방법입니다.
+- 이 이벤트는 차단 가능합니다. 기본 처리(라이트박스 열기)를 취소하려면 *false*를 반환합니다.
+- 이 이벤트를 사용하면 라이트박스에서 무언가를 커스터마이즈하는 좋은 방법입니다.

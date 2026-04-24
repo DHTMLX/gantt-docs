@@ -1,23 +1,23 @@
 ---
 sidebar_label: onBeforeRedoStack
 title: onBeforeRedoStack event
-description: "redo 스택에 작업이 추가되기 직전에 트리거됩니다."
+description: "redo 스택에 액션이 추가되기 전에 발생합니다"
 ---
 
 # onBeforeRedoStack
 
 ### Description
 
-@short: Redo 스택에 작업이 추가되기 직전에 트리거됩니다.
+@short: redo 스택에 액션이 추가되기 전에 발생합니다
 
-@signature: onBeforeRedoStack: (action: UndoRedoAction) =\> boolean;
+@signature: onBeforeRedoStack: (action: UndoRedoAction) => boolean;
 
 ### Parameters
 
-- `action` - (required) *UndoRedoAction* - 사용자 작업을 나타내는 명령 객체 배열
+- `action` - (required) *UndoRedoAction* - 배열 형태의 명령 객체로 표현된 사용자 액션
 
 ### Returns
-- ` result` - (boolean) - 이벤트의 기본 동작을 계속할지(true) 중지할지(false)를 나타냅니다.
+- `result` - (boolean) - 이벤트의 기본 동작이 트리거될지(true) 또는 취소될지(false)를 정의합니다
 
 ### Example
 
@@ -31,13 +31,12 @@ gantt.attachEvent("onBeforeRedoStack", function(action){
 ### Details
 
 :::note
- 이 이벤트는 **undo** 확장 기능의 일부이므로, [undo](guides/extensions-list.md#undo) 플러그인이 활성화되어 있어야 합니다. 자세한 내용은 [Undo/Redo 기능](guides/undo-redo.md) 문서를 참고하세요. 
+이벤트는 **undo** 확장 기능에 정의되어 있으므로 [undo](guides/extensions-list.md#undo) 플러그인을 활성화해야 합니다. [Undo/Redo Functionality](guides/undo-redo.md) 문서를 참조하십시오.
 :::
 
-
-- false를 반환하여 이벤트를 차단할 수 있으며, 이 경우 추가 처리가 중단됩니다.
-- 이벤트 차단 시 redo는 이벤트 인자로 전달된 작업을 기록하지 않습니다.
-- 이벤트 내에서 작업 배열을 수정할 수 있습니다.
+- 이 이벤트는 차단 가능하며, false를 반환하면 추가 처리가 취소됩니다.
+- 이벤트가 차단되면 redo는 이벤트 인수에서 전달된 액션들을 캡처하지 않습니다.
+- 이벤트 액션은 수정될 수 있습니다.
 
 ### Related API
 - [onBeforeUndoStack](api/event/onbeforeundostack.md)
@@ -47,5 +46,4 @@ gantt.attachEvent("onBeforeRedoStack", function(action){
 - [Undo/Redo 기능](guides/undo-redo.md)
 
 ### Change log
-- 5.2 버전에 추가됨
-
+- 버전 5.2에서 추가되었습니다

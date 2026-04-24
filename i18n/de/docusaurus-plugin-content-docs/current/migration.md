@@ -5,6 +5,60 @@ sidebar_label: "Migration von älteren Versionen"
 
 # Migration von älteren Versionen
 
+## 9.0 -> 9.1
+
+Version 9.1 führt keine inkompatiblen Änderungen ein, aber mehrere Konfigurationsoptionen sind **veraltet** und eine [Migration zum neuen einheitlichen Format](#autoscheduling) wird empfohlen.  
+Außerdem beachten Sie, dass die zuvor veraltete **subscales**-Konfigurationsoption ([#subscales](#subscales)) gelöscht wurde.
+
+### Einheitliche Auto-Scheduling-Konfiguration {#autoscheduling}
+
+Mehrere Eigenschaften, die zuvor das Verhalten von [](guides/auto-scheduling.md) gesteuert haben, wurden zugunsten des einheitlichen [](api/config/auto_scheduling.md) Konfigurationsobjekts **veraltet**.
+
+~~~js
+// before v9.1
+gantt.config.auto_scheduling = true;
+gantt.config.auto_scheduling_compatibility = true;
+gantt.config.auto_scheduling_strict = true;
+gantt.config.auto_scheduling_initial = false;
+
+// since v9.1
+gantt.config.auto_scheduling = {
+    enabled: true,
+    apply_constraints: false,
+    gap_behavior: "compress",
+    schedule_on_parse: false
+};
+~~~
+
+Die veralteten Eigenschaften funktionieren weiterhin aus Gründen der Rückwärtskompatibilität, aber der Wechsel zum neuen Objektformat wird empfohlen.
+
+Die folgenden Optionen wurden **veraltet**:
+
+- [auto_scheduling_initial](api/config/auto_scheduling_initial.md)
+- [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md)
+- [auto_scheduling_descendant_links](api/config/auto_scheduling_descendant_links.md)
+- [auto_scheduling_move_projects](api/config/auto_scheduling_move_projects.md)
+- [auto_scheduling_project_constraint](api/config/auto_scheduling_project_constraint.md)
+- [auto_scheduling_strict](api/config/auto_scheduling_strict.md)
+- [auto_scheduling_use_progress](api/config/auto_scheduling_use_progress.md)
+
+**Zuordnung der veralteten Konfigurationen zum einheitlichen Objekt**
+
+
+- `gantt.config.auto_scheduling_initial` -> `schedule_on_parse`
+- `gantt.config.auto_scheduling_descendant_links` -> `descendant_links`
+- `gantt.config.auto_scheduling_move_projects` -> `move_projects`
+- `gantt.config.auto_scheduling_project_constraint` -> `project_constraint`
+- `gantt.config.auto_scheduling_use_progress` -> `use_progress`
+- `gantt.config.auto_scheduling_compatibility = true` -> `apply_constraints: false`
+- `gantt.config.auto_scheduling_compatibility = false` -> `apply_constraints: true`
+- `gantt.config.auto_scheduling_strict = true` -> `gap_behavior: "compress"`
+- `gantt.config.auto_scheduling_strict = false` -> `gap_behavior: "preserve"`
+
+### Die veraltete **subscales**-Konfigurationsoption wurde gelöscht {#subscales}
+
+Beachten Sie, dass die **subscales**-Konfigurationsoption, die in v6.2 als veraltet gekennzeichnet war, in v9.1 gelöscht wurde.
+
 ## 8.0 -> 9.0
 
 Das Update auf v9.0 bringt mehrere Breaking Changes mit sich.

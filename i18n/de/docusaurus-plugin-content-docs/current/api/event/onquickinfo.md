@@ -1,26 +1,26 @@
 ---
 sidebar_label: onQuickInfo
-title: onQuickInfo event
-description: "wird ausgelöst, wenn das Pop-up Bearbeitungsformular angezeigt wird"
+title: onQuickInfo-Ereignis
+description: "feuert, wenn das Pop-up-Bearbeitungsformular erscheint"
 ---
 
 # onQuickInfo
 
 ### Description
 
-@short: Wird ausgelöst, wenn das Pop-up Bearbeitungsformular angezeigt wird
+@short: Feuert, wenn das Pop-up-Bearbeitungsformular erscheint
 
 @signature: onQuickInfo: (taskId: string | number) =\> void;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - die Task-ID
+- `taskId` - (required) *string | number* - die Aufgaben-ID
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onQuickInfo",function(taskId){  
-    // Ihr Code hier  
+gantt.attachEvent("onQuickInfo",function(taskId){
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
@@ -30,7 +30,7 @@ gantt.attachEvent("onQuickInfo",function(taskId){
 ### Details
 
 :::note
- Dieses Event ist Teil der **Quick Info** Erweiterung, daher stellen Sie sicher, dass das [quick_info](guides/extensions-list.md#quickinfo) Plugin aktiviert ist. 
+Dieses Ereignis ist in der **Quick Info** Erweiterung definiert, daher müssen Sie das [quick_info](guides/extensions-list.md#quick-info) Plugin aktivieren.
 :::
 
 ### Related API
@@ -41,5 +41,4 @@ gantt.attachEvent("onQuickInfo",function(taskId){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- ["Vollständige Liste der Erweiterungen"](guides/extensions-list.md#quickinfo)
-
+- [Full List of Extensions](guides/extensions-list.md#quick-info)

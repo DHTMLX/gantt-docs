@@ -5,9 +5,9 @@ sidebar_label: "Python"
 
 # dhtmlxGantt с Python
 
-В этом руководстве описывается создание диаграммы Gantt на базе Python с использованием фреймворка Django 4 и RESTful API на серверной стороне.
+Этот учебник покажет, как создать Gantt на основе Python, используя фреймворк Django 4 и RESTful API на сервере.
 
-Если вы работаете с другими платформами, доступны руководства по серверной интеграции с:
+Существуют руководства, предназначенные для настройки интеграции на стороне сервера с помощью других платформ:
 
 - [dhtmlxGantt с ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
 - [dhtmlxGantt с Node.js](integrations/node/howtostart-nodejs.md)
@@ -21,60 +21,60 @@ sidebar_label: "Python"
 Полный исходный код доступен на [GitHub](https://github.com/DHTMLX/gantt-howto-django).
 :::
 
-## Необходимые условия
+## Prerequisites
 
-Если Django еще не установлен, вот инструкции по установке:
+Установите Django, если его нет:
 
-- [Установка на Windows](https://docs.djangoproject.com/en/4.0/howto/windows/)
-- [Установка на Linux](https://linuxhint.com/install_django_ubuntu/)
+- [для Windows](https://docs.djangoproject.com/en/4.0/howto/windows/)
+- [для Linux](https://linuxhint.com/install_django_ubuntu/)
 
 ## Шаг 1. Инициализация проекта
 
-Откройте папку вашего проекта и создайте новый проект Django с помощью команды:
+Откройте папку проекта и создайте новый проект Django с помощью следующей команды:
 
-~~~
+~~~ 
 django-admin startproject gantt_rest_python
 ~~~
 
-Далее либо переместите содержимое папки **gantt_rest_python** в текущую директорию, либо перейдите в нее:
+После этого можно либо переместить содержимое папки **gantt_rest_python** в текущую папку, либо перейти в эту папку:
 
-~~~
+~~~ 
 cd gantt_rest_python
 ~~~
 
-Чтобы убедиться, что базовая настройка работает, выполните:
+Чтобы проверить, что базовое приложение работает корректно, выполните следующую команду в папке проекта:
 
-~~~
+~~~ 
 python manage.py runserver
 ~~~
 
-Откройте http://localhost:8000 в браузере - должна появиться стандартная приветственная страница Django:
+Теперь можно открыть URL http://localhost:8000 в браузере, и вы должны увидеть страницу по умолчанию:
 
 ![start_page](/img/howtostart_django_startpage.png)
 
 ## Шаг 2. Добавление Gantt на страницу
 
-Создайте новое приложение для компонента Gantt:
+Теперь можно начать создание компонента Gantt. Выполните следующую команду:
 
-~~~
+~~~ 
 python manage.py startapp gantt
 ~~~
 
-Установите пакеты REST framework:
+Установите REST framework:
 
 ~~~
 pip install djangorestframework
 pip install djangorestframework-jsonapi
 ~~~
 
-В папке **gantt** создайте директории **static** и **templates**.
+Откройте папку **gantt** и создайте в ней папки **static** и **templates**.
 
-Скопируйте папку *codebase* из пакета Gantt в папку **static** и переименуйте ее в **gantt** для удобства.
+Скопируйте содержимое папки *codebase* из пакета Gantt в папку **static**. Переименуйте её в **gantt**, чтобы указать, к какому компоненту принадлежат файлы.
 
-Затем создайте файл *index.html* в **templates/gantt** со следующим содержимым:
+Затем создайте файл *index.html* в папке **templates/gantt** и добавьте туда следующий код:
 
-**gantt/templates/gantt/index.html**
-~~~
+
+~~~html title="gantt/templates/gantt/index.html"
 <html>
     <head>
         {% load static %}
@@ -95,24 +95,22 @@ pip install djangorestframework-jsonapi
 </html>
 ~~~
 
-В результате структура папок должна выглядеть так:
+На данный момент структура папок должна выглядеть следующим образом:
 
 ![folder_structure](/img/howtostart_django_folder.png)
 
-Откройте *views.py* в папке **gantt** и добавьте:
+Откройте файл *views.py* в папке **gantt** и добавьте следующий код туда:
 
-**gantt/views.py**
-~~~
+~~~py title="gantt/views.py"
 from django.shortcuts import render
 
 def index(request):
     return render(request, 'gantt/index.html')
 ~~~
 
-Далее настройте маршрутизацию, создав *urls.py* в папке **gantt**:
+Теперь нам нужно добавить маршрутизацию. Создайте файл *urls.py* в папке **gantt** и поместите в него следующий код:
 
-**gantt/urls.py**
-~~~
+~~~py title="gantt/urls.py"
 from django.urls import include, re_path
 from . import views
 from rest_framework.urlpatterns import format_suffix_patterns
@@ -123,10 +121,9 @@ urlpatterns = [
 urlpatterns = format_suffix_patterns(urlpatterns)
 ~~~
 
-В файле *urls.py* папки **gantt_rest_python** обновите `urlpatterns`, чтобы добавить маршруты приложения gantt:
+Откройте файл *urls.py* в папке **gantt_rest_python**. Нам нужно обновить `urlpatterns`. Обновленный код должен выглядеть так:
 
-**gantt_rest_python/urls.py**
-~~~
+~~~py title="gantt_rest_python/urls.py"
 from django.urls import include, re_path
 from django.contrib import admin
 
@@ -135,48 +132,45 @@ urlpatterns = [
 ]
 ~~~
 
-Чтобы Django мог находить ваши шаблоны и статические файлы, откройте *settings.py* в **gantt_rest_python** и добавьте в начало файла:
+Теперь нужно определить пути к папкам **templates** и **static** в настройках. Для этого откройте файл *settings.py* в папке **gantt_rest_python** и в начале файла добавьте следующую строку:
 
-**gantt_rest_python/settings.py**
-~~~
+~~~py title="gantt_rest_python/settings.py"
 import os
 ~~~
 
-Найдите настройку `TEMPLATES` и замените пустой массив `DIRS`:
+Найдите массив `TEMPLATES`. Там нужна свойство `DIRS`, которое имеет пустой массив:
 
 ~~~
 'DIRS': [],
 ~~~
 
-на:
+Замените его на следующую строку:
 
 ~~~
 'DIRS': [os.path.join(BASE_DIR, 'gantt/templates')],
 ~~~
 
-В конце файла добавьте строку, указывающую расположение статических файлов:
+Затем добавьте следующую строку в конец файла:
 
 ~~~
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "gantt/static")]
 ~~~
 
-
-Снова запустите сервер:
+Теперь можно запустить сервер командой:
 
 ~~~
 python manage.py runserver
 ~~~
 
-Если все настроено правильно, на странице появится пустая диаграмма Gantt:
+Если всё сделано правильно, вы должны увидеть страницу с пустым Gantt:
 
 ![init_gantt](/img/howtostart_django_initpage.png)
 
 ## Шаг 3. Загрузка данных
 
-В *gantt_rest_python/settings.py* добавьте `'rest_framework'` и `'gantt.apps.GanttConfig'` в список `INSTALLED_APPS`, а также настройте параметры REST framework:
+Откройте файл *gantt_rest_python/settings.py*. Добавьте в массив `INSTALLED_APPS` строки `'rest_framework'` и `'gantt.apps.GanttConfig'`. Затем добавьте конфигурацию `REST_FRAMEWORK`:
 
-**gantt_rest_python/settings.py**
-~~~
+~~~py title="gantt_rest_python/settings.py"
 INSTALLED_APPS = [
     'gantt.apps.GanttConfig',
     'django.contrib.admin',
@@ -194,16 +188,15 @@ REST_FRAMEWORK = {
 }
 ~~~
 
-Поскольку DHTMLX Gantt использует абсолютные даты без привязки к часовому поясу, отключите поддержку временных зон:
+DHTMLX Gantt использует абсолютные даты, не привязанные к часовому поясу (позже это можно изменить), поэтому необходимо отключить параметр **USE_TZ**:
 
-~~~
+~~~ 
 USE_TZ = False
 ~~~
 
-Определите модели Task и Link в *gantt/models.py*:
+Давайте создадим модели Task и Link в файле *gantt/models.py*:
 
-**gantt/models.py**
-~~~
+~~~py title="gantt/models.py"
 from django.db import models
 
 class Task(models.Model):
@@ -213,37 +206,37 @@ class Task(models.Model):
     end_date = models.DateTimeField()
     duration = models.IntegerField()
     progress = models.FloatField()
-    parent = models.CharField(max_length="100)"
+    parent = models.CharField(max_length="100)
 
 class Link(models.Model):
     id = models.AutoField(primary_key="True," editable="False)"
-    source = models.CharField(max_length="100)"
-    target = models.CharField(max_length="100)"
-    type = models.CharField(max_length="100)"
-    lag = models.IntegerField(blank="True," default="0)"
+    source = models.CharField(max_length="100)")
+    target = models.CharField(max_length="100)")
+    type = models.CharField(max_length="100)")
+    lag = models.IntegerField(blank="True," default="0)")
 ~~~
 
-Создайте миграции для новых моделей:
+Теперь нужно настроить базу данных. Чтобы создать миграции, используйте команду:
 
-~~~
+~~~ 
 python manage.py makemigrations gantt
 ~~~
 
-Примените миграции для обновления схемы базы данных:
+После этого можно создать таблицу в базе данных:
 
-~~~
+~~~ 
 python manage.py migrate
 ~~~
 
-Чтобы добавить начальные данные, откройте Django shell:
+Давайте посмотрим базу данных и добавим несколько записей. Сначала запустите команду:
 
-~~~
+~~~ 
 python manage.py shell
 ~~~
 
-Внутри shell проверьте текущие данные:
+В интерактивной оболочке Python можно выполнить следующие команды, чтобы проверить базу данных:
 
-~~~
+~~~ 
 from gantt.models import Task
 Task.objects.all()
 
@@ -251,9 +244,21 @@ from gantt.models import Link
 Link.objects.all()
 ~~~
 
-Так как база пуста, добавьте задачи и связи следующим образом:
+Вы должны увидеть следующий вывод:
 
+~~~ 
+>>> from gantt.models import Task
+>>> Task.objects.all()
+<QuerySet []>
+>>>  
+>>> from gantt.models import Link
+>>> Link.objects.all()
+<QuerySet []>
 ~~~
+
+Это означает, что в базе данных нет ни одной задачи и ни одной связи. Мы можем добавить их с помощью команд:
+
+~~~js 
 t1=Task(id="10",text="Project #1",start_date="2025-04-01 00:00",
     end_date="2025-04-03 00:00",duration=2,progress=0.5,parent="0")
 t1.save()
@@ -273,20 +278,27 @@ t1=Task(id="4", text="Task #4",start_date="2025-04-04 00:00",
     end_date="2025-04-06 00:00", duration="1," progress="0.65," parent="20")
 t1.save()
 
-l1=Link(id="1",source="1",target="2",type="0",lag="0)"
+l1=Link(id="1",source="1",target="2",type="0",lag="0)")
 l1.save()
-l1=Link(id="2",source="2",target="3",type="0",lag="0)"
+l1=Link(id="2",source="2",target="3",type="0",lag="0)")
 l1.save()
-l1=Link(id="3",source="3",target="4",type="0",lag="0)"
+l1=Link(id="3",source="3",target="4",type="0",lag="0)")
 l1.save()
 ~~~
 
-Теперь выполнение `Task.objects.all()` и `Link.objects.all()` должно возвращать добавленные элементы.
+Теперь, если запустить `Task.objects.all()` и `Link.objects.all()`, мы должны увидеть 6 объектов Task и 3 объекта Link в базе данных:
 
-Для сериализации создайте *serializers.py* в папке **gantt**:
-
-**gantt/serializers.py**
+~~~ 
+>>> Task.objects.all()
+<QuerySet [<Task: Task object (1)>, <Task: Task object (2)>, <Task: Task object (3)>, 
+<Task: Task object (4)>, <Task: Task object (10)>, <Task: Task object (20)>]>
+>>> Link.objects.all()
+<QuerySet [<Link: Link object (1)>, <Link: Link object (2)>, <Link: Link object (3)>]>
 ~~~
+
+Нам нужно обеспечить сериализацию и десериализацию экземпляров Task и Link. Для этого создайте файл *serializers.py* в папке **gantt** и добавьте следующий код:
+
+~~~py title="gantt/serializers.py"
 from .models import Task
 from .models import Link
 from rest_framework import serializers
@@ -307,10 +319,9 @@ class LinkSerializer(serializers.ModelSerializer):
         fields = ('id', 'source', 'target', 'type', 'lag')
 ~~~
 
-Обновите *gantt/views.py*, добавив представление для отдачи данных Gantt:
+После этого перейдите в файл *gantt/views.py* и добавьте действие, возвращающее данные Gantt:
 
-**gantt/views.py**
-~~~
+~~~py title="gantt/views.py"
 from django.shortcuts import render
 from .models import Task
 from .models import Link
@@ -329,138 +340,17 @@ def data_list(request, offset):
     if request.method == 'GET':
         tasks = Task.objects.all()
         links = Link.objects.all()
-        taskData = TaskSerializer(tasks, many="True)"
-        linkData = LinkSerializer(links, many="True)"
+        taskData = TaskSerializer(tasks, many="True)")
+        linkData = LinkSerializer(links, many="True)")
         return Response({
             "tasks": taskData.data,
             "links": linkData.data
         })
 ~~~
 
-Добавьте маршруты для загрузки данных в *gantt/urls.py*:
+Теперь откройте файл *gantt/urls.py*. Здесь нужно добавить маршруты для загрузки данных:
 
-**gantt/urls.py**
-~~~
-from django.urls import include, re_path
-from . import views
-from rest_framework.urlpatterns import format_suffix_patterns
-
-urlpatterns = [
-    re_path(r'^$', views.index, name='index'),
-    re_path(r'^data/(.*)$', views.data_list),
-]
-urlpatterns = format_suffix_patterns(urlpatterns)
-~~~
-
-Наконец, обновите файл *gantt/templates/gantt/index.html* для загрузки данных с сервера, добавив:
-
-**gantt/templates/gantt/index.html**
-~~~
-gantt.load("/data/", "json");
-~~~
-
-Теперь при запуске сервера диаграмма Gantt будет заполнена задачами и связями:
-
-![gantt](/img/howtostart_django_gantt.png)
-
-## Шаг 4. Сохранение изменений
-
-Чтобы обеспечить сохранение изменений, добавьте поддержку методов `POST`, `PUT` и `DELETE` в *gantt/views.py*:
-
-**gantt/views.py**
-~~~
-from django.shortcuts import render
-from .models import Task
-from .models import Link
-from gantt.serializers import TaskSerializer
-from gantt.serializers import LinkSerializer
-
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from django.http import JsonResponse
-
-
-def index(request):
-    return render(request, 'gantt/index.html')
-
-@api_view(['GET'])
-def data_list(request, offset):
-    if request.method == 'GET':
-        tasks = Task.objects.all()
-        links = Link.objects.all()
-        taskData = TaskSerializer(tasks, many="True)"
-        linkData = LinkSerializer(links, many="True)"
-        return Response({
-            "tasks": taskData.data,
-            "links": linkData.data
-        })
-
-
-@api_view(['POST'])
-def task_add(request):
-    if request.method == 'POST':
-        serializer = TaskSerializer(data="request.data)"
-        print(serializer)
-
-        if serializer.is_valid():
-            task = serializer.save()
-            return JsonResponse({'action':'inserted', 'tid': task.id})
-        return JsonResponse({'action':'error'})
-    
-@api_view(['PUT', 'DELETE'])
-def task_update(request, pk):
-    try:
-        task = Task.objects.get(pk="pk)"
-    except Task.DoesNotExist:
-        return JsonResponse({'action':'error2'})
-
-    if request.method == 'PUT':
-        serializer = TaskSerializer(task, data="request.data)"
-        print(serializer)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse({'action':'updated'})
-        return JsonResponse({'action':'error'})
-
-    if request.method == 'DELETE':
-        task.delete()
-        return JsonResponse({'action':'deleted'})
-
-
-@api_view(['POST'])
-def link_add(request):
-    if request.method == 'POST':
-        serializer = LinkSerializer(data="request.data)"
-        print(serializer)
-
-        if serializer.is_valid():
-            link = serializer.save()
-            return JsonResponse({'action':'inserted', 'tid': link.id})
-        return JsonResponse({'action':'error'})
-    
-@api_view(['PUT', 'DELETE'])
-def link_update(request, pk):
-    try:
-        link = Link.objects.get(pk="pk)"
-    except Link.DoesNotExist:
-        return JsonResponse({'action':'error'})
-
-    if request.method == 'PUT':
-        serializer = LinkSerializer(link, data="request.data)"
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse({'action':'updated'})
-        return JsonResponse({'action':'error'})
-
-    if request.method == 'DELETE':
-        link.delete()
-        return JsonResponse({'action':'deleted'})
-~~~
-
-Добавьте соответствующие маршруты в *gantt/urls.py*:
-
-**gantt/urls.py**
-~~~
+~~~py title="gantt/urls.py"
 from django.urls import include, re_path
 from . import views
 from rest_framework.urlpatterns import format_suffix_patterns
@@ -476,29 +366,27 @@ urlpatterns = [
 urlpatterns = format_suffix_patterns(urlpatterns)
 ~~~
 
-Чтобы отправлять изменения на сервер, включите Data Processor в *gantt/templates/gantt/index.html*:
+Чтобы отправлять изменения на сервер, используйте Data Processor. Добавьте следующий код в файл *gantt/templates/gantt/index.html*:
 
-**gantt/templates/gantt/index.html**
-~~~
+~~~js title="gantt/templates/gantt/index.html"
     var dp = new gantt.dataProcessor("/data/");
     dp.init(gantt);
     dp.setTransactionMode("REST");
 ~~~
 
-Теперь при добавлении, изменении или удалении задач и связей изменения будут сохраняться. После перезагрузки страницы данные сохранятся:
+Теперь можно добавлять, обновлять и удалять задачи и связи, и изменения будут сохранены. При перезагрузке страницы вы получите тот же набор данных:
 
 ![saving_changes](/img/howtostart_django_gantt_savechanges.png)
 
-## Хранение порядка задач {#storingtheorderoftasks}
+## Сохранение порядка задач {#storingtheorderoftasks}
 
-Поскольку DHTMLX Gantt работает на стороне клиента, порядок задач не сохраняется автоматически. Порядок зависит от последовательности в JSON-данных. Один из способов - сортировать задачи на сервере перед отправкой в Gantt. [Подробнее здесь](guides/server-side.md#storingtheorderoftasks).
+DHTMLX Gantt — это клиентская библиотека. Она не хранит порядок задач. При загрузке задач их порядок зависит от их положения в JSON-данных. Итак, один из способов сохранить порядок задач — сортировать задачи на сервере перед загрузкой данных в Gantt. [Подробнее](guides/server-side.md#storingtheorderoftasks).
 
-Другой способ - использовать родительскую задачу и позицию в ветке. ID родителя хранится в поле **parent**, а позиция в ветке соответствует временному свойству **$local_index**. Хотя изменение **$local_index** не влияет на отображение, его можно использовать для отслеживания порядка и сохранения в отдельном свойстве. После загрузки задачи можно отсортировать по этому свойству.
+Но есть и другой способ сделать это. Когда задачи загружаются, их вертикальное положение зависит от двух параметров: их родительской задачи и их положения в ветке (под родительской задачей). Вы можете получить ID родительской задачи из параметра **parent**. Позиция в ветке отражается во временном параметре **$local_index**. Этот параметр не управляет позицией ветки, поэтому изменение его не повлияет на положение. Но вы можете использовать его, чтобы получить позицию внутри ветки и сохранить ее в другом свойстве. После загрузки задач вы можете сортировать задачи по значению этого свойства.
 
-Сначала добавьте поле **sort_order** в модель Task в *gantt/models.py*:
+Сначала откройте файл *gantt/models.py* и добавьте к модели Task свойство **sort_order**:
 
-**gantt/models.py**
-~~~
+~~~js title="gantt/models.py"
 class Task(models.Model):
     id = models.AutoField(primary_key="True," editable="False)"
     text = models.CharField(blank="True," max_length="100)"
@@ -506,14 +394,13 @@ class Task(models.Model):
     end_date = models.DateTimeField()
     duration = models.IntegerField()
     progress = models.FloatField()
-    parent = models.CharField(max_length="100)"
-    sort_order = models.IntegerField(default="0)"
+    parent = models.CharField(max_length="100)")
+    sort_order = models.IntegerField(default="0)")
 ~~~
 
-Добавьте **sort_order** в сериализатор в *gantt/serializers.py*:
+Затем нужно добавить это свойство в файл *gantt/serializers.py*:
 
-**gantt/serializers.py**
-~~~
+~~~js title="gantt/serializers.py"
 class TaskSerializer(serializers.ModelSerializer):
     start_date = serializers.DateTimeField(format='%Y-%m-%d %H:%M')
     end_date = serializers.DateTimeField(format='%Y-%m-%d %H:%M')
@@ -524,14 +411,14 @@ class TaskSerializer(serializers.ModelSerializer):
             'parent', 'sort_order')
 ~~~
 
-Примените изменения к базе данных:
+Чтобы применить изменения к базе данных, выполните следующие команды:
 
 ~~~
 python manage.py makemigrations gantt
 python manage.py migrate
 ~~~
 
-Далее обновите *index.html*, чтобы изменять **sort_order** при добавлении или изменении порядка задач:
+Теперь нужно добавить код в файл *index.html*, чтобы обновлять свойство **sort_order** каждый раз, когда вы добавляете задачу или вручную меняете порядок задач:
 
 ~~~
 gantt.attachEvent("onRowDragEnd", function (id, target) {
@@ -548,14 +435,14 @@ gantt.attachEvent("onBeforeTaskAdd", function (id, task) {
 });
 ~~~
 
-Включите вертикальное изменение порядка, добавив это перед `gantt.init`:
+Чтобы включить вертикальный порядок, добавьте следующий код перед методом `gantt.init`:
 
 ~~~
 gantt.config.order_branch = "marker";
 gantt.config.order_branch_free = true;
 ~~~
 
-Чтобы отсортировать задачи после загрузки данных, добавьте это перед `gantt.init` или `gantt.load`:
+Чтобы отсортировать задачи после их загрузки, добавьте следующий код перед методами `gantt.init` или `gantt.load`:
 
 ~~~
 gantt.attachEvent("onLoadEnd", function () {
@@ -565,10 +452,9 @@ gantt.attachEvent("onLoadEnd", function () {
 });
 ~~~
 
-В результате соответствующий фрагмент *index.html* будет выглядеть так:
+В итоге код должен выглядеть так:
 
-**gantt/templates/gantt/index.html**
-~~~
+~~~js title="gantt/templates/gantt/index.html"
 gantt.config.date_format = "%Y-%m-%d %H:%i";
 
 gantt.config.order_branch = "marker";
@@ -583,7 +469,7 @@ gantt.attachEvent("onLoadEnd", function() {
 });
 
 gantt.attachEvent("onRowDragEnd", function(id, target) {
-    //обновление порядка задач
+    //update the order of tasks
     gantt.batchUpdate(function() {
         gantt.eachTask(function(task) {
             task.sort_order = task.$local_index + 1;
@@ -604,20 +490,20 @@ dp.init(gantt);
 dp.setTransactionMode("REST");
 ~~~
 
-Теперь при вертикальном изменении порядка задач новая последовательность будет сохраняться:
+Теперь, если вы запустите сервер и выполните вертикальное изменение порядка задач, изменения будут сохранены:
 
 ![sort_order](/img/howtostart_django_sortorder.png)
 
 ## Безопасность приложения
 
-DHTMLX Gantt не содержит встроенной защиты от таких угроз, как SQL-инъекции, XSS или CSRF. Защита приложения лежит на ответственности разработчика на серверной стороне. Подробнее см. в [статье по безопасности](guides/app-security.md).
+Gantt не предоставляет каких-либо средств защиты приложения от различных угроз, таких как SQL-инъекции или XSS и CSRF-атаки. Важно, чтобы ответственность за безопасность приложения лежала на разработчиках, реализующих backend. Подробнее [в соответствующей статье](guides/app-security.md).
 
 ## Устранение неполадок
 
-Если задачи и связи не отображаются после завершения интеграции, ознакомьтесь с руководством по устранению неполадок в [Устранение проблем интеграции с backend](guides/troubleshooting.md). Там приведены советы по диагностике и решению распространенных проблем.
+Если вы выполнили все вышеописанные шаги по интеграции Gantt с Django, но Gantt не рендерит задачи и связи на странице, посмотрите статью [Устранение неполадок интеграции Backend](guides/troubleshooting.md). В ней описаны способы идентифицировать источники проблем.
 
 ## Что дальше
 
-На данном этапе у вас есть работающее приложение с диаграммой Gantt. Полный исходный код доступен на [GitHub](https://github.com/DHTMLX/gantt-howto-django) для клонирования или скачивания для использования в ваших проектах.
+Теперь у вас полноценно функционирующий Gantt. Полный код можно просмотреть на [GitHub](https://github.com/DHTMLX/gantt-howto-django), клонировать или скачать его и использовать в ваших проектах.
 
-Рекомендуем также ознакомиться с [руководствами по различным возможностям Gantt](guides.md) или уроками по [интеграции Gantt с другими серверными фреймворками](integrations/howtostart-guides.md).
+Вы также можете посмотреть [решения по множеству функций Gantt](guides.md) или материалы по [интеграции Gantt с другими бэкенд-фреймворками](integrations/howtostart-guides.md).

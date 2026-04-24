@@ -1,25 +1,28 @@
 ---
 title: "dhtmlxGantt in Plain JS/HTML"
-sidebar_label: "Schnellstart"
+sidebar_label: "Quick Start"
 ---
 
-# dhtmlxGantt in Plain JS/HTML
+import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 
-Beim Erstellen einer Anwendung mit dhtmlxGantt besteht der erste Schritt darin, das Gantt-Diagramm einzurichten bzw. einfach gesagt, auf Ihrer Seite darzustellen.
+# dhtmlxGantt in einfachem JS/HTML
 
-Diese Anleitung beschreibt, wie Sie dhtmlxGantt mit einfachem JavaScript und HTML initialisieren. Informationen zur Integration mit Frontend-Frameworks finden Sie auch in diesen Anleitungen:
+Wenn Sie eine Anwendung mit dhtmlxGantt entwickeln, besteht der erste Schritt darin, das Gantt-Diagramm auf der Seite zu initialisieren bzw. einfach gesagt anzuzeigen.
+
+Diese Anleitung beschreibt die Initialisierung von dhtmlxGantt in reinem JS/HTML. Sie können auch die Anleitungen zur Integration mit Frontend-Frameworks prüfen:
+
 
 <table>
   <tbody style="text-align:center">
   <tr>
-  <td>![angular_icon](/img/angular_icon.png)</td>
-  <td>![react_icon](/img/react_icon.png)</td>
-  <td>![svelte_icon](/img/svelte_icon.png)</td>
-  <td>![vue_icon](/img/vue_icon.png)</td>
+  <td><FrameworkIcon name="angular" className="framework-icon" /></td>
+  <td><FrameworkIcon name="react" className="framework-icon" /></td>
+  <td><FrameworkIcon name="svelte" className="framework-icon" /></td>
+  <td><FrameworkIcon name="vue" className="framework-icon" /></td>
   </tr>
   <tr>
   <td>[Angular](integrations/angular/howtostart-angular.md)</td>
-  <td>[React](integrations/react/quick-start.md)</td>
+  <td>[React](integrations/react/js-gantt-react.md)</td>
   <td>[Svelte](integrations/svelte/howtostart-svelte.md)</td>
   <td>[Vue.js](integrations/vue/howtostart-vue.md)</td>
   </tr>
@@ -27,49 +30,49 @@ Diese Anleitung beschreibt, wie Sie dhtmlxGantt mit einfachem JavaScript und HTM
 </table>
 
 
-## Erstellen eines einfachen Gantt-Diagramms
+## Erstellung eines grundlegenden Gantt-Diagramms
 
-Um ein einfaches Gantt-Diagramm auf einer Seite anzuzeigen, sind drei Schritte notwendig:
+Um ein grundlegendes Gantt-Diagramm auf der Seite anzuzeigen, folgen Sie 3 Schritten: 
 
-1. Fügen Sie die [dhtmlxGantt-Code-Dateien](/guides/initializing-gantt-chart.md#howtoaddganttsourcefilesintoaproject) zu Ihrer Seite hinzu.
-2. Erstellen Sie einen DIV-Container, in dem das Diagramm angezeigt werden soll.
-3. Initialisieren Sie dhtmlxGantt in diesem Container mit der [init](api/method/init.md) Methode. Diese Methode akzeptiert ein HTML-Containerelement oder dessen ID als Parameter, in dem das Gantt-Diagramm gerendert wird.
+1. Binden Sie die [dhtmlxGantt-Code-Dateien](guides/initializing-gantt-chart.md#how-to-add-gantt-source-files-into-a-project) auf der Seite ein.
+2. Erstellen Sie einen DIV-Container auf der Seite.
+3. Initialisieren Sie dhtmlxGantt im neu erstellten Container mit der [init](api/method/init.md) Methode. Als Parameter akzeptiert die Methode einen HTML-Container (oder dessen ID), in dem das Gantt-Diagramm angezeigt wird.
 
-~~~html
+~~~html {10}
 <!DOCTYPE html>
 <html>
 <head>
-   <script src="codebase/dhtmlxgantt.js"></script>
-   <link href="codebase/dhtmlxgantt.css" rel="stylesheet">
+    <script src="codebase/dhtmlxgantt.js"></script>
+    <link href="codebase/dhtmlxgantt.css" rel="stylesheet">
 </head>
 <body>
     <div id="gantt_here" style='width:1000px; height:400px;'></div>
     <script type="text/javascript"> 
-        gantt.init("gantt_here");   /*!*/                        
+        gantt.init("gantt_here");                         
     </script>
 </body>
 </html>
 ~~~
 
-![/init_gantt_front.png](/img/init_gantt_front.png)
+![guides/init_gantt_front.png](/img/init_gantt_front.png)
 
 
-[Basic initialization](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
-
- 
+**Verwandtes Beispiel**: [Grundlegende Initialisierung](https://docs.dhtmlx.com/gantt/samples/01_initialization/01_basic_init.html)
  
 ## Wie man Gantt-Quelldateien zu einem Projekt hinzufügt
 
-Je nach Art der Anwendung, die Sie erstellen, gibt es verschiedene Möglichkeiten, die Gantt-Quelldateien zu Ihrem Projekt hinzuzufügen:
+Sie können Gantt-Code-Dateien je nach Art der von Ihnen erstellten Anwendung auf verschiedene Weisen in Ihr Projekt einbinden:
 
-- [Dateien mit dem &#60;script&#62;-Tag einbinden](#scripttag)
+- [Dateien über das &#60;script&#62>-Tag einbinden](#include-files-via-the-script-tag)
 - [Dateien in ES6/7- und TypeScript-Anwendungen importieren](#moduleimport)
-- [Dateien in RequireJS-basierten Anwendungen einbinden](#requirejsimport)
+- [Gantt mit Vite verwenden](#using-gantt-with-vite)
+- [Svelte-Produktionsbuild](#svelte-production-build)
+- [Dateien in eine RequireJS-basierte Anwendung einbinden](#include-files-into-a-requirejs-based-app)
 
 
-## Dateien über das &#60;script&#62;-Tag einbinden
+## Dateien über das &#60;script&#62>-Tag einbinden
 
-Um dhtmlxGantt zu verwenden, müssen Sie zwei Dateien zu Ihrer Seite hinzufügen:
+Für dhtmlxGantt müssen auf der Seite zwei Code-Dateien eingebunden werden:
 
 - **dhtmlxgantt.js**
 - **dhtmlxgantt.css**
@@ -79,34 +82,33 @@ Um dhtmlxGantt zu verwenden, müssen Sie zwei Dateien zu Ihrer Seite hinzufügen
 <link href="codebase/dhtmlxgantt.css" rel="stylesheet">
 ~~~
 
-Werfen wir einen kurzen Blick auf die Struktur des dhtmlxGantt-Pakets, um zu sehen, wo sich diese Dateien befinden.
+Lassen Sie sich schnell die Struktur des dhtmlxGantt-Pakets anzeigen, um herauszufinden, wo sich die Dateien befinden. 
 
-Die Hauptordner und -dateien im dhtmlxGantt-Paket sind:
+Hauptordner und Dateien, die das dhtmlxGantt-Paket bilden, sind:
 
-- <b>sources</b> - Quellcodedateien der Bibliothek, unminifiziert und gut lesbar. Diese dienen hauptsächlich zum Debuggen von Komponenten.
-- <b>samples</b> - Beispiel-Codebeispiele.
-- <b>codebase</b> - Minifizierte Code-Dateien für den produktiven Einsatz. <b>Sie sollten die Dateien aus diesem Ordner in Ihren Anwendungen verwenden.</b>
+- <b>sources</b> - die Quellcodedateien der Bibliothek. Die Dateien sind nicht minimiert und gut lesbar. Das Paket ist überwiegend dafür gedacht, Bausteine zu debuggen.
+- <b>samples</b> - die Code-Beispiele
+- <b>codebase</b> - die gepackten Code-Dateien der Bibliothek. Diese Dateien haben eine deutlich geringere Größe und sind für den Einsatz in der Produktion gedacht. <b>In Ihren Apps müssen Sie Dateien aus diesem Ordner verwenden</b>
 
-## Dateien in ES6/7- und TypeScript-Anwendungen importieren
+## Dateien in ES6/7- und TypeScript-Anwendungen importieren {#moduleimport}
 
-Verwenden Sie diesen Befehl, um die Dateien zu importieren:
+Verwenden Sie folgenden Befehl, um Dateien zu importieren:
 
-~~~js
+~~~jsx
 import { gantt } from 'dhtmlx-gantt';
 ~~~
 
-Für die Commercial-, Enterprise- oder Ultimate-Versionen verwenden Sie:
+Für die Commercial-, Enterprise- oder Ultimate-Version sieht der Befehl so aus:
 
-~~~js
+~~~jsx
 import { gantt, Gantt } from 'dhtmlx-gantt';
 ~~~
 
-## Verwendung von Gantt mit Vite
+## Gantt mit Vite verwenden
 
-Wenn Ihr Projekt Vite verwendet, fügen Sie diese Einstellung zu Ihrer **vite.config.js** Datei hinzu, damit Gantt korrekt eingebunden wird:
+Wenn Sie Vite in Ihrem Projekt verwenden, ist folgende Einstellung für die **vite.config.js**-Datei erforderlich, um sicherzustellen, dass Gantt korrekt in die App eingebunden wird:
 
-**vite.config.js**
-~~~js 
+~~~jsx title="vite.config.js" 
 optimizeDeps: {
     include: [
         'dhtmlx-gantt',
@@ -114,17 +116,16 @@ optimizeDeps: {
 }
 ~~~
 
-### Svelte Production Build
+## Svelte-Produktionsbuild
 
-Wenn Sie [Gantt in einer Svelte-App](/integrations/svelte/howtostart-svelte.md) verwenden, fügen Sie Folgendes für den Produktions-Build zur **vite.config.js** Datei hinzu. Ersetzen Sie *gantt_8.0.6_evaluation* durch den Pfad zu Ihrem Gantt-Ordner:
+Wenn Sie [Gantt in einer Svelte-App](integrations/svelte/howtostart-svelte.md) verwenden, müssen Sie die folgende Einstellung in die **vite.config.js**-Datei für den Produktionsbuild aufnehmen, wobei der Ordner *gantt_9.0.14_evaluation* durch den Pfad zu Ihrem Gantt-Ordner ersetzt wird:
 
-**vite.config.js**
-~~~js 
+~~~jsx title="vite.config.js" 
 build: {
     commonjsOptions: {
         include: [
             "node_modules",
-            "gantt_8.0.6_evaluation/codebase/dhtmlxgantt.js"
+            "gantt_9.0.14_evaluation/codebase/dhtmlxgantt.js"
         ]
     },
 }
@@ -132,82 +133,76 @@ build: {
 
 ## Dateien in eine RequireJS-basierte Anwendung einbinden
 
-Um dhtmlxGantt-Dateien in einer RequireJS-basierten Anwendung hinzuzufügen, verwenden Sie folgendes Muster:
+Um dhtmlxGantt-Dateien in eine RequireJS-basierte Anwendung einzubinden, müssen Sie der untenstehenden Logik folgen, wie im Beispiel gezeigt:
 
-~~~js
-requirejs(["codebase/dhtmlxgantt"], function(dhx){
-  var gantt = dhx.gantt;
-  var Gantt = dhx.Gantt; // für Enterprise-Builds
- 
-  gantt.init("gantt_here");
-  gantt.parse({
-    data: [
-      { id:1, text:"Project #2", start_date:"01-04-2018", 
-          duration:18, progress:0.4, open:true },
-      { id:2, text:"Task #1", start_date:"02-04-2018", 
-          duration:8, progress:0.6, parent:1 },
-      { id:3, text:"Task #2", start_date:"11-04-2018", 
-          duration:8, progress:0.6, parent:1 }
-    ],
-    links: [
-      { id:1, source:1, target:2, type:"1" },
-      { id:2, source:2, target:3, type:"0" }
-    ]
-  });
+~~~jsx
+requirejs(["codebase/dhtmlxgantt"], (dhx) => {
+    const gantt = dhx.gantt;
+    const Gantt = dhx.Gantt; // für Enterprise-Builds
+
+    gantt.init("gantt_here");
+    gantt.parse({
+        tasks: [
+            { id: 1, text: "Project #2", start_date: "01-04-2025", duration: 18, progress: 0.4, open: true },
+            { id: 2, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6, parent: 1 },
+            { id: 3, text: "Task #2", start_date: "11-04-2025", duration: 8, progress: 0.6, parent: 1 }
+            ],
+        links: [
+            { id: 1, source: 1, target: 2, type: "1" },
+            { id: 2, source: 2, target: 3, type: "0" }
+        ]
+    });
 });
 ~~~
 
-Die dhtmlxGantt-Bibliothek gibt ein Objekt mit den Feldern `gantt` und `Gantt` zurück (letzteres für Commercial-, Enterprise- oder Ultimate-Versionen) - diese entsprechen den *gantt*- und *Gantt*-Objekten, wie [hier](/guides/multiple-gantts.md) beschrieben.
+Die dhtmlxGantt-Bibliothek gibt ein Objekt mit den Feldern `gantt` und `Gantt` zurück (in kommerziellen, Enterprise- oder Ultimate-Versionen) - Die Objekte *gantt* und *Gantt*, wie unten beschrieben, finden Sie [hier](guides/multiple-gantts.md).
 
 :::note
-Wenn Sie Gantt mit benutzerdefinierten Erweiterungen in RequireJS verwenden, stellen Sie sicher, dass Sie die `shim`-Konfiguration für RequireJS angeben und die Abhängigkeiten der Erweiterungen direkt auf Gantt setzen.
+Wenn Sie Gantt mit benutzerdefinierten Erweiterungen in RequireJS verwenden, sollten Sie die `shim`-Konfiguration für RequireJS angeben und die Abhängigkeiten der Erweiterungen direkt von Gantt aus festlegen.
 :::
 
-Hier ein Beispiel, wie eine benutzerdefinierte Erweiterungsdatei *custom_tooltip_plugin.js* korrekt konfiguriert wird:
+Das folgende Beispiel demonstriert, wie eine benutzerdefinierte Erweiterungsdatei *custom_tooltip_plugin.js* korrekt gesetzt werden kann:
 
-~~~js
+~~~jsx
 requirejs.config({
-  paths: {
-    "dhtmlxgantt": "../../codebase/dhtmlxgantt",
-    "ext/dhtmlxgantt_custom_tooltip": "../custom_tooltip_plugin"
-  },
-  shim: {
-    "ext/dhtmlxgantt_custom_tooltip": ["dhtmlxgantt"]
-  }
+    paths: {
+        "dhtmlxgantt": "../../codebase/dhtmlxgantt",
+        "ext/dhtmlxgantt_custom_tooltip": "../custom_tooltip_plugin"
+    },
+    shim: {
+        "ext/dhtmlxgantt_custom_tooltip": ["dhtmlxgantt"]
+    }
 });
  
-requirejs(["dhtmlxgantt"], 
-function (dhx) {
-  var gantt = dhx.gantt;
+requirejs(["dhtmlxgantt"], (dhx) => {
+    const gantt = dhx.gantt;
 
-  var date_to_str = gantt.date.date_to_str(gantt.config.task_date);
-  var today = new Date(2018, 3, 5);
-  gantt.addMarker({
-    start_date: today,
-    css: "today",
-    text: "Today",
-    title: "Today: " + date_to_str(today)
-  });
- 
-  gantt.init("gantt_here");
-  gantt.parse({
-    data: [
-      { id:1, text:"Project #2", start_date:"01-04-2018",
-          duration:18, progress:0.4, open:true },
-      { id:2, text:"Task #1", start_date:"02-04-2018", 
-          duration:8, progress:0.6, parent:1 },
-      { id:3, text:"Task #2", start_date:"11-04-2018", 
-          duration:8, progress:0.6, parent:1 }
-    ],
-    links: [
-      { id:1, source:1, target:2, type:"1" },
-      { id:2, source:2, target:3, type:"0" }
-    ]
-  });
+    const date_to_str = gantt.date.date_to_str(gantt.config.task_date);
+    const today = new Date();
+
+    gantt.addMarker({
+        start_date: today,
+        css: "today",
+        text: "Today",
+        title: `Today: ${date_to_str(today)}`
+    });
+
+    gantt.init("gantt_here");
+    gantt.parse({
+        tasks: [
+            { id: 1, text: "Project #2", start_date: "01-04-2025", duration: 18, progress: 0.4, open: true },
+            { id: 2, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6, parent: 1 },
+            { id: 3, text: "Task #2", start_date: "11-04-2025", duration: 8, progress: 0.6, parent: 1 }
+        ],
+        links: [
+            { id: 1, source: 1, target: 2, type: "1" },
+            { id: 2, source: 2, target: 3, type: "0" }
+        ]
+    });
 });
 ~~~
 
-Stellen Sie sicher, dass der Modulname für jede Datei innerhalb des Pakets als *relativer Pfad innerhalb des 'codebase'-Ordners* plus *Dateiname* angegeben wird, zum Beispiel:
+Überprüfen Sie, dass der Modulname für jede Datei im Paket als *relativer Pfad innerhalb des 'codebase'-Ordners des Pakets* plus *dem Dateinamen* angegeben ist, z. B.:
 
 **Kernbibliothek:**
 
@@ -216,16 +211,15 @@ Stellen Sie sicher, dass der Modulname für jede Datei innerhalb des Pakets als 
 
 ## Vollbildmodus
 
-Damit das Gantt-Diagramm im Vollbildmodus in verschiedenen Browsern korrekt angezeigt wird, fügen Sie diesen Stil zu Ihrer Seite hinzu:
+Um ein Gantt-Diagramm im Vollbildmodus in verschiedenen Browsern korrekt anzuzeigen, definieren Sie den folgenden Stil auf der Seite:
 
 ~~~html
 <style type="text/css" media="screen">
-    html, body{
-        margin:0px;
-        padding:0px;
-        height:100%;
-        overflow:hidden;
-    }   
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
 </style>
 ~~~
-

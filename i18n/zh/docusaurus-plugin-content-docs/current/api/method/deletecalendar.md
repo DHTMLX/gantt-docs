@@ -1,20 +1,20 @@
 ---
 sidebar_label: deleteCalendar
-title: deleteCalendar method
-description: "使用日历的 id 删除任务日历"
+title: deleteCalendar 方法
+description: "通过其 ID 删除任务日历"
 ---
 
 # deleteCalendar
 
 ### Description
 
-@short: 使用日历的 id 删除任务日历
+@short: 通过其 ID 删除任务日历
 
 @signature: deleteCalendar: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -        日历的 id
+- `id` - (必填) *string | number* - 日历的 ID
 
 ### Example
 
@@ -34,12 +34,11 @@ gantt.deleteCalendar("custom");
 
 ### Details
 
-版本 4.2 引入
+在版本 4.2 中新增
 
 ### Related API
 - [addCalendar](api/method/addcalendar.md)
 - [createCalendar](api/method/createcalendar.md)
 
 ### Related Guides
-- [工作时间计算](guides/working-time.md)
-
+- [Work Time Calculation](guides/working-time.md#multipleworktimecalendars)

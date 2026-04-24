@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_task_cells
-title: show_task_cells config
-description: "Schaltet die Spaltenränder im Chart-Bereich ein oder aus"
+title: show_task_cells Konfiguration
+description: "Aktiviert/deaktiviert die Anzeige von Spaltenrändern im Diagrammbereich"
 ---
 
 # show_task_cells
 
 ### Description
 
-@short: Schaltet die Spaltenränder im Chart-Bereich ein oder aus
+@short: Aktiviert/deaktiviert die Anzeige von Spaltenrändern im Diagrammbereich
 
 @signature: show_task_cells: boolean
 
@@ -21,8 +21,8 @@ gantt.config.show_task_cells = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Details
 
-Wenn diese Eigenschaft auf *'false'* gesetzt wird, werden die einzelnen Zellen nicht mehr gezeichnet, sondern nur noch die Zeilen angezeigt.<br> Dies kann die Performance verbessern, insbesondere bei einer großen Anzahl von Tasks im Chart.
+Wenn die Eigenschaft auf *'false'* gesetzt ist, deaktiviert sie das Rendering der einzelnen Zellen – es werden nur Zeilen gerendert. Dies kann die Leistung erhöhen, insbesondere wenn im Diagramm eine große Anzahl von Aufgaben angezeigt wird.

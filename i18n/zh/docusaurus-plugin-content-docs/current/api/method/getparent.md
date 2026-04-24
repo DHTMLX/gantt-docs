@@ -1,23 +1,23 @@
 ---
 sidebar_label: getParent
-title: getParent method
-description: "获取父任务的id"
+title: getParent 方法
+description: "返回父任务的 ID"
 ---
 
 # getParent
 
 ### Description
 
-@short: 获取父任务的id
+@short: 返回父任务的 ID
 
 @signature: getParent: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    任务的id
+- `id` - (required) *string | number* -    任务 ID
 
 ### Returns
-- ` id` - (string | number) - 父任务的id。如果指定的任务没有父任务，则返回根任务的id
+- ` id` - (string | number) - 父任务的 ID。如果指定任务没有父任务，则为根节点的 ID
 
 ### Example
 
@@ -46,5 +46,4 @@ gantt.getParent("p_1"); //-> 0 (默认根id) /*!*/
 - [getSiblings](api/method/getsiblings.md)
 
 ### Related Guides
-- [任务的父子关系](guides/task-tree-operations.md)
-
+- [Task Parent/Child](guides/task-tree-operations.md)

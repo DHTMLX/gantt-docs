@@ -1,14 +1,14 @@
 ---
 sidebar_label: open_tree_initially
-title: open_tree_initially config
-description: "기본적으로 모든 브랜치를 펼칩니다"
+title: open_tree_initially 설정
+description: "처음에 모든 브랜치를 엽니다"
 ---
 
 # open_tree_initially
 
 ### Description
 
-@short: 기본적으로 모든 브랜치를 펼칩니다
+@short: 처음에 모든 브랜치를 엽니다
 
 @signature: open_tree_initially: boolean
 
@@ -20,4 +20,4 @@ gantt.config.open_tree_initially = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**기본값:** false

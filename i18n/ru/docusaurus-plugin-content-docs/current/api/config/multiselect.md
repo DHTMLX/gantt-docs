@@ -1,30 +1,30 @@
 ---
 sidebar_label: multiselect
-title: multiselect config
-description: "управляет возможностью выбора нескольких задач одновременно на диаграмме Ганта"
+title: Конфигурация multiselect
+description: "включает/выключает выбор нескольких задач в диаграмме Ганта"
 ---
 
 # multiselect
 
 ### Description
 
-@short: Управляет возможностью выбора нескольких задач одновременно на диаграмме Ганта
+@short: Включает/выключает многозадачный выбор в диаграмме Ганта
 
 @signature: multiselect: boolean
 
 ### Example
 
 ~~~jsx
-gantt.config.multiselect = false; // отключает выбор нескольких задач
+gantt.config.multiselect = false; //disables multi-task selection
 gantt.init('gantt_here');
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 
 :::note
- Эта настройка является частью расширения **multiselect**, поэтому убедитесь, что плагин [multiselect](guides/extensions-list.md#multitaskselection) включен. Подробнее можно узнать в статье [Множественный выбор задач](guides/multiselection.md). 
+Эта опция определяется в расширении **multiselect**, поэтому вам нужно активировать плагин [multiselect](guides/extensions-list.md#multitaskselection). Подробности читайте в статье [Multi-Task Selection](guides/multiselection.md).
 :::
 
 ### Related API
@@ -36,5 +36,4 @@ gantt.init('gantt_here');
 - [toggleTaskSelection](api/method/toggletaskselection.md)
 
 ### Related Guides
-- [Множественный выбор задач](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

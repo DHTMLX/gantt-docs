@@ -1,57 +1,53 @@
 ---
 sidebar_label: duration_unit
 title: duration_unit config
-description: "устанавливает единицу измерения длительности"
+description: "устанавливает единицу продолжительности"
 ---
 
 # duration_unit
 
 ### Description
 
-@short: Устанавливает единицу измерения длительности
+@short: Устанавливает единицу продолжительности
 
 @signature: duration_unit: string
 
 ### Example
 
 ~~~jsx
-gantt.config.duration_unit = "hour";//один час
+gantt.config.duration_unit = "hour";//an hour
 gantt.config.duration_step = 3; 
-//если task.duration = 2, задача будет длиться 6 часов
+//so if task.duration = 2, the task will long 6 hours
 ~~~
 
-**Default value:** "day"
+**Default value:**"day" 
 
 ### Related samples
-- [Decimal durations for tasks](https://docs.dhtmlx.com/gantt/samples/09_worktime/09_decimal_durations.html)
+- [Десятичные продолжительности для задач](https://docs.dhtmlx.com/gantt/samples/09_worktime/09_decimal_durations.html)
 
 ### Details
 
-Когда разные задачи требуют различных единиц измерения длительности - например, некоторые отображаются в часах, а другие в днях - [formatter module](guides/working-time.md#taskdurationindecimalformat) помогает управлять этим.
+Если вам нужно иметь разные единицы продолжительности для разных задач, то есть отображать продолжительности некоторых задач в часах, а для некоторых — в "days", можно воспользоваться [formatter module](guides/working-time.md#taskdurationindecimalformat). 
 
-В таких случаях **duration_unit** следует установить в наименьшую единицу, которая может использоваться для любой задачи:
+В таком случае **duration_unit** должно быть установлено в минимальную продолжительность, которую ваши задачи могут иметь:
 
 ~~~js
 gantt.config.duration_step = 1;
 gantt.config.duration_unit = "minute";
 
-// или
+ // или
 
 gantt.config.duration_step = 1;
 gantt.config.duration_unit = "hour";
 ~~~
 
-Плагин formatter позволяет отображать длительности в нужных вам единицах. Он также даёт возможность пользователям вводить длительности с использованием разных единиц.
+И плагин formatter позволит отображать продолжительности в нужных вам единицах. Конечным пользователям также будет доступен ввод продолжительностей в разных единицах.
 
-<br>
-Если вы выбираете "hour" или "minute" в качестве duration_unit, рекомендуется установить [duration_step](api/config/duration_step.md) равным 1. Такая настройка активирует определённые оптимизации для расчёта рабочего времени, которые работают только при шаге равном 1. Учтите, что между "оптимизированным" и "неоптимизированным" режимами есть значительная разница в производительности.
+Если вы укажете единицу продолжительности как "hour" или "minute", рекомендуется установить [duration_step](api/config/duration_step.md) равным 1.
+Такое сочетание активирует определенные optimizations для вычисления рабочего времени, которые работают только при шаге 1. Обратите внимание, что существуют значительные различия в производительности между режимами "optimized" и "non-optimized".
 
 ### Related API
 - [duration_step](api/config/duration_step.md)
-- @related: [Расчёт рабочего времени](guides/working-time.md#taskdurationindecimalformat)
-- @relatedsample: [Decimal durations for tasks](https://docs.dhtmlx.com/gantt/samples/09_worktime/09_decimal_durations.html)
 
 ### Related Guides
-- [Расчёт рабочего времени](guides/working-time.md#taskdurationindecimalformat)
-- @relatedsample: [Decimal durations for tasks](https://docs.dhtmlx.com/gantt/samples/09_worktime/09_decimal_durations.html)
-
+- [Расчет рабочего времени](guides/working-time.md#taskdurationindecimalformat)

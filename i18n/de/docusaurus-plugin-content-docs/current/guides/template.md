@@ -1,11 +1,11 @@
 ---
-title: "Template Control"
-sidebar_label: "Template Control"
+title: "Vorlagensteuerung"
+sidebar_label: "Vorlagensteuerung"
 ---
 
-# Template Control
+# Vorlagensteuerung
 
-Dies ist ein Container, der HTML-Inhalt enthält.
+Ein Container mit etwas HTML-Inhalt darin.
 
 ![template_control](/img/template_control.png)
 
@@ -26,14 +26,14 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 });
 ~~~
 
-[Template control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/05_template.html)
+[Vorlagensteuerung](https://docs.dhtmlx.com/gantt/samples/05_lightbox/05_template.html)
 
 
 ## Initialisierung
 
-Um das **template**-Steuerelement im Lightbox-Dialog einzubinden, gehen Sie wie folgt vor:
+Um die **template**-Steuerung zur Lightbox hinzuzufügen, befolgen Sie diese Schritte:
 
-1) Fügen Sie eine Sektion zur Lightbox-Konfiguration hinzu:
+1) Fügen Sie der Lightbox-Konfiguration einen Abschnitt hinzu:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -43,13 +43,13 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2) Definieren Sie ein Label für die Sektion:
+2) Legen Sie eine Bezeichnung für den Abschnitt fest:
 
 ~~~js
 gantt.locale.labels.section_template = "Details";
 ~~~
 
-3) Füllen Sie den Inhalt des Steuerelements über ein Ereignis, zum Beispiel das [onBeforeLightbox](api/event/onbeforelightbox.md)-Ereignis:
+3) Legen Sie den Inhalt des Steuerelements mithilfe eines Ereignisses fest, z. B. des [onBeforeLightbox](api/event/onbeforelightbox.md)-Ereignisses:
 
 ~~~js
 gantt.attachEvent("onBeforeLightbox", function(id) {
@@ -63,11 +63,10 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 ## Eigenschaften
 
-Hier sind einige wichtige Eigenschaften, die häufig mit dem **template**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
+Die folgenden Eigenschaften sind überwiegend wichtig und werden typischerweise für die **template**-Steuerung festgelegt (siehe die vollständige Liste [hier](api/config/lightbox.md)):
 
-- **name** - (*string*) gibt den Namen der Sektion an
-- **height** - (*number*) legt die Höhe der Sektion fest
-- **map_to** - (*string*) die Daten-Eigenschaft, der die Sektion zugeordnet wird
-- **type** - (*string*) definiert den Typ des [section control](guides/default-edit-form.md#lightboxcontrols)
-- **focus** - (*boolean*) wenn auf *true* gesetzt, erhält die Sektion beim Öffnen der Lightbox den Fokus
-
+- **name** - (*string*) der Abschnittsname
+- **height** - (*number*) die Abschnittshöhe
+- **map_to** - (*string*) der Name einer Daten-Eigenschaft, die dem Abschnitt zugeordnet wird
+- **type** - (*string*) der Typ des [section control](guides/default-edit-form.md#lightboxcontrols)
+- **focus** - (*boolean*) wenn auf *true* gesetzt, erhält der Abschnitt beim Öffnen der Lightbox den Fokus

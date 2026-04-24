@@ -1,14 +1,14 @@
 ---
 sidebar_label: autoscroll
-title: autoscroll config
-description: "ermöglicht es dem Gantt-Diagramm, beim Ziehen einer Aufgabe oder eines Links über den sichtbaren Browserbereich hinaus automatisch zu scrollen"
----
+title: Autoscroll-Konfiguration
+description: "aktiviert Autoscrolling, während Sie eine Aufgabe oder einen Link außerhalb des aktuellen Browserfensters ziehen"
+--- 
 
 # autoscroll
 
 ### Description
 
-@short: Ermöglicht es dem Gantt-Diagramm, beim Ziehen einer Aufgabe oder eines Links über den sichtbaren Browserbereich hinaus automatisch zu scrollen
+@short: Aktiviert Autoscrolling, während Sie eine Aufgabe oder einen Link außerhalb des aktuellen Browserfensters ziehen
 
 @signature: autoscroll: boolean
 
@@ -19,29 +19,29 @@ gantt.config.autoscroll = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
+
 
 ### Related samples
-- [Working with 30000 tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/13_smart_rendering.html)
+- [Arbeiten mit 30000 Aufgaben](https://docs.dhtmlx.com/gantt/samples/02_extensions/13_smart_rendering.html)
 
 ### Details
 
-Bis Version 7.1.11 war es erforderlich, [die reservierten Views und deren spezifische IDs für Scrollbars](guides/layout-config.md#requiredviewsandsettings) zu verwenden, wenn die **autoscroll**-Funktion aktiviert wurde.
+Beachten Sie, dass bis Version 7.1.11 Sie [die reservierten Ansichten und deren IDs für Scrollleisten] verwenden müssen, während Sie die **autoscroll**-Option verwenden. 
 
 ~~~js
-// horizontale Scrollbar:
+// horizontal scrollbar:
 {view: "scrollbar", id: "scrollHor"}
-// vertikale Scrollbar:
+// vertical scrollbar:
 {view: "scrollbar", id: "scrollVer"}
 ~~~
 
-Die Verwendung anderer IDs zeigt zwar weiterhin die Scrollbars an, aber die autoscroll-Funktionalität funktioniert dann nicht korrekt.
+Wenn Sie andere Namen verwenden, funktionieren die Scrollleisten zwar, aber die "autoscroll" Funktionalität wird nicht funktionieren. 
 
-Ab Version 7.1.11 können Scrollbars beliebige Namen haben, ohne dass dies autoscroll beeinträchtigt.
+Ab Version 7.1.11 können Sie beliebige Namen für Scrollleisten verwenden.
 
 ### Related API
 - [autoscroll_speed](api/config/autoscroll_speed.md)
 
 ### Change log
-- hinzugefügt in Version 4.2
-
+- in Version 4.2 hinzugefügt

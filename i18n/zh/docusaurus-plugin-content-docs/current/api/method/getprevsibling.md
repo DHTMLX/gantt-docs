@@ -1,34 +1,34 @@
 ---
 sidebar_label: getPrevSibling
-title: getPrevSibling method
-description: "获取同一级别中前一个任务的 id"
+title: getPrevSibling 方法
+description: "返回同一级别的前一个任务的 ID"
 ---
 
 # getPrevSibling
 
 ### Description
 
-@short: 获取同一级别中前一个任务的 id
+@short: 返回同一级别的前一个任务的 ID
 
 @signature: getPrevSibling: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    任务的 id
+- `id` - (必填) *string | number* -  任务 ID
 
 ### Returns
-- ` prevSibling` - (string, number) - 前一个兄弟任务的 id
+- `prevSibling` - (string, number) - 前一个同级的任务 ID
 
 ### Example
 
 ~~~jsx
 const tasks = {
   data:[
-     {id:"p_1", text:"项目 #1", start_date:"01-04-2013", duration:18, 
+     {id:"p_1", text:"Project #1", start_date:"01-04-2013", duration:18, 
      open:true},
-     {id:"t_1", text:"任务 #1", start_date:"02-04-2013", duration:8,
+     {id:"t_1", text:"Task #1", start_date:"02-04-2013", duration:8,
      parent:"p_1"},
-     {id:"t_2", text:"任务 #2", start_date:"11-04-2013", duration:8,
+     {id:"t_2", text:"Task #2", start_date:"11-04-2013", duration:8,
      parent:"p_1"}
    ]
 };
@@ -47,5 +47,4 @@ gantt.getPrevSibling("t_1"); ->  null (如果没有前一个兄弟任务) /*!*/
 - [getChildren](api/method/getchildren.md)
 
 ### Related Guides
-- [任务的父子关系](guides/task-tree-operations.md)
-
+- [Task Parent/Child](guides/task-tree-operations.md)

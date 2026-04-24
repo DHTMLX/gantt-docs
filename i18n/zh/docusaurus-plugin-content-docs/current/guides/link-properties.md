@@ -5,11 +5,12 @@ sidebar_label: "链接属性"
 
 # 链接属性
 
-本页列出了链接对象可以拥有的所有属性。
+在本页面，你将看到链接对象可能包含的所有属性的完整列表。
 
-如需了解任务对象属性的完整概述，请参阅 [Task Properties](guides/task-properties.md) 文章。
+任务对象的完整属性列表请参阅 [任务属性](guides/task-properties.md) 文章。
 
-## 必需属性
+
+## 必填属性
 
 <table>
   <tbody>
@@ -19,33 +20,33 @@ sidebar_label: "链接属性"
   <tr>
   <td><b class="subproperty">id</b></td>
   <td><i>string | number</i></td>
-  <td>链接的唯一标识符</td>
+  <td>链接的 id</td>
   </tr>
   <tr>
   <td><b class="subproperty">source</b></td>
   <td><i>string | number</i></td>
-  <td>依赖关系起始任务的id</td>
+  <td>依赖关系将从该任务的 id 开始</td>
   </tr>
   <tr>
   <td><b class="subproperty">target</b></td>
   <td><i>string | number</i></td>
-  <td>依赖关系结束任务的id</td>
+  <td>依赖关系将以该任务的 id 结束</td>
   </tr>
   <tr>
   <td><b class="subproperty">type</b></td>
   <td><i>string</i></td>
-  <td>依赖类型。可用选项在 [links](api/config/links.md) 对象中定义。默认情况下，这些值为: <ul> <li><b>"0"</b> - 'finish_to_start'.</li> <li><b>"1"</b> - 'start_to_start'.</li> <li><b>"2"</b> - 'finish_to_finish'.</li> <li><b>"3"</b> - 'start_to_finish'.</li> </ul></td>
+  <td>依赖类型。可用值存储在 [links](api/config/links.md) 对象中。默认值为：<ul> <li><b>"0"</b> - 'finish_to_start'.</li> <li><b>"1"</b> - 'start_to_start'.</li> <li><b>"2"</b> - 'finish_to_finish'.</li> <li><b>"3"</b> - 'start_to_finish'.</li> </ul></td>
   </tr>
   </tbody>
 </table>
 
-如果你希望为依赖类型使用不同于默认值（'0','1','2'）的值，可以通过修改 [links](api/config/links.md) 对象中的相关属性进行自定义。例如:
+如果你想以除了默认值 ('0','1','2') 之外的方式存储依赖类型，可以修改 [links](api/config/links.md) 对象的相关属性的值。举例：
 
 ~~~js
 gantt.config.links.start_to_start = "start2start";
 ~~~
 
-请注意，此更改只影响依赖类型的存储方式，不影响其显示方式。
+注意，这些值仅影响依赖类型的存储方式，而不影响可视化的行为。 
 
 ## 可选属性
 
@@ -57,17 +58,17 @@ gantt.config.links.start_to_start = "start2start";
   <tr>
   <td><b class="subproperty">lag</b></td>
   <td><i>number</i></td>
-  <td>[任务之间的滞后时间](guides/auto-scheduling.md)</td>
+  <td>[任务的滞后时间](guides/auto-scheduling.md#settinglagandleadtimesbetweentasks)</td>
   </tr>
   <tr>
   <td><b class="subproperty">readonly</b></td>
   <td><i>boolean</i></td>
-  <td>将链接标记为[只读](guides/readonly-mode.md)</td>
+  <td>可以将链接标记为 [只读](guides/readonly-mode.md)</td>
   </tr>
   <tr>
   <td><b class="subproperty">editable</b></td>
   <td><i>boolean</i></td>
-  <td>将链接标记为[可编辑](guides/readonly-mode.md)</td>
+  <td>可以将链接标记为 [可编辑](guides/readonly-mode.md#details-of-the-editable_property-config-option)</td>
   </tr>
   </tbody>
 </table>
@@ -87,4 +88,3 @@ var data = {
     ]
 };
 ~~~
-

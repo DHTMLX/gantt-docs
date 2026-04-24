@@ -1,23 +1,23 @@
 ---
 sidebar_label: grid_open
-title: grid_open template
-description: "указывает иконку, используемую для индикатора открытия/закрытия в колонке дерева"
+title: Шаблон grid_open
+description: "задает иконку знака открытия/закрытия в столбце дерева"
 ---
 
 # grid_open
 
 ### Description
 
-@short: Указывает иконку, используемую для индикатора открытия/закрытия в колонке дерева
+@short: Указывает иконку для знака открытия/закрытия в столбце дерева
 
-@signature: grid_open: (task: Task) =\> string;
+@signature: grid_open: (task: Task) => string;
 
 ### Parameters
 
 - `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` text` - (string) - html-текст, который будет отображаться в gantt
+- ` text` - (string) - HTML-текст, который будет отрисован в gantt
 
 ### Example
 
@@ -29,5 +29,5 @@ gantt.templates.grid_open = function(item) {
 ~~~
 
 ### Related Guides
-- [Настройка древовидной колонки](guides/tree-column.md)
+- [Настройка столбца дерева](guides/tree-column.md)
 - [Шаблоны грида](guides/table-templates.md)

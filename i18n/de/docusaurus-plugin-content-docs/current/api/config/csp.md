@@ -1,14 +1,14 @@
 ---
 sidebar_label: csp
-title: csp config
-description: "steuert, wie Datumformatierungsmethoden intern implementiert werden"
+title: CSP-Konfiguration
+description: "definiert die interne Implementierung des Codes der Datumsformatierungsfunktionen"
 ---
 
-# csp
+# CSP
 
 ### Description
 
-@short: Steuert, wie Datumformatierungsmethoden intern implementiert werden
+@short: Definiert die interne Implementierung des Codes der Datumsformatierungsfunktionen
 
 @signature: csp: boolean | string
 
@@ -20,41 +20,42 @@ gantt.config.csp = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** "auto"
+**Standardwert:** "auto"
 
 ### Details
 
-Einige Laufzeitumgebungen, wie Salesforce Lightning, können verhindern, dass der dhtmlxGantt-Code ordnungsgemäß ausgeführt wird. Dies geschieht meist aufgrund der Content Security Policy (CSP), die in der App gesetzt ist. Die CSP kann die internen Hochleistungs-Datumformatierungsmethoden von Gantt als Sicherheitsrisiko ansehen.
+Die Laufzeitumgebung einiger Anwendungen (z. B. Salesforce Lightning) kann das Ausführen des dhtmlxGantt-Codes oft blockieren.
+Der Hauptgrund dafür ist die Festlegung der Content Security Policy in der App. 
+Die CSP kann die interne Hochleistungs-Ausführung von Datumsformatierungsmethoden in Gantt als unsicher interpretieren. 
 
-Die **csp**-Einstellung hilft, diese Blockierungen zu vermeiden, indem sie Ihnen ermöglicht, zu wählen, wie der Datumformatierungscode implementiert wird.
+Die **csp**-Konfiguration ermöglicht es, zu verhindern, dass der Gantt-Code durch Festlegung der Implementierungsweise blockiert wird. 
 
-Es gibt drei Möglichkeiten, mit den Methoden **gantt.date.date_to_str** und **gantt.date.str_to_date** umzugehen:
+Es gibt drei Modi der internen Implementierung der Methoden **gantt.date.date_to_str** und **gantt.date.str_to_date** der Datumsformatierung:
 
-- Standardmäßig ist die Einstellung auf *auto* gesetzt.
+- Standardmäßig ist die Konfiguration auf den Modus *auto* gesetzt. 
 
 ~~~js
 gantt.config.csp = "auto";
 ~~~
 
-In diesem Modus versucht Gantt, den schnellstmöglichen Datumformatierungscode zu verwenden. Wenn die App diesen Code blockiert, wechselt es zu einer kompatiblen Version.
+In diesem Modus versucht Gantt, den Hochleistungs-Code für die Datumsformatierung dort zu verwenden, wo es möglich ist. Falls die Ausführung des tatsächlich produktiven Codes durch die Anwendungseinstellungen blockiert wird, wird kompatibler Code verwendet.
 
-- Sie können Gantt zwingen, immer den kompatiblen Code zu verwenden, indem Sie die Einstellung auf *true* setzen.
+- Sie können den Gantt-Code durch Setzen der Option auf *true* immer kompatibel machen.
 
 ~~~js
 gantt.config.csp = true;
 ~~~
 
-Dies stellt sicher, dass der Code ohne Probleme ausgeführt wird, kann aber die Performance etwas verringern.
+In diesem Modus wird der Gantt-Code unter allen Umständen funktionieren, aber es kann zu Leistungsverschlechterungen kommen.
 
-- Oder Sie setzen die Einstellung auf *false*, um immer den Hochleistungscode zu verwenden.
+- Sie können auch den Wert der Konfiguration auf *false* setzen, um den Gantt-Code nur mit Hochleistung zu betreiben.
 
 ~~~js
 gantt.config.csp = false;
 ~~~
 
-Beachten Sie, dass dhtmlxGantt nicht richtig funktioniert, wenn die App diesen Hochleistungscode blockiert.
+Beachten Sie, dass die Ausführung von dhtmlxGantt stoppt, wenn die Code-Implementierung durch die Anwendungseinstellungen blockiert wird.
 
 ### Change log
-- Hinzugefügt in v7.0
-- Wenn auf *true* gesetzt, wird das [lightbox](api/config/lightbox.md) ab Version v7.1.13 innerhalb des Gantt-Containers gerendert
-
+- Hinzugefügt in Version 7.0
+- Wenn die Eigenschaft auf *true* gesetzt ist, wird die [lightbox](api/config/lightbox.md) im Gantt-Container gerendert (ab Version 7.1.13)

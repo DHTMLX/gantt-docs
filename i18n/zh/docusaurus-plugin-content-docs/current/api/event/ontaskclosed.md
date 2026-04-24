@@ -1,20 +1,20 @@
 ---
 sidebar_label: onTaskClosed
 title: onTaskClosed event
-description: "当一个分支被关闭时触发"
+description: "当分支已关闭时触发"
 ---
 
 # onTaskClosed
 
 ### Description
 
-@short: 当一个分支被关闭时触发
+@short: 当分支已关闭时触发
 
 @signature: onTaskClosed: (id: string | number) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - 分支的ID
+- `id` - (必填) *string | number* - 分支 ID
 
 ### Example
 
@@ -27,4 +27,3 @@ gantt.attachEvent("onTaskClosed", function(id) {
 ### Related API
 - [close](api/method/close.md)
 - [onTaskOpened](api/event/ontaskopened.md)
-

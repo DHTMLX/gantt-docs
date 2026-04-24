@@ -1,14 +1,14 @@
 ---
 sidebar_label: ignore_time
-title: ignore_time config
-description: "скрывает единицу времени на временной шкале"
+title: Конфигурация ignore_time
+description: "скрывает единицу времени на масштабе времени"
 ---
 
 # ignore_time
 
 ### Description
 
-@short: Скрывает единицу времени на временной шкале
+@short: Скрывает единицу времени на масштабе времени
 
 @signature: ignore_time: GanttCallback
 
@@ -24,7 +24,7 @@ gantt.ignore_time = function(date){
 
 ### Details
 
-Метод **ignore_time** принимает дату ячейки в качестве параметра. Если вы хотите скрыть определённую единицу времени, просто верните *true* для этой даты.
+Метод **ignore_time** — это функция, которая принимает дату ячейки в качестве параметра. Чтобы скрыть единицу, верните *true* для неё.
 
 ### Related Guides
-- [Скрытие временных единиц на шкале](guides/custom-scale.md)
+- [Скрытие единиц времени на шкале](guides/custom-scale.md)

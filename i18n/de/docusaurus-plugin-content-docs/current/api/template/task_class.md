@@ -1,7 +1,7 @@
 ---
 sidebar_label: task_class
-title: task_class template
-description: "definiert die CSS-Klasse, die auf die Task-Balken angewendet wird"
+title: task_class Vorlage
+description: "bestimmt die CSS-Klasse, die auf Aufgabenbalken angewendet wird"
 ---
 
 # task_class
@@ -14,12 +14,12 @@ description: "definiert die CSS-Klasse, die auf die Task-Balken angewendet wird"
 
 ### Parameters
 
-- `start` - (required) *Date* - das Datum, an dem eine Aufgabe geplant ist zu beginnen  
-- `end` - (required) *Date* - das Datum, an dem eine Aufgabe geplant ist zu enden
-- `task` - (required) *Task* - das Task-Objekt selbst
+- `start` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe beginnen soll  
+- `end` - (erforderlich) *Date* - das Datum, an dem eine Aufgabe voraussichtlich abgeschlossen wird
+- `task` - (erforderlich) *Task* - das Task-Objekt
 
 ### Returns
-- ` text` - (string | void) - eine CSS-Klasse, die dem Item zugewiesen wird
+- ` text` - (string | void) - eine CSS-Klasse für das betreffende Element
 
 ### Example
 
@@ -28,4 +28,4 @@ gantt.templates.task_class = function(start, end, task){return "";};
 ~~~
 
 ### Related Guides
-- ["Vorlagen für den Timeline-Bereich"](guides/timeline-templates.md)
+- [Vorlagen des Timeline-Bereichs](guides/timeline-templates.md)

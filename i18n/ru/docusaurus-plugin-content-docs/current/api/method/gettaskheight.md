@@ -1,7 +1,7 @@
 ---
 sidebar_label: getTaskHeight
-title: getTaskHeight method
-description: "возвращает видимую высоту задачи"
+title: Метод getTaskHeight
+description: "Возвращает видимую высоту задачи"
 ---
 
 # getTaskHeight
@@ -13,11 +13,9 @@ description: "возвращает видимую высоту задачи"
 @signature: getTaskHeight: (id?: string | number) =\> number
 
 ### Parameters
-
-- `id` - (optional) *string | number* -    идентификатор задачи
-
+- `task` - (необязательно) *string | number* - идентификатор задачи
 ### Returns
-- ` height` - (number) - высота указанной задачи или, если параметр <i>id</i> не передан, высота задач
+- ` height` - (number) - высота указанной задачи или, если параметр <i>id</i> не указан, высота задач
 
 ### Example
 

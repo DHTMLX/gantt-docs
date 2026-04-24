@@ -1,53 +1,57 @@
 ---
-title: "Abrufen des Link-Objekts/der Link-ID"
-sidebar_label: "Abrufen des Link-Objekts/der Link-ID"
+title: "Das Link-Objekt/Die Link-ID abrufen"
+sidebar_label: "Das Link-Objekt/Die Link-ID abrufen"
 ---
 
-# Abrufen des Link-Objekts/der Link-ID
+# Das Link-Objekt/Die Link-ID abrufen
 
-Beim Arbeiten mit Links im Gantt-Diagramm ist es wichtig zu verstehen, wie man auf das Link-Objekt oder die Link-ID zugreift. Die meisten Methoden erfordern das Link-Objekt (oder die ID) als Eingabeparameter. Zusätzlich müssen benutzerdefinierte, linkbezogene Szenarien auf das Link-Objekt oder die Link-ID referenzieren, um korrekt zu funktionieren.
+Um mit Verknüpfungen im Gantt-Diagramm zu arbeiten, müssen Sie wissen, wie man das Objekt oder die ID einer Verknüpfung erhält. Zunächst
+nehmen die meisten Methoden das Objekt (id) der Verknüpfung als Parameter. Zweitens können benutzerdefinierte Szenarien für Verknüpfungen nicht implementiert werden, ohne sich auf das Objekt (id) der Verknüpfung zu beziehen.
 
-## Abrufen des Link-Objekts
+## Das Link-Objekt erhalten
 
-Um ein Link-Objekt abzurufen, verwenden Sie die Methode [getLink](api/method/getlink.md):
+Um ein Link-Objekt zu erhalten, verwenden Sie die [getLink](api/method/getlink.md) Methode:
 
 ~~~js
 gantt.getLink("link1");                //-> {id:"link1", source:1, target:2, type:1}
 ~~~
 
-## Abrufen aller Links aus dem Gantt-Diagramm 
 
-Um alle aktuell im Diagramm angezeigten Links zu erhalten, verwenden Sie die Methode [getLinks](api/method/getlinks.md) wie folgt:
+## Alle Links aus dem Gantt-Diagramm abrufen
+
+Um alle im Diagramm dargestellten Links zu erhalten, verwenden Sie die [getLinks](api/method/getlinks.md) Methode wie folgt:
 
 ~~~js
 var links = gantt.getLinks(); 
 ~~~
 
-Dies gibt ein Array zurück, das alle Link-Objekte enthält.
+Es gibt ein Array von Link-Objekten zurück.
 
-## Abrufen der Links, die mit einer bestimmten Aufgabe verbunden sind
+## Verknüpfungen zu einer bestimmten Aufgabe abrufen
 
-Um die Links zu finden, die mit einer bestimmten Aufgabe verknüpft sind, prüfen Sie die Eigenschaften **$source** und **$target** des Aufgabenobjekts.
+Um Links zu einer Aufgabe zu erhalten, verwenden Sie die **$source**- und **$target**-Eigenschaften des Aufgabenobjekts.
 
-Diese Eigenschaften werden automatisch generiert und enthalten die IDs der zugehörigen Links:
+ Die Eigenschaften werden automatisch generiert und speichern die IDs der zugehörigen Verknüpfungen:
 
-- **$source** - Links, die von der Aufgabe ausgehen.
-- **$target** - Links, die in die Aufgabe hineinführen.
+- **$source** - Verknüpfungen, die von der Aufgabe ausgehen.
+- **$target** - Verknüpfungen, die zur Aufgabe führen.
 
 ~~~js
 var taskObj = gantt.getTask("t1");
 
-var sourceLinks = taskObj.$source;        //-> ["l1","l4"] - IDs der ausgehenden Links  /*!*/
-var targetLinks = taskObj.$target;       //-> ["l5","l8"] - IDs der eingehenden Links  /*!*/
+var sourceLinks = taskObj.$source;        //-> ["l1","l4"] - IDs der von der Aufgabe ausgehen  /*!*/
+var targetLinks = taskObj.$target;       //-> ["l5","l8"] - IDs der zur Aufgabe führenden Verknüpfungen  /*!*/
 ~~~
 
-Die **task.$source** und **task.$target** sind [dynamische Eigenschaften des Aufgabenobjekts](guides/loading.md#dataproperties), die die IDs der mit der Aufgabe verbundenen Links enthalten. Diese Eigenschaften werden nicht in der Datenbank gespeichert, sondern dynamisch zum Aufgabenobjekt hinzugefügt, sobald die Daten geladen sind.
+
+Die **task.$source**- und **task.$target**-Eigenschaften sind [dynamische Eigenschaften des Aufgabenobjekts](guides/loading.md#dataproperties) und enthalten IDs der mit der Aufgabe verbundenen Verknüpfungen.
+Die Eigenschaften werden nicht in der Datenbank gespeichert, sondern nach dem Laden der Daten dynamisch dem Aufgabenobjekt hinzugefügt.
 
 ~~~js
 const task = gantt.getTask(1);
 const source = task.$source;
-// Links, die von der Aufgabe ausgehen,
-// `task #1` fungiert in diesen Beziehungen als Vorgänger
+// Verknüpfungen, die von der Aufgabe ausgehen,
+// `Aufgabe #1` ist ein Vorgänger in diesen Beziehungen
 
 source.forEach(function(linkId) {
    const link = gantt.getLink(linkId);
@@ -56,8 +60,8 @@ source.forEach(function(linkId) {
 });
 
 const target = task.$target;
-// Links, die auf die Aufgabe zeigen,
-// `task #1` ist in diesen Beziehungen ein Nachfolger
+// Verknüpfungen, die zur Aufgabe führen,
+// `Aufgabe #1` ist ein Nachfolger in diesen Beziehungen
 
 target.forEach(function(linkId) {
    const link = gantt.getLink(linkId);
@@ -66,9 +70,10 @@ target.forEach(function(linkId) {
 });
 ~~~
 
-## Abrufen der Link-ID
 
-In der Regel befindet sich die ID eines Links im *links*-Objekt des Datensatzes.
+## Die Link-ID abrufen
+
+Im Allgemeinen können Sie die ID einer Verknüpfung aus dem *links*-Objekt des Datensatzes abrufen. 
 
 ~~~js
 {
@@ -82,22 +87,21 @@ In der Regel befindet sich die ID eines Links im *links*-Objekt des Datensatzes.
 ~~~
 
 
-Wenn Sie die ID eines Links mit einem bestimmten "*target*", "*source*" oder "*type*" Wert suchen müssen, können Sie den folgenden Ansatz verwenden:
+Wenn Sie die ID von Link(s) mit einem bestimmten "*target*", "*source*" oder "*type*" Wert erhalten möchten, verwenden Sie die folgende Vorgehensweise:
 
 ~~~js
-// Suchen eines Links, der von der Aufgabe mit id="1" zur Aufgabe mit id="2" führt
-var links = gantt.serialize().links;                             // gibt alle Links zurück
-for(var i="0;" i < links.length; i++){                             // iteriert über alle Links
+//Suche nach einer Verknüpfung, die von der Aufgabe mit der ID="1" zur Aufgabe mit der ID="2" geht
+var links = gantt.serialize().links;                             //gibt alle Verknüpfungen zurück
+for(var i="0;i<links.length;" i++){                              //geht über alle Verknüpfungen
    if ( (links[i].source == 1) && (links[i].target == 2) )
        var linkId = links[i].id;
 };
 ~~~
 
-## Ändern der Link-ID
 
-Um die ID eines bestehenden Links zu aktualisieren, verwenden Sie die Methode [changeLinkId](api/method/changelinkid.md):
+## Die Link-ID ändern
 
+Um die aktuelle ID einer Verknüpfung zu ändern, verwenden Sie die [changeLinkId](api/method/changelinkid.md) Methode:
 ~~~js
-gantt.changeLinkId(1274, "link14");          // ändert die Link-ID von 1274 auf "link14"
+gantt.changeLinkId(1274, "link14");          //ändert die Link-ID: 1274 -> "link14"
 ~~~
-

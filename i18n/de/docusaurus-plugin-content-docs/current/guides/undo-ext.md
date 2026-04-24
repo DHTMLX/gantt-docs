@@ -1,28 +1,27 @@
 ---
-title: "Undo-Erweiterung"
-sidebar_label: "Undo-Erweiterung"
+title: "Rückgängig-Erweiterung"
+sidebar_label: "Rückgängig-Erweiterung"
 ---
 
-# Undo-Erweiterung
+# Rückgängig-Erweiterung
 
-Das *Undo*-Objekt bietet eine Reihe von Methoden, um Änderungen rückgängig zu machen oder wiederherzustellen. 
+Das *Undo*-Objekt bietet eine Reihe von Methoden, die es ermöglichen, Änderungen rückgängig zu machen bzw. erneut anzuwenden.
 
-
-Weitere Informationen zur Undo-Erweiterung finden Sie im Artikel [Undo/Redo Functionality](guides/undo-redo.md).
+Lesen Sie Details zur Undo-Erweiterung im Artikel [Undo/Redo Functionality](guides/undo-redo.md).
 
 ## Methoden
 
-Das **gantt.ext.undo**-Objekt stellt folgende Methoden zur Verfügung:
+Folgende Methoden stehen über das **gantt.ext.undo**-Objekt zur Verfügung:
 
 ### Undo() / Redo()
 
-- <span class="submethod">**undo (): void**</span> - macht die im Gantt-Diagramm vorgenommenen Änderungen rückgängig
+- <span class="submethod">**undo (): void**</span> - kehrt die im Gantt vorgenommenen Änderungen zurück
 
 ~~~js
 gantt.ext.undo.undo();
 ~~~
 
-- <span class="submethod">**redo (): void**</span> - stellt zuvor rückgängig gemachte Änderungen wieder her
+- <span class="submethod">**redo (): void**</span> - wendet die rückgängig gemachten Änderungen erneut am Gantt an
 
 ~~~js
 gantt.ext.undo.redo();
@@ -30,36 +29,36 @@ gantt.ext.undo.redo();
 
 ### getUndoStack() / getRedoStack()
 
-- <span class="submethod">**getUndoStack (): UndoRedoAction[]**</span> - ruft den Stapel der vom Benutzer ausgeführten Undo-Aktionen ab
+- <span class="submethod">**getUndoStack (): UndoRedoAction[]**</span> - gibt den Stack der gespeicherten Undo-Benutzeraktionen zurück
 
 ~~~js
 var stack = gantt.ext.undo.getUndoStack();
 ~~~
 
-- <span class="submethod">**getRedoStack (): UndoRedoAction[]**</span> - ruft den Stapel der verfügbaren Redo-Aktionen ab
+- <span class="submethod">**getRedoStack (): UndoRedoAction[]**</span> - gibt den Stack der gespeicherten Redo-Benutzeraktionen zurück
 
 ~~~js
 var stack = gantt.ext.undo.getRedoStack();
 ~~~
 
-Die zurückgegebenen Stapel sind Arrays von Undo-Benutzeraktionen. Jede Aktion enthält mehrere Befehle. Ein Befehl ist ein Objekt mit folgenden Eigenschaften:
- 
-- **_type_** - (*string*) gibt den Befehlstyp an: "add", "remove" oder "update"
-- **_entity_** - (*string*) gibt die Art des geänderten Objekts an: "task" oder "link"
-- **_value_** - (*object*) das Aufgaben- oder Verbindungsobjekt nach der Änderung 
-- **_oldValue_** - (*object*) das Aufgaben- oder Verbindungsobjekt vor der Änderung
+Der zurückgegebene Stack ist ein Array der Undo-Benutzeraktionen. Jede Benutzeraktion enthält eine Reihe von Befehlen. Ein Befehl ist ein Objekt mit den folgenden Attributen:
+
+- **_type_** - (*string*) der Typ eines Befehls: "add/remove/update"
+- **_entity_** - (*string*) der Typ des Objekts, das geändert wurde: "task" oder "link"
+- **_value_** - (*object*) das geänderte Task-/Link-Objekt
+- **_oldValue_** - (*object*) das Task-/Link-Objekt vor den Änderungen
 
 ### setUndoStack() / setRedoStack()
 
-- <span class="submethod">**setUndoStack (stack): void**</span> - setzt den Stapel der Undo-Benutzeraktionen
-  - **_stack_** - (*UndoRedoAction[]*) - der zu setzende Undo-Stapel
+- <span class="submethod">**setUndoStack (stack): void**</span> - setzt den Stack gespeicherter Undo-Benutzeraktionen
+  - **_stack_** - (*UndoRedoAction[]*) - der Undo-Stack
 
 ~~~js
 gantt.ext.undo.setUndoStack(stack);
 ~~~
 
-- <span class="submethod">**setRedoStack (stack): void**</span> - setzt den Stapel der Redo-Benutzeraktionen
-  - **_stack_** - (*UndoRedoAction[]*) - der zu setzende Redo-Stapel
+- <span class="submethod">**setRedoStack (stack): void**</span> - setzt den Stack gespeicherter Redo-Benutzeraktionen
+  - **_stack_** - (*UndoRedoAction[]*) - der Redo-Stack
 
 ~~~js
 gantt.ext.undo.setRedoStack(stack);
@@ -67,13 +66,13 @@ gantt.ext.undo.setRedoStack(stack);
 
 ### clearUndoStack() / clearRedoStack()
 
-- <span class="submethod">**clearUndoStack (): void**</span> - leert den Stapel der Undo-Befehle
+- <span class="submethod">**clearUndoStack (): void**</span> - löscht den Stack gespeicherter Undo-Befehle
 
 ~~~js
 gantt.ext.undo.clearUndoStack();
 ~~~
 
-- <span class="submethod">**clearRedoStack (): void**</span> - leert den Stapel der Redo-Befehle
+- <span class="submethod">**clearRedoStack (): void**</span> - löscht den Stack gespeicherter Redo-Befehle
 
 ~~~js
 gantt.ext.undo.clearRedoStack();
@@ -81,13 +80,15 @@ gantt.ext.undo.clearRedoStack();
 
 ### saveState()
 
-- <span class="submethod">**saveState (id, entityType): boolean**</span> - speichert den aktuellen Zustand einer Aufgabe oder Verbindung, bevor Änderungen vorgenommen werden
-    - **_id_** - (*string | number*) - die Kennung der Aufgabe oder Verbindung
-    - **_type_** - (*string*) - gibt den Typ des Eintrags an, der der id entspricht; unterstützte Werte sind "task" oder "link"
+- <span class="submethod">**saveState (id, entityType): boolean**</span> - speichert den aktuellen Zustand einer Aufgabe/Verknüpfung, bevor Änderungen vorgenommen werden
+    - **_id_** - (*string | number*) - die ID einer Aufgabe bzw. Verknüpfung,
+    - **_type_** - (*string*) - der Typ eines Eintrags, für den die ID als Erstargument übergeben wird.
+
+Unterstützte Werte: "task", "link".
 
 ~~~js
 gantt.ext.undo.saveState(1, "task");
 gantt.ext.undo.saveState(1, "link");
 ~~~
 
-Weitere Einzelheiten finden Sie im Artikel [Undoing/Redoing changes made from code](guides/undo-redo.md#undoingredoingchangesmadefromcode).
+Lesen Sie die Details im [Undoing/Redoing changes made from code](guides/undo-redo.md#undoingredoingchangesmadefromcode) Artikel.

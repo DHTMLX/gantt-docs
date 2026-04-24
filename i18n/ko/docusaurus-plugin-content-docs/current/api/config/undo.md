@@ -8,7 +8,7 @@ description: "간트에서 Undo 기능을 활성화합니다."
 
 ### Description
 
-@short: 간트에서 Undo 기능을 활성화합니다.
+@short: gantt의 Undo 기능을 활성화합니다
 
 @signature: undo: boolean
 
@@ -39,5 +39,4 @@ gantt.config.undo = true;
 - [Undo/Redo 기능](guides/undo-redo.md)
 
 ### Change log
-- 버전 4.0에서 추가됨
-
+- 4.0 버전에서 추가되었습니다.

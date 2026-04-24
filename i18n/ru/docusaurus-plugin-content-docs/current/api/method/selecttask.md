@@ -1,7 +1,7 @@
 ---
 sidebar_label: selectTask
-title: selectTask method
-description: "выбирает указанную задачу"
+title: Метод selectTask
+description: "Выбирает указанную задачу"
 ---
 
 # selectTask
@@ -14,7 +14,7 @@ description: "выбирает указанную задачу"
 
 ### Parameters
 
-- `id` - (required) *string | number* -        идентификатор задачи
+- `id` - (required) *string | number* -         идентификатор задачи
 
 ### Returns
 - ` id` - (string | number) - идентификатор выбранной задачи
@@ -38,9 +38,8 @@ gantt.selectTask("t_1"); /*!*/
 
 ### Details
 
-Этот метод вызывает событие [onTaskSelected](api/event/ontaskselected.md).
+Метод вызывает событие [onTaskSelected](api/event/ontaskselected.md).
 
 ### Related API
 - [unselectTask](api/method/unselecttask.md)
 - [getSelectedId](api/method/getselectedid.md)
-

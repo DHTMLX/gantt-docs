@@ -1,42 +1,41 @@
 ---
 sidebar_label: onLinkValidation
-title: onLinkValidation event
-description: "срабатывает, когда пользователь добавляет новую ссылку, и dhtmlxGantt проверяет, является ли ссылка валидной"
+title: onLinkValidation событие
+description: "Срабатывает, когда пользователь добавляет новую связь, и dhtmlxGantt проверяет корректность связи"
 ---
 
 # onLinkValidation
 
 ### Description
 
-@short: Срабатывает, когда пользователь добавляет новую ссылку, и dhtmlxGantt проверяет, является ли ссылка валидной
+@short: Срабатывает, когда пользователь добавляет новую связь, и dhtmlxGantt проверяет корректность связи
 
-@signature: onLinkValidation: (link: Link) =\> boolean;
+@signature: onLinkValidation: (link: Link) => boolean;
 
 ### Parameters
 
-- `link` - (required) *Link* - объект ссылки
+- `link` - (required) *Link* - сам объект связи
 
 ### Returns
-- ` result` - (boolean) - указывает, будет ли выполнено действие по умолчанию для события (<b>true</b>) или отменено (<b>false</b>)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию у события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onLinkValidation", function(link){
-    //любая ваша логика здесь
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Details
 
 :::note
- Событие вызывается внутри метода [isLinkAllowed](api/method/islinkallowed.md). 
+The event fires in the [isLinkAllowed](api/method/islinkallowed.md) method. 
 :::
 
-Это событие происходит, когда пользователь создаёт новую ссылку между задачами с помощью drag-and-drop мышью.
+Событие срабатывает, когда пользователь создает новую связь между задачами путём перетаскивания мышью.
 
-Если обработчик события возвращает `false`, круглый контроллер целевой задачи станет красным, и ссылка не будет создана. Возврат `true` выделит круглый контроллер оранжевым цветом и позволит создать ссылку.
+Если обработчик события возвращает `false`, целевой задачей будет окрашен красным цветом круглый маркер, и связь не будет добавлена. Возвращение `true` подсветит круглый маркер оранжевым цветом и позволит создать связь.
 
 ### Related API
 - [isLinkAllowed](api/method/islinkallowed.md)
-

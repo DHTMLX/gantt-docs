@@ -1,23 +1,23 @@
 ---
 sidebar_label: columnIndexByDate
-title: columnIndexByDate method
-description: "提供对应于给定日期的列索引"
+title: columnIndexByDate 方法
+description: "根据日期返回列的索引"
 ---
 
 # columnIndexByDate
 
 ### Description
 
-@short: 提供对应于给定日期的列索引
+@short: 根据日期返回列的索引
 
-@signature: columnIndexByDate: (date: Date) =\> number
+@signature: columnIndexByDate: (date: Date) => number
 
 ### Parameters
 
 - `date` - (required) *Date* - 一个日期对象
 
 ### Returns
-- ` index` - (number) - 列的索引
+- `index` - (数字) - 列的索引
 
 ### Example
 

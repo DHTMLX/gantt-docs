@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_progress
-title: show_progress config
-description: "ermöglicht die Anzeige des Fortschritts innerhalb der Task-Bars"
+title: show_progress Konfiguration
+description: "aktiviert die Anzeige des Fortschritts in den Aufgabenbalken"
 ---
 
 # show_progress
 
 ### Description
 
-@short: Ermöglicht die Anzeige des Fortschritts innerhalb der Task-Bars
+@short: Aktiviert die Anzeige des Fortschritts in den Aufgabenbalken
 
 @signature: show_progress: boolean
 
@@ -20,7 +20,7 @@ gantt.config.show_progress = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Related Guides
-- ["Datenladen"](guides/loading.md#loadingspinner)
+- [Daten laden](guides/loading.md)

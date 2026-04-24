@@ -10,68 +10,66 @@ description: "eine Sammlung von dataprocessor-Methoden"
 
 @short: Eine Sammlung von dataprocessor-Methoden
 
-### Example
-
-~~~jsx
-
-~~~
-
 ### Details
 
-Sie können eine neue DataProcessor-Instanz mit der Methode [createDataProcessor](api/method/createdataprocessor.md) erstellen. Es gibt auch eine ältere Möglichkeit, eine Instanz über den Konstruktor [dataProcessor](api/method/dataprocessor.md) zu erzeugen. <br>
-Das **dataprocessor**-Objekt beinhaltet die folgenden [Methoden](#methods) und [Events](#events):
+Eine neue Instanz von DataProcessor kann mithilfe der Methode [createDataProcessor](api/method/createdataprocessor.md) erstellt werden. Alternativ bietet der [dataProcessor](api/method/dataprocessor.md) Konstruktor einen legacy Weg, eine DataProcessor-Instanz zu erstellen. 
+Das **dataprocessor**-Objekt besitzt die folgenden [Methoden](#methods) und [Ereignisse](#events):
 
-### Methoden {#methods}
+Methoden
+
+### Methods {#methods}
 
 <ul id="attachEvent">
-  <li><b>attachEvent (name, handler, settings): string</b> - fügt einen Handler zu einem DataProcessor API Event hinzu<ul><li><b><i>name</i></b> - (<i>string</i>) - der Event-Name, case-insensitive</li><li><b><i>handler</i></b> - (<i>Function</i>) - die Funktion, die das Event behandelt</li><li><b><i>settings?</i></b> - (<i>object</i>) - optional, Einstellungsobjekt für den Event-Handler</li></ul></li>
+	<li>
+		<b class="submethod">attachEvent (name, handler, settings): string</b> - hängt den Handler an ein API-Ereignis von DataProcessor an
+		<ul><li><b><i>name</i></b> - (<i>string</i>) - der Name des Ereignisses, Groß-/Kleinschreibung wird ignoriert</li><li><b><i>handler</i></b> - (<i>Function</i>) - die Handler-Funktion</li><li><b><i>settings?</i></b> - (<i>object</i>) - Optional, ein Objekt mit Einstellungen für den Ereignis-Handler</li></ul>
+	</li>
 </ul>
-
 <ul>
-
-~~~js
+	~~~js
 const dp = gantt.createDataProcessor({
-    url: "/api",
-    mode: "REST",
+	url: "/api",
+	mode: "REST",
 });
 
 dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
-    console.log("Updated task:", id);
+	console.log("Updated task:", id);
 });
 ~~~
 </ul>
 
 <ul id="detachEvent">
-  <li>
-  <b>detachEvent (id): void</b> - entfernt einen zuvor angehängten Event-Handler anhand seiner ID
-  <ul><li><b><i>id</i></b> - (<i>string</i>) - die ID des Event-Handlers</li></ul>
-  </li>
+	<li>
+		<b class="submethod">detachEvent (id): void</b> - trennt einen zuvor von der Methode <b>attachEvent()</b> angehängten Handler von einem Ereignis
+		<ul>
+			<li><b><i>id</i></b> - (<i>string</i>) - die ID des Ereignisses</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
-
-~~~js
+	~~~js
 const dp = gantt.createDataProcessor({
-    url: "/api",
-    mode: "REST",
+	url: "/api",
+	mode: "REST",
 });
 
 const handlerId = dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
-    console.log("Updated task:", id);
+	console.log("Updated task:", id);
 });
 
-// entfernt den Event-Listener
+// detach a listener
 dp.detachEvent(handlerId);
 ~~~
 </ul>
 
 <ul id="getState">
-  <li>
-  <b>getState (id): string</b> - gibt den Status eines bestimmten Elements zurück (ob es aktualisiert wurde oder nicht)
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die ID des Elements</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">getState (id): string</b> - gibt den Zustand eines Elements zurück (aktualisiert oder nicht)
+		<ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - die ID eines Elements</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
@@ -81,40 +79,38 @@ const status = dp.getState(id);
 </ul>
 
 <ul id="ignore">
-  <li>
-  <b>ignore (code): void</b> - führt einen Codeblock aus, ohne DataProcessor-Aktionen auszulösen
-  <ul>
-  <li><b><i>code</i></b> - (<i>Function</i>) - die Funktion zur Datenänderung</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">ignore (code): void</b> - führt einen Block aus, ohne DataProcessor auszulösen
+		<ul>
+			<li><b><i>code</i></b> - (<i>Function</i>) - Code zur Änderung von Daten</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
-
-~~~js
-dp.ignore(() => {
-    // Änderungen hier werden nicht gespeichert
-    gantt.addTask({
-        id: 10,
-        text: "Task #5",
-        start_date: "03-02-2025",
-        duration: 5
-    });
-});
-~~~
-
-<p>Dies ist nützlich, um Daten hinzuzufügen oder zu entfernen, wenn Sie vermeiden möchten, dass diese Änderungen zum Server gesendet werden.</p>
-<i>Die Methode dp.ignore() verhält sich ähnlich wie [gantt.silent()](api/method/silent.md).</i>
+	~~~js
+	dp.ignore(() => {
+		// wird nicht gespeichert
+		gantt.addTask({
+			id: 10,
+			text: "Task #5",
+			start_date: "03-02-2025",
+			duration: 5
+		});
+	});
+	~~~
+<p>Hier können Sie Operationen zum Hinzufügen und Löschen von Daten platzieren, wenn Sie diese Änderungen nicht auf dem Server speichern möchten.</p>
+<i>Die dp.ignore()-Methode funktioniert ähnlich wie [gantt.silent()](api/method/silent.md).</i>
 </ul>
 
 <ul id="setTransactionMode">
-  <li>
-  <b>setTransactionMode (mode, total): void</b> - legt fest, wie Daten an den Server gesendet werden
-  <ul>
-  <li><b><i>mode</i></b> - (<i>string</i>) - die Versandmethode, Optionen sind "GET", "POST", "REST", "JSON" oder "REST-JSON"</li>
-  <li><b><i>total</i></b> - (<i>boolean</i>) - bestimmt, ob alle Daten auf einmal oder jeder Datensatz einzeln gesendet wird</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">setTransactionMode (mode, total): void</b> - konfiguriert den Datensende-Modus
+		<ul>
+			<li><b><i>mode</i></b> - (<i>string</i>) - der Datensende-Modus, "GET"|"POST"|"REST"|"JSON"|"REST-JSON"</li>
+			<li><b><i>total</i></b> - (<i>boolean</i>) - definiert, ob alle Daten auf einmal gesendet werden oder jeder Datensatz durch eine separate Anfrage</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
@@ -122,178 +118,203 @@ dp.ignore(() => {
 dp.setTransactionMode("POST", true);
 ~~~
 
-<p>Wenn Sie benutzerdefinierte HTTP-Header oder zusätzliche Daten mit den Anfragen senden möchten, können Sie als ersten Parameter ein Objekt mit folgenden Eigenschaften übergeben:</p>
+<p>Um benutzerdefinierte HTTP-Anforderungsheader oder zusätzliche Daten an den Server zu senden, geben Sie den ersten Parameter als Objekt mit den folgenden Eigenschaften an:</p>
 
 <ul>
-  <li><b><i>mode</i></b> - (<i>string</i>) - Datenversandmodus, z.B. "GET", "POST", "REST", "JSON" oder "REST-JSON"</li>
-  <li><b><i>headers</i></b> - (<i>object</i>) - Schlüssel-Wert-Paare von Headern, die in die Anfrage aufgenommen werden</li>
-  <li><b><i>payload</i></b> - (<i>object</i>) - zusätzliche Schlüssel-Wert-Paare, die zusammen mit den Headern gesendet werden</li>
+	<li><b><i>mode</i></b> - (<i>string</i>) - Datensende-Modus, "GET", "POST", "REST", "JSON", "REST-JSON"</li>
+	<li><b><i>headers</i></b> - (<i>object</i>) - eine Menge von Headern, definiert als Paare <code>"key":"value"</code>, die mit einer Anfrage gesendet werden sollen</li>
+	<li><b><i>payload</i></b> - (<i>object</i>) - zusätzliche Daten, festgelegt als Paare <code>"key":"value"</code>, die zusammen mit den Headers an den Server gesendet werden sollen</li>
 </ul>
-
 ~~~js
 dp.setTransactionMode({
-    mode: "POST",
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Accept-Language": "fr-FR"
-    },
-    payload: {
-        "user_id": "12"
-    }
+	mode: "POST",
+	headers: {
+		"Content-Type": "application/x-www-form-urlencoded",
+		"Accept-Language": "fr-FR"
+	},
+	payload: {
+		"user_id": "12"
+	}
 }, true);
 ~~~
 </ul>
 
 <ul id="setUpdated">
-  <li>
-  <b>setUpdated (rowId, [mode, state]): void</b> - markiert ein Element als aktualisiert oder nicht
-  <ul>
-  <li><b><i>rowId</i></b> - (<i>string | number</i>) - die ID des Elements</li>
-  <li><b><i>mode?</i></b> - (<i>boolean</i>) - optional, <code>true</code> (Standard) zum Markieren als aktualisiert, <code>false</code> zum Markieren als nicht aktualisiert</li>
-  <li><b><i>state?</i></b> - (<i>string</i>) - optional, der Name des Update-Status, Standard ist <code>"updated"</code></li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">setUpdated (rowId, [mode, state]): void</b> - markiert ein Element als aktualisiert
+		<ul>
+			<li><b><i>rowId</i></b> - (<i>string | number</i>) - die ID eines Elements, für das der Aktualisierungsstatus festgelegt wird</li>
+			<li><b><i>mode?</i></b> - (<i>boolean</i>) - Optional, <code>true</code> (Standard) für "aktualisiert", <code>false</code> für "nicht aktualisiert"</li>
+			<li><b><i>state?</i></b> - (<i>string</i>) - Optional, der Name des Aktualisierungsmodus, standardmäßig <code>"updated"</code></li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
-
 ~~~js
 dp.setUpdated(1);
 dp.setUpdated(2, true, "deleted");
 ~~~
+</ul>
+<ul id="getSyncState">
+	<li>
+		<b class="submethod">getSyncState (): boolean</b> - gibt den Zustand von DataProcessor zurück (<i>true</i>, wenn alle Daten gespeichert sind)
+	</li>
+</ul>
+
+<ul>
+~~~js
+const state = dp.getSyncState();
+~~~
+
+<p>Wenn einige Datensätze noch nicht gespeichert wurden oder eine "error"-Antwort erhalten haben, gibt die Methode <i>false</i> zurück.</p>
+</ul>
+
+<ul id="sendData">
+	<li>
+		<b class="submethod">sendData ([id]): void</b> - sendet alle Daten, die noch nicht auf der Serverseite gespeichert sind
+  <ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - optional, die ID eines Elements</li>
+		</ul>
+	</li>
+</ul>
+
+<ul>
+~~~js
+dp.sendData();
+~~~
+
+<p> Falls eine ID angegeben wird, wird nur ein Element an die Serverseite gesendet.</p>
+<p> Beim Aufruf ohne Parameter sendet die Methode alle Elemente, die noch nicht gespeichert wurden.</p>
 </ul>
 
 
 ### Events {#events} 
 
 <ul id="onAfterUpdate">
-  <li>
-  <b>onAfterUpdate (id, action, tid, response): void</b> - wird ausgelöst, nachdem die Serverantwort empfangen und verarbeitet wurde
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die ID des aktualisierten Elements</li>
-  <li><b><i>action</i></b> - (<i>string</i>) - der Status der Antwort (Art der Operation)</li>
-  <li><b><i>tid</i></b> - (<i>string</i>) - die neue ID (nur für Insert-Operationen)</li>
-  <li><b><i>response</i></b> - (<i>mixed</i>) - die geparste Antwort, entweder als XML-Knoten oder JSON-Objekt</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">onAfterUpdate (id, action, tid, response): void</b> - löst sich aus, nachdem die serverseitige Antwort empfangen und verarbeitet wurde
+		<ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - die ID des aktualisierten Elements</li>
+			<li><b><i>action</i></b> - (<i>string</i>) - der Status der Antwort (Operationstyp)</li>
+			<li><b><i>tid</i></b> - (<i>string</i>) - die neue ID (gilt nur für Insert-Operationen)</li>
+			<li><b><i>response</i></b> - (<i>mixed</i>) - der geparste XML-Knoten oder das JSON-Objekt der Antwort</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
-
 ~~~js
 dp.attachEvent("onAfterUpdate", (id, action, tid, response) => {
-    if (action === "error") {
-        alert(`Serverfehler: ${response.message}`);
-    }
+	if (action === "error") {
+		alert(`Server error: ${response.message}`);
+	}
 });
 ~~~
 </ul>
 
 <ul>
-<p><b>Dies sind die möglichen Antwort-Status:</b></p>
+<p><b>Possible response statuses:</b></p>
 <ul>
-  <li><code>updated</code></li>
-  <li><code>inserted</code></li>
-  <li><code>deleted</code></li>
-  <li><code>invalid</code></li>
-  <li><code>error</code></li>
+	<li><code>updated</code></li>
+	<li><code>inserted</code></li>
+	<li><code>deleted</code></li>
+	<li><code>invalid</code></li>
+	<li><code>error</code></li>
 </ul>
 </ul>
 
 <ul id="onBeforeDataSending">
-  <li>
-  <b>onBeforeDataSending (id, state, data): void</b> - wird unmittelbar vor dem Senden der Daten an den Server ausgelöst
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die ID des Elements</li>
-  <li><b><i>state</i></b> - (<i>string</i>) - der aktuelle Status des Elements (Operationstyp)</li>
-  <li><b><i>data</i></b> - (<i>object</i>) - die serialisierten Daten, die gesendet werden</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">onBeforeDataSending (id, state, data): void</b> - löst sich aus, bevor Daten an einen Server gesendet werden
+		<ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - die ID des Elements</li>
+			<li><b><i>state</i></b> - (<i>string</i>) - der Zustand des Elements (Operationstyp)</li>
+			<li><b><i>data</i></b> - (<i>object</i>) - die serialisierten Daten, die an den Server gesendet werden</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
-
 ~~~js
 dp.attachEvent("onBeforeDataSending", (id, state, data) => {
-    // Eigene Logik vor dem Senden der Daten
-    return true;
+	// Benutzerdefinierte Logik vor dem Senden der Daten
+	return true;
 });
 ~~~
 </ul>
 
 <ul>
-<p>Dieses Event wird für jede Datenaktualisierungsanfrage ausgelöst (nach <code>onBeforeUpdate</code>).</p>
-<p>Wenn der Handler <code>false</code> zurückgibt, werden die Daten nicht an den Server gesendet.</p>
+<p>Das Ereignis wird für jede Datenaktualisierungsanforderung ausgelöst (nach <code>onBeforeUpdate</code>).</p>
+<p>Durch Zurückgeben von <code>false</code> aus dem Ereignis-Handler wird verhindert, dass Daten an den Server gesendet werden.</p>
 
-<p><b>Mögliche Antwort-Status:</b></p>
+<p><b>Mögliche Antwort-Statuses:</b></p>
 <ul>
-  <li><code>updated</code></li>
-  <li><code>inserted</code></li>
-  <li><code>deleted</code></li>
-  <li><code>invalid</code></li>
-  <li><code>error</code></li>
+	<li><code>updated</code></li>
+	<li><code>inserted</code></li>
+	<li><code>deleted</code></li>
+	<li><code>invalid</code></li>
+	<li><code>error</code></li>
 </ul>
 </ul>
 
 <ul id="onBeforeUpdate">
-  <li>
-  <b>onBeforeUpdate (id, state, data): void</b> - wird ausgelöst, bevor ein Datensatz (oder mehrere) aktualisiert wird/werden
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die ID des Elements</li>
-  <li><b><i>state</i></b> - (<i>string</i>) - der Status des Elements (Operationstyp)</li>
-  <li><b><i>data</i></b> - (<i>object</i>) - die Daten, die an den Server gesendet werden</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">onBeforeUpdate (id, state, data): void</b> - löst sich vor dem Aktualisieren eines Datensatzes (oder mehrerer Datensätze) aus
+		<ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - die ID des Elements</li>
+			<li><b><i>state</i></b> - (<i>string</i>) - der Zustand des Elements (Operationstyp)</li>
+			<li><b><i>data</i></b> - (<i>object</i>) - die an den Server gesendeten Daten</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
-
 ~~~js
 dp.attachEvent("onBeforeUpdate", (id, state, data) => {
-    // Eigene Logik vor der Aktualisierung
-    return true;
+	// Benutzerdefinierte Logik vor dem Aktualisieren
+	return true;
 });
 ~~~
 </ul>
 
 <ul>
-<p>Dieses Event wird für jeden zu aktualisierenden Datensatz ausgelöst und vor <code>onBeforeDataSending</code>.</p>
-<p>Wenn hier <code>false</code> zurückgegeben wird, wird das Senden der Daten abgebrochen.</p>
+<p>Das Ereignis wird für jedes zu aktualisierende Datensatz ausgelöst und vor <code>onBeforeDataSending</code>.</p>
+<p>Durch Zurückgeben von <code>false</code> aus dem Ereignis-Handler wird verhindert, dass Daten an den Server gesendet werden.</p>
 
-<p><b>Mögliche Antwort-Status:</b></p>
+<p><b>Possible response statuses:</b></p>
 <ul>
-  <li><code>updated</code></li>
-  <li><code>inserted</code></li>
-  <li><code>deleted</code></li>
-  <li><code>invalid</code></li>
-  <li><code>error</code></li>
+	<li><code>updated</code></li>
+	<li><code>inserted</code></li>
+	<li><code>deleted</code></li>
+	<li><code>invalid</code></li>
+	<li><code>error</code></li>
 </ul>
 </ul>
 
 <ul id="onRowMark">
-  <li>
-  <b>onRowMark (id, state, mode, invalid): void</b> - wird ausgelöst, bevor ein aktualisiertes Element markiert wird
-  <ul>
-  <li><b><i>id</i></b> - (<i>string | number</i>) - die ID des Elements, auf das sich der Fehler bezieht</li>
-  <li><b><i>state</i></b> - (<i>string</i>) - der Status des Elements (Operationstyp)</li>
-  <li><b><i>mode</i></b> - (<i>boolean</i>) - <code>true</code>, um eine Markierung hinzuzufügen, <code>false</code>, um sie zu entfernen</li>
-  <li><b><i>invalid</i></b> - (<i>object</i>) - Fehlerdetails, falls vorhanden</li>
-  </ul>
-  </li>
+	<li>
+		<b class="submethod">onRowMark (id, state, mode, invalid): void</b> - löst sich vor jedem Versuch aus, das aktualisierte Element zu markieren
+		<ul>
+			<li><b><i>id</i></b> - (<i>string | number</i>) - die ID des Elements, für das der Fehler auftritt</li>
+			<li><b><i>state</i></b> - (<i>string</i>) - der Zustand des Elements (Operationstyp)</li>
+			<li><b><i>mode</i></b> - (<i>boolean</i>) - <code>true</code> zum Hinzufügen einer Aktualisierungs-Markierung, <code>false</code> zum Entfernen</li>
+			<li><b><i>invalid</i></b> - (<i>object</i>) - Details zu Fehlern, falls vorhanden</li>
+		</ul>
+	</li>
 </ul>
 
 <ul>
-
 ~~~js
 dp.attachEvent("onRowMark", (id, state, mode, invalid) => {
-    // Eigene Logik vor dem Markieren eines Elements
-    return true;
+	// Benutzerdefinierte Logik vor dem Markieren eines Elements
+	return true;
 });
 ~~~
 </ul>
 
 <ul>
-<p>Dieses Event kann blockiert werden. Wenn <code>false</code> zurückgegeben wird, wird das Element nicht markiert.</p>
+<p>Das Ereignis ist blockierbar. Wenn <code>false</code> zurückgegeben wird, wird das Element nicht markiert.</p>
 </ul>
 
 ### Related API
@@ -302,4 +323,3 @@ dp.attachEvent("onRowMark", (id, state, mode, invalid) => {
 
 ### Related Guides
 - [Serverseitige Integration](guides/server-side.md)
-

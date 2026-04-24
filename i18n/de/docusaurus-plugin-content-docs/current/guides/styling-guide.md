@@ -1,299 +1,285 @@
 ---
-title: "Mit Gantt-Stilen arbeiten"
-sidebar_label: "Mit Gantt-Stilen arbeiten"
+title: "Arbeiten mit Gantt-Stilen"
+sidebar_label: "Arbeiten mit Gantt-Stilen"
 ---
 
-# Mit Gantt-Stilen arbeiten
+# Arbeiten mit Gantt-Stilen
 
-dhtmlxGantt bietet eine Vielzahl von Optionen, um das Erscheinungsbild individuell anzupassen. Sie können entweder [eine der vordefinierten Skins anwenden, um das Gesamterscheinungsbild des Gantt-Diagramms zu ändern](guides/skins.md), oder das Styling einzelner Elemente wie Aufgaben, Verbindungen, Zeitskala, Raster und mehr anpassen.
+dhtmlxGantt bietet Ihnen eine breite Palette an Optionen zur Anpassung des Erscheinungsbilds. Sie können sowohl das allgemeine Erscheinungsbild des Gantt-Diagramms durch die Verwendung einer der vordefinierten Skins ändern als auch die Stile einzelner Elemente (Aufgaben, Verknüpfungen, Zeitskala, Raster usw.) der Komponente anpassen. 
 
-Dieser Leitfaden fasst allgemeine Anweisungen zum Styling verschiedener Teile des Gantt-Diagramms zusammen, um Ihnen die Navigation in der Dokumentation zu erleichtern. Ausführliche Informationen zu jedem spezifischen Element finden Sie in den entsprechenden Artikeln.
+In diesem Leitfaden sind allgemeine Hinweise zum Arbeiten mit Stilen der Gantt-Teile zusammengefasst, um Ihnen die Navigation durch die Dokumentation zu erleichtern. 
+Detaillierte Informationen zu jedem einzelnen Element finden Sie in den jeweiligen Artikeln.
 
-## Styling des Rasters
 
-Das Styling des Rasterbereichs kann über die entsprechende [Templates of the Grid](guides/table-templates.md) angepasst werden.
 
-### Kopfzeilen der Rasterspalten
+## Styling des Gitters (Grid)
 
-Es gibt eine [grid_header_class](api/template/grid_header_class.md)-Vorlage, mit der Sie benutzerdefinierte Stile auf die Kopfzeilen der Rasterspalten anwenden können. Beispielsweise können Sie die Hintergrundfarbe bestimmter Kopfzeilen wie folgt ändern:
+Sie können den Stil des Grid-Bereichs über die entsprechenden [Vorlagen des Grid](guides/table-templates.md) ändern.
 
-~~~js
+### Kopfzeilen der Grid-Spalten
+
+Es gibt eine [grid_header_class](api/template/grid_header_class.md) Vorlage, die es Ihnen ermöglicht, einen benutzerdefinierten Stil auf die Kopfzeilen der Grid-Spalten anzuwenden. Beispielsweise können Sie die Hintergrundfarbe bestimmter Kopfzeilen der Grid-Spalten wie folgt ändern:
+
+~~~jsx
 <style>
-      .updColor{
-        background-color:#ffeb8a!important;
-      }
+    .gantt-grid__header--highlighted {
+        background-color: #ffeb8a !important;
+    }
 </style>
-~~~
 
-~~~js
-gantt.templates.grid_header_class = function(columnName, column){
-  if(columnName == 'duration' ||columnName == 'text')
-    return "updColor";
-};
+gantt.templates.grid_header_class = (columnName) =>
+    (columnName === 'duration' || columnName === 'text')
+        ? 'gantt-grid__header--highlighted'
+        : '';
 ~~~
 
 ![styling_columns_headers](/img/styling_columns_headers.png)
 
-**Related example:** [Styling Headers of Grid Columns](https://snippet.dhtmlx.com/j01gqhtj)
+**Related sample**: [Styling Headers of Grid Columns](https://snippet.dhtmlx.com/j01gqhtj)
 
-### Benutzerdefinierte Elemente in der Rasterkopfzeile
+### Benutzerdefinierte Elemente in der Grid-Kopfzeile
 
-Sie können benutzerdefinierte Elemente wie Buttons, Icons oder Eingabefelder in die Rasterkopfzeile einfügen. Dazu setzen Sie das HTML-Element als Wert der **label**-Eigenschaft innerhalb der [**gantt.config.columns**](api/config/columns.md)-Konfigurationsoption:
+Es ist möglich, benutzerdefinierte Elemente (wie Buttons, Icons, Eingaben usw.) in die Kopfzeile des Grids einzufügen. Um ein Element hinzuzufügen, müssen Sie dessen HTML-Code als Wert der **label**-Eigenschaft innerhalb der
+[**gantt.config.columns**](api/config/columns.md) Konfigurationsoption setzen:
 
-~~~js
+~~~jsx
 gantt.config.columns = [
-  {name:"add", label:"", width:50, align:"left" },
-  {name:"text", label:"<div class='searchEl'>Task name <input id='search' type='text'"+   /*!*/
-      "placeholder='Search tasks...'></div>", width:250, tree:true},                          /*!*/
-    // andere Spalten
+    {
+        name: "text",
+        label: `<div class="gantt-grid__header-search-wrapper">Task name
+                    <input id="task-search" type="text" placeholder="Search tasks...">
+                </div>`, 
+        width: 250, tree: true
+    },
+    // other columns
 ];
 ~~~
 
-So wird die Suchfunktion umgesetzt:
+Die Implementierung der Suchfunktion sieht so aus:
 
-~~~js 
-var inputEl = document.getElementById('search');
+~~~jsx 
+const taskSearchInput = document.getElementById('task-search');
 
-inputEl.oninput = function(){
-  gantt.refreshData();
+taskSearchInput.addEventListener('input', () => {
+    gantt.refreshData();
+});
+
+function hasSubstring(parentId, searchValue) {
+    const task = gantt.getTask(parentId);
+    if (!task) return false;
+
+    if (task.text.toLowerCase().includes(searchValue)) {
+        return true;
+    }
+
+    const children = gantt.getChildren(parentId);
+    for (let i = 0; i < children.length; i++) {
+        if (hasSubstring(children[i], searchValue)) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
-function hasSubstr(parentId){
-  var task = gantt.getTask(parentId);
-  if(task.text.toLowerCase().indexOf(inputEl.value.toLowerCase() ) !== -1)
-    return true;
-
-  var child = gantt.getChildren(parentId);
-  for (var i = 0; i < child.length; i++) {
-    if (hasSubstr(child[i]))
-      return true;
-  }
-  return false;
-}
-
-gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
-  if (hasSubstr(id))
-    return true;
-  
-      return false;
+gantt.attachEvent('onBeforeTaskDisplay', (id) => {
+    const searchValue = taskSearchInput.value.toLowerCase().trim();
+    if (!searchValue) return true;
+    return hasSubstring(id, searchValue);
 });
 ~~~
 
 ![custom_elements_grid_header](/img/custom_elements_grid_header.png)
 
-**Related example:** [Custom Elements in Grid Header](https://snippet.dhtmlx.com/8jilpcrg)
+**Related sample**: [Custom Elements in Grid Header](https://snippet.dhtmlx.com/8jilpcrg)
 
-#### Icons und Bilder in der Rasterkopfzeile
+#### Icons und Bilder in der Grid-Kopfzeile
 
-Um ein Bild oder Icon in die Kopfzeile einzufügen, können Sie es über die **label**-Eigenschaft ins HTML der Zelle einfügen:
+Um ein Bild oder Symbol in die Kopfzeile einzufügen, können Sie es auch in das innere HTML der Zelle über die **label**-Eigenschaft setzen:
 
-~~~js
-var textLabel = [
-    "<div class='gantt-text-label'>"+
-    "<img src='http://docs.dhtmlx.com/scheduler/assets/index/icon1.png'>"+
-    "<span>Text</span>" +
-    "</div>"
-].join("");
+~~~jsx
+const textLabel = `
+    <div class="gantt-grid__header-label">
+        <img src="http://docs.dhtmlx.com/scheduler/assets/index/icon1.png" alt="icon">
+        <span>Text</span>
+    </div>
+`;
 
 gantt.config.columns = [
-    {name: "text", label:textLabel,tree: true, width: '*', resize: true},
-    {name: "start_date", align: "center", resize: true},
-    {name: "duration", align: "center"},
-    {name: "add", width: 44}
+    { name: "text", label: textLabel, tree: true, width: "*", resize: true },
+    { name: "start_date", align: "center", resize: true },
+    { name: "duration", align: "center" },
+    { name: "add", width: 44 }
 ];
 ~~~
 
-**Related example:** [Images in Grid Header: Columns Config](https://snippet.dhtmlx.com/5/55086fc42)
+**Related sample**: [Images in Grid Header: Columns Config](https://snippet.dhtmlx.com/10y58pbv)
 
-Alternativ können Sie eine Kopfzeilenzelle in CSS mit dem **.gantt_grid_head_<columnName>**-Selektor gestalten:
+Alternativ können Sie eine Kopfzeilenzelle auch per CSS mit dem Selektor **.gantt_grid_head_<columnName>** festlegen:
 
 ~~~css
-.gantt_grid_head_text  {
-    background-image:url('http://docs.dhtmlx.com/scheduler/assets/index/icon1.png');
-    background-repeat:no-repeat;  
+.gantt_grid_head_text {
+    background-image: url("http://docs.dhtmlx.com/scheduler/assets/index/icon1.png");
+    background-repeat: no-repeat;
 }
 ~~~
 
 ![custom_elements_grid_header_image](/img/custom_elements_grid_header_image.png)
 
-**Related example:** [Images in Grid Header:CSS](https://snippet.dhtmlx.com/5/e13d18a10)
+**Related sample**: [Images in Grid Header:CSS](https://snippet.dhtmlx.com/gvcsrpmb)
 
-### Mehrzeiliger Text in der Rasterkopfzeile
+### Mehrzeiliger Text in der Grid-Kopfzeile
 
-Siehe das Beispiel im Abschnitt [Wie mehrere Zeilen in der Rasterzelle/Kopfzeile anzeigen](guides/how-to.md#howtodisplayseverallinesinthegridcellheader).
+Folgen Sie dem im Abschnitt [How to display several lines in the grid cell/header](guides/how-to.md#how-to-display-several-lines-in-the-grid-cellheader) gezeigten Beispiel.
 
-### Hintergrundfarbe der Rasterzeilen 
+### Hintergrundfarbe der Grid-Reihen
 
-Sie können die Hintergrundfarbe für alle oder bestimmte Rasterzeilen mit Aufgaben über die [grid_row_class](api/template/grid_row_class.md)-Vorlage anpassen. Zum Beispiel, um die Hintergrundfarbe einer bestimmten Zeile zu ändern:
+Sie können eine benutzerdefinierte Farbe für alle oder einzelne Grid-Reihen mit Aufgaben über die [grid_row_class](api/template/grid_row_class.md) Vorlage anwenden. Zum Beispiel können Sie die Hintergrundfarbe einer bestimmten Zeile so ändern:
 
-~~~js
+~~~jsx
 <style>
-  .updColor{
-      background-color:#ffeb8a!important;  
-  }
+    .gantt-grid__row--highlight {
+        background-color: #ffeb8a !important;
+    }
 </style>
-~~~
 
-~~~js
-gantt.templates.grid_row_class = function(start, end, task){
- if(task.id == 12)
-    return "updColor";
-};
+gantt.templates.grid_row_class = (start, end, task) =>
+    task.id === 3 ? "gantt-grid__row--highlight" : "";
 ~~~
 
 ![grid_row_bg](/img/grid_row_bg.png)
 
-**Related example:** [Coloring Grid Rows](https://snippet.dhtmlx.com/y0dbph4x)
+**Related sample**: [Coloring Grid Rows](https://snippet.dhtmlx.com/y0dbph4x)
 
-### Farbe der Rasterzeilen beim Überfahren mit der Maus
+### Farbe der Grid-Reihen beim Überfahren mit der Maus
 
-Um eine Rasterzeile beim Überfahren hervorzuheben, wenden Sie folgende Stilregeln an:
+Sie können die Grid-Reihe beim Überfahren mithilfe der folgenden Stilregeln hervorheben:
 
-~~~js
+~~~css
 .gantt_grid_data .gantt_row.odd:hover, .gantt_grid_data .gantt_row:hover,
 .gantt_grid_data .gantt_row.gantt_selected,
 .gantt_grid_data .gantt_row.odd.gantt_selected,
-.gantt_task_row.gantt_selected{
+.gantt_task_row.gantt_selected {
     background-color: cyan; 
 }
 ~~~
 
 ![grid_row_hover_color](/img/grid_row_hover_color.png)
 
-**Related example:** [Coloring Grid Rows on Hover](https://snippet.dhtmlx.com/730ig4ck)
+**Related sample**: [Coloring Grid Rows on Hover](https://snippet.dhtmlx.com/730ig4ck)
 
-### Anpassung der Rasterspalten {#customizationgridcolumns}
+### Anpassung der Grid-Spalten {#customizationgridcolumns}
 
-dhtmlxGantt ermöglicht es Ihnen, das Standard-Erscheinungsbild der Rasterspalten über das **template**-Attribut der [**gantt.config.columns**](api/config/columns.md)-Konfigurationsoption zu individualisieren.
+dhtmlxGantt bietet die Möglichkeit, das Standardaussehen der Grid-Spalten über das **template**-Attribut der [**gantt.config.columns**](api/config/columns.md) Konfigurationsoption zu modifizieren.
 
-Das **template**-Attribut ist eine Funktion, die ein Datenobjekt erhält und den endgültigen Inhalt zurückgibt. Dadurch sind nahezu alle Arten von Inhaltsanpassungen möglich. Beispielsweise können Sie die Textfarbe in Rasterzeilen ändern oder benutzerdefinierte Elemente in Rasterspalten verwenden.
+Das **template**-Attribut ist eine Funktion, die ein Datenobjekt als Parameter übernimmt und die endgültige Datenvorlage zurückgibt. Die Funktionsdefinition ermöglicht es, nahezu jeden Inhalt darzustellen. Zum Beispiel können Sie
+die Standardfarbe des Textes in Grid-Reihen ändern oder benutzerdefinierte Elemente in Grid-Spalten verwenden.
 
-#### Textfarbe in den Rasterzeilen
+#### Textfarbe in Grid-Reihen
 
-Um die Textfarbe von Aufgaben je nach Priorität anzupassen, können Sie Folgendes tun:
+Sie können eine spezielle Farbe für den Text der Aufgaben je nach Priorität definieren, wie in:
 
-~~~js
-gantt.config.columns="["
-    {name:"text",       label:"Task name",  tree:true, width:230, template:myFunc },   /*!*/
-    {name:"start_date", label:"Start time", align: "center" },
-    {name:"duration",   label:"Duration",   align: "center" }
+~~~jsx
+gantt.config.columns = [
+    { name: "text", label: "Task name", tree: true, width: 230,
+        template: gridTaskTextTemplate 
+    },
+    { name: "start_date", label: "Start time", align: "center" },
+    { name: "duration", label: "Duration", align: "center" }
 ];
 
-function myFunc(task){
-    if(task.priority ==1)
-        return "<div class='important'>"+task.text+" ("+task.users+") </div>";
-    return task.text+" ("+task.users+")";
-};
+function gridTaskTextTemplate (task) {
+    const text = `${task.text} (${task.users})`;
+    if (task.priority === 1) {
+        return `<div class="gantt-grid__text--important">${text}</div>`;
+    }
+    return text;
+}
 ~~~
 
 ![columns_text_color](/img/columns_text_color.png)
 
 
-[Template for tree nodes](https://docs.dhtmlx.com/gantt/samples/04_customization/05_tree_template.html)
+**Related sample**: [Template for tree nodes](https://docs.dhtmlx.com/gantt/samples/04_customization/05_tree_template.html)
 
+#### Benutzerdefinierte Elemente in den Grid-Spalten
 
-#### Benutzerdefinierte Elemente in den Rasterspalten
+Um ein benutzerdefiniertes Element, z. B. eine Schaltfläche, ein Eingabefeld usw., in die Grid-Spalten einzufügen, sollten Sie den HTML-Code des Elements als Wert des **template**-Attributs der Spalte setzen:
 
-Um benutzerdefinierte Elemente wie Buttons oder Eingabefelder in Rasterspalten einzufügen, setzen Sie das HTML-Element als **template**-Attribut der Spalte:
-
-~~~js
-var colContent = function (task) {
-    return ('<i class="fa gantt_button_grid gantt_grid_edit fa-pencil"'+
-                'onclick="clickGridButton(' + task.id + ', 'edit')"></i>' +
-            '<i class="fa gantt_button_grid gantt_grid_add fa-plus"'+
-                'onclick="clickGridButton(' + task.id + ', 'add')"></i>' +
-            '<i class="fa gantt_button_grid gantt_grid_delete fa-times"'+
-                'onclick="clickGridButton(' + task.id + ', 'delete')"></i>');
-};
+~~~jsx
+function gridColumnTemplate (task) {
+    return `
+        <i class="fa fa-pencil" onclick="clickGridButton(${task.id}, 'edit')"></i>
+        <i class="fa fa-plus" onclick="clickGridButton(${task.id}, 'add')"></i>
+        <i class="fa fa-times" onclick="clickGridButton(${task.id}, 'delete')"></i>
+    `;
+}
 
 gantt.config.columns = [
-    {name: "text", tree: true, width: '*', resize: true},
-    {name: "start_date", align: "center", resize: true},
-    {name: "duration", align: "center"},
-    {name: "buttons", label: colHeader, width: 75, template: colContent}  /*!*/
+    { name: "text", tree: true, width: "*", resize: true },
+    { name: "start_date", align: "center", resize: true },
+    { name: "duration", align: "center" },
+    { name: "buttons", width: 75, label: gridColumnHeaderTemplate,
+        template: gridColumnTemplate /*!*/
+    }
 ];
 ~~~
 
 ![custom_elements_grid_columns](/img/custom_elements_grid_columns.png)
 
 
-[Custom Buttons in a Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/07_custom_buttons.html)
+**Related sample**: [Custom Buttons in a Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/07_custom_buttons.html)
 
 
-#### Langen Text mit Auslassungszeichen in Rasterspalten abschneiden
+#### Mehrzeiliger Text in Grid-Zellen
 
-Gantt kürzt langen Text in Rasterzeilen automatisch.
+Folgen Sie dem im Abschnitt [How to display several lines in the grid cell/header](guides/how-to.md#how-to-display-several-lines-in-the-grid-cellheader) gezeigten Beispiel.
 
-Ab Version 7.0 können Sie langen Inhalt in Rasterzeilen mit Auslassungszeichen abschneiden, indem Sie die zugehörige CSS-Klasse **.gantt_tree_content** anpassen:
+## Styling der Zeitskala (Scale)
 
-~~~js
-<style>
-.gantt_tree_content {
-    overflow:hidden;
-    text-overflow: ellipsis;
-}
-</style>
+Der Stil der Zeitskala wird durch die entsprechenden Vorlagen des Timeline-Bereichs gesteuert.
 
-gantt.init("gantt_here");
-~~~
-
-![truncate_text](/img/truncate_text.png)
-
-**Related example:** [Truncate long text with ellipsis](https://snippet.dhtmlx.com/d82twxd8)
-
-#### Mehrzeiliger Text in Rasterzellen
-
-Siehe die Beispiele im Abschnitt [Wie mehrere Zeilen in der Rasterzelle/Kopfzeile anzeigen](guides/how-to.md#howtodisplayseverallinesinthegridcellheader).
-
-## Styling der Zeitskala
-
-Das Styling der Zeitskala wird über die entsprechenden [Vorlagen des Zeitachsenbereichs](guides/timeline-templates.md) gesteuert.
 
 ### Skalenzeile
 
-Sie können die Skalenzeile mit der **scale_row_class**-Vorlage gestalten. Zum Beispiel, um eine Hintergrundfarbe zu setzen:
+Sie können die Zeile der Skala mithilfe der [scale_row_class]-Vorlage stylen. Beispielsweise definieren Sie die Hintergrundfarbe:
 
-~~~js
+~~~jsx
 <style>
-  .updColor{
-      background-color:#ffeb8a!important      
-  }
+    .gantt-scale__row--highlight {
+        background-color: #ffeb8a !important;
+    }
 </style>
 ~~~
 
-~~~js
-gantt.templates.scale_row_class = function(scale){           
-    return "updColor";
-}
+~~~jsx
+gantt.templates.scale_row_class = (scale) => "gantt-scale__row--highlight";
 ~~~
 
 ![color_scale_row](/img/color_scale_row.png)
  
-**Related example:** [Styling Row of the Scale](https://snippet.dhtmlx.com/7ngm6yzk)
+**Related sample**: [Styling Row of the Scale](https://snippet.dhtmlx.com/7ngm6yzk)
 
 ### Skalenzellen 
 
-Sie können auch bestimmte Skalenzellen mit der **scale_cell_class**-Vorlage gestalten. Zum Beispiel, um Wochenenden im Zeitachsenbereich hervorzuheben:
+Es ist auch möglich, bestimmte Zellen der Skala über die **scale_cell_class**-Vorlage zu gestalten. Zum Beispiel können Sie bestimmte Tage des Timeline-Bereichs einfärben:
 
-~~~js
-gantt.templates.scale_cell_class = function(date){
-    if(date.getDay()==0||date.getDay()==6){
-        return "updColor";
-    }
-};
+~~~jsx
+gantt.templates.scale_cell_class = date =>
+    date.getDay() === 0 || date.getDay() === 6 ? "gantt-scale__cell--highlight" : "";
 ~~~
 
 ![styling_scale_cells](/img/styling_scale_cells.png)
 
-**Related example:** [Styling Separate Cells on the Scale](https://snippet.dhtmlx.com/emdjgwln)
+**Related sample**: [Styling Separate Cells on the Scale](https://snippet.dhtmlx.com/emdjgwln)
 
-Weitere Details finden Sie in [Setting up Scale](guides/configuring-time-scale.md#settingthescalesstyle) und [Highlighting Time Slots](guides/highlighting-time-slots.md).
+Lesen Sie mehr zu diesem Thema in den verwandten Artikeln: [Setting up Scale](guides/configuring-time-scale.md#styling) und [Highlighting Time Slots](guides/highlighting-time-slots.md).
 
-### Unterskala
+### Subscale
 
-Über das **css**-Attribut der [scales](api/config/scales.md)-Eigenschaft kann einer Skala ein neuer Stil zugewiesen werden. Zum Beispiel, um Wochenenden besonders einzufärben:
+Sie können einen neuen Stil für eine Skala über das css-Attribut der [scales](api/config/scales.md)-Eigenschaft festlegen. Zum Beispiel können Sie die Wochenenden wie folgt farblich kennzeichnen:
 
-~~~js
+~~~jsx
 <style type="text/css">
     .weekend{
         background: #F0DFE5 !important;
@@ -301,214 +287,208 @@ Weitere Details finden Sie in [Setting up Scale](guides/configuring-time-scale.m
 </style>
 ~~~
 
-~~~js
-var daysStyle = function(date){
-    var dateToStr = gantt.date.date_to_str("%D");
-    if (dateToStr(date) == "Sun"||dateToStr(date) == "Sat")  return "weekend";
-
-    return "";
+~~~jsx
+const isWeekendStyle = (date) => {
+    const day = gantt.date.day_start(date).getDay();
+    return (day === 0 || day === 6) ? "gantt-scale__cell--weekend" : "";
 };
 
 gantt.config.scales = [
-    {unit:"day", format:"%D", css:daysStyle }
+    // other scales
+    { unit: "day", format: "%D", css: isWeekendStyle }
 ];
 ~~~
 
 ![styling_subscale](/img/styling_subscale.png)
 
 
-[Multiple scales](https://docs.dhtmlx.com/gantt/samples/03_scales/01_multiple_scales.html)
+**Related sample**: [Multiple scales](https://docs.dhtmlx.com/gantt/samples/03_scales/01_multiple_scales.html)
 
 
-## Styling von Aufgaben
+## Styling der Aufgaben (Tasks)
 
-Das Styling von Aufgaben kann über die entsprechenden [Vorlagen des Zeitachsenbereichs](guides/timeline-templates.md) angepasst werden.
+Sie können das Styling von Aufgaben über die entsprechenden Vorlagen des Timeline-Bereichs ändern.
 
-### Aufgabenbalken
+### Task-Balken
 
-Sie können die [task_class](api/template/task_class.md)-Vorlage neu definieren, um Aufgabenstile zu aktualisieren. Weitere Informationen finden Sie unter [Tasks Coloring](guides/colouring-tasks.md#redefiningthetaskstemplate).
+Sie können die [task_class](api/template/task_class.md)-Vorlage neu definieren, um die Stile einer Aufgabe zu aktualisieren. 
+Die Details finden Sie im Artikel [Tasks Coloring](guides/colouring-tasks.md#redefiningthetaskstemplate).
 
-~~~js
-gantt.templates.task_class = function(start, end, task){return "";};
+~~~jsx
+gantt.templates.task_class = (start, end, task) => "";
 ~~~
 
 ![coloring_tasks](/img/coloring_tasks.png)
 
 
-[Task styles](https://docs.dhtmlx.com/gantt/samples/04_customization/04_task_styles.html)
+**Related sample**: [Task styles](https://docs.dhtmlx.com/gantt/samples/04_customization/04_task_styles.html)
 
 
-Vorlagen unterstützen dynamisches Styling. Zum Beispiel können Sie Farben je nach Fortschritt der Aufgabe ändern:
+Vorlagen ermöglichen es, Stile dynamisch anzuwenden. Beispielsweise können Sie Farben je nach Fortschritt der Aufgabe ändern:
 
-~~~js
-gantt.templates.task_class = function(start,end,task){
-    if(task.progress > 0.5){
-        return "";
-    }else{
-        return "important";
-    }
-};
+~~~jsx
+gantt.templates.task_class = (start, end, task) =>
+    task.progress > 0.5 ? "" : "task--low-progress";
 ~~~
 
 ![dynamic_styling](/img/dynamic_styling.png)
 
 
-[Styling task bars with events](https://docs.dhtmlx.com/gantt/samples/04_customization/08_templates.html)
+**Related sample**: [Styling task bars with events](https://docs.dhtmlx.com/gantt/samples/04_customization/08_templates.html)
 
 
-### Text im Aufgabenbalken
+### Text der Task-Balken
 
-Die [task_text](api/template/task_text.md)-Vorlage ermöglicht Inline-Styling des Textes im Aufgabenbalken:
+Die [task_text](api/template/task_text.md)-Vorlage erlaubt die Verwendung von Inline-Stilen, um den Stil des Textes im Task-Balken zu ändern:
 
-~~~js
-gantt.templates.task_text = function(start, end, task){
-  if(task.id == 12)
-    return "<span style='color:red'>"+task.text+"</span>";
-  
-  return task.text;
-};
+~~~jsx
+gantt.templates.task_text = (start, end, task) =>
+    task.id === 12 ? `<span style="color:red">${task.text}</span>` : task.text;
 ~~~
 
 ![inline_styling_task_text](/img/inline_styling_task_text.png)
 
-**Related example:** [Inline Styling of the Task Text](https://snippet.dhtmlx.com/us1g45wg)
+**Related sample**: [Inline Styling of the Task Text](https://snippet.dhtmlx.com/us1g45wg)
+
 
 #### Mehrzeiliger Text
 
-Siehe das [Beispiel](https://snippet.dhtmlx.com/55uy7ibo) im Abschnitt [Wie mehrere Zeilen in der Rasterzelle/Kopfzeile anzeigen](guides/how-to.md#howtodisplayseverallinesinthegridcellheader).
+Folgen Sie dem im Abschnitt [How to display several lines in the grid cell/header](guides/how-to.md#how-to-display-several-lines-in-the-grid-cellheader) gezeigten Beispiel.
 
-### Benutzerdefinierte Elemente in Aufgabenbalken
+### Benutzerdefinierte Elemente in Task-Bars
 
-Benutzerdefinierte Elemente können auch innerhalb von Aufgabenbalken mit der [task_text](api/template/task_text.md)-Vorlage eingefügt werden. Zum Beispiel können Buttons wie folgt hinzugefügt werden:
+Sie können benutzerdefinierte Elemente auch über die task_text-Vorlage in Task-Bars einfügen. Beispielsweise können Sie Schaltflächen in Task-Bars wie folgt hinzufügen:
 
-~~~js
-gantt.templates.task_text = function(start, end, task){  
-  return task.text+" <button>Text</button>";    
-};
+~~~jsx
+gantt.templates.task_text = (start, end, task) => `${task.text} <button>Text</button>`;  
 ~~~
 
 ![custom_elements_task_bars](/img/custom_elements_task_bars.png)
 
-**Related example:** [Custom Elements in Task Bars](https://snippet.dhtmlx.com/fahpyr58)
+**Related sample**: [Custom Elements in Task Bars](https://snippet.dhtmlx.com/fahpyr58)
 
-### Stil über Eigenschaften eines Aufgabenobjekts festlegen
+### Stil setzen über Eigenschaften eines Task-Objekts
 
-Sie können die Farbe einer Aufgabe anpassen, indem Sie zusätzliche Eigenschaften zur Aufgabenobjekt-Konfiguration hinzufügen. Die verfügbaren Eigenschaften sind: **color**, **textColor** und **progressColor**.
+Sie können dem Task-Objekt weitere Eigenschaften hinzufügen, um eine benutzerdefinierte Farbe für eine Aufgabe festzulegen. Dazu gehören: **color**, **textColor** und **progressColor**.
 
-~~~js
-var tasks = {
-  data:[
-     {id:1, text:"Project #1", start_date:"01-04-2013", duration:18, color:"red"},
-     {id:2, text:"Task #1", start_date:"02-04-2013", 
-        duration:8, color:"blue", parent:1}
-   ]
+~~~jsx
+const data = {
+    tasks: [
+        { id: 1, text: "Task #1", start_date: "01-04-2026", duration: 2, color:"red" },
+        { id: 2, text: "Task #2", start_date: "02-04-2026", duration: 3, color:"blue" }
+    ]
 };
+
 gantt.init("gantt_here");
-gantt.parse(tasks);
- 
-gantt.getTask(1).color = "red"
+gantt.parse(data);
+
+const task = gantt.getTask(2);
+task.color = "red";
 ~~~
 
-Weitere Informationen finden Sie im entsprechenden Abschnitt des Artikels [Tasks Coloring](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject).
+Lesen Sie den entsprechenden Abschnitt des Artikels [Tasks Coloring](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject), um die Details zu erfahren.
 
-### Taskleisten über das Lightbox stylen
+### Styling der Task-Bars via das Lightbox
 
-Sie können eine Liste vordefinierter Farben einrichten und diese als Optionen in der Lightbox-Konfiguration einbinden. Dadurch können Sie Aufgaben Text- oder Hintergrundfarben zuweisen:
+Sie können eine Reihe vordefinierter Farben definieren und diese als Optionen in der Lightbox-Konfiguration festlegen, um die Text- oder Hintergrundfarbe einer Aufgabe festzulegen:
 
-~~~js
-var colors = [
-    {key:"", label:"Default"},
-    {key:"#4B0082",label:"Indigo"},
-    {key:"#FFFFF0",label:"Ivory"},
-    {key:"#F0E68C",label:"Khaki"}
+~~~jsx
+const colors = [
+    { key: "", label: "Default" },
+    { key: "#4B0082", label: "Indigo" },
+    { key: "#FFFFF0", label: "Ivory" },
+    { key: "#F0E68C", label: "Khaki" }
     // more colors
 ];
 
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"priority", height:22, map_to:"color", type:"select", options:colors},
-    {name:"textColor", height:22, map_to:"textColor", type:"select", options:colors},
-    {name:"time", type:"duration", map_to:"auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "priority", height: 22, map_to: "color", type: "select", options: colors },
+    { name: "textColor", height: 22, map_to: "textColor", type: "select",
+        options: colors
+    },
+    { name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
 
 ![task_style_property](/img/task_style_property.png)
 
 
-[Specify inline colors for Tasks and Links](https://docs.dhtmlx.com/gantt/samples/04_customization/16_inline_task_colors.html)
+**Related sample**: [Specify inline colors for Tasks and Links](https://docs.dhtmlx.com/gantt/samples/04_customization/16_inline_task_colors.html)
 
 
-### Zeilen im Zeitachsenbereich
+### Reihen des Timeline-Bereichs
 
-Mit der [task_row_class](api/template/task_row_class.md) Vorlage können Sie die Farbe der Zeitachsenzeilen hinter den Gantt-Aufgaben anpassen.
+Das [task_row_class](api/template/task_row_class.md) Template ermöglicht es Ihnen, die Farbe der Reihen des Timeline-Bereichs (die hinter den Gantt-Aufgaben liegen) zu ändern.
 
-~~~js
-gantt.templates.task_row_class = function(start, end, task){
-  if(task.id == 12)
-      return "updColor";
-};
+~~~jsx
+<style>
+    .gantt-timeline__row--highlight {
+        background-color: #ffeb8a !important;
+    }
+</style>
+
+gantt.templates.task_row_class = (start, end, task) =>
+    task.id === 3 ? "gantt-timeline__row--highlight" : "";
 ~~~
 
 ![styling_timeline_row](/img/styling_timeline_row.png)
 
-**Related example:** [Styling Rows of the Timeline Area](https://snippet.dhtmlx.com/33jfmwsp)
+**Related sample**: [Styling Rows of the Timeline Area](https://snippet.dhtmlx.com/33jfmwsp)
 
 
-[Custom tree formatting](https://docs.dhtmlx.com/gantt/samples/04_customization/02_custom_tree.html)
+**Related sample**: [Custom tree formatting](https://docs.dhtmlx.com/gantt/samples/04_customization/02_custom_tree.html)
 
 
-### Hervorheben von Zeitachsen-Zellen
+### Hervorheben von Timeline-Zellen
 
-Sie können bestimmte Zeitachsen-Zellen, z. B. nach Wochentagen, mit der **timeline_cell_class** Vorlage hervorheben. Diese Template-Funktion durchläuft die Zellen und wendet eine CSS-Klasse auf die ausgewählten an. Beispielsweise lassen sich Wochenenden wie folgt hervorheben:
+Sie können die benötigten Timeline-Zellen je nach Wochentag mit der **timeline_cell_class**-Vorlage hervorheben. Die Vorlagenfunktion wird über die Zellen iterieren und die gewünschte CSS-Klasse auf die angegebenen Zellen anwenden. Beispielsweise können Sie Wochenenden wie folgt hervorheben:
 
-~~~js
+~~~jsx
 <style>
-    .weekend{
-        background: #f4f7f4;
-    }    
-</style>
-~~~
-
-~~~js
-gantt.templates.timeline_cell_class = function(item,date){
-    if(date.getDay()==0||date.getDay()==6){
-        return "weekend"
+    .gantt-timeline__cell--weekend {
+        background-color: #f4f7f4;
     }
-};
+</style>
+
+gantt.templates.timeline_cell_class = (task, date) =>
+    (date.getDay() === 0 || date.getDay() === 6) ? "gantt-timeline__cell--weekend" :"";
 ~~~
 
 ![styling_timeline_cells](/img/styling_timeline_cells.png)
 
 
-[Highlighting weekends](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
+**Related sample**: [Highlighting weekends](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
 
 
-Weitere Informationen finden Sie im Artikel [Highlighting Time Slots](guides/highlighting-time-slots.md).
+Lesen Sie mehr zu diesem Thema im Artikel [Highlighting Time Slots](guides/highlighting-time-slots.md).
 
-### Externe Elemente anzeigen (Baselines, Deadlines, etc.)
+### Anzeigen externer Elemente (Baselines, Deadlines, usw.)
 
-:::info
+:::note
 Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 
-Sie können zusätzliche Elemente wie Baselines oder Deadline-Markierungen zum Gantt-Diagramm hinzufügen. Erstellen Sie dazu eine neue Darstellungsebene mit der [addTaskLayer](api/method/addtasklayer.md) Methode und fügen Sie dort Ihre benutzerdefinierten Elemente hinzu. Die Methode akzeptiert eine Funktion, die ein Aufgabenobjekt erhält und entweder ein DOM-Element zum Anzeigen oder *false* zurückgibt, um das Element für diese Aufgabe auszublenden:
 
-~~~js
-gantt.addTaskLayer(function myNewElement(task) {
-    var el = document.createElement('div');
-    // your code
-    return el;
+Sie können zusätzliche Elemente, wie Baselines oder Deadline-Marker, im Gantt anzeigen. Dazu müssen Sie eine neue anzeigbare Schicht über die Methode [addTaskLayer](api/method/addtasklayer.md) erstellen und dort benutzerdefinierte Elemente platzieren.
+Als Parameter nimmt die Methode eine Funktion, die ein Task-Objekt erhält und entweder ein DOM-Element zurückgibt, das angezeigt wird, oder *false* (das Element für eine Aufgabe soll ausgeblendet werden):
+
+~~~jsx
+gantt.addTaskLayer(function createTaskLayerElement(task) {
+    const layerElement = document.createElement('div');
+    // your code here
+    return layerElement;
 });
 ~~~
 
-Beispiele für solche externen Elemente sind:
+Beispiele für externe Elemente sind:
 
 - Baselines
 
 ![show_baselines](/img/show_baselines.png)
 
 
-[Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
+**Related sample**: [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 
 - Deadlines
@@ -516,159 +496,145 @@ Beispiele für solche externen Elemente sind:
 ![show_deadlines](/img/show_deadlines.png)
 
 
-[Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
+**Related sample**: [Displaying deadlines](https://docs.dhtmlx.com/gantt/samples/04_customization/14_deadline.html)
 
 
-Weitere Details finden Sie im Artikel [Custom Elements in Timeline Area](guides/baselines.md).
+Lesen Sie mehr über das Anzeigen externer Elemente im Gantt im Artikel [Custom Elements in Timeline Area](guides/baselines.md).
 
 ### Tooltips für Aufgaben
 
-Tooltips bieten eine kompakte Möglichkeit, Aufgabendetails anzuzeigen.
+Sie können Tooltips für Aufgaben bereitstellen, um deren Details kompakt anzuzeigen.
 
 ![default_task_tooltip](/img/default_task_tooltip.png)
 
-Standardmäßig erscheinen Tooltips für Aufgaben, wenn Sie das [tooltip](guides/extensions-list.md#tooltip) Plugin aktivieren.
+Standard-Tooltips werden automatisch für Aufgaben angezeigt, sobald Sie das [tooltip](guides/extensions-list.md#tooltip) Plugin aktivieren. 
 
 #### Benutzerdefinierter Text für Tooltips
 
-Um den Tooltip-Text anzupassen, verwenden Sie die [tooltip_text](api/template/tooltip_text.md) Vorlage:
+Um einen benutzerdefinierten Text für Tooltips festzulegen, verwenden Sie die [tooltip_text](api/template/tooltip_text.md) Vorlage:
 
-~~~js
-gantt.templates.tooltip_text = function(start,end,task){
-    return "<b>Task:</b> "+task.text+"
-
-<b>Duration:</b> " + task.duration;
-};
+~~~jsx
+gantt.templates.tooltip_text = (start, end, task) =>
+    `<b>Task:</b> ${task.text}<br/><b>Duration:</b> ${task.duration}`;
 ~~~
 
-Mehr zu Tooltips finden Sie im Artikel [Tooltips for Gantt Elements](guides/tooltips.md).
+Weitere Informationen zu Tooltips in Gantt finden Sie im Artikel [Tooltips for Gantt Elements](guides/tooltips.md).
 
-## Links stylen
+## Styling von Verknüpfungen (Links)
 
-Sie können das Aussehen von Abhängigkeitslinien mit den Ressourcen aus [Templates of Dependency Links](guides/dependency-templates.md) anpassen.
+Sie können den Stil der Abhängigkeitsverknüpfungen über die entsprechenden [Vorlagen der Abhängigkeitsverknüpfungen](guides/dependency-templates.md) ändern.
 
-### Linien der Abhängigkeitslinks
+### Linien der Abhängigkeitsverknüpfungen
 
-Mit der [link_class](api/template/link_class.md) Vorlage können Sie die Farbe der Abhängigkeitslinien ändern.
+Sie können die Farbe der Verknüpfungslinie über die [link_class](api/template/link_class.md) Vorlage ändern.
 
-~~~js
-gantt.templates.link_class = function(link){
-    return "";
-};
+~~~jsx
+gantt.templates.link_class = (link) => "";
 ~~~
 
 ![coloring_links](/img/coloring_links.png)
 
 
-[Link styles](https://docs.dhtmlx.com/gantt/samples/04_customization/03_link_styles.html)
+**Related sample**: [Link styles](https://docs.dhtmlx.com/gantt/samples/04_customization/03_link_styles.html)
 
 
-Weitere Informationen finden Sie im Artikel [Links Coloring and Styling](guides/colouring-lines.md).
+Es gibt weitere Informationen im zugehörigen Artikel [Links Coloring and Styling](guides/colouring-lines.md).
 
-### Linkfarbe über die Eigenschaft eines Link-Objekts festlegen
+### Verfärben von Verknüpfungen über die Eigenschaft eines Link-Objekts
 
-Sie können auch eine benutzerdefinierte Farbe für einen Abhängigkeitslink festlegen, indem Sie die **color** Eigenschaft zum Link-Objekt hinzufügen:
+Sie können auch eine benutzerdefinierte Farbe für eine Abhängigkeit-Verknüpfung festlegen, indem Sie die Eigenschaft **color** im Link-Objekt angeben:
 
-~~~js
-var tasks = {
-  data:[
-     // tasks configuration
-  ],
-  links:[
-     {id:1, source:1, target:2, type:"1", color:"red"}, 
-     {id:2, source:2, target:3, type:"0", color:"blue"}
-  ]
+~~~jsx
+const data = {
+    tasks: [
+        // tasks configuration
+    ],
+    links: [
+        { id: 1, source: 1, target: 2, type: "1", color: "red" },
+        { id: 2, source: 2, target: 3, type: "0", color: "blue" }
+    ]
 };
- 
+
 gantt.init("gantt_here");
-gantt.parse(tasks);
- 
+gantt.parse(data);
+
 gantt.getLink(2).color = "blue";
 ~~~
 
-Weitere Details finden Sie im Abschnitt [Links Coloring and Styling](guides/colouring-lines.md#specifyingcolorinthepropertiesofthelinkobject).
+Lesen Sie den entsprechenden Abschnitt des Artikels [Links Coloring and Styling](guides/colouring-lines.md#specifyingcolorinthepropertiesofthelinkobject), um die Details zu erfahren.
 
-### Linkfarbe beim Überfahren mit der Maus
+### Linkfarbe beim Hover
 
-Sie können die Farbe eines Links beim Überfahren mit der Maus per CSS ändern:
+Es ist möglich, die Farbe eines Links beim Hover über CSS zu ändern:
 
-~~~js
-.gantt_task_link:hover .gantt_line_wrapper div{
+~~~css
+.gantt_task_link:hover .gantt_line_wrapper div {
     box-shadow: 0 0 5px 0 yellowgreen;
     background: yellowgreen
 }
-  
+
 .gantt_task_link:hover .gantt_link_arrow_left,
-.gantt_task_link:hover .gantt_link_arrow_right{
+.gantt_task_link:hover .gantt_link_arrow_right {
     border-left-color: yellowgreen !important;
     border-right-color: yellowgreen !important;
 }
 ~~~
 
-**Related example:** [Link color on hover](https://snippet.dhtmlx.com/z3friavt)
-
 ![link_hover_color](/img/link_hover_color.png)
 
-Mehr Details finden Sie im Artikel [Links Coloring and Styling](guides/colouring-lines.md).
+Für weitere Informationen lesen Sie den zugehörigen Artikel [Links Coloring and Styling](guides/colouring-lines.md).
 
-### Popups für Abhängigkeitslinks
+### Popups der Verknüpfungs-Linien
 
-Mit der [drag_link_class](api/template/drag_link_class.md) Vorlage können Sie das Popup stylen, das beim Ziehen einer Abhängigkeitslinie zwischen Aufgaben angezeigt wird. Sie können zum Beispiel Hintergrund- und Textfarbe des Popups anpassen:
+Die [drag_link_class](api/template/drag_link_class.md) Vorlage ermöglicht das Styling des Popups, das erscheint, wenn ein Benutzer beginnt, eine Abhängigkeitslinie zwischen Aufgaben zu ziehen. Beispielsweise können Sie den Hintergrund des Popups färben und die Textfarbe des Popups ändern:
 
-~~~js
+~~~jsx
 <style>
-  .gantt_link_tooltip{color:red; background-color:yellow} 
-</style> 
-~~~
+    .gantt_link_tooltip {
+        color: red;
+        background-color: yellow;
+    }
+</style>
 
-~~~js
-gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
-    return "gantt_link_tooltip" ;
-};
+gantt.templates.drag_link_class = (from, from_start, to, to_start) =>
+    `gantt_link_tooltip`;
 ~~~
 
 ![styling_link_popup](/img/styling_link_popup.png)
 
-**Related example:** [Styling the Popup of Dependency Link](https://snippet.dhtmlx.com/7o5f261z)
+**Related sample**: [Styling the Popup of Dependency Link](https://snippet.dhtmlx.com/7o5f261z)
 
-Mehr Informationen finden Sie im Artikel [Templates of Dependency Links](guides/dependency-templates.md).
+Weitere Details zum Thema finden Sie im Artikel [Templates of Dependency Links](guides/dependency-templates.md).
 
-### Link-Werte über die UI bearbeiten
+### Bearbeiten von Link-Werten über die UI
 
-Während es Lightboxes zum Bearbeiten und Stylen von Taskleisten gibt, existiert keine integrierte UI zum Bearbeiten von Links. Sie können jedoch ein eigenes Interface erstellen, indem Sie dem Ansatz im 
-[dedicated article](guides/crud-dependency.md#editinglinkvaluesfromui) folgen.
+Obwohl es Lightboxes zum Bearbeiten und Stylen der Aufgabenbalken gibt, gibt es kein integriertes UI zum Bearbeiten von Verknüpfungen. Sie können jedoch eine solche UI selbst erstellen, indem Sie die im
+[dedizierten Artikel](guides/crud-dependency.md#editing-link-values-from-ui) beschriebene Technik verwenden.
 
 ![link_edit_ui](/img/link_edit_ui.png)
 
-**Related example:** [Custom UI for Editing Link Values](https://snippet.dhtmlx.com/2208ic0t)
+**Related sample**: [Custom UI for Editing Link Values](https://snippet.dhtmlx.com/2208ic0t)
 
 ## Styling des Quick Info Popups
 
-Das Styling des Quick Info Popups wird über die [Templates of the 'Quick Info' Extension (Touch Support)](guides/touch-templates.md) Templates gesteuert.
+Die Stilierung des Quick Info-Popups ist über die [Templates of the 'Quick Info' Extension (Touch Support)](guides/touch-templates.md) Vorlagen definiert.
 
-Sie können das Editierformular des Popups mit der [quick_info_class](api/template/quick_info_class.md) Vorlage stylen. Zum Beispiel, um Quick Info Popups für bestimmte Aufgaben zu gestalten:
+Sie können das erforderliche Styling auf das Popup-Edit-Formular mithilfe der [quick_info_class](api/template/quick_info_class.md) Vorlage anwenden. Beispielsweise können Sie Quick-Info-Popups für bestimmte Aufgaben wie folgt stylen:
 
-~~~js
+~~~jsx
 <style>
-  .updColor{
-      background-color:#ffeb8a!important;
-  }
-  .updColor .gantt_cal_qi_title{
-      background-color:#ffeb8a!important;
-  }
+    .quick-info-highlight {
+        background-color: #ffeb8a !important;
+    }
+    .quick-info-highlight .gantt_cal_qi_title {
+        background-color: #ffeb8a !important;
+    }
 </style>
-~~~
 
-~~~js
-gantt.templates.quick_info_class = function(start, end, task){ 
-  if(task.id == "12")
-    return "updColor";
-  
-      return ""
-};
+gantt.templates.quick_info_class = (start, end, task) =>
+    task.id === "2" ? "quick-info-highlight" : "";
 ~~~
 
 ![styling_quick_info](/img/styling_quick_info.png)
 
-**Related example:** [Styling Quick Info Popup](https://snippet.dhtmlx.com/b92gyqwu)
-
+**Related sample**: [Styling Quick Info Popup](https://snippet.dhtmlx.com/b92gyqwu)

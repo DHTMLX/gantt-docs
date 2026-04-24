@@ -1,21 +1,23 @@
 ---
 sidebar_label: autoSchedule
-title: autoSchedule method
-description: "aktualisiert den Projektzeitplan automatisch"
+title: "autoSchedule Methode"
+description: "Berechnet den Zeitplan des Projekts neu"
 ---
 
 # autoSchedule
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO Edition verfügbar.
 :::
+
 ### Description
 
-@short: Aktualisiert den Projektzeitplan automatisch
+@short: Berechnet den Zeitplan des Projekts neu
 
 @signature: autoSchedule: (taskId?: string | number) =\> void
 
 ### Parameters
-- `taskId` - (optionale) *string | number* - die ID der Aufgabe
+- `taskId` - (optional) *string | number* - die Aufgabe-ID
 
 ### Example
 
@@ -25,16 +27,15 @@ gantt.autoSchedule();
 
 ### Details
 
-Um den Zeitplan ab einer bestimmten Aufgabe zu aktualisieren, übergeben Sie einfach die ID der Aufgabe als Argument an die **autoSchedule()** Methode:
+Um den Zeitplan für eine Gruppe von verknüpften Aufgaben neu zu berechnen, übergeben Sie die ID einer der Aufgaben in dieser Gruppe als Argument an die **autoSchedule()**-Methode:
 
 ~~~js
 gantt.autoSchedule(taskId);
 ~~~
 
-
 :::note
- Stellen Sie sicher, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin auf der Seite eingebunden ist, da es für diese Methode erforderlich ist. 
+Die Methode erfordert das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin, das auf der Seite eingebunden sein muss.
 :::
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)

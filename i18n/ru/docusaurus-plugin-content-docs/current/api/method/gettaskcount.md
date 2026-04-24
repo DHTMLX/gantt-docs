@@ -1,19 +1,19 @@
 ---
 sidebar_label: getTaskCount
-title: getTaskCount method
-description: "возвращает общее количество задач, в данный момент загруженных в gantt chart"
+title: getTaskCount метод
+description: "возвращает количество задач, которые в данный момент загружены в диаграмму Гантта"
 ---
 
 # getTaskCount
 
 ### Description
 
-@short: Возвращает общее количество задач, в данный момент загруженных в gantt chart
+@short: Количество задач, которые в данный момент загружены в диаграмму Гантта
 
 @signature: getTaskCount: () =\> number
 
 ### Returns
-- ` count` - (number) - общее количество задач в расписании
+- ` count` - (number) - количество задач в расписании
 
 ### Example
 
@@ -23,4 +23,3 @@ gantt.getTaskCount();
 
 ### Related API
 - [getVisibleTaskCount](api/method/getvisibletaskcount.md)
-

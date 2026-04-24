@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskByIndex
-title: getTaskByIndex method
-description: "возвращает задачу на основе её глобального индекса задачи"
+title: getTaskByIndex метод
+description: "возвращает задачу по ее глобальному индексу задачи"
 ---
 
 # getTaskByIndex
 
 ### Description
 
-@short: Возвращает задачу на основе её глобального индекса задачи
+@short: Возвращает задачу по ее глобальному индексу задачи
 
 @signature: getTaskByIndex: (index: number | string) =\> Task
 
 ### Parameters
 
-- `index` - (required) *number | string* -        позиция задачи в общем списке задач (начинается с нуля)
+- `index` - (required) *number | string* -        индекс задачи в дереве (нумерация с нуля)
 
 ### Returns
-- ` task` - (Task) - объект задачи, соответствующий заданному индексу
+- ` task` - (Task) - объект задачи
 
 ### Example
 
@@ -30,4 +30,3 @@ const task = gantt.getTaskByIndex(10);
 
 ### Related API
 - [getGlobalTaskIndex](api/method/getglobaltaskindex.md)
-

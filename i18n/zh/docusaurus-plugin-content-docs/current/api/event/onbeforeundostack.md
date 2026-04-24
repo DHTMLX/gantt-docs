@@ -1,29 +1,29 @@
 ---
 sidebar_label: onBeforeUndoStack
-title: onBeforeUndoStack event
-description: "在操作被推入撤销栈之前触发。"
+title: onBeforeUndoStack 事件
+description: "在将操作添加到撤销栈之前触发"
 ---
 
 # onBeforeUndoStack
 
 ### Description
 
-@short: 在操作被推入撤销栈之前触发。
+@short: 在将操作添加到撤销栈之前触发
 
 @signature: onBeforeUndoStack: (action: UndoRedoAction) =\> boolean;
 
 ### Parameters
 
-- `action` - (required) *UndoRedoAction* - 表示用户操作的一组命令对象数组
+- `action` - (必需) *UndoRedoAction* - 以命令对象数组形式表示的用户操作
 
 ### Returns
-- ` result` - (boolean) - 决定事件的默认行为是否继续执行（true）或被阻止（false）
+- ` result` - (boolean) - 定义事件的默认操作是否将被触发（true）或取消（false）
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeUndoStack",function(action){
-    // 在这里编写你的代码
+    // 在这里插入您的自定义逻辑 
     return true;
 });
 ~~~
@@ -31,21 +31,20 @@ gantt.attachEvent("onBeforeUndoStack",function(action){
 ### Details
 
 :::note
- 此事件属于**undo**扩展的一部分，因此请确保已启用 [undo](guides/extensions-list.md) 插件。更多信息请参见 [撤销/重做功能](guides/undo-redo.md) 文章。 
+此事件在 **undo** 扩展中定义，因此你需要启用 [undo](guides/extensions-list.md#undo) 插件。请在 [Undo/Redo Functionality](guides/undo-redo.md) 文章中阅读详细信息。 
 :::
 
 
-- 此事件可以被阻止；返回 false 将停止后续处理。
-- 阻止此事件会阻止撤销捕获事件参数中的操作。
-- 你可以修改事件中的操作数组。
+- 该事件是可阻塞的，返回 false 将取消后续处理。
+- 如果事件被阻塞，undo 将不会从事件参数中捕获操作。
+- 事件中的操作可以被修改。
 
 ### Related API
 - [onBeforeRedoStack](api/event/onbeforeredostack.md)
 - [onBeforeUndo](api/event/onbeforeundo.md)
 
 ### Related Guides
-- [撤销/重做功能](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
-- 版本 5.2 中新增
-
+- 在版本 5.2 中新增

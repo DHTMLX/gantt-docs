@@ -1,7 +1,7 @@
 ---
 sidebar_label: onColumnResize
-title: onColumnResize event
-description: "사용자가 컬럼 경계를 드래그하여 컬럼 너비를 조정할 때 발생합니다"
+title: onColumnResize 이벤트
+description: "사용자가 열의 경계선을 드래그하여 열의 너비를 조정할 때 발생합니다"
 ---
 
 # onColumnResize
@@ -10,15 +10,15 @@ description: "사용자가 컬럼 경계를 드래그하여 컬럼 너비를 조
 :::
 ### Description
 
-@short: 사용자가 컬럼 경계를 드래그하여 컬럼 너비를 조정할 때 발생합니다
+@short: 사용자가 열의 경계선을 드래그하여 열의 너비를 조정할 때 발생합니다
 
 @signature: onColumnResize: (index: number, column: GridColumn, new_width: number) =\> void;
 
 ### Parameters
 
-- `index` - (required) *number* - 컬럼의 인덱스
-- `column` - (required) *GridColumn* - 컬럼 객체 자체
-- `new_width` - (required) *number* - 업데이트된 컬럼의 너비
+- `index` - (required) *number* - 열 인덱스
+- `column` - (required) *GridColumn* - 열 객체
+- `new_width` - (required) *number* - 새 열 너비
 
 ### Example
 
@@ -35,7 +35,6 @@ gantt.attachEvent("onColumnResize", function(index, column, new_width){
 
 ### Related samples
 - [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
-
 
 ### Related API
 - [onColumnResizeStart](api/event/oncolumnresizestart.md)

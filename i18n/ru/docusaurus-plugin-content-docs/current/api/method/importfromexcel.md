@@ -1,20 +1,20 @@
 ---
 sidebar_label: importFromExcel
 title: importFromExcel method
-description: "преобразует Excel-файл в формат JSON"
+description: "преобразует файл Excel в JSON"
 ---
 
 # importFromExcel
 
 ### Description
 
-@short: Преобразует Excel-файл в формат JSON
+@short: Преобразует файл Excel в JSON
 
 @signature: importFromExcel: (config: any) =\> void
 
 ### Parameters
 
-- `config` - (required) *object* - объект с настройками конфигурации для импортируемого файла
+- `config` - (required) *object* - объект с конфигурационными свойствами импортируемого файла
 
 ### Example
 
@@ -29,40 +29,38 @@ gantt.importFromExcel({
 ~~~
 
 ### Related samples
-- [Import Excel file](https://docs.dhtmlx.com/gantt/samples/08_api/21_load_from_excel.html)
+- [Импорт файла Excel](https://docs.dhtmlx.com/gantt/samples/08_api/21_load_from_excel.html)
 
 ### Details
 
 :::note
- Этот метод требует поддержки HTML5 File API. 
+Метод требует поддержки HTML5 File API.
 :::
 
 :::note
- Этот метод является частью расширения **export**, поэтому необходимо включить плагин [export_api](guides/extensions-list.md#exportservice). Подробнее об этом можно прочитать в статье [Экспорт/Импорт в Excel, экспорт в iCal](guides/excel.md#importfromexcel).
-
- 
+Этот метод определяется в расширении **export**, поэтому необходимо активировать плагин [export_api](guides/extensions-list.md#export-service). Подробности смотрите в статье [Экспорт/Импорт для Excel, Экспорт в iCal](guides/excel.md#importfromexcel).
 :::
 
 :::note
- Для версий Gantt ниже 8.0 нужно добавить на страницу **https://export.dhtmlx.com/gantt/api.js** для использования онлайн-сервиса экспорта, например:
+Если вы используете более старую версию Gantt, чем 8.0, вам нужно включить файл **https://export.dhtmlx.com/gantt/api.js** на вашей странице, чтобы включить онлайн-сервис экспорта, например:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
- 
+
 :::
 
-Метод принимает объект с опциями конфигурации для импортируемого файла:
+Метод принимает в качестве параметра объект с конфигурационными свойствами импортируемого файла:
 
-- **server** - указывает API-эндпоинт для запроса. Может использоваться с локально установленным сервисом импорта. По умолчанию **https://export.dhtmlx.com/gantt**.
-- **data** - экземпляр [File](https://developer.mozilla.org/en-US/docs/Web/API/File), содержащий Excel-файл (xlsx). 
-- **callback** - функция, которая вызывается после завершения импорта.
-- **sheet** - индекс листа в документе, который будет обрабатываться сервисом импорта.
+- **server** - устанавливает конечную точку API для запроса. Может использоваться с локальной установкой сервиса импорта. Значение по умолчанию: **https://export.dhtmlx.com/gantt**.
+- **data** - экземпляр [File](https://developer.mozilla.org/en-US/docs/Web/API/File) который должен содержать файл Excel (xlsx). 
+- **callback** - функция обратного вызова.
+- **sheet** - номер листа документа, который должен быть возвращён сервисом импорта.
 
-## Ответ
+## Response
 
-Ответ возвращает JSON, содержащий массив объектов:
+Ответ будет содержать JSON с массивом объектов:
 
 ~~~js
 [
@@ -71,11 +69,11 @@ gantt.importFromExcel({
 ]
 ~~~
 
-Подробности:
+где:
 
-- Значения первой строки используются как имена свойств для импортируемых объектов.
-- Каждая последующая строка преобразуется в отдельный объект.
-- Даты форматируются как "%Y-%m-%d %H:%i".
+- Значения первой строки используются в качестве имен свойств импортируемых объектов.
+- Каждая строка сериализуется как отдельный объект.
+- Значения дат сериализуются в формате "%Y-%m-%d %H:%i".
 
 ### Related API
 - [exportToExcel](api/method/exporttoexcel.md)
@@ -87,5 +85,4 @@ gantt.importFromExcel({
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [Экспорт/Импорт в Excel, экспорт в iCal](guides/excel.md#importfromexcel)
-
+- [Экспорт/Импорт для Excel, Экспорт в iCal](guides/excel.md#importfromexcel)

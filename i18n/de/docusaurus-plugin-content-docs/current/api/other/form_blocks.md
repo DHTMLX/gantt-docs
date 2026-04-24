@@ -1,7 +1,7 @@
 ---
 sidebar_label: form_blocks
-title: form_blocks config
-description: "ein Objekt, das die Lightbox-Steuerelemente enthält"
+title: form_blocks Konfiguration
+description: "ein Objekt der Lightbox-Steuerungen"
 ---
 
 # form_blocks
@@ -42,19 +42,19 @@ gantt.form_blocks["date_local_editor"] = {
 
 ### Details
 
-Dieses Objekt enthält verschiedene Arten von Steuerelementen:
+Das Objekt hat die folgenden Typen:
 
-- **checkbox** - (*LightboxControl*) - das [Checkbox](guides/checkbox.md) Steuerelement
-- **constraint** - (*LightboxControl*) - das [Constraint](guides/constraint.md) Steuerelement
-- **duration** - (*LightboxControl*) - das [Duration](guides/duration.md) Steuerelement
-- **duration_optional** - (*LightboxControl*) - das [Duration](guides/duration.md) Steuerelement, das das Umschalten der [Abschnittssichtbarkeit](guides/duration.md#switchingsectionvisibility) unterstützt
-- **parent** - (*LightboxControl*) - das [Parent](guides/parent.md) Steuerelement
-- **radio** - (*LightboxControl*) - das [Radio button](guides/radio.md) Steuerelement
-- **resources** - (*LightboxControl*) - das [Resources](guides/resources.md) Steuerelement
-- **select** - (*LightboxControl*) - das [Select](guides/select.md) Steuerelement
-- **template** - (*LightboxControl*) - das [Template](guides/template.md) Steuerelement
-- **textarea** - (*LightboxControl*) - das [Textarea](guides/textarea.md) Steuerelement
-- **time** - (*LightboxControl*) - das [Time](guides/time.md) Steuerelement
-- **time_optional** - (*LightboxControl*) - das [Time](guides/time.md) Steuerelement, das das Umschalten der [Abschnittssichtbarkeit](guides/time.md#switchingsectionvisibility) unterstützt
-- **typeselect** - (*LightboxControl*) - das [Typeselect](guides/typeselect.md) Steuerelement
-- **[ControlName: string]** - (*LightboxControl | undefined*) - eine benutzerdefinierte Steuerungsoption
+- **checkbox** - (*LightboxControl*) - die [Checkbox](guides/checkbox.md) Steuerung
+- **constraint** - (*LightboxControl*) - die [Constraint](guides/constraint.md) Steuerung
+- **duration** - (*LightboxControl*) - die [Duration](guides/duration.md) Steuerung
+- **duration_optional** - (*LightboxControl*) - die [Duration](guides/duration.md) Steuerung, die die [Abschnittssichtbarkeit](guides/duration.md#switching-section-visibility) ändern lässt
+- **parent** - (*LightboxControl*) - die [Parent](guides/parent.md) Steuerung
+- **radio** - (*LightboxControl*) - die [Radio button](guides/radio.md) Steuerung
+- **resources** - (*LightboxControl*) - die [Resources](guides/resources.md) Steuerung
+- **select** - (*LightboxControl*) - die [Select](guides/select.md) Steuerung
+- **template** - (*LightboxControl*) - die [Template](guides/template.md) Steuerung
+- **textarea** - (*LightboxControl*) - die [Textarea](guides/textarea.md) Steuerung
+- **time** - (*LightboxControl*) - die [Time](guides/time.md) Steuerung
+- **time_optional** - (*LightboxControl*) - die [Time](guides/time.md) Steuerung, die die [Abschnittssichtbarkeit](guides/time.md#switching-section-visibility) ändern lässt
+- **typeselect** - (*LightboxControl*) - die [Typeselect](guides/typeselect.md) Steuerung
+- **[ControlName: string]** - (*LightboxControl | undefined*) - eine benutzerdefinierte Steuerung

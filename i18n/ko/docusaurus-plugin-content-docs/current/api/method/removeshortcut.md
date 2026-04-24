@@ -1,6 +1,6 @@
 ---
 sidebar_label: removeShortcut
-title: removeShortcut method
+title: removeShortcut 메서드
 description: "키보드 단축키를 제거합니다"
 ---
 
@@ -10,12 +10,12 @@ description: "키보드 단축키를 제거합니다"
 
 @short: 키보드 단축키를 제거합니다
 
-@signature: removeShortcut: (shortcut: string, scope: string) =\> void
+@signature: removeShortcut: (shortcut: string, scope: string) => void
 
 ### Parameters
 
-- `shortcut` - (required) *string* - 단축키의 키 이름 또는 키 조합 이름 ([shortcut syntax](guides/keyboard-navigation.md#shortcutsyntax))
-- `scope` - (required) *string* - 단축키가 연결된 요소 ([list of scopes](guides/keyboard-navigation.md#scopes))
+- `shortcut` - (필수) *string* - 단축키의 키 이름 또는 키 조합 이름 [(shortcut syntax)](guides/keyboard-navigation.md#shortcutsyntax)
+- `scope` - (필수) *string* - 단축키가 연결된 요소 [(list of scopes)](guides/keyboard-navigation.md#scopes) 
 
 ### Example
 
@@ -38,7 +38,7 @@ gantt.removeShortcut("shift+w", "taskRow");
 ### Details
 
 :::note
- 이 메서드는 **keyboard_navigation** 확장의 일부이므로, [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 플러그인을 활성화해야 합니다. 자세한 내용은 [키보드 내비게이션](guides/keyboard-navigation.md) 문서를 참조하세요. 
+이 메서드는 **keyboard_navigation** 확장에 정의되어 있으므로 [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 플러그인을 활성화해야 합니다. Keyboard Navigation에 대한 자세한 내용은 [Keyboard Navigation](guides/keyboard-navigation.md) 기사에서 확인하십시오.
 :::
 
 

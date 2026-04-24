@@ -1,6 +1,6 @@
 ---
 sidebar_label: getSelectedTasks
-title: getSelectedTasks method
+title: getSelectedTasks 方法
 description: "返回当前选中的任务数组"
 ---
 
@@ -8,12 +8,12 @@ description: "返回当前选中的任务数组"
 
 ### Description
 
-@short: 返回当前选中的任务数组
+@short: 返回当前选中的任务的数组
 
 @signature: getSelectedTasks: () =\> any[]
 
 ### Returns
-- ` tasks` - (array) - 一个包含任务ID的数组
+- ` tasks` - (array) - 任务的 ID 数组
 
 ### Example
 
@@ -24,7 +24,7 @@ gantt.getSelectedTasks();
 ### Details
 
 :::note
- 此方法来自 **multiselect** 扩展，因此请确保启用了 [multiselect](guides/extensions-list.md) 插件。更多详情，请参阅 [多任务选择](guides/multiselection.md) 文章。 
+此方法在 **multiselect** 扩展中定义，因此你需要启用 [multiselect](guides/extensions-list.md#multitaskselection) 插件。请在 [Multi-Task Selection](guides/multiselection.md) 文章中阅读详细信息。
 :::
 
 ### Related API
@@ -37,5 +37,4 @@ gantt.getSelectedTasks();
 - [toggleTaskSelection](api/method/toggletaskselection.md)
 
 ### Related Guides
-- [多任务选择](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

@@ -5,7 +5,7 @@ sidebar_label: "CDN-ссылки"
 
 # Полный список CDN-ссылок
 
-В этой статье приведены CDN-ссылки для подключения **dhtmlxGantt** в вашем приложении.
+В этой статье приведены CDN-ссылки для подключения **dhtmlxGantt** к вашему приложению.
 
 Gantt состоит из двух основных файлов:
 
@@ -21,12 +21,12 @@ Gantt состоит из двух основных файлов:
 
 ### Основные файлы
 
-- JS: https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js
+- JavaScript: https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js
 - CSS: https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css
 
 
 
-## Последняя версия Gantt (edge), исходники (uncompressed)
+## Последняя версия Gantt (edge), не сжатая
 
 Используйте:
 
@@ -34,27 +34,27 @@ Gantt состоит из двух основных файлов:
 
 ### Основные файлы
 
-- JS: https://cdn.dhtmlx.com/gantt/edge/sources/dhtmlxgantt.js
+- JavaScript: https://cdn.dhtmlx.com/gantt/edge/sources/dhtmlxgantt.js
 - CSS: https://cdn.dhtmlx.com/gantt/edge/sources/dhtmlxgantt.css
 
 
-## Конкретная версия Gantt
+## Определенная версия Gantt
 
 Используйте:
 
 `https://cdn.dhtmlx.com/gantt/[version_number]/...`
 
-`[version_number]` задаёт `major.minor` версию пакета, например **9.0**, **8.0**, **7.1** и т.д. Наш CDN всегда отдаёт последнюю patch-версию для каждого major/minor релиза.
+`[version_number]` задаёт версию пакета в формате major.minor, например **9.0**, **8.0**, **7.1** и т.д. Наш CDN всегда предоставляет последнюю версию патча для каждого выпуска major/minor.
 
 ### Основные файлы
 
-- JS: https://cdn.dhtmlx.com/gantt/9.0/dhtmlxgantt.js
+- JavaScript: https://cdn.dhtmlx.com/gantt/9.0/dhtmlxgantt.js
 - CSS: https://cdn.dhtmlx.com/gantt/9.0/dhtmlxgantt.css
 
-### Скины (только для v8.0 и ниже)
+### Скины (только для версий v8.0 и старше)
 
-Отдельные файлы скинов доступны в v8.0 и более ранних версиях.  
-Начиная с v9.0, все скины включены в `dhtmlxgantt.css` и выбираются через `gantt.skin`/`gantt.setSkin()`. Подробнее см. в [гайде по миграции](migration.md#single-css-file).
+Раздельные файлы скинов доступны в версиях v8.0 и ранее.
+Начиная с версии v9.0, все скины включены в `dhtmlxgantt.css` и выбираются через `gantt.skin`/`gantt.setSkin()`, пожалуйста, смотрите [Руководство по миграции](migration.md#single-css-file) для получения дополнительных сведений.
 
 - Terrace: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_terrace.css
 - Meadow: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_meadow.css
@@ -64,26 +64,27 @@ Gantt состоит из двух основных файлов:
 - Contrast White: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_contrast_white.css
 - Material: https://cdn.dhtmlx.com/gantt/8.0/skins/dhtmlxgantt_material.css
 
-## Конкретная версия Gantt, исходники (uncompressed)
+
+## Определенная версия Gantt, не сжатая
 
 Используйте:
 
 `https://cdn.dhtmlx.com/gantt/[version_number]/sources/...`
 
-`[version_number]` задаёт `major.minor` версию пакета, например **9.0**, **8.0**, **7.1** и т.д. Наш CDN всегда отдаёт последнюю patch-версию для каждого major/minor релиза.
+`[version_number]` задаёт версию пакета в формате major.minor, например **9.0**, **8.0**, **7.1** и т.д. Наш CDN всегда предоставляет последнюю версию патча для каждого выпуска major/minor.
 
 ### Основные файлы
 
-- JS: https://cdn.dhtmlx.com/gantt/9.0/sources/dhtmlxgantt.js
+- JavaScript: https://cdn.dhtmlx.com/gantt/9.0/sources/dhtmlxgantt.js
 - CSS: https://cdn.dhtmlx.com/gantt/9.0/sources/dhtmlxgantt.css
 
 
-### Скины (только для v8.0 и ниже)
+### Скины (только для версий v8.0 и старше)
 
-Отдельные файлы скинов доступны в v8.0 и более ранних версиях.  
-Начиная с v9.0, все скины включены в `dhtmlxgantt.css` и выбираются через `gantt.skin`/`gantt.setSkin()`. Подробнее см. в [гайде по миграции](migration.md#single-css-file).
+Раздельные файлы скинов доступны в версиях v8.0 и ранее.
+Начиная с версии v9.0, все скины включены в `dhtmlxgantt.css` и выбираются через `gantt.skin`/`gantt.setSkin()`, пожалуйста, смотрите [Руководство по миграции](migration.md#single-css-file) для получения дополнительных сведений.
 
-Исходники (uncompressed) файлов скинов:
+Неупакованные файлы скинов:
 
 - Terrace: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_terrace.css
 - Meadow: https://cdn.dhtmlx.com/gantt/8.0/sources/skins/dhtmlxgantt_meadow.css

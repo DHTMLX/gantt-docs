@@ -1,23 +1,23 @@
 ---
 sidebar_label: onBeforeLightbox
-title: onBeforeLightbox event
-description: "Wird unmittelbar ausgelöst, bevor die Lightbox (Bearbeitungsformular) geöffnet wird"
+title: onBeforeLightbox-Ereignis
+description: "Löst unmittelbar aus, bevor der Benutzer das Lightbox-Fenster (Bearbeitungsformular) öffnet"
 ---
 
 # onBeforeLightbox
 
 ### Description
 
-@short: Wird unmittelbar ausgelöst, bevor die Lightbox (Bearbeitungsformular) geöffnet wird
+@short: Wird unmittelbar ausgelöst, bevor der Benutzer die Lightbox (Bearbeitungsformular) öffnet
 
 @signature: onBeforeLightbox: (id: string | number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die ID der Aufgabe
+- `id` - (erforderlich) *string | number* - die Aufgaben-ID
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt werden soll (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
@@ -31,10 +31,10 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 ~~~
 
 ### Related samples
-- [Template control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/05_template.html)
-- [Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
+- [Vorlagen-Steuerung](https://docs.dhtmlx.com/gantt/samples/05_lightbox/05_template.html)
+- [Benutzerdefinierte Schaltfläche im Lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
 
 ### Details
 
-- Dieses Event kann blockiert werden. Wird *false* zurückgegeben, verhindert dies das Öffnen der Lightbox.
-- Es ist eine praktische Möglichkeit, um vor dem Erscheinen der Lightbox individuelle Anpassungen vorzunehmen.
+- Das Event ist blockierbar. Gib *false* zurück, um die Standardverarbeitung (Öffnen der Lightbox) abzubrechen.
+- Die Verwendung dieses Events ist eine gute Möglichkeit, etwas im Lightbox-Fenster anzupassen.

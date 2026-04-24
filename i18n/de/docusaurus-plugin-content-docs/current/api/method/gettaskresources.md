@@ -1,49 +1,52 @@
 ---
 sidebar_label: getTaskResources
-title: getTaskResources method
-description: "Ruft eine Liste eindeutiger Ressourcen ab, die einer bestimmten Aufgabe im Datenspeicher zugewiesen sind"
+title: getTaskResources Methode
+description: "gibt das Array eindeutiger Ressourcen zurück, die einem bestimmten Task aus dem Datenspeicher zugewiesen sind"
 ---
 
 # getTaskResources
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
-@short: Ruft eine Liste eindeutiger Ressourcen ab, die einer bestimmten Aufgabe im Datenspeicher zugewiesen sind
+@short: Gibt das Array eindeutiger Ressourcen zurück, die einem bestimmten Task aus dem Datenspeicher zugewiesen sind
 
 @signature: getTaskResources: (taskId: string | number) =\> ResourceItem[]
 
 ### Parameters
 
-- `taskId` - (required) *string | number* -    Die Kennung der Aufgabe
+- `taskId` - (erforderlich) *string | number* - die Aufgaben-ID
 
 ### Returns
-- ` param` - (ResourceItem[]) - Ein Array mit Ressourcenobjekten
+- ` param` - (ResourceItem[]) - ein Array von ResourceItem-Objekten
 
 ### Example
 
 ~~~jsx
-gantt.getTaskResources(5); // -> siehe Details
+gantt.getTaskResources(5); // -> see details
 ~~~
 
 ### Related samples
-- [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+- [Ressourcenwerte bestimmten Tagen zuweisen](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
 
 :::note
- Die **getTaskResources** Methode funktioniert nicht, wenn [process_resource_assignments](api/config/process_resource_assignments.md) deaktiviert ist. 
+ Die **getTaskResources**-Methode ist nicht verfügbar, wenn [process_resource_assignments](api/config/process_resource_assignments.md) deaktiviert ist. 
 :::
 
-Diese Methode gibt ein Array von **resourceItem** Objekten mit folgenden Eigenschaften zurück:
+Die Methode gibt ein Array von **resourceItem**-Objekten zurück, die die folgenden Eigenschaften besitzen:
 
-- **id** - (*string | number*) - Die ID des Ressourcenobjekts
-- **open?** - (*boolean*) - Gibt an, ob das Ressourcenobjekt im Baum erweitert (*true*) oder eingeklappt (*false*) ist
-- **parent?** - (*string | number*) - Die ID des übergeordneten Ressourcenobjekts
-- **text?** - (*string*) - Der Name der Ressource
-- **unit?** - (*string*) - Die Einheit, die für Zuweisungen verwendet wird
-- **[customProperty: string]** - (*any*) - Beliebige zusätzliche benutzerdefinierte Eigenschaft
+- **id** - (*string | number*) - die ID des Ressourcen-Items
+- **open?** - (*boolean*) - gibt an, ob das Ressourcen-Item im Baum erweitert (*true*) oder eingeklappt (*false*) ist
+- **parent?** - (*string | number*) - die ID des übergeordneten Elements des Ressourcen-Items
+- **text?** - (*string*) - der Ressourcenname
+- **unit?** - (*string*) - die Einheit für die Zuordnungen
+- **[customProperty: string]** - (*any*) - jede benutzerdefinierte Eigenschaft
+
 
 ~~~js
 [
@@ -57,7 +60,7 @@ Diese Methode gibt ein Array von **resourceItem** Objekten mit folgenden Eigensc
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
 ### Related Guides
-- ["Ressourcenmanagement"](guides/resource-management.md#assigningresources)
+- [Ressourcenverwaltung](guides/resource-management.md#assigningresources)
 
 ### Change log
 - hinzugefügt in v8.0

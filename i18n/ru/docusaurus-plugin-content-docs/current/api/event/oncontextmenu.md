@@ -1,14 +1,14 @@
 ---
 sidebar_label: onContextMenu
 title: onContextMenu event
-description: "срабатывает, когда пользователь кликает правой кнопкой мыши внутри диаграммы Ганта (подробности см. ниже)"
+description: "срабатывает, когда пользователь нажимает правую кнопку мыши внутри диаграммы Ганта (см. детали)"
 ---
 
 # onContextMenu
 
 ### Description
 
-@short: Срабатывает, когда пользователь кликает правой кнопкой мыши внутри диаграммы Ганта (подробности см. ниже)
+@short: срабатывает, когда пользователь нажимает правую кнопку мыши внутри диаграммы Ганта (см. детали)
 
 @signature: onContextMenu: (taskId: string | number, linkId: string | number, e: Event) =\> void;
 
@@ -16,27 +16,27 @@ description: "срабатывает, когда пользователь кли
 
 - `taskId` - (required) *string | number* - идентификатор задачи
 - `linkId` - (required) *string | number* - идентификатор связи
-- `e` - (required) *Event* - объект нативного события
+- `e` - (required) *Event* - нативный объект события
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onContextMenu", function (taskId, linkId, event) {
-      var element = event.target;
-    console.log("Вы кликнули по элементу ", element)
+    const element = event.target;
+    console.log("You've clicked on the ", element)
     return true;
 });
 ~~~
 
 ### Related samples
-- [Context menu to control tasks](https://docs.dhtmlx.com/gantt/samples/04_customization/10_context_menu.html)
+- [Контекстное меню для управления задачами](https://docs.dhtmlx.com/gantt/samples/04_customization/10_context_menu.html)
 
 ### Details
 
-Щелчок правой кнопкой мыши внутри диаграммы Ганта обычно открывает стандартное контекстное меню браузера, если не выполняются другие условия. 
-В примере ниже, при клике правой кнопкой по задаче показывается [DHTMLX контекстное меню](https://docs.dhtmlx.com/menu__index.html), что предотвращает появление стандартного меню браузера.
+Правые клики в диаграмме Ганта открывают меню контекстного меню браузера по умолчанию, если не выполняются другие условия.
+В следующем примере клик по задаче вызывает отображение [контекстного меню DHTMLX](https://docs.dhtmlx.com/menu__index.html) и скрывает стандартное контекстное меню браузера.
 
-~~~
+~~~js
 //требуется компонент меню DHTMLX
 gantt.attachEvent("onContextMenu", function (taskId, linkId, event) {
     const x = event.clientX+document.body.scrollLeft+document.documentElement.scrollLeft;
@@ -51,7 +51,6 @@ gantt.attachEvent("onContextMenu", function (taskId, linkId, event) {
 });
 ~~~
 
-Обязательно подключите на страницу либо [файлы DHTMLX Menu, либо DHTMLX Suite](https://docs.dhtmlx.com/menu__how_to_start.html), так как пример зависит от них.
-<br>
+Не забудьте подключить либо файлы DHTMLX Menu или DHTMLX Suite на страницу. В противном случае пример не будет работать.
 
-Для чисто JavaScript решения по добавлению кастомного контекстного меню смотрите [этот пример](https://snippet.dhtmlx.com/xuvxhjbc).
+Посмотрите [ещё один пример](https://snippet.dhtmlx.com/xuvxhjbc), если вам нужно добавить пользовательское контекстное меню на чистом JavaScript.

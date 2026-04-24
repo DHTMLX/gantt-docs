@@ -1,29 +1,29 @@
 ---
 sidebar_label: onBeforeRedo
 title: onBeforeRedo event
-description: "срабатывает непосредственно перед выполнением метода redo()"
+description: "срабатывает перед вызовом метода redo()"
 ---
 
 # onBeforeRedo
 
 ### Description
 
-@short: Срабатывает непосредственно перед выполнением метода redo()
+@short: Срабатывает перед вызовом метода redo()
 
 @signature: onBeforeRedo: (action: any[]) =\> boolean;
 
 ### Parameters
 
-- `action` - (required) *array* - массив, представляющий действие пользователя, состоящий из объектов команд
+- `action` - (required) *array* - пользовательское действие в виде массива объектов команд
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено стандартное поведение события (true) или оно будет отменено (false)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (true) или отменено (false)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeRedo",function(action){
-    // ваш код здесь
+    // любая ваша логика здесь
     return true;
 });
 ~~~
@@ -34,27 +34,25 @@ gantt.attachEvent("onBeforeRedo",function(action){
 ### Details
 
 :::note
- Это событие принадлежит расширению **undo**, поэтому убедитесь, что плагин [undo](guides/extensions-list.md#undo) включен. Подробнее об этом можно прочитать в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Это событие определяется в расширении **undo**, поэтому вам нужно включить плагин [undo](guides/extensions-list.md#undo). Подробнее см. в статье [Undo/Redo Functionality](guides/undo-redo.md). 
 :::
 
+Событие можно блокировать. Возврат *false* отменит дальнейшую обработку.
 
-Это событие можно заблокировать. Возврат *false* предотвратит выполнение дальнейших действий.
-
-Параметр **action** - это массив объектов команд, каждый из которых содержит следующие атрибуты:
+Параметр **action** представляет собой массив объектов команды, каждый из которых содержит следующий набор атрибутов:
  
-- **type** - (*string*) тип команды: "add", "remove" или "update"
+- **type** - (*string*) тип команды: "add/remove/update"
 - **entity** - (*string*) тип изменённого объекта: "task" или "link"
-- **value** - (*object*) объект задачи или связи после изменения 
-- **oldValue** - (*object*) объект задачи или связи до изменения
+- **value** - (*object*) изменённый объект задачи/связи
+- **oldValue** - (*object*) исходный объект задачи/связи до изменений
 
 ### Related API
-- [redo](api/method/redo.md)
-- [onAfterRedo](api/event/onafterredo.md)
-- [onBeforeRedoStack](api/event/onbeforeredostack.md)
+- - [redo](api/method/redo.md)
+- - [onAfterRedo](api/event/onafterredo.md)
+- - [onBeforeRedoStack](api/event/onbeforeredostack.md)
 
 ### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
 - добавлено в версии 4.0
-

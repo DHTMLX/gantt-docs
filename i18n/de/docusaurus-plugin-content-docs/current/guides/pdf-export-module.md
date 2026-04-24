@@ -1,63 +1,63 @@
+--- 
+title: "PDF-Exportmodul" 
+sidebar_label: "PDF-Exportmodul" 
 ---
-title: "Exportmodul für PDF"
-sidebar_label: "Exportmodul für PDF"
----
 
-# Exportmodul für PDF
+# PDF-Exportmodul
 
-Dieses Exportmodul ermöglicht das Exportieren von Daten in PDF-, PNG-, Excel- und iCal-Formate. Es kann auf jeder Plattform entweder als Node.js-Anwendung oder über ein Docker-Image eingerichtet werden.
+Dieses Exportmodul kann Daten in PDF-, PNG-, Excel- und iCal-Dateien exportieren. Es kann auf jeder Plattform als Node.js-Anwendung oder als Docker-Image installiert werden.
 
-Bitte beachten Sie, dass kein Import/Export für MS Project- und Primavera-Dateien unterstützt wird. Für diese sollten Sie das [dedizierte Exportmodul](guides/msp-export-module.md) oder unseren Online-Service verwenden.
+Es enthält keine Import-/Export-Funktionalität für MS Project- und Primavera-Dateien. Falls Sie eine solche Funktionalität benötigen, sollten Sie das entsprechende Exportmodul [das entsprechende Exportmodul](guides/msp-export-module.md) oder unseren Online-Server verwenden.
 
 ## Installationsanleitung
 
-Um zu beginnen, laden Sie Node.js herunter und installieren Sie es gemäß den Anweisungen [auf der offiziellen Website](https://nodejs.org/en/).
+Zunächst müssen Sie Node.js herunterladen und installieren. Die Installationsanleitung finden Sie [auf deren Website](https://nodejs.org/en/).
 
-Das Exportmodul finden Sie im Kundenbereich unter dem Reiter Downloads. Hier ein Beispiel:
+Sie können das Exportmodul im Client-Bereich im Download-Tab herunterladen. Siehe unten das Bild:
 
-![PDF export module download](/img/pdf_export_module_download.png)
+![PDF-Exportmodul herunterladen](/img/pdf_export_module_download.png)
 
-Nach dem Herunterladen entpacken Sie die Datei an einen gewünschten Ort. Öffnen Sie dann die Kommandozeile und navigieren Sie in den Ordner des Exportmoduls, zum Beispiel:
+Nachdem Sie diese Datei heruntergeladen haben, entpacken Sie sie an einem beliebigen Ort, öffnen Sie dann die Befehlszeile und wechseln Sie zum Ordner des Exportmoduls. Zum Beispiel:
 
 ~~~
 cd C:export_module
 ~~~
 
-Installieren Sie anschließend die erforderlichen Anwendungsmodule:
+Dann müssen Sie die Module der Anwendung installieren:
 
 ~~~
 npm install
 ~~~
 
-Wenn Sie die [Komponenten auf einer Maschine ohne grafische Oberfläche installieren möchten](#usingserverwithoutgraphicalinterface), folgen Sie dem entsprechenden Abschnitt unten.
+Sie können [die Komponenten auf dem Computer ohne grafische Oberfläche installieren](#using-server-without-graphical-interface).
 
-Um das Exportmodul auf einem Server mit grafischer Oberfläche zu starten, verwenden Sie diesen Befehl:
+Um auf einem Server mit grafischer Oberfläche auszuführen, können Sie den folgenden Befehl verwenden, um das Exportmodul zu starten:
 
 ~~~
 npm start
 ~~~
 
-Um zu überprüfen, ob das Modul läuft, öffnen Sie die URL: [http://localhost:3200/test](http://localhost:3200/test).
+Um zu testen, wie es funktioniert, können Sie die folgende URL öffnen: **http://localhost:3200/test**.
 
-Alternativ können Sie die Hauptseite unter [http://localhost:3200](http://localhost:3200) öffnen und auf den Link Test klicken.
+Oder öffnen Sie die Hauptseite und klicken Sie auf den Link Test: **http://localhost:3200**.
 
-## Nutzung des Servers ohne grafische Oberfläche
+## Verwendung des Servers ohne grafische Oberfläche
 
-Für den Betrieb des Exportmoduls auf einem Headless-Server sind zusätzliche Komponenten erforderlich. Auf Debian-basierten Distributionen verwenden Sie diesen Befehl:
+Wenn Sie das Exportmodul auf einem Headless-Server verwenden möchten, müssen Sie zusätzliche Komponenten installieren. Hier ist der Befehl für Debian-basierte Distributionen:
 
 ~~~
 apt-get install -y xvfb libgtk2.0-0 libgtk-3-0 libgbm-dev 
 libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth
 ~~~
 
-Auf RPM-basierten Distributionen führen Sie aus:
+Hier ist der Befehl für RPM-basierte Distributionen:
 
 ~~~
 yum install -y xorg-x11-server-Xvfb gtk2-devel gtk3-devel 
 libnotify-devel GConf2 nss libXScrnSaver alsa-lib
 ~~~
 
-Danach starten Sie das Modul mit einem der folgenden Befehle:
+Dann müssen Sie es mit einem weiteren Befehl ausführen:
 
 ~~~
 npm run start:docker
@@ -69,59 +69,57 @@ oder
 xvfb-run node index.js
 ~~~
 
-## Problemlösungen
+## Problemlösung
 
 ### Alte Node.js-Version
 
-Das Exportmodul funktioniert mit Node.js Version 12.03 und höher. Wenn Sie eine ältere Version verwenden, installieren Sie eine frühere Electron-Version:
+Das Exportmodul ist mit der Node.js-Version 12.03 und neuer kompatibel. Wenn Sie eine ältere Version haben, müssen Sie die ältere Version von Electron installieren:
 
 ~~~
 npm install electron@6.1
 ~~~
 
-### Export zu PDF endet nie
+### Export nach PDF endet nie
 
-Auf Windows-Systemen mit benutzerdefinierten DPI-Einstellungen oder Schriftarten gibt es einen bekannten Electron-Bug. Um dies zu beheben, installieren Sie die ältere Electron-Version:
+Wenn Sie Windows mit benutzerdefinierten DPI-Einstellungen oder Schriftarten verwenden, gibt es einen Fehler in der Electron-Komponente. Um ihn zum Laufen zu bringen, müssen Sie eine frühere Version installieren:
 
 ~~~
 npm install electron@6.1
 ~~~
 
-### Export zu PDF/PNG funktioniert nicht auf Mac M1
+### Export nach PDF/PNG funktioniert nicht auf Mac M1
 
-Die aktuell verwendete Electron-Version unterstützt keine Darwin-ARM64-Builds. Als Workaround versuchen Sie, Electron 11 zu installieren:
+Die derzeit verwendete Electron-Version hat keine Builds für die Darwin-ARM64-Architektur. Als Workaround können Sie versuchen, Electron 11 zu installieren.
 
 ~~~
 npm install electron@11
 ~~~
 
-Grundlegende Exportfunktionen sollten funktionieren, jedoch wurden nicht alle Fähigkeiten mit dieser Version getestet.
+Die grundlegende Exportfunktionalität sollte funktionieren, aber wir haben nicht geprüft, ob alle Funktionen mit dieser Version korrekt funktionieren:
 
-### Export zu PDF funktioniert nicht
+### Export nach PDF funktioniert nicht
 
-Es gibt mehrere mögliche Ursachen. Überprüfen Sie die Fehlermeldungen sorgfältig.
+Es kann verschiedene Gründe dafür geben. Prüfen Sie die Fehlermeldungen.
 
-Wenn Sie Fehler wie diese sehen:
+Wenn Sie eine der folgenden Fehlermeldungen erhalten:
 
 * Failed to get crash dump id
-
 * Electron crashed!
 
-bedeutet dies meist, dass das Exportmodul auf einem Headless-Server läuft. In diesem Fall müssen Sie 
-[die erforderlichen Komponenten für den PDF- und PNG-Export installieren](#usingserverwithoutgraphicalinterface) oder ein Docker-Image verwenden.
+wahrscheinlich bedeutet dies, dass das Exportmodul auf einem headless-Server läuft. Sie müssen die notwendigen Komponenten installieren, um PDF- und PNG-Export zu verwenden. Oder Sie können ein Docker-Image erstellen.
 
 ### Verwendung eines Docker-Images
 
-Erstellen Sie das Docker-Image mit folgendem Befehl:
+Builden Sie das Docker-Image mit dem folgenden Befehl:
 
 ~~~
 docker build -t dhtmlx/scheduler-gantt-export ./
 ~~~
 
-Starten Sie den Docker-Container mit:
+Führen Sie das Docker-Image mit dem folgenden Befehl aus:
 
 ~~~
 docker run -d -p 3200:80 dhtmlx/scheduler-gantt-export
 ~~~
 
-Hierbei ist 3200 der Port, unter dem der Docker-Service erreichbar ist.
+3200 ist der Port, auf dem der Docker-Dienst läuft.

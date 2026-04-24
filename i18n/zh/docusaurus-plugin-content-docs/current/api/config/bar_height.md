@@ -1,14 +1,14 @@
 ---
 sidebar_label: bar_height
-title: bar_height config
-description: "定义时间轴区域内任务条的高度"
+title: bar_height 配置
+description: "设置时间线区域任务条的高度"
 ---
 
 # bar_height
 
 ### Description
 
-@short: 定义时间轴区域内任务条的高度
+@short: 设置时间线区域任务条的高度
 
 @signature: bar_height: number | string
 
@@ -19,7 +19,8 @@ gantt.config.bar_height = 30;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** "full"
+
+**默认值:** "full"
 
 ### Related API
 - [getTaskBarHeight](api/method/gettaskbarheight.md)
@@ -29,4 +30,3 @@ gantt.init("gantt_here");
 
 ### Change log
 - added in v7.1
-

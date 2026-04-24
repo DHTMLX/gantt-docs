@@ -1,25 +1,25 @@
 ---
 sidebar_label: onBeforeCollapse
 title: onBeforeCollapse event
-description: "срабатывает непосредственно перед выходом gantt из полноэкранного режима и возвратом к обычному виду"
+description: "перед выходом диаграммы Ганта из полноэкранного режима и возвращением к обычному режиму"
 ---
 
 # onBeforeCollapse
 
 ### Description
 
-@short: Срабатывает непосредственно перед выходом gantt из полноэкранного режима и возвратом к обычному виду
+@short: Перед выходом диаграммы Ганта из полноэкранного режима и возвращением к обычному режиму
 
 @signature: onBeforeCollapse: () =\> boolean;
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или оно будет остановлено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли по умолчанию выполнено действие события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeCollapse",function(){
-    // разместите здесь вашу пользовательскую логику    
+    // любая собственная логика здесь    
     return true;
 });
 ~~~
@@ -29,10 +29,10 @@ gantt.attachEvent("onBeforeCollapse",function(){
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* предотвратит дальнейшие действия.
+Событие можно блокировать. Возврат значения *false* отменит дальнейшую обработку.
 
 :::note
- Это событие является частью расширения **fullscreen**, поэтому убедитесь, что плагин [fullscreen](guides/extensions-list.md#fullscreen) включен через метод [gantt.plugins](api/method/plugins.md). Подробнее см. в статье [Полноэкранный режим](guides/fullscreen-mode.md). 
+Это событие определено в расширении **fullscreen**, поэтому вам нужно активировать плагин [fullscreen](guides/extensions-list.md#fullscreen) с помощью метода [gantt.plugins](api/method/plugins.md). Прочитайте детали в статье [Full Screen Mode](guides/fullscreen-mode.md). 
 :::
 
 ### Related API
@@ -43,5 +43,4 @@ gantt.attachEvent("onBeforeCollapse",function(){
 - [expand](api/method/expand.md)
 
 ### Related Guides
-- [Полноэкранный режим](guides/fullscreen-mode.md)
-
+- [Full Screen Mode](guides/fullscreen-mode.md)

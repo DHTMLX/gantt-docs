@@ -1,20 +1,20 @@
 ---
 sidebar_label: open
 title: open method
-description: "주어진 id로 식별된 브랜치를 open합니다."
+description: "지정된 id의 브랜치를 엽니다"
 ---
 
 # open
 
 ### Description
 
-@short: 주어진 id로 식별된 브랜치를 open합니다.
+@short: 지정된 id의 브랜치를 엽니다
 
 @signature: open: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string* - | number    브랜치의 id
+- `id` - (필수) *string | number* - 브랜치 ID
 
 ### Example
 
@@ -36,7 +36,7 @@ gantt.open("p_1"); /*!*/
 
 ### Details
 
-이 메서드는 [onTaskOpened](api/event/ontaskopened.md) 이벤트를 트리거합니다.
+이 메서드는 [onTaskOpened](api/event/ontaskopened.md) 이벤트를 호출합니다.
 
 ### Related API
 - [close](api/method/close.md)

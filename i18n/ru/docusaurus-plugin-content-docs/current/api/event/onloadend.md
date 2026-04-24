@@ -1,23 +1,23 @@
 ---
 sidebar_label: onLoadEnd
-title: onLoadEnd event
-description: "срабатывает один раз, когда загрузка данных из источника полностью завершена"
+title: событие onLoadEnd
+description: "Выполняется после загрузки данных из источника данных"
 ---
 
 # onLoadEnd
 
 ### Description
 
-@short: Срабатывает один раз, когда загрузка данных из источника полностью завершена
+@short: Срабатывает после завершения загрузки данных из источника данных
 
 @signature: onLoadEnd: (url: string, type: string) =\> void;
 
 ### Parameters
 
-- `url` - (required) *string* - URL сервера (это может быть статический файл или серверный скрипт, который возвращает данные)
-- `type` - (required) *string* - ('json', 'xml', 'oldxml') указывает тип загружаемых данных
+- `url` - (required) *string* - URL сервера (может быть статическим файлом или серверным скриптом, который выводит данные)
+- `type` - (required) *string* - ('json', 'xml', 'oldxml') тип данных
 
-### Example
+### Пример
 
 ~~~jsx
 gantt.attachEvent("onLoadEnd", function(url, type){
@@ -25,7 +25,7 @@ gantt.attachEvent("onLoadEnd", function(url, type){
 });
 ~~~
 
-### Related API
+### Связанные API
 - [onLoadStart](api/event/onloadstart.md)
 - [onTaskLoading](api/event/ontaskloading.md)
 - [onBeforeParse](api/event/onbeforeparse.md)
@@ -34,4 +34,3 @@ gantt.attachEvent("onLoadEnd", function(url, type){
 - [onBeforeDataRender](api/event/onbeforedatarender.md)
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
-

@@ -1,25 +1,27 @@
 ---
 sidebar_label: baseline_text
 title: baseline_text template
-description: "baseline 요소 내부에 표시되는 텍스트를 정의합니다."
+description: "baseline 요소 내부에 표시될 텍스트를 지정합니다"
 ---
 
 # baseline_text
-
+:::info
+이 기능은 PRO 에디션에서만 사용 가능합니다.
+:::
 ### Description
 
-@short: Baseline 요소 내부에 표시되는 텍스트를 정의합니다.
+@short: baseline 요소 내부에 표시되는 텍스트를 지정합니다
 
 @signature: baseline_text: (task: Task, baseline: Baseline, index: number) =\> string | number | void;
 
 ### Parameters
 
-- `task` - (required) *Task* - 해당 baseline에 연결된 task 객체
-- `baseline` - (required) *Baseline* - baseline 객체 자체
-- `index` - (required) *number* - task의 baselines 배열 내에서 baseline의 위치
+- `task` - (required) *Task* - baseline과 연관된 Task 객체
+- `baseline` - (required) *Baseline* - baseline 객체
+- `index` - (required) *number* - Task의 baselines 배열에서 baseline의 인덱스
 
 ### Returns
-- ` text` - (string | number | void) - baseline 요소의 innerHTML로 설정될 HTML 콘텐츠입니다. 기본값은 빈 문자열을 반환합니다.
+- ` text` - (string | number | void) - baseline 요소의 innerHTML으로 주입될 HTML 콘텐츠. 기본 템플릿은 빈 문자열을 반환합니다.
 
 ### Example
 
@@ -39,5 +41,4 @@ gantt.templates.baseline_text = function(task, baseline, index) {
 - [타임라인의 추가 요소](guides/inbuilt-baselines.md)
 
 ### Change log
-- v9.0에 추가됨
-
+- v9.0에서 추가됨

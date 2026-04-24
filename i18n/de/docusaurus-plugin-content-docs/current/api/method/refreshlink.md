@@ -1,6 +1,6 @@
 ---
 sidebar_label: refreshLink
-title: refreshLink method
+title: refreshLink Methode
 description: "aktualisiert den angegebenen Link"
 ---
 
@@ -14,7 +14,7 @@ description: "aktualisiert den angegebenen Link"
 
 ### Parameters
 
-- `id` - (required) *string | number* -    die Link-ID
+- `id` - (erforderlich) *string | number* - die Link-ID
 
 ### Example
 
@@ -34,11 +34,10 @@ gantt.refreshLink(1);       /*!*/
 
 ### Details
 
-Diese Methode wird verwendet, um einen Link neu zu zeichnen, nachdem seine Eigenschaften geändert wurden. Im Gegensatz zu [updateLink](api/method/updatelink.md) aktiviert sie nicht den [DataProcessor](guides/server-side.md), daher werden keine Änderungen an den Server gesendet.
+Sie können diese Methode verwenden, um einen Link nach der Änderung seiner Eigenschaften neu zu zeichnen. Im Gegensatz zu [updateLink](api/method/updatelink.md) löst diese Methode keinen DataProcessor aus [DataProcessor](guides/server-side.md), und es werden keine Updates an den Server gesendet.
 
 ### Related API
 - [refreshTask](api/method/refreshtask.md)
 - [refreshData](api/method/refreshdata.md)
 - [updateTask](api/method/updatetask.md)
 - [updateLink](api/method/updatelink.md)
-

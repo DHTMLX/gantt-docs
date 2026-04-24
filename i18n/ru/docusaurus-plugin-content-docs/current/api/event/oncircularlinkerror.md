@@ -1,48 +1,48 @@
 ---
 sidebar_label: onCircularLinkError
 title: onCircularLinkError event
-description: "срабатывает при обнаружении циклической ссылки и невозможности продолжить авторасписание"
+description: "срабатывает, когда обнаружена циклическая ссылка и автоматическое планирование невозможно"
 ---
 
 # onCircularLinkError
 :::info
- Эта функция доступна только в PRO-версии. 
+This functionality is available in the PRO edition only. 
 :::
 ### Description
 
-@short: Срабатывает при обнаружении циклической ссылки и невозможности продолжить авторасписание
+@short: Срабатывает, когда обнаружена циклическая ссылка и автоматическое планирование невозможно
 
-@signature: onCircularLinkError: (link: Link, group: any) =\> void;
+@signature: onCircularLinkError: (link: Link, group: any) => void;
 
 ### Parameters
 
 - `link` - (required) *Link* - объект ссылки
-- `group` - (required) *object* - набор задач и ссылок, образующих цикл
+- `group` - (required) *object* - группа задач и связей, образующая цикл
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onCircularLinkError",function(link, group){
-    // разместите здесь вашу пользовательскую логику
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [Расширение auto Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
-Параметр **group** содержит объект, представляющий коллекцию задач и ссылок, вовлечённых в цикл.
+The **group** parameter presents an object which includes a group of tasks and links connected in a loop.
 
 ~~~js
 { 
-    tasks: [//идентификаторы задач, связанных циклом], 
-    links: [//идентификаторы ссылок, связанных циклом]
+    tasks: [//ids of tasks connected in a loop], 
+    links: [//ids of links connected in a loop]
 }
 ~~~
 
 :::note
- Для работы метода необходимо включить плагин [auto_scheduling](guides/extensions-list.md#autoscheduling). 
+Метод требует, чтобы плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) был активирован. 
 :::
 
 ### Related API
@@ -65,5 +65,4 @@ gantt.attachEvent("onCircularLinkError",function(link, group){
 - [Автоматическое планирование](guides/auto-scheduling.md)
 
 ### Change log
-- Параметр **group** был добавлен в версии 4.1.
-
+- Параметр **group** добавлен в версии 4.1.

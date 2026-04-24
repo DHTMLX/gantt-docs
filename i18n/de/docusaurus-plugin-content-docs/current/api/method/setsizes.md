@@ -1,6 +1,6 @@
 ---
 sidebar_label: setSizes
-title: setSizes method
+title: setSizes Methode
 description: "passt die Größe des Gantt-Diagramms an"
 ---
 
@@ -20,4 +20,4 @@ gantt.setSizes();
 
 ### Details
 
-Diese Methode nimmt keine Parameter entgegen. Sie passt einfach die Größe des Gantt-Diagramms an die Abmessungen seines HTML-Containers an.
+Die Methode akzeptiert keine Parameter – sie passt die Größe des Gantt-Diagramms immer an die Größe des HTML-Containers des Diagramms an.

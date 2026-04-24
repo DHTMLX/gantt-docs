@@ -1,23 +1,23 @@
 ---
 sidebar_label: hasChild
-title: hasChild method
-description: "提供子任务的数量"
+title: hasChild 方法
+description: "返回子任务的数量"
 ---
 
 # hasChild
 
 ### Description
 
-@short: 提供子任务的数量
+@short: 返回子任务的数量
 
 @signature: hasChild: (id: string | number) =\> number | undefined
 
 ### Parameters
 
-- `id` - (required) *string | number* -    任务的ID
+- `id` - (required) *string | number* -    任务 ID
 
 ### Returns
-- ` childs` - (number | undefined) - 子任务的数量（如果存在子任务），如果没有子任务则返回 "undefined"
+- ` childs` - (number | undefined) - 子任务数量（若存在），否则为 "undefined"
 
 ### Example
 
@@ -39,6 +39,7 @@ gantt.hasChild("p_1"); //-> 2 /*!*/
 gantt.hasChild("t_1"); //-> undefined /*!*/
 ~~~
 
+
 ### Related API
 - [getChildren](api/method/getchildren.md)
 - [getNext](api/method/getnext.md)
@@ -46,4 +47,3 @@ gantt.hasChild("t_1"); //-> undefined /*!*/
 - [getSiblings](api/method/getsiblings.md)
 - [getNextSibling](api/method/getnextsibling.md)
 - [getPrevSibling](api/method/getprevsibling.md)
-

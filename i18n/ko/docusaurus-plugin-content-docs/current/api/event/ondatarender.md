@@ -1,14 +1,14 @@
 ---
 sidebar_label: onDataRender
 title: onDataRender event
-description: "데이터가 페이지에 표시된 직후에 트리거됩니다"
+description: "페이지에 데이터가 렌더링된 후에 발생합니다"
 ---
 
 # onDataRender
 
 ### Description
 
-@short: 데이터가 페이지에 표시된 직후에 트리거됩니다
+@short: 페이지에 데이터가 렌더링된 후에 발생합니다
 
 @signature: onDataRender: () =\> void;
 
@@ -16,7 +16,7 @@ description: "데이터가 페이지에 표시된 직후에 트리거됩니다"
 
 ~~~jsx
 gantt.attachEvent("onDataRender", function(){
-    alert("데이터가 페이지에 렌더링되었습니다")
+    alert("Data was rendered on the page")
 });
 
 gantt.init("gantt_here");
@@ -32,4 +32,3 @@ gantt.parse(demo_tasks);
 - [onBeforeDataRender](api/event/onbeforedatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

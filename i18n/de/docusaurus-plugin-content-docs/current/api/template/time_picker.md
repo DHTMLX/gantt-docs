@@ -1,23 +1,23 @@
----
+--- 
 sidebar_label: time_picker
 title: time_picker template
-description: "definiert das Format, das für den Drop-down-Zeitselektor im Lightbox verwendet wird"
+description: "Gibt das Format des Drop-down-Zeit-Auswahlfelds im Lightbox an"
 ---
 
 # time_picker
 
 ### Description
 
-@short: Definiert das Format, das für den Drop-down-Zeitselektor im Lightbox verwendet wird
+@short: Gibt das Format des Drop-down-Zeit-Auswahlfelds im Lightbox an
 
 @signature: time_picker: (date: Date) =\> string
 
 ### Parameters
 
-- `date` - (required) *Date* - Das Datum, das formatiert werden muss
+- `date` - (erforderlich) *Date* - das Datum, das formatiert werden muss
 
 ### Returns
-- ` text` - (string) - html Inhalt, der im Gantt angezeigt wird
+- ` text` - (string) - HTML-Text, der im Gantt gerendert wird
 
 ### Example
 
@@ -33,4 +33,4 @@ gantt.templates.time_picker = function(date){
 ~~~
 
 ### Related Guides
-- ["Vorlagen des Lightbox"](guides/lightbox-templates.md)
+- [Vorlagen der Lightbox](guides/lightbox-templates.md)

@@ -1,23 +1,23 @@
 ---
 sidebar_label: isUnscheduledTask
 title: isUnscheduledTask method
-description: "проверяет, является ли задача несогласованной (unscheduled)"
+description: "проверяет, является ли задача незапланированной"
 ---
 
 # isUnscheduledTask
 
 ### Description
 
-@short: Проверяет, является ли задача несогласованной (unscheduled)
+@short: Проверяет, является ли задача незапланированной
 
 @signature: isUnscheduledTask: (task: Task) =\> boolean
 
 ### Parameters
 
-- `task` - (required) *Task* - объект задачи для проверки
+- `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` value` - (boolean) - возвращает 'true', если задача несогласованная, иначе 'false'
+- ` value` - (boolean) - 'true' если указанная задача незапланирована, 'false' в противном случае
 
 ### Example
 

@@ -1,37 +1,37 @@
 ---
 sidebar_label: event
 title: event method
-description: "устанавливает обработчик события на HTML элемент"
+description: "привязывает обработчик события к элементу HTML"
 ---
 
 # event
 
 ### Description
 
-@short: Устанавливает обработчик события на HTML элемент
+@short: Привязывает обработчик события к элементу HTML
 
 @signature: event: (node: HTMLElement | string, event: string, handler: GanttCallback, options?: boolean | HandlerSettings) =\> void
 
 ### Parameters
 
-- `node` - (required) *HTMLElement | string* -            HTML элемент или его id
-- `event` - (required) *string* - имя события (без префикса 'on')
-- `handler` - (required) *function* - функция для обработки события
-- `options` - (options) *boolean| HandlerSettings* -                 необязательно, значение параметра <i>useCapture</i> или <i>options</i>. [Подробнее](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+- `node` - (обязательно) *HTMLElement | string* -  HTML-элемент или его id
+- `event` - (обязательно) *string* - имя HTML-события (без префикса 'on')
+- `handler` - (обязательно) *function* -  обработчик события
+- `options` - (необязательно) *boolean | HandlerSettings* - необязательное значение, представляющее либо параметр useCapture, либо параметр options. Подробнее
 
 ### Example
 
 ~~~jsx
-// добавляет обработчик для события 'onclick'
+// adds a handler for the 'onclick' event
 gantt.event("divId", "click", function(event){
-    // e - объект DOM события
+    // e - DOM event object
     do_something();
 }, options);
 ~~~
 
 ### Details
 
-Все слушатели событий, добавленные через [event](api/method/event.md), будут автоматически удалены при вызове [destructor](api/method/destructor.md).
+Все обработчики событий, привязанные с использованием [event](api/method/event.md), будут автоматически отсоединены, когда будет вызван [destructor](api/method/destructor.md).
 
 ### Related API
 - [eventRemove](api/method/eventremove.md)
@@ -41,4 +41,3 @@ gantt.event("divId", "click", function(event){
 
 ### Change log
 - добавлено в версии 4.0
-

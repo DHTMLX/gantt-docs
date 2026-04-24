@@ -1,31 +1,31 @@
 ---
 sidebar_label: onAfterUndo
 title: onAfterUndo event
-description: "在执行 undo() 方法后立即触发"
+description: "在调用 undo() 方法之后触发"
 ---
 
 # onAfterUndo
 
 ### Description
 
-@short: 在执行 undo() 方法后立即触发
+@short: 在调用 undo() 方法之后触发
 
 @signature: onAfterUndo: (action: any[]) =\> void;
 
 ### Parameters
 
-- `action` - (required) *array* - 包含命令对象的数组
+- `action` - (required) *数组* - 一个命令对象数组
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterUndo",function(action){
-    // 你的代码写在这里
+    // 在这里插入您的自定义逻辑
 });
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Gantt 的撤销/重做变更](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
@@ -42,13 +42,12 @@ gantt.attachEvent("onAfterUndo",function(action){
 - **oldValue** - (*object*) 变更前的任务或链接对象
 
 
-如果没有发生任何更改，**action** 参数将为 === null。此情况可能发生在调用 [gantt.undo()](api/method/undo.md) 但操作被 [onBeforeUndo](api/event/onbeforeundo.md) 取消，或撤销栈为空时。
+如果没有应用任何变更，`action` 参数将等于 null。可能发生在调用 [gantt.undo()](api/method/undo.md) 时，但变更被 [onBeforeUndo](api/event/onbeforeundo.md) 取消或栈为空。
 
 ### Related API
 - [undo](api/method/undo.md)
 - [onBeforeUndo](api/event/onbeforeundo.md)
 
 ### Change log
-- 版本 4.0 中新增
-- 版本 5.2 中引入了 **action** 参数
-
+- 在版本 4.0 中新增
+- 在版本 5.2 中新增了 **action** 参数

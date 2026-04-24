@@ -1,23 +1,23 @@
 ---
 sidebar_label: createDatastore
 title: createDatastore method
-description: "erstellt einen Datastore basierend auf der angegebenen Konfiguration"
+description: "erstellt einen Datastore gemäß der bereitgestellten Konfiguration"
 ---
 
 # createDatastore
 
 ### Description
 
-@short: Erstellt einen Datastore basierend auf der angegebenen Konfiguration
+@short: Erstellt einen Datastore gemäß der bereitgestellten Konfiguration
 
 @signature: createDatastore: (config: DatastoreConfig) =\> DatastoreMethods & TreeDatastoreMethods
 
 ### Parameters
 
-- `config` - (required) *DatastoreConfig* - ein Objekt, das die Konfiguration des Datastores enthält
+- `config` - (erforderlich) *DatastoreConfig* - ein Konfigurationsobjekt eines Datastore
 
 ### Returns
-- ` datastore` - (datastore & treedatastore) - gibt entweder ein datastore- oder ein treedatastore-Objekt zurück, abhängig vom angegebenen Typ
+- ` datastore` - (Datastore & TreeDatastore) - das Datastore- oder TreeDatastore-Objekt, abhängig vom Typ
 
 ### Example
 
@@ -38,20 +38,19 @@ var resourcesStore = gantt.createDatastore({
 
 ### Details
 
-Eigenschaften des Konfigurationsobjekts:
+Configuration object properties:
 
   
-- **name** - (*string*) - ein benutzerdefinierter String-Name für den Datastore. Dieser Name ermöglicht den Zugriff auf den Datastore über [getDatastore](api/method/getdatastore.md).
-- **initItem? (item): any** - optional, eine Funktion zur Vorverarbeitung von Items, wenn sie in den Datastore geladen werden. Dies ist nützlich, um Standardwerte für Datastore-Items festzulegen. Die Funktion erhält:
-    - **_item_** - (*any*) - das verarbeitete Ressourcen-Item.
-- **type?** - (*string*) - optional, akzeptiert nur den Wert **"treeDatastore"**. Die Angabe type:"treeDatastore" erstellt einen Datastore, der hierarchische Daten verwaltet, wobei **id** als Primärschlüssel und **parent** zur Verknüpfung mit der Eltern-id verwendet wird. Jeder andere Wert erzeugt einen flachen Listen-Datastore.
-- **fetchTasks?** - (*boolean*) - optional, wenn aktiviert, werden alle Aufgaben angezeigt, die einer bestimmten Ressource im Ressourcen-Ansichts-Panel zugewiesen sind. Diese Funktion funktioniert sowohl für das Resource Diagram als auch für das Resource Histogram Layout.
+- **name** - (*string*) - ein beliebiger String-Name des Datastore. Der Datastore kann über seinen Namen mit [getDatastore](api/method/getdatastore.md) aufgerufen werden.
+- **initItem? (item): any** - optional, preprocesses items loaded into the datastore. It is a good place to set the default values of the datastore items. The function takes the following parameter:
+    - **_item_** - (*any*) - das Ressourcenobjekt.
+- **type?** - (*string*) - optional, akzeptiert nur einen festen Wert **"treeDatastore"**. Wenn der Typ "treeDatastore" angegeben wird, unterstützt der datastore hierarchische Daten, wobei die **id**-Eigenschaft als Primärschlüssel dient und **parent** als Link zur Eltern-ID fungiert. Jeder andere Wert erzeugt einen flachen Listen-Datastore.
+- **fetchTasks?** - (*boolean*) - optional, aktiviert das Anzeigen aller Aufgaben, die einer bestimmten Ressource zugewiesen sind, im Ressourcen-Ansichtsfenster. Diese Funktionalität funktioniert sowohl für den Ressourcen-Diagramm-Typ als auch für den Ressourcen-Histogramm-Typ des Layouts.
 
 ### Related API
 - [datastore](api/other/datastore.md)
 - [treeDatastore](api/other/treedatastore.md)
 
 ### Related Guides
-- ["Gantt-Layout"](guides/layout-config.md)
-- ["Ressourcenmanagement"](guides/resource-management.md)
-
+- [Gantt-Layout](guides/layout-config.md)
+- [Ressourcenverwaltung](guides/resource-management.md)

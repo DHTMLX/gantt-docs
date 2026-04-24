@@ -1,6 +1,6 @@
 ---
 sidebar_label: duration_unit
-title: duration_unit config
+title: duration_unit 配置
 description: "设置持续时间单位"
 ---
 
@@ -20,35 +20,35 @@ gantt.config.duration_step = 3;
 // 所以如果 task.duration = 2，任务时长为 6 小时
 ~~~
 
-**Default value:** "day"
+**默认值：**"day" 
 
 ### Related samples
-- [Decimal durations for tasks](https://docs.dhtmlx.com/gantt/samples/09_worktime/09_decimal_durations.html)
+- [任务的十进制持续时间](https://docs.dhtmlx.com/gantt/samples/09_worktime/09_decimal_durations.html)
 
 ### Details
 
-当不同任务需要使用不同的持续时间单位时--例如有些以小时显示，有些以天显示--[formatter 模块](guides/working-time.md) 可以帮助管理这种情况。
+如果你想让不同任务使用不同的持续时间单位，即某些任务显示为小时，某些任务显示为“天”，你可以使用 [formatter 模块](guides/working-time.md#taskdurationindecimalformat)。
 
-在这些情况下，**duration_unit** 应设置为任何任务可能使用的最小单位:
+在这种情况下，**duration_unit** 必须设置为任务可能具有的最小持续时间：
 
 ~~~js
 gantt.config.duration_step = 1;
 gantt.config.duration_unit = "minute";
 
-// 或者
+
+// or
 
 gantt.config.duration_step = 1;
 gantt.config.duration_unit = "hour";
 ~~~
 
-formatter 插件随后允许以你想要的单位显示持续时间。它还允许用户使用多种单位输入持续时间。
+而 formatter 插件将允许你以所需的单位显示持续时间。最终用户也将能够以不同单位输入持续时间。
 
-<br>
-如果选择"hour"或"minute"作为持续时间单位，最好将 [duration_step](api/config/duration_step.md) 设置为 1。此设置会触发某些针对工作时间计算的优化，这些优化仅在 step 精确为 1 时生效。请注意，"优化"模式和"非优化"模式之间存在显著的性能差异。
+如果将 duration_unit 设置为 "hour" 或 "minute"，我们建议将 [duration_step](api/config/duration_step.md) 设置为 1。
+这样的组合将激活在计算工作时间时的某些优化，且仅在 step 设置为 1 时才有效。请注意，在 "optimized" 与 "non-optimized" 模式之间存在显著的性能差异。
 
 ### Related API
 - [duration_step](api/config/duration_step.md)
 
 ### Related Guides
-- [工作时间计算](guides/working-time.md)
-
+- [工作时间计算](guides/working-time.md#taskdurationindecimalformat)

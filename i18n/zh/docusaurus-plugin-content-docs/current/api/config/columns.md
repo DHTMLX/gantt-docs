@@ -1,14 +1,14 @@
 ---
 sidebar_label: columns
 title: columns config
-description: "设置表格中的columns"
+description: "设置表格中的 columns"
 ---
 
 # columns
 
 ### Description
 
-@short: 设置表格中的columns
+@short: 配置表格的列
 
 @signature: columns: GridColumn[]
 
@@ -27,63 +27,62 @@ gantt.init("gantt_here");
 ~~~
 
 ### Related samples
-- [Progress lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_progress_lightbox.html)
+- [进度灯箱](https://docs.dhtmlx.com/gantt/samples/05_lightbox/02_progress_lightbox.html)
 
 ### Details
 
-数组中的每一项定义了一个column。对象可以包含以下属性:
+数组中的每个对象指定一个单独的列。对象可以带有以下属性：
 
-- **align?** - (*string*) - 控制column标题的水平对齐方式。可选值为 *'left'*、*'center'* 或 *'right'*；
-- **hide?** - (*boolean*) - 切换column的可见性（PRO版本支持）；
-- **label?** - (*string | number | any*) - 设置column的标题文字；
-- **max_width?** - (*number*) - 限制column调整大小时的最大宽度；
-- **min_width?** - (*number*) - 设置column调整大小时的最小宽度；
-- **name?** - (*string | number*) - 标识column。使用 'add' 会创建一个带有"+"按钮的column；
-- **resize?** - (*boolean*) - 允许通过拖动边框调整column大小（PRO版本支持）；
-- **sort? (task1, task2): number** - (*boolean | string | Function*) - 配置点击column标题时的排序行为。设置为 *false* 可禁用排序。可以通过字符串指定任务属性进行排序，或者提供自定义排序函数。
-    - **_task1_** - (*Task*) - 排序时的第一个任务对象。
-    - **_task2_** - (*Task*) - 排序时的第二个任务对象。
-- **template? (task): any** - 定义column数据的模板函数。
+- **align?** - (*string*) - 设置水平标题对齐。可选值：*'left'*, *'center'*, 或 *'right'*;
+- **hide?** - (*boolean*) - 隐藏/显示列（PRO）;
+- **label?** - (*string | number | any*) - 指定列的标题；
+- **max_width?** - (*number*) - 在调整大小操作中设置列的最大宽度；
+- **min_width?** - (*number*) - 在调整大小操作中设置列的最小宽度；
+- **name?** - (*string | number*) - 定义列的 id。名称 'add' 允许你使用 '+' 符号来添加列；
+- **resize?** - (*boolean*) - 通过拖动列边界来调整列宽的可能性（PRO）;
+- **sort? (task1, task2): number** - (*boolean | string | Function*) - 点击列头后的排序配置。若该属性设为 *false*，则禁用排序。你也可以在 *string* 中设置不同的任务属性来排序该列，或使用自定义排序函数。
+    - **_task1_** - (*Task*) - 将要排序的首个 Task 对象。
+    - **_task2_** - (*Task*) - 将要排序的第二个 Task 对象。
+- **template? (task): any** - 设置数据模板。
+    - **_task_** - (*Task*) - Task 对象。
+- **tree?** - (*boolean*) - 指示相关列应显示树状结构；
+- **width?** - (*number | string*) - 定义列的宽度；
+- **onrender? (task, node): any** - 可选，为将单元格渲染到 DOM 的回调函数。该函数接收一个 task 对象和网格单元的 DOM 元素作为参数，可能返回框架的一个组件。详见此处；
     - **_task_** - (*Task*) - 任务对象。
-- **tree?** - (*boolean*) - 标记该column显示树形结构；
-- **width?** - (*number | string*) - 设置column宽度；
-- **onrender? (task, node): any** - 可选回调，用于自定义单元格渲染。接收任务对象和单元格的DOM元素，可以返回一个框架组件。更多信息见 [这里](guides/specifying-columns.md)；
-    - **_task_** - (*Task*) - 任务对象。
-    - **_node_** - (*HTMLElement*) - grid单元格的HTML元素。
-- **editor?** - (*object*) - 行内编辑器配置。
-    - **_type_** - (*string*) - 编辑器类型。
-    - **_map_to_** - (*string*) - 编辑器更新的任务属性。
-    - **_min?_** - (*Date | number*) - 日期和持续时间编辑器的最小值。
-    - **_max?_** - (*Date | number*) - 日期和持续时间编辑器的最大值。
-    - **_options?_** - (*Array &lt;any&gt;*) - 下拉选择编辑器的选项数组。
-    - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - 日期和前置任务编辑器的格式化器。
+    - **_node_** - (*HTMLElement*) - Grid 单元的 HTML 元素。
+- **editor?** - (*object*) - 附带的 inline 编辑器。
+    - **_type_** - (*string*) - inline 编辑器的类型。
+    - **_map_to_** - (*string*) - 指定 inline 编辑器应更新任务的哪一个属性。
+    - **_min?_** - (*Date | number*) - 日期与持续时间类型的最小值。
+    - **_max?_** - (*Date | number*) - 日期与持续时间类型的最大值。
+    - **_options?_** - (*Array &lt;any&gt;*) - 具有选项的数组，用于 select 类型。
+    - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - 日期与前置类型的格式化器。
 
-<br>
+Grid 列的宽度取决于两个属性：列的 **width** 和 [grid_width](api/config/grid_width.md)。如果列宽之和不等于网格宽度，Gantt 将修改其中一个参数。
 
-grid columns的总宽度取决于每个column的**width**属性和[grid_width](api/config/grid_width.md)的设置。如果这两个宽度不匹配，Gantt会做相应调整。
+- 当通过 [gantt.init()](api/method/init.md) 初始化 Gantt 时，列的 **width** 具有优先级。
 
-- 使用[gantt.init()](api/method/init.md)初始化时，column的**width**优先。<br>
 :::note
-Sample: [初始化时column宽度优先于grid宽度](https://snippet.dhtmlx.com/itnvg6z9) 
+ [初始化时列宽相对于网格宽度的优先权](https://snippet.dhtmlx.com/itnvg6z9)
 :::
-- 使用[gantt.render()](api/method/render.md)渲染时，[grid_width](api/config/grid_width.md)优先。<br>
+- 当通过 [gantt.render()](api/method/render.md) 渲染 Gantt 时， [grid_width](api/config/grid_width.md) 具有优先权。
+
 :::note
-Sample: [渲染时grid宽度优先于column宽度](https://snippet.dhtmlx.com/4nb67z61) 
+示例：[渲染时网格宽度优先于列宽](https://snippet.dhtmlx.com/4nb67z61)
 :::
-- 使用[gantt.init()](api/method/init.md)初始化且column宽度缺失或设置为**'*'**时，[grid_width](api/config/grid_width.md)优先。<br>
+- 当通过 [gantt.init()](api/method/init.md) 初始化 Gantt，且列宽未指定或设为 **'*'** 时， [grid_width](api/config/grid_width.md) 将成为优先项。
+
 :::note
-Sample: [初始化时column宽度未定义或为'*'时grid宽度优先](https://snippet.dhtmlx.com/qej8w5ix) 
+示例：[初始化时列宽未定义或设为 '*' 时的 grid_width 优先](https://snippet.dhtmlx.com/qej8w5ix)
 :::
 
-<br>
-
-**template**属性是一个函数，接收一个数据项并返回要显示的内容。这样可以灵活定制column的显示内容。
+The **template** 属性是一个函数，接受数据项对象作为参数并返回最终的数据模板。该函数定义允许你呈现几乎任何内容。
 
 ~~~js
 gantt.config.columns = [
-    { name: "text",        label: "任务名称",  tree: true, width: "*" },
-    { name: "start_date",  label: "开始时间", align: "center" },
-    { name: "staff",       label: "负责人", template: (obj) => {
+    { name: "text",        label: "Task name",  tree: true, width: "*" },
+    { name: "start_date",  label: "Start time", align: "center" },
+    { name: "staff",       label: "Holder(s)", template: (obj) => {
         return `${obj.holder} (${obj.progress})`;
     } }
 ];
@@ -93,9 +92,8 @@ gantt.init("gantt_here");
 
 ### Related Guides
 - [指定列](guides/specifying-columns.md)
-- [操作指南](guides/how-to.md) （关于如何在grid中添加自定义column的详细说明）
-- [操作指南](guides/how-to.md) （添加自定义add(+)按钮的说明）
+- [How-tos](guides/how-to.md#how-to-add-a-custom-column-in-the-grid) （关于如何在grid中添加自定义column的详细说明）
+- [How-tos](guides/how-to.md#how-to-add-a-custom-add-button) （添加自定义add(+)按钮的说明）
 
 ### Change log
-- **onrender** 属性在v7.1版本中引入
-
+- 已在 v7.1 中新增 onrender 属性

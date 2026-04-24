@@ -1,40 +1,39 @@
 ---
 sidebar_label: onLightboxSave
 title: onLightboxSave event
-description: "Срабатывает, когда пользователь нажимает кнопку «Save» в лайтбоксе"
+description: "срабатывает, когда пользователь нажимает кнопку 'Save' в lightbox"
 ---
 
 # onLightboxSave
 
 ### Description
 
-@short: Срабатывает, когда пользователь нажимает кнопку «Save» в лайтбоксе
+@short: Срабатывает, когда пользователь нажимает кнопку 'Save' в lightbox
 
 @signature: onLightboxSave: (id: string | number, task: Task, is_new: boolean) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - ID неизменённой задачи. Учтите, что на этом этапе значения из лайтбокса ещё не применены к объекту задачи, поэтому вы можете получить доступ к исходной задаче через gantt.getTask(id)
-- `task` - (required) *Task* - обновлённый объект задачи
-- `is_new` - (required) *boolean* - указывает, был ли лайтбокс открыт для создания новой задачи (<i>true</i>)<br> или для редактирования существующей (<i>false</i>)
+- `id` - (required) *string | number* - идентификатор неизменённой задачи. Примечание: на этом этапе значения из lightbox ещё не применяются к объекту задачи, и вы можете обратиться к исходной задаче, используя gantt.getTask(id)
+- `task` - (required) *Task* - изменённый объект задачи
+- `is_new` - (required) *boolean* - указывает, открывает ли пользователь lightbox для создания новой задачи (<i>true</i>)<br/> или обновления существующей (<i>false</i>)
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию (<b>true</b>) или отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onLightboxSave", function(id, task, is_new){
-    // здесь можно добавить свою логику
+    // любая ваша логика здесь
     return true;
 })
 ~~~
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* отменит операцию «save» и оставит лайтбокс открытым.
+Событие можно заблокировать. Верните <b>false</b>, чтобы отменить операцию сохранения и оставить lightbox открытым.
 
 ### Related Guides
 - [onLightboxCancel](api/event/onlightboxcancel.md)
 - [onLightboxDelete](api/event/onlightboxdelete.md)
-

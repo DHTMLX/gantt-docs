@@ -38,9 +38,8 @@ module.exports = {
             items: [
                 "guides/installation",
                 "guides/cdn-links-list",
-                "guides/initializing-gantt-chart"
-                
-               
+                "guides/initializing-gantt-chart",
+                "guides/responsive-ui"
             ]
         },
 
@@ -80,6 +79,7 @@ module.exports = {
                                 "integrations/react/state/state-management-basics",
                                 "integrations/react/state/redux-toolkit",
                                 "integrations/react/state/zustand",
+                                "integrations/react/state/tanstack-query",
                                 "integrations/react/state/mobx",
                                 "integrations/react/state/xstate",
                                 "integrations/react/state/jotai",
@@ -196,8 +196,6 @@ module.exports = {
                         },
                     ]
                 },
-                "integrations/svelte/howtostart-svelte",
-                "integrations/salesforce/howtostart-salesforce",
                 {
                     type: "category",
                     label: "AI Tools",
@@ -206,10 +204,14 @@ module.exports = {
                         id: "integrations/ai-tools/index"
                     },
                     items: [
+                        "integrations/ai-tools/mcp-server",
+                        "integrations/ai-tools/agent-skills",
                         "integrations/ai-tools/lovable-ai",
-                        "integrations/ai-tools/mcp-server"
+                        "integrations/ai-tools/semantic-search"
                     ]
                 },
+                "integrations/svelte/howtostart-svelte",
+                "integrations/salesforce/howtostart-salesforce",
                 "guides/using-gantt-on-server",
                 {
                     type: "category",

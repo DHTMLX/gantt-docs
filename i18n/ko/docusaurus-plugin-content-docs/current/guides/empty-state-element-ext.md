@@ -3,25 +3,25 @@ title: "emptyStateElement 확장"
 sidebar_label: "emptyStateElement 확장"
 ---
 
-# emptyStateElement 확장
+## emptyStateElement 확장
 
-emptyStateElement 확장에 대한 자세한 내용은 [Empty State Screen](guides/empty-state-screen.md) 문서에서 확인할 수 있습니다.
+emptyStateElement 확장에 대한 자세한 내용은 [Empty State Screen](guides/empty-state-screen.md) 문서를 참조하세요.
 
 ## 메서드
 
-**gantt.ext.emptyStateElement** 객체는 다음과 같은 메서드를 제공합니다:
+다음 메서드는 **gantt.ext.emptyStateElement** 객체를 통해 사용할 수 있습니다:
 
-- <span class="submethod">**isGanttEmpty (): boolean**</span> - Gantt 차트에 데이터가 로드되어 있지 않으면 *true*를 반환하고, 그렇지 않으면 *false*를 반환합니다. 이 메서드는 페이지에 "empty state"를 표시할지 결정할 때 사용됩니다. 기본 동작을 변경하고 싶다면 커스터마이즈할 수 있습니다.
+- <span class="submethod">**isGanttEmpty (): boolean**</span> - 로드된 데이터가 Gantt 차트에 없으면 *true*를 반환하고, 그렇지 않으면 *false*를 반환합니다. 이 확장은 페이지에 "비어 있는 상태"를 표시할지 여부를 정의하는 데 이 메서드를 사용합니다. 기본 동작을 변경해야 하는 경우 메서드를 재정의할 수 있습니다.
 - <span class="submethod">**isEnabled (): boolean**</span> - [show_empty_state](api/config/show_empty_state.md) 속성이 활성화되어 있으면 *true*를 반환하고, 그렇지 않으면 *false*를 반환합니다.
-- <span class="submethod">**renderContent (container): void**</span> - empty state 요소에 HTML 콘텐츠를 삽입합니다. 필요에 따라 이 메서드를 오버라이드할 수 있습니다.
-    - **_container_** - (*HTMLElement*) - 콘텐츠를 담을 요소
-- <span class="submethod">**getContainer (): HTMLElement | null**</span> - empty state가 부착될 DOM 요소를 반환합니다. 기본적으로 grid 요소를 반환하므로 "empty state"가 grid에 나타납니다. grid가 없으면 timeline 요소를 반환하여 "empty state"가 timeline에 표시됩니다. 이 메서드는 커스터마이즈할 수 있습니다.
-- <span class="submethod">**getNode (): HTMLElement | null**</span> - empty state 요소를 나타내는 DOM 노드를 반환합니다.
-- <span class="submethod">**show (): null | void**</span> - "empty state"를 표시합니다. Empty State Element에 대한 컨테이너가 없으면 *null*을 반환합니다. 이 메서드는 확장에 의해 자동으로 호출됩니다.
-- <span class="submethod">**hide (): boolean | void**</span> - "empty state"를 숨깁니다. Empty State Element 노드가 없으면 *false*를 반환하여 숨길 것이 없음을 나타냅니다. 이 메서드 역시 확장에 의해 자동으로 호출됩니다.
-- <span class="subproperty">**clickEvents?**</span> -  (*Array&lt;string&gt;*) - 연결된 이벤트 핸들러의 ID를 저장합니다. *attachAddTaskEvent*와 *detachAddTaskEvents* 메서드에 의해 갱신됩니다.
-- <span class="submethod">**attachAddTaskEvent (): void**</span> - Empty State Element를 클릭할 때 트리거되는 핸들러를 추가합니다. 기본적으로 새 작업을 추가하는 데 사용됩니다.
-- <span class="submethod">**detachAddTaskEvents (): void**</span> - Empty State Element를 클릭하여 작업을 추가하도록 설정된 핸들러를 제거합니다.
+- <span class="submethod">**renderContent (container): void**</span> - 비어 있는 상태 요소에 HTML 콘텐츠를 넣습니다. 이 메서드는 재정의할 수 있습니다.
+    - **_container_** - (*HTMLElement*) - 컨테이너 요소
+- <span class="submethod">**getContainer (): HTMLElement | null**</span> - 비어 있는 상태가 부착될 DOM 요소를 반환합니다. 기본적으로 그리드 요소를 반환합니다(그리드에 "비어 있는 상태"가 표시됩니다). 그리드가 없으면 타임라인 요소를 반환합니다(타임라인에 "비어 있는 상태"가 표시됩니다). 이 메서드는 재정의할 수 있습니다.
+- <span class="submethod">**getNode (): HTMLElement | null**</span> - 비어 있는 상태 요소의 DOM 노드를 반환합니다.
+- <span class="submethod">**show (): null | void**</span> - "비어 있는 상태"를 표시합니다. 빈 상태 요소 컨테이너가 없으면 *null*을 반환합니다. 확장 자체에서 이 메서드를 호출합니다.
+- <span class="submethod">**hide (): boolean | void**</span> - "비어 있는 상태"를 숨깁니다. 비어 있는 상태 요소 노드가 없으면 숨길 내용이 없으므로 *false*를 반환합니다. 확장 자체에서 이 메서드를 호출합니다.
+- <span class="subproperty">**clickEvents?**</span> -  (*Array&lt;string&gt;*) - 첨부된 핸들러의 ID 배열입니다. *attachAddTaskEvent* 및 *detachAddTaskEvents* 메서드에 의해 수정됩니다.
+- <span class="submethod">**attachAddTaskEvent (): void**</span> - Empty State Element를 클릭한 후 실행될 핸들러를 추가합니다. 기본적으로 새 작업을 추가하는 데 사용됩니다.
+- <span class="submethod">**detachAddTaskEvents (): void**</span> - Empty State Element를 클릭하여 작업을 추가하는 데 사용되었던 핸들러를 제거합니다.
 
 ## 예제
 
@@ -145,4 +145,3 @@ gantt.ext.emptyStateElement = {
     }
   });
 ~~~
-

@@ -5,9 +5,11 @@ description: "prüft, ob der Link zirkulär ist"
 ---
 
 # isCircularLink
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
 ### Description
 
 @short: Prüft, ob der Link zirkulär ist
@@ -16,10 +18,10 @@ description: "prüft, ob der Link zirkulär ist"
 
 ### Parameters
 
-- `link` - (required) *Link* - das Link-Objekt
+- `link` - (erforderlich) *Link* - das Link-Objekt
 
 ### Returns
-- ` state` - (boolean) - gibt true zurück, wenn der Link zirkulär ist, andernfalls false
+- ` state` - (boolean) - true, wenn der Link zirkulär ist, andernfalls false
 
 ### Example
 
@@ -28,12 +30,12 @@ var isCircular = gantt.isCircularLink(link);
 ~~~
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [Auto Scheduling-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
- Die Methode erfordert, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. 
+Die Methode erfordert das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin, das aktiviert sein muss.
 :::
 
 ### Related API
@@ -53,8 +55,7 @@ var isCircular = gantt.isCircularLink(link);
 - [onCircularLinkError](api/event/oncircularlinkerror.md)
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
-- hinzugefügt in Version 4.1
-
+- in Version 4.1 hinzugefügt

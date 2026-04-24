@@ -1,21 +1,21 @@
 ---
 sidebar_label: bind
-title: bind method
-description: "创建一个新函数，该函数被调用时，其 <i>this</i> 关键字将被设置为指定的值"
+title: bind 方法
+description: "创建一个新函数，当调用时，其 <i>this</i> 关键字将被提供的值所设置"
 ---
 
 # bind
 
 ### Description
 
-@short: 创建一个新函数，该函数被调用时，其 <i>this</i> 关键字将被设置为指定的值
+@short: 在被调用时，将其 <i>this</i> 关键字设置为提供的值，从而返回一个新的函数
 
 @signature: bind: (method: GanttCallback, thisArg: any) =\> GanttCallback
 
 ### Parameters
 
-- `method` - (required) *function* - 要绑定的函数
-- `thisArg` - (required) *object* - 绑定函数调用时用作 <i>this</i> 上下文的值
+- `method` - (必填) *function* - 目标函数
+- `thisArg` - (必填) *object* - 将作为绑定函数调用时传递给目标函数的 <i>this</i> 参数的值
 
 ### Returns
 - ` bound_function` - (function) - 一个新函数，调用时会使用给定的 <i>this</i> 值来执行原始函数
@@ -28,9 +28,7 @@ gantt.bind(method, thisArg);
 
 ### Details
 
-此方法作为 IE8 兼容的替代方案，用于替代
-[Function.prototype.bind()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) 
-函数。
+该方法用作 IE8 兼容的替代实现 [Function.prototype.bind()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) 函数。
 
 ### Change log
 - 版本 4.0 中添加

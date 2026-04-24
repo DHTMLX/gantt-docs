@@ -1,14 +1,14 @@
 ---
 sidebar_label: date_grid
-title: date_grid config
-description: "задаёт формат отображения дат в колонке 'Start time' таблицы"
+title: конфигурация date_grid
+description: "задает формат дат в столбце 'Start time' таблицы"
 ---
 
 # date_grid
 
 ### Description
 
-@short: Задаёт формат отображения дат в колонке "Start time" таблицы
+@short: Задает формат дат в столбце "Start time" таблицы
 
 @signature: date_grid: string
 
@@ -20,11 +20,11 @@ gantt.config.date_grid = "%d/%m/%Y";
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** "%Y-%m-%d"
+**Значение по умолчанию:** "%Y-%m-%d"
 
 ### Details
 
-Чтобы обновить настройку **grid_date** динамически (например, при смене локали пользователем), можно переопределить шаблон [grid_date_format](api/template/grid_date_format.md):
+Чтобы динамически изменить конфигурацию **grid_date** (например, после изменения языка локали пользователем), необходимо переопределить шаблон [grid_date_format](api/template/grid_date_format.md):
 
 ~~~js
 function change_grid_date(){
@@ -40,4 +40,3 @@ gantt.templates.grid_date_format = function(date, column){
 
 ### Related API
 - [date_grid](api/template/date_grid.md)
-

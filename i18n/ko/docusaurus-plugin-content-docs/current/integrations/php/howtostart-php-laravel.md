@@ -1,27 +1,27 @@
+--- 
+title: "PHP와 함께하는 dhtmlxGantt: Laravel" 
+sidebar_label: "PHP: Laravel" 
 ---
-title: "dhtmlxGantt와 PHP: Laravel 연동"
-sidebar_label: "dhtmlxGantt와 PHP: Laravel 연동"
----
 
-# dhtmlxGantt와 PHP: Laravel 연동
+# PHP와 함께하는 dhtmlxGantt: Laravel
 
-이 튜토리얼은 dhtmlxGantt를 [Laravel](https://laravel.com/) 애플리케이션에 통합하는 방법을 설명합니다.
+이 튜토리얼은 [Laravel](https://laravel.com/) 앱에 dhtmlxGantt를 추가하는 방법을 설명합니다.
 
-서버 사이드 통합을 위한 다른 플랫폼의 튜토리얼도 제공됩니다:
+다른 플랫폼을 활용한 서버측 통합 구축에 대한 튜토리얼도 있습니다:
 
-- [dhtmlxGantt와 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
-- [dhtmlxGantt와 ASP.NET Core 사용하기](integrations/dotnet/howtostart-dotnet-core.md)
-- [dhtmlxGantt와 Python](integrations/other/howtostart-python.md)
-- [dhtmlxGantt와 Node.js 연동하기](integrations/node/howtostart-nodejs.md)
-- [dhtmlxGantt와 PHP:Slim 연동하기](integrations/php/howtostart-php-slim4.md)
-- [dhtmlxGantt와 Salesforce LWC 연동하기](integrations/salesforce/howtostart-salesforce.md)
-- [dhtmlxGantt와 Ruby on Rails 연동하기](integrations/other/howtostart-ruby.md)
+- [ASP.NET MVC로 dhtmlxGantt 시작하기](integrations/dotnet/howtostart-dotnet.md)
+- [ASP.NET Core로 dhtmlxGantt 시작하기](integrations/dotnet/howtostart-dotnet-core.md)
+- [Node.js로 dhtmlxGantt 시작하기](integrations/node/howtostart-nodejs.md)
+- [Python으로 dhtmlxGantt 시작하기](integrations/other/howtostart-python.md)
+- [PHP:Slim으로 dhtmlxGantt 시작하기](integrations/php/howtostart-php-slim4.md)
+- [Salesforce LWC로 dhtmlxGantt 시작하기](integrations/salesforce/howtostart-salesforce.md)
+- [Ruby on Rails로 dhtmlxGantt 시작하기](integrations/other/howtostart-ruby.md)
 
 :::note
 전체 소스 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel)에서 확인할 수 있습니다.
 :::
 
-또한, PHP Laravel로 Gantt 차트를 만드는 방법을 보여주는 동영상 가이드도 있습니다.
+PHP Laravel를 사용해 Gantt 차트를 만드는 방법을 보여주는 비디오 가이드도 확인해 볼 수 있습니다.
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/eu5R86a-9jA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -29,36 +29,41 @@ sidebar_label: "dhtmlxGantt와 PHP: Laravel 연동"
 
 ### 프로젝트 생성
 
-먼저, [Composer](https://getcomposer.org/)를 사용하여 새로운 Laravel 애플리케이션을 생성합니다:
+다음 명령으로 [Composer](https://getcomposer.org/)를 사용해 새 애플리케이션을 만듭니다:
 
 ~~~php
 composer create-project laravel/laravel gantt-laravel-app
 ~~~
 
-이 과정은 필요한 모든 파일을 다운로드하고 설정하는 데 잠시 시간이 걸릴 수 있습니다. 
-설정이 완료되면 다음 명령어를 통해 정상적으로 설치되었는지 확인할 수 있습니다:
+필요한 파일들을 다운로드하고 생성하는 데에 잠시 걸립니다.
+모든 작업이 완료되면 지금까지의 상태가 올바른지 확인할 수 있습니다. 프로젝트 폴더로 이동한 뒤 데이터베이스 마이그레이션을 실행합니다:
 
 ~~~php
 cd gantt-laravel-app
+php artisan migrate
+~~~
+
+이제 서버를 실행할 수 있습니다:
+
+~~~php
 php artisan serve
 ~~~
 
-이제 기본 Laravel 환영 페이지가 표시됩니다:
+이 단계에서 기본 Laravel 페이지가 표시되어야 합니다:
 
 ![how_to_start_laravel_blank_page](/img/how_to_start_laravel_blank_page.png)
 
 ## 2단계. 페이지에 Gantt 추가
 
-### 뷰(View) 추가
+### 뷰 추가
 
-다음으로, dhtmlxGantt가 포함된 새로운 페이지를 앱에 추가합니다.
-*resources/views* 디렉토리로 이동하여 *gantt.blade.php*라는 새 뷰 파일을 생성합니다:
+먼저 애플리케이션에 dhtmlxGantt를 포함한 새 페이지를 추가합니다.
+*resources/views* 폴더로 이동해 *gantt.blade.php*라는 새 뷰를 만듭니다:
 
-**resources/views/gantt.blade.php**
-~~~html
+```html title="resources/views/gantt.blade.php"
 <!DOCTYPE html>
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset="utf-8"">
+    <meta http-equiv="Content-type" content="text/html; charset='utf-8'">
 
     <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
     <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet">
@@ -80,18 +85,17 @@ php artisan serve
 </body>
 ~~~
 
-이 코드는 기본 HTML 레이아웃을 구성하고, [CDN](guides/cdn-links-list.md)에서 dhtmlxGantt 리소스를 불러오며, [init](api/method/init.md) 메서드를 사용해 gantt 차트를 초기화합니다.
+여기서는 간단한 HTML 레이아웃을 정의하고 [CDN](guides/cdn-links-list.md)에서 dhtmlxGantt의 소스를 추가한 다음 [init](api/method/init.md) 메서드를 사용해 gantt를 초기화했습니다.
 
-문서의 body와 gantt 컨테이너 모두 **100% 높이**로 설정되어 있습니다. gantt는 컨테이너 크기에 맞춰 동적으로 조정되기 때문에 이러한 크기 지정이 중요합니다.
+또한 문서 본문과 gantt 컨테이너의 **100% 높이**를 지정했습니다. 간트는 컨테이너의 크기를 사용하므로 초기 크기가 필요합니다.
 
 ### 기본 라우트 변경
 
-새 페이지를 추가한 후, 브라우저에서 접근할 수 있도록 해야 합니다. 이 예제에서는 gantt 페이지를 앱의 기본 페이지로 설정합니다.
+새 페이지를 추가한 후에는 브라우저에서 접근 가능하도록 해야 합니다. 이 튜토리얼에서는 우리의 gantt를 앱의 기본 페이지로 만들 것입니다.
 
-*routes/web.php* 파일을 열고 기본 라우트를 다음과 같이 수정합니다:
+*b routes/web.php*로 가서 기본 경로를 변경합니다:
 
-**routes/web.php**
-~~~php
+~~~php title="routes/web.php"
 <?php
 
 Route::get('/', function () {
@@ -99,20 +103,19 @@ Route::get('/', function () {
 });
 ~~~
 
-앱을 재시작한 후 gantt 페이지가 나타나는지 확인합니다:
+다시 앱을 실행해 제대로 작동하는지 확인합니다:
 
 ![how_to_start_laravel_empty_gantt](/img/how_to_start_laravel_empty_gantt.png)
 
-## 3단계. 모델 및 마이그레이션 생성
+## 3단계. 모델과 마이그레이션 생성
 
-gantt 차트가 표시되면, 다음 단계는 데이터베이스와 연결하여 데이터를 불러오는 것입니다.
+비어 있는 간트 차트가 생겼으니 데이터베이스에 연결하고 데이터로 채워 넣어봅시다.
 
 ### 데이터베이스 생성
 
-먼저 *.env* 파일에서 데이터베이스 설정을 업데이트하세요. 예시:
+*.env*에서 데이터베이스 구성을 업데이트해야 합니다. 예시:
 
-**.env**
-~~~php
+~~~php title=".env"
 DB_CONNECTION="mysql"
 DB_HOST="127.0.0.1"
 DB_PORT="3306"
@@ -121,31 +124,28 @@ DB_USERNAME="root"
 DB_PASSWORD=
 ~~~
 
-그 다음, Artisan 명령어를 사용하여 [모델 클래스](https://laravel.com/docs/11.x/eloquent)와
-[마이그레이션](https://laravel.com/docs/11.x/migrations)을 생성합니다:
+다음 단계는 [모델 클래스](https://laravel.com/docs/12.x/eloquent)와 [마이그레이션](https://laravel.com/docs/12.x/migrations)을 생성하는 것입니다. Artisan 명령으로 클래스와 마이그레이션 파일을 생성할 수 있습니다:
 
 ~~~js
 php artisan make:model Task --migration
 ~~~
 
-그리고 
+그리고
 
 ~~~js
 php artisan make:model Link --migration
 ~~~
 
-이제 `database/migrations` 폴더에서 마이그레이션 파일을 찾아 [데이터베이스 스키마](https://laravel.com/docs/8.x/migrations#migration-structure)를 정의합니다. 
-gantt에서 기대하는 데이터베이스 스키마는 [여기](guides/loading.md#databasestructure)에서 확인할 수 있습니다.
+그 후 `database/migrations` 폴더에서 마이그레이션 파일을 찾아 [데이터베이스 스키마](https://laravel.com/docs/12.x/migrations#migration-structure)를 정의합니다. 간트가 요구하는 데이터베이스 스키마는 [여기](guides/loading.md#databasestructure)에서 확인할 수 있습니다.
 
-Tasks 테이블에 대한 마이그레이션 예시는 다음과 같습니다:
+Tasks 테이블의 코드는 다음과 같습니다:
 
-**database/migrations/_create_tasks_table.php**
-~~~php
+```php title="database/migrations/_create_tasks_table.php"
 <?php
 
-use IlluminateSupportFacadesSchema;
-use IlluminateDatabaseSchemaBlueprint;
-use IlluminateDatabaseMigrationsMigration;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateTasksTable extends Migration
 {
@@ -169,15 +169,14 @@ class CreateTasksTable extends Migration
 }
 ~~~
 
-Links 테이블에 대한 마이그레이션 예시는 아래와 같습니다:
+다음은 Links 테이블에 대한 코드입니다:
 
-**database/migrations/_create_links_table.php**
-~~~php
+```php title="database/migrations/_create_links_table.php"
 <?php
 
-use IlluminateSupportFacadesSchema;
-use IlluminateDatabaseSchemaBlueprint;
-use IlluminateDatabaseMigrationsMigration;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateLinksTable extends Migration
 {
@@ -199,65 +198,93 @@ class CreateLinksTable extends Migration
 }
 ~~~
 
-마이그레이션을 실행합니다:
+그리고 마이그레이션을 실행합니다:
 
 ~~~php
 php artisan migrate
 ~~~
 
-설정하는 동안 테스트를 위해 샘플 데이터를 생성하는 것이 유용합니다. 
-다음 Artisan 명령어로 Seeder 클래스를 생성할 수 있습니다:
+또한, 앱에 테스트 데이터를 생성할 수 있습니다. [시더 Seeder](https://laravel.com/docs/12.x/seeding) 클래스를 Artisan 명령으로 생성합니다:
 
 ~~~php
 php artisan make:seeder TasksTableSeeder
 php artisan make:seeder LinksTableSeeder
 ~~~
 
-*database/seeds* 폴더가 없다면 생성한 후, 해당 폴더에서 **TasksTableSeeder**에 샘플 데이터를 추가합니다:
+이제 *database/seeders* 폴더를 열고 **TasksTableSeeder**에 데이터를 추가합니다:
 
-**database/seeds/TasksTableSeeder.php**
-~~~php
+```php title="database/seeds/TasksTableSeeder.php"
 <?php
 
-use IlluminateDatabaseSeeder;
-
+namespace Database\Seeders;
+ 
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+ 
 class TasksTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
+        DB::table('tasks')->truncate();
         DB::table('tasks')->insert([
-            ['id'=>1, 'text'=>'Project #1', 'start_date'=>'2017-04-01 00:00:00', 
+            ['id'=>1, 'text'=>'Project #1', 'start_date'=>'2025-04-01 00:00:00', 
                 'duration'=>5, 'progress'=>0.8, 'parent'=>0],
-            ['id'=>2, 'text'=>'Task #1', 'start_date'=>'2017-04-06 00:00:00', 
+            ['id'=>2, 'text'=>'Task #1', 'start_date'=>'2025-04-06 00:00:00', 
                 'duration'=>4, 'progress'=>0.5, 'parent'=>1],
-            ['id'=>3, 'text'=>'Task #2', 'start_date'=>'2017-04-05 00:00:00', 
+            ['id'=>3, 'text'=>'Task #2', 'start_date'=>'2025-04-05 00:00:00', 
                 'duration'=>6, 'progress'=>0.7, 'parent'=>1],
-            ['id'=>4, 'text'=>'Task #3', 'start_date'=>'2017-04-07 00:00:00', 
+            ['id'=>4, 'text'=>'Task #3', 'start_date'=>'2025-04-07 00:00:00', 
                 'duration'=>2, 'progress'=>0, 'parent'=>1],
-            ['id'=>5, 'text'=>'Task #1.1', 'start_date'=>'2017-04-05 00:00:00', 
+            ['id'=>5, 'text'=>'Task #1.1', 'start_date'=>'2025-04-05 00:00:00', 
                 'duration'=>5, 'progress'=>0.34, 'parent'=>2],
-            ['id'=>6, 'text'=>'Task #1.2', 'start_date'=>'2017-04-11 00:00:00', 
+            ['id'=>6, 'text'=>'Task #1.2', 'start_date'=>'2025-04-11 00:00:00', 
                 'duration'=>4, 'progress'=>0.5, 'parent'=>2],
-            ['id'=>7, 'text'=>'Task #2.1', 'start_date'=>'2017-04-07 00:00:00', 
+            ['id'=>7, 'text'=>'Task #2.1', 'start_date'=>'2025-04-07 00:00:00', 
                 'duration'=>5, 'progress'=>0.2, 'parent'=>3],
-            ['id'=>8, 'text'=>'Task #2.2', 'start_date'=>'2017-04-06 00:00:00', 
+            ['id'=>8, 'text'=>'Task #2.2', 'start_date'=>'2025-04-06 00:00:00', 
                 'duration'=>4, 'progress'=>0.9, 'parent'=>3]
         ]);
     }
 }
 ~~~
+그다음 **LinksTableSeeder**에 대해서도 동일하게 수행합니다:
 
-**DatabaseSeeder.php**를 수정하여 이 seeder들을 호출하도록 합니다:
-
-**database/seeds/DatabaseSeeder.php**
-~~~php
+```php title="database/seeders/LinksTableSeeder.php"
 <?php
 
-use IlluminateDatabaseSeeder;
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class LinksTableSeeder extends Seeder
+{
+	public function run(): void
+	{
+		DB::table('links')->truncate();
+		DB::table('links')->insert([
+			['id' => 1, 'source' => 2, 'target' => 3, 'type' => 0],
+			['id' => 2, 'source' => 3, 'target' => 4, 'type' => 1]
+		]);
+	}
+}
+~~~
+그리고 DatabaseSeeder.php에서 테이블 시드를 호출합니다:
+
+```php title="database/seeds/DatabaseSeeder.php"
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Task;
+use App\Models\Link;
+use Database\Seeders\TasksTableSeeder;
+use Database\Seeders\LinksTableSeeder;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $this->call(TasksTableSeeder::class);
         $this->call(LinksTableSeeder::class);
@@ -265,7 +292,7 @@ class DatabaseSeeder extends Seeder
 }
 ~~~
 
-마지막으로, 명령줄에서 데이터베이스에 시드 데이터를 추가합니다:
+그 후 명령줄에서 데이터베이스를 시드할 수 있습니다:
 
 ~~~php
 php artisan db:seed
@@ -273,464 +300,518 @@ php artisan db:seed
 
 ### 모델 클래스 정의
 
-데이터는 [Eloquent 모델](https://laravel.com/docs/11.x/eloquent) 클래스를 통해 처리됩니다. 앞서 생성한 task와 link 클래스는 별도의 수정 없이 gantt에서 바로 사용할 수 있습니다.
+데이터는 [Eloquent 모델](https://laravel.com/docs/12.x/eloquent) 클래스를 통해 관리됩니다. 이전 단계에서 Task와 Link용 클래스를 이미 생성했습니다. 이들은 간트와 함께 작동하도록 특별한 변경 없이 사용할 수 있습니다.
 
-단, 클라이언트에서 작업을 불러올 때 프로젝트 트리가 기본적으로 확장되어 있도록 하려면, Task 클래스의 [JSON 응답](https://laravel.com/docs/11.x/eloquent-serialization)에 **open** 속성을 추가할 수 있습니다. 그렇지 않으면 모든 브랜치가 처음에는 접혀서 표시됩니다.
+다음으로 할 수 있는 일은 Task 클래스의 **open** [속성](guides/loading.md#dataproperties)을 [JSON 응답](https://laravel.com/docs/12.x/eloquent-serialization)에 추가하는 것입니다. 이를 통해 클라이언트 측에 데이터를 로드할 때 프로젝트 트리가 확장됩니다. 그렇지 않으면 초기에는 모든 분기가 닫힌 상태일 것입니다.
 
-Task 모델 예시는 다음과 같습니다:
+Task 모델은 아래와 같이 보일 것입니다:
 
-**/app/Task.php**
-~~~php
+```php title="/app/Models/Task.php"
 <?php
 
-namespace App;
+namespace App\Models;
 
-use IlluminateDatabaseEloquentModel;
+use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    protected $appends = ["open"];/*!*/
-
-    public function getOpenAttribute(){/*!*/
-        return true;/*!*/
-    }/*!*/
+    protected $appends = ["open"];
+ 
+    public function getOpenAttribute(){
+        return true;
+    }
 }
 ~~~
 
-Link 모델은 별도의 수정이 필요하지 않습니다:
+Link 모델은 변경이 필요하지 않습니다:
 
-**/app/Link.php**
-~~~php
+```php title="/app/Models/Link.php"
 <?php
 
-namespace App;
+namespace App\Models;
 
-use IlluminateDatabaseEloquentModel;
+use Illuminate\Database\Eloquent\Model;
 
 class Link extends Model
 {
 }
 ~~~
 
-## 4단계. 데이터 불러오기
+## 4단계. 데이터 로딩
 
-데이터베이스와 모델이 준비되었으니, 이제 gantt 차트에 데이터를 불러올 수 있습니다. 
-클라이언트는 특정 [포맷](guides/supported-data-formats.md#json)의 날짜를 기대하므로, 이에 맞는 JSON을 반환하는 컨트롤러 액션을 생성합니다:
+데이터베이스가 생성되고 모델이 정의되면 간트 차트에 데이터를 로드할 수 있습니다.
+클라이언트 측은 아래 형식의 날짜를 필요로 하므로, 이러한 JSON을 생성하는 액션을 갖는 컨트롤러를 만들어봅시다:
 
-**app/Http/Controllers/GanttController.php**
-~~~php
+```php title="app/Http/Controllers/GanttController.php"
 <?php
-namespace AppHttpControllers;
-use AppTask;
-use AppLink;
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\JsonResponse;
+use App\Models\Task;
+use App\Models\Link;
 
 class GanttController extends Controller
 {
-    public function get(){
-        $tasks = new Task();
-        $links = new Link();
+	public function get(): JsonResponse
+	{
+		$tasks = Task::all();
+		$links = Link::all();
 
-        return response()->json([
-            "data" => $tasks->all(),
-            "links" => $links->all()
-        ]);
-    }
+		return response()->json([
+			"tasks" => $tasks,
+			"links" => $links
+		]);
+	}
 }
 ~~~
 
-이 액션을 클라이언트에서 요청할 수 있도록 [api.php 라우트 파일](https://laravel.com/docs/8.x/routing#basic-routing)에 라우트를 추가합니다:
+그리고 클라이언트가 이 액션을 호출하도록 라우트를 등록합니다. [api.php 라우트 파일](https://laravel.com/docs/12.x/routing#basic-routing)에 이 라우트를 추가합니다:
 
-**routes/api.php**
-~~~php
+```php title="routes/api.php"
 <?php
 
-use IlluminateHttpRequest;
-use AppHttpControllersGanttController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GanttController;
 
-Route::get('/data', 'GanttController@get');/*!*/
+Route::get('/data', [GanttController::class, 'get']); /*!*/
 ~~~
 
-마지막으로, 뷰를 수정하여 이 엔드포인트를 호출하도록 합니다:
+이제 Laravel이 API 라우트를 올바르게 로드하도록 구성해 봅시다.
+다음 명령으로 **RouteServiceProvider.php**를 생성합니다:
 
-**resources/views/gantt.blade.php**
-~~~js
+~~~php
+php artisan make:provider RouteServiceProvider
+~~~
+그 다음 아래 내용으로 파일을 업데이트합니다:
+
+```php title="Providers/RouteServiceProvider.php"
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+	public function boot(): void
+	{
+		Route::prefix('api')
+		->middleware('api')
+		->group(base_path('routes/api.php'));
+	}
+}
+~~~
+
+그리고 뷰에서 이 액션을 호출합니다:
+
+```js title="resources/views/gantt.blade.php"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
 
 gantt.init("gantt_here");
 
 gantt.load("/api/data");/*!*/
-~~~
+```
+[gantt.load](api/method/load.md) 는 지정된 URL로 AJAX 요청을 보내고 앞서 정의한 대로 [JSON 응답](guides/supported-data-formats.md)을 기대합니다.
 
-[gantt.load](api/method/load.md) 메서드는 지정된 URL로 AJAX 요청을 보내고, [JSON 응답](guides/supported-data-formats.md#json)을 기대합니다.
+또한, [date_format](api/config/date_format.md) 값을 지정한 것도 주목하세요.
+이는 간트가 데이터 소스가 사용할 날짜 형식을 알 수 있도록 하여 클라이언트 측에서 이를 파싱할 수 있게 해 줍니다.
 
-또한, [date_format](api/config/date_format.md)을 지정하면 gantt가 데이터 소스의 날짜 형식을 인식하여 클라이언트에서 올바르게 파싱할 수 있습니다.
-
-이제 앱을 확인하면 gantt 차트에 작업이 표시됩니다:
+지금 앱을 확인하면 간트 차트에 이제 작업이 보일 것입니다:
 
 ![how_to_start_laravel_complete](/img/how_to_start_laravel_complete.png)
 
-## 5단계. 변경사항 저장
+## 5단계. 변경 내용 저장
 
-현재 gantt 차트는 백엔드에서 데이터를 읽어옵니다. 다음 단계는 변경사항을 데이터베이스에 저장할 수 있도록 하는 것입니다.
+지금까지 간트는 백엔드에서 데이터를 읽을 수 있습니다. 이제 백엔드로 변경 내용을 기록하도록 만듭시다.
 
-클라이언트는 REST 모드로 동작하며, 작업 및 링크에 대한 POST/PUT/DELETE 요청을 보냅니다. gantt에서 사용하는 요청 포맷과 라우트는 [여기](guides/server-side.md#requestresponsedetails)에서 확인할 수 있습니다.
+클라이언트 측은 REST 모드에서 동작하며, 작업과 링크에 대해 POST/PUT/DELETE 요청을 보냅니다. 요청 형식과 간트가 사용할 모든 경로는 [여기](guides/server-side.md#requestresponsedetails)에서 확인할 수 있습니다.
 
-이를 지원하려면 두 모델 모두에 대해 CRUD 작업을 처리하는 컨트롤러를 생성하고, 라우트를 정의하며, 클라이언트에서 데이터 저장을 활성화해야 합니다.
+이제 두 모델에 대한 동작을 처리하는 컨트롤러를 정의하고, 이를 위한 경로를 만들어 데이터 저장을 클라이언트 측에서 가능하게 해야 합니다.
 
 ### 컨트롤러 추가
 
-먼저 두 모델에 대해 RESTful [리소스 컨트롤러](https://laravel.com/docs/11.x/controllers)를 생성합니다. 
-이 컨트롤러에는 데이터 추가, 삭제, 갱신을 위한 메서드가 포함됩니다.
+먼저 컨트롤러부터 시작합니다. 각 모델에 대해 하나의 RESTful [리소스 컨트롤러](https://laravel.com/docs/12.x/controllers)를 만듭니다.
+이는 모델을 추가/삭제 및 업데이트하는 메서드를 포함합니다.
 
-#### 작업(Task) 컨트롤러
+#### Tasks용 컨트롤러
 
-**app/Http/Controllers/TaskController.php**
-~~~php
+```php title="app/Http/Controllers/TaskController.php"
 <?php
-namespace AppHttpControllers;
 
-use IlluminateHttpRequest;
-use AppTask;
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Task;
 
 class TaskController extends Controller
 {
-    public function store(Request $request){
+	public function store(Request $request)
+	{
+		$data = $request->only(['text', 'start_date', 'duration', 'parent']);
+		$data['progress'] = $request->input('progress', 0);
 
-        $task = new Task();
+		$task = Task::create($data);
 
-        $task->text = $request->text;
-        $task->start_date = $request->start_date;
-        $task->duration = $request->duration;
-        $task->progress = $request->has("progress") ? $request->progress : 0;
-        $task->parent = $request->parent;
+		return response()->json([
+			'action' => 'inserted',
+			'tid' => $task->id,
+		]);
+	}
 
-        $task->save();
+	public function update(Request $request, $id)
+	{
+		$task = Task::findOrFail($id);
 
-        return response()->json([
-            "action"=> "inserted",
-            "tid" => $task->id
-        ]);
-    }
+		$data = $request->only(['text', 'start_date', 'duration', 'parent']);
+		$data['progress'] = $request->input('progress', 0);
 
-    public function update($id, Request $request){
-        $task = Task::find($id);
+		$task->update($data);
 
-        $task->text = $request->text;
-        $task->start_date = $request->start_date;
-        $task->duration = $request->duration;
-        $task->progress = $request->has("progress") ? $request->progress : 0;
-        $task->parent = $request->parent;
+		return response()->json([
+			'action' => 'updated',
+		]);
+	}
 
-        $task->save();
+	public function destroy($id)
+	{
+		$task = Task::findOrFail($id);
+		$task->delete();
 
-        return response()->json([
-            "action"=> "updated"
-        ]);
-    }
+		return response()->json([
+			'action' => 'deleted',
+		]);
+	}
+}
+```
 
-    public function destroy($id){
-        $task = Task::find($id);
-        $task->delete();
+#### Task 모델 구성
 
-        return response()->json([
-            "action"=> "deleted"
-        ]);
+컨트롤러 메서드가 작동하려면 대량 할당을 허용하도록 `Task` 모델을 구성해야 합니다. Laravel의 대량 할당 보호는 `create()`와 `update()` 메서드를 통해 채워질 수 있는 속성을 명시적으로 지정하도록 요구합니다.
+`$fillable` 속성을 포함하도록 Task 모델을 업데이트합니다:
+
+```php title="/app/Models/Task.php"
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Task extends Model
+{
+    protected $fillable = ['text', 'start_date', 'duration', 'progress', 'parent']; /*!*/
+    protected $appends = ["open"];
+
+    public function getOpenAttribute(){
+        return true;
     }
 }
-~~~
+```
 
-그리고 [route](https://laravel.com/docs/11.x/controllers#resource-controllers)는 다음과 같습니다:
+`$fillable` 배열은 대량 할당이 허용되는 필드를 지정합니다. 이는 사용자 입력으로 인해 원하지 않는 필드가 업데이트되는 것을 방지하는 보안 기능입니다.
 
-**routes/api.php**
-~~~php
+그리고 이를 위한 라우트도 추가합니다:
+
+```php title="routes/api.php"
 <?php
- 
-use IlluminateHttpRequest;
- 
-Route::get('/data', 'GanttController@get');
-Route::resource('task', 'TaskController');/*!*/
-~~~
 
-이 코드에 대한 몇 가지 설명:
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GanttController;
+use App\Http\Controllers\TaskController;
 
-- 새 작업이 추가되면, 해당 id가 응답의 **tid** 속성으로 클라이언트에 전달됩니다.
-- **progress** 파라미터에는 기본값이 할당됩니다. 많은 요청 파라미터가 선택사항이기 때문에, 클라이언트 측 작업에 값이 설정되지 않으면 서버 요청에 포함되지 않을 수 있습니다.
-- 응답 JSON에는 추가 속성이 포함될 수 있으며, 모두 [클라이언트 핸들러](guides/server-side.md#errorhandling)에서 접근할 수 있습니다.
+Route::get('/data', [GanttController::class, 'get']);
+Route::resource('task', TaskController::class); /*!*/
+```
 
-다음으로, 링크에 대한 유사한 컨트롤러를 생성해보겠습니다.
+이 코드에 관한 몇 가지 주의사항:
 
-#### 링크(Link) 컨트롤러
+- 새 작업이 삽입될 때 응답 객체의 **tid** 속성으로 클라이언트에 ID를 반환합니다
+- 기본값으로 **progress** 매개변수를 설정합니다.
+  많은 요청 매개변수는 선택적이므로 클라이언트 측 작업에 해당 매개변수가 없으면 서버 동작으로 전송되지 않습니다.
+- 응답 JSON은 추가 속성을 얼마든지 가질 수 있으며, 이들 속성은 모두 [클라이언트 측 핸들러](guides/server-side.md#error-handling)에서 접근할 수 있습니다.
 
-**app/Http/Controllers/LinkController.php**
-~~~php
+이제 LinkController에 대해서도 동일한 구현을 진행해 봅시다.
+
+#### 링크용 컨트롤러
+
+```php title="app/Http/Controllers/LinkController.php"
 <?php
-namespace AppHttpControllers;
 
-use IlluminateHttpRequest;
-use AppLink;
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Link;
 
 class LinkController extends Controller
 {
-    public function store(Request $request){
-        $link = new Link();
+	public function store(Request $request)
+	{
+		$link = Link::create($request->only(['type', 'source', 'target']));
 
-        $link->type = $request->type;
-        $link->source = $request->source;
-        $link->target = $request->target;
+		return response()->json([
+			'action' => 'inserted',
+			'tid' => $link->id,
+		]);
+	}
 
-        $link->save();
+	public function update(Request $request, $id)
+	{
+		$link = Link::findOrFail($id);
+		$link->update($request->only(['type', 'source', 'target']));
 
-        return response()->json([
-            "action"=> "inserted",
-            "tid" => $link->id
-        ]);
-    }
+		return response()->json([
+			'action' => 'updated',
+		]);
+	}
 
-    public function update($id, Request $request){
-        $link = Link::find($id);
+	public function destroy($id)
+	{
+		$link = Link::findOrFail($id);
+		$link->delete();
 
-        $link->type = $request->type;
-        $link->source = $request->source;
-        $link->target = $request->target;
-
-        $link->save();
-
-        return response()->json([
-            "action"=> "updated"
-        ]);
-    }
-
-    public function destroy($id){
-        $link = Link::find($id);
-        $link->delete();
-
-        return response()->json([
-            "action"=> "deleted"
-        ]);
-    }
+		return response()->json([
+			'action' => 'deleted',
+		]);
+	}
 }
-~~~
+```
 
-그리고 이에 해당하는 라우트는 다음과 같습니다:
+#### Link 모델 구성
 
-**routes/api.php**
-~~~php
+Task 모델과 유사하게 Link 모델도 대량 할당에 대해 구성해야 합니다:
+
+```php title="app/Models/Link.php"
 <?php
 
-use IlluminateHttpRequest;
+namespace App\Models;
 
-Route::get('/data', 'GanttController@get');
-Route::resource('task', 'TaskController');
-Route::resource('link', 'LinkController'); /*!*/
-~~~
+use Illuminate\Database\Eloquent\Model;
 
-### 클라이언트에서 데이터 저장 활성화
+class Link extends Model
+{
+    protected $fillable = ['type', 'source', 'target']; /*!*/
+}
+```
 
-마지막으로, 클라이언트에서 방금 구성한 API와 연동하도록 설정해야 합니다:
+그리고 이의 라우트:
 
-**resources/views/gantt.blade.php**
-~~~js
+```php title="routes/api.php"
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GanttController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\LinkController;
+
+Route::get('/data', [GanttController::class, 'get']);
+Route::resource('task', TaskController::class);
+Route::resource('link', LinkController::class); /*!*/
+```
+
+### 클라이언트 측에서 데이터 저장 활성화
+
+마지막으로 [구성指南](guides/server-side.md#technique)에서 앞서 구현한 API를 사용하도록 클라이언트 측을 구성합니다:
+
+```js title="resources/views/gantt.blade.php"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
-    
 gantt.init("gantt_here");
-    
 gantt.load("/api/data");
-    
-var dp = new gantt.dataProcessor("/api");/*!*/
-dp.init(gantt);/*!*/
-dp.setTransactionMode("REST");/*!*/
-~~~
 
-이제 Gantt 차트는 작업과 링크의 조회, 추가, 수정, 삭제가 모두 가능한 완전한 인터랙티브 상태가 됩니다.
+const dp = gantt.createDataProcessor({ /*!*/
+	url: "/api", /*!*/
+	mode: "REST" /*!*/
+}); /*!*/
+```
+
+이제 작업과 링크를 조회, 추가, 업데이트 및 삭제할 수 있는 완전한 대화형 Gantt 차트가 있습니다.
 
 ![how_to_start_laravel_crud](/img/how_to_start_laravel_crud.png)
 
-dhtmlxGantt의 더 많은 기능은 [가이드](guides.md)에서 확인할 수 있습니다.
+더 많은 기능은 [가이드](guides.md)를 참고해 주세요.
 
-## 작업 순서 저장하기 {#storingtheorderoftasks}
+## 작업 순서 저장 {#storingtheorderoftasks}
 
-클라이언트 측 gantt는 [드래그 앤 드롭을 통한 작업 순서 변경](guides/reordering-tasks.md)을 지원합니다. 이 기능을 사용할 경우, 데이터베이스에 순서를 저장해야 합니다. 일반적인 설명은 [여기](guides/server-side.md#storingtheorderoftasks)에서 확인할 수 있습니다.
+클라이언트 측의 간트는 drag and drop을 사용한 [작업 재정렬](guides/reordering-tasks.md)을 허용합니다. 이 기능을 사용하면 이 순서를 데이터베이스에 저장해야 합니다.
+일반적인 설명은 여기에서 확인할 수 있습니다: [서버 측 가이드 저장 순서](guides/server-side.md#storingtheorderoftasks).
 
-이제 이 기능을 앱에 추가해보겠습니다.
+이 기능을 우리 앱에 추가해 보겠습니다.
 
-### 클라이언트에서 작업 순서 변경 활성화
+### 클라이언트에서 작업 재정렬 활성화
 
-사용자가 UI에서 작업 순서를 변경할 수 있도록, *Index* 뷰의 gantt 설정을 다음과 같이 수정하세요:
+먼저 사용자가 UI에서 작업 순서를 변경하도록 허용해야 합니다. *Index* 뷰를 열고 gantt의 구성을 업데이트합니다:
 
-**resources/views/gantt.blade.php**
-~~~js
+```js title="resources/views/gantt.blade.php"
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
 gantt.init("gantt_here");
-~~~
+```
 
-### 서버에서 작업 순서 변경 활성화
+### 서버에서 작업 재정렬 활성화
 
-백엔드에서는 "sortorder"라는 컬럼에 순서를 저장하게 됩니다. 전체 작업 테이블 스키마 예시는 다음과 같습니다:
+이제 이러한 변경 사항을 백엔드에 반영합니다. 정렬 순서를 "sortorder" 열에 저장합니다. 전체 작업 스키마는 아래와 같이 보일 수 있습니다:
 
-~~~php
+```php 
 Schema::create('tasks', function (Blueprint $table){
-    $table->increments('id');
-    $table->string('text');
-    $table->integer('duration');
-    $table->float('progress');
-    $table->dateTime('start_date');
-    $table->integer('parent');
-    $table->integer('sortorder')->default(0);
-    $table->timestamps();
+	$table->increments('id');
+	$table->string('text');
+	$table->integer('duration');
+	$table->float('progress');
+	$table->dateTime('start_date');
+	$table->integer('parent');
+	$table->integer('sortorder')->default(0);
+	$table->timestamps();
 });
-~~~
+```
 
-또는 기존 스키마에 마이그레이션을 추가할 수도 있습니다:
+또는 앞서 생성한 스키마에 마이그레이션을 추가할 수 있습니다:
 
 ~~~js
-php artisan make:migration add_sortorder_to_tasks_table --table="tasks"
+php artisan make:migration add_sortorder_to_tasks_table --table=tasks
 ~~~
 
-마이그레이션 파일 예시는 다음과 같습니다:
+마이그레이션 파일의 코드는 다음과 같습니다:
 
-**database/migrations/_add_sortorder_to_tasks_table.php**
-~~~php
+```php title="database/migrations/_add_sortorder_to_tasks_table.php"
 <?php
 
-use IlluminateSupportFacadesSchema;
-use IlluminateDatabaseSchemaBlueprint;
-use IlluminateDatabaseMigrationsMigration;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class AddSortorderToTasksTable extends Migration
 {
-    public function up()
-    {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->integer('sortorder')->default(0);
-        });
-    }
+	public function up()
+	{
+		Schema::table('tasks', function (Blueprint $table) {
+			$table->integer('sortorder')->default(0);
+		});
+	}
 
-    public function down()
-    {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->dropColumn('sortorder');
-        });
-    }
+	public function down()
+	{
+		Schema::table('tasks', function (Blueprint $table) {
+			$table->dropColumn('sortorder');
+		});
+	}
 }
 ~~~
 
-그리고 마이그레이션을 실행합니다:
+마이그레이션을 적용합니다:
 
-~~~
+~~~ 
 php artisan migrate
 ~~~
 
-다음으로, 컨트롤러의 CRUD 작업을 업데이트해야 합니다.
+그 후에는 컨트롤러에서 CRUD를 업데이트해야 합니다.
 
-1 . <b>GET /data</b> 라우트는 `sortorder`로 정렬된 작업을 반환해야 합니다: 
-   
-**app/Http/Controllers/GanttController.php**
-~~~php
+1. <b>GET /data</b>는 `sortorder` 열로 정렬된 작업을 반환해야 합니다:
+
+```php
+```php title="app/Http/Controllers/GanttController.php"
 <?php
-namespace AppHttpControllers;
-use AppTask;
-use AppLink;
+namespace App\Http\Controllers;
+use Illuminate\Http\JsonResponse;
+use App\Models\Task;
+use App\Models\Link;
 
 class GanttController extends Controller
 {
-    public function get(){
-        $tasks = new Task();
-        $links = new Link();
+	public function get(): JsonResponse
+	{
+		$tasks = Task::orderBy('sortorder')->get(); /*!*/
+		$links = Link::all();
 
-        return response()->json([
-            "data" => $tasks->orderBy('sortorder')->get(),/*!*/
-            "links" => $links->all()
-        ]);
-    }
+		return response()->json([
+			"tasks" => $tasks,
+			"links" => $links
+		]);
+	}
 }
-~~~
-2 . 새 작업을 추가할 때, 초기 `sortorder` 값을 할당해야 합니다: 
+```
 
-**app/Http/Controllers/TaskController.php**
-~~~php
-public function store(Request $request){
-    $task = new Task();
+2. 새로 추가된 작업은 초기값 `sortorder`를 받아야 합니다:
 
-    $task->text = $request->text;
-    $task->start_date = $request->start_date;
-    $task->duration = $request->duration;
-    $task->progress = $request->has("progress") ? $request->progress : 0;
-    $task->parent = $request->parent;
-    $task->sortorder = Task::max("sortorder") + 1;/*!*/
+```php title="app/Http/Controllers/TaskController.php"
+public function store(Request $request)
+{
+	$data = $request->only(['text', 'start_date', 'duration', 'parent']);
+	$data['progress'] = $request->input('progress', 0);
+	$data['sortorder'] = Task::max('sortorder') + 1;
 
-    $task->save();
+	$task = Task::create($data);
 
-    return response()->json([
-        "action"=> "inserted",
-        "tid" => $task->id
-    ]);
+	return response()->json([
+		'action' => 'inserted',
+		'tid' => $task->id,
+	]);
 }
-~~~
+```
 
-3 . 마지막으로, 작업의 순서가 변경될 때 서버에서도 순서를 업데이트해야 합니다:
+3. 마지막으로 사용자가 작업을 재정렬하면, 작업 순서는 [업데이트](guides/server-side.md#storingtheorderoftasks)되어야 합니다:
 
-**app/Http/Controllers/TaskController.php**
-~~~php
-public function update($id, Request $request){
-    $task = Task::find($id);
+```php title="app/Http/Controllers/TaskController.php"
+public function update(Request $request, $id)
+{
+	$task = Task::findOrFail($id);
 
-    $task->text = $request->text;
-    $task->start_date = $request->start_date;
-    $task->duration = $request->duration;
-    $task->progress = $request->has("progress") ? $request->progress : 0;
-    $task->parent = $request->parent;
-    
-    $task->save();
-    
-    if($request->has("target")){/*!*/
-        $this->updateOrder($id, $request->target);/*!*/
-    }/*!*/
+	$data = $request->only(['text', 'start_date', 'duration', 'parent']);
+	$data['progress'] = $request->input('progress', 0);
 
-    return response()->json([
-        "action"=> "updated"
-    ]);
+	$task->update($data);
+
+	if ($request->has('target')) {
+		$this->updateOrder($id, $request->input('target'));
+	}
+
+	return response()->json([
+		'action' => 'updated',
+	]);
 }
 
-private function updateOrder($taskId, $target){
-    $nextTask = false;
-    $targetId = $target;
+private function updateOrder($taskId, $target)
+{
+	$nextTask = false;
+	$targetId = $target;
 
-    if(strpos($target, "next:") === 0){
-        $targetId = substr($target, strlen("next:"));
-        $nextTask = true;
-    }
+	if (str_starts_with($target, 'next:')) {
+		$targetId = substr($target, strlen('next:'));
+		$nextTask = true;
+	}
 
-    if($targetId == "null")
-        return;
+	if ($targetId === 'null') {
+		return;
+	}
 
-    $targetOrder = Task::find($targetId)->sortorder;
-    if($nextTask)
-        $targetOrder++;
+	$targetTask = Task::find($targetId);
+	if (!$targetTask) {
+		return;
+	}
 
-    Task::where("sortorder", ">=", $targetOrder)->increment("sortorder");
+	$targetOrder = $targetTask->sortorder;
+	if ($nextTask) {
+		$targetOrder++;
+	}
 
-    $updatedTask = Task::find($taskId);
-    $updatedTask->sortorder = $targetOrder;
-    $updatedTask->save();
+	Task::where('sortorder', '>=', $targetOrder)->increment('sortorder');
+
+	$updatedTask = Task::find($taskId);
+	$updatedTask->sortorder = $targetOrder;
+	$updatedTask->save();
 }
+```
 
-~~~
+## 보안
 
-
-## 애플리케이션 보안
-
-Gantt 컴포넌트 자체에는 SQL 인젝션, XSS, CSRF 공격 등과 같은 위협에 대한 보호 기능이 포함되어 있지 않습니다. 애플리케이션의 보안은 백엔드 개발자의 책임입니다. 자세한 내용은 [관련 문서](guides/app-security.md)를 참고하세요.
-
+간트는 SQL 주입이나 XSS 및 CSRF 공격 등 다양한 위협에 대한 방지 수단을 기본적으로 제공하지 않습니다. 애플리케이션의 보안을 안전하게 유지하는 책임은 백엔드를 구현하는 개발자에게 있습니다. 자세한 내용은 해당 기사에서 확인하십시오. (guides/app-security.md)
 
 ## 문제 해결
 
-이 과정을 모두 따라 했음에도 Gantt 차트에 작업이나 링크가 표시되지 않는 경우, [백엔드 통합 문제 해결](guides/troubleshooting.md) 문서에서 일반적인 문제의 원인과 해결 방법을 확인할 수 있습니다.
+위의 PHP와의 간트 통합 구현 단계를 완료했는데도 간트가 페이지에 작업과 링크를 렌더링하지 않는 경우, guides/troubleshooting.md 기사를 확인해 보십시오. 문제의 원인을 파악하는 데 도움이 됩니다.
 
-## 다음 단계
+## What's next
 
-이제 gantt는 완전히 동작합니다. 전체 소스 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel)에서 복제하거나 다운로드하여 프로젝트에 사용할 수 있습니다.
+지금은 완전하게 작동하는 간트 차트를 보유하게 되었습니다. 전체 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-php-laravel)에서 확인하거나 클론/다운로드해 프로젝트에 사용할 수 있습니다.
 
-gantt의 추가 기능은 [가이드](guides.md)에서, 그리고 다른 백엔드 프레임워크와의 연동 방법은 [how-to 가이드](integrations/howtostart-guides.md)에서 확인할 수 있습니다.
-
+또한 다수의 기능에 대한 가이드(guides.md)나 다른 백엔드 프레임워크와의 Gantt 통합 튜토리얼(integrations/howtostart-guides.md)을 확인할 수 있습니다.

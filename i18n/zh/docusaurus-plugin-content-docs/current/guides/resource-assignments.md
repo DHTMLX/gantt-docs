@@ -1,19 +1,19 @@
+---  
+title: "资源分配控件"  
+sidebar_label: "资源分配控件"  
 ---
-title: "Resource Assignments Control"
-sidebar_label: "Resource Assignments Control"
----
 
-# Resource Assignments Control
+# 资源分配控件
 
-:::info
-This functionality is available in the Gantt PRO edition only.
-:::
+:::info  
+此功能仅在 Gantt PRO 版中可用。  
+:::  
 
-An extended control used to [assign multiple resources and their quantity to a task](guides/resource-management.md#assigningresources).
+一个扩展控件，用于将多个资源及其数量分配给一个任务（[assigningresources](guides/resource-management.md#assigningresources)）。
 
-Here is an example of the Resource Assignments control with the default configuration: 
+以下是具有默认配置的资源分配控件示例：  
 
-![Resource Assignments control](/img/resource_assignments_control.png)
+![资源分配控件](/img/resource_assignments_control.png)
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -23,43 +23,43 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-[Resource Assignments control](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
+[资源分配控件](https://docs.dhtmlx.com/gantt/samples/11_resources/07_assign_multiple_resources.html)
 
-You can [configure the resource grid columns of the control](#configuring-resource-grid-columns-in-the-lightbox) and provide the necessary resource options:
+你可以 [配置控件的资源网格列](#configuring-resource-grid-columns-in-the-lightbox) 并提供必要的资源选项：
 
-![Resource Assignments control options](/img/resource_assignments_control_options.png)
+![资源分配控件选项](/img/resource_assignments_control_options.png)
 
 ~~~js
-// resource options
+// 资源选项
 const usageMap = [
     { key: 1, label: "wood", text: "wood", unit: "box" },
     { key: 2, label: "water", text: "water", unit: "liter" },
     { key: 3, label: "grain", text: "grain", unit: "lbs" }
 ];
 
-// helper editors
+// 辅助编辑器
 const selectResEditor = { type: "select", map_to: "resource_id", options: usageMap };
 const numberEditor = { type: "number", map_to: "value", min: 0, max: 100 };
 
-// resource grid columns config
+// 资源网格列配置
 const resourceLightboxConfig = {
     columns: [
         {
                name: "resource", 
             label: "Resource", 
             editor: selectResEditor
-            // more column's options
+            // 更多列选项
         },
         {
             name: "units", 
             label: "Units", 
             editor: numberEditor,
-            // more column's options
+            // 更多列选项
         },
         {
             name: "delete", 
             label: "Delete", 
-            // more column's options
+            // 更多列选项
         }
     ]
 };
@@ -72,18 +72,18 @@ gantt.config.lightbox.sections = [
 ];
 
 gantt.locale.labels.section_resource_selector = "Resources";
-~~~
-[Resource Assignments control](https://snippet.dhtmlx.com/id54i1b3)
+~~~  
+[资源分配控件](https://snippet.dhtmlx.com/id54i1b3)
 
 :::note
- You can also create [a custom control to assign multiple resources to a task](guides/custom-editor.md#customthirdpartyeditor).
-:::
+ 你也可以创建一个自定义控件，将多个资源分配给一个任务。[自定义第三方编辑器](guides/custom-editor.md#customthirdpartyeditor)。
+:::  
 
-## Initialization
+## 初始化
 
-To add the **resource_selector** control to the lightbox, follow the steps below:
+要将 **resource_selector** 控件添加到 lightbox，请按下列步骤操作：
 
-1\. Add a section to the lightbox configuration:
+1\. 在 lightbox 配置中添加一个部分：
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -94,36 +94,36 @@ gantt.config.lightbox.sections = [
 ~~~
 
 :::note
-By default the resource control is mapped to the property specified in the [](api/config/resource_property.md) config, so the **map_to** option can be omitted.
+默认情况下，资源控件映射到配置中的属性，因此可以省略 **map_to** 选项。
 :::
 
-2\. Set a label for the section:
+2\. 为该部分设置标签：
 
 ~~~js
 gantt.locale.labels.section_resource_selector = "Resources";
 ~~~
 
-## Properties
+## 属性
 
-The following properties are mostly important and commonly set for the **resource_selector** control:
+以下属性对 **resource_selector** 控件来说最重要且常被设置：
 
-- **name** - (*string*) the section's name 
-- **map_to** - (*string*) the name of a data property that will be mapped to the section
-- **type** - (*string*) the type of the [section control](guides/default-edit-form.md#lightboxcontrols)
-- **label** - (*string*) the section's label
-- **config** - (*object*) the resource grid config in the lightbox to display required columns
-- **templates** - (*object*) templates for the resource grid in the lightbox
-    
+- **name** - (*string*) 该分区的名称
+- **map_to** - (*string*) 将映射到该分区的数据属性的名称
+- **type** - (*string*) [分区控件](guides/default-edit-form.md#lightboxcontrols) 的类型
+- **label** - (*string*) 该分区的标签
+- **config** - (*object*) 在 lightbox 中显示所需列的资源网格配置
+- **templates** - (*object*) lightbox 中资源网格的模板
+  
 :::note
-The initial *start_date*, *end_date*, and *duration* properties may have `null` values. If so, they will be initialized using the corresponding values from the task object.
+初始的 *start_date*, *end_date*, 和 *duration* 属性可能为 `null`。如果是，它们将使用任务对象中的相应值进行初始化。
 :::
 
-## Configuring resource grid columns in the lightbox
+## 在 lightbox 中配置资源网格列
 
-The default configuration of columns of the resource table in the lightbox is given below:
+资源表在 lightbox 中的默认列配置如下所示：
 
 ~~~js
-// helper editors
+// 辅助编辑器
 const selectResEditor = { 
   type: "select", map_to: "resource_id", options: gantt.serverList("resourceOptions")
 };
@@ -131,11 +131,11 @@ const numberEditor = { type: "number", map_to: "value", min: 0, max: 100 };
 
 const dateToStr = gantt.date.date_to_str("%d-%m-%Y");
 const resourceStore = gantt.getDatastore(gantt.config.resource_store);
-// default columns definition
+// 默认列定义
 const defaultResourceLightboxConfig = {
-    scale_height: 35, // height of the grid scale
-    row_height: 35, // height of assignment rows
-    // configures the columns of the grid
+    scale_height: 35, // 网格刻度的高度
+    row_height: 35, // 赋值行的高度
+    // 配置网格的列
     columns: [
         {
             name: "resource", label: "Resource", align: "center", width: 80, 
@@ -185,7 +185,7 @@ const defaultResourceLightboxConfig = {
             }
         }
     ],
-    //Configures the default adding assignment(assignment that will be added by "Add Assignment button")
+    // 配置通过“Add Assignment”按钮新增的默认分配
     resource_default_assignment: {
         duration: null,
         value: 8,
@@ -194,72 +194,68 @@ const defaultResourceLightboxConfig = {
         mode: "default"
     }
 };
-~~~
+~~~  
 
-### Details
+### 详解
 
-Each object in the **columns** array specifies a single column. An object can take the following attributes:
+在 **columns** 数组中的每一个对象都指定了单列。对象可以采用以下属性：
 
-- **name?** - (*string | number*) - defines the column's id;
-- **align?** - (*string*) - sets the horizontal title alignment. Possible values: *'left'*, *'center'*, or *'right'*;
-- **hide?** - (*boolean*) - hides/shows a column (PRO);
-- **label?** - (*string | number | any*) - specifies the title of the column;
-- **max_width?** - (*number*) - sets the maximum column width;
-- **min_width?** - (*number*) - sets the minimum column width;
-- **width?** - (*number | string*) - defines the width of the column;
-- **template? (assignment): any** - sets a data template.
-    - **assignment** - (*Assignment*) - the Assignment object;
-- **onrender? (assignment, node): any** - optional, a callback function for rendering a cell into the DOM. 
-The function takes an assignment object and the DOM element of the grid cell as 
-parameters and may return a component of the framework. See details [here](guides/specifying-columns.md#modifyingcellsafterrendering);
-    - **assignment** - (*Assignment*) - the Assignment object;
-    - **_node_** - (*HTMLElement*) - the HTML element of the Grid cell;
-- **editor?** - (*object*) - the attached [inline editor](guides/inline-editing.md);
-    - **_type_** - (*string*) - the type of the inline editor;
-    - **_map_to_** - (*string*) - specifies which property of the assignment should be updated by the inline editor;
-    - **_min?_** - (*Date | number*) - the minimal value for the date and duration types;
-    - **_max?_** - (*Date | number*) - the maximal value for the date and duration types;
-    - **_options?_** - (*Array &lt;any&gt;*) - an array with the options for the select types;
-    - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - formatter for the date and predecessor types.
+- **name?** - (*string | number*) - 定义列的 ID;
+- **align?** - (*string*) - 设置水平标题对齐。可选值：*'left'*、*'center'*，或 *'right'*;
+- **hide?** - (*boolean*) - 隐藏/显示列（PRO）;
+- **label?** - (*string | number | any*) - 指定列的标题;
+- **max_width?** - (*number*) - 设置列的最大宽度;
+- **min_width?** - (*number*) - 设置列的最小宽度;
+- **width?** - (*number | string*) - 定义列的宽度;
+- **template? (assignment): any** - 设置数据模板。
+  - **assignment** - (*Assignment*) - 赋值对象;
+- **onrender? (assignment, node): any** - 可选，渲染单元格到 DOM 的回调函数。该函数接收一个 assignment 对象和网格单元的 DOM 元素作为参数，可能返回框架的一个组件。详见 [modifyingcellsafterrendering](guides/specifying-columns.md#modifyingcellsafterrendering)；
+  - **assignment** - (*Assignment*) - 赋值对象;
+  - **_node_** - (*HTMLElement*) - 网格单元的 HTML 元素;
+- **editor?** - (*object*) - 附带的 [内联编辑器](guides/inline-editing.md)；
+  - **_type_** - (*string*) - 内联编辑器的类型；
+  - **_map_to_** - (*string*) - 指定应由内联编辑器更新的赋值的属性；
+  - **_min?_** - (*Date | number*) - 日期和持续时间类型的最小值；
+  - **_max?_** - (*Date | number*) - 日期和持续时间类型的最大值；
+  - **_options?_** - (*Array &lt;any&gt;*) - select 类型的选项数组；
+  - **_formatter?_** - (*DurationFormatter | LinkFormatter*) - 日期和前驱类型的格式化器。
 
-You can change the default added assignment by specifying the following property in resource lightbox config:
+你可以通过在资源 lightbox 配置中指定以下属性来改变默认添加的分配：
 
-- **resource_default_assignment** - (*object*) the configuration object of the default assignment (that will be added by the "Add Assignment" button)
-    - **start_date** - (*Date | string | null*) the date the assignment is scheduled to start
-    - **end_date** - (*Date | string | null*) the date the assignment is scheduled to be completed
-    - **value** - (*number | string*) the quantity of the resource assigned to a task
-    - **duration** - (*number | null*) the duration of the assignment
-    - **mode** - (*string*) the calculation mode of the time of the resource assignment: "default" | "fixedDates" | "fixedDuration"
+- **resource_default_assignment** - (*object*) 默认分配的配置对象（将通过“Add Assignment”按钮添加）
+  - **start_date** - (*Date | string | null*) 该分配计划开始的日期
+  - **end_date** - (*Date | string | null*) 该分配计划完成的日期
+  - **value** - (*number | string*) 指派给任务的资源数量
+  - **duration** - (*number | null*) 该分配的持续时间
+  - **mode** - (*string*) 资源分配时间的计算模式： "default" | "fixedDates" | "fixedDuration"
 <br>
 
 :::note
-The **template** attribute is a function that takes a data item object as a parameter and returns the final data template. The function definition allows you to present almost any content.
+**template** 属性是一个函数，接受一个数据项对象作为参数并返回最终的数据模板。该函数定义允许你展示几乎任意内容。
 :::
 
+## 使用数据填充控件
 
-## Populating control with data
-
-If you use the default resource Datastore created by Gantt, the **resource_selector** control 
-will be connected to the **gantt.serverList("resourceOptions")** collection. 
-This collection will be populated with the resources from the resource datastore. You can access options by using the following code line:
+如果你使用 Gantt 创建的默认资源 Datastore，**resource_selector** 控件将连接到 gantt.serverList("resourceOptions") 集合。  
+该集合将由资源数据存储中的资源填充。你可以使用以下代码访问选项：
 
 ~~~js
 const options = gantt.serverList("resourceOptions");
 ~~~
 
-Take notice that the options array will be empty before the resources are loaded into the datastore.
+请注意，在将资源加载入 datastore 之前，options 数组将为空。
 
-You can also update this collection using the custom list of options as follows:
+你也可以使用自定义的选项列表来更新该集合，如下所示：
 
 ~~~js
 gantt.updateCollection("resourceOptions", [...]);
 ~~~
 
-Note that if you load resources into the gantt after that, the gantt will update this collection and overwrite your changes.
+请注意，如果之后将资源加载到 gantt，gantt 将更新此集合并覆盖你的更改。
 
-## Populating control with data from the server
+## 使用服务器端数据填充控件
 
-To populate the control from the server, use the [serverList()](api/method/serverlist.md) method in the options of the resource editor:
+要从服务器填充控件，请在资源编辑器的选项中使用 [serverList()](api/method/serverlist.md) 方法：
 
 ~~~js
 const resourceEditor = { 
@@ -267,9 +263,9 @@ const resourceEditor = {
 };
 
 const defaultResourceLightboxConfig = {
-    // other settings
+    // 其他设置
     ...
-    // an array with the columns configs
+    // 包含列配置的数组
     columns:[
         {
               name: "resource", 
@@ -277,16 +273,16 @@ const defaultResourceLightboxConfig = {
             align: "center",  
             editor: resourceEditor
         },
-        // more columns configs
+        // 其他列配置
     ]
 }
 ~~~
 
-The contents of `gantt.serverList("resourceOptions")` can be defined when the options become available using the [updateCollection()](api/method/updatecollection.md) method:
+当选项可用时，`gantt.serverList("resourceOptions")` 的内容可以通过 [updateCollection()](api/method/updatecollection.md) 方法定义：
 
 ~~~js
 gantt.updateCollection("resourceOptions", [
-    // resource objects
+    // 资源对象
     { id: 1, text: "QA", parent: null },
     { id: 2, text: "Development", parent: null },
     { id: 3, text: "Sales", parent: null },
@@ -299,6 +295,3 @@ gantt.updateCollection("resourceOptions", [
     { id: 10, text: "Floe", parent: 3 }
 ]);
 ~~~
-
-
-

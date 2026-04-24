@@ -1,30 +1,30 @@
 ---
 sidebar_label: onAfterRowResize
-title: onAfterRowResize event
-description: "Wird ausgelöst, nachdem die Zeilenhöhe geändert wurde"
+title: onAfterRowResize Ereignis
+description: "Wird ausgelöst, nachdem die Zeilenhöhe angepasst wurde"
 ---
 
 # onAfterRowResize
 
 ### Description
 
-@short: Wird ausgelöst, nachdem die Zeilenhöhe geändert wurde
+@short: Wird ausgelöst, nachdem die Zeilenhöhe abgeschlossen wurde
 
 @signature: onAfterRowResize: (id: string | number, task: Task, oldHeight: number, newHeight: number) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die Aufgaben-ID
-- `task` - (required) *Task* - das Objekt des Elements
-- `oldHeight` - (required) *number* - die vorherige Höhe der Zeile
-- `newHeight` - (required) *number* - die aktualisierte Höhe der Zeile
+- `id` - (erforderlich) *string | number* - die Aufgaben-ID
+- `task` - (erforderlich) *Task* - das Element-Objekt
+- `oldHeight` - (erforderlich) *number* - die alte Höhe der Zeile
+- `newHeight` - (erforderlich) *number* - die neue Höhe der Zeile
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterRowResize", function (id, task, oldHeight, newHeight) {
-    gantt.message(`<b>${item.text}</b> hatte eine Höhe von <b>${oldHeight}px</b>.<br>
-    <b>${item.text}</b> hat jetzt eine Höhe von <b>${newHeight}px</b>`);
+    gantt.message(`<b>${item.text}</b> was <b>${oldHeight}px</b> height.<br>
+    <b>${item.text}</b> is now <b>${newHeight}px</b> height`);
 });
 ~~~
 
@@ -39,4 +39,3 @@ gantt.attachEvent("onAfterRowResize", function (id, task, oldHeight, newHeight) 
 
 ### Change log
 - hinzugefügt in v7.1
-

@@ -1,23 +1,23 @@
 ---
 sidebar_label: grid_indent
-title: grid_indent template
-description: "контролирует отступ дочерних элементов внутри ветки в tree column"
+title: шаблон grid_indent
+description: "задаёт отступ дочерних элементов в ветке (в столбце дерева)"
 ---
 
 # grid_indent
 
 ### Description
 
-@short: Контролирует отступ дочерних элементов внутри ветки в tree column
+@short: Указывает отступ дочерних элементов в ветке (в столбце дерева)
 
-@signature: grid_indent: (task: Task) =\> string;
+@signature: grid_indent: (task: Task) => string;
 
 ### Parameters
 
 - `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` text` - (string) - html текст, который будет отображён в gantt
+- ` text` - (string) - HTML-текст, который будет отрисован в Gantt
 
 ### Example
 
@@ -28,5 +28,5 @@ gantt.templates.grid_indent = function(item) {
 ~~~
 
 ### Related Guides
-- [Настройка древовидной колонки](guides/tree-column.md)
-- [Шаблоны грида](guides/table-templates.md)
+- [Настройка столбца дерева](guides/tree-column.md)
+- [Шаблоны Grid](guides/table-templates.md)

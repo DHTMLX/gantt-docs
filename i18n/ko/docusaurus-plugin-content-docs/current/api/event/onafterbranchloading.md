@@ -1,20 +1,20 @@
 ---
 sidebar_label: onAfterBranchLoading
 title: onAfterBranchLoading event
-description: "다이나믹 로딩이 활성화된 경우, 작업 브랜치가 페이지에 로딩을 완료한 직후에 발생하는 이벤트입니다."
+description: "동적 로딩이 활성화된 경우, 페이지에 작업 브랜치가 로드된 후에 발생합니다"
 ---
 
 # onAfterBranchLoading
 
 ### Description
 
-@short: 다이나믹 로딩이 활성화된 경우, 작업 브랜치가 페이지에 로딩을 완료한 직후에 발생하는 이벤트입니다.
+@short: 동적 로딩이 활성화되면, 페이지에 작업 브랜치가 로드된 후에 발생합니다
 
 @signature: onAfterBranchLoading: (settings: any) =\> void;
 
 ### Parameters
 
-- `settings` - (required) *object* - 작업 ID와 요청 URL을 포함하는 객체입니다.
+- `settings` - (required) *object* - 작업 ID와 요청 URL을 포함하는 객체
 
 ### Example
 

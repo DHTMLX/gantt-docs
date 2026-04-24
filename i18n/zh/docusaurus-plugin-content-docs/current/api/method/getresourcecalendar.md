@@ -1,25 +1,27 @@
----
+--- 
 sidebar_label: getResourceCalendar
-title: getResourceCalendar method
-description: "获取分配给特定资源的日历"
+title: getResourceCalendar 方法
+description: "返回分配给资源的日历"
 ---
 
 # getResourceCalendar
+
 :::info
- 该功能仅包含在PRO版本中。 
+此功能仅在 PRO 版本中可用。 
 :::
+
 ### Description
 
-@short: 获取分配给特定资源的日历
+@short: 返回分配给资源的日历
 
-@signature: getResourceCalendar: (resource: any) =\> any
+@signature: getResourceCalendar: (resource: string | number | object) =\> any
 
 ### Parameters
 
-- `resource` - (required) *string | number | object* -        资源的ID或资源对象本身
+- `resource` - (required) *string | number | object* -        资源的 ID 或对象
 
 ### Returns
-- ` param` - (object) - 与资源关联的日历对象
+- ` param` - (object) - 日历对象
 
 ### Example
 
@@ -27,13 +29,11 @@ description: "获取分配给特定资源的日历"
 var calendar = gantt.getResourceCalendar(mikeCalendarId);
 ~~~
 
-
 ### Related API
 - [resource_calendars](api/config/resource_calendars.md)
 
 ### Related Guides
-- [工作时间计算](guides/working-time.md)
+- [Work Time Calculation](guides/working-time.md#assigningcalendartoresource)
 
 ### Change log
-- v7.0版本新增
-
+- 在 v7.0 中新增

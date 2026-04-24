@@ -1,20 +1,24 @@
 ---
 sidebar_label: updateTaskAssignments
 title: updateTaskAssignments method
-description: "aktualisiert die resource-Eigenschaft des task-Objekts basierend auf den aktuellen Ressourcenzuweisungen, die im Datastore gespeichert sind"
+description: "aktualisiert die Ressourcen-Eigenschaft des Task-Objekts mit den Werten der Ressourcenzuordnungen aus dem Datenspeicher"
 ---
 
 # updateTaskAssignments
 
+:::info
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
+:::
+
 ### Description
 
-@short: Aktualisiert die resource-Eigenschaft des task-Objekts basierend auf den aktuellen Ressourcenzuweisungen, die im Datastore gespeichert sind
+@short: Aktualisiert die Ressourcen-Eigenschaft des Task-Objekts mit den Werten der Ressourcenzuordnungen aus dem Datenspeicher
 
 @signature: updateTaskAssignments: (taskId: number | string) =\> void
 
 ### Parameters
 
-- `taskId` - (required) *number | string* - die ID der Aufgabe
+- `taskId` - (erforderlich) *number | string* - die Task-ID
 
 ### Example
 
@@ -38,13 +42,8 @@ gantt.updateTaskAssignments(taskId);
 - [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
-
 :::note
- Dieses Feature ist nur in der PRO Edition verfügbar. 
-:::
-
-:::note
- Diese Methode funktioniert nur, wenn die [process_resource_assignments](api/config/process_resource_assignments.md) Konfiguration aktiviert ist. 
+Hinweis: Diese Methode ist nur verfügbar, wenn die [process_resource_assignments](api/config/process_resource_assignments.md) Konfiguration aktiviert ist.
 :::
 
 Typischerweise wird der Assignments Store aus den task-Objekten gefüllt. Das bedeutet, wenn Sie die resource-Eigenschaft einer Aufgabe (z.B. task.users) aktualisieren, erscheinen diese Änderungen automatisch im Datastore.
@@ -61,7 +60,6 @@ task[gantt.config.resource_property] = [
 gantt.updateTask(taskId);
 ~~~
 
-<br>
 Manchmal möchten Sie die Zuweisungen auch andersherum aktualisieren - indem Sie sie direkt im Datastore ändern und diese Änderungen dann auf das task-Objekt zurückübertragen. Dafür rufen Sie **gantt.updateTaskAssignments()** auf, um die resource-Eigenschaft der Aufgabe mit den Werten aus dem Datastore zu aktualisieren:
 
 ~~~js
@@ -86,8 +84,7 @@ console.log(gantt.getTask(taskId));
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
 ### Related Guides
-- ["Ressourcenmanagement"](guides/resource-management.md#managingresourceassignments)
+- [Resource Management](guides/resource-management.md#managingresourceassignments)
 
 ### Change log
 - hinzugefügt in v7.1
-

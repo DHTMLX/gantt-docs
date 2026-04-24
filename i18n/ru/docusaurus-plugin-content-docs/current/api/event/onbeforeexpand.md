@@ -1,25 +1,25 @@
 ---
 sidebar_label: onBeforeExpand
 title: onBeforeExpand event
-description: "срабатывает непосредственно перед переключением диаграммы Ганта в полноэкранный режим"
+description: "срабатывает перед развёртыванием диаграммы Ганта в полноэкранный режим"
 ---
 
 # onBeforeExpand
 
 ### Description
 
-@short: Срабатывает непосредственно перед переключением диаграммы Ганта в полноэкранный режим
+@short: Срабатывает перед развёртыванием диаграммы Ганта на полный экран
 
 @signature: onBeforeExpand: () =\> boolean;
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию (<b>true</b>) или отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию этого события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeExpand",function(){
-    // добавьте здесь вашу пользовательскую логику    
+    // любая ваша логика здесь
     return true;
 });
 ~~~
@@ -29,10 +29,10 @@ gantt.attachEvent("onBeforeExpand",function(){
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* остановит дальнейшее выполнение действия.
+Событие блокируемое. Возврат *false* отменяет дальнейшую обработку.
 
 :::note
- Это событие принадлежит расширению **fullscreen**, поэтому убедитесь, что плагин [fullscreen](guides/extensions-list.md#fullscreen) активирован через метод [gantt.plugins](api/method/plugins.md). Дополнительная информация доступна в статье [Полноэкранный режим](guides/fullscreen-mode.md). 
+Это событие определяется в расширении **fullscreen**, поэтому вам нужно активировать плагин [fullscreen](guides/extensions-list.md#fullscreen) с использованием метода [gantt.plugins](api/method/plugins.md). Прочитайте детали в статье [Full Screen Mode](guides/fullscreen-mode.md). 
 :::
 
 ### Related API
@@ -43,5 +43,4 @@ gantt.attachEvent("onBeforeExpand",function(){
 - [expand](api/method/expand.md)
 
 ### Related Guides
-- [Полноэкранный режим](guides/fullscreen-mode.md)
-
+- [Full Screen Mode](guides/fullscreen-mode.md)

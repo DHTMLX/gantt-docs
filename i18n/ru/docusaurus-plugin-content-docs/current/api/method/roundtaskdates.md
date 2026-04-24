@@ -1,25 +1,25 @@
 ---
 sidebar_label: roundTaskDates
-title: roundTaskDates method
-description: "корректирует даты начала и окончания задачи, выравнивая их по ближайшим датам на шкале timeline"
+title: метод roundTaskDates
+description: "округляет даты начала и конца задачи до ближайших дат в шкале времени"
 ---
 
 # roundTaskDates
 
 ### Description
 
-@short: Корректирует даты начала и окончания задачи, выравнивая их по ближайшим датам на шкале timeline
+@short: Округляет даты начала и конца задачи до ближайших дат в шкале времени
 
-@signature: roundTaskDates: (task: Task) =\> void
+@signature: roundTaskDates: (task: Task) => void
 
 ### Parameters
 
-- `task` - (required) *Task* - объект задачи
+- `task` - (обязательный) *Task* - объект задачи
 
 ### Example
 
 ~~~jsx
-//перетаскивание дочерних задач вместе с родительской
+//dragging childs together with the parent
 gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
     var modes = gantt.config.drag_mode;
     if(mode == modes.move){
@@ -34,7 +34,7 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
     return true;
 });
 
-//округление позиций дочерних элементов по шкале
+//rounds the positions of child items to the scale
 gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
      var modes = gantt.config.drag_mode;
      if(mode == modes.move ){
@@ -48,6 +48,7 @@ gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
 
 ### Details
 
-- Этот метод учитывает настройки рабочего времени.
-- Может изменять длительность задачи в процессе корректировки.
-- При использовании внутри события onbeforedragend поведение округления адаптируется в зависимости от действия drag-and-drop: например, при действии "move" даты задачи корректируются без изменения длительности, а при "resize" изменяются и длительность, и либо дата начала, либо дата окончания, в зависимости от направления изменения размера.
+- Метод учитывает заданное рабочее время.
+- Метод может изменить продолжительность задачи.
+- Если метод вызывается из onbeforedragend, даты будут округлены с учетом типа операции перетаскивания (например, 
+операция "move" изменит даты задачи без влияния на продолжительность, операция 'resize' изменит продолжительность задачи и одну из дат задачи: начало или конец в зависимости от направления изменения размера)

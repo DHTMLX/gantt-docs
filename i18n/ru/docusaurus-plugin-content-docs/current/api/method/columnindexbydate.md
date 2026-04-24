@@ -1,14 +1,14 @@
 ---
 sidebar_label: columnIndexByDate
 title: columnIndexByDate method
-description: "возвращает индекс колонки, соответствующей заданной дате"
+description: "возвращает индекс столбца по дате"
 ---
 
 # columnIndexByDate
 
 ### Description
 
-@short: Возвращает индекс колонки, соответствующей заданной дате
+@short: Возвращает индекс столбца по дате
 
 @signature: columnIndexByDate: (date: Date) =\> number
 
@@ -17,7 +17,7 @@ description: "возвращает индекс колонки, соответс
 - `date` - (required) *Date* - объект даты
 
 ### Returns
-- ` index` - (number) - индекс колонки
+- ` index` - (number) - индекс столбца
 
 ### Example
 

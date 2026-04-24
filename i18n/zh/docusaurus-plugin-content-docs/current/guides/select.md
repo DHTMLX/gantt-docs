@@ -1,9 +1,9 @@
----
-title: "Select 控件"
-sidebar_label: "Select 控件"
+--- 
+title: "选择控件" 
+sidebar_label: "选择控件" 
 ---
 
-# Select 控件
+# 选择控件
 
 一个下拉列表框。
 
@@ -23,15 +23,13 @@ gantt.config.lightbox.sections = [
 gantt.locale.labels.section_priority = "Priority";
 ~~~
 
-
-[Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
-
+[选择控件](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 ## 初始化
 
-要在 lightbox 中包含 **select** 控件，操作步骤如下:
+要将 **select** 控件添加到 lightbox，请按以下步骤：
 
-1）在 lightbox 配置中添加一个 section:
+1) 向 lightbox 配置中添加一个部分：
 
 ~~~js
 var opts = [
@@ -47,36 +45,34 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2）为该 section 定义一个标签:
+
+2) 为该部分设置标签：
 
 ~~~js
 gantt.locale.labels.section_priority = "Priority";
 ~~~
-  
-  
 
-[Select control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
-
+[选择控件](https://docs.dhtmlx.com/gantt/samples/05_lightbox/12_select.html)
 
 ## 属性
 
-以下是 **select** 控件常用的一些关键属性（完整列表请参见 [这里](api/config/lightbox.md)）:
+以下属性对 **select** 控件最为重要且常用，请参阅完整列表 [此处](api/config/lightbox.md)：
 
-- **name** - (*string*) section 的名称 
-- **height** - (*number*) section 的高度
-- **map_to** - (*string*) 映射到 section 的数据属性名
-- **type** - (*string*) [section 控件](guides/default-edit-form.md#lightboxcontrols) 的类型
-- **focus** - (*boolean*) 为 *true* 时，lightbox 打开时该 section 获得焦点
-- **options** - (*array*) 定义 select 控件选项的对象数组（*用于 **select**、**checkbox** 和 **radio** 控件*）。每个对象代表一个选项，包含:
-    - **key** - (*string*) 选项 ID，与任务数据属性匹配以分配选项
+- **name** - (*string*) 该部分名称
+- **height** - (*number*) 该部分高度
+- **map_to** - (*string*) 将映射到该部分的数据属性的名称
+- **type** - (*string*) [section control](guides/default-edit-form.md#lightboxcontrols) 的类型
+- **focus** - (*boolean*) 如果设置为 *true*，打开 lightbox 时该部分将获得焦点
+- **options** - (*array*) 一个对象数组。定义控件的选择选项（用于 **select**, **checkbox** 和 **radio** 控件）。数组中的每个对象指定一个选项，并具有以下属性：
+    - **key** - (*string*) 选项 id。此属性将与任务数据属性进行比较，以将选项分配给任务
     - **label** - (*string*) 选项标签
-- **default_value** - (*any*) 控件的默认值，当输入值为 undefined 时应用    
-- **onchange** - (*function*) 控件的 ['onChange' 事件处理函数](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event)
+- **default_value** - (*any*) 该部分控件的默认值。仅在输入值为 underfined 时应用
+- **onchange** - (*function*) 指定该部分控件的 ['onChange' 事件处理函数](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) 用于该部分控件 
 
 
-## 为控件填充数据
+## 用数据填充控件
 
-要为 **select** 控件设置选项值，请使用 [options](api/config/lightbox.md) 参数:
+通常，要为 **select** 控件设置值，请使用 [options](api/config/lightbox.md) 参数：
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -89,15 +85,16 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-[options](api/config/lightbox.md) 数组中的每一项必须包含以下两个属性:
 
-- **key** - 选项 ID
+[options] 参数中的项有两个必需属性：
+
+- **key** - 选项 id
 - **label** - 选项标签
 
 
-## 通过服务器数据填充控件
+## 用服务器的数据填充控件
 
-如需通过服务器数据为控件填充值，将 [options](api/config/lightbox.md) 参数赋值为 [serverList](api/method/serverlist.md) 方法返回的值:
+要从服务器填充控件，请将 [options](api/config/lightbox.md) 选项设置为由 [serverList](api/method/serverlist.md) 方法返回的值：
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -142,7 +139,7 @@ gantt.load("/data");
 
 ### 通过 dhtmlxConnector 加载选项
 
-以下是初始化 [dhtmlxConnector](integrations/php/howtostart-connector.md) 的示例:
+下面是 [dhtmlxConnector](integrations/php/howtostart-connector.md) 初始化的示例：
 
 ~~~php
 //data.php
@@ -162,4 +159,3 @@ gantt.load("/data");
                     sortorder,parent");
 ?>
 ~~~
-

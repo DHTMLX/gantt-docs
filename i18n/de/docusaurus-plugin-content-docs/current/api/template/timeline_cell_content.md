@@ -1,7 +1,7 @@
 ---
 sidebar_label: timeline_cell_content
 title: timeline_cell_content template
-description: "Ermöglicht das Festlegen von benutzerdefiniertem HTML-Inhalt innerhalb von Timeline-Zellen"
+description: "gibt benutzerdefinierten HTML-Inhalt in den Timeline-Zellen fest"
 ---
 
 # timeline_cell_content
@@ -14,11 +14,11 @@ description: "Ermöglicht das Festlegen von benutzerdefiniertem HTML-Inhalt inne
 
 ### Parameters
 
-- `task` - (required) *Task* - Das Task-Objekt
-- `date` - (required) *Date* - Das Datum, das der Zelle entspricht
+- `task` - (erforderlich) *Task* - das Objekt der Aufgabe
+- `date` - (erforderlich) *Date* - das Datum der Zelle
 
 ### Returns
-- ` text` - (string | number | void) - Ein HTML-String
+- ` text` - (string | number | void) - ein HTML-String
 
 ### Example
 
@@ -33,35 +33,31 @@ gantt.templates.timeline_cell_content = function (task, date) {
 ~~~
 
 ### Related samples
-- [Custom content inside the timeline cells](https://docs.dhtmlx.com/gantt/samples/04_customization/24_timeline_cells_custom_content.html)
+- [Benutzerdefinierte Inhalte in den Timeline-Zellen](https://docs.dhtmlx.com/gantt/samples/04_customization/24_timeline_cells_custom_content.html)
 
 ### Details
 
 :::note
- Diese Template-Option ist der [addTaskLayer()](guides/baselines.md) Methode vorzuziehen, wenn Sie benutzerdefinierten Inhalt innerhalb von Timeline-Zellen anzeigen möchten. Sie ist einfacher zu implementieren und bietet bessere Performance. 
+Sie sollten diese Vorlage anstelle der Methode [addTaskLayer()](guides/baselines.md) verwenden, wenn Sie benutzerdefinierten Inhalt in den Zellen der Timeline anzeigen müssen. Die Implementierung ist einfacher und die Leistung schneller.
 :::
 
-Beachten Sie, dass der benutzerdefinierte Inhalt *unterhalb* der Task-Balken angezeigt wird, da die Task-Balken einen höheren z-index besitzen. Das bedeutet, dass der Inhalt möglicherweise verdeckt wird, wenn ein Task-Balken die Zelle überlappt.
+Beachten Sie, dass der benutzerdefinierte Inhalt *unter* den Aufgabenbalken angezeigt wird, was bedeutet, dass der Balken der Aufgaben einen höheren z-Index hat und der Inhalt der Zellen nicht sichtbar ist, wenn der Balken darüber liegt.
+Wenn Sie möchten, dass der Inhalt über dem Balken sichtbar ist, können Sie dem benutzerdefinierten Element 'z-index' hinzufügen:
 
-Wenn Sie möchten, dass der benutzerdefinierte Inhalt über den Task-Balken angezeigt wird, können Sie Ihrem benutzerdefinierten Element einen höheren 'z-index' zuweisen:
-
-~~~html
-<style>
+~~~css
     .cost{
         position:absolute;
         z-index: 5;
         pointer-events: none; 
     }
-</style>
 ~~~
 
 ### Related API
 - [addTaskLayer](api/method/addtasklayer.md)
 
 ### Related Guides
-- ["Vorlagen für den Timeline-Bereich"](guides/timeline-templates.md)
-- ["Benutzerdefinierte Elemente im Timeline-Bereich"](guides/baselines.md)
+- [Vorlagen des Timeline-Bereichs](guides/timeline-templates.md)
+- [Benutzerdefinierte Elemente im Timeline-Bereich](guides/baselines.md)
 
 ### Change log
 - hinzugefügt in v8.0
-

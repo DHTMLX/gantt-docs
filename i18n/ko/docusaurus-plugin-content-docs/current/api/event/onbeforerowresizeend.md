@@ -1,31 +1,31 @@
 ---
 sidebar_label: onBeforeRowResizeEnd
-title: onBeforeRowResizeEnd event
-description: "행 높이 조정 프로세스가 완료되기 직전에 트리거됩니다."
+title: onBeforeRowResizeEnd 이벤트
+description: "행 높이가 완료되기 전에 크기 조정 이벤트가 발생합니다"
 ---
 
 # onBeforeRowResizeEnd
 
 ### Description
 
-@short: 행 높이 조정 프로세스가 완료되기 직전에 트리거됩니다.
+@short: 행 높이의 크기 조정이 완료되기 전에 발생합니다
 
 @signature: onBeforeRowResizeEnd: (id: number | string, task: Task, newHeight: number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *number | string* - 작업 식별자
-- `task` - (required) *Task* - 작업 객체 자체
-- `newHeight` - (required) *number* - 업데이트된 행의 높이
+- `id` - (필수) *number | string* - 작업 ID
+- `task` - (필수) *Task* - 작업 객체
+- `newHeight` - (필수) *number* - 행의 새 높이
 
 ### Returns
-- ` result` - (boolean) - 기본 이벤트 동작을 계속할지(<b>true</b>) 중단할지(<b>false</b>)를 나타냅니다.
+- `result` - (boolean) - 이벤트의 기본 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소될지 (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeRowResizeEnd", function (id, task, newHeight) {
-    gantt.message(`<b>${task.text}</b> 의 높이가 이제 <b>${newHeight}px</b> 입니다`);
+    gantt.message(`<b>${task.text}</b> is now <b>${newHeight}px</b> height`);
     return true;
 });
 ~~~
@@ -40,5 +40,4 @@ gantt.attachEvent("onBeforeRowResizeEnd", function (id, task, newHeight) {
 - [onAfterRowResize](api/event/onafterrowresize.md)
 
 ### Change log
-- v7.1에서 도입됨
-
+- v7.1에 추가됨

@@ -3,36 +3,34 @@ title: "Расширение Keyboard Navigation"
 sidebar_label: "Расширение Keyboard Navigation"
 ---
 
-# Расширение Keyboard Navigation
+# Расширение клавиатурной навигации
 
-Более подробную информацию о расширении Keyboard navigation можно найти в статье [Навигация с клавиатуры](guides/keyboard-navigation.md). 
+Подробнее об расширении клавиатурной навигации можно узнать в статье [Навигация клавиатуры](guides/keyboard-navigation.md).
 
 
-Объект *keyboardNavigation* предоставляет следующий API:
+Объект *keyboardNavigation* имеет следующий API:
 
 ## Методы
 
-- <span class="submethod">**focus (config): void**</span> - позволяет выбрать любую ячейку внутри грида. Работает только тогда, когда грид уже в фокусе.
+- <span class="submethod">**focus (config): void**</span> - позволяет выбрать любую ячейку в грид. Работает только если у Грид уже установлен фокус
 
     - **_config_** - (*object*) - объект конфигурации
-        - **_id_** - (*number | string*) - ID редактируемой задачи
-        - **_column_** - (*string*) - имя колонки
-        - **_type_** - (*string*) - определяет тип области. Возможные значения: "gantt", "taskRow", "taskCell", "headerCell"
+        - **_id_** - (*number | string*) - идентификатор редактируемой задачи
+        - **_column_** - (*string*) - имя столбца
+        - **_type_** - (*string*) - тип области. Возможные значения: "gantt", "taskRow", "taskCell", "headerCell"
+
 
 ~~~js
 gantt.ext.keyboardNavigation.focus({type:"taskCell",id:"taskId",column:"columnName"});
 ~~~
 
+**Связанный пример** [Выбор ячейки грид](https://snippet.dhtmlx.com/v5ffah8w)
 
-**Related example:** [Selecting a grid cell](https://snippet.dhtmlx.com/v5ffah8w)
-
-
-- <span class="submethod">**getActiveNode (): boolean | void**</span> - возвращает информацию о текущей активной ячейке
+- <span class="submethod">**getActiveNode (): boolean | void**</span> - позволяет получать информацию об активной ячейке
 
 ~~~js
 var active_node = gantt.ext.keyboardNavigation.getActiveNode();
 // -> {type: "taskCell", id: "10", column: "text"}
 ~~~
 
-
-**Related example:** [Getting the active cell](https://snippet.dhtmlx.com/dznf7xjw)
+**Связанный пример** [Получение активной ячейки](https://snippet.dhtmlx.com/dznf7xjw)

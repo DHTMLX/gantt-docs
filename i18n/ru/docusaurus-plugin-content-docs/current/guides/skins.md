@@ -5,7 +5,7 @@ sidebar_label: "Скины"
 
 # Скины
 
-dhtmlxGantt предлагает разнообразие предустановленных скинов для легкой смены внешнего вида диаграммы Gantt:
+dhtmlxGantt предоставляет несколько предопределённых скинов, которые можно использовать, чтобы изменить общий вид диаграммы Ганта:
 
 1. [Terrace (по умолчанию)](guides/skins.md#terraceskin)
 2. [Dark](guides/skins.md#darkskin)
@@ -16,23 +16,24 @@ dhtmlxGantt предлагает разнообразие предустанов
 7. [Meadow](guides/skins.md#meadowskin)
 8. [Broadway](guides/skins.md#broadwayskin)
 
-Начиная с версии 9.0, все скины включены в основной файл **dhtmlxgantt.css**. Вы можете активировать нужный скин, установив свойство **gantt.skin**:
+
+Начиная с версии 9.0, все скины входят в основной файл **dhtmlxgantt.css**. Скин можно активировать, установив свойство **gantt.skin**:
 
 ~~~js
 gantt.skin = "dark";
 ~~~
 
-Также можно использовать метод [gantt.setSkin()](api/method/setskin.md):
+Или вызвав метод [gantt.setSkin()](api/method/setskin.md):
 
 ~~~js
 gantt.setSkin("dark");
 ~~~
 
-В версиях 8.0 и ниже скины предоставляются как отдельные CSS-файлы.
+В Gantt версии 8.0 и ранее скины определяются в отдельных CSS-файлах. 
 
 ### Использование шрифтов
 
-По умолчанию скины загружают шрифт `Inter` с `https://fonts.googleapis.com`. Подробнее о Google Fonts читайте [здесь](https://developers.google.com/fonts).
+По умолчанию скины импортируют шрифт `Inter` с `https://fonts.googleapis.com`. Подробнее о Google Fonts можно узнать [здесь](https://developers.google.com/fonts).
 
 ~~~js
 @import (css) url(
@@ -40,28 +41,29 @@ gantt.setSkin("dark");
 );
 ~~~
 
-При необходимости вы можете удалить импорт шрифта напрямую из файлов **.less**, которые расположены в папке **codebase/sources/less/**, а затем пересобрать скин согласно инструкции в статье [Кастомизация скинов](guides/custom-skins.md).
+При необходимости вы можете удалить шрифт напрямую из файлов **.less** в папке **codebase/sources/less/**, а затем пересобрать скин, как описано в статье [Решения по настройке скинов](guides/custom-skins.md).
 
-## Скин 'Terrace' {#terraceskin}
+## 'Terrace' skin {#terraceskin}
 
-Для использования скина по умолчанию подключите стандартный CSS-файл:
+Чтобы применить скин по умолчанию, подключите файл CSS по умолчанию:
 
 
 - **dhtmlxgantt.css**
+
 
 ![gantt-default-skin](/img/gantt-default-skin.png)
 
 
-[Default skin](https://docs.dhtmlx.com/gantt/samples/06_skins/01_default.html)
+[Скин по умолчанию](https://docs.dhtmlx.com/gantt/samples/06_skins/01_default.html)
 
 
-## Скин 'Dark' {#darkskin}
+## 'Dark' skin {#darkskin}
 
-Чтобы применить скин 'Dark', подключите стандартный CSS-файл:
+Чтобы применить скин 'Dark', подключите файл CSS по умолчанию:
 
 - **dhtmlxgantt.css**
 
-Затем установите скин через свойство **gantt.skin**:
+И установите скин через свойство **gantt.skin**:
 
 ~~~js
 gantt.skin = "dark";
@@ -70,16 +72,16 @@ gantt.skin = "dark";
 ![gantt_dark_skin](/img/gantt_dark_skin.png)
 
 
-[Dark skin](https://docs.dhtmlx.com/gantt/samples/06_skins/10_dark.html)
+[Темный скин](https://docs.dhtmlx.com/gantt/samples/06_skins/10_dark.html)
 
 
-## Скин 'Material' {#materialskin}
+## 'Material' skin {#materialskin}
 
-Для использования скина 'Material' подключите стандартный CSS-файл:
+Чтобы применить скин 'Material', подключите файл CSS по умолчанию:
 
 - **dhtmlxgantt.css**
 
-Установите скин с помощью свойства **gantt.skin**:
+И установите скин через свойство **gantt.skin**:
 
 ~~~js
 gantt.skin = "material";
@@ -91,20 +93,21 @@ gantt.skin = "material";
 [Material theme](https://docs.dhtmlx.com/gantt/samples/06_skins/09_material.html)
 
 
-Начиная с версии 6.3, скин Material больше не импортирует шрифт `Roboto` автоматически. При необходимости вы можете добавить шрифт `Roboto` вручную следующим образом:
+Начиная с версии v6.3, импорт шрифта `Roboto` был удалён из скина Material. При необходимости вы можете добавить шрифт `Roboto` вручную, как показано:
 
 ~~~js
 <link rel="stylesheet" href="'https://fonts.googleapis.com/css?'+
     +'family="Open+Sans|Roboto:regular,medium,thin,bold"'">
 ~~~
 
-## Скин 'Contrast Black' {#contrastblackskin}
 
-Для использования скина 'Contrast Black' подключите стандартный CSS-файл:
+## 'Contrast Black' skin {#contrastblackskin}
+
+Чтобы применить скин 'Contrast Black', подключите файл CSS по умолчанию:
 
 - **dhtmlxgantt.css**
 
-Затем установите скин с помощью свойства **gantt.skin**:
+И установите скин через свойство **gantt.skin**:
 
 ~~~js
 gantt.skin = "contrast-black";
@@ -112,16 +115,16 @@ gantt.skin = "contrast-black";
 
 ![gantt_contrast_black_skin](/img/gantt_contrast_black_skin.png)
 
-[High contrast theme - Black](https://docs.dhtmlx.com/gantt/samples/06_skins/07_high_contrast_black.html)
+[Тема с высоким контрастом - Black](https://docs.dhtmlx.com/gantt/samples/06_skins/07_high_contrast_black.html)
 
 
-## Скин 'Contrast White' {#contrastwhiteskin}
+## 'Contrast White' skin {#contrastwhiteskin}
 
-Чтобы применить скин 'Contrast White', подключите стандартный CSS-файл:
+Чтобы применить скин 'Contrast White', подключите файл CSS по умолчанию:
 
 - **dhtmlxgantt.css**
 
-Установите скин через свойство **gantt.skin**:
+И установите скин через свойство **gantt.skin**:
 
 ~~~js
 gantt.skin = "contrast-white";
@@ -129,16 +132,16 @@ gantt.skin = "contrast-white";
 
 ![gantt_contrast_white_skin](/img/gantt_contrast_white_skin.png)
 
-[High contrast theme - White](https://docs.dhtmlx.com/gantt/samples/06_skins/08_high_contrast_white.html)
+[Тема с высоким контрастом - White](https://docs.dhtmlx.com/gantt/samples/06_skins/08_high_contrast_white.html)
 
 
-## Скин 'Skyblue' {#skyblueskin}
+## 'Skyblue' skin {#skyblueskin}
 
-Для использования скина 'Skyblue' подключите стандартный CSS-файл:
+Чтобы применить скин 'Skyblue', подключите файл CSS по умолчанию:
 
 - **dhtmlxgantt.css**
 
-Установите скин через свойство **gantt.skin**:
+И установите скин через свойство **gantt.skin**:
 
 ~~~js
 gantt.skin = "skyblue";
@@ -146,34 +149,36 @@ gantt.skin = "skyblue";
 
 ![gantt-skyblue-skin](/img/gantt-skyblue-skin.png)
 
-['Skyblue' skin](https://docs.dhtmlx.com/gantt/samples/06_skins/03_skyblue.html)
+['Skyblue' скин](https://docs.dhtmlx.com/gantt/samples/06_skins/03_skyblue.html)
 
 
-## Скин 'Meadow' {#meadowskin}
+## 'Meadow' skin {#meadowskin}
 
-Чтобы применить скин 'Meadow', подключите стандартный CSS-файл:
+Чтобы применить скин 'Meadow', подключите файл CSS по умолчанию:
 
 - **dhtmlxgantt.css**
 
-Установите скин с помощью свойства **gantt.skin**:
+И установите скин через свойство **gantt.skin**:
 
 ~~~js
 gantt.skin = "meadow";
 ~~~
 
 
+
+
 ![gantt-meadow-skin](/img/gantt-meadow-skin.png)
 
-['Meadow' skin](https://docs.dhtmlx.com/gantt/samples/06_skins/04_meadow.html)
+['Meadow' скин](https://docs.dhtmlx.com/gantt/samples/06_skins/04_meadow.html)
 
 
-## Скин 'Broadway' {#broadwayskin}
+## 'Broadway' skin {#broadwayskin}
 
-Чтобы применить скин 'Broadway', подключите стандартный CSS-файл:
+Чтобы применить скин 'Broadway', подключите файл CSS по умолчанию:
 
 - **dhtmlxgantt.css**
 
-Установите скин через свойство **gantt.skin**:
+И установите скин через свойство **gantt.skin**:
 
 ~~~js
 gantt.skin = "broadway";
@@ -182,5 +187,4 @@ gantt.skin = "broadway";
 
 ![gantt-broadway-skin](/img/gantt-broadway-skin.png)
 
-['Broadway' skin](https://docs.dhtmlx.com/gantt/samples/06_skins/05_broadway.html)
-
+['Broadway' скин](https://docs.dhtmlx.com/gantt/samples/06_skins/05_broadway.html)

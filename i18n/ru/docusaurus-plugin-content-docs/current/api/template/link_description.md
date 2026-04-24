@@ -1,23 +1,23 @@
 ---
 sidebar_label: link_description
-title: link_description template
-description: "задаёт текст, отображаемый в заголовке окна подтверждения удаления связи"
+title: Шаблон link_description
+description: "задает текст в заголовке окна подтверждения удаления связи"
 ---
 
 # link_description
 
 ### Description
 
-@short: Задаёт текст, отображаемый в заголовке окна подтверждения удаления связи
+@short: Указывает текст в заголовке окна подтверждения удаления связи
 
-@signature: link_description: (link: any) =\> string;
+@signature: link_description: (link: any) => string;
 
 ### Parameters
 
 - `link` - (required) *object* - объект связи
 
 ### Returns
-- ` text` - (string) - html-текст, который будет отрисован в gantt
+- ` text` - (string) - HTML-текст, который будет отображаться в диаграмме Ганта
 
 ### Example
 
@@ -36,4 +36,4 @@ To <b>${to.text}</b> ${(to_start ? "Start" : "End")}<br/>`;
 ~~~
 
 ### Related Guides
-- [Шаблоны связей зависимостей](guides/dependency-templates.md)
+- [Шаблоны зависимых связей](guides/dependency-templates.md)

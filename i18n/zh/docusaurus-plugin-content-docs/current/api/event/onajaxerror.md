@@ -1,23 +1,23 @@
 ---
 sidebar_label: onAjaxError
-title: onAjaxError event
-description: "当服务器响应错误时触发"
+title: onAjaxError
+description: "当服务器返回错误时触发"
 ---
 
 # onAjaxError
 
 ### Description
 
-@short: 当服务器响应错误时触发
+@short: 当服务器返回错误时触发
 
-@signature: onAjaxError: (request: any) =\> boolean;
+@signature: onAjaxError: (request: any) => boolean;
 
 ### Parameters
 
-- `request` - (required) *object* - XML HTTP 请求对象
+- `request` - (required) *object* - XMLHttpRequest 对象
 
 ### Returns
-- ` result` - (boolean) - 指示事件的默认操作是否应继续执行（<b>true</b>）或被阻止（<b>false</b>）
+- ` result` - (boolean) - 定义事件的默认操作是否会被触发（<b>true</b>）或取消（<b>false</b>）
 
 ### Example
 
@@ -30,11 +30,11 @@ gantt.attachEvent("onAjaxError", function(request){
 ~~~
 
 ### Related samples
-- [服务器错误示例](https://snippet.dhtmlx.com/5/9596ea969)    
+- [来自服务器的错误](https://snippet.dhtmlx.com/5/9596ea969)
 
 ### Details
 
-此事件可以被阻止。返回 false 将停止对该 AJAX 请求的任何进一步处理。
+该事件是可阻塞的。返回 false 将停止 AJAX 请求的后续处理
 
 ### Related Guides
-- [服务器端集成](guides/server-side.md)
+- [服务端集成](guides/server-side.md)

@@ -28,4 +28,4 @@ gantt.templates.link_class = function(link){
 ~~~
 
 ### Related Guides
-- ["Vorlagen für Abhängigkeitsverknüpfungen"](guides/dependency-templates.md)
+- [Vorlagen für Abhängigkeitsverknüpfungen](guides/dependency-templates.md)

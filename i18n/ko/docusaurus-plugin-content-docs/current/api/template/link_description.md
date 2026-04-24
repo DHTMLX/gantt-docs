@@ -1,14 +1,14 @@
 ---
 sidebar_label: link_description
-title: link_description template
-description: "링크의 '삭제' 확인 창 헤더에 표시될 텍스트를 설정합니다."
+title: link_description 템플릿
+description: "링크의 '삭제' 확인 창 헤더에 표시될 텍스트를 지정합니다."
 ---
 
 # link_description
 
 ### Description
 
-@short: 링크의 "삭제" 확인 창 헤더에 표시될 텍스트를 설정합니다.
+@short: 링크의 "삭제" 확인 창의 헤더에 표시될 텍스트를 지정합니다
 
 @signature: link_description: (link: any) =\> string;
 
@@ -17,7 +17,7 @@ description: "링크의 '삭제' 확인 창 헤더에 표시될 텍스트를 설
 - `link` - (required) *object* - 링크 객체
 
 ### Returns
-- ` text` - (string) - gantt에 렌더링될 html 텍스트
+- ` text` - (string) - Gantt에 렌더링될 HTML 텍스트
 
 ### Example
 

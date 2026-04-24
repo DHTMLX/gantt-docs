@@ -1,14 +1,14 @@
 ---
 sidebar_label: clearRedoStack
-title: clearRedoStack method
-description: "сбрасывает стек, в котором хранятся команды redo"
+title: clearRedoStack метод
+description: "очищает стек сохранённых команд redo"
 ---
 
 # clearRedoStack
 
 ### Description
 
-@short: Сбрасывает стек, в котором хранятся команды redo
+@short: Очистка стека сохранённых команд redo
 
 @signature: clearRedoStack: () =\> void
 
@@ -19,12 +19,12 @@ gantt.clearRedoStack();
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Изменения Undo/Redo в Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
 :::note
- Этот метод является частью расширения **undo**, поэтому убедитесь, что плагин [undo](guides/extensions-list.md#undo) включён. Подробнее можно узнать в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Этот метод определяется в расширении **undo**, поэтому вам нужно включить плагин [undo](guides/extensions-list.md#undo). Подробности читайте в статье [Undo/Redo Functionality](guides/undo-redo.md). 
 :::
 
 ### Related API
@@ -33,8 +33,7 @@ gantt.clearRedoStack();
 - [getRedoStack](api/method/getredostack.md)
 
 ### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md)
+- [Функциональность Undo/Redo](guides/undo-redo.md)
 
 ### Change log
 - добавлено в версии 5.2
-

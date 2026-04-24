@@ -1,14 +1,14 @@
 ---
 sidebar_label: undo_steps
-title: undo_steps config
-description: "указывает, на сколько шагов метод undo откатит изменения"
+title: Конфигурация undo_steps
+description: "задает количество шагов, которые должны быть отменены методом undo"
 ---
 
 # undo_steps
 
 ### Description
 
-@short: Указывает, на сколько шагов метод undo откатит изменения
+@short: Устанавливает количество шагов, которые должны быть отменены методом undo
 
 @signature: undo_steps: number
 
@@ -20,7 +20,7 @@ gantt.config.undo_steps = 10;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 10
+**Значение по умолчанию:** 10
 
 ### Related samples
 - [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
@@ -28,7 +28,7 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- Эта настройка является частью расширения **undo**, поэтому обязательно включите плагин [undo](guides/extensions-list.md#undo). Подробнее об этом можно узнать в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Эта настройка определяется в расширении **undo**, поэтому вам нужно включить плагин [undo](guides/extensions-list.md#undo). Подробнее читайте в статье [Undo/Redo Functionality](guides/undo-redo.md).
 :::
 
 ### Related API
@@ -37,8 +37,7 @@ gantt.init("gantt_here");
 - [undo_types](api/config/undo_types.md)
 
 ### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
 - добавлено в версии 4.0
-

@@ -1,22 +1,21 @@
 ---
 sidebar_label: eachParent
 title: eachParent method
-description: "遍历甘特图中指定任务的所有父任务"
+description: "在 Gantt 图中遍历指定任务的所有父任务"
 ---
 
 # eachParent
 
 ### Description
 
-@short: 遍历甘特图中指定任务的所有父任务
+@short: 遍历 Gantt 图中指定任务的所有父任务
 
 @signature: eachParent: (code: GanttCallback, startTask: string | number, master?: any) =\> void
 
 ### Parameters
 
-- `code` - (required) *function* - 一个回调函数，用于处理每个任务对象
-- `startTask` - (required) *string* - | number            要遍历其父任务的任务ID
-- `master` - (optional) *object* - 回调函数内部使用的上下文对象，即回调函数中的 'this' 指向
+- `code` - (required) *function* - 将遍历任务的函数。接收一个任务对象作为参数
+- `startTask` - (required) *string | number* - 要遍历其父级任务的目标项的 id
 
 ### Example
 
@@ -28,4 +27,3 @@ gantt.eachParent(function(task){
 
 ### Related API
 - [calculateTaskLevel](api/method/calculatetasklevel.md)
-

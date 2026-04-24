@@ -1,20 +1,18 @@
 ---
 sidebar_label: hideCover
 title: hideCover method
-description: "удаляет модальное оверлей lightbox, который блокирует взаимодействие с остальной частью экрана"
+description: "скрывает модальный оверлей lightbox, блокирующий взаимодействие с оставшейся частью экрана"
 ---
 
 # hideCover
 
 ### Description
 
-@short: Удаляет модальное оверлей lightbox, который блокирует взаимодействие с остальной частью экрана
+@short: Скрывает модальный оверлей lightbox, блокирующий взаимодействие с оставшейся частью экрана
 
-@signature: hideCover: (box?: HTMLElement) =\> void
+@signature: hideCover: (box?: HTMLElement) => void
 
 ### Parameters
-
-- `box` - (optional) *HTMLElement* - элемент, который нужно скрыть
 
 ### Example
 
@@ -24,8 +22,7 @@ gantt.hideCover(gantt.getLightbox());
 
 ### Details
 
-При передаче входного параметра этот метод скрывает указанный HTML элемент, изменяя его свойство display на "none".
+Если вы укажете входной параметр, метод скроет указанный HTML-элемент (установив значение свойства display в «none»).
 
 ### Related API
 - [showCover](api/method/showcover.md)
-

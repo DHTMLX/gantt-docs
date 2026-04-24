@@ -1,264 +1,259 @@
 ---
-title: "Ressourcenmanagement"
-sidebar_label: "Ressourcenmanagement"
+title: "Ressourcenverwaltung"
+sidebar_label: "Ressourcenverwaltung"
 ---
 
-# Ressourcenmanagement
+# Ressourcenverwaltung
 
 :::info
-Diese Funktion ist nur in der Gantt PRO Edition enthalten.
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 
-Gantt bietet vordefinierte Ressourcenansichten, um die Auslastung der Ressourcen zu visualisieren, Werkzeuge zur Projektaufteilung nach Ressourcen zur Ausbalancierung der Arbeitslasten sowie aufgaben- und ressourcenspezifische Kalender.
+Gantt bietet vordefinierte Ressourcenansichten zur Hervorhebung der Ressourcen-Auslastung, Methoden zum Aufschlüsseln eines Projekts nach einer Ressource zum Lastenausgleich und arbeitszeitbezogene Kalender für Aufgaben- und Ressourcenarbeiten.
 
 ![resource_panel](/img/resource_panel.png)
 
 :::note
-Gantt berechnet die Ressourcenauslastung selbst nicht und bietet dafür keine integrierten Methoden, stellt aber eine öffentliche API bereit, mit der Sie jede gewünschte benutzerdefinierte Funktionalität erstellen können.
+Obwohl Gantt selbst die Ressourcenauslastung nicht berechnet und keine out-of-the-box-Methoden bereitstellt, bietet Gantt Ihnen eine öffentliche API, um beliebiges benutzerdefiniertes Verhalten zu implementieren.
 :::
 
-## Ressourcenansicht-Panel
+## Ressourcen-Ansicht Panel {#resourceviewpanel}
 
-dhtmlxGantt stellt zwei vordefinierte Layout-Ansichten zur Anzeige der Ressourcenauslastung bereit: das Ressourcen-Auslastungsdiagramm und das Ressourcen-Histogramm.
+dhtmlxGantt bietet zwei Arten vordefinierter Layout-Ansichten zur Anzeige der Ressourcen-Auslastung des Gantt: Ressourcen-Auslastungsdiagramm und Ressourcen-Histogramm.
 
-### Ressourcen-Auslastungsdiagramm
+### Ressourcen-Auslastungsdiagramm {#resourceloaddiagram}
 
-Dies umfasst spezielle Ansichten für das Grid und die Zeitleiste: "resourceGrid" und "resourceTimeline".
+Es umfasst entsprechende Ansichten für das Grid und die Timeline: "resourceGrid" und "resourceTimeline".
 
 ![resource_panel](/img/resource_panel.png)
 
 :::note
-Separate [Konfigurationen](guides/layout-config.md#configsandtemplatesofviews) müssen für die Ansichten "resourceGrid" (zur Anzeige von Ressourcenspalten anstelle von Aufgaben) und "resourceTimeline" bereitgestellt werden, ebenso wie [Templates](guides/layout-config.md#configsandtemplatesofviews), um die Darstellung der Ressourcen-Zuweisungen im Panel anzupassen.
+Sie müssen für "resourceGrid" (zur Anzeige von Spalten für Ressourcen, nicht für Aufgaben) und "resourceTimeline" Ansichten jeweils eine separate [config](guides/layout-config.md#configs-and-templates-of-views) übergeben und [Templates](guides/layout-config.md#configs-and-templates-of-views), um die Anzeige der Ressourceneinsätze im Panel zu konfigurieren.
 :::
 
 ~~~js
 gantt.config.layout = {
     css: "gantt_container",
     rows: [
-      {
-        // Layout für Standard-Grid und Zeitleiste
-        cols: [
-          {view: "grid", group:"grids", scrollY: "scrollVer"},
-          {resizer: true, width: 1},
-          {view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-          {view: "scrollbar", id: "scrollVer", group:"vertical"}
-        ],
-        gravity:2
-      },
-      { resizer: true, width: 1},
-      {
-        // Layout für Grid und Zeitleiste des Ressourcenpanels
-        config: resourceConfig, // Konfiguration für Grid und Zeitleiste
-        cols: [
-          {view: "resourceGrid", group:"grids", width: 435, scrollY:"resourceVScroll"},
-          {resizer: true, width: 1},
-          {view: "resourceTimeline", scrollX: "scrollHor", scrollY:"resourceVScroll"},
-          {view: "scrollbar", id: "resourceVScroll", group:"vertical"}
-        ],
-        gravity:1
-       },
-       {view: "scrollbar", id: "scrollHor"}
+        {
+            // layout for default Grid and Timeline
+            cols: [
+                { view: "grid", group: "grids", scrollY: "scrollVer" },
+                { resizer: true, width: 1 },
+                { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+                { view: "scrollbar", id: "scrollVer", group: "vertical" }
+            ],
+            gravity: 2
+        },
+        { resizer: true, width: 1 },
+        {
+            // layout for Grid and Timeline of resource panel
+            config: resourceConfig, // config for Grid and Timeline
+            cols: [
+                { view: "resourceGrid", group: "grids", width: 435,
+                    scrollY: "resourceVScroll"
+                },
+                { resizer: true, width: 1 },
+                { view: "resourceTimeline", scrollX: "scrollHor",
+                    scrollY: "resourceVScroll"
+                },
+                { view: "scrollbar", id: "resourceVScroll", group: "vertical" }
+            ],
+            gravity: 1
+        },
+        { view: "scrollbar", id: "scrollHor" }
     ]
 };
 ~~~
 
 
-[Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
+**Verwandtes Beispiel**: [Resource load diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/04_resource_usage_diagram.html)
 
+Nach der Initialisierung funktioniert *resourceGrid* wie die Standard-Grid-Ansicht, jedoch schreibgeschützt. *resourceTimeline* erbt die Skalenkonfiguration aus der Standard-Timeline und besitzt zwei Ebenen:
 
-Nach dem Einrichten verhält sich *resourceGrid* wie die Standard-Grid-Ansicht, ist jedoch schreibgeschützt. *resourceTimeline* verwendet die gleichen Skalen-Einstellungen wie die Standard-Zeitleiste und enthält zwei Ebenen:
-
-- Hintergrundzeilen, die die Templates aus [task_row_class](api/template/task_row_class.md) und [timeline_cell_class](api/template/timeline_cell_class.md) verwenden. Diese können auf Layout-Ebene angepasst werden.
-- Ressourcenebene - einzigartig für *resourceTimeline*, zeigt Blöcke in Zellen, in denen Ressourcen Aufgaben zugewiesen sind. Stil und Inhalt dieser Blöcke können mit den Templates [resource_cell_class](api/template/resource_cell_class.md) und [resource_cell_value](api/template/resource_cell_value.md) angepasst werden:
+- Hintergrundzeilen, die [task_row_class](api/template/task_row_class.md) und [timeline_cell_class](api/template/timeline_cell_class.md) erben. Die Templates von *resourceTimeline* können auf Layout-Ebene neu definiert werden.
+- Ressourcenschicht – eine Schicht, die speziell für *resourceTimeline* ist. Sie zeigt Blöcke in Zellen an, in denen der Resource Tasks zugewiesen sind. Der Stil der Blöcke und deren Inhalt können mit den Templates [resource_cell_class](api/template/resource_cell_class.md) und [resource_cell_value](api/template/resource_cell_value.md) definiert werden:
 
 ~~~js
-gantt.templates.resource_cell_value = function(start_date, end_date, resource, tasks,
-    assignments){
-    var html = "<div>" +  tasks.length * 8 + "h</div>";
-        return html;
-};
+gantt.templates.resource_cell_value = (startDate, endDate, resource, tasks, assignments) => 
+    `<div>${tasks.length * 8}h</div>`;
 ~~~
 
 
-[Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
+**Verwandtes Beispiel**: [Templates of the Resource diagram](https://docs.dhtmlx.com/gantt/samples/11_resources/05_resource_usage_templates.html)
 
 
 ### Ressourcen-Histogramm
 
-Diese Layout-Ansicht für Ressourcenauslastung beinhaltet "resourceGrid" und "resourceHistogram" für Grid und Zeitleiste.
+Diese Layout-Ansicht zur Anzeige der Ressourcen-Auslastung von Gantt umfasst die Ansichten "resourceGrid" und "resourceHistogram" für Grid bzw. Timeline.
 
 ![Resource histogram](/img/resource_histogram.png)
 
 :::note
-Separate [Konfigurationen](guides/layout-config.md#configsandtemplatesofviews) sind für die Ansichten "resourceGrid" (zur Anzeige von Ressourcenspalten) und "resourceHistogram" erforderlich, ebenso wie [Templates](guides/layout-config.md#configsandtemplatesofviews), um die Darstellung der Ressourcen-Zuweisungen anzupassen.
+Sie müssen für "resourceGrid" (zur Anzeige von Spalten für Ressourcen, nicht für Aufgaben) und "resourceHistogram" Ansichten jeweils eine separate [config](guides/layout-config.md#configs-and-templates-of-views) übergeben, und [Templates](guides/layout-config.md#configs-and-templates-of-views), um die Anzeige der Ressourceneinsätze im Panel zu konfigurieren.
 :::
 
-
 ~~~js
-gantt.config.layout = {
+gantt.config.layout = { 
     css: "gantt_container",
     rows: [
         {
-            // Layout für Standard-Grid und Zeitleiste
+            // layout for default Grid and Timeline
             gravity: 2,
             cols: [
-                {view: "grid", group:"grids", scrollY: "scrollVer"},
-                {resizer: true, width: 1},
-                {view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer"},
-                {view: "scrollbar", id: "scrollVer", group:"vertical"}
+                { view: "grid", group: "grids", scrollY: "scrollVer" },
+                { resizer: true, width: 1 },
+                { view: "timeline", scrollX: "scrollHor", scrollY: "scrollVer" },
+                { view: "scrollbar", id: "scrollVer", group: "vertical" }
             ]
         },
-        { resizer: true, width: 1, next: "resources"},
+        { resizer: true, width: 1, next: "resources" },
         {
-            // Layout für Grid und Zeitleiste des Ressourcenpanels
-            gravity:1,
+            // layout for Grid and Timeline of resource panel
+            gravity: 1,
             id: "resources",
-            config: resourceConfig, // Konfiguration für Grid und Zeitleiste
-            templates: resourceTemplates, // Templates für Grid und Zeitleiste
+            config: resourceConfig, // config for Grid and Timeline
+            templates: resourceTemplates, // templates for Grid and Timeline
             cols: [
-                { view: "resourceGrid", group:"grids", scrollY: "resourceVScroll" },
-                { resizer: true, width: 1},
-                { view: "resourceHistogram", capacity:24, scrollX: "scrollHor", 
-                    scrollY: "resourceVScroll"},
-                { view: "scrollbar", id: "resourceVScroll", group:"vertical"}
+                { view: "resourceGrid", group: "grids", scrollY: "resourceVScroll" },
+                { resizer: true, width: 1 },
+                { 
+                    view: "resourceHistogram", 
+                    capacity: 24, 
+                    scrollX: "scrollHor", 
+                    scrollY: "resourceVScroll" 
+                },
+                { view: "scrollbar", id: "resourceVScroll", group: "vertical" }
             ]
         },
-        {view: "scrollbar", id: "scrollHor"}
+        { view: "scrollbar", id: "scrollHor" }
     ]
 };
 ~~~
 
 
-[Resource histogram](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
+**Verwandtes Beispiel**: [Resource histogram](https://docs.dhtmlx.com/gantt/samples/11_resources/09_resource_histogram.html)
 
 
-Wie beim Ressourcen-Auslastungsdiagramm verhält sich *resourceGrid* ähnlich wie die Standard-Grid-Ansicht, ist jedoch schreibgeschützt. *resourceHistogram* bietet mehrere zusätzliche Templates:
+Wie im Ressourcen-Auslastungsdiagramm funktioniert auch hier *resourceGrid* wie die Standard-Grid-Ansicht, jedoch schreibgeschützt. *resourceHistogram* hat die folgenden zusätzlichen Templates:
 
-- *histogram_cell_class* - CSS-Klasse, die auf eine Zelle im Ressourcenpanel angewendet wird
-
-~~~js
-gantt.templates.histogram_cell_class="function(start_date,end_date,resource,tasks,"
-    assignments){
-    return "";
-};
-~~~
-
-- *histogram_cell_label* - Beschriftung, die innerhalb einer Zelle angezeigt wird
+- *histogram_cell_class* – die CSS-Klasse, die auf eine Zelle des Ressourcen-Panel angewendet wird
 
 ~~~js
-gantt.templates.histogram_cell_label="function(start_date,end_date,resource,tasks,"
-    assignments){
-     return tasks.length * 8;
-};
+gantt.templates.histogram_cell_class =
+    (start_date, end_date, resource, tasks, assignments) => "";
 ~~~
 
-- *histogram_cell_allocated* - Höhe des ausgefüllten Bereichs im Histogramm, von 0 bis *maxCapacity*.
+- *histogram_cell_label* – das Label innerhalb einer Zelle
 
 ~~~js
-gantt.templates.histogram_cell_allocated="function(start_date,end_date,resource,tasks,"
-    assignments){
-     return tasks.length * 8;
-};
+gantt.templates.histogram_cell_label =
+    (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
 ~~~
 
-- *histogram_cell_capacity* - Höhe der Linie, die die verfügbare Kapazität der Ressource anzeigt, von -1 bis *maxCapacity*. Werte unter 0 blenden die Linie aus.
+- *histogram_cell_allocated* – die Höhe des gefüllten Bereichs im Histogramm. Der Wert kann von 0 bis *maxCapacity* festgelegt werden.
 
 ~~~js
-gantt.templates.histogram_cell_capacity="function(start_date,end_date,resource,tasks,"
-    assignments){
-     return 24;
-};
+gantt.templates.histogram_cell_allocated =
+    (start_date, end_date, resource, tasks, assignments) => tasks.length * 8;
 ~~~
 
-**Verständnis von maxCapacity**
+- *histogram_cell_capacity* – die Höhe der Linie, die die verfügbare Kapazität der Ressource definiert. Der Wert kann von -1 bis *maxCapacity* festgelegt werden. Werte kleiner als 0 rendern die Linie nicht.
 
-Stellen Sie sich jede Histogrammzeile als Balkendiagramm vor, wobei maxCapacity die Höhe der Y-Achse darstellt. Im folgenden Beispiel entspricht maxCapacity dem Wert 24:
+~~~js
+gantt.templates.histogram_cell_capacity =
+    (start_date, end_date, resource, tasks, assignments) => 24;
+~~~
+
+**Was maxCapacity bedeutet**
+
+Wenn jede Zeile des Histogramms als Balkendiagramm betrachtet wird, entspricht maxCapacity der Höhe der Y-Skala dieses Diagramms. Im untenstehenden Bild gilt maxCapacity = 24:
+
+
 
 
 ![maxCapacity](/img/maxcapacity.png)
 
-Das Setzen von *histogram_cell_allocated* oder *histogram_cell_capacity* auf 24 bedeutet also, dass das obere Ende der Zeile erreicht wird.
+Gibt man also in den Templates *histogram_cell_allocated* oder *histogram_cell_capacity* den Wert 24 an, bedeutet das, dass der höchste Punkt der Zeile erreicht ist.
 
-Standardmäßig beträgt **maxCapacity** für jede Ressource 24. Werden in *histogram_cell_capacity* Werte über 24 zurückgegeben, erfolgt die Berechnung korrekt, aber der ausgefüllte Bereich in den Zellen des Ressourcenpanels wird möglicherweise nicht wie erwartet angezeigt.
+Standardmäßig beträgt **maxCapacity** 24 für alle Ressourcen. Das bedeutet, dass, wenn Sie einen größeren Wert als 24 im Template *histogram_cell_capacity* zurückgeben, die Zahlen korrekt berechnet werden, aber der Bereich der Zellen im Ressourcenpanel nicht so gefüllt wird, wie Sie es erwarten.
 
 ![filled_capacity](/img/filled_capacity.png)
 
-Sie können **maxCapacity** global für das gesamte Histogramm oder individuell pro Ressource konfigurieren. Hier ein Beispiel:
+Es gibt jedoch die Möglichkeit, **maxCapacity** für das gesamte Histogramm bzw. jedes Resource separat zu konfigurieren. Unten finden Sie ein Beispiel:
 
-**Related example:** [Konfiguration von maxCapacity](https://snippet.dhtmlx.com/glnqcsgq)
+**Verwandtes Beispiel**: [Configuring maxCapacity](https://snippet.dhtmlx.com/glnqcsgq)
 
-**maxCapacity** kann auf Histogramm-Ebene gesetzt werden:
+**maxCapacity** kann entweder auf Histogramm-Ebene definiert werden:
 
 ~~~js
-{ view: "resourceHistogram", capacity:24, scrollX: "scrollHor", 
-    scrollY: "resourceVScroll"}
+{ view: "resourceHistogram", capacity: 24, scrollX: "scrollHor", scrollY: "resourceVScroll" }
 ~~~
 
-Oder individuell für jede Ressource:
+oder individuell für jede Ressource:
 
 ~~~js
 resourcesStore.parse([
-    {id: 1, text: "John", capacity:8},
-    {id: 2, text: "Mike", capacity:4},
-    {id: 3, text: "Anna", capacity:8},
-    {id: 4, text: "Bill", capacity:8},
-    {id: 5, text: "Floe", capacity:8}
+    { id: 1, text: "John", capacity: 8 },
+    { id: 2, text: "Mike", capacity: 4 },
+    { id: 3, text: "Anna", capacity: 8 },
+    { id: 4, text: "Bill", capacity: 8 },
+    { id: 5, text: "Floe", capacity: 8 }
 ]);
 ~~~
 
 :::note
-Die auf Ressourcenebene gesetzte Kapazität überschreibt für diese Ressource die globale Kapazität des Histogramms.
+Die Kapazität, die auf Ressourcenebene definiert ist, überschreibt die globale Kapazität des Histogramms für eine gegebene Ressource.
 :::
 
-## Arbeiten mit dem Ressourcenpanel
-
-Standardmäßig sind beide Ansichten (entweder "resourceGrid" und "resourceTimeline" oder "resourceGrid" und "resourceHistogram") mit dem Datenspeicher verbunden, der in der Einstellung 
-[gantt.config.resource_store](api/config/resource_store.md) angegeben ist.
+## Arbeiten mit der Ressourcen-Ansicht
+Standardmäßig werden beide Ansichten (entweder "resourceGrid" und "resourceTimeline" oder "resourceGrid" und "resourceHistogram") mit dem Datenspeicher verbunden, der im
+[gantt.config.resource_store](api/config/resource_store.md) konfiguriert ist.
 
 ### Automatische Erstellung des Datenspeichers
 
-Ab Version 8.0 wird der Ressourcen-Datenspeicher automatisch erstellt, wenn Gantt initialisiert wird, und ist verfügbar, sobald das "onGanttReady"-Event ausgelöst wird. Um auf diesen Store zuzugreifen, verwenden Sie die Methode [getDatastore](api/method/getdatastore.md).
+Ab Version 8.0 wird der Datenspeicher für Ressourcen automatisch während der Initialisierung von Gantt erstellt und ist zur Zeit verfügbar, wenn `onGanttReady` aufgerufen wird. Um den von Gantt erstellten Datenspeicher zu verwenden, wenden Sie die Methode [gantt.getDatastore](api/method/getdatastore.md) an.
 
-Wenn Sie den Ressourcenstore anpassen möchten, können Sie die Option [gantt.config.resources](api/config/resources.md) verwenden:
+Wenn Sie eine zusätzliche Konfiguration für den Ressourcenspeicher benötigen, können Sie die neue Option [gantt.config.resources](api/config/resources.md) verwenden:
 
 ~~~js
 gantt.config.resources = {
     resource_store: {
         type: "treeDataStore",
         fetchTasks: true,
-        initItem: function(item) {
+        initItem: item => {
             item.parent = item.parent || gantt.config.root_id;
             item[gantt.config.resource_property] = item.parent;
             item.open = true;
             return item;
         }
-    },
-}
+    }
+};
 ~~~
 
-Die Einstellungen innerhalb von **resource_store** werden zur Erstellung des Standard-Ressourcendatenspeichers verwendet. Falls Sie bereits einen Ressourcendatenspeicher im Code haben, wird dieser verwendet.
+An den **resource_store** übergebene Einstellungen werden von Gantt verwendet, um den Standard-Ressourcen-Datenspeicher zu erstellen. Falls Sie den Ressourcendatenspeicher bereits in Ihrem Code erstellt haben, verwendet Gantt stattdessen Ihren Speicher.
 
-Um Ressourcen zu laden, können Sie diese wie [hier](guides/resource-management.md#loadingresourcesandresourceassignments) beschrieben über **gantt.parse()**/**gantt.load()** übergeben oder den Datastore direkt mit **datastore.parse()** befüllen:
+Um Ressourcen zu laden, können Sie Ressourcen entweder in die Methoden **gantt.parse()**/**gantt.load()** wie hier beschrieben übergeben (siehe guide: loading resources) oder Sie können den Datenspeicher durchsuchen und ihn mit der Methode **datastore.parse()** befüllen:
 
 ~~~js
-gantt.attachEvent("onGanttReady", function(){
+gantt.attachEvent("onGanttReady", () => {
     const store = gantt.getDatastore(gantt.config.resource_store);
     store.parse([
-       {id: 6, text: "John"},
-       {id: 7, text: "Mike"},
-       {id: 8, text: "Anna"},
-       {id: 9, text: "Bill"},
-    ])
+        { id: 6, text: "John" },
+        { id: 7, text: "Mike" },
+        { id: 8, text: "Anna" },
+        { id: 9, text: "Bill" }
+    ]);
 });
 ~~~
 
-Die Ressourcensteuerung der Lightbox wird automatisch mit der Ressourcenliste verknüpft:
+Der Ressourcen-Controller des Lightboxes wird automatisch mit der Ressourcenliste verbunden:
 
 ~~~js
 gantt.config.lightbox = {
     sections: [
         ...,
-        { name: "resources", type: "resources", map_to: "auto", default_value: 8}
+        { name: "resource_selector", label: "Resources", type: "resource_selector", map_to: "auto" } 
     ]
 };
 ~~~
@@ -266,20 +261,21 @@ gantt.config.lightbox = {
 
 ### Manuelle Erstellung des Datenspeichers
 
-Sie können den Datenspeicher auch manuell mit der Methode [createDatastore](api/method/createdatastore.md) erstellen:
+Es ist auch möglich, den Datenspeicher manuell mithilfe der [createDatastore](api/method/createdatastore.md) Methode zu initialisieren:
 
 ~~~js
-var resourcesStore = gantt.createDatastore({
-  name: gantt.config.resource_store,
-  // Verwenden Sie treeDatastore, wenn Ihre Ressourcen hierarchisch sind (z. B. Mitarbeiter/Abteilungen),
-  // oder lassen Sie "type" weg für eine flache Struktur
-  type: "treeDatastore", 
-  initItem: function (item) {
-    item.parent = item.parent || gantt.config.root_id;
-    item[gantt.config.resource_property] = item.parent;
-    item.open = true;
-    return item;
-  }
+const resourcesStore = gantt.createDatastore({
+    name: gantt.config.resource_store,
+    // Verwenden Sie treeDatastore, wenn Sie hierarchische Ressourcen haben 
+    // (z.B. Mitarbeiter/Abteilungen),
+    // lassen Sie das "type"-Feld weg, wenn Sie eine flache Struktur haben
+    type: "treeDatastore",
+    initItem: item => {
+        item.parent = item.parent || gantt.config.root_id;
+        item[gantt.config.resource_property] = item.parent;
+        item.open = true;
+        return item;
+    }
 });
 ~~~
 
@@ -287,39 +283,39 @@ Um den Datenspeicher zu befüllen, verwenden Sie die Methode **datastore.parse**
 
 ~~~js
 resourcesStore.parse([
-    {id: 1, text: "QA", parent:null},
-      {id: 2, text: "Development", parent:null},
-    {id: 3, text: "Sales", parent:null},
-    {id: 4, text: "Other", parent:null},
-    {id: 5, text: "Unassigned", parent:4},
-    {id: 6, text: "John", parent:1},
-    {id: 7, text: "Mike", parent:2},
-    {id: 8, text: "Anna", parent:2},
-    {id: 9, text: "Bill", parent:3},
-    {id: 10, text: "Floe", parent:3}
+    { id: 1, text: "QA", parent: null },
+    { id: 2, text: "Development", parent: null },
+    { id: 3, text: "Sales", parent: null },
+    { id: 4, text: "Other", parent: null },
+    { id: 5, text: "Unassigned", parent: 4 },
+    { id: 6, text: "John", parent: 1 },
+    { id: 7, text: "Mike", parent: 2 },
+    { id: 8, text: "Anna", parent: 2 },
+    { id: 9, text: "Bill", parent: 3 },
+    { id: 10, text: "Floe", parent: 3 }
 ]);
 ~~~
 
-Wenn Sie Ressourcen in der Lightbox verwenden möchten, empfiehlt es sich, dies über die Methode [serverList](api/method/serverlist.md) zu tun, die durch das onParse-Event des Datenspeichers ausgelöst wird:
+Wenn Sie Ressourcen im Lightbox verwenden möchten, könnte es sinnvoll sein, dies über die [serverList](api/method/serverlist.md) Methode aus dem onParse-Ereignis des Datenspeichers zu tun:
 
 ~~~js
-resourcesStore.attachEvent("onParse", function(){
-  var people = [];
-  resourcesStore.eachItem(function(res){
-    if(!resourcesStore.hasChild(res.id)){
-        var copy = gantt.copy(res);
-        copy.key = res.id;
-        copy.label = res.text;
-        people.push(copy);
-    }
-  });
-  gantt.updateCollection("resourceOptions", people);
+resourcesStore.attachEvent("onParse", () => {
+    const people = [];
+    resourcesStore.eachItem(res => {
+        if (!resourcesStore.hasChild(res.id)) {
+            const copy = gantt.copy(res);
+            copy.key = res.id;
+            copy.label = res.text;
+            people.push(copy);
+        }
+    });
+    gantt.updateCollection("resourceOptions", people);
 });
 ~~~
 
-### Ressourcenpanel erweitern
+### Ausklappbares Ressourcen-Panel
 
-Sie können das Ressourcenpanel erweitern, um alle einer bestimmten Ressource zugewiesenen Aufgaben anzuzeigen, indem Sie die Eigenschaft **fetchTasks** beim Initialisieren des Datenspeichers aktivieren:
+Es ist möglich, das Ressourcen-Panel zu erweitern, um alle dem jeweiligen Resource zugewiesenen Aufgaben anzuzeigen, indem Sie während der Initialisierung des Datenspeichers die Eigenschaft fetchTasks aktivieren:
 
 ![Expanded resource panel](/img/expanded_resource_panel.png)
 
@@ -328,17 +324,13 @@ gantt.config.resources = {
     resource_store: {
         type: "treeDataStore",
         fetchTasks: true, /*!*/
-        initItem: function (item) {
-             item.parent = item.parent || gantt.config.root_id;
-             item[gantt.config.resource_property] = item.parent;
-             if(!item.parent){
-                 item.open = true;
-             }else{
-                 item.open = false;
-             }
-             return item;
-         }
-    },
+        initItem: item => {
+            item.parent = item.parent || gantt.config.root_id;
+            item[gantt.config.resource_property] = item.parent;
+            item.open = !item.parent;
+            return item;
+        }
+    }
 };
 ~~~
 
@@ -346,94 +338,92 @@ oder
 
 ~~~js
 gantt.$resourcesStore = gantt.createDatastore({
-     name: gantt.config.resource_store,
+    name: gantt.config.resource_store,
     type: "treeDatastore",
-     fetchTasks: true, /*!*/
-     initItem: function (item) {
-         item.parent = item.parent || gantt.config.root_id;
-         item[gantt.config.resource_property] = item.parent;
-         if(!item.parent){
-             item.open = true;
-         }else{
-             item.open = false;
-         }
-         return item;
-     }
+    fetchTasks: true, /*!*/
+    initItem: item => {
+        item.parent = item.parent || gantt.config.root_id;
+        item[gantt.config.resource_property] = item.parent;
+        item.open = !item.parent;
+        return item;
+    }
 });
 ~~~
 
 
-[Show all assigned tasks in the resource panel](https://docs.dhtmlx.com/gantt/samples/11_resources/11_resource_histogram_display_tasks.html)
+**Verwandtes Beispiel**: [Show all assigned tasks in the resource panel](https://docs.dhtmlx.com/gantt/samples/11_resources/11_resource_histogram_display_tasks.html)
 
 
-Mit **fetchTasks** auf *true* zeigt Gantt im Ressourcenpanel alle mit einer Ressource verknüpften Aufgaben an. Dies gilt sowohl für das Ressourcen-Auslastungsdiagramm als auch für das Ressourcen-Histogramm.
+Mit der Eigenschaft **fetchTasks** auf *true* gesetzt, rendert Gantt alle Aufgaben, die einer bestimmten Ressource zugewiesen sind, im Ressourcen-Ansichtsbereich. Diese Funktionalität funktioniert sowohl für das Ressourcen-Diagramm als auch für das Ressourcen-Histogramm.
 
-Eine schnelle Möglichkeit, alle einer Ressource zugewiesenen Aufgaben abzurufen, finden Sie unter [getResourceAssignments](api/method/getresourceassignments.md).
+Es gibt eine Kurzform, um alle einer Ressource zugewiesenen Aufgaben abzurufen – [getResourceAssignments](api/method/getresourceassignments.md).
 
 ~~~js
-gantt.getResourceAssignments("6");
+gantt.getResourceAssignments("6"); 
 ~~~
 
-## Ressourcen zuweisen {#assigningresources}
+## Zuordnungen von Ressourcen {#assigningresources}
 
-### Ressourcen mit Aufgaben verbinden
+### Ressourcen mit Aufgaben verbinden 
 
-Die Verbindung zwischen Ressourcen und Aufgaben wird über die Einstellung [resource_property](api/config/resource_property.md) gesteuert:
+Die Ressourcenzuordnung wird durch die Konfigurationsoption [resource_property](api/config/resource_property.md) definiert:
 
 ~~~js
 gantt.config.resource_property = "user_id";
 // task.user_id <-> resource.id
 ~~~
 
-Ressourcen können auf verschiedene Arten über Eigenschaften des Aufgabenobjekts mit Aufgaben verknüpft werden:
+Ressourcen können über Eigenschaften des Aufgabenobjekts auf Aufgaben zugewiesen werden, und zwar auf eine der folgenden Arten:
 
-- Einer Aufgabe eine einzelne Ressource zuweisen
-
-~~~js
-{
-    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6, 
-    user_id: 5 // 5 ist die Ressourcen-ID 
-}
-~~~
-
-- Einer Aufgabe mehrere Ressourcen zuweisen
+- einer Ressource eine Aufgabe zuordnen
 
 ~~~js
 {
     id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6, 
-    users: [2, 3] // 2 und 3 sind Ressourcen-IDs
+    user_id: 5 // 5 ist die id der Ressource 
 }
 ~~~
 
-Dieses Format eignet sich gut für das [benutzerdefinierte Multiselect-Steuerelement](guides/custom-editor.md#customthirdpartyeditor).
-
-- Mehrere Ressourcen mit angegebenen Mengen zuweisen
+- mehreren Ressourcen eine Aufgabe zuordnen
 
 ~~~js
 {
-    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
-    users: [{resource_id:2, value:8}, {resource_id:3, value:4}]  
+    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6, 
+    users: [2, 3] // 2 und 3 sind die IDs von Ressourcen
 }
 ~~~
 
-Hier werden der Ressource mit id="2" acht Einheiten und der Ressource mit id="3" vier Einheiten zugewiesen. Dieses Format wird vom [Resources Control](guides/resources.md) Lightbox unterstützt.
+Sie können dieses Format mit dem [custom multiselect control](guides/custom-editor.md#customthirdpartyeditor) verwenden. 
 
-Ab Version v8.0 können Ressourcenzuweisungen auch als separate Liste geladen werden, und Gantt verknüpft sie automatisch mit den Aufgaben:
+- mehreren Ressourcen zuordnen und deren Menge spezifizieren
+
+~~~js
+{
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
+    users: [{resource_id: 2, value: 8}, {resource_id: 3, value: 4}]
+}
+~~~
+
+Die Ressourcen werden der Task1 wie folgt zugewiesen: Die Ressource mit der id="2" – in der Menge von 8 Einheiten, während die Ressource mit der id="3" – in der Menge von 4 Einheiten.
+Dieses Format wird vom [Resources Control](guides/resources.md) und dem [Resource Assignments control](guides/resource-assignments.md) des Lightboxes unterstützt.
+
+Seit Version 8.0 können Sie Ressourcenzuweisungen auch als separate Liste laden, und Gantt wird sie automatisch mit Tasks verknüpfen:
 
 ~~~js
 gantt.parse({
-       tasks: [...],
-       links: [...],
-       resources: [...],
-       assignments: [{id:1, resource_id:2, task_id: 5, value: 8}, ...]
+    tasks: [...],
+    links: [...],
+    resources: [...],
+    assignments: [{id: 1, resource_id: 2, task_id: 5, value: 8}, ...]
 });
 ~~~
 
-Weitere Informationen zu den Datenformaten finden Sie [hier](guides/resource-management.md#loadingresourcesandresourceassignments).
+Weitere Informationen zu Datenformaten finden Sie [hier](guides/resource-management.md#loading-resources-and-resource-assignments).
 
-Beim Senden von Daten an den Server serialisiert der DataProcessor diese Eigenschaften als JSON. Um solche Datensätze effizient auf dem Server zu verarbeiten, empfiehlt sich der ["REST_JSON"](guides/server-side.md#restjson) DataProcessor-Modus.
+Beim Senden von Daten an den Server serialisiert DataProcessor die Werte der beschriebenen Eigenschaften in JSON. Um der Verarbeitung solcher Datensätze auf dem Server entgegenzukommen, verwenden Sie den Modus ["REST_JSON"](guides/server-side.md#restjson)
+dataprocessor.
 
-Wenn Sie Änderungen an Ressourcenzuweisungen getrennt von Aufgaben speichern möchten, aktivieren Sie diese Konfiguration:
+In einigen Fällen möchten Sie Änderungen an Resource Assignments separat von Aufgabenobjekten speichern. In diesem Fall können Sie die folgende Konfiguration aktivieren:
 
 ~~~js
 gantt.config.resources = {
@@ -442,87 +432,90 @@ gantt.config.resources = {
 };
 ~~~
 
-Mehr dazu erfahren Sie im [entsprechenden Artikel](guides/server-side.md#resources_crud).
+Weitere Informationen dazu finden Sie in einem [separaten Artikel](guides/server-side.md#resources_crud).
 
 
-### Zeitpunkt der Ressourcenzuweisungen festlegen {#resourceassignmenttime}
+### Festlegung der Zeiten der Ressourcenzuweisungen {#resourceassignmenttime}
 
-Standardmäßig wird eine Ressource für die gesamte Dauer einer Aufgabe zugewiesen.
+Standardmäßig gilt, dass einer Ressourcenzuweisung die gesamte Dauer einer Aufgabe zugewiesen ist.
 
+Ab Version 7.1 kann das Objekt der Ressourcenzuweisung zusätzliche optionale Parameter enthalten, die das Festlegen der Zuweisungsdaten innerhalb der Aufgabe ermöglichen. 
 
-Ab Version v7.1 können Ressourcenzuweisungsobjekte zusätzliche optionale Parameter enthalten, um die Zuweisungsdaten innerhalb der Aufgabe zu spezifizieren.
+Die zusätzlichen Eigenschaften sind:
 
-Diese zusätzlichen Eigenschaften umfassen:
+- **id** - (*string|number*) die ID der Zuweisung
+- **start_date** - (*Date|string*) das Datum, an dem die Zuweisung beginnen soll
+- **end_date** - (*Date|string*) das Datum, an dem die Zuweisung beendet sein soll
+- **delay** - (*number*) der Unterschied zwischen dem Zuweisungsstartdatum und dem Startdatum der Aufgabe
+- **duration** - (*number*) die Dauer der Zuweisung
+- **mode** - (*string*) der Berechnungsmodus der Zeit der Ressourcenzuweisung: "default"|"fixedDates"|"fixedDuration"
 
-- **id** - (*string|number*) Zuweisungs-ID
-- **start_date** - (*Date|string*) Startdatum der Zuweisung
-- **end_date** - (*Date|string*) Enddatum der Zuweisung
-- **delay** - (*number*) Versatz zwischen Zuweisungsbeginn und Aufgabenbeginn
-- **duration** - (*number*) Länge der Zuweisung
-- **mode** - (*string*) Berechnung der Zuweisungszeit: "default"|"fixedDates"|"fixedDuration"
-
-~~~js
+~~~js {8,13-15,20-22}
 {
-    id: 5, text: "Interior office", type: "task", start_date: "03-04-2019 00:00",
+    id: 5, text: "Interior office", type: "task", start_date: "03-04-2025 00:00",
     duration: 7, parent: "2", progress: 0.6, priority: 1,
-    users: [{
-        resource_id: "3",
-        value: 8,
-        delay: 1 /*!*/
-    },{
-        resource_id: "6",
-        value: 3,
-        start_date: "03-04-2019 00:00", /*!*/
-        end_date: "05-04-2019 00:00", /*!*/
-        mode: "fixedDates" /*!*/
-    },{
-        resource_id: "7",
-        value: 3,
-        delay: 1, /*!*/
-        duration: 2, /*!*/
-        mode: "fixedDuration" /*!*/
-    }
+    users: [
+        {
+            resource_id: "3",
+            value: 8,
+            delay: 1 
+        },
+        {
+            resource_id: "6",
+            value: 3,
+            start_date: "03-04-2025 00:00", 
+            end_date: "05-04-2025 00:00", 
+            mode: "fixedDates" 
+        },
+        {
+            resource_id: "7",
+            value: 3,
+            delay: 1, 
+            duration: 2, 
+            mode: "fixedDuration" 
+        }
     ]
 }
 ~~~
 
 
-[Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+**Verwandtes Beispiel**: [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 
-1. Die *Start- und Enddaten* der Ressourcenzuweisungen werden im Ressourcen-Histogramm und Diagramm angezeigt.
+1. Die *start- und end dates* der Ressourcenzuweisung werden im Ressourcendiagramm und -histogramm reflektiert.
 
-2. Sie können dem Zuweisungsobjekt optional eine *id* hinzufügen:
+2. Die optionale *id*-Eigenschaft der Zuweisung kann dem Ressourcenzuweisungsobjekt hinzugefügt werden:
 
 ~~~js
 {
-    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
     users: [{
         id: 5, 
-        resource_id: 2, value: 8, 
+        resource_id: 2,
+        value: 8, 
         delay: 1
     }]
 }
 ~~~
 
-Mit dieser ID können Sie auf die Zuweisung über die gantt API zugreifen:
+Das Zuweisungsobjekt wird dem Gantt-API über diese ID zugänglich sein:
 
 ~~~js
-var assignment = gantt.getDatastore("resourceAssignments").getItem(5);
+const assignment = gantt.getDatastore("resourceAssignments").getItem(5);
 ~~~
 
 :::note
-Der ["resourceAssignments"](api/config/resource_assignment_store.md) Datenspeicher ist nur verfügbar, wenn die [process_resource_assignments](api/config/process_resource_assignments.md) Konfiguration aktiviert ist.
+Der [resourceAssignments](api/config/resource_assignment_store.md) Datastore ist nur verfügbar, wenn die Konfiguration [process_resource_assignments](api/config/process_resource_assignments.md) aktiviert ist.
 :::
 
 
-3. Das Verhalten der anderen Eigenschaften hängt vom Wert von **mode** ab:
+3. Die Arbeit der restlichen Eigenschaften wird durch den Wert der Eigenschaft **mode** bestimmt:
 
-- **_der "default"-Modus_**
+- **_der Modus "default"_**
 
 ~~~js
 {
-    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
     users: [
         { resource_id: 2, value: 8, delay: 1},
         { resource_id: 3, value: 6},
@@ -530,55 +523,57 @@ Der ["resourceAssignments"](api/config/resource_assignment_store.md) Datenspeich
 }
 ~~~
 
-Fehlt *mode* oder ist auf "default" gesetzt, werden *start_date* und *end_date* der Zuweisung von den Daten der Aufgabe abgeleitet. Die Zuweisung beginnt standardmäßig am Startdatum der Aufgabe und endet, wenn die Aufgabe endet.
+Wenn der *mode* nicht angegeben ist oder auf den Wert "default" gesetzt ist, werden die *start_date* und *end_date* der Zuweisung aus den Daten der Aufgabe berechnet. Standardmäßig entspricht der Starttermin der Zuordnung dem Starttermin der Aufgabe. Die gleiche Vorgehensweise gilt für das Enddatum.
 
-Die Eigenschaft *delay* funktioniert wie das *Delay*-Feld in [MS Project](https://support.microsoft.com/en-us/office/assignment-delay-fields-427ac799-225c-4e10-9dcb-f58e524c8173). 
+Die *delay*-Eigenschaft funktioniert ähnlich wie die *Delay*-Eigenschaft von <a href="https://support.microsoft.com/en-us/office/assignment-delay-fields-427ac799-225c-4e10-9dcb-f58e524c8173">MS Project</a>.
 
-Wenn ein Delay gesetzt ist, wird das *start_date* der Zuweisung wie folgt berechnet:
+Wird eine Verzögerung angegeben, wird der *start_date* der Zuweisung berechnet als 
 
-`gantt.calculateEndDate((start_date:task.start_date, duration:assignment.delay, task:task))`.
+`gantt.calculateEndDate({start_date:task.start_date, duration:assignment.delay, task:task})`.
 
-Das bedeutet, die Zuweisung beginnt nach dem angegebenen Versatz ab Aufgabenstart und endet mit der Aufgabe. Diese Daten werden automatisch aktualisiert, wenn sich die Aufgabe ändert.
+Die Ressourcenzuweisung beginnt mit der angegebenen Verzögerung ab dem Start der Aufgabe. Das Enddatum der Zuweisung entspricht dem Enddatum der Aufgabe.
 
-- **_der "fixedDuration"-Modus_**
+Wann immer das Aufgabenobjekt aktualisiert wird, werden die Start-/Enddaten der Zuweisung entsprechend aktualisiert.
+
+- **_der Modus "fixedDuration"_**
 
 ~~~js
 {
-    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
     users: [
-        {resource_id:2, value:8, duration: 1, delay:0, mode: "fixedDuration"},
-        {resource_id:2, value:2, duration: 1, delay:1, mode: "fixedDuration"},
-        {resource_id:2, value:3, delay:2, mode: "default"}
+        { resource_id: 2, value: 8, duration: 1, delay: 0, mode: "fixedDuration" },
+        { resource_id: 2, value: 2, duration: 1, delay: 1, mode: "fixedDuration" },
+        { resource_id: 2, value: 3, delay: 2, mode: "default" }
     ]
 }
 ~~~
 
-Hier wird das *start_date* wie im *default*-Modus berechnet.
+Der *start_date* der Zuweisung wird auf dieselbe Weise berechnet wie im **default**-Modus.
 
-Das *end_date* ist jedoch nicht mehr an das Enddatum der Aufgabe gebunden. Es wird stattdessen wie folgt berechnet:
+Das *Enddatum* ist nicht mehr an das Enddatum der Aufgabe gebunden. Es wird stattdessen berechnet als
 
- `gantt.calculateEndDate((start_date:assignment.start_date, duration:assignment.duration, task:task))`.
+ `gantt.calculateEndDate({start_date:assignment.start_date, duration:assignment.delay, task:task})`.
 
-Wenn sich die Aufgabe ändert, werden die Zuweisungsdaten neu berechnet, aber die Dauer der Zuweisung bleibt fest.
+Wann immer die Aufgabe aktualisiert wird, werden die Daten der Zuweisungen neu berechnet und die Dauern der Zuweisungen bleiben unverändert.
 
-- **_der "fixedDates"-Modus_**
+- **_der Modus "fixedDates"_**
 
 ~~~js
 {
-    id: 1, text: "Task #1", start_date: "02-04-2018", duration: 8, progress: 0.6,
+    id: 1, text: "Task #1", start_date: "02-04-2025", duration: 8, progress: 0.6,
     users: [{
-        resource_id:2, value:8, 
-        start_date:"03-04-2018", end_date:"11-04-2018", mode: "fixedDates"
+        resource_id: 2, value: 8,
+        start_date: "03-04-2025", end_date: "11-04-2025", mode: "fixedDates"
     }]
 }
 ~~~
 
-In diesem Modus sind die Zuweisungsdaten exakt wie angegeben und ändern sich nicht, wenn die Aufgabe angepasst wird.
+In diesem Modus haben die Daten der Ressourcenzuweisung genau die gleichen Werte wie in den Daten angegeben und werden bei Änderungen der Aufgabe nicht geändert.
 
-Die Eigenschaft *delay* hat im Modus "fixedDates" keine Wirkung.
+Das *delay*-Feld beeinflusst die Daten der Zuweisung nicht, wenn der Modus **"fixedDates"** verwendet wird.
 
 
-Hier eine kurze Übersicht, wie die Zuweisungsdaten je Modus berechnet werden:
+Nachfolgend eine kurze Zusammenfassung, wie Zuweisungsdaten in jedem Modus berechnet werden:
 
 - **default**
 
@@ -596,130 +591,133 @@ Hier eine kurze Übersicht, wie die Zuweisungsdaten je Modus berechnet werden:
   - assignment.end_date = assignment.end_date
 
 
-### Aufgaben abrufen, denen eine Ressource zugewiesen ist
+### Aufgaben, denen eine Ressource zugewiesen ist abrufen 
 
-Um schnell alle Aufgaben zu erhalten, denen eine Ressource zugewiesen ist, verwenden Sie die Methode aus [getResourceAssignments](api/method/getresourceassignments.md).
+Es gibt eine Kurzform, um alle Aufgaben abzurufen, denen eine Ressource zugewiesen ist – [getResourceAssignments](api/method/getresourceassignments.md).
 
 ~~~js
 gantt.getResourceAssignments("6"); 
 ~~~
 
-Diese Methode nimmt eine Ressourcen-ID entgegen und gibt ein Array von Objekten zurück, die die Aufgaben repräsentieren, denen diese Ressource zugewiesen ist:
+Die Methode nimmt als Parameter die ID der Ressource und gibt ein Array von Objekten mit den der Ressource zugewiesenen Aufgaben zurück:
 
 ~~~js
 [ 
-    {task_id: 5, resource_id: "6", value: 5, delay: 0, duration: 7, 
-        start_date: "03-04-2019 00:00", end_date: "12-04-2019 00:00", 
-        id: 1617258553240, mode: "default"},
-    {task_id: 18, resource_id: "6", value: 2, delay: 0, duration: 2, 
-        start_date: "05-04-2019 00:00", end_date: "09-04-2019 00:00", 
-        id: 1617258553250, mode: "default"},
-    {task_id: 19, resource_id: "6", value: 3, delay: 0, duration: 4, 
-        start_date: "09-04-2019 00:00", end_date: "13-04-2019 00:00", 
-        id: 1617258553251, mode: "default"},
-    {task_id: 21, resource_id: "6", value: 5, delay: 0, duration: 4, 
-        start_date: "03-04-2019 00:00", end_date: "09-04-2019 00:00", 
-        id: 1617258553254, mode: "default"}
+    { task_id: 5, resource_id: "6", value: 5, delay: 0, duration: 7, 
+        start_date: "03-04-2025 00:00", end_date: "12-04-2025 00:00", 
+        id: 1617258553240, mode: "default" },
+    { task_id: 18, resource_id: "6", value: 2, delay: 0, duration: 2, 
+        start_date: "05-04-2025 00:00", end_date: "09-04-2025 00:00", 
+        id: 1617258553250, mode: "default" },
+    { task_id: 19, resource_id: "6", value: 3, delay: 0, duration: 4, 
+        start_date: "09-04-2025 00:00", end_date: "13-04-2025 00:00", 
+        id: 1617258553251, mode: "default" },
+    { task_id: 21, resource_id: "6", value: 5, delay: 0, duration: 4, 
+        start_date: "03-04-2025 00:00", end_date: "09-04-2025 00:00", 
+        id: 1617258553254, mode: "default" }
 ]
 ~~~
 
-Jedes Objekt enthält folgende Eigenschaften:
+Jedes Objekt enthält die folgenden Eigenschaften:
 
-- *task_id* - Aufgabenkennung
-- *resource_id* - Ressourcenkennung
-- *value* - Menge der Ressource, die der Aufgabe zugewiesen ist
-- *delay* - Versatz zwischen Zuweisungsbeginn und Aufgabenbeginn
-- *duration* - Länge der Zuweisung
-- *start_date* - Startdatum der Zuweisung
-- *end_date* - Enddatum der Zuweisung
-- *id* - Zuweisungskennung
-- *mode* - Berechnungsmodus der Zuweisungszeit: "default"|"fixedDates"|"fixedDuration"
+- *task_id* – die ID der Aufgabe
+- *resource_id* – die ID der Ressource
+- *value* – die Zuordnungsmenge der Ressource zu einer Aufgabe
+- *delay* – der Unterschied zwischen dem Startdatum der Zuweisung und dem Startdatum der Aufgabe
+- *duration* – die Dauer der Zuweisung
+- *start_date* – das Datum, an dem die Zuweisung beginnen soll
+- *end_date* – das Datum, an dem die Zuweisung beendet werden soll
+- *id* – die ID der Zuweisung
+- *mode* – der Berechnungsmodus der Zeit der Ressourcenzuweisung: "default"|"fixedDates"|"fixedDuration"
 
 
-### Ressourcenzuweisungen einer Aufgabe abrufen
+### Ressourcen-Zuweisungen einer Aufgabe abrufen
 
-Die Methode [getTaskAssignments](api/method/gettaskassignments.md) ruft Ressourcenzuweisungen für eine bestimmte Aufgabe aus dem Datenspeicher ab:
+Die Methode [getTaskAssignments](api/method/gettaskassignments.md) ermöglicht das Abrufen der geparsten Ressourcenzuweisungen einer bestimmten Aufgabe aus dem Datenspeicher:
 
 ~~~js
 gantt.getTaskAssignments(5);
 ~~~
 
-Sie nimmt eine Aufgaben-ID entgegen und gibt ein Array von Objekten zurück, die die Ressourcenzuweisungen für diese Aufgabe darstellen:
+Die Methode nimmt als Parameter die ID der Aufgabe und gibt ein Array von Objekten mit den Ressourcenzuweisungen der Aufgabe zurück:
 
 ~~~js
 [
-    {task_id: 5, id: 1617254693938, delay: 0, duration: 2, 
-        start_date: "03-04-2019 00:00", end_date: "05-04-2019 00:00", 
-        mode: "fixedDuration", resource_id: 6, value: 3},
-    {task_id: 5, id: 1617254693946, delay: 3, duration: 1, 
-        start_date: "06-04-2019 00:00", end_date: "07-04-2019 00:00", 
-        mode: "fixedDuration", resource_id: 6, value: 6}
+    { task_id: 5, id: 1617254693938, delay: 0, duration: 2, 
+        start_date: "03-04-2025 00:00", end_date: "05-04-2025 00:00", 
+        mode: "fixedDuration", resource_id: 6, value: 3 },
+    { task_id: 5, id: 1617254693946, delay: 3, duration: 1, 
+        start_date: "06-04-2025 00:00", end_date: "07-04-2025 00:00", 
+        mode: "fixedDuration", resource_id: 6, value: 6 }
 ]
 ~~~
 
-Die zurückgegebenen Objekte haben die gleichen Eigenschaften wie die aus der Methode [getResourceAssignments](api/method/getresourceassignments.md).
+Das Rückgabe-Objekt enthält dieselbe Liste von Eigenschaften wie das Rückgabe-Objekt der Methode getResourceAssignments(api/method/getresourceassignments.md).
 
-### Verbindung über die Lightbox herstellen
 
-Ressourcen können mit jeder Eigenschaft des Aufgabenobjekts über die integrierte Lightbox-Funktion verknüpft werden.
+### Verbindung via Lightbox herstellen
+
+Ressourcen können jeder Eigenschaft des Aufgabenobjekts über die integrierte Lightbox zugewiesen werden.
 
 ~~~js
 gantt.serverList("people", [
-    {key: 1, label: "John"},
-    {key: 2, label: "Mike"},
-    {key: 3, label: "Anna"},
-    {key: 4, label: "Bill"},
-    {key: 7, label: "Floe"}
+    { key: 1, label: "John" },
+    { key: 2, label: "Mike" },
+    { key: 3, label: "Anna" },
+    { key: 4, label: "Bill" },
+    { key: 7, label: "Floe" }
 ]);
 
 gantt.locale.labels.section_owner = "Owner";
 
 gantt.config.lightbox.sections = [
-  {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-  {name:"owner", map_to:"owner_id", type:"select", options:gantt.serverList("people")},
-  {name:"time", type:"duration", map_to: "auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "owner", map_to: "owner_id", type: "select",
+        options: gantt.serverList("people") },
+    { name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
 
-Weitere Informationen zur Konfiguration des Ressourcen-Steuerelements in der Lightbox finden Sie im Artikel [Resources Control](guides/resources.md).
+Lesen Sie, wie Sie die Ressourcensteuerung des Lightboxes konfigurieren, in den Artikeln Resources Control und Resource Assignments control.
 
-### Laden von Collections
+### Laden von Sammlungen
 
-Collections, die als Serverlisten definiert sind, können nach der Initialisierung des Gantt-Diagramms dynamisch geladen und aktualisiert werden:
+Sammlungen, die als Server-Listen angegeben sind, können dynamisch geladen und aktualisiert werden, nachdem Gantt initialisiert wurde:
 
 ~~~js
-// Initialisiere das Lightbox mit einer leeren Collection
+// initialisiere Lightbox mit einer leeren Sammlung 
 gantt.locale.labels.section_owner = "Owner";
 
 gantt.config.lightbox.sections = [
-  {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-  {name:"owner", map_to:"owner_id", type:"select", options:gantt.serverList("people")},
-  {name:"time", type:"duration", map_to: "auto"}
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true },
+    { name: "owner", map_to: "owner_id", type: "select",
+        options: gantt.serverList("people") },
+    { name: "time", type: "duration", map_to: "auto" }
 ];
 
-// Optionen aktualisieren, sobald sie geladen sind
+// sobald Optionen geladen sind 
 gantt.updateCollection("people", [
-    {key: 1, label: "John"},
-    {key: 2, label: "Mike"},
-    {key: 3, label: "Anna"},
-    {key: 4, label: "Bill"},
-    {key: 7, label: "Floe"}
+    { key: 1, label: "John" },
+    { key: 2, label: "Mike" },
+    { key: 3, label: "Anna" },
+    { key: 4, label: "Bill" },
+    { key: 7, label: "Floe" }
 ]);
 ~~~
 
 ![resource_management](/img/resource_management.png)
 
 
-[Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
+**Verwandtes Beispiel**: [Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
 
 
-Wenn Ressourcen über die *serverList*-Collection definiert werden, können sie [zusammen mit anderen Daten geladen werden](guides/supported-data-formats.md#jsonwithcollections). Andernfalls ist das manuelle Laden erforderlich.
+Wenn Sie Ressourcen über die *serverList* Sammlung definieren, können sie zusammen mit dem Rest der Daten geladen werden; andernfalls müssen Sie sie manuell laden.
 
-Weitere Hinweise zur Konfiguration des Ressourcen-Controls im Lightbox finden Sie im Artikel [Resources Control](guides/resources.md).
+Lesen Sie, wie Sie die Ressourcensteuerung des Lightboxes konfigurieren, in den Artikeln Resources control und Resource Assignments control.
 
-## Ressourcen und Ressourcenzuweisungen laden
+## Laden von Ressourcen und Ressourcenzuweisungen
 
-Ab Version 8.0 können Ressourcen und Ressourcenzuweisungen mit den Methoden [gantt.parse()](api/method/parse.md) oder [gantt.load()](api/method/load.md) in das Gantt geladen werden:
+Seit Version 8.0 können Ressourcen und Ressourcenzuweisungen in Gantt mit [gantt.parse()](api/method/parse.md) oder [gantt.load()](api/method/load.md) Methoden geladen werden:
 
 ~~~js
 gantt.parse({
@@ -729,15 +727,15 @@ gantt.parse({
             id: 5,
             text: "Interior office",
             type: "task",
-            start_date: "03-04-2024 00:00",
+            start_date: "03-04-2025 00:00",
             duration: 7,
             parent: "2",
             owner: [
                 {
                     resource_id: "6",
                     value: 3,
-                    start_date: "03-04-2024 00:00",
-                    end_date: "05-04-2024 00:00",
+                    start_date: "03-04-2025 00:00",
+                    end_date: "05-04-2025 00:00",
                 }
             ]
         },
@@ -745,16 +743,16 @@ gantt.parse({
     ],
     links: [],
     resources: [
-        {id: 6, text: "John", unit: "hours/day" },
-        {id: 7, text: "Mike", unit: "hours/day" },
-        {id: 8, text: "Anna", unit: "hours/day" },
-        {id: 9, text: "Bill", unit: "hours/day" },
-        {id: 10, text: "Floe", unit: "hours/day" }
+        { id: 6, text: "John", unit: "hours/day" },
+        { id: 7, text: "Mike", unit: "hours/day" },
+        { id: 8, text: "Anna", unit: "hours/day" },
+        { id: 9, text: "Bill", unit: "hours/day" },
+        { id: 10, text: "Floe", unit: "hours/day" }
     ]
 });
 ~~~
 
-Ressourcenzuweisungen können auch separat von Aufgaben bereitgestellt werden:
+Ressourcenzuweisungen können separat von Aufgaben in das Objekt übergeben werden:
 
 ~~~js
 gantt.parse({
@@ -764,7 +762,7 @@ gantt.parse({
             id: 5,
             text: "Interior office",
             type: "task",
-            start_date: "03-04-2024 00:00",
+            start_date: "03-04-2025 00:00",
             duration: 7,
             parent: "2",
             priority: 1
@@ -774,111 +772,131 @@ gantt.parse({
     links: [],
     assignments: [
         {
-            id: 1, task_id: 5, resource_id: 6, value: 3,
-            start_date: "03-04-2024 00:00", 
-            end_date: "05-04-2024 00:00"
+            id: 1,
+            task_id: 5,
+            resource_id: 6,
+            value: 3,
+            start_date: "03-04-2025 00:00",
+            end_date: "05-04-2025 00:00"
         }
     ],
     resources: [
-        {id: 6, text: "John", unit: "hours/day" },
-        {id: 7, text: "Mike", unit: "hours/day" },
-        {id: 8, text: "Anna", unit: "hours/day" },
-        {id: 9, text: "Bill", unit: "hours/day" },
-        {id: 10, text: "Floe", unit: "hours/day" }
+        { id: 6, text: "John", unit: "hours/day" },
+        { id: 7, text: "Mike", unit: "hours/day" },
+        { id: 8, text: "Anna", unit: "hours/day" },
+        { id: 9, text: "Bill", unit: "hours/day" },
+        { id: 10, text: "Floe", unit: "hours/day" }
     ]
 });
 ~~~
 
-## Verwaltung von Ressourcenzuweisungen
+## Verwalten von Ressourcenzuweisungen {#managingresourceassignments}
 
 ### Parsen von Ressourcenzuweisungen
 
-Ab Version 7.1 können Ressourcenzuweisungen als Objekte im Data Store verwaltet werden.
+Ab Version 7.1 können Sie mit den [resource assignments](guides/resource-management.md#resourceassignmenttime) genauso arbeiten wie mit Objekten des Datenspeichers.
 
-Die Eigenschaft [process_resource_assignments](api/config/process_resource_assignments.md) steuert das Parsen von Werten aus der [gantt.config.resource_property](api/config/resource_property.md) der Aufgaben in interne Ressourcenzuweisungsobjekte. Dadurch ist es möglich, mit Ressourcenzuweisungen über die DataStore API zu arbeiten, einschließlich Abrufen oder Aktualisieren von Zuweisungsobjekten.
+Die neue Eigenschaft [process_resource_assignments](api/config/process_resource_assignments.md) ermöglicht das Parsen der Werte aus dem [gantt.config.resource_property](api/config/resource_property.md) von Aufgaben in die internen Objekte der Ressourcenzuweisungen. Dadurch können Sie die Ressourcenzuweisungen über das DataStore-Objekt manipulieren. Beispielsweise können Sie das benötigte Zuweisungsobjekt abrufen oder es aktualisieren.
 
-**Hinweis:** Diese Funktion ist erforderlich, wenn die gewünschte Dauer und Zeit für Ressourcen angegeben werden soll, insbesondere bei Verwendung des Ressourcen-Diagramms und Histogramms.
+Hinweis: Diese Funktionalität ist erforderlich, wenn Sie die gewünschte Dauer und Zeit für die Ressourcen festlegen möchten, wenn Sie das Resource Diagramm und Histogramm erstellen (Guides Resource Management).
 
-Beachten Sie, dass das Aktivieren dieses Prozesses zu Performance-Einbußen führen kann, was sich bei großen Projekten auswirkt. Falls keine Zeit- oder Dauerdetails benötigt werden, kann das Parsen deaktiviert werden:
+Der Prozess kann zu deutlich spürbaren Leistungs Einbußen führen und bei Großprojekten die Arbeit verlangsamen. Wenn Sie Zeit oder Dauer der Zuweisung nicht benötigen, können Sie das Parsen der Ressourcenzuweisungen über die Konfiguration deaktivieren:
 
 ~~~js
 gantt.config.process_resource_assignments = false;
 ~~~
 
-Wenn deaktiviert, ist `gantt.getDatastore("resourceAssignments")` nicht verfügbar und Zuweisungsobjekte besitzen keine dynamischen Eigenschaften. In diesem Fall behandelt das Ressourcen-Diagramm und Histogramm Ressourcen als für die gesamte Aufgabendauer zugewiesen.
+Wenn die Konfiguration deaktiviert ist, steht der Datastore `gantt.getDatastore("resourceAssignments")` nicht zur Verfügung und die Zuweisungsobjekte verfügen über keine dynamischen Eigenschaften. Das Ressourcendiagramm und das Histogramm gehen davon aus, dass Ressourcen der gesamten Dauer der Aufgabe zugewiesen sind.
 
-### Aktualisierung von Ressourcenzuweisungen
+### Aktualisieren von Ressourcenzuweisungen
 
-Ressourcenzuweisungen werden in einem automatisch erstellten [Data Store](api/config/resource_assignment_store.md) gespeichert.
+Die Ressourcenzuweisungen werden im [Data Store](api/config/resource_assignment_store.md) gespeichert, der automatisch erstellt wird.
 
-Standardmäßig wird dieser Store basierend auf den Aufgabenobjekten befüllt. Das bedeutet, dass eine Änderung der Resource-Property einer Aufgabe (z.B. task.users) den Data Store automatisch aktualisiert:
+Standardmäßig wird der Zuweisungs-Store aus den Aufgabenobjekten befüllt. Das bedeutet, dass, wenn Sie die Ressourceneigenschaft des Aufgabenobjekts (z. B. task.users) ändern, die Änderungen automatisch im Datenspeicher widergespiegelt werden.
 
 ~~~js
 task[gantt.config.resource_property] = [
     {
         resource_id: "6",
         value: 3,
-        start_date: "03-04-2019 00:00",
-        end_date: "05-04-2019 00:00",
+        start_date: "03-04-2025 00:00",
+        end_date: "05-04-2025 00:00",
     }
 ];
+
 gantt.updateTask(taskId);
 ~~~
 
-
-Manchmal ist es jedoch notwendig, das Aufgabenobjekt nach Änderungen an den Ressourcenzuweisungen über die Data Store API zu aktualisieren. Um Änderungen zurück auf das Aufgabenobjekt zu übertragen, verwenden Sie die Methode [gantt.updateTaskAssignments()](api/method/updatetaskassignments.md):
+Sie müssen jedoch möglicherweise die Daten der Zuweisungen in die andere Richtung aktualisieren. Das bedeutet, Sie müssen die Änderungen am Aufgabenobjekt nach Modifikationen der Zuweisungen über den Datastore auf das Aufgabenobjekt übertragen, indem Sie die Methode [gantt.updateTaskAssignments()](api/method/updatetaskassignments.md) aufrufen:
 
 ~~~js
-var assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
+const assignmentStore = gantt.getDatastore(gantt.config.resource_assignment_store);
 
 assignmentStore.addItem({
     resource_id: 5,
     task_id: 2,
     value: 4
 });
+
 assignmentStore.removeItem(assignment.id);
 assignmentStore.updateItem(assignment.id);
 
-// Nach Aktualisierung der Zuweisungen im Data Store, `updateTaskAssignments` aufrufen, um mit dem Aufgabenobjekt zu synchronisieren:
+// nachdem die Zuweisungen im Datastore aktualisiert wurden, müssen Sie 
+// `updateTaskAssignments` aufrufen, um die Änderungen auf das Aufgabenobjekt zu schreiben:
 gantt.updateTaskAssignments(taskId);
 ~~~
 
-## Anzeige der Ressourcen einer Aufgabe
+### Neu rendern von Ressourcenzuweisungen während des Task-Drag-Vorgangs
 
-Ressourcennamen können als Teil der Aufgabenbeschreibung oder als Labels in den Rasterzellen angezeigt werden. Da Gantt keine eingebaute Methode zum Abrufen eines Elements aus der Serverliste per ID bietet, kann eine einfache Hilfsfunktion verwendet werden:
+Wenn eine Aufgabe gezogen wird, wird das Ressourcen-Panel erneut gerendert, aber die Ressourcenzuweisungen werden nicht geändert. Nur die Zellen des Ressourcen-Panels, die vom Ziehen der Aufgabe betroffen sind (standardmäßig nur jene innerhalb der Aufgaben-Daten), werden erneut gerendert.
+
+Um die Ressourcenzuweisungen in allen Zellen zu aktualisieren, müssen Sie entweder die [process_resource_assignments](api/config/process_resource_assignments.md) Konfigurationsoption deaktivieren oder alle Ressourcenzuweisungen der Aufgabe manuell aktualisieren, wie im folgenden Beispiel gezeigt:
 
 ~~~js
-function byId(list, id) {
-    for (var i = 0; i < list.length; i++) {
-        if (list[i].key == id)
-            return list[i].label || "";
-    }
-    return "";
-}
+gantt.attachEvent("onTaskDrag", (id, mode, task, original) => {
+    const assignments = gantt.getTaskAssignments(id);
+    assignments.forEach(assignment => {
+        if (assignment.mode === "default") {
+            assignment.start_date = task.start_date;
+            assignment.end_date = task.end_date;
+        }
+    });
+});
 ~~~
 
-Diese Hilfsfunktion kann dann in Templates verwendet werden, um Ressourcennamen anzuzeigen:
+## Anzeigen des Aufgaben-Ressourcen-Namens
+
+Der Ressourcenname kann als Teil der Aufgabenbeschreibung oder als Beschriftung einer der Spalten im Grid angezeigt werden.
+Gantt bietet keine fertige Methode, um ein in der Serverliste angegebenes Element anhand seiner ID abzurufen, daher müssen Sie eine kleine Hilfsfunktion implementieren:
 
 ~~~js
-gantt.config.columns = [
-    {name: "owner", width: 80, align: "center", template: function (item) {
-        return byId(gantt.serverList('people'), item.owner_id)}},
-    {name: "text", label: "Task name", tree: true, width: '*'},
-    {name: "add", width: 40}
-];
-
-gantt.templates.rightside_text = function(start, end, task){
-    return byId(gantt.serverList('people'), task.owner_id);
+const byId = (list, id) => {
+    const item = list.find(item => item.key === id);
+    return item ? item.label || "" : "";
 };
 ~~~
 
+Anschließend können Sie den Ressourcen-Namen in Templates verwenden:
 
-[Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
+~~~js
+gantt.config.columns = [
+    { name: "owner", width: 80, align: "center",
+        template: (item) => byId(gantt.serverList('people'), item.owner_id) },
+    { name: "text", label: "Task name", tree: true, width: '*' },
+    { name: "add", width: 40 }
+];
+
+gantt.templates.rightside_text =
+    (start, end, task) => byId(gantt.serverList('people'), task.owner_id);
+~~~
 
 
-## Editierbares Ressourcen-Diagramm
+**Verwandtes Beispiel**: [Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
 
-Um das Bearbeiten von Ressourcenzuweisungen direkt im Ressourcen-Diagramm zu ermöglichen, setzen Sie folgende Konfiguration:
+
+## Bearbeitbare Ressourcen-Diagramm
+
+Um Ressourcenzuweisungen im Ressourcen-Diagramm bearbeitbar zu machen, können Sie die folgende Konfiguration verwenden:
 
 ~~~js
 gantt.config.resources = {
@@ -887,53 +905,51 @@ gantt.config.resources = {
 ~~~
 
 
-[Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+**Verwandtes Beispiel**: [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 
-Mit aktiviertem **editable_resource_diagram** weist Gantt automatisch die Templates [gantt.templates.resource_cell_value](api/template/resource_cell_value.md) und [gantt.templates.resource_cell_class](api/template/resource_cell_class.md) zu, um das Bearbeiten von Ressourcenzuweisungen zu unterstützen.
+Wenn die Eigenschaft **editable_resource_diagram** aktiviert ist, weist Gantt automatisch [gantt.templates.resource_cell_value](api/template/resource_cell_value.md) und [gantt.templates.resource_cell_class](api/template/resource_cell_class.md) Templates zu, um Ressourcenzuweisungen im Gantt bearbeitbar zu machen.
 
-Falls Sie eigene Funktionen für diese Templates bereitstellen, verwendet Gantt diese anstelle der Standardimplementierungen.
+Wenn Sie benutzerdefinierte Funktionen diesen Templates zuweisen, verwendet Gantt Templates, die von Ihnen definiert wurden.
 
-Die Standardimplementierungen sind in **gantt.ext.resources** verfügbar:
+Die Standardimplementierung der Templates finden Sie im Objekt **gantt.ext.resources**.
 
 ~~~js
 gantt.templates.resource_cell_value = gantt.ext.resources.editableResourceCellTemplate;
 gantt.templates.resource_cell_class = gantt.ext.resources.editableResourceCellClass;
 ~~~
 
-In der Regel ist eine manuelle Zuweisung dieser Templates nicht erforderlich, da Gantt dies bei aktiviertem editierbaren Diagramm übernimmt.
+Normalerweise müssen Sie diese Templates für ein bearbeitbares Diagramm nicht manuell zuweisen; es wird erwartet, dass Gantt dies verwaltet.
 
-Unten ein Beispiel für ein Template mit editierbaren Zellen, das nach Bedarf angepasst werden kann:
+Im untenstehenden Beispiel wird ein Template mit bearbeitbaren Zellen bereitgestellt. Falls gewünscht, können Sie es anpassen:
 
-**Related example:** [Customizable resource diagram template](https://snippet.dhtmlx.com/libwuna4?tag="gantt")
+**Verwandtes Beispiel**: [Customizable resource diagram template](https://snippet.dhtmlx.com/libwuna4?tag="gantt")
 
-## Individuelle Gestaltung von Ressourcen
+## Benutzerdefiniertes Styling von Ressourcen
 
-Für die Farbgebung werden häufig folgende Templates verwendet:
+Für Farbgebung benötigen Sie üblicherweise die folgenden Templates:
 
-- [gantt.templates.grid_row_class](api/template/grid_row_class.md) - CSS-Klasse für Zeilen im linken Raster
-- [gantt.templates.task_row_class](api/template/task_row_class.md) - Hintergrundzeile in der Zeitleiste (wird nicht verwendet, wenn Smart Rendering aktiviert ist)
-- [gantt.templates.task_class](api/template/task_class.md) - CSS-Klasse für Task-Bar-Elemente
+- [gantt.templates.grid_row_class](api/template/grid_row_class.md) – die CSS-Klasse einer Zeile im linken Grid
+- [gantt.templates.task_row_class](api/template/task_row_class.md) – der Hintergrund der Timeline-Zeile (wird nicht aufgerufen, falls [smart_rendering](api/config/smart_rendering.md) aktiviert ist)
+- [gantt.templates.task_class](api/template/task_class.md) – die CSS-Klasse eines Aufgabenbalkens
 
-Je nach Szenario können Sie entweder:
+Je nach Kontext können Sie
+- entweder vordefinierte Klassen für jede Ressource verwenden, oder
+- Styling laden, z. B. Hintergrund- und Textfarben zusammen mit den Ressourcen. In diesem Fall müssen Sie [CSS dynamisch auf der Seite generieren](guides/colouring-tasks.md#loadingcolorswithdata)
 
-- [Vordefinierte Klassen für jede Ressource verwenden](guides/colouring-tasks.md#redefiningthetaskstemplate), oder
-- Styling-Informationen wie Hintergrund- und Textfarbe zusammen mit Ressourcen laden, was das [dynamische Generieren von CSS auf der Seite](guides/colouring-tasks.md#loadingcolorswiththedata) erfordert
-
-
-[Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
+**Verwandtes Beispiel**: [Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
 
 
 ## Ressourcenkalender
 
-Gantt unterstützt individuelle Arbeitszeit-Kalender, die bestimmten Ressourcen zugeordnet werden können.
+Gantt unterstützt die Funktion der benutzerdefinierten Arbeitszeitkalender. Arbeitszeitkalender können bestimmten Ressourcen zugeordnet werden.
 
 ![resource_calendars](/img/resource_calendars.png)
 
-Diese Kalender werden Aufgaben über eine Eigenschaft in einer 1:1-Beziehung zugeordnet:
+Sie werden Aufgaben über den Eigenschaftswert in einer Eins-zu-eins-Beziehung zugeordnet:
 
 ~~~js
-// Der Ressourcenwert wird aus der Eigenschaft `task.resource_id` übernommen
+// ein Ressourcenwert wird aus der Eigenschaft `task.resource_id` entnommen
 gantt.config.resource_property = "resource_id";
 
 gantt.config.resource_calendars = {
@@ -943,44 +959,41 @@ gantt.config.resource_calendars = {
 };
 ~~~
 
-Jede Eigenschaft kann verwendet werden, um Kalender Ressourcen zuzuweisen. Ändert sich die Resource-Property dynamisch, berechnet Gantt die Aufgabenzeit automatisch mit dem aktualisierten Kalender neu.
+Sie können jede Eigenschaft verwenden, um Kalender Ressourcen zuzuordnen. Wenn die Ressourcen-Eigenschaft dynamisch geändert wird, berechnet Gantt automatisch die Zeiten der Tasks mit dem neuen Kalender neu.
+
+**Verwandtes Beispiel**: [Resource calendars](https://docs.dhtmlx.com/gantt/samples/11_resources/02_resource_calendars.html)
 
 
-[Resource calendars](https://docs.dhtmlx.com/gantt/samples/11_resources/02_resource_calendars.html)
+Falls mehreren Ressourcen einem Task zugewiesen werden können, kann Gantt automatisch einen gemeinsamen Kalender für alle zugewiesenen Ressourcen generieren:
 
+Siehe dazu den entsprechenden Artikel [Dynamic Resource Calendars](api/config/dynamic_resource_calendars.md) bzw. guides/working-time.md#assigningcalendartoresource.
 
-Wenn mehreren Ressourcen eine Aufgabe zugewiesen ist, kann Gantt [automatisch einen kombinierten Kalender](api/config/dynamic_resource_calendars.md) für alle zugewiesenen Ressourcen generieren.
+## Ausgleichen der Ressourcen-Auslastung {#balancingresourceload}
 
-Weitere Details finden Sie im zugehörigen Artikel [Zuweisen von Kalendern zu Ressourcen](guides/working-time.md#assigningcalendartoresource).
-
-## Auslastung von Ressourcen ausgleichen
-
-Die [Grouping-Erweiterung](guides/extensions-list.md#grouping) ermöglicht die Aufschlüsselung des gesamten Projekts nach der **resource**-Property.
+Sie können die [Grouping-Erweiterung](guides/extensions-list.md#grouping) verwenden, um das gesamte Projekt nach der Eigenschaft **resource** aufzuschlüsseln.
 
 ![resource_break_down](/img/resource_break_down.png)
 
-Dies hilft dabei, die Auslastung von Ressourcen im Kalender auszugleichen.
+Diese Funktion kann zur Ausbalancierung der Ressourcen-Auslastung im Kalender verwendet werden.
+
+**Verwandtes Beispiel**: [Break down by resources](https://docs.dhtmlx.com/gantt/samples/11_resources/03_break_down_by_resource.html)
 
 
-[Break down by resources](https://docs.dhtmlx.com/gantt/samples/11_resources/03_break_down_by_resource.html)
+Weitere Informationen zur Gruppierung von Aufgaben finden Sie im [verwandten Artikel](guides/grouping.md). 
 
+### Gruppierung von Aufgaben nach mehreren Ressourcen 
 
-Weitere Informationen zur Gruppierung von Aufgaben finden Sie im [zugehörigen Artikel](guides/grouping.md). 
-
-### Gruppierung von Aufgaben nach mehreren Ressourcen
-
-Wenn einer Aufgabe mehrere Ressourcen zugewiesen sind, wird sie nach diesen Ressourcen gruppiert. Das bedeutet, dass die Aufgabe nicht mehrfach für jede Person erscheint, sondern einmal mit allen zugewiesenen Personen aufgelistet wird. Gruppierte Aufgaben werden basierend auf ihrem Startdatum sortiert.
+Falls Sie mehreren Ressourcen eine Aufgabe zuweisen, werden Aufgaben nach den zugewiesenen Ressourcen gruppiert. Das bedeutet, dass eine Aufgabe, die zwei Personen zugewiesen ist, nicht für jede von ihnen dupliziert wird. Stattdessen wird sie einmal gerendert, wobei beide Personen zugewiesen sind. Beachten Sie, dass gruppierte Aufgaben nach dem Startdatum sortiert werden.
 
 ![Group resources](/img/grouping_resources.png)
 
 
-[Group by multiple resources](https://docs.dhtmlx.com/gantt/samples/11_resources/08_resource_usage_groups.html)
+**Verwandtes Beispiel**: [Group by multiple resources](https://docs.dhtmlx.com/gantt/samples/11_resources/08_resource_usage_groups.html)
 
 
-- Wenn Aufgaben im Datensatz mehreren Ressourcen zugewiesen sind, erstellt Gantt automatisch Gruppen dafür.
-- Aufgaben ohne zugewiesene Ressourcen werden in eine Standardgruppe namens Not assigned eingeordnet. Existiert diese Gruppe bereits in den an die **groupBy()**-Methode übergebenen Daten, sollte sie die Konfiguration *default:true* enthalten, um eine doppelte Standardgruppe zu vermeiden.
+- Wenn in den geladenen Daten mehreren Ressourcen eine Aufgabe zugewiesen sind, erstellt Gantt automatisch Gruppen dafür. 
+- Für Aufgaben ohne zugewiesene Ressourcen erstellt Gantt die Standardgruppe Not assigned. Falls eine solche Gruppe bereits in den in die Gruppe übergebenen Daten vorhanden ist und die Methode **groupBy()** verwendet wird, sollte diese Gruppe mit der Einstellung *default:true* konfiguriert sein, um das automatische Erzeugen einer solchen Gruppe zu verhindern.
 
 :::note
-Bitte beachten Sie, dass das Verschieben von Aufgaben, die nach mehreren Ressourcen gruppiert sind, nicht möglich ist.
+Bitte beachten Sie, dass das Ziehen von Aufgaben, die nach mehreren Ressourcen gruppiert sind, unmöglich ist.
 :::
-

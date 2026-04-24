@@ -1,6 +1,6 @@
 ---
 sidebar_label: drag_timeline
-title: drag_timeline config
+title: drag_timeline конфигурация
 description: "настраивает поведение расширения drag_timeline"
 ---
 
@@ -30,20 +30,20 @@ gantt.config.drag_timeline = {
 ### Details
 
 :::note
- Эта опция является частью расширения **drag_timeline**, поэтому убедитесь, что плагин [drag_timeline](guides/extensions-list.md#dragtimeline) включен. 
+This option is defined in the **drag_timeline** extension, so you need to activate the [drag_timeline](guides/extensions-list.md#drag-timeline) plugin. 
 :::
 
-Конфигурация может быть объектом или **null**, где значение **null** отключает расширение.
+The config value can be either an object or the **null** value, the **null** value disables the extension.
 
 ~~~js
-gantt.config.drag_timeline = null; // отключает расширение
+gantt.config.drag_timeline = null; // disables the extension
 ~~~
 
-Объект **drag_timeline** поддерживает следующие свойства:
+The **drag_timeline** object includes the following properties:
 
 
-- **ignore** - (*string*) - CSS-селектор для элементов, при взаимодействии с которыми прокрутка timeline не активируется
+- **ignore** - (*string*) - CSS-селектор. Прокрутка таймлайна не будет активирована для элементов, которые соответствуют селектору
 
-- **useKey** - (*string | boolean*) - если задано, прокрутка timeline активируется только при удерживании указанной клавиши-модификатора. Поддерживаемые клавиши: "ctrlKey", "shiftKey", "metaKey", "altKey"
+- **useKey** - (*string | boolean*) - если свойство указано, прокрутка таймлайна будет активирована только при нажатии указанного модификаторного ключа. Поддерживаемые значения: "ctrlKey", "shiftKey", "metaKey", "altKey"
 
-- **render** - (*boolean*) - при включении timeline будет перерисовываться в начале и в конце прокрутки
+- **render** - (*boolean*) - если свойство включено, прокрутка таймлайна будет повторно отрисована, когда прокрутка начата и когда она завершится

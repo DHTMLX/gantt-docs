@@ -1,20 +1,20 @@
 ---
 sidebar_label: onAfterQuickInfo
 title: onAfterQuickInfo event
-description: "팝업 편집 폼이 닫힌 후에 트리거됩니다"
+description: "팝업 편집 양식이 닫힌 후에 발생합니다"
 ---
 
 # onAfterQuickInfo
 
 ### Description
 
-@short: 팝업 편집 폼이 닫힌 후에 트리거됩니다
+@short: 팝업 편집 양식이 닫힌 후에 발생합니다
 
 @signature: onAfterQuickInfo: (taskId: string | number) =\> void;
 
 ### Parameters
 
-- `taskId` - (required) *string | number* - 작업의 ID
+- `taskId` - (필수) *string | number* - 작업 ID
 
 ### Example
 
@@ -30,7 +30,7 @@ gantt.attachEvent("onAfterQuickInfo",function(taskId){
 ### Details
 
 :::note
- 이 이벤트는 **Quick Info** 확장의 일부이므로, [quick_info](guides/extensions-list.md#quickinfo) 플러그인이 활성화되어 있는지 확인하세요. 
+이벤트는 **Quick Info** 확장에 정의되어 있으므로 [quick_info](guides/extensions-list.md#quick-info) 플러그인을 활성화해야 합니다.
 :::
 
 
@@ -44,5 +44,4 @@ gantt.attachEvent("onAfterQuickInfo",function(taskId){
 - [onQuickInfo](api/event/onquickinfo.md)
 
 ### Related Guides
-- [확장 기능 전체 목록](guides/extensions-list.md#quickinfo)
-
+- [Full List of Extensions](guides/extensions-list.md#quick-info)

@@ -5,75 +5,165 @@ sidebar_label: "가이드"
 
 # 가이드
 
-이 섹션은 dhtmlxGantt 사용에 대한 실질적인 안내를 제공하는 문서의 핵심 부분입니다. 다양한 복잡도의 작업을 돕기 위해 작업 중심의 매뉴얼로 구성되어 있습니다. 각 문서에서는 필수 절차와 문제 해결 방법을 다룹니다.
+가이드 정보는 문서의 주요 부분을 차지하며 실제로 dhtmlxGantt를 사용할 때 도움을 제공합니다.
+이 챕터는 다양한 난이도의 작업을 수행하는 데 도움을 주는 작업 중심의 매뉴얼로 구성되어 있습니다.
+문서는 핵심 절차와 문제 해결 활동을 다룹니다. 
 
-또한 dhtmlxGantt 라이브러리의 [Standard 및 PRO 버전에서 제공되는 기능](guides/editions-comparison.md)도 확인할 수 있습니다.
+다음의 [표준(Standard) 및 PRO 버전에서 제공되는 기능](guides/editions-comparison.md)을 dhtmlxGantt 라이브러리에서 확인하십시오.
 
-<table cellspacing="0" cellpadding="5" border="0">
-    <tbody>
-    <tr>
-        <td id="data" class='topics'><h4> 페이지에 Gantt 차트 생성하기 </h4> <ul id="data_sublist" > <li>[dhtmlxGantt 설치 방법](guides/installation.md)</li> <li>[Initializing Gantt](guides/initializing-gantt-chart.md)</li> <li>[확장 기능 전체 목록](guides/extensions-list.md)</li> </ul></td>
-        <td class='topic_description'>Gantt를 설치하고 초기화하는 방법과 사용 가능한 확장 기능 목록을 설명합니다.</td>
-    </tr>
-    <tr>
-        <td id="data" class='topics'><h4> Gantt와 프론트엔드 시작하기 </h4> <ul id="data_sublist" > <li>[dhtmlxGantt를 Plain JS/HTML에서 사용하기](guides/initializing-gantt-chart.md)</li> <li>[dhtmlxGantt와 Angular 연동하기](integrations/angular/howtostart-angular.md)</li> <li>[dhtmlxGantt와 React 연동하기](integrations/react/quick-start.md)</li> <li>[dhtmlxGantt와 Vue.js 연동하기](integrations/vue/howtostart-vue.md)</li> <li>[dhtmlxGantt와 Svelte 연동](integrations/svelte/howtostart-svelte.md)</li> </ul></td>
-        <td class='topic_description'>프론트엔드에서 표준 Gantt 차트를 구축하고 설정하는 방법을 설명합니다.</td>
-    </tr>
-    <tr>
-        <td id="data" class='topics'><h4> 서버 사이드에서 Gantt 시작하기 </h4> <ul id="data_sublist" > <li>[dhtmlxGantt와 ASP.NET Core 사용하기](integrations/dotnet/howtostart-dotnet-core.md)</li> <li>[dhtmlxGantt와 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)</li> <li>[dhtmlxGantt와 Node.js 연동하기](integrations/node/howtostart-nodejs.md)</li> <li>[dhtmlxGantt와 PHP: Laravel 연동](integrations/php/howtostart-php-laravel.md)</li> <li>[dhtmlxGantt와 PHP:Slim 연동하기](integrations/php/howtostart-php-slim4.md)</li> <li>[dhtmlxGantt와 Python](integrations/other/howtostart-python.md)</li> <li>[dhtmlxGantt와 Salesforce LWC 연동하기](integrations/salesforce/howtostart-salesforce.md)</li> <li>[dhtmlxGantt와 Ruby on Rails 연동하기](integrations/other/howtostart-ruby.md)</li> </ul></td>
-        <td class='topic_description'>다양한 서버 사이드 플랫폼에서 표준 dhtmlxGantt 차트를 구축하고, 데이터베이스 연결, 데이터 로딩, 변경사항 저장, 작업 정렬, 애플리케이션 보안 등 일반적인 작업을 처리하는 방법을 안내합니다.</td>
-    </tr>
-    <tr>
-        <td id="data" class='topics'><h4> Gantt 차트 구성하기 </h4> <ul id="data_sublist" > <li>[Configuration](guides/common-configuration.md)</li> <li>[간트 레이아웃](guides/layout-config.md)</li> <li>[리소스 관리](guides/resource-management.md)</li> <li>[이벤트 처리](guides/handling-events.md)</li> <li>[여러 개의 차트를 한 페이지에 표시하기](guides/multiple-gantts.md)</li> <li>[서버에서 Gantt 사용하기](guides/using-gantt-on-server.md)</li> </ul></td>
-        <td class='topic_description'>서버에서 Gantt 차트를 생성하고, 페이지에 표준 차트를 구축하며, 설정 구성, 템플릿 커스터마이징, 이벤트 연결 등 다양한 방법으로 차트를 활성화하는 방법을 설명합니다.</td>
-    </tr>
-    <tr>
-        <td id="manipulations" class='topics'><h4> 데이터 로딩 및 저장 </h4> <ul id="manipulations_sublist"> <li>[데이터 로딩](guides/loading.md)</li> <li>[Server-Side Integration](guides/server-side.md)</li> <li>[성능: 개선 방법](guides/performance.md)</li> </ul></td>
-        <td class='topic_description'>Gantt 차트에 데이터를 로딩하는 다양한 방법과 소스, 포맷, 기법에 대해 다룹니다.</td>
-    </tr>
-    <tr>
-        <td id="events" class='topics'><h4> 그리드 영역 구성 </h4> <ul id="events_sublist"> <li>[컬럼 지정하기](guides/specifying-columns.md)</li> <li>[그리드에서 행 크기 조정하기](guides/resizing-rows.md)</li> <li>[트리 컬럼 구성하기](guides/tree-column.md)</li> <li>[작업 순서 변경하기](guides/reordering-tasks.md)</li> <li>[멀티 태스크 선택](guides/multiselection.md)</li> <li>[컬럼 정렬](guides/sorting.md)</li> <li>[작업 그룹화](guides/grouping.md)</li> <li>[작업 필터링](guides/filtering.md)</li> <li>[그리드에서 인라인 편집](guides/inline-editing.md)</li> </ul></td>
-        <td class='topic_description'>그리드 작업에 집중: 열 지정 및 구성, 트리 컬럼 커스터마이징, 선택 활성화 등 다양한 기능을 설명합니다.</td>
-    </tr>
-    <tr>
-        <td id="lightbox" class='topics'><h4> 스케일 구성 </h4> <ul id="lightbox_sublist"> <li>[스케일 설정하기](guides/configuring-time-scale.md) </li> <li>[줌(Zooming)](guides/zooming.md)</li> <li>[타임 슬롯 하이라이트하기](guides/highlighting-time-slots.md)</li>  <li>[스케일 설정의 동적 변경](guides/dynamic-scale.md)</li> <li>[스케일에서 시간 단위 숨기기](guides/custom-scale.md)</li> <li>[수직 마커 추가하기](guides/markers.md)</li> <li>[RTL (오른쪽-왼쪽) 모드](guides/rtl-mode.md)</li> </ul></td>
-        <td class='topic_description'>타임라인 설정: 메인 스케일의 포맷, 단위, 단계 조정, 보조 스케일 추가 및 구성, 특정 날짜 강조 등 다양한 기능을 다룹니다.</td>
-    </tr>
-    <tr>
-        <td id="styling" class='topics'><h4> 라이트박스(편집 폼) 구성 </h4> <ul id="styling_sublist"> <li>[Lightbox 요소 구성하기](guides/default-edit-form.md)</li> <li>[Lightbox 요소 작업하기](guides/lightbox-manipulations.md)</li> <li>[Custom Lightbox](guides/custom-edit-form.md)</li> <li>[커스텀 엘리먼트 생성하기](guides/custom-editor.md)</li> <li>[라이트박스의 버튼 변경하기](guides/custom-button.md)</li> </ul></td>
-        <td class='topic_description'>라이트박스 작업 방법: 컨트롤 추가/제거, 컨트롤 값 가져오기 및 설정, 라이트박스 외관 커스터마이징 등 다양한 기능을 설명합니다.</td>
-    </tr>
-    <tr>
-        <td id="customevent" class='topics'><h4> 작업(Task) 구성 </h4> <ul id="customevent_sublist"> <li>[작업 유형](guides/task-types.md)</li> <li>[Task Object/Id](guides/task-object-operations.md)</li> <li>[Task Parent/Child](guides/task-tree-operations.md)</li> <li>[작업의 기본 작업](guides/crud-task.md)</li> <li>[예정되지 않은 작업](guides/unscheduled-tasks.md)</li> <li>[작업 분할](guides/split-tasks.md)</li> <li>[멀티 태스크 선택](guides/multiselection.md)</li> <li>[작업 시간 계산](guides/working-time.md)</li> <li>[Critical Path](guides/critical-path.md)</li> <li>[타임라인의 추가 요소](guides/inbuilt-baselines.md)</li> <li>[타임라인 영역의 커스텀 요소](guides/baselines.md)</li> <li>[Milestones](guides/milestones.md)</li> <li>[Gantt 요소의 툴팁](guides/tooltips.md)</li> <li>[작업 내용 표시](guides/text-block-for-task.md)</li> <li>[읽기 전용 모드](guides/readonly-mode.md)</li> <li>[Validation](guides/validation.md)</li> <li>[타임라인 내에서 작업 드래그하기](guides/dnd.md)</li> <li>[DnD로 작업 생성/선택하기](guides/advanced-dnd.md)</li> <li>[수동으로 예약된 요약 작업](guides/custom-projects-dates.md)</li> </ul></td>
-        <td class='topic_description'>작업 객체의 기본적인 조작(추가, 삭제, 날짜 포맷 설정, 필터링 등)에 대해 다룹니다.</td>
-    </tr>
-    <tr>
-        <td id="internet" class='topics'><h4> 종속성(Dependency) 링크 구성 </h4> <ul id="internet_sublist"> <li>[링크 객체/ID 가져오기](guides/link-object-operations.md)</li> <li>[링크 추가/수정/삭제](guides/crud-dependency.md)</li> <li>[자동 스케줄링](guides/auto-scheduling.md)</li> </ul></td>
-        <td class='topic_description'>종속성 객체의 기본 작업(추가, 삭제, 조회 등)에 중점을 둡니다.</td>
-    </tr>
-    <tr>
-        <td id="manipulations" class='topics'><h4> 데이터 내보내기 및 가져오기 </h4> <ul id="manipulations_sublist"> <li>[Export Service - 독립형 설치를 위한 시스템 요구 사항](guides/export-requirements.md)</li> <li>[Export to PDF and PNG](guides/export.md)</li> <li>[Export/Import for Excel, Export to iCal](guides/excel.md)</li> <li>[MS Project로부터의 내보내기 및 가져오기](guides/export-msproject.md)</li> <li>[Export and Import from Primavera P6](guides/export-primavera.md)</li> <li>[데이터를 XML 및 JSON으로 직렬화하기](guides/serialization.md)</li> <li>[Node.js에서 데이터 내보내기 및 가져오기](guides/export-nodejs.md)</li> </ul></td>
-        <td class='topic_description'>Gantt 데이터를 다양한 포맷으로 내보내고 가져오는 방법과 XML, JSON으로 데이터 직렬화하는 방법을 다룹니다.</td>
-    </tr> 
-   <tr>
-        <td id="import" class='topics'><h4> 스타일링 </h4> <ul id="import_sublist"> <li>[CSS 문서](guides/css-overview.md)</li> <li>[스킨(Skins)](guides/skins.md)</li> <li>[간트 차트의 템플릿](guides/templates.md)</li> <li>[Tasks Coloring](guides/colouring-tasks.md)</li> <li>[링크 색상 및 스타일링](guides/colouring-lines.md)</li> <li>[Gantt 스타일 작업하기](guides/styling-guide.md)</li> </ul></td>
-        <td class='topic_description'>Gantt 차트의 스타일링에 사용되는 포맷과 기법을 설명합니다.</td>
-    </tr>
-    <tr>
-        <td id="internet" class='topics'><h4> 날짜 작업 </h4> <ul id="internet_sublist"> <li>[날짜 형식 지정](guides/date-format.md)</li> <li>[날짜 작업](guides/date-operations.md)</li> </ul></td>
-        <td class='topic_description'>Gantt 차트에서 날짜 작업과 관련된 중요한 주제(날짜-문자열 변환, 날짜 포맷에서 허용되는 문자 등)를 다룹니다.</td>
-    </tr>
-    <tr>
-        <td id="internet" class='topics'><h4> 공통 기능 </h4> <ul id="internet_sublist"> <li>[로컬라이제이션](guides/localization.md)</li> <li>[전체 화면 모드](guides/fullscreen-mode.md)</li> <li>[Undo/Redo 기능](guides/undo-redo.md)</li> <li>[팝업 메시지 및 모달 박스](guides/message-boxes.md)</li> <li>[접근성](guides/accessibility.md)</li> <li>[키보드 내비게이션](guides/keyboard-navigation.md)</li> <li>[Content Security Policy 준수](guides/content-security-policy.md)</li> <li>[JQuery와의 통합](guides/jquery-integration.md)</li> </ul></td>
-        <td class='topic_description'>Gantt 차트 생성 시 유용하게 사용할 수 있는 공통 기능을 안내합니다.</td>
-    </tr>
-    <tr>
-        <td id="data" class='topics'><h4> How-tos </h4> <ul id="data_sublist" > <li>[How-tos](guides/how-to.md)</li> </ul></td>
-        <td class='topic_description'>Gantt 차트 구성과 관련된 자주 묻는 질문에 대한 실질적인 해결책을 제공합니다.</td>
-    </tr>
-    <tr>
-        <td id="data" class='topics'><h4> 사용자 인터페이스 가이드 </h4> <ul id="data_sublist" > <li>overview.md</li> </ul></td>
-        <td class='topic_description'>최종 사용자 관점에서 Gantt 차트 인터페이스 요소를 설명합니다.</td>
-    </tr>
-       </tbody>
-</table>
+<div className="guidesList">
+
+## 페이지에서 간트 차트 만들기 
+
+간트 차트를 설치하고 초기화하는 방법을 보여주며 사용 가능한 확장 기능 목록을 제공합니다.
+
+- ### [dhtmlxGantt 설치 방법](guides/installation.md)
+- ### [간트 차트 초기화](guides/initializing-gantt-chart.md)
+- ### [확장 기능의 전체 목록](guides/extensions-list.md)
+
+## 간트 차트 구성 
+
+서버에서 간트 차트를 생성하는 방법, 페이지에서 표준 간트 차트를 구성하고 이를 작동하게 만드는 방법을 설명합니다: 특정 설정으로 구성하고, 기본 템플릿을 사용자 정의하고, 이벤트를 연결하는 등.
+
+- ### [구성](guides/common-configuration.md)
+- ### [간트 차트 레이아웃](guides/layout-config.md)
+- ### [자원 관리](guides/resource-management.md)
+- ### [이벤트 처리](guides/handling-events.md)
+- ### [페이지당 다중 간트 차트](guides/multiple-gantts.md)
+- ### [서버에서 간트 차트 사용하기](guides/using-gantt-on-server.md)
+
+
+## 데이터 로딩 및 저장 
+
+간트 차트에 데이터를 로드하는 방법: 다양한 데이터 소스, 형식, 기법에 대해 다룹니다.
+
+- ### [데이터 로딩](guides/loading.md)
+- ### [서버 사이드 통합](guides/server-side.md)
+- ### [성능: 향상 방법](guides/performance.md)
+ 
+## 그리드 영역 구성 
+
+그리드 작업에 초점을 맞춥니다: 필요한 열을 지정하고 구성하며, 트리 열을 사용자 정의하고, 선택을 활성화하는 등.
+
+- ### [열 지정](guides/specifying-columns.md)
+- ### [그리드에서 행 크기 조정](guides/resizing-rows.md)
+- ### [트리 열 구성](guides/tree-column.md)
+- ### [작업 재정렬](guides/reordering-tasks.md)
+- ### [다중 작업 선택](guides/multiselection.md)
+- ### [열 정렬](guides/sorting.md)
+- ### [작업 그룹화](guides/grouping.md)
+- ### [작업 필터링](guides/filtering.md)
+- ### [그리드에서의 인라인 편집](guides/inline-editing.md)
+  
+ 
+## 스케일 구성
+
+타임라인에서의 작업에 초점을 맞춥니다: 기본 시간 눈금의 형식, 단위, 간격 설정, 두 번째 눈금 추가 및 구성, 특정 날짜 강조 등.
+
+- ### [스케일 설정](guides/configuring-time-scale.md) 
+- ### [확대/축소](guides/zooming.md)
+- ### [시간 슬롯 하이라이트](guides/highlighting-time-slots.md)
+- ### [스케일 설정의 동적 변경](guides/dynamic-scale.md)
+- ### [스케일에서 시간 단위 숨기기](guides/custom-scale.md)
+- ### [수직 표시 추가](guides/markers.md)
+- ### [RTL(오른쪽에서 왼쪽) 모드](guides/rtl-mode.md)
+  
+## 라이트박스(편집 양식) 구성 
+
+라이트박스와의 작업 방법: 컨트롤 추가/삭제, 컨트롤 값 가져오기/설정, 라이트박스 모양 커스터마이즈 등.
+
+- ### [라이트박스 요소 구성](guides/default-edit-form.md)
+- ### [라이트박스 요소 작업](guides/lightbox-manipulations.md)
+- ### [커스텀 라이트박스](guides/custom-edit-form.md)
+- ### [커스텀 요소 만들기](guides/custom-editor.md)
+- ### [라이트박스의 버튼 변경](guides/custom-button.md)
+ 
+
+## 작업 구성 
+
+작업 객체에 대한 일반적인 작업(추가, 삭제, 날짜 형식 설정, 필터링 등)의 기본을 다룹니다.
+
+- ### [작업 유형](guides/task-types.md) 
+- ### [작업 객체/ID](guides/task-object-operations.md)
+- ### [작업 상위/하위](guides/task-tree-operations.md)
+- ### [작업의 기본 조작](guides/crud-task.md)
+- ### [예정되지 않은 작업](guides/unscheduled-tasks.md)
+- ### [작업 분할](guides/split-tasks.md)
+- ### [다중 작업 선택](guides/multiselection.md)
+- ### [작업 시간 계산](guides/working-time.md)
+- ### [임계 경로](guides/critical-path.md)
+- ### [타임라인의 추가 요소](guides/inbuilt-baselines.md)
+- ### [타임라인 영역의 커스텀 요소](guides/baselines.md)
+- ### [마일스톤](guides/milestones.md)
+- ### [간트 차트 요소의 툴팁](guides/tooltips.md)
+- ### [작업 내용 표시](guides/text-block-for-task.md)
+- ### [읽기 전용 모드](guides/readonly-mode.md)
+- ### [유효성 검사](guides/validation.md)
+- ### [타임라인에서 작업 드래그](guides/dnd.md)
+- ### [드래그 앤 드롭으로 작업 만들기/선택하기](guides/advanced-dnd.md)
+- ### [수동으로 예정된 요약 작업](guides/custom-projects-dates.md)
+
+  
+## 종속성 링크 구성 
+
+종속성 객체에 대한 일반 작업의 기본에 대해 다룹니다. 예: 추가, 삭제, 의존성 객체 가져오기 등.
+
+- ### [링크 객체/ID 얻기](guides/link-object-operations.md)
+- ### [링크 추가/업데이트/삭제](guides/crud-dependency.md)
+- ### [자동 스케줄링](guides/auto-scheduling.md)
+
+
+## 데이터 내보내기 및 가져오기 
+
+다양한 형식으로 간트 차트 데이터를 내보내고 가져오는 방법과 XML 및 JSON으로 데이터를 직렬화하는 방법을 다룹니다.
+
+- ### [Export Service - 독립 실행 설치를 위한 시스템 요구사항](guides/export-requirements.md)
+- ### [PDF 및 PNG로 내보내기](guides/export.md)
+- ### [Excel 내보내기/가져오기, iCal로 내보내기](guides/excel.md)
+- ### [MS Project로부터 내보내기/가져오기](guides/export-msproject.md)
+- ### [Primavera P6로부터 내보내기/가져오기](guides/export-primavera.md)
+- ### [XML 및 JSON으로 데이터 직렬화](guides/serialization.md)
+- ### [Node.js에서 데이터 내보내기/가져오기](guides/export-nodejs.md)
+
+
+## 스타일링 
+
+간트 차트를 스타일링하는 데 사용할 수 있는 형식과 기법에 대해 설명합니다.
+
+- ### [CSS 문서](guides/css-overview.md)
+- ### [스킨](guides/skins.md)
+- ### [간트 차트 템플릿](guides/templates.md)
+- ### [작업 색상 지정](guides/colouring-tasks.md)
+- ### [링크 색상 지정 및 스타일링](guides/colouring-lines.md)
+- ### [간트 차트 스타일 다루기](guides/styling-guide.md)
+ 
+
+## 날짜 작업 
+
+간트 차트에서 날짜를 다룰 때 필요할 수 있는 주제를 다룹니다: 날짜를 문자열로 변환하고 다시 변환하는 법, 날짜 형식에 허용되는 문자 등.
+
+- ### [날짜 형식 사양](guides/date-format.md)
+- ### [날짜 연산](guides/date-operations.md)
+
+## 일반 기능 
+
+간트 차트를 만들 때 필요할 수 있는 일반 정보를 안내합니다.
+
+- ### [지역화(다국어 지원)](guides/localization.md)
+- ### [전체 화면 모드](guides/fullscreen-mode.md)
+- ### [실행 취소/다시 실행 기능](guides/undo-redo.md)
+- ### [팝업 메시지 및 모달 상자](guides/message-boxes.md)
+- ### [접근성](guides/accessibility.md)
+- ### [키보드 탐색](guides/keyboard-navigation.md)
+- ### [콘텐츠 보안 정책 준수](guides/content-security-policy.md)
+- ### [JQuery와의 통합](guides/jquery-integration.md)
+
+  
+## 사용자 인터페이스 가이드 
+
+최종 사용자의 관점에서 간트 차트 인터페이스의 요소를 설명합니다.
+
+- ### [간트 차트 인터페이스](guides/overview.md)
+
+
+</div>

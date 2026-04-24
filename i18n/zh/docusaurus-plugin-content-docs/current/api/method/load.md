@@ -8,18 +8,18 @@ description: "从外部源加载数据到甘特图中。"
 
 ### Description
 
-@short: 从外部源加载数据到甘特图中。
+@short: 从外部数据源将数据加载到甘特图
 
 @signature: load: (url: string, type?: string, callback?: GanttCallback) =\> any
 
 ### Parameters
 
-- `url` - (required) *string* - 服务器端的URL（可以是静态文件或返回数据的服务器端脚本）。
-- `type` - (optional) *string* - <i>('json', 'xml', 'oldxml')</i> 数据格式。默认值为 <i>'json'</i>。
-- `callback` - (optional) *function* - 加载完成后调用的函数。
+- `url` - (required) *string* - 服务器端 URL（可能是一个静态文件或输出数据的服务器端脚本）
+- `type` -	(optionaL) *string*	<i>('json', 'xml', 'oldxml')</i> - 数据类型。默认值 - <i>'json'</i>
+- `callback`	-	(optionaL) *function* 	- 回调函数
 
 ### Returns
-- ` resultPromise` - (object) - 一个在AJAX请求完成时解析的promise对象。
+- `resultPromise` - (object) - 当 Ajax 请求完成时解析的 Promise 对象
 
 ### Example
 
@@ -50,9 +50,7 @@ gantt.load("data.xml","xml", function(){ //提供回调函数
 此方法会触发 [onLoadStart](api/event/onloadstart.md) 和 [onLoadEnd](api/event/onloadend.md) 事件。
 
 :::note
-
-请注意，该方法不支持Node.js版本的甘特图。
- 
+请注意，该方法在 Node.js 版本的 Gantt 中不可用。
 :::
 
 ### Related API
@@ -62,8 +60,7 @@ gantt.load("data.xml","xml", function(){ //提供回调函数
 - [onAjaxError](api/event/onajaxerror.md)
 
 ### Related Guides
-- [支持的数据格式](guides/supported-data-formats.md)
-- [数据加载](guides/loading.md)
-- [服务器端集成](guides/server-side.md)
-- [动态加载（按需加载）](guides/dynamic-loading.md)
-
+- [Supported Data Formats](guides/supported-data-formats.md)
+- [Data Loading](guides/loading.md)
+- [Server-Side Integration](guides/server-side.md)
+- [Dynamic Loading (on demand)](guides/dynamic-loading.md)

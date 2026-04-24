@@ -1,9 +1,9 @@
 ---
-title: "Gantt for Frameworks"
-sidebar_label: "Gantt for Frameworks"
+title: "面向框架的甘特图"
+sidebar_label: "面向框架的甘特图"
 ---
 
-# Gantt for Frameworks
+# 面向框架的甘特图
 
 - [React Gantt](integrations/react.md)
 - [Angular Gantt](guides/angular.md)

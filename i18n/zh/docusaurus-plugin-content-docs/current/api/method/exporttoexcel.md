@@ -1,36 +1,37 @@
 ---
 sidebar_label: exportToExcel
 title: exportToExcel method
-description: "将甘特图中的数据导出为Excel文件"
+description: "将甘特图中的数据导出到一个 Excel 文档"
 ---
 
 # exportToExcel
 
 ### Description
 
-@short: 将甘特图中的数据导出为Excel文件
+@short: 将甘特图中的数据导出到一个 Excel 文档
 
-@signature: exportToExcel: (_export_?: any) =\> void
+@signature: exportToExcel: (_export_?: any) => void
 
 ### Parameters
 
-- `export` - (optional) *object* - 可选，包含导出设置的对象（详情见下文）
+- `export` - object - optional, 一个带有导出设置的对象（详见下文）
 
 ### Example
 
 ~~~jsx
 gantt.exportToExcel({
-    name:"document.xlsx", 
+    name: "document.xlsx", 
     columns:[
-        { id:"text",  header:"标题", width:150 },
-        { id:"start_date",  header:"开始日期", width:250, type:"date" }
+        { id: "text",  header: "Title", width: 150 },
+        { id: "start_date",  header: "Start date", width: 250, type: "date" }
     ],
-    server:"https://myapp.com/myexport/gantt",
-    callback: function(res){
+    server: "https://myapp.com/myexport/gantt",
+    callback: (res) => {
         alert(res.url);
     },
-    visual:true,
-    cellColors:true,
+    visual: true,
+    cellColors: true,
+    data: { },
     date_format: "dddd d, mmmm yyyy"
 });
 ~~~
@@ -44,34 +45,51 @@ gantt.exportToExcel({
 :::
 
 :::note
- 对于8.0之前的Gantt版本，请在页面中引入**https://export.dhtmlx.com/gantt/api.js**脚本以启用在线导出服务，例如:
+如果你使用的 Gantt 版本低于 8.0，需要在页面中引入 `https://export.dhtmlx.com/gantt/api.js` 以启用在线导出服务，例如：
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
- 
+
 :::
 
-**exportToExcel()** 方法接受一个包含若干可选属性的对象:
+The **exportToExcel()** 方法接受一个包含若干属性的对象作为参数（所有属性均为可选）：
 
-- **name** - (*string*) 设置输出文件的文件名，需包含".xlsx"扩展名
-- **columns** - (*array*) 定义生成Excel表格的列。每个列对象可以包含:
-    - **'id'** - (*string,number*) 映射到该列的事件属性
+- **name** - (*string*) 设置输出文件的名称，扩展名为 '.xlsx' 
+- **columns** - (*array*) 允许配置输出的 Excel 工作表的列。列对象的属性包括：
+    - **'id'** - (*string,number*) 将映射到列的事件属性
     - **'header'** - (*string*) 列头文本
     - **'width'** - (*number*) 列宽，单位为像素
-    - **'type'** - (*string*) 列数据类型
-- **server** - (*string*) 导出请求的API端点URL。当使用本地导出服务时非常有用。默认值为 **https://export.dhtmlx.com/gantt**
-- **callback** - (*function*) 用于接收生成的XLSX文件URL的回调函数。回调函数将接收一个包含url属性的JSON对象
-- **visual** - (*boolean*) 是否在导出的Excel文件中包含时间线图，默认为*false*。详情请参见[如何添加任务颜色](guides/excel.md)
-- **cellColors** - (*boolean*) 若为true，导出文件中的单元格将应用由[timeline_cell_class](api/template/timeline_cell_class.md)模板定义的颜色，导出*color*和*background-color*属性
-- **data** - (*object*) 指定用于输出甘特图的自定义数据源
-- **date_format** - (*string*) 定义导出Excel文档中使用的日期格式。支持以下格式代码:
+    - **'type'** - (*string*) 列类型
+- **server** - (*string*) 设置请求的 API 端点。可与导出服务的本地安装一起使用。默认值为 `https://export.dhtmlx.com/gantt`
+- **callback** - (*function*) 如果你希望接收下载生成的 XLSX 文件的 URL，可以使用 callback 属性。它接收一个包含 url 属性的 JSON 对象
+- **visual** - (*boolean*) 将时间轴图添加到导出的 Excel 文档中；默认值为 false。有关如何将任务颜色添加到导出的文件，请参阅 [如何向导出文件添加任务颜色](guides/excel.md#adding-colors-of-tasks-to-export)
+- **cellColors** - (*boolean*) 如果设置为 true，导出文档的单元格将具有由 [](api/template/timeline_cell_class.md) 模板定义的颜色，导出的将是 *color* 与 *background-color* 属性
+- **data** - (*object*) 设置在导出甘特图中显示的自定义数据源
+- **date_format** - (*string*) 设置导出 Excel 文档中日期的显示格式。可以使用以下格式代码：
 
+~~~css
+table.my_table {
+    width: 70%;
+    padding: 0 20px;
+}
+table.my_table tr td {
+    text-align: left;
+    vertical-align: middle;
+    width: 35%;
+    border-bottom: 1px solid grey;
+}
+table.my_table td.version_info {
+    text-align: left;
+    font-weight: bold;
+}
+~~~
+
+格式代码输出：
 
 <table class="my_table">
-<tr><td class="version_info">格式代码</td><td class="version_info">输出示例</td></tr>
-
+<tr><td class="version_info">Format code</td><td class="version_info">Output</td></tr>
 <tr><td>d</td><td>9</td></tr>
 <tr><td>dd</td><td>09</td></tr>
 <tr><td>ddd</td><td>Mon</td></tr>
@@ -89,34 +107,34 @@ gantt.exportToExcel({
 <tr><td>dd/mm/yyyy hh:mm:ss</td><td>09/01/2012 16:20:00</td></tr>
 </table>
 
-## 默认日期参数
+#### Default date parameters
 
-导出模块期望**start_date**和**end_date**列为*Date*类型，**duration**列为*number*类型。
+导出模块期望 start_date 与 end_date 列具有 Date 类型，duration 列具有 number 类型。
 
-当使用[自定义模板](guides/specifying-columns.md)时，应返回预期类型的值，或在列配置的**name**字段中指定不同的属性。例如:
+在应用 [自定义模板](guides/specifying-columns.md#datamappingandtemplates) 时，需返回期望类型的值，或在列配置的 **name** 属性中定义不同的值。例如：
 
-~~~js
-
+~~~jsx {7,10-12}
 gantt.config.columns = [
     ...
-    {name: "start_date", align: "center", width: 100, resize: true, 
-        editor: start_dateEditor},
-    {name: "end_date", align: "center", width: 100, resize: true, 
-        editor: end_dateEditor},
-    {name: "duration_formatted", /*!*/
+    { name: "start_date", align: "center", width: 100, resize: true, 
+        editor: start_dateEditor },
+    { name: "end_date", align: "center", width: 100, resize: true, 
+        editor: end_dateEditor },
+    { name: "duration_formatted", 
         align: "center", width: 40, resize: true, 
         editor: durationEditor, 
-        template: function(task){ /*!*/
-            return formatter.format(task.duration_formatted); /*!*/
+        template: (task) => { 
+            return formatter.format(task.duration_formatted); 
         }
     },
     ...
 ];
 ~~~
 
-否则，甘特数据将无法正确导出。[参见相关示例](https://snippet.dhtmlx.com/q1lhyvt3)。
+否则，Gantt 数据将不会被导出。 [查看相关示例](https://snippet.dhtmlx.com/q1lhyvt3)。
 
 ### Related API
+
 - [exportToMSProject](api/method/exporttomsproject.md)
 - [exportToPrimaveraP6](api/method/exporttoprimaverap6.md)
 - [exportToICal](api/method/exporttoical.md)
@@ -128,5 +146,5 @@ gantt.config.columns = [
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
-- [导出/导入 Excel，导出 iCal](guides/excel.md)
 
+- [Export/Import for Excel, Export to iCal](guides/excel.md)

@@ -8,13 +8,13 @@ description: "从已选中的任务中移除选择"
 
 ### Description
 
-@short: 从已选中的任务中移除选择
+@short: 从所选任务中取消选中状态
 
 @signature: unselectTask: (id?: string | number) =\> void
 
 ### Parameters
 
-- `id` - (optional) *string | number* - 可选，要取消选择的任务ID，详情见下文
+- `id`	-	(optional) *string | number*	-		可选，需取消选中状态的任务的 id，请参见详情
 
 ### Example
 
@@ -36,11 +36,10 @@ gantt.unselectTask(); /*!*/
 
 ### Details
 
-此方法会触发 [onTaskUnselected](api/event/ontaskunselected.md) 事件。
+该方法会触发 [onTaskUnselected](api/event/ontaskunselected.md) 事件。
 
-当启用[多任务选择](guides/multiselection.md)且选中了多个任务时，您需要提供想要取消选择的任务ID作为参数。
+若启用了 [multi-task selection](guides/multiselection.md) 功能且存在多个已选任务，需作为参数传入要取消选中状态的任务的 id。
 
 ### Related API
 - [selectTask](api/method/selecttask.md)
 - [getSelectedId](api/method/getselectedid.md)
-

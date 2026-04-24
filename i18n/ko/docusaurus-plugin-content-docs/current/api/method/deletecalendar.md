@@ -1,25 +1,25 @@
 ---
 sidebar_label: deleteCalendar
 title: deleteCalendar method
-description: "아이디를 사용하여 작업 캘린더를 삭제합니다."
+description: "id로 태스크 캘린더를 삭제합니다"
 ---
 
 # deleteCalendar
 
 ### Description
 
-@short: 아이디를 사용하여 작업 캘린더를 삭제합니다.
+@short: id로 태스크 캘린더를 삭제합니다
 
-@signature: deleteCalendar: (id: string | number) =\> void
+@signature: deleteCalendar: (id: string | number) => void
 
 ### Parameters
 
-- `id` - (required) *string | number* -        캘린더의 아이디
+- `id` - (required) *string | number* -        해당 캘린더의 ID
 
 ### Example
 
 ~~~jsx
-// 캘린더 추가하기
+// 캘린더 추가
 gantt.addCalendar({
     id:"custom",
     worktime: {
@@ -28,13 +28,13 @@ gantt.addCalendar({
     }
 });
 
-// 캘린더 삭제하기
+// 캘린더 삭제
 gantt.deleteCalendar("custom");
 ~~~
 
 ### Details
 
-버전 4.2에서 도입됨
+버전 4.2에서 추가되었습니다
 
 ### Related API
 - [addCalendar](api/method/addcalendar.md)

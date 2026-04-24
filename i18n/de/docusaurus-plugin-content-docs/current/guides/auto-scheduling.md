@@ -1,23 +1,27 @@
 ---
-title: "Auto Scheduling"
-sidebar_label: "Auto Scheduling"
+title: "Automatische Terminplanung"
+sidebar_label: "Automatische Terminplanung"
 ---
 
-# Auto Scheduling
+# Automatische Terminplanung
 
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
 
-Die Bibliothek enthält die **auto_scheduling**-Erweiterung, mit der Gantt Aufgaben automatisch basierend auf deren Beziehungen planen kann.
+Die Bibliothek bietet die Erweiterung **auto_scheduling**, die Gantt die Fähigkeit gibt, Aufgaben automatisch basierend auf den Relationen zwischen ihnen zu planen.
 
 ![auto_scheduling](/img/auto_scheduling.png)
 
-Beispielsweise nehmen wir zwei Aufgaben, die durch eine Abhängigkeit verbunden sind, wobei die zweite Aufgabe direkt nach Abschluss der ersten beginnt. Wenn sich der Zeitplan der ersten Aufgabe ändert, aktualisiert die automatische Planung das Startdatum der zweiten Aufgabe entsprechend. Dies hilft, den Projektzeitplan einzuhalten, indem Aufgabenbeziehungen definiert werden, ohne dass die Daten jeder Aufgabe manuell angepasst werden müssen.
+Stellen Sie sich zum Beispiel vor, Sie haben zwei Aufgaben, die durch eine Abhängigkeit verbunden sind und die zweite Aufgabe beginnt, sobald die erste endet, und
+Sie müssen den Zeitplan der ersten Aufgabe durch Verschieben auf ein neues Datum ändern.
+
+Die automatische Terminplanung aktualisiert das Startdatum der zweiten Aufgabe jedes Mal in Abhängigkeit vom Enddatum der ersten Aufgabe, wenn dieses sich ändert.
+Diese Funktion ermöglicht es Ihnen, den Projektzeitplan zu erzeugen und zu pflegen, indem Sie Beziehungen zwischen Aufgaben festlegen, ohne die Termine jeder Aufgabe manuell festlegen zu müssen.
 
 ## Verwendung
 
-Um die automatische Planung zu aktivieren, aktivieren Sie das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin mit der [gantt.plugins](api/method/plugins.md)-Methode:
+Um die Auto Scheduling-Funktionalität zu verwenden, sollten Sie das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin mit der [gantt.plugins](api/method/plugins.md) Methode aktivieren:
 
 ~~~js
 gantt.plugins({
@@ -25,91 +29,100 @@ gantt.plugins({
 });
 ~~~
 
-Setzen Sie anschließend die **auto_scheduling**-Eigenschaft auf *true*:
+Und setzen Sie die **enabled**-Eigenschaft der **auto_scheduling**-Konfiguration auf *true*:
 
 ~~~js
-gantt.config.auto_scheduling = true;
+gantt.config.auto_scheduling = {
+    enabled: true
+};
 ~~~
 
 
 [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 
-Auch bei aktivierter automatischer Planung können Aufgaben bei Bedarf weiterhin manuell geplant werden.
+Wenn Auto Scheduling aktiviert ist, können einzelne Aufgaben weiterhin manuell geplant werden. 
 
-## Vorwärts-/Rückwärtsplanung
+## Forward/backward planning {#forwardbackwardplanning}
 
-### Projektplanungsstrategien
+### Strategien der Projektplanung
 
-Die Aufgabenplanung kann zwei Ansätze verfolgen: Vorwärts- und Rückwärtsplanung. Diese hängen von bestimmten Konfigurationseinstellungen ab:
+Es gibt zwei Strategien der Planung von Aufgaben innerhalb eines Projekts: Vorwärtsplanung und Rückwärtsplanung. Sie werden durch Kombinationen von Konfigurationseinstellungen definiert:
 
-- [schedule_from_end](api/config/schedule_from_end.md) - (*boolean*) bestimmt den Planungstyp
-- [project_start](api/config/project_start.md) - (*Date*) legt das Projektstartdatum fest; wird als Standardstartdatum bei Vorwärtsplanung verwendet, Standardwert ist *null*
-- [project_end](api/config/project_end.md) - (*Date*) legt das Projektendedatum fest; wird als Standardaufgabenzeit bei Rückwärtsplanung verwendet, Standardwert ist *null*
+- [gantt.config.auto_scheduling.schedule_from_end](api/config/auto_scheduling.md#schedule_from_end) - (*boolean*) definiert den Typ der Planungsstrategie
+- [project_start](api/config/project_start.md) - (*Date*) das Startdatum eines Projekts; wird standardmäßig als Startdatum der Aufgaben verwendet, falls Vorwärtsplanung angewendet wird, *null* standardmäßig
+- [project_end](api/config/project_end.md) - (*Date*) das Enddatum eines Projekts; wird standardmäßig als Defaultzeit der Aufgaben verwendet, falls Rückwärtsplanung verwendet wird, *null* standardmäßig
 
 ### Vorwärtsplanung
 
-Die Vorwärtsplanung ist der Standardmodus, mit **gantt.config.schedule_from_end** auf *false* gesetzt.
+Die Vorwärtsplanung der Aufgaben wird standardmäßig verwendet, d. h. **gantt.config.auto_scheduling.schedule_from_end** ist auf *false* gesetzt.
 
 ~~~js
-// Vorwärtsplanung ist aktiv
-gantt.config.schedule_from_end = false;
+// forward planning of tasks is used
+gantt.config.auto_scheduling = {
+    enabled: true,
+    schedule_from_end: false
+};
 ~~~
 
-In diesem Modus werden Aufgaben ab dem Projektstartdatum oder dem frühesten Aufgabenbeginn geplant, mit dem Ziel, Aufgaben so früh wie möglich zu beginnen, sofern keine anderen Einschränkungen bestehen.
+In diesem Fall wird die Planung der Aufgaben ab dem Startdatum oder vom Datum der frühesten Aufgabe umgesetzt. Aufgaben werden *so früh wie möglich* geplant, sofern keine anderen Einschränkungen auf sie angewendet werden.
 
-Optional können Sie das Projektstartdatum mit **gantt.config.project_start** definieren:
+Das Startdatum des Projekts kann optional über die **gantt.config.project_start**-Konfiguration festgelegt werden:
 
 ~~~js
-gantt.config.project_start = new Date(2019, 2, 1);
+gantt.config.project_start = new Date(2025, 2, 1);
 ~~~
 
 
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-### Rückwärtsplanung
+### Rückwärtsplanung {#backwardscheduling}
 
-Bei der Rückwärtsplanung werden Aufgaben ab dem Projektendedatum geplant. Um dies zu nutzen, setzen Sie **gantt.config.schedule_from_end** auf *true* und geben Sie das Projektendedatum mit **gantt.config.project_end** an:
+Es ist auch möglich, Aufgaben vom Ende des Projekts aus zu planen, d. h. Rückwärtsplanung anzuwenden. Dazu müssen Sie die Eigenschaft **gantt.config.auto_scheduling.schedule_from_end** auf *true* setzen und das Enddatum des Projekts
+über die Konfigurationsoption **gantt.config.project_end** angeben:
 
 ~~~js
-gantt.config.schedule_from_end = true;
-gantt.config.project_end = new Date(2019, 4, 1);
+gantt.config.project_end = new Date(2025, 10, 1);
+gantt.config.auto_scheduling = {
+    enabled: true,
+    schedule_from_end: true
+};
 ~~~
 
-Hier werden Aufgaben so spät wie möglich geplant, wobei die letzte Aufgabe am Projektendedatum endet.
+In diesem Fall werden Aufgaben so spät wie möglich geplant. Die letzte Aufgabe sollte am Enddatum des Projekts enden.
 
 
 [Auto-Schedule From Project End (backward)](https://docs.dhtmlx.com/gantt/samples/02_extensions/20_backwards_scheduling.html)
 
 
-## Zeitliche Einschränkungen für Aufgaben {#timeconstraintsfortasks}
+## Zeitbeschränkungen für Aufgaben {#timeconstraintsfortasks}
 
-Mit dhtmlxGantt können Sie zusätzliche zeitliche Einschränkungen für Aufgaben anwenden.
+dhtmlxGantt bietet die Möglichkeit, zusätzliche Zeitbeschränkungen für Aufgaben festzulegen.
 
 :::note
-Zeitliche Einschränkungen gelten nur für Aufgaben und [Meilensteine](guides/milestones.md). Projekte sind davon nicht betroffen.
+Zeitbeschränkungen gelten nur für Aufgaben und [Meilensteine](guides/milestones.md). Projekte sind davon nicht betroffen.
 :::
 
-### Hinzufügen von Einschränkungen über die Lightbox
+### Festlegen von Beschränkungen über Lightbox
 
-Einschränkungen können über das [**Constraint**-Steuerelement](guides/constraint.md) in der Lightbox einer Aufgabe gesetzt werden.
+Sie können Beschränkungen für eine Aufgabe über die [**Constraint**-Steuerung](guides/constraint.md) in der Lightbox der Aufgabe festlegen.
 
-![Integrierter Datepicker für Einschränkungen](/img/inbuilt_constraint_datepicker.png)
+![Inbuilt datepicker for constraints](/img/inbuilt_constraint_datepicker.png)
 
 ~~~js
 gantt.config.lightbox.sections = [
-    { name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    { name:"constraint", type:"constraint" }, /*!*/
-    { name:"time", type:"duration", map_to:"auto" }
+    { name: "description", height: 38, map_to: "text", type: "textarea", focus: true},
+    { name: "constraint", type: "constraint" }, /*!*/
+    { name: "time", type: "duration", map_to: "auto" }
 ];
 ~~~
 
-### Hinzufügen von Einschränkungen über Inline-Editoren
+### Festlegen von Beschränkungen über Inline-Editoren
 
-Einschränkungen können auch über separate Spalten im Grid für Einschränkungstyp und -datum mit Inline-Editoren angegeben werden.
+Es ist auch möglich, [getrennte Spalten für den Typ der Beschränkung und dessen Datum im Raster zu spezifizieren](guides/specifying-columns.md#timeconstraintsfortasks) und Inline-Editoren zu verwenden, um Beschränkungen für Aufgaben festzulegen.
 
-![Einschränkungs-Spalten](/img/constraints_columns.png)
+![Constraints columns](/img/constraints_columns.png)
 
 Verwenden Sie entsprechend die Spaltennamen **constraint_type** und **constraint_date**.
 
@@ -119,27 +132,27 @@ const constraintTypeEditor = {
         { key: "asap", label: gantt.locale.labels.asap },
         { key: "alap", label: gantt.locale.labels.alap },
         { key: "snet", label: gantt.locale.labels.snet },
-        // weitere Optionen
+        // more options
     ]
 };
 
 const constraintDateEditor = {
     type: "date",
     map_to: "constraint_date",
-    min: new Date(2019, 0, 1),
-    max: new Date(2020, 0, 1)
+    min: new Date(2025, 0, 1),
+    max: new Date(2026, 0, 1)
 };
 
 gantt.config.columns = [
     { // vorherige Spalte},
     {
-        name:"constraint_type", align:"center", width:100, template:function (task){
-            return gantt.locale.labels[gantt.getConstraintType(task)];
-        }, resize: true, editor: constraintTypeEditor
+        name: "constraint_type", align: "center", width: 100,
+        template: task => gantt.locale.labels[gantt.getConstraintType(task)],
+        resize: true, editor: constraintTypeEditor
     },
     {
-        name:"constraint_date", align:"center", width:120, template:function (task) {
-        //template logic
+        name: "constraint_date", align: "center", width: 120, template: (task) => {
+            // template logic
         },
         resize: true, editor: constraintDateEditor
     },
@@ -151,168 +164,186 @@ gantt.config.columns = [
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-### Einschränkungstypen
+### Arten von Beschränkungen
 
-Es stehen mehrere zeitliche Einschränkungen zur Auswahl:
+Es gibt mehrere Arten von Zeitbeschränkungen:
 
-1. **So früh wie möglich** - Für unabhängige Aufgaben mit aktiviertem **strict**-Modus startet die Aufgabe mit dem Projektbeginn. Ohne **strict**-Modus startet sie am angegebenen Datum. Bei abhängigen Aufgaben beginnt die Aufgabe, sobald alle Vorgänger abgeschlossen sind.
+1. **So früh wie möglich** - Wenn diese Beschränkung einer unabhängigen Aufgabe zugeordnet ist und der **strikte** Modus aktiviert ist, beginnt die Aufgabe zur gleichen Zeit wie das Projekt. Falls der **strikte**-Modus deaktiviert ist, beginnt die Aufgabe am angegebenen Datum. 
 
-2. **So spät wie möglich** - Unabhängige Aufgaben enden mit dem Projektende. Abhängige Aufgaben enden, wenn ihr direkter Nachfolger beginnt.
+Wenn diese Beschränkung einer abhängigen Aufgabe zugeordnet ist, beginnt die Aufgabe so früh wie möglich, sobald ihre Vorgängeraufgaben enden.
 
-Weitere Einschränkungen gelten unabhängig vom Aufgabentyp:
+2. **So spät wie möglich** - Wenn diese Beschränkung einer unabhängigen Aufgabe zugeordnet ist, endet die Aufgabe zur gleichen Zeit wie das Projekt. Wenn diese Beschränkung einer abhängigen Aufgabe zugeordnet ist, endet die Aufgabe mit dem Start ihrer unmittelbaren Nachfolgeraufgabe.
 
-3. **Beginnt nicht vor** - Aufgabe beginnt am oder nach dem angegebenen Datum.
+Die übrigen Arten von Beschränkungen betreffen Aufgaben unabhängig von ihrem Typ (abhängig oder unabhängig):
 
-4. **Beginnt nicht nach** - Aufgabe beginnt am oder vor dem angegebenen Datum.
+3. **Beginn nicht früher als** - Die Aufgabe sollte am angegebenen Datum oder danach beginnen.
 
-5. **Endet nicht vor** - Aufgabe endet am oder nach dem angegebenen Datum.
+4. **Beginn spätestens** - Die Aufgabe sollte am angegebenen Datum oder davor beginnen.
 
-6. **Endet nicht nach** - Aufgabe endet am oder vor dem angegebenen Datum.
+5. **Ende nicht früher als** - Die Aufgabe sollte am angegebenen Datum oder danach enden.
 
-7. **Muss beginnen am** - Aufgabe beginnt genau am angegebenen Datum.
+6. **Ende spätestens** - Die Aufgabe sollte am angegebenen Datum oder davor enden.
 
-8. **Muss enden am** - Aufgabe endet genau am angegebenen Datum.
+7. **Muss beginnen bei** - Die Aufgabe sollte genau am angegebenen Datum beginnen.
+
+8. **Muss enden bei** - Die Aufgabe sollte genau am angegebenen Datum enden.
 
 :::note
-Unabhängige Aufgaben sind solche ohne Vorgänger oder Nachfolger - keine Verknüpfungen oder Beziehungen, die sie oder ihre übergeordneten Aufgaben mit anderen verbinden.
+Mit unabhängigen Aufgaben hier meinen wir Aufgaben, die keine Nachfolger oder Vorgänger haben. Mit anderen Worten, dies sind Aufgaben, die keine Verbindungen/Relationen zu anderen Aufgaben oder deren Eltern haben.
 :::
 
-## Festlegen von Pufferzeiten (Lag und Lead) zwischen Aufgaben {#settinglagandleadtimesbetweentasks}
+## Festlegen von Verzögerungen (Lag) und Vorläufen (Lead) zwischen Aufgaben {#settinglagandleadtimesbetweentasks}
 
-Mit Lag- und Leadzeiten lassen sich komplexere Abhängigkeiten zwischen Aufgaben definieren.
+Lag und Lead sind spezielle Werte, die verwendet werden, um komplexe Beziehungen zwischen Aufgaben zu erstellen.
 
-Lag ist eine Verzögerung nach Abschluss eines Vorgängers, bevor der Nachfolger beginnt. Lead ist eine Überlappung, bei der der Nachfolger beginnt, bevor der Vorgänger abgeschlossen ist.
+Lag ist eine Verzögerung zwischen Aufgaben, die durch eine Abhängigkeit verbunden sind. Lead ist eine Überlappung zwischen Aufgaben, die durch eine Abhängigkeit verbunden sind.
 
-Es gibt zwei Arten von Nachfolger-Aufgaben:
+Es kann zwei Typen von Nachfolgeraufgaben geben:
 
-- Aufgaben, die vor dem Ende ihres Vorgängers beginnen (Lead). Zum Beispiel bedeutet ein Lead von 1 Tag, dass der Nachfolger einen Tag vor dem Ende des Vorgängers beginnt.
+- eine Aufgabe, die vor dem Ende ihrer Vorgängeraufgabe starten kann (Aufgabe B beginnt vor dem Ende von Aufgabe A)
 
-- Aufgaben, die nach einer Verzögerung nach dem Abschluss des Vorgängers beginnen (Lag). Zum Beispiel bedeutet ein Lag von 1 Tag, dass der Nachfolger einen Tag nach dem Ende des Vorgängers beginnt.
+Beispiel: Wenn wir dem Abhängigkeitslink einen Lead von 1 Tag zuweisen, beginnt Aufgabe B einen Tag bevor Aufgabe A endet;
 
-Lag- und Leadwerte werden in der **link.lag**-Eigenschaft des Link-Objekts gesetzt:
+- eine Aufgabe, die erst nach einer Verzögerung starten kann, die dem Ende ihrer Vorgängeraufgabe folgt (Aufgabe B startet zu einem späteren Zeitpunkt nach dem Ende von Aufgabe A)
 
-- Lag: positive ganze Zahl
-- Lead: negativer Lag-Wert
+Beispiel: Wenn wir dem Abhängigkeitslink eine Lag von 1 Tag zuweisen, beginnt Aufgabe B einen Tag nach dem Ende von Aufgabe A.
 
-Standardmäßig haben Abhängigkeitsverknüpfungen einen Lag von 0.
+Lag- und Lead-Werte werden in der zusätzlichen Eigenschaft des Link-Objekts festgelegt - **link.lag**:
 
-### Bearbeiten von Link-Werten aus der UI
+- lag - beliebiger positiver ganzzahliger Wert,
+- lead - negativer Wert des Lag.
 
-Gantt bietet keine integrierte Benutzeroberfläche zum Bearbeiten von Lag oder anderen Link-Eigenschaften, aber Sie können dies selbst implementieren, indem Sie den Hinweisen im
-[verwandten Kapitel](guides/crud-dependency.md#editinglinkvaluesfromui) folgen.
+Standardmäßig gilt, dass der Lag-Wert jeder Abhängigkeitsverbindung auf 0 gesetzt ist.
 
-**Related example:** [Edit-lag Popup](https://snippet.dhtmlx.com/2208ic0t)
+### Bearbeiten von Link-Werten über die UI
 
-## Automatische Planung für bestimmte Aufgaben deaktivieren
+Gantt bietet keine integrierte UI zum Bearbeiten von Lag oder anderen Eigenschaften des Links. Sie können dies jedoch manuell implementieren, indem Sie den Empfehlungen im
+[verwandten Kapitel](guides/crud-dependency.md#editing-link-values-from-ui) folgen.
 
-Um die automatische Planung für eine bestimmte Aufgabe zu deaktivieren und sie manuell zu planen, setzen Sie die **auto_scheduling**-Eigenschaft der Aufgabe auf *false*:
+**Zugehöriges Beispiel** [Edit-lag Popup](https://snippet.dhtmlx.com/2208ic0t)
+
+## Deaktivieren von Auto Scheduling für bestimmte Aufgaben
+
+Um Auto Scheduling für eine bestimmte Aufgabe zu deaktivieren und manuell zu planen, setzen Sie die **auto_scheduling**-Eigenschaft des Aufgabenobjekts auf *false*:
 
 ~~~js
-var task = gantt.getTask(id);
+const task = gantt.getTask(id);
 task.auto_scheduling = false;
 ~~~
 
-Alternativ können Sie die automatische Planung für eine Aufgabe mit dem [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md)-Event-Handler blockieren:
+Sie können Auto Scheduling einer bestimmten Aufgabe auch verhindern, indem Sie den [onBeforeTaskAutoSchedule](api/event/onbeforetaskautoschedule.md) Handler verwenden:
 
 ~~~js
-gantt.attachEvent("onBeforeTaskAutoSchedule",function(task, start, link, predecessor){
-    if(task.completed) {
-        return false;
-    }
-    return true;
+gantt.attachEvent("onBeforeTaskAutoSchedule", (task, start, link, predecessor) => {
+    return !task.completed;
 });
 ~~~
 
-## Abgeschlossene Aufgaben planen
+## Planung abgeschlossener Aufgaben
 
-Standardmäßig behandelt die automatische Planung abgeschlossene Aufgaben (mit Fortschrittswert 1) genauso wie unvollständige Aufgaben.
+Standardmäßig gibt es keinen Unterschied darin, wie der Auto Scheduling-Algorithmus erledigte Aufgaben (Aufgaben mit einem Fortschritt von 1) und unvollständige Aufgaben verarbeitet.
 
-Sie können dieses Verhalten ändern, indem Sie die Option [auto_scheduling_use_progress](api/config/auto_scheduling_use_progress.md) aktivieren:
+Optional können Sie die [auto_scheduling.use_progress](api/config/auto_scheduling.md#use_progress) Konfiguration aktivieren, um dieses Verhalten zu ändern:
 
 ~~~js
-gantt.config.auto_scheduling_use_progress = true;
+gantt.config.auto_scheduling = {
+    enabled: true,
+    use_progress: true
+};
  
 gantt.init("gantt_here");
 ~~~
 
-Mit dieser Einstellung werden abgeschlossene Aufgaben aus dem kritischen Pfad und der automatischen Planung ausgeschlossen.
+Wenn die Konfiguration aktiviert ist, werden erledigte Aufgaben vom kritischen Pfad und vom Auto Scheduling ausgeschlossen.
 
 Weitere Details finden Sie auf der [API-Seite](api/config/auto_scheduling_use_progress.md).
 
 
 ## API-Übersicht
 
-Hier sind die verfügbaren Methoden und Eigenschaften:
+Die Liste verfügbarer Methoden und Eigenschaften:
 
 - [auto_scheduling](api/config/auto_scheduling.md)
-- [auto_scheduling_strict](api/config/auto_scheduling_strict.md)
-- [auto_scheduling_initial](api/config/auto_scheduling_initial.md)
-- [auto_scheduling_project_constraint](api/config/auto_scheduling_project_constraint.md)
+- [project_start](api/config/project_start.md)
+- [project_end](api/config/project_end.md)
 - [autoSchedule](api/method/autoschedule.md)
 - [isUnscheduledTask](api/method/isunscheduledtask.md)
 - [findCycles](api/method/findcycles.md)
 - [isCircularLink](api/method/iscircularlink.md)
 - [getConnectedGroup](api/method/getconnectedgroup.md)
 
-### Aktivierung
+### Activation
 
-Aktivieren Sie die automatische Planung, indem Sie die Eigenschaft [auto_scheduling](api/config/auto_scheduling.md) auf true setzen:
+Um Auto Scheduling im Gantt-Diagramm zu aktivieren, setzen Sie die **enabled**-Eigenschaft der **auto_scheduling**-Konfiguration auf *true*:
 
 ~~~js
-gantt.config.auto_scheduling = true;
+gantt.config.auto_scheduling = {
+    enabled: true
+};
 ~~~
 
 ### Strikter Modus
 
-Standardmäßig werden Aufgaben nur neu geplant, wenn ein neues Datum eine Einschränkung verletzt. Um Aufgaben immer auf das frühestmögliche Datum zu verschieben, aktivieren Sie die Eigenschaft [auto_scheduling_strict](api/config/auto_scheduling_strict.md):
+Standardmäßig werden Aufgaben nur neu geplant, wenn ein neues Datum die Beschränkung verletzt.
+Um Aufgaben stets zum frühestmöglichen Datum neu zu planen, verwenden Sie die Eigenschaft [auto_scheduling.gap_behavior](api/config/auto_scheduling.md#gap_behavior):
 
 ~~~js
-gantt.config.auto_scheduling_strict = true;
+gantt.config.auto_scheduling = {
+    enabled: true,
+    apply_constraints: false,
+    gap_behavior: "compress"
+};
 ~~~
 
 :::note
-Beachten Sie, dass diese Einstellung in den Versionen 6.1.0 - 7.1.3 nur funktioniert, wenn die Option [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) aktiviert ist.
+Beachten Sie, dass in Versionen 6.1.0 - 7.1.3 die Konfiguration nur funktioniert, wenn die Option [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) aktiviert ist.
 :::
 
-### Initiale automatische Planung
+### Initiales Auto-Scheduling
 
-Die Eigenschaft [auto_scheduling_initial](api/config/auto_scheduling_initial.md) steuert, ob die automatische Planung beim Laden der Daten ausgeführt wird. Standardmäßig ist sie auf true gesetzt:
-
-~~~js
-gantt.config.auto_scheduling_initial = true;
-~~~
-
-### Vererbung von Projekteinschränkungen
-
-Die Eigenschaft [auto_scheduling_project_constraint](api/config/auto_scheduling_project_constraint.md) bestimmt, ob Aufgaben ohne eigene Einschränkung diese vom übergeordneten Projekt erben:
+Die Eigenschaft [auto_scheduling.schedule_on_parse](api/config/auto_scheduling.md#schedule_on_parse) gibt an, ob gantt Auto Scheduling beim Laden der Daten durchführen soll. Sie ist standardmäßig auf *true* gesetzt:
 
 ~~~js
-gantt.config.auto_scheduling_project_constraint = true;
+gantt.config.auto_scheduling = {
+    enabled: true,
+    schedule_on_parse: true
+};
 ~~~
 
-### Projekt neu berechnen
+### Vererbung von Projektbeschränkungen
 
-Um den gesamten Projektzeitplan neu zu berechnen, verwenden Sie die Methode [autoSchedule](api/method/autoschedule.md):
+Die Eigenschaft [auto_scheduling.project_constraint](api/config/auto_scheduling.md#project_constraint) definiert, ob Aufgaben ohne den angegebenen Beschränkungstyp die Beschränkung von ihrem Elternprojekt erben sollen:
+
+~~~js
+gantt.config.auto_scheduling = {
+    enabled: true,
+    project_constraint: true
+};
+~~~
+
+### Neuberechnung des Projekts
+
+Um den Zeitplan des gesamten Projekts neu zu berechnen, verwenden Sie die Methode [autoSchedule](api/method/autoschedule.md):
 
 ~~~js
 gantt.autoSchedule();
 ~~~
 
-Um ab einer bestimmten Aufgabe neu zu berechnen, übergeben Sie deren ID an dieselbe Methode:
+Wenn Sie den Zeitplan starting from einer bestimmten Aufgabe neu berechnen müssen, übergeben Sie die ID der Aufgabe als Argument an die [autoSchedule](api/method/autoschedule.md) Methode:
 
 ~~~js
 gantt.autoSchedule(taskId);
 ~~~
 
-### Prüfen, ob eine Aufgabe ungeplant ist
+### Überprüfung, ob eine Aufgabe ungeplant ist
 
-Um zu prüfen, ob eine Aufgabe ungeplant ist, verwenden Sie die Methode [isUnscheduledTask](api/method/isunscheduledtask.md) mit dem Aufgabenobjekt:
+Falls Sie prüfen müssen, ob eine Aufgabe ungeplant ist, verwenden Sie die Methode [isUnscheduledTask](api/method/isunscheduledtask.md) mit dem Aufgabenobjekt als Argument:
 
 ~~~js
-var isUnscheduled = gantt.isUnscheduledTask(task);
+const isUnscheduled = gantt.isUnscheduledTask(task);
 ~~~
 
-### Erkennung von zirkulären Referenzen
+### Suche nach zirkulären Referenzen
 
 Um alle zirkulären Referenzen im Diagramm zu finden, verwenden Sie die Methode [findCycles](api/method/findcycles.md):
 
@@ -320,17 +351,17 @@ Um alle zirkulären Referenzen im Diagramm zu finden, verwenden Sie die Methode 
 gantt.findCycles();
 ~~~
 
-### Prüfen, ob ein Link zirkulär ist
+### Überprüfung, ob ein Link zirkulär ist
 
-Um zu prüfen, ob eine Verknüpfung zirkulär ist, verwenden Sie die Methode [isCircularLink](api/method/iscircularlink.md):
+Wenn Sie prüfen müssen, ob der Link zirkulär ist, können Sie die Methode [isCircularLink](api/method/iscircularlink.md) anwenden:
 
 ~~~js
-var isCircular = gantt.isCircularLink(link);
+const isCircular = gantt.isCircularLink(link);
 ~~~
 
-### Verbundene Aufgaben und Links abrufen
+### Abrufen verbundener Aufgaben und Links
 
-Um die Liste der Aufgaben und Links zu erhalten, die mit einer bestimmten Aufgabe verbunden sind, können Sie die Methode [getConnectedGroup](api/method/getconnectedgroup.md) verwenden:
+Um die Liste der Aufgaben und Links zu erhalten, mit denen eine Aufgabe verbunden ist, verwenden Sie die Methode [getConnectedGroup](api/method/getconnectedgroup.md):
 
 ~~~js
 gantt.getConnectedGroup(18);
@@ -338,9 +369,9 @@ gantt.getConnectedGroup(18);
 ~~~
 
 
-## Liste der Events
+## Die Liste der Ereignisse
 
-Im Folgenden finden Sie die Liste der verfügbaren Events:
+Die Liste der verfügbaren Ereignisse finden Sie unten:
 
 - [onBeforeAutoSchedule](api/event/onbeforeautoschedule.md)
 - [onAfterAutoSchedule](api/event/onafterautoschedule.md)
@@ -350,59 +381,60 @@ Im Folgenden finden Sie die Liste der verfügbaren Events:
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ~~~js
-// bevor die automatische Planung startet
-gantt.attachEvent("onBeforeAutoSchedule",function(taskId){
-    // eigene Logik hier
+// bevor das automatische Scheduling startet
+gantt.attachEvent("onBeforeAutoSchedule", (taskId) => {
+    // beliebige benutzerdefinierte Logik hier
     return true;
 });
 
-// nachdem die automatische Planung abgeschlossen ist
-gantt.attachEvent("onAfterAutoSchedule",function(taskId, updatedTasks){
-    // eigene Logik hier
+// nachdem das automatische Scheduling abgeschlossen ist
+gantt.attachEvent("onAfterAutoSchedule", (taskId, updatedTasks) => {
+    // beliebige benutzerdefinierte Logik hier
 });
 
 // bevor eine bestimmte Aufgabe neu geplant wird
-gantt.attachEvent("onBeforeTaskAutoSchedule",function(task,start,link,predecessor){
-    // eigene Logik hier
+gantt.attachEvent("onBeforeTaskAutoSchedule", (task, start, link, predecessor) => {
+    // beliebige benutzerdefinierte Logik hier
     return true;
 });
 
 // nachdem eine bestimmte Aufgabe neu geplant wurde
-gantt.attachEvent("onAfterTaskAutoSchedule",function(task,start,link,predecessor){
-    // eigene Logik hier
+gantt.attachEvent("onAfterTaskAutoSchedule", (task, start, link, predecessor) => {
+    // beliebige benutzerdefinierte Logik hier
 });
 
-// wenn eine zirkuläre Referenz erkannt wird und die automatische Planung nicht fortgesetzt werden kann
-gantt.attachEvent("onCircularLinkError",function(link, group){
-    // eigene Logik hier
+// wenn der zirkuläre Verweis erkannt wurde und automatisch geplant werden kann
+gantt.attachEvent("onCircularLinkError", (link, group) => {
+    // beliebige benutzerdefinierte Logik hier
 });
 
-// wenn während der automatischen Planung zirkuläre Verknüpfungen gefunden werden
-gantt.attachEvent("onAutoScheduleCircularLink",function(groups){
-    // eigene Logik hier
+// wenn während des automatischen Planens zirkuläre Verknüpfungen gefunden wurden
+gantt.attachEvent("onAutoScheduleCircularLink", (groups) => {
+    // beliebige benutzerdefinierte Logik hier
 });
 ~~~
 
-## Versionskompatibilität {#versioncompatibility}
+## Versionskompatibilität
 
-Wenn das Datum einer Aufgabe durch Ziehen mit der Maus oder über das Lightbox geändert wird, erhält die Aufgabe automatisch einen von zwei Einschränkungstypen: entweder **start no earlier than+%start date%** oder **finish no later than+%end date%**, abhängig vom gewählten Planungsansatz.
+Wenn ein Benutzer das Datum einer Aufgabe durch Verschieben mit der Maus oder über die Lightbox ändert, erhält die Aufgabe automatisch eine der beiden Beschränkungstypen: entweder **Beginn nicht früher als+%start date%** oder **Ende spätestens+%end date%**, abhängig von der gewählten Planungsstrategie.
 
-Das bedeutet, dass eine Aufgabe nicht früher als das über die Benutzeroberfläche festgelegte späteste Datum geplant wird. Dieses Verhalten kann für Benutzer, die mit Einschränkungen nicht vertraut sind, unerwartet sein, insbesondere da Einschränkungen standardmäßig nicht im Diagramm angezeigt werden.
+So wird eine Aufgabe nicht zum frühesten Datum geplant, falls das spätere Datum aus der UI gesetzt wird. Das kann für nicht vorbereitete Benutzer verwirrend sein, insbesondere da Beschränkungen standardmäßig nicht im Diagramm angezeigt werden.
 
-Um Einschränkungen anzuzeigen, können Sie deren Anzeige mit der Methode [addTaskLayer](api/method/addtasklayer.md) aktivieren.
-
+Ab **v9.1** können Sie das Anzeigen von Beschränkungen über die Eigenschaft [auto_scheduling.show_constraints](api/config/auto_scheduling.md#show_constraints) aktivieren. Ältere Versionen erfordern die Verwendung der [addTasklayer](api/method/addtasklayer.md)-Methode, um Beschränkungen dem Diagramm hinzuzufügen.
 
 [Auto-Schedule From Project Start & Constraints](https://docs.dhtmlx.com/gantt/samples/02_extensions/19_constraints_scheduling.html)
 
 
-Dieses Verhalten unterscheidet sich von der automatischen Planungslogik in Gantt-Versionen vor **v6.1** und gilt als korrekt, da es der automatischen Planung in MS Project entspricht.
+Dieses Verhalten unterscheidet sich von der Auto Scheduling-Logik von Gantt vor **v6.1** und gilt als korrekt, da es dieselbe Funktionsweise der automatischen Planung wie MS Project hat.
 
-Wenn Sie das frühere Verhalten bevorzugen, können Sie zur automatischen Planung vor Version 6.1 zurückkehren, indem Sie Einschränkungen deaktivieren:
+Wenn das nicht das ist, was Sie möchten, können Sie zur Pre-6.1-Auto Scheduling zurückkehren, indem Sie Beschränkungen wie folgt deaktivieren:
 
 ~~~js
-gantt.config.auto_scheduling_compatibility = true;
+gantt.config.auto_scheduling = {
+    enabled: true,
+    apply_constraints: false
+};
 ~~~
 
-### Related API
+### Verwandte API
 - [auto_scheduling](api/config/auto_scheduling.md)
-

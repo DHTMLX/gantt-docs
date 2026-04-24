@@ -1,14 +1,14 @@
 ---
 sidebar_label: scale_height
-title: scale_height config
-description: "调整时间刻度和grid header的高度"
+title: scale_height 配置
+description: "设置时间刻度和网格表头的高度"
 ---
 
 # scale_height
 
 ### Description
 
-@short: 调整时间刻度和grid header的高度
+@short: 设置时间刻度和网格表头的高度
 
 @signature: scale_height: number
 
@@ -19,4 +19,4 @@ gantt.config.scale_height = 50;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 35
+**默认值：** 35

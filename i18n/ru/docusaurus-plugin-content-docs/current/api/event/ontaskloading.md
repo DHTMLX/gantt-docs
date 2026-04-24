@@ -1,37 +1,37 @@
 ---
 sidebar_label: onTaskLoading
 title: onTaskLoading event
-description: "Срабатывает при загрузке задачи из источника данных."
+description: "срабатывает, когда задача загружается из источника данных"
 ---
 
 # onTaskLoading
 
 ### Description
 
-@short: Срабатывает при загрузке задачи из источника данных.
+@short: Срабатывает, когда задача загружается из источника данных
 
-@signature: onTaskLoading: (task: Task) =\> boolean;
+@signature: onTaskLoading: (task: Task) => boolean;
 
 ### Parameters
 
-- `task` - (required) *Task* - объект задачи, которая загружается
+- `task` - (required) *Task* - объект задачи
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или оно будет остановлено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskLoading", function(task){
-    // здесь можно добавить пользовательскую логику
+    // любая ваша логика здесь
     return true;
 });
 ~~~
 
 ### Details
 
-- Это событие происходит для каждой задачи, поступающей из источника данных.
-- Его можно заблокировать. Возврат *false* предотвращает загрузку задачи в диаграмму Ганта.
+- Событие срабатывает для каждой задачи в источнике данных.
+- Событие можно блокировать. Вернуть *false* — и задача не будет загружена в диаграмму Ганта.
 
 ### Related API
 - [onLoadStart](api/event/onloadstart.md)
@@ -42,4 +42,3 @@ gantt.attachEvent("onTaskLoading", function(task){
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

@@ -1,16 +1,19 @@
 ---
 sidebar_label: updateTaskAssignments
-title: updateTaskAssignments method
-description: "根据数据存储中当前的资源分配，更新任务对象的 resource 属性"
+title: updateTaskAssignments 方法
+description: "使用数据存储中的资源分配值更新任务对象的 resource 属性"
 ---
 
 # updateTaskAssignments
+
 :::info
  此功能仅在 PRO 版本中可用。 
 :::
+
+
 ### Description
 
-@short: 根据数据存储中当前的资源分配，更新任务对象的 resource 属性
+@short: 使用数据存储中的资源分配值更新任务对象的 resource 属性
 
 @signature: updateTaskAssignments: (taskId: number | string) =\> void
 
@@ -36,13 +39,13 @@ assignmentStore.updateItem(assignment.id);
 gantt.updateTaskAssignments(taskId);
 ~~~
 
+
 ### Related samples
-- [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
+- [将资源分配值分配到特定日期](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
-
 :::note
- 该方法仅在启用了 [process_resource_assignments](api/config/process_resource_assignments.md) 配置时有效。 
+注 此方法仅在启用 [process_resource_assignments](api/config/process_resource_assignments.md) 配置时可用。 
 :::
 
 通常，assignments store 是从任务对象中填充的。这意味着如果你更新任务上的 resource 属性（例如 task.users），这些更改会自动反映到数据存储中。
@@ -59,7 +62,6 @@ task[gantt.config.resource_property] = [
 gantt.updateTask(taskId);
 ~~~
 
-<br>
 有时，你可能想反向更新分配--直接在数据存储中更改它们，然后将这些更改应用回任务对象。为此，调用 **gantt.updateTaskAssignments()** 用数据存储中的值刷新任务的 resource 属性:
 
 ~~~js
@@ -78,14 +80,14 @@ console.log(gantt.getTask(taskId));
 // -> { id: 2, users: [{resource_id: 3, value: 8, delay: 1, start_date: ...}], ...)
 ~~~
 
+
 ### Related API
 - [resource_assignment_store](api/config/resource_assignment_store.md)
 - [resource_property](api/config/resource_property.md)
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
 ### Related Guides
-- [资源管理](guides/resource-management.md#guanliziyuanfenpei)
+- [资源管理](guides/resource-management.md#managingresourceassignments)
 
 ### Change log
-- v7.1 版本新增
-
+- added in v7.1

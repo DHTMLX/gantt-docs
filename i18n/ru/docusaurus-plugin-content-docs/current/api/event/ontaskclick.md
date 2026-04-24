@@ -1,38 +1,37 @@
 ---
 sidebar_label: onTaskClick
-title: onTaskClick event
-description: "Срабатывает, когда пользователь кликает на строку задачи в области grid (включая кнопки 'expand/collapse' и 'add task') или на task bar в области timeline."
+title: onTaskClick событие
+description: "Срабатывает, когда пользователь кликает по строке задачи в области сетки (включая кнопки разворачивания/сворачивания и 'добавить задачу') или по панели задачи на таймлайне"
 ---
 
 # onTaskClick
 
 ### Description
 
-@short: Срабатывает, когда пользователь кликает на строку задачи в области grid (включая кнопки 'expand/collapse' и 'add task') или на task bar в области timeline.
+@short: Вызывается, когда пользователь кликает по строке задачи в области сетки (включая кнопки разворачивания/сворачивания и 'добавить задачу') или по панели задачи на таймлайне
 
 @signature: onTaskClick: (id: string | number, e?: Event) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - id кликнутой задачи
-- `e` - (optional) *Event* - опционально, нативный объект события
+- `id` - (required) *string | number* - идентификатор кликнутой задачи
+- `e` - (optional) *Event* - объект нативного события
 
 ### Returns
-- ` result` - (boolean) - указывает, будет ли выполнено действие по умолчанию (<b>true</b>) или оно будет отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (true) или отменено (false)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onTaskClick", function(id,e){
-    //любая кастомная логика здесь
+    // любая ваша логика здесь
     return true;
 });
 ~~~
 
 ### Details
 
-Это событие можно блокировать. Возврат false остановит поведение по умолчанию (выделение задачи).
+Событие можно отменить. Возврат false отменит обработчик по умолчанию (выбор задачи)
 
 ### Related API
 - [onTaskDblClick](api/event/ontaskdblclick.md)
-

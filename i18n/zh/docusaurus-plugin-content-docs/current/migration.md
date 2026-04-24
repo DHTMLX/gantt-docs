@@ -5,6 +5,59 @@ sidebar_label: "从旧版本迁移"
 
 # 从旧版本迁移
 
+## 9.0 -> 9.1
+
+v9.1 不会引入重大变更，但若干配置选项已被标记为 **弃用**，并建议 [迁移到新的统一格式](#autoscheduling)。
+另请注意，先前被弃用的 **subscales** 配置选项已被删除。
+
+### Unified auto scheduling configuration {#autoscheduling}
+
+此前用于控制 [](guides/auto-scheduling.md) 行为的多个属性已被弃用，取而代之的是统一的 [](api/config/auto_scheduling.md) 配置对象。
+
+~~~js
+// before v9.1
+gantt.config.auto_scheduling = true;
+gantt.config.auto_scheduling_compatibility = true;
+gantt.config.auto_scheduling_strict = true;
+gantt.config.auto_scheduling_initial = false;
+
+// since v9.1
+gantt.config.auto_scheduling = {
+    enabled: true,
+    apply_constraints: false,
+    gap_behavior: "compress",
+    schedule_on_parse: false
+};
+~~~
+
+为保持向后兼容，这些已弃用的属性仍然可以使用，但建议切换到新的对象格式。
+
+以下选项已弃用：
+
+- [auto_scheduling_initial](api/config/auto_scheduling_initial.md)
+- [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md)
+- [auto_scheduling_descendant_links](api/config/auto_scheduling_descendant_links.md)
+- [auto_scheduling_move_projects](api/config/auto_scheduling_move_projects.md)
+- [auto_scheduling_project_constraint](api/config/auto_scheduling_project_constraint.md)
+- [auto_scheduling_strict](api/config/auto_scheduling_strict.md)
+- [auto_scheduling_use_progress](api/config/auto_scheduling_use_progress.md)
+
+**Mapping of deprecated configs to the unified object**
+
+- `gantt.config.auto_scheduling_initial` -> `schedule_on_parse`
+- `gantt.config.auto_scheduling_descendant_links` -> `descendant_links`
+- `gantt.config.auto_scheduling_move_projects` -> `move_projects`
+- `gantt.config.auto_scheduling_project_constraint` -> `project_constraint`
+- `gantt.config.auto_scheduling_use_progress` -> `use_progress`
+- `gantt.config.auto_scheduling_compatibility = true` -> `apply_constraints: false`
+- `gantt.config.auto_scheduling_compatibility = false` -> `apply_constraints: true`
+- `gantt.config.auto_scheduling_strict = true` -> `gap_behavior: "compress"`
+- `gantt.config.auto_scheduling_strict = false` -> `gap_behavior: "preserve"`
+
+### The obsolete **subscales** configuration option is deleted {#subscales}
+
+请注意，在 v6.2 中被弃用的 **subscales** 配置选项已在 v9.1 中删除。
+
 ## 8.0 -> 9.0
 
 v9.0 更新引入了若干重大变更。

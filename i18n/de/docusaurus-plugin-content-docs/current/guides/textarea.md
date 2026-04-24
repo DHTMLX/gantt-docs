@@ -1,19 +1,19 @@
----
-title: "Textarea-Steuerelement"
-sidebar_label: "Textarea-Steuerelement"
+--- 
+title: "Textbereich-Steuerung"
+sidebar_label: "Textbereich-Steuerung"
 ---
 
-# Textarea-Steuerelement
+# Textbereich-Steuerung
 
-Dies ist ein mehrzeiliges Textfeld.
+Ein mehrzeiliges Textfeld.
 
 ![textarea_control](/img/textarea_control.png)
 
 ## Initialisierung
 
-Standardmäßig enthält das Lightbox-Formular ein **textarea**-Steuerelement. Um ein weiteres hinzuzufügen, gehen Sie wie folgt vor:
+Standardmäßig wird ein **textarea**-Steuerelement der Lightbox hinzugefügt. Möchten Sie ein weiteres hinzufügen, führen Sie die untenstehenden Schritte aus:
 
-1) Fügen Sie dem Lightbox-Konfigurationsarray einen neuen Abschnitt hinzu:
+1) Füge einen Abschnitt zur Lightbox-Konfiguration hinzu:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -23,20 +23,19 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2) Definieren Sie eine Beschriftung für den neuen Abschnitt:
+2) Weisen Sie dem Abschnitt eine Bezeichnung zu:
 
 ~~~js
-gantt.locale.labels.section_details = "Details";
+gantt.locale.labels.section_details = "Einzelheiten";
 ~~~
 
 ## Eigenschaften
 
-Hier sind die wichtigsten Eigenschaften, die häufig mit dem **textarea**-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
+Die folgenden Eigenschaften sind für das **textarea**-Steuerelement am wichtigsten und werden üblicherweise festgelegt (siehe die vollständige Liste [hier](api/config/lightbox.md)):
 
-- **name** - (*string*) der Bezeichner des Abschnitts
-- **height** - (*number*) die Höhe des Abschnitts
-- **map_to** - (*string*) die Daten-Eigenschaft, die mit dem Abschnitt verknüpft ist
-- **type** - (*string*) der Typ des [Abschnitts-Steuerelements](guides/default-edit-form.md#lightboxcontrols)
-- **focus** - (*boolean*) wenn auf *true* gesetzt, wird dieser Abschnitt beim Öffnen des Lightbox-Formulars fokussiert
-- **default_value** - (*any*) der Anfangswert für das Steuerelement, wird nur angewendet, wenn die Eingabe undefiniert ist. Beachten Sie, dass dies nicht mit *map_to:"text"* funktioniert
-
+- **name** - (*string*) der Abschnittsname
+- **height** - (*number*) die Abschnittshöhe
+- **map_to** - (*string*) der Name einer Dateneigenschaft, die dem Abschnitt zugeordnet wird
+- **type** - (*string*) der Typ des [Abschnitts-Steuerung](guides/default-edit-form.md#lightboxcontrols)
+- **focus** - (*boolean*) falls auf *true* gesetzt, erhält der Abschnitt beim Öffnen der Lightbox den Fokus
+- **default_value** - (*any*) der Standardwert des Abschnitts-Steuerelements. Wird nur angewendet, wenn der Eingabewert undefiniert ist. Funktioniert nicht mit *map_to:"text"*

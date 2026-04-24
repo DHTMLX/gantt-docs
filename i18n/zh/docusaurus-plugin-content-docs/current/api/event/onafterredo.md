@@ -1,26 +1,26 @@
 ---
 sidebar_label: onAfterRedo
 title: onAfterRedo event
-description: "在 redo() 方法执行完毕后立即触发"
+description: "在 redo() 方法被调用之后触发"
 ---
 
 # onAfterRedo
 
 ### Description
 
-@short: 在 redo() 方法执行完毕后立即触发
+@short: 在 redo() 方法被调用后触发
 
 @signature: onAfterRedo: (action: any[]) =\> void;
 
 ### Parameters
 
-- `action` - (required) *array* - 一个包含命令对象的数组，表示用户的操作动作
+- `action` - (必填) *array* - 作为包含命令对象的用户操作数组
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterRedo",function(action){
-    // 在这里编写你的代码
+    // 在这里插入您的自定义逻辑
 });
 ~~~
 

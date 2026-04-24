@@ -1,14 +1,14 @@
 ---
 sidebar_label: keyboard_navigation_cells
-title: keyboard_navigation_cells config
-description: "允许通过单个单元格进行键盘导航"
+title: keyboard_navigation_cells 配置
+description: "启用按单元格的键盘导航"
 ---
 
 # keyboard_navigation_cells
 
 ### Description
 
-@short: 允许通过单个单元格进行键盘导航
+@short: 通过单元格启用键盘导航
 
 @signature: keyboard_navigation_cells: boolean
 
@@ -29,7 +29,7 @@ gantt.config.keyboard_navigation_cells = true;
  此设置是 **keyboard_navigation** 扩展的一部分，因此请确保首先启用 [keyboard_navigation](guides/extensions-list.md) 插件。更多详细信息请参考 [键盘导航](guides/keyboard-navigation.md) 指南。 
 :::
 
-版本 4.1 新增
+在版本 4.1 中新增
 
 ### Related API
 - [keyboard_navigation](api/config/keyboard_navigation.md)
@@ -39,5 +39,4 @@ gantt.config.keyboard_navigation_cells = true;
 - [removeShortcut](api/method/removeshortcut.md)
 
 ### Related Guides
-- [键盘导航](guides/keyboard-navigation.md)
-
+- [Keyboard Navigation](guides/keyboard-navigation.md)

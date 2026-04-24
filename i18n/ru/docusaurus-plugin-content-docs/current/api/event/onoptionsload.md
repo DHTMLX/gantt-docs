@@ -1,14 +1,14 @@
----
+--- 
 sidebar_label: onOptionsLoad
-title: onOptionsLoad event
-description: "срабатывает сразу после загрузки набора опций с сервера, но до их парсинга"
+title: onOptionsLoad событие
+description: "Срабатывает после того, как коллекция опций была загружена с сервера, но ещё не разобрана."
 ---
 
 # onOptionsLoad
 
 ### Description
 
-@short: Срабатывает сразу после загрузки набора опций с сервера, но до их парсинга
+@short: Срабатывает после загрузки коллекции опций с сервера, но ещё не разобрана
 
 @signature: onOptionsLoad: () =\> void;
 
@@ -16,15 +16,14 @@ description: "срабатывает сразу после загрузки на
 
 ~~~jsx
 gantt.attachEvent("onOptionsLoad", function (){
-    //любая пользовательская логика здесь
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Details
 
-Это событие происходит при вызове [updateCollection](api/method/updatecollection.md) или при парсинге [JSON с дополнительной информацией](guides/supported-data-formats.md#jsonwithcollections).
+Событие срабатывает, когда вызывается [updateCollection](api/method/updatecollection.md) или когда [JSON с дополнительной информацией](guides/supported-data-formats.md#jsonwithcollections) парсится.
 
 ### Related API
 - [serverList](api/method/serverlist.md)
 - [updateCollection](api/method/updatecollection.md)
-

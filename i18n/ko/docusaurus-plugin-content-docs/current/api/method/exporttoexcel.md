@@ -1,36 +1,37 @@
 ---
 sidebar_label: exportToExcel
 title: exportToExcel method
-description: "Gantt 차트의 데이터를 Excel 파일로 내보냅니다."
+description: "Gantt 차트의 데이터를 Excel 문서로 내보냅니다"
 ---
 
 # exportToExcel
 
 ### Description
 
-@short: Gantt 차트의 데이터를 Excel 파일로 내보냅니다.
+@short: Gantt 차트에서 데이터를 Excel 문서로 내보냅니다
 
-@signature: exportToExcel: (_export_?: any) =\> void
+@signature: exportToExcel: (_export_?: any) => void
 
 ### Parameters
 
-- `export` - (optional) *object* - 선택 사항, 내보내기 설정을 포함하는 객체 (자세한 내용 참조)
+- `export` - object - optional, 내보내기 설정이 담긴 객체(세부 내용 참조)
 
 ### Example
 
 ~~~jsx
 gantt.exportToExcel({
-    name:"document.xlsx", 
+    name: "document.xlsx", 
     columns:[
-        { id:"text",  header:"Title", width:150 },
-        { id:"start_date",  header:"Start date", width:250, type:"date" }
+        { id: "text",  header: "Title", width: 150 },
+        { id: "start_date",  header: "Start date", width: 250, type: "date" }
     ],
-    server:"https://myapp.com/myexport/gantt",
-    callback: function(res){
+    server: "https://myapp.com/myexport/gantt",
+    callback: (res) => {
         alert(res.url);
     },
-    visual:true,
-    cellColors:true,
+    visual: true,
+    cellColors: true,
+    data: { },
     date_format: "dddd d, mmmm yyyy"
 });
 ~~~
@@ -38,40 +39,56 @@ gantt.exportToExcel({
 ### Details
 
 :::note
-note 이 메서드는 **export** 확장 기능의 일부이므로, [export_api](guides/extensions-list.md#exportservice) 플러그인을 활성화해야 합니다.
-자세한 내용은 [Export/Import for Excel, Export to iCal](guides/excel.md) 문서를 참고하세요.
-
- 
+이 메서드는 **export** 확장에 정의되어 있으므로 export_api 플러그인을 활성화해야 합니다. [export_api](guides/extensions-list.md#export-service) 플러그인에 대한 자세한 내용은 guides/excel.md 문서를 참조하십시오.
 :::
 
 :::note
-note Gantt 버전 8.0 이전에서는 온라인 내보내기 서비스를 사용하려면 페이지에 **https://export.dhtmlx.com/gantt/api.js** 스크립트를 포함해야 합니다. 예를 들어:
+Gantt 버전이 8.0 미만인 경우 온라인 내보내기 서비스를 활성화하려면 페이지에 `https://export.dhtmlx.com/gantt/api.js`를 포함해야 합니다. 예:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
 <script src="https://export.dhtmlx.com/gantt/api.js"></script>
 ~~~
- 
+
 :::
 
-**exportToExcel()** 메서드는 여러 선택적 속성을 포함하는 객체를 인자로 받습니다:
+The **exportToExcel()** 메서드는 매개변수로 여러 속성을 가진 객체를 받습니다(모든 속성은 선택적입니다):
 
-- **name** - (*string*) 출력 파일의 이름을 설정하며, '.xlsx' 확장자를 포함해야 합니다.
-- **columns** - (*array*) 생성될 Excel 시트의 컬럼을 정의합니다. 각 컬럼 객체는 다음을 가질 수 있습니다:
-    - **'id'** - (*string,number*) 컬럼에 매핑할 이벤트 속성
-    - **'header'** - (*string*) 컬럼 헤더 텍스트
-    - **'width'** - (*number*) 컬럼 너비 (픽셀 단위)
-    - **'type'** - (*string*) 컬럼 데이터 타입
-- **server** - (*string*) 내보내기 요청을 위한 API 엔드포인트 URL. 로컬 내보내기 서비스 설치 시 유용합니다. 기본값은 **https://export.dhtmlx.com/gantt**
-- **callback** - (*function*) 생성된 XLSX 파일 URL을 받는 콜백 함수. 콜백 함수는 url 속성을 가진 JSON 객체를 전달받습니다.
-- **visual** - (*boolean*) 내보낸 Excel 파일에 타임라인 차트를 포함할지 여부, 기본값은 *false* 입니다. [작업 색상 추가 방법](guides/excel.md#:~:text=Adding%20colors%20of%20tasks%20to%20export) 참조
-- **cellColors** - (*boolean*) true인 경우, 내보낸 파일의 셀에 [timeline_cell_class](api/template/timeline_cell_class.md) 템플릿에서 정의된 색상이 적용되어 *color* 및 *background-color* 속성이 내보내집니다.
-- **data** - (*object*) 출력될 Gantt 차트에 표시할 사용자 지정 데이터 소스 지정
-- **date_format** - (*string*) 내보낸 Excel 문서에서 사용할 날짜 형식을 정의합니다. 지원하는 형식 코드는 다음과 같습니다:
+- **name** - (*string*) 출력 파일의 이름을 확장자 '.xlsx'와 함께 설정합니다
+- **columns** - (*array*) 출력 Excel 시트의 열 구성을 설정합니다. 열 객체의 속성은:
+    - **'id'** - (*string,number*) 열에 매핑될 이벤트 속성
+    - **'header'** - (*string*) 열 헤더
+    - **'width'** - (*number*) 열 너비(픽셀 단위)
+    - **'type'** - (*string*) 열 유형
+- **server** - (*string*) 요청의 API 엔드포인트를 설정합니다. 로컬에 설치된 export 서비스와 함께 사용할 수 있습니다. 기본값은 `https://export.dhtmlx.com/gantt`
+- **callback** - (*function*) 생성된 XLSX 파일의 다운로드 URL을 받고 싶다면 callback 속성을 사용할 수 있습니다. 이 콜백은 url 속성을 가진 JSON 객체를 받습니다.
+- **visual** - (*boolean*) 내보낸 Excel 문서에 타임라인 차트를 추가합니다; 기본값은 false입니다. 내보낸 파일에 작업 색상을 추가하는 방법은 [how to add task colors](guides/excel.md#adding-colors-of-tasks-to-export) 문서를 참조하십시오.
+- **cellColors** - (*boolean*) true로 설정되면 내보낸 문서의 셀은 [template](api/template/timeline_cell_class.md)에서 정의된 색상을 가지며, color 및 background-color 속성이 내보냅니다
+- **data** - (*object*) 출력 Gantt 차트에 표시될 사용자 정의 데이터 소스를 설정합니다
+- **date_format** - (*string*) 내보낸 Excel 문서에서 날짜가 표시될 형식을 설정합니다. 다음 형식 코드를 사용할 수 있습니다:
+
+~~~css
+table.my_table {
+    width: 70%;
+    padding: 0 20px;
+}
+table.my_table tr td {
+    text-align: left;
+    vertical-align: middle;
+    width: 35%;
+    border-bottom: 1px solid grey;
+}
+table.my_table td.version_info {
+    text-align: left;
+    font-weight: bold;
+}
+~~~
+
+
+ 포맷 코드 출력:
 
 <table class="my_table">
-<tr><td class="version_info">형식 코드</td><td class="version_info">출력 예</td></tr>
-
+<tr><td class="version_info">Format code</td><td class="version_info">Output</td></tr>
 <tr><td>d</td><td>9</td></tr>
 <tr><td>dd</td><td>09</td></tr>
 <tr><td>ddd</td><td>Mon</td></tr>
@@ -89,34 +106,35 @@ note Gantt 버전 8.0 이전에서는 온라인 내보내기 서비스를 사용
 <tr><td>dd/mm/yyyy hh:mm:ss</td><td>09/01/2012 16:20:00</td></tr>
 </table>
 
-## 기본 날짜 파라미터
 
-Export 모듈은 **start_date** 와 **end_date** 컬럼이 *Date* 타입이어야 하며, **duration** 컬럼은 *number* 타입이어야 합니다.
+#### 기본 날짜 매개변수
 
-[커스텀 템플릿](guides/specifying-columns.md#datamappingandtemplates)을 사용하는 경우, 예상 타입의 값을 반환하거나 컬럼 설정의 **name** 필드에 다른 속성을 지정해야 합니다. 예를 들면:
+Export 모듈은 **start_date** 와 **end_date** 열이 *Date* 타입을 가지도록, 그리고 **duration** 열이 *number* 타입을 가지도록 기대합니다. 
 
-~~~js
+커스텀 템플릿을 적용하는 경우([datamappingandtemplates](guides/specifying-columns.md#datamappingandtemplates))에는 기대되는 타입의 값을 반환하거나 열 구성의 **name** 속성에 다른 값을 정의해야 합니다. 예를 들면:
 
+~~~jsx {7,10-12}
 gantt.config.columns = [
     ...
-    {name: "start_date", align: "center", width: 100, resize: true, 
-        editor: start_dateEditor},
-    {name: "end_date", align: "center", width: 100, resize: true, 
-        editor: end_dateEditor},
-    {name: "duration_formatted", /*!*/
+    { name: "start_date", align: "center", width: 100, resize: true, 
+        editor: start_dateEditor },
+    { name: "end_date", align: "center", width: 100, resize: true, 
+        editor: end_dateEditor },
+    { name: "duration_formatted", 
         align: "center", width: 40, resize: true, 
         editor: durationEditor, 
-        template: function(task){ /*!*/
-			return formatter.format(task.duration_formatted); /*!*/
+        template: (task) => { 
+            return formatter.format(task.duration_formatted); 
         }
     },
     ...
 ];
 ~~~
 
-그렇지 않으면 Gantt 데이터가 제대로 내보내지지 않습니다. [관련 예제 보기](https://snippet.dhtmlx.com/q1lhyvt3).
+그렇지 않으면 Gantt 데이터가 내보내지지 않습니다. [관련 예제 확인](https://snippet.dhtmlx.com/q1lhyvt3).
 
 ### Related API
+
 - [exportToMSProject](api/method/exporttomsproject.md)
 - [exportToPrimaveraP6](api/method/exporttoprimaverap6.md)
 - [exportToICal](api/method/exporttoical.md)
@@ -128,5 +146,6 @@ gantt.config.columns = [
 - [importFromMSProject](api/method/importfrommsproject.md)
 
 ### Related Guides
+
 - [Export/Import for Excel, Export to iCal](guides/excel.md)
 

@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_strict
 title: auto_scheduling_strict config
-description: "aktiviert den Auto-Scheduling-Modus, bei dem Aufgaben bei jeder Änderung auf das frühestmögliche Datum neu geplant werden"
+description: "Aktiviert den Auto Scheduling-Modus, in dem Aufgaben stets auf das frühestmögliche Datum neu geplant werden"
 ---
 
 # auto_scheduling_strict
+
 :::info
- Diese Funktion ist nur in der PRO-Edition verfügbar. 
+Diese Funktionalität ist nur in der PRO-Edition verfügbar.
 :::
+
+:::warning
+Die Eigenschaft wurde in v9.1 veraltet; verwenden Sie stattdessen die `gap_behavior`-Eigenschaft von [gantt.config.auto_scheduling](api/config/auto_scheduling.md#gap_behavior).
+:::
+
 ### Description
 
-@short: Aktiviert den Auto-Scheduling-Modus, bei dem Aufgaben bei jeder Änderung auf das frühestmögliche Datum neu geplant werden
+@short: Aktiviert den Auto Scheduling-Modus, in dem Aufgaben stets auf das frühestmögliche Datum neu geplant werden
 
 @signature: auto_scheduling_strict: boolean
 
@@ -25,18 +31,17 @@ gantt.init("gantt_here");
 **Default value:** false
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [Auto Scheduling-Erweiterung](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
-note Diese Einstellung ist Teil der **auto_scheduling** Erweiterung, daher stellen Sie sicher, dass das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktiviert ist. Weitere Informationen finden Sie im Artikel ["Auto Scheduling"](guides/auto-scheduling.md).<br>
+Diese Konfiguration ist in der **auto_scheduling**-Erweiterung definiert, daher müssen Sie das [auto_scheduling](guides/extensions-list.md#autoscheduling) Plugin aktivieren. Lesen Sie die Details im Artikel [Auto Scheduling](guides/auto-scheduling.md).
 
-Beachten Sie, dass diese Konfiguration in den Versionen 6.1.0 bis 7.1.3 nur funktioniert, wenn die Option [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) aktiviert ist. 
+Beachten Sie, dass die Konfiguration in den Versionen 6.1.0 - 7.1.3 nur funktioniert, wenn die Option [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md) aktiviert ist.
 :::
 
-
-Normalerweise werden Aufgaben nur dann neu geplant, wenn ein neues Datum eine Einschränkung verletzt.
+Standardmäßig werden Aufgaben nur neu geplant, wenn ein neues Datum gegen die Einschränkung verstößt.
 
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
@@ -55,5 +60,7 @@ Normalerweise werden Aufgaben nur dann neu geplant, wenn ein neues Datum eine Ei
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- ["Auto Scheduling"](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
+### Change log
+- die property wurde in v9.1 veraltet

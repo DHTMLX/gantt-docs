@@ -1,20 +1,20 @@
 ---
 sidebar_label: exportToMSProject
 title: exportToMSProject method
-description: "экспортирует данные из Ганта в MS Project"
+description: "экспортирует данные диаграммы Ганта в MS Project"
 ---
 
 # exportToMSProject
 
 ### Description
 
-@short: Экспортирует данные из Ганта в MS Project
+@short: Экспортирует данные диаграммы Ганта в MS Project
 
 @signature: exportToMSProject: (_export_?: any) =\> void
 
 ### Parameters
 
-- `export` - (optional) *object* - опционально, объект с настройками экспорта (см. детали)
+- `export` - объект - необязательный, объект с настройками экспорта (см. подробности)
 
 ### Example
 
@@ -27,12 +27,11 @@ gantt.exportToMSProject({
 ### Details
 
 :::note
- Этот метод является частью расширения **export**, поэтому убедитесь, что включен плагин [export_api](guides/extensions-list.md#exportservice). Дополнительная информация доступна в статье [Экспорт и импорт из MS Project](guides/export-msproject.md#exporttomsproject).
- 
+Этот метод определяется в расширении **export**, поэтому необходимо активировать плагин [export_api](guides/extensions-list.md#export-service). Подробнее см. в статье [Export and Import from MS Project](guides/export-msproject.md#export-to-ms-project).
 :::
 
 :::note
- Для версий Gantt ранее 8.0 необходимо подключить скрипт **https://export.dhtmlx.com/gantt/api.js** на вашей странице для активации онлайн-сервиса экспорта, например:
+Примечание: Если вы используете Gantt версию старше 8.0, необходимо подключить на страницу `https://export.dhtmlx.com/gantt/api.js` для включения онлайн-сервиса экспорта, например:
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -41,38 +40,21 @@ gantt.exportToMSProject({
  
 :::
 
+Метод **exportToMSProject()** принимает в качестве параметра объект, содержащий набор свойств (все свойства необязательны):
 
-Метод **exportToMSProject()** принимает объект с несколькими опциональными свойствами:
+- **name** - (*string*) имя полученного файла ('gantt.xml' по умолчанию).
+- **auto_scheduling** - (*boolean*) указывает режим планирования задач в экспортируемом проекте. true пометит задачи как автоматически запланированные, false — как вручную запланированные (состояние по умолчанию).
+- **skip_circular_links** - (*boolean*) указывает, будут ли удаляться циклические связи или нет (true - будут удалены (режим по умолчанию), false - не будут удалены).
+- **project** - (*object*) позволяет задать пользовательские свойства экспортируемого объекта проекта.
+- **tasks** - (*object*) позволяет задать пользовательские свойства экспортируемых задач.
+- **data** - (*object*) позволяет задать пользовательский источник данных, который будет представлен на выходной диаграмме Ганта. Ожидается, что свойства **start_date** и **end_date** будут указаны в формате, включающем дату и время (*%d-%m-%Y %H:%i*).
+- **callback** - (*function*) если вы хотите получить URL для загрузки сгенерированного XML, можно использовать свойство *callback*. Оно возвращает JSON-объект с свойством *url*.
+- **resources** - (*array*) позволяет экспортировать список ресурсов в файл MS Project. Если используются календари ресурсов, необходимо указать -1 для задачи в свойстве *CalendarUID* во время экспорта (в объекте **tasks**). Затем задача будет использовать календарь ресурса.
+- **server** - (*string*) API-эндпойнт запроса. Может использоваться с локальной установкой сервиса экспорта. Значение по умолчанию: `https://export.dhtmlx.com/gantt`.
 
-- **name** - (*string*) имя файла для экспортируемого файла (по умолчанию 'gantt.xml').
-- **auto_scheduling** - (boolean) задаёт режим планирования задач в экспортируемом проекте. Значение **true** помечает задачи как авто-планируемые, **false** - как планируемые вручную (по умолчанию).
-- **skip_circular_links** - (boolean) определяет, следует ли удалять циклические связи. **true** (по умолчанию) удаляет их, **false** сохраняет.
-- **project** - (object) позволяет добавить пользовательские свойства к экспортируемому объекту проекта.
-- **tasks** - (object) позволяет добавить пользовательские свойства к экспортируемым задачам.
-- **data** - (object) позволяет указать пользовательский источник данных для выходного Ганта. Свойства **start_date** и **end_date** должны быть в формате дата и время (*%d-%m-%Y %H:%i*).
-- **callback** - (function) предоставляет способ получить URL для скачивания сгенерированного XML. Коллбэк получает JSON объект с полем *url*.
-- **resources** - (array) позволяет экспортировать список ресурсов в файл MS Project.
-- **server** - (string) указывает API endpoint для запроса экспорта, полезно при использовании локального сервиса экспорта. По умолчанию **https://export.dhtmlx.com/gantt**.
+Проверьте подробные описания настроек экспорта в соответствующем разделе [Export settings](guides/export-msproject.md#export-settings).
 
-## Ответ
-
-Ответ возвращает JSON объект со структурой:
-
-~~~js
-{
-   data: {},
-   config: {},
-   resources: [],
-   worktime: {}
-}
-~~~
-
-- **data** - объект данных gantt [data object](guides/supported-data-formats.md#json). Каждая задача включает: *id*, *open*, *parent*, *progress*, *start_date*, *text*, *resource*. Даты в формате "%Y-%m-%d %H:%i".
-- **config** - объект [configuration](api/overview/properties-overview.md) gantt с настройками из файла проекта.
-- **resources** - массив объектов ресурсов, каждый со свойствами: \{*id: string, name:string, type:string*\}, представляющих ресурсы из файла проекта.
-- **worktime** - объект с настройками рабочего времени из календаря проекта.
-
-### Related API
+### Связанные API
 - [exportToPrimaveraP6](api/method/exporttoprimaverap6.md)
 - [exportToExcel](api/method/exporttoexcel.md)
 - [exportToICal](api/method/exporttoical.md)
@@ -83,6 +65,5 @@ gantt.exportToMSProject({
 - [importFromPrimaveraP6](api/method/importfromprimaverap6.md)
 - [importFromMSProject](api/method/importfrommsproject.md)
 
-### Related Guides
-- [Экспорт и импорт из MS Project](guides/export-msproject.md#exporttomsproject)
-
+### Связанные руководства
+- [Export and Import from MS Project](guides/export-msproject.md#export-to-ms-project)

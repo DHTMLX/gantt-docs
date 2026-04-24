@@ -1,14 +1,14 @@
 ---
 sidebar_label: redo
-title: redo config
-description: "позволяет использовать функцию Redo в диаграмме Ганта"
+title: Конфигурация Redo
+description: "Включает функциональность Redo для диаграммы Ганта"
 ---
 
-# redo
+# Повтор
 
 ### Description
 
-@short: Позволяет использовать функцию Redo в диаграмме Ганта
+@short: Включает функциональность Redo для диаграммы Ганта
 
 @signature: redo: boolean
 
@@ -26,18 +26,17 @@ gantt.config.redo = true;
 ### Details
 
 :::note
- Эта настройка является частью расширения **undo**, поэтому убедитесь, что плагин [undo](guides/extensions-list.md#undo) включён. Дополнительную информацию можно найти в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Это опция определяется в расширении **undo**, поэтому вам нужно включить плагин [undo](guides/extensions-list.md#undo). Подробнее см. в статье [Undo/Redo Functionality](guides/undo-redo.md). 
 :::
 
 ### Related API
-- [undo](api/config/undo.md)
-- [undo_actions](api/config/undo_actions.md)
-- [undo_steps](api/config/undo_steps.md)
-- [undo_types](api/config/undo_types.md)
+- - [undo](api/config/undo.md)
+- - [undo_actions](api/config/undo_actions.md)
+- - [undo_steps](api/config/undo_steps.md)
+- - [undo_types](api/config/undo_types.md)
 
 ### Related Guides
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md)
+- [Функциональность Undo/Redo](guides/undo-redo.md)
 
 ### Change log
 - добавлено в версии 4.0
-

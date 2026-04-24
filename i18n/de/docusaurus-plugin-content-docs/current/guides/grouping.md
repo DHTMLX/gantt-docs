@@ -1,21 +1,21 @@
----
-title: "Gruppierung von Aufgaben"
-sidebar_label: "Gruppierung von Aufgaben"
----
+---  
+title: "Aufgaben gruppieren"  
+sidebar_label: "Aufgaben gruppieren"  
+---  
 
-# Gruppierung von Aufgaben
+# Aufgaben gruppieren
 
-:::info
-Diese Funktion ist ausschließlich in der PRO-Edition verfügbar
-:::
+:::info  
+Diese Funktion ist nur in der PRO-Edition verfügbar  
+:::  
 
-Die Bibliothek enthält eine **Gruppierungs**-Erweiterung, mit der Sie Aufgaben nach jedem beliebigen Attribut der Aufgabe organisieren können.
+Die Bibliothek bietet die **Gruppierungs**-Erweiterung, mit der Sie Aufgaben nach beliebigen Attributen einer Aufgabe gruppieren können.
 
 <div style="text-align:center;">![grouping_tasks](/img/grouping_tasks.png)</div>
 
-:::note
-Um diese Erweiterung zu nutzen, aktivieren Sie sie mit der Methode [gantt.plugins](api/method/plugins.md).
-:::
+:::note  
+Um die Erweiterung zu verwenden, aktivieren Sie sie mit der Methode [gantt.plugins](api/method/plugins.md).  
+:::  
 
 ~~~html
 <!DOCTYPE html>
@@ -28,17 +28,16 @@ Um diese Erweiterung zu nutzen, aktivieren Sie sie mit der Methode [gantt.plugin
     gantt.plugins({
         grouping: true
     });
-    //Ihr Code kommt hier hin
+    //your code will be here
 </body>
 </html>
-~~~
+~~~  
 
 [Tasks grouping](https://docs.dhtmlx.com/gantt/samples/02_extensions/08_tasks_grouping.html)
 
+## Aufgaben gruppieren {#groupingtasks}
 
-## Gruppierung von Aufgaben  {#groupingtasks}
-
-Um Aufgaben nach einem bestimmten Kriterium zu gruppieren, verwenden Sie die Methode [groupBy](api/method/groupby.md):
+Um Aufgaben nach einem Kriterium zu gruppieren, verwenden Sie die Methode [groupBy](api/method/groupby.md): 
 
 ~~~js
 var data =  {
@@ -51,23 +50,23 @@ gantt.groupBy({
     group_id: "key",
     group_text: "label"
 });
-~~~
+~~~  
 
-Details:
+wo:
 
-- **relation_property** - (*erforderlich*) die Eigenschaft des Aufgabenobjekts, nach der gruppiert werden soll. Zum Beispiel:
+- **relation_property** - (*verpflichtend*) eine Eigenschaft eines Task-Objekts, die verwendet wird, um Elemente zu gruppieren. Zum Beispiel:
 
 ~~~js
 var data =  {
     tasks:[{id:1, priority:1, start_date:"02-04-2020 00:00", ...}, ...] /*!*/
 };
 gantt.groupBy({
-    relation_property: "priority", /*!*/
+    relation_property: "priority", /*!<*/
     ...
 });
-~~~
+~~~  
 
-Diese Eigenschaft kann auch verwendet werden, um mehrstufige Gruppenstrukturen zu erstellen:
+Die Eigenschaft kann auch verwendet werden, Gruppen in einer mehrstufigen Struktur zu organisieren:
 
 ~~~js
 gantt.groupBy({
@@ -76,7 +75,7 @@ gantt.groupBy({
         {key:0, label: "High"},
         {key:4, label: "Normal"},
         {key:5, label: "Low"},
-        //mehrstufige Gruppen
+        //multi level groups
         {key:1, label: "Give High Attention", "priority":0},
         {key:2, label: "Resolve Immediately", "priority":0},
         {key:3, label: "Keep For Next Release", "priority":5}
@@ -86,7 +85,7 @@ gantt.groupBy({
 });
 ~~~  
 
-- **groups** - (*erforderlich*) ein Array von Gruppen- (Zusammenfassungs-) Objekten.
+- **groups** - (*verpflichtend*) ein Array der Gruppen- (Zusammenfassungs-)Elemente. 
 
 ~~~js
 gantt.groupBy({
@@ -100,46 +99,48 @@ gantt.groupBy({
 });
 ~~~   
 
-Wichtige Hinweise:
+Bitte beachten:
 
-1. Jedes Gruppenobjekt muss mindestens zwei Eigenschaften enthalten (plus beliebige weitere): eine ID und eine Textbeschreibung, die durch die Parameter 'group_id' und 'group_text' definiert werden. Standardmäßig sind dies *key* und *label*. Sie können andere Werte für diese Parameter wählen (**außer "id"**), solange sie in den Gruppenobjekten existieren. 
-:::note
-Die Eigenschaft "id" ist nicht erlaubt, da Gantt während der Gruppierung virtuelle Gruppenaufgaben erstellt und ihnen die Eigenschaften 'group_id' und 'group_text' zuweist. Das bedeutet, dass gruppierte Aufgaben standardmäßig die Eigenschaften 'key' und 'label' haben. Da jede Aufgabe bereits eine 'id' besitzt, würde eine Änderung dies die Baumstruktur beeinträchtigen.
-:::
+1. Jedes 'group'-Objekt muss mindestens 2 Eigenschaften enthalten (aber beliebig viele zusätzliche): die ID und die Textbeschreibung, angegeben durch die Parameter 'group_id', 'group_text' entsprechend. Standardmäßig haben diese Parameter die Werte *key* und *label* respectively. Sie können beliebige andere Werte für diese Parameter verwenden (**ausgenommen "id"**), vorausgesetzt, sie sind im Gruppen-Array angegeben.  
+:::note  
+Der Wert "id" ist nicht erlaubt, da Gantt beim Gruppieren von Aufgaben virtuelle Gruppenkarten erstellt und die Parameter 'group_id' und 'group_text' in diese Aufgaben einfügt.  
+Das bedeutet, dass standardmäßig die gruppierten Aufgaben die Eigenschaften 'key' und 'value' haben. Gleichzeitig besitzt jede Aufgabe bereits die Eigenschaft 'id', und das Ändern der Standard-IDs der Aufgaben führt zur Zerstörung der Baumstruktur.  
+:::  
 
-2. Gruppenobjekte werden dem Datensatz als Elemente vom Typ 'project' mit aktiviertem 'readonly'-Flag hinzugefügt. Sie sind anhand der Eigenschaft '$virtual' erkennbar und können wie reguläre Datenobjekte behandelt werden:
+2. Gruppenelemente werden in den Datensatz als Elemente vom Typ 'project' mit aktivierter 'readonly'-Eigenschaft eingefügt. Sie können am '$virtual'-Eigenschaft erkannt und wie reguläre Datenelemente behandelt werden:
 
 ~~~js
 gantt.templates.task_class="function(start," end, task){
     if(task.$virtual)
     return "summary-bar";
 };
-~~~
+~~~  
 
-3. Ursprüngliche 'project'-Aufgaben im Datensatz werden im Gruppierungsmodus nicht angezeigt, bleiben aber über die API zugänglich.
+3. Die 'project'-Aufgaben aus dem Originaldatensatz werden im Gruppierungsmodus nicht angezeigt, sie stehen jedoch über die API zur Verfügung.
 
-- **group_id** - (*optional*) die Eigenschaft, die für die ID der Gruppe verwendet wird. Standardmäßig 'key'.  
-- **group_text** - (*optional*) die Eigenschaft, die für die Beschriftung der Gruppe verwendet wird. Standardmäßig 'label'.  
-- **delimiter** - (*optional*) wird für die automatische Erstellung von Gruppen für Aufgaben mit mehreren Ressourcen verwendet. Standardmäßig ",".  
-- **default_group_label** - (<i>string</i>) Beschriftung für die Standardgruppe. Optional, Standardwert ist 'None'.  
-- **save_tree_structure** - (<i>boolean</i>) steuert, ob Gantt die ursprüngliche Baumstruktur innerhalb der Gruppen beibehält. Wenn nicht angegeben oder auf *false* gesetzt, werden Aufgaben als flache Liste angezeigt.
 
-Beachten Sie, dass die Standardgruppe Aufgaben enthält, die zu keiner anderen Gruppe gehören. Aufgaben mit einer **relation_property**, die als <i>string|number</i>-Wert angegeben ist, werden nicht in die Standardgruppe aufgenommen.
+- **group_id** - (*optional*) die Gruppen-ID. Der Standardwert ist 'key'.  
+- **group_text** - (*optional*) die Gruppenbezeichnung. Der Standardwert ist 'label'.  
+- **delimiter** - (*optional*) der Trennzeichner wird für die automatische Erstellung von Gruppen für Aufgaben mit mehreren Ressourcen verwendet. Standardmäßig ','.
+- **default_group_label** - (<i>string</i>) der Name der Standardgruppe. Optional. Der Standardwert ist 'None'.  
+- **save_tree_structure** - (<i>boolean</i>) definiert, ob Gantt seine Baumstruktur innerhalb der Gruppen speichern soll. Wenn nicht angegeben oder auf *false* gesetzt, werden die Aufgaben in einer flachen Listenansicht angezeigt.
 
- 
+Beachten Sie, dass die Standardgruppe Aufgaben enthält, die nicht in den anderen Gruppen enthalten sind. Die Standardgruppe schließt Aufgaben nicht ein, wenn sie eine Eigenschaft **relation_property** angegeben als einen <i>string|number</i>-Wert hat.
 
-## Aufgaben-Gruppierung aufheben
+  
 
-Um die Gruppierung aufzuheben, rufen Sie die Methode [groupBy](api/method/groupby.md) mit *false* als Argument auf:
+## Aufgaben entgruppieren
 
-**Aktuelle Gruppierung zurücksetzen**
+Um die Gruppierung zurückzusetzen, rufen Sie die Methode [groupBy](api/method/groupby.md) auf und übergeben Sie *false* als Parameter:
+
+**Zurücksetzen der aktuellen Gruppierung**  
 ~~~js
 gantt.groupBy(false);
 ~~~
 
-## Verwendung von Collections zur Gruppendefinition
+## Verwendung von Sammlungen zur Angabe von Gruppen
 
-Gruppen werden häufig von mehreren Komponenten auf einer Seite gemeinsam genutzt. Um Duplizierungen zu vermeiden, können Gruppen als benannte Collections definiert werden.
+In der Regel werden Gruppen von mehreren Elementen auf der Seite verwendet, und um Wiederholungen zu vermeiden, können Sie Gruppen als benannte Sammlung darstellen.
 
 ~~~js
 gantt.serverList("priority", [
@@ -155,12 +156,11 @@ gantt.groupBy({
 });
 ~~~
 
-
 ## Beibehaltung der ursprünglichen Aufgabenhierarchie in Gruppen
 
-Standardmäßig wird beim Aktivieren der Gruppierung die ursprüngliche Hierarchie des Gantt-Baums nicht angezeigt; alle Aufgaben erscheinen als direkte Kinder ihrer Gruppen.
+Im Gruppierungsmodus wird die ursprüngliche Struktur des Gantt-Baums standardmäßig nicht angezeigt, und alle Aufgaben erscheinen als Erstebene-Kinder ihrer jeweiligen Gruppen.
 
-Um die ursprüngliche Unteraufgabenstruktur innerhalb der Gruppen beizubehalten, setzen Sie **save_tree_structure** auf true:
+Um die ursprüngliche Unteraufgaben-Struktur innerhalb der Gruppen beizubehalten, verwenden Sie die Einstellung **save_tree_structure**:
 
 ~~~js
 gantt.groupBy({
@@ -177,6 +177,4 @@ gantt.groupBy({
 });
 ~~~
 
-
-[Save tree structure when grouping tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_save_tree_structure.html)
-
+[Baumstruktur speichern beim Gruppieren von Aufgaben](https://docs.dhtmlx.com/gantt/samples/02_extensions/28_tasks_grouping_save_tree_structure.html)

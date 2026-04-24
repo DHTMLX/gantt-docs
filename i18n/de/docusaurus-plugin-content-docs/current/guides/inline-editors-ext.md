@@ -1,81 +1,85 @@
 ---
-title: "Inline Editors Erweiterung"
-sidebar_label: "Inline Editors Erweiterung"
+title: "Inline-Editor-Erweiterung"
+sidebar_label: "Inline-Editor-Erweiterung"
 ---
 
-# Inline Editors Erweiterung
+# Inline-Editor-Erweiterung
 
-Weitere Informationen zur Inline Editors Erweiterung finden Sie im Artikel [Inline Editing in Grid](guides/inline-editing.md). 
+Lesen Sie Details zur Inline-Editor-Erweiterung im Artikel [Inline Editing in Grid](guides/inline-editing.md).
 
- Das *inlineEditors* Objekt bietet folgende API:
+Das *inlineEditors*-Objekt verfügt über die folgende API:
 
 ## Methoden
 
 ### Aktionen:
 
-- <span class="submethod">**startEdit (taskId, columnName): void**</span> - Öffnet einen Editor für die angegebene Aufgabe und Zelle, befüllt ihn mit dem zugeordneten Wert und fokussiert den Editor
-    - **_taskId_** - (*number | string*) - Die Aufgaben-ID
-    - **_columnName_** - (*string*) - Der Spaltenname
-- <span class="submethod">**show (taskId, columnName): void**</span> - Öffnet einen leeren Editor in der angegebenen Aufgabe und Zelle
-    - **_taskId_** - (*number | string*) - Die Aufgaben-ID
-    - **_columnName_** - (*string*) - Der Spaltenname
-- <span class="submethod">**setValue (): void**</span> - Befüllt den geöffneten Editor mit Werten aus der Aufgabe
-- <span class="submethod">**save (): void**</span> - Speichert die Änderungen und schließt den Editor
-- <span class="submethod">**hide (): void**</span> - Schließt den Editor ohne Änderungen zu speichern
-- <span class="submethod">**focus (): void**</span> - Setzt den Fokus auf den Editor
-- <span class="submethod">**getState (): object**</span> - Gibt das Statusobjekt zurück (id: taskId, columnName: columnName, placeholder: HTMLElement)
-- <span class="submethod">**getValue (): string**</span> - Gibt den aktuellen Wert des Editors zurück
+- <span class="submethod">**startEdit (taskId, columnName): void**</span> - öffnet einen Editor in der angegebenen Aufgabe/Zelle, setzt den zugeordneten Wert und setzt den Browser-Fokus auf den Editor
+    - **_taskId_** - (*number | string*) - die Aufgaben-ID
+    - **_columnName_** - (*string*) - der Spaltenname
+- <span class="submethod">**show (taskId, columnName): void**</span> - öffnet einen leeren Editor in der angegebenen Aufgabe/Zelle
+    - **_taskId_** - (*number | string*) - die Aufgaben-ID
+    - **_columnName_** - (*string*) - der Spaltenname
+- <span class="submethod">**setValue (): void**</span> - füllt einen geöffneten Editor mit Werten aus der Aufgabe
+- <span class="submethod">**save (): void**</span> - speichert Änderungen und versteckt den Editor
+- <span class="submethod">**hide (): void**</span> - versteckt einen Editor, ohne Änderungen zu speichern
+- <span class="submethod">**focus (): void**</span> - setzt den Browser-Fokus auf den Editor
+- <span class="submethod">**getState (): object**</span> - holt das Statusobjekt (id: taskId, columnName: columnName, placeholder: HTMLElement)
+- <span class="submethod">**getValue (): string**</span> - holt den aktuellen Wert des Editors
 
-### Status: 
+### Zustand:
 
-- <span class="submethod">**isChanged (): boolean**</span> - Prüft, ob sich der aktuelle Wert des Editors vom ursprünglichen Wert unterscheidet
-- <span class="submethod">**isVisible (): boolean**</span> - Prüft, ob der Editor aktuell geöffnet ist
+- <span class="submethod">**isChanged (): boolean**</span> - prüft, ob der aktuelle Editorwert vom ursprünglichen Wert abweicht
+- <span class="submethod">**isVisible (): boolean**</span> - prüft, ob der Editor geöffnet ist
 
 ### Ereignisse:
 
-- <span class="submethod">**attachEvent (name, handler): string**</span> - Fügt dem inlineEditors Objekt einen Ereignis-Handler hinzu
-    - **_name_** - (*string*) - Der Name des Ereignisses
-    - **_handler_** - (*Function*) - Die Callback-Funktion, die beim Auslösen des Ereignisses ausgeführt wird
-- <span class="submethod">**detachEvent (id): void**</span> - Entfernt einen zuvor hinzugefügten Ereignis-Handler
-    - **_id_** - (*string*) - Die ID des Ereignis-Handlers
+- <span class="submethod">**attachEvent (name, handler): string**</span> - hängt einen Ereignishandler an das inlineEditors-Objekt an
+    - **_name_** - (*string*) - der Name des Ereignishandlers
+    - **_handler_** - (*Function*) - die Funktion, die aufgerufen wird, wenn das Ereignis ausgelöst wird
+- <span class="submethod">**detachEvent (id): void**</span> - trennt einen an ein Ereignis gehängten Handler (der zuvor durch attachEvent() angehängt wurde) 
+    - **_id_** - (*string*) - die ID des angehängten Ereignishandlers
+
 
 ### Navigation:
 
-- <span class="submethod">**editNextCell (canChangeRow): void**</span> - Speichert den aktuellen Editor und wechselt zur nächsten Zelle
-    - **_canChangeRow?_** - (*boolean*) - Gibt an, ob der Editor nach der letzten Zelle der aktuellen Zeile zur ersten Zelle der nächsten Zeile wechseln kann
-- <span class="submethod">**editNextRow (skipReadonly): void**</span> - Speichert den aktuellen Editor und öffnet einen Editor in der gleichen Zelle der darunterliegenden Aufgabe
-    - **_skipReadonly?_** - (*boolean*) - Wenn true, werden schreibgeschützte Aufgaben übersprungen und der Editor wird in der ersten bearbeitbaren Aufgabe darunter geöffnet; wenn false (Standard), wird der Editor geschlossen, wenn die nächste Aufgabe schreibgeschützt ist
-- <span class="submethod">**editPrevCell (canChangeRow): void**</span> - Speichert den aktuellen Editor und wechselt zur vorherigen Zelle
-    - **_canChangeRow?_** - (*boolean*) - Gibt an, ob der Editor nach der ersten Zelle der aktuellen Zeile zur letzten Zelle der vorherigen Zeile wechseln kann
-- <span class="submethod">**editPrevRow (skipReadonly): void**</span> - Speichert den aktuellen Editor und öffnet einen Editor in der gleichen Zelle der darüberliegenden Aufgabe
-    - **_skipReadonly?_** - (*boolean*) - Wenn true, werden schreibgeschützte Aufgaben übersprungen und der Editor wird in der ersten bearbeitbaren Aufgabe darüber geöffnet; wenn false (Standard), wird der Editor geschlossen, wenn die vorherige Aufgabe schreibgeschützt ist
-- <span class="submethod">**getFirstCell (): string**</span> - Gibt den Namen der ersten bearbeitbaren Spalte im Grid zurück
-- <span class="submethod">**getLastCell (): string**</span> - Gibt den Namen der letzten bearbeitbaren Spalte im Grid zurück
-- <span class="submethod">**getNextCell (direction): string | null**</span> - Gibt den Namen der nächsten bearbeitbaren Spalte zurück
-    - **_direction_** - (*number*) - Die Richtung: `1` für rechts, `-1` für links
+- <span class="submethod">**editNextCell (canChangeRow): void**</span> - speichert den aktuellen Editor und verschiebt den Editor zur nächsten Zelle
+    - **_canChangeRow?_**  - (*boolean*) - der Parameter gibt an, ob der Editor nach der letzten Zelle der aktuellen Zeile in die erste Zelle der nächsten Zeile verschoben werden kann
+- <span class="submethod">**editNextRow (skipReadonly): void**</span> - speichert den aktuellen Editor und öffnet einen Editor in derselben Zelle der Aufgabe darunter
+    - **_skipReadonly?_**  - (*boolean*) - der Parameter gibt an, ob die schreibgeschützte Aufgabe übersprungen werden soll und der Editor in die Zelle der ersten editierbaren Aufgabe geöffnet wird. Der Standardwert false führt dazu, dass der Editor geschlossen wird, wenn die nächste Aufgabe schreibgeschützt ist.
+- <span class="submethod">**editPrevCell (canChangeRow): void**</span> - speichert den aktuellen Editor und verschiebt den Editor zur vorherigen Zelle
+    - **_canChangeRow?_**  - (*boolean*) - der Parameter gibt an, ob der Editor nach der ersten Zelle der aktuellen Zeile in die letzte Zelle der vorherigen Zeile verschoben werden kann
+- <span class="submethod">**editPrevRow (skipReadonly): void**</span> - speichert den aktuellen Editor und öffnet einen Editor in derselben Zelle der Aufgabe darüber
+    - **_skipReadonly?_**  - (*boolean*) - der Parameter gibt an, ob die schreibgeschützte Aufgabe übersprungen werden soll und der Editor in die Zelle der ersten editierbaren Aufgabe geöffnet wird. Der Standardwert false beendet den Editor, wenn die vorherige Aufgabe schreibgeschützt ist.
+- <span class="submethod">**getFirstCell (): string**</span> - gibt den Namen der ersten bearbeitbaren Spalte im Grid zurück
+- <span class="submethod">**getLastCell (): string**</span> - gibt den Namen der letzten bearbeitbaren Spalte im Grid zurück
+- <span class="submethod">**getNextCell (direction): string | null**</span> - gibt den Namen der nächsten bearbeitbaren Spalte zurück
+    - **_direction_**  - (*number*) - der Parameter gibt an, in welche Richtung die folgende Zelle iteriert werden soll. `1` - rechts, `-1` - links.
+
 
 ### Hilfsfunktionen:
 
-- <span class="submethod">**locateCell (node): object | null**</span> - Prüft, ob ein angegebenes DOM-Element eine Aufgaben-Zelle ist, und gibt ggf. ein Editor-Statusobjekt zurück: (id: taskId, columnName: columnName)
-    - **_node_** - (*HTMLElement*) - Das HTML-Element
+- <span class="submethod">**locateCell (node): object | null**</span> - prüft, ob ein übergebenes DOM-Element ein Task-Zellen-Objekt ist und gibt, falls ja, den Editor-Zustand zurück: (id: taskId, columnName: columnName)
+    - **_node_** - (*HTMLElement*) - das HTML-Element
 
-### Maus-/Tastatur-Mapping:
 
-- <span class="submethod">**setMapping (mapping): void**</span> - Setzt ein Mapping-Konfigurationsobjekt
-    - **_mapping_** - (*object*) - Ein Objekt, das das Mapping definiert:
-        - **_init_** - (*Function*): void - Initialisiert das Mapping
-            - **_inlineEditors_** - (*InlineEditorMethods*) - Das inlineEditors Objekt
-            - **_grid_** - (*any*) - Die Grid-Layout-Ansicht
-        - **_onShow_** - (*Function*): void - Wird aufgerufen, wenn der Inline-Editor geöffnet wird
-            - **_inlineEditors_** - (*InlineEditorMethods*) - Das inlineEditors Objekt
-            - **_node_** - (*HTMLElement*) - Das HTML-Element
-            - **_grid_** - (*any*) - Die Grid-Layout-Ansicht
-        - **_onHide_** - (*Function*): void - Wird aufgerufen, wenn der Inline-Editor geschlossen wird
-            - **_inlineEditors_** - (*InlineEditorMethods*) - Das inlineEditors Objekt
-            - **_node_** - (*HTMLElement*) - Das HTML-Element
-            - **_grid_** - (*any*) - Die Grid-Layout-Ansicht
-        - **_destroy_** - (*Function*): void - Bereinigt das Mapping
-- <span class="submethod">**getMapping (): object**</span> - Gibt das aktuell angewendete Mapping-Objekt zurück
+### Maus-/Tastatur-Zuordnung:
+
+- <span class="submethod">**setMapping (mapping): void**</span> - setzt ein Mapping-Objekt
+    - **_mapping_** - (*object*) - ein Objekt mit der Mapping-Konfiguration:
+        - **_init_** - (*Function*): void - die Methode zur Initialisierung der Zuordnung
+            - **_inlineEditors_** - (*InlineEditorMethods*) - das inlineEditors-Objekt
+            - **_grid_** - (*any*) - die Grid-Layout-Ansicht
+        - **_onShow_** - (*Function*): void - die Methode, die aufgerufen wird, wenn der Inline-Editor geöffnet wird
+            - **_inlineEditors_** - (*InlineEditorMethods*) - das inlineEditors-Objekt
+            - **_node_** - (*HTMLElement*) - das HTML-Element
+            - **_grid_** - (*any*) - die Grid-Layout-Ansicht
+        - **_onHide_** - (*Function*): void - die Methode, die aufgerufen wird, wenn der Inline-Editor geschlossen wird
+            - **_inlineEditors_** - (*InlineEditorMethods*) - das inlineEditors-Objekt
+            - **_node_** - (*HTMLElement*) - das HTML-Element
+            - **_grid_** - (*any*) - die Grid-Layout-Ansicht
+        - **_destroy_** - (*Function*): void - die Methode zum Zerstören der Zuordnung
+- <span class="submethod">**getMapping (): object**</span> - gibt ein aktuell angewendetes Mapping-Objekt zurück
+
 
 ## Ereignisse
 
@@ -84,9 +88,9 @@ Weitere Informationen zur Inline Editors Erweiterung finden Sie im Artikel [Inli
 Argumente:
 <span class="eventarguments">
 
-- **_state_** - (*object*) - Das Editor-Statusobjekt
-    - **_id_** - (*number | string*) - Die ID der bearbeiteten Aufgabe
-    - **_columnName_** - (*string*) - Der Spaltenname
+- **_state_** - (*object*) - das Editor-Zustandsobjekt
+    - **_id_** - (*number | string*) - die ID der bearbeiteten Aufgabe
+    - **_columnName_** - (*string*) - der Spaltenname
 </span>
 
 ~~~js
@@ -104,9 +108,9 @@ inlineEditors.attachEvent("onBeforeEditStart", function(state){
 Argumente:
 <span class="eventarguments">
 
-- **_state_** - (*object*) - Das Editor-Statusobjekt
-    - **_id_** - (*number | string*) - Die ID der bearbeiteten Aufgabe
-    - **_columnName_** - (*string*) - Der Spaltenname
+- **_state_** - (*object*) - das Editor-Zustandsobjekt
+    - **_id_** - (*number | string*) - die ID der bearbeiteten Aufgabe
+    - **_columnName_** - (*string*) - der Spaltenname
 </span>
 
 ~~~js
@@ -120,16 +124,16 @@ inlineEditors.attachEvent("onEditStart", function(state){
 
 ### <span class="eventname">onBeforeSave</span>
 
-Wird ausgelöst, wenn der Editor kurz vor dem Schließen und Speichern der Änderungen steht
+Wird ausgelöst, bevor ein Editor geschlossen wird und Änderungen gespeichert werden
 
 Argumente:
 <span class="eventarguments">
 
-- **_state_** - (*object*) - Das Editor-Statusobjekt
-    - **_id_** - (*number | string*) - Die ID der bearbeiteten Aufgabe
-    - **_columnName_** - (*string*) - Der Spaltenname
-    - **_oldValue_** - (*any*) - Der ursprüngliche Wert im Editor
-    - **_newValue_** - (*any*) - Der aktuelle Wert im Editor, kann verändert werden
+- **_state_** - (*object*) - das Editor-Zustandsobjekt
+    - **_id_** - (*number | string*) - die ID der bearbeiteten Aufgabe
+    - **_columnName_** - (*string*) - der Spaltenname
+    - **_oldValue_** - (*any*) - der ursprüngliche Wert des Editors
+    - **_newValue_** - (*any*) - der aktuelle Wert des Editors, kann geändert werden
 </span>
 
 ~~~js
@@ -148,16 +152,16 @@ inlineEditors.attachEvent("onBeforeSave", function(state){
 
 ### <span class="eventname">onSave</span>
 
-Wird ausgelöst, nachdem eine Aufgabe über den Editor aktualisiert wurde
+Wird ausgelöst, nachdem ein Task aus dem Editor aktualisiert wurde
 
 Argumente:
 <span class="eventarguments">
 
-- **_state_** - (*object*) - Das Editor-Statusobjekt
-    - **_id_** - (*number | string*) - Die ID der bearbeiteten Aufgabe
-    - **_columnName_** - (*string*) - Der Spaltenname
-    - **_oldValue_** - (*any*) - Der ursprüngliche Wert im Editor
-    - **_newValue_** - (*any*) - Der aktuelle Wert im Editor
+- **_state_** - (*object*) - das Editor-Zustandsobjekt
+    - **_id_** - (*number | string*) - die ID der bearbeiteten Aufgabe
+    - **_columnName_** - (*string*) - der Spaltenname
+    - **_oldValue_** - (*any*) - der ursprüngliche Wert des Editors
+    - **_newValue_** - (*any*) - der aktuelle Wert des Editors
 </span>
 
 ~~~js
@@ -175,14 +179,14 @@ inlineEditors.attachEvent("onSave", function(state){
 
 ### <span class="eventname">onEditEnd</span>
 
-Wird ausgelöst, nachdem der Inline-Editor geschlossen wurde
+Wird ausgelöst, nachdem ein Inline-Editor ausgeblendet wurde
 
 Argumente:
 <span class="eventarguments">
 
-- **_state_** - (*object*) - Das Editor-Statusobjekt
-    - **_id_** - (*number | string*) - Die ID der bearbeiteten Aufgabe
-    - **_columnName_** - (*string*) - Der Spaltenname
+- **_state_** - (*object*) - das Editor-Zustandsobjekt
+    - **_id_** - (*number | string*) - die ID der bearbeiteten Aufgabe
+    - **_columnName_** - (*string*) - der Spaltenname
 </span>
 
 ~~~js

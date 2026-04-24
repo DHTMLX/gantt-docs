@@ -1,14 +1,14 @@
 ---
 sidebar_label: onBeforeGanttReady
 title: onBeforeGanttReady event
-description: "Wird ausgelöst, kurz bevor die Initialisierung von dhtmlxGantt beginnt"
+description: "löst aus, bevor die dhtmlxGantt-Initialisierung gestartet wird"
 ---
 
 # onBeforeGanttReady
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor die Initialisierung von dhtmlxGantt beginnt
+@short: Wird ausgelöst, bevor die dhtmlxGantt-Initialisierung gestartet wird
 
 @signature: onBeforeGanttReady: () =\> void;
 
@@ -16,10 +16,9 @@ description: "Wird ausgelöst, kurz bevor die Initialisierung von dhtmlxGantt be
 
 ~~~jsx
 gantt.attachEvent("onBeforeGanttReady", function(){
-    // Hier kann benutzerdefinierte Logik eingefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related API
 - [onGanttReady](api/event/onganttready.md)
-

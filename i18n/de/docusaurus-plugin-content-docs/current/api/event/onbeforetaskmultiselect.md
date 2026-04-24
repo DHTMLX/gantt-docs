@@ -1,41 +1,41 @@
 ---
 sidebar_label: onBeforeTaskMultiSelect
-title: onBeforeTaskMultiSelect event
-description: "Wird unmittelbar ausgelöst, bevor sich der Auswahlstatus einer Aufgabe ändert (wenn eine Aufgabe ausgewählt oder abgewählt wird)."
+title: onBeforeTaskMultiSelect-Ereignis
+description: "wird ausgelöst, bevor der Status der Aufgaben-Auswahl geändert wird (die Aufgabe wird ausgewählt oder abgewählt)"
 ---
 
 # onBeforeTaskMultiSelect
 
 ### Description
 
-@short: Wird unmittelbar ausgelöst, bevor sich der Auswahlstatus einer Aufgabe ändert (wenn eine Aufgabe ausgewählt oder abgewählt wird).
+@short: Wird ausgelöst, bevor der Status der Task-Auswahl geändert wird (die Task wird ausgewählt oder abgewählt)
 
 @signature: onBeforeTaskMultiSelect: (id: string | number, state: boolean, e: Event | null) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die eindeutige Kennung einer Aufgabe  
-- `state` - (required) *boolean* - true, wenn die Aufgabe ausgewählt wird, false, wenn sie abgewählt wird  
-- `e` - (required) *Event | null* - das native Event-Objekt, falls vorhanden
+- `id` - (erforderlich) *string | number* - die ID einer Aufgabe
+- `state` - (erforderlich) *boolean* - true, wenn die Aufgabe ausgewählt wird; false, wenn sie abgewählt wird
+- `e` - (erforderlich) *Event | null* - ein natives Event-Objekt
 
 ### Example
 
 ~~~jsx
-gantt.attachEvent("onBeforeTaskMultiSelect", function(id, state, e){  
-    // hier Ihre Logik hinzufügen  
-    return true;  
+gantt.attachEvent("onBeforeTaskMultiSelect", function(id, state, e){
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
+     return true;
 });
 ~~~
 
 ### Details
 
 :::note
- Dieses Event ist Teil der **multiselect**-Erweiterung, daher stellen Sie sicher, dass das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Multi-Task-Auswahl"](guides/multiselection.md). 
-::: 
+Dieses Event ist in der **Multiselect**-Erweiterung definiert, daher müssen Sie das [Multiselect](guides/extensions-list.md#multitaskselection) Plugin aktivieren. Lesen Sie die Details im Artikel [Multi-Task Selection](guides/multiselection.md).
+:::
 
-Dieses Event wird für jede Aufgabe innerhalb des Auswahlbereichs ausgelöst. 
+Das Event wird für jede Task im angegebenen Bereich aufgerufen.
 
-Es kann durch Rückgabe von false blockiert werden, wodurch verhindert wird, dass sich der Auswahlstatus der Aufgabe ändert.
+Das Event kann blockiert werden; Wenn false zurückgegeben wird, wird die Änderung des Task-Auswahlstatus abgebrochen.
 
 ### Related API
 - [onBeforeMultiSelect](api/event/onbeforemultiselect.md)
@@ -43,5 +43,4 @@ Es kann durch Rückgabe von false blockiert werden, wodurch verhindert wird, das
 - [onMultiSelect](api/event/onmultiselect.md)
 
 ### Related Guides
-- ["Multi-Task-Auswahl"](guides/multiselection.md#apievents)
-
+- [Multi-Task Selection](guides/multiselection.md#apievents)

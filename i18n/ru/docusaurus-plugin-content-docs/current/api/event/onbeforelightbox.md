@@ -1,14 +1,14 @@
 ---
 sidebar_label: onBeforeLightbox
 title: onBeforeLightbox event
-description: "срабатывает непосредственно перед открытием lightbox (формы редактирования)"
+description: "Срабатывает непосредственно перед тем, как пользователь откроет lightbox (форма редактирования)"
 ---
 
 # onBeforeLightbox
 
 ### Description
 
-@short: Срабатывает непосредственно перед открытием lightbox (формы редактирования)
+@short: Срабатывает непосредственно перед тем, как пользователь откроет lightbox (форма редактирования)
 
 @signature: onBeforeLightbox: (id: string | number) =\> boolean;
 
@@ -36,5 +36,5 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 ### Details
 
-- Это событие можно заблокировать. Возврат *false* предотвратит открытие lightbox.
-- Удобный способ внести пользовательские изменения в lightbox перед его появлением.
+- Событие можно блокировать. Возвращение *false* отменяет обработку по умолчанию (открытие lightbox).
+- Использование этого события — хороший способ настроить что-либо в lightbox.

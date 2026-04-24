@@ -1,16 +1,18 @@
 ---
 sidebar_label: grid_resizer_column_attribute
-title: grid_resizer_column_attribute config
-description: "指定用于列调整大小器DOM元素的属性名称。该属性表示列的索引"
+title: grid_resizer_column_attribute 配置
+description: "设置列调整器的 DOM 元素属性名。该属性表示列的索引"
 ---
 
 # grid_resizer_column_attribute
+
 :::info
- 此功能仅在PRO版本中可用。 
+此功能仅在 PRO 版本中提供。 
 :::
+
 ### Description
 
-@short: 指定用于列调整大小器DOM元素的属性名称。该属性表示列的索引
+@short: 设置列调整器的 DOM 元素的属性名。该属性表示列的索引
 
 @signature: grid_resizer_column_attribute: string
 
@@ -20,8 +22,7 @@ description: "指定用于列调整大小器DOM元素的属性名称。该属性
 gantt.config.grid_resizer_column_attribute = "data-column-index";
 ~~~
 
-**Default value:** "data-column-index"
+**默认值:** "data-column-index"
 
 ### Related API
 - [grid_resize](api/config/grid_resize.md)
-

@@ -8,7 +8,7 @@ description: "提供当前应用于甘特图的 skin"
 
 ### Description
 
-@short: 提供当前应用于甘特图的 skin
+@short: 返回甘特图当前的皮肤
 
 @signature: skin: string
 

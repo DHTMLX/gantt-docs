@@ -1,14 +1,14 @@
 ---
 sidebar_label: show_markers
-title: show_markers config
-description: "페이지 내 마커의 가시성을 제어합니다"
+title: show_markers 설정
+description: "페이지에서 마커를 표시하거나 숨깁니다."
 ---
 
 # show_markers
 
 ### Description
 
-@short: 페이지 내 마커의 가시성을 제어합니다
+@short: 페이지에서 마커를 표시하거나 숨깁니다
 
 @signature: show_markers: boolean
 
@@ -30,7 +30,7 @@ gantt.config.show_markers = false; // 3개의 마커 모두 숨김
 ### Details
 
 :::note
- 이 옵션은 **marker** 확장 기능의 일부이므로, [marker](guides/extensions-list.md#verticalmarker) 플러그인을 반드시 활성화해야 합니다. 자세한 내용은 [수직 마커 추가하기](guides/markers.md) 문서를 참고하세요. 
+이 옵션은 **marker** 확장에 정의되어 있으므로 [marker](guides/extensions-list.md#vertical-marker) 플러그인을 활성화해야 합니다. [Adding Vertical Markers](guides/markers.md) 문서를 참고하여 세부 정보를 확인하세요.
 :::
 
 ### Related API

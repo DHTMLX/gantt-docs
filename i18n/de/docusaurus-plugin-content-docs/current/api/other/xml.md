@@ -1,14 +1,14 @@
 ---
 sidebar_label: xml
-title: xml config
-description: "spezifiziert XML-Serialisierung und Parsing"
+title: XML-Konfiguration
+description: "legt die XML-Serialisierung und das Parsen fest"
 ---
 
 # xml
 
 ### Description
 
-@short: Spezifiziert XML-Serialisierung und Parsing
+@short: Bestimmt die XML-Serialisierung und das Parsen
 
 @signature: xml: any
 
@@ -20,7 +20,7 @@ const obj = gantt.xml; // -> { parse(text,loader){...}, serialize(){... }}
 
 ### Details
 
-Das XML-Objekt umfasst zwei Hauptmethoden:
+Das XML-Objekt enthält 2 Eigenschaften:
 
-- **parse()** Methode - steuert, wie dhtmlxGantt Daten im XML-Format liest und interpretiert.
-- **serialize()** Methode - verwaltet, wie dhtmlxGantt Daten zurück in das XML-Format konvertiert.
+- **parse()**-Methode – Definiert, wie dhtmlxGantt Daten im XML-Format parst.
+- **serialize()**-Methode – Definiert, wie dhtmlxGantt Daten ins XML-Format serialisiert.

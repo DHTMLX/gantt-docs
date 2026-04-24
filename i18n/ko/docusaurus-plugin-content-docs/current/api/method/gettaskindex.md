@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskIndex
 title: getTaskIndex method
-description: "작업이 속한 브랜치 내에서 작업의 위치를 가져옵니다."
+description: "브랜치에서 태스크의 인덱스를 가져옵니다."
 ---
 
 # getTaskIndex
 
 ### Description
 
-@short: 작업이 속한 브랜치 내에서 작업의 위치를 가져옵니다.
+@short: 브랜치의 태스크 인덱스를 가져옵니다
 
 @signature: getTaskIndex: (id: string | number) =\> number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    작업의 식별자
+- `id` - (required) *string | number* - 태스크 ID
 
 ### Returns
-- ` index` - (number) - 브랜치 내 작업의 0부터 시작하는 위치 값
+- `index` - (number) - 브랜치의 태스크 인덱스(제로 베이스 번호)
 
 ### Example
 
@@ -44,4 +44,3 @@ const globalTaskIndex = gantt.getGlobalTaskIndex("t_1"); // -> 1
 
 ### Related API
 - [getGlobalTaskIndex](api/method/getglobaltaskindex.md)
-

@@ -1,25 +1,25 @@
 ---
 sidebar_label: quick_info_date
-title: quick_info_date template
-description: "팝업 편집 폼에 표시되는 날짜를 설정합니다"
+title: quick_info_date 템플릿
+description: "팝업 편집 양식의 날짜를 지정합니다"
 ---
 
 # quick_info_date
 
 ### Description
 
-@short: 팝업 편집 폼에 표시되는 날짜를 설정합니다
+@short: 팝업 편집 양식의 날짜를 지정합니다
 
 @signature: quick_info_date: (start: Date, end: Date, task: Task) =\> string;
 
 ### Parameters
 
-- `start` - (required) *Date* - 작업이 시작될 예정인 날짜
-- `end` - (required) *Date* - 작업이 완료될 예정인 날짜
-- `task` - (required) *Task* - 작업 객체
+- `start` - (필수) *Date* - 작업이 시작되도록 예정된 날짜
+- `end` - (필수) *Date* - 작업이 완료되도록 예정된 날짜
+- `task` - (필수) *Task* - 작업 객체
 
 ### Returns
-- ` text` - (string) - gantt에 표시되는 html 콘텐츠
+- ` text` - (string) - Gantt에 렌더링될 HTML 텍스트
 
 ### Example
 
@@ -35,8 +35,8 @@ gantt.templates.quick_info_date = function(start, end, task){
 ### Details
 
 :::note
- 이 템플릿은 **Quick Info** 확장의 일부이므로, [quick_info](guides/extensions-list.md#quickinfo) 플러그인이 활성화되어 있는지 확인하세요. 
+이 템플릿은 **Quick Info** 확장 기능에 정의되어 있으므로 [quick_info](guides/extensions-list.md#quick-info) 플러그인을 활성화해야 합니다.
 :::
 
 ### Related Guides
-- ['Quick Info' 확장(터치 지원)의 템플릿](guides/touch-templates.md)
+- [퀵 인포 확장 템플릿 (터치 지원)](guides/touch-templates.md)

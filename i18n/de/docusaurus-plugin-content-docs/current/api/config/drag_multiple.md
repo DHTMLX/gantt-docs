@@ -1,6 +1,6 @@
 ---
 sidebar_label: drag_multiple
-title: drag_multiple config
+title: drag_multiple Konfiguration
 description: "ermöglicht das gleichzeitige Ziehen mehrerer ausgewählter Aufgaben"
 ---
 
@@ -22,13 +22,13 @@ gantt.init("gantt_here");
 **Default value:** true
 
 ### Related samples
-- [Multiselection and Indent/Outdent tasks](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
+- [Mehrfachselektion und Einrücken/Ausrücken von Aufgaben](https://docs.dhtmlx.com/gantt/samples/02_extensions/09_multiselection.html)
 
 ### Details
 
-Wenn mehrere Aufgaben ausgewählt sind, bewirkt das Ziehen einer Aufgabe, die nicht Teil der Auswahl ist, dass nur diese einzelne Aufgabe verschoben wird.
+Wenn Sie mehrere Aufgaben auswählen, aber eine Aufgabe verschieben, die nicht ausgewählt ist – wird nur die nicht ausgewählte Aufgabe verschoben.
 
-Um das Ziehen und Ablegen von Projekten zu ermöglichen, setzen Sie die [drag_project](api/config/drag_project.md) Konfiguration auf *true*.
+Sie können auch Drag-and-Drop von Projekten aktivieren, indem Sie die [drag_project](api/config/drag_project.md) Konfiguration auf *true* setzen.
 
 ~~~js
 gantt.config.drag_project = true;
@@ -38,5 +38,4 @@ gantt.config.drag_project = true;
 - [drag_project](api/config/drag_project.md)
 
 ### Related Guides
-- ["Multi-Task-Auswahl"](guides/multiselection.md#multitaskselectionanddragndrop)
-
+- [Mehrfachselektion von Aufgaben](guides/multiselection.md#multitaskselectionanddragndrop)

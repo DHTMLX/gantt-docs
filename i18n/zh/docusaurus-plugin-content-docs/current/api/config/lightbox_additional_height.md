@@ -1,14 +1,18 @@
 ---
 sidebar_label: lightbox_additional_height
-title: lightbox_additional_height config
-description: "为 lightbox 添加额外高度"
+title: lightbox_additional_height 配置
+description: "增加 lightbox 的高度"
 ---
 
 # lightbox_additional_height
 
+:::warning
+該屬性已棄用
+:::
+
 ### Description
 
-@short: 为 lightbox 添加额外高度
+@short: 增加 lightbox 的高度
 
 @signature: lightbox_additional_height: number
 
@@ -22,7 +26,7 @@ gantt.config.lightbox_additional_height = 90;
 
 ### Details
 
-**lightbox_additional_height** 表示 lightbox 的头部和底部区域的总高度。
+The **lightbox_additional_height** 由 2 个数值相加得到：lightbox 的 header 高度和 lighbox 的 footer 高度。
 
 ### Change log
-- 自 v9.0 起弃用
+- 自 v9.0 起已弃用

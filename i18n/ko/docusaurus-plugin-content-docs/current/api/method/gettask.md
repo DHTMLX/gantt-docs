@@ -14,7 +14,7 @@ description: "작업 객체를 반환합니다"
 
 ### Parameters
 
-- `id` - (required) *string | number* -    작업 ID
+- `id` - (필수) *string | number* - 작업 ID
 
 ### Returns
 - ` obj` - (Task) - 작업 객체
@@ -36,20 +36,19 @@ gantt.getTask(7);
 
 ### Details
 
-**getTask()**를 호출하면 해당 작업과 관련된 링크를 식별하는 데 유용한 두 가지 속성을 포함하는 작업 객체를 반환합니다:
+getTask() 메서드가 반환하는 작업 객체에는 작업과 관련된 링크를 얻는 데 사용할 수 있는 2개의 중요한 속성이 있습니다:
 
-- **$source** - 작업에서 시작하는 링크입니다.
-- **$target** - 작업을 가리키는 링크입니다.
+- **$source** - 작업에서 나오는 링크들.
+- **$target** - 작업으로 들어오는 링크들.
 
-이 속성들은 자동으로 생성되며 작업에서 나가는 링크와 작업으로 들어오는 링크의 ID를 보유합니다.
+다음은 예시 코드입니다:
 
 ~~~js
 const taskObj = gantt.getTask("t1");
  
-const sourceLinks = taskObj.$source;        //-> ["l1","l4"] - 나가는 링크의 ID  
+const sourceLinks = taskObj.$source;        //-> ["l1","l4"] - 나오는 링크의 ID  
 const targetLinks = taskObj.$target;       //-> ["l5","l8"] - 들어오는 링크의 ID
 ~~~
-
 
 ## Error
 
@@ -60,9 +59,7 @@ const task = gantt.getTask("fake-id");
 ...
 ~~~
 
-![gettask_error](/img/gettask_error.png)
-
-이 오류를 방지하려면, 먼저 [isTaskExists](api/method/istaskexists.md) 메서드를 사용하여 작업이 존재하는지 확인하는 것이 좋습니다:
+이 오류의 원인을 해결한 후에 작업 객체를 얻으려 시도하십시오. 이를 위해서는 [isTaskExists](api/method/istaskexists.md) 메서드로 작업의 존재 여부를 확인해야 합니다:
 
 ~~~js
 if(gantt.isTaskExists("fake-id")){
@@ -71,7 +68,7 @@ if(gantt.isTaskExists("fake-id")){
 }
 ~~~
 
-또는, 앱 배포 전에 [이 오류 메시지를 끌 수 있습니다](faq.md#anerroralertappearsintherighttopcorner) 설정 옵션 [show_errors](api/config/show_errors.md)를 사용하여:
+또한 [show_errors](api/config/show_errors.md) 설정을 통해 애플리케이션을 최종 사용자에게 배포하기 전에 이러한 메시지를 비활성화할 수 있습니다:
 
 ~~~js
 gantt.config.show_errors = false;
@@ -84,5 +81,4 @@ gantt.config.show_errors = false;
 
 ### Related Guides
 - [Task Object/Id](guides/task-object-operations.md)
-- [링크 객체/ID 가져오기](guides/link-object-operations.md#gettingthelinksrelatedtoacertaintask)
-
+- [Getting the Link Object/Id](guides/link-object-operations.md#getting-the-links-related-to-a-certain-task)

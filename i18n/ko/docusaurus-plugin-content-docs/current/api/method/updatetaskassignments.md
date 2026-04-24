@@ -1,22 +1,24 @@
 ---
 sidebar_label: updateTaskAssignments
-title: updateTaskAssignments method
-description: "현재 데이터스토어에 저장된 리소스 할당 정보를 기반으로 작업 객체의 resource 속성을 업데이트합니다."
----
+title: updateTaskAssignments 메서드
+description: "데이터스토어의 리소스 할당 값으로 태스크 객체의 리소스 속성을 업데이트합니다"
+--- 
 
 # updateTaskAssignments
+
 :::info
 이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
 :::
+
 ### Description
 
-@short: 현재 데이터스토어에 저장된 리소스 할당 정보를 기반으로 작업 객체의 resource 속성을 업데이트합니다.
+@short: 데이터스토어의 리소스 할당 값으로 태스크 객체의 리소스 속성을 업데이트합니다
 
 @signature: updateTaskAssignments: (taskId: number | string) =\> void
 
 ### Parameters
 
-- `taskId` - (required) *number | string* - 작업 ID
+- `taskId` - (필수) *number | string* - 태스크 ID
 
 ### Example
 
@@ -31,8 +33,8 @@ assignmentStore.addItem({
 assignmentStore.removeItem(assignment.id);
 assignmentStore.updateItem(assignment.id);
 
-// 데이터스토어 내 할당 정보가 변경된 후,  
-// 작업 객체에 이러한 변경 사항을 동기화하려면 `updateTaskAssignments`를 호출하세요:
+// 데이터스토어에서 할당이 업데이트된 후, 변경 내용을 태스크 객체에 기록하려면
+// `updateTaskAssignments`를 호출하여 변경 내용을 태스크 객체에 작성합니다:
 gantt.updateTaskAssignments(taskId);
 ~~~
 
@@ -40,12 +42,11 @@ gantt.updateTaskAssignments(taskId);
 - [Assign resource values to specific days](https://docs.dhtmlx.com/gantt/samples/11_resources/13_resource_assignments_for_days.html)
 
 ### Details
-
 :::note
- 이 메서드는 [process_resource_assignments](api/config/process_resource_assignments.md) 설정이 활성화된 경우에만 작동합니다. 
+참고: 이 메서드는 [process_resource_assignments](api/config/process_resource_assignments.md) 구성이 활성화될 때만 사용할 수 있습니다.
 :::
 
-일반적으로 할당 저장소는 작업 객체로부터 채워집니다. 즉, 작업의 resource 속성(예: task.users)을 업데이트하면 해당 변경 내용이 자동으로 데이터스토어에 반영됩니다.
+기본적으로 할당 저장소는 태스크 객체에서 채워집니다. 이는 태스크 객체의 리소스 속성(예: task.users)을 수정하면 변경 내용이 데이터 저장소에 자동으로 반영됨을 의미합니다.
 
 ~~~js
 task[gantt.config.resource_property] = [
@@ -59,8 +60,7 @@ task[gantt.config.resource_property] = [
 gantt.updateTask(taskId);
 ~~~
 
-<br>
-때때로, 할당 정보를 반대로 업데이트하고 싶을 수 있습니다 - 즉, 데이터스토어에서 직접 변경한 후 그 변경 사항을 작업 객체에 적용하는 경우입니다. 이럴 때는 **gantt.updateTaskAssignments()** 를 호출하여 작업 객체의 resource 속성을 데이터스토어 값으로 새로고침하세요:
+다음과 같이 반대 방향으로 할당 데이터를 새로 고쳐야 할 수도 있습니다. 예를 들어, 데이터스토어 API를 사용하여 리소스 할당을 수정한 다음 해당 변경을 태스크 객체에 적용하려는 경우입니다. 이 경우 데이터스토어의 값으로 태스크 객체의 리소스 속성을 업데이트하려면 **gantt.updateTaskAssignments()** 메서드를 호출해야 합니다:
 
 ~~~js
 var taskId = 2;
@@ -84,7 +84,7 @@ console.log(gantt.getTask(taskId));
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
 ### Related Guides
-- [리소스 관리](guides/resource-management.md#managingresourceassignments)
+- [리소스 관리](guides/resource-management.md)
 
 ### Change log
 - v7.1에 추가됨

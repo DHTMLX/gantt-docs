@@ -64,42 +64,72 @@ Anstatt nur die Tagesnummer der Woche anzugeben, ist es möglich, für diesen Ta
 Zum Beispiel: 
 
 ~~~js
-var calendar = {
-    id:"calendar1", // optional
+const calendar = {
+    id: "calendar1", // optional
     worktime: {
         hours: ["8:00-17:00"],
-        days: [ 0, 1, 1, 1, ["12:00-17:00"], 1, 0]
+        days: [0, 1, 1, 1, ["12:00-17:00"], 1, 0]
     }
 }
 ~~~
 
-Hier legt ["12:00-17:00"] die Arbeitszeit für Donnerstag von 12 Uhr bis 17 Uhr fest.
+wobei ["12:00-17:00"] die Arbeitszeiten von 12:00 bis 17:00 Uhr für Donnerstag darstellen.
 
+### Setting worktime for different time intervals
 
-## Arbeitszeiten für verschiedene Zeiträume definieren
-
-Sie können unterschiedliche Arbeitszeitregelungen für verschiedene Zeiträume mit der Eigenschaft **customWeeks** angeben:
+Es gibt die Möglichkeit, verschiedene Arbeitszeitregeln für unterschiedliche Zeiträume zu konfigurieren, indem man das Attribut **customWeeks** verwendet:
 
 ~~~js
-// Hinzufügen eines Kalenders mit einer neuen Konfiguration
 gantt.addCalendar({
-    id:"default", // optional
+    id: "global", // optional
     worktime: {
         hours: ["8:00-17:00"],
-        days: [ 1, 1, 1, 1, 1, 1 ,1],
+        days: [1, 1, 1, 1, 1, 1, 1],
         customWeeks: {
             winter: {
-                from: new Date(2020, 11, 1),// 1. Dezember 2020
-                to: new Date(2021, 2, 1),// 1. März 2021 00:00
+                from: new Date(2025, 11, 1), // December 1st, 2025
+                to: new Date(2026, 2, 1), // March 1st, 00:00, 2026
                 hours: ["9:00-13:00", "14:00-16:00"],
-                days: [ 1, 1, 1, 1, 0, 0, 0]
+                days: [1, 1, 1, 1, 0, 0, 0]
             }
         }
     }
 });
-
-
 ~~~
+
+
+
+### Setting worktime for certain dates
+
+Sie können auch Arbeitszeiten für bestimmte Daten festlegen, indem Sie sie in der Eigenschaft **_dates_** des Objekts **_days_** setzen (sowohl für das **worktime**-Attribut als auch für die **customWeeks**-Eigenschaft). Zum Beispiel:  
+
+~~~js
+const calendar = {
+    id: "calendar1", // optional
+    worktime: {
+        hours: ["8:00-17:00"],
+        days: { 
+            dates: { 
+                "2025-04-09":  ["9:00-15:00"] 
+            } 
+        },
+        customWeeks: {
+            winter: {
+                from: new Date(2025, 11, 1), // December 1st, 2025
+                to: new Date(2026, 2, 1), // March 1st, 00:00, 2026
+                hours: ["9:00-13:00", "14:00-16:00"],
+                days: { 
+                    dates: { 
+                        "2026-01-02":  ["9:00-15:00"] 
+                    } 
+                }
+            }
+        }
+    }
+}
+~~~
+
+
 
 ### Related API
 - [getCalendar](api/method/getcalendar.md)
@@ -108,9 +138,9 @@ gantt.addCalendar({
 - [calendar](api/other/calendar.md)
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md#multipleworktimecalendars)
+- [Work Time Calculation](guides/working-time.md#multipleworktimecalendars)
 
 ### Change log
-- die Eigenschaft **customWeeks** wurde in Version 7.1 eingeführt;
-- hinzugefügt in Version 4.2
-
+- Die Funktion, das **_days_**-Attribut in Form eines Objekts zu setzen, das Wochentage und Daten enthält, wurde in v9.1 hinzugefügt
+- Die Eigenschaft **customWeeks** wurde in v7.1 hinzugefügt;
+- In Version 4.2 wurde es hinzugefügt

@@ -1,16 +1,16 @@
 ---
 sidebar_label: resource_calendars
 title: resource_calendars config
-description: "обеспечивает возможность определения рабочих календарей, которые могут быть связаны с конкретными ресурсами, такими как пользователи"
+description: "определяет набор рабочих календарей, которые можно назначить конкретному ресурсу, например пользователю"
 ---
 
 # resource_calendars
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в версии PRO. 
 :::
 ### Description
 
-@short: Обеспечивает возможность определения рабочих календарей, которые могут быть связаны с конкретными ресурсами, такими как пользователи
+@short: Определяет набор рабочих календарей, которые можно назначить конкретному ресурсу, например пользователю
 
 @signature: resource_calendars: \{ [resourceId: string | number]: string | number | \{ [resourceId: string | number]: string | number | undefined \} | undefined \}
 
@@ -26,31 +26,31 @@ gantt.config.resource_calendars = {
      })
 };
 
-// связывание календаря с конкретной задачей
+// assigning the calendar to a particular task
 {"id":3, user:"1", "text":"Task #2", "start_date":"11-04-2013", 
     "duration":"4", "parent":"1", "progress": 0.6, "open": true}
 ~~~
 
-**Default value:** \{\}
+**Значение по умолчанию:** \{\}
 
 ### Details
 
-- **[resourceId: string | number]** - (*string | number | \{[resourceId: string | number]: string | number | undefined \} | undefined*) - определяет сопоставление для resource_calendars
+- **[resourceId: string | number]** - (*string | number | \{[resourceId: string | number]: string | number | undefined \} | undefined \} | undefined \*) - сопоставление календаря ресурса
 
 
-До версии 7.0 dhtmlxGantt использовал немного другой формат для **resource_calendars**.
+Before version 7.0, dhtmlxGantt used a slightly different format of **resource_calendars**.
 
-Обновленный способ назначения рабочего календаря пользователю, показанный выше, проще и удобнее, но предыдущий формат конфигурации для **resource_calendars** по-прежнему поддерживается:
+The new way of assigning a working calendar to a user described above is easier and more convenient to use but the old configuration of the **resource_calendars** property will also work:
 
 ~~~js
-// определение рабочего календаря
+// adding a working calendar
 var johnCalendarId = gantt.addCalendar({
     worktime: {
         days: [0, 1, 1, 1, 1, 1, 0]
     }
 }),
 
-// связывание календаря с пользователем
+// binding the calendar to a user
 gantt.config.resource_calendars = {
   "user":{
       1 : johnCalendarId
@@ -64,9 +64,4 @@ gantt.config.resource_calendars = {
 - [getResourceCalendar](api/method/getresourcecalendar.md)
 
 ### Related Guides
-- [Расчёт рабочего времени](guides/working-time.md#assigningcalendartoresource)
-
-### Change log
-- введено в версии 4.2
-- формат конфигурации обновлен в версии 7.0
-
+- [Work Time Calculation](guides/working-time.md#assigningcalendartoresource)

@@ -1,14 +1,14 @@
 ---
 sidebar_label: preserve_scroll
 title: preserve_scroll config
-description: "在甘特图重绘时保持当前的垂直和水平滚动位置不变"
+description: "在重新绘制甘特图时，保留纵向和横向滚动条的当前位置"
 ---
 
 # preserve_scroll
 
 ### Description
 
-@short: 在甘特图重绘时保持当前的垂直和水平滚动位置不变
+@short: 在重新绘制甘特图时，保留纵向和横向滚动条的当前位置
 
 @signature: preserve_scroll: boolean
 
@@ -20,4 +20,4 @@ gantt.config.preserve_scroll = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**默认值：** true

@@ -1,14 +1,14 @@
 ---
 sidebar_label: render
 title: render method
-description: "전체 간트 차트를 그립니다."
+description: "전체 Gantt 차트를 렌더링합니다."
 ---
 
 # render
 
 ### Description
 
-@short: 전체 간트 차트를 그립니다.
+@short: 전체 Gantt 차트를 렌더링합니다.
 
 @signature: render: () =\> void
 
@@ -20,7 +20,7 @@ gantt.config.scales = [
     {unit: "day", step: 1, format: "%j, %D"}
 ];
 gantt.init("gantt_here");
-
+ 
 gantt.config.scales = [
     {unit: "day", step: 1, format: "%j, %D"}
 ];

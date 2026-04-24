@@ -1,14 +1,14 @@
 ---
 sidebar_label: csp
-title: csp config
-description: "控制日期格式化方法在内部的实现方式"
+title: CSP 配置
+description: "定义日期格式化方法的内部实现代码"
 ---
 
 # csp
 
 ### Description
 
-@short: 控制日期格式化方法在内部的实现方式
+@short: 定义日期格式化方法的内部实现代码
 
 @signature: csp: boolean | string
 
@@ -24,7 +24,9 @@ gantt.init("gantt_here");
 
 ### Details
 
-某些运行时环境，比如 Salesforce Lightning，可能会阻止 dhtmlxGantt 的代码正常运行。这通常是由于应用中设置的 Content Security Policy (CSP) 所致。CSP 可能会将 Gantt 内部的高性能日期格式化方法视为安全风险。
+某些应用的运行时环境（例如 Salesforce Lightning）常常会阻止执行 dhtmlxGantt 代码。  
+其主要原因是在应用中指定了内容安全策略（Content Security Policy，CSP）。  
+CSP 可能将 Gantt 内部用于日期格式化方法的高性能执行解读为不安全。
 
 **csp** 设置帮助避免这些阻止，通过允许您选择日期格式化代码的实现方式。
 

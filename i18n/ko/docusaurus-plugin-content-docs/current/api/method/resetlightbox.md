@@ -1,14 +1,14 @@
 ---
 sidebar_label: resetLightbox
-title: resetLightbox method
-description: "현재 라이트박스의 HTML 객체 요소를 제거합니다."
+title: resetLightbox 메서드
+description: "현재 lightbox의 HTML object 요소를 제거합니다"
 ---
 
 # resetLightbox
 
 ### Description
 
-@short: 현재 라이트박스의 HTML 객체 요소를 제거합니다.
+@short: 현재 lightbox의 HTML object 요소를 제거합니다
 
 @signature: resetLightbox: () =\> void
 

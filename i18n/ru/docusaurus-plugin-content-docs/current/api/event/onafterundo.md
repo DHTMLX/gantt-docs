@@ -1,48 +1,46 @@
----
+--- 
 sidebar_label: onAfterUndo
 title: onAfterUndo event
-description: "Срабатывает сразу после выполнения метода undo()"
+description: "Срабатывает после вызова метода undo()"
 ---
 
 # onAfterUndo
 
 ### Description
 
-@short: Срабатывает сразу после выполнения метода undo()
+@short: Срабатывает после вызова метода undo()
 
 @signature: onAfterUndo: (action: any[]) =\> void;
 
 ### Parameters
 
-- `action` - (required) *array* - массив, содержащий объекты команд
+- `action` - (required) *array* - массив объектов команд
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onAfterUndo",function(action){
-    // ваш код здесь
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Related samples
-- [Undo/Redo changes in Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
+- [Изменения Undo/Redo в Gantt](https://docs.dhtmlx.com/gantt/samples/02_extensions/14_undo.html)
 
 ### Details
 
 :::note
-note Это событие является частью расширения **undo**, поэтому убедитесь, что плагин [undo](guides/extensions-list.md#undo) включен. Подробнее можно узнать в статье [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md). 
+Это событие определяется в расширении **undo**, поэтому необходимо включить плагин [undo](guides/extensions-list.md#undo). Подробности смотрите в статье [Undo/Redo Functionality](guides/undo-redo.md).
 :::
 
-
-Параметр **action** - это массив объектов команд, каждый из которых содержит следующие свойства:
+Параметр **action** представляет собой массив объектов команд, каждый из которых включает следующий набор атрибутов:
  
-- **type** - (*string*) описывает тип команды: "add", "remove" или "update"
-- **entity** - (*string*) указывает тип объекта, который был изменён: "task" или "link"
-- **value** - (*object*) объект задачи или связи после изменения 
-- **oldValue** - (*object*) объект задачи или связи до изменения
+- **type** - (*string*) тип команды: "add/remove/update"
+- **entity** - (*string*) тип объекта, который был изменён: "task" или "link"
+- **value** - (*object*) изменённый объект задачи/ссылки
+- **oldValue** - (*object*) исходный объект задачи/ссылки перед изменениями
 
-
-Если изменений не произошло, параметр **action** будет === null. Это может случиться, если был вызван [gantt.undo()](api/method/undo.md), но действие было отменено с помощью [onBeforeUndo](api/event/onbeforeundo.md) или если стек undo был пуст.
+Если изменений не было применено, аргумент **action** будет === null. Это может произойти, когда вызван [gantt.undo()](api/method/undo.md), но изменения были отменены [onBeforeUndo](api/event/onbeforeundo.md) или стек пуст.
 
 ### Related API
 - [undo](api/method/undo.md)
@@ -50,5 +48,4 @@ note Это событие является частью расширения **
 
 ### Change log
 - добавлено в версии 4.0
-- параметр **action** введён в версии 5.2
-
+- аргумент **action** добавлен в версии 5.2

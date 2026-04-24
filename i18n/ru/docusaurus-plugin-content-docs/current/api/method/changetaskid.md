@@ -1,21 +1,21 @@
 ---
 sidebar_label: changeTaskId
 title: changeTaskId method
-description: "обновляет id задачи"
+description: "Изменяет идентификатор задачи"
 ---
 
 # changeTaskId
 
 ### Description
 
-@short: Обновляет id задачи
+@short: Изменяет идентификатор задачи
 
 @signature: changeTaskId: (id: string | number, new_id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    текущий id задачи
-- `new_id` - (required) *string | number* -     новый id задачи
+- `id` - (required) *string | number* - текущий идентификатор задачи
+- `new_id` - (required) *string | number* - новый идентификатор задачи
 
 ### Example
 
@@ -27,14 +27,13 @@ gantt.addTask({
     duration:28
 }, "project_2");
 
-gantt.changeTaskId(10, 15); //обновляет id задачи с '10' на '15' /*!*/
+gantt.changeTaskId(10, 15); //changes the task's id '10 -> 15' /*!*/
 ~~~
 
 ### Details
 
-Этот метод вызывает событие [onTaskIdChange](api/event/ontaskidchange.md).
+Метод вызывает событие [onTaskIdChange](api/event/ontaskidchange.md).
 
 ### Related API
 - [onTaskIdChange](api/event/ontaskidchange.md)
 - [changeLinkId](api/method/changelinkid.md)
-

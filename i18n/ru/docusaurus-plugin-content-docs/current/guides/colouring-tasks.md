@@ -1,25 +1,25 @@
 ---
-title: "Окрашивание задач"
-sidebar_label: "Окрашивание задач"
+title: "Раскраска задач"
+sidebar_label: "Раскраска задач"
 ---
 
-# Окрашивание задач
+# Раскраска задач
 
-Окрашивание задач помогает выделить определённые задачи, что облегчает привлечение к ним внимания.
+Раскраска задач позволяет выделить конкретные задачи, чтобы привлечь внимание пользователей.
 
 ![coloring_tasks](/img/coloring_tasks.png)
 
-Существует несколько способов кастомизации стиля задач:
+Чтобы задать пользовательский стиль для задач, можно воспользоваться одним из следующих подходов:
 
-1. [Переопределение шаблона задачи](guides/colouring-tasks.md#redefiningthetaskstemplate)
-2. [Указание стиля напрямую в свойствах объекта задачи](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject)
-3. [Динамическая генерация стилей на основе данных](guides/colouring-tasks.md#loadingcolorswithdata)
+1. [Чтобы переопределить шаблон задач по умолчанию](guides/colouring-tasks.md#redefiningthetaskstemplate)
+2. [Чтобы задать значения стилей в свойствах объекта задачи](guides/colouring-tasks.md#specifyingstyleinthepropertiesofataskobject)
+3. [Чтобы генерировать стили из данных](guides/colouring-tasks.md#loadingcolorswithdata)
 
 ## Переопределение шаблона задачи {#redefiningthetaskstemplate}
 
-Для изменения стиля задачи с помощью шаблона используется шаблон [task_class](api/template/task_class.md). Например, чтобы окрасить задачи в зависимости от их приоритета, можно использовать следующий код:
+Чтобы задать пользовательский стиль для задачи через шаблон, используйте шаблон [task_class](api/template/task_class.md). Например, чтобы раскрашивать задачи в зависимости от их приоритета, используйте следующий код:
 
-**Окрашивание задач в зависимости от их приоритета**
+**Раскраска задач в зависимости от их приоритета**
 ~~~css
 <style>
 
@@ -45,85 +45,78 @@ sidebar_label: "Окрашивание задач"
 ~~~
 
 ~~~js
-gantt.templates.task_class  = function(start, end, task){
-    switch (task.priority){
+gantt.templates.task_class = (start, end, task) => {
+    switch (task.priority) {
         case "1":
             return "high";
-            break;
         case "2":
             return "medium";
-            break;
         case "3":
             return "low";
-            break;
+        default:
+            return "";
     }
 };
 ~~~
 
-[Task styles](https://docs.dhtmlx.com/gantt/samples/04_customization/04_task_styles.html)
-
+**Связанный пример**: [Task styles](https://docs.dhtmlx.com/gantt/samples/04_customization/04_task_styles.html)
 
 :::note
-Для стилизации других частей задач ознакомьтесь с шаблонами, перечисленными в статье [Шаблоны области временной шкалы](guides/timeline-templates.md).
+Чтобы стилизовать другие аспекты задач, используйте шаблоны из статьи [Templates of the Timeline Area](guides/timeline-templates.md).
 :::
 
-Похожий способ можно использовать и для связей. Подробнее см. [здесь](guides/colouring-lines.md#redefiningthelinkstemplate).
+Похожий подход можно применить и к ссылкам. Подробнее об этом можно узнать [здесь](guides/colouring-lines.md#redefiningthelinkstemplate).
 
-## Указание стиля в свойствах объекта задачи {#specifyingstyleinthepropertiesofataskobject}
+## Задание стиля в свойствах объекта задачи {#specifyingstyleinthepropertiesofataskobject}
 
-Вы можете настроить внешний вид задачи, добавив до трёх специальных свойств в объект данных задачи:
+Чтобы задать пользовательский стиль для задачи, можно добавить 3 дополнительных свойства к объекту данных (или только часть из них):
 
-- **color** - задаёт цвет фона полосы задачи
-- **textColor** - задаёт цвет текста внутри полосы задачи (не влияет на задачи типа "milestone")
-- **progressColor** - задаёт цвет полосы прогресса (по умолчанию полоса прогресса - немного более тёмный оттенок цвета задачи, оформленный как 'background-color: rgb(54, 54, 54); opacity: 0.2')
+- **color** - цвет фона панели задачи
+- **textColor** - цвет текста внутри панели задачи (не влияет на задачи типа "milestone")
+- **progressColor** - цвет индикатора выполнения (по умолчанию просто делает его немного темнее цвета задачи с использованием следующего стиля `background-color: rgb(54, 54, 54); opacity: 0.2`)
 
 ![task_color_properties](/img/task_color_properties.png)
 
 :::note
-Эти свойства обрабатываются особым образом. Gantt автоматически применяет их значения, если они присутствуют у задачи; в противном случае используются стандартные цвета.
+Примечание: это специальные свойства.
+По умолчанию Gantt проверяет, присутствуют ли они у задачи, и если есть, применяет соответствующие значения к панели и тексту задачи. В противном случае применяются предопределённые цвета.
 :::
 
-**Указание цвета задачи в объекте данных**
+**Установка цвета задачи в объекте задачи**
 ~~~js
-var tasks = {
-  data:[
-     {id:1, text:"Project #1", start_date:"01-04-2013", duration:18, color:"red"},
-     {id:2, text:"Task #1", start_date:"02-04-2013", 
-         duration:8, color:"blue", parent:1},
-     {id:3, text:"Task #2", start_date:"11-04-2013", 
-         duration:8, color:"blue", parent:1}
-   ]
+const data = {
+    tasks: [
+        { id: 1, text: "Project #1", start_date: "01-04-2013", duration: 18, color: "red" },
+        { id: 2, text: "Task #1", start_date: "02-04-2013", duration: 8, color: "blue", parent: 1 },
+        { id: 3, text: "Task #2", start_date: "11-04-2013", duration: 8, color: "blue", parent: 1 }
+    ]
 };
+
 gantt.init("gantt_here");
-gantt.parse(tasks);
+gantt.parse(data);
 
 gantt.getTask(1).color = "red";
 ~~~
 
-
-[Specify inline colors for Tasks and Links](https://docs.dhtmlx.com/gantt/samples/04_customization/16_inline_task_colors.html)
-
+**Связанный пример**: [Specify inline colors for Tasks and Links](https://docs.dhtmlx.com/gantt/samples/04_customization/16_inline_task_colors.html)
 
 :::note
-Когда вы добавляете пользовательский цвет с помощью свойства **color**, применяется inline-стиль, который перекрывает другие стили. Это значит, что выделение критического пути и любые другие пользовательские стили фона или цвета текста применяться не будут.
+Добавление пользовательского цвета через свойство **color** сопровождается добавлением встроенного стиля, который имеет наивысший приоритет среди остальных стилей. В результате критический путь может не быть подсвечен, и любой пользовательский стиль, добавленный вами для изменения фона или цвета задачи, не будет применяться.
 :::
 
-Чтобы выделить задачи как критические, можно использовать следующий CSS:
+Чтобы придать задачам вид критических, используйте следующий код:
 
 ~~~css
 .gantt_critical_task {
-  --dhx-gantt-task-background: #e63030 !important;
+    --dhx-gantt-task-background: #e63030 !important;
 }
 ~~~
 
+**Связанный пример**: [Coloring critical tasks and links](https://snippet.dhtmlx.com/xipdml7a)
 
-**Related example:** [Окрашивание критических задач и связей](https://snippet.dhtmlx.com/xipdml7a)
+Если у задачи задан хотя бы один из свойств, задача получает дополнительный класс **"gantt_task_inline_color"**.
 
-
-Если одно из этих свойств задано у задачи, задача получает дополнительный класс **"gantt_task_inline_color"**. 
-
-
-Этот класс можно использовать для переопределения других стилей, например с помощью селектора "*.gantt_task_line.gantt_task_inline_color*":
+Вы можете использовать этот класс, чтобы переопределить некоторые другие стили для задачи (используйте селектор класса *.gantt_task_line.gantt_task_inline_color*):
 
 ~~~css
 .gantt_task_line.gantt_task_inline_color .gantt_task_progress {
@@ -132,7 +125,7 @@ gantt.getTask(1).color = "red";
 }
 ~~~
 
-Эти свойства принимают любые корректные значения цвета CSS, например:
+Свойства могут иметь любое допустимое значение цвета CSS, например, все следующие обозначения допустимы:
 
 ~~~js
 task.color = "#FF0000";
@@ -140,85 +133,85 @@ task.color = "red";
 task.color = "rgb(255,0,0)";
 ~~~
 
-Аналогичный подход можно применять и к связям. Подробнее см. [здесь](guides/colouring-lines.md#specifyingcolorinthepropertiesofthelinkobject).
+Похожий подход можно применить и к ссылкам. Подробнее об этом можно узнать [здесь](guides/colouring-lines.md#specifyingcolorinthepropertiesofthelinkobject).
 
-## Загрузка цветов вместе с данными {#loadingcolorswithdata}
+## Загрузка цветов из данных {#loadingcolorswithdata}
 
-Когда цвета задач поступают из данных бэкенда - например, если цвета связаны со стадиями или ресурсами, назначенными задачам, и не могут быть жёстко заданы в коде - полезно генерировать стили динамически на основе ваших данных.
+Если цвета являются частью ваших данных, поступающих с сервера, например, когда цвет задачи связан с этапом или ресурсом, назначенным задаче, который не может быть прописан прямо на странице, может быть разумным решением генерировать стили из ваших данных вручную.
 
-Предположим, у вас есть список пользователей, которых можно назначать на задачи, и у каждого пользователя свои цвета:
+Допустим, у вас есть следующая коллекция пользователей, которых можно назначать задачам. Стиль задач должен определяться свойствами записей пользователей:
 
 ~~~js
 [
-    {"key":1, "label":"John", "backgroundColor":"#03A9F4", "textColor":"#FFF"},
-    {"key":2, "label":"Mike", "backgroundColor":"#f57730", "textColor":"#FFF"},
-    {"key":3, "label":"Anna", "backgroundColor":"#e157de", "textColor":"#FFF"},
-    {"key":4, "label":"Bill", "backgroundColor":"#78909C", "textColor":"#FFF"},
-    {"key":7, "label":"Floe", "backgroundColor":"#8D6E63", "textColor":"#FFF"}
+    { "key": 1, "label": "John", "backgroundColor": "#03A9F4", "textColor": "#FFF" },
+    { "key": 2, "label": "Mike", "backgroundColor": "#f57730", "textColor": "#FFF" },
+    { "key": 3, "label": "Anna", "backgroundColor": "#e157de", "textColor": "#FFF" },
+    { "key": 4, "label": "Bill", "backgroundColor": "#78909C", "textColor": "#FFF" },
+    { "key": 7, "label": "Floe", "backgroundColor": "#8D6E63", "textColor": "#FFF" }
 ]
 ~~~
 
-В этом случае пользователи и их цвета управляются отдельно, и Gantt заранее не знает их идентификаторов или цветов.
+В этом случае пользователи и их цвета создаются и управляются разными частями приложения, и Gantt обычно не знает идентификаторов пользователей и их цветов заранее.
 
-Вот как можно это реализовать:
+Вот что можно сделать в таком случае:
 
-- Определите именованный serverList для этой коллекции:
+- Определите именованный serverList для этой коллекции
 
 ~~~js
 gantt.serverList("people");
 ~~~
 
-- Загрузите опции на страницу, либо [используя формат данных Gantt](guides/supported-data-formats.md#jsonwithcollections), либо с помощью кастомного XHR-запроса.
+- Загрузите опции на страницу, либо используя [формат данных Gantt](guides/supported-data-formats.md#jsonwithcollections) либо вручную через настраиваемый XHR
 
-- После загрузки опций сгенерируйте CSS-стили на основе данных:
+- После загрузки опций можно генерировать CSS-правила из данных:
 
 ~~~js
-gantt.attachEvent("onLoadEnd", function(){
-    // используйте произвольный id для элемента стилей
-    var styleId = "dynamicGanttStyles";
-    
-    // если опции с цветами перезагружаются, используйте уже существующий элемент стилей
-    
-    var element = document.getElementById(styleId);
-    if(!element){
-        element = document.createElement("style");
-        element.id = styleId;
-        document.querySelector("head").appendChild(element);
+gantt.attachEvent("onLoadEnd", () => {
+    // используйте произвольный идентификатор для элемента стиля
+    const styleElementId = "dynamicGanttStyles";
+
+    // на случай повторной загрузки опций с цветами -
+    // повторно используйте ранее созданный элемент стиля
+
+    let styleElement = document.getElementById(styleElementId);
+    if (!styleElement) {
+        styleElement = document.createElement("style");
+        styleElement.id = styleElementId;
+        document.head.appendChild(styleElement);
     }
-    var html = [];
-    var resources = gantt.serverList("people");
+    const cssRules = [];
+    const peopleOptions = gantt.serverList("people");
 
-    // создайте CSS-стили для каждой опции и вставьте их в style-элемент
-    
-    resources.forEach(function(r){
-        if(r.backgroundColor && r.textColor){
-            html.push(".gantt_task_line.gantt_resource_" + r.key + "{" +
-                "--dhx-gantt-task-background:"+r.backgroundColor+"; " +
-                "--dhx-gantt-task-color:"+r.textColor+"; " +
-            "}");
+    // сгенерируйте CSS-правила для каждого варианта и запишите CSS в элемент стиля
 
+    peopleOptions.forEach((personOption) => {
+        if (personOption.backgroundColor && personOption.textColor) {
+            cssRules.push(
+                `.gantt_task_line.gantt_resource_${personOption.key}{` +
+                `--dhx-gantt-task-background: ${personOption.backgroundColor}; ` +
+                `--dhx-gantt-task-color: ${personOption.textColor}; ` +
+                `}`
+            );
         }
     });
-    element.innerHTML = html.join("");
+    styleElement.innerHTML = cssRules.join("");
 });
 ~~~
 
-Если вы используете [ресурсное хранилище данных](api/config/resource_store.md), используйте *r.id* вместо *r.key* для идентификатора ресурса.
+Если вы получаете ресурсы из [resource datastore](api/config/resource_store.md), вам нужно использовать `personOption.id` вместо `personOption.key` в качестве идентификатора ресурса.
 
-- После этого вы можете назначить сгенерированные классы задачам через шаблон task_class:
+- После этого вы сможете назначать связанные классы, сгенерированные вами из шаблонов задач:
 
 ~~~js
-gantt.templates.task_class = function (start, end, task) {
-    var css = [];
+gantt.templates.task_class = (start, end, task) => {
+    const taskCssClasses = [];
 
-    if(task.owner_id){
-        css.push("gantt_resource_" + task.owner_id);
+    if (task.owner_id) {
+        taskCssClasses.push(`gantt_resource_${task.owner_id}`);
     }
 
-    return css.join(" ");
+    return taskCssClasses.join(" ");
 };
 ~~~
 
-
-[Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)
-
+**Связанный пример**: [Assigning owners to tasks](https://docs.dhtmlx.com/gantt/samples/11_resources/01_assigning_resources.html)

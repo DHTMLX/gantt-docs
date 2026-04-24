@@ -1,29 +1,29 @@
 ---
 sidebar_label: histogram_cell_class
-title: histogram_cell_class template
-description: "определяет CSS класс, применяемый к ячейке в панели ресурсов"
+title: шаблон histogram_cell_class
+description: "определяет CSS-класс, который применяется к ячейке панели ресурсов"
 ---
 
 # histogram_cell_class
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
 ### Description
 
-@short: Определяет CSS класс, применяемый к ячейке в панели ресурсов
+@short: Определяет CSS-класс, который применяется к ячейке панели ресурсов
 
-@signature: histogram_cell_class: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) =\> string | void;
+@signature: histogram_cell_class: (start_date: Date, end_date: Date, resource: any, tasks: Array\<Task\>, assignments: any[]) => string | void;
 
 ### Parameters
 
-- `start_date` - (required) *Date* - начальная дата ячейки шкалы  
-- `end_date` - (required) *Date* - конечная дата ячейки шкалы
+- `start_date` - (required) *Date* - дата начала ячейки шкалы  
+- `end_date` - (required) *Date* - дата окончания ячейки шкалы
 - `resource` - (required) *object* - объект ресурса
-- `tasks` - (required) *Array* - &lt;Task&gt;        задачи, назначенные указанному ресурсу, перекрывающиеся с датами начала/конца ячейки
-- `assignments` - (required) *array* - назначения ресурса, связанные с указанными датами начала/конца задачи
+- `tasks` - (required) *Array* - &lt;Task&gt;        задачи, назначенные указанному ресурсу и перекрывающие даты начала/окончания ячейки
+- `assignments` - (required) *array* - назначения ресурсов, которые назначены на указанные даты начала/окончания задачи
 
 ### Returns
-- ` className` - (string | void) - CSS класс для ячейки таймлайна гистограммы
+- ` className` - (string | void) - CSS-класс для ячейки временной шкалы диаграммы Ганта
 
 ### Example
 
@@ -42,7 +42,7 @@ gantt.templates.histogram_cell_class = function(start_date,end_date,resource,tas
 ### Details
 
 :::note
- Аргумент "assignments" передается только при включенной конфигурации [process_resource_assignments](api/config/process_resource_assignments.md). 
+Аргумент "assignments" доступен только когда включена конфигурация [process_resource_assignments](api/config/process_resource_assignments.md). 
 :::
 
 ### Related API
@@ -56,5 +56,4 @@ gantt.templates.histogram_cell_class = function(start_date,end_date,resource,tas
 - [Управление ресурсами](guides/resource-management.md#resourceviewpanel)
 
 ### Change log
-- параметр **assignments** был добавлен в версии v7.1
-
+- параметр **assignments** добавлен в версии v7.1

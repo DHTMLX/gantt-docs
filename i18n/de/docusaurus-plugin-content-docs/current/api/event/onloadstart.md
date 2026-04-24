@@ -1,23 +1,23 @@
 ---
 sidebar_label: onLoadStart
-title: onLoadStart event
-description: "Wird unmittelbar vor Beginn des Datenladevorgangs aus der Datenquelle ausgelöst"
+title: onLoadStart-Ereignis
+description: "Wird unmittelbar vor dem Start des Ladens der Daten aus der Datenquelle ausgelöst"
 ---
 
 # onLoadStart
 
 ### Description
 
-@short: Wird unmittelbar vor Beginn des Datenladevorgangs aus der Datenquelle ausgelöst
+@short: Wird unmittelbar vor dem Start des Ladens der Daten aus der Datenquelle ausgelöst
 
 @signature: onLoadStart: (url: string, type: string) =\> void;
 
-### Parameters
+### Parameter
 
-- `url` - (required) *string* - die serverseitige URL (dies kann eine statische Datei oder ein serverseitiges Skript sein, das Daten zurückgibt)
-- `type` - (required) *string* - ('json', 'xml', 'oldxml') zur Angabe des Datenformats
+- `url` - (erforderlich) *string* - die serverseitige URL (kann eine statische Datei oder ein serverseitiges Skript sein, das Daten ausgibt)
+- `type` - (erforderlich) *string* - ('json', 'xml', 'oldxml') der Datentyp
 
-### Example
+### Beispiel
 
 ~~~jsx
 gantt.attachEvent("onLoadStart", function(url, type){
@@ -27,9 +27,9 @@ gantt.attachEvent("onLoadStart", function(url, type){
 
 ### Details
 
-Dieses Event wird innerhalb der Methode [load](api/method/load.md) ausgelöst.
+Das Event wird in der [load](api/method/load.md) Methode ausgelöst.
 
-### Related API
+### Verwandte API
 - [onBeforeParse](api/event/onbeforeparse.md)
 - [onTaskLoading](api/event/ontaskloading.md)
 - [onParse](api/event/onparse.md)
@@ -38,4 +38,3 @@ Dieses Event wird innerhalb der Methode [load](api/method/load.md) ausgelöst.
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

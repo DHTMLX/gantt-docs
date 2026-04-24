@@ -1,6 +1,6 @@
 ---
 sidebar_label: getGridColumns
-title: getGridColumns method
+title: getGridColumns 메서드
 description: "간트 차트의 컬럼을 가져옵니다"
 ---
 
@@ -10,10 +10,10 @@ description: "간트 차트의 컬럼을 가져옵니다"
 
 @short: 간트 차트의 컬럼을 가져옵니다
 
-@signature: getGridColumns: () =\> GridColumn[]
+@signature: getGridColumns: () => GridColumn[]
 
 ### Returns
-- ` columns` - (GridColumn[]) - 컬럼들을 포함하는 배열
+- ` columns` - (GridColumn[]) - 컬럼 배열
 
 ### Example
 
@@ -32,4 +32,3 @@ gantt.getGridColumns(); //-> [{ name:"text", tree:true, width:150}, {...}, {...}
 
 ### Related Guides
 - [getGridColumn](api/method/getgridcolumn.md)
-

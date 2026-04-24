@@ -1,14 +1,14 @@
 ---
 sidebar_label: select_task
-title: select_task config
-description: "Ermöglicht das Auswählen von Tasks im Gantt-Diagramm"
+title: select_task Konfiguration
+description: "Ermöglicht die Auswahl von Aufgaben im Gantt-Diagramm"
 ---
 
 # select_task
 
 ### Description
 
-@short: Ermöglicht das Auswählen von Tasks im Gantt-Diagramm
+@short: Ermöglicht die Auswahl von Aufgaben im Gantt-Diagramm
 
 @signature: select_task: boolean
 
@@ -19,4 +19,4 @@ gantt.config.select_task  = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true

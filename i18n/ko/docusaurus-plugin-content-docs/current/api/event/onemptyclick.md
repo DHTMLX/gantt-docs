@@ -1,32 +1,32 @@
 ---
 sidebar_label: onEmptyClick
-title: onEmptyClick event
-description: "사용자가 간트 차트 내 빈 영역(작업 외부)을 클릭할 때 발생합니다."
+title: onEmptyClick 이벤트
+description: "사용자가 Gantt 차트의 빈 공간(작업이 아닌 곳)을 클릭할 때 발생합니다"
 ---
 
 # onEmptyClick
 
 ### Description
 
-@short: 사용자가 간트 차트 내 빈 영역(작업 외부)을 클릭할 때 발생합니다.
+@short: 사용자가 Gantt 차트의 빈 공간(작업이 아닌 곳)을 클릭할 때 발생합니다
 
 @signature: onEmptyClick: (e: Event) =\> void;
 
 ### Parameters
 
-- `e` - (required) *Event* - 네이티브 이벤트 객체
+- `e` - (필수) *Event* - 네이티브 이벤트 객체
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onEmptyClick", function (e){
-    //여기에 커스텀 로직을 추가할 수 있습니다
+    // 여기에 코드 작성
 });
 ~~~
 
 ### Details
 
-**onEmptyClick** 이벤트는 사용자가 링크를 클릭할 때도 활성화됩니다. 이 동작을 비활성화하려면 `e.target` 요소나 그 가장 가까운 조상 요소에 **link_attribute** 속성이 포함되어 있는지 확인할 수 있습니다. 예시는 다음과 같습니다:
+**onEmptyClick** 이벤트는 사용자가 링크를 클릭할 때도 발생합니다. 이 이벤트의 이 기능을 방지할 수 있습니다. 이를 수행하려면 `e.target` 요소나 그와 가장 가까운 요소에 포함된 **link_attribute** 속성이 있는지 확인해야 합니다. 예는 다음과 같습니다:
 
 ~~~js
 gantt.attachEvent("onEmptyClick", function (e) {

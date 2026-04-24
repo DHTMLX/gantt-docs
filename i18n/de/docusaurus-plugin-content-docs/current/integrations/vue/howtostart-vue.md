@@ -5,13 +5,13 @@ sidebar_label: "Vue.js"
 
 # dhtmlxGantt mit Vue.js
 
-Diese Anleitung setzt Grundkenntnisse in [Vue](https://vuejs.org/) voraus. Falls Sie neu bei Vue sind, empfehlen wir Ihnen die [Vue 3 Dokumentation](https://vuejs.org/guide/introduction.html) für einen schnellen Einstieg.
+Sie sollten mit den grundlegenden Konzepten und Mustern von [Vue](https://vuejs.org/) vertraut sein, um diese Dokumentation zu verwenden. Falls nicht, lesen Sie bitte die [Vue 3-Dokumentation](https://vuejs.org/guide/introduction.html) für eine Einführung.
 
-DHTMLX Gantt funktioniert gut mit Vue. Ein passendes Beispiel finden Sie auf GitHub: [DHTMLX Gantt mit Vue Demo](https://github.com/DHTMLX/vue-gantt-demo).
+DHTMLX Gantt ist mit Vue kompatibel. Das entsprechende Beispiel finden Sie auf GitHub: [DHTMLX Gantt with Vue Demo](https://github.com/DHTMLX/vue-gantt-demo).
 
-## Ein Projekt erstellen
+## Erstellen eines Projekts
 
-Stellen Sie sicher, dass [Node.js](https://nodejs.org/en/) installiert ist, bevor Sie ein neues Projekt starten.
+Bevor Sie ein neues Projekt erstellen, installieren Sie [Node.js](https://nodejs.org/en/).
 
 Um ein Vue-Projekt zu erstellen, führen Sie folgenden Befehl aus:
 
@@ -19,94 +19,89 @@ Um ein Vue-Projekt zu erstellen, führen Sie folgenden Befehl aus:
 npm create vue@latest
 ~~~
 
-Dieser Befehl installiert und startet **create-vue**, das offizielle Tool zum Erstellen von Vue-Projekten. Weitere Informationen finden Sie im [Vue.js Quick Start](https://vuejs.org/guide/quick-start.html#creating-a-vue-application).
+Dieser Befehl installiert und führt **create-vue** aus, das offizielle Vue-Projekt-Scaffolding-Tool. Details finden Sie im [Vue.js Quick Start](https://vuejs.org/guide/quick-start.html#creating-a-vue-application).
 
 ### Installation der Abhängigkeiten
 
-Navigieren Sie anschließend in Ihr App-Verzeichnis. Nennen wir das Projekt **gantt-vue**:
+Als Nächstes wechseln Sie in das App-Verzeichnis. Benennen wir unser Projekt **gantt-vue** und führen Sie Folgendes aus:
 
 ~~~
 cd gantt-vue
 ~~~
 
-Installieren Sie dann die Abhängigkeiten und starten Sie den Entwicklungsserver mit Ihrem Paketmanager:
+Anschließend installieren Sie die Abhängigkeiten und starten den Entwicklungsserver. Dafür verwenden Sie einen Paketmanager:
 
-- Für **yarn**:
+- Wenn Sie **yarn** verwenden, führen Sie die folgenden Befehle aus:
 
 ~~~
 yarn install
 yarn dev
 ~~~
 
-- Für **npm**:
+- Wenn Sie **npm** verwenden, führen Sie die folgenden Befehle aus:
 
 ~~~
 npm install
 npm run dev
 ~~~
 
-Ihr Vue-Projekt sollte jetzt unter [http://localhost:5173](http://localhost:5173) laufen.
+Ihr Vue-Projekt läuft jetzt unter **http://localhost:5173**.
 
-![Gantt Vue App läuft](/img/gantt_vue_app_run.png)
+![Gantt Vue app running](/img/gantt_vue_app_run.png)
 
-## Gantt erstellen
+## Erstellen von Gantt
 
-Um DHTMLX Gantt zum Projekt hinzuzufügen, stoppen Sie zunächst die laufende App mit **Strg+C** im Terminal. Installieren Sie dann das Gantt-Paket.
+Jetzt sollten wir den DHTMLX Gantt-Code erhalten. Zunächst müssen wir die Anwendung durch Drücken von **Ctrl+C** in der Kommandozeile stoppen. Dann können wir mit der Installation des Gantt-Pakets fortfahren.
 
 ## Schritt 1. Paketinstallation
 
-Die PRO-Versionen der Bibliothek können über **npm/yarn** aus unserem privaten Repository installiert werden. Folgen Sie 
-[dieser Anleitung](guides/installation.md#npmevaluationandproversions), um Zugriff zu erhalten.
+Die PRO-Versionen der Bibliothek sind für die **npm/yarn**-Installation aus unserem privaten Repository verfügbar. Bitte folgen Sie [dieser Anleitung](guides/installation.md#npmevaluationandproversions), um Zugriff darauf zu erhalten.
 
-Sobald Sie die Evaluierungsversion haben, installieren Sie sie mit einem der folgenden Befehle:
+Nachdem Sie die Evaluation-Version des Gantt erhalten haben, können Sie sie mit den folgenden Befehlen installieren:
 
-- Mit npm:
+- für npm:
 
 ~~~
 npm install @dhx/trial-gantt
 ~~~
 
-- Mit yarn:
+- für yarn:
 
 ~~~
 yarn add @dhx/trial-gantt
 ~~~
 
-Alternativ können Sie, da das Zip-Paket der Bibliothek als **npm**-Modul strukturiert ist, 
-[es aus einem lokalen Ordner installieren](guides/installation.md#installfromlocalfolder).
+Alternativ, da das ZIP-Paket der Bibliothek als **npm**-Modul strukturiert ist, können Sie es [aus einem lokalen Ordner installieren](guides/installation.md#installfromlocalfolder).
 
-## Schritt 2. Komponentenerstellung
+## Schritt 2. Erstellung der Komponente
 
-Erstellen Sie eine Vue-Komponente, um Gantt in Ihre App einzubetten. Legen Sie eine neue Datei namens ***Gantt.vue*** im Verzeichnis ***src/components/*** an.
+Nun sollten wir eine Vue-Komponente erstellen, um ein Gantt in die Anwendung einzufügen. Erstellen Sie eine neue Datei im Verzeichnis ***src/components/*** und benennen Sie sie ***Gantt.vue***.
 
 ### Importieren der Quelldateien
 
-Öffnen Sie ***Gantt.vue*** und importieren Sie die Gantt-Quelldateien. Beachten Sie den Unterschied je nach Installationsmethode:
+Öffnen Sie die neu erstellte Datei ***Gantt.vue*** und importieren Sie die Gantt-Quelldateien. Beachten Sie, dass:
 
-- Wenn Sie aus einem lokalen Ordner installiert haben, verwenden Sie:
+- Wenn Sie das Gantt-Paket aus einem lokalen Ordner installiert haben, sehen Ihre Importpfade so aus:
 
-**Gantt.vue**
-~~~
+~~~js title="Gantt.vue"
 import { Gantt} from "dhtmlx-gantt";
 import "dhtmlx-gantt/codebase/dhtmlxgantt.css";
 ~~~ 
 
-- Wenn Sie die Trial-Version installiert haben, verwenden Sie:
+- Wenn Sie sich entschieden haben, die Trial-Version zu installieren, sollten die Importpfade wie folgt aussehen:
 
-**Gantt.vue**
-~~~
+~~~js title="Gantt.vue"
 import { Gantt} from "@dhx/trial-gantt";
 import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
 ~~~
 
-Diese Anleitung verwendet die **Trial**-Version.
+In diesem Tutorial verwenden wir die **trial**-Version von Gantt.
 
-### Container festlegen und Gantt hinzufügen
+### Festlegen des Containers und Hinzufügen von Gantt
 
-Um Gantt auf der Seite anzuzeigen, geben Sie das Containerelement an. So sieht es aus:
+Um Gantt auf der Seite anzuzeigen, müssen wir den Container festlegen, in dem die Komponente gerendert wird. Siehe unten stehenden Code:
 
-**Gantt.vue**
-~~~html
+~~~js title="Gantt.vue"
 <script>
 import { Gantt } from "@dhx/trial-gantt";
 import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
@@ -130,10 +125,9 @@ export default {
 </template>
 ~~~
 
-Damit der Gantt-Container den gesamten Body ausfüllt, entfernen Sie die Standard-Styles aus ***main.css*** in ***src/assets*** und fügen Sie Folgendes hinzu:
+Um den Gantt-Container dazu zu bringen, den gesamten Raum des Bodys einzunehmen, entfernen Sie die Standardstile aus der ***main.css***-Datei im Ordner ***src/assets*** und fügen Sie Folgendes hinzu:
 
-**src/assets/main.css**
-~~~
+~~~js title="src/assets/main.css"
 body, #app {
   margin: 0;
   padding: 0;
@@ -142,12 +136,11 @@ body, #app {
 }
 ~~~
 
-## Schritt 3. Gantt in die App einbinden
+## Schritt 3. Gantt in die App einfügen
 
-Fügen Sie als Nächstes die Gantt-Komponente in Ihre App ein. Öffnen Sie ***src/App.vue*** und ersetzen Sie den Standardinhalt durch:
+Nun ist es Zeit, die Komponente in unsere App einzufügen. Öffnen Sie ***src/App.vue*** und verwenden Sie die Gantt-Komponente statt des Standardinhalts, indem Sie den untenstehenden Code einfügen:
 
-**src/App.vue**
-~~~html
+~~~js title="Gantt.vue"
 <script>
 import Gantt from "./components/Gantt.vue";
 
@@ -161,16 +154,15 @@ export default {
 </template>
 ~~~
 
-Nach dem Starten der App sollte ein leerer Gantt angezeigt werden:
+Wenn Sie die App starten, sollten Sie nun ein leeres Gantt auf einer Seite sehen:
 
-![Gantt Vue Init](/img/gantt_init.png)
+![Gantt Vue init](/img/gantt_init.png)
 
-## Schritt 4. Daten bereitstellen
+## Schritt 4. Bereitstellung von Daten
 
-Um Aufgaben im Gantt anzuzeigen, stellen Sie einen Datensatz bereit. Erstellen Sie eine Datei ***data.js*** im Verzeichnis ***src/*** mit folgenden Daten:
+Um Daten in das Gantt einzufügen, müssen wir ein Datenset bereitstellen. Erstellen Sie die ***data.js***-Datei im ***src/***-Verzeichnis und fügen Sie einige Daten hinzu:
 
-**src/data.js**
-~~~js
+~~~js title="src/data.js"
 export function getData() {
   const tasks = {
     data: [
@@ -208,10 +200,9 @@ export function getData() {
 }
 ~~~
 
-Übergeben Sie diese Daten als Props an die Gantt-Komponente in ***App.vue***:
+Wir sollten [Props (unsere Daten)](https://vuejs.org/guide/components/props.html) an die Gantt-Komponente in der ***App.vue***-Datei übergeben:
 
-**App.vue**
-~~~html
+~~~html title="Gantt.vue"
 <script>
 import Gantt from "./components/Gantt.vue";
 import { getData } from "./data";
@@ -231,10 +222,9 @@ export default {
 </template>
 ~~~
 
-Verwenden Sie dann diese Props mit **gantt.parse()** in der Gantt-Komponente:
+Und verwenden Sie die Props in der **gantt.parse()**-Methode in der Gantt-Komponente:
 
-**Gantt.vue**
-~~~html
+~~~html title="Gantt.vue"
 <script>
 import { Gantt } from "@dhx/trial-gantt";
 import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
@@ -259,17 +249,17 @@ export default {
 <template>
   <div ref="cont" style="width: 100%; height: 100%"></div>
 </template>
-~~~
+~~~  
 
-Wenn Sie die App neu laden, wird Gantt nun mit Aufgaben angezeigt:
+Nun, wenn Sie die App erneut öffnen, sollten Sie ein Gantt mit Aufgaben sehen:
 
-![Gantt Aufgaben](/img/gantt_tasks.png)
+![Gantt tasks](/img/gantt_tasks.png)
 
-## Schritt 5. Daten speichern
+## Schritt 5. Speichern von Daten
 
-Um Änderungen im Gantt zu verfolgen, verwenden Sie einen [dataProcessor](api/method/dataprocessor.md)-Handler, der die Kommunikation mit Ihrem Backend verwaltet. Dieser Handler kann eine Funktion oder ein Router-Objekt sein. dhtmlxGantt unterstützt Promise-Antworten vom Handler, was eine ordnungsgemäße Verarbeitung von Aktionen gewährleistet.
+Um Änderungen im Gantt zu erfassen, können Sie einen [dataProcessor](api/method/dataprocessor.md) Handler verwenden, der es ermöglicht, mit dem serverseitigen Backend zu kommunizieren. Der Handler kann entweder als Funktion oder als Router-Objekt deklariert werden. dhtmlxGantt akzeptiert eine Promise-Antwort vom Handler, sodass Ihr Gantt die Beendigung einer Aktion korrekt verarbeitet.
 
-Erstellen Sie einen **DataProcessor** mit **createDataProcessor()** und erfassen Sie Änderungen wie folgt:
+Sie können einen **DataProcessor** über die API-Methode **createDataProcessor()** erstellen und Änderungen wie folgt erfassen:
 
 ~~~
 gantt.createDataProcessor(function(entity, action, data, id) {​
@@ -277,12 +267,12 @@ gantt.createDataProcessor(function(entity, action, data, id) {​
 });
 ~~~
 
-Falls Ihr Backend beim Erstellen neuer Datensätze die Task-IDs ändert (was in vielen Systemen üblich ist), stellen Sie sicher, dass Ihr Promise ein Objekt mit **(id: databaseId)** oder **(tid: databaseId)** zurückgibt. So kann Gantt den Datensatz mit der neuen Datenbank-ID aktualisieren. Weitere Informationen finden Sie unter [server side integration](guides/server-side.md).
+Wenn Ihr Dienst die Aufgaben-ID nach dem Erstellen eines neuen Datensatzes ändert (was normalerweise der Fall ist), stellen Sie sicher, dass Ihre Promise ein Objekt mit **(id: databaseId)** oder **(tid: databaseId)** als Ergebnis zurückgibt, damit Gantt die neue Datenbank-ID dem Datensatz zuweisen kann. Erfahren Sie [mehr Informationen zur Serverseite](guides/server-side.md).
 
-Damit ist Ihr Vue Gantt-Setup abgeschlossen. Sie können das vollständige Demo auf GitHub erkunden: [https://github.com/DHTMLX/vue-gantt-demo](https://github.com/DHTMLX/vue-gantt-demo).
+Nun ist Vue Gantt einsatzbereit. Sie können sich [die vollständige Demo auf GitHub](https://github.com/DHTMLX/vue-gantt-demo) ansehen.
 
-## XSS-, CSRF- und SQL-Injection-Angriffe
+## XSS-, CSRF- und SQL-Injektionsangriffe
 
-Beachten Sie, dass Gantt selbst keinen Schutz vor Bedrohungen wie SQL-Injection, XSS oder CSRF-Angriffen bietet. Die Sicherheit Ihrer Anwendung liegt in der Verantwortung der Backend-Entwickler.
+Beachten Sie, dass Gantt keine Mittel bietet, um eine Anwendung vor verschiedenen Bedrohungen zu schützen, wie z.B. SQL-Injektionen oder XSS- und CSRF-Angriffe. Es ist wichtig, dass die Verantwortung für die Sicherheit der Anwendung bei den Entwicklern liegt, die das Backend implementieren.
 
-Lesen Sie den Artikel [Application Security](guides/app-security.md), um mehr über gängige Schwachstellen zu erfahren und wie Sie Ihre App absichern können.
+Lesen Sie den [Bereich Anwendungssicherheit](guides/app-security.md), um die am stärksten gefährdeten Punkte der Komponente und die Maßnahmen zur Verbesserung der Sicherheit Ihrer Anwendung kennenzulernen.

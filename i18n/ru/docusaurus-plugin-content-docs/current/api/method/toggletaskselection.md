@@ -1,20 +1,20 @@
 ---
 sidebar_label: toggleTaskSelection
 title: toggleTaskSelection method
-description: "переключает состояние выбора указанной задачи - выбирает её, если она не выбрана, или снимает выбор, если она уже выбрана"
+description: "переключает выделение указанной задачи: если задача не была выделена — она становится выделенной, иначе выделение снимается"
 ---
 
 # toggleTaskSelection
 
 ### Description
 
-@short: Переключает состояние выбора указанной задачи - выбирает её, если она не выбрана, или снимает выбор, если она уже выбрана
+@short: Переключает выделение указанной задачи: если задача не была выделена — выделяется, иначе выделение снимается
 
-@signature: toggleTaskSelection: (taskId: string | number) =\> void
+@signature: toggleTaskSelection: (taskId: string | number) => void
 
 ### Parameters
 
-- `taskId` - (required) *string | number* -        ID задачи
+- `taskId` - (required) *string | number* - идентификатор задачи
 
 ### Example
 
@@ -26,7 +26,7 @@ gantt.render();
 ### Details
 
 :::note
-note Этот метод является частью расширения **multiselect**, поэтому убедитесь, что плагин [multiselect](guides/extensions-list.md#multitaskselection) включён. Для получения дополнительной информации смотрите статью [Множественный выбор задач](guides/multiselection.md). 
+Этот метод определяется в расширении **multiselect**, поэтому необходимо активировать плагин [multiselect](guides/extensions-list.md#multitaskselection). Подробности смотрите в статье [Multi-Task Selection](guides/multiselection.md).
 :::
 
 ### Related API
@@ -38,5 +38,4 @@ note Этот метод является частью расширения **mu
 - [isSelectedTask](api/method/isselectedtask.md)
 
 ### Related Guides
-- [Множественный выбор задач](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

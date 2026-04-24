@@ -1,20 +1,21 @@
 ---
 sidebar_label: scrollTo
-title: scrollTo method
-description: "scrollt den Gantt-Container zur angegebenen Position"
+title: scrollTo Methode
+description: "scrollt den Gantt-Container an die angegebene Position"
 ---
 
 # scrollTo
 
 ### Description
 
-@short: Scrollt den Gantt-Container zur angegebenen Position
+@short: Scrollt den Gantt-Container an die angegebene Position
 
 @signature: scrollTo: (x?: number | null, y?: number | null) =\> void
 
 ### Parameters
-- `x` - (optional) *number | null* -  der horizontale Scrollwert oder 'null', wenn keine Änderung erforderlich ist
-- `y` - (optional) *number | null* - der vertikale Scrollwert oder 'null', wenn keine Änderung erforderlich ist
+
+- `x` -	(optional) *number | null*	-	optional, der Wert des horizontalen Scrolls oder 'null' (falls die Scrollposition nicht geändert werden soll)
+- `y`	(optional) *number | null*	- optional, der Wert des vertikalen Scrolls oder 'null' (falls die Scrollposition nicht geändert werden soll)
 
 ### Example
 
@@ -32,4 +33,3 @@ gantt.scrollTo(null, 80); // scrollt den Container nur vertikal
 - [scrollLayoutCell](api/method/scrolllayoutcell.md)
 - [getScrollState](api/method/getscrollstate.md)
 - [onGanttScroll](api/event/onganttscroll.md)
-

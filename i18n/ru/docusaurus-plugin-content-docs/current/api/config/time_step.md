@@ -1,14 +1,14 @@
 ---
 sidebar_label: time_step
-title: time_step config
-description: "задаёт минимальный шаг (в минутах) для временных значений задачи"
+title: time_step конфигурация
+description: "задает минимальный шаг (в минутах) для значений времени задачи"
 ---
 
 # time_step
 
 ### Description
 
-@short: Задаёт минимальный шаг (в минутах) для временных значений задачи
+@short: Устанавливает минимальный шаг (в минутах) для значений времени задачи
 
 @signature: time_step: number
 
@@ -20,26 +20,22 @@ gantt.config.time_step = 15;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 60
+**Значение по умолчанию:** 60
 
 ### Details
 
-- Время начала и окончания задач будет выравниваться по кратным значениям time_step. Например, если *time_step = 20*, задачи могут начинаться только в 0, 20, 40 минут и так далее.
-- Селектор времени в lightbox будет следовать тому же шагу time_step.
+- Начальное и конечное время задачи будут принимать значения, кратные шагу времени, т.е. если *time_step = 20*, задача может начинаться только с: 0, 20, 40 минут и т.д.
+- Панель выбора времени в lightbox будет иметь такой же шаг времени.
 
 :::note
- Чтобы задачи "прилипали" к шагу, определённому свойством **time_step** при перетаскивании, убедитесь, что конфигурация [round_dnd_dates](api/config/round_dnd_dates.md) установлена в *false*.
+Примечание: Если вы хотите перетащить задачу с шагом, установленным через свойство **time_step**, необходимо установить конфигурацию [round_dnd_dates](api/config/round_dnd_dates.md) в *false*.
 ~~~js
 gantt.config.round_dnd_dates = false;
 ~~~
- 
-:::
 
 :::note
-Sample: [Gantt. Drag'n'drop задач с минимальным шагом](https://snippet.dhtmlx.com/bd7ir3w7) 
- 
+пример: [Gantt. Drag'n'drop задач с минимальным шагом](https://snippet.dhtmlx.com/bd7ir3w7)
 :::
 
 ### Related API
 - [round_dnd_dates](api/config/round_dnd_dates.md)
-

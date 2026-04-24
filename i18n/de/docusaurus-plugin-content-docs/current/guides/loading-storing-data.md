@@ -1,16 +1,15 @@
----
-title: "Laden und Speichern von Aufgaben"
-sidebar_label: "Laden und Speichern von Aufgaben"
+--- 
+title: "Aufgaben laden und speichern"
+sidebar_label: "Aufgaben laden und speichern"
 ---
 
-# Laden und Speichern von Aufgaben
+# Aufgaben laden und speichern
 
 ![gantt_basic](/img/gantt_basic.png)
 
-
-- [Data Loading](guides/loading.md)
-- [Dynamic Loading (on demand)](guides/dynamic-loading.md)
-- [Supported Data Formats](guides/supported-data-formats.md)
-- [Server-Side Integration](guides/server-side.md)
-- [Performance: Ways to Improve](guides/performance.md)
-- [Troubleshooting Backend Integration Issues](guides/troubleshooting.md)
+- [Daten laden](guides/loading.md)
+- [Dynamisches Laden (auf Abruf)](guides/dynamic-loading.md)
+- [Unterstützte Datenformate](guides/supported-data-formats.md)
+- [Serverseitige Integration](guides/server-side.md)
+- [Leistung: Möglichkeiten zur Verbesserung](guides/performance.md)
+- [Fehlerbehebung bei Backend-Integrationsproblemen](guides/troubleshooting.md)

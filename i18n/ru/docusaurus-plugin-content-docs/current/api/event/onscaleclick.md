@@ -1,27 +1,27 @@
 ---
 sidebar_label: onScaleClick
-title: onScaleClick event
-description: "срабатывает, когда пользователь кликает на ячейку в тайм-скейле"
+title: событие onScaleClick
+description: "срабатывает, когда пользователь кликает по ячейке шкалы времени"
 ---
 
 # onScaleClick
 
 ### Description
 
-@short: Срабатывает, когда пользователь кликает на ячейку в тайм-скейле
+@short: Срабатывает, когда пользователь кликает по ячейке шкалы времени
 
 @signature: onScaleClick: (e: Event, date: Date) =\> void;
 
 ### Parameters
 
-- `e` - (required) *Event* - объект нативного события
-- `date` - (required) *Date* - дата, соответствующая кликнутой ячейке
+- `e` - (required) *Event* - нативный объект события
+- `date` - (required) *Date* - дата нажатой ячейки
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onScaleClick", function (e, date) {
-    //ваш кастомный код
+    // любая ваша логика здесь
 });
 ~~~
 

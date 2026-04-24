@@ -1,19 +1,19 @@
 ---
 sidebar_label: getSelectedId
-title: getSelectedId method
-description: "提供当前选中任务的id"
+title: getSelectedId 方法
+description: "返回所选任务的 id"
 ---
 
 # getSelectedId
 
 ### Description
 
-@short: 提供当前选中任务的id
+@short: 返回所选任务的 id
 
-@signature: getSelectedId: () =\> string
+@signature: getSelectedId: () => string
 
 ### Returns
-- ` id` - (string) - 选中任务的id，如果甘特图中没有选中任务，则返回 <i>null</i>
+- ` id` - (string) - 所选任务的 id，若甘特图中未选中任何任务，则为 <i>null</i>
 
 ### Example
 
@@ -36,4 +36,3 @@ gantt.getSelectedId(); // -> "t_1" /*!*/
 ### Related API
 - [selectTask](api/method/selecttask.md)
 - [unselectTask](api/method/unselecttask.md)
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: hideLightbox
-title: hideLightbox method
-description: "schließt die Lightbox, falls sie geöffnet ist"
+title: hideLightbox Methode
+description: "Schließt das Lightbox-Fenster, falls es derzeit aktiv ist"
 ---
 
 # hideLightbox
 
 ### Description
 
-@short: Schließt die Lightbox, falls sie geöffnet ist
+@short: Schließt das Lightbox-Fenster, falls es derzeit aktiv ist
 
 @signature: hideLightbox: () =\> void
 
@@ -22,4 +22,3 @@ gantt.hideLightbox();
 
 ### Related API
 - [showLightbox](api/method/showlightbox.md)
-

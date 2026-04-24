@@ -1,14 +1,14 @@
 ---
 sidebar_label: inline_editors_date_processing
 title: inline_editors_date_processing config
-description: "작업의 시작일 또는 종료일을 편집할 때 작업 기간을 유지합니다."
+description: "작업의 시작/종료를 편집하는 동안 작업 기간이 변경되지 않도록 유지"
 ---
 
 # inline_editors_date_processing
 
 ### Description
 
-@short: 작업의 시작일 또는 종료일을 편집할 때 작업 기간을 유지합니다.
+@short: 작업의 시작/종료를 편집하는 동안 작업 기간을 변경하지 않습니다
 
 @signature: inline_editors_date_processing: string | undefined
 
@@ -22,35 +22,35 @@ gantt.config.inline_editors_date_processing = "keepDuration";
 
 ### Details
 
-inline editors가 작업의 시작일과 종료일 변경을 처리하는 방식을 제어합니다.
-설정이 undefined(기본값)일 때:
+Affects the behavior of inline editors for start and end dates of tasks.
+When the config is undefined (default):
 
-- 작업의 시작일을 조정하면 작업 기간은 동일하게 유지되며, 작업 전체가 새로운 시작 시간으로 이동합니다.
-- 종료일을 변경하면 시작일은 고정되고, 종료일에 맞춰 기간이 업데이트됩니다.
+- When a user changes the start date of a task, task duration will remain unchanged and the whole task will be rescheduled to the specified time.
+- When a user changes the end date of a task, task start date will remain unchanged, task duration will be updated in order to reflect the change.
 
-이 동작은 6.2 이전 버전과 다릅니다.
+This is different from the default logic in versions before 6.2.
 
-버전 6.1의 동작을 복원하려면 옵션을 **"keepDuration"** 으로 설정하세요:
+In order to revert to v6.1 behavior, use the **"keepDuration"** value:
 
 ~~~js
 gantt.config.inline_editors_date_processing = "keepDuration";
 ~~~
 
-이 설정은 다음과 같습니다:
+Which will have the following effect:
 
-- 시작일 변경 시 기간은 변하지 않고 작업이 적절히 이동합니다.
-- 종료일 변경 시 기간은 변하지 않고 작업이 새로운 종료일에 맞게 이동합니다.
+- When a user changes the start date of a task, task duration will remain unchanged and the whole task will be rescheduled to the specified time.
+- When a user changes the end date of a task, task duration will remain unchanged and the whole task will be rescheduled to end at the specified time.
 
-또 다른 옵션은 **"keepDates"** 입니다:
+An alternative value is **"keepDates"**:
 
 ~~~js
 gantt.config.inline_editors_date_processing = "keepDates";
 ~~~
 
-이 설정은 다음을 의미합니다:
+It has the following effect:
 
-- 시작일 변경 시 종료일은 고정되고, 기간이 조정됩니다.
-- 종료일 변경 시 시작일은 고정되고, 기간이 조정됩니다.
+- When a user changes the start date of a task, end_date will remain unchanged, task duration will be updated in order to reflect the change.
+- When a user changes the end date of a task, start_date will remain unchanged, task duration will be updated in order to reflect the change.
 
 ### Change log
-- v6.2에 이전 버전과의 호환성을 위해 추가됨
+- added in v6.2 for compatibility with previous versions

@@ -1,19 +1,19 @@
 ---
 sidebar_label: getScrollState
-title: getScrollState method
-description: "получает текущую позицию скролла"
+title: метод getScrollState
+description: "возвращает положение прокрутки"
 ---
 
 # getScrollState
 
 ### Description
 
-@short: Получает текущую позицию скролла
+@short: Возвращает положение прокрутки
 
 @signature: getScrollState: () =\> \{ x: number, y: number \}
 
 ### Returns
-- `ScrollState` - (ScrollState) - объект, представляющий позицию скролла
+- `ScrollState` - (ScrollState) - объект положения прокрутки
 
 ### Example
 
@@ -25,18 +25,17 @@ const posY = sPos.y;
 
 ### Details
 
-Этот метод возвращает объект, содержащий следующие данные:
+Метод возвращает объект со следующими свойствами:
 
-- **y** - вертикальный сдвиг скролла в пикселях
-- **x** - горизонтальный сдвиг скролла в пикселях
-- **inner_width** - ширина видимой части timeline
-- **inner_height** - высота видимой части timeline
-- **width** - общая прокручиваемая ширина timeline
-- **height** - общая прокручиваемая высота timeline
+- **y** - число пикселей, на которые прокручена позиция по вертикали
+- **x** - число пикселей, на которые прокручена позиция по горизонтали
+- **inner_width** - ширина видимой области временной шкалы
+- **inner_height** - высота видимой области временной шкалы
+- **width** - ширина прокрутки области временной шкалы
+- **height** - высота прокрутки области временной шкалы
 
 ### Related API
 - [scrollTo](api/method/scrollto.md)
 - [onGanttScroll](api/event/onganttscroll.md)
 - [showDate](api/method/showdate.md)
 - [showTask](api/method/showtask.md)
-

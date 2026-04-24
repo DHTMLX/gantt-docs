@@ -1,6 +1,6 @@
 ---
 sidebar_label: parse
-title: parse method
+title: parse 方法
 description: "从客户端资源加载数据"
 ---
 
@@ -14,8 +14,8 @@ description: "从客户端资源加载数据"
 
 ### Parameters
 
-- `data` - (required) *string* - | DataToLoad     表示[数据](https://docs.dhtmlx.com/gantt/desktop__loading.html#dataproperties)的字符串或对象
-- `type` - (optional) *string* - 可选，(<i>'json', 'xml'</i>) 指定数据类型。默认值为 <i>'json'</i>
+- `data` - (必填) *string | DataToLoad* -    一个字符串或对象，表示 [data](guides/loading.md#dataproperties)
+- `type`	-	(optional) *string*	 	-	 选项 (<i>'json', 'xml'</i>) 数据类型。默认值 - <i>'json'</i>
 
 ### Example
 
@@ -40,15 +40,15 @@ gantt.parse({
 
 ### Details
 
-Gantt 期望任务数组命名为 **data** 或 **tasks**，而链接数组应命名为 **links**。
+Gantt 期望包含 *an array with tasks* 的数组被命名为 **data** 或 **tasks**，而 *an array with links* 的数组将被命名为 **links**。
 
-数据结构如下:
+以下是期望的属性列表：
 
 - **data** - (*[] | NewTask[]*) - 包含任务数据的数组
 - **links?** - (*Link[]*) - 包含链接数据的数组
 - **resources?** - (*NewResourceItem[]*) - 包含资源数据的数组
 - **assignments?** - (*NewAssignmentItem[]*) - 包含分配数据的数组
-- **collections?** - (*Сollections*) - 存放自定义数据数组的对象
+- **collections?** - (*Сollections*) - 包含自定义数据的数组的对象
 
 ~~~js
 gantt.parse({
@@ -77,22 +77,23 @@ gantt.parse({
 })
 ~~~
 
-**data** 或 **tasks** 数组应包含 **NewTask** 对象，它们与 **Task** 对象不同。NewTask 可以是字符串或空对象。这些对象可以拥有与[**Task**对象](guides/task-properties.md)相同的属性，也可以添加自定义属性。与 **Task** 对象不同的是，以 *$* 开头的属性会被忽略，日期可以是字符串。
+The **data** 或 **tasks** 数组期望的是与 **Task** 对象不同的 **NewTask** 对象。它也可以是字符串，或空对象。
+它可以具有与 [**Task** 对象](guides/task-properties.md) 相同的属性，并且你可以在其中添加任意自定义属性。
+区别在于某些以 *$* 符号开头的 **Task** 对象属性会被忽略，且日期可以是字符串类型。
+以下是类型描述：
 
-具体说明:
+- **NewTask** - (*string | {} | object*) - 将被添加到 Gantt 的任务对象。它可以具有以下属性：
+    - **_id?_** - (*string | number*) - 可选，任务 ID，如未设置将自动生成
+    - **_start_date?_** - (*string | Date*) - 可选，任务计划开始的日期
+    - **_duration?_** - (*number*) - 可选，任务时长
+    - **_end_date?_** - (*string | Date*) - 可选，任务计划完成的日期
+    - **_text?_** - (*string*) - 可选，任务名称
+    - **_open?_** - (*boolean*) - 可选，加载时是否展开以显示子任务
+    - **_parent?_** - (*string | number*) - 可选，父任务的 ID
+    - **_constraint_date?_** - (*string | Date*) - 可选，任务约束日期
+    - **_[customProperty: string]_** - (*any*) - 你想要添加的任意其他属性
 
-- **NewTask** - (*string | {} | object*) - 添加到 Gantt 的任务对象，可能包含以下属性:
-    - **_id?_** - (*string | number*) - 可选，任务 ID，缺失时自动生成。
-    - **_start_date?_** - (*string | Date*) - 可选，任务开始日期。
-    - **_duration?_** - (*number*) - 可选，任务持续时间。
-    - **_end_date?_** - (*string | Date*) - 可选，任务结束日期。
-    - **_text?_** - (*string*) - 可选，任务名称。
-    - **_open?_** - (*boolean*) - 可选，加载时任务是否展开。
-    - **_parent?_** - (*string | number*) - 可选，父任务 ID。
-    - **_constraint_date?_** - (*string | Date*) - 可选，约束日期。
-    - **_[customProperty: string]_** - (*any*) - 其他任意属性，包括来自[**Task**对象](guides/task-properties.md)的属性。
-
-这不是任务属性的完整列表，更多内容请参见[此文档](guides/task-properties.md)。
+这不是可能的任务属性的完整列表。更多信息，请参考本文档中的内容（guides/task-properties.md）。
 
 ~~~js
 gantt.parse({
@@ -172,7 +173,6 @@ gantt.parse({
 
 每个 **СollectionItem** 是一个包含任意属性的对象:
 
-- **[itemProperty: string]** - (*any*) - 任意自定义属性。
 
 ~~~js
 gantt.parse({
@@ -211,7 +211,6 @@ gantt.parse({
 });
 ~~~
 
-<br>
 从 v8.0 版本开始，你还可以通过 **parse()** 方法同时加载资源和资源分配，以及任务和链接:
 
 ~~~js

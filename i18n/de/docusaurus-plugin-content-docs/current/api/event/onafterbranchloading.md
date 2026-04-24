@@ -1,20 +1,20 @@
 ---
 sidebar_label: onAfterBranchLoading
 title: onAfterBranchLoading event
-description: "Wenn das dynamische Laden aktiviert ist, wird dieses Event unmittelbar ausgelöst, nachdem ein Task-Branch auf der Seite vollständig geladen wurde."
+description: "Wenn dynamisches Laden aktiviert ist, wird das Ereignis ausgelöst, nachdem der Aufgaben-Zweig auf die Seite geladen wurde"
 ---
 
 # onAfterBranchLoading
 
 ### Description
 
-@short: Wenn das dynamische Laden aktiviert ist, wird dieses Event unmittelbar ausgelöst, nachdem ein Task-Branch auf der Seite vollständig geladen wurde.
+@short: Wenn dynamisches Laden aktiviert ist, wird nach dem Laden des Aufgaben-Zweigs auf der Seite ausgelöst
 
-@signature: onAfterBranchLoading: (settings: any) =\> void;
+@signature: onAfterBranchLoading: (settings: any) => void;
 
-### Parameters
+### Parameter
 
-- `settings` - (required) *object* - Ein Objekt, das die Task-ID und die Request-URL enthält.
+- `settings` - (erforderlich) *Objekt* - ein Objekt, das die Aufgaben-ID und die Anforderungs-URL enthält
 
 ### Example
 
@@ -26,7 +26,7 @@ gantt.attachEvent("onAfterBranchLoading", function(settings){
 
 ### Details
 
-Das `settings`-Objekt beinhaltet zwei Eigenschaften: die ID des Tasks und die für die Anfrage verwendete URL:
+Das `settings`-Objekt enthält zwei Eigenschaften – die ID der Aufgabe und die Anforderungs-URL:
 
 ~~~js
 {
@@ -35,7 +35,7 @@ Das `settings`-Objekt beinhaltet zwei Eigenschaften: die ID des Tasks und die f�
 }
 ~~~
 
-Dieses Event tritt nur auf, wenn [Dynamic loading](guides/loading.md) aktiviert ist.
+Dieses Ereignis wird nur ausgelöst, wenn [Dynamisches Laden](guides/loading.md) aktiviert ist.
 
 ### Related API
 - [onBeforeBranchLoading](api/event/onbeforebranchloading.md)

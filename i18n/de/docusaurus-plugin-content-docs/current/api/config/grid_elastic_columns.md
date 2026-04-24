@@ -1,14 +1,14 @@
 ---
 sidebar_label: grid_elastic_columns
 title: grid_elastic_columns config
-description: "passt die Breite der Spalten innerhalb eines scrollbaren grids an"
+description: "Passt die Breite der Spalten in einem scrollbaren Grid"
 ---
 
 # grid_elastic_columns
 
 ### Description
 
-@short: Passt die Breite der Spalten innerhalb eines scrollbaren grids an
+@short: Passt die Breite der Spalten in einem scrollbaren Grid
 
 @signature: grid_elastic_columns: boolean | string
 
@@ -25,43 +25,44 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
- Diese Eigenschaft funktioniert nur, wenn ein [grid eine horizontale Scrollbar hat](guides/specifying-columns.md#horizontalscrollbar). 
+Die Eigenschaft funktioniert nur, wenn ein [Grid mit horizontalem Scrollbalken](guides/specifying-columns.md#horizontal-scrollbar) vorhanden ist.
 :::
 
-Standardmäßig ändert dhtmlxGantt die Größe der Spalten nicht, wenn die gesamte grid-Größe angepasst wird.
+Standardmäßig passt dhtmlxGantt die Größe der Spalten während der Größenänderung des gesamten Grids nicht an. 
 
-Wenn also die Breite des grids zunimmt, behalten die Spalten ihre ursprüngliche Breite bei, wodurch rechts leerer Raum entsteht. Wenn die Breite des grids abnimmt, erscheint eine horizontale Scrollbar.
+Daher bleibt die Breite der Spalten größer werdend des Grids unverändert. Dadurch erscheint auf der rechten Seite des Grids ein leerer Bereich. 
+Wenn die Breite des Grids verringert wird, wird im Grid horizontal gescrollt.
 
 ![elastic_false](/img/elastic_false.png)
 
-Um die Spalten mit der Größe des grids anzupassen, setzen Sie **grid_elastic_columns** auf *true*:
+Um die Spalten von der Gridsgröße abhängig zu machen, setzen Sie **grid_elastic_columns** auf *true*:
 
 ~~~js
 gantt.config.grid_elastic_columns = true;
 ~~~
 
 :::note
-Sample: [Elastische Spalten des Grids](https://snippet.dhtmlx.com/k0qqj5w5) 
+Beispiel: [Elastische Spalten des Grid](https://snippet.dhtmlx.com/k0qqj5w5)
 :::
 
-Mit dieser Einstellung passt sich die Breite der Spalten beim Ändern der grid-Breite an:
+Nun, wenn sich die Breite des Grids ändert, wird auch die Breite der Spalten entsprechend angepasst, und umgekehrt:
 
-- Wenn das grid breiter wird, dehnen sich die Spalten aus, um den zusätzlichen Platz zu füllen.
-- Wenn die Breite einer Spalte vergrößert wird, vergrößert sich die grid-Größe (eine horizontale Scrollbar kann erscheinen), aber die anderen Spalten bleiben unverändert.
-- Wenn die Breite einer Spalte verkleinert wird, schrumpft die grid-Größe (die Scrollbar kann verschwinden), und andere Spalten können wachsen.
+- wenn Sie das Grid verbreitern, erweitern sich die Spalten, um die Größe des Grids auszufüllen und den verbleibenden Platz vollständig zu nutzen
+- wenn Sie die Spaltenbreite erhöhen, erhöht sich die Größe des Grids (der horizontale Scrollbalken kann erscheinen, aber die Größe der anderen Spalten ändert sich nicht)
+- wenn Sie die Spaltenbreite verringern, reduziert sich die Größe des Grids (der horizontale Scrollbalken kann verschwinden, aber die Größe der anderen Spalten kann zunehmen)
 
 ![elastic_true](/img/elastic_true.png)
 
-Eine weitere Option ist, den Eigenschaftswert auf "min_width" zu setzen:
+Eine weitere Option besteht darin, den Wert der Eigenschaft auf "min_width" zu setzen:
 
 ~~~js
 gantt.config.grid_elastic_columns = "min_width";
 ~~~
 
-Das passiert dann:
+In diesem Fall:
 
-- Wenn das grid breiter wird, dehnen sich die Spalten aus, um den verfügbaren Platz zu füllen.
-- Wenn das grid schmaler wird, schrumpfen die Spalten bis zu ihren [Minimalbreiten](guides/specifying-columns.md#width). Sobald alle Spalten ihre Minimalbreite erreicht haben, erscheint eine horizontale Scrollbar.
+- wenn Sie das Grid verbreitern, erweitern sich die Spalten, um die Größe des Grids auszufüllen und den verbleibenden Platz vollständig zu nutzen
+- wenn Sie die Breite des Grids verringern, schrumpfen die Spalten, bis sie ihre [minimale Breite](guides/specifying-columns.md#width) erreichen. Wenn alle Spalten die Mindestbreite erreichen, erscheint im Grid die horizontale Scrollleiste.
 
 ### Change log
 - hinzugefügt in v7.0

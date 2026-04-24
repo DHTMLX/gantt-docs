@@ -1,14 +1,14 @@
 ---
 sidebar_label: keyboard_navigation_cells
 title: keyboard_navigation_cells config
-description: "개별 셀 단위로 키보드 네비게이션을 허용합니다"
+description: "셀 단위로 키보드 네비게이션을 활성화합니다"
 ---
 
 # keyboard_navigation_cells
 
 ### Description
 
-@short: 개별 셀 단위로 키보드 네비게이션을 허용합니다
+@short: 셀 단위로 키보드 네비게이션 활성화
 
 @signature: keyboard_navigation_cells: boolean
 
@@ -16,9 +16,9 @@ description: "개별 셀 단위로 키보드 네비게이션을 허용합니다"
 
 ~~~jsx
 gantt.config.keyboard_navigation_cells = true;
-~~~
+~~~ 
 
-**Default value:** false
+**기본값:** false
 
 ### Related samples
 - [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
@@ -26,10 +26,10 @@ gantt.config.keyboard_navigation_cells = true;
 ### Details
 
 :::note
- 이 설정은 **keyboard_navigation** 확장의 일부이므로, 먼저 [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 플러그인을 활성화해야 합니다. 자세한 내용은 [키보드 내비게이션](guides/keyboard-navigation.md) 가이드를 참고하세요. 
+이 옵션은 **keyboard_navigation** 확장에 정의되어 있으므로 [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) 플러그인을 활성화해야 합니다. 자세한 내용은 [Keyboard Navigation](guides/keyboard-navigation.md) 문서를 참조하세요.
 :::
 
-버전 4.1에서 추가됨
+버전 4.1에서 추가되었습니다
 
 ### Related API
 - [keyboard_navigation](api/config/keyboard_navigation.md)
@@ -39,5 +39,4 @@ gantt.config.keyboard_navigation_cells = true;
 - [removeShortcut](api/method/removeshortcut.md)
 
 ### Related Guides
-- [키보드 내비게이션](guides/keyboard-navigation.md)
-
+- [Keyboard Navigation](guides/keyboard-navigation.md)

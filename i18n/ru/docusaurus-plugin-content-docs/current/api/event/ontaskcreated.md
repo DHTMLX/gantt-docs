@@ -1,23 +1,23 @@
 ---
 sidebar_label: onTaskCreated
 title: onTaskCreated event
-description: "вызывается, когда пользователь добавляет новую задачу, нажимая кнопку '+' в grid, или когда вызывается метод createTask"
+description: "fires when a user creates a new task by pressing the'+' button in a grid, or when the createTask method is called"
 ---
 
 # onTaskCreated
 
 ### Description
 
-@short: Вызывается, когда пользователь добавляет новую задачу, нажимая кнопку '+' в grid, или когда вызывается метод [createTask](api/method/createtask.md)
+@short: Вызывается, когда пользователь создает новую задачу нажатие кнопки '+' в grid, или когда вызывается метод [createTask](api/method/createtask.md)
 
 @signature: onTaskCreated: (task: Task) =\> boolean;
 
 ### Parameters
 
-- `task` - (required) *Task* - объект новой задачи
+- `task` - (обязательный) *Task* - объект новой задачи
 
 ### Returns
-- ` result` - (boolean) - возврат `false` остановит создание новой задачи, возврат `true` позволит продолжить стандартный процесс
+- ` result` - (boolean) - возвращает `false`, что отменяет создание новой задачи; возвращает `true`, что продолжает выполнение обработки по умолчанию
 
 ### Example
 
@@ -30,22 +30,21 @@ gantt.attachEvent("onTaskCreated", function(task){
 
 ### Details
 
-Это событие происходит непосредственно перед отображением новой задачи, давая вам возможность **установить значения по умолчанию** или **отменить создание задачи**.
+Событие срабатывает до отображения новой задачи, что позволяет вам **установить значения по умолчанию** или **отменить создание** задачи.
 
-На этом этапе новая задача уже существует в datastore и может быть получена с помощью метода [getTask](api/method/gettask.md).
+К моменту срабатывания этого события новая задача уже доступна в datastore через метод [getTask](api/method/gettask.md).
 
-Если обработчик события возвращает `false`, задача удаляется из datastore без вызова события [onAfterTaskDelete](api/event/onaftertaskdelete.md).
+Если обработчик события возвращает `false`, задача будет удалена из datastore без срабатывания события [onAfterTaskDelete](api/event/onaftertaskdelete.md).
 
-При создании задачи через метод [createTask](api/method/createtask.md) события происходят в следующем порядке:
+Окончательный порядок срабатывания событий, которые происходят при создании задачи с помощью метода [createTask](api/method/createtask.md):
 
-1. [onTaskCreated](api/event/ontaskcreated.md) 
-2. [onBeforeLightbox](api/event/onbeforelightbox.md) 
-3. [onLightbox](api/event/onlightbox.md) 
-4. [onAfterLightbox](api/event/onafterlightbox.md) 
-5. [onAfterTaskAdd](api/event/onaftertaskadd.md) 
+1. [onTaskCreated](api/event/ontaskcreated.md)
+2. [onBeforeLightbox](api/event/onbeforelightbox.md)
+3. [onLightbox](api/event/onlightbox.md)
+4. [onAfterLightbox](api/event/onafterlightbox.md)
+5. [onAfterTaskAdd](api/event/onaftertaskadd.md)
 6. [onBeforeTaskAdd](api/event/onbeforetaskadd.md)
 
 ### Related API
 - [createTask](api/method/createtask.md)
 - [columns](api/config/columns.md)
-

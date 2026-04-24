@@ -1,14 +1,14 @@
 ---
 sidebar_label: xml
-title: xml config
-description: "определяет сериализацию и парсинг XML"
+title: XML конфигурация
+description: "задает сериализацию и разбор XML"
 ---
 
-# xml
+# XML
 
 ### Description
 
-@short: Определяет сериализацию и парсинг XML
+@short: Задаёт сериализацию и разбор XML
 
 @signature: xml: any
 
@@ -20,7 +20,7 @@ const obj = gantt.xml; // -> { parse(text,loader){...}, serialize(){... }}
 
 ### Details
 
-Объект XML включает два основных метода:
+Объект XML содержит 2 свойства:
 
-- **parse()** метод - отвечает за то, как dhtmlxGantt читает и интерпретирует данные в формате XML.
-- **serialize()** метод - управляет тем, как dhtmlxGantt преобразует данные обратно в формат XML.
+- **parse()** метод  - определяет, как dhtmlxGantt будет парсить данные в формате XML.
+- **serialize()** метод - определяет, как dhtmlxGantt будет сериализовать данные в формате XML.

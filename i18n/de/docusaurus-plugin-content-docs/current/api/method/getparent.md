@@ -1,23 +1,23 @@
 ---
 sidebar_label: getParent
-title: getParent method
-description: "Ruft die ID der übergeordneten Aufgabe ab"
+title: getParent Methode
+description: "gibt die ID der übergeordneten Aufgabe zurück"
 ---
 
 # getParent
 
 ### Description
 
-@short: Ruft die ID der übergeordneten Aufgabe ab
+@short: Gibt die ID der übergeordneten Aufgabe zurück
 
 @signature: getParent: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    Die ID der Aufgabe
+- `id` - (erforderlich) *string | number* -    die Aufgaben-ID
 
 ### Returns
-- ` id` - (string | number) - Die ID der übergeordneten Aufgabe. Gibt die ID der Wurzel zurück, wenn die angegebene Aufgabe keine übergeordnete Aufgabe hat
+- ` id` - (string | number) - Die ID der übergeordneten Aufgabe. Root-ID, falls es keine übergeordnete Aufgabe für die angegebene Aufgabe gibt
 
 ### Example
 
@@ -36,8 +36,8 @@ gantt.init("gantt_here");
 gantt.parse(tasks);
 
 gantt.getParent("t_1"); //-> "p_1" /*!*/
-gantt.getParent("p_1"); //-> 0 (die Standard-Wurzel-ID) /*!*/
-~~~
+gantt.getParent("p_1"); //-> 0 (the default root id) /*!*/
+~~~ 
 
 ### Related API
 - [root_id](api/config/root_id.md)
@@ -46,5 +46,4 @@ gantt.getParent("p_1"); //-> 0 (die Standard-Wurzel-ID) /*!*/
 - [getSiblings](api/method/getsiblings.md)
 
 ### Related Guides
-- ["Task Parent/Child"](guides/task-tree-operations.md)
-
+- [Task Parent/Child](guides/task-tree-operations.md)

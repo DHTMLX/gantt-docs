@@ -1,20 +1,20 @@
 ---
 sidebar_label: unselectTask
-title: unselectTask method
-description: "удаляет выделение с выбранной задачи"
+title: Методы unselectTask
+description: "удаляет выделение из выбранной задачи"
 ---
 
 # unselectTask
 
 ### Description
 
-@short: Удаляет выделение с выбранной задачи
+@short: Удаляет выделение из выбранной задачи
 
-@signature: unselectTask: (id?: string | number) =\> void
+@signature: unselectTask: (id?: string | number) => void
 
 ### Parameters
 
-- `id` - (optional) *string | number* - необязательно, id задачи, с которой нужно снять выделение, подробности см. ниже
+- `id` - (optional) *string | number* - необязателен, идентификатор задачи, у которой нужно снять выделение, см. детали
 
 ### Example
 
@@ -36,11 +36,10 @@ gantt.unselectTask(); /*!*/
 
 ### Details
 
-Этот метод вызывает событие [onTaskUnselected](api/event/ontaskunselected.md).
+Метод вызывает событие [onTaskUnselected](api/event/ontaskunselected.md).
 
-Когда активна [множественный выбор задач](guides/multiselection.md) и выбрано несколько задач, необходимо передать id задачи, которую нужно снять с выделения, в качестве параметра.
+В случае включения [множественного выделения задач](guides/multiselection.md) и если выделено несколько задач, необходимо передать в качестве параметра идентификатор задачи, из которой нужно снять выделение.
 
 ### Related API
 - [selectTask](api/method/selecttask.md)
 - [getSelectedId](api/method/getselectedid.md)
-

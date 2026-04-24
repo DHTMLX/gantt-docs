@@ -1,23 +1,23 @@
 ---
 sidebar_label: getWorkHours
 title: getWorkHours method
-description: "지정한 날짜의 근무 시간을 제공합니다."
+description: "지정된 날짜의 근무 시간을 반환합니다"
 ---
 
 # getWorkHours
 
 ### Description
 
-@short: 지정한 날짜의 근무 시간을 제공합니다.
+@short: 지정된 날짜의 근무 시간을 반환합니다
 
 @signature: getWorkHours: (date: Date) =\> any[]
 
 ### Parameters
 
-- `date` - (required) *Date* - 확인할 날짜
+- `date` - (필수) *Date* - 확인할 날짜
 
 ### Returns
-- ` hours` - (array) - 해당 날짜의 근무 시간
+- ` hours` - (배열) - 해당 날짜의 작업 시간 구간
 
 ### Example
 

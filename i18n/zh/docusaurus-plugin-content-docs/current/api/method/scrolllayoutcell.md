@@ -1,22 +1,22 @@
 ---
 sidebar_label: scrollLayoutCell
-title: scrollLayoutCell method
-description: "将布局视图移动到指定位置"
+title: scrollLayoutCell 方法
+description: "将布局视图滚动到指定位置"
 ---
 
 # scrollLayoutCell
 
 ### Description
 
-@short: 将布局视图移动到指定位置
+@short: 将布局视图滚动到指定位置
 
 @signature: scrollLayoutCell: (name: string, x: number | null, y: number | null) =\> void
 
 ### Parameters
 
-- `name` - (required) *string* - 布局视图的名称
-- `x` - (required) *number | null* -    可选，水平滚动值，或为 'null'（如果不想更改水平位置）
-- `y` - (required) *number | null* -    可选，垂直滚动值，或为 'null'（如果不想更改垂直位置）
+- `name` - (必填) *string* - 布局视图的名称
+- `x` - (必填) *number | null* - 可选，水平滚动的值，或 'null'（如果滚动位置不应改变）
+- `y` - (必填) *number | null* - 可选，垂直滚动的值，或 'null'（如果滚动位置不应改变）
 
 ### Example
 
@@ -34,9 +34,8 @@ gantt.scrollLayoutCell("resourceTimeline", 100, 100);
 ### Details
 
 :::note
-Sample: [用于访问布局单元视图并控制其滚动的公共方法](https://snippet.dhtmlx.com/0v4mmoxu)
+sample: [用于获取布局单元格视图并滚动它们的公开方法](https://snippet.dhtmlx.com/0v4mmoxu)
 :::
 
 ### Related API
 - [scrollTo](api/method/scrollto.md)
-

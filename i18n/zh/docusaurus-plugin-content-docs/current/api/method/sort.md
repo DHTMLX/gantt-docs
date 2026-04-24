@@ -1,28 +1,28 @@
 ---
 sidebar_label: sort
-title: sort method
-description: "在grid中对任务进行排序"
+title: 排序方法
+description: "在网格中对任务进行排序"
 ---
 
 # sort
 
 ### Description
 
-@short: 在grid中对任务进行排序
+@short: 将网格中的任务排序
 
 @signature: sort: (field: string | ((task1: Task, task2: Task) => 1 | 0 | -1), desc?: boolean, parent?: string | number, silent?: boolean) =\> void
 
 ### Parameters
 
-- `field` - (required) *string | SortTasks* -        用于排序grid的列名，或自定义排序函数
-- `desc` - (optional) *boolean* - 设置排序顺序:<i>true</i>表示降序，<i>false</i>表示升序<br>，默认值为<i>false</i>
-- `parent` - (optional) *string | number* - 父任务的ID。如果只想对指定父任务分支内的任务进行排序，请使用此参数。
-- `silent` - (optional) *boolean* - 决定在重新排序项目后是否触发渲染
+- `field`	- (required) *string | SortTasks*	- 将要按照其排序的列名，或一个自定义排序函数
+- `desc`	-	(optional) *boolean* - 指定排序方向：<i>true</i> 表示降序，<i>false</i> 表示升序。默认值为 <i>false</i>
+- `parent` -	(optional) *string | number*	- 父任务的 ID。如果只想在指定父级的分支中排序任务，请指定该参数。
+- `silent` -	(optional) *boolean*	- 指定重排序后是否应触发渲染
 
 ### Example
 
 ~~~jsx
-<input type='button'  value='按任务名称排序' onclick='sortByName()'>
+<input type='button'  value='Sort by task name' onclick='sortByName()'>
 <script>
     var n_direction = false;
     function sortByName(){
@@ -38,15 +38,15 @@ description: "在grid中对任务进行排序"
 ~~~
 
 ### Related samples
-- [Using sorting methods](https://docs.dhtmlx.com/gantt/samples/07_grid/05_sort_api.html)
+- [使用排序方法](https://docs.dhtmlx.com/gantt/samples/07_grid/05_sort_api.html)
 
 ### Details
 
-自定义排序函数接收**Task**对象作为参数，应该返回一个数字（1、0或-1）。
+自定义排序函数将把 **Task** 对象作为参数传入，且应返回一个数字（1、0 或 -1）
 
-使用自定义排序函数时，**parent**参数会被忽略。[查看示例](https://snippet.dhtmlx.com/d8li6kq2)。
+**parent** 参数在应用排序的自定义函数时将被忽略。[查看示例](https://snippet.dhtmlx.com/d8li6kq2)。
 
-调用**sort()**方法时，Gantt不会自动添加任何排序图标（例如表示排序方向的箭头）。如果需要显示排序图标，可以手动添加。[查看示例](https://snippet.dhtmlx.com/5bjavofk)。
+当使用 **sort()** 方法时，Gantt 不会添加任何排序图标（显示排序方向的箭头）。如果需要渲染排序图标，可以手动添加。[查看示例](https://snippet.dhtmlx.com/5bjavofk)。
 
 ### Related API
 - [sort](api/config/sort.md)
@@ -54,4 +54,3 @@ description: "在grid中对任务进行排序"
 
 ### Related Guides
 - [排序列](guides/sorting.md)
-

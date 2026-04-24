@@ -1,22 +1,23 @@
 ---
 sidebar_label: getSubtaskDuration
-title: getSubtaskDuration method
-description: "berechnet die Gesamtdauer der innerhalb eines Projekts oder einer anderen Aufgabe verschachtelten Tasks."
+title: getSubtaskDuration Methode
+description: "Berechnet die kombinierte Dauer von Aufgaben, die in ein Projekt oder eine andere Aufgabe verschachtelt sind."
 ---
 
 # getSubtaskDuration
 
 ### Description
 
-@short: Berechnet die Gesamtdauer der innerhalb eines Projekts oder einer anderen Aufgabe verschachtelten Tasks.
+@short: Berechnet die kombinierte Dauer von Aufgaben, die in ein Projekt oder eine andere Aufgabe verschachtelt sind.
 
 @signature: getSubtaskDuration: (task_id?: string | number) =\> number
 
 ### Parameters
-- `task_id` - (optional) *string | number* - die ID der Aufgabe; falls ausgelassen, wird standardmäßig root_id verwendet
+
+- `task_id` - (optional) *string | number*	- die Aufgaben-ID, [root_id](api/config/root_id.md) wird verwendet, falls sie nicht angegeben ist
 
 ### Returns
-- ` duration` - (number) - die Gesamtdauer der verschachtelten Tasks
+- ` duration` - (number) - Gesamtdauer der verschachtelten Aufgaben
 
 ### Example
 
@@ -35,16 +36,15 @@ console.log(formatter.format(duration));
 
 ### Details
 
-Diese Methode berechnet die Gesamtdauer aller Tasks, die innerhalb eines Projekts oder einer anderen Aufgabe verschachtelt sind.
+Berechnet die kombinierte Dauer von Aufgaben, die in ein Projekt oder eine andere Aufgabe verschachtelt sind.
 
-Beachten Sie, dass Tasks vom [Projekt-Typ](api/config/types.md) von dieser Gesamtdauer ausgeschlossen sind.
+Aufgaben des [Projekttyp](api/config/types.md) werden nicht in die Gesamtdauer eingerechnet.
 
-Der zurückgegebene Wert wird in den in der Konfiguration definierten [Dauereinheiten](api/config/duration_unit.md) angegeben.
+Der Rückgabewert wird gemäß der Konfiguration in [Dauer-Einheiten](api/config/duration_unit.md) berechnet.
 
 ### Related API
 - [getSubtaskDates](api/method/getsubtaskdates.md)
 - [getTaskBy](api/method/gettaskby.md)
 
 ### Related Guides
-- ["Formatters-Erweiterung"](guides/formatters-ext.md#durationformatter)
-
+- [Formatters Extension](guides/formatters-ext.md#durationformatter)

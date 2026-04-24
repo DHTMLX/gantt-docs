@@ -1,16 +1,16 @@
 ---
 sidebar_label: resetLayout
-title: resetLayout method
-description: "현재 레이아웃 구성에 따라 Gantt 레이아웃을 재구성합니다"
+title: resetLayout 메서드
+description: "레이아웃 구성의 현재 값을 사용하여 Gantt 레이아웃을 재구성합니다"
 ---
 
 # resetLayout
 
 ### Description
 
-@short: 현재 레이아웃 구성에 따라 Gantt 레이아웃을 재구성합니다
+@short: 레이아웃 구성의 현재 값을 사용하여 Gantt 레이아웃을 재구성합니다
 
-@signature: resetLayout: () =\> void
+@signature: resetLayout: () => void
 
 ### Example
 
@@ -38,8 +38,8 @@ gantt.resetLayout();
 ### Details
 
 :::note
- 이 메서드는 [addTaskLayer](api/method/addtasklayer.md) 및 [addLinkLayer](api/method/addlinklayer.md) 메서드를 사용하여 타임라인 영역에 추가된 사용자 정의 레이어를 모두 제거합니다. 
-따라서 **gantt.resetLayout** 호출 후에는 이러한 사용자 정의 레이어를 다시 설정하여 페이지에 표시되도록 해야 합니다. 
+이 메서드는 [addTaskLayer](api/method/addtasklayer.md) 및 [addLinkLayer](api/method/addlinklayer.md) 메서드를 통해 타임라인 영역에 추가된 사용자 정의 레이어를 제거합니다.
+따라서 페이지에 사용자 정의 레이어가 표시되려면 **gantt.resetLayout** 메서드를 호출한 후에 이를 다시 정의해야 합니다.
 :::
 
 ### Related API

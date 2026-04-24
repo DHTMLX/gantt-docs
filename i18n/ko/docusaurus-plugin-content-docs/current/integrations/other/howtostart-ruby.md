@@ -1,74 +1,73 @@
+--- 
+title: "Ruby on Rails와 함께하는 dhtmlxGantt" 
+sidebar_label: "루비 온 레일스" 
 ---
-title: "dhtmlxGantt와 Ruby on Rails 연동하기"
-sidebar_label: "Ruby on Rails"
----
 
-# dhtmlxGantt와 Ruby on Rails 연동하기
+# Ruby on Rails와 함께하는 dhtmlxGantt
 
-이 문서에서는 [Ruby on Rails](https://rubyonrails.org/) 백엔드를 사용하여 Gantt 차트를 만드는 과정을 안내합니다. 예제에서는 Ruby 2.4.1, Rails 5.1.3, 그리고 MySQL을 사용합니다. 이 사전 조건들이 이미 설치되어 있다고 가정합니다. 만약 설치되어 있지 않다면, [공식 튜토리얼](https://guides.rubyonrails.org/index.html)을 먼저 참고하시기 바랍니다.
+이 문서에서는 [Ruby on Rails](https://rubyonrails.org/) 백엔드를 사용하는 간트 차트 생성 방법을 배웁니다.  
+이 애플리케이션을 구현하기 위해 Ruby 2.4.1, Rails 5.1.3 및 MySQL을 사용할 예정입니다. 이 튜토리얼은 모든 전제 조건이 이미 설치되어 있다고 가정합니다.  
+그렇지 않으면 먼저 [공식 튜토리얼](https://guides.rubyonrails.org/index.html)을 방문해 보십시오.
 
-다른 기술 스택을 사용 중이라면, 아래의 통합 옵션을 참고할 수 있습니다:
+다른 기술을 사용하는 경우 아래의 사용 가능한 통합 변형 목록을 확인하십시오:
 
-- [dhtmlxGantt와 ASP.NET Core 사용하기](integrations/dotnet/howtostart-dotnet-core.md)
-- [dhtmlxGantt와 ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
-- [dhtmlxGantt와 Node.js 연동하기](integrations/node/howtostart-nodejs.md)
-- [dhtmlxGantt와 Python](integrations/other/howtostart-python.md)
-- [dhtmlxGantt와 PHP: Laravel 연동](integrations/php/howtostart-php-laravel.md)
-- [dhtmlxGantt와 PHP:Slim 연동하기](integrations/php/howtostart-php-slim4.md)
-- [dhtmlxGantt와 Salesforce LWC 연동하기](integrations/salesforce/howtostart-salesforce.md)
+- [ASP.NET Core와 함께하는 dhtmlxGantt](integrations/dotnet/howtostart-dotnet-core.md)
+- [ASP.NET MVC와 함께하는 dhtmlxGantt](integrations/dotnet/howtostart-dotnet.md)
+- [Node.js와 함께하는 dhtmlxGantt](integrations/node/howtostart-nodejs.md)
+- [Python과 함께하는 dhtmlxGantt](integrations/other/howtostart-python.md)
+- [PHP: Laravel과 함께하는 dhtmlxGantt](integrations/php/howtostart-php-laravel.md)
+- [PHP:Slim과 함께하는 dhtmlxGantt](integrations/php/howtostart-php-slim4.md)
+- [Salesforce LWC와 함께하는 dhtmlxGantt](integrations/salesforce/howtostart-salesforce.md)
 
-데모는 GitHub에서도 제공됩니다: [https://github.com/DHTMLX/gantt-howto-rails](https://github.com/DHTMLX/gantt-howto-rails).
+GitHub의 [데모](https://github.com/DHTMLX/gantt-howto-rails)도 살펴보세요.
 
-## 1단계. 프로젝트 생성
+## Step 1. 프로젝트 생성
 
-새 프로젝트를 생성하려면 터미널에서 다음 명령어를 실행하세요:
+새 프로젝트를 추가하려면 터미널에서 다음 명령을 실행하세요:
 
 ~~~js
 rails new gantt-app -d mysql
 ~~~
 
-## 2단계. 페이지에 Gantt 추가하기
+## Step 2. 페이지에 Gantt 추가하기
 
-먼저 컨트롤러와 앱의 기본 페이지를 생성합니다. 애플리케이션 폴더로 이동한 뒤, *index* 액션이 포함된 새로운 컨트롤러를 생성하세요:
+먼저 애플리케이션용 컨트롤러와 기본 페이지를 생성하는 것으로 시작합니다.  
+응용 프로그램 폴더로 이동하고 *index* 액션이 있는 새 컨트롤러를 생성합니다:
 
 ~~~js
 cd gantt-app
 rails generate controller gantt index
 ~~~
 
-새 파일이 생성되었다는 메시지가 표시됩니다.
+출력 내용에 새 파일이 생성되었음을 확인하는 메시지가 표시되어야 합니다.
 
 ### 기본 라우트 설정
 
-라우팅을 설정하려면 *config/routes.rb* 파일을 열고, 기본 라우트를 새 컨트롤러의 "index" 액션을 가리키도록 변경하세요:
+라우팅 구성을 위해 파일 *config/routes.rb*(를) 열고 기본 경로를 새 컨트롤러의 "index" 액션으로 변경합니다:
 
-**config/routes.rb**
-~~~js
+~~~js title="config/routes.rb"
 Rails.application.routes.draw do
   root :to => "gantt#index"
 end
 ~~~
 
-이제 서버를 실행해보세요:
+그 후 명령줄에서 서버를 실행하여 테스트할 수 있습니다:
 
 ~~~js
 rails server
 ~~~
 
-그리고 브라우저에서 *http://localhost:3000/* 을 엽니다. 아래와 같이 빈 페이지가 나타납니다:
+브라우저에서 *http://localhost:3000/* 을 열면 다음과 같은 결과가 표시되어야 합니다:
 
 ![how_to_start_rails_blank_page](/img/how_to_start_rails_blank_page.png)
 
-앱이 실행 중이고 기본 페이지가 준비되었으니, 다음 단계는 Gantt 차트를 추가하는 것입니다.
+따라서 앱이 작동하고 기본 페이지가 표시되며 이제 Gantt 차트를 추가할 수 있습니다.
 
 ### View에 Gantt 추가하기
 
-이제 페이지에 Gantt 차트를 삽입할 차례입니다.
+이제 페이지에 Gantt 차트를 추가할 준비가 되었습니다. 레이아웃 페이지를 열어 *head* 태그에 yield를 추가합니다. 이를 통해 페이지에 dhtmlxgantt 파일을 포함시킬 수 있습니다:
 
-레이아웃 파일을 열고 *head* 태그 내부에 yield를 추가하세요. 이렇게 하면 dhtmlxGantt 파일을 포함할 수 있습니다:
-
-**app/views/layouts/application.html.erb**
-~~~html
+~~~html title="app/views/layouts/application.html.erb"
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,10 +85,9 @@ rails server
 </html>
 ~~~
 
-다음으로, *gantt/index* 뷰를 열고 Gantt 차트를 추가하세요:
+그다음 *gantt/index* 뷰로 이동하여 거기에 Gantt 차트를 추가합니다:
 
-**app/views/gantt/index.html.erb**
-~~~js
+~~~js title="app/views/gantt/index.html.erb"
 ( content_for :head do )
     (= stylesheet_link_tag 'https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css' )
     (= javascript_include_tag 'https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js' )
@@ -102,20 +100,19 @@ rails server
 </script>
 ~~~
 
-여기서는 dhtmlxGantt 파일을 [CDN](guides/cdn-links-list.md)에서 불러옵니다. 개발 시에는 다운로드 패키지에 포함된 소스 파일을 사용할 수도 있습니다.
+CDN에서 dhtmlxGantt 파일을 사용하도록 설정했습니다. 로컬에서 작업하려면 다운로드 패키지에 포함된 가독 가능한 버전의 소스 코드를 사용하는 것이 좋습니다.
 
-이제 *http://localhost:3000/* 을 다시 열어보세요. 다음과 같은 화면이 나타납니다:
+그런 다음 현재 결과를 확인해 보겠습니다. 브라우저에서 *http://localhost:3000/* 를 열면 데이터베이스의 작업과 링크로 채워진 간트 차트를 볼 수 있습니다. 다만 변경 사항은 아직 데이터베이스에 저장되지 않습니다. 다음 단계에서 저장 기능을 구현합니다.
 
 ![how_to_start_rails_empty_gantt](/img/how_to_start_rails_empty_gantt.png)
 
-이제 작업을 추가 및 편집할 수 있는 Gantt 차트가 나타납니다. 아직 저장 기능은 구현되지 않았으므로, 다음 단계에서 모델을 생성합니다.
+이제 작업을 추가하고 수정할 수 있는 Gantt 차트를 얻었지만 저장 기능이 없습니다. 이를 제공하기 위해 모델을 생성해야 합니다.
 
-## 3단계. 모델 생성하기
+## Step 3. 모델 생성
 
-MySQL을 사용하므로, *config/database.yml*에서 연결 설정이 올바른지 확인하세요. 예시:
+현재 MySQL을 사용하므로 *config/database.yml*에 올바른 연결 설정이 있는지 확인합니다. 예시는 다음과 같습니다:
 
-**config/database.yml**
-~~~js
+~~~js title="config/database.yml"
 development:
   adapter: mysql2
   encoding: utf8
@@ -125,9 +122,9 @@ development:
   password: 
 ~~~
 
-이제 [tasks와 links](guides/loading.md#standarddatabasestructure)를 위한 모델을 생성해야 합니다.
+이제 [Task](guides/loading.md#databasestructure)와 [Link](guides/loading.md#databasestructure) 모델을 생성해야 합니다.
 
-Task 모델을 생성하려면 다음 명령어를 실행하세요:
+Task 모델을 만들려면 작업 속성을 포함하는 명령을 실행합니다:
 
 ~~~js
 rails generate model Task 
@@ -138,7 +135,7 @@ rails generate model Task
     progress:decimal
 ~~~
 
-마찬가지로, Link 모델을 아래 명령어로 생성하세요:
+링크(Link) 모델은 비슷하지만 더 짧은 명령을 사용합니다:
 
 ~~~js
 rails generate model Link 
@@ -147,27 +144,24 @@ rails generate model Link
     link_type:string:limit1
 ~~~
 
-dhtmlxGantt의 link 객체는 관계 유형(예: start-to-start, finish-to-finish 등)을 지정하는 <b>[type](guides/loading.md#standarddatabasestructure)</b> 속성이 필요합니다.
+참고로 dhtmlxgantt 링크 객체에는 <b>[type](guides/loading.md#databasestructure)</b>이라는 속성이 필요합니다. 이는 관계의 유형(시작-시작, 종료-종료 등)을 저장합니다. 이 속성은 ActiveRecord에서 이미 예약되어 있기 때문에 모델에 추가할 수 없으므로, 이 속성의 이름은 <b>link_type</b>으로 지정하고 컨트롤러에서 필요한 매핑을 수행합니다.  
+Task 객체와 Link 객체에 대해 필수 및 선택 속성의 전체 목록은 각각 [Task object](guides/loading.md#task_properties)와 [Link object](guides/loading.md#link_properties)에서 확인할 수 있습니다.
 
-하지만 ActiveRecord에서 "<b>type</b>"은 예약어이므로, 여기서는 <b>link_type</b>으로 이름을 지정하고 컨트롤러에서 매핑 처리를 합니다.
-
-필수 및 선택 속성 전체 목록은 [Task object](guides/loading.md#task_properties) 및 [Link object](guides/loading.md#link_properties) 문서를 참고하세요.
-
-이제 다음 명령어로 데이터베이스를 마이그레이션하세요:
+그다음 데이터베이스를 업데이트하기 위한 마이그레이션을 실행합니다:
 
 ~~~js
 rake db:migrate
 ~~~
 
-여기서 테스트 데이터를 추가해봅니다:
+여기에서 테스트 데이터를 몇 가지 추가해 보겠습니다:
 
-1. Rails 콘솔을 엽니다:
+1. Rails 콘솔을 열려면 다음을 실행합니다:
 
 ~~~js
 rails c
 ~~~
 
-2. 몇 개의 작업과 링크를 추가합니다:
+2. 다음과 같이 두 개의 작업(Task) 및 링크를 추가합니다:
 
 ~~~js
 Task.create :text=>"Task 1", :start_date=>"2015-10-25",  :duration=>2, :progress=>0;
@@ -175,18 +169,16 @@ Task.create :text=>"Task 2", :start_date=>"2015-10-27",  :duration=>3, :progress
 Link.create :source=>1, :target=>2, :link_type=>"0";
 ~~~
 
-3. "exit"을 입력해 콘솔을 종료합니다.
+3. 콘솔을 닫으려면 "exit"를 입력합니다.
 
-다음은 컨트롤러에서 데이터 로딩 및 저장 기능을 구현합니다.
+다음으로 차트에서 데이터 로딩 및 저장을 컨트롤러의 도움으로 구현합니다.
 
-## 4단계. 데이터 로딩하기
+## Step 4. 데이터 로딩
 
-모델과 마이그레이션이 준비되었으니, 데이터베이스의 데이터를 Gantt 차트에 로드할 수 있습니다.
+모델 클래스를 생성하고 마이그레이션을 실행한 후 데이터베이스의 데이터를 gantt로 로드할 수 있습니다.  
+dhtmlxGantt는 [JSON 형식](guides/supported-data-formats.md)의 데이터를 기대하므로 먼저 *GanttController*에 gantt 데이터를 읽고 형식화한 다음 출력하는 새 액션을 추가합니다:
 
-dhtmlxGantt는 [JSON 형식](guides/supported-data-formats.md)의 데이터를 기대하므로, *GanttController*에 데이터를 읽고 포맷하여 출력하는 새 액션을 추가합니다:
-
-**app/controllers/gantt_controller.rb**
-~~~js
+~~~js title="app/controllers/gantt_controller.rb"
 class GanttController < ApplicationController
   def index
   end
@@ -216,10 +208,9 @@ class GanttController < ApplicationController
 end
 ~~~
 
-이 액션을 위한 라우트를 *routes.rb*에 추가하세요:
+이 액션에 대한 라우트를 *routes.rb*에 추가합니다:
 
-**config/routes.rb**
-~~~js
+~~~js title="config/routes.rb"
 Rails.application.routes.draw do
   root :to => "gantt#index"
 
@@ -229,28 +220,27 @@ Rails.application.routes.draw do
 end
 ~~~
 
-클라이언트 측에서는 [gantt.load](api/method/load.md) 메서드를 사용해 이 액션을 호출합니다:
+그리고 클라이언트 측에서 [gantt.load](api/method/load.md) 메서드를 사용해 이 액션을 호출합니다:
 
-**app/views/gantt/index.html.erb**
-~~~js
+~~~js title="app/views/gantt/index.html.erb"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";/*!*/
 
 gantt.init("gantt_here");
 gantt.load("/api/data");/*!*/
 ~~~
 
-[date_format](api/config/date_format.md) 설정은 서버에서 받아오는 날짜(예: Task의 <b>start_date</b>)의 포맷을 지정하며, 이는 Rails의 날짜 포맷과 일치해야 합니다.
+date_format 구성은 서버에서 오는 형식의 날짜들( Task의 <b>start_date</b>)을 지정합니다.  
+서버를 실행하고 브라우저에서 *http://localhost:3000/* 을 열면 데이터베이스의 작업과 링크로 채워진 간트 차트를 볼 수 있습니다. 다만 변경 내용은 데이터베이스로 되돌려지지 않습니다. 다음 단계에서 이를 해결합니다.
 
-서버를 시작하고 *http://localhost:3000/* 을 열면, 데이터베이스에 저장된 작업과 링크가 Gantt 차트에 표시됩니다. 하지만 아직 변경 사항을 저장할 수는 없습니다. 다음 단계에서 이를 처리합니다.
+## Step 5. 변경 사항 저장
 
-## 5단계. 변경사항 저장하기
+dhtmlxGantt는 사용자가 만든 모든 변경 사항을 백엔드의 RESTful API로 전송할 수 있으며, 그곳에서 데이터베이스에 저장될 수 있습니다. 프로토콜의 세부 정보는 [여기](guides/server-side.md#technique)를 확인하십시오.
 
-dhtmlxGantt는 사용자의 모든 변경 사항을 백엔드의 RESTful API로 전송하여 데이터베이스에 저장할 수 있습니다. 이 프로토콜의 자세한 내용은 [여기](guides/server-side.md#technique)에서 확인할 수 있습니다.
+이제 데이터 저장을 구현하는 방법은 다음과 같습니다:
 
-저장 기능을 활성화하려면, 먼저 클라이언트에서 변경 사항 전송을 활성화하세요:
+먼저 클라이언트에서 변경 내용을 게시하도록 설정합니다:
 
-**app/views/gantt/index.html.erb**
-~~~js
+~~~js title="app/views/gantt/index.html.erb"
 gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
 
 gantt.init("gantt_here");
@@ -261,22 +251,21 @@ dp.init(gantt);/*!*/
 dp.setTransactionMode("REST");/*!*/
 ~~~
 
-다음으로, Tasks와 Links 각각에 대해 컨트롤러를 추가하고 필요한 액션을 구현합니다.
+그다음 Task용 컨트롤러와 Link용 컨트롤러 두 개를 추가하고 필요한 모든 액션을 구현합니다.
 
 ### Task 컨트롤러 생성
 
-Task용 컨트롤러를 생성합니다:
+Tasks용 컨트롤러부터 시작합니다:
 
 ~~~js
 rails generate controller task --no-helper --no-assets --no-view-specs
 ~~~
 
-이 컨트롤러는 뷰가 필요 없으므로 *--no-* 옵션으로 불필요한 파일 생성을 방지합니다.
+이 컨트롤러는 뷰를 가지지 않으므로 필요하지 않은 파일 생성을 방지하기 위해 *--no-* 플래그를 사용했습니다.
 
-다음과 같이 create, update, delete 액션을 구현하세요:
+다음으로 작업 생성, 업데이트 및 삭제를 위한 액션을 구현합니다:
 
-**app/controllers/task_controller.rb**
-~~~js
+~~~js title="app/controllers/task_controller.rb"
 class TaskController < ApplicationController
     protect_from_forgery
  
@@ -309,18 +298,17 @@ class TaskController < ApplicationController
         render :json => {:action => "deleted"}
     end
 end
-~~~
+~~~ 
 
-이 코드에 대한 참고 사항:
+이 코드에 관한 몇 가지 주의사항:
 
-- get 액션은 필요하지 않습니다. 모든 데이터는 이미 *gantt#data*에서 로드됩니다.
-- *progress* 속성은 클라이언트에서 기본적으로 초기화되지 않을 수 있으므로, 여기서 기본값을 할당합니다. 또는 모델 클래스에서(예: [migration](https://api.rubyonrails.org/classes/ActiveRecord/Migration.html) 이용) 기본값을 지정할 수도 있습니다.
-- 새 항목을 생성할 때는, 액션이 새로 삽입된 레코드의 데이터베이스 ID를 클라이언트에 반환합니다.
+- 모든 데이터가 이미 *gantt#data*에서 로드되므로 get 액션은 필요하지 않습니다.
+- *progress* 속성은 클라이언트에서 기본적으로 초기화되지 않을 수 있으므로 여기에서 기본값을 제공해야 합니다. 필요하다면 모델 클래스에서 기본값을 정의할 수도 있습니다(예: [migration](https://api.rubyonrails.org/classes/ActiveRecord/Migration.html)).
+- 새 항목을 생성하는 액션은 새로 삽입된 레코드의 데이터베이스 ID를 클라이언트로 반환해야 합니다.
 
-마지막으로, Gantt 차트에서 작업을 조회, 생성, 수정, 삭제할 수 있도록 라우트를 추가합니다:
+그런 다음 구성의 새 라우트를 추가하고 사용자가 간트 차트에서 작업을 조회/생성/수정/삭제할 수 있도록 합니다:
 
-**config/routes.rb**
-~~~js
+~~~js title="config/routes.rb"
 Rails.application.routes.draw do
   root :to => "gantt#index"
 
@@ -334,20 +322,19 @@ Rails.application.routes.draw do
 end
 ~~~
 
-다음 단계에서는 링크에 대해서도 동일한 기능을 구현합니다.
+이제 Links에 대해서도 동일하게 구성합니다.
 
-### Link 컨트롤러 생성하기
+### Link 컨트롤러 생성
 
-다음 명령어를 사용하여 Link 컨트롤러를 생성하세요:
+Link 컨트롤러를 생성합니다:
 
 ~~~js
 rails generate controller link --no-helper --no-assets --no-view-specs
 ~~~
 
-아래는 구현 예시입니다:
+구현 예시는 다음과 같을 수 있습니다:
 
-**app/controllers/link_controller.rb**
-~~~js
+~~~js title="app/controllers/link_controller.rb"
 class LinkController < ApplicationController
     protect_from_forgery
  
@@ -378,10 +365,9 @@ class LinkController < ApplicationController
 end
 ~~~
 
-다음으로, 새로운 액션에 대한 라우트를 추가합니다:
+그런 다음 새로운 액션에 대한 라우트를 추가합니다:
 
-**config/routes.rb**
-~~~js
+~~~js title="config/routes.rb"
 Rails.application.routes.draw do
   root :to => "gantt#index"
 
@@ -399,32 +385,31 @@ Rails.application.routes.draw do
 end
 ~~~
 
-이렇게 하면 설정이 완료됩니다. 애플리케이션을 실행하면 Rails와 MySQL로 백엔드가 연결된 인터랙티브 간트 차트를 사용할 수 있습니다:
+그게 전부입니다. 지금 애플리케이션을 실행하면 Rails와 MySQL 백엔드를 사용하는 인터랙티브한 간트 차트를 얻을 수 있습니다:
 
 ![how_to_start_rails_complete](/img/how_to_start_rails_complete.png)
 
-dhtmlxGantt의 더 많은 기능은 [가이드](guides.md)를 참고하세요.
+더 많은 기능에 대해서는 [가이드](guides.md) 페이지를 확인해 보세요.
 
-## 작업 순서 저장하기 {#storingtheorderoftasks}
+## 작업 순서 저장 {#storingtheorderoftasks}
 
-클라이언트 측 간트에서는 [작업 순서 변경](guides/reordering-tasks.md)을 드래그 앤 드롭으로 지원합니다. 이 기능을 사용할 경우, 작업 순서를 데이터베이스에 저장해야 합니다.
-개요는 [여기](guides/server-side.md#storingtheorderoftasks)에서 확인할 수 있습니다.
+클라이언트 측의 간트 차트는 드래그 앤 드롭으로 [작업 재정렬](guides/reordering-tasks.md)을 지원합니다. 이 기능을 사용하면 데이터베이스에 이 순서를 저장해야 합니다.  
+[여기에서 일반적인 설명을 확인할 수 있습니다](guides/server-side.md#storingtheorderoftasks).
 
 이제 이 기능을 앱에 추가해 보겠습니다.
 
-### 클라이언트에서 작업 순서 변경 활성화
+### 클라이언트에서 작업 재정렬 활성화
 
-먼저, *Index* 뷰의 gantt 설정을 업데이트하여 UI에서 작업 순서 변경을 활성화하세요:
+우선 사용자가 UI에서 작업 순서를 변경할 수 있도록 해야 합니다. *Index* 뷰를 열고 gantt 구성 설정을 업데이트합니다:
 
-**app/views/gantt/index.html.erb**
-~~~js
+~~~js title="app/views/gantt/index.html.erb"
 gantt.config.order_branch = true;/*!*/
 gantt.config.order_branch_free = true;/*!*/
 
 gantt.init("gantt_here");
 ~~~
 
-이제 백엔드도 변경 사항을 반영해야 합니다. 모델에 순서를 저장할 필드가 필요하며, *sortorder*라는 이름으로 추가합니다. 모델 선언은 다음과 같이 변경할 수 있습니다:
+이 변경을 백엔드에도 반영해야 합니다. 순서 정보를 모델에 추가해야 하며 이름은 *sortorder*로 하겠습니다. 업데이트된 모델 선언은 다음과 같을 수 있습니다:
 
 ~~~js
 rails generate model Task 
@@ -436,7 +421,7 @@ rails generate model Task
     sortorder:integer  /*!*/
 ~~~
 
-또는 기존 모델에 새 속성을 추가할 수도 있습니다:
+또는 기존 모델에 새 속성을 추가할 수 있습니다:
 
 1. 마이그레이션 생성:
 
@@ -444,7 +429,7 @@ rails generate model Task
 rails generate migration add_sortorder_to_tasks sortorder:integer
 ~~~
 
-2. 생성된 마이그레이션 파일을 수정하여 "sortorder" 컬럼의 기본값을 설정하세요:
+2. 생성된 마이그레이션을 열고 "sortorder" 열에 기본값을 추가합니다:
 
 ~~~js
 class AddSortorderToTasks < ActiveRecord::Migration[5.1]
@@ -454,18 +439,17 @@ class AddSortorderToTasks < ActiveRecord::Migration[5.1]
 end
 ~~~
 
-마이그레이션을 실행합니다:
+그리고 마이그레이션을 실행합니다:
 
 ~~~js
 rake db:migrate
 ~~~
 
-다음으로 컨트롤러의 CRUD 동작을 업데이트하세요:
+그다음 컨트롤러의 CRUD를 업데이트합니다:
 
-- *data* 액션에서 `sortorder` 컬럼 기준으로 작업을 정렬하여 반환합니다:
+- *data* 액션은 `sortorder` 열로 정렬된 작업을 반환해야 합니다:
 
-**app/controllers/gantt_controller.rb**
-~~~js
+~~~js title="app/controllers/gantt_controller.rb"
 class GanttController < ApplicationController
   def index
   end
@@ -495,10 +479,9 @@ class GanttController < ApplicationController
 end
 ~~~
 
-- 새 작업을 추가할 때는 초기 `sortorder` 값을 할당하세요:
+- 새로 추가된 작업은 초기 값으로 `sortorder`를 받아야 합니다:
 
-**app/controllers/task_controller.rb**
-~~~js
+~~~js title="app/controllers/task_controller.rb"
 class TaskController < ApplicationController
     ...
     def add
@@ -520,10 +503,9 @@ class TaskController < ApplicationController
 end
 ~~~
 
-- 마지막으로, 사용자가 작업 순서를 변경하면 순서도 업데이트합니다:
+- 마지막으로 사용자가 작업의 순서를 재정렬하면 작업 순서를 [업데이트해야 합니다](guides/server-side.md#storingtheorderoftasks):
 
-**app/controllers/task_controller.rb**
-~~~js
+~~~js title="app/controllers/task_controller.rb"
 class TaskController < ApplicationController
     protect_from_forgery
  
@@ -547,10 +529,9 @@ class TaskController < ApplicationController
 end
 ~~~
 
-Task.updateOrder 구현 예시는 다음과 같습니다:
+Task.updateOrder 구현:
 
-**app/models/task.rb**
-~~~js
+~~~js title="app/models/task.rb"
 class Task < ApplicationRecord
     def self.updateOrder(taskId, target)
         nextTask = false
@@ -585,15 +566,14 @@ end
 
 ## 애플리케이션 보안
 
-Gantt 자체에는 SQL 인젝션, XSS, CSRF 공격과 같은 일반적인 위협에 대한 보호 기능이 내장되어 있지 않습니다. 백엔드 구현의 보안은 개발자가 책임져야 합니다. 자세한 내용은 [이 문서](guides/app-security.md)를 참고하세요.
+Gantt는 SQL 주입이나 XSS, CSRF 공격 등으로부터 애플리케이션을 안전하게 보호하는 수단을 제공하지 않습니다. 애플리케이션의 보안을 유지하는 책임은 백엔드를 구현하는 개발자에게 있습니다. 자세한 내용은 [해당 문서](guides/app-security.md)를 참고하십시오.
 
 ## 문제 해결
 
-Ruby on Rails와 Gantt를 연동하는 단계를 모두 따라 했는데도 작업이나 링크가 페이지에 표시되지 않는다면, [백엔드 통합 문제 해결](guides/troubleshooting.md)의 가이드를 참고하세요. 일반적인 문제를 진단하는 팁이 포함되어 있습니다.
+위의 단계를 따라 Ruby on Rails와의 Gantt 통합을 구현했는데도 페이지에 작업과 링크가 렌더링되지 않는 경우에는 [Backend 통합 문제 해결](guides/troubleshooting.md)을 참조하시기 바랍니다. 문제의 원인을 식별하는 방법이 설명되어 있습니다.
 
-## 다음 단계
+## What's next
 
-이제 간트 차트가 완전히 동작하므로, 전체 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-rails)에서 확인할 수 있습니다. 프로젝트에 복제하거나 다운로드하여 사용할 수 있습니다.
+이제 완전히 작동하는 간트 차트를 가지게 되었습니다. 전체 코드는 [GitHub](https://github.com/DHTMLX/gantt-howto-rails)에서 확인하거나 복제(Clone) 또는 다운로드하여 프로젝트에 사용할 수 있습니다.
 
-또한 [다양한 간트 기능 가이드](guides.md)나 [다른 백엔드 프레임워크와의 연동 튜토리얼](integrations/howtostart-guides.md)도 살펴보세요.
-
+또한 [가이드](guides.md)에서 간트의 다양한 기능을 확인하거나 다른 백엔드 프레임워크와의 Gantt 통합에 대한 튜토리얼을 확인해 보세요( [integrations/howtostart-guides.md](integrations/howtostart-guides.md) ).

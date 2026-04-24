@@ -1,23 +1,23 @@
 ---
 sidebar_label: isLinkExists
-title: isLinkExists method
-description: "Überprüft, ob der angegebene Link vorhanden ist"
+title: isLinkExists Methode
+description: "Prüft, ob der angegebene Link existiert"
 ---
 
 # isLinkExists
 
 ### Description
 
-@short: Überprüft, ob der angegebene Link vorhanden ist
+@short: Prüft, ob der angegebene Link existiert
 
 @signature: isLinkExists: (id: string | number) =\> boolean
 
 ### Parameters
 
-- `id` - (required) *string | number* -    die Link-ID
+- `id` - (required) *string | number* - die Link-ID
 
 ### Returns
-- ` link` - (boolean) - <i>true</i>, wenn der Link existiert, andernfalls <i>false</i>
+- ` link` - (boolean) - <i>true</i>, falls ein solcher Link existiert. Andernfalls, <i>false</i>
 
 ### Example
 

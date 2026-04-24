@@ -1,33 +1,33 @@
 ---
 sidebar_label: getTaskBy
-title: getTaskBy method
-description: "주어진 기준에 따라 작업을 조회합니다."
+title: getTaskBy 메서드
+description: "지정된 기준으로 작업을 찾습니다"
 ---
 
 # getTaskBy
 
 ### Description
 
-@short: 주어진 기준에 따라 작업을 조회합니다.
+@short: 지정된 기준으로 작업을 찾습니다
 
 @signature: getTaskBy: (propertyName: string | GanttCallback, propertyValue?: string | number | boolean | any[], types?: any) =\> Array\<Task\>
 
 ### Parameters
 
-- `propertyName` - (required) *string | function* -            일치시킬 속성명 또는 필터링 함수
-- `propertyValue` - (optional) *string | number | boolean | array* -        속성에 대해 일치시킬 값
-- `types` - (optional) *object* - 결과에 포함할 작업 유형을 지정하는 객체
+- `propertyName` - (required) *string | function* - 일치시킬 속성의 이름 또는 필터 함수
+- `propertyValue` - (optional) *string | number | boolean | 배열* - 속성 값
+- `types` - (optional) *객체* - 반환될 작업의 타입 정보를 담은 객체
 
 ### Returns
-- ` tasks` - (Array &lt;Task&gt;) - 조건에 맞는 작업 객체들의 배열
+- `tasks` - (Array&lt;Task&gt;) - 태스크 객체의 배열
 
 ### Example
 
 ~~~jsx
-// 기본 검색
+// 간단한 검색
 const userTasks = gantt.getTaskBy("user_id", [5]);
 
-// 필터 함수 사용
+// (task: 객체) => boolean
 let userTasks = gantt.getTaskBy(function(task){
    return task.user_id == 5 || !task.user_id;
 });
@@ -63,5 +63,4 @@ gantt.getTaskBy("progress", 1, { project: true})
 - [getSubtaskDates](api/method/getsubtaskdates.md)
 
 ### Change log
-- **types** 매개변수는 v8.0에 도입되었습니다.
-
+- the **types** 매개변수는 v8.0에 추가되었습니다

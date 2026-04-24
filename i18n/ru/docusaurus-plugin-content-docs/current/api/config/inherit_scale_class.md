@@ -1,14 +1,14 @@
 ---
 sidebar_label: inherit_scale_class
 title: inherit_scale_class config
-description: "контролирует, используют ли подшкалы по умолчанию шаблон scale_cell_class"
+description: "определяет, будут ли подшкалы по умолчанию использовать шаблон scale_cell_class"
 ---
 
 # inherit_scale_class
 
 ### Description
 
-@short: Контролирует, используют ли подшкалы по умолчанию шаблон scale_cell_class
+@short: Определяет, будут ли подшкалы по умолчанию использовать шаблон scale_cell_class
 
 @signature: inherit_scale_class: boolean
 
@@ -19,13 +19,12 @@ gantt.config.inherit_scale_class=true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Details
 
-Эта опция была введена в версии 3.2. <br>
-Ранее подшкалы всегда по умолчанию применяли шаблон [scale_cell_class](api/template/scale_cell_class.md). Включение этой опции, установив значение 'true', восстановит это прежнее поведение.
+Опция добавлена в версии 3.2. 
+В более ранних версиях подшкалы по умолчанию всегда использовали шаблон [scale_cell_class](api/template/scale_cell_class.md). Установка опции в значение 'true' вернет прежнее поведение.
 
 ### Related API
 - [scale_cell_class](api/template/scale_cell_class.md)
-

@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_initial
-title: auto_scheduling_initial config
-description: "определяет, будет ли gantt выполнять автопланирование при загрузке или разборе данных"
+title: конфигурация auto_scheduling_initial
+description: "определяет, будет ли gantt выполнять автопланирование при загрузке/разборе данных"
 ---
 
 # auto_scheduling_initial
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в редакции PRO.
 :::
+
+:::warning
+Свойство устарело в версии v9.1; используйте свойство `schedule_on_parse` из [gantt.config.auto_scheduling](api/config/auto_scheduling.md#schedule_on_parse).
+:::
+
 ### Description
 
-@short: Определяет, будет ли gantt выполнять автопланирование при загрузке или разборе данных
+@short: Определяет, будет ли gantt выполнять автопланирование при загрузке/разборе данных
 
 @signature: auto_scheduling_initial: boolean
 
@@ -22,7 +28,8 @@ gantt.config.auto_scheduling_initial = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
+
 
 ### Related samples
 - [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
@@ -30,7 +37,7 @@ gantt.init("gantt_here");
 ### Details
 
 :::note
-Эта настройка является частью расширения **auto_scheduling**, поэтому убедитесь, что плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) включен. Подробнее об этом можно узнать в статье [Автоматическое планирование](guides/auto-scheduling.md). 
+Эта конфигурация определяется в расширении **auto_scheduling**, поэтому вам нужно активировать плагин [auto_scheduling](guides/extensions-list.md#autoscheduling). Подробности см. в статье [Auto Scheduling](guides/auto-scheduling.md).
 :::
 
 ### Related API
@@ -50,5 +57,8 @@ gantt.init("gantt_here");
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [Автоматическое планирование](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
+### Change log
+- свойство устарело в версии v9.1
+- добавлено в версии 4.0

@@ -1,20 +1,20 @@
 ---
 sidebar_label: refreshLink
-title: refreshLink method
-description: "обновляет указанный линк"
+title: Метод refreshLink
+description: "Обновляет указанную ссылку."
 ---
 
 # refreshLink
 
 ### Description
 
-@short: Обновляет указанный линк
+@short: Обновляет указанную ссылку
 
 @signature: refreshLink: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    идентификатор линка
+- `id` - (обязательный) *string | number* - идентификатор ссылки
 
 ### Example
 
@@ -34,11 +34,10 @@ gantt.refreshLink(1);       /*!*/
 
 ### Details
 
-Этот метод используется для перерисовки линка после изменения его свойств. В отличие от [updateLink](api/method/updatelink.md), он не активирует [DataProcessor](guides/server-side.md), поэтому изменения не будут отправлены на сервер.
+Вы можете использовать этот метод для перерисовки ссылки после изменения её свойств. В отличие от [updateLink](api/method/updatelink.md), этот метод не инициирует DataProcessor (guides/server-side.md), и обновления на сервер не будут отправлены.
 
 ### Related API
 - [refreshTask](api/method/refreshtask.md)
 - [refreshData](api/method/refreshdata.md)
 - [updateTask](api/method/updatetask.md)
 - [updateLink](api/method/updatelink.md)
-

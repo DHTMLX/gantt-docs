@@ -6,278 +6,286 @@ sidebar_label: "Типы задач"
 # Типы задач
 
 :::info
-Эта функция доступна только в PRO-версии.
+Эта функциональность доступна только в версии PRO.
 :::
 
-В Gantt доступны три предопределённых типа задач ([вы также можете создать собственный тип](guides/task-types.md#creatingacustomtype)):
+Существует 3 заранее определённых типа задач, которые можно представить в диаграмме Гantt ([вы также можете добавить свой собственный тип](guides/task-types.md#creating-a-custom-type)):
 
-1. [Обычная задача (тип по умолчанию)](guides/task-types.md#regulartasks).
-2. [Проектная задача](guides/task-types.md#projecttasks).
+1. [Обычная задача (по умолчанию)](guides/task-types.md#regular-tasks).
+2. [Задача проекта](guides/task-types.md#project-tasks).
 3. [Веха](guides/task-types.md#milestones).
+
 
 ![task_types](/img/task_types.png)
 
-Чтобы назначить тип задачи, используйте свойство [type](guides/loading.md#dataproperties) внутри элемента данных (*значения соответствуют объекту [types](api/config/types.md)*):
 
-**Указание типа задачи в наборе данных**
-~~~js
-var data = {
-    task:[
-        {id:1, text:"Project #1",    type:"project",    open:true},   /*!*/
-        {id:2, text:"Task #1",          start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:"milestone",   parent:1, /*!*/
-            start_date:"14-04-2020"},                                                /*!*/
-        {id:4, text:"Task #2",          start_date:"17-04-2020", duration:3, parent:1}],
-    links:[]
+Чтобы задать тип задачи, используйте свойство [type](guides/loading.md#dataproperties) элемента данных (*значения хранятся в объекте [`types`](api/config/types.md)*:)
+
+~~~jsx title="Specifying the type of a task in the data set"
+const data = {
+    tasks: [
+        { id: 1, text: "Project #1", type: "project", open: true },
+        { id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1 },
+        { id: 3, text: "Alpha release", start_date: "16-04-2025", type: "milestone", parent: 1 },
+        { id: 4, text: "Task #2", start_date: "17-04-2025", duration: 3, parent: 1 },
+    ],
+    links: [
+        { id: 1, source: "1", target: "2", type: "1" },
+        { id: 2, source: "2", target: "3", type: "0" },
+        { id: 3, source: "3", target: "4", type: "0" },
+    ],
 };
 ~~~
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**Связанный пример**: [Проекты и вехи](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-## Обычные задачи {#regulartasks}
+## Регулярные задачи
 
-По умолчанию dhtmlxGantt создаёт обычные задачи (tasks с **type="task"**).
+По умолчанию dhtmlxGantt обеспечивает создание обычных задач (задач с **type="task"**).
 
 ![type_task](/img/type_task.png)
 
-**Указание обычных задач**
-~~~js
-var data = {
-    tasks:[{id:2, text:"Task #1", start_date:"12-04-2020", duration:3}],  /*!*/
-    links:[]
+~~~jsx title="Specifying regular tasks"
+const data = { 
+    tasks: [
+        { id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1 }, 
+    ],
+    links: [],
 };
-//или
-var data = {
-     tasks:[{id:2, text:"Task #1", start_date:"12-04-2020", duration:3, /*!*/
-            type:"task"}],  /*!*/
-    links:[]
+ //or
+const data = {
+    tasks: [
+        { id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1, type: "task" }, 
+    ],
+    links: [],
 };
 ~~~
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**Связанный пример**: [Проекты и вехи](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-Задачи с **type="task"** обладают следующими особенностями:
+Задачи с **type="task"** можно охарактеризовать следующим образом:
 
-- Могут иметь одного родителя и несколько дочерних задач.
-- Перетаскиваются и изменяют размер.
-- Не изменяются в зависимости от дочерних задач; перемещение дочерней задачи не влияет на длительность или прогресс родителя.
-- Могут отображаться в родительских проектах. См. [подробнее](guides/milestones.md#rolluptasksandmilestones).
-- Могут быть скрыты на временной шкале. См. [подробнее](guides/milestones.md#hidingtasksandmilestones).
+- Может иметь 1 родителя и любое количество дочерних задач.
+- Можно перетаскивать и изменять размер.
+- Не зависят от дочерних задач, т.е. если пользователь перетаскивает дочернюю задачу обычной задачи, сама задача не изменяет свою длительность или прогресс соответственно.
+- Может появляться на родительских проектах. См. [детали](guides/milestones.md#rolluptasksandmilestones).
+- Может быть скрыта на таймлайне. См. [детали](guides/milestones.md#hiding-tasks-and-milestones).
 
-## Проектные задачи {#projecttasks}
 
-Проектная задача охватывает период от начала самой ранней дочерней задачи до завершения самой поздней дочерней задачи.
+## Задачи проекта
+
+Задача проекта — это задача, которая начинается, когда начинается её самая ранняя дочерняя задача, и заканчивается, когда заканчивается её самая поздняя дочерняя задача.
 
 :::note
-Ключевое отличие проектной задачи от обычной - длительность проектной задачи зависит от дочерних задач и автоматически обновляется.
+Различие между задачей проекта и обычной задачей состоит в том, что длительность задачи проекта зависит от её дочерних задач и изменяется соответственно.
 :::
 
 ![type_project](/img/type_project.png)
 
-**Указание проектных задач**
-~~~js
-var data = {
-    tasks:[
-        {id:1, text:"Project #1",    type:"project",    open:true}, /*!*/
-        {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:"milestone",   parent:1,
-            start_date:"14-04-2020"}],
-    links:[]
+~~~jsx title="Specifying project tasks"
+const data = {
+    tasks: [
+        { id: 1, text: "Project #1", type: "project", open: true }, 
+        { id: 2, text: "Task #1", start_date: "12-04-2025", duration: 3, parent: 1 },
+        { id: 3, text: "Alpha release", start_date: "16-04-2025", type: "milestone", parent: 1 },
+        { id: 4, text: "Task #2", start_date: "17-04-2025", duration: 3, parent: 1 },
+    ],
+    links: [],
 };
 ~~~
 
+**Связанный пример**: [Проекты и вехи](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
+Задачи с **type="project"** можно охарактеризовать следующим образом:
 
-Задачи с **type="project"** имеют следующие характеристики:
-
-- Могут иметь одного родителя и несколько дочерних задач.
-- Не перетаскиваются и не изменяют размер, если только drag and drop не включён явно через [drag_project](api/config/drag_project.md).
-- Зависят от дочерних задач; перемещение дочерней задачи изменяет длительность проекта.
-- Игнорируют свойства **start_date**, **end_date** и **duration**.
-- Не могут быть перетянуты, если не имеют дочерних задач.
-- Прогресс проекта (**progress**) по умолчанию задаётся вручную и не отражает автоматически прогресс подзадач. Для автоматического расчёта требуется пользовательский код. [См. пример](guides/how-to.md#howtocalculatetaskprogressdependingonchildtasks).
+- Может иметь 1 родителя и любое количество дочерних задач.
+- Не может быть перетаскиваема и изменяема по размеру, если явно не включено перетаскивание через конфигурацию [drag_project](api/config/drag_project.md).
+- Зависит от дочерних задач, т.е. если пользователь перетаскивает дочернюю задачу задач проекта, длительность этой задачи изменяется.
+- Игнорируются свойства **start_date**, **end_date**, **duration**.
+- Не может быть перетащена, если у неё нет дочерних задач.
+- Прогресс проекта задаётся явно и по умолчанию не зависит от подзадач. Если хотите, чтобы он считывался автоматически — нужно написать код. [См. примеры](guides/how-to.md#how-to-calculate-task-progress-depending-on-child-tasks).
 
 :::note
-Для включения добавления проектных задач обратитесь к [Вехи](guides/milestones.md). Включение создания вех также позволит пользователям добавлять проектные задачи.
+Чтобы обеспечить возможность добавления задач проекта, прочитайте статью [Milestone](guides/milestones.md). Возможность добавлять вехи гарантирует, что ваши конечные пользователи смогут добавлять задачи проекта.
 :::
 
 ## Вехи {#milestones}
 
-[Веха](guides/milestones.md) - это задача с нулевой длительностью, предназначенная для выделения ключевых дат проекта ([подробнее](guides/milestones.md)).
+[Milestone](guides/milestones.md) — задача нулевой продолжительности, которая используется для отметки важных дат проекта ([подробнее](guides/milestones.md)).
 
 ![type_milestone](/img/type_milestone.png)
 
-**Указание вех**
-~~~js
-var data = {
-    tasks:[
-        {id:1, text:"Project #1",    type:"project",    open:true},
-        {id:2, text:"Task #1",       start_date:"12-04-2020", duration:3, parent:1},
-        {id:3, text:"Alpha release", type:"milestone",   parent:1, /*!*/
-            start_date:"14-04-2020"}],/*!*/
-    links:[]
+~~~jsx title="Specifying milestones"
+const data = {
+    tasks: [
+        { id: 3, text: "Alpha release", start_date: "16-04-2025", type: "milestone", parent: 1 }, 
+    ],
+    links: [],
 };
 ~~~
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**Связанный пример**: [Проекты и вехи](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-Задачи с **type="milestone"** имеют следующие особенности:
+Задачи с **type="milestone"** можно охарактеризовать следующим образом:
 
-- Могут иметь одного родителя и несколько дочерних задач.
-- Не перетаскиваются и не изменяют размер.
-- Всегда имеют нулевую длительность.
-- Игнорируют свойства **end_date**, **duration** и **progress**.
-- Могут отображаться в родительских проектах. См. [подробнее](guides/milestones.md#rolluptasksandmilestones).
-- Могут быть скрыты на временной шкале. См. [подробнее](guides/milestones.md#hidingtasksandmilestones).
+- Может иметь 1 родителя и любое количество дочерних задач.
+- Не может быть перетаскнута и изменяема.
+- Имеют нулевую продолжительность и сохраняют её всё время.
+- Игнорируются свойства **end_date**, **duration**, **progress**.
+- Может появляться на родительских проектах. См. [детали](guides/milestones.md#rolluptasksandmilestones).
+- Может быть скрыта на таймлайне. См. [детали](guides/milestones.md#hiding-tasks-and-milestones).
 
 :::note
-Для включения создания вех см. [Вехи](guides/milestones.md).
+Чтобы обеспечить возможность добавления вех, прочитайте статью [Milestone](guides/milestones.md).
 :::
 
-## Отдельная форма lightbox для каждого типа задачи {#specificlightboxpertasktype}
+## Специфический lightbox для каждого типа задачи {#specificlightboxpertasktype}
 
-Каждый тип задачи обладает уникальными свойствами, поэтому форма редактирования (lightbox) может быть настроена индивидуально для каждого типа. Конфигурации хранятся в объекте [lightbox](api/config/lightbox.md).
+Каждый тип задачи имеет свой набор характеристик. Поэтому для каждого типа можно определить индивидуальную конфигурацию формы деталей (lightbox).
+Все конфигурации хранятся в объекте [lightbox](api/config/lightbox.md).
 
-Включают:
+Они:
 
 - **gantt.config.lightbox.sections** - для обычных задач.
-- **gantt.config.lightbox.project_sections** - для проектных задач.
+- **gantt.config.lightbox.project_sections** - для задач проекта.
 - **gantt.config.lightbox.milestone_sections** - для вех.
 
-Конфигурация по умолчанию выглядит так:
+Настройки конфигурации по умолчанию следующие:
 
-~~~js
+~~~jsx
 gantt.config.lightbox.sections = [
-    {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-    {name: "time", type: "duration", map_to: "auto"}
+    { name: "description", type: "textarea", map_to: "text", height: 70, focus: true },
+    { name: "time", type: "duration", map_to: "auto" }
 ];
-gantt.config.lightbox.project_sections= [
-    {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-    {name: "type", type: "typeselect", map_to: "type"},
-    {name: "time", type: "duration", readonly: true, map_to: "auto"}
+
+gantt.config.lightbox.project_sections = [
+    { name: "description", type: "textarea", map_to: "text", height: 70, focus: true },
+    { name: "type", type: "typeselect", map_to: "type" },
+    { name: "time", type: "duration", map_to: "auto", readonly: true }
 ];
-gantt.config.lightbox.milestone_sections= [
-    {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
-    {name: "type", type: "typeselect", map_to: "type"},
-    {name: "time", type: "duration", single_date: true, map_to: "auto"}
+
+gantt.config.lightbox.milestone_sections = [
+    { name: "description", type: "textarea", map_to: "text", height: 70, focus: true },
+    { name: "type", type: "typeselect", map_to: "type" },
+    { name: "time", type: "duration", map_to: "auto", single_date: true }
 ];
 ~~~
 
-Если тип задачи изменяется в select-контроле, lightbox динамически обновляется в соответствии с новой конфигурацией.
+Когда пользователь изменяет тип задачи в соответствующем выпадающем списке, соответствующая конфигурация применяется к открывающемуся lightbox и он обновляется динамически.
 
-Вы можете [создать собственный тип задачи](guides/task-types.md#creatingacustomtype) и определить для него структуру lightbox.
+Вы можете [добавить собственный тип](guides/task-types.md#creating-a-custom-type) и указать соответствующую структуру lightbox для него.
 
-Подробнее о настройке lightbox см. в разделе [Настройка формы редактирования](guides/edit-form.md).
+Чтобы углубиться в детали конфигурации lightbox, можно прочитать раздел [Configuring Edit Form](guides/edit-form.md).
 
-## Создание пользовательского типа {#creatingacustomtype}
 
-Все типы задач определяются в объекте [types](api/config/types.md). 
+## Создание пользовательского типа
 
-Чтобы добавить пользовательский тип задачи, выполните следующие шаги:
+Все типы задач определяются в объекте [types](api/config/types.md).
 
-1. Добавьте новую запись в объект [types](api/config/types.md).
-2. Определите параметры, специфичные для нового типа.
+Как правило, чтобы добавить пользовательский тип задач, нужно:
 
-Например, чтобы добавить новый тип **meeting**, который ведёт себя как обычная задача, но с отличным цветом и индивидуальными полями lightbox:
+1. Добавить новое значение в объект [types](api/config/types.md).
+2. Определить индивидуальные настройки для нового типа.
+
+Предположим, вы хотите добавить новый тип задач — **meeting**.
+Meeting будет обычной задачей, но окрашен в другой цвет и будет иметь другие поля в lightbox.
 
 ![custom_task_type](/img/custom_task_type.png)
 
-Определите новый тип **meeting** и его lightbox следующим образом:
 
-1. Добавьте новый тип в объект [types](api/config/types.md):
+Чтобы определить новый тип с именем **meeting** и задать для него индивидуальный lightbox, используйте следующую технику:
 
-~~~js
+Добавьте новый тип в объект [types](api/config/types.md):
+
+~~~jsx
 gantt.config.types.meeting = "type_id";
 ~~~
-<i>
-Здесь "meeting" - программное имя для удобства и читаемости.
-"type_id" - уникальный идентификатор, который хранится в базе данных и в объекте [types](api/config/types.md).
-</i>
 
-2. Задайте метку для нового типа в контроле "typeselect":
+где "meeting" — программируемое имя типа. Оно ничего не влияет на функциональность. Единственная цель программируемого имени типа — сделать работу с типами более читаемой.
+"type_id" — идентификатор типа, который будет храниться в базе данных. Идентификатор типа должен быть уникальным внутри объекта [types](api/config/types.md).
 
-~~~js
+Задайте метку нового типа в элементе управления "typeselect":
+
+~~~jsx
 gantt.locale.labels.type_meeting = "Meeting";
 ~~~
-3. Определите структуру lightbox для нового типа:
 
-~~~js
+Укажите новую структуру lightbox для вновь созданного типа:
+
+~~~jsx
 gantt.config.lightbox.meeting_sections = [
-    {name:"title", height:20, map_to:"text", type:"textarea", focus:true},
-    {name:"details", height:70, map_to: "details", type: "textarea"},
-    {name:"type", type:"typeselect", map_to:"type"},
-    {name:"time", height:72, type:"time", map_to:"auto"}
+    { name: "title", type: "textarea", map_to: "text", height: 20, focus: true },
+    { name: "details", type: "textarea", map_to: "details", height: 70 },
+    { name: "type", type: "typeselect", map_to: "type" },
+    { name: "time", type: "time", map_to: "auto", height: 72 }
 ];
+
 gantt.locale.labels.section_title = "Subject";
 gantt.locale.labels.section_details = "Details";
 ~~~
 
-4. Определите стили для нового типа и примените их через шаблон [task_class](api/template/task_class.md):
+Укажите стиль для нового типа и примените его с помощью шаблона [task_class](api/template/task_class.md):
 
-~~~html
+~~~css
 .meeting_task{
     border:2px solid #BFC518;
     color:#6ba8e3;
     background: #F2F67E;
 }
+
 .meeting_task .gantt_task_progress{
     background:#D9DF29;
 }
 ~~~
 
-~~~js
-gantt.templates.task_class = function(start, end, task){
-    if(task.type == gantt.config.types.meeting){
-        return "meeting_task";
-    }
-    return "";
+~~~jsx
+gantt.templates.task_class = (start, end, task) => {
+    return task.type === gantt.config.types.meeting 
+        ? "meeting_task" 
+        : "";
 };
 ~~~
 
-5. Настройте отображение текста задачи для "meeting" с помощью шаблона [task_text](api/template/task_text.md): 
+Установите шаблон для текста задач типа "meeting" с использованием шаблона [task_text](api/template/task_text.md):
 
-
-~~~js
-gantt.templates.task_text = function(start, end, task){
-    if(task.type == gantt.config.types.meeting){
-        return "Meeting: <b>" + task.text + "</b>";
-    }
-    return task.text;
-};
+~~~jsx
+gantt.templates.task_text = (start, end, task) =>
+    task.type === gantt.config.types.meeting
+        ? `Meeting: <b>${task.text}</b>`
+        : task.text;
 ~~~
 
-[Custom task type](https://docs.dhtmlx.com/gantt/samples/04_customization/12_custom_task_type.html)
+**Связанный пример**: [Custom task type](https://docs.dhtmlx.com/gantt/samples/04_customization/12_custom_task_type.html)
 
 
-## Пользовательское отображение типов задач {#customdisplayoftasktypes}
+## Пользовательское отображение типов задач
 
-Чтобы изменить внешний вид существующих типов задач, используйте опцию [type_renderers](api/config/type_renderers.md). Это позволяет переопределить функции, управляющие отрисовкой типов задач на странице.
+Чтобы настроить внешний вид существующих типов задач, используйте опцию [type_renderers](api/config/type_renderers.md). Эта опция позволяет переопределять функции, отвечающие за отображение разных типов задач на странице.
 
 ![custom_look](/img/custom_look.png)
 
-~~~js
-gantt.config.type_renderers["project"]=function(task, defaultRender){
-    var main_el = document.createElement("div");
-    main_el.setAttribute(gantt.config.task_attribute, task.id);
-    var size = gantt.getTaskPosition(task);
-    main_el.innerHTML = [
+~~~jsx
+gantt.config.type_renderers["project"] = (task, defaultRender) => {
+    const taskBar = document.createElement("div");
+    taskBar.setAttribute(gantt.config.task_attribute, task.id);
+    taskBar.className = "custom-project";
+
+    const taskSize = gantt.getTaskPosition(task);
+    taskBar.innerHTML = [
         "<div class='project-left'></div>",
         "<div class='project-right'></div>"
     ].join('');
-    main_el.className = "custom-project";
 
-    main_el.style.left = size.left + "px";
-    main_el.style.top = size.top + 7 + "px";
-    main_el.style.width = size.width + "px";
+    taskBar.style.left = `${taskSize.left}px`;
+    taskBar.style.top = `${taskSize.top + 7}px`;
+    taskBar.style.width = `${taskSize.width}px`;
 
-    return main_el;
+    return taskBar;
 };
 ~~~
 
-[Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
-
+**Связанный пример**: [Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)

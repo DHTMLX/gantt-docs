@@ -8,16 +8,16 @@ description: "启用指定的扩展插件"
 
 ### Description
 
-@short: 启用指定的扩展插件
+@short: 激活指定的扩展
 
 @signature: plugins: (ext?: GanttPlugins) =\> GanttPlugins
 
 ### Parameters
 
-- `ext` - (optional) *GanttPlugins* - 一个列出需要启用扩展插件的对象
+- `ext` - (可选) *GanttPlugins* - 一个包含需要激活的扩展名称的对象
 
 ### Returns
-- ` activatedPlugins` - (GanttPlugins) - 包含已启用扩展插件的对象
+- ` activatedPlugins` - (GanttPlugins) - 一个已激活扩展的对象
 
 ### Example
 
@@ -30,8 +30,8 @@ gantt.plugins({
 ~~~
 
 ### Related Guides
-- [扩展功能完整列表](guides/extensions-list.md)
+- [扩展全集](guides/extensions-list.md)
 
 ### Change log
-- 从 v8.0 起，**export_api** 插件已包含在 plugins 列表中。对于早期版本，需要将 **https://export.dhtmlx.com/gantt/api.js** 脚本添加到页面中。详情请参考 [Migration](migration.md#71---80) 指南。
-- 在 v7.0 引入
+- 在 v8.0 中，**export_api** 插件已被加入到插件列表中。若在早期版本中需要启用导出服务，需要在页面中引入 **https://export.dhtmlx.com/gantt/api.js** 文件。请参阅 [迁移](migration.md#71---80) 文档。
+- 于 v7.0 新增

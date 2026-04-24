@@ -1,20 +1,20 @@
 ---
 sidebar_label: deleteLink
-title: deleteLink method
-description: "지정된 종속 링크를 제거합니다."
+title: deleteLink 메서드
+description: "지정된 의존성 링크를 삭제합니다"
 ---
 
 # deleteLink
 
 ### Description
 
-@short: 지정된 종속 링크를 제거합니다.
+@short: 지정된 의존성 링크를 삭제합니다
 
 @signature: deleteLink: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    종속 링크의 ID
+- `id` - (필수) *string | number* -    의존성 링크의 ID
 
 ### Example
 
@@ -31,7 +31,7 @@ gantt.deleteLink(1); /*!*/
 
 ### Details
 
-이 메서드는 [onBeforeLinkDelete](api/event/onbeforelinkdelete.md) 및 [onAfterLinkDelete](api/event/onafterlinkdelete.md) 이벤트를 트리거합니다.
+이 메서드는 [onBeforeLinkDelete](api/event/onbeforelinkdelete.md) 및 [onAfterLinkDelete](api/event/onafterlinkdelete.md) 이벤트를 호출합니다.
 
 ### Related API
 - [addLink](api/method/addlink.md)
@@ -39,5 +39,4 @@ gantt.deleteLink(1); /*!*/
 - [onAfterLinkDelete](api/event/onafterlinkdelete.md)
 
 ### Related Guides
-- [링크 추가/수정/삭제](guides/crud-dependency.md)
-
+- [Adding/Updating/Deleting Links](guides/crud-dependency.md)

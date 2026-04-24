@@ -1,23 +1,23 @@
 ---
 sidebar_label: onAjaxError
-title: onAjaxError event
-description: "서버가 에러 응답을 보낼 때 트리거됩니다."
+title: onAjaxError 이벤트
+description: "서버가 오류를 반환하면 발생합니다"
 ---
 
 # onAjaxError
 
 ### Description
 
-@short: 서버가 에러 응답을 보낼 때 트리거됩니다.
+@short: 서버가 오류를 반환할 때 발생합니다
 
-@signature: onAjaxError: (request: any) =\> boolean;
+@signature: onAjaxError: (request: any) => boolean;
 
 ### Parameters
 
 - `request` - (required) *object* - XML HTTP 요청 객체
 
 ### Returns
-- ` result` - (boolean) - 이벤트의 기본 동작을 계속할지(<b>true</b>) 아니면 막을지(<b>false</b>)를 나타냅니다.
+- ` result` - (boolean) - 이벤트의 기본 동작이 트리거될지 여부를 정의합니다 (<b>true</b>) 또는 취소될지 여부 (<b>false</b>)
 
 ### Example
 
@@ -34,7 +34,7 @@ gantt.attachEvent("onAjaxError", function(request){
 
 ### Details
 
-이 이벤트는 차단할 수 있습니다. false를 반환하면 AJAX 요청에 대한 추가 처리가 중단됩니다.
+이벤트는 차단 가능합니다. false를 반환하면 AJAX 요청의 이후 처리가 중지됩니다
 
 ### Related Guides
 - [Server-Side Integration](guides/server-side.md)

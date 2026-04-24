@@ -3,15 +3,16 @@ title: "Отображение содержимого задач"
 sidebar_label: "Отображение содержимого задач"
 ---
 
-# Отображение содержимого задач
+# Отображение содержания задач
 
-Рядом с полосой задачи может отображаться метка, содержащая дополнительные сведения о задаче. Обычно здесь указывается информация, такая как назначенные ресурсы: люди, материалы и так далее.
+Текст, расположенный рядом с полосой задачи, позволяет отобразить дополнительную информацию, связанную с задачей.
+В большинстве случаев это назначенный ресурс — люди, материалы и т. п.
 
 ![assigned_text](/img/assigned_text.png)
 
 ## Настройка формата полос задач
 
-Для изменения стандартного вида полос задач вы можете использовать шаблон [task_text](api/template/task_text.md):
+Чтобы изменить формат по умолчанию полос задач, можно использовать шаблон [task_text](api/template/task_text.md):
 
 ~~~js
 gantt.templates.task_text="function(start,end,task){"
@@ -19,17 +20,17 @@ gantt.templates.task_text="function(start,end,task){"
 };
 ~~~
 
-В этот шаблон можно добавить любой HTML-контент, который вы хотите отобразить внутри полосы задачи.
+Он может содержать любой HTML‑контент, который должен отображаться внутри полосы задачи.
 
 
-[Styling task bars with events](https://docs.dhtmlx.com/gantt/samples/04_customization/08_templates.html)
+[Стилизация полос задач через события](https://docs.dhtmlx.com/gantt/samples/04_customization/08_templates.html)
 
 
 ![task_text](/img/task_text.png)
 
-## Назначение текста слева от полосы
+## Размещение текста слева от полосы задачи
 
-Чтобы добавить текстовый блок слева от полосы задачи, используйте шаблон [leftside_text](api/template/leftside_text.md):
+Чтобы разместить текстовый блок слева от полосы задачи, используйте шаблон [leftside_text](api/template/leftside_text.md):
 
 ~~~js
 gantt.templates.leftside_text = function(start, end, task){
@@ -37,12 +38,12 @@ gantt.templates.leftside_text = function(start, end, task){
 };
 ~~~
 
-[Define side content](https://docs.dhtmlx.com/gantt/samples/04_customization/01_outer_content.html)
+[Определение бокового содержимого](https://docs.dhtmlx.com/gantt/samples/04_customization/01_outer_content.html)
 
 
-## Назначение текста справа от полосы
+## Размещение текста справа от полосы задачи
 
-Чтобы добавить текстовый блок справа от полосы задачи, используйте шаблон [rightside_text](api/template/rightside_text.md):
+Чтобы разместить текстовый блок справа от полосы задачи, используйте шаблон [rightside_text](api/template/rightside_text.md):
 
 ~~~js
 gantt.templates.rightside_text = function(start, end, task){
@@ -51,5 +52,4 @@ gantt.templates.rightside_text = function(start, end, task){
 ~~~
 
 
-[Define side content](https://docs.dhtmlx.com/gantt/samples/04_customization/01_outer_content.html)
-
+[Определение бокового содержимого](https://docs.dhtmlx.com/gantt/samples/04_customization/01_outer_content.html)

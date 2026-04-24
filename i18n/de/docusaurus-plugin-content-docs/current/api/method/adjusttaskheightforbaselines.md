@@ -1,7 +1,7 @@
 ---
 sidebar_label: adjustTaskHeightForBaselines
-title: adjustTaskHeightForBaselines method
-description: "passt die Zeilenhöhe der Aufgabe an, um Baseline-Elemente korrekt anzuzeigen"
+title: adjustTaskHeightForBaselines Methode
+description: "passt die Zeilenhöhe der Aufgabe an, um Baseline-Elemente korrekt darzustellen"
 ---
 
 # adjustTaskHeightForBaselines
@@ -14,7 +14,7 @@ description: "passt die Zeilenhöhe der Aufgabe an, um Baseline-Elemente korrekt
 
 ### Parameters
 
-- `task` - (required) *Task* - das Aufgabenobjekt, dessen `row_height` aktualisiert wird
+- `task` - (erforderlich) *Task* - das Task-Objekt, dessen `row_height` angepasst wird
 
 ### Example
 
@@ -25,20 +25,19 @@ gantt.render();
 ~~~
 
 ### Related samples
-- [Display baselines](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
+- [Baselines anzeigen](https://docs.dhtmlx.com/gantt/samples/04_customization/15_baselines.html)
 
 ### Details
 
-Diese Methode aktualisiert die [`row_height`](guides/resizing-rows.md) der angegebenen Aufgabe, um sicherzustellen, dass Baseline-Elemente korrekt dargestellt werden.
+Diese Methode modifiziert den [`row_height`](guides/resizing-rows.md) Wert des übergebenen Task-Objekts, um eine korrekte Anzeige der Baseline-Elemente sicherzustellen. 
 
-Normalerweise ist der Aufruf dieser Methode nicht erforderlich. Sie wird hauptsächlich verwendet, wenn Sie die Anzeigeeinstellungen der [gantt.config.baselines](api/config/baselines.md) Konfiguration dynamisch ändern.
+In der Regel besteht kein Bedarf, diese Methode direkt aufzurufen. Sie ist nur dann erforderlich, wenn Sie die Anzeigeeinstellungen der [gantt.config.baselines](api/config/baselines.md) Konfiguration dynamisch ändern.
 
 ### Related API
 - [baselines](api/config/baselines.md)
 
 ### Related Guides
-- ["Zusätzliche Elemente in der Zeitleiste"](guides/inbuilt-baselines.md)
+- [Zusätzliche Elemente in der Timeline](guides/inbuilt-baselines.md)
 
 ### Change log
-- hinzugefügt in v9.0
-
+- Hinzugefügt in v9.0

@@ -1,9 +1,9 @@
 ---
-title: "Konfiguration von Aufgaben"
-sidebar_label: "Konfiguration von Aufgaben"
+title: "Aufgaben konfigurieren"
+sidebar_label: "Aufgaben konfigurieren"
 ---
 
-# Konfiguration von Aufgaben
+# Aufgaben konfigurieren
 
 ![gantt_tasks](/img/gantt_tasks.png)
 
@@ -11,19 +11,19 @@ sidebar_label: "Konfiguration von Aufgaben"
 - [Task Properties](guides/task-properties.md)
 - [Task Object/Id](guides/task-object-operations.md)
 - [Task Parent/Child](guides/task-tree-operations.md)
-- [Basic Operations with Tasks](guides/crud-task.md)
-- [Unscheduled Tasks](guides/unscheduled-tasks.md)
-- [Split Tasks](guides/split-tasks.md)
-- [Multi-Task Selection](guides/multiselection.md)
-- [Work Time Calculation](guides/working-time.md)
-- [Critical Path](guides/critical-path.md)
-- [Extra Elements in Timeline](guides/inbuilt-baselines.md)
-- [Custom Elements in Timeline Area](guides/baselines.md)
-- [Milestones](guides/milestones.md)
-- [Tooltips for Gantt Elements](guides/tooltips.md)
-- [Displaying Contents of Tasks](guides/text-block-for-task.md)
-- [Read-Only Mode](guides/readonly-mode.md)
-- [Validation](guides/validation.md)
-- [Dragging Tasks within the Timeline](guides/dnd.md)
-- [Creating/Selecting Tasks with DnD](guides/advanced-dnd.md)
-- [Manually Scheduled Summary Tasks](guides/custom-projects-dates.md)
+- [Grundlegende Operationen mit Aufgaben](guides/crud-task.md)
+- [Ungeplante Aufgaben](guides/unscheduled-tasks.md)
+- [Aufteilen von Aufgaben](guides/split-tasks.md)
+- [Mehrfachauswahl von Aufgaben](guides/multiselection.md)
+- [Arbeitszeitberechnung](guides/working-time.md)
+- [Kritischer Pfad](guides/critical-path.md)
+- [Zusätzliche Elemente in der Timeline](guides/inbuilt-baselines.md)
+- [Benutzerdefinierte Elemente im Timeline-Bereich](guides/baselines.md)
+- [Meilensteine](guides/milestones.md)
+- [Tooltips für Gantt-Elemente](guides/tooltips.md)
+- [Aufgabeninhalte anzeigen](guides/text-block-for-task.md)
+- [Nur-Les-Modus](guides/readonly-mode.md)
+- [Validierung](guides/validation.md)
+- [Aufgaben innerhalb der Timeline ziehen](guides/dnd.md)
+- [Erstellen/Auswählen von Aufgaben per Drag & Drop](guides/advanced-dnd.md)
+- [Manuell geplante Summary-Aufgaben](guides/custom-projects-dates.md)

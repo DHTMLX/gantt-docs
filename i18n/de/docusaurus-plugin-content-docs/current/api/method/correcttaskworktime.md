@@ -1,20 +1,20 @@
 ---
 sidebar_label: correctTaskWorkTime
 title: correctTaskWorkTime method
-description: "Berechnet die Aufgabendauer basierend auf der Arbeitszeit neu"
+description: "Berechnet die Dauer der Aufgabe in der Arbeitszeit neu"
 ---
 
 # correctTaskWorkTime
 
 ### Description
 
-@short: Berechnet die Aufgabendauer basierend auf der Arbeitszeit neu
+@short: Berechnet die Dauer der Aufgabe in der Arbeitszeit neu
 
 @signature: correctTaskWorkTime: (task: Task) =\> void
 
 ### Parameters
 
-- `task` - (required) *Task* - das Aufgabenobjekt
+- `task` - (erforderlich) *Task* - das Objekt der Aufgabe
 
 ### Example
 
@@ -26,7 +26,7 @@ gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
 
 ### Details
 
-Diese Methode funktioniert, wenn die folgenden Konfigurationsoptionen aktiviert sind:
+Die Methode erfordert die folgenden Konfigurationsoptionen, die angegeben werden müssen:
 
 ~~~js
 gantt.config.work_time = true;
@@ -34,4 +34,4 @@ gantt.config.correct_work_time = true;
 ~~~
 
 ### Related Guides
-- ["Arbeitszeitberechnung"](guides/working-time.md)
+- [Berechnung der Arbeitszeit](guides/working-time.md)

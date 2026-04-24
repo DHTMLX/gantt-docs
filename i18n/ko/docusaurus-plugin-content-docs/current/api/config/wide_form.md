@@ -1,14 +1,14 @@
 ---
 sidebar_label: wide_form
-title: wide_form config
-description: "섹션과 해당 레이블을 같은 줄에 나란히 배치합니다."
+title: wide_form 구성
+description: "섹션과 레이블을 같은 줄에 함께 설정합니다"
 ---
 
 # wide_form
 
 ### Description
 
-@short: 섹션과 해당 레이블을 같은 줄에 나란히 배치합니다.
+@short: 섹션과 그 레이블을 같은 줄에 함께 설정합니다
 
 @signature: wide_form: boolean
 
@@ -24,10 +24,9 @@ gantt.config.wide_form = true;
 
 ![normal_form](/img/normal_form.png)
 
+
 :::note
-
-**Related example:** [wide_form 형태의 Lightbox](https://snippet.dhtmlx.com/hf45hvr3)
-
+샘플: [와이드 폼에서의 Lightbox](https://snippet.dhtmlx.com/hf45hvr3)
 :::
 
 ### Related API

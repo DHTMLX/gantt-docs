@@ -1,14 +1,14 @@
 ---
 sidebar_label: redo
-title: redo method
-description: "重新应用之前在gantt上撤销的更改"
+title: redo 方法
+description: "再次将撤销的修改应用到甘特图"
 ---
 
 # redo
 
 ### Description
 
-@short: 重新应用之前在gantt上撤销的更改
+@short: 再次将撤销的修改应用到甘特图
 
 @signature: redo: () =\> void
 
@@ -24,7 +24,7 @@ gantt.redo();
 ### Details
 
 :::note
- 此方法是**undo**扩展的一部分，因此请确保已启用[undo](guides/extensions-list.md)插件。更多详细信息请参见[撤销/重做功能](guides/undo-redo.md)文章。 
+此方法定义在 **undo** 扩展中，因此需要启用 [undo](guides/extensions-list.md#undo) 插件。请在 [Undo/Redo Functionality](guides/undo-redo.md) 文章中阅读详细信息。
 :::
 
 ### Related API
@@ -35,8 +35,7 @@ gantt.redo();
 - [onAfterRedo](api/event/onafterredo.md)
 
 ### Related Guides
-- [撤销/重做功能](guides/undo-redo.md)
+- [Undo/Redo Functionality](guides/undo-redo.md)
 
 ### Change log
-- 版本4.0新增
-
+- 新增于版本 4.0

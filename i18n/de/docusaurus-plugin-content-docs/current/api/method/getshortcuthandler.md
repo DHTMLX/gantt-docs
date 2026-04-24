@@ -1,24 +1,24 @@
 ---
 sidebar_label: getShortcutHandler
-title: getShortcutHandler method
-description: "ruft eine Handler-Funktion für eine Tastaturnavigations-Shortcut ab"
+title: getShortcutHandler Methode
+description: "erhält einen Shortcut-Handler für die Tastaturnavigation"
 ---
 
 # getShortcutHandler
 
 ### Description
 
-@short: Ruft eine Handler-Funktion für eine Tastaturnavigations-Shortcut ab
+@short: Holt einen Shortcut-Handler für die Tastaturnavigation
 
 @signature: getShortcutHandler: (shortcut: string, scope: string) =\> GanttCallback
 
 ### Parameters
 
-- `shortcut` - (required) *string* - die Taste oder Tastenkombination, die den Shortcut definiert ([Shortcut-Syntax](guides/keyboard-navigation.md#shortcutsyntax))
-- `scope` - (required) *string* - der Kontext-Elementname, an dem der Handler angebracht ist ([Liste der Scopes](guides/keyboard-navigation.md#scopes))
+- `shortcut` - (erforderlich) *string* - der Schlüsselname oder der Name der Tastenkombination für einen Shortcut ([shortcut syntax](guides/keyboard-navigation.md#shortcutsyntax))
+- `scope` - (erforderlich) *string* - der Name des Kontextelements, an das die Handler-Funktion angehängt wird ([Liste der Kontexte](guides/keyboard-navigation.md#scopes))
 
 ### Returns
-- ` shortcut_handler` - (function) - die Funktion, die zur Behandlung des Shortcuts zugewiesen ist
+- ` shortcut_handler` - (Funktion) - der Handler des Shortcut-Aufrufs
 
 ### Example
 
@@ -33,17 +33,16 @@ gantt.getShortcutHandler("shift+w", "taskRow")
 ~~~
 
 ### Related samples
-- [Keyboard Navigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
-- [Keyboard Navigation - navigate cells](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
+- [Tastaturnavigation](https://docs.dhtmlx.com/gantt/samples/02_extensions/16_keyboard_navigation.html)
+- [Tastaturnavigation - Zellen navigieren](https://docs.dhtmlx.com/gantt/samples/02_extensions/17_keyboard_navigation_cell.html)
 
 ### Details
 
 :::note
- Diese Methode ist Teil der **keyboard_navigation** Extension, daher stellen Sie sicher, dass das [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Tastaturnavigation"](guides/keyboard-navigation.md). 
+Diese Methode ist in der **keyboard_navigation**-Erweiterung definiert, daher müssen Sie das [keyboard_navigation](guides/extensions-list.md#keyboardnavigation) Plugin aktivieren. Lesen Sie die Details im Artikel [Keyboard Navigation](guides/keyboard-navigation.md). 
 :::
 
-
-hinzugefügt in Version 4.2
+In Version 4.2 eingeführt
 
 ### Related API
 - [addShortcut](api/method/addshortcut.md)
@@ -53,5 +52,4 @@ hinzugefügt in Version 4.2
 - [focus](api/method/focus.md)
 
 ### Related Guides
-- ["Tastaturnavigation"](guides/keyboard-navigation.md)
-
+- [Tastaturnavigation](guides/keyboard-navigation.md)

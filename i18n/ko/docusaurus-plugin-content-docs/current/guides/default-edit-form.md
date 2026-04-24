@@ -1,83 +1,82 @@
 ---
-title: "Lightbox 요소 구성하기"
-sidebar_label: "Lightbox 요소 구성하기"
+title: "라이트박스 요소 구성"
+sidebar_label: "라이트박스 요소 구성"
 ---
 
-# Lightbox 요소 구성하기
+# 라이트박스 요소 구성
 
-Lightbox는 작업 세부 정보를 수정하는 편집 폼 역할을 합니다. 
+라이트박스는 작업 세부 정보를 변경하기 위한 편집 양식입니다.
 
- 아래는 기본 Lightbox 레이아웃입니다.
+아래 이미지에 기본 라이트박스가 표시됩니다.
 
 ![lightbox](/img/lightbox.png)
 
-Lightbox는 작업 유형과 해당 작업의 특징에 따라 다르게 구성될 수 있습니다. 각 작업 유형에 대한 구성 설정은 [lightbox](api/config/lightbox.md) 객체에서 확인할 수 있습니다. 주요 설정은 다음과 같습니다:
+라이트박스 구성은 작업 유형에 따라 다를 수 있습니다. 각 유형별 설정은 [lightbox](api/config/lightbox.md) 객체에 저장됩니다:
 
-- **gantt.config.lightbox.sections** - 일반 작업용
-- **gantt.config.lightbox.project_sections** - 프로젝트 작업용
-- **gantt.config.lightbox.milestone_sections** - 마일스톤 작업용
+- **gantt.config.lightbox.sections** - 일반 작업용.
+- **gantt.config.lightbox.project_sections** - 프로젝트 작업용.
+- **gantt.config.lightbox.milestone_sections** - 마일스톤용.
 
-또한, [사용자 정의 유형 추가](guides/task-types.md#creatingacustomtype) 및 그에 맞는 Lightbox 구조 정의도 가능합니다.
-자세한 내용은 [작업 유형](guides/task-types.md#specificlightboxpertasktype)에서 확인할 수 있습니다.
+또한 [add a custom type](guides/task-types.md#creating-a-custom-type)을 추가하고 해당 유형에 대한 라이트박스 구성을 정의할 수도 있습니다.
+자세한 내용은 [Task Types](guides/task-types.md#specificlightboxpertasktype)를 참조하세요.
 
-전체 유형 구조는 다음과 같습니다:
+전체 유형 구조는 아래와 같이 보입니다:
 
-- <span class="subproperty">**sections?**</span> - (*LightboxSection[]*) - 선택 사항, 일반 작업용 Lightbox 섹션 배열
-- <span class="subproperty">**project_sections?**</span> - (*LightboxSection[]*) - 선택 사항, 프로젝트 작업용 Lightbox 섹션 배열
-- <span class="subproperty">**milestone_sections?**</span> - (*LightboxSection[]*) - 선택 사항, 마일스톤 작업용 Lightbox 섹션 배열
-- <span class="subproperty">**[lightboxType: string]**</span> - (*LightboxSection[] | undefined*) - 사용자 정의 유형용 Lightbox 섹션 배열
-
+- <span class="subproperty">**sections?**</span> - (*LightboxSection[]*) - 선택적, 일반 작업용 라이트박스 섹션 배열
+- <span class="subproperty">**project_sections?**</span> - (*LightboxSection[]*) - 선택적, 프로젝트 작업용 라이트박스 섹션 배열
+- <span class="subproperty">**milestone_sections?**</span> - (*LightboxSection[]*) - 선택적, 마일스톤용 라이트박스 섹션 배열
+- <span class="subproperty">**[lightboxType: string]**</span> - (*LightboxSection[] | undefined*) - 사용자 정의 유형의 라이트박스 섹션 배열
 
 :::note
-v7.1.13부터 [gantt.config.csp](api/config/csp.md)가 *true*로 설정되어 있거나 Gantt가 Salesforce 환경에서 실행되는 경우, Lightbox는 Gantt 컨테이너 내부에 렌더링됩니다.
+버전 7.1.13부터, [gantt.config.csp](api/config/csp.md)가 *true*로 설정되거나 Gantt가 Salesforce 환경에서 동작하는 경우, 라이트박스가 Gantt 컨테이너 내부에 렌더링됩니다.
 :::
 
-## Lightbox 구조
+## 라이트박스 구조
 
-### 섹션(Sections)
+### 섹션
 
-Lightbox의 레이아웃은 lightbox 객체 내 **sections** 속성으로 정의됩니다:
+라이트박스의 구조는 라이트박스 객체의 **sections** 속성으로 지정됩니다:
 
 ~~~js
-// 기본 Lightbox 정의
-gantt.config.lightbox.sections="["
-    {name:"description", height:70, map_to:"text", type:"textarea", focus:true},
-    {name:"time",          height:72, map_to:"auto", type:"duration"}
+// 기본 라이트박스 정의
+gantt.config.lightbox.sections = [
+    { name: 'description', height: 70, map_to: 'text', type: 'textarea', focus: true },
+    { name: 'time', height: 72, map_to: 'auto', type: 'duration' }
 ];
 ~~~
 
-**sections** 배열의 각 항목은 Lightbox의 한 섹션을 나타내며, 사용 가능한 섹션 속성을 포함하는 객체로 기술됩니다.
+**sections** 배열의 각 항목은 라이트박스의 단일 섹션을 정의하는 객체입니다.
+사용 가능한 섹션 속성은 [lightbox config](api/config/lightbox.md)를 참조하세요.
 
 
 ### 섹션 컨트롤 {#lightboxcontrols}
 
-Lightbox 내 각 섹션은 특정 컨트롤 유형을 기반으로 구성됩니다. 사용 가능한 컨트롤은 다음과 같습니다:
+라이트박스의 각 섹션은 특정 컨트롤을 기반으로 합니다. 라이트박스에서 사용할 수 있는 컨트롤 유형은 다음과 같습니다:
 
-- [Textarea](guides/textarea.md) - 여러 줄 텍스트 입력
-- [Time](guides/time.md) - 작업 시작/종료일 설정 셀렉터
-- [Duration](guides/duration.md) - 작업 시작일 및 기간(일) 설정 셀렉터
-- [Select](guides/select.md) - 드롭다운 선택 상자
-- [Typeselect](guides/typeselect.md) - 작업 유형 변경 드롭다운
-- [Parent](guides/parent.md) - 상위 작업 선택 드롭다운
-- [Template](guides/template.md) - 사용자 정의 HTML 콘텐츠 표시 컨테이너
-- [Checkbox](guides/checkbox.md) - 옵션 On/Off 토글용 체크박스
-- [Radio button](guides/radio.md) - 여러 옵션 중 하나를 선택하는 라디오 버튼
-- [Resources](guides/resources.md) - 작업에 여러 리소스 할당을 위한 복합 컨트롤
-- [Constraint](guides/constraint.md) - 작업 제약 조건 설정용 복합 컨트롤
-- [Baselines](guides/baseline.md) - 작업 기준선 관리용 복합 컨트롤
+- [Textarea](guides/textarea.md) - 다중 행 텍스트 필드
+- [Time](guides/time.md) - 작업의 시작일과 종료일을 지정하여 작업 기간을 설정하는 두 개의 선택 상자
+- [Duration](guides/duration.md) - 작업의 시작 날짜와 일 수를 지정하여 작업 기간을 설정하는 선택 요소들의 묶음
+- [Select](guides/select.md) - 간단한 선택 상자
+- [Typeselect](guides/typeselect.md) - 작업 유형을 변경하기 위한 선택 상자
+- [Parent](guides/parent.md) - 작업의 상위 작업을 변경하기 위한 선택 상자
+- [Template](guides/template.md) - 내부에 일부 HTML 콘텐츠를 포함하는 컨테이너
+- [Checkbox](guides/checkbox.md) - 옵션 하나 이상을 켜거나 끄는 체크박스
+- [Radio button](guides/radio.md) - 주어진 옵션 세트에서 하나만 선택하는 라디오 버튼
+- [Resources](guides/resources.md) - 작업에 여러 리소스를 할당하기 위한 복합 컨트롤
+- [Resource Assignments](guides/resource-assignments.md) - 작업에 리소스를 할당하기 위한 확장 컨트롤
+- [Constraint](guides/constraint.md) - 작업의 제약 조건을 설정하기 위한 복합 컨트롤
+- [Baselines](guides/baseline.md) - 작업에 대한 기준선을 설정하기 위한 복합 컨트롤
 
 ~~~js
-var opts = [
+const opts = [
     { key: 1, label: 'High' },
     { key: 2, label: 'Normal' },
     { key: 3, label: 'Low' }
 ];
 
 gantt.config.lightbox.sections = [
-    {name:"description", height:38, map_to:"text", type:"textarea", focus:true},
-    {name:"priority",      height:22, map_to:"priority", type:"select", options:opts},
-    {name:"time",          height:72, map_to:"auto", type:"duration"}
+    { name: 'description', height: 38, map_to: 'text', type: 'textarea', focus: true },
+    { name: 'priority', height: 22, map_to: 'priority', type: 'select', options: opts },
+    { name: 'time', height: 72, map_to: 'auto', type: 'duration' }
 ];
 ~~~
-
-

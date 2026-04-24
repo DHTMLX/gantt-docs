@@ -1,36 +1,35 @@
 ---
 sidebar_label: order_branch_free
-title: order_branch_free config
-description: "включает режим 'branch', который позволяет менять порядок задач в любом месте всего gantt chart"
+title: Конфигурация order_branch_free
+description: "активирует режим 'branch', который позволяет переупорядочивать задачи во всей диаграмме Ганта"
 ---
 
 # order_branch_free
 
 ### Description
 
-@short: Включает режим 'branch', который позволяет менять порядок задач в любом месте всего gantt chart
+@short: Activates the 'branch' mode that allows reordering tasks within the whole gantt
 
 @signature: order_branch_free: boolean
 
 ### Example
 
 ~~~jsx
-// изменение порядка задач на одном уровне вложенности
+// переупорядочивание задач на одном уровне вложенности
 gantt.config.order_branch = true;
-// изменение порядка задач в любом месте всего gantt
+// переупорядочивание задач по всей диаграмме Ганта
 gantt.config.order_branch_free = true;
  
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Related samples
-- [Drag and drop rows in Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
+- [Перетаскивание строк в Grid](https://docs.dhtmlx.com/gantt/samples/07_grid/08_drag_between_levels.html)
 
 ### Related API
 - [order_branch](api/config/order_branch.md)
 
 ### Related Guides
-- [Изменение порядка задач](guides/reordering-tasks.md)
-
+- [Переупорядочение задач](guides/reordering-tasks.md)

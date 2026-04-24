@@ -1,19 +1,19 @@
 ---
 sidebar_label: getVisibleTaskCount
 title: getVisibleTaskCount method
-description: "возвращает количество задач, которые в данный момент видны на экране (исключая свернутые)"
+description: "получает количество задач, видимых на экране (те, что не свернуты)"
 ---
 
 # getVisibleTaskCount
 
 ### Description
 
-@short: Возвращает количество задач, которые в данный момент видны на экране (исключая свернутые)
+@short: Получает количество задач, видимых на экране (те, что не свернуты)
 
-@signature: getVisibleTaskCount: () =\> number
+@signature: getVisibleTaskCount: () => number
 
 ### Returns
-- ` count` - (number) - общее количество видимых задач
+- ` count` - (число) - количество видимых задач
 
 ### Example
 
@@ -23,4 +23,3 @@ gantt.getVisibleTaskCount();
 
 ### Related API
 - [getTaskCount](api/method/gettaskcount.md)
-

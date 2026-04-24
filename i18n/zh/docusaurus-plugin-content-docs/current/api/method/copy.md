@@ -1,14 +1,14 @@
 ---
-sidebar_label: copy
-title: copy method
-description: "创建给定对象的深拷贝"
+sidebar_label: 复制
+title: 复制方法
+description: "创建提供对象的深拷贝"
 ---
 
-# copy
+# 复制
 
 ### Description
 
-@short: 创建给定对象的深拷贝
+@short: 创建提供对象的深拷贝
 
 @signature: copy: (initialObject: any) =\> any
 
@@ -17,7 +17,7 @@ description: "创建给定对象的深拷贝"
 - `initialObject` - (required) *object* - 需要被拷贝的对象
 
 ### Returns
-- ` clonedObject` - (object) - 给定对象的深拷贝副本
+- ` clonedObject` - (object) - 所提供对象的深拷贝
 
 ### Example
 
@@ -26,4 +26,4 @@ var backupTask = gantt.copy(gantt.getTask(id));
 ~~~
 
 ### Change log
-- 在版本 4.0 中添加
+- 新增于版本 4.0

@@ -24,9 +24,9 @@ console.log(gantt.license);
 
 ### Details
 
-Diese Methode liefert einen kurzen Lizenznamen, der für Diagnosezwecke nützlich ist.
+Diese Methode gibt einen kurzen Lizenznamen zurück, der für Diagnosen verwendet werden kann. 
 
-Die möglichen Werte umfassen:
+Mögliche Werte sind:
 
 - "gpl"
 - "evaluation"

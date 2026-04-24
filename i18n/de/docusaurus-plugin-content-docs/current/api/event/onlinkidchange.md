@@ -1,30 +1,29 @@
 ---
 sidebar_label: onLinkIdChange
 title: onLinkIdChange event
-description: "Wird ausgelöst, wenn die ID eines Links aktualisiert wird"
+description: "Wird ausgelöst, wenn die ID eines Links geändert wird"
 ---
 
 # onLinkIdChange
 
 ### Description
 
-@short: Wird ausgelöst, wenn die ID eines Links aktualisiert wird
+@short: Wird ausgelöst, wenn die ID eines Links geändert wird
 
 @signature: onLinkIdChange: (id: string | number, new_id: string | number) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die bestehende Link-ID
-- `new_id` - (required) *string | number* - die aktualisierte Link-ID
+- `id` - (erforderlich) *string | number* - die aktuelle Link-ID
+- `new_id` - (erforderlich) *string | number* - die neue Link-ID
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onLinkIdChange", function(id,new_id){
-    //beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
 ### Related API
 - [changeLinkId](api/method/changelinkid.md)
-

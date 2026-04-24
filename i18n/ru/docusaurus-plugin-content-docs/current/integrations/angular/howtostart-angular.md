@@ -5,107 +5,102 @@ sidebar_label: "Angular"
 
 # dhtmlxGantt с Angular
 
-Это руководство предполагает базовое понимание концепций и паттернов Angular. Если вам нужно освежить знания, ознакомьтесь с [документацией Angular](https://angular.io/docs), где есть полезный вводный туториал.
+Вы должны быть знакомы с базовыми концепциями и паттернами Angular, чтобы пользоваться этой документацией. Если нет, обратитесь к [документации Angular](https://angular.dev/overview) для руководства по началу работы.
 
-DHTMLX Gantt отлично работает с Angular. Пример интеграции можно найти на GitHub: [DHTMLX Gantt with Angular Demo](https://github.com/DHTMLX/angular-gantt-demo).
+DHTMLX Gantt совместим с Angular. Вы можете посмотреть соответствующий пример на GitHub: [Демо DHTMLX Gantt с Angular](https://github.com/DHTMLX/angular-gantt-demo).
 
 ## Создание проекта
 
-Перед созданием нового проекта убедитесь, что у вас установлены [Angular CLI](https://angular.io/cli) и [Node.js](https://nodejs.org/en/).
+Прежде чем начать создание нового проекта, установите [Angular CLI](https://angular.dev/tools/cli) и [Node.js](https://nodejs.org/en/).
 
-~~~
+~~~ 
 ng new my-angular-gantt-app
 ~~~
 
-Эта команда установит все необходимые инструменты и зависимости, дополнительных команд установки не требуется.
+Вышеуказанная команда установит все необходимые инструменты и зависимости, так что вам не понадобятся дополнительные команды. 
 
 ### Установка зависимостей
 
-Далее перейдите в директорию вашего приложения:
+После этого перейдите в директорию приложения, выполнив:
 
-~~~
+~~~ 
 cd my-angular-gantt-app
 ~~~
 
-Запустите приложение с помощью одной из команд:
+Затем запустите приложение одной из следующих команд:
 
-~~~
+~~~ 
 yarn start
 ~~~
 или
 
-~~~
+~~~ 
 npm start
 ~~~
 
-Теперь ваше приложение будет доступно по адресу [http://localhost:4200](http://localhost:4200).
+Теперь приложение должно работать на **http://localhost:4200**.
 
 ![Gantt Angular app running](/img/gantt_angular_app_run.png)
 
 ## Создание Gantt
 
-Следующий шаг - получить код DHTMLX Gantt. Сначала остановите приложение, нажав **Ctrl+C** в командной строке, затем установите пакет Gantt.
+Теперь нам нужно получить код DHTMLX Gantt. Во-первых, остановите приложение, нажав **Ctrl+C** в командной строке. Затем можно продолжить установку пакета Gantt.
 
 ## Шаг 1. Установка пакета
 
-PRO-версии библиотеки доступны через **npm/yarn** из нашего приватного репозитория. Следуйте 
-[этой инструкции](guides/installation.md#npmevaluationandproversions) для получения доступа.
+PRO-версии библиотеки доступны для установки через **npm/yarn** из нашего приватного репозитория, пожалуйста, следуйте [этой инструкции](guides/installation.md#npmevaluationandproversions), чтобы получить доступ к ней.
 
-Когда у вас будет Evaluation-версия Gantt, установите её одной из следующих команд:
+После того как вы получите Evaluation версию Gantt, вы можете установить её с помощью следующих команд:
 
 - для npm:
 
-~~~
+~~~ 
 npm install @dhx/trial-gantt
 ~~~
 
 - для yarn:
 
-~~~
+~~~ 
 yarn add @dhx/trial-gantt
 ~~~
 
-Также, так как zip-пакет структурирован как модуль **npm**, вы можете 
-[установить его из локальной папки](guides/installation.md#installfromlocalfolder).
+В качестве альтернативы, поскольку ZIP-пакет библиотеки структурирован как модуль **npm**, вы можете [установить его из локальной папки](guides/installation.md#installfromlocalfolder).
 
 ## Шаг 2. Создание компонента
 
-Создайте компонент для интеграции Gantt в ваше приложение. Начните с создания папки ***gantt*** внутри директории ***src/app/***. Добавьте два файла: ***gantt.component.ts*** и ***gantt.component.css***.
+Теперь нужно создать компонент для добавления Gantt в приложение. Создадим папку ***gantt*** в директории ***src/app/***, добавим в нее два новых файла и назовем их ***gantt.component.ts*** и ***gantt.component.css***.
 
 ### Импорт исходных файлов
 
-Откройте ***gantt.component.ts*** и импортируйте исходные файлы Gantt. Обратите внимание на разницу в зависимости от способа установки:
+Откройте файл ***gantt.component.ts*** и импортируйте исходные файлы Gantt. Обратите внимание, что:
 
-- Если установлен из локальной папки, импорты выглядят так:
+- если вы установили пакет Gantt из локальной папки, ваши пути импорта будут выглядеть так:
 
-**gantt.component.ts**
-~~~
+~~~js title="gantt.component.ts"
 import { Gantt } from 'dhtmlx-gantt';
 ~~~
 
-**gantt.component.css**
-~~~
+
+~~~css title="gantt.component.css"
 @import "@dhtmlx-gantt/codebase/dhtmlxgantt.css";
 ~~~
 
-- Если используется trial-версия, импорты должны быть такими:
+- если вы выбрали установить тестовую версию, пути импорта должны быть такими же, как и в:
 
-**gantt.component.ts**
-~~~
+~~~js title="gantt.component.ts"
 import { Gantt } from '@dhx/trial-gantt';
 ~~~
 
-**gantt.component.css**
-~~~
+
+~~~js title="gantt.component.css"
 @import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
 ~~~
 
-В этом руководстве используется **trial**-версия.
+В этом руководстве мы будем использовать **trial** версию Gantt.
 
-Файл ***gantt.component.ts*** будет служить шаблоном для компонента Gantt. Добавьте следующий код:
+Созданный файл ***gantt.component.ts*** внутри папки ***gantt*** будет содержать шаблон для Gantt. Добавим следующие строки кода в него:
 
-**gantt.component.ts**
-~~~ 
+~~~js title="gantt.component.ts"
 import { Component, ElementRef, OnInit, 
     ViewChild, ViewEncapsulation } from '@angular/core';
 import { Gantt, GanttStatic } from "@dhx/trial-gantt";
@@ -132,12 +127,12 @@ export class GanttComponent implements OnInit {
 }
 ~~~
 
-Здесь метод **ngOnInit()** инициализирует Gantt, а **ngOnDestroy()** выполняет очистку, вызывая **gantt.destructor()** при удалении компонента.
 
-Стили для Gantt размещаются в ***gantt.component.css***. Пример базовой настройки стилей:
+В приведенном выше коде мы использовали метод **ngOnInit()** Angular и также указали метод **ngOnDestroy()**, который содержит вызов **gantt.destructor()** для очистки компонента, когда он больше не нужен.
 
-**gantt.component.css**
-~~~
+Мы объявим стили Gantt в отдельном файле с именем ***gantt.component.css***. Значения по умолчанию могут выглядеть так:
+
+~~~css title="gantt.component.css"
 @import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
 .gantt-chart {
     position: relative;
@@ -148,10 +143,9 @@ export class GanttComponent implements OnInit {
 
 ## Шаг 3. Добавление Gantt в приложение
 
-Далее добавьте компонент Gantt в приложение. Откройте ***src/app/app.component.ts*** и замените содержимое на:
+Теперь пришло время добавить компонент в наше приложение. Откройте ***src/app/app.component.ts*** и используйте компонент Gantt вместо стандартного содержимого, вставив приведённый ниже код:
 
-**src/app/app.component.ts**
-~~~
+~~~js title="src/app/app.component.ts"
 import { Component } from '@angular/core';
 
 @Component({
@@ -164,10 +158,9 @@ export class AppComponent {
 }
 ~~~
 
-Создайте ***app.module.ts*** в ***src/app/*** и подключите *GanttComponent* следующим образом:
+Затем создайте файл ***app.module.ts*** в директории ***src/app/*** и добавьте в него *GanttComponent* следующим образом:
 
-**src/app/app.module.ts**
-~~~
+~~~js title="src/app/app.module.ts"
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
  
@@ -183,17 +176,15 @@ import { GanttComponent } from './gantt/gantt.component';
 export class AppModule {}
 ~~~
 
-В файле ***src/app/app.component.html*** замените содержимое на:
+Откройте файл ***src/app/app.component.html*** и добавьте следующий код вместо стандартного содержимого:
 
-**src/app/app.component.html**
-~~~
+~~~js title="src/app/app.component.html"
 <gantt></gantt>
 ~~~
 
-Наконец, обновите ***src/main.ts***, заменив его содержимое на:
+Последний шаг — открыть файл ***src/main.ts*** и заменить существующий код приведенным ниже:
 
-**src/main.ts**
-~~~
+~~~js title="src/main.ts"
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { AppModule } from "./app/app.module";
 
@@ -202,25 +193,24 @@ platformBrowserDynamic()
   .catch((err) => console.error(err));
 ~~~
 
-Теперь при запуске приложения должен отобразиться пустой график Gantt:
+После этого, запустив приложение, на странице должно появиться пустое Gantt:
 
-![Gantt Angular init](/img/gantt_init.png)
+![Приложение Gantt Angular запущено](/img/gantt_angular_app_run.png)
 
-## Шаг 4. Загрузка данных
+## Шаг 4. Предоставление данных
 
-Чтобы загрузить данные в Angular Gantt, необходимо добавить сервисы для задач и связей. Прежде чем это сделать, определите модели задач и связей.
+Чтобы добавить загрузку данных в Angular Gantt, вам нужно создать сервисы задач и связей. Но сначала давайте определим модели задач и связей.
 
-Создайте модели задач и связей следующими командами:
+Для создания моделей задач и связей выполните следующие команды:
 
-~~~
+~~~ 
 ng generate class models/task --skip-tests
 ng generate class models/link --skip-tests
 ~~~
 
-В файле ***models/task.ts*** добавьте:
+В newly created файл ***task.ts*** внутри папки ***models*** добавим следующие строки кода:
 
-**models/task.ts**
-~~~
+~~~js title="models/task.ts"
 export class Task {
     id!: number;
     start_date!: string;
@@ -231,10 +221,9 @@ export class Task {
 }
 ~~~
 
-В файле ***models/link.ts*** добавьте:
+В newly created файл ***link.ts*** внутри папки ***models*** добавим следующие строки кода:
 
-**models/link.ts**
-~~~
+~~~js title="models/link.ts"
 export class Link {
      id!: number;
     source!: number;
@@ -243,19 +232,18 @@ export class Link {
 }
 ~~~
 
-Теперь создайте сервисы задач и связей. Сервисы в Angular - это классы, отвечающие за выполнение определённых задач или функций, которые можно внедрять в нужные компоненты.
+Теперь создадим сервисы задач и связей. Сервис — это класс, который будет отвечать за создание конкретной задачи или связи. Сервисы в Angular можно внедрять с помощью механизма Dependency Injection. Они могут включать данные, функции или некоторые необходимые для приложения особенности. Вам нужно создать сервис данных, который будет использоваться для предоставления Gantt задач и связей.
 
-Создайте сервисы командами:
+Для создания сервисов задач и связей выполните команды:
 
-~~~
+~~~ 
 ng generate service services/task --flat --skip-tests
 ng generate service services/link --flat --skip-tests
 ~~~
 
-В файле ***services/task.service.ts*** добавьте:
+Добавьте следующие строки кода в только что созданный файл ***task.service.ts*** внутри папки ***services***:
 
-**services/task.service.ts**
-~~~
+~~~js title="services/task.service.ts"
 import { Injectable } from '@angular/core';
 import { Task } from '../models/task';
 
@@ -272,10 +260,9 @@ export class TaskService {
 }
 ~~~
 
-В файле ***services/link.service.ts*** добавьте:
+и добавьте приведённые ниже строки в файл ***link.service.ts*** внутри папки ***services***:
 
-**services/link.service.ts**
-~~~
+~~~js title="services/link.service.ts"
 import { Injectable } from '@angular/core';
 import { Link } from '../models/link';
 
@@ -289,20 +276,18 @@ export class LinkService {
 }
 ~~~
 
-Декоратор **@Injectable()** позволяет сервисам создаваться системой внедрения зависимостей Angular. Методы **get()** сейчас возвращают захардкоженные данные в промисах, но их можно адаптировать для получения данных с сервера.
+Мы добавили декоратор **@Injectable()** к нашему сервису. Он помечает класс как доступный для инжектора, чтобы создать экземпляр. В дальнейшем мы внедрим его в наш компонент.
 
-Чтобы использовать эти сервисы в компоненте Gantt, импортируйте их в ***gantt.component.ts***:
+На данный момент метод **get()** возвращает уже разрешённый промис с жестко зашитыми данными. Однако вы можете загружать данные с сервера и также возвращать промис. Компонент Gantt должен использовать **TaskService** для получения задач и **LinkService** для получения связей. Чтобы включить это, добавим наши сервисы в компонент. Сначала импортируйте необходимые модули в ***gantt.component.ts***:
 
-**gantt.component.ts**
-~~~
+~~~js title="gantt.component.ts"
 import {TaskService} from "../services/task.service";
 import {LinkService} from "../services/link.service";
 ~~~
 
-Добавьте сервисы в провайдеры декоратора **@Component**:
+ Также укажите **TaskService** и **LinkService** в качестве провайдеров в декораторе **@Component**:
 
-**gantt.component.ts**
-~~~
+~~~js title="gantt.component.ts"
 @Component({
     encapsulation: ViewEncapsulation.None,
     selector: 'gantt',
@@ -312,19 +297,18 @@ import {LinkService} from "../services/link.service";
 })
 ~~~
 
-Это гарантирует создание нового экземпляра каждого сервиса для каждого нового *GanttComponent*.
+Теперь каждый раз, когда инициализируется новый *GanttComponent*, будет создаваться новый экземпляр сервисов. Сервис должен быть готов к внедрению в компонент. Для этой цели добавьте конструктор в класс **GanttComponent**:
 
-Добавьте конструктор для внедрения сервисов:
-
-**gantt.component.ts**
-~~~
+~~~js title="gantt.component.ts"
 constructor(private taskService: TaskService, private linkService: LinkService) { }
 ~~~
 
-Обновите **ngOnInit()**, чтобы настроить формат даты, инициализировать Gantt и загрузить данные из сервисов:
+Измените функцию **ngOnInit()** следующим образом:
 
-**gantt.component.ts**
-~~~
+- она должна задать формат данных для загрузки задач (XML в данном случае)
+- вызвать сервисы для получения данных и затем дождаться ответа, чтобы поместить данные в gantt
+
+~~~js title="gantt.component.ts"
 let gantt = Gantt.getGanttInstance();
 gantt.config.date_format = '%Y-%m-%d %H:%i';
 gantt.init(this.ganttContainer.nativeElement);
@@ -336,10 +320,9 @@ Promise.all([this.taskService.get(), this.linkService.get()])
 this._gantt = gantt;
 ~~~
 
-Полный файл ***gantt.component.ts*** будет выглядеть так:
+Полный код файла ***gantt.component.ts*** будет выглядеть так:
 
-**gantt.component.ts**
-~~~
+~~~js title="gantt.component.ts"
 import { Component, ElementRef, OnInit, 
     ViewChild, ViewEncapsulation } from '@angular/core';
 import { TaskService } from '../services/task.service';
@@ -374,28 +357,28 @@ export class GanttComponent implements OnInit {
 }
 ~~~
 
-После перезагрузки страницы приложения вы увидите Gantt с загруженными задачами:
+Теперь, если вы снова откроете страницу приложения, вы должны увидеть Gantt с задачами:
 
 ![Gantt Angular events](/img/gantt_angular_tasks.png)
 
 ## Шаг 5. Сохранение данных
 
-Для отслеживания изменений в Gantt вы можете использовать обработчик [dataProcessor](api/method/dataprocessor.md), который позволяет взаимодействовать с серверной частью. Этот обработчик можно настроить как функцию или как объект-роутер. dhtmlxGantt поддерживает возврат Promise из обработчика, что позволяет корректно обрабатывать завершение действия.
+Чтобы зафиксировать изменения, внесенные в Gantt, вы можете использовать обработчик [dataProcessor](api/method/dataprocessor.md), который позволяет «общаться» с серверной частью бэкенда. Обработчик может быть объявлен либо как функция, либо как объект маршрутизатора. dhtmlxGantt принимает ответ Promise от обработчика, поэтому ваш Gantt будет корректно обрабатывать завершение действия.
 
-Создать **DataProcessor** можно с помощью метода **createDataProcessor()** API и отслеживать изменения следующим образом:
+Вы можете создать DataProcessor через API метод **createDataProcessor()** и зафиксировать изменения вот так:
 
-~~~
+~~~ 
 gantt.createDataProcessor(function(entity, action, data, id) {​
     gantt.message(`${​entity} ${​action}`);
 });
 ~~~
 
-Если ваш сервис меняет id задачи после добавления новой записи (что обычно бывает), убедитесь, что ваш Promise возвращает объект с **(id: databaseId)** или **(tid: databaseId)**. Это позволит Gantt обновить запись с новым id из базы данных. Подробнее см. [информацию о серверной части](guides/server-side.md).
+Если ваш сервис изменяет id задачи после создания новой записи (обычно так и бывает), убедитесь, что ваш Promise возвращает объект с **(id: databaseId)** или **(tid: databaseId)** в качестве результата, чтобы Gantt мог применить новый идентификатор базы данных к записи. Узнайте больше о серверной стороне [server-side](guides/server-side.md).
 
-Теперь ваш Angular Gantt полностью готов. Вы также можете [посмотреть полный демо-пример на GitHub](https://github.com/DHTMLX/angular-gantt-demo).
+Итак, Angular Gantt готов, добро пожаловать к полному демо на GitHub: https://github.com/DHTMLX/angular-gantt-demo.
 
-## XSS, CSRF и SQL-инъекции
+## Атаки XSS, CSRF и SQL Injection
 
-Обратите внимание, что сам Gantt не обеспечивает защиту от таких угроз, как SQL-инъекции, XSS или CSRF-атаки. За безопасность приложения отвечает команда разработчиков серверной части.
+Обратите внимание, что Gantt не предоставляет средств защиты от различных угроз, таких как SQL-инъекции или XSS и CSRF атаки. Важно, чтобы ответственность за безопасность приложения лежала на разработчиках, реализующих бекенд.
 
-Ознакомьтесь со статьёй [Application Security](guides/app-security.md), чтобы узнать о наиболее уязвимых местах компонента и о шагах, которые можно предпринять для повышения безопасности вашего приложения.
+Ознакомьтесь со статьей [Безопасность приложения](guides/app-security.md), чтобы узнать наиболее уязвимые точки компонента и меры, которые можно принять для повышения безопасности вашего приложения.

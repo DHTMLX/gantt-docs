@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskRowNode
-title: getTaskRowNode method
-description: "返回表示表格中任务行的HTML元素"
+title: getTaskRowNode 方法
+description: "返回表格中任务行的 HTML 元素"
 ---
 
 # getTaskRowNode
 
 ### Description
 
-@short: 返回表示表格中任务行的HTML元素
+@short: 返回表格中任务行的 HTML 元素
 
 @signature: getTaskRowNode: (id: string | number) =\> HTMLElement
 
 ### Parameters
 
-- `id` - (required) *string | number* -    任务ID
+- `id` - (required) *string | number* -    任务 id
 
 ### Returns
-- `node` - (HTMLElement) - 对应任务行的HTML元素
+- `node` - (HTMLElement) - 该任务行的 HTML 元素
 
 ### Example
 
@@ -34,9 +34,9 @@ gantt.getTaskRowNode(10);//-><div class=​"gantt_row" task_id=​"2">​…​<
 
 ### Details
 
-请注意，当任务被更新并重新渲染时，之前的DOM元素会被丢弃并替换为新的元素。因此，任何直接对该元素所做的修改都会在下一次重绘后丢失。
+请注意，当任务重新绘制时，旧的 DOM 元素将被丢弃并由新元素替换。这意味着对该元素所做的任何修改，在下一次重绘后将被重置。
 
-为了自定义元素的外观，最好使用模板（template），因为这是调整甘特图组件外观的推荐方式。
+如果需要修改元素的外观，我们建议使用模板，因为它们是自定义甘特图元素外观的首选方法。
 
 ### Related API
 - [getTaskNode](api/method/gettasknode.md)
@@ -46,5 +46,4 @@ gantt.getTaskRowNode(10);//-><div class=​"gantt_row" task_id=​"2">​…​<
 - [grid_row_class](api/template/grid_row_class.md)
 
 ### Related Guides
-- [指定列](guides/specifying-columns.md)
-
+- [Specifying Columns](guides/specifying-columns.md#datamappingandtemplates)

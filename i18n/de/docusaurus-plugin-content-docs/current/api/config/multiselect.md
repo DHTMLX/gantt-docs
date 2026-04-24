@@ -8,23 +8,23 @@ description: "Steuert, ob mehrere Aufgaben gleichzeitig im Gantt-Diagramm ausgew
 
 ### Description
 
-@short: Steuert, ob mehrere Aufgaben gleichzeitig im Gantt-Diagramm ausgewählt werden können
+@short: Aktiviert bzw. deaktiviert die Mehrfachauswahl von Aufgaben im Gantt-Diagramm
 
 @signature: multiselect: boolean
 
 ### Example
 
 ~~~jsx
-gantt.config.multiselect = false; // schaltet die Mehrfachauswahl von Aufgaben aus
+gantt.config.multiselect = false; //disables multi-task selection
 gantt.init('gantt_here');
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Details
 
 :::note
- Diese Einstellung ist Teil der **multiselect** Erweiterung, daher stellen Sie sicher, dass das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktiviert ist. Weitere Details finden Sie im Artikel ["Multi-Task-Auswahl"](guides/multiselection.md). 
+Diese Option ist in der **multiselect**-Erweiterung definiert, daher müssen Sie das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktivieren. Lesen Sie die Details im Artikel [Multi-Task Selection](guides/multiselection.md). 
 :::
 
 ### Related API
@@ -36,5 +36,4 @@ gantt.init('gantt_here');
 - [toggleTaskSelection](api/method/toggletaskselection.md)
 
 ### Related Guides
-- ["Multi-Task-Auswahl"](guides/multiselection.md)
-
+- [Multi-Task Selection](guides/multiselection.md)

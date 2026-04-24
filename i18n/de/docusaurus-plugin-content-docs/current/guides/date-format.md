@@ -5,38 +5,33 @@ sidebar_label: "Datumsformat-Spezifikation"
 
 # Datumsformat-Spezifikation
 
-Beim Festlegen von Datumsformaten können Sie die folgenden Zeichen verwenden:
+Beim Festlegen des Formats für Datumsangaben können Sie jedes Zeichen aus der folgenden Liste verwenden:
 
-- **%y** - zweistellige Jahreszahl ( _00 bis 99_ );
-- **%Y** - vierstellige Jahreszahl ( _1900-9999_ );
+- **%y** - das Jahr als zweistellige Zahl ( _00 bis 99_ );
+- **%Y** - das Jahr als vierstellige Zahl ( _1900-9999_ );
 
+- **%m** - der Monat als Zahl mit führender Null ( _01 bis 12_ );
+- **%n** - der Monat als Zahl ohne führende Null ( _1 bis 12_ ); 
+- **%M** - der Monat als Abkürzung ( _Jan bis Dez_ );
+- **%F** - der Monat als voller Name ( _Januar bis Dezember_ );
 
-- **%m** - Monat als Zahl mit führender Null ( _01 bis 12_ );
-- **%n** - Monat als Zahl ohne führende Null ( _1 bis 12_ );
-- **%M** - abgekürzter Monatsname ( _Jan bis Dec_ );
-- **%F** - vollständiger Monatsname ( _January bis December_ );
-
-
-- **%W** - ISO-8601 Kalenderwoche des Jahres, wobei die Woche am Montag beginnt;
-- **%w** - Kalenderwoche, wobei die Woche je nach [start_on_monday](api/config/start_on_monday.md)-Einstellung am Montag oder Sonntag beginnt;
+- **%W** - die ISO-8601-Woche des Jahres. Wochen beginnen am Montag; 
+- **%w** - die Wochennummer, Wochen beginnen entweder am Montag oder am Sonntag abhängig vom Wert der [start_on_monday](api/config/start_on_monday.md) Konfigurations-Eigenschaft 
 
 
-- **%d** - Tag als Zahl mit führender Null ( _01 bis 31_ );
-- **%j** - Tag als Zahl ohne führende Null ( _1 bis 31_ );
-- **%D** - abgekürzter Tagesname ( _Sun bis Sat_ );
-- **%l** - vollständiger Tagesname ( _Sunday bis Saturday_ );
+- **%d** - der Tag als Zahl mit führender Null ( _01 bis 31_ );
+- **%j** - der Tag als Zahl ohne führende Null ( _1 bis 31_ );
+- **%D** - der Tag als Abkürzung ( _So bis Sa_ );
+- **%l** - der Tag als vollständiger Name ( _Sonntag bis Samstag_ );
 
+- **%h** - die Stunde im 12-Stunden-Format ( _00 bis 11_ );
+- **%H** - die Stunde im 24-Stunden-Format ( _00 bis 23_ );
+- **%g** - die Stunde im 12-Stunden-Format ohne führende Null ( _1 bis 12_ );
+- **%G** - die Stunde im 24-Stunden-Format ohne führende Null ( _0 bis 23_ );
 
-- **%h** - Stunde auf einer 12-Stunden-Uhr mit führender Null ( _00 bis 11_ );
-- **%H** - Stunde auf einer 24-Stunden-Uhr mit führender Null ( _00 bis 23_ );
-- **%g** - Stunde auf einer 12-Stunden-Uhr ohne führende Null ( _1 bis 12_ );
-- **%G** - Stunde auf einer 24-Stunden-Uhr ohne führende Null ( _0 bis 23_ );
+- **%i** - die Minute als Zahl mit führender Null ( _00 bis 59_ );
+- **%s** - die Sekunde als Zahl mit führender Null ( _00 bis 59_ );
+- **%a** - zeigt **am** (für Zeiten von Mitternacht bis Mittag) und **pm** (für Zeiten von Mittag bis Mitternacht);
+- **%A** - zeigt **AM** (für Zeiten von Mitternacht bis Mittag) und **PM** (für Zeiten von Mittag bis Mitternacht).
 
-
-- **%i** - Minuten mit führender Null ( _00 bis 59_ );
-- **%s** - Sekunden mit führender Null ( _00 bis 59_ );
-- **%a** - zeigt **am** (Mitternacht bis Mittag) oder **pm** (Mittag bis Mitternacht) an;
-- **%A** - zeigt **AM** (Mitternacht bis Mittag) oder **PM** (Mittag bis Mitternacht) an.
-
-Zum Beispiel: Um den 1. Juni 2019 als 01/06/2019 anzuzeigen, verwenden Sie das Format "%d/%m/%Y".
-
+Beispielsweise, wenn Sie den 1. Juni 2019 als 01/06/2019 darstellen möchten, sollten Sie "%d/%m/%Y" angeben.

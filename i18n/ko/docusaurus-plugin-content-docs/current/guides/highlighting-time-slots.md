@@ -1,20 +1,20 @@
 ---
-title: "타임 슬롯 하이라이트하기"
-sidebar_label: "타임 슬롯 하이라이트하기"
+title: "시간 슬롯 하이라이트"
+sidebar_label: "시간 슬롯 하이라이트"
 ---
 
-# 타임 슬롯 하이라이트하기
+# 시간 슬롯 하이라이트
 
-특정 타임 슬롯에 주목시키기 위해 하이라이트할 수 있습니다.
+특정 시간 슬롯에 사용자의 주의를 기울이려면 해당 시간 슬롯을 강조할 수 있습니다. 
 
-- 타임라인 영역 내 셀을 하이라이트하려면 [timeline_cell_class](api/template/timeline_cell_class.md) 템플릿을 사용하세요.
-- 타임라인의 타임 스케일 셀을 하이라이트하려면 [scale_cell_class](api/template/scale_cell_class.md) 템플릿을 사용하세요.
+- 타임라인 영역의 셀을 강조하려면 [timeline_cell_class](api/template/timeline_cell_class.md) 템플릿을 사용합니다.
+- 타임라인의 시간 눈금(스케일) 셀을 강조하려면 [scale_cell_class](api/template/scale_cell_class.md) 템플릿을 사용합니다.
 
-이 템플릿들은 모든 날짜를 순회하며 지정된 CSS 클래스를 해당 셀에 할당하는 함수입니다.
+템플릿은 모든 날짜를 순회하면서 관련 셀에 지정된 CSS 클래스를 적용하는 함수입니다.
 
-![highlighting_weekends](/img/highlighting_weekends.png)
+![주말 하이라이트](/img/highlighting_weekends.png)
 
-예를 들어, 주말을 하이라이트하면 스케일을 주 단위로 시각적으로 구분하는 데 도움이 됩니다:
+예를 들어 축을 주 단위로 시각적으로 구분하기 위해 주말을 강조할 수 있습니다:
 
 ~~~js
 <style>
@@ -37,7 +37,7 @@ gantt.templates.timeline_cell_class = function(task,date){
 gantt.init("gantt_here");
 ~~~
 
-[work time 계산](guides/working-time.md)을 사용하는 경우, 값을 하드코딩하는 대신 [isWorkTime](api/method/isworktime.md)을(를) 사용하는 것이 더 좋습니다:
+참고로 [작업 시간 계산](guides/working-time.md)를 사용할 때는 하드코딩된 값 대신 [isWorkTime](api/method/isworktime.md)를 사용할 수 있습니다:
 
 ~~~js
 gantt.config.work_time = true;
@@ -56,11 +56,9 @@ gantt.init("gantt_here");
 ~~~
 
 
-
-[Highlighting weekends](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
+[주말 하이라이트](https://docs.dhtmlx.com/gantt/samples/04_customization/06_highlight_weekend.html)
 
 
 :::note
-'important' 키워드를 포함하면 CSS 속성이 셀에 의도대로 적용되는 것을 보장합니다.
+셀에 지정된 CSS 속성이 적용되도록 하려면 'important' 키워드를 사용하세요.
 :::
-

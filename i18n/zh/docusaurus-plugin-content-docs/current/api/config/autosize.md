@@ -1,14 +1,14 @@
 ---
 sidebar_label: autosize
-title: autosize config
-description: "自动调整甘特图大小以显示所有任务，无需滚动"
+title: autosize 配置
+description: "强制甘特图自动调整大小以在不滚动的情况下显示所有任务"
 ---
 
 # autosize
 
 ### Description
 
-@short: 自动调整甘特图大小以显示所有任务，无需滚动
+@short: 强制甘特图自动调整大小以显示所有任务且无需滚动
 
 @signature: autosize: boolean | string
 
@@ -20,73 +20,71 @@ gantt.config.autosize = "xy";
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**默认值:** false
 
 ### Details
 
-'autosize' 设置控制甘特图是通过内部滚动条在容器尺寸内适配数据，还是调整容器大小以显示所有数据而不使用内部滚动:
+The  `autosize` 配置定义 Gantt 是否会将数据适配到初始化时所在容器的大小并显示内部滚动条，或通过修改容器的大小以在没有内部滚动条的情况下显示所有数据：
 
-- [通过 CSS 设置甘特图 div 大小的示例](https://snippet.dhtmlx.com/5/b4d4d1b80) - 需要时显示内部滚动条
-- [由组件计算甘特图 div 大小的示例](https://snippet.dhtmlx.com/5/c278b3859) - 关闭内部滚动条
+- [在 CSS 中定义 Gantt div 大小的示例](https://snippet.dhtmlx.com/2m48u5oz) - 如有需要，内部滚动条将处于活动状态
+- [一个由组件计算 Gantt div 尺寸的示例](https://snippet.dhtmlx.com/syzmiqwt) - 内部滚动条被禁用
 
-当甘特图需要适应页面上的特定区域时，容器大小应手动管理:
+如果 Gantt 需要适应页面上的某个区域，则必须手动管理 Gantt 容器的大小：
 
-- 应关闭 autosize
-- div 的宽度和高度应由 HTML 布局确定（如果使用响应式布局方案），或由自定义代码决定。
+- 应该禁用自动调整大小
+- div 的宽度/高度应通过 HTML 布局计算（如果使用了某些现成的响应式布局解决方案），或通过代码手动计算
 
-## 滚动到隐藏元素
+## Scrolling to hidden elements
 
-默认情况下，使用 [showTask](api/method/showtask.md) 或 [showDate](api/method/showdate.md) 方法时，甘特图会自动滚动。
-然而，当 **autosize** 被启用时，甘特图会扩大其容器尺寸以使元素在页面上可见，而不是滚动到该元素。
+在默认模式下，当你使用 [`showTask()`](api/method/showtask.md) 或 [`showDate()`](api/method/showdate.md) 方法时，Gantt 会自动滚动。
+但当 `autosize` 启用时，Gantt 会增大其容器的大小以在页面上显示自身，而不是显示隐藏的元素。
 
-对此没有通用的解决方案，因为页面可能包含其他也需要滚动的元素。解决方案取决于具体的页面或应用设置。
+没有一种通用的方法来解决这个问题，因为页面除了 Gantt 之外还可能包含其他元素，而且有些元素也需要滚动。因此，应该根据页面/应用程序的配置来解决这个问题。
 
-在*简单*的设置中，甘特图可能位于其他元素之前或之后，滚动页面即可正常工作。
+在一个 *简单* 的配置中，Gantt 可以位于应用程序的某些元素之前或之后。如果你滚动页面，它就可以正常工作。
 
-在*复杂*的设置中，甘特图容器可能嵌套在其他容器中，这些容器又可能继续嵌套。
-在这种情况下，需要手动滚动相关的元素。
+在一个 *复杂* 的配置中，Gantt 容器可以放置在其他容器中，这些容器也可以嵌套在某些其他容器中。在这种情况下，你只需要手动滚动你需要的元素。
 
-一种滚动页面到指定元素的方法是使用 **element.scrollIntoView** 方法:
+让页面滚动到所需元素的一种方法是使用 `element.scrollIntoView()` 方法：
 
 ~~~js
-var attr = gantt.config.task_attribute;
-var timelineElement = document.querySelector(".gantt_task_line["+attr+"='"+id+"']");
-if(timelineElement)
-    timelineElement.scrollIntoView({block:"center"});
+const taskAttribute = gantt.config.task_attribute;
+const timelineElement = document.querySelector(`.gantt_task_line[${taskAttribute}='${id}']`);
+
+timelineElement?.scrollIntoView({ block: "center" });
 ~~~
 
-这里，`id` 指任务 ID。
+其中 id 是你需要显示的任务 ID。
 
-另一种选择是重写甘特图的 [showTask](api/method/showtask.md) 或 [showDate](api/method/showdate.md) 方法:
+另一种方法是修改 Gantt 的 [`showTask()`](api/method/showtask.md) 或 [`showDate()`](api/method/showdate.md) 方法：
 
 ~~~js
-var showTask = gantt.showTask;
+const defaultShowTask = gantt.showTask;
 
-gantt.showTask = function(id){
-  showTask.apply(this, [id]);
-  var attr = gantt.config.task_attribute;
-  var timelineElement = document.querySelector(".gantt_task_line["+attr+"='"+id+"']");
-  if(timelineElement)
-    timelineElement.scrollIntoView({block:"center"});
+gantt.showTask = function(id) {
+    defaultShowTask.apply(this, [id]);
+    const taskAttribute = gantt.config.task_attribute;
+    const timelineElement = document.querySelector(`.gantt_task_line[${taskAttribute}='${id}']`);
+
+    timelineElement?.scrollIntoView({ block: "center" });
 };
 ~~~
 
-或者，你也可以创建自定义函数来显示任务:
+或者创建一个显示任务的自定义函数：
 
 ~~~js
-function showTask(id){
-  gantt.showTask(id);
-  var attr = gantt.config.task_attribute;
-  var timelineElement = document.querySelector(".gantt_task_line["+attr+"='"+id+"']");
-    if(timelineElement)
-      timelineElement.scrollIntoView({block:"center"});
-}
+const showTask = (id) => {
+    gantt.showTask(id);
+    const taskAttribute = gantt.config.task_attribute;
+    const timelineElement = document.querySelector(`.gantt_task_line[${taskAttribute}='${id}']`);
+
+    timelineElement?.scrollIntoView({ block: "center" });
+};
 ~~~
 
 :::note
-Sample: [滚动到指定元素 ](https://snippet.dhtmlx.com/or73u6a5) 
+示例: [滚动到指定元素](https://snippet.dhtmlx.com/or73u6a5)
 :::
 
 ### Related API
 - [autosize_min_width](api/config/autosize_min_width.md)
-

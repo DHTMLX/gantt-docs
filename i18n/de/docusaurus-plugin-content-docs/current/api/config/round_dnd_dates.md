@@ -1,14 +1,14 @@
 ---
 sidebar_label: round_dnd_dates
-title: round_dnd_dates config
-description: "ermöglicht das Runden der Start- und Enddaten einer Aufgabe auf die nächstgelegenen Skalierungsmarkierungen"
+title: round_dnd_dates Konfiguration
+description: "Aktiviert das Abrunden der Start- und Enddaten der Aufgabe auf die nächstgelegenen Skalenmarken"
 ---
 
 # round_dnd_dates
 
 ### Description
 
-@short: Ermöglicht das Runden der Start- und Enddaten einer Aufgabe auf die nächstgelegenen Skalierungsmarkierungen
+@short: Runden der Start- und Enddaten der Aufgabe auf die nächstgelegenen Skalenmarken
 
 @signature: round_dnd_dates: boolean
 
@@ -19,13 +19,12 @@ gantt.config.round_dnd_dates = false;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** true
+**Standardwert:** true
 
 ### Details
 
-Wenn diese Eigenschaft deaktiviert ist, rundet Gantt die Start- und Enddaten der verschobenen Aufgabe auf die nächste Stunde anstatt auf die nächstgelegenen Skalierungsmarkierungen. In diesem Modus kann die Eigenschaft [time_step](api/config/time_step.md) verwendet werden, um die Schrittgröße für das Ziehen von Aufgaben festzulegen. Hier ein Beispiel:
+Wenn Sie die Eigenschaft deaktivieren, rundet Gantt die Start- und Enddaten der verschobenen Aufgabe auf die nächstgelegene Stunde, nicht auf die nächstgelegenen Skalenmarken. In diesem Fall können Sie die [time_step](api/config/time_step.md) Eigenschaft verwenden, um den Schritt beim Ziehen einer Aufgabe zu konfigurieren. Siehe das Beispiel:
 
 :::note
-Sample: [Gantt. Drag'n'drop von Aufgaben mit dem minimalen Schritt](https://snippet.dhtmlx.com/bd7ir3w7) 
+sample: [Gantt. Drag'n'drop von Aufgaben mit dem minimalen Schritt](https://snippet.dhtmlx.com/bd7ir3w7)
 :::
-

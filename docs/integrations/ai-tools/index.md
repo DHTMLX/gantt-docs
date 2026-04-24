@@ -6,27 +6,24 @@ description: "Overview of using AI tools with DHTMLX Gantt"
 
 # AI Tools
 
-This section collects materials for using AI with DHTMLX Gantt in two ways:
+This section covers AI-assisted development with DHTMLX Gantt and adding AI features to your Gantt-based app.
 
-- **AI-assisted development** - app builders, coding agents, and tool integrations.
-- **AI features inside your app** - demos and recommended implementation patterns.
+## AI-assisted development
 
-## App builders
-
-If you're using an AI app builder to generate or modify your UI, start here:
-
-- [Lovable AI](./lovable-ai/) - integrate DHTMLX [React Gantt](./../react/) into a Lovable-generated app and improve results using prompts, Knowledge Base, and MCP.
-
-## MCP Server
-
-- [DHTMLX MCP Server](./mcp-server/) - connect an AI tool to up-to-date DHTMLX documentation and API reference.
-
+- [DHTMLX MCP Server](./mcp-server/) - connect an AI coding tool to up-to-date DHTMLX documentation and API reference.
+- [Agent Skills](./agent-skills/) - teach AI coding assistants (Claude Code, Codex, and others) the correct patterns for working with DHTMLX Gantt.
+- [Lovable AI](./lovable-ai/) - integrate DHTMLX [React Gantt](./../react/) into a Lovable-generated app using prompts, Knowledge Base, and MCP.
 
 ## AI features inside your app
 
 If you're adding AI capabilities to your application (OpenAI-compatible APIs, assistants, smart suggestions), see:
 
+Guides:
+
+- [Semantic Search](./semantic-search/) - add meaning-based task discovery to your Gantt chart using embeddings and cosine similarity.
+
 Demo apps:
 
+- [Gantt Semantic Search AI Demo](https://github.com/DHTMLX/gantt-semantic-search-ai-demo)
 - [Gantt Maker AI Demo](https://github.com/DHTMLX/gantt-maker-ai-demo)
 - [Gantt Theme Builder AI Demo](https://github.com/DHTMLX/gantt-theme-builder-ai-demo)

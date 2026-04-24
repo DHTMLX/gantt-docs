@@ -1,7 +1,7 @@
 ---
 sidebar_label: json
-title: json config
-description: "verwaltet JSON-Serialisierung und -Parsing"
+title: JSON-Konfiguration
+description: "legt die JSON-Serialisierung und das Parsen fest"
 ---
 
 # json
@@ -15,10 +15,9 @@ description: "verwaltet JSON-Serialisierung und -Parsing"
 ### Example
 
 ~~~jsx
-var obj = gantt.json; // -> { parse(data){... 
-:::
+const obj = gantt.json; // -> { parse(data){... }}
 ~~~
 
 ### Details
 
-Das JSON-Objekt enthält ein einziges Mitglied - die **parse()**-Methode, die festlegt, wie dhtmlxGantt Daten im JSON-Format verarbeitet.
+Das JSON-Objekt enthält das einzige Mitglied – die **parse()**-Methode, die festlegt, wie dhtmlxGantt Daten im JSON-Format parst.

@@ -1,14 +1,14 @@
 ---
 sidebar_label: onAfterTaskAdd
-title: onAfterTaskAdd event
-description: "작업이 Gantt 차트에 추가된 직후에 트리거됩니다."
+title: onAfterTaskAdd 이벤트
+description: "사용자가 Gantt 차트에 작업을 추가한 직후 발생합니다"
 ---
 
 # onAfterTaskAdd
 
 ### Description
 
-@short: 작업이 Gantt 차트에 추가된 직후에 트리거됩니다.
+@short: 사용자가 Gantt 차트에 작업을 추가한 직후 발생합니다
 
 @signature: onAfterTaskAdd: (id: string | number, task: Task) =\> void;
 
@@ -21,10 +21,9 @@ description: "작업이 Gantt 차트에 추가된 직후에 트리거됩니다."
 
 ~~~jsx
 gantt.attachEvent("onAfterTaskAdd", function(id,task){
-    //여기에 커스텀 로직 작성
+    // 여기에 코드 작성
 });
 ~~~
 
 ### Related API
 - [addTask](api/method/addtask.md)
-

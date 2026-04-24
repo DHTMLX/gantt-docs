@@ -1,23 +1,22 @@
----
+--- 
 title: "皮肤自定义"
 sidebar_label: "皮肤自定义"
----
+--- 
 
 # 皮肤自定义
 
-从 9.0 版本开始，Gantt 皮肤采用了 CSS 变量，使您可以轻松地自定义和美化组件的样式。
+从 v9.0 开始，Gantt 的皮肤使用 CSS 变量，您可以使用它们进行自定义和样式设置。
 
+[动态更换皮肤](https://docs.dhtmlx.com/gantt/samples/06_skins/06_dynamic_skin.html)
 
-[Change skin dynamically](https://docs.dhtmlx.com/gantt/samples/06_skins/06_dynamic_skin.html)
-
-
-主要 CSS 变量:
+关键 CSS 变量：
 
 ~~~css
 :root {
     --dhx-gantt-theme: terrace;
     --dhx-gantt-font-family: Inter, Helvetica, Arial, sans-serif;
     --dhx-gantt-font-size: 14px;
+
 
     --dhx-gantt-base-colors-white: #FFFFFF;
     --dhx-gantt-base-colors-select: #EFF3FF;
@@ -59,6 +58,7 @@ sidebar_label: "皮肤自定义"
 
     /* tasks */
 
+
     --dhx-gantt-task-blue: linear-gradient(180deg, #527CFF 0%, #9751FC 100%);
     --dhx-gantt-task-green: linear-gradient(180deg, #12D979 0%, #1ECDEB 100%);
     --dhx-gantt-task-violet: linear-gradient(180deg, #D071EF 0%, #EE71D5 100%);
@@ -90,13 +90,13 @@ sidebar_label: "皮肤自定义"
     --dhx-gantt-link-critical-background: var(--dhx-gantt-base-colors-error);
 
 }
-~~~
+~~~ 
 
-所有这些变量都位于包内的 **codebase/sources/less/src/themes/variables.less** 文件中。
+所有变量都可以在包的 codebase/sources/less/src/themes/variables.less 文件中找到。
 
 ## 如何自定义皮肤
 
-最简单的更改 Gantt 外观的方法是在您的样式表中覆盖 CSS 变量。例如:
+最简单的自定义 Gantt 外观的方法是通过在您的样式表中覆盖相关的 CSS 变量。以下是一个示例：
 
 ~~~html
 <style>
@@ -120,30 +120,28 @@ sidebar_label: "皮肤自定义"
 
 }
 </style>
-~~~
+~~~ 
 
+[动态更换皮肤](https://docs.dhtmlx.com/gantt/samples/06_skins/06_dynamic_skin.html)
 
-[Change skin dynamically](https://docs.dhtmlx.com/gantt/samples/06_skins/06_dynamic_skin.html)
-
-
-通过这种方式设置变量，默认样式将被您的自定义样式替换，Gantt 组件将采用您偏好的外观。
+通过以上方式定义变量，您可以重新定义默认样式，确保您的自定义样式应用到 Gantt 上。
 
 :::note
-为了确保整个主题变量的正确继承，请在 :root 元素上定义变量。
-:::
+为了在整个主题中正确继承值，请在 :root 元素中定义变量。
+::: 
 
-在 **:root** 层级定义这些样式，可以确保它们在整个组件中被正确继承。这样，如果更改了某个被其他变量依赖的变量，所有相关样式都会自动更新。
+在确保正确继承和应用于组件的前提下，将值重新定义会影响到与之相关的样式。
 
-例如，变量 `--dhx-gantt-scale-color` 继承自主文本颜色变量 `--dhx-gantt-container-color`。
+例如，变量 `--dhx-gantt-scale-color` 会从主文本颜色变量 `--dhx-gantt-container-color` 继承。
 
-- 当您在 **:root** 层级重新定义 `--dhx-gantt-container-color` 时，`--dhx-gantt-scale-color` 也会自动反映此更改。
+- 如果在 **:root** 级别重新定义 `--dhx-gantt-container-color`，就能确保 `--dhx-gantt-scale-color` 反映此更改。
 
 ~~~html
 <style>
 :root {
-    /* --dhx-gantt-scale-color 及其他
-  继承自 --dhx-gantt-container-color 的变量
-  都会受到影响
+    /* --dhx-gantt-scale-color 及其它
+  继承自 `--dhx-gantt-container-color` 的变量
+  将会受到影响
   */
   --dhx-gantt-container-color: #222;
 
@@ -151,103 +149,105 @@ sidebar_label: "皮肤自定义"
 </style>
 ~~~
 
-- 但如果您在 DOM 更深层级（如 **.gantt_container** 内部）重新定义 `--dhx-gantt-container-color`，则不会影响 `--dhx-gantt-scale-color`。
+- 如果在文档树的较低层级重新定义，例如在 **.gantt_container** 中，那么不会影响 `--dhx-gantt-scale-color` 变量。
 
 ~~~html
 <style>
 .gantt_container {
-    /* 只有直接使用 --dhx-gantt-container-color 的元素会受到影响 */
+    /* 只有直接使用 --dhx-gantt-container-color 的元素才会受到影响
+  */
   --dhx-gantt-container-color: #222;
 }
 </style>
 ~~~
 
-## 如何使用源码
+## 如何使用源代码
 
-dhtmlxGantt 提供了多种格式的样式文件:
+dhtmlxGantt 随附以下形式的样式文件：
 
-- **codebase/dhtmlxgantt.css** - 适用于生产环境的压缩皮肤 CSS 文件；
-- **codebase/sources/dhtmlxgantt.css** - 可读性较好的预构建 CSS 文件；
-- **codebase/sources/less/** - Gantt 皮肤的原始 less 文件。
+- **codebase/dhtmlxgantt.css** - 已预先构建的压缩 CSS 文件用于皮肤，适用于生产环境；
+- **codebase/sources/dhtmlxgantt.css** - 预构建的可读 CSS 文件；
+- **codebase/sources/less/** - Gantt 皮肤的源 Less 文件。
 
-如果您希望深度自定义现有皮肤或从零创建新皮肤，可以使用 less 文件。
+后者可用于对现有皮肤进行深度自定义或创建新皮肤。
 
 ## 如何开始
 
-您可以将 **codebase/sources/less** 视为一个 NPM 包。该目录包含两类文件:
+您可以将 **codebase/sources/less** 初始化为一个 NPM 包。
+源文件将包含两种类型的文件：
 
 - 样式表；
-- 用于微调 Gantt 视图或构建新皮肤的变量声明文件。
+- 带微变量声明的文件，您可以用来微调 gantt 视图或创建新皮肤。
 
 ## 如何构建皮肤
 
-在 **codebase/sources/less/** 目录下运行:
+在 **codebase/sources/less/** 运行：
 
-~~~
+~~~ 
 > npm install
 ~~~
 
-安装完成后，可通过以下命令重新构建 CSS 文件:
+安装完成后，您可以使用以下命令重新构建 CSS 文件：
 
-~~~
+~~~ 
 > npm run build
 ~~~
 
-或者，监听文件变更并自动重建:
+或者
 
-~~~
+~~~ 
 > npm run watch
 ~~~
 
-这些脚本会从源码编译 CSS 文件，并将其放入 Gantt 包的 *codebase* 文件夹，覆盖原有文件。
+该脚本将从源文件重新构建 CSS 文件并将它们放入 gantt 包的 *codebase* 文件夹中，替换现有文件。
 
-## 结构说明
+## 结构
 
-以下是 9.0 版本 **less** 文件夹的目录结构（未来版本可能会有变动）:
+版本 9.0 的 **less** 文件夹结构（未来版本可能更改）如下：
 
-### 图片
+### 图像
 
-- **./src/imgs** - 所有皮肤共用的 svg 图标
-- **./src/iconfont** - 预制为 web 字体的图标
+- **./src/imgs** - 所有皮肤使用的 svg 图标
+- **./src/iconfont** - 预构建到网页字体中的图标
 
 ### 皮肤定义
 
-默认变量在 `terrace` 皮肤中设置，其他皮肤通过覆盖这些变量并添加样式实现自定义。
+默认变量集合在 terrace 皮肤中定义，其他皮肤重新定义相应变量并添加样式。
 
 - **./src/themes**
-  - *./src/themes/variables.less* - 所有皮肤（包括 terrace）共用的通用变量
-  - *./src/themes/contrast_black* - 黑色高对比度皮肤变量
-  - *./src/themes/contrast_white* - 白色高对比度皮肤变量
+  - *./src/themes/variables.less* - 所有皮肤通用的变量，`terrace` 皮肤
+  - *./src/themes/contrast_black* - 对比黑皮肤变量
+  - *./src/themes/contrast_white* - 对比白皮肤变量
   - *./src/themes/material* - material 皮肤变量
-  - *./src/themes/dark* - 暗色皮肤变量
-  - *./src/themes/flat* - 扁平皮肤变量
+  - *./src/themes/dark* - 暗黑皮肤变量
+  - *./src/themes/flat* - 平面皮肤变量
 
-### 构建皮肤入口
+### 构建皮肤的入口
 
 - theme.less
 - package.json
 
 ## 创建自定义皮肤
 
-要创建新皮肤，可以从 **sources/less/src/themes** 复制并重命名一个现有皮肤。步骤如下:
+若要创建一个新的皮肤，您可以从 **sources/less/src/themes** 文件夹中复制并重命名现有皮肤之一。请按以下步骤进行：
 
-1) 复制并重命名现有文件，例如:
+1) 复制并重命名来自 **sources/less/src/themes** 文件夹的现有文件，例如：
 
-~~~
--> 复制：
+~~~ 
+-> copy:
 codebase/sources/less/src/themes/material.less
 
--> 重命名为：
+-> rename to:
 codebase/sources/less/src/themes/custom.less
 ~~~
 
-2) 在 **sources/less/src/themes/index.less** 中导入您的新文件:
+2) 在 **sources/less/src/themes/index.less** 中导入新文件，如下所示：
 
-~~~
+~~~ 
 @import "./custom";
 ~~~
 
-然后添加如下内容:
+并按如下内容添加：
 
 ~~~css
 :root[data-gantt-theme='custom'] {
@@ -259,28 +259,27 @@ codebase/sources/less/src/themes/custom.less
 }
 ~~~
 
-请注意，皮肤变量应在带有 `data-gantt-theme` 属性选择器的 `:root` 下定义。
+请注意，皮肤变量应在 `:root` 元素下定义，使用 `data-gantt-there` 选择器。
 
-每个新主题必须包含 **--dhx-gantt-theme** 变量，并指定主题名称。
+新主题必须包含带有主题名称的 **--dhx-gantt-theme** 变量。
 
-3) 重新构建皮肤，运行:
+3) 通过运行以下命令重新构建皮肤：
 
-~~~
+~~~ 
 npm run build
 ~~~
 
-
 :::note
-请注意，Gantt 可能会根据所用皮肤对日历应用一些预设配置。如果您通过复制现有皮肤创建新皮肤，可能需要在 Gantt 中手动调整这些设置。
+请注意，Gantt 可能会根据所应用的皮肤对日历应用一些预定义设置。
+当您通过复制现有皮肤来创建新皮肤时，您可能需要手动将相应设置应用到 Gantt。
 :::
 
 ## JS 样式设置
 
-Gantt 的某些样式方面是通过 JavaScript 配置控制的，而不是 CSS。例如:
+请注意，并非 Gantt 的所有样式方面都通过 CSS 控制，一些参数由 JavaScript 配置定义，例如以下属性：
 
 - [link_line_width](api/config/link_line_width.md)
 - [link_radius](api/config/link_radius.md)
 - [link_arrow_size](api/config/link_arrow_size.md)
 - [scale_height](api/config/scale_height.md)
 - [row_height](api/config/row_height.md)
-

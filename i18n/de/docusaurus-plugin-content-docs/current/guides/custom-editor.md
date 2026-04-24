@@ -5,44 +5,44 @@ sidebar_label: "Erstellen eines benutzerdefinierten Elements"
 
 # Erstellen eines benutzerdefinierten Elements
 
-Um ein benutzerdefiniertes Steuerelement zum Lightbox-Dialog hinzuzufügen, definieren Sie ein neues Objekt wie folgt:
+Um eine benutzerdefinierte Steuerung für das Lightbox-Fenster zu erstellen, definieren Sie ein neues Objekt folgendermaßen:
 
 ~~~js
 gantt.form_blocks["my_editor"]={
-    render:function(sns){ //sns - das Konfigurationsobjekt des Abschnitts
+    render:function(sns){ //sns - das Abschnitts-Konfigurationsobjekt
         return "html code of the editor here";
     },
     set_value:function(node,value,task,section){
-        //node - ein HTML-Element, das mit dem oben definierten HTML verbunden ist
-        //value - ein Wert, der durch die Eigenschaft map_to definiert ist
-        //task - das Aufgabenobjekt
-        //section- das Konfigurationsobjekt des Abschnitts
+        //node - ein HTML-Objekt, das sich auf das oben definierte HTML bezieht
+        //value - ein Wert, definiert durch die map_to-Eigenschaft
+        //task - das Task-Objekt
+        //section- das Abschnitts-Konfigurationsobjekt
         ... code to set value to the element ...
     },
     get_value:function(node,task,section){
-        //node - ein HTML-Element, das mit dem oben definierten HTML verbunden ist
-        //task - das Aufgabenobjekt
-        //section - das Konfigurationsobjekt des Abschnitts
+        //node - ein HTML-Objekt, das sich auf das oben definierte HTML bezieht
+        //task - das Task-Objekt
+        //section - das Abschnitts-Konfigurationsobjekt
         return "current value from editor";
     },
     focus:function(node){
-        //node - ein HTML-Element, das mit dem oben definierten HTML verbunden ist
+        //node - ein HTML-Objekt, das sich auf das oben definierte HTML bezieht
         ...code to set focus to the element...
     }
 }
 ~~~
 
-Beachten Sie, dass Sie **keine** selbstschließenden Tags im HTML-Code verwenden sollten, der von der "render"-Funktion zurückgegeben wird, da dies in einigen Browsern zu Parsing-Problemen führen kann:
+Stellen Sie sicher, dass Sie die kurze Schließ-Syntax für Tags im HTML-Code, der von der "render"-Funktion zurückgegeben wird, nicht verwenden, da dies Parsing-Probleme im Browser verursachen könnte:
 
 ~~~js
-//DAS IST FALSCH
+//dieses ist FALSCH
 render:function(){
     return "<div id='box'/>";
 }
 
-//Stattdessen Öffnungs- und Schließ-Tags verwenden:
+//stattdessen Öffnungs- und Schließ-Tags-Syntax verwenden:
 render:function(){
-    return "<div id='box'></div>"; // empfohlen
+    return "<div id='box'></div>";// empfohlen
 }
 ~~~
 
@@ -50,26 +50,26 @@ render:function(){
 [Custom control in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/04_custom_editor.html)
 
 
-Das Lightbox-Steuerelement besteht aus folgenden Methoden:
+Die Lightbox-Steuerung hat die folgenden Typen:
 
-- <span class="submethod">**render (sns): string**</span> - gibt einen String mit den HTML-Elementen für den Abschnitt zurück
-    - **_sns_** - (*LightboxSection*) - das Konfigurationsobjekt des Abschnitts
-- <span class="submethod">**set_value (node, value, task, section): any**</span> - übernimmt den Wert aus dem **Task**-Objekt und wendet ihn auf den Abschnitt an
-    - **_node_** - (*HTMLElement*) - ein HTML-Element, das mit dem HTML des Abschnitts verbunden ist
-    - **_value_** - (*any*) - ein Wert, der durch die Eigenschaft **map_to** definiert ist
-    - **_task_** - (*Task*) - das Aufgabenobjekt
-    - **_section_** - (*LightboxSection*) - das Konfigurationsobjekt des Abschnitts
-- <span class="submethod">**get_value (node, task, section): any**</span> - liest den Wert aus dem Abschnitt aus und speichert ihn zurück im **Task**-Objekt
-    - **_node_** - (*HTMLElement*) - ein HTML-Element, das mit dem HTML des Abschnitts verbunden ist
-    - **_task_** - (*Task*) - das Aufgabenobjekt
-    - **_section_** - (*LightboxSection*) - das Konfigurationsobjekt des Abschnitts
-- <span class="submethod">**focus (node): void**</span> - setzt den Fokus auf den Abschnitt
-    - **_node_** - (*HTMLElement*) - ein HTML-Element, das mit dem HTML des Abschnitts verbunden ist
+- <span class="submethod">**render (sns): string**</span> - eine Funktion, die eine Zeichenkette mit den HTML-Elementen des Abschnitts zurückgibt
+    - **_sns_** - (*LightboxSection*) - das Abschnitts-Konfigurationsobjekt
+- <span class="submethod">**set_value (node, value, task, section): any**</span> - eine Funktion, die den Wert aus dem **Task**-Objekt entnimmt und dem Abschnitt zuweist
+    - **_node_** - (*HTMLElement*) - ein HTML-Objekt, das sich auf das oben definierte HTML bezieht
+    - **_value_** - (*any*) - ein Wert, definiert durch die **map_to**-Eigenschaft
+    - **_task_** - (*Task*) - das Task-Objekt
+    - **_section_** - (*LightboxSection*) - das Abschnitts-Konfigurationsobjekt
+- <span class="submethod">**get_value (node, task, section): any**</span> - eine Funktion, die den Wert aus dem Abschnitt entnimmt und im **Task**-Objekt speichert
+    - **_node_** - (*HTMLElement*) - ein HTML-Objekt, das sich auf das oben definierte HTML bezieht
+    - **_task_** - (*Task*) - das Task-Objekt
+    - **_section_** - (*LightboxSection*) - das Abschnitts-Konfigurationsobjekt
+- <span class="submethod">**focus (node): void**</span> - eine Funktion, um den Fokus auf den Abschnitt zu setzen
+    - **_node_** - (*HTMLElement*) - ein HTML-Objekt, das sich auf das oben definierte HTML bezieht
 
 
-## Benutzerdefinierter Editor mit zwei Eingabefeldern
+## Benutzerdefinierter Editor mit zwei Eingaben
 
-Hier ein Beispiel für die Erstellung eines benutzerdefinierten Editors mit zwei Eingabefeldern:
+Betrachten wir, wie der folgende benutzerdefinierte Editor erstellt wird:
 
 ![custom_lightbox_editor](/img/custom_lightbox_editor.png)
   
@@ -80,7 +80,6 @@ gantt.form_blocks["my_editor"] = {
         return "<div class='dhx_cal_ltext' style='height:60px;'>"+
             "Text&nbsp;<input class='editor_description' type='text'>"+
             "
-
 Holders&nbsp;<input class='editor_holders' type='text'>"+
             "</div>";
     },
@@ -108,11 +107,12 @@ gantt.config.lightbox.sections = [
 [Custom control in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/04_custom_editor.html)
 
 
-## Benutzerdefiniertes Drittanbieter-Editorfeld {#customthirdpartyeditor}
+## Custom Drittanbieter-Editor {#customthirdpartyeditor}
 
-Es ist möglich, ein benutzerdefiniertes Multiselect-Steuerelement zu erstellen, um mehrere Werte auszuwählen.
+Sie können eine benutzerdefinierte Multiselect-Steuerung zum Auswählen mehrerer Werte erstellen. 
 
-Zum Beispiel kann ein Steuerelement auf Basis des [jQuery Chosen Plugins](https://harvesthq.github.io/chosen/) verwendet werden, um mehreren Ressourcen eine Aufgabe zuzuweisen. Im Gegensatz zum Standard-Gantt-[Ressourcen-Steuerelement](guides/resources.md) weist dieses Steuerelement nur Ressourcen zu, ohne Mengen anzugeben. Es ist eine einfache Option, wenn ein unkompliziertes Steuerelement bevorzugt wird.
+Beispielsweise können Sie eine Steuerung basierend auf dem [jQuery Chosen-Plugin](https://harvesthq.github.io/chosen/) verwenden, um mehrere Ressourcen einer Aufgabe zuzuweisen.
+Im Gegensatz zur standardmäßigen Gantt [Resource-Kontrolle](guides/resources.md) erlaubt sie lediglich das Zuweisen von Ressourcen zu einer Aufgabe, ohne deren Menge festzulegen. Allerdings kann sie nützlich sein, wenn Sie eine recht einfache Steuerung wünschen.
 
 ![Custom resources control](/img/custom_resources_control.png)
 
@@ -120,9 +120,9 @@ Zum Beispiel kann ein Steuerelement auf Basis des [jQuery Chosen Plugins](https:
 [3rd party multiselect control](https://docs.dhtmlx.com/gantt/samples/05_lightbox/14_jquery_multiselect.html)
 
 
-Um ein auf jQuery Chosen basierendes Steuerelement im Gantt-Diagramm zu integrieren:
+Um eine jQuery Chosen-basierte Steuerung im Gantt-Diagramm zu verwenden:
 
-- Binden Sie die benötigten Quell-Dateien auf Ihrer Seite ein
+- binden Sie deren Quellcode-Dateien in die Seite ein
 
 ~~~html
 <script
@@ -135,7 +135,7 @@ Um ein auf jQuery Chosen basierendes Steuerelement im Gantt-Diagramm zu integrie
     href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css?v="5.2.4"">
 ~~~
 
-- Definieren Sie die Logik des Steuerelements
+- die Steuerungslogik beschreiben
 
 ~~~js
 gantt.form_blocks["multiselect"] = {
@@ -192,8 +192,8 @@ focus: function (node) {
 };
 ~~~
 
-- Fügen Sie das Steuerelement als Lightbox-Abschnitt mit *type:"multiselect"* hinzu
-
+- verwenden Sie die Steuerung als Lightbox-Abschnitt mit dem Typ *type:"multiselect"*
+ 
 ~~~js
 gantt.config.lightbox.sections = [
     {name:"description",height:38,map_to:"text",type:"textarea",focus: true},
@@ -203,24 +203,25 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-Die *unassigned_value*-Eigenschaft blendet Ressourcen aus, die nicht zur Auswahl stehen sollen. Setzen Sie diese auf die ID der Ressource, die ausgeschlossen werden soll. Im obigen Beispiel wird die Ressource mit id="5" nicht im Steuerelement angezeigt.
+Die Eigenschaft *unassigned_value* im Steuerungsobjekt wird verwendet, um Ressourcen auszublenden, die im Steuerungselement nicht zur Auswahl stehen sollen. Sie müssen die entsprechende Ressourcen-ID als Wert dieser Eigenschaft setzen.
+Im obigen Beispiel wird die Ressource mit der ID="5" nicht als Option im Steuerungselement angezeigt.
 
-## Benutzerdefinierter Drittanbieter-Datepicker
+## Custom Drittanbieter-Datumsauswahl (Datepicker)
 
-Es ist ebenfalls möglich, ein benutzerdefiniertes Datepicker-Steuerelement zur Lightbox hinzuzufügen, um die Aufgabendauer durch Angabe von Start- und Enddatum festzulegen.
+Sie können eine benutzerdefinierte Datepicker-Steuerung im Lightbox verwenden, um die Dauer einer Aufgabe durch Angabe von Start- und Enddatum festzulegen.
 
 
-### jQuery Datepicker in der Lightbox
+### jQuery Datepicker im Lightbox
 
-Ein Datepicker-Steuerelement kann beispielsweise mit jQuery UI Datepicker erstellt werden.
+Beispielsweise können Sie eine Datepicker-Steuerung basierend auf dem jQuery UI Datepicker erstellen.
 
 ![Custom Datepicker control](/img/custom_datepicker.png)
 
-**Related example:** [3rd party Datepicker control](https://snippet.dhtmlx.com/ux7u9fqp)
+**Related sample** [3rd party Datepicker control](https://snippet.dhtmlx.com/ux7u9fqp)
 
-Um ein jQuery Datepicker-Steuerelement im Gantt-Diagramm zu verwenden:
+So verwenden Sie eine jQuery Datepicker-Steuerung im Gantt-Diagramm:
 
-- Binden Sie die jQuery-Bibliotheken auf Ihrer Seite ein:
+- binden Sie die Quellcode-Dateien der jQuery-Bibliothek in die Seite ein:
 
 ~~~html
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -229,7 +230,7 @@ Um ein jQuery Datepicker-Steuerelement im Gantt-Diagramm zu verwenden:
     href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 ~~~
 
-- Implementieren Sie die Logik für das Steuerelement:
+- beschreiben Sie die Steuerungslogik:
 
 ~~~js
 (function () {
@@ -241,17 +242,17 @@ Um ein jQuery Datepicker-Steuerelement im Gantt-Diagramm zu verwenden:
     }
           
     gantt.form_blocks["datepicker"] = {
-        render: function (sns) { //sns - das Konfigurationsobjekt des Abschnitts
+        render: function (sns) { //sns - das Abschnitts-Konfigurationsobjekt
             return "<div class='gantt-lb-datepicker'>"+
                 "<input type='text' name='start'>"+
                 "<input type='text' name='end'>"+
                 "</div>";;
         },
         set_value: function (node, value, task, section) {
-            //node - ein HTML-Element, das mit dem oben definierten HTML verbunden ist
-            //value - ein Wert, der durch die Eigenschaft map_to definiert ist
-            //task - das Aufgabenobjekt
-            //section- das Konfigurationsobjekt des Abschnitts
+            //node - ein HTML-Objekt, das sich auf das oben definierte HTML bezieht
+            //value - ein Wert, definiert durch die map_to-Eigenschaft
+            //task - das Task-Objekt
+            //section- das Abschnitts-Konfigurationsobjekt
           
             startDatepicker(node).datepicker({
                 dateFormat: "yy-mm-dd",
@@ -305,7 +306,7 @@ Um ein jQuery Datepicker-Steuerelement im Gantt-Diagramm zu verwenden:
 })();
 ~~~
 
-- Verwenden Sie das Steuerelement dann als Lightbox-Abschnitt mit *type:"datepicker"*:
+- verwenden Sie die Steuerung als Lightbox-Abschnitt mit dem Typ:"datepicker":
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -314,20 +315,19 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-
 ### Bootstrap Datepicker im Lightbox
 
-Das Hinzufügen eines Bootstrap Datepickers innerhalb des Lightbox funktioniert ähnlich wie die Integration des jQuery Datepickers.
+Ein Bootstrap Datepicker kann ähnlich wie der jQuery Datepicker in den Lightbox eingefügt werden.
 
 ![Bootstrap Datepicker control](/img/bootstrap_datepicker.png)
 
-**Related example:** [Bootstrap Datepicker control](https://snippet.dhtmlx.com/azx7vhli)
+**Related sample** [Bootstrap Datepicker control](https://snippet.dhtmlx.com/azx7vhli)
 
-So integrieren Sie ein Bootstrap Datepicker Control in das Gantt Chart:
+So verwenden Sie eine Bootstrap Datepicker-Steuerung im Gantt-Diagramm:
 
-- Binden Sie die Quell-Dateien der Bootstrap-Bibliothek auf der Seite ein;
+- binden Sie die Quellcode-Dateien der Bootstrap-Bibliothek in die Seite ein;
 
-- Definieren Sie die Logik für das Steuerelement:
+- beschreiben Sie die Steuerungslogik:
 
 ~~~js
 (function () {
@@ -403,7 +403,7 @@ So integrieren Sie ein Bootstrap Datepicker Control in das Gantt Chart:
 })();
 ~~~
 
-- Verwenden Sie dieses Steuerelement dann als Lightbox-Abschnitt, indem Sie type:"datepicker" angeben:
+- verwenden Sie die Steuerung als Lightbox-Abschnitt mit dem Typ:"datepicker":
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -412,17 +412,18 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-## Benutzerdefiniertes Drittanbieter-Dauer-Steuerelement
+## Custom Drittanbieter-Dauersteuerung
 
-Es ist auch möglich, ein benutzerdefiniertes Dauer-Steuerelement zur Lightbox hinzuzufügen, mit dem das Startdatum der Aufgabe zusammen mit der Dauer in Tagen festgelegt werden kann.
+Sie benötigen möglicherweise eine benutzerdefinierte Dauer-Steuerung im Lightbox-Fenster, um das Startdatum einer Aufgabe und die Anzahl der Tage festzulegen.
 
 ![Custom Duration control](/img/custom_duration_control.png)
 
-**Related example:** [3rd party Duration control](https://snippet.dhtmlx.com/snb64bz6)
+**Related sample** [3rd party Duration control](https://snippet.dhtmlx.com/snb64bz6)
 
-So fügen Sie ein benutzerdefiniertes Dauer-Steuerelement auf Basis von jQuery hinzu:
 
-- Binden Sie zunächst die Quell-Dateien der jQuery-Bibliothek auf der Seite ein:
+Betrachten wir, wie man eine benutzerdefinierte Duration-Steuerung auf Basis von jQuery hinzufügt:
+
+- binden Sie die Quellcode-Dateien der jQuery-Bibliothek in die Seite ein:
 
 ~~~html
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -431,7 +432,7 @@ So fügen Sie ein benutzerdefiniertes Dauer-Steuerelement auf Basis von jQuery h
     href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 ~~~
 
-- Definieren Sie dann die Logik für das Steuerelement:
+- beschreiben Sie die Logik der Steuerung:
 
 ~~~js
 (function () {
@@ -452,7 +453,7 @@ So fügen Sie ein benutzerdefiniertes Dauer-Steuerelement auf Basis von jQuery h
     });
 
     gantt.form_blocks["datepicker_duration"] = {
-        render: function (sns) { //sns - the section's configuration object
+        render: function (sns) { //sns - das Abschnitts-Konfigurationsobjekt
             return "<div class='gantt-lb-datepicker'>"+
                 "<label>Start:<input type='text' name='start'></label>"+
                 "<label>Duration: <input type='text' name='duration'></label>"+
@@ -460,10 +461,10 @@ So fügen Sie ein benutzerdefiniertes Dauer-Steuerelement auf Basis von jQuery h
                 "</div>";
         },
         set_value: function (node, value, task, section) {
-            //node - an html object related to the html defined above
-            //value - a value defined by the map_to property
-            //task - the task object
-            //section- the section's configuration object
+            //node - ein HTML-Objekt, das sich auf das oben definierte HTML bezieht
+            //value - ein Wert, definiert durch die map_to-Eigenschaft
+            //task - das Task-Objekt
+            //section- das Abschnitts-Konfigurationsobjekt
 
             startDatepicker(node).datepicker({
                 dateFormat: "yy-mm-dd",
@@ -521,7 +522,7 @@ So fügen Sie ein benutzerdefiniertes Dauer-Steuerelement auf Basis von jQuery h
 })();
 ~~~
 
-- Verwenden Sie dieses Steuerelement abschließend als Lightbox-Abschnitt mit type:"datepicker_duration":
+- verwenden Sie die Steuerung als Lightbox-Abschnitt mit dem Typ:"datepicker_duration":
 
 ~~~js
 gantt.config.lightbox.sections = [

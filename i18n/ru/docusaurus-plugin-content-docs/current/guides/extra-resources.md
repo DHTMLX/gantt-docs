@@ -1,17 +1,17 @@
 ---
-title: "Общие возможности"
-sidebar_label: "Общие возможности"
+title: "Общие функции"
+sidebar_label: "Общие функции"
 ---
 
-# Общие возможности
+# Общие функции
 
 - [Локализация](guides/localization.md)
-- [Полноэкранный режим](guides/fullscreen-mode.md)
+- [Режим полноэкранного просмотра](guides/fullscreen-mode.md)
 - [Экран пустого состояния](guides/empty-state-screen.md)
-- [Отмена и повтор изменений (Undo/Redo)](guides/undo-redo.md)
+- [Функциональность отмены и повторения](guides/undo-redo.md)
 - [Всплывающие сообщения и модальные окна](guides/message-boxes.md)
-- [Быстрая информация (Поддержка касаний)](guides/quick-info.md)
+- [Краткая информация (поддержка сенсорного ввода)](guides/quick-info.md)
 - [Доступность](guides/accessibility.md)
 - [Навигация с клавиатуры](guides/keyboard-navigation.md)
-- [Соответствие политике Content Security Policy (CSP)](guides/content-security-policy.md)
+- [Соответствие политике безопасности контента](guides/content-security-policy.md)
 - [Интеграция с JQuery](guides/jquery-integration.md)

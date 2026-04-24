@@ -1,20 +1,20 @@
----
+--- 
 sidebar_label: onAfterTaskDelete
-title: onAfterTaskDelete event
-description: "срабатывает сразу после того, как пользователь удаляет задачу"
----
+title: onAfterTaskDelete событие
+description: "срабатывает после того, как пользователь удаляет задачу"
+--- 
 
 # onAfterTaskDelete
 
 ### Description
 
-@short: Срабатывает сразу после того, как пользователь удаляет задачу
+@short: Срабатывает после того, как пользователь удаляет задачу
 
 @signature: onAfterTaskDelete: (id: string | number, task: Task) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string | number* - ID задачи
+- `id` - (required) *string | number* - идентификатор задачи
 - `task` - (required) *Task* - объект задачи
 
 ### Example
@@ -27,4 +27,3 @@ gantt.attachEvent("onAfterTaskDelete", function(id,task){
 
 ### Related API
 - [deleteTask](api/method/deletetask.md)
-

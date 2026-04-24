@@ -1,20 +1,20 @@
 ---
 sidebar_label: onAfterBranchLoading
 title: onAfterBranchLoading event
-description: "Когда включена динамическая подгрузка, это событие срабатывает сразу после того, как ветка задач загрузилась на странице."
+description: "если включена динамическая загрузка, срабатывает после загрузки ветви задачи на страницу"
 ---
 
 # onAfterBranchLoading
 
 ### Description
 
-@short: Когда включена динамическая подгрузка, это событие срабатывает сразу после того, как ветка задач загрузилась на странице.
+@short: Если включена динамическая загрузка, срабатывает после того, как ветка задачи была загружена на страницу
 
 @signature: onAfterBranchLoading: (settings: any) =\> void;
 
 ### Parameters
 
-- `settings` - (required) *object* - Объект, содержащий ID задачи и URL запроса.
+- `settings` - (обязательный) *объект* - объект, содержащий идентификатор задачи и URL запроса
 
 ### Example
 
@@ -26,7 +26,7 @@ gantt.attachEvent("onAfterBranchLoading", function(settings){
 
 ### Details
 
-Объект `settings` включает два свойства: ID задачи и URL, использованный для запроса:
+Объект `settings` содержит два свойства: идентификатор задачи и URL запроса:
 
 ~~~js
 {
@@ -35,7 +35,7 @@ gantt.attachEvent("onAfterBranchLoading", function(settings){
 }
 ~~~
 
-Это событие происходит только если включена [Динамическая подгрузка](guides/loading.md).
+Это событие срабатывает только при включенной динамической загрузке [Dynamic loading](guides/loading.md).
 
 ### Related API
 - [onBeforeBranchLoading](api/event/onbeforebranchloading.md)
@@ -43,5 +43,4 @@ gantt.attachEvent("onAfterBranchLoading", function(settings){
 - [branch_loading_property](api/config/branch_loading_property.md)
 
 ### Related Guides
-- [Загрузка данных](guides/loading.md)
-
+- [Data Loading](guides/loading.md)

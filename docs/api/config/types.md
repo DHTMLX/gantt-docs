@@ -26,7 +26,7 @@ var type1 = gantt.config.types.task;
 ### Details
 
 :::note
-pronote This functionality is available in the PRO edition only. 
+This functionality is available in the PRO edition only. 
 :::
 
 The 'types' object consists of the **"type programmatic name"**: **"type identifier"** pairs:

@@ -1,20 +1,20 @@
 ---
 sidebar_label: columnIndexByDate
-title: columnIndexByDate method
-description: "bietet den Index der Spalte, die einem bestimmten Datum entspricht"
+title: columnIndexByDate Methode
+description: "Gibt den Index der Spalte anhand des Datums zurück"
 ---
 
 # columnIndexByDate
 
 ### Description
 
-@short: Bietet den Index der Spalte, die einem bestimmten Datum entspricht
+@short: Gibt den Index der Spalte anhand des Datums zurück
 
 @signature: columnIndexByDate: (date: Date) =\> number
 
 ### Parameters
 
-- `date` - (required) *Date* - ein Date-Objekt
+- `date` - (erforderlich) *Date* - ein Datumsobjekt
 
 ### Returns
 - ` index` - (number) - der Index der Spalte

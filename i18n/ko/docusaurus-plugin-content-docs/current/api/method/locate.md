@@ -1,23 +1,23 @@
 ---
 sidebar_label: locate
-title: locate method
-description: "주어진 HTML 이벤트를 기반으로 작업의 id를 가져옵니다"
+title: locate 메서드
+description: "지정된 HTML 이벤트에서 작업의 ID를 가져옵니다"
 ---
 
 # locate
 
 ### Description
 
-@short: 주어진 HTML 이벤트를 기반으로 작업의 id를 가져옵니다
+@short: 지정된 HTML 이벤트에서 작업의 ID를 가져옵니다
 
-@signature: locate: (e: Event) =\> string | number
+@signature: locate: (e: Event) => string | number
 
 ### Parameters
 
-- `e` - (required) *Event* - 네이티브 이벤트 객체
+- `e` - (필수) *Event* - 네이티브 이벤트
 
 ### Returns
-- ` id` - (string | number) - 작업의 식별자
+- ` id` - (string | number) - 작업 ID
 
 ### Example
 
@@ -34,4 +34,3 @@ gantt.$container.addEventListener("mouseover", function(event){
 
 ### Related API
 - [task_attribute](api/config/task_attribute.md)
-

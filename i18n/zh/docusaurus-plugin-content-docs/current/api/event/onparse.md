@@ -1,14 +1,14 @@
 ---
 sidebar_label: onParse
-title: onParse event
-description: "当数据解析完成（准备好供API使用）但尚未显示在甘特图中时触发"
+title: onParse 事件
+description: "在数据被解析后（对 API 可用）但在甘特图渲染之前触发"
 ---
 
 # onParse
 
 ### Description
 
-@short: 当数据解析完成（准备好供API使用）但尚未显示在甘特图中时触发
+@short: 数据在解析后可供 API 使用，但在甘特图渲染之前触发
 
 @signature: onParse: () =\> void;
 
@@ -16,7 +16,7 @@ description: "当数据解析完成（准备好供API使用）但尚未显示在
 
 ~~~jsx
 gantt.init("gantt_here");
-gantt.attachEvent("onParse", function(){alert("数据已解析")});
+gantt.attachEvent("onParse", function(){alert("Data was parsed")});
 
 gantt.parse(demo_tasks);
 ~~~
@@ -30,4 +30,3 @@ gantt.parse(demo_tasks);
 - [onDataRender](api/event/ondatarender.md)
 - [onGanttRender](api/event/onganttrender.md)
 - [onLoadEnd](api/event/onloadend.md)
-

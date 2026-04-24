@@ -1,23 +1,23 @@
 ---
 sidebar_label: getPrev
-title: getPrev method
-description: "获取前一个项目的id，无论其嵌套层级如何--无论是在同一层级还是不同层级。"
+title: getPrev 方法
+description: "返回前一个项的 id（无论嵌套层级是相同还是不同）"
 ---
 
 # getPrev
 
 ### Description
 
-@short: 获取前一个项目的id，无论其嵌套层级如何--无论是在同一层级还是不同层级。
+@short: 返回前一个项的 id（无论嵌套层级是相同还是不同）
 
 @signature: getPrev: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    任务的id
+- `id` - (required) *string | number* -    任务 id
 
 ### Returns
-- ` id` - (string, number) - 指定任务之前的任务id
+- ` id` - (string, number) - 前一个任务的 id
 
 ### Example
 
@@ -50,5 +50,4 @@ gantt.getPrev("t_2"); -> "t_1"  /*!*/
 - [getPrevSibling](api/method/getprevsibling.md)
 
 ### Related Guides
-- [任务的父子关系](guides/task-tree-operations.md)
-
+- [任务父子关系](guides/task-tree-operations.md)

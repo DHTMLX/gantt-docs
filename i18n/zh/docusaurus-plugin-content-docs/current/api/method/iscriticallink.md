@@ -5,21 +5,23 @@ description: "判断给定的链接是否为关键路径链接"
 ---
 
 # isCriticalLink
+
 :::info
- 此功能仅包含在 PRO 版本中。 
+此功能仅在 PRO 版中可用。
 :::
+
 ### Description
 
-@short: 判断给定的链接是否为关键路径链接
+@short: 检查指定链接是否为关键路径
 
 @signature: isCriticalLink: (link: Link) =\> boolean
 
 ### Parameters
 
-- `link` - (required) *Link* - 要检查的链接对象
+- `link` - (required) *Link* - 链接对象
 
 ### Returns
-- ` value` - (boolean) - 如果链接是关键路径，返回 'true'，否则返回 'false'
+- ` value` - (boolean) - 如果指定链接是关键路径，则返回 'true'，否则返回 'false'
 
 ### Example
 
@@ -40,20 +42,18 @@ gantt.config.highlight_critical_path = true; /*!*/
 gantt.init("gantt_here");
 gantt.parse(tasks);
 
-gantt.isCriticalLink(gantt.getLink(2)); // -> 'false' /*!*/
+gantt.isCriticalLink(gantt.getLink(2));// ->'false' /*!*/
 ~~~
 
 ### Related samples
-- [Critical path](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
+- [关键路径](https://docs.dhtmlx.com/gantt/samples/02_extensions/03_critical_path.html)
 
 ### Details
 
 :::note
- 此方法属于 **critical_path** 扩展的一部分，请确保启用了 [critical_path](guides/extensions-list.md) 插件。更多信息请参见 [关键路径](guides/critical-path.md) 文章。 
+此方法在 **critical_path** 扩展中定义，因此需要激活 [critical_path](guides/extensions-list.md#critical-path) 插件。请在 [Critical Path](guides/critical-path.md) 文章中了解详细信息。
 :::
 
-
-![iscritical_path](/img/iscritical_path.png)
 
 ### Related API
 - [highlight_critical_path](api/config/highlight_critical_path.md)
@@ -61,4 +61,3 @@ gantt.isCriticalLink(gantt.getLink(2)); // -> 'false' /*!*/
 
 ### Related Guides
 - [关键路径](guides/critical-path.md)
-

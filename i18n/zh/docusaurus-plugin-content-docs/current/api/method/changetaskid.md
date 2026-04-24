@@ -1,21 +1,21 @@
 ---
 sidebar_label: changeTaskId
-title: changeTaskId method
-description: "更新任务的 id"
+title: changeTaskId 方法
+description: "更改任务的 ID"
 ---
 
 # changeTaskId
 
 ### Description
 
-@short: 更新任务的 id
+@short: 更改任务的 ID
 
 @signature: changeTaskId: (id: string | number, new_id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    当前任务的 id
-- `new_id` - (required) *string | number* -    新的任务 id
+- `id` - (required) *string | number* -    当前任务的 ID
+- `new_id` - (required) *string | number* -    新任务的 ID
 
 ### Example
 
@@ -32,9 +32,8 @@ gantt.changeTaskId(10, 15); //将任务的 id 从 '10' 更新为 '15' /*!*/
 
 ### Details
 
-此方法会触发 [onTaskIdChange](api/event/ontaskidchange.md) 事件。
+该方法会触发 [onTaskIdChange](api/event/ontaskidchange.md) 事件。
 
 ### Related API
 - [onTaskIdChange](api/event/ontaskidchange.md)
 - [changeLinkId](api/method/changelinkid.md)
-

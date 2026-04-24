@@ -1,19 +1,19 @@
----
+--- 
 sidebar_label: getScale
-title: getScale method
-description: "gibt die aktuelle Konfiguration der Zeitskala zurück"
+title: getScale Methode
+description: "liefert die Konfiguration der Zeitachse"
 ---
 
 # getScale
 
 ### Description
 
-@short: Gibt die aktuelle Konfiguration der Zeitskala zurück
+@short: Gibt die Konfiguration der Zeitachse zurück
 
 @signature: getScale: () =\> any
 
 ### Returns
-- ` scale` - (object) - die aktuelle Konfiguration der Zeitskala
+- `scale` - (object) - die Konfiguration der Zeitachse
 
 ### Example
 
@@ -23,4 +23,3 @@ gantt.getScale();
 
 ### Related API
 - [getLayoutView](api/method/getlayoutview.md)
-

@@ -8,16 +8,16 @@ description: "erstellt eine tiefgehende Kopie des angegebenen Objekts"
 
 ### Description
 
-@short: Erstellt eine tiefgehende Kopie des angegebenen Objekts
+@short: Erstellt eine tiefe Kopie des übergebenen Objekts
 
 @signature: copy: (initialObject: any) =\> any
 
 ### Parameters
 
-- `initialObject` - (required) *object* - das zu kopierende Objekt
+- `initialObject` - (required) *object* - das Objekt, das kopiert werden muss
 
 ### Returns
-- ` clonedObject` - (object) - eine tiefgehende Kopie des angegebenen Objekts
+- ` clonedObject` - (object) - eine tiefe Kopie des übergebenen Objekts
 
 ### Example
 
@@ -26,4 +26,4 @@ var backupTask = gantt.copy(gantt.getTask(id));
 ~~~
 
 ### Change log
-- hinzugefügt in Version 4.0
+- in Version 4.0 hinzugefügt

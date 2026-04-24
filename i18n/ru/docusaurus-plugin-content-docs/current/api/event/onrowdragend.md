@@ -1,49 +1,47 @@
 ---
 sidebar_label: onRowDragEnd
-title: onRowDragEnd event
-description: "срабатывает после того, как пользователь отпускает строку, которая была перемещена вертикально в grid"
+title: Событие onRowDragEnd
+description: "срабатывает после того, как пользователь отпускает вертикально упорядоченную строку в сетке"
 ---
 
 # onRowDragEnd
 
-### Description
+### Описание
 
-@short: Срабатывает после того, как пользователь отпускает строку, которая была перемещена вертикально в grid
+@short: Срабатывает после того, как пользователь отпускает вертикально упорядоченную строку в сетке
 
-@signature: onRowDragEnd: (id: string | number, target: string | number) =\> void;
+@signature: onRowDragEnd: (id: string | number, target: string | number) => void;
 
-### Parameters
+### Параметры
 
-- `id` - (required) *string | number* - ID задачи, которая была перетащена вертикально внутри grid
-- `target` - (required) *string | number* - ID задачи, позицию которой заняла перетаскиваемая строка
+- `id` - (required) *string | number* - идентификатор задачи, которую пользователь перетащил вертикально в сетке
+- `target` - (required) *string | number* - идентификатор задачи, которую занимает место перетаскиваемой строки
 
-### Example
+### Пример
 
 ~~~jsx
 gantt.attachEvent("onRowDragEnd", function(id, target) {
-    // здесь можно добавить пользовательскую логику
+    // любая ваша логика здесь
 });
 ~~~
 
-### Related samples
+### Связанные образцы
 - [Branch ordering](https://docs.dhtmlx.com/gantt/samples/07_grid/02_branch_ordering.html)
 
-### Details
+### Подробности
 
 :::note
-
-Это событие срабатывает, когда задача перемещается с помощью мыши в левой части grid, при условии, что включена настройка [order_branch](api/config/order_branch.md). Если перестановка веток отключена, это событие вызвано не будет.
- 
+Событие срабатывает, когда задача перемещается указателем мыши в левой панели сетки, при включенной настройке [order_branch](api/config/order_branch.md). Если переупорядование ветвей отключено, событие никогда не будет вызвано.
 :::
 
-Параметр **target** содержит ID ближайшей задачи, которая находится либо непосредственно перед, либо непосредственно после перемещённой задачи.
+Параметр **target** будет содержать идентификатор ближайшей задачи, которая идет перед текущей задачей или сразу после нее.
 
-Существует два возможных формата этого значения:
+Его значение может быть представлено в одной из двух форм:
 
-- *target=targetId* - перемещённая задача должна быть размещена прямо **перед** задачей с targetId
-- *target=next:targetId* - перемещённая задача должна быть размещена прямо **после** задачи с targetId (так происходит, если заменяется последняя задача в диаграмме)
+- target=targetId — текущая задача должна располагаться непосредственно перед задачей с идентификатором targetId
+- target=next:targetId — текущая задача должна располагаться непосредственно после задачи с идентификатором targetId (происходит, если вы заменяете последнюю задачу на графике)
 
-Пример того, как извлечь ID задачи из формата *next:targetId*:
+Пример получения идентификатора цели в формате *next:targetId*:
 
 ~~~js
 gantt.attachEvent("onRowDragEnd", function(id, target) {
@@ -57,11 +55,10 @@ gantt.attachEvent("onRowDragEnd", function(id, target) {
 });
 ~~~
 
-### Related API
+### Связанные API
 - [onBeforeRowDragEnd](api/event/onbeforerowdragend.md)
 - [onRowDragStart](api/event/onrowdragstart.md)
 - [order_branch](api/config/order_branch.md)
 
-### Related Guides
-- [Изменение порядка задач](guides/reordering-tasks.md)
-
+### Связанные руководства
+- [Reordering Tasks](guides/reordering-tasks.md)

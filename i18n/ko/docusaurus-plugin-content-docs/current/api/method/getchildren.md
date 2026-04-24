@@ -1,23 +1,23 @@
 ---
 sidebar_label: getChildren
-title: getChildren method
-description: "주어진 부모 브랜치의 직속 자식 작업들을 가져옵니다."
+title: getChildren 메서드
+description: "지정된 부모 브랜치의 1단계 자식 작업을 반환합니다"
 ---
 
-# getChildren
+# getChildren 메서드
 
 ### Description
 
-@short: 주어진 부모 브랜치의 직속 자식 작업들을 가져옵니다.
+@short: 지정된 부모 브랜치의 1단계 자식 작업을 반환합니다
 
-@signature: getChildren: (id: string | number) =\> any[]
+@signature: getChildren: (id: string | number) => any[]
 
 ### Parameters
 
-- `id` - (required) *string | number* -        부모 브랜치의 id
+- `id` - (필수) *string | number* - 상위 브랜치의 ID
 
 ### Returns
-- ` ids` - (array) - 자식 작업들의 id를 담고 있는 배열
+- ` ids` - (배열) - 자식들의 ID 배열
 
 ### Example
 
@@ -43,7 +43,7 @@ gantt.getChildren("p_1");//->["t_1", "t_2"] /*!*/
 
 ### Details
 
-특정 작업의 자식 작업들을 순회하는 또 다른 방법은 [eachTask](api/method/eachtask.md)를 사용하는 것입니다.
+다른 작업의 자식 태스크를 반복(iterate)하는 또 다른 방법은 [eachTask](api/method/eachtask.md)입니다.
 
 ### Related API
 - [hasChild](api/method/haschild.md)

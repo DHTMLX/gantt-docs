@@ -1,36 +1,36 @@
 ---
 sidebar_label: onLinkCreated
 title: onLinkCreated event
-description: "当用户在任务之间建立新连接时触发"
+description: "当用户创建任务之间的新链接时触发"
 ---
 
 # onLinkCreated
 
 ### Description
 
-@short: 当用户在任务之间建立新连接时触发
+@short: 当用户创建任务之间的新链接时触发
 
 @signature: onLinkCreated: (link: Link) =\> boolean;
 
 ### Parameters
 
-- `link` - (required) *Link* - 新创建的链接对象
+- `link` - (required) *Link* - 新链接的对象
 
 ### Returns
-- ` result` - (boolean) - 返回 `false` 会阻止新链接的创建，返回 `true` 则允许默认操作继续执行
+- ` result` - (boolean) - 返回 `false` 将取消新链接的创建，返回 `true` 将继续默认处理
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onLinkCreated", function(link){
-    // 你的代码
+    // 在这里插入您的自定义逻辑 
     return true;
 });
 ~~~
 
 ### Details
 
-此事件发生在新链接显示之前，提供了**阻止链接被创建**的选项。
+该事件在新链接显示之前触发，允许你**取消链接的创建**。
 
 ### Change log
-- v6.2.2 中新增
+- 在 v6.2.2 中新增

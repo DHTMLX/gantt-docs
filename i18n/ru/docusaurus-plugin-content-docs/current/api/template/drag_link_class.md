@@ -1,26 +1,26 @@
 ---
 sidebar_label: drag_link_class
-title: drag_link_class template
-description: "определяет CSS класс, применяемый к всплывающему окну (tooltip), которое показывается, когда пользователь перетаскивает ссылку."
+title: drag_link_class шаблон
+description: "задает CSS класс, который будет применяться к всплывающему окну, которое появляется при перетаскивании ссылки"
 ---
 
 # drag_link_class
 
 ### Description
 
-@short: Определяет CSS класс, применяемый к всплывающему окну (tooltip), которое показывается, когда пользователь перетаскивает ссылку.
+@short: Задает CSS класс, который будет применяться к всплывающему окну, которое появляется при перетаскивании ссылки
 
-@signature: drag_link_class: (from: string | number, from_start: boolean, to: string | number, to_start: boolean) =\> string | void;
+@signature: drag_link_class: (from: string | number, from_start: boolean, to: string | number, to_start: boolean) => string | void;
 
 ### Parameters
 
-- `from` - (required) *string | number* - ID исходной задачи
-- `from_start` - (required) *boolean* - <i>true</i>, если ссылка перетаскивается с начала исходной задачи, <i>false</i>, если с конца
-- `to` - (required) *string | number* - ID целевой задачи ('null' или 'undefined', если целевая задача ещё не задана)
-- `to_start` - (required) *boolean* - <i>true</i>, если ссылка перетаскивается к началу целевой задачи, <i>false</i>, если к концу
+- `from` - (required) *string | number* - идентификатор исходной задачи
+- `from_start` - (required) *boolean* - <i>true</i>, если ссылка перетаскивается от начала исходной задачи, <i>false</i> - если от конца задачи
+- `to` - (required) *string | number* - идентификатор целевой задачи ('null' или 'undefined', если целевая задача ещё не указана)
+- `to_start` - (required) *boolean* - <i>true</i>, если ссылка перетаскивается к началу целевой задачи, <i>false</i> - если <br/> к концу задачи
 
 ### Returns
-- ` text` - (string | void) - CSS класс для соответствующего элемента
+- ` text` - (string | void) - CSS-класс для данного элемента
 
 ### Example
 
@@ -36,4 +36,4 @@ gantt.templates.drag_link_class = function(from, from_start, to, to_start) {
 ~~~
 
 ### Related Guides
-- [Шаблоны связей зависимостей](guides/dependency-templates.md)
+- [Шаблоны зависимостей](guides/dependency-templates.md)

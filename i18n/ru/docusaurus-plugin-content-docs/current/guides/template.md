@@ -3,9 +3,9 @@ title: "Контрол Template"
 sidebar_label: "Контрол Template"
 ---
 
-# Контрол Template
+# Управление шаблоном
 
-Это контейнер, который содержит некоторый HTML-контент внутри.
+Контейнер с некоторым HTML-контентом внутри.
 
 ![template_control](/img/template_control.png)
 
@@ -31,9 +31,9 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 ## Инициализация
 
-Чтобы добавить контрол **template** в лайтбокс, выполните следующие действия:
+Чтобы добавить элемент управления **template** в lightbox, выполните следующие шаги:
 
-1) Добавьте секцию в конфигурацию лайтбокса:
+1) Добавьте раздел в конфигурацию lightbox:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -43,13 +43,13 @@ gantt.config.lightbox.sections = [
 ];
 ~~~
 
-2) Задайте метку для секции:
+2) Установите подпись к разделу:
 
 ~~~js
 gantt.locale.labels.section_template = "Details";
 ~~~
 
-3) Заполните содержимое контрола с помощью события, например, события [onBeforeLightbox](api/event/onbeforelightbox.md):
+3) Установите содержимое элемента управления с помощью некоторого события, например события [onBeforeLightbox](api/event/onbeforelightbox.md):
 
 ~~~js
 gantt.attachEvent("onBeforeLightbox", function(id) {
@@ -63,11 +63,10 @@ gantt.attachEvent("onBeforeLightbox", function(id) {
 
 ## Свойства
 
-Ниже приведены основные свойства, часто используемые с контролом **template** (полный список смотрите [здесь](api/config/lightbox.md)):
+Ниже приведённые свойства являются наиболее важными и обычно устанавливаются для элемента управления **template** (см. полный список [здесь](api/config/lightbox.md)):
 
-- **name** - (*string*) задаёт имя секции 
-- **height** - (*number*) устанавливает высоту секции
-- **map_to** - (*string*) свойство данных, к которому привязана секция
-- **type** - (*string*) определяет тип [контрола секции](guides/default-edit-form.md#lightboxcontrols)
-- **focus** - (*boolean*) если установлено в *true*, секция получает фокус при открытии лайтбокса
-
+- **name** - (*string*) имя раздела 
+- **height** - (*number*) высота раздела
+- **map_to** - (*string*) имя свойства данных, которое будет сопоставлено с разделом
+- **type** - (*string*) тип [контроля секции](guides/default-edit-form.md#lightboxcontrols)
+- **focus** - (*boolean*) если установлен в *true*, раздел будет получать фокус при открытии lightbox

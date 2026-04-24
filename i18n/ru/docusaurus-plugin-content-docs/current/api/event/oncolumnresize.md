@@ -1,7 +1,7 @@
 ---
 sidebar_label: onColumnResize
 title: onColumnResize event
-description: "срабатывает, когда пользователь перетаскивает границу колонки для изменения её ширины"
+description: "срабатывает, когда пользователь перетаскивает границу столбца для изменения его ширины"
 ---
 
 # onColumnResize
@@ -10,15 +10,15 @@ description: "срабатывает, когда пользователь пер
 :::
 ### Description
 
-@short: Срабатывает, когда пользователь перетаскивает границу колонки для изменения её ширины
+@short: Вызывается, когда пользователь перетаскивает границу столбца для изменения его ширины
 
 @signature: onColumnResize: (index: number, column: GridColumn, new_width: number) =\> void;
 
 ### Parameters
 
-- `index` - (required) *number* - индекс колонки
-- `column` - (required) *GridColumn* - объект колонки
-- `new_width` - (required) *number* - обновлённая ширина колонки
+- `index` - (required) *number* - индекс столбца
+- `column` - (required) *GridColumn* - объект столбца
+- `new_width` - (required) *number* - новая ширина столбца
 
 ### Example
 
@@ -27,15 +27,14 @@ gantt.attachEvent("onColumnResize", function(index, column, new_width){
     if(!message){
         message = gantt.message({expire:-1,
         text:`<b>${gantt.locale.labels["column_"+column.name]}
-        </b> теперь имеет ширину <b id='width_placeholder'></b><b>px</b>`});
+        </b> is now <b id='width_placeholder'></b><b>px</b> width`});
     }
     document.getElementById("width_placeholder").innerText = new_width
 });
 ~~~
 
 ### Related samples
-- [Grid columns resize events](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
-
+- [События изменения размера столбцов сетки](https://docs.dhtmlx.com/gantt/samples/02_extensions/04_grid_resize.html)
 
 ### Related API
 - [onColumnResizeStart](api/event/oncolumnresizestart.md)
@@ -43,5 +42,4 @@ gantt.attachEvent("onColumnResize", function(index, column, new_width){
 - [onGridResize](api/event/ongridresize.md)
 
 ### Related Guides
-- [Указание колонок](guides/specifying-columns.md#resizing)
-
+- [Указание столбцов](guides/specifying-columns.md#resizing)

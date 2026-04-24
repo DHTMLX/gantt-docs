@@ -1,27 +1,27 @@
 ---
 sidebar_label: onScaleClick
-title: onScaleClick event
-description: "Wird ausgelöst, wenn ein Benutzer auf eine Zelle innerhalb der Zeitskala klickt"
+title: onScaleClick-Ereignis
+description: "Wird ausgelöst, wenn der Benutzer auf die Zelle in der Zeitachse klickt"
 ---
 
 # onScaleClick
 
 ### Description
 
-@short: Wird ausgelöst, wenn ein Benutzer auf eine Zelle innerhalb der Zeitskala klickt
+@short: Wird ausgelöst, wenn der Benutzer auf die Zelle in der Zeitachse klickt
 
 @signature: onScaleClick: (e: Event, date: Date) =\> void;
 
 ### Parameters
 
-- `e` - (required) *Event* - Ein natives Event-Objekt
-- `date` - (required) *Date* - Das Datum, das der angeklickten Zelle entspricht
+- `e` - (erforderlich) *Event* - ein natives Event-Objekt
+- `date` - (erforderlich) *Date* - das Datum der angeklickten Zelle
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onScaleClick", function (e, date) {
-    //Ihr eigener Code
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 

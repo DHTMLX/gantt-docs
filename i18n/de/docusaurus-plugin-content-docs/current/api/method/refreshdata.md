@@ -1,14 +1,14 @@
 ---
 sidebar_label: refreshData
 title: refreshData method
-description: "aktualisiert die Daten im Gantt-Diagramm"
+description: "aktualisiert Daten im Gantt-Diagramm"
 ---
 
 # refreshData
 
 ### Description
 
-@short: Aktualisiert die Daten im Gantt-Diagramm
+@short: Aktualisiert Daten im Gantt-Diagramm
 
 @signature: refreshData: () =\> void
 
@@ -19,20 +19,20 @@ gantt.refreshData();
 ~~~
 
 ### Related samples
-- [Basic filtering](https://docs.dhtmlx.com/gantt/samples/07_grid/03_filtering.html)
+- [Grundlegende Filterung](https://docs.dhtmlx.com/gantt/samples/07_grid/03_filtering.html)
 
 ### Details
 
-Diese Methode dient dazu, die bereits im Gantt-Diagramm vorhandenen Daten neu zu zeichnen, ohne sie neu zu laden. Hier ein Beispiel zur Veranschaulichung:
+Die Methode dient nicht zum Neuladen, sondern zum Neuzeichnen der Daten im Gantt-Diagramm. Siehe das Beispiel:
 
 :::note
-Sample: [Gantt. Daten neu zeichnen](https://snippet.dhtmlx.com/ces4sfdh) 
+sample: [Gantt. Daten neu zeichnen](https://snippet.dhtmlx.com/ces4sfdh)
 :::
 
-Wenn Sie Daten vom Server abrufen müssen, sollten Sie stattdessen die Methoden [parse()](api/method/parse.md) oder [load()](api/method/load.md) verwenden.
+Wenn Sie Daten vom Server laden müssen, verwenden Sie entweder die [parse()](api/method/parse.md) oder [load()](api/method/load.md) Methode.
 
 :::note
-Sample: [Gantt. Daten aus verschiedenen Datenobjekten laden](https://snippet.dhtmlx.com/h9ob1hxr) 
+sample: [Gantt. Daten aus unterschiedlichen Datenobjekten laden](https://snippet.dhtmlx.com/h9ob1hxr)
 :::
 
 ### Related API
@@ -40,5 +40,4 @@ Sample: [Gantt. Daten aus verschiedenen Datenobjekten laden](https://snippet.dht
 - [refreshTask](api/method/refreshtask.md)
 
 ### Related Guides
-- ["Grundlegende Operationen mit Aufgaben"](guides/crud-task.md)
-
+- [Grundlegende Operationen mit Aufgaben](guides/crud-task.md)

@@ -1,26 +1,26 @@
 ---
 sidebar_label: onBeforeMultiSelect
-title: onBeforeMultiSelect event
-description: "Löst aus, kurz bevor eine oder mehrere Aufgaben ausgewählt werden"
+title: onBeforeMultiSelect Event
+description: "Wird ausgelöst, bevor eine Aufgabe oder mehrere Aufgaben ausgewählt werden"
 ---
 
 # onBeforeMultiSelect
 
 ### Description
 
-@short: Löst aus, kurz bevor eine oder mehrere Aufgaben ausgewählt werden
+@short: Wird ausgelöst, bevor eine Aufgabe oder mehrere Aufgaben ausgewählt werden
 
 @signature: onBeforeMultiSelect: (e: Event) =\> void;
 
 ### Parameters
 
-- `e` - (required) *Event* - das native Event-Objekt
+- `e` - (erforderlich) *Event* - ein natives Event-Objekt
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeMultiSelect", function(e){
-    // some logic here
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
     return true;
 });
 ~~~
@@ -28,11 +28,10 @@ gantt.attachEvent("onBeforeMultiSelect", function(e){
 ### Details
 
 :::note
-note Dieses Event ist Teil der **multiselect**-Erweiterung, daher stellen Sie sicher, dass das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktiviert ist. Für weitere Details lesen Sie den Artikel ["Multi-Task-Auswahl"](guides/multiselection.md). 
+Dieses Event ist in der **multiselect**-Erweiterung definiert, daher müssen Sie das [multiselect](guides/extensions-list.md#multitaskselection) Plugin aktivieren. Lesen Sie die Details im Artikel [Multi-Task Selection](guides/multiselection.md). 
 :::
 
-
-Dieses Event kann blockiert werden - wenn *false* zurückgegeben wird, wird die Mehrfachauswahl von Aufgaben verhindert.
+Dieses Event ist blockierbar; wird *false* zurückgegeben, wird die Mehrfachauswahl von Aufgaben abgebrochen.
 
 ### Related API
 - [onBeforeTaskMultiSelect](api/event/onbeforetaskmultiselect.md)
@@ -40,5 +39,4 @@ Dieses Event kann blockiert werden - wenn *false* zurückgegeben wird, wird die 
 - [onMultiSelect](api/event/onmultiselect.md)
 
 ### Related Guides
-- ["Multi-Task-Auswahl"](guides/multiselection.md#apievents)
-
+- [Multi-Task-Auswahl](guides/multiselection.md#apievents)

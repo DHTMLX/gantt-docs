@@ -1,20 +1,20 @@
 ---
 sidebar_label: setSkin
 title: setSkin method
-description: "활성 스킨을 변경합니다"
+description: "활성 스킨을 설정합니다"
 ---
 
 # setSkin
 
 ### Description
 
-@short: 활성 스킨을 변경합니다
+@short: 활성 스킨 설정
 
 @signature: setSkin: (skin: string) =\> void
 
 ### Parameters
 
-- `skin` - (required) *string* - 스킨 이름입니다. 사용 가능한 옵션은 다음과 같습니다: "terrace", "dark", "material", "contrast-white", "contrast-black", "meadow", "skyblue", "broadway"
+- `skin` - (required) *string* - 스킨의 이름. 허용 값은 아래와 같습니다: "terrace", "dark", "material", "contrast-white", "contrast-black", "meadow", "skyblue", "broadway"
 
 ### Example
 
@@ -27,17 +27,16 @@ gantt.setSkin("dark");
 
 ### Details
 
-gantt가 초기화된 후 이 메서드를 호출하면 [render](api/method/render.md) 메서드가 실행됩니다.
+메서드가 gantt가 초기화된 후 호출되면 [render](api/method/render.md) 메서드를 실행합니다.
 
-초기화 전에 사용하면 `gantt.skin` 속성을 직접 설정하는 것과 동일하게 작동합니다:
+초기화 전에 호출되면, 이 메서드는 `gantt.skin` 속성에 값을 할당하는 것과 동일한 효과를 가집니다:
 
 ~~~js
 gantt.skin = "dark";
 ~~~
 
 ### Related Guides
-- [스킨(Skins)](guides/skins.md)
+- [Skins](guides/skins.md)
 
 ### Change log
 - v9.0에 추가됨
-

@@ -1,13 +1,16 @@
----
+--- 
 title: "dhtmlxGantt с Salesforce LWC"
 sidebar_label: "Salesforce"
 ---
 
 # dhtmlxGantt с Salesforce LWC
 
-В этом руководстве описывается, как интегрировать dhtmlxGantt в [Salesforce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide).
+Этот учебник описывает, как добавить dhtmlxGantt в [Salesforce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide).
 
-Если вы работаете с другой технологией, ниже представлены другие варианты интеграции:
+Проверьте [онлайн-демо](https://dhtmlx-dev-ed.develop.lightning.force.com/) по интеграции компонентов DHTMLX с Salesforce LWC (логин: *user*, пароль: *demo*). 
+Исходный код демо-проекта [предоставлен на GitHub](https://github.com/DHTMLX/salesforce-lwc-demo).
+
+Если вы используете другую технологию, ознакомьтесь со списком доступных вариантов интеграции ниже:
 
 - [dhtmlxGantt с ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
 - [dhtmlxGantt с ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
@@ -17,39 +20,40 @@ sidebar_label: "Salesforce"
 - [dhtmlxGantt с PHP:Slim](integrations/php/howtostart-php-slim4.md)
 - [dhtmlxGantt с Ruby on Rails](integrations/other/howtostart-ruby.md)
 
-Процесс включает использование [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) для создания Lightning Web Component и его деплоя в организацию Salesforce. Для более удобной разработки рекомендуется установить [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)" в Visual Studio Code.
+Мы будем использовать Salesforce CLI ([Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli)) для создания Lightning Web Component и загрузки его в организацию. 
+Вы также можете установить [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)" в Visual Studio Code для работы с разработческими организациями. 
 
 :::note
-Полный исходный код размещён на [GitHub](https://github.com/DHTMLX/salesforce-gantt-demo).
-:::
+Полный исходный код демо, созданного в этом руководстве, доступен на [GitHub](https://github.com/DHTMLX/salesforce-gantt-demo).
+::: 
 
-Также доступен видеоурок, демонстрирующий создание диаграммы Gantt с помощью Salesforce LWC.
+Вы можете посмотреть видео-руководство, которое показывает, как создать диаграмму Gantt с Salesforce LWC.
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/1nXl9jfMdto" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Требования
 
-Убедитесь, что [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) установлен. Если нет, воспользуйтесь [этой инструкцией](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm) для установки.
+Установите [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli), если он у вас не установлен. См. [эту статью](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm) для инструкций по установке.
 
 ## Шаг 1. Создание проекта
 
-Если у вас ещё нет аккаунта, создайте бесплатную учётную запись разработчика, [зарегистрировавшись](https://developer.salesforce.com/). Подробнее - в [этом руководстве](https://webkul.com/blog/create-free-developer-account-in-salesforce/).
+[Зарегистрируйтесь](https://developer.salesforce.com/) для бесплатной учетной записи разработчика, если у вас её ещё нет. См. [эту статью](https://webkul.com/blog/create-free-developer-account-in-salesforce/) для инструкций по установке.
 
-В Salesforce воспользуйтесь строкой поиска слева для поиска и выбора *Dev Hub*:
+Слева в строке поиска найдите и выберите *Dev Hub*:
 
-![](/img/sf_devhub.png)
+![sf_devhub](/img/sf_devhub.png)
 
-На открывшейся странице настроек включите функцию *Dev Hub*:
+В новом окне настроек выберите *Enable Dev Hub*:
 
-![](/img/sf_enabledh.png)
+![sf_enabledh](/img/sf_enabledh.png)
 
-Затем создайте директорию для вашего проекта Salesforce DX:
+Давайте создадим базовую директорию для проекта Salesforce DX:
 
 ~~~js
 $ mkdir ~/salesforce
 ~~~
 
-Сгенерируйте проект Salesforce DX с помощью CLI:
+Создайте проект Salesforce DX через CLI:
 
 ~~~
 $ cd ~/salesforce
@@ -75,7 +79,7 @@ $ sfdx project generate -n gantt-salesforce-app
         create gantt-salesforce-apppackage.json
 ~~~
 
-Перейдите в только что созданную папку проекта:
+Перейдите в созданный проект:
 
 ~~~js
 $ cd gantt-salesforce-app
@@ -83,7 +87,7 @@ $ cd gantt-salesforce-app
 
 ## Шаг 2. Авторизация
 
-Используйте Web Server Flow для [авторизации в организации](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm):
+[Авторизуйте Org](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm) с использованием Web Server Flow:
 
 ~~~js
 $ sfdx org login web -d
@@ -91,16 +95,16 @@ $ sfdx org login web -d
 Successfully authorized ... with org ID ...
 ~~~
 
-Далее обновите файл конфигурации проекта (*sfdx-project.json*), установив параметр "sfdcLoginUrl" на "My Domain URL" вашей организации. Найти этот URL можно на странице настроек "My Domain". Например:
+Обновите файл конфигурации проекта (*sfdx-project.json*). Установите параметр "sfdcLoginUrl" равным вашему "My Domain URL". Найти URL вашего домена можно на странице настройки "My Domain". Например:
 
-![](/img/sf_mydomain.png)
+![sf_mydomain](/img/sf_mydomain.png)
 
-**gantt-salesforce-app/sfdx-project.json**
-~~~js
+
+~~~js title="gantt-salesforce-app/sfdx-project.json"
 "sfdcLoginUrl" : "https://xbs2-dev-ed.my.salesforce.com"
 ~~~
 
-Создайте Scratch Org с помощью следующей команды:
+Создайте Scratch Org:
 
 ~~~js
 $ sfdx org create scratch -f config/project-scratch-def.json -d
@@ -123,98 +127,98 @@ Your scratch org is ready.
 
 ## Шаг 3. Добавление Gantt в Salesforce
 
-Чтобы использовать библиотеку, её необходимо загрузить в Salesforce как Static Resource. Откройте ваш scratch org:
+Чтобы начать использовать библиотеку, её нужно загрузить в Salesforce как Static Resource. Откройте свою scratch org:
 
 ~~~js
 $ sfdx org open
 ~~~
 
-Перейдите на вкладку "Static Resources" и нажмите кнопку "New":
+Затем откройте вкладку "Static Resources" и нажмите кнопку "New"
 
-![](/img/sf_static_resources.png)
+![sf_static_resources](/img/sf_static_resources.png)
 
-Укажите понятное имя (например, "dhtmlxgantt7111"), загрузите ZIP-архив с файлами библиотеки (*dhtmlxgantt.js* и *dhtmlxgantt.css*), и установите Cache Control в значение "Public" для повышения производительности. Затем сохраните изменения.
+Дайте значимое имя (мы используем "dhtmlxgantt7111"), выберите ZIP-архив с самой библиотекой (архив должен содержать файлы *dhtmlxgantt.js* и *dhtmlxgantt.css*), и выберите режим кэширования "Public" для повышения производительности. Нажмите кнопку "Save".
 
-![](/img/sf_gantt_file.png)
+![sf_gantt_file](/img/sf_gantt_file.png)
 
-Теперь библиотека dhtmlxGantt доступна внутри Salesforce.
+Теперь у нас есть dhtmlxGantt внутри Salesforce.
 
-![](/img/sf_gantt_in_sf.png)
+![sf_gantt_in_sf](/img/sf_gantt_in_sf.png)
 
 ## Шаг 4. Создание модели данных
 
-Основные компоненты dhtmlxGantt - это задачи (Tasks) и связи (Links). Практичный способ их хранения - сохранять их свойства в формате JSON в Salesforce. Начните с создания пользовательских объектов для задач и связей. Перейдите в Object Manager, затем выберите "Create" и выберите "Custom Object":
+Основные сущности dhtmlxGantt — Tasks и Links. Хороший подход — сохранять все свойства сущностей dhtmlxGantt в виде простого JSON внутри Salesforce. Давайте создадим объекты Tasks и Links. Откройте Object Manager и выберите "Create", затем "Custom Object":
 
-![](/img/sf_object_manager.png)
+![sf_object_manager](/img/sf_object_manager.png)
 
-### **Объект задачи (Task object)**
+### **Объект Task** (Task object)
 
-Назовите объект задачи, например, *GanttTask* или *GanttTasks*.
+Укажите имя для объекта задачи, пусть это будет *GanttTask/GanttTasks*.
 
-![](/img/sf_task_object.png)
+![sf_task_object](/img/sf_task_object.png)
 
 :::note
-Убедитесь, что имя записи соответствует имени объекта, например:
+Имя записи должно совпадать с именем объекта, например:
 
 Object Name: GanttTask => Record Name: GanttTask Name
-:::
+::: 
 
-Сохраните новый объект.
+Нажмите кнопку "Save".
 
-Затем откройте вкладку "Fields & Relationships" и нажмите "New" для добавления полей:
+После создания объекта откройте вкладку "Fields & Relationships" (Поля и связи). Нажмите кнопку "New".
 
-![](/img/sf_fields.png)
+![sf_fields](/img/sf_fields.png)
 
 - **Duration**
 
-Выберите тип данных "Number" и продолжайте.
+Выберите "Number" в качестве типа данных и нажмите кнопку "Next".
 
-![](/img/sf_data_type.png)
+![sf_data_type](/img/sf_data_type.png)
 
-Назовите поле "Duration". Это поле будет содержать сериализованные в JSON свойства задачи. Нажимайте "Next" до появления кнопки "Save & New".
+Назовите его "Duration". Он будет хранить свойства задачи в сериализованном JSON-формате. Нажмите "Next" до тех пор, пока кнопка "Save & New" не станет доступной.
 
-![](/img/sf_new_field.png)
+![sf_new_field](/img/sf_new_field.png)
 
-Примите настройки по умолчанию, нажимая "Next", пока не сможете сохранить или добавить новое поле.
+Нажмите кнопку "Next" (принимая все значения по умолчанию) до появления кнопки "Save & New".
 
 - **Parent**
 
-Создайте поле "Parent" с типом данных "Text".
+Создайте поле "Parent". Выберите "Text" в качестве типа данных.
 
-![](/img/sf_parent.png)
+![sf_parent](/img/sf_parent.png)
 
-Проходите шаги, нажимая "Next", до появления кнопки "Save & New".
+Нажмите "Next" (принимая все настройки по умолчанию) до появления кнопки "Save & New".
 
 - **Progress**
 
-Добавьте поле "Progress", выбрав тип данных "Number".
+Создайте поле "Progress". Выберите "Number" как тип данных.
 
-![](/img/sf_progress.png)
+![sf_progress](/img/sf_progress.png)
 
-Продолжайте нажимать "Next", пока не сможете сохранить или добавить следующее поле.
+Нажмите "Next" до появления кнопки "Save & New" (по умолчанию).
 
 - **Start date**
 
-Создайте поле "Start Date" с типом данных "Date/Time".
+Создайте поле "Start Date". Выберите "Date/Time" как тип данных.
 
-![](/img/sf_start_date.png)
+![sf_start_date](/img/sf_start_date.png)
 
-Пройдите по умолчанию все шаги до кнопки "Save".
+Нажмите "Next" до появления кнопки "Save".
 
-В результате поля вашего объекта должны выглядеть так:
+В конце должно получиться примерно так:
 
-![](/img/sf_gantttask.png)
+![sf_gantttask](/img/sf_gantttask.png)
 
-### **Объект ссылок**
+### **Link object**
 
-Начните с открытия Object Manager и выберите "Create", затем "Custom Object":
+Откройте Object Manager и выберите "Create" затем "Custom Object":
 
-Назовите объект ссылок как *GanttLink/GanttLinks*.
+Укажите имя для объекта ссылки, пусть это будет *GanttLink/GanttLinks*.
 
-![](/img/sf_link_object.png)
+![sf_link_object](/img/sf_link_object.png)
 
 :::note
-Убедитесь, что имя записи соответствует имени объекта, например:
+Имя записи должно совпадать с именем объекта, например:
 
 Object Name: GanttLink => Record Name: GanttLink Name
 :::
@@ -223,36 +227,35 @@ Object Name: GanttLink => Record Name: GanttLink Name
 
 - **Source**
 
-Добавьте поле "Source" и выберите "Text" в качестве Data Type.
+Создайте поле "Source". Выберите "Text" в качестве типа данных.
 
-![](/img/sf_source.png)
+![sf_source](/img/sf_source.png)
 
-Нажимайте "Next" (оставляя настройки по умолчанию), пока не появится кнопка "Save & New".
+Нажмите "Next" до появления кнопки "Save & New".
 
 - **Target**
 
-Добавьте поле "Target" с типом данных "Text".
+Создайте поле "Target". Выберите "Text" в качестве типа данных.
 
-![](/img/sf_target.png)
+![sf_target](/img/sf_target.png)
 
-Нажимайте "Next" (принимая настройки по умолчанию), пока не станет доступна кнопка "Save & New".
+Нажмите "Next" до появления кнопки "Save & New".
 
 - **Type**
 
-Добавьте поле "Type", также с типом данных "Text".
+Создайте поле "Type". Выберите "Text" в качестве типа данных.
 
-![](/img/sf_type.png)
+![sf_type](/img/sf_type.png)
 
-Нажимайте "Next" (принимая значения по умолчанию), пока не появится кнопка "Save".
+Нажмите "Next" до появления кнопки "Save".
 
-В итоге должно получиться следующее:
+В итоге должно выглядеть так:
 
-![](/img/sf_ganttlink.png)
+![sf_ganttlink](/img/sf_ganttlink.png)
 
+## Шаг 5. Создание компонента Lightning Web
 
-## Шаг 5. Создание Lightning Web Component
-
-Для создания Lightning Web Component выполните следующую команду:
+Чтобы создать компонент Lightning Web, выполните команду:
 
 ~~~js
 $ sfdx lightning generate component --type lwc -n gantt -d force-app/main/default/lwc
@@ -264,10 +267,9 @@ C:UsersUsersourcesalesforcegantt-salesforce-appforce-appmaindefaultlwc
    create force-appmaindefaultlwcganttgantt.js-meta.xml
 ~~~
 
-Обновите определение компонента в *gantt.js-meta.xml*, чтобы сделать его доступным в Lightning App Builder:
+Измените определение компонента в *gantt.js-meta.xml*, чтобы сделать его доступным в конструкторе приложения Lightning:
 
-**force-app/main/default/lwc/gantt/gantt.js-meta.xml**
-~~~html
+~~~html title="force-app/main/default/lwc/gantt/gantt.js-meta.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>54.0</apiVersion>
@@ -281,21 +283,19 @@ C:UsersUsersourcesalesforcegantt-salesforce-appforce-appmaindefaultlwc
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
-~~~
+~~~ 
 
-Откройте *gantt.html* и вставьте следующий код:
+Откройте *gantt.html* и добавьте следующий код в него:
 
-**force-app/main/default/lwc/gantt/gantt.html**
-~~~html
+~~~html title="force-app/main/default/lwc/gantt/gantt.html"
 <template>
     <div class="thegantt" lwc:dom="manual" style='width: 100%;'></div>
 </template>
 ~~~
 
-В *gantt.js* добавьте следующий код:
+Откройте *gantt.js* и добавьте следующий код в него:
 
-**force-app/main/default/lwc/gantt/gantt.js**
-~~~js
+~~~js title="force-app/main/default/lwc/gantt/gantt.js"
 /* eslint-disable guard-for-in */
 /* eslint-disable no-undef */
 import { LightningElement, api } from "lwc";
@@ -451,9 +451,9 @@ export default class GanttView extends LightningElement {
 }
 ~~~
 
-## Шаг 6. Создание Apex класса
+## Шаг 6. Создание Apex-класса
 
-Далее создайте класс, который будет обеспечивать связь между Lightning компонентом и моделью данных.
+Следующий шаг — создать класс, который обеспечит взаимодействие между компонентом Lighting и нашей моделью данных.
 
 ~~~js
 $ sfdx apex generate class -n GanttData -d force-app/main/default/classes
@@ -464,10 +464,9 @@ C:UsersUsersalesforcegantt-salesforce-appforce-appmaindefaultclasses
    create force-appmaindefaultclassesGanttData.cls-meta.xml
 ~~~
 
-После создания класса откройте *GanttData.cls* и добавьте следующий код:
+После создания откройте *GanttData.cls* и добавьте следующий код:
 
-**force-app/main/default/classes/GanttData.cls**
-~~~js
+~~~js title="force-app/main/default/classes/GanttData.cls"
 public with sharing class GanttData {
  
     @RemoteAction
@@ -489,68 +488,67 @@ public with sharing class GanttData {
 }
 ~~~
 
-Выполните команду для получения исходников из Scratch Org в ваш проект:
+Скопируйте исходники из Scratch Org в ваш проект
 
 ~~~js
 $ sfdx project retrieve start
 ~~~
 
-Затем задеплойте исходники обратно в Scratch Org:
+а затем отправьте исходники в Scratch Org
 
 ~~~js
 $ sfdx project deploy start
 ~~~
 
-## Шаг 7. Создание Lightning Page
+## Шаг 7. Создание страницы Lightning
 
-Откройте "Lightning App Builder" и создайте новую Lightning Page.
+Откройте «Lightning App Builder», создайте новую страницу Lightning.
 
-![](/img/sf_lightning_app.png)
+![sf_lightning_app](/img/sf_lightning_app.png)
 
-Выберите "App Page" и укажите имя страницы и макет.
+Выберите "App Page", затем имя страницы и макет.
 
-![](/img/sf_new_page.png)
+![sf_new_page](/img/sf_new_page.png)
 
-![](/img/sf_page_name.png)
+![sf_page_name](/img/sf_page_name.png)
 
-![](/img/sf_page_layout.png)
+![sf_page_layout](/img/sf_page_layout.png)
 
-Кастомный компонент Gantt должен быть доступен для новой страницы. Добавьте его в любой раздел и сохраните.
+Вы должны увидеть доступный на новой странице пользовательский компонент Gantt. Прикрепите его к любой области и сохраните.
 
-![](/img/sf_gantt.png)
+![sf_gantt](/img/sf_gantt.png)
 
 Активируйте страницу.
 
-![](/img/sf_saved_page.png)
+![sf_saved_page](/img/sf_saved_page.png)
 
 Сохраните изменения.
 
-![](/img/sf_activate_gantt.png)
+![sf_activate_gantt](/img/sf_activate_gantt.png)
 
-![](/img/sf_add_page_to_nm.png)
+![sf_add_page_to_nm](/img/sf_add_page_to_nm.png)
 
-![](/img/sf_gantt_page.png)
+![sf_gantt_page](/img/sf_gantt_page.png)
 
-Откройте страницу приложения. Она будет доступна через app launcher по поиску Gantt.
+Откройте страницу приложения. Она должна быть доступна в лаунчере приложений: просто кликните по ней и введите Gantt.
 
-![](/img/sf_app_launcher.png)
+![sf_app_launcher](/img/sf_app_launcher.png)
 
-Если всё настроено верно, на Lightning Page появится простой пример Gantt.
+Если всё прошло успешно, вы увидите простую демонстрацию Gantt на странице Lightning.
 
-![](/img/sf_final_page.png)
+![sf_final_page](/img/sf_final_page.png)
 
 
 ## Безопасность приложения
 
-Сам Gantt не содержит встроенных средств защиты от угроз, таких как SQL-инъекции, XSS или CSRF-атаки. За безопасность приложения отвечают разработчики, внедряющие его. Подробнее см. [в соответствующей статье](guides/app-security.md). Salesforce предоставляет мощные инструменты для защиты ваших данных и приложений. Вы также можете адаптировать подход к безопасности под структуру и требования вашей организации. Дополнительные рекомендации смотрите в [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm). Информация по защите Lightning компонентов доступна [здесь](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm).
+Gantt не предоставляет механизмов защиты от угроз, таких как SQL-инъекции или XSS и CSRF-атаки. Важно, чтобы ответственность за безопасность приложения легла на разработчика, реализующего приложение. Подробности читайте в соответствующей статье [Guides/app-security.md](guides/app-security.md). Salesforce построен с акцентом на безопасность для защиты ваших данных и приложений. Вы также можете реализовать свою собственную схему безопасности, чтобы отразить структуру и потребности вашей организации. Дополнительную информацию смотрите в [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm). [Здесь](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm) можно узнать, что нужно для обеспечения безопасности.
 
 ## Устранение неполадок
 
-Если вы выполнили все шаги, но диаграмма Gantt не отображает задачи и связи на странице, обратитесь к статье [Решение проблем с интеграцией бэкенда](guides/troubleshooting.md). В ней описаны методы диагностики и устранения типовых проблем.
-
+Если вы выполнили вышеуказанные шаги по интеграции Gantt с Salesforce, но Gantt не отрисовывает задачи и связи на странице, обратитесь к статье [Troubleshooting Backend Integration Issues](guides/troubleshooting.md). В ней описаны способы определения корней проблем.
 
 ## Что дальше
 
-Когда Gantt полностью настроен, вы можете ознакомиться с полным кодом на [GitHub](https://github.com/DHTMLX/salesforce-gantt-demo), где его можно клонировать или скачать для поддержки ваших проектов.
+Теперь у вас полностью функционирующая диаграмма Gantt. Вы можете просмотреть полный код на [GitHub](https://github.com/DHTMLX/salesforce-gantt-demo), склонировать или скачать его и использовать в своих проектах.
 
-Также рекомендуем изучить [руководства по различным функциям Gantt](guides.md) или туториалы по [интеграции Gantt с другими backend-фреймворками](integrations/howtostart-guides.md).
+Вы также можете ознакомиться с [guides по многочисленным возможностям gantt] или с руководствами по [интеграции Gantt с другими backend-фреймворками].

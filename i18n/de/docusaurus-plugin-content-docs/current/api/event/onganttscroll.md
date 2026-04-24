@@ -1,14 +1,14 @@
 ---
 sidebar_label: onGanttScroll
 title: onGanttScroll event
-description: "Wird ausgelöst, wenn das Gantt-Diagramm auf eine bestimmte Position gescrollt wird"
+description: "wird ausgelöst, wenn das Gantt-Diagramm zu einem bestimmten Punkt gescrollt wird"
 ---
 
 # onGanttScroll
 
 ### Description
 
-@short: Wird ausgelöst, wenn das Gantt-Diagramm auf eine bestimmte Position gescrollt wird
+@short: Wird ausgelöst, wenn das Gantt-Diagramm zu einem bestimmten Punkt gescrollt wird
 
 @signature: onGanttScroll: (left: number, top: number) =\> void;
 
@@ -21,7 +21,7 @@ description: "Wird ausgelöst, wenn das Gantt-Diagramm auf eine bestimmte Positi
 
 ~~~jsx
 gantt.attachEvent("onGanttScroll", function (left, top){
-    // beliebige benutzerdefinierte Logik hier
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~
 
@@ -32,6 +32,5 @@ gantt.attachEvent("onGanttScroll", function (left, top){
 - [showDate](api/method/showdate.md)
 
 ### Related Guides
-- ["How-tos"](guides/how-to.md#howtohaveaninfinitescrollinthetimeline) (siehe, wie man unendliches Scrollen einrichtet)
-- ["How-tos"](guides/how-to.md#howtoloadtasksdynamically) (siehe, wie man Aufgaben dynamisch lädt)
-
+- [How-tos](guides/how-to.md#how-to-have-an-infinite-scroll-in-the-timeline) (lesen Sie, wie man eine unendliche Scroll-Funktion in der Timeline implementiert)
+- [How-tos](guides/how-to.md#how-to-load-tasks-dynamically) (lesen Sie, wie man Aufgaben dynamisch lädt)

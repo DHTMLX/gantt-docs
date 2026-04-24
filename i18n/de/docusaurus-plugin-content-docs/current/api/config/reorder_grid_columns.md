@@ -1,14 +1,14 @@
 ---
 sidebar_label: reorder_grid_columns
 title: reorder_grid_columns config
-description: "Ermöglicht das Verschieben von Grid-Spalten per Drag & Drop"
+description: "ermöglicht das Neuordnen von Grid-Spalten per Drag-and-Drop"
 ---
 
 # reorder_grid_columns
 
 ### Description
 
-@short: Ermöglicht das Verschieben von Grid-Spalten per Drag & Drop
+@short: Ermöglicht das Neuordnen von Grid-Spalten per Drag-and-Drop
 
 @signature: reorder_grid_columns: boolean
 
@@ -19,44 +19,42 @@ gantt.config.reorder_grid_columns = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Related samples
-- [Work and material resources](https://docs.dhtmlx.com/gantt/samples/11_resources/12_work_and_material_resources.html)
+- [Arbeits- und Materialressourcen](https://docs.dhtmlx.com/gantt/samples/11_resources/12_work_and_material_resources.html)
 
 ### Details
 
-Diese Funktion funktioniert sowohl in der Grid- als auch in der Ressourcenansicht.
+Diese Funktionalität funktioniert sowohl in der Grid- als auch in der Ressourcenansicht.
 
-Sie führt zwei CSS-Klassen ein:
+Die Eigenschaft liefert zwei CSS-Klassen:
 
-- **.gantt_column_drag_marker** - markiert die Position, an der die verschobene Spalte abgelegt wird
-- **.gantt_grid_head_cell_dragged** - wird auf die aktuell verschobene Spalte angewendet
+- **.gantt_column_drag_marker** - Die CSS-Klasse des Markers, der die Position angibt, an der die gezogene Spalte platziert wird
+- **.gantt_grid_head_cell_dragged** - Die CSS-Klasse der gezogenen Spalte
 
-## Events
+## Ereignisse
 
-Die internen Events des Grids ermöglichen die Steuerung des Spaltenziehens und -ablegens: **onBeforeColumnDragStart**, **onAfterColumnReorder** und **onColumnDragMove**. Zum Beispiel:
+Sie können das Verhalten der Grid-Spalten während des Ziehens und Ablegens über interne Grid-Ereignisse steuern: **onBeforeColumnDragStart**, **onAfterColumnReorder** und **onColumnDragMove**. Zum Beispiel:
 
-
-~~~js
+snippet "onBeforeColumnDragStart"/"onColumnDragMove":
+~~~js 
 gantt.attachEvent("onGanttReady", function(){
       var grid = gantt.$ui.getView("grid");
       grid.attachEvent("onBeforeColumnDragStart", function(column, index){
-        // eigener Code
-        return true; // false zurückgeben, um das Ziehen dieser Spalte zu verhindern
+        // benutzerdefinierter Code
+        return true; // Rückgabe false zum Abbrechen des Drag-Vorgangs einer Spalte
       });
       grid.attachEvent("onColumnDragMove",function(
           dragColumn, targetColumn, dragIndex, targetIndex){
-        // eigener Code
-        return true; // false zurückgeben, um das Verschieben an diese Position zu blockieren
+        // benutzerdefinierter Code
+        return true; //Rückgabe false zum Abbrechen der Neuordnung an dieser Position
       });
 });
 ~~~
 
-und
-
-snippet "onBeforeColumnDragStart"/"onAfterColumnReorder" :
-~~~js
+und Snippet "onBeforeColumnDragStart"/"onAfterColumnReorder":
+~~~js 
 gantt.attachEvent("onGanttReady", function(){
       var grid = gantt.$ui.getView("grid");
       grid.attachEvent("onBeforeColumnDragStart", function(column, index){
@@ -66,7 +64,7 @@ gantt.attachEvent("onGanttReady", function(){
         return true;
      });
       grid.attachEvent("onAfterColumnReorder", function(object){
-        // Zugriff auf die Spaltenkonfiguration nach dem Verschieben
+        // Abruf der Konfiguration einer Spalte nach der Neuordnung
         console.log(object)
       });
 });

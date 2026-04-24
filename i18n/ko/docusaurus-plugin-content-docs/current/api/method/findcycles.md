@@ -1,19 +1,23 @@
 ---
 sidebar_label: findCycles
 title: findCycles method
-description: "차트 내에서 발견된 모든 의존성 루프를 반환합니다."
----
+description: "차트에서 모든 의존성 루프를 반환합니다"
+--- 
 
 # findCycles
 
+:::info
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
+::: 
+
 ### Description
 
-@short: 차트 내에서 발견된 모든 의존성 루프를 반환합니다.
+@short: 차트에서 모든 의존성 루프를 반환합니다
 
 @signature: findCycles: () =\> any[]
 
 ### Returns
-- ` cycles` - (array) - 간트 차트에서 감지된 의존성 루프들을 포함하는 배열입니다.
+- `cycles` - (array) - gantt에서 발견된 의존성 루프의 배열
 
 ### Example
 
@@ -27,20 +31,16 @@ var cycles = gantt.findCycles();
 ### Details
 
 :::note
-pronote 이 기능은 PRO 에디션에서만 제공됩니다. 
-:::
+이 메서드는 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인이 활성화되어 있어야 합니다.
+::: 
 
-:::note
-note 이 메서드는 [auto_scheduling](guides/extensions-list.md#autoscheduling) 플러그인이 활성화되어 있어야 합니다. 
-:::
-
-*cycles* 배열의 각 항목은 루프를 형성하는 작업들과 링크들의 집합을 나타냅니다.
+각 요소는 *cycles* 배열은 루프를 형성하는 작업과 링크의 묶음입니다.
 
 ~~~js
 [ 
     { 
-        tasks: [//루프에 포함된 작업들의 아이디], 
-        links: [//루프에 포함된 링크들의 아이디]
+        tasks: [//루프에 연결된 작업의 ID들], 
+        links: [//루프에 연결된 링크의 ID들]
     },
     {
         
@@ -50,17 +50,14 @@ note 이 메서드는 [auto_scheduling](guides/extensions-list.md#autoscheduling
 ]
 ~~~
 
-참고용 예시는 다음과 같습니다:
+아래 예제를 확인해 보세요:
 
-![on_autoschedule_circular_link](/img/on_autoschedule_circular_link.png)
+- 태스크 #3의 ID는 10입니다
+- 태스크 #4.1의 ID는 12입니다
+- 태스크 #3의 끝에서 태스크 #4의 시작으로 향하는 링크의 ID는 1입니다
+- 태스크 #4.1의 끝에서 태스크 #3의 시작으로 향하는 링크의 ID는 2입니다
 
-
-- 작업 #3의 id는 10입니다.
-- 작업 #4.1의 id는 12입니다.
-- 작업 #3의 끝에서 작업 #4의 시작으로 연결된 링크의 id는 1입니다.
-- 작업 #4.1의 끝에서 작업 #3의 시작으로 연결된 링크의 id는 2입니다.
-
-*gantt.findCycles* 메서드는 다음과 같은 결과를 반환합니다:
+*gantt.findCycles* 메서드는 다음 값을 반환합니다:
 
 ~~~js
 [ 
@@ -91,5 +88,4 @@ note 이 메서드는 [auto_scheduling](guides/extensions-list.md#autoscheduling
 - [자동 스케줄링](guides/auto-scheduling.md)
 
 ### Change log
-- version 4.1에 추가됨
-
+- 버전 4.1 에 추가됨

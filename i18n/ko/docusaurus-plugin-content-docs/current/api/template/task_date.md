@@ -1,23 +1,23 @@
 ---
 sidebar_label: task_date
 title: task_date template
-description: "라이트박스의 'Time period' 섹션에서 레이블에 사용되는 날짜 형식을 정의합니다."
+description: "라이트박스의 'Time period' 섹션에 표시될 레이블의 날짜 형식을 지정합니다"
 ---
 
 # task_date
 
 ### Description
 
-@short: 라이트박스의 'Time period' 섹션에서 레이블에 사용되는 날짜 형식을 정의합니다.
+@short: 라이트박스의 'Time period' 섹션에 표시될 레이블의 날짜 형식을 지정합니다
 
 @signature: task_date: (date: Date) =\> string
 
 ### Parameters
 
-- `date` - (required) *Date* - 형식화될 날짜 값입니다.
+- `date` - (required) *Date* - 포맷이 필요한 날짜
 
 ### Returns
-- ` text` - (string) - gantt에 표시될 html 내용입니다.
+- ` text` - (string) - Gantt 차트에 렌더링될 HTML 텍스트
 
 ### Example
 

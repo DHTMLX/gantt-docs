@@ -1,14 +1,14 @@
 ---
 sidebar_label: drag_multiple
-title: drag_multiple config
-description: "позволяет одновременно перетаскивать несколько выбранных задач"
+title: конфигурация drag_multiple
+description: "позволяет перетаскивать сразу несколько выбранных задач"
 ---
 
 # drag_multiple
 
 ### Description
 
-@short: Позволяет одновременно перетаскивать несколько выбранных задач
+@short: Позволяет перетаскивать сразу несколько выбранных задач
 
 @signature: drag_multiple: boolean
 
@@ -26,9 +26,9 @@ gantt.init("gantt_here");
 
 ### Details
 
-Когда выбрано несколько задач, перетаскивание задачи, которая не входит в выделение, перемещает только эту одну задачу.
+Если вы выберете несколько задач, но начнёте перемещать задачу, которая не выбрана, будет перемещена только не выбранная задача.
 
-Чтобы включить перетаскивание проектов, установите конфигурацию [drag_project](api/config/drag_project.md) в значение *true*.
+Вы также можете включить drag and drop проектов, установив config [drag_project](api/config/drag_project.md) в *true*.
 
 ~~~js
 gantt.config.drag_project = true;
@@ -38,5 +38,4 @@ gantt.config.drag_project = true;
 - [drag_project](api/config/drag_project.md)
 
 ### Related Guides
-- [Множественный выбор задач](guides/multiselection.md#multitaskselectionanddragndrop)
-
+- [Multi-Task Selection](guides/multiselection.md#multitaskselectionanddragndrop)

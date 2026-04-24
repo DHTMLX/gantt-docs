@@ -65,11 +65,8 @@ gantt.config.type_renderers[gantt.config.types.project] = function(task,defaultR
 
 
 :::note
-sample
-[Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
- 
+샘플 [Classic Look](https://docs.dhtmlx.com/gantt/samples/04_customization/17_classic_gantt_look.html)
 :::
 
 ### Related API
 - [getTaskPosition](api/method/gettaskposition.md)
-

@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_descendant_links
-title: auto_scheduling_descendant_links config
-description: "управляет возможностью создания ссылок от родительских задач (проектов) к их дочерним задачам"
+title: конфигурация auto_scheduling_descendant_links
+description: "Разрешает или запрещает создание связей от родительских задач (проектов) к их дочерним"
 ---
 
 # auto_scheduling_descendant_links
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в редакции PRO.
 :::
+
+:::warning
+Свойство помечено как устаревшее в версии v9.1; используйте свойство `descendant_links` из [gantt.config.auto_scheduling](api/config/auto_scheduling.md#descendant_links) вместо этого.
+:::
+
 ### Description
 
-@short: Управляет возможностью создания ссылок от родительских задач (проектов) к их дочерним задачам
+@short: Разрешает или запрещает создание связей от родительских задач (проектов) к их дочерним задачам
 
 @signature: auto_scheduling_descendant_links: boolean
 
@@ -22,19 +28,18 @@ gantt.config.auto_scheduling_descendant_links = true;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [расширение Auto Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
- Эта настройка является частью расширения **auto_scheduling**, поэтому убедитесь, что плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) включён. Для получения дополнительной информации смотрите статью [Автоматическое планирование](guides/auto-scheduling.md). 
+Эта настройка определяется в расширении **auto_scheduling**, поэтому необходимо активировать плагин [auto_scheduling](guides/extensions-list.md#autoscheduling). Подробности смотрите в статье [Auto Scheduling](guides/auto-scheduling.md).
 :::
 
-
-По умолчанию создание ссылок от родительских задач (проектов) к их дочерним задачам не разрешено.
+По умолчанию создавать связи от родительских задач (проектов) к их дочерним задачам нельзя.
 
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
@@ -53,8 +58,8 @@ gantt.init("gantt_here");
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [Автоматическое планирование](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
 ### Change log
+- свойство устарело в версии v9.1
 - добавлено в версии 4.0
-

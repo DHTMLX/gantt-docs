@@ -1,22 +1,22 @@
 ---
-title: "任务过滤"
-sidebar_label: "任务过滤"
+title: "筛选任务"
+sidebar_label: "筛选任务"
 ---
 
-# 任务过滤
+# 筛选任务
 
-过滤功能可以通过限制任务的数量和类型，帮助控制哪些任务显示在甘特图中。例如，可以仅显示分配给特定员工的任务或被标记为紧急的任务。
+过滤功能使您能够控制在甘特图中呈现的任务数量及特征。例如，您可以使用过滤来显示分配给特定人员的任务，或显示优先级为紧急的任务。
 
 请注意，dhtmlxGantt 支持客户端过滤。
 
 ![filtering](/img/filtering.png)
 
-要应用过滤，请使用 @[onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md) 事件，并返回:
+要过滤数据，请使用 [onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md) 事件并返回：
 
-- *true* 显示任务
-- *false* 隐藏任务
+- *true*，表示要显示的任务
+- *false*，表示不显示的任务
 
-**仅显示高优先级任务**
+**仅显示高优先级的任务**
 ~~~js
 gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
     if (task.priority == "high"){
@@ -26,13 +26,10 @@ gantt.attachEvent("onBeforeTaskDisplay", function(id, task){
 });
 ~~~
 
+[基础过滤](https://docs.dhtmlx.com/gantt/samples/07_grid/03_filtering.html)
 
-[Basic filtering](https://docs.dhtmlx.com/gantt/samples/07_grid/03_filtering.html)
+要过滤分割任务的数据，请应用 [onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) 事件。
 
-
-要过滤拆分任务的部分，请使用 @[onBeforeSplitTaskDisplay](api/event/onbeforesplittaskdisplay.md) 事件。
-
-此外，还有一个视频教程，演示如何设置任务过滤。
+您可以查看显示如何实现任务过滤的视频指南。
 
 <iframe width="676" height="400" src="https://www.youtube.com/embed/LyJ3zKSrmH4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-

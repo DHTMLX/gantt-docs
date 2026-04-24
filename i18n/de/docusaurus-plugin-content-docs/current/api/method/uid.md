@@ -1,7 +1,7 @@
 ---
 sidebar_label: uid
-title: uid method
-description: "gibt eine eindeutige ID zurück"
+title: uid Methode
+description: "liefert eine eindeutige ID"
 ---
 
 # uid
@@ -23,8 +23,8 @@ var id = gantt.uid();
 
 ### Details
 
-Die generierte ID ist innerhalb der aktuellen Sitzung der Seite eindeutig. 
-Sie eignet sich für die Verwendung in der Logik auf der Seite, sollte jedoch nicht als Datenbank-Identifikator verwendet werden.
+Die erzeugte ID ist pro Seite eindeutig, aber nicht global eindeutig.
+Sie können die Methode in der Seitenlogik verwenden. Sie ist nicht ausreichend als Datenbank-ID geeignet.
 
 ### Change log
-- hinzugefügt in Version 4.0
+- in Version 4.0 hinzugefügt

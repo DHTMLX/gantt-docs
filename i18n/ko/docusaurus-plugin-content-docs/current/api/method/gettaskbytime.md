@@ -1,26 +1,25 @@
 ---
 sidebar_label: getTaskByTime
-title: getTaskByTime method
-description: "지정된 기간 내에 발생하는 작업 목록을 가져옵니다."
+title: getTaskByTime 메서드
+description: "지정된 기간 동안 발생하는 작업들의 컬렉션을 반환합니다"
 ---
 
 # getTaskByTime
 
-### Description
+### 설명
 
-@short: 지정된 기간 내에 발생하는 작업 목록을 가져옵니다.
+@short: 지정된 기간 동안 발생하는 작업들의 컬렉션을 반환합니다
 
 @signature: getTaskByTime: (from?: Date, to?: Date) =\> Array\<Task\>
 
-### Parameters
+### 매개변수
+- `from` - (optional) *Date* -  기간의 시작 날짜
+- `to`- (optional) *Date* -  기간의 끝 날짜
 
-- `from` - (optional) *Date* - 기간의 시작 날짜
-- `to` - (optional) *Date* - 기간의 종료 날짜
+### 반환값
+- ` array` - (Array &lt;Task&gt;) - 태스크 객체들의 배열
 
-### Returns
-- ` array` - (Array &lt;Task&gt;) - 작업 객체를 포함하는 배열
-
-### Example
+### 예제
 
 ~~~jsx
 let tasks = gantt.getTaskByTime(new Date(2013,3,10),new Date(2013,4,10)); 
@@ -28,5 +27,6 @@ for (let i=0; i<tasks.length; i++){
        alert(tasks[i].text);
 }
 // 또는
-tasks = gantt.getTaskByTime(); // 모든 작업을 반환합니다.
+tasks = gantt.getTaskByTime();//모든 작업을 반환합니다
 ~~~
+

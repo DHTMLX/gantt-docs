@@ -8,7 +8,7 @@ description: "dhtmlxGantt의 현재 버전을 제공합니다"
 
 ### Description
 
-@short: DhtmlxGantt의 현재 버전을 제공합니다
+@short: dhtmlxGantt의 버전을 반환합니다
 
 @signature: version: string
 

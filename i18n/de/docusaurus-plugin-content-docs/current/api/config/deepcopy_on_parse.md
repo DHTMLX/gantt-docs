@@ -1,14 +1,14 @@
 ---
 sidebar_label: deepcopy_on_parse
-title: deepcopy_on_parse config
-description: "Steuert, ob gantt eine Deep Copy der Datenobjekte erstellt, die der Methode gantt.parse() übergeben werden"
+title: deepcopy_on_parse Konfiguration
+description: "definiert, ob gantt eine tiefe Kopie der Datenobjekte durchführt, die in die gantt.parse() Methode übergeben wurden"
 ---
 
 # deepcopy_on_parse
 
 ### Description
 
-@short: Steuert, ob gantt eine Deep Copy der Datenobjekte erstellt, die der Methode gantt.parse() übergeben werden
+@short: Definiert, ob gantt eine tiefe Kopie der Datenobjekte durchführt, die in die gantt.parse() Methode übergeben wurden
 
 @signature: deepcopy_on_parse: boolean
 
@@ -18,13 +18,12 @@ description: "Steuert, ob gantt eine Deep Copy der Datenobjekte erstellt, die de
 gantt.config.deepcopy_on_parse = true;
 ~~~
 
-**Default value:** false
+**Standardwert:** false
 
 ### Details
 
-- Wenn auf *true* gesetzt, erstellt gantt eine Deep Copy der Datenobjekte, die an die Methode [gantt.parse](api/method/parse.md) übergeben werden. Das bedeutet, dass die internen gantt-Datenobjekte von den ursprünglichen getrennt sind, sodass Änderungen innerhalb von gantt die Quelldaten nicht beeinflussen.
-- Wenn auf *false* gesetzt (Standardwert), verwendet gantt dieselben Datenobjekte, die in der Methode [gantt.parse](api/method/parse.md) übergeben wurden (eine flache Kopie). In diesem Fall bleiben die Objekte verknüpft, und Änderungen innerhalb von gantt wirken sich auf die Originaldaten aus.
+- Wenn die Eigenschaft auf *true* gesetzt ist, versucht gantt, eine tiefe Kopie der in die [gantt.parse](api/method/parse.md) Methode übergebenen Datenobjekte zu erstellen. Dadurch werden die inneren Datenobjekte von den Quell-Datenobjekten getrennt, und Änderungen am gantt wirken sich nicht auf das ursprüngliche Datenobjekt aus.
+- Wenn die Eigenschaft auf *false* (Standard) gesetzt ist, wird gantt die in der [gantt.parse](api/method/parse.md) Methode übergebenen Datenobjekte (eine flache Kopie) wiederverwenden. Die Objekte bleiben verbunden und Änderungen am gantt werden auf das ursprüngliche Datenobjekt angewendet.
 
 ### Change log
-- hinzugefügt in v7.1
-
+- Hinzugefügt in v7.1

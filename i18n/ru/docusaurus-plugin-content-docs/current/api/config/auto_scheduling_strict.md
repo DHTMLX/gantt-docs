@@ -1,16 +1,22 @@
 ---
 sidebar_label: auto_scheduling_strict
 title: auto_scheduling_strict config
-description: "включает режим авто-планирования, при котором задачи каждый раз перепланируются на максимально раннюю возможную дату"
+description: "включает режим автоматического планирования, при котором задачи будут всегда перепланированы на максимально раннюю возможную дату"
 ---
 
 # auto_scheduling_strict
+
 :::info
- Эта функция доступна только в PRO-версии. 
+Эта функциональность доступна только в PRO-версии.
 :::
+
+:::warning
+Свойство устарело в версии v9.1; вместо него используйте свойство `gap_behavior` из [gantt.config.auto_scheduling](api/config/auto_scheduling.md#gap_behavior).
+:::
+
 ### Description
 
-@short: Включает режим авто-планирования, при котором задачи каждый раз перепланируются на максимально раннюю возможную дату
+@short: Включает режим автоматического планирования, при котором задачи будут всегда перепланированы на максимально раннюю возможную дату
 
 @signature: auto_scheduling_strict: boolean
 
@@ -25,18 +31,17 @@ gantt.init("gantt_here");
 **Default value:** false
 
 ### Related samples
-- [Auto Scheduling extension](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
+- [Расширение Auto Scheduling](https://docs.dhtmlx.com/gantt/samples/02_extensions/12_auto_scheduling.html)
 
 ### Details
 
 :::note
- Эта настройка является частью расширения **auto_scheduling**, поэтому убедитесь, что плагин [auto_scheduling](guides/extensions-list.md#autoscheduling) активирован. Для получения дополнительной информации смотрите статью [Автоматическое планирование](guides/auto-scheduling.md).<br>
+Этот конфиг определяется в расширении **auto_scheduling**, поэтому необходимо активировать плагин [auto_scheduling](guides/extensions-list.md#autoscheduling). Подробности читайте в статье [Auto Scheduling](guides/auto-scheduling.md).
 
-Имейте в виду, что для версий с 6.1.0 по 7.1.3 эта конфигурация работает только при включенной опции [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md). 
+Обратите внимание, что в версиях 6.1.0 - 7.1.3 конфигурация работает только при включённой опции [auto_scheduling_compatibility](api/config/auto_scheduling_compatibility.md).
 :::
 
-
-Обычно задачи перепланируются только в случае, если новая дата нарушает ограничение.
+По умолчанию задачи перепланируются только тогда, когда новая дата нарушает ограничение.
 
 ### Related API
 - [auto_scheduling](api/config/auto_scheduling.md)
@@ -55,5 +60,7 @@ gantt.init("gantt_here");
 - [onAutoScheduleCircularLink](api/event/onautoschedulecircularlink.md)
 
 ### Related Guides
-- [Автоматическое планирование](guides/auto-scheduling.md)
+- [Auto Scheduling](guides/auto-scheduling.md)
 
+### Change log
+- Свойство устарело в версии v9.1

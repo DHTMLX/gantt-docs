@@ -1,22 +1,22 @@
 ---
 sidebar_label: onRowResize
-title: onRowResize event
-description: "사용자가 행 경계를 드래그하여 높이를 변경할 때 발생합니다."
+title: onRowResize 이벤트
+description: "사용자가 행의 경계선을 드래그하여 행 높이를 조정할 때 발생합니다"
 ---
 
 # onRowResize
 
 ### Description
 
-@short: 사용자가 행 경계를 드래그하여 높이를 변경할 때 발생합니다.
+@short: 사용자가 행의 경계선을 드래그하여 행 높이를 조정할 때 발생합니다
 
 @signature: onRowResize: (id: string | number, task: Task, currentHeight: number) =\> void;
 
 ### Parameters
 
 - `id` - (required) *string | number* - 작업 ID
-- `task` - (required) *Task* - 작업 객체
-- `currentHeight` - (required) *number* - 현재 행의 높이
+- `task` - (required) *Task* - 태스크 객체
+- `currentHeight` - (required) *number* - 행의 현재 높이
 
 ### Example
 
@@ -24,7 +24,7 @@ description: "사용자가 행 경계를 드래그하여 높이를 변경할 때
 gantt.attachEvent("onRowResize", function (id, task, currentHeight) {
     gantt.message({
         expire: -1,
-        text: `<b>${task.text}</b> 의 높이가 <b>${currentHeight}px</b> 로 변경되었습니다`
+        text: `<b>${task.text}</b> is now <b>${currentHeight}px</b> height`
     });
 });
 ~~~
@@ -39,5 +39,4 @@ gantt.attachEvent("onRowResize", function (id, task, currentHeight) {
 - [onAfterRowResize](api/event/onafterrowresize.md)
 
 ### Change log
-- v7.1에 추가됨
-
+- v7.1에서 추가됨

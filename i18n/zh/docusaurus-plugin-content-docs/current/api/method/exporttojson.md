@@ -1,20 +1,20 @@
 ---
 sidebar_label: exportToJSON
-title: exportToJSON method
-description: "创建一个包含甘特图结构和数据的 JSON 对象"
+title: exportToJSON 方法
+description: "将甘特图的结构和数据导出为一个 JSON 对象"
 ---
 
 # exportToJSON
 
 ### Description
 
-@short: 创建一个包含甘特图结构和数据的 JSON 对象
+@short: 将甘特图的结构和数据导出为一个 JSON 对象
 
 @signature: exportToJSON: (config?: any) =\> void
 
 ### Parameters
 
-- `config` - (optional) *object* - 可选，包含甘特图配置的对象
+- `config` - object - 可选，是一个包含甘特图配置的对象
 
 ### Example
 
@@ -27,12 +27,11 @@ gantt.exportToJSON({
 ### Details
 
 :::note
- 该方法属于 **export** 扩展，因此请确保已启用 [export_api](guides/extensions-list.md#daochufuwu) 插件。
- 
+本方法在 **export** 扩展中定义，因此需要激活 [export_api](guides/extensions-list.md#export-service) 插件。
 :::
 
 :::note
- 对于 8.0 版本之前的甘特图，需要在页面中添加 **https://export.dhtmlx.com/gantt/api.js** 来使用在线导出服务，例如:
+如果您使用的 Gantt 版本低于 8.0，请在页面中包含 `https://export.dhtmlx.com/gantt/api.js` 以启用在线导出服务，例如：
 
 ~~~js
 <script src="codebase/dhtmlxgantt.js"></script>
@@ -41,10 +40,10 @@ gantt.exportToJSON({
  
 :::
 
-**config** 对象支持以下选项:
+以下选项可用于 **config** 对象：
 
-- name - 导出 JSON 文件的文件名
-- data - (数组) 要导出的任务列表；如果省略，则导出整个甘特图
+- name - 导出的 JSON 文件名称
+- data - (array) 要导出的任务列表。如果未指定，将导出整个甘特图
 
 ### Related API
 - [exportToMSProject](api/method/exporttomsproject.md)
@@ -56,4 +55,3 @@ gantt.exportToJSON({
 - [importFromExcel](api/method/importfromexcel.md)
 - [importFromPrimaveraP6](api/method/importfromprimaverap6.md)
 - [importFromMSProject](api/method/importfrommsproject.md)
-

@@ -1,14 +1,14 @@
 ---
 sidebar_label: tooltip_timeout
-title: tooltip_timeout config
-description: "指定任务tooltip出现前的延迟时间，单位为毫秒"
+title: tooltip_timeout 配置
+description: "设置在任务的 tooltip 显示前的毫秒超时"
 ---
 
 # tooltip_timeout
 
 ### Description
 
-@short: 指定任务tooltip出现前的延迟时间，单位为毫秒
+@short: 设置在任务的 tooltip 显示前的毫秒超时
 
 @signature: tooltip_timeout: number
 
@@ -19,17 +19,16 @@ gantt.config.tooltip_timeout = 50;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 30
+**默认值:** 30
 
 ### Details
 
 :::note
- 该设置属于**tooltip**扩展，因此请确保已启用[tooltip](guides/extensions-list.md)插件。更多信息请参见[Gantt 元素的工具提示](guides/tooltips.md)文章。 
+此选项在 **tooltip** 扩展中定义，因此您需要启用 [tooltip](guides/extensions-list.md#tooltip) 插件。有关详细信息，请参阅 [Gantt Elements 的工具提示](guides/tooltips.md) 文章。
 :::
 
 ### Related API
 - [tooltip_hide_timeout](api/config/tooltip_hide_timeout.md)
 
 ### Related Guides
-- [Gantt 元素的工具提示](guides/tooltips.md)
-
+- [Gantt Elements 工具提示](guides/tooltips.md)

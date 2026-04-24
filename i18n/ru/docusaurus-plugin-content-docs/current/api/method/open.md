@@ -1,20 +1,20 @@
 ---
 sidebar_label: open
 title: open method
-description: "открывает ветку, идентифицированную заданным id"
+description: "Открывает ветку с указанным id"
 ---
 
 # open
 
 ### Description
 
-@short: Открывает ветку, идентифицированную заданным id
+@short: Открывает ветку с указанным id
 
 @signature: open: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    id ветки
+- `id` - (required) *string | number* - идентификатор ветки
 
 ### Example
 
@@ -36,11 +36,10 @@ gantt.open("p_1"); /*!*/
 
 ### Details
 
-Этот метод вызывает событие [onTaskOpened](api/event/ontaskopened.md).
+Метод инициирует событие onTaskOpened (api/event/ontaskopened.md).
 
 ### Related API
 - [close](api/method/close.md)
 
 ### Related Guides
-- [Настройка древовидной колонки](guides/tree-column.md)
-
+- [Configuring the Tree Column](guides/tree-column.md)

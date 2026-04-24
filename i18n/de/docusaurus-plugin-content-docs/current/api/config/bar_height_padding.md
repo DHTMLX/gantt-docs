@@ -1,14 +1,14 @@
 ---
 sidebar_label: bar_height_padding
 title: bar_height_padding config
-description: "steuert den Abstand um Task-Bars in der Timeline, wenn `bar_height` auf 'full' gesetzt ist"
+description: "passt den Abstand rund um die Aufgabenbalken in der Timeline an, wenn `bar_height` auf 'voll' gesetzt ist"
 ---
 
 # bar_height_padding
 
 ### Description
 
-@short: Steuert den Abstand um Task-Bars in der Timeline, wenn `bar_height` auf "full" gesetzt ist
+@short: Passt den Abstand rund um die Aufgabenbalken in der Timeline, wenn `bar_height` auf "voll" gesetzt ist
 
 @signature: bar_height_padding: number
 
@@ -19,16 +19,16 @@ gantt.config.bar_height_padding = 5;
 gantt.init("gantt_here");
 ~~~
 
-**Default value:** 9
+**Standardwert:** 9
 
 ### Details
 
-Die Einstellung `bar_height_padding` passt den vertikalen Abstand um die Task-Bars in der Timeline an, wenn `gantt.config.bar_height` auf "full" gesetzt ist. Die Höhe jeder Task-Bar wird berechnet als `gantt.config.row_height - gantt.config.bar_height_padding`.
+Die `bar_height_padding`-Konfiguration legt den vertikalen Abstand der Aufgabenbalken in der Timeline fest, wenn `gantt.config.bar_height` auf "voll" gesetzt ist. Die Höhe eines Aufgabenbalkens berechnet sich als `gantt.config.row_height - gantt.config.bar_height_padding`. 
 
-- Wird dieser Wert auf `0` gesetzt, füllen die Task-Bars die gesamte Höhe der Zeile aus.
-- Eine Erhöhung des Werts fügt mehr Abstand ober- und unterhalb der Task-Bars hinzu.
+- Wenn diese Konfiguration auf `0` gesetzt wird, nehmen die Aufgabenbalken die volle Höhe der Zeile ein.
+- Durch Erhöhen des Wertes wird mehr Platz oberhalb und unterhalb der Balken geschaffen.
 
-Das folgende Beispiel verwendet einen kleineren Padding-Wert, wodurch weniger Abstand um die Task-Bars entsteht:
+Das folgende Beispiel zeigt einen kleineren Padding-Wert, der weniger Platz um die Aufgabenbalken herum lässt:
 
 ~~~js
 gantt.config.bar_height_padding = 3;
@@ -36,7 +36,7 @@ gantt.config.bar_height_padding = 3;
 
 ![bar_height_padding_small](/img/bar_height_padding_small.png)
 
-In diesem Beispiel erzeugt ein größerer Padding-Wert mehr freien Raum ober- und unterhalb der Task-Bars:
+In diesem Beispiel lässt ein größerer Padding-Wert mehr freien Platz oberhalb und unterhalb der Aufgabenbalken entstehen:
 
 ~~~js
 gantt.config.bar_height_padding = 14;
@@ -50,4 +50,3 @@ gantt.config.bar_height_padding = 14;
 
 ### Change log
 - hinzugefügt in v9.0
-

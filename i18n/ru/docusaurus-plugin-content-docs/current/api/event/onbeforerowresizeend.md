@@ -1,31 +1,31 @@
 ---
 sidebar_label: onBeforeRowResizeEnd
 title: onBeforeRowResizeEnd event
-description: "срабатывает непосредственно перед завершением процесса изменения высоты строки"
+description: "срабатывает до завершения изменения высоты строки"
 ---
 
 # onBeforeRowResizeEnd
 
 ### Description
 
-@short: Срабатывает непосредственно перед завершением процесса изменения высоты строки
+@short: Срабатывает до завершения изменения высоты строки
 
 @signature: onBeforeRowResizeEnd: (id: number | string, task: Task, newHeight: number) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *number|string* - идентификатор задачи
+- `id` - (required) *number | string* - идентификатор задачи
 - `task` - (required) *Task* - объект задачи
-- `newHeight` - (required) *number* - обновлённая высота строки
+- `newHeight` - (required) *number* - новая высота строки
 
 ### Returns
-- ` result` - (boolean) - указывает, должно ли выполняться действие по умолчанию (<b>true</b>) или быть остановлено (<b>false</b>)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (true) или отменено (false)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeRowResizeEnd", function (id, task, newHeight) {
-    gantt.message(`<b>${task.text}</b> теперь высотой <b>${newHeight}px</b>`);
+    gantt.message(`<b>${task.text}</b> is now <b>${newHeight}px</b> height`);
     return true;
 });
 ~~~
@@ -40,5 +40,4 @@ gantt.attachEvent("onBeforeRowResizeEnd", function (id, task, newHeight) {
 - [onAfterRowResize](api/event/onafterrowresize.md)
 
 ### Change log
-- введён в версии v7.1
-
+- added in v7.1

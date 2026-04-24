@@ -1,16 +1,18 @@
 ---
 sidebar_label: layer_attribute
-title: layer_attribute config
-description: "작업 레이어의 DOM 요소에 대한 attribute 이름을 정의합니다."
+title: layer_attribute 설정
+description: "태스크 레이어의 DOM 요소 속성 이름을 설정합니다"
 ---
 
 # layer_attribute
+
 :::info
-이 기능은 PRO 에디션에서만 사용할 수 있습니다. 
+이 기능은 PRO 에디션에서만 사용할 수 있습니다.
 :::
+
 ### Description
 
-@short: 작업 레이어의 DOM 요소에 대한 attribute 이름을 정의합니다.
+@short: 태스크 레이어의 DOM 요소 속성 이름을 설정합니다
 
 @signature: layer_attribute: string
 
@@ -29,4 +31,3 @@ gantt.config.layer_attribute = "tasklayer";
 
 ### Related API
 - [addTaskLayer](api/method/addtasklayer.md)
-

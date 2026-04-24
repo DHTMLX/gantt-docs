@@ -1,25 +1,25 @@
 ---
 sidebar_label: onLightbox
-title: onLightbox event
-description: "Wird ausgelöst, sobald der Benutzer die Lightbox (Bearbeitungsformular) öffnet."
+title: onLightbox-Ereignis
+description: "wird ausgelöst, nachdem der Benutzer das Lightbox-Fenster geöffnet hat (Bearbeitungsformular)"
 ---
 
 # onLightbox
 
 ### Description
 
-@short: Wird ausgelöst, sobald der Benutzer die Lightbox (Bearbeitungsformular) öffnet.
+@short: Wird ausgelöst, nachdem der Benutzer das Lightbox-Fenster geöffnet hat (Bearbeitungsformular)
 
 @signature: onLightbox: (task_id: string | number) =\> void;
 
 ### Parameters
 
-- `task_id` - (required) *string | number* - Die ID der Aufgabe, die in der Lightbox geöffnet wurde.
+- `task_id` - (erforderlich) *string,number* - die ID der Aufgabe, die im Lightbox-Fenster geöffnet wurde
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onLightbox", function (task_id){
-    //Hier kann benutzerdefinierte Logik hinzugefügt werden
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein
 });
 ~~~

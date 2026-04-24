@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskTop
-title: getTaskTop method
-description: "Ruft die obere Position des DOM-Elements einer Aufgabe im Timeline-Bereich ab"
+title: getTaskTop-Methode
+description: "liefert die obere Position des DOM-Elements der Aufgabe im Timeline-Bereich"
 ---
 
 # getTaskTop
 
 ### Description
 
-@short: Ruft die obere Position des DOM-Elements einer Aufgabe im Timeline-Bereich ab
+@short: Ermittelt die obere Position des DOM-Elements der Aufgabe im Timeline-Bereich
 
 @signature: getTaskTop: (id: number | string) =\> number
 
 ### Parameters
 
-- `id` - (required) *number | string* -    Die ID der Aufgabe
+- `id` - (required) *number | string* -    die ID der Aufgabe
 
 ### Returns
-- ` top` - (number) - Die CSS-Top-Position des DOM-Elements der Aufgabe, gemessen in Pixeln
+- `top` - (number) - die CSS-Top-Position des DOM-Elements der Aufgabe in Pixeln
 
 ### Example
 
@@ -27,4 +27,3 @@ gantt.getTaskTop(2);
 
 ### Related API
 - [getTaskPosition](api/method/gettaskposition.md)
-

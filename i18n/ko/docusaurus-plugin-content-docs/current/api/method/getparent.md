@@ -1,23 +1,23 @@
 ---
 sidebar_label: getParent
 title: getParent method
-description: "부모 작업의 id를 가져옵니다"
+description: "상위 작업의 ID를 반환합니다"
 ---
 
 # getParent
 
 ### Description
 
-@short: 부모 작업의 id를 가져옵니다
+@short: 상위 작업의 ID를 반환합니다
 
 @signature: getParent: (id: string | number) =\> string | number
 
 ### Parameters
 
-- `id` - (required) *string | number* -    작업의 id
+- `id` - (required) *string | number* - 해당 작업의 ID
 
 ### Returns
-- ` id` - (string | number) - 부모 작업의 id를 반환합니다. 지정한 작업에 부모가 없으면 루트의 id를 반환합니다
+- `id` - (string | number) - 상위 작업의 ID. 지정된 작업에 상위가 없으면 루트의 ID
 
 ### Example
 
@@ -36,7 +36,7 @@ gantt.init("gantt_here");
 gantt.parse(tasks);
 
 gantt.getParent("t_1"); //-> "p_1" /*!*/
-gantt.getParent("p_1"); //-> 0 (기본 루트 id) /*!*/
+gantt.getParent("p_1"); //-> 0 (기본 루트 ID) /*!*/
 ~~~
 
 ### Related API
@@ -47,4 +47,3 @@ gantt.getParent("p_1"); //-> 0 (기본 루트 id) /*!*/
 
 ### Related Guides
 - [Task Parent/Child](guides/task-tree-operations.md)
-

@@ -1,26 +1,27 @@
 ---
 sidebar_label: getTaskResources
 title: getTaskResources method
-description: "从数据存储中检索分配给特定任务的唯一资源列表"
+description: "从数据存储返回分配给特定任务的唯一资源数组"
 ---
 
 # getTaskResources
 
 :::info
- 此功能仅包含在PRO版本中。 
-:::
+此功能仅在 PRO 版中提供。 
+::: 
+
 ### Description
 
-@short: 从数据存储中检索分配给特定任务的唯一资源列表
+@short: 从数据存储中返回分配给特定任务的唯一资源数组
 
 @signature: getTaskResources: (taskId: string | number) =\> ResourceItem[]
 
 ### Parameters
 
-- `taskId` - (required) *string | number* -    任务的标识符
+- `taskId` - (required) *string | number* -    任务 ID
 
 ### Returns
-- ` param` - (ResourceItem[]) - 包含资源对象的数组
+- `param` - (ResourceItem[]) - 资源对象数组
 
 ### Example
 
@@ -34,18 +35,17 @@ gantt.getTaskResources(5); // -> 详情见示例
 ### Details
 
 :::note
- 如果 [process_resource_assignments](api/config/process_resource_assignments.md) 被禁用，**getTaskResources** 方法将无法工作。 
-:::
+ 当 [process_resource_assignments](api/config/process_resource_assignments.md) 被禁用时，**getTaskResources** 方法不可用。 
+::: 
 
-此方法返回一个包含 **resourceItem** 对象的数组，这些对象具有以下属性:
+该方法返回一个包含 **resourceItem** 对象的数组，这些对象具有以下属性：
 
-- **id** - (*string | number*) - 资源项的ID
-- **open?** - (*boolean*) - 指示资源项在树状结构中是否展开（*true*）或折叠（*false*）
-- **parent?** - (*string | number*) - 资源项父项的ID
+- **id** - (*string | number*) - 资源项的 ID
+- **open?** - (*boolean*) - 指示资源项在树中是否展开（*true*）还是折叠（*false*）
+- **parent?** - (*string | number*) - 资源项父级的 ID
 - **text?** - (*string*) - 资源名称
-- **unit?** - (*string*) - 分配使用的单位
-- **[customProperty: string]** - (*any*) - 任何额外的自定义属性
-
+- **unit?** - (*string*) - 用于分配的单位
+- **[customProperty: string]** - (*any*) - 任何自定义属性
 
 ~~~js
 [
@@ -59,8 +59,7 @@ gantt.getTaskResources(5); // -> 详情见示例
 - [process_resource_assignments](api/config/process_resource_assignments.md)
 
 ### Related Guides
-- [资源管理](guides/resource-management.md)
+- [Resource Management](guides/resource-management.md#assigningresources)
 
 ### Change log
-- v8.0版本新增
-
+- 新增于 v8.0

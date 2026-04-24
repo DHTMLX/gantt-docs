@@ -21,4 +21,4 @@ gantt.init("gantt_here");
 ~~~
 
 **Default value:** true
-s
+

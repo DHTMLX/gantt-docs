@@ -1,23 +1,23 @@
 ---
 sidebar_label: getTaskTop
-title: getTaskTop method
-description: "获取任务DOM元素在时间轴区域内的顶部位置"
+title: getTaskTop 方法
+description: "获取任务的 DOM 元素在时间线区域的顶部位置"
 ---
 
 # getTaskTop
 
 ### Description
 
-@short: 获取任务DOM元素在时间轴区域内的顶部位置
+@short: 获取任务的 DOM 元素在时间线区域的顶部位置
 
 @signature: getTaskTop: (id: number | string) =\> number
 
 ### Parameters
 
-- `id` - (required) *number | string* -    任务的ID
+- `id` - (required) *number | string* - 该任务的 ID
 
 ### Returns
-- ` top` - (number) - 任务DOM元素的CSS top位置，单位为像素
+- `top` - (number) - 该任务的 DOM 元素在 CSS top 位置的像素值
 
 ### Example
 
@@ -27,4 +27,3 @@ gantt.getTaskTop(2);
 
 ### Related API
 - [getTaskPosition](api/method/gettaskposition.md)
-

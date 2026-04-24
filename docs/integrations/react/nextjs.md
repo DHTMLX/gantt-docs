@@ -136,7 +136,7 @@ export default function GanttChart({ tasks, links }: GanttProps) {
 
 This component initializes the Gantt chart and provides it with configuration, initial data, and a `ref` for future API calls. The `config` object defines the layout and scales, while `tasks` and `links` props supply the chart with its dataset.
 
-The `save` function inside the `data` prop is used to track updates made to tasks and links inside the Gantt. In this tutorial we add a simple placeholder handler for tracking changes. If you want to send updates to a backend or bind them to React state, you can follow the official data-binding [guide](integrations/react.md#bindingdata).
+The `save` function inside the `data` prop is used to track updates made to tasks and links inside the Gantt. In this tutorial we add a simple placeholder handler for tracking changes. If you want to send updates to a backend or bind them to React state, you can follow the official data-binding [guide](integrations/react/overview.md#bindingdata).
 
 
 ## Step 4. Adding Gantt to the page
@@ -178,5 +178,5 @@ A complete working project that follows this tutorial is [provided on GitHub](ht
 
 From here, you can continue exploring:
 
-- [React-driven data flow](integrations/react.md#bindingdata).
+- [React-driven data flow](integrations/react/overview.md#bindingdata).
 - [React Gantt Templates Documentation](integrations/react/configuration-props.md).

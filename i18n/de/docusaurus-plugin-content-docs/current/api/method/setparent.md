@@ -1,21 +1,21 @@
 ---
 sidebar_label: setParent
-title: setParent method
-description: "einem Task einen Parent zuweisen"
+title: setParent Methode
+description: "Den Elternteil für eine Aufgabe festlegen"
 ---
 
 # setParent
 
 ### Description
 
-@short: Einem Task einen Parent zuweisen
+@short: Den Elternteil für eine Aufgabe festlegen
 
 @signature: setParent: (task: Task, pid: number | string) =\> void
 
 ### Parameters
 
-- `task` - (required) *Task* - das Task-Objekt
-- `pid` - (required) *number | string* -    die ID des Parent-Tasks
+- `task` - (erforderlich) *Task* - das Task-Objekt
+- `pid` - (erforderlich) *number | string* - die ID der übergeordneten Aufgabe
 
 ### Example
 

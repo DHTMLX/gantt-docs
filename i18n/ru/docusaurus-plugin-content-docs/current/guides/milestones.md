@@ -6,22 +6,21 @@ sidebar_label: "Вехи"
 # Вехи
 
 :::info
-Эта функциональность доступна только в PRO-версии
+Эта функциональность доступна только в версии PRO
 :::
 
-Вехи - это задачи с нулевой длительностью, предназначенные для обозначения важных дат проекта, ключевых событий или целей. Например, их можно использовать для выделения дат совещаний по обзору или ожидаемых сроков завершения этапов проекта. 
+Вехи — это задачи нулевой продолжительности, которые используются для обозначения важных дат проекта, некоторых ключевых событий или целей.
+Например, вы можете использовать вехи, чтобы выделить даты контрольных встреч или даты ожидаемого завершения фаз проекта.
 
-
-С точки зрения программирования, веха - это один из [предопределённых типов задач](guides/task-types.md). Однако она ведёт себя как [обычная задача](guides/task-types.md), вызывая те же события и шаблоны.
+С программной точки зрения, веха является одним из предопределённых типов задач. Но она обрабатывается как обычная задача, т.е. вызывает те же события и шаблоны.
 
 ![type_milestone](/img/type_milestone.png)
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**Связанный пример**: [Проекты и вехи](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
+**В целом, чтобы обеспечить возможность добавлять вехи на диаграмму:**
 
-**Чтобы добавить возможность работы с вехами в диаграмме Gantt, выполните следующие шаги:**
-
-1. Добавьте дополнительную секцию в лайтбокс - [Типовой контрол](guides/typeselect.md) - чтобы пользователи могли менять тип задач и выбирать вехи. 
+Добавьте дополнительный раздел в лайтбокс — [Typeselect Control](guides/typeselect.md) — который позволит вашим пользователям изменять тип задач и выбирать вехи.
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -30,7 +29,7 @@ gantt.config.lightbox.sections = [
     {name: "time", height: 72, type: "duration", map_to: "auto"}
 ];
 ~~~
-2. Определите шаблон [rightside_text](api/template/rightside_text.md) или [leftside_text](api/template/leftside_text.md) для отображения подписи к вехе. <i>Обратите внимание, что подпись, заданная через шаблон [task_text](api/template/task_text.md), не будет отображаться, так как у вехи нулевая длительность.</i> 
+Определите шаблон [rightside_text](api/template/rightside_text.md) или [leftside_text](api/template/leftside_text.md) для установки текстовой метки для вехи. <i> Примечание: метка, установленная с помощью шаблона [task_text](api/template/task_text.md), не отображается, так как вехи имеют нулевую продолжительность.</i>
 
 
 ~~~js
@@ -41,25 +40,24 @@ gantt.templates.rightside_text = function(start, end, task){
     return "";
 };
 ~~~
-3. Включите свойство [order_branch](api/config/order_branch.md) для удобства пользователей. <i>Эта опция позволяет перетаскивать задачи внутри родительской ветки, чтобы пользователи могли создавать вехи в любом месте и затем перемещать их в нужную позицию.</i> 
+Включите свойство [order_branch](api/config/order_branch.md), чтобы упростить работу ваших конечных пользователей. <i>Опция позволяет перетаскивать задачи внутри родственной ветки и позволит вашим пользователям создавать вехи в любом месте, а затем перетаскивать их на нужные позиции.</i> 
 
 ~~~js
 gantt.config.order_branch = true;
 ~~~
 
 
-После выполнения этих шагов диаграмма Gantt будет полностью готова к работе с вехами.
+После выполнения этих шагов ваш график Gantt полностью готов к работе с вехами.
 
 ![milestone_lightbox](/img/milestone_lightbox.png)
 
 
-[Projects and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
+**Связанный пример**: [Проекты и вехи](https://docs.dhtmlx.com/gantt/samples/01_initialization/16_projects_and_milestones.html)
 
 
-## Указание вех в наборе данных {#specifyingmilestonesinadataset}
+## Определение вех в наборе данных
 
-Чтобы указать веху в исходных данных, задайте свойство [type](guides/loading.md#dataproperties) элемента как **'milestone'** (значения хранятся в объекте [types](api/config/types.md)):
-
+Чтобы определить вехи в исходном наборе данных, установите свойство [type](guides/loading.md#dataproperties) элемента данных в значение **'milestone'** (*значения хранятся в объекте [types](api/config/types.md)*):
 ~~~js
 var data = {
     tasks:[
@@ -73,7 +71,7 @@ var data = {
 
 ## Rollup задач и вех {#rolluptasksandmilestones}
 
-Начиная с версии 7.1, задачи и вехи могут отображаться на их родительских проектах. Для этого установите свойство **rollup** элемента данных в *true*:
+Начиная с версии v7.1, появилась возможность отображать задачи и вехи на их родительских проектах. Для этого нужно установить свойство **rollup** элемента данных в значение *true*:
 
 ~~~js
 var data = {
@@ -93,11 +91,11 @@ var data = {
 };
 ~~~
 
-В результате получится следующее:
+Результат будет таким же, как на изображении:
 
 ![rollup_milestone](/img/rollup_milestone.png)
 
-Также вы можете включать или отключать rollup через чекбокс **Rollup** в лайтбоксе:
+Также есть возможность переключать функциональность rollup через чекбокс Rollup в лайтбоксе:
 
 ~~~js
 gantt.config.lightbox.milestone_sections = [
@@ -112,12 +110,12 @@ gantt.config.lightbox.milestone_sections = [
 ![rollup](/img/rollup.png)
 
 
-[Rollup tasks and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/21_rollup_tasks.html)
+**Связанный пример**: [Rollup задач и вех](https://docs.dhtmlx.com/gantt/samples/01_initialization/21_rollup_tasks.html)
 
 
-## Скрытие задач и вех {#hidingtasksandmilestones}
+## Скрытие задач и вех
 
-Начиная с версии 7.1, можно скрывать [бары задач](guides/task-types.md#regulartasks) и [вехи](guides/task-types.md#milestones) на временной шкале, установив свойство **hide_bar: true** для элемента данных:
+Начиная с v7.1, можно скрывать [знаки задач](guides/task-types.md#regular-tasks) и [вехи](guides/task-types.md#milestones) на временной шкале, устанавливая свойство hide_bar: true у элемента данных:
 
 ~~~js
 var data = {
@@ -137,22 +135,21 @@ var data = {
 };
 ~~~
 
-Это будет выглядеть следующим образом:
+Результат будет выглядеть так:
 
 ![hide_milestone](/img/hide_milestone.png)
 
-**Обратите внимание**, что если у элемента одновременно установлены **hide_bar:true** и **rollup:true**, он будет скрыт на временной шкале, но всё равно отображён на родительском проекте.
+Примечание, что если для элемента данных заданы одновременно свойства **hide_bar:true** и **rollup:true**, элемент будет скрыт на временной шкале, но отображаться на родительском проекте.
 
 :::note
-Чтобы скрыть все rollup-элементы на родительском проекте, установите **rollup:false** в объекте [project](guides/task-types.md#projecttasks) (доступно с версии 8.0):
+Чтобы скрыть все элементы rollup из родительского проекта, установите **rollup:false** в объекте [project](guides/task-types.md#project-tasks) (с версии v8.0):
 
 ~~~js
 { id:11, text:"Project #1", type:"project", rollup:false, open: true }
 ~~~
 :::
 
-
-Также вы можете скрывать задачи или вехи на временной шкале, используя чекбокс **Hide bar** в лайтбоксе:
+Вы можете скрыть необходимую задачу/веху на временной шкале, переключив чекбокс Hide bar в лайтбоксе:
 
 ~~~js
 gantt.config.lightbox.sections = [
@@ -182,27 +179,25 @@ gantt.config.lightbox.project_sections = [
 
 ![hide_bar](/img/hide_bar.png)
 
+**Связанный пример**: [Rollup задач и вех](https://docs.dhtmlx.com/gantt/samples/01_initialization/21_rollup_tasks.html)
 
-[Rollup tasks and milestones](https://docs.dhtmlx.com/gantt/samples/01_initialization/21_rollup_tasks.html)
+## Обзор API
 
-
-## Обзор API {#apioverview}
-
-Существует событие для управления отображением rollup-задач на их родительских проектах:
+Существует событие, которое можно использовать для контроля видимости задач rollup на их родительских проектах:
 
 - [onBeforeRollupTaskDisplay](api/event/onbeforerolluptaskdisplay.md)
 
 ~~~js
-// перед отображением rollup-задачи на родительском проекте 
+// до отображения задачи rollup на ее родительском проекте 
 gantt.attachEvent("onBeforeRollupTaskDisplay", function(taskId, task, parentId){
-    // любая пользовательская логика
+    // любая пользовательская логика здесь
     return false;
 });
 ~~~
 
-## Стилизация отдельных rollup-элементов {#stylingseparaterollupitems}
+## Стилизация отдельных элементов rollup {#stylingseparaterollupitems}
 
-Начиная с версии 8.0, rollup-элементы содержат свойство *task.$rendered_at*, в котором хранится id строки, где отображается rollup-элемент. Это позволяет стилизовать отдельные rollup-элементы в зависимости от строки отображения с помощью шаблона [task_class](api/template/task_class.md):
+С версии 8.0 элементы rollup попадают в функции шаблонов с свойством *task.$rendered_at*, которое содержит идентификатор строки, на которой элемент rollup отрендерен. Таким образом, чтобы стилизовать конкретные элементы rollup в зависимости от строки, на которой они отображаются, можно использовать шаблон [task_class](api/template/task_class.md):
 
 ~~~js
 gantt.templates.task_class = function(start, end, task) {
@@ -214,4 +209,3 @@ gantt.templates.task_class = function(start, end, task) {
     return "";
 };
 ~~~
-

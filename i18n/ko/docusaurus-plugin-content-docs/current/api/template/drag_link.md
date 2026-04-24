@@ -1,26 +1,26 @@
 ---
 sidebar_label: drag_link
 title: drag_link template
-description: "새로운 의존성 링크가 생성될 때 표시되는 tooltip 텍스트를 정의합니다."
+description: "사용자가 새로운 의존성 링크를 생성할 때 표시되는 툴팁의 텍스트를 지정합니다"
 ---
 
 # drag_link
 
 ### Description
 
-@short: 새로운 의존성 링크가 생성될 때 표시되는 tooltip 텍스트를 정의합니다.
+@short: 사용자가 새로운 의존성 링크를 만들 때 표시되는 툴팁의 텍스트를 지정합니다
 
 @signature: drag_link: (from: string | number, from_start: boolean, to: string | number, to_start: boolean) =\> string;
 
 ### Parameters
 
-- `from` - (required) *string | number* - 출발 작업의 ID
-- `from_start` - (required) *boolean* - 출발 작업의 시작 부분에서 링크가 드래그된 경우 <i>true</i>, 끝 부분에서 드래그된 경우 <i>false</i>
-- `to` - (required) *string | number* - 목표 작업의 ID (목표 작업이 아직 지정되지 않은 경우 'null' 또는 'undefined')
-- `to_start` - (required) *boolean* - 목표 작업의 시작 부분으로 링크가 드래그된 경우 <i>true</i>, 끝 부분으로 드래그된 경우 <i>false</i>
+- `from` - (required) *string | number* - 원본 작업의 ID
+- `from_start` - (required) *boolean* - <i>true</i>, 소스 작업의 시작 부분에서 드래그 중인 경우, <i>false</i> - 소스 작업의 끝에서 드래그 중인 경우
+- `to` - (required) *string | number* - 타깃 작업의 ID( 아직 타깃 작업이 지정되지 않은 경우 'null' 또는 'undefined')
+- `to_start` - (required) *boolean* - <i>true</i>, 타깃 작업의 시작 부분으로 링크가 드래그될 때, <i>false</i> - 타깃 작업의 끝으로 드래그될 때 <br/>
 
 ### Returns
-- ` text` - (string) - gantt에 표시될 html 텍스트
+- ` text` - (string) - 간트 차트에 렌더링될 HTML 텍스트
 
 ### Example
 

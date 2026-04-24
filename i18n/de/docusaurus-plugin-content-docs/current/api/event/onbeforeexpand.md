@@ -1,38 +1,38 @@
 ---
 sidebar_label: onBeforeExpand
-title: onBeforeExpand event
-description: "wird ausgelöst kurz bevor der Gantt in den Vollbildmodus wechselt"
+title: onBeforeExpand Ereignis
+description: "Wird ausgelöst, bevor das Gantt-Diagramm auf Vollbild erweitert wird"
 ---
 
 # onBeforeExpand
 
 ### Description
 
-@short: Wird ausgelöst kurz bevor der Gantt in den Vollbildmodus wechselt
+@short: Wird ausgelöst, bevor das Gantt-Diagramm auf Vollbild erweitert wird
 
 @signature: onBeforeExpand: () =\> boolean;
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Ereignisses ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 gantt.attachEvent("onBeforeExpand",function(){
-    // hier eigene Logik hinzufügen    
+    // Fügen Sie hier Ihre benutzerdefinierte Logik ein   
     return true;
 });
 ~~~
 
 ### Related samples
-- [Full Screen](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
+- [Vollbild](https://docs.dhtmlx.com/gantt/samples/02_extensions/11_full_screen.html)
 
 ### Details
 
-Dieses Event kann blockiert werden. Die Rückgabe von *false* verhindert jegliche weitere Aktion.
+Das Ereignis ist blockierbar. Die Rückgabe von *false* verhindert die weitere Verarbeitung.
 
 :::note
- Dieses Event gehört zur **fullscreen** Extension, daher muss das [fullscreen](guides/extensions-list.md#fullscreen) Plugin über die [gantt.plugins](api/method/plugins.md) Methode aktiviert werden. Weitere Informationen finden Sie im Artikel ["Vollbildmodus"](guides/fullscreen-mode.md). 
+Dieses Ereignis ist in der **Vollbild**-Erweiterung definiert, daher müssen Sie das [Vollbild](guides/extensions-list.md#fullscreen) Plugin aktivieren, indem Sie die [gantt.plugins](api/method/plugins.md) Methode verwenden. Lesen Sie die Details im Artikel [Vollbildmodus](guides/fullscreen-mode.md).
 :::
 
 ### Related API
@@ -43,5 +43,4 @@ Dieses Event kann blockiert werden. Die Rückgabe von *false* verhindert jeglich
 - [expand](api/method/expand.md)
 
 ### Related Guides
-- ["Vollbildmodus"](guides/fullscreen-mode.md)
-
+- [Vollbildmodus](guides/fullscreen-mode.md)

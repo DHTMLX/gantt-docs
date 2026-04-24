@@ -1,20 +1,20 @@
 ---
 sidebar_label: buttons_right
 title: buttons_right config
-description: "保存位于 lightbox 右下角的一组按钮"
+description: "在 lightbox 的右下角存储一组按钮"
 ---
 
 # buttons_right
 
 ### Description
 
-@short: 保存位于 lightbox 右下角的一组按钮
+@short: 在 lightbox 的右下角驻留的一组按钮集合
 
 @signature: buttons_right: string[]
 
 ### Example
 
-~~~jsx
+~~~html
 <style>
     .complete_button{
         margin-top: 2px;
@@ -23,9 +23,9 @@ description: "保存位于 lightbox 右下角的一组按钮"
     }
 </style>
 <script>
-    gantt.locale.labels["complete_button"] = "完成";
+    gantt.locale.labels["complete_button"] = "Complete";
     gantt.attachEvent("onGanttReady", function(){                               /*!*/ 
-        gantt.config.buttons_right = ["gantt_delete_btn","complete_button"];   /*!*/                              
+        gantt.config.buttons_right = ["gantt_delete_btn","complete_button"];   /*!*/
     });                                                                           /*!*/ 
     gantt.init("gantt_here");
 
@@ -39,8 +39,7 @@ description: "保存位于 lightbox 右下角的一组按钮"
     });
 </script>
 ~~~
-
-**Default value:** ["gantt_delete_btn"];
+**默认值:** ["gantt_delete_btn"]
 
 ### Related samples
 - [Custom button in the lightbox](https://docs.dhtmlx.com/gantt/samples/05_lightbox/06_custom_button.html)
@@ -48,19 +47,16 @@ description: "保存位于 lightbox 右下角的一组按钮"
 ### Details
 
 :::note
-
-请注意，如果应用了[Material skin](guides/skins.md#materialpifu)，它将覆盖按钮配置。 
-为了避免这种情况，请在 [onGanttReady](api/event/onganttready.md) 事件处理器内定义按钮配置。
- 
+请注意，如果您使用 [Material skin](guides/skins.md#materialskin)，它将重新定义按钮配置。 
+要防止这种情况，您需要在 [onGanttReady](api/event/onganttready.md) 事件处理程序中指定按钮的配置。
 :::
 
-<br>
 ![property_buttons_left](/img/property_buttons_left.png)
 
 你可以在初始化 Gantt 之前，用以下语法更新右侧按钮的标签:
 
 ~~~js
-gantt.locale.labels.icon_delete= "新标签";
+gantt.locale.labels.icon_delete= "New Label";
 
 gantt.init("gantt_here");
 ~~~
@@ -69,7 +65,7 @@ gantt.init("gantt_here");
 
 ~~~js
 gantt.attachEvent("onGanttReady", function(){
-  gantt.locale.labels.gantt_delete_btn = "新标签";
+  gantt.locale.labels.gantt_delete_btn = "New Label";
 });
 ~~~
 
@@ -78,7 +74,7 @@ gantt.attachEvent("onGanttReady", function(){
 ~~~js
 gantt.i18n.setLocale({
    labels: {
-      gantt_delete_btn: "新标签"
+      gantt_delete_btn: "New Label"
    }
 });
 ~~~

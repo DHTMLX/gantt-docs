@@ -1,20 +1,20 @@
 ---
 sidebar_label: deleteLink
 title: deleteLink method
-description: "移除指定的依赖链接"
+description: "删除指定的依赖链接"
 ---
 
 # deleteLink
 
 ### Description
 
-@short: 移除指定的依赖链接
+@short: 删除指定的依赖链接
 
 @signature: deleteLink: (id: string | number) =\> void
 
 ### Parameters
 
-- `id` - (required) *string | number* -    依赖链接的ID
+- `id` - (required) *string | number* - 该依赖链接的 ID
 
 ### Example
 
@@ -31,7 +31,7 @@ gantt.deleteLink(1); /*!*/
 
 ### Details
 
-此方法会触发 [onBeforeLinkDelete](api/event/onbeforelinkdelete.md) 和 [onAfterLinkDelete](api/event/onafterlinkdelete.md) 事件。
+该方法会触发 [onBeforeLinkDelete](api/event/onbeforelinkdelete.md) 与 [onAfterLinkDelete](api/event/onafterlinkdelete.md) 事件。
 
 ### Related API
 - [addLink](api/method/addlink.md)
@@ -39,5 +39,4 @@ gantt.deleteLink(1); /*!*/
 - [onAfterLinkDelete](api/event/onafterlinkdelete.md)
 
 ### Related Guides
-- [添加/更新/删除链接](guides/crud-dependency.md)
-
+- [Adding/Updating/Deleting Links](guides/crud-dependency.md)

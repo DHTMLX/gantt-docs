@@ -1,24 +1,24 @@
 ---
 sidebar_label: isChildOf
-title: isChildOf method
-description: "특정 작업이 다른 작업의 자식인지 여부를 결정합니다."
+title: isChildOf 메서드
+description: "다른 작업의 자식인지 확인합니다"
 ---
 
 # isChildOf
 
 ### Description
 
-@short: 특정 작업이 다른 작업의 자식인지 여부를 결정합니다.
+@short: 작업이 다른 작업의 자식인지 여부를 확인합니다
 
-@signature: isChildOf: (childId: string | number, parentId: string | number) =\> boolean
+@signature: isChildOf: (childId: string | number, parentId: string | number) => boolean
 
 ### Parameters
 
-- `childId` - (required) *string | number* -    자식으로 확인할 작업의 ID
-- `parentId` - (required) *string | number* -    부모로 확인할 작업의 ID
+- `childId` - (required) *string | number* -    확인하려는 자식으로 간주될 작업의 ID
+- `parentId` - (required) *string | number* -    확인하려는 부모 작업의 ID
 
 ### Returns
-- ` isChild` - (boolean) - <i>true</i> 해당 작업이 지정된 부모 작업의 자식인 경우; 그렇지 않으면 <i>false</i>
+- `isChild` - (boolean) - <i>참</i>, 지정된 부모 작업의 자식인 경우. 그렇지 않으면 <i>거짓</i>
 
 ### Example
 
@@ -37,6 +37,6 @@ const tasks = {
     "links":[]
 }; 
 
-gantt.isChildOf(2,10); //-> true /*!*/
-gantt.isChildOf(2,3); //-> false /*!*/
+gantt.isChildOf(2,10); //-> 참 /*!*/
+gantt.isChildOf(2,3); //-> 거짓 /*!*/
 ~~~

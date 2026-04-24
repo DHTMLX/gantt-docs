@@ -1,24 +1,24 @@
 ---
 sidebar_label: onBeforeLinkDisplay
 title: onBeforeLinkDisplay event
-description: "wird ausgelöst, nachdem die Links in das Gantt-Diagramm geladen wurden, aber noch bevor sie auf dem Bildschirm erscheinen"
+description: "Wird ausgelöst, nachdem die Links in das Gantt-Diagramm geladen wurden, bevor sie angezeigt werden"
 ---
 
 # onBeforeLinkDisplay
 
 ### Description
 
-@short: Wird ausgelöst, nachdem die Links in das Gantt-Diagramm geladen wurden, aber noch bevor sie auf dem Bildschirm erscheinen
+@short: Wird ausgelöst, nachdem die Links in das Gantt-Diagramm geladen wurden, bevor sie angezeigt werden
 
 @signature: onBeforeLinkDisplay: (id: string | number, link: Link) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string | number* - die eindeutige Kennung des Links
-- `link` - (required) *Link* - das Link-Objekt selbst
+- `id` - (required) *string | number* - die Link-ID
+- `link` - (required) *Link* - das Link-Objekt
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- ` result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
 
 ### Example
 
@@ -33,8 +33,7 @@ gantt.attachEvent("onBeforeLinkDisplay", function(id, link){
 
 ### Details
 
-Dieses Event kann blockiert werden. Wenn false zurückgegeben wird, wird der Link nicht angezeigt.
+Das Ereignis ist blockierbar. Wenn false zurückgegeben wird, wird der Link nicht angezeigt
 
 ### Related API
 - [onBeforeTaskDisplay](api/event/onbeforetaskdisplay.md)
-
