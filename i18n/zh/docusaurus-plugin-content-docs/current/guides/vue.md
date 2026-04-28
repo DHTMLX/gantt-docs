@@ -12,7 +12,7 @@ sidebar_label: "Vue 甘特图"
 
 以下是将 DHTMLX Gantt 与 Vue 集成的推荐资源：
 
-- [将甘特图与 Vue 集成的分步教程](integrations/vue/howtostart-vue.md)
+- [将甘特图与 Vue 集成的分步教程](integrations/vue/js-gantt-vue.md)
 - [GitHub 上的 Vue Gantt 演示](https://github.com/DHTMLX/vue-gantt-demo)
 - [将 DHTMLX Gantt 与 Vue 集成的视频教程](https://www.youtube.com/watch?v=IgoXvVSerkE&t=10s)
 

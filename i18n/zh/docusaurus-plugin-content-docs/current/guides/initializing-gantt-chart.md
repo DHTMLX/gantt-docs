@@ -21,10 +21,10 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
   <td><FrameworkIcon name="vue" className="framework-icon" /></td>
   </tr>
   <tr>
-  <td>[Angular](integrations/angular/howtostart-angular.md)</td>
+  <td>[Angular](integrations/angular/js-gantt-angular.md)</td>
   <td>[React](integrations/react/js-gantt-react.md)</td>
   <td>[Svelte](integrations/svelte/howtostart-svelte.md)</td>
-  <td>[Vue.js](integrations/vue/howtostart-vue.md)</td>
+  <td>[Vue.js](integrations/vue/js-gantt-vue.md)</td>
   </tr>
   </tbody>
 </table>

@@ -17,16 +17,16 @@ Im Folgenden finden Sie eine Zusammenfassung von Anleitungen, die die Grundlagen
   <td>[![gantt_plainjs](/img/gantt_plainjs.png)](../../guides/initializing-gantt-chart.md)</td>
   </tr> 
   <tr>
-  <td><span>[dhtmlxGantt with Angular](integrations/angular/howtostart-angular.md)</span> Eine detaillierte Anleitung, die sich auf die Besonderheiten der Implementierung eines Gantt-Diagramms mit Angular konzentriert.</td>
-  <td>[![gantt_angular](/img/gantt_angular.png)](../angular/howtostart-angular.md)</td>
+  <td><span>[dhtmlxGantt with Angular](integrations/angular/quick-start.md)</span> Eine detaillierte Anleitung, die sich auf die Besonderheiten der Implementierung eines Gantt-Diagramms mit Angular konzentriert.</td>
+  <td>[![gantt_angular](/img/gantt_angular.png)](../angular/quick-start.md)</td>
   </tr>
   <tr>
   <td><span>[dhtmlxGantt with React](integrations/react/quick-start.md)</span> Ein umfassendes Tutorial zur Implementierung eines Gantt-Diagramms mit React.</td>
   <td>[![gantt_react](/img/gantt_react.png)](../react/quick-start.md)</td>
   </tr>
   <tr>
-  <td><span>[dhtmlxGantt with Vue.js](integrations/vue/howtostart-vue.md)</span> Eine umfassende Anleitung, die Schritt für Schritt zeigt, wie ein Gantt-Diagramm mit Vue.js erstellt wird.</td>
-  <td>[![gantt_vue](/img/gantt_vue.png)](../vue/howtostart-vue.md)</td>
+  <td><span>[dhtmlxGantt with Vue.js](integrations/vue/quick-start.md)</span> Eine umfassende Anleitung, die Schritt für Schritt zeigt, wie ein Gantt-Diagramm mit Vue.js erstellt wird.</td>
+  <td>[![gantt_vue](/img/gantt_vue.png)](../vue/quick-start.md)</td>
   </tr>
   <tr>
   <td><span>[dhtmlxGantt with Svelte](integrations/svelte/howtostart-svelte.md)</span> Ein vollständiges Tutorial, das erklärt, wie ein Gantt-Diagramm mit Svelte erstellt wird.</td>

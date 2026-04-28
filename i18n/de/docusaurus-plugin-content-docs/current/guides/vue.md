@@ -12,7 +12,7 @@ Sie können DHTMLX Gantt jedoch nach wie vor problemlos in Ihre Vue-Anwendungen 
 
 Hier sind die empfohlenen Ressourcen zur Integration von DHTMLX Gantt mit Vue:
 
-- [Schritt-für-Schritt-Anleitung zur Integration von Gantt mit Vue](integrations/vue/howtostart-vue.md)
+- [Schritt-für-Schritt-Anleitung zur Integration von Gantt mit Vue](integrations/vue/js-gantt-vue.md)
 - [Vue Gantt-Demo auf GitHub](https://github.com/DHTMLX/vue-gantt-demo)
 - [Video-Tutorial zur Integration von DHTMLX Gantt mit Vue](https://www.youtube.com/watch?v=IgoXvVSerkE&t=10s)
 

@@ -24,8 +24,8 @@ Here's the overview of guides which tell you about basic Gantt initialization wi
   <td>[![gantt_react](/img/gantt_react.png)](../react/js-gantt-react.md)</td>
   </tr>
   <tr>
-  <td><span >[dhtmlxGantt with Vue.js](integrations/vue/howtostart-vue.md)</span><br/> An extensive tutorial that describes how to create Gantt using Vue.js.</td>
-  <td>[![gantt_vue](/img/gantt_vue.png)](../vue/howtostart-vue.md)</td>
+  <td><span >[dhtmlxGantt with Vue.js](integrations/vue/js-gantt-vue.md)</span><br/> An extensive tutorial that describes how to create Gantt using Vue.js.</td>
+  <td>[![gantt_vue](/img/gantt_vue.png)](../vue/js-gantt-vue.md)</td>
   </tr>
   <tr>
   <td><span >[dhtmlxGantt with Svelte](integrations/svelte/howtostart-svelte.md)</span><br/> A comprehensive tutorial that discusses how to create Gantt using Svelte.</td>

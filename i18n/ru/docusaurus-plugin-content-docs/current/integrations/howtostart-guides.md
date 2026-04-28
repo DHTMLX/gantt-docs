@@ -16,16 +16,16 @@ sidebar_label: "Как начать работу с dhtmlxGantt"
   <td>[![gantt_plainjs](/img/gantt_plainjs.png)](../../guides/initializing-gantt-chart.md)</td>
   </tr> 
   <tr>
-  <td><span >[dhtmlxGantt с Angular](integrations/angular/howtostart-angular.md)</span><br/> Развернутое руководство, которое исследует специфику реализации Gantt-чарта с Angular.</td>
-  <td>[![gantt_angular](/img/gantt_angular.png)](../angular/howtostart-angular.md)</td>
+  <td><span >[dhtmlxGantt с Angular](integrations/angular/js-gantt-angular.md)</span><br/> Развернутое руководство, которое исследует специфику реализации Gantt-чарта с Angular.</td>
+  <td>[![gantt_angular](/img/gantt_angular.png)](../angular/js-gantt-angular.md)</td>
   </tr>
   <tr>
   <td><span >[dhtmlxGantt with React](integrations/react/js-gantt-react.md)</span><br/> Подробное руководство, которое углубляется в реализацию Gantt-чарта с использованием React.</td>
   <td>[![gantt_react](/img/gantt_react.png)](../react/js-gantt-react.md)</td>
   </tr>
   <tr>
-  <td><span >[dhtmlxGantt with Vue.js](integrations/vue/howtostart-vue.md)</span><br/> Обширное руководство, которое описывает, как создать Gantt с использованием Vue.js.</td>
-  <td>[![gantt_vue](/img/gantt_vue.png)](../vue/howtostart-vue.md)</td>
+  <td><span >[dhtmlxGantt with Vue.js](integrations/vue/js-gantt-vue.md)</span><br/> Обширное руководство, которое описывает, как создать Gantt с использованием Vue.js.</td>
+  <td>[![gantt_vue](/img/gantt_vue.png)](../vue/js-gantt-vue.md)</td>
   </tr>
   <tr>
   <td><span >[dhtmlxGantt with Svelte](integrations/svelte/howtostart-svelte.md)</span><br/> Полное руководство, которое обсуждает, как создать Gantt с использованием Svelte.</td>

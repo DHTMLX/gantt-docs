@@ -12,7 +12,7 @@ sidebar_label: "Angular Gantt"
 
 다음은 Angular와 함께 DHTMLX Gantt를 통합하기 위한 권장 자료입니다:
 
-- [Angular와 함께 Gantt를 통합하는 단계별 튜토리얼](integrations/angular/howtostart-angular.md)
+- [Angular와 함께 Gantt를 통합하는 단계별 튜토리얼](integrations/angular/js-gantt-angular.md)
 - [GitHub의 Angular Gantt 데모](https://github.com/DHTMLX/angular-gantt-demo)
 - [Angular와 함께 DHTMLX Gantt를 통합하는 비디오 튜토리얼](https://www.youtube.com/watch?v=LNVgNVfwzPE&t=3s)
 

@@ -40,7 +40,7 @@ DHTMLX Gantt доступен в редакциях Standard и PRO. PRO-вер�
   </div>
   </a>
 
-  <a className="framework-card" href="integrations/angular/howtostart-angular/">
+  <a className="framework-card" href="integrations/angular/">
   <FrameworkIcon name="angular" className="framework-icon" />
   <div className="framework-title">Angular</div>
   <div className="framework-desc">
@@ -48,7 +48,7 @@ DHTMLX Gantt доступен в редакциях Standard и PRO. PRO-вер�
   </div>
   </a>
 
-  <a className="framework-card" href="integrations/vue/howtostart-vue/">
+  <a className="framework-card" href="integrations/vue/">
   <FrameworkIcon name="vue" className="framework-icon" />
   <div className="framework-title">Vue</div>
   <div className="framework-desc">
@@ -152,7 +152,7 @@ DHTMLX Gantt интегрируется с внешними инструмент
 DHTMLX Gantt - независимый от фреймворков компонент на чистом JavaScript, работающий во всех современных браузерах. Его можно использовать:
 
 - как самостоятельный JS-виджет на любой странице;
-- как компонент в [React](integrations/react), [Angular](integrations/angular/howtostart-angular), [Vue](integrations/vue/howtostart-vue) или [Svelte](integrations/svelte/howtostart-svelte).
+- как компонент в [React](integrations/react), [Angular](integrations/angular/), [Vue](integrations/vue/) или [Svelte](integrations/svelte/howtostart-svelte).
 
 Для **React** доступно два варианта:
 

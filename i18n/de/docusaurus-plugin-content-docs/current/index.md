@@ -40,7 +40,7 @@ Sie können DHTMLX Gantt als Vanilla-JavaScript-Widget verwenden oder in moderne
   </div>
   </a>
 
-  <a className="framework-card" href="integrations/angular/howtostart-angular/">
+  <a className="framework-card" href="integrations/angular/">
   <FrameworkIcon name="angular" className="framework-icon" />
   <div className="framework-title">Angular</div>
   <div className="framework-desc">
@@ -48,7 +48,7 @@ Sie können DHTMLX Gantt als Vanilla-JavaScript-Widget verwenden oder in moderne
   </div>
   </a>
 
-  <a className="framework-card" href="integrations/vue/howtostart-vue/">
+  <a className="framework-card" href="integrations/vue/">
   <FrameworkIcon name="vue" className="framework-icon" />
   <div className="framework-title">Vue</div>
   <div className="framework-desc">
@@ -152,7 +152,7 @@ DHTMLX Gantt integriert sich in externe Tools und bietet zahlreiche Import-/Expo
 DHTMLX Gantt ist ein Framework-unabhängiges Vanilla-JS-Widget für moderne Browser. Es kann verwendet werden:
 
 - Als eigenständiges JS-Widget auf jeder Seite.
-- Eingebettet in [React](integrations/react), [Angular](integrations/angular/howtostart-angular), [Vue](integrations/vue/howtostart-vue) oder [Svelte](integrations/svelte/howtostart-svelte).
+- Eingebettet in [React](integrations/react), [Angular](integrations/angular/), [Vue](integrations/vue) oder [Svelte](integrations/svelte/howtostart-svelte).
 
 Für **React** gibt es zwei Optionen:
 

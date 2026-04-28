@@ -12,7 +12,7 @@ sidebar_label: "Vue Gantt"
 
 다음은 Vue와 함께 DHTMLX Gantt를 통합하기 위한 권장 리소스입니다:
 
-- [Vue와 함께 Gantt를 통합하는 단계별 튜토리얼](integrations/vue/howtostart-vue.md)
+- [Vue와 함께 Gantt를 통합하는 단계별 튜토리얼](integrations/vue/js-gantt-vue.md)
 - [GitHub의 Vue Gantt 데모](https://github.com/DHTMLX/vue-gantt-demo)
 - [Vue와 함께 DHTMLX Gantt를 통합하는 비디오 튜토리얼](https://www.youtube.com/watch?v=IgoXvVSerkE&t=10s)
 
