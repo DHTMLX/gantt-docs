@@ -9,7 +9,7 @@ description: "Step-by-step guide to using the JS DHTMLX Gantt in a Vue app witho
 :::note
 This tutorial shows how to use the JS DHTMLX Gantt package directly in a Vue app without the official wrapper.
 
-If you want Vue props/events, wrapper-managed sync, and wrapper composables, use [Vue Gantt](integrations/vue/index.md) instead.
+If you want Vue props/events, wrapper-managed sync, and wrapper composables, use [Vue Gantt](integrations/vue.md) instead.
 :::
 
 This page is for low-level integration. You initialize and manage the Gantt instance yourself.
@@ -280,6 +280,6 @@ Read [Application Security](guides/app-security.md) for the main risk areas and 
 
 ## What To Read Next
 
-- [Vue Gantt (official wrapper)](integrations/vue/index.md)
+- [Vue Gantt (official wrapper)](integrations/vue.md)
 - [Vue Gantt Overview](integrations/vue/overview.md)
 - [DHTMLX Gantt Guides](guides.md)
