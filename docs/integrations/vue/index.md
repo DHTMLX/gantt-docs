@@ -55,6 +55,6 @@ For the low-level path, use [dhtmlxGantt with Vue.js (Low-Level Integration)](in
 
 Start with the state section if you already know you need store/backend synchronization:
 
-- [Data & State Management](integrations/vue/state/index.md)
+- [Data & State Management](integrations/vue/state.md)
 - [Data Binding and State Management Basics](integrations/vue/state/state-management-basics.md)
 - [Using Vue Gantt with Pinia](integrations/vue/state/pinia.md)

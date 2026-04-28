@@ -60,6 +60,6 @@ Use [dhtmlxGantt with Angular (Low-Level Integration)](integrations/angular/js-g
 
 Start state architecture from the Angular state section:
 
-- [Data & State Management](integrations/angular/state/index.md)
+- [Data & State Management](integrations/angular/state.md)
 - [Data Binding and State Management Basics](integrations/angular/state/state-management-basics.md)
 - [Using Angular Gantt with RxJS](integrations/angular/state/rxjs.md)
