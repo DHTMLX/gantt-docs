@@ -47,6 +47,13 @@ Follow this order if you are new to the wrapper:
 4. [Data Binding and State Management Basics](integrations/angular/state/state-management-basics.md): choose your data ownership model.
 5. [RxJS State Management Tutorial](integrations/angular/state/rxjs.md): implement a store-driven pattern with `BehaviorSubject` and `AsyncPipe`.
 
+## Examples
+
+Browse the public Angular Gantt examples for runnable demos of the wrapper:
+
+- [Live demo](https://dhtmlx.github.io/angular-gantt-examples/)
+- [GitHub repository](https://github.com/DHTMLX/angular-gantt-examples)
+
 ## Wrapper vs Low-Level JS Integration
 
 Choose the integration path based on how much Angular integration you need:
