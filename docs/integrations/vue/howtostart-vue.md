@@ -1,291 +1,285 @@
 ---
 title: "dhtmlxGantt with Vue.js"
-sidebar_label: "Vue.js"
+sidebar_label: "Low-Level Integration"
+description: "Step-by-step guide to using the JS DHTMLX Gantt in a Vue app without the official Vue wrapper."
 ---
 
 # dhtmlxGantt with Vue.js
 
-You should be familiar with the basic concepts and patterns of [Vue](https://vuejs.org/) to use this documentation. If you 
-are not, please refer to the [Vue 3 documentation](https://vuejs.org/guide/introduction.html) for a getting-started tutorial.
+:::note
+This tutorial shows how to use the JS DHTMLX Gantt package directly in a Vue app without the official wrapper.
 
-DHTMLX Gantt is compatible with Vue. You can check the corresponding example on GitHub: [DHTMLX Gantt with Vue Demo](https://github.com/DHTMLX/vue-gantt-demo).
+If you want Vue props/events, wrapper-managed sync, and wrapper composables, use [Vue Gantt](integrations/vue/index.md) instead.
+:::
 
-## Creating a project
+This page is for low-level integration. You initialize and manage the Gantt instance yourself.
 
-Before you start to create a new project, install [Node.js](https://nodejs.org/en/).
+## Prerequisites
 
-To create a Vue project, run the following command:
+- Node.js installed
+- Basic Vue 3 knowledge (components, refs, lifecycle hooks)
+- A Vue 3 project (this tutorial shows how to create one with Vite)
 
-~~~
-npm create vue@latest
-~~~
+## 1. Create A Vue Project
 
-This command will install and execute **create-vue**, the official Vue project scaffolding tool. Check the details in the [Vue.js Quick Start](https://vuejs.org/guide/quick-start.html#creating-a-vue-application).
+Create a Vue 3 app with Vite:
 
-### Installation of dependencies
-
-Next you should go to the app directory. Let's name our project **gantt-vue** and run:
-
-~~~
-cd gantt-vue
+~~~bash
+npm create vue@latest gantt-vue-app
+cd gantt-vue-app
 ~~~
 
-After that, you should install dependencies and start the dev server. For this, you need to make use of a package manager:
+Install dependencies and start the dev server once to confirm the project works:
 
-- if you use **yarn**, you need to call the following commands:
+- npm:
 
-~~~
-yarn install
-yarn dev
-~~~
-
-- if you use **npm**, you need to call the following commands:
-
-~~~
+~~~bash
 npm install
 npm run dev
 ~~~
 
-You should now have your Vue project running on **http://localhost:5173**.
+- yarn:
+
+~~~bash
+yarn install
+yarn dev
+~~~
+
+The app should be available at `http://localhost:5173`.
 
 ![Gantt Vue app running](/img/gantt_vue_app_run.png)
 
-## Creating Gantt
+Stop the dev server (`Ctrl+C`) before the next step.
 
-Now we should get the DHTMLX Gantt code. Firstly, we need to stop the app by pressing **Ctrl+C** in 
-the command line. Then we can proceed with installing the Gantt package.
+## 2. Install The JS Gantt Package
 
-## Step 1. Package installation
+Professional builds of the JS Gantt library are available via private npm. Follow the [installation guide](guides/installation.md#npmevaluationandproversions) to get access.
 
-The PRO versions of the library are available for the **npm/yarn** install from our private repository, please follow 
-[this instruction](guides/installation.md#npmevaluationandproversions) to gain access to it.
+Evaluation build (public tutorial package):
 
-After you've got the Evaluation version of the Gantt, you can install it with the following commands:
+- npm:
 
-- for npm:
-
-~~~
+~~~bash
 npm install @dhx/trial-gantt
 ~~~
 
-- for yarn:
+- yarn:
 
-~~~
+~~~bash
 yarn add @dhx/trial-gantt
 ~~~
 
-Alternatively, since the zip-package of the library is structured as an **npm** module, you can 
-[install it from a local folder](guides/installation.md#installfromlocalfolder).
+Professional build (private npm):
 
-## Step 2. Component creation
+- npm:
 
-Now we should create a Vue component, to add a Gantt into the application. Let's create a new file in the ***src/components/*** directory and name it ***Gantt.vue***.
-
-### Importing source files
-
-Open the newly created ***Gantt.vue*** file and import Gantt source files. Note that:
-
-- if you've installed the Gantt package from a local folder, your import paths will look like this:
-
-~~~js title="Gantt.vue"
-import { Gantt} from "dhtmlx-gantt";
-import "dhtmlx-gantt/codebase/dhtmlxgantt.css";
-~~~ 
-
-- if you've chosen to install the trial version, the import paths should be as in:
-
-~~~js title="Gantt.vue"
-import { Gantt} from "@dhx/trial-gantt";
-import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
+~~~bash
+npm install @dhx/gantt
 ~~~
 
-In this tutorial we will use the **trial** version of Gantt.
+- yarn:
 
-### Setting the container and adding Gantt
+~~~bash
+yarn add @dhx/gantt
+~~~
 
-To display Gantt on the page, we need to set the container to render the component inside. Check the code below:
+You can also [install Gantt from a local folder](guides/installation.md#installfromlocalfolder) because the package is structured as an npm module.
 
-~~~js title="Gantt.vue"
-<script>
-import { Gantt } from "@dhx/trial-gantt";
+## 3. Create A Gantt Component
+
+Create `src/components/GanttView.vue` and initialize Gantt in Vue lifecycle hooks.
+
+If you installed the evaluation build, use these imports:
+
+~~~vue title="src/components/GanttView.vue"
+<script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from "vue";
+import { Gantt, type GanttStatic } from "@dhx/trial-gantt";
 import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
 
-export default {
-  mounted() {
-    let gantt = Gantt.getGanttInstance();
-    gantt.init(this.$refs.cont);
+const container = ref<HTMLElement | null>(null);
+let gantt: GanttStatic | null = null;
 
-    this.gantt = gantt;
-  },
-  unmounted() {
-    this.gantt.destructor();
-    this.$refs.cont.innerHTML = "";
-  },
-};
+onMounted(() => {
+  if (!container.value) return;
+
+  gantt = Gantt.getGanttInstance();
+  gantt.init(container.value);
+});
+
+onBeforeUnmount(() => {
+  gantt?.destructor();
+  gantt = null;
+});
 </script>
 
 <template>
-  <div ref="cont" style="width: 100%; height: 100%"></div>
+  <div ref="container" class="gantt-host"></div>
+</template>
+
+<style>
+.gantt-host {
+  width: 100%;
+  height: 600px;
+}
+</style>
+~~~
+
+If you installed the professional build, replace the package imports:
+
+~~~ts
+import { Gantt, type GanttStatic } from "@dhx/gantt";
+import "@dhx/gantt/codebase/dhtmlxgantt.css";
+~~~
+
+If you installed Gantt from a local folder package, imports usually look like this:
+
+~~~ts
+import { Gantt, type GanttStatic } from "dhtmlx-gantt";
+import "dhtmlx-gantt/codebase/dhtmlxgantt.css";
+~~~
+
+## 4. Render The Gantt Component In The App
+
+Replace `src/App.vue`:
+
+~~~vue title="src/App.vue"
+<script setup lang="ts">
+import GanttView from "./components/GanttView.vue";
+</script>
+
+<template>
+  <GanttView />
 </template>
 ~~~
 
-To make Gantt container occupy the entire space of the body, you need to remove the default styles 
-from the ***main.css*** file located in the ***src/assets*** folder and add the following one:
+To let the chart use the page height, update your global styles (for example `src/assets/main.css`):
 
-
-~~~js title="src/assets/main.css"
-body, #app {
+~~~css title="src/assets/main.css"
+html,
+body,
+#app {
+  width: 100%;
+  height: 100vh;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  width: 100%;
 }
 ~~~
 
-## Step 3. Adding Gantt into the app
+Start the app again. You should see an empty Gantt chart.
 
-Now it's time to add the component into our app. Open ***src/App.vue*** and use the Gantt component instead of the default content by inserting the code below:
+## 5. Provide Data
 
-~~~js title="Gantt.vue"
-<script>
-import Gantt from "./components/Gantt.vue";
+Create `src/demo-data.ts`:
 
-export default {
-  components: { Gantt }
-};
-</script>
-
-<template>
-  <Gantt/>
-</template>
-~~~
-
-After that, when we start the app, we should see an empty Gantt on a page:
-
-![Gantt Vue init](/img/gantt_init.png)
-
-## Step 4. Providing Data
-
-To add data into the Gantt, we need to provide a data set. Let's create the ***data.js*** file in the ***src/*** directory and add some data into it:
-
-
-~~~js title="src/data.js"
+~~~ts title="src/demo-data.ts"
 export function getData() {
-  const tasks = {
+  return {
     data: [
       {
-        id: "10",
+        id: 10,
         text: "Project #1",
-        start_date: "01-04-2025",
-        duration: 3,
-        order: 10,
+        start_date: "2026-02-02 00:00",
+        duration: 6,
         progress: 0.4,
-        open: true,
+        open: true
       },
       {
-        id: "1",
+        id: 1,
         text: "Task #1",
-        start_date: "01-04-2025",
-        duration: 1,
-        order: 10,
+        start_date: "2026-02-02 00:00",
+        duration: 2,
         progress: 0.6,
-        parent: "10",
+        parent: 10
       },
       {
-        id: "2",
+        id: 2,
         text: "Task #2",
-        start_date: "02-04-2025",
-        duration: 2,
-        order: 20,
-        progress: 0.6,
-        parent: "10",
-      },
+        start_date: "2026-02-04 00:00",
+        duration: 3,
+        progress: 0.2,
+        parent: 10
+      }
     ],
-    links: [{ id: 1, source: 1, target: 2, type: "0" }],
+    links: [{ id: 1, source: 1, target: 2, type: "0" }]
   };
-  return tasks;
 }
 ~~~
 
-We should [pass props (our data)](https://vuejs.org/guide/components/props.html) to the Gantt component in the ***App.vue*** file:
+Update `src/components/GanttView.vue` and parse the data:
 
-~~~html title="Gantt.vue"
-<script>
-import Gantt from "./components/Gantt.vue";
-import { getData } from "./data";
-
-export default {
-  components: { Gantt },
-  data() {
-    return {
-      tasks: getData(),
-    };
-  },
-};
-</script>
-
-<template>
-  <Gantt :tasks="tasks" />
-</template>
-~~~
-
-And use the props in the **gantt.parse()** method in the Gantt component:
-
-~~~html title="Gantt.vue"
-<script>
-import { Gantt } from "@dhx/trial-gantt";
+~~~vue title="src/components/GanttView.vue"
+<script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from "vue";
+import { Gantt, type GanttStatic } from "@dhx/trial-gantt";
 import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
+import { getData } from "../demo-data";
 
-export default {
-  props: ["tasks"],
+const container = ref<HTMLElement | null>(null);
+let gantt: GanttStatic | null = null;
 
-  mounted() {
-    let gantt = Gantt.getGanttInstance();
-    gantt.init(this.$refs.cont);
-    gantt.parse(this.tasks);
+onMounted(() => {
+  if (!container.value) return;
 
-    this.gantt = gantt;
-  },
-  unmounted() {
-    this.gantt.destructor();
-    this.$refs.cont.innerHTML = "";
-  },
-};
+  gantt = Gantt.getGanttInstance();
+  gantt.config.date_format = "%Y-%m-%d %H:%i";
+  gantt.init(container.value);
+  gantt.parse(getData());
+});
+
+onBeforeUnmount(() => {
+  gantt?.destructor();
+  gantt = null;
+});
 </script>
 
 <template>
-  <div ref="cont" style="width: 100%; height: 100%"></div>
+  <div ref="container" class="gantt-host"></div>
 </template>
+
+<style>
+.gantt-host {
+  width: 100%;
+  height: 600px;
+}
+</style>
 ~~~
 
-Now, if you reopen the app page, you should see a Gantt with tasks:
+Reload the page. You should see a Gantt chart with tasks and a dependency link.
 
-![Gantt tasks](/img/gantt_tasks.png)
+## 6. Capture And Save Changes
 
-## Step 5. Saving Data
+Use a [dataProcessor](api/method/dataprocessor.md) to handle chart changes and send them to your backend.
 
-To capture changes made in the Gantt, you can use a [dataProcessor](api/method/dataprocessor.md) handler that lets you 
-"communicate" with the server-side backend. The handler can be declared either as a function or as a router object. 
-dhtmlxGantt accepts a Promise response from the handler, so your Gantt will correctly process the completion of an action. 
+Add a handler after `gantt.init(...)`:
 
-You can create a **DataProcessor** via the **createDataProcessor()** API method and capture changes like this:
-
-~~~
-gantt.createDataProcessor(function(entity, action, data, id) {​
-    gantt.message(`${​entity} ${​action}`);
+~~~ts
+gantt.createDataProcessor((entity, action, data, id) => {
+  console.log("[dp]", entity, action, data, id);
 });
 ~~~
 
-If your service changes the task id after creating a new record (which it usually does), make sure that your 
-Promise returns an object with **(id: databaseId)** or **(tid: databaseId)** as a result, so that Gantt could 
-apply the new database id to the record. Get [more information about the server side](guides/server-side.md).
+DHTMLX Gantt accepts Promise responses from `dataProcessor` handlers. If your backend changes IDs on create, return an object like `{ id: newId }` or `{ tid: newId }` so Gantt can remap the record.
 
-Well, Vue Gantt is ready, you are welcome to [check out the full demo on GitHub](https://github.com/DHTMLX/vue-gantt-demo).
+For full backend patterns, see [server-side integration](guides/server-side.md).
 
-## XSS, CSRF and SQL Injection Attacks
+## Result
 
-Pay attention that Gantt doesn't provide any means of preventing an application from various threats, such as SQL injections or 
-XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend.
+You now have a Vue app with direct JS Gantt integration:
 
-Check the [Application Security](guides/app-security.md) article to learn the most vulnerable points of the component and
-the measures you can take to improve the safety of your application.
+- Vue owns the component lifecycle
+- your code initializes and destroys the Gantt instance
+- data is loaded with `gantt.parse(...)`
+- edits can be handled with `gantt.createDataProcessor(...)`
+
+## Security Note
+
+Gantt does not protect your backend from SQL injection, XSS, or CSRF. Backend validation, authorization, and output sanitization remain your responsibility.
+
+Read [Application Security](guides/app-security.md) for the main risk areas and mitigation guidance.
+
+## What To Read Next
+
+- [Vue Gantt (official wrapper)](integrations/vue/index.md)
+- [Vue Gantt Overview](integrations/vue/overview.md)
+- [DHTMLX Gantt Guides](guides.md)

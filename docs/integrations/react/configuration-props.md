@@ -117,6 +117,22 @@ This page describes the props accepted by React Gantt and how they map to DHTMLX
   </tbody>
 </table>
 
+## Type Exports
+
+The `@dhx/react-gantt` package re-exports several TypeScript types that you can use to annotate your application code:
+
+| Export | Description |
+|--------|------------|
+| `Task` | Internal Gantt task object. Dates are `Date` objects; includes `$`-prefixed system properties. Use inside event handlers and when working with data that Gantt owns. |
+| `Link` | Internal Gantt link object. Use inside event handlers and when working with data that Gantt owns. |
+| `SerializedTask` | User-facing task shape for store state, initial data, and save callback payloads. Date properties accept `Date \| string`. |
+| `SerializedLink` | User-facing link shape for store state, initial data, and save callback payloads. |
+
+**When to use `SerializedTask` / `SerializedLink` vs `Task` / `Link`:**
+
+- **`SerializedTask` / `SerializedLink`** — for data you own: store state, API responses, initial data literals. Date fields accept strings (e.g. ISO dates).
+- **`Task` / `Link`** — for data Gantt owns: inside event handlers, after Gantt parses the data. Date fields are `Date` objects. `Task` includes `$`-prefixed internal properties.
+
 ## Example Usage
 
 ~~~jsx

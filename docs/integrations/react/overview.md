@@ -127,6 +127,8 @@ The **React Gantt** wrapper offers flexible ways of loading and saving data. Con
 
 Either approach is valid, but you should pick one and follow it consistently to avoid unexpected behavior.
 
+When typing externally-owned data (store state, API responses, initial data), use `SerializedTask` for tasks and `SerializedLink` for links. These types accept string dates and exclude Gantt's internal properties. Use `Task` and `Link` only for data inside Gantt event handlers, where Gantt has already parsed the values.
+
 :::info Looking for a deeper explanation?
 
 This section gives a high-level overview of the two binding models.

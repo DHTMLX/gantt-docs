@@ -21,10 +21,10 @@ This guide tells about initialization of dhtmlxGantt in plain JS and HTML. You c
   <td><FrameworkIcon name="vue" className="framework-icon" /></td>
   </tr>
   <tr>
-  <td>[Angular](integrations/angular/howtostart-angular.md)</td>
+  <td>[Angular](integrations/angular/quick-start.md)</td>
   <td>[React](integrations/react/js-gantt-react.md)</td>
   <td>[Svelte](integrations/svelte/howtostart-svelte.md)</td>
-  <td>[Vue.js](integrations/vue/howtostart-vue.md)</td>
+  <td>[Vue.js](integrations/vue/quick-start.md)</td>
   </tr>
   </tbody>
 </table>

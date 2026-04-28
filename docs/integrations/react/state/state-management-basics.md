@@ -51,6 +51,8 @@ you need to be sure not to unintentionally overwrite Gantt's internal state.
 
 In this pattern, you hold all core collections in state and pass them as props (`tasks`, `links`, `resources`, `resourceAssignments`). Whenever the user modifies tasks or links inside the Gantt (for example, by creating or deleting a task), the Gantt triggers a callback. In this callback, you update your React state with the new or removed data. Once the state is updated, React re-renders the **ReactGantt** component, which in turn reads the updated props from the latest state.
 
+When typing your state, use `SerializedTask` for tasks and `SerializedLink` for links. These types represent the user-facing data shape — date fields accept `Date | string`, and there are no internal `$`-prefixed properties. Use `Task` and `Link` only when working with data inside Gantt event handlers, where Gantt has already parsed the data.
+
 ### Minimal example with React state
 
 ~~~tsx
