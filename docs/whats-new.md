@@ -23,6 +23,7 @@ Updating from an earlier version? Check the [migration guide](migration.md) for 
 - Fix the issue where [Auto Scheduling](guides/auto-scheduling.md) moved a linked project to a future date when the project had [unscheduled](guides/unscheduled-tasks.md) child tasks
 - Fix the issue where the [reorder](guides/reordering-tasks.md) drag marker and task placeholder had incorrect sizes when the grid was scrollable
 - Fix the issue where [DataProcessor](guides/server-side.md) did not use the [ISO date format](guides/date-format.md) by default when tasks were loaded with dates in the `Date` format
+- Fix the script error thrown when [drag_links](api/config/drag_links.md) was disabled and a [split task](guides/split-tasks.md) row was taller than its parent row
 
 ## 9.1.3
 
