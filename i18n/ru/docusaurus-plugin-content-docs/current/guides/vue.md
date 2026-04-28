@@ -12,7 +12,7 @@ sidebar_label: "Vue Gantt"
 
 Ниже приведены рекомендуемые ресурсы для интеграции DHTMLX Gantt с Vue:
 
-- [Пошаговый гид по интеграции Gantt с Vue](integrations/vue/howtostart-vue.md)
+- [Пошаговый гид по интеграции Gantt с Vue](integrations/vue/js-gantt-vue.md)
 - [Демо Vue Gantt на GitHub](https://github.com/DHTMLX/vue-gantt-demo)
 - [Видео-урок по интеграции DHTMLX Gantt с Vue](https://www.youtube.com/watch?v=IgoXvVSerkE&t=10s)
 

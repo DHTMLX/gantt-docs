@@ -154,7 +154,7 @@ module.exports = {
                                 title: "Using dhtmlxGantt JS in Vue",
                             },
                             items: [
-                                "integrations/vue/howtostart-vue",
+                                "integrations/vue/js-gantt-vue",
                             ],
                         },
                     ]

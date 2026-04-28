@@ -12,7 +12,7 @@ Sie können DHTMLX Gantt jedoch trotzdem problemlos in Ihre Angular-Anwendungen 
 
 Hier sind die empfohlenen Ressourcen zur Integration von DHTMLX Gantt mit Angular:
 
-- [Schritt-für-Schritt-Anleitung zur Integration von Gantt mit Angular](integrations/angular/howtostart-angular.md)
+- [Schritt-für-Schritt-Anleitung zur Integration von Gantt mit Angular](integrations/angular/js-gantt-angular.md)
 - [Angular Gantt-Demo bei GitHub](https://github.com/DHTMLX/angular-gantt-demo)
 - [Video-Tutorial zur Integration von DHTMLX Gantt mit Angular](https://www.youtube.com/watch?v=LNVgNVfwzPE&t=3s)
 

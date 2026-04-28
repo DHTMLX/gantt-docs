@@ -12,7 +12,7 @@ sidebar_label: "Angular 甘特图"
 
 以下是将 DHTMLX Gantt 与 Angular 集成的推荐资源：
 
-- [在 Angular 中集成 Gantt 的逐步教程](integrations/angular/howtostart-angular.md)
+- [在 Angular 中集成 Gantt 的逐步教程](integrations/angular/js-gantt-angular.md)
 - [GitHub 上的 Angular 甘特图演示](https://github.com/DHTMLX/angular-gantt-demo)
 - [将 DHTMLX Gantt 与 Angular 集成的视频教程](https://www.youtube.com/watch?v=LNVgNVfwzPE&t=3s)
 

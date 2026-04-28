@@ -49,7 +49,7 @@ Pick the integration path based on how much lifecycle and sync logic you want to
 - Use the **official wrapper** (`@dhtmlx/trial-vue-gantt` or `@dhx/vue-gantt`) for Vue props/events, wrapper-managed synchronization, and typed helper APIs.
 - Use **low-level JS integration** only when you want direct control over instance lifecycle and manual API orchestration.
 
-For the low-level path, use [dhtmlxGantt with Vue.js (Low-Level Integration)](integrations/vue/howtostart-vue.md).
+For the low-level path, use [dhtmlxGantt with Vue.js (Low-Level Integration)](integrations/vue/js-gantt-vue.md).
 
 ## Data And State Management Entry Point
 

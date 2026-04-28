@@ -16,16 +16,16 @@ sidebar_label: "如何开始使用 dhtmlxGantt"
   <td>[![gantt_plainjs](/img/gantt_plainjs.png)](../../guides/initializing-gantt-chart.md)</td>
   </tr> 
   <tr>
-  <td><span >[dhtmlxGantt 与 Angular](integrations/angular/howtostart-angular.md)</span><br/> 一份详细的教程，探讨在 Angular 中实现甘特图的要点。</td>
-  <td>[![gantt_angular](/img/gantt_angular.png)](../angular/howtostart-angular.md)</td>
+  <td><span >[dhtmlxGantt 与 Angular](integrations/angular/js-gantt-angular.md)</span><br/> 一份详细的教程，探讨在 Angular 中实现甘特图的要点。</td>
+  <td>[![gantt_angular](/img/gantt_angular.png)](../angular/js-gantt-angular.md)</td>
   </tr>
   <tr>
   <td><span >[dhtmlxGantt 与 React](integrations/react/js-gantt-react.md)</span><br/> 一个详细的教程，深入讲解在 React 中实现甘特图。</td>
   <td>[![gantt_react](/img/gantt_react.png)](../react/js-gantt-react.md)</td>
   </tr>
   <tr>
-  <td><span >[dhtmlxGantt 与 Vue.js](integrations/vue/howtostart-vue.md)</span><br/> 一份全面的教程，描述如何使用 Vue.js 创建 Gantt。</td>
-  <td>[![gantt_vue](/img/gantt_vue.png)](../vue/howtostart-vue.md)</td>
+  <td><span >[dhtmlxGantt 与 Vue.js](integrations/vue/js-gantt-vue.md)</span><br/> 一份全面的教程，描述如何使用 Vue.js 创建 Gantt。</td>
+  <td>[![gantt_vue](/img/gantt_vue.png)](../vue/js-gantt-vue.md)</td>
   </tr>
   <tr>
   <td><span >[dhtmlxGantt 与 Svelte](integrations/svelte/howtostart-svelte.md)</span><br/> 一份综合教程，讨论如何使用 Svelte 创建 Gantt。</td>

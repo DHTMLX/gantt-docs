@@ -12,7 +12,7 @@ sidebar_label: "Angular Gantt"
 
 Ниже приведены рекомендуемые ресурсы для интеграции DHTMLX Gantt с Angular:
 
-- [Пошаговый гид по интеграции Gantt с Angular](integrations/angular/howtostart-angular.md)
+- [Пошаговый гид по интеграции Gantt с Angular](integrations/angular/js-gantt-angular.md)
 - [Демо Angular Gantt на GitHub](https://github.com/DHTMLX/angular-gantt-demo)
 - [Видеоурок по интеграции DHTMLX Gantt с Angular](https://www.youtube.com/watch?v=LNVgNVfwzPE&t=3s)
 

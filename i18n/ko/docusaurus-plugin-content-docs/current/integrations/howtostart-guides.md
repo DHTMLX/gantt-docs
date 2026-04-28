@@ -16,16 +16,16 @@ sidebar_label: "dhtmlxGantt 시작하기"
   <td>[![gantt_plainjs](/img/gantt_plainjs.png)](../../guides/initializing-gantt-chart.md)</td>
   </tr> 
   <tr>
-  <td><span >[dhtmlxGantt with Angular](integrations/angular/howtostart-angular.md)</span><br/> Angular를 사용한 Gantt 차트 구현의 특성을 다루는 자세한 튜토리얼입니다.</td>
-  <td>[![gantt_angular](/img/gantt_angular.png)](../angular/howtostart-angular.md)</td>
+  <td><span >[dhtmlxGantt with Angular](integrations/angular/js-gantt-angular.md)</span><br/> Angular를 사용한 Gantt 차트 구현의 특성을 다루는 자세한 튜토리얼입니다.</td>
+  <td>[![gantt_angular](/img/gantt_angular.png)](../angular/js-gantt-angular.md)</td>
   </tr>
   <tr>
   <td><span >[dhtmlxGantt with React](integrations/react/js-gantt-react.md)</span><br/> React를 이용한 Gantt 차트 구현에 대해 자세히 다루는 튜토리얼입니다.</td>
   <td>[![gantt_react](/img/gantt_react.png)](../react/js-gantt-react.md)</td>
   </tr>
   <tr>
-  <td><span >[dhtmlxGantt with Vue.js](integrations/vue/howtostart-vue.md)</span><br/> Vue.js를 사용하여 Gantt를 만드는 방법을 다루는 광범위한 튜토리얼입니다.</td>
-  <td>[![gantt_vue](/img/gantt_vue.png)](../vue/howtostart-vue.md)</td>
+  <td><span >[dhtmlxGantt with Vue.js](integrations/vue/js-gantt-vue.md)</span><br/> Vue.js를 사용하여 Gantt를 만드는 방법을 다루는 광범위한 튜토리얼입니다.</td>
+  <td>[![gantt_vue](/img/gantt_vue.png)](../vue/js-gantt-vue.md)</td>
   </tr>
   <tr>
   <td><span >[dhtmlxGantt with Svelte](integrations/svelte/howtostart-svelte.md)</span><br/> Svelte를 사용하여 Gantt를 만드는 방법에 대해 포괄적으로 다루는 튜토리얼입니다.</td>
