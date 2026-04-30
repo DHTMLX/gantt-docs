@@ -12,7 +12,11 @@ This section covers AI-assisted development with DHTMLX Gantt and adding AI feat
 
 - [DHTMLX MCP Server](./mcp-server/) - connect an AI coding tool to up-to-date DHTMLX documentation and API reference.
 - [Agent Skills](./agent-skills/) - teach AI coding assistants (Claude Code, Codex, and others) the correct patterns for working with DHTMLX Gantt.
-- [Lovable AI](./lovable-ai/) - integrate DHTMLX [React Gantt](./../react/) into a Lovable-generated app using prompts, Knowledge Base, and MCP.
+- [Lovable AI](./lovable-ai/) - integrate DHTMLX [React Gantt](integrations/react.md) into a Lovable-generated app using prompts, Knowledge Base, and MCP. The companion [Lovable Starter Walkthrough](./lovable-starter-walkthrough/) shows how to reproduce a full Supabase-backed project planner.
+
+## AI-builder showcases
+
+- [React Gantt Lovable Starter](https://github.com/DHTMLX/react-gantt-lovable-starter) - multi-project planner with a Supabase backend, generated end-to-end in Lovable. Includes the prompt sequence used to build it. [Live demo](https://react-gantt-lovable-starter.lovable.app).
 
 ## AI features inside your app
 

@@ -24,6 +24,18 @@ These aren't mutually exclusive. Knowledge Base and MCP work well together - use
 
 The sections below walk through the full workflow: scaffold an app, add Gantt, then improve output quality with each method.
 
+## Featured starter: React Gantt + Supabase project planner
+
+If you want a complete, full-featured reference instead of building from scratch, the [React Gantt Lovable Starter](https://github.com/DHTMLX/react-gantt-lovable-starter) is a multi-project planner generated end-to-end in Lovable, with a Supabase backend, task and link CRUD, undo/redo, working calendar, resource workload, and a demo role model.
+
+- **Live demo**: [https://react-gantt-lovable-starter.lovable.app](https://react-gantt-lovable-starter.lovable.app)
+- **Source**: [github.com/DHTMLX/react-gantt-lovable-starter](https://github.com/DHTMLX/react-gantt-lovable-starter)
+- **Reproducible recipe**: the [`lovable/`](https://github.com/DHTMLX/react-gantt-lovable-starter/tree/main/lovable) folder contains the exact prompt sequence (11 steps), the Knowledge Base content used during the build, and a log of every manual fix applied to the generated output.
+
+For a guided overview of the recipe and how to reproduce it in your own workspace, see the [Lovable Starter Walkthrough](integrations/ai-tools/lovable-starter-walkthrough.md).
+
+If you only need to render a Gantt inside a generic admin app, continue with the steps below.
+
 ## Prerequisites
 
 - A Lovable account
@@ -142,3 +154,5 @@ Lovable resolves property names, data formats, and configuration patterns from t
 - [DHTMLX React Gantt overview](../../react/overview/) - component API and features
 - [Installation guide](../../react/installation/) - setting up the professional package
 - [DHTMLX MCP Server](../mcp-server/) - connecting MCP to other AI tools
+- [Lovable Starter Walkthrough](integrations/ai-tools/lovable-starter-walkthrough.md) - reproduce the full project planner reference app
+- [Installing React Gantt](../../react/installation/) - includes the trial-to-commercial package swap procedure
