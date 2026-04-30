@@ -21,6 +21,7 @@ If you're adding AI capabilities to your application (OpenAI-compatible APIs, as
 Guides:
 
 - [Semantic Search](./semantic-search/) - add meaning-based task discovery to your Gantt chart using embeddings and cosine similarity.
+- [AI Assistant](./ai-assistant/) - connect a chat assistant to DHTMLX Gantt using tool calls and client-side command execution.
 
 Demo apps:
 
