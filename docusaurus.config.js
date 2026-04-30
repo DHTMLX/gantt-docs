@@ -226,6 +226,7 @@ const config = {
 				onAfterDataTransformation
 			}
 		],
+		path.resolve(__dirname, './plugins/dhx-copy-page-plugin'),
 		[
 			require.resolve('docusaurus-gtm-plugin'),
 			{
