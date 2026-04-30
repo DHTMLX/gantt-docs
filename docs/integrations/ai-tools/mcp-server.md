@@ -22,6 +22,8 @@ The DHTMLX MCP server is a shared service that covers all major DHTMLX products,
 
 If you use [React Gantt](integrations/react.md), pair MCP with the [React Gantt agent skill](integrations/ai-tools/agent-skills.md#available-skills).
 
+For a real-world example of MCP + Lovable in use, see the [React Gantt Lovable Starter](https://github.com/DHTMLX/react-gantt-lovable-starter) and its [walkthrough](integrations/ai-tools/lovable-starter-walkthrough.md).
+
 ## Supported Products
 
 When connected, the AI tool can retrieve documentation, generate code snippets based on current APIs, and answer configuration questions for the following products:

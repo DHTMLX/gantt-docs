@@ -208,6 +208,7 @@ module.exports = {
                         "integrations/ai-tools/mcp-server",
                         "integrations/ai-tools/agent-skills",
                         "integrations/ai-tools/lovable-ai",
+                        "integrations/ai-tools/lovable-starter-walkthrough",
                         "integrations/ai-tools/semantic-search"
                     ]
                 },
