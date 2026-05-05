@@ -6,9 +6,18 @@ description: "Step-by-step guide to render the official Vue Gantt wrapper in a V
 
 # Quick Start with Vue Gantt
 
-Use this quick start to render Vue Gantt in a Vue 3 + Vite app with a dedicated Gantt component and `data.save` callback wiring.
+:::note
+This tutorial covers the Vue wrapper included in the **Commercial, Enterprise, and Ultimate** editions of DHTMLX Gantt. 
+If you are using the **Individual** or **GPL** edition, follow the alternative guide: 
+[How to Start with Vue](integrations/vue/js-gantt-vue.md).
+:::
 
-If you're new to Vue, start with the official [Vue documentation](https://vuejs.org/guide/introduction.html). Check [a complete working project that follows this tutorial on GitHub](https://github.com/DHTMLX/vue-gantt-quick-start).
+The **Vue Gantt** component is the official wrapper for **DHTMLX Gantt**. 
+This guide walks you through creating a small Vue 3 + Vite application and rendering a basic Gantt chart using the trial package.
+
+If you're new to Vue, start with the official [Vue documentation](https://vuejs.org/guide/introduction.html). 
+
+Check [a complete working project that follows this tutorial on GitHub](https://github.com/DHTMLX/vue-gantt-quick-start).
 
 ## Prerequisites
 
@@ -29,13 +38,21 @@ If you prefer Yarn, replace the install step with `yarn`.
 
 ## 2. Install Vue Gantt
 
-Install the evaluation package:
+Install Vue Gantt as described in the [Vue Gantt installation guide](integrations/vue/installation.md).
+
+In this tutorial we use the evaluation package:
 
 ~~~bash
 npm install @dhtmlx/trial-vue-gantt
 ~~~
 
-If you use the professional package, replace `@dhtmlx/trial-vue-gantt` with `@dhx/vue-gantt` in commands and imports.
+or
+
+~~~bash
+yarn add @dhtmlx/trial-vue-gantt
+~~~
+
+If you already use the Professional package, replace `@dhtmlx/trial-vue-gantt` with `@dhx/vue-gantt` in the commands and imports.
 
 ## 3. Add Demo Data
 
