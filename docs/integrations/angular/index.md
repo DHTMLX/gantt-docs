@@ -70,3 +70,12 @@ Start state architecture from the Angular state section:
 - [Data & State Management](integrations/angular/state.md)
 - [Data Binding and State Management Basics](integrations/angular/state/state-management-basics.md)
 - [Using Angular Gantt with RxJS](integrations/angular/state/rxjs.md)
+
+## Examples and evaluation resources
+
+Browse the public Angular Gantt examples for runnable demos of the wrapper:
+
+- [Live demo](https://dhtmlx.github.io/angular-gantt-examples/)
+- [GitHub repository](https://github.com/DHTMLX/angular-gantt-examples)
+
+If you're evaluating Angular Gantt, the evaluation page provides access to technical support during the evaluation period. See [Installation](integrations/angular/installation.md).

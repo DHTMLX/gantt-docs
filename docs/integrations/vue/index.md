@@ -58,3 +58,12 @@ Start with the state section if you already know you need store/backend synchron
 - [Data & State Management](integrations/vue/state.md)
 - [Data Binding and State Management Basics](integrations/vue/state/state-management-basics.md)
 - [Using Vue Gantt with Pinia](integrations/vue/state/pinia.md)
+
+## Examples and evaluation resources
+
+Browse the public Vue Gantt examples for runnable demos of the wrapper:
+
+- [Live demo](https://dhtmlx.github.io/vue-gantt-examples/)
+- [GitHub repository](https://github.com/DHTMLX/vue-gantt-examples)
+
+If you're evaluating Vue Gantt, the evaluation page provides access to technical support during the evaluation period. See [Installation](integrations/vue/installation.md).
