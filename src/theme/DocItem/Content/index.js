@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import Head from '@docusaurus/Head';
 import OriginalContent from '@theme-original/DocItem/Content';
 import { useDoc } from '@docusaurus/plugin-content-docs/client';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -64,6 +65,11 @@ export default function ContentWrapper(props) {
 
   return (
     <>
+      {mdUrl && (
+        <Head>
+          <link rel="alternate" type="text/markdown" href={mdUrl} />
+        </Head>
+      )}
       <OriginalContent {...props} />
       {mdUrl && <CopyPageButtonPortal mdUrl={mdUrl} pageTitle={metadata.title} />}
     </>
