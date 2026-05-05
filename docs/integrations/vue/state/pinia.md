@@ -33,7 +33,25 @@ import App from "./App.vue";
 createApp(App).use(createPinia()).mount("#app");
 ~~~
 
-## 2. Add Demo Data
+## 2. Install Vue Gantt
+
+Install Vue Gantt as described in the [Vue Gantt installation guide](integrations/vue/installation.md).
+
+In this tutorial we use the evaluation package:
+
+~~~bash
+npm install @dhtmlx/trial-vue-gantt
+~~~
+
+or
+
+~~~bash
+yarn add @dhtmlx/trial-vue-gantt
+~~~
+
+If you already use the Professional package, replace `@dhtmlx/trial-vue-gantt` with `@dhx/vue-gantt` in the commands and imports.
+
+## 3. Add Demo Data
 
 Create `src/demoData.ts`:
 
@@ -64,7 +82,7 @@ export const tasks: SerializedTask[] = [
 export const links: SerializedLink[] = [{ id: 1, source: 1, target: 2, type: "0" }];
 ~~~
 
-## 3. Create A Basic Gantt Store
+## 4. Create A Basic Gantt Store
 
 Create `src/stores/ganttStore.ts`:
 
@@ -159,7 +177,7 @@ This store keeps one source of truth:
 - `config` is derived state
 - `applyBatch` is the wrapper callback entry point
 
-## 4. Bind Store State To `VueGantt`
+## 5. Bind Store State To `VueGantt`
 
 Create `src/components/GanttChart.vue`:
 
@@ -204,7 +222,7 @@ This is the core wrapper wiring:
 - `batchSave` -> store action
 - store action -> new state -> wrapper props again
 
-## 5. Render Gantt In The App Shell
+## 6. Render Gantt In The App Shell
 
 Replace `src/App.vue`:
 
@@ -220,7 +238,7 @@ import GanttChart from "./components/GanttChart.vue";
 </template>
 ~~~
 
-## 6. Verify The Data Flow
+## 7. Verify The Data Flow
 
 Use this flow for predictable updates:
 
@@ -232,13 +250,13 @@ Use this flow for predictable updates:
 
 Do not mix this with direct instance mutations unless you also update the store.
 
-## 7. (Optional) Add Store-Level Undo/Redo
+## 8. (Optional) Add Store-Level Undo/Redo
 
 Use this if you want undo/redo while keeping Pinia as the source of truth.
 
 Do not enable `gantt.plugins({ undo: true })` in this mode.
 
-### 7.1 Replace The Store With A History Version
+### 8.1 Replace The Store With A History Version
 
 Replace the store from step 2 with this version.
 It keeps state typed as `SerializedTask[]` / `SerializedLink[]` and avoids `as any` casts in date cloning.
@@ -409,7 +427,7 @@ export const useGanttStore = defineStore("gantt", {
 });
 ~~~
 
-### 7.2 Add Undo/Redo Buttons To The Component
+### 8.2 Add Undo/Redo Buttons To The Component
 
 Update `src/components/GanttChart.vue`:
 
@@ -450,7 +468,7 @@ const setZoom = (level: "day" | "month" | "year") => {
 </template>
 ~~~
 
-### 7.3 Why This Uses Store-Level History
+### 8.3 Why This Uses Store-Level History
 
 Use store-level history here because the store is the source of truth:
 
