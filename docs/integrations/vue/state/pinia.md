@@ -33,13 +33,45 @@ import App from "./App.vue";
 createApp(App).use(createPinia()).mount("#app");
 ~~~
 
-## 2. Create A Basic Gantt Store
+## 2. Add Demo Data
+
+Create `src/demoData.ts`:
+
+~~~ts title="src/demoData.ts"
+import type { SerializedLink, SerializedTask } from "@dhtmlx/trial-vue-gantt";
+
+export const tasks: SerializedTask[] = [
+  {
+    id: 1,
+    text: "Office itinerancy",
+    type: "project",
+    start_date: new Date(2026, 0, 5),
+    duration: 10,
+    progress: 0.4,
+    open: true,
+    parent: 0
+  },
+  {
+    id: 2,
+    text: "Planning",
+    start_date: new Date(2026, 0, 5),
+    duration: 4,
+    progress: 0.6,
+    parent: 1
+  }
+];
+
+export const links: SerializedLink[] = [{ id: 1, source: 1, target: 2, type: "0" }];
+~~~
+
+## 3. Create A Basic Gantt Store
 
 Create `src/stores/ganttStore.ts`:
 
 ~~~ts title="src/stores/ganttStore.ts"
 import { defineStore } from "pinia";
 import type { BatchChanges, SerializedLink, SerializedTask } from "@dhtmlx/trial-vue-gantt";
+import { links, tasks } from "../demoData";
 
 type ZoomLevel = "day" | "month" | "year";
 
@@ -96,8 +128,8 @@ function applyBatchChanges(tasks: SerializedTask[], links: SerializedLink[], cha
 
 export const useGanttStore = defineStore("gantt", {
   state: () => ({
-    tasks: [] as SerializedTask[],
-    links: [] as SerializedLink[],
+    tasks: tasks,
+    links: links,
     zoomLevel: "day" as ZoomLevel
   }),
   getters: {
@@ -127,14 +159,14 @@ This store keeps one source of truth:
 - `config` is derived state
 - `applyBatch` is the wrapper callback entry point
 
-## 3. Bind Store State To `VueGantt`
+## 4. Bind Store State To `VueGantt`
 
-Create `src/components/GanttBoard.vue`:
+Create `src/components/GanttChart.vue`:
 
-~~~vue title="src/components/GanttBoard.vue"
+~~~vue title="src/components/GanttChart.vue"
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import VueGantt from "@dhtmlx/trial-vue-gantt";
+import VueGantt, { type BatchChanges } from "@dhtmlx/trial-vue-gantt";
 import "@dhtmlx/trial-vue-gantt/dist/vue-gantt.css";
 
 import { useGanttStore } from "../stores/ganttStore";
@@ -143,7 +175,7 @@ const store = useGanttStore();
 const { tasks, links, config, zoomLevel } = storeToRefs(store);
 
 const data = {
-  batchSave: changes => store.applyBatch(changes)
+  batchSave: (changes: BatchChanges) => store.applyBatch(changes)
 };
 
 const setZoom = (level: "day" | "month" | "year") => {
@@ -172,7 +204,23 @@ This is the core wrapper wiring:
 - `batchSave` -> store action
 - store action -> new state -> wrapper props again
 
-## 4. Verify The Data Flow
+## 5. Render Gantt In The App Shell
+
+Replace `src/App.vue`:
+
+~~~vue title="src/App.vue"
+<script setup lang="ts">
+import GanttChart from "./components/GanttChart.vue";
+</script>
+
+<template>
+  <div :style="{ height: '100%', width: '100%' }">
+    <GanttChart />
+  </div>
+</template>
+~~~
+
+## 6. Verify The Data Flow
 
 Use this flow for predictable updates:
 
@@ -184,13 +232,13 @@ Use this flow for predictable updates:
 
 Do not mix this with direct instance mutations unless you also update the store.
 
-## 5. (Optional) Add Store-Level Undo/Redo
+## 7. (Optional) Add Store-Level Undo/Redo
 
 Use this if you want undo/redo while keeping Pinia as the source of truth.
 
 Do not enable `gantt.plugins({ undo: true })` in this mode.
 
-### 5.1 Replace The Store With A History Version
+### 7.1 Replace The Store With A History Version
 
 Replace the store from step 2 with this version.
 It keeps state typed as `SerializedTask[]` / `SerializedLink[]` and avoids `as any` casts in date cloning.
@@ -198,6 +246,7 @@ It keeps state typed as `SerializedTask[]` / `SerializedLink[]` and avoids `as a
 ~~~ts title="src/stores/ganttStore.ts"
 import { defineStore } from "pinia";
 import type { BatchChanges, SerializedLink, SerializedTask } from "@dhtmlx/trial-vue-gantt";
+import { links, tasks } from "../demoData";
 
 type ZoomLevel = "day" | "month" | "year";
 
@@ -289,8 +338,8 @@ const createSnapshot = (state: HistoryState): Snapshot => ({
 
 export const useGanttStore = defineStore("gantt", {
   state: () => ({
-    tasks: [] as SerializedTask[],
-    links: [] as SerializedLink[],
+    tasks: tasks,
+    links: links,
     zoomLevel: "day" as ZoomLevel,
     past: [] as Snapshot[],
     future: [] as Snapshot[],
@@ -360,14 +409,14 @@ export const useGanttStore = defineStore("gantt", {
 });
 ~~~
 
-### 5.2 Add Undo/Redo Buttons To The Component
+### 7.2 Add Undo/Redo Buttons To The Component
 
-Update `src/components/GanttBoard.vue`:
+Update `src/components/GanttChart.vue`:
 
-~~~vue title="src/components/GanttBoard.vue"
+~~~vue title="src/components/GanttChart.vue"
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import VueGantt from "@dhtmlx/trial-vue-gantt";
+import VueGantt, { type BatchChanges } from "@dhtmlx/trial-vue-gantt";
 import "@dhtmlx/trial-vue-gantt/dist/vue-gantt.css";
 
 import { useGanttStore } from "../stores/ganttStore";
@@ -376,7 +425,7 @@ const store = useGanttStore();
 const { tasks, links, config, zoomLevel, canUndo, canRedo } = storeToRefs(store);
 
 const data = {
-  batchSave: changes => store.applyBatch(changes)
+  batchSave: (changes: BatchChanges) => store.applyBatch(changes)
 };
 
 const setZoom = (level: "day" | "month" | "year") => {
@@ -401,7 +450,7 @@ const setZoom = (level: "day" | "month" | "year") => {
 </template>
 ~~~
 
-### 5.3 Why This Uses Store-Level History
+### 7.3 Why This Uses Store-Level History
 
 Use store-level history here because the store is the source of truth:
 
@@ -426,14 +475,9 @@ You now have a Pinia-based integration where:
 - Mixing store ownership with direct instance mutations and not reconciling state
 - Enabling the built-in Gantt undo plugin together with store-level history
 
-## Alignment With Public Sample
+## GitHub demo repository
 
-This tutorial matches the same store-driven approach used in:
-
-- `vue/samples-public/src/stores/ganttStore.ts`
-- `vue/samples-public/src/examples/state-management/Demo.vue`
-- `vue/tests/cypress/e2e/public/007-state-management.cy.ts`
-- `vue/samples-public/src/examples/shared/useDemoBatchState.ts`
+A complete working project that follows this tutorial is [provided on GitHub](https://github.com/DHTMLX/vue-gantt-pinia-starter).
 
 ## What To Read Next
 

@@ -8,6 +8,8 @@ description: "Step-by-step guide to render the official Vue Gantt wrapper in a V
 
 Use this quick start to render Vue Gantt in a Vue 3 + Vite app with a dedicated Gantt component and `data.save` callback wiring.
 
+If you're new to Vue, start with the official [Vue documentation](https://vuejs.org/guide/introduction.html). Check [a complete working project that follows this tutorial on GitHub](https://github.com/DHTMLX/vue-gantt-quick-start).
+
 ## Prerequisites
 
 - Node.js installed
@@ -161,6 +163,12 @@ You now have a Vue 3 app rendering the official Vue Gantt wrapper with:
 - reactive `tasks` and `links` props
 - wrapper CSS imported
 - `data.save` callback wiring for user edits
+
+This is the same minimal example used in the [GitHub demo project](https://github.com/DHTMLX/vue-gantt-quick-start).
+
+## GitHub demo repository
+
+A complete working project that follows this tutorial is [provided on GitHub](https://github.com/DHTMLX/vue-gantt-quick-start).
 
 ## What To Read Next
 
