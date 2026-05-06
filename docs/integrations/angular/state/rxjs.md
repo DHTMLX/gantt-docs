@@ -68,7 +68,7 @@ This is the core reducer-like step for grouped Gantt changes.
 
 Create `src/app/gantt-state/gantt-rx-store.service.ts`.
 
-The wrapper exports `SerializedTask` and `SerializedLink` — use these to type tasks and links held outside of gantt (store state, API responses, initial data). Dates can be `Date` objects or strings.
+The wrapper exports `SerializedTask` and `SerializedLink` - use these to type tasks and links held outside of gantt (store state, API responses, initial data). Dates can be `Date` objects or strings.
 
 ~~~ts
 import { Injectable } from '@angular/core';

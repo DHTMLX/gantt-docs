@@ -394,7 +394,7 @@ resetFilter(): void {
 </dhx-gantt>
 ~~~
 
-Keep a stable reference when the filter logic has not changed — the wrapper compares by identity and re-renders only when the reference changes.
+Keep a stable reference when the filter logic has not changed - the wrapper compares by identity and re-renders only when the reference changes.
 
 ## Exported Types And Helpers
 
@@ -418,8 +418,8 @@ Useful public exports from the wrapper package:
 
 The wrapper exports two task-related types:
 
-- **`SerializedTask`** — use for data you own: store state, API responses, initial literals, `batchSave` payloads. Dates can be `Date` objects or strings matching `date_format`.
-- **`Task`** (re-exported from `@dhx/gantt`) — for data gantt owns: inside event handlers, after gantt parses. Dates are `Date` objects. Has `$`-prefixed system properties.
+- **`SerializedTask`** - use for data you own: store state, API responses, initial literals, `batchSave` payloads. Dates can be `Date` objects or strings matching `date_format`.
+- **`Task`** (re-exported from `@dhx/gantt`) - for data gantt owns: inside event handlers, after gantt parses. Dates are `Date` objects. Has `$`-prefixed system properties.
 
 `SerializedLink` is the link-side counterpart of `SerializedTask`.
 
