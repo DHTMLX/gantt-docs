@@ -130,8 +130,8 @@ The `@dhx/react-gantt` package re-exports several TypeScript types that you can 
 
 **When to use `SerializedTask` / `SerializedLink` vs `Task` / `Link`:**
 
-- **`SerializedTask` / `SerializedLink`** — for data you own: store state, API responses, initial data literals. Date fields accept strings (e.g. ISO dates).
-- **`Task` / `Link`** — for data Gantt owns: inside event handlers, after Gantt parses the data. Date fields are `Date` objects. `Task` includes `$`-prefixed internal properties.
+- **`SerializedTask` / `SerializedLink`** - for data you own: store state, API responses, initial data literals. Date fields accept strings (e.g. ISO dates).
+- **`Task` / `Link`** - for data Gantt owns: inside event handlers, after Gantt parses the data. Date fields are `Date` objects. `Task` includes `$`-prefixed internal properties.
 
 ## Example Usage
 

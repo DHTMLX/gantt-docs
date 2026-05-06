@@ -141,7 +141,7 @@ Supabase Realtime must be enabled for both tables. In the Supabase dashboard go 
 
 The demo uses two separate Supabase client instances because the frontend and backend run in different environments.
 
-`src/db/supabaseClient.ts` — browser client, reads env via `import.meta.env`:
+`src/db/supabaseClient.ts` - browser client, reads env via `import.meta.env`:
 
 ```ts
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
@@ -156,7 +156,7 @@ if (!supabaseUrlClient || !supabaseAnonKeyClient) {
 export const supabaseClient: SupabaseClient = createClient(supabaseUrlClient, supabaseAnonKeyClient);
 ```
 
-`src/db/supabaseServer.ts` — server-side client, reads env via `process.env` (loaded by `dotenv`):
+`src/db/supabaseServer.ts` - server-side client, reads env via `process.env` (loaded by `dotenv`):
 
 ```ts
 import { createClient } from '@supabase/supabase-js';
@@ -173,6 +173,10 @@ export const supabaseServer = createClient(supabaseUrlServer, supabaseAnonKeySer
 ```
 
 `supabaseClient` is used exclusively for Realtime subscriptions in `GanttComponent.tsx`. All database writes go through `supabaseServer` in the Express layer.
+
+:::note
+This starter uses the **anon key** server-side because the demo schema has no Row-Level Security policies and there is no authentication. In production with auth and RLS, the server should hold the **service role key** (kept off the frontend) to bypass RLS for trusted operations.
+:::
 
 ## TypeScript types
 
@@ -278,7 +282,7 @@ export function sanitize<T extends object>(obj: T): T {
 
 Every write service calls `sanitize()` before inserting or updating. Add field names to `TEXT_FIELDS` when the schema gains additional user-editable text columns.
 
-### taskService — sortorder management
+### taskService - sortorder management
 
 `src/services/taskService.ts` is the most complex service because it manages the persistent task order.
 
@@ -471,7 +475,72 @@ The `PUT /tasks/:id` handler destructures `target` out of the request body befor
 
 ## Creating the API layer
 
-`src/api.ts` is identical to the base TanStack Query demo - plain `fetch` wrappers that throw on non-2xx responses. One small difference: `updateTask`, `deleteTask`, `updateLink`, and `deleteLink` now return the server response JSON (the updated/deleted row) instead of discarding it. The returned `id` is used by mutations to register pending operations for deduplication.
+`src/api.ts` is similar to the base TanStack Query demo - plain `fetch` wrappers that throw on non-2xx responses. The key difference: every mutation now returns the server response JSON (the updated/deleted row) instead of discarding it. The returned `id` is used by mutations to register pending operations for deduplication.
+
+```ts
+import { type Link, type SerializedTask } from '@dhtmlx/trial-react-gantt';
+
+const BASE = window.location.origin;
+
+async function request(url: string, options?: RequestInit) {
+  const res = await fetch(url, options);
+  if (!res.ok) {
+    throw new Error(`${options?.method ?? 'GET'} ${url} failed: ${res.status}`);
+  }
+  return res;
+}
+
+export const fetchData = async () => {
+  const res = await request(`${BASE}/data`);
+  return await res.json();
+};
+
+export const createTask = async (task: SerializedTask) => {
+  const res = await request(`${BASE}/tasks`, {
+    method: 'POST',
+    body: JSON.stringify(task),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  return await res.json();
+};
+
+export const updateTask = async (task: SerializedTask) => {
+  const res = await request(`${BASE}/tasks/${task.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(task),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  return await res.json();
+};
+
+export const deleteTask = async (id: string | number) => {
+  const res = await request(`${BASE}/tasks/${id}`, { method: 'DELETE' });
+  return await res.json();
+};
+
+// createLink, updateLink, deleteLink follow the same pattern against /links
+```
+
+Frontend requests hit the same origin as the Vite dev server (`http://localhost:3000`); a proxy in `vite.config.ts` forwards `/data`, `/tasks`, and `/links` to the Express backend on port 3001:
+
+```ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
+
+const API_URL = 'http://localhost:3001';
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: { alias: { '@': path.resolve(__dirname, './src') } },
+  server: {
+    port: 3000,
+    open: true,
+    proxy: { '/data': API_URL, '/tasks': API_URL, '/links': API_URL },
+  },
+});
+```
 
 ## Zustand store changes
 
@@ -638,7 +707,7 @@ const postgresChangesHandler = useCallback(
 Without this pattern, every local mutation would trigger two refetches: one from `onSuccess` and one from the Realtime echo. With it, local changes invalidate the cache exactly once, and only changes from other clients cause an additional refetch.
 
 :::note
-Drag-and-drop reorders update `sortorder` on multiple rows server-side. Only the primary task is registered in `pendingOperationsRef`; the side-effect `sortorder` updates on other tasks produce untracked Realtime events that slip through to `invalidateQueries`. This is harmless — `sortorder` is server-only state, and TanStack Query deduplicates rapid invalidations into a single background refetch.
+Drag-and-drop reorders update `sortorder` on multiple rows server-side. Only the primary task is registered in `pendingOperationsRef`; the side-effect `sortorder` updates on other tasks produce untracked Realtime events that slip through to `invalidateQueries`. This is harmless - `sortorder` is server-only state, and TanStack Query deduplicates rapid invalidations into a single background refetch.
 :::
 
 ### batchSave instead of save
@@ -683,14 +752,14 @@ const data: ReactGanttProps['data'] = useMemo(
 Key differences from `save`:
 
 - A single undo entry covers the entire batch, not individual sub-operations.
-- The snapshot recorded is `prevSnapshotRef.current` — the state captured just before `batchSave` fired — so undo always reverts the complete interaction.
+- The snapshot recorded is `prevSnapshotRef.current` - the state captured just before `batchSave` fired - so undo always reverts the complete interaction.
 - The Gantt calls `batchSave` once per user gesture even if that gesture produces multiple database writes.
 
 For more about `batchSave` see [Data Binding & State Management Basics](integrations/react/state/state-management-basics.md).
 
 ### Persistence-aware undo/redo
 
-In the base TanStack Query tutorial, `handleUndo` and `handleRedo` write a snapshot into the client cache with `setQueryData` and that is it — changes are not persisted until the user makes the next manual edit.
+In the base TanStack Query tutorial, `handleUndo` and `handleRedo` write a snapshot into the client cache with `setQueryData` and that is it - changes are not persisted until the user makes the next manual edit.
 
 In this demo, undo/redo must also persist the rollback to Supabase so that other connected clients see it. This is done with `applySnapshotDiff`:
 
@@ -698,37 +767,46 @@ In this demo, undo/redo must also persist the rollback to Supabase so that other
 const applySnapshotDiff = useCallback(
   async (from: Snapshot, to: Snapshot) => {
     const diff = diffSnapshots(from, to);
+
+    const mutations: Promise<unknown>[] = [];
+    const mutateAsync = <T,>(fn: (arg: T) => Promise<unknown>, arg: T) => {
+      mutations.push(fn(arg));
+    };
+
     isUndoRedoRef.current = true;
 
     // Links must be deleted before tasks (FK), tasks must be created before links (FK)
-    diff.links.deleted.forEach((id) => mutations.push(deleteLinkMutation.mutateAsync(id)));
-    diff.links.updated.forEach((link) => mutations.push(updateLinkMutation.mutateAsync(link)));
-    await Promise.allSettled(/* batch 1 */);
+    diff.links.deleted.forEach((id) => mutateAsync(deleteLinkMutation.mutateAsync, id));
+    diff.links.updated.forEach((link) => mutateAsync(updateLinkMutation.mutateAsync, link));
+    const batch1 = await Promise.allSettled(mutations.splice(0));
 
-    diff.tasks.deleted.forEach((id) => mutations.push(deleteTaskMutation.mutateAsync(id)));
-    diff.tasks.created.forEach((task) => mutations.push(createTaskMutation.mutateAsync(task)));
-    diff.tasks.updated.forEach((task) => mutations.push(updateTaskMutation.mutateAsync(task)));
-    await Promise.allSettled(/* batch 2 */);
+    diff.tasks.deleted.forEach((id) => mutateAsync(deleteTaskMutation.mutateAsync, id));
+    diff.tasks.created.forEach((task) => mutateAsync(createTaskMutation.mutateAsync, task));
+    diff.tasks.updated.forEach((task) => mutateAsync(updateTaskMutation.mutateAsync, task));
+    const batch2 = await Promise.allSettled(mutations.splice(0));
 
-    diff.links.created.forEach((link) => mutations.push(createLinkMutation.mutateAsync(link)));
-    await Promise.allSettled(/* batch 3 */);
+    diff.links.created.forEach((link) => mutateAsync(createLinkMutation.mutateAsync, link));
+    const batch3 = await Promise.allSettled(mutations.splice(0));
+
+    const results = [...batch1, ...batch2, ...batch3];
+    const rejected = results.filter((result) => result.status === 'rejected');
 
     isUndoRedoRef.current = false;
 
     if (rejected.length) {
-        console.error('Mutation failed:', rejected);
-        queryClient.invalidateQueries({ queryKey: ['data'] });
-      }
-    },
-    [
-      createTaskMutation,
-      updateTaskMutation,
-      deleteTaskMutation,
-      createLinkMutation,
-      updateLinkMutation,
-      deleteLinkMutation,
-      queryClient,
-    ],
+      console.error('Mutation failed:', rejected);
+      queryClient.invalidateQueries({ queryKey: ['data'] });
+    }
+  },
+  [
+    createTaskMutation,
+    updateTaskMutation,
+    deleteTaskMutation,
+    createLinkMutation,
+    updateLinkMutation,
+    deleteLinkMutation,
+    queryClient,
+  ],
 );
 
 const handleUndo = () => {
@@ -809,10 +887,18 @@ The key architectural pattern is the **pending-operations set**: local mutations
 
 ## GitHub demo repository
 
-The complete working project is [available on GitHub](https://github.com/dhtmlx/dhx-react-gantt-tanstack-supabase-demo).
+The complete working project is [available on GitHub](https://github.com/dhtmlx/react-gantt-tanstack-supabase-starter).
 
 ## What's next
 
+This is the third tutorial in the React Gantt state-management sequence:
+
+1. [Zustand](integrations/react/state/zustand.md) - local in-memory state
+2. [TanStack Query](integrations/react/state/tanstack-query.md) - server-backed state with a JSON file backend
+3. **TanStack Query + Supabase** - real-time multi-user sync (you are here)
+
+From here you can:
+
 - Revisit the core data binding concepts in [Data Binding & State Management Basics](integrations/react/state/state-management-basics.md)
-- Compare with the simpler local-storage version in [Using React Gantt with TanStack Query](integrations/react/state/tanstack-query.md)
+- Compare with the simpler local-backend version in [Using React Gantt with TanStack Query](integrations/react/state/tanstack-query.md)
 - Explore Realtime sync with a different backend in [Firebase Integration](integrations/react/firebase-integration.md)

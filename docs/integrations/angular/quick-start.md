@@ -64,7 +64,7 @@ If you later move the Gantt CSS import (or overrides for internal Gantt classes 
 
 Create `src/app/demo-data.ts`.
 
-The wrapper exports `SerializedTask` and `SerializedLink` — the recommended types for task/link data held outside gantt. Dates can be strings or `Date` objects.
+The wrapper exports `SerializedTask` and `SerializedLink` - the recommended types for task/link data held outside gantt. Dates can be strings or `Date` objects.
 
 ~~~ts
 import type { SerializedTask, SerializedLink } from '@dhtmlx/trial-angular-gantt';

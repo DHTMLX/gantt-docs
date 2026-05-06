@@ -486,7 +486,15 @@ A complete working project that follows this tutorial is [provided on GitHub](ht
 
 ## What's next
 
-To go further:
+This is the first tutorial in the React Gantt state-management sequence:
+
+1. **Zustand** - local in-memory state (you are here)
+2. [TanStack Query](integrations/react/state/tanstack-query.md) - server-backed state with a JSON file backend
+3. [TanStack Query + Supabase](integrations/react/state/tanstack-supabase.md) - real-time multi-user sync over PostgreSQL
+
+Ready for a server-backed version? Continue with [Using React Gantt with TanStack Query](integrations/react/state/tanstack-query.md).
+
+You can also:
 
 - Revisit the concepts behind this example in [](integrations/react/state/state-management-basics.md)
 - Combine store-driven state with advanced configuration and templating in the [React Gantt overview](integrations/react/overview.md)
